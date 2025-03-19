@@ -1,27 +1,27 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 23.0.2
+	pkgver = 24
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
-	noextract = jdk-23.0.2_doc-all.zip
-	source = https://download.oracle.com/java/23/archive/jdk-23.0.2_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/23.0.2+7/6da2a6609d6e406f85c491fcb119101b/jdk-23.0.2_doc-all.zip
-	source = jdk-23_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-23-final-spec/license.html
+	noextract = jdk-24_doc-all.zip
+	source = https://download.oracle.com/java/24/archive/jdk-24_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/24+36/1f9ff9062db4449d8ca828c504ffae90/jdk-24_doc-all.zip
+	source = jdk-24_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-24-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 12d7553d06b5cacf88b26cad4a8ba83cabe79646f1defb1b7fd029f3356d0922
-	sha256sums = 4e4d79441664df525bba8b3041d481ce3c89e166df1f1488b5a8e7ef9fd23a03
-	sha256sums = bcbf71218372b9f8f6012c90903e98bd768f7e24b595e49d522fae27a50be0aa
-	sha256sums = bafae9abf1ea803e9476b6d1f72b167b00fcbc9cb92ab9e361b3762c3b09db0b
-	sha256sums = 1d79c97f7166ccdb2478315c07984c7fe6d36ac602b0ecbbcdd466b7a5fa75ea
-	sha256sums = 2630fe1ffd7f20592f9e7a0fdabd241c566a125523c724c4422273d375689963
+	sha256sums = f04a4421519b9719ac96078e16af1ff0bbbfdbda7481b8ad573d75b5b6cd50b1
+	sha256sums = 5560efa0b0f62e9231da82073e6b307b6397720dcf3e9ccaa129e39c4d74ff35
+	sha256sums = 44bea749af7428ea023df090874a6826743f387a1e2333edad48ae584989a954
+	sha256sums = a9506d9fa86f02fe86f47529a15e16e24eeb553970d93be9eec7eb1225a91f4f
+	sha256sums = 8870bed1172bd0189c67bcf0f26d36f706cd5d10eb878836be25ca2577d898ca
+	sha256sums = f86a24d8d0cce6ac84e171780811dac70ec94d1f78cadacf7ab67c1ab23dfb0f
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
@@ -29,9 +29,10 @@ pkgbase = jdk
 pkgname = jre
 	pkgdesc = Oracle Java Runtime Environment
 	install = jre.install
-	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = freetype2
+	depends = glibc
+	depends = java-runtime-common
 	depends = libx11
 	depends = libxext
 	depends = libxi
@@ -40,24 +41,26 @@ pkgname = jre
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=23
-	provides = java-runtime-jdk23
-	provides = jre23-jdk=23.0.2-1
-	provides = java-runtime-headless=23
-	provides = java-runtime-headless-jdk=23
-	provides = jre23-jdk-headless=23.0.2-1
+	provides = java-runtime=24
+	provides = java-runtime-jdk24
+	provides = jre24-jdk=24-1
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-jdk=24
+	provides = jre24-jdk-headless=24-1
 	conflicts = jdk
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
 	backup = etc/java-jdk/management/management.properties
+	backup = etc/java-jdk/sdp/sdp.conf.template
 	backup = etc/java-jdk/security/policy/limited/default_US_export.policy
 	backup = etc/java-jdk/security/policy/limited/default_local.policy
 	backup = etc/java-jdk/security/policy/limited/exempt_local.policy
 	backup = etc/java-jdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-jdk/security/policy/unlimited/default_local.policy
 	backup = etc/java-jdk/security/policy/README.txt
-	backup = etc/java-jdk/security/java.policy
 	backup = etc/java-jdk/security/java.security
+	backup = etc/java-jdk/jaxp-strict.properties.template
+	backup = etc/java-jdk/jaxp.properties
 	backup = etc/java-jdk/logging.properties
 	backup = etc/java-jdk/net.properties
 	backup = etc/java-jdk/sound.properties
@@ -66,9 +69,10 @@ pkgname = jdk
 	pkgdesc = Oracle Java Development Kit
 	install = jdk.install
 	depends = java-environment-common
-	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = freetype2
+	depends = glibc
+	depends = java-runtime-common
 	depends = libx11
 	depends = libxext
 	depends = libxi
@@ -79,28 +83,30 @@ pkgname = jdk
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-environment=23
-	provides = java-environment-jdk=23
-	provides = jdk23-jdk=23.0.2-1
-	provides = jre=23
-	provides = java-runtime=23
-	provides = java-runtime-jdk23
-	provides = jre23-jdk=23.0.2-1
-	provides = java-runtime-headless=23
-	provides = java-runtime-headless-jdk=23
-	provides = jre23-jdk-headless=23.0.2-1
+	provides = java-environment=24
+	provides = java-environment-jdk=24
+	provides = jdk24-jdk=24-1
+	provides = jre=24
+	provides = java-runtime=24
+	provides = java-runtime-jdk24
+	provides = jre24-jdk=24-1
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-jdk=24
+	provides = jre24-jdk-headless=24-1
 	conflicts = jre
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
 	backup = etc/java-jdk/management/management.properties
+	backup = etc/java-jdk/sdp/sdp.conf.template
 	backup = etc/java-jdk/security/policy/limited/default_US_export.policy
 	backup = etc/java-jdk/security/policy/limited/default_local.policy
 	backup = etc/java-jdk/security/policy/limited/exempt_local.policy
 	backup = etc/java-jdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-jdk/security/policy/unlimited/default_local.policy
 	backup = etc/java-jdk/security/policy/README.txt
-	backup = etc/java-jdk/security/java.policy
 	backup = etc/java-jdk/security/java.security
+	backup = etc/java-jdk/jaxp-strict.properties.template
+	backup = etc/java-jdk/jaxp.properties
 	backup = etc/java-jdk/logging.properties
 	backup = etc/java-jdk/net.properties
 	backup = etc/java-jdk/sound.properties

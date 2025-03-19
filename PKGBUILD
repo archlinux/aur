@@ -3,9 +3,9 @@
 
 pkgbase=jdk
 pkgname=('jre' 'jdk' 'jdk-doc')
-pkgver=23.0.2
-_build=7
-_hash=6da2a6609d6e406f85c491fcb119101b
+pkgver=24
+_build=36
+_hash=1f9ff9062db4449d8ca828c504ffae90
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
@@ -23,23 +23,32 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('12d7553d06b5cacf88b26cad4a8ba83cabe79646f1defb1b7fd029f3356d0922'
-            '4e4d79441664df525bba8b3041d481ce3c89e166df1f1488b5a8e7ef9fd23a03'
-            'bcbf71218372b9f8f6012c90903e98bd768f7e24b595e49d522fae27a50be0aa'
-            'bafae9abf1ea803e9476b6d1f72b167b00fcbc9cb92ab9e361b3762c3b09db0b'
-            '1d79c97f7166ccdb2478315c07984c7fe6d36ac602b0ecbbcdd466b7a5fa75ea'
-            '2630fe1ffd7f20592f9e7a0fdabd241c566a125523c724c4422273d375689963'
+sha256sums=('f04a4421519b9719ac96078e16af1ff0bbbfdbda7481b8ad573d75b5b6cd50b1'
+            '5560efa0b0f62e9231da82073e6b307b6397720dcf3e9ccaa129e39c4d74ff35'
+            '44bea749af7428ea023df090874a6826743f387a1e2333edad48ae584989a954'
+            'a9506d9fa86f02fe86f47529a15e16e24eeb553970d93be9eec7eb1225a91f4f'
+            '8870bed1172bd0189c67bcf0f26d36f706cd5d10eb878836be25ca2577d898ca'
+            'f86a24d8d0cce6ac84e171780811dac70ec94d1f78cadacf7ab67c1ab23dfb0f'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f')
 
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
-_jre_deps=('java-runtime-common' 'ca-certificates-utils' 'freetype2' 'libx11' 'libxext'
-           'libxi' 'libxtst' 'libxrender')
-_jre_optdeps=('alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
-              'gtk3: for the Gtk+ 3 look and feel - desktop usage')
+_jre_deps=(
+    'ca-certificates-utils'
+    'freetype2'
+    'glibc'
+    'java-runtime-common'
+    'libx11'
+    'libxext'
+    'libxi'
+    'libxtst'
+    'libxrender')
+_jre_optdeps=(
+    'alsa-lib: for basic sound support'
+    'gtk2: for the Gtk+ 2 look and feel - desktop usage'
+    'gtk3: for the Gtk+ 3 look and feel - desktop usage')
 _jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
                "jre${_majver}-jdk=${pkgver}-${pkgrel}"
                "java-runtime-headless=${_majver}" "java-runtime-headless-jdk=${_majver}"
@@ -47,14 +56,16 @@ _jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
 _jre_backup=("etc/java-${pkgbase}/management/jmxremote.access"
              "etc/java-${pkgbase}/management/jmxremote.password.template"
              "etc/java-${pkgbase}/management/management.properties"
+             "etc/java-${pkgbase}/sdp/sdp.conf.template"
              "etc/java-${pkgbase}/security/policy/limited/default_US_export.policy"
              "etc/java-${pkgbase}/security/policy/limited/default_local.policy"
              "etc/java-${pkgbase}/security/policy/limited/exempt_local.policy"
              "etc/java-${pkgbase}/security/policy/unlimited/default_US_export.policy"
              "etc/java-${pkgbase}/security/policy/unlimited/default_local.policy"
              "etc/java-${pkgbase}/security/policy/README.txt"
-             "etc/java-${pkgbase}/security/java.policy"
              "etc/java-${pkgbase}/security/java.security"
+             "etc/java-${pkgbase}/jaxp-strict.properties.template"
+             "etc/java-${pkgbase}/jaxp.properties"
              "etc/java-${pkgbase}/logging.properties"
              "etc/java-${pkgbase}/net.properties"
              "etc/java-${pkgbase}/sound.properties")
@@ -130,7 +141,7 @@ package_jdk() {
     _package_jre
     
     cd "${srcdir}/jdk-${pkgver}"
-    local _jvmdir="/usr/lib/jvm/java-${_majver}-${pkgname}"
+    local _jvmdir="/usr/lib/jvm/java-${_majver}-jdk"
     
     # bin
     install -D -m755 bin/* -t "${pkgdir}/${_jvmdir}/bin"

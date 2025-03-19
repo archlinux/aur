@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Oracle Java 23 Console
-Comment=Oracle Java 23 Monitoring and Management Console
+Name=Oracle Java 24 Console
+Comment=Oracle Java 24 Monitoring and Management Console
 Keywords=java;console;monitoring
-Exec=/usr/lib/jvm/java-23-jdk/bin/jconsole
+Exec=/usr/lib/jvm/java-24-jdk/bin/jconsole
 Terminal=false
 Type=Application
 Icon=java-jdk
