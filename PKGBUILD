@@ -1,29 +1,42 @@
+# Maintainer: Your Name <your.email@example.com>
+
 pkgname=walrs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="walrs is a fast color scheme generator."
+pkgdesc="A fast color scheme generator"
 arch=('x86_64')
 url="https://github.com/Pixel2175/walrs"
 license=('MIT')
-depends=('rust' 'make')
-makedepends=('git')
-source=("git+https://github.com/Pixel2175/walrs.git")
+depends=('gcc-libs')
+makedepends=('rust' 'cargo' 'git')
+source=("git+https://github.com/Pixel2175/walrs.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname"
-    cargo build --release
+  cd "$srcdir/$pkgname"
+  cargo build --release --locked
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+  cargo test --release --locked
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 target/release/walrs "$pkgdir/usr/bin/walrs"
-    mkdir -p "$pkgdir/home/$USER/.config/walrs"
-    cp -r templates "$pkgdir/home/$USER/.config/walrs"
+  cd "$srcdir/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  
+  # Install templates
+  install -dm755 "$pkgdir/usr/share/$pkgname/templates"
+  cp -r templates/* "$pkgdir/usr/share/$pkgname/templates/"
+  
+  # Install license if present
+  if [ -f LICENSE ]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
+  
+  # Install documentation if present
+  if [ -f README.md ]; then
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  fi
 }
-
-clean() {
-    cd "$srcdir/$pkgname"
-    cargo clean
-}
-
