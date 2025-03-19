@@ -1,16 +1,18 @@
 pkgbase = python-livekit-plugins-assemblyai
 	pkgdesc = Agent Framework plugin for AssemblyAI.
-	pkgver = 0.2.2
-	pkgrel = 4
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-assemblyai
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-assemblyai/livekit_plugins_assemblyai-0.2.2.tar.gz
-	sha256sums = 2a28ebef45a18699d8fea51f95e11d261725afe00d85a178fd4365540ea8942d
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-assemblyai/livekit_plugins_assemblyai-0.2.3.tar.gz
+	sha256sums = 4d1dad66bb952dac60e618d2301f291fa33d08b5b87a2a17a2d7da5d3ff8bfd0
 
 pkgname = python-livekit-plugins-assemblyai
