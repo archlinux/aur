@@ -1,12 +1,16 @@
 pkgbase = python-livepng
 	pkgdesc = LivePNG is a format to create avatars based on PNG images with lipsync support
 	pkgver = 0.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/francescocaracciolo/livepng
 	arch = any
 	license = GGPLv3
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-pydub
+	source = https://files.pythonhosted.org/packages/source/l/livepng/livepng-0.1.8.tar.gz
+	sha256sums = 3dd7ee7e45362beda48ad30628bdb53af8fcb1e9af2d3e817cef68e4c2082cf9
 
 pkgname = python-livepng
