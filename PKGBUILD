@@ -1,6 +1,6 @@
 # Maintainer: Madison Lynch <madi@mxdi.xyz>
 pkgname=rah
-pkgver=1.2.1
+pkgver=2.0.1
 pkgrel=2
 pkgdesc="A simple AUR helper written in Rust"
 
@@ -9,12 +9,7 @@ url=https://deadgirl.dev/projects/rah
 license=(MIT)
 
 makedepends=(rust)
-depends=(
-    gcc-libs
-    glibc
-    git
-    pacman
-)
+depends=(pacman)
 conflicts=(rah-bin)
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/deadgirl/rah/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
