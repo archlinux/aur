@@ -1,0 +1,24 @@
+--- a/src/port/chklocale.c
++++ b/src/port/chklocale.c
+@@ -335,9 +335,7 @@
+ 		}
+ 
+ #ifndef WIN32
+-		sys = nl_langinfo(CODESET);
+-		if (sys)
+-			sys = strdup(sys);
++		sys = strdup("UTF-8");
+ #else
+ 		sys = win32_langinfo(name);
+ #endif
+@@ -358,9 +356,7 @@
+ 			return PG_SQL_ASCII;
+ 
+ #ifndef WIN32
+-		sys = nl_langinfo(CODESET);
+-		if (sys)
+-			sys = strdup(sys);
++		sys = strdup("UTF-8");
+ #else
+ 		sys = win32_langinfo(ctype);
+ #endif
