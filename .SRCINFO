@@ -1,0 +1,21 @@
+pkgbase = sneaky-reader-git
+	pkgdesc = A desktop app that lets you read books sneakily at work. 摸鱼看小说工具
+	pkgver = r23.c01e4a5
+	pkgrel = 1
+	url = https://github.com/macaujack/sneaky-reader
+	arch = any
+	license = WTFPL
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = rust
+	makedepends = npm
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = sneaky-reader=r23.c01e4a5
+	conflicts = sneaky-reader
+	source = sneaky-reader.git::git+https://github.com/macaujack/sneaky-reader.git
+	sha256sums = SKIP
+
+pkgname = sneaky-reader-git
