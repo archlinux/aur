@@ -4,7 +4,7 @@
 # A modified version of the chatterino2-7tv-git package (https://aur.archlinux.org/packages/chatterino2-7tv-git)
 _pkgname=chatterino7
 pkgname=chatterino2-7tv
-pkgver=7.5.1
+pkgver=7.5.2
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
@@ -46,7 +46,7 @@ sha256sums=('SKIP'
 options=('!lto')
 
 prepare() {
-    cd "${_pkgname}"
+    cd "${pkgname}"
 
     git submodule init
     for module in libcommuni settings signals serialize websocketpp magic_enum miniaudio; do
@@ -60,7 +60,7 @@ prepare() {
 }
 
 build() {
-    cmake -S "${_pkgname}" -B build --fresh \
+    cmake -S "${pkgname}" -B build --fresh \
         -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SYSTEM_QTKEYCHAIN=ON \
@@ -80,5 +80,5 @@ check() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
