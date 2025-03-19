@@ -1,7 +1,7 @@
 # Maintainer: Mark Blakeney <mark dot blakeney at bullet-systems dot net>
 pkgname=jimtcl
 pkgver=0.83
-pkgrel=1
+pkgrel=2
 pkgdesc="Jim Tcl - A small footprint implementation of Tcl"
 arch=("any")
 url="https://github.com/msteveb/$pkgname"
@@ -11,7 +11,7 @@ md5sums=('d71bbf22ce74b5e8d90962990be3af43')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --full --prefix=/usr --docdir=/usr/share/doc/$pkgname
+  ./configure --full --shared --prefix=/usr --docdir=/usr/share/doc/$pkgname
 }
 
 build() {
