@@ -1,0 +1,24 @@
+From 8fe8ee58fd2315a6f94c1ccdcc6d018c4e303bea Mon Sep 17 00:00:00 2001
+From: Ryan Schmidt <git@ryandesign.com>
+Date: Sat, 22 Jan 2022 08:51:11 -0600
+Subject: [PATCH] Add yylex and yyerror prototypes
+
+Fixes "implicit declaration of function" errors.
+---
+ src/aclyacc.y | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/aclyacc.y b/src/aclyacc.y
+index 60001b6..78d0955 100644
+--- a/src/aclyacc.y
++++ b/src/aclyacc.y
+@@ -3,6 +3,9 @@
+ #include "acl2.h"
+ #include <stdio.h> /* XXX REMOVE */
+ 
++int yylex(void);
++void yyerror(const char *);
++
+ /* XXX remove */
+ unsigned char fmt_buf[32];
+ unsigned char fmt_buf2[32];

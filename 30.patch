@@ -1,0 +1,22 @@
+From b567f2f83039bfc42065b91b37a2a807a6f156c0 Mon Sep 17 00:00:00 2001
+From: Ryan Schmidt <git@ryandesign.com>
+Date: Mon, 17 Jan 2022 01:28:24 -0600
+Subject: [PATCH] Avoid freeing ftve->val if it was not allocated
+
+---
+ lib/ftvar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/ftvar.c b/lib/ftvar.c
+index 9ff36a0..094abfb 100644
+--- a/lib/ftvar.c
++++ b/lib/ftvar.c
+@@ -78,7 +78,7 @@ void ftvar_free(struct ftvar *ftvar)
+     if (ftve->name)
+       free(ftve->name);
+ 
+-    if (ftve->val);
++    if (ftve->val)
+       free(ftve->val);
+ 
+     FT_SLIST_REMOVE_HEAD(&ftvar->entries, chain);
