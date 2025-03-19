@@ -2,13 +2,13 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.11.0.r55.g8da7c884
+pkgver=0.11.1.r189.g798512a9
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
-makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
+makedepends=('git' 'cmake' 'brotli' 'gdk-pixbuf2' 'giflib'
              'gperftools' 'highway' 'libjpeg-turbo' 'libpng'
              'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
              'graphviz' 'xdg-utils')
@@ -65,6 +65,7 @@ build() {
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
         -DJPEGXL_ENABLE_OPENEXR:BOOL='false' \
+        -DJPEGXL_ENABLE_PLUGIN_GIMP210:BOOL='false' \
         -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
@@ -84,7 +85,6 @@ check() {
 package_libjxl-git() {
     depends=('brotli' 'giflib' 'gperftools' 'highway' 'libjpeg-turbo' 'libpng')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
-                'gimp: for gimp plugin'
                 'java-runtime: for JNI bindings')
     provides=('libjxl' 'libjpeg-xl-git' 'libjxl.so' 'libjxl_threads.so')
     conflicts=('libjxl' 'libjpeg-xl-git')
@@ -104,5 +104,5 @@ package_libjxl-doc-git() {
     
     install -d -m755 "${pkgdir}/usr/share/doc"
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    cp -dr --no-preserve='ownership' build/html "${pkgdir}/usr/share/doc/libjxl"
+    cp -dr --no-preserve='ownership' build/doc/html "${pkgdir}/usr/share/doc/libjxl"
 }
