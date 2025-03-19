@@ -17,7 +17,7 @@ sha256sums=('498d7062ab2689850f56f5a85f5331115a8d1bee147e87c0fdfe97894bc94d80')
 options=(!lto)
 
 build() {
-    make build PREFIX='/usr'
+    RUSTFLAGS="$RUSTFLAGS -C force-unwind-tables" make build PREFIX='/usr'
 }
 
 package() {
