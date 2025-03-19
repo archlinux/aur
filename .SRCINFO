@@ -1,0 +1,17 @@
+pkgbase = ausweiskopie
+	pkgdesc = Create privacy friendly and legal copies of your Ausweisdokument
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Varbin/ausweiskopie
+	arch = any
+	license = MPL-2.0
+	depends = python
+	depends = python-pillow
+	depends = python-importlib_resources
+	depends = python-dbus
+	depends = python-gobject
+	optdepends = python-ttkbootstrap: modern theme
+	source = git+https://github.com/Varbin/ausweiskopie.git#tag=v0.1.4
+	sha256sums = fe0aa197c02ab9addf993ee6e33c005b02b14a7e6643c2581472e200d620b995
+
+pkgname = ausweiskopie
