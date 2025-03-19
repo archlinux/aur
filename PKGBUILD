@@ -4,8 +4,8 @@
 # Contributor: Javier ‘Phrodo_00’ Aravena <Phrodo.00@gmail.com>
 _pkgname=cgdb
 pkgname=${_pkgname}-git
-pkgver=0.7.1
-pkgrel=3
+pkgver=v0.8.0.r62.g6bbf5c4
+pkgrel=1
 pkgdesc="Curses-based interface to the GNU Debugger"
 arch=('x86_64')
 url="http://cgdb.github.io/"
@@ -16,14 +16,24 @@ makedepends=('help2man')
 source=("git+https://github.com/cgdb/cgdb")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${_pkgname}"
+  sed -i 's/^main()$/int &/' config/readline_check_version.m4
+}
+
 build() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${_pkgname}
+  cd "${_pkgname}"
   make DESTDIR="${pkgdir}/" install
 }
