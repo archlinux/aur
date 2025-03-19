@@ -4,16 +4,16 @@
 
 _pkgname=arch-update
 pkgname=gnome-shell-extension-arch-update
-pkgver=63
+pkgver=64
 pkgrel=1
 pkgdesc="Convenient indicator for Arch Linux updates in GNOME Shell."
 arch=('any')
 url="https://github.com/RaphaelRochet/arch-update"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('fakeroot' 'gnome-shell' 'pacman-contrib')
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dd50adb14fc37332a77e5c676163668c2c59a9b60654d047f83803c795277dcb')
+sha256sums=('8e8244aa685ecd70d1d3eec67b285209627f899b197c1128f13e78a98934c45e')
 
 
 package() {
