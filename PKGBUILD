@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname="gnome-shell-extension-easyscreencast"
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Provides a convienent top bar pop-down interface to configure the GNOME Shell Screencast Recording feature."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell')
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('90cfaf67cf6f7baded35d3afb4aaa009a6fb4ee356df504010366beae4672d90678f0d1c09dadffc71e2ddb05591256bff7e8eedf76f84422816845c793b16e0')
+sha512sums=('b110ae4d0310937ba7083f258b6f290eeac325aa4d5d88ea8f2adfe2edc0ec87203e05bdcbf44d2435cebf248faf200bdffeb240d450e9ea3daba9583b421d30')
 
 package() {
   # Locate the extension.
