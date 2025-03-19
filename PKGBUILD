@@ -39,5 +39,6 @@ package() {
     modpath="$(janet -e '(print (dyn :syspath))')"
     mkdir -p "${pkgdir}/${modpath}"
 	jpm --dest-dir="$pkgdir" --modpath="$modpath" --binpath="/usr/bin" install
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/janet-spork-git/LICENSE"
 }
 sha256sums=('SKIP')
