@@ -3,8 +3,8 @@
 pkgname='zsa-kontroll'
 _repo="$(cut -d "-" -f 2 <<< ${pkgname})"
 pkgdesc="Control your ZSA keyboard from the command line and scripts"
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 url="https://github.com/zsa/${pkgname}"
 source=("git+https://github.com/zsa/${_repo}#tag=${pkgver}")
 makedepends=('rust' 'protobuf')
