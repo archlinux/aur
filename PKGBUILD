@@ -2,7 +2,7 @@
 pkgname=rah-bin
 _pkgname=rah
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple AUR helper written in Rust"
 
 arch=(x86_64)
