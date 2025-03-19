@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libunibreak
+	pkgdesc = An implementation of the line breaking algorithm as described in Unicode 5.2.0 Standard Annex 14, Revision 24 (Android riscv64)
+	pkgver = 6.1
+	pkgrel = 2
+	url = https://github.com/adah1972/libunibreak/
+	arch = any
+	groups = android-libunibreak
+	license = custom:zlib/libpng
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/adah1972/libunibreak/archive/libunibreak_6_1.tar.gz
+	md5sums = 860d6b7cd960a647ca995624a8a8fea0
+
+pkgname = android-riscv64-libunibreak
