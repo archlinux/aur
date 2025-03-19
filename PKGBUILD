@@ -3,7 +3,7 @@
 
 pkgname=fht-compositor
 pkgver=25.03.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic tiling Wayland compositor'
 arch=('x86_64')
 url="https://github.com/nferhat/$pkgname"
@@ -24,6 +24,9 @@ depends=(
   'systemd-libs'
   'libxkbcommon'
   'libdisplay-info'
+)
+optdepends=(
+  'uwsm: systemd-managed session support'
 )
 options=('!lto') # TODO: temporary for libspa
 
@@ -48,6 +51,10 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 "res/$pkgname.desktop" -t "$pkgdir/usr/share/wayland-sessions"
+  install -Dm644 "res/$pkgname-uwsm.desktop" -t "$pkgdir/usr/share/wayland-sessions"
+  install -Dm644 "res/$pkgname.portal" -t "$pkgdir/usr/share/xdg-desktop-portal/portals"
+  install -Dm644 "res/$pkgname-portals.conf" -t "$pkgdir/usr/share/xdg-desktop-portal"
   install -Dm644 .github/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
