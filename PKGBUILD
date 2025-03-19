@@ -1,21 +1,33 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
+
 pkgname=python-colorful
 _name=${pkgname#python-}
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 pkgdesc="Terminal string styling done right, in Python"
 arch=('any')
 url="https://github.com/timofurrer/colorful"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer'
-'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+checkdepends=('python-pytest')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('66f8c1264b2a26f7293b96a03bb7a76c4bc8b9634369a0bffdcd12d618056a1d')
+sha256sums=('b56d5c01db1dac4898308ea889edcb113fbee3e6ec5df4bacffd61d5241b5b8d')
+
+prepare() {
+  cd "$_name-$pkgver"
+  sed -i '1,3d' setup.cfg
+  sed -i 's/value\.s/value.value/' setup.py
+}
 
 build() {
   cd "$_name-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_name-$pkgver"
+  PYTHONPATH="$PWD" pytest
 }
 
 package() {
