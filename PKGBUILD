@@ -3,14 +3,16 @@
 
 pkgname=fht-compositor
 pkgver=25.03.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic tiling Wayland compositor'
+groups=('fht-desktop')
 arch=('x86_64')
 url="https://github.com/nferhat/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('55789a5c4e8c12b23a5d72d4bf8b8b75fc116e0219c55784f11bd315995d2c3d')
-makedepends=('cargo'
+makedepends=(
+  'cargo'
   'clang'
   'egl-gbm'
 )
@@ -27,6 +29,7 @@ depends=(
 )
 optdepends=(
   'uwsm: systemd-managed session support'
+  'fht-share-picker: XDG screencast portal'
 )
 options=('!lto') # TODO: temporary for libspa
 
