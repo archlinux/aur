@@ -51,6 +51,9 @@ package() {
 
 	install -Dm755 "mods" -t "$pkgdir/usr/bin"
 	install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/mods"
+	install -Dm644 "examples.md" -t "$pkgdir/usr/share/doc/mods"
+	install -Dm644 "examples" -t "$pkgdir/usr/share/doc/mods"
+	install -Dm644 "features.md" -t "$pkgdir/usr/share/doc/mods"
 	install -Dm644 "bash-completion" "$pkgdir/usr/share/bash-completion/completions/mods"
 	install -Dm644 "fish-completion" "$pkgdir/usr/share/fish/vendor_completions.d/mods.fish"
 	install -Dm644 "zsh-completion" "$pkgdir/usr/share/zsh/site-functions/_mods"
