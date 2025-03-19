@@ -1,13 +1,13 @@
 #lskdfj Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
 pkgname="filius"
-pkgver="2.7.1"
+pkgver="2.8.0"
 _pkgver="${pkgver}"
 pkgrel=1
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
 license=('GPL')
-depends=('java-environment>=8')
+depends=('java-environment>=23')
 source=(http://www.lernsoftware-filius.de/downloads/Setup/$pkgname-$_pkgver.zip)
 package() {
 	cd $srcdir
@@ -79,5 +79,5 @@ EOF
 }
 
 
-sha256sums=('89b0a19b7c3d740a8a35701a197d3b5e157b1ff44dfb0c784ccce1a57127c876')
+sha256sums=('9800ac7f16cf148a9ae4abc719753119c05fd115ff9700b500d792f1acf7defa')
 
