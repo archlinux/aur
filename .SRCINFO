@@ -1,17 +1,19 @@
 pkgbase = python-livekit-plugins-anthropic
 	pkgdesc = Agent Framework plugin for services from Anthropic.
-	pkgver = 0.2.10
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-anthropic
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
 	depends = python-anthropic
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-anthropic/livekit_plugins_anthropic-0.2.10.tar.gz
-	sha256sums = 459f13af637111de16faa84491cce643e30315274e8c81d9f99da3189510d773
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-anthropic/livekit_plugins_anthropic-0.2.13.tar.gz
+	sha256sums = 89d65bbc6d97787b38f7051a8ca1216836eb067c0059417e270984d201a3083e
 
 pkgname = python-livekit-plugins-anthropic
