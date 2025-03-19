@@ -27,6 +27,6 @@ build() {
 
 package() {
   dpkg-deb -x "$srcdir/note-liber"_"$pkgver"_amd64.deb "$pkgdir"
-    install -Dm644 "$srcdir/../note-liber.desktop" "$pkgdir/usr/share/applications/note-liber.desktop"
-  install -Dm644 "$srcdir/../icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/note-liber.png"
+  install -Dm644 "$startdir/note-liber.desktop" "$pkgdir/usr/share/applications/note-liber.desktop"
+  install -Dm644 "$startdir/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/note-liber.png"
 }
