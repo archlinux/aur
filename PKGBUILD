@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 provides=("mods=$pkgver")
-conflicts=('mods')
+conflicts=('mods' 'mods-bin')
 source=("git+https://github.com/charmbracelet/mods.git")
 sha256sums=('SKIP')
 

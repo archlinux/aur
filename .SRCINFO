@@ -11,6 +11,7 @@ pkgbase = mods-git
 	depends = glibc
 	provides = mods=1.7.0.r28.g0e7d29c
 	conflicts = mods
+	conflicts = mods-bin
 	source = git+https://github.com/charmbracelet/mods.git
 	sha256sums = SKIP
 
