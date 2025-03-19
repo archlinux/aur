@@ -3,7 +3,7 @@
 __pkgname=jule
 _pkgname="${__pkgname}c"
 pkgname="$_pkgname-git"
-pkgver=0.1.2+r.ef904251
+pkgver=0.1.4+r.4eed9775
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -45,6 +45,8 @@ build() {
     clang++ ir.cpp \
         --std=c++17 \
         -Wno-everything \
+        -fwrapv \
+        -ffloat-store \
         -o "bin/$_pkgname-dev"
 
     echo "Building $_pkgname for $CARCH..."
