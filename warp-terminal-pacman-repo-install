@@ -13,10 +13,10 @@ _do_install() {
     pacman-key --lsign-key "${_pgp_key_name}" && \
     echo '[warpdotdev]
 Server = https://releases.warp.dev/linux/pacman/\$repo/\$arch' >> /etc/pacman.conf && \
-    pacman -Sy --noconfirm warp-terminal ||  echo '
+    pacman -Syu --noconfirm warp-terminal ||  echo '
 ############DONE############
 Repo configureed, please run
-    pacman -Sy warp-terminal
+    pacman -Syu warp-terminal
 to install the warp-terminal
 ############DONE############
 '
