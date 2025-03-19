@@ -28,5 +28,5 @@ pkgname = ttf-atkinson-hyperlegible-next-mono
 pkgname = ttf-atkinson-hyperlegible-next-mono
 	provides = atkinson-hyperlegible-next-font-mono
 
-pkgname = ttf-atkinson-hyperlegible-next-variable
-	provides = atkinson-hyperlegible-next-font-variable
+pkgname = ttf-atkinson-hyperlegible-next-mono-variable
+	provides = atkinson-hyperlegible-next-font-mono-variable

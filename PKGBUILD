@@ -2,7 +2,7 @@
 
 _name=atkinson-hyperlegible-next
 pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name otf-$_name-mono ttf-$_name-variable ttf-$_name-mono ttf-$_name-mono ttf-$_name-variable)
+pkgname=(otf-$_name ttf-$_name otf-$_name-mono ttf-$_name-variable ttf-$_name-mono ttf-$_name-mono ttf-$_name-mono-variable)
 pkgver=1.00
 _hash=7925f50f649b3813257faf2f4c0b381011f434f1
 _hash_mono=154d50362016cc3e873eb21d242cd0772384c8f9
