@@ -1,6 +1,6 @@
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -419,17 +419,6 @@
+@@ -434,17 +434,6 @@
      ADD_DEFINITIONS("-DHAVE_REMOTEIO=1")
    ENDIF()
  ENDIF()
@@ -20,7 +20,7 @@
  ADD_SUBDIRECTORY(libmariadb)
 --- a/libmariadb/plugins/auth/CMakeLists.txt
 +++ b/libmariadb/plugins/auth/CMakeLists.txt
-@@ -131,38 +131,6 @@
+@@ -122,38 +122,6 @@
  
  ENDIF()
  
@@ -42,7 +42,7 @@
 -ENDIF()
 -IF(GSSAPI_SOURCES)
 -  REGISTER_PLUGIN(TARGET auth_gssapi_client
--                  TYPE MARIADB_CLIENT_PLUGIN_AUTH
+-                  TYPE AUTH
 -                  CONFIGURATIONS DYNAMIC STATIC OFF DYNAMIC_AND_STATIC
 -                  DEFAULT ${AUTH_GSSAPI_DEFAULT_CONFIG}
 -                  SOURCES ${GSSAPI_SOURCES}
@@ -58,4 +58,4 @@
 -
  # old_password plugin
  REGISTER_PLUGIN(TARGET mysql_old_password
-                 TYPE MARIADB_CLIENT_PLUGIN_AUTH
+                 TYPE AUTH
