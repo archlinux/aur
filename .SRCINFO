@@ -12,6 +12,7 @@ pkgbase = qdmenu
 	depends = qt5-declarative
 	depends = qt5-svg
 	depends = qt5-location
+	depends = qt5-quickcontrols2
 	provides = qdmenu
 	conflicts = qdmenu
 	source = qdmenu::git+https://github.com/bayi/qdmenu.git
