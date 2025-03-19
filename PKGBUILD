@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=hwatch
-pkgver=0.3.18
+pkgver=0.3.19
 pkgrel=1
 pkgdesc="A modern alternative to the watch command"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('db1681c634a39dd6c930441d8bdaa7d875ffc87e9cf7753c6f4bb0a46ff062b0')
+sha256sums=('b0c7da2b8279e483a88019f07a058c978c324f37cd67c34b50de46fb5bd0db16')
 
 prepare() {
   cd "$pkgname-$pkgver"
