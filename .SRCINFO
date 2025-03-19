@@ -1,0 +1,20 @@
+pkgbase = python-amazon-transcribe
+	pkgdesc = Async Python SDK for Amazon Transcribe Streaming.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/awslabs/amazon-transcribe-streaming-sdk
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8
+	depends = python-awscrt
+	source = https://github.com/awslabs/amazon-transcribe-streaming-sdk/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 983ac6256067a89285bab5b84194dc11e9860ae5ec5c766a0ee3e3a90a422eca
+
+pkgname = python-amazon-transcribe
