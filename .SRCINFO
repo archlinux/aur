@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-taglib
+	pkgdesc = A Library for reading and editing the meta-data of several popular audio formats (Android riscv64)
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://taglib.github.io/
+	arch = any
+	groups = android-taglib
+	license = LGPL-2.1-only
+	license = MPL-1.1
+	makedepends = cmake
+	makedepends = android-riscv64-utf8cpp
+	depends = android-riscv64-zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://taglib.github.io/releases/taglib-2.0.2.tar.gz
+	md5sums = 95edea13107ac4cc07b7ad4bd1cb5cd1
+
+pkgname = android-riscv64-taglib
