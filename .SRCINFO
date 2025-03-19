@@ -1,6 +1,6 @@
 pkgbase = discord-history-tracker-bin
 	pkgdesc = Desktop app & browser script that saves Discord chat history into a file, and an offline viewer that displays the file.(Prebuilt version)
-	pkgver = 45.0
+	pkgver = 46.0
 	pkgrel = 1
 	url = https://dht.chylex.com/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = discord-history-tracker-bin
 	makedepends = gendesk
 	depends = glibc
 	depends = zlib
-	provides = discord-history-tracker=45.0
+	provides = discord-history-tracker=46.0
 	conflicts = discord-history-tracker
-	source = discord-history-tracker-45.0.zip::https://github.com/chylex/Discord-History-Tracker/releases/download/v45.0/linux-x64.zip
-	source = discord-history-tracker-45.0.png::https://raw.githubusercontent.com/chylex/Discord-History-Tracker/v45.0/app/Resources/Icons/256.png
-	source = LICENSE-45.0.md::https://raw.githubusercontent.com/chylex/Discord-History-Tracker/v45.0/LICENSE.md
-	sha256sums = 1c1edd8673d468c5b9a60785b63baa6b622521c2e9d7e28675c8e70770adc8b4
+	source = discord-history-tracker-46.0.zip::https://github.com/chylex/Discord-History-Tracker/releases/download/v46.0/linux-x64.zip
+	source = discord-history-tracker-46.0.png::https://raw.githubusercontent.com/chylex/Discord-History-Tracker/v46.0/app/Resources/Icons/256.png
+	source = LICENSE-46.0.md::https://raw.githubusercontent.com/chylex/Discord-History-Tracker/v46.0/LICENSE.md
+	sha256sums = 7117f3d0f3c1a1edcb24dbcf599082f29605c8b840aae977e53daf1e8e72c0b6
 	sha256sums = 44042026cb69b982e6161587f394ec7d17a02d240adfb11f996f15c0b1e2503a
 	sha256sums = d8c316ff6707f6cae3b874ed41b4c69c71d4aa52526abe4433927a0d06346115
 
