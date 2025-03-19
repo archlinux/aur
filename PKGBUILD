@@ -5,7 +5,7 @@
 #export LG2=en
 
 pkgname=i2p
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -35,7 +35,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         #upstream.patch::'https://github.com/i2p/i2p.i2p/commit/6c0e18d3.patch'
 )
 
-sha256sums=('06b305c24ed163bb09b1afaa3a8d44b2477eb3eb0e1c84236d210606986bd820'
+sha256sums=('6af1b88404527d9f5f88a29434979e048ac9d6fdc6ad7f5edbd0b318a1a1e57d'
             'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
