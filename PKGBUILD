@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-typescript
 pkgver=0.23.2
-pkgrel=2
+pkgrel=3
 pkgdesc="TypeScript grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/tree-sitter/tree-sitter-typescript"
@@ -19,7 +19,6 @@ sha256sums=('2c4ce711ae8d1218a3b2f899189298159d672870b5b34dff5d937bed2f3e8983')
 build() {
   cd "$pkgname-$pkgver"
 
-  tree-sitter generate
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   make
 }
@@ -27,7 +26,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  #tree-sitter test
+  #make test
 }
 
 package() {
