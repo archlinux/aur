@@ -1,0 +1,46 @@
+pkgbase = lua-taglib
+	pkgdesc = Lua bindings for taglib
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jprjr/lua-taglib
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cmake
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = taglib
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/jprjr/lua-taglib/releases/download/v1.0.1/lua-taglib-1.0.1.tar.gz
+	sha256sums = 65b5677e7577a77148a6dda5d015b0b07889bc4e97759cdbad4210a26ed31ab0
+
+pkgname = lua-taglib
+	pkgdesc = Lua bindings for taglib
+	depends = taglib
+	depends = gcc-libs
+	depends = glibc
+	depends = lua
+
+pkgname = lua51-taglib
+	pkgdesc = Lua bindings for taglib - Lua 5.1
+	depends = taglib
+	depends = gcc-libs
+	depends = glibc
+	depends = lua51
+
+pkgname = lua52-taglib
+	pkgdesc = Lua bindings for taglib - Lua 5.2
+	depends = taglib
+	depends = gcc-libs
+	depends = glibc
+	depends = lua52
+
+pkgname = lua53-taglib
+	pkgdesc = Lua bindings for taglib - Lua 5.3
+	depends = taglib
+	depends = gcc-libs
+	depends = glibc
+	depends = lua53
