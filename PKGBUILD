@@ -3,12 +3,12 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git')
-pkgver=0.9.21.dev48
+pkgver=0.9.21.dev54
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zgrab2, Nuclei, httpx, Zeek (Bro), Argus, Netflow,... Build your own alternatives to Shodan and GreyNoise, run your Passive DNS service, and much more!'
 arch=('any')
 url='https://ivre.rocks/'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=('git' 'python' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=('git+https://github.com/ivre/ivre.git')
 sha512sums=('SKIP')
