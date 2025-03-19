@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full-debug'
-pkgver=11.2.1
-pkgrel=3
+pkgver=11.3.0
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -50,64 +50,64 @@ source=(
   'geant4-full-debug.install'
 )
 sha256sums=(
-  "835db6543d5cb2e801675958965be96877f66d6907bb521954b598b785deae5e"
-  "5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1"
+  '1da4318b3f96f87f4d47558a32dab269b8f3fc956708038c28e72a180b0efba6'
+  '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
 )
 install="geant4-full-debug.install"
 
 build() {
 
-  cd $srcdir
+  cd "${srcdir}"
   echo "
-export PATH=\$PATH:/opt/Geant4/Geant4-v${pkgver}-debug/bin
-export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.3
-export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.5
-export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE2.3
-export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.2
-export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7
-export G4PARTICLEXSDATA=/opt/Geant4/Libraries/G4PARTICLEXS4.0
+export PATH=\$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
+export G4NEUTRONHPDATA=/opt/Geant4/Libraries/G4NDL4.7.1
+export G4LEDATA=/opt/Geant4/Libraries/G4EMLOW8.6.1
+export G4LEVELGAMMADATA=/opt/Geant4/Libraries/PhotonEvaporation6.1
+export G4RADIOACTIVEDATA=/opt/Geant4/Libraries/RadioactiveDecay6.1.2
+export G4PARTICLEXSDATA=/opt/Geant4/Libraries/G4PARTICLEXS4.1
 export G4PIIDATA=/opt/Geant4/Libraries/G4PII1.3
+export G4REALSURFACEDATA=/opt/Geant4/Libraries/RealSurface2.2
 export G4SAIDXSDATA=/opt/Geant4/Libraries/G4SAIDDATA2.0
-export G4TENDLDATA=/opt/Geant4/Libraries/G4TENDL1.4
-export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4
-export G4LEVELGAMMADATA=/opt/Geant4/Libraries/PhotonEvaporation5.7
-export G4RADIOACTIVEDATA=/opt/Geant4/Libraries/RadioactiveDecay5.6
-export G4REALSURFACEDATA=/opt/Geant4/Libraries/RealSurface2.2" > Geant4.sh
+export G4ABLADATA=/opt/Geant4/Libraries/G4ABLA3.3
+export G4INCLDATA=/opt/Geant4/Libraries/G4INCL1.2
+export G4ENSDFSTATEDATA=/opt/Geant4/Libraries/G4ENSDFSTATE3.0
+export G4CHANNELINGDATA=/opt/Geant4/Libraries/G4CHANNELING1.0
+export G4PARTICLEHPDATA=/opt/Geant4/Libraries/G4TENDL1.4" > Geant4.sh
 
   echo "
-setenv PATH \$PATH:/opt/Geant4/Geant4-v${pkgver}-debug/bin
-setenv G4ABLADATA /opt/Geant4/Libraries/G4ABLA3.3
-setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.5
-setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE2.3
-setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.2
-setenv G4NEUTRONHPDATA /opt/Geant4/Libraries/G4NDL4.7
-setenv G4PARTICLEXSDATA /opt/Geant4/Libraries/G4PARTICLEXS4.0
+setenv PATH \$PATH:/opt/Geant4/Geant4-v${pkgver}/bin
+setenv G4NEUTRONHPDATA /opt/Geant4/Libraries/G4NDL4.7.1
+setenv G4LEDATA /opt/Geant4/Libraries/G4EMLOW8.6.1
+setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation6.1
+setenv G4RADIOACTIVEDATA /opt/Geant4/Libraries/RadioactiveDecay6.1.2
+setenv G4PARTICLEXSDATA /opt/Geant4/Libraries/G4PARTICLEXS4.1
 setenv G4PIIDATA /opt/Geant4/Libraries/G4PII1.3
+setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2
 setenv G4SAIDXSDATA /opt/Geant4/Libraries/G4SAIDDATA2.0
-setenv G4TENDLDATA /opt/Geant4/Libraries/G4TENDL1.4
-setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4
-setenv G4LEVELGAMMADATA /opt/Geant4/Libraries/PhotonEvaporation5.7
-setenv G4RADIOACTIVEDATA /opt/Geant4/Libraries/RadioactiveDecay5.6
-setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2" > Geant4.csh
+setenv G4ABLADATA /opt/Geant4/Libraries/G4ABLA3.3
+setenv G4INCLDATA /opt/Geant4/Libraries/G4INCL1.2
+setenv G4ENSDFSTATEDATA /opt/Geant4/Libraries/G4ENSDFSTATE3.0
+setenv G4CHANNELINGDATA /opt/Geant4/Libraries/G4CHANNELING1.0
+setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
 
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d "${srcdir}"/build ] || mkdir "${srcdir}"/build
+  cd "${srcdir}"/build
 
   cmake \
-    -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver}-debug \
-    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
+    -DCMAKE_BUILD_TYPE=Release \
     -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_INSTALL_DATA=ON \
     -DGEANT4_INSTALL_DATASETS_TENDL=ON \
     -DGEANT4_USE_G3TOG4=ON \
     -DGEANT4_USE_GDML=ON \
     -DGEANT4_USE_FREETYPE=ON \
-    -DGEANT4_USE_INVENTOR_QT=ON \
     -DGEANT4_USE_QT_QT6=ON \
+    -DGEANT4_USE_INVENTOR_QT=ON \
     -DGEANT4_USE_OPENGL_X11=ON \
     -DGEANT4_USE_QT=ON \
     -DGEANT4_USE_RAYTRACER_X11=ON \
-    -DGEANT4_USE_SYSTEM_ZLIB=OFF \
+    -DGEANT4_USE_SYSTEM_ZLIB=ON \
     -DGEANT4_USE_XM=ON \
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
@@ -122,16 +122,16 @@ setenv G4REALSURFACEDATA /opt/Geant4/Libraries/RealSurface2.2" > Geant4.csh
 }
 
 package() {
-  cd $srcdir
-  install -D -m 755 Geant4.sh $pkgdir/etc/profile.d/Geant4-debug.sh
-  install -D -m 755 Geant4.csh $pkgdir/etc/profile.d/Geant4-debug.csh
+  cd "${srcdir}"
+  install -D -m 755 Geant4.sh "${pkgdir}"/etc/profile.d/Geant4.sh
+  install -D -m 755 Geant4.csh "${pkgdir}"/etc/profile.d/Geant4.csh
 
-  cd ${srcdir}/build
+  cd "${srcdir}"/build
   make DESTDIR="${pkgdir}" install
 
   mkdir -p "${pkgdir}"/usr/include
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/lib ${pkgdir}/opt/Geant4/Geant4-v${pkgver}-debug/lib64
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4 "${pkgdir}"/usr/include/Geant4
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4/CLHEP "${pkgdir}"/usr/include/CLHEP
-  ln -s /opt/Geant4/Geant4-v${pkgver}-debug/include/Geant4/PTL "${pkgdir}"/usr/include/PTL
+  ln -s /opt/Geant4/Geant4-v${pkgver}/lib ${pkgdir}/opt/Geant4/Geant4-v${pkgver}/lib64
+  ln -s /opt/Geant4/Geant4-v${pkgver}/include/Geant4 "${pkgdir}"/usr/include/Geant4
+  ln -s /opt/Geant4/Geant4-v${pkgver}/include/Geant4/CLHEP "${pkgdir}"/usr/include/CLHEP
+  ln -s /opt/Geant4/Geant4-v${pkgver}/include/Geant4/PTL "${pkgdir}"/usr/include/PTL
 }
