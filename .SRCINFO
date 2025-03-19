@@ -1,0 +1,16 @@
+pkgbase = shig-git
+	pkgdesc = CLI utility to sign files and verify signatures in OpenSSH compatible format (alternative to `ssh-keygen -Y`)
+	pkgver = 1.1.1.r2.g02f0ad0
+	pkgrel = 1
+	url = https://github.com/SierraSoftworks/shig
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = shig
+	source = git+https://github.com/SierraSoftworks/shig.git
+	sha256sums = SKIP
+
+pkgname = shig-git
