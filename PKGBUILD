@@ -1,7 +1,7 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=mybible-git
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -10,6 +10,7 @@ arch=('any')
 url="https://gitverse.ru/naierchou/mybible"
 license=('GPL-3.0')
 depends=('mybible-module-kjv' 'sqlite' 'w3m' 'fzf')
+optdepends=('mybible-module-pbti' 'mybible-module-ogb' 'mybible-module-rst')
 makedepends=()
 source=("git+https://gitverse.ru/naierchou/mybible.git")
 sha256sums=("SKIP")
