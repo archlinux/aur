@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=hugin
 pkgname="${_appname}-messenger"
-_pkgname="Hugin Messenger"
-pkgver=0.8.2
+_pkgname='Hugin Messenger'
+pkgver=0.8.3
 _electronversion=19
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('6eaa5942b79f31550066150095c7d2ac65b4991a574c477ba543b6101371ca88'
+sha256sums=('b6c85e1659cb0d6a55cc23c58257ad5fb078f8b8dd027f87e1a63e4d587d7cf3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
