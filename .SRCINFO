@@ -1,6 +1,6 @@
 pkgbase = automedia
 	pkgdesc = Automatically track new releases of media and download them. Supports torrents using rss (nyaa.si) and manga sites using html.
-	pkgver = r199.afdf9e2
+	pkgver = r200.5409de3
 	pkgrel = 1
 	url = https://git.dec05eba.com/AutoMedia
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = automedia
 	depends = curl
 	depends = transmission-cli
 	optdepends = libnotify
-	source = automedia-r199.afdf9e2.tar.gz::https://dec05eba.com/snapshot/AutoMedia.git.r199.afdf9e2.tar.gz
-	sha512sums = 522258894b983017f501a1098e7557c8b4c57e7effb336b14ed3531424cb1b2648ad1651746bb1a8181ea56fde8d8cf884a30aa49f5e95de797b611c06d7cb52
+	source = automedia-r200.5409de3.tar.gz::https://dec05eba.com/snapshot/AutoMedia.git.r200.5409de3.tar.gz
+	sha512sums = 81d463c407780c93d913ae1b8103e6b43cda8a0d351b036f8519dd762b56f3bda23f752549b27851f7cdc3be1fb13d1d45a8f411e674a56bd7a7f8336c9a460d
 
 pkgname = automedia
