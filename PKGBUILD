@@ -1,12 +1,12 @@
 # Maintainer: Aubrey Carlson (Carlson) <aubreycarlson24@outlook.com>
 
-_javaver=23
-_zuluver=23.32.11
-_jdkver=23.0.2
+_javaver=24
+_zuluver=24.28.85
+_jdkver=24.0.0
 
 pkgname="openjdk-zulu-ca-fx-bin"
 pkgver="${_javaver}+${_zuluver}+${_jdkver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Azul Zulu Builds of OpenJDK ${_javaver} With OpenJFX are open source, TCK-tested and certified builds of OpenJDK ${_javaver}."
 arch=('x86_64')
 url='https://www.azul.com/downloads'
@@ -35,7 +35,7 @@ provides=("java-environment=${_javaver}"
           "jre${_javaver}-openjdk-headless=${_javaver}"
           "java${_javaver}-openjfx=${_javaver}")
 source=("https://cdn.azul.com/zulu/bin/zulu${_zuluver}-ca-fx-jdk${_jdkver}-linux_x64.tar.gz")
-b2sums=("3c12fd71e43afd51edee5da67942a049bd49bbb2daed3a0ecf2ba76fef4b0cc3ff8b2bb62842df6870076c61b33447f4ab051f7b79a58408e8270d42d9930bac")
+b2sums=("cde1af579aa4cf27a5665bb5ab46690bcbb95d0ca302927d5bba9863e3e4653ea6a281df1eb944d9ab9884f29e3bde2d214a8990030b36132483d9335708f0a3")
 install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"

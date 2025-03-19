@@ -1,7 +1,7 @@
 pkgbase = openjdk-zulu-ca-fx-bin
-	pkgdesc = Azul Zulu Builds of OpenJDK 23 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 23.
-	pkgver = 23+23.32.11+23.0.2
-	pkgrel = 3
+	pkgdesc = Azul Zulu Builds of OpenJDK 24 With OpenJFX are open source, TCK-tested and certified builds of OpenJDK 24.
+	pkgver = 24+24.28.85+24.0.0
+	pkgrel = 1
 	url = https://www.azul.com/downloads
 	install = install_openjdk-zulu-ca-fx-bin.sh
 	arch = x86_64
@@ -9,27 +9,27 @@ pkgbase = openjdk-zulu-ca-fx-bin
 	depends = java-environment-common>=3
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	provides = java-environment=23
-	provides = java-environment-openjdk=23
-	provides = java-runtime=23
-	provides = java-runtime-openjdk=23
-	provides = java-runtime-headless=23
-	provides = java-runtime-headless-openjdk=23
-	provides = jre-openjdk=23
-	provides = jdk-openjdk=23
-	provides = jre-openjdk-headless=23
-	provides = java-openjfx=23
-	provides = java23-environment=23
-	provides = java23-environment-openjdk=23
-	provides = java23-runtime=23
-	provides = java23-runtime-openjdk=23
-	provides = java23-runtime-headless=23
-	provides = java23-runtime-headless-openjdk=23
-	provides = jre23-openjdk=23
-	provides = jdk23-openjdk=23
-	provides = jre23-openjdk-headless=23
-	provides = java23-openjfx=23
-	source = https://cdn.azul.com/zulu/bin/zulu23.32.11-ca-fx-jdk23.0.2-linux_x64.tar.gz
-	b2sums = 3c12fd71e43afd51edee5da67942a049bd49bbb2daed3a0ecf2ba76fef4b0cc3ff8b2bb62842df6870076c61b33447f4ab051f7b79a58408e8270d42d9930bac
+	provides = java-environment=24
+	provides = java-environment-openjdk=24
+	provides = java-runtime=24
+	provides = java-runtime-openjdk=24
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-openjdk=24
+	provides = jre-openjdk=24
+	provides = jdk-openjdk=24
+	provides = jre-openjdk-headless=24
+	provides = java-openjfx=24
+	provides = java24-environment=24
+	provides = java24-environment-openjdk=24
+	provides = java24-runtime=24
+	provides = java24-runtime-openjdk=24
+	provides = java24-runtime-headless=24
+	provides = java24-runtime-headless-openjdk=24
+	provides = jre24-openjdk=24
+	provides = jdk24-openjdk=24
+	provides = jre24-openjdk-headless=24
+	provides = java24-openjfx=24
+	source = https://cdn.azul.com/zulu/bin/zulu24.28.85-ca-fx-jdk24.0.0-linux_x64.tar.gz
+	b2sums = cde1af579aa4cf27a5665bb5ab46690bcbb95d0ca302927d5bba9863e3e4653ea6a281df1eb944d9ab9884f29e3bde2d214a8990030b36132483d9335708f0a3
 
 pkgname = openjdk-zulu-ca-fx-bin
