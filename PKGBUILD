@@ -2,8 +2,8 @@
 
 pkgname=git-monitor-git
 _pkgname=git-monitor
-pkgver=r37.a0fa2fe
-pkgrel=5
+pkgver=r42.da822db
+pkgrel=1
 pkgdesc='Monitor Git repositories for new commits'
 arch=('x86_64')
 url="https://github.com/Kriechi/${_pkgname}"
