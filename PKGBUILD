@@ -8,7 +8,7 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname_old=(pandoc-cli pandoc)
-pkgver=3.6.2.r6.gba04a9987
+pkgver=3.6.4.r8.g68bb4ae58
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ license=('GPL-2.0-or-later')
 provides=("${_pkgname_old[@]/%/=${pkgver%%*([a-z]).r*}}")
 conflicts=("${_pkgname_old[@]}")
 depends=('gmp' 'zlib')
-makedepends=('git' 'stack')
+makedepends=('git' 'cabal-install')
 optdepends=('texlive-core: for pdf output')
 _url=https://github.com/jgm/pandoc
 source=("$pkgname::git+$_url.git")
@@ -39,28 +39,28 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  stack config set resolver lts-23.1 # ghc-9.8.4
+  cabal update
+  cabal configure --prefix=/usr --docdir=/usr/share/doc/"$pkgname" \
+    --enable-tests --flag embed_data_files
+  cabal build --only-dependencies
 }
 
 build() {
   cd "$pkgname"
 
-  stack build \
-      --install-ghc \
-      --ghc-options='-fdiagnostics-color=always' \
-      --flag 'pandoc:embed_data_files' \
-        --fast
-  stack run -- --bash-completion > pandoc.bash
+  cabal build --offline
+  cabal run -v0 pandoc-cli -- --bash-completion > pandoc.bash
 }
 
 check() {
   cd "$pkgname"
-  stack test
+  cabal test
 }
 
 package() {
   cd "$pkgname"
-  stack install --verbose --local-bin-path "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/bin"
+  cabal install pandoc-cli --install-method=copy --installdir "$pkgdir/usr/bin"
   env -C "$pkgdir/usr/bin" ln -s pandoc pandoc-lua
   env -C "$pkgdir/usr/bin" ln -s pandoc pandoc-server
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
