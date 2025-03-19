@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.45.5-beta.0'
+_pkgver='1.45.5-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -21,7 +21,7 @@ source=(
 	'fix-argv.diff'
 	'mongodb-compass.conf'
 )
-b2sums=('23bef54505865c73243c1b443e8158edbc01d9a712b95bd34233cbf50dc8f7d61d878fc14296a1c918ec111dd225ad43c47be0d15c456947cf4d88630bc0be85'
+b2sums=('401be9421fb93a24320b0ae88026ab7aad3aa3e0ba4225a7e9b815607dedb1b009c7e462ca78197ba4f1a0ceb27d295f0e6f90678e46d54e947a8445de316f03'
         '7d840755448f0231304a809a9e9b584f548ae9e112f48c77fcbc924d6586cd27b9053f9e4bce7b50ad728c7f79a72621fd4942a70a02953835c7d79541fb2d32'
         '408f302c55df5d6c2fdba66d0b0666081780d625b34d1ca81b85061a2ae2ffbdc1a136a9199b76ee18a7f52ff6832db27d4a16796226ab8543b4621fc6827ade'
         '2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68'
