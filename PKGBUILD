@@ -14,9 +14,9 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.2.w281.s0682c26
+pkgver=10.3.w171.sfa0cd8e
 pkgrel=1
-eval pkgrel=6
+eval pkgrel=1
 
 ################################################################################################################################
 ################################################################################################################################
@@ -33,11 +33,11 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
+_disabled_staging=(ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization winex11-MWM_Decorations)
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="03-05-2025-0530ef6f-0682c264-v2"
+_patchbase_tag="03-19-2025-e66405a5-fa0cd8ea"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -48,8 +48,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=0530ef6facaca32f2342cb0a4d15f3cce8023b6d
-_desired_staging_commit=0682c264964498dae7934cbc6aeac5f1dcd52807
+_desired_wine_commit=e66405a5040ac233ebdc7bdd925919ad63b4dd69
+_desired_staging_commit=fa0cd8ead07e8308dae196122b38f95ef031187e
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -358,7 +358,7 @@ _set_vars() {
       _cross32="$(command -v i686-w64-mingw32-gcc)"
       _crossxx32="$(command -v i686-w64-mingw32-g++)"
 
-      _extra_cross_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2 " # graphite opts + mingw-gcc opts
+      _extra_cross_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + mingw-gcc opts
       _extra_crossld_flags+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
     fi
 
@@ -397,15 +397,15 @@ _set_vars() {
   export i386_CC="${_ccache} ${_cross32}"
   export i386_CXX="${_ccache} ${_crossxx32}"
 
-  export x86_64_CFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
+  export x86_64_CFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-} -std=gnu23"
   export x86_64_CXXFLAGS="${_CROSS_FLAGS} ${_common_64_cflags:-}"
 
-  export i386_CFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
+  export i386_CFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-} -std=gnu23"
   export i386_CXXFLAGS="${_CROSS_FLAGS} ${_common_32_cflags:-}"
 
-  export CFLAGS="${_GCC_FLAGS} ${_common_64_cflags:-} ${_lto_cache_flags:-}"
+  export CFLAGS="${_GCC_FLAGS} ${_common_64_cflags:-} ${_lto_cache_flags:-} -std=gnu23"
   export CXXFLAGS="${_GCC_FLAGS//${_fake_gnuc_flag}/} ${_lto_cache_flags:-}"
-  export CROSSCFLAGS="${_CROSS_FLAGS}"
+  export CROSSCFLAGS="${_CROSS_FLAGS} -std=gnu23"
   export CROSSCXXFLAGS="${_CROSS_FLAGS//${_fake_gnuc_flag}/}"
 
   export LDFLAGS="${_LD_FLAGS} ${_lto_cache_flags:-}"
@@ -422,10 +422,10 @@ _set_vars64() {
 
   _set_vars
 
-  if [ -f "/usr/lib/libunwind.a" ] && [ -f "/usr/lib/libz.a" ] && [ -f "/usr/lib/liblzma.a" ]; then
-    export UNWIND_CFLAGS=""
-    export UNWIND_LIBS="-static-libgcc -l:libunwind.a -l:liblzma.a -l:libz.a"
-  fi
+  # if [ -f "/usr/lib/libunwind.a" ] && [ -f "/usr/lib/libz.a" ] && [ -f "/usr/lib/liblzma.a" ]; then
+  #   export UNWIND_CFLAGS=""
+  #   export UNWIND_LIBS="-static-libgcc -l:libunwind.a -l:liblzma.a -l:libz.a"
+  # fi
 
   export CROSSCC="${x86_64_CC}"
 }
