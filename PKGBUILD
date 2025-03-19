@@ -1,6 +1,6 @@
 # Maintainer: Yurii Vlasov <yuriy@vlasov.pro>
 pkgname=dm-nuke
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Decrypt smart nuke mkinitcpio hook. Supports keyfile, keyscript and nuke password that destroy LUKS headers."
 arch=('x86_64' 'aarch64')
@@ -22,4 +22,4 @@ package() {
   xargs -0n1 realpath --relative-to="$srcdir" | \
   xargs -I% install -D % "$pkgdir/%"
 }
-sha256sums=('3b73bcede64123c50e828684816712b7ea5131fbab68da28cf7f6a7d97de1795' '52be09e41ae71cbf37bd1a2d3be337646982633c19f6f7aea66db9d78ba604de' '1fcfdc7c9784ab0f89abc6c90219b9382d7c3c7da1cb81c686972d11e423f83a')
+sha256sums=('3b73bcede64123c50e828684816712b7ea5131fbab68da28cf7f6a7d97de1795' '75d125c788156bd6bfbc54803c0a2d95ad8c1b44c30b3eb409e1a5da91af40b9' 'bce180f18f22c0e7d6166165aa6236fa6eb4aad9e7a03df029b37cded4630034')

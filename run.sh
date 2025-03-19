@@ -204,7 +204,8 @@ if [ "$nuke_enabled" = 'true' ]; then
   for algo in md5sum sha1sum sha256sum sha512sum; do
     if eval "\$algo" -c checksum "<kf" 1>/dev/null 2>&1; then
       echo YES | cryptsetup erase "$device"
-      cat <<EOT 1>&2
+      if [ "$quiet" = "" ]; then
+        cat <<EOT 1>&2
 
 ...............................________________................................
 ..........................____/.(..(....)...)..\___............................
@@ -233,6 +234,7 @@ if [ "$nuke_enabled" = 'true' ]; then
           Data is destroyed! They may try to extract information from
               you, but there's nothing more you can do. Good luck!
 EOT
+      fi
       exit 1
     fi
   done
