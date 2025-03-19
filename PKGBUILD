@@ -2,17 +2,25 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=meteo-qt
-pkgver=3.4
+pkgver=4.1
 pkgrel=1
 pkgdesc='System tray application for weather status information'
 arch=('any')
 url='https://github.com/dglent/meteo-qt'
 license=('GPL-3.0-only')
-depends=('python-lxml' 'python-pyqt5' 'python-urllib3')
-makedepends=('python-setuptools' 'qt5-tools')
-optdepends=('qt5-translations: translations of some native UI components')
+depends=('python' 'python-lxml' 'python-pyqt6')
+makedepends=('python-setuptools' 'qt6-tools')
+optdepends=('qt6-translations: translations of some native UI components')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('44980c54c4fd746b487192e621b84ec278db22fdea534646535f49535dc1937a815d79ede3870e49f14c95c051c73c90f4e1cdd25099ebf311bc3ecb540d727c')
+b2sums=('0bd8a86795bfe81d99321894659427b754316b37d26e1352e515a7549a78511220e1d1df7596ecfbebe7d2d855133f9d4e978c8139a1477c87df49418bbeae7b')
+
+prepare() {
+    # setup.py assumes a command named lrelease-pro-qt6 exists.
+    # This would be in qt6-tools, but it defines no command by that name
+    # as of this writing; we have to patch setup.py manually.
+    cd $pkgname-$pkgver
+    sed -i 's/lrelease-pro-qt6/\/usr\/lib\/qt6\/lrelease-pro/' setup.py
+}
 
 package() {
     cd $pkgname-$pkgver
