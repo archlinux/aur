@@ -1,0 +1,18 @@
+pkgbase = android-platform-35
+	pkgdesc = Android SDK Platform, latest API
+	pkgver = 35_r02
+	pkgrel = 1
+	url = http://developer.android.com/sdk/index.html
+	arch = any
+	license = custom
+	provides = android-platform=35
+	conflicts = android-platform=35
+	options = !strip
+	source = https://dl.google.com/android/repository/platform-35_r02.zip
+	source = package.xml
+	sha256sums = 0988cacad01b38a18a47bac14a0695f246bc76c1b06c0eeb8eb0dc825ab0c8e0
+	sha256sums = 7bca67e2f0f7258856d6f7ff0aa1a883e67ec8cce2553dbaf56baa79876e657f
+
+pkgname = android-platform-35
+	depends = android-sdk
+	depends = android-sdk-platform-tools
