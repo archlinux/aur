@@ -3,16 +3,17 @@
 
 pkgname=oauth2c
 pkgver=1.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc='User-friendly CLI for OAuth2'
 arch=('x86_64' 'arm64' 'armv6')
 url="https://github.com/cloudentity/oauth2c"
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+makedepends=('go')
 
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
-    go build .
+    go build -buildmode=pie -trimpath -mod=readonly -modcacherw -v -o $pkgname .
 }
 
 package() {
