@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-verdict
+	pkgdesc = Compute quality functions of 2 and 3-dimensional regions (Android riscv64)
+	pkgver = 1.4.2
+	pkgrel = 2
+	url = https://github.com/sandialabs/verdict
+	arch = any
+	license = BSD
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/sandialabs/verdict/archive/1.4.2/verdict-1.4.2.tar.gz
+	sha256sums = 225c8c5318f4b02e7215cefa61b5dc3f99e05147ad3fefe6ee5a3ee5b828964b
+
+pkgname = android-riscv64-verdict
