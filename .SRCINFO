@@ -1,0 +1,24 @@
+pkgbase = fht-compositor
+	pkgdesc = A dynamic tiling Wayland compositor
+	pkgver = 25.03.1
+	pkgrel = 1
+	url = https://github.com/nferhat/fht-compositor
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = egl-gbm
+	depends = mesa
+	depends = glibc
+	depends = seatd
+	depends = gcc-libs
+	depends = libinput
+	depends = libpipewire
+	depends = systemd-libs
+	depends = libxkbcommon
+	depends = libdisplay-info
+	options = !lto
+	source = fht-compositor-25.03.1.tar.gz::https://github.com/nferhat/fht-compositor/archive/refs/tags/25.03.1.tar.gz
+	sha256sums = 55789a5c4e8c12b23a5d72d4bf8b8b75fc116e0219c55784f11bd315995d2c3d
+
+pkgname = fht-compositor
