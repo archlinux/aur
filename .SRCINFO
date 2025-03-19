@@ -1,23 +1,24 @@
 pkgbase = lcevcdec
 	pkgdesc = Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)
-	pkgver = 3.3.3
-	pkgrel = 2
+	pkgver = 3.3.4
+	pkgrel = 1
 	url = https://github.com/v-novaltd/LCEVCdec/
 	arch = x86_64
 	license = BSD-3-Clause-Clear
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	makedepends = python
 	makedepends = range-v3
 	makedepends = rapidjson
-	depends = fmt
-	source = git+https://github.com/v-novaltd/LCEVCdec.git#tag=3.3.3
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/v-novaltd/LCEVCdec.git#tag=3.3.4
 	source = 010-lcevcdec-fix-pkgconfig-prefix.patch
-	source = 020-lcevcdec-disable-werror.patch
-	source = 030-lcevcdec-disable-avx.patch
-	sha256sums = ee8e2bec880627044d06b2cf3ef4e27001bad5a17f48c55635d1a4b9600ee7e3
+	source = 020-lcevcdec-disable-avx.patch
+	source = 030-lcevcdec-add-missing-header.patch
+	sha256sums = 93ae713edde8082b1088ab50f180a9a45b8d6e582b729fa04a9f6386556d67e5
 	sha256sums = 8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36
-	sha256sums = 8cf68c43fe98e31c3f1a9fc84d6c3745e3bdb24b0fe32e79f78b529210516060
 	sha256sums = 71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76
+	sha256sums = a8fb8df9a934d49dfb4d7cb5530496cb0c89f41320a9578fba7e86f5c14a2762
 
 pkgname = lcevcdec
