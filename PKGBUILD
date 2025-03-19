@@ -1,4 +1,4 @@
-# Maintainer: Francesco Cherchi <francesco.cherchi@protonmail.com>
+# Maintainer: Francesco Cherchi <frnchr.d9var@slmail.me>
 
 pkgname=markdown2zim-git
 pkgver=r37.c377bd6
