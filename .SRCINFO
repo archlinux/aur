@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-srt
+	pkgdesc = Secure Reliable Transport library (Android riscv64)
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://www.srtalliance.org/
+	arch = any
+	groups = android-srt
+	license = MPL2
+	makedepends = android-cmake
+	depends = android-riscv64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/Haivision/srt/archive/refs/tags/v1.5.4.tar.gz
+	md5sums = 08e946bbcdb6f9dc3863de5dd8a48aa3
+
+pkgname = android-riscv64-srt
