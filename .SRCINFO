@@ -1,0 +1,17 @@
+pkgbase = mods-git
+	pkgdesc = Render markdown on the CLI, with pizzazz!
+	pkgver = 1.7.0.r28.g0e7d29c
+	pkgrel = 1
+	url = https://github.com/charmbracelet/mods
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = mods=1.7.0.r28.g0e7d29c
+	conflicts = mods
+	source = git+https://github.com/charmbracelet/mods.git
+	sha256sums = SKIP
+
+pkgname = mods-git
