@@ -25,17 +25,18 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
-  
+
+  # binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  
+
+  # templates folder
   install -dm755 "$pkgdir/etc/$pkgname/templates"
   cp -r templates/* "$pkgdir/etc/$pkgname/templates/"
-  
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  fi
-  
-  if [ -f README.md ]; then
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  fi
+
+  # license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # readme
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
