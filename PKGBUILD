@@ -34,6 +34,7 @@ build() {
 	go mod tidy
 	go build \
 		./
+	./mods man >"mods.1"
 	for shell in bash fish zsh; do
 		./mods completion "$shell" >"$shell-completion"
 	done
@@ -51,8 +52,9 @@ package() {
 
 	install -Dm755 "mods" -t "$pkgdir/usr/bin"
 	install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/mods"
+	install -Dm644 "mods.1" -t "$pkgdir/usr/share/man/man1"
+	install -Dm644 "examples" -d "$pkgdir/usr/share/doc/mods"
 	install -Dm644 "examples.md" -t "$pkgdir/usr/share/doc/mods"
-	install -Dm644 "examples" -t "$pkgdir/usr/share/doc/mods"
 	install -Dm644 "features.md" -t "$pkgdir/usr/share/doc/mods"
 	install -Dm644 "bash-completion" "$pkgdir/usr/share/bash-completion/completions/mods"
 	install -Dm644 "fish-completion" "$pkgdir/usr/share/fish/vendor_completions.d/mods.fish"
