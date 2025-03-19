@@ -6,6 +6,7 @@ pkgbase = vivado-lab-edition
 	arch = x86_64
 	license = custom
 	depends = gtk2
+	depends = libxcrypt
 	optdepends = fxload
 	optdepends = digilent.adept.runtime
 	optdepends = digilent.adept.utilities

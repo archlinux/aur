@@ -35,7 +35,7 @@ pkgdesc="FPGA/CPLD Lab Tools for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
 license=('custom')
-depends=('gtk2')
+depends=('gtk2' 'libxcrypt')
 optdepends=('fxload'
             'digilent.adept.runtime'
             'digilent.adept.utilities')
