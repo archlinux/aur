@@ -1,7 +1,7 @@
 pkgbase = openjdk-liberica-full-bin
-	pkgdesc = Liberica 23 includes LibericaFX, which is based on OpenJFX 23 and Minimal VM, where suitable.
-	pkgver = 23+9+23.0.2
-	pkgrel = 3
+	pkgdesc = Liberica 24 includes LibericaFX, which is based on OpenJFX 24 and Minimal VM, where suitable.
+	pkgver = 24+37+24
+	pkgrel = 1
 	url = https://https://bell-sw.com/pages/downloads
 	install = install_openjdk-liberica-full-bin.sh
 	arch = x86_64
@@ -9,27 +9,27 @@ pkgbase = openjdk-liberica-full-bin
 	depends = java-environment-common>=3
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	provides = java-environment=23
-	provides = java-environment-openjdk=23
-	provides = java-runtime=23
-	provides = java-runtime-openjdk=23
-	provides = java-runtime-headless=23
-	provides = java-runtime-headless-openjdk=23
-	provides = jre-openjdk=23
-	provides = jdk-openjdk=23
-	provides = jre-openjdk-headless=23
-	provides = java-openjfx=23
-	provides = java23-environment=23
-	provides = java23-environment-openjdk=23
-	provides = java23-runtime=23
-	provides = java23-runtime-openjdk=23
-	provides = java23-runtime-headless=23
-	provides = java23-runtime-headless-openjdk=23
-	provides = jre23-openjdk=23
-	provides = jdk23-openjdk=23
-	provides = jre23-openjdk-headless=23
-	provides = java23-openjfx=23
-	source = https://download.bell-sw.com/java/23.0.2+9/bellsoft-jdk23.0.2+9-linux-amd64-full.tar.gz
-	sha1sums = 9d44ee7c56c4e75fabcb7bb304e938af578c251b
+	provides = java-environment=24
+	provides = java-environment-openjdk=24
+	provides = java-runtime=24
+	provides = java-runtime-openjdk=24
+	provides = java-runtime-headless=24
+	provides = java-runtime-headless-openjdk=24
+	provides = jre-openjdk=24
+	provides = jdk-openjdk=24
+	provides = jre-openjdk-headless=24
+	provides = java-openjfx=24
+	provides = java24-environment=24
+	provides = java24-environment-openjdk=24
+	provides = java24-runtime=24
+	provides = java24-runtime-openjdk=24
+	provides = java24-runtime-headless=24
+	provides = java24-runtime-headless-openjdk=24
+	provides = jre24-openjdk=24
+	provides = jdk24-openjdk=24
+	provides = jre24-openjdk-headless=24
+	provides = java24-openjfx=24
+	source = https://download.bell-sw.com/java/24+37/bellsoft-jdk24+37-linux-amd64-full.tar.gz
+	sha1sums = 868b5c716265373dabf84e7329bcfa70bef27b20
 
 pkgname = openjdk-liberica-full-bin
