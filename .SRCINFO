@@ -1,4 +1,4 @@
-pkgbase = note-liber
+pkgbase = note-liber-bin
 	pkgdesc = Note Liber is a simple sticky notes app for Linux.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,7 +10,6 @@ pkgbase = note-liber
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = cargo-tauri
-	makedepends = rust-analyzer-vscode-git
 	depends = webkit2gtk-4.1
 	depends = base-devel
 	depends = curl
@@ -20,7 +19,7 @@ pkgbase = note-liber
 	depends = appmenu-gtk-module
 	depends = libappindicator-gtk3
 	depends = librsvg
-	source = https://github.com/afiovinicius/note-liber/releases/download/0.0.1/note-liber_1.0.0_amd64.deb
+	source = https://github.com/afiovinicius/note-liber/releases/download/1.0.0/note-liber_1.0.0_amd64.deb
 	sha256sums = SKIP
 
-pkgname = note-liber
+pkgname = note-liber-bin

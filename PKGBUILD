@@ -1,5 +1,5 @@
 # Maintainer: Afio Vinícius <afiovinicius@gmail.com>
-pkgname=note-liber
+pkgname=note-liber-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Note Liber is a simple sticky notes app for Linux."
@@ -18,7 +18,7 @@ depends=(
   'librsvg'
 )
 makedepends=('dpkg' 'rust' 'npm' 'nodejs' 'cargo-tauri')
-source=("$url/releases/download/$pkgver/$pkgname"_"$pkgver"_amd64.deb)
+source=("$url/releases/download/$pkgver/note-liber"_"$pkgver"_amd64.deb)
 sha256sums=('SKIP')
 
 build() {
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  dpkg-deb -x "$srcdir/$pkgname"_"$pkgver"_amd64.deb "$pkgdir"
+  dpkg-deb -x "$srcdir/note-liber"_"$pkgver"_amd64.deb "$pkgdir"
     install -Dm644 "$srcdir/../note-liber.desktop" "$pkgdir/usr/share/applications/note-liber.desktop"
   install -Dm644 "$srcdir/../icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/note-liber.png"
 }
