@@ -4,27 +4,29 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtpms
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 arch=('any')
 pkgdesc="Library providing a software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (Android ${_android_arch})"
 url='https://github.com/stefanberger/libtpms'
 license=('BSD')
+groups=('android-libtpms')
 depends=("android-${_android_arch}-openssl")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/stefanberger/libtpms/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('c922a80cb1a098e6f9b2671c0044a388')
+md5sums=('f00d71ff14c96cea0824d07c649c7a31')
 
 prepare() {
-    cd "${srcdir}/libtpms-$pkgver"
+    cd "${srcdir}/libtpms-${pkgver}"
     source android-env ${_android_arch}
 
     autoreconf --install --force
+    sed -i 's/ = index(/ = strchr(/g' src/tpm2/RuntimeProfile.c
 }
 
 build() {
-    cd "${srcdir}/libtpms-$pkgver"
+    cd "${srcdir}/libtpms-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -34,11 +36,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libtpms-$pkgver"
+    cd "${srcdir}/libtpms-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
