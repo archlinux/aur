@@ -2,14 +2,14 @@
 
 pkgname=racktables
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Datacenter and server room asset management web-software"
 arch=('any')
 url="https://racktables.org/"
 license=('GPL2')
-depends=('mariadb-clients' 'php73' 'php73-gd')
+depends=('mariadb-clients' 'php74' 'php74-gd')
 optdepends=(
-    'php73-snmp'
+    'php74-snmp'
     'mariadb: local database'
     'percona-server: local database'
 )
