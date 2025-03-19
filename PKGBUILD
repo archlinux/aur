@@ -3,8 +3,8 @@
 _repo=harakit
 _pkgname=$_repo
 pkgname=$_pkgname-git
-pkgver=r292.4b3333d
-pkgrel=2
+pkgver=r682.0e9127d
+pkgrel=3
 pkgdesc="New utilities for a new era."
 arch=('any')
 url="https://git.tebibyte.media/bonsai/$_repo"
@@ -38,9 +38,9 @@ check() {
 
 package() {
 	profile_d="$pkgdir/etc/profile.d"
-	mkdir -p "$profile_d"
+	mkdir -p "$profile_d" "$pkgdir/opt/bonsai"
 	cp bonsai.sh "$profile_d"
 
 	cd "$_repo"
-	make install PREFIX="$pkgdir/opt/bonsai"
+	make PREFIX="$pkgdir/opt/bonsai" install
 }
