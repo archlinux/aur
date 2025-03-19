@@ -1,6 +1,6 @@
 pkgbase = python-types-tensorflow
 	pkgdesc = Typing stubs for tensorflow
-	pkgver = 2.18.0.20250304
+	pkgver = 2.18.0.20250319
 	pkgrel = 1
 	url = https://pypi.org/project/types-tensorflow/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-types-tensorflow
 	depends = python-numpy
 	depends = python-types-protobuf
 	depends = python-types-requests
-	source = https://files.pythonhosted.org/packages/source/t/types-tensorflow/types_tensorflow-2.18.0.20250304.tar.gz
-	sha256sums = 2637f92a1cd01489179323f386024facbcef357bfb6122b70e3d34cd7fc44eb4
+	source = https://files.pythonhosted.org/packages/source/t/types-tensorflow/types_tensorflow-2.18.0.20250319.tar.gz
+	sha256sums = e6e9cac5796b2780d184e81640e5effe3d101099b24ac5c67fb6cc13beae858d
 
 pkgname = python-types-tensorflow
