@@ -10,7 +10,7 @@ url="https://github.com/nextcloud/groupfolders"
 license=('AGPL')
 makedepends=('npm' 'jq' 'yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('f776b788d0498b7cdadc54e65e87f3bedb0655bd93191429076bf13a26154c8e3a06a9147c51fd37ba0eee26bd5db1dbb9b51b390c483cf64636388de9c59f56')
+sha512sums=('59652e2c7ce2b29c13b7c9ee26696beb75027bb19c6a9522c16717b979ae18acce971cde316eaef71261150b98b740e7b2cf0c4fb2798a560056207f90e11668')
 
 # Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
@@ -52,4 +52,3 @@ package() {
 
     _nextcloud_app_package
 }
-sha512sums=('59652e2c7ce2b29c13b7c9ee26696beb75027bb19c6a9522c16717b979ae18acce971cde316eaef71261150b98b740e7b2cf0c4fb2798a560056207f90e11668')
