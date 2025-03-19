@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-vid.stab
+	pkgdesc = Video stabilization library (Android riscv64)
+	pkgver = 1.1.1
+	pkgrel = 3
+	url = http://public.hronopik.de/vid.stab
+	arch = any
+	groups = android-vid.stab
+	license = GPL
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/georgmartius/vid.stab/archive/refs/tags/v1.1.1.tar.gz
+	md5sums = 3fb59a96f6e49e2719fd8c551eb3617a
+
+pkgname = android-riscv64-vid.stab
