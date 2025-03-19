@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.5.0.r259.ga78f8afe
+pkgver=0.6.0.r227.g171f755c1
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -83,16 +83,18 @@ prepare() {
 }
 
 build() {
-	cmake -B build -S $_pkgname \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_SKIP_INSTALL_RPATH=ON \
-		-DENABLE_QT_GUI=ON \
-		-DENABLE_UPDATER=OFF \
-		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_SKIP_INSTALL_RPATH=ON
+		-D ENABLE_QT_GUI=ON
+		-D ENABLE_UPDATER=OFF
+		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
