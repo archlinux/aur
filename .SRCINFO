@@ -1,0 +1,18 @@
+pkgbase = biblia-git
+	pkgdesc = Bible viewer for MyBible mobile application's modules
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/biblia
+	arch = any
+	license = GPL-3.0
+	depends = mybible-module-kjv
+	depends = webappview-git
+	optdepends = mybible-module-pbti
+	optdepends = mybible-module-ogb
+	optdepends = mybible-module-rst
+	provides = biblia
+	conflicts = biblia
+	source = git+https://gitverse.ru/naierchou/biblia.git
+	sha256sums = SKIP
+
+pkgname = biblia-git
