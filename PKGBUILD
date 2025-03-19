@@ -5,12 +5,13 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-postgresql
-pkgver=16.3
+pkgver=16.8
 pkgrel=1
 arch=('any')
 pkgdesc="Sophisticated object-relational DBMS (Android ${_android_arch})"
 url='https://www.postgresql.org/'
 license=('custom:PostgreSQL')
+groups=('android-postgresql')
 depends=("android-${_android_arch}-icu"
          "android-${_android_arch}-openldap"
          "android-${_android_arch}-libxml2"
@@ -34,7 +35,7 @@ source=("https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.t
         '0005-Added-missing-headers.patch'
         '0006-Fix-duplicate-case.patch'
         '0007-Unversioned-libs.patch')
-md5sums=('68448849f923db194a07b9da9cc70a7d'
+md5sums=('f149a9f7aea0dbd66d366f70d6e7bda6'
          '4c19ab4024b4079e668117d79a9058b3'
          '75dad9c605ab1987c22e5b0da564dccb'
          '3305f78f93bed96409971e5ca269314d'
@@ -60,6 +61,7 @@ prepare() {
 
     sed -i 's|PTHREAD_LIBS="-lpthread"|PTHREAD_LIBS=""|g' configure
     sed -i 's|storage/lwlocknames.h|storage/lmgr/lwlocknames.h|g' src/include/storage/lwlock.h
+    sed -i '/#define HAVE_SHM_OPEN/d' src/include/port.h
 
     if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 24 ]; then
         sed -i 's|fseeko|fseek|g' src/backend/utils/adt/genfile.c
@@ -101,7 +103,7 @@ package() {
     cd "${srcdir}/postgresql-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
