@@ -1,6 +1,6 @@
 pkgbase = python-x-transformers
 	pkgdesc = A concise but complete full-attention transformer with a set of promising experimental features from various papers
-	pkgver = 2.1.36
+	pkgver = 2.1.37
 	pkgrel = 1
 	url = https://github.com/lucidrains/x-transformers
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-x-transformers
 	depends = python-pytorch
 	depends = python-packaging
 	depends = python-loguru
-	source = https://files.pythonhosted.org/packages/source/x/x_transformers/x_transformers-2.1.36.tar.gz
-	sha256sums = 096d55590deb8cc5fd372d2b11aa3eab84d75790116e34c75fb933fa604a3a50
+	source = https://files.pythonhosted.org/packages/source/x/x_transformers/x_transformers-2.1.37.tar.gz
+	sha256sums = 28c59210326b010157dc8c81a34f45f5fd357626a87c66e6994f6ea73da4275d
 
 pkgname = python-x-transformers
