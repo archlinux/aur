@@ -4,6 +4,7 @@ pkgbase = bitsmuggler
 	pkgrel = 1
 	url = https://github.com/javiorfo/bitsmuggler
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	provides = bitsmuggler
 	conflicts = bitsmuggler
