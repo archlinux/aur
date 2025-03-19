@@ -1,0 +1,5 @@
+src/
+pkg/
+*.log
+*.pkg.tar*
+vgpu_unlock-rs-*.tar.gz

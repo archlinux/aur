@@ -1,0 +1,20 @@
+pkgbase = vgpu_unlock-rs
+	pkgdesc = Unlock vGPU functionality for consumer grade GPUs
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/mbilker/vgpu_unlock-rs
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	backup = etc/vgpu_unlock/config.toml
+	source = vgpu_unlock-rs-2.5.0.tar.gz::https://github.com/mbilker/vgpu_unlock-rs/archive/refs/tags/v2.5.0.tar.gz
+	source = ba66a6c.patch
+	source = vgpu_unlock.conf
+	source = config.toml
+	sha256sums = dc1b37fa23ad5c69e5338e9f15e51275a81fbf12251edfdf91656fcd7572f1bb
+	sha256sums = 6da02cb73cce5dfa28a6bcecb776dc705e2b9453e5d12f978d9ea5870bf06552
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vgpu_unlock-rs
