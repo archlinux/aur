@@ -1,0 +1,15 @@
+pkgbase = offline-page-downloader
+	pkgdesc = Download web pages for offline use.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/metatronslove/offline-downloader-script-and-gui
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-pyqt5
+	source = https://github.com/metatronslove/offline-downloader-script-and-gui/archive/refs/tags/offline-page-downloader.tar.gz
+	sha256sums = f0cb9440cd30a4971d01e7c695ef678f01f29c1f8eeb275af39de538230d5876
+
+pkgname = offline-page-downloader
