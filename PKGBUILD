@@ -4,7 +4,7 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.9.3.5.r0.g4c299e2
+pkgver=0.9.3.11.8.r0.g1068214
 pkgrel=1
 pkgdesc="Internet radio player for the command line"
 arch=('any')
@@ -43,7 +43,7 @@ package() {
   cd $pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/pyradio/LICENSE"
   install -Dm644 ./docs/*{html,md} -t "$pkgdir/usr/share/doc/pyradio"
-  install -Dm644 ./docs/pyradio{,_rb,_server,_rec}.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 ./docs/pyradio{,_rb,_server,_rec,_buf}.1 -t "$pkgdir/usr/share/man/man1"
   install -Dm644 devel/pyradio.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 devel/pyradio.png -t "$pkgdir/usr/share/icons"
   python -m installer --destdir="$pkgdir" dist/*.whl
