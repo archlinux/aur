@@ -1,13 +1,16 @@
+# Maintainer: Akatsuki Rui <aur@akii.work>
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Eric Belanger <eric@archlinux.org>
 # Contributor: Jan Fader <jan.fader@web.de>
+# Contributor: Kaiting Chen <kaitocracy@gmail.com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: SanskritFritz (gmail)
 # Contributor: Stephen Drodge <stephen.drodge@gmail.com>
-# Contributor: Akatsuki Rui <aur@akii.work>
-# Maintainer: SanskritFritz (gmail)
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=4.0b1.r101.gd5efef1cc
+pkgver=4.0.1.r535.ge8bd45d76
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -23,6 +26,12 @@ depends=(
 optdepends=(
   'python: man page completion parser / web config tool'
   'pkgfile: command-not-found hook'
+  'nroff: --help for built-in commmands'
+  'mandoc: --help for built-in commmands (alternative)'
+  'xsel: X11 clipboard integration'
+  'xclip: X11 clipboard integration (alternative)'
+  'wl-clipboard: Wayland clipboard integration'
+
 )
 makedepends=(
   'cargo'
@@ -58,23 +67,30 @@ pkgver() {
 
 build() {
   cd "$_gitname"
+
   export CXXFLAGS+=" ${CPPFLAGS}"
-  cmake \
-    -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-    -DBUILD_DOCS=True \
+
+  local cmake_options=(
+    -B build
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc
+    -DCMAKE_BUILD_TYPE=Release
+    -DBUILD_DOCS=True
+    -DFISH_USE_SYSTEM_PCRE2=ON
+    -DWITH_GETTEXT=ON
     -Wno-dev
-  make -C build
+  )
+  cmake "${cmake_options[@]}"
+
+  make -C build VERBOSE=1
 }
 
 check() {
   cd "$_gitname"
-  make -C build test
+  make test
 }
 
 package() {
   cd "$_gitname"
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
