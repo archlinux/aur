@@ -2,7 +2,7 @@
 _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
-pkgver=1.13.3
+pkgver=1.13.4
 _typoraver=0.11.18
 _electronversion=13
 pkgrel=1
@@ -28,13 +28,14 @@ depends=(
     'nspr'
     'nss'
     'alsa-lib'
+    "electron${_electronversion}"
 )
 source=(
     "${_appname}-plugin-${pkgver}.tar.gz::${_pluginurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
 source_aarch64=("${pkgname}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
 source_x86_64=("${pkgname}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
-sha256sums=('f88cb2055a69a5832940bfd753753a73e5cf47f8b96a2edadb4ac3a78536f6ab')
+sha256sums=('c8abddc6c244756682edd7b47e79f1494c7ce44f36fe5243c6afc55918bd5679')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 prepare() {
@@ -46,6 +47,11 @@ prepare() {
     sed -i "s/<script src=\".\/appsrc\/window\/frame.js\" defer=\"defer\"><\/script>/<script src=\".\/appsrc\/window\/frame.js\" defer=\"defer\"><\/script><script src=\".\/plugin\/index.js\" defer=\"defer\"><\/script>/g" \
         "${srcdir}/usr/share/${_appname}/resources/window.html"
     cp -Pr --no-preserve=ownership "${srcdir}/${_appname}_plugin-${pkgver}/"{assets,plugin} "${srcdir}/usr/share/${_appname}/resources"
+    _linkfiles=(locales chrome_100_percent.pak chrome_200_percent.pak icudtl.dat libEGL.so libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak)
+    for _file in "${_linkfiles[@]}";do
+        rm -rf "${srcdir}/usr/share/${_appname}/${_file}"
+        ln -sf "/usr/lib/electron${_electronversion}/${_file}" "${srcdir}/usr/share/${_appname}/${_file}"
+    done
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{/usr/lib/"${pkgname}",usr/bin}
