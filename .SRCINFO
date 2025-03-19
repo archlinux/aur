@@ -1,6 +1,6 @@
 pkgbase = python-pyln-client
 	pkgdesc = Client library and plugin library for Core Lightning
-	pkgver = 24.11.1
+	pkgver = 25.02
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-client
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pyln-client
 	depends = python
 	depends = python-pyln-bolt7
 	depends = python-pyln-proto
-	source = https://github.com/ElementsProject/lightning/releases/download/v24.11.1/clightning-v24.11.1.zip
-	sha256sums = 15dac3f85034b7dd282675e3500f286a553b0c38d4bfbd1f02d78dc5b86c7209
+	source = https://github.com/ElementsProject/lightning/releases/download/v25.02/clightning-v25.02.zip
+	sha256sums = d34706fc391103047f7ccbae2979a5d90022134c82e9395052a5c42db6c33d11
 
 pkgname = python-pyln-client
