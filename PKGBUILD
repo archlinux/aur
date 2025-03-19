@@ -4,17 +4,18 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-utf8cpp
-pkgver=4.0.5
+pkgver=4.0.6
 pkgrel=1
 arch=('any')
 pkgdesc="UTF-8 with C++ in a Portable Way (Android ${_android_arch})"
 url="https://github.com/nemtrif/utfcpp"
 license=('custom:BSL')
+groups=('android-utf8cpp')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/archive/v${pkgver}/utf8cpp-${pkgver}.tar.gz")
-sha256sums=('ffc668a310e77607d393f3c18b32715f223da1eac4c4d6e0579a11df8e6b59cf')
+md5sums=('3b79abe634ef157f04bd16aad809889b')
 
 build() {
     cd "${srcdir}/utfcpp-$pkgver"
