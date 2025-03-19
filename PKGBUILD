@@ -1,7 +1,7 @@
 _pkgname=pixiv-multiplatform
 pkgname=pixiv-multiplatform-git
-pkgver=1.6.3
-pkgrel=163
+pkgver=1.6.4
+pkgrel=164
 pkgdesc="基于Kotlin技术栈的全平台的第三方pixiv客户端"
 url="https://pmf.kagg886.top"
 license=(GPL3)
