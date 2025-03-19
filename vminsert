@@ -1,0 +1,1 @@
+VMINSERT_ARGS="--storageNode='127.0.0.1:8400'"

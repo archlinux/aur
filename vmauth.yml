@@ -1,0 +1,2 @@
+unauthorized_user:
+  url_prefix: "http://backend/"

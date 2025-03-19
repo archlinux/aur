@@ -1,0 +1,37 @@
+[Unit]
+Description=vmstorage - stores the raw data and returns the queried data on the given time range for the given label filters
+Documentation=https://docs.victoriametrics.com/cluster-victoriametrics
+Requires=network-online.target
+Before=vmauth.service
+After=network-online.target nss-lookup.target basic.target
+Wants=network-online.target nss-lookup.target
+
+[Service]
+User=victoriametrics
+Group=victoriametrics
+Restart=on-failure
+WorkingDirectory=/var/lib/victoriametrics/cluster-data
+EnvironmentFile=-/etc/conf.d/vmstorage
+ExecStart=/usr/bin/vmstorage --storageDataPath=/var/lib/victoriametrics/cluster-data $VMSTORAGE_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=1048576
+LimitNPROC=1048576
+SyslogIdentifier=vmstorage
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

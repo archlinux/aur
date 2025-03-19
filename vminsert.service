@@ -1,0 +1,36 @@
+[Unit]
+Description=vminsert - accepts the ingested data and spreads it among vmstorage nodes according to consistent hashing over metric name and all its labels
+Documentation=https://docs.victoriametrics.com/cluster-victoriametrics
+Requires=network-online.target
+Before=vmauth.service
+After=network-online.target nss-lookup.target basic.target
+Wants=network-online.target nss-lookup.target
+
+[Service]
+User=victoriametrics
+Group=victoriametrics
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/vminsert
+ExecStart=/usr/bin/vmstorage $VMINSERT_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=1048576
+LimitNPROC=1048576
+SyslogIdentifier=vminsert
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

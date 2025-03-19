@@ -1,0 +1,36 @@
+[Unit]
+Description=vmselect - performs incoming queries by fetching the needed data from all the configured vmstorage nodes
+Documentation=https://docs.victoriametrics.com/cluster-victoriametrics
+Requires=network-online.target
+Before=vmauth.service
+After=network-online.target nss-lookup.target basic.target
+Wants=network-online.target nss-lookup.target
+
+[Service]
+User=victoriametrics
+Group=victoriametrics
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/vmselect
+ExecStart=/usr/bin/vmselect $VMSELECT_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+LimitNOFILE=1048576
+LimitNPROC=1048576
+SyslogIdentifier=vmselect
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
