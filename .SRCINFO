@@ -1,23 +1,23 @@
 pkgbase = nvidia-beta
 	pkgdesc = NVIDIA kernel module (beta version)
-	pkgver = 570.124.04
+	pkgver = 570.133.07
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = linux-headers
 	makedepends = dkms
-	provides = nvidia=570.124.04
-	provides = nvidia-beta=570.124.04
+	provides = nvidia=570.133.07
+	provides = nvidia-beta=570.133.07
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/570.124.04/NVIDIA-Linux-x86_64-570.124.04-no-compat32.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07-no-compat32.run
 	source = 110-nvidia-change-dkms-conf.patch
-	sha256sums = 49e6f9639ae13014bed73a25ab6226fdfa65d619679fb48425d5517c8ca03c39
-	sha256sums = ae27300def88194d95111306bbdac480ab8a1b08ed9ad9b91ae959e40ebee7d1
+	sha256sums = deaf8b334ad76e9f25f6a9fddff2633a74aa716965bd6c979d6f024e974d6f99
+	sha256sums = 48aceaf28437c38fd61e616fb2f0c398ed51f1eb6339bbc534caa7ff7bd71a5f
 
 pkgname = nvidia-beta
 	depends = linux
-	depends = nvidia-utils-beta=570.124.04
+	depends = nvidia-utils-beta=570.133.07
 	depends = libglvnd
