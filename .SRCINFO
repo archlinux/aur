@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-utf8cpp
+	pkgdesc = UTF-8 with C++ in a Portable Way (Android riscv64)
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = https://github.com/nemtrif/utfcpp
+	arch = any
+	groups = android-utf8cpp
+	license = custom:BSL
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/nemtrif/utfcpp/archive/v4.0.6/utf8cpp-4.0.6.tar.gz
+	md5sums = 3b79abe634ef157f04bd16aad809889b
+
+pkgname = android-riscv64-utf8cpp
