@@ -2,7 +2,7 @@
 # Contributor: little_sheepycn <little_sheepycn@redstonebuild.onmicrosoft.com>
 
 pkgname=xdroid-bin
-pkgver=13.1.333
+pkgver=13.2.380
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -31,11 +31,11 @@ backup=()
 options=('!strip')
 install=
 changelog=
-# _date=
-source=("${pkgname}-${pkgver}.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-${arch}-v${pkgver}.zip?ga=1")
-#https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/%e5%8d%93%e6%87%bf/xDroidInstall-x86_64-v13.1.333.zip?ga=1
+_date=20250306
+# https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/%e5%8d%93%e6%87%bf/xDroidInstall-x86_64-v13.2.380-20250306.tar.xz?ga=1
+source=("${pkgname}-${pkgver}.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-${arch}-v${pkgver}-${_date}.zip?ga=1")
 noextract=(${pkgname}-${pkgver}.zip)
-md5sums=('A5074ACC0BE20536773F11F1381518F0')
+sha256sums=('cd06938f10c9227969c4af52ee23cb6b7a6b81c0a9ec44fec7446616b34d4ae9')
 #validpgpkeys=()
 
 package() {

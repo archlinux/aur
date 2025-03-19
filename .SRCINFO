@@ -1,6 +1,6 @@
 pkgbase = xdroid-bin
 	pkgdesc = 卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。
-	pkgver = 13.1.333
+	pkgver = 13.2.380
 	pkgrel = 1
 	url = https://www.linzhuotech.com/Product/download
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = xdroid-bin
 	optdepends = linux-lts-headers: Headers and scripts for building modules for the LTS Linux kernel
 	optdepends = linux-zen-headers: Headers and scripts for building modules for the Linux ZEN kernel
 	provides = xDroidInstall
-	noextract = xdroid-bin-13.1.333.zip
+	noextract = xdroid-bin-13.2.380.zip
 	options = !strip
-	source = xdroid-bin-13.1.333.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-x86_64-v13.1.333.zip?ga=1
-	md5sums = A5074ACC0BE20536773F11F1381518F0
+	source = xdroid-bin-13.2.380.tar.gz::https://zhuolin-my.sharepoint.cn/personal/shiyang_zhuolin_partner_onmschina_cn/Documents/卓懿/xDroidInstall-x86_64-v13.2.380-20250306.zip?ga=1
+	sha256sums = cd06938f10c9227969c4af52ee23cb6b7a6b81c0a9ec44fec7446616b34d4ae9
 
 pkgname = xdroid-bin
