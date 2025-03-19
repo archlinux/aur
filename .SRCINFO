@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-wavpack
+	pkgdesc = Audio compression format with lossless, lossy and hybrid compression modes (Android riscv64)
+	pkgver = 5.8.1
+	pkgrel = 1
+	url = https://www.wavpack.com/
+	arch = any
+	groups = android-wavpack
+	license = BSD
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/dbry/WavPack/releases/download/5.8.1/wavpack-5.8.1.tar.xz
+	md5sums = ff40072de82dd299fc45161bc46b8566
+
+pkgname = android-riscv64-wavpack
