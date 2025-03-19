@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricane
 pkgname=panda3ds
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="HLE 3DS emulator"
 arch=(x86_64)
 url="https://github.com/wheremyfoodat/Panda3DS"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'zydis' 'qt6-base' 'libx11' 'hicolor-icon-theme' 'bash' 'sdl2' 'libglvnd')
-makedepends=('cmake' 'git' 'boost' 'vulkan-headers' 'gendesk')
+makedepends=('cmake' 'git' 'boost' 'vulkan-headers' 'gendesk' 'rapidjson')
 _commit=8cc9bfbb36b2656f05c38bbb01275ef8c8f43c3e
 source=("$pkgname::git+$url.git#commit=$_commit"
 	"elfio::git+https://github.com/serge1/ELFIO.git"
@@ -47,7 +47,8 @@ source=("$pkgname::git+$url.git#commit=$_commit"
 	"git+https://github.com/lua/lua.git"
 	"git+https://github.com/keplerproject/lua-compat-5.3.git"
 	"luajit::git+https://github.com/LuaJIT/LuaJIT.git"
-	'dynamic.patch'
+	"vulkan1.patch::$url/commit/d30f2646eccb8b5cae895ddc7b3461c11c97701e.patch"
+	"vulkan2.patch::$url/commit/d85c963c4e477b86759edbb96e3edcab6eb6db7b.patch"
 	)
 sha256sums=('a56a7f0e54a20a1d2d4c5ad586efd9c229bca4b1db7fc932c3f4da8733e1dd1a'
             'SKIP'
@@ -84,12 +85,14 @@ sha256sums=('a56a7f0e54a20a1d2d4c5ad586efd9c229bca4b1db7fc932c3f4da8733e1dd1a'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0bbea178a09c1a2bd4426bcd90d844c5a719fa31dcf39eb01b9b07fada164b04')
+            '94792e92c50863a8395741a2d50224e045f74b27402f9279ad69e550c634c66d'
+            'f5c9715fcc4e65ed7c9c9b4fb24cd75c7f788e0e0c2cc784f4f22542a3840d31')
 validpgpkeys=()
 
 prepare() {
 	cd "$srcdir/$pkgname"
-	patch -p1 < "$srcdir/dynamic.patch"
+	patch -p1 < "$srcdir/vulkan1.patch"
+	patch -p1 < "$srcdir/vulkan2.patch"
 	git submodule init
 	#third_party submodules first
 	for submodule in {elfio,SDL2,xbyak,toml11,cmrc,glm,discord-rpc,LuaJIT,mio,hydra_core,zep,luv,libuv,miniaudio,teakra,boost,dynarmic,nihstro,Catch2,capstone,hips,metal-cpp,fmt,fdk-aac,cryptoppwin,oaknut};
@@ -131,7 +134,7 @@ build() {
 	-DBUILD_TESTING=OFF
 	-DBUILD_TESTS=OFF
 	-DENABLE_USER_BUILD=ON
-	-DENABLE_VULKAN=ON
+	-DENABLE_VULKAN=OFF
 	-DUSE_SYSTEM_SDL2=ON
 	-GNinja
 	-DCMAKE_C_COMPILER=clang
