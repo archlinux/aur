@@ -5,7 +5,7 @@ pkgname="${_pkgname}c"
 pkgver=0.1.4
 _pkgver="$_pkgname$pkgver"
 _irsha='d3485d3edab5380d41828fe0262017765648d82d'
-pkgrel=1
+pkgrel=2
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -43,6 +43,8 @@ build() {
         -Wno-everything \
         -O3 \
         -flto \
+        -fwrapv \
+        -ffloat-store \
         -DNDEBUG \
         -fomit-frame-pointer \
         -o "bin/$pkgname"
