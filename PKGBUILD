@@ -3,8 +3,8 @@ _pkgname=js.design
 pkgname="${_pkgname//./-}-electron-bin"
 pkgver=1.0.7
 _electronversion=15
-pkgrel=3
-pkgdesc="即时设计 A professional UI design software tailored for Chinese designers.Use system-wide electron."
+pkgrel=4
+pkgdesc="A professional UI design software tailored for Chinese designers.(Prebuilt version.Use system-wide electron)即时设计"
 arch=('x86_64')
 url="https://js.design"
 license=("LicenseRef-custom")
@@ -24,20 +24,24 @@ source=(
 sha256sums=('3697482be454c0191810f39b0b93eb3c28eb5e9c77c6c3ad0634269f8e1a2bd5'
             'f1c8afcb7fbd3ad91d1f8b4bea8d66a21f9cb85be22b16ce652b66ca9473c616'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+pkgver() {
+    cd "${srcdir}/squashfs-root"
+    grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//g"
+}
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }    
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

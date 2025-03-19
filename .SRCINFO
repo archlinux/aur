@@ -1,7 +1,7 @@
 pkgbase = js-design-electron-bin
-	pkgdesc = 即时设计 A professional UI design software tailored for Chinese designers.Use system-wide electron.
+	pkgdesc = A professional UI design software tailored for Chinese designers.(Prebuilt version.Use system-wide electron)即时设计
 	pkgver = 1.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://js.design
 	arch = x86_64
 	license = LicenseRef-custom
