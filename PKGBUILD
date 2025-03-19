@@ -3,8 +3,8 @@
 _name="jule"
 _pkgname="${_name}c"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Jule programming language compiler"
 arch=('aarch64' 'x86_64')
 url="https://jule.dev"
@@ -19,8 +19,8 @@ source_aarch64=("${_pkgsrc}-aarch64.zip::${_url}/releases/download/${_name}${pkg
 source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/${_name}${pkgver}/${_name}-linux-amd64.zip")
 noextract=("${source_aarch64[@]%::*}" 
            "${source_x86_64[@]%::*}")
-sha256sums_aarch64=('745afa38194b93f2f73312790da9068c5d59380245c5b9444fedc650c75084b7')
-sha256sums_x86_64=('8d0182573a9b1e3240be313ede065a5c0873ec53874966bd076828a58a0aca7b')
+sha256sums_aarch64=('c2c8e1d01a8f6fb67abaee59f1c8ae594943a38c69efe03d55d6f7217ecf90b7')
+sha256sums_x86_64=('efd15e5b9bcc4a4ef7800b1afb62ce96b15eddeaebd4940e3b91e3ed1cc0762f')
 
 prepare() {
   cd "${srcdir}"
