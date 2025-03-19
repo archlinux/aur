@@ -9,15 +9,17 @@ pkgrel=1
 arch=(x86_64)
 
 url="https://github.com/thomasnordquist/MQTT-Explorer"
-license=("CCPL:by-nd")
+license=("CC-BY-ND-4.0")
 
-depends=()
+depends=(nspr libxcomposite gtk3 expat alsa-lib cairo libx11 at-spi2-core gcc-libs nss libxkbcommon libxdamage libxext hicolor-icon-theme libcups mesa glibc libxcb glib2 libxrandr dbus libdrm pango libxfixes)
 
 provides=(mqtt-explorer)
 conflicts=(mqtt-explorer mqtt-explorer-beta)
 
-source=("https://github.com/thomasnordquist/MQTT-Explorer/releases/download/v${pkgver//_/-}/MQTT-Explorer_${pkgver//_/-}_amd64.deb")
-md5sums=("75521ffee7c8f243a1ea95fcb5a4fad3")
+source=("https://github.com/thomasnordquist/MQTT-Explorer/releases/download/v${pkgver//_/-}/MQTT-Explorer_${pkgver//_/-}_amd64.deb"
+        "mqtt-explorer.desktop")
+md5sums=("75521ffee7c8f243a1ea95fcb5a4fad3"
+         "fb5c804b20b420b0966bf95647df4f45")
 
 package() {
 	# extract the files from the Debian package
@@ -27,6 +29,11 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin"
 
 	# make a symlink to the executable
-	#ln -s "/opt/mqtt-explorer/mqtt-explorer" "${pkgdir}/usr/bin/mqtt-explorer"
+	ln -s "/opt/MQTT Explorer/mqtt-explorer" "${pkgdir}/usr/bin/mqtt-explorer"
+
+	# make a symlink to the desktop entry
+# 	mkdir -p "${pkgdir}/usr/share/pixmaps
+        install -Dm 644 mqtt-explorer.desktop -t "$pkgdir"/usr/share/applications
+
 }
 

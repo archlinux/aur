@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MQTT Explorer
+Exec=mqtt-explorer
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/0x0/apps/mqtt-explorer.png
+StartupWMClass=MQTT Explorer
+Comment=Explore your message queues
+Categories=Development;
