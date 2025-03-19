@@ -9,7 +9,7 @@ pkgver="${_javaver}+${_bellver}+${_jdkver}"
 pkgrel=1
 pkgdesc="Liberica ${_javaver} includes LibericaFX, which is based on OpenJFX ${_javaver} and Minimal VM, where suitable."
 arch=('x86_64')
-url='https://https://bell-sw.com/pages/downloads'
+url='https://bell-sw.com/pages/downloads'
 license=('custom')
 depends=('java-environment-common>=3'
          'java-runtime-common>=3'
@@ -58,13 +58,13 @@ package() {
   ln -s /usr/share/licenses/${pkgname} "${pkgdir}${_jvmdir}/legal"
 
   # Man pages
-  for f in bin/*; do
-    f=$(basename "${f}")
-    _man=man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-bell${_javaver}.1"
-  done
-  rm -r "${pkgdir}${_jvmdir}/man"
-  ln -s /usr/share/man "${pkgdir}${_jvmdir}/man"
+  # for f in bin/*; do
+  #   f=$(basename "${f}")
+  #   _man=man/man1/"${f}.1"
+  #   test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-bell${_javaver}.1"
+  # done
+  # rm -r "${pkgdir}${_jvmdir}/man"
+  # ln -s /usr/share/man "${pkgdir}${_jvmdir}/man"
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
