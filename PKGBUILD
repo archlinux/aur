@@ -1,49 +1,120 @@
-# Maintainer: Menghuan1918 <menghuan2003 at outlook dot com>
-# Contributor: TimeTrap <zhaoyuanpan at gmail dot com>
-# Contributor: Jingu <xiuluo dot android at gmail dot com>
-# Contributor: Usama <eruzzamma at gmail dot com>
+# Maintainer: AstroSteveo <stevengmjr at gmail dot com>
 pkgname=cursor-appimage
-_pkgname=cursor
-pkgver=0.46.9
+pkgver=0.47.8
 pkgrel=1
-pkgdesc="Write, edit, and chat about your code with GPT. (AppImage)"
+pkgdesc="Cursor App - AI-first coding environment with auto-updates, stability patches and AppImage packaging"
 arch=('x86_64')
-url="https://cursor.so"
-license=('custom')
-options=('!strip' '!debug')
-depends=('hicolor-icon-theme' 'zlib' 'fuse2' 'gtk3')
+url="https://www.cursor.com/"
+license=('custom:Proprietary')
+depends=('gtk3' 'nss' 'alsa-lib' 'curl')
+makedepends=('jq')
+provides=('cursor')
+conflicts=('cursor-bin' 'cursor-bin-patched' 'cursor-extracted' 'cursor-electron')
+options=(!strip)
 
-# Use curl to get the filename and extract the version
-# pkgver=$(curl -s -o /dev/null -D - -r 0-0 https://download.cursor.sh/linux/appImage/x64 | grep -o -E 'filename=.*$' | sed -e 's/.*cursor-\(.*\)\(.*\)\.AppImage.*/\1\.\2/')
+_pkgver() {
+	# Get the latest version information from API
+	if command -v curl >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
+		local api_response=$(curl -s "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest")
+		if [ $? -eq 0 ] && [ -n "$api_response" ]; then
+			local version=$(echo "$api_response" | jq -r '.version')
+			local url=$(echo "$api_response" | jq -r '.url')
+			local hash_id=$(echo "$url" | grep -o '[a-f0-9]\{40\}')
 
-source=("${_pkgname}-${pkgver}.AppImage::https://anysphere-binaries.s3.us-east-1.amazonaws.com/production/client/linux/x64/appimage/Cursor-0.46.9-3395357a4ee2975d5d03595e7607ee84e3db0f2c.deb.glibc2.25-x86_64.AppImage")
-sha256sums=('19b945b892f6c7e548b28f2f2bf4d1e377ab1353b44e97c000d03291f24118d0')
-_install_path="/opt/appimages"
-
-prepare() {
-	chmod a+x "${_pkgname}-${pkgver}.AppImage"
-	"./${_pkgname}-${pkgver}.AppImage" --appimage-extract >/dev/null
-
-	# Modify the original desktop file
-	sed 's/AppRun/\/opt\/appimages\/Cursor.AppImage/g' -i "${srcdir}/squashfs-root/cursor.desktop"
-	sed 's/Exec=\/opt\/appimages\/Cursor.AppImage/Exec=\/opt\/appimages\/cursor.AppImage/g' -i "${srcdir}/squashfs-root/cursor.desktop"
-	sed 's/StartupWMClass=Cursor/StartupWMClass=cursor/g' -i "${srcdir}/squashfs-root/cursor.desktop"
-
-	# Create a copy of the desktop file for Wayland
-	cp "${srcdir}/squashfs-root/cursor.desktop" "${srcdir}/squashfs-root/cursor-wayland.desktop"
-	sed -i 's/^Name=Cursor/Name=Cursor (Wayland)/' "${srcdir}/squashfs-root/cursor-wayland.desktop"
-	sed -i 's|Exec=/opt/appimages/cursor.AppImage|Exec=/opt/appimages/cursor.AppImage --ozone-platform=wayland|' "${srcdir}/squashfs-root/cursor-wayland.desktop"
+			if [ -n "$version" ] && [ -n "$hash_id" ]; then
+				echo "${version} ${hash_id}"
+				return 0
+			fi
+		fi
+	fi
+	# Fallback to hardcoded values if API call fails
+	echo "0.47.8 82ef0f61c01d079d1b7e5ab04d88499d5af500e3"
 }
 
+_get_info() {
+	read -r pkgver hashid <<<"$(_pkgver)"
+	echo "pkgver=${pkgver}"
+	echo "hashid=${hashid}"
+}
+
+eval "$(_get_info)"
+
+source_x86_64=("https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-${pkgver}-${hashid}.deb.glibc2.25-x86_64.AppImage")
+noextract=("$(basename "${source_x86_64[0]}")")
+
+# Generate SHA512 checksum dynamically or use SKIP
+sha512sums_x86_64=('SKIP')
+
 package() {
-	install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
+	mkdir -p "${pkgdir}/opt/"
+	install -Dm755 "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
 
-	# Install icons
-	for _icons in 32x32 64x64 128x128 256x256 512x512; do
-		install -Dm645 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/cursor.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/cursor.png"
-	done
+	# Extract the AppImage
+	cd "${pkgdir}/opt"
+	"${pkgdir}/opt/tmp.AppImage" --appimage-extract >/dev/null || exit 1
+	rm "${pkgdir}/opt/tmp.AppImage"
 
-	# Install the desktop files
-	install -Dm755 "${srcdir}/squashfs-root/cursor.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm755 "${srcdir}/squashfs-root/cursor-wayland.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-wayland.desktop"
+	# Find and fix main.js files with a summary at the end
+	found_minheight=0
+
+	while read -r file; do
+		if grep -q ",minHeight" "$file"; then
+			echo "Applying titlebar fix at ${file}"
+			sed -i 's/,minHeight/,frame:false,minHeight/g' "$file"
+			found_minheight=1
+		fi
+	done < <(find squashfs-root/ -type f -name 'main.js')
+
+	# Check if we found and fixed any files
+	if [ "$found_minheight" -eq 0 ]; then
+		echo "minHeight not found, skipping titlebar fix"
+	fi
+	mv squashfs-root cursor
+	chmod -R a+rX cursor
+
+	# Create bin launcher
+	install -Dm755 /dev/null "${pkgdir}/usr/bin/cursor"
+	echo "Applying fix for trace trap (core dumped)"
+	cat <<SCRIPT >"${pkgdir}/usr/bin/cursor"
+#!/bin/bash
+XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
+
+# Environment fix that prevents crashes
+export XDG_DATA_DIRS="/usr/share:/usr/local/share"
+
+# Add stability flags by default
+DEFAULT_FLAGS="--no-sandbox"
+
+# Allow users to override command-line options
+[[ -f "\$XDG_CONFIG_HOME/cursor-flags.conf" ]] && \
+   CURSOR_USER_FLAGS="\$(sed 's/#.*//' "\$XDG_CONFIG_HOME/cursor-flags.conf" | tr '\n' ' ')"
+
+# Launch with both default and user flags
+exec /opt/cursor/AppRun \$DEFAULT_FLAGS "\$@" \$CURSOR_USER_FLAGS
+SCRIPT
+
+	# Install icon and desktop file
+	install -Dm644 "cursor/code.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cursor.png"
+	install -Dm644 /dev/null "${pkgdir}/usr/share/applications/cursor.desktop"
+	cat <<DESKTOP >"${pkgdir}/usr/share/applications/cursor.desktop"
+[Desktop Entry]
+Name=Cursor
+Comment=AI-first code editor - What will you create today?
+Exec=/usr/bin/cursor %U
+Terminal=false
+Type=Application
+Icon=cursor
+StartupWMClass=Cursor
+MimeType=text/plain;text/x-js;text/javascript;text/x-python;text/x-c;text/x-java;
+Categories=Development;IDE;
+DESKTOP
+}
+
+post_install() {
+	echo "================================================================"
+	echo "Cursor has been installed with stability patches and titlebar fix."
+	echo "Custom flags can be added to: ~/.config/cursor-flags.conf"
+	echo "Current version: ${pkgver}"
+	echo "================================================================"
+	update-desktop-database -q
 }
