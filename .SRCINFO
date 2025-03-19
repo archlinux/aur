@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-vid.stab
 	pkgdesc = Video stabilization library (Android aarch64)
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://public.hronopik.de/vid.stab
 	arch = any
 	groups = android-vid.stab
