@@ -1,7 +1,7 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=biblia-git
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,6 +20,6 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   install -d ${pkgdir}/usr/share/applications
   install -d ${pkgdir}${PREFIX}/share/webappview/
-  cp application/* ${pkgdir}${PREFIX}/share/webappview/
-  cp shortcuts/* ${pkgdir}/usr/share/applications
+  cp -r application/* ${pkgdir}${PREFIX}/share/webappview/
+  cp -r shortcuts/* ${pkgdir}/usr/share/applications
 }

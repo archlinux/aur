@@ -1,7 +1,7 @@
 pkgbase = biblia-git
 	pkgdesc = Bible viewer for MyBible mobile application's modules
 	pkgver = 0.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitverse.ru/naierchou/biblia
 	arch = any
 	license = GPL-3.0
