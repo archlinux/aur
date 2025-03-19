@@ -9,6 +9,7 @@ url="https://github.com/Pixel2175/walrs"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git')
+backup=('etc/walrs/templates/colors.json')
 source=("git+https://github.com/Pixel2175/walrs.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -24,11 +25,13 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname"
+  
+  # Install binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   
-  # Install templates
-  install -dm755 "$pkgdir/usr/share/$pkgname/templates"
-  cp -r templates/* "$pkgdir/usr/share/$pkgname/templates/"
+  # Install templates to /etc
+  install -dm755 "$pkgdir/etc/$pkgname/templates"
+  cp -r templates/* "$pkgdir/etc/$pkgname/templates/"
   
   # Install license if present
   if [ -f LICENSE ]; then
