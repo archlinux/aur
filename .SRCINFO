@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-twolame
+	pkgdesc = An optimized MPEG Audio Layer 2 (MP2) encoder (Android riscv64)
+	pkgver = 0.4.0
+	pkgrel = 2
+	url = http://www.twolame.org/
+	arch = any
+	license = LGPL2.1
+	makedepends = android-configure
+	depends = android-riscv64-libsndfile
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/njh/twolame/releases/download/0.4.0/twolame-0.4.0.tar.gz
+	md5sums = 400c164ed096c7aea82bcf8edcd3f6f9
+
+pkgname = android-riscv64-twolame
