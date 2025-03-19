@@ -1,6 +1,6 @@
 pkgbase = wrdlist
 	pkgdesc = Lightweight Wordlists Generator
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/6z7y56/wrdlist
 	arch = x86_64
