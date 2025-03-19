@@ -1,6 +1,6 @@
 pkgbase = python-baddns
 	pkgdesc = Check subdomains for subdomain takeovers and other DNS tomfoolery
-	pkgver = 1.8.108
+	pkgver = 1.9.130
 	pkgrel = 1
 	url = https://github.com/blacklanternsecurity/baddns
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-baddns
 	depends = python-tldextract
 	depends = python-dateutil
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/1c/ab/ea74a5f0fd8d41a592ba2270422653f4cec177b75de147e50c282011403a/baddns-1.8.108.tar.gz
-	sha256sums = 47071dc09dde947b3f3145e1ba346b1deab5dd017f884216cab802565ce8abd8
+	source = https://files.pythonhosted.org/packages/6e/43/bcbaf0bf94522967d6dda72eed31b530b1a3b5b7b7252bb37215a2bd0c10/baddns-1.9.130.tar.gz
+	sha256sums = d983fc59d17b1c5c021050f4524796a0c8a3ac1398b2d4ea918a7103f5eaf636
 
 pkgname = python-baddns
