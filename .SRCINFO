@@ -1,6 +1,6 @@
 pkgbase = eusoft-eudic-bin
 	pkgdesc = Authoritative English dictionary software, an essential tool for English learners.(Prebuilt version)权威的英语词典软件,英语学习者必备的工具.
-	pkgver = 2025.02.14
+	pkgver = 2025.02.27
 	pkgrel = 1
 	url = https://www.eudic.net/v4/en/app/eudic
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = eusoft-eudic-bin
 	depends = mesa
 	depends = libthai
 	depends = fontconfig
-	provides = eudic=2025.02.14
+	provides = eudic=2025.02.27
 	conflicts = eusoft-eudic
 	conflicts = eudic
 	options = !strip
 	options = !emptydirs
-	source = eusoft-eudic-2025.02.14.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=2025-02-14
+	source = eusoft-eudic-2025.02.27.AppImage::https://static-main.frdic.com/pkg/eudic.AppImage?v=2025-02-27
 	source = LICENSE.html
 	source = eusoft-eudic.sh
 	sha256sums = 5b5e107fc99b700bfb519d2ecaf6877bbf117ceee7cc8f784c784e0be8b0a2a3
