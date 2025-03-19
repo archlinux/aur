@@ -1,6 +1,6 @@
 pkgbase = losslesscut-bin
 	pkgdesc = Crossplatform GUI tool for lossless trimming/cutting of video/audio files
-	pkgver = 3.64.0
+	pkgver = 3.65.0
 	pkgrel = 1
 	url = https://github.com/mifi/lossless-cut
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = losslesscut-bin
 	depends = libxss
 	provides = losslesscut
 	conflicts = losslesscut
-	source_x86_64 = losslesscut-bin-3.64.0.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v3.64.0/LosslessCut-linux-x64.tar.bz2
-	source_x86_64 = losslesscut.desktop
+	source_x86_64 = losslesscut-bin-3.65.0.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v3.65.0/LosslessCut-linux-x64.tar.bz2
+	source_x86_64 = https://raw.githubusercontent.com/mifi/lossless-cut/refs/heads/master/no.mifi.losslesscut.desktop
 	source_x86_64 = LICENSE
-	source_x86_64 = https://raw.githubusercontent.com/mifi/lossless-cut/26b4dc13c2c42b88dda6bf0eafd47b17e47f1bed/src/renderer/src/icon.svg
-	sha256sums_x86_64 = 2cd374976a41b6e91635e7c754cbbc9fc24cce62a6d6891cf341017fe02b0d35
-	sha256sums_x86_64 = 87827ee65955d49c40327ba958b15d054cc107cf8e56de7cf1f93d4bc2b6fca5
+	source_x86_64 = https://raw.githubusercontent.com/mifi/lossless-cut/refs/heads/master/src/renderer/src/icon.svg
+	sha256sums_x86_64 = 0d9d8de9a79f0ba53687bb6fba2d647606ae578363321fcc33391d8009d697e0
+	sha256sums_x86_64 = e5cc6b61473c442909adc26884d659cd170844d272e065ddc1643f2ecd5306eb
 	sha256sums_x86_64 = 48affed7162fc2e76f1cd47b50355181b869b4025ff04c2a53b03854e329dca0
 	sha256sums_x86_64 = d3d3da3f403ce1b9f846ae2a38a8fe9938fc458024352a9741b59a920eefacf9
 
