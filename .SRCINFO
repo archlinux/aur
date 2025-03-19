@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-vmaf
+	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (Android riscv64)
+	pkgver = 3.0.0
+	pkgrel = 2
+	url = https://github.com/Netflix/vmaf/
+	arch = any
+	groups = android-vmaf
+	license = BSD
+	makedepends = android-meson
+	makedepends = nasm
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/Netflix/vmaf/archive/v3.0.0/vmaf-3.0.0.tar.gz
+	source = 0001-Fix-fseeko-errors.patch
+	sha256sums = 7178c4833639e6b989ecae73131d02f70735fdb3fc2c7d84bc36c9c3461d93b1
+	sha256sums = 95eddd88210f3227ee0c7c1212d6b7caeecf2a94ac0d573aa5b4cc059aa03efb
+
+pkgname = android-riscv64-vmaf
