@@ -7,12 +7,12 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-vid.stab
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Video stabilization library (Android ${_android_arch})"
 url='http://public.hronopik.de/vid.stab'
 license=('GPL')
-groups=(android-vid.stab)
+groups=('android-vid.stab')
 depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -26,13 +26,17 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
-        -DBUILD_SHARED_LIBS=ON
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
+        -DBUILD_SHARED_LIBS=ON \
+        -Wno-dev
     make -C build-shared $MAKEFLAGS
 
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
-        -DBUILD_SHARED_LIBS=OFF
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
+        -DBUILD_SHARED_LIBS=OFF \
+        -Wno-dev
     make -C build-static $MAKEFLAGS
 }
 
