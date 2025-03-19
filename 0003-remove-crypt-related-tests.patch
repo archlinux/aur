@@ -1,7 +1,7 @@
-From 4fade05f2c69eb6978194da8f5bd42f02c2fbfeb Mon Sep 17 00:00:00 2001
+From 23cf91431c7fc9fdcbd848db44ac91c88927c727 Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Tue, 24 Dec 2024 12:33:23 +0800
-Subject: [PATCH 3/3] remove crypt related tests
+Subject: [PATCH 3/4] remove crypt related tests
 
 ---
  test/units/utils/test_encrypt.py | 78 --------------------------------
@@ -125,5 +125,5 @@ index be32579019..2c4a612725 100644
      passlib_exc = pytest.importorskip("passlib.exc")
  
 -- 
-2.47.1
+2.49.0
 
