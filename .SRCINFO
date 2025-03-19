@@ -1,0 +1,16 @@
+pkgbase = python-cocotbext-i2c-git
+	pkgdesc = I2C modules for cocotb
+	pkgver = 0.1.0.r0.gf0188c2
+	pkgrel = 1
+	url = https://github.com/alexforencich/cocotbext-i2c
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-cocotb
+	provides = python-cocotbext-i2c
+	conflicts = python-cocotbext-i2c
+	source = cocotbext-i2c::git+https://github.com/alexforencich/cocotbext-i2c.git
+	md5sums = SKIP
+
+pkgname = python-cocotbext-i2c-git
