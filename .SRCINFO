@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-bin
-	pkgdesc = Java OpenJFX 23.0.2 client application platform (Gluon build).
-	pkgver = 23
-	pkgrel = 3
+	pkgdesc = Java OpenJFX 24 client application platform (Gluon build).
+	pkgver = 24
+	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
@@ -11,15 +11,15 @@ pkgbase = java-openjfx-bin
 	depends = libxtst
 	depends = qt5-base
 	depends = webkit2gtk
-	provides = java-openjfx=23
-	conflicts = java23-openjfx
-	conflicts = java-openjfx
+	provides = java-openjfx=24
+	conflicts = java24-openjfx
+	conflicts = java-openjfx=24
 	options = !strip
-	source = https://download2.gluonhq.com/openjfx/23.0.2/openjfx-23.0.2_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/23.0.2/openjfx-23.0.2_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/23.0.2/openjfx-23.0.2-javadoc.zip
-	sha256sums = 8268d8c6ba13c452a4a9a3448cb5c6c62484ab782b34e448d414d7b6224e4309
-	sha256sums = 063baebc6922e4a89c94b9dfb7a4f53e59e8d6fec400d4e670b31bc2ab324dec
-	sha256sums = ee21b8a0a0118dc9e56ce65887736125e2608f29dabd532cff36f22be1562ef7
+	source = https://download2.gluonhq.com/openjfx/24/openjfx-24_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/24/openjfx-24_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/24/openjfx-24-javadoc.zip
+	sha256sums = e735fa786a7375c525c49874ad7e591cc493ed560c494664223612cf5e124d11
+	sha256sums = 6a5415a97619a730de160116fea2a4515cafcd5587d166ec5016246c4c787d82
+	sha256sums = 2240ab5ca530be546d21abd55508ed5dd4e20a4cacc7877e39e93a04e1e46476
 
 pkgname = java-openjfx-bin
