@@ -1,12 +1,12 @@
 # Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
-_modname=ngx_dynamic_etag
-pkgname=nginx-mainline-mod-dynamic-etag-git
-pkgver=r44.c7ee492
-pkgrel=6
-pkgdesc='Module empowers your dynamic content with automatic ETag header.'
-arch=('i686' 'x86_64')
+_modname='ngx_dynamic_etag'
+pkgname='nginx-mainline-mod-dynamic-etag-git'
+pkgver=r60.186d57b
+pkgrel='1'
+pkgdesc='Module empowers your dynamic content with automatic ETag header'
+arch=('x86_64' 'aarch64')
 depends=('nginx-mainline')
 makedepends=('git' 'nginx-mainline-src')
 url="https://github.com/dvershinin/${_modname}"
@@ -15,30 +15,31 @@ license=('BSD')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_modname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_modname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}"
-  mkdir -p build
-  cd build
-  ln -sf /usr/src/nginx/auto
-  ln -sf /usr/src/nginx/src
+  mkdir --parents "build"
+  cd "build"
+  ln --symbolic --force "/usr/src/nginx/auto"
+  ln --symbolic --force "/usr/src/nginx/src"
 }
 
 build() {
-  cd "${srcdir}/build"
-  /usr/src/nginx/configure --with-compat --add-dynamic-module="../${_modname}"
+  cd "build"
+  /usr/src/nginx/configure \
+    --with-compat \
+    --add-dynamic-module="../${_modname}"
   make modules
 }
 
 package() {
-  install -Dm644 "${srcdir}/${_modname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "${_modname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  cd "${srcdir}/build/objs"
-  for mod in *.so
+  cd "build/objs"
+  for mod in *".so"
     do
-      install -Dm755 ${mod} "${pkgdir}/usr/lib/nginx/modules/${mod}"
-    done
+      install -Dm0755 "${mod}" -t "${pkgdir}/usr/lib/nginx/modules"
+  done
 }
