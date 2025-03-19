@@ -1,0 +1,10 @@
+--- a/extra/readline/complete.c
++++ b/extra/readline/complete.c
+@@ -1855,7 +1855,6 @@
+ #if defined (HAVE_GETPWENT)
+       namelen = strlen (username);
+ #endif
+-      setpwent ();
+     }
+ 
+ #if defined (HAVE_GETPWENT)

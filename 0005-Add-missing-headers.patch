@@ -1,0 +1,11 @@
+--- a/mysys/get_password.c
++++ b/mysys/get_password.c
+@@ -14,6 +14,8 @@
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1335  USA */
+ 
++#include <ctype.h>
++
+ /*
+ ** Ask for a password from tty
+ ** This is an own file to avoid conflicts with curses
