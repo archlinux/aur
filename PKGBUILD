@@ -8,8 +8,8 @@ url="https://github.com/andrikpowell/nyan-doom"
 license=('GPL'-2.0)
 depends=('fluidsynth' 'glu' 'libmad' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb' 'portmidi' 'libzip')
 makedepends=('cmake' 'imagemagick')
-source=("hhttps://github.com/andrikpowell/nyan-doom/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4ccd3f365cb594f9de5a59006445d9642457b97a8271e1977d8104e6aa040c70')
+source=("https://github.com/andrikpowell/nyan-doom/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('256cfa9ffbcf69a202ecc4940f56f9f9ef090ecdb14a40d8aab21d476279165b')
 
 build() {
 	cd "${srcdir}/nyan-doom-${pkgver}/prboom2"  
