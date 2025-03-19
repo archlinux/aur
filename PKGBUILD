@@ -1,5 +1,5 @@
 pkgname=wrdlist
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Lightweight Wordlists Generator"
