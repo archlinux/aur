@@ -1,5 +1,5 @@
-# Maintainer: Francesco Cherchi <francesco.cherchi@protonmail.com>
-# Contributor: Francesco Cherchi <francesco.cherchi@protonmail.com>
+# Maintainer: Francesco Cherchi <frnchr.d9var@slmail.me>
+# Contributor: Francesco Cherchi <frnchr.d9var@slmail.me>
 
 _srcname=vertical-workspaces
 pkgname=gnome-shell-extension-${_srcname}-git
