@@ -2,7 +2,7 @@
 
 _pkgbase=station-desktop
 pkgname="$_pkgbase"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Smart browser for busy people. A single place for all of your web applications (stable version)"
 arch=('any')
@@ -15,7 +15,7 @@ source=(
 	"$_pkgbase::git+https://github.com/getstation/desktop-app.git#tag=v$pkgver"
 	'station-desktop-app.desktop'
 )
-sha256sums=('f78d549baf1d8551e5e0fc66c49368faa86e0f1c52295dd5d5aafc7c6afa86c6'
+sha256sums=('877ebb0e55c7677233069d5f0b717224b753ebd34b746aff715624c0cb8d6624'
             'bf5703422b6cf240d8bca0647c23141052e6ce4e77fdd8ff8c9e19ca61f183d8')
 
 prepare() {

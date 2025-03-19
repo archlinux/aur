@@ -1,6 +1,6 @@
 pkgbase = station-desktop
 	pkgdesc = Smart browser for busy people. A single place for all of your web applications (stable version)
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://getstation.com/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = station-desktop
 	depends = gtk3
 	depends = alsa-lib
 	conflicts = station-bin
-	source = station-desktop::git+https://github.com/getstation/desktop-app.git#tag=v3.2.0
+	source = station-desktop::git+https://github.com/getstation/desktop-app.git#tag=v3.3.0
 	source = station-desktop-app.desktop
-	sha256sums = f78d549baf1d8551e5e0fc66c49368faa86e0f1c52295dd5d5aafc7c6afa86c6
+	sha256sums = 877ebb0e55c7677233069d5f0b717224b753ebd34b746aff715624c0cb8d6624
 	sha256sums = bf5703422b6cf240d8bca0647c23141052e6ce4e77fdd8ff8c9e19ca61f183d8
 
 pkgname = station-desktop
