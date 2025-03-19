@@ -1,5 +1,5 @@
 diff --git a/alcotest.opam b/alcotest.opam
-index 4136740..f9b59ab 100644
+index 95631cb..d414cee 100644
 --- a/alcotest.opam
 +++ b/alcotest.opam
 @@ -25,9 +25,7 @@ depends: [
