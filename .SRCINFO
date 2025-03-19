@@ -1,0 +1,19 @@
+pkgbase = interstellar-bin
+	pkgdesc = An app for Mbin and Lemmy, connecting you to the fediverse.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/jwr1/interstellar
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = xdg-user-dirs
+	depends = mpv
+	provides = interstellar
+	conflicts = interstellar
+	source_x86_64 = https://github.com/jwr1/interstellar/releases/download/v0.8.0/interstellar-linux-x86_64.tar.gz
+	sha256sums_x86_64 = db850e8614322dcccd75aaec8b2fb8d9796cbaaa30ab9f2cf94112c002e7c2c9
+	source_aarch64 = https://github.com/jwr1/interstellar/releases/download/v0.8.0/interstellar-linux-aarch64.tar.gz
+	sha256sums_aarch64 = b94f4fa9742ae0c6f739b2a21f4bef60224842dd9f1daf4ec8fea3ed7ababc50
+
+pkgname = interstellar-bin
