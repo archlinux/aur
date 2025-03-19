@@ -1,0 +1,5 @@
+[gopher64-bin]
+source = "github"
+github = "gopher64/gopher64"
+use_latest_release = true
+prefix = "v"
