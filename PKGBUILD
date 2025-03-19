@@ -6,14 +6,14 @@ _pkgname='Arcconf'
 _pkgrel='27147'
 pkgver="4.23.00.${_pkgrel}"
 _rpmver="4.23-${_pkgrel}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Microsemi Adaptec command line interface utility'
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
-url='https://storage.microsemi.com/en-us/support'
+url='https://storage.microsemi.com'
 license=('custom')
-source=("https://download.adaptec.com/raid/storage_manager/${pkgname}_B${_pkgrel}.zip"
-	"https://download.adaptec.com/raid/storage_manager/${pkgname}_v3_07_23980.zip")
+source=("${url}/raid/storage_manager/${pkgname}_B${_pkgrel}.zip"
+	"${url}/raid/storage_manager/${pkgname}_v3_07_23980.zip")
 sha256sums=('14f25095870e0652083f5f8924a85ddf5aa805623a5a521d93b746d9570550d4'
             '27beeaff6e51f2aa8292ff3f31c3774011468ccba1483755e056f2a82db012d1')
 noextract=("${source[@]##*/}")
