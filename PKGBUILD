@@ -1,6 +1,6 @@
 pkgname=swscreenshot-gui
-pkgver=1.0.0
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc="Screenshot app GUI for SwayWM"
 arch=('x86_64')
 url="https://gitlab.com/ricardoca/swscreenshot-gui"

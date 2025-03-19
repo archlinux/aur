@@ -1,7 +1,7 @@
 pkgbase = swscreenshot-gui
 	pkgdesc = Screenshot app GUI for SwayWM
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 2.0.0
+	pkgrel = 2
 	url = https://gitlab.com/ricardoca/swscreenshot-gui
 	arch = x86_64
 	license = GPL
