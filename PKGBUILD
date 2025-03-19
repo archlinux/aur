@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.rc3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch' 'zstd'
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
-	     'catch2' 'libinih' 'ffmpeg4.4')
+	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 options=(!lto)
 source=("git+$url.git#tag=${pkgver/./-}"
 	boost::git+https://github.com/azahar-emu/ext-boost.git
@@ -49,12 +49,17 @@ source=("git+$url.git#tag=${pkgver/./-}"
 	git+https://github.com/arsenm/sanitizers-cmake
 	git+https://github.com/mozilla/cubeb-coreaudio-rs
 	git+https://github.com/mozilla/cubeb-pulse-rs
-	#dynarmic zydis submodules
-	git+https://github.com/zyantific/zycore-c
+	#dynarmic submodules
+	git+https://github.com/lioncash/biscuit
+	git+https://github.com/azahar-emu/mcl
+	git+https://github.com/Tessil/robin-map
+	git+https://github.com/zyantific/zydis
+	zycore::git+https://github.com/zyantific/zycore-c
 	#libadrenotools submodules
 	git+https://github.com/bylaws/liblinkernsbypass
 	#sirit submodules
 	git+https://github.com/KhronosGroup/SPIRV-Headers
+	build.patch
 )
 sha256sums=('cf58d2bcc69c87db3b8dc12c8c40a1829727e8bad69f2c7e622b1c046086faa1'
             'SKIP'
@@ -95,11 +100,21 @@ sha256sums=('cf58d2bcc69c87db3b8dc12c8c40a1829727e8bad69f2c7e622b1c046086faa1'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '46c4d1c33e25e9d06a7469cae8b5bdb1aedfb7a5e09e29cb58436d57c5614686')
 validpgpkeys=()
 
 prepare() {
 	cd "$srcdir/$pkgname"
+	[[ -f GIT-TAG ]] && rm GIT-TAG
+	[[ -f GIT-COMMIT ]] && rm GIT-COMMIT
+	git describe --tags HEAD > GIT-TAG || echo 'unknown' > GIT-TAG
+	git describe --abbrev=0 --always HEAD > GIT-COMMIT
+	patch -p1 < "$srcdir/build.patch"
 	git submodule init
 	for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,inih,libressl,libusb,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,sdl2,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sirit,faad2,library-headers,libadrenotools,oaknut,compatibility-list};
 	do
@@ -115,9 +130,17 @@ prepare() {
 	git config submodule.src/cubeb-pulse-rs.url "$srcdir/cubeb-pulse-rs"
 	git -c protocol.file.allow=always submodule update
 	popd
+	pushd "$srcdir/$pkgname/externals/dynarmic"
+	git submodule init
+	for submodule in {biscuit,fmt,mcl,oaknut,robin-map,xbyak,zycore,zydis};
+	do
+		git config submodule.$submodule.url "$srcdir/$submodule"
+	done
+	git config submodule.catch.url "$srcdir/catch2"
+	git -c protocol.file.allow=always submodule update
 	pushd "$srcdir/$pkgname/externals/dynarmic/externals/zydis"
 	git submodule init
-	git config submodule.dependencies/zycore.url "$srcdir/zycore-c"
+	git config submodule.dependencies/zycore.url "$srcdir/zycore"
 	git -c protocol.file.allow=always submodule update
 	popd
 	pushd "$srcdir/$pkgname/externals/libadrenotools"
@@ -130,10 +153,6 @@ prepare() {
 	git config submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
 	git -c protocol.file.allow=always submodule update
 	popd
-	[[ -f GIT-TAG ]] && rm GIT-TAG
-	[[ -f GIT-COMMIT ]] && rm GIT-COMMIT
-	git describe --tags HEAD > GIT-TAG || echo 'unknown' > GIT-TAG
-	git describe --abbrev=0 --always HEAD > GIT-COMMIT
 }
 
 build() {
@@ -150,7 +169,7 @@ build() {
 	-DUSE_SYSTEM_BOOST=OFF \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_CRYPTOPP=ON \
-	-DUSE_SYSTEM_FFMPEG_HEADERS=OFF \
+	-DUSE_SYSTEM_FFMPEG_HEADERS=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
 	-DUSE_SYSTEM_INIH=ON \
