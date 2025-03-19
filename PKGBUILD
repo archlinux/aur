@@ -3,7 +3,7 @@
 _pkgname="shijima-qt"
 
 pkgname=shijima-qt-git
-pkgver=r215.7ea30af
+pkgver=r221.f4099eb
 pkgrel=1
 pkgdesc="Cross-platform shimeji simulation for desktop"
 arch=(x86_64 aarch64)

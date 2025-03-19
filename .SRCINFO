@@ -1,6 +1,6 @@
 pkgbase = shijima-qt-git
 	pkgdesc = Cross-platform shimeji simulation for desktop
-	pkgver = r215.7ea30af
+	pkgver = r221.f4099eb
 	pkgrel = 1
 	url = https://github.com/pixelomer/Shijima-Qt
 	arch = x86_64
