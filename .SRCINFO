@@ -1,7 +1,7 @@
 pkgbase = atkinson-hyperlegible-next-font
 	pkgdesc = New version of the Atkinson Hyperlegible fonts - A typeface focusing on leterform distinction for legibility for low vision readers
 	pkgver = 1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brailleinstitute.org/freefont
 	arch = any
 	license = OFL
@@ -11,22 +11,13 @@ pkgbase = atkinson-hyperlegible-next-font
 	sha256sums = d8b50ca876781ef6c2f0e1dd1a7ed6896a7f7769242e76be901b98c6d7edfafb
 
 pkgname = otf-atkinson-hyperlegible-next
-	provides = atkinson-hyperlegible-next-font
 
 pkgname = ttf-atkinson-hyperlegible-next
-	provides = atkinson-hyperlegible-next-font
-
-pkgname = otf-atkinson-hyperlegible-next-mono
-	provides = atkinson-hyperlegible-next-font-mono
 
 pkgname = ttf-atkinson-hyperlegible-next-variable
-	provides = atkinson-hyperlegible-next-font-variable
+
+pkgname = otf-atkinson-hyperlegible-next-mono
 
 pkgname = ttf-atkinson-hyperlegible-next-mono
-	provides = atkinson-hyperlegible-next-font-mono
-
-pkgname = ttf-atkinson-hyperlegible-next-mono
-	provides = atkinson-hyperlegible-next-font-mono
 
 pkgname = ttf-atkinson-hyperlegible-next-mono-variable
-	provides = atkinson-hyperlegible-next-font-mono-variable
