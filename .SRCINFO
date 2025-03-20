@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-serd
 	pkgdesc = Lightweight C library for RDF syntax supporting reading/ writing Turtle and NTriples (Android x86-64)
-	pkgver = 0.32.2
+	pkgver = 0.32.4
 	pkgrel = 1
 	url = https://drobilla.net/software/serd.html
 	arch = any
+	groups = android-serd
 	license = 0BSD OR ISC
 	license = BSD-3-Clause
 	license = ISC
@@ -13,10 +14,10 @@ pkgbase = android-x86-64-serd
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.drobilla.net/serd-0.32.2.tar.xz
-	source = https://download.drobilla.net/serd-0.32.2.tar.xz.sig
+	source = https://download.drobilla.net/serd-0.32.4.tar.xz
+	source = https://download.drobilla.net/serd-0.32.4.tar.xz.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
-	md5sums = 3af4135454f7d07458584520dfd3f656
+	md5sums = 553a9b50caa23a7c57732f83e6f80658
 	md5sums = SKIP
 
 pkgname = android-x86-64-serd
