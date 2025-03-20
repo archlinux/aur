@@ -8,6 +8,7 @@ pkgbase = tiny-me-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
+	depends = ffmpeg
 	provides = tiny-me=0.6.0
 	conflicts = tiny-me
 	source = tiny-me-0.6.0.rpm::https://github.com/li2go/tiny-me/releases/download/v0.6.0/tiny-me-0.6.0-1.x86_64.rpm
