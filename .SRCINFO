@@ -10,7 +10,6 @@ pkgbase = easyeffects-record
 	depends = easyeffects
 	depends = ffmpeg
 	depends = pipewire
-	depends = git
 	source = git+https://github.com/mzivic7/easyeffects-record.git
 	sha256sums = SKIP
 
