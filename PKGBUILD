@@ -6,7 +6,7 @@ pkgdesc="Automated player and recorder for Easy Effects, allowing re-recording o
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
-depends=('python>=3.11' 'easyeffects' 'ffmpeg' 'pipewire')
+depends=('python>=3.11' 'easyeffects' 'ffmpeg' 'pipewire' 'git')
 makedepends=()
 source=("git+$url.git")
 sha256sums=('SKIP')
