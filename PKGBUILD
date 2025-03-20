@@ -2,13 +2,13 @@
 
 _pkgname=firefly-luciferin
 pkgname=${_pkgname}-git
-pkgver=2.21.3r2.gd9d9bcb0
+pkgver=2.21.3r6.gf2b1aaaa
 pkgrel=1
 pkgdesc="Screen capture software for ambient and bias lighting"
 arch=('any')
 url="https://github.com/sblantipodi/firefly_luciferin"
 license=('GPL-3.0-or-later')
-depends=('jdk-openjdk>=23' 'jdk-openjdk<24' 'hicolor-icon-theme')
+depends=('jdk-openjdk>=23' 'hicolor-icon-theme')
 makedepends=('git' 'maven')
 optdepends=(
   'xdg-desktop-portal-wlr: For PipeWire XDG screen capture support (Wayland)'

@@ -1,6 +1,6 @@
 pkgbase = firefly-luciferin-git
 	pkgdesc = Screen capture software for ambient and bias lighting
-	pkgver = 2.21.3r2.gd9d9bcb0
+	pkgver = 2.21.3r6.gf2b1aaaa
 	pkgrel = 1
 	url = https://github.com/sblantipodi/firefly_luciferin
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = firefly-luciferin-git
 	makedepends = git
 	makedepends = maven
 	depends = jdk-openjdk>=23
-	depends = jdk-openjdk<24
 	depends = hicolor-icon-theme
 	optdepends = xdg-desktop-portal-wlr: For PipeWire XDG screen capture support (Wayland)
 	optdepends = gst-plugin-pipewire: For PipeWire XDG screen capture support (Wayland)
