@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
 depends=('python>=3.11' 'easyeffects' 'ffmpeg' 'pipewire' 'git')
-makedepends=()
+makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

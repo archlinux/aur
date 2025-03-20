@@ -5,6 +5,7 @@ pkgbase = easyeffects-record
 	url = https://github.com/mzivic7/easyeffects-record
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = python>=3.11
 	depends = easyeffects
 	depends = ffmpeg
