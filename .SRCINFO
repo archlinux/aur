@@ -1,0 +1,19 @@
+pkgbase = python-livekit-plugins-clova
+	pkgdesc = Agent Framework plugin for speech-to-text with Clova's API.
+	pkgver = 1.0.0.dev5
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-clova
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	depends = python-pydub
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-clova/livekit_plugins_clova-1.0.0.dev5.tar.gz
+	sha256sums = 562743220b585e8336ffe2d2eb8468b907397c28bcd3429ad1209c06ed5d5965
+
+pkgname = python-livekit-plugins-clova
