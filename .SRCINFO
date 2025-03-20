@@ -1,17 +1,19 @@
 pkgbase = python-livekit-plugins-rag
 	pkgdesc = Agent Framework plugin for RAG utilities.
-	pkgver = 0.2.3
-	pkgrel = 3
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-rag
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
 	depends = python-annoy
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-rag/livekit_plugins_rag-0.2.3.tar.gz
-	sha256sums = 56a82d456dd41ab79557e4265bef5d25de86a06191b6075e62d527104ddcb3aa
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-rag/livekit_plugins_rag-0.2.4.tar.gz
+	sha256sums = 6a627b49d616494f16b3d3a0d36d9f99b09ccaf0f4f24b42a11dbcbdcfdf1f10
 
 pkgname = python-livekit-plugins-rag
