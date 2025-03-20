@@ -1,9 +1,10 @@
 pkgbase = android-x86-portaudio
 	pkgdesc = A free, cross-platform, open source, audio I/O library. (Android x86)
 	pkgver = 19.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/portaudio/portaudio/
 	arch = any
+	groups = android-portaudio
 	license = MIT
 	makedepends = android-cmake
 	makedepends = android-x86-alsa-lib
