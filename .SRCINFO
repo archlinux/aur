@@ -1,22 +1,20 @@
 pkgbase = lunarwolf-git
-	pkgdesc = A modern web browser built with react.js, electron, and node.js.(Use system-wide electron)
-	pkgver = 2.0.0.r0.g1e9ce94
+	pkgdesc = A custom Electron-based web browser designed with a modular UI, and browser approach, It features a custom-built tab system and browser container.(Use system-wide electron)
+	pkgver = 0.1.2.r3.g852c379
 	pkgrel = 1
-	url = https://github.com/LunarWolf-Browser-Projects/LunarWolf-Browser
+	url = https://github.com/LunarWolf-Browser-Projects/LunarWolf-Browser-Desktop
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = yarn
-	depends = electron34
-	provides = lunarwolf=2.0.0
+	depends = electron35
+	provides = lunarwolf=0.1.2
 	conflicts = lunarwolf
-	source = lunarwolf.git::git+https://github.com/LunarWolf-Browser-Projects/LunarWolf-Browser.git
+	source = lunarwolf.git::git+https://github.com/LunarWolf-Browser-Projects/LunarWolf-Browser-Desktop.git
 	source = lunarwolf.sh
 	sha256sums = SKIP
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
