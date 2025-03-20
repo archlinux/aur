@@ -1,6 +1,6 @@
 pkgbase = ytmdesktop-bin
 	pkgdesc = A Desktop App for YouTube Music
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://ytmdesktop.app
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ytmdesktop-bin
 	depends = nss
 	depends = xdg-utils
 	options = !strip
-	source = https://github.com/ytmdesktop/ytmdesktop/releases/download/v2.0.7/youtube-music-desktop-app_2.0.7_amd64.deb
-	sha512sums = 94d76498f964c95d3f7dd6e95b33f7928efd11f8b5c1decec1a7cf04f512e5776bcacfb80d9b6e806c220e95db8d9f9a69272f8ded621b137aabafa3ee502912
+	source = https://github.com/ytmdesktop/ytmdesktop/releases/download/v2.0.8/youtube-music-desktop-app_2.0.8_amd64.deb
+	sha512sums = 46b53481f19bdf82655c13bc7752e6962224936e929346a2337ddb55d9654632503b5f1849890449faf73529fbbd4e7e23ed31af112f67f9f9ed3197271a457c
 
 pkgname = ytmdesktop-bin
