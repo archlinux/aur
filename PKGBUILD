@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=alligator-git
-pkgver=22.06.r3.gb505ed1
+pkgver=24.01.90.r240.gdf84b08
 pkgrel=1
 pkgdesc="Kirigami-based RSS reader"
-arch=(x86_64 i686 arm armv6h armv7h aarch64)
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://invent.kde.org/plasma-mobile/alligator"
-license=(GPL3)
-depends=('ki18n' 'kcoreaddons' 'kconfig' 'syndication' 'kirigami2')
-makedepends=('git' 'extra-cmake-modules' 'qt5-svg' 'qt5-tools')
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
+depends=('kcolorscheme' 'kconfig' 'kcoreaddons' 'ki18n' 'kirigami' 'kirigami-addons' 'qqc2-desktop-style' 'syndication')
+makedepends=('extra-cmake-modules' 'python' 'git')
 provides=('alligator')
 conflicts=('alligator')
 source=("git+${url}.git")
