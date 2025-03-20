@@ -1,0 +1,17 @@
+pkgbase = controlfans-git
+	pkgdesc = Configure FAN PWM via HWMON interface
+	pkgver = 0.0.5.r9.g5114db0
+	pkgrel = 1
+	url = https://github.com/amedeos/ControlFANs
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = qt5-base
+	depends = systemd
+	provides = controlfans
+	conflicts = controlfans
+	options = !strip
+	source = controlfans-git::git+https://github.com/amedeos/ControlFANs.git
+	sha1sums = SKIP
+
+pkgname = controlfans-git
