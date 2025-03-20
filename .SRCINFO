@@ -1,0 +1,14 @@
+pkgbase = typeshare
+	pkgdesc = Command line tool for generating files with typeshare
+	pkgver = 1.13.2
+	pkgrel = 1
+	url = https://github.com/1Password/typeshare
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = typeshare-1.13.2.tar.gz::https://github.com/1Password/typeshare/archive/v1.13.2.tar.gz
+	b2sums = 8f90155b69c069822f5da19cfe018b0bc86c5318877020c8fa77a569b48f76f1d19bff14d148a5eb00e70108bb53ab466ba296cfc0440df3b9b852b7e92a593c
+
+pkgname = typeshare
