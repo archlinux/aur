@@ -7,6 +7,7 @@ pkgbase = cmus-rpc-py
 	license = GPL
 	makedepends = python>=3.11
 	makedepends = python-pipenv
+	makedepends = git
 	depends = cmus
 	source = git+https://github.com/mzivic7/cmus-rpc-py.git
 	sha256sums = SKIP

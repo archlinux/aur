@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
 depends=('cmus')
-makedepends=('python>=3.11' 'python-pipenv')
+makedepends=('python>=3.11' 'python-pipenv' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
