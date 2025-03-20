@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libuvc
+	pkgdesc = a cross-platform library for USB video devices (Android riscv64)
+	pkgver = 0.0.7
+	pkgrel = 2
+	url = https://int80k.com/libuvc/
+	arch = any
+	license = BSD
+	makedepends = android-cmake
+	depends = android-riscv64-libusb
+	depends = android-riscv64-libjpeg-turbo
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/ktossell/libuvc/archive/v0.0.7.tar.gz
+	md5sums = 19f3255652d447cc9a34737bc5a4c9ab
+
+pkgname = android-riscv64-libuvc
