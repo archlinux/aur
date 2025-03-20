@@ -25,5 +25,5 @@ package() {
     mkdir -p $pkgdir/usr/bin/
     mkdir -p $pkgdir/usr/lib/systemd/system/
     install -m 0755 $srcdir/target/release/amdfand $pkgdir/usr/bin
-    install -m 0755 $srcdir/services/amdfand.service "$pkgdir/usr/lib/systemd/system/amdfand.service"
+    install -m 0644 $srcdir/services/amdfand.service "$pkgdir/usr/lib/systemd/system/amdfand.service"
 }
