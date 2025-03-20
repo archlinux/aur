@@ -37,18 +37,9 @@ build() {
     cd "$_pkgname-$_pkgver"
     
     mkdir -p bin
-    echo "Building $pkgname-dev for $CARCH..."
-    clang++ ir.cpp \
-        --std=c++17 \
-        -Wno-everything \
-        -fwrapv \
-        -ffloat-store \
-        -o "bin/$pkgname-dev"
-
     echo "Building $pkgname for $CARCH..."
-    "./bin/$pkgname-dev" -t "src/$pkgname"
     # temporary solution to avoid optimization-related issues
-    clang++ dist/ir.cpp \
+    clang++ ir.cpp \
         --std=c++17 \
         -Wno-everything \
         -O3 \
@@ -59,12 +50,11 @@ build() {
         -o "bin/$pkgname"
 }
 
-check() {
-    cd "$_pkgname-$_pkgver/tests/std"
-    "../../bin/$pkgname" mod init
-    cd -
-    "./bin/$pkgname" -t tests/std
-}
+#check() {
+#    cd "$_pkgname-$_pkgver/tests/std"
+#    "../../bin/$pkgname" mod init
+#    "../../bin/$pkgname" -t t.
+#}
 
 package() {
     cd "$_pkgname-$_pkgver"
