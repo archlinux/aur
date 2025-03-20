@@ -1,0 +1,121 @@
+--- a/xf86drm.c
++++ b/xf86drm.c
+@@ -310,38 +310,7 @@
+ static char *
+ drmGetFormatModifierNameFromArm(uint64_t modifier)
+ {
+-    uint64_t type = (modifier >> 52) & 0xf;
+-
+-    FILE *fp;
+-    size_t size = 0;
+-    char *modifier_name = NULL;
+-    bool result = false;
+-
+-    fp = open_memstream(&modifier_name, &size);
+-    if (!fp)
+-        return NULL;
+-
+-    switch (type) {
+-    case DRM_FORMAT_MOD_ARM_TYPE_AFBC:
+-        result = drmGetAfbcFormatModifierNameFromArm(modifier, fp);
+-        break;
+-    case DRM_FORMAT_MOD_ARM_TYPE_AFRC:
+-        result = drmGetAfrcFormatModifierNameFromArm(modifier, fp);
+-        break;
+-    /* misc type is already handled by the static table */
+-    case DRM_FORMAT_MOD_ARM_TYPE_MISC:
+-    default:
+-        result = false;
+-        break;
+-    }
+-
+-    fclose(fp);
+-    if (!result) {
+-        free(modifier_name);
+         return NULL;
+-    }
+-
+-    return modifier_name;
+ }
+ 
+ static char *
+@@ -451,79 +420,7 @@
+ static char *
+ drmGetFormatModifierNameFromAmd(uint64_t modifier)
+ {
+-    uint64_t tile, tile_version, dcc;
+-    FILE *fp;
+-    char *mod_amd = NULL;
+-    size_t size = 0;
+-
+-    const char *str_tile = NULL;
+-    const char *str_tile_version = NULL;
+-
+-    tile = AMD_FMT_MOD_GET(TILE, modifier);
+-    tile_version = AMD_FMT_MOD_GET(TILE_VERSION, modifier);
+-    dcc = AMD_FMT_MOD_GET(DCC, modifier);
+-
+-    fp = open_memstream(&mod_amd, &size);
+-    if (!fp)
+         return NULL;
+-
+-    /* add tile  */
+-    switch (tile_version) {
+-    case AMD_FMT_MOD_TILE_VER_GFX9:
+-        str_tile_version = "GFX9";
+-        break;
+-    case AMD_FMT_MOD_TILE_VER_GFX10:
+-        str_tile_version = "GFX10";
+-        break;
+-    case AMD_FMT_MOD_TILE_VER_GFX10_RBPLUS:
+-        str_tile_version = "GFX10_RBPLUS";
+-        break;
+-    case AMD_FMT_MOD_TILE_VER_GFX11:
+-        str_tile_version = "GFX11";
+-        break;
+-    }
+-
+-    if (str_tile_version) {
+-        fprintf(fp, "%s", str_tile_version);
+-    } else {
+-        fclose(fp);
+-        free(mod_amd);
+-        return NULL;
+-    }
+-
+-    /* add tile str */
+-    switch (tile) {
+-    case AMD_FMT_MOD_TILE_GFX9_64K_S:
+-        str_tile = "GFX9_64K_S";
+-        break;
+-    case AMD_FMT_MOD_TILE_GFX9_64K_D:
+-        str_tile = "GFX9_64K_D";
+-        break;
+-    case AMD_FMT_MOD_TILE_GFX9_64K_S_X:
+-        str_tile = "GFX9_64K_S_X";
+-        break;
+-    case AMD_FMT_MOD_TILE_GFX9_64K_D_X:
+-        str_tile = "GFX9_64K_D_X";
+-        break;
+-    case AMD_FMT_MOD_TILE_GFX9_64K_R_X:
+-        str_tile = "GFX9_64K_R_X";
+-        break;
+-    case AMD_FMT_MOD_TILE_GFX11_256K_R_X:
+-        str_tile = "GFX11_256K_R_X";
+-        break;
+-    }
+-
+-    if (str_tile)
+-        fprintf(fp, ",%s", str_tile);
+-
+-    if (dcc)
+-        drmGetFormatModifierNameFromAmdDcc(modifier, fp);
+-
+-    if (tile_version >= AMD_FMT_MOD_TILE_VER_GFX9 && is_x_t_amd_gfx9_tile(tile))
+-        drmGetFormatModifierNameFromAmdTile(modifier, fp);
+-
+-    fclose(fp);
+-    return mod_amd;
+ }
+ 
+ static char *

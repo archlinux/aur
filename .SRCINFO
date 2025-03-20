@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-libdrm
+	pkgdesc = Userspace interface to kernel DRM services (Android riscv64)
+	pkgver = 2.4.123
+	pkgrel = 1
+	url = https://dri.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-meson
+	depends = android-riscv64-libpciaccess
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://dri.freedesktop.org/libdrm/libdrm-2.4.123.tar.xz
+	source = 0001-Disable-open_memstream.patch
+	md5sums = 322f5ffe2d3adc2f6ecaab52ae64ba4a
+	md5sums = b01f3f9e59e04924adcc3385e634c8dc
+
+pkgname = android-riscv64-libdrm
