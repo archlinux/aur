@@ -2,7 +2,7 @@
 # Contributor: noirscape <deepnavy at waifu dot club>
 
 pkgname=tubeup
-pkgver=2024.12.21
+pkgver=2025.3.14
 pkgrel=1
 pkgdesc="Youtube (and other video site) to Internet Archive Uploader"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-docopt' 'python-internetarchive' 'yt-dlp')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('81c12f7f76fb43cb5c7b38f85d5a35496256fecd1e6e5792f41a9f4acb104c75')
+sha256sums=('ceaa015ad201e160ab8bbb7c443005fa7ac966cbbd42438c9feb2722c6111458')
 
 build() {
     cd "${pkgname}-${pkgver}"
