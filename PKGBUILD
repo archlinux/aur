@@ -2,7 +2,7 @@
 
 pkgname=rabtap
 pkgver=1.44.1
-pkgrel=2
+pkgrel=3
 license=(GPL3)
 pkgdesc="RabbitMQ wire tap and swiss army knife "
 makedepends=('go')
@@ -20,22 +20,28 @@ prepare() {
 }
 
 build() {
-  # these match the format used in the upstream github binaries
-  BUILD_COMMIT="$(bsdcat ../"$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
-  BUILD_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
-  BUILD_GO_VERSION="$(go version)"
-  BUILD_VERSION="v${pkgver}"
+  _git_commit="$(bsdcat ../"$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
 
   cd "${pkgname}-${pkgver}"/cmd/rabtap
 
-  CGO_ENABLED=0 go build \
-    -ldflags "-X 'main.BuildCommit=${BUILD_COMMIT}'
-              -X 'main.BuildDate=${BUILD_DATE}'
-              -X 'main.BuildGoVersion=${BUILD_GO_VERSION}'
-              -X 'main.BuildVersion=${BUILD_VERSION}'" \
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
+
+  go build \
     -buildmode=pie \
+    -mod=readonly \
     -modcacherw \
     -trimpath \
+    -ldflags "-X 'main.BuildCommit=${_git_commit}'
+              -X 'main.BuildDate=$(date -u +"%Y-%m-%dT%H:%M:%SZ")'
+              -X 'main.BuildGoVersion=$(go version)'
+              -X 'main.BuildVersion=v${pkgver}'
+              -compressdwarf=false
+              -linkmode external
+              -extldflags '${LDFLAGS}'" \
     -o ../../bin/rabtap
 
   # clean now to ensure makepkg --clean works
