@@ -7,9 +7,13 @@ pkgbase = python-ssh2
 	license = LGPL-2.1-only
 	checkdepends = openssh
 	checkdepends = python-pytest
-	makedepends = python-setuptools
 	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = libssh2
+	depends = python
 	source = python-ssh2-1.1.2.tar.gz::https://github.com/ParallelSSH/ssh2-python/archive/refs/tags/1.1.2.tar.gz
 	sha256sums = d911297f22322d39e85144900cccdb5b376492a92e17d1680611344451df4fbb
 
