@@ -2,7 +2,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-tcl'
-pkgver='1.51'
+pkgver='1.53'
 pkgrel='1'
 pkgdesc="Tcl extension module for Perl"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('glibc' 'perl' 'tcl')
 makedepends=()
 url='http://search.cpan.org/dist/Tcl'
-source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.51.tar.gz')
-md5sums=('9357aa367c9ab63e88e34fb92e1f79d1')
-sha512sums=('9caf1819c238a88e9370c405194d2a0a8bd158d2513884a6d18bc271ddab539e7c81af51278bf6cab687d51c295dbe37895a88a595b0b3a1b220d39c0dc6c7ff')
-_distdir="Tcl-1.51"
+source=('http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-1.53.tar.gz')
+md5sums=('d4e172f9d66c713ec3ced5929bd7fbf3')
+sha512sums=('6f528dcaaf8e00a9c5461f93ef235de2d2028e61edd6a101b05cadc04260b8262b1bfbe9dae8a51168daf30cf0b9e73e5548e136e8cffbf38dfbc8667d6c2a30')
+_distdir="Tcl-1.53"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
