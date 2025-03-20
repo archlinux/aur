@@ -1,7 +1,7 @@
 pkgname=universal-gcode-sender-bin
 pkgver=2.1.13
 pkgrel=1
-pkgdesc='Universal G-Code Sender is a Java based, cross platform G-Code sender, compatible with GRBL, TinyG, g2core and Smoothieware.'
+pkgdesc='Universal G-Code Sender (UGS) is a Java based, cross platform G-Code sender, compatible with GRBL, TinyG, g2core and Smoothieware.'
 arch=('any')
 url='https://universalgcodesender.com/'
 license=('GPL-3.0-or-later')
