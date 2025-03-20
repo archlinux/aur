@@ -1,0 +1,5 @@
+[skyemu-bin]
+source = "github"
+github = "skylersaleh/SkyEmu"
+use_latest_release = true
+prefix = "v"
