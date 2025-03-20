@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-sord
+	pkgdesc = A lightweight C library for storing RDF data in memory (Android riscv64)
+	pkgver = 0.16.18
+	pkgrel = 1
+	url = https://drobilla.net/software/sord.html
+	arch = any
+	groups = android-sord
+	license = ISC
+	makedepends = android-meson
+	makedepends = android-riscv64-pcre2
+	makedepends = android-riscv64-serd
+	makedepends = android-riscv64-zix
+	depends = android-riscv64-pcre2
+	depends = android-riscv64-serd
+	depends = android-riscv64-zix
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.drobilla.net/sord-0.16.18.tar.xz
+	md5sums = 8c7bf82dfa5bd7d6906ded54032f8a64
+
+pkgname = android-riscv64-sord
