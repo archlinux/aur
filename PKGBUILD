@@ -7,7 +7,7 @@
 # Based on https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=todoist-appimage
 
 pkgname=mochi-appimage
-pkgver=1.18.3
+pkgver=1.18.9
 pkgrel=1
 pkgdesc="Flash cards / spaced repetition using markdown"
 arch=('x86_64')
@@ -29,10 +29,8 @@ source=(
     "https://mochi.cards/releases/${_appimage}"
     "LICENSE"
 )
-sha512sums=(
-    '09aa076a0715145c5284d815e278752bb06b1b72e37e47f2646ba4db50cef7dc3647dd7dbdb5bbd6767898aed2fcc00a4a863d3a738adbf5ed04b481336f7dea'
-    'SKIP'
-)
+sha512sums=('432b156c19012592ae14b2b2b660cdaee3b5dc5d9496fd060f359033c81e1ffeefdc6eb1b6ede0f6ef1152a72048262f27d117a3dae897a0e4d19ba0ffe5f891'
+            '9a5639982c3181ebb45a90756ec08ed7b2174dce0342abaf8377587d29fe1733e31394b09b87483ded952a467dc2707d1461045f62e5928fdc48490d69d0c3ff')
 noextract=("${_appimage}")
 
 prepare() {
@@ -58,7 +56,7 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/" "${pkgdir}/usr/share/icons/"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/2048x2048/apps/" "${pkgdir}/usr/share/icons/"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
