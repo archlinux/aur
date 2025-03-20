@@ -3,12 +3,12 @@
 pkgname=anytype-alpha
 pkgver=0.45.11
 _tag="-alpha" # -alpha, -beta or leave blank
-pkgrel=1
+pkgrel=2
 pkgdesc="The everything app for those who celebrate trust & autonomy"
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=('glibc' 'glib2' 'bash' 'libxss' 'libsecret')
+depends=('glibc' 'glib2' 'nss' 'gcc-libs' 'bash' 'libxss' 'libsecret')
 optdepends=('org.freedesktop.secrets: auto login support')
 conflicts=('anytype-bin'
   'anytype-electron-bin'
@@ -21,5 +21,5 @@ package() {
   echo "Extract data.tar.xz ..."
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s /usr/share/Anytype/anytype "$pkgdir"/usr/bin/anytype
+  ln -sf "/opt/Anytype/anytype" "$pkgdir"/usr/bin/anytype
 }

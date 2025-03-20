@@ -1,12 +1,14 @@
 pkgbase = anytype-alpha
 	pkgdesc = The everything app for those who celebrate trust & autonomy
 	pkgver = 0.45.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anytype.io/
 	arch = x86_64
 	license = custom
 	depends = glibc
 	depends = glib2
+	depends = nss
+	depends = gcc-libs
 	depends = bash
 	depends = libxss
 	depends = libsecret
