@@ -2,7 +2,7 @@
 _base=gustaf
 pkgname=python-${_base}
 _gitcommit=23ebe6e14ff9ccdd05b802d1978239ff9496ed22
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Process and visualize numerical-analysis-geometries"
 url="https://tataratat.github.io/${_base}"
