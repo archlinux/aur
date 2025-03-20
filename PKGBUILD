@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=questionr
-_pkgver=0.7.8
+_pkgver=0.8.0
 pkgname=r-${_pkgname,,}
-pkgver=0.7.8
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='Functions to Make Surveys Processing Easier'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -37,7 +37,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('af72e59fe652c6063282a7e5b0f487993b9361cc9ed052a632d64a5a6db76ba9')
+sha256sums=('21025083a332e9ceea721fd8c65e4cee0690c21b55e5a059adbee2801e3fb0ff')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

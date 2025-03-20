@@ -1,7 +1,7 @@
 pkgbase = r-questionr
 	pkgdesc = Functions to Make Surveys Processing Easier
-	pkgver = 0.7.8
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=questionr
 	arch = any
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = r-questionr
 	optdepends = r-survey
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/questionr_0.7.8.tar.gz
-	sha256sums = af72e59fe652c6063282a7e5b0f487993b9361cc9ed052a632d64a5a6db76ba9
+	source = https://cran.r-project.org/src/contrib/questionr_0.8.0.tar.gz
+	sha256sums = 21025083a332e9ceea721fd8c65e4cee0690c21b55e5a059adbee2801e3fb0ff
 
 pkgname = r-questionr
