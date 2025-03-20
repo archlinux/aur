@@ -1,6 +1,6 @@
 pkgbase = forkgram
 	pkgdesc = Fork of the Telegram Desktop messaging app
-	pkgver = 5.12.5
+	pkgver = 5.12.6
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = forkgram
 	conflicts = forkgram-bin
 	options = !debug
 	options = !emptydirs
-	source = forkgram-5.12.5.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v5.12.5/frk-v5.12.5-full.tar.gz
-	sha256sums = 1ffd7d5c4c055cb731fbab6ff40044be0d72acd05a19302d70ac0a38661aba1a
+	source = forkgram-5.12.6.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v5.12.6/frk-v5.12.6-full.tar.gz
+	sha256sums = 18518f0757710e4e3dc84592e82ef472d72642f3cd8feb6f43fe01349147b779
 
 pkgname = forkgram
