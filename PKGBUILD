@@ -13,7 +13,7 @@ license=('MIT')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # libc.so libm.so
-  'opencv-cuda' libopencv_core.so libopencv_imgcodecs.so libopencv_imgproc.so
+  'opencv-cuda' # libopencv_core.so libopencv_imgcodecs.so libopencv_imgproc.so
   'cuda'
   'opencl-icd-loader'
 )
