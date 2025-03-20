@@ -1,0 +1,15 @@
+pkgbase = python-iostat-tool
+	pkgdesc = parse and visualize iostat output
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/t2y/iostat-tool
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/source/i/iostat-tool/iostat-tool-0.3.1.tar.gz
+	sha256sums = 6168387d05ab8c20f17a9ed9994052e83481a24c8c819d447813dfba4a96b6ed
+
+pkgname = python-iostat-tool
