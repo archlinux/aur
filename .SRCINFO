@@ -1,0 +1,18 @@
+pkgbase = python-partial-json-parser-git
+	pkgdesc = A lightweight and customizable library for parsing partial JSON strings
+	pkgver = 0.2.1.1.post5
+	pkgrel = 1
+	url = https://github.com/promplate/partial-json-parser
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pdm-backend
+	provides = python-partial-json-parser
+	conflicts = python-partial-json-parser
+	source = partial-json-parser-0.2.1.1.post5::git+https://github.com/promplate/partial-json-parser.git
+	sha256sums = SKIP
+
+pkgname = python-partial-json-parser-git
