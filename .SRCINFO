@@ -1,6 +1,6 @@
 pkgbase = avidemux-git
 	pkgdesc = A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)
-	pkgver = 2.8.2.250109.08860c2d1
+	pkgver = 2.8.2.250320.4b5c2a3d7
 	pkgrel = 1
 	url = http://www.avidemux.org
 	arch = x86_64
@@ -76,7 +76,7 @@ pkgname = avidemux-core-git
 	depends = libfaad.so
 	depends = gcc-libs
 	depends = glibc
-	depends = jack2
+	depends = jack
 	depends = libjack.so
 	depends = lame
 	depends = libmp3lame.so
@@ -160,7 +160,7 @@ pkgname = avidemux-core-git
 
 pkgname = avidemux-qt5-git
 	pkgdesc = Qt5 GUI for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.8.2.250109.08860c2d1
+	depends = avidemux-core-git=2.8.2.250320.4b5c2a3d7
 	depends = libADM6avcodec.so
 	depends = libADM6avutil.so
 	depends = libADM_audioParser6.so
@@ -208,7 +208,7 @@ pkgname = avidemux-qt5-git
 
 pkgname = avidemux-qt6-git
 	pkgdesc = Qt6 GUI for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.8.2.250109.08860c2d1
+	depends = avidemux-core-git=2.8.2.250320.4b5c2a3d7
 	depends = libADM6avcodec.so
 	depends = libADM6avutil.so
 	depends = libADM_audioParser6.so
@@ -255,7 +255,7 @@ pkgname = avidemux-qt6-git
 
 pkgname = avidemux-cli-git
 	pkgdesc = CLI frontend for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.8.2.250109.08860c2d1
+	depends = avidemux-core-git=2.8.2.250320.4b5c2a3d7
 	depends = libADM6avcodec.so
 	depends = libADM6avutil.so
 	depends = libADM_audioParser6.so

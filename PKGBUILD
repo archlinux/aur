@@ -7,7 +7,7 @@ pkgname=(
   'avidemux-qt6-git'
   'avidemux-cli-git'
 )
-pkgver=2.8.2.250109.08860c2d1
+pkgver=2.8.2.250320.4b5c2a3d7
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('x86_64')
@@ -244,7 +244,7 @@ package_avidemux-core-git() {
     'faad2' 'libfaad.so'
     'gcc-libs' # 'libgcc_s.so' 'libstdc++.so'
     'glibc' # 'libc.so' 'libm.so'
-    'jack2' 'libjack.so'
+    'jack' 'libjack.so'
     'lame' 'libmp3lame.so'
     'libass' 'libass.so'
     'libfdk-aac' 'libfdk-aac.so'
