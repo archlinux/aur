@@ -1,0 +1,14 @@
+[Unit]
+Description=fastgithub service to Speedup github access in China
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/fastgithub
+
+[Install]
+WantedBy=multi-user.target
