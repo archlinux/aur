@@ -1,6 +1,6 @@
 --- a/xf86drm.c
 +++ b/xf86drm.c
-@@ -310,38 +310,7 @@
+@@ -297,38 +297,7 @@
  static char *
  drmGetFormatModifierNameFromArm(uint64_t modifier)
  {
@@ -39,80 +39,160 @@
  }
  
  static char *
-@@ -451,79 +420,7 @@
+@@ -359,159 +328,7 @@
  static char *
  drmGetFormatModifierNameFromAmd(uint64_t modifier)
  {
--    uint64_t tile, tile_version, dcc;
+-    static const char *gfx9_gfx11_tile_strings[32] = {
+-        "LINEAR",
+-        "256B_S",
+-        "256B_D",
+-        "256B_R",
+-        "4KB_Z",
+-        "4KB_S",
+-        "4KB_D",
+-        "4KB_R",
+-        "64KB_Z",
+-        "64KB_S",
+-        "64KB_D",
+-        "64KB_R",
+-        "INVALID12",
+-        "INVALID13",
+-        "INVALID14",
+-        "INVALID15",
+-        "64KB_Z_T",
+-        "64KB_S_T",
+-        "64KB_D_T",
+-        "64KB_R_T",
+-        "4KB_Z_X",
+-        "4KB_S_X",
+-        "4KB_D_X",
+-        "4KB_R_X",
+-        "64KB_Z_X",
+-        "64KB_S_X",
+-        "64KB_D_X",
+-        "64KB_R_X",
+-        "256KB_Z_X",
+-        "256KB_S_X",
+-        "256KB_D_X",
+-        "256KB_R_X",
+-    };
+-    static const char *gfx12_tile_strings[32] = {
+-        "LINEAR",
+-        "256B_2D",
+-        "4KB_2D",
+-        "64KB_2D",
+-        "256KB_2D",
+-        "4KB_3D",
+-        "64KB_3D",
+-        "256KB_3D",
+-        /* other values are unused */
+-    };
+-    uint64_t tile_version = AMD_FMT_MOD_GET(TILE_VERSION, modifier);
 -    FILE *fp;
 -    char *mod_amd = NULL;
 -    size_t size = 0;
--
--    const char *str_tile = NULL;
--    const char *str_tile_version = NULL;
--
--    tile = AMD_FMT_MOD_GET(TILE, modifier);
--    tile_version = AMD_FMT_MOD_GET(TILE_VERSION, modifier);
--    dcc = AMD_FMT_MOD_GET(DCC, modifier);
 -
 -    fp = open_memstream(&mod_amd, &size);
 -    if (!fp)
          return NULL;
 -
--    /* add tile  */
 -    switch (tile_version) {
 -    case AMD_FMT_MOD_TILE_VER_GFX9:
--        str_tile_version = "GFX9";
+-        fprintf(fp, "GFX9");
 -        break;
 -    case AMD_FMT_MOD_TILE_VER_GFX10:
--        str_tile_version = "GFX10";
+-        fprintf(fp, "GFX10");
 -        break;
 -    case AMD_FMT_MOD_TILE_VER_GFX10_RBPLUS:
--        str_tile_version = "GFX10_RBPLUS";
+-        fprintf(fp, "GFX10_RBPLUS");
 -        break;
 -    case AMD_FMT_MOD_TILE_VER_GFX11:
--        str_tile_version = "GFX11";
+-        fprintf(fp, "GFX11");
 -        break;
--    }
--
--    if (str_tile_version) {
--        fprintf(fp, "%s", str_tile_version);
--    } else {
+-    case AMD_FMT_MOD_TILE_VER_GFX12:
+-        fprintf(fp, "GFX12");
+-        break;
+-    default:
 -        fclose(fp);
 -        free(mod_amd);
 -        return NULL;
 -    }
 -
--    /* add tile str */
--    switch (tile) {
--    case AMD_FMT_MOD_TILE_GFX9_64K_S:
--        str_tile = "GFX9_64K_S";
--        break;
--    case AMD_FMT_MOD_TILE_GFX9_64K_D:
--        str_tile = "GFX9_64K_D";
--        break;
--    case AMD_FMT_MOD_TILE_GFX9_64K_S_X:
--        str_tile = "GFX9_64K_S_X";
--        break;
--    case AMD_FMT_MOD_TILE_GFX9_64K_D_X:
--        str_tile = "GFX9_64K_D_X";
--        break;
--    case AMD_FMT_MOD_TILE_GFX9_64K_R_X:
--        str_tile = "GFX9_64K_R_X";
--        break;
--    case AMD_FMT_MOD_TILE_GFX11_256K_R_X:
--        str_tile = "GFX11_256K_R_X";
--        break;
+-    if (tile_version >= AMD_FMT_MOD_TILE_VER_GFX12) {
+-        unsigned tile = AMD_FMT_MOD_GET(TILE, modifier);
+-
+-        fprintf(fp, ",%s", gfx12_tile_strings[tile]);
+-
+-        if (AMD_FMT_MOD_GET(DCC, modifier)) {
+-            fprintf(fp, ",DCC,DCC_MAX_COMPRESSED_BLOCK=%uB",
+-                    64 << AMD_FMT_MOD_GET(DCC_MAX_COMPRESSED_BLOCK, modifier));
+-
+-            /* Other DCC fields are unused by GFX12. */
+-        }
+-    } else {
+-        unsigned tile = AMD_FMT_MOD_GET(TILE, modifier);
+-
+-        fprintf(fp, ",%s", gfx9_gfx11_tile_strings[tile]);
+-
+-        /* All *_T and *_X modes are affected by chip-specific fields. */
+-        if (tile >= 16) {
+-            fprintf(fp, ",PIPE_XOR_BITS=%u",
+-                    (unsigned)AMD_FMT_MOD_GET(PIPE_XOR_BITS, modifier));
+-
+-            switch (tile_version) {
+-            case AMD_FMT_MOD_TILE_VER_GFX9:
+-                fprintf(fp, ",BANK_XOR_BITS=%u",
+-                        (unsigned)AMD_FMT_MOD_GET(BANK_XOR_BITS, modifier));
+-                break;
+-
+-            case AMD_FMT_MOD_TILE_VER_GFX10:
+-                /* Nothing else for GFX10. */
+-                break;
+-
+-            case AMD_FMT_MOD_TILE_VER_GFX10_RBPLUS:
+-            case AMD_FMT_MOD_TILE_VER_GFX11:
+-                /* This also determines the DCC layout, but DCC is only legal
+-                 * with tile=27 and tile=31 (*_R_X modes).
+-                 */
+-                fprintf(fp, ",PACKERS=%u",
+-                        (unsigned)AMD_FMT_MOD_GET(PACKERS, modifier));
+-                break;
+-            }
+-        }
+-
+-        if (AMD_FMT_MOD_GET(DCC, modifier)) {
+-            if (tile_version == AMD_FMT_MOD_TILE_VER_GFX9 &&
+-                (AMD_FMT_MOD_GET(DCC_PIPE_ALIGN, modifier) ||
+-                 AMD_FMT_MOD_GET(DCC_RETILE, modifier))) {
+-                /* These two only determine the layout of
+-                 * the non-displayable DCC plane.
+-                 */
+-                fprintf(fp, ",RB=%u",
+-                        (unsigned)AMD_FMT_MOD_GET(RB, modifier));
+-                fprintf(fp, ",PIPE=%u",
+-                        (unsigned)AMD_FMT_MOD_GET(PIPE, modifier));
+-            }
+-
+-            fprintf(fp, ",DCC,DCC_MAX_COMPRESSED_BLOCK=%uB",
+-                    64 << AMD_FMT_MOD_GET(DCC_MAX_COMPRESSED_BLOCK, modifier));
+-
+-            if (AMD_FMT_MOD_GET(DCC_INDEPENDENT_64B, modifier))
+-                fprintf(fp, ",DCC_INDEPENDENT_64B");
+-
+-            if (AMD_FMT_MOD_GET(DCC_INDEPENDENT_128B, modifier))
+-                fprintf(fp, ",DCC_INDEPENDENT_128B");
+-
+-            if (AMD_FMT_MOD_GET(DCC_CONSTANT_ENCODE, modifier))
+-                fprintf(fp, ",DCC_CONSTANT_ENCODE");
+-
+-            if (AMD_FMT_MOD_GET(DCC_PIPE_ALIGN, modifier))
+-                fprintf(fp, ",DCC_PIPE_ALIGN");
+-
+-            if (AMD_FMT_MOD_GET(DCC_RETILE, modifier))
+-                fprintf(fp, ",DCC_RETILE");
+-        }
 -    }
--
--    if (str_tile)
--        fprintf(fp, ",%s", str_tile);
--
--    if (dcc)
--        drmGetFormatModifierNameFromAmdDcc(modifier, fp);
--
--    if (tile_version >= AMD_FMT_MOD_TILE_VER_GFX9 && is_x_t_amd_gfx9_tile(tile))
--        drmGetFormatModifierNameFromAmdTile(modifier, fp);
 -
 -    fclose(fp);
 -    return mod_amd;
