@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jet-pilot-bin
 _pkgname='JET Pilot'
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=1
 pkgdesc="An open-source Kubernetes desktop client that focuses on less clutter, speed and good looks.(Prebuilt version)"
 arch=('x86_64')
@@ -19,13 +19,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/unxsist/jet-pilot/v${pkgver}/LICENSE"
 )
-sha256sums=('8fe77c4a90fd498373d62cb2f139327e3bc7852984cca738d635ccd4ffd3ceb8'
+sha256sums=('ea6d0cee6e8c64fb0632e42fd8d630f99e9d911b3c6641400f065c036138abc3'
             '508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/Exec=\"${_pkgname}\"/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
