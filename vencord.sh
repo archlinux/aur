@@ -13,10 +13,9 @@ curl -sSL https://github.com/Vendicated/VencordInstaller/releases/latest/downloa
 chmod +x "$installer"
 
 while IFS= read -r package || [ -n "$package" ]; do
-	branch=${package#discord}
-	branch=${branch#-}
+	branch=$(echo "$package" | sed 's/^discord-*//')
 
-	if [[ -z $branch ]]; then
+	if [ -z "$branch" ]; then
 		branch="stable"
 	fi
 
