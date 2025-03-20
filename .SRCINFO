@@ -1,0 +1,49 @@
+pkgbase = android-riscv64-rubberband
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://www.breakfastquay.com/rubberband/
+	arch = any
+	license = GPL2
+	makedepends = android-meson
+	makedepends = android-riscv64-boost
+	makedepends = android-riscv64-fftw
+	makedepends = android-riscv64-ladspa
+	makedepends = android-riscv64-lv2
+	makedepends = android-riscv64-libsamplerate
+	makedepends = android-riscv64-libsndfile
+	makedepends = android-riscv64-vamp-plugin-sdk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/breakfastquay/rubberband/archive/v4.0.0.tar.gz
+	md5sums = 87ac2e0fcd62f4fa9d2bf83237adbb77
+
+pkgname = android-riscv64-rubberband
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android riscv64)
+	groups = android-rubberband
+	depends = android-riscv64-fftw
+	depends = android-riscv64-libsamplerate
+	depends = android-riscv64-libsndfile
+
+pkgname = android-riscv64-rubberband-ladspa
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LADSPA plugin (Android riscv64)
+	groups = android-rubberband-ladspa
+	depends = android-riscv64-fftw
+	depends = android-riscv64-libsamplerate
+	depends = android-riscv64-ladspa
+
+pkgname = android-riscv64-rubberband-lv2
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - LV2 plugin (Android riscv64)
+	groups = android-rubberband-lv2
+	depends = android-riscv64-fftw
+	depends = android-riscv64-libsamplerate
+	depends = android-riscv64-lv2
+
+pkgname = android-riscv64-rubberband-vamp
+	pkgdesc = Time-stretching and pitch-shifting audio library and utility - VAMP plugin (Android riscv64)
+	groups = android-rubberband-vamp
+	depends = android-riscv64-fftw
+	depends = android-riscv64-libsamplerate
+	depends = android-riscv64-vamp-plugin-sdk
