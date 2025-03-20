@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-onetbb
+	pkgdesc = High level abstract threading library (oneAPI Threading Building Blocks) (Android riscv64)
+	pkgver = 2022.0.0
+	pkgrel = 1
+	url = https://oneapi-src.github.io/oneTBB/
+	arch = any
+	groups = android-onetbb
+	license = Apache
+	makedepends = android-cmake
+	depends = android-riscv64-hwloc
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/oneapi-src/oneTBB/archive/v2022.0.0/onetbb-2022.0.0.tar.gz
+	md5sums = 78ec44cecf3cd78c4984e61f1bb93134
+
+pkgname = android-riscv64-onetbb
