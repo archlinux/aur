@@ -2,7 +2,7 @@
 
 pkgname=preview
 pre_ver=1.0
-pkgver="$pre_ver"
+pkgver=1.0
 pkgrel=2
 pkgdesc='A simple file-manager with file preview capabilities, inspired by fff, lesspipe, and ranger'
 arch=('any')
