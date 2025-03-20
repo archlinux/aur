@@ -1,8 +1,9 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor : y5nw <y5nw at outlook dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-tcl-tk'
-pkgver='1.29'
+pkgver='1.51'
 pkgrel='1'
 pkgdesc="Extension module for Perl giving access to Tk via the Tcl extension"
 _dist='Tcl-Tk'
@@ -13,8 +14,8 @@ makedepends=('xorg-server-xvfb')
 checkdepends=('ttf-font')
 url='https://metacpan.org/release/Tcl-Tk'
 source=("http://search.cpan.org/CPAN/authors/id/V/VK/VKON/$_dist-$pkgver.tar.gz")
-md5sums=('2e0f38d620f0bfb5af8ecd5582c58ee9')
-sha512sums=('1ca5d2d050cec98e93378aa92ac7f7bf4ae2510c81fbb531e6c34885a44d4216556304cb58198517bb3712031f9b528e8532a5735f7e374e1ae82f909dcd3410')
+md5sums=('6d07a38eac44635c39635cef08dcd808')
+sha512sums=('ec1794fff03a0264ef92c04e281a7b2c65235f18f5538c3281ad007264a3e2d5034bf5c7d29ab0aa4c32f1b1b9cf748b580df3512dd8ba80c08cffdd9f662a27')
 _distdir="$_dist-$pkgver"
 
 build() {
