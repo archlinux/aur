@@ -1,18 +1,19 @@
-#Maintainer: Vince <vince@ultrabanana.net>
+#Maintainer: Praxidike_Kore <praxidike.kore@protonmail.com>
+#Contributor: Vince <vince@ultrabanana.net>
 pkgname='rexpaint'
-pkgver='1.60'
-pkgrel=4
+pkgver='1.70'
+pkgrel=1
 pkgdesc='A powerful and user-friendly ASCII art editor'
 arch=('any') #Anything that WINE supports, at least
 url='https://www.gridsagegames.com/rexpaint'
 license=('custom')
 depends=('wine')
-source=("https://www.gridsagegames.com/blogs/files/REXPaint-v$pkgver.zip"
+source=("https://www.gridsagegames.com/blogs/fileDownload.php?fileName=REXPaint-v$pkgver.zip"
          "launcher.sh"
          "launcher.desktop")
-sha256sums=('3a80cbfddf5921eb43344e4e17e71ca0ee1d0865ead4cff60cf1c4ced97a70ff'
+sha256sums=('deea6f0008d9119512d974c8d19387828a6d8b6ed9e4c7aaeb6a90cd36b923b4'
             'b68e78c4b4d0373944158c1dc6146dd3401b06f040d35166b6328aed0b872306'
-	    '3fc98f84e55888c60d423c60532e048601a84debd1d15fcb015b5a2a15b6c648')
+            '3fc98f84e55888c60d423c60532e048601a84debd1d15fcb015b5a2a15b6c648')
 DLAGENTS=("https::/usr/bin/curl -A 'PKGBUILD' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare(){
