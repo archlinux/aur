@@ -1,13 +1,13 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-auto-lyrics
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Curses based lyrics display and fetcher for cmus music player"
 arch=('any')
 url="https://github.com/mzivic7/$pkgname"
 license=('GPL')
 depends=('cmus')
-makedepends=('python>=3.11' 'python-pipenv')
+makedepends=('python>=3.11' 'python-pipenv' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
