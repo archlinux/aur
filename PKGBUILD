@@ -7,21 +7,22 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-l-smash
 pkgver=2.14.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('custom')
 url='https://github.com/l-smash/l-smash'
-pkgdesc="MP4 muxer and other tools (Android, ${_android_arch})"
+pkgdesc="MP4 muxer and other tools (Android ${_android_arch})"
+groups=('android-l-smash')
 depends=('android-ndk')
-depends=('android-environment')
+makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/l-smash/l-smash/archive/v${pkgver}.tar.gz"
         "clang.patch")
-sha256sums=('e6f7c31de684f4b89ee27e5cd6262bf96f2a5b117ba938d2d606cf6220f05935'
-            'SKIP')
+md5sums=('5915de411970abafbad8003599196fee'
+         'SKIP')
 
 prepare() {
-    cd "${srcdir}"/l-smash-${pkgver}
+    cd "${srcdir}/l-smash-${pkgver}"
     patch -Np1 -i ../clang.patch
 
     sed -i 's|-Wl,--version-script,liblsmash\.ver||g' configure
@@ -33,7 +34,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"/l-smash-${pkgver}
+    cd "${srcdir}/l-smash-${pkgver}"
     source android-env ${_android_arch}
 
     ./configure \
@@ -47,11 +48,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/l-smash-${pkgver}
+    cd "${srcdir}/l-smash-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" STRIP="" install
-    rm -r "${pkgdir}"/${ANDROID_PREFIX_BIN}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" STRIP="" install
+    rm -r "${pkgdir}/${ANDROID_PREFIX_BIN}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
