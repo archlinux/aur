@@ -1,0 +1,47 @@
+--- a/configure	2018-02-10 21:08:16.000000000 -0300
++++ b/configure	2019-07-22 19:50:07.745693313 -0300
+@@ -185,9 +185,9 @@
+ test -n "$includedir" || includedir='${prefix}/include'
+
+
+-CC="${CROSS}${CC}"
++CC="${CC}"
+ AR="${CROSS}${AR}"
+-LD="${CROSS}${LD}"
++LD="${LD}"
+ RANLIB="${CROSS}${RANLIB}"
+ STRIP="${CROSS}${STRIP}"
+ for f in "$CC" "$AR" "$LD" "$RANLIB" "$STRIP"; do
+@@ -250,7 +250,7 @@
+         ;;
+     *)
+         SHARED_NAME="liblsmash"
+-        SHARED_EXT=".so.$MAJVER"
++        SHARED_EXT=".so"
+         if test -n "$SHAREDLIB"; then
+             CFLAGS="$CFLAGS -fPIC"
+             LDFLAGS="$LDFLAGS -fPIC"
+@@ -290,8 +290,8 @@
+     error_exit "invalid CFLAGS/LDFLAGS"
+ fi
+
+-if cc_check "$CFLAGS -fexcess-precision=fast" "$LDFLAGS"; then
+-    CFLAGS="$CFLAGS -fexcess-precision=fast"
++if cc_check "$CFLAGS" "$LDFLAGS"; then
++    CFLAGS="$CFLAGS"
+ fi
+
+ if cc_check "$CFLAGS" "$LDFLAGS -Wl,--large-address-aware"; then
+
+--- a/Makefile	2018-02-10 21:08:16.000000000 -0300
++++ b/Makefile	2019-07-22 20:23:47.377546416 -0300
+@@ -65,9 +65,6 @@
+ endif
+ else
+ 	install -m 644 $(SHAREDLIB) $(DESTDIR)$(libdir)
+-ifeq ($(SHAREDLIB), liblsmash.so.$(MAJVER))
+-	ln -sf $(SHAREDLIB) $(DESTDIR)$(libdir)/liblsmash.so
+-endif
+ endif
+ endif
+

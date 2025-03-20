@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-l-smash
+	pkgdesc = MP4 muxer and other tools (Android riscv64)
+	pkgver = 2.14.5
+	pkgrel = 2
+	url = https://github.com/l-smash/l-smash
+	arch = any
+	groups = android-l-smash
+	license = custom
+	makedepends = android-environment
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/l-smash/l-smash/archive/v2.14.5.tar.gz
+	source = clang.patch
+	md5sums = 5915de411970abafbad8003599196fee
+	md5sums = SKIP
+
+pkgname = android-riscv64-l-smash
