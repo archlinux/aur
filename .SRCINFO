@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-portaudio
+	pkgdesc = A free, cross-platform, open source, audio I/O library. (Android riscv64)
+	pkgver = 19.7.0
+	pkgrel = 3
+	url = https://github.com/portaudio/portaudio/
+	arch = any
+	groups = android-portaudio
+	license = MIT
+	makedepends = android-cmake
+	makedepends = android-riscv64-alsa-lib
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/portaudio/portaudio//archive/v19.7.0/portaudio-v19.7.0.tar.gz
+	md5sums = 49ecd6de2350b3a1466116538f7be0e7
+
+pkgname = android-riscv64-portaudio
