@@ -2,9 +2,9 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r6730.eac9d1d
-_electronversion=34
-_nodeversion=20
+pkgver=r6909.d54afb5
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
 arch=('any')
@@ -32,7 +32,7 @@ makedepends=(
 optdepends=(
     "crc: crc plugin"
     "lima: lima plugin"
-    "xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)"
+    "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
     "trash-cli: file deletion support (trash-put)"
     "libappindicator-gtk3: StatusNotifierItem support"
     "pipewire: WebRTC desktop sharing under Wayland"
