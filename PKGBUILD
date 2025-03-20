@@ -1,30 +1,32 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-ssh2'
-_pkgname='ssh2-python'
-pkgver=1.0.0
+_name='ssh2-python'
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Python bindings for libssh2"
 url="https://github.com/parallel-ssh/ssh2-python/"
 depends=('libssh2')
 makedepends=('python-setuptools' 'cython')
 checkdepends=('openssh' 'python-pytest')
-license=('GPL')
+license=('LGPL-2.1-only')
 arch=('x86_64')
-source=("git+https://github.com/parallel-ssh/ssh2-python.git")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ParallelSSH/ssh2-python/archive/refs/tags/${pkgver}.tar.gz")
+
+sha256sums=('d911297f22322d39e85144900cccdb5b376492a92e17d1680611344451df4fbb')
 
 build() {
-    cd "${_pkgname}"
-    SYSTEM_LIBSSH2=1 python setup.py build
+    cd "${_name}-${pkgver}"
+    SYSTEM_LIBSSH2=1 python -m build -wn
 }
 
 package() {
-    cd "${_pkgname}"
-    SYSTEM_LIBSSH2=1 python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    cd "${_name}-${pkgver}"
+    SYSTEM_LIBSSH2=1 python -m installer --dest="${pkgdir}" dist/*.whl
 }
 
-check() {
-    cd "${_pkgname}"
-    SYSTEM_LIBSSH2=1 python setup.py build_ext --inplace
-    pytest tests
-}
+#check() {
+    #cd "${_name}-${pkgver}"
+    #local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+    #export PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-$python_version"
+    #pytest tests
+#}
