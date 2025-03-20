@@ -6,12 +6,12 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libsamplerate
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="An audio sample rate conversion library (Android ${_android_arch})"
 url="https://libsndfile.github.io/libsamplerate/"
 license=('BSD')
-groups=(android-libsamplerate)
+groups=('android-libsamplerate')
 depends=('android-ndk')
 makedepends=('android-cmake'
              "android-${_android_arch}-alsa-lib"
@@ -30,6 +30,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=ON \
         -DBUILD_TESTING=OFF \
         -DLIBSAMPLERATE_EXAMPLES=OFF \
@@ -41,6 +42,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=OFF \
         -DBUILD_TESTING=OFF \
         -DLIBSAMPLERATE_EXAMPLES=OFF \
