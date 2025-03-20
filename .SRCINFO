@@ -1,16 +1,18 @@
 pkgbase = python-livekit-plugins-cartesia
 	pkgdesc = Agent Framework plugin for voice synthesis with Cartesia API.
-	pkgver = 0.4.7
-	pkgrel = 3
+	pkgver = 0.4.11
+	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-cartesia
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-cartesia/livekit_plugins_cartesia-0.4.7.tar.gz
-	sha256sums = dfa09539577d31c3b9aba2e425dffa134fe70d928a42e06b7410a8f8b557e3e2
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-cartesia/livekit_plugins_cartesia-0.4.11.tar.gz
+	sha256sums = 217a1fb2368238d81bd3dc931c6ee7b8dd6aafd2e0a87aac78aec84a68621a6f
 
 pkgname = python-livekit-plugins-cartesia
