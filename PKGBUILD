@@ -1,10 +1,11 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=kerncraft-git
-pkgrel=2
-pkgver=r1268
+pkgrel=1
+pkgver=r1290
 pkgdesc="Loop Kernel Analysis and Performance Modeling Toolkit"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/RRZE-HPC/kerncraft"
 license=('GPLv3')
 # iaca does currently not build from AUR. You might want to install it by hand and uncomment it here

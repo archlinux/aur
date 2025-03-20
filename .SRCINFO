@@ -1,10 +1,9 @@
 pkgbase = kerncraft-git
 	pkgdesc = Loop Kernel Analysis and Performance Modeling Toolkit
-	pkgver = r1268
-	pkgrel = 2
+	pkgver = r1290
+	pkgrel = 1
 	url = https://github.com/RRZE-HPC/kerncraft
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPLv3
 	makedepends = git
 	makedepends = python-setuptools
