@@ -1,32 +1,32 @@
 pkgbase = tal-chorus-lx
-	pkgdesc = A Simple Algorithmic Chorus By TAL Software
+	pkgdesc = A simple algorithmic chorus by TAL Software
 	pkgver = 1.6.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tal-software.com/products/tal-chorus-lx
 	arch = x86_64
 	groups = pro-audio
 	license = EULA
-	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Chorus-LX_64_linux.zip
-	sha256sums = 176396c83a3f43d3ec0ae0b1483c2ef7b9480952699cc999f393993fba786a0e
+	sha512sums = 82d707b07247c4d489c892bd3afcdbd97a15daf322fd7ca8e1cb74cd67fac021c2f00c2f6fd8f2efe33de0020b5d1b09956a6014d80b5188d54b377cc6b1f26c
+	b2sums = ea6066cfce6a3302a5003336aa67cff71d69078184c8fbf586f3a86640d8039bef01e7cbaa0cd655c33ff133fb36b171159cea0f4ca0fd4e2f8b5b4e09a8c393
 
 pkgname = tal-chorus-lx-clap-bin
-	groups = clap-plugins
+	pkgdesc = A simple algorithmic chorus by TAL Software - CLAP plugin
 	groups = pro-audio
-	provides = tal-chorus-lx-clap-bin
-	conflicts = tal-chorus-lx-bin
-	replaces = tal-chorus-lx-bin
+	groups = clap-plugins
+	depends = glibc
+	depends = clap-host
 
 pkgname = tal-chorus-lx-vst-bin
+	pkgdesc = A simple algorithmic chorus by TAL Software - VST plugin
 	groups = pro-audio
 	groups = vst-plugins
-	provides = tal-chorus-lx-vst-bin
-	conflicts = tal-chorus-lx-bin
-	replaces = tal-chorus-lx-bin
+	depends = glibc
+	depends = vst-host
 
 pkgname = tal-chorus-lx-vst3-bin
+	pkgdesc = A simple algorithmic chorus by TAL Software - VST3 plugin
 	groups = pro-audio
 	groups = vst3-plugins
-	provides = tal-chorus-lx-vst3-bin
-	conflicts = tal-chorus-lx-bin
-	replaces = tal-chorus-lx-bin
+	depends = glibc
+	depends = vst3-host
