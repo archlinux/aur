@@ -4,12 +4,13 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libvpl
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 arch=('any')
 pkgdesc="Intel Video Processing Library (Android ${_android_arch})"
 url='https://intel.github.io/libvpl/'
 license=('MIT')
+groups=('android-libvpl')
 depends=("android-${_android_arch}-libdrm"
          "android-${_android_arch}-libva"
          "android-${_android_arch}-libx11")
@@ -17,7 +18,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libpciaccess")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/intel/libvpl/archive/v${pkgver}/libvpl-${pkgver}.tar.gz")
-md5sums=('c423c877260dba129772d4e2059386e4')
+md5sums=('807bb965093b3396da321d16d6f711f3')
 
 build() {
     cd "${srcdir}/libvpl-${pkgver}"
