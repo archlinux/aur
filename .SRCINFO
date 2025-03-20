@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-libvdpau
+	pkgdesc = Nvidia VDPAU library (Android riscv64)
+	pkgver = 1.5
+	pkgrel = 3
+	url = https://www.freedesktop.org/wiki/Software/VDPAU/
+	arch = any
+	groups = android-libvdpau
+	license = custom
+	makedepends = android-meson
+	makedepends = android-riscv64-xorgproto
+	depends = android-riscv64-libxext
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.freedesktop.org/vdpau/libvdpau/-/archive/1.5/libvdpau-1.5.tar.bz2
+	md5sums = 148a192110e7a49d62c0bf9ef916c099
+
+pkgname = android-riscv64-libvdpau
