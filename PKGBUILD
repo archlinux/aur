@@ -5,20 +5,21 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-npth
-pkgver=1.7
-pkgrel=3
+pkgver=1.8
+pkgrel=1
 arch=('any')
 pkgdesc="The new GNU portable threads library (Android ${_android_arch})"
 url="https://www.gnupg.org/software/npth/index.html"
 license=('LGPL-2.1-or-later')
+groups=('android-npth')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://gnupg.org/ftp/gcrypt/npth/npth-$pkgver.tar.bz2")
-md5sums=('286274d0106ec408efebe4a399975b11')
+source=("https://gnupg.org/ftp/gcrypt/npth/npth-${pkgver}.tar.bz2")
+md5sums=('cb4fc0402be5ba67544e499cb2c1a74d')
 
 prepare() {
-    cd "${srcdir}/npth-$pkgver"
+    cd "${srcdir}/npth-${pkgver}"
     source android-env ${_android_arch}
 
     autoreconf -fiv
@@ -29,7 +30,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/npth-$pkgver"
+    cd "${srcdir}/npth-${pkgver}"
     source android-env ${_android_arch}
 
     export ac_cv_search_pthread_cancel=yes
@@ -41,11 +42,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/npth-$pkgver"
+    cd "${srcdir}/npth-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    rm -rf "${pkgdir}"/${ANDROID_PREFIX_SHARE}
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    make DESTDIR="${pkgdir}" install
+    rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
