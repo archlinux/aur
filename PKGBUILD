@@ -4,7 +4,7 @@ _pkgname=amdguid-wayland
 pkgname="$_pkgname-bin"
 _pkgver=1.0.12
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="AMDGPU temperature and fan speed monitoring tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
@@ -20,5 +20,5 @@ package() {
     cd "$srcdir"
     install -Dm0755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
     install -Dm0755 "target/release/amdgui-helper" -t "$pkgdir/usr/bin"
-    install -Dm0755 "services/amdgui-helper.service" -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm0644 "services/amdgui-helper.service" -t "$pkgdir/usr/lib/systemd/system"
 }
