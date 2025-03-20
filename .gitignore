@@ -1,8 +1,9 @@
 pkg/
 src/
 
-LICENSE
 *.log
-*.zip
 *.pkg.tar.zst
 *.pkg.tar.zst.sig
+
+LICENSE
+*.zip
