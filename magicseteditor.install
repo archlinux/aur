@@ -1,0 +1,18 @@
+post_install()
+{
+cat <<-EndOfMessage
+The fonts required for this package can't be put on the AUR due to licensing issues.
+In order to get them, download the binary release here:
+https://github.com/MagicSetEditorPacks/Basic-M15-Magic-Pack/archive/refs/heads/main.zip
+Copy the fonts into your /usr/share/fonts/TTF folder or wrap them up
+with some fancy PKGBUILD of your own. you can also use the pre-made PKGBUILD located at
+https://github.com/silverhikari/magic-set-templates-aur/tree/main/additional%20arch%20non-aur%20packages
+
+You may also want to install one or more of the following packages:
+mse-ygo for YuGiOh! support
+mse-mtg for Magic: the Gathering support
+mse-vs for VS support
+
+Happy editing!
+EndOfMessage
+}
