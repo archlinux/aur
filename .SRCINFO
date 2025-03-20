@@ -8,7 +8,6 @@ pkgbase = tal-noisemaker-bin
 	groups = pro-audio
 	depends = glibc
 	replaces = tal-noisemaker
-	conflicts = tal-noisemaker
 	source = https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip
 	sha256sums = 328565e646f98f14dd931a33fa438a4c9eddc451e759b92d1005f4336fa3fd20
 
