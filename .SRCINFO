@@ -1,7 +1,7 @@
 pkgbase = d2rloader-git
 	pkgdesc = Cross-platform Diablo 2 Resurrected Loader written in Python/Qt
 	pkgver = v1.2.0.r1.g95a2a8c
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/sh4nks/d2rloader
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 pkgname=d2rloader-git
 _pkgname=d2rloader
 pkgver=v1.2.0.r1.g95a2a8c
-pkgrel=1
+pkgrel=3
 pkgdesc="Cross-platform Diablo 2 Resurrected Loader written in Python/Qt "
 arch=('any')
 url="https://github.com/sh4nks/d2rloader"
@@ -34,7 +34,6 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  echo "$(pwd)"
   if [ -f "dist/*.whl" ]; then rm dist/*.whl; fi
 }
 
@@ -46,10 +45,9 @@ build() {
 check() {
   cd "$_pkgname"
 
-  echo $(pwd)
   desktop-file-validate resources/*.desktop
   #appstream-util validate-relax --nonet share/metainfo/*.appdata.xml
-  #appstreamcli validate --no-net resources/*.appdata.xml ||:
+  appstreamcli validate --no-net resources/*.appdata.xml ||:
 }
 
 package() {
