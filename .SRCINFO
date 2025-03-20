@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libuvc
 	pkgdesc = a cross-platform library for USB video devices (Android aarch64)
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://int80k.com/libuvc/
 	arch = any
 	license = BSD
