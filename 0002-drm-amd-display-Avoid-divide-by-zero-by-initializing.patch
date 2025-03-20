@@ -1,0 +1,31 @@
+From f2bcf1ee4c0bedfdc7e7611887372b62edd8a172 Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Tue, 21 Jan 2025 16:03:52 -0600
+Subject: [PATCH 02/28] drm/amd/display: Avoid divide by zero by initializing
+ dummy pitch to 1
+
+If the dummy values in `populate_dummy_dml_surface_cfg()` aren't updated
+then they can lead to a divide by zero in downstream callers like
+CalculateVMAndRowBytes()
+
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/gpu/drm/amd/display/dc/dml2/dml2_translation_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/dml2/dml2_translation_helper.c b/drivers/gpu/drm/amd/display/dc/dml2/dml2_translation_helper.c
+index bde4250853b1..f07afe451006 100644
+--- a/drivers/gpu/drm/amd/display/dc/dml2/dml2_translation_helper.c
++++ b/drivers/gpu/drm/amd/display/dc/dml2/dml2_translation_helper.c
+@@ -852,7 +852,7 @@ static void populate_dummy_dml_surface_cfg(struct dml_surface_cfg_st *out, unsig
+ 	out->SurfaceWidthC[location] = in->timing.h_addressable;
+ 	out->SurfaceHeightC[location] = in->timing.v_addressable;
+ 	out->PitchY[location] = ((out->SurfaceWidthY[location] + 127) / 128) * 128;
+-	out->PitchC[location] = 0;
++	out->PitchC[location] = 1;
+ 	out->DCCEnable[location] = false;
+ 	out->DCCMetaPitchY[location] = 0;
+ 	out->DCCMetaPitchC[location] = 0;
+-- 
+2.48.1
+

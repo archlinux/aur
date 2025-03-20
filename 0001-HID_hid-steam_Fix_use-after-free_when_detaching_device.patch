@@ -1,0 +1,83 @@
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from endrift.com (endrift.com [173.255.198.10])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C644276D25
+	for <linux-input@vger.kernel.org>; Thu, 27 Feb 2025 23:41:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=173.255.198.10
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1740699717; cv=none; b=STD+Zs7qRWqxCOSZOuE7ym9SSozTciREBrKZGC0W1LYuNXuIBgAfcItiQcE8nNXIew+a+jddx2XsKjfNIhL1kQYiDHzDpuPhBlxg6Qzru7hUW2ixp8XIS/hBo5pNYJdljXhYqO0jEJOGOn+oshsxarmN7v+jfzDhKCF+x2DEWEw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1740699717; c=relaxed/simple;
+	bh=i6YVh2XTZpFCbjIb8LPGyivqcwzOzLrY5Ci5e00ITvA=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=qSShwknxP67UzslWCrc2RF8ZBRSJkYOwZwKnqpmb00Qd6rV6YTWV7KjGTCOg2Yj74y8HTQnOCFMN2un9et0CTmj5CSsWDhwAoL5kkSKZTUPouoZm68XDbF9VfeHaLX13OC6j9qHB7xvtFoe1V1H1Rh1+bvlGKl390QqmAFh1qtM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=endrift.com; spf=pass smtp.mailfrom=endrift.com; dkim=pass (2048-bit key) header.d=endrift.com header.i=@endrift.com header.b=xqELop0X; arc=none smtp.client-ip=173.255.198.10
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=endrift.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=endrift.com
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=endrift.com header.i=@endrift.com header.b="xqELop0X"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=endrift.com; s=2020;
+	t=1740699708; bh=i6YVh2XTZpFCbjIb8LPGyivqcwzOzLrY5Ci5e00ITvA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=xqELop0XcpBffqVovDTQmbKQkkFzMi2S24rvoa/ubBRSmk72GiIelFvQBhpvQWjWd
+	 Mn6NPD6dz6W4Q51GM2KWSwbW9r6TZJTJ04oiv0WdZpC75ACKVnuid9i/zUNH/hKGSm
+	 H+57UEMlD3pw7BKGCYmstxXV96gxuSuV+TwJFeBBQh77iCaBWG9GLQAfY2HaMUkOzR
+	 HvGgH+muKibe01wUZWFHPXZDC/afmPJ5zBGepIVcnsURLa65SxdvNIGKd5PupFCh7S
+	 /vdXgBSprRmBPKLqm7WIOfDxhHMAK3dQTGVM8gbpCi40mM6jwQESWfmnPEHXMMyE9e
+	 IVTG/xItX5v5Q==
+Received: from nebulosa.vulpes.eutheria.net (71-212-74-234.tukw.qwest.net [71.212.74.234])
+	by endrift.com (Postfix) with ESMTPSA id 2D6F9A022;
+	Thu, 27 Feb 2025 15:41:48 -0800 (PST)
+From: Vicki Pfau <vi@endrift.com>
+To: Jiri Kosina <jikos@kernel.org>,
+	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
+	linux-input@vger.kernel.org
+Cc: Vicki Pfau <vi@endrift.com>,
+	syzbot+0154da2d403396b2bd59@syzkaller.appspotmail.com
+Subject: [PATCH] HID: hid-steam: Fix use-after-free when detaching device
+Date: Thu, 27 Feb 2025 15:41:33 -0800
+Message-ID: <20250227234133.997805-1-vi@endrift.com>
+X-Mailer: git-send-email 2.48.1
+Precedence: bulk
+X-Mailing-List: linux-input@vger.kernel.org
+List-Id: <linux-input.vger.kernel.org>
+List-Subscribe: <mailto:linux-input+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-input+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+When a hid-steam device is removed it must clean up the client_hdev used for
+intercepting hidraw access. This can lead to scheduling deferred work to
+reattach the input device. Though the cleanup cancels the deferred work, this
+was done before the client_hdev itself is cleaned up, so it gets rescheduled.
+This patch fixes the ordering to make sure the deferred work is properly
+canceled.
+
+Reported-by: syzbot+0154da2d403396b2bd59@syzkaller.appspotmail.com
+Fixes: 79504249d7e2 ("HID: hid-steam: Move hidraw input (un)registering to work")
+Signed-off-by: Vicki Pfau <vi@endrift.com>
+---
+ drivers/hid/hid-steam.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/hid/hid-steam.c b/drivers/hid/hid-steam.c
+index c9e65e9088b3..10460b7bde1a 100644
+--- a/drivers/hid/hid-steam.c
++++ b/drivers/hid/hid-steam.c
+@@ -1327,11 +1327,11 @@ static void steam_remove(struct hid_device *hdev)
+ 		return;
+ 	}
+ 
++	hid_destroy_device(steam->client_hdev);
+ 	cancel_delayed_work_sync(&steam->mode_switch);
+ 	cancel_work_sync(&steam->work_connect);
+ 	cancel_work_sync(&steam->rumble_work);
+ 	cancel_work_sync(&steam->unregister_work);
+-	hid_destroy_device(steam->client_hdev);
+ 	steam->client_hdev = NULL;
+ 	steam->client_opened = 0;
+ 	if (steam->quirks & STEAM_QUIRK_WIRELESS) {
+-- 
+2.48.1
+
+

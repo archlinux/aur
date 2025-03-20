@@ -1,0 +1,28 @@
+From 4ddc3fe145dd6311ae62826bd9c077ce01388798 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Fri, 7 Jun 2024 15:58:01 +1200
+Subject: [PATCH 03/28] hid: add VID/PID for ASUS ROG RAIKIRI PRO
+
+Add the VID/PID for ASUS ROG RAIKIRI PRO. Required in future to control
+the RGB.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-ids.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
+index d1d479ca50a2..d1ab021e4a6a 100644
+--- a/drivers/hid/hid-ids.h
++++ b/drivers/hid/hid-ids.h
+@@ -210,6 +210,7 @@
+ #define USB_DEVICE_ID_ASUSTEK_ROG_NKEY_KEYBOARD2	0x19b6
+ #define USB_DEVICE_ID_ASUSTEK_ROG_NKEY_KEYBOARD3	0x1a30
+ #define USB_DEVICE_ID_ASUSTEK_ROG_Z13_LIGHTBAR		0x18c6
++#define USB_DEVICE_ID_ASUSTEK_ROG_RAIKIRI_PAD		0x1abb
+ #define USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY		0x1abe
+ #define USB_DEVICE_ID_ASUSTEK_ROG_NKEY_ALLY_X		0x1b4c
+ #define USB_DEVICE_ID_ASUSTEK_ROG_CLAYMORE_II_KEYBOARD	0x196b
+-- 
+2.48.1
+

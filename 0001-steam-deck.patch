@@ -1,0 +1,1062 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sat, 19 Feb 2022 16:08:36 -0800
+Subject: [PATCH] mfd: Add MFD core driver for Steam Deck
+
+Add MFD core driver for Steam Deck. Doesn't really do much so far
+besides instantiating a number of MFD cells that implement all the
+interesting functionality.
+
+(cherry picked from commit 5f534c2d6ebdefccb9c024eb0f013bc1c0c622d9)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Jan200101 <sentrycraft123@gmail.com>
+---
+ drivers/mfd/Kconfig     |  11 ++++
+ drivers/mfd/Makefile    |   2 +
+ drivers/mfd/steamdeck.c | 127 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 140 insertions(+)
+ create mode 100644 drivers/mfd/steamdeck.c
+
+diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+index 8b93856de432..af335d9150e9 100644
+--- a/drivers/mfd/Kconfig
++++ b/drivers/mfd/Kconfig
+@@ -2260,5 +2260,16 @@ config MFD_RSMU_SPI
+ 	  Additional drivers must be enabled in order to use the functionality
+ 	  of the device.
+
++config MFD_STEAMDECK
++	tristate "Valve Steam Deck"
++	select MFD_CORE
++	depends on ACPI
++	depends on X86_64 || COMPILE_TEST
++	help
++	  This driver registers various MFD cells that expose aspects
++	  of Steam Deck specific ACPI functionality.
++
++	  Say N here, unless you are running on Steam Deck hardware.
++
+ endmenu
+ endif
+diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+index 7ed3ef4a698c..d01254ef0106 100644
+--- a/drivers/mfd/Makefile
++++ b/drivers/mfd/Makefile
+@@ -280,2 +280,4 @@ obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu_i2c.o rsmu_core.o
+ obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu_i2c.o rsmu_core.o
+ obj-$(CONFIG_MFD_RSMU_SPI)	+= rsmu_spi.o rsmu_core.o
++
++obj-$(CONFIG_MFD_STEAMDECK)	+= steamdeck.o
+diff --git a/drivers/mfd/steamdeck.c b/drivers/mfd/steamdeck.c
+new file mode 100644
+index 000000000000..0e504b3c2796
+--- /dev/null
++++ b/drivers/mfd/steamdeck.c
+@@ -0,0 +1,127 @@
++// SPDX-License-Identifier: GPL-2.0+
++
++/*
++ * Steam Deck EC MFD core driver
++ *
++ * Copyright (C) 2021-2022 Valve Corporation
++ *
++ */
++
++#include <linux/acpi.h>
++#include <linux/platform_device.h>
++#include <linux/mfd/core.h>
++
++#define STEAMDECK_STA_OK			\
++	(ACPI_STA_DEVICE_ENABLED |		\
++	 ACPI_STA_DEVICE_PRESENT |		\
++	 ACPI_STA_DEVICE_FUNCTIONING)
++
++struct steamdeck {
++	struct acpi_device *adev;
++	struct device *dev;
++};
++
++#define STEAMDECK_ATTR_RO(_name, _method)				\
++	static ssize_t _name##_show(struct device *dev,			\
++				    struct device_attribute *attr,	\
++				    char *buf)				\
++	{								\
++		struct steamdeck *sd = dev_get_drvdata(dev);		\
++		unsigned long long val;					\
++									\
++		if (ACPI_FAILURE(acpi_evaluate_integer(			\
++					 sd->adev->handle,		\
++					 _method, NULL, &val)))		\
++			return -EIO;					\
++									\
++		return sysfs_emit(buf, "%llu\n", val);			\
++	}								\
++	static DEVICE_ATTR_RO(_name)
++
++STEAMDECK_ATTR_RO(firmware_version, "PDFW");
++STEAMDECK_ATTR_RO(board_id, "BOID");
++
++static struct attribute *steamdeck_attrs[] = {
++	&dev_attr_firmware_version.attr,
++	&dev_attr_board_id.attr,
++	NULL
++};
++
++ATTRIBUTE_GROUPS(steamdeck);
++
++static const struct mfd_cell steamdeck_cells[] = {
++	{ .name = "steamdeck-hwmon"  },
++	{ .name = "steamdeck-leds"   },
++	{ .name = "steamdeck-extcon" },
++};
++
++static void steamdeck_remove_sysfs_groups(void *data)
++{
++	struct steamdeck *sd = data;
++
++	sysfs_remove_groups(&sd->dev->kobj, steamdeck_groups);
++}
++
++static int steamdeck_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	unsigned long long sta;
++	struct steamdeck *sd;
++	acpi_status status;
++	int ret;
++
++	sd = devm_kzalloc(dev, sizeof(*sd), GFP_KERNEL);
++	if (!sd)
++		return -ENOMEM;
++	sd->adev = ACPI_COMPANION(dev);
++	sd->dev = dev;
++	platform_set_drvdata(pdev, sd);
++
++	status = acpi_evaluate_integer(sd->adev->handle, "_STA",
++				       NULL, &sta);
++	if (ACPI_FAILURE(status)) {
++		dev_err(dev, "Status check failed (0x%x)\n", status);
++		return -EINVAL;
++	}
++
++	if ((sta & STEAMDECK_STA_OK) != STEAMDECK_STA_OK) {
++		dev_err(dev, "Device is not ready\n");
++		return -EINVAL;
++	}
++
++	ret = sysfs_create_groups(&dev->kobj, steamdeck_groups);
++	if (ret) {
++		dev_err(dev, "Failed to create sysfs group\n");
++		return ret;
++	}
++
++	ret = devm_add_action_or_reset(dev, steamdeck_remove_sysfs_groups,
++				       sd);
++	if (ret) {
++		dev_err(dev, "Failed to register devres action\n");
++		return ret;
++	}
++
++	return devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
++				    steamdeck_cells, ARRAY_SIZE(steamdeck_cells),
++				    NULL, 0, NULL);
++}
++
++static const struct acpi_device_id steamdeck_device_ids[] = {
++	{ "VLV0100", 0 },
++	{ "", 0 },
++};
++MODULE_DEVICE_TABLE(acpi, steamdeck_device_ids);
++
++static struct platform_driver steamdeck_driver = {
++	.probe = steamdeck_probe,
++	.driver = {
++		.name = "steamdeck",
++		.acpi_match_table = steamdeck_device_ids,
++	},
++};
++module_platform_driver(steamdeck_driver);
++
++MODULE_AUTHOR("Andrey Smirnov <andrew.smirnov@gmail.com>");
++MODULE_DESCRIPTION("Steam Deck EC MFD core driver");
++MODULE_LICENSE("GPL");
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sat, 19 Feb 2022 16:09:45 -0800
+Subject: [PATCH] hwmon: Add driver for Steam Deck's EC sensors
+
+Add driver for sensors exposed by EC firmware on Steam Deck hardware.
+
+(cherry picked from commit 6917aac77bee6185ae3920b936cdbe7876118c0b)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Jan200101 <sentrycraft123@gmail.com>
+---
+ drivers/hwmon/Kconfig           |  11 ++
+ drivers/hwmon/Makefile          |   1 +
+ drivers/hwmon/steamdeck-hwmon.c | 224 ++++++++++++++++++++++++++++++++
+ 3 files changed, 236 insertions(+)
+ create mode 100644 drivers/hwmon/steamdeck-hwmon.c
+
+diff --git a/drivers/hwmon/Kconfig b/drivers/hwmon/Kconfig
+index 7ac3daaf59ce..d784c78417cf 100644
+--- a/drivers/hwmon/Kconfig
++++ b/drivers/hwmon/Kconfig
+@@ -1900,6 +1900,17 @@ config SENSORS_SCH5636
+ 	  This driver can also be built as a module. If so, the module
+ 	  will be called sch5636.
+
++config SENSORS_STEAMDECK
++	tristate "Steam Deck EC sensors"
++	depends on MFD_STEAMDECK
++	help
++	  If you say yes here you get support for the hardware
++	  monitoring features exposed by EC firmware on Steam Deck
++	  devices
++
++	  This driver can also be built as a module. If so, the module
++	  will be called steamdeck-hwmon.
++
+ config SENSORS_STTS751
+ 	tristate "ST Microelectronics STTS751"
+ 	depends on I2C
+diff --git a/drivers/hwmon/Makefile b/drivers/hwmon/Makefile
+index 11d076cad8a2..d03c1e1d339f 100644
+--- a/drivers/hwmon/Makefile
++++ b/drivers/hwmon/Makefile
+@@ -207,6 +207,7 @@ obj-$(CONFIG_SENSORS_SMSC47M1)	+= smsc47
+ obj-$(CONFIG_SENSORS_SMSC47M192)+= smsc47m192.o
+ obj-$(CONFIG_SENSORS_SPARX5)	+= sparx5-temp.o
+ obj-$(CONFIG_SENSORS_SPD5118)	+= spd5118.o
++obj-$(CONFIG_SENSORS_STEAMDECK) += steamdeck-hwmon.o
+ obj-$(CONFIG_SENSORS_STTS751)	+= stts751.o
+ obj-$(CONFIG_SENSORS_SURFACE_FAN)+= surface_fan.o
+ obj-$(CONFIG_SENSORS_SY7636A)	+= sy7636a-hwmon.o
+diff --git a/drivers/hwmon/steamdeck-hwmon.c b/drivers/hwmon/steamdeck-hwmon.c
+new file mode 100644
+index 000000000000..fab9e9460bd4
+--- /dev/null
++++ b/drivers/hwmon/steamdeck-hwmon.c
+@@ -0,0 +1,224 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Steam Deck EC sensors driver
++ *
++ * Copyright (C) 2021-2022 Valve Corporation
++ */
++
++#include <linux/acpi.h>
++#include <linux/hwmon.h>
++#include <linux/platform_device.h>
++
++#define STEAMDECK_HWMON_NAME	"steamdeck-hwmon"
++
++struct steamdeck_hwmon {
++	struct acpi_device *adev;
++};
++
++static long
++steamdeck_hwmon_get(struct steamdeck_hwmon *sd, const char *method)
++{
++	unsigned long long val;
++	if (ACPI_FAILURE(acpi_evaluate_integer(sd->adev->handle,
++					       (char *)method, NULL, &val)))
++		return -EIO;
++
++	return val;
++}
++
++static int
++steamdeck_hwmon_read(struct device *dev, enum hwmon_sensor_types type,
++		     u32 attr, int channel, long *out)
++{
++	struct steamdeck_hwmon *sd = dev_get_drvdata(dev);
++
++	switch (type) {
++	case hwmon_curr:
++		if (attr != hwmon_curr_input)
++			return -EOPNOTSUPP;
++
++		*out = steamdeck_hwmon_get(sd, "PDAM");
++		if (*out < 0)
++			return *out;
++		break;
++	case hwmon_in:
++		if (attr != hwmon_in_input)
++			return -EOPNOTSUPP;
++
++		*out = steamdeck_hwmon_get(sd, "PDVL");
++		if (*out < 0)
++			return *out;
++		break;
++	case hwmon_temp:
++		if (attr != hwmon_temp_input)
++			return -EOPNOTSUPP;
++
++		*out = steamdeck_hwmon_get(sd, "BATT");
++		if (*out < 0)
++			return *out;
++		/*
++		 * Assuming BATT returns deg C we need to mutiply it
++		 * by 1000 to convert to mC
++		 */
++		*out *= 1000;
++		break;
++	case hwmon_fan:
++		switch (attr) {
++		case hwmon_fan_input:
++			*out = steamdeck_hwmon_get(sd, "FANR");
++			if (*out < 0)
++				return *out;
++			break;
++		case hwmon_fan_target:
++			*out = steamdeck_hwmon_get(sd, "FSSR");
++			if (*out < 0)
++				return *out;
++			break;
++		case hwmon_fan_fault:
++			*out = steamdeck_hwmon_get(sd, "FANC");
++			if (*out < 0)
++				return *out;
++			/*
++			 * FANC (Fan check):
++			 * 0: Abnormal
++			 * 1: Normal
++			 */
++			*out = !*out;
++			break;
++		default:
++			return -EOPNOTSUPP;
++		}
++		break;
++	default:
++		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int
++steamdeck_hwmon_read_string(struct device *dev, enum hwmon_sensor_types type,
++			    u32 attr, int channel, const char **str)
++{
++	switch (type) {
++		/*
++		 * These two aren't, strictly speaking, measured. EC
++		 * firmware just reports what PD negotiation resulted
++		 * in.
++		 */
++	case hwmon_curr:
++		*str = "PD Contract Current";
++		break;
++	case hwmon_in:
++		*str = "PD Contract Voltage";
++		break;
++	case hwmon_temp:
++		*str = "Battery Temp";
++		break;
++	case hwmon_fan:
++		*str = "System Fan";
++		break;
++	default:
++		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int
++steamdeck_hwmon_write(struct device *dev, enum hwmon_sensor_types type,
++		      u32 attr, int channel, long val)
++{
++	struct steamdeck_hwmon *sd = dev_get_drvdata(dev);
++
++	if (type != hwmon_fan ||
++	    attr != hwmon_fan_target)
++		return -EOPNOTSUPP;
++
++	val = clamp_val(val, 0, 7300);
++
++	if (ACPI_FAILURE(acpi_execute_simple_method(sd->adev->handle,
++						    "FANS", val)))
++		return -EIO;
++
++	return 0;
++}
++
++static umode_t
++steamdeck_hwmon_is_visible(const void *data, enum hwmon_sensor_types type,
++			   u32 attr, int channel)
++{
++	if (type == hwmon_fan &&
++	    attr == hwmon_fan_target)
++		return 0644;
++
++	return 0444;
++}
++
++static const struct hwmon_channel_info *steamdeck_hwmon_info[] = {
++	HWMON_CHANNEL_INFO(in,
++			   HWMON_I_INPUT | HWMON_I_LABEL),
++	HWMON_CHANNEL_INFO(curr,
++			   HWMON_C_INPUT | HWMON_C_LABEL),
++	HWMON_CHANNEL_INFO(temp,
++			   HWMON_T_INPUT | HWMON_T_LABEL),
++	HWMON_CHANNEL_INFO(fan,
++			   HWMON_F_INPUT | HWMON_F_LABEL |
++			   HWMON_F_TARGET | HWMON_F_FAULT),
++	NULL
++};
++
++static const struct hwmon_ops steamdeck_hwmon_ops = {
++	.is_visible = steamdeck_hwmon_is_visible,
++	.read = steamdeck_hwmon_read,
++	.read_string = steamdeck_hwmon_read_string,
++	.write = steamdeck_hwmon_write,
++};
++
++static const struct hwmon_chip_info steamdeck_hwmon_chip_info = {
++	.ops = &steamdeck_hwmon_ops,
++	.info = steamdeck_hwmon_info,
++};
++
++static int steamdeck_hwmon_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct steamdeck_hwmon *sd;
++	struct device *hwmon;
++
++	sd = devm_kzalloc(dev, sizeof(*sd), GFP_KERNEL);
++	if (!sd)
++		return -ENOMEM;
++
++	sd->adev = ACPI_COMPANION(dev->parent);
++	hwmon = devm_hwmon_device_register_with_info(dev,
++						     "steamdeck_hwmon",
++						     sd,
++						     &steamdeck_hwmon_chip_info,
++						     NULL);
++	if (IS_ERR(hwmon)) {
++		dev_err(dev, "Failed to register HWMON device");
++		return PTR_ERR(hwmon);
++	}
++
++	return 0;
++}
++
++static const struct platform_device_id steamdeck_hwmon_id_table[] = {
++	{ .name = STEAMDECK_HWMON_NAME },
++	{}
++};
++MODULE_DEVICE_TABLE(platform, steamdeck_hwmon_id_table);
++
++static struct platform_driver steamdeck_hwmon_driver = {
++	.probe = steamdeck_hwmon_probe,
++	.driver = {
++		.name = STEAMDECK_HWMON_NAME,
++	},
++	.id_table = steamdeck_hwmon_id_table,
++};
++module_platform_driver(steamdeck_hwmon_driver);
++
++MODULE_AUTHOR("Andrey Smirnov <andrew.smirnov@gmail.com>");
++MODULE_DESCRIPTION("Steam Deck EC sensors driver");
++MODULE_LICENSE("GPL");
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sun, 27 Feb 2022 12:58:05 -0800
+Subject: [PATCH] leds: steamdeck: Add support for Steam Deck LED
+
+(cherry picked from commit 85a86d19aa7022ff0555023d53aef78323a42d0c)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Jan200101 <sentrycraft123@gmail.com>
+---
+ drivers/leds/Kconfig          |  7 ++++
+ drivers/leds/Makefile         |  1 +
+ drivers/leds/leds-steamdeck.c | 74 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 82 insertions(+)
+ create mode 100644 drivers/leds/leds-steamdeck.c
+
+diff --git a/drivers/leds/Kconfig b/drivers/leds/Kconfig
+index 499d0f215a8b..d1d761695cd6 100644
+--- a/drivers/leds/Kconfig
++++ b/drivers/leds/Kconfig
+@@ -864,6 +864,13 @@ config LEDS_ACER_A500
+ 	  This option enables support for the Power Button LED of
+ 	  Acer Iconia Tab A500.
+
++config LEDS_STEAMDECK
++	tristate "LED support for Steam Deck"
++	depends on LEDS_CLASS && MFD_STEAMDECK
++	help
++	  This option enabled support for the status LED (next to the
++	  power button) on Steam Deck
++
+ source "drivers/leds/blink/Kconfig"
+
+ comment "Flash and Torch LED drivers"
+diff --git a/drivers/leds/Makefile b/drivers/leds/Makefile
+index 4fd2f92cd198..130a1c175dde 100644
+--- a/drivers/leds/Makefile
++++ b/drivers/leds/Makefile
+@@ -75,6 +75,7 @@
+ obj-$(CONFIG_LEDS_REGULATOR)		+= leds-regulator.o
+ obj-$(CONFIG_LEDS_SC27XX_BLTC)		+= leds-sc27xx-bltc.o
+ obj-$(CONFIG_LEDS_SUN50I_A100)		+= leds-sun50i-a100.o
++obj-$(CONFIG_LEDS_STEAMDECK)		+= leds-steamdeck.o
+ obj-$(CONFIG_LEDS_SUNFIRE)		+= leds-sunfire.o
+ obj-$(CONFIG_LEDS_SYSCON)		+= leds-syscon.o
+ obj-$(CONFIG_LEDS_TCA6507)		+= leds-tca6507.o
+diff --git a/drivers/leds/leds-steamdeck.c b/drivers/leds/leds-steamdeck.c
+new file mode 100644
+index 000000000000..686500b8de73
+--- /dev/null
++++ b/drivers/leds/leds-steamdeck.c
+@@ -0,0 +1,74 @@
++// SPDX-License-Identifier: GPL-2.0+
++
++/*
++ * Steam Deck EC MFD LED cell driver
++ *
++ * Copyright (C) 2021-2022 Valve Corporation
++ *
++ */
++
++#include <linux/acpi.h>
++#include <linux/leds.h>
++#include <linux/platform_device.h>
++
++struct steamdeck_led {
++	struct acpi_device *adev;
++	struct led_classdev cdev;
++};
++
++static int steamdeck_leds_brightness_set(struct led_classdev *cdev,
++					 enum led_brightness value)
++{
++	struct steamdeck_led *sd = container_of(cdev, struct steamdeck_led,
++						cdev);
++
++	if (ACPI_FAILURE(acpi_execute_simple_method(sd->adev->handle,
++						    "CHBV", value)))
++		return -EIO;
++
++	return 0;
++}
++
++static int steamdeck_leds_probe(struct platform_device *pdev)
++{
++  	struct device *dev = &pdev->dev;
++	struct steamdeck_led *sd;
++	int ret;
++
++	sd = devm_kzalloc(dev, sizeof(*sd), GFP_KERNEL);
++	if (!sd)
++		return -ENOMEM;
++
++	sd->adev = ACPI_COMPANION(dev->parent);
++
++	sd->cdev.name = "status:white";
++	sd->cdev.brightness_set_blocking = steamdeck_leds_brightness_set;
++	sd->cdev.max_brightness = 100;
++
++	ret = devm_led_classdev_register(dev, &sd->cdev);
++	if (ret) {
++		dev_err(dev, "Failed to register LEDs device: %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++
++static const struct platform_device_id steamdeck_leds_id_table[] = {
++	{ .name = "steamdeck-leds" },
++	{}
++};
++MODULE_DEVICE_TABLE(platform, steamdeck_leds_id_table);
++
++static struct platform_driver steamdeck_leds_driver = {
++	.probe = steamdeck_leds_probe,
++	.driver = {
++		.name = "steamdeck-leds",
++	},
++	.id_table = steamdeck_leds_id_table,
++};
++module_platform_driver(steamdeck_leds_driver);
++
++MODULE_AUTHOR("Andrey Smirnov <andrew.smirnov@gmail.com>");
++MODULE_DESCRIPTION("Steam Deck LEDs driver");
++MODULE_LICENSE("GPL");
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sun, 27 Feb 2022 14:46:08 -0800
+Subject: [PATCH] extcon: Add driver for Steam Deck
+
+(cherry picked from commit f9f2eddae582ae39d5f89c1218448fc259b90aa8)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Jan200101 <sentrycraft123@gmail.com>
+---
+ drivers/extcon/Kconfig            |   7 ++
+ drivers/extcon/Makefile           |   1 +
+ drivers/extcon/extcon-steamdeck.c | 180 ++++++++++++++++++++++++++++++
+ 3 files changed, 188 insertions(+)
+ create mode 100644 drivers/extcon/extcon-steamdeck.c
+
+diff --git a/drivers/extcon/Kconfig b/drivers/extcon/Kconfig
+index 290186e44e6b..4d444a9e2c1f 100644
+--- a/drivers/extcon/Kconfig
++++ b/drivers/extcon/Kconfig
+@@ -189,4 +189,11 @@ config EXTCON_USBC_TUSB320
+ 	  Say Y here to enable support for USB Type C cable detection extcon
+ 	  support using a TUSB320.
+
++config EXTCON_STEAMDECK
++	tristate "Steam Deck extcon support"
++	depends on MFD_STEAMDECK
++	help
++	  Say Y here to enable support of USB Type C cable detection extcon
++	  support on Steam Deck devices
++
+ endif
+diff --git a/drivers/extcon/Makefile b/drivers/extcon/Makefile
+index 1b390d934ca9..1c7e217f29e4 100644
+--- a/drivers/extcon/Makefile
++++ b/drivers/extcon/Makefile
+@@ -25,3 +25,4 @@ obj-$(CONFIG_EXTCON_SM5502)	+= extcon-sm5502.o
+ obj-$(CONFIG_EXTCON_USBC_CROS_EC) += extcon-usbc-cros-ec.o
+ obj-$(CONFIG_EXTCON_USBC_TUSB320) += extcon-usbc-tusb320.o
+ obj-$(CONFIG_EXTCON_RTK_TYPE_C) += extcon-rtk-type-c.o
++obj-$(CONFIG_EXTCON_STEAMDECK)  += extcon-steamdeck.o
+diff --git a/drivers/extcon/extcon-steamdeck.c b/drivers/extcon/extcon-steamdeck.c
+new file mode 100644
+index 000000000000..74f190adc8ea
+--- /dev/null
++++ b/drivers/extcon/extcon-steamdeck.c
+@@ -0,0 +1,180 @@
++
++#include <linux/acpi.h>
++#include <linux/platform_device.h>
++#include <linux/extcon-provider.h>
++
++#define ACPI_STEAMDECK_NOTIFY_STATUS	0x80
++
++/* 0 - port connected, 1 -port disconnected */
++#define ACPI_STEAMDECK_PORT_CONNECT	BIT(0)
++/* 0 - Upstream Facing Port, 1 - Downdstream Facing Port */
++#define ACPI_STEAMDECK_CUR_DATA_ROLE	BIT(3)
++/*
++ * Debouncing delay to allow negotiation process to settle. 2s value
++ * was arrived at via trial and error.
++ */
++#define STEAMDECK_ROLE_SWITCH_DELAY	(msecs_to_jiffies(2000))
++
++struct steamdeck_extcon {
++	struct acpi_device *adev;
++	struct delayed_work role_work;
++	struct extcon_dev *edev;
++	struct device *dev;
++};
++
++static int steamdeck_read_pdcs(struct steamdeck_extcon *sd, unsigned long long *pdcs)
++{
++	acpi_status status;
++
++	status = acpi_evaluate_integer(sd->adev->handle, "PDCS", NULL, pdcs);
++	if (ACPI_FAILURE(status)) {
++		dev_err(sd->dev, "PDCS evaluation failed: %s\n",
++			acpi_format_exception(status));
++		return -EIO;
++	}
++
++	return 0;
++}
++
++static void steamdeck_usb_role_work(struct work_struct *work)
++{
++	struct steamdeck_extcon *sd =
++		container_of(work, struct steamdeck_extcon, role_work.work);
++	unsigned long long pdcs;
++	bool usb_host;
++
++	if (steamdeck_read_pdcs(sd, &pdcs))
++		return;
++
++	/*
++	 * We only care about these two
++	 */
++	pdcs &= ACPI_STEAMDECK_PORT_CONNECT | ACPI_STEAMDECK_CUR_DATA_ROLE;
++
++	/*
++	 * For "connect" events our role is determined by a bit in
++	 * PDCS, for "disconnect" we switch to being a gadget
++	 * unconditionally. The thinking for the latter is we don't
++	 * want to start acting as a USB host until we get
++	 * confirmation from the firmware that we are a USB host
++	 */
++	usb_host = (pdcs & ACPI_STEAMDECK_PORT_CONNECT) ?
++		pdcs & ACPI_STEAMDECK_CUR_DATA_ROLE : false;
++
++	dev_dbg(sd->dev, "USB role is %s\n", usb_host ? "host" : "device");
++	WARN_ON(extcon_set_state_sync(sd->edev, EXTCON_USB_HOST,
++				      usb_host));
++
++}
++
++static void steamdeck_notify(acpi_handle handle, u32 event, void *context)
++{
++	struct device *dev = context;
++	struct steamdeck_extcon *sd = dev_get_drvdata(dev);
++	unsigned long long pdcs;
++	unsigned long delay;
++
++	switch (event) {
++	case ACPI_STEAMDECK_NOTIFY_STATUS:
++		if (steamdeck_read_pdcs(sd, &pdcs))
++			return;
++		/*
++		 * We process "disconnect" events immediately and
++		 * "connect" events with a delay to give the HW time
++		 * to settle. For example attaching USB hub (at least
++		 * for HW used for testing) will generate intermediary
++		 * event with "host" bit not set, followed by the one
++		 * that does have it set.
++		 */
++		delay = (pdcs & ACPI_STEAMDECK_PORT_CONNECT) ?
++			STEAMDECK_ROLE_SWITCH_DELAY : 0;
++
++		queue_delayed_work(system_long_wq, &sd->role_work, delay);
++		break;
++	default:
++		dev_warn(dev, "Unsupported event [0x%x]\n", event);
++	}
++}
++
++static void steamdeck_remove_notify_handler(void *data)
++{
++	struct steamdeck_extcon *sd = data;
++
++	acpi_remove_notify_handler(sd->adev->handle, ACPI_DEVICE_NOTIFY,
++				   steamdeck_notify);
++	cancel_delayed_work_sync(&sd->role_work);
++}
++
++static const unsigned int steamdeck_extcon_cable[] = {
++	EXTCON_USB,
++	EXTCON_USB_HOST,
++	EXTCON_CHG_USB_SDP,
++	EXTCON_CHG_USB_CDP,
++	EXTCON_CHG_USB_DCP,
++	EXTCON_CHG_USB_ACA,
++	EXTCON_NONE,
++};
++
++static int steamdeck_extcon_probe(struct platform_device *pdev)
++{
++  	struct device *dev = &pdev->dev;
++	struct steamdeck_extcon *sd;
++	acpi_status status;
++	int ret;
++
++	sd = devm_kzalloc(dev, sizeof(*sd), GFP_KERNEL);
++	if (!sd)
++		return -ENOMEM;
++
++	INIT_DELAYED_WORK(&sd->role_work, steamdeck_usb_role_work);
++	platform_set_drvdata(pdev, sd);
++	sd->adev = ACPI_COMPANION(dev->parent);
++	sd->dev  = dev;
++	sd->edev = devm_extcon_dev_allocate(dev, steamdeck_extcon_cable);
++	if (IS_ERR(sd->edev))
++		return PTR_ERR(sd->edev);
++
++	ret = devm_extcon_dev_register(dev, sd->edev);
++	if (ret < 0) {
++		dev_err(dev, "Failed to register extcon device: %d\n", ret);
++		return ret;
++	}
++
++	/*
++	 * Set initial role value
++	 */
++	queue_delayed_work(system_long_wq, &sd->role_work, 0);
++	flush_delayed_work(&sd->role_work);
++
++	status = acpi_install_notify_handler(sd->adev->handle,
++					     ACPI_DEVICE_NOTIFY,
++					     steamdeck_notify,
++					     dev);
++	if (ACPI_FAILURE(status)) {
++		dev_err(dev, "Error installing ACPI notify handler\n");
++		return -EIO;
++	}
++
++	ret = devm_add_action_or_reset(dev, steamdeck_remove_notify_handler,
++				       sd);
++	return ret;
++}
++
++static const struct platform_device_id steamdeck_extcon_id_table[] = {
++	{ .name = "steamdeck-extcon" },
++	{}
++};
++MODULE_DEVICE_TABLE(platform, steamdeck_extcon_id_table);
++
++static struct platform_driver steamdeck_extcon_driver = {
++	.probe = steamdeck_extcon_probe,
++	.driver = {
++		.name = "steamdeck-extcon",
++	},
++	.id_table = steamdeck_extcon_id_table,
++};
++module_platform_driver(steamdeck_extcon_driver);
++
++MODULE_AUTHOR("Andrey Smirnov <andrew.smirnov@gmail.com>");
++MODULE_DESCRIPTION("Steam Deck extcon driver");
++MODULE_LICENSE("GPL");
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sat, 15 Jul 2023 12:58:54 -0700
+Subject: [PATCH] hwmon: steamdeck-hwmon: Add support for max battery
+ level/rate
+
+Add support for max battery level/charge rate attributes.
+
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+(cherry picked from commit 50af83e8fd75dc52221edd3fb6fd7a7f70c4d8a4)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Jan200101 <sentrycraft123@gmail.com>
+---
+ drivers/hwmon/steamdeck-hwmon.c | 72 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 71 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hwmon/steamdeck-hwmon.c b/drivers/hwmon/steamdeck-hwmon.c
+index fab9e9460bd4..9d0a5471b181 100644
+--- a/drivers/hwmon/steamdeck-hwmon.c
++++ b/drivers/hwmon/steamdeck-hwmon.c
+@@ -180,6 +180,76 @@ static const struct hwmon_chip_info steamdeck_hwmon_chip_info = {
+ 	.info = steamdeck_hwmon_info,
+ };
+
++
++static ssize_t
++steamdeck_hwmon_simple_store(struct device *dev, const char *buf, size_t count,
++			     const char *method,
++			     unsigned long upper_limit)
++{
++	struct steamdeck_hwmon *sd = dev_get_drvdata(dev);
++	unsigned long value;
++
++	if (kstrtoul(buf, 10, &value) || value >= upper_limit)
++		return -EINVAL;
++
++	if (ACPI_FAILURE(acpi_execute_simple_method(sd->adev->handle,
++						    (char *)method, value)))
++		return -EIO;
++
++	return count;
++}
++
++static ssize_t
++steamdeck_hwmon_simple_show(struct device *dev, char *buf,
++			    const char *method)
++{
++	struct steamdeck_hwmon *sd = dev_get_drvdata(dev);
++	unsigned long value;
++
++	value = steamdeck_hwmon_get(sd, method);
++	if (value < 0)
++		return value;
++
++	return sprintf(buf, "%ld\n", value);
++}
++
++#define STEAMDECK_HWMON_ATTR_RW(_name, _set_method, _get_method,	\
++				_upper_limit)				\
++	static ssize_t _name##_show(struct device *dev,			\
++				    struct device_attribute *attr,	\
++				    char *buf)				\
++	{								\
++		return steamdeck_hwmon_simple_show(dev, buf,		\
++						   _get_method);	\
++	}								\
++	static ssize_t _name##_store(struct device *dev,		\
++				     struct device_attribute *attr,	\
++				     const char *buf, size_t count)	\
++	{								\
++		return steamdeck_hwmon_simple_store(dev, buf, count,	\
++						    _set_method,	\
++						    _upper_limit);	\
++	}								\
++	static DEVICE_ATTR_RW(_name)
++
++STEAMDECK_HWMON_ATTR_RW(max_battery_charge_level, "FCBL", "SFBL", 101);
++STEAMDECK_HWMON_ATTR_RW(max_battery_charge_rate,  "CHGR", "GCHR", 101);
++
++static struct attribute *steamdeck_hwmon_attributes[] = {
++	&dev_attr_max_battery_charge_level.attr,
++	&dev_attr_max_battery_charge_rate.attr,
++	NULL
++};
++
++static const struct attribute_group steamdeck_hwmon_group = {
++	.attrs = steamdeck_hwmon_attributes,
++};
++
++static const struct attribute_group *steamdeck_hwmon_groups[] = {
++	&steamdeck_hwmon_group,
++	NULL
++};
++
+ static int steamdeck_hwmon_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -195,7 +265,7 @@ static int steamdeck_hwmon_probe(struct platform_device *pdev)
+ 						     "steamdeck_hwmon",
+ 						     sd,
+ 						     &steamdeck_hwmon_chip_info,
+-						     NULL);
++						     steamdeck_hwmon_groups);
+ 	if (IS_ERR(hwmon)) {
+ 		dev_err(dev, "Failed to register HWMON device");
+ 		return PTR_ERR(hwmon);
+
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Sun, 24 Sep 2023 15:02:33 -0700
+Subject: [PATCH] mfd: steamdeck: Expose controller board power in sysfs
+
+As of version 118 Deck's BIOS implements "SCBP" method that allows
+gating power of the controller board (VBUS). Add a basic WO method to
+our root MFD device to allow toggling that.
+
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+(cherry picked from commit f97f32718acc10cbb51fef925842392e80904d74)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Jan200101 <sentrycraft123@gmail.com>
+---
+ drivers/mfd/steamdeck.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/drivers/mfd/steamdeck.c b/drivers/mfd/steamdeck.c
+index 0e504b3c2796..a60fa7db9141 100644
+--- a/drivers/mfd/steamdeck.c
++++ b/drivers/mfd/steamdeck.c
+@@ -41,9 +41,29 @@ struct steamdeck {
+ STEAMDECK_ATTR_RO(firmware_version, "PDFW");
+ STEAMDECK_ATTR_RO(board_id, "BOID");
+
++static ssize_t controller_board_power_store(struct device *dev,
++					    struct device_attribute *attr,
++					    const char *buf, size_t count)
++{
++	struct steamdeck *sd = dev_get_drvdata(dev);
++	bool enabled;
++	ssize_t ret = kstrtobool(buf, &enabled);
++
++	if (ret)
++		return ret;
++
++	if (ACPI_FAILURE(acpi_execute_simple_method(sd->adev->handle,
++						    "SCBP", enabled)))
++		return -EIO;
++
++	return count;
++}
++static DEVICE_ATTR_WO(controller_board_power);
++
+ static struct attribute *steamdeck_attrs[] = {
+ 	&dev_attr_firmware_version.attr,
+ 	&dev_attr_board_id.attr,
++	&dev_attr_controller_board_power.attr,
+ 	NULL
+ };
+
+From: Matthew Schwartz <njtransit215@gmail.com> Mon Sep 17 00:00:00 2001
+From: Andrey Smirnov <andrew.smirnov@gmail.com>
+Date: Mon, 20 Nov 2023 05:42:03 -0800
+Subject: [PATCH] leds-steamdeck: Add support for LED birghtness multiplier
+
+Add support for LED birghtness multiplier exposed via custom sysfs
+attribute (led_brightness_multiplier).
+
+Signed-off-by: Andrey Smirnov <andrew.smirnov@gmail.com>
+(cherry picked from commit c4ea057992e189ec8821cde3a65e2cc0529a5088)
+(cherry picked from commit e90fb9bec45c15c0c541ce60b994bab3922ddadf)
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/leds/leds-steamdeck.c | 49 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+
+diff --git a/drivers/leds/leds-steamdeck.c b/drivers/leds/leds-steamdeck.c
+index 686500b8de736..ada9fffc0a420 100644
+--- a/drivers/leds/leds-steamdeck.c
++++ b/drivers/leds/leds-steamdeck.c
+@@ -16,6 +16,54 @@ struct steamdeck_led {
+ 	struct led_classdev cdev;
+ };
+
++static ssize_t led_brightness_multiplier_show(struct device *dev,
++					      struct device_attribute *attr,
++					      char *buf)
++{
++	struct led_classdev *cdev = dev_get_drvdata(dev);
++	struct steamdeck_led *sd = container_of(cdev, struct steamdeck_led,
++						cdev);
++	unsigned long long led_brightness_multiplier;
++
++	if (ACPI_FAILURE(acpi_evaluate_integer(sd->adev->handle,
++					       "GLDM",
++					       NULL,
++					       &led_brightness_multiplier)))
++		return -EIO;
++
++
++	return sprintf(buf, "%llu", led_brightness_multiplier);
++}
++
++static ssize_t led_brightness_multiplier_store(struct device *dev,
++					       struct device_attribute *attr,
++					       const char *buf, size_t count)
++{
++	struct led_classdev *cdev = dev_get_drvdata(dev);
++	struct steamdeck_led *sd = container_of(cdev, struct steamdeck_led,
++						cdev);
++	unsigned long value;
++
++	if (kstrtoul(buf, 10, &value) || value > 100)
++		return -EINVAL;
++
++
++	if (ACPI_FAILURE(acpi_execute_simple_method(sd->adev->handle,
++						    "SLDM", value)))
++		return -EIO;
++
++
++	return count;
++}
++
++static DEVICE_ATTR_RW(led_brightness_multiplier);
++
++static struct attribute *steamdeck_led_attrs[] = {
++	&dev_attr_led_brightness_multiplier.attr,
++	NULL
++};
++ATTRIBUTE_GROUPS(steamdeck_led);
++
+ static int steamdeck_leds_brightness_set(struct led_classdev *cdev,
+ 					 enum led_brightness value)
+ {
+@@ -44,6 +92,7 @@ static int steamdeck_leds_probe(struct platform_device *pdev)
+ 	sd->cdev.name = "status:white";
+ 	sd->cdev.brightness_set_blocking = steamdeck_leds_brightness_set;
+ 	sd->cdev.max_brightness = 100;
++	sd->cdev.groups = steamdeck_led_groups;
+
+ 	ret = devm_led_classdev_register(dev, &sd->cdev);
+ 	if (ret) {
+
+--
+2.41.0

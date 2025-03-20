@@ -1,0 +1,43 @@
+From edf9057aca96335e527e9854e474c85e97697788 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 17 Dec 2024 09:31:08 +1300
+Subject: [PATCH 01/28] Tmp: add GA605W & H7606W to AMD-PMF quirks.
+
+This will not be submitted upstream as the entire
+quirk system is being removed in 6.14 kernel.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/platform/x86/amd/pmf/pmf-quirks.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/drivers/platform/x86/amd/pmf/pmf-quirks.c b/drivers/platform/x86/amd/pmf/pmf-quirks.c
+index 7cde5733b9ca..02b9d0b49092 100644
+--- a/drivers/platform/x86/amd/pmf/pmf-quirks.c
++++ b/drivers/platform/x86/amd/pmf/pmf-quirks.c
+@@ -29,6 +29,22 @@ static const struct dmi_system_id fwbug_list[] = {
+ 		},
+ 		.driver_data = &quirk_no_sps_bug,
+ 	},
++	{
++		.ident = "ROG Zephyrus G16",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA605W"),
++		},
++		.driver_data = &quirk_no_sps_bug,
++	},
++	{
++		.ident = "ProArt P16",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "H7606W"),
++		},
++		.driver_data = &quirk_no_sps_bug,
++	},
+ 	{
+ 		.ident = "ROG Ally X",
+ 		.matches = {
+-- 
+2.48.1
+

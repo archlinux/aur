@@ -1,0 +1,241 @@
+From cfe69dd6d6e3e510afbc3cd96579c73d5d4589d6 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 6 Oct 2024 21:22:40 +1300
+Subject: [PATCH 17/28] hid-asus-ally: add JS response curves
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus-ally.c | 103 ++++++++++++++++++++++++++++++++++++
+ drivers/hid/hid-asus-ally.h |  38 +++++++++++++
+ 2 files changed, 141 insertions(+)
+
+diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
+index 0d27799e1947..d41e78c196a0 100644
+--- a/drivers/hid/hid-asus-ally.c
++++ b/drivers/hid/hid-asus-ally.c
+@@ -5,10 +5,12 @@
+  *  Copyright (c) 2023 Luke Jones <luke@ljones.dev>
+  */
+ 
++#include "linux/compiler_attributes.h"
+ #include "linux/device.h"
+ #include <linux/platform_data/x86/asus-wmi.h>
+ #include <linux/platform_device.h>
+ #include "linux/pm.h"
++#include "linux/printk.h"
+ #include "linux/slab.h"
+ #include <linux/hid.h>
+ #include <linux/types.h>
+@@ -261,6 +263,17 @@ struct deadzone {
+ 	u8 outer;
+ };
+ 
++struct response_curve {
++	uint8_t move_pct_1;
++	uint8_t response_pct_1;
++	uint8_t move_pct_2;
++	uint8_t response_pct_2;
++	uint8_t move_pct_3;
++	uint8_t response_pct_3;
++	uint8_t move_pct_4;
++	uint8_t response_pct_4;
++} __packed;
++
+ /* ROG Ally has many settings related to the gamepad, all using the same n-key endpoint */
+ struct ally_gamepad_cfg {
+ 	struct hid_device *hdev;
+@@ -285,6 +298,9 @@ struct ally_gamepad_cfg {
+ 	/* anti-deadzones */
+ 	u8 ls_adz; // left stick
+ 	u8 rs_adz; // right stick
++	/* joystick response curves */
++	struct response_curve ls_rc;
++	struct response_curve rs_rc;
+ };
+ 
+ /* The hatswitch outputs integers, we use them to index this X|Y pair */
+@@ -719,10 +735,85 @@ static ssize_t axis_xy_right_anti_deadzone_store(struct device *dev,
+ }
+ ALLY_DEVICE_ATTR_RW(axis_xy_right_anti_deadzone, anti_deadzone);
+ 
++/* JS RESPONSE CURVES *****************************************************************************/
++static void _gamepad_set_js_response_curves_default(struct ally_gamepad_cfg *ally_cfg)
++{
++	struct response_curve *js1_rc = &ally_cfg->ls_rc;
++	struct response_curve *js2_rc = &ally_cfg->rs_rc;
++	js1_rc->move_pct_1 = js2_rc->move_pct_1 = 0x16; // 25%
++	js1_rc->move_pct_2 = js2_rc->move_pct_2 = 0x32; // 50%
++	js1_rc->move_pct_3 = js2_rc->move_pct_3 = 0x48; // 75%
++	js1_rc->move_pct_4 = js2_rc->move_pct_4 = 0x64; // 100%
++	js1_rc->response_pct_1 = js2_rc->response_pct_1 = 0x16;
++	js1_rc->response_pct_2 = js2_rc->response_pct_2 = 0x32;
++	js1_rc->response_pct_3 = js2_rc->response_pct_3 = 0x48;
++	js1_rc->response_pct_4 = js2_rc->response_pct_4 = 0x64;
++}
++
++static ssize_t _gamepad_apply_response_curves(struct hid_device *hdev,
++					      struct ally_gamepad_cfg *ally_cfg)
++{
++	u8 *hidbuf;
++	int ret;
++
++	hidbuf = kzalloc(FEATURE_ROG_ALLY_REPORT_SIZE, GFP_KERNEL);
++	if (!hidbuf)
++		return -ENOMEM;
++
++	hidbuf[0] = FEATURE_ROG_ALLY_REPORT_ID;
++	hidbuf[1] = FEATURE_ROG_ALLY_CODE_PAGE;
++	memcpy(&hidbuf[2], &ally_cfg->ls_rc, sizeof(ally_cfg->ls_rc));
++
++	ret = ally_gamepad_check_ready(hdev);
++	if (ret < 0)
++		goto report_fail;
++
++	hidbuf[4] = 0x02;
++	memcpy(&hidbuf[5], &ally_cfg->rs_rc, sizeof(ally_cfg->rs_rc));
++
++	ret = ally_gamepad_check_ready(hdev);
++	if (ret < 0)
++		goto report_fail;
++
++	ret = asus_dev_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
++	if (ret < 0)
++		goto report_fail;
++
++report_fail:
++	kfree(hidbuf);
++	return ret;
++}
++
++ALLY_JS_RC_POINT(axis_xy_left, move, 1);
++ALLY_JS_RC_POINT(axis_xy_left, move, 2);
++ALLY_JS_RC_POINT(axis_xy_left, move, 3);
++ALLY_JS_RC_POINT(axis_xy_left, move, 4);
++ALLY_JS_RC_POINT(axis_xy_left, response, 1);
++ALLY_JS_RC_POINT(axis_xy_left, response, 2);
++ALLY_JS_RC_POINT(axis_xy_left, response, 3);
++ALLY_JS_RC_POINT(axis_xy_left, response, 4);
++
++ALLY_JS_RC_POINT(axis_xy_right, move, 1);
++ALLY_JS_RC_POINT(axis_xy_right, move, 2);
++ALLY_JS_RC_POINT(axis_xy_right, move, 3);
++ALLY_JS_RC_POINT(axis_xy_right, move, 4);
++ALLY_JS_RC_POINT(axis_xy_right, response, 1);
++ALLY_JS_RC_POINT(axis_xy_right, response, 2);
++ALLY_JS_RC_POINT(axis_xy_right, response, 3);
++ALLY_JS_RC_POINT(axis_xy_right, response, 4);
++
+ static struct attribute *axis_xy_left_attrs[] = {
+ 	&dev_attr_axis_xy_left_anti_deadzone.attr,
+ 	&dev_attr_axis_xy_left_deadzone.attr,
+ 	&dev_attr_axis_xyz_deadzone_index.attr,
++	&dev_attr_axis_xy_left_move_1.attr,
++	&dev_attr_axis_xy_left_move_2.attr,
++	&dev_attr_axis_xy_left_move_3.attr,
++	&dev_attr_axis_xy_left_move_4.attr,
++	&dev_attr_axis_xy_left_response_1.attr,
++	&dev_attr_axis_xy_left_response_2.attr,
++	&dev_attr_axis_xy_left_response_3.attr,
++	&dev_attr_axis_xy_left_response_4.attr,
+ 	NULL
+ };
+ static const struct attribute_group axis_xy_left_attr_group = {
+@@ -734,6 +825,14 @@ static struct attribute *axis_xy_right_attrs[] = {
+ 	&dev_attr_axis_xy_right_anti_deadzone.attr,
+ 	&dev_attr_axis_xy_right_deadzone.attr,
+ 	&dev_attr_axis_xyz_deadzone_index.attr,
++	&dev_attr_axis_xy_right_move_1.attr,
++	&dev_attr_axis_xy_right_move_2.attr,
++	&dev_attr_axis_xy_right_move_3.attr,
++	&dev_attr_axis_xy_right_move_4.attr,
++	&dev_attr_axis_xy_right_response_1.attr,
++	&dev_attr_axis_xy_right_response_2.attr,
++	&dev_attr_axis_xy_right_response_3.attr,
++	&dev_attr_axis_xy_right_response_4.attr,
+ 	NULL
+ };
+ static const struct attribute_group axis_xy_right_attr_group = {
+@@ -929,6 +1028,9 @@ static ssize_t _gamepad_apply_all(struct hid_device *hdev, struct ally_gamepad_c
+ 	if (ret < 0)
+ 		return ret;
+ 	ret = _gamepad_apply_js_ADZ(hdev, ally_cfg);
++	if (ret < 0)
++		return ret;
++	ret =_gamepad_apply_response_curves(hdev, ally_cfg);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -1176,6 +1278,7 @@ static struct ally_gamepad_cfg *ally_gamepad_cfg_create(struct hid_device *hdev)
+ 	ally_cfg->vibration_intensity[1] = 0x64;
+ 	_gamepad_set_deadzones_default(ally_cfg);
+ 	_gamepad_set_anti_deadzones_default(ally_cfg);
++	_gamepad_set_js_response_curves_default(ally_cfg);
+ 
+ 	drvdata.gamepad_cfg = ally_cfg; // Must asign before attr group setup
+ 	if (sysfs_create_groups(&hdev->dev.kobj, gamepad_device_attr_groups)) {
+diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
+index 70ef69ac476b..512e51d2761f 100644
+--- a/drivers/hid/hid-asus-ally.h
++++ b/drivers/hid/hid-asus-ally.h
+@@ -32,6 +32,7 @@ enum xpad_cmd {
+ 	xpad_cmd_set_leds = 0x08,
+ 	xpad_cmd_check_ready = 0x0A,
+ 	xpad_cmd_set_turbo = 0x0F,
++	xpad_cmd_set_response_curve = 0x13,
+ 	xpad_cmd_set_adz = 0x18,
+ };
+ 
+@@ -43,6 +44,7 @@ enum xpad_cmd_len {
+ 	xpad_cmd_len_vibe_intensity = 0x02,
+ 	xpad_cmd_len_leds = 0x0C,
+ 	xpad_cmd_len_turbo = 0x20,
++	xpad_cmd_len_response_curve = 0x09,
+ 	xpad_cmd_len_adz = 0x02,
+ };
+ 
+@@ -313,6 +315,42 @@ enum btn_pair_index {
+ 	ALLY_DEADZONE_STORE(_fname##_deadzone, _mname);                   \
+ 	ALLY_DEVICE_ATTR_RW(_fname##_deadzone, deadzone)
+ 
++/* response curve macros */
++#define ALLY_RESP_CURVE_SHOW(_fname, _mname)                             \
++static ssize_t _fname##_show(struct device *dev,                         \
++			struct device_attribute *attr,                   \
++			char *buf)                                       \
++	{                                                                \
++		struct ally_gamepad_cfg *ally_cfg = drvdata.gamepad_cfg; \
++		if (!drvdata.gamepad_cfg)                                \
++			return -ENODEV;                                  \
++		return sysfs_emit(buf, "%d\n", ally_cfg->ls_rc._mname);  \
++	}
++
++#define ALLY_RESP_CURVE_STORE(_fname, _mname)                            \
++static ssize_t _fname##_store(struct device *dev,                        \
++			struct device_attribute *attr,                   \
++			const char *buf, size_t count)                   \
++	{                                                                \
++		struct ally_gamepad_cfg *ally_cfg = drvdata.gamepad_cfg; \
++		int ret, val;                                            \
++		if (!drvdata.gamepad_cfg)                                \
++			return -ENODEV;                                  \
++		ret = kstrtoint(buf, 0, &val);                           \
++		if (ret)                                                 \
++			return ret;                                      \
++		if (val < 0 || val > 100)                                \
++			return -EINVAL;                                  \
++		ally_cfg->ls_rc._mname = val;                            \
++		return count;                                            \
++	}
++
++/* _point_n must start at 1 */
++#define ALLY_JS_RC_POINT(_fname, _mname, _num)                                 \
++	ALLY_RESP_CURVE_SHOW(_fname##_##_mname##_##_num, _mname##_pct_##_num); \
++	ALLY_RESP_CURVE_STORE(_fname##_##_mname##_##_num, _mname##_pct_##_num); \
++	ALLY_DEVICE_ATTR_RW(_fname##_##_mname##_##_num, curve_##_mname##_pct_##_num)
++
+ #define ALLY_BTN_ATTRS_GROUP(_name, _fname)                               \
+ 	static struct attribute *_fname##_attrs[] = {                     \
+ 		&dev_attr_##_fname.attr,                                  \
+-- 
+2.48.1
+

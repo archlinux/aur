@@ -1,8 +1,8 @@
-From 5e9d8dd3971972048485610161c2556a7608849e Mon Sep 17 00:00:00 2001
+From 479920435b134bdf13a1f9c2e4eabf58ed908f7e Mon Sep 17 00:00:00 2001
 From: Javier Martinez Canillas <javierm@redhat.com>
 Date: Thu, 19 May 2022 14:40:07 +0200
-Subject: [PATCH 2/8] drivers/firmware: skip simpledrm if nvidia-drm.modeset=1
- is set
+Subject: [PATCH] drivers/firmware: skip simpledrm if nvidia-drm.modeset=1 is
+ set
 
 The Nvidia proprietary driver has some bugs that leads to issues if used
 with the simpledrm driver. The most noticeable is that does not register
@@ -49,10 +49,10 @@ Cherry-picked-for: https://bugs.archlinux.org/task/73720
  1 file changed, 17 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/firmware/sysfb.c b/drivers/firmware/sysfb.c
-index 82fcfd29bc4d2..17b7e096b6828 100644
+index 921f61507ae831..f9705d078a9fb3 100644
 --- a/drivers/firmware/sysfb.c
 +++ b/drivers/firmware/sysfb.c
-@@ -34,6 +34,22 @@
+@@ -35,6 +35,22 @@
  #include <linux/screen_info.h>
  #include <linux/sysfb.h>
  
@@ -75,15 +75,13 @@ index 82fcfd29bc4d2..17b7e096b6828 100644
  static struct platform_device *pd;
  static DEFINE_MUTEX(disable_lock);
  static bool disabled;
-@@ -85,7 +101,7 @@ static __init int sysfb_init(void)
+@@ -136,7 +152,7 @@ static __init int sysfb_init(void)
  
  	/* try to create a simple-framebuffer device */
  	compatible = sysfb_parse_mode(si, &mode);
 -	if (compatible) {
 +	if (compatible && !skip_simpledrm) {
- 		pd = sysfb_create_simplefb(si, &mode);
+ 		pd = sysfb_create_simplefb(si, &mode, parent);
  		if (!IS_ERR(pd))
- 			goto unlock_mutex;
--- 
-2.41.0
+ 			goto put_device;
 

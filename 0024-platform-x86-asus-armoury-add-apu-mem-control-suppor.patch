@@ -1,0 +1,166 @@
+From 681e933c3c915d66302f888eb3cfccdd410de754 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 2 Jun 2024 14:44:31 +1200
+Subject: [PATCH 24/28] platform/x86: asus-armoury: add apu-mem control support
+
+Implement the APU memory size control under the asus-armoury module using
+the fw_attributes class.
+
+This allows the APU allocated memory size to be adjusted depending on
+the users priority. A reboot is required after change.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/platform/x86/asus-armoury.c        | 114 +++++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h |   2 +
+ 2 files changed, 116 insertions(+)
+
+diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
+index 716bf96b6b58..298f7b203d7c 100644
+--- a/drivers/platform/x86/asus-armoury.c
++++ b/drivers/platform/x86/asus-armoury.c
+@@ -396,6 +396,119 @@ static ssize_t egpu_enable_current_value_store(struct kobject *kobj, struct kobj
+ WMI_SHOW_INT(egpu_enable_current_value, "%d\n", ASUS_WMI_DEVID_EGPU);
+ ATTR_GROUP_BOOL_CUSTOM(egpu_enable, "egpu_enable", "Enable the eGPU (also disables dGPU)");
+ 
++/* Device memory available to APU */
++
++static ssize_t apu_mem_current_value_show(struct kobject *kobj, struct kobj_attribute *attr,
++					  char *buf)
++{
++	int err;
++	u32 mem;
++
++	err = asus_wmi_get_devstate_dsts(ASUS_WMI_DEVID_APU_MEM, &mem);
++	if (err)
++		return err;
++
++	switch (mem) {
++	case 0x100:
++		mem = 0;
++		break;
++	case 0x102:
++		mem = 1;
++		break;
++	case 0x103:
++		mem = 2;
++		break;
++	case 0x104:
++		mem = 3;
++		break;
++	case 0x105:
++		mem = 4;
++		break;
++	case 0x106:
++		/* This is out of order and looks wrong but is correct */
++		mem = 8;
++		break;
++	case 0x107:
++		mem = 5;
++		break;
++	case 0x108:
++		mem = 6;
++		break;
++	case 0x109:
++		mem = 7;
++		break;
++	default:
++		mem = 4;
++		break;
++	}
++
++	return sysfs_emit(buf, "%u\n", mem);
++}
++
++static ssize_t apu_mem_current_value_store(struct kobject *kobj, struct kobj_attribute *attr,
++					   const char *buf, size_t count)
++{
++	int result, err;
++	u32 requested, mem;
++
++	result = kstrtou32(buf, 10, &requested);
++	if (result)
++		return result;
++
++	switch (requested) {
++	case 0:
++		mem = 0x000;
++		break;
++	case 1:
++		mem = 0x102;
++		break;
++	case 2:
++		mem = 0x103;
++		break;
++	case 3:
++		mem = 0x104;
++		break;
++	case 4:
++		mem = 0x105;
++		break;
++	case 5:
++		mem = 0x107;
++		break;
++	case 6:
++		mem = 0x108;
++		break;
++	case 7:
++		mem = 0x109;
++		break;
++	case 8:
++		/* This is out of order and looks wrong but is correct */
++		mem = 0x106;
++		break;
++	default:
++		return -EIO;
++	}
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_APU_MEM, mem, &result);
++	if (err) {
++		pr_warn("Failed to set apu_mem: %d\n", err);
++		return err;
++	}
++
++	pr_info("APU memory changed to %uGB, reboot required\n", requested);
++	sysfs_notify(kobj, NULL, attr->attr.name);
++
++	asus_set_reboot_and_signal_event();
++
++	return count;
++}
++
++static ssize_t apu_mem_possible_values_show(struct kobject *kobj, struct kobj_attribute *attr,
++					    char *buf)
++{
++	return sysfs_emit(buf, "0;1;2;3;4;5;6;7;8\n");
++}
++ATTR_GROUP_ENUM_CUSTOM(apu_mem, "apu_mem", "Set available system RAM (in GB) for the APU to use");
++
+ /* Simple attribute creation */
+ ATTR_GROUP_ENUM_INT_RO(charge_mode, "charge_mode", ASUS_WMI_DEVID_CHARGE_MODE, "0;1;2",
+ 		       "Show the current mode of charging");
+@@ -416,6 +529,7 @@ static const struct asus_attr_group armoury_attr_groups[] = {
+ 	{ &egpu_connected_attr_group, ASUS_WMI_DEVID_EGPU_CONNECTED },
+ 	{ &egpu_enable_attr_group, ASUS_WMI_DEVID_EGPU },
+ 	{ &dgpu_disable_attr_group, ASUS_WMI_DEVID_DGPU },
++	{ &apu_mem_attr_group, ASUS_WMI_DEVID_APU_MEM },
+ 
+ 	{ &charge_mode_attr_group, ASUS_WMI_DEVID_CHARGE_MODE },
+ 	{ &boot_sound_attr_group, ASUS_WMI_DEVID_BOOT_SOUND },
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 62a9adb1af2f..f3494a9efea7 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -137,6 +137,8 @@
+ /* dgpu on/off */
+ #define ASUS_WMI_DEVID_DGPU		0x00090020
+ 
++#define ASUS_WMI_DEVID_APU_MEM		0x000600C1
++
+ /* gpu mux switch, 0 = dGPU, 1 = Optimus */
+ #define ASUS_WMI_DEVID_GPU_MUX		0x00090016
+ #define ASUS_WMI_DEVID_GPU_MUX_VIVO	0x00090026
+-- 
+2.48.1
+

@@ -1,0 +1,199 @@
+From 11a2d9e80a28639e5b38f3a3e2437b08f3942239 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sat, 5 Oct 2024 15:40:09 +1300
+Subject: [PATCH 12/28] hid-asus-ally: Turbo settings for buttons
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus-ally.c | 72 +++++++++++++++++++++++++++++--------
+ drivers/hid/hid-asus-ally.h | 50 ++++++++++++++++++++++++++
+ 2 files changed, 108 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
+index d4d7877b3065..afaeba3dfde7 100644
+--- a/drivers/hid/hid-asus-ally.c
++++ b/drivers/hid/hid-asus-ally.c
+@@ -232,6 +232,7 @@ static const char* btn_to_name(u64 key)
+ struct btn_data {
+ 	u64 button;
+ 	u64 macro;
++	bool turbo;
+ };
+ 
+ struct btn_mapping {
+@@ -537,6 +538,46 @@ static int _gamepad_apply_btn_pair(struct hid_device *hdev, struct ally_gamepad_
+ 	return ret;
+ }
+ 
++static int _gamepad_apply_turbo(struct hid_device *hdev, struct ally_gamepad_cfg *ally_cfg)
++{
++	struct btn_mapping *map = &ally_cfg->key_mapping[ally_cfg->mode - 1];
++	u8 *hidbuf;
++	int ret;
++
++	/* set turbo */
++	hidbuf = kzalloc(FEATURE_ROG_ALLY_REPORT_SIZE, GFP_KERNEL);
++	if (!hidbuf)
++		return -ENOMEM;
++	hidbuf[0] = FEATURE_ROG_ALLY_REPORT_ID;
++	hidbuf[1] = FEATURE_ROG_ALLY_CODE_PAGE;
++	hidbuf[2] = xpad_cmd_set_turbo;
++	hidbuf[3] = xpad_cmd_len_turbo;
++
++	hidbuf[4] = map->dpad_up.turbo;
++	hidbuf[6] = map->dpad_down.turbo;
++	hidbuf[8] = map->dpad_left.turbo;
++	hidbuf[10] = map->dpad_right.turbo;
++
++	hidbuf[12] = map->btn_ls.turbo;
++	hidbuf[14] = map->btn_rs.turbo;
++	hidbuf[16] = map->btn_lb.turbo;
++	hidbuf[18] = map->btn_rb.turbo;
++
++	hidbuf[20] = map->btn_a.turbo;
++	hidbuf[22] = map->btn_b.turbo;
++	hidbuf[24] = map->btn_x.turbo;
++	hidbuf[26] = map->btn_y.turbo;
++
++	hidbuf[28] = map->btn_lt.turbo;
++	hidbuf[30] = map->btn_rt.turbo;
++
++	ret = asus_dev_set_report(hdev, hidbuf, FEATURE_ROG_ALLY_REPORT_SIZE);
++
++	kfree(hidbuf);
++
++	return ret;
++}
++
+ static ssize_t _gamepad_apply_all(struct hid_device *hdev, struct ally_gamepad_cfg *ally_cfg)
+ {
+ 	int ret;
+@@ -566,6 +607,9 @@ static ssize_t _gamepad_apply_all(struct hid_device *hdev, struct ally_gamepad_c
+ 	if (ret < 0)
+ 		return ret;
+ 	ret = _gamepad_apply_btn_pair(hdev, ally_cfg, btn_pair_lt_rt);
++	if (ret < 0)
++		return ret;
++	ret = _gamepad_apply_turbo(hdev, ally_cfg);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -593,22 +637,22 @@ ALLY_DEVICE_ATTR_WO(gamepad_apply_all, apply_all);
+ /* button map attributes, regular and macro*/
+ ALLY_BTN_MAPPING(m1, btn_m1);
+ ALLY_BTN_MAPPING(m2, btn_m2);
+-ALLY_BTN_MAPPING(a, btn_a);
+-ALLY_BTN_MAPPING(b, btn_b);
+-ALLY_BTN_MAPPING(x, btn_x);
+-ALLY_BTN_MAPPING(y, btn_y);
+-ALLY_BTN_MAPPING(lb, btn_lb);
+-ALLY_BTN_MAPPING(rb, btn_rb);
+-ALLY_BTN_MAPPING(ls, btn_ls);
+-ALLY_BTN_MAPPING(rs, btn_rs);
+-ALLY_BTN_MAPPING(lt, btn_lt);
+-ALLY_BTN_MAPPING(rt, btn_rt);
+-ALLY_BTN_MAPPING(dpad_u, dpad_up);
+-ALLY_BTN_MAPPING(dpad_d, dpad_down);
+-ALLY_BTN_MAPPING(dpad_l, dpad_left);
+-ALLY_BTN_MAPPING(dpad_r, dpad_right);
+ ALLY_BTN_MAPPING(view, btn_view);
+ ALLY_BTN_MAPPING(menu, btn_menu);
++ALLY_TURBO_BTN_MAPPING(a, btn_a);
++ALLY_TURBO_BTN_MAPPING(b, btn_b);
++ALLY_TURBO_BTN_MAPPING(x, btn_x);
++ALLY_TURBO_BTN_MAPPING(y, btn_y);
++ALLY_TURBO_BTN_MAPPING(lb, btn_lb);
++ALLY_TURBO_BTN_MAPPING(rb, btn_rb);
++ALLY_TURBO_BTN_MAPPING(ls, btn_ls);
++ALLY_TURBO_BTN_MAPPING(rs, btn_rs);
++ALLY_TURBO_BTN_MAPPING(lt, btn_lt);
++ALLY_TURBO_BTN_MAPPING(rt, btn_rt);
++ALLY_TURBO_BTN_MAPPING(dpad_u, dpad_up);
++ALLY_TURBO_BTN_MAPPING(dpad_d, dpad_down);
++ALLY_TURBO_BTN_MAPPING(dpad_l, dpad_left);
++ALLY_TURBO_BTN_MAPPING(dpad_r, dpad_right);
+ 
+ static void _gamepad_set_xpad_default(struct ally_gamepad_cfg *ally_cfg)
+ {
+diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
+index a0b0acd65bfd..4e1eccbd99ad 100644
+--- a/drivers/hid/hid-asus-ally.h
++++ b/drivers/hid/hid-asus-ally.h
+@@ -28,6 +28,7 @@ enum xpad_cmd {
+ 	xpad_cmd_set_mapping = 0x02,
+ 	xpad_cmd_set_leds = 0x08,
+ 	xpad_cmd_check_ready = 0x0A,
++	xpad_cmd_set_turbo = 0x0F,
+ };
+ 
+ /* the xpad_cmd determines which feature is set or queried */
+@@ -35,6 +36,7 @@ enum xpad_cmd_len {
+ 	xpad_cmd_len_mode = 0x01,
+ 	xpad_cmd_len_mapping = 0x2c,
+ 	xpad_cmd_len_leds = 0x0C,
++	xpad_cmd_len_turbo = 0x20,
+ };
+ 
+ /* Values correspond to the actual HID byte value required */
+@@ -232,6 +234,37 @@ enum btn_pair_index {
+ 		return count;                                                  \
+ 	}
+ 
++#define ALLY_TURBO_SHOW(_fname, _btn_name)                                     \
++	static ssize_t _fname##_show(struct device *dev,                       \
++				     struct device_attribute *attr, char *buf) \
++	{                                                                      \
++		struct ally_gamepad_cfg *ally_cfg = drvdata.gamepad_cfg;       \
++		struct btn_data *btn;                                          \
++		if (!drvdata.gamepad_cfg)                                      \
++			return -ENODEV;                                        \
++		btn = &ally_cfg->key_mapping[ally_cfg->mode - 1]._btn_name;   \
++		return sysfs_emit(buf, "%d\n", btn->turbo);                    \
++	}
++
++#define ALLY_TURBO_STORE(_fname, _btn_name)                                    \
++	static ssize_t _fname##_store(struct device *dev,                      \
++				      struct device_attribute *attr,           \
++				      const char *buf, size_t count)           \
++	{                                                                      \
++		struct ally_gamepad_cfg *ally_cfg = drvdata.gamepad_cfg;       \
++		struct btn_data *btn;                                          \
++		bool turbo;                                                    \
++		int ret; \
++		if (!drvdata.gamepad_cfg)                                      \
++			return -ENODEV;                                        \
++		btn = &ally_cfg->key_mapping[ally_cfg->mode - 1]._btn_name;   \
++		ret = kstrtobool(buf, &turbo);                                 \
++		if (ret)                                                       \
++			return ret;                                            \
++		btn->turbo = turbo;                                            \
++		return count;                                                  \
++	}
++
+ #define ALLY_BTN_ATTRS_GROUP(_name, _fname)                               \
+ 	static struct attribute *_fname##_attrs[] = {                     \
+ 		&dev_attr_##_fname.attr,                                  \
+@@ -264,3 +297,20 @@ enum btn_pair_index {
+ 		.name = __stringify(btn_##_fname),                                \
+ 		.attrs = _fname##_attrs,                                          \
+ 	}
++
++#define ALLY_TURBO_BTN_MAPPING(_fname, _btn_name)                                 \
++	_ALLY_BTN_REMAP(_fname, _btn_name)                                        \
++	_ALLY_BTN_MACRO(_fname, _btn_name)                                        \
++	ALLY_TURBO_SHOW(btn_mapping_##_fname##_turbo, _btn_name);                 \
++	ALLY_TURBO_STORE(btn_mapping_##_fname##_turbo, _btn_name);                \
++	ALLY_DEVICE_ATTR_RW(btn_mapping_##_fname##_turbo, turbo);                 \
++	static struct attribute *_fname##_turbo_attrs[] = {                       \
++		&dev_attr_btn_mapping_##_fname##_remap.attr,                      \
++		&dev_attr_btn_mapping_##_fname##_macro.attr,                      \
++		&dev_attr_btn_mapping_##_fname##_turbo.attr,                      \
++		NULL,                                                             \
++	};                                                                        \
++	static const struct attribute_group btn_mapping_##_fname##_attr_group = { \
++		.name = __stringify(btn_##_fname),                                \
++		.attrs = _fname##_turbo_attrs,                                    \
++	}
+-- 
+2.48.1
+

@@ -12,15 +12,15 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.6.25
-pkgrel=2
+pkgver=6.13.7
+pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
 makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
 replaces=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
-options=('!strip')
+options=('!debug' '!strip')
 
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
         config
@@ -28,62 +28,85 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz
         # ARCH Patches
         0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
         0102-drivers-firmware-skip-simpledrm-if-nvidia-drm.modese.patch
-        # MANJARO Patches
+        0103_default_to_max_ASLR_bits.patch
         # Realtek patch
         0999-patch_realtek.patch
-        # ROG ALLY Patches
-        v14.7-0001-HID-asus-fix-more-n-key-report-descriptors-if-.patch
-        v14.7-0002-HID-asus-make-asus_kbd_init-generic-remove-rog.patch
-        v14.7-0003-HID-asus-add-ROG-Ally-N-Key-ID-and-keycodes.patch
-        v14.7-0004-HID-asus-add-ROG-Ally-xpad-settings.patch
-        0006-platform-x86-asus-wmi-disable-USB0-hub-on-ROG-Ally-b.patch
-        0007-mt7921e_Perform_FLR_to_recovery_the_device.patch
-        # AMD GPU reset patches
-        0301-drm-Add_GPU_reset_sysfs_event.patch
-        0302-drm-amdgpu-add_work_function_for_GPU_reset_event.patch
-        0303-drm-amdgpu-schedule_GPU_reset_event_work_function.patch
-        # No overrides ROG ally <= 323 BIOS
-        0001-ALSA-hda-cs35l41-Support-ASUS-2023-laptops-with-miss.patch
-        0001-ALSA-hda-cs35l41-Improve-support-for-ASUS-ROG-Ally.patch
-        # Additional ALLY patches
-        ROG-ALLY-NCT6775-PLATFORM.patch
-        0001-iio-imu_Add_driver_for_BMI323_IMU.patch
-        0002-iio-imu-bmi323-Make-the-local-structures-static.patch
-        0003-iio-imu_Add_ROG_ALLY_bmi323-support.patch
-        0004-iio-imu-Load_ROG_ALLY_mount_matrix.patch
-        0005-iio-imu-ASUS-ROG-ALLY-force-INT1-IRQ.patch
-        # Steamdeck HID patches
-        0001-HID.patch
+        # ROG ALLY Patches (wip/ally-6.13)
+        0001-Tmp-add-GA605W-H7606W-to-AMD-PMF-quirks.patch
+        0002-drm-amd-display-Avoid-divide-by-zero-by-initializing.patch
+        0003-hid-add-VID-PID-for-ASUS-ROG-RAIKIRI-PRO.patch
+        0004-hid-asus-check-ROG-Ally-MCU-version-and-warn.patch
+        0005-platform-x86-asus-wmi-Refactor-Ally-suspend-resume.patch
+        0006-hid-asus-ally-Add-joystick-LED-ring-support.patch
+        0007-hid-asus-ally-move-MCU-FW-validation-to-module.patch
+        0008-hid-asus-ally-initial-Ally-X-gamepad-bringup.patch
+        0009-hid-asus-ally-initial-gamepad-configuration.patch
+        0010-hid-asus-ally-add-button-remap-attributes.patch
+        0011-hid-asus-ally-add-gamepad-mode-selection.patch
+        0012-hid-asus-ally-Turbo-settings-for-buttons.patch
+        0013-hid-asus-ally-add-vibration-intensity-settings.patch
+        0014-hid-asus-ally-add-JS-deadzones.patch
+        0015-hid-asus-ally-add-trigger-deadzones.patch
+        0016-hid-asus-ally-add-anti-deadzones.patch
+        0017-hid-asus-ally-add-JS-response-curves.patch
+        0018-hid-asus-ally-mcu_version-attribute.patch
+        0019-hid-asus-ally-add-calibrations-wip.patch
+        0020-debug-by-default.patch
+        0021-platform-x86-asus-wmi-export-symbols-used-for-read-w.patch
+        0022-platform-x86-asus-armoury-move-existing-tunings-to-a.patch
+        0023-platform-x86-asus-armoury-add-panel_hd_mode-attribut.patch
+        0024-platform-x86-asus-armoury-add-apu-mem-control-suppor.patch
+        0025-platform-x86-asus-armoury-add-core-count-control.patch
+        0026-platform-x86-asus-wmi-deprecate-bios-features.patch
+        0027-platform-x86-asus-armoury-add-the-ppt_-and-nv_-tunin.patch
+        0028-backport-fix-fw_attr-use.patch
         # OrangePi Neo patches
-        0001-OrangePi-Neo-panel-orientation-quirk.patch
-        # ACS override patch
-        0999-acs.gitpatch)
+        0001-iio_imu_Add_driver_for_Bosch_BMI260_IMU.patch
+        # Zotac Zone patches
+        636de3f2be1d171b50c47b9f038b7a5b19d8667d.patch
+        # Steamdeck (OLED)
+        0001-steam-deck.patch
+        # ACS Override patch
+        1001-6.13.0-add-acs-overrides.patch)
 
-sha256sums=('99d210be87908233a55b0fadc0dccd3b95926c0651b6b82e37350b2029de1f44'
-            '9736c7856f4dd543d2172e1cb8a63cabdd6ed6fbf314dfdb5fe4c60b74954a68'
-            '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
-            'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
-            'a99b684fe5bc7fdacc6f5b1f2b6593672fc5d1e676c4de03ec29723747fc574b'
-            'b099ae83a3b561b8bff8b32b44b6f4835b99eb150c2314177aa0bc8ca96e2ead'
-            '10b60663195a65ec3b0f50b49e4c0af952369ee5afe95e11a69ffccefc020eb2'
-            '3c8b877dfaf85acf45b54c85a44fa269aa1512ea3781fe551cf6d4e2d69c992d'
-            '73aa4be8c1abcf1b24c9a5c5072e68da3da82df807f3ff49660a100d7634da1d'
-            '836e88044263f7bc474ca466b3d0d98c39e265db94925c300d0b138492946a13'
-            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
-            '1f62542a889a6c2eafd43acd0699f54720ed891eeda66a4a9261d75b92f28b7f'
-            '6bc2c1b9a485c852b45e4064e8b9b559b9b26113fdc80bf9653af44c0886fde2'
-            '559f01074cda3c161996617f1b7bc6cbbce0efc50e2cf9e843d60922ff2e8063'
-            '79970a4729572cb25fd4644d66f38ecd5b3e1610a42ea4bbe436b501f3469fa2'
-            '430a7f971d78d0873708e0ad38fba602ceafefd4da8ebbf9d9c591bc4799acb5'
-            'cfcd5c177423df8b7b98b0500fe7ab0757f895ed945c33e205963f0069c7a3be'
-            '708a9899f80db35fb0f06e0144c361eac9a9b2d154cf2fa388a0b4810847e24c'
-            '514fd03c17245ed0aaee63e8830c9b02b00efa0307f7e0989065edec6ae185f0'
-            'fccdf24b25620dd8271bb3b52ddc53f8882dec26518258dc47e1469fed33e516'
-            'c3b901db58288b5cc5d8a947ac8ffec339870b00aba493d68a39f65c4ff3d869'
-            '5792a59a0c726a205ae1c1728700ea3e6385231cadc2cfdd2db08295b100638c'
-            '7c948773d758418d8a436067265d678c444827562c46b9fced2ff31ced108481'
-            'aa2ff6edca0177b864868fdc2752d3a0eaaf5b801bd17e5c59dfd78999226d83'
-            '458d7e024d33d4965b14b9b987f01a2884ff28761cff5da7c6a54132a95e9f36')
+sha256sums=('3a39b62038b7ac2f43d26a1f84b4283e197804e1e817ad637e9a3d874c47801d'
+            '01e778180bc186dc5e3c5769f495b6626e8934ed662816d81e0a62fd32f63cd5'
+            '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
+            '934bc233684c45860251bb75433d671b23fa784c891ab3a1ef10d5bc761156b6'
+            '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
+            'b88d42565ce771cb6c8f98b7c05aada6b8024578a1985e5772dc5a2d07facee0'
+            'de5e14b75160f2bc817194a8dae29ea918196ac9c298f3d8480ff7bb5c26643c'
+            '2127896a59e9b4a29103c5c56bdec45b89bbda511e7c92b23259199ec7fb49ae'
+            'e78594693244daad56ded1b6796c3accea04777e3d932d74ad989e3b4f713edb'
+            '8c8485453ad3dedf29c17a5dc1bb20333a915bd65c1e62a154f353b2817b0469'
+            'e1bde7bee50528cc36622ed5a1808ccc271b22ca8078d5b7b87a993ec0fe9a18'
+            '88b9b2a5b80438c5a16719145f560f9bd85fe3364d452f76acbe19b2e67e91bf'
+            '59d6d8bc520a19a8afcf6daffed2c6fa01e5bf036bbc4895d23f5fbc32c501c0'
+            '65f65dd45445bb3bd4e78f2884c1a4fd5157a7cca5338484ac887adfcf7d826b'
+            'e7bebaf95bc49557f1a783bc285e2b888f7e69da4d468ce739983f7efca4d363'
+            'c67dd63fc5f24efd831ec7bd1a0f26a2515181da5667d126e969d7d6222e2089'
+            'b159b452fcab392e3fec74b2fa4f7bfe6ec745b931598f0b0977a18ce74a3f68'
+            '6ca6458b6202bce89580fe69aacdda33d9c5ff2173b136ef66aa05d510d4424f'
+            'da66ed198e5982f6ba3e349454ecef0b04c2f71693817325665687b7f3a8937f'
+            'f9e719d4b8411697161800b50ab8f69f6fdb40190b7ad253f6b58a7f63325004'
+            'a3b13f0260b2967c93a25effdfa2fbb6dd335be649153fe0a32822c067dddbf5'
+            '6d0dbc7b1d166d1ed6375d7901e338385c53d965510570d9ad7a469d1bec48bb'
+            '4429dfd236fa595de0d884db2c2b672e19c9b64df2694273f151ad6064917bbd'
+            '558495a7d732de58ad197545c3c618f1c63b747d143784ec78f93418836f2cf0'
+            'fc9ce1e36fa4ddf0d959475b964a3543a6702e671e652698e1fd21d14c4e4d1c'
+            'e23edf3f19b37cd5f1ed7d7113141d216ff7060a79ceeaa1e83e040c4876ceaf'
+            '19150872459c8a7e2f8e69ff9f6eb2c12c0ab5eabd636a82d68a372b4b12e988'
+            '1a7ede6f30d8f6319fa364a7d332930e4c403b5bb4e52dace12b2e727cfde882'
+            'f800580bda18a4145501511eac7c624294df160c63bb17ba4e334dfd18c89f26'
+            '39913168920010425156edaa30b79e48f1e1730797e19a05247cef0d76e07527'
+            '969beeb3a236a7b55ef404d35eed5865d04c1ac91c3edce8d62eebea8a749dd9'
+            '8cde145d701b0db2bc64782b741d2ce43d27b438a52e64bdf12d29dada859aa0'
+            '5917a3d340a6084b67935651d274af1bb3f2ebb989ff52a86d4571dd54a7b4ce'
+            '21c1661958674cfeb3d0f595997cbe4000a16e557a201cafa105a896dff52559'
+            '14278fdc353e6ab5abc9c1a6b753221df12c9a0e6a8d9fec8baf81d7897a6a4b'
+            '5dabdb1d45f1edd9bfaeebbc4a8767812fae5b4de9866cedecab7bfcf982b8ee'
+            'f8cf8ad3e17857b51c3f7dd954eb5ac7ba44bfe0302a40e70b2c496573407edf'
+            '569742a1c7ce7996ee4c650c444ed13d650fff7b84f23a16e6358693e58aee9f')
 
 prepare() {
   cd "linux-${pkgver}"
@@ -96,9 +119,6 @@ prepare() {
       msg2 "Applying patch: $src..."
       patch -Np1 < "../$src"
   done
-
-  msg2 "apply 0999 acs override patch"
-  patch --ignore-whitespace --fuzz 3 -p1 < "../0999-acs.gitpatch"
 
   cat "../config" > ./.config
 

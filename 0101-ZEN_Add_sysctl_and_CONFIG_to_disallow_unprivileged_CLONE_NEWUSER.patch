@@ -135,10 +135,10 @@ diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
 index 5481ba44a8d684..423ab2563ad757 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
-@@ -21,6 +21,13 @@
+@@ -22,6 +22,13 @@
  #include <linux/bsearch.h>
  #include <linux/sort.h>
-
+ 
 +/* sysctl */
 +#ifdef CONFIG_USER_NS_UNPRIVILEGED
 +int unprivileged_userns_clone = 1;
@@ -146,7 +146,6 @@ index 5481ba44a8d684..423ab2563ad757 100644
 +int unprivileged_userns_clone;
 +#endif
 +
- static struct kmem_cache *user_ns_cachep __read_mostly;
+ static struct kmem_cache *user_ns_cachep __ro_after_init;
  static DEFINE_MUTEX(userns_state_mutex);
-
-
+ 

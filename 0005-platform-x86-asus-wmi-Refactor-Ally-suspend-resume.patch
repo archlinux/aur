@@ -1,0 +1,301 @@
+From 46c6cba3d44024f5c3cc0323d8f285eed00836c6 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 1 Sep 2024 14:30:37 +1200
+Subject: [PATCH 05/28] platform/x86: asus-wmi: Refactor Ally suspend/resume
+
+Adjust how the CSEE direct call hack is used.
+
+The results of months of testing combined with help from ASUS to
+determine the actual cause of suspend issues has resulted in this
+refactoring which immensely improves the reliability for devices which
+do not have the following minimum MCU FW version:
+- ROG Ally X: 313
+- ROG Ally 1: 319
+
+For MCU FW versions that match the minimum or above the CSEE hack is
+disabled and mcu_powersave set to on by default as there are no
+negatives beyond a slightly slower device reinitialization due to the
+MCU being powered off.
+
+As this is set only at module load time, it is still possible for
+mcu_powersave sysfs attributes to change it at runtime if so desired.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus.c                     |   4 +
+ drivers/platform/x86/asus-wmi.c            | 130 ++++++++++++++-------
+ include/linux/platform_data/x86/asus-wmi.h |  15 +++
+ 3 files changed, 110 insertions(+), 39 deletions(-)
+
+diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
+index 599c836507ff..66bae5cea4f9 100644
+--- a/drivers/hid/hid-asus.c
++++ b/drivers/hid/hid-asus.c
+@@ -624,6 +624,9 @@ static void validate_mcu_fw_version(struct hid_device *hdev, int idProduct)
+ 		hid_warn(hdev,
+ 			"The MCU firmware version must be %d or greater to avoid issues with suspend.\n",
+ 			min_version);
++	} else {
++		set_ally_mcu_hack(false);
++		set_ally_mcu_powersave(true);
+ 	}
+ }
+ 
+@@ -1430,4 +1433,5 @@ static struct hid_driver asus_driver = {
+ };
+ module_hid_driver(asus_driver);
+ 
++MODULE_IMPORT_NS("ASUS_WMI");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 8bd187e8b47f..671c726f85b8 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -142,16 +142,20 @@ module_param(fnlock_default, bool, 0444);
+ #define ASUS_MINI_LED_2024_STRONG	0x01
+ #define ASUS_MINI_LED_2024_OFF		0x02
+ 
+-/* Controls the power state of the USB0 hub on ROG Ally which input is on */
+ #define ASUS_USB0_PWR_EC0_CSEE "\\_SB.PCI0.SBRG.EC0.CSEE"
+-/* 300ms so far seems to produce a reliable result on AC and battery */
+-#define ASUS_USB0_PWR_EC0_CSEE_WAIT 1500
++/*
++ * The period required to wait after screen off/on/s2idle.check in MS.
++ * Time here greatly impacts the wake behaviour. Used in suspend/wake.
++ */
++#define ASUS_USB0_PWR_EC0_CSEE_WAIT	600
++#define ASUS_USB0_PWR_EC0_CSEE_OFF	0xB7
++#define ASUS_USB0_PWR_EC0_CSEE_ON	0xB8
+ 
+ static const char * const ashs_ids[] = { "ATK4001", "ATK4002", NULL };
+ 
+ static int throttle_thermal_policy_write(struct asus_wmi *);
+ 
+-static const struct dmi_system_id asus_ally_mcu_quirk[] = {
++static const struct dmi_system_id asus_rog_ally_device[] = {
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_BOARD_NAME, "RC71L"),
+@@ -274,9 +278,6 @@ struct asus_wmi {
+ 	u32 tablet_switch_dev_id;
+ 	bool tablet_switch_inverted;
+ 
+-	/* The ROG Ally device requires the MCU USB device be disconnected before suspend */
+-	bool ally_mcu_usb_switch;
+-
+ 	enum fan_type fan_type;
+ 	enum fan_type gpu_fan_type;
+ 	enum fan_type mid_fan_type;
+@@ -335,6 +336,9 @@ struct asus_wmi {
+ 	struct asus_wmi_driver *driver;
+ };
+ 
++/* Global to allow setting externally without requiring driver data */
++static bool use_ally_mcu_hack;
++
+ /* WMI ************************************************************************/
+ 
+ static int asus_wmi_evaluate_method3(u32 method_id,
+@@ -549,7 +553,7 @@ static int asus_wmi_get_devstate(struct asus_wmi *asus, u32 dev_id, u32 *retval)
+ 	return 0;
+ }
+ 
+-static int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param,
++int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param,
+ 				 u32 *retval)
+ {
+ 	return asus_wmi_evaluate_method(ASUS_WMI_METHODID_DEVS, dev_id,
+@@ -1343,6 +1347,44 @@ static ssize_t nv_temp_target_show(struct device *dev,
+ static DEVICE_ATTR_RW(nv_temp_target);
+ 
+ /* Ally MCU Powersave ********************************************************/
++
++/*
++ * The HID driver needs to check MCU version and set this to false if the MCU FW
++ * version is >= the minimum requirements. New FW do not need the hacks.
++ */
++void set_ally_mcu_hack(bool enabled)
++{
++	use_ally_mcu_hack = enabled;
++	pr_debug("%s Ally MCU suspend quirk\n",
++		 enabled ? "Enabled" : "Disabled");
++}
++EXPORT_SYMBOL_NS_GPL(set_ally_mcu_hack, "ASUS_WMI");
++
++/*
++ * mcu_powersave should be enabled always, as it is fixed in MCU FW versions:
++ * - v313 for Ally X
++ * - v319 for Ally 1
++ * The HID driver checks MCU versions and so should set this if requirements match
++ */
++void set_ally_mcu_powersave(bool enabled)
++{
++	int result, err;
++
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_MCU_POWERSAVE, enabled, &result);
++	if (err) {
++		pr_warn("Failed to set MCU powersave: %d\n", err);
++		return;
++	}
++	if (result > 1) {
++		pr_warn("Failed to set MCU powersave (result): 0x%x\n", result);
++		return;
++	}
++
++	pr_debug("%s MCU Powersave\n",
++		 enabled ? "Enabled" : "Disabled");
++}
++EXPORT_SYMBOL_NS_GPL(set_ally_mcu_powersave, "ASUS_WMI");
++
+ static ssize_t mcu_powersave_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+ {
+@@ -4707,6 +4749,18 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	if (err)
+ 		goto fail_platform;
+ 
++	use_ally_mcu_hack = acpi_has_method(NULL, ASUS_USB0_PWR_EC0_CSEE)
++				&& dmi_check_system(asus_rog_ally_device);
++	if (use_ally_mcu_hack && dmi_match(DMI_BOARD_NAME, "RC71")) {
++		/*
++		 * These steps ensure the device is in a valid good state, this is
++		 * especially important for the Ally 1 after a reboot.
++		 */
++		acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE,
++					   ASUS_USB0_PWR_EC0_CSEE_ON);
++		msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
++	}
++
+ 	/* ensure defaults for tunables */
+ 	asus->ppt_pl2_sppt = 5;
+ 	asus->ppt_pl1_spl = 5;
+@@ -4719,8 +4773,6 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->kbd_rgb_state_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_STATE);
+-	asus->ally_mcu_usb_switch = acpi_has_method(NULL, ASUS_USB0_PWR_EC0_CSEE)
+-						&& dmi_check_system(asus_ally_mcu_quirk);
+ 
+ 	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_MINI_LED_MODE))
+ 		asus->mini_led_dev_id = ASUS_WMI_DEVID_MINI_LED_MODE;
+@@ -4911,34 +4963,6 @@ static int asus_hotk_resume(struct device *device)
+ 	return 0;
+ }
+ 
+-static int asus_hotk_resume_early(struct device *device)
+-{
+-	struct asus_wmi *asus = dev_get_drvdata(device);
+-
+-	if (asus->ally_mcu_usb_switch) {
+-		/* sleep required to prevent USB0 being yanked then reappearing rapidly */
+-		if (ACPI_FAILURE(acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE, 0xB8)))
+-			dev_err(device, "ROG Ally MCU failed to connect USB dev\n");
+-		else
+-			msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
+-	}
+-	return 0;
+-}
+-
+-static int asus_hotk_prepare(struct device *device)
+-{
+-	struct asus_wmi *asus = dev_get_drvdata(device);
+-
+-	if (asus->ally_mcu_usb_switch) {
+-		/* sleep required to ensure USB0 is disabled before sleep continues */
+-		if (ACPI_FAILURE(acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE, 0xB7)))
+-			dev_err(device, "ROG Ally MCU failed to disconnect USB dev\n");
+-		else
+-			msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
+-	}
+-	return 0;
+-}
+-
+ static int asus_hotk_restore(struct device *device)
+ {
+ 	struct asus_wmi *asus = dev_get_drvdata(device);
+@@ -4979,11 +5003,34 @@ static int asus_hotk_restore(struct device *device)
+ 	return 0;
+ }
+ 
++static void asus_ally_s2idle_restore(void)
++{
++	if (use_ally_mcu_hack) {
++		acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE,
++					   ASUS_USB0_PWR_EC0_CSEE_ON);
++		msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
++	}
++}
++
++static int asus_hotk_prepare(struct device *device)
++{
++	if (use_ally_mcu_hack) {
++		acpi_execute_simple_method(NULL, ASUS_USB0_PWR_EC0_CSEE,
++					   ASUS_USB0_PWR_EC0_CSEE_OFF);
++		msleep(ASUS_USB0_PWR_EC0_CSEE_WAIT);
++	}
++	return 0;
++}
++
++/* Use only for Ally devices due to the wake_on_ac */
++static struct acpi_s2idle_dev_ops asus_ally_s2idle_dev_ops = {
++	.restore = asus_ally_s2idle_restore,
++};
++
+ static const struct dev_pm_ops asus_pm_ops = {
+ 	.thaw = asus_hotk_thaw,
+ 	.restore = asus_hotk_restore,
+ 	.resume = asus_hotk_resume,
+-	.resume_early = asus_hotk_resume_early,
+ 	.prepare = asus_hotk_prepare,
+ };
+ 
+@@ -5011,6 +5058,10 @@ static int asus_wmi_probe(struct platform_device *pdev)
+ 			return ret;
+ 	}
+ 
++	ret = acpi_register_lps0_dev(&asus_ally_s2idle_dev_ops);
++	if (ret)
++		pr_warn("failed to register LPS0 sleep handler in asus-wmi\n");
++
+ 	return asus_wmi_add(pdev);
+ }
+ 
+@@ -5043,6 +5094,7 @@ EXPORT_SYMBOL_GPL(asus_wmi_register_driver);
+ 
+ void asus_wmi_unregister_driver(struct asus_wmi_driver *driver)
+ {
++	acpi_unregister_lps0_dev(&asus_ally_s2idle_dev_ops);
+ 	platform_device_unregister(driver->platform_device);
+ 	platform_driver_unregister(&driver->platform_driver);
+ 	used = false;
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 783e2a336861..a32cb8865b2f 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -158,8 +158,23 @@
+ #define ASUS_WMI_DSTS_LIGHTBAR_MASK	0x0000000F
+ 
+ #if IS_REACHABLE(CONFIG_ASUS_WMI)
++void set_ally_mcu_hack(bool enabled);
++void set_ally_mcu_powersave(bool enabled);
++int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval);
+ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval);
+ #else
++static inline void set_ally_mcu_hack(bool enabled)
++{
++	return -ENODEV;
++}
++static inline void set_ally_mcu_powersave(bool enabled)
++{
++	return -ENODEV;
++}
++static inline int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval)
++{
++	return -ENODEV;
++}
+ static inline int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1,
+ 					   u32 *retval)
+ {
+-- 
+2.48.1
+

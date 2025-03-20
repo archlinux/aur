@@ -1,0 +1,61 @@
+From 7a53b940f60634f73ae714f13fb349dadef66da7 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Thu, 19 Sep 2024 17:23:35 +1200
+Subject: [PATCH 23/28] platform/x86: asus-armoury: add panel_hd_mode attribute
+
+Add panel_hd_mode to toggle the panel mode between single and high
+definition modes.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/platform/x86/asus-armoury.c        | 6 +++++-
+ include/linux/platform_data/x86/asus-wmi.h | 1 +
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
+index d2e8c21d62dc..716bf96b6b58 100644
+--- a/drivers/platform/x86/asus-armoury.c
++++ b/drivers/platform/x86/asus-armoury.c
+@@ -93,7 +93,8 @@ static struct kobj_attribute pending_reboot = __ATTR_RO(pending_reboot);
+ 
+ static bool asus_bios_requires_reboot(struct kobj_attribute *attr)
+ {
+-	return !strcmp(attr->attr.name, "gpu_mux_mode");
++	return !strcmp(attr->attr.name, "gpu_mux_mode") ||
++	       !strcmp(attr->attr.name, "panel_hd_mode");
+ }
+ 
+ static int armoury_wmi_set_devstate(struct kobj_attribute *attr, u32 value, u32 wmi_dev)
+@@ -405,6 +406,8 @@ ATTR_GROUP_BOOL_RW(mcu_powersave, "mcu_powersave", ASUS_WMI_DEVID_MCU_POWERSAVE,
+ 		   "Set MCU powersaving mode");
+ ATTR_GROUP_BOOL_RW(panel_od, "panel_overdrive", ASUS_WMI_DEVID_PANEL_OD,
+ 		   "Set the panel refresh overdrive");
++ATTR_GROUP_BOOL_RW(panel_hd_mode, "panel_hd_mode", ASUS_WMI_DEVID_PANEL_HD,
++		   "Set the panel HD mode to UHD<0> or FHD<1>");
+ ATTR_GROUP_BOOL_RO(egpu_connected, "egpu_connected", ASUS_WMI_DEVID_EGPU_CONNECTED,
+ 		   "Show the eGPU connection status");
+ 
+@@ -418,6 +421,7 @@ static const struct asus_attr_group armoury_attr_groups[] = {
+ 	{ &boot_sound_attr_group, ASUS_WMI_DEVID_BOOT_SOUND },
+ 	{ &mcu_powersave_attr_group, ASUS_WMI_DEVID_MCU_POWERSAVE },
+ 	{ &panel_od_attr_group, ASUS_WMI_DEVID_PANEL_OD },
++	{ &panel_hd_mode_attr_group, ASUS_WMI_DEVID_PANEL_HD },
+ };
+ 
+ static int asus_fw_attr_add(void)
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 4574e30c53fc..62a9adb1af2f 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -76,6 +76,7 @@
+ #define ASUS_WMI_DEVID_THROTTLE_THERMAL_POLICY_VIVO 0x00110019
+ 
+ /* Misc */
++#define ASUS_WMI_DEVID_PANEL_HD		0x0005001C
+ #define ASUS_WMI_DEVID_PANEL_OD		0x00050019
+ #define ASUS_WMI_DEVID_CAMERA		0x00060013
+ #define ASUS_WMI_DEVID_LID_FLIP		0x00060062
+-- 
+2.48.1
+

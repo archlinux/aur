@@ -1,0 +1,478 @@
+From a68446a413a996133ce24071da5fe1bfc66724dd Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Wed, 2 Oct 2024 23:32:46 +1300
+Subject: [PATCH 08/28] hid-asus-ally: initial Ally-X gamepad bringup
+
+Enable use of the new gamepad device created by the MCU.
+- Triggers
+- Buttons
+- Sticks
+- Vibration
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus-ally.c | 385 +++++++++++++++++++++++++++++++++++-
+ drivers/hid/hid-asus-ally.h |   5 +
+ 2 files changed, 389 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
+index cf0bbaa88a69..2de79d5fe361 100644
+--- a/drivers/hid/hid-asus-ally.c
++++ b/drivers/hid/hid-asus-ally.c
+@@ -46,6 +46,51 @@ static const struct hid_device_id rog_ally_devices[] = {
+ 	{}
+ };
+ 
++/* The hatswitch outputs integers, we use them to index this X|Y pair */
++static const int hat_values[][2] = {
++	{ 0, 0 }, { 0, -1 }, { 1, -1 }, { 1, 0 },   { 1, 1 },
++	{ 0, 1 }, { -1, 1 }, { -1, 0 }, { -1, -1 },
++};
++
++/* rumble packet structure */
++struct ff_data {
++	u8 enable;
++	u8 magnitude_left;
++	u8 magnitude_right;
++	u8 magnitude_strong;
++	u8 magnitude_weak;
++	u8 pulse_sustain_10ms;
++	u8 pulse_release_10ms;
++	u8 loop_count;
++} __packed;
++
++struct ff_report {
++	u8 report_id;
++	struct ff_data ff;
++} __packed;
++
++struct ally_x_input_report {
++	uint16_t x, y;
++	uint16_t rx, ry;
++	uint16_t z, rz;
++	uint8_t buttons[4];
++} __packed;
++
++struct ally_x_device {
++	struct input_dev *input;
++	struct hid_device *hdev;
++	spinlock_t lock;
++
++	struct ff_report *ff_packet;
++	struct work_struct output_worker;
++	bool output_worker_initialized;
++	/* Prevent multiple queued event due to the enforced delay in worker */
++	bool update_qam_btn;
++	/* Set if the QAM and AC buttons emit Xbox and Xbox+A */
++	bool qam_btns_steam_mode;
++	bool update_ff;
++};
++
+ struct ally_rgb_dev {
+ 	struct hid_device *hdev;
+ 	struct led_classdev_mc led_rgb_dev;
+@@ -70,6 +115,7 @@ struct ally_rgb_data {
+ 
+ static struct ally_drvdata {
+ 	struct hid_device *hdev;
++	struct ally_x_device *ally_x;
+ 	struct ally_rgb_dev *led_rgb_dev;
+ 	struct ally_rgb_data led_rgb_data;
+ } drvdata;
+@@ -118,6 +164,309 @@ static u8 get_endpoint_address(struct hid_device *hdev)
+ 	return -ENODEV;
+ }
+ 
++/**************************************************************************************************/
++/* ROG Ally gamepad i/o and force-feedback                                                        */
++/**************************************************************************************************/
++static int ally_x_raw_event(struct ally_x_device *ally_x, struct hid_report *report, u8 *data,
++			    int size)
++{
++	struct ally_x_input_report *in_report;
++	unsigned long flags;
++	u8 byte;
++
++	if (data[0] == 0x0B) {
++		in_report = (struct ally_x_input_report *)&data[1];
++
++		input_report_abs(ally_x->input, ABS_X, in_report->x);
++		input_report_abs(ally_x->input, ABS_Y, in_report->y);
++		input_report_abs(ally_x->input, ABS_RX, in_report->rx);
++		input_report_abs(ally_x->input, ABS_RY, in_report->ry);
++		input_report_abs(ally_x->input, ABS_Z, in_report->z);
++		input_report_abs(ally_x->input, ABS_RZ, in_report->rz);
++
++		byte = in_report->buttons[0];
++		input_report_key(ally_x->input, BTN_A, byte & BIT(0));
++		input_report_key(ally_x->input, BTN_B, byte & BIT(1));
++		input_report_key(ally_x->input, BTN_X, byte & BIT(2));
++		input_report_key(ally_x->input, BTN_Y, byte & BIT(3));
++		input_report_key(ally_x->input, BTN_TL, byte & BIT(4));
++		input_report_key(ally_x->input, BTN_TR, byte & BIT(5));
++		input_report_key(ally_x->input, BTN_SELECT, byte & BIT(6));
++		input_report_key(ally_x->input, BTN_START, byte & BIT(7));
++
++		byte = in_report->buttons[1];
++		input_report_key(ally_x->input, BTN_THUMBL, byte & BIT(0));
++		input_report_key(ally_x->input, BTN_THUMBR, byte & BIT(1));
++		input_report_key(ally_x->input, BTN_MODE, byte & BIT(2));
++
++		byte = in_report->buttons[2];
++		input_report_abs(ally_x->input, ABS_HAT0X, hat_values[byte][0]);
++		input_report_abs(ally_x->input, ABS_HAT0Y, hat_values[byte][1]);
++	}
++	/*
++	 * The MCU used on Ally provides many devices: gamepad, keyboord, mouse, other.
++	 * The AC and QAM buttons route through another interface making it difficult to
++	 * use the events unless we grab those and use them here. Only works for Ally X.
++	 */
++	else if (data[0] == 0x5A) {
++		if (ally_x->qam_btns_steam_mode) {
++			spin_lock_irqsave(&ally_x->lock, flags);
++			if (data[1] == 0x38 && !ally_x->update_qam_btn) {
++				ally_x->update_qam_btn = true;
++				if (ally_x->output_worker_initialized)
++					schedule_work(&ally_x->output_worker);
++			}
++			spin_unlock_irqrestore(&ally_x->lock, flags);
++			/* Left/XBox button. Long press does ctrl+alt+del which we can't catch */
++			input_report_key(ally_x->input, BTN_MODE, data[1] == 0xA6);
++		} else {
++			input_report_key(ally_x->input, KEY_F16, data[1] == 0xA6);
++			input_report_key(ally_x->input, KEY_PROG1, data[1] == 0x38);
++		}
++		/* QAM long press */
++		input_report_key(ally_x->input, KEY_F17, data[1] == 0xA7);
++		/* QAM long press released */
++		input_report_key(ally_x->input, KEY_F18, data[1] == 0xA8);
++	}
++
++	input_sync(ally_x->input);
++
++	return 0;
++}
++
++static struct input_dev *ally_x_alloc_input_dev(struct hid_device *hdev,
++						const char *name_suffix)
++{
++	struct input_dev *input_dev;
++
++	input_dev = devm_input_allocate_device(&hdev->dev);
++	if (!input_dev)
++		return ERR_PTR(-ENOMEM);
++
++	input_dev->id.bustype = hdev->bus;
++	input_dev->id.vendor = hdev->vendor;
++	input_dev->id.product = hdev->product;
++	input_dev->id.version = hdev->version;
++	input_dev->uniq = hdev->uniq;
++	input_dev->name = "ASUS ROG Ally X Gamepad";
++
++	input_set_drvdata(input_dev, hdev);
++
++	return input_dev;
++}
++
++static int ally_x_play_effect(struct input_dev *idev, void *data, struct ff_effect *effect)
++{
++	struct ally_x_device *ally_x = drvdata.ally_x;
++	unsigned long flags;
++
++	if (effect->type != FF_RUMBLE)
++		return 0;
++
++	spin_lock_irqsave(&ally_x->lock, flags);
++	ally_x->ff_packet->ff.magnitude_strong = effect->u.rumble.strong_magnitude / 512;
++	ally_x->ff_packet->ff.magnitude_weak = effect->u.rumble.weak_magnitude / 512;
++	ally_x->update_ff = true;
++	spin_unlock_irqrestore(&ally_x->lock, flags);
++
++	if (ally_x->output_worker_initialized)
++		schedule_work(&ally_x->output_worker);
++
++	return 0;
++}
++
++static void ally_x_work(struct work_struct *work)
++{
++	struct ally_x_device *ally_x = container_of(work, struct ally_x_device, output_worker);
++	struct ff_report *ff_report = NULL;
++	bool update_qam = false;
++	bool update_ff = false;
++	unsigned long flags;
++
++	spin_lock_irqsave(&ally_x->lock, flags);
++	update_ff = ally_x->update_ff;
++	if (ally_x->update_ff) {
++		ff_report = kmemdup(ally_x->ff_packet, sizeof(*ally_x->ff_packet), GFP_KERNEL);
++		ally_x->update_ff = false;
++	}
++	update_qam = ally_x->update_qam_btn;
++	spin_unlock_irqrestore(&ally_x->lock, flags);
++
++	if (update_ff && ff_report) {
++		ff_report->ff.magnitude_left = ff_report->ff.magnitude_strong;
++		ff_report->ff.magnitude_right = ff_report->ff.magnitude_weak;
++		asus_dev_set_report(ally_x->hdev, (u8 *)ff_report, sizeof(*ff_report));
++	}
++	kfree(ff_report);
++
++	if (update_qam) {
++		/*
++		 * The sleeps here are required to allow steam to register the button combo.
++		 */
++		usleep_range(1000, 2000);
++		input_report_key(ally_x->input, BTN_MODE, 1);
++		input_sync(ally_x->input);
++
++		msleep(80);
++		input_report_key(ally_x->input, BTN_A, 1);
++		input_sync(ally_x->input);
++
++		msleep(80);
++		input_report_key(ally_x->input, BTN_A, 0);
++		input_sync(ally_x->input);
++
++		msleep(80);
++		input_report_key(ally_x->input, BTN_MODE, 0);
++		input_sync(ally_x->input);
++
++		spin_lock_irqsave(&ally_x->lock, flags);
++		ally_x->update_qam_btn = false;
++		spin_unlock_irqrestore(&ally_x->lock, flags);
++	}
++}
++
++static struct input_dev *ally_x_setup_input(struct hid_device *hdev)
++{
++	int ret, abs_min = 0, js_abs_max = 65535, tr_abs_max = 1023;
++	struct input_dev *input;
++
++	input = ally_x_alloc_input_dev(hdev, NULL);
++	if (IS_ERR(input))
++		return ERR_CAST(input);
++
++	input_set_abs_params(input, ABS_X, abs_min, js_abs_max, 0, 0);
++	input_set_abs_params(input, ABS_Y, abs_min, js_abs_max, 0, 0);
++	input_set_abs_params(input, ABS_RX, abs_min, js_abs_max, 0, 0);
++	input_set_abs_params(input, ABS_RY, abs_min, js_abs_max, 0, 0);
++	input_set_abs_params(input, ABS_Z, abs_min, tr_abs_max, 0, 0);
++	input_set_abs_params(input, ABS_RZ, abs_min, tr_abs_max, 0, 0);
++	input_set_abs_params(input, ABS_HAT0X, -1, 1, 0, 0);
++	input_set_abs_params(input, ABS_HAT0Y, -1, 1, 0, 0);
++	input_set_capability(input, EV_KEY, BTN_A);
++	input_set_capability(input, EV_KEY, BTN_B);
++	input_set_capability(input, EV_KEY, BTN_X);
++	input_set_capability(input, EV_KEY, BTN_Y);
++	input_set_capability(input, EV_KEY, BTN_TL);
++	input_set_capability(input, EV_KEY, BTN_TR);
++	input_set_capability(input, EV_KEY, BTN_SELECT);
++	input_set_capability(input, EV_KEY, BTN_START);
++	input_set_capability(input, EV_KEY, BTN_MODE);
++	input_set_capability(input, EV_KEY, BTN_THUMBL);
++	input_set_capability(input, EV_KEY, BTN_THUMBR);
++
++	input_set_capability(input, EV_KEY, KEY_PROG1);
++	input_set_capability(input, EV_KEY, KEY_F16);
++	input_set_capability(input, EV_KEY, KEY_F17);
++	input_set_capability(input, EV_KEY, KEY_F18);
++
++	input_set_capability(input, EV_FF, FF_RUMBLE);
++	input_ff_create_memless(input, NULL, ally_x_play_effect);
++
++	ret = input_register_device(input);
++	if (ret)
++		return ERR_PTR(ret);
++
++	return input;
++}
++
++static ssize_t ally_x_qam_mode_show(struct device *dev, struct device_attribute *attr,
++				    char *buf)
++{
++	struct ally_x_device *ally_x = drvdata.ally_x;
++
++	return sysfs_emit(buf, "%d\n", ally_x->qam_btns_steam_mode);
++}
++
++static ssize_t ally_x_qam_mode_store(struct device *dev, struct device_attribute *attr,
++				     const char *buf, size_t count)
++{
++	struct ally_x_device *ally_x = drvdata.ally_x;
++	bool val;
++	int ret;
++
++	ret = kstrtobool(buf, &val);
++	if (ret < 0)
++		return ret;
++
++	ally_x->qam_btns_steam_mode = val;
++
++	return count;
++}
++ALLY_DEVICE_ATTR_RW(ally_x_qam_mode, qam_mode);
++
++static struct ally_x_device *ally_x_create(struct hid_device *hdev)
++{
++	uint8_t max_output_report_size;
++	struct ally_x_device *ally_x;
++	struct ff_report *report;
++	int ret;
++
++	ally_x = devm_kzalloc(&hdev->dev, sizeof(*ally_x), GFP_KERNEL);
++	if (!ally_x)
++		return ERR_PTR(-ENOMEM);
++
++	ally_x->hdev = hdev;
++	INIT_WORK(&ally_x->output_worker, ally_x_work);
++	spin_lock_init(&ally_x->lock);
++	ally_x->output_worker_initialized = true;
++	ally_x->qam_btns_steam_mode =
++		true; /* Always default to steam mode, it can be changed by userspace attr */
++
++	max_output_report_size = sizeof(struct ally_x_input_report);
++	report = devm_kzalloc(&hdev->dev, sizeof(*report), GFP_KERNEL);
++	if (!report) {
++		ret = -ENOMEM;
++		goto free_ally_x;
++	}
++
++	/* None of these bytes will change for the FF command for now */
++	report->report_id = 0x0D;
++	report->ff.enable = 0x0F; /* Enable all by default */
++	report->ff.pulse_sustain_10ms = 0xFF; /* Duration */
++	report->ff.pulse_release_10ms = 0x00; /* Start Delay */
++	report->ff.loop_count = 0xEB; /* Loop Count */
++	ally_x->ff_packet = report;
++
++	ally_x->input = ally_x_setup_input(hdev);
++	if (IS_ERR(ally_x->input)) {
++		ret = PTR_ERR(ally_x->input);
++		goto free_ff_packet;
++	}
++
++	if (sysfs_create_file(&hdev->dev.kobj, &dev_attr_ally_x_qam_mode.attr)) {
++		ret = -ENODEV;
++		goto unregister_input;
++	}
++
++	ally_x->update_ff = true;
++	if (ally_x->output_worker_initialized)
++		schedule_work(&ally_x->output_worker);
++
++	hid_info(hdev, "Registered Ally X controller using %s\n",
++		 dev_name(&ally_x->input->dev));
++	return ally_x;
++
++unregister_input:
++	input_unregister_device(ally_x->input);
++free_ff_packet:
++	kfree(ally_x->ff_packet);
++free_ally_x:
++	kfree(ally_x);
++	return ERR_PTR(ret);
++}
++
++static void ally_x_remove(struct hid_device *hdev)
++{
++	struct ally_x_device *ally_x = drvdata.ally_x;
++	unsigned long flags;
++
++	spin_lock_irqsave(&ally_x->lock, flags);
++	ally_x->output_worker_initialized = false;
++	spin_unlock_irqrestore(&ally_x->lock, flags);
++	cancel_work_sync(&ally_x->output_worker);
++	sysfs_remove_file(&hdev->dev.kobj, &dev_attr_ally_x_qam_mode.attr);
++}
++
+ /**************************************************************************************************/
+ /* ROG Ally LED control                                                                           */
+ /**************************************************************************************************/
+@@ -368,6 +717,24 @@ static void ally_rgb_remove(struct hid_device *hdev)
+ /* ROG Ally driver init                                                                           */
+ /**************************************************************************************************/
+ 
++static int ally_raw_event(struct hid_device *hdev, struct hid_report *report, u8 *data,
++			  int size)
++{
++	struct ally_x_device *ally_x = drvdata.ally_x;
++
++	if (ally_x) {
++		if ((hdev->bus == BUS_USB && report->id == ALLY_X_INPUT_REPORT_USB &&
++		     size == ALLY_X_INPUT_REPORT_USB_SIZE) ||
++		    (data[0] == 0x5A)) {
++			ally_x_raw_event(ally_x, report, data, size);
++		} else {
++			return -1;
++		}
++	}
++
++	return 0;
++}
++
+ /*
+  * We don't care about any other part of the string except the version section.
+  * Example strings: FGA80100.RC72LA.312_T01, FGA80100.RC71LS.318_T01
+@@ -487,7 +854,8 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+ 	if (ep < 0)
+ 		return ep;
+ 
+-	if (ep != ROG_ALLY_CFG_INTF_IN)
++	if (ep != ROG_ALLY_CFG_INTF_IN &&
++	    ep != ROG_ALLY_X_INTF_IN)
+ 		return -ENODEV;
+ 
+ 	ret = hid_parse(hdev);
+@@ -530,6 +898,17 @@ static int ally_hid_probe(struct hid_device *hdev, const struct hid_device_id *_
+ 			goto err_close;
+ 	}
+ 
++	/* May or may not exist */
++	if (ep == ROG_ALLY_X_INTF_IN) {
++		drvdata.ally_x = ally_x_create(hdev);
++		if (IS_ERR(drvdata.ally_x)) {
++			hid_err(hdev, "Failed to create Ally X gamepad.\n");
++			drvdata.ally_x = NULL;
++			goto err_close;
++		}
++		hid_info(hdev, "Created Ally X controller.\n");
++	}
++
+ 	return 0;
+ 
+ err_close:
+@@ -544,6 +923,9 @@ static void ally_hid_remove(struct hid_device *hdev)
+ 	if (drvdata.led_rgb_dev)
+ 		ally_rgb_remove(hdev);
+ 
++	if (drvdata.ally_x)
++		ally_x_remove(hdev);
++
+ 	hid_hw_close(hdev);
+ 	hid_hw_stop(hdev);
+ }
+@@ -588,6 +970,7 @@ static struct hid_driver rog_ally_cfg = { .name = "asus_rog_ally",
+ 		.id_table = rog_ally_devices,
+ 		.probe = ally_hid_probe,
+ 		.remove = ally_hid_remove,
++		.raw_event = ally_raw_event,
+ 		/* ALLy 1 requires this to reset device state correctly */
+ 		.reset_resume = ally_hid_reset_resume,
+ 		.driver = {
+diff --git a/drivers/hid/hid-asus-ally.h b/drivers/hid/hid-asus-ally.h
+index 2f621e16a9d8..7d172d64b814 100644
+--- a/drivers/hid/hid-asus-ally.h
++++ b/drivers/hid/hid-asus-ally.h
+@@ -40,3 +40,8 @@ enum xpad_cmd_len {
+ 	xpad_cmd_len_response_curve = 0x09,
+ 	xpad_cmd_len_adz = 0x02,
+ };
++
++/* required so we can have nested attributes with same name but different functions */
++#define ALLY_DEVICE_ATTR_RW(_name, _sysfs_name)    \
++	struct device_attribute dev_attr_##_name = \
++		__ATTR(_sysfs_name, 0644, _name##_show, _name##_store)
+-- 
+2.48.1
+

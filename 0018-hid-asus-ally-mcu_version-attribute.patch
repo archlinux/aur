@@ -1,0 +1,58 @@
+From 49d143b03f97604c5e8f196c31233eaf7e296f5b Mon Sep 17 00:00:00 2001
+From: Luke Jones <luke@ljones.dev>
+Date: Mon, 10 Feb 2025 17:15:01 +1300
+Subject: [PATCH 18/28] hid-asus-ally: mcu_version attribute
+
+Add the mcu_version sysfs attribute so that userspace has a way to check
+the MCU FW version.
+
+Signed-off-by: Luke Jones <luke@ljones.dev>
+---
+ drivers/hid/hid-asus-ally.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/hid/hid-asus-ally.c b/drivers/hid/hid-asus-ally.c
+index d41e78c196a0..3e6250a7bd48 100644
+--- a/drivers/hid/hid-asus-ally.c
++++ b/drivers/hid/hid-asus-ally.c
+@@ -376,6 +376,7 @@ static struct ally_drvdata {
+ 	struct ally_gamepad_cfg *gamepad_cfg;
+ 	struct ally_rgb_dev *led_rgb_dev;
+ 	struct ally_rgb_data led_rgb_data;
++	uint mcu_version;
+ } drvdata;
+ 
+ /**
+@@ -1191,6 +1192,13 @@ static ssize_t gamepad_mode_store(struct device *dev, struct device_attribute *a
+ 
+ DEVICE_ATTR_RW(gamepad_mode);
+ 
++static ssize_t mcu_version_show(struct device *dev, struct device_attribute *attr, char *buf)
++{
++	return sysfs_emit(buf, "%d\n", drvdata.mcu_version);
++}
++
++DEVICE_ATTR_RO(mcu_version);
++
+ /* ROOT LEVEL ATTRS *******************************************************************************/
+ static struct attribute *gamepad_device_attrs[] = {
+ 	&dev_attr_btn_mapping_reset.attr,
+@@ -1198,6 +1206,7 @@ static struct attribute *gamepad_device_attrs[] = {
+ 	&dev_attr_gamepad_apply_all.attr,
+ 	&dev_attr_gamepad_vibration_intensity.attr,
+ 	&dev_attr_gamepad_vibration_intensity_index.attr,
++	&dev_attr_mcu_version.attr,
+ 	NULL
+ };
+ 
+@@ -1967,6 +1976,7 @@ static void validate_mcu_fw_version(struct hid_device *hdev, int idProduct)
+ 		min_version = 0;
+ 	}
+ 
++	drvdata.mcu_version = version;
+ 	if (version < min_version) {
+ 		hid_warn(hdev,
+ 			"The MCU firmware version must be %d or greater to avoid issues with suspend.\n",
+-- 
+2.48.1
+
