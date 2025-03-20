@@ -1,0 +1,4 @@
+[python-lynxpresence]
+source = "git"
+git = "https://github.com/C0rn3j/lynxpresence.git"
+prefix = "v"
