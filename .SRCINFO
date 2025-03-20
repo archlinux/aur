@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-onetbb
 	pkgdesc = High level abstract threading library (oneAPI Threading Building Blocks) (Android x86-64)
-	pkgver = 2021.13.0
-	pkgrel = 2
+	pkgver = 2022.0.0
+	pkgrel = 1
 	url = https://oneapi-src.github.io/oneTBB/
 	arch = any
 	groups = android-onetbb
@@ -12,7 +12,7 @@ pkgbase = android-x86-64-onetbb
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/oneapi-src/oneTBB/archive/v2021.13.0/onetbb-2021.13.0.tar.gz
-	md5sums = f287cd007240a838286ff13e7deaee12
+	source = https://github.com/oneapi-src/oneTBB/archive/v2022.0.0/onetbb-2022.0.0.tar.gz
+	md5sums = 78ec44cecf3cd78c4984e61f1bb93134
 
 pkgname = android-x86-64-onetbb
