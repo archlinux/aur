@@ -2,7 +2,7 @@
 _base=meshpy
 pkgname=python-${_base}
 pkgdesc="2D/3D simplicial mesh generator interface for Python (Triangle, TetGen, gmsh)"
-pkgver=2022.1.3
+pkgver=2025.1.1
 pkgrel=1
 arch=(x86_64)
 url="https://documen.tician.de/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-setuptools pybind11 git) # ctags
 checkdepends=(python-pytest)                 # python-matplotlib
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
 validpgpkeys=('900A958D9A0ACA58B1468F2471AA298BCA171145') # Andreas Kloeckner
-sha512sums=('SKIP')
+sha512sums=('d97f56f1497861c5170536ac4b105ba4d299bdb1ae54747b10393e9ab3ab8a184ee1cb66baae0e242a7184b076143c991ac72e78925630cc8f53ae4dc3761288')
 
 build() {
   cd ${_base}
