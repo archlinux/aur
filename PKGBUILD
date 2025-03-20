@@ -6,10 +6,10 @@
 pkgname="keypunch-git"
 _appname="keypunch"
 pkgver='v5.1_3c61abb'
-pkgrel=1
+pkgrel=2
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch/'
-arch=('any')
+arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
 source=("git+$url")
 sha256sums=('SKIP')
@@ -19,7 +19,7 @@ makedepends=('rust' 'meson' 'ninja' 'gettext' 'pkgconf' 'git' 'blueprint-compile
 build() {
     cd ${srcdir}/${_appname}
     export RUSTUP_TOOLCHAIN=stable
-    meson setup build
+    meson setup -Dprefix=/usr build
     meson compile -C build
 }
 

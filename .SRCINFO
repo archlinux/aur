@@ -1,9 +1,10 @@
 pkgbase = keypunch-git
 	pkgdesc = Practice your typing skills
 	pkgver = v5.1_3c61abb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bragefuglseth/keypunch/
-	arch = any
+	arch = aarch64
+	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = rust
 	makedepends = meson
