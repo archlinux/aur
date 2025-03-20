@@ -6,7 +6,7 @@
 # Contributor: Rose Ames <rose at happyspork dot com>
 
 pkgname=zulip-desktop
-pkgver=5.11.1
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ depends=(libxkbfile gtk3 libxss nss python)
 makedepends=(npm nvm)
 source=($pkgname-$pkgver.tar.gz::https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.desktop)
-sha512sums=('eefa4240af971329ddc1be0360ddfd83f04cf88f16044842f7a42b3ae4a2dba34432fbfeaf4428cfc16cf4a9804e6b04a74740a370fffa7aa9620ef7ce9e9672'
+sha512sums=('499c937e6873b46c98cbe597f100d121061ac77fa87c8044d21627cba46d2d53e052eb22bb7b100474ff97cc401f54a5f717a98e9e9a8ede52cec0e56e7c11ef'
             '4899b20aaff5f8906de1c9d0f9b54d440e9b22cd19a8b383def92b973a8c4d954f88cee623744ec42546dc2f82d4849bcc1c49917efbea9ab346d41ac0dba589')
 
 _ensure_local_nvm() {
@@ -52,8 +52,8 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 
   install -Dm 644 ../$pkgname.desktop -t "$pkgdir"/usr/share/applications
-  for i in 16 24 32 48 64 96 128 256 512; do
-    install -Dm 644 build/icons/${i}x${i}.png \
-      "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/zulip.png
+  for i in 32 48 64 96 128 256 512; do
+    install -Dm 644 build/zulip.png \
+      "$pkgdir"/usr/share/icons/zulip.png
   done
 }
