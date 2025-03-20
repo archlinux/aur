@@ -2,7 +2,7 @@
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -22,7 +22,10 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=('python-pytest')
+checkdepends=(
+  'python-pytest'
+  'xorg-server-xvfb'
+)
 optdepends=(
   'nemo-python: Nemo plugin'
   'python-caja: Caja plugin'
@@ -45,7 +48,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  PYTHONPATH=./ pytest || :
+  PYTHONPATH=./ dbus-run-session xvfb-run pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
