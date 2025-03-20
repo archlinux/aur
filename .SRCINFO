@@ -1,13 +1,13 @@
 pkgbase = parpar-bin
 	pkgdesc = A high-performance, multithreaded PAR2 creation tool
-	pkgver = 0.4.2
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/animetosho/ParPar
 	arch = x86_64
-	license = Public Domain
+	license = custom:CC0
 	provides = parpar
 	options = !strip
-	source = https://github.com/animetosho/ParPar/releases/download/v0.4.2/parpar-v0.4.2-linux-static-amd64.xz
-	sha256sums = 6afc5a45b861edaa1d82ee1eaed872a7ba74c363fea9d6eb735de2982a5598cb
+	source = https://github.com/animetosho/ParPar/releases/download/v0.4.5/parpar-v0.4.5-linux-static-amd64.xz
+	sha256sums = cbcc24eb6e01559a03ccce190e330d4eb92216c9f87d430439d932727202156d
 
 pkgname = parpar-bin
