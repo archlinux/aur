@@ -1,0 +1,13 @@
+--- a/src/sys_unix.c
++++ b/src/sys_unix.c
+@@ -170,10 +170,6 @@
+ #ifdef HAVE_SECURE_GETENV
+ 	return secure_getenv(name);
+ #else
+-	/* Otherwise, make sure current process is not tainted by uid or gid
+-	 * changes */
+-	if (issetugid())
+-		return NULL;
+ 	return getenv(name);
+ #endif
+ }
