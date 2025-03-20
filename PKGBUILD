@@ -1,5 +1,5 @@
 # Contributor: Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
-pkgname=magicseteditor
+pkgname=magicseteditor-haganbmj-fork
 pkgver=2.5.6
 pkgrel=1
 pkgdesc="A fork of magic set editor, with modern improvements"
