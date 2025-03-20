@@ -1,7 +1,7 @@
+# Maintainer: Jia Yin<lok-ation@outlook.com>
 # Contributor: Rowisi < nomail <at> private <dot> com >
 # Contributor: So1ar <so1ar114514@gmail.com>
 # Contributor: Bot-wxt1221<3264117476@qq.com>
-# Manitor: Jia Yin<lok-ation@outlook.com>
 
 pkgname=hmcl-stable-bin
 pkgver=3.6.11
