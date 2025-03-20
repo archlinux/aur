@@ -1,0 +1,17 @@
+pkgbase = android-riscv64-libtheora
+	pkgdesc = An open video codec developed by the Xiph.org (Android riscv64)
+	pkgver = 1.1.1
+	pkgrel = 4
+	url = http://xiph.org
+	arch = any
+	groups = android-libtheora
+	license = BSD
+	makedepends = android-configure
+	depends = android-riscv64-libvorbis
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.bz2
+	md5sums = 292ab65cedd5021d6b7ddd117e07cd8e
+
+pkgname = android-riscv64-libtheora
