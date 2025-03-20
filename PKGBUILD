@@ -1,6 +1,6 @@
 # Maintainer: Filip Priečinský <filippriec@tutanota.com>
 pkgname=tansig-lut
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="CLI generation of a Look Up Tables for tansig function with fixed-point arithmetic"
 arch=('x86_64')
