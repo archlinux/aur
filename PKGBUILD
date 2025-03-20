@@ -1,7 +1,7 @@
 # Maintainer: Aaruni Kaushik <akaushik@mathematik.uni-kl.de>
 _name=maps
 pkgname=maps
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Sandboxing tool for Mathematical Research Software"
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('maps')
 optdepends=()
 makedepends=('git')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c58043b099d5721018b02221afb0621d4deeb3e2bf7bfad0d36f2928ea43f120')
+sha256sums=('cf8fa1dcc8f6dba1718ae0ff83b313439f756d6f6c22a269aee5c04282bbe2ca')
 
 package(){
     install -Dm 755 "$srcdir/${_name}-${pkgver}/src/maps" "$pkgdir/usr/bin/maps"
