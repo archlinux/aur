@@ -37,23 +37,32 @@ build() {
     cd "$_pkgname-$_pkgver"
     
     mkdir -p bin
-    echo "Building $pkgname for $CARCH..."
-    # temporary solution to avoid optimization-related issues
+    echo "Building $pkgname-dev for $CARCH..."
     clang++ ir.cpp \
         --std=c++17 \
         -Wno-everything \
-        -O3 \
-        -flto \
         -fwrapv \
         -ffloat-store \
+        -o "bin/$pkgname-dev"
+
+    echo "Building $pkgname for $CARCH..."
+    # temporary solution to avoid optimization-related issues
+    "./bin/$pkgname-dev" -t src/julec
+    clang++ dist/ir.cpp \
+        --std=c++17 \
+        -Wno-everything \
+        -fwrapv \
+        -O3 \
+        -flto \
         -fomit-frame-pointer \
+        -ffloat-store \
         -o "bin/$pkgname"
 }
 
 #check() {
 #    cd "$_pkgname-$_pkgver/tests/std"
 #    "../../bin/$pkgname" mod init
-#    "../../bin/$pkgname" -t t.
+#    "../../bin/$pkgname" -t .
 #}
 
 package() {
