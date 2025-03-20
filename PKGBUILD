@@ -1,16 +1,15 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=lightlyshaders-git
-pkgver=2.0.0.r9.gcea07c0
+pkgver=2.0.0.r49.g42ba6df
 pkgrel=1
 pkgdesc="Round corners and outline effect for KWin"
 arch=(x86_64)
 url="https://github.com/a-parhom/LightlyShaders"
-license=(GPL3)
-depends=('qt5-x11extras' 'qt5-xmlpatterns' 'qt5-tools' 'kconfig5' 'kconfigwidgets5'
-         'ki18n5' 'kcoreaddons5' 'kcrash5' 'kio5' 'kservice5' 'kinit' 'knotifications5' 'kwin'
-         'kwidgetsaddons5' 'kwindowsystem5' 'kguiaddons5' 'kglobalaccel5' 'kde-dev-utils')
-makedepends=('git' 'extra-cmake-modules' 'kdelibs4support')
+license=('GPL-2.0-or-later')
+depends=('kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kglobalaccel' 'kguiaddons' 'kcmutils'
+         'ki18n' 'kio' 'kservice' 'knotifications' 'kwidgetsaddons' 'kwindowsystem')
+makedepends=('git' 'extra-cmake-modules')
 provides=('lightlyshaders')
 conflicts=('lightlyshaders')
 source=("git+${url}.git")
@@ -22,10 +21,10 @@ pkgver() {
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S LightlyShaders
-  make -C build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLIB_INSTALL_DIR=lib -B build -S LightlyShaders
+  cmake --build build --config RelWithDebInfo
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" PREFIX=/usr install
+  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
 }
