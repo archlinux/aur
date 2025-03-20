@@ -1,9 +1,10 @@
 pkgbase = android-x86-libtheora
-	pkgdesc = An open video codec developed by the Xiph.org (android)
+	pkgdesc = An open video codec developed by the Xiph.org (Android x86)
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://xiph.org
 	arch = any
+	groups = android-libtheora
 	license = BSD
 	makedepends = android-configure
 	depends = android-x86-libvorbis
@@ -14,4 +15,3 @@ pkgbase = android-x86-libtheora
 	md5sums = 292ab65cedd5021d6b7ddd117e07cd8e
 
 pkgname = android-x86-libtheora
-
