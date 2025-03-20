@@ -1,5 +1,6 @@
 # ex: ts=2 sts=2 sw=2 et
-# Maintainer: yhfudev <yhfudev ta gmail dot com>
+# Maintainer: Bonnee <bonora dot matteo at gmail dot com>
+# Contributor: yhfudev <yhfudev ta gmail dot com>
 # Contributor: veox <veox ta wemakethings dot net>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -8,12 +9,12 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 _pkgbase=openocd
-pkgname=openocd-git
-pkgver=0.12.0.r59.g0b6f53e94
+pkgname=openocd-stm-git
+pkgver=openocd.cubeide.v1.15.0.r0.g0de861e21
 pkgrel=1
-pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
+pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (STMicroelectronics git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
-url="http://openocd.org"
+url="https://github.com/STMicroelectronics/OpenOCD"
 license=('GPL')
 depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
@@ -22,7 +23,7 @@ provides=('openocd')
 conflicts=('openocd')
 
 source=(
-  "${pkgname}::git+https://repo.or.cz/openocd.git"
+  "${pkgname}::git+https://github.com/STMicroelectronics/OpenOCD.git"
   "git+https://github.com/msteveb/jimtcl.git"
   "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
   "git+https://git.savannah.nongnu.org/git/git2cl.git"
