@@ -1,0 +1,21 @@
+pkgbase = magicseteditor
+	pkgdesc = A fork of magic set editor, with modern improvements
+	pkgver = 2.5.6
+	pkgrel = 1
+	url = https://github.com/haganbmj/MagicSetEditor2
+	install = magicseteditor.install
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = boost
+	makedepends = cmake
+	makedepends = gendesk
+	depends = hunspell
+	depends = wxwidgets-gtk3
+	depends = wxwidgets-common
+	depends = boost-libs
+	provides = magicseteditor
+	source = magicseteditor-2.5.6.tar.gz::https://github.com/haganbmj/MagicSetEditor2/archive/refs/tags/v2.5.6.tar.gz
+	sha256sums = d22a5c5d629e6e7e744c6a8f59644ec275a0397c0ccda3e9a488142cacc94b29
+
+pkgname = magicseteditor
