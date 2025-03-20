@@ -1,31 +1,32 @@
 pkgbase = tal-vocoder
-	pkgdesc = A Phase Vocoder By TAL Software
+	pkgdesc = A phase vocoder by TAL Software
 	pkgver = 3.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tal-software.com/products/tal-vocoder
 	arch = x86_64
+	groups = pro-audio
 	license = EULA
-	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-Vocoder-2_64_linux.zip
-	md5sums = 1f0e553b20c7d04da55a76c224667372
+	sha512sums = 8249458b219a0f4c0980760fd60efb2ca6b46f699d7fac5c939e11867210529d3ac3d7e5916800c4b0623abcf6b4dbde7eac1a2d373e966161afc4c28bb3c011
+	b2sums = 327f4cedb4f8d55479ffc3855e9396001419b54edb2c655cbb7432f1806b5062512c4e9fb9f6cfe4561e0cffb2a6216768c69e419057e8fb8251ea7279f090a8
 
 pkgname = tal-vocoder-clap-bin
-	groups = clap-plugins
+	pkgdesc = A phase vocoder by TAL Software - CLAP plugin
 	groups = pro-audio
-	provides = tal-vocoder-clap-bin
-	conflicts = tal-vocoder-bin
-	replaces = tal-vocoder-bin
+	groups = clap-plugins
+	depends = glibc
+	depends = clap-host
 
 pkgname = tal-vocoder-vst-bin
+	pkgdesc = A phase vocoder by TAL Software - VST plugin
 	groups = pro-audio
 	groups = vst-plugins
-	provides = tal-vocoder-vst-bin
-	conflicts = tal-vocoder-bin
-	replaces = tal-vocoder-bin
+	depends = glibc
+	depends = vst-host
 
 pkgname = tal-vocoder-vst3-bin
+	pkgdesc = A phase vocoder by TAL Software - VST3 plugin
 	groups = pro-audio
 	groups = vst3-plugins
-	provides = tal-vocoder-vst3-bin
-	conflicts = tal-vocoder-bin
-	replaces = tal-vocoder-bin
+	depends = glibc
+	depends = vst3-host
