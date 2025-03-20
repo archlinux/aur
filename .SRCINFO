@@ -1,0 +1,24 @@
+pkgbase = anytype-pre
+	pkgdesc = The everything app for those who celebrate trust & autonomy
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = https://anytype.io/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = glib2
+	depends = nss
+	depends = gcc-libs
+	depends = bash
+	depends = libxss
+	depends = libsecret
+	optdepends = org.freedesktop.secrets: auto login support
+	conflicts = anytype-bin
+	conflicts = anytype-electron-bin
+	conflicts = anytype-alpha-bin
+	options = !strip
+	options = !debug
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.46.0-primitives3/anytype_0.46.0-primitives3_amd64.deb
+	sha256sums = f67814c552b1af727dfc89fb4637b7da00c3803b13cfe9ca8080c13048162679
+
+pkgname = anytype-pre
