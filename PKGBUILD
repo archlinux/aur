@@ -3,12 +3,12 @@
 
 pkgname=hledger-utils-git
 _pkgname=${pkgname%-git}
-pkgver=1.12.1.r11.g209cd20
+pkgver=1.14.0.r1.gd950b88
 pkgrel=1
 pkgdesc='Utilities extending the hledger plaintextaccounting tool'
 arch=(any)
 url="https://gitlab.com/nobodyinperson/$_pkgname"
-license=(GPL)
+license=(GPL-3.0-or-later)
 _pydeps=(asteval
          cycler
          # drawilleplot
