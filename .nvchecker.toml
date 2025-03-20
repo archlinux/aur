@@ -1,0 +1,4 @@
+[ksnip-git]
+source = "git"
+git = "https://github.com/ksnip/ksnip.git"
+prefix = "v"
