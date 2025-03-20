@@ -6,6 +6,7 @@ post_install() {
     cscli capi register --error
     cscli machines add --auto --force --error
     cscli hub update
+    cscli hub upgrade
 
     CSCLI_BIN_INSTALLED="/usr/bin/cscli" SILENT=true install_collection
 }
