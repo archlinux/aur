@@ -1,0 +1,20 @@
+pkgbase = miracle-wm-git
+	pkgdesc = Wayland tiling window manager built on Mir
+	pkgver = 0.4.1.r72.gc64475e
+	pkgrel = 1
+	url = https://github.com/miracle-wm-org/miracle-wm
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = nlohmann-json
+	makedepends = glm
+	makedepends = boost
+	depends = mir
+	depends = libnotify
+	provides = miracle-wm
+	conflicts = miracle-wm
+	source = git+https://github.com/miracle-wm-org/miracle-wm.git
+	sha256sums = SKIP
+
+pkgname = miracle-wm-git
