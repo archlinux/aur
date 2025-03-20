@@ -1,6 +1,6 @@
 # Maintainer: Filip Priečinský <filippriec@tutanota.com>
 pkgname=tansig-lut
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="CLI generation of a Look Up Tables for tansig function with fixed-point arithmetic"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/filipriec/tansig-lut"
 license=('GPL3')
 depends=('cargo')
 source=("https://gitlab.com/filipriec/tansig-lut/-/archive/v$pkgver/tansig-lut-v$pkgver.tar.gz")
-sha256sums=('c6daf6fe3590f26cf06d48ee72f7e464beb7718a1462a1f24957ce2c2a207890')
+sha256sums=('b9b3a77fa182897e40dd4a8997466438eed69870117f656b07136675bf292f93')
 
 build() {
   cd "$pkgname-v$pkgver"
