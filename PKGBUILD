@@ -1,14 +1,14 @@
 # Contributor: Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
 pkgname=magicseteditor
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to help create Magic: the Gathering cards and sets. Comes with no game support."
 arch=('i686' 'x86_64')
 url="https://github.com/twanvl/MagicSetEditor2"
 license=('GPL-2.0-or-later')
 depends=('hunspell' 'wxwidgets-gtk3' 'wxwidgets-common' 'boost-libs')
 makedepends=('boost' 'cmake' 'gendesk')
-provides=("magicseteditor=${pkgver}")
+provides=("magicseteditor")
 source=("https://github.com/twanvl/MagicSetEditor2/archive/refs/tags/v${pkgver}.tar.gz" "compilefix.patch")
 install=$pkgname.install
 options=()
