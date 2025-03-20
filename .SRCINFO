@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-npth
+	pkgdesc = The new GNU portable threads library (Android riscv64)
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://www.gnupg.org/software/npth/index.html
+	arch = any
+	groups = android-npth
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2
+	md5sums = cb4fc0402be5ba67544e499cb2c1a74d
+
+pkgname = android-riscv64-npth
