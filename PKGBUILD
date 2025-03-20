@@ -1,13 +1,13 @@
 # Maintainer: Fleuria <fleuria at posteo dot co>
 pkgname=uki-profilify
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-profile UKI creation helper"
 url="https://codeberg.org/fleuria/uki-profilify"
 arch=(any)
 license=('Apache-2.0')
 depends=('python' 'systemd-ukify>=257')
-makedepends=('tar')
+makedepends=('git')
 optdepends=('mkinitcpio: automatically create UKIs')
 
 source=("git+${url}.git#tag=v${pkgver}?signed")

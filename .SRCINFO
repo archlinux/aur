@@ -1,11 +1,11 @@
 pkgbase = uki-profilify
 	pkgdesc = Multi-profile UKI creation helper
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/fleuria/uki-profilify
 	arch = any
 	license = Apache-2.0
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = systemd-ukify>=257
 	optdepends = mkinitcpio: automatically create UKIs
