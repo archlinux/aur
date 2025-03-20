@@ -1,0 +1,18 @@
+pkgbase = python-livekit-plugins-speechmatics
+	pkgdesc = Agent Framework plugin for Speechmatics.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-speechmatics
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-speechmatics/livekit_plugins_speechmatics-0.0.2.tar.gz
+	sha256sums = 31f06c4a70aac0300df636fe5a2f40387b211e39abcca8e91117acd6dc0e94d3
+
+pkgname = python-livekit-plugins-speechmatics
