@@ -1,10 +1,10 @@
 # Maintainer: Guillaume Quintard <guillaume.quintard@gmail.com>
 
 pkgname=varnish-modules
-pkgver=0.25.0
-pkgrel=3
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="A bundle of commonly useful Varnish vmods"
-depends=('varnish=7.6.1-1')
+depends=('varnish=7.7.0-1')
 makedepends=('autoconf' 'automake' 'gcc' 'libtool' 'make' 'python' 'python-docutils')
 arch=('x86_64')
 url="https://github.com/varnish/varnish-modules"
@@ -35,4 +35,4 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('2ad8ebeab165002d1bfba9a2088951fb10ff573f0205d3f04e68921f191441f4026450f3a0b78f2aa96f40c82838a2d4d5f0688141fa7b8241ae7b7a5f507c10')
+sha512sums=('2050ec65ae731bddc74743c9aa6246e41ffba8017c404c32e50d45f72f5a02dd3eb2290f8b8e43e25a385a06819836fb19f8540f1cdae394083729ff6b6aed35')
