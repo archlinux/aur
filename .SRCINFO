@@ -1,7 +1,7 @@
 pkgbase = plasma-phonebook
 	pkgdesc = Phone book for Plasma Mobile
 	pkgver = 24.02.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/plasma-mobile/plasma-phonebook
 	arch = x86_64
 	arch = i686
@@ -24,6 +24,6 @@ pkgbase = plasma-phonebook
 	depends = kirigami-addons
 	provides = plasma-phonebook
 	source = plasma-phonebook-24.02.0::git+https://invent.kde.org/plasma-mobile/plasma-phonebook.git#tag=v24.02.0
-	sha256sums = SKIP
+	sha256sums = 726a1acf318957df77a05affa76fd3357686d361fb924dc48d692c223cd7c853
 
 pkgname = plasma-phonebook
