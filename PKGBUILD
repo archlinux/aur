@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=muon-meson
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="meson implementation in C"
 arch=(x86_64)
 url="https://muon.build"
 license=(GPL3)
 source=("$url/releases/v$pkgver/muon-v$pkgver.tar.gz")
-sha256sums=('45f6ad728946a0788188004e3a88a77a7d07b48525ce0646430589d1db4c832e')
+sha256sums=('d657422d4a102b4c7b77317a67a3f816d02f1c2967432b027c7e9f076ffe7079')
 depends=(pkgconf curl libarchive)
 makedepends=(ninja python-yaml scdoc)
 checkdepends=(git)
@@ -22,11 +22,35 @@ build() {
   ./bootstrap.sh build-stage1
 
   msg2 "Building stage 2 (muon from bootstrap)"
-  build-stage1/muon setup build-stage2
+  build-stage1/muon-bootstrap setup \
+    -D libarchive=disabled \
+    -D libcurl=disabled \
+    -D libpkgconf=enabled \
+    -D man-pages=disabled \
+    -D meson-docs=disabled \
+    -D meson-tests=disabled \
+    -D readline=builtin \
+    -D samurai=enabled \
+    -D static=false \
+    -D tracy=disabled \
+    -D ui=disabled \
+    -D website=disabled \
+    build-stage2
   ninja -C build-stage2
 
   msg2 "Building stage 3 (muon from muon)"
   build-stage2/muon setup \
+    -D libarchive=enabled \
+    -D libcurl=enabled \
+    -D libpkgconf=enabled \
+    -D man-pages=enabled \
+    -D meson-docs=disabled \
+    -D readline=builtin \
+    -D samurai=enabled \
+    -D static=false \
+    -D tracy=disabled \
+    -D ui=disabled \
+    -D website=disabled \
     -D prefix=/usr \
     -D b_lto=true \
     -D b_pie=true \
@@ -35,16 +59,14 @@ build() {
 }
 
 check() {
+  # Explicitly chose which test suites to run, to avoid running meson-tests
+  # and taking a long time to run, but still having a reasonable coverage
+  # to ensure that the built package works.
   cd "muon-v$pkgver/build"
-  ./muon test
+  ./muon test -R -v -s fmt -s lang -s muon -s unit -s analyze
 }
 
 package() {
   cd "muon-v$pkgver/build"
   DESTDIR="$pkgdir" ./muon install
-
-  # remove this as the `meson` package also provides it
-  # muon only has a `docs` option right now, so
-  # downloading/generating/deleting is the only option :/
-  rm "$pkgdir"/usr/share/man/man3/meson-reference.3
 }

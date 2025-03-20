@@ -1,6 +1,6 @@
 pkgbase = muon-meson
 	pkgdesc = meson implementation in C
-	pkgver = 0.3.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://muon.build
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = muon-meson
 	depends = curl
 	depends = libarchive
 	provides = muon
-	source = https://muon.build/releases/v0.3.1/muon-v0.3.1.tar.gz
-	sha256sums = 45f6ad728946a0788188004e3a88a77a7d07b48525ce0646430589d1db4c832e
+	source = https://muon.build/releases/v0.5.0/muon-v0.5.0.tar.gz
+	sha256sums = d657422d4a102b4c7b77317a67a3f816d02f1c2967432b027c7e9f076ffe7079
 
 pkgname = muon-meson
