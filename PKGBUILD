@@ -1,12 +1,7 @@
 pkgbase=ot-bboi
-pkgname=(
-  'ot-bboi-docs'
-  'ot-bboi-clap'
-  'ot-bboi-vst3'
-  'ot-bboi-standalone'
-)
+pkgname=("${pkgbase}-docs" "${pkgbase}-clap" "${pkgbase}-vst3" "${pkgbase}-standalone")
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A drum machine inspired by the Casio Rapman sound toys'
 arch=('x86_64')
 url='https://punklabs.com/ot-bboi'

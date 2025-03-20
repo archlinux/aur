@@ -1,7 +1,7 @@
 pkgbase = ot-bboi
 	pkgdesc = A drum machine inspired by the Casio Rapman sound toys
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://punklabs.com/ot-bboi
 	arch = x86_64
 	groups = pro-audio
