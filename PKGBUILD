@@ -15,7 +15,7 @@
 
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.5.1.r138.g4b45ba9
+pkgver=11.5.1.r138.gc32ca61
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -134,7 +134,7 @@ _source_midori_tensei
 
 pkgver() {
   cd "$_pkgsrc"
-  local _file _hash _ver _rev
+  local _file _hash _ver _rev _commit
   _file="browser/config/version_display.txt"
   read -r _hash _ver < <(
     NL=$(awk '/^[[:digit:]]+/{n=NR}END{print n}' "$_file")
@@ -144,8 +144,9 @@ pkgver() {
       | sed -E -e 's& v([[:digit:]]+)& \1&'
   )
   _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
 
-  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
+  printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_commit::7}"
 }
 
 prepare() {
@@ -470,7 +471,7 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -srf "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -sf "$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 
   # Use system certificates
   local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"

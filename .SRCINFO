@@ -1,6 +1,6 @@
 pkgbase = midori-git
 	pkgdesc = Web browser based on Floorp
-	pkgver = 11.5.1.r138.g4b45ba9
+	pkgver = 11.5.1.r138.gc32ca61
 	pkgrel = 1
 	url = https://github.com/goastian/midori-desktop
 	arch = x86_64
