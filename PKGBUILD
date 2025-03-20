@@ -1,7 +1,8 @@
 # Maintainer: Felipe Facundes
 
 pkgname=preview
-pkgver=1.0
+pre_ver=1.0
+pkgver="$pre_ver"
 pkgrel=2
 pkgdesc='A simple file-manager with file preview capabilities, inspired by fff, lesspipe, and ranger'
 arch=('any')
@@ -67,7 +68,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname" || true
-  echo "${pkgver}.$(git rev-list --count HEAD)"
+  echo "${pre_ver}.$(git rev-list --count HEAD)"
 }
 
 prepare() {
