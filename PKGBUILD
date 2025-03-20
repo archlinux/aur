@@ -18,7 +18,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-bin"
-pkgver='14.0.6'
+pkgver='14.0.7'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -40,7 +40,7 @@ validpgpkeys=('EF6E286DDA85EA2A4BA7DE684E2C6E8793298290')
 
 _tag_i686='linux-i686'
 _tag_x86_64='linux-x86_64'
-_urlbase="https://dist.torproject.org/torbrowser/${pkgver}"
+_urlbase="https://archive.torproject.org/tor-package-archive/torbrowser/${pkgver}"
 _archstr=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${_tag_x86_64}" || echo -n "${_tag_i686}")
 
 # Syntax: _dist_checksum 'linux-i686'/'linux-x86_64'
