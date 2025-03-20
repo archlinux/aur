@@ -1,0 +1,18 @@
+pkgbase = tiny-me-bin
+	pkgdesc = An image compress tool using tauri and ffmpeg (Prebuilt version)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/li2go/tiny-me
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = tiny-me=0.6.0
+	conflicts = tiny-me
+	source = tiny-me-0.6.0.rpm::https://github.com/li2go/tiny-me/releases/download/v0.6.0/tiny-me-0.6.0-1.x86_64.rpm
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/li2go/tiny-me/v0.6.0/LICENSE
+	sha256sums = 99a2184a9ba2f224515ded40a6a7d2a36bc8e22b6580782262cf7ca2fe2ee33c
+	sha256sums = cf9ce33ebe38b6c30c0fafc1769071b4b00c260f605a9d3bc33ec6d3e6629e60
+
+pkgname = tiny-me-bin
