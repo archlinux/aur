@@ -1,0 +1,15 @@
+pkgbase = occtre
+	pkgdesc = A tool for producing and collecting test coverage on assembler level
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://pypi.org/project/occtre
+	arch = any
+	license = MPL-2.0
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+	depends = python-tomlkit
+	depends = python-tabulate
+	depends = python-dataclass-binder
+
+pkgname = occtre
