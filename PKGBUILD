@@ -1,7 +1,7 @@
 # Contributor: Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
 pkgname=magicseteditor-haganbmj-fork
 pkgver=2.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of magic set editor, with modern improvements"
 arch=('i686' 'x86_64')
 url="https://github.com/haganbmj/MagicSetEditor2"
@@ -9,6 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('hunspell' 'wxwidgets-gtk3' 'wxwidgets-common' 'boost-libs')
 makedepends=('boost' 'cmake' 'gendesk')
 provides=("magicseteditor")
+conflicts=("magicseteditor")
 source=("magicseteditor-${pkgver}.tar.gz::https://github.com/haganbmj/MagicSetEditor2/archive/refs/tags/v${pkgver}.tar.gz")
 install=$pkgname.install
 sha256sums=('d22a5c5d629e6e7e744c6a8f59644ec275a0397c0ccda3e9a488142cacc94b29')

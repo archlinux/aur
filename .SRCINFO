@@ -1,7 +1,7 @@
 pkgbase = magicseteditor-haganbmj-fork
 	pkgdesc = A fork of magic set editor, with modern improvements
 	pkgver = 2.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haganbmj/MagicSetEditor2
 	install = magicseteditor-haganbmj-fork.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = magicseteditor-haganbmj-fork
 	depends = wxwidgets-common
 	depends = boost-libs
 	provides = magicseteditor
+	conflicts = magicseteditor
 	source = magicseteditor-2.5.6.tar.gz::https://github.com/haganbmj/MagicSetEditor2/archive/refs/tags/v2.5.6.tar.gz
 	sha256sums = d22a5c5d629e6e7e744c6a8f59644ec275a0397c0ccda3e9a488142cacc94b29
 
