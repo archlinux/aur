@@ -34,7 +34,8 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  rm dist/*.whl
+  echo "$(pwd)"
+  if [ -f "dist/*.whl" ]; then rm dist/*.whl; fi
 }
 
 build() {
