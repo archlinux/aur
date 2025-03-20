@@ -1,7 +1,7 @@
 #Maintainer:    Giteeajake <giteeajake@qq.com>
 
 #this PKGBUILD of Keypunch
-#https://github.com/bragefuglseth/keypunch/
+#github Repo: https://github.com/bragefuglseth/keypunch/
 
 pkgname="keypunch-git"
 _appname="keypunch"
@@ -9,6 +9,7 @@ pkgver='v5.1_43e21e3'
 pkgrel=1
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch/'
+app_website='https://apps.gnome.org/Keypunch'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
 source=("git+$url")
