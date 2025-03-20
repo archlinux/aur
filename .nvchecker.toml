@@ -1,0 +1,6 @@
+[muon-meson]
+source = "jq"
+url = "https://muon.build/releases/"
+filter = "keys[]"
+from_pattern = 'v([\d.]+)'
+to_pattern = '\1'
