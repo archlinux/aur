@@ -2,7 +2,7 @@
 # Contributer: Andreas Born <futur[DOT]andy[AT]googlemail[DOT]com>
 
 pkgname=lrz-syncshare
-pkgver=22.2.103
+pkgver=22.3.100
 pkgrel=1
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
@@ -10,7 +10,7 @@ arch=('any')
 license=('custom')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime>=15' 'xdg-utils' 'archlinux-java-run')
 source=("LRZ_Sync_Share_${pkgver}_Linux.tar.gz::https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz")
-sha256sums=('d95dccc709b573e907ad0cfdfa90a9cbbf758b0034b138209224780005e8b61c')
+sha256sums=('2a295a6e34115bbcd4d713ed4a59cafd5cbb36ac0ca1d57c5fb3cf3275f1c19f')
 pkgver() {
   cat "${srcdir}/LRZ_Sync_Share/VERSION" | sed -e 's/\s*$//'
 }
