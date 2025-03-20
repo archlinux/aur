@@ -1,24 +1,33 @@
 pkgbase = tal-noisemaker-bin
-	pkgdesc = A Free Soft Synth By TAL Software
+	pkgdesc = A free soft synth by TAL Software
 	pkgver = 5.0.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tal-software.com/products/tal-noisemaker
 	arch = x86_64
-	license = EULA
 	groups = pro-audio
-	depends = glibc
+	license = EULA
 	replaces = tal-noisemaker
 	source = https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip
-	sha256sums = 328565e646f98f14dd931a33fa438a4c9eddc451e759b92d1005f4336fa3fd20
+	sha512sums = 2387236eee7d374f37a19475c2473396f51a142b4d6b87983a871cdea754a1146bf1c9d3c2c5a8993cd07afc8e2f29675f9cc9ecd40405ab4c36b3d3c19503c4
+	b2sums = 12f92dd9c87c99c3d22787da532c6648d193d33c18d92b7909f4f604c772108ac7d9676f5d8efa73c8c9eebb8467953cc6218ed2f03f7e0f209bc3fb65055c2f
 
 pkgname = tal-noisemaker-clap-bin
-	groups = clap-plugins
+	pkgdesc = A free soft synth by TAL Software - CLAP plugin
 	groups = pro-audio
+	groups = clap-plugins
+	depends = glibc
+	depends = clap-host
 
 pkgname = tal-noisemaker-vst-bin
+	pkgdesc = A free soft synth by TAL Software - VST plugin
 	groups = pro-audio
 	groups = vst-plugins
+	depends = glibc
+	depends = vst-host
 
 pkgname = tal-noisemaker-vst3-bin
+	pkgdesc = A free soft synth by TAL Software - VST3 plugin
 	groups = pro-audio
 	groups = vst3-plugins
+	depends = glibc
+	depends = vst3-host
