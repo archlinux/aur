@@ -1,0 +1,20 @@
+pkgbase = evdi-dkms-git
+	pkgdesc = Kernel module to enable management of multiple screens
+	pkgver = 1.14.8.r1.g2da2704
+	pkgrel = 1
+	url = https://github.com/DisplayLink/evdi
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = libdrm
+	depends = dkms
+	provides = evdi=1.14.8
+	provides = evdi-dkms=1.14.8
+	conflicts = evdi
+	conflicts = evdi-dkms
+	source = evdi::git+https://github.com/DisplayLink/evdi.git
+	sha256sums = SKIP
+
+pkgname = evdi-dkms-git

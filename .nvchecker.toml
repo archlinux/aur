@@ -1,0 +1,4 @@
+[evdi-dkms-git]
+source = "git"
+git = "https://github.com/DisplayLink/evdi.git"
+prefix = "v"
