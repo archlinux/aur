@@ -1,0 +1,18 @@
+pkgbase = python-livekit-plugins-neuphonic
+	pkgdesc = Agent Framework plugin for voice synthesis with Neuphonic API.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-neuphonic
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-livekit-agents
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-neuphonic/livekit_plugins_neuphonic-0.1.1.tar.gz
+	sha256sums = 60816bab050fbb2a38373d62f3e6072c8f60f951933d052d71c6e9d7fecfadf8
+
+pkgname = python-livekit-plugins-neuphonic
