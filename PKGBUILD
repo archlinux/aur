@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maftools
-_pkgver=2.20.0
+_pkgver=2.22.0
 pkgname=r-${_pkgname,,}
-pkgver=2.20.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc='Summarize, Analyze and Visualize MAF Files'
 arch=('x86_64')
@@ -16,9 +16,10 @@ depends=(
   r-rcolorbrewer
   r-rhtslib
   r-zlibbioc
-  make
   r-dnacopy
+  r-pheatmap
 )
+makedepends=(make)
 optdepends=(
   r-berryfunctions
   r-biostrings
@@ -38,7 +39,7 @@ optdepends=(
   r-s4vectors
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('625cba16a32fe54cf1565c25904bd9f940ce9307a13296a01dff391e28725a30')
+sha256sums=('e38e4a60c07b527b0ad86bfd963f40a498d896dc4eb866ccddec48b2b256b86d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
