@@ -3,7 +3,7 @@
 _pkgname=nimlangserver
 pkgname="${_pkgname}-bin"
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The Nim language server'
 arch=('x86_64')
 url='https://github.com/nim-lang/langserver'
@@ -11,7 +11,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname"{,-git})
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v.${pkgver}/${_pkgname}-linux-amd64.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.tar.gz"
     'LICENSE.txt::https://raw.githubusercontent.com/nim-lang/Nim/refs/heads/devel/copying.txt'
 )
 sha256sums=('c5fc8e320f25e177a8af8ec5860dfd0e0c6391c5646e9b2553f10568ea2699e9'
