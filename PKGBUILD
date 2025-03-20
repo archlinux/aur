@@ -3,7 +3,7 @@
 
 pkgname=zed-git
 _pkgname=${pkgname%-git}
-pkgver=0.166.1.r62.g421974f
+pkgver=0.179.0.r39.g14920ab
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=("$pkgname::git+$_url.git")
 sha256sums=('SKIP')
 
 _binname=zeditor
-_appid=dev.zed.Zed-Git
+_appid=dev.zed.Zed-Dev
 
 prepare() {
 	cd "$pkgname"
