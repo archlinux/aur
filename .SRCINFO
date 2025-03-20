@@ -1,12 +1,14 @@
 pkgbase = python-livekit-plugins-openai
 	pkgdesc = Agent Framework plugin for services from OpenAI.
-	pkgver = 0.10.19
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-openai
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
@@ -15,7 +17,7 @@ pkgbase = python-livekit-plugins-openai
 	depends = python-pillow
 	depends = python-openai
 	optdepends = python-google-auth: vertex
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-openai/livekit_plugins_openai-0.10.19.tar.gz
-	sha256sums = 999b7d80a9992ca822a0506cb5fac79b184864d68cac206e9e597a6604f94b98
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-openai/livekit_plugins_openai-0.11.3.tar.gz
+	sha256sums = a189cd59cd23525930c0e465f5bd3e822dcb3aabcf56eb9024127ac2319b6b71
 
 pkgname = python-livekit-plugins-openai
