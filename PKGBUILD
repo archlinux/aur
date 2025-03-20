@@ -11,7 +11,8 @@ source=("https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('267b5fb89b52a1597bd0f24c2f38c80046213d2a9eeee21da2b8fab51cafbf07')
 
 build() {
-  cd "$pkgname-v$pkgver"
+#  cd "$pkgname-v$pkgver" #gitlab format
+  cd "$pkgname-$pkgver" #crates.io format
   cargo build --release --locked
 }
 
