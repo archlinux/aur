@@ -1,16 +1,17 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 # Contributor: Shawn Nock <shawn@monadnock.ca>
-# -*- sh -*-
 
 pkgname='littlefs-fuse'
-pkgver=2.7.10
+pkgver=2.7.11
 pkgrel=1
 pkgdesc='A FUSE wrapper that puts the littlefs in user-space'
 url='https://github.com/littlefs-project/littlefs-fuse'
 arch=('aarch64' 'x86_64')
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
-depends=('fuse2' 'glibc')
+depends=('fuse2' 'gcc-libs' 'glibc')
 options=('lto')
 source=("littefs-$pkgver.tar.gz::https://github.com/littlefs-project/${pkgname}/archive/v${pkgver}.tar.gz")
 
@@ -48,10 +49,10 @@ package() {
 }
 
 sha256sums=(
-  '26c5a5d1974af5efdfd55c165ec41877cdff801380d91743a747774a847cab9b'
+  '5f7e22b1379fb47c1c161726c3dfdd9b2ca43785c98b9d76c31f730bda99032c'
 )
 b2sums=(
-  '9e4013cefcb904f28622f8bad56167c6b56c4789df4e09b22a570b3b6a3ec60a4b7a042b33d95bdcc582e2a2580638c6905c905773be9e368d681c36d07fce59'
+  '962215106941705441437be0013d119719e0883bc37eb40a37268ffc75347fe7a39ede277a49e3628dcdd90b5d22374a9ada959a708f2bd18c6ef1e4f4fae246'
 )
 
 # eof
