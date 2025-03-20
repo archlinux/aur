@@ -4,6 +4,11 @@
 
 set -e
 
+err_handler() {
+	echo "an error occurred, please contact the package maintainer: https://aur.archlinux.org/packages/vencord-hook"
+}
+trap err_handler ERR
+
 installer=$(mktemp /tmp/vencord.XXXXXX)
 trap 'rm -f "$installer"' EXIT
 
