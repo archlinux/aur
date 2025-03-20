@@ -1,19 +1,18 @@
 # Maintainer: Antonio Leal <antonioleal@yahoo.com>
 pkgname=bbcsdl
 pkgver=1.41a
-pkgrel=1
+pkgrel=2
 pkgdesc="BBC Basic Programming for Linux"
 arch=('x86_64')
 url="https://www.bbcbasic.co.uk/bbcsdl"
 license=('CC-BY-NC-SA-4.0')
-depends=(sdl2-compat sdl2_ttf sdl2_net nasm zlib glibc)
-makedepends=()
-provides=(bbcsdl)
-conflicts=(bbcsdl)
+depends=('sdl2' 'sdl2-compat' 'sdl2_ttf' 'sdl2_net' 'zlib' 'glibc')
+makedepends=('nasm')
+provides=('bbcsdl')
+conflicts=('bbcsdl')
 replaces=()
 backup=()
 options=(!debug)
-install=
 source=(
   https://github.com/rtrussell/BBCSDL/archive/0a58eb114ac55ab98fec12ee84b6fd699cf0aebd/BBCSDL-0a58eb114ac55ab98fec12ee84b6fd699cf0aebd.tar.gz
   https://www.bbcbasic.net/bbcsdl/bbclinux.zip
@@ -47,7 +46,7 @@ EOF
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cd bin/linux
   make
   cd ../../console/linux
@@ -55,29 +54,29 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Setup package files
-  mkdir -p ${pkgdir}/usr/lib/${pkgname}
-  install -D -m0755 bbcsdl ${pkgdir}/usr/lib/${pkgname}/bbcsdl
-  install -D -m0755 libstb.so ${pkgdir}/usr/lib/${pkgname}/libstb.so
-  install -D -m0755 bbcbasic ${pkgdir}/usr/lib/${pkgname}/bbcbasic
-  cp bbcsdl.bbc ${pkgdir}/usr/lib/${pkgname}/
-  cp -avxu lib ${pkgdir}/usr/lib/${pkgname}/
-  cp -avxu examples ${pkgdir}/usr/lib/${pkgname}/
+  mkdir -p "${pkgdir}/usr/lib/${pkgname}"
+  install -D -m0755 bbcsdl "${pkgdir}/usr/lib/${pkgname}/bbcsdl"
+  install -D -m0755 libstb.so "${pkgdir}/usr/lib/${pkgname}/libstb.so"
+  install -D -m0755 bbcbasic "${pkgdir}/usr/lib/${pkgname}/bbcbasic"
+  cp bbcsdl.bbc "${pkgdir}/usr/lib/${pkgname}/"
+  cp -avxu lib "${pkgdir}/usr/lib/${pkgname}/"
+  cp -avxu examples "${pkgdir}/usr/lib/${pkgname}/"
 
   # Install Box2D library (it can be safely removed, except if your code specifically requires it)
-  install -D -m0755 ${srcdir}/Box2D231.so ${pkgdir}/usr/lib/${pkgname}/Box2D231.so
+  install -D -m0755 "${srcdir}/Box2D231.so" "${pkgdir}/usr/lib/${pkgname}/Box2D231.so"
 
   # Create symlinks on /usr/bin
   mkdir -p ${pkgdir}/usr/bin
-  ln -sf /usr/lib/${pkgname}/bbcsdl ${pkgdir}/usr/bin/bbcsdl
-  ln -sf /usr/lib/${pkgname}/bbcbasic ${pkgdir}/usr/bin/bbcbasic
+  ln -sf "/usr/lib/${pkgname}/bbcsdl" "${pkgdir}/usr/bin/bbcsdl"
+  ln -sf "/usr/lib/${pkgname}/bbcbasic" "${pkgdir}/usr/bin/bbcbasic"
 
   # Install icons and desktop menu entry
-  mkdir -p ${pkgdir}/usr/share/pixmaps
-  cp ${srcdir}/bbc256x.png ${pkgdir}/usr/share/pixmaps
-  mkdir -p ${pkgdir}/usr/share/applications
-  cp ${srcdir}/bbcsdl.desktop ${pkgdir}/usr/share/applications
+  mkdir -p "${pkgdir}/usr/share/pixmaps"
+  cp "${srcdir}/bbc256x.png" "${pkgdir}/usr/share/pixmaps"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  cp "${srcdir}/bbcsdl.desktop" "${pkgdir}/usr/share/applications"
 }
 
