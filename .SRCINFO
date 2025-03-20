@@ -1,0 +1,22 @@
+pkgbase = stremio-enhanced-bin
+	pkgdesc = An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/REVENGE977/stremio-enhanced-community
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron28
+	depends = stremio-service
+	provides = stremio-enhanced=0.8
+	conflicts = stremio-enhanced
+	source = stremio-enhanced-0.8.zip::https://github.com/REVENGE977/stremio-enhanced-community/releases/download/v0.8/stremio-enhanced-linux-x64.zip
+	source = LICENSE-0.8.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v0.8/LICENSE.md
+	source = stremio-enhanced-0.8.ico::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v0.8/images/icon.ico
+	source = stremio-enhanced.sh
+	sha256sums = 20c35fc75d48aa20e97fc5c041611d74a522fb7c0674110b8f7fb8b023b47c4f
+	sha256sums = 7a6005231b78b0865a5fdce20f083382a3dff613c1404db856283fdb796b74ae
+	sha256sums = f549b47258defcef9c2864b740151c60f4510af184d346c38a6f8d081222b7a5
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = stremio-enhanced-bin
