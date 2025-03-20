@@ -1,14 +1,15 @@
 pkgbase = bbcsdl
 	pkgdesc = BBC Basic Programming for Linux
 	pkgver = 1.41a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bbcbasic.co.uk/bbcsdl
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
+	makedepends = nasm
+	depends = sdl2
 	depends = sdl2-compat
 	depends = sdl2_ttf
 	depends = sdl2_net
-	depends = nasm
 	depends = zlib
 	depends = glibc
 	provides = bbcsdl
