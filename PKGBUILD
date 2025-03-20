@@ -12,7 +12,7 @@ conflicts=("mprisence")
 source=("https://github.com/lazykern/mprisence/releases/download/v$pkgver/mprisence-$pkgver-x86_64.tar.gz" "https://raw.githubusercontent.com/lazykern/mprisence/main/LICENSE" "https://raw.githubusercontent.com/lazykern/mprisence/main/systemd/mprisence.service")
 sha256sums=('b45ffab6778429bddb44e5ecfe40fb5db22d8f83ff43c40321ae29252c2f60be'
 	'2efd06eb77e15171ec8727caece105c68fcf253f57d5af76d7964c69f16fbb7d'
-	'8103053db7f9850d775785db8a56461a4440220b231144899bf8da38a0f7363c')
+	'6b69bd6bf3c0ef8a7e1c5ddfd537992d81156af0d59428d2e4aa399a9adc5dd4')
 
 package() {
 	install -Dm755 mprisence -t "$pkgdir/usr/bin"
