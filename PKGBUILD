@@ -6,7 +6,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libuvc
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="a cross-platform library for USB video devices (Android ${_android_arch})"
 url="https://int80k.com/libuvc/"
@@ -25,6 +25,7 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_EXAMPLE=OFF \
         -DBUILD_TEST=OFF \
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
