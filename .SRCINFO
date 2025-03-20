@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-portaudio
 	pkgdesc = A free, cross-platform, open source, audio I/O library. (Android armv7a-eabi)
 	pkgver = 19.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/portaudio/portaudio/
 	arch = any
+	groups = android-portaudio
 	license = MIT
 	makedepends = android-cmake
 	makedepends = android-armv7a-eabi-alsa-lib
