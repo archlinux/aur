@@ -8,7 +8,7 @@ license=('GPL3')
 arch=('x86_64')
 depends=('gtkmm-4.0' 'mathgl' 'gmp' 'icu')
 makedepends=('cmake' 'mathgl' 'sofa' 'gtkmm-4.0' 'gcc')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ProfessorNavigator/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("https://github.com/ProfessorNavigator/eph-epm/archive/refs/tags/v2.2.tar.gz"
 		"icu-uc.patch")
 sha256sums=('a586ca59a267c7f6e3f41444a9de1b53d68994e39094b7c022f085330352c751'
 			'32399fcbaeade18b14e41ca28911066c6db9cbaad6c7c0c4b09c210a93c1c247')
