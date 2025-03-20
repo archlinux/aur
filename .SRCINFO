@@ -1,7 +1,7 @@
 pkgbase = python-huey
 	pkgdesc = huey, a little task queue
-	pkgver = 2.5.2
-	pkgrel = 2
+	pkgver = 2.5.3
+	pkgrel = 1
 	url = https://github.com/coleifer/huey
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-huey
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-redis
-	source = https://github.com/coleifer/huey/archive/2.5.2/huey-2.5.2.tar.gz
-	sha256sums = 3a2a33a003ec224f47e2f7897c25fb0e8c40726b30f0e1124e7ed6b01fd3be9d
+	source = https://github.com/coleifer/huey/archive/2.5.3/huey-2.5.3.tar.gz
+	sha256sums = 5192d6fd5d52e829f2bb5cd05a5187054605b05633ef8f37dd03e52e9a261a4d
 
 pkgname = python-huey

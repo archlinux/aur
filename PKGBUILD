@@ -2,8 +2,8 @@
 
 _pyname=huey
 pkgname=python-$_pyname
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.5.3
+pkgrel=1
 pkgdesc='huey, a little task queue'
 arch=(any)
 url="https://github.com/coleifer/$_pyname"
@@ -16,7 +16,7 @@ checkdepends=(python-pytest
               python-redis)
 _archive="$_pyname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('3a2a33a003ec224f47e2f7897c25fb0e8c40726b30f0e1124e7ed6b01fd3be9d')
+sha256sums=('5192d6fd5d52e829f2bb5cd05a5187054605b05633ef8f37dd03e52e9a261a4d')
 
 build() {
 	cd "$_archive"
