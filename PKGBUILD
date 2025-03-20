@@ -3,7 +3,7 @@
 pkgbase=at32-work-bench-bin
 pkgname=at32-work-bench
 pkgver=1.1.08
-pkgrel=1
+pkgrel=4
 # epoch=1
 pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)"
 arch=('x86_64')
@@ -51,7 +51,7 @@ package() {
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/bash
 cd /opt/artery32/${pkgname}/AT32_Work_Bench/
-bash AT32_Work_Bench.sh "\$@"
+bash AT32_Work_Bench.sh --stylesheet=<(echo 'QWidget {background-color: white;color: black;}') "\$@"
 EOF
     chown -R root:root "${pkgdir}/"
     find "${pkgdir}/" -type f -exec chmod 644 "{}" \;
