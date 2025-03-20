@@ -1,15 +1,15 @@
 pkgbase = perl-redis
 	pkgdesc = Perl binding for Redis database
 	pkgver = 2.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Redis
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-2.0
 	checkdepends = perl-test-deep>=0
 	checkdepends = perl-test-fatal>=0
 	checkdepends = perl-test-sharedfork>=0
 	checkdepends = perl-test-tcp>=1.19
+	checkdepends = redis
 	depends = perl-io-socket-timeout>=0.29
 	depends = perl-io-string>=0
 	depends = perl-try-tiny>=0

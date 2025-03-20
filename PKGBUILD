@@ -3,14 +3,14 @@
 
 pkgname='perl-redis'
 pkgver='2.000'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl binding for Redis database"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-2.0')
 options=('!emptydirs')
 depends=('perl-io-socket-timeout>=0.29' 'perl-io-string>=0' 'perl-try-tiny>=0' 'perl>=5.010')
 makedepends=()
-checkdepends=('perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-sharedfork>=0' 'perl-test-tcp>=1.19')
+checkdepends=('perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-sharedfork>=0' 'perl-test-tcp>=1.19' 'redis')
 url='https://metacpan.org/release/Redis'
 source=("https://cpan.metacpan.org/authors/id/D/DA/DAMS/Redis-$pkgver.tar.gz")
 md5sums=('8b8656bd6077250ffa1156667139ec55')
