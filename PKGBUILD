@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deeplink-launcher-bin
 _pkgname='DeepLink Launcher'
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="A multiplatform app designed for executing and managing deeplinks.(Prebuilt version)"
 arch=('x86_64')
 url="https://play.google.com/store/apps/details?id=dev.koga.deeplinklauncher.android"
@@ -23,22 +23,22 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_1.1.2-1_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_1.2.0-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b89e15c215a2634b99524740def90d0826c9a2300b35e9ebe39befb540130804'
+sha256sums=('190c9dd5e8f571098a2d51104f5a6e1a3961ee72651ab4492af505e674dbd273'
             'b7cbffe78738d12856a1287503e32c0c22c484721fd87f33bdf091d003b320e5')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${_pkgname}/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\"\/opt\/${pkgname%-bin}\/bin\/${_pkgname}\"/${pkgname%-bin}/
         s/\/opt\/${pkgname%-bin}\/lib\/${_pkgname// /_}.png/${pkgname%-bin}/
         s/Unknown/Development;/
-    " -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname// /_}.desktop"
+    " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname// /_}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
