@@ -9,15 +9,15 @@ pkgdesc="Configure FAN PWM via HWMON interface"
 arch=("x86_64")
 url="https://github.com/amedeos/${_appname}"
 license=("GPL-3.0-only")
-depends=("systemd")
-makedepends=("git" "qt5-base")
+depends=("systemd" "qt5-base")
+makedepends=("git")
 provides=("controlfans")
 conflicts=("controlfans")
 source=(
     "${pkgname}::git+https://github.com/amedeos/${_appname}.git"
 )
 sha1sums=('SKIP')
-options=('!strip')
+options=('strip')
 
 pkgver() {
     cd "${pkgname}"

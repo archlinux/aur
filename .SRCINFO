@@ -6,11 +6,11 @@ pkgbase = controlfans-git
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = qt5-base
 	depends = systemd
+	depends = qt5-base
 	provides = controlfans
 	conflicts = controlfans
-	options = !strip
+	options = strip
 	source = controlfans-git::git+https://github.com/amedeos/ControlFANs.git
 	sha1sums = SKIP
 
