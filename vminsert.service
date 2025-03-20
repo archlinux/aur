@@ -9,9 +9,8 @@ Wants=network-online.target nss-lookup.target
 [Service]
 User=victoriametrics
 Group=victoriametrics
-Restart=on-failure
 EnvironmentFile=-/etc/conf.d/vminsert
-ExecStart=/usr/bin/vmstorage $VMINSERT_ARGS
+ExecStart=/usr/bin/vminsert $VMINSERT_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=1048576

@@ -9,7 +9,6 @@ Wants=network-online.target nss-lookup.target
 [Service]
 User=victoriametrics
 Group=victoriametrics
-Restart=on-failure
 EnvironmentFile=-/etc/conf.d/vmselect
 ExecStart=/usr/bin/vmselect $VMSELECT_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID

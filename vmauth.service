@@ -8,7 +8,6 @@ Wants=network-online.target nss-lookup.target
 [Service]
 User=victoriametrics
 Group=victoriametrics
-Restart=on-failure
 EnvironmentFile=-/etc/conf.d/vmauth
 ExecStart=/usr/bin/vmauth --auth.config="/etc/victoriametrics/vmauth.yml" $VMAUTH_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID

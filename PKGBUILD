@@ -4,7 +4,7 @@
 _name="victoriametrics"
 _name_camel="VictoriaMetrics"
 pkgname="${_name}-cluster"
-pkgver='1.110.0'
+pkgver='1.113.0'
 pkgrel='1'
 pkgdesc='Fast, cost-effective monitoring solution and time series database'
 arch=('x86_64' 'aarch64')
@@ -25,15 +25,15 @@ source=("${url}/archive/refs/tags/v${pkgver}-cluster.tar.gz"
 	"vmauth.yml"
 	"${_name}.sysusers"
 	"${_name}.tmpfiles")
-sha256sums=('311046e7d81c3d1767f2efd766d7178ef960d9f39dedf85f9c940404f47b1421'
+sha256sums=('9dfa0d1a9c87e0a6eb2d7927d885634a98afdfdeef182dc5d4dfa6d93a215c61'
             '459b40675c3b77b108a597e864d29b72c93870a0ef0d814d8a99f0c293addd54'
-            '79df8e1355c02413849d3481376e515ffd2dd7e6984b38265d46cade2d5ad95e'
+            '84ea7e8ec2419177173e90a7282d75f25787c270333aefce8a9266f15420dbc6'
             '5144d6cb0732ae7d12e92ec4e13c36f3373407b7f826c44aedff6da50dd8d17a'
-            'adcc481e0010899a06ea5590fba0ddb3e0c8c6f58b0cce2ca659dd9a013db743'
+            '15d7e15b15791b51b592560b01101a500fe57a9b842799189c78a58f4c2d1b6b'
             'ce3710d24588c6c7d664efc4a94d7a90db81fa5c3ba1444c81914e5a8f9e0f02'
-            'ff86fde7e2752843e7777e215fe49b9a8dd01174cf777966bdc5dbf75ad6372e'
-            '1ef663ec364c3e431fc5869743247a750a83ac71b802bd23ba94ab0579c5ea7c'
-            '936eabebc5ada9b0c92d371148cf53f6f7f1b496d64b84a562f3cb4e1e6d98af'
+            '0cb5339104652ff722a15fc47bb8db745414d7a977fbec4785b16d15fff796d6'
+            'a332a723a399b8541fad9cb3450cc85d6fdcf8140f389360867958138657a6bf'
+            'c10178ed075bc9db83926787f815e5f541eafc15ae46f8e2efcddaf90059036a'
             '75cb2f253312d814a0418e45e9c430f3ea392720b912f4c7d15a1093ba338415'
             '82d36f90fe6eacde11b387cd3537d049bb67292e2dd0b5c95b555c020e199980'
             'eb972939dace3a330c7be1bd0e0f7a9fb3d9ca449326d4eeac5c208af376a84c')
@@ -71,7 +71,7 @@ build() {
       -modcacherw \
       -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
       -X ${_uri}/${_name_camel}/lib/buildinfo.Version=${pkgver}-${pkgrel}" \
-    "./app/${app}"
+      -o "bin/${app}" "./app/${app}"
   done
 }
 
@@ -85,14 +85,14 @@ check() {
 package() {
   for app in "vmagent" "vmalert" "vmauth" "vmbackup" "vmctl" "vminsert" \
 "vmrestore" "vmselect" "vmstorage"
-  do
-    install -Dm0755 "${_name_camel}-${pkgver}-cluster/${app}" -t "${pkgdir}/usr/bin"
+    do
+      install -Dm0755 "${_name_camel}-${pkgver}-cluster/bin/${app}" -t "${pkgdir}/usr/bin"
   done
 
   for app in "vmauth" "vminsert" "vmselect" "vmstorage"
-  do
-    install -Dm0644 "${app}.service" -t "${pkgdir}/usr/lib/systemd/system"
-    install -Dm0644 "${app}" -t "${pkgdir}/etc/conf.d"
+    do
+      install -Dm0644 "${app}.service" -t "${pkgdir}/usr/lib/systemd/system"
+      install -Dm0644 "${app}" -t "${pkgdir}/etc/conf.d"
   done
 
   install -Dm0644 "${GOPATH}/src/${_uri}/${_name}/LICENSE" -t \
