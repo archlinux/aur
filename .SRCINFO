@@ -1,12 +1,14 @@
 pkgbase = python-livekit-plugins-turn-detector
 	pkgdesc = End of utterance detection for LiveKit Agents.
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-turn-detector
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
@@ -14,7 +16,7 @@ pkgbase = python-livekit-plugins-turn-detector
 	depends = python-numpy
 	depends = python-onnxruntime
 	depends = python-jinja
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-turn-detector/livekit_plugins_turn_detector-0.4.1.tar.gz
-	sha256sums = 07cdf877396df76d6cc7fe05fa617b8bd27c84eba940d3e36392adb61394248e
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-turn-detector/livekit_plugins_turn_detector-0.4.3.tar.gz
+	sha256sums = 0069f0aa236a4968aa1597c796f627582a8d2aca7ef3fbb56c0aeecbefceccd1
 
 pkgname = python-livekit-plugins-turn-detector
