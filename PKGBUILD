@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clipharbor-bin
 _pkgname=ClipHarbor
-pkgver=0.3.1
+pkgver=0.3.2
 _electronversion=35
 pkgrel=1
 pkgdesc="A powerful clipboard management application, helps you efficiently manage your clipboard history with ease and style. (Prebuilt version.Use system-wide electron)"
@@ -16,12 +16,12 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_0.3.1_amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/yurentle/ClipHarbor/v${pkgver}/README_EN.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('109a8ded3b2e02a9a814e76ce8344a92aedcedfa1d06ea5199f9bb5b613fb62b'
-            '1e0db5d7321771453a5d14a5fb3fd8c76eaac63134dce8c2f5a42a0c31923e0f'
+sha256sums=('5f8b0ae38b7c676dc79212282d0165cd148eb3105ad5b05cd3477431b3e23c1c'
+            '76d3588ba775a16e309e5d7aa38e6eaf0d12ded8bd1b31ff28f66bf6b221da65'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -37,6 +37,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/icons/logo_tray_Template.png" -t "${pkgdir}/usr/lib/${pkgname%-bin}/icons"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
