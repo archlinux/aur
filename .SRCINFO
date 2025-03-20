@@ -1,6 +1,6 @@
 pkgbase = plasma-phonebook
 	pkgdesc = Phone book for Plasma Mobile
-	pkgver = 23.01.0
+	pkgver = 24.02.0
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/plasma-phonebook
 	arch = x86_64
@@ -11,18 +11,19 @@ pkgbase = plasma-phonebook
 	arch = aarch64
 	license = GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
 	makedepends = extra-cmake-modules
-	makedepends = qt5-svg
-	makedepends = qt5-tools
+	makedepends = qt6-svg
+	makedepends = qt6-tools
+	makedepends = git
 	depends = ki18n
 	depends = kcoreaddons
 	depends = kconfig
 	depends = kpeople
 	depends = kcontacts
 	depends = kpeoplevcard
-	depends = kirigami2
-	depends = kirigami-addons5
+	depends = kirigami
+	depends = kirigami-addons
 	provides = plasma-phonebook
-	source = https://download.kde.org/stable/plasma-mobile/23.01.0/plasma-phonebook-23.01.0.tar.xz
-	sha256sums = 317d03b9adf5d121d727f3b0f9cec5e7e23af1328623c27b7806265de373f95e
+	source = plasma-phonebook-24.02.0::git+https://invent.kde.org/plasma-mobile/plasma-phonebook.git#tag=v24.02.0
+	sha256sums = SKIP
 
 pkgname = plasma-phonebook
