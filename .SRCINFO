@@ -1,6 +1,6 @@
 pkgbase = libgnunetworker-git
 	pkgdesc = Multithreading with GNUnet
-	pkgver = r9.d9b70bb
+	pkgver = r10.b6a3344
 	pkgrel = 1
 	url = https://github.com/madmurphy/libgnunetworker
 	arch = i686
