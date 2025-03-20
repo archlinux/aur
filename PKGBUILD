@@ -104,6 +104,10 @@ package() {
     install -dm755 "${pkgdir}/etc/profile.d"
     install -m644 -t "${pkgdir}/etc/profile.d" "${source_dir}/etc/profile.d"/*
 
+    # plymouthd.conf
+    install -dm755 "${pkgdir}/etc/plymouthd"
+    install -m644 -t "${pkgdir}/etc/plymouthd" "${source_dir}/etc/plymouthd"/*
+
     # /usr/share/sk-chos/just/*
     install -dm755 "${pkgdir}/usr/share/sk-chos/just"
     install -m644 -t "${pkgdir}/usr/share/sk-chos/just" "${source_dir}/share/sk-chos/just"/*.*
