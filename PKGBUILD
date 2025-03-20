@@ -65,20 +65,25 @@ optdepends=(
 source=("git+${url}.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/$pkgname" || true
+  echo "${pkgver}.$(git rev-list --count HEAD)"
+}
+
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || true
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || true
 }
 
 check() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || true
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname" || true
     install -Dm755 "preview" "$pkgdir/usr/bin/preview"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
