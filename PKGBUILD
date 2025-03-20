@@ -9,19 +9,25 @@ url="https://github.com/ghostty-org/${_pkgbasename}"
 provides=('ghostty')
 conflicts=('ghostty' 'ghostty-git' 'ghostty-git-zen3')
 license=('MIT')
-depends=(
-	'bzip2'
-	'fontconfig'
-	'freetype2'
-	'gtk4'
-	'harfbuzz'
-	'libadwaita'
-	'libpng'
-	'oniguruma'
-	'pixman'
-	'zlib'
-)
-makedepends=('git' 'zig>=0.13.0' 'zig<0.14.0' 'pandoc-cli')
+depends=(bzip2
+         fontconfig libfontconfig.so
+         freetype2 libfreetype.so
+         gcc-libs # ld-linux-x86-64.so
+         glibc # libc.so libm.so
+         glib2 libglib-2.0.so libgio-2.0.so libgobject-2.0.so
+         gtk4 libgtk-4.so
+         libx11 # libX11.so
+         harfbuzz libharfbuzz.so
+         libadwaita libadwaita-1.so
+         libpng
+         oniguruma # libonig.so
+         pixman
+         wayland libwayland-client.so
+         zlib)
+makedepends=(blueprint-compiler
+             git
+             pandoc-cli
+             zig)
 source=("git+https://github.com/ghostty-org/${_pkgbasename}")
 sha256sums=('SKIP')
 
@@ -34,7 +40,7 @@ build() {
         cd "${srcdir}/${_pkgbasename}"
 
 	ZIG_GLOBAL_CACHE_DIR="${srcdir}/tmp" ./nix/build-support/fetch-zig-cache.sh
-	zig build --system "${srcdir}/tmp/p" -Dcpu=x86_64_v3 -Doptimize=ReleaseFast -Demit-docs
+	zig build --system "${srcdir}/tmp/p" -Dgtk-wayland=true -Dgtk-x11=true -Dpie=true -Dcpu=x86_64_v3 -Doptimize=ReleaseFast -Demit-docs
 }
 
 package() {
