@@ -1,7 +1,7 @@
 pkgbase = elf-checker
 	pkgdesc = A tool to visualize and check where ELF sections are located in different types of binaries
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/elf-checker
 	arch = any
 	license = MPL-2.0
