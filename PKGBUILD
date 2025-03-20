@@ -27,7 +27,7 @@ source=(
 build() {
   cd "Recaf-$pkgver"
 
-  JAVA_HOME="/usr/lib/jvm/java-23-openjdk" ./mvnw clean package -Dmaven.test.skip -Dcheckstyle.skip
+  JAVA_HOME="/usr/lib/jvm/default-runtime" ./mvnw clean package -Dmaven.test.skip -Dcheckstyle.skip
 }
 
 sha256sums=(
