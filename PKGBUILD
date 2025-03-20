@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='canihazgnomeupdate-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='check if all your extensions support a specific gnome version '
 url='https://jon4hz.io'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('canihazgnomeupdate')
 conflicts=('canihazgnomeupdate')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/canihazgnomeupdate/releases/download/v0.1.2/canihazgnomeupdate-v0.1.2-linux-amd64.tar.gz")
-sha256sums_x86_64=('f962509b62ae67af88f979a045c83aea566e9fe9ab06745998e4be48bcf8dd29')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/canihazgnomeupdate/releases/download/v0.1.3/canihazgnomeupdate-v0.1.3-linux-amd64.tar.gz")
+sha256sums_x86_64=('668c4c9f7747b1098e968a3b86dc0fe2eb1b53e7bc77d13c59d96e3fb8b5ab76')
 
 package() {
   # bin
