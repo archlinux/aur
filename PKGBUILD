@@ -8,7 +8,7 @@ pkgdesc="The everything app for those who celebrate trust & autonomy"
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
-depends=('glibc' 'gtk3' 'nss' 'libxss' 'libsecret')
+depends=('glibc' 'glib2' 'bash' 'libxss' 'libsecret')
 optdepends=('org.freedesktop.secrets: auto login support')
 conflicts=('anytype-bin'
   'anytype-electron-bin'
@@ -21,5 +21,5 @@ package() {
   echo "Extract data.tar.xz ..."
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/Anytype/anytype" "$pkgdir"/usr/bin/anytype
+  ln -s /usr/share/Anytype/anytype "$pkgdir"/usr/bin/anytype
 }
