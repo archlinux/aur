@@ -1,0 +1,20 @@
+pkgbase = claude-linux-client-bin
+	pkgdesc = The missing desktop client for Claude.ai for Linux in Electron.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CTTY-NUL/claude-linux-client
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = electron35
+	provides = claude-linux-client=1.0.0
+	conflicts = claude-linux-client
+	options = !emptydirs
+	source = claude-linux-client.sh
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = claude-linux-client-1.0.0-aarch64.rpm::https://github.com/CTTY-NUL/claude-linux-client/releases/download/v1.0.0/Claude.Linux.Client-1.0.0-arm64.rpm
+	sha256sums_aarch64 = 274867b2ceefbdaabd7d2f15f897845250b2c049922ae455ec4055f67f1ef9ad
+	source_x86_64 = claude-linux-client-1.0.0-x86_64.rpm::https://github.com/CTTY-NUL/claude-linux-client/releases/download/v1.0.0/claude-linux-client-1.0.0.x86_64.rpm
+	sha256sums_x86_64 = df50ab94a1e4ac22688ee9aac265c814c0428a54265e85d02bfe281154937ef4
+
+pkgname = claude-linux-client-bin
