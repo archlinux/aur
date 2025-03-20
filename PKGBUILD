@@ -1,39 +1,46 @@
 pkgbase=tal-filter2
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=3.1.0
-pkgrel=10
-groups=('pro-audio')
-pkgdesc="A Filter V2 By TAL Software"
+pkgrel=11
+pkgdesc='A filter V2 by TAL Software'
 arch=('x86_64')
-url="https://tal-software.com/products/tal-filter"
+url='https://tal-software.com/products/tal-filter'
 license=('EULA')
-depends=('glibc')
+groups=('pro-audio')
+_common_depends=('glibc')
 source=('https://tal-software.com/downloads/plugins/TAL-Filter-2_64_linux.zip')
-sha256sums=('ca6c2f2b6d68dfe160a8a723549e51d2a74505b3cf8c462580bf5001f3847be9')
+sha512sums=('9dc6bad274fcd13660fe7857f36673a4ec081fb14deaffa3c7db6df73e3da647bff4a174e37cf618d54064de4c619d05882a3a05928221d1746d017e67785944')
+b2sums=('937257fb359d3dc1c842f260b8486d8f0d0819ace846464906b6bf4cac6da3d09024667d44a909312f92e5512d06c6fca0c61b024d69c32e30002f9622b61df5')
 
 package_tal-filter2-clap-bin() {
-  ## VST2 Plugin
-  groups=("clap-plugins")
-  replaces=("tal-chorus-filter2-bin")
-  conflicts=("tal-chorus-filter2-bin")
-  provides=("tal-chorus-filter2-clap-bin")
-  install -Dm755 ${srcdir}/TAL-Filter-2/TAL-Filter-2.clap ${pkgdir}/usr/lib/clap/TAL-Filter-2.clap
+  pkgdesc+=' - CLAP plugin'
+  groups+=('clap-plugins')
+  depends=(
+    "${_common_depends[@]}"
+    'clap-host'
+  )
+
+  install -vDm644 ${srcdir}/TAL-Filter-2/TAL-Filter-2.clap ${pkgdir}/usr/lib/clap/TAL-Filter-2.clap
 }
 
 package_tal-filter2-vst-bin() {
-  ## VST2 Plugin
-  groups=("vst-plugins")
-  replaces=("tal-chorus-filter2-bin")
-  conflicts=("tal-chorus-filter2-bin")
-  provides=("tal-chorus-filter2-vst-bin")
-  install -Dm755 ${srcdir}/TAL-Filter-2/libTAL-Filter-2.so ${pkgdir}/usr/lib/vst/TAL\ Software/libTAL-Filter-2.so
+  pkgdesc+=' - VST plugin'
+  groups+=('vst-plugins')
+  depends=(
+    "${_common_depends[@]}"
+    'vst-host'
+  )
+
+  install -vDm755 ${srcdir}/TAL-Filter-2/libTAL-Filter-2.so ${pkgdir}/usr/lib/vst/TAL\ Software/libTAL-Filter-2.so
 }
 
 package_tal-filter2-vst3-bin() {
-  ## VST3 Plugin
-  groups=("vst3-plugins")
-  replaces=("tal-chorus-filter2-bin")
-  conflicts=("tal-chorus-filter2-bin")
-  provides=("tal-chorus-filter2-vst3-bin")
-  install -Dm755 ${srcdir}/TAL-Filter-2/TAL-Filter-2.vst3/Contents/x86_64-linux/TAL-Filter-2.so ${pkgdir}/usr/lib/vst3/TAL\ Software/TAL-Filter-2.vst3/Contents/x86_64-linux/TAL-Filter-2.so
+  pkgdesc+=' - VST3 plugin'
+  groups+=('vst3-plugins')
+  depends=(
+    "${_common_depends[@]}"
+    'vst3-host'
+  )
+
+  install -vDm755 ${srcdir}/TAL-Filter-2/TAL-Filter-2.vst3/Contents/x86_64-linux/TAL-Filter-2.so ${pkgdir}/usr/lib/vst3/TAL\ Software/TAL-Filter-2.vst3/Contents/x86_64-linux/TAL-Filter-2.so
 }
