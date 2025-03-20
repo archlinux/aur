@@ -7,7 +7,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-pcsclite
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 arch=('any')
 pkgdesc="PC/SC Architecture smartcard middleware library (Android ${_android_arch})"
@@ -20,7 +20,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.xz"{,.asc}
         '0002-Disable-issetugid.patch'
         '0003-Fix-missing-pthread_cancel.patch')
-md5sums=('a5b0906b64215b1e1ec0e314311601ad'
+md5sums=('308886ae2c45fdd8dde33f0b1cf0b339'
          'SKIP'
          '17cc08c1b9ed2c5912be2fd2b368c669'
          '3050ecacb997c4c6f901ddd18d4c87fc')
