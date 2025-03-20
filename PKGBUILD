@@ -5,7 +5,7 @@
 _name=files_antivirus
 pkgname=nextcloud-app-files-antivirus
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Antivirus app for Nextcloud"
 arch=(any)
 url="https://github.com/nextcloud/files_antivirus"
@@ -60,7 +60,7 @@ check() {
 
 package() {
   install -d "$pkgdir/usr/share/webapps/nextcloud/apps"
-  cp -av $_name-$pkgver "$pkgdir/usr/share/webapps/nextcloud/apps/"
+  cp -av $_name-$pkgver "$pkgdir/usr/share/webapps/nextcloud/apps/$_name"
   cd $_name-$pkgver
   _nextcloud_app_package
 }

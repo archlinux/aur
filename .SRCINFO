@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-files-antivirus
 	pkgdesc = Antivirus app for Nextcloud
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/files_antivirus
 	arch = any
 	groups = nextcloud-apps
