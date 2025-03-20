@@ -1,7 +1,7 @@
 pkgbase = keypunch-git
 	pkgdesc = Practice your typing skills
-	pkgver = v5.1_3c61abb
-	pkgrel = 2
+	pkgver = v5.1_43e21e3
+	pkgrel = 1
 	url = https://github.com/bragefuglseth/keypunch/
 	arch = aarch64
 	arch = x86_64
