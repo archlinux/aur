@@ -1,15 +1,17 @@
 pkgbase = python-meshpy
-	pkgdesc = 2D/3D simplicial mesh generator interface for Python (Triangle, TetGen, gmsh)
+	pkgdesc = Triangular and Tetrahedral Mesh Generator
 	pkgver = 2025.1.1
 	pkgrel = 1
 	url = https://documen.tician.de/meshpy
 	arch = x86_64
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = meson-python
 	makedepends = pybind11
 	makedepends = git
-	depends = python-gmsh_interop
+	depends = python-numpy
 	source = git+https://github.com/inducer/meshpy.git?signed#tag=v2025.1.1
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
 	sha512sums = d97f56f1497861c5170536ac4b105ba4d299bdb1ae54747b10393e9ab3ab8a184ee1cb66baae0e242a7184b076143c991ac72e78925630cc8f53ae4dc3761288
