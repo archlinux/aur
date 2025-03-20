@@ -13,10 +13,9 @@
 : ${_ver_clang=}
 : ${RUSTUP_TOOLCHAIN:=stable}
 
-## basic info
 _pkgname="midori"
 pkgname="$_pkgname-git"
-pkgver=11.5.r62.g598df9b
+pkgver=11.5.1.r138.g4b45ba9
 pkgrel=1
 pkgdesc="Web browser based on Floorp"
 url="https://github.com/goastian/midori-desktop"
@@ -102,28 +101,14 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _source_main() {
-  : ${_lssver:=v2022.10.12}
-  noextract=("lss-${_lssver}.tar.gz")
-
   _pkgsrc="midori-tensei"
   source=(
     "$_pkgsrc"::"git+https://github.com/goastian/midori-desktop.git"
-    "lss-${_lssver}.tar.gz"::"https://chromium.googlesource.com/linux-syscall-support/+archive/refs/tags/${_lssver}.tar.gz"
     "$_pkgname.desktop"
   )
   sha256sums=(
     'SKIP'
-    'SKIP'
     '7ef0f85f2b111caa08a3e855cb4b6595b6d0f62b3de13ce59eea94a580eec470'
-  )
-}
-
-_source_patches() {
-  source+=(
-    "50d41051085b.patch"::"https://hg.mozilla.org/mozilla-central/raw-rev/50d41051085b"
-  )
-  sha256sums+=(
-    'f68c5fd889288726fa6deff0aec6d30c60c0864e1ba9318cb3186af6a771748d'
   )
 }
 
@@ -146,7 +131,6 @@ _source_midori_tensei() {
 
 _source_main
 _source_midori_tensei
-_source_patches
 
 pkgver() {
   cd "$_pkgsrc"
@@ -180,11 +164,6 @@ prepare() {
   # l10n
   _prepare_midori_tensei
 
-  # prepare google breakpad
-  local _lss_path="toolkit/crashreporter/google-breakpad/src/third_party/lss"
-  mkdir -p "$_lss_path"
-  bsdtar -xf "$srcdir/lss-${_lssver}.tar.gz" -C "$_lss_path"
-
   # clear forced startup pages
   sed -E 's&^\s*pref\("startup\.homepage.*$&&' -i "browser/branding/official/pref/firefox-branding.js"
 
@@ -209,7 +188,7 @@ ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
-ac_add_options --with-app-basename=$_pkgname
+ac_add_options --with-app-basename=${_pkgname^}
 ac_add_options --with-app-name=$_pkgname
 ac_add_options --with-branding=browser/branding/official
 ac_add_options --enable-update-channel=nightly
@@ -288,7 +267,7 @@ END
     src="${src##*/}"
     src="${src%.zst}"
     if [[ $src == *.patch ]]; then
-      printf '\nApplying patch: %s\n' "$src"
+      printf '\n\nApplying patch: %s\n' "$src"
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
