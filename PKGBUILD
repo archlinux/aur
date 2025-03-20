@@ -3,7 +3,7 @@
 
 pkgname=wg++
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Freeware, closed-source multi-site incremental XMLTV EPG grabber"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="http://webgrabplus.com"
@@ -14,12 +14,12 @@ optdepends=('dotnet-runtime-8.0-bin: binary dotnet core runtime alternative')
 options=(!strip !emptydirs)
 source=(
   "${url}/sites/default/files/download/SW/V5.3.0/WebGrabPlus_V5.3_install.tar.gz"
-  "${url}/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar.gz"
+  "${url}/sites/default/files/download/SW/V${pkgver}/WebGrabPlus_V${pkgver}_beta_install.tar_0.gz"
   "wgpp.sh"
   "webgrabplus-license.txt"
 )
 sha256sums=('d619430b8099070eabe1f871f72aa946afb876e80fd8f2d58f5bd647cbb0dad7'
-            '60957de302b2466aaa7400e707ffb54e449f1e0d9e9d9468ca678dc30b4b8d09'
+            '0f83e2982ca6a932b680588b3f9391295a92a3be07d192d7858d74a5b630421b'
             '4601d8217543718c93e02fad9ec395c062ed3354e6730ae72d03783cfce8d5c8'
             'b56ecfd2f7b75d8fa09722cbc82abc594ed5f876c32122f34a48621a72fd2234')
 
