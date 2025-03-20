@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://gitlab.com/filipriec/tansig-lut"
 license=('GPL3')
 depends=('cargo')
-source=("https://gitlab.com/filipriec/tansig-lut/-/archive/v$pkgver/tansig-lut-v$pkgver.tar.gz")
-sha256sums=('960b96d3cb4fd5db9510ab5f42165a351f3aa3bfe3b2ec907ced10e45a4fa5e7')
+source=("https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=('267b5fb89b52a1597bd0f24c2f38c80046213d2a9eeee21da2b8fab51cafbf07')
 
 build() {
   cd "$pkgname-v$pkgver"
