@@ -1,12 +1,7 @@
 pkgbase=ot-chonk
-pkgname=(
-  'ot-chonk-docs'
-  'ot-chonk-clap'
-  'ot-chonk-vst3'
-  'ot-chonk-standalone'
-)
+pkgname=("${pkgbase}-docs" "${pkgbase}-clap" "${pkgbase}-vst3" "${pkgbase}-standalone")
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A classic, physically modeled electric bass monosynth'
 arch=('x86_64')
 url='https://punklabs.com/ot-chonk'
