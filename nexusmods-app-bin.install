@@ -1,6 +1,6 @@
 post_upgrade() {
   cat <<HERE
-  When upgrading from v0.5.x, remove old data directory
+  When upgrading, please clear the data directory:
   rm -Rf ~/.local/share/NexusMods.App
   See: https://github.com/Nexus-Mods/NexusMods.App/releases/tag/v0.6.0
 HERE
