@@ -1,0 +1,78 @@
+--- a/src/config.c
++++ b/src/config.c
+@@ -660,75 +660,7 @@
+ static int
+ ssh_match_localnetwork(const char *addrlist, bool negate)
+ {
+-    struct ifaddrs *ifa = NULL, *ifaddrs = NULL;
+-    int r, found = 0;
+-    char address[NI_MAXHOST], err_msg[SSH_ERRNO_MSG_MAX] = {0};
+-    socklen_t sa_len;
+-
+-    r = getifaddrs(&ifaddrs);
+-    if (r != 0) {
+-        SSH_LOG(SSH_LOG_WARN,
+-                "Match localnetwork: getifaddrs() failed: %s",
+-                ssh_strerror(r, err_msg, SSH_ERRNO_MSG_MAX));
+         return -1;
+-    }
+-
+-    for (ifa = ifaddrs; ifa != NULL; ifa = ifa->ifa_next) {
+-        if (ifa->ifa_addr == NULL || (ifa->ifa_flags & IFF_UP) == 0) {
+-            continue;
+-        }
+-
+-        switch (ifa->ifa_addr->sa_family) {
+-        case AF_INET:
+-            sa_len = sizeof(struct sockaddr_in);
+-            break;
+-        case AF_INET6:
+-            sa_len = sizeof(struct sockaddr_in6);
+-            break;
+-        default:
+-            SSH_LOG(SSH_LOG_TRACE,
+-                    "Interface %s: unsupported address family %d",
+-                    ifa->ifa_name,
+-                    ifa->ifa_addr->sa_family);
+-            continue;
+-        }
+-
+-        r = getnameinfo(ifa->ifa_addr,
+-                        sa_len,
+-                        address,
+-                        sizeof(address),
+-                        NULL,
+-                        0,
+-                        NI_NUMERICHOST);
+-        if (r != 0) {
+-            SSH_LOG(SSH_LOG_TRACE,
+-                    "Interface %s getnameinfo failed: %s",
+-                    ifa->ifa_name,
+-                    gai_strerror(r));
+-            continue;
+-        }
+-        SSH_LOG(SSH_LOG_TRACE,
+-                "Interface %s address %s",
+-                ifa->ifa_name,
+-                address);
+-
+-        r = match_cidr_address_list(address,
+-                                    addrlist,
+-                                    ifa->ifa_addr->sa_family);
+-        if (r == 1) {
+-            SSH_LOG(SSH_LOG_TRACE,
+-                    "Matched interface %s: address %s in %s",
+-                    ifa->ifa_name,
+-                    address,
+-                    addrlist);
+-            found = 1;
+-            break;
+-        }
+-    }
+-
+-    freeifaddrs(ifaddrs);
+-
+-    return (found == (negate ? 0 : 1));
+ }
+ #endif
+ 
