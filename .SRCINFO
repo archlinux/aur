@@ -1,6 +1,6 @@
 pkgbase = maps
 	pkgdesc = Sandboxing tool for Mathematical Research Software
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/aaruni96/maps
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = maps
 	depends = python-tuspy
 	provides = maps
 	conflicts = maps
-	source = maps-0.3.tar.gz::https://github.com/aaruni96/maps/archive/refs/tags/v0.3.tar.gz
-	sha256sums = c58043b099d5721018b02221afb0621d4deeb3e2bf7bfad0d36f2928ea43f120
+	source = maps-0.4.tar.gz::https://github.com/aaruni96/maps/archive/refs/tags/v0.3.tar.gz
+	sha256sums = cf8fa1dcc8f6dba1718ae0ff83b313439f756d6f6c22a269aee5c04282bbe2ca
 
 pkgname = maps
