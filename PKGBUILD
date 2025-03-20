@@ -2,10 +2,10 @@
 
 _pkgname="phylum"
 pkgname="${_pkgname}-bin"
-pkgver=7.3.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="Command line interface for the Phylum API"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://phylum.io"
 _url="https://github.com/phylum-dev/cli"
 license=('MIT')
@@ -13,28 +13,21 @@ depends=('gcc-libs' 'glibc' 'zlib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-noextract=("${_pkgsrc}-"{x86_64,aarch64}".zip")
-source=("README-${pkgver}.md::${_url}/raw/v${pkgver}/README.md"
-        "LICENSE-${pkgver}::${_url}/raw/v${pkgver}/LICENSE")
-source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
+source=("${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
+        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.zip")
-b2sums=('7bbbd36aed8c996faf29a232455b265edc26dd5eac6f814f00d0a8af6174269f55c86fc3e6ddf26d7c8f33fdd59ab2bf1b20f483f47cc8d49f0490a4500a33c0'
+source_x86_64=("${_pkgsrc}-x86_64.zip::${_url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.zip")
+b2sums=('112db7a875f7ae8d5e4b5d1dad07e95c75607ca3fcb907d64e3f7b270734a8ffa6d403f1e82714f13847275c46c45473c29bda44ade8f4fbc4fe2948f7b20050'
         'd23d56095390a883bd5c4a2fd321bfe027477e24222332936f15c2653614efe93322776f9c6011102fd33210079a01edaa22ffb2326ca5187a6bf9bc50d7ca7e')
-b2sums_x86_64=('a0837efd649b45a94ad0fe03cbbfdf41f0679303b56158594d6799ad4025482c0cdd5a9d0164425fb1aa5297c3dff568b644573e8987cbeee212cce1546e1581')
-b2sums_aarch64=('7d4e6f4ad1562e785fd4d44d6ffbe95c5e9c2e89eed6092bf15f8874ad31b619cc7efb78b5bb8f507873db7af7cb76d650c014510b147bd968a873a9694f4cda')
-
-prepare() {
-  cd "${srcdir}"
-  mkdir -p "${srcdir}/${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.zip" --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
-}
+b2sums_aarch64=('969a60b33e208d7c8bdcd687f86d3a24a34ac7c4e50666872a09e8558f0ac6181bd0d8cb468ecfc61673a2e988089222d2cfb2b88f4f4435cbcd60ad215785f6')
+b2sums_x86_64=('33f0985861de1fbaeb886606a78bc98b21a6779c797462803e53fc625c3a71bc79ce2f9e497c17a0203a4150f6f046691e616cefdac836240b8a71081ad595af')
 
 package() {
   cd "${srcdir}"
-  install -vDm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE-${pkgver}"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-  cd "${_pkgsrc}-${CARCH}"
+  cd "${_pkgname}-${CARCH}-unknown-linux-gnu"
   install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   cd "completions"
