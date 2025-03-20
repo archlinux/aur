@@ -1,0 +1,5 @@
+[rmg-bin]
+source = "github"
+github = "Rosalie241/RMG"
+use_latest_release = true
+prefix = "v"
