@@ -1,10 +1,11 @@
 pkgbase = python-browser-cookie3
 	pkgdesc = Loads cookies used by your web browser into a cookiejar object
 	pkgver = 0.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/borisbabic/browser_cookie3
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

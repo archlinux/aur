@@ -3,11 +3,11 @@
 _module=browser_cookie3
 pkgname=python-${_module/_/-}
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Loads cookies used by your web browser into a cookiejar object"
 url="https://github.com/borisbabic/browser_cookie3"
 depends=('python-lz4' 'python-pycryptodomex' 'python-jeepney')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("$_module-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
