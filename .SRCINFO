@@ -27,7 +27,6 @@ pkgbase = gnome-software-plugin-snap
 	makedepends = libxmlb
 	makedepends = malcontent
 	makedepends = meson
-	depends = gnome-software=47.5
 	depends = snapd
 	depends = snapd-glib
 	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git#tag=47.5
@@ -38,3 +37,4 @@ pkgbase = gnome-software-plugin-snap
 	b2sums = 736a43aecb1bbf91f2c641adf971a4f1acbc6f49fd970cd0507d68e169d5b6c5a8eb7109a38d49423895343e9473bc54455e9b8b991329b1c5300af07fd19b46
 
 pkgname = gnome-software-plugin-snap
+	depends = gnome-software=47.5

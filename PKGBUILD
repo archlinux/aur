@@ -9,7 +9,6 @@ url="https://apps.gnome.org/Software"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
-  gnome-software=${pkgver}
   snapd
   snapd-glib
 )
@@ -76,5 +75,7 @@ build() {
 # Not running tests - need root and a D-Bus system bus
 
 package() {
+  depends=(gnome-software=${pkgver})
+
   meson install -C build --no-rebuild --tags snap --destdir "${pkgdir}"
 }
