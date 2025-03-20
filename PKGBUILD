@@ -2,7 +2,7 @@
 
 pkgname=rabtap
 pkgver=1.44.1
-pkgrel=1
+pkgrel=2
 license=(GPL3)
 pkgdesc="RabbitMQ wire tap and swiss army knife "
 makedepends=('go')
@@ -20,13 +20,19 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  # these match the format used in the upstream github binaries
+  BUILD_COMMIT="$(bsdcat ../"$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
+  BUILD_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  BUILD_GO_VERSION="$(go version)"
+  BUILD_VERSION="v${pkgver}"
 
-  cd cmd/rabtap
+  cd "${pkgname}-${pkgver}"/cmd/rabtap
 
-  # cannot determine specific commit from GitHub tag tarballs
   CGO_ENABLED=0 go build \
-    -ldflags "-X main.version=${pkgver} -X main.commit=unknown" \
+    -ldflags "-X 'main.BuildCommit=${BUILD_COMMIT}'
+              -X 'main.BuildDate=${BUILD_DATE}'
+              -X 'main.BuildGoVersion=${BUILD_GO_VERSION}'
+              -X 'main.BuildVersion=${BUILD_VERSION}'" \
     -buildmode=pie \
     -modcacherw \
     -trimpath \
