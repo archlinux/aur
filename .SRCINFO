@@ -1,17 +1,19 @@
 pkgbase = python-livekit-plugins-deepgram
 	pkgdesc = Agent Framework plugin for speech-to-text with DeepGram's API.
-	pkgver = 0.6.19
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-deepgram
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-deepgram/livekit_plugins_deepgram-0.6.19.tar.gz
-	sha256sums = fcdd5fbac309c44446032910c7be39e9ad7bd368e111aaa943a672408345d773
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-deepgram/livekit_plugins_deepgram-0.7.1.tar.gz
+	sha256sums = ce20d71e5e2a1035f4fed9cc1fd44db4b3ed1aad20b38bc5351f3e637779f5a4
 
 pkgname = python-livekit-plugins-deepgram
