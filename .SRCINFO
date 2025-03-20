@@ -1,16 +1,18 @@
 pkgbase = python-livekit-plugins-llama-index
 	pkgdesc = Agent Framework plugin for using Llama Index.
-	pkgver = 0.2.2
-	pkgrel = 3
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-llama-index
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = python-livekit-agents
-	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-llama-index/livekit_plugins_llama_index-0.2.2.tar.gz
-	sha256sums = c6dfa21fc576ffb3421d166a76b9bdf82a417c6d2caa2814527bb6d582d49836
+	source = https://files.pythonhosted.org/packages/source/l/livekit-plugins-llama-index/livekit_plugins_llama_index-0.2.3.tar.gz
+	sha256sums = ba5587c9a037f4ab9043b3b683b4bfe70c368f96ca8d782b85614503a385dbaf
 
 pkgname = python-livekit-plugins-llama-index
