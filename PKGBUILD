@@ -3,7 +3,7 @@
 
 pkgname=fht-compositor
 pkgver=25.03.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A dynamic tiling Wayland compositor'
 groups=('fht-desktop')
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   export RUSTFLAGS='-C link-arg=/usr/lib/libinput.so -C link-arg=/usr/lib/libxkbcommon.so -C link-arg=/usr/lib/libgbm.so'
-  cargo build --frozen --release
+  cargo build --frozen --release --features uwsm
 }
 
 #check() {
