@@ -1,7 +1,7 @@
 pkgbase = linyaps
 	pkgdesc = Linglong is the container application toolkit of deepin.
-	pkgver = 1.7.0
-	pkgrel = 3
+	pkgver = 1.7.11
+	pkgrel = 1
 	url = https://github.com/OpenAtom-Linyaps/linyaps
 	install = linyaps.install
 	arch = x86_64
@@ -28,14 +28,15 @@ pkgbase = linyaps
 	depends = ostree
 	depends = yaml-cpp
 	optdepends = linglong-pica: deb package to Linglong package tool.
+	optdepends = ll-killer-go: 玲珑杀手 Go: 玲珑应用快速构建系统
 	provides = linyaps
 	provides = linglong
 	conflicts = linyaps
 	conflicts = linglong
 	replaces = linglong-git
-	source = linyaps-1.7.0.tar.gz::https://github.com/OpenAtom-Linyaps/linyaps/archive/refs/tags/V1.7.0.tar.gz
+	source = linyaps-1.7.11.tar.gz::https://github.com/OpenAtom-Linyaps/linyaps/archive/refs/tags/1.7.11.tar.gz
 	source = linyaps.install
-	sha256sums = 73a70e455e02ba26e489cc1b7b11b68bbf3e638fd50e7030910392c07fa04f84
+	sha256sums = 960a17b3bc038fb49049930ad58af00a4bae7cadbe4cb094bcdc0cf384405717
 	sha256sums = 2ede7bc18aad4065a5c3f4552af1dde0b029099d572670b118a1453bf3d75f66
 
 pkgname = linyaps

@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps
-pkgver=1.7.0
-pkgrel=3
+pkgver=1.7.11
+pkgrel=1
 pkgdesc='Linglong is the container application toolkit of deepin.'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps'
@@ -42,13 +42,16 @@ makedepends=(
   pkgconf
   tl-expected
 )
-optdepends=("linglong-pica: deb package to Linglong package tool.")
+optdepends=(
+  "linglong-pica: deb package to Linglong package tool."
+  "ll-killer-go: 玲珑杀手 Go: 玲珑应用快速构建系统"
+)
 install=${pkgname}.install
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/V${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}.install"
 )
-sha256sums=('73a70e455e02ba26e489cc1b7b11b68bbf3e638fd50e7030910392c07fa04f84'
+sha256sums=('960a17b3bc038fb49049930ad58af00a4bae7cadbe4cb094bcdc0cf384405717'
             '2ede7bc18aad4065a5c3f4552af1dde0b029099d572670b118a1453bf3d75f66')
 
 build() {
