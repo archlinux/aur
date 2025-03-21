@@ -8,11 +8,12 @@ pkgdesc='A fast Python based just-in-time compiling boundary element library'
 arch=('x86_64')
 url="https://github.com/bempp/bempp-cl"
 license=('MIT')
-depends=('python-numpy' 'python-scipy' 'python-numba' 'python-meshio' 'python-llvmlite')
+depends=('python-numpy' 'python-scipy' 'python-numba' 'python-meshio')
 makedepends=('python-setuptools' 'python-pip')
-optdepends=('python-plotly: data visualization'
-    'python-pyopencl: GPU computation'
-    'gmsh: meshing and visualization')
+optdepends=('python-plotly'
+    'python-matplotlib'
+    'python-psutil'
+    'python-mpi4py')
 provides=('python-bempp')
 conflicts=('python-bempp')
 source=(${_pyname}-${pkgver}.tar.gz::"https://github.com/bempp/bempp-cl/archive/v${pkgver}.tar.gz")
