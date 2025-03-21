@@ -2,7 +2,7 @@
 # Co-Maintainer: Kaleb Elwert <belak@coded.io>
 
 pkgname=picotron
-pkgver=0.2.0
+pkgver=0.2.0b
 pkgrel=1
 pkgdesc="A fantasy workstation for making pixelart games, animations, music, demos and other curiosities."
 arch=("x86_64")
@@ -20,7 +20,7 @@ source_x86_64=("file://${pkgname}_${pkgver}_amd64.zip")
 sha256sums=("04862c5d2f4ec10f4979ec316c4e14b01e073806d90bc23290e8420e142f710a"
             "ed9753f910a3484ebf8a5ce37ee324d51f020a3124150aebff8d0b413211221f"
             "45525e5ff68d3380492e188e626cf2208491ba0df79cc246aa8560e05f5b3100")
-sha256sums_x86_64=("2eafc961bed7c02da9d45d933c31ad78ee3e72933da27337f539413ee781b01c")
+sha256sums_x86_64=("e3f9698fa58cfe26b6bbcb9174d90588b01ef59abe1c20e6965f0c12f894ee47")
 
 package() {
   pushd "${srcdir}/picotron" > /dev/null
