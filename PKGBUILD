@@ -5,7 +5,7 @@
 
 _pkgname="dxvk"
 pkgname="$_pkgname-async-git"
-pkgver=2.5.1.r13.gd7bd3cd
+pkgver=2.6.r13.g90ee5fe
 pkgrel=2
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 - Windows DLL version"
 url="https://gitlab.com/Ph42oN/dxvk-gplasync/"
@@ -13,7 +13,6 @@ license=('Zlib')
 arch=('x86_64')
 
 depends=(
-  'lib32-vulkan-icd-loader'
   'vulkan-icd-loader'
 )
 makedepends=(
@@ -22,6 +21,9 @@ makedepends=(
   'meson'
   'mingw-w64-gcc'
   'wine'
+)
+optdepends=(
+  'lib32-vulkan-icd-loader: for 32-bit support'
 )
 
 provides=("dxvk=$pkgver")
@@ -37,7 +39,6 @@ source=(
   "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
   "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
   "git+https://gitlab.com/Ph42oN/dxvk-gplasync.git"
-  "dxvk-async-env.conf"
   "setup_dxvk.sh"
 )
 sha256sums=(
@@ -46,7 +47,6 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
   'c5ac42de128630e6d8a9e46a7729630edbfb7626eb293ec5c74c8210c932f0e7'
 )
 
@@ -101,9 +101,6 @@ package() {
 
   install -dm755 "$pkgdir/usr/bin"
   ln -srf "$pkgdir/usr/share/dxvk/setup_dxvk.sh" "$pkgdir/usr/bin/setup_dxvk"
-
-  # Async environment variable
-  install -Dm644 "dxvk-async-env.conf" "$pkgdir/etc/environment.d/dxvk-async-env.conf"
 
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
