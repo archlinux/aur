@@ -25,7 +25,7 @@ _renderer=gles
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r67165.504c69cc3b2b
+pkgver=r67602.22885432ec4
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -33,12 +33,12 @@ license=('GPL2')
 makedepends=(
   'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
   # jdk23-openjdk causes build errors
-  'gperf' 'hicolor-icon-theme' 'jdk21-openjdk' 'fmt' 'libass'
+  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'fmt' 'libass'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
-  'libmodplug' 'libmpeg2' 'libnfs' 'libplist' 'libpulse' 'libva'
+  'libmodplug' 'libmpeg2' 'libnfs' 'libpulse' 'libva'
   'libvdpau' 'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
-  'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'taglib'
+  'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
   'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
   # cmake/scripts/linux/Install.cmake calls distutils
@@ -75,9 +75,9 @@ _flatbuffers_version="23.3.3"
 _libudfread_version="1.1.2"
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
-  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
-  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
-  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
+  "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/refs/tags/$_libdvdcss_version.tar.gz"
+  "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/refs/tags/$_libdvdnav_version.tar.gz"
+  "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/refs/tags/$_libdvdread_version.tar.gz"
   "https://ffmpeg.org/releases/ffmpeg-$_ffmpeg_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
@@ -142,7 +142,8 @@ build() {
     -DENABLE_AVX2=ON
     -DUSE_LTO=$(nproc)
     -DENABLE_LDGOLD=OFF
-    -DENABLE_AIRTUNES=ON
+    -DENABLE_AIRTUNES=OFF
+    -DENABLE_PLIST=OFF
     -DENABLE_AVAHI=ON
     -DENABLE_BLURAY=ON
     -DENABLE_CEC=ON
@@ -188,14 +189,14 @@ build() {
 package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch, $_renderer renderer)"
   depends=(
-    'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
-    'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
-    'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
-    'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
-    'python-simplejson' 'shairplay' 'smbclient' 'sndio' 'spdlog' 'sqlite'
-    'tinyxml' 'taglib' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
-    'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
-  )
+  'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme' 'fmt'
+  'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
+  'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'lzo'
+  'mariadb-libs' 'mesa' 'libpipewire' 'python-pillow' 'python-pycryptodomex'
+  'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'sqlite'
+  'tinyxml' 'taglib' 'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
+  'pcre' 'tinyxml2' 'libdisplay-info' 'exiv2'
+)
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
   optdepends=(
