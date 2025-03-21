@@ -2,7 +2,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2024.12.04
-pkgrel=1
+pkgrel=2
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -50,6 +50,9 @@ prepare() {
 
     # Type error
     git -C "$srcdir/ros2/src/ros2/ros2_tracing" cherry-pick -n 7e8d42e3816dc9f7dc268109a2bb9cc66cc4d4ee
+
+    # Support empy3 and empy4
+    git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n e25750db3d7735947cad24f630d135ba02db5e59
 }
 
 build() {
@@ -61,7 +64,10 @@ build() {
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
     # Build
-    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args " -DBUILD_TESTING=OFF"
+    # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.
+    #                  They were using deprecated ASIO functionality, which is now removed.
+    #                  See the following issue: https://github.com/eProsima/Fast-DDS/issues/5726
+    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DTHIRDPARTY_Asio=FORCE
 }
 
 package() {
