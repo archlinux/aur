@@ -1,7 +1,7 @@
 pkgbase = r-themis
 	pkgdesc = Extra Recipes Steps for Dealing with Unbalanced Data
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=themis
 	arch = any
 	license = MIT
@@ -22,18 +22,19 @@ pkgbase = r-themis
 	depends = r-tibble
 	depends = r-vctrs
 	depends = r-withr
+	depends = r-cli
 	optdepends = r-covr
 	optdepends = r-dials
 	optdepends = r-ggplot2
 	optdepends = r-modeldata
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/themis_1.0.2.tar.gz
+	source = https://cran.r-project.org/src/contrib/themis_1.0.3.tar.gz
 	source = themis-update-snapshots-1.patch::https://github.com/tidymodels/themis/commit/c9bdc843f3c299e668f1b41dee1d1f11deceb4ba.patch
 	source = themis-update-snapshots-2.patch::https://github.com/tidymodels/themis/pull/147.patch
-	md5sums = 8f13545a8a8d475f3323e75dd40a66d3
+	md5sums = 8220a867bb581450671d04e74f94b76a
 	md5sums = 20778cbb20ffa0fd16e18b24e0471915
 	md5sums = c23888ea75a5b79aedee4fc2993569e4
-	b2sums = 10e3a4edea7c0d48af8d133c5f6cc435782daeb16b4978c835884d9ed4126baa9a12aeabba0f3f9986598c14df2151ed907a4095478ab192990bc018d05fab7a
+	b2sums = 62659e101d675111daec7c892df17cc3edc1524fd904c2ade6e4b80769f51681a4852122324b4bbf2736c140f26f6acd105ecd0a32d00490f3372c05a9bacb30
 	b2sums = 127214d54c11d26fba58f0f6e66fd0bf9cb876533a38aaf5d332a75baea9b4b4f1ff3924460c883a6303eb241bcbeee95d762df938101c879b696be5d806f347
 	b2sums = 63d251544560c1d67e5dd2b39d9e25fc8bc05e6db84c2609fa75850e9e5148d949986fd1afb2065f5ccfc9f9b782a3d0ae82460eaa9bf106bd96a04765dde0a8
 
