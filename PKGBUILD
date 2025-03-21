@@ -1,15 +1,16 @@
 # Maintainer: KiWi42 < pullthisplug dash aur at yahoo dot com >
 
 pkgname=scans2any-git
-pkgver=0.0.0.post2+4c50b61
+pkgver=0.8.0.post1+b208965
 pkgrel=1
 pkgdesc="Convert and merge infrastructure scans to Typst, Markdown, HTML, ..."
 arch=("any")
+url="https://github.com/softScheck/scans2any"
 license=("AGPL-3.0-or-later")
 provides=(scans2any scans2any-git)
 conflicts=(scans2any)
-depends=(python python-htmlgenerator python-jinja python-libnmap python-pandas
-	python-partial-json-parser python-sortedcontainers python-tabulate
+depends=(python python-defusedxml python-htmlgenerator python-jinja python-libnmap
+	python-pandas python-partial-json-parser python-sortedcontainers python-tabulate
 	python-tqdm python-yaml)
 makedepends=(python-build python-installer python-wheel uv)
 checkdepends=(uv)
@@ -42,9 +43,6 @@ package() {
 	# Install scans2markdown executable
 	mkdir -p "${pkgdir}/usr/bin"
 	install src/scans2any/main.py "${pkgdir}/usr/bin/scans2any"
-
-	# Install data files in `/usr/share`
-	mkdir -p "${pkgdir}/usr/share/scans2any"
 
 	# install zsh completion file _scans2markdown as well as man page
 	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"

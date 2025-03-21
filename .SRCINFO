@@ -1,7 +1,8 @@
 pkgbase = scans2any-git
 	pkgdesc = Convert and merge infrastructure scans to Typst, Markdown, HTML, ...
-	pkgver = 0.0.0.post2+4c50b61
+	pkgver = 0.8.0.post1+b208965
 	pkgrel = 1
+	url = https://github.com/softScheck/scans2any
 	arch = any
 	license = AGPL-3.0-or-later
 	checkdepends = uv
