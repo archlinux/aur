@@ -1,6 +1,6 @@
 pkgbase = r-enrichplot
 	pkgdesc = Visualization of Functional Enrichment Result
-	pkgver = 1.24.4
+	pkgver = 1.26.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/enrichplot
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = r-enrichplot
 	depends = r-scatterpie
 	depends = r-shadowtext
 	depends = r-yulab.utils
+	depends = r-ggtangle
 	optdepends = r-annotationdbi
 	optdepends = r-clusterprofiler
 	optdepends = r-dplyr
@@ -45,7 +46,7 @@ pkgbase = r-enrichplot
 	optdepends = r-tibble
 	optdepends = r-tidydr
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/enrichplot_1.24.4.tar.gz
-	sha256sums = 7b3093b6aaf9d8fd47707a35db0736b61e29c9f013fb76faf396eb6f4177a6dd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/enrichplot_1.26.6.tar.gz
+	sha256sums = 8e03a9349fd1858bb63293b06215068d2d4c53eb721ede687b366efab9a67b96
 
 pkgname = r-enrichplot
