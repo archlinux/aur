@@ -4,7 +4,7 @@ _pkgname=zigg
 _pkgver=0.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Interfaces to the 'Ziggurat' Pseudo Random Number Generator"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('944be6ebd162bb6fce66496c1a6f063f')
-b2sums=('d7c648bde6d6f7d1c0cb3422509de8f12f9e2eb991af14a3f47db9919c588b5beeb2673f673ce3496539d9486f8bb0dc1c23b2b683c70c22bce21105631ee6d7')
+md5sums=('85fe24786e909c67f009f151efc42e40')
+b2sums=('cbcf989b63221d2b82f4b75f12b46dda959113b0c61ed48fcd54ce4113fad7bdfabeb6ab7c56be8cf45b84cd6800136f4ca579c6d697cdd8c6e592e1161cb454')
 
 build() {
   mkdir build
