@@ -7,13 +7,13 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=23
-_completever=23.0.2
-_updatever=7
+_majorver=24
+_completever=24.0.0
+_updatever=36
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
-_tag_ver=${_completever}+${_updatever}
-#_tag_ver=${_majorver}+${_updatever}
+#_tag_ver=${_completever}+${_updatever}
+_tag_ver=${_majorver}+${_updatever}
 _versuffix=U
 
 pkgname=jdk-temurin
@@ -58,10 +58,10 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('870ac8c05c6fe563e7a3878a47d0234b83c050e83651d2c47e8b822ec74512dd'
-            '858f1e7700a3c5658ea2b3874f3ad32b1ffffd1e93c21f7d16b57095c307183d'
-            '41af2cbeed31a4f463f22fb409de9efe16b38904cdb5b104ae9414d9a7845a03'
-            '177e31fa4be661c04b6294e6611ee8630dbd303d896ccaa10454511bf72bf63f')
+sha256sums=('c340dee97b6aa215d248bc196dcac5b56e7be9b5c5d45e691344d40d5d0b171d'
+            'ce49e3435f1e229260f429d61896be9a6f9d2b0cdc72d2c0091fed6ac55c388a'
+            'decb720bd8d5e8628e836af8813bfbcf7fec00a4d119765e993a19cf235d8784'
+            'a71dbdb6f769bf33a55e78ef0fe2300929a9a291b6e5ccba4245c67f679321a5')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}
@@ -82,13 +82,6 @@ package() {
   install -dm 755 "${pkgdir}/usr/share/licenses"
   mv legal "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -sf /usr/share/licenses/${pkgname} legal
-
-  # Man pages
-  for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-temurin${_majorver}.1}"
-  done
-  rm -rf man
-  ln -sf /usr/share/man man
 
   # Link JKS keystore from ca-certificates-utils
   rm -f lib/security/cacerts
