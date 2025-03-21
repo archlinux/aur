@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORFik
-_pkgver=1.24.0
+_pkgver=1.26.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,10 +19,8 @@ depends=(
   r-biostrings
   r-bsgenome
   r-cowplot
-  r-curl
   r-data.table
   r-deseq2
-  r-downloader
   r-fst
   r-genomeinfodb
   r-genomicalignments
@@ -35,7 +33,6 @@ depends=(
   r-jsonlite
   r-r.utils
   r-rcpp
-  r-rcurl
   r-rsamtools
   r-rtracklayer
   r-s4vectors
@@ -53,8 +50,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0f07c686b2a4f5688ef8e4bc86ba8d4')
-b2sums=('b4cf62fe20bc03be19a4b1536fefc8c93bdbedae13bbad32c8857b782dea51e51d4ad845aa27ac2457ac58a3da813f440d956787bb1325ceeba4e5a0e7a19eb0')
+md5sums=('1a2c8f6a3d88637642f4cd5ade2214e6')
+b2sums=('012f762fa66287eaa182e9dfe67333de2081401992b34e68b2c8ee2f7c1a7a5cc333650b30f55cb72cdf6c70ec514fc1e3ea1ea5f847348c9905f5ea4fb51afb')
 
 build() {
   mkdir build
