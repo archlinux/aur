@@ -1,0 +1,12 @@
+pkgbase = gamemaker-steamruntime-sdk-bin
+	pkgdesc = Steam Runtime SDK install from GameMaker setup instructions
+	pkgver = latest
+	pkgrel = 1
+	url = https://help.gamemaker.io/hc/en-us/articles/235186168-Setting-Up-For-Ubuntu
+	arch = x86_64
+	license = custom:unknown
+	noextract = com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz
+	source = https://repo.steampowered.com/steamrt-images-scout/snapshots/latest-steam-client-general-availability/com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz
+	sha256sums = SKIP
+
+pkgname = gamemaker-steamruntime-sdk-bin
