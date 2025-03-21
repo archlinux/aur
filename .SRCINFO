@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-thermal-monitor
 	pkgdesc = A KDE Plasmoid for displaying system temperatures.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://invent.kde.org/olib/thermalmonitor
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = plasma6-applets-thermal-monitor
 	depends = kdeclarative
 	depends = kquickcharts
 	provides = plasma6-applets-thermal-monitor
-	source = plasma6-applets-thermal-monitor.tar.gz::https://invent.kde.org/olib/thermalmonitor/-/archive/v0.2.4/thermalmonitor-v0.2.4.tar.gz
-	b2sums = bc93cc657bd6ed66a5324f1c1aa1c9fe2ca1f837847502b54125c1039417f5d670351b2666ae50b70a04de549badbdd2a206eff320b776c5922c34298f824977
+	source = plasma6-applets-thermal-monitor.tar.gz::https://invent.kde.org/olib/thermalmonitor/-/archive/v0.2.5/thermalmonitor-v0.2.5.tar.gz
+	sha256sums = 01f6c53592550ad40cc3caabbd036d8c440c581387ba2066fc4fadc0aece9c85
 
 pkgname = plasma6-applets-thermal-monitor
