@@ -14,7 +14,7 @@
 : ${KOBOLDCPP_NO_PORTABLE:=0}
 
 pkgname=koboldcpp-hipblas
-_pkgver=1.85
+_pkgver=1.86.2
 pkgver=$_pkgver.yr0
 _git_pkgver=$pkgver-ROCm
 pkgrel=1
@@ -40,7 +40,7 @@ source=(
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
-sha256sums=('d6cac86d7de8e4d2273472e976dfded5239739e0e626045c8b5300539b8e1782'
+sha256sums=('1991ce564ab319374aac294d0c69b63eea47cba5cdf6f823408620a038bdb786'
             'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
             'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
 
