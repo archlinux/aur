@@ -1,6 +1,6 @@
 pkgbase = r-ggstats
 	pkgdesc = Extension to 'ggplot2' for Plotting Stats
-	pkgver = 0.7.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggstats
 	arch = any
@@ -42,8 +42,8 @@ pkgbase = r-ggstats
 	optdepends = r-survey
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggstats_0.7.0.tar.gz
-	md5sums = e76fa807019923764e4732f239a9f18b
-	b2sums = b6673d3e0b23ac9cfc1128c61584a00cf051d88ac34445067754b89937dc1c336f2e2666695a55b741024ecfd23c7fe0cc56a999cad69563a15d26873596e539
+	source = https://cran.r-project.org/src/contrib/ggstats_0.9.0.tar.gz
+	md5sums = 574df8d8ca1126f79652d4c8b889fd91
+	b2sums = f86023cd9409fb4aeda234da4176fb32cdb72b26115b48db3598898bab2c27b09f415cad569c000d16a5750a371c6e01ef21d687fad0e1d4d2b6368b25f8d4a5
 
 pkgname = r-ggstats
