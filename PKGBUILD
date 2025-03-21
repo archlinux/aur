@@ -4,13 +4,12 @@ _pkgname=coxme
 _pkgver=2.2-22
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Mixed Effects Cox Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL-2.0-or-later')
+license=('LGPL-2.0-only')
 depends=(
-  r
   r-bdsmatrix
 )
 optdepends=(
