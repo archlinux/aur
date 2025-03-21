@@ -1,12 +1,13 @@
 pkgbase = python-xgboost
 	pkgdesc = Gradient Boosting Library for Python
-	pkgver = 2.1.4
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://xgboost.ai
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-loky
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -24,9 +25,10 @@ pkgbase = python-xgboost
 	depends = python-hypothesis
 	depends = python-distributed
 	optdepends = apache-spark: Distributed XGBoost with PySpark
-	source = xgboost-2.1.4.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v2.1.4.tar.gz
+	optdepends = python-ubjson: Enhanced JSON IO
+	source = xgboost-3.0.0.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v3.0.0.tar.gz
 	source = git+https://github.com/dmlc/dmlc-core.git
-	sha256sums = 8c86edcdc4ea4e8ef92d62d71ddb59a2500d87312c5e1092cb41f60b59212101
+	sha256sums = 4b8775e3fcf17d9b2e7b458ca1f37a93706aa6959c2e0c64672e6e4974660f45
 	sha256sums = SKIP
 
 pkgname = python-xgboost

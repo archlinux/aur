@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=2.1.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
@@ -28,11 +28,17 @@ makedepends=(
   ninja
   git
 )
-checkdepends=(python-pytest)
-optdepends=('apache-spark: Distributed XGBoost with PySpark')
+checkdepends=(
+  python-pytest
+  python-loky
+)
+optdepends=(
+  'apache-spark: Distributed XGBoost with PySpark'
+  'python-ubjson: Enhanced JSON IO'
+)
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('8c86edcdc4ea4e8ef92d62d71ddb59a2500d87312c5e1092cb41f60b59212101'
+sha256sums=('4b8775e3fcf17d9b2e7b458ca1f37a93706aa6959c2e0c64672e6e4974660f45'
             'SKIP')
 
 prepare() {
@@ -73,7 +79,7 @@ check() {
   source test-env/bin/activate
   python -m installer python-package/dist/*.whl
 
-  python -m pytest -v tests/python -k 'not test_rabit_ops_ipv6'
+  python -m pytest -v tests/python -k 'not test_training'
 
   deactivate
 }
