@@ -1,4 +1,5 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgbase=aider-chat
 pkgname=(
@@ -6,7 +7,7 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.77.0
+pkgver=0.78.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
@@ -84,9 +85,9 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('0c704977bc5286d783869a5df1eb7f06f70d1a243e3892909d20d8d1d7d7cdbfddb826f3194c921b8abfaf3866d748601885b03b89e689be8fcd5c42969d0eb8'
-            'ead5c14e92d3929caebbfd5f82ab56bc846267b54a8ff57f5147557522e41b1d8d0b548c46ec91980a22af17ac372a597a1641e1a0035a40412841b6f9d7d17f'
-            'b916255533f99228c7ccb8078e3be09cb33c3817d9d871d7a9f873fe8e7028b9d3f534e8ce97942e6b0956194371cb3746351712c56c373a0d3f3266065a2f96'
+sha512sums=('acc165e329a4571c4606ddc0405e36a46d54cb6df58b0458edfc4e84965a356534840b7e84928de554597eea622a77b257de480e4168ced13dcb392e4f496739'
+            'ced2b6a5bf42b9f9ac6164caf3c1c844d02e6cd24608929810b2a0d5d547746c5817485212e48abbd3e71a40d3cad39f1b9178d2a72d526947e5d8c468bdd968'
+            'f4f906b7a3bc631cbe0603e85fcad051320afc98d87ea9df16b831fbf24c1c83c2b417698aa6d32ada14828daf9035cf1e7fec1c11c7856ae80954c76c8a26ba'
             '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b')
 
 prepare() {
@@ -117,11 +118,11 @@ prepare() {
   sed -i \
     -e 's|^\(url:\).*|\1 file:///usr/share/doc/'"${pkgbase}"'/html|' \
     aider/website/_config.yml
-  sed -i \
-    -e 's|(https://aider\.chat|(file:///usr/share/doc/'"${pkgbase}"'/html|' \
-    aider/website/index.md
-  find aider/website/docs -name '*.md' -exec sed -i \
-    -e 's|](/|](file:///usr/share/doc/'"${pkgbase}"'/html/|' \
+  sed -i -E \
+    -e 's|="(https://aider.chat)?/|="file:///usr/share/doc/'"${pkgbase}"'/html/|' \
+    aider/website/index.html
+  find aider/website -name '*.md' -exec sed -i -E \
+    -e 's|]\((https://aider.chat)?/|](file:///usr/share/doc/'"${pkgbase}"'/html/|' \
     '{}' +
 }
 
@@ -136,17 +137,6 @@ build() {
   echo >&2 'Generating HTML documentation'
   export JEKYLL_ENV=production
   jekyll build --baseurl "file:///usr/share/doc/${pkgbase}/html/"
-
-  echo >&2 'Removing unnecessary files'
-  find _site \
-    -type f \
-    -'(' \
-      -name "install.ps1" -o \
-      -name "install.sh" -o \
-      -name "robots.txt" -o \
-      -name "sitemap.xml" \
-    -')' \
-    -delete
 }
 
 check() {
@@ -208,7 +198,7 @@ package_aider-chat-docs() {
     README.md
   mkdir "${pkgdir}/usr/share/doc/${pkgbase}/html"
   cp -R --preserve=mode -t "${pkgdir}/usr/share/doc/${pkgbase}/html" \
-    aider/website/_site/*
+    aider/website/_site/{assets,docs,examples,HISTORY.html,index.html,share}
 
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \

@@ -1,4 +1,4 @@
-From 164c4fc945d1a315db8feb44e544f866c1c0f5cb Mon Sep 17 00:00:00 2001
+From 311fab052f1bf03156c312f43c5bf92ea9438ecc Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 12:17:21 +0100
 Subject: [PATCH 1/5] AUR-specific: replace auto-updater with a notice
@@ -46,10 +46,10 @@ index ac511a02..bf1490ab 100644
  
  def check_version(io, just_check=False, verbose=False):
 -- 
-2.48.1
+2.49.0
 
 
-From cdc572e4c28c97a84243984c59cb586fc1b4a80f Mon Sep 17 00:00:00 2001
+From f0efa84eddebc9e5969561848367090e832d38e4 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:14:04 +0100
 Subject: [PATCH 2/5] AUR-specific: replace `/help` feature installer
@@ -115,10 +115,10 @@ index 42012417..f3e10383 100644
      if module:
          try:
 -- 
-2.48.1
+2.49.0
 
 
-From b39b2c3f5fe8b8d70fd74ec23d3971ab01b94af6 Mon Sep 17 00:00:00 2001
+From ee9932a37d4b1a2bcd3857572b3c357a6a0c9840 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 21:29:12 +0100
 Subject: [PATCH 3/5] AUR-specific: replace google-aiplatform installer
@@ -128,7 +128,7 @@ Subject: [PATCH 3/5] AUR-specific: replace google-aiplatform installer
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index 62e82ce1..3483d97a 100644
+index 945e1676..432cbdbe 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -18,7 +18,7 @@ from PIL import Image
@@ -140,7 +140,7 @@ index 62e82ce1..3483d97a 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -835,11 +835,10 @@ def check_for_dependencies(io, model_name):
+@@ -960,11 +960,10 @@ def check_for_dependencies(io, model_name):
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
      elif model_name.startswith("vertex_ai/"):
@@ -155,10 +155,10 @@ index 62e82ce1..3483d97a 100644
  
  
 -- 
-2.48.1
+2.49.0
 
 
-From 6fc30199bba55f69f47d4ea40fd3f6b5faa43267 Mon Sep 17 00:00:00 2001
+From 179384865ba9b1c93469800583f5d6e88f6c35b9 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:15:53 +0100
 Subject: [PATCH 4/5] AUR-specific: replace main branch auto-upgrader
@@ -189,10 +189,10 @@ index bf1490ab..4ca0ecd1 100644
  
  
 -- 
-2.48.1
+2.49.0
 
 
-From 17742fb3bfa310cafc88246638f66340fe7a9a1a Mon Sep 17 00:00:00 2001
+From 7a2541386ed68adf7575f7341de7dc6058f46546 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:33:05 +0100
 Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
@@ -203,10 +203,10 @@ Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
  2 files changed, 2 insertions(+), 57 deletions(-)
 
 diff --git a/aider/main.py b/aider/main.py
-index a7608e3d..6553d8f7 100644
+index 2e0299e6..9431d12f 100644
 --- a/aider/main.py
 +++ b/aider/main.py
-@@ -197,11 +197,10 @@ def check_gitignore(git_root, io, ask=True):
+@@ -204,11 +204,10 @@ def check_gitignore(git_root, io, ask=True):
  
  
  def check_streamlit_install(io):
@@ -293,5 +293,5 @@ index f3e10383..a58e0753 100644
      if module:
          try:
 -- 
-2.48.1
+2.49.0
 

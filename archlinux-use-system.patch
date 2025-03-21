@@ -1,4 +1,4 @@
-From cfd7a64dc81e4acf7a0c1a072d328187073bc5a3 Mon Sep 17 00:00:00 2001
+From fc1a1918b4e7bc3a6bdd95aa13faee56f5fd5b2e Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:07:29 +0100
 Subject: [PATCH 1/3] Arch-Linux-specific: install optdeps via pacman
@@ -76,10 +76,10 @@ index 7977a854..cb33c947 100755
  
  
 -- 
-2.48.1
+2.49.0
 
 
-From 099ff26820d544992a426f10d8cc7d11ab1d4b1a Mon Sep 17 00:00:00 2001
+From b0437c75191fd7729997a7488ebd59c2a9548cf4 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 14:43:05 +0100
 Subject: [PATCH 2/3] Arch-Linux-specific: use system Chromium
@@ -111,10 +111,10 @@ index cb33c947..c0431204 100755
                  self.playwright_available = False
                  self.print_error(str(e))
 -- 
-2.48.1
+2.49.0
 
 
-From 31da5476699e74b34a23a7a27b818cdc557bf359 Mon Sep 17 00:00:00 2001
+From 662ab34c3fb27e993669b999c11e605144c8cc53 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 21:28:29 +0100
 Subject: [PATCH 3/3] Arch-Linux-specific: install boto3 via pacman
@@ -125,7 +125,7 @@ Subject: [PATCH 3/3] Arch-Linux-specific: install boto3 via pacman
  2 files changed, 35 insertions(+), 3 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index 3c85b73e..62e82ce1 100644
+index 4e9c3d41..945e1676 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -18,7 +18,7 @@ from PIL import Image
@@ -137,7 +137,7 @@ index 3c85b73e..62e82ce1 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -829,8 +829,8 @@ def check_for_dependencies(io, model_name):
+@@ -954,8 +954,8 @@ def check_for_dependencies(io, model_name):
      """
      # Check if this is a Bedrock model and ensure boto3 is installed
      if model_name.startswith("bedrock/"):
@@ -192,5 +192,5 @@ index 322a4431..42012417 100644
      """
      Convert a list of command arguments to a properly shell-escaped string.
 -- 
-2.48.1
+2.49.0
 
