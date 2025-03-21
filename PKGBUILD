@@ -1,7 +1,7 @@
 # Maintainer: Mercas <me@smj.im>
 pkgname=cursor-bin-extracted
-pkgver="0.47.4"
-_build_hash=8f8a2000673d2c48f6cac5eea2f3f9f2ed5e4ec2
+pkgver="0.47.8"
+_build_hash=82ef0f61c01d079d1b7e5ab04d88499d5af500e3
 pkgrel=1
 pkgdesc='Cursor - The AI Code Editor (extracted from Appimage)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 conflicts=('cursor-bin')
 depends=('libnotify' 'nss' 'libxss' 'libxtst' 'libsecret' 'gtk3' 'libappindicator-gtk3')
 source_x86_64=("cursor-${pkgver}.Appimage::https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-${pkgver}-${_build_hash}.deb.glibc2.25-x86_64.AppImage")
-sha256sums_x86_64=('782eb284fa07ea1e76684bf4e17bef1526f6807fa9fb8aa52d0b2b9f5a16173b')
+sha256sums_x86_64=('dcf87903ec75856d1239a5fc085edbffc16aede31e0641b58eef6fb9de826e7d')
 options=('!strip' '!debug')
 
 prepare() {

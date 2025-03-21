@@ -1,6 +1,6 @@
 pkgbase = cursor-bin-extracted
 	pkgdesc = Cursor - The AI Code Editor (extracted from Appimage)
-	pkgver = 0.47.4
+	pkgver = 0.47.8
 	pkgrel = 1
 	url = https://www.cursor.com/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cursor-bin-extracted
 	conflicts = cursor-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = cursor-0.47.4.Appimage::https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.4-8f8a2000673d2c48f6cac5eea2f3f9f2ed5e4ec2.deb.glibc2.25-x86_64.AppImage
-	sha256sums_x86_64 = 782eb284fa07ea1e76684bf4e17bef1526f6807fa9fb8aa52d0b2b9f5a16173b
+	source_x86_64 = cursor-0.47.8.Appimage::https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.8-82ef0f61c01d079d1b7e5ab04d88499d5af500e3.deb.glibc2.25-x86_64.AppImage
+	sha256sums_x86_64 = dcf87903ec75856d1239a5fc085edbffc16aede31e0641b58eef6fb9de826e7d
 
 pkgname = cursor-bin-extracted
