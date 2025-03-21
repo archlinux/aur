@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PanomiR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0add6cf72450177b163ceced1eaa5fae')
-b2sums=('a847608628ae2664a22cd88ca1f4c4d09a7f81889c4d9bff0fae35ab4ce05476deb0ec6dd6a0917d4277525f26cb841150e8fcf30dc81dd010e9d46ff6e5e275')
+md5sums=('96e2c9bf2bd7d1d628a360579b66a77d')
+b2sums=('b0749c63b479d7388d37b04e8c970512fd54493acdba5897f1b4a0876a990a185331822c902719eb680c19131d1fed4a8902323c8d7f52b9be29189ebf30449c')
 
 build() {
   mkdir build
