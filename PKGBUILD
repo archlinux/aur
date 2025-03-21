@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=funtooNorm
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Normalization Procedure for Infinium HumanMethylation450 BeadChip Kit'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3522296735ae3a02342d01e7550d78071c54fe4f6b49b2aefb8f4d3e808eb5c6')
+sha256sums=('5f0ed4c3790cded8f560f474e17266a0a01ccedc3ac1a6f504b3cddb590c1f8f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
