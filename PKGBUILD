@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylKit
-_pkgver=1.32.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='DNA methylation analysis from high-throughput bisulfite sequencing results'
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a10dd90d50964dda624940326e7042733cd4fa7193da462bba29a063c0a32bda')
+sha256sums=('338b7dce982bc27b00da30a39daae51c59c6d19e0a14ae245875d18b82c9d290')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
