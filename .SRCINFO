@@ -1,6 +1,6 @@
 pkgbase = r-meat
 	pkgdesc = Muscle Epigenetic Age Test
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MEAT
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-meat
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEAT_1.16.0.tar.gz
-	sha256sums = cff5bd6abacfcd9dafbc5831a406811998e419e1383803ad184cefc33a980563
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEAT_1.18.0.tar.gz
+	sha256sums = 04e193fbcfb32689f11ef94a40b3d3220fddaacce53f44d87039dc2e222d4945
 
 pkgname = r-meat
