@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scDD
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Mixture modeling of single-cell RNA-seq data to identify genes with differential distributions'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cb67843a0269f4cb86854b494e81f91ba33629592b5e2b6a92dd58ea2b57d080')
+sha256sums=('173d18ad80d2df7b6ba20b0c7ef5436e21a87a95e911c4122a92e2b04ae187d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
