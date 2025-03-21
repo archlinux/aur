@@ -1,14 +1,14 @@
 pkgbase = python-stsci.stimage-doc
 	pkgdesc = Documentation for STScI Image
-	pkgver = 0.2.9
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://stscistimage.readthedocs.io
 	arch = any
 	license = BSD-3-Clause
-	makedepends = python-stsci.stimage=0.2.9
+	makedepends = python-stsci.stimage=0.3.0
 	makedepends = python-sphinx-automodapi
 	makedepends = python-sphinx_rtd_theme
-	source = https://github.com/spacetelescope/stsci.stimage/archive/0.2.9.tar.gz
-	md5sums = b5ccf0a009c117344487f2bb561c66c6
+	source = https://github.com/spacetelescope/stsci.stimage/archive/0.3.0.tar.gz
+	md5sums = 291003348bb24afc8cc2685c730ba629
 
 pkgname = python-stsci.stimage-doc
