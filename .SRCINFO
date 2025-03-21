@@ -1,7 +1,7 @@
 pkgbase = qtcreator-patches
 	pkgdesc = Lightweight, cross-platform integrated development environment
 	pkgver = 16.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qt.io
 	arch = x86_64
 	license = Apache-2.0
@@ -33,7 +33,6 @@ pkgbase = qtcreator-patches
 	optdepends = perf: performer analyzer
 	optdepends = mlocate: locator filter
 	provides = qtcreator
-	conflicts = qtcreator
 	options = docs
 	source = fancymainwindow.patch
 	source = projectmodels.patch
