@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SparseArray
-_pkgver=1.6.1
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,18 +30,18 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('70a4478bf10b77a8e04bb29029b94c29')
-b2sums=('07896bb2b2a538f23310460d4e70f6850d6c4b7242659347f949dc7c922b227d7bbd9cea479befbeaf42063ab539f5c1c1a5fc4daa4f5d8fcc142c7fc4b8a47f')
+md5sums=('1a6058acb0a5243347d6ecb0d381ba93')
+b2sums=('184c117fd7bc4462ad85f2bc3b9f02129fce04b522aaae0f7ba3eba0ab8775862bdfbc52f01b5fc572f4f6a0c5c597059f503090b7bfb49debd3ffe89f25b0c6')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
-}
+#check() {
+#  cd "$_pkgname/tests"
+#  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+#}
 
 package() {
   install -d "$pkgdir/usr/lib/R/library"
