@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrayMvout
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='multivariate outlier detection for expression array QA'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-mvoutdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc170bc1275e9c92c072b334db4adbe32c99a4034bb186b96e50792b4ed26387')
+sha256sums=('c0d5b8f4f1bad3510c821db0b86c3f1d92ea9fc2652071abb3e0219a30a1ca41')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
