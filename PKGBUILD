@@ -3,20 +3,21 @@
 pkgname=dida-bin
 _pkgname=dida
 pkgver=6.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
 license=("LicenseRef-Proprietary")
 _electron=electron34
 depends=(${_electron})
+makedepends=('asar' 'yarn')
 optdepends=('noto-fonts-emoji: for emoji support')
 provides=(${_pkgname})
 source=("${_pkgname}_${pkgver}.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb"
     "${_pkgname}".sh
 )
 sha512sums=('f9663dfbf8b0c2dfda0893f7f959c7390087ab4fd9570964b71fe10539d9a3bff895ebe7c28eea3294eed78faa552902c5fd7f547359bec240cc0d1e23b3e167'
-            '218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba')
+    '218ff1e8c89d1567c214d0fec91745606ab48077bb24168a2b18b28f9c69a6918d34c38fe6a70e8aeaee3b6df448e7174c343924e6fa875ba1a583cc656c91ba')
 
 prepare() {
     cd ${srcdir}
@@ -25,6 +26,15 @@ prepare() {
     sed -i "s|__ELECTRON__|${_electron}|g" dida.sh
     cd usr/share/applications
     sed -i 's|^Exec=.*|Exec=dida %U|g' dida.desktop
+}
+build() {
+    cd ${srcdir}
+    asar e ${_pkgname}.asar apps
+    (
+        cd apps
+        yarn add @electron/remote@2.1.2
+    )
+    asar p apps ${_pkgname}.asar
 }
 
 package() {
