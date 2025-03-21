@@ -2,7 +2,7 @@
 
 pkgname=python-cyclonedx-lib
 _gitpkgname=cyclonedx-python-lib
-pkgver=8.5.0
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='Render and read CycloneDX, a lightweight BOM specification document format'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'python-license-expression'
   'python-lxml'
   'python-packageurl'
-  'python-py-serializable'
+  'python-py-serializable>=2'
   'python-referencing'
   'python-sortedcontainers'
 )
@@ -35,7 +35,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/CycloneDX/cyclonedx-python-lib/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=('b83a0e219721183d69384564511866b704cca5a4fecbb3c9bd822dfd37d98997bc468c6ffca0d1b1e5aa14aff8c9410fc76c321505d8e5bc15ce0dfc66e82ed4')
+sha512sums=('484d2706840c130a5ba1b5eb8e004da9db7ee61fd5643569fb2f40c67b501c365a6f5493dc7100e5cbad3b97daf7fdf26b2d5327cd03823bc24f797dc843c555')
 
 prepare() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
@@ -56,10 +56,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  python -m installer --destdir=tmp_install dist/*.whl
-  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" python -m unittest discover -v
+  python -m unittest discover -v
 }
 
 package() {
