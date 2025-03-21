@@ -1,0 +1,16 @@
+pkgbase = r-coxme
+	pkgdesc = Mixed Effects Cox Models
+	pkgver = 2.2.22
+	pkgrel = 1
+	url = https://cran.r-project.org/package=coxme
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	depends = r
+	depends = r-bdsmatrix
+	optdepends = r-kinship2
+	optdepends = r-mvtnorm
+	source = https://cran.r-project.org/src/contrib/coxme_2.2-22.tar.gz
+	md5sums = 5d15e1df770ebabca1323d6a1a989d78
+	b2sums = 14eb3202131ffdbe56c80a1d2af809a0beb4b5932402fa9476396c4d06bf576120ab9d8c9b578c7a8779631a3705ca8484bedbc89f74f29fe0c7082e26207afc
+
+pkgname = r-coxme
