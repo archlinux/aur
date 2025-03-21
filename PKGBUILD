@@ -4,8 +4,8 @@ _pkgname=jule
 pkgname="${_pkgname}c"
 pkgver=0.1.4
 _pkgver="$_pkgname$pkgver"
-_irsha='2606069a208e23084667483cc822bd9ff1ec4839'
-pkgrel=3
+_irsha='02854fbce42e22a6cfadf95d392b42640748e66a'
+pkgrel=4
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/${_pkgname}lang/$_pkgname"
@@ -17,9 +17,9 @@ source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/$_irsha/src/linux-amd
 source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/$_irsha/src/linux-arm64.cpp")
 source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$_url_raw/$_irsha/src/linux-i386.cpp")
 sha256sums=('499bf6eb7c3463a74b8ff85b961fe2630b78404a90a003236e5beb1be0631eb1')
-sha256sums_x86_64=('bec3b4d22bb2da5445dd04c93f929d02cae9d08988a8e97f18a94528954a1327')
-sha256sums_aarch64=('abba118ee4f4e0bb2286abb66c9efb5e88f23681ef9a9d26f44182bc1bb3dcc7')
-sha256sums_i386=('013e31293f1f574c28d4e924e8440ccb6aa3372828c23c6dc0c812fdd9086bfc')
+sha256sums_x86_64=('7a40ae5dac12b52944aaff51a48677d8007905250b106039ae907f9c34951722')
+sha256sums_aarch64=('64948a754723c7ad99db52c899c68affa863852abcc1da9616c45deef876349e')
+sha256sums_i386=('36e07f36a1f27a0e4806d59644e77a63785784142c952300d24fad31eb193088')
 depends=('glibc' 'gcc-libs')
 makedepends=('clang')
 optdepends=('clang: clang backend support'
@@ -43,27 +43,20 @@ build() {
         -Wno-everything \
         -fwrapv \
         -ffloat-store \
+        -DNDEBUG \
+        -fomit-frame-pointer \
+        -fno-strict-aliasing \
         -o "bin/$pkgname-dev"
 
     echo "Building $pkgname for $CARCH..."
-    # temporary solution to avoid optimization-related issues
-    "./bin/$pkgname-dev" -t src/julec
-    clang++ dist/ir.cpp \
-        --std=c++17 \
-        -Wno-everything \
-        -fwrapv \
-        -O3 \
-        -flto \
-        -fomit-frame-pointer \
-        -ffloat-store \
-        -o "bin/$pkgname"
+    "./bin/$pkgname-dev" -p --opt L2 -o "bin/$pkgname" "src/$pkgname"
 }
 
-#check() {
-#    cd "$_pkgname-$_pkgver/tests/std"
-#    "../../bin/$pkgname" mod init
-#    "../../bin/$pkgname" -t .
-#}
+check() {
+    cd "$_pkgname-$_pkgver/tests/std"
+    "../../bin/$pkgname" mod init
+    "../../bin/$pkgname" -t .
+}
 
 package() {
     cd "$_pkgname-$_pkgver"
