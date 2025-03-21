@@ -1,6 +1,6 @@
 pkgbase = r-dep
 	pkgdesc = Differential Enrichment analysis of Proteomics data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DEP
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-dep
 	optdepends = r-enrichr
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEP_1.26.0.tar.gz
-	sha256sums = 5d0630bc87b93302ca5cd2beb0043b60529485f98ae3dfd88b29af05dfae1efd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DEP_1.28.0.tar.gz
+	sha256sums = c870e066e73386632ad541c2c93e27f051dfebdcd53a7b99a6202086a9413300
 
 pkgname = r-dep
