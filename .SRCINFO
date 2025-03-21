@@ -1,6 +1,6 @@
 pkgbase = r-basicstan
 	pkgdesc = Stan implementation of BASiCS
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BASiCStan
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = r-basicstan
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BASiCStan_1.6.0.tar.gz
-	md5sums = 5525d5dc42ee9564bcde9f4b1e594cdb
-	b2sums = 6284991bd0ae29f630e7963288f1398dfbbba416cd7adea00c2605b83c7965cc4857965d773af2bd69e9596c34fd662913b25f2c95ba9afb9f406c3126f93d49
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BASiCStan_1.8.0.tar.gz
+	md5sums = a4186cc4e1dc5ff03d112a63c06acc09
+	b2sums = b3b865d3919351252c690627f39d04cea64bc04005955bac41c854e2f212df3a6b0f742716f6c69699bd079c3cbf1280155a0b3100a6e128809dec8e51cf7e4e
 
 pkgname = r-basicstan
