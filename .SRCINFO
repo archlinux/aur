@@ -1,6 +1,6 @@
 pkgbase = r-cellid
 	pkgdesc = Unbiased Extraction of Single Cell gene signatures using Multiple Correspondence Analysis
-	pkgver = 1.12.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CelliD
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = r-cellid
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CelliD_1.12.0.tar.gz
-	sha256sums = 746d8c2a9e2edcc5ae3efe5d10af084c0a40daade2769ca12a4d6a858ba6f030
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CelliD_1.14.0.tar.gz
+	sha256sums = feb2403093f046db573785865ce29310b33d56bf9b1a754e497dbe770af5f361
 
 pkgname = r-cellid
