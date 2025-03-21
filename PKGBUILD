@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=coMethDMR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('006625b528326e4c948f1a4daac9621f')
-b2sums=('9a5945272f388d6c39207e49ee44ec3d64bd9cc46e42518048a894f06f17b2b6701b7ef6caedb9732d5b91d2b5e0d78bad3a72fda6c7abb6793fa17b64fbce37')
+md5sums=('10576754f41e3ca13eb173a258fb380c')
+b2sums=('7f172ff918684f9e9294868a3f1c546aaddfd401c8171785eb08de1306a78999bedb45b165ecedf3a144236aab2e64981b98df5ce79f8972acc4c913deef8015')
 
 build() {
   mkdir build
