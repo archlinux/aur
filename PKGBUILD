@@ -1,37 +1,38 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=kilo-git
-pkgver=r19.69c3ce6
+pkgver=r20.323d93b
 pkgrel=1
 pkgdesc="A small text editor in less than 1K lines of code"
 arch=('x86_64')
 url="https://github.com/antirez/kilo"
-license=('BSD')
-depends=('glibc')
-makedepends=('git')
-provides=('kilo')
-conflicts=('kilo')
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
-
+license=('BSD-2-Clause')
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname//-/.}::git+${url}")
+sha256sums=('SKIP')
 pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname//-/.}"
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
 prepare() {
-  cd "$pkgname"
-  sed -i "4s/$/ $CFLAGS $LDFLAGS/" Makefile
+  cd "${srcdir}/${pkgname//-/.}"
+  sed -i "4s/$/ $CFLAGS $LDFLAGS/g" Makefile
 }
-
 build() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname//-/.}"
   make
 }
-
 package() {
-  cd "$pkgname"
-  install -Dm 755 kilo -t "$pkgdir/usr/bin/"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm755 "${srcdir}/${pkgname//-/.}/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+  install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname//-/.}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
 }

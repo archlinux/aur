@@ -1,15 +1,15 @@
 pkgbase = kilo-git
 	pkgdesc = A small text editor in less than 1K lines of code
-	pkgver = r19.69c3ce6
+	pkgver = r20.323d93b
 	pkgrel = 1
 	url = https://github.com/antirez/kilo
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	depends = glibc
 	provides = kilo
 	conflicts = kilo
-	source = kilo-git::git+https://github.com/antirez/kilo
-	md5sums = SKIP
+	source = kilo.git::git+https://github.com/antirez/kilo
+	sha256sums = SKIP
 
 pkgname = kilo-git
