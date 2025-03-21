@@ -3,7 +3,7 @@
 pkgbase=python-stdatamodels
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Core support for DataModel classes used in calibration pipelines"
 arch=('any')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest-doctestplus'
               'python-requests')   # asdf, astropy, already in makedepends
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d8a5819b092ae4297047db921f7431d1')
+md5sums=('57d1e5723f08e5129cd0e9b83ea9a0ae')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
