@@ -1,7 +1,7 @@
 pkgbase = pwtool
-	pkgdesc = pwtool,
+	pkgdesc = pwtool, default generated password set is copy/paste friendly without extended characters that would break the default copy selection you get when double-clicking a word
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/edneville/pwtool
 	arch = any
 	license = GPL3
