@@ -1,0 +1,14 @@
+[Unit]
+Description=ownfoil
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ownfoil
+Group=ownfoil
+SyslogIdentifier=ownfoil
+ExecStart=/usr/bin/python3 /usr/lib/ownfoil/app.py
+
+[Install]
+WantedBy=multi-user.target
