@@ -1,12 +1,12 @@
 pkgbase = shine
 	pkgdesc = Super fast fixed-point MP3 encoder
 	pkgver = 3.1.1+r59+gab5e352
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/savonet/shine
-	arch = x86_64
 	arch = aarch64
 	arch = i686
-	license = GPL-2.0-or-later
+	arch = x86_64
+	license = LGPL-2.0-only
 	depends = glibc
 	provides = libshine.so
 	source = shine-ab5e3526b64af1a2eaa43aa6f441a7312e013519.tar.gz::https://github.com/savonet/shine/archive/ab5e3526b64af1a2eaa43aa6f441a7312e013519.tar.gz
