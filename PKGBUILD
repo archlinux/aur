@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HubPub
-_pkgver=1.14.0
+_pkgver=1.14.1
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Utilities to create and use Bioconductor Hubs'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8bff3f2b69db90656afd7ee7fb9d6ba737ea35fb8c5daa35320527f36a389063')
+sha256sums=('fc8010cf09c2360112f2bc8ee4667c95ebfc06cd046bf1890ce9817c4b796731')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
