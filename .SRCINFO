@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libksba
 	pkgdesc = A CMS and X.509 access library (Android aarch64)
 	pkgver = 1.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org/related_software/libksba/index.html
 	arch = any
+	groups = android-libksba
 	license = GPL
 	makedepends = android-configure
 	depends = android-aarch64-libgpg-error
