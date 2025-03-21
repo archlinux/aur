@@ -2,7 +2,7 @@
 
 _name='djangosaml2'
 pkgname='python-django-saml2'
-pkgver=1.9.3
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='A Django application that builds a Fully Compliant SAML2 Service Provider'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('246a81ff17942fa726437669300c4929c018e0f957600b6b48aebac52235e5c3')
+sha256sums=('fde243b023f97260638a20e1acb5cee0aea0f382a5c85d10df09dd5b282f7b4e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
