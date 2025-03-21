@@ -1,9 +1,10 @@
 pkgbase = android-x86-libmpeg2
 	pkgdesc = Library for decoding MPEG-1 and MPEG-2 video streams (Android x86)
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libmpeg2.sourceforge.io/
 	arch = any
+	groups = android-libmpeg2
 	license = GPL-2.0-or-later
 	makedepends = android-configure
 	depends = android-ndk
