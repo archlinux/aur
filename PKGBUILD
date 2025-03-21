@@ -2,7 +2,7 @@
 
 pkgname=python-bempp-cl
 _pyname=bempp-cl
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A fast Python based just-in-time compiling boundary element library'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('python-plotly'
 provides=('python-bempp')
 conflicts=('python-bempp')
 source=(${_pyname}-${pkgver}.tar.gz::"https://github.com/bempp/bempp-cl/archive/v${pkgver}.tar.gz")
-sha256sums=('66cf8578b56b0084c9de4a993de01959cf210b1d377ba73fe196057d5baad80c')
+sha256sums=('9c4c7bc20aa870d6b74e68698ac2916e87466146c6fac516cbc86237e2631f59')
 
 package() {
 	cd "$srcdir/$_pyname-$pkgver"
