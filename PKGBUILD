@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 pkgver() {
   # sha256sum ${_pkgname}.tar.gz | cut -d ' ' -f 1
   cd "$srcdir/${_pkgname}-${CARCH}-unknown-linux-musl/" || exit 1
-  ./${_pkgname} --version | cut -d ' ' -f2
+  ./${_pkgname} --version | cut -d ' ' -f2 | sed 's/-/_/g'
   # expr "$(./${_pkgname} --version)" : '.* \(.*\))'
 }
 
