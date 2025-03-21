@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-base
 pkgver=2024.08.07
-pkgrel=3
+pkgrel=4
 _rosdist="Humble Hawksbill"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -54,6 +54,11 @@ prepare() {
     git -C "$srcdir/ros2/src/ros-tooling/libstatistics_collector" cherry-pick -n 1c340c97c731019d0c7b40f8c167b0ef666bcf75
     git -C "$srcdir/ros2/src/ros2/rclcpp/rclcpp/include/rclcpp" cherry-pick -n 86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb
     git -C "$srcdir/ros2/src/ros2/rosbag2" cherry-pick -n 65c889e1fa55dd85a148b27b8c27dadc73238e67
+
+    # Support empy3 and empy4
+    git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n 5b4700c7e6ea61125ee4a4f98a9ec936eec4b4c1
+    git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n b8381d955a111cdf8a52a0f1891cc55de5f19db1
+    git -C "$srcdir/ros2/src/ros2/rosidl" cherry-pick -n e25750db3d7735947cad24f630d135ba02db5e59
 }
 
 build() {
@@ -65,7 +70,10 @@ build() {
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
     # Build
-    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args " -DBUILD_TESTING=OFF"
+    # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.
+    #                  They were using deprecated ASIO functionality, which is now removed.
+    #                  See the following issue: https://github.com/eProsima/Fast-DDS/issues/5726
+    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DTHIRDPARTY_Asio=FORCE
 }
 
 package() {
