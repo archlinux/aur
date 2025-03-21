@@ -2,7 +2,7 @@
 
 pkgname=osu-lazer-extracted-bin
 _pkgname=${pkgname%-extracted-bin}
-pkgver=2025.316.0
+pkgver=2025.321.0
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=(x86_64)
@@ -40,7 +40,7 @@ source=(
   "x-osu.xml"
 )
 sha256sums=(
-  "df8f01ea0b582d14c697208db1688eaea83df1b17f70f22c3c1ae88ac029cdf7"
+  "98dc68131ff0809d4e526ef2f492dde6f1d2c1f701e3d42328355059968c0c94"
   "7bf9e79ddacc9271da6a751b9275b4b8c2aaaa8afd2d15ac11be358a0c1a31aa"
   "477ae757c1df888c0e3a05e7cb68dbaef052cfda5939553f927afbb75bfee077"
   "ce1dba4052855b6c2b63f862fcd909c6b4ee2790e327bca8a8bb3258a6f0c77b"
