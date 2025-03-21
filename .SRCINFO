@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libmatroska
+	pkgdesc = Matroska library (Android riscv64)
+	pkgver = 1.7.1
+	pkgrel = 2
+	url = https://github.com/Matroska-Org/libmatroska
+	arch = any
+	groups = android-libmatroska
+	license = LGPL2.1
+	makedepends = android-cmake
+	depends = android-riscv64-libebml
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/Matroska-Org/libmatroska/archive/refs/tags/release-1.7.1.tar.gz
+	md5sums = ef677bdd7ce5559253e1c9211d68ec7d
+
+pkgname = android-riscv64-libmatroska
