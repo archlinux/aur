@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='freckles-bin'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A simple dotfile manager.'
 url='https://github.com/carapace-sh/freckles'
@@ -13,14 +13,14 @@ conflicts=('freckles')
 depends=('git')
 optdepends=('carapace-bin: for git completion' 'github-cli: for github completion')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/freckles/releases/download/v0.3.1/freckles_0.3.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('bbbc22d65574736ece5ed1472cc0f9b7e3bb4f7c8e6b95d3a7e7b536c95d509c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/freckles/releases/download/v0.3.2/freckles_0.3.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('5c02c8ae0e671f675043195f8ca76760eeffddf5d1089cf74be8902e592d493e')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/freckles/releases/download/v0.3.1/freckles_0.3.1_linux_386.tar.gz")
-sha256sums_i686=('716ca71d23a237b8b0bb6dfac48edcad836c2e78c7ff04cd29d64bb58803dd5e')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/freckles/releases/download/v0.3.2/freckles_0.3.2_linux_386.tar.gz")
+sha256sums_i686=('2242ac4e8477d57d617a5a71c3879059234637582a7759a87364471aa6fcdaed')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/freckles/releases/download/v0.3.1/freckles_0.3.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('119c9e56ce047843befab5b14f0ac63a95e47b7caa76d7dbd528f8b0a5d09593')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/freckles/releases/download/v0.3.2/freckles_0.3.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('6c03a10ddfae70c154d7d0adc3139e6eaaca901a10c28f9e8e5e937c9c85994e')
 
 package() {
   install -Dm755 "./freckles" "${pkgdir}/usr/bin/freckles"
