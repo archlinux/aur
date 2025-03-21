@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=boosteroid
-pkgver=1.9.19
+pkgver=1.9.20
 pkgrel=4
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -25,8 +25,8 @@ source=(
   "${_custom_name}.md5::https://boosteroid.com/linux/installer/boosteroid-install-x64.md5"
   boosteroid.sh
 )
-md5sums=('b2fe02e16208e0836c755281892cd6ed'
-         'a01202333dcb99fdf1cde56873c4d4eb'
+md5sums=('c67b6fe9e86afa7a282b44f3400e6ded'
+         '0ce6f14fdeb05c0937ac478b5a28da38'
          '033cc5b68298d0fe7d36887b5db6f200')
 noextract=("${_custom_name}.deb")
 
