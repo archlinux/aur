@@ -1,0 +1,15 @@
+pkgbase = pingstat
+	pkgdesc = A lightweight CLI for multi-server ping monitoring and statistics
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://codeberg.org/tomsh/pingstat
+	arch = any
+	license = MIT
+	depends = bash
+	depends = sqlite3
+	depends = inetutils
+	depends = coreutils
+	source = https://codeberg.org/tomsh/pingstat/raw/tag/1.1.0/pingstat
+	sha256sums = 3e541301236f588466064d45f06432b9e0b58ed79581f34fbd9ebec977adb7cf
+
+pkgname = pingstat
