@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Prostar
-_pkgver=1.36.2
+_pkgver=1.38.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,8 +52,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5f19f94fd8a3bd1b93c7a093f6b52f54')
-b2sums=('39896624dac0cf48288dbcab0eb22473a7f0a094bfbf7464c106a0cd8e1e3afb7fe433cc40ae8cdc2ce4a97952ada31a1efa401a2805d662dd87e1e849d4c229')
+md5sums=('fe45fa3df7ebdceaf4cf3db98f66c7da')
+b2sums=('f10b60e4427c3ebb4509bd12ffc77b681f0e67dd5e7263cd25818e50b616ed72dba876c0241f9640f0edb892ab8503f98f798f89f43a939dd133f394c46e94f6')
 
 build() {
   mkdir build
