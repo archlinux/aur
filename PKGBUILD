@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=plm
-_pkgver=2.6-4
+_pkgver=2.6-5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-urca
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57da9057cb351e98cf3351074202af25')
-b2sums=('5cd6220119e81c310a1c75305d46cdcc1f47da306a0ca59bf7737f2970b7ef24f0e8c1186044b9d3e53cc91342e87e74a795c8d171a1484891e88c50959e6fc8')
+md5sums=('ff9efc50183e92f9b9ca3f70315d6cd5')
+b2sums=('27060087f39024aaa0db2e0d816e24c0b1f2fb63a179860003c272adbfbc7c04821a8c07208b146287a7928567fdef4d737505b1c3d6d64e980561cfa81a9123')
 
 build() {
   mkdir build
