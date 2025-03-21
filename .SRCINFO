@@ -1,0 +1,14 @@
+pkgbase = pwtool
+	pkgdesc = pwtool,
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://gitlab.com/edneville/pwtool
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = https://gitlab.com/edneville/pwtool/-/archive/v0.6.1/pwtool-v0.6.1.tar.gz
+	sha512sums = 2831f3ffa9ab54a59779a96dc249d9b7537bf0048c8557d0d62e991d7939927336319f210bcb0b0c62b804173000c5088641820e5b51aefd91618f4066ddf71f
+
+pkgname = pwtool
