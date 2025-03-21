@@ -1,10 +1,10 @@
 pkgbase = podget-git
 	pkgdesc = Simple tool to automate downloading of podcasts
-	pkgver = 0.8.8.r20.g750fa49
+	pkgver = 1.0.0.r0.g18892c6
 	pkgrel = 1
 	url = https://github.com/dvehrs/podget
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = wget
 	provides = podget
