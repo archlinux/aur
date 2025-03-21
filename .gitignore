@@ -8,3 +8,4 @@
 !.nvchecker.toml
 !LICENSE
 !gcc14.patch
+!pipewire-1.4.0.patch

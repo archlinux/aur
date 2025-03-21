@@ -2,7 +2,7 @@
 pkgname=jamesdsp
 _app_id=me.timschneeberger.jdsp4linux
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -22,13 +22,15 @@ source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#tag=$pkgver"
         'git+https://github.com/ThePBone/FlatTabWidget.git'
         'git+https://github.com/ThePBone/LiquidEqualizerWidget.git'
         'git+https://github.com/ThePBone/LiveprogIDE.git'
-        'gcc14.patch')
+        'gcc14.patch'
+        'pipewire-1.4.0.patch')
 sha256sums=('5ec9e4a5206d164804848982b0948ba5d7bb1c742feb5c669869847c2cb5575e'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'cd327a8356072202368e0965c1e5aa6a57abddd13c5d6483af03d0f4deff7143')
+            'cd327a8356072202368e0965c1e5aa6a57abddd13c5d6483af03d0f4deff7143'
+            '08070aa68a68d84bd7672d2f8306a476a831ee97a3f94d93e53c02286d80c659')
 
 prepare() {
   cd JDSP4Linux
@@ -42,6 +44,9 @@ prepare() {
 
   # https://github.com/Audio4Linux/JDSP4Linux/pull/191 (merged)
   patch -Np1 -i ../gcc14.patch
+
+  # https://github.com/Audio4Linux/JDSP4Linux/pull/241 (merged)
+  patch -Np1 -i ../pipewire-1.4.0.patch
 }
 
 build() {
