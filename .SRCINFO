@@ -1,0 +1,63 @@
+pkgbase = maplemono
+	pkgdesc = Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/subframe7536/maple-font
+	arch = any
+	license = OFL-1.1
+	makedepends = unzip
+	noextract = MapleMono-CN-unhinted.zip
+	noextract = MapleMono-CN.zip
+	noextract = MapleMono-NF-CN-unhinted.zip
+	noextract = MapleMono-NF-CN.zip
+	noextract = MapleMono-NF-unhinted.zip
+	noextract = MapleMono-NF.zip
+	noextract = MapleMono-OTF.zip
+	noextract = MapleMono-TTF-AutoHint.zip
+	noextract = MapleMono-TTF.zip
+	noextract = MapleMono-Variable.zip
+	noextract = MapleMono-Woff2.zip
+	source = MapleMono-CN-unhinted.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-CN-unhinted.zip
+	source = MapleMono-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-CN.zip
+	source = MapleMono-NF-CN-unhinted.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-NF-CN-unhinted.zip
+	source = MapleMono-NF-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-NF-CN.zip
+	source = MapleMono-NF-unhinted.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-NF-unhinted.zip
+	source = MapleMono-NF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-NF.zip
+	source = MapleMono-OTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-OTF.zip
+	source = MapleMono-TTF-AutoHint.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-TTF-AutoHint.zip
+	source = MapleMono-TTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-TTF.zip
+	source = MapleMono-Variable.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-Variable.zip
+	source = MapleMono-Woff2.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMono-Woff2.zip
+	sha256sums = 2f611ab05112f4462636d3acfc22b0aaa40dce4c40660a014fca8dd5d5a2a417
+	sha256sums = bd09190f5c1afe9cc0651f1bf64adf029182512f8046464dbe1a89fd91a99cbb
+	sha256sums = c7b66739b0e418c4789cfa4c6c17d17c4e8ce28d7dad9800a50786ebd3fa4d98
+	sha256sums = 214047481216fffbd6c25ba679f156e3c79250b26663d7bc17d62685bb7f294d
+	sha256sums = e4fe360470e722fe19378ac3b4458509611cf8d7cf774a874f654e5b62619fe4
+	sha256sums = 1e066422b115e73991841bc0238fee4fe9df5210da0f41fcd6ea535df24d85a0
+	sha256sums = e333ca7a35994b9d9b870d052c95faf6432bf246efe8fe65e5c43ca2b61c4f9a
+	sha256sums = 5daedc4835ca6f2d1420b9b18fdeb16c3e998430f005e7bd97298ec7b14f9a81
+	sha256sums = 1609689e46e7a618b09b11a3ed9d28cdf1ccc29263efef7a83a58cb4c7b7ac8a
+	sha256sums = 1082df38343c0c98b24f08264e883070d973f98048766964fe69df159e0499ef
+	sha256sums = 4bb95623e5ebecbc5d16f8e79e092dc79b9a8b111597174b50328c9859404429
+
+pkgname = maplemono-cn-unhinted
+
+pkgname = maplemono-cn
+
+pkgname = maplemono-nf-cn-unhinted
+
+pkgname = maplemono-nf-cn
+
+pkgname = maplemono-nf-unhinted
+
+pkgname = maplemono-nf
+
+pkgname = maplemono-otf
+
+pkgname = maplemono-ttf-autohint
+
+pkgname = maplemono-ttf
+
+pkgname = maplemono-variable
+
+pkgname = maplemono-woff2
