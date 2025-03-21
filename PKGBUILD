@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=UCell
-_pkgver=2.8.0
+_pkgver=2.10.1
 pkgname=r-${_pkgname,,}
-pkgver=2.8.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Rank-based signature enrichment analysis for single-cell data'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-seurat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bb8617224382e61a190fc2c5a074a24440dd8edd7f1787f0defbf1e673262627')
+sha256sums=('0c544d25c64b6b942f36df5aa2537cf452ee31278bce98aeded360dbbd6bdd85')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

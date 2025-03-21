@@ -1,6 +1,6 @@
 pkgbase = r-ucell
 	pkgdesc = Rank-based signature enrichment analysis for single-cell data
-	pkgver = 2.8.0
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/UCell
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-ucell
 	optdepends = r-scater
 	optdepends = r-scrnaseq
 	optdepends = r-seurat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/UCell_2.8.0.tar.gz
-	sha256sums = bb8617224382e61a190fc2c5a074a24440dd8edd7f1787f0defbf1e673262627
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/UCell_2.10.1.tar.gz
+	sha256sums = 0c544d25c64b6b942f36df5aa2537cf452ee31278bce98aeded360dbbd6bdd85
 
 pkgname = r-ucell
