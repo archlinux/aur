@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-libdv
+	pkgdesc = Decoder library for DV video (Android riscv64)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://libdv.sourceforge.net/
+	arch = any
+	groups = android-libdv
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-riscv64-popt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/libdv/libdv-1.0.0.tar.gz
+	source = 0001-Unversioned-libs.patch
+	md5sums = f895162161cfa4bb4a94c070a7caa6c7
+	md5sums = aebad644c1ec3cdfdf7db23ccef019f0
+
+pkgname = android-riscv64-libdv
