@@ -16,6 +16,7 @@ pkgbase = kew-git
 	depends = opus
 	depends = opusfile
 	depends = libvorbis
+	depends = libcurl-compat
 	optdepends = faad2
 	conflicts = kew
 	replaces = cue-git
