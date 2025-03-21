@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FLAMES
-_pkgver=1.10.3
+_pkgver=2.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,7 +33,6 @@ depends=(
   r-iranges
   r-jsonlite
   r-magrittr
-  r-multiassayexperiment
   r-rcolorbrewer
   r-reticulate
   r-rsamtools
@@ -50,7 +49,11 @@ depends=(
   r-tidyselect
   r-txdbmaker
   r-withr
-  r-zlibbioc
+  r-spatialexperiment
+  r-biocparallel
+  r-scatterpie
+  r-readr
+  r-matrixgenerics
   xz
   zlib
 )
@@ -64,7 +67,6 @@ optdepends=(
   r-biocstyle
   r-geoquery
   r-knitr
-  r-markdown
   r-r.utils
   r-rmarkdown
   r-shortread
@@ -73,8 +75,8 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('25ace98ee5b53939615415685a153947')
-b2sums=('0756518538a3fd8049d0623c04f7278753945a6a18a54de6dd3cfcf3a7baf7d06771db63a64c35b95c51031b223fe22c50bd5d3f1a4a8c7c4c51a13736f60080')
+md5sums=('169654a23c4ff538f5952294320398fa')
+b2sums=('40284274e38e00ea736495b45a4bed461c1decb935bb27e056c7314de99add5abb03d2fc7af19ecfea314749a21cc32aa60f48f048a69d141a82cbfea7edadd3')
 
 build() {
   mkdir build
