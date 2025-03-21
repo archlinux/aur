@@ -1,5 +1,4 @@
 [lib32-netpbm]
-source = "httpheader"
-url = "https://sourceforge.net/projects/netpbm/files/latest/download"
-regex = 'netpbm-(\d+\.\d+\.\d+).tgz'
-
+source = "archpkg"
+archpkg = "netpbm"
+strip_release = true

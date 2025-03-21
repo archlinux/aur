@@ -4,14 +4,13 @@
 _name="netpbm"
 pkgname="lib32-${_name}"
 pkgver=10.86.44
-pkgrel=3
+pkgrel=4
 pkgdesc="A toolkit for manipulation of graphic images (32-bit)"
 arch=('x86_64')
 license=('Artistic-1.0' 'GPL-2.0-only' 'LGPL-2.0-only' 'MIT')
 url="https://${_name}.sourceforge.net"
-depends=('lib32-glibc' "${_name}")
-makedepends=('lib32-gcc-libs' 'lib32-jbigkit' 'lib32-libjpeg-turbo'
-             'lib32-libpng' 'lib32-libtiff' 'lib32-libxml2' 'lib32-zlib')
+depends=('lib32-glibc' "${_name}>=${pkgver}")
+makedepends=('lib32-gcc-libs')
 provides=("lib${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://downloads.sourceforge.net/project/${_name}/super_stable/${pkgver}/${_pkgsrc}.tgz"
@@ -28,24 +27,40 @@ prepare() {
   cp config.mk.in config.mk
 
   echo "CC = gcc -m32 ${CFLAGS} ${LDFLAGS}" >> config.mk
-  echo "STATICLIB_TOO = N" >> config.mk
-  echo "WANT_SSE = N" >> config.mk
+  # echo "HAVE_INT64 = N" >> config.mk # x64?
+  # echo "WANT_SSE = N" >> config.mk
   echo "CFLAGS_FOR_BUILD = ${CFLAGS}" >> config.mk
   echo "LDFLAGS_FOR_BUILD = ${LDFLAGS}" >> config.mk
+  echo "STRIPFLAG = " >> config.mk
   echo "PKG_CONFIG = i686-pc-linux-gnu-pkg-config" >> config.mk
   echo "CFLAGS_SHLIB = -fPIC" >> config.mk # x64?
-  echo 'TIFFLIB = libtiff.so' >> config.mk
-  echo 'JPEGLIB = libjpeg.so' >> config.mk
-  echo 'PNGLIB = libpng.so' >> config.mk
-  echo 'ZLIB = libz.so' >> config.mk
-  # echo 'JBIGLIB = /usr/lib/libjbig.a' >> config.mk
-  echo 'JBIGLIB = libjbig.so' >> config.mk
+  echo "TIFFLIB = NONE" >> config.mk
+  echo "TIFFHDR_DIR = " >> config.mk
+  echo "JPEGLIB = NONE" >> config.mk
+  echo "JPEGHDR_DIR = " >> config.mk
+  echo "PNGLIB = NONE" >> config.mk
+  echo "PNGHDR_DIR = " >> config.mk
+  echo "ZLIB = NONE" >> config.mk
+  echo "ZHDR_DIR = " >> config.mk
+  echo "JBIGLIB = NONE" >> config.mk
+  echo "JBIGHDR_DIR = " >> config.mk
+  echo "JASPERLIB = NONE" >> config.mk
+  echo "JASPERHDR_DIR = " >> config.mk
+  echo "URTLIB = NONE" >> config.mk
+  echo "URTHDR_DIR = " >> config.mk
+  echo "X11LIB = NONE" >> config.mk
+  echo "X11HDR_DIR = " >> config.mk
+  echo "LINUXSVGALIB = NONE" >> config.mk
+  echo "LINUXSVGAHDR_DIR = " >> config.mk
+  # echo "STATICLIB_TOO = N" >> config.mk
 
-  # cd "lib"
-  # sed -e 's|/lib|/lib32|' \
-  #     -e 's|/sharedlink|/lib32|' \
-  #     -e 's|/staticlink|/lib32|' \
-  #     -i 'Makefile'
+  find . -type f \( -name '*Makefile*' -o -name '*makefile*' -o -name '*.mk' \) -exec \
+    sed -e 's| $(PKGDIR)/lib| $(PKGDIR)/lib32|g' \
+        -e 's|$(SYMLINK) ../lib|$(SYMLINK) .|g' \
+        -e 's|/sharedlink|/lib32|g' \
+        -e 's|/staticlink|/lib32|g' \
+        -i "{}" +
+  sed -i 's|PKGSUBDIRS =|PKGSUBDIRS = lib32|g' 'common.mk'
 }
 
 build() {
@@ -55,16 +70,10 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}/${_pkgsrc}/lib"
-  make
+  make pkgdir="${pkgdir}/usr"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}/lib"
-  # make pkgdir="${pkgdir}/usr" install.
-
-  install -vDm644 "lib${_name}.so.11.86" "${pkgdir}/usr/lib32/lib${_name}.so.11.86"
-
-  cd "${pkgdir}/usr/lib32"
-  ln -s "lib${_name}.so.11.86" "lib${_name}.so.11"
-  ln -s "lib${_name}.so.11.86" "lib${_name}.so"
+  make pkgdir="${pkgdir}/usr" install.staticlib install.lib install.sharedlibstub
 }
