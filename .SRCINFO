@@ -1,6 +1,6 @@
 pkgbase = python-mailsuite
 	pkgdesc = A Python package to make receiving, parsing, and sending email easier
-	pkgver = 1.9.19
+	pkgver = 1.9.20
 	pkgrel = 1
 	url = https://github.com/seanthegeek/mailsuite
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-mailsuite
 	depends = python-imapclient>=2.1.0
 	depends = mailparser>=4.1.2
 	depends = python-publicsuffix2>=2.20190812
-	source = python-mailsuite-1.9.19.tar.gz::https://github.com/seanthegeek/mailsuite/archive/d78ce7c0cb8904d039229f9c22f06c92542ec79d.tar.gz
-	b2sums = a73bae997042f70d455c92209d0a6a415381fb0330b6e93578e014a349a8aa360a9dc440bb245c5c2ea550e4a49c14e726c33dad7a89841d6fd9695260f4d3d3
+	source = python-mailsuite-1.9.20.tar.gz::https://github.com/seanthegeek/mailsuite/archive/3769c8c6bb9ca41e1e1a5c8529445bdb559d53cc.tar.gz
+	b2sums = b4116128285962b467bbeba89b6a56edcb82adc4a3156d36c53e580054bed9f4412b071c28652604aa3371f54d8577a560db4085efe645f546fabe79ae42fedf
 
 pkgname = python-mailsuite
