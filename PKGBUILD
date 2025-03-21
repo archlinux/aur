@@ -1,9 +1,9 @@
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=5.1.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
 license=('BSD')
@@ -11,11 +11,30 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-quickcontrols2'
          'python-pyotherside' 'qt5-graphicaleffects' 'qt5-multimedia'
          'ccid' 'pcsclite' 'yubikey-manager')
 makedepends=('git' 'python')
-source=("git+$url.git#tag=$pkgname-$pkgver?signed")
+source=(
+  "git+$url.git#tag=$pkgname-$pkgver?signed"
+  "0001-cstdint.patch"
+)
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3'  # Dag Heyman <dag@yubico.com>
               '57A9DEED4C6D962A923BB691816F3ED99921835E'  # Emil Lundberg <emil@yubico.com>
               '9E885C0302F9BB9167529C2D5CBA11E6ADC7BCD1') # Dennis Fokin <dennis.fokin@yubico.com>
-sha512sums=('SKIP')
+sha512sums=(
+  'SKIP'
+  '3147b875c246ad9290a669145f9bf61b7c3af6f176114609787cdbe960b139dac6a249f0aa8316872a630eec8a6fd75251aeb6dd5ed8c45a37103a646b2333f1'
+)
+
+prepare() {
+  cd $pkgname
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ "${src}" = *.patch ]] || continue
+    msg2 "Applying patch ${src}..."
+    patch -Np1 -i "${srcdir}/${src}"
+  done
+}
 
 build() {
   cd $pkgname

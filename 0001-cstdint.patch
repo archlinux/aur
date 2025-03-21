@@ -1,0 +1,12 @@
+diff --git a/QZXing/zxing/zxing/common/Types.h b/QZXing/zxing/zxing/common/Types.h
+index f266913c..82ecff4d 100644
+--- a/QZXing/zxing/zxing/common/Types.h
++++ b/QZXing/zxing/zxing/common/Types.h
+@@ -2,6 +2,7 @@
+ #ifndef ZXING_TYPES_H
+ #define ZXING_TYPES_H
+ 
++#include <cstdint>
+ #include <string>
+ #include <iostream>
+ #include <zxing/common/Counted.h>
