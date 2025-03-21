@@ -1,0 +1,63 @@
+pkgbase = maplemononormalnl
+	pkgdesc = Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/subframe7536/maple-font
+	arch = any
+	license = OFL-1.1
+	makedepends = unzip
+	noextract = MapleMonoNormalNL-CN-unhinted.zip
+	noextract = MapleMonoNormalNL-CN.zip
+	noextract = MapleMonoNormalNL-NF-CN-unhinted.zip
+	noextract = MapleMonoNormalNL-NF-CN.zip
+	noextract = MapleMonoNormalNL-NF-unhinted.zip
+	noextract = MapleMonoNormalNL-NF.zip
+	noextract = MapleMonoNormalNL-OTF.zip
+	noextract = MapleMonoNormalNL-TTF-AutoHint.zip
+	noextract = MapleMonoNormalNL-TTF.zip
+	noextract = MapleMonoNormalNL-Variable.zip
+	noextract = MapleMonoNormalNL-Woff2.zip
+	source = MapleMonoNormalNL-CN-unhinted.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-CN-unhinted.zip
+	source = MapleMonoNormalNL-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-CN.zip
+	source = MapleMonoNormalNL-NF-CN-unhinted.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-NF-CN-unhinted.zip
+	source = MapleMonoNormalNL-NF-CN.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-NF-CN.zip
+	source = MapleMonoNormalNL-NF-unhinted.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-NF-unhinted.zip
+	source = MapleMonoNormalNL-NF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-NF.zip
+	source = MapleMonoNormalNL-OTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-OTF.zip
+	source = MapleMonoNormalNL-TTF-AutoHint.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-TTF-AutoHint.zip
+	source = MapleMonoNormalNL-TTF.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-TTF.zip
+	source = MapleMonoNormalNL-Variable.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-Variable.zip
+	source = MapleMonoNormalNL-Woff2.zip::https://github.com/subframe7536/maple-font/releases/download/v7.0/MapleMonoNormalNL-Woff2.zip
+	sha256sums = 86dfccc1971cd91bc4cd9d66a6a08c91f53a27a383f05e15e25325aecba8d7f1
+	sha256sums = a46c6c2941523b987338f596d2b8181bc7e982e9e63e4b309d9f1af82e40f933
+	sha256sums = 37e25251cf2b7aed928a57b68af1eedf6e73ce0ecc14a241cdb820520e28ad90
+	sha256sums = 962ff13c01c9205b560c42b54edb50b8e8d9ece26a5e4f9d9dc1c5a70b21dc56
+	sha256sums = c4146265a5ecc06cbe0dc4f78769bc9c2c590632e0abfe5e5fa493e38f7a870d
+	sha256sums = 8fc2e2f88fcd81d352c13018df561b0491537362177dfcaa427bff2957c178c5
+	sha256sums = f9ec5f3da9495e11d271502b71dc0b55d7b9261c4f032c7279b400136c81928b
+	sha256sums = 09da34161208a7b73e388973ec3eba1bcc6c064d0968dabdbe7e86ba05098993
+	sha256sums = c5ba756616d8cac1c738a928532bb44efefafe30ea09ba3653a7f31e214fb79d
+	sha256sums = 99075870b4ffdf49098cf1a6e23da9657ac9f04ba263b33f82c42e23e8b56370
+	sha256sums = 590a7efec29083f40761e7853f993d20f3dc40928650b9660b2ac03943af7e69
+
+pkgname = maplemononormalnl-cn-unhinted
+
+pkgname = maplemononormalnl-cn
+
+pkgname = maplemononormalnl-nf-cn-unhinted
+
+pkgname = maplemononormalnl-nf-cn
+
+pkgname = maplemononormalnl-nf-unhinted
+
+pkgname = maplemononormalnl-nf
+
+pkgname = maplemononormalnl-otf
+
+pkgname = maplemononormalnl-ttf-autohint
+
+pkgname = maplemononormalnl-ttf
+
+pkgname = maplemononormalnl-variable
+
+pkgname = maplemononormalnl-woff2
