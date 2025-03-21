@@ -5,11 +5,12 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libmodplug
 pkgver=0.8.9.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A MOD playing library (Android ${_android_arch})"
 url="http://modplug-xmms.sourceforge.net/"
 license=('custom')
+groups=('android-libmodplug')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -43,6 +44,6 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }

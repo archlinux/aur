@@ -1,9 +1,10 @@
 pkgbase = android-aarch64-libmodplug
 	pkgdesc = A MOD playing library (Android aarch64)
 	pkgver = 0.8.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://modplug-xmms.sourceforge.net/
 	arch = any
+	groups = android-libmodplug
 	license = custom
 	makedepends = android-configure
 	depends = android-ndk
