@@ -1,13 +1,15 @@
-diff --git a/src/plugins/python/pythoneditor.cpp b/src/plugins/python/pythoneditor.cpp
-index ddd30f2a..ae333cd2 100644
---- a/src/plugins/python/pythoneditor.cpp
-+++ b/src/plugins/python/pythoneditor.cpp
-@@ -324,7 +324,7 @@ public:
+diff --git a/src/plugins/python/pythonindenter.cpp b/src/plugins/python/pythonindenter.cpp
+index b907d0f4..eed0e4a0 100644
+--- a/src/plugins/python/pythonindenter.cpp
++++ b/src/plugins/python/pythonindenter.cpp
+@@ -41,6 +41,10 @@ private:
+                   const TextEditor::TabSettings &tabSettings,
+                   int cursorPositionInEditor = -1) override;
  
-         setDocumentCreator([]() { return new PythonDocument; });
-         setEditorWidgetCreator([]() { return new PythonEditorWidget; });
--        setIndenterCreator(&createPythonIndenter);
-+//        setIndenterCreator(&createPythonIndenter);
-         setSyntaxHighlighterCreator(&createPythonHighlighter);
-         setCommentDefinition(CommentDefinition::HashStyle);
-         setParenthesesMatchingEnabled(true);
++    void autoIndent(const QTextCursor &cursor,
++                    const TextEditor::TabSettings &tabSettings,
++                    int cursorPositionInEditor = -1) { }
++                  
+     bool isElectricLine(const QString &line) const;
+     int getIndentDiff(const QString &previousLine,
+                       const TextEditor::TabSettings &tabSettings) const;

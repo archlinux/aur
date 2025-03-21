@@ -2,7 +2,7 @@ pkgbase=qtcreator-patches
 pkgname=(qtcreator-patches qtcreator-devel-patches)
 pkgver=16.0.1
 _commit=16.0
-pkgrel=1
+pkgrel=2
 conflicts=("qtcreator")
 provides=("qtcreator")
 pkgdesc='Lightweight, cross-platform integrated development environment'
@@ -48,7 +48,7 @@ sha256sums=('22f9559555524f7b40d9910627d63307ff48486b48312efa5325762fbc04d3a1'
             'af1ddc4548b561947a35bf95b98cac5bb7e0d7e55e51f42274b8e0c97393dd2f'
             '9365328fb718037f4e12afd51188b431b5ab4e87cb7ff68b18e1460601b1d3f1'
             '8741091cf3b0ac606df2d581f82394964d78bc0a6d0b14f2ec0a71066ab0c3d8'
-            'd429a141cb3cb429e22cae6a5f808546a46c18601f129a09842717e79e4be812'
+            'f94a87f46282b93679d7c3b26e060c7f88c7f64c692292efba2ee27e329692ac'
             '6546401d89e6b4991e5051b138a92e4222923283183ec2d9b347752113b6dbe1')
             
 prepare() {
