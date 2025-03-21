@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mlite
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Useful classes originating from MeeGo Touch"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=('qt5-base' 'dconf')
 makedepends=('git' 'qt5-tools')
 source=("git+https://github.com/sailfishos/mlite.git#tag=$pkgver")
-sha512sums=('cd1b74e721108066708c0c107cbb28279d2fb41f9bd61226edd6550fe00e12615cc9ae11b8dcbd6e6a91f7693d7bdc4edf3b8a800818be4f353f8d76b666aee7')
+sha512sums=('54a5153dc9e84b28b32eedc0eb80b0cce5f370f2dac3cd173a4e04f4d1c8129f9e746427d0181361f5191215b864f1648a3d7976f4a010ada4c4c54cd36253ab')
 
 prepare() {
   cd mlite
