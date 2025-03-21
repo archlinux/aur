@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontproof
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 _rockrel=1
 pkgdesc='A font design testing class and CLI tool for SILE'
@@ -14,7 +14,7 @@ depends=(lua51-cliargs
 makedepends=(luarocks)
 _rock="$pkgname-$pkgver-$_rockrel.src.rock"
 source=("$url/releases/download/v$pkgver/$_rock"{,.asc})
-sha256sums=('a183db76a7fe048e4ac670df033e17ca814065030cffa6ade21f8858a1b31b4f'
+sha256sums=('136429692378e75dce37483e2459a4f25e2f0958411d50897836d2317401a266'
             'SKIP')
 validpgpkeys=('9F377DDB6D3153A48EB3EB1E63CC496475267693') # Caleb Maclennan <caleb@alerque.com> (@alerque)
 
