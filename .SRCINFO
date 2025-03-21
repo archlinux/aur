@@ -1,17 +1,19 @@
 pkgbase = gowin-eda-edu
 	pkgver = 1.9.10.03
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gowinsemi.com.cn/faq.aspx
 	arch = x86_64
 	license = unknown
 	source = http://cdn.gowinsemi.com.cn/Gowin_V1.9.10.03_Education_linux.tar.gz
+	source = gowin-eda-edu.png
+	source = gowin-eda-edu-ide-project.xml
 	source = gowin-eda-edu-ide.desktop
 	source = gowin-eda-edu-programmer.desktop
-	source = gowin-eda-edu.png
 	sha256sums = 1cd0b9ce86897509b12f05bebd0ec2a7b193b7168c37d82676584e9211a6e2fa
+	sha256sums = 346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab
+	sha256sums = a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2
 	sha256sums = 899042b398f530e30cd566feda5920002422b1face170928c272bf5ebe4be70b
 	sha256sums = 58dc15480b793fbde86a0fcfb644239077b07e34345d7753f6c34f32d24b080a
-	sha256sums = 346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab
 
 pkgname = gowin-eda-edu-ide
 	pkgdesc = Gowin EDA IDE - Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)

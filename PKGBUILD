@@ -2,20 +2,22 @@
 
 pkgbase=gowin-eda-edu
 pkgver=1.9.10.03
-pkgrel=2
+pkgrel=3
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
 # url="https://www.gowinsemi.com/en/support/home/"
 license=('unknown')
 source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_Education_linux.tar.gz"
+        "${pkgbase}.png"
+        "${pkgbase}-ide-project.xml"
         "${pkgbase}-ide.desktop"
-        "${pkgbase}-programmer.desktop"
-        "${pkgbase}.png")
+        "${pkgbase}-programmer.desktop")
 sha256sums=('1cd0b9ce86897509b12f05bebd0ec2a7b193b7168c37d82676584e9211a6e2fa'
+            '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab'
+            'a95d18239e9ecb6b3f712fa569601e964624ef4ccb39ca85e56dfafa74b573d2'
             '899042b398f530e30cd566feda5920002422b1face170928c272bf5ebe4be70b'
-            '58dc15480b793fbde86a0fcfb644239077b07e34345d7753f6c34f32d24b080a'
-            '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab')
+            '58dc15480b793fbde86a0fcfb644239077b07e34345d7753f6c34f32d24b080a')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${pkgname}/{} \;
@@ -72,6 +74,9 @@ _package-ide() {
   sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gao_{sh,analyzer}
   sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/plugins/ide/lib{StartPage,FpgaPrj}.so
   ln -s /opt/${pkgbase}-programmer ${pkgdir}/opt/${pkgname}/Programmer
+
+  # MimeType association
+  install -Dm644 ${srcdir}/${pkgbase}-ide-project.xml -t ${pkgdir}/usr/share/mime/packages/
 }
 
 _package-programmer() {
