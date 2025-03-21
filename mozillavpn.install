@@ -24,11 +24,11 @@ WHITE="${BOLD}$(tput setaf 7)"
 
 post_install() {
     note1 'Enable and start the Mozilla VPN daemon with:'
-    note2 '  systemctl enable mozillavpn.service'
-    note2 '  systemctl start mozillavpn.service'
+    note2 '  sudo systemctl enable mozillavpn.service'
+    note2 '  sudo systemctl start mozillavpn.service'
 }
 
 post_upgrade() {
     note1 'Restart the Mozilla VPN daemon with:'
-    note2 '  systemctl restart mozillavpn.service'
+    note2 '  sudo systemctl restart mozillavpn.service'
 }
