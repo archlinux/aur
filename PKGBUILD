@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IntEREst
-_pkgver=1.28.0
+_pkgver=1.30.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,7 +22,7 @@ depends=(
   r-genomicfiles
   r-genomicranges
   r-iranges
-  r-rmysql
+  r-rmariadb
   r-rsamtools
   r-s4vectors
   r-seqinr
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('34b2ef2a05b7c64d9ca8091957da686f')
-b2sums=('5ddc5e1e14b43223671c5a7452440a034033aa7983a66b4e08fb12c58f9e55f5f7339e61aaa2640148773703463450a6323d40492822eee550a4af53bbcb5a7d')
+md5sums=('0a0cd82d16894bb4e5302aefe455c0b9')
+b2sums=('a2e820711e6187fde48a3ec3326e84284f9e697b7521c9c7e470a6d401e1af039053be3ebb025733853b0fb2df629e5cea1dba48080d7b202dfb6fcb8a3e79b8')
 
 build() {
   mkdir build
