@@ -4,21 +4,18 @@ _pkgname=sparsevctrs
 _pkgver=0.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Sparse Vectors for Use in Data Frames'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
-  r
   r-cli
   r-rlang
   r-vctrs
 )
 optdepends=(
   r-knitr
-  r-matrix
-  r-methods
   r-rmarkdown
   r-testthat
   r-tibble

@@ -1,17 +1,14 @@
 pkgbase = r-sparsevctrs
 	pkgdesc = Sparse Vectors for Use in Data Frames
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=sparsevctrs
 	arch = x86_64
 	license = MIT
-	depends = r
 	depends = r-cli
 	depends = r-rlang
 	depends = r-vctrs
 	optdepends = r-knitr
-	optdepends = r-matrix
-	optdepends = r-methods
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tibble
