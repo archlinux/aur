@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=escape
-_pkgver=2.0.0
+_pkgver=2.2.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b3c16032574ae1639cf3d8b0f4eda1a')
-b2sums=('85b0342930e2971515787fbd0739062c8a8faecb6a8bb7a73b93c9fe8c79994c90a4b8fa3f3cf0919e155f3cd316d6afc15f5e55335cd49b93cbd7ebadacc5bd')
+md5sums=('af1fa9eb8df3252a960cd70ba2f41873')
+b2sums=('05bbd9694bb753799b7b7a614e1a27203ff6d76c984e6e80051d358c40d90d87ac13c6c73c9c58288f8f1c6c00a47f7ed1f5733a38edab80485d30938d6db7e4')
 
 build() {
   mkdir build
