@@ -1,24 +1,24 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=python-sphinx-autosummary-accessors
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2023.4.0
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}" "python-${_pname}-doc")
+pkgver=2025.3.1
 pkgrel=1
 pkgdesc="Sphinx autosummary extension to properly format pandas or xarray accessors"
 arch=('any')
 url="https://sphinx-autosummary-accessors.readthedocs.io"
 license=('MIT')
-makedepends=('python-setuptools-scm'
-             'python-wheel'
+makedepends=('python-setuptools-scm>=7.0'
              'python-build'
              'python-installer'
              'python-sphinx'
-             'python-sphinx_rtd_theme')
-checkdepends=('python-nose')
+             'python-sphinx_rtd_theme')  # wheel required by new setuptools
+checkdepends=('python-nose')    # sphinx
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'Makefile')
-md5sums=('46508e80786803f53006d0989ccd16cb'
+md5sums=('522c8b36f2fea04e2100991cbba9eabc'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -43,7 +43,7 @@ check() {
 }
 
 package_python-sphinx-autosummary-accessors() {
-    depends=('python-sphinx>=3.5')
+    depends=('python-sphinx>=5.3' 'python-packaging')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
