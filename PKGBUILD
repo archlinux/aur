@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=netSmooth
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Network smoothing for scRNAseq'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('088b573192185428b4db795fbc5f24c103e5a4a35431c3c4319873bc29313e5b')
+sha256sums=('158e6ed27136a50f6fe301e381c868119e4fcfedd4bbffde4f8391edaefa965f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
