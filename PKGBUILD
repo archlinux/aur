@@ -7,11 +7,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libmpeg2
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for decoding MPEG-1 and MPEG-2 video streams (Android ${_android_arch})"
 arch=('any')
 url='https://libmpeg2.sourceforge.io/'
 license=('GPL-2.0-or-later')
+groups=('android-libmpeg2')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -48,7 +49,7 @@ package() {
     cd "${srcdir}/libmpeg2-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
