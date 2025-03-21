@@ -7,11 +7,12 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libdv
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Decoder library for DV video (Android ${_android_arch})"
 arch=('any')
 url='https://libdv.sourceforge.net/'
 license=('LGPL-2.1-or-later')
+groups=('android-libdv')
 depends=("android-${_android_arch}-popt")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -21,24 +22,27 @@ md5sums=('f895162161cfa4bb4a94c070a7caa6c7'
          'aebad644c1ec3cdfdf7db23ccef019f0')
 
 prepare() {
-    cd "${srcdir}/libdv-$pkgver"
+    cd "${srcdir}/libdv-${pkgver}"
 
     patch -Np1 -i ../0001-Unversioned-libs.patch
 }
 
 build() {
-    cd "${srcdir}/libdv-$pkgver"
+    cd "${srcdir}/libdv-${pkgver}"
     source android-env ${_android_arch}
 
     extra_options=
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
              host=armv8-unknown-linux
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux
@@ -64,11 +68,11 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libdv-$pkgver"
+    cd "${srcdir}/libdv-${pkgver}"
     source android-env ${_android_arch}
 
-    make -C libdv DESTDIR="$pkgdir" install
-    make DESTDIR="$pkgdir" install-pkgconfigDATA
+    make -C libdv DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" install-pkgconfigDATA
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so.*
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
