@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=enrichViewNet
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,10 +27,11 @@ optdepends=(
   r-knitr
   r-rmarkdown
   r-testthat
+  r-magick
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f01eb6bcaefcabf4e714ca77f3b8d9e6')
-b2sums=('6eb49b798bb341ea9748d24e19870b4447f8e0e60cfbabf5284e696915f48b7132c6131a2684fb3c121fd0a780765460aa7aec46442c5ab9329bd6c30e63d972')
+md5sums=('24bfac4e66bb94854260dd6a535e7c6e')
+b2sums=('7cb7cc159831913b2a9d407a187d6365026d6a839767b937be797850d76d2f907e46ae85953177f2d6d268850dd902cd3efe9ff8f0d5f3f09f1cc055660d8a10')
 
 build() {
   mkdir build
