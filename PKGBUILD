@@ -1,13 +1,14 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=phoenix-arch
-pkgver=202503121
+pkgver=202503201
 pkgrel=1
 pkgdesc="Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL3')
 url="https://phoenix.celenity.dev"
-source=("https://codeberg.org/celenity/Phoenix/raw/commit/4338c1fa7be3b3e52281f71dbfcc2468b7588de6/archives/phoenix.zip")
-sha512sums=('a8dcb2d6f556764cce5c10349f7b37187310dcfd97de6ed9b7c30f05c1460014806fd78f9a358dfabc47790ee3d946d3d2666288b1dc64a50233b0f2b322f3e2')
+source=("${pkgname}-${pkgver}.zip::https://codeberg.org/celenity/Phoenix/raw/commit/c841aa473b88b8d552d0e8b6ce76599cd4a748a8/archives/phoenix.zip")
+sha512sums=('3d038f4ac9fd3f4b02999014751e9b937309ae40536e7599f78c6605c6c81f6abd9c0cffdc0b7b4589546c2272d9860f1bf1e67fb401248ba6397184945adb8c')
+makedepends=('unzip')
 
 pkgver() {
     echo "$pkgver"
@@ -16,7 +17,7 @@ pkgver() {
 package() {
     local tmpdir=$(mktemp -d)
 
-    unzip "$srcdir/phoenix.zip" -d "$tmpdir"
+    unzip "$srcdir/${pkgname}-${pkgver}.zip" -d "$tmpdir"
     
     install -Dm644 "$tmpdir/configs/apple-maps.cfg" "$pkgdir/etc/firefox/phoenix/configs/apple-maps.cfg"
     install -Dm644 "$tmpdir/configs/discord.cfg" "$pkgdir/etc/firefox/phoenix/configs/discord.cfg"
