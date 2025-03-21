@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MOSim
-_pkgver=2.0.0
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f6de9c73396f84ca3dea595207c5186f')
-b2sums=('fe7fffaf7c8c2ae6e4e233bf530442f9c3f02716d446738e56e8de1e2962ea3b6332ec2764638ef2e00bf1cb939b8a81b40913232ddc7d4e4d6f27d51343a983')
+md5sums=('38533e929ac399f2bd03d8518ebe3653')
+b2sums=('e93e315304e247f56d0049bc342962e2eb0e7fa2c0c4b8a2eaca5b2b6b764fcdfdfaad846f6aed534b1d968f63bf18cc7ba955ade227615b4767c6dab111560e')
 
 build() {
   mkdir build
