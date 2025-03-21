@@ -1,0 +1,24 @@
+pkgbase = hatari-git
+	pkgdesc = An Atari ST and STE emulator
+	pkgver = v2.5.0.264.gd635e360
+	pkgrel = 1
+	url = https://www.hatari-emu.org/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = systemd
+	depends = sdl2
+	depends = libpng
+	depends = portaudio
+	depends = systemd-libs
+	depends = hicolor-icon-theme
+	depends = capsimage
+	depends = capstone
+	conflicts = hatari
+	source = git+https://framagit.org/hatari/hatari.git
+	sha256sums = SKIP
+
+pkgname = hatari-git
