@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=openai-agents
-pkgname=python-${_name//-/_}
+pkgname=python-${_name}
 pkgver=0.0.6
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."

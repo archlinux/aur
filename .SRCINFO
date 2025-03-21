@@ -1,4 +1,4 @@
-pkgbase = python-openai_agents
+pkgbase = python-openai-agents
 	pkgdesc = OpenAI Agents SDK.
 	pkgver = 0.0.6
 	pkgrel = 1
@@ -29,4 +29,4 @@ pkgbase = python-openai_agents
 	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.0.6.tar.gz
 	sha256sums = 34b7c25f74d6f31e43a12ec7b2de64527714746dd15ca245bfc41dc8e92dbe2b
 
-pkgname = python-openai_agents
+pkgname = python-openai-agents
