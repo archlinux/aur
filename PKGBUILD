@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lefser
-_pkgver=1.14.0
+_pkgver=1.16.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,7 +16,14 @@ depends=(
   r-ggplot2
   r-s4vectors
   r-summarizedexperiment
+  r-ggtree
+  r-stringr
+  r-testthat
+  r-forcats
+  r-tibble
+  r-tidyr
 )
+
 optdepends=(
   r-biocstyle
   r-covr
@@ -25,12 +32,11 @@ optdepends=(
   r-phyloseq
   r-pkgdown
   r-rmarkdown
-  r-testthat
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f092ce758deedacc39855a98cfc06849')
-b2sums=('404f6a5b4eaf7b74020ca95e47d31e6aa2a783aa9d14a1b4ea95e8e41e65174a092febad84fbe79c23a1b4b1e69b53e01625c13d16103f007545d442b31472ec')
+md5sums=('fc3c02d3a9ce8e920d41310da7913faa')
+b2sums=('17be5912fc257b7a18f8b872dd7fd6511afbd2142a726977dbda534ec147a5b461b1a5053b9cb9c16fc2adc13da67f458564aec36eff35a02ec5d3e0e9de74e7')
 
 build() {
   mkdir build
