@@ -1,0 +1,17 @@
+pkgbase = python-uploadserver
+	pkgdesc = Python http.server extended to include a file upload page
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/Densaugeo/uploadserver
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-requests
+	depends = python-pytest
+	source = python-uploadserver-6.0.0.tar.gz::https://files.pythonhosted.org/packages/source/u/uploadserver/uploadserver-6.0.0.tar.gz
+	sha512sums = 615f155b60e83974ac2c83f369f9673969a0b369e5b2583a681311fc039e4aff125b5b4803d94d0fabeaaae40fad1f8164bc872f7fecc732f67d799daf4eb614
+
+pkgname = python-uploadserver
