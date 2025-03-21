@@ -2,7 +2,7 @@
 # Contributer: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=250228_43447fa38
+pkgver=250321_57590c48b
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
@@ -26,7 +26,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service"
         "defaults.yml")
-sha256sums=('ab6e97beb779a81aa74bd0ca64df83b872b82c7f85dc234c062dbceb8cfa0c51'
+sha256sums=('0c983ff06e6c1f2ed65341993197bb797836783c84c3eff7abade07dd65a4ff3'
             '01fd07b7e467d23b2b43e8a61076f6668df2fc5f3a6bc42682c390d5134d281b'
             'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
