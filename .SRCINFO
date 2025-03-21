@@ -1,6 +1,6 @@
 pkgbase = python-jaxlib
 	pkgdesc = XLA library for JAX
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/jax-ml/jax/
 	arch = x86_64
@@ -12,11 +12,12 @@ pkgbase = python-jaxlib
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-absl
-	depends = python-flatbuffers
 	depends = python-ml-dtypes>=0.4.0
 	depends = python-numpy
 	depends = python-scipy
-	source = jax-0.5.2.tar.gz::https://github.com/jax-ml/jax//archive/refs/tags/jax-v0.5.2.tar.gz
-	sha256sums = 8e9de1e012dd65fc4a9eec8af4aa2bf6782767130a5d8e1c1e342b7d658280fe
+	source = jax-0.5.3.tar.gz::https://github.com/jax-ml/jax//archive/refs/tags/jax-v0.5.3.tar.gz
+	source = bazel-7.4.1-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/7.4.1/bazel-7.4.1-linux-x86_64
+	sha256sums = 1094581a30ec069965f4e3e67d60262570cc3dd016adc62073bc24347b14270c
+	sha256sums = c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b
 
 pkgname = python-jaxlib
