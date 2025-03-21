@@ -1,6 +1,6 @@
 pkgbase = r-geoexplorer
 	pkgdesc = a webserver for gene expression analysis and visualisation
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GEOexplorer
 	arch = any
@@ -39,8 +39,8 @@ pkgbase = r-geoexplorer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-usethis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOexplorer_1.10.0.tar.gz
-	md5sums = c5a798eedfe4bcaf2869700911560363
-	b2sums = 902ee857cf064adb9370e209f28f1c002119907bd924af303cd28bed3b356b06b43036f3040995fae9ee3342a8e4e4348aa8a313e74af8954d9f68b55a6e49fd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOexplorer_1.12.0.tar.gz
+	md5sums = 4c551b3a32be33591646d06feae085b9
+	b2sums = b6f8b5eac8faeccacf67080d4956f09e72fe4b0c7c6ecf928aabd4047b3da9b3542b321aa42f54bfb73654f35f676c7914fb240353f7e17f71e38f59814f0f5b
 
 pkgname = r-geoexplorer
