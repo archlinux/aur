@@ -1,36 +1,35 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.7.r17.g06746b67
+pkgver=2.2.7.r89.g8535e2f5
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
-license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
+license=('GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only')
 depends=(
   'dmidecode'
   'gawk'
   'gtk3'
+  'iperf3'
   'libsoup3'
   'lm_sensors'
   'mesa-utils'
   'pciutils'
+  'qt5-base'
+  'sysbench'
   'udisks2'
   'usbutils'
   'vulkan-tools'
   'xdg-utils'
-  'xorg-xrandr'
 )
 makedepends=(
   'cmake'
   'git'
-  'qt5-base'
 )
 checkdepends=('appstream')
 optdepends=(
   'fwupd: Firmware module'
-  'iperf3: Internal Network Speed benchmark'
-  'qt5-base: OpenGL benchmark'
-  'sysbench: SysBench CPU benchmark'
+  'xorg-xrandr: Read monitor setup'
 )
 install="${pkgname%-git}.install"
 provides=("${pkgname%-git}" 'hardinfo')
@@ -53,7 +52,7 @@ build() {
 
 check() {
   desktop-file-validate "build/${pkgname%-git}.desktop"
-  appstreamcli validate --no-net "build/org.${pkgname%-git}.${pkgname%-git}.metainfo.xml" || :
+  appstreamcli validate --no-net "build/org.${pkgname%-git}.${pkgname%-git}.metainfo.xml"
 }
 
 package() {
