@@ -10,6 +10,6 @@ pkgbase = pingstat
 	depends = inetutils
 	depends = coreutils
 	source = https://codeberg.org/tomsh/pingstat/raw/tag/1.1.0/pingstat
-	sha256sums = 3e541301236f588466064d45f06432b9e0b58ed79581f34fbd9ebec977adb7cf
+	sha256sums = 2c89471b6d32632b6ea438794aed89cbd92614f091aefa42269f7f0073048fff
 
 pkgname = pingstat
