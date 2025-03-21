@@ -3,20 +3,19 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=1.37.0
+pkgver=1.37.1
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
 url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
-makedepends=('git')
+makedepends=('git' 'fakeroot')
 depends=(
     amdgpu-test-scripts-common-git
     amd-s2idle-analysis-script-git
     cage
     expect
     efibootmgr
-    fakeroot
     fpaste
     fzf
     glow
@@ -105,8 +104,8 @@ package() {
     install -m644 -t "${pkgdir}/etc/profile.d" "${source_dir}/etc/profile.d"/*
 
     # plymouthd.conf
-    install -dm755 "${pkgdir}/etc/plymouth"
-    cp -r "${source_dir}/etc/plymouth"/* "${pkgdir}/etc/plymouth"
+    install -dm755 "${pkgdir}/etc/plymouthd"
+    cp -r "${source_dir}/etc/plymouthd"/* "${pkgdir}/etc/plymouthd"
 
     # /usr/share/sk-chos/just/*
     install -dm755 "${pkgdir}/usr/share/sk-chos/just"
