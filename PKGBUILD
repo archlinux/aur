@@ -4,13 +4,12 @@ _pkgname=BoutrosLab.plotting.general
 _pkgver=7.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Functions to Create Publication-Quality Plots'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-2.0-only')
 depends=(
-  r
   r-e1071
   r-gridextra
   r-gtable

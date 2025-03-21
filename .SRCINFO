@@ -1,11 +1,10 @@
 pkgbase = r-boutroslab.plotting.general
 	pkgdesc = Functions to Create Publication-Quality Plots
 	pkgver = 7.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=BoutrosLab.plotting.general
 	arch = x86_64
 	license = GPL-2.0-only
-	depends = r
 	depends = r-e1071
 	depends = r-gridextra
 	depends = r-gtable
