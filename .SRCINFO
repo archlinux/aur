@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libmp4v2
+	pkgdesc = A C/C++ library to create, modify and read MP4 files (Android riscv64)
+	pkgver = 2.1.3
+	pkgrel = 2
+	url = https://mp4v2.org/
+	arch = any
+	groups = android-libmp4v2
+	license = MPL
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/enzo1982/mp4v2/releases/download/v2.1.3/mp4v2-2.1.3.tar.bz2
+	md5sums = a54031f6071bd397ffcc7ec817cfbcdd
+
+pkgname = android-riscv64-libmp4v2
