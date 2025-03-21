@@ -63,7 +63,7 @@ optdepends=(
 	'p7zip: 7z archive extraction support'
 	'unrar: RAR archive extraction support'
 	'python-plexapi: Plex streaming support'
-	'python-pypresence: Discord status support'
+	'python-lynxpresence: Discord status support'
 	'python-pychromecast: Chromecast stream support'
 	'python-jxlpy: JPEG XL image support'    # AUR
 	'python-tekore: Spotify feature support' # AUR
