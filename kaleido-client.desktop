@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=🚀Assistant tool developed based on Electron+Vue, supporting functions such as connecting to databases and generating code.
+Exec=kaleido-client %U
+Icon=kaleido-client
+Name=Kaleido-client
+Categories=Development;
+Terminal=false
+Type=Application

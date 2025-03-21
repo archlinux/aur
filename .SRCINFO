@@ -1,0 +1,24 @@
+pkgbase = kaleido-client-git
+	pkgdesc = 🚀Assistant tool developed based on Electron+Vue, supporting functions such as connecting to databases and generating code.(Use system-wide electron)
+	pkgver = 1.0.3.r0.ga2d0f73
+	pkgrel = 1
+	url = https://wp2code.github.io/wp2code-site/kaleido/
+	arch = any
+	license = Apache-2.0
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = yarn
+	depends = electron31
+	provides = kaleido-client=1.0.3
+	conflicts = kaleido-client
+	source = kaleido-client.git::git+https://github.com/wp2code/kaleido-client
+	source = kaleido-client.desktop
+	source = kaleido-client.sh
+	sha256sums = SKIP
+	sha256sums = 588af2522344d422c15f7a247b9318b696dd15d5cc164b80af1aa2ed69b8cbf7
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = kaleido-client-git
