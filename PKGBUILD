@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Seurat
-_pkgver=5.1.0
+_pkgver=5.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,7 +25,7 @@ depends=(
   r-igraph
   r-irlba
   r-jsonlite
-  r-leiden
+  r-leidenbase
   r-lifecycle
   r-lmtest
   r-matrixstats
@@ -35,7 +35,6 @@ depends=(
   r-plotly
   r-png
   r-progressr
-  r-purrr
   r-rann
   r-rcolorbrewer
   r-rcpp
@@ -56,6 +55,7 @@ depends=(
   r-tibble
   r-uwot
 )
+
 makedepends=(
   r-rcppeigen
   r-rcppprogress
@@ -103,10 +103,12 @@ optdepends=(
   r-summarizedexperiment
   r-testthat
   r-vgam
+  r-glmgampoi
+  r-sf
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f0f8ead2778e97d7c06bac7eb6276115')
-b2sums=('be75dc34da4ed25041659f746d683b7be1178e31151e81b5a2d34be323d799477eb9f477bc8e6b6748bf018ca8edba8614e7d00eba35615bdd9518e16ccefaf2')
+md5sums=('d6233a192fd8f84a5db6daaaef79c91d')
+b2sums=('f28390e4d6c10c40ffaa34db22f0be76601e5a0a88a4d20f12eef9b6f96567166d58d6222de9d3ce5f50186f5c02024d64dfcaacc2001b5a792a7a9f985cbb2b')
 
 prepare() {
   # skip test that requires BPCells
