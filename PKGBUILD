@@ -17,7 +17,7 @@ license=('GPL-3.0-or-later')
 source=("git+$url")
 sha256sums=('SKIP')
 depends=('gtk4' 'libadwaita>=1.7')
-makedepends=('rust' 'meson' 'ninja' 'gettext' 'pkgconf' 'git' 'blueprint-compiler')
+makedepends=('git' 'rust' 'ninja' 'meson' 'gettext' 'pkgconf' 'blueprint-compiler')
 
 pkgver() {
 	cd "${srcdir}/${_appname}"

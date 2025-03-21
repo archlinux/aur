@@ -6,12 +6,12 @@ pkgbase = keypunch-git
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = rust
-	makedepends = meson
 	makedepends = ninja
+	makedepends = meson
 	makedepends = gettext
 	makedepends = pkgconf
-	makedepends = git
 	makedepends = blueprint-compiler
 	depends = gtk4
 	depends = libadwaita>=1.7
