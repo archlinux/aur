@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trackViewer
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,10 +19,8 @@ depends=(
   r-grimport
   r-gviz
   r-htmlwidgets
-  r-igraph
   r-interactionset
   r-iranges
-  r-plotrix
   r-rhdf5
   r-rsamtools
   r-rtracklayer
@@ -45,8 +43,8 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('345c5b2adf6e31e2aee1335391d07d48')
-b2sums=('82d18d278509969ff57344980481c577f00bbaea59d88fb56cf558d581d6978af1659be2cd74e670a2cd06fc56258c040d36fb1e6069c1bee7a3a817ed0415fa')
+md5sums=('3287391dbe336650a318e360bf192258')
+b2sums=('e8eff8bbdbd5f1e1cc7b9ec5436b52b484e03068eed8b34537fa688e99798a7722abcbd73b42939c89e4486dfd2f77ebf07675f1cfd9caef8862e1601cc56ad4')
 
 build() {
   mkdir build
