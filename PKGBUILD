@@ -1,6 +1,6 @@
 # Maintainer: blekki <blekkiw at gmail dot com>
 pkgname=ed-odyssey-materials-helper-bin
-pkgver=2.149
+pkgver=2.150
 pkgrel=1
 pkgdesc="Elite Dangerous Odyssey Materials Helper"
 arch=('x86_64')
