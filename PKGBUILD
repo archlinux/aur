@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fgsea
-_pkgver=1.30.0
+_pkgver=1.32.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ee0533776cc2027d55f81c5dca569464')
-b2sums=('dbad9d4ce98cb10e61cc1036fb6f581c22957a91f43252e1cc98e2c3f827ca80cf447a8945694326804cb0abe0877f4a020ccd818f4f3d4e7435e01c3737e9a7')
+md5sums=('ff7d3a6bf3cc8bdfea0c100fd59cec2f')
+b2sums=('12a4db8ffc5f79190e321f395d2fdd4b4848928010a00fc94bacd4619ade9f4acfa97606ab13e3c5a01616762db06fde3428dce1180d1dcb1878190e70e47aea')
 
 build() {
   mkdir build
