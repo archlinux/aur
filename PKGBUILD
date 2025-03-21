@@ -2,16 +2,17 @@
 
 pkgname=rancher-k3d
 _pkgname=k3d
-pkgver=5.7.4
+pkgver=5.8.3
 pkgrel=1
 pkgdesc="Little helper to run CNCF's k3s in Docker"
 arch=('x86_64')
 url='https://github.com/k3d-io/k3d'
 license=('MIT')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/k3d-io/k3d/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('419e1bc3a44d57f66512dc2be3cae118482db65ceeb7baba41a6df7ea4300263')
+sha256sums=('2ef51e029f43e70dcda616de98980017ca7de18848265525bf7882d2bd66f9f2')
 makedepends=('go')
 provides=('k3d')
+conflicts=('rancher-k3d-bin' 'rancher-k3d-beta-bin')
 
 build() {
   cd $_pkgname-$pkgver
