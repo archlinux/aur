@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libmpeg2
+	pkgdesc = Library for decoding MPEG-1 and MPEG-2 video streams (Android riscv64)
+	pkgver = 0.5.1
+	pkgrel = 2
+	url = https://libmpeg2.sourceforge.io/
+	arch = any
+	groups = android-libmpeg2
+	license = GPL-2.0-or-later
+	makedepends = android-configure
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://libmpeg2.sourceforge.io/files/libmpeg2-0.5.1.tar.gz
+	md5sums = 0f92c7454e58379b4a5a378485bbd8ef
+
+pkgname = android-riscv64-libmpeg2
