@@ -1,0 +1,27 @@
+pkgbase = r-ggtangle
+	pkgdesc = Draw Network with Data
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ggtangle
+	arch = any
+	license = Artistic-2.0
+	depends = r
+	depends = r-ggfun
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-igraph
+	depends = r-rlang
+	depends = r-yulab.utils
+	optdepends = r-aplot
+	optdepends = r-cli
+	optdepends = r-ggnewscale
+	optdepends = r-ggtree
+	optdepends = r-knitr
+	optdepends = r-prettydoc
+	optdepends = r-rmarkdown
+	optdepends = r-scatterpie
+	source = https://cran.r-project.org/src/contrib/ggtangle_0.0.6.tar.gz
+	md5sums = d93ad9bf8d3f5c11c7d6ca6cbde7832a
+	b2sums = 1e4e6efb170206c49aaadbf806c5f0260ef447c391bbcc131d4f288a0db7ddd718a863f5e228a77a022da79df6b370d529bdd497d6ba8a843ce39dc46a6dff6a
+
+pkgname = r-ggtangle
