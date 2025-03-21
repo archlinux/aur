@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-nowebkit
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release. Build without WebKit support.
-	pkgver = 23.0.1.u4
+	pkgver = 23.0.2.u3
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
@@ -31,12 +31,12 @@ pkgbase = java-openjfx-nowebkit
 	makedepends = unzip
 	makedepends = zip
 	options = !lto
-	source = java-openjfx-23.0.1+4.tar.gz::https://github.com/openjdk/jfx23u/archive/refs/tags/23.0.1+4.tar.gz
+	source = java-openjfx-23.0.2+3.tar.gz::https://github.com/openjdk/jfx23u/archive/refs/tags/23.0.2+3.tar.gz
 	source = gradle.properties
 	source = java-openjfx-flags.patch
-	b2sums = 0710858040fe3930814e3fdd5c209c614e400ee1030961266407530baead0b4d7af3826cb2f711c651ad298c62f456b38123fcc2bc46db89adf3876489fb3ded
-	b2sums = 0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f
-	b2sums = 5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3
+	sha256sums = 6636195d27d7a5ef27550bf4934d9199369cfd62c7fe0c16f825c78e59211d5e
+	sha256sums = ff63de384c6c8a0b2c53703110cc794fcce24db857a0d4c852dbc80db5a79218
+	sha256sums = a03696f7dfb71e3746b2a98af49c0fb54e5161e0aca60c43b31675402337b97e
 
 pkgname = java-openjfx-nowebkit
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest release version. Build without WebKit support.
@@ -54,7 +54,7 @@ pkgname = java-openjfx-nowebkit
 	optdepends = java-openjfx-doc: For documentation of this software.
 	optdepends = java-openjfx-src: For the source code of this software.
 	provides = java-openjfx=23
-	provides = java-openjfx=23.0.1.u4
+	provides = java-openjfx=23.0.2.u3
 
 pkgname = java-openjfx-license
 	pkgdesc = License for Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release.
