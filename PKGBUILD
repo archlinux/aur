@@ -2,11 +2,11 @@
 pkgname=sk-chos-tool
 _reponame=sk-chos-config
 pkgver=2.2.4
-_addonver=1.30.1
+_addonver=1.36.1
 pkgrel=1
 pkgdesc="A custom configs tool for sk-chimeros"
 arch=('any')
-url="https://github.com/honjow/sk-holoiso-config.git"
+url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=('python-gobject' 'gtk3' 'sk-chos-addon')
@@ -14,7 +14,7 @@ provides=(sk-chos-tool)
 conflicts=(sk-chos-tool-git)
 replaces=(sk-chos-tool-git)
 source=(
-    "$pkgname-${_addonver}.tar.gz::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/v${_addonver}.tar.gz"
+    "$pkgname-${_addonver}.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${_addonver}.tar.gz"
     "$pkgname-${pkgver}.AppImage::https://github.com/honjow/sk-chos-tool/releases/download/v${pkgver}/sk_chos_tool-latest-x86_64.AppImage"
     )
 sha256sums=(
