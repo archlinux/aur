@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=faraway
-_pkgver=1.0.8
+_pkgver=1.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
-pkgdesc="Functions and Datasets for Books by Julian Faraway"
+pkgrel=1
+pkgdesc='Datasets and Functions for Books by Julian Faraway'
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-2.0-or-later')
@@ -16,8 +16,8 @@ optdepends=(
   r-leaps
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('526488c5aa96fc1b152b922f28053feb')
-b2sums=('eee214136462d5bd24c097f1d6e10f00fa1266ccde245665655e98c4454a39f639334a6b5160ba768fbde21676372fd272056a3d45f7e71a3fa80e94c894eaf9')
+md5sums=('ae4b241375f5096e4f50321d94d45d54')
+b2sums=('68d006f9611f6ef0ae11e9ddbdd79e9ddc83f2c8d8e335b0fb4793c27e510bba16fb95898990ec2766f7909f88e2b34d38d5808f297837485cdf4871db520987')
 
 build() {
   mkdir build
