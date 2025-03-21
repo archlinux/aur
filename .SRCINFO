@@ -1,6 +1,6 @@
 pkgbase = r-cards
 	pkgdesc = Analysis Results Data
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cards
 	arch = any
@@ -13,11 +13,11 @@ pkgbase = r-cards
 	depends = r-rlang
 	depends = r-tidyr
 	depends = r-tidyselect
-	optdepends = r-spelling
+	depends = r-lifecycle
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/cards_0.4.0.tar.gz
-	md5sums = cef71180716bfa6b54d633564a1b9d8e
-	b2sums = ca2a4419064f471276151a0e6feb4c758c27b959e3a0ab82ae5703df3ba6d839c5f9936fb2b999c0d13234142ad869dc63dc6f2b631cdfb8615cf8b582c6f7cb
+	source = https://cran.r-project.org/src/contrib/cards_0.5.1.tar.gz
+	md5sums = 66758a6de420dc1db6c2371cd867f9b5
+	b2sums = 110430ec7ff8e06ff9c52f5ba2e12d7ef866938faaebb59af1a6f639bb7a2525fff9175b7d8c7e55a7d5cb353482dc6998f713ece3d2b1eccb642926602f75c6
 
 pkgname = r-cards
