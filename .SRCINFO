@@ -4,6 +4,7 @@ pkgbase = android-x86-libiec61883
 	pkgrel = 3
 	url = https://www.kernel.org/pub/linux/libs/ieee1394/
 	arch = any
+	groups = android-libiec61883
 	license = LGPL
 	makedepends = android-configure
 	depends = android-x86-libraw1394
