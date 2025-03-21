@@ -1,6 +1,6 @@
 pkgbase = r-insight
 	pkgdesc = Easy Access to Model Information for Various Model Objects
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=insight
 	arch = any
@@ -122,8 +122,9 @@ pkgbase = r-insight
 	optdepends = r-vgam
 	optdepends = r-weightit
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/insight_1.0.2.tar.gz
-	md5sums = 22982d70e0d7de7542817c729dfe2e51
-	b2sums = 5f9ee110551e52211008e29a055202973890bb80cbf339d9ad2e81189b6dae2493683890670f8644a05e6dc2f6d59e39930f313c70b99f913c2b47bdd92d9bd2
+	optdepends = r-tune
+	source = https://cran.r-project.org/src/contrib/insight_1.1.0.tar.gz
+	md5sums = b2be66d0d69a4e285f4911d98fd12043
+	b2sums = d16abe6b205289541f7b6730b193e9abb2c90cb7e78b60610b88d7cdd22430d44391b0175a87d67b24077eb7b54d2444e77b70b2c3ae53180c26bcc62809cbea
 
 pkgname = r-insight
