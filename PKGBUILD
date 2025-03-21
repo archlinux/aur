@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRutils
-_pkgver=1.2.0
+_pkgver=1.4.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,10 +43,11 @@ optdepends=(
   r-rmarkdown
   r-testthat
   r-yaml
+  r-scales
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6fd781aed5ab1373abdd3824f7fd56be')
-b2sums=('0344bab38c3cec803dbf934dd16dcfa8e75d567067e5d48a965cfb4e09574549d46adee6975c75249dbe673664bf9ddacfb85a1be2837af99ae27f2c3f277150')
+md5sums=('3abd7ba8500d0bafce0bce5330f5b6fc')
+b2sums=('e073153f2aa9dc4ab6da2c7d07dd92eba9779ae1bd48a4cdacd4ae3f32c1cd9c3deed760b0c9f287019e94941ee92c48aa94226281e06521fdf8bc40af683c1a')
 
 build() {
   mkdir build
