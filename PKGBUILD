@@ -2,8 +2,8 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-git"
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="XR Linux Driver"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/XRLinuxDriver"
@@ -11,8 +11,19 @@ license=('GPL-3.0')
 install=hooks.install
 makedepends=('cmake' 'make')
 depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'wayland' 'systemd-libs')
-source=("git+${url}#commit=53002afde8406eef7fe309206268ad6dc39e2da6")
+source=("git+${url}#commit=f614e6eae93ebfe1f6e690b8170f3f06bbd25413")
 md5sums=(SKIP)
+
+prepare() {
+  USER=${SUDO_USER:-$USER}
+  if [ -n "$USER" ]; then
+    USER_HOME=$(getent passwd $USER | cut -d: -f6)
+    if [ -e "$USER_HOME/.local/bin/xr_driver_uninstall" ]; then
+      echo "Please uninstall XRLinuxDriver using $USER_HOME/.local/bin/xr_driver_uninstall, then reattempt the AUR installation"
+      exit 1
+    fi
+  fi
+}
 
 build() {
     cd ${_pkgbase}
@@ -51,4 +62,3 @@ package() {
     install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
     echo "uinput" > "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
-
