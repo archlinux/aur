@@ -1,27 +1,31 @@
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at proton dot me>
 # Contributor: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 
-_pkgname=lml
-pkgname=python-$_pkgname
-pkgver=0.1.0
+_pyname=lml
+pkgname=python-$_pyname
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Load me later. A lazy loading plugin management system."
-arch=('any')
+pkgdesc="A lazy loading plugin management system."
+arch=(any)
 url='https://github.com/python-lml/lml'
-license=('BSD')
-makedepends=('python-setuptools')
-depends=('python')
+license=(BSD-3-Clause)
+depends=(python)
+makedepends=(python-setuptools cython python-build python-installer python-wheel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b68a79b25cca1cd8028a208a49ebb37093ccf142454832f773c915431db0b90a')
+sha256sums=('e34afa915ea71e935687356376f5303386ea69a6e9de4bde612466e1ec5f16a7')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m build \
+    --wheel \
+    --no-isolation \
+    --skip-dependency-check
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m755 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m installer \
+    --destdir="$pkgdir" \
+    --compile-bytecode=2 \
+    dist/*.whl
 }
