@@ -1,0 +1,16 @@
+pkgbase = python-unzip-http
+	pkgdesc = Extract files from .zip files over http without downloading entire archive
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/saulpw/unzip-http
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-urllib3
+	source = unzip-http-0.6.tar.gz::https://github.com/saulpw/unzip-http/archive/refs/tags/v0.6.tar.gz
+	sha256sums = 9ee87473701a87ba658e31c53ee567a4e62b80f0e7bdbc2cdd21cccdfb15f50a
+
+pkgname = python-unzip-http
