@@ -1,0 +1,20 @@
+pkgbase = android-riscv64-libshout
+	pkgdesc = Library for accessing a shoutcast/icecast server (Android riscv64)
+	pkgver = 2.4.6
+	pkgrel = 2
+	url = https://www.icecast.org/
+	arch = any
+	license = LGPL
+	makedepends = android-configure
+	depends = android-riscv64-libvorbis
+	depends = android-riscv64-libtheora
+	depends = android-riscv64-speex
+	depends = android-riscv64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.xiph.org/releases/libshout/libshout-2.4.6.tar.gz
+	md5sums = 4a66a369a01ce790e578221fa2c8ea60
+
+pkgname = android-riscv64-libshout
