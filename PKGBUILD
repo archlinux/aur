@@ -2,7 +2,7 @@
 
 pkgbase=gowin-eda
 pkgver=1.9.11
-pkgrel=2
+pkgrel=3
 epoch=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
 arch=('x86_64')
@@ -42,7 +42,7 @@ _package-ide() {
   
   cd ${srcdir}/IDE
   
-  # _install 644 doc/
+  _install 644 doc/
   _install 644 lib/
   _install 644 data/
   _install 644 share/
@@ -51,7 +51,9 @@ _package-ide() {
   _install 644 plugins/
   _install 644 bin/vhdl_packages
   _install 644 bin/prim_syns
+  _install 644 bin/eye_mon_task_gen.dist
   _install 644 bin/serdes_toml_to_csr.dist
+  _install 644 bin/ssc_task_gen.dist
   _install 755 bin/ -maxdepth 1
 
   chmod 644 ${pkgdir}/opt/${pkgname}/bin/prim{itive.xml,_syn.vhd,_syn.v}
@@ -75,7 +77,7 @@ _package-ide() {
   # https://mathematica.stackexchange.com/questions/189306/cant-launch-mathematica-11-on-fedora-29
   rm -f ${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6
 
-  # fix IDE hardcode path of Programmer
+  # HACK: fix IDE hardcode path of Programmer
   sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gao_{sh,analyzer}
   sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/plugins/ide/lib{StartPage,FpgaPrj}.so
   ln -s /opt/${pkgbase}-programmer ${pkgdir}/opt/${pkgname}/Programmer
@@ -95,6 +97,8 @@ _package-programmer() {
   _install 644 doc/
   _install 644 bin/PyQt5
   _install 644 bin/data
+  _install 644 bin/Crypto -path '*/__pycache__' -prune -o
+  _install 644 bin/tools
   _install 644 bin/ -maxdepth 1
 
   _install_exec programmer programmer_cli
@@ -111,10 +115,6 @@ _package-programmer() {
   install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   chmod 755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
-  
-
-  # suit for IDE hardcode path of Programmer
-  # ln -s /opt/${pkgname} ${pkgdir}/opt/Programmer
 }
 
 pkgname=("${pkgbase}-ide" "${pkgbase}-programmer")
