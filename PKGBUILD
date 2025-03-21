@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scviR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea4ed9b3657debac2af8c9f995f96e65')
-b2sums=('9329f3fd26bd22516949be95f5252fa0a6f941b814e24b23e2396f21ffe81d871503ff783b5bf33d4b5a159078c36159d6bfcc76702708d71a7af0373650a027')
+md5sums=('f74a3316c36a41c893d5fb09c718a465')
+b2sums=('b3c24618f336a744d8feedbe48c17dead34778f698a82cf2f0ce61263929e1457a926fb1f7e62177aceb52312aa8c63d7365b89eb25eb66d5ee70b6a532b29f6')
 
 build() {
   mkdir build
