@@ -1,0 +1,5 @@
+#Type   Path                              Mode    User        Group   Age     Argument
+d       /var/lib/csnet                    0755    csnetuser   csnetuser   -       -
+d       /var/log/csnet                    0755    csnetuser   csnetuser   -       -
+d       /etc/csnet                        0755    csnetuser   csnetuser   -       -
+

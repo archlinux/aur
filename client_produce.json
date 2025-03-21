@@ -1,0 +1,21 @@
+[
+    {
+        "listen_addr": "localhost:54321",
+        "tcp_timeout": 60,
+        "sa_username": "",
+        "sa_password": "",
+        "proxy_ipv4": true,
+        "proxy_ipv6": true,
+        "resolve_ipv4": true,
+        "resolve_ipv6": true,
+        "priority_ipv6": false,
+        "direct_all": false,
+        "direct_china": true,
+        "direct_private": true,
+        "service_only": false,
+        "use_doh_query": true,
+        "proxy_doh_req": true,
+        "doh_query_addr": "https://8.8.8.8/resolve",
+        "server_mode": "delay"
+    }
+]

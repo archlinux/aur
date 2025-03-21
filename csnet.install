@@ -1,0 +1,24 @@
+pre_install() {
+    echo -e "==== installing csnet ===="
+}
+
+_help() {
+    echo -e "启用 csnet 的服务: sudo systemctl enable --now csnet"
+    echo -e "Enable the service with: sudo systemctl enable --now csnet"
+    echo -e "Socks5 代理地址： socks5://localhost:54321"
+    echo -e "Socks5 proxy address: socks5://localhost:54321"
+    echo -e "对于 Chromium 系浏览器（新 Edge、Chrome ）可添加启动参数 --proxy-server="socks5://localhost:54321" 使用代理服务器。"
+    echo -e "For Chromium browsers (new Edge, Chrome) you can add the startup parameter --proxy-server="socks5://localhost:54321" to use a proxy server."
+    echo -e "Linux 终端使用代理: export ALL_PROXY=socks5://localhost:54321"
+    echo -e "Linux terminals use proxy: export ALL_PROXY=socks5://localhost:54321"
+}
+
+post_install() {
+    _help
+    echo -e "==== csnet installed ===="
+}
+
+post_upgrade() {
+    _help
+    echo -e "==== csnet upgradeed ===="
+}
