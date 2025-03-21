@@ -1,90 +1,90 @@
-# Maintainer: peippo <christoph+aur@christophfink.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: peippo <christoph+aur@christophfink.com>
 
-_cranname=pkgdepends
-_cranver=0.8.0
-pkgname=r-${_cranname,,}
-pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
-url="https://cran.r-project.org/package=${_cranname}"
-license=("MIT")
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-
-arch=("i686" "x86_64")
+_pkgname=pkgdepends
+_pkgver=0.8.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Package Dependency Resolution and Downloads"
+arch=(any)
+url="https://cran.r-project.org/package=$_pkgname"
+license=('MIT')
 depends=(
-    "r>=3.5"
-    "r-callr>=3.3.1"
-    "r-cli>=3.6.0"
-    "r-curl"
-    "r-desc>=1.4.3"
-    "r-filelock>=1.0.2"
-    "r-jsonlite"
-    "r-lpsolve"
-    "r-pkgbuild>=1.0.2"
-    "r-pkgcache>=2.2.0"
-    "r-processx>=3.4.2"
-    "r-ps"
-    "r-r6"
-    "r-zip>=2.3.0"
+  r-callr
+  r-cli
+  r-curl
+  r-desc
+  r-filelock
+  r-jsonlite
+  r-lpsolve
+  r-pkgbuild
+  r-pkgcache
+  r-processx
+  r-ps
+  r-r6
+  r-zip
+)
+checkdepends=(
+  git
+  pandoc
+  r-asciicast
+  r-mockery
+  r-rmarkdown
+  r-spelling
+  r-svglite
+  r-testthat
+  r-webfakes
+  systemd
 )
 optdepends=(
-    "r-asciicast>=2.2.0.9000"
-    "r-codetools"
-    "r-covr"
-    "r-debugme"
-    "r-fansi"
-    "r-fs"
-    "r-gh"
-    "r-gitcreds"
-    "r-glue"
-    "r-htmlwidgets"
-    "r-mockery"
-    "r-pak"
-    "r-pingr>=2.0.0"
-    "r-rmarkdown"
-    "r-rstudioapi"
-    "r-spelling"
-    "r-svglite"
-    "r-tibble"
-    "r-webfakes>=1.1.5.9000"
-    "r-withr>=2.1.1"
+  r-asciicast
+  r-covr
+  r-debugme
+  r-fansi
+  r-fs
+  r-gh
+  r-gitcreds
+  r-glue
+  r-htmlwidgets
+  r-mockery
+  r-pak
+  r-pingr
+  r-rmarkdown
+  r-rstudioapi
+  r-spelling
+  r-svglite
+  r-testthat
+  r-tibble
+  r-webfakes
+  r-withr
 )
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "fix-tests.patch")
+md5sums=('b54bea40d06af8ded7189c87873d95e7'
+         '57c4730b99e312aee50f66569c10b222')
+b2sums=('01e87ce3fc471763258a99f49e603cb899e73db764cccddf8afd4b3402096ec67d6dc57bca63e579b52f12b4e80acedb3d5358e55abac9840ac5e33c7964f652'
+        '114a48eda77c3d5f615d8a81c89a809f12e6d8cf249d615b7ae892c8550e58af5b95e1cee4229a054efb6166f7e552f91b7cabc6b3ac78527d7db2465e8fcb1a')
 
-# The unittests for `r-pkgdepends` have multiple circular
-# dependency chains.
-
-# As such, the tests can not be run on first build.
-# While R packages from CRAN, generally, are well-tested
-# before they are released, in some situations, you want to
-# have thorough testing on your own end.
-
-# To run the tests, first build this package without `check()`
-# (i.e., as-is) to bootstrap `r-pkgdepends`. Then, on subsequent builds,
-# (assumining you have a local repository that is accessible from
-# the build chroot), uncomment the lines defining `checkdepends`, below,
-# as well as the `check()` function further down
-
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat>=3.2.0"
-# )
-
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("01e87ce3fc471763258a99f49e603cb899e73db764cccddf8afd4b3402096ec67d6dc57bca63e579b52f12b4e80acedb3d5358e55abac9840ac5e33c7964f652")
+#prepare() {
+  # skip failing tests
+#  patch -Np1 -i fix-tests.patch
+#}
 
 build() {
-    mkdir -p "${srcdir}/build/"
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+#check() {
+#  cd "$_pkgname/tests"
+#  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+#}
 
 package() {
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${srcdir}/build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-    if [[ -f "${_cranname}/LICENSE" ]]; then
-        install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }

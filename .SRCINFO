@@ -1,27 +1,34 @@
 pkgbase = r-pkgdepends
-	pkgdesc = Cache ‘CRAN’-Like Metadata and R Packages
+	pkgdesc = Package Dependency Resolution and Downloads
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pkgdepends
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
-	depends = r>=3.5
-	depends = r-callr>=3.3.1
-	depends = r-cli>=3.6.0
+	checkdepends = git
+	checkdepends = pandoc
+	checkdepends = r-asciicast
+	checkdepends = r-mockery
+	checkdepends = r-rmarkdown
+	checkdepends = r-spelling
+	checkdepends = r-svglite
+	checkdepends = r-testthat
+	checkdepends = r-webfakes
+	checkdepends = systemd
+	depends = r-callr
+	depends = r-cli
 	depends = r-curl
-	depends = r-desc>=1.4.3
-	depends = r-filelock>=1.0.2
+	depends = r-desc
+	depends = r-filelock
 	depends = r-jsonlite
 	depends = r-lpsolve
-	depends = r-pkgbuild>=1.0.2
-	depends = r-pkgcache>=2.2.0
-	depends = r-processx>=3.4.2
+	depends = r-pkgbuild
+	depends = r-pkgcache
+	depends = r-processx
 	depends = r-ps
 	depends = r-r6
-	depends = r-zip>=2.3.0
-	optdepends = r-asciicast>=2.2.0.9000
-	optdepends = r-codetools
+	depends = r-zip
+	optdepends = r-asciicast
 	optdepends = r-covr
 	optdepends = r-debugme
 	optdepends = r-fansi
@@ -32,15 +39,20 @@ pkgbase = r-pkgdepends
 	optdepends = r-htmlwidgets
 	optdepends = r-mockery
 	optdepends = r-pak
-	optdepends = r-pingr>=2.0.0
+	optdepends = r-pingr
 	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
 	optdepends = r-spelling
 	optdepends = r-svglite
+	optdepends = r-testthat
 	optdepends = r-tibble
-	optdepends = r-webfakes>=1.1.5.9000
-	optdepends = r-withr>=2.1.1
+	optdepends = r-webfakes
+	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/pkgdepends_0.8.0.tar.gz
+	source = fix-tests.patch
+	md5sums = b54bea40d06af8ded7189c87873d95e7
+	md5sums = 57c4730b99e312aee50f66569c10b222
 	b2sums = 01e87ce3fc471763258a99f49e603cb899e73db764cccddf8afd4b3402096ec67d6dc57bca63e579b52f12b4e80acedb3d5358e55abac9840ac5e33c7964f652
+	b2sums = 114a48eda77c3d5f615d8a81c89a809f12e6d8cf249d615b7ae892c8550e58af5b95e1cee4229a054efb6166f7e552f91b7cabc6b3ac78527d7db2465e8fcb1a
 
 pkgname = r-pkgdepends
