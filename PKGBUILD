@@ -66,7 +66,6 @@ build() {
         --enable-cram \
         --enable-digest \
         --enable-gssapi \
-        --enable-ldapdb \
         --enable-login \
         --enable-ntlm \
         --enable-plain \
@@ -79,10 +78,11 @@ build() {
         --disable-srp-setpass \
         --disable-sample \
         --with-dblib=gdbm \
-        --with-ldap \
+        --with-sqlite3="${ANDROID_PREFIX_INCLUDE}" \
         --with-mysql="${ANDROID_PREFIX}" \
         --with-pgsql="${ANDROID_PREFIX_LIB}" \
-        --with-sqlite3="${ANDROID_PREFIX_INCLUDE}" \
+        --with-ldap \
+        --enable-ldapdb \
         --with-saslauthd=no \
         --with-authdaemond=no
     make $MAKEFLAGS
