@@ -1,26 +1,35 @@
-# Maintainer: envolution
+# Maintainer: storbake
+# Contributor: envolution
 # Contributor: Matt R <dev at rhoatech.com>
 # Contributor: Christian Hesse <mail at eworm.de>
 # Contributor: Sergej Pupykin <pupykin.s+arch at gmail.com> ([community] package)
 
 pkgname=remmina-git
 _pkgbase=remmina
-pkgver=1.4.39+r10039+gcc2a72fdf
+pkgver=1.4.39+r10075+g96819db53
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='http://www.remmina.org/'
 license=('GPL-2.0-or-later')
-depends=('zlib' 'libjpeg' 'libssh' 'avahi' 'vte3'
-  'libgcrypt' 'libxdmcp' 'libvncserver' 'glib2-docs'
-  'libsecret' 'webkit2gtk-4.1' 'libsodium')
-makedepends=('git' 'intltool' 'pkgconfig' 'cmake' 'avahi'
-  'libxkbfile' 'freerdp' 'gobject-introspection'
-  'spice' 'spice-gtk' 'spice-protocol' 'kwallet5' 'gtk-vnc'
-  'docbook-xsl' 'libpulse' 'libappindicator-gtk3')
-optdepends=('avahi' 'libxkbfile' 'gobject-introspection' 'spice' 'spice-gtk' 'spice-protocol' 'pyhoca-cli')
-provides=('remmina' 'grdc' "grdc=${pkgver}" 'remmina-plugins')
-conflicts=('remmina' 'grdc')
+depends=('avahi' 'bash' 'cairo' 'curl' 'gcc-libs' 'glib2' 'glibc' 'gtk3'
+         'hicolor-icon-theme' 'json-glib' 'libayatana-appindicator' 'libgcrypt'
+	 'libsodium' 'libssh' 'libx11' 'openssl' 'pango' 'python' 'vte3')
+makedepends=('git' 'cmake' 'freerdp' 'gobject-introspection' 'gtk-vnc' 'harfbuzz'
+             'kwallet5' 'libvncserver' 'ninja' 'spice-gtk' 'spice-protocol'
+             'webkit2gtk-4.1' 'xorgproto')
+optdepends=('freerdp: RDP plugin'
+            'libsecret: Secret plugin'
+            'libvncserver: VNC plugin'
+            'spice-gtk: Spice plugin'
+            #'pyhoca-cli: X2Go plugin'
+            'webkit2gtk-4.1: WWW plugin'
+            'gtk-vnc: GVNC plugin'
+            'kwallet5: kwallet plugin'
+            'gnome-terminal: external tools')
+replaces=('remmina-plugins')
+provides=('remmina-plugins')
+conflicts=('remmina')
 install=remmina.install
 source=('git+https://gitlab.com/remmina/remmina.git')
 sha256sums=('SKIP')
@@ -34,23 +43,20 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgbase
-  mkdir build
-  cmake -B build -S ./ \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DWITH_FREERDP3=ON \
-    -DWITH_CUPS=ON \
-    -DWITH_LIBSSH=ON \
-    -DWITH_NEWS=ON \
-    -DWITH_KF5WALLET=ON \
-    -DWITH_PYTHONLIBS=ON \
-    -DWITH_GVNC=ON \
-    -DWITH_X2GO=ON
-
+  cmake -S "${_pkgbase}" -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_INSTALL_LIBDIR='/usr/lib' \
+		-DWITH_APPINDICATOR='ON' \
+		-DWITH_FREERDP3='ON' \
+		-DWITH_NEWS='OFF' \
+		-DWITH_KF5WALLET='ON' \
+		-DWITH_X2GO='ON' \
+		-DWITH_GVNC='ON' \
+		-Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd "$_pkgbase/build"
-  DESTDIR="${pkgdir}" make install
+  DESTDIR="${pkgdir}" cmake --install build
 }
