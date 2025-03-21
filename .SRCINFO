@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-libmatroska
 	pkgdesc = Matroska library (Android aarch64)
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Matroska-Org/libmatroska
 	arch = any
 	groups = android-libmatroska
