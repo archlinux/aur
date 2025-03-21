@@ -2,25 +2,28 @@
 
 _name=groq
 pkgname=python-${_name}
-pkgver=0.18.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='The official Python library for the groq API.'
 arch=('any')
 url='https://github.com/groq/groq-python'
 license=('Apache-2.0')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('8e2ccfea406d68b3525af4b7c0e321fcb3d2a73fc60bb70b4156e6cd88c72f03')
+sha256sums=('2a201d41cae768c53d411dabcfea2333e2e138df22d909ed555ece426f1e016f')
 depends=('python>=3.8' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'python-anyio' 'python-distro' 'python-sniffio')
-makedepends=('python-setuptools' 'python-wheel')
-checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-nox' 'python-dirty-equals' 'python-nest-asyncio')
+makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-nest-asyncio')
 
 build() {
   cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
   local pytest_options=(
+    -vv
+    --override-ini="addopts="
+    # Need OpenAI API
     --deselect tests/api_resources
     --deselect tests/test_client.py
   )
