@@ -7,17 +7,19 @@
 
 pkgname="keypunch-git"
 _appname="keypunch"
-pkgver="5.1_43e21e3"
-pkgrel=2
+pkgver=5.1.r49.g43e21e3
+pkgrel=1
 pkgdesc='Practice your typing skills'
-url='https://github.com/bragefuglseth/keypunch/'
-app_website='https://apps.gnome.org/Keypunch'
+url='https://github.com/bragefuglseth/keypunch'
+_app_website='https://apps.gnome.org/Keypunch'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
-source=("git+$url")
+source=("git+$url.git")
 sha256sums=('SKIP')
+provides=('keypunch')
+conflicts=('keypunch')
 depends=('gtk4' 'libadwaita>=1.7')
-makedepends=('git' 'rust' 'ninja' 'meson' 'gettext' 'pkgconf' 'blueprint-compiler')
+makedepends=('blueprint-compiler' 'gettext' 'git' 'meson' 'ninja' 'pkgconf' 'rust')
 
 pkgver() {
 	cd "${srcdir}/${_appname}"

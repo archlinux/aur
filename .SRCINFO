@@ -1,21 +1,23 @@
 pkgbase = keypunch-git
 	pkgdesc = Practice your typing skills
-	pkgver = 5.1_43e21e3
-	pkgrel = 2
-	url = https://github.com/bragefuglseth/keypunch/
+	pkgver = 5.1.r49.g43e21e3
+	pkgrel = 1
+	url = https://github.com/bragefuglseth/keypunch
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = git
-	makedepends = rust
-	makedepends = ninja
-	makedepends = meson
-	makedepends = gettext
-	makedepends = pkgconf
 	makedepends = blueprint-compiler
+	makedepends = gettext
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = rust
 	depends = gtk4
 	depends = libadwaita>=1.7
-	source = git+https://github.com/bragefuglseth/keypunch/
+	provides = keypunch
+	conflicts = keypunch
+	source = git+https://github.com/bragefuglseth/keypunch.git
 	sha256sums = SKIP
 
 pkgname = keypunch-git
