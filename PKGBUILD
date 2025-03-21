@@ -11,12 +11,19 @@ license=('Apache')
 depends=('ruby')
 makedepends=('rubygems')
 checkdepends=('ruby-rspec' 'ruby-insist')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jordansissel/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7eb2363c72d88064dd4f81461712d2cd28c0b305bab94dccf83a30a2401e821e')
+source=("${pkgname}-${pkgver}::git+https://github.com/jordansissel/$pkgname.git"
+        "https://github.com/jordansissel/ruby-stud/pull/33.patch"
+       )
+sha256sums=('SKIP'
+           'b71e34262419c888317c6d8f28327298bcaf9664b8bb08eb66a600866ead1276'
+           )
 options=(!emptydirs)
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
+  # exists is deprecated and removed as of Ruby 3.2, see https://github.com/jordansissel/ruby-stud/pull/33
+  patch -Np1 -i ../33.patch
 
   sed 's|~>|>=|g' -i "${pkgname#*-}.gemspec" # we don't do version pinning
 }

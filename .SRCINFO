@@ -10,8 +10,9 @@ pkgbase = ruby-stud
 	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
-	source = ruby-stud-0.0.23.tar.gz::https://github.com/jordansissel/ruby-stud/archive/v0.0.23.tar.gz
-	sha256sums = 7eb2363c72d88064dd4f81461712d2cd28c0b305bab94dccf83a30a2401e821e
+	source = ruby-stud-0.0.23::git+https://github.com/jordansissel/ruby-stud.git
+	sha256sums = SKIP
+	sha256sums = b71e34262419c888317c6d8f28327298bcaf9664b8bb08eb66a600866ead1276
 
 pkgname = ruby-stud
 
