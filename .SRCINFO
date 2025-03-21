@@ -22,6 +22,6 @@ pkgbase = scans2any
 	provides = scans2any
 	conflicts = scans2any-git
 	source = https://files.pythonhosted.org/packages/source/s/scans2any/scans2any-0.8.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = c665347f08b800f6eba1d4cab94f1aa310ad312834e72d2370541829a2c90a4e
 
 pkgname = scans2any

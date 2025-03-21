@@ -14,7 +14,7 @@ depends=(python python-defusedxml python-jinja python-libnmap python-pandas
 	python-tqdm python-yaml)
 makedepends=(python-build python-installer python-wheel uv)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz)
-sha256sums=("SKIP")
+sha256sums=("c665347f08b800f6eba1d4cab94f1aa310ad312834e72d2370541829a2c90a4e")
 
 
 build() {
