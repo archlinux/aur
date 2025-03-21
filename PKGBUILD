@@ -2,11 +2,11 @@
 
 pkgname=walrs
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast color scheme generator"
 arch=('x86_64')
 url="https://github.com/Pixel2175/walrs"
-license=('MIT')
+license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git')
 backup=('etc/walrs/templates/colors.json')

@@ -1,10 +1,10 @@
 pkgbase = walrs
 	pkgdesc = A fast color scheme generator
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pixel2175/walrs
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
