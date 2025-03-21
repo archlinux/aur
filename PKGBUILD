@@ -6,7 +6,7 @@ pkgname=${_pkgname}-bin
 _orgname=software-mansion
 _github=${_orgname}/${_pkgname}
 pkgver=2.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The Cairo package manager'
 arch=('x86_64' 'aarch64')
 url='https://docs.swmansion.com/scarb'
@@ -19,7 +19,7 @@ sha256sums_x86_64=('e452689688c4af1330f1c4b95384cf3266e30f9afff13566154a208946c2
 sha256sums_aarch64=('9d58c15837ad47656da28e9ce7ce31694d3cd5df95b82cc2153b7f4d59b9da6d')
 
 package() {
-	for each_executable in "scarb" "scarb-cairo-language-server" "scarb-cairo-run" "scarb-cairo-test" "scarb-doc"; do
+	for each_executable in $(ls "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin/"); do
 		install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin/${each_executable}" "${pkgdir}/usr/bin/${each_executable}"
 	done
 	install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/doc/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

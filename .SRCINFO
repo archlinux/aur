@@ -1,7 +1,7 @@
 pkgbase = scarb-bin
 	pkgdesc = The Cairo package manager
 	pkgver = 2.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.swmansion.com/scarb
 	arch = x86_64
 	arch = aarch64
