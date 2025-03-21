@@ -1,6 +1,6 @@
 pkgbase = r-muscat
 	pkgdesc = Multi-sample multi-group scRNA-seq data analysis tools
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/muscat
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = r-muscat
 	optdepends = r-statmod
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/muscat_1.18.0.tar.gz
-	sha256sums = f105ef9ccbf35853b21e25215892923fb54e2b9a10ddf11f126e247307664ebd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/muscat_1.20.0.tar.gz
+	sha256sums = 83ad4e39a1424855dc8b6290249bcdd9c92ac58a83b770aab2ba11b0698a7612
 
 pkgname = r-muscat
