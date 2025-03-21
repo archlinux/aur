@@ -1,14 +1,14 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epiNEM
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='epiNEM'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=(
   r
   r-boolnet
@@ -22,6 +22,7 @@ depends=(
   r-mnem
   r-pcalg
   r-rcolorbrewer
+  r-boutroslab.plotting.general
 )
 optdepends=(
   r-annotationhub
@@ -36,7 +37,7 @@ optdepends=(
   r-stringdb
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f1d415a90fb10c90b25afcba55ec27360a552fc023a9377624606117292d894')
+sha256sums=('09def1347448d85eb1690fb89d317b20cf452d25ab449fdd002acf63e49a0a61')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
