@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.6.r36.gccbf883
+pkgver=1.0.0.alpha.6.r39.g5f8e9d1
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,7 @@ makedepends=(
   'clang'
   'git'
   'just'
-  'lld'
-#  'mold'
+  'mold'
 )
 optdepends=(
   'adw-gtk-theme'
@@ -38,6 +37,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=('git+https://github.com/pop-os/cosmic-settings.git')
 sha256sums=('SKIP')
 
@@ -57,10 +57,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use mold instead of lld to speed up build
-#  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
-
-  # use LLD as Mold fails with LTO enabled
-  RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
+  RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
   nice just build-release
