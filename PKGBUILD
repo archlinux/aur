@@ -1,6 +1,6 @@
 # Maintainer: Wai <waicool20@gmail.com>
 pkgname=fw-fanctrl-ui-git
-pkgver=r7.db8939a
+pkgver=r9.bc12125
 pkgrel=1
 pkgdesc="Framework Fan Control UI"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPLv3')
 source=('fw-fanctrl-ui::git+https://github.com/waicool20/fw-fanctrl-ui.git')
 md5sums=("SKIP")
 depends=(
-  'fw-fanctrl-git'
+  'fw-fanctrl'
   'python-pystray'
 )
 
