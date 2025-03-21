@@ -9,8 +9,8 @@ url="https://github.com/softScheck/scans2any"
 license=("AGPL-3.0-or-later")
 provides=(scans2any scans2any-git)
 conflicts=(scans2any)
-depends=(python python-defusedxml python-htmlgenerator python-jinja python-libnmap
-	python-pandas python-partial-json-parser python-sortedcontainers python-tabulate
+depends=(python python-defusedxml python-jinja python-libnmap python-pandas
+	python-partial-json-parser python-sortedcontainers python-tabulate
 	python-tqdm python-yaml)
 makedepends=(python-build python-installer python-wheel uv)
 checkdepends=(uv)
