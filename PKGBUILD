@@ -3,7 +3,7 @@
 
 pkgname="ruby-stud"
 pkgver=0.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="small reusable bits of code"
 arch=('any')
 url="https://rubygems.org/gems/${pkgname#*-}"
