@@ -2,18 +2,16 @@
 # Contributor: lp76 <l.peduto@gmail.com>
 
 pkgname=podget
-pkgver=0.9.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Simple tool to automate downloading of podcasts'
 arch=(any)
-url=https://podget.sourceforge.net
-license=(GPL3)
+#url=https://podget.sourceforge.net
+url=https://github.com/dvehrs/podget
+license=(GPL-3.0-or-later)
 depends=(wget)
-#source=("https://github.com/dvehrs/podget/archive/refs/tags/v$pkgver.tar.gz")
-#source=("https://downloads.sourceforge.net/project/podget/podget/podget-$pkgver/podget-$pkgver.tar.gz")
-#source=("https://sourceforge.net/projects/podget/files/podget/podget-${pkgver:0:3}/podget-$pkgver.tar.gz")
-source=("https://sourceforge.net/projects/podget/files/podget/podget-$pkgver/podget-$pkgver.tar.gz")
-sha256sums=('b7a9e38b046da24e4043f6b737fcece303b151446758d94857361d5b677f1924')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz")
+sha256sums=('2c8ec81002d03a4e3b207ee39773404fc5962cfbb1bd6711607f183c408cdc0d')
 
 package() {
   install -Dm644 $pkgname-$pkgver/README -t "$pkgdir/usr/share/$pkgname"
