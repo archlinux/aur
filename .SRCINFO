@@ -1,11 +1,10 @@
 pkgbase = r-ggtangle
 	pkgdesc = Draw Network with Data
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=ggtangle
 	arch = any
 	license = Artistic-2.0
-	depends = r
 	depends = r-ggfun
 	depends = r-ggplot2
 	depends = r-ggrepel

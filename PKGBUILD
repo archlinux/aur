@@ -4,13 +4,12 @@ _pkgname=ggtangle
 _pkgver=0.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Draw Network with Data'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('Artistic-2.0')
 depends=(
-  r
   r-ggfun
   r-ggplot2
   r-ggrepel
