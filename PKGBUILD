@@ -13,6 +13,7 @@ arch=('any')
 pkgdesc="A higher level API for streaming DV, MPEG-2 and audio over Linux IEEE 1394 (Android ${_android_arch})"
 url='https://www.kernel.org/pub/linux/libs/ieee1394/'
 license=('LGPL')
+groups=('android-libiec61883')
 depends=("android-${_android_arch}-libraw1394")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
@@ -24,12 +25,15 @@ build() {
     source android-env ${_android_arch}
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
              host=armv8-unknown-linux
             ;;
         armv7a-eabi)
              host=armv7-unknown-linux
+            ;;
+        riscv64)
+             host=riscv64-unknown-linux
             ;;
         x86)
              host=x86-unknown-linux
@@ -96,6 +100,6 @@ package() {
         install -v -m 644 ${d}/.libs/*.a "${pkgdir}/${ANDROID_PREFIX_LIB}/"
     done
 
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
