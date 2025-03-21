@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggkegg
-_pkgver=1.2.3
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,17 +10,14 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r-annotationdbi
   r-biocfilecache
   r-data.table
   r-dplyr
-  r-getoptlong
   r-ggplot2
   r-ggraph
   r-gtable
   r-igraph
   r-magick
-  r-org.hs.eg.db
   r-patchwork
   r-shadowtext
   r-stringr
@@ -38,10 +35,11 @@ optdepends=(
   r-knitr
   r-rmarkdown
   r-testthat
+  r-annotationdbi
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65a2654d46a4d68f2576ddd95ae6c0e5')
-b2sums=('3426a2761550cf8bd96cb7e90db703273df6b2f1458c7ef37556a197ba59c3d7fe1285b2a0559266c0cff264e895a8c122437695611c28522e5349b77e09241b')
+md5sums=('32c248e3d12bd305dbd394d938f00d27')
+b2sums=('5a2b57b7c5f7d92de9b3ea4f86db387d920dc9f9b305980cb598bca119705d7648bf50dd532a411c1a410f0dbd00bf17280539157584945e7fc389c37bab717f')
 
 build() {
   mkdir build
