@@ -1,6 +1,6 @@
 pkgbase = python-typing-validation
 	pkgdesc = A simple library for runtime type-checking
-	pkgver = 1.2.11.post4
+	pkgver = 1.2.12
 	pkgrel = 1
 	url = https://typing-validation.readthedocs.io
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-typing-validation
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/t/typing_validation/typing_validation-1.2.11.post4.tar.gz
-	md5sums = 2c7a8d1cf6b220f95ad941df36ed1e6c
+	source = https://files.pythonhosted.org/packages/source/t/typing_validation/typing_validation-1.2.12.tar.gz
+	md5sums = c4ecf70bf701f96683b5a91cc6aecd4d
 
 pkgname = python-typing-validation
 	depends = python>=3.7
