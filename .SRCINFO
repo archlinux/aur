@@ -1,6 +1,6 @@
 pkgbase = xc-music-git
 	pkgdesc = GUI of Netease Cloud Music.(Use system-wide electron)第三方网易云音乐客户端
-	pkgver = 0.2.9.r0.gccc266d
+	pkgver = 0.3.0.r0.gdbf434a
 	pkgrel = 1
 	url = https://xc-music.vercel.app/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = xc-music-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	depends = electron13
-	provides = xc-music=0.2.9
+	depends = electron35
+	provides = xc-music=0.3.0
 	conflicts = xc-music
 	source = xc-music.git::git+https://github.com/yiktllw/XCMusic
 	source = xc-music.sh

@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xc-music-git
 _pkgname=XCMusic
-pkgver=0.2.9.r0.gccc266d
-_electronversion=13
-_nodeversion=16
+pkgver=0.3.0.r0.gdbf434a
+_electronversion=35
+_nodeversion=20
 pkgrel=1
 pkgdesc="GUI of Netease Cloud Music.(Use system-wide electron)第三方网易云音乐客户端"
 arch=('any')
@@ -41,13 +41,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
-        s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
@@ -68,14 +68,13 @@ prepare() {
     fi
     find src -type f -exec sed -i "s/icon\.ico/icon\.png/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "18i\          target: ['dir']," vue.config.js
+    #sed -i "18i\          target: ['dir']," vue.config.js
     rm -rf dist_electron
     NODE_ENV=development    npm install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    NODE_ENV=production     npx node babel_cmds.js
-    NODE_ENV=production     npm run electron:build
+    NODE_ENV=production     npm run electron:build -- --linux dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
