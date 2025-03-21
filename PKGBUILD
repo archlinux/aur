@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libmatroska
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Matroska library (Android ${_android_arch})"
 url='https://github.com/Matroska-Org/libmatroska'
@@ -26,15 +26,19 @@ build() {
     android-${_android_arch}-cmake \
         -S . \
         -B build-shared \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=ON \
-        -DEBML_DIR="${ANDROID_PREFIX_LIB}/cmake/EBML"
+        -DEBML_DIR="${ANDROID_PREFIX_LIB}/cmake/EBML" \
+        -Wno-dev
     make -C build-shared
 
     android-${_android_arch}-cmake \
         -S . \
         -B build-static \
+        -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
         -DBUILD_SHARED_LIBS=OFF \
-        -DEBML_DIR="${ANDROID_PREFIX_LIB}/cmake/EBML"
+        -DEBML_DIR="${ANDROID_PREFIX_LIB}/cmake/EBML" \
+        -Wno-dev
     make -C build-shared
 }
 
