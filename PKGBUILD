@@ -3,13 +3,13 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=1.36.1
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
-url="https://github.com/honjow/sk-holoiso-config.git"
+url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
-makedepends=('git' 'plymouth')
+makedepends=('git' 'fakeroot')
 depends=(
     amdgpu-test-scripts-common-git
     amd-s2idle-analysis-script-git
@@ -35,7 +35,7 @@ optdepends=(
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-holoiso-config/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
@@ -82,7 +82,7 @@ package() {
 
     # lib service
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
-    # install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.{service,timer,swap}
+    # install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
     find "${source_dir}/systemd/system" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/system/" \;
     install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
@@ -104,8 +104,8 @@ package() {
     install -m644 -t "${pkgdir}/etc/profile.d" "${source_dir}/etc/profile.d"/*
 
     # plymouthd.conf
-    install -dm755 "${pkgdir}/etc/plymouth"
-    install -m644 -t "${pkgdir}/etc/plymouth" "${source_dir}/etc/plymouth"/*
+    install -dm755 "${pkgdir}/etc/plymouthd"
+    cp -r "${source_dir}/etc/plymouthd"/* "${pkgdir}/etc/plymouthd"
 
     # /usr/share/sk-chos/just/*
     install -dm755 "${pkgdir}/usr/share/sk-chos/just"
@@ -126,7 +126,6 @@ package() {
     # /etc/bash_completion.d
     install -dm755 "${pkgdir}/etc/bash_completion.d"
     install -m644 "${source_dir}/share/sk-chos/completions/_just.bash" "${pkgdir}/etc/bash_completion.d/just.bash"
-    install -m644 "${source_dir}/share/sk-chos/completions/_cjust.bash" "${pkgdir}/etc/bash_completion.d/cjust.bash" || true
 
     # /usr/lib/cjust
     install -dm755 "${pkgdir}/usr/lib/cjust"
@@ -148,7 +147,7 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
 
-    # plymouth themes
+    # /usr/share/plymouth/themes
     install -dm755 "${pkgdir}/usr/share/plymouth/themes"
     cp -r "${source_dir}/share/plymouth/themes"/* "${pkgdir}/usr/share/plymouth/themes/"
 
