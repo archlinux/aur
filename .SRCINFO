@@ -1,6 +1,6 @@
 pkgbase = r-alabaster.ranges
 	pkgdesc = Load and Save Ranges-related Artifacts from File
-	pkgver = 1.4.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/alabaster.ranges
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = r-alabaster.ranges
 	optdepends = r-jsonlite
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.ranges_1.4.2.tar.gz
-	md5sums = 07e5c23caf6c89d9e5131a5b04ec1903
-	b2sums = 35fe017bbf3c1635bcd287fcda8607dfb0b27ca83057de7f9f16619c4746001ce33144d2a1ccca7600b592fc8076c2d5f47680474527f0d97fd5a55dbfde0e19
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/alabaster.ranges_1.6.0.tar.gz
+	md5sums = 91f5afc229776f80c91244592f138ed1
+	b2sums = 7965cdc2c219615c52398db684057d52944ea8a0ed589cb605074fddc0ad978941c50e79abd49d03aa6d8941080c00516e8e3f10421f9238a8fce25becb67d19
 
 pkgname = r-alabaster.ranges
