@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libdv
 	pkgdesc = Decoder library for DV video (Android x86-64)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libdv.sourceforge.net/
 	arch = any
+	groups = android-libdv
 	license = LGPL-2.1-or-later
 	makedepends = android-configure
 	depends = android-x86-64-popt
