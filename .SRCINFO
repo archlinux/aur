@@ -1,13 +1,13 @@
 pkgbase = python-stable-ts-git
-	pkgdesc = Stabilizing timestamps of OpenAI's Whisper outputs down to word-level
-	pkgver = r56.d22a75d
+	pkgdesc = Transcription, forced alignment, and audio indexing with OpenAI's Whisper
+	pkgver = r295.fefaf46
 	pkgrel = 1
 	url = https://github.com/jianfch/stable-ts
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = whisper
+	depends = python-openai-whisper
 	provides = python-stable-ts
 	conflicts = python-stable-ts
 	source = git+https://github.com/jianfch/stable-ts.git
