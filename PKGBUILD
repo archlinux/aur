@@ -21,8 +21,8 @@ depends=(
 )
 makedepends=("cargo" "cmake" "git" "pkgconf" "python")
 options=(!lto)
-provides=("wezterm" "wezterm-gui" "wezterm-mux-server" "wezterm-shell-integration" "wezterm-git")
-conflicts=("wezterm" "wezterm-bin" "wezterm-nightly-bin" "wezterm-shell-integration" "wezterm-git")
+provides=("wezterm" "wezterm-gui" "wezterm-mux-server" "wezterm-shell-integration")
+conflicts=("wezterm" "wezterm-bin" "wezterm-nightly-bin" "wezterm-shell-integration")
 source=(
   "wezterm::git+https://github.com/wez/wezterm.git"
   "harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git"
