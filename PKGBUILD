@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2024.12.23
-pkgrel=1
+pkgrel=2
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -65,7 +65,10 @@ build() {
     CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=[0-9]\s//g" <(echo $CXXFLAGS))
 
     # Build
-    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args " -DBUILD_TESTING=OFF"
+    # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.
+    #                  They were using deprecated ASIO functionality, which is now removed.
+    #                  See the following issue: https://github.com/eProsima/Fast-DDS/issues/5726
+    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DTHIRDPARTY_Asio=FORCE
 
     # Replace all references to srcdir in colcon shell files
      printf "Replace references to srcdir in colcon shell files\n"
