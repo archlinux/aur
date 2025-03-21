@@ -1,6 +1,6 @@
 pkgbase = r-netzoor
 	pkgdesc = Unified methods for the inference and analysis of gene regulatory networks
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/netZooR
 	arch = any
@@ -41,8 +41,8 @@ pkgbase = r-netzoor
 	optdepends = r-pkgdown
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/netZooR_1.8.0.tar.gz
-	md5sums = 904aea3017f4cb3bedf5e66c31c3745c
-	b2sums = 244b18a98511ef6b01ae94e869f8eb7c0f13fdddd9d4cb391f73f8ef0ead75cbf262106b6ab8f9418d50bd00d69ac5e8f06c7e2aeb7f9a62bc28ddffbdc230eb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/netZooR_1.10.0.tar.gz
+	md5sums = dcb15929eca8b8b2db4a935e9c204f77
+	b2sums = 54e85e12375c8d13bcd38b18b3309a52d4d6b944ef6558fc15483e600ca0d3900b335735209080167a3d8bceda78a5aa9e9038d85e27ac2362dc2ac4d5f65a15
 
 pkgname = r-netzoor
