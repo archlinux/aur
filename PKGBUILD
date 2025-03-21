@@ -1,7 +1,8 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2120.rc3
-pkgrel=4
+pkgver=2120
+pkgrel=1
+epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
@@ -12,10 +13,10 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-js
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 conflicts=(citra)
 options=(!lto)
-_date=20250317
-_commit=0f8765e
+_date=20250321
+_commit=d2a58ea
 source=("$url/releases/download/${pkgver/./-}/$pkgname-unified-source-$_date-$_commit.tar.xz")
-sha256sums=('65dd774cf50d311addc1207660aafdea3cb161d3aec3bbc6bc48db17266f938d')
+sha256sums=('63d329a1a7859965df632ec8436435f4f2000c5ddf355744f55ae552875b3532')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
@@ -61,5 +62,4 @@ package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
 	rm -rf "$pkgdir/usr/include"
-	sed -i '11s/Exec=azahar/Exec=env QT_QPA_PLATFORM=xcb azahar/' "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
