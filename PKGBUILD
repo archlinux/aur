@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=minfiData
-_pkgver=0.50.0
+_pkgver=0.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r-minfi
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1690dfe4d1ce4f49cae6078d0afe50aa')
-b2sums=('caba0d05d3e4d879dd3dfb5d6288dc9c75326a3f13f720f2ff86a785b2475fa352513013633314c68c186fac9f48fde228905832bb779944d9bf613f13cb3ae0')
+md5sums=('8a4cef6c4c950cfa8c6484c289a084c1')
+b2sums=('f379a5aa3473e66672c3c222f4e8df11767fe153ced8e68b4021effe06eea0bfebb870dbe8683aecceb6c0f653148bba2de86071fabaf9f9f99aeb3d7e05cbf3')
 
 build() {
   mkdir build
