@@ -1,12 +1,12 @@
 pkgbase = python-jaxlib-cuda
 	pkgdesc = XLA library for JAX
-	pkgver = 0.4.38
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/jax-ml/jax/
 	arch = x86_64
 	groups = jax
-	license = Apache
-	makedepends = gcc13
+	license = Apache-2.0
+	makedepends = clang18
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -14,17 +14,15 @@ pkgbase = python-jaxlib-cuda
 	depends = cuda
 	depends = cudnn
 	depends = nccl
-	depends = openssl
 	depends = python-absl
-	depends = python-flatbuffers
 	depends = python-ml-dtypes>=0.4.0
 	depends = python-numpy
 	depends = python-scipy
-	provides = python-jaxlib=0.4.38
+	provides = python-jaxlib=0.5.3
 	conflicts = python-jaxlib
-	source = jaxlib-0.4.38.tar.gz::https://github.com/jax-ml/jax//archive/refs/tags/jax-v0.4.38.tar.gz
-	source = https://github.com/bazelbuild/bazel/releases/download/6.5.0/bazel-6.5.0-linux-x86_64
-	sha256sums = ca1e63c488d505b9c92e81499e8b06cc1977319c50d64a0e58adbd2dae1a625c
-	sha256sums = a40ac69263440761199fcb8da47ad4e3f328cbe79ffbf4ecc14e5ba252857307
+	source = jaxlib-0.5.3.tar.gz::https://github.com/jax-ml/jax//archive/refs/tags/jax-v0.5.3.tar.gz
+	source = bazel-7.4.1-linux-x86_64::https://github.com/bazelbuild/bazel/releases/download/7.4.1/bazel-7.4.1-linux-x86_64
+	sha256sums = 1094581a30ec069965f4e3e67d60262570cc3dd016adc62073bc24347b14270c
+	sha256sums = c97f02133adce63f0c28678ac1f21d65fa8255c80429b588aeeba8a1fac6202b
 
 pkgname = python-jaxlib-cuda
