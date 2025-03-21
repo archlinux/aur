@@ -4,22 +4,21 @@ pkgbase=python-stsci.stimage
 _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}")
-pkgver=0.2.10
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="STScI image processing"
 arch=('i686' 'x86_64')
 url="https://stscistimage.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy'
-             'gcc13')  # wheel required by new setuptools
+             'python-numpy')  # wheel required by new setuptools
+#            'gcc13'
 checkdepends=('python-pytest')
 #checkdepends=('python-pytest-xdist')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9c18c7ce0c20a13dc50e008c50cf45f6')
+md5sums=('0c4ad27bbbcff9437951ade4adf4f595')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -28,7 +27,8 @@ get_pyver() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    CC=gcc-13 CXX=g++-13 python -m build --wheel --no-isolation --skip-dependency-check
+#   CC=gcc-13 CXX=g++-13 python -m build --wheel --no-isolation --skip-dependency-check
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
