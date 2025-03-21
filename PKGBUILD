@@ -22,6 +22,7 @@ depends=(
     'openal'
     'unzip'
     'zip'
+    'gamemaker-steamruntime-sdk-bin'
 )
 
 # Package relations

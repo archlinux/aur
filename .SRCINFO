@@ -11,6 +11,7 @@ pkgbase = gamemaker-beta-bin
 	depends = openal
 	depends = unzip
 	depends = zip
+	depends = gamemaker-steamruntime-sdk-bin
 	provides = gamemaker-beta
 	conflicts = gamemaker-beta
 	options = !strip
