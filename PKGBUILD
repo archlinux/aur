@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=epimutacions
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -58,8 +58,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('694c3b410dc04c920577d6b16d905fe1')
-b2sums=('aa049bfa3553767e84651b2e307ebd73711db57e961d214c5728ce1d53ca0ed21c9838242add7c952b2b62ae4190ce0bacda059a652f3e93dcf0832a8183bf3b')
+md5sums=('30df10a44d353e8f963c72c0822682e3')
+b2sums=('b6bdb467e04f9db2731ef035c25c817c05fe20ff5a8eb21f97bc4cd2a98f9ffaf34f8c0f7fd196e08673d68ae0b1280d7eaff4dc3c2454cf3a251e1d8745e530')
 
 build() {
   mkdir build
