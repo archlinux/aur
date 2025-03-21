@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.spatial
-_pkgver=1.4.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('01c601e84e24d5aaabaa621b927b09e2')
-b2sums=('ca0bb70d90908e5f5e0d1bdeb0fad190325eeb216c200fbc76c1d7efcc184e87d883456c2133b6232a1c1166f3b7f9f2509dadd9397ae17fe57daf00fc3d106e')
+md5sums=('5f6470882c2e1a348dcdcc20d5d672b9')
+b2sums=('8bc2fb4c493e6497ab7cea2d88a5c6d64f828846bb7a199f817212103db6a682254ca217cc64b3ec7daf4fce9dc35190adea70d8cf4f70f883664c5284f0e52f')
 
 build() {
   mkdir build
