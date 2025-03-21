@@ -1,0 +1,10 @@
+--- a/saslauthd/auth_getpwent.c
++++ b/saslauthd/auth_getpwent.c
+@@ -81,7 +81,6 @@
+     errno = 0;
+     pw = getpwnam(login);
+     errnum = errno;
+-    endpwent();
+ 
+     if (pw == NULL) {
+ 	if (errnum != 0) {
