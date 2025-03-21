@@ -1,12 +1,14 @@
 #Maintainer:    Giteeajake <giteeajake@qq.com>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
+#Thanks Klaus Alexander Seistrup :)
 #this PKGBUILD of Keypunch
 #github Repo: https://github.com/bragefuglseth/keypunch/
 
 pkgname="keypunch-git"
 _appname="keypunch"
-pkgver='v5.1_43e21e3'
-pkgrel=1
+pkgver=0
+pkgrel=0
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch/'
 app_website='https://apps.gnome.org/Keypunch'
@@ -16,6 +18,11 @@ source=("git+$url")
 sha256sums=('SKIP')
 depends=('gtk4' 'libadwaita>=1.7')
 makedepends=('rust' 'meson' 'ninja' 'gettext' 'pkgconf' 'git' 'blueprint-compiler')
+
+pkgver() {
+	cd "${srcdir}/${_appname}"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd ${srcdir}/${_appname}
