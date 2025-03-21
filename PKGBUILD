@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mariner
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,9 +51,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-test-snapshot.patch")
-md5sums=('59fce5faa48236d0a9cd9bdda6480d3d'
+md5sums=('90a36f8615cf24c1fca3a47bd87d756c'
          'b055713d876d7ea3e97a92a152bb5f28')
-b2sums=('e2c553258972c7d24b907feab042be3fce9547636a6fbb1c264148002928b48fec581504e8281c214d076bdca3933eda08f9df6ad6f7b0d74d1e3847e8bee75f'
+b2sums=('0485741ab0872a918460c6559b9f5b5f0ce0eba8f3454a8289b5b5771c65f0b16acc41ef7194f79ff82c5d314ddf42db3929ecc835d07db7c7eb8c6510b18316'
         '6111457fda4b526e70b08ac62ec1ffd68dd8fe81d6d57cd715ef4f10a5156756d788043a924d9b3103958775cc28d02e0313947187a571907a9f6adf879148a1')
 
 prepare() {
