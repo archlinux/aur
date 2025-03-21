@@ -1,4 +1,4 @@
-[jbigkit]
-source = "git"
-git = "https://www.cl.cam.ac.uk/~mgk25/git/jbigkit"
-prefix = "v"
+[lib32-jbigkit]
+source = "archpkg"
+archpkg = "jbigkit"
+strip_release = true

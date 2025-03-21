@@ -4,12 +4,13 @@
 _name="jbigkit"
 pkgname="lib32-${_name}"
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Data compression library/utilities for bi-level high-resolution images (32-bit)"
 arch=('x86_64')
 url="https://www.cl.cam.ac.uk/~mgk25/jbigkit"
 license=('GPL-2.0-or-later')
-depends=("${_name}" 'lib32-glibc')
+depends=("${_name}>=${pkgver}" 'lib32-glibc')
+makedepends=('lib32-gcc-libs')
 provides=('libjbig.so' 'libjbig85.so')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/${_pkgsrc}.tar.gz"
@@ -49,19 +50,18 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd "${srcdir}/${_pkgsrc}"
-  make EXTRA_CFLAGS="${CFLAGS}"
+  make EXTRA_CFLAGS="${CFLAGS}" lib
 }
 
 check() {
-  cd "${srcdir}/${_pkgsrc}"
-  # NOTE: tests can not be parallelized
-  make test -j1
+  cd "${srcdir}/${_pkgsrc}/libjbig"
+  make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
-  install -vDm755 libjbig/*.so.* -t "${pkgdir}/usr/lib32/"
-  for lib in libjbig.so libjbig85.so; do
-    ln -sv "$lib.$pkgver" "${pkgdir}/usr/lib32/${lib}"
+  cd "${srcdir}/${_pkgsrc}/libjbig"
+  for lib in "${provides[@]}"; do
+    install -vDm644 "${lib}" "${pkgdir}/usr/lib/${lib}.${pkgver}"
+    ln -vsf "${lib}.${pkgver}" "${pkgdir}/usr/lib/${lib}"
   done
 }

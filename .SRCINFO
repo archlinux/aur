@@ -1,11 +1,12 @@
 pkgbase = lib32-jbigkit
 	pkgdesc = Data compression library/utilities for bi-level high-resolution images (32-bit)
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.cl.cam.ac.uk/~mgk25/jbigkit
 	arch = x86_64
 	license = GPL-2.0-or-later
-	depends = jbigkit
+	makedepends = lib32-gcc-libs
+	depends = jbigkit>=2.1
 	depends = lib32-glibc
 	provides = libjbig.so
 	provides = libjbig85.so
