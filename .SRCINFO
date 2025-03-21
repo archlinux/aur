@@ -1,6 +1,6 @@
 pkgbase = tblock
 	pkgdesc = An anti-capitalist ad-blocker that uses the hosts file
-	pkgver = 2.7.4
+	pkgver = 2.7.5
 	pkgrel = 1
 	url = https://tblock.me
 	install = tblock.install
@@ -23,7 +23,7 @@ pkgbase = tblock
 	optdepends = dinit: automatic updates support for dinit systems
 	provides = tblock
 	backup = etc/tblock.conf
-	source = tblock-2.7.4.tar.gz::https://codeberg.org/tblock/tblock/archive/2.7.4.tar.gz
-	sha512sums = 32340d80c4cf9258f5ba3c19ab97f4a4ac195e09ca0c11d9da082a5d271f5908e6f8cc4f11b620a6585a5fb1689455298d24fb4132d5f1459c94f971d0d52ca5
+	source = tblock-2.7.5.tar.gz::https://codeberg.org/tblock/tblock/archive/2.7.5.tar.gz
+	sha512sums = 924a7d757033a58e88210527fe27525810fdd2010118d457cf185ac58ffeacad0cdd16109ba9db2056ac2989d220d617f53d5f00c8ccb6d9977df1682aa47845
 
 pkgname = tblock
