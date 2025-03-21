@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EasyCellType
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0a96ca60d24f2b1bfd56862a5d864b1')
-b2sums=('40d73d194e3fad508e0a9be6d88f637a8530ef83e4c7ec84c1e625f0fbadca8c646204557892069e3af8683ebd2d813bb3518a3f11ce256195892ba66fc2ff62')
+md5sums=('0f729cb62a1682ad1e0d282612989734')
+b2sums=('0bdfcde3caffe61802d57ce0d7c0b81866020c6dd95ed8af611ef6f18f29cf81cbc8c5d5a6a82c747b80f8e6b34784f13b2271dd7d7232363a328ae9e60d5a9c')
 
 build() {
   mkdir build
