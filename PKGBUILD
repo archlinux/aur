@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocNeighbors
-_pkgver=1.22.0
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Nearest Neighbor Detection for Bioconductor Packages'
 arch=('x86_64')
@@ -16,6 +16,9 @@ depends=(
   r-rcpp
   r-rcpphnsw
   r-s4vectors
+  r-assorthead
+)
+makedepends=(
   gcc
 )
 optdepends=(
@@ -28,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2d727fa9e983afd7ff268eef5f6692846e44b50c7248868f98d51b4034232fcf')
+sha256sums=('d88bce98c06f17f7161f39704654a135d7edc155cf255e27ced03ed8a348f337')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
