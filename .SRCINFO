@@ -1,0 +1,10 @@
+pkgbase = odin-flash-tool
+	pkgver = 4
+	pkgrel = 4
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	source = https://github.com/Adrilaw/OdinV4/releases/download/v1.0/odin.zip
+	md5sums = SKIP
+
+pkgname = odin-flash-tool
