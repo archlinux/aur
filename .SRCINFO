@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libebml
+	pkgdesc = Extensible Binary Meta Language library (Android riscv64)
+	pkgver = 1.4.5
+	pkgrel = 3
+	url = https://github.com/Matroska-Org/libebml
+	arch = any
+	groups = android-libebml
+	license = LGPL2.1
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/Matroska-Org/libebml/archive/refs/tags/release-1.4.5.tar.gz
+	md5sums = 2fb834d776f20b4c05fe80e2be219fa0
+
+pkgname = android-riscv64-libebml
