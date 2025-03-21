@@ -1,6 +1,6 @@
 pkgbase = r-gdrimport
 	pkgdesc = Package for handling the import of dose-response data
-	pkgver = 1.2.0
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gDRimport
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = r-gdrimport
 	optdepends = r-purrr
 	optdepends = r-qs
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRimport_1.2.0.tar.gz
-	md5sums = 92d70f4730716895a911a22b8d1999be
-	b2sums = e0158fa33ffce2c66ee2ea720743cb17986c1a70cda67bcd06118e3b8c285d72cc4a0e494cfa017807e79942f47ff8e4596eddf8406fd33ac07a28456b0a609d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRimport_1.4.6.tar.gz
+	md5sums = e7684bf471c0d00071e1c5ec08ec6885
+	b2sums = 509bdb27d36160574bbcf3a827f3af57f8fc1148dd267ac413879a3287e61dba76f0703d12d06d65108079380c24c03067f8405188151850ac44cb1d90adc764
 
 pkgname = r-gdrimport
