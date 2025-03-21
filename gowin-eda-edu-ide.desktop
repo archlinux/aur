@@ -1,7 +1,9 @@
 [Desktop Entry]
-Comment=Gowin EDA IDE Education
-Encoding=UTF-8
-Exec=/opt/gowin-eda-edu-ide/bin/gw_ide
-Icon=gowin-eda-edu-ide
-Name=Gowin EDA IDE Education
 Type=Application
+Version=1.0
+Name=Gowin EDA IDE Education
+Comment=A GUI tool for GOWIN FPGA: RTL/post-synthesis, design, synthesis, P&R, bitstream gen.
+Exec=/opt/gowin-eda-edu-ide/bin/gw_ide %U
+Icon=gowin-eda-edu-ide
+MimeType=application/x-gowin-eda-ide-project
+Categories=Development;Electronics;

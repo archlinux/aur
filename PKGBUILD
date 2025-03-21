@@ -2,7 +2,7 @@
 
 pkgbase=gowin-eda-edu
 pkgver=1.9.10.03
-pkgrel=1
+pkgrel=2
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -10,10 +10,12 @@ url="http://www.gowinsemi.com.cn/faq.aspx"
 license=('unknown')
 source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_Education_linux.tar.gz"
         "${pkgbase}-ide.desktop"
-        "${pkgbase}-programmer.desktop")
+        "${pkgbase}-programmer.desktop"
+        "${pkgbase}.png")
 sha256sums=('1cd0b9ce86897509b12f05bebd0ec2a7b193b7168c37d82676584e9211a6e2fa'
-            '4f833de574e9c16fbe7c321bb1d7ad5be166744bc513e60ec3cae79885732ec1'
-            '6f7957416ab06a8f2fe447663cfb9873fe2c6f213b6b93075bc416b02473c386')
+            '899042b398f530e30cd566feda5920002422b1face170928c272bf5ebe4be70b'
+            '58dc15480b793fbde86a0fcfb644239077b07e34345d7753f6c34f32d24b080a'
+            '346991b57db67aa4a8373ad09fd221e310c87ac7a6c90313cad7b48f7e6934ab')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${pkgname}/{} \;
@@ -53,6 +55,9 @@ _package-ide() {
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
 
+  #icon
+  install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+
   _install_exec gw_sh gw_ide
 
   # fix ide launch error
@@ -62,6 +67,11 @@ _package-ide() {
   # https://bbs.archlinux.org/viewtopic.php?id=251445
   # https://mathematica.stackexchange.com/questions/189306/cant-launch-mathematica-11-on-fedora-29
   rm -f ${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6
+
+  # HACK: fix IDE hardcode path of Programmer
+  sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/bin/gao_{sh,analyzer}
+  sed -i  's|../../Programmer|..////Programmer|g' ${pkgdir}/opt/${pkgname}/plugins/ide/lib{StartPage,FpgaPrj}.so
+  ln -s /opt/${pkgbase}-programmer ${pkgdir}/opt/${pkgname}/Programmer
 }
 
 _package-programmer() {
@@ -75,7 +85,9 @@ _package-programmer() {
 #   _install 644 doc/
   _install 644 bin/PyQt5
   _install 644 bin/data
-  _install 644 bin/ -maxdepth 1
+  _install 644 bin/Crypto -path '*/__pycache__' -prune -o
+  _install 644 bin/tools
+  _install 644 bin/ -maxdepth 1 -not -name 'python34.zip'
 
   _install_exec programmer programmer_cli
 
@@ -86,6 +98,9 @@ _package-programmer() {
   
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
+
+  #icon
+  install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   chmod 755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
 }
