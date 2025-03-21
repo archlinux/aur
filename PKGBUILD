@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.72.36
+pkgver=1.72.48
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('c4e2f69696edccbb1a8709f52ef542133bd00ee4ff0d6e694eac22caa0934645'
+sha256sums=('2454fbb98f693d198c405baf7a29ac7d7810adb57eed8eda7d31f96805936ac8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -55,7 +55,7 @@ prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
