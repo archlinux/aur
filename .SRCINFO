@@ -1,13 +1,13 @@
 pkgbase = git-town
 	pkgdesc = Generic, high-level Git workflow support
-	pkgver = 18.0.0
+	pkgver = 18.1.0
 	pkgrel = 1
 	url = https://github.com/git-town/git-town
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = git
-	source = https://github.com/git-town/git-town/archive/v18.0.0/git-town-18.0.0.tar.gz
-	sha256sums = ad43a375e27df630666017b8e961618350f6fe83d3eae4267338f0e67f972d1f
+	source = https://github.com/git-town/git-town/archive/v18.1.0/git-town-18.1.0.tar.gz
+	sha256sums = 29bc99bd31d5b469da6922fcee6ee0e4afd20f63c43f6d4f25d07577eba7b5d8
 
 pkgname = git-town
