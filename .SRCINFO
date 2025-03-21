@@ -1,13 +1,13 @@
 pkgbase = libreoffice-extension-apso
 	pkgdesc = Alternative Python Script Organizer for OpenOffice and LibreOffice
-	pkgver = 1.4.2.7
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://gitlab.com/jmzambon/apso
 	arch = any
 	license = Apache-2.0
 	depends = libreoffice
 	noextract = apso.oxt
-	source = https://gitlab.com/jmzambon/apso/-/raw/v1.4.2.7/apso.oxt
-	sha256sums = 5ac3979aac0d9a85f891eba9a4b6d9c808996fa7d57c4770ce6f62519c5be7f5
+	source = https://gitlab.com/jmzambon/apso/-/raw/v1.4.4/apso.oxt
+	sha256sums = fc18aa98d7d7a8f6863d78399f8840ef89bb98f970f0396baf541d0a184eb3bd
 
 pkgname = libreoffice-extension-apso
