@@ -1,7 +1,7 @@
 # Contributor: Sam Day <me@samcday.com>
 
 pkgname=dnf5
-pkgver=5.2.11.0
+pkgver=5.2.12.0
 pkgrel=1
 pkgdesc="Next-generation RPM package management system"
 arch=('x86_64')
@@ -26,7 +26,7 @@ backup=('etc/dnf/dnf.conf'
         'etc/dnf/libdnf5-plugins/expired-pgp-keys.conf')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1519df6aadcc3d91e85067cf9bb1efaed3e66b3d4189776768db394f0232625e')
+sha256sums=('ef53bff2d68024e05f5643485dcd8fe8bade4a3c5aebf43a2a611f12671a9f62')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -34,6 +34,7 @@ build() {
 	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX='/usr' \
 	      -DCMAKE_INSTALL_SBINDIR='bin' \
+	      -DWITH_DNF5_OBSOLETES_DNF='OFF' \
 	      -DWITH_RUBY='OFF'  # https://github.com/rpm-software-management/dnf5/issues/562
 
 	cmake --build build
