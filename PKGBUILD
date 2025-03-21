@@ -22,7 +22,7 @@ sha256sums_x86_64=('9fae5d2bf4dc5ceb20ad556502f59b67b837218315d52ce47bd8b5135efc
 sha256sums_aarch64=('1c80fdb21dfb1a873a63728e4c5e3286a5fed1209eef0c6258867f6bae8fb16a')
 
 package() {
-	for each_executable in "snforge" "sncast"; do
+	for each_executable in $(ls "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin"); do
 		install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin/${each_executable}" "${pkgdir}/usr/bin/${each_executable}"
 	done
 	install -Dm755 "${srcdir}/${_pkgname}-v${pkgver}-${arch}-unknown-linux-gnu/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
