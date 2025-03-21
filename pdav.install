@@ -1,0 +1,5 @@
+post_install() {
+    echo "to use pdav you need to enable it yourself with the following commands"
+    echo "'systemctl --user daemon-reload'"
+    echo "'systemctl --user --now enable pdav.service'"
+}
