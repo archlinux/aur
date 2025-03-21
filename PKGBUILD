@@ -3,7 +3,7 @@
 
 _name=ydata-profiling
 pkgname=python-ydata-profiling
-pkgver=4.14.0
+pkgver=4.15.1
 pkgrel=1
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=(any)
@@ -46,11 +46,17 @@ makedepends=(
   python-build
   python-installer
   python-setuptools
+  python-setuptools-scm
   python-wheel
 )
 
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('8d68e1e23d813d1dbf69ebdaa471fc9437c1aa0c0d887a540567c0262f3396b8d386e5366c340ce60060677eafd45c92b44a3df0a8efee29e52718e5da0fe55b')
+b2sums=('1bc9d1f24b80356e2a59f94b02fb0c775b488857f5bc872f58dd438fa92115d61034aeff86cdb398f99dc910181fdc5133f554f1b2becc9a67aa1c74d3eaba57')
+
+prepare() {
+  # fix version fallback (the git snapshot does not contain the VERSION file)
+  sed -i 's|version = "0.0.dev0"|version = "'$pkgver'"|' $_name-$pkgver/setup.py
+}
 
 build() {
   cd $_name-$pkgver
