@@ -1,6 +1,6 @@
 pkgbase = r-debrowser
 	pkgdesc = Interactive Differential Expresion Analysis Browser
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/debrowser
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = r-debrowser
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/debrowser_1.32.0.tar.gz
-	sha256sums = 7e81ae32bcc4fe7d3e12054b977702ddd570b07c8aea4b3922bc532309e9f661
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/debrowser_1.34.0.tar.gz
+	sha256sums = 753a29016df9e987046e2a84748c891dabe4a46b4cfb23d9169313a60c371c8e
 
 pkgname = r-debrowser
