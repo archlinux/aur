@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scater
-_pkgver=1.32.1
+_pkgver=1.34.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
+pkgver=1.34.1
 pkgrel=1
 pkgdesc='Single-Cell Analysis Toolkit for Gene Expression Data in R'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7559b97f5182441b026092d204c28774148a41099dc3bf1ac22695491d95a280')
+sha256sums=('16bcfe685eabd98615982dc8c6a2f86a25ca213059bd4420e97302ac3174bca7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
