@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=isotree
-_pkgver=0.6.1-1
+_pkgver=0.6.1-4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,6 +12,7 @@ license=('BSD-2-Clause')
 depends=(
   r-jsonlite
   r-rcpp
+  r-rhpcblasctl
 )
 makedepends=(
   robin-map
@@ -28,9 +29,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-robin-map.patch")
-md5sums=('9a80442d77131bcad08414f8abe46a68'
+md5sums=('68681cdb6919aa779b9f49790d712365'
          'eb4f3a13cc4014676e7b49b44982d662')
-b2sums=('9404c90b03c26dc9133d051389750a8d2d6cddf87194bce3b549136d9ac60c98b3c847e49c665aceecfcfc938e266a206583472d87b3a880871bcb73bfa61573'
+b2sums=('6146f78e3382286b1c06482789573b28f7e51265f29caaacc92fc390f96f098fc35e97baca006f360930f0ed203469dded802678716778b9bafc8dfd82ff8a3b'
         '061b04fafc1523f3e9f892f68d747b4dd7434193dee5a8e41e3739870addcc9e10b7777c1fa3916dab7d405c7d856406418093c4b490085e88480ec6bb15f001')
 
 prepare() {
