@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=12.0.9
+pkgver=12.0.11
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
     'python-pylibmc: Memcached support'
     'ffmpeg: For video thumbnails'
 )
-django_version=4.2.19
+django_version=4.2.20
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     "python-django-$django_version.tar.gz::https://github.com/django/django/archive/$django_version.tar.gz"
@@ -56,8 +56,8 @@ source=(
     'fix_seafevents_error.diff'
 )
 sha256sums=(
-    '3a0e157f830a00363d1bd7291088a2567d08dcec3af966240d57e383b5c4ae29'
-    '83c0457533f57cd6228533d58561d1d18bc220d1271e8b6f0cbfc8429e274655'
+    'c0f7405e0a3018271d24d0b41faf28b3f2666a36923c6041bf6f6d731fdaba8c'
+    '15e449ce6d4181ba27c2ef83381cb673d759b3d3a4244998637d55d8fa0362b1'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
     '371f9c01a31691167b76c43e29277c266a4b3aec985fb29ff8a0180a8db5b59f'
