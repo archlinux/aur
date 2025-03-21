@@ -2,18 +2,29 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-gnome-git
-pkgver=1.1.7
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Breezy GNOME - XR desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/breezy-desktop"
 license=('GPL-3.0')
 makedepends=('ninja' 'meson' 'librsvg')
-depends=('gtk4' 'python' 'python-pydbus' 'python-yaml' 'gnome-shell>=45.0' 'xr-driver-git')
-source=("git+${url}#commit=5689af17d03bc25a4d3ab2ae2fe85401c3c28cae")
+depends=('gtk4' 'python' 'python-pydbus' 'python-yaml' 'python-gobject' 'gnome-shell>=45.0' 'xr-driver-git>=2.0.0' 'libadwaita' 'gst-python')
+source=("git+${url}#commit=537dca8357013e6e5a7d4a2bda2256b233824172")
 md5sums=(SKIP)
 
 _uuid="breezydesktop@xronlinux.com"
+
+prepare() {
+  USER=${SUDO_USER:-$USER}
+  if [ -n "$USER" ]; then
+    USER_HOME=$(getent passwd $USER | cut -d: -f6)
+    if [ -e "$USER_HOME/.local/bin/breezy_gnome_uninstall" ]; then
+      echo "Please uninstall Breezy Desktop first using $USER_HOME/.local/bin/breezy_gnome_uninstall, then reattempt the AUR installation"
+      exit 1
+    fi
+  fi
+}
 
 build() {
     cd ${_pkgbase}
@@ -65,10 +76,11 @@ package() {
     install -Dm755 ${_pkgbase}/ui/modules/PyXRLinuxDriverIPC/xrdriveripc.py "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop/xrdriveripc.py
 
     install -Dm755 ${_pkgbase}/ui/build/src/breezydesktop "${pkgdir}"/usr/bin/breezydesktop
+    install -Dm755 ${_pkgbase}/ui/build/src/virtualdisplay "${pkgdir}"/usr/bin/virtualdisplay
 
     install -Dm755 ${_pkgbase}/ui/build/src/breezydesktop.gresource "${pkgdir}"/usr/local/share/breezydesktop/breezydesktop.gresource
     install -Dm755 ${_pkgbase}/ui/build/data/com.xronlinux.BreezyDesktop.desktop "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
-    sed -i '/Exec/c\Exec=env APPDIR=/usr/local/share breezydesktop --skip-verification' "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
+    sed -i '/Exec/c\Exec=env APPDIR=/usr/local/share BINDIR=/usr/bin breezydesktop --skip-verification' "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
 
     install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/com.xronlinux.BreezyDesktop.png
     install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/com.xronlinux.BreezyDesktop.png
