@@ -1,6 +1,6 @@
 pkgbase = incubator-answer
 	pkgdesc = A Q&A platform software for teams at any scales
-	pkgver = 1.3.0
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://answer.apache.org/
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = incubator-answer
 	makedepends = pnpm
 	makedepends = git
 	makedepends = go
-	source = incubator-answer::git+https://github.com/apache/incubator-answer.git#tag=v1.3.0
+	source = incubator-answer::git+https://github.com/apache/incubator-answer.git#tag=v1.4.2
 	source = 0001-change-default-config-location-from-data-to-var-lib-.patch
 	source = answer.service
 	source = answer-sysusers.conf
 	source = answer-tmpfiles.conf
 	sha256sums = SKIP
-	sha256sums = 4953c50bd98f8f8be0d290b6dbf7b4a6508b698d9dcdf6abe54074e6edc9505a
-	sha256sums = 17d831a8d58ab63ca792c0fd5b4915545a76d7ce2fd7f4e0328a42dca48b7687
+	sha256sums = 2519cb3411132fa185b8be56fa3ebae2dd3f4c9d9c96a7e5ab808a634da9c1dd
+	sha256sums = f430da4017f4e5220756eb022986429c1a0728fe63fdf65389f58e4e52f1941e
 	sha256sums = a9e778c01f7272567b6701556708d0105b7c353f0aff5a41a9b8789edbe902ca
 	sha256sums = 2c28c20a19678a29770e7e4cda0f7ed4d5433fad739935eaaa166207a6a6e1f5
 
