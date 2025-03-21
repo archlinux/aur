@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=risuai-bin
 _pkgname=RisuAI
-pkgver=154.0.0
+pkgver=156.0.0
 pkgrel=1
 pkgdesc="Make your own story. User-friendly software for LLM roleplaying.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('7659f0883fe6bdc4bb0a4cc55f5859b83a3f93162ce5d63ac1d3b334f0213cac')
+sha256sums=('2ffc5e86c6c95433e81d8348d3fca1b9cde3007ddb51f3ff41a9bcb8a0039d46')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
     _icon_sizes=(32x32 128x128 256x256@2)
