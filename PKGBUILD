@@ -4,7 +4,7 @@ pkgbase=csnet
 pkgname=csnet
 _tagname=2025-03-18
 pkgver=${_tagname//-/.}
-pkgrel=0
+pkgrel=3
 pkgdesc="csnet client for linux"
 license=('LicenseRef-scancode-commercial-license')
 url="https://aite.xyz/product/csnet/client"
@@ -15,7 +15,7 @@ makedepends=(libarchive)
 provides=(${pkgname} ${pkgname}-bin)
 conflicts=(${pkgname} ${pkgname}-bin)
 replaces=()
-backup=(etc/csnet/config/client_produce.json)
+backup=(etc/csnet/client_produce.json)
 install=${pkgname}.install
 source=(
     "${pkgname}.service"
@@ -30,10 +30,10 @@ source=(
     "${pkgname}-riscv64-${pkgver}::https://aite.xyz/product/csnet/client/csnet_client_linux_riscv64"
 
 )
-sha256sums=('6689bb27bc82e08ea5fd6afffa8a06cdfb343fa3bfc30e280c3379ba70e4d7ca'
+sha256sums=('99e4dfd7cf1e77a455f94485e51a55d1ba05cbfa48e0e8457a9ae0bad6e50cea'
             'c94bb7ee617fc06be5d2484e978628cc57ced266048a8a577f72db203d51ebef'
             'e32ce02eb3e8b74f673cc211bc51cebaf4050145cd96b397d9d5079f99eec623'
-            'fb15b9072591b3ad0241c6dc72904a772653406df49f426888a2062d5c3b9d12'
+            '3f43a522d49952f4a486cadcedde3b6faad1dbd12723c3a52e31f74b956f51fd'
             '6b672ef98c36869bb7a753061be9abe5d5551639e38b98039db2d410288c62e5'
             'b6ff625636490d40654c1dda4897aedf990f22d6b01992d8e937e748155ae6b9'
             '2acf5de28a97b5785600e8dd57d104b304d6eadcb43dce21e5a1e808efd4d4df'
@@ -59,7 +59,7 @@ package() {
     fi
 
     install -vDm644 ${srcdir}/${pkgname}.service -t ${pkgdir}/usr/lib/systemd/system/
-    install -vDm755 ${srcdir}/client_produce.json -t ${pkgdir}/etc/${pkgname}/config/
+    install -vDm755 ${srcdir}/client_produce.json -t ${pkgdir}/etc/${pkgname}/
     install -vdm755 ${pkgdir}/var/log/${pkgname}
     install -vDm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -vDm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"

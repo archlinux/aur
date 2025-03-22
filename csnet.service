@@ -1,5 +1,5 @@
 [Unit]
-Description=csnet Service
+Description=csnet service
 Wants=network-online.target
 After=network-online.target
 
@@ -8,7 +8,7 @@ Type=simple
 User=csnetuser
 Group=csnetuser
 WorkingDirectory=/var/lib/csnet
-ExecStart=/usr/bin/csnet -c /etc/csnet/config/client_produce.json
+ExecStart=/usr/bin/csnet -c /etc/csnet/client_produce.json
 PrivateTmp=true
 Restart=always
 RestartSec=30s
