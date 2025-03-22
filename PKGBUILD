@@ -2,7 +2,7 @@
 
 _name="textual-autocomplete"
 pkgname="python-${_name}"
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Easily add autocomplete dropdowns to your Textual apps"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python>=3.9' 'python-rich' 'python-textual>=2'
 makedepends=('python-build' 'python-hatchling' 'python-installer')
 _pkgsrc="${_name//-/_}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_pkgsrc}.tar.gz")
-sha256sums=('ee11a48d49b06d0da6c4b4613c040c431417ebad4c7ca119d2e9472afd55911d')
+sha256sums=('3fcb353febbfc51063f84c673b26b0f427ff7bd457eb2fb006e35846213fdd2a')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
