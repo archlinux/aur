@@ -1,6 +1,6 @@
 pkgbase = r-gdrstyle
 	pkgdesc = A package with style requirements for the gDR suite
-	pkgver = 1.4.0
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gDRstyle
 	arch = any
@@ -18,11 +18,11 @@ pkgbase = r-gdrstyle
 	depends = r-rjson
 	depends = r-withr
 	depends = r-yaml
-	optdepends = r-biocstyle
+	depends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRstyle_1.4.0.tar.gz
-	md5sums = 8c65fb73bd818d5a00adbc49fab2de0c
-	b2sums = ae2d2812f43ee1c021ffe020c2ca7d59fe133c3a4ed61d4f0c36b61db1efc909f2a3ae26cde5ae471f8f0df1f9ee4c4fd94f4ca1b16fe71fbc258fd28c5f6c49
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRstyle_1.4.3.tar.gz
+	md5sums = 01a503b44970dfcbe8cb651ad5521470
+	b2sums = 57b932f328f400c41f51eb83fd12b538b9be08a7a914e63f6bebec4822baf2e93cd17b95b4c2df528beed399bd8e059c1fae60e6c4fd744923566706631f0e09
 
 pkgname = r-gdrstyle
