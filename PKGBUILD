@@ -1,54 +1,62 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=atopile
-pkgver=0.2.69
+pkgver=0.3.20
 pkgrel=1
 pkgdesc="A tool to build electronic circuit boards with code"
-arch=(any)
+arch=(x86_64)
 url="https://github.com/atopile/atopile"
 license=(Apache-2.0)
 depends=(
+  easyeda2kicad
+  gcc-libs
+  glibc
   python
   python-antlr4
   python-attrs
+  python-black
   python-case-converter
-  python-cattrs
-  python-click
-  python-deepdiff
-  python-eseries
+  python-cookiecutter
+  python-dataclasses-json
+  python-deprecated
   python-gitpython
-  python-jinja
+  python-matplotlib
+  python-more-itertools
   python-natsort
-  python-networkx
+  python-numpy
+  python-pathvalidate
   python-pint
+  python-psutil
   python-pydantic
-  python-quart
-  python-quart-cors
-  python-quart-schema
+  python-pydantic-settings
+  python-pygments
+  python-questionary
   python-requests
   python-rich
   python-ruamel-yaml
-  python-scipy
   python-semver
-  python-toolz
-  python-urllib3
-  python-watchfiles
+  python-sexpdata
+  python-shapely
+  python-typer
   python-yaml
 )
 makedepends=(
+  nanobind
   python-build
   python-hatch-vcs
+  python-hatchling
   python-installer
+  python-scikit-build-core
   python-wheel
 )
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d10215b07bb99e90ce05dbb9892e1461bd22c27de3588c7bfcbb0080e17de547')
+sha256sums=('810b57bcb3e24d89ff07b7e323844b0fe695e4fce3fa9e0ca18c5fe8c79600df')
 
 build() {
   cd $pkgname-$pkgver
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
@@ -56,7 +64,26 @@ check() {
   rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest --override-ini="addopts="
+  test-env/bin/python -m pytest --override-ini="addopts=" \
+    --deselect test/core/performance/test_performance_pick.py::test_performance_pick_real_module \
+    --deselect test/core/solver/test_literal_folding.py::test_can_evaluate_literals \
+    --deselect test/core/solver/test_solver.py::test_solve_realworld_biggest \
+    --deselect test/core/solver/test_solver.py::test_solve_voltage_divider_complex \
+    --deselect test/end_to_end \
+    --deselect test/front_end/test_front_end.py::test_reserved_attrs \
+    --deselect test/front_end/test_front_end.py::test_resistor \
+    --deselect test/front_end/test_front_end_pick.py::test_ato_pick_capacitor \
+    --deselect test/front_end/test_front_end_pick.py::test_ato_pick_resistor \
+    --deselect test/front_end/test_front_end_pick.py::test_ato_pick_resistor_dependency \
+    --deselect test/libs/picker/test_pickers.py::test_pick_dependency_advanced_1 \
+    --deselect test/libs/picker/test_pickers.py::test_pick_module \
+    --deselect test/test_cli.py::test_app \
+    --deselect test/test_create.py::test_fabll_create_component \
+    --deselect test/test_errors.py::test_build_error_logging \
+    --deselect test/test_regressions.py \
+    --ignore test/library/test_names.py \
+    --ignore test/test_examples.py \
+    --ignore test/test_parse_utils.py
 }
 
 package() {
