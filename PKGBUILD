@@ -2,14 +2,14 @@
 
 pkgname=python-elitech-git
 pkgver=0.0.1.r18.20250322
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool and Python library for Elitech data logger"
 arch=('any')
 url="https://github.com/OpenHelios/python-elitech/"
 license=('GPL-3.0')
 depends=(
 	'python'
-	'python-hid-parser'
+	'python-hid-parser-elitech'
 	'python-utils'
 )
 makedepends=(
