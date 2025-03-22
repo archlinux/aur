@@ -1,0 +1,5 @@
+[rabtap]
+source = "git"
+git = "https://github.com/jandelgado/rabtap.git"
+prefix = "v"
+ignored = "v99.9.9"
