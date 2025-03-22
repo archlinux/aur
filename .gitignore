@@ -1,5 +1,6 @@
 *
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
 !/*.patch
+!/.SRCINFO
+!/.gitignore
+!/.nvchecker.toml
+!/PKGBUILD

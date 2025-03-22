@@ -1,0 +1,3 @@
+[nuked-sc55]
+source = "git"
+git = "https://github.com/nukeykt/Nuked-SC55.git"
