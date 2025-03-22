@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=nitrocid-27
-pkgver=3.0.27.48+0.1.2.1
+pkgver=3.1.27.48+0.1.2.2
 pkgrel=1
 pkgdesc="Simulates our future-planned kernel"
 arch=('x86_64' 'aarch64')
@@ -9,26 +9,26 @@ license=('GPL-3.0-or-later')
 depends=('dotnet-runtime-8.0' 'tzdata')
 makedepends=('git' 'dotnet-sdk-8.0' 'make' 'which')
 optdepends=('jack2: Jack support for BassBoom addon'
-	    'portaudio: PortAudio support for BassBoom addon'
-            'openal: OpenAL support for BassBoom addon'
-            'sdl2: SDL support for BassBoom addon'
-            'libpulse: PulseAudio support for BassBoom addon')
+			'portaudio: PortAudio support for BassBoom addon'
+			'openal: OpenAL support for BassBoom addon'
+			'sdl2: SDL support for BassBoom addon'
+			'libpulse: PulseAudio support for BassBoom addon')
+provides=("${pkgname}-git" "${pkgname}-lite" "${pkgname}-lite-git")
+conflicts=("${pkgname}-git" "${pkgname}-lite" "${pkgname}-lite-git")
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.2.1")
+source=("${pkgname}::git+https://github.com/Aptivi/Nitrocid#tag=v0.1.2.2")
 sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}"
-        HOME=`pwd`/nuget DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet restore Nitrocid.sln
-	mkdir -p deps
-	cp nuget/.nuget/packages/*/*/*.nupkg deps/
-	rm -rf nuget
-	cp tools/OfflineNuGet.config ./NuGet.config
+	make init-offline
+	make clean
+	git submodule update --init --remote
 }
 
 build() {
 	cd "${pkgname}"
-	HOME="$srcdir/homedir" DOTNET_CLI_TELEMETRY_OPTOUT=1 make all-offline
+	make all-offline
 }
 
 package() {
