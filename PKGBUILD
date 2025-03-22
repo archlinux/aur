@@ -1,10 +1,9 @@
 # shellcheck disable=SC2034,SC2148,SC2128,SC2154,SC2164
 # Maintainer: javalsai <javalsai@proton.me>
 pkgname=lidm-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 depends=('pam')
-makedepends=('gzip')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (release binary)"
 arch=('x86_64')
 url="https://github.com/javalsai/lidm"
@@ -27,5 +26,4 @@ package() {
     install -Dm644 default-theme.ini "${pkgdir}/etc/lidm.ini"
     install -Dm644 lidm.1 "${pkgdir}/usr/share/man/man1/lidm.1"
     install -Dm644 lidm-config.5 "${pkgdir}/usr/share/man/man5/lidm-config.5"
-    gzip -f "${pkgdir}"/usr/share/man/man{1/lidm.1,5/lidm-config.5}
 }
