@@ -1,15 +1,15 @@
 pkgbase = liquidlauncher-appimage
-	pkgdesc = A LiquidBounce launcher for Minecraft, written in Rust using Tauri.
-	pkgver = 0.4.0
+	pkgdesc = A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment.
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/CCBlueX/LiquidLauncher
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = fuse2
-	noextract = LiquidLauncher_0.4.0_amd64.AppImage
+	noextract = LiquidLauncher_0.4.3_amd64.AppImage
 	options = !strip
-	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.0/LiquidLauncher_0.4.0_amd64.AppImage.tar.gz
-	sha256sums_x86_64 = f0c9922d1e14ff52c461a2451bc31ecd60f901554f2226d3528351d9fd70c6d8
+	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.3/LiquidLauncher_0.4.3_amd64.AppImage
+	sha512sums_x86_64 = a91bc04d7618bd4b872e8e42ce8e69d25c823095e4da1fdec7de65e60b7e6c6cefdf3cf759bbd9496755a07f70d9337c9f26d6217abef3723b1aaba1405fbb98
 
 pkgname = liquidlauncher-appimage
