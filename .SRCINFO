@@ -1,0 +1,17 @@
+pkgbase = lib32-libcloudproviders
+	pkgdesc = DBus API that allows cloud storage sync clients to expose their services (32-bit)
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/libcloudproviders
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = meson>=0.54
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.56
+	depends = lib32-glibc
+	depends = libcloudproviders>=0.3.6
+	provides = libcloudproviders.so
+	source = libcloudproviders-0.3.6.tar.xz::https://download.gnome.org/sources/libcloudproviders/0.3/libcloudproviders-0.3.6.tar.xz
+	sha256sums = 3b75110b3a4fdef4c5c5a440e48701fe054d2ae061d156c89136bb5ba05e74b7
+
+pkgname = lib32-libcloudproviders
