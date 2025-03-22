@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=httpgd
-_pkgver=2.0.3
+_pkgver=2.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A 'HTTP' Server Graphics Device"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -27,9 +27,18 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ff610a8c300290021f5ec42c1c45ca0')
-b2sums=('1181c4894f89fd3c4e324710f8697f539686a5694141316e116ebff1432d20e5af5a69c277233ff1aeabc2c4dd262b4023774d4811eed917d38fde3b2acf5695')
+md5sums=('231fa425c08428df806f225af8ea3857')
+b2sums=('6ebdbdc8f17966e1ad2f5922e32ef54c6f7c2d0bebd66dd0cae5cda0b32edea347852bbcafcc553527c0ab3662d6295681c5574e215cd7445e6396f3d91f0707')
 
+prepare() {
+  cd "$srcdir/$_pkgname"
+  sed -i src/lib/crow/*.h \
+    -e 's|io_service->post(handler);|asio::post(io_context->get_executor(), handler);|g' \
+    -e 's|io_service->dispatch(handler);|asio::dispatch(io_context->get_executor(), handler);|g' \
+    -e 's|io_service|io_context|g' \
+    -e 's|is.post(|asio::post(is.get_executor(),|g' \
+    -e 's|address::from_string|make_address|g'
+}
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
