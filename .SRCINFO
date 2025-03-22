@@ -1,0 +1,23 @@
+pkgbase = libqpdf29
+	pkgdesc = Legacy version (29) of QPDF library. Only library, no tools.
+	pkgver = 11.10.1
+	pkgrel = 1
+	url = https://github.com/qpdf/qpdf
+	arch = x86_64
+	license = Apache-2.0
+	license = Artistic-2.0
+	makedepends = cmake
+	depends = gnutls
+	depends = libjpeg-turbo
+	depends = openssl
+	depends = zlib
+	provides = libqpdf.so.29
+	provides = libqpdf.so.29.10.1
+	conflicts = qpdf<12
+	source = https://github.com/qpdf/qpdf/releases/download/v11.10.1/qpdf-11.10.1.tar.gz
+	source = https://github.com/qpdf/qpdf/releases/download/v11.10.1/qpdf-11.10.1.tar.gz.asc
+	validpgpkeys = C2C96B10011FE009E6D1DF828A75D10998012C7E
+	sha256sums = defca435cf57d26f8a0619864841aa21f5469fddc6eb5662f62d8443021c069d
+	sha256sums = SKIP
+
+pkgname = libqpdf29

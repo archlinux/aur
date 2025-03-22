@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!allowed_signers
+!PKGBUILD
+!*.install
