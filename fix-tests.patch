@@ -1,0 +1,45 @@
+diff --git a/tests/test_items.py b/tests/test_items.py
+index 47e5c4a..7fbb57c 100644
+--- a/tests/test_items.py
++++ b/tests/test_items.py
+@@ -6,6 +6,8 @@ import pytest
+ 
+ import hid_parser
+ 
++from warnings import catch_warnings
++
+ 
+ def test_baseitem():
+     item = hid_parser.BaseItem(1, 2)
+@@ -129,13 +131,13 @@ def test_variableitem_compliance():
+     with pytest.warns(hid_parser.HIDComplianceWarning):
+         hid_parser.VariableItem(1, 2, 0, hid_parser.Usage(0x0001, 0x0001), -1, 1)
+ 
+-    with pytest.warns(None):
++    with catch_warnings():
+         hid_parser.VariableItem(1, 2, 0, hid_parser.Usage(0x0001, 0x0030), -1, 1)
+ 
+-    with pytest.warns(None):
++    with catch_warnings():
+         hid_parser.VariableItem(1, 2, 0, hid_parser.Usage(0x0001, 0x0000), -1, 1)
+ 
+-    with pytest.warns(None):
++    with catch_warnings():
+         hid_parser.VariableItem(1, 2, 0, hid_parser.Usage(0x0000, 0x0000), -1, 1)
+ 
+ 
+@@ -178,11 +180,11 @@ def test_arrayitem_compliance():
+     with pytest.warns(hid_parser.HIDComplianceWarning):
+         hid_parser.ArrayItem(1, 2, 1, 0, usages, -1, 1)
+ 
+-    with pytest.warns(None):
++    with catch_warnings():
+         hid_parser.ArrayItem(1, 2, 1, 0, usages, -1, 1)
+ 
+-    with pytest.warns(None):
++    with catch_warnings():
+         hid_parser.ArrayItem(1, 2, 1, 0, usages, -1, 1)
+ 
+-    with pytest.warns(None):
++    with catch_warnings():
+         hid_parser.ArrayItem(1, 2, 1, 0, usages, -1, 1)
