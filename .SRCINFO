@@ -1,0 +1,12 @@
+pkgbase = respect-my-internet-git
+	pkgdesc = most agressive privacy blocklist
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	depends = opensnitch-git
+	depends = opensnitch-ebpf-module
+	depends = git
+	source = respect-my-internet.sh
+	sha256sums = SKIP
+
+pkgname = respect-my-internet-git
