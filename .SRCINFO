@@ -18,7 +18,11 @@ pkgbase = nitrocid-25-git
 	optdepends = sdl2: SDL support for BassBoom addon
 	optdepends = libpulse: PulseAudio support for BassBoom addon
 	provides = nitrocid-25
+	provides = nitrocid-25-lite
+	provides = nitrocid-25-git-lite
 	conflicts = nitrocid-25
+	conflicts = nitrocid-25-lite
+	conflicts = nitrocid-25-git-lite
 	options = !strip
 	source = nitrocid-25-git::git+https://github.com/Aptivi/Nitrocid#branch=v0.1.0.x-saas
 	sha256sums = SKIP
