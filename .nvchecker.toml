@@ -1,0 +1,4 @@
+[lib32-libstemmer]
+source = "archpkg"
+archpkg = "libstemmer"
+strip_release = true
