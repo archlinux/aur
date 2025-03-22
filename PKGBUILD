@@ -40,7 +40,8 @@ DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
 prepare() {
-  # https://sourceware.org/bugzilla/show_bug.cgi?id=32653
+  # Work around glibc 2.41 execstack issue
+  # See also: https://sourceware.org/bugzilla/show_bug.cgi?id=32653
   find "${srcdir}"/data/noarch/game -name 'libfmod*.so' -exec \
     execstack -c '{}' +
 
