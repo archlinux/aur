@@ -3,7 +3,7 @@
 pkgname=interstellar-bin
 pkgver=0.8.0
 pkgrel=2
-pkgdesc='An app for Mbin and Lemmy, connecting you to the fediverse.'
+pkgdesc='An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.'
 arch=(x86_64 aarch64)
 url=https://github.com/jwr1/interstellar
 license=(GPL-3.0-only)

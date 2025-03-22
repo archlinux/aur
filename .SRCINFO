@@ -1,5 +1,5 @@
 pkgbase = interstellar-bin
-	pkgdesc = An app for Mbin and Lemmy, connecting you to the fediverse.
+	pkgdesc = An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.
 	pkgver = 0.8.0
 	pkgrel = 2
 	url = https://github.com/jwr1/interstellar
