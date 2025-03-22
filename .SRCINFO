@@ -1,0 +1,23 @@
+pkgbase = android-riscv64-libwmf
+	pkgdesc = A library for reading vector images in Microsoft's native Windows Metafile Format (WMF) (Android riscv64)
+	pkgver = 0.2.13
+	pkgrel = 3
+	url = http://wvware.sourceforge.net/libwmf.html
+	arch = any
+	groups = android-libwmf
+	license = LGPL
+	makedepends = android-configure
+	makedepends = android-riscv64-libxt
+	depends = android-riscv64-libx11
+	depends = android-riscv64-libjpeg
+	depends = android-riscv64-freetype2
+	depends = android-riscv64-expat
+	optdepends = android-riscv64-gdk-pixbuf2: for pixbuf loader
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/caolanm/libwmf/archive/v0.2.13.tar.gz
+	sha256sums = 18ba69febd2f515d98a2352de284a8051896062ac9728d2ead07bc39ea75a068
+
+pkgname = android-riscv64-libwmf
