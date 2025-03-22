@@ -2,6 +2,7 @@ pkgbase = respect-my-internet-git
 	pkgdesc = most agressive privacy blocklist
 	pkgver = 1.0
 	pkgrel = 1
+	url = https://github.com/TheCyberArcher/Respect-My-Internet
 	arch = x86_64
 	depends = opensnitch-git
 	depends = opensnitch-ebpf-module
