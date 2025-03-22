@@ -1,0 +1,4 @@
+[lib32-gtk4]
+source = "archpkg"
+archpkg = "gtk4"
+strip_release = true
