@@ -2,13 +2,13 @@
 
 pkgname=python-hid-parser-elitech-git
 pkgver=0.0.3.r30.g0ae6665
-pkgrel=1
+pkgrel=2
 pkgdesc="Typed pure Python library to parse HID report descriptors with modifaction for Elitech"
 url="https://github.com/pasccom/python-hid-parser.git"
 license=('MIT')
 arch=('any')
-provides=("python-hid-parser")
-conflicts=("python-hid-parser")
+provides=("python-hid-parser-elitech")
+conflicts=("python-hid-parser-elitech")
 makedepends=(
   'python-setuptools'
   'python-build'
