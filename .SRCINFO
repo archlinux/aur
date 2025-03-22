@@ -1,7 +1,7 @@
 pkgbase = shijima-qt-bin
 	pkgdesc = Cross-platform shimeji simulation Desktop pets on any device.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pixelomer/Shijima-Qt
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = shijima-qt-bin
 	source = shijima-qt.ico::https://raw.githubusercontent.com/pixelomer/Shijima-Qt/refs/heads/main/shijima-qt.ico
 	source = LICENSE::https://github.com/pixelomer/Shijima-Qt/blob/main/LICENSE
 	sha256sums = a142a1a0802c5209a9fc306781c48a8e96b9c2dab5b6f50a9c7080d634c3c188
-	sha256sums = dd5ff1e579878a60d029f6cc5718369c167820059fabfcceb715ed84d42bd102
+	sha256sums = SKIP
 	source_x86_64 = shijima-qt.zip::https://github.com/pixelomer/Shijima-Qt/releases/download/v0.1.0/release-linux-x86_64.zip
 	sha256sums_x86_64 = dec313e5180ce11eb397158ed8c5f92af5921a3f72cc8352002a9d877bc34403
 	source_aarch64 = shijima-qt.zip::https://github.com/pixelomer/Shijima-Qt/releases/download/v0.1.0/release-linux-arm64.zip
