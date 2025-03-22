@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CBEA
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -47,8 +47,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cb3328be7ed8c0a54c318bf4b90381e6')
-b2sums=('6b2cb1e6b824e94ff1e9bae0ce814761ef7887610c583119c6b3641939325a55ac56487a15af8bf04a8a95ab4be1bc505ef3e033eba3636013df1e3eff58b4d2')
+md5sums=('30daf429eb8568948239698ba7f06989')
+b2sums=('7cefc22fb5e8c06d986924b77a149851d512a6b6283e559bba30fba9a0801cd6e8ae0eed54a82b3efa4875f32858e9e77bc4fcd75026160adfae419743b7ed4d')
 
 build() {
   mkdir build
