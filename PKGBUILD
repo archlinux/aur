@@ -4,7 +4,7 @@
 _name="jbigkit"
 pkgname="lib32-${_name}"
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Data compression library/utilities for bi-level high-resolution images (32-bit)"
 arch=('x86_64')
 url="https://www.cl.cam.ac.uk/~mgk25/jbigkit"
@@ -61,7 +61,7 @@ check() {
 package() {
   cd "${srcdir}/${_pkgsrc}/libjbig"
   for lib in "${provides[@]}"; do
-    install -vDm644 "${lib}" "${pkgdir}/usr/lib/${lib}.${pkgver}"
-    ln -vsf "${lib}.${pkgver}" "${pkgdir}/usr/lib/${lib}"
+    install -vDm644 "${lib}" "${pkgdir}/usr/lib32/${lib}.${pkgver}"
+    ln -vsf "${lib}.${pkgver}" "${pkgdir}/usr/lib32/${lib}"
   done
 }
