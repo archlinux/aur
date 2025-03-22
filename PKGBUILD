@@ -7,7 +7,7 @@ _pkgname=widelands
 pkgname="${_pkgname}-git"
 epoch=1
 _pkgver=latest
-pkgver=1.2+git26407_6f1730c_20231222
+pkgver=1.3+git
 pkgrel=1
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
@@ -51,7 +51,7 @@ replaces=(
   "${_pkgname}-bzr<=${pkgver}" # Previously, the development code was hosted a another location in a bazaar repository.
 )
 source=(
-  "${_pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git"
+  "${_pkgname}::git+https://codeberg.org/wl/${_pkgname}.git"
 )
 sha256sums=(
   'SKIP'
