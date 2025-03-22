@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Matta <mattajonathan1@gmail.com>
 pkgname='laser-git'
-pkgver=v1.4.7.r0.ga4c039c
+pkgver=0
 pkgrel=2
 pkgdesc="The better ls command, configurable with lua"
 arch=('x86_64')
