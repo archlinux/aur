@@ -1,0 +1,27 @@
+pkgbase = python-pyodide-lock
+	pkgdesc = Tooling to manage the 'pyodide-lock.json' file.
+	pkgver = 0.1.0a8
+	pkgrel = 1
+	url = https://github.com/pyodide/pyodide-lock
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-build
+	checkdepends = python-typer
+	checkdepends = python-pkginfo
+	checkdepends = python-packaging
+	checkdepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-pydantic
+	optdepends = python-typer: cli
+	optdepends = python-pkginfo: wheel
+	optdepends = python-packaging: wheel
+	source = https://files.pythonhosted.org/packages/source/p/pyodide-lock/pyodide_lock-0.1.0a8.tar.gz
+	sha256sums = 9ad5af230d30078aacc1d8055fae6b2273b5a882786eb30cc0b446d69f3af49e
+
+pkgname = python-pyodide-lock
