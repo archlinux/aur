@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=glmSparseNet
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-withr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e36eea2e7603e3ae720b683d36e9c54a')
-b2sums=('5270ddcdf22fbec1cc179114369622268d1965624818fc47f4e9535d4360e85950136f65535227b6cef26b8736a0f1fe74f19a8106fcd7e7a25db4c39cd62cff')
+md5sums=('d853ca6bb133d5c7f64ed46a73712a76')
+b2sums=('dc55854a800420fa56ca6b9785726b822dce67c0cf729bd5978f336d1e99d67b0c0a4300ce4d31b13fbeaa12c492e7239c8ffc833aedfc08ce7e16aebe22f09e')
 
 build() {
   mkdir build
