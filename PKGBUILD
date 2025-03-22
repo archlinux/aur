@@ -2,7 +2,7 @@
 
 _pkgname="justniffer"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.18
+pkgver=0.5.19
 pkgrel=1
 pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
 arch=('x86_64')
@@ -15,12 +15,12 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 noextract=("${_pkgsrc}-x86_64.deb")
-source=("COPYING-${pkgver}::${_url}/raw/refs/tags/v${pkgver}/COPYING"
-        "AUTHORS-${pkgver}::${_url}/raw/refs/tags/v${pkgver}/AUTHORS")
+source=("${_pkgsrc}-AUTHORS::${_url}/raw/refs/tags/v${pkgver}/AUTHORS"
+        "${_pkgsrc}-COPYING::${_url}/raw/refs/tags/v${pkgver}/COPYING")
 source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_amd64.deb")
-sha256sums=('8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
-            'dff89e69fe6c268939c410c7a10afdc3ad44cdf889126197abdc149881b92fc9')
-sha256sums_x86_64=('f2836793a461982761e240008db3cf55a43bcd6dc0d95d552dbe0daf79977441')
+sha256sums=('dff89e69fe6c268939c410c7a10afdc3ad44cdf889126197abdc149881b92fc9'
+            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
+sha256sums_x86_64=('7dcdb44e4cc5901684217a45ce8ff41064c73aa77ae5d1e50fd8cd6eb6040c12')
 
 prepare() {
   cd "${srcdir}"
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/bin"
-  patchelf --replace-needed "libpcap.so.0.8" "libpcap.so" "${_pkgname}"
+  #patchelf --replace-needed "libpcap.so.0.8" "libpcap.so" "${_pkgname}"
   # patchelf --replace-needed "libboost_regex.so.1.74.0" "libboost_regex.so" "${_pkgname}"
   # patchelf --replace-needed "libboost_program_options.so.1.74.0" "libboost_program_options.so" "${_pkgname}"
 
@@ -44,10 +44,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  cp -vr --no-preserve=ownership * "${pkgdir}"
-
   cd "${srcdir}"
-  install -vDm644 "AUTHORS-${pkgver}" "${pkgdir}/usr/share/doc/${_pkgname}/AUTHORS"
-  install -vDm644 "COPYING-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
+  cp -vr --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
+
+  install -vDm644 "${_pkgsrc}-AUTHORS" "${pkgdir}/usr/share/doc/${_pkgname}/AUTHORS"
+  install -vDm644 "${_pkgsrc}-COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }

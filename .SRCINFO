@@ -1,6 +1,6 @@
 pkgbase = justniffer-bin
 	pkgdesc = TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way.
-	pkgver = 0.5.18
+	pkgver = 0.5.19
 	pkgrel = 1
 	url = https://onotelli.github.io/justniffer
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = justniffer-bin
 	depends = libpcap
 	provides = justniffer
 	conflicts = justniffer
-	noextract = justniffer-0.5.18-x86_64.deb
-	source = COPYING-0.5.18::https://github.com/onotelli/justniffer/raw/refs/tags/v0.5.18/COPYING
-	source = AUTHORS-0.5.18::https://github.com/onotelli/justniffer/raw/refs/tags/v0.5.18/AUTHORS
-	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	noextract = justniffer-0.5.19-x86_64.deb
+	source = justniffer-0.5.19-AUTHORS::https://github.com/onotelli/justniffer/raw/refs/tags/v0.5.19/AUTHORS
+	source = justniffer-0.5.19-COPYING::https://github.com/onotelli/justniffer/raw/refs/tags/v0.5.19/COPYING
 	sha256sums = dff89e69fe6c268939c410c7a10afdc3ad44cdf889126197abdc149881b92fc9
-	source_x86_64 = justniffer-0.5.18-x86_64.deb::https://github.com/onotelli/justniffer/releases/download/v0.5.18/justniffer_0.5.18_amd64.deb
-	sha256sums_x86_64 = f2836793a461982761e240008db3cf55a43bcd6dc0d95d552dbe0daf79977441
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+	source_x86_64 = justniffer-0.5.19-x86_64.deb::https://github.com/onotelli/justniffer/releases/download/v0.5.19/justniffer_0.5.19_amd64.deb
+	sha256sums_x86_64 = 7dcdb44e4cc5901684217a45ce8ff41064c73aa77ae5d1e50fd8cd6eb6040c12
 
 pkgname = justniffer-bin
