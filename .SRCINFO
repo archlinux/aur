@@ -1,6 +1,6 @@
 pkgbase = python-returns
 	pkgdesc = Make your functions return something meaningful, typed, and safe
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://returns.readthedocs.io
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-returns
 	depends = python
 	depends = python-typing_extensions
 	optdepends = mypy: For mypy compatibility
-	source = python-returns-0.24.0.tar.gz::https://github.com/dry-python/returns/archive/refs/tags/0.24.0.tar.gz
-	sha256sums = 3494bf8630860243b3d6d2bcdfe9096377b7c59737b99f2c0954496087719b57
-	b2sums = bdfd6f64d76246a4a5f79dedcf6141a1ece45861980542a932a7b915bfc6f7cd27078899eb1f954508aa3084de40985c1a828afdc76176a81e9b0c6c24099fd3
+	source = python-returns-0.25.0.tar.gz::https://github.com/dry-python/returns/archive/refs/tags/0.25.0.tar.gz
+	sha256sums = 4669838c319597c4cd0d1ddd7a04b41b78de71ce28e3ec2d04fab27c897a2d88
+	b2sums = 0af309838348c012000dce94f2d42bd9a07ec002d354801f5f3b1f706a4c1e6d6d7589737e8d4110436c215980ccddf562607b3f9cd467d12c5b2ade98445aeb
 
 pkgname = python-returns
