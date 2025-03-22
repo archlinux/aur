@@ -1,0 +1,15 @@
+pkgbase = cstcadnavigator
+	pkgdesc = CST CAD Navigator supports 2D and 3D formats, open and convert.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://cadsofttools.com/products/cst-cad-navigator
+	arch = x86_64
+	license = LicenseRef-cstCadNavigator
+	depends = glibc
+	depends = glib2
+	depends = zlib
+	depends = gcc-libs
+	source = https://cadsofttools.com/download/cstcadnavigator-1.4.1-1.x86_64.rpm
+	sha256sums = e84ac132f62bb7b35b3316dc37a386250df19f8d51b16584fc7ff2b5138bd386
+
+pkgname = cstcadnavigator
