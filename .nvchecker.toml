@@ -1,0 +1,4 @@
+["lib32-gtkmm-4.0"]
+source = "archpkg"
+archpkg = "gtkmm-4.0"
+strip_release = true
