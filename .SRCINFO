@@ -1,0 +1,17 @@
+pkgbase = wmectrl
+	pkgdesc = An enhanced window manager control
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://www.muflone.com/wmectrl
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = libwnck3
+	depends = python-gobject
+	source = wmectrl-0.2.0.tar.gz::https://github.com/muflone/wmectrl/archive/0.2.0.tar.gz
+	sha256sums = 55eb054bc182e4f75fe344bfc667da89d4d2945c60f8693c9b6d0504fd970094
+
+pkgname = wmectrl
