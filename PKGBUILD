@@ -2,7 +2,7 @@
 
 _name="tinysparql"
 pkgname="lib32-${_name}"
-pkgver=3.8.2
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Low-footprint RDF triple store with SPARQL 1.1 interface (32-bit)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ replaces=('lib32-tracker3<=3.7.3-2')
 conflicts=('lib32-tracker3<=3.7.3-2')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
-sha256sums=('bb8643386c8edc591a03205d4a0eda661dcdd2094473bffb9bbdb94e93589cb2')
+sha256sums=('98e8933b946d8c54a77eadabd7f1d14cddd88fa43eef0d0ace3c0fcce646722b')
 
 build() {
   export CFLAGS+=" -m32"
