@@ -6,6 +6,7 @@ arch=("x86_64")
 source=("respect-my-internet.sh")
 sha256sums=("SKIP")
 depends=('opensnitch-git' 'opensnitch-ebpf-module' 'git')
+url="https://github.com/TheCyberArcher/Respect-My-Internet"
 
 package() {
 
