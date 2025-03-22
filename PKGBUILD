@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=iNETgrate
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-tcgabiolinks
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c82ba03d6eb152e07b4280a01bc6dfd0')
-b2sums=('9516fda1a4c6367261d6477d74e936b21bdad87f994606e1ef95a5e3eb5db8a645bb85bed1ef6c6392d5e2a559abb49ed6e83b83bb869ca9f1a7d05687bfb9f0')
+md5sums=('cb056d979ec3c5bea91f047f40cdd502')
+b2sums=('5c091608c0b0fb86cdb57514e17b7b71d15a89996a3996252d75ae3ccb29db8625a0012ec727a4532a60022efa8065f384025b68568912daca12c54d4f6e72ac')
 
 build() {
   mkdir build
