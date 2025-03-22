@@ -4,10 +4,9 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.7.7
-pkgrel=2
+pkgrel=3
 _attrver=2.5.2
 _aclver=2.3.2
-_lz4ver=1.10.0
 _sslver=3.4.1
 _zlibver=1.3.1
 _xzver=5.6.4
@@ -17,7 +16,7 @@ pkgdesc='Statically-compiled bsdtar (Multi-format archive and compression librar
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://libarchive.org/'
 license=('BSD')
-makedepends=('muon-meson' 'ninja' 'musl' 'kernel-headers-musl' 'git')
+makedepends=('musl' 'kernel-headers-musl' 'git')
 options=('!emptydirs' '!lto')
 validpgpkeys=('A5A45B12AD92D964B89EEE2DEC560C81CEC2276E'  # Martin Matuska <mm@FreeBSD.org>
               'DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B') # Martin Matuska <martin@matuska.org>
@@ -31,7 +30,6 @@ sha512sums=('e5bb4b6663c79821a175a231e13ba03ffa1f68f8ea33ec194eca082217bf1a74e72
             '6e6588e75c4868bac104496a6709f2874e39b81deff2d5d05706039d6e67fbc5bcd0100bdb0aa840a0e09f99443b1d4fa0a44bd4d5d334f7ae57916c1aee4875'
             '31aeb39958d8af5d08933dd3a89333a41025c3eb49fc461fa3c291caca51dad575ec13faeb7deba9b3c2ebf7615be7d45e2b78e50d4f83d8ec933c95931a7682'
             'SKIP'
-            '1fc9cb3c6528d08b11ca279b3389d030d90294179ad3cedeb46d80fba1e1774bb327477fa92e4a88dcbcaee5226ee715dfc59e48798e3a138cd5d6498e170e44'
             '1de6307c587686711f05d1e96731c43526fa3af51e4cd94c06c880954b67f6eb4c7db3177f0ea5937d41bc1f8cadcf5bce75025b5c1a46a469376960f1001c5f'
             'SKIP'
             'b1873dbb7a49460b007255689102062756972de5cc2d38b12cc9f389b6be412da6797579b1acd3717a8cd2ee118fd9801b94e55f063d4328f050f0876a5eb53c'
@@ -69,9 +67,6 @@ source+=("https://download.savannah.gnu.org/releases/acl/acl-${_aclver}.tar.gz"{
 validpgpkeys+=('600CD204FBCEA418BD2CA74F154343260542DF34'  # Brandon Philips <brandon@ifup.co>
               'B902B5271325F892AC251AD441633B9FE837F581'  # Frysinger <vapier@gentoo.org>
               '259B3792B3D6D319212CC4DCD5BF9FEB0313653A') # Andreas Gruenbacher <andreas.gruenbacher@gmail.com>
-
-# lz4
-source+=("git+https://github.com/lz4/lz4.git#tag=v${_lz4ver}")
 
 # openssl
 source+=("https://github.com/openssl/openssl/releases/download/openssl-${_sslver}/openssl-${_sslver}.tar.gz"{,.asc}
@@ -177,14 +172,6 @@ build() {
     make
     make install
 
-    # lz4
-    cd "${srcdir}"/lz4/build/meson
-    muon meson setup --prefix="${srcdir}"/temp/usr \
-                     -D contrib=false -D examples=false -D programs=false \
-                     --buildtype=plain .
-    muon samu -v -j1
-    muon install
-
     # openssl
     cd "${srcdir}"/openssl-${_sslver}
     case ${CARCH} in
@@ -258,6 +245,7 @@ build() {
         ./configure --prefix="${srcdir}"/temp/usr \
                     --bindir=/usr/bin \
                     --without-xml2 \
+                    --without-lz4 \
                     --without-nettle \
                     --without-expat \
                     --disable-shared \
