@@ -8,9 +8,9 @@
 
 _pkgname="musicpod"
 pkgname="$_pkgname"
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
-_flutterver=3.27.2
+_flutterver=3.29.1
 pkgdesc="Music, radio, television and podcast player"
 url="https://github.com/ubuntu-flutter-community/musicpod"
 license=('GPL-3.0-or-later')
@@ -31,7 +31,7 @@ _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 provides=("${_pkgname}")
-sha256sums=('451fd9a1c9d9c2ed1466a6d1227fe55a953743f0fe9e423a0ffedd60a026ce3d')
+sha256sums=('e206af5cf0ee763627a9eedc600a2931a106dd07cb6f461ced3dd6c8d13251c7')
 
 build() {
   export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
