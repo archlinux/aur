@@ -17,7 +17,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 target/release/archtry "$pkgdir/usr/bin/wrdlist"
+    install -Dm755 target/release/archtry "$pkgdir/usr/bin/archtry"
 }
 
 clean() {
