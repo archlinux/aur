@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Kramkowski <tk@the-tk.com>
 pkgname=timer-git
-pkgver=r104.365f022
+pkgver=r113.db878a2
 pkgrel=1
 
 pkgdesc='Simple beeping countdown timer'
