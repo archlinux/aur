@@ -6,7 +6,7 @@ index a998708..ac9b162 100644
        </description>
      </key>
      <key name="font-name" type="s">
--      <default>'Cantarell 11'</default>
+-      <default>'Adwaita Sans 11'</default>
 +      <default>'Sans 11'</default>
        <summary>Default font</summary>
        <description>
@@ -15,7 +15,7 @@ index a998708..ac9b162 100644
        </description>
      </key>
      <key name="document-font-name" type="s">
--      <default>'Cantarell 11'</default>
+-      <default>'Adwaita Sans 11'</default>
 +      <default>'Sans 11'</default>
        <summary>Document font</summary>
        <description>
@@ -23,8 +23,8 @@ index a998708..ac9b162 100644
        </description>
      </key>
      <key name="monospace-font-name" type="s">
--      <default>'Source Code Pro 10'</default>
-+      <default>'Monospace 10'</default>
+-      <default>'Adwaita Mono 11'</default>
++      <default>'Monospace 11'</default>
        <summary>Monospace font</summary>
        <description>
          Name of a monospaced (fixed-width) font for use in locations like
@@ -36,7 +36,7 @@ index 81f8db1..d44842b 100644
        </description>
      </key>
      <key name="titlebar-font" type="s">
--      <default>'Cantarell Bold 11'</default>
+-      <default>'Adwaita Sans Bold 11'</default>
 +      <default>'Sans Bold 11'</default>
        <summary>Window title font</summary>
        <description>
