@@ -8,13 +8,13 @@
 # https://github.com/quotient-im/Quaternion
 
 ## options
-: ${_static_libquotient:=true}
+: ${_static_libquotient:=false}
 
-: ${_commit:=051e8a92162011b0732d9a22bfecd5365e489474}
+: ${_commit:=53be5b207c899e3393e5e3702d66fe315eb73a07}
 
 _pkgname="quaternion"
 pkgname="$_pkgname"
-pkgver=0.0.97
+pkgver=0.0.97.1
 pkgrel=1
 pkgdesc='Qt-based IM client for the Matrix protocol'
 url="https://github.com/quotient-im/Quaternion"
@@ -62,6 +62,7 @@ if [[ "${_static_libquotient::1}" == "t" ]]; then
   _source_quaternion
 else
   depends+=('libquotient')
+  export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
 fi
 
 prepare() {
