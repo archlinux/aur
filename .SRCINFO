@@ -6,7 +6,7 @@ pkgbase = python-tornet
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/ayadseghairi/tornet/releases/download/2.2.0/tornet-2.2.0.tar.gz
+	source = https://github.com/ayadseghairi/tornet/releases/download/2.2.0/python_tornet-2.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-tornet

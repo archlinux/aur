@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/ayadseghairi/tornet"
 license=('MIT')
 depends=('python')
-source=("https://github.com/ayadseghairi/tornet/releases/download/2.2.0/tornet-${pkgver}.tar.gz")
+source=("https://github.com/ayadseghairi/tornet/releases/download/2.2.0/python_tornet-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
