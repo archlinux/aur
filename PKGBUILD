@@ -19,7 +19,10 @@ pkgname=(
   # "java-openjfx-src"
 )
 pkgver=23.0.2.u3
-pkgrel=1
+_jdk_buildversion="21"              # Which openjdk version used for building.  # ${pkgver%%.*}  # $(("${pkgver%%.*}"-1))
+_jre_dependversion="${pkgver%%.*}"  # Which java version the installed package should depend on.
+_ffmpegversion=""                   # Which ffmpeg version to use. Leave empty string for up to date version. Other possibilities e.g.: '4.4', '5.1', '6.1'.
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release. Build without WebKit support."
 arch=(
   "x86_64"
@@ -32,17 +35,16 @@ makedepends=(
   "ant"
   "cairo"
   "cmake"
-  "ffmpeg4.4"
+  "ffmpeg${_ffmpegversion}"
   "freetype2"
   "gdk-pixbuf2"
   "glib2"
   "gperf"
-  "gradle<9"
+  "gradle"
+  # "gradle<9"
   "gtk2"
   "gtk3"
-  # "java-environment-openjdk=21 # Needs older version of jdk-openjdk.
-  # "java-environment-openjdk=$(("${pkgver%%.*}"-1))" # Needs older version of jdk-openjdk.
-  "java-environment-openjdk=${pkgver%%.*}"
+  "java-environment-openjdk=${_jdk_buildversion}" # Needs older version of jdk-openjdk.
   "libgl"
   "libx11"
   "libxtst"
@@ -74,7 +76,7 @@ prepare() {
   # Clean from potential previous runs
   gradle --stop
   rm -rf build
-  #gradle clean
+  gradle clean || true
 
   ln -svf ../gradle.properties .
   patch -Np1 --follow-symlinks -i ../java-openjfx-flags.patch
@@ -97,11 +99,15 @@ build() {
   cd "${_jfxdir}"
 
   # Build with openjdk-(current version minus 1)
-  export PATH="/usr/lib/jvm/java-$((${pkgver%%.*}-1))-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-${_jdk_buildversion}-openjdk/bin/:$PATH"
+  export JAVA_HOME="/usr/lib/jvm/java-${_jdk_buildversion}-openjdk"
+  export JDK_HOME="/usr/lib/jvm/java-${_jdk_buildversion}-openjdk"
 
-  # build against ffmpeg4.4
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-  
+  if [ -n "${_ffmpegversion}" ]; then
+    # build against ffmpeg${_ffmpegversion}
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg${_ffmpegversion}/pkgconfig"
+  fi
+
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
 
@@ -114,14 +120,14 @@ package_java-openjfx-nowebkit() {
     "freetype2"
     "glib2"
     "glibc"
-    "java-runtime-openjdk=${pkgver%%.*}"
+    "java-runtime-openjdk=${_jre_dependversion}"
     "java-openjfx-license=${pkgver%%.*}"
     "libgl"
     "libx11"
     "libxtst"
   )
   optdepends=(
-    'ffmpeg4.4: Media support'
+    "ffmpeg${_ffmpegversion}: Media support"
     'gtk2: GTK2 support'
     'gtk3: GTK3 support'
     #'webkit2gtk: Web support'

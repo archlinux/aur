@@ -1,7 +1,7 @@
 pkgbase = java-openjfx-nowebkit
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - version following latest major Arch Linux OpenJDK java release. Build without WebKit support.
 	pkgver = 23.0.2.u3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	arch = x86_64_v3
@@ -10,15 +10,15 @@ pkgbase = java-openjfx-nowebkit
 	makedepends = ant
 	makedepends = cairo
 	makedepends = cmake
-	makedepends = ffmpeg4.4
+	makedepends = ffmpeg
 	makedepends = freetype2
 	makedepends = gdk-pixbuf2
 	makedepends = glib2
 	makedepends = gperf
-	makedepends = gradle<9
+	makedepends = gradle
 	makedepends = gtk2
 	makedepends = gtk3
-	makedepends = java-environment-openjdk=23
+	makedepends = java-environment-openjdk=21
 	makedepends = libgl
 	makedepends = libx11
 	makedepends = libxtst
@@ -48,7 +48,7 @@ pkgname = java-openjfx-nowebkit
 	depends = libgl
 	depends = libx11
 	depends = libxtst
-	optdepends = ffmpeg4.4: Media support
+	optdepends = ffmpeg: Media support
 	optdepends = gtk2: GTK2 support
 	optdepends = gtk3: GTK3 support
 	optdepends = java-openjfx-doc: For documentation of this software.
