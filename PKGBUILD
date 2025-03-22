@@ -2,7 +2,7 @@
 
 _name=hat-doit
 pkgname=python-$_name
-pkgver=0.15.13
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Hat build utility functions"
 url="https://github.com/hat-open/hat-doit"
@@ -14,12 +14,10 @@ depends=('python-doit' 'flake8' 'python-sphinx-furo' 'mkwhl'
          'python-sphinx' 'python-tomli' 'python-watchdog')
 makedepends=('python-build' 'python-installer')
 source=("https://github.com/hat-open/hat-doit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('121e316d8c8b096aab7bc5e8c2eb5babfbf8e66acd8fd2cb52a93bfa1216f400')
+sha256sums=('2591e973d87359fc90229c33c010aa4b9c0edd4bbd49c628dae22bb61ab24f9e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
-    sed -i -e 's/"pdoc >=14.2.0"/"pdoc >=14.1.0"/' pyproject.toml
-    sed -i -e 's/"watchdog >=4.0.0"/"watchdog >=2.3.0"/' pyproject.toml
     python -m build --wheel --no-isolation
 }
 
