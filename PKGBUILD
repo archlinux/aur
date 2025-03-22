@@ -4,7 +4,7 @@ _basename="gtk"
 pkgver=4.16.12
 _name="${_basename}${pkgver%%.*}"
 pkgname="lib32-${_name}"
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject-based multi-platform GUI toolkit (32-bit)"
 url="https://www.gtk.org"
 arch=('x86_64')
@@ -91,5 +91,5 @@ package() {
   rm -rf "${pkgdir}/usr/"{bin,include,share}
 
   install -vDm644 "${pkgname}-querymodules.hook"   "${pkgdir}/usr/share/libalpm/hooks/${pkgname}-querymodules.hook"
-  install -vDm644 "${pkgname}-querymodules.script" "${pkgdir}/usr/share/libalpm/scripts/${pkgname}-querymodules"
+  install -vDm755 "${pkgname}-querymodules.script" "${pkgdir}/usr/share/libalpm/scripts/${pkgname}-querymodules"
 }
