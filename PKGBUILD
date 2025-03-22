@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=scRNAseqApp
-_pkgver=1.4.0
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,6 +50,7 @@ depends=(
   r-sortable
   r-xfun
   r-xml2
+  r-colourpicker
 )
 checkdepends=(
   r-testthat
@@ -61,8 +62,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cad3212d6fa3ad4efbd99dc2b489a441')
-b2sums=('24a01680d7698164289e1e4200807241e46aefe21caf61175f7ec8b016c4d913c4eca919948c0ba4e4a91749de58f20f0e2527b87ed1493d47190a5784bd4122')
+md5sums=('d272f5de9b2a82bf3f4e6f15338e9457')
+b2sums=('18b09e086133ba02aa6083ddb1bd8e999c1091420bd48b01d7426f6fe62a413ee8dcf469ba720e0823f84b687bd03914256ff4c04554fba613223e587608a2c4')
 
 build() {
   mkdir build
