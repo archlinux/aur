@@ -1,13 +1,14 @@
 pkgbase = cpp-argparse-dev
 	pkgdesc = Python-like argument parser for C++ projects
 	pkgver = 1.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rue-ryuzaki/argparse
 	arch = any
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
+	conflicts = argparse
 	source = https://github.com/rue-ryuzaki/argparse/archive/refs/tags/v1.9.8.tar.gz
 	md5sums = 5a55c754751837ffc240aff91f9a3416
 
