@@ -8,11 +8,12 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libbluray
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Library to access Blu-Ray disks for video playback (Android ${_android_arch})"
 url='https://www.videolan.org/developers/libbluray.html'
 license=('LGPL2.1')
+groups=('android-libbluray')
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-freetype2"
          "android-${_android_arch}-libxml2")
@@ -52,6 +53,6 @@ package() {
     source android-env ${_android_arch}
 
     make DESTDIR="${pkgdir}" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
