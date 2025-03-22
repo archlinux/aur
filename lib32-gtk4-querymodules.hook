@@ -8,5 +8,5 @@ Target = usr/lib32/gtk-4.0/4.0.0/*/
 [Action]
 Description = Updating 32-bit GTK4 module cache...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/lib32-gtk4-querymodules
+Exec = /usr/share/libalpm/scripts/gtk4-querymodules-32
 NeedsTargets
