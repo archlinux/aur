@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!disable-clippy-test.patch
 !.nvchecker.toml
+!LICENSE
+!disable-clippy-test.patch

@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=pods
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Manage your Podman containers"
 arch=('x86_64' 'aarch64')
@@ -17,13 +17,11 @@ makedepends=(
   'cargo'
   'meson'
 )
-checkdepends=(
-  'appstream-glib'
-)
+checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'disable-clippy-test.patch')
-sha256sums=('6c7ff17df31b6c27acec83b8342b9a6a4baf7dd12b518923ccfca4e2ebb8aa53'
-            '558659ee8959d82236a69d22e977d0cbe8eb28a3799a7aff2c9dd69b9e1ae888')
+sha256sums=('ccd81545152637f1789eeb817226929ea43dbc83188450c90e7043c9f8878bae'
+            '2f95097a625041cafb85f4f7f837539131ce2c212819e8030ed9623afb172030')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,7 +38,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {

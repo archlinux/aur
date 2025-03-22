@@ -1,6 +1,6 @@
 diff --unified --recursive --text a/src/meson.build b/src/meson.build
---- a/src/meson.build	2024-09-28 04:24:49.000000000 -0600
-+++ b/src/meson.build	2024-09-28 11:08:24.155445288 -0600
+--- a/src/meson.build	2025-03-20 13:21:54.000000000 -0600
++++ b/src/meson.build	2025-03-22 13:16:25.834212734 -0600
 @@ -65,20 +65,3 @@
  cargo_target_dir = meson.project_build_root() / 'target'
  cargo_home = meson.project_build_root() / 'cargo-home'
@@ -18,7 +18,7 @@ diff --unified --recursive --text a/src/meson.build b/src/meson.build
 -  ],
 -  env: [
 -    'CARGO_HOME=@0@'.format(cargo_home),
--    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm18/bin:/usr/lib/sdk/rust-stable/bin',
+-    'PATH=/app/bin:/usr/bin:/usr/lib/sdk/llvm19/bin:/usr/lib/sdk/rust-stable/bin',
 -  ],
 -  timeout: 300, # Give cargo more time
 -)
