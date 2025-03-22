@@ -1,0 +1,4 @@
+[sile-highlighter]
+source = "git"
+git = "https://github.com/Omikhleia/highlighter.sile.git"
+prefix = "v"
