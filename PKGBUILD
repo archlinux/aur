@@ -3,13 +3,13 @@
 _name="libcloudproviders"
 pkgname="lib32-${_name}"
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="DBus API that allows cloud storage sync clients to expose their services (32-bit)"
 url="https://gitlab.gnome.org/World/libcloudproviders"
 arch=('x86_64')
 license=('LGPL-3.0-or-later')
 depends=('lib32-gcc-libs' 'lib32-glib2>=2.56' 'lib32-glibc' "${_name}>=${pkgver}")
-makedepends=('meson>=0.54')
+makedepends=('glib2-devel' 'meson>=0.54')
 provides=("${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_name}/${pkgver%.*}/${_pkgsrc}.tar.xz")
