@@ -2,22 +2,22 @@
 
 pkgbase=linode-dynamic-dns
 pkgname='linode-dynamic-dns'
-pkgver=0.6.2
-_srcname="${pkgname}-${pkgver}"
+pkgver=0.7.0
+_srcname="linode_dynamic_dns"
 pkgrel=1
 pkgdesc="Update Linode DNS records to point to local IPv4 and IPv6 addresses."
 arch=('any')
 url="https://github.com/nvllsvm/linode-dynamic-dns"
 depends=('python>=3.6' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${_srcname}.tar.gz")
-sha256sums=('276e98fed5e8e936e92343ac637c13567d2987757b26381e6cb14f9a71fb821a')
+source=("https://files.pythonhosted.org/packages/source/${_srcname:0:1}/${_srcname}/${_srcname}-${pkgver}.tar.gz")
+sha256sums=('9348732573146142c581b91def76f8e6404d658b431042dbb8d426db40f5fd8f')
 
 build() {
-  cd "${srcdir}"/"${_srcname}"
-  python setup.py build
+    cd ${_srcname}-${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}"/"${_srcname}"
-  python setup.py install --skip-build -O1 --root="$pkgdir"
+    cd ${_srcname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
