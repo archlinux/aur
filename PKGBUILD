@@ -5,23 +5,24 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libcdio
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 arch=('any')
 pkgdesc="GNU Compact Disc Input and Control Library (Android ${_android_arch})"
 url="https://www.gnu.org/software/libcdio/"
 license=('GPL3')
+groups=('android-libcdio')
 depends=("android-${_android_arch}-ncurses")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("http://git.savannah.gnu.org/cgit/libcdio.git/snapshot/libcdio-release-${pkgver}.tar.gz"
+source=("https://github.com/libcdio/libcdio/archive/refs/tags/${pkgver}.tar.gz"
         '0001-Disable-version-script.patch')
-md5sums=('bb5d6c98858777fa087c8557fba347fe'
+md5sums=('4d8b34da5132738d3341378c301dbf3e'
          '525e9b67c213cdd524837c70401712d2')
 validpgpkeys=('DAA63BC2582034A02B923D521A8DE5008275EC21') # R. Bernstein
 
 prepare() {
-    cd "${srcdir}/libcdio-release-${pkgver}"
+    cd "${srcdir}/libcdio-${pkgver}"
     source android-env ${_android_arch}
 
     patch -Np1 -i ../0001-Disable-version-script.patch
@@ -30,7 +31,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/libcdio-release-${pkgver}"
+    cd "${srcdir}/libcdio-${pkgver}"
     source android-env ${_android_arch}
 
     # Platform specific patches
@@ -40,6 +41,9 @@ build() {
             ;;
         armv7a-eabi)
              host=armv7-android-linux
+            ;;
+        riscv64)
+             host=riscv64-android-linux
             ;;
         x86)
              host=x86-android-linux
@@ -82,10 +86,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/libcdio-release-${pkgver}"
+    cd "${srcdir}/libcdio-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
