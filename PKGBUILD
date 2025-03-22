@@ -1,4 +1,4 @@
-# Maintainer: Ayad Seghairi <seghiri.ayad@univ-khenchela.dz>
+# Maintainer: Ayad Seghiri <seghiri.ayad@univ-khenchela.dz>
 pkgname=python-tornet
 pkgver=2.2.0
 pkgdesc="TorNet is a Python package that automates IP address changes using Tor. It is a top tool for securing your networks by frequently changing your IP address, making it difficult for trackers to pinpoint your location."
