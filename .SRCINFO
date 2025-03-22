@@ -1,0 +1,19 @@
+pkgbase = python-czipdec-git
+	pkgdesc = A Python package for decrypting data, using the C implementation of ZIP data decryption.
+	pkgver = r2.cc77ae6
+	pkgrel = 1
+	url = https://github.com/Rin-Wood/czipdec
+	arch = x86_64
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	provides = python-czipdec
+	conflicts = python-czipdec
+	source = git+https://github.com/Rin-Wood/czipdec.git
+	md5sums = SKIP
+
+pkgname = python-czipdec-git
