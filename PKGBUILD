@@ -1,10 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _basename="gtk"
-pkgver=4.16.12
+pkgver=4.18.2
 _name="${_basename}${pkgver%%.*}"
 pkgname="lib32-${_name}"
-pkgrel=4
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (32-bit)"
 url="https://www.gtk.org"
 arch=('x86_64')
@@ -28,11 +28,11 @@ _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz"
         '0001-HACK-Don-t-use-objcopy-for-resource-embedding.patch'
         "${pkgname}-querymodules."{hook,script})
-sha256sums=('ef31bdbd6f082c4401634a20c850b0050c9bf252ef1e079764ee95a2a0c4c95a'
+sha256sums=('cca5677be4c3e501b49f1c50bcafacba8dcf4bd3a2d016388f834eff274dc159'
             'fc14603646b033567b198e09c739b972088a8d01c1f0c65eeba0e8cba121cea1'
             '0d8697c9ec95117f5bf333f5a4469b5061de4b206d0699d328988c5683742eaa'
             '1c96fb5f09baf59987e4b97bf3af37ea8feedcc753b48c91ffc6bff080461f21')
-b2sums=('298c6f41e6100f9ebf7b51bf93c55102c82b4eac53bb834744ae545b2ee2ac83c7bd271e0c64ff03031d61042259695528ea36e8a1efac704bbe73dac77e7f7f'
+b2sums=('6928b6882b575a76589007d9483a2eeb017b52bfe1249b3786e64c2b510f2d5d9bec4297c044366f93b20273b5d70cf742fc99e70afefa15bd30e95928899808'
         'a672c99d673648a8af5c7e808642ce3ec91fecf336afddfbe0d4723c21cdf03787334754b0590de8617fc9eb10e71e25c2d91234857b1d10a9fe058ecbc72560'
         'bfc5e42867cf1f709561e477d1d7620c16764e46ea18b419c1093aea208e305f6e8635c541a3bde57468d3539e4c8ad47eb9886e5ad05197be1b9c2d0475e0c9'
         'f0372ba65b6203e569da5bc8b262e76f2b7f2682de3eca5006953e4de2e99785d9793044d2f5350cd2b863cb1760780deb36651a7ab20bc7ab317d1eeafcd07f')
