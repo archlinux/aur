@@ -1,3 +1,4 @@
+# Maintainer (AUR): Yung Siang Liau <liauys@gmail.com>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Dan McGee <dan@archlinux.org>
 
