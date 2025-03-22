@@ -4,12 +4,13 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libyuv
-pkgver=r2426+464c51a0
+pkgver=r2426+464c51a03
 pkgrel=1
 arch=('any')
 pkgdesc="Library for YUV scaling (Android ${_android_arch})"
 url="https://chromium.googlesource.com/libyuv/libyuv/"
 license=('custom')
+groups=('android-libyuv')
 depends=("android-${_android_arch}-libjpeg")
 makedepends=('android-cmake'
              'git')
@@ -45,6 +46,6 @@ package() {
 
     make -C build DESTDIR="${pkgdir}" install
     rm -rf "$pkgdir/${ANDROID_PREFIX_BIN}"
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 }
