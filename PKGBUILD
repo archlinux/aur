@@ -1,42 +1,37 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name="prompt-toolkit"
 pkgname="python-${_name}"
-pkgver=3.0.47
+pkgver=3.0.50
 pkgrel=1
-pkgdesc="Library for building powerful interactive command line applications in Python"
+pkgdesc="Library for building powerful interactive command lines in Python."
 arch=('any')
-url="https://${pkgname}.readthedocs.io"
-_url="https://github.com/prompt-toolkit/${pkgname}"
+url="https://python-prompt-toolkit.readthedocs.io"
 license=('BSD-3-Clause')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('python>=3.8' 'python-wcwidth' 'python-pyperclip' 'python-pygments' 'python-asyncssh')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-depends=('python>=3.7.0' 'python-pygments' 'python-typing_extensions'
-         'python-wcwidth' 'python-pyperclip' 'python-asyncssh')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/${pkgver}.tar.gz")
-sha256sums=('c272136b184e313191a4f3cbc497ed5f3a29ebea3df1aae4eb8619e3d2654aaa')
+optdepends=('python-typing_extensions')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
+sha256sums=('544748f3860a2623ca5cd6d2795e7a14f3d0e1c3c9728359013f79877fc89bab')
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${srcdir}/${_pkgsrc}"
-  PYTHONPATH="src" pytest
+  local pytest_options=(
+    -vv
+    --override-ini="addopts="
+  )
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
-  cd "${srcdir}/${_pkgsrc}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-
-  install -Dm644 "README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "${pkgdir}${site_packages}/${_name//-/_}-${pkgver}.dist-info/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -s "${pkgdir}${site_packages}/${_name//-/_}-${pkgver}.dist-info/AUTHORS.rst" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/AUTHORS.rst"
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
