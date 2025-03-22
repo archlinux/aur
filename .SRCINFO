@@ -1,9 +1,10 @@
 pkgbase = android-x86-64-libbluray
 	pkgdesc = Library to access Blu-Ray disks for video playback (Android x86-64)
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/developers/libbluray.html
 	arch = any
+	groups = android-libbluray
 	license = LGPL2.1
 	makedepends = android-configure
 	depends = android-x86-64-fontconfig
