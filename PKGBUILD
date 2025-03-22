@@ -2,9 +2,9 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Konstantin Gizdov <arch at kge dot pw>
 
-_pkgname=awkward
-pkgbase="python-${_pkgname}"
-# pkgname=("${pkgbase}" "${pkgbase}-docs") - docs require many new dependencies
+_name=awkward
+pkgbase=python-$_name
+# pkgname=($pkgbase $pkgbase-docs) - docs require many new dependencies
 pkgname=$pkgbase
 pkgver=2.7.4
 pkgrel=1
@@ -57,8 +57,8 @@ optdepends=(
   'root: rdataframe connector'
 )
 source=(
-  "${pkgname}::git+https://github.com/scikit-hep/${_pkgname}#tag=v${pkgver}"
-  "${pkgname}-rapidjson::git+https://github.com/Tencent/rapidjson.git"
+  $pkgname::git+https://github.com/scikit-hep/$_name#tag=v$pkgver
+  $pkgname-rapidjson::git+https://github.com/Tencent/rapidjson.git
 )
 
 sha512sums=('25626373f530c26552c3abfb1a50d52a0c16d29581090fa220255fca7021e99dfa7c03a44a9f719f4b6174df933976c0731e4a08c136339d91e9a04f55693a61'
@@ -68,7 +68,7 @@ prepare() {
   cd $pkgbase
   git submodule init
 
-  git config submodule."rapidjson".url "${srcdir}/${pkgname}"-rapidjson
+  git config submodule."rapidjson".url "$srcdir"/$pkgname-rapidjson
 
   git -c protocol.file.allow=always submodule update --init --recursive
 }
@@ -104,13 +104,13 @@ check() {
 }
 
 package_python-awkward() {
-  optdepends+=("${pkgbase}-docs: documentation")
+  optdepends+=("$pkgbase-docs: documentation")
 
   cd $pkgbase
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
   cd awkward-cpp
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 package_python-awkward-docs() {
@@ -118,11 +118,12 @@ package_python-awkward-docs() {
 
   cd $pkgbase
 
-  install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D README.md "${pkgdir}/usr/share/${pkgbase}/README.md"
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+  install -vDm 644 README.md -t "$pkgdir"/usr/share/$pkgbase/README.md
 
   python -m installer --destdir=tmp-install dist/*.whl
   python -m installer --destdir=tmp-install awkward-cpp/dist/*.whl
-  install -d "${pkgdir}/usr/share/doc/${pkgbase}"
-  PYTHONPATH="${PWD}"/tmp-install/`python -c 'import site; print(site.getsitepackages()[0])'` sphinx-build "${PWD}/docs" "${pkgdir}/usr/share/doc/${pkgbase}"
+  install -d "$pkgdir"/usr/share/doc/$pkgbase
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  PYTHONPATH="$PWD/tmp-install/$site_packages" sphinx-build "$PWD"/docs "$pkgdir"/usr/share/doc/$pkgbase
 }
