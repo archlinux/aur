@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -62,4 +62,6 @@ package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
 	rm -rf "$pkgdir/usr/include"
+	rm -rf "$pkgdir/usr/lib"
+	install -Dm644 "$srcdir/$pkgname-unified-source-$_date-$_commit/license.txt" "$pkgdir/usr/share/licenses/$pkgname/licenses.txt"
 }
