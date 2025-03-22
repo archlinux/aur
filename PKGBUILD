@@ -1,6 +1,6 @@
 # Maintainer: AstroSteveo <stevengmjr at gmail dot com>
 pkgname=cursor-appimage
-pkgver=0.47.8
+pkgver=0.47.9
 pkgrel=1
 pkgdesc="Cursor App - AI-first coding environment with auto-updates, stability patches and AppImage packaging"
 arch=('x86_64')
@@ -18,8 +18,8 @@ _pkgver() {
 		local api_response=$(curl -s "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest")
 		if [ $? -eq 0 ] && [ -n "$api_response" ]; then
 			local version=$(echo "$api_response" | jq -r '.version')
-			local url=$(echo "$api_response" | jq -r '.url')
-			local hash_id=$(echo "$url" | grep -o '[a-f0-9]\{40\}')
+			local url=$(echo "$api_response" | jq -r '.downloadUrl')
+			local hash_id=$(echo "$url" | cut -d '/' -f 5)
 
 			if [ -n "$version" ] && [ -n "$hash_id" ]; then
 				echo "${version} ${hash_id}"
@@ -27,8 +27,6 @@ _pkgver() {
 			fi
 		fi
 	fi
-	# Fallback to hardcoded values if API call fails
-	echo "0.47.8 82ef0f61c01d079d1b7e5ab04d88499d5af500e3"
 }
 
 _get_info() {
@@ -39,7 +37,7 @@ _get_info() {
 
 eval "$(_get_info)"
 
-source_x86_64=("https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-${pkgver}-${hashid}.deb.glibc2.25-x86_64.AppImage")
+source_x86_64=("https://downloads.cursor.com/production/${hashid}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
 noextract=("$(basename "${source_x86_64[0]}")")
 
 # Generate SHA512 checksum dynamically or use SKIP

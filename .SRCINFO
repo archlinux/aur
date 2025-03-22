@@ -1,6 +1,6 @@
 pkgbase = cursor-appimage
 	pkgdesc = Cursor App - AI-first coding environment with auto-updates, stability patches and AppImage packaging
-	pkgver = 0.47.8
+	pkgver = 0.47.9
 	pkgrel = 1
 	url = https://www.cursor.com/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = cursor-appimage
 	conflicts = cursor-bin-patched
 	conflicts = cursor-extracted
 	conflicts = cursor-electron
-	noextract = Cursor-0.47.8-82ef0f61c01d079d1b7e5ab04d88499d5af500e3.deb.glibc2.25-x86_64.AppImage
+	noextract = Cursor-0.47.9-x86_64.AppImage
 	options = !strip
-	source_x86_64 = https://downloads.cursor.com/production/client/linux/x64/appimage/Cursor-0.47.8-82ef0f61c01d079d1b7e5ab04d88499d5af500e3.deb.glibc2.25-x86_64.AppImage
+	source_x86_64 = https://downloads.cursor.com/production/b6fb41b5f36bda05cab7109606e7404a65d1ff32/linux/x64/Cursor-0.47.9-x86_64.AppImage
 	sha512sums_x86_64 = SKIP
 
 pkgname = cursor-appimage
