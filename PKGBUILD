@@ -5,8 +5,8 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.2.56.502
-_commit=ga68d2d4f
+pkgver=1.2.59.514
+_commit=g834e17d4
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -29,12 +29,12 @@ optdepends=('ffmpeg: Adds support for playback of local files'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Release"
-	"${_pkgname}-${pkgver}-${CARCH}.deb::http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}_amd64.deb"
-	"${_pkgname}-${CARCH}-Packages::http://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
+source=("${_pkgname}-Release::https://repository.spotify.com/dists/testing/Release"
+	"${_pkgname}-${pkgver}-${CARCH}.deb::https://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_commit}_amd64.deb"
+	"${_pkgname}-${CARCH}-Packages::https://repository.spotify.com/dists/testing/non-free/binary-amd64/Packages"
 	'LICENSE')
 sha512sums=('SKIP'
-	'7ba67f879f63e4c8a746de313593f2f3b3f0081cd3b888ae306ab7da3dd133830a06465e65f85e80cc34d26ce7e7654e98be4cb26f0e93dd4ca3d0be4a159ab2'
+	'eee83309cc0c3fbe0fd19a90b9ad87b3c4580988546da4363429667caf5f65371da9462a6a8d8ab9920b1402af5e9b1e9c729e960d78d53c31c4e86592709c31'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 
