@@ -3,18 +3,18 @@
 # Contributor: SingYan <singyan@tuta.io>
 
 pkgname=mydumper
-pkgver=0.16.11_2
+pkgver=0.18.1_1
 pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
 url="https://github.com/mydumper/mydumper"
-license=('GPL')
-depends=("glib2" "mariadb-libs" "pcre" "pcre2" "openssl")
+license=('GPL-3.0-or-later')
+depends=("glibc" "glib2" "mariadb-libs" "pcre2")
 makedepends=("cmake")
 
 source=("https://github.com/mydumper/mydumper/archive/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tar.gz")
 
-sha256sums=('19ff7c07ef29bee1808e753465344209e256d8a7fcd10854cab25761520f342e')
+sha256sums=('db3d3db79880b59556275ef435bbf6ed2f3b90b1fd4ec70abd7f3907705f8b31')
 
 build() {
 	# NOTE! As of 0.16.7-5 There is a maybe-uninitialized warning that is treated as an error
