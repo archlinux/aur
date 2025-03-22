@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 pkgname=citron
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -125,8 +125,8 @@ build() {
     -DBUNDLE_SPEEX=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="-march=native -mtune=native -Wno-error" \
-    -DCMAKE_C_FLAGS="-march=native -mtune=native" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
     -DCMAKE_BUILD_TYPE=Release
     
