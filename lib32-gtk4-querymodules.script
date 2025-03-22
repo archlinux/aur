@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while read -r d; do
+  [[ -d $d ]] || continue
+  gio-querymodules-32 "$d"
+  rmdir --ignore-fail-on-non-empty "$d"
+done
