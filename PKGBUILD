@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=paws.storage
-_pkgver=0.7.0
+_pkgver=0.9.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4e866254f3d3a147d202bc91e49b99dc')
-b2sums=('45718f47a368225b9845aa8591cda90567b0179ed8a023adbcf7e6d767702a863bce385708e7ed1f15e9a86d68baffb60c74dd0ecffbe6015dc45c9bffe547da')
+md5sums=('8ff7133262ee6f233e75809fb49ad989')
+b2sums=('0817f3bf767a26ba5b745974ab92afac9c532d6696842a13f3da5a5e8f6d76de6ccd620715a2b2f9fa3aeae6975e259132427ce3ccea2fb290762f100b2987d6')
 
 build() {
   mkdir build
