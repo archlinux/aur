@@ -2,9 +2,9 @@
 
 _pkgname="hellfire"
 pkgname="$_pkgname-browser-bin"
-pkgver=138.0a1
+pkgver=138.0a1_FP1
 
-pkgrel=2
+pkgrel=1
 pkgdesc="Optimized Firefox for GNU/Linux & Windows"
 url="https://github.com/CYFARE/HellFire"
 license=('MPL')
@@ -60,9 +60,9 @@ makedepends=(
 source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v138.0a1/hellfire-138.0a1.en-US.linux-x86_64_SSE4.2_AVX2.7z")
+source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v138.0a1_FP1/hellfire-138.0a1.en-US.linux-x86_64.7z")
 
-sha256sums_x86_64=('e15d093bc08406ef51a59e6ef09e72c4de5ecd0db6485e01dab34985cb486b6a')
+sha256sums_x86_64=('cab53a1109384a208c1906c2b7efe3e4ee4353da2d0c517191da02ec0bf680e4')
 
 package()
 {
@@ -71,7 +71,7 @@ package()
 
     cd ${srcdir} || exit
 
-    7za x ${_pkgname}-${pkgver}.en-US.linux-x86_64_SSE4.2_AVX2.7z -o${_pkgname}
+    7za x hellfire-138.0a1.en-US.linux-x86_64.7z -o${_pkgname}
 
     cp -r ${_pkgname}/firefox/* ${pkgdir}/opt/${_pkgname}/
 
