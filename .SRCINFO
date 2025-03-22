@@ -1,7 +1,7 @@
 pkgbase = atostekid
 	pkgdesc = New desktop application for Finnish electronic ID cards
 	pkgver = 4.2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dvv.fi/en/linux-versions
 	install = atostekid.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = atostekid
 	depends = minizip
 	depends = nss
 	depends = pcsclite
-	depends = qpdf
+	depends = libqpdf29
 	depends = qt6-base
 	optdepends = gnome-shell-extension-appindicator: System tray indicator extension for GNOME desktop
 	optdepends = libappindicator-gtk3: System tray support for desktop environments
