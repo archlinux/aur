@@ -1,11 +1,11 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=autonomics
-_pkgver=1.12.1
+_pkgver=1.14.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Unified statistal Modeling of Omics Data"
+pkgdesc='Unified Statistical Modeling of Omics Data'
 arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
@@ -39,7 +39,11 @@ depends=(
   r-tidyselect
   r-vsn
 )
+
 optdepends=(
+  r-biobase
+  r-e1071
+  r-patchwork
   r-affy
   r-annotationdbi
   r-annotationhub
@@ -50,7 +54,6 @@ optdepends=(
   r-dbi
   r-diagram
   r-ensembldb
-  r-fpc
   r-genomicdatacommons
   r-genomicranges
   r-geoquery
@@ -85,8 +88,8 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('675d945e4fe04fc3977fbaf924876b0d')
-b2sums=('b7d8fb4b2314b49fb32c8d779e478dfb7b5334252e7134b11d0edd6c7152bdb45c53db9e56992f18df2a807cf1384b42b26548efecb1ce604027f3375a5b3b9c')
+md5sums=('22be85a3c5964354245ed2e3f66f22c0')
+b2sums=('af501a8f62e346659a0fbd60f5d143365771a605ee1a088d45b73b2e15442a521789bb3a7ddb1d1ed788492274eae9981d8ce202022fa6ae7fc840de219ae1f8')
 
 build() {
   mkdir build
