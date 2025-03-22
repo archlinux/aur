@@ -1,23 +1,22 @@
 pkgbase = ntpdate
 	pkgdesc = Client for the Network Time Protocol (NTP)
-	pkgver = 4.2.8.p17
+	pkgver = 4.2.8.p18
 	pkgrel = 1
 	url = http://www.ntp.org/
 	arch = i686
 	arch = x86_64
-	license = custom
-	makedepends = perl-html-parser
+	license = LicenseRef-custom
 	depends = openssl
 	conflicts = ntp
 	conflicts = ntpdate-dev
 	backup = etc/conf.d/ntpdate.conf
-	source = https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p17.tar.gz
+	source = https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p18.tar.gz
+	source = bug_3926_pthread_detach.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/ntp/-/raw/4ab37fa86a6e3ffb1e53a2f415098ff934640b26/ntp-4.2.8.p18-fix-build.patch?inline=false
 	source = ntpdate.conf
 	source = ntpdate.service
-	source = restore-html2man.patch
-	sha256sums = 103dd272e6a66c5b8df07dce5e9a02555fcd6f1397bdfb782237328e89d3a866
+	sha256sums = cf84c5f3fb1a295284942624d823fffa634144e096cfc4f9969ac98ef5f468e5
+	sha256sums = 9c4afa0daed5fd3cc9544ec808b2bb1dd959e5d40c4cae307b7025b16885903c
 	sha256sums = 1ddbf0f51e030c6ec48d50e1b0eb6682f2d51567fbbb8fdd695a0e38a6036fd7
 	sha256sums = 2267e19120de4a73703ed0d83a4a0088309600ce3fed88c3c17a950fa0c1aa85
-	sha256sums = 66abd6828171661f531d221e8ac57baeca7bf6ac96008cf4fa76f8fb840404ce
 
 pkgname = ntpdate
