@@ -1,0 +1,3 @@
+[python-async-executor]
+source = "git"
+git = "https://github.com/nvllsvm/async-executor.git"
