@@ -2,10 +2,10 @@
 
 pkgname=cvs-fast-export
 pkgver=1.68
-pkgrel=2
+pkgrel=3
 pkgdesc="Export RCS or CVS history as a fastimport stream."
 arch=('x86_64')
-depends=('python')
+depends=('cvs' 'python')
 makedepends=('asciidoctor')
 url="http://www.catb.org/esr/$pkgname/"
 license=('GPL2')
