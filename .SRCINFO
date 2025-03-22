@@ -1,0 +1,21 @@
+pkgbase = play-dvd-git
+	pkgdesc = A simple DVD player for Linux based on mpv
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/houmain/play-dvd
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = mpv
+	depends = libdvdread
+	makedepends = cmake
+	makedepends = git
+	provides = play-dvd
+	conflicts = play-dvd
+	source = git+https://github.com/houmain/play-dvd.git
+	md5sums = SKIP
+
+pkgname = play-dvd-git
