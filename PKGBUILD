@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=MatchIt
-_pkgver=4.7.0
+_pkgver=4.7.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('057b483de13f23ee06df8db660e22d3d')
-b2sums=('62bd9898d1daa5284220252c782314bb76b6fc6dcd69fa857c85be64c26f57c95fbe7956ae908c12cc9c2d4cd71ced52e94e82a675dfc172d9fdb9165f6a1256')
+md5sums=('2b6157ccc72ba86c4e001123be033073')
+b2sums=('2eecde555614ebdb025df84a51965e0e98991a97f452d6669c5fb3bfa0654b9b13b4fe2dc9f4a62c23563dd3a52fd664a055b56cf4a63d76587690527950763b')
 
 build() {
   mkdir build
