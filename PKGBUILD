@@ -17,6 +17,7 @@ depends=(
   gobject-introspection
   gtk-layer-shell
   gtk3
+  pamixer
 )
 makedepends=(
   meson
@@ -26,7 +27,6 @@ makedepends=(
 optdepends=(
   'brightnessctl: for helper script lightctl'
   'light: for helper script lightctl'
-  'pamixer: for helper script volumectl'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
