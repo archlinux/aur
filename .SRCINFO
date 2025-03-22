@@ -1,11 +1,10 @@
 pkgbase = r-rbiom
 	pkgdesc = Read/Write, Analyze, and Visualize 'BIOM' Data
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rbiom
 	arch = x86_64
 	license = MIT
-	depends = r
 	depends = r-ape
 	depends = r-dplyr
 	depends = r-emmeans

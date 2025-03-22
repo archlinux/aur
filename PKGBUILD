@@ -4,13 +4,12 @@ _pkgname=rbiom
 _pkgver=2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Read/Write, Analyze, and Visualize 'BIOM' Data"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('MIT')
 depends=(
-  r
   r-ape
   r-dplyr
   r-emmeans
