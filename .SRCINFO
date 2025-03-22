@@ -1,0 +1,21 @@
+pkgbase = android-riscv64-libcdio
+	pkgdesc = GNU Compact Disc Input and Control Library (Android riscv64)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/libcdio/
+	arch = any
+	groups = android-libcdio
+	license = GPL3
+	makedepends = android-configure
+	depends = android-riscv64-ncurses
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/libcdio/libcdio/archive/refs/tags/2.2.0.tar.gz
+	source = 0001-Disable-version-script.patch
+	validpgpkeys = DAA63BC2582034A02B923D521A8DE5008275EC21
+	md5sums = 4d8b34da5132738d3341378c301dbf3e
+	md5sums = 525e9b67c213cdd524837c70401712d2
+
+pkgname = android-riscv64-libcdio

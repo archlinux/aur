@@ -1,0 +1,22 @@
+--- a/lib/driver/Makefile.am
++++ b/lib/driver/Makefile.am
+@@ -171,7 +171,7 @@
+ 
+ libcdio_la_MAJOR = $(shell expr $(libcdio_la_CURRENT) - $(libcdio_la_AGE))
+ if BUILD_VERSIONED_LIBS
+-libcdio_la_LDFLAGS = $(libcdio_la_ldflags) -Wl,--version-script=libcdio.la.ver
++libcdio_la_LDFLAGS = $(libcdio_la_ldflags)
+ libcdio_la_DEPENDENCIES = libcdio.la.ver
+ 
+ libcdio.la.ver: $(srcdir)/libcdio.sym
+--- a/lib/iso9660/Makefile.am
++++ b/lib/iso9660/Makefile.am
+@@ -129,7 +129,7 @@
+ 
+ libiso9660_la_MAJOR = $(shell expr $(libiso9660_la_CURRENT) - $(libiso9660_la_AGE))
+ if BUILD_VERSIONED_LIBS
+-libiso9660_la_LDFLAGS = $(libiso9660_la_ldflags) -Wl,--version-script=libiso9660.la.ver
++libiso9660_la_LDFLAGS = $(libiso9660_la_ldflags)
+ libiso9660_la_DEPENDENCIES = $(libcdio9660_la_dependencies) libiso9660.la.ver
+ 
+ libiso9660.la.ver: $(srcdir)/libiso9660.sym
