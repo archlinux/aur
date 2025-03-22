@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gypsum
-_pkgver=1.0.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,6 +13,7 @@ depends=(
   r-filelock
   r-httr2
   r-jsonlite
+  r-rappdirs
 )
 checkdepends=(
   r-dbi
@@ -32,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('294111f32161ff92e4a0904b897f421b')
-b2sums=('21d34d22d74340c615ebba0a6f45b67c6f0bbb414fa1be68f679d45e9697ab89e24297d42d39b1eae7a2e9e918e698541c3b009a19359bb3f25da2d158fe5a7b')
+md5sums=('9d2f3c483225865a0bf4639fee72cd03')
+b2sums=('63b87d3f4aec58210db84748b1bef1648a79a2b9c435c4e2ccaed5c20f4ebffe403141b60f8001c51ee7dc26e2afc2eafb0d6395eeed209619d30adb26e0182f')
 
 build() {
   mkdir build

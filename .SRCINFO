@@ -1,6 +1,6 @@
 pkgbase = r-gypsum
 	pkgdesc = Interface to the gypsum REST API
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gypsum
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = r-gypsum
 	depends = r-filelock
 	depends = r-httr2
 	depends = r-jsonlite
+	depends = r-rappdirs
 	optdepends = r-biocstyle
 	optdepends = r-dbi
 	optdepends = r-digest
@@ -21,8 +22,8 @@ pkgbase = r-gypsum
 	optdepends = r-rsqlite
 	optdepends = r-s4vectors
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gypsum_1.0.1.tar.gz
-	md5sums = 294111f32161ff92e4a0904b897f421b
-	b2sums = 21d34d22d74340c615ebba0a6f45b67c6f0bbb414fa1be68f679d45e9697ab89e24297d42d39b1eae7a2e9e918e698541c3b009a19359bb3f25da2d158fe5a7b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gypsum_1.2.0.tar.gz
+	md5sums = 9d2f3c483225865a0bf4639fee72cd03
+	b2sums = 63b87d3f4aec58210db84748b1bef1648a79a2b9c435c4e2ccaed5c20f4ebffe403141b60f8001c51ee7dc26e2afc2eafb0d6395eeed209619d30adb26e0182f
 
 pkgname = r-gypsum
