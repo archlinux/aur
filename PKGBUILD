@@ -3,7 +3,7 @@
 _pkgname="shijima-qt"
 
 pkgname=shijima-qt-git
-pkgver=r221.f4099eb
+pkgver=0.1.0.r6.gf4099eb
 pkgrel=1
 pkgdesc="Cross-platform shimeji simulation for desktop"
 arch=(x86_64 aarch64)
@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$pkgname"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 prepare() {
 	cd "$srcdir/$pkgname"
