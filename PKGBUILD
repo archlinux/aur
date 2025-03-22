@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=oligo
-_pkgver=1.70.0
+_pkgver=1.70.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Preprocessing tools for oligonucleotide arrays"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
@@ -44,10 +44,17 @@ optdepends=(
   r-rcurl
   r-runit
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7596c63194f0bf3e58feaa2a854c2061')
-b2sums=('862daeda207dbe4b388cbffd373bed268a120a16e9a33694e7c1c54fb12db835322ae8178631c6813ede645d6cb9e7f9b01c38c4f23d4cdfc46fac37572b0d1e')
-
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+  "fix-implicit-fun.patch::https://github.com/benilton/oligo/commit/b24d8b0e.patch"
+)
+md5sums=('1f05e33230872ae68b45361fea42e97c'
+         'd28e79c36d0a0aeedf1a954dbfcd99fe')
+b2sums=('f0b11e32bbf849816363c33e98a03140999e037bef9c013a45b301799fe05272abcbe2107ed1c3035cd8367817a3e888ab676d83d2697ef422edd5391e64541e'
+        '2b137f5ff851fb7e2589d7712030c48e8037ab16f9218ceaad9d2639deec06c79f2e0765409878c33d7daced87e0407b7180401b66f83b4ae6cfc17b29d44b2f')
+prepare() {
+  cd "$srcdir/$_pkgname"
+  patch -np 1 -R <$srcdir/fix-implicit-fun.patch
+}
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
