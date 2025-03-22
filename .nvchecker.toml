@@ -1,0 +1,4 @@
+[lib32-tinysparql]
+source = "archpkg"
+archpkg = "tinysparql"
+strip_release = true
