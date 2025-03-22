@@ -3,7 +3,7 @@
 pkgname=nexusmods-app-bin
 _pkgname=nexusmods-app
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 _fullver=${pkgver}-${pkgrel}
 pkgdesc="A mod installer, creator and manager for all your popular games."
 arch=('x86_64')
@@ -24,6 +24,13 @@ sha256sums=('d5d8d237d3ad8b290cc5d208c62eddad5a419ea71aab7abce7dac2c9f579441e'
             'acdd5d56705f9c986ab1a4cbb490b84b274750a812341d0de35439172fd2cfbf'
             '4bac4c5db66d92ebb80285ecc2c4ec5fb4d738d68ad5bde10f6058cfbf03a445')
 install="nexusmods-app-bin.install"
+optdepends=('xdg-desktop-portal-dde: Deepin'
+            'xdg-desktop-portal-gnome: GNOME'
+            'xdg-desktop-portal-gtk: Generic Desktop'
+            'xdg-desktop-portal-kde: KDE Plasma'
+            'xdg-desktop-portal-liri-git: Liri'
+            'xdg-desktop-portal-td: theDesk')
+
 prepare() {
 	mkdir nexusmods-app
 	bsdtar -xf "${srcdir}/NexusMods.App-${pkgver}-1.linux-x64.zip" -C "${_pkgname}"
