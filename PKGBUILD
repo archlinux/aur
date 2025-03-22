@@ -1,16 +1,16 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PRROC
-_pkgver=1.3.1
+_pkgver=1.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Precision-Recall and ROC Curves for Weighted and Unweighted Data"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  r
+  r-rlang
 )
 optdepends=(
   r-ggplot2
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a69d2bae6c1c3295b4d87a121b6a9ff4')
-b2sums=('41b04744f886d2fb5c7ff70e700eae2ff184942cfb182827584f6e94a4db3ab96b1b1e9339b855923a690e2064d338a0c109701f974198f7768b22c05203275b')
+md5sums=('229140aa270cdad059daf08783b083bb')
+b2sums=('5dfafbc8836d8620e68b7a64ff64b416b9362b920dd57e80910858b6c35078d469d4ec003054a99ff028015f8a469d9792f80d27926de3dd46eb5db54c6658ed')
 
 build() {
   mkdir build
