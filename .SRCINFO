@@ -1,6 +1,6 @@
 pkgbase = linux-apfs-rw-dkms
 	pkgdesc = Experimental APFS kernel module with Write support (DKMS)
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/linux-apfs/linux-apfs-rw
@@ -9,7 +9,7 @@ pkgbase = linux-apfs-rw-dkms
 	depends = dkms
 	provides = linux-apfs-rw
 	conflicts = linux-apfs-rw
-	source = linux-apfs-rw-dkms-0.3.12.tar.gz::https://github.com/linux-apfs/linux-apfs-rw/archive/refs/tags/v0.3.12.tar.gz
-	sha256sums = b66a2213c69279d2fc08ce21f16868a1c416f7dd5af4c33d7e41c6b1f1c9e4ae
+	source = linux-apfs-rw-dkms-0.3.13.tar.gz::https://github.com/linux-apfs/linux-apfs-rw/archive/refs/tags/v0.3.13.tar.gz
+	sha256sums = 1272c0441c6810cb7096038ed8990daa05c317175b1d2bbfd6780784eb71aebb
 
 pkgname = linux-apfs-rw-dkms
