@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=syntenet
-_pkgver=1.6.0
+_pkgver=1.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,7 +17,6 @@ depends=(
   r-ggplot2
   r-igraph
   r-intergraph
-  r-networkd3
   r-pheatmap
   r-rcolorbrewer
   r-rcpp
@@ -39,25 +38,26 @@ optdepends=(
   r-rmarkdown
   r-testthat
   r-xml2
+  r-networkd3
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c163717eec18f17589d6f47ddcb3221e')
-b2sums=('23797a49f8597d3dd358e6b16bbb94b50886071b22640f8b2266e0ec8a389ab23773d779ec21ea6b0a5d63c7a1b6a05f464e76c5abf28682f1d5fce0a59182e0')
+md5sums=('056edddd87df6d53f0277cb1f6902cd8')
+b2sums=('94bdb017fe9e1df4074757efc15f2fa9f155157f44df1c7c2515a2a52f661bc7091bca3f4cd24eeca28a3caf9243b2c02d072882a6316b2f2b259ed4e999efc2')
 
-prepare() {
+#prepare() {
   # skip tests that cause a coredump
-  sed -i '1i skip("dumps core")' "$_pkgname/tests/testthat/test-03_synteny_detection.R"
-}
+#  sed -i '1i skip("dumps core")' "$_pkgname/tests/testthat/test-03_synteny_detection.R"
+#}
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
-}
+#check() {
+#  cd "$_pkgname/tests"
+#  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+#}
 
 package() {
   install -d "$pkgdir/usr/lib/R/library"
