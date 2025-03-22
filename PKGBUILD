@@ -2,7 +2,7 @@
 
 pkgname=python-luna-soc
 _gitpkgname=luna-soc
-pkgver=0.2.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Amaranth HDL libary for building USB-capable SoC designs'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
-  'python-minerva-git'
+  'python-minerva-amaranth0.4'
   'python-pyproject-patcher'
   'python-recommonmark'
   'python-setuptools'
@@ -27,14 +27,14 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
-  'python-minerva-git: to implement SoC designs using a Minerva RISC-V CPU'
+  'python-minerva-amaranth0.4: to implement SoC designs using a Minerva RISC-V CPU'
 )
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/luna-soc/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('544f95acb79598806e460852b6311a49e789d165bf56dddaff209f202412dae6d0de92d18e840fb903164b967307be380d112bfab3dedd185cbfb581775bd696')
+sha512sums=('65ff79f7cf17c02eced044e6351babd5832f47b723c9d9a25cd08cc07b1fdec89d2675e37eb6aa769e4dbc873195a129e707aad7f6bcc99c5188b9429c648764')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
