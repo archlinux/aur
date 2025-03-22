@@ -1,0 +1,94 @@
+# Maintainer: Iliya-guterman <iliyagutermann@gmail.org>
+
+pkgname=netdata-v1
+pkgver=2.2.6
+pkgrel=3
+pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
+url="https://github.com/netdata/netdata"
+arch=('x86_64')
+license=('GPL-3.0-or-later')
+backup=('etc/netdata/netdata.conf')
+conflicts=('netdata')
+depends=('libmnl' 'libnetfilter_acct' 'zlib' 'judy' 'libuv' 'json-c' 'libcap' 'lz4'
+         'openssl' 'which' 'snappy' 'protobuf' 'libwebsockets' 'mongo-c-driver'
+         'libyaml' 'cups' 'freeipmi')
+makedepends=('cups' 'go' 'cmake' 'ninja' 'git')
+optdepends=('iproute2: for monitoring Linux QoS'
+            'python: for most of the external plugins'
+            'apcupsd: for monitoring APC UPS'
+            'lm_sensors: for go.d/sensors module'
+            'smartmontools: for go.d/smartctl module'
+            'nvme-cli: for go.d/nvme module'
+            'iw: for monitoring Linux as access point')
+source=("netdata-$pkgver.tar.gz::https://github.com/netdata/netdata/releases/download/v$pkgver/netdata-v$pkgver.tar.gz"
+        '0001-Fix-libbpf-build-workaround-for-netdata-libbpf-4.patch'
+        'netdata-2.2.6-fix-protobuf-30.0-compatibility.patch'
+        netdata.sysusers
+        netdata.tmpfiles)
+sha512sums=('46ea83800cc98294e2db85fd46ec2feec0bf9b48843e469b4f65df232e328f34820408e526f1ee108e806ae0e5a8b037f99dd8b0be2f0a04d5177e60c3b23d12'
+            '87a97db04edc986d0b687e325c0bd9fbc4bc364f3186cb6ef2b8258a77efe56e20585944260280b20c1280d924f015ee0dc21363562f7f60afb468d049b7e315'
+            '28201fb58fd5a899265a6f08b2df910dff66e31008f7b8dcd9ffb8656ef69ba0252558b816e3995fda366cf3ea732005a396be20d3099bfaa1f8755671f1d3e9'
+            '7331e050bd0900c16a5b25518ef4b9aa4a235791fc6e959c8aa2d8ea1a9a6c6e71208b73691aa50dd5039df4bf3fa86175cff9f580ce7bb4dab2b6f1930aea9d'
+            '9dcf6058d7e2b072ca6797c3e8fcb2cccc1f6670a9e58769922e078c95a9431370dc429cc34d8e642dbab10942221f1f730d570df7c40d651872931c070be832')
+
+prepare() {
+  cd netdata-v$pkgver
+
+  # fix libbpf build
+  patch -Np1 -i "$srcdir/0001-Fix-libbpf-build-workaround-for-netdata-libbpf-4.patch"
+
+  # fix build with protobuf 30.0: https://github.com/netdata/netdata/issues/19822
+  patch -Np1 -i "$srcdir/netdata-2.2.6-fix-protobuf-30.0-compatibility.patch"
+
+  sed -i "s/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 17/" CMakeLists.txt
+  sed -i "s|usr/sbin|usr/bin|g" CMakeLists.txt
+  sed -i "s|usr/libexec|usr/lib|g" CMakeLists.txt
+  sed -i "s|usr/libexec|usr/lib|g" CMakeLists.txt packaging/cmake/Modules/NetdataEBPFLegacy.cmake
+}
+
+build() {
+  cmake \
+    -B build \
+    -G Ninja \
+    -S "netdata-v$pkgver" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX=/ \
+    -Wno-dev \
+    -DENABLE_PLUGIN_XENSTAT=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+
+  cd "netdata-v$pkgver"
+
+  install -Dm644 "system/netdata.conf" "${pkgdir}/etc/netdata/netdata.conf"
+  install -Dm644 "${pkgdir}/usr/lib/netdata/system/systemd/netdata.service" \
+"${pkgdir}/usr/lib/systemd/system/netdata.service"
+  install -Dm644 "../netdata.sysusers" "${pkgdir}/usr/lib/sysusers.d/netdata.conf"
+  install -Dm644 "../netdata.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/netdata.conf"
+
+  chown -R "134:134" \
+  	"${pkgdir}/var/cache/netdata" \
+  	"${pkgdir}/var/lib/netdata" \
+  	"${pkgdir}/var/log/netdata"
+  chmod 0750 "${pkgdir}/var/cache/netdata" "${pkgdir}/var/lib/netdata"
+
+  # Also check curl -Ss https://raw.githubusercontent.com/netdata/netdata/master/netdata.spec.in | grep "%caps"
+  chown -R "0:134" "${pkgdir}/usr/lib/netdata/plugins.d"
+  chmod 0750 "${pkgdir}/usr/lib/netdata/plugins.d/"*".sh"
+  chmod 4750 "${pkgdir}/usr/lib/netdata/plugins.d/"{ebpf.plugin,cgroup-network,\
+local-listeners,network-viewer.plugin,ndsudo,freeipmi.plugin,nfacct.plugin}
+  setcap cap_dac_read_search,cap_net_admin,cap_net_raw+eip "${pkgdir}/usr/lib/netdata/plugins.d/go.d.plugin"
+  setcap cap_dac_read_search,cap_sys_ptrace+ep "${pkgdir}/usr/lib/netdata/plugins.d/apps.plugin"
+  setcap cap_dac_read_search+ep "${pkgdir}/usr/lib/netdata/plugins.d/slabinfo.plugin"
+  setcap cap_perfmon,cap_sys_admin+ep "${pkgdir}/usr/lib/netdata/plugins.d/perf.plugin"
+  setcap cap_dac_read_search+ep "${pkgdir}/usr/lib/netdata/plugins.d/debugfs.plugin"
+  setcap cap_dac_read_search+ep "${pkgdir}/usr/lib/netdata/plugins.d/systemd-journal.plugin"
+  setcap cap_sys_admin,cap_sys_ptrace,cap_dac_read_search+ep "${pkgdir}/usr/lib/netdata/plugins.d/network-viewer.plugin"
+
+  # Remove files for other initsystems
+  rm -rf "${pkgdir}/usr/lib/netdata/system"
+  rm -rf "${pkgdir}/var/run"
+}
