@@ -1,0 +1,15 @@
+pkgbase = r-fillpattern
+	pkgdesc = Patterned Fills for 'ggplot2' and 'grid' Graphics
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fillpattern
+	arch = any
+	license = MIT
+	depends = r-ggplot2
+	optdepends = r-ragg
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/fillpattern_1.0.2.tar.gz
+	md5sums = b52ba67e478a8d7d37c22f708fb6af31
+	b2sums = b623e94d844c73484ed04c1a7fef0654b1a76c4fc62bab296d576bc81410048a3ce48ad0816873eb57484169460644c136f5f970fc11e40fcab34d82fce5f0e1
+
+pkgname = r-fillpattern
