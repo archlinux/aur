@@ -1,0 +1,22 @@
+pkgbase = android-riscv64-libsoup3
+	pkgdesc = HTTP client/server library for GNOME (Android riscv64)
+	pkgver = 3.6.4
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/libsoup
+	arch = any
+	groups = android-libsoup3
+	license = LGPL
+	makedepends = android-meson
+	makedepends = gobject-introspection
+	depends = android-riscv64-brotli
+	depends = android-riscv64-libnghttp2
+	depends = android-riscv64-libpsl
+	depends = android-riscv64-sqlite
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gitlab.gnome.org/GNOME/libsoup/-/archive/3.6.4/libsoup-3.6.4.tar.bz2
+	md5sums = a481699155cd392ef8879a28093b97a0
+
+pkgname = android-riscv64-libsoup3
