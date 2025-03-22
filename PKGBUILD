@@ -5,11 +5,11 @@
 pkgname=python-torchviz-git
 _pkgver=0.0.2
 pkgver=0.0.2.r23.5cf04c1
-pkgrel=1
+pkgrel=2
 pkgdesc="A small package to create visualizations of PyTorch execution graphs and traces"
 arch=(any)
 url="https://github.com/szagoruyko/pytorchviz"
-license=(custom)
+license=(MIT)
 depends=(python-graphviz python-pytorch)
 makedepends=(git python-setuptools)
 provides=(python-torchviz=${pkgver})
