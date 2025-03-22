@@ -2,7 +2,7 @@
 
 pkgname=python-cynthion
 _gitpkgname=cynthion
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument'
 arch=('any')
@@ -41,7 +41,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('4476dcfc21c64c28a0a1e8a9a2197fc441c5d0cd36aeb9a4c674c038157a95420d4374c99bf5e9f380e9a4014bdd03238260311c034fcf02d0f3381c1a15adb6')
+sha512sums=('bc597109d172ad50d15d2c7f91f6a9362767b2b3a9d89efc7511f46114220a06ee4d0c95ea477655e035a445df7d675495c06e5fa20937dee95cf20b5600654c')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -56,10 +56,6 @@ with patch_in_place('cynthion/python/pyproject.toml') as toml:
 EOF
 }
 
-_site_packages() {
-  python -c 'import site; print(site.getsitepackages()[0])'
-}
-
 build() {
   cd "${_gitpkgname}-${pkgver}"
 
@@ -72,24 +68,28 @@ build() {
 
 check() {
   cd "${_gitpkgname}-${pkgver}"
-  python -m installer --destdir=tmp_install cynthion/python/dist/*.whl
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer cynthion/python/dist/*.whl
 
   echo >&2 'Running unit tests'
-  PYTHONPATH="${PWD}/tmp_install/$(_site_packages)" \
-    python -m unittest discover -v cynthion/python/tests
+  test-env/bin/python -m unittest discover -v cynthion/python/tests
 }
 
 package() {
   cd "${_gitpkgname}-${pkgver}"
+  local _site_packages
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" cynthion/python/dist/*.whl
 
   echo >&2 'Symlinking binaries and bitstreams'
-  mkdir -p "${pkgdir}/$(_site_packages)/cynthion/assets"
+  _site_packages="$(
+    python -c 'import site; print(site.getsitepackages()[0])'
+  )"
+  mkdir -p "${pkgdir}/${_site_packages}/cynthion/assets"
   find /usr/lib/cynthion-firmware -maxdepth 1 \
     '-(' -name '*.bin' -o -name 'CynthionPlatform*' '-)' -exec \
-    ln -fnsv '{}' "${pkgdir}/$(_site_packages)/cynthion/assets/" ';'
+    ln -fnsv '{}' "${pkgdir}/${_site_packages}/cynthion/assets/" ';'
 
   echo >&2 'Packaging udev rules'
   install -D -m 644 -t "${pkgdir}/usr/lib/udev/rules.d" \
