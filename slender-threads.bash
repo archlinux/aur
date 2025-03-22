@@ -3,5 +3,5 @@ set -eu
 
 PKGNAME='slender-threads'
 echo >&2 "Launching app"
-cd "/opt/${PKGNAME}/data/noarch"
+cd "/opt/${PKGNAME}"
 exec ./start.sh "$@"
