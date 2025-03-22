@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=goku
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='HTTP load testing application'
 url='https://github.com/jcaromiq/goku'
@@ -10,21 +10,14 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jcaromiq/goku/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('799e155c93937ccba830670fa25890d5fe53ceb01737926914d480ce0c39c752')
-b2sums=('bc818336981e6609edba1a45c8e54cb11ba96c7bba9fcad3eab08174010c10d6df6b893bd758e5c84092212403926a2008b6e3350e5d17bab465c803c7c05920')
+sha256sums=('d03020d63d36465bda0f07b3f3790b9e33579afe176a25fd01e89e9e9d066fc1')
+b2sums=('47b54fc562d5bae294c7c93281aef07e86acc2a9320c7ec80feb0788e59226cb651efd3c1a7d1d189b2b97b30beb758b5e4862b44d7e3c41b019848d19969c77')
 options=(!lto)
-
-case $CARCH in
-  x86_64|i686|aarch64)
-    _target="$CARCH-unknown-linux-gnu" ;;
-  arm)
-    _target="arm-unknown-linux-gnueabi" ;;
-esac
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo fetch --locked --target $_target
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
