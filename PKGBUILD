@@ -6,12 +6,17 @@ pkgrel=4
 pkgdesc="Fake Geoclue Service so that it doesn't need to phone home"
 arch=('x86_64')
 url="https://github.com/Grollicus/${pkgname%-git}"
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=()
-depends=('libdbus-1.so')
-makedepends=('cargo' 'git')
-provides=('geoclue' 'geoclue2')
-conflicts=('geoclue' 'geoclue2')
+depends=('gcc-libs'
+				 'glibc'
+         'libdbus-1.so')
+makedepends=('cargo'
+						 'git')
+provides=('geoclue'
+					'geoclue2')
+conflicts=('geoclue'
+					 'geoclue2')
 replaces=()
 backup=("etc/${pkgname%-git}.toml")
 options=()
@@ -22,16 +27,21 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	local ver=`git describe --long 2> /dev/null`
-	if [ -z $ver ]; then
+	local ver=$(git describe --long 2> /dev/null)
+	if [ -z "$ver" ]; then
 		ver="0-$(git rev-list --count HEAD)-g$(git rev-parse --short HEAD)"
 	fi
-	echo $ver | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	echo "$ver" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$pkgname"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$pkgname"
-	cargo build --release --locked
+	CARGO_TARGET_DIR=target cargo build --frozen --release
 }
 
 package() {
