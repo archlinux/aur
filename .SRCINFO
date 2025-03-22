@@ -8,6 +8,7 @@ pkgbase = python-hydrus
 	makedepends = python-poetry
 	makedepends = python-pip
 	makedepends = python-requests
+	makedepends = git
 	depends = python
 	depends = python-requests
 	source = git+https://gitlab.com/cryzed/hydrus-api.git#commit=8de3d28bddc6d76d0aeee534a4b7b7c1673824ab
