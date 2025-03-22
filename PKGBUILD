@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libavif
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 arch=('any')
 pkgdesc="Library for encoding and decoding .avif files (Android ${_android_arch})"
@@ -22,11 +22,27 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/archive/v${pkgver}/libavif-${pkgver}.tar.gz")
-md5sums=('633c2113d52aecab5f0073da3456e2ae')
+md5sums=('ec292cb8d51c0aa02f9fd5ef2419c853')
 
 build() {
     cd "${srcdir}/libavif-${pkgver}"
     source android-env ${_android_arch}
+
+    extra_options=""
+    extra_options_shared=""
+    extra_options_static=""
+
+    case "${_android_arch}" in
+        riscv64)
+            extra_options="-DAVIF_CODEC_RAV1E=OFF"
+            ;;
+        *)
+            extra_options="-DAVIF_CODEC_RAV1E=SYSTEM
+                           -DRAV1E_INCLUDE_DIR='${ANDROID_PREFIX_INCLUDE}/rav1e'"
+            extra_options_shared="-DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.so'"
+            extra_options_static="-DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.a'"
+            ;;
+    esac
 
     android-${_android_arch}-cmake \
         -S . \
@@ -35,14 +51,11 @@ build() {
         -DAVIF_BUILD_APPS=OFF \
         -DAVIF_CODEC_AOM=SYSTEM \
         -DAVIF_CODEC_DAV1D=SYSTEM \
-        -DAVIF_CODEC_RAV1E=SYSTEM \
         -DAVIF_CODEC_SVT=SYSTEM \
         -DAVIF_BUILD_GDK_PIXBUF=ON \
         -DAVIF_ENABLE_GTEST=OFF \
         -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DDAV1D_LIBRARY="${ANDROID_PREFIX_LIB}/libdav1d.so" \
-        -DRAV1E_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/rav1e" \
-        -DRAV1E_LIBRARY="${ANDROID_PREFIX_LIB}/librav1e.so" \
         -DSVT_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DSVT_LIBRARY="${ANDROID_PREFIX_LIB}/libSvtAv1Enc.so" \
         -DAOM_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -52,7 +65,9 @@ build() {
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.so" \
         -DLIBYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/libyuv" \
-        -DLIBYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libyuv.so"
+        -DLIBYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libyuv.so" \
+        ${extra_options} \
+        ${extra_options_shared}
     sed -i "s|  -lgdk_pixbuf-2.0|  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0|g" build-shared/contrib/gdk-pixbuf/CMakeFiles/pixbufloader-avif.dir/link.txt
     make -C build-shared $MAKEFLAGS
 
@@ -63,14 +78,11 @@ build() {
         -DAVIF_BUILD_APPS=OFF \
         -DAVIF_CODEC_AOM=SYSTEM \
         -DAVIF_CODEC_DAV1D=SYSTEM \
-        -DAVIF_CODEC_RAV1E=SYSTEM \
         -DAVIF_CODEC_SVT=SYSTEM \
         -DAVIF_BUILD_GDK_PIXBUF=ON \
         -DAVIF_ENABLE_GTEST=OFF \
         -DDAV1D_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DDAV1D_LIBRARY="${ANDROID_PREFIX_LIB}/libdav1d.a" \
-        -DRAV1E_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/rav1e" \
-        -DRAV1E_LIBRARY="${ANDROID_PREFIX_LIB}/librav1e.a" \
         -DSVT_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DSVT_LIBRARY="${ANDROID_PREFIX_LIB}/libSvtAv1Enc.a" \
         -DAOM_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
@@ -80,7 +92,9 @@ build() {
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DJPEG_LIBRARY="${ANDROID_PREFIX_LIB}/libjpeg.a" \
         -DLIBYUV_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}/libyuv" \
-        -DLIBYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libyuv.a"
+        -DLIBYUV_LIBRARY="${ANDROID_PREFIX_LIB}/libyuv.a" \
+        ${extra_options} \
+        ${extra_options_static}
     sed -i "s|  -lgdk_pixbuf-2.0|  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0|g" build-static/contrib/gdk-pixbuf/CMakeFiles/pixbufloader-avif.dir/link.txt
     make -C build-static $MAKEFLAGS
 }
