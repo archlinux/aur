@@ -3,7 +3,7 @@
 pkgname=netdata-v1
 pkgver=2.2.6
 pkgrel=3
-pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
+pkgdesc="Real-time performance monitoring. Freeze the version on 2.2.6 since version 2.3.0 has deprecated UI v1"
 url="https://github.com/netdata/netdata"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
