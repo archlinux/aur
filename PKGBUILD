@@ -11,15 +11,15 @@ license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "zlib" "freetype2" "qt6-base" "qt6-svg" "xdg-user-dirs")
-makedepends=("git" "pkg-config" "nasm" "cmake" "ninja")
+depends=("hidapi" "libsamplerate" "speexdsp" "minizip" "sdl2" "sdl2_net" "zlib" "freetype2" "qt6-base" "qt6-svg" "qt6-websockets")
+makedepends=("git" "nasm" "cmake")
 
 source=("git+https://github.com/Rosalie241/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver()
 {
-    cd "$_pkgname"
+    cd "$srcdir/$_pkgname"
 
     git describe --tags --always | sed -e 's|^v||;s|-|.|g'
 }
@@ -36,7 +36,7 @@ build()
                 -DPORTABLE_INSTALL="OFF" \
                 -DNO_RUST="ON" \
                 -DCMAKE_INSTALL_PREFIX="/usr" \
-                -G "Ninja"
+                -G "Unix Makefiles"
 
     cmake --build "$srcdir/${_pkgname}/build"
 }
