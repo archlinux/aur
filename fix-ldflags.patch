@@ -1,0 +1,33 @@
+diff --git a/src/VPI/Makefile b/src/VPI/Makefile
+index 698037b..dc6099d 100644
+--- a/src/VPI/Makefile
++++ b/src/VPI/Makefile
+@@ -39,10 +39,10 @@ ifeq ($(OSTYPE), Darwin)
+ # for Mac OS X, declare that the binary is dynamic and undefined references
+ # will be looked up later when the library is linked
+ LIBBDPI=libbdpi.dylib
+-LDFLAGS = -dynamiclib -Wl,-install_name,@rpath/$(LIBBDPI),-undefined,dynamic_lookup
++LDFLAGS += -dynamiclib -Wl,-install_name,@rpath/$(LIBBDPI),-undefined,dynamic_lookup
+ else
+ LIBBDPI=libbdpi.so
+-LDFLAGS = -shared -Wl,-soname,$(LIBBDPI)
++LDFLAGS += -shared -Wl,-soname,$(LIBBDPI)
+ endif
+ 
+ vpath %.c ../
+diff --git a/src/vendor/stp/src_stub/Makefile b/src/vendor/stp/src_stub/Makefile
+index fe24c4b..b4e892e 100644
+--- a/src/vendor/stp/src_stub/Makefile
++++ b/src/vendor/stp/src_stub/Makefile
+@@ -10,9 +10,9 @@ LIB_DIR=../lib
+ INC_DIR=../include
+ 
+ ifeq ($(OSTYPE), Darwin)
+-LDFLAGS = -dynamiclib -Wl,-install_name,libstp_stub.so
++LDFLAGS += -dynamiclib -Wl,-install_name,libstp_stub.so
+ else
+-LDFLAGS = -shared -Wl,-soname,libstp_stub.so
++LDFLAGS += -shared -Wl,-soname,libstp_stub.so
+ endif
+ 
+ .PHONY: all
