@@ -1,0 +1,3 @@
+[base16-shell-preview]
+source = "git"
+git = "https://github.com/nvllsvm/base16-shell-preview.git"
