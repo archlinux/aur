@@ -1,0 +1,29 @@
+pkgbase = python-pytest-pyodide
+	pkgdesc = Pytest plugin for testing applications that use Pyodide.
+	pkgver = 0.58.4
+	pkgrel = 1
+	url = https://github.com/pyodide/pytest-pyodide
+	arch = any
+	license = MPL-2.0
+	checkdepends = python-pytest-cov
+	checkdepends = python-build
+	checkdepends = python-requests
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-pexpect
+	depends = python-pytest
+	depends = python-pytest-asyncio
+	depends = python-hypothesis
+	depends = python-selenium
+	depends = selenium-manager
+	depends = python-playwright
+	depends = python-tblib
+	source = https://files.pythonhosted.org/packages/source/p/pytest-pyodide/pytest_pyodide-0.58.4.tar.gz
+	source = https://github.com/pyodide/pyodide/releases/download/0.26.1/pyodide-0.26.1.tar.bz2
+	sha256sums = 653f460e514cae6038cee821c592b05a0a2a4a22dab77929603126921f7d70f1
+	sha256sums = 1bd2487795c4628272e3295a47f2da749682cd59a3680c5acfcd69baf3bb19b0
+
+pkgname = python-pytest-pyodide
