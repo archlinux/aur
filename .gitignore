@@ -2,7 +2,8 @@
 *
 
 ## Except
-!.gitignore
-!.nvchecker.toml
-!PKGBUILD
-!.SRCINFO
+!/.gitignore
+!/.nvchecker.toml
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSE
