@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mlr3learners
-_pkgver=0.9.0
+_pkgver=0.10.0
 pkgname=r-${_pkgname,,}
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Recommended Learners for 'mlr3'"
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('007b2649223fe74d15f3b0abc62af048b81d9adbccccf5854ff08765a293bda4')
+sha256sums=('1eafbf5f065d9590678c3cb0153b9d2730d6fe2e9ca00cd090da0c2c735a5e1f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
