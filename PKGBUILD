@@ -40,7 +40,7 @@ source=(
 )
 md5sums=('6ee0e0e1a704b96efa6a8d713baf1a17')
 sha256sums=('6ce0ccd6403bf7f0f2eddd333e2ee9ba02edfa977c66660ed9b4b1057e7630a1')
-b2sums=('SKIP')
+b2sums=('e81c2416e69e3b31a69b5e8db32543c8aaff1b81f7163b3a204827d5ee4cffd08a5cc45bdc774a4ffd19d4b48dee5797842364bb9706ada945fd6ff415687486')
 
 # Upstream provides md5 and sha256
 
