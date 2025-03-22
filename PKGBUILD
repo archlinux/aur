@@ -6,7 +6,7 @@ _name=awkward
 pkgbase=python-$_name
 # pkgname=($pkgbase $pkgbase-docs) - docs require many new dependencies
 pkgname=$pkgbase
-pkgver=2.7.4
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward"
@@ -61,7 +61,7 @@ source=(
   $pkgname-rapidjson::git+https://github.com/Tencent/rapidjson.git
 )
 
-sha512sums=('25626373f530c26552c3abfb1a50d52a0c16d29581090fa220255fca7021e99dfa7c03a44a9f719f4b6174df933976c0731e4a08c136339d91e9a04f55693a61'
+sha512sums=('6088bceab29abddf5310a1b1ac8930c956684d9a32da51edc2fe35069fb793445e4569c989aa8363a106bf41b56797214fece4a5edb50069780f941c17072a3b'
             'SKIP')
 
 prepare() {
