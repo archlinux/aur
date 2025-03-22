@@ -1,11 +1,11 @@
-# Maintainer (AUR): Yung Siang Liau <liauys@gmail.com>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Dan McGee <dan@archlinux.org>
+# Maintainer: Yung Siang Liau <liauys@gmail.com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Dan McGee <dan@archlinux.org>
 
 pkgname=postgresql-14-upgrade
 pkgver=14.17
 _majorver=${pkgver%.*}
-pkgrel=2
+pkgrel=1
 pkgdesc='PostgreSQL build for migrating between major versions with pg_upgrade'
 url='https://www.postgresql.org/'
 arch=('x86_64')

@@ -1,0 +1,37 @@
+pkgbase = postgresql-14-upgrade
+	pkgdesc = PostgreSQL build for migrating between major versions with pg_upgrade
+	pkgver = 14.17
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = PostgreSQL
+	makedepends = clang
+	makedepends = llvm
+	makedepends = perl
+	makedepends = python
+	makedepends = systemd
+	makedepends = tcl
+	depends = postgresql-libs>=14
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = icu
+	depends = krb5
+	depends = libldap
+	depends = libxml2
+	depends = llvm-libs
+	depends = lz4
+	depends = openssl
+	depends = pam
+	depends = systemd-libs
+	depends = zlib
+	depends = zstd
+	source = https://ftp.postgresql.org/pub/source/v14.17/postgresql-14.17.tar.bz2
+	md5sums = 6ee0e0e1a704b96efa6a8d713baf1a17
+	sha256sums = 6ce0ccd6403bf7f0f2eddd333e2ee9ba02edfa977c66660ed9b4b1057e7630a1
+	b2sums = e81c2416e69e3b31a69b5e8db32543c8aaff1b81f7163b3a204827d5ee4cffd08a5cc45bdc774a4ffd19d4b48dee5797842364bb9706ada945fd6ff415687486
+
+pkgname = postgresql-14-upgrade
+	optdepends = perl: for PL/Perl support
+	optdepends = python: for PL/Python 3 support
+	optdepends = tcl: for PL/Tcl support
