@@ -2,7 +2,7 @@
 
 pkgbase=python-pyrage
 pkgname=(python-pyrage python-pyrage-stubs)
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Python bindings for rage (age in Rust)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'maturin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/woodruffw/pyrage/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('694c8061270ab7fb03dd2d1359900e76e06026dd108fa83b52d0136ca6b2d18a')
-b2sums=('60b6734dc80c50ada3392255cbae60c23bc9b7884207be4fcbbe0590e56bcdb4966eb40c173a63b47ef093a46a221447d46d647d2925f9c55095b6b31bc0586f')
+sha256sums=('d1e6bbae372bc18b892a6b4a027f8e1cd9b400825bf50067bb365b89f74ad0ab')
+b2sums=('58fd9cec8724468488af9be53b2856cc22dda8dc78bca3242f87ab5c1ba384087142bc4a1557d2b39893c332518beffdfa762e3596900d8766ebf2db0b78f110')
 
 prepare() {
   cd "pyrage-$pkgver"
