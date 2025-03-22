@@ -1,20 +1,20 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=paws.common
-_pkgver=0.7.7
+_pkgver=0.8.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Paws Low-Level Amazon Web Services API"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
-license=(Apache)
+license=('Apache')
 depends=(
   pandoc
   r-base64enc
   r-curl
   r-digest
-  r-httr
+  r-httr2
   r-jsonlite
   r-rcpp
   r-xml2
@@ -32,8 +32,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('88b12a9c1d983dccb0563b3b9c30d80d')
-b2sums=('cb9e4ad2a131db241eb6c0e9b38aaca29c858c69b081c18b2d2247b3a7f3b47c07d26bf3b6e02aa153b2c610a7b431f5a62dc53dd525089415bb20adc587891d')
+md5sums=('e28f7dc4041e59a656f96e33bad984e1')
+b2sums=('2cee81a30da9fdf6796f998e44ea15d708d334bd310cdfef818bfc227d06383954369f8295fad53e87f00392fff38a844a7345c48c0a5f60415fa53045ad731b')
 
 build() {
   mkdir build
