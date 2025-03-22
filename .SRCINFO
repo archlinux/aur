@@ -1,0 +1,18 @@
+pkgbase = meteorman
+	pkgdesc = A DDP client with GUI
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/harryadel/meteorman
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	makedepends = nodejs
+	depends = electron
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = git+https://github.com/harryadel/meteorman.git#tag=v2.0.1
+	sha256sums = SKIP
+
+pkgname = meteorman
