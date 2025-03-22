@@ -11,8 +11,8 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio
-pkgver=19.1.3
-pkgrel=2
+pkgver=19.1.4
+pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -24,7 +24,7 @@ depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-sv
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip")
-sha256sums=('b283db97bd7b639d142e0090c01e7e045afabecbc47a665b135026fcee5a28ee')
+sha256sums=('5fb4614834c5a9f990afa977b7d5dcd2675c26529bc09a468e7cd287bbaf5097')
 install="${pkgname}.install"
 options=('!strip')
 
@@ -99,7 +99,7 @@ prepare() {
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
   rm "squashfs-root/libs/libc++.so.1" "squashfs-root/libs/libglib-2.0.so.0" "squashfs-root/libs/libgio-2.0.so.0" "squashfs-root/libs/libgmodule-2.0.so.0"
-  ln -s "squashfs-root/BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
+  ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
   ln -s /usr/lib/libc++.so.1.0 "squashfs-root/libs/libc++.so.1"
   ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
   ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
@@ -120,6 +120,7 @@ package() {
   pushd "${pkgdir}/opt/${_pkgname}"
   install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/configs" "share/default-config.dat" "share/log-conf.xml"
   install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" "share/default_cm_config.bin"
+  install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
   install -D -m 0644 -t "${pkgdir}/usr/share/applications" "share/DaVinciResolve.desktop" "share/DaVinciControlPanelsSetup.desktop" "share/DaVinciResolveInstaller.desktop" \
     "share/DaVinciResolveCaptureLogs.desktop" "share/blackmagicraw-player.desktop" "share/blackmagicraw-speedtest.desktop"
   install -D -m 0644 -t "${pkgdir}/usr/share/desktop-directories" "share/DaVinciResolve.directory"
