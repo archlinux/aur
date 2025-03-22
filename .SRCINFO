@@ -1,0 +1,26 @@
+pkgbase = pinnacle-comp-git
+	pkgdesc = A WIP Smithay-based Wayland compositor, inspired by AwesomeWM
+	pkgver = r1218.9bab206
+	pkgrel = 1
+	url = https://github.com/pinnacle-comp/pinnacle
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = just
+	makedepends = cargo
+	makedepends = luarocks
+	depends = wayland
+	depends = libxkbcommon
+	depends = systemd-libs
+	depends = libinput
+	depends = mesa
+	depends = seatd
+	depends = libglvnd
+	optdepends = libdisplay-info: for monitor display information
+	optdepends = xorg-xwayland: for Xwayland support
+	optdepends = protobuf: for the API
+	optdepends = lua: To configure Pinnacle using Lua
+	source = pinnacle::git+https://github.com/pinnacle-comp/pinnacle
+	b2sums = SKIP
+
+pkgname = pinnacle-comp-git
