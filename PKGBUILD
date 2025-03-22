@@ -2,7 +2,7 @@
 
 pkgname=python-luna-usb
 _gitpkgname=luna
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Amaranth HDL framework for monitoring, hacking, and developing USB devices'
 arch=('any')
@@ -38,7 +38,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/luna/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('2ba9721b0df191b7092ea163fef67c3ad0b96d28ab8c4d60a31bec2a0436978b32e5d2c8660430b24c96e47f2f92d6be6419807fb872e26b57d44f9eba09988a')
+sha512sums=('4a1043ee19e168b3b2e198c93593c51eeabd774f9e20d6ecfd4c080be27a0987443fa612276c044a2d8b73e86dab5cc1ccb77e84a8dad1f6e2e3e4f9229e0faa')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
@@ -73,13 +73,7 @@ build() {
 
 check() {
   cd "${_gitpkgname}-${pkgver}"
-  local _site_packages
-  _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  echo >&2 'Running unit tests'
-  PYTHONPATH="${PWD}/tmp_install/${_site_packages}" \
-    python -m unittest discover -v
+  python -m unittest discover -v
 }
 
 package() {
