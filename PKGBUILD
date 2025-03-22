@@ -11,14 +11,15 @@ source=("https://github.com/SpaceTimee/Fusion-JetBrainsMapleMono/releases/downlo
 sha256sums=('a01730ac90cf6fbfa67aaec3b2432308ec9f96977587fef17495c100a1f7e247')
 
 package() {
+  _fontname=JetBrains-Maple-Mono-NF-XX-XX
   # Create font directory
   install -dm755 "$pkgdir/usr/share/fonts/TTF"
 
   # Install all font files
   for font in *.ttf; do
-    install -Dm644 "$font" "$pkgdir/usr/share/fonts/TTF/$font"
+    install -Dm644 "$font" "$pkgdir/usr/share/fonts/TTF/${_fontname}/$font"
   done
 
   # Install license file
-  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${_fontname}/LICENSE.txt"
 }
