@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=simona
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Semantic Similarity in Bio-Ontologies"
+pkgdesc='Semantic Similarity on Bio-Ontologies'
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
@@ -48,8 +48,8 @@ optdepends=(
   r-uniprotkeywords
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2f4a9eed9ebde10c3aa703095b529994')
-b2sums=('b1d3db9ea0fa0cfbf9e79f9c616087d3cc2dcf184a99999d189a2854f46b43cea11f2fa064c36cda83b48fe1582f2b2f31cfb13905b086ce300b671271a8be1c')
+md5sums=('b1e954e8f591b4440136f4b60280f1d9')
+b2sums=('3b4893133a37275caad0abe7341f878b244b7cd2adfa5b7de19984e159b0b80e773221002fd3b7f0e4d63cb64c8dbd4405b8476c15d619266f55dbe29837fe9a')
 
 build() {
   mkdir build
