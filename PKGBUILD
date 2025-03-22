@@ -2,7 +2,7 @@
 
 pkgname=geoclue_fake-git
 pkgver=0.r6.g0d7f9aa
-pkgrel=4
+pkgrel=5
 pkgdesc="Fake Geoclue Service so that it doesn't need to phone home"
 arch=('x86_64')
 url="https://github.com/Grollicus/${pkgname%-git}"
