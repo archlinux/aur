@@ -4,13 +4,12 @@ _pkgname=mediation
 _pkgver=4.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Causal Mediation Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-2.0-or-later')
 depends=(
-  r
   r-hmisc
   r-lme4
   r-lpsolve
@@ -18,12 +17,9 @@ depends=(
   r-sandwich
 )
 optdepends=(
-  r-mgcv
-  r-parallel
   r-quantreg
   r-speedglm
   r-suppdists
-  r-survival
   r-testthat
   r-vgam
 )

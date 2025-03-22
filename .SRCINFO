@@ -1,22 +1,18 @@
 pkgbase = r-mediation
 	pkgdesc = Causal Mediation Analysis
 	pkgver = 4.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mediation
 	arch = any
 	license = GPL-2.0-or-later
-	depends = r
 	depends = r-hmisc
 	depends = r-lme4
 	depends = r-lpsolve
 	depends = r-mvtnorm
 	depends = r-sandwich
-	optdepends = r-mgcv
-	optdepends = r-parallel
 	optdepends = r-quantreg
 	optdepends = r-speedglm
 	optdepends = r-suppdists
-	optdepends = r-survival
 	optdepends = r-testthat
 	optdepends = r-vgam
 	source = https://cran.r-project.org/src/contrib/mediation_4.5.0.tar.gz
