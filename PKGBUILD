@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Moonlight2R
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -58,8 +58,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0dd4a005ee752f5d6113ebca14602d6')
-b2sums=('753e299bdc12b8becc409554c89d42419ddac99fc37285610e89b89902209fdb3052d0c8b3f21f1058dfd281ab6a826ee82198188cc536ff877e905bb392020d')
+md5sums=('96842c4ab79b82de4ee8a43d1cc10976')
+b2sums=('c9220627cc0a12937a9bc3b726ac3abc2c451389267c6a88792039ea6e709016a15e679efbbee51aa550434c9b2db2eee91137019dde76c9725f46c2a371ea05')
 
 build() {
   mkdir build
