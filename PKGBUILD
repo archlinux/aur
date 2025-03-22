@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2120.rc1.r11.gfac8ae268
+pkgver=2120.rc1.r40.gf083a6e5d
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -42,7 +42,7 @@ makedepends=(
 	'zydis'
 )
 provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname" "citra")
+conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/azahar-emu/azahar.git"
 	"$_pkgname-boost::git+https://github.com/azahar-emu/ext-boost.git"
@@ -99,7 +99,6 @@ prepare() {
 	mkdir -p ../build
 	ln -sr .git ../build
 	sed -i '/check_submodules_present()/d' CMakeLists.txt
-	sed -i '/FORTIFY_SOURCE/d' src/CMakeLists.txt
 	cd externals/dynarmic
 	git config submodule.mcl.url ../../../$_pkgname-mcl
 	git -c protocol.file.allow=always submodule update
