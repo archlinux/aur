@@ -1,6 +1,6 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 24.10.4
+	pkgver = 25.04.1
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = yaru
 	makedepends = meson
 	makedepends = sassc
 	makedepends = git
-	source = https://github.com/ubuntu/yaru/archive/24.10.4.tar.gz
-	sha256sums = 80eed1a9832cf81976bf12b4cc85565b7d035176d1c3d73ccca7cacf1e4094a5
+	source = https://github.com/ubuntu/yaru/archive/25.04.1.tar.gz
+	sha256sums = e01442fb63afbe0c0d3ad5971c4e3d40d63a3ed355efed0ef215ee0141509ff3
 
 pkgname = yaru-sound-theme
 	pkgdesc = Yaru default ubuntu sound theme
