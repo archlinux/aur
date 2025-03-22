@@ -1,6 +1,6 @@
 pkgbase = python-hydrus
 	pkgdesc = Python module implementing the Hydrus API.
-	pkgver = 5.0.1
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://gitlab.com/cryzed/hydrus-api
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-hydrus
 	makedepends = python-requests
 	depends = python
 	depends = python-requests
-	source = https://gitlab.com/cryzed/hydrus-api/-/archive/v5.0.1/hydrus-api-v5.0.1.tar.gz
-	sha512sums = efd75d67d0bac32a746d7468e7c476f5ebb4044d18f5eec8de9723c9e00d81cf637b2a621b09ffedad6602f7a6461de5b8a6d6cc90f1b730141cbb4a6aae3e88
+	source = git+https://gitlab.com/cryzed/hydrus-api.git#commit=8de3d28bddc6d76d0aeee534a4b7b7c1673824ab
+	sha512sums = a021ddf16f48b477f63ff460831d49a473e22f53cac80b5ff27cd4d28525f36dd41c8a120006c3742da2bf787850e676ac10da60170a0c1ea8a0d8371ac32c7d
 
 pkgname = python-hydrus
