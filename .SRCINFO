@@ -1,14 +1,13 @@
 pkgbase = containers
 	pkgdesc = Lightweight containers using Linux user namespaces
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/arachsys/containers
 	arch = x86_64
 	arch = i686
 	license = MIT
 	depends = glibc
-	source = https://github.com/arachsys/containers/archive/containers-1.6.tar.gz
-	sha256sums = 38a13fc323f163657fa6c1aa8653e468eb003eae7de071c16acf810cdd1ce981
+	source = https://github.com/arachsys/containers/archive/containers-1.7.tar.gz
+	sha256sums = 5f43ffaf9bcfc73032cafeb94fe9596dcfa0b26f0bd2730656c3daa4341d9c02
 
 pkgname = containers
-
