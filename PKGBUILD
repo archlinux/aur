@@ -11,11 +11,11 @@ source=("https://github.com/ayadseghairi/tornet/releases/download/2.2.0/python_t
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/tornet-${pkgver}"
+    cd "$srcdir/python_tornet-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/tornet-${pkgver}"
+    cd "$srcdir/python_tornet-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
