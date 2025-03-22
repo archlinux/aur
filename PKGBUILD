@@ -3,7 +3,7 @@
 
 pkgname=tkdnd
 _pkgname=$pkgname-release-test
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="add native drag'n'drop capabilities to Tk toolkit"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=('tk')
 conflicts=(tkdnd-cvs tkdnd-git)
 options=(!emptydirs)
 source=("https://github.com/petasis/tkdnd/archive/tkdnd-release-test-v${pkgver}.tar.gz")
-sha256sums=('cc6d3f0b7daca9564869e29e5db0996caa5f0c03d21c9b7032bad43f0a58121c')
+sha256sums=('7ab2d1d7c0f57a5dc7f6d5542895b44762a31a01621c9d7f80f3bbd67c7bcc39')
 
 build() {
   cd "$srcdir/$pkgname-$_pkgname-v$pkgver"
