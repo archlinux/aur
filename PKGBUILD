@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=doubletrouble
-_pkgver=1.4.3
+_pkgver=1.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d31efd0013a95b9030ce7dd75cac14ed')
-b2sums=('848842d5938a90eb5ea6dbd8140a2508a746f05fa11971dc008aaa2a37b38f661cf25b8444eefd07afe950b374dc2668134f006700ce709af3e93b82716e341d')
+md5sums=('5aeff734fa1eaf9ae2b342d043ee4217')
+b2sums=('f28bd8f6ea0a6aae53d5b2d485354c94941ee507842ad726c947b61884f2dbeb96f10c958dcdbe2c3cafa5860d849039910a09b87c4faddc87149234750d32c4')
 
 build() {
   mkdir build
