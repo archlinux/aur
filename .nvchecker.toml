@@ -1,0 +1,4 @@
+[linux-flowx13]
+source = "git"
+git = "https://gitlab.archlinux.org/archlinux/packaging/packages/linux"
+sort_version_key = "vercmp"
