@@ -1,0 +1,3 @@
+[linode-dynamic-dns]
+source = "git"
+git = "https://github.com/nvllsvm/linode-dynamic-dns.git"
