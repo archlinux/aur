@@ -1,0 +1,4 @@
+[python-nbsphinx-link]
+source = "github"
+github = "vidartf/nbsphinx-link"
+use_max_tag = "true"
