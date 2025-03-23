@@ -46,5 +46,8 @@ package() {
     mkdir -p $pkgdir/opt/$_pkgname
     cp -rf ./$_squashfs_root $pkgdir/opt/$_pkgname
     install -Dm644 ./$_squashfs_root/org.$_pkgname2.$_pkgname.desktop -t $pkgdir/usr/share/applications
+    for directory in 16x16 32x32 48x48 64x64 128x128; do
+      install -Dm644 ./$_squashfs_root/usr/share/games/$_pkgname/desktop/icons/$directory/$_pkgname2.png $pkgdir/usr/share/icons/hicolor/$directory/apps/org.$_pkgname2.$_pkgname.png
+    done
     install -Dm755 ./$_pkgname.bash $pkgdir/usr/bin/$_pkgname
 }
