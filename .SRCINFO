@@ -7,6 +7,7 @@ pkgbase = eclipse-rcp-bin
 	arch = x86_64
 	license = EPL
 	optdepends = libsecret: password storage
+	optdepends = webkit2gtk-4.1: HTML tooltips
 	provides = eclipse=4.35-1
 	conflicts = eclipse
 	options = !strip

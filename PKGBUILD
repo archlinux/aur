@@ -12,7 +12,8 @@ url="https://eclipse.org/ide"
 license=('EPL')
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
-optdepends=('libsecret: password storage')
+optdepends=('libsecret: password storage'
+            'webkit2gtk-4.1: HTML tooltips')
 
 _srcfilename="$_pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
 source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
