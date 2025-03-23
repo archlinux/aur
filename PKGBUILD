@@ -3,17 +3,17 @@
 
 _gemname=iostruct
 pkgname="ruby-${_gemname}"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A Struct that can read/write itself from/to IO-like objects"
 arch=(any)
 url='https://rubygems.org/gems/iostruct'
-license=(MIT)
+license=('MIT')
 depends=('ruby')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('a562b527c471f84da9610792948f21e3f2c95a7104733717a7d7341638adbeec')
+sha256sums=('7761b5b6e16d1ff3a709be4c4a5ab66811b15f06da7c7dab5f20b5f425f45c5f')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
