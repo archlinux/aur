@@ -1,6 +1,6 @@
-# Maintainer: wtolley <your_email@example.com>
+# Maintainer: wtolley <william@breakpointingbad.com>
 pkgname=wpm
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A lightweight waypoint manager for saving and navigating directories"
 arch=('any')
