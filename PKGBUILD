@@ -2,7 +2,7 @@
 
 pkgname=deezer-enhanced-bin
 _pkgname=deezer-enhanced
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('deezer-enhanced')
 options=('!debug')
 source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.pacman"
 "https://raw.githubusercontent.com/duzda/deezer-enhanced/v$pkgver/LICENSE")
-sha256sums=('a248eca29e08bfb2add58156c8878300590f395cdc093bd71b1828b2187c299a' 
+sha256sums=('10c7b4581f36bd9bcebdd7c26580dfd59136680e2d8e705b021d0e87034a5a2b' 
             'f2f5c024ea86b461c5f5b13fc2155c027ea34c3e0e1350327ec805328fb13966')
 
 package() {
