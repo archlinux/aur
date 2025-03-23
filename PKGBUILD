@@ -1,11 +1,13 @@
+# Maintainer: liyp <my [at] liyp dot cc>
 _pkgname=xc-music
 pkgname=${_pkgname}-electron
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='第三方网易云音乐客户端（使用系统electron） / GUI of Netease Cloud Music'
 arch=('x86_64')
 url="https://github.com/yiktllw/XCMusic"
 license=('MIT')
+changelog=CHANGELOG.md
 conflicts=('xc-music'
            'xc-music-bin'
            'xc-music-git')
