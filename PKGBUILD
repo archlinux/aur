@@ -10,7 +10,7 @@ groups=('xfce4-goodies')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine' 'rofi')
+depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine')
 options=('!strip')
 
 source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-windows10-theme/distrib/xts-windows10-theme-0.1-3.tar.gz')
