@@ -6,7 +6,7 @@
 _pkgname=gnuplot
 pkgname=gnuplot-headless
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Plotting package which outputs to PostScript, PNG, GIF, and others, without X deps'
 arch=('i686' 'x86_64' 'aarch64' 'aarch32') 
 url='http://www.gnuplot.info'
@@ -40,6 +40,7 @@ build() {
               --libexecdir=/usr/bin \
               --with-gihdir=/usr/share/gnuplot \
               --with-readline=gnu \
+              --with-bitmap-terminals \
               --with-texdir=/usr/share/texmf/tex/latex/gnuplot \
               --disable-x11-mbfonts \
               --disable-x11-external \
@@ -50,7 +51,6 @@ build() {
               --with-x=no \
               --with-aquaterm=no \
               --with-gd=no
-#              --with-bitmap-terminals \
   make pkglibexecdir=/usr/bin
 }
 

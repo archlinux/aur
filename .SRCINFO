@@ -1,7 +1,7 @@
 pkgbase = gnuplot-headless
 	pkgdesc = Plotting package which outputs to PostScript, PNG, GIF, and others, without X deps
 	pkgver = 6.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnuplot.info
 	arch = i686
 	arch = x86_64
