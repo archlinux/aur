@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Gehrhardt <gehwolf at freenet dot de>
 
 pkgname=elos
-pkgver=1.14.12
+pkgver=1.21.3
 pkgrel=1
 pkgdesc="An event logging system"
 arch=('x86_64')
@@ -67,8 +67,8 @@ package() {
   # set default syslog mapping rule
   _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.MappingRules.MessageCodes = {"1003":"1 1 EQ"}'
 
-  # elos currently can't forward syslog messages on the syslog socket, thus
-  # don't acquire /dev/log to not conflict with other syslog daemons
-  _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.SyslogPath = "/run/elos/dev-log"'
+  # hook up with systemd's journald as syslog service
+  _editConfig 'del(.root.elos.Scanner.Plugins.SyslogScanner.Config.SyslogPath)'
+  _editConfig '.root.elos.Scanner.Plugins.SyslogScanner.Config.UseSystemdSocket = true'
 }
-sha256sums=('24bc52d0466ef0eda8b05d628bef259fb26e0c07a45834eb1449341c7f584209')
+sha256sums=('ca90f5a061216fa7915a538062b881046271aee0f5ab15502cb43db4f2af0349')
