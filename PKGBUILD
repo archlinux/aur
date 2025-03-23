@@ -1,9 +1,9 @@
-# Maintainer: Marten Lienen <marten.lienen@gmail.com>
+# Maintainer: southjy <southjy@crimp.dev>
 
 pkgname=i3-pager-git
-pkgver=r129.ab282c4
-pkgrel=2
-pkgdesc="Plasmoid pager for integrating i3 with KDE Plasma "
+pkgver=r158.a30baba
+pkgrel=3
+pkgdesc="Plasmoid pager for integrating i3 with KDE Plasma   "
 arch=("any")
 url="https://github.com/duvholt/i3-pager"
 license=("GPLv3")
@@ -37,10 +37,14 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/i3-pager"
+    cd "$srcdir/i3-pager"
 
-  cmake -DCMAKE_INSTALL_PREFIX=$(kf5-config --prefix) -DCMAKE_BUILD_TYPE=Release -B build
-  make -C build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+            -DKDE_INSTALL_LIBDIR=lib \
+            -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+            -DCMAKE_BUILD_TYPE=Release \
+            -B build
+    make -C build
 }
 
 package() {
