@@ -5,8 +5,10 @@ pkgbase = ultra-flat-icons-green
 	url = http://www.noobslab.com/2015/01/make-linux-more-elegant-with-ultra-flat.html
 	arch = any
 	license = CCPL
+	depends = gtk-update-icon-cache-git
 	source = https://launchpad.net/~noobslab/+archive/ubuntu/icons/+files/ultra-flat-icons-green_1.3.2~trusty~Noobslab.com_all.deb
-	sha1sums = 9ef68e2e99e5421345c30b1360965d5878270f10
+	source = index.theme.patched
+	sha256sums = 6b41d23745926ebc12d4da4f8de24c2865b150ffa5d4b1a0d0c1c7d3e5451c99
+	sha256sums = 253a088b4e5d53a1694850e86958a2553e75a46d182a48ff62cec504402167ae
 
 pkgname = ultra-flat-icons-green
-
