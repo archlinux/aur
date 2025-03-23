@@ -3,7 +3,7 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=suscan-git
-pkgver=r1190.23e97c6
+pkgver=r1246.39aca1a
 pkgrel=1
 pkgdesc="SUScan is a graphical signal analysis tool"
 arch=("any")
