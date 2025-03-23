@@ -1,6 +1,6 @@
 pkgbase = sigdigger-git
 	pkgdesc = Qt-based digital signal analyzer, using Suscan core and Sigutils DSP library
-	pkgver = r1089.36a1626
+	pkgver = r1216.8122664
 	pkgrel = 1
 	url = https://github.com/BatchDrake/SigDigger
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = sigdigger-git
 	depends = suwidgets
 	provides = sigdigger
 	conflicts = sigdigger
-	source = sigdigger-git::git+https://github.com/BatchDrake/SigDigger.git#branch=develop
+	source = sigdigger-git::git+https://github.com/BatchDrake/SigDigger.git
 	sha1sums = SKIP
 
 pkgname = sigdigger-git

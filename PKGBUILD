@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=sigdigger-git
-pkgver=r1089.36a1626
+pkgver=r1216.8122664
 pkgrel=1
 pkgdesc="Qt-based digital signal analyzer, using Suscan core and Sigutils DSP library"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('qt6-base' 'sigutils' 'suscan' 'suwidgets')
 makedepends=('git' 'gcc')
 provides=('sigdigger')
 conflicts=('sigdigger')
-source=("$pkgname::git+https://github.com/BatchDrake/SigDigger.git#branch=develop")
+source=("$pkgname::git+https://github.com/BatchDrake/SigDigger.git")
 sha1sums=('SKIP')
 
 pkgver() {
