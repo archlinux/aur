@@ -1,4 +1,4 @@
-# Maintainer: Doclic <doclic@tutanota.com>
+# Maintainer: doclic <doclic@tutanota.com>
 
 pkgname=vtex2-git
 pkgver=0.1.r120.9339bc9
