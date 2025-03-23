@@ -1,0 +1,4 @@
+[git-tui]
+source = "git"
+git = "https://github.com/ArthurSonzogni/git-tui.git"
+prefix = "v"
