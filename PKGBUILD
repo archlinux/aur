@@ -4,11 +4,11 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=conkeror-git
 pkgver=1.0.4.r13.g5e5736d
-pkgrel=1
+pkgrel=2
 pkgdesc='A keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla XULRunner.'
 arch=('i686' 'x86_64')
-url='http://conkeror.mozdev.org/'
-license=('MPL' 'GPL' 'LGPL')
+url='http://conkeror.org/'
+license=('MPL-1.1' 'GPL-2.1' 'LGPL-2.1')
 depends=('palemoon')
 makedepends=('git')
 provides=("${pkgname%-*}")
@@ -31,6 +31,5 @@ package() {
 	make DESTDIR="$pkgdir" PREFIX=/usr install
 	sed -i 's/firefox/palemoon/g' $pkgdir/usr/bin/conkeror
 	mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-*}"
-	mv "$pkgdir/usr/share/doc/conkeror/COPYING" \
-	   "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYING"
+	mv "$pkgdir/usr/share/doc/conkeror/COPYING" "$pkgdir/usr/share/licenses/${pkgname%-*}/COPYING"
 }
