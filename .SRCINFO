@@ -1,0 +1,15 @@
+pkgbase = ftxui5
+	pkgdesc = A C++ Functional Terminal User Interface (legacy version 5)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/ArthurSonzogni/FTXUI
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = benchmark>=1.8.2
+	makedepends = cmake>=3.12
+	makedepends = gtest>=1.10
+	source = FTXUI-5.0.0.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v5.0.0.tar.gz
+	b2sums = aaf6060641c3f63814002fcba3c17ad7a0d3d0681bc2f31cec8e666b25e35c55a4f0fdd9e2855ea91e9e546edcc2cad2c172e8a06dbc55ed7caf9ce9178b2302
+
+pkgname = ftxui5

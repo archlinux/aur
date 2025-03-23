@@ -1,0 +1,5 @@
+[ftxui5]
+source = "git"
+git = "https://github.com/ArthurSonzogni/FTXUI.git"
+include_regex = "v5.*"
+prefix = "v"
