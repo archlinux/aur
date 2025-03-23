@@ -2,7 +2,7 @@
 # Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile-git
 _uuid=gTile@vibou
-pkgver=63.r0.gee8014c
+pkgver=64.r0.ga8ffaa8
 pkgrel=1
 _nodeversion=20
 pkgdesc="A window tiling extension for GNOME"
