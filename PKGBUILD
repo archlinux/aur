@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=yaylog-git
-pkgver=3.30.1.r2.g314a06a
+pkgver=3.30.2.r1.g75d7632
 pkgrel=1
 pkgdesc="A CLI utility to list installed packages with filtering and sorting, written in Go."
 arch=("any")
