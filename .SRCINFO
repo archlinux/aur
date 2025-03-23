@@ -1,6 +1,6 @@
 pkgbase = sblast
 	pkgdesc = Cast your Linux audio to DLNA receivers
-	pkgver = v0.7.1
+	pkgver = v0.7.2
 	pkgrel = 1
 	url = https://github.com/ugjka/sblast
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = sblast
 	makedepends = go
 	options = !debug
 	options = !strip
-	source = sblast-v0.7.1.tar.gz::https://github.com/ugjka/sblast/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = a8f7d58e8bbe05fc8f4a97ec027c3383b8c6051b35af6c3a4a87c2614b6502f2
+	source = sblast-v0.7.2.tar.gz::https://github.com/ugjka/sblast/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = 3a86f343ccd60c36043020949c8d8b80301d4ebe369c74698ac6688cb3f3cbef
 
 pkgname = sblast
