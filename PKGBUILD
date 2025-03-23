@@ -11,7 +11,8 @@
 # Maintainer: Scott Warner <Tortel1210-at-gmail-dot-com>
 
 pkgname=android-studio-for-platform
-pkgver=2023.2.1.20
+_minor_version=2.13
+pkgver=2024.2.$_minor_version
 pkgrel=1
 pkgdesc="The official Android IDE for Platform Development"
 arch=('x86_64')
@@ -25,16 +26,17 @@ optdepends=('gtk2: GTK+ look and feel'
 options=('!strip')
 
 # https://dl.google.com/android/asfp/asfp-2023.1.1.19-linux.deb
-source=("https://dl.google.com/android/asfp/asfp-$pkgver-linux.deb"
+source=("https://dl.google.com/android/asfp/asfp-Ladybug%20Feature%20Drop-$pkgver-linux.deb"
         "$pkgname.desktop"
         "license.html")
-sha256sums=('70cfe9912821a8b514bc9545fce54b0cec550499492c7f207b56df66d0d47a06'
+sha256sums=('c8c51358ea581dafc08b3ae0becfe66e87eb0eaadb2f96c9623ba494877253fd'
             '7d8615a69925b0685775546873997bdb967426e24b4fc265d120a04dc8367dda'
             '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
 package() {
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-
+  bsdtar -xf data.tar.gz -C "$pkgdir/"
+  mv "$pkgdir/tmp" "$pkgdir/opt"
+  mv "$pkgdir/opt/android-studio-for-platform-Stable.$_minor_version" "$pkgdir/opt/android-studio-for-platform"
   # Install the application
   install -d $pkgdir/{opt/$pkgname,usr/bin}
   #cp -a bin lib jbr plugins license LICENSE.txt build.txt product-info.json $pkgdir/opt/$pkgname
