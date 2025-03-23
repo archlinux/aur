@@ -2,7 +2,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=suwidgets-git
-pkgver=r377.f7571f7
+pkgver=r399.ac0c965
 pkgrel=1
 pkgdesc="Sigutils-related widgets"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(qt6-base sigutils fftw)
 makedepends=(git gcc)
 provides=('suwidgets')
 conflicts=('suwidgets')
-source=("$pkgname::git+https://github.com/BatchDrake/SuWidgets.git#branch=develop")
+source=("$pkgname::git+https://github.com/BatchDrake/SuWidgets.git")
 sha1sums=('SKIP')
 
 pkgver() {
