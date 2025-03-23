@@ -1,0 +1,15 @@
+pkgbase = shaderbg
+	pkgdesc = This program lets you render shaders as a wall paper. It works on Wayland compositors that support wlr-layer-shell.
+	pkgver = 027d4f87fd542c79d4276b521e39025477b6d03e
+	pkgrel = 0
+	url = https://git.sr.ht/~mstoeckl/shaderbg
+	arch = any
+	license = GPL-3.0-only
+	makedepends = meson
+	makedepends = gcc
+	depends = wayland
+	depends = libglvnd
+	source = https://git.sr.ht/~mstoeckl/shaderbg/archive/027d4f87fd542c79d4276b521e39025477b6d03e.tar.gz
+	sha256sums = 0a2531ac1613d5d5f3081af1d69a674d1ed3b4a564855234eff1256c4384c65e
+
+pkgname = shaderbg
