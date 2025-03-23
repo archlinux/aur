@@ -1,0 +1,23 @@
+pkgbase = python-micropip
+	pkgdesc = A lightweight Python package installer for the web.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pyodide/micropip
+	arch = any
+	license = MPL-2.0
+	checkdepends = python-pytest-httpserver
+	checkdepends = python-pytest-pyodide
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest
+	checkdepends = python-build
+	checkdepends = python-pyodide-lock
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.12
+	source = https://files.pythonhosted.org/packages/source/m/micropip/micropip-0.9.0.tar.gz
+	sha256sums = d72c3224537a14e5d9d02f29e945bf7cde02404ec744291e8f6a310cedf60b66
+
+pkgname = python-micropip
