@@ -1,7 +1,7 @@
 pkgbase = claude-desktop-native
 	pkgdesc = Unofficial Claude Desktop for Linux
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/claude-desktop-native/claude-desktop-native.git
 	arch = x86_64
 	license = MIT
