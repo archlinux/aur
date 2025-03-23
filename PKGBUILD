@@ -3,7 +3,7 @@
 _name=gradio
 pkgname=python-${_name}
 pkgver=5.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gradio-app/gradio'
@@ -26,6 +26,8 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
+  python ${_name}/__init__.py
+  python scripts/generate_theme.py
   env PATH="${srcdir}"/${_name}-${_name}-${pkgver}:$PATH ./pnpm i --frozen-lockfile --ignore-scripts
   env PATH="${srcdir}"/${_name}-${_name}-${pkgver}:$PATH ./pnpm build
   python -m build --wheel --no-isolation
