@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("grok-cli")
 conflicts=("grok-cli")
 source=("https://github.com/haydenkz/grok-cli/releases/download/v$pkgver/grok-cli-$pkgver-x86_64.tar.gz")
-sha256sums=("4aa9d835814e9224aa15b1cbe69ad1b058b48d4ec5e12db9a7f79e5dea82c457")
+sha256sums=("ecf67668f94b89a0598bf1d6e8839cb4a79fa68564cd5a1b70b6068638604b1a")
 
 package() {
     install -Dm755 grok -t "$pkgdir/usr/bin"
