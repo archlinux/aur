@@ -4,11 +4,11 @@
 
 basename='rq'
 pkgname='python-rq'
-pkgver=2.0
-pkgrel=3
+pkgver=2.2
+pkgrel=1
 pkgdesc="Simple job queues for Python"
 arch=(any)
-license=("BSD")
+license=("BSD-2-Clause")
 url="https://github.com/rq/rq"
 makedepends=("python-hatch" "python-installer")
 depends=('python' 'python-click' 'python-redis')
@@ -26,4 +26,4 @@ package() {
 }
 
 
-sha256sums=('d9ad23f25e5e8c53198000ae376d84b8f69458344a4e863942a194e96afe93bd')
+sha256sums=('60adbf6e544f3ce2cfcd27e120d37c4e87c4932abbbd48528f41648e25876585')
