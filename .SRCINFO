@@ -5,8 +5,10 @@ pkgbase = ultra-flat-icons-orange
 	url = http://www.noobslab.com/2015/01/make-linux-more-elegant-with-ultra-flat.html
 	arch = any
 	license = CCPL
+	optdepends = gtk-update-icon-cache
 	source = https://launchpad.net/~noobslab/+archive/ubuntu/icons/+files/ultra-flat-icons-orange_1.3.2~trusty~Noobslab.com_all.deb
-	sha1sums = e6203f24aafb1bfa2980bf3d381218b574c45fdc
+	source = index.theme.patched
+	sha256sums = 97e0ea1b8d9389a821293e6546f754cd585bf02717a90ba56d7518901499e93c
+	sha256sums = 7968e509d71e162c161c44aed5ca5816c643a3ad6a0735d2543b1eb39e1353c6
 
 pkgname = ultra-flat-icons-orange
-
