@@ -3,8 +3,8 @@
 # Contributor: revelation60 <benruyl@gmail.com>
 pkgname=gnome-shell-extension-gtile
 _uuid=gTile@vibou
-pkgver=63
-pkgrel=2
+pkgver=64
+pkgrel=1
 _nodeversion=20
 pkgdesc="A window tiling extension for GNOME Shell"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 makedepends=('git' 'nvm')
 source=("https://github.com/gTile/gTile/archive/V$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b8d6fd432e7a572e655dcb662a8f6729e54bfcdb39b4dbd262d61ed9c8c001d7')
+sha256sums=('c203b973e784af9df7d299a280b313ea6914e2145dbcd7664b5d9b630a694757')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
