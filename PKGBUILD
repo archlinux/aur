@@ -2,8 +2,8 @@
 
 _name=murano-pkg-check
 pkgname=python-muranopkgcheck
-pkgver=0.3.0
-pkgrel=9
+pkgver=0.4.0
+pkgrel=0
 pkgdesc='Murano package validator tool'
 arch=(any)
 url='https://docs.openstack.org/$_name/'
@@ -14,8 +14,8 @@ depends=(python-pbr python-yaml python-yaql python-six
 checkdepends=(python-subunit python-oslotest python-oslotest
               python-testrepository python-testscenarios python-testtools
               python-stestr python-mock)
-source=("https://tarballs.opendev.org/openstack/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('cbff1d819a352eb30213403a294507109630675c506c663adc2b90571d4e011fbce253ddbc59b59318cf303ca35585d978b077d3210c27812f0c235d735b04eb')
+source=("$_name-$pkgver.tar.gz::https://github.com/NeCTAR-RC/$_name/archive/$pkgver.tar.gz")
+sha512sums=('6d71532ea1fdc29e3231ed61033b6fbfef69e02d9e9fdf40a562689ca247acf3ae38cefd34a4ef1b063e81abd0efe43e9a800947c91f2ed1dadccede8da2572c')
 
 export PBR_VERSION=$pkgver
 
@@ -26,11 +26,7 @@ build() {
 
 check() {
   cd $_name-$pkgver
-  # Fix YAML safe load
-  sed -i 's/cases.extend(list(yaml.load_all(f)))/cases.extend(list(yaml.load_all(f, yaml.SafeLoader)))/g' muranopkgcheck/tests/functional/test_cases.py
-  # Delete failing test
-  sed -i '48,$d' muranopkgcheck/tests/test_manager.py
-  python setup.py test
+  python -m unittest discover
 }
 
 package() {

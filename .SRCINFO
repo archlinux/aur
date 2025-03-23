@@ -1,7 +1,7 @@
 pkgbase = python-muranopkgcheck
 	pkgdesc = Murano package validator tool
-	pkgver = 0.3.0
-	pkgrel = 9
+	pkgver = 0.4.0
+	pkgrel = 0
 	url = https://docs.openstack.org/$_name/
 	arch = any
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = python-muranopkgcheck
 	depends = python-stevedore
 	depends = python-semantic-version
 	depends = python-oslo-i18n
-	source = https://tarballs.opendev.org/openstack/murano-pkg-check/murano-pkg-check-0.3.0.tar.gz
-	sha512sums = cbff1d819a352eb30213403a294507109630675c506c663adc2b90571d4e011fbce253ddbc59b59318cf303ca35585d978b077d3210c27812f0c235d735b04eb
+	source = murano-pkg-check-0.4.0.tar.gz::https://github.com/NeCTAR-RC/murano-pkg-check/archive/0.4.0.tar.gz
+	sha512sums = 6d71532ea1fdc29e3231ed61033b6fbfef69e02d9e9fdf40a562689ca247acf3ae38cefd34a4ef1b063e81abd0efe43e9a800947c91f2ed1dadccede8da2572c
 
 pkgname = python-muranopkgcheck
