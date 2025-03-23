@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Vboard
+Comment=Virtual keyboard for Linux
+Exec=/usr/bin/vboard
+Type=Application
+Icon=vboard
+Categories=Utility;System;
