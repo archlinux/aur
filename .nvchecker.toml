@@ -1,0 +1,5 @@
+[neatimage]
+source = "htmlparser"
+url = "https://ni.neatvideo.com/download"
+xpath = "//*[@class='demo-dl__version-num']"
+prefix="Version "
