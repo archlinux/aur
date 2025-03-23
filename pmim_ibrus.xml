@@ -4,7 +4,7 @@
   <name>org.fm_elpac.pmim</name>
   <description>PMIM (ibus)</description>
   <exec>/usr/lib/pmim/ibrus --flatpak</exec>
-  <version>0.1.0</version>
+  <version>0.2.1</version>
   <author>secext2022</author>
   <license>GPL</license>
   <homepage>https://github.com/fm-elpac/pmim-ibus</homepage>
