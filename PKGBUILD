@@ -15,7 +15,7 @@ pkgname=(
   gnome-keybindings-x11-scaling
 )
 _pkgname=gnome-control-center
-pkgver=47.4
+pkgver=48.0
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://apps.gnome.org/Settings/"
@@ -76,6 +76,7 @@ depends=(
   tecla
   udisks2
   upower
+  wayland
 )
 makedepends=(
   docbook-xsl
@@ -90,15 +91,18 @@ checkdepends=(
   xorg-server-xvfb
 )
 source=(
-  "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git?signed#tag=${pkgver/[a-z]/.&}"
+  # GNOME Control Center tags use SSH signatures which makepkg doesn't understand
+  "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#tag=${pkgver/[a-z]/.&}"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/9908feab583115670991929d4334601f43fcf786/display-Allow-fractional-scaling-to-be-enabled.patch"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/c3a04acf0cd0f9f48c938c6b34b391d9aedb2b58/display-Support-UI-scaled-logical-monitor-mode.patch"
+  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=e68375c7aced97705953b8e3b30af9f17991153b"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/80b6d7518a30fb8244a4fa1b1ea447d221337c99/display-Allow-fractional-scaling-to-be-enabled.patch"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/80b6d7518a30fb8244a4fa1b1ea447d221337c99/display-Support-UI-scaled-logical-monitor-mode.patch"
 )
-b2sums=('9a7c967798bbaeb02216908f12bccb6855b0dabde69bcb34ca8a1f002aaccddf4b8d967d829d7e1e581470666b52508e76b593e3c00a35ef13d7a3be33c945dc'
+b2sums=('47752f5a016cb60db862f704bd6e328f794927fcd78899bcb1a4aea0c4927826949246786eeca9e9367b8a5cc7531fe676a0550c05955233f278a35eafbd591e'
         'SKIP'
-        '7f580b64e491d4dd4ee89da00d0e98cd50780dee1d1a4665e54e3e6f46d9c3291d1695e3f2920e7c5686f2f57fa4bbb430d56dda4ad87f8046990f3f2db4cecb'
-        '85002082e967f63284a1b95a0f2dc19590a46c1711ebf6ed934094a85a4a1b20c1336e9b6e9a0e37b5235bbe217ee0b6851a06bcc1e282242a0676b9080a0eac')
+        '09bd02a627afffa49c11e4baec961878060d7710e852628c0e0d009d5bdc37eaa3cd1d5bbeea316f197197b9d88436ecf157ebaef41e01b66ad102e1f1c69fb2'
+        '83ea0c8460a195ae202faa782a266c52000ddff046059cf93eb22aab871c92b3f4525b6ebb87e25c0f1b6cc541bffc6980db3f1e23352c2709a4cfa6ceea6fdb'
+        '941d6c00d5d9d6ca0370854735f7272bbccf7aa9a272ab76c6f9a78641fde78ab1634d0764192b74772d710ec4e2c64ce0de2eceddeabc15ac7f7ce1532ef585')
 validpgpkeys=(
   9B60FE7947F0A3C58136817F2C2A218742E016BE # Felipe Borges (GNOME) <felipeborges@gnome.org>
 )
@@ -121,6 +125,9 @@ build() {
     -D location-services=enabled
     -D malcontent=true
   )
+
+  # Inject libgxdp
+  export MESON_PACKAGE_CACHE_DIR="$srcdir"
 
   arch-meson $_pkgname build "${meson_options[@]}"
   meson compile -C build
