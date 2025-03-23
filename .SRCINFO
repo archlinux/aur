@@ -1,6 +1,6 @@
 pkgbase = quickenv
 	pkgdesc = An unintrusive environment manager
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/untitaker/quickenv
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = quickenv
 	depends = glibc
 	depends = gcc-libs
 	optdepends = direnv: direnv stdlib integration
-	source = quickenv-0.4.1.tar.gz::https://github.com/untitaker/quickenv/archive/0.4.1.tar.gz
-	sha256sums = 469ce6a30b365e9f5ab44680624d905a3bd7e18313bf454fa96d4bf151feb895
+	source = quickenv-0.4.2.tar.gz::https://github.com/untitaker/quickenv/archive/0.4.2.tar.gz
+	sha256sums = f3d3220bf1601ef7f2a73499d47cfea72cc8af66b37c8ffbd041c55aaf22ac70
 
 pkgname = quickenv

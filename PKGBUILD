@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=quickenv
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='An unintrusive environment manager'
 arch=('x86_64')
 url="https://github.com/untitaker/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('469ce6a30b365e9f5ab44680624d905a3bd7e18313bf454fa96d4bf151feb895')
+sha256sums=('f3d3220bf1601ef7f2a73499d47cfea72cc8af66b37c8ffbd041c55aaf22ac70')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs')
 optdepends=('direnv: direnv stdlib integration')
