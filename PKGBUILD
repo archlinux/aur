@@ -1,12 +1,10 @@
 # Maintainer: ResRipper <resripper@connective.link>
 
-# shellcheck disable=SC2034
-# shellcheck disable=SC2154
-# shellcheck disable=SC2148
+# shellcheck disable=SC2034,SC2148,SC2154
 
 _name=marimo
 pkgname=marimo
-pkgver=0.11.22
+pkgver=0.11.26
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -51,7 +49,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('2379e685bed0807c98034adf39376025c8ec7971f9ab105cbf391f2b77c5627a')
+sha256sums=('9435dc83a4c5e69d6050519a4327d5f3c340e5a8a7c33f888e964c01261b76d7')
 
 build() {
     cd $_name-$pkgver || exit
