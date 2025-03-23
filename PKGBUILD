@@ -6,24 +6,24 @@ depends=()
 makedepends=("extra-cmake-modules")
 pkgdesc="Built-in wallpapers for LingmoOS."
 pkgrel=1
-pkgver=2.1.1
+pkgver=3.0.0_rc1
 url="https://lingmo.org"
 license=("GPL")
-source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('89b690fcca14e3cd271ddcadebf9465d1f1d9a28e12f80cdb8e3da29dae40a41')
+source=("https://github.com/LingmoOS/${pkgname}/archive/refs/tags/${pkgver//_/-}.tar.gz")
+sha256sums=('32d6478cb365158aa96d79eff150e5f39c3ff66366b2177cecc84b63aae7a3d8')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver//_/-}"
     mkdir -p build
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    cd "${srcdir}/${pkgname}-${pkgver//_/-}/build"
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     make
 }
 package() {
-    cd ${pkgname}-${pkgver}/build
+    cd ${pkgname}-${pkgver//_/-}/build
     make DESTDIR="${pkgdir}" install
 }
 
