@@ -5,8 +5,10 @@ pkgbase = ultra-flat-icons-blue
 	url = http://www.noobslab.com/2015/01/make-linux-more-elegant-with-ultra-flat.html
 	arch = any
 	license = CCPL
+	optdepends = gtk-update-icon-cache
 	source = https://launchpad.net/~noobslab/+archive/ubuntu/icons/+files/ultra-flat-icons_1.3.2~trusty~Noobslab.com_all.deb
-	sha1sums = f14a645575af4617e35d180ef12d7dba9003cee4
+	source = index.theme.patched
+	sha256sums = f22fbecc41e03f5e20ffc876c2963062486c527cb2729e9576bc40c3fa1e6fd4
+	sha256sums = ba559f7a79a98d0ab27cf7aa475f943f943632aea7d2a8e845936d7a2072ecf5
 
 pkgname = ultra-flat-icons-blue
-
