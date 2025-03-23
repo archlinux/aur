@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=yaylog-bin
-pkgver=3.30.1
+pkgver=3.30.2
 pkgrel=1
 pkgdesc="A CLI utility to list installed packages with filtering and sorting, written in Go."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,9 +16,9 @@ source_x86_64+=("${release_url}-x86_64${ext}")
 source_aarch64+=("${release_url}-aarch64${ext}")
 source_armv7h+=("${release_url}-armv7h${ext}")
 
-sha256sums_x86_64=('73c91b876a930d997efe72a8a99eec8091a58cb4ba76c19b905df7176f34e8c9')
-sha256sums_aarch64=('105cb65f4fc21d569abe24d1dd419c625b0ee05edcfb1f23953cd741cc80558a')
-sha256sums_armv7h=('d47d24c9fb7156c8a81e5bb326afb2010a285e8b06510ee88303f4c92af7beba')
+sha256sums_x86_64=('b3d953f88f895a548d50c6f9723f6535bf391eb1e37529014f7db1c9d9aa9365')
+sha256sums_aarch64=('b0996dd23c2f7de462ab68e97b10629a8ca43b3c8477a4eb3ad0259c2a002f03')
+sha256sums_armv7h=('7c150f9f876e6d65e788005db1eaacd4cafec5e3004fbfb330cabb6ec1b2f287')
 
 package() {
   tar -xzf "$srcdir/yaylog-v${pkgver}-${CARCH}${ext}" -C "$srcdir"
