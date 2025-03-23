@@ -18,6 +18,7 @@ pkgbase = better-control-git
 	depends = power-profiles-daemon
 	depends = python-psutil
 	depends = gammastep
+	depends = python-pydbus
 	provides = better-control
 	conflicts = better-control
 	source = git+https://github.com/quantumvoid0/better-control.git
