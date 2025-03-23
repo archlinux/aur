@@ -1,0 +1,16 @@
+pkgbase = python-groovy
+	pkgdesc = Easily display PDFs in Gradio.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/freddyaboulton/gradio-pdf
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	source = https://files.pythonhosted.org/packages/source/g/groovy/groovy-0.1.2.tar.gz
+	sha256sums = 25c1dc09b3f9d7e292458aa762c6beb96ea037071bf5e917fc81fb78d2231083
+
+pkgname = python-groovy
