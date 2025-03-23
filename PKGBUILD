@@ -3,7 +3,7 @@
 
 pkgname=ttf-mikachan
 pkgver=9.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Handwritten Japanese font family with a cute, playful vibe"
 arch=('any')
 url="https://www.mia-lab.com/mf/"
