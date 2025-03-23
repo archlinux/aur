@@ -7,9 +7,9 @@ _android_arch=armv7a-eabi
 pkgname=android-${_android_arch}-x264
 pkgver=157.r72db4377
 _commit=72db437770fd1ce3961f624dd57a8e75ff65ae0b
-pkgrel=2
+pkgrel=5
 arch=('any')
-pkgdesc='Free library for encoding H264/AVC video streams (android)'
+pkgdesc="Free library for encoding H264/AVC video streams (Android ${_android_arch})"
 license=('GPL')
 url='https://www.videolan.org/developers/x264.html'
 groups=('android-x264')
@@ -47,13 +47,19 @@ build() {
     cd "${srcdir}/x264"
     source android-env ${_android_arch}
 
+    target=${_android_arch/x86-/x86_}-linux-android
     configue_opts="
         --disable-cli
         --enable-pic
         --enable-lto"
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
+        riscv64)
+             target=openrisc-linux-android
+             configue_opts+="
+                 --disable-asm"
+            ;;
         x86)
              configue_opts+="
                  --disable-asm
@@ -67,7 +73,16 @@ build() {
             ;;
     esac
 
-    android-${_android_arch}-configure ${configue_opts}
+    ./configure \
+        --host=${target} \
+        --target=${target} \
+        --build=${CHOST} \
+        --prefix=${ANDROID_PREFIX} \
+        --libdir=${ANDROID_PREFIX_LIB} \
+        --includedir=${ANDROID_PREFIX_INCLUDE} \
+        --enable-shared \
+        --enable-static \
+        ${configue_opts}
     make $MAKEFLAGS
 }
 
@@ -75,7 +90,7 @@ package() {
     cd "${srcdir}/x264"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
-    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}"/${ANDROID_PREFIX_LIB}/*.so
-    ${ANDROID_STRIP} -g "$pkgdir"/${ANDROID_PREFIX_LIB}/*.a || true
+    make DESTDIR="${pkgdir}" install
+    ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
