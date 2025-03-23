@@ -8,7 +8,7 @@ pkgname=(
   $pkgbase-signal
   $pkgbase-relay
 )
-pkgver=0.38.2
+pkgver=0.39.0
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -26,7 +26,7 @@ source=(
   'netbird-relay.env'
   'netbird-relay.service'
 )
-sha256sums=('2f6de5427b098d97c72446475a7a780fee06f474b97935ef5599a13fc8de4c38'
+sha256sums=('6b0cb500c7d66aeb06c89148e2d19491ce3c33c1ea3c5921298dfa9f02d74776'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '2fa681ef862bfa609d62596e730ff5fbfa706fedca801556cd18a97f349e039f'
             '80cd7b6a22087a83c1332c15693d8a18b780ef5ecf3fbc562af28d1a623eef3b'
@@ -92,6 +92,7 @@ package_netbird() {
 package_netbird-management() {
   backup=(etc/default/$pkgname)
   depends=(glibc ca-certificates)
+  optdepends=('redis: IDP cache store')
   pkgdesc='WireGuard-based overlay network: management service'
 
   install -Dm644 $pkgname.env "$pkgdir/etc/default/$pkgname"
