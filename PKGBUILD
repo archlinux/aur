@@ -2,7 +2,7 @@
 
 _name=hat-util
 pkgname=python-$_name
-pkgver=0.6.14
+pkgver=0.6.19
 pkgrel=1
 pkgdesc="Hat utility library"
 url="https://github.com/hat-open/hat-util"
@@ -11,7 +11,7 @@ arch=('any')
 depends=('python')
 makedepends=('python-build' 'python-hat-doit' 'python-installer')
 source=("https://github.com/hat-open/hat-util/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('49ffaa1aba6848ce675569e2bcea60e8de7bd457eaef8d4f17f5996894037882')
+sha256sums=('1d955d6b5f437cc9511d9382ac1f58f81ca041babc6c64b8928c9f89f17466e9')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
