@@ -1,0 +1,15 @@
+pkgbase = tarah
+	pkgdesc = An extremely fast and simple AUR helper written in Rust.
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = rustup
+	depends = pacman
+	options = !buildflags
+	options = !makeflags
+	options = !lto
+	source = https://github.com/techapplez/tarah/releases/download/stable/tarah-v0.0.1_alpha.tar.xz
+	sha256sums = SKIP
+
+pkgname = tarah
