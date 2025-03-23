@@ -1,6 +1,6 @@
 # Maintainer: Serene-Arc
 pkgname=qmk-git
-pkgver=1.1.1.r13.gf9d3020
+pkgver=1.1.6.r10.gffe20fb
 _qmk_pkgver=master
 pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
@@ -45,10 +45,8 @@ source=(
     'git+https://github.com/qmk/qmk_cli.git'
     "50-qmk.rules_${_qmk_pkgver}::https://raw.githubusercontent.com/qmk/qmk_firmware/${_qmk_pkgver}/util/udev/50-qmk.rules"
 )
-sha256sums=(
-    'SKIP'
-    '7562201c4a1adc7f54ca09d74098dfa5c9cf6beda2a95cc508224c6dd2c3a279'
-)
+sha256sums=('SKIP'
+            '07bc92419d44862d6be491b9d7c2d78480800035b91fb8cd428a348b7e13aa70')
 
 pkgver() {
   cd "$_branch"
