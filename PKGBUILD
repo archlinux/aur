@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.6.r6.gdd2e666
+pkgver=1.0.0.alpha.6.r7.ge9858d9
 pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -51,7 +51,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-session.git'
         'lto.patch')
 sha256sums=('SKIP'
-            'd42066bd134b0eaab36a3275e05598f4b59020bf523840da88e321c5918321a7')
+            'b8090fa3fcd5266b04b4b6d5fd5afe6c13f10e1dd10c463a6133a8a22b0521a1')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -65,7 +65,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+#  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {

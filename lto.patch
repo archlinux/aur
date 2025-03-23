@@ -1,13 +1,10 @@
 diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	2025-02-28 10:55:41.070945109 -0700
-+++ b/Cargo.toml	2025-02-28 10:57:40.530504077 -0700
-@@ -50,4 +50,7 @@
- [features]
+--- a/Cargo.toml	2025-03-22 19:36:21.353212534 -0600
++++ b/Cargo.toml	2025-03-22 19:36:59.313942602 -0600
+@@ -51,3 +51,6 @@
  systemd = ["dep:zbus_systemd", "dep:tracing-journald"]
  default = ["systemd"]
--autostart = ["dep:shell-words", "dep:dirs", "dep:freedesktop-desktop-entry"]
-\ No newline at end of file
-+autostart = ["dep:shell-words", "dep:dirs", "dep:freedesktop-desktop-entry"]
+ autostart = ["dep:shell-words", "dep:dirs", "dep:freedesktop-desktop-entry"]
 +
 +[profile.release]
 +lto = "thin"

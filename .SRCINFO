@@ -1,6 +1,6 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = 1.0.0.alpha.6.r6.gdd2e666
+	pkgver = 1.0.0.alpha.6.r7.ge9858d9
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
@@ -45,6 +45,6 @@ pkgbase = cosmic-session-git
 	source = git+https://github.com/pop-os/cosmic-session.git
 	source = lto.patch
 	sha256sums = SKIP
-	sha256sums = d42066bd134b0eaab36a3275e05598f4b59020bf523840da88e321c5918321a7
+	sha256sums = b8090fa3fcd5266b04b4b6d5fd5afe6c13f10e1dd10c463a6133a8a22b0521a1
 
 pkgname = cosmic-session-git
