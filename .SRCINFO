@@ -1,12 +1,13 @@
 pkgbase = routinator
 	pkgdesc = RPKI validator written in Rust
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nlnetlabs.nl/rpki
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = cargo
+	depends = gcc-libs
 	depends = rsync
 	backup = etc/routinator/routinator.conf
 	source = routinator-0.14.2-src.tar.gz::https://github.com/NLnetLabs/routinator/archive/refs/tags/v0.14.2.tar.gz
