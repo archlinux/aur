@@ -1,0 +1,14 @@
+pkgbase = alhp-utils
+	pkgdesc = Collection of ALHP utils
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://somegit.dev/ALHP/alhp.utils
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = go
+	depends = glibc
+	depends = pacman
+	source = alhp-utils-1.0.2.tar.gz::https://somegit.dev/ALHP/alhp.utils/archive/1.0.2.tar.gz
+	b2sums = 6736f62501dc1f6f9042546a5f1f964dfd542412d97418524af440ae6eec692d2460aea6daf59a7018825e70341f938f02c84883450bcef0ee67924199c01de6
+
+pkgname = alhp-utils
