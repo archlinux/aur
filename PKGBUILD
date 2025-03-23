@@ -1,10 +1,11 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-markdown-exec
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Utilities to execute code blocks in Markdown files"
 arch=('any')
@@ -36,10 +37,10 @@ makedepends=('python-pdm-backend'
 #            'd2'
 #            'github-cli')
 checkdepends=('python-pytest'
-              'python-pymdown-extensions'
-              'python-markupsafe')
+              'python-griffe'
+              'mkdocstrings')  # markupsafe <- mkdocstrings
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('aee3296563c1da4333e3b780393ed030')
+md5sums=('6e6d640b167c41eefc4e2d3d0566f297')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -60,9 +61,10 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-markdown-exec() {
