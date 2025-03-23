@@ -1,7 +1,7 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=xts-windows10-theme
 pkgver=0.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Windows 10 themes for xfce4-theme switcher."
 arch=('any')
 url="https://gitlab.com/linux-stuffs/xts-themes"
@@ -10,10 +10,10 @@ groups=('xfce4-goodies')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine')
+depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine' 'rofi')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-windows10-theme/distrib/xts-windows10-theme-0.1-1.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/-/raw/main/xts-windows10-theme/distrib/xts-windows10-theme-0.1-3.tar.gz')
 sha256sums=('SKIP')
 
 package() {
