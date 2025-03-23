@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
 url="https://blender.org"
@@ -56,10 +56,9 @@ depends=('glibc' 'bash' 'hicolor-icon-theme'
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
             'libdecor: wayland support'
-	    'rocm-hip-runtime: HIP renderer AMD support')
+	    'hip-runtime-amd: HIP renderer AMD support')
 provides=('blender')
 conflicts=('blender')
-install=$pkgname.install
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
 sha256sums=('b4a74463677618d09621332ddbd62baa1a3ed06a11818714f6c5f1c7f31a15c6'
