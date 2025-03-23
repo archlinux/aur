@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=aliyunpan-go
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="阿里云盘命令行客户端，支持webdav文件服务，支持JavaScript插件，支持同步备份功能。"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}-bin" "${pkgname}-git")
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8ed4222479ef72f7b63e64a851804a6a9ddb917c20026cdc1255ff0450c1a251')
+sha256sums=('65003e0925e5f64b20f47ea030aa01cb40972dc4cce67cc93a69282d88f254b0')
 
 build() {
     cd "${pkgname%-go}-${pkgver}"
