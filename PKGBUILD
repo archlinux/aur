@@ -3,7 +3,7 @@
 _pkgname=vertd
 
 pkgname=vertd-git
-pkgver=r67.bb10079
+pkgver=r69.9ffeaf5
 pkgrel=1
 pkgdesc="VERT's solution to crappy video conversion services."
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = vertd-git
 	pkgdesc = VERT's solution to crappy video conversion services.
-	pkgver = r67.bb10079
+	pkgver = r69.9ffeaf5
 	pkgrel = 1
 	url = https://github.com/VERT-sh/vertd
 	arch = x86_64
