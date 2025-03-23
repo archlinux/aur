@@ -5,8 +5,8 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.19.3
-pkgrel=2
+pkgver=2.20.0
+pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
 arch=(x86_64 i686)
@@ -33,7 +33,7 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 options=(!lto)
 source=("https://github.com/canonical/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz")
-sha256sums=('2157c337d1bf0a8c33adcb11e0cc0705da23436ed4e012ddf376133fbb5b21e4')
+sha256sums=('3656b2f3751346d1afd70963b5de062179602cb7e6fd8d0ca3aba03ccae83a44')
 
 # glm not found but is listed here
 

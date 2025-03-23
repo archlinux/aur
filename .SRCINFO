@@ -1,7 +1,7 @@
 pkgbase = mir
 	pkgdesc = Canonical's display server
-	pkgver = 2.19.3
-	pkgrel = 2
+	pkgver = 2.20.0
+	pkgrel = 1
 	url = https://github.com/canonical/mir
 	arch = x86_64
 	arch = i686
@@ -47,7 +47,7 @@ pkgbase = mir
 	optdepends = qt5-wayland: required for miral demos
 	optdepends = xcursor-dmz: opt requirement for miral demos
 	options = !lto
-	source = https://github.com/canonical/mir/releases/download/v2.19.3/mir-2.19.3.tar.xz
-	sha256sums = 2157c337d1bf0a8c33adcb11e0cc0705da23436ed4e012ddf376133fbb5b21e4
+	source = https://github.com/canonical/mir/releases/download/v2.20.0/mir-2.20.0.tar.xz
+	sha256sums = 3656b2f3751346d1afd70963b5de062179602cb7e6fd8d0ca3aba03ccae83a44
 
 pkgname = mir
