@@ -3,19 +3,17 @@
 _Name="FTXUI"
 _name="${_Name,,}"
 pkgname="lib32-${_name}"
-pkgver=5.0.0
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="A C++ Functional Terminal User Interface (32-bit)"
 arch=('x86_64')
 url="https://github.com/ArthurSonzogni/${_Name}"
 license=('MIT')
-depends=("${_name}")
+depends=("${_name}>=${pkgver}")
 makedepends=('cmake>=3.12' 'lib32-benchmark>=1.8.2' 'lib32-gtest>=1.10')
 _pkgsrc="${_Name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_name}_non-existent_include_path.patch::${url}/pull/817.patch?full_index=1")
-b2sums=('aaf6060641c3f63814002fcba3c17ad7a0d3d0681bc2f31cec8e666b25e35c55a4f0fdd9e2855ea91e9e546edcc2cad2c172e8a06dbc55ed7caf9ce9178b2302'
-        '92e0cd5853dec21eaa8b02bccecdce7479f3786c07b845f9d33a8c29cada6195520d91a5080a5544c75da061f8ab1e08e1929878a22774b730ad585f130c47af')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('6a5fa043ce37e307214b23f1a72b2735b1c792eddf204cf614a2402394ff16935d6c4b9b5468bc2fb47fd692913e4499d0b679aaec249c38974a083beb352e4d')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
