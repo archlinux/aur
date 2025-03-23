@@ -1,0 +1,23 @@
+pkgbase = moonlight-qt-axi
+	pkgdesc = GameStream client for PCs
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/Axixi2233/moonlight-qt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = ffmpeg
+	depends = sdl2_ttf
+	depends = sdl2-compat
+	optdepends = libva-intel-driver: hardware acceleration for Intel GPUs GMA 4500 (2008) up to Coffee Lake (2017)
+	optdepends = intel-media-driver: hardware acceleration for Intel GPUs starting from Broadwell (2014) and newer (e.g. Intel Arc)
+	optdepends = qt6-wayland
+	provides = moonlight-qt
+	conflicts = moonlight-qt
+	replaces = moonlight-qt
+	source = git+https://github.com/Axixi2233/moonlight-qt.git#tag=18c9f089fdb020dadea6694ca6b7d242deb4320d
+	sha512sums = 30379f5eba1b51083a0a16de1fbe0cb25379d62a56a7504a96fa3d17a9a0c4a1d44ea64d935f342f548575d7110c09677d1eec510f984925951bbdb3e57a3a94
+
+pkgname = moonlight-qt-axi
