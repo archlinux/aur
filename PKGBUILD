@@ -3,7 +3,7 @@
 
 _basename=gnome-shell-extension-pano
 pkgname=${_basename}-git
-pkgver=23.alpha3.r4.gd0d71f8
+pkgver=23.alpha4.r8.gb4e483b
 pkgrel=1
 pkgdesc="Next-gen Clipboard Manager for Gnome Shell"
 arch=('any')
