@@ -10,14 +10,6 @@ url="https://github.com/jupp0r/${pkgname}"
 license=("MIT")
 depends=(curl zlib)
 makedepends=(cmake clang)
-# dependencies
-# * Threads
-# * benchmark
-#-- The following REQUIRED packages have been found:
-# * googlemock-3rdparty
-# * civetweb-3rdparty
-# * ZLIB
-# * CURL
 
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/jupp0r/${pkgname}/releases/download/${_tag}/${pkgname}-with-submodules.tar.gz")
 sha256sums=("62bc2cc9772db2314dbaae506ae2a75c8ee897dab053d8729e86a637b018fdb6")
@@ -27,7 +19,7 @@ prepare() {
   cd "${pkgname}-with-submodules"
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
