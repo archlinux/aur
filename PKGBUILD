@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=apart-gtk
-pkgver=0.28
+pkgver=0.29
 pkgrel=2
 pkgdesc="Linux GUI for cloning & restoring disk partitions to & from compressed image files."
 arch=('x86_64')
@@ -24,11 +24,10 @@ makedepends=('rustup'
 # zmq/apart-core issues with CXXFLAGS lto
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac8296f9ec5cc86eef725b9fe6657d555f07f53176490f4b4e6cf79822bdacd2')
+sha256sums=('e79b1ef244831696861853c160b157c7d4e6e30e942227e5e9ac60d0faebaee4')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr
   if [[ "${CXXFLAGS:-}" == *"-march=x86-64-v3"* ]]; then
     echo "Warning: Removing '-march=x86-64-v3' from CXXFLAGS env as this is known to cause issues" >&2
     export CXXFLAGS="${CXXFLAGS//-march=x86-64-v3/}"
