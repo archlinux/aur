@@ -12,7 +12,7 @@ source=("https://github.com/gradio-app/gradio/archive/refs/tags/${_name//-/_}@${
 sha256sums=('bc7eb1430765f325503f0dfff00219a9df719256293955d18b0387b5c5be54d6')
 depends=('python>=3.10' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'python-packaging' 'python-typing_extensions' 'python-websockets')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest-asyncio' 'python-pytest' 'python-gradio' 'python-pydub')
+checkdepends=('python-pytest-asyncio' 'python-pytest' 'python-pydub')
 
 prepare(){
   cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
