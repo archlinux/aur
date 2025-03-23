@@ -1,0 +1,34 @@
+post_install() {
+  systemctl --quiet daemon-reload
+
+  # If SELINUX environment, enable execution of the binary.
+  $(which selinuxenabled 2>/dev/null) && restorecon -R src/ /usr/share/yabsnap
+
+  echo "yabsnap post-installation notice -"
+  echo
+  echo "  Create a config:"
+  echo "    For example, for \"root\" partition it will be:"
+  echo "           sudo yabsnap create-config root"
+  echo "    This will create a file /etc/yabsnap/configs/root.conf"
+  echo "    REQUIRED: Edit the config to change the source field, to point to"
+  echo "    a btrfs mounted directory. E.g. source = /, or source = /home."
+  echo
+  echo "  Also, ensure that the service is enabled:"
+  echo "    sudo systemctl enable --now yabsnap.timer"
+  echo
+  echo "  Running yabsnap will also remind you of any missing steps."
+}
+
+post_upgrade() {
+  systemctl --quiet daemon-reload
+}
+
+pre_remove() {
+  systemctl --quiet --no-reload disable --now yabsnap.timer
+}
+
+post_remove() {
+  systemctl --quiet daemon-reload
+  # Since .pycache files may be created here, which won't be removed by pacman.
+  rm -fr /usr/share/yabsnap
+}
