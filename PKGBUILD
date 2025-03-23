@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=apart-gtk
 pkgver=0.29
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux GUI for cloning & restoring disk partitions to & from compressed image files."
 arch=('x86_64')
 url="https://github.com/alexheretic/apart-gtk"
@@ -19,8 +19,7 @@ depends=('python'
 optdepends=('polkit: to run as non-root user'
             'pigz: adds compression option'
             'lz4: adds compression option')
-makedepends=('rustup'
-             'git')
+makedepends=('cargo')
 # zmq/apart-core issues with CXXFLAGS lto
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
