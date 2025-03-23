@@ -1,4 +1,4 @@
-# Maintainer: éclairevoyant
+# Maintainer: TheCyberArcher
 # Contributor: Felix Golatofski <contact at xdfr dot de>
 # Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 # Contributor: Sebastian Lau <archlinux _at_ slau _dot_ info>
@@ -6,7 +6,7 @@
 
 _pkgname=veracrypt
 pkgname="$_pkgname-git"
-pkgver=1.25.9.r158.7ada94d3
+pkgver=1.26.20.r9.865ee6c4
 pkgrel=1
 epoch=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt'
