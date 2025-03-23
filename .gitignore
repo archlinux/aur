@@ -2,5 +2,4 @@
 /pkg/
 *.pkg.tar.xz
 *.pkg.tar.zst
-*.src.tar.gz
-/string_theory-*.tar.gz
+/*.tar.gz
