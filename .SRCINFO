@@ -1,10 +1,10 @@
 pkgbase = nemu-git
 	pkgdesc = ncurses interface for QEMU
-	pkgver = 3.3.0.r4.g8bcf47f
+	pkgver = 3.3.1.r6.g8e4e5c4
 	pkgrel = 2
 	url = https://github.com/nemuTUI/nemu
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = cmake
 	depends = qemu

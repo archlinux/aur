@@ -3,12 +3,12 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu-git
-pkgver=3.3.0.r4.g8bcf47f
+pkgver=3.3.1.r6.g8e4e5c4
 pkgrel=2
 pkgdesc="ncurses interface for QEMU"
 arch=(x86_64)
 url="https://github.com/nemuTUI/nemu"
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(qemu ncurses sqlite json-c libxml2 libarchive glibc sh)
 makedepends=(git cmake)
 provides=(nemu)
