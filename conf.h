@@ -15,21 +15,21 @@
 #define FI		"/usr/share/fbpad/font-i.tf"
 #define FB		"/usr/share/fbpad/font-b.tf"
 
-/* foreground and background colors */
-#define FGCOLOR		COLOR0
-#define BGCOLOR		COLORF
-
 /* where to write the screen shot */
 #define SCRSHOT		"/tmp/scr"
+
+/* file from which to read terminal font and colour options */
+#define CLRFILE		"/tmp/clr"
 
 /* lock command password; NULL disables locking */
 #define PASS		NULL
 
-/* optimized version of fb_val() */
-#define FB_VAL(r, g, b)	fb_val((r), (g), (b))
-
 /* brighten colors 0-7 for bold text */
 #define BRIGHTEN	1
+
+/* foreground and background colors */
+#define FGCOLOR		COLOR0
+#define BGCOLOR		COLORF
 
 /* black */
 #define COLOR0		0x000000
