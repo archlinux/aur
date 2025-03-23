@@ -1,16 +1,20 @@
 pkgbase = appanvil-git
-	pkgdesc = A graphical user interface for the AppArmor security module
-	pkgver = r619.2df0101
-	pkgrel = 1
+	pkgdesc = A graphical user interface for the AppArmor access control system
+	pkgver = r736.4d7d2bf
+	pkgrel = 2
 	url = https://github.com/jack-ullery/AppAnvil
 	arch = x86_64
-	license = GPL
+	arch = aarch64
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = gtkmm3
 	depends = jsoncpp
 	depends = apparmor
-	depends = libappanvil-git
+	provides = appanvil
+	provides = libappanvil
+	conflicts = appanvil
+	conflicts = libappanvil
 	source = git+https://github.com/jack-ullery/AppAnvil.git
 	md5sums = SKIP
 
