@@ -1,0 +1,6 @@
+[gourou-bin]
+source = "gitea"
+host = "forge.soutade.fr"
+gitea = "soutade/libgourou"
+prefix = "v"
+use_max_tag=true
