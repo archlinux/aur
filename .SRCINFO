@@ -14,6 +14,8 @@ pkgbase = helion-git
 	depends = zmusic>=1.1.8
 	conflicts = helion
 	source = git+https://github.com/Helion-Engine/Helion
+	source = Helion.desktop
+	source = helicon.ico
 	sha256sums = SKIP
 
 pkgname = helion-git
