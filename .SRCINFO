@@ -6,6 +6,7 @@ pkgbase = eclipse-rcp-bin
 	url = https://eclipse.org/ide
 	arch = x86_64
 	license = EPL
+	optdepends = libsecret: password storage
 	provides = eclipse=4.35-1
 	conflicts = eclipse
 	options = !strip
