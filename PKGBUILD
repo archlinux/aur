@@ -8,22 +8,31 @@
 
 pkgname=exaile
 pkgver=4.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A full-featured Amarok-style media player for GTK+"
 arch=('any')
 url="https://exaile.org"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('python>=3.8'
 	'python-bsddb'
 	'gtk3>=3.24.0'
 	'gst-python>=1.16.0'
 	'gst-plugins-base>=1.16.0'
+	'gst-plugins-base-libs'
 	'gst-plugins-good>=1.16.0'
 	'python-mutagen>=1.44.0'
 	'python-dbus'
 	'python-cairo'
 	'python-gobject>=3.24.0'
-	'gvfs')
+	'python-deadlib'
+	'gvfs'
+	'pango'
+	'hicolor-icon-theme'
+	'libgirepository'
+	'glib2'
+	'gstreamer'
+	'gdk-pixbuf2'
+	'at-spi2-core')
 makedepends=('pygobject-devel>=3.24.0' 'help2man')
 checkdepends=('python-pytest'
 	'python-sunau'
