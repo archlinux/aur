@@ -1,6 +1,6 @@
 pkgbase = opcut
 	pkgdesc = Cutting stock problem optimizer
-	pkgver = 0.4.14
+	pkgver = 0.4.16
 	pkgrel = 1
 	url = https://github.com/bozokopic/opcut
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = opcut
 	depends = python-hat-aio
 	depends = python-hat-json
 	depends = python-cairo
-	source = https://github.com/bozokopic/opcut/archive/refs/tags/v0.4.14.tar.gz
-	sha256sums = 9b94498c0f49bcd1ccad8bb890c8de14ab9c42ef4b7211fc7203bbd8fbaa6792
+	source = https://github.com/bozokopic/opcut/archive/refs/tags/v0.4.16.tar.gz
+	sha256sums = ea304bb5f102090d8a04f9f23b27680938a71698a8cfff597f2194a53f3ae4c1
 
 pkgname = opcut
