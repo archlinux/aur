@@ -1,13 +1,13 @@
 pkgbase = distribution
 	pkgdesc = the Open Source Registry implementation for storing and distributing container images using the OCI Distribution Specification
-	pkgver = 3.0.0rc2
-	pkgrel = 2
+	pkgver = 3.0.0rc4
+	pkgrel = 1
 	url = https://github.com/distribution/distribution/
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/distribution/distribution.git#tag=v3.0.0-rc.2
+	source = git+https://github.com/distribution/distribution.git#tag=v3.0.0-rc.4
 	source = registry.sysuser
 	source = registry.service
 	source = registry.tmpfiles

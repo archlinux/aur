@@ -1,6 +1,6 @@
 pkgname=distribution
-pkgver=3.0.0rc2
-pkgrel=2
+pkgver=3.0.0rc4
+pkgrel=1
 pkgdesc="the Open Source Registry implementation for storing and distributing container images using the OCI Distribution Specification"
 arch=(x86_64)
 url="https://github.com/distribution/distribution/"
