@@ -1,6 +1,6 @@
 pkgbase = snitch
 	pkgdesc = Lightweight C++20 testing framework
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/snitch-org/snitch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = snitch
 	makedepends = cmake
 	makedepends = python
 	depends = gcc-libs
-	source = snitch-1.3.1.tar.gz::https://github.com/snitch-org/snitch/archive/v1.3.1.tar.gz
-	b2sums = f3496264a40728273c18e21c888a80bf04f07f1ce048c61b89ba24c2eccd9879ed30f7a7181a136438eb1b675af71813137e8619c2d8fa60dfe50119d0955475
+	source = snitch-1.3.2.tar.gz::https://github.com/snitch-org/snitch/archive/v1.3.2.tar.gz
+	b2sums = 5c34e81e26481983db76296236354be4807b4616554b596edcb40cdee1d0e0a933d2dbebe5ef9c78f4a792de83b494a7e29d458722cc18485858b4ad5ca3ac4c
 
 pkgname = snitch
