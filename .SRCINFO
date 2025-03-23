@@ -1,7 +1,7 @@
 pkgbase = gale-bin
 	pkgdesc = Lightweight Thunderstore client
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kesomannen/gale
 	arch = x86_64
 	license = GPL-3.0-or-later

@@ -1,6 +1,6 @@
 pkgname=gale-bin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Thunderstore client"
 arch=('x86_64')
 url="https://github.com/Kesomannen/gale"
