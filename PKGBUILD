@@ -3,15 +3,15 @@
 
 _pkgname="nng"
 pkgname="$_pkgname-git"
-pkgver=1.9.0.r338.g6c949de
+pkgver=1.10.1.r570.g5b886b5
 pkgrel=1
-pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
+pkgdesc="A lightweight, broker-less library"
 url="https://github.com/nanomsg/nng"
 license=('MIT')
 arch=('x86_64')
 
 depends=(
-  'mbedtls'
+  'wolfssl'
 )
 makedepends=(
   'cmake'
@@ -28,8 +28,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  local _tag _version _revision _hash
+  _tag=$(git tag -l 'v[0-9]*' | grep -Ev '[A-Za-z][A-Za-z]' | sort -rV | head -1)
+  _version="${_tag#v}"
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_commit:?}"
 }
 
 build() {
@@ -41,8 +45,16 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DNNG_ENABLE_TLS=ON
     -DBUILD_SHARED_LIBS=ON
+    -DNNG_ENABLE_TLS=ON
+    -DNNG_TLS_ENGINE=wolf
     -Wno-dev
   )
+
+  if (( CHECKFUNC && ! SKIPCHECKSUMS )); then
+    _cmake_options+=(-DNNG_TESTS=ON)
+  else
+    _cmake_options+=(-DNNG_TESTS=OFF)
+  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
