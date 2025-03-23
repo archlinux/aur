@@ -1,5 +1,5 @@
 helpl="
-				hyprsession.sh version 1.0
+				hyprsession.sh version 1.1
 				==========================
     Usage
     -----
@@ -139,7 +139,7 @@ if	[[ $1 == "load" || $1 == "run" || $1 == "boot" ]];		then
 			hyprctl dispatch -- exec $line
 		done
 	fi
-	if	[[ $1 != "boot" ]];		then
+	if	[[ $1 != "load" ]];		then
 		while true; do
 			sleep $autosave
 			save
