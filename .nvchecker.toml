@@ -1,0 +1,3 @@
+[keybase-bash-completion-git]
+source = "git"
+git = "https://github.com/jhazelwo/keybase-completion.git"

@@ -1,0 +1,16 @@
+pkgbase = keybase-bash-completion
+	pkgdesc = Bash completion for keybase CLI
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/jhazelwo/keybase-completion
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash-completion
+	depends = keybase
+	provides = keybase-bash-completion
+	conflicts = keybase-bash-completion-git
+	source = keybase-bash-completion-1.2.2.tar.gz::https://github.com/jhazelwo/keybase-completion/archive/refs/tags/version_1.2.2.tar.gz
+	sha512sums = 29fbfa97d24f55bae52a7af39c5cb6138ec1c0644ed908708aeef6ebc701f1366eb82c29a054c6611741308a28ed2997ab0ec765e830c72264d4027fb98a817d
+
+pkgname = keybase-bash-completion
