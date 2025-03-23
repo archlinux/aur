@@ -12,6 +12,7 @@ url="https://eclipse.org/ide"
 license=('EPL')
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
+depends=('gtk3')
 optdepends=('libsecret: password storage'
             'webkit2gtk-4.1: HTML tooltips')
 

@@ -6,6 +6,7 @@ pkgbase = eclipse-rcp-bin
 	url = https://eclipse.org/ide
 	arch = x86_64
 	license = EPL
+	depends = gtk3
 	optdepends = libsecret: password storage
 	optdepends = webkit2gtk-4.1: HTML tooltips
 	provides = eclipse=4.35-1
