@@ -1,6 +1,6 @@
 # Maintainer: QaidVoid <contact@qaidvoid.dev>
 pkgname=soar
-pkgver=0.5.13
+pkgver=0.5.14
 pkgrel=1
 pkgdesc="A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More"
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ provides=('soar')
 conflicts=('soar' 'soar-bin' 'soar-nightly-bin')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkgforge/soar/archive/v$pkgver.tar.gz")
-sha256sums=('cfec1f9560a303f34f2a9f62eea7d7f0b52fbcc0fccd686a040c3925d994edf6')
+sha256sums=('d306a5f33f84b7d656ec33e0780239d3c6eb07256de3c58938419d802f980477')
 # ring fails to build with lto
 options=('!lto')
 
