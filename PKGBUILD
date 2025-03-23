@@ -1,15 +1,19 @@
-# Maintainer: Axel Gembe <derago@gmail.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Axel Gembe <derago@gmail.com>
 pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
-pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.2.9.r22.g22d3d8f
+pkgdesc='A fast & nimble SPV server for BCH, BTC, and LTC'
+pkgver=1.12.0.1.r0.g47448ef
 pkgrel=1
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
 license=('GPL3')
 depends=('qt5-base'
          'rocksdb'
-         'python')
+         'python'
+         'miniupnpc'
+         'python-pyzmq')
+makedepends=('git')
 optdepends=('jemalloc: reduce memory fragmentation (recommended)')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
