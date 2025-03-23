@@ -3,37 +3,39 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
+_pkgname=gnuplot
 pkgname=gnuplot-headless
-pkgver=6.0.0
+pkgver=6.0.2
 pkgrel=1
 pkgdesc='Plotting package which outputs to PostScript, PNG, GIF, and others, without X deps'
 arch=('i686' 'x86_64' 'aarch64' 'aarch32') 
 url='http://www.gnuplot.info'
-license=('custom') 
+license=(LicenseRef-Gnuplot)
 depends=(gcc-libs
          glibc
+         libcerf
          lua
          readline)
 makedepends=(texlive-latexextra)
-provides=('gnuplot')
-conflicts=('gnuplot')
-options=('!makeflags')
-source=("http://downloads.sourceforge.net/sourceforge/gnuplot/gnuplot-$pkgver.tar.gz"
-        "lua53_compat.patch")
-sha256sums=('635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec'
+provides=(gnuplot)
+conflicts=(gnuplot)
+source=(https://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz
+        lua53_compat.patch)
+sha256sums=('f68a3b0bbb7bbbb437649674106d94522c00bf2f285cce0c19c3180b1ee7e738'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
-  cd "${srcdir}/gnuplot-${pkgver}"
+  cd $_pkgname-$pkgver
 
   patch -p1 < "$srcdir"/lua53_compat.patch
 }
 
 build() {
-  cd "${srcdir}/gnuplot-${pkgver}"
+  cd $_pkgname-$pkgver
 
   # If you want png and jpeg terminal support, set --with-gd and get
   # add "gd-headless" as an depency.
+  MAKEINFO=/usr/bin/makeinfo \
   ./configure --prefix=/usr \
               --libexecdir=/usr/bin \
               --with-gihdir=/usr/share/gnuplot \
@@ -44,7 +46,6 @@ build() {
               --disable-wxwidgets \
               --without-cairo \
               --with-qt=no \
-              --without-libcerf \
               --disable-raise-console \
               --with-x=no \
               --with-aquaterm=no \
@@ -54,10 +55,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/gnuplot-${pkgver}"
-  make pkglibexecdir=/usr/bin DESTDIR="${pkgdir}" install
+  cd $_pkgname-$pkgver
+  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install
 
-  install -Dm644 Copyright -t "${pkgdir}/usr/share/licenses/$pkgname"
+  install -Dm644 Copyright -t "$pkgdir"/usr/share/licenses/$pkgname
 
-  rm -f "${pkgdir}/usr/share/texmf-dist/ls-R"
+  rm -f "$pkgdir"/usr/share/texmf-dist/ls-R
 }
