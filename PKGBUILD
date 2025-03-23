@@ -1,14 +1,14 @@
 # Maintainer: Zhanibek Adilbekov <zhnaibek.adilbekov@proton.me>
 # shellcheck disable=2034,2154,2164
-pkgname=posgrestools-bin
+pkgname=postgrestools-bin
 pkgver=0.2.1
 pkgrel=1
 pkgdesc='A collection of language tools and a Language Server Protocol (LSP) implementation for Postgres, focusing on developer experience and reliable SQL tooling'
 arch=('x86_64' 'aarch64')
 url='https://pgtools.dev'
 license=('MIT')
-provides=('posgrestools')
-conflicts=('posgrestools')
+provides=('postgrestools')
+conflicts=('postgrestools')
 source=($pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-LICENSE::"https://github.com/supabase-community/postgres_lsp/raw/refs/tags/${pkgver}/LICENSE")
 source_x86_64=("$pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-x86_64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/${pkgver}/postgrestools_x86_64-unknown-linux-gnu")
 source_aarch64=("$pkgname-${epoch:+"$epoch:"}$pkgver-$pkgrel-aarch64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/${pkgver}/postgrestools_aarch64-unknown-linux-gnu")
