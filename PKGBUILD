@@ -2,7 +2,7 @@
 
 pkgname=redumper
 epoch=
-pkgver=525
+pkgver=527
 pkgrel=1
 pkgdesc='Low level CD dumper utility'
 arch=(x86_64)
@@ -51,4 +51,4 @@ package() {
     install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/redumper $pkgname-build_$pkgver/LICENSE
 }
 
-sha256sums=('43685bae07e786bddb76b85cf6510c3bd2a92fbd7e575279a329612010f61daf')
+sha256sums=('c9db218b35a155430acce283ff88422fc6e31cacfb56e174a06d2779dcef13fc')
