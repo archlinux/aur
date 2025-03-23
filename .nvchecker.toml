@@ -1,0 +1,3 @@
+[fish-autopair]
+source = "git"
+git = "https://github.com/jorgebucaran/autopair.fish.git"
