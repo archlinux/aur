@@ -4,10 +4,10 @@
 pkgname=nekoray
 pkgver=4.2.12
 _pkgver=${pkgver/.beta/-beta}
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
-url="https://matsuridayo.github.io"
+url="https://github.com/Mahdi-zarei/${pkgname}"
 license=('GPL-3.0-or-later')
 makedepends=('cmake' 'git' 'go')
 depends=(
@@ -16,16 +16,22 @@ depends=(
 	'abseil-cpp' 'cpr'
 )
 optdepends=(
-	'sing-geoip: geoip data for NekoBox'
-	'sing-geosite: geosite data for NekoBox'
+	'sing-geoip-db: geoip database for NekoBox'
+	'sing-geosite-db: geosite database for NekoBox'
 )
 source=(
-	"git+https://github.com/Mahdi-zarei/${pkgname}.git#tag=${_pkgver}"
+	"git+${url}.git#tag=${_pkgver}"
 	${pkgname}.{sh,desktop}
+	"fix-geoasset.patch::https://github.com/Mahdi-zarei/nekoray/pull/320.patch"
 )
 sha512sums=('21ec6d5d5311bae60f657dfb472294c3cf1f3afb0529db0c13c43d1b521908a070f31cb2adbd8d0b39b53bbb6bff2bbfe023a099d9d619899580ed2a6de2828a'
-            'e277cb5fcb5bbcc23b2748d63dd057bff33763407243bf30769bfa8f702e9859360a07bae9481142785683d490336574262bbc247ea37e5163cd112fe68f4075'
-            'b0cfd99d7fd038d660af275a5f2fc7f9ebfe63d6751edd6eea66a8c5350f314b6dbc9eddaa5aaed134e97087290630d369b1bdf4ad59d12868c780103b33dbed')
+            'b377f7e8c859ee0b5bc05f89e2dc6c0b8535e740e089e9afe5e5f145c38a05fccbbddfcb6eb8ced9a7478e4d9ccc3cbd3ffb6843c128189c75599c40c87737e8'
+            'b0cfd99d7fd038d660af275a5f2fc7f9ebfe63d6751edd6eea66a8c5350f314b6dbc9eddaa5aaed134e97087290630d369b1bdf4ad59d12868c780103b33dbed'
+            'ca2f1cc68f20c1a0a18bf6ee94835b78a70b4f13fd48a3913e90dacc74f5b6a33db18486082ed9f962f9952009bfaf9257a3055c2ebfea5cce21ba53829718fd')
+
+prepare() {
+	patch -d "${pkgname}" -p1 -i ../fix-geoasset.patch
+}
 
 build() {
 	cd "${pkgname}/"
@@ -49,7 +55,7 @@ build() {
 
 package() {
 	install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/nekobox"
+	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
 	cd "${pkgname}/"
 	install -Dm644 "res/public/nekobox.png" -t "${pkgdir}/usr/share/pixmaps/"
