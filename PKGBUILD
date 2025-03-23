@@ -3,7 +3,7 @@
 pkgname=python-lynxpresence
 _name=${pkgname#python-}
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord RPC and Rich Presence wrapper library'
 url='https://github.com/C0rn3j/lynxpresence'
 arch=(any)
@@ -31,6 +31,6 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 -t "$pkgdir"/usr/share/man/man1 man/pypresence.1
+  install -Dm644 -t "$pkgdir"/usr/share/man/man1 man/lynxpresence.1
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
