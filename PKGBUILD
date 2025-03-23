@@ -2,14 +2,14 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
 pkgver=r1424.5293179
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy scratchpads, menus, smart monitor placement and more hyprland tweaks (GIT version)"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
 groups=()
 depends=('python' 'python-aiofiles')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'go')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -29,7 +29,7 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     python -m build --wheel --no-isolation
     cd client
-    go build -ldflags "-s -w" pypr-client.go
+    ${CC:-gcc} -o pypr-client pypr-client.c
 }
 
 package() {
