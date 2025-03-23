@@ -11,6 +11,7 @@ pkgbase = mingw-w64-mesa
 	makedepends = python-mako
 	makedepends = python-packaging
 	makedepends = python-yaml
+	makedepends = glslang
 	depends = mingw-w64-llvm
 	depends = mingw-w64-vulkan-icd-loader
 	depends = mingw-w64-dlfcn
