@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsvg
-_pkgver=2.6.1
+_pkgver=2.6.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e40b6b3bef8c9a9bc5356e3b4b6bebda')
-b2sums=('219c7b7c89edf77747fadaa946533b05abf962c9bfeb0a1033a16e9816241865e58457e13285e45e7a7914c591652cfa11d7ebbbd96a00b0beeb3e4409892f7f')
+md5sums=('02cc3a26aecd5bf6ab66a2b31c67a5bc')
+b2sums=('5b6e8b995835419281589e8c9ea96dd5b09d45b8001254701e7efd15c2d79de2243ad8594021855f809e4c07a79d19ce84852e29cb80f32bd1c8f815b14bc0e9')
 
 build() {
   mkdir build
