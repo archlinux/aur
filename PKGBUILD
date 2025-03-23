@@ -9,7 +9,7 @@ depends=('gtk3' 'networkmanager' 'bluez' 'bluez-utils' 'pipewire-pulse' 'brightn
 makedepends=('git')
 provides=('better-control')
 conflicts=('better-control')
-source=("https://github.com/quantumvoid0/better-control.git")
+source=("git+https://github.com/quantumvoid0/better-control.git")
 sha256sums=('SKIP')
 
 pkgver() {
