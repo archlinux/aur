@@ -2,10 +2,10 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=gmsl
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Make Standard Library: extra functions to extend functionality of Makefiles'
 arch=('any')
-url="https://${pkgver}.jgc.org/"
+url="https://${pkgname}.jgc.org/"
 license=('BSD')
 depends=('make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jgrahamc/${pkgname}/archive/v${pkgver}.tar.gz"

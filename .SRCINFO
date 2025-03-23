@@ -1,8 +1,8 @@
 pkgbase = gmsl
 	pkgdesc = GNU Make Standard Library: extra functions to extend functionality of Makefiles
 	pkgver = 1.2.3
-	pkgrel = 1
-	url = https://1.2.3.jgc.org/
+	pkgrel = 2
+	url = https://gmsl.jgc.org/
 	arch = any
 	license = BSD
 	depends = make
