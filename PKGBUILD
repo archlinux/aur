@@ -2,23 +2,43 @@
 
 _name=gradio-client
 pkgname=python-${_name}
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=(any)
 url='https://github.com/gradio-app/gradio/tree/main/client/python'
 license=('Apache-2.0')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name/-/_}-$pkgver.tar.gz")
-sha256sums=('6ecd3a537c6c076cb1b351c2d7ce5906070d2e1b3181163609bfa4a4c4f3040e')
+source=("https://github.com/gradio-app/gradio/archive/refs/tags/${_name//-/_}@${pkgver}.tar.gz")
+sha256sums=('bc7eb1430765f325503f0dfff00219a9df719256293955d18b0387b5c5be54d6')
 depends=('python>=3.10' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'python-packaging' 'python-typing_extensions' 'python-websockets')
-makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest-asyncio' 'python-pytest' 'python-gradio' 'python-pydub')
+
+prepare(){
+  cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
+  sed -i 's/requires = \["hatchling", "hatch-requirements-txt", "hatch-fancy-pypi-readme>=22.5.0"\]/requires = ["hatchling"]/' pyproject.toml
+}
 
 build() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
   python -m build --wheel --no-isolation
 }
 
+check() {
+  local pytest_options=(
+    -vv
+    --override-ini="addopts="
+    -p no:flaky
+    --deselect test/test_client.py
+  )
+  cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/pip install -U gradio # Prevent cercular dependencies
+  test-env/bin/python -m pytest "${pytest_options[@]}" test
+}
+
 package() {
-  cd "${srcdir}"/${_name//-/_}-$pkgver
+  cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
