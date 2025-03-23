@@ -1,0 +1,15 @@
+pkgbase = daylight
+	pkgdesc = a command-line program for tracking sunrise and sunset times
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jbreckmckye/daylight
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = glibc
+	source = daylight-1.0.0.tar.gz::https://github.com/jbreckmckye/daylight/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = d88212142962160a0ebdcf0de725c87ef3c1b086d90df54369b9645e97f04a885630d0f947b1144db38c631dbda647bb975bc844c54689741aac59fc53171261
+
+pkgname = daylight

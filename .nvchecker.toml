@@ -1,0 +1,4 @@
+[daylight]
+source = "git"
+git = "https://github.com/jbreckmckye/daylight.git"
+prefix = "v"
