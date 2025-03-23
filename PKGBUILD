@@ -3,15 +3,15 @@
 
 pkgname=nemu
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ncurses interface for QEMU"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://github.com/nemuTUI/nemu"
-license=(BSD)
+license=(BSD-2-Clause)
 depends=(qemu ncurses sqlite json-c libxml2 libarchive glibc sh)
 makedepends=(git cmake)
 source=("git+https://github.com/nemuTUI/nemu.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('76e63121d68ede54b4274d6918a3344a46fc65420b0744947029f95076c2a193')
 
 build() {
   cmake -B build -S "nemu" -Wno-dev \
