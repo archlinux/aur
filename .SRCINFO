@@ -1,0 +1,16 @@
+pkgbase = elisa-rpc-git
+	pkgdesc = A Discord rich presence client for Elisa the music player by KDE.
+	pkgver = r2.cc9a30c
+	pkgrel = 1
+	url = https://github.com/renarin-kholin/ElisaRPC
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = playerctl
+	provides = elisa-rpc
+	conflicts = elisa-rpc
+	source = elisa-rpc::git+https://github.com/renarin-kholin/ElisaRPC
+	sha256sums = SKIP
+
+pkgname = elisa-rpc-git
