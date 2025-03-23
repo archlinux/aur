@@ -1,16 +1,18 @@
 pkgbase = abinot
-	pkgdesc = Abinot for Arch Linux
+	pkgdesc = Abinot Python Script for Arch Linux
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://abinot.ir/arch-package
+	pkgrel = 2
+	url = https://www.Abinot.ir/
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = bash
 	depends = yay
 	depends = base-devel
 	depends = git
 	depends = python
-	source = abinot-setup.sh
+	depends = python-pyqt5
+	source = git+https://github.com/abinot/abinot-arch.git
 	sha256sums = SKIP
 
 pkgname = abinot
