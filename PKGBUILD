@@ -3,7 +3,7 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=sigutils-git
-pkgver=r595.3db6dc5
+pkgver=r599.a243d44
 pkgrel=1
 pkgdesc="Digital signal processing library"
 arch=("any")
