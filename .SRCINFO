@@ -1,7 +1,7 @@
 pkgbase = keybase-bash-completion-git
 	pkgdesc = Bash completion for keybase CLI
 	pkgver = r8.7f7d0c2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/jhazelwo/keybase-completion
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = keybase-bash-completion-git
 	makedepends = git
 	depends = bash-completion
 	depends = keybase
+	provides = keybase-bash-completion
+	conflicts = keybase-bash-completion
 	source = git+https://github.com/jhazelwo/keybase-completion
 	md5sums = SKIP
 
