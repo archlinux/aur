@@ -2,7 +2,7 @@
 
 pkgname=v2ray-bin
 pkgver=5.29.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for building proxies to bypass network restrictions"
 arch=('x86_64')
 url="https://github.com/v2fly/v2ray-core"
@@ -11,7 +11,7 @@ provides=('v2ray')
 conflicts=('v2ray' 'v2ray-geoip' 'v2ray-domain-list-community')
 depends=('glibc')
 options=('!debug')
-source=("${pkgname%-bin}_${pkgver}.zip::https://github.com/v2fly/v2ray-core/releases/download/v5.29.2/v2ray-linux-64.zip"
+source=("${pkgname%-bin}_${pkgver}.zip::https://github.com/v2fly/v2ray-core/releases/download/v${pkgver}/v2ray-linux-64.zip"
 	LICENSE)
 sha512sums=('7989ba7e809b388e69269f7fb10789008893aa314ca074355a4272556036247e6fc56e382f03434fd8450d3394affffa2e06bee879225488bccea165702acec3'
 	'866fed989ae66146085718c7d12dcff81de0e3f6be426a8407ddf8c7da4dc68f71e3ff1324621a25e8f6edfdad3fc6ff2e6f72971731a0ff248a35808a6599c9')
