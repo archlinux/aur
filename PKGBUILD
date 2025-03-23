@@ -1,18 +1,18 @@
 # Maintainer: mattski <redmattski at gmail dot com>
+# Maintainer: Winux <winux@winux.cc>
 
 pkgname=python-audible
-_name=${pkgname#python-}
-pkgver=0.9.1
-pkgrel=2
-pkgdesc='A(Sync) Interface for internal Audible API written in'
+_name=${pkgname#python-}; _name=${_name^}
+pkgver=0.10.0
+pkgrel=1
+pkgdesc=' A(Sync) Interface for internal Audible API written in pure Python.'
 arch=(any)
 url=https://github.com/mkb79/audible
 license=(AGPL3)
 depends=(python python-beautifulsoup4 python-httpx python-pbkdf2 python-pillow python-pyaes python-rsa python-questionary)
-makedepends=('python-build' 'python-installer' 'python-wheel')
-checkdepends=()
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('90dabef70d852224479ca1f23896f8f8e0665375a49859f26d61b605da8c1f33')
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a993262970d0f10350a8ed46788b577826414c27c1c2556906eb6f334e5eadb8')
 
 build() {
     cd $srcdir/${_name}-$pkgver

@@ -1,12 +1,13 @@
 pkgbase = python-audible
-	pkgdesc = A(Sync) Interface for internal Audible API written in
-	pkgver = 0.9.1
-	pkgrel = 2
+	pkgdesc = A(Sync) Interface for internal Audible API written in pure Python.
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/mkb79/audible
 	arch = any
 	license = AGPL3
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python
 	depends = python-beautifulsoup4
@@ -16,7 +17,7 @@ pkgbase = python-audible
 	depends = python-pyaes
 	depends = python-rsa
 	depends = python-questionary
-	source = https://files.pythonhosted.org/packages/source/a/audible/audible-0.9.1.tar.gz
-	sha256sums = 90dabef70d852224479ca1f23896f8f8e0665375a49859f26d61b605da8c1f33
+	source = https://github.com/mkb79/audible/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = a993262970d0f10350a8ed46788b577826414c27c1c2556906eb6f334e5eadb8
 
 pkgname = python-audible
