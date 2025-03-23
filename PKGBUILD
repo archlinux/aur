@@ -49,6 +49,6 @@ package() {
   cd ../src
   install -Dm 755 "$pkgname_main".sh -t "$DEST"/
   install -d "$pkgdir"/usr/bin
-  ln -s /usr/share/"$pkgname_main"/"$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
+  ln -s /usr/share/"$pkgname_main"/"$pkgname_main".sh "$pkgdir"/usr/bin/"$pkgname_main"
 }
 
