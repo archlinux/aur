@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r144.6fa8510
+pkgver=r208.ab8fbd0
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -15,6 +15,11 @@ md5sums=('SKIP')
 install="$pkgname".install
 
 pkgname_main="yabsnap"
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 check() {
   cd "$pkgname"/artifacts
