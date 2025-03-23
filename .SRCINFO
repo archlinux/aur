@@ -1,0 +1,19 @@
+pkgbase = forcepoint-client-bin
+	pkgdesc = SSL VPN client for Forcepoint NGFW
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = https://www.forcepoint.com
+	arch = x86_64
+	license = proprietary
+	depends = libevent
+	depends = libnl
+	depends = openssl-1.1
+	provides = forcepoint-client-bin
+	conflicts = forcepoint-client
+	noextract = libevent-openssl.deb
+	source = forcepoint-client-2.5.2.zip::https://it.um.si/Documents/VPNClientLinux252.zip
+	source = libevent-openssl.deb::http://ftp.si.debian.org/debian/pool/main/libe/libevent/libevent-openssl-2.1-7_2.1.12-stable-1_amd64.deb
+	sha256sums = 9f32441189c3c27488de12f52bab66af084f0d861c4978d361d8ce391a86a133
+	sha256sums = 26abb086df10d311ff355341e5297d220c21f1bab8659982f06bc06281e4c017
+
+pkgname = forcepoint-client-bin
