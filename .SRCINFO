@@ -1,6 +1,6 @@
 pkgbase = python-hat-aio
 	pkgdesc = Hat async utility library
-	pkgver = 0.7.9
+	pkgver = 0.7.12
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-aio
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-hat-aio
 	makedepends = python-hat-doit
 	makedepends = python-installer
 	depends = python
-	source = https://github.com/hat-open/hat-aio/archive/refs/tags/v0.7.9.tar.gz
-	sha256sums = 9fba92a0a2724555a1aca6d83476379d53a7826d52698761cfbc8b3f05762e6a
+	source = https://github.com/hat-open/hat-aio/archive/refs/tags/v0.7.12.tar.gz
+	sha256sums = b0c93ac59aa00da9ed87dfc5bd10d8612aecfaafe6cfa4d49783dbf9e29bc013
 
 pkgname = python-hat-aio
