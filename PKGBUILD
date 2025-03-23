@@ -2,17 +2,17 @@
 # Contributor: Ryan Young <ry an. ry. young@gmail.com> (omit spaces)
 
 pkgname=temp-throttle-git
-pkgver=r94.e89c5fd
+pkgver=r131.e26baae
 pkgrel=1
 pkgdesc="A shell script for throttling system CPU frequency based on a desired maximum temperature."
 arch=('any')
 url="https://github.com/Sepero/temp-throttle"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('bash')
 makedepends=('git')
 conflicts=("temp-throttle")
 backup=("etc/temp-throttle.conf")
-source=("git://github.com/Sepero/${pkgname%-git}.git#branch=testing")
+source=("git+https://github.com/Sepero/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
