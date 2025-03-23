@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-sysinfo-git
 	pkgdesc = Sysinfo for the COSMIC™ desktop
-	pkgver = r6.c58e258
+	pkgver = r8.aad0afc
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/cosmic-ext-applet-sysinfo
 	arch = x86_64

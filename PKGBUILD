@@ -1,7 +1,7 @@
 
 # Maintainer: Attila Greguss <floyd0122@gmail.com>
 pkgname=cosmic-ext-applet-sysinfo-git
-pkgver=r6.c58e258
+pkgver=r8.aad0afc
 pkgrel=1
 pkgdesc="Sysinfo for the COSMIC™ desktop"
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
   cd "${pkgname%-git}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --offline --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
