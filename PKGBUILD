@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
 pkgver=1.0.0.alpha.6.r7.ge9858d9
-pkgrel=1
+pkgrel=2
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -65,7 +65,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-#  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
