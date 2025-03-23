@@ -1,0 +1,5 @@
+post_install() {
+  getent group logitechms &>/dev/null || groupadd -r logitechms >/dev/null
+  getent passwd logitechms &>/dev/null || useradd -r -g logitechms -d /opt/lyrionmusicserver-git -c 'Logitech Media Server' -s /bin/false logitechms >/dev/null
+  chown -R logitechms:logitechms /opt/lyrionmusicserver-git
+}
