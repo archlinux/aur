@@ -4,7 +4,7 @@
 pkgname=nekoray
 pkgver=4.2.12
 _pkgver=${pkgver/.beta/-beta}
-pkgrel=3
+pkgrel=4
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/Mahdi-zarei/${pkgname}"
@@ -46,7 +46,13 @@ build() {
 
 	cd core/server
 	VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
-	go build -v -o ../../build/ -buildmode=pie -trimpath -ldflags "-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}'" -mod=readonly -modcacherw -tags "with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_ech,with_dhcp"
+	go build -o ../../build/ \
+		-buildmode=pie \
+		-trimpath \
+		-ldflags "-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}'" \
+		-mod=readonly \
+		-modcacherw \
+		-tags "with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_ech,with_dhcp"
 }
 
 package() {

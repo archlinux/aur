@@ -1,7 +1,7 @@
 pkgbase = nekoray
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 	pkgver = 4.2.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Mahdi-zarei/nekoray
 	install = nekoray.install
 	arch = x86_64
