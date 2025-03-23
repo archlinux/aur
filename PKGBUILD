@@ -2,16 +2,15 @@
 
 pkgname=hoarder
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
-depends=("chromium" "nodejs>=22" "pnpm")
+depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs>=22" "pnpm")
 makedepends=("git" "jq" "pnpm")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
-            "meilisearch: for full text search"
             "ollama: for automatic tagging"
             "yt-dlp: for download video")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = hoarder
 	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hoarder-app/hoarder
 	arch = x86_64
 	arch = aarch64
@@ -10,10 +10,13 @@ pkgbase = hoarder
 	makedepends = jq
 	makedepends = pnpm
 	depends = chromium
+	depends = graphicsmagick
+	depends = ghostscript
+	depends = meilisearch
+	depends = monolith
 	depends = nodejs>=22
 	depends = pnpm
 	optdepends = hoarder-cli: hoarder cli tool
-	optdepends = meilisearch: for full text search
 	optdepends = ollama: for automatic tagging
 	optdepends = yt-dlp: for download video
 	backup = etc/hoarder/hoarder.env
