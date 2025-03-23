@@ -2,7 +2,7 @@
 
 pkgname=alhp-utils
 _name=alhp.utils
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Collection of ALHP utils'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL-2.0-or-later)
 depends=(glibc pacman)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('f0d74dd99d7429aed7ae4a587b5f20fd509c21f54a3856d3bed35ddefd8bc67896efa65f184e3cdd013dbc85f3439e5137f55b3183ba20ca126a3b4c391a88ed')
+b2sums=('9969e00f6e3da6f7ae4ecd9a6278b6103d7ad5b11d000e98392efaa5d9b474829fa6c789b6cef996e229d53fd4c877c6b41c9bda90e529a0324cc812260e1cf2')
 
 build() {
   cd $_name
