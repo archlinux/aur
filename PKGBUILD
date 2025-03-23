@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2120
-pkgrel=2
+pkgver=2120.1
+pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -11,12 +11,11 @@ depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'open
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
-conflicts=(citra)
 options=(!lto)
-_date=20250321
-_commit=d2a58ea
-source=("$url/releases/download/${pkgver/./-}/$pkgname-unified-source-$_date-$_commit.tar.xz")
-sha256sums=('63d329a1a7859965df632ec8436435f4f2000c5ddf355744f55ae552875b3532')
+_date=20250322
+_commit=6ecee96
+source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz")
+sha256sums=('8039c40f2b963353c8ba6cc8370186608e3751526fb8a05374c49c8a3c3c1299')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
