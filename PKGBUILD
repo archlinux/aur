@@ -4,7 +4,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -34,7 +34,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libmodplug"
          "android-${_android_arch}-libopenmpt"
          "android-${_android_arch}-libraw1394"
-         "android-${_android_arch}-librsvg"
          "android-${_android_arch}-libsoxr"
          "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
@@ -53,7 +52,6 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-opencore-amr"
          "android-${_android_arch}-openjpeg2"
          "android-${_android_arch}-opus"
-         "android-${_android_arch}-rav1e"
          "android-${_android_arch}-rubberband"
          "android-${_android_arch}-sdl2"
          "android-${_android_arch}-snappy"
@@ -67,6 +65,12 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-xvidcore"
          "android-${_android_arch}-xz"
          "android-${_android_arch}-zlib")
+
+if [ "${_android_arch}" != riscv64 ]; then
+    depends+=("android-${_android_arch}-librsvg"
+              "android-${_android_arch}-rav1e")
+fi
+
 makedepends=('android-configure'
              "android-${_android_arch}-avisynthplus"
              "android-${_android_arch}-ladspa"
@@ -101,7 +105,7 @@ build() {
     unset STRIP
     unset NM
 
-    case "$_android_arch" in
+    case "${_android_arch}" in
         aarch64)
             target_arch=aarch64
             export LDFLAGS="${LDFLAGS} -lm -logg -lvorbis -lcrypto -lssl"
@@ -110,6 +114,9 @@ build() {
         armv7a-eabi)
             target_arch=arm
             export LDFLAGS="${LDFLAGS} -ltheoraenc -ltheoradec -logg"
+            ;;
+        riscv64)
+            target_arch=riscv64
             ;;
         x86)
             target_arch=x86_32
@@ -124,7 +131,10 @@ build() {
     extra_options=
 
     # Platform specific patches
-    case "$_android_arch" in
+    case "${_android_arch}" in
+        riscv64)
+             extra_options="${extra_options} --disable-asm"
+            ;;
         x86)
              extra_options="${extra_options} --disable-asm"
             ;;
@@ -137,6 +147,10 @@ build() {
 
     else
         extra_options="${extra_options} --enable-libxcb"
+    fi
+
+    if [ "${_android_arch}" != riscv64 ]; then
+        extra_options="${extra_options} --enable-librsvg --enable-librav1e"
     fi
 
     # Not yet available.
@@ -196,8 +210,6 @@ build() {
         --enable-libopenjpeg \
         --enable-libopenmpt \
         --enable-libopus \
-        --enable-librav1e \
-        --enable-librsvg \
         --enable-librubberband \
         --enable-libsnappy \
         --enable-libsoxr \
