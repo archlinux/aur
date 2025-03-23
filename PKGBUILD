@@ -7,7 +7,7 @@ _android_arch=armv7a-eabi
 pkgname=android-${_android_arch}-x264-bootstrap
 pkgver=157.r72db4377
 _commit=72db437770fd1ce3961f624dd57a8e75ff65ae0b
-pkgrel=4
+pkgrel=5
 arch=('any')
 pkgdesc="Free library for encoding H264/AVC video streams (Android ${_android_arch})"
 license=('GPL')
@@ -49,13 +49,14 @@ build() {
 
     target=${_android_arch/x86-/x86_}-linux-android
     configue_opts="
-        --disable-cli"
+        --disable-cli
+        --enable-pic
+        --enable-lto"
 
     # Platform specific patches
     case "$_android_arch" in
         x86)
              configue_opts+="
-                 --enable-pic
                  --disable-asm
                  --host=i686-linux"
             ;;
@@ -66,7 +67,6 @@ build() {
         riscv64)
              target=openrisc-linux-android
              configue_opts+="
-                 --enable-pic
                  --disable-asm"
             ;;
         *)
@@ -92,5 +92,5 @@ package() {
 
     make DESTDIR="${pkgdir}" install
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
-    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
 }
