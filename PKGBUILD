@@ -15,7 +15,7 @@ makedepends=('dotnet-runtime' 'clang')
 conflicts=('helion')
 source=("git+https://github.com/Helion-Engine/Helion"
 		"Helion.desktop"
-		"helicon.ico")
+		"helion.ico")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -15,7 +15,7 @@ pkgbase = helion-git
 	conflicts = helion
 	source = git+https://github.com/Helion-Engine/Helion
 	source = Helion.desktop
-	source = helicon.ico
+	source = helion.ico
 	sha256sums = SKIP
 
 pkgname = helion-git
