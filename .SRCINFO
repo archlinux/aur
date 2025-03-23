@@ -1,6 +1,6 @@
 pkgbase = python-hat-json
 	pkgdesc = Hat JSON library
-	pkgver = 0.5.27
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/hat-open/hat-json
 	arch = any
@@ -13,9 +13,8 @@ pkgbase = python-hat-json
 	depends = python-jsonschema
 	depends = python-yaml
 	depends = python-referencing
-	depends = python-tomli
 	depends = python-tomli-w
-	source = https://github.com/hat-open/hat-json/archive/refs/tags/v0.5.27.tar.gz
-	sha256sums = 574b1399acf2371b8d8ebe6c6e8d896c6320623b51ec7b3cfe566988c6b2aaea
+	source = https://github.com/hat-open/hat-json/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = e99f9e5fa84e5a6b89b83b05c083ab5ca2637743473734f72a1d444233e54ce7
 
 pkgname = python-hat-json

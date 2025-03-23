@@ -2,17 +2,17 @@
 
 _name=hat-json
 pkgname=python-$_name
-pkgver=0.5.27
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Hat JSON library"
 url="https://github.com/hat-open/hat-json"
 license=('Apache')
 arch=('any')
 depends=('python-hat-util' 'python-jsonpatch' 'python-jsonschema'
-         'python-yaml' 'python-referencing' 'python-tomli' 'python-tomli-w')
+         'python-yaml' 'python-referencing' 'python-tomli-w')
 makedepends=('python-build' 'python-hat-doit' 'python-installer')
 source=("https://github.com/hat-open/hat-json/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('574b1399acf2371b8d8ebe6c6e8d896c6320623b51ec7b3cfe566988c6b2aaea')
+sha256sums=('e99f9e5fa84e5a6b89b83b05c083ab5ca2637743473734f72a1d444233e54ce7')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
