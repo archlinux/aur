@@ -1,6 +1,6 @@
 pkgbase = vtex2-git
 	pkgdesc = A VTF conversion and creation tool
-	pkgver = 0.1.r96.1231f86
+	pkgver = 0.1.r120.9339bc9
 	pkgrel = 2
 	url = https://github.com/StrataSource/vtex2
 	arch = i686

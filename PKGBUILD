@@ -2,7 +2,7 @@
 
 pkgname=vtex2-git
 pkgver=0.1.r120.9339bc9
-pkgrel=1
+pkgrel=2
 pkgdesc="A VTF conversion and creation tool"
 arch=(i686 x86_64 aarch64)
 url="https://github.com/StrataSource/vtex2"
@@ -37,5 +37,6 @@ build() {
 package() {
 	cd "$srcdir"
 	DESTDIR="$pkgdir" cmake --install build
+	rm -Rf "$pkgdir"/usr/include "$pkgdir"/usr/lib # remove bundled libs
 	install -Dm644 "$srcdir/vtex2/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
