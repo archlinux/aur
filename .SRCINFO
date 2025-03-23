@@ -1,6 +1,6 @@
 pkgbase = python-blacksheep
 	pkgdesc = Fast web framework for Python asyncio
-	pkgver = 2.0.8
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/blacksheep
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = python-blacksheep
 	provides = python-blacksheep
 	conflicts = blacksheep
 	conflicts = python-blacksheep
-	source = blacksheep-2.0.8.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep/blacksheep-2.0.8.tar.gz
-	sha256sums = 825da67d857d470a2a75f7936bbe224e57d83da153ae85e4ba8567826cd995f3
+	source = blacksheep-2.1.0.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep/blacksheep-2.1.0.tar.gz
+	sha256sums = 1add3ae720217bce87c98a765c6f794e78fa702cf3ecd4c5fffa782f04d80f6d
 
 pkgname = python-blacksheep
