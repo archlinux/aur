@@ -1,6 +1,6 @@
 pkgbase = r-officer
 	pkgdesc = Manipulation of Microsoft Word and PowerPoint Documents
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=officer
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-officer
 	optdepends = r-rmarkdown
 	optdepends = r-rsvg
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/officer_0.6.7.tar.gz
-	sha256sums = f02fafff3adad784fb7f8d3f1ef7555a78e754179f5e531c4171479f71d92ba9
+	source = https://cran.r-project.org/src/contrib/officer_0.6.8.tar.gz
+	sha256sums = eacb26fc2aa781e03190e5cacbd1069666baafc28a184d22b577c9327584a30a
 
 pkgname = r-officer
