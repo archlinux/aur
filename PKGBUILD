@@ -2,9 +2,9 @@
 # Maintainer: Integral <integral@member.fsf.org>
 
 pkgname=nekoray
-pkgver=4.0.1
+pkgver=4.2.12
 _pkgver=${pkgver/.beta/-beta}
-pkgrel=2
+pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://matsuridayo.github.io"
@@ -13,37 +13,27 @@ makedepends=('cmake' 'git' 'go')
 depends=(
 	'qt6-base' 'qt6-svg' 'qt6-tools'
 	'protobuf' 'yaml-cpp' 'zxing-cpp'
-	'abseil-cpp'
+	'abseil-cpp' 'cpr'
 )
 optdepends=(
 	'sing-geoip: geoip data for NekoBox'
 	'sing-geosite: geosite data for NekoBox'
 )
 source=(
-	"git+https://github.com/MatsuriDayo/${pkgname}.git#tag=${_pkgver}"
-	"git+https://github.com/Skycoder42/QHotkey.git"
-	"nekobox.sh"
-	"nekobox.desktop"
+	"git+https://github.com/Mahdi-zarei/${pkgname}.git#tag=${_pkgver}"
+	${pkgname}.{sh,desktop}
 )
-sha512sums=('711e677fcb925367959b073d1287a721c253db4213fdf3e77c0d7d7042e47d4809ec7549f0e446ac5e9f1e73da68642bf09dd7c3dbea672443d89413ebbfb688'
-            'SKIP'
-            '3a65300520462bd6a5667c50b7db1ccbf7107b9d5c65959d00451a68cdd77d9e13288da03ccb0d712cd4fb076cdfb3c635490d6148268f920cde7ba11b7237a9'
-            'f99795f5f82fca74bbc36569d3595bc141c3fef00a0c6076585da683f0a5144dbfdbbe4525cf82576e9010262f74f462ae40f5a7b95dafc01033763a9b1711bd')
-
-prepare() {
-	cd "${pkgname}/"
-
-	git submodule init
-	git config submodule.3rdparty/QHotkey.url "${srcdir}/QHotkey"
-	git -c protocol.file.allow=always submodule update
-
-	./libs/get_source.sh
-}
+sha512sums=('21ec6d5d5311bae60f657dfb472294c3cf1f3afb0529db0c13c43d1b521908a070f31cb2adbd8d0b39b53bbb6bff2bbfe023a099d9d619899580ed2a6de2828a'
+            'e277cb5fcb5bbcc23b2748d63dd057bff33763407243bf30769bfa8f702e9859360a07bae9481142785683d490336574262bbc247ea37e5163cd112fe68f4075'
+            'b0cfd99d7fd038d660af275a5f2fc7f9ebfe63d6751edd6eea66a8c5350f314b6dbc9eddaa5aaed134e97087290630d369b1bdf4ad59d12868c780103b33dbed')
 
 build() {
 	cd "${pkgname}/"
 
-	cmake -B build -DQT_VERSION_MAJOR=6 -DNKR_PACKAGE=ON
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
 	cmake --build build
 
 	export GOARCH
@@ -54,13 +44,15 @@ build() {
 	riscv64) GOARCH=riscv64 ;;
 	esac
 
-	GOOS=linux ./libs/build_go.sh
+	GOOS=linux ./script/build_go.sh
 }
 
 package() {
-	# Assets
-	install -Dm644 nekobox.desktop -t "${pkgdir}/usr/share/applications/"
-	install -Dm644 "${pkgname}/res/public/nekobox.png" -t "${pkgdir}/usr/share/pixmaps/"
+	install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/nekobox"
+
+	cd "${pkgname}/"
+	install -Dm644 "res/public/nekobox.png" -t "${pkgdir}/usr/share/pixmaps/"
 
 	# Core
 	local core_srcdir=linux
@@ -71,11 +63,8 @@ package() {
 	riscv64) core_srcdir+=-riscv64 ;;
 	esac
 
-	install -Dm755 "${pkgname}/deployment/${core_srcdir}/nekobox_core" -t "${pkgdir}/usr/lib/nekobox/"
+	install -Dm755 "deployment/${core_srcdir}/nekobox_core" -t "${pkgdir}/usr/lib/${pkgname}/"
 
 	# Binary file
-	install -Dm755 "${pkgname}/build/nekobox" -t "${pkgdir}/usr/lib/nekobox/"
-
-	# Launcher
-	install -Dm755 nekobox.sh "${pkgdir}/usr/bin/nekobox"
+	install -Dm755 "build/${pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
 }

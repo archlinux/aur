@@ -1,7 +1,7 @@
 pkgbase = nekoray
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
-	pkgver = 4.0.1
-	pkgrel = 2
+	pkgver = 4.2.12
+	pkgrel = 1
 	url = https://matsuridayo.github.io
 	arch = x86_64
 	arch = aarch64
@@ -17,15 +17,14 @@ pkgbase = nekoray
 	depends = yaml-cpp
 	depends = zxing-cpp
 	depends = abseil-cpp
+	depends = cpr
 	optdepends = sing-geoip: geoip data for NekoBox
 	optdepends = sing-geosite: geosite data for NekoBox
-	source = git+https://github.com/MatsuriDayo/nekoray.git#tag=4.0.1
-	source = git+https://github.com/Skycoder42/QHotkey.git
-	source = nekobox.sh
-	source = nekobox.desktop
-	sha512sums = 711e677fcb925367959b073d1287a721c253db4213fdf3e77c0d7d7042e47d4809ec7549f0e446ac5e9f1e73da68642bf09dd7c3dbea672443d89413ebbfb688
-	sha512sums = SKIP
-	sha512sums = 3a65300520462bd6a5667c50b7db1ccbf7107b9d5c65959d00451a68cdd77d9e13288da03ccb0d712cd4fb076cdfb3c635490d6148268f920cde7ba11b7237a9
-	sha512sums = f99795f5f82fca74bbc36569d3595bc141c3fef00a0c6076585da683f0a5144dbfdbbe4525cf82576e9010262f74f462ae40f5a7b95dafc01033763a9b1711bd
+	source = git+https://github.com/Mahdi-zarei/nekoray.git#tag=4.2.12
+	source = nekoray.sh
+	source = nekoray.desktop
+	sha512sums = 21ec6d5d5311bae60f657dfb472294c3cf1f3afb0529db0c13c43d1b521908a070f31cb2adbd8d0b39b53bbb6bff2bbfe023a099d9d619899580ed2a6de2828a
+	sha512sums = e277cb5fcb5bbcc23b2748d63dd057bff33763407243bf30769bfa8f702e9859360a07bae9481142785683d490336574262bbc247ea37e5163cd112fe68f4075
+	sha512sums = b0cfd99d7fd038d660af275a5f2fc7f9ebfe63d6751edd6eea66a8c5350f314b6dbc9eddaa5aaed134e97087290630d369b1bdf4ad59d12868c780103b33dbed
 
 pkgname = nekoray
