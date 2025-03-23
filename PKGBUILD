@@ -28,8 +28,7 @@ check() {
   local pytest_options=(
     -vv
     --override-ini="addopts="
-    -p no:flaky
-    --deselect test/test_client.py
+    --deselect test/test_client.py # Need HF_TOKEN
   )
   cd "${srcdir}"/${_name//-client/}-${_name//-/_}-${pkgver}/${_name//gradio-/}/${pkgname//-gradio-client/}
   python -m venv --system-site-packages test-env
