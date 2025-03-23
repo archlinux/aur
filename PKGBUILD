@@ -2,7 +2,7 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 pkgname=cozette-otb
 pkgver=1.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
 url='https://github.com/slavfox/Cozette'
