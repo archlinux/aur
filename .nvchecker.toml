@@ -1,3 +1,4 @@
-[keybase-bash-completion-git]
+[keybase-bash-completion]
 source = "git"
 git = "https://github.com/jhazelwo/keybase-completion.git"
+prefix="version_"
