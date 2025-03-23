@@ -1,13 +1,14 @@
 pkgbase = timer-git
 	pkgdesc = Simple beeping countdown timer
-	pkgver = r113.db878a2
+	pkgver = 1.0.0.r0.g0cc2c6b
 	pkgrel = 1
-	url = https://github.com/EliteTK/c-stuff/blob/master/timer.c
+	url = https://the-tk.com/cgit/timer/about/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = git
 	depends = glibc
-	source = git+https://github.com/EliteTK/c-stuff.git
+	source = git+https://the-tk.com/git/timer
 	md5sums = SKIP
 
 pkgname = timer-git
