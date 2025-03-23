@@ -2,7 +2,7 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1.9.1.r42.gd7568d71
+pkgver=1833_2025.03.19
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
@@ -45,12 +45,18 @@ optdepends=(
 )       # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
 provides=('chiaki')
 conflicts=('chiaki' 'chiaki-ng')
-source=(git+"https://github.com/streetpea/${_gitname}.git")
-md5sums=("SKIP")
+source=(git+"https://github.com/streetpea/${_gitname}.git"
+        nanopb.patch)
+sha256sums=('SKIP'
+            'dcf9f312289e9181fe8a4872534acfab1d51d03fd3ce0a2201a79c78018369b6')
+
 
 pkgver() {
+  # New upstream 'weekly-canary' tag is long and ugly, use something less garish.
   cd ${_gitname}
-  git describe --long --tags | sed 's:^v::;s:\([^-]*-g\):r\1:;s:-:.:g'
+  _date=$(git log -1 --date=short --pretty=format:%cd)
+  _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
+  printf "%s_%s\n" "${_commits}" "${_date}" | sed 's/-/./g'
 }
 
 prepare() {
@@ -62,6 +68,8 @@ prepare() {
   sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
   # Initialize remaining submodules
   git submodule update --init
+
+  patch -p1 -i "${srcdir}/nanopb.patch"
 }
 
 build() {
