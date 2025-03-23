@@ -1,6 +1,6 @@
 pkgbase = qucs-git
 	pkgdesc = An integrated circuit simulator GUI (develop branch)
-	pkgver = r3680.c390574
+	pkgver = r3698.9269528
 	pkgrel = 1
 	url = http://github.com/qucs/qucs
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = qucs-git
 	makedepends = automake
 	makedepends = perl-gd
 	makedepends = perl-xml-libxml
-	makedepends = gperf
 	makedepends = libtool
 	depends = qt5-tools
 	depends = qt5-script

@@ -3,7 +3,7 @@
 
 _pkgname=qucs
 pkgname=$_pkgname-git
-pkgver=r3680.c390574
+pkgver=r3698.9269528
 pkgrel=1
 pkgdesc="An integrated circuit simulator GUI (develop branch)"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ url="http://github.com/qucs/qucs"
 license=('GPLv3+')
 options=(!makeflags)
 depends=('qt5-tools' 'qt5-script' )
-makedepends=('git' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'gperf' 'libtool')
+makedepends=('git' 'autoconf' 'automake' 'perl-gd' 'perl-xml-libxml' 'libtool')
 optdepends=('freehdl: status unknown'
             'qucsator-git: to enable circuit simulation'
             'gnucsator-git: to enable circuit simulation')
