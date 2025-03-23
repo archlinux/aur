@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=apart-gtk
-pkgver=0.29
+pkgver=0.28
 pkgrel=1
 pkgdesc="Linux GUI for cloning & restoring disk partitions to & from compressed image files."
 arch=('x86_64')
@@ -21,10 +21,8 @@ optdepends=('polkit: to run as non-root user'
             'lz4: adds compression option')
 makedepends=('rustup'
              'git')
-# zmq fails to build with lto enabled
-options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexheretic/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73ee0d6b3199c3692839ac63f14eec91ccc736bbfd9213514f584c9f0354c2e5')
+sha256sums=('ac8296f9ec5cc86eef725b9fe6657d555f07f53176490f4b4e6cf79822bdacd2')
 
 build() {
   cd "$pkgname-$pkgver"
