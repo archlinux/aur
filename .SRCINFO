@@ -1,0 +1,13 @@
+pkgbase = s-screen
+	pkgname = s-screen
+	pkgdesc = A minimalist wrapper around screen that makes terminal session management dead simple. Documentation: https://kolarski.github.io/s/
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/kolarski/s
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	makedepends = cargo
+	depends = screen
+	source = s-screen-0.1.2.tar.gz::https://github.com/kolarski/s/archive/v0.1.2.tar.gz
+	sha256sums = c5a529d6b46b85552cee28c1a80cb1f7ca03c11df76c12bad493bf6beb77d4c3 
