@@ -1,0 +1,3 @@
+[qlipmon]
+source = "git"
+git = "https://github.com/vcalv/qlipmon.git"
