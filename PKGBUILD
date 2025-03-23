@@ -6,11 +6,11 @@ pkgbase=python-pylru
 pkgname=('python-pylru')
 _name=pylru
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A least recently used (LRU) cache implementation"
 arch=('any')
 url="https://github.com/jlhutch/pylru"
-license=('GPL2')
+license=('GPL-2.0-only')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/jlhutch/pylru/archive/v${pkgver}.tar.gz"
@@ -35,4 +35,5 @@ package_python-pylru() {
 
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
