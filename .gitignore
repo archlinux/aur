@@ -1,4 +1,5 @@
 pkg/
 src/
-typora-*.pkg.*
-typora_*.deb
+*.pkg.tar.zst
+*.deb
+.history/

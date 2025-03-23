@@ -28,9 +28,15 @@ versions:
 
 # This will remove the files downloaded and created in the build process
 clean:
-	rm -rf pkg src typora_*.deb typora-*.pkg.*
+	rm -rf pkg/ src/ *.deb *.pkg.tar.zst .history
+
+test:
+	sudo pacman -Rcns typora-cn --noconfirm 2> /dev/null || echo "No installed !"
+	rm -rf pkg/ src/ *.pkg.tar.zst .history
+	makepkg -si
 
 publish:
 	git add .
 	git commit -m "Update to version $(shell sed -n 's/^pkgver=\(.*\)$$/\1/p' PKGBUILD)"
+	echo "commit $(shell sed -n 's/^pkgver=\(.*\)$$/\1/p' PKGBUILD)"
 #	git push
