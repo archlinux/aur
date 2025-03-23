@@ -1,17 +1,16 @@
 pkgbase = squeezelite
 	pkgdesc = Lightweight headless squeezebox emulator
-	pkgver = 2.0.0.1488
+	pkgver = 2.0.0.1524
 	pkgrel = 1
 	url = https://github.com/ralph-irving/squeezelite
 	install = squeezelite.install
-	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
+	arch = i686
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
+	depends = glibc
 	depends = alsa-lib
 	depends = faad2
 	depends = flac
@@ -20,10 +19,11 @@ pkgbase = squeezelite
 	depends = mpg123
 	depends = libsoxr
 	depends = ffmpeg
-	source = git+https://github.com/ralph-irving/squeezelite.git#commit=0e85ddfd79337cdc30b7d29922b1d790600bb6b4
+	depends = libavformat.so
+	source = git+https://github.com/ralph-irving/squeezelite.git#commit=db51a7b16934f41b72437394bf8114c3a85e0a91
 	source = squeezelite.service
 	source = conffile
-	sha256sums = 8f06eb69af2efd02f65254f5d0eb564337e69cca1dd15dee53ffc7d075cee239
+	sha256sums = 10a7a0a71048a85d3a3ce4da54852a72eded9fe7a69fdde9dcd3e296537cd439
 	sha256sums = 9bffedd1d119e6b8643007c8e3ca674266100fb091e4c1458893a42388d4e90e
 	sha256sums = f0753a1cbd0194119226587ff9c12257438674d9b8e0179d22f0d5461ad3a70a
 
