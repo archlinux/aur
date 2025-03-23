@@ -1,6 +1,6 @@
 # Maintainer: Afio Vinícius <afiovinicius@gmail.com>
 pkgname=note-liber-bin
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Note Liber is a simple sticky notes app for Linux."
 arch=('x86_64')
