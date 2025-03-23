@@ -14,7 +14,7 @@ pkgbase = keypunch-git
 	makedepends = pkgconf
 	makedepends = rust
 	depends = gtk4
-	depends = libadwaita>=1.7
+	depends = libadwaita
 	provides = keypunch
 	conflicts = keypunch
 	source = git+https://github.com/bragefuglseth/keypunch.git

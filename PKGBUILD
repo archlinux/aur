@@ -18,7 +18,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 provides=('keypunch')
 conflicts=('keypunch')
-depends=('gtk4' 'libadwaita>=1.7')
+depends=('gtk4' 'libadwaita')
 makedepends=('blueprint-compiler' 'gettext' 'git' 'meson' 'ninja' 'pkgconf' 'rust')
 
 pkgver() {
