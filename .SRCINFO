@@ -1,0 +1,19 @@
+pkgbase = HSLinkUpper-git
+	pkgdesc = Host utility for HSLink
+	pkgver = 0.1.0.r6.g346891c
+	pkgrel = 1
+	url = https://github.com/HSLink/HSLinkUpper
+	arch = x86_64
+	license = GPL3
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = rust
+	makedepends = dbus
+	depends = webkit2gtk
+	depends = gtk3
+	provides = HSLinkUpper
+	conflicts = HSLinkUpper
+	source = HSLinkUpper.git::git+https://github.com/HSLink/HSLinkUpper.git
+	sha512sums = SKIP
+
+pkgname = HSLinkUpper-git
