@@ -1,0 +1,12 @@
+pkgbase = iris-cli
+	pkgdesc = iris-cli est un visionneur d'anime en ligne avec une interface simple et intuitive.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/irisihrz/iris-cli
+	arch = any
+	license = GPL
+	depends = bash
+	source = git+https://github.com/irisihrz/iris-cli.git
+	md5sums = SKIP
+
+pkgname = iris-cli
