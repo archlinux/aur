@@ -1,6 +1,6 @@
 pkgbase = r-rmzqc
 	pkgdesc = Creation, Reading and Validation of 'mzqc' Files
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rmzqc
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-rmzqc
 	depends = r-r6p
 	depends = r-rmarkdown
 	depends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rmzqc_0.5.4.tar.gz
-	md5sums = 7819309b6b845852bb5db64753824c05
-	b2sums = 0169164d31003ca85dca383f7e6431360a2dec36cbfcdcd6e299929f02398f9422a961055910fb33962550aff3f64c200ed2ac9ed712b4d71920691fc4016613
+	source = https://cran.r-project.org/src/contrib/rmzqc_0.5.5.tar.gz
+	md5sums = 2e1d3ebccd417f50599ee270dd08b2ee
+	b2sums = eb9d2f3e8e16b9cfc1ac1400e815a54c8f36dace7446f87cce9909cf8a45b76a9992fea7380745ba3a48fcb380fda68314fa2b15b84de6731ca926305798aadd
 
 pkgname = r-rmzqc
