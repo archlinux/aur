@@ -13,7 +13,9 @@ depends=(openal
 		'zmusic>=1.1.8')
 makedepends=('dotnet-runtime' 'clang')
 conflicts=('helion')
-source=("git+https://github.com/Helion-Engine/Helion")
+source=("git+https://github.com/Helion-Engine/Helion"
+		"Helion.desktop"
+		"helicon.ico")
 sha256sums=('SKIP')
 
 pkgver() {
