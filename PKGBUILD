@@ -1,15 +1,15 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
-pkgver=r958.f480253
-pkgrel=3
+pkgver=r1424.5293179
+pkgrel=2
 pkgdesc="Easy scratchpads, menus, smart monitor placement and more hyprland tweaks (GIT version)"
 arch=(any)
 url="https://github.com/fdev31/pyprland"
 license=('MIT')
 groups=()
 depends=('python' 'python-aiofiles')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -28,6 +28,8 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     python -m build --wheel --no-isolation
+    cd client
+    go build -ldflags "-s -w" pypr-client.go
 }
 
 package() {
@@ -35,4 +37,5 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm0644 "scripts/completions/pypr.bash" "$pkgdir/usr/share/bash-completion/completions/pypr"
     install -Dm0644 "scripts/completions/pypr.zsh" "$pkgdir/usr/share/zsh/site-functions/_pypr"
+    install -Dm0755 "client/pypr-client" "$pkgdir/usr/bin/pypr-client"
 }
