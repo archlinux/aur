@@ -1,5 +1,5 @@
 pkgname=relive-bin
-pkgver=1.0.4687
+pkgver=1.0.9
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
@@ -11,12 +11,12 @@ url="https://gitlab.com/linuxbombay/relive"
 license=('GPL')
 depends=('sdl2')
 makedepends=('unzip')
-sha256sums_i686=('b538f9b71ef1660c08a333bbb1062397019fad4b273f905651c401265e7ad86d')
-sha256sums_x86_64=('9da63d6d27458fcd11202076fa1a34283c6f571806b55c5e7e08565f13490455')
-sha256sums_aarch64=('9ab9007e75e91c4032dc02fe4fd127e4858836fa464459df4c93b03028d1e768')
-source_x86_64=("$url/1.0.4687/-/raw/main/relive-linux-x64.tar.xz")
-source_aarch64=("$url/1.0.4687/-/raw/main/relive-linux-arm64.tar.xz")
-source_i686=("$url/1.0.4687/-/raw/main/relive-linux-i686.tar.xz")
+sha256sums_i686=('1b4e1a2a3b5bdda223a155b6e29937249f3501970501f678afa260565e9dd357')
+sha256sums_x86_64=('72a3ef370bc01852846f3c98cfc37f463e2d2097c0e7ec7c958618d4fcd9bdf6')
+sha256sums_aarch64=('1b4e1a2a3b5bdda223a155b6e29937249f3501970501f678afa260565e9dd357')
+source_x86_64=("relive-$pkgver-linux-x64.tar.xz::https://gitlab.com/linuxbombay/relive/binaries/$pkgver/-/raw/main/relive-linux-x64.tar.xz")
+source_aarch64=("relive-$pkgver-linux-arm64.tar.xz::https://gitlab.com/linuxbombay/relive/binaries/$pkgver/-/raw/main/relive-linux-arm64.tar.xz")
+source_i686=("relive-$pkgver-linux-i686.tar.xz::https://gitlab.com/linuxbombay/relive/binaries/$pkgver/-/raw/main/relive-linux-i686.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
