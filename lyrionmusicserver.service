@@ -1,0 +1,19 @@
+[Unit]
+Description=Logitech Media Server Daemon
+After=network.target
+
+[Service]
+User=lyrionmusicserver
+Group=lyrionmusicserver
+WorkingDirectory=/opt/lyrionmusicserver-git
+RuntimeDirectory=lyrionmusicserver-git
+PIDFile=${RUNTIME_DIRECTORY}/slimserver.pid
+ExecStart=/opt/lyrionmusicserver-git/slimserver.pl \
+        --prefsdir /opt/lyrionmusicserver-git/prefs \
+        --cachedir /opt/lyrionmusicserver-git/cache \
+        --logdir /opt/lyrionmusicserver-git/Logs \
+        --pidfile ${RUNTIME_DIRECTORY}/slimserver.pid \
+        --noimage --novideo
+
+[Install]
+WantedBy=multi-user.target
