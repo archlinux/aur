@@ -1,14 +1,14 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=nipals
-_pkgver=0.8
+_pkgver=1.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Principal Components Analysis using NIPALS or Weighted EMPCA, with Gram-Schmidt Orthogonalization"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=('GPL-3.0-only')
+license=('MIT')
 depends=(
   r
 )
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5fd148499e1c906423ee3eec530ff079')
-b2sums=('bf9f3b7acbeecfe797264133fefdf271ebae6de8be65fe490efd0bd3ebe75e093a540dbf1587a5b2d2687b31e4148ca5c71c1bb3e94cd2c5463b23d8a841cc3c')
+md5sums=('83a9a55ff45c0c6bc1070930a8e83ac8')
+b2sums=('4049546d73084002463d32bc5ea11313a366f0128bb5b951388d113af8cfd293e96fa4a9b3c52845dfeda3c43d11175a412fcaf8c20d0e8e272d15729f1e76d6')
 
 build() {
   mkdir build
