@@ -1,0 +1,15 @@
+pkgbase = vertd-git
+	pkgdesc = VERT's solution to crappy video conversion services.
+	pkgver = r67.bb10079
+	pkgrel = 1
+	url = https://github.com/VERT-sh/vertd
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	provides = vertd-git
+	conflicts = vertd-git
+	source = vertd::git+https://github.com/VERT-sh/vertd
+	sha256sums = SKIP
+
+pkgname = vertd-git
