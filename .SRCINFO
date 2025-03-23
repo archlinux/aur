@@ -1,5 +1,5 @@
 pkgbase = rmlint-git
-	pkgver = 2.10.1.r34.g2711b84b
+	pkgver = 2.10.3.r0.g2fe7dc80
 	pkgrel = 1
 	url = https://github.com/sahib/rmlint
 	arch = i686
@@ -7,6 +7,10 @@ pkgbase = rmlint-git
 	license = GPL3
 	makedepends = git
 	makedepends = scons
+	makedepends = python-sphinx
+	optdepends = util-linux-libs
+	optdepends = json-glib
+	optdepends = gettext
 	source = rmlint::git+https://github.com/sahib/rmlint
 	sha256sums = SKIP
 
@@ -19,12 +23,13 @@ pkgname = rmlint-git
 
 pkgname = rmlint-shredder-git
 	pkgdesc = Graphical user interface for rmlint
-	depends = gtksourceview3
+	depends = gtksourceview4
 	depends = python-cairo
 	depends = python-colorlog
 	depends = python-gobject
 	depends = python-parsedatetime
 	depends = rmlint
+	depends = librsvg
 	depends = xdg-utils
 	provides = rmlint-shredder
 	conflicts = 
