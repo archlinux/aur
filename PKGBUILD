@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=plasma6-applets-thermal-monitor
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A KDE Plasmoid for displaying system temperatures."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('plasma-workspace' 'ksystemstats' 'libksysguard' 'kitemmodels' 'kdeclar
 makedepends=('cmake>=3.16' 'extra-cmake-modules')
 provides=("${pkgname}")
 source=("${pkgname}.tar.gz::${url}/-/archive/v${pkgver}/thermalmonitor-v${pkgver}.tar.gz")
-sha256sums=('01f6c53592550ad40cc3caabbd036d8c440c581387ba2066fc4fadc0aece9c85')
+sha256sums=('b609d718e1cf066bff17a629e20494bb7a6d8f9179f05b44b67a55bf0ccc1497')
 _srcdir="thermalmonitor-v${pkgver}"
 
 build() {
