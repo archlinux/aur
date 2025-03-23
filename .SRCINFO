@@ -1,0 +1,15 @@
+pkgbase = armagetronad-experimental-bin
+	pkgdesc = A Tron Clone in 3D.
+	pkgver = 0.4.0.alpha.z5868
+	pkgrel = 1
+	url = https://www.armagetronad.net
+	arch = x86_64
+	license = GPL
+	provides = armagetronad-experimental
+	conflicts = armagetronad-git
+	source = https://gitlab.com/armagetronad/armagetronad/-/package_files/179608348/download
+	source = armagetronad-experimental.bash
+	sha256sums = d674f60e51c8ab959df2a5bbb315aa7502d13ff75777a089c7d1c2b3ccf473b4
+	sha256sums = 3557d1037871700f2008e23913570b77b1ba232f669875df10dc81be80710b25
+
+pkgname = armagetronad-experimental-bin
