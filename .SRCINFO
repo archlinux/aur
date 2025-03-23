@@ -1,6 +1,6 @@
 pkgbase = chiaki-git
 	pkgdesc = Unofficial PlayStation 4 remote play client
-	pkgver = 2.1.1.r10.gdcd2e6a
+	pkgver = 2.2.0.r2.g94fcdc3
 	pkgrel = 1
 	url = https://git.sr.ht/~thestr4ng3r/chiaki
 	arch = i686
@@ -26,6 +26,8 @@ pkgbase = chiaki-git
 	provides = chiaki
 	conflicts = chiaki
 	source = git+https://git.sr.ht/~thestr4ng3r/chiaki
+	source = nanopb.patch
 	md5sums = SKIP
+	md5sums = 5bcd50044b226a1a96401e6d63fcaf54
 
 pkgname = chiaki-git

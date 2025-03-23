@@ -2,7 +2,7 @@
 
 pkgname=chiaki-git
 _gitname=chiaki
-pkgver=2.1.1.r10.gdcd2e6a
+pkgver=2.2.0.r2.g94fcdc3
 pkgrel=1
 pkgdesc="Unofficial PlayStation 4 remote play client"
 arch=(i686 x86_64)
@@ -18,8 +18,10 @@ optdepends=(
            ) # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
 provides=('chiaki')
 conflicts=('chiaki')
-source=(git+"${url}")
-md5sums=("SKIP")
+source=(git+"${url}"
+        nanopb.patch)
+md5sums=('SKIP'
+         '5bcd50044b226a1a96401e6d63fcaf54')
 
 pkgver() {
   cd ${_gitname}
@@ -30,6 +32,8 @@ prepare() {
   cd ${_gitname}
   mkdir build
   git submodule update --init
+
+  patch -p1 -i "${srcdir}/nanopb.patch"
 }
 
 build() {
