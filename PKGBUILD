@@ -1,7 +1,7 @@
 _pkgname=xc-music
 pkgname=${_pkgname}-electron
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='第三方网易云音乐客户端（使用系统electron） / GUI of Netease Cloud Music'
 arch=('x86_64')
 url="https://github.com/yiktllw/XCMusic"
@@ -34,7 +34,7 @@ package() {
   #cd "$srcdir/XCMusic-$pkgver"
   # 复制文件到包目录
   mkdir -p "$pkgdir/usr/lib/$pkgname"
-  cp -r $_pkgname-$pkgver.asar "$pkgdir/usr/lib/$pkgname/app.asar"
+  install -Dm644 $_pkgname-$pkgver.asar "$pkgdir/usr/lib/$pkgname/app.asar"
 #   install -Dm755 dist_electron/linux-unpacked/* -t "$pkgdir/opt/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   # Install icons
