@@ -1,13 +1,13 @@
 pkgbase = caps-log
 	pkgdesc = A small, terminal-based journaling tool
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/NikolaDucak/caps-log
 	arch = x86_64
 	license = MIT
 	makedepends = boost
 	makedepends = cmake>=3.14
-	makedepends = ftxui>=5
+	makedepends = ftxui5
 	depends = boost-libs
 	depends = fmt>=9
 	depends = gcc-libs

@@ -2,13 +2,13 @@
 
 pkgname="caps-log"
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A small, terminal-based journaling tool"
 arch=('x86_64')
 url="https://github.com/NikolaDucak/${pkgname}"
 license=('MIT')
 depends=('boost-libs' 'fmt>=9' 'gcc-libs' 'glibc' 'libgit2' 'openssl')
-makedepends=('boost' 'cmake>=3.14' 'ftxui>=5') # 'gtest'
+makedepends=('boost' 'cmake>=3.14' 'ftxui5') # 'gtest'
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}_openssl_shared.patch")
@@ -23,12 +23,15 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS+=" -I/usr/include/ftxui5"
+  export LDFLAGS+=" -L/usr/lib/ftxui5"
   local cmake_options=(
     -G 'Unix Makefiles' \
     -B "${_pkgsrc}/build" \
     -S "${_pkgsrc}" \
     -DCMAKE_BUILD_TYPE:STRING='None' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -Dftxui_DIR:PATH='/usr/lib/ftxui5/cmake/ftxui' \
     -DCAPS_LOG_VERSION:STRING="${pkgver}" \
     -DCAPS_LOG_BUILD_TESTS:BOOL=OFF \
     -Wno-dev
