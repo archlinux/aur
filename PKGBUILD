@@ -2,14 +2,14 @@
 # Contributor: Dct Mei <dctxmei@gmail.com>
 
 pkgname=filebrowser-git
-pkgver=2.30.0.r16.g8e67a12f
-pkgrel=2
+pkgver=2.32.0.r1.g35d1c092
+pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
 url="https://filebrowser.org/"
 license=(Apache-2.0)
 depends=(glibc)
-makedepends=(git go nodejs npm go.rice)
+makedepends=(git go nodejs npm pnpm go.rice)
 provides=(filebrowser)
 conflicts=(filebrowser)
 source=("git+https://github.com/filebrowser/filebrowser.git"
