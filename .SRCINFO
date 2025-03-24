@@ -1,0 +1,14 @@
+pkgbase = ssa-bin
+	pkgdesc = HPE Smart Storage Administrator Web GUI
+	pkgver = 6.40_6.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	depends = bash
+	provides = ssa
+	source = https://downloads.linux.hpe.com/SDR/repo/mcp/oracle/9/x86_64/current/ssa-6.40-6.0.x86_64.rpm
+	source = hpessad.service
+	b2sums = d6beaf691d6d66ac63c905dafa16952bd2d59b860c3b211a366bce944c0089cadee5905dfafb44ae2b0a2aaa9369020913e6359a08f513c0158d4f2d0f9d3347
+	b2sums = 4001eb796b11a30432b09b42a562b6e5f88e905b8d29acaa3f3e05a924ab5eb5e72454217df39907d8ef6a93de88b10d02380afd3b9725d1f300f885318f8177
+
+pkgname = ssa-bin
