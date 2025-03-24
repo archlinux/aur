@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=0.9.0.alpha1.r109.gbb200537
+pkgver=0.9.0.alpha1.r128.gcc59c807
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
