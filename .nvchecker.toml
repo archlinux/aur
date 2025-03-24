@@ -1,0 +1,4 @@
+[landrun]
+source = "git"
+git = "https://github.com/Zouuup/landrun.git"
+prefix = "v"
