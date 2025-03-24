@@ -3,7 +3,7 @@
 
 _name=qmmp
 pkgname=${_name}-1
-pkgver=2.2.3
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
@@ -13,12 +13,12 @@ provides=("${_name}=${pkgver}")
 
 depends=(
     'alsa-lib' 'curl' 'desktop-file-utils' 'hicolor-icon-theme' 'libmad' 'libvorbis'
-    'libogg' 'libxkbcommon-x11' 'taglib' 'xdg-utils' 'qt6-base'
+    'libogg' 'libxkbcommon-x11' 'taglib' 'xdg-utils' 'qt5-base'
 )
 makedepends=(
     'cmake' 'flac' 'jack' 'libmpcdec' 'pipewire' 'pulseaudio' 'ffmpeg' 'libcdio-paranoia'
     'libcddb' 'libmms' 'libsamplerate' 'libmodplug' 'libsndfile' 'wavpack' 'mpg123' 'mesa'
-    'projectm' 'faad2' 'libgme' 'libsidplayfp' 'opusfile>=0.12' 'wildmidi' 'qt6-tools'
+    'projectm' 'faad2' 'libgme' 'libsidplayfp' 'opusfile>=0.12' 'wildmidi' 'qt5-tools'
 )
 optdepends=(
     'mpg123: to play MP3 files'
