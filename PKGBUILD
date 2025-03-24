@@ -24,6 +24,7 @@ depends=(
   'libdrm'
   'mesa'
   'google-breakpad'
+  'qt6-shadertools'
 )
 makedepends=(
   'ninja'

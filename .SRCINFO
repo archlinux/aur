@@ -22,6 +22,7 @@ pkgbase = quickshell
 	depends = libdrm
 	depends = mesa
 	depends = google-breakpad
+	depends = qt6-shadertools
 	provides = quickshell
 	conflicts = quickshell
 	options = !strip
