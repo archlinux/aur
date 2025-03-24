@@ -2,9 +2,9 @@
 pkgname=steamachievementnotifier-bin
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=24
+_subver=25
 pkgver="${_mainver}.${_subver}"
-_electronversion=34
+_electronversion=35
 pkgrel=1
 pkgdesc="Shows fully customisable notifications when you unlock any achievement on Steam!(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -24,23 +24,23 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d197b13a41651cc5129faaf160ee2765e2fd4aa0bf5b78f7d2edbae4947ba97'
+sha256sums=('a76e5378d21961723409212398d81254e52cd67c8c5c7ba4e298118c458be174'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}v${_mainver}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/v${_mainver}//g
         s/\ (V${_mainver})//g
-    " -i "${srcdir}/squashfs-root/${pkgname%-bin}v${_mainver}.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}v${_mainver}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
