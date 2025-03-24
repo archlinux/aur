@@ -6,7 +6,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libheif-bootstrap
 pkgver=1.19.7
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
 url='https://github.com/strukturag/libheif'
@@ -54,8 +54,9 @@ build() {
 
     if [ "${_android_arch}" != riscv64 ]; then
         extra_options="-DWITH_RAV1E=ON
-                       -DRAV1E_INCLUDE_DIR='${ANDROID_PREFIX_INCLUDE}/rav1e'
-                       -DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.so'"
+                       -DRAV1E_INCLUDE_DIR='${ANDROID_PREFIX_INCLUDE}/rav1e'"
+        extra_options_shared="-DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.so'"
+        extra_options_static="-DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.a'"
     else
         extra_options="-DWITH_RAV1E=OFF"
     fi
@@ -89,15 +90,10 @@ build() {
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DJPEG_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libjpeg.so" \
         -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir" \
-        ${extra_options}
+        ${extra_options} \
+        ${extra_options_shared}
     sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-shared/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
     make -C build-shared $MAKEFLAGS
-
-    if [ "${_android_arch}" != riscv64 ]; then
-        extra_options="-DWITH_RAV1E=ON
-                       -DRAV1E_INCLUDE_DIR='${ANDROID_PREFIX_INCLUDE}/rav1e'
-                       -DRAV1E_LIBRARY='${ANDROID_PREFIX_LIB}/librav1e.a'"
-    fi
 
     android-${_android_arch}-cmake \
         -S . \
@@ -127,7 +123,8 @@ build() {
         -DJPEG_INCLUDE_DIR="${ANDROID_PREFIX_INCLUDE}" \
         -DJPEG_LIBRARY_RELEASE="${ANDROID_PREFIX_LIB}/libjpeg.a" \
         -DOpenJPEG_DIR="${ANDROID_PREFIX_LIB}/cmake/$openjpeg_dir" \
-        ${extra_options}
+        ${extra_options} \
+        ${extra_options_static}
     sed -i "s|  -lgdk_pixbuf-2.0 |  -L${ANDROID_PREFIX_LIB} -lgdk_pixbuf-2.0 |g" build-static/gdk-pixbuf/CMakeFiles/pixbufloader-heif.dir/link.txt
     make -C build-static $MAKEFLAGS
 }
