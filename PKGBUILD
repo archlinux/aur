@@ -15,11 +15,38 @@ prepare() {
 }
 
 package() {
-  # install -Dm755 "$srcdir/KaleidoSwap_0.1.0_amd64.AppImage" "$pkgdir/opt/$pkgname/KaleidoSwap.AppImage"
+  # Install app contents to /opt
   install -d "$pkgdir/opt/$pkgname"
   cp -r "$srcdir/squashfs-root/"* "$pkgdir/opt/$pkgname/"
-  
-  # Symlink for easier access
+  chmod -R a+rX "$pkgdir/opt/$pkgname"
+
+  # Create launcher
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/AppRun" "$pkgdir/usr/bin/kaleidoswap"
+  cat <<EOF > "$pkgdir/usr/bin/kaleidoswap"
+#!/bin/bash
+cd /opt/kaleidoswap
+exec ./AppRun "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/kaleidoswap"
+
+  # Create desktop entry
+  install -d "$pkgdir/usr/share/applications"
+  cat <<EOF > "$pkgdir/usr/share/applications/kaleidoswap.desktop"
+[Desktop Entry]
+Name=KaleidoSwap
+Comment=Swap tokens and NFTs securely on Ethereum and Starknet
+Exec=/usr/bin/kaleidoswap
+Icon=kaleidoswap
+Terminal=false
+Type=Application
+Categories=Finance;Network;Utility;
+StartupNotify=true
+EOF
+
+  # Install icon in multiple resolutions
+  for size in 16 32 48 64 128 256 512; do
+    install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512/apps/KaleidoSwap.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/kaleidoswap.png"
+  done
 }
+
