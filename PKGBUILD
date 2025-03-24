@@ -3,7 +3,7 @@
 
 pkgname=materialgram-bin
 pkgver=5.12.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram Desktop based messenger with Material Design and additional features - Binary Version"
 arch=(x86_64)
 url="https://github.com/kukuruzka165/materialgram"
@@ -43,7 +43,7 @@ package() {
 	chrpath --delete "${pkgdir}/usr/bin/materialgram"
 
 	# Desktop launcher
-	install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/materialgram.png" "${pkgdir}/usr/share/pixmaps/materialgram.png"
+	install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/io.github.kukuruzka165.materialgram.png" "${pkgdir}/usr/share/pixmaps/io.github.kukuruzka165.materialgram.png"
 	install -Dm644 "${srcdir}/usr/share/applications/io.github.kukuruzka165.materialgram.desktop" "${pkgdir}/usr/share/applications/io.github.kukuruzka165.materialgram.desktop"
 
 	# DBus service
@@ -57,7 +57,7 @@ package() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		icon_dir="${pkgdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		install -d "${icon_dir}"
-		install -m644 "${srcdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/materialgram.png" "${icon_dir}/materialgram.png"
+		install -m644 "${srcdir}/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/io.github.kukuruzka165.materialgram.png" "${icon_dir}/io.github.kukuruzka165.materialgram.png"
 	done
 }
 
