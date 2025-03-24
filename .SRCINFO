@@ -1,0 +1,16 @@
+pkgbase = r-illuminahumanmethylationepicv2manifest
+	pkgdesc = Manifest for Illumina's EPIC v2.0 methylation arrays
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/IlluminaHumanMethylationEPICv2manifest
+	arch = any
+	license = Artistic-2.0
+	depends = r-minfi
+	optdepends = r-eulerr
+	optdepends = r-illuminahumanmethylationepicmanifest
+	optdepends = r-knitr
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/IlluminaHumanMethylationEPICv2manifest_1.0.0.tar.gz
+	md5sums = d9480f6b284efa2a0e5205c1d21659bf
+	b2sums = e4dad427de1b4cd213fbc4ee7861b92384051bef6a4f7605c4cb319e2c444a7172ad9cc3f5919f177df045523caa01f7d9d8a3ba47d042c1148d35bb30cf22bd
+
+pkgname = r-illuminahumanmethylationepicv2manifest
