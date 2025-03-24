@@ -1,7 +1,7 @@
 
 _pkgname=sdl3_shadercross
 pkgname=$_pkgname-git
-pkgver=r105.6302645
+pkgver=r106.7258618
 pkgrel=1
 pkgdesc="Shader translation library for SDL's GPU API"
 arch=('x86_64')
