@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-bnx2x-2.5g
-pkgver=6.13.7.arch1
+pkgver=6.13.8.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -41,18 +41,18 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('3a39b62038b7ac2f43d26a1f84b4283e197804e1e817ad637e9a3d874c47801d'
+sha256sums=('259afa59d73d676bec2ae89beacd949e08d54d3f70a7f8b0a742315095751abb'
             'SKIP'
             'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
-            'b38f80cf02f9af621ba305ec9ccf992f9f238eb5668110b15cc0c049139f0cd6'
+            '8807a915606709dd8ab98fa836fadefda39ed500c48377355be09fe9a2caaf81'
             'SKIP'
-            'e371e59fba634b56b6cd99dff54f13437ca0c5fe95b27f115591f1b06cb01c7e')
-b2sums=('dc9e71842d7e9d2e016ca2c6e791d627790c87cd445b404c73745dc565eb89617ec69f1150b228d7853a595ea7f6daf6acdb74f8383088af30d42bb4c062a129'
+            '797e4d772a62dd24cb281886ec844f718bb910f2b2bfe2de389d341aeb3e5bb1')
+b2sums=('c20916a44a07d355ba8337229f102cd507deae92c88576040965e909fa89c09f98611746a8c8f249bc3dcf492238ce3f08c48f523670ccad4bd7ec21622806af'
         'SKIP'
         '94fd2e2fa31da0ce9d04e639b0fafc37128ad2f01f8ee38708c7128fdc1568e491aca9a8296316b0736f134dc7697b573e8203018d92c1e9b6ff40648501607a'
-        'f2a05a124d4f5dc105c959f5dceef962f867877d451c053b1ba7cca50829b961d74ac3631a5fe06ed0b79ee9388cf9c2f37cffdbd63ab2515e25a0be21a1c77e'
+        'ebff29f7282a7dab84ca09c9c23621daec8d38541c773dc068d5c313db7a60c67e204775ad6e00746ee8f04a7705ab398688e03b2e5534e9062d276e8d6c9d30'
         'SKIP'
-        '0f51ac4a2500faa66377c6f90e0f9c433032c6836aa9b6772276fc5ad792fa0f8c15d68390191c2cc887cf3649186429438dacbd0df0f5b052647e3f98f4ad93')
+        'a32ded4819b0fe212136a976435b58aa1305ad8ff1e2644d11c996a066241c5479bd144897044f3e71dffcd395f38ed1adf6a105a18d920751bfa052548dea8f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -173,6 +173,14 @@ _package-headers() {
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  echo "Installing Rust files..."
+  install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  install -Dt "$builddir/rust" rust/*.so
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link=  # Suppress build-id symlinks
 
   echo "Removing unneeded architectures..."
   local arch
