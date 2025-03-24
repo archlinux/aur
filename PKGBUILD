@@ -16,14 +16,13 @@
 
 pkgname=mutter-x11-scaling
 pkgver=48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
   at-spi2-core
-  bash-completion
   cairo
   colord
   dconf
@@ -84,6 +83,7 @@ depends=(
   xorg-xwayland
 )
 makedepends=(
+  bash-completion
   gi-docgen
   git
   glib2-devel
@@ -149,6 +149,7 @@ build() {
 package() {
   provides=(mutter libmutter-16.so)
   conflicts=(mutter)
+  optdepends=('bash-completion: Bash completions for gdctl')
 
   meson install -C build --destdir "$pkgdir"
 }
