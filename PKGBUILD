@@ -22,9 +22,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-
-  # netcdf 4.9.3
-  sed -i "s|_FillValue|NC_FillValue|g" ThirdParty/exodusII/vtkexodusII/src/ex_put_prop*.c
 }
 
 build() {
