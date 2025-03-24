@@ -1,28 +1,25 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="git-tui"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Collection of human friendly terminal interface for git"
 arch=('x86_64')
 url="https://github.com/ArthurSonzogni/${pkgname}"
 license=('MIT')
 depends=('gcc-libs' 'git' 'glibc')
-makedepends=('cmake>=3.15' 'ftxui5' 'subprocess>=0.4')
+makedepends=('cmake>=3.15' 'ftxui' 'subprocess>=0.4')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('51fc9f55846fddb544f247e4154970c75d794a8523b240a914018eb59143bb91')
+sha256sums=('f8e90d41f4f016916fbcbf07dba779faf3ba281cc9fe216a6176a7b60afcd9d2')
 
 build() {
-  export CXXFLAGS+=" -I/usr/include/ftxui5"
-  export LDFLAGS+=" -L/usr/lib/ftxui5"
   local cmake_options=(
     -G 'Unix Makefiles' \
     -B "${_pkgsrc}/build" \
     -S "${_pkgsrc}" \
     -DCMAKE_BUILD_TYPE:STRING='None' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -Dftxui_DIR:PATH='/usr/lib/ftxui5/cmake/ftxui' \
     -Wno-dev
   )
 
