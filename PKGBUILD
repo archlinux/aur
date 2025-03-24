@@ -14,7 +14,6 @@ makedepends=(cargo-nightly
              cmake
              nodejs
              pnpm)
-options=(!lto)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
 sha256sums=('ba6a5fe387174bba7dad08889d1b25ab9a89060ecbf01c7ccd15a1b810f1eb69')
@@ -27,6 +26,8 @@ prepare() {
 
 build() {
 	cd "$_archive"
+	export CFLAGS+=' -ffat-lto-objects'
+	export CXXFLAGS+=' -ffat-lto-objects'
 	export RUSTFLAGS+=' --cfg tokio_unstable'
 	env \
 		RUSTUP_TOOLCHAIN=nightly \
