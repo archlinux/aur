@@ -3,7 +3,7 @@
 _gecko_id='{2d0ade95-bf3c-4868-b877-71ccd038e11b}'
 _plugin_name='hohser'
 pkgname="firefox-extension-${_plugin_name}"
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc='Highlight or hide search engine results'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
   "${_plugin_name}-${pkgver}.tar.gz::https://github.com/pistom/hohser/archive/v.${pkgver}.tar.gz"
 )
 
-sha512sums=('4a22d49640f35c2ac73a0aa486b94491da03b664a01eb4c3040a4b651b2ebda57de3ca0a37a3e4e105d01d175d40c465fc594029e2ecd067326768108676abf2')
+sha512sums=('6e15f3a63b7e2a1ab006cf0bab44d5eb4fc5f6b67e74af1a05058284c8d6a3f8bdd6a4ef8d0c9d8a13077d1e29f60cec1abb2293a31a798bc41d7cb055b2e424')
 
 prepare() {
   cd "${srcdir}/${_plugin_name}-v.${pkgver}"
