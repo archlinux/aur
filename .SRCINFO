@@ -1,4 +1,4 @@
-pkgbase = Quick
+pkgbase = quick
 	pkgver = 4.9.r4.79b94ce
 	pkgrel = 1
 	url = https://github.com/ElPepitaux/Quick.git
@@ -8,4 +8,4 @@ pkgbase = Quick
 	source = git+https://github.com/ElPepitaux/Quick.git
 	sha256sums = SKIP
 
-pkgname = Quick
+pkgname = quick

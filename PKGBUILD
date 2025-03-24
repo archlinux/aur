@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: <leo.sautron@epitech.eu>
-pkgname=Quick
+pkgname=quick
 pkgver=4.9.r4.79b94ce
 pkgrel=1
 epoch=
