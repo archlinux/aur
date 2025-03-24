@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.5.2.r80.ge4a64e4c1
-pkgrel=2
+pkgver=3.5.2.r91.g681a3b7e6
+pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
 arch=($CARCH)
@@ -44,6 +44,7 @@ makedepends=(
     openssl
     pkgconf
     webkit2gtk-4.1
+    wxwidgets-gtk3
     xmlto
     zlib)
 checkdepends=()

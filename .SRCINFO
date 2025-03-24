@@ -1,7 +1,7 @@
 pkgbase = poedit-git
 	pkgdesc = Translations editor for Mac, Windows and Unix
-	pkgver = 3.5.2.r80.ge4a64e4c1
-	pkgrel = 2
+	pkgver = 3.5.2.r91.g681a3b7e6
+	pkgrel = 1
 	url = https://github.com/vslavik/poedit
 	arch = x86_64
 	license = MIT
@@ -24,6 +24,7 @@ pkgbase = poedit-git
 	makedepends = openssl
 	makedepends = pkgconf
 	makedepends = webkit2gtk-4.1
+	makedepends = wxwidgets-gtk3
 	makedepends = xmlto
 	makedepends = zlib
 	depends = cld2
