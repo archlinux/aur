@@ -25,7 +25,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgnam
 sha256sums=('7ae7777df448d7e42078aa66fab6893c20b421e62b320089243f7259adef322f')
 
 prepare() {
-  # The reason creating `prepare()`` is that author did not 
+  # The reason creating `prepare()` is that the author did not 
   # specify the dir in __init__.py causing bugs
   cd $_pkgname-$pkgver
   sed -i 's/from /from ./g' HierMat/__init__.py
