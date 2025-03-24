@@ -1,13 +1,13 @@
 # Maintainer: James Barrios <hey@dendarrion.com>
 
 pkgname=ttf-juliamono-nerd-font
-pkgver=0.058
-pkgrel=3
+pkgver=0.059
+pkgrel=1
 pkgdesc="JuliaMono, a font for programming, patched with Nerd Fonts (Regular, Mono, Propo)"
 arch=('any')
 url="https://github.com/mietzen/juliamono-nerd-font"
 _variant="https://github.com/dendarrion/juliamono-nerd-font-variant"
-license=('custom:SIL Open Font License v1.1')
+license=('OFL-1.1')
 source=(
     "${pkgname}-mono-v${pkgver}::${url}/releases/download/v${pkgver}/fonts.zip"
     "${pkgname}-variant-v${pkgver}::${_variant}/releases/download/v${pkgver}/ttf-juliamono-nerd-font-variant-v${pkgver}.zip"
@@ -27,8 +27,6 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgname}-license"
 }
 
-sha256sums=(
-    '63005090fb5060393bedf41f4740aa42a731ae38190580452d41bf09ea58160a'
-    '5dbeefe6f0a89b3fcf2a11819650dc970c94543ec5b1f5df368e3e955bb38146'
-    'd27b85137453d4eb0893eee45bdc6eb79a661693680856f3f7df8bc77dfe902f'
-)
+sha256sums=('bcfa690cd1efd80545ef5a690916ae203a7b6dd20fa445d97895dfc93ac08386'
+            'e5356a5b0a4aea516c8a7fc0b2b484c5da6321868bdd0b245d319bade20e6707'
+            'd27b85137453d4eb0893eee45bdc6eb79a661693680856f3f7df8bc77dfe902f')
