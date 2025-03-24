@@ -3,7 +3,7 @@ server:
     secret_key: "ultrasecretkey"  # change this!
     limiter: true
 redis:
-  url: unix:///run/redis/redis.sock?password=yourpassword&db=1? # change this ! 
+  url: unix:///run/redis/redis.sock?password=yourpassword&db=1 # change the password value! 
 checker:
     scheduling:
     start_after: [300, 1800]  # delay to start the first run of the checker
