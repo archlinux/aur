@@ -2,11 +2,11 @@
 _name=liac-arff
 pkgname="python-$_name"
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="read and write ARFF files in Python"
 arch=('any')
 url="https://github.com/renatopp/liac-arff"
-license=('BSD')
+license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 # 404: source=("https://files.pythonhosted.org/packages/source/g/${_name}/${_name}-${pkgver}.tar.gz")
