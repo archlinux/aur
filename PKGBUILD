@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Quartet
-_pkgver=1.2.6
+_pkgver=1.2.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Comparison of Phylogenetic Trees Using Quartet and Split Measures"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,6 +15,7 @@ depends=(
   r-ternary
   r-treetools
   r-viridislite
+  r-plottools
 )
 makedepends=(
   r-rcpp
@@ -30,8 +31,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e1108c1a7340e560bdeadef946bcaff5')
-b2sums=('bd479c35833188803c3954bf8c787741d8d379df13558b89487e9096142fba47056b33780af596804d79384be2cec53175cbf80953ddca51cd362f26a07e04ef')
+md5sums=('23c2afb6d467ee691058c84c964be386')
+b2sums=('6dbd68e5cdbf4df38e8410e813c906c0d376c2e910a0b744dc92303491758140fb4308ca27bcc5be932bf5395a38fcefdab465156a6c9549668a54ed96e9086e')
 
 build() {
   mkdir build
