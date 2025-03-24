@@ -1,0 +1,14 @@
+pkgbase = wsl-hello-sudo-bin
+	pkgdesc = Linux PAM module to utilise Windows Hello authentication on WSL
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/lzlrd/wsl-hello-sudo
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = pam
+	provides = wsl-hello-sudo
+	source = https://github.com/lzlrd/wsl-hello-sudo/releases/download/v3.0.0/release.tar.gz
+	b2sums = 554fdd193db62a76715e82c66869c97c6170e199cc3d0248abfac75c35de310769467055f1c257db7b856fde194de80159139a71e1abcfd46effd40ddaf6b541
+
+pkgname = wsl-hello-sudo-bin
