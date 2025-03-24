@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _basename="gtkmm"
-pkgver=4.16.0
+pkgver=4.18.0
 _name="${_basename}-${pkgver%%.*}.0"
 pkgname="lib32-${_name}"
 pkgrel=1
@@ -19,7 +19,7 @@ checkdepends=('xorg-server-xvfb')
 provides=("lib${_name}.so")
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz")
-sha256sums=('3b23fd3abf8fb223b00e9983b6010af2db80e38c89ab6994b8b6230aa85d60f9')
+sha256sums=('2ee31c15479fc4d8e958b03c8b5fbbc8e17bc122c2a2f544497b4e05619e33ec')
 
 build() {
   export CFLAGS+=" -m32"

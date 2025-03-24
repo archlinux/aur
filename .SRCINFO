@@ -1,6 +1,6 @@
 pkgbase = lib32-gtkmm-4.0
 	pkgdesc = C++ bindings for GTK 4 (32-bit)
-	pkgver = 4.16.0
+	pkgver = 4.18.0
 	pkgrel = 1
 	url = https://www.gtkmm.org
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lib32-gtkmm-4.0
 	checkdepends = xorg-server-xvfb
 	makedepends = meson>=0.62
 	makedepends = mm-common
-	depends = gtkmm-4.0>=4.16.0
+	depends = gtkmm-4.0>=4.18.0
 	depends = lib32-cairo
 	depends = lib32-cairomm-1.16
 	depends = lib32-gcc-libs
@@ -22,7 +22,7 @@ pkgbase = lib32-gtkmm-4.0
 	depends = lib32-pangomm-2.48>=2.50
 	depends = lib32-vulkan-icd-loader
 	provides = libgtkmm-4.0.so
-	source = gtkmm-4.16.0.tar.xz::https://download.gnome.org/sources/gtkmm/4.16/gtkmm-4.16.0.tar.xz
-	sha256sums = 3b23fd3abf8fb223b00e9983b6010af2db80e38c89ab6994b8b6230aa85d60f9
+	source = gtkmm-4.18.0.tar.xz::https://download.gnome.org/sources/gtkmm/4.18/gtkmm-4.18.0.tar.xz
+	sha256sums = 2ee31c15479fc4d8e958b03c8b5fbbc8e17bc122c2a2f544497b4e05619e33ec
 
 pkgname = lib32-gtkmm-4.0
