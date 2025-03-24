@@ -1,12 +1,12 @@
 # Maintainer: Agustin Cisneros <agustincc@tutanota.com>
 
 pkgname=ticktick
-pkgver=6.0.21
+pkgver=6.0.30
 pkgrel=1
 pkgdesc='Official desktop application for Linux'
 arch=('x86_64' 'aarch64')
 url='https://ticktick.com/download'
-license=('custom')
+license=('custom:Proprietary')
 install=ticktick.install
 conflicts=('ticktick-nativefier')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libatspi.so'
@@ -16,8 +16,8 @@ source_x86_64=("${pkgname}-${pkgver}-amd64.deb::https://d2atcrkye2ik4e.cloudfron
 source_aarch64=("${pkgname}-${pkgver}-arm64.deb::https://d2atcrkye2ik4e.cloudfront.net/download/linux/linux_deb_arm64/${pkgname}-${pkgver}-arm64.deb")
 sha256sums=('b060ec7e9919707fe70c0c65f1c307d65c1f4ad84b5640e7dbeb2dd06e246637'
             '2d866fcb749c30d931fa96cc1578869b3fa9fc61a5c5f30e0316ddb00abb5814')
-sha256sums_x86_64=('7b9376d052f673a5dd9036b1d123068a02ee6ad5ca6716fd739deca90e5756d3')
-sha256sums_aarch64=('ebf9f33cbf93784137d52d27826b1414f6447d6b6de0f54012432a49af0ea582')
+sha256sums_x86_64=('c533506f2dca665a3741033916a10a5d8cc062aea3816c0def38d817697afbbf')
+sha256sums_aarch64=('32558e0a4934772615e22c8f4ecfc9b6af84f50a6c8b3a1ed971a63e58eb6a10')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
