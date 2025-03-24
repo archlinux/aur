@@ -1,7 +1,7 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.5.0.1961'
+pkgver='8.5.0.2021'
 pkgrel='1'
 pkgdesc='TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.'
 arch=('x86_64')
@@ -18,14 +18,12 @@ depends=('alsa-utils'
          'lame'
          'libglvnd'
          'libidn'
-         'libphonenumber'
          'libsystemd'
          'libx11'
          'ghostscript'
          'libxcb'
          'libxext'
          'libxrandr'
-         'protobuf'
          'c-ares'
          'libxss'
          'speex'
@@ -59,7 +57,7 @@ depends=('alsa-utils'
 install="${pkgname}.install"
 _channel=stable
 source=("https://mirror.trueconf.com/archlinux/trueconf-${pkgver}-1-x86_64.pkg.tar.zst")
-sha512sums=('735771e667b8bde2a883f06bcbfad20796a090ceb1c5352a81e0fb6e1e6a3646011794abe931da79d43dfea84be16382e32dfbad76cdf785cb9407d45ef416ee')
+sha512sums=('a3331bc1927062bab8366f9639ca7e297aa35510db904fbb5207cd0f73aec47fb206affe80524b10005214f804dae27e7b40dfa881697512fda8c4e0db552ed4')
 
 package() {
   cd "${srcdir}"
