@@ -1,6 +1,6 @@
 pkgbase = theforceengine
 	pkgdesc = Modern "Jedi Engine" replacement supporting Dark Forces, mods, and in the future Outlaws.
-	pkgver = 1.10.000
+	pkgver = 1.22.100
 	pkgrel = 1
 	url = https://theforceengine.github.io/
 	install = theforceengine.install
@@ -18,9 +18,9 @@ pkgbase = theforceengine
 	depends = sdl2_image
 	optdepends = kdialog: display file dialogs using QT
 	optdepends = zenity: display file dialogs using GTK
-	source = TheForceEngine-1.10.000.tar.gz::https://github.com/luciusDXL/TheForceEngine/archive/refs/tags/v1.10.000.tar.gz
+	source = TheForceEngine-1.22.100.tar.gz::https://github.com/luciusDXL/TheForceEngine/archive/refs/tags/v1.22.100.tar.gz
 	source = theforceengine.install
-	sha256sums = 8f5d7516698ae86064dd593c426e03368a6932e79040b16f58f54b2ae22578f6
+	sha256sums = 31c4a988efeb5606c1cae45fb7f8d313ea387019f5b3ef423cace000d75de0bf
 	sha256sums = 5e1c92324e453a21b44d7252b44d8d0a2e057f75050f0387f6fc5b9edee4c023
 
 pkgname = theforceengine
