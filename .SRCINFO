@@ -1,7 +1,7 @@
 pkgbase = obs-durchblick
 	pkgdesc = Modular multiview for OBS Studio
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/durchblick.1484/
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = obs-durchblick
 	depends = gcc-libs
 	depends = qt6-base
 	options = debug
-	source = durchblick-0.5.0.tar.gz::https://github.com/univrsal/durchblick/archive/v0.5.0.tar.gz
-	sha256sums = 3f16c4dfff3f31d7683ce2c3180f8659c14f1fc7a14553ff8ad293269674a893
+	source = durchblick-0.5.1.tar.gz::https://github.com/univrsal/durchblick/archive/v0.5.1.tar.gz
+	sha256sums = 47a5153ea1944f429c409546b20d5b2ee8510e3532f3c2734b703d2a98dea6a7
 
 pkgname = obs-durchblick
