@@ -1,4 +1,5 @@
 [gocloc-bin]
-source = "git"
-git = "https://github.com/hhatto/gocloc.git"
+source = "github"
+github = "hhatto/gocloc"
+use_latest_release = true
 prefix = "v"
