@@ -34,8 +34,9 @@ package() {
   make PREFIX="${pkgdir}/usr" PREFIX_MAN="${pkgdir}/usr/share/man" install
   # license
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  # docs
+  # docs and translations
   install -D -m644 RELEASE_NOTES.md "${pkgdir}/usr/share/doc/${pkgname}/RELEASE_NOTES.md"
   install -D -m644 TODO.md "${pkgdir}/usr/share/doc/${pkgname}/TODO.md"
   install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/tp" doc/tp/*
+  install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}/po" po/*
 }
