@@ -1,6 +1,6 @@
 # Maintainer: pitbuster <felipe.contreras.s@gmail.com>
 pkgname=minify-html-bin
-pkgver=0.15.0
+pkgver=0.16.4
 pkgrel=1
 pkgdesc='A Rust HTML minifier meticulously optimised for speed and effectiveness'
 url='https://github.com/wilsonzlin/minify-html'
@@ -10,9 +10,9 @@ source_aarch64=("https://github.com/wilsonzlin/minify-html/releases/download/v$p
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('gcc-libs')
-sha256sums=('a131d5418ac118f39e3b4478b30e3b1769c407fa389850abc422fc64c1675310')
-sha256sums_x86_64=('e848a60abfd92441fd8eca99281074c166f6a7ce8e05eea3d8033c49ea66524d')
-sha256sums_aarch64=('e411087fc2ea978223e61bab58c20304e92ea81b09c79e36d1481885bea525be')
+dsha256sums=('a131d5418ac118f39e3b4478b30e3b1769c407fa389850abc422fc64c1675310')
+sha256sums_x86_64=('631d9a07fa18a1d772492952dd690a09852bea845d5ec1b4d17b44536becd808')
+sha256sums_aarch64=('1a1dcf0b3c2e47da6808095f127e40c36803a0917e24dd752f19f370c8cd4300')
 
 package() {
   cd "$srcdir/"

@@ -1,6 +1,6 @@
 pkgbase = minify-html-bin
 	pkgdesc = A Rust HTML minifier meticulously optimised for speed and effectiveness
-	pkgver = 0.15.0
+	pkgver = 0.16.4
 	pkgrel = 1
 	url = https://github.com/wilsonzlin/minify-html
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = minify-html-bin
 	license = MIT
 	depends = gcc-libs
 	source = LICENSE
-	sha256sums = a131d5418ac118f39e3b4478b30e3b1769c407fa389850abc422fc64c1675310
-	source_x86_64 = https://github.com/wilsonzlin/minify-html/releases/download/v0.15.0/minhtml-0.15.0-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = e848a60abfd92441fd8eca99281074c166f6a7ce8e05eea3d8033c49ea66524d
-	source_aarch64 = https://github.com/wilsonzlin/minify-html/releases/download/v0.15.0/minhtml-0.15.0-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = e411087fc2ea978223e61bab58c20304e92ea81b09c79e36d1481885bea525be
+	source_x86_64 = https://github.com/wilsonzlin/minify-html/releases/download/v0.16.4/minhtml-0.16.4-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 631d9a07fa18a1d772492952dd690a09852bea845d5ec1b4d17b44536becd808
+	source_aarch64 = https://github.com/wilsonzlin/minify-html/releases/download/v0.16.4/minhtml-0.16.4-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 1a1dcf0b3c2e47da6808095f127e40c36803a0917e24dd752f19f370c8cd4300
 
 pkgname = minify-html-bin
