@@ -3,7 +3,7 @@
 
 pkgname="ssa-bin"
 pkgver="6.40_6.0"
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 pkgdesc="HPE Smart Storage Administrator Web GUI"
 license=("custom")
@@ -24,6 +24,8 @@ package() {
 	mv "usr/man" "usr/share/man"
 	mv "usr/sbin" "usr/bin"
 	chmod 755 "usr/bin/ssa"
+	chmod 755 "opt/smartstorageadmin/ssa/bin/ssa"
+	chmod 755 "opt/smartstorageadmin/ssa/bin/ssaclient"
 	install -D -m644 "opt/smartstorageadmin/ssa/ssa.license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	rm "opt/smartstorageadmin/ssa/ssa.license"
 	cp -r "opt/." "$pkgdir/opt"
