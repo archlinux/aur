@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
@@ -11,19 +11,16 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git' 'python' 'range-v3' 'rapidjson')
 source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}"
         '010-lcevcdec-fix-pkgconfig-prefix.patch'
-        '020-lcevcdec-disable-avx.patch'
-        '030-lcevcdec-add-missing-header.patch')
-sha256sums=('93ae713edde8082b1088ab50f180a9a45b8d6e582b729fa04a9f6386556d67e5'
+        '020-lcevcdec-disable-avx.patch')
+sha256sums=('182b10b80cced28c9e87a76cab2d00c681edfece6941a0870a4b3576ed5c4179'
             '8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36'
-            '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76'
-            'a8fb8df9a934d49dfb4d7cb5530496cb0c89f41320a9578fba7e86f5c14a2762')
+            '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
     patch -d LCEVCdec -Np1 -i "${srcdir}/010-lcevcdec-fix-pkgconfig-prefix.patch"
     patch -d LCEVCdec -Np1 -i "${srcdir}/020-lcevcdec-disable-avx.patch"
-    patch -d LCEVCdec -Np1 -i "${srcdir}/030-lcevcdec-add-missing-header.patch"
 }
 
 build() {
