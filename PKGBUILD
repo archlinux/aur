@@ -4,7 +4,7 @@
 _pkgname=flatter
 pkgname=${_pkgname}-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="flatter is a library for performing (f)ast (lat)tice (r)eduction of integer lattice bases"
 arch=('x86_64')
 url='https://github.com/keeganryan/flatter'
@@ -12,6 +12,7 @@ license=('GPL3')
 depends=('eigen' 'gmp' 'fplll' 'gcc-libs' 'mpfr' 'glibc' 'lapack' 'openmp')
 optdepends=('intel-oneapi-mkl')
 makedepends=('git' 'cmake')
+provides=('flatter')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
