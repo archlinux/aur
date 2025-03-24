@@ -2,11 +2,11 @@
 
 pkgname=remotebox
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source VirtualBox Client with Remote Management"
 arch=('any')
 url="http://remotebox.knobgoblin.org.uk/"
-license=(GPL)
+license=(GPL-2.0-only)
 install=remotebox.install
 depends=('perl' 'perl-soap-lite' 'perl-gtk3' 'perl-regexp-common' 'perl-file-which')
 optdepends=('rdesktop')
