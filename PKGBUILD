@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/OpenHelios/python-elitech/"
 license=('GPL-3.0')
 depends=(
+	'elitech-udev'
 	'python'
 	'python-hid-parser-elitech'
 	'python-utils'
@@ -39,6 +40,5 @@ build() {
 package() {
 	cd $pkgname
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm0644 60-elitech.rules "$pkgdir/etc/udev/rules.d/60-elitech.rules"
 }
 

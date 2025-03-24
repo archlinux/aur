@@ -7,6 +7,7 @@ pkgbase = python-elitech-git
 	license = GPL-3.0
 	makedepends = python-setuptools
 	makedepends = python-build
+	depends = elitech-udev
 	depends = python
 	depends = python-hid-parser-elitech
 	depends = python-utils
