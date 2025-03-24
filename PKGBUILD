@@ -2,15 +2,15 @@
 
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
-pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r327.c9be037
-pkgrel=2
+pkgname=(${_pkgname}-client-git ${_pkgname}-host-git ${_pkgname}-client-flatpak-git)
+pkgver=r341.d922b03
+pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL3')
 depends=()
-makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync' 'cmake')
-arch=('any')
+makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync' 'cmake' 'boost' 'flatpak')
+arch=('x86_64')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -34,11 +34,18 @@ package_pat-aur-client-git() {
 	provides=(${_pkgname}-client)
 	conflicts=(${_pkgname}-client)
 	pkgdesc+=' (client only)'
+	arch=('any')
 
 	DESTDIR="${pkgdir}" cmake --install build
 }
 
+package_pat-aur-client-flatpak-git() {
+	depends+=('pat-aur-client-git' 'boost' 'flatpak')
+	pkgdesc+=' (flatpak support)'
+}
+
 package_pat-aur-host-git() {
+	arch=('any')
 	depends+=('pat-aur-client-git' 'parallel' 'dumb-init' 'pacutils' 'aurutils' 'bubblewrap' 'ninja-jobserver' 'git' 'python')
 	optdepends+=(
 		'seccomp-filtered-run: seccomp filters.'
