@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clipharbor-bin
 _pkgname=ClipHarbor
-pkgver=0.3.2
+pkgver=0.4.0
 _electronversion=35
 pkgrel=1
 pkgdesc="A powerful clipboard management application, helps you efficiently manage your clipboard history with ease and style. (Prebuilt version.Use system-wide electron)"
@@ -16,11 +16,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_0.3.1_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/yurentle/ClipHarbor/v${pkgver}/README_EN.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5f8b0ae38b7c676dc79212282d0165cd148eb3105ad5b05cd3477431b3e23c1c'
+sha256sums=('207dc8329b499532d01997a282e2789dd2f79d0149f24d99c8834f7a5d26707e'
             '76d3588ba775a16e309e5d7aa38e6eaf0d12ded8bd1b31ff28f66bf6b221da65'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
