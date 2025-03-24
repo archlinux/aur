@@ -13,7 +13,7 @@ provides=("${_name}=${pkgver}")
 
 depends=(
     'alsa-lib' 'curl' 'desktop-file-utils' 'hicolor-icon-theme' 'libmad' 'libvorbis'
-    'libogg' 'libxkbcommon-x11' 'taglib' 'xdg-utils' 'qt5-base'
+    'libogg' 'libxkbcommon-x11' 'taglib' 'xdg-utils' 'qt6-base'
 )
 makedepends=(
     'cmake' 'flac' 'jack' 'libmpcdec' 'pipewire' 'pulseaudio' 'ffmpeg' 'libcdio-paranoia'
