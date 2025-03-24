@@ -1,7 +1,7 @@
 pkgbase = nanomq-bin
 	pkgdesc = An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV
 	pkgver = 0.23.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nanomq.io
 	install = nanomq-bin.install
 	arch = x86_64

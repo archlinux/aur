@@ -2,7 +2,7 @@
 
 pkgname=nanomq-bin
 pkgver=0.23.5
-pkgrel=2
+pkgrel=3
 pkgdesc='An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV'
 url='https://nanomq.io'
 arch=(x86_64 aarch64 armel armv7h)

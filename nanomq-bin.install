@@ -10,6 +10,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  post_install "$@"
   echo "You may want to remove nanomq user and group"
 }
