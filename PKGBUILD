@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays-git
-pkgver=0.93.0.r2.g3738a2b
+pkgver=0.95.0.r0.gbc136b1
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -45,9 +45,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
