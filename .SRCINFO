@@ -1,13 +1,15 @@
 pkgbase = tablet-switch-git
 	pkgdesc = A system tray application to manually switch between 2-in-1 laptop modes.
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ademarest/tablet-switch
+	install = tablet-switch-git.install
 	arch = x86_64
 	license = GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 	depends = qt6-base
 	depends = qt6-tools
 	depends = libevdev
+	optdepends = gnome-shell-extension-appindicator
 	source = git+https://github.com/ademarest/tablet-switch.git
 	sha256sums = SKIP
 

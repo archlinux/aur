@@ -1,0 +1,7 @@
+post_install(){
+	printf '\n\tThe user which will run tablet-switch must be added to the input group\n\n'
+}
+
+post_remove(){
+	printf '\n\tUsers no longer required to be in the input group should be removed from the group now.\n\n'
+}
