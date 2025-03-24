@@ -2,10 +2,10 @@
 
 pkgname=elitech-udev
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Udev rules to allow Elitech devices by group'
 arch=('any')
-url="https://"
+url="https://aur.archlinux.org/cgit/aur.git/tree/?h=elitech-udev"
 license=('GPL-3.0')
 depends=(
 	'udev'
