@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(LicenseRef-FSL-1.1-MIT)
 depends=(gtk4
          webkit2gtk-4.1)
-makedepends=(cargo-nightly
+makedepends=(cargo
              cargo-tauri
              cmake
              nodejs
@@ -29,8 +29,8 @@ build() {
 	export CFLAGS+=' -ffat-lto-objects'
 	export CXXFLAGS+=' -ffat-lto-objects'
 	export RUSTFLAGS+=' --cfg tokio_unstable'
+	export RUSTC_BOOTSTRAP=1
 	env \
-		RUSTUP_TOOLCHAIN=nightly \
 		CARGO_TARGET_DIR=target \
 	cargo build --release
 	# cargo tauri build --bundles deb
