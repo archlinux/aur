@@ -1,6 +1,6 @@
 pkgbase = yafu-git
 	pkgdesc = Automated integer factorization.
-	pkgver = r640.ee519b2
+	pkgver = r714.83690bc
 	pkgrel = 1
 	url = https://github.com/bbuhrow/yafu
 	arch = x86_64

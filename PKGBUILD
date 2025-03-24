@@ -1,16 +1,17 @@
-# Maintainer: KUMAX <kumax2048@pm.me>
+# Maintainer: gilcu3
+# Previous Maintainer: KUMAX <kumax2048@pm.me>
+# Contributor: KUMAX
 
 _pkgbase=yafu
 pkgname=yafu-git
 pkgrel=1
-pkgver=r640.ee519b2
+pkgver=r714.83690bc
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=("MIT")
 arch=('x86_64')
 conflicts=(${_pkgbase})
 provides=('yafu' 'ysieve')
-#makedepends=('zlib' 'msieve') ## These dependencies are related to some features, but they are not tested for being sufficient to make yafu work.
 makedepends=('git' 'subversion')
 depends=('gmp' 'gmp-ecm')
 optdepends=('ggnfs')
@@ -54,7 +55,13 @@ build() {
 	make all NO_ZLIB=1
 
 	cd ${srcdir}/yafu
-	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -m64 -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -I../msieve/zlib -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch"
+	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -m64 -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -I../msieve/zlib -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
+}
+
+check() {
+	cd ${srcdir}/yafu
+	./yafu 140870298550359924914704160737419905257747544866892632000062896476968602578482966342704
+	./yafu -threads $(nproc) 2056802480868100646375721251575555494408897387375737955882170045672576386016591560879707933101909539325829251496440620798637813
 }
 
 package() {
