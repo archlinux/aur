@@ -7,7 +7,7 @@ pkgdesc="A system file picker with proper thumbnails and search"
 arch=('x86_64')
 url="https://github.com/dvhar/pikeru"
 license=('MIT')
-depends=('ffmpeg' 'xdg-desktop-portal' 'sqlite', 'poppler')
+depends=('ffmpeg' 'xdg-desktop-portal' 'sqlite' 'poppler')
 makedepends=('cargo' 'clang' 'scdoc')
 optdepends=('epub-thumbnailer-git: epub thumbnail support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dvhar/$pkgname/archive/refs/tags/$pkgver.tar.gz")
@@ -33,8 +33,6 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/man/man5"
   install -dm755 "$pkgdir/usr/share/xdg-desktop-portal/portals"
-  install -dm755 "$pkgdir/usr/share/dbus-1/services"
-  install -dm755 "$pkgdir/usr/share/xdg-desktop-portal-pikeru"
   install -Dm755 "target/release/pikeru" "$pkgdir/usr/bin/pikeru"
   install -Dm755 "target/release/portal" "$pkgdir/usr/lib/xdg-desktop-portal-pikeru"
   install -Dm755 "xdg_portal/pikeru-wrapper.sh" "$pkgdir/usr/share/xdg-desktop-portal-pikeru/pikeru-wrapper.sh"
