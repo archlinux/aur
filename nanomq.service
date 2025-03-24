@@ -5,7 +5,7 @@ Requires=network.target
 [Service]
 Type=exec
 NotifyAccess=main
-User=mosquitto
+User=nanomq
 ExecStart=/usr/bin/nanomq start --conf /etc/nanomq.conf --log_syslog=true
 ExecReload=/bin/bin/nanomq reload --conf /etc/nanomq.conf
 Restart=on-failure
