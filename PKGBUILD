@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppZiggurat
-_pkgver=0.1.6
+_pkgver=0.1.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="'Rcpp' Integration of Different \"Ziggurat\" Normal RNG Implementations"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -23,10 +23,11 @@ optdepends=(
   r-pinp
   r-rbenchmark
   r-rmarkdown
+  r-ggplot2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('53115de66376aafe087e90ff166d6de1')
-b2sums=('e353fe8ae3530226f960cf9892b8bb5ea4ad2f7f0950fb8552db12d6c6835909e0aa5ade96ca382c84052f6e3c8384a55d11da94feff2a64bac74653b05a2794')
+md5sums=('3139326eadc151b5d5db8014e3a1fe88')
+b2sums=('a61d5bf3a37e41619eda96085417d7ad83df30a86e83f98e54cba6e58d4a9bc244c95b786367b99bb4b6e88015c04868dd896d5133624fbdb20b66aa73ce4a34')
 
 build() {
   mkdir build
