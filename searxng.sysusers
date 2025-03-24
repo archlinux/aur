@@ -1,1 +1,2 @@
 u searxng - "Searxng server user" /var/lib/searxng
+m searxng redis
