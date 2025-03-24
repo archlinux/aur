@@ -1,3 +1,6 @@
+# Contributor Hanabishi
+# Maintainer TheCyberArcher@protonmail.ch
+
 _name=qmmp
 pkgname=${_name}-1
 pkgver=2.2.3
