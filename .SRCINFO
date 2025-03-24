@@ -1,6 +1,6 @@
 pkgbase = shadps4
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -42,7 +42,7 @@ pkgbase = shadps4
 	conflicts = shadps4-git
 	options = !debug
 	options = !makeflags
-	source = git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.6.0
+	source = git+https://github.com/shadps4-emu/shadPS4.git#tag=v.0.7.0
 	source = git+https://github.com/shadps4-emu/ext-cryptopp.git
 	source = git+https://github.com/shadps4-emu/ext-cryptoppwin.git
 	source = git+https://github.com/shadps4-emu/ext-zlib-ng.git
@@ -77,7 +77,7 @@ pkgbase = shadps4
 	source = git+https://github.com/nlohmann/json.git
 	source = git+https://github.com/alex-shpak/hugo-book.git
 	source = git+https://github.com/zyantific/zycore-c
-	b2sums = dcf0bb2a79a58f1afa107c71a114cd2a839535d4c453c519139ffb0a9791f88ca9d5c59737e931485666084ee522bc8f02f2f460d242bc985834a711012bb2dd
+	b2sums = a3c21ea296911ba202b739859b7cc95bc6426450d6495081570b343917c69c4f40e4ce481134582df8ec988c207eab9c92e4b6878c83351470d7385feca91a57
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

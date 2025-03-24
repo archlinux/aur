@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 pkgname=shadps4
-pkgver=0.6.0
+pkgver=0.7.0
 _pkgname=shadPS4
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
@@ -86,7 +86,7 @@ source=(
 	"git+https://github.com/alex-shpak/hugo-book.git"
 	"git+https://github.com/zyantific/zycore-c"
 )
-b2sums=('dcf0bb2a79a58f1afa107c71a114cd2a839535d4c453c519139ffb0a9791f88ca9d5c59737e931485666084ee522bc8f02f2f460d242bc985834a711012bb2dd'
+b2sums=('a3c21ea296911ba202b739859b7cc95bc6426450d6495081570b343917c69c4f40e4ce481134582df8ec988c207eab9c92e4b6878c83351470d7385feca91a57'
         'SKIP'
         'SKIP'
         'SKIP'
