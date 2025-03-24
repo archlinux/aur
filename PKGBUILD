@@ -8,9 +8,9 @@
 
 _pkgname="nextcloud-client"
 pkgname="$_pkgname-git"
-pkgver=3.15.3.r342.g120505b
-pkgrel=2
-pkgdesc="Nextloud client for linux"
+pkgver=3.16.2.r181.g976f8a8
+pkgrel=1
+pkgdesc="Nextcloud desktop client"
 url="https://github.com/nextcloud/desktop"
 license=('GPL-2.0-or-later')
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ makedepends=(
   'extra-cmake-modules'
   'git'
   'kio'
+  'ninja'
   'qt6-tools'
 )
 optdepends=(
@@ -85,6 +86,7 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DPLUGINDIR='lib/qt6/plugins'
