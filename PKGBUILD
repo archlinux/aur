@@ -3,7 +3,6 @@
 _basename=jitsi
 _pkgname=videobridge
 _version=2.3+209+gb5fbe618
-_url=https://download.jitsi.org/unstable/jitsi-videobridge2_2.3-209-gb5fbe618-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}2
@@ -25,7 +24,7 @@ backup=(
   "etc/${_pkgbase}/jvb.conf"
 )
 source=(
-        "$_url"
+        "https://download.jitsi.org/unstable/jitsi-videobridge2_${_version//+/-}-1_all.deb"
         "config"
         "sip-communicator.properties"
         "service"
