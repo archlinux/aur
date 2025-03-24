@@ -1,6 +1,6 @@
 pkgbase = chatterino2-bin
 	pkgdesc = Second installment of the Twitch chat client series Chatterino
-	pkgver = 2.5.2
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/chatterino/chatterino2
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = chatterino2-bin
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
 	conflicts = chatterino
-	source_x86_64 = chatterino2-2.5.2_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/v2.5.2/Chatterino-Ubuntu-22.04.deb
-	sha256sums_x86_64 = 8e812341d719f8c11242fe917f3b7ff611d08c4770094aadb5ebc429e2c1aefd
+	source_x86_64 = chatterino2-2.5.3_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/v2.5.3/Chatterino-Ubuntu-22.04.deb
+	sha256sums_x86_64 = 5c909edb3d8789627d0a313c730ce286b41275d3860d4543de08ae0643c2dcf9
 
 pkgname = chatterino2-bin

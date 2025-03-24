@@ -3,7 +3,7 @@ _pkgname='chatterino2'
 pkgname="${_pkgname}-bin"
 provides=chatterino
 conflicts=chatterino
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 scdir=$_pkgname
 _pkgver="${pkgver//_/-}"
@@ -27,4 +27,4 @@ package() {
 cd ..
 	ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
-sha256sums_x86_64=('8e812341d719f8c11242fe917f3b7ff611d08c4770094aadb5ebc429e2c1aefd')
+sha256sums_x86_64=('5c909edb3d8789627d0a313c730ce286b41275d3860d4543de08ae0643c2dcf9')
