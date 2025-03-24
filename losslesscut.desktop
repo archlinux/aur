@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=LosslessCut
+Comment=GUI tool for lossless trimming/cutting of media files
+Exec=losslesscut
+Categories=AudioVideo;AudioVideoEditing;
+MimeType=video/mpeg;video/x-mpeg;video/msvideo;video/quicktime;video/x-anim;video/x-avi;video/x-ms-asf;video/x-ms-wmv;video/x-msvideo;video/x-nsv;video/x-flc;video/x-fli;video/x-flv;video/vnd.rn-realvideo;video/mp4;video/mp4v-es;video/mp2t;application/ogg;application/x-ogg;video/x-ogm+ogg;audio/x-vorbis+ogg;application/x-matroska;audio/x-matroska;video/x-matroska;video/webm;
+Icon=losslesscut.svg
+Terminal=false
+Encoding=UTF-8
+Keywords=trim;codec;cut;movie;mpeg;avi;h264;mkv;mp4;
+StartupWMClass=losslesscut
