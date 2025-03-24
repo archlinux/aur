@@ -22,6 +22,10 @@ build(){
 }
 
 package(){
-	cd "${srcdir}/tablet-switch/build"
-	make install
+	cd "${srcdir}/tablet-switch/src";
+	install -Dm644 "tablet-switch.desktop" \
+	"${pkgdir}/usr/share/applications/${pkgname}.desktop";
+
+	cd "${srcdir}/tablet-switch/build";
+	make install;
 }
