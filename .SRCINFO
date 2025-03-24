@@ -1,0 +1,11 @@
+pkgbase = Quick
+	pkgver = 4.9.r4.79b94ce
+	pkgrel = 1
+	url = https://github.com/ElPepitaux/Quick.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/ElPepitaux/Quick.git
+	sha256sums = SKIP
+
+pkgname = Quick
