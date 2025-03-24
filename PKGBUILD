@@ -3,8 +3,6 @@
 _basename=jitsi
 _pkgname=meet
 _version=1.0.8448
-_url=https://download.jitsi.org/unstable/jitsi-meet-web_1.0.8448-1_all.deb
-_url_config=https://download.jitsi.org/unstable/jitsi-meet-web-config_1.0.8448-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
@@ -24,8 +22,8 @@ backup=(
   "etc/webapps/${_pkgbase}/interface_config.js"
 )
 source=(
-        "$_url"
-        "config_${_version}.deb::$_url_config"
+        "https://download.jitsi.org/unstable/jitsi-meet-web_${_version}-1_all.deb"
+        "config_${_version}.deb::https://download.jitsi.org/unstable/jitsi-meet-web-config_${_version}-1_all.deb"
 )
 noextract=(
     "config_${_version}.deb"
