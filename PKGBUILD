@@ -1,7 +1,7 @@
 # Maintainer: Raimar Bühmann <raimar_at_buehmann dot de>
 
 pkgname=python-elitech-git
-pkgver=0.0.1.r18.20250322
+pkgver=0.0.1.r18.20250325
 pkgrel=2
 pkgdesc="Command line tool and Python library for Elitech data logger"
 arch=('any')
@@ -11,7 +11,6 @@ depends=(
 	'elitech-udev'
 	'python'
 	'python-hid-parser-elitech'
-	'python-utils'
 )
 makedepends=(
 	'python-setuptools'
