@@ -1,7 +1,7 @@
 # Maintainer: Christian Visintin <christian dot visintin at veeso dot dev>
 
 pkgname=tuifeed
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A terminal feed reader with a fancy ui"
 url="https://github.com/veeso/tuifeed"
@@ -10,7 +10,7 @@ arch=("any")
 depends=()
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f21eb6961537923e121b644dfc4aa72a39b3872c52dac53edbf2d6a071df304d')
+sha256sums=('95e6f5530025439d7840c6d361c80b4979a6d86a0ee830218bffc261fbc3690d')
 
 prepare() {
    cd "$pkgname-$pkgver"
