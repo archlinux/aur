@@ -3,7 +3,7 @@
 # Contributor: Vladimir Koshelenko <koshelenko@rndavia.ru>
 
 pkgname=start-stop-daemon
-pkgver=1.22.14
+pkgver=1.22.18
 pkgrel=1
 pkgdesc='Start and stop system daemon programs'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('libmd' 'perl')
 
 source=("http://deb.debian.org/debian/pool/main/d/dpkg/dpkg_$pkgver.tar.xz")
-md5sums=('ae8767daca4ed8e9c8f55832b6ead18c')
+md5sums=('b797db39f7ed402ff74a870a93ad7f3b')
 
 build() {
   cd dpkg-$pkgver
