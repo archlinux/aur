@@ -1,0 +1,17 @@
+pkgbase = jdpermissionstoreedit
+	pkgdesc = Upscale Images per Pixel
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/jdPermissionStoreEdit
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = flatpak
+	depends = xdg-desktop-portal
+	source = jdpermissionstoreedit-1.0.tar.gz::https://codeberg.org/JakobDev/jdPermissionStoreEdit/archive/1.0.tar.gz
+	sha256sums = 0fdc0c6a217d192b09aeef03dc8485ac4c18ee02686d7eca8edd637f326a5661
+
+pkgname = jdpermissionstoreedit
