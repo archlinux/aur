@@ -32,9 +32,9 @@ echo "Prepare section"
   cd ${srcdir}/Assets-Production/
 ##    git checkout -b stephengtuggy-fix/ship_view master
 ##    git pull https://github.com/stephengtuggy/Assets-Production.git fix/ship_view
-    git pull origin master
-    git checkout master
-    git merge origin/task_migrate_save_util
+#    git pull origin master
+#    git checkout master
+#    git merge origin/task_migrate_save_util
 #    git push origin master
 
 }
