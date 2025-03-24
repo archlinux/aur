@@ -2,7 +2,7 @@
 
 _pkgname=openexr
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 epoch=1
 pkgdesc='An high dynamic-range image file format library (mingw-w64)'
@@ -16,7 +16,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('5013e964de7399bff1dd328cbf65d239a989a7be53255092fa10b85a8715744d')
+sha256sums=('0ffbd842a7ee2128d44affdea30f42294b4061293cde3aa75b61a53573413d1e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
@@ -29,6 +29,10 @@ prepare() {
 	cd "${_srcdir}"
 	sed -i 's/if defined(_MSC_VER) && defined(_WIN32)/ifdef _WIN32/' 'src/lib/OpenEXRCore/internal_cpuid.h'
 	sed -i 's/run (\[exr/run (\[os.environ\["CC_EMULATOR"\], exr/;s/command = \[/command = \[os.environ\["CC_EMULATOR"\], /' 'src/test/bin/test_'*.py
+	sed -i \
+		-e 's/uint64_t     eptr = 0, nptr = 0;/uintptr_t     eptr = 0, nptr = 0;/' \
+		-e 's/nptr = (uint64_t) ctable;/nptr = (uintptr_t) ctable;/' \
+		'src/lib/OpenEXRCore/chunk.c'
 }
 
 build() {
