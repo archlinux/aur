@@ -1,6 +1,6 @@
 # Maintainer: loefey loefey@proton.me
 pkgname=thundery
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A weather fetching cli"
 arch=('x86_64')
