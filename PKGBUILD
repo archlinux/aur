@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=magick
-_pkgver=2.8.5
+_pkgver=2.8.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-webp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ba4e29b0419fcd3e37ac94c313aed4a')
-b2sums=('b9a62d8eab07235ea772572a08c9c3cb32cb15b6cf8e4319c1acd57e832974b36c603999af039dc994d5ee9c590ff1063e3eeaff6859b255e428e2ae9d5ec0c4')
+md5sums=('c3ee9f489208cc3bca4cbefdf8f4dfb5')
+b2sums=('d4947d3c20429f79066dd2e9addd23a13fe61fdb2af59e8971276da9cc68c7b0253ab43cd76202ce448ce3e60ddfb4e6541559290df44f87d705fdf9e1b95730')
 
 build() {
   mkdir build
