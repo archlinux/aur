@@ -1,0 +1,31 @@
+# Copyright 2023 Pascal COMBES <pascom@orange.fr>
+#
+# This file is part of python-elitech.
+#
+# python-elitech is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# python-elitech is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with python-elitech. If not, see <http://www.gnu.org/licenses/>
+
+# udev rules for Elitech devices
+
+# Actions need to be undertaken only when USB devices are added or bound
+ACTION=="remove",   GOTO="elitech_end"
+SUBSYSTEMS=="usb*", GOTO="elitech_usb"
+SUBSYSTEM=="*",     GOTO="elitech_end"
+
+# For USB devices, Elitech uses Vendor Ids 0x04d8 and 0x0416
+LABEL="elitech_usb"
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d8", GROUP="elitech", TAG="elitech"
+KERNEL=="hidraw*", ATTRS{idVendor}=="0416", GROUP="elitech", TAG="elitech"
+
+# End of rule files
+LABEL="elitech_end"
