@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=axonops-workbench-bin
 _pkgname=AxonOps.Workbench
-pkgver=0.9.7
+pkgver=0.9.9
 _electronversion=31
 pkgrel=1
 pkgdesc="A desktop application built for Cassandra DB developers and DBAs.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('a51073edc81377a977afc70e87f7879756113826599beab05ba68eb9fc5bf809')
-sha256sums_x86_64=('1e6fc011f43b1beb3535893d7b854d6e8b6bc2f34af4d488569253f4424aaa13')
+sha256sums_aarch64=('57e4e292b45258309206559c95366dc9b80dd61f77c0dc25d0789e39c402df82')
+sha256sums_x86_64=('94583f1bf19bb3255c586058848e18128d0a119a2ba7f98dd88d9b079634b95e')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
