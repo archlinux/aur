@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SingleMoleculeFootprinting
-_pkgver=1.12.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Analysis tools for Single Molecule Footprinting (SMF) data'
 arch=('any')
@@ -21,6 +21,13 @@ depends=(
   r-plyr
   r-quasr
   r-rcolorbrewer
+  r-ggpointdensity
+  r-ggplot2
+  r-ggrepel
+  r-patchwork
+  r-plyranges
+  r-tidyverse
+  r-viridis
 )
 optdepends=(
   r-bsgenome.mmusculus.ucsc.mm10
@@ -34,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc512f4cb62f4f28b435cd3b179520600d7f519141e3b2440651b802feb7d8c3')
+sha256sums=('91be0d6bc586bd64745b6ccf2bf318cd20e88490a0b1ee34093ba5b64e63e6fd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
