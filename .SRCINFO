@@ -1,0 +1,16 @@
+pkgbase = git-who
+	pkgdesc = Git blame for file trees
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/sinclairtarget/git-who
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = ruby-rake
+	depends = glibc
+	source = git-who-0.6.tar.gz::https://github.com/sinclairtarget/git-who/archive/refs/tags/v0.6.tar.gz
+	b2sums = 6358270a51d2ff65f10ef0840db903c92e7e7af45376757944ce44ff4024396f75794ed9218f0dd93d444ac19dd19821b48e2d95ffd18e3beabefbf389cc34f2
+
+pkgname = git-who

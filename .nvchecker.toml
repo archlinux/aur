@@ -1,0 +1,4 @@
+[git-who]
+source = "git"
+git = "https://github.com/sinclairtarget/git-who.git"
+prefix = "v"
