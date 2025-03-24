@@ -1,0 +1,9 @@
+post_install() {
+cat << EOF
+To enable pikeru for you user, run 'pikeru -e'. You can disable it with 'pikeru -d'.
+If pikeru breaks for whatever reason and you still need to disable it, this script does the same thing as pikeru -d:
+	/usr/share/xdg-desktop-portal-pikeru/unsetconfig.sh
+
+To enable thumbnails for epub files, install epub-thumbnailer. It is in the AUR as epub-thumbnailer-git.
+EOF
+}
