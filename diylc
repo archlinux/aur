@@ -1,4 +1,4 @@
 #!/bin/sh
-export PATH="/usr/lib/jvm/java-23-openjdk/bin/:$PATH"
+export PATH="/usr/lib/jvm/default/bin/:$PATH"
 cd /usr/share/diylc
 exec sh ./run.sh "$@"
