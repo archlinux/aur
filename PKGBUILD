@@ -1,7 +1,7 @@
 pkgname=jdpermissionstoreedit
 pkgver=1.0
-pkgrel=1
-pkgdesc="Upscale Images per Pixel"
+pkgrel=2
+pkgdesc="Edit the Flatpak Permission Store"
 arch=(x86_64)
 url="https://codeberg.org/JakobDev/jdPermissionStoreEdit"
 license=("GPL3")
