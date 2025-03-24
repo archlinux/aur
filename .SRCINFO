@@ -1,0 +1,18 @@
+pkgbase = obs-soundboard
+	pkgdesc = OBS plugin that adds a soundboard dock
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/soundboard-dock.1470/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	depends = obs-studio>=28
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	options = debug
+	source = obs-soundboard-1.1.1.tar.gz::https://github.com/cg2121/obs-soundboard/archive/refs/tags/1.1.1.tar.gz
+	sha256sums = 46517a67f7369b2f3d844c1b43842ff5cbe5e136837cade90487df8b948c5515
+
+pkgname = obs-soundboard
