@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver () {
-	cd "${_pkgname}"
+	cd Quick
 	printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
