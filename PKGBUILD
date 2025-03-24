@@ -1,6 +1,6 @@
 _name=qmmp
 pkgname=${_name}-1
-pkgver=1.6.7
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 makedepends=(
     'cmake' 'flac' 'jack' 'libmpcdec' 'pipewire' 'pulseaudio' 'ffmpeg' 'libcdio-paranoia'
     'libcddb' 'libmms' 'libsamplerate' 'libmodplug' 'libsndfile' 'wavpack' 'mpg123' 'mesa'
-    'projectm' 'faad2' 'libgme' 'libsidplayfp' 'opusfile>=0.12' 'wildmidi' 'qt5-tools'
+    'projectm' 'faad2' 'libgme' 'libsidplayfp' 'opusfile>=0.12' 'wildmidi' 'qt6-tools'
 )
 optdepends=(
     'mpg123: to play MP3 files'
@@ -40,7 +40,7 @@ optdepends=(
 
 _snapshot="${_name}-${pkgver}"
 source=("${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
-sha256sums=('e3a911cfbad170ab2c248b37ca7d23deaad86cacd4d563949b10aaf6235a3bea')
+sha256sums=('993e57d8e11b083bb6f246738505edf35d498ffe82a1936f3129b8bb09eab244')
 
 build() {
     cmake -B "build" -S "${_snapshot}" \

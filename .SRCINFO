@@ -1,6 +1,6 @@
 pkgbase = qmmp-1
 	pkgdesc = Qt based audio-player (1.x branch)
-	pkgver = 1.6.7
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://qmmp.ylsoftware.com
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = qmmp-1
 	makedepends = libsidplayfp
 	makedepends = opusfile>=0.12
 	makedepends = wildmidi
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = alsa-lib
 	depends = curl
 	depends = desktop-file-utils
@@ -60,8 +60,8 @@ pkgbase = qmmp-1
 	optdepends = ffmpeg
 	optdepends = libsamplerate
 	optdepends = wavpack
-	provides = qmmp=1.6.7
-	source = https://qmmp.ylsoftware.com/files/qmmp/1.6/qmmp-1.6.7.tar.bz2
-	sha256sums = e3a911cfbad170ab2c248b37ca7d23deaad86cacd4d563949b10aaf6235a3bea
+	provides = qmmp=2.2.3
+	source = https://qmmp.ylsoftware.com/files/qmmp/2.2/qmmp-2.2.3.tar.bz2
+	sha256sums = 993e57d8e11b083bb6f246738505edf35d498ffe82a1936f3129b8bb09eab244
 
 pkgname = qmmp-1
