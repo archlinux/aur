@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-display-brightness-ddcutil-git
 	pkgdesc = Display brightness slider for gnome shell using ddcutil backend
-	pkgver = r177.b448326
+	pkgver = r232.19cfc48
 	pkgrel = 1
 	url = https://github.com/daitj/gnome-display-brightness-ddcutil
 	arch = any
