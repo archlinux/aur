@@ -1,11 +1,12 @@
 pkgbase = peaclock
 	pkgdesc = A colourful binary clock for the terminal
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/octobanana/peaclock
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+    depends = icu
 	source = https://github.com/octobanana/peaclock/archive/0.4.3.tar.gz
 	sha256sums = 3de32486e45ddf6a62c591619b5373d23c8eaf885975441ae581ca7241c48012
 
