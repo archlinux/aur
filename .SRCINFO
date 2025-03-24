@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-app-icons-taskbar
 	pkgdesc = A simple app icon taskbar. Show running apps and favorites on the main panel.
-	pkgver = 27
+	pkgver = 28
 	pkgrel = 1
 	url = https://gitlab.com/AndrewZaech/aztaskbar
 	arch = any
 	license = GPL3
 	depends = dconf
 	depends = gnome-shell>=1:45
-	source = https://gitlab.com/AndrewZaech/aztaskbar/-/archive/v27/aztaskbar-v27.tar.gz
+	source = https://gitlab.com/AndrewZaech/aztaskbar/-/archive/v28/aztaskbar-v28.tar.gz
 	b2sums = 6bf5a3f9f9f3eddc24660ed0ff8eca9dab6d50a47fdfd30ab6cbc7a934280de3396b385a7cdec95d400cf290323a5fce31c0dc273d4ba8dfaf011c66e9e3fd56
 
 pkgname = gnome-shell-extension-app-icons-taskbar
