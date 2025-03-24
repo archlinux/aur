@@ -1,11 +1,11 @@
 pkgname=diylc
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
 url="https://bancika.github.io/diy-layout-creator/"
 license=('GPL3')
-depends=('jre23-openjdk' 'sh' 'hicolor-icon-theme')
+depends=('jre-openjdk' 'sh' 'hicolor-icon-theme')
 optdepends=()
 makedepends=('unzip')
 source=(
