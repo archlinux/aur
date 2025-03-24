@@ -1,12 +1,12 @@
 # Maintainer: SahibBommelig <sahib@online.de>
-# Last packager : TheCyberArcher@protonmail.ch
+# Last packager : Vassili Tchersky <vt+arch@vbc.su>
 # rmlint PKBUILD for ArchLinux
  
 _pkgname=rmlint
 pkgbase="${_pkgname}-git"
 pkgname=('rmlint-git' 'rmlint-shredder-git')
 pkgver=2.10.3.r0.g2fe7dc80
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
 license=('GPL3')
@@ -32,24 +32,21 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   scons config
-  scons -j4 DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr --without-compile-glib-schemas
+  scons -j4 DEBUG=1 --prefix=${pkgdir}/usr --actual-prefix=/usr
 }
 
 package_rmlint-git() {
   pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
   depends=(
     'glib2'
-    'libelf'    
+    'libelf'
   )
 
   provides=("$_pkgname")
   conflicts=(${provides[@]})
 
   cd "$srcdir/$_pkgname"
-  scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr
-
-  rm -rf "$pkgdir"/usr/share/{glib-2.0,icons,applications}
-  rm -rf "$pkgdir"/usr/lib
+  scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr --without-gui
 }
 
 package_rmlint-shredder-git() {
@@ -68,8 +65,8 @@ package_rmlint-shredder-git() {
   conflicts=(${provides[@]})
 
   cd "$srcdir/$_pkgname"
-  scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr
+  scons DEBUG=1 --prefix="$pkgdir"/usr install --actual-prefix=/usr --without-compile-glib-schemas
 
-  rm -rf "$pkgdir"/usr/{bin,share/locale,share/man}
-  rm "$pkgdir"/usr/share/glib-2.0/schemas/gschemas.compiled
+  rm -rf "$pkgdir"/usr/share/{locale,man}
+  rm -f "$pkgdir"/usr/bin/rmlint
 }
