@@ -3,9 +3,9 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 _pkgname=jd
 pkgname="${_pkgname}-tool-bin"
-pkgver=2.1.2
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="JSON diff and patch"
+pkgdesc="JSON diff and patch.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/josephburnett/jd/v
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-arm64-linux")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-amd64-linux")
 sha256sums=('7db445fe94ae6fb0c5ab69a6b47ec38a0e4b6d5a38f9d1493c0d8cb7c8ad2516')
-sha256sums_aarch64=('203311afe76987a3844bc9e39c34ca28b79bec87b76a947c3f408ba087fc973b')
-sha256sums_x86_64=('f581a9824475da6f7fb602c38dfe5e8c1ca213e21c406f92625606eca908fbfc')
+sha256sums_aarch64=('5bdc6e85b9d0dfe9c5a0517a26bfc538e205a3020324349e530b3be69c3c3798')
+sha256sums_x86_64=('182ed224078d31cc958658470c1cdf288e42c61bf882f3789632667d530d6533')
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
