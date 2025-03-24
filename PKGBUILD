@@ -5,50 +5,47 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=3.1.0.r5
+pkgver=3.1.0.r32
 pkgrel=1
 epoch=2
 pkgdesc="A Bible study application based on the Sword library and Qt toolkit."
 arch=('x86_64' 'i686')
 url="https://bibletime.info/"
-license=('GPL2')
-depends=('sword' 'qt6-webengine' 'qt6-svg')
-makedepends=('git' 'po4a' 'docbook-xsl' 'docbook-xml' 'clucene' 'cmake' 'qt6-tools')
+license=('GPL-2.0-only')
+depends=('sword>=1.8.1' 'clucene>=2.0' 'qt6-webengine>=6.7' 'qt6-svg>=6.7')
+makedepends=('cmake>=3.25' 'docbook-xsl' 'docbook-xml' 'fop' 'git' 'po4a' 'qt6-tools>=6.7' 'pkgconf')
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git+https://github.com/bibletime/bibletime.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_gitname"
-	git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.g.*//'
+	git -C $_gitname describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.g.*//'
 }
 
 build() {
 	_xslstylespath="/usr/share/xml/docbook/xsl-stylesheets-"$(pacman -Q docbook-xsl | cut -d ' ' -f 2 | cut -d '-' -f 1)
-	mkdir -p "$srcdir/$_gitname/build_dir"
-	cd "$srcdir/$_gitname/build_dir"
+	cd "$srcdir/$_gitname"
+	sed -i 's/@BT_VERSION_FULL@//g' ./cmake/platforms/linux/bibletime.desktop.cmake
 
-	sed -i 's/@BT_VERSION_FULL@//g' ../cmake/platforms/linux/bibletime.desktop.cmake
-
-	CXXFLAGS+=" -fpermissive"
-
-	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DCMAKE_BUILD_TYPE=Release \
-	      -DUSE_QT6=ON \
-	      -DBUILD_HANDBOOK_HTML=ON \
-	      -DBUILD_HANDBOOK_PDF=OFF \
-	      -DBUILD_HOWTO_HTML=ON \
-	      -DBUILD_HOWTO_PDF=OFF \
-	      -DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=$_xslstylespath/html/chunk.xsl \
-	      -DBT_DOCBOOK_XSL_PDF_DOCBOOK_XSL=$_xslstylespath/fo/docbook.xsl \
-	      -DQT_LUPDATE_EXECUTABLE=/usr/lib/qt6/bin/lupdate \
-	      -DQT_LRELEASE_EXECUTABLE=/usr/lib/qt6/bin/lrelease \
-	      ..
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_HANDBOOK_HTML=ON \
+		-DBUILD_HANDBOOK_HTML_LANGUAGES="en" \
+		-DBUILD_HANDBOOK_PDF=OFF \
+		-DBUILD_HANDBOOK_PDF_LANGUAGES="en" \
+		-DBUILD_HOWTO_HTML=ON \
+		-DBUILD_HOWTO_HTML_LANGUAGES="en" \
+		-DBUILD_HOWTO_PDF=OFF \
+		-DBUILD_HOWTO_PDF_LANGUAGES="en" \
+		-DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=$_xslstylespath/html/chunk.xsl \
+		-Wno-dev \
+		-S ./
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname/build_dir"
+	cd "$srcdir/$_gitname"
 	make DESTDIR="$pkgdir" install
 }
