@@ -1,8 +1,8 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.28.1
-pkgrel=2
+pkgver=1.29.0
+pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
@@ -49,8 +49,6 @@ prepare() {
   git config submodule.deps/libremidi.url $srcdir/libremidi
   git config submodule.deps/cpp-httplib.url $srcdir/cpp-httplib
   git -c protocol.file.allow=always submodule update deps/libremidi deps/cpp-httplib
-
-  git cherry-pick -n eb6989527d02fa72310d56b9d91e8f334919e9d8
 
   sed -i 's/find_qt(/find_package(Qt6 /g' CMakeLists.txt
   sed -i 's/find_qt(/find_package(Qt6 /g' cmake/common/advss_helpers.cmake
