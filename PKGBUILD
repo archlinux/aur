@@ -1,6 +1,6 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=webappview-git
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
