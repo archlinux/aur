@@ -1,6 +1,6 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=webappview-git
-pkgver=0.3.0
+pkgver=0.0.0
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
@@ -13,6 +13,11 @@ depends=('go' 'gtk3' 'webkit2gtk')
 makedepends=('git' 'go' 'gtk3' 'webkit2gtk')
 source=("git+https://gitverse.ru/naierchou/webappview.git")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --tags --long | sed 's/-/./g' | sed 's/^v//'
+}
 
 build() {
   cd "$srcdir/${pkgname%-git}"
