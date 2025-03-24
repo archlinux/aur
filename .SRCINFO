@@ -9,6 +9,7 @@ pkgbase = python-icevision
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
+	makedepends = git
 	depends = python-pytorch
 	depends = python-torchvision
 	depends = python-pillow

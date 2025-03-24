@@ -22,7 +22,7 @@ depends=('python-pytorch'
 	'python-effdet'
 	'python-sahi'
 	'python-yolov5-icevision')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' 'git')
 source=("git+https://github.com/airctic/icevision.git#tag=$pkgver")
 sha256sums=('SKIP')
 
