@@ -1,10 +1,11 @@
 pkgbase = xtb-git
 	pkgdesc = Semiempirical Extended Tight-Binding Program Package
-	pkgver = 6.4.1.r286.92252bb
+	pkgver = 6.7.1.r506.41059b4
 	pkgrel = 1
 	url = https://github.com/grimme-lab/xtb
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0-only
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja

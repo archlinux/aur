@@ -2,7 +2,7 @@
 
 _pkgname=xtb
 pkgname="${_pkgname}-git"
-pkgver=6.4.1.r286.92252bb
+pkgver=6.7.1.r506.41059b4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/grimme-lab/xtb"
@@ -10,7 +10,7 @@ provides=("${_pkgname}")
 depends=('openblas' 'lapack' 'gcc-libs')
 makedepends=('git' 'meson' 'ninja' 'inetutils' 'gcc-fortran')
 conflicts=("${_pkgname}")
-license=('LGPL3')
+license=('LGPL-3.0-only' 'GPL-3.0-only')
 pkgdesc="Semiempirical Extended Tight-Binding Program Package"
 source=("git+https://github.com/grimme-lab/xtb.git#branch=main")
 md5sums=('SKIP')
@@ -31,7 +31,7 @@ build() {
       --buildtype release \
       --warnlevel 0 \
       --prefix=/usr \
-      -Dla_backend=openblas
+      -Dlapack=openblas
   ninja
 }
 
