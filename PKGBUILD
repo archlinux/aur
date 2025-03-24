@@ -3,8 +3,8 @@
 
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
-pkgver=1.5.3
-pkgrel=3
+pkgver=1.5.4
+pkgrel=1
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
@@ -12,7 +12,7 @@ makedepends=(python)
 #checkdepends=(openssh python-dbus rsync systemd python-pyfakefs oxygen-icons python-pylint)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
 backintime-backup-job.{service,timer})
-sha256sums=('ba4b28bd9b2f4dd0dae90a1a990ac352880546bb82db3a6176568be3f9de4f46'
+sha256sums=('444bce50996426a5b32b4b619980509545fb370dd0618199fe4eabcf9dee907e'
             '8a3aa12434048d604836b709df18528fe51867de7c8d229190eb5b518fa6d918'
             '5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8')
 
