@@ -1,11 +1,9 @@
-pkgbase = kaleidoswap-appimage
+pkgbase = kaleidoswap
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://kaleidoswap.com/
 	arch = x86_64
 	license = MIT
-	depends = rust
-	depends = nodejs
 	source = https://github.com/kaleidoswap/desktop-app/releases/download/app-v0.1.0/KaleidoSwap_0.1.0_amd64.AppImage
 	sha256sums = SKIP
 
