@@ -1,0 +1,308 @@
+From df39a4a0546cad2fcb9b412643921ce5e5108bb2 Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Mon, 24 Mar 2025 17:47:15 +0800
+Subject: [PATCH 1/4] Add grid css
+
+set min-width for keyboard button
+---
+ vboard.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/vboard.py b/vboard.py
+index 20cf4de..ff912d3 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -246,6 +246,10 @@ class VirtualKeyboard(Gtk.Window):
+             padding: 5px;
+         }}
+ 
++        #grid button {{
++            min-width: 10px;
++            padding: 1px;
++        }}
+ 
+         """
+ 
+-- 
+2.39.1
+
+
+From 35ce46228c1992b679e179256823f7c3ad1ef151 Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Mon, 24 Mar 2025 18:02:31 +0800
+Subject: [PATCH 2/4] modifier key
+
+---
+ vboard.py | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/vboard.py b/vboard.py
+index ff912d3..81d8e30 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -61,6 +61,7 @@ class VirtualKeyboard(Gtk.Window):
+             uinput.KEY_LEFTMETA: False,
+             uinput.KEY_RIGHTMETA: False
+         }
++        self.modifier_buttons = {}  # Dictionary to store mapping between modifier keys and buttons
+         self.colors = [
+             ("Black", "0,0,0"),
+             ("Red", "255,0,0"),
+@@ -249,10 +250,15 @@ class VirtualKeyboard(Gtk.Window):
+         #grid button {{
+             min-width: 10px;
+             padding: 1px;
++            background-color: transparent;
+         }}
+ 
+-        """
++        button.active-modifier {{
++            background-color: rgba(100, 100, 255, 0.5);
++            border: 1px solid rgb(173, 216, 230);
++        }}
+ 
++       """
+         try:
+             provider.load_from_data(css.encode("utf-8"))
+         except GLib.GError as e:
+@@ -271,6 +277,8 @@ class VirtualKeyboard(Gtk.Window):
+                     button = Gtk.Button(label=key_label[:-2])
+                 else:
+                     button = Gtk.Button(label=key_label)
++                # Ensure all buttons start with NONE relief style
++                button.set_relief(Gtk.ReliefStyle.NONE)
+                 button.connect("clicked", self.on_button_click, key_event)
+ 
+                 if key_label == "Space": width=12
+@@ -285,11 +293,19 @@ class VirtualKeyboard(Gtk.Window):
+ 
+                 grid.attach(button, col, row_index, width, 1)
+                 col += width  # Skip 4 columns for the space button
++                if key_event in self.modifiers:
++                    self.modifier_buttons[key_event] = button
+ 
+     def on_button_click(self, widget, key_event):
+         # If the key event is one of the modifiers, update its state and return.
+         if key_event in self.modifiers:
+             self.modifiers[key_event] = not self.modifiers[key_event]
++            if self.modifiers[key_event]:
++                widget.set_relief(Gtk.ReliefStyle.NORMAL)
++                widget.get_style_context().add_class("active-modifier")
++            else:
++                widget.set_relief(Gtk.ReliefStyle.NONE)
++                widget.get_style_context().remove_class("active-modifier")
+             return
+         # For a normal key, press any active modifiers.
+         for mod_key, active in self.modifiers.items():
+@@ -306,6 +322,8 @@ class VirtualKeyboard(Gtk.Window):
+             if active:
+                 self.device.emit(mod_key, 0)
+                 self.modifiers[mod_key] = False
++                self.modifier_buttons[mod_key].set_relief(Gtk.ReliefStyle.NONE)
++                self.modifier_buttons[mod_key].get_style_context().remove_class("active-modifier")
+ 
+ 
+     def read_settings(self):
+-- 
+2.39.1
+
+
+From 51f2b19b8e403fff9cb0437e6aa3eb44c08d756a Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Mon, 24 Mar 2025 18:22:22 +0800
+Subject: [PATCH 3/4] Add visual feedback for Shift key state and improve
+ modifier key handling
+
+---
+ vboard.py | 81 ++++++++++++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 68 insertions(+), 13 deletions(-)
+
+diff --git a/vboard.py b/vboard.py
+index 81d8e30..88bf401 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -51,6 +51,27 @@ class VirtualKeyboard(Gtk.Window):
+         self.text_color="white"
+         self.read_settings()
+ 
++        # Dictionary for shifted characters
++        self.shift_map = {
++            "`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", 
++            "6": "^", "7": "&", "8": "*", "9": "(", "0": ")", "-": "_", "=": "+",
++            "[": "{", "]": "}", "\\": "|", ";": ":", "'": "\"", ",": "<", ".": ">", "/": "?",
++            # 
++            "a": "A", "b": "B", "c": "C", "d": "D", "e": "E", "f": "F", "g": "G",
++            "h": "H", "i": "I", "j": "J", "k": "K", "l": "L", "m": "M", "n": "N",
++            "o": "O", "p": "P", "q": "Q", "r": "R", "s": "S", "t": "T", "u": "U",
++            "v": "V", "w": "W", "x": "X", "y": "Y", "z": "Z",
++            # 
++            "A": "A", "B": "B", "C": "C", "D": "D", "E": "E", "F": "F", "G": "G",
++            "H": "H", "I": "I", "J": "J", "K": "K", "L": "L", "M": "M", "N": "N",
++            "O": "O", "P": "P", "Q": "Q", "R": "R", "S": "S", "T": "T", "U": "U",
++            "V": "V", "W": "W", "X": "X", "Y": "Y", "Z": "Z"
++        }
++        # Dictionary to store original button labels
++        self.original_labels = {}
++        # Dictionary to store button widgets for all keys (not just modifiers)
++        self.all_buttons = {}
++
+         self.modifiers = {
+             uinput.KEY_LEFTSHIFT: False,
+             uinput.KEY_RIGHTSHIFT: False,
+@@ -295,6 +316,8 @@ class VirtualKeyboard(Gtk.Window):
+                 col += width  # Skip 4 columns for the space button
+                 if key_event in self.modifiers:
+                     self.modifier_buttons[key_event] = button
++                self.all_buttons[key_event] = button
++                self.original_labels[key_event] = key_label
+ 
+     def on_button_click(self, widget, key_event):
+         # If the key event is one of the modifiers, update its state and return.
+@@ -306,24 +329,56 @@ class VirtualKeyboard(Gtk.Window):
+             else:
+                 widget.set_relief(Gtk.ReliefStyle.NONE)
+                 widget.get_style_context().remove_class("active-modifier")
++            
++            # Update key labels when Shift is pressed or released
++            if key_event == uinput.KEY_LEFTSHIFT or key_event == uinput.KEY_RIGHTSHIFT:
++                self.update_key_labels()
++            
+             return
+-        # For a normal key, press any active modifiers.
++
++        # Record which modifier keys are active, then send them
++        active_modifiers = []
+         for mod_key, active in self.modifiers.items():
+             if active:
+-                self.device.emit(mod_key, 1)
++                active_modifiers.append(mod_key)
++                self.device.emit(mod_key, 1)  # Press the modifier key
+ 
+-        # Emit the normal key press.
+-        self.device.emit(key_event, 1)
++        # Send the normal key press event
++        self.device.emit(key_event, 1)  # Press the target key
+         time.sleep(0.05)
+-        self.device.emit(key_event, 0)
+-
+-        # Release the modifiers that were active.
+-        for mod_key, active in self.modifiers.items():
+-            if active:
+-                self.device.emit(mod_key, 0)
+-                self.modifiers[mod_key] = False
+-                self.modifier_buttons[mod_key].set_relief(Gtk.ReliefStyle.NONE)
+-                self.modifier_buttons[mod_key].get_style_context().remove_class("active-modifier")
++        self.device.emit(key_event, 0)  # Release the target key
++
++        # Release all previously pressed modifier keys
++        for mod_key in active_modifiers:
++            self.device.emit(mod_key, 0)  # Release the modifier key
++            self.modifiers[mod_key] = False  # Reset modifier key state
++            self.modifier_buttons[mod_key].set_relief(Gtk.ReliefStyle.NONE)
++            self.modifier_buttons[mod_key].get_style_context().remove_class("active-modifier")
++        
++        # Update keyboard labels
++        if any(mod == uinput.KEY_LEFTSHIFT or mod == uinput.KEY_RIGHTSHIFT for mod in self.modifiers):
++            self.update_key_labels()
++
++
++    def update_key_labels(self):
++        """Update key labels based on modifier states"""
++        shift_active = self.modifiers[uinput.KEY_LEFTSHIFT] or self.modifiers[uinput.KEY_RIGHTSHIFT]
++        
++        # Go through all keys and update their labels
++        for key_code, button in self.all_buttons.items():
++            if key_code in self.original_labels:
++                original_label = self.original_labels[key_code]
++                
++                # Skip modifier keys and keys that don't have shift variants
++                if key_code in self.modifiers or original_label not in self.shift_map:
++                    continue
++                    
++                if shift_active:
++                    # Show shifted character
++                    button.set_label(self.shift_map[original_label])
++                else:
++                    # Show original character
++                    button.set_label(original_label)
+ 
+ 
+     def read_settings(self):
+-- 
+2.39.1
+
+
+From dccd51a0b66b2bac3f5e8d402b8891af9aaed348 Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Mon, 24 Mar 2025 19:04:31 +0800
+Subject: [PATCH 4/4] Add CapsLock UI feedback and improve key handling
+
+---
+ vboard.py | 35 +++++++++++++++++++++++++++++------
+ 1 file changed, 29 insertions(+), 6 deletions(-)
+
+diff --git a/vboard.py b/vboard.py
+index 88bf401..988e3cb 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -320,7 +320,24 @@ class VirtualKeyboard(Gtk.Window):
+                 self.original_labels[key_event] = key_label
+ 
+     def on_button_click(self, widget, key_event):
+-        # If the key event is one of the modifiers, update its state and return.
++        # Handle CapsLock key
++        if key_event == uinput.KEY_CAPSLOCK:
++            # Send CapsLock key press event
++            self.device.emit(key_event, 1)  # Press
++            time.sleep(0.05)
++            self.device.emit(key_event, 0)  # Release
++            
++            # Update UI state
++            if widget.get_relief() == Gtk.ReliefStyle.NORMAL:
++                widget.set_relief(Gtk.ReliefStyle.NONE)
++                widget.get_style_context().remove_class("active-modifier")
++            else:
++                widget.set_relief(Gtk.ReliefStyle.NORMAL)
++                widget.get_style_context().add_class("active-modifier")
++            
++            return
++            
++        # If this is a modifier key, update its state and return
+         if key_event in self.modifiers:
+             self.modifiers[key_event] = not self.modifiers[key_event]
+             if self.modifiers[key_event]:
+@@ -330,7 +347,7 @@ class VirtualKeyboard(Gtk.Window):
+                 widget.set_relief(Gtk.ReliefStyle.NONE)
+                 widget.get_style_context().remove_class("active-modifier")
+             
+-            # Update key labels when Shift is pressed or released
++            # Update key labels when Shift state changes
+             if key_event == uinput.KEY_LEFTSHIFT or key_event == uinput.KEY_RIGHTSHIFT:
+                 self.update_key_labels()
+             
+@@ -372,12 +389,18 @@ class VirtualKeyboard(Gtk.Window):
+                 # Skip modifier keys and keys that don't have shift variants
+                 if key_code in self.modifiers or original_label not in self.shift_map:
+                     continue
+-                    
+-                if shift_active:
+-                    # Show shifted character
++                
++                # For letters, consider both Shift and CapsLock
++                if original_label.isalpha() and len(original_label) == 1:
++                    # If Shift and CapsLock have different states, they cancel each other out
++                    if shift_active:
++                        button.set_label(self.shift_map[original_label])
++                    else:
++                        button.set_label(original_label)
++                # For non-letters (symbols, numbers), only consider Shift
++                elif shift_active:
+                     button.set_label(self.shift_map[original_label])
+                 else:
+-                    # Show original character
+                     button.set_label(original_label)
+ 
+ 
+-- 
+2.39.1
+
