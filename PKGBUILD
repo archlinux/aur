@@ -6,7 +6,7 @@
 # Contributor: David Zaragoza <david@zaragoza.com.ve>
 
 pkgname=cpuid
-pkgver=20240409
+pkgver=20250316
 pkgrel=1
 pkgdesc="Linux tool to dump x86 CPUID information about the CPU(s)"
 url="http://www.etallen.com/cpuid.html"
@@ -17,7 +17,7 @@ depends=('glibc' 'perl')
 conflicts=('msr-tools')   # extra/msr-tools seems to have /usr/bin/cpuid
 groups=('system')
 source=("http://www.etallen.com/$pkgname/${pkgname}-${pkgver}.src.tar.gz")
-sha256sums=('5812909464e9ed13f58da2b2b8d158129e833e6696edd47012b6b361c8ccbd5d')
+sha256sums=('3ef849e964a027c9575470c4dcc80944b4cb6ac214aca02feec6b249308fa0f5')
 
 #
 #
