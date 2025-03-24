@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.6.0
+pkgver=1.6.64
 pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in impossible spaces'
 arch=('x86_64')
@@ -14,11 +14,11 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 # external linker is used with --as-needed in Arch's default LDFLAGS, these will
 # not actually be linked to by the final binary. This is why these are in
 # makedepends but not depends.
-makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make' 'zip')
+makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make' 'strip-nondeterminism' 'zip')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
-sha256sums=('b058f9a78c53244ae3efdbe0dc747463bac05a9bdbd7c9d3a83adac23e137dee'
-            '32a9a961523290bcd7274c103f5a5d329405d9eb5c6b646661bd65fc99ba2e2e')
+sha256sums=('0d446707758d4ca44ccd6825e2228a5c84d8fe7299e6665dc94d602479089ada'
+            '5777fef3079e196611d944219a03b01575a11e4515cf6318fb18fac575089e17')
 
 prepare() {
   cd "$pkgname-$pkgver"
