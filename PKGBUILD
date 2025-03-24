@@ -2,7 +2,7 @@
 # Contributor: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname=qman-git
-pkgver=1.3.1.r5.gd21ef51
+pkgver=1.3.1.r28.gb461fb9
 pkgrel=1
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ url="https://github.com/plp13/qman"
 license=("BSD-2-Clause")
 depends=("ncurses" "libinih" "zlib" "bzip2" "xz" "man-db")
 makedepends=("git" "meson" "python-cogapp")
+checkdepends=("cunit")
 provides=("qman")
 conflicts=("qman")
 source=("git+https://github.com/plp13/qman.git#branch=devel")
@@ -25,9 +26,14 @@ build() {
     "-Ddocdir=share/doc/qman"
     "-Dman-pages=enabled"
     "-Ddocs=enabled"
+    "-Dtests=enabled"
   )
   arch-meson build qman "${opts[@]}"
   meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
