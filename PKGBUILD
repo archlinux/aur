@@ -6,7 +6,7 @@ pkgdesc="Cloud storage service and file synchronization service, command line"
 arch=('x86_64')
 url="https://meocloud.pt"
 license=('custom')
-options=('!strip' '!upx')
+options=('!strip')
 
 
 source=("https://meocloud.pt/binaries/linux/${arch}/meocloud-${pkgver}_${arch}.tar.gz"
