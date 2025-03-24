@@ -6,8 +6,8 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg2.8
-pkgver=2.8.21
-pkgrel=4
+pkgver=2.8.22
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -28,12 +28,14 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswscale.so')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "mathops_shift.patch"::"https://github.com/FFmpeg/FFmpeg/commit/effadce6c756247ea8bae32dc13bb3e6f464f0eb.patch"
+        "libx265_210.patch"
         "tty_read_probe.patch"
         "${pkgname}.conf")
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('e5d956c19bff2aa5bdd60744509c9d8eb01330713d52674a7f650d54b570c82d'
+sha256sums=('1fbbf622806a112c5131d42b280a9e980f676ffe1c81a4e0f2ae4cb121241531'
             'SKIP'
             '8fad5f253bcda7a17523dbfcbfcfd60b3db23783dcdb65998005cddc7c7776c3'
+            'ec406d1cd5df3ebae4bdd226af3a3bed13b7ea4987ac9317ee1f86cd3813a453'
             'd02d19b644ef29a6ee3e78e188b3892198577a18b58d45963e2771a6251cca73'
             'f0d34b08843e3cba6276e234f1fc4e520e3a7c45d2b4450393a1a5dd9da49247')
 
@@ -44,6 +46,9 @@ prepare() {
   patch -Np1 -i "${srcdir}/mathops_shift.patch"
   # Fix for incompatible pointers
   patch -p1 -i "${srcdir}/tty_read_probe.patch"
+  # Fix libx265 >= 210
+  # https://fftrac-bg.ffmpeg.org/ticket/11130
+  patch -p1 -i "${srcdir}/libx265_210.patch"
 }
 
 build() {

@@ -1,0 +1,57 @@
+diff -Naur ffmpeg-2.8.22.orig/libavcodec/libx265.c ffmpeg-2.8.22/libavcodec/libx265.c
+--- ffmpeg-2.8.22.orig/libavcodec/libx265.c	2023-10-29 01:02:30.000000000 +0200
++++ ffmpeg-2.8.22/libavcodec/libx265.c	2025-03-23 20:19:16.733141155 +0100
+@@ -244,7 +244,13 @@
+ {
+     libx265Context *ctx = avctx->priv_data;
+     x265_picture x265pic;
+-    x265_picture x265pic_out = { 0 };
++#if X265_BUILD >= 210
++    x265_picture x265pic_layers_out[MAX_SCALABLE_LAYERS];
++    x265_picture* x265pic_lyrptr_out[MAX_SCALABLE_LAYERS];
++#else
++    x265_picture x265pic_solo_out = { 0 };
++#endif
++    x265_picture* x265pic_out;
+     x265_nal *nal;
+     uint8_t *dst;
+     int payload = 0;
+@@ -269,8 +275,16 @@
+                             X265_TYPE_AUTO;
+     }
+ 
++#if X265_BUILD >= 210
++    for (i = 0; i < MAX_SCALABLE_LAYERS; i++)
++        x265pic_lyrptr_out[i] = &x265pic_layers_out[i];
++
++    ret = ctx->api->encoder_encode(ctx->encoder, &nal, &nnal,
++                                   pic ? &x265pic : NULL, x265pic_lyrptr_out);
++#else
+     ret = ctx->api->encoder_encode(ctx->encoder, &nal, &nnal,
+                                    pic ? &x265pic : NULL, &x265pic_out);
++#endif
+     if (ret < 0)
+         return AVERROR_EXTERNAL;
+ 
+@@ -295,12 +309,18 @@
+             pkt->flags |= AV_PKT_FLAG_KEY;
+     }
+ 
+-    pkt->pts = x265pic_out.pts;
+-    pkt->dts = x265pic_out.dts;
++#if X265_BUILD >= 210
++    x265pic_out = x265pic_lyrptr_out[0];
++#else
++    x265pic_out = &x265pic_solo_out;
++#endif
++
++    pkt->pts = x265pic_out->pts;
++    pkt->dts = x265pic_out->dts;
+ 
+ #if FF_API_CODED_FRAME
+ FF_DISABLE_DEPRECATION_WARNINGS
+-    switch (x265pic_out.sliceType) {
++    switch (x265pic_out->sliceType) {
+     case X265_TYPE_IDR:
+     case X265_TYPE_I:
+         avctx->coded_frame->pict_type = AV_PICTURE_TYPE_I;
