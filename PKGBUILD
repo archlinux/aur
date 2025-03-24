@@ -20,14 +20,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
-prepare() {
-  cd qman
-  sed -r "s|install_dir: 'man/man1'|install_dir: 'share/man/man1'|g" \
-      -i man/meson.build
-}
-
 build() {
-  arch-meson build qman
+  opts=(
+    "-Ddocdir=share/doc/qman"
+    "-Dman-pages=enabled"
+    "-Ddocs=enabled"
+  )
+  arch-meson build qman "${opts[@]}"
   meson compile -C build
 }
 
