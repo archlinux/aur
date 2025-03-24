@@ -1,24 +1,24 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
 ## options
-: ${_autoupdate:=true}
-
 : ${_system_electron:=true}
-: ${_electron_version:=}
 : ${_install_path:=opt}
 
-[ -n "${_electron_version}" ] && _system_electron=true
 : ${_pkgtype=-latest-bin}
 
-# basic info
 _pkgname='beeper'
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=3.110.1
-pkgrel=2
+pkgver=4.0.551
+pkgrel=1
 pkgdesc="A unified messaging app"
 url="https://beeper.com/"
 license=('LicenseRef-beeper')
-arch=('x86_64')
+
+if [[ "${_system_electron::1}" == "t" ]]; then
+  arch=('any')
+else
+  arch=('x86_64')
+fi
 
 options=('!strip' '!debug')
 
@@ -79,17 +79,21 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron "/${_install_path}/\${name}/resources/app.asar" "\${flags[@]}" "\$@"
+if [ -e "/${_install_path}/\${name}/resources/app.asar" ]; then
+  ASAR="/${_install_path}/\${name}/resources/app.asar"
+else
+  ASAR="/${_install_path}/\${name}/resources/app"
+fi
+
+exec electron${_electron_version:-} "\$ASAR" "\${flags[@]}" "\$@"
 END
 
-  # app.asar
+  # app.asar (maybe)
   install -dm755 "$pkgdir/$_install_path/$_pkgname"/resources
   mv "$srcdir"/squashfs-root/resources/* "$pkgdir/$_install_path/$_pkgname"/resources/
 }
 
 package() {
-  depends+=('hicolor-icon-theme')
-
   # desktop file
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/beeper.desktop" << END
 [Desktop Entry]
@@ -104,18 +108,20 @@ StartupWMClass=Beeper
 Categories=Utility;
 END
 
-  # icons
-  for s in 16 32 48 64 128 256 512 1024; do
-    install -Dm644 \
-      "$srcdir/squashfs-root/usr/share/icons/hicolor/${s}x${s}/apps/beeper.png" \
-      -t "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps"
-  done
+  # icon
+  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/512x512/apps/beepertexts.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   # license files
   install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 "$srcdir/squashfs-root/LICENSES.chromium.html" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
+  # program files
   if [[ "${_system_electron::1}" == "t" ]]; then
+    _electron_version=$(
+      strings "$srcdir/squashfs-root/beepertexts" \
+        | grep -Eom1 'Electron/\S+' \
+        | sed -E 's&^Electron/([0-9]+)\.[0-9\.]+$&\1&'
+    )
     depends+=("electron${_electron_version:-}")
     _package_asar
   else
@@ -129,21 +135,19 @@ END
 _update_version() {
   : ${_pkgver:=$pkgver}
 
-  if [[ "${_autoupdate::1}" != 't' ]]; then
-    return
-  fi
+  local _tmp_url="https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop"
 
-  _dl_url="https://download.beeper.com/linux/appImage/x64"
-
-  _filename=$(
-    curl -v --no-progress-meter -r 0-1 "$_dl_url" 2>&1 > /dev/null \
-      | grep content-disposition \
-      | sed -E 's@^.*\bcontent-disposition:.*\bfilename="([^"]+)".*$@\1@'
+  _dl_url=$(
+    curl -v --no-progress-meter -r 0-1 "$_tmp_url" 2>&1 > /dev/null \
+      | grep location \
+      | sed -E 's@^.*\blocation:\s*(\S+).*$@\1@'
   )
+
+  _filename="${_dl_url##*/}"
 
   _pkgver_new=$(
     printf '%s' "$_filename" \
-      | sed -E 's@^beeper-([0-9]+\.[0-9]+\.[0-9]+)(.*)?.AppImage$@\1@'
+      | sed -E 's@^\S+-([0-9]+\.[0-9]+\.[0-9]+)(.*)?\.AppImage$@\1@'
   )
 
   # update _pkgver
