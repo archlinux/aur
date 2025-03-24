@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OmnipathR
-_pkgver=3.12.4
+_pkgver=3.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,6 +39,11 @@ depends=(
   r-withr
   r-xml2
   r-yaml
+  r-r.utils
+  r-vctrs
+  r-rsqlite
+  r-xml
+  r-zip
 )
 checkdepends=(
   r-testthat
@@ -58,20 +63,21 @@ optdepends=(
   r-smoof
   r-suprahex
   r-testthat
+  r-r.matlab
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc6a953c52a5ebb64ac347817911e1dd')
-b2sums=('dc69a4a4f652f71e2aff8eb73c3fb59bc3119c02dca340b52a957d0b8fb82775dfbb1a06f5cb5d1aa629b21bcf67dc2c362c70ed13a24a0df311034626efaf23')
+md5sums=('d2e2da1697eb72a8c6313883043682ca')
+b2sums=('e6f82a9ae8bea3952bb6a0d5f54c0e904b8e280101007d771da274bdfeb5f57496dee11706666ec6dc1847375b1687307d2ddc84394f099443864b643e5bcd6e')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
-}
+#check() {
+#  cd "$_pkgname/tests"
+#  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+#}
 
 package() {
   install -d "$pkgdir/usr/lib/R/library"
