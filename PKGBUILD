@@ -1,7 +1,7 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=webappview-git
 pkgver=0.0.0
-pkgrel=0
+pkgrel=1
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --tags --long | sed 's/-/./g' | sed 's/^v//'
+  git rev-parse --short HEAD
 }
 
 build() {

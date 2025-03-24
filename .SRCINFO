@@ -1,7 +1,7 @@
 pkgbase = webappview-git
 	pkgdesc = Web application runner and source inspector for javascript and html files
 	pkgver = 0.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitverse.ru/naierchou/webappview
 	arch = x86_64
 	license = GPL-3.0
