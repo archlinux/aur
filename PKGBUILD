@@ -3,16 +3,13 @@
 
 pkgname=yabsnap
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
 license=('Apache')
-# Dependencies -
-# btrfs-progs: Required for btrfs operations. May change if we extend into rsync
-#   rsync based options.
-# python3: Runtime. Typically present in a base install.
 depends=('bash' 'btrfs-progs' 'python')
+optdepends=('rsync: rsync based snapshot support')
 makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('e4e8662e840bb91ee4787bfad24fe6e9')
