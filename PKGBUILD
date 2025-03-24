@@ -2,7 +2,7 @@
 
 pkgname=soundfont-gmgsx
 pkgver=2.9.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A public dimain sountfont by Kenneth Rundt which has similar sound as gm.dls"
 arch=('any')
 license=('custom:commercial')
@@ -18,6 +18,6 @@ prepare(){
 package(){
 	install -Dm644 app/GMGSx.sf2 "${pkgdir}/usr/share/soundfonts/GMGSx.sf2"
 	#set default font for fluidsynth
-	ln -sv "${pkgdir}/usr/share/soundfonts/GMGSx.sf2" "${pkgdir}/usr/share/soundfonts/default.sf2"
+	ln -sv /usr/share/soundfonts/GMGSx.sf2 ${pkgdir}/usr/share/soundfonts/default.sf2
 	#install -Dm644 app/License2.txt "${pkgdir}/usr/share/licenses/SynthFont/Synthfont2.txt"
 }
