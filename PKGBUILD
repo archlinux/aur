@@ -1,6 +1,6 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-engine-git
-pkgver=0.9.0.alpha1.r250.g8479b9b01
+pkgver=0.9.0.alpha1.r273.g38befe948
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=('i686' 'x86_64')
