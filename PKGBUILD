@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2024.08.06.r10.g6f9e653
+pkgver=2025.03.21.r6.g9d5e6de
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
@@ -23,7 +23,8 @@ optdepends=('ffmpeg: for video post-processing'
             'python-xattr: for writing xattr metadata'
             'python-pyxattr: for writing xattr metadata (alternative option)'
             'phantomjs: for extractors with javascript code'
-            'python-secretstorage: For -cookies-from-browser to access the GNOME keyring while decrypting cookies of Chromium-based browsers')
+            'python-secretstorage: For -cookies-from-browser to access the GNOME keyring while decrypting cookies of Chromium-based browsers'
+            'python-curl-cffi: for impersonating browsers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)

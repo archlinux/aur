@@ -1,6 +1,6 @@
 pkgbase = yt-dlp-git
 	pkgdesc = A youtube-dl fork with additional features and fixes (git)
-	pkgver = 2024.08.06.r10.g6f9e653
+	pkgver = 2025.03.21.r6.g9d5e6de
 	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any
@@ -29,6 +29,7 @@ pkgbase = yt-dlp-git
 	optdepends = python-pyxattr: for writing xattr metadata (alternative option)
 	optdepends = phantomjs: for extractors with javascript code
 	optdepends = python-secretstorage: For -cookies-from-browser to access the GNOME keyring while decrypting cookies of Chromium-based browsers
+	optdepends = python-curl-cffi: for impersonating browsers
 	provides = yt-dlp
 	conflicts = yt-dlp
 	source = git+https://github.com/yt-dlp/yt-dlp.git
