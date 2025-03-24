@@ -1,6 +1,6 @@
 pkgbase = izpack
 	pkgdesc = Tool for packaging applications on the Java platform as cross-platform installers
-	pkgver = 5.2.3
+	pkgver = 5.2.4
 	pkgrel = 1
 	url = http://izpack.org/
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = izpack
 	optdepends = python: for wrapper utils
 	optdepends = p7zip: for izpack2exe wrapper
 	optdepends = upx: for izpack2exe wrapper
-	source = git+https://github.com/izpack/izpack.git#tag=izpack-5.2.3
+	source = git+https://github.com/izpack/izpack.git#tag=izpack-5.2.4
 	source = 010-izpack-compile.patch
-	sha256sums = 9fe0573a3843221e34caaf7aa50f29531065b234ca0c60b439554d3baec4ed1d
+	sha256sums = 4bd5b62b899c7670ab06e59d31aa60f1b79024a9da8737d493271856d7a0d895
 	sha256sums = a42578544bfba028a804f9fd9dfa7ad69bc3d7be72bedd47c95341c7719ab17c
 
 pkgname = izpack
