@@ -1,0 +1,20 @@
+[Unit]
+Description=An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV
+Requires=network.target
+
+[Service]
+Type=exec
+NotifyAccess=main
+User=mosquitto
+ExecStart=/usr/bin/nanomq start --conf /etc/nanomq.conf --log_syslog=true
+ExecReload=/bin/bin/nanomq reload --conf /etc/nanomq.conf
+Restart=on-failure
+
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target
