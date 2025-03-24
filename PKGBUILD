@@ -3,7 +3,7 @@
 
 pkgname=python-markitdown
 _pkgname=${pkgname#python-}
-pkgver=0.1.0a3
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown"
 arch=(any)
@@ -36,7 +36,7 @@ makedepends=(
 )
 #source=("https://files.pythonhosted.org/packages/14/d8/e23bd08cd9749cb16ec5832a9e02d5f715efe2c7fc7e2637afaf41df2eee/${_pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5caebb6094b10f906c339fcc69a37b4c61796c46e9feda62de164991e6fdf2b0')
+sha256sums=('3501fe8088191bedb7bd31fb4188e08289149a4b84524c8a935d19704fb7ecc1')
 
 _pkgdir="$_pkgname-$pkgver/packages/markitdown/"
 build() {
