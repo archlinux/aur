@@ -50,7 +50,7 @@ build() {
     -Wno-dev
   )
 
-  if (( CHECKFUNC && ! SKIPCHECKSUMS )); then
+  if ((CHECKFUNC)); then
     _cmake_options+=(-DNNG_TESTS=ON)
   else
     _cmake_options+=(-DNNG_TESTS=OFF)
