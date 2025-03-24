@@ -1,0 +1,23 @@
+#!/bin/bash
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/forcepoint/fp.conf"
+[ -f $CONFIG_FILE ] && source $CONFIG_FILE
+
+if [ -n "$LD_LIBRARY_PATH" ]; then
+	COMMAND="sudo -E LD_LIBRARY_PATH=$CUSTOM_LIBRARY:$LD_LIBRARY_PATH _forcepoint-client"
+else
+	COMMAND="sudo -E LD_LIBRARY_PATH=$CUSTOM_LIBRARY _forcepoint-client -V"
+fi
+
+### MANUAL MODE ###
+[ -n "$*" ] && COMMAND+=" $@" && eval "$COMMAND"
+
+### AUTOMATIC MODE ###
+[ -n "$VPN_GATEWAY" ] && COMMAND+=" $VPN_GATEWAY" || echo "ERROR: variable VPN_GATEWAY is not set in $CONFIG_FILE"
+[ -n "$USERNAME" ] && COMMAND+=" -u $USERNAME" || echo "ERROR: variable USERNAME is not set in $CONFIG_FILE"
+[ -n "$PASSCMD" ] && COMMAND+=" -P '"$PASSCMD"'" || ([ -n "$PASSWORD" ] && COMMAND+=" -a $PASSWORD" || echo "ERROR: variable PASSCMD or PASSWORD is not set in $CONFIG_FILE")
+
+[ -n "$RESOLVER" ] && COMMAND+=" -R $RESOLVER" || echo "WARNING: variable RESOLVER is not set in $CONFIG_FILE"
+[ -n "$CONFIG" ] && COMMAND+=" -c $CONFIG" || echo "WARNING: variable CONFIG is not set in $CONFIG_FILE"
+
+echo "$COMMAND"
+eval "$COMMAND"
