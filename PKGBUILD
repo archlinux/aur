@@ -11,7 +11,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=d73bf057bec04434b169d1b61641936f7d0c97ceb923a281f32e35dd4dcc6531}
+: ${_cksum:=230e89b07b0ab82e74f07ecc1bee3105dca81d0ef4a97f900929c407249b6ac7}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -23,7 +23,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.19
+pkgver=6.12.20
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -54,8 +54,8 @@ options=('!debug' '!strip')
 
 _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts'
 _srctag=$(
-  git ls-remote "$_dl_url_arch.git" \
-    | grep -Eo "${pkgver//./\\.}.arch[0-9]+-[0-9]+\$" \
+  curl -sSfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
+    | grep -Eo "${pkgver//./\\.}-[0-9]+\$" \
     | sort -rV | head -1
 )
 : ${_srctag:=main}
