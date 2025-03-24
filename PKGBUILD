@@ -7,7 +7,7 @@ pkgdesc="Git blame for file trees"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/sinclairtarget/git-who"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'git')
 makedepends=('go' 'ruby-rake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sinclairtarget/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
