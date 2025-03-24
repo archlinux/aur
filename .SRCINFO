@@ -1,12 +1,13 @@
 pkgbase = eg
 	pkgdesc = Useful examples at the command line
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/srsudar/eg
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	conflicts = go-tools
 	options = !emptydirs
 	source = eg-1.2.3.tar.gz::https://github.com/srsudar/eg/archive/v1.2.3.tar.gz
 	sha256sums = 936d9ef89f62053df7f9a0b97cc13577bf5ae876b02c6c1dd499873a926d9504
