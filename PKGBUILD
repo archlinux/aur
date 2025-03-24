@@ -1,6 +1,6 @@
 # Maintainer: Victor Mingueza <victormingueza at gmail.com>
 pkgname=journal-viewer
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A modern linux desktop application to visualize systemd logs."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source_x86_64=(
     "$pkgname.desktop"
 )
 sha256sums_x86_64=(
-    '70a5d8ef670d6426ac55643d280f69e3f882befa8ebf59813d500b8b429386b2'
+    '7d1bc2942285836d3410bc709c4dcff3e90b56d21962fa5c51df7ba53f0bbe61'
     '475b19c2d1b971e91a624bb2fb4477e76e39834e70ce64035426b678b9376f0c'
 )
 
