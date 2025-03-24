@@ -1,9 +1,10 @@
 lv2/
+math_approx/
 NeuralAmpModelerCore/
-NeuralAudio/
-RTNeural/
 neural-amp-modeler-lv2/
 neural-amp-modeler-lv2-git-*.pkg.tar.*
-xsimd/
+NeuralAudio/
 pkg/
+RTNeural/
 src/
+xsimd/

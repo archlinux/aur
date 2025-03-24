@@ -3,14 +3,18 @@
 
 _pkgname=neural-amp-modeler-lv2
 pkgname=$_pkgname-git
-pkgver=0.1.6.r6.46c2bb8
+pkgver=0.1.7.r10.50be365
 pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin (git version)'
 arch=(aarch64 armv7h i686 pentium4 riscv64 riscv x86_64)
 url='https://github.com/mikeoliphant/neural-amp-modeler-lv2'
 license=(GPL-3.0-only)
+groups=(lv2-plugins pro-audio)
 depends=(gcc-libs glibc)
 makedepends=(git cmake)
+optdepends=(
+  'lv2-host: for loading the LV2 plugin'
+)
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/mikeoliphant/$_pkgname.git"
@@ -18,9 +22,11 @@ source=("$_pkgname::git+https://github.com/mikeoliphant/$_pkgname.git"
         'NeuralAudio::git+https://github.com/mikeoliphant/NeuralAudio.git'
         'NeuralAmpModelerCore::git+https://github.com/mikeoliphant/NeuralAmpModelerCore.git'
         'RTNeural::git+https://github.com/mikeoliphant/RTNeural.git'
+        'math_approx::git+https://github.com/Chowdhury-DSP/math_approx.git'
         'xsimd::git+https://github.com/xtensor-stack/xsimd.git'
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,7 +49,7 @@ prepare() {
     git -c protocol.file.allow=always submodule update deps/$submodule
   done
   cd deps/NeuralAudio
-  for submodule in NeuralAmpModelerCore RTNeural; do
+  for submodule in NeuralAmpModelerCore RTNeural math_approx; do
     git submodule init deps/$submodule
     git submodule set-url deps/$submodule "$srcdir"/$submodule
     git -c protocol.file.allow=always submodule update deps/$submodule
@@ -55,8 +61,12 @@ prepare() {
 }
 
 build() {
-  cmake -B $_pkgname-build -S $_pkgname \
-     -DCMAKE_BUILD_TYPE=Release
+  cmake \
+    -B $_pkgname-build \
+    -S $_pkgname \
+    -DCMAKE_BUILD_TYPE=Release \
+    ${USE_NATIVE_ARCH:+-DUSE_NATIVE_ARCH=ON}
+
   cmake --build $_pkgname-build --config Release -j $(nproc --ignore=1)
 }
 
