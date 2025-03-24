@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays
-pkgver=0.94.0
+pkgver=0.95.0
 pkgrel=1
 pkgdesc="Miracast implementation for GNOME"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   'gstreamer-vaapi'
 )
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('317f1017f18167156e8d0a78f9ba4a64bd8b66a2ab9114fccbbdb95423b43043')
+sha256sums=('3ad6687352cf0b88099c3e2ba59923e034f2333a33c8017ce1b034454de90a2c')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -37,9 +37,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
