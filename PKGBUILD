@@ -1,7 +1,7 @@
 # Maintainer: Guillaume BOEHM <aur@mail.gboehm.com>
 pkgname=nordzy-hyprcursors
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Hyprcursors from https://github.com/guillaumeboehm/Nordzy-cursors."
 arch=(any)
 url="https://github.com/guillaumeboehm/Nordzy-cursors"
@@ -14,10 +14,10 @@ source=(
 )
 noextract=("${source[@]##*/}")
 sha256sums=(
-    "06566625d81d1446c2a51d39deb526c1be8a5482c8a7d19b1db46f996446a17d"
-    "a77d124fc03764260af7f54b916bafa9a8431c2cdcfd49b3f5c760ae02f933bb"
-    "f077dda64ea856abef3fb3e69559e2ac10738d2b1576b8209caceb01b4a49588"
-    "f547315ab56b97cd84978d1bdd40a9512bd95e4287b28a9fd7f6c469a74f37ff"
+    "d13767cd6d4757ddc3722e407d7a5f3422a4e4cce231495b7cf4d1be3e7a8b35"
+    "81d82bd012c1b76a48e1026f1fdb5a66bc9374fb1c6cad64530d3d1b6b14711e"
+    "52994efc2e01263781e1a14fd1f223d08239314b9647edee8cefc321be1bd688"
+    "858cfffae8c92bb8816e172881a5dd1bbbebdf3cf5833cb6befa104211177f00"
 )
 
 package() {
