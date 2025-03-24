@@ -3,7 +3,7 @@
 _srcname=gnome-awesome-tiles-extension
 pkgname=gnome-shell-extension-awesome-tiles
 pkgver=14
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME extension to tile windows using keyboard shortcuts"
 arch=('any')
 url="https://github.com/velitasali/${_srcname}"
@@ -21,6 +21,10 @@ sha512sums=('ebfe563652828380f3d2ce4bcc2722f224e04a9fec59ba4d3c461dee019f39bcf61
 build () {
   _srcdir="${srcdir}/${pkgname}-${pkgver}"
   cd "${_srcdir}"
+  # hotfix to enable GNOME 48 compatibility:
+  if grep -qE '"47"$' src/metadata.json; then
+    sed -i 's/    "47"/    "47",/; /"47",/a\ \ \ \ "48"' src/metadata.json
+  fi
   ./install.sh zip
 }
 
