@@ -1,0 +1,12 @@
+pkgbase = smos-bin
+	pkgdesc = The tool that manages your stress and workload
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://smos.cs-syd.eu/
+	arch = x86_64
+	license = MIT
+	provides = smos
+	source = smos-bin-0.10.0.zip
+	sha256sums = f1cd3136aef464c7e16d9b1bbd9aa65e799e9d6d64d7a234e51ed313c5b9ac2d
+
+pkgname = smos-bin
