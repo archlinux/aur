@@ -1,13 +1,11 @@
 # Maintainer: Entailz <entail-wraps0r at icloud dot com>
 
 pkgname=quickshell
-pkgver=0.1.af14a41
+pkgver=r484.aeb347b
 pkgrel=1
 pkgdesc='Simple and flexbile QtQuick based desktop shell toolkit.'
 arch=(x86_64 aarch64)
-url='https://github.com/outfoxxed/quickshell'
-conflicts=("quickshell")
-provides=("quickshell")
+url='https://quickshell.outfoxxed.me/'
 options=(!strip)
 license=('GPL')
 depends=(
@@ -32,34 +30,34 @@ makedepends=(
   'pkgconf'
 )
 
-source=(
-  "git+https://github.com/outfoxxed/quickshell.git"
-
-)
-sha256sums=(
-  'SKIP'
-)
+source=(git+https://git.outfoxxed.me/$pkgname/$pkgname
+  quickshell-check.hook)
+sha256sums=('SKIP'
+  '8543e21aeaaa5441b73a679160e7601a957f16c433e8d6bd9257e80bd0e94083')
+b2sums=('SKIP'
+  'c729d8c05d0490eda0a4095d831f7fe4f2873debe0dd3dbb0de41a801ed652a885de7048cecc26eaddec9d22e68a7d00552ad3f3db96d80041671192faf0afe0')
 
 pkgver() {
   cd "$srcdir/quickshell"
-  printf "0.1.%s" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname}"
+  cd $pkgname
   cmake -GNinja -B build \
     -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DDISTRIBUTOR="AUR (package: quickshell)" \
     -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=NO \
-    -DINSTALL_QML_PREFIX=/lib/qt6/qml
+    -DINSTALL_QML_PREFIX=lib/qt6/qml
 
   cmake --build build
 }
 
 package() {
-  cd "${pkgname}"
+  install -Dm644 "quickshell-check.hook" -t "$pkgdir/usr/share/libalpm/hooks"
+
+  cd $pkgname
   DESTDIR=$pkgdir cmake --install build
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "../../quickshell-check.hook" "$pkgdir/usr/share/libalpm/hooks/quickshell-check.hook"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
