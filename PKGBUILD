@@ -1,6 +1,6 @@
 # Maintainer: Afio Vinícius <afiovinicius@gmail.com>
 pkgname=note-liber-bin
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Note Liber is a simple sticky notes app for Linux."
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=(
   'appmenu-gtk-module' 
   'libappindicator-gtk3' 
   'librsvg'
+  'inter-font'
+  'ttf-hack'
 )
 makedepends=('dpkg' 'rust' 'npm' 'nodejs' 'cargo-tauri')
 source=("$url/releases/download/$pkgver/note-liber"_"$pkgver"_amd64.deb)
