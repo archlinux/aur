@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scone
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Single Cell Overview of Normalized Expression data'
 arch=('any')
@@ -29,6 +29,8 @@ depends=(
   r-ruvseq
   r-singlecellexperiment
   r-summarizedexperiment
+  r-delayedmatrixstats
+  r-sparsematrixstats
 )
 optdepends=(
   r-batchtools
@@ -54,7 +56,7 @@ optdepends=(
   r-visnetwork
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('207ad33460454f77b3b78cc1b48a42f8c0e8c4da877c3203ec5b0ddd986176e3')
+sha256sums=('d1fcbdc6993adaa778a959aa9d057fc457a74e2d1c67a3e197bac5af67f7b232')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
