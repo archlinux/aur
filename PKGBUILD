@@ -3,7 +3,6 @@
 
 _basename=jicofo
 _version=1.0+1124
-_url=https://download.jitsi.org/stable/jicofo_1.0-1124-1_all.deb
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
@@ -23,7 +22,7 @@ backup=(
   "etc/${_pkgbase}/jicofo.conf"
 )
 source=(
-        "$_url"
+        "https://download.jitsi.org/stable/jicofo_${_version//+/-}-1_all.deb"
         "jicofo_${_version#1.0+}.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
         "config"
         "service"
