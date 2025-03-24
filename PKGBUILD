@@ -11,6 +11,7 @@ url="https://github.com/aziz/tmuxinator"
 license=(MIT)
 depends=(
   'ruby'
+  'ruby-erb'
   'ruby-erubi'
   'ruby-thor'
   'ruby-xdg'
