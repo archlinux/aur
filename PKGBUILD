@@ -1,18 +1,18 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+# Maintainer: redponike <proton (dot) me>
+# Contributor: Adam Perkowski <adas1per@protonmail.com>
 
 pkgname=fancy-cat
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc='PDF reader for terminal emulators'
+pkgdesc='PDF reader for terminal emulators using the Kitty image protocol'
 arch=('x86_64')
 url="https://github.com/freref/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('60f92cd08da6ed845b81edca75f376bf312b26e5420b7a244b275845b6f38af8')
+sha256sums=('bce101d5eb009ec9057f7b87f6ad767ee96238abcee8854a9db7febd0229a2bf')
 depends=('glibc' 'libmupdf')
-makedepends=('zig=0.13.0'
-  'freetype2' 'harfbuzz' 'jbig2dec' 'openjpeg2' 'libjpeg-turbo' 'gumbo-parser' 'mujs' 'zlib')
+makedepends=('zig-bin' 'freetype2' 'harfbuzz' 'jbig2dec' 'openjpeg2' 'libjpeg-turbo' 'gumbo-parser' 'mujs' 'zlib')
+# We're forcing zig-bin as we need Zig 0.14.0. This will be reverted to the zig dependency once 0.14.0 hits the repo
 
 prepare() {
   cd "$pkgname-$pkgver"
