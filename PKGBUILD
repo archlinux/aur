@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nostr-relay-tray-bin
-pkgver=1.9.1
+pkgver=2.0.0
 _electronversion=28
 pkgrel=1
 pkgdesc="A simple nostr relay tray.(Prebuilt version.Use system-wide electron)"
@@ -17,17 +17,17 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CodyTseng/nostr-relay-tray/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('822fcf24c471e153ce94421e424ba37a8d89d90cf3586172a23309e38f410f7e'
+sha256sums=('c78587a7766382905793fc69fc3a619f9ae0d84e53ac386c381d151fc8ed9c4c'
             '6aa57f1ed1b76d69cf0dbd1d68048c6a718a80589d762a8e2f2f2a389c802083'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
