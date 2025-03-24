@@ -9,20 +9,19 @@ pkgname="lib32-${_name}"
 _commit_rel="f060abee2807c943821d88839c013ce15db17b58" # 0.8
 _commit="3f79789c484518f82c36ff59c0f45abe7e6580a2" # r194
 pkgver="0.8+r194+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour) (32-bit)"
 arch=('x86_64')
 url="https://github.com/avahi/${_name}"
 license=('LGPL-2.1-or-later')
-depends=('lib32-dbus' 'lib32-expat' 'lib32-gdbm' 'lib32-glib2' 'lib32-glibc'
-         'lib32-libcap' 'lib32-libdaemon' 'lib32-systemd' "${_name}")
-makedepends=('glib2-devel' 'gobject-introspection' 'lib32-gtk3'
-             'lib32-libevent' 'python-dbus' 'python-gobject' 'xmltoman') # 'lib32-qt5-base'
+depends=("${_name}>=${pkgver}" 'lib32-dbus>=0.34' 'lib32-gdbm'
+         'lib32-glib2>=2.4' 'lib32-glibc')
+makedepends=('glib2-devel' 'lib32-gtk3' 'lib32-libevent') # 'lib32-qt5-base'
 optdepends=('lib32-gtk3: avahi-discover, avahi-discover-standalone, bshell, bssh, bvnc'
-            'lib32-libevent: libevent bindings')
+            'lib32-libevent>=2.0.21: libevent bindings')
 provides=("lib${_name}-"{client,common,core,glib,gobject,libevent,ui-gtk3}".so" # ,qt5
           'libdns_sd.so')
-backup=("usr/lib32/${_name}/service-types.db")
+# backup=("usr/lib32/${_name}/service-types.db")
 _pkgsrc="${_name}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz"
         "0001-HACK-Install-fixes.patch")
@@ -33,7 +32,8 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   patch -Np1 -i "${srcdir}/0001-HACK-Install-fixes.patch"
 
-  NOCONFIGURE=1 ./autogen.sh
+  sed -E ':a;N;s/\\\n\t(avahi-discover-standalone|avahi-utils|man|po)//;ba' \
+      -i 'Makefile.am'
 }
 
 build() {
@@ -41,32 +41,72 @@ build() {
   export CXXFLAGS+=" -m32"
   export LDFLAGS+=" -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local configure_options=(
+    --prefix='/usr'
+    --sysconfdir='/etc'
+    --localstatedir='/var'
+    --sbindir='/usr/bin'
+    --runstatedir='/run'
+    --program-suffix='-32'
+    --lib{exec,}dir='/usr/lib32'
+    --build=i686-pc-linux-gnu
+    --enable-gobject
+    --disable-gtk
+    --enable-gtk3
+    --enable-dbus
+    --with-xml=none
+    --enable-gdbm
+    --disable-dbm
+    --disable-libdaemon
+    --disable-libsystemd
+    --disable-python # ?
+    --disable-pygobject
+    --disable-python-dbus
+    --disable-qt3
+    --disable-qt4
+    --disable-qt5
+    --disable-mono
+    --disable-monodoc
+    --with-distro='archlinux'
+    --with-avahi-user="${_name}"
+    --with-avahi-group="${_name}"
+    --with-avahi-priv-access-group='network'
+    --with-autoipd-user="${_name}"
+    --with-autoipd-group="${_name}"
+    --disable-stack-protector # respect build flags
+    --with-systemdsystemunitdir='/usr/lib/systemd/system'
+    --with-dbus-sys='/usr/share/dbus-1/system.d'
+    --enable-compat-libdns_sd
+    --enable-tests
+    --disable-core-docs
+    --disable-autoipd
+    --disable-manpages
+    --disable-xmltoman
+    --disable-introspection
+  )
 
   cd "${srcdir}/${_pkgsrc}"
-  ./configure \
-    --prefix='/usr' \
-    --program-suffix="-32" \
-    --lib{exec,}dir='/usr/lib32' \
-    --build=i686-pc-linux-gnu \
-    --disable-mono \
-    --disable-qt5 \
-    --enable-compat-libdns_sd \
-    --with-autoipd-group="${_name}" \
-    --with-autoipd-user="${_name}" \
-    --with-avahi-priv-access-group='network' \
-    --with-distro='archlinux' \
-    --with-dbus-sys='/usr/share/dbus-1/system.d' \
-    --with-systemdsystemunitdir='/usr/lib/systemd/system'
-    # --sbindir='/usr/bin' 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure "${configure_options[@]}"
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' 'libtool' # Fix overlinking
   make
 }
+
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   make check
+# }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
   make DESTDIR="${pkgdir}" install
 
-  cd "${pkgdir}/usr"
-  rm -rf "bin" "etc" "include" "lib" "share"
-  mv -f "sbin" "bin"
+  cd "${pkgdir}"
+  rm -rf "etc"
+
+  cd "usr"
+  rm -rf "bin" "include" "lib" "sbin" "share"
+
+  cd "lib32"
+  rm -rf "girepository-1.0"
 }

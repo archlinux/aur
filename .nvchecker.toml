@@ -1,0 +1,4 @@
+[lib32-avahi]
+source = "archpkg"
+archpkg = "avahi"
+strip_release = true
