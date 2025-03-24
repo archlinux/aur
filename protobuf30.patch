@@ -1,0 +1,76 @@
+diff -ur gz-msgs-gz-msgs9_9.5.1.old/src/Generator.cc gz-msgs-gz-msgs9_9.5.1.new/src/Generator.cc
+--- gz-msgs-gz-msgs9_9.5.1.old/src/Generator.cc	2024-11-07 18:13:52.000000000 +0100
++++ gz-msgs-gz-msgs9_9.5.1.new/src/Generator.cc	2025-03-24 22:59:59.903228779 +0100
+@@ -147,7 +147,11 @@
+ 
+ )");
+ 
+-    auto ns = getNamespaces(_file->package());
++#if GOOGLE_PROTOBUF_VERSION >= 6030000
++    auto ns = getNamespaces(std::string(_file->package()));
++#else
++     auto ns = getNamespaces(_file->package());
++#endif
+ 
+     for (const auto &name : ns)
+         printer.PrintRaw("namespace " + name + " {\n");
+@@ -155,29 +159,29 @@
+     for (auto i = 0; i < _file->message_type_count(); ++i)
+     {
+       auto desc = _file->message_type(i);
+-      std::string ptrTypes;
++      std::stringstream ptrTypes;
+ 
+       // Define std::unique_ptr types for our messages
+-      ptrTypes += "typedef std::unique_ptr<"
+-        + desc->name() + "> "
+-        + desc->name() + "UniquePtr;\n";
++      ptrTypes << "typedef std::unique_ptr<"
++        << desc->name() << "> "
++        << desc->name() << "UniquePtr;\n";
+ 
+       // Define const std::unique_ptr types for our messages
+-      ptrTypes += "typedef std::unique_ptr<const "
+-        + desc->name() + "> Const"
+-        + desc->name() + "UniquePtr;\n";
++      ptrTypes << "typedef std::unique_ptr<const "
++        << desc->name() << "> Const"
++        << desc->name() << "UniquePtr;\n";
+ 
+       // Define std::shared_ptr types for our messages
+-      ptrTypes += "typedef std::shared_ptr<"
+-        + desc->name() + "> "
+-        + desc->name() + "SharedPtr;\n";
++      ptrTypes << "typedef std::shared_ptr<"
++        << desc->name() << "> "
++        << desc->name() << "SharedPtr;\n";
+ 
+       // Define const std::shared_ptr types for our messages
+-      ptrTypes += "typedef std::shared_ptr<const "
+-        + desc->name() + "> Const"
+-        + desc->name() + "SharedPtr;\n";
++      ptrTypes << "typedef std::shared_ptr<const "
++        << desc->name() << "> Const"
++        << desc->name() << "SharedPtr;\n";
+ 
+-      printer.PrintRaw(ptrTypes.c_str());
++      printer.PrintRaw(ptrTypes.str());
+     }
+ 
+     for (auto name = ns.rbegin(); name != ns.rend(); name++)
+@@ -206,10 +210,11 @@
+ 
+     for (auto i = 0; i < _file->message_type_count(); ++i)
+     {
+-      std::string factory = "GZ_REGISTER_STATIC_MSG(\"gz_msgs.";
+-      factory += _file->message_type(i)->name() + "\", " +
+-        _file->message_type(i)->name() +")\n";
+-      printer.Print(factory.c_str(), "name", "includes");
++      std::stringstream factory;
++      factory << "GZ_REGISTER_STATIC_MSG(\"gz_msgs.";
++      factory << _file->message_type(i)->name() << "\", " <<
++        _file->message_type(i)->name() << ")\n";
++      printer.Print(factory.str(), "name", "includes");
+     }
+   }
+   return true;
