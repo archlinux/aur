@@ -8,7 +8,7 @@ pkgdesc="Prometheus Client Library for Modern C++"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/jupp0r/${pkgname}"
 license=("MIT")
-depends=(curl zlib)
+depends=(glibc gcc-libs curl zlib)
 makedepends=(cmake clang)
 
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/jupp0r/${pkgname}/releases/download/${_tag}/${pkgname}-with-submodules.tar.gz")
@@ -19,7 +19,12 @@ prepare() {
   cd "${pkgname}-with-submodules"
   mkdir -p build
   cd build
-  cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. \
+  -DBUILD_SHARED_LIBS=ON \
+  -DCMAKE_BUILD_TYPE="Release" \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_CXX_FLAGS="-mshstk" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-Wl,-z,relro,-z,now,-z,shstk"
 }
 
 build() {
@@ -29,7 +34,7 @@ build() {
 
 check() {
   cd "${pkgname}-with-submodules/build"
-  ctest -VV
+  ctest -V -E "benchmarks"
 }
 
 package() {
