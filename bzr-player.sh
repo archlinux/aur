@@ -38,7 +38,11 @@ if [ ! -d "$WINEPREFIX" ]; then
   WINEDEBUG=-all wine reg add "HKEY_CURRENT_USER\Software\Wine\WineDbg" /v ShowCrashDialog /t REG_DWORD /d 0 /f
 
   # disable wine debugger (winetricks autostart_winedbg=disabled)
+
+  # win32
   WINEDEBUG=-all wine reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AeDebug" /v Debugger /t REG_SZ /d "false" /f
+  # win64
+  WINEDEBUG=-all wine reg add "KEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\AeDebug" /v Debugger /t REG_SZ /d "false" /f
 
   # --- app data setup ---
   ln -s "$bzr2_path_sys/BZRPlayer.exe" "$bzr2_path_home/$bzr2"
