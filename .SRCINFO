@@ -1,6 +1,6 @@
 pkgbase = arcdps-log-manager
 	pkgdesc = Manager for Guild Wars 2 arcdps EVTC logs
-	pkgver = 1.13.1
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://gw2scratch.com/tools/manager
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = arcdps-log-manager
 	makedepends = imagemagick
 	depends = dotnet-runtime-8.0
 	depends = gtk3
-	source = git+https://github.com/gw2scratch/evtc.git#tag=manager-v1.13.1
+	source = git+https://github.com/gw2scratch/evtc.git#tag=manager-v1.14.1
 	source = arcdps-log-manager.desktop
-	sha256sums = a842272d5d56adf56f20ddb0872721f092e1590d89db12c1b029bcda8289728d
+	sha256sums = 2934831353206a7c953df07058e13e81e3355cdef9a8d78021d07e89861a8e5e
 	sha256sums = ed093835a12ef648e9f19035faca91db0e18c89837e66f44e4e6e81980ac5bce
 
 pkgname = arcdps-log-manager
