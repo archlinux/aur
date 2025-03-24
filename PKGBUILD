@@ -3,7 +3,7 @@
 # Contributor: Sergey Safonov <spoof-arch@spoofa.info>
 
 pkgname=python-lzo
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Python bindings for the LZO data compression library"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('GPL2')
 depends=(python)
 makedepends=(lzo python-{build,installer,wheel,setuptools})
 checkdepends=(python-pytest)
-source=("https://pypi.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('a57aaa00c5c3a0515dd9f7426ba2cf601767dc19dc023d8b99d4a13b0a327b49')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jd-boyd/python-lzo/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('81542d191c6a3f81bd8f04e75a12107ef8197c35e5b7b54c11773910fd56a065')
 
 build() {
   cd "$pkgname-$pkgver"
