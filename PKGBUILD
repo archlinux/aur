@@ -1,15 +1,16 @@
+# Maintainer: vielfrass
 # Maintainer: Jef Roosens
 # Contributor: Logan Magee <mageelog@gmail.com>
 
 # Commit hashes for the latest release in the v & vc repositories
 # Using the direct downloads for the commits greatly reduces the time needed to
 # pull down the sources, as the vlang repository is >100MB.
-_v_commit_sha=39534459885e916e2765b5b0c0ed66ce15f0ab86
+_v_commit_sha=9b1937a87166e3327497f332bf9584ff90592617
 _vc_commit_sha=27942c7ab5a12b9253eb69eaf3a58699bcdd5189
 
 pkgname=vlang
-pkgver=0.4.9
-pkgrel=2
+pkgver=0.4.10
+pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64' 'aarch64')
 url='https://vlang.io'
@@ -22,9 +23,9 @@ makedepends=('git' 'libx11')
 conflicts=('v')
 source=("v-${pkgver}.zip::https://github.com/vlang/v/archive/${_v_commit_sha}.zip"
         "vc-${pkgver}.zip::https://github.com/vlang/vc/archive/${_vc_commit_sha}.zip")
-sha256sums=('38724bbd04474f4fa384e4e985b39703cc49922b5db33cf2e5cbb11181c1610f'
+sha256sums=('8ac80fd79f80ea7aa1b244d2b3e0d2f12f97b32b71c5823704b5dd6134818239'
             'bd2c0515a81e71f511ed62ce9ae90378c368d236bee086262fb10b7366cf85fa')
-sha512sums=('cead2aa73b9976041d368739c38cdb900f187adb7fed8470182caca3bb41da0f9dddbf2a40c24ac8b071a30c2db151fcd09ec0287867c129959b6c85a9c65d97'
+sha512sums=('993bf3d65e092f7eb51b128ec15f9b4a78c28356e9f68981c3c2df913f2b1706dcf24f5411909f3b6a2e96c22dd88d1da236b5a0250aa3e208d836dd56c6d1b0'
             'af8aa7280e93010f10966e99be7879e26afdf7a54ae5013f171953be941357f68b1142a01d11d6d156547f454e7c1e03e0e13fab6121aeb12ed27dcb8371a480')
 
 prepare() {
