@@ -3,7 +3,6 @@
 _basename=jitsi-meet
 _pkgname=prosody
 _version=1.0.8448
-_url=https://download.jitsi.org/unstable/jitsi-meet-prosody_1.0.8448-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}
@@ -21,7 +20,7 @@ options=('!strip')
 backup=(
 )
 source=(
-        "$_url"
+        "https://download.jitsi.org/unstable/jitsi-meet-prosody_${_version}-1_all.deb"
 )
 provides=(${_pkgbase})
 conflicts=(${_pkgbase})
