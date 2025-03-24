@@ -1,7 +1,7 @@
 pkgbase = python-hiermat
 	pkgdesc = An implementation in Python of the concept of hierarchical matrices as described by W. Hackbusch.
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maekke97/HierarchicalMatrices
 	arch = any
 	license = GPL3
