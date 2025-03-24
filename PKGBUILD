@@ -11,7 +11,7 @@ url="https://gitlab.com/AndrewZaech/aztaskbar"
 license=('GPL3')
 depends=('dconf' 'gnome-shell>=1:45')
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-b2sums=('6bf5a3f9f9f3eddc24660ed0ff8eca9dab6d50a47fdfd30ab6cbc7a934280de3396b385a7cdec95d400cf290323a5fce31c0dc273d4ba8dfaf011c66e9e3fd56')
+b2sums=('962ec185896a600bbf5120f345986db88df84ef4a5b95b483862325c522e10419426e3da47db46405e34abe8264c78f9d65d9e224eb31a85b3a5cfc5d6e5ebde')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
