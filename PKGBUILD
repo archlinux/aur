@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname='Hugin Messenger'
-pkgver=0.8.3
+pkgver=0.8.4
 _electronversion=19
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('b6c85e1659cb0d6a55cc23c58257ad5fb078f8b8dd027f87e1a63e4d587d7cf3'
+sha256sums=('f8d44b917208e575f01788fc244547e79bdd0d11985d48052f6e3111430f10b0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -50,7 +50,7 @@ prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
