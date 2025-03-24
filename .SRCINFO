@@ -1,6 +1,6 @@
 pkgbase = python-pdbp
 	pkgdesc = A drop-in replacement for pdb and pdbpp
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/mdmintz/pdbp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pdbp
 	makedepends = python-wheel
 	depends = python-pygments
 	depends = python-tabcompleter
-	source = pdbp-1.6.1.tar.gz::https://github.com/mdmintz/pdbp/archive/v1.6.1.tar.gz
-	sha512sums = 643464c9ad05e5f4a9871fb53c423b0e8e8e0fe36fba50911d96a0050248b248c7d71d5d601d5e8d6eb6a202450ae4d3bd782780cf933824045317dc1f8c075c
+	source = pdbp-1.7.0.tar.gz::https://github.com/mdmintz/pdbp/archive/v1.7.0.tar.gz
+	sha512sums = 0931c8e441b24ae696978de3450fae6f3f6bcd8902d991310a43de744212f7c6f59f9847fe904343f39db37e21615d7732342e7c2eb2464d4d02cc3e30b175b2
 
 pkgname = python-pdbp
