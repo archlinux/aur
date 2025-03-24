@@ -1,0 +1,16 @@
+pkgbase = perl-regexp-util
+	pkgdesc = A selection of general-utility regexp subroutines
+	pkgver = 0.005
+	pkgrel = 1
+	url = https://metacpan.org/release/Regexp-Util
+	arch = i686
+	arch = x86_64
+	license = Artistic-1.0
+	depends = perl-exporter-tiny>=0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/T/TO/TOBYINK/Regexp-Util-0.005.tar.gz
+	md5sums = 8fd3e4adabcfe44b5c3fba28b1d10168
+	sha512sums = 83e40a14fa75a4d809af4f39087154332a85cafd144350982b0481f338c598bdccf8c930accf29327246251702239782c58333a54de1a92742999a2b45a19ca1
+
+pkgname = perl-regexp-util
