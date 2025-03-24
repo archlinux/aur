@@ -1,7 +1,7 @@
 # Maintainer: Andrew Demarest <contact@yonderserver.com>
 pkgname=tablet-switch-git
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A system tray application to manually switch between 2-in-1 laptop modes.'
 arch=('x86_64')
 url='https://github.com/ademarest/tablet-switch'
