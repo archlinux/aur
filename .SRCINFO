@@ -1,14 +1,14 @@
 pkgbase = thundery
-	pkgdesc = A weather fetching cli
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/loefey/thundery
-	arch = x86_64
-	license = GNU General Public License v3.0
-	makedepends = cargo
-	makedepends = git
-	depends = glibc
-	source = git+https://github.com/loefey/thundery
-	sha256sums = SKIP
+pkgdesc = A weather fetching cli
+pkgver = 1.0.1
+pkgrel = 1
+url = https://github.com/loefey/thundery
+arch = x86_64
+license = GNU General Public License v3.0
+makedepends = cargo
+makedepends = git
+depends = glibc
+source = git+https://github.com/loefey/thundery
+sha256sums = SKIP
 
 pkgname = thundery
