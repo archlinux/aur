@@ -11,6 +11,7 @@ pkgbase = fprintd-clients
 	makedepends = python-cairo
 	makedepends = python-dbus
 	makedepends = python-dbusmock
+	makedepends = glib2-devel
 	depends = glib2
 	depends = libfprint
 	depends = polkit
