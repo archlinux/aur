@@ -2,7 +2,7 @@
 
 pkgname=lichtblick-bin
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lichtblick is an integrated visualization and diagnosis tool for robotics, available in your browser or as a desktop app on Linux, Windows, and macOS.'
 arch=('x86_64' 'aarch64')
 license=('MPL')
