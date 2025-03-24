@@ -1,7 +1,7 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 pkgname=helion-git
 pkgver=0.9.6.1.r129.g664657f
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
