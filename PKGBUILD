@@ -2,22 +2,16 @@
 # Contributor: dummyx <dummyxa at gmail dot com>
 
 pkgname=vvenc
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='A H.266/VVC (Versatile Video Coding) encoder'
 arch=('x86_64')
 url='https://github.com/fraunhoferhhi/vvenc/'
 license=('BSD-3-Clause-Clear')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake')
-source=("https://github.com/fraunhoferhhi/vvenc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        '010-vvenc-fix-unit-test-with-shared-lib.patch'::"https://github.com/fraunhoferhhi/vvenc/pull/492/commits/42763a903fe122bc203f3aa9bbe5a5f4754758a0.patch")
-sha256sums=('28994435e4f7792cc3a907b1c5f20afd0f7ef1fcd82eee2af7713df7a72422eb'
-            '324299c2f01d16c1c77175318ddd3d102e14508da1d4d380f9591b52a946bd2b')
-
-prepare() {
-    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-vvenc-fix-unit-test-with-shared-lib.patch"
-}
+source=("https://github.com/fraunhoferhhi/vvenc/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('9d0d88319b9c200ebf428471a3f042ea7dcd868e8be096c66e19120a671a0bc8')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
