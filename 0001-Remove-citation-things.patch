@@ -1,8 +1,20 @@
 diff --git a/src/parallel b/src/parallel
-index fdc641fd..ba45a846 100755
+index 1e9a1ac3..400e613e 100755
 --- a/src/parallel
 +++ b/src/parallel
-@@ -2374,14 +2374,6 @@ sub parse_options(@) {
+@@ -2129,11 +2129,6 @@ sub options_completion_hash() {
+ 	 "gnu[Behave like GNU parallel]" => \$opt::gnu,
+ 	 "link|xapply[Link input sources]" => \$opt::link,
+ 	 "linkinputsource|xapplyinputsource=i" => \@opt::linkinputsource,
+-	 # Before changing these lines,  please read
+-	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
+-	 # https://git.savannah.gnu.org/cgit/parallel.git/tree/doc/citation-notice-faq.txt
+-	 # You accept to be put in a public hall-of-shame by removing
+-	 # these lines
+ 	 ("bibtex|citation".
+ 	  "[Print the citation notice and BibTeX entry for GNU parallel, ".
+ 	  "silence citation notice for all future runs, and exit. ".
+@@ -2377,14 +2372,6 @@ sub parse_options(@) {
      init_globals();
      my @argv_before = @ARGV;
      @ARGV = read_options();
@@ -17,7 +29,7 @@ index fdc641fd..ba45a846 100755
      # no-* overrides *
      if($opt::nokeeporder) { $opt::keeporder = undef; }
  
-@@ -2711,87 +2703,6 @@ sub parse_options(@) {
+@@ -2714,87 +2701,6 @@ sub parse_options(@) {
  	}
      }
  
@@ -105,7 +117,7 @@ index fdc641fd..ba45a846 100755
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-@@ -6015,85 +5926,9 @@ sub usage() {
+@@ -6046,85 +5952,9 @@ sub usage() {
  	 "--recstart str  Record start separator for --pipe.",
  	 "",
  	 "GNU Parallel can do much more. See 'man $Global::progname' for details",
@@ -114,8 +126,8 @@ index fdc641fd..ba45a846 100755
 -	 "If you use programs that use GNU Parallel to process data for an article in a",
 -	 "scientific publication, please cite:",
 -	 "",
--	 "  Tange, O. (2025, February 22). GNU Parallel 20250222 ('Grete Tange').",
--	 "  Zenodo. https://doi.org/10.5281/zenodo.14911163",
+-	 "  Tange, O. (2025, March 22). GNU Parallel 20250322 ('Have you said thank you').",
+-	 "  Zenodo. https://doi.org/10.5281/zenodo.15071920",
 -	 "",
 -	 # Before changing these lines,  please read
 -	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
@@ -147,8 +159,8 @@ index fdc641fd..ba45a846 100755
 -	     "If you use programs that use GNU Parallel to process data for an article in a",
 -	     "scientific publication, please cite:",
 -	     "",
--	     "  Tange, O. (2025, February 22). GNU Parallel 20250222 ('Grete Tange').",
--	     "  Zenodo. https://doi.org/10.5281/zenodo.14911163",
+-	     "  Tange, O. (2025, March 22). GNU Parallel 20250322 ('Have you said thank you').",
+-	     "  Zenodo. https://doi.org/10.5281/zenodo.15071920",
 -	     "",
 -	     # Before changing these line,   please read
 -	     # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
@@ -191,7 +203,7 @@ index fdc641fd..ba45a846 100755
  sub status(@) {
      my @w = @_;
      my $fh = $Global::status_fd || *STDERR;
-@@ -6158,99 +5993,9 @@ sub version() {
+@@ -6189,9 +6019,6 @@ sub version() {
  	 "This is free software: you are free to change and redistribute it.",
  	 "GNU $Global::progname comes with no warranty.",
  	 "",
@@ -201,93 +213,3 @@ index fdc641fd..ba45a846 100755
  	);
  }
  
--sub citation() {
--    # Returns: N/A
--    my ($all_argv_ref,$argv_options_removed_ref) = @_;
--    my $all_argv = "@$all_argv_ref";
--    my $no_opts = "@$argv_options_removed_ref";
--    $all_argv=~s/--citation//;
--    if($all_argv ne $no_opts) {
--	::warning("--citation ignores all other options and arguments.");
--	::status("");
--    }
--
--    ::status(
--	"Academic tradition requires you to cite works you base your article on.",
--	"If you use programs that use GNU Parallel to process data for an article in a",
--	"scientific publication, please cite:",
--	"",
--	"\@software{tange_2025_14911163,",
--	"      author       = {Tange, Ole},",
--	"      title        = {GNU Parallel 20250222 ('Grete Tange')},",
--	"      month        = Feb,",
--	"      year         = 2025,",
--	"      note         = {{GNU Parallel is a general parallelizer to run",
--	"                       multiple serial command line programs in parallel",
--	"                       without changing them.}},",
--	"      publisher    = {Zenodo},",
--	"      doi          = {10.5281/zenodo.14911163},",
--	"      url          = {https://doi.org/10.5281/zenodo.14911163}",
--	"}",
--	"",
--	"(Feel free to use \\nocite{tange_2025_14911163})",
--	"",
--	# Before changing these lines, please read
--	# https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
--	# https://git.savannah.gnu.org/cgit/parallel.git/tree/doc/citation-notice-faq.txt
--	# You accept to be put in a public hall of shame by removing
--	# these lines
--	"This helps funding further development; AND IT WON'T COST YOU A CENT.",
--	"If you pay 10000 EUR you should feel free to use GNU Parallel without citing.",
--	"",
--	"More about funding GNU Parallel and the citation notice:",
--	"https://lists.gnu.org/archive/html/parallel/2013-11/msg00006.html",
--	"https://www.gnu.org/software/parallel/parallel_design.html#citation-notice",
--	"https://git.savannah.gnu.org/cgit/parallel.git/tree/doc/citation-notice-faq.txt",
--	""
--	);
--    while(not grep { -e "$_/will-cite" } @Global::config_dirs) {
--	print "\nType: 'will cite' and press enter.\n> ";
--	my $input = <STDIN>;
--	if(not defined $input) {
--	    exit(255);
--	}
--	if($input =~ /will cite/i) {
--	    if(mkdir $Global::config_dir) {
--                # Recompute @Global::config_dirs so we can break out of the loop.
--                init_globals();
--            }
--	    if(open (my $fh, ">", $Global::config_dir."/will-cite")) {
--		close $fh;
--		::status(
--		    "",
--		    "Thank you for your support: You are the reason why there is funding to",
--		    "continue maintaining GNU Parallel. On behalf of future versions of",
--		    "GNU Parallel, which would not exist without your support:",
--		    "",
--		    "  THANK YOU SO MUCH",
--		    "",
--		    "It is really appreciated. The citation notice is now silenced.",
--		    "");
--	    } else {
--		::status(
--		      "",
--		      "Thank you for your support. It is much appreciated. The citation",
--		      "cannot permanently be silenced. Use '--will-cite' instead.",
--		      "",
--		      "If you use '--will-cite' in scripts to be run by others you are making",
--		      "it harder for others to see the citation notice.  The development of",
--		      "GNU Parallel is indirectly financed through citations, so if users",
--		      "do not know they should cite then you are making it harder to finance",
--		      "development. However, if you pay 10000 EUR, you should feel free to",
--		      "use '--will-cite' in scripts.",
--		      "");
--		last;
--	    }
--	}
--    }
--}
--
- sub show_limits() {
-     # Returns: N/A
-     print("Maximal size of command: ",Limits::Command::real_max_length(),"\n",
