@@ -2,8 +2,8 @@
 appname=kt5
 pkgname=$appname-bin
 orgname=Iztech
-pkgver=2.0.16
-pkgrel=2
+pkgver=2.0.17
+pkgrel=1
 pkgdesc="Программа для управления калибраторами температуры серии КТ-5 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
