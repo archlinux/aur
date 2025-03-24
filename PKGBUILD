@@ -10,7 +10,7 @@ _vc_commit_sha=27942c7ab5a12b9253eb69eaf3a58699bcdd5189
 
 pkgname=vlang
 pkgver=0.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64' 'aarch64')
 url='https://vlang.io'
@@ -43,6 +43,15 @@ prepare() {
 build() {
     cd "v-${_v_commit_sha}"
 
+    local tmpdir="/tmp/${pkgname}-${_v_commit_sha}"
+    mkdir -p "$tmpdir" || { echo "Can't create temporary directory!"; exit 1; }
+
+    # Delete directory when exiting function (even if there is an error)
+    trap 'rm -rf "$tmpdir"' RETURN
+
+    # Redefining HOME and TMPDIR for Isolation
+    export HOME="$tmpdir"
+    export TMPDIR="$tmpdir"
     CFLAGS="" LDFLAGS="" make prod=1 local=1
 
     # Compile all tools
