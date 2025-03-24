@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SparseSignatures
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='SparseSignatures'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('custom')
 depends=(
-  r
   r-biostrings
   r-bsgenome
   r-data.table
@@ -23,6 +22,7 @@ depends=(
   r-nnlasso
   r-nnls
   r-reshape2
+  r-rhpcblasctl
 )
 optdepends=(
   r-biocgenerics
@@ -32,7 +32,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7ce1a83ce032d5a1c7d5c1b30c29c7b9a963e60fdfd86b125a5ff04b92de01f3')
+sha256sums=('a37afacea1fcd9972cc9d669ca6af225c396f281fe0db0f2c971403a37b2d6be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
