@@ -2,7 +2,7 @@
 
 _pkgname=docx2txt
 pkgname="python-${_pkgname}"
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="A pure python-based utility to extract text and images from docx files."
 arch=("any")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=("python")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('2c06d98d7cfe2d3947e5760a57d924e3ff07745b379c8737723922e7009236e5')
+sha256sums=('18013f6229b14909028b19aa7bf4f8f3d6e4632d7b089ab29f7f0a4d1f660e28')
 
 build() {
     cd "${_pkgname}-${pkgver}"
