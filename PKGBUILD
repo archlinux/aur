@@ -1,7 +1,7 @@
 # Maintainer: Nick To <nick at nickto dot net>
 pkgname="filen-cli-bin"
-pkgver="0.0.29"
-pkgrel=1
+pkgver="0.0.31"
+pkgrel=0
 pkgdesc="The Filen CLI provides a set of useful tools for interacting with the cloud."
 arch=("x86_64" "aarch64")
 url="https://github.com/FilenCloudDienste/filen-cli"
@@ -12,8 +12,8 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 options=(!strip)
 source_x86_64=("https://github.com/FilenCloudDienste/filen-cli/releases/download/v${pkgver}/filen-cli-v${pkgver}-linux-x64")
 source_aarch64=("https://github.com/FilenCloudDienste/filen-cli/releases/download/v${pkgver}/filen-cli-v${pkgver}-linux-arm64")
-sha256sums_x86_64=('65363fc323bae4389055fa94995085ac48f5380ca8942c1b1fa6719e1c350db4')
-sha256sums_aarch64=('6c9afe814d07d5125597831d9b0e91c07ed949091082a257ef09733d6796f4b4')
+sha256sums_x86_64=('0361f6490cafbc83b6f84d25845230cfe2ea8fa8e09097646f7e69635411c365')
+sha256sums_aarch64=('72f2e60f98acf452b466fbec1141e3ad5bc933503ac98861e0bcf1564a7f1f8b')
 
 package() {
   local src_file
