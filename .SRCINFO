@@ -1,4 +1,4 @@
-pkgbase = kaleidoswap
+pkgbase = kaleidoswap-appimage
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://kaleidoswap.com/
