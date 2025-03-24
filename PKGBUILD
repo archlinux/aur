@@ -3,8 +3,8 @@
 
 pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
-pkgver=2.2.0
-pkgrel=1
+pkgver=2.2.1
+pkgrel=2
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -14,20 +14,15 @@ conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 makedepends=('pnpm' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"${_pkgname}-service.tar.gz::https://github.com/${pkgname}/${_pkgname}-service/archive/refs/tags/${CARCH}-unknown-linux-gnu.tar.gz"
-	"regression-commit.patch::https://github.com/${pkgname}/${_pkgname}-service/commit/1728f4d86bc2554b266281ad8d09f40394a5c0b2.patch")
-sha512sums=('b45ab4089ec898e8d47a1b55c01c23f2a6d7d0b80ac6fae7ee3636e365025cb4dc6c8af2da3c0a70e2fc8eab5426152110ee2581e1005393438145161550ff75'
-            'c713a38b3db3260afd90255ef68fb790f4596be5ceaf47f43dfa86d9464861e541c50b521a8dc9d1a2895784d51b506f8af81bb54fbeb3ae114c8bc5b97d0fcb'
-            '99cd7ea1f0eada1552ad13a9489c3b02df725d9714a0656aa089315448686f383586d0227fcb6f6d38fa7812daee0e38f0639a7067ca4784c8e7b3283df8a44a')
+	"${_pkgname}-service.tar.gz::https://github.com/${pkgname}/${_pkgname}-service/archive/refs/tags/${CARCH}-unknown-linux-gnu.tar.gz")
+sha512sums=('6a1058ffa44c15c2d425bf2a4f3b4fc68c0f0172e64722116040c332e1da86adc38abfb0b747485f70f5d92616f2e76956fe3aad3f286d8dd16f68b82bb8b141'
+            '394d3fa0275ff706671c355c9e6496400b72fc71c70223ad8ca910356abc19623ba3343818a8a24d487994472b61def823af13e36a723786194f805e6143000a')
 options=('!lto')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
 	sed -i '/createUpdaterArtifacts/s/true/false/' src-tauri/tauri.conf.json
 	pnpm i
-
-	cd "../${_pkgname}-service-${CARCH}-unknown-linux-gnu/"
-	patch -p1 -R -i ../regression-commit.patch
 }
 
 build() {
