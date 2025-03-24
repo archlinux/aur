@@ -1,7 +1,8 @@
-# Maintainer Wings-Fantasy <1056947073@qq.com>
+# Maintainer MatthieuDev <contact at matthieul dot dev>
+# Submitter Wings-Fantasy <1056947073@qq.com>
 
 pkgname=badlion-client
-pkgver=4.0.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="A Minecraft client with anti-cheat protection"
 url="https://client.badlion.net"
@@ -11,9 +12,9 @@ provides=('BadlionClient')
 source=('BadlionClient::https://client-updates-cdn77.badlion.net/BadlionClient'
 'AppRun'
 'BadlionClient.desktop')
-sha256sums=('85043ed11a955ba1bb1ebaddd067481cf720c795cf13230cfff85e3408f87e7e'
-            '5baab55280a92c293b2453c22a67fd40cf3e10855cda217ddce50abec1df6816'
-            '3f5730cff2f8d1f0d36b14ebf6dd83ea25548fdc287c448716a3533e6f2d0885')
+b2sums=('50384af58c890a9906207746717aacd1db040804ef0fafe1c7a71ea0a31c7468b6dc0100bc3a05754d5c4eb39829a59b9f7dbeaa4275a10630601821772631b3'
+        '42865a8a9ee9c71a1472fe82554e5b12df59a89a81cb28d2e0e942c59529781724f70c58802dbbb8905f62e0b413665322fcdb2095e8ebb681250456fda2645d'
+        '5b177661a6381059f34c46fb65d27f39d041f2e21c4977ea58da425df2b5f34517e8445d009ed01c9645683d5cc67a8b98bde1ed5318fb548236d5690b6db7b0')
 
 prepare() {
     chmod a+x BadlionClient
@@ -25,15 +26,20 @@ prepare() {
 package() {
     cd "${srcdir}"
     install -Dm644 BadlionClient.desktop "${pkgdir}/usr/share/applications/BadlionClient.desktop"
-    install -Dm755 AppRun                "${pkgdir}/opt/BadlionClient/AppRun"
+    install -Dm755 AppRun "${pkgdir}/opt/BadlionClient/AppRun"
 
     cd "squashfs-root"
     mkdir -p "$pkgdir/usr/share/licenses/BadlionClient"
-    mv license.txt                       "$pkgdir/usr/share/licenses/BadlionClient"
-    cp -r usr/share                      "$pkgdir/usr"
+    mv license.txt "$pkgdir/usr/share/licenses/BadlionClient"
+    cp -r usr/share "$pkgdir/usr"
     rm -rf usr/share
-    cp -r *                              "$pkgdir/opt/BadlionClient"
+    cp -r * "$pkgdir/opt/BadlionClient"
     chmod -R go+rX "$pkgdir/usr/share/icons"
     cd "$pkgdir/opt/BadlionClient"
-    chmod 755 cursors libs locales native-modules resources swiftshader usr usr/lib
+    chmod 755 cursors libs locales native-modules resources usr usr/lib
+
+    # Badlion don't start if not defined
+    sed -i -e '/APPDIR=/a\' -e 'export APPIMAGE="true"' AppRun
+    # Remove auto-update system
+    rm resources/app-update.yml
 }
