@@ -49,5 +49,5 @@ package() {
 	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./README.md "$pkgdir"/opt/Helion/
 	install -Dm644 ./SoundFonts/default.sf2 "$pkgdir"/opt/Helion/SoundFonts
-	
+	ln -s "$pkgdir"/opt/Helion/Helion / "$pkgdir"/bin/helion
 }
