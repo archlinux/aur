@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shadps4-bin
 _pkgname=shadPS4
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator.(Prebuilt version)"
 arch=('x86_64')
@@ -29,13 +29,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v.${pkgver}/${pkgname%-bin}-linux-qt-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('10473e88cb7c21bac5ee422d80b4117f37a64dbe02aee4d894c2d548d55c19f8'
+sha256sums=('2638cbf51845d526f94328257a2179455bece3dcccaaa0fadf898bb74c6b9ef2'
             'bf28379cb0ba33a297560e1e50c2ae13504487be2e8ebb39b899f48b442886f0')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     chmod a+x "${srcdir}/Shadps4-qt.AppImage"
     "${srcdir}/Shadps4-qt.AppImage" --appimage-extract > /dev/null
     sed -i "s/net.${pkgname%-bin}.${_pkgname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/applications/net.${pkgname%-bin}.${_pkgname}.desktop"
