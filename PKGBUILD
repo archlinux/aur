@@ -6,17 +6,20 @@ pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
 license=('GPL3')
+
+# Might be a good idea investigating if we can ignore most of the dependencies or not.
 depends=(openal
 		fluidsynth
 		sdl2
 		glfw
 		'zmusic>=1.1.8')
+
 makedepends=('dotnet-runtime' 'clang')
 conflicts=('helion')
 source=("git+https://github.com/Helion-Engine/Helion"
 		"Helion.desktop"
 		"helion.ico")
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "Helion"
@@ -34,12 +37,17 @@ build() {
 
 package() {
 	cd "Helion/Publish/linux-x64_AOT/"
-	mv Helion helion
-	install -Dm 644 "./helion" "$pkgdir"/usr/bin/helion
-	mkdir --parents "$pkgdir"/usr/share/helion/SoundFonts
-	install -Dm 644 "./assets.pk3" "$pkgdir"/usr/share/helion/
-	install -Dm 644 "./SoundFonts/Default.sf2" "$pkgdir"/usr/share/helion/SoundFonts
-	chmod -R 755 "$pkgdir"/usr/share/helion/SoundFonts
-	install -Dm 644 "$srcdir"/Helion.desktop -t "$pkgdir"/usr/share/applications
-	install -Dm 644 "$srcdir"/helion.ico -t "$pkgdir"/usr/share/pixmaps
+	
+	# Helion doesn't check for native Linux directories at the moment, so /usr/opt will have to do.
+	#There might be a better way of going about this, but right now this works.
+	mkdir -m=644 -p /usr/opt/Helion/SoundFonts
+	install -Dm755 ./Helion "$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./assets.pk3 "$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./libfluidsynth.so.3"$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./libglfw.so.3.3 "$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./libSDL2.so "$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./libzmusic.so "$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./README.md "$pkgdir"/usr/opt/Helion/
+	install -Dm644 ./SoundFonts/default.sf2 "$pkgdir"/usr/opt/Helion/SoundFonts
+	
 }

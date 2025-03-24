@@ -17,5 +17,7 @@ pkgbase = helion-git
 	source = Helion.desktop
 	source = helion.ico
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = helion-git
