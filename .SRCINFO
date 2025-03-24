@@ -1,7 +1,7 @@
 pkgbase = ssa-bin
 	pkgdesc = HPE Smart Storage Administrator Web GUI
 	pkgver = 6.40_6.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = custom
 	depends = bash
