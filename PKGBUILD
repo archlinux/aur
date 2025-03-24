@@ -2,7 +2,7 @@
 # Contributor: Pipat Saengow <pay2630@gmail.com>
 
 pkgname=hp15c
-pkgver=4.6.00
+pkgver=5.0.01
 pkgrel=1
 pkgdesc="A simulator for the HP-15C programmable scientific RPN calculator"
 url="http://hp-15c.homepage.t-online.de/content_web.htm"
@@ -14,7 +14,7 @@ source=(
     "hp15c_runner.sh"
     "hp15c.desktop"
 )
-md5sums=('a38709a3034268573ac7bd1f2247ec33'
+md5sums=('7ec9354707b3e37246856357cb34b631'
          '28b63da6ff5404acf6f305bdb35ca1b9'
          'bab776009feb1db971b92649c839ff1f')
 
