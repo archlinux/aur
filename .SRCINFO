@@ -1,7 +1,7 @@
 pkgbase = r-rprotobuf
 	pkgdesc = R Interface to the 'Protocol Buffers' 'API' (Version 2 or 3)
 	pkgver = 0.4.23
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RProtoBuf
 	arch = x86_64
 	license = GPL-2.0-or-later

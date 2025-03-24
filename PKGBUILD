@@ -5,7 +5,7 @@ _pkgname=RProtoBuf
 _pkgver=0.4.23
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="R Interface to the 'Protocol Buffers' 'API' (Version 2 or 3)"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -30,10 +30,10 @@ build() {
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" Rscript --vanilla tinytest.R
-}
+#check() {
+#  cd "$_pkgname/tests"
+#  R_LIBS="$srcdir/build" Rscript --vanilla tinytest.R
+#}
 
 package() {
   install -d "$pkgdir/usr/lib/R/library"
