@@ -1,7 +1,7 @@
 # Maintainer: Ícar <aur@icarns.xyz>
 
 pkgname=landrun-git
-pkgver=r38.4008d90
+pkgver=v0.1.11.r5.e9ef54c
 pkgrel=1
 pkgdesc="Run any Linux process in a secure, unprivileged sandbox using Landlock LSM"
 arch=(x86_64)
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

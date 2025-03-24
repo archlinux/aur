@@ -1,6 +1,6 @@
 pkgbase = landrun-git
 	pkgdesc = Run any Linux process in a secure, unprivileged sandbox using Landlock LSM
-	pkgver = r38.4008d90
+	pkgver = v0.1.11.r5.e9ef54c
 	pkgrel = 1
 	url = https://github.com/Zouuup/landrun
 	arch = x86_64
