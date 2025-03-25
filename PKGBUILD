@@ -4,7 +4,7 @@
 
 pkgname=python-espeak
 pkgver=0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Python bindings for eSpeak."
 arch=('any')
 url="https://launchpad.net/python-espeak"
@@ -15,6 +15,6 @@ source=("http://launchpad.net/python-espeak/trunk/$pkgver/+download/python-espea
 md5sums=('28dd6d2eff6aca10e259e02a81834245')
 
 package() {
-    cd "$srcdir/python-espeak-$pkgver"
+    cd "$srcdir/python-espeak-$pkgver" || exit
     python setup.py install --root "$pkgdir"
 }
