@@ -1,0 +1,20 @@
+pkgbase = android-aarch64-hdf5
+	pkgdesc = General purpose library and file format for storing scientific data (Android aarch64)
+	pkgver = 1.14.5
+	pkgrel = 1
+	url = https://www.hdfgroup.org/hdf5
+	arch = any
+	groups = android-hdf5
+	license = custom
+	makedepends = android-cmake
+	makedepends = time
+	depends = android-aarch64-zlib
+	depends = android-aarch64-libaec
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/HDFGroup/hdf5/archive/hdf5_1.14.5/hdf5-1.14.5.tar.gz
+	md5sums = 8a2d6ec803964913c880c8a984f71d61
+
+pkgname = android-aarch64-hdf5
