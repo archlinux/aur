@@ -1,7 +1,7 @@
 pkgbase = python-mcp
 	pkgdesc = Python implementation of the Model Context Protocol (MCP).
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = x86_64
 	arch = aarch64
@@ -34,9 +34,9 @@ pkgbase = python-mcp
 	optdepends = python-websockets: ws
 	source = https://files.pythonhosted.org/packages/source/m/mcp/mcp-1.5.0.tar.gz
 	sha256sums = 5b2766c05e68e01a2034875e250139839498c61792163a7b221fc170c12f5aa9
-	source_x86_64 = https://github.com/astral-sh/uv/releases/download/0.6.9/uv-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 001b87a0c2ea642a3c75a98c6af3e8528aa473d560e653cf213efcc9aaa4a028
-	source_aarch64 = https://github.com/astral-sh/uv/releases/download/0.6.9/uv-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f5032ad47151c7906c0fb25f7c3b00a85ab0bfed2170cbc444e79c438799095b
+	source_x86_64 = https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/astral-sh/uv/releases/latest/download/uv-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = SKIP
 
 pkgname = python-mcp
