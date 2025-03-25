@@ -25,7 +25,6 @@ optdepends=(
 )
 makedepends=(
   git
-  just
   cargo
   luarocks
 )
@@ -41,7 +40,7 @@ pkgver() {
 
 build() {
   cd $_pkgsrc
-  just build --release
+  cargo build --release
 }
 
 package() {
@@ -52,8 +51,8 @@ package() {
   install -vDm 644 resources/$_pkgname-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
 
   # lua
-  XDG_DATA_HOME="$pkgdir/usr/share" just install-protos
-
-  cd snowcap
-  XDG_DATA_HOME="$pkgdir/usr/share" just install-protos
+  install -vd "$pkgdir/usr/share/$_pkgname"
+  install -vd "$pkgdir/usr/share/$_pkgname/snowcap"
+  cp -vR api/protobuf "$pkgdir/usr/share/$_pkgname"
+  cp -vR snowcap/api/protobuf "$pkgdir/usr/share/$_pkgname/snowcap"
 }
