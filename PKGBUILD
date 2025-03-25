@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-git
 _pkgname=Onlook
-pkgver=0.1.5.r390.g2b2b5c1
-_electronversion=34
-_nodeversion=22
+pkgver=0.1.5.r409.g9c92c12
+_electronversion=35
+_nodeversion=20
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Use system-wide electron)"
 arch=('any')
@@ -21,7 +21,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'gcc'
     'curl'
     'python-setuptools'
 )
@@ -64,26 +63,24 @@ prepare() {
         find ./ -type f -name "bun.lockb" -exec rm -rf {} +
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export BUN_NPM_REGISTRY=https://registry.npmmirror.com
         export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
         export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
         export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
         {
             echo '[install]'
-            echo 'registry = "https://registry.npmmirror.com"'
+            echo 'registry = "https://registry.npmmirror.com/"'
             echo 'strict-ssl = false'
         } >> bunfig.toml
         echo apps/studio packages/cli packages/foundation plugins/babel plugins/next | xargs -n 1 cp bunfig.toml
     fi
     NODE_ENV=development    bun install
-    NODE_ENV=production     bun build:foundation
-    cd "${srcdir}/${pkgname//-/.}/apps/studio"
-    NODE_ENV=development    bun add -D husky
+    NODE_ENV=development    bun install husky@9.1.6 --save-dev --legacy-peer-deps
 }
 build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    NODE_ENV=production     bun ci:build
     cd "${srcdir}/${pkgname//-/.}/apps/studio"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     bun vite build
     sed -i "s/\/\${version}//g" builder-config/base.ts
     NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist} --config builder-config/base.ts"
 }
