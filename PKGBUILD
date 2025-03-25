@@ -2,7 +2,7 @@
  
 pkgname='jcal-git'
  
-_gitname=jcal
+_gitname=${pkgname%-git}
 #The real value will be calculated by pkgver() function
 pkgver=0.5.1
 pkgrel=1
