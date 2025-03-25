@@ -4,23 +4,21 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "test_openai_agents_patched.py")
-source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28.0.2.tgz"
-               "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.2.tgz")
-source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.2.tgz"
-                "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.2.tgz")
-sha256sums=('d0e1162ee2c98e291eb84866b68340475ec8c175b939464c6265292a12179e7c'
-            'd0b96aed791fcf25932447a26c42fd708e869a6acf47aabba9989f98740a9538')
-sha256sums_x86_64=('7046fce4bc2db1a9f4d13e60accd2584136d5e4d053932fa52a707b8f36f0734'
-                   'bdd4bec8ca49b2b6ea306bd18e58e395e84c36537e3e481288518512c584cdcc')
-sha256sums_aarch64=('deb82ccd5dcc78eb4a632d20497bf693ca1d7bd80ffa2d2ff0a3104ab97feb80'
-                    'a5cc724a792803274454c68f6e968aa041a082367688d605a05d677e1957dec8')
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28.0.3.tgz"
+               "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.3.tgz")
+source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.3.tgz"
+                "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.3.tgz")
+sha256sums=('51e88fccd90e2198d47e1f4851ad9babb4bd66ce0bbb58352da59578230cf671')
+sha256sums_x86_64=('d1810799dad3ca21647728e4b501bf64def617f2a3e8cdcdfcd5e4a5d0e69e5c'
+                   'f9e3102a996c3b24ab2cebfa169bb9cb4bbb95b866358b285ab65d3a3b9b4800')
+sha256sums_aarch64=('6a5fe587e1224871a87ef46dede1dd65cfb69a2c61e1368556f59c2e78d67d7f'
+                    '0a1a09e4f43aa416de539c238a33438a31955475dbee91f38413b4a8c69be070')
 depends=('python>=3.8')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio'
@@ -90,6 +88,7 @@ checkdepends=('python-anyio'
               'python-greenlet'
               'python-pytest-xdist'
               'python-openai-agents'
+              'python-websockets'
               'python-pydantic-ai-slim')
 
 update_compression_methods() {
@@ -111,11 +110,6 @@ prepare(){
   update_compression_methods tests/otel_integrations/test_starlette.py
   # The python-psycopg2 build process is the same as psycopg2-binary
   sed -i -E "s/\bpsycopg2-binary\b/psycopg2/g" tests/otel_integrations/test_psycopg.py
-  # Fix PydanticAI test using this commit: https://github.com/pydantic/logfire/pull/946
-  sed -i 's/options/settings/g' tests/otel_integrations/test_pydantic_ai.py
-  # Fix OpenAI agents test using this commit: https://github.com/pydantic/logfire/pull/943
-  cp -f "${srcdir}"/test_openai_agents_patched.py tests/otel_integrations/test_openai_agents.py
-
 }
 
 build() {
