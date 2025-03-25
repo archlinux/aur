@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-enhanced-osk-git
 	pkgdesc = Enhanced On-Screen Keyboard for Gnome Shell
-	pkgver = r175.777433c
+	pkgver = r177.d98b9cf
 	pkgrel = 1
 	url = https://github.com/honjow/enhanced-osk-gnome-ext.git
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/honjow/enhanced-osk-gnome-ext.git#branch=gnome46
+	source = git+https://github.com/honjow/enhanced-osk-gnome-ext.git#branch=dev
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-enhanced-osk-git

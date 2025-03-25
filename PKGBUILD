@@ -1,11 +1,11 @@
 pkgname=gnome-shell-extension-enhanced-osk-git
-pkgver=r175.777433c
+pkgver=r177.d98b9cf
 pkgrel=1
 pkgdesc="Enhanced On-Screen Keyboard for Gnome Shell"
 arch=("any")
 url="https://github.com/honjow/enhanced-osk-gnome-ext.git"
 license=("GPL")
-source=("git+$url#branch=gnome46")
+source=("git+$url#branch=dev")
 md5sums=('SKIP')
 makedepends=("git")
 _uuid="enhancedosk@cass00.github.io"
