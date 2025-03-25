@@ -1,4 +1,4 @@
 [mingw-w64-dbus-glib]
-source = "git"
-git = "https://gitlab.freedesktop.org/dbus/dbus-glib.git"
-prefix = "dbus-glib-"
+source = "archpkg"
+archpkg = "dbus-glib"
+strip_release = true

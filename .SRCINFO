@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-dbus-glib
 	pkgdesc = GLib bindings for D-Bus (deprecated) (mingw-w64)
-	pkgver = 0.112
+	pkgver = 0.114
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/dbus
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mingw-w64-dbus-glib
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = dbus-glib-0.112::git+https://gitlab.freedesktop.org/dbus/dbus-glib.git?signed#tag=dbus-glib-0.112
+	source = dbus-glib-0.114::git+https://gitlab.freedesktop.org/dbus/dbus-glib.git?signed#tag=dbus-glib-0.114
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
-	sha256sums = 00d56564489516f1cb4a9d0cbaff88e38321fae6c08ecc8858cefe012e312d41
+	sha256sums = b613546d2bfbeb21cbacc11c536e17afa01b69c2a8353ccc8eb3910dad9095ca
 
 pkgname = mingw-w64-dbus-glib
