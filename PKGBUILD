@@ -147,7 +147,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.12
-_minor=19
+_minor=20
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -157,7 +157,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service'
-pkgrel=1
+pkgrel=2
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -178,9 +178,9 @@ makedepends=(
 )
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
-_nv_ver=570.124.04
+_nv_ver=570.133.07
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
-_nv_open_pkg="open-gpu-kernel-modules-${_nv_ver}"
+_nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
     "config"
@@ -217,7 +217,7 @@ if [ "$_build_nvidia" = "yes" ]; then
 fi
 
 if [ "$_build_nvidia_open" = "yes" ]; then
-    source+=("nvidia-open-${_nv_ver}.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${_nv_ver}.tar.gz"
+    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
              "${_patchsource}/misc/nvidia/0001-Make-modeset-and-fbdev-default-enabled.patch"
              "${_patchsource}/misc/nvidia/0003-Add-IBT-Support.patch")
 fi
@@ -465,9 +465,11 @@ prepare() {
 
     if [ "$_build_nvidia_open" = "yes" ]; then
         # Use fbdev and modeset as default
-        patch -Np1 -i "${srcdir}/0001-Make-modeset-and-fbdev-default-enabled.patch" -d "${srcdir}/${_nv_open_pkg}/kernel-open"
+        patch -Np1 -i "${srcdir}/0001-Make-modeset-and-fbdev-default-enabled.patch" \
+            -d "${srcdir}/${_nv_open_pkg}/kernel-open"
         # Fix for https://bugs.archlinux.org/task/74886
-        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0003-Add-IBT-Support.patch" -d "${srcdir}/${_nv_open_pkg}"
+        patch -Np1 --no-backup-if-mismatch -i "${srcdir}/0003-Add-IBT-Support.patch" \
+            -d "${srcdir}/${_nv_open_pkg}"
     fi
 }
 
@@ -699,8 +701,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('71bf8a8d7f3583df9a54504d66cb50e60324dbcb95f8dc2d9b3479b41485c22dec0743fa272a516118df36d5d59e87220cf9007e1f1b51ecffe5a3f9b76c0e90'
+b2sums=('9d8677dd7dad0fd7c30559896bfd643dc39afe51087699016ecb515dbf23abec81be78d9772a4ce42a3106911a912c8ab6ef5dc8fe477dfcbe6e517fb4533533'
         'fa3bbedc0804fcf4b9908bb6b8f13f45a63d9a6ec19978028449841cf7ca026053254a7fc53085dc7ffa24c6756301d37d3a1f9e167bb7f9eb5605d33749b0b2'
         '390c7b80608e9017f752b18660cc18ad1ec69f0aab41a2edfcfc26621dcccf5c7051c9d233d9bdf1df63d5f1589549ee0ba3a30e43148509d27dafa9102c19ab'
         'ca014c2570ef63f11e162a015293225e1e4103513cefe2f3c20e01444fe2d6b7cbc7c993b5d77db97c84142fb6cb6cc401df419b2d9de1610b5539832c013cd8'
-        'b8007db21488fcd281dde293aba0dfc7afcf556e19d6f397ea7e017e4254b6c3c97e96be9680868d2c03c3500d7b4cdc6493b2896d819d9cf7debf5ebf2ea964')
+        'eedbf8ebaa86e61b56e39cf05bad59cb283c3527c2e40253ea8228ed6ecc5629d5d7ad7ce721acda9641940180480dcc6b16099191ecebdc6a962c05b34ca0f2')
