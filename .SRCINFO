@@ -1,0 +1,18 @@
+pkgbase = blahaj-rs-git
+	pkgdesc = Gay sharks at your local terminal - but in rust! lolcat-like CLI tool
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/yoshisaac/BLAHAJ-rs
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = blahaj
+	source = https://github.com/yoshisaac/BLAHAJ-rs/archive/refs/tags/AUR-Release.tar.gz
+	sha256sums = SKIP
+
+pkgname = blahaj-rs-git
