@@ -1,15 +1,18 @@
 pkgbase = calceph
-	pkgdesc = The CALCEPH Library is designed to access the binary planetary ephemeris files, such INPOPxx and JPL DExxx ephemeris files
-	pkgver = 3.5.3
+	pkgdesc = The library is designed to access the binary planetary ephemeris files, such INPOPxx and JPL DExxx ephemeris files
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://www.imcce.fr/inpop/calceph
 	arch = x86_64
-	license = CeCILL-C
-	license = CeCILL-B
-	license = CeCILL
+	license = CECILL-C
+	license = CECILL-B
+	license = CECILL-2.1
+	makedepends = cmake>=3.12
+	makedepends = gcc
 	makedepends = gcc-fortran
-	makedepends = cmake
-	source = https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-3.5.3.tar.gz
-	sha256sums = 9dd2ebdec1d1f5bd6f01961d111dbf0a4b24d0c0545572f00c1d236800a25789
+	depends = glibc
+	depends = gcc-libs
+	source = https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-4.0.4.tar.gz
+	sha256sums = 20c9f0bd720c5cfe99a7b342babda3ff91428adfec9d55357b380b4a13205d60
 
 pkgname = calceph
