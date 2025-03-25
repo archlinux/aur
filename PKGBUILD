@@ -1,6 +1,6 @@
 # Maintainer: Antony Kellermann <antony@aokellermann.dev>
 pkgname=nitro-bin
-pkgver=26.0.3
+pkgver=26.0.4
 pkgrel=1
 pkgdesc="An incredible, beautiful, and feature-rich GraphQL IDE"
 url="https://chillicream.com/products/nitro/"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("custom:ChilliCreamLicense1.0")
 source=("https://cdn.chillicream.com/app/Nitro-$pkgver-linux-$CARCH.AppImage"
         "LICENSE")
-b2sums=("4b2e2309e960a604080c37f6af745f1f38eb594c1541d8bfbab6d23ad960f5b46098660e1a475a6a819ccb12ff7d6c6750dabd14de63350342792635dfcef9b1"
+b2sums=("437d769f633a00e8a6d4c4281dd11b71a21d8fd09379478ba32bfed029ff0ad6341eb639ba4a54ced09766d64c1ca24d31d5ce7c9f1f88f807a666c4d45aa696"
         "2de3f8321794c97dd62ba6b4ccae367fa101d90578675e89104f80dd74188eaf2f5fe2c70979e0d2717fe4599b74f32275c3d501272a80f0b47e8eeacc7fa8b9")
 options+=('!strip')
 
