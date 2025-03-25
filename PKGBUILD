@@ -7,10 +7,10 @@ url="https://github.com/vitejs/vite"
 license=(MIT)
 makedepends=('npm')
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('243913ee586c10414765471a2cc4d367fe8e8f109b43b36102532b1f7f3c3909'
+sha256sums=('b51cd078d530024b4ca5f19a2b786c95b8a21ec20dfc98dae67e17e8070477f9'
             '29b68325fe026047d13e187b44c33b2acacf7dc647dec4583702e59f235e13b5')
 arch=(any)
-pkgver=6.2.0
+pkgver=6.2.3
 pkgrel=1
 source=(
 	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
