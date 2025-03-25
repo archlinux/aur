@@ -32,10 +32,11 @@ build() {
     cd "BLAHAJ-rs-AUR-Release"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --release
 }
 
 package() {
     cd "BLAHAJ-rs-AUR-Release"
-    install -Dm755 "target/release/blahaj-rs" -t "$pkgdir/usr/bin/blahaj"
+    mv "target/release/blahaj-rs" "target/release/blahaj"
+    install -Dm755 "target/release/blahaj" -t "$pkgdir/usr/bin/"
 }
