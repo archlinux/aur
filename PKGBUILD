@@ -26,7 +26,7 @@ build() {
     "-Ddocdir=share/doc/qman"
     "-Dman-pages=enabled"
     "-Ddocs=enabled"
-    "-Dtests=enabled"
+    "-Dtests=$(if check_option check y; then echo enabled; else echo disabled; fi)"
   )
   arch-meson build qman "${opts[@]}"
   meson compile -C build
