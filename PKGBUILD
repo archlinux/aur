@@ -1,36 +1,24 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
-pkgname=osmo-upf-git
-pkgver=0.1.1.r103.g3efa019
+pkgname=osmo-upf
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Osmocom implementation of the 3GPP UPF (User Plane Function)"
 url="https://osmocom.org/projects/osmo-upf"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
-depends=('libosmocore-git'
-         'libosmo-pfcp-git'
-         'libgtpnl-git'
+depends=('libosmocore'
+         'libosmo-pfcp'
+         'libgtpnl'
          'nftables'
          'talloc')
-makedepends=('git')
-provides=("${pkgname%-git}=${pkgver}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%}-git")
 backup=('etc/osmocom/osmo-upf.cfg')
-source=("git+https://gitea.osmocom.org/cellular-infrastructure/${pkgname%-git}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-git}"
-  autoreconf -f -i
-}
+source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('5db79e93316b21c743d72e1a988d24882c6dfd090c19c95d32e8b582acd7eb34')
 
 build() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
               --localstatedir=/var
@@ -38,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
 
