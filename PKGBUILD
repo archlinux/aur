@@ -3,10 +3,10 @@
 
 _pkgname="sticky"
 pkgname="$_pkgname-git"
-pkgver=1.21.r0.gf713dc5
-pkgrel=1
+pkgver=1.24.r0.g5fa93af
+pkgrel=2
 pkgdesc="A sticky notes app for the Linux desktop"
-url="https://github.com/collinss/sticky"
+url="https://github.com/linuxmint/sticky"
 license=('GPL-2.0-or-later')
 arch=('any')
 
@@ -24,11 +24,10 @@ depends=(
 makedepends=(
   'git'
   'meson'
-  'ninja'
 )
 
-_pkgsrc="$_pkgname"
-source=("git+$url.git")
+_pkgsrc="linuxmint.sticky"
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -44,7 +43,8 @@ prepare() {
   sed -i "s/__DEB_VERSION__/${pkgver//+*/}/g" "usr/lib/$_pkgname/$_pkgname.py"
 
   # Fix license path
-  # sed -i 's|common-licenses/GPL|licenses/common/GPL/license.txt|g' "usr/lib/$_pkgname/$_pkgname.py"
+  sed -i 's|common-licenses/GPL|licenses/spdx/GPL-2.0-or-later.txt|g' \
+    "usr/lib/$_pkgname/$_pkgname.py"
 }
 
 build() {
