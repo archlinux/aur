@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.4.r0.g0927c5c3da7
+pkgver=10.4.r29.gaae9ba21cef
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.3-staging.patch
+  ntsync-10.4-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   HACK-winex11.drv-Let-the-WM-focus-our-windows-by-def.patch
@@ -32,7 +32,7 @@ sha512sums=(
   'SKIP'
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-  '2b7657a576bef6f7846d4d7dca6feb573c2b9c71203209e95b3bb511a03198578bd239d20a318345c1472f321bb25e7c95f43980dee1115c5684300321f5f840'
+  'e5651e6a58b5c75bb68fd91595583db5d9bbd61a0e57d536f38a478d025ca10f68fc5337e479171da0d0a5854716ad2dc5c39a36d9988df892bc692a5d1cb3ff'
   '55771f934e86b0c23bc3740c98da732c1d9b8cbf0f3452aec1e4f1b46d8253c5700bbcf9e778a782247901a3a94315aea7fd66d8a90729ec5b2f032fb06ad0fc'
   '5b8e10e9087cae45421ce31056d63f3af53b7bb1d3e8233673ac954ebeb3abb066ece51dd7f5762e3d95b5aacfa5b2f07ff0a14686e8880b97b8dfc3bb2e15f8'
   '3421baf2dc5dcbc410b1b5d3842466090617d6bcbe50a6b735bec39802ac28a841cd5667ade0d2839559547f3772e77534d6940db0cab03d7864ebfebbfc1460'
@@ -118,8 +118,8 @@ prepare() {
     -W server-Signal_Thread \
     -W eventfd_synchronization
 
-  # NTSync for Wine 10.3
-  patch -Np1 -i "${srcdir}/ntsync-10.3-staging.patch"
+  # NTSync for Wine 10.4
+  patch -Np1 -i "${srcdir}/ntsync-10.4-staging.patch"
   patch -Np1 -i "${srcdir}/include-use-ntsync.h-v7-module-header-as-an-in-tree-header.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
