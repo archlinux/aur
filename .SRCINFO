@@ -1,6 +1,6 @@
 pkgbase = vpkedit-git
 	pkgdesc = A library and tool to create, read, and write Valve VPK archives
-	pkgver = 4.3.2.r3.gda89199
+	pkgver = 4.4.2.r8.ged7cac7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/craftablescience/VPKEdit
@@ -27,7 +27,7 @@ pkgbase = vpkedit-git
 	source = discord::git+https://github.com/craftablescience/discord-rpc-clean.git
 	source = indicators::git+https://github.com/p-ranav/indicators.git
 	source = doxygen-awesome-css::git+https://github.com/jothepro/doxygen-awesome-css.git
-	source = minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git
+	source = minizip-ng::git+https://github.com/craftablescience/minizip-ng.git
 	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake.git
 	source = bufferstream::git+https://github.com/craftablescience/BufferStream.git
 	source = miniz::git+https://github.com/richgel999/miniz.git

@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit-git
-pkgver=4.3.2.r3.gda89199
+pkgver=4.4.2.r8.ged7cac7
 epoch=1
 pkgrel=1
 pkgdesc="A library and tool to create, read, and write Valve VPK archives"
@@ -20,7 +20,7 @@ source=("$pkgname::git+$url.git"
 	"indicators::git+https://github.com/p-ranav/indicators.git"
 	#Submodule for submodules
 	"doxygen-awesome-css::git+https://github.com/jothepro/doxygen-awesome-css.git"
-	"minizip-ng::git+https://github.com/zlib-ng/minizip-ng.git"
+	"minizip-ng::git+https://github.com/craftablescience/minizip-ng.git"
 	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
 	"bufferstream::git+https://github.com/craftablescience/BufferStream.git"
 	"miniz::git+https://github.com/richgel999/miniz.git"
@@ -72,8 +72,8 @@ build() {
 	-G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
 	-DCMAKE_BUILD_TYPE=None \
-	-DCMAKE_C_COMPILER=clang \
-	-DCMAKE_CXX_COMPILER=clang++
+	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
 
 	cmake --build build
 }
