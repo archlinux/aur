@@ -1,0 +1,42 @@
+# Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
+
+pkgname='golangci-lint-v1-bin'
+pkgver=1.64.8
+pkgrel=1
+pkgdesc='Fast linters runner for Go (legacy v1)'
+url='https://golangci.com'
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+license=('GPL-3.0')
+provides=('golangci-lint-bin')
+conflicts=('golangci-lint' 'golangci-lint-bin')
+
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.64.8/golangci-lint-1.64.8-linux-arm64.tar.gz")
+sha256sums_aarch64=('a6ab58ebcb1c48572622146cdaec2956f56871038a54ed1149f1386e287789a5')
+
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.64.8/golangci-lint-1.64.8-linux-armv7.tar.gz")
+sha256sums_armv7h=('cad656fd1328a441576ac9d667d830d382424256056a59db62083963afc94539')
+
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.64.8/golangci-lint-1.64.8-linux-386.tar.gz")
+sha256sums_i686=('8c8368368887e44227f59a76a52ba7e7f849505da9c0af35559bddf92b4ccc57')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/golangci/golangci-lint/releases/download/v1.64.8/golangci-lint-1.64.8-linux-amd64.tar.gz")
+sha256sums_x86_64=('b6270687afb143d019f387c791cd2a6f1cb383be9b3124d241ca11bd3ce2e54e')
+
+package() {
+  local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
+  cd "golangci-lint-${pkgver}-linux-${!CARCH}"
+
+  # bin
+  install -Dm755 "./golangci-lint" "${pkgdir}/usr/bin/golangci-lint"
+
+  # license
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/golangci-lint/LICENSE"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  ./golangci-lint completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/golangci-lint"
+  ./golangci-lint completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_golangci-lint"
+  ./golangci-lint completion fish | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/golangci-lint.fish"
+}
