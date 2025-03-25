@@ -38,9 +38,17 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd $_pkgsrc
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked
+}
+
 build() {
   cd $_pkgsrc
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
