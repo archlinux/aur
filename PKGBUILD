@@ -3,7 +3,7 @@
 _pkgname=pinnacle
 pkgname=$_pkgname-comp-git # there's another package without the -comp suffix lol
 pkgver=r1221.a53c0f1
-pkgrel=2
+pkgrel=3
 pkgdesc='A WIP Smithay-based Wayland compositor, inspired by AwesomeWM'
 arch=(any)
 url='https://github.com/pinnacle-comp/pinnacle'
@@ -26,7 +26,6 @@ optdepends=(
 makedepends=(
   git
   cargo
-  luarocks
 )
 
 _pkgsrc=$_pkgname
