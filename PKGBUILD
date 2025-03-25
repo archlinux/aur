@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=qiskit-addon-utils
 pkgname=python-${_name}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Utilities to support workflows leveraging Qiskit addons"
 arch=(any)
@@ -22,7 +22,7 @@ checkdepends=(
     python-qiskit-qasm3-import
 )
 source=($_name-$pkgver.tar.gz::https://github.com/Qiskit/$_name/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('ccbef4a2d8fb51e68604025021a503f3e0f4e95c292bafdc41017f394e05097b9d05746734bab05dfe1ef101b6a8c446eeb7cf24dbcbb693d9bc51fe49cce2ab')
+b2sums=('8afa4cd344668b5919d73a12f1265bc27f89c9dd3f62f3d534b9a86efb0cfbfea31d64c2b1375fd2f6ddbb95de2bf70d2cc2c5d06966f3a7a61e0441d22a6414')
 
 build() {
     cd $_name-$pkgver
