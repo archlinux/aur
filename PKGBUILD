@@ -1,10 +1,11 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Zhoneym <Zhoneym@outlook.com>
 pkgname=cri-dockerd-bin
 pkgver=0.3.16
 pkgrel=1
 pkgdesc="A shim for using Docker as a Kubernetes container runtime"
 arch=('x86_64')
 url="https://github.com/Mirantis/cri-dockerd"
+options=('!debug')
 license=('Apache')
 depends=('docker')
 source=("https://github.com/Mirantis/cri-dockerd/releases/download/v${pkgver}/cri-dockerd-${pkgver}.amd64.tgz"
@@ -23,6 +24,8 @@ package() {
 }
 
 post_install() {
+    systemctl enable --now docker.service
+    systemctl enable --now docker.socket
     systemctl enable --now cri-docker.service
     systemctl enable --now cri-docker.socket
 }
