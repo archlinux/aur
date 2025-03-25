@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	_xslstylespath="/usr/share/xml/docbook/xsl-stylesheets-"$(pacman -Q docbook-xsl | cut -d ' ' -f 2 | cut -d '-' -f 1)
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname" || exit
 	sed -i 's/@BT_VERSION_FULL@//g' ./cmake/platforms/linux/bibletime.desktop.cmake
 
 	cmake \
@@ -39,13 +39,13 @@ build() {
 		-DBUILD_HOWTO_HTML_LANGUAGES="en" \
 		-DBUILD_HOWTO_PDF=OFF \
 		-DBUILD_HOWTO_PDF_LANGUAGES="en" \
-		-DBT_DOCBOOK_XSL_HTML_CHUNK_XSL=$_xslstylespath/html/chunk.xsl \
+		-DBT_DOCBOOK_XSL_HTML_CHUNK_XSL="$_xslstylespath"/html/chunk.xsl \
 		-Wno-dev \
 		-S ./
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$_gitname" || exit
 	make DESTDIR="$pkgdir" install
 }
