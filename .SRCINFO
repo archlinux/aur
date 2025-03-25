@@ -7,7 +7,7 @@ pkgbase = otf-elice-digital-coding
 	license = custom:SIL Open Font License v1.1
 	provides = otf-elice-digital-coding
 	conflicts = elice-digital-coding-variable
-	source = https://elice.io/font/EliceDigitalCoding_OTF.zip
+	source = https://font.elice.io/static/downloads/EliceDigitalCoding_OTF.zip
 	sha256sums = 7f524a63d4d1503ead833ec8986eef81547e251d82628bd1ebaf2f7a4a9fe025
 
 pkgname = otf-elice-digital-coding

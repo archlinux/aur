@@ -8,8 +8,9 @@ arch=('any')
 provides=('otf-elice-digital-coding')
 conflicts=('elice-digital-coding-variable')
 url='https://elice.io'
+pkgurl='https://font.elice.io/static/downloads/'
 license=('custom:SIL Open Font License v1.1')
-source=("$url/font/${fontname}_OTF.zip")
+source=("${pkgurl}${fontname}_OTF.zip")
 sha256sums=('7f524a63d4d1503ead833ec8986eef81547e251d82628bd1ebaf2f7a4a9fe025')
 
 package_otf-elice-digital-coding() {
