@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=epub-reader
 _pkgname=EpubReader
-pkgver=1.0.5
+pkgver=1.0.6
 _electronversion=18
 _nodeversion=16
-pkgrel=9
+pkgrel=1
 pkgdesc="Epub/Book Reader Application built with ElectronJS.(Use system-wide electron)"
 arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('db951ca3860576e8810343b145009ccd3b5719185517b227950bb3caa27bbc9c'
+sha256sums=('3a398048d7acbacb035b9412b9399ce536b21f27f93cec74647f9887f561b427'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -47,7 +47,7 @@ prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc

@@ -1,7 +1,7 @@
 pkgbase = epub-reader
 	pkgdesc = Epub/Book Reader Application built with ElectronJS.(Use system-wide electron)
-	pkgver = 1.0.5
-	pkgrel = 9
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = https://mignaway.github.io/epub-reader-website/
 	arch = any
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = epub-reader
 	makedepends = curl
 	depends = electron18
 	conflicts = epub-reader
-	source = epub-reader-1.0.5.tar.gz::https://github.com/mignaway/EpubReader/archive/refs/tags/v1.0.5.tar.gz
+	source = epub-reader-1.0.6.tar.gz::https://github.com/mignaway/EpubReader/archive/refs/tags/v1.0.6.tar.gz
 	source = epub-reader.sh
-	sha256sums = db951ca3860576e8810343b145009ccd3b5719185517b227950bb3caa27bbc9c
+	sha256sums = 3a398048d7acbacb035b9412b9399ce536b21f27f93cec74647f9887f561b427
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = epub-reader
