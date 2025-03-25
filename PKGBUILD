@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=46
+pkgver=48
 pkgrel=1
 pkgdesc='Meta package to install GNOME'
 arch=(any)
@@ -10,6 +10,7 @@ url='https://www.gnome.org/'
 license=(GPL)
 depends=(
   baobab
+  decibels
   epiphany
   evince
   gdm
@@ -45,6 +46,7 @@ depends=(
   grilo-plugins
   gvfs
   gvfs-afc
+  gvfs-dnssd
   gvfs-goa
   gvfs-google
   gvfs-gphoto2
@@ -52,6 +54,7 @@ depends=(
   gvfs-nfs
   gvfs-onedrive
   gvfs-smb
+  gvfs-wsdd
   loupe
   malcontent
   nautilus
@@ -62,7 +65,6 @@ depends=(
   sushi
   tecla
   totem
-  tracker3-miners
   xdg-desktop-portal-gnome
   xdg-user-dirs-gtk
   yelp
