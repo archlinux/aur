@@ -1,7 +1,7 @@
 pkgbase = stable-diffusion-ui
 	pkgdesc = Easy Diffusion - A 1-click way to install & use Stable Diffusion on your own computer.
 	pkgver = 3.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://stable-diffusion-ui.github.io/
 	install = stable-diffusion-ui.install
 	arch = x86_64

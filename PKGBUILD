@@ -6,7 +6,7 @@ _unzipped_dir=easy-diffusion
 pkgname=stable-diffusion-ui
 # pkgver=2.5.24
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Easy Diffusion - A 1-click way to install & use Stable Diffusion on your own computer.'
 arch=('x86_64')
 url='https://stable-diffusion-ui.github.io/'
@@ -43,5 +43,5 @@ package() {
 
 	mkdir -p "$pkgdir/opt/"
 	cp -r "$_unzipped_dir" "$pkgdir/opt/stable-diffusion-ui"
-	chmod 777 -R "$pkgdir/opt/stable-diffusion-ui"
+	chmod 755 -R "$pkgdir/opt/stable-diffusion-ui"
 }
