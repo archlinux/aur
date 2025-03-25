@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.3.229.r1.gb53dfed032
+	pkgver = 2.3.240.r2.g23c495b939
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -10,7 +10,7 @@ pkgbase = pcsx2-git
 	makedepends = clang
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = kddockwidgets-qt6-git
+	makedepends = kddockwidgets-qt6
 	makedepends = git
 	makedepends = libpipewire
 	makedepends = libpulse
