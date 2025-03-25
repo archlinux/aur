@@ -5,17 +5,16 @@
 
 _realname=procps
 pkgname=procps-ng-git
-pkgver=4.0.5.r6.g4740a0ef
+pkgver=4.0.5.r18.g3d2158fc
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes'
 url='https://gitlab.com/procps-ng/procps'
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 arch=('x86_64')
 depends=('glibc' 'ncurses' 'libncursesw.so' 'systemd-libs')
-makedepends=('git' 'm4' 'autoconf' 'libtool' 'systemd')
+makedepends=('gettext' 'git' 'po4a' 'systemd')
 conflicts=('procps' 'procps-ng' 'sysvinit-tools')
 provides=('procps' 'procps-ng' 'sysvinit-tools' 'libproc-2.so')
-replaces=('procps' 'procps-ng' 'sysvinit-tools')
 options=('!emptydirs')
 source=("git+https://gitlab.com/procps-ng/procps.git")
 sha512sums=('SKIP')
@@ -46,4 +45,7 @@ build() {
 package() {
 	cd "$_realname"
 	make DESTDIR="$pkgdir" install
+
+	# https://gitlab.com/procps-ng/procps/-/issues/379
+	rm -fv "$pkgdir"/usr/share/man/{de,ro,uk}/man1/kill.1
 }
