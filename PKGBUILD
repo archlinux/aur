@@ -1,6 +1,6 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 pkgname=libosmo-gprs-git
-pkgver=r367.b226fd2
+pkgver=r382.341f26f
 pkgrel=1
 pkgdesc="Osmocom GPRS libraries"
 arch=('x86_64' 'i686')
@@ -10,12 +10,12 @@ depends=('libosmocore-git')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}"
-          'libosmo-csn1.so=0-64'
-          'libosmo-gprs-gmm.so=0-64'
-          'libosmo-gprs-llc.so=0-64'
-          'libosmo-gprs-rlcmac.so=0-64'
-          'libosmo-gprs-sm.so=0-64'
-          'libosmo-gprs-sndcp.so=0-64')
+          'libosmo-csn1.so=1-64'
+          'libosmo-gprs-gmm.so=1-64'
+          'libosmo-gprs-llc.so=1-64'
+          'libosmo-gprs-rlcmac.so=1-64'
+          'libosmo-gprs-sm.so=1-64'
+          'libosmo-gprs-sndcp.so=1-64')
 source=("git+https://gitea.osmocom.org/osmocom/libosmo-gprs.git")
 sha256sums=('SKIP')
 
