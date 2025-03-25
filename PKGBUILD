@@ -19,7 +19,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_stage_linux_v840.7z
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v841.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 b2sums=('d981a40c51b8272301eb4d2c165d8a6a6bf507c8b58fb849fce14be0ae01f6aa2663a3d210c48c6d9859f5635b6caf546d058784c42d2d7cb9a693995f010598'
