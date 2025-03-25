@@ -7,6 +7,7 @@ pkgbase = flow-control-git
 	license = MIT
 	makedepends = git
 	makedepends = zig>=0.14.0
+	makedepends = zig<0.15.0
 	optdepends = ripgrep: project-wide search
 	provides = flow-control
 	conflicts = flow-control
