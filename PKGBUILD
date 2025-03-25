@@ -2,7 +2,7 @@
 # Contributor: simonsmh <simonsmh@gmail.com>
 
 pkgname="okteto"
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Build better applications by developing and testing your code directly in Kubernetes"
 arch=('aarch64' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('go')
 optdepends=('kubectl')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('eb1b447f2d44bffce79e286757d4805f7fd02755de9263e86c797838f8c1e573')
+sha256sums=('45f6277ab79c51a21e649ff02aa6b3321b333721efa176b9877a263776b59b47')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
