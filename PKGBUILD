@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libgtpnl
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="netlink library for Linux kernel GTP code"
 url="https://osmocom.org/projects/linux-kernel-gtp-u/wiki/Libgtpnl"
@@ -11,7 +11,7 @@ depends=('libmnl')
 conflicts=("${pkgname}-git")
 provides=('libgtpnl.so=0-64')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('d357de46ecae4f170ec7ead5146df03cf949e3f1198cd0a2ff6aeaa4046439ac')
+sha256sums=('28b46cd8efbf9bc056d05256ca657b4e0234f5c59ec92f5e8d8ff4ec21a97c76')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
