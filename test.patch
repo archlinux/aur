@@ -20,13 +20,3 @@ diff -u -r landrun-0.1.11.orig/test.sh landrun-0.1.11/test.sh
  print_success "Binary built successfully"
  
  # Create test directories
-@@ -197,6 +197,6 @@
- # Cleanup
- print_status "Cleaning up..."
- rm -rf "$TEST_DIR"
--rm -f landrun
-+#rm -f landrun
- 
--print_success "All tests completed!" 
-\ No newline at end of file
-+print_success "All tests completed!" 

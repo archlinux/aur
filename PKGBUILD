@@ -2,24 +2,23 @@
 
 pkgname="landrun"
 _user="Zouuup"
-pkgver=0.1.11
-pkgrel=2
+pkgver=0.1.12
+pkgrel=1
 pkgdesc="Run any Linux process in a secure, unprivileged sandbox using Landlock LSM"
 arch=('x86_64')
 url="https://github.com/${_user}/${pkgname}"
-license=('LGPL-2.0-only')
+license=('MIT')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 depends=()
 makedepends=(go)
+checkdepends=(curl)
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "test.patch"
 )
-sha512sums=(
-    '06d221a26a15d4bb6a149b1a0fa683c3a0dd920a26e802acbd8a4d35417e7659c53fbe06a7e1ab82b7ca0e5045ef592a2497e7a73dc062d0f3d420546bb14191'
-    '5aed5a500cec87cb3ecf63454edc74e8ccfa5f28527b1fe9248b0842d078069302f777dc20d070b5a98009be0e019ece4b62035f9c66ce193954308976f4ba12'
-)
+sha512sums=('05a39777e5e7d740a1606fea66a975b8efcea440cc2fdea19bebc68f649e01422780e287d840b9eb864e545e34b13a76f4096292df591a438c7247856d9eac16'
+            '3e5a283fbcf9c65af5a5390048d0c73fa97cbc9eba9b14a761a1dadcc3f2e58ff7b71985fd8394d0b2d4b246b3b25379c2eaa3c2b1284cda421a57eba8e290be')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -39,7 +38,7 @@ build() {
 check() {
     cd "${pkgname}-${pkgver}"
 
-    ./test.sh
+    ./test.sh --keep-binary
 }
 
 
