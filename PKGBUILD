@@ -1,7 +1,7 @@
 # Maintainer: Nicolás Celedón-Hernández <coriollis.nch at gmail dot com>
 
 pkgname=ford
-pkgver=7.0.8
+pkgver=7.0.10
 pkgrel=1
 pkgdesc='Automatically generates FORtran Documentation from comments within the code'
 arch=(any)
@@ -14,14 +14,8 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 optdepends=('fortls: Fortran Language Server compatible with FORD documentation' 'python-sphinx' \
 'python-sphinx-autodoc-typehints' 'python-sphinx-inline-tabs' 'python-sphinx-book-theme' \
 'sphinx-argparse-cli')
-source=("https://pypi.io/packages/source/f/${pkgname}/${pkgname}-${pkgver}.tar.gz" \
-'pyproject.toml.patch')
-sha256sums=('b9d0695eac1779f73078776e11f5e6c7dbf22e5c9e3dff4a5e7fbe92a0740562'
-            '2621c5d2dbab965d7024a367150a637ef8148a7c40666b7b4678c6052fb51596')
-
-prepare() {
-	patch "$pkgname-$pkgver"/pyproject.toml pyproject.toml.patch
-}
+source=("https://pypi.io/packages/source/f/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('b1271adcd8a33af89aa65cd176ed25fe252b3e0a52aa9f1fd00b0e8c51fc4086')
 
 build() {
 	cd "$pkgname-$pkgver"

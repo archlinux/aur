@@ -1,6 +1,6 @@
 pkgbase = ford
 	pkgdesc = Automatically generates FORtran Documentation from comments within the code
-	pkgver = 7.0.8
+	pkgver = 7.0.10
 	pkgrel = 1
 	url = https://github.com/Fortran-FOSS-Programmers/ford
 	arch = any
@@ -28,9 +28,7 @@ pkgbase = ford
 	optdepends = python-sphinx-inline-tabs
 	optdepends = python-sphinx-book-theme
 	optdepends = sphinx-argparse-cli
-	source = https://pypi.io/packages/source/f/ford/ford-7.0.8.tar.gz
-	source = pyproject.toml.patch
-	sha256sums = b9d0695eac1779f73078776e11f5e6c7dbf22e5c9e3dff4a5e7fbe92a0740562
-	sha256sums = 2621c5d2dbab965d7024a367150a637ef8148a7c40666b7b4678c6052fb51596
+	source = https://pypi.io/packages/source/f/ford/ford-7.0.10.tar.gz
+	sha256sums = b1271adcd8a33af89aa65cd176ed25fe252b3e0a52aa9f1fd00b0e8c51fc4086
 
 pkgname = ford
