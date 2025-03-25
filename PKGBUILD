@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-experiments
 pkgname=python-$_pkgname
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Qiskit Experiments package for IBM qiskit framework"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
     python-pandas
     python-qiskit
     python-qiskit-ibm-experiment
+    python-qiskit-ibm-runtime
     python-rustworkx
     python-scipy
     python-uncertainties
@@ -23,36 +24,39 @@ makedepends=(
     python-build
     python-installer
     python-setuptools
+    python-setuptools-scm
     python-wheel
 )
 optdepends=(
     'python-cvxpy: for tomography'
     'python-scikit-learn: for discriminators'
-    'python-qiskit-aer'
+    'python-qiskit-aer: for simulating backends'
     'python-qiskit-dynamics: for the PulseBackend'
 )
-# checkdepends=(
-#    python-ddt
-#    python-fixtures
-#    python-multimethod
-#    python-pytest
-#    python-qiskit-aer
-#    python-testtools
-# )
+checkdepends=(
+    python-cvxpy
+    python-ddt
+    python-fixtures
+    python-multimethod
+    python-pytest
+    python-qiskit-aer
+    python-scikit-learn
+    python-testtools
+)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit-Community/$_pkgname/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('60d24412b0fceba4db4f7ac4f70216d4fee033984fcfc23f2bd93d64b4c5d1be00052419aa8e746880ffce3f960998c6346a3d9b9411b7f50da29c63d40e4b98')
+b2sums=('c40e7d2884265e2bf2f0520bb6531ee29a4441f416dc6ecdcd39db9ac7d3b1040748e74e5c659c623946988e365132f0f4816426cebc6818c03678c9b42a701b')
 
 build() {
     cd $_pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
-# check() {
-#    cd $_pkgname-$pkgver
-#    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-#    python -m installer --destdir=../test_dir dist/*.whl
-#    PYTHONPATH=../test_dir/$_site_packages pytest
-# }
+check() {
+   cd $_pkgname-$pkgver
+   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+   python -m installer --destdir=../test_dir dist/*.whl
+   PYTHONPATH="$PWD/../test_dir/$_site_packages" pytest
+}
 
 package() {
     cd $_pkgname-$pkgver
