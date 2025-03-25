@@ -1,11 +1,12 @@
-# Maintainer: maksut <maksut.cagil@gmail.com>
+# Maintainer: TheA4Paper <flatandblank@gmail.com>
+# Contributor: maksut <maksut.cagil@gmail.com>
 # Contributor: spider-mario <spidermario@free.fr>
 # Contributor: Saiki81 <saikia81 at hotmail dot com>
 # adapted from package: pianoteq-stage-trial-bin
 # adapted from pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=pianoteq-stage
-pkgver=8.4.0
+pkgver=8.4.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
@@ -21,7 +22,7 @@ conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # https://www.modartt.com/download?file=pianoteq_stage_linux_v840.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('2220ea28692bdf4530b751f48a79a5e392705b689f82c9ffb2cf011fd55dfbeb5f5ea66587e8db4009fbe83b244061729e0bbb76a3d29d9a66959e45bdc66581'
+b2sums=('d981a40c51b8272301eb4d2c165d8a6a6bf507c8b58fb849fce14be0ae01f6aa2663a3d210c48c6d9859f5635b6caf546d058784c42d2d7cb9a693995f010598'
   'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
