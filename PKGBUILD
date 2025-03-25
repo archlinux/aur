@@ -1,4 +1,4 @@
-# Maintener: dvhar <jnk at davosaur dot com>
+# Maintainer: dvhar <jnk at davosaur dot com>
 
 pkgname=pikeru
 pkgver=1.4
