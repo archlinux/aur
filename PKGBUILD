@@ -28,7 +28,7 @@ build() {
 	cd "${srcdir}/${_gitname}/sources"
 	/usr/bin/bash ./autogen.sh
 	./configure --prefix=/usr
-make
+	make
 }
  
 package() {
