@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com
 pkgname=vtex2
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A VTF converter and editor"
 arch=('x86_64')
 url="https://github.com/StrataSource/vtex2"
@@ -33,6 +33,8 @@ build() {
 	-G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
 	-DBUILD_GUI=1
 
 	cmake --build build
