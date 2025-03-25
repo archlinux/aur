@@ -1,18 +1,23 @@
-# Maintainer:  Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
+# Maintainer:  shtrophic <aur at shtrophic dot net>
+# Contributor: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
-_pkgbase=nginx
-_commit=094e0ea330f5
-_libressl_ver=4.0.0
 pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
-pkgver=1.27.4
+
+_vfreenginx=1.27.4
+_vlibressl=4.0.0
+_tests_commit=a23ab99972ae
+
+pkgver="${_vfreenginx}_${_vlibressl}"
 pkgrel=1
-pkgdesc='freenginx is an effort to preserve free and open development of nginx (build with OpenBSD libressl)'
+pkgdesc='webserver in an effort to preserve free and open development of nginx (build with OpenBSD libressl)'
 arch=('i686' 'x86_64')
 url='https://freenginx.org'
-license=('BSD-2-Clause-Views AND LibreSSL')
-depends=('geoip' 'libxcrypt' 'pcre2' 'zlib' 'glibc' 'mailcap')
-makedepends=('cmake' 'git' 'go' 'mercurial')
+license=('BSD-2-Clause AND LicenseRef-LibreSSL')
+depends=(geoip libxcrypt pcre2 zlib glibc mailcap)
+makedepends=(mercurial)
+checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
+              perl-cryptx memcached ffmpeg coreutils)
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -23,16 +28,22 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/win-utf'
         'etc/logrotate.d/nginx')
 install=nginx.install
-provides=('freenginx' 'freenginx-src')
-conflicts=('nginx' 'nginx-src')
-source=("hg+https://freenginx.org/hg/nginx#revision=$_commit"
-        "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz"
+provides=(freenginx freenginx-src)
+conflicts=(nginx nginx-src)
+source=("$url/download/freenginx-$_vfreenginx.tar.gz"{,.asc}
+        "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$_vlibressl.tar.gz"{,.asc}
+	"hg+https://freenginx.org/hg/nginx-tests#revision=${_tests_commit}"
         "service"
         "logrotate")
-sha256sums=('0c14dbb8af3a52b866cf2beaeebc864562a6b21ae198fd17de01232fc3523658'
+sha256sums=('9ceda8a77cff23e403179e43deb0b52f57e626db5c92e3724dda51e7b72b9beb'
+            'SKIP'
             '4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4'
+            'SKIP'
+            'SKIP'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
+validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8  # Maxim Dounin <mdounin@mdounin.ru>
+	      A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5) # Brent Cook <busterb@gmail.com>
 
 _common_flags=(
   --with-compat
@@ -65,9 +76,6 @@ _common_flags=(
   --with-threads
 )
 
-_mainline_flags=(
-)
-
 _quic_flags=(
   --with-http_v3_module
 #  --with-stream_quic_module
@@ -76,14 +84,10 @@ _quic_flags=(
 prepare() {
   # Backup pristine version of nginx source for -src package
   test -d ${srcdir}/${pkgname}-src && rm -r ${srcdir}/${pkgname}-src
-  cp -r ${srcdir}/nginx ${srcdir}/nginx-src
+  cp -r ${srcdir}/freenginx-$_vfreenginx ${srcdir}/nginx-src
 }
 
 build() {
-  # Clear -D_FORTIFY_SOURCE from C++ build flags, it causes Boringssl tests to fail to compile
-  export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
-  export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
-
   export CXXFLAGS="$CXXFLAGS -fPIC"
   export CFLAGS="$CFLAGS -fPIC"
   export LDFLAGS="$LDFLAGS"
@@ -91,22 +95,10 @@ build() {
   if [[ $CC == "clang" ]];then
     _cc_opt="-flto $CPPFLAGS $CFLAGS"
     _ld_opt="-flto -fuse-ld=lld $LDFLAGS"
-  else
-    # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
-    # -Wno-array-bounds: 2022-05-21 for compatiblity with GCC 12.1 (https://bugs.chromium.org/p/boringssl/issues/detail?id=492&sort=-modified)
-    export CFLAGS="$CFLAGS -Wno-stringop-overflow -Wno-array-parameter -Wno-array-bounds"
-    _cc_opt="$CPPFLAGS $CFLAGS"
-    _ld_opt="$LDFLAGS"
   fi
 
-#  cd ${srcdir}/boringssl
-#  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make crypto ssl
-#  cd ${srcdir}/boringssl
-#  mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-#  cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
-
-  cd ${srcdir}/nginx
-  ./auto/configure \
+  cd freenginx-$_vfreenginx
+  ./configure \
     --prefix=/etc/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --sbin-path=/usr/bin/nginx \
@@ -121,19 +113,22 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-openssl=${srcdir}/libressl-${_libressl_ver} \
+    --with-openssl=${srcdir}/libressl-${_vlibressl} \
     --with-cc-opt="${_cc_opt}" \
     --with-ld-opt="${_ld_opt}" \
     ${_common_flags[@]} \
-    ${_mainline_flags[@]} \
     ${_quic_flags[@]}
 
-  #touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
   make
 }
 
+check() {
+	cd nginx-tests
+	TEST_NGINX_BINARY="$srcdir/freenginx-$_vfreenginx/objs/nginx" prove -j $(nproc) .
+}
+
 package_freenginx-libressl() {
-  cd nginx
+  cd freenginx-$_vfreenginx
   make DESTDIR="$pkgdir" install
 
   sed -e 's|\<user\s\+\w\+;|user http;|g' \
@@ -155,43 +150,36 @@ package_freenginx-libressl() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   rmdir "$pkgdir"/run
 
   install -d "$pkgdir"/usr/share/man/man8/
-  gzip -9c docs/man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+  gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
 
   for i in ftdetect indent syntax; do
     install -Dm644 contrib/vim/${i}/nginx.vim \
       "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
   done
-  install -Dm644 "$srcdir"/libressl-${_libressl_ver}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
+  install -Dm644 "$srcdir"/libressl-${_vlibressl}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
 
 }
 
 package_freenginx-libressl-src() {
-  pkgdesc="Source code of freenginx $pkgver, useful for building modules"
+  pkgdesc="Source code of freenginx $_vfreenginx, useful for building modules"
   arch=('any')
   provides=('nginx-src' 'nginx-mainline-src')
-  conflicts=($_pkgbase-src)
+  conflicts=('nginx-src')
   depends=("sh" "bash" "perl")
   backup=()
   install -d "$pkgdir/usr/src"
   test -d "$pkgdir/usr/src/nginx" && rm -r "$pkgdir/usr/src/nginx"
   cp -r ${srcdir}/nginx-src "$pkgdir/usr/src/nginx"
-  # Delete the .hg directory, it is huge and not needed
-  rm -r ${pkgdir}/usr/src/nginx/{.hg,.hgtags}
-  # Link the 'configure' script to its location in release tarballs,
-  # as this is where modules expect it
-  ln -s /usr/src/nginx/auto/configure "$pkgdir/usr/src/nginx"
   cd nginx-src
-  install -Dm644 docs/text/LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 "$srcdir"/libressl-${_libressl_ver}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
+  install -Dm644 "$srcdir"/libressl-${_vlibressl}/COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-LIBRESSL
 }
-
-# vim:set ts=2 sw=2 et:
