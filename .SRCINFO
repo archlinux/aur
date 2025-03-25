@@ -1,16 +1,23 @@
 pkgbase = python-telegram
 	pkgdesc = Python API for the tdlib library
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexander-akhmetov/python-telegram
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = openssl-1.1
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
+	depends = libcrypto.so=1.1
+	depends = libssl.so=1.1
 	depends = python
+	depends = zlib
 	depends = libtd
 	depends = python-telegram-text
 	conflicts = python-telegram-bot
