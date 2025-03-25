@@ -169,7 +169,7 @@ else
     _pkgsuffix=cachyos
 fi
 
-pkgbase="linux-$_pkgsuffix"
+pkgbase="linux-${_pkgsuffix}613"
 _major=6.13
 _minor=7
 #_minorc=$((_minor+1))
