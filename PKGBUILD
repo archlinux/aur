@@ -2,7 +2,7 @@
 
 pkgname=windsurf
 _pkgname=windsurf
-pkgver=1.5.6
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
