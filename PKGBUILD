@@ -1,40 +1,32 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=papa
-pkgver=4.0.0
-pkgrel=4
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Mod manager CLI for Northstar"
 url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
 arch=('x86_64')
-makedepends=('cargo' 'git')
-_commit=fa5617c1a1894d0ffd7aff69ccacfc61f8a600a2
-source=("git+$url.git#tag=v$pkgver"
-        "git+https://github.com/AnActualEmerald/thermite.git#commit=$_commit")
-sha256sums=('SKIP'
-            'SKIP')
+makedepends=('cargo')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9d1d9049ee934c6690afd59cc16e7b21b8489019ad57fc97291be7da009c0381')
 
 prepare() {
-# Submodule
-  rm -d papa/thermite
-  ln -s "$srcdir/thermite" papa
-
-# Dependencies
-  cd papa
+  cd papa-$pkgver
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd papa
+  cd papa-$pkgver
   export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
   cargo build --release
 }
 
 package() {
-  cd papa
+  cd papa-$pkgver
   install -Dm644 CHANGELOG.md README.md -t "$pkgdir/usr/share/doc/papa"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/papa"
   install -Dm755 target/release/papa -t "$pkgdir/usr/bin"
