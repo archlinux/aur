@@ -1,6 +1,6 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=openutau-bin
-pkgver=0.1.547
+pkgver=0.1.549
 pkgrel=1
 pkgdesc="Open source UTAU successor"
 arch=("x86_64" "aarch64")
@@ -18,8 +18,8 @@ source_aarch64=("OpenUtau-linux-aarch64-$pkgver.zip::https://github.com/stakira/
 sha256sums=('b7e1f13f15367a039f915b290db43d6cbb33903836cd8d73cc16d036fde3342a'
             '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b'
             'fb3ac0c32bf7ea057fbb4655c3aaefcee45302026d8dfff401eac86948fed950')
-sha256sums_x86_64=('35a50351cdc328a3748fce345bb0a86591846eacc5daf2de8d5b7d22038dc5df')
-sha256sums_aarch64=('6197ab38018996595f02f41fb36c24a8e67acd53babf044581140202403cd00b')
+sha256sums_x86_64=('e2e8d301366c8f5c2ba55b61a04980b7ad6cac1baf406e55b3d0c5b0cd69e918')
+sha256sums_aarch64=('9dce4c118e52020bd7973c70afd1a00e04c87a5d32a8d34aa49886ffe4ca1a11')
 noextract=("$source_x86_64" "$source_aarch64")
 options=(!strip)
 
