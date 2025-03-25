@@ -1,0 +1,18 @@
+pkgbase = pipeform
+	pkgdesc = Terraform runtime terminal user interface
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/magodo/pipeform
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = go
+	makedepends = libx11
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/magodo/pipeform/archive/refs/tags/v0.2.1/pipeform-0.2.1.tar.gz
+	sha256sums = 0b251f3d0d259b0e3d15b08b95567f3eef123afae9c3d0e20107cd6f08aa6278
+
+pkgname = pipeform

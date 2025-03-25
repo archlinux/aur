@@ -1,0 +1,4 @@
+[pipeform]
+source = "git"
+git = "https://github.com/magodo/pipeform.git"
+prefix = "v"
