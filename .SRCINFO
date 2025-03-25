@@ -1,7 +1,7 @@
 pkgbase = texturepacker-6.0.1
 	pkgdesc = Sprite sheet creator and image optimizer. This version (6.0.1) is the last to support ATF and PVR(v2) formats, as these were removed from 6.0.2 onward.
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codeandweb.com/texturepacker
 	install = texturepacker.install
 	arch = x86_64

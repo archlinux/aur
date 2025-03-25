@@ -3,7 +3,7 @@
 pkgname=texturepacker-6.0.1
 _givenname=texturepacker
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sprite sheet creator and image optimizer. This version (6.0.1) is the last to support ATF and PVR(v2) formats, as these were removed from 6.0.2 onward."
 arch=('x86_64')
 url="https://www.codeandweb.com/$_givenname"
@@ -22,13 +22,13 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/
+    cd "${srcdir}"/ || exit
 
     # Extract to the $pkgdir.
     tar xJf data.tar.xz -C "${pkgdir}/"
 
     # Enter $pkgdir.
-    cd ${pkgdir}/usr/lib/$_givenname/
+    cd "${pkgdir}"/usr/lib/$_givenname/ || exit
 
     install -Dm644 "${pkgdir}/usr/share/$_givenname/documents/LicenseAgreement.txt" \
         "${pkgdir}/usr/share/licenses/${_givenname}/LicenseAgreement.txt"
