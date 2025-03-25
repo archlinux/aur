@@ -1,12 +1,13 @@
 pkgbase = firefox-clearurls
-	pkgdesc = Remove tracking elements from URL's to protect privacy while browsing.
-	pkgver = 1.26.1
+	pkgdesc = Remove tracking elements from URL's.
+	pkgver = 1.27.3
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/clearurls/
 	arch = any
-	groups = firefox-addons
-	license = LGPL3
-	source = clearurls-1.26.1.xpi::https://addons.mozilla.org/firefox/downloads/latest/clearurls/latest.xpi
-	md5sums = 58ff2220a7c9eee3e22bc3d0c50eef32
+	license = LGPL-3.0
+	depends = firefox
+	noextract = clearurls.xpi
+	source = clearurls.xpi::https://addons.mozilla.org/firefox/downloads/file/4432106/clearurls-1.27.3.xpi
+	sha256sums = 54926b6e4274d5935a5fc0daa6320f1d371e3d2f1a5877467ca3ab22a65c4f20
 
 pkgname = firefox-clearurls

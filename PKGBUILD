@@ -2,24 +2,27 @@
 # Maintainer: Cimu Wang <cimu58@gmail.com>
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Robert Cegliński <rob.ceglinski@gmail.com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-# Custom variables
-_name=clearurls
-_id="{74145f27-f039-47ce-a470-a662b129930a}"
-
-
-pkgname=firefox-clearurls
-pkgver=1.26.1
+pkgname='firefox-clearurls'
+pkgver=1.27.3
 pkgrel=1
-pkgdesc="Remove tracking elements from URL's to protect privacy while browsing."
+pkgdesc="Remove tracking elements from URL's."
 arch=('any')
-url="https://addons.mozilla.org/en-US/firefox/addon/$_name/"
-license=('LGPL3')
-groups=('firefox-addons')
-source=("$_name-$pkgver.xpi::https://addons.mozilla.org/firefox/downloads/latest/$_name/latest.xpi")
-md5sums=('58ff2220a7c9eee3e22bc3d0c50eef32')
+url="https://addons.mozilla.org/en-US/firefox/addon/clearurls/"
+license=('LGPL-3.0')
+depends=('firefox')
+_source_file_id=4432106
+source=("clearurls.xpi::https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/clearurls-${pkgver}.xpi")
+noextract=('clearurls.xpi')
+sha256sums=('54926b6e4274d5935a5fc0daa6320f1d371e3d2f1a5877467ca3ab22a65c4f20')
 
+prepare() {
+  cd "$srcdir"
+  unzip -qqo "clearurls.xpi" -d "clearurls-${pkgver}"
+}
 
 package() {
-  install -Dm644 ${_name}-${pkgver}.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/${_id}.xpi"
+  _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' clearurls-${pkgver}/manifest.json)"
+  install -Dm644 'clearurls.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/${_id}.xpi"
 }
