@@ -1,0 +1,14 @@
+pkgbase = nodejs-mpsm
+	pkgdesc = MPV Plugin manager
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/mpv-easy/mpsm-scripts
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = mpsm-0.1.14.tgz
+	source = https://registry.npmjs.org/@mpv-easy/mpsm/-/mpsm-0.1.14.tgz
+	sha256sums = SKIP
+
+pkgname = nodejs-mpsm
