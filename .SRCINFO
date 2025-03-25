@@ -7,7 +7,7 @@ pkgbase = ttf-elice-digital-baeum
 	license = custom:SIL Open Font License v1.1
 	provides = ttf-elice-digital-baeum
 	conflicts = elice-digital-baeum-variable
-	source = https://font.elice.io/static/archives/EliceDigitalBaeum_TTF.zip
+	source = https://font.elice.io/static/downloads/EliceDigitalBaeum_TTF.zip
 	sha256sums = 9e2fc40ac8dc1e6faa5aff5d89dd45462b498513a9918f2f80200876f7ecc72b
 
 pkgname = ttf-elice-digital-baeum
