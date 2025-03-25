@@ -1,25 +1,30 @@
 # Mantainer: Davide Berardi <berardi.dav@gmail.com>
 
-pkgname=cado-git
-_gitname=cado
-pkgver=0.9.5
+_pkgname="cado"
+pkgname="$_pkgname-git"
+pkgver=r54.5aba888
 pkgrel=1
-
 pkgdesc="Capability DO (like a sudo providing users with just the
 capabilities they need))"
 arch=('i686' 'x86_64' 'arm')
-url="https://github.com/rd235/cado"
+url="https://github.com/rd235/$_pkgname"
 license=('GPL')
-makedepends=('make' 'cmake' 'git')
+groups=('virtualsquare')
 depends=('libcap' 'pam' 'mhash' 's2argv-execs-git')
-provides=('cado' 'caprint')
+makedepends=('make' 'cmake' 'git')
+provides=("cado=$pkgver" "caprint=$pkgver")
 conflicts=('cado' 'caprint')
-source=("git://github.com/rd235/cado.git")
+source=("git+$url.git")
 install="cado-git.install"
 md5sums=('SKIP')
 
+pkgver() {
+        cd "$_pkgname"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$srcdir/$_pkgname"
 	mkdir -p build
 	cd build
 	cmake \
@@ -30,7 +35,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_gitname/build"
+	cd "$srcdir/$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
 }
-
