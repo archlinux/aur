@@ -12,12 +12,11 @@ makedepends=('cargo' 'clang' 'scdoc')
 optdepends=('epub-thumbnailer-git: epub thumbnail support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dvhar/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('453781d073660325076ab1c96d99b760333cfc44938cf660c2fe38abbf80d6092483e827b572ab0d970d3f51174785830d09756fb3088d0a374da459e001a6ac')
-options=()
+options=(!debug !lto)
 install="${pkgname}.install"
 
 build() {
   cd "$pkgname-$pkgver"
-  export CFLAGS="$(sed 's/-flto=auto//g' <<< "$CFLAGS")"
   cargo build --release --locked
   cargo build --release --locked --bin portal
 }
