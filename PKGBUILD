@@ -8,6 +8,7 @@ url="https://github.com/mchisolm0/orbit.git"
 license=('MIT')
 depends=()
 conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}")
 optdepends=()
 source=(https://github.com/expo/orbit/releases/download/expo-orbit-v2.0.2/expo-orbit-2.0.2-1.x86_64.rpm)
 
