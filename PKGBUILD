@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname="Nuclear Player"
-pkgver=0.6.43
+pkgver=0.6.44
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -19,15 +19,15 @@ makedepends=(
     'gendesk'
     'npm'
     'nvm'
-    'gcc'
     'curl'
     'rust'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('3cccf4d4b3233571a58affb18ea47b4813d6f9573f68572d441166f6c5d101e0'
+sha256sums=('9442b798bc38ca6648a40d4bfeeff5443dcc63c0015658a5a8b80816e6a94b42'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -45,13 +45,13 @@ prepare() {
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_appname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
@@ -70,7 +70,7 @@ prepare() {
     NODE_ENV=development    npm install
 }
 build() {
-    cd "${srcdir}/${_appname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx shx rm -rf dist
     NODE_ENV=production     npx lerna run build
@@ -79,11 +79,11 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 "${srcdir}/${_appname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_appname}-${pkgver}/release/linux-"*/resources/{app.asar.unpacked,bin,media,musicgenresicons} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/release/linux-"*/resources/{app.asar.unpacked,bin,media,musicgenresicons} "${pkgdir}/usr/lib/${pkgname}"
     _icon_sizes=(16 24 32 48 64 96 128 256 512 1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${_appname}-${pkgver}/packages/app/resources/media/presskit/icons/color/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/app/resources/media/presskit/icons/color/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
     done
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
