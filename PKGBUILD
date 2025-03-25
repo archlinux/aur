@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eaglergrab-bin
 _pkgname=eaglerGrab
-pkgver=1.2.6
-_electronversion=33
+pkgver=1.2.9
+_electronversion=35
 pkgrel=1
 pkgdesc="Eaglercraft Launcher(Prebuilt version.Use system-wide electron)."
 arch=('x86_64')
@@ -21,17 +21,17 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/release-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bdb066ca42c3777b853c097ff8b20aa975e0767040abb237804a952e8614379a'
+sha256sums=('06bde0b99387225a4fb527aa063314b0fb6a6a44ebfc1fc38d3c586ddf3b39dd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
