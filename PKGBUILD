@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/CluelessCatBurger/wl_shimeji"
 license=('GPL-2.0')
 depends=('python' 'wayland' 'wayland-protocols' 'python-pillow')
-makedepends=('make' 'gcc' 'git')
+makedepends=('make' 'gcc' 'git' 'libarchive')
 source=("$_pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git")
 sha256sums=('SKIP')
 
