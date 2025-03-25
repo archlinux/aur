@@ -11,25 +11,23 @@ _tests_commit=a23ab99972ae
 pkgver="${_vfreenginx}_${_vlibressl}"
 pkgrel=1
 pkgdesc='webserver in an effort to preserve free and open development of nginx (build with OpenBSD libressl)'
-arch=('i686' 'x86_64')
-url='https://freenginx.org'
+arch=(i686 x86_64)
+url=https://freenginx.org
 license=('BSD-2-Clause AND LicenseRef-LibreSSL')
 depends=(geoip libxcrypt pcre2 zlib glibc mailcap)
 makedepends=(mercurial)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               perl-cryptx memcached ffmpeg coreutils)
-backup=('etc/nginx/fastcgi.conf'
-        'etc/nginx/fastcgi_params'
-        'etc/nginx/koi-win'
-        'etc/nginx/koi-utf'
-        'etc/nginx/nginx.conf'
-        'etc/nginx/scgi_params'
-        'etc/nginx/uwsgi_params'
-        'etc/nginx/win-utf'
-        'etc/logrotate.d/nginx')
+backup=(etc/nginx/fastcgi.conf
+        etc/nginx/fastcgi_params
+        etc/nginx/koi-win
+        etc/nginx/koi-utf
+        etc/nginx/nginx.conf
+        etc/nginx/scgi_params
+        etc/nginx/uwsgi_params
+        etc/nginx/win-utf
+        etc/logrotate.d/nginx)
 install=nginx.install
-provides=(freenginx freenginx-src)
-conflicts=(nginx nginx-src)
 source=("$url/download/freenginx-$_vfreenginx.tar.gz"{,.asc}
         "https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-$_vlibressl.tar.gz"{,.asc}
 	"hg+https://freenginx.org/hg/nginx-tests#revision=${_tests_commit}"
@@ -128,6 +126,9 @@ check() {
 }
 
 package_freenginx-libressl() {
+  provides=(nginx)
+  conflicts=(nginx)
+
   cd freenginx-$_vfreenginx
   make DESTDIR="$pkgdir" install
 
@@ -150,9 +151,7 @@ package_freenginx-libressl() {
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$provides/LICENSE
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s /usr/share/licenses/$provides/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   rmdir "$pkgdir"/run
 
@@ -169,11 +168,12 @@ package_freenginx-libressl() {
 
 package_freenginx-libressl-src() {
   pkgdesc="Source code of freenginx $_vfreenginx, useful for building modules"
-  arch=('any')
-  provides=('nginx-src' 'nginx-mainline-src')
-  conflicts=('nginx-src')
-  depends=("sh" "bash" "perl")
+  arch=(any)
+  provides=(nginx-src)
+  conflicts=(nginx-src)
+  depends=(sh bash perl)
   backup=()
+
   install -d "$pkgdir/usr/src"
   test -d "$pkgdir/usr/src/nginx" && rm -r "$pkgdir/usr/src/nginx"
   cp -r ${srcdir}/nginx-src "$pkgdir/usr/src/nginx"

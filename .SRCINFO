@@ -23,10 +23,6 @@ pkgbase = freenginx-libressl
 	depends = zlib
 	depends = glibc
 	depends = mailcap
-	provides = freenginx
-	provides = freenginx-src
-	conflicts = nginx
-	conflicts = nginx-src
 	backup = etc/nginx/fastcgi.conf
 	backup = etc/nginx/fastcgi_params
 	backup = etc/nginx/koi-win
@@ -54,6 +50,8 @@ pkgbase = freenginx-libressl
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
 pkgname = freenginx-libressl
+	provides = nginx
+	conflicts = nginx
 
 pkgname = freenginx-libressl-src
 	pkgdesc = Source code of freenginx 1.27.4, useful for building modules
@@ -62,6 +60,5 @@ pkgname = freenginx-libressl-src
 	depends = bash
 	depends = perl
 	provides = nginx-src
-	provides = nginx-mainline-src
 	conflicts = nginx-src
 	backup = 
