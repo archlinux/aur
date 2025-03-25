@@ -3,9 +3,9 @@
 pkgname=soundfont-gmgsx
 pkgver=2.9.0.3
 pkgrel=2
-pkgdesc="A public dimain sountfont by Kenneth Rundt which has similar sound as gm.dls"
+pkgdesc="A public domain soundfont by Kenneth Rundt which has similar sound as gm.dls"
 arch=('any')
-license=('custom:commercial')
+license=('LicenseRef-SynthFont')
 url="synthfont.com/"
 makedepends=('innoextract')
 source=("https://www.${url}/SynthFont2x64Setup.exe")

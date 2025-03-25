@@ -1,10 +1,10 @@
 pkgbase = soundfont-gmgsx
-	pkgdesc = A public dimain sountfont by Kenneth Rundt which has similar sound as gm.dls
+	pkgdesc = A public domain soundfont by Kenneth Rundt which has similar sound as gm.dls
 	pkgver = 2.9.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = synthfont.com/
 	arch = any
-	license = custom:commercial
+	license = LicenseRef-SynthFont
 	makedepends = innoextract
 	source = https://www.synthfont.com//SynthFont2x64Setup.exe
 	sha256sums = 99209e856544af86e52c44dba6e8f6572d72cfb81453f103c204530794989dcc
