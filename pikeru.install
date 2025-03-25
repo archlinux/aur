@@ -1,11 +1,25 @@
 post_install() {
-echo -e "\033[1m"
-cat << EOF
-To enable pikeru for you user, run 'pikeru -e'. You can disable it with 'pikeru -d'.
+	echo -e "\033[1m"
+	cat << EOF
+To enable pikeru for you user, run 'pikeru -e'.
+You can disable it and restore your old filepicker with 'pikeru -d'. You should run 'pikeru -d' if you're going to uninstall it.
 If pikeru breaks for whatever reason and you still need to disable it, this script does the same thing as pikeru -d:
 	/usr/share/xdg-desktop-portal-pikeru/unsetconfig.sh
 
 To enable thumbnails for epub files, install epub-thumbnailer. It is in the AUR as epub-thumbnailer-git.
 EOF
-echo -e "\033[0m"
+	echo -e "\033[0m"
+}
+
+post_remove() {
+	echo -e "\n\033[1m\033[41m===== IMPORTANT =====\033[0m\033[1m"
+	cat << EOF
+If you haven't restored your old filepicker with 'pikeru -d', do it by deleting this file:
+	~/.config/xdg-desktop-portal/portals.conf
+Or replace it with this file, if it exists:
+	~/.config/xdg-desktop-portal/portals.conf.orig
+And then run this command:
+	systemctl --user restart xdg-desktop-portal.service
+EOF
+	echo -e "\033[0m"
 }
