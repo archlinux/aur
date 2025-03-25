@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.23.1.r18.g5b1daa028
+pkgver=0.24.0.r4.ga5e214d33
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -61,8 +61,8 @@ prepare() {
 
 	cd "${srcdir}/${_appname}"
 
-	export GNUNET_PREFIX='/usr/lib'
 	./bootstrap
+	meson setup -Dprefix='/usr/' build
 
 }
 
@@ -70,9 +70,7 @@ build() {
 
 	cd "${srcdir}/${_appname}"
 
-	./configure --prefix='/usr' --enable-experimental
-	make
-	make -C contrib
+	meson compile -C build
 
 }
 
@@ -80,8 +78,7 @@ package() {
 
 	cd "${srcdir}/${_appname}"
 
-	make DESTDIR="${pkgdir}" install
-	make DESTDIR="${pkgdir}" -C contrib install
+	meson install -C build --destdir "${pkgdir}"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	install -Dm644 "${srcdir}/${_appname}-system.service" \
