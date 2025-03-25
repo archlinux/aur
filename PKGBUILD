@@ -2,7 +2,7 @@
 # Repo:       https://github.com/Mikescher/better-docker-ps
 
 pkgname=dops-bin
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 
 pkgdesc="A replacement for the default docker-ps that tries really hard to fit into the width of your terminal."
@@ -18,7 +18,7 @@ source=(
   "https://github.com/Mikescher/better-docker-ps/releases/download/v${pkgver}/${_binary}"
 )
 
-_bin_sha='48addb268291151b0dd6752675829dc3ba81523d1515d6094ccf18269e26dfd6'
+_bin_sha='f8682da6fd0dc439302f0ef70badf52c9f354d0c81d2e63cf655b180c5ab30f1'
 
 sha256sums=(
   "$_bin_sha"
