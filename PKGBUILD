@@ -2,8 +2,9 @@
 
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
-pkgver=4.3.1
-pkgrel=2
+_pkgver=4.3.1-beta.1
+pkgver=4.3.1_beta.1
+pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
 license=('MIT')
@@ -21,41 +22,74 @@ elif test "$CARCH" == 'aarch64'; then
     _arch='arm64'
 fi
 
-depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
-    libsquish libtheora libvorbis libwebp libwslay libxcursor libxi
-    libxinerama libxrandr mbedtls2 miniupnpc pcre2 dotnet-sdk)
-optdepends=('pipewire-alsa: for audio support'
-    'pipewire-pulse: for audio support')
+depends=(
+    embree3
+    freetype2
+    graphite
+    harfbuzz
+    harfbuzz-icu
+    libglvnd
+    libspeechd
+    libsquish
+    libtheora
+    libvorbis
+    libwebp
+    libwslay
+    libxcursor
+    libxi
+    libxinerama
+    libxrandr
+    mbedtls2
+    miniupnpc
+    pcre2
+    dotnet-sdk
+)
+
+optdepends=(
+    'pipewire-alsa: for audio support'
+    'pipewire-pulse: for audio support'
+)
+
+makedepends=(
+  7zip
+)
 
 source=("${_pkgname}.desktop" 'icon.png' 'LICENSE.txt')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-source_x86_64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${pkgver}-alpha.2/Redot_v${pkgver}-alpha.2_mono_linux_x86_64.zip")
-source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${pkgver}-alpha.2/Redot_v${pkgver}-alpha.2_mono_linux_x86_32.zip")
-source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${pkgver}-alpha.2/Redot_v${pkgver}-alpha.2_mono_linux_arm32.zip")
-source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${pkgver}-alpha.2/Redot_v${pkgver}-alpha.2_mono_linux_arm64.zip")
+source_x86_64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_x86_64.zip")
+source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_x86_32.zip")
+source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_arm32.zip")
+source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_arm64.zip")
 
-sha512sums_x86_64=('5e602e5d280f33d876def1fb5a4a2fa4cda02910ec85b802dccd5bb481d96ea64caab54903f898e0652bc456982e5cca28016a7082ceab461c89918c50a811aa')
-sha512sums_i686=('5afe3b448336e732a1bf01d1f8dbb25e7f8359571cc019f9bd4d63d7b1acdbdb03502673b41fbac6ece5dc67abbd8046053cd98d5b8c2408df8770906abdb00d')
-sha512sums_armv7h=('10d954904d1b1910e340d0b3ba062686aecc91163b0fc648a72512c2c2a9ff2d4162bff57b6c10a285d7a8673a59188da16e4b4d9188003f5296655493c661e2')
-sha512sums_aarch64=('25d903f581fd57ec9db3010c0c453d458e20a228ccd37912facd2fac0fe13f53a02c16700262e204004583e239dc234dde54cbf95663f3f8c131fed502374766')
+sha512sums_x86_64=('98055cfa20a19200aaf06a7a0d1f1ab85a25bd911be68e48e431696b23a1e989d257e20b802d33c01568810f5e7cf311a77afa551e4df438dc8f85fa95bc9db8')
+sha512sums_i686=('52b62f4aa96e0feff01fa28a5289be45fb216a100f003d9df66883581854be28d6a49d6008580fdfab079e1a4478f8af82e4f21f7bf4d9183035603e7163f82b')
+sha512sums_armv7h=('62f5c14bab919c08c7ebf8ab54634ebb0f8211a21d09ae626230f270d5d01f8803bd0ed3b982b6c23dbc642eb7cdba66ed613ab269c181d4b005ce11d2382aad')
+sha512sums_aarch64=('73501e5bd29c24c40dc9a1e779d0f55ea69fc96d8176038c7d7469f5c707a12dbdfbb7dc0b222e7b479dbdf86fc85b49585b12cae381347c90b6c894e93cd2e6')
 
 package()
 {
-    mkdir -p "${pkgdir}"/opt/"${_pkgname}"
-    mkdir -p "${pkgdir}"/usr/bin/
+    mkdir -p ${pkgdir}/opt/${_pkgname}
+    mkdir -p ${pkgdir}/usr/bin/
 
-    cd "${srcdir}" || exit
+    cd ${srcdir} || exit
 
-    unzip Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}".zip -d Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}"
-    # Remove duplicate
-    rm -rf Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}"/Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}"
-    mv Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}"/Redot_v"${pkgver}"-alpha.2_mono_linux."${_arch}" Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}"/redot-mono
-    cp -r Redot_v"${pkgver}"-alpha.2_mono_linux_"${_arch}"/* "${pkgdir}"/opt/"${_pkgname}"/
+    7za x Redot_v${_pkgver}_mono_linux_${_arch}.zip -o${_pkgname}
 
-    ln -srf "${pkgdir}"/opt/"${_pkgname}"/redot-mono "${pkgdir}"/usr/bin/"${_pkgname}"
+    cp -r ${_pkgname}/Redot_v${_pkgver}_mono_linux_${_arch}/* ${pkgdir}/opt/${_pkgname}/
 
-    install -Dm644 "${_pkgname}".desktop "${pkgdir}"/usr/share/applications/"${_pkgname}".desktop
-    install -Dm644 icon.png "${pkgdir}"/usr/share/pixmaps/Redot.png
-    install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    # move into directory
+    cd ${pkgdir}/opt/${_pkgname}
+
+    # rename executable
+    mv Redot_v${_pkgver}_mono_linux.${_arch} ${_pkgname}
+
+    # back to top
+    cd ${srcdir}
+
+    ln -srf ${pkgdir}/opt/${_pkgname}/redot-mono ${pkgdir}/usr/bin/${_pkgname}
+
+    install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+    install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/Redot.png
+    install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
