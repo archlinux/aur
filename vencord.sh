@@ -24,5 +24,9 @@ while IFS= read -r package || [ -n "$package" ]; do
 		branch="stable"
 	fi
 
-	"$installer" -install -branch "$branch"
+	echo "Installing Vencord for $branch branch..."
+	"$installer" -install -branch "$branch" || {
+		echo "Falling back to auto branch..."
+		"$installer" -install -branch auto
+	}
 done
