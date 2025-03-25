@@ -6,16 +6,16 @@
 # Don't forget fix checksum for .deb file
 
 pkgname=webaccessagent
-pkgver=5.8.7
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="DIRECTUM Web Access Agent"
 arch=('x86_64')
 url="http://www.directum.ru"
 license=('DIRECTUM License')
-groups=('')
 options=('!strip' '!emptydirs')
+depends=(dbus fontconfig freetype2 gcc-libs glib2 glibc libdrm libglvnd libx11 libxcb libxcomposite libxext libxrender nspr nss openssl-1.1 pcsclite qt5-base qt5-declarative qt5-wayland qt5-websockets wayland zlib)
 source=("local://WebAccessAgent.deb")
-sha512sums=('4bbdf39cffa810ffbfa25268c884d77ea352c755f2535c2adc90a9c06f2313c25dd7a493a4df28e2161bc35bb87c5d1dabe9683c00e9c9802e10a6825b944319')
+sha512sums=('12ff87cf68d523de40ee6b37a52e3181f22e3be830d209b9858c4f0440db0b14b48b64d081b4ad2a93572b34ee34cccdf1b2507100128903714996b626b395bd')
 
 package(){
 
