@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-extra-meta
-pkgver=44
+pkgver=48
 pkgrel=1
 pkgdesc='Meta package to install gnome-extra'
 arch=(any)
@@ -10,16 +10,15 @@ url='https://www.gnome.org/'
 license=(GPL)
 depends=(
   accerciser
+  cheese
   d-spy
   dconf-editor
   devhelp
   endeavour
+  eog
   evolution
   file-roller
-  five-or-more
-  four-in-a-row
   geary
-  gedit
   ghex
   gitg
   glade
@@ -36,8 +35,8 @@ depends=(
   gnome-multi-writer
   gnome-nibbles
   gnome-notes
+  gnome-photos
   gnome-recipes
-  gnome-robots
   gnome-sound-recorder
   gnome-sudoku
   gnome-taquin
@@ -50,7 +49,6 @@ depends=(
   polari
   quadrapassel
   seahorse
-  swell-foop
   sysprof
   tali
 )
