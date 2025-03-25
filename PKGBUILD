@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qbootctl
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 epoch=
 pkgdesc="Qualcomm bootctl HAL for Linux."
@@ -24,7 +24,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('8039519c6fdc9d8409c06b512507377b79a2127ab67c8d0cc650abf4c4ef16fb')
+sha256sums=('e66b361f86fac413f6a96974b4045a1fbc385f9eb6cee7fa8a26e0ca77c74a51')
 #validpgpkeys=()
 
 build() {
