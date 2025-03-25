@@ -1,0 +1,25 @@
+From c9c3d2387bb4d01fbe727713641e7ead615047e1 Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Tue, 25 Mar 2025 17:41:52 +0800
+Subject: [PATCH] Update metadata.json: Add GNOME 48 to supported shell version
+ list
+
+---
+ screen-rotate@shyzus.github.io/metadata.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/screen-rotate@shyzus.github.io/metadata.json b/screen-rotate@shyzus.github.io/metadata.json
+index fe76815..6d84ea4 100644
+--- a/screen-rotate@shyzus.github.io/metadata.json
++++ b/screen-rotate@shyzus.github.io/metadata.json
+@@ -7,6 +7,6 @@
+   "gettext-domain": "gnome-shell-extension-screen-rotate",
+   "session-modes": ["user", "unlock-dialog"],
+   "shell-version": [
+-    "45", "46", "47"
++    "45", "46", "47", "48"
+   ]
+ }
+-- 
+2.39.1
+
