@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
-Name=GNUnet Peer Info
-GenericName=GNUnet Peer Info
+Name=GNUnet Conversation
+GenericName=GNUnet Conversation
 Type=Application
-Exec=gnunet-peerinfo-gtk
-Icon=gnunet-peerinfo-gtk
+Exec=gnunet-conversation-gtk
+Icon=gnunet-conversation-gtk
 Terminal=false
 Categories=GTK;Network;P2P;
 StartupNotify=true
