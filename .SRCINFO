@@ -12,7 +12,7 @@ pkgbase = sipgate-app-clinq
 	source = https://desktop.download.sipgate.com/sipgate%20CLINQ-2.7.1-amd64.deb
 	source = run-sipgate-desktop.sh
 	b2sums = a59d4fc894688f9b4b30d9f6ae37e4f5ad34f8d4c0ec430b1bd96b4877e4f084c11cd4a5a1968628dd27ceb103c9e0b81c82b003f175d4bc9013144b89a6b13e
-	b2sums = 3dbd3a9f84f41eac4a5d0b5db42a45db10a6b3655c07a303fe7de3f2c1d5efa4217d33ff7d7e610c7329d475d951f07aa6cfc421a0f090a62f8b0b0b5b8c05be
+	b2sums = 8c9ad55d10db55c4c97f45f119e43d68abfa5acab6424b88eddafaa4e706b7a997569ea1da973b04482230c22ccdda3a1baada1a520b7d06e23ae76a96478eb1
 
 pkgname = sipgate-app-clinq
 	depends = gtk3
