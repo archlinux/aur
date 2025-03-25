@@ -2,20 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-datetimex-easy'
-pkgver='0.091'
+pkgver='0.092'
 pkgrel='1'
 pkgdesc="Parse a date/time string using the best method available"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-datetime>=0' 'perl-datetime-format-datemanip>=0' 'perl-datetime-format-flexible>=0' 'perl-datetime-format-ical>=0' 'perl-datetime-format-natural>=0' 'perl-datetime-timezone>=0' 'perl-timedate>=0' 'perl-yaml>=0')
+depends=('perl-datetime>=0' 'perl-datetime-format-datemanip>=0' 'perl-datetime-format-flexible>=0' 'perl-datetime-format-ical>=0' 'perl-datetime-format-natural>=0' 'perl-datetime-timezone>=2.63' 'perl-timedate>=0' 'perl-yaml>=0')
 makedepends=()
 checkdepends=('perl-test-most>=0')
 url='https://metacpan.org/release/DateTimeX-Easy'
-source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/DateTimeX-Easy-0.091.tar.gz')
-md5sums=('796a200fed4b58cc2b9de89baf21e1ef')
-sha512sums=('568b2a04f9c4066aa848f6852bf352c242f30ac4e29385d2431d020a9fc31b056108f4406cb65142f4ce78c21bcc84bdabdf41bcc464df8634030c90bd534d63')
-_distdir="DateTimeX-Easy-0.091"
+source=('http://search.cpan.org/CPAN/authors/id/J/JJ/JJNAPIORK/DateTimeX-Easy-0.092.tar.gz')
+md5sums=('b810929f8323259569a7678bbb170c9e')
+sha512sums=('c04995b981d73c449c63005e7c30ac537eaea8f12b99972a9df40d53fcf96362b9bbc588f9c3b450cfa2c4a0a1b6ccbbea0f48cbfc65ad377d357c4d9be5f354')
+_distdir="DateTimeX-Easy-0.092"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
