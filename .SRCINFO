@@ -1,15 +1,16 @@
 pkgbase = air-sdk
 	pkgdesc = A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices.
 	pkgver = 51.1.3.8
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://airsdk.harman.com/
 	install = air-sdk.install
 	arch = x86_64
 	arch = i686
 	license = custom:Harman Connected Services, Inc. (“Harman”) SDK License Agreement
-	makedepends = wget
 	makedepends = unzip
 	depends = jdk11-openjdk
+	depends = gtk2
+	depends = gnome-themes-extra
 
 pkgname = air-sdk
