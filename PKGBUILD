@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa-git
-pkgver=24.3.0_devel.195795.d4fa181f7b4
+pkgver=25.1.0_devel.203318.75d6af03d83
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader')
 provides=('mingw-w64-mesa')
 conflicts=('mingw-w64-mesa')
 options=('staticlibs' '!strip' '!buildflags')
-source=("git+git://anongit.freedesktop.org/mesa/mesa")
+source=("git+https://gitlab.freedesktop.org/mesa/mesa.git")
 sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=softpipe,llvmpipe,zink -Dvulkan-drivers=amd,swrast -Degl=enabled -Dshared-glapi=enabled -Dgles1=enabled -Dgles2=enabled -Dosmesa=true -Dvulkan-icd-dir=bin --includedir=include/mesa
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=softpipe,llvmpipe,zink -Dvulkan-drivers=swrast -Degl=enabled -Dgles1=enabled -Dgles2=enabled -Dvulkan-icd-dir=bin --includedir=include/mesa
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
