@@ -5,6 +5,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A volume booster GUI using CustomTkinter"
 arch=('x86_64')
+keywords=('volume' 'booster' 'audio' 'sound' 'customtkinter' 'gui' 'pulseaudio' 'pavucontrol' 'gnome' 'archlinux' 'tkinter' 'linux' 'sound-enhancer')
 url="https://github.com/ayadseghairi/volumeboost"
 license=('MIT')
 depends=('pavucontrol')
