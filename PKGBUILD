@@ -46,7 +46,10 @@ build() {
 
 package() {
   cd $_pkgsrc
-  install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
+  install -vDm 755 {target/release/$_pkgname,resources/$_pkgname-session} -t "$pkgdir/usr/bin/"
+  install -vDm 644 resources/$_pkgname{.service,-shutdown.target} -t "$pkgdir/usr/lib/systemd/user/"
+  install -vDm 644 resources/$_pkgname.desktop -t "$pkgdir/usr/share/wayland-sessions/"
+  install -vDm 644 resources/$_pkgname-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
 
   # lua
   XDG_DATA_HOME="$pkgdir/usr/share" just install-protos
