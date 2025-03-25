@@ -2,7 +2,7 @@
 pkgname='elice-digital-baeum-variable'
 fontname='EliceDigitalBaeum'
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A digital sans-serif font with JP/KR support, made by elice."
 arch=('any')
 provides=(
@@ -15,10 +15,11 @@ conflicts=(
 	'otf-elice-digital-baeum'
 )
 url='https://font.elice.io'
+pkgurl='https://font.elice.io/static/downloads/'
 license=('custom:SIL Open Font License v1.1')
 source=(
-	"$url/static/archives/${fontname}_OTF.zip"
-	"$url/static/archives/${fontname}_TTF.zip"
+	"${pkgurl}${fontname}_OTF.zip"
+	"${pkgurl}${fontname}_TTF.zip"
 )
 sha256sums=(
 	'a660d3a9ec25f1516a3b2401c4857bf9422f9b0d29788d032ee82114ebc41821'
