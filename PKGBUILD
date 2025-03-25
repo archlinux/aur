@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-cbc
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Osmocom Cell Broadcast Centre"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ provides=('libosmo-sbcap.so=2-64')
 backup=('etc/osmocom/osmo-cbc.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         'LICENSE-MIT')
-sha256sums=('a5278515dab7053d77eac2a4b9b8c2b7f3e4892fb26a628e830bc84acac61713'
+sha256sums=('6fdf354c211a1639111f6a9a19e9f6a4da91828ee2264d07e53758b2698cba7b'
             '323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f')
 
 build() {
