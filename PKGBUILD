@@ -1,5 +1,6 @@
 # Maintainer: SahibBommelig <sahib@online.de>
-# Last packager : Vassili Tchersky <vt+arch@vbc.su>
+# Co-Maintainer: Fermin Olaiz <ferminolaiz@gmail.com>
+# Last packager: Vassili Tchersky <vt+arch@vbc.su>
 # rmlint PKBUILD for ArchLinux
  
 _pkgname=rmlint
@@ -14,6 +15,7 @@ makedepends=(
   'git'
   'scons'
   'python-sphinx'
+  'python-setuptools'
 )
 optdepends=(
   'util-linux-libs'

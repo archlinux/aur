@@ -8,6 +8,7 @@ pkgbase = rmlint-git
 	makedepends = git
 	makedepends = scons
 	makedepends = python-sphinx
+	makedepends = python-setuptools
 	optdepends = util-linux-libs
 	optdepends = json-glib
 	optdepends = gettext
