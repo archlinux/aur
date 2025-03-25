@@ -4,7 +4,7 @@
 pkgname=symengine-0.13
 _pkgname=symengine
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast symbolic manipulation library, written in C++'
 url='http://sympy.org/'
 arch=(x86_64)
