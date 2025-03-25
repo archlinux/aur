@@ -2,7 +2,7 @@
 # Contributor: Wu Junyu (aka Tenshi65535) <wu.junyu.aur@outlook.com>
 
 _pyname=optking
-pkgname=python-$_pkgname
+pkgname=python-$_pyname
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="A molecular geometry optimization program"
