@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=28.1rc1.r43392
+pkgver=29.0rc2.r44243
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
@@ -38,13 +38,13 @@ check() {
 package() {
 	# install bitcoin-qt client
 	msg2 'Installing bitcoin-qt...'
-	install -Dm755 "$srcdir/$_gitname/build/src/qt/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
+	install -Dm755 "$srcdir/$_gitname/build/bin/bitcoin-qt" "$pkgdir/usr/bin/bitcoin-qt"
 	install -Dm644 "$srcdir/$_gitname/share/pixmaps/bitcoin128.xpm" "$pkgdir/usr/share/pixmaps/bitcoin128.xpm"
 	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/packaging/debian/bitcoin-qt.desktop"
 	
 	# install bitcoin-daemon
         msg2 'Installing bitcoin-daemon...'
-        install -Dm755 "$srcdir/$_gitname/build/src/bitcoind" "$pkgdir/usr/bin/bitcoind"
+        install -Dm755 "$srcdir/$_gitname/build/bin/bitcoind" "$pkgdir/usr/bin/bitcoind"
         install -Dm644 "$srcdir/packaging/debian/examples/bitcoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/bitcoin.conf"
         install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-cli.1" "$pkgdir/usr/share/man/man1/bitcoin-cli.1"
         install -Dm644 "$srcdir/$_gitname/doc/man/bitcoin-qt.1" "$pkgdir/usr/share/man/man1/bitcoin-qt.1"
@@ -53,11 +53,11 @@ package() {
 
 	# install bitcoin-cli
 	msg2 'Installing bitcoin-cli...'
-	install -Dm755 "$srcdir/$_gitname/build/src/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
+	install -Dm755 "$srcdir/$_gitname/build/bin/bitcoin-cli" "$pkgdir/usr/bin/bitcoin-cli"
 
 	# install bitcoin-tx
 	msg2 'Installing bitcoin-tx...'
-	install -Dm755 "$srcdir/$_gitname/build/src/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+	install -Dm755 "$srcdir/$_gitname/build/bin/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
 
 	# install license
 	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
