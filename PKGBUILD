@@ -137,11 +137,11 @@ _is_lto_kernel() {
 }
 
 if _is_lto_kernel && [ "$_use_lto_suffix" = "yes"  ]; then
-    _pkgsuffix="cachyos-${_cpusched}-lto"
+    _pkgsuffix="cachyos613-${_cpusched}-lto"
 elif ! _is_lto_kernel && [ "$_use_gcc_suffix" = "yes" ]; then
-    _pkgsuffix="cachyos-${_cpusched}-gcc"
+    _pkgsuffix="cachyos613-${_cpusched}-gcc"
 else
-    _pkgsuffix="cachyos-${_cpusched}"
+    _pkgsuffix="cachyos613-${_cpusched}"
 fi
 
 pkgbase="linux-$_pkgsuffix"
