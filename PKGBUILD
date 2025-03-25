@@ -9,7 +9,7 @@ keywords=('volume' 'booster' 'audio' 'sound' 'customtkinter' 'gui' 'pulseaudio' 
 url="https://github.com/ayadseghairi/volumeboost"
 license=('MIT')
 depends=('pavucontrol')
-source=("https://github.com/ayadseghairi/volumeboost/releases/download/v$pkgver/volumeboost"
+source=("https://github.com/ayadseghairi/volumeboost/releases/download/$pkgver/volumeboost"
         "https://github.com/ayadseghairi/volumeboost/raw/main/README.md")
 sha256sums=('SKIP' 'SKIP')
 
