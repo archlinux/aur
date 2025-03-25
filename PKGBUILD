@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=libosmo-sigtran-git
-pkgver=2.0.0.r0.g3d8f3b5
+pkgver=2.1.0.r49.g23d1802
 pkgrel=1
 pkgdesc="Osmocom SIGTRAN (SCCP/SUA/M3UA) library as well as OsmoSTP"
 url="https://osmocom.org/projects/libosmo-sccp"
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('libosmocore-git' 'libosmo-netif-git' 'lksctp-tools' 'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
-          'libosmo-sigtran.so=10-64')
+          'libosmo-sigtran.so=11-64')
 conflicts=("${pkgname%-git}"
            'libosmo-sccp-git'
            'libosmo-sccp')
