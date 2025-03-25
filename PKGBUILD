@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=md-tauri-bin
 _pkgname='MD-Tauri'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A modern Markdown editor built with Tauri and Vue 3, providing a seamless desktop experience for Markdown editing and preview.(Prebuilt version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64-${pkgver}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CrazyMrYan/md-tauri/v${pkgver}/LICENSE"
 )
-sha256sums=('8ab45685953906daa86784acd5a5db88cd74ecf9308b3fa436fa1809cbab4a0e'
+sha256sums=('d19e8fc69fa5d83871e115167994a72aa6b87ae36f0bf2a832bd9da34b89b015'
             '0637ca3d95394b496a9e0878bd64aa6dd50c1952d2c07d643281e134d1403d39')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
