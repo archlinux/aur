@@ -1,25 +1,31 @@
 # Maintainer:  Anton Kudelin <kudelin at proton dot me>
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
-pkgname=python-fastprogress
-_pkgname=fastprogress
+_pyname=fastprogress
+pkgname=python-$_pyname
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple and flexible progress bar for Jupyter Notebook and console'
-arch=('any')
+arch=(any)
 url='https://github.com/fastai/fastprogress'
-license=('Apache')
-depends=('ipython' 'python-matplotlib' 'python-google-auth')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+license=(Apache-2.0)
+depends=(ipython python-matplotlib)
+mmakedepends=(python-setuptools python-build python-installer python-wheel)
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('419702fb678487ea92a83284450b7e1065d16385d7f97497521e27d46d4931bc')
 
 build() {
-  cd "$_pkgname-$pkgver"
-  python setup.py build
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m build \
+    --wheel \
+    --no-isolation \
+    --skip-dependency-check
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" -O1 --skip-build
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m installer \
+    --destdir="$pkgdir" \
+    --compile-bytecode=2 \
+    dist/*.whl
 }
