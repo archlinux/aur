@@ -1,17 +1,13 @@
 pkgbase = mprisence
-	pkgdesc = A Discord Rich Presence client for MPRIS-compatible media players with support for album art.
-	pkgver = 0.5.2
+	pkgdesc = Discord Rich Presence for MPRIS-compatible media players (Linux only)
+	pkgver = 1.0.0.beta1
 	pkgrel = 1
 	url = https://github.com/lazykern/mprisence
 	arch = x86_64
 	license = MIT
-	provides = mprisence
-	conflicts = mprisence
-	source = https://github.com/lazykern/mprisence/releases/download/v0.5.2/mprisence-0.5.2-x86_64.tar.gz
-	source = https://raw.githubusercontent.com/lazykern/mprisence/main/LICENSE
-	source = https://raw.githubusercontent.com/lazykern/mprisence/main/systemd/mprisence.service
-	sha256sums = b45ffab6778429bddb44e5ecfe40fb5db22d8f83ff43c40321ae29252c2f60be
-	sha256sums = 2efd06eb77e15171ec8727caece105c68fcf253f57d5af76d7964c69f16fbb7d
-	sha256sums = 6b69bd6bf3c0ef8a7e1c5ddfd537992d81156af0d59428d2e4aa399a9adc5dd4
+	makedepends = cargo
+	depends = gcc-libs
+	source = mprisence-1.0.0.beta1.tar.gz::https://github.com/lazykern/mprisence/archive/v1.0.0-beta1.tar.gz
+	sha256sums = 38dcc5f27786375c2b42e517451e2f510c0992d56ea2c9c1ca00fffb7a68f05a
 
 pkgname = mprisence
