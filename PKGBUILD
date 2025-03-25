@@ -1,7 +1,7 @@
 # Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=plasma-wallpaper-effects
 pkgname=plasma6-applets-wallpaper-effects
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Plasma Widget to enable Active Blur and other cool effects for all wallpaper plugins"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('plasma-workspace')
 makedepends=('extra-cmake-modules')
 source=("${_gitname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('0795afa0376634aa93f73a16137d0509213a632d36c74527b8bd77adfb47e2ef')
+sha256sums=('b6b4e0a0e8ac0afb5d6568d741b920ca5d6b9289e0158c3e9cfe843508e953d5')
 
 build() {
   cd "${srcdir}/${_gitname}-$pkgver"
