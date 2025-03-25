@@ -1,6 +1,6 @@
 pkgbase = osmo-sip-connector
 	pkgdesc = Gateway between the MNCC Interface of OsmoMSC and OsmoNITB and an external SIP trunk
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmo-sip-conector
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = osmo-sip-connector
 	depends = sofia-sip
 	conflicts = osmo-sip-connector-git
 	backup = etc/osmocom/osmo-sip-connector.cfg
-	source = https://downloads.osmocom.org/releases/osmo-sip-connector/osmo-sip-connector-1.7.0.tar.bz2
-	sha256sums = f4df6edb265c23bf255e68ea882a074ee2cc882fdfaa2d07a6fd4f4e6e4a42a4
+	source = https://downloads.osmocom.org/releases/osmo-sip-connector/osmo-sip-connector-1.7.1.tar.bz2
+	sha256sums = 84d10643b895c001777d027abc18dcef3552281fbfdba751cbfc96f16643a04c
 
 pkgname = osmo-sip-connector
