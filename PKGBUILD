@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-ibm-transpiler
 pkgname=python-${_pkgname}
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A library to use the Qiskit Transpiler Service and the AI-powered transpiler passes"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
     python-wheel
 )
 source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('7a7ad4190f4876048dfe94e6b02bb73da8f661360b984118dfa5aa40699126dae5a221109a94614c2aa5baa25f3725766256ffe01caa256e0076e3a25d9d1946')
+b2sums=('9b656c9f3343ba3929602fe432ea3873f085639b9dd4249ea9dff133de6a5512d48227634ff0a7f0d50ea658d8ced73b3e7c9953e832e5021b7164f7132e05a0')
 
 build() {
     cd $_pkgname-$pkgver
