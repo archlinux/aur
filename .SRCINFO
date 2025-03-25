@@ -1,0 +1,19 @@
+pkgbase = cloudflare-ddns-bin
+	pkgdesc = Sync a Cloudflare DNS record with your current public IP address
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gabe565/cloudflare-ddns
+	license = Apache2
+	conflicts = cloudflare-ddns
+	provides = cloudflare-ddns
+	arch = aarch64
+	source_aarch64 = https://github.com/gabe565/cloudflare-ddns/releases/download/v0.0.1/cloudflare-ddns_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = edf05da473c0147292de90d33b3f940d45d0cc4df8505a6a1cf16242ad281fcc
+	arch = armv7h
+	source_armv7h = https://github.com/gabe565/cloudflare-ddns/releases/download/v0.0.1/cloudflare-ddns_0.0.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 4cf28d60e3e71b381a26e1d639cc0ac6f063b24de46f86ac528171255d5d9553
+	arch = x86_64
+	source_x86_64 = https://github.com/gabe565/cloudflare-ddns/releases/download/v0.0.1/cloudflare-ddns_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0bb827e5ac8fec61ffb97262e0ed836619ce92a266957254d53d06e5bdf53fbd
+	
+pkgname = cloudflare-ddns-bin
