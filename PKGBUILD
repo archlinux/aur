@@ -4,20 +4,28 @@
 
 _pkgbasename=mediainfo-gui
 pkgname=mediainfo-gui-qt
-pkgver=24.12
-pkgrel=2
+pkgver=25.03
+pkgrel=1
 pkgdesc="Supplies technical and tag information about a video or audio file (Qt GUI interface)"
 arch=('x86_64')
 url="https://github.com/MediaArea/MediaInfo"
 license=('BSD-2-Clause')
 depends=('hicolor-icon-theme' 'libmediainfo' 'qt6-base' 'qt6-webengine')
-makedepends=('glibc')
+makedepends=('glibc' 'qt6-tools')
 conflicts=("$_pkgbasename")
 provides=("$_pkgbasename=$pkgver")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MediaArea/MediaInfo/archive/v$pkgver.tar.gz"
         "$_pkgbasename.desktop")
-sha256sums=('500fc796fd4fc42b69e7c410ffa46c18e00f639e3b3c107eb3389ba71de06273'
+sha256sums=('a03490cddb72840882600bde4d0b9c329e4ef3d4f37a2aeed59720bb93498283'
             'dbac58889cd842729bbe0e9cfeb0d7492bea8b0a4801a10d2017c079251fc797')
+
+prepare() {
+  cd "$srcdir/MediaInfo-$pkgver/Source/GUI/Qt/Qt_Translations_Updater"
+  sed -i -e 's|lupdate|/usr/lib/qt6/bin/lupdate|' \
+         -e 's|lrelease|/usr/lib/qt6/bin/lrelease|' update_Qt_translations.sh
+  chmod +x ./update_Qt_translations.sh
+  ./update_Qt_translations.sh
+}
 
 build() {
   cd "$srcdir/MediaInfo-$pkgver/Project/QMake/GUI"
