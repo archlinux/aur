@@ -1,0 +1,74 @@
+#!/bin/bash
+
+DVD_DEVICE="/dev/sr0"
+MOUNT_POINT="/mnt/monggle_dvd"
+AUTORUN_TMP="/tmp/monggle_autorun.sh"
+
+mkdir -p "$MOUNT_POINT"
+mount "$DVD_DEVICE" "$MOUNT_POINT"
+
+AUTORUN_SRC="$MOUNT_POINT/autorun.sh"
+
+# 언어 감지
+if [[ "$LANG" == en* ]]; then
+    if [ -f "$AUTORUN_SRC" ]; then
+        echo "Monggle: autorun.sh found! Running it now..."
+        cp "$AUTORUN_SRC" "$AUTORUN_TMP"
+    else
+        echo "Monggle: autorun.sh not found. Generating default template..."
+        cat <<EOF > "$AUTORUN_TMP"
+#!/bin/bash
+notify-send "Monggle autorun template running!" "Please edit this script!"
+xdg-open "https://your-site-or-project.com"
+EOF
+        chmod +x "$AUTORUN_TMP"
+        sudo -u $USER x-terminal-emulator -e vim "$AUTORUN_TMP"
+    fi
+
+    while true; do
+        sudo -u $USER DISPLAY=:0 "$AUTORUN_TMP"
+        CODE=$?
+        if [ "$CODE" -eq 0 ]; then
+            notify-send "Monggle Success!" "autorun.sh ran successfully 🎉"
+            break
+        else
+            notify-send "Monggle Error 😢" "autorun.sh failed... reopening vim"
+            sleep 1
+            sudo -u $USER x-terminal-emulator -e vim "$AUTORUN_TMP"
+        fi
+    done
+
+else
+    if [ -f "$AUTORUN_SRC" ]; then
+        echo "몽글이: autorun.sh 발견! 복사 중~"
+        cp "$AUTORUN_SRC" "$AUTORUN_TMP"
+    else
+        echo "몽글이: autorun.sh 없음! 템플릿 생성!"
+        cat <<EOF > "$AUTORUN_TMP"
+#!/bin/bash
+# 몽글이 autorun 템플릿!
+notify-send "몽글몽글 autorun 실행!" "여기 내용을 채워보세요~"
+xdg-open "https://your-site-or-project.com"
+EOF
+        chmod +x "$AUTORUN_TMP"
+        sudo -u $USER x-terminal-emulator -e vim "$AUTORUN_TMP"
+    fi
+
+    while true; do
+        echo "몽글이: autorun 실행 시도 중..."
+        sudo -u $USER DISPLAY=:0 "$AUTORUN_TMP"
+        CODE=$?
+        if [ "$CODE" -eq 0 ]; then
+            notify-send "몽글이 성공!" "autorun이 문제 없이 실행됐어요~ 🎉"
+            echo "몽글몽글~ 성공!"
+            break
+        else
+            notify-send "몽글이 울음… 😭" "오류 발생! 다시 vim으로 열게요!"
+            echo "에러 코드: $CODE"
+            sleep 1
+            sudo -u $USER x-terminal-emulator -e vim "$AUTORUN_TMP"
+        fi
+    done
+fi
+
+umount "$MOUNT_POINT"

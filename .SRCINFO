@@ -1,0 +1,16 @@
+pkgbase = monggle-dvd-autoexec
+	pkgdesc = 몽글몽글~! DVD 넣으면 자동실행 되는 패키지~!
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://개발자양반.info
+	arch = any
+	license = MIT
+	depends = bash
+	depends = libnotify
+	depends = udisks2
+	source = monggle-watch
+	source = 99-monggle.rules
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = monggle-dvd-autoexec

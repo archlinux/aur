@@ -1,0 +1,1 @@
+KERNEL=="sr0", ACTION=="change", ENV{ID_CDROM}=="1", RUN+="/usr/bin/monggle-watch"
