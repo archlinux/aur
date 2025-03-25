@@ -1,0 +1,17 @@
+pkgbase = nph-bin
+	pkgdesc = An opinionated code formatter for Nim
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/arnetheduck/nph
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = nph
+	conflicts = nph
+	conflicts = nph-git
+	source = nph-bin-0.6.1.tar.gz::https://github.com/arnetheduck/nph/releases/download/v0.6.1/nph-linux_x64.tar.gz
+	source = LICENSE.txt::https://raw.githubusercontent.com/arnetheduck/nph/refs/tags/v0.6.1/copying.txt
+	sha256sums = d05ab53e70929a55901cb58e7a6170e0d5e36d3c2c826694a296423fee7c727c
+	sha256sums = 8d471f0034ba3efee1cdb0cfb8f3c6450dc221769132d1fc0ddaadd250374851
+
+pkgname = nph-bin
