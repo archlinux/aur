@@ -1,0 +1,15 @@
+pkgbase = btop-no-gpu
+	pkgdesc = A monitor of system resources, bpytop ported to C++, compiled with GPU support disabled
+	pkgver = 1.4.0
+	pkgrel = 5
+	url = https://github.com/aristocratos/btop
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = lowdown
+	depends = gcc-libs
+	depends = glibc
+	conflicts = btop
+	source = https://github.com/aristocratos/btop/archive/v1.4.0/btop-1.4.0.tar.gz
+	sha256sums = ac0d2371bf69d5136de7e9470c6fb286cbee2e16b4c7a6d2cd48a14796e86650
+
+pkgname = btop-no-gpu
