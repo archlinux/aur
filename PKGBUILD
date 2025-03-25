@@ -9,7 +9,7 @@ arch=(any)
 url='https://github.com/pinnacle-comp/pinnacle'
 license=(GPL-3.0-or-later)
 depends=(
-  wayland #libwayland
+  wayland # libwayland
   libxkbcommon
   systemd-libs # libudev libsystemd
   libinput
@@ -52,5 +52,5 @@ package() {
   XDG_DATA_HOME="$pkgdir/usr/share" just install-protos
 
   cd snowcap
-  XDG_DATA_HOME="$pkgdir/usr/share" just install-protos  
+  XDG_DATA_HOME="$pkgdir/usr/share" just install-protos
 }
