@@ -1,15 +1,16 @@
-# Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
+# Contributor: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=python-publicsuffixlist
-pkgver=0.10.0.20240525
+pkgver=1.0.2.20250319
 pkgrel=1
 pkgdesc='Public Suffix List parser implementation'
 arch=('any')
 url='https://github.com/ko-zu/psl'
 license=('MPL-2.0')
+depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/p/publicsuffixlist/publicsuffixlist-$pkgver.tar.gz")
-sha256sums=('b87fa8f8cfda14b11a18e81dbac49724decfb477700fabf7b65864c11c9b4e36')
+sha256sums=('3810648e70f33062a2c0b6f532791cc3fd08c1a789ca8492421dd856e175691a')
 
 build() {
     cd "$srcdir/publicsuffixlist-$pkgver"
