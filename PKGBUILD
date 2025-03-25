@@ -3,7 +3,7 @@
 _pkgauthor=mediar-ai
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=0.2.65
+pkgver=0.2.71
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs' 'libxcb' 'dbus' 'openssl' 'alsa-lib' 'xz')
+depends=('glibc' 'gcc-libs' 'libxcb' 'dbus' 'openssl' 'alsa-lib' 'xz' 'xdotool')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}::${_urlraw}/README.md"
@@ -23,8 +23,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch
 sha256sums=('fb72ea7f10634208c877c393401cd02676816f2e45367b20d28405f5b719b9b6'
             '69a99825fe17a15a276fea60f1e55db1958c4448b4dc40aca5f0dd727c3cf9e0'
             '5c92311c6d78302508543460ab84acd24688a62d4b44674042524a6be0903bb0'
-            '7d947e42c48dddbdb7bea00d130b498b16b38b9030996afd3c05342408c1ecc4')
-sha256sums_x86_64=('70ac49c6ad55e3465a8bea580247207d29d18d3d552081ce034e643b7cfcdd83')
+            'f3cf50e865a50b9047891d1d471b7f8ecc682894a85d27ff8bd4838c6a5a418c')
+sha256sums_x86_64=('c3c5521b18c34ab118210ff98cb59f3d5655e48001b006b06ffc492ea7fda51c')
 
 package() {
 	cd "${srcdir}/" || exit
