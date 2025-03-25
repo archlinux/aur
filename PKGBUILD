@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname="Backend.AI Desktop"
-pkgver=25.4.0
+pkgver=25.5.0
 _electronversion=30
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -25,16 +25,16 @@ depends=(
 makedepends=(
     'gendesk'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-rc.2-linux-arm64.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-rc.2-linux-x64.zip")
 source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/lablup/backend.ai-webui/v${pkgver}/manifest/backend-ai.iconset/icon_512x512%401x.png"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('9b55afd5930e14cc6f9454751405aa83438c661689c38c69429f6dea37866330')
-sha256sums_x86_64=('2712077a802503461c116dc2aa1b20a59e7f1d5ea8bf79982696b7b07ea31626')
+sha256sums_aarch64=('a82f2140c03b4871df202dfe2c87f703af2b4449796f8a21e10244dd9f4e9f6e')
+sha256sums_x86_64=('ed902cae578494212158f253cc2ad42df5cd2734d46afa82b777f31bc53a3a68')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
