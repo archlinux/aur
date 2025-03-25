@@ -3,7 +3,7 @@
 _pkgname=compressed-rtf
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Compressed Rich Text Format (RTF) compression and decompression package"
 arch=("any")
@@ -12,10 +12,11 @@ license=('MIT')
 depends=("python")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('c1c827f1d124d24608981a56e8b8691eb1f2a69a78ccad6440e7d92fde1781dd')
+sha256sums=('7c30859334839f3cdc7d10796af5b434bb326b9df7cb5a65e95a8eacb2951b0e')
 
 build() {
     cd "${_pipname}-${pkgver}"
+    rm pyproject.toml
     python -m build --wheel --no-isolation
 }
 
