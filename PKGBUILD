@@ -28,7 +28,7 @@ sha256sums=('fa255f41dffe37a10b98ee669f94d3724cabeb98dd356a63daae5ec56698c382'
 _squashfs_root="squashfs-root"
 
 prepare() {
-	echo -ne 'Extracting the AppImage (This may take some time)... '
+	echo 'Extracting the AppImage (This may take some time)... '
 
 	rm -rf $_squashfs_root
 	chmod +x $_target
@@ -37,20 +37,21 @@ prepare() {
 
 	echo 'Done'
 
-	echo -ne 'Adjusting...'
+	echo 'Adjusting...'
 
 	sed -i -e 's/Celestia (Qt5)/Celestia/g' -e 's/Space Simulator (AppImage-1.7.0~git)/Space Simulator/g' $_squashfs_root/space.celestiaproject.$_pkgname.desktop
 
-	echo -ne 'Done'
+	echo 'Done'
 }
 
 package() {
 	mkdir -p $pkgdir/opt/$_pkgname
-	cp -rf ./$_squashfs_root $pkgdir/opt/$_pkgname
+	cp -arf ./$_squashfs_root $pkgdir/opt/$_pkgname
+	rm -rf $pkgdir/opt/$_pkgname/$_squashfs_root/etc/ $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/gtk-update-icon-cache $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/sh
 
-	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/space.celestiaproject.$_pkgname.desktop -t $pkgdir/usr/share/applications
+	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/space.celestiaproject.$_pkgname.desktop -t $pkgdir/usr/share/applications/
 
-	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/celestia.png -t $pkgdir/usr/share/icons
+	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/celestia.png -t $pkgdir/usr/share/icons/
 
 	install -Dm755 ./$_pkgname.bash $pkgdir/usr/bin/$_pkgname
 }
