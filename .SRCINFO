@@ -1,0 +1,17 @@
+pkgbase = python-pymbar
+	pkgdesc = Python implementation of the multistate Bennett acceptance ratio (MBAR) method
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/choderalab/pymbar
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pytest
+	depends = python-scikit-learn
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/p/pymbar/pymbar-4.0.3.tar.gz
+	b2sums = d93f3bfe7f81d8855903db40ddba0d82f235d6b4c6f416f72da3d2af00751a1a7d1d32eabda0e1a5d0163010ecb06f77a4ab4f4d97db724240e65733e661ff77
+
+pkgname = python-pymbar
