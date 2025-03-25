@@ -4,15 +4,17 @@
 _pkgname=libint
 pkgname=libint2
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A high-performance library for computing Gaussian integrals in quantum mechanics'
 url='https://github.com/evaleev/libint'
 license=(GPL-3.0-only LGPL-3.0-only)
 arch=(x86_64)
 depends=(boost)
 makedepends=(cmake ninja clang gcc-fortran eigen python pybind11)
-source=($pkgname-$pkgver.tar.gz::"https://github.com/evaleev/libint/archive/v$pkgver.tar.gz")
-sha256sums=('4929b2f2d3e53479270be052e366e8c70fa154a7f309e5c2c23b7d394159687d')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/evaleev/libint/archive/v$pkgver.tar.gz"
+        "targets.patch")
+sha256sums=('4929b2f2d3e53479270be052e366e8c70fa154a7f309e5c2c23b7d394159687d'
+            '79e5e780603870813b1e419fd94df49f08e9e9b23a794959839fa8611ddc18b5')
 options=(!buildflags)
 
 prepare() {
@@ -96,4 +98,7 @@ package() {
   libint_build_dir="${srcdir}/build_libint"
   cd "$libint_build_dir/${_pkgname}-${pkgver}"
   DESTDIR="$pkgdir" cmake --install build
+
+  cd "$pkgdir/usr/lib/cmake"
+  patch -p0 < "$srcdir/targets.patch"
 }
