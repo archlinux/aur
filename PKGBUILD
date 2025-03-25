@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vpkedit
 pkgver=4.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A library and CLI/GUI tool to create, read, and write several pack file formats"
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKEdit"
@@ -61,7 +61,9 @@ build() {
 	cmake -B build \
 	-S "$pkgname" -G Ninja \
 	-DCMAKE_INSTALL_PREFIX=/usr/lib/$pkgname \
-	-DCMAKE_BUILD_TYPE=None
+	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
 
 	cmake --build build
 }
