@@ -1,0 +1,15 @@
+pkgbase = jbytemod-git
+	pkgdesc = Modern Java ByteCode Editor, supporting jars and apks
+	pkgver = r168.f944765
+	pkgrel = 1
+	url = https://github.com/apkreader/JByteMod-Remastered
+	arch = any
+	license = MIT
+	makedepends = jdk21-openjdk
+	depends = jre21-openjdk
+	provides = jbytemod
+	conflicts = jbytemod
+	source = git+https://github.com/apkreader/JByteMod-Remastered.git
+	sha256sums = SKIP
+
+pkgname = jbytemod-git
