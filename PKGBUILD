@@ -4,8 +4,8 @@
 # Contributor: Jean Lucas < jean at 4ray dot co>
 _projectname='mailsuite'
 pkgname="python-$_projectname"
-pkgver='1.9.20'
-_commit='3769c8c6bb9ca41e1e1a5c8529445bdb559d53cc'
+pkgver='1.10.0'
+_commit='a0af3387a48a22b5f40c7aadc6dc14f3f2a587d0'
 pkgrel='1'
 pkgdesc='A Python package to make receiving, parsing, and sending email easier'
 arch=('any')
@@ -14,7 +14,7 @@ license=('Apache-2.0')
 depends=('python>=3.7.0' 'python-dnspython>=2.0.0' 'python-expiringdict>=1.2.2' 'python-html2text>=2020.1.16' 'python-imapclient>=2.1.0' 'mailparser>=4.1.2' 'python-publicsuffix2>=2.20190812')
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-b2sums=('b4116128285962b467bbeba89b6a56edcb82adc4a3156d36c53e580054bed9f4412b071c28652604aa3371f54d8577a560db4085efe645f546fabe79ae42fedf')
+b2sums=('71c79437b939b865bbfdb4d6c8f61913ba1c9cb209721618a8c8163f8f26e193026767619162a520167907ef3ca1f92ea5542d39758ffb7b038b5be45ee2c2f3')
 
 _sourcedirectory="$_projectname-$_commit"
 
