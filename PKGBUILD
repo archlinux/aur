@@ -1,9 +1,14 @@
 # Maintainer:
 # Contributor: Caleb Bassi <calebjbassi@gmail.com>
 
+: ${CARGO_HOME:=$SRCDEST/cargo-home}
+: ${CARGO_TARGET_DIR:=target}
+: ${RUSTUP_TOOLCHAIN:=stable}
+export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
+
 _pkgname="joshuto"
 pkgname="$_pkgname-git"
-pkgver=0.9.8.r19.g235f339
+pkgver=0.9.8.r73.g6fd1875
 pkgrel=1
 pkgdesc="ranger-like terminal file manager written in Rust"
 url="https://github.com/kamiyaa/joshuto"
@@ -29,9 +34,11 @@ optdepends=(
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
+options=('!lto')
+
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -39,25 +46,13 @@ pkgver() {
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-_cargo_env() {
-  : ${CARGO_HOME:=$SRCDEST/cargo-home}
-
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-}
-
 prepare() {
-  _cargo_env
-
   cd "$_pkgsrc"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo update
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export CFLAGS+=" -ffat-lto-objects"
-
-  _cargo_env
-
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }

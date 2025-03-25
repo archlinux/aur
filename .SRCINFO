@@ -1,6 +1,6 @@
 pkgbase = joshuto-git
 	pkgdesc = ranger-like terminal file manager written in Rust
-	pkgver = 0.9.8.r19.g235f339
+	pkgver = 0.9.8.r73.g6fd1875
 	pkgrel = 1
 	url = https://github.com/kamiyaa/joshuto
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = joshuto-git
 	optdepends = zoxide: for use in cd functions
 	provides = joshuto=0.9.8
 	conflicts = joshuto
+	options = !lto
 	source = joshuto::git+https://github.com/kamiyaa/joshuto.git
 	sha256sums = SKIP
 
