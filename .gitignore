@@ -3,10 +3,8 @@ beatmapexporter-bin-*-x86_64.pkg.tar.zst
 beatmapexporter-bin-debug-*-x86_64.pkg.tar.zst
 *.part
 BeatmapExporter
-BeatmapExporterCLI
 src/
 pkg/
-
 
 
 
