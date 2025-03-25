@@ -1,7 +1,7 @@
 # Maintainer: Vinícius Moreira <vinicius_fmoreira@hotmail.com>
 
 pkgname=guapow
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="On-demand and auto performance optimizer for Linux applications"
 arch=('any')
@@ -9,10 +9,10 @@ url="https://github.com/vinifmor/guapow"
 license=('zlib/libpng')
 depends=('python' 'python-aiofiles' 'python-aiohttp' 'python-pycryptodome' 'systemd')
 optdepends=('inxi: required for guessing the window compositor',
-            'unclutter: required for hiding the mouse cursor')
+            'unclutter: required for hiding the mouse cursor (X11 only)')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('8a75f15fe30c5eb0d03e086a612742f27b8483bf62cb2ce8e54f569815e4fd1ff2f5d31b9715a6b1b915fe7b68a014a787571e1300e1054cf5e4f53a78ee4a12')
+sha512sums=('8eda8081548706ed71163cf54379156e93214d90c851d4c60f90362339ac0f8524d3abbd950b3579efdc99276619342bc2281737e1825d3bfb47387dfcd5970d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
