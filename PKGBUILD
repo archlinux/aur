@@ -1,8 +1,8 @@
 # Maintainer: Burhanverse <contact@burhanverse.eu.org>
 pkgname=fagram-bin
-pkgver=v1.1.8
-pkgrel=2
-pkgdesc="Telegram Desktop based messenger with Feature-rich modifications - Binary Version"
+pkgver=1.1.8
+pkgrel=1
+pkgdesc="Telegram Desktop based messenger with Feature-rich modifications."
 arch=(x86_64)
 url="https://github.com/FajoX1/fagramdesktop"
 license=(GPL3)
@@ -16,9 +16,9 @@ optdepends=('webkit2gtk: embedded browser features'
 provides=('fagram')
 conflicts=('fagram')
 
-source=("https://github.com/burhancodes/fagram-rpm/releases/download/${pkgver}/fagram-${pkgver}.tar.gz")
+source=("https://github.com/burhancodes/fagram-rpm/releases/download/v${pkgver}/fagram-v${pkgver}.tar.gz")
 
-sha256sums=('23ed83147e133d8eba32ef2d3dfbf5d8514b48bffaed043c0ddd790d3f17da05') # Replace with actual SHA256 sum after downloading the file
+sha256sums=('23ed83147e133d8eba32ef2d3dfbf5d8514b48bffaed043c0ddd790d3f17da05')
 
 package() {
     cd "$srcdir/"
