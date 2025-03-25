@@ -1,6 +1,6 @@
 pkgbase = scooter
 	pkgdesc = An interactive find and replace in the terminal
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/thomasschafer/scooter
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = scooter
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = scooter-0.3.0.tar.gz::https://github.com/thomasschafer/scooter/archive/v0.3.0.tar.gz
-	sha256sums = bdaaf67e8fecb4ea53dcd74c576261ceb8640e6fdbf8fb86d350eb38206313fb
+	source = scooter-0.4.0.tar.gz::https://github.com/thomasschafer/scooter/archive/v0.4.0.tar.gz
+	sha256sums = 19f38c588b11c3c69c8229182f875ac61a529604e6af73c00ed6259dca3880e9
 
 pkgname = scooter
