@@ -1,6 +1,6 @@
 pkgbase = python-prometheus-flask-exporter
 	pkgdesc = Prometheus metrics exporter for Flask
-	pkgver = 0.23.0
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/rycus86/prometheus_flask_exporter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-prometheus-flask-exporter
 	depends = python
 	depends = python-flask
 	depends = python-prometheus_client
-	source = python-prometheus-flask-exporter-0.23.0.tar.gz::https://github.com/rycus86/prometheus_flask_exporter/archive/0.23.0.tar.gz
-	sha256sums = c2ecfc0e5513ccbe6f702c652cbc49ca229bc3bf4102add389516a6d1f212c73
+	source = python-prometheus-flask-exporter-0.23.2.tar.gz::https://github.com/rycus86/prometheus_flask_exporter/archive/0.23.2.tar.gz
+	sha256sums = 4782e92a77083d7a769d2199fabf1de6fc85d2563a81f4cfa30b9f492a743d16
 
 pkgname = python-prometheus-flask-exporter
