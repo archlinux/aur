@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=epub-reader-bin
 _pkgname=EpubReader
-pkgver=1.0.5
+pkgver=1.0.6
 _electronversion=18
-pkgrel=8
+pkgrel=1
 pkgdesc="Epub/Book Reader Application built with ElectronJS.(Prebuilt version.Use system-wide electron)"
 arch=('any')
 url="https://mignaway.github.io/epub-reader-website/"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mignaway/EpubReader/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2f2907ac413edb3236060682b51ce6728c868d49ed460d275c1effb61eaccc90'
+sha256sums=('46a5be7160435e109884d4fcc64b280238046cf71390372d9cab7921c2789746'
             'ce48b5317d1ff1f40849dbbcb8f9a99291d05ec067a89f4f60d1e2f6bfd40b01'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
