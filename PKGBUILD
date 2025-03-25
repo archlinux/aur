@@ -5,7 +5,7 @@ pkgdesc='Installs different versions of Nim compiler and tools and switches betw
 url='https://github.com/nim-lang/choosenim'
 license=(BSD-3-Clause)
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 depends=(curl glibc)
 makedepends=(git)
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nim-lang/choosenim/archive/
         'choosenim-execv.patch::https://patch-diff.githubusercontent.com/raw/nim-lang/choosenim/pull/38.patch')
 source_x86_64=("https://nim-lang.org/download/nim-$_nimver-linux_x64.tar.xz")
 sha256sums=('ddb5fe412849d18ee4f851af4bdca3d00d81e2222f7d90993b26e45b168b899c'
-            'd979673bfbfb7d8f41bb38b07c652d9cd334fe615683be1a6259bab0b71f871f')
+            '4d9340b58e2c997f42fbb43c2f96e893e6da18b084a36a3096ec7390c819e591')
 sha256sums_x86_64=('942e047879fd81193b2ff3c105436a0c5016800c4e97864f90039ae204f89ded')
 
 prepare() {
