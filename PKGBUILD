@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=irpf2024
-pkgver=2024.1.6
+pkgver=2024.1.7
 pkgrel=1
 pkgdesc='Brazilian physical person income tax (IRPF) program (version 2024)'
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://downloadirpf.receita.fazenda.gov.br/irpf/${pkgver%%.*}/irpf/arq
         'irpf.desktop'
         'irpf.sh'
         'LICENSE')
-sha256sums=('0c9c2b300e9197c7a25de106614392f65759b58f9c6aeda16e8e6713cf5662a4'
+sha256sums=('c424fc827a6f83874b786ab8e56470ed9effdde551e78d711292a016d4e8ee86'
             'd3b319688872734c99e88c43c0f1a2d4ed72dd00f40d98cd3f2fd12837949c46'
             'cb1b9d3741eba83e4574a87211dcf368e15f09925c8766fe318dd81f2b56059c'
             'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67')
