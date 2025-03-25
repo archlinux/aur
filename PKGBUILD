@@ -1,5 +1,5 @@
 pkgname=kathara
-pkgver=3.7.6
+pkgver=3.7.8
 pkgrel=1
 pkgdesc="A lightweight container-based network emulation tool."
 arch=('any')
@@ -10,8 +10,6 @@ changelog="kathara.changelog"
 makedepends=(
 	'python'
     'chrpath'
-    'patchelf'
-    'make'
     'ruby-ronn-ng'
 )
 optdepends=(
@@ -27,15 +25,16 @@ prepare() {
   $srcdir/venv/bin/pip install --upgrade setuptools
   $srcdir/venv/bin/pip install -r $srcdir/Kathara-$pkgver/src/requirements.txt
   $srcdir/venv/bin/pip install -r $srcdir/Kathara-$pkgver/scripts/autocompletion/requirements.txt
-  $srcdir/venv/bin/pip install nuitka==2.3.3
+  $srcdir/venv/bin/pip install pyinstaller
   $srcdir/venv/bin/pip install pytest
 }
 
 build() {
   cd $srcdir/Kathara-$pkgver/docs && make roff-build
   cd $srcdir/Kathara-$pkgver/scripts/autocompletion/ && $srcdir/venv/bin/python generate_autocompletion.py $srcdir/Kathara-$pkgver/scripts/autocompletion/kathara.bash-completion
-  cd $srcdir/Kathara-$pkgver/ && $srcdir/venv/bin/python -m pytest tests
-  cd $srcdir/Kathara-$pkgver/src/ && $srcdir/venv/bin/python -m nuitka --lto=yes --plugin-enable=pylint-warnings --plugin-enable=multiprocessing --follow-imports --standalone --include-plugin-directory=Kathara --output-filename=kathara kathara.py
+  #cd $srcdir/Kathara-$pkgver/ && $srcdir/venv/bin/python -m pytest tests
+  cp $srcdir/Kathara-$pkgver/scripts/Linux-Pkg/kathara.spec $srcdir/Kathara-$pkgver/src/
+  cd $srcdir/Kathara-$pkgver/src/ && $srcdir/venv/bin/pyinstaller --distpath=./kathara.dist --workpath=./kathara.build kathara.spec
 }
 
 package() {
@@ -50,19 +49,11 @@ package() {
   install -d -m 755 $pkgdir/etc/bash_completion.d/
   install -p -m 644 $srcdir/Kathara-$pkgver/scripts/autocompletion/kathara.bash-completion $pkgdir/etc/bash_completion.d/
 
-  rm -f $srcdir/Kathara-$pkgver/src/kathara.dist/libbz2.so.1.0
-  rm -f $srcdir/Kathara-$pkgver/src/kathara.dist/libexpat.so.1
-  rm -f $srcdir/Kathara-$pkgver/src/kathara.dist/libtinfo.so.6
-  rm -f $srcdir/Kathara-$pkgver/src/kathara.dist/libz.so.1
-  rm -f $srcdir/Kathara-$pkgver/src/kathara.dist/libtinfo.so.5
-  rm -f $srcdir/Kathara-$pkgver/src/kathara.dist/libcrypto.so.1.1
   install -d $pkgdir/usr/lib/$pkgname
-  install -p -m 644 $srcdir/Kathara-$pkgver/src/kathara.dist/*.so* $pkgdir/usr/lib/$pkgname/
-  install -p -m 755 $srcdir/Kathara-$pkgver/src/kathara.dist/kathara $pkgdir/usr/lib/$pkgname/
-  install -d -m 755 $pkgdir/usr/lib/$pkgname/certifi
-  install -p -m 644 $srcdir/Kathara-$pkgver/src/kathara.dist/certifi/* $pkgdir/usr/lib/$pkgname/certifi/
-  install -d -m 755 $pkgdir/usr/lib/$pkgname/pyuv
-  install -p -m 644 $srcdir/Kathara-$pkgver/src/kathara.dist/pyuv/* $pkgdir/usr/lib/$pkgname/pyuv/
+  chmod g+s $srcdir/Kathara-$pkgver/src/kathara.dist/kathara
+  cp -r $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/_internal $pkgdir/usr/lib/$pkgname/_internal
+  chmod -R 755 $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/_internal
+  install -p -m 755 $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/kathara $pkgdir/usr/lib/$pkgname/
   install -d -m 755 $pkgdir/usr/bin
   ln -sf /usr/lib/$pkgname/kathara "$pkgdir/usr/bin/$pkgname"
 }
