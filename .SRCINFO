@@ -19,6 +19,8 @@ pkgbase = anytype-alpha
 	options = !strip
 	options = !debug
 	source = https://github.com/anyproto/anytype-ts/releases/download/v0.45.19-alpha/anytype_0.45.19-alpha_amd64.deb
+	source = anytype.sh
 	sha256sums = 44dbcd8c6469b55b416f2d191df2ecd04d13c27b6bb73d7aa524b8f1422ab339
+	sha256sums = 8688c3f1f2b7e43b1f033549dd8018b7d2d2a9523e4d12995bce43d768e17c3a
 
 pkgname = anytype-alpha

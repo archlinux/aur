@@ -3,7 +3,7 @@
 pkgname=anytype-alpha
 pkgver=0.45.19
 _tag="-alpha" # -alpha, -beta or leave blank
-pkgrel=1
+pkgrel=2
 pkgdesc="The everything app for those who celebrate trust & autonomy"
 arch=('x86_64')
 url="https://anytype.io/"
@@ -14,12 +14,15 @@ conflicts=('anytype-bin'
   'anytype-electron-bin'
   'anytype-alpha-bin')
 options=('!strip' '!debug')
-source=("https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_tag}/anytype_${pkgver}${_tag}_amd64.deb")
-sha256sums=('44dbcd8c6469b55b416f2d191df2ecd04d13c27b6bb73d7aa524b8f1422ab339')
+source=("https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_tag}/anytype_${pkgver}${_tag}_amd64.deb"
+  "anytype.sh")
+sha256sums=('44dbcd8c6469b55b416f2d191df2ecd04d13c27b6bb73d7aa524b8f1422ab339'
+  '8688c3f1f2b7e43b1f033549dd8018b7d2d2a9523e4d12995bce43d768e17c3a')
 
 package() {
   echo "Extract data.tar.xz ..."
   bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
   mkdir -p "${pkgdir}/usr/bin"
-  ln -sf "/opt/Anytype/anytype" "$pkgdir"/usr/bin/anytype
+  echo "Custom flags should be put directly in: ~/.config/anytype-flags.conf"
+  install -Dm755 "${srcdir}/anytype.sh" "${pkgdir}/usr/bin/anytype"
 }
