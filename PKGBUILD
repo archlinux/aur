@@ -1,18 +1,18 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.3.0.r13.g0335279c
-pkgrel=2
-pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (built from latest commit)'
+pkgver=2.3.0.r198.g0431777d
+pkgrel=1
+pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/flanglet/kanzi-cpp'
 source=("$_pkgname::git+$url.git")
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 options=('lto')
 depends=('gcc-libs' 'glibc')
 makedepends=('git')
@@ -20,14 +20,13 @@ makedepends=('git')
 prepare() {
   cd "$srcdir/$_pkgname/src"
 
-  sed -i 's/CXXFLAGS=/CXXFLAGS+=/g' Makefile
-  sed -i 's/LDFLAGS=/LDFLAGS+=/g'   Makefile
+  sed -i 's/CXXFLAGS=/CXXFLAGS+=/;s/LDFLAGS=/LDFLAGS+=/g' Makefile
 }
 
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  git describe --tags |  sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -55,9 +54,9 @@ package() {
     bin/kanzi
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    README.md
+    {README,SECURITY}.md
 
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1/" \
+  install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
     kanzi.1.gz
 }
 
