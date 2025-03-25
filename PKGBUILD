@@ -2,7 +2,7 @@
 
 pkgname='jcal'
 
-pkgver="0.4.1"
+pkgver="0.5.1"
 pkgrel=1
 
 pkgdesc="Jalali calendar is a small and portable free software library to manipulate date and time in Jalali calendar system"
