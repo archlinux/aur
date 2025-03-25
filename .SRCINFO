@@ -1,6 +1,6 @@
 pkgbase = ida-pro-beta
 	pkgdesc = Hex-Rays IDA Pro
-	pkgver = 9.0
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://github.com/vctv/IDA-Pro/releases
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ida-pro-beta
 	depends = qt5-base
 	depends = python-rpyc
 	options = !strip
-	source = https://github.com/vctv/IDA-Pro/releases/download/9.0/ida-pro_9.0_x64linux.run
-	sha256sums = c0e2d5f410f8a4a3745bb219d821d690ce1768a5ce0a25e86e0c30c1fe599c71
+	source = https://github.com/vctv/IDA-Pro/releases/download/9.1/ida-pro_9.1_x64linux.run
+	sha256sums = 8ff08022be3a0ef693a9e3ea01010d1356b26cfdcbbe7fdd68d01b3c9700f9e2
 
 pkgname = ida-pro-beta

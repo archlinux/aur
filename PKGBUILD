@@ -2,7 +2,7 @@
 # reference: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ida-pro
 # Maintainer: vctv <alanhays0617@gmail.com>
 
-pkgver=9.0
+pkgver=9.1
 pkgname="ida-pro-beta"
 pkgrel=1
 pkgdesc="Hex-Rays IDA Pro"
@@ -23,7 +23,7 @@ _installer="ida-pro_${pkgver}_x64linux.run"
 
 source=("${url}/download/${pkgver}/${_installer}")
 
-sha256sums=('c0e2d5f410f8a4a3745bb219d821d690ce1768a5ce0a25e86e0c30c1fe599c71')
+sha256sums=('8ff08022be3a0ef693a9e3ea01010d1356b26cfdcbbe7fdd68d01b3c9700f9e2')
 
 arch=('x86_64')
 
