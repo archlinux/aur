@@ -1,0 +1,18 @@
+pkgbase = elice-dxneolli-variable
+	pkgdesc = A digital sans-serif font with JP/KR support, made by elice.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://font.elice.io
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	provides = elice-dxneolli-variable
+	provides = ttf-elice-dxneolli
+	provides = otf-elice-dxneolli
+	conflicts = ttf-elice-dxneolli
+	conflicts = otf-elice-dxneolli
+	source = https://font.elice.io/static/downloads/EliceDXNeolli_OTF.zip
+	source = https://font.elice.io/static/downloads/EliceDXNeolli_TTF.zip
+	sha256sums = c58ffe46ac0012712b82dbd28e0aafc143c14e1a24cb4afcbcc5fb5ba0de9e3a
+	sha256sums = 41e589f458546f2c863c956c3deba98c5246d87a358a34c0bc45e66307793243
+
+pkgname = elice-dxneolli-variable
