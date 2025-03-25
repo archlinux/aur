@@ -1,6 +1,6 @@
 pkgbase = arch-os-manager
 	pkgdesc = Arch OS System Manager
-	pkgver = r95.646b4eb
+	pkgver = r96.d9db949
 	pkgrel = 1
 	url = https://github.com/murkl/arch-os-manager
 	arch = any
