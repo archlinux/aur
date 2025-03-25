@@ -1,31 +1,81 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.39.0
+pkgver=0.40.0
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
-    # official repositories:
-        'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libplacebo' 'libxss'
-        'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
-        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
-        'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
-        'libpipewire' 'zimg' 'sndio' 'libsixel'
-)
-makedepends=('meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-             'wayland-protocols' 'ffnvcodec-headers')
-optdepends=('yt-dlp: for video-sharing websites playback'
-            'youtube-dl: for video-sharing websites playback'
-            'nvidia-utils: for hardware accelerated video decoding with CUDA')
+    'alsa-lib'
+    'ffmpeg'
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
+    'jack'
+    'lcms2'
+    'libarchive'
+    'libass'
+    'libbluray'
+    'libcaca'
+    'libcdio'
+    'libcdio-paranoia'
+    'libdisplay-info'
+    'libdrm'
+    'libdvdnav'
+    'libgl'
+    'libjpeg'
+    'libpipewire'
+    'libplacebo'
+    'libpulse'
+    'libsixel'
+    'libva'
+    'libvdpau'
+    'libx11'
+    'libxext'
+    'libxkbcommon'
+    'libxpresent'
+    'libxrandr'
+    'libxss'
+    'libxv'
+    'lua52'
+    'mesa'
+    'mujs'
+    'openal'
+    'rubberband'
+    'sdl2-compat'
+    'sh'
+    'sndio'
+    'uchardet'
+    'vapoursynth'
+    'vulkan-icd-loader'
+    'wayland'
+    'zimg'
+    'zlib')
+makedepends=(
+    'ffnvcodec-headers'
+    'git'
+    'ladspa'
+    'meson'
+    'python-docutils'
+    'vulkan-headers'
+    'wayland-protocols'
+    # for satisfying pkgcheck:
+    'python-pyqt6'
+    'python-pyqtgraph')
+optdepends=(
+    'nvidia-utils: for hardware accelerated video decoding with CUDA'
+    'python: for stats-conv and umpv scripts'
+    'python-pyqt6: for stats-conv script'
+    'python-pyqtgraph: for stats-conv script'
+    'youtube-dl: for video-sharing websites playback'
+    'yt-dlp: for video-sharing websites playback')
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
-sha256sums=('2ca92437affb62c2b559b4419ea4785c70d023590500e8a52e95ea3ab4554683')
+sha256sums=('10a0f4654f62140a6dd4d380dcf0bbdbdcf6e697556863dc499c296182f081a3')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -33,9 +83,8 @@ build() {
         -Dcplayer='true' \
         -Dlibmpv='true' \
         -Dbuild-date='false' \
-        -Dtests='false' \
+        -Dtests='true' \
         -Dfuzzers='false' \
-        -Dta-leak-report='false' \
         \
         -Dcdda='enabled' \
         -Dcplugins='enabled' \
@@ -137,6 +186,10 @@ build() {
         -Dmanpage-build='enabled' \
         -Dpdf-build='disabled'
     meson compile -C build
+}
+
+check() {
+    meson test -C build --print-errorlogs
 }
 
 package() {
