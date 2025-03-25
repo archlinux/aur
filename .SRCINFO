@@ -8,6 +8,6 @@ pkgbase = mprisence
 	makedepends = cargo
 	depends = gcc-libs
 	source = mprisence-1.0.0.beta1.tar.gz::https://github.com/lazykern/mprisence/archive/v1.0.0-beta1.tar.gz
-	sha256sums = 38dcc5f27786375c2b42e517451e2f510c0992d56ea2c9c1ca00fffb7a68f05a
+	sha256sums = SKIP
 
 pkgname = mprisence
