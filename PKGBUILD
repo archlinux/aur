@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.39.0.r871.g131973806d
+pkgver=0.40.0.r2.g97cb16d683
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -9,20 +9,71 @@ license=('GPL-2.0-or-later')
 url='https://mpv.io/'
 depends=(
     # official repositories:
-        'cmocka' 'lcms2' 'libcdio-paranoia' 'libgl' 'libplacebo' 'libxss'
-        'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
-        'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
-        'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'libxpresent'
-        'libpipewire' 'zimg' 'sndio' 'libsixel' 'libdisplay-info'
+    'alsa-lib'
+    'ffmpeg'
+    'gcc-libs'
+    'glibc'
+    'hicolor-icon-theme'
+    'jack'
+    'lcms2'
+    'libarchive'
+    'libass'
+    'libbluray'
+    'libcaca'
+    'libcdio'
+    'libcdio-paranoia'
+    'libdisplay-info'
+    'libdrm'
+    'libdvdnav'
+    'libgl'
+    'libjpeg'
+    'libpipewire'
+    'libplacebo'
+    'libpulse'
+    'libsixel'
+    'libva'
+    'libvdpau'
+    'libx11'
+    'libxext'
+    'libxkbcommon'
+    'libxpresent'
+    'libxrandr'
+    'libxss'
+    'libxv'
+    'lua52'
+    'mesa'
+    'mujs'
+    'openal'
+    'rubberband'
+    'sh'
+    'sndio'
+    'sdl2-compat'
+    'uchardet'
+    'vapoursynth'
+    'vulkan-icd-loader'
+    'wayland'
+    'zimg'
+    'zlib'
     # AUR:
-        'ffmpeg-git'
-)
-makedepends=('git' 'meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
-             'wayland-protocols' 'ffnvcodec-headers')
-optdepends=('yt-dlp: for video-sharing websites playback'
-            'youtube-dl: for video-sharing websites playback'
-            'nvidia-utils: for hardware accelerated video decoding with CUDA')
+    'ffmpeg-git')
+makedepends=(
+    'ffnvcodec-headers'
+    'git'
+    'ladspa'
+    'meson'
+    'python-docutils'
+    'vulkan-headers'
+    'wayland-protocols'
+    # for satisfying pkgcheck:
+    'python-pyqt6'
+    'python-pyqtgraph')
+optdepends=(
+    'nvidia-utils: for hardware accelerated video decoding with CUDA'
+    'python: for stats-conv and umpv scripts'
+    'python-pyqt6: for stats-conv script'
+    'python-pyqtgraph: for stats-conv script'
+    'youtube-dl: for video-sharing websites playback'
+    'yt-dlp: for video-sharing websites playback')
 provides=('mpv' 'mpv-git')
 conflicts=('mpv')
 options=('!emptydirs')
@@ -45,7 +96,7 @@ build() {
         -Dcplayer='true' \
         -Dlibmpv='true' \
         -Dbuild-date='false' \
-        -Dtests='false' \
+        -Dtests='true' \
         -Dfuzzers='false' \
         \
         -Dcdda='enabled' \
@@ -148,6 +199,10 @@ build() {
         -Dmanpage-build='enabled' \
         -Dpdf-build='disabled'
     meson compile -C build
+}
+
+check() {
+    meson test -C build --print-errorlogs
 }
 
 package() {
