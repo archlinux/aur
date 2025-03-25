@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-yfinance
 _name=${pkgname#python-}
-pkgver=0.2.54
-pkgrel=2
+pkgver=0.2.55
+pkgrel=1
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=(any)
 url=https://github.com/ranaroussi/yfinance
@@ -30,7 +30,7 @@ makedepends=(
     python-wheel
 )
 source=($_name-$pkgver.tar.gz::https://github.com/ranaroussi/$_name/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('c130d6174fa77e0c2c38f96b96d3794978b7aae5b628400b0a80a8bce2cfd281e724f6ab4b8aa24b891d4e09d515d7335c8175b8b635e6fc6fdb572a78d3946f')
+b2sums=('dfe1204f19024b4ad134d4a25b708a922f04f8c36322baed862a460804aaea9573874b544569392d7e4e2b95806082bc1fd0dde08714bcd802877403f85f28cb')
 
 build() {
     cd $_name-$pkgver
