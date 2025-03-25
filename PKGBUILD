@@ -10,10 +10,14 @@ url="https://github.com/ayadseghairi/volumeboost"
 license=('MIT')
 depends=('pavucontrol')
 source=("https://github.com/ayadseghairi/volumeboost/releases/download/$pkgver/volumeboost"
+	"https://github.com/ayadseghairi/volumeboost/raw/main/volumeboost.png"
+	"https://github.com/ayadseghairi/volumeboost/raw/main/volumeboost.desktop"
         "https://github.com/ayadseghairi/volumeboost/raw/main/README.md")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 volumeboost "$pkgdir/usr/bin/volumeboost"
+    install -Dm644 volumeboost.png "$pkgdir/usr/share/pixmaps/volumeboost.png"
+    install -Dm644 volumeboost.desktop "$pkgdir/usr/share/applications/volumeboost.desktop"
     install -Dm644 README.md "$pkgdir/usr/share/doc/volumeboost/README.md"
 }

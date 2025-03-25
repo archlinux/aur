@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Volume Booster
+Comment=Boost and control system volume
+Exec=volumeboost
+Icon=volumeboost
+Terminal=false
+Type=Application
+Categories=Audio;Utility;
+StartupNotify=true
