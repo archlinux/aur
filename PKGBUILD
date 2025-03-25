@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-s-git
-pkgver=r5691.0fe4bc4
+pkgver=25.1.1.r6.g565efd3b
 pkgrel=1
 epoch=
 pkgdesc="Qucs-S provides GUI for different circuit simulation kernels. "
@@ -72,9 +72,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 -match='[0-9]*.[0-9]*.[0-9]*' 2>/dev/null |
-            grep -v 'continuous_build' |
-            sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --exclude 'continuous_build' --long 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
