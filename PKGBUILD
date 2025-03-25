@@ -2,7 +2,7 @@
 _pipname=curl_cffi
 _pkgname=python-${_pipname//_/-}
 pkgname=$_pkgname-yt-dlp
-pkgver=0.7.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Python FFI binding for curl-impersonate'
 arch=(x86_64)
@@ -15,6 +15,7 @@ depends=(
 	python-cffi
 	python-eventlet
 	python-gevent
+	python-typing_extensions
 )
 optdepends=('python-orjson: for speed and memory optimized JSON parsing')
 makedepends=(
@@ -31,8 +32,8 @@ source=(
 	use-system-libs.patch
 )
 sha256sums=(
-	'8a64b12432146a3f178c4792c91188c18f50cc4b76e908ffc3206442c4610894'
-	'6dd99c11ea2ae2f392c5f15499a3bcf88c41fcbcabd461c589ae88edccffc5b9'
+	'3e37b35268ca58492f54ed020ae4b50c33ee0debad4145db9f746f04ed466eb0'
+	'2adbc4bfcca05d1c0a41a2e2ed7a9b33353164b05ac8e50b42d3a26662c8e11a'
 )
 conflicts=($_pkgname)
 provides=($_pkgname=$pkgver)
@@ -57,7 +58,7 @@ package() {
 
 	# Symlink license file
 	local site_packages=$(python -c 'import site;print(site.getsitepackages()[0])')
-	install -d "$pkgdir/usr/share/licenses/$_pkgname"
+	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	ln -s "$site_packages/$_pipname-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

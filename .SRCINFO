@@ -1,6 +1,6 @@
 pkgbase = python-curl-cffi-yt-dlp
 	pkgdesc = Python FFI binding for curl-impersonate
-	pkgver = 0.7.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/lexiforest/curl_cffi
 	arch = x86_64
@@ -18,12 +18,13 @@ pkgbase = python-curl-cffi-yt-dlp
 	depends = python-cffi
 	depends = python-eventlet
 	depends = python-gevent
+	depends = python-typing_extensions
 	optdepends = python-orjson: for speed and memory optimized JSON parsing
-	provides = python-curl-cffi=0.7.1
+	provides = python-curl-cffi=0.10.0
 	conflicts = python-curl-cffi
-	source = python-curl-cffi-yt-dlp-0.7.1.tar.gz::https://github.com/lexiforest/curl_cffi/releases/download/v0.7.1/curl_cffi-0.7.1.tar.gz
+	source = python-curl-cffi-yt-dlp-0.10.0.tar.gz::https://github.com/lexiforest/curl_cffi/releases/download/v0.10.0/curl_cffi-0.10.0.tar.gz
 	source = use-system-libs.patch
-	sha256sums = 8a64b12432146a3f178c4792c91188c18f50cc4b76e908ffc3206442c4610894
-	sha256sums = 6dd99c11ea2ae2f392c5f15499a3bcf88c41fcbcabd461c589ae88edccffc5b9
+	sha256sums = 3e37b35268ca58492f54ed020ae4b50c33ee0debad4145db9f746f04ed466eb0
+	sha256sums = 2adbc4bfcca05d1c0a41a2e2ed7a9b33353164b05ac8e50b42d3a26662c8e11a
 
 pkgname = python-curl-cffi-yt-dlp
