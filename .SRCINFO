@@ -1,15 +1,15 @@
 pkgbase = libosmo-pfcp-git
 	pkgdesc = PFCP protocol encoding and decoding, and generic PFCP endpoint implementation
-	pkgver = 0.4.0.r0.gc7ff5ab
+	pkgver = 0.5.0.r1.g771ba85
 	pkgrel = 1
 	url = https://osmocom.org/projects/libosmo-pfcp
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = libosmocore-git
-	provides = libosmo-pfcp=0.4.0.r0.gc7ff5ab
+	provides = libosmo-pfcp=0.5.0.r1.g771ba85
 	provides = libosmo-gtlv.so=1-64
-	provides = libosmo-pfcp.so=0-64
+	provides = libosmo-pfcp.so=4-64
 	conflicts = libosmo-pfcp
 	source = git+https://gitea.osmocom.org/osmocom/libosmo-pfcp.git
 	sha256sums = SKIP

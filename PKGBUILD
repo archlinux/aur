@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libosmo-pfcp-git
-pkgver=0.4.0.r0.gc7ff5ab
+pkgver=0.5.0.r1.g771ba85
 pkgrel=1
 pkgdesc="PFCP protocol encoding and decoding, and generic PFCP endpoint implementation"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libosmocore-git')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
           'libosmo-gtlv.so=1-64'
-          'libosmo-pfcp.so=0-64')
+          'libosmo-pfcp.so=4-64')
 conflicts=("${pkgname%-git}")
 source=("git+https://gitea.osmocom.org/osmocom/${pkgname%-git}.git")
 sha256sums=('SKIP')
