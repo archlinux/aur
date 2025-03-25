@@ -1,6 +1,6 @@
 pkgbase = mprisence-git
 	pkgdesc = Discord Rich Presence for MPRIS-compatible media players (Linux only) (git version)
-	pkgver = 1.0.0.beta1.r12.g7bf7a4a
+	pkgver = 1.0.0.beta1
 	pkgrel = 1
 	url = https://github.com/lazykern/mprisence
 	arch = x86_64
