@@ -1,0 +1,18 @@
+pkgbase = android-x86-nlohmann-json
+	pkgdesc = JSON for Modern C++ (Android x86)
+	pkgver = 3.11.3
+	pkgrel = 1
+	url = https://github.com/nlohmann/json
+	arch = any
+	groups = android-nlohmann-json
+	license = MIT
+	makedepends = android-cmake
+	depends = android-ndk
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz
+	md5sums = d603041cbc6051edbaa02ebb82cf0aa9
+
+pkgname = android-x86-nlohmann-json
