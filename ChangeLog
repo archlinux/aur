@@ -1157,3 +1157,28 @@ Fixes:
 - We fixed an issue causing some events to be displayed with the wrong duration when rescheduled in bulk.
 - Text fields with a "Copy on click" behavior that were not working as expected have been fixed.
 - New task metadata (e.g. when a task is marked as "Flexible") now correctly syncs across devices.
+
+=== Morgen 3.6.10
+New Features:
+- The ultimate consolidated view of your tasks is here. The new "All tasks" view on the sidebar pulls together your Morgen tasks and tasks from all your integrations (including bringing tasks from multiple Linear teams, Notion databases, and ClickUp spaces into one view). You can group, sort, and filter tasks to fit your workflow, and even order tasks by the Morgen Priority Factor for easy prioritization.
+- Quick task capture is now faster. We've added a button for creating a task in your Morgen Inbox from the task sidebar.
+- Saved Filter views provide more powerful customization. You can sort, group, and filter your saved filter views similar to the default task views.
+- If you operate keyboard-first, the Command Bar now allows you to add due dates to tasks without necessarily scheduling them in the calendar. Use the . shortcut to add a due date with natural language while entering a task.
+ 
+Improvement 
+- Mapping Notion Priority. If you are using priorities on your Notion tasks, you can now map the priority field to a Morgen Importance level. This allows Morgen to better prioritize your Notion tasks. Open the Notion import config page to enable priority mapping.
+- New event styling. Events and tasks on the calendar have more distinctive styles when: You decline an event, You RSVP "tentative", Every attendee has declined, Tasks are scheduled after their due date and therefore at risk
+- More AI Planner flexibility. AI Planner now schedules tasks beyond their due date if there is no available time in advance. In this case, you will be warned on the AI Planner sidebar that the task is at risk of being delivered late. These tasks will now be displayed on the calendar with a distinctive style.
+
+Fixes:
+- The calendar toolbar is less sensitive to available space, reducing the risk that buttons unexpectedly move as you navigate across weeks and months.
+- We fixed an issue with Undo logic that could cause events to disappear when undoing a task completion on a recurring task.
+- A copy issue mentioning Apple Reminders instead of Obsidian in the corresponding configuration view has been rectified.
+- A possible error occurring when saving events without an explicit time zone in Office 365 calendars has been rectified.
+- A bug that could cause Morgen to crash when opening the details of a Google event with non-standard videoconferencing information has been fixed.
+- A bug that could cause an event to be deleted while moving it to another calendar has been fixed.
+- A problem causing other people's availability to be disabled in the wrong time zone using the Outlook connector has been rectified.
+- Several fixes to the Command Bar logic to improve its usability.
+- The iCloud connector panel is now correctly showing guidance about the requirement of an app-specific password.
+- The "Done" date is removed from Obsidian tasks if they are re-opened.
+
