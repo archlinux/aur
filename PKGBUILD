@@ -2,8 +2,8 @@
 
 _pkgname=pinnacle
 pkgname=$_pkgname-comp-git # there's another package without the -comp suffix lol
-pkgver=r1218.9bab206
-pkgrel=1
+pkgver=r1221.a53c0f1
+pkgrel=2
 pkgdesc='A WIP Smithay-based Wayland compositor, inspired by AwesomeWM'
 arch=(any)
 url='https://github.com/pinnacle-comp/pinnacle'
