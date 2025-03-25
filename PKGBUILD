@@ -2,7 +2,7 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-msc
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks"
 url="https://osmocom.org/projects/osmomsc"
@@ -23,7 +23,7 @@ depends=('libosmocore'
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-msc.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3e909a65668fa778362de3ebeb13b25171e259ee2a5289271bf8aefca3e66daa')
+sha256sums=('a177479671e80f974f08471d78301e4ffe1ed0a295b8cc36e081d902c25bfc70')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
