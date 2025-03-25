@@ -1,8 +1,7 @@
-# Maintainer: Amin Vakil <info AT aminvakil DOT com>
-# Contributor: xgdgsc <xgdgsc @t gmail dot com>
-# Contributor: mynacol <dc07d át mynacol dót xyz>
+# Maintainer: FantomTchi7 <vladislav.kudriashev@gmail.com>
+# Based on android-sdk-build-tools by xgdgsc and mynacol
 
-pkgname=android-sdk-build-tools
+pkgname=android-sdk-build-tools-34
 #_ver=$(cat "${srcdir}/$_android/source.properties" |grep ^Pkg.Revision=|sed 's/Pkg.Revision=\([0-9.]*\).*/\1/')
 _major=34
 _minor=0
