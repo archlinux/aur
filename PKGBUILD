@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.13.8.arch1
+pkgver=6.14.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -46,17 +46,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('259afa59d73d676bec2ae89beacd949e08d54d3f70a7f8b0a742315095751abb'
+sha256sums=('a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670'
             'SKIP'
-            '8807a915606709dd8ab98fa836fadefda39ed500c48377355be09fe9a2caaf81'
+            'be89f090e3ee983b933169fb593eaeb37f16c3a6a9b85b8198f2a92956e804b3'
             'SKIP'
-            '797e4d772a62dd24cb281886ec844f718bb910f2b2bfe2de389d341aeb3e5bb1'
+            '2f0d497ad5372e51861a3ed59948795d144cbab03e9df14acf7dfe8ee7b2917e'
             '508f90cbe81a9a145cc540703470f1e6b5d21c7a7b9166d2ce6e56b401262b04')
-b2sums=('c20916a44a07d355ba8337229f102cd507deae92c88576040965e909fa89c09f98611746a8c8f249bc3dcf492238ce3f08c48f523670ccad4bd7ec21622806af'
+b2sums=('11835719804b406fe281ea1c276a84dc0cbaa808552ddcca9233d3eaeb1c001d0455c7205379b02de8e8db758c1bae6fe7ceb6697e63e3cf9ae7187dc7a9715e'
         'SKIP'
-        'ebff29f7282a7dab84ca09c9c23621daec8d38541c773dc068d5c313db7a60c67e204775ad6e00746ee8f04a7705ab398688e03b2e5534e9062d276e8d6c9d30'
+        '914ac1cac1006edcce20d4838b33e4670bf87d32721aec9d1a69c69774e4fdbf784811332fccd86e62425a2f2191d3354497965e3d463cba14434bc0609d2b05'
         'SKIP'
-        'a32ded4819b0fe212136a976435b58aa1305ad8ff1e2644d11c996a066241c5479bd144897044f3e71dffcd395f38ed1adf6a105a18d920751bfa052548dea8f'
+        '78592a6fe5c715e50925775b736cf5652bc21abe8fcef9e8e56820994500d83a4031c79a3714fc97b1ef373fb62a2b3c06aa46bcf510eb70314e5f2f658b2242'
         'c0090c819342838fbb242f41ee057612ade9c1e564ea250bcd454d57677196a590e392ee6ef0b45d8d9463ab92a8ae3b3668f162c45a8d0e714747235d1cccff')
 
 
@@ -111,6 +111,7 @@ _package() {
   )
   provides=(
     KSMBD-MODULE
+    NTSYNC-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
