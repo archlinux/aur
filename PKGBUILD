@@ -2,7 +2,7 @@
 pkgname='elice-digital-coding-variable'
 fontname='EliceDigitalCoding'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital monospaced font with JP/KR support, made by elice."
 arch=('any')
 provides=(
@@ -15,14 +15,15 @@ conflicts=(
     'ttf-elice-digital-coding'
 )
 url='https://elice.io'
+pkgurl='https://font.elice.io/static/downloads/'
 license=('custom:SIL Open Font License v1.1')
 source=(
-    "$url/font/${fontname}_OTF.zip"
-    "$url/font/${fontname}_TTF.zip"
+    "${pkgurl}${fontname}_OTF.zip"
+    "${pkgurl}${fontname}_TTF.zip"
 )
 sha256sums=(
     '7f524a63d4d1503ead833ec8986eef81547e251d82628bd1ebaf2f7a4a9fe025'
-    'ac7c59b147a8ea9015a38d899c8be9b150439328c321e5b703a1e962c2341d64'
+    '2aa9773316b0c963343f7ebf930e2a4082390213100ad4f866018ade354c0e52'
 )
 
 package_elice-digital-coding() {
