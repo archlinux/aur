@@ -3,7 +3,7 @@
 # Contributor: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=libosmo-netif
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Osmocom library for muxed audio"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('lksctp-tools' 'libpcap' 'libosmocore' 'libosmo-abis')
 provides=("libosmonetif.so=11-64")
 conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('d0ef27d2b8cba8b230e846430716c10e4d9e3e71e25699bd076e273310ed3147')
+sha256sums=('60ff389b388c2fbcbaca31fad97fdceb7c99032ca5a1b4f365ffcb54f5cd1eed')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
