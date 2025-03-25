@@ -1,17 +1,23 @@
+# Maintainer: lod <aur@cyber-anlage.de>
+
 pkgname=orca-slicer-git
-pkgver=2.3.0.r24599.dc49116
+pkgver=2.3.1.r24811.108eeae
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('cairo' 'dbus' 'expat' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
+depends=('cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
          'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 
          'libspnav' 'libtiff' 'libx11' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
+options=('!debug' '!emptydirs')
 provides=("orca-slicer")
-source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git")
-b2sums=('SKIP')
+source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git"
+        "https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch")
+b2sums=('SKIP'
+        'cc7791841533e07787a4921b688fdd885782a67320936d445ad04102a68e8e044b5bf52a58d987d158ae522ae4f02a56a3525ccfd1831ef6a3b6459be14bd408')
+
 
 pkgver() {
   cd $pkgname
@@ -22,14 +28,14 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  
   # C++20 disallows the use of the Point<T> syntax in the constructor
-  sed -i 's/explicit Point<T>(/explicit Point(/' src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
+  sed -i 's/explicit Point<T>(/explicit Point(/' $pkgname/src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
   # abuse FLATPAK IF statement to build against some system libs
-  sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
-  # System Freetype has some breaking changes
-  sed -i 's/find_package(Freetype)/# find_package(Freetype)/' deps/CMakeLists.txt
+  sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
+  # cherry pick an OCCT commit to make it build with system freetype
+  cat 7236e83dcc1e7284e66dc61e612154617ef715d6.patch >>  $pkgname/deps/OCCT/0001-OCCT-fix.patch
+  # Fix xgettext: case-sensitive mismatches
+  sed -i 's|src/slic3r/GUI/AMSMappingPopup.cpp|src/slic3r/GUI/AmsMappingPopup.cpp|g' $pkgname/localization/i18n/list.txt
 }
 
 build() {
@@ -40,7 +46,7 @@ build() {
     -G Ninja \
     -S deps \
     -B deps/build \
-    -DDEP_WX_GTK3=ON 
+    -DDEP_WX_GTK3=ON
   ninja -C deps/build
 
   cmake \
@@ -56,7 +62,8 @@ build() {
     -DSLIC3R_GTK=3
   ninja -C build
   
- ./run_gettext.sh
+  # add localizations
+  ./run_gettext.sh --full
 }
 
 package() {
