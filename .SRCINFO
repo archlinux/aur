@@ -1,6 +1,6 @@
 pkgbase = python-ydata-profiling
 	pkgdesc = Create HTML profiling reports from pandas DataFrame objects
-	pkgver = 4.15.1
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = https://github.com/ydataai/ydata-profiling
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = python-ydata-profiling
 	depends = python-yaml
 	conflicts = python-pandas-profiling
 	replaces = python-pandas-profiling
-	source = ydata-profiling-4.15.1.tar.gz::https://github.com/ydataai/ydata-profiling/archive/refs/tags/v4.15.1.tar.gz
-	b2sums = 1bc9d1f24b80356e2a59f94b02fb0c775b488857f5bc872f58dd438fa92115d61034aeff86cdb398f99dc910181fdc5133f554f1b2becc9a67aa1c74d3eaba57
+	source = ydata-profiling-4.16.0.tar.gz::https://github.com/ydataai/ydata-profiling/archive/refs/tags/v4.16.0.tar.gz
+	b2sums = 294f007af0d421b3cf076c1e7956a8ec4cbd34902ec738689f31308c8cad633aa5b1ed984b9901b852ac891db7e0ae98469a405517c4d8c7993e1172c8565fc3
 
 pkgname = python-ydata-profiling

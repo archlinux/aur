@@ -3,7 +3,7 @@
 
 _name=ydata-profiling
 pkgname=python-ydata-profiling
-pkgver=4.15.1
+pkgver=4.16.0
 pkgrel=1
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=(any)
@@ -51,7 +51,7 @@ makedepends=(
 )
 
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('1bc9d1f24b80356e2a59f94b02fb0c775b488857f5bc872f58dd438fa92115d61034aeff86cdb398f99dc910181fdc5133f554f1b2becc9a67aa1c74d3eaba57')
+b2sums=('294f007af0d421b3cf076c1e7956a8ec4cbd34902ec738689f31308c8cad633aa5b1ed984b9901b852ac891db7e0ae98469a405517c4d8c7993e1172c8565fc3')
 
 prepare() {
   # fix version fallback (the git snapshot does not contain the VERSION file)
