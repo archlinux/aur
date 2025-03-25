@@ -1,6 +1,6 @@
 pkgbase = osmo-gapk
 	pkgdesc = Osmocom GSM Audio Pocket Knife
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://osmocom.org/projects/gapk
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = osmo-gapk
 	depends = opencore-amr
 	provides = libosmogapk.so=0-64
 	conflicts = osmo-gapk-git
-	source = https://downloads.osmocom.org/releases/gapk/gapk-v1.1.1.tar.bz2
-	sha256sums = 3990ada682977f121eb5c6deb1c344d7210cf12b5a90a09dbfbc87cafcd60835
+	source = https://downloads.osmocom.org/releases/gapk/gapk-v1.1.2.tar.bz2
+	sha256sums = f0507fc25cb5170bf5ae75ed5c02efc504561e70b5ffe7c460be13bb9e73d000
 
 pkgname = osmo-gapk
