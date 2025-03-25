@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=6778.r0.7a8409531f
+pkgver=6998.r2.12f7715a63
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -56,11 +56,11 @@ prepare() {
   # Extract build repo revision needed from DEPS file and do a checkout
   cd "$srcdir/pdfium/build"
   # Use a newer build revision to work around a build system bug in v6367
-  if [[ $chrome_version -gt 6367 ]]
+  if [[ $chrome_version -gt 7049 ]]
   then
     git checkout $(awk '/build_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
   else
-    git checkout bbc1efa4ce09a306328744c508d208407d5978a6 -q
+    git checkout 3dd73ffc3708962da298795d99f35fc06ed0defc -q
   fi
   
   # Extract abseil-cpp repo revision needed from DEPS file and do a checkout
