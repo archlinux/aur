@@ -1,7 +1,7 @@
 pkgbase = qemu-rutabaga
 	pkgdesc = A full QEMU setup with Rutabaga Virtual Graphics Interface support
 	pkgver = 9.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qemu.org/
 	arch = x86_64
 	license = BSD-2-Clause
@@ -170,7 +170,6 @@ pkgbase = qemu-rutabaga
 	depends = pixman
 	depends = libpixman-1.so
 	depends = python
-	depends = qemu-ui-opengl
 	depends = sdl2
 	depends = sdl2_image
 	depends = seabios
@@ -442,7 +441,6 @@ pkgname = qemu-full-rutabaga
 	depends = pixman
 	depends = libpixman-1.so
 	depends = python
-	depends = qemu-ui-opengl
 	depends = sdl2
 	depends = sdl2_image
 	depends = seabios
@@ -460,7 +458,7 @@ pkgname = qemu-full-rutabaga
 	depends = zlib
 	depends = zstd
 	depends = libzstd.so
-	depends = qemu-system-firmware-rutabaga=9.2.2-1
+	depends = qemu-system-firmware-rutabaga=9.2.2-2
 	backup = etc/qemu/bridge.conf
 	backup = etc/sasl2/qemu.conf
 

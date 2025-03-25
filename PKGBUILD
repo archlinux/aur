@@ -9,7 +9,7 @@ pkgname=(
   qemu-system-firmware-rutabaga
 )
 pkgver=9.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A full QEMU setup with Rutabaga Virtual Graphics Interface support"
 arch=(x86_64)
 url="https://www.qemu.org/"
@@ -86,7 +86,6 @@ depends=(
   pam libpam.so
   pixman libpixman-1.so
   python
-  qemu-ui-opengl
   sdl2 sdl2_image
   seabios
   snappy
