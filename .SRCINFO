@@ -1,13 +1,12 @@
 pkgbase = clapgrep
 	pkgdesc = One app to search through all your files
 	pkgver = 25.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luleyleo/clapgrep
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = GPL-3.0-or-later
-	makedepends = git
 	makedepends = meson
 	makedepends = cargo
 	makedepends = blueprint-compiler
@@ -16,8 +15,6 @@ pkgbase = clapgrep
 	depends = gtksourceview5
 	depends = poppler-glib
 	source = clapgrep-25.03.tar.gz::https://github.com/luleyleo/clapgrep/archive/refs/tags/v25.03.tar.gz
-	source = fix-archlinux-build.patch::https://github.com/luleyleo/clapgrep/pull/83.patch
 	sha256sums = 15e559c3a3cf250350e64c13a14b3808128880449d12e37b4dd28c21e9796cda
-	sha256sums = 064e7be0c3baf4005936ada2af0bfa4df7f2c24156ff7b374ac42f449c6d5db1
 
 pkgname = clapgrep
