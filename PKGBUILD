@@ -1,10 +1,11 @@
-# Maintainer:
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: xiota (https://aur.archlinux.org/account/xiota)
 # Contributor: j.r <j.r@jugendhacker.de>
 
 _pkgname="telegram-tg"
 pkgname="$_pkgname-git"
 pkgver=0.19.0.r3.g2b0c0cf
-pkgrel=3
+pkgrel=4
 pkgdesc="Telegram client for terminal"
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
@@ -12,6 +13,7 @@ arch=('any')
 
 depends=(
   'python'
+  'python-mailcap'
   'python-telegram'
 )
 makedepends=(

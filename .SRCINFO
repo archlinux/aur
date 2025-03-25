@@ -1,7 +1,7 @@
 pkgbase = telegram-tg-git
 	pkgdesc = Telegram client for terminal
 	pkgver = 0.19.0.r3.g2b0c0cf
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/paul-nameless/tg
 	arch = any
 	license = Unlicense
@@ -12,6 +12,7 @@ pkgbase = telegram-tg-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
+	depends = python-mailcap
 	depends = python-telegram
 	optdepends = libnotify: for notifications, you could also use other programs: see config
 	optdepends = ffmpeg: to record voice msgs and upload videos correctly
