@@ -2,8 +2,8 @@
 # Maintainer: Bink
 
 pkgname=hashlink-git
-pkgver=1.14.r124.gd56d03cd
-pkgrel=2
+pkgver=1.15
+pkgrel=1
 pkgdesc="A virtual machine for Haxe"
 arch=(any)
 url="https://hashlink.haxe.org/"
@@ -21,11 +21,11 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-VCS}" || exit
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/${pkgname%-VCS}" || exit
 	make PREFIX="$pkgdir/usr/" install
 }

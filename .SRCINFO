@@ -1,7 +1,7 @@
 pkgbase = hashlink-git
 	pkgdesc = A virtual machine for Haxe
-	pkgver = 1.14.r124.gd56d03cd
-	pkgrel = 2
+	pkgver = 1.15
+	pkgrel = 1
 	url = https://hashlink.haxe.org/
 	arch = any
 	license = MIT
