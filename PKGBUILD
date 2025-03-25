@@ -1,4 +1,5 @@
-# Maintainer:
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: xiota (https://aur.archlinux.org/account/xiota)
 # Contributor: j.r <j.r@jugendhacker.de>
 
 _pkgname="python-telegram"
