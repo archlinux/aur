@@ -3,7 +3,7 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -51,6 +51,8 @@ build() {
   -G Ninja \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=None \
+  -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
   -Wno-dev
 
   cmake --build build
