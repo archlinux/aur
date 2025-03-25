@@ -2,8 +2,8 @@
 # Contributor: MidAutumnMoon <mid.autumn0moon@gmail.com>
 
 pkgname=agate-bin
-pkgver=3.3.13
-pkgrel=2
+pkgver=3.3.14
+pkgrel=1
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=(x86_64 aarch64 armv6h armv7h)
 url="https://github.com/mbrubeck/agate"
@@ -16,10 +16,11 @@ source=(
     agate.sysusers
     "https://raw.githubusercontent.com/mbrubeck/agate/refs/tags/v$pkgver/LICENSE-MIT"
 )
-source_x86_64=("https://github.com/mbrubeck/agate/releases/download/v$pkgver/agate.x86_64-unknown-linux-gnu.gz")
-source_aarch64=("https://github.com/mbrubeck/agate/releases/download/v$pkgver/agate.aarch64-unknown-linux-gnu.gz")
-source_armv6h=("https://github.com/mbrubeck/agate/releases/download/v$pkgver/agate.arm-unknown-linux-gnueabihf.gz")
-source_armv7h=("https://github.com/mbrubeck/agate/releases/download/v$pkgver/agate.armv7-unknown-linux-gnueabihf.gz")
+_dl="https://github.com/mbrubeck/agate/releases/download/v$pkgver"
+source_x86_64=("agate-$pkgver-x86_64.gz::$_dl/agate.x86_64-unknown-linux-gnu.gz")
+source_aarch64=("agate-$pkgver-aarch64.gz::$_dl/agate.aarch64-unknown-linux-gnu.gz")
+source_armv6h=("agate-$pkgver-armv6h.gz::$_dl/agate.arm-unknown-linux-gnueabihf.gz")
+source_armv7h=("agate-$pkgver-armv7h.gz::$_dl/agate.armv7-unknown-linux-gnueabihf.gz")
 
 sha256sums=(
     "c74d88a5a449892a79221f6931989f60019dbcc9fcc8ecf57da34dca5778b80e"
@@ -27,10 +28,10 @@ sha256sums=(
     "8dc4041d1a673eeb87118385fbc60c74ee9422535251e16f64f5c76e8e7b72cf"
     "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
 )
-sha256sums_x86_64=("42edcfb9efe8dd45ae409e2a7200671bd68d3592dab453d86715a0e267cb727e")
-sha256sums_aarch64=("a42f9ed795540331c288438dee1573122aa5e6acf0ae795fced47d00893f595f")
-sha256sums_armv6h=("575c93f2eb1996d0d53d03b4a853c7bd06b498196325d7239701dd86ad7b7e5c")
-sha256sums_armv7h=("06bddb59a62a11197196331490e6bdb4055c3cf2b9f512dc40f1a6d228b20af3")
+sha256sums_x86_64=("41871b8e82deccadc50c38c0d937aa755326be5ace9c642019bf594a844e0984")
+sha256sums_aarch64=("fb0e04abb5e4dbd51e721dbe43a900332fe987e7b615940ecd2512de25b75ef5")
+sha256sums_armv6h=("a19f1d457cbe9b55971e84b4186c6626a495e3041adc683361822bee553708bd")
+sha256sums_armv7h=("a06f1aa1957a6669f7f728f753034258c1e44a7436fc08919bcd6a8d8c732168")
 
 backup=("etc/agate/agate.conf")
 provides=("agate")
@@ -42,6 +43,6 @@ package() {
     install -Dm0644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 
     find "${srcdir}" -type f \
-        -iname 'agate.*-unknown-linux-*' \
+        -iname "agate-$pkgver-*" \
         -exec install -Dm755 '{}' "$pkgdir/usr/bin/agate" \;
 }
