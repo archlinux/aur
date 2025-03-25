@@ -1,7 +1,7 @@
 pkgbase = remnote
 	pkgdesc = All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge
 	pkgver = 1.18.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.remnote.com
 	arch = x86_64
 	arch = aarch64
