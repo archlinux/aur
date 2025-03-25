@@ -1,0 +1,13 @@
+pkgbase = libgeome
+	pkgdesc = Locate local user's geographical location
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libgeome
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	makedepends = sed
+	source = libgeome-1.0.tar.gz::https://codeberg.org/maandree/libgeome/archive/1.0.tar.gz
+	sha256sums = 90f6663f5f8b45149e3a3b7f7dcabfc9a5575b96a5630c896cec6235b38e4fa9
+
+pkgname = libgeome
