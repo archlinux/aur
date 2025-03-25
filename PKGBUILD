@@ -2,8 +2,8 @@
 # Contributor: éclairevoyant
 _projectname='ocaml-version'
 pkgname="ocaml-$_projectname"
-pkgver='3.7.3'
-pkgrel='2'
+pkgver='4.0.0'
+pkgrel='1'
 pkgdesc='Manipulate, parse and generate OCaml compiler version strings'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocurrent/$_projectname"
@@ -13,7 +13,7 @@ makedepends=('dune>=3.6.0')
 checkdepends=('ocaml-alcotest')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('9ef143dc5d265a0ff455b901f48d71661a029047910f16428edaabd8901096985d164619e457afd657dc388a2f896e1bc994fb01a5053759834502718936d4ac')
+b2sums=('02c15ad6aa712c498e921182a10586dfa7c6cc4dced5923ea7fa28f2485117ac66893bcce595c40eeb6ee2d035c39ffba50ee48f655b39258d56c07958852ce7')
 
 _sourcedirectory="$_projectname-$pkgver"
 
