@@ -1,7 +1,7 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=biblia-git
-pkgver=0.0.1
-pkgrel=1
+pkgver=0.0.0
+pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -14,6 +14,11 @@ optdepends=('mybible-module-pbti' 'mybible-module-ogb' 'mybible-module-rst')
 makedepends=()
 source=("git+https://gitverse.ru/naierchou/biblia.git")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git rev-parse --short HEAD
+}
 
 package() {
   PREFIX="/usr/local"
