@@ -1,28 +1,30 @@
+# Maintainer: Mickaël Gastineau <Mickael.Gastineau@obspm.fr>
 pkgname=calceph
-pkgver=3.5.3
+pkgver=4.0.4
 pkgrel=1
-pkgdesc='The CALCEPH Library is designed to access the binary planetary ephemeris files, such INPOPxx and JPL DExxx ephemeris files'
+pkgdesc='The library is designed to access the binary planetary ephemeris files, such INPOPxx and JPL DExxx ephemeris files'
 url='https://www.imcce.fr/inpop/calceph'
-license=('CeCILL-C' 'CeCILL-B' 'CeCILL')
+license=('CECILL-C' 'CECILL-B' 'CECILL-2.1')
 arch=('x86_64')
-depends=()
-makedepends=('gcc-fortran' 'cmake')
+depends=('glibc'  'gcc-libs')
+makedepends=('cmake>=3.12' 'gcc' 'gcc-fortran')
 source=("https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/calceph-${pkgver}.tar.gz")
-sha256sums=('9dd2ebdec1d1f5bd6f01961d111dbf0a4b24d0c0545572f00c1d236800a25789')
+sha256sums=('20c9f0bd720c5cfe99a7b342babda3ff91428adfec9d55357b380b4a13205d60')
+
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --disable-shared CC=gcc FC=gfortran --prefix=/usr
-    make
+    cd "$pkgname-$pkgver"
+    cmake -B build -S . -DBUILD_SHARED_LIBS=ON  -DCMAKE_INSTALL_PREFIX='/usr'  -Wno-dev 
+    cmake --build build
 }
 
 check() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make check
+    cd "$pkgname-$pkgver"
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    DESTDIR="$pkgdir" make install 
+    cd "$pkgname-$pkgver"
+    DESTDIR="$pkgdir" cmake --install build
+    install --mode=644 -D -t "$pkgdir/usr/share/licenses/${pkgname}/" LICENSE COPYING_* 
 }
-
