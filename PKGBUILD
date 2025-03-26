@@ -9,7 +9,7 @@ pkgname=lib32-$_pkgname
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pcsclite/-/commits/main
 # https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PC/SC Architecture smartcard middleware library (32-bit)"
 arch=('x86_64')
 url='https://pcsclite.apdu.fr/'
