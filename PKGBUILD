@@ -14,7 +14,7 @@ conflicts=('xmcl-launcher-bin')
 optdepends=('jre8-openjdk: Minimum requirement for launching older game versions'
 'jre11-openjdk: Recommended Java version for launching versions 1.12-1.17'
 'jre17-openjdk: Recommended Java version for launching version 1.17 and above'
-'jre22-openjdk: Recommended Java version for launching version 1.20.5+ and above')
+'jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above')
 
 package() {
     cd "$srcdir"
