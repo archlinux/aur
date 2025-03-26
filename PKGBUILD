@@ -4,7 +4,7 @@
 _wlroots_version=0.18.2
 _wlroots_majver=0.18
 pkgname=wayfire-git
-pkgver=0.9.0.r46.ge70c688a
+pkgver=0.9.0.r81.gf865e23c
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
          'libglvnd' 'libjpeg' 'libpng'
          'libxkbcommon' 'pixman' 'polkit'
          'seatd' 'xorg-xwayland' 'wayland'
-         'wf-config-git'
+         'wf-config-git' 'yyjson'
 
          # Linking Wayfire headers now requires this
          'glm'
@@ -30,7 +30,7 @@ depends=(
          'libwayland-server.so' 'libxkbcommon.so'
 )
 makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers' 'doctest'
-             'pkgconf' 'wayland-protocols' 'nlohmann-json' 'libxml2'
+             'pkgconf' 'wayland-protocols' 'libxml2'
 )
 optdepends=('xorg-xeyes')
 provides=("${pkgname%-git}" "wlroots=${_wlroots_version}" "libwlroots-${_wlroots_majver}.so")
