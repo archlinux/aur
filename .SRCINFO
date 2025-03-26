@@ -1,7 +1,7 @@
 pkgbase = wol-rs
 	pkgdesc = Wake up remote hosts with Wake On LAN magic packets
-	pkgver = 0.2.1
-	pkgrel = 1
+	pkgver = 0.2.2
+	pkgrel = 2
 	url = https://github.com/swsnr/wol.rs
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = wol-rs
 	makedepends = rust
 	makedepends = cargo
 	conflicts = wol
-	source = https://github.com/swsnr/wol.rs/releases/download/v0.2.1/wol-v0.2.1.tar.zst
-	source = wol-vendor-0.2.1.tar.zst::https://github.com/swsnr/wol.rs/releases/download/v0.2.1/vendor.tar.zst
+	source = https://github.com/swsnr/wol.rs/releases/download/v0.2.2/wol-v0.2.2.tar.zst
+	source = wol-vendor-0.2.2.tar.zst::https://github.com/swsnr/wol.rs/releases/download/v0.2.2/vendor.tar.zst
 	source = config.toml
-	sha256sums = 6a4a7a9ae92fd566c2cdf4aab57555fdc748b3f0337e74b3d7af7cae7d14f604
-	sha256sums = b0a933f09266d3314e8d8e3722e0335b79f89ef6069b3b30fea145bba9f4747e
+	sha256sums = 61b51a2b8008fedb3c162494ee5c7a79da63b40150e8a766b412400fd29f2edc
+	sha256sums = d4c99fe4949938fb9aec5038686a494a9e8705a682c6485b2e2ac3fa86f87f10
 	sha256sums = 8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881
 
 pkgname = wol-rs
