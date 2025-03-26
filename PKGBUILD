@@ -5,11 +5,7 @@
 
 # Maintainer: Elie Donadio <elidoset@gmail.com>
 pkgname=yoga-git
-pkgver=3.2.1.2e2c75e
-pkgver() {
-	cd "$pkgename"
-	git rev-parse --short HEAD | sed 's/^/3.2.1./'
-}
+pkgver=3.2.1.51e6095
 pkgrel=2
 pkgdesc="The yoga flexbox layout engine's C++ library"
 arch=(x86_64)
