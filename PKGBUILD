@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=xz-static
-pkgver=5.6.4
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='Statically linked library for XZ and LZMA'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('sh')
 provides=("liblzma.a=$pkgver")
 options=('staticlibs')
 source=("https://tukaani.org/xz/xz-${pkgver}.tar.gz"{,.sig})
-sha256sums=('269e3f2e512cbd3314849982014dc199a7b2148cf5c91cedc6db629acdf5e09b'
+sha256sums=('b523c5e47d1490338c5121bdf2a6ecca2bcf0dce05a83ad40a830029cbe6679b'
             'SKIP')
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org> https://tukaani.org/misc/lasse_collin_pubkey.txt
 
