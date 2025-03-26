@@ -1,12 +1,12 @@
 pkgbase = foamshot-bin
 	pkgdesc = foamshot is wayland screenshot utility build by rust
-	pkgver = v0.1.1
+	pkgver = v0.1.2
 	pkgrel = 1
 	url = https://github.com/Thirdwinter/foamshot
 	arch = x86_64
 	license = MIT
 	depends = wl-clipboard
-	source = https://github.com/Thirdwinter/foamshot/releases/download/v0.1.1/foamshot-linux-x86_64
-	sha256sums = 2b32b0b1d4c41f34045611ea84a56f98ee0d276575979a2407a7a75853784793
+	source = https://github.com/Thirdwinter/foamshot/releases/download/v0.1.2/foamshot-linux-x86_64
+	sha256sums = ddef30da2add8c80978f615665086ebc54481c9aeda89d5ecb2f66d39814bdb4
 
 pkgname = foamshot-bin
