@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang
 _pkgname=Mustang
-pkgver=0.8.12
+pkgver=0.8.13
 _electronversion=32
 _nodever=20
 pkgrel=1
@@ -18,12 +18,13 @@ makedepends=(
     'nvm'
     'curl'
     'gendesk'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6a52cdcc0779909bcd81430697004f8ae7482fbfdb99f3ce69a92d2623b4eccc'
+sha256sums=('a40fa405b01cb923d8237ec77d80e2ce2e25aeec65781f1f93c104684541a948'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
