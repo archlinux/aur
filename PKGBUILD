@@ -2,8 +2,8 @@
 
 _pkgname=liblsdj
 pkgname=${_pkgname}-git
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0_457
+pkgrel=1
 changelog=CHANGELOG
 pkgdesc='Library for working with the LSDj save file format'
 arch=('any')
@@ -15,6 +15,11 @@ makedepends=('cmake' 'git' 'git-lfs')
 source=("$_pkgname::git+https://github.com/stijnfrishert/libLSDJ.git"
 		"Catch2::git+https://github.com/catchorg/Catch2.git")
 sha256sums=('SKIP' 'SKIP')
+
+pkgver() {
+    cd $_pkgname
+    printf "%s_%s" "$(git describe --tags --abbrev=0 | tail -c+2)" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
 	cd $_pkgname

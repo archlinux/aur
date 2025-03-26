@@ -1,7 +1,7 @@
 pkgbase = liblsdj-git
 	pkgdesc = Library for working with the LSDj save file format
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.0_457
+	pkgrel = 1
 	url = https://github.com/stijnfrishert/libLSDJ
 	changelog = CHANGELOG
 	arch = any
