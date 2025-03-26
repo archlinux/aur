@@ -1,6 +1,6 @@
 pkgbase = marchen-bin
 	pkgdesc = The local video subtitle player uses the DanDanPlay API; simply drag in an anime to match subtitles.(Prebuilt version.Use system-wide electron)本地视频的弹幕播放器，使用弹弹play API，拖入动漫即可匹配弹幕
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://marchen-play.suemor.com/
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = marchen-bin
 	makedepends = asar
 	makedepends = fuse2
 	depends = electron32
-	provides = marchen=0.0.3
+	provides = marchen=0.0.4
 	conflicts = marchen
 	source = marchen.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = marchen-0.0.3-aarch64.AppImage::https://github.com/marchen-dev/marchen-player/releases/download/v0.0.3/Marchen-0.0.3-arm64.AppImage
-	sha256sums_aarch64 = 7a1cc462500597b698afb66b528d376ee87786a7ec8b701d72ee9e7fb67b3157
-	source_x86_64 = marchen-0.0.3-x86_64.AppImage::https://github.com/marchen-dev/marchen-player/releases/download/v0.0.3/Marchen-0.0.3-x86_64.AppImage
-	sha256sums_x86_64 = 8ce04758a19b9a8b120216481753d69c4a221764653fab5ee1abd1fa857d9787
+	source_aarch64 = marchen-0.0.4-aarch64.AppImage::https://github.com/marchen-dev/marchen-player/releases/download/v0.0.4/Marchen-0.0.4-arm64.AppImage
+	sha256sums_aarch64 = c73a3157c23b7c8c20a6bc834e875fbfc08d5ff83aa84d699980bb1d116f7a8b
+	source_x86_64 = marchen-0.0.4-x86_64.AppImage::https://github.com/marchen-dev/marchen-player/releases/download/v0.0.4/Marchen-0.0.4-x86_64.AppImage
+	sha256sums_x86_64 = 5707fae8b501d92642bef28843b56bea18849b160f335c5bbaef563721c4cc7d
 
 pkgname = marchen-bin
