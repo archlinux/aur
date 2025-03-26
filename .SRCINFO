@@ -1,6 +1,6 @@
 pkgbase = chia-bin
 	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure. - Binary Release, Provides GUI
-	pkgver = 2.5.2
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://www.chia.net/
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = chia-bin
 	conflicts = chia
 	conflicts = chia-gui
 	options = !strip
-	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.5.2/chia-blockchain_2.5.2_amd64.deb
-	sha256sums_x86_64 = 5b194465d81313f7d2fd50a140a9abf456b9d8e60e32ec12f42768bd19c74938
-	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.5.2/chia-blockchain_2.5.2_arm64.deb
-	sha256sums_aarch64 = 34636b3e17e870030fa682d1c9347367e100e75bd2b86e351dd72ed9623bcc06
+	source_x86_64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.5.3/chia-blockchain_2.5.3_amd64.deb
+	sha256sums_x86_64 = 412ea73c3b2338a50c7d39fe9af5d06737c96d073bd7a40133fea2b318578152
+	source_aarch64 = https://github.com/Chia-Network/chia-blockchain/releases/download/2.5.3/chia-blockchain_2.5.3_arm64.deb
+	sha256sums_aarch64 = dda66e878feebb98f02196c4d2d39d9d584a61b55081756743c885174366764f
 
 pkgname = chia-bin
