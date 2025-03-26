@@ -1,7 +1,7 @@
 pkgbase = menu-builder
-	pkgdesc = An adaptive, half-manual, not fail-proof menu builder intended to be used in conjunction with labwc or Openbox.
+	pkgdesc = An adaptive, half-manual, menu builder intended to be used in conjunction with labwc or Openbox.
 	pkgver = 623fce2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.0x7be.net/dirk/menu-builder
 	arch = any
 	license = MIT

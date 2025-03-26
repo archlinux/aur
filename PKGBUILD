@@ -4,9 +4,9 @@
 pkgbase='menu-builder'
 pkgname="${pkgbase}-git"
 pkgver=623fce2
-pkgrel=2
+pkgrel=3
 
-pkgdesc='An adaptive, half-manual, not fail-proof menu builder intended to be used in conjunction with labwc or Openbox.'
+pkgdesc='An adaptive, half-manual, menu builder intended to be used in conjunction with labwc or Openbox.'
 url="https://git.0x7be.net/dirk/${pkgbase}"
 
 arch=('any')
