@@ -10,7 +10,7 @@ makedepends=("go")
 provides=("yaylog")
 conflicts=("yaylog-bin" "yaylog-git")
 source=("${url}/releases/download/v${pkgver}/yaylog-v${pkgver}.tar.gz")
-sha256sums=('9bb181c45f3b59c13629a65606ce86e806c8304aad2be5201a8bdba4c01ea1d7')
+sha256sums=('2df52f74953f56c8431ccd1fea6d8df02e07a4c35429fb7f7e13e61e482fc81b')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
