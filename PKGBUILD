@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm-bin
 _pkgname=vllm
-pkgver=0.7.3
+pkgver=0.8.2
 pkgrel=5
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -13,26 +13,22 @@ license=(Apache-2.0)
 depends=(
   python
   uvicorn
-  python-cloudpickle
-  python-safetensors
-  python-tqdm
-  python-requests
-  python-transformers
-  python-tokenizers
-  python-protobuf
+  python-starlette
+  python-setuptools
+  python-psutil
+  python-sphinx
   python-fastapi
-  python-aiohttp
-  python-pydantic
-  python-filelock
-  python-pyzmq
+  python-boto3
+  python-cachetools
   python-importlib-metadata
+  python-opencv
+  python-py-cpuinfo
+  python-soundfile
   python-yaml
-  python-six
-  python-gguf
-  python-jinja
-  python-pytorch
 )
 optdepends=(
+  'cuda: use nvidia GPU'
+  'cuda-tools: use nvidia GPU'
   'python-openai: required for openai protocols'
   'python-prometheus_client: Prometheus instrumentation library for Python applications'
   'prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
@@ -56,13 +52,12 @@ optdepends=(
 )
 makedepends=(
   python-installer
-  python-setuptools
 )
-source=("https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl")
-noextract=("vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl")
-sha256sums=('5eb2a6d834e4216bce9ae17243cdb6801a7b56f82dfa2c54114b90f9ab838849')
+source=("https://github.com/vllm-project/vllm/releases/download/v${pkgver}/vllm-${pkgver}+cu121-cp38-abi3-manylinux1_x86_64.whl")
+noextract=("vllm-${pkgver}+cu121-cp38-abi3-manylinux1_x86_64.whl")
+sha256sums=('21098353071fc4f8b4f07d6acc9bfae841f658ce66b90f7f5dadb407c3b7026d')
 
 package() {
-  python -m installer --destdir="${pkgdir}" vllm-${pkgver}+cu118-cp38-abi3-manylinux1_x86_64.whl
+  python -m installer --destdir="${pkgdir}" vllm-${pkgver}+cu121-cp38-abi3-manylinux1_x86_64.whl
 }
 # vim:set ts=2 sw=2 et:
