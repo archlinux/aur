@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=filkoll
-_pkgver=0.2.2
+_pkgver=0.2.3
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Fast command-not-found handler for Arch Linux"
@@ -9,7 +9,7 @@ url="https://github.com/VorpalBlade/filkoll"
 license=('GPL-3.0-only')
 makedepends=('cargo')
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/VorpalBlade/$pkgname/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('f49bd0a32443b4345d7df50f2766439079dd4b2fe07fe46422929eaa666b6ce2')
+sha256sums=('ddffc2a5c7de7a2c6e20a988c77f51acd62b0cd20c6a50880432bcee110b2afe')
 _unpacked_dir="${pkgname}-${_pkgver}"
 
 prepare() {
