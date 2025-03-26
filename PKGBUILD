@@ -2,7 +2,7 @@
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
 pkgver=0.14.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="SlimeVR FBT software beta version"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server/"
@@ -13,7 +13,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
 source_x86_64=(
-  "https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.14.0-rc2/SlimeVR-amd64.deb"
+  "https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.14.0-rc.2/SlimeVR-amd64.deb"
   "99-slimedongle.rules"
 )
 
