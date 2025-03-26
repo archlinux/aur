@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 _base=ray
 pkgname=python-${_base}
-pkgver=2.43.0
+pkgver=2.44.0
 pkgrel=1
 pkgdesc="A fast and simple framework for building and running distributed applications"
 arch=(x86_64)
@@ -38,7 +38,7 @@ optdepends=('python-pandas: for ray[data, tune, rllib]'
 )
 conflicts=(mesa-demos)
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('26188305e3a0af93b971f7682d27e0208f5b486ad45e58fd3c75f392df2f6e3c2530af6b7d781dff3378158bb4c805619aaa4e978e21a7a566520a2e673fb140')
+sha512sums=('4e315acc171ee9a663221e0640caa61751e2dbc1fd5520f04a63011284d084f7b9be38b9b16560b38515aa76509f5194cf025fafdb1bbf2d542b60236413908b')
 
 prepare() {
   local _bazelversion=$(pacman -Q bazel | sed -e 's/.* //; s/-.*//g')
