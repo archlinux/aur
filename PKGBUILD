@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool-git"
-pkgver=r207.9e86156
+pkgver=r217.c12ebce
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=('x86_64')

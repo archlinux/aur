@@ -1,6 +1,6 @@
 pkgbase = limine-entry-tool-git
 	pkgdesc = Install kernel for Limine bootloader.
-	pkgver = r207.9e86156
+	pkgver = r217.c12ebce
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = x86_64
