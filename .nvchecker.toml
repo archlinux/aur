@@ -1,0 +1,4 @@
+[python-bump-my-version]
+source = "git"
+git = "https://github.com/callowayproject/bump-my-version.git"
+prefix = "v"
