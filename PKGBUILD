@@ -1,4 +1,5 @@
 # Maintainer: TheCyberArcher@protonmail.ch
+# Contributor: lantw44 
 
 pkgname=mingw-w64-adwaita-icon-theme
 pkgver=47.0
