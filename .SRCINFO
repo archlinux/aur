@@ -9,7 +9,7 @@ pkgbase = limine-dracut-support-git
 	makedepends = maven
 	depends = bash
 	depends = grep
-	depends = java-environment-openjdk>=17
+	depends = java-environment>=17
 	depends = limine
 	depends = dracut
 	depends = efibootmgr
