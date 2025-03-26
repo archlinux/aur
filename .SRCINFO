@@ -1,0 +1,19 @@
+pkgbase = python-highspy
+	pkgdesc = Thin python wrapper to HiGHS, a linear optimization software
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://www.highs.dev
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/h/highspy/highspy-1.10.0.tar.gz
+	sha256sums = 65f9e0ea6dbe7256b790570c4f6b908b3f734cbc8cf5b2d5ebeadb28a4fe2486
+
+pkgname = python-highspy
