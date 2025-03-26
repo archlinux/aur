@@ -1,7 +1,7 @@
 # Maintainer: Ary Kleinerman <kleinerman at gmail dot com>
 #
 pkgname=yubico-authenticator-bin
-pkgver=7.1.1
+pkgver=7.2.0
 pkgdesc="Cross-platform application for managing your YubiKey's second factor credentials (version 7)"
 arch=('x86_64')
 url="https://github.com/Yubico/yubioath-flutter"
@@ -20,14 +20,14 @@ validpgpkeys=(
     '20EE325B86A81BCBD3E56798F04367096FBA95E8'
 )
 
-sha256sums=('f553503a810ded105254d4b537434d4870657c5240bf43c1a47afae798ace3f2'
+sha256sums=('5dbe2ae34ae77598c79bd5d844e9f60aca37af9bba9149c464c9a683e9b3f38d'
             'SKIP')
 
 # If the installation fails with 'One or more PGP signatures could not be verified',
 # then install the key with 'gpg --recv-keys 20EE325B86A81BCBD3E56798F04367096FBA95E8'
 prepare() {
-    sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
-    sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop
+    sed -i 's|\(Exec="\)@EXEC_PATH|\1/opt/yubico-authenticator|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.desktop
+    sed -i 's|\(Icon=\)@EXEC_PATH/linux_support/|\1/usr/share/pixmaps/|' "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.desktop
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
     ls -1 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux | grep -v "linux_support\|desktop_integration.sh\|README.adoc" | xargs -I{} cp -r "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/{} "$pkgdir/opt/yubico-authenticator"
 
     # Install the desktop file
-    install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.authenticator.desktop "${pkgdir}"/usr/share/applications/com.yubico.authenticator.desktop
+    install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.desktop "${pkgdir}"/usr/share/applications/com.yubico.yubioath.desktop
     # Install the icon
     install -Dm644 "${srcdir}"/yubico-authenticator-"${pkgver}"-linux/linux_support/com.yubico.yubioath.png "${pkgdir}"/usr/share/pixmaps/com.yubico.yubioath.png
 
