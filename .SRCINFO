@@ -77,3 +77,5 @@ pkgname = iv
 	depends = pugixml
 	depends = vulkan-icd-loader
 	depends = libxkbcommon
+	optdepends = poppler-glib
+	optdepends = vk-hdr-layer-kwin6-git

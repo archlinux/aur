@@ -80,6 +80,7 @@ package_vv() {
 package_iv() {
 	pkgdesc="Wayland application that can display HDR images"
 	depends+=(vulkan-icd-loader libxkbcommon)
+	optdepends+=(vk-hdr-layer-kwin6-git)
 
 	install -Dm 755 "$srcdir/build/iv" -t "$pkgdir/usr/bin"
 	install -Dm 644 "$srcdir/$pkgbase-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/iv"
