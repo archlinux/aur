@@ -1,0 +1,19 @@
+pkgbase = typhoon-git
+	pkgdesc = A stylish weather app based on Stormcloud
+	pkgver = r103.gdf1fe35
+	pkgrel = 1
+	url = https://github.com/archisman-panigrahi/typhoon
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = webkit2gtk
+	depends = python
+	provides = typhoon
+	conflicts = typhoon
+	source = git+https://github.com/archisman-panigrahi/typhoon#branch=develop
+	sha256sums = SKIP
+
+pkgname = typhoon-git
