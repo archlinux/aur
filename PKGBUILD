@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
 
 pkgname=sbctl-dracut-conf
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Dracut-specific configuration for sbctl"
 arch=('any')
