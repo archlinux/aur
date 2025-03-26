@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rocketchat-desktop-git
 _pkgname=Rocket.Chat
-pkgver=4.2.0.r0.gfdfcfa5
+pkgver=4.3.0.r0.g261a9f0
 _electronversion=34
 _nodeversion=22
 pkgrel=1
