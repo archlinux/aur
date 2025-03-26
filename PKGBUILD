@@ -4,10 +4,10 @@ pkgname=forge-server
 pkgdesc="Forge is a free, open-source modding API all of your favourite mods use!"
 url="https://minecraftforge.net"
 
-pkgver=50.1.0
-pkgrel=2
-_minecraftver=1.20.6
-_licensever=1.20.x
+pkgver=54.1.0
+pkgrel=3
+_minecraftver=1.21.4
+_licensever=1.21.x
 _srvpath="/opt"
 
 arch=("any")
@@ -34,7 +34,7 @@ source=("https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${_lice
         "eula.txt")
 noextract=("forge-${_minecraftver}-${pkgver}-installer.jar")
 sha512sums=("ecee0462a1cad389def4cd1ce1f24f7b5cf0bb1552f45db0482ac0fa7badc54a251adb735977a1dce3412a09716ce44b0ddf81c37dcfad3a5ac5d8e3516be3c8"
-            "121d76215673741bedf685a497471e53cfc4da75a3dd810a80c0ad6c4304b5b6e9c343fa28e60ebea66b7084d29c44927e5277389b476ed61fd5d012981751bb"
+            "1453de2af7239acf585b739f10cd89b05607f5635897b33d4f78adc5811f60bf0ef26d1372965a511f447dbd2664d0613f11d1121dbf48fb90487ec369aec225"
             "6e4e7f4d9486ece03e812d3373220d93d1934f1f3bcc86f4075cde6fb0ee76fb6ff7a2d3c19f884602ee89a6b46934bd1f90334c577e560de0d065a5c7449a05"
             "68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb")
 
