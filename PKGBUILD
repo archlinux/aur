@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
 
 pkgname=sbctl-dracut-conf
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Dracut-specific configuration for sbctl"
 arch=('any')
@@ -42,7 +42,7 @@ source=(
 )
 
 sha256sums=(
-    '47dd65bbc08195fb60110569d220647bd9d74e04f6571ee54405ca5851b68046' # dracut-install.sh
+    '0918c9bddb6a83711c8400c6b029f89d138c197b52466cab6e1b3643d8441782' # dracut-install.sh
     'ef41ef9a6b03e968b9ade1b6d92237b081fbcd58132d98f20d44e643f44d79d1' # dracut-remove.sh
     '704aafe8b5194dc653543febbee8eb13afc52cf353fb0010722ed31409136d9e' # 00-base.conf
     '399fa1a896df221a9bf544b5437a901684f8876cae9c24fa16a3d44652f832cd' # 01-cmdline.conf

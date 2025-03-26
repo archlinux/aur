@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-args=('--force' '--strip' '--aggressive-strip' '--reproducible')
+args=('--force' '--strip' '--aggressive-strip' '--reproducible' '--no-hostonly-cmdline' '--hostonly-mode strict' '--fstab')
 
 while read -r line; do
 	if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
