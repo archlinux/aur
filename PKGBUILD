@@ -37,7 +37,6 @@ build() {
 }
 
 pre_install() {
-  # Remove old packed.pkg when exists
   if [[ -f "/opt/openstarbound-nightly/assets/packed.pak" ]]; then 
     echo "Removing old 'packed.pak' file..."
     rm -f "/opt/openstarbound-nightly/assets/packed.pak"
@@ -46,20 +45,48 @@ pre_install() {
 
 
 package() {
-  read -rp "Do you have the 'packed.pak' file from the original game? [y/N]: " has_pak
+  local expected_hash="325d7d4210667b2a4738d805e858b80d7d55e8f834da773984ca6edb993577fe"
 
-  if [[ "$has_pak" == "y" || "$has_pak" == "Y" ]]; then
-    read -rp "Please provide the full path to your 'packed.pak' file: " pak_path
+  check_hash() {
+    sha256sum "$1" | awk '{print $1}'
+  }
 
-    if [[ -f "$pak_path" ]]; then
-      echo "Copying 'packed.pak' from provided path to build directory..."
-      cp "$pak_path" "$srcdir/packed.pak"
+  if [[ -f "/opt/openstarbound-nightly/assets/packed.pak" ]]; then
+    mkdir -p "$pkgdir/opt/openstarbound-nightly/assets"
+
+    if [[ "$(check_hash "/opt/openstarbound-nightly/assets/packed.pak")" == "$expected_hash" ]]; then
+      echo "Existing 'packed.pak' is valid. Copying to the final package."
+      cp "/opt/openstarbound-nightly/assets/packed.pak" "$pkgdir/opt/openstarbound-nightly/assets/packed.pak"
     else
-      echo "Invalid path provided for 'packed.pak'. Installation aborted."
-      exit 1
+      echo "Hash mismatch detected for existing 'packed.pak'."
+      replace_pak_prompt=true
     fi
   else
-    echo "'packed.pak' file is not required for the installation. Proceeding without it."
+    echo "'packed.pak' does not exist. Prompting user for input."
+    replace_pak_prompt=true
+  fi
+
+
+
+  if [[ "$replace_pak_prompt" == true ]]; then
+    read -rp "Do you have the 'packed.pak' file from the original game? [y/N]: " has_pak
+    if [[ "$has_pak" == "y" || "$has_pak" == "Y" ]]; then
+      read -rp "Please provide the full path to your 'packed.pak' file: " pak_path
+      if [[ -f "$pak_path" ]]; then
+        if [[ "$(check_hash "$pak_path")" == "$expected_hash" ]]; then
+          echo "Copying 'packed.pak' from provided path to build directory..."
+          cp "$pak_path" "$srcdir/packed.pak"
+        else
+          echo "Hash mismatch! The provided 'packed.pak' is invalid. Aborting."
+          exit 1
+        fi
+      else
+        echo "Invalid path provided for 'packed.pak'. Installation aborted."
+        exit 1
+      fi
+    else
+      echo -e "'packed.pak' file is not provided, proceeding without it. \033[1;31mMake sure to copy it to /opt/openstarbound-nightly/assets/ before trying to launching the game.\033[0m"
+    fi
   fi
 
   cd "$srcdir"
@@ -68,28 +95,28 @@ package() {
   tar -xf "$srcdir/client.tar" -C "$srcdir"
   mv "$srcdir/client_distribution" "$srcdir/openstarbound-nightly"
 
+  rm -rf "$srcdir/openstarbound-nightly/mods"
+  rm -rf "$srcdir/openstarbound-nightly/assets/user"
+
   install -dm755 "$pkgdir/opt/openstarbound-nightly"
   cp -r "$srcdir/openstarbound-nightly"/* "$pkgdir/opt/openstarbound-nightly"
 
   chmod -R 777 "$pkgdir/opt/openstarbound-nightly"
 
-  if [[ -f "/opt/openstarbound-nightly/assets/packed.pak" ]]; then
-    if [[ $has_pak == "y" || $has_pak == "Y" ]]; then
-      echo -e "\n\033[1;33mWARNING: 'packed.pak' file already exists in the installation directory.\033[0m" 
-      read -rp "Do you want to replace it? [y/N]: " replace_pak
-      if [[ "$replace_pak" == "y" || "$replace_pak" == "Y" ]]; then
-        rm -f "/opt/openstarbound-nightly/assets/packed.pak"
-        echo "Copying 'packed.pak' to the final package..."
-        install -Dm644 "$srcdir/packed.pak" "$pkgdir/opt/openstarbound-nightly/assets/packed.pak"
-      else
-        echo "Skipping 'packed.pak' file replacement."
-      fi
-    fi
-  else
-    if [[ $has_pak == "y" || $has_pak == "Y" ]]; then
-      echo "Copying 'packed.pak' to the final package..."
-      install -Dm644 "$srcdir/packed.pak" "$pkgdir/opt/openstarbound-nightly/assets/packed.pak"
-    fi
+  mkdir -p "$HOME/.config/openstarbound-nightly/logs"
+  mkdir -p "$HOME/.config/openstarbound-nightly/mods"
+  mkdir -p "$HOME/.config/openstarbound-nightly/storage"
+  mkdir -p "$HOME/.config/openstarbound-nightly/assets/user"
+
+
+  ln -sf "$HOME/.config/openstarbound-nightly/logs" "$pkgdir/opt/openstarbound-nightly/logs"
+  ln -sf "$HOME/.config/openstarbound-nightly/mods" "$pkgdir/opt/openstarbound-nightly/mods"
+  ln -sf "$HOME/.config/openstarbound-nightly/storage" "$pkgdir/opt/openstarbound-nightly/storage"
+  ln -sf "$HOME/.config/openstarbound-nightly/assets/user" "$pkgdir/opt/openstarbound-nightly/assets/user"
+
+  if [[ -f "$srcdir/packed.pak" ]]; then
+    echo "Copying 'packed.pak' to the final package..."
+    install -Dm644 "$srcdir/packed.pak" "$pkgdir/opt/openstarbound-nightly/assets/packed.pak"
   fi
 
   install -Dm644 "$srcdir/starbound.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/starbound-nightly.png"
