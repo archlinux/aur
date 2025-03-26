@@ -15,7 +15,7 @@
 
 pkgname=pianoteq-stage
 pkgver=8.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=(x86_64 aarch64 armv7h)
 url="https://www.pianoteq.com/pianoteq"
@@ -25,11 +25,13 @@ makedepends=('gendesk' 'p7zip')
 optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
+_name="pianoteq8-stage"
 
+#Source file download guide
 _sourcefile="./pianoteq_stage_linux_v${pkgver//./}.7z"
 if [ ! -f ${_sourcefile} ]; then
   echo ""
-  echo "	Due to license and website restriction, to build this package, the source file must be downloaded manually."
+  echo "	Due to license and website restriction, to install this package, the distribution file must be downloaded manually."
   echo "	You can download the source file of Pianoteq Stage $pkgver from here:"
   echo ""
   echo "	https://www.modartt.com/download?file=pianoteq_stage_linux_v${pkgver//./}.7z"
@@ -52,7 +54,7 @@ b2sums=('d981a40c51b8272301eb4d2c165d8a6a6bf507c8b58fb849fce14be0ae01f6aa2663a3d
   'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec='"pianoteq 8"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 8' --exec="\"$_name\"" --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package() {
@@ -67,11 +69,11 @@ package() {
   fi
 
   # Install program files:
-  install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 8"
-  install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 8.so"
+  install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/$_name"
+  install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/$_name.so"
   cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
   for i in *; do
-    install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 8.lv2/$i"
+    install -D "$i" "$pkgdir/usr/lib/lv2/$_name.lv2/$i"
   done
   cd $srcdir
   # Install desktop launcher:
@@ -79,7 +81,6 @@ package() {
   install -Dm 644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/${pkgname%-*}.desktop"
   # Install the license:
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  ls -a
   install -m 644 "$_pianoteq_type"/*Licence* "$pkgdir/usr/share/licenses/$pkgname/"
   # Install the Documentation:
   install -D "$_pianoteq_type/README_LINUX.txt" "$pkgdir/usr/share/doc/${pkgname%-*}/README_LINUX.txt"
