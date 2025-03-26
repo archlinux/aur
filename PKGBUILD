@@ -1,7 +1,7 @@
 # Maintainer: SuicideCatt <random.cat.from.internet@gmail.com>
 
 pkgname=sct_argsp
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Simple arguments parser for C++20."
 url="https://github.com/SuicideCatt/ArgsP"
