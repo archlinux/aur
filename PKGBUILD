@@ -5,7 +5,7 @@
 # Contributor: Hugo Doria <hugodoria at gmail.com>
 
 pkgname=translate-toolkit
-pkgver=3.14.7
+pkgver=3.15.1
 pkgrel=1
 pkgdesc="A toolkit to convert between various different translation formats, help process and validate localisations"
 arch=('any')
@@ -13,6 +13,7 @@ url="https://toolkit.translatehouse.org/"
 license=('GPL-2.0-or-later')
 depends=(
   'bash'
+  'python'
   'python-cwcwidth'
   'python-lxml'
   'python-ruamel-yaml'
@@ -22,6 +23,14 @@ makedepends=(
   'python-installer'
   'python-setuptools-scm'
   'python-wheel'
+)
+checkdepends=(
+  'python-cheroot'
+  'python-mistletoe'
+  'python-mistletoe'
+  'python-pyparsing'
+  'python-pytest'
+  'python-vobject'
 )
 optdepends=( 
   'gaupol: for po2sub'
@@ -33,15 +42,37 @@ optdepends=(
   'python-pyparsing: RC support for po2rc'
   'python-vobject: iCalendar files support for po2ical'
 )
-source=($pkgname-$pkgver.tar.gz::https://github.com/translate/translate/archive/$pkgver.tar.gz)
-sha256sums=('23fd3f7f209a62f4cd990c5a7ca5db7bc56d6a5da11a13b22f88bfe5ec7a5aec')
+source=("https://github.com/translate/translate/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('0983c492f6dcae0a74fcb383e9b202c15ad04b152ba92a03371cf24c623ff9b0')
 
 build() {
   cd translate-$pkgver
-  # FS#70224 to fix reproducible build
-  export PYTHONHASHSEED=0
   python -m build --wheel --no-isolation
 }
+
+check() {
+  cd translate-$pkgver
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  PATH=$PWD/test-env/bin:$PATH test-env/bin/python -m pytest \
+    --deselect tests/translate/storage/test_csvl10n.py::TestCSV::test_encoding_save \
+    --deselect tests/translate/tools/test_help.py::test_help \
+    --deselect tests/translate/tools/test_junitmsgfmt.py::test_output \
+    --deselect tests/translate/tools/test_pocount.py::test_cases \
+    --deselect tests/translate/tools/test_pocount.py::test_output \
+    --ignore tests/translate/convert/test_ini2po.py \
+    --ignore tests/translate/convert/test_php2po.py \
+    --ignore tests/translate/convert/test_po2ini.py \
+    --ignore tests/translate/convert/test_po2php.py \
+    --ignore tests/translate/storage/test_cpo.py \
+    --ignore tests/translate/storage/test_fluent.py \
+    --ignore tests/translate/storage/test_ini.py \
+    --ignore tests/translate/storage/test_php.py \
+    --ignore tests/translate/storage/test_po.py \
+    --ignore tests/translate/storage/test_pypo.py \
+    --ignore tests/translate/storage/test_subtitles.py
+}
+
 
 package() {
   cd translate-$pkgver
