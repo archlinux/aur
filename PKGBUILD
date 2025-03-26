@@ -3,13 +3,13 @@
 # Contributor: Frank Tao <frank.tao@uwaterloo.ca>
 _wlrootsver=0.18.2
 pkgname=wayfire-hidpi-xprop-git
-pkgver=0.9.0.r46.ge70c688a
+pkgver=0.9.0.r81.gf865e23c
 pkgrel=1
 pkgdesc="3D wayland compositor, integrating the wlroots hidpi-xprop patch set"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
 license=('MIT')
-depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'nlohmann-json'
+depends=('cairo' 'pango' 'doctest' 'freetype2' 'glm' 'yyjson'
          'libdrm' 'libevdev' 'libglvnd' 'libinput' 'libjpeg'
          'libpng' 'libxkbcommon' 'libxml2' 'pixman' 'polkit'
          'pkgconf' 'seatd' 'xcb-util-errors' 'xcb-util-renderutil'
