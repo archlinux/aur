@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=bash -c 'cd /usr/local/games/rusted-sokoban && ./sokoban'
+Exec=/usr/bin/sokoban
 Icon=/usr/share/pixmaps/rusted-sokoban_icon.png
 Name=Rusted sokoban
 Terminal=false
