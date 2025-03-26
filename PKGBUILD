@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ncdf4
-_pkgver=1.23
+_pkgver=1.24
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e6ae790c0ab37face3236ef0c2669685')
-b2sums=('580b7f9d306a6cb92b17903d6a133b774037d1110ca65b3f79253171da2b1df4ccaffeab64aab4efeaf5b6f97d0a737b9bf40a7a24ff361b7df713cde2510c4d')
+md5sums=('876f66c31ef1d2df9a30c2c87376462c')
+b2sums=('bf14b461f567791e16f29ecf1b8fa4416a68a8f4eadeab46ac61d0ef8eeb9ddd50295430024d2d0de1a9706cfa4716bfe04a94521ab3091e121ed9e94daece53')
 
 build() {
   mkdir build
