@@ -8,8 +8,9 @@ _pkgname=recastnavigation
 # https://gitlab.com/OpenMW/openmw/-/issues/7457
 
 _pkgver=1.6.0
-pkgver=1.6.0.r832.c393777
+pkgver=1.6.0.r832.c393777d
 pkgrel=1
+epoch=1
 pkgdesc="Navigation-mesh Toolset for openmw"
 url="https://github.com/recastnavigation/recastnavigation"
 arch=('x86_64' 'aarch64')
@@ -42,7 +43,7 @@ build() {
 }
 
 package() {
-depends=(sdl2 glut)
+depends=(gcc-libs glibc sdl2 glut)
     make DESTDIR="$pkgdir" -C _build install
     install -Dm644 "$srcdir"/$_pkgname/License.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
