@@ -3,12 +3,12 @@
 
 pkgname=openspades
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A clone of Voxlap Ace of Spades 0.75"
 arch=('i686' 'x86_64')
 url="http://openspades.yvt.jp/"
 license=('GPL-3.0-only')
-depends=('curl' 'glew' 'hicolor-icon-theme' 'mesa' 'openal' 'opusfile' 'sdl2' 'sdl2_image' 'xdg-utils' 'freetype2')
+depends=('curl' 'glibc' 'zlib' 'libglvnd' 'gcc-libs' 'glew' 'hicolor-icon-theme' 'mesa' 'openal' 'opusfile' 'sdl2' 'sdl2_image' 'xdg-utils' 'freetype2')
 makedepends=('cmake' 'git' 'imagemagick' 'unzip' 'wget' 'zip' 'desktop-file-utils')
 install=openspades.install
 source=("${pkgname}-v${pkgver}.tar.gz"::"https://github.com/yvt/openspades/archive/v${pkgver}.tar.gz")
