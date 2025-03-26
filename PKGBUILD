@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
 _pkgname=Apifox
-pkgver=2.7.1
+pkgver=2.7.2
 _electronversion=28
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试"
@@ -34,8 +34,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://file-assets.apif
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://file-assets.apifox.com/download/${_pkgname}-linux-latest.zip")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('117c661cfe0f4c76333fc258ff67ca6db0b4eaa3ef65326c1053851fea383930')
-sha256sums_x86_64=('fbd530e2bf203d9ec7bc5d51565041cc6faa0cf05dcba23d5796f85580925781')
+sha256sums_aarch64=('ae562cbb64f46e7362c4b728b08b0f8cc0207df58b191cfc0912b283811d8c9a')
+sha256sums_x86_64=('aee26bef6841ce03a6f3c543737222a38f4321ea22f2e7135b5aef90135991a7')
 pkgver() {
     cd "${srcdir}/squashfs-root"
     grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//g"
