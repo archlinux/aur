@@ -3,10 +3,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=docopt
-_pkgver=0.7.1
+_pkgver=0.7.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="Command-Line Interface Specification Language"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('97952edaf3093ed9801bd2eb1c557923')
-b2sums=('49983c3aaba151f634c9aaab31305a6ee597d80838b756923d9246ae6e8132c92bf28d6529693222a6a5cffeca45da11f9d62da9a82b96bf98c7b7342373bd80')
+md5sums=('81c09683e8e2d6e55c1703987254a602')
+b2sums=('159464dedeb1f33073eff0e270ef59a9be861b5e0274e255ecb9bdd740fae9ad777ec998cd4ba124d2d2bab1d0baa8a453686a002e9b14229852e83bee909363')
 
 build() {
   mkdir build
