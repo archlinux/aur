@@ -10,7 +10,8 @@
 # https://www.modartt.com/download?file=pianoteq_stage_linux_v841.7z
 # The downloaded files must be placed in the appropriate directory
 # - makepkg: The same directory as this PKGBUILD
-# - yay:
+# - yay: /home/<user>/.cache/yay/pianoteq-stage
+# - paru: /home/<user>/.cache/paru/clone/pianoteq-stage/ 
 
 pkgname=pianoteq-stage
 pkgver=8.4.1
