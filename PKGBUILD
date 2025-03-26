@@ -17,7 +17,7 @@ pkgname=pianoteq-stage
 pkgver=8.4.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
-arch=('x86_64')
+arch=(x86_64 aarch64 armv7h)
 url="https://www.pianoteq.com/pianoteq"
 license=('custom')
 depends=('alsa-lib' 'freetype2' 'ttf-font' 'libx11')
@@ -57,7 +57,15 @@ prepare() {
 
 package() {
   _pianoteq_type="Pianoteq 8 STAGE"
-  archdir=x86-64bit
+  #ARM support not tested
+  if [[ "$CARCH" == x86_64 ]]; then
+    archdir=x86-64bit
+  elif [[ "$CARCH" == armv7h ]]; then
+    archdir=arm-32bit
+  elif [[ "$CARCH" == aarch64 ]]; then
+    archdir=arm-64bit
+  fi
+
   # Install program files:
   install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 8"
   install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 8.so"
