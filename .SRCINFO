@@ -1,22 +1,27 @@
 pkgbase = diylc
 	pkgdesc = Multi platform circuit layout and schematic drawing tool
-	pkgver = 5.0.0
-	pkgrel = 3
+	pkgver = 5.1.0
+	pkgrel = 1
 	url = https://bancika.github.io/diy-layout-creator/
 	arch = any
 	license = GPL3
 	makedepends = unzip
-	depends = jre-openjdk
+	depends = java-runtime>=24
 	depends = sh
 	depends = hicolor-icon-theme
-	noextract = diylc-5.0.0.zip
-	source = https://github.com/bancika/diy-layout-creator/releases/download/v5.0.0/diylc-5.0.0.zip
+	source = https://github.com/bancika/diy-layout-creator/releases/download/v5.1.0/diylc-5.1.0-universal.zip
 	source = diylc
 	source = diylc.desktop
 	source = bancika-diylc.xml
-	sha256sums = b7e9ade0b12e76c7ec2fe9f9646cdf25bb99af17d942110e40cc7de38fcae754
+	source = icon_16x16.png
+	source = icon_32x32.png
+	source = icon_48x48.png
+	sha256sums = 93f2947d88e16535c2a6e03bc51730bcb555d7e219f301c90c81dd410dae108f
 	sha256sums = 74ab218dcf32c54b518614705127cfe22596754a73da80afa147d764cc7bd1df
 	sha256sums = ab080ea3c5baf0dc310f13ae269b9ff81944bb1e6c24173269c047887ebf33b1
 	sha256sums = 17463b5025126faf458a9eda0a84f38dbc1e084470c9633ba9660ef4eb3fcca8
+	sha256sums = aec20fa0f275b86232bf800304ed53e1980b528230527bde3671941514b2b623
+	sha256sums = 36729abb04a9a8b4a819c9d66caa9cc652bc3bca93951892a62a88779d465dc4
+	sha256sums = f7be8191f7e0a746a18fe26ccfd62e127121ed58010e755010d947a951d43288
 
 pkgname = diylc
