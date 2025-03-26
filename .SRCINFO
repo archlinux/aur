@@ -1,6 +1,6 @@
 pkgbase = cling
 	pkgdesc = Interactive C++ interpreter, built on the top of LLVM and Clang libraries
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://root.cern/cling/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = cling
 	conflicts = cling
 	options = !lto
 	options = !debug
-	source = cling-llvm::git+https://github.com/root-project/llvm-project.git#tag=cling-llvm13-20240318-01
-	source = cling::git+https://github.com/root-project/cling.git#tag=v1.0
+	source = cling-llvm::git+https://github.com/root-project/llvm-project.git#tag=cling-llvm18-20250207-01
+	source = cling::git+https://github.com/root-project/cling.git#tag=v1.2
 	sha256sums = SKIP
 	sha256sums = SKIP
 

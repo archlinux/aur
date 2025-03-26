@@ -14,7 +14,7 @@ install: build
 	makepkg -i
 
 check: build
-	namcap *.tar.xz
+	namcap *.tar.*
 
 clean:
 	rm -rf build cling cling-clang cling-llvm pkg src *.tar.*
