@@ -5,16 +5,14 @@ pkgdesc="A Python library for reading and writing the Minecraft save formats. Se
 url="https://github.com/Amulet-Team/Amulet-Core"
 license=(unknown)
 arch=(any)
-pkgver=1.9.27
+pkgver=1.9.29
 pkgrel=1
 makedepends=(python-build python-installer python-wheel git)
 depends=(python python-amulet-nbt python-numpy python-pymctranslate python-versioneer python-portalocker python-leveldb python-amulet-leveldb)
 source=(
 	"git+https://github.com/Amulet-Team/Amulet-Core.git#tag=${pkgver}"
 )
-md5sums=(
-	"SKIP"
-)
+md5sums=('dd115ec234fcbb77a8efc22f1e74d73f')
 
 function prepare() {
 	sed -i 's/versioneer-518/versioneer/g' "${srcdir}/Amulet-Core/pyproject.toml"
