@@ -1,0 +1,22 @@
+pkgbase = pikeru
+	pkgdesc = A system file picker with proper thumbnails and search
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/dvhar/pikeru
+	install = pikeru.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = scdoc
+	depends = ffmpeg
+	depends = xdg-desktop-portal
+	depends = sqlite
+	depends = poppler
+	optdepends = epub-thumbnailer-git: epub thumbnail support
+	options = !debug
+	options = !lto
+	source = pikeru-1.4.tar.gz::https://github.com/dvhar/pikeru/archive/refs/tags/1.4.tar.gz
+	sha512sums = 453781d073660325076ab1c96d99b760333cfc44938cf660c2fe38abbf80d6092483e827b572ab0d970d3f51174785830d09756fb3088d0a374da459e001a6ac
+
+pkgname = pikeru
