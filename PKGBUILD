@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-git
-pkgver=0.3.5.r0.g64cb27f
+pkgver=0.3.5.r1.gcdaf760
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
@@ -60,7 +60,9 @@ build() {
 	-GNinja \
 	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DZLIBNG_ENABLE_TESTS=OFF
+	-DZLIBNG_ENABLE_TESTS=OFF \
+	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG"
 
 	cmake --build build
 }
