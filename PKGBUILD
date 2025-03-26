@@ -1,14 +1,14 @@
 # Maintainer: Victor Lavaud <victor.lavaud@pm.me>
 pkgname=python-google-generativeai
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Google AI Python SDK for the Gemini API"
 arch=('any')
 url="https://github.com/google-gemini/generative-ai-python"
-license=('Apache')
+license=('Apache-2.0')
 makedepends=('python-setuptools')
 source=("generative-ai-${pkgver}.tar.gz::https://github.com/google-gemini/generative-ai-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e6f99187ef7073b357b75daa437b02e90b1f9a9730b716121ae5b2c96f6b2c01')
+sha256sums=('82d31235919b6e1089870dc2b07808e64d12d35f0a19a4ae5e974241412825fb')
 
 # Dependencies listed in https://github.com/google-gemini/generative-ai-python/blob/main/setup.py#L44-L53
 depends=('python-google-ai-generativelanguage=0.6.10' 'python-google-api-core' 'python-google-api-python-client' 'python-google-auth>=2.15.0' 'python-protobuf' 'python-pydantic' 'python-tqdm' 'python-typing_extensions')
