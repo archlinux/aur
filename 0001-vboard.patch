@@ -1,7 +1,7 @@
 From df39a4a0546cad2fcb9b412643921ce5e5108bb2 Mon Sep 17 00:00:00 2001
 From: honjow <honjow311@gmail.com>
 Date: Mon, 24 Mar 2025 17:47:15 +0800
-Subject: [PATCH 1/4] Add grid css
+Subject: [PATCH 1/8] Add grid css
 
 set min-width for keyboard button
 ---
@@ -24,13 +24,13 @@ index 20cf4de..ff912d3 100644
          """
  
 -- 
-2.39.1
+2.49.0
 
 
 From 35ce46228c1992b679e179256823f7c3ad1ef151 Mon Sep 17 00:00:00 2001
 From: honjow <honjow311@gmail.com>
 Date: Mon, 24 Mar 2025 18:02:31 +0800
-Subject: [PATCH 2/4] modifier key
+Subject: [PATCH 2/8] modifier key
 
 ---
  vboard.py | 20 +++++++++++++++++++-
@@ -104,13 +104,13 @@ index ff912d3..81d8e30 100644
  
      def read_settings(self):
 -- 
-2.39.1
+2.49.0
 
 
 From 51f2b19b8e403fff9cb0437e6aa3eb44c08d756a Mon Sep 17 00:00:00 2001
 From: honjow <honjow311@gmail.com>
 Date: Mon, 24 Mar 2025 18:22:22 +0800
-Subject: [PATCH 3/4] Add visual feedback for Shift key state and improve
+Subject: [PATCH 3/8] Add visual feedback for Shift key state and improve
  modifier key handling
 
 ---
@@ -229,13 +229,13 @@ index 81d8e30..88bf401 100644
  
      def read_settings(self):
 -- 
-2.39.1
+2.49.0
 
 
 From dccd51a0b66b2bac3f5e8d402b8891af9aaed348 Mon Sep 17 00:00:00 2001
 From: honjow <honjow311@gmail.com>
 Date: Mon, 24 Mar 2025 19:04:31 +0800
-Subject: [PATCH 4/4] Add CapsLock UI feedback and improve key handling
+Subject: [PATCH 4/8] Add CapsLock UI feedback and improve key handling
 
 ---
  vboard.py | 35 +++++++++++++++++++++++++++++------
@@ -304,5 +304,429 @@ index 88bf401..988e3cb 100644
  
  
 -- 
-2.39.1
+2.49.0
+
+
+From 9913293bef83d432959935e817c34b4206b9825a Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Thu, 27 Mar 2025 01:59:07 +0800
+Subject: [PATCH 5/8] update layout
+
+---
+ vboard.py | 47 +++++++++++++++++++++++++----------------------
+ 1 file changed, 25 insertions(+), 22 deletions(-)
+
+diff --git a/vboard.py b/vboard.py
+index 988e3cb..295ac85 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -10,6 +10,16 @@ gi.require_version('Gtk', '3.0')
+ from gi.repository import Gtk
+ from gi.repository import GLib
+ 
++# 获取当前桌面环境
++def get_desktop_environment():
++    # 从环境变量中获取桌面环境
++    desktop_env = os.environ.get('XDG_CURRENT_DESKTOP', '')
++    if desktop_env:
++        return desktop_env.upper()
++    return ""
++
++# 桌面环境
++DESKTOP_ENV = get_desktop_environment()
+ 
+ key_mapping = {uinput.KEY_ESC: "Esc", uinput.KEY_1: "1", uinput.KEY_2: "2", uinput.KEY_3: "3", uinput.KEY_4: "4", uinput.KEY_5: "5", uinput.KEY_6: "6",
+     uinput.KEY_7: "7", uinput.KEY_8: "8", uinput.KEY_9: "9", uinput.KEY_0: "0", uinput.KEY_MINUS: "-", uinput.KEY_EQUAL: "=",
+@@ -136,7 +146,7 @@ class VirtualKeyboard(Gtk.Window):
+             ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"],
+             ["CapsLock", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"],
+             ["Shift_L", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "Shift_R", "↑"],
+-            ["Ctrl_L","Super_L", "Alt_L", "Space", "Alt_R", "Super_R", "Ctrl_R", "←", "→", "↓"]
++            ["Ctrl_L","Super_L", "Alt_L", "Space", "Alt_R", "Super_R", "Ctrl_R", "←", "↓", "→"]
+         ]
+ 
+         # Create each row and add it to the grid
+@@ -207,49 +217,43 @@ class VirtualKeyboard(Gtk.Window):
+     def apply_css (self):
+         provider = Gtk.CssProvider()
+ 
++        # 根据桌面环境决定是否添加background-image: none;
++        gnome_specific = ""
++        if "GNOME" in DESKTOP_ENV:
++            gnome_specific = "background-image: none;"
+ 
+         css = f"""
+         headerbar {{
+             background-color: rgba({self.bg_color}, {self.opacity});
+-
+-
++            min-height: 40px;
++            padding: 2px 4px;
+         }}
+ 
+         headerbar button{{
+-            min-width: 60px;
++            min-width: 40px;
+             padding: 0px;
+-            border: 0px
+-
+-
++            margin: 0px;
++            border: 0px;
++            background-color: transparent;
++            {gnome_specific}
+         }}
+ 
+         headerbar button label{{
+-        color: {self.text_color};
+-
++            color: {self.text_color};
+         }}
+ 
+-
+         #toplevel {{
+             background-color: rgba({self.bg_color}, {self.opacity});
+-
+-
+-
+-
+         }}
+ 
+         #grid button label{{
+             color: {self.text_color};
+-
+-
+         }}
+ 
+-
+-
+         button {{
+             background-color: transparent;
+             border: 1px solid rgb(85, 85, 85);
+             color:white;
+-
+         }}
+ 
+         button:hover {{
+@@ -263,7 +267,6 @@ class VirtualKeyboard(Gtk.Window):
+         }}
+ 
+        #combobox button.combo  {{
+-
+             color: {self.text_color};
+             padding: 5px;
+         }}
+@@ -271,6 +274,7 @@ class VirtualKeyboard(Gtk.Window):
+         #grid button {{
+             min-width: 10px;
+             padding: 1px;
++            margin: 1px;
+             background-color: transparent;
+         }}
+ 
+@@ -304,7 +308,7 @@ class VirtualKeyboard(Gtk.Window):
+ 
+                 if key_label == "Space": width=12
+                 elif key_label == "CapsLock": width=3
+-                elif key_label == "Shift_R" : width=4
++                elif key_label == "Shift_R" : width=2
+                 elif key_label == "Shift_L" : width=4
+                 elif key_label == "Backspace": width=5
+                 elif key_label == "`": width=1
+@@ -437,7 +441,6 @@ class VirtualKeyboard(Gtk.Window):
+         except (configparser.Error, IOError) as e:
+             print(f"Warning: Could not write to config file ({e}). Changes will not be saved.")
+ 
+-
+ if __name__ == "__main__":
+     win = VirtualKeyboard()
+     win.connect("destroy", Gtk.main_quit)
+-- 
+2.49.0
+
+
+From b672cf6d36033cc400e974c3addf8fcb7ec5f8ac Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Thu, 27 Mar 2025 02:11:08 +0800
+Subject: [PATCH 6/8] Add ESC button to header and implement key press
+ functionality
+
+---
+ vboard.py | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/vboard.py b/vboard.py
+index 295ac85..49296ce 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -128,6 +128,13 @@ class VirtualKeyboard(Gtk.Window):
+         self.color_combobox = Gtk.ComboBoxText()
+         # Set the header bar as the titlebar of the window
+         self.set_titlebar(self.header)
++        
++        # 添加ESC按钮到顶栏左侧
++        self.esc_button = Gtk.Button(label="ESC")
++        self.esc_button.connect("clicked", lambda widget: self.on_button_click(widget, uinput.KEY_ESC))
++        self.esc_button.set_name("esc-button")
++        self.header.pack_start(self.esc_button)
++        
+         self.create_settings()
+ 
+         grid = Gtk.Grid()  # Use Grid for layout
+@@ -240,6 +247,7 @@ class VirtualKeyboard(Gtk.Window):
+ 
+         headerbar button label{{
+             color: {self.text_color};
++            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+         }}
+ 
+         #toplevel {{
+@@ -283,6 +291,14 @@ class VirtualKeyboard(Gtk.Window):
+             border: 1px solid rgb(173, 216, 230);
+         }}
+ 
++        #esc-button {{
++            border: 1px solid rgb(85, 85, 85);
++        }}
++        
++        #esc-button:hover {{
++            border: 1px solid rgb(173, 216, 230);
++        }}
++
+        """
+         try:
+             provider.load_from_data(css.encode("utf-8"))
+@@ -312,6 +328,7 @@ class VirtualKeyboard(Gtk.Window):
+                 elif key_label == "Shift_L" : width=4
+                 elif key_label == "Backspace": width=5
+                 elif key_label == "`": width=1
++                elif key_label == "Esc": width=2
+                 elif key_label == "\\" : width=4
+                 elif key_label == "Enter": width=5
+                 else: width=2
+-- 
+2.49.0
+
+
+From 0318fe7bb390dccd53c08cdabd0262dfc456ecb2 Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Thu, 27 Mar 2025 02:28:52 +0800
+Subject: [PATCH 7/8] Refactor: headerbar
+
+---
+ vboard.py | 29 +++++++++++++++++------------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
+
+diff --git a/vboard.py b/vboard.py
+index 49296ce..b57abcf 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -129,12 +129,6 @@ class VirtualKeyboard(Gtk.Window):
+         # Set the header bar as the titlebar of the window
+         self.set_titlebar(self.header)
+         
+-        # 添加ESC按钮到顶栏左侧
+-        self.esc_button = Gtk.Button(label="ESC")
+-        self.esc_button.connect("clicked", lambda widget: self.on_button_click(widget, uinput.KEY_ESC))
+-        self.esc_button.set_name("esc-button")
+-        self.header.pack_start(self.esc_button)
+-        
+         self.create_settings()
+ 
+         grid = Gtk.Grid()  # Use Grid for layout
+@@ -162,16 +156,22 @@ class VirtualKeyboard(Gtk.Window):
+ 
+ 
+     def create_settings(self):
++        # 添加ESC按钮到顶栏左侧
++        self.esc_button = Gtk.Button(label="ESC")
++        self.esc_button.connect("clicked", lambda widget: self.on_button_click(widget, uinput.KEY_ESC))
++        self.esc_button.set_name("esc-button")
++        self.header.pack_start(self.esc_button)
++        
++        # 添加右侧控制按钮
+         self.create_button("☰", self.change_visibility,callbacks=1)
+         self.create_button("+", self.change_opacity,True,2)
+         self.create_button("-", self.change_opacity, False,2)
+-        self.create_button( f"{self.opacity}")
++        self.create_button(f"{self.opacity}")
+         self.color_combobox.append_text("Change Background")
+         self.color_combobox.set_active(0)
+         self.color_combobox.connect("changed", self.change_color)
+         self.color_combobox.set_name("combobox")
+-        self.header.add(self.color_combobox)
+-
++        self.header.pack_end(self.color_combobox)
+ 
+         for label, color in self.colors:
+             self.color_combobox.append_text(label)
+@@ -192,12 +192,15 @@ class VirtualKeyboard(Gtk.Window):
+             self.opacity_btn=button
+             self.opacity_btn.set_tooltip_text("opacity")
+ 
+-        self.header.add(button)
++        button.get_style_context().add_class("header-button")
++        self.header.pack_end(button)
+         self.buttons.append(button)
++        return button
+ 
+     def change_visibility(self, widget=None):
+         for button in self.buttons:
+-            if button.get_label()!="☰":
++            # 跳过ESC按钮和菜单按钮
++            if button.get_label()!="☰" and button.get_name()!="esc-button":
+                 button.set_visible(not button.get_visible())
+         self.color_combobox.set_visible(not self.color_combobox.get_visible() )
+ 
+@@ -247,7 +250,6 @@ class VirtualKeyboard(Gtk.Window):
+ 
+         headerbar button label{{
+             color: {self.text_color};
+-            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+         }}
+ 
+         #toplevel {{
+@@ -265,6 +267,7 @@ class VirtualKeyboard(Gtk.Window):
+         }}
+ 
+         button:hover {{
++            background-color: transparent;
+             border: 1px solid rgb(173, 216, 230);
+         }}
+ 
+@@ -289,9 +292,11 @@ class VirtualKeyboard(Gtk.Window):
+         button.active-modifier {{
+             background-color: rgba(100, 100, 255, 0.5);
+             border: 1px solid rgb(173, 216, 230);
++            {gnome_specific}
+         }}
+ 
+         #esc-button {{
++            min-width: 60px;
+             border: 1px solid rgb(85, 85, 85);
+         }}
+         
+-- 
+2.49.0
+
+
+From eb89d15104cfc435af0f48196bd68e7e07b81bae Mon Sep 17 00:00:00 2001
+From: honjow <honjow311@gmail.com>
+Date: Thu, 27 Mar 2025 03:04:49 +0800
+Subject: [PATCH 8/8] feat: add window position persistence
+
+---
+ vboard.py | 58 ++++++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 47 insertions(+), 11 deletions(-)
+
+diff --git a/vboard.py b/vboard.py
+index b57abcf..4598371 100644
+--- a/vboard.py
++++ b/vboard.py
+@@ -51,6 +51,13 @@ class VirtualKeyboard(Gtk.Window):
+         self.set_accept_focus(False)
+         self.width=0
+         self.height=0
++        self.pos_x=0
++        self.pos_y=0
++        self.config_pos_x=0  # 保存配置文件中的原始位置
++        self.config_pos_y=0  # 保存配置文件中的原始位置
++
++        # 设置窗口位置为无固定位置，避免窗口管理器干预
++        self.set_position(Gtk.WindowPosition.NONE)
+ 
+         self.CONFIG_DIR = os.path.expanduser("~/.config/vboard")
+         self.CONFIG_FILE = os.path.join(self.CONFIG_DIR, "settings.conf")
+@@ -121,7 +128,7 @@ class VirtualKeyboard(Gtk.Window):
+         ]
+         if (self.width!=0):
+             self.set_default_size(self.width, self.height)
+-
++            
+         self.header = Gtk.HeaderBar()
+         self.header.set_show_close_button(True)
+         self.buttons=[]
+@@ -177,9 +184,12 @@ class VirtualKeyboard(Gtk.Window):
+             self.color_combobox.append_text(label)
+ 
+     def on_resize(self, widget, event):
+-        self.width, self.height = self.get_size()  # Get the current size after resize
+-
+-
++        # 保存窗口大小和位置
++        self.width, self.height = self.get_size()
++        # 每次窗口移动时保存当前有效位置
++        x, y = self.get_position()
++        if x > 0 and y > 0:
++            self.pos_x, self.pos_y = x, y
+ 
+     def create_button(self, label_="", callback=None, callback2=None, callbacks=0):
+         button= Gtk.Button(label=label_)
+@@ -443,9 +453,21 @@ class VirtualKeyboard(Gtk.Window):
+                 self.bg_color = self.config.get("DEFAULT", "bg_color" )
+                 self.opacity = self.config.get("DEFAULT", "opacity" )
+                 self.text_color = self.config.get("DEFAULT", "text_color", fallback="white" )
+-                self.width=self.config.getint("DEFAULT", "width" , fallback=0)
+-                self.height=self.config.getint("DEFAULT", "height", fallback=0)
+-                print(f"rgba: {self.bg_color}, {self.opacity}")
++                self.width = self.config.getint("DEFAULT", "width", fallback=0)
++                self.height = self.config.getint("DEFAULT", "height", fallback=0)
++                
++                # 读取窗口位置
++                pos_x_str = self.config.get("DEFAULT", "pos_x", fallback="0")
++                pos_y_str = self.config.get("DEFAULT", "pos_y", fallback="0")
++                try:
++                    self.pos_x = int(pos_x_str)
++                    self.pos_y = int(pos_y_str)
++                    # 保存原始配置文件中的位置
++                    self.config_pos_x = self.pos_x
++                    self.config_pos_y = self.pos_y
++                except ValueError:
++                    self.pos_x = self.config_pos_x = 0
++                    self.pos_y = self.config_pos_y = 0
+ 
+         except configparser.Error as e:
+             print(f"Warning: Could not read config file ({e}). Using default values.")
+@@ -453,21 +475,35 @@ class VirtualKeyboard(Gtk.Window):
+ 
+ 
+     def save_settings(self):
+-
+-        self.config["DEFAULT"] = {"bg_color": self.bg_color, "opacity": self.opacity, "text_color": self.text_color, "width": self.width, "height": self.height}
++        self.config["DEFAULT"] = {
++            "bg_color": self.bg_color, 
++            "opacity": self.opacity, 
++            "text_color": self.text_color, 
++            "width": self.width, 
++            "height": self.height,
++            "pos_x": str(self.pos_x),
++            "pos_y": str(self.pos_y)
++        }
+ 
+         try:
+             with open(self.CONFIG_FILE, "w") as configfile:
+                 self.config.write(configfile)
++                print(f"保存设置：位置({self.pos_x}, {self.pos_y}), 大小({self.width}, {self.height})")
+ 
+         except (configparser.Error, IOError) as e:
+             print(f"Warning: Could not write to config file ({e}). Changes will not be saved.")
+ 
+ if __name__ == "__main__":
+     win = VirtualKeyboard()
++    win.connect("delete-event", lambda w, e: win.save_settings() or False)
+     win.connect("destroy", Gtk.main_quit)
+-    win.connect("destroy", lambda w: win.save_settings())
+-    win.show_all()
+     win.connect("configure-event", win.on_resize)
++    
++    # 在显示窗口前先设置位置
++    if win.config_pos_x > 0 and win.config_pos_y > 0:
++        print(f"Setting initial window position: {win.config_pos_x}, {win.config_pos_y}")
++        win.move(win.config_pos_x, win.config_pos_y)
++    
++    win.show_all()
+     win.change_visibility()
+     Gtk.main()
+-- 
+2.49.0
 
