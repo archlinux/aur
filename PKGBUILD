@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-dracut-support-git"
-pkgver=r207.9e86156
+pkgver=r217.c12ebce
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
 arch=('x86_64')
@@ -36,16 +36,16 @@ check_java_version() {
     java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
 
     if [[ -z "$java_version" ]]; then
-        echo "Error: Java version ${_java_version} is not installed or set." >&2
-        echo "Please check: 'archlinux-java status'"
-        echo "If java version ${_java_version} or newer is found, please run 'archlinux-java set java-${_java_version}-openjdk' or newer"
+        echo "Error: Java version ${_java_version} is not installed or not set." >&2
+        echo "Please check with: 'archlinux-java status'"
+        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
         return 1
     fi
 
     if [[ "$java_version" -lt ${_java_version} ]]; then
-        echo "Error: Java version $java_version is older than ${_java_version}."
-        echo "Please check: 'archlinux-java status'"
-        echo "If java version ${_java_version} or newer is found, please run 'archlinux-java set java-${_java_version}-openjdk' or newer"
+        echo "Error: Java version $java_version is older than the required  ${_java_version}."
+        echo "Please check with: 'archlinux-java status'"
+        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or  a newer version."
         return 1
     fi
 }
