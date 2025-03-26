@@ -1,5 +1,6 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Hugo Doria <hugodoria at gmail.com>
 
