@@ -1,12 +1,12 @@
 # Maintainer:  Greg Minshall <minshall at umich dot edu>
 pkgname=tpopup
 pkgver=0.1.6
-pkgrel=1
+pkgrel=3
 pkgdesc="simple popup with text from file or command line"
 arch=(any)
 url="https://sr.ht/~minshall/tpopup/"
 license=('MIT')
-depends=('qt6-base')
+depends=('python' 'python-pyqt6' 'python-tomli' 'python-pyxdg')
 makedepends=('asciidoc' 'emacs' 'git' 'python-build' 'python-installer')
 # git rev-parse ${pkgver} [copy from above] in upstream repo:
 # git rev-parse 0.4.5
