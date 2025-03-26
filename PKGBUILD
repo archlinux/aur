@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=open-tv
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Fast & Simple IPTV app'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('ffmpeg' 'mpv' 'yt-dlp' 'libayatana-appindicator' 'librsvg' 'webkit2gtk
 makedepends=('npm' 'rust' 'dpkg')
 checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('b23caf756e51275d883b6689f390e3e040b79b28da2d47071fb8fa44dde406d058ea3513ed1978fccb26058dce0c7b85b667cf157ce7896a5cb7a3e9ba416cbb')
+b2sums=('bad88e799a7458071fdec33320ea5fdd6a12394f8ec33e24286b9063cc8023597bae5bb07e3822e453cb9fd20663906f1a1d8b11f7551000958c69f11ca0520a')
 options=('!lto')
 
 _srcdir="$pkgname-$pkgver"
