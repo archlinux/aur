@@ -1,4 +1,5 @@
-# Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
+# Maintainer: Biggs <biggs at sergeantbiggs dot net>
+# Contributor: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=openring
 pkgver=1.0.1
