@@ -2,7 +2,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=tailwindcss-bin
-pkgver=4.0.16
+pkgver=4.0.17
 pkgrel=1
 pkgdesc='Standalone Tailwind CLI without dependency on Node.js'
 arch=("aarch64" "x86_64")
@@ -16,8 +16,8 @@ provides=('tailwindcss')
 source_aarch64=("tailwindcss-${pkgver}-aarch64::https://github.com/tailwindlabs/tailwindcss/releases/download/v${pkgver}/tailwindcss-linux-arm64")
 source_x86_64=("tailwindcss-${pkgver}-x86_64::https://github.com/tailwindlabs/tailwindcss/releases/download/v${pkgver}/tailwindcss-linux-x64")
 
-sha256sums_aarch64=('dca0b66681f27008fffab56944acf2b60de88b9e3f922495894d661f0aa015af')
-sha256sums_x86_64=('134587714e2ccdaf742ac30002d5fdf2164d92e51c8cab56aaa76de6cc0932b5')
+sha256sums_aarch64=('1b3379c9b02c8b9787e2e53be646da057ca38ce5aab8ad1ac4a92f260559e141')
+sha256sums_x86_64=('054106629cfd5650219863356d5d980ed76ba7d283bca13919d33d234b3121be')
 
 package() {
 
