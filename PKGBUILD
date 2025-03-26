@@ -2,8 +2,7 @@ pkgbase=qtcreator-patches
 pkgname=(qtcreator-patches qtcreator-devel-patches)
 pkgver=16.0.1
 _commit=16.0
-pkgrel=3
-provides=("qtcreator")
+pkgrel=4
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=(x86_64)
 url='https://www.qt.io'
@@ -84,16 +83,21 @@ build() {
 }
 
 package_qtcreator-patches() {
+  provides=('qtcreator')
+  conflicts=('qtcreator')
+    
   DESTDIR="$pkgdir" cmake --install build
-# Install docs
+  # Install docs
   cp -r build/share/doc "$pkgdir"/usr/share
 
   install -Dm644 qt-creator/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
 }
 
 package_qtcreator-devel-patches() {
+  provides=('qtcreator-devel')
+  conflicts=('qtcreator-devel')
   pkgdesc+=' (development files)'
-  depends=(qtcreator)
+  depends=(qtcreator-patches)
   optdepends=()
 
   DESTDIR="$pkgdir" cmake --install build --component Devel
