@@ -2,7 +2,7 @@
 
 _pkgname="evdi"
 pkgname="$_pkgname-dkms"
-pkgver=1.14.8
+pkgver=1.14.9
 pkgrel=1
 pkgdesc="Kernel module to enable management of multiple screens"
 url="https://github.com/DisplayLink/evdi"
@@ -22,7 +22,7 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('adb287886d3c2e825ec42553bfe0890c9e77cd2fd0f23caee62cd2189d5f7b7e')
+sha256sums=('e314fd36918be4ae1b82ad2a5c6719137643e0a24b9ca40c2df705a26546f8c2')
 
 build() {
   cd "$_pkgsrc/library"
