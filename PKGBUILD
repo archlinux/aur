@@ -5,8 +5,8 @@
 # Contributor: mnabid
 
 pkgname=zoom-system-qt
-pkgver=6.4.0.587
-pkgrel=2
+pkgver=6.4.1.587
+pkgrel=1
 pkgdesc="(Experimental) Zoom Workspace client with system libraries"
 arch=('x86_64')
 license=('LicenseRef-zoom')
@@ -31,7 +31,7 @@ options=(!strip emptydirs)
 build() {	
 	cd opt/zoom
 	#echo Fixing for Wayland
-	#ln -svf zoom ZoomLauncher #break ZoomWebviewHost
+	#ln -svf zoom /usr/bin/zoom #break ZoomWebviewHost
 	echo Removing Qt5 symbol version and RPATH
 	for b in zoom zopen ZoomLauncher ZoomWebviewHost aomhost libaomagent.so
 		do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
@@ -41,7 +41,7 @@ build() {
 	mkdir -p Qt/lib #for ZoomWebviewHost
 	ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
 	#libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
-	cd cef #Stripped CEF(https://cef-builds.spotifycdn.com/index.html) is small. ABI?
+	cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
 	mv locales{,-b};mkdir locales;mv locales{-b,}/en-US.pak;rm -r locales-b #needed for ZoomWebviewHost
 	rm -r libsqlite3.so* libvulkan.so* chrome-sandbox #libglvnd isn't ANGLE, namespace sandbox.
 	ln -sf /opt/vivaldi/libffmpeg.so* libffmpeg.so

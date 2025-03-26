@@ -1,7 +1,7 @@
 pkgbase = zoom-system-qt
 	pkgdesc = (Experimental) Zoom Workspace client with system libraries
-	pkgver = 6.4.0.587
-	pkgrel = 2
+	pkgver = 6.4.1.587
+	pkgrel = 1
 	url = https://zoom.us/
 	arch = x86_64
 	license = LicenseRef-zoom
@@ -33,7 +33,7 @@ pkgbase = zoom-system-qt
 	conflicts = zoom
 	options = !strip
 	options = emptydirs
-	source = https://zoom.us/client/6.4.0.587/zoom_x86_64.pkg.tar.xz
+	source = https://zoom.us/client/6.4.1.587/zoom_x86_64.pkg.tar.xz
 	sha512sums = 379c623e965022a43c213359d4afa041cc4eca0e85f83a6a59c936e8f3c9478e1129bdce49ee2ce5a7afdee14b9b956698c5fa7c2fbd67c17a0f92794f33d705
 
 pkgname = zoom-system-qt
