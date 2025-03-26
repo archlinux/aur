@@ -5,7 +5,11 @@
 
 # Maintainer: Elie Donadio <elidoset@gmail.com>
 pkgname=yoga-git
-pkgver=2.0.1
+pkgver=3.2.1.2e2c75e
+pkgver() {
+	cd "$pkgename"
+	git rev-parse --short HEAD | sed 's/^/3.2.1./'
+}
 pkgrel=2
 pkgdesc="The yoga flexbox layout engine's C++ library"
 arch=(x86_64)
@@ -23,7 +27,7 @@ makedepends=(cmake git)
 #options=()
 #install=
 #changelog=
-source=($pkgname-$pkgver.tar.gz::"https://github.com/facebook/yoga/archive/refs/tags/v${pkgver}.tar.gz")
+source=("git+https://github.com/facebook/yoga.git")
 
 #noextract=()
 md5sums=(SKIP)
@@ -35,18 +39,18 @@ md5sums=(SKIP)
 #}
 
 build() {
-	cd "${srcdir}/yoga-${pkgver}"
+	cd "${srcdir}/yoga"
     cmake -B build -S . -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_INSTALL_COMPONENT=yogacore -DCMAKE_SKIP_INSTALL_ALL_DEPENDENCY=TRUE
     cmake --build build --target yogacore
 }
 
 check() {
-    cd "${srcdir}/yoga-${pkgver}" 
+    cd "${srcdir}/yoga" 
     ctest --test-dir build --output-on-failure
 }
 
 package() {
-	cd "${srcdir}/yoga-${pkgver}/build"
+	cd "${srcdir}/yoga/build"
 	DESTDIR="$pkgdir" cmake --build . --target install/local
 	
 }
