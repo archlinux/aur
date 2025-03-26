@@ -9,7 +9,7 @@ pkgname=(
   'scala3'
 )
 pkgver=3.6.4
-pkgrel=5
+pkgrel=6
 pkgdesc='The Scala 3 compiler, also known as Dotty.'
 arch=('any')
 url='http://dotty.epfl.ch'
@@ -28,7 +28,7 @@ package_scala3() {
   # Scala 3 symlinks in /usr/bin
   ln -s "../share/scala3/bin/scala" "${pkgdir}/usr/bin/scala3"
   ln -s "../share/scala3/bin/scalac" "${pkgdir}/usr/bin/scalac3"
-  ln -s "../share/scala3/bin/scalad" "${pkgdir}/usr/bin/scalad3"
+  ln -s "../share/scala3/bin/scaladoc" "${pkgdir}/usr/bin/scaladoc3"
 }
 
 package_scala-dotty() {
@@ -39,6 +39,6 @@ package_scala-dotty() {
   # Provide dotty simlinks for convenience
   ln -s scala3 "${pkgdir}/usr/bin/dotr"
   ln -s scalac3 "${pkgdir}/usr/bin/dotc"
-  ln -s scalad3 "${pkgdir}/usr/bin/dotd"
+  ln -s scaladoc3 "${pkgdir}/usr/bin/dotd"
 }
 # vim:set ts=2 sw=2 et:
