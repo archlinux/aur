@@ -1,8 +1,8 @@
 diff --git a/configure b/configure
-index 4d903011aac..cd6cb454ffc 100755
+index e28a9cfd024..4e3008abd54 100755
 --- a/configure
 +++ b/configure
-@@ -7766,6 +7766,12 @@ if test "x$ac_cv_header_linux_major_h" = xyes
+@@ -7772,6 +7772,12 @@ if test "x$ac_cv_header_linux_major_h" = xyes
  then :
    printf "%s\n" "#define HAVE_LINUX_MAJOR_H 1" >>confdefs.h
  
@@ -16,10 +16,10 @@ index 4d903011aac..cd6cb454ffc 100755
  ac_fn_c_check_header_compile "$LINENO" "linux/param.h" "ac_cv_header_linux_param_h" "$ac_includes_default"
  if test "x$ac_cv_header_linux_param_h" = xyes
 diff --git a/configure.ac b/configure.ac
-index 59a8021b92c..ba1909b8547 100644
+index 59b104db5b1..706810d5f14 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -389,6 +389,7 @@ AC_CHECK_HEADERS(\
+@@ -390,6 +390,7 @@ AC_CHECK_HEADERS(\
  	linux/input.h \
  	linux/ioctl.h \
  	linux/major.h \
@@ -1429,10 +1429,10 @@ index f4dc02cf0cf..e71408933fe 100644
  
  static inline BOOL in_wow64_call(void)
 diff --git a/dlls/ntdll/unix/virtual.c b/dlls/ntdll/unix/virtual.c
-index b054dc8e5be..889d16ed8be 100644
+index 2838472e7ba..b4d14b1beb9 100644
 --- a/dlls/ntdll/unix/virtual.c
 +++ b/dlls/ntdll/unix/virtual.c
-@@ -3723,6 +3723,7 @@ static TEB *init_teb( void *ptr, BOOL is_wow )
+@@ -3837,6 +3837,7 @@ static TEB *init_teb( void *ptr, BOOL is_wow )
      thread_data->reply_fd   = -1;
      thread_data->wait_fd[0] = -1;
      thread_data->wait_fd[1] = -1;
@@ -1441,10 +1441,10 @@ index b054dc8e5be..889d16ed8be 100644
      return teb;
  }
 diff --git a/include/config.h.in b/include/config.h.in
-index 3dff723efa7..be3d6fcd312 100644
+index 8e776b4c841..1477c5d4c26 100644
 --- a/include/config.h.in
 +++ b/include/config.h.in
-@@ -192,6 +192,9 @@
+@@ -198,6 +198,9 @@
  /* Define to 1 if you have the <linux/major.h> header file. */
  #undef HAVE_LINUX_MAJOR_H
  
@@ -1455,7 +1455,7 @@ index 3dff723efa7..be3d6fcd312 100644
  #undef HAVE_LINUX_PARAM_H
  
 diff --git a/include/wine/server_protocol.h b/include/wine/server_protocol.h
-index 3979f9d805b..5c0e2d77605 100644
+index 3979f9d805b..20af68b0f1d 100644
 --- a/include/wine/server_protocol.h
 +++ b/include/wine/server_protocol.h
 @@ -5928,6 +5928,86 @@ struct set_keyboard_repeat_reply
@@ -1581,7 +1581,7 @@ index 3979f9d805b..5c0e2d77605 100644
  };
  
 -#define SERVER_PROTOCOL_VERSION 864
-+#define SERVER_PROTOCOL_VERSION 870
++#define SERVER_PROTOCOL_VERSION 874
  
  #endif /* __WINE_WINE_SERVER_PROTOCOL_H */
 diff --git a/server/Makefile.in b/server/Makefile.in
@@ -1752,18 +1752,18 @@ index 99680ae0680..529ed9d7956 100644
  
      release_object( completion );
 diff --git a/server/console.c b/server/console.c
-index c3e7bf57e92..52448985632 100644
+index de6f4e73e31..0b320025005 100644
 --- a/server/console.c
 +++ b/server/console.c
-@@ -61,6 +61,7 @@ struct console
-     struct fd                   *fd;            /* for bare console, attached input fd */
-     struct async_queue           ioctl_q;       /* ioctl queue */
-     struct async_queue           read_q;        /* read queue */
+@@ -64,6 +64,7 @@ struct console
+     struct list                  screen_buffers;/* attached screen buffers */
+     struct list                  inputs;        /* attached console inputs */
+     struct list                  outputs;       /* attached console outputs */
 +    struct inproc_sync          *inproc_sync;   /* in-process synchronization object */
  };
  
  static void console_dump( struct object *obj, int verbose );
-@@ -72,6 +73,7 @@ static struct object *console_lookup_name( struct object *obj, struct unicode_st
+@@ -75,6 +76,7 @@ static struct object *console_lookup_name( struct object *obj, struct unicode_st
  static struct object *console_open_file( struct object *obj, unsigned int access,
                                           unsigned int sharing, unsigned int options );
  static int console_add_queue( struct object *obj, struct wait_queue_entry *entry );
@@ -1771,7 +1771,7 @@ index c3e7bf57e92..52448985632 100644
  
  static const struct object_ops console_ops =
  {
-@@ -93,6 +95,7 @@ static const struct object_ops console_ops =
+@@ -96,6 +98,7 @@ static const struct object_ops console_ops =
      NULL,                             /* unlink_name */
      console_open_file,                /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1779,7 +1779,7 @@ index c3e7bf57e92..52448985632 100644
      no_close_handle,                  /* close_handle */
      console_destroy                   /* destroy */
  };
-@@ -139,6 +142,7 @@ struct console_server
+@@ -142,6 +145,7 @@ struct console_server
      unsigned int          once_input : 1; /* flag if input thread has already been requested */
      int                   term_fd;        /* UNIX terminal fd */
      struct termios        termios;        /* original termios */
@@ -1787,7 +1787,7 @@ index c3e7bf57e92..52448985632 100644
  };
  
  static void console_server_dump( struct object *obj, int verbose );
-@@ -149,6 +153,7 @@ static struct object *console_server_lookup_name( struct object *obj, struct uni
+@@ -152,6 +156,7 @@ static struct object *console_server_lookup_name( struct object *obj, struct uni
                                                  unsigned int attr, struct object *root );
  static struct object *console_server_open_file( struct object *obj, unsigned int access,
                                                  unsigned int sharing, unsigned int options );
@@ -1795,7 +1795,7 @@ index c3e7bf57e92..52448985632 100644
  
  static const struct object_ops console_server_ops =
  {
-@@ -170,6 +175,7 @@ static const struct object_ops console_server_ops =
+@@ -173,6 +178,7 @@ static const struct object_ops console_server_ops =
      NULL,                             /* unlink_name */
      console_server_open_file,         /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1803,7 +1803,7 @@ index c3e7bf57e92..52448985632 100644
      no_close_handle,                  /* close_handle */
      console_server_destroy            /* destroy */
  };
-@@ -218,6 +224,7 @@ static int screen_buffer_add_queue( struct object *obj, struct wait_queue_entry
+@@ -221,6 +227,7 @@ static int screen_buffer_signaled( struct object *obj, struct wait_queue_entry *
  static struct fd *screen_buffer_get_fd( struct object *obj );
  static struct object *screen_buffer_open_file( struct object *obj, unsigned int access,
                                                 unsigned int sharing, unsigned int options );
@@ -1811,7 +1811,7 @@ index c3e7bf57e92..52448985632 100644
  
  static const struct object_ops screen_buffer_ops =
  {
-@@ -239,6 +246,7 @@ static const struct object_ops screen_buffer_ops =
+@@ -242,6 +249,7 @@ static const struct object_ops screen_buffer_ops =
      NULL,                             /* unlink_name */
      screen_buffer_open_file,          /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1819,7 +1819,7 @@ index c3e7bf57e92..52448985632 100644
      no_close_handle,                  /* close_handle */
      screen_buffer_destroy             /* destroy */
  };
-@@ -288,6 +296,7 @@ static const struct object_ops console_device_ops =
+@@ -291,6 +299,7 @@ static const struct object_ops console_device_ops =
      default_unlink_name,              /* unlink_name */
      console_device_open_file,         /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1827,15 +1827,15 @@ index c3e7bf57e92..52448985632 100644
      no_close_handle,                  /* close_handle */
      no_destroy                        /* destroy */
  };
-@@ -303,6 +312,7 @@ static struct object *console_input_open_file( struct object *obj, unsigned int
+@@ -308,6 +317,7 @@ static int console_input_signaled( struct object *obj, struct wait_queue_entry *
+ static struct object *console_input_open_file( struct object *obj, unsigned int access,
                                                 unsigned int sharing, unsigned int options );
- static int console_input_add_queue( struct object *obj, struct wait_queue_entry *entry );
  static struct fd *console_input_get_fd( struct object *obj );
 +static struct inproc_sync *console_input_get_inproc_sync( struct object *obj );
  static void console_input_destroy( struct object *obj );
  
  static const struct object_ops console_input_ops =
-@@ -325,6 +335,7 @@ static const struct object_ops console_input_ops =
+@@ -330,6 +340,7 @@ static const struct object_ops console_input_ops =
      default_unlink_name,              /* unlink_name */
      console_input_open_file,          /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1843,7 +1843,7 @@ index c3e7bf57e92..52448985632 100644
      no_close_handle,                  /* close_handle */
      console_input_destroy             /* destroy */
  };
-@@ -360,6 +371,7 @@ static int console_output_add_queue( struct object *obj, struct wait_queue_entry
+@@ -367,6 +378,7 @@ static int console_output_signaled( struct object *obj, struct wait_queue_entry
  static struct fd *console_output_get_fd( struct object *obj );
  static struct object *console_output_open_file( struct object *obj, unsigned int access,
                                                  unsigned int sharing, unsigned int options );
@@ -1851,7 +1851,7 @@ index c3e7bf57e92..52448985632 100644
  static void console_output_destroy( struct object *obj );
  
  static const struct object_ops console_output_ops =
-@@ -382,6 +394,7 @@ static const struct object_ops console_output_ops =
+@@ -389,6 +401,7 @@ static const struct object_ops console_output_ops =
      default_unlink_name,              /* unlink_name */
      console_output_open_file,         /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1859,7 +1859,7 @@ index c3e7bf57e92..52448985632 100644
      no_close_handle,                  /* close_handle */
      console_output_destroy            /* destroy */
  };
-@@ -440,6 +453,7 @@ static const struct object_ops console_connection_ops =
+@@ -447,6 +460,7 @@ static const struct object_ops console_connection_ops =
      default_unlink_name,              /* unlink_name */
      console_connection_open_file,     /* open_file */
      no_kernel_obj_list,               /* get_kernel_obj_list */
@@ -1867,15 +1867,15 @@ index c3e7bf57e92..52448985632 100644
      console_connection_close_handle,  /* close_handle */
      console_connection_destroy        /* destroy */
  };
-@@ -539,6 +553,7 @@ static struct object *create_console(void)
+@@ -544,6 +558,7 @@ static struct object *create_console(void)
      console->server        = NULL;
      console->fd            = NULL;
      console->last_id       = 0;
 +    console->inproc_sync   = NULL;
-     init_async_queue( &console->ioctl_q );
-     init_async_queue( &console->read_q );
- 
-@@ -578,6 +593,7 @@ static int queue_host_ioctl( struct console_server *server, unsigned int code, u
+     list_init( &console->screen_buffers );
+     list_init( &console->inputs );
+     list_init( &console->outputs );
+@@ -586,6 +601,7 @@ static int queue_host_ioctl( struct console_server *server, unsigned int code, u
      }
      list_add_tail( &server->queue, &ioctl->entry );
      wake_up( &server->obj, 0 );
@@ -1883,7 +1883,7 @@ index c3e7bf57e92..52448985632 100644
      if (async) set_error( STATUS_PENDING );
      return 1;
  }
-@@ -610,6 +626,7 @@ static void disconnect_console_server( struct console_server *server )
+@@ -618,6 +634,7 @@ static void disconnect_console_server( struct console_server *server )
          server->console->server = NULL;
          server->console = NULL;
          wake_up( &server->obj, 0 );
@@ -1891,7 +1891,7 @@ index c3e7bf57e92..52448985632 100644
      }
  }
  
-@@ -764,6 +781,8 @@ static void console_destroy( struct object *obj )
+@@ -778,6 +795,8 @@ static void console_destroy( struct object *obj )
      free_async_queue( &console->read_q );
      if (console->fd)
          release_object( console->fd );
@@ -1900,7 +1900,7 @@ index c3e7bf57e92..52448985632 100644
  }
  
  static struct object *create_console_connection( struct console *console )
-@@ -817,6 +836,16 @@ static struct object *console_open_file( struct object *obj, unsigned int access
+@@ -831,6 +850,16 @@ static struct object *console_open_file( struct object *obj, unsigned int access
      return grab_object( obj );
  }
  
@@ -1917,7 +1917,7 @@ index c3e7bf57e92..52448985632 100644
  static void screen_buffer_dump( struct object *obj, int verbose )
  {
      struct screen_buffer *screen_buffer = (struct screen_buffer *)obj;
-@@ -866,6 +895,17 @@ static struct fd *screen_buffer_get_fd( struct object *obj )
+@@ -880,6 +909,17 @@ static struct fd *screen_buffer_get_fd( struct object *obj )
      return NULL;
  }
  
@@ -1935,7 +1935,7 @@ index c3e7bf57e92..52448985632 100644
  static void console_server_dump( struct object *obj, int verbose )
  {
      assert( obj->ops == &console_server_ops );
-@@ -878,6 +918,7 @@ static void console_server_destroy( struct object *obj )
+@@ -892,6 +932,7 @@ static void console_server_destroy( struct object *obj )
      assert( obj->ops == &console_server_ops );
      disconnect_console_server( server );
      if (server->fd) release_object( server->fd );
@@ -1943,7 +1943,7 @@ index c3e7bf57e92..52448985632 100644
  }
  
  static struct object *console_server_lookup_name( struct object *obj, struct unicode_str *name,
-@@ -938,6 +979,17 @@ static struct object *console_server_open_file( struct object *obj, unsigned int
+@@ -952,6 +993,17 @@ static struct object *console_server_open_file( struct object *obj, unsigned int
      return grab_object( obj );
  }
  
@@ -1961,7 +1961,7 @@ index c3e7bf57e92..52448985632 100644
  static struct object *create_console_server( void )
  {
      struct console_server *server;
-@@ -949,6 +1001,7 @@ static struct object *create_console_server( void )
+@@ -963,6 +1015,7 @@ static struct object *create_console_server( void )
      server->term_fd    = -1;
      list_init( &server->queue );
      list_init( &server->read_queue );
@@ -1969,7 +1969,7 @@ index c3e7bf57e92..52448985632 100644
      server->fd = alloc_pseudo_fd( &console_server_fd_ops, &server->obj, FILE_SYNCHRONOUS_IO_NONALERT );
      if (!server->fd)
      {
-@@ -1414,6 +1467,16 @@ static struct object *console_input_open_file( struct object *obj, unsigned int
+@@ -1444,6 +1497,16 @@ static struct object *console_input_open_file( struct object *obj, unsigned int
      return grab_object( obj );
  }
  
@@ -1986,7 +1986,7 @@ index c3e7bf57e92..52448985632 100644
  static void console_input_destroy( struct object *obj )
  {
      struct console_input *console_input = (struct console_input *)obj;
-@@ -1486,6 +1549,16 @@ static struct object *console_output_open_file( struct object *obj, unsigned int
+@@ -1515,6 +1578,16 @@ static struct object *console_output_open_file( struct object *obj, unsigned int
      return grab_object( obj );
  }
  
@@ -2003,7 +2003,7 @@ index c3e7bf57e92..52448985632 100644
  static void console_output_destroy( struct object *obj )
  {
      struct console_output *console_output = (struct console_output *)obj;
-@@ -1543,11 +1616,16 @@ DECL_HANDLER(get_next_console_request)
+@@ -1576,7 +1649,11 @@ DECL_HANDLER(get_next_console_request)
  
      if (!server->console->renderer) server->console->renderer = current;
  
@@ -2016,12 +2016,15 @@ index c3e7bf57e92..52448985632 100644
      else if (!server->console->signaled)
      {
          server->console->signaled = 1;
-         wake_up( &server->console->obj, 0 );
+@@ -1587,6 +1664,7 @@ DECL_HANDLER(get_next_console_request)
+             wake_up( &input->obj, 0 );
+         LIST_FOR_EACH_ENTRY( output, &server->console->outputs, struct console_output, entry )
+             wake_up( &output->obj, 0 );
 +        set_inproc_event( server->console->inproc_sync );
      }
  
      if (req->read)
-@@ -1569,6 +1647,8 @@ DECL_HANDLER(get_next_console_request)
+@@ -1608,6 +1686,8 @@ DECL_HANDLER(get_next_console_request)
          /* set result of previous ioctl */
          ioctl = LIST_ENTRY( list_head( &server->queue ), struct console_host_ioctl, entry );
          list_remove( &ioctl->entry );
@@ -2030,7 +2033,7 @@ index c3e7bf57e92..52448985632 100644
      }
  
      if (ioctl)
-@@ -1655,5 +1735,8 @@ DECL_HANDLER(get_next_console_request)
+@@ -1694,5 +1774,8 @@ DECL_HANDLER(get_next_console_request)
          set_error( STATUS_PENDING );
      }
  
@@ -2416,7 +2419,7 @@ index ad7c09acc99..5f25ad61f7b 100644
  DECL_HANDLER(create_event)
  {
 diff --git a/server/fd.c b/server/fd.c
-index 409d9f716cb..2b28780f4b7 100644
+index b937e1238b2..e8ed73dc711 100644
 --- a/server/fd.c
 +++ b/server/fd.c
 @@ -159,6 +159,7 @@ struct fd
@@ -3029,7 +3032,7 @@ index c54281c2101..929ca3ecb82 100644
      mailslot_device_file_destroy            /* destroy */
  };
 diff --git a/server/mapping.c b/server/mapping.c
-index 6f6b846a903..7de0ddb95f5 100644
+index 247b28cf6f5..19fba5cd5d7 100644
 --- a/server/mapping.c
 +++ b/server/mapping.c
 @@ -79,6 +79,7 @@ static const struct object_ops ranges_ops =
@@ -3936,10 +3939,10 @@ index 19b76d44c16..85d16baa98c 100644
      handler_destroy           /* destroy */
  };
 diff --git a/server/sock.c b/server/sock.c
-index 8607cd6eb48..c1c6c480656 100644
+index 0bf82370961..8f92d22813c 100644
 --- a/server/sock.c
 +++ b/server/sock.c
-@@ -488,6 +488,7 @@ static const struct object_ops sock_ops =
+@@ -503,6 +503,7 @@ static const struct object_ops sock_ops =
      NULL,                         /* unlink_name */
      no_open_file,                 /* open_file */
      no_kernel_obj_list,           /* get_kernel_obj_list */
@@ -3947,7 +3950,7 @@ index 8607cd6eb48..c1c6c480656 100644
      sock_close_handle,            /* close_handle */
      sock_destroy                  /* destroy */
  };
-@@ -3799,6 +3800,7 @@ static const struct object_ops ifchange_ops =
+@@ -3895,6 +3896,7 @@ static const struct object_ops ifchange_ops =
      NULL,                    /* unlink_name */
      no_open_file,            /* open_file */
      no_kernel_obj_list,      /* get_kernel_obj_list */
@@ -3955,7 +3958,7 @@ index 8607cd6eb48..c1c6c480656 100644
      no_close_handle,         /* close_handle */
      ifchange_destroy         /* destroy */
  };
-@@ -4020,6 +4022,7 @@ static const struct object_ops socket_device_ops =
+@@ -4116,6 +4118,7 @@ static const struct object_ops socket_device_ops =
      default_unlink_name,        /* unlink_name */
      socket_device_open_file,    /* open_file */
      no_kernel_obj_list,         /* get_kernel_obj_list */
