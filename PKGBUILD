@@ -2,7 +2,7 @@
 _base=xeus-python-shell
 pkgname=python-${_base}
 pkgdesc="The xeus-python core python logic"
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 arch=(any)
 url="https://github.com/jupyter-xeus/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('ipython: IPython support'
   'python-pyjs: wasm support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('0d5c83b50424719203d927c032f333363fc1f54c33b33ce9eb8d51340ad891bf34c00d7ff6b567a8b82df45d84fe3f6484f9e9d344a6d6e1a86e89fa91986452')
+sha512sums=('a70d0b215dcc233d77258d4cf625a791ce724ab0b2ecad77c8bf8bb252a65e82388d8de31e1bed52f669b584ff3d016f3477389e097126954a5d230b4407fae8')
 
 build() {
   cd ${_base}-${pkgver}
