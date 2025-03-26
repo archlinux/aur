@@ -60,6 +60,7 @@ provides=(
   "compiz-plugins-main=${pkgver:0:6}"
   "compizconfig-python=${pkgver:0:6}"
   "libcompizconfig=${pkgver:0:6}"
+  "compiz=${pkgver:0:6}"
 )
 conflicts=(
   'ccsm'

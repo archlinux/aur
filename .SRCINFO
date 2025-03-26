@@ -36,6 +36,7 @@ pkgbase = compiz-git
 	provides = compiz-plugins-main=0.9.14
 	provides = compizconfig-python=0.9.14
 	provides = libcompizconfig=0.9.14
+	provides = compiz=0.9.14
 	conflicts = ccsm
 	conflicts = compiz
 	conflicts = compiz-bcop
