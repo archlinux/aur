@@ -3,10 +3,10 @@
 # Contributor: Sebastien Duthil <duthils at free dot fr>
 
 pkgname=factorio-demo
-pkgver=2.0.27
+pkgver=2.0.42
 pkgrel=1
 pkgdesc="A game in which you build and maintain factories"
-arch=('x86_64')
+arch=(x86_64)
 url="http://www.factorio.com/"
 license=('custom: commercial')
 depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
@@ -16,17 +16,12 @@ source=(factorio-demo_linux_${pkgver}.tar.xz::http://www.factorio.com/get-downlo
         factorio.desktop
         LICENSE
 )
-sha256sums=('75938e76d0e730273616e2441ae3c3bc238bb3cfa38d34a43e5fb25a3d1f2323'
+sha256sums=('eb06c7521f7ed557e6642a7954b0395ee5c993367e1f97c65f0336a94abbba42'
             '61f62d75491147fbc6853cd7fa3a6f287227c3f5fc70dd9f4ec4083ebc31b743'
             'bc7f224b0fcc4cec82f5ca950b1c042251e27b0bcd0bf98f7945e09413a3c561')
 # no modifications needed, the executable looks for:
 # - data in /usr/share/factorio
 # - config in ~/.factorio
-
-check() {
-  cd "${srcdir}/factorio"
-  ./bin/x64/factorio --version
-}
 
 package() {
   cd "${srcdir}/factorio"
@@ -40,4 +35,9 @@ package() {
   cp -r data/* "${pkgdir}/usr/share/factorio"
   install -m644 "${srcdir}/factorio.desktop" "${pkgdir}/usr/share/applications/factorio.desktop"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio-demo/LICENSE"
+}
+
+check() {
+  cd "${srcdir}/factorio"
+  ./bin/x64/factorio --version
 }
