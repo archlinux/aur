@@ -1,0 +1,23 @@
+pkgbase = agent-tars-git
+	pkgdesc = An open-source multimodal AI agent, offering seamless integration with a wide range of real-world tools.(Use system-wide electron)
+	pkgver = 1.0.0.alpha.6.r2.g648e270
+	pkgrel = 1
+	url = https://agent-tars.com/
+	arch = any
+	license = Apache-2.0
+	makedepends = gendesk
+	makedepends = pnpm
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = python-setuptools
+	depends = electron34
+	provides = agent-tars=1.0.0.alpha.6
+	conflicts = agent-tars
+	source = agent-tars.git::git+https://github.com/bytedance/UI-TARS-desktop
+	source = agent-tars.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = agent-tars-git
