@@ -35,7 +35,7 @@ check() {
 package() {
     cd "${pkgname}"
 
-    make DESTDIR="${pkgdir}" pythoninstall
+    make DESTDIR="${pkgdir}" PREFIX=/usr pythoninstall
     # install our MIT license
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
