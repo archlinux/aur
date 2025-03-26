@@ -1,6 +1,6 @@
 pkgbase = json-log-viewer-bin
 	pkgdesc = Interactive viewer for JSON logs.
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/hedhyw/json-log-viewer
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = json-log-viewer-bin
 	depends = glibc
 	provides = jlv
 	conflicts = json-log-viewer
-	source_x86_64 = https://github.com/hedhyw/json-log-viewer/releases/download/v1.2.2/jlv_linux_amd64.tar.gz
-	sha256sums_x86_64 = add4d9cd829686cf01ad854d736a2550b291d1618390c51f81b152133ecf984a
-	source_i686 = https://github.com/hedhyw/json-log-viewer/releases/download/v1.2.2/jlv_linux_386.tar.gz
-	sha256sums_i686 = 8df8526dff5a9588a2ddb7b59771322f5d1134345f307469a40ddc0dfbeeae05
-	source_aarch64 = https://github.com/hedhyw/json-log-viewer/releases/download/v1.2.2/jlv_linux_arm64.tar.gz
-	sha256sums_aarch64 = a7483988aaf4eca759a70ef5ee5f06032da2238915a8a2c1e9b203c250f78d37
+	source_x86_64 = https://github.com/hedhyw/json-log-viewer/releases/download/v1.3.0/jlv_linux_amd64.tar.gz
+	sha256sums_x86_64 = 77de376fe5895d56e2246925ae429cee1c675d99aa3525d1182dd8e2d0b81e0d
+	source_i686 = https://github.com/hedhyw/json-log-viewer/releases/download/v1.3.0/jlv_linux_386.tar.gz
+	sha256sums_i686 = acaa727c4d6ea1cf02b4da031a9f8b9fa8599f0c742722ec56402a62d6b57eac
+	source_aarch64 = https://github.com/hedhyw/json-log-viewer/releases/download/v1.3.0/jlv_linux_arm64.tar.gz
+	sha256sums_aarch64 = c51ec83bc6811fa106d80c943fccc6aa6cf4fb8a146ff96f57e98ba90f241fad
 
 pkgname = json-log-viewer-bin
