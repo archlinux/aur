@@ -9,7 +9,7 @@ pkgbase = limine-entry-tool-git
 	makedepends = maven
 	depends = bash
 	depends = grep
-	depends = java-environment-openjdk>=17
+	depends = java-environment>=17
 	depends = limine
 	depends = efibootmgr
 	provides = limine-entry-tool

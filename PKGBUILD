@@ -12,7 +12,7 @@ _java_version=17
 depends=(
     'bash'
     'grep'
-    'java-environment-openjdk>='${_java_version}
+    'java-environment>='${_java_version}
     'limine'
     'efibootmgr')
 makedepends=('git' 'maven')
