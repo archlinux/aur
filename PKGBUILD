@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
 _pkgname=gamedig
 pkgname="nodejs-$_pkgname"
-pkgver=5.0.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='A CLI tool for querying the status of nearly any game or voice server'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$_pkgname-$pkgver.tgz")
-sha512sums=('743bf7732e04d20949dcdfa729639961540ef962f1afe1de85b64047e279a977a7bb7d631d6a31c904bc4d4a63147ba14b948229a4eca3198b0f8bf7c4357e89')
+sha512sums=('60093d2a64276e24e10124976222f62cf7a9a607ed84c8c6f0f2102b850af03bde17f5ffce1c186942aa8bea29d3977488b2e80b3bf1e49d90daf52bf8e57342')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
