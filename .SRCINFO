@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
 	pkgver = 1.8.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,11 @@ pkgbase = openafs-modules-dkms
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.13.2/openafs-1.8.13.2-src.tar.bz2
 	source = dkms.conf
+	source = 0001-LINUX-Refactor-afs_linux_dentry_revalidate.patch
+	source = 0002-Linux-6.14-Handle-dops.d_revalidate-with-parent.patch
 	sha256sums = 59ab4f60cb925c5779c93e233621186c1226d4770239fb2b544942d49cebd976
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
+	sha256sums = 9f9dede8453ba114c4d36c03a45ed20cda2db9a69f17d47382608db21ad02643
+	sha256sums = c970848f8a4854dec7aab396e5728d83d96c03f7d0e0bb09536c3903e316ee95
 
 pkgname = openafs-modules-dkms
