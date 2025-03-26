@@ -1,4 +1,4 @@
-# Maintainer: Biggs <biggs@sergeantbiggs.net>
+# Maintainer: Biggs <biggs at sergeantbiggs dot net>
 # Contributor: Kazuki Sawada <kazuki@6715.jp>
 # Contributor: raingloom <raingloom42@gmail.com>
 
