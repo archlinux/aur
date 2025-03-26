@@ -8,17 +8,10 @@
 
 ## options
 : ${_build_clang:=true}
-: ${_build_noglu:=true}
 
-: ${_build_avx:=false}
-
-unset _pkgtype
-[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
-
-## basic info
 _pkgname="nestopia"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=1.53.0
+pkgname="$_pkgname"
+pkgver=1.53.1
 pkgrel=1
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"
@@ -35,44 +28,37 @@ depends=(
 )
 makedepends=(
   autoconf-archive
-  mesa
 )
 
-[ "${_build_clang::1}" == "t" ] && makedepends+=('clang' 'lld')
-[ "${_build_noglu::1}" != "t" ] && makedepends+=('glu')
+[[ "${_build_clang::1}" == "t" ]] && makedepends+=('clang' 'lld')
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/0ldsk00l/nestopia/archive/$pkgver.$_pkgext")
-sha256sums=('27a26a6fd92e6acc2093bbd6c1e3ab7f2fff419d9ed6de13bc43349b52e1f705')
+sha256sums=('21aa45f6c608fe290d73fdec0e6f362538a975455b16a4cc54bcdd10962fff3e')
+
+prepare() {
+  # glu is not technically needed
+  # create dummy archive for ld to find
+  echo '!<arch>' > libGLU.a
+}
 
 build() {
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
-  CFLAGS=${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}
+  export CXXFLAGS LDFLAGS
   CXXFLAGS=${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}
 
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    CC=clang
-    CXX=clang++
-    CXXFLAGS+=" -Wno-narrowing -Wno-ignored-optimization-argument"
-    LDFLAGS+=" -fuse-ld=lld"
-  fi
+  local _ldflags=(${LDFLAGS})
+  LDFLAGS="${_ldflags[@]//*fuse-ld*/} -L${srcdir@Q}"
 
-  if [[ "${_build_avx::1}" == "t" ]]; then
-    CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  if [[ "${_build_clang::1}" == "t" ]]; then
+    export CXX LDFLAGS
+    CXX=clang++
+    LDFLAGS+=" -fuse-ld=lld"
   fi
 
   cd "$_pkgsrc"
   autoreconf -fi
   ./configure --prefix=/usr
-
-  [ "${_build_noglu::1}" == "t" ] && sed -E -i Makefile -e "s#-lGLU ##g"
-
-  # respect CFLAGS -march=...
-  local _march=$(sed -E 's#^.*(-march.*-O\S*) .*$#\1#' <<< "${CFLAGS}")
-  [ -n _march ] && sed -E -i Makefile -e "s#-march.*-O\S* #$_march #g"
-
   make
 }
 
