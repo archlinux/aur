@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Adwaita icon theme (mingw-w64)"
 arch=('any')
 url="https://www.gnome.org"
-license=('LGPL3')
+license=('LGPL-3.0-only')
 makedepends=(
   'mingw-w64-meson'
   'gtk3'
