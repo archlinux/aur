@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Move to Gnome 48 dependencies
+- Named 4nyNoob as artist in the Credit section
+- Named AsciiWolf and Justin Searle in the Acknowledgements section
 
 ### Fixed
 - Unit list scroll focus
