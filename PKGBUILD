@@ -2,7 +2,7 @@
 # Contributor: Tony Benoy <me@tonybenoy.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=screenpipe
-pkgver=0.2.65
+pkgver=0.2.71
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo' 'git' 'cmake')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/mediar-ai/screenpipe/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('aa97d57116ca45d4a4c1956e35d886d9528b7c59e9e59df26ed375f4e7b75403')
+sha256sums=('1bfc7b7063fcb43443016a2a8963a8a9b30eee16b9e2bf31601eda11df59995e')
 options=(!lto !debug)
 
 prepare() {
