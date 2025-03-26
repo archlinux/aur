@@ -1,14 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music-git
-pkgver=3.7.4.r1.g5e41948
+pkgver=3.8.0.r2.gb544e18
 pkgrel=1
-_electronversion=34
+_electronversion=35
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
-depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'pnpm')
+depends=(
+  "electron${_electronversion}"
+  'libsecret'
+)
+makedepends=(
+  'git'
+  'pnpm'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
