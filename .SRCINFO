@@ -1,6 +1,6 @@
 pkgbase = dunedynasty-git
 	pkgdesc = Maintained fork of an enhanced continuation of the classic real-time strategy game Dune II
-	pkgver = 1.6.3.r2.g7491dd3e
+	pkgver = 1.6.3.r37.ged63ed71
 	pkgrel = 1
 	url = https://github.com/gameflorist/dunedynasty
 	install = dunedynasty.install

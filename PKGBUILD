@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=dunedynasty-git
-pkgver=1.6.3.r2.g7491dd3e
+pkgver=1.6.3.r37.ged63ed71
 pkgrel=1
 pkgdesc="Maintained fork of an enhanced continuation of the classic real-time strategy game Dune II"
 url="https://github.com/gameflorist/dunedynasty"
@@ -41,10 +41,32 @@ prepare() {
     -e 's|DESTINATION "doc/dunedynasty-${DUNE_DYNASTY_VERSION}")|DESTINATION "share/doc/dunedynasty")|' \
     -i CMakeLists.txt
 
+  # pick up sample config file wherever it may be placed
+  printf -v SAMPLE_CFG_PATH "$(find . -name dunedynasty.cfg-sample | cut -c2-)"
+
+  # temporary workaround for issue #29, idempotent if location is still /dist
+  # in old revisions. Please forgive the bash shenanigans and creative
+  # quoting.
+  # See https://github.com/gameflorist/dunedynasty/issues/29
+  printf -v DATA_SUBDIR "$(find -name campaign -type d | cut -c2-)"
+  DATA_SUBDIR="${DATA_SUBDIR%/*}/"
+
+  sed \
+    -i \
+    -e "s,/dist/dunedynasty.cfg-sample,${SAMPLE_CFG_PATH}," \
+    CMakeLists.txt
+
+  sed \
+    -i \
+    -e 's,\${CMAKE_SOURCE_DIR}/dist/\${subdir},${CMAKE_SOURCE_DIR}'"${DATA_SUBDIR}"'${subdir},' \
+    CMakeLists.txt
+
+  # END OF WORKAROUND
+
   # default config settings for Archlinux in sample file
   sed \
     -e "s|^\s*\;\?s*sound_font\s*=\s*.*|sound_font=/usr/share/soundfonts/default.sf2|" \
-    -i dist/dunedynasty.cfg-sample
+    -i "./${SAMPLE_CFG_PATH}"
 }
 
 build() {
@@ -76,6 +98,6 @@ package() {
   rm -f "${pkgdir}/usr/share/doc/${pkgname%-*}/LICENSE.txt"
 
   # desktop file and icon
-  install -Dm644 src/video/dune2_32x32.xpm "${pkgdir}/usr/share/pixmaps/${pkgname%-*}.xpm"
-  install -Dm644 "dist-os-specific/linux/${pkgname%-*}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
+  find . -name "dune2_32x32.xpm" -print0 | xargs -0 -I{} install -Dm644 "{}" "${pkgdir}/usr/share/pixmaps/${pkgname%-*}.xpm"
+  find . -name "${pkgname%-*}.desktop" -print0 | xargs -0 -I{} install -Dm644 "{}" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
 }
