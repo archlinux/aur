@@ -3,17 +3,17 @@
 
 _pyname=kafka
 pkgname=python-$_pyname
-pkgver=2.0.6
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Python client for Apache Kafka'
 arch=(x86_64 aarch64)
 url="https://github.com/dpkp/kafka-python"
-license=(Apache)
+license=(Apache-2.0)
 depends=(python-snappy python-lz4 python-crc32c python-zstandard python-xxhash)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-mock python-pytest-mock)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('6a94745f17f9c22b63a89c907120d1dfdcff0f2781eb15214d5acca5cb492757')
+sha256sums=('14052c9148b991065dce0ccc073593a31c63829763914e3ba573465e459f7e07')
 
 build() {
   cd "$srcdir/$_pyname-python-$pkgver"
