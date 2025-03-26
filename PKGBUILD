@@ -2,7 +2,7 @@
 # Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=websockify
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="WebSockets support for any application/server"
 license=('LGPL3')
@@ -31,4 +31,4 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 rebind.so "$pkgdir"/usr/lib/websockify/rebind.so
 }
-b2sums=('d330f534dd69c186b14b14c5f29d2b4f86c1fc444fa887c04b2b9eb2beed2ed0895db029acbcd84714ce2fd6da30cc306cef4c4bb836e31a31f10dbff6dc3abd')
+b2sums=('6555354be6314f2b3c236b57a61b5713ec3898bf77e2f7c3e1dbb1061fc586f67e2f5adb9259772d94ea67de24f4a2141ad6ba4ad1fd319a6b7e311f428a7f74')
