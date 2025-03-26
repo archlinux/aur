@@ -1,8 +1,8 @@
 pkgbase = simple_backup-git
 	pkgdesc = Simple backup script that uses rsync to copy files
 	pkgver = 4.1.5.r1.g2a37eb4
-	pkgrel = 1
-	url = https://github.com/Fuxino/simple_backup
+	pkgrel = 2
+	url = https://git.shouldnt.work/fuxino/simple_backup
 	install = simple_backup.install
 	arch = any
 	license = GPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = simple_backup-git
 	optdepends = python-paramiko: for remote backup through ssh
 	provides = simple_backup
 	conflicts = simple_backup
-	source = git+https://github.com/Fuxino/simple_backup.git?signed#branch=master
+	source = git+https://git.shouldnt.work/fuxino/simple_backup.git?signed#branch=master
 	validpgpkeys = 7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514
 	sha256sums = SKIP
 
