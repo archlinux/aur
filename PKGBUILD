@@ -2,7 +2,7 @@
 # Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.31-bin
-pkgver=1.31.6+k3s1
+pkgver=1.31.7+k3s1
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -33,9 +33,9 @@ source_aarch64=(
 md5sums=('2c98ae8a95712a68f1f280fae7dc81cc'
          'c05e139fcdf93434640618c6237892b7'
          '958f9ca03f5ccfb71b52f90ca02cc2c8')
-md5sums_x86_64=('b522f64273dd13e06796851f24b3dc93')
-md5sums_armv7h=('dd65b3f23b1fc39bc7b277321ba915ac')
-md5sums_aarch64=('0ba1700e31844eaac57a5e482903bc5f')
+md5sums_x86_64=('bf987dfa82952cde13d30d548b15b6d0')
+md5sums_armv7h=('6877355fc8b32b728c2abd26003b9b54')
+md5sums_aarch64=('218857bd8705e401001008c8d14e97e3')
 
 
 
