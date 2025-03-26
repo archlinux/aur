@@ -1,6 +1,6 @@
 pkgbase = kde-builder-git
 	pkgdesc = A tool to build KDE software
-	pkgver = r404.96dc07a
+	pkgver = r467.0fbeb97
 	pkgrel = 1
 	url = https://invent.kde.org/sdk/kde-builder
 	arch = any
