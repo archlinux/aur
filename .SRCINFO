@@ -1,5 +1,5 @@
 pkgbase = odio
-	pkgdesc = Audio compression tool for FLAC and Nero AAC
+	pkgdesc = Audio compression tool for FLAC
 	pkgver = 25.3.1
 	pkgrel = 1
 	url = https://tari.in/www/software/odio
@@ -18,9 +18,7 @@ pkgbase = odio
 	depends = python-requests-html
 	depends = python-lxml-html-clean
 	depends = python-psutil
-	depends = python-mutagen
 	depends = odio-edit
-	depends = neroaacenc-bin
 	depends = libodiosacd
 	depends = lsdvd
 	depends = gtk3
