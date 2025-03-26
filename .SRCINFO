@@ -1,6 +1,6 @@
 pkgbase = protobuf-dllexport
 	pkgdesc = Protocol Buffers - Google's data interchange format
-	pkgver = 27.2
+	pkgver = 30.1
 	pkgrel = 1
 	url = https://developers.google.com/protocol-buffers/
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = protobuf-dllexport
 	depends = glibc
 	depends = zlib
 	depends = abseil-cpp
-	provides = protobuf=27.2
+	provides = protobuf=30.1
 	conflicts = protobuf
 	replaces = protobuf-cpp
-	source = https://github.com/protocolbuffers/protobuf/archive/v27.2/protobuf-27.2.tar.gz
-	source = https://github.com/protocolbuffers/protobuf/commit/2e62ef1e.patch
-	sha512sums = 664c66b62cf1ed0c65d9b910d8e67d4d5d471113697f1b8edf1573cd5c0fc8e850ac53ce984e48e6c6b9cbbefa12f8530058384e7388e65a59c1e46d03772397
-	sha512sums = 18bc71031bbcbc3810a9985fa670465040f06a6c104ab8079b56bdfc499bb6cec40805a0cefd455031142490a576dc60aa8000523877ac0353b93558e9beabbd
+	source = https://github.com/protocolbuffers/protobuf/archive/v30.1/protobuf-30.1.tar.gz
+	source = protobuf-fix-build-type-none.patch
+	sha512sums = bd1516718a8bfa2420a75ac94476dcc3315ee78633656d3ccdb346189320bad1584040d0c13904139dd0d11c89472dcc2b211f92efd6b298a648714fac56bb95
+	sha512sums = SKIP
 
 pkgname = protobuf-dllexport

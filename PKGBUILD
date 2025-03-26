@@ -1,6 +1,6 @@
 pkgname='protobuf-dllexport'
 _pkgname=protobuf
-pkgver=27.2
+pkgver=30.1
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format"
 arch=('x86_64')
@@ -12,14 +12,15 @@ replaces=('protobuf-cpp')
 provides=('libprotoc.so' 'libprotobuf.so' 'libprotobuf-lite.so')
 provides=("protobuf=$pkgver")
 conflicts=('protobuf')
-source=(https://github.com/protocolbuffers/protobuf/archive/v$pkgver/$_pkgname-$pkgver.tar.gz
-        https://github.com/protocolbuffers/protobuf/commit/2e62ef1e.patch)
-sha512sums=('664c66b62cf1ed0c65d9b910d8e67d4d5d471113697f1b8edf1573cd5c0fc8e850ac53ce984e48e6c6b9cbbefa12f8530058384e7388e65a59c1e46d03772397'
-            '18bc71031bbcbc3810a9985fa670465040f06a6c104ab8079b56bdfc499bb6cec40805a0cefd455031142490a576dc60aa8000523877ac0353b93558e9beabbd')
+source=(https://github.com/protocolbuffers/protobuf/archive/v$pkgver/$_pkgname-$pkgver.tar.gz protobuf-fix-build-type-none.patch)
+sha512sums=('bd1516718a8bfa2420a75ac94476dcc3315ee78633656d3ccdb346189320bad1584040d0c13904139dd0d11c89472dcc2b211f92efd6b298a648714fac56bb95' SKIP)
 
 prepare() {
-  patch -d $_pkgname-$pkgver -p1 < 2e62ef1e.patch # Fix cmake config compatibility mode
-  curl -L https://github.com/protocolbuffers/protobuf/pull/17314.patch | patch -d $_pkgname-$pkgver -p1
+  cd $_pkgname-$pkgver
+  patch -p 1 -i ../protobuf-fix-build-type-none.patch
+
+  # Remove dllexport attribute on variable definition
+  curl -L https://github.com/protocolbuffers/protobuf/pull/20833.patch | patch -p1
 }
 
 build() {
@@ -42,11 +43,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-
-  cd $_pkgname-$pkgver
-  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -vDm 644 editors/protobuf-mode.el \
-    -t "$pkgdir/usr/share/emacs/site-lisp/"
-  install -vDm 644 editors/proto.vim \
-    -t "${pkgdir}/usr/share/vim/vimfiles/syntax"
 }
