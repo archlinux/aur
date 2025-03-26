@@ -1,4 +1,5 @@
 # Maintainer: TheCyberArcher <TheCyberArcher@protonmail.ch>
+# Contributor: PumpkinCheshire <sollyonzou@gmail.com>
 
 _name=auditok
 pkgname=python-auditok
