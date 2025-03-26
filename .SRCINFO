@@ -1,6 +1,6 @@
 pkgbase = limine-snapper-sync-git
 	pkgdesc = The tool syncs Snapper snapshots with Limine bootloader
-	pkgver = r270.0545f93
+	pkgver = r278.1f51939
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-snapper-sync
 	arch = any
