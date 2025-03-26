@@ -2,55 +2,68 @@
 
 ## options
 : ${_build_largeboards:=true}
+
 : ${_build_clang:=true}
+: ${_build_python:=false}
 
 : ${_build_pgo:=true}
 
-: ${_build_avx:=false}
+: ${_build_level:=1}
 : ${_build_git:=false}
 
-[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
+unset _pkgtype
+[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
+[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
+[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
-## basic info
 _pkgname="fairy-stockfish"
 pkgbase="$_pkgname${_pkgtype:-}"
 pkgver=14.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Chess engine with support for Xiangqi, Shogi, Janggi, and many other variants"
 url="https://github.com/fairy-stockfish/Fairy-Stockfish"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('aarch64' 'i686' 'x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 license=('GPL-3.0-only')
 
-pkgname=(
-  "$_pkgname${_pkgtype:-}"
-  "python-pyffish${_pkgtype:-}"
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
 )
 
-# main package
-_main_package() {
-  makedepends=(
-    'git'
-    'python-build'
-    'python-installer'
-    'python-setuptools'
-    'python-wheel'
+if [[ "${_build_clang::1}" == "t" ]]; then
+  makedepends+=(
+    'clang'
+    'lld'
+    'llvm'
   )
+fi
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
-    makedepends+=(
-      'clang'
-      'lld'
-      'llvm'
-    )
-  fi
+_source_stable() {
+  _tag="fairy_sf_${pkgver//./_}_xq"
+  _pkgsrc="Fairy-Stockfish-$_tag"
+  _pkgext="tar.gz"
+  source+=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$_tag.$_pkgext")
+  sha256sums+=('53914fc89d89afca7cfcfd20660ccdda125f1751f59a68b1f3ed1d4eb6cfe805')
+}
 
-  if [ "${_build_git::1}" != "t" ] ; then
-    _main_stable
-  else
-    _main_git
-  fi
+_source_git() {
+  _pkgsrc="$_pkgname"
+  source+=("$_pkgsrc"::"git+$url.git")
+  sha256sums+=('SKIP')
 
+  pkgver() {
+    cd "$_pkgsrc"
+
+    git describe --long --tags --abbrev=7 --match="fairy_sf_[0-9]*" \
+      | sed -E 's/^[^0-9]*//;s/_[a-z]+$//;s/([^-]*-g)/r\1/;s/-/./g'
+  }
+}
+
+_source_common() {
   source+=(
     "fairyfishgui"::"git+https://github.com/fairy-stockfish/FairyFishGUI.git"
     'xbfs-shogi.desktop'
@@ -71,30 +84,6 @@ _main_package() {
   )
 }
 
-# stable package
-_main_stable() {
-  _tag="fairy_sf_${pkgver//./_}_xq"
-  _pkgsrc="Fairy-Stockfish-$_tag"
-  _pkgext="tar.gz"
-  source+=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/$_tag.$_pkgext")
-  sha256sums+=('53914fc89d89afca7cfcfd20660ccdda125f1751f59a68b1f3ed1d4eb6cfe805')
-}
-
-# git package
-_main_git() {
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-
-    git describe --long --tags --abbrev=8 --match="fairy_sf_[0-9]*" \
-      | sed -E 's/^[^0-9]*//;s/_[a-z]+$//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-}
-
-## common functions
 prepare() {
   sed -E \
     -e 's/^EXE = stockfish$/EXE = fairy-stockfish/' \
@@ -106,12 +95,20 @@ prepare() {
 }
 
 build() {
-  if [[ "${_build_avx::1}" == "t" ]] ; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
+  export CFLAGS CXXFLAGS LDFLAGS
+
+  local _ldflags=(${LDFLAGS})
+  LDFLAGS="${_ldflags[@]//*fuse-ld*/}"
+
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+    local _cxxflags=(
+      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
+    )
+    CXXFLAGS="${_cxxflags[@]}"
   fi
 
-  if [[ "${_build_largeboards::1}" == "t" ]] ; then
+  if [[ "${_build_largeboards::1}" == "t" ]]; then
     CXXFLAGS+=" -DLARGEBOARDS"
     CXXFLAGS+=" -DPRECOMPUTED_MAGICS"
     CXXFLAGS+=" -DALLVARS"
@@ -120,27 +117,30 @@ build() {
   CXXFLAGS+=" -DNNUE_EMBEDDING_OFF"
   CXXFLAGS+=" -DNDEBUG"
 
-  (
-    printf "\nStep 1. Building python module ...\n"
-    cd "$_pkgsrc"
-    python -m build --wheel --no-isolation --skip-dependency-check
-  )
+  if [[ "${_build_python::1}" == "t" ]]; then
+    printf "\nStep 0. Building python module ...\n"
+    (
+      cd "$_pkgsrc"
+      python -m build --wheel --no-isolation --skip-dependency-check
+    )
+  fi
 
   # upstream stockfish / fairy-stockfish build scripts detect
-  # and force-enable cpu features, ignoring user CFLAGS and CXXFLAGS,
+  # and force-enable cpu features, ignoring user CXXFLAGS,
   # producing binaries that are unusable on some computers.
   #
   # The following replicates `make profile-build` without cpu-detection.
   cd "$_pkgsrc/src"
 
-  if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_clang::1}" == "t" ]]; then
     local _make=(make COMP=clang 'ARCH=" "')
+    LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
   else
     local _make=(make COMP=gcc 'ARCH=" "')
   fi
 
-  if [[ "${_build_pgo::1}" == "t" ]] ; then
-    if [[ "${_build_clang::1}" == "t" ]] ; then
+  if [[ "${_build_pgo::1}" == "t" ]]; then
+    if [[ "${_build_clang::1}" == "t" ]]; then
       local _pgo_gen_options=(
         EXTRACXXFLAGS="-fprofile-generate"
         EXTRALDFLAGS=""
@@ -161,26 +161,26 @@ build() {
     fi
 
     # "${_make[@]}" net
-    printf "\nStep 2. Building instrumented executable ...\n"
+    printf "\nStep 1. Building instrumented executable ...\n"
     mkdir -p profdir
     "${_make[@]}" "${_pgo_gen_options[@]}" all
 
-    printf "\nStep 3. Running benchmark for pgo-build ...\n"
+    printf "\nStep 2. Running benchmark for pgo-build ...\n"
     ./fairy-stockfish bench > PGOBENCH.out
 
-    if [[ "${_build_clang::1}" == "t" ]] ; then
+    if [[ "${_build_clang::1}" == "t" ]]; then
       llvm-profdata merge -output=$pkgname.prof *.profraw
     fi
 
-    printf "\nStep 4. Building optimized executable ...\n"
+    printf "\nStep 3. Building optimized executable ...\n"
 
     "${_make[@]}" objclean
     "${_make[@]}" "${_pgo_use_options[@]}" all
 
-    #printf "\nStep 5. Deleting profile data ...\n"
+    #printf "\nStep 4. Deleting profile data ...\n"
     #"${_make[@]}" profileclean
   else
-    printf "\nStep 2. Building standard executable ...\n"
+    printf "\nStep 1. Building standard executable ...\n"
     "${_make[@]}" all
   fi
 }
@@ -189,8 +189,10 @@ _package_python-pyffish() {
   pkgdesc="Python bindings for fairy-stockfish"
   depends=(
     'python'
-    'python-pysimplegui'
     "fairy-stockfish${_pkgtype:-}"
+  )
+  optdepends=(
+    'python-pysimplegui: for gui'
   )
 
   cd "$_pkgsrc"
@@ -198,7 +200,7 @@ _package_python-pyffish() {
 
   # fairyfishgui
   local _fairyfishgui="$pkgdir/usr/bin/fairyfishgui"
-  install -Dm755 /dev/stdin "$_fairyfishgui" <<END
+  install -Dm755 /dev/stdin "$_fairyfishgui" << END
 #!/usr/bin/env python
 END
   cat "$srcdir/fairyfishgui/fairyfishgui.py" >> "$_fairyfishgui"
@@ -213,12 +215,12 @@ _package_fairy-stockfish() {
     'xboard: GUI frontend'
   )
 
-  if [ "$pkgname" != "$_pkgname" ] ; then
+  if [ "$pkgname" != "$_pkgname" ]; then
     provides+=(fairy-stockfish="${pkgver%%.r*}")
     conflicts+=(fairy-stockfish)
   fi
 
-  if [[ "${_build_largeboards::1}" == "t" ]] ; then
+  if [[ "${_build_largeboards::1}" == "t" ]]; then
     # xboard shogi
     install -Dm755 "$srcdir/xbfs-shogi.sh" "$pkgdir/usr/bin/xbfs-shogi"
     install -Dm644 "$srcdir/xbfs-shogi.desktop" -t "$pkgdir/usr/share/applications/"
@@ -234,12 +236,20 @@ _package_fairy-stockfish() {
   make PREFIX="$pkgdir/usr" install
 }
 
+if [ "${_build_git::1}" != "t" ]; then
+  _source_stable
+else
+  _source_git
+fi
+
+_source_common
+
+pkgname=("$_pkgname${_pkgtype:-}")
+[[ "${_build_python::1}" == "t" ]] && pkgname+=("python-pyffish${_pkgtype:-}")
+
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package_${_p%$_pkgtype}")
     _package_${_p%$_pkgtype}
   }"
 done
-
-# execute
-_main_package

@@ -1,11 +1,14 @@
 pkgbase = fairy-stockfish
 	pkgdesc = Chess engine with support for Xiangqi, Shogi, Janggi, and many other variants
 	pkgver = 14.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/fairy-stockfish/Fairy-Stockfish
+	arch = aarch64
 	arch = i686
 	arch = x86_64
-	arch = aarch64
+	arch = x86_64_v2
+	arch = x86_64_v3
+	arch = x86_64_v4
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-build
@@ -37,9 +40,3 @@ pkgname = fairy-stockfish
 	optdepends = xboard: GUI frontend
 	provides = fairy-stockfish=14.0.1
 	conflicts = fairy-stockfish
-
-pkgname = python-pyffish
-	pkgdesc = Python bindings for fairy-stockfish
-	depends = python
-	depends = python-pysimplegui
-	depends = fairy-stockfish
