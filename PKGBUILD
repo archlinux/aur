@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.9.1
+pkgver=3.10.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/logfire'
@@ -14,7 +14,7 @@ source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28
                "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.3.tgz")
 source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.3.tgz"
                 "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.3.tgz")
-sha256sums=('51e88fccd90e2198d47e1f4851ad9babb4bd66ce0bbb58352da59578230cf671')
+sha256sums=('fe241864c708a7ec9c3f1c23f107f3e3d68373b41ec9ebefee7ef035a73b38e4')
 sha256sums_x86_64=('d1810799dad3ca21647728e4b501bf64def617f2a3e8cdcdfcd5e4a5d0e69e5c'
                    'f9e3102a996c3b24ab2cebfa169bb9cb4bbb95b866358b285ab65d3a3b9b4800')
 sha256sums_aarch64=('6a5fe587e1224871a87ef46dede1dd65cfb69a2c61e1368556f59c2e78d67d7f'
@@ -80,7 +80,6 @@ checkdepends=('python-anyio'
               'python-pytest-recording'
               'python-vcrpy'
               'uvicorn'
-              'python-logfire-api'
               'python-setuptools'
               'python-aiosqlite'
               'python-boto3'
@@ -109,7 +108,7 @@ prepare(){
   update_compression_methods tests/otel_integrations/test_httpx.py
   update_compression_methods tests/otel_integrations/test_starlette.py
   # The python-psycopg2 build process is the same as psycopg2-binary
-  sed -i -E "s/\bpsycopg2-binary\b/psycopg2/g" tests/otel_integrations/test_psycopg.py
+  sed -i "s/assert check_version('psycopg2-binary', '2.7.3.1', Psycopg2Instrumentor())/assert check_version('psycopg2-binary', '2.7.3.1', Psycopg2Instrumentor()) or check_version('psycopg2', '2.7.3.1', Psycopg2Instrumentor())/" tests/otel_integrations/test_psycopg.py
 }
 
 build() {

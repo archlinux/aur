@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 3.9.1
+	pkgver = 3.10.0
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = x86_64
@@ -64,7 +64,6 @@ pkgbase = python-logfire
 	checkdepends = python-pytest-recording
 	checkdepends = python-vcrpy
 	checkdepends = uvicorn
-	checkdepends = python-logfire-api
 	checkdepends = python-setuptools
 	checkdepends = python-aiosqlite
 	checkdepends = python-boto3
@@ -79,8 +78,8 @@ pkgbase = python-logfire
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.8
-	source = https://github.com/pydantic/logfire/archive/refs/tags/v3.9.1.tar.gz
-	sha256sums = 51e88fccd90e2198d47e1f4851ad9babb4bd66ce0bbb58352da59578230cf671
+	source = https://github.com/pydantic/logfire/archive/refs/tags/v3.10.0.tar.gz
+	sha256sums = fe241864c708a7ec9c3f1c23f107f3e3d68373b41ec9ebefee7ef035a73b38e4
 	source_x86_64 = https://download.docker.com/linux/static/stable/x86_64/docker-28.0.3.tgz
 	source_x86_64 = https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.3.tgz
 	sha256sums_x86_64 = d1810799dad3ca21647728e4b501bf64def617f2a3e8cdcdfcd5e4a5d0e69e5c
