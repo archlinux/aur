@@ -2,10 +2,10 @@
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-_rtver=37
-_rtbase=6.1.102
+_rtver=49
+_rtbase=6.1.128
 pkgbase=linux-rt-lts61
-pkgver=6.1.102
+pkgver=6.1.131
 pkgrel=1
 pkgdesc='LTS Linux with realtime patches'
 url='https://www.kernel.org'
@@ -36,6 +36,8 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/projects/rt/${pkgver:0:3}/patches-${_rtbase}-rt${_rtver}.tar.{gz,sign}
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0004-Sphinx-7.2.2-8.0-PosixPath.patch
+  '0005-depmod-remove-depmod_hack_needed.patch'
+  '0006-kernel-6.1-depmod-disable-for-packaging.patch'
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -44,28 +46,33 @@ validpgpkeys=(
   D5653EA39C8675DA4BD5971C13B55DD07C53B851  # Clark Williams
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('b2ec323f5098156b911e7ec99393cb4d'
+md5sums=('d8c8d09b7aa9690440334f1e5518af0a'
          'SKIP'
-         'd3fd9a42d8abf27f79c5df8f42687177'
+         '8b0e9b1e96fe32277c8756c26e9c3465'
          'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
+         'd15820a808c3cc159e6e5916a8c05e8f'
+         'f24ee48c4c30cb428d0258aa3c25bd19'
          'ba035ba9a8d8cd396d3e368de8c4c7fb')
-sha256sums=('1ba5f93b411ead7587fe48b2eec6c656f6796d31f5e406d236913c77512497ec'
+sha256sums=('44caf510603b4cbbe78ef828620099d200536d666e909ddb73bb2938c7de5b16'
             'SKIP'
-            'e5c747bf48fb5c83b8f4aacddf0e785ca9c255584cc308deb07128c78b5b3b92'
+            'cbd3086e087db6e781b27654e33c5588201ef4f9599e8f20a211449ad4a26450'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
+            '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
+            '20d2afcc83f04d5409dcb5452763c625069dc00bfa7e60457902256dfbb58bdd'
             'f02a74973a4e3a2165a82e62cb682e0eed8bb5ade6f951564c45d24e2b5f07ff')
-b2sums=('aa33c053b3d868a626ec472d4e8062b49490f13e5c57996153641308e8a4a672e2c3fc42e187ffe89436cd2af6fcda9bfe1b513e2484a2a33319f8ee38d19452'
+b2sums=('5aef8d29bf896cde0c85f9486859bcef9628a7139fa701f0dc118318ca1bdbb1c78be31f2b4ba9b5dc209dc3e389fc935f3bdd64aa4650dfe88f922d0f696fbf'
         'SKIP'
-        '3c7f8e750cc2b3000597eb42111ef92491a5932fedfca39caac292762e075a67419f45fe80efd273ceb6118df5db0b8e7c0cb1c65cb6cb2b8907251292d973f3'
+        'c91643ff7d49aa1636fb78a344e02f9fb499824b9c3dd72f044b4bc571fea8c02ecc6cf1854fdb7e5eb40db7ef59901ee4f4aa69bc40f0cd32d732c14f601c46'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'
+        'a0cb29f2c4a4bbd815daa2fc399c7014dcc880a73130f5cf26a0e428b73e23911858a9274e15b62c3cd90a82f6c46c83ecfb4b2fdcdaef8e10bf24f6766ae049'
+        '7b24fa23ffb4ef7c998e7b43a60d3df094220ff6e60f49cb4a9dcd712f657b40c022bf1b94f81d41ddb4008ef3200649a672025ccf63f50079320a951538cb4f'
         '1a1adfb82e2d8a7fa9153ef4277a3d660e7f44af213e8b4039c4675991a115c05dc563575157c470341d4d990a02b74fefba322fbce22ad060d369be69e67fe9')
-
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -83,7 +90,7 @@ prepare() {
     src="${src##*/}"
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
@@ -103,8 +110,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make -i htmldocs SPHINXOPTS='--keep-going'
+  nice -n1 make all
+  nice -n1 make -i htmldocs SPHINXOPTS='--keep-going'
 }
 
 _package() {
@@ -139,8 +146,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
-    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
+  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
