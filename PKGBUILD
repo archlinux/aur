@@ -1,17 +1,18 @@
 # Maintainer: envolution
 # Contributor: James Williams <jowilliams12000 at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=wallust
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=2
 pkgdesc="generate colors from an image"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://codeberg.org/explosion-mental/wallust"
-license=('custom:MIT')
+license=('MIT')
 makedepends=('cargo')
 optdepends=('imagemagick')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 options=('!lto')
-sha256sums=('15cd5b2a081476acbbf283ea35fa4195833bed0f9fbb9e2d2237c58734defc64')
+sha256sums=('9e0a3f0e2eff6b7ddf8011b15602550f15a4c4fb3037947e71adf578e6486522')
 
 prepare() {
   cd "$pkgname"-"$pkgver"
