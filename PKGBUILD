@@ -11,16 +11,28 @@ pkgdesc="A toolkit to convert between various different translation formats, hel
 arch=('any')
 url="https://toolkit.translatehouse.org/"
 license=('GPL-2.0-or-later')
-depends=('bash' 'python-lxml' 'python-ruamel-yaml' 'python-cwcwidth')
-makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
-optdepends=('gaupol: for po2sub'
-            'python-chardet: encoding detector'
-            'python-cheroot: for TM Server'
-            'python-levenshtein: faster matching'
-            'python-mistletoe: Markdown support for po2md'
-            'python-pyenchant: for spellcheck filter'
-            'python-pyparsing: RC support for po2rc'
-            'python-vobject: iCalendar files support for po2ical')
+depends=(
+  'bash'
+  'python-cwcwidth'
+  'python-lxml'
+  'python-ruamel-yaml'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools-scm'
+  'python-wheel'
+)
+optdepends=( 
+  'gaupol: for po2sub'
+  'python-chardet: encoding detector'
+  'python-cheroot: for TM Server'
+  'python-levenshtein: faster matching'
+  'python-mistletoe: Markdown support for po2md'
+  'python-pyenchant: for spellcheck filter'
+  'python-pyparsing: RC support for po2rc'
+  'python-vobject: iCalendar files support for po2ical'
+)
 source=($pkgname-$pkgver.tar.gz::https://github.com/translate/translate/archive/$pkgver.tar.gz)
 sha256sums=('23fd3f7f209a62f4cd990c5a7ca5db7bc56d6a5da11a13b22f88bfe5ec7a5aec')
 
