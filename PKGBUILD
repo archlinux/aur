@@ -2,7 +2,7 @@
 # Maintainer: Masaya Suzuki <masaya@aviator.co>
 
 pkgname='av-cli-bin'
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='CLI tool to create, update, review and merge stacked PRs on GitHub.'
 url='https://aviator.co'
@@ -13,11 +13,11 @@ conflicts=('av-cli')
 depends=('git')
 optdepends=('github-cli: for GitHub authentication')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aviator-co/av/releases/download/v0.1.4/av_0.1.4_linux_arm64.tar.gz")
-sha256sums_aarch64=('2c55de432af11f0987896d4f0947f74aecd55bce0e861e9694c6ed84ccd7f2f7')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aviator-co/av/releases/download/v0.1.5/av_0.1.5_linux_arm64.tar.gz")
+sha256sums_aarch64=('f14cd99b6b0113fb5d4645d7029e82d2afd91f0b354a755f94e6089142c11ca8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aviator-co/av/releases/download/v0.1.4/av_0.1.4_linux_x86_64.tar.gz")
-sha256sums_x86_64=('a546fd3491b2846075eb83f9dbbefa1a44c334bf43bf967f074d58ad7a7ab649')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aviator-co/av/releases/download/v0.1.5/av_0.1.5_linux_x86_64.tar.gz")
+sha256sums_x86_64=('df2c96e4a03cd5e297890d482c3d13962f10789aa1f8b68b6958155c06d9a2fb')
 
 package() {
   install -Dm755 "./av" "${pkgdir}/usr/bin/av"
