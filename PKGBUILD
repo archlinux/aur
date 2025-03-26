@@ -1,10 +1,11 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: getzze <getzze at gmail dor com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_name=click-option-group
+_name=click_option_group
 pkgname=python-click-option-group
-pkgver=0.5.6
-pkgrel=3
+pkgver=0.5.7
+pkgrel=1
 pkgdesc="Option groups missing in Click"
 arch=(any)
 url="https://github.com/click-contrib/click-option-group"
@@ -16,13 +17,13 @@ depends=(
 makedepends=(
   python-build
   python-installer
-  python-setuptools
+  python-hatch
   python-wheel
 )
 checkdepends=(python-pytest)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha512sums=('7ac321a0c2dedcacf9b0383cb6b1ae6f7dd0ec6855e4f88cd4817ddece0c2c043c8b10fab04a41aefce38f871075a793bdc7b000f3b99adc7d93a3b6f0cf9884')
-b2sums=('8edc9e1c7aff7ff03f86fea41a43a37b9605efb11cae402ebaaa18620b21fd50237d92979f024b319b7de7b244f3168a3557efcc4f754c83e1bc4cd05b578428')
+sha512sums=('0e6c82b2b6a4a790c767ad775def93c3487e97990bbc172c95b6d90ccc366c8fb9dfe0fff4eecb64538218213c65642732eb1a0d421d2826e1f13689e6d5621a')
+b2sums=('31357084654dc1011eeab64b0298fd5f5a5b417a4621dff7442b6dea02ffbe304d267adccb2f7adef8b7a005ad6055d5982b9e7b7990242fdf3a417c7c817040')
 
 build() {
   cd $_name-$pkgver
