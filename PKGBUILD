@@ -16,9 +16,9 @@ source_x86_64+=("${release_url}-x86_64${ext}")
 source_aarch64+=("${release_url}-aarch64${ext}")
 source_armv7h+=("${release_url}-armv7h${ext}")
 
-sha256sums_x86_64=('9f4bb6de6f049cfcc8f69ffa1e5c17db04f1decbb6b1c7e29f2d20fae3d1aa0d')
-sha256sums_aarch64=('58af82754698c802b50fe130aa920381ac14404d52819284b257b8b5bc31408e')
-sha256sums_armv7h=('4a8b84399fc5279fcbfc1a39d854410556991b0e7a27636c0f6ca27ff259b381')
+sha256sums_x86_64=('7ef1a6b79d04a5c6e58acbf299155bfdc63286340aab8c31d2e3d472df416311')
+sha256sums_aarch64=('fa3a4b7ae7ee993bd1169d1467c0a4ea0fdb862705494369302a6f78b208ba93')
+sha256sums_armv7h=('7455a584605e387170bc4c1cee71341320b73b700d462e35d4a545050dbb6afc')
 
 package() {
   tar -xzf "$srcdir/yaylog-v${pkgver}-${CARCH}${ext}" -C "$srcdir"

@@ -11,10 +11,10 @@ pkgbase = yaylog-bin
 	conflicts = yaylog
 	conflicts = yaylog-git
 	source_x86_64 = https://github.com/Zweih/yaylog/releases/download/v3.35.0/yaylog-v3.35.0-x86_64.tar.gz
-	sha256sums_x86_64 = 9f4bb6de6f049cfcc8f69ffa1e5c17db04f1decbb6b1c7e29f2d20fae3d1aa0d
+	sha256sums_x86_64 = 7ef1a6b79d04a5c6e58acbf299155bfdc63286340aab8c31d2e3d472df416311
 	source_aarch64 = https://github.com/Zweih/yaylog/releases/download/v3.35.0/yaylog-v3.35.0-aarch64.tar.gz
-	sha256sums_aarch64 = 58af82754698c802b50fe130aa920381ac14404d52819284b257b8b5bc31408e
+	sha256sums_aarch64 = fa3a4b7ae7ee993bd1169d1467c0a4ea0fdb862705494369302a6f78b208ba93
 	source_armv7h = https://github.com/Zweih/yaylog/releases/download/v3.35.0/yaylog-v3.35.0-armv7h.tar.gz
-	sha256sums_armv7h = 4a8b84399fc5279fcbfc1a39d854410556991b0e7a27636c0f6ca27ff259b381
+	sha256sums_armv7h = 7455a584605e387170bc4c1cee71341320b73b700d462e35d4a545050dbb6afc
 
 pkgname = yaylog-bin
