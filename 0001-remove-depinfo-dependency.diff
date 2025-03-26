@@ -1,0 +1,52 @@
+From 58251e6bcede15d4e329157a480cb70d38737a53 Mon Sep 17 00:00:00 2001
+From: redponike <redponike@proton.me>
+Date: Wed, 26 Mar 2025 02:21:37 +0100
+Subject: [PATCH] Use importlib instead of depinfo dependency
+
+---
+ src/cobra/util/util.py | 25 +++++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
+
+diff --git a/src/cobra/util/util.py b/src/cobra/util/util.py
+index fcab631c..3e4b342f 100644
+--- a/src/cobra/util/util.py
++++ b/src/cobra/util/util.py
+@@ -3,7 +3,9 @@
+ import textwrap
+ from typing import Any
+ 
+-from depinfo.application import DisplayApplication
++import importlib.metadata
++import re
++import platform
+ 
+ 
+ def format_long_string(string: str, max_length: int = 50) -> str:
+@@ -59,4 +61,23 @@ class AutoVivification(dict):
+ 
+ def show_versions() -> None:
+     """Print dependency information."""
+-    DisplayApplication.run("cobra")
++    pypkg = 'cobra'
++    try:
++        deps = importlib.metadata.requires(pypkg)
++    except importlib.metadata.PackageNotFoundError:
++        print("Failed to retrieve dependencies")
++        return
++
++    print("\nPackage Information\n-------------------")
++    print(pypkg, importlib.metadata.version(pypkg))
++    print("\nDependency Information\n----------------------")
++    for dep_str in sorted(deps):
++        package_name = re.split(r'[<>=~;]', dep_str, maxsplit=1)[0]
++        try:
++            version = importlib.metadata.version(package_name)
++            print(f"{package_name}\t\t{version}")
++        except importlib.metadata.PackageNotFoundError:
++            print(f"{package_name}\t\tmissing")
++    print("\nPlatform Information\n--------------------")
++    print(f"{platform.system()}\t\t{platform.release()}-{platform.machine()}")
++    print(f"{platform.python_implementation()}\t\t{platform.python_version()}")
+-- 
+2.49.0
+
