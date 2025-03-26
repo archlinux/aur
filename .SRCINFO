@@ -5,6 +5,7 @@ pkgbase = socos
 	url = https://github.com/SoCo/socos
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python
 	depends = python-setuptools
 	depends = python-soco

@@ -1,4 +1,4 @@
-# Maintainer: novenary <streetwalkermc@gmail.com>
+# Maintainer: TheCyberArcher <TheCyberArcher@protonmail.ch>
 pkgname=socos
 pkgver=0.2.r33.g7719b54
 pkgrel=2
@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/SoCo/socos"
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-soco')
+makedepends=('git')
 options=(!emptydirs)
 source=("git+https://github.com/SoCo/socos.git#commit=7719b54873235abc068a6bcfbf606e518baeeffc")
 md5sums=('SKIP')
