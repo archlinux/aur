@@ -24,6 +24,7 @@ conflicts=(
 )
 
 source=(
+    "dracut-regen"
     "dracut-install.sh"
     "dracut-remove.sh"
     "00-base.conf"
@@ -42,6 +43,7 @@ source=(
 )
 
 sha256sums=(
+    'e3611ec30267de96258caab0d7a867d18c231c060929731118afba8ee6a91c15' # dracut-regen
     '0918c9bddb6a83711c8400c6b029f89d138c197b52466cab6e1b3643d8441782' # dracut-install.sh
     'ef41ef9a6b03e968b9ade1b6d92237b081fbcd58132d98f20d44e643f44d79d1' # dracut-remove.sh
     '704aafe8b5194dc653543febbee8eb13afc52cf353fb0010722ed31409136d9e' # 00-base.conf
@@ -62,8 +64,10 @@ sha256sums=(
 package() {
     mkdir -p "$pkgdir/etc/dracut.conf.d/"
     mkdir -p "$pkgdir/usr/local/bin/"
-    mkdir -p "$pkgdir/usr/share/libalpm/hooks"
-    
+    mkdir -p "$pkgdir/usr/bin/"
+    mkdir -p "$pkgdir/usr/share/libalpm/hooks/"
+
+    install -m 755 "$srcdir/dracut-regen" "$pkgdir/usr/bin"    
     install -m 755 "$srcdir/dracut-install.sh" "$pkgdir/usr/local/bin"
     install -m 755 "$srcdir/dracut-remove.sh" "$pkgdir/usr/local/bin"
 

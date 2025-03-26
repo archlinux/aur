@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Path to the dracut-install.sh script
+DRACUT_INSTALL_SCRIPT="/usr/local/bin/dracut-install.sh"
+
+# Check if the dracut-install.sh script exists
+if [[ ! -f "$DRACUT_INSTALL_SCRIPT" ]]; then
+#    echo "Error: $DRACUT_INSTALL_SCRIPT not found."
+    exit 1
+fi
+
+# Enumerate all directories in /usr/lib/modules and pass them to dracut-install.sh
+for dir in /usr/lib/modules/*; do
+    if [[ -f "$dir/pkgbase" ]]; then
+        echo "${dir#/}/pkgbase"  # Output the directory to stdout
+    fi
+done | "$DRACUT_INSTALL_SCRIPT"  # Pipe the output to dracut-install.sh
