@@ -1,4 +1,5 @@
-# Maintainer: Michael DeGuzis
+# Maintainer: TheCyberArcher <thecyberarcher@protonmail.ch
+# Contributor: Michael DeGuzis
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: K. Hampf <khampf@users.sourceforge.net>
@@ -6,23 +7,24 @@
 
 _pkgname=playonlinux4
 pkgname=${_pkgname}-git
-pkgver=4.4.r42.g8740f6b8
+pkgver=r3434.00fb25b
 pkgrel=1
 epoch=1
 pkgdesc="GUI for managing Windows programs under linux"
 url="http://www.playonlinux.com/"
-license=('GPL')
-depends=('wine' 'imagemagick' 'xterm' 'cabextract' 'unzip' 'gnupg'
-         'icoutils' 'xdg-user-dirs' 'libxmu' 'netcat' 'wget' 'p7zip' 'python-wxpython' 'mesa-utils' 'jq' 'perl' 'python-natsort')
+license=('GPL-3.0-only')
 arch=('any')
 provides=('playonlinux')
 conflicts=('playonlinux')
-source=("${_pkgname}::git+https://github.com/PlayOnLinux/POL-POM-4.git")	
+depends=('wine' 'imagemagick' 'xterm' 'cabextract' 'unzip' 'gnupg' 'icoutils' 'xdg-user-dirs' 
+'libxmu' 'netcat' 'wget' 'p7zip' 'python-wxpython' 'mesa-utils' 'jq' 'perl' 'python-natsort')
+makedepends=('git')
+source=("${_pkgname}::git+https://github.com/PlayOnLinux/POL-POM-4.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
