@@ -1,12 +1,13 @@
 pkgname='tlm-bin'
 pkgdesc='Local CLI Copilot, powered by Ollama.'
 pkgver='1.2'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://github.com/yusufcanb/tlm'
 license=('Apache-2.0')
 conflicts=('tlm')
 depends=('glibc')
+optdepends=('ollama: ollama required, can be on another machine.')
 source=(
   "https://github.com/yusufcanb/tlm/releases/download/${pkgver}/tlm_${pkgver}_linux_amd64"
   "https://raw.githubusercontent.com/yusufcanb/tlm/main/LICENSE"
