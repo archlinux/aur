@@ -1,11 +1,11 @@
 pkgbase = python-databricks-cli
 	pkgdesc = Command Line Interface for Databricks
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/databricks/databricks-cli
 	install = python-databricks-cli.install
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

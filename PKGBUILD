@@ -3,11 +3,11 @@
 pkgname=python-databricks-cli
 _pkgname=databricks-cli
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command Line Interface for Databricks'
 arch=('any')
 url='https://github.com/databricks/databricks-cli'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python>3.7'
   'python-click>=7.0'
