@@ -1,10 +1,13 @@
+# Maintainter: TheCyberArcher <thecyberarcher@protonmail.ch>
+# Contributor: Amy <amy at fluff dot tech>
+
 pkgname=bitwarden-chromium
 pkgver=2025.3.0
 pkgrel=1
 pkgdesc='Bitwarden Chromium extension'
 arch=('any')
 url='https://github.com/bitwarden/clients'
-license=('GPL3')
+license=('GPL-3.0-only')
 makedepends=('git' 'unzip')
 optdepends=('chromium' 'google-chrome')
 install="${pkgname}.install"
