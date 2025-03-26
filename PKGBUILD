@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Driftini <yurisilveos741@gmail.com>
 # Contributor: Robert Brzozowski <robson75@linux.pl>
 # Contributor: Charles Bos <charlesbos1 AT gmail>
 
@@ -7,9 +7,9 @@
 
 _pkgname='compiz'
 pkgname="$_pkgname-git"
-pkgver=0.9.14.2.r11.g8196e9c
-pkgrel=4
-pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
+pkgver=0.9.14.2
+pkgrel=1
+pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM. Git release"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
 license=(
@@ -34,10 +34,10 @@ depends=(
   'python-gobject'
 )
 makedepends=(
+  'git'
   'boost'
   'cmake'
   'cython'
-  'git'
   'intltool'
   'ninja'
   'python-setuptools'
@@ -63,6 +63,7 @@ provides=(
 )
 conflicts=(
   'ccsm'
+  'compiz'
   'compiz-bcop'
   'compiz-core'
   'compiz-fusion-plugins-experimental'
@@ -74,12 +75,10 @@ conflicts=(
   'simple-ccsm'
 )
 
-provides+=("compiz=${pkgver:0:6}")
-conflicts+=('compiz')
-
 _pkgsrc="$_pkgname"
+_pkgext="tar.xz"
 source=(
-  "$_pkgsrc"::"git+https://git.launchpad.net/compiz"
+  "${_pkgsrc}"::"git+https://git.launchpad.net/compiz"
 
   # Reverse Unity specific configuration patches
   "0001-reverse-unity-config.patch"
@@ -112,13 +111,13 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$_pkgsrc"
+  cd "${_pkgsrc}"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$_pkgsrc"
+  cd "${_pkgsrc}"
 
   local src
   for src in "${source[@]}"; do
