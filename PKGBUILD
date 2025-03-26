@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=rutabaga-ffi
 pkgver=0.1.3
-pkgrel=2
-pkgdesc="The Rutabaga Virtual Graphics Interface (VGI) is a cross-platform abstraction for GPU and display virtualization."
+pkgrel=3
+pkgdesc="VGI cross-platform abstraction for GPU and display virtualization."
 arch=("x86_64")
 url="https://crosvm.dev/book/appendix/rutabaga_gfx.html"
 license=(LicenseRef-chromiumos)
@@ -25,6 +25,5 @@ package() {
   cd $srcdir/crosvm/rutabaga_gfx/ffi
   make prefix="$pkgdir/usr/" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 README.* -t "$pkgdir"/usr/share/doc/$pkgname
 }
 # vim:set ts=2 sw=2 et:

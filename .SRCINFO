@@ -1,7 +1,7 @@
 pkgbase = rutabaga-ffi
-	pkgdesc = The Rutabaga Virtual Graphics Interface (VGI) is a cross-platform abstraction for GPU and display virtualization.
+	pkgdesc = VGI cross-platform abstraction for GPU and display virtualization.
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://crosvm.dev/book/appendix/rutabaga_gfx.html
 	arch = x86_64
 	license = LicenseRef-chromiumos
