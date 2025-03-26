@@ -61,8 +61,9 @@ check() {
 package() {
   cd "$pkgname"
   stack install --verbose --local-bin-path "$pkgdir/usr/bin"
-  install -Dm644 pandoc-cli/man/pandoc.1 \
-      "$pkgdir"/usr/share/man/man1/pandoc.1
+  env -C "$pkgdir/usr/bin" ln -s pandoc pandoc-lua
+  env -C "$pkgdir/usr/bin" ln -s pandoc pandoc-server
+  install -Dm644 pandoc-cli/man/pandoc*.1 -t "$pkgdir"/usr/share/man/man1/
   install -Dm644 pandoc.bash \
       "$pkgdir"/usr/share/bash-completion/completions/pandoc
 }
