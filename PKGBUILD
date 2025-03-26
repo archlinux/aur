@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=eaglergrab-bin
 _pkgname=eaglerGrab
-pkgver=1.2.9
+pkgver=1.3.0
 _electronversion=35
 pkgrel=1
 pkgdesc="Eaglercraft Launcher(Prebuilt version.Use system-wide electron)."
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/release-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('06bde0b99387225a4fb527aa063314b0fb6a6a44ebfc1fc38d3c586ddf3b39dd'
+sha256sums=('86d01bb4e12380df6a02e5274b6cdbd4698cba3c81ef70f8ee364ac12a3d09d5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
