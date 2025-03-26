@@ -1,6 +1,6 @@
 pkgbase = mqttx-git
 	pkgdesc = A cross-platform MQTT 5.0 client tool open sourced by EMQ.(Use system-wide electron)
-	pkgver = 1.11.1.r0.g9e84519
+	pkgver = 1.12.0.beta.1.r0.g7ca40ba
 	pkgrel = 1
 	url = https://mqttx.app/
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = mqttx-git
 	makedepends = python
 	makedepends = curl
 	makedepends = gcc
-	depends = electron13
+	depends = electron22
 	source = mqttx.git::git+https://github.com/emqx/MQTTX.git
 	source = mqttx.sh
 	sha256sums = SKIP
