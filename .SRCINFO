@@ -1,7 +1,7 @@
 pkgbase = nestopia-git
 	pkgdesc = High-accuracy NES/Famicom emulator
 	pkgver = 1.53.1.r0.g80f335a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0ldsk00l/nestopia
 	arch = x86_64
 	license = GPL-2.0-only
@@ -17,7 +17,7 @@ pkgbase = nestopia-git
 	depends = zlib
 	provides = nestopia=1.53.1
 	conflicts = nestopia
-	source = nestopia::git+https://github.com/0ldsk00l/nestopia.git#branch=wip
+	source = nestopia::git+https://github.com/0ldsk00l/nestopia.git
 	sha256sums = SKIP
 
 pkgname = nestopia-git

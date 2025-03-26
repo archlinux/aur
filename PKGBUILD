@@ -12,7 +12,7 @@
 _pkgname="nestopia"
 pkgname="$_pkgname-git"
 pkgver=1.53.1.r0.g80f335a
-pkgrel=1
+pkgrel=2
 pkgdesc="High-accuracy NES/Famicom emulator"
 url="https://github.com/0ldsk00l/nestopia"
 license=('GPL-2.0-only')
@@ -37,7 +37,7 @@ provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#branch=wip")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
