@@ -1,7 +1,7 @@
 # Maintainer: Victor Lavaud <victor.lavaud@pm.me>
 pkgname=python-google-generativeai
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Google AI Python SDK for the Gemini API"
 arch=('any')
 url="https://github.com/google-gemini/generative-ai-python"
@@ -14,11 +14,11 @@ sha256sums=('82d31235919b6e1089870dc2b07808e64d12d35f0a19a4ae5e974241412825fb')
 depends=('python-google-ai-generativelanguage=0.6.10' 'python-google-api-core' 'python-google-api-python-client' 'python-google-auth>=2.15.0' 'python-protobuf' 'python-pydantic' 'python-tqdm' 'python-typing_extensions')
 
 build() {
-  cd "generative-ai-python-${pkgver}"
-  python setup.py build
+	cd "deprecated-generative-ai-python-${pkgver}"
+	python setup.py build
 }
 
 package() {
-  cd "generative-ai-python-${pkgver}"
-  python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+	cd "deprecated-generative-ai-python-${pkgver}"
+	python setup.py install --skip-build --root="${pkgdir}" --optimize=1
 }
