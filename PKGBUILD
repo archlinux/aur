@@ -2,16 +2,16 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.7.3
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
 license=(Apache-2.0)
-depends=(python-installer python-build python-setuptools)
-makedepends=(git gcc13 cuda cuda-tools) #won't build without detecting cuda - need to investiogate further
+depends=(python-installer python-sympy numactl python-pytorch python-build python-setuptools)
+makedepends=(git gcc13)
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('16f960486a875e82883c4b91d1dd52d9dd0da0e5cb9610f2828f311ad2df013d')
+sha256sums=('ff2a1952f02e21a93e1e2b2d07868d73b9934c3ac95441d10fee9b0763e6fc21')
 _jobs=3
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
@@ -23,17 +23,9 @@ prepare() {
 
 build() {
   cd $_pkgname
-  cuda_home=/opt/cuda
-
-  # Update paths
-  PATH=$srcdir/gcc13/bin:${cuda_home}/bin:$PATH
-  LD_LIBRARY_PATH=${cuda_home}/lib:$LD_LIBRARY_PATH
 
   # Limit the number of parallel jobs to avoid OOM
   export MAX_JOBS=$_jobs
-  # Make sure release wheels are built for the following architectures
-  export TORCH_CUDA_ARCH_LIST="7.0 7.5 8.0 8.6 8.9 9.0+PTX"
-  export VLLM_FA_CMAKE_GPU_ARCHES="80-real;90-real"
   export VLLM_TARGET_DEVICE=cpu
 
   # Build
