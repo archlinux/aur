@@ -3,24 +3,25 @@
 
 _game_name="SnootGame"
 _pkg_name="snoot-game"
+_game_ver=Patch12.1-Monkeyborea
 pkgname="${_pkg_name}-bin"
-pkgver=Patch8_NewYears
+pkgver=Patch12.1
 pkgrel=1
 pkgdesc="Renpy visual novel parody of Goodbye Volcano High"
 arch=('x86_64')
-options=("!strip" "staticlibs")
+options=("!strip" "!debug")
 url="https://snootgame.xyz"
 license=("AGPL", "custom:CC-BY-SA 4.0")
 
-source=("snoot_game.desktop" "https://snootgame.xyz/downloads/game/${_game_name}-${pkgver}-linux.tar.bz2")
+source=("snoot_game.desktop" "https://snootgame.xyz/en/bin/${_game_name}-${_game_ver}-linux.tar.bz2")
 b2sums=('aee213241c80bf784935c802202898338065ff41b83f27e1bcea10b2cd314ce86d91a5c2c75a33c1c2e7e10f8dabfbc2ffe48b6f7bf2cf84bbcecd0726a2eda2'
-        'c7a7b1f85eb46d7f5a67b7cd0f0a889cab33e44ade78a7e26b99d96243caa9b9cf3ea5ad1a8a7192ac7d3af65135bc49238391f40e82f8150ea8fac5a96617c9')
+        '1a3460d7e1024f389971b37df348d3720060a6326335ecf7dc5a343bed32396bdce383a3aaf9f83a602610a1aa240aa5c22032e853ff5ea59c2c3964e68668bd')
 
 package() {
 	_install_path="/opt/${_pkg_name}"
 
 	mkdir -p "${pkgdir}/${_install_path}"
-	cp -ar "${srcdir}/${_game_name}-${pkgver}-linux"/* "${pkgdir}/${_install_path}"
+	cp -ar "${srcdir}/${_game_name}-${_game_ver}-linux"/* "${pkgdir}/${_install_path}"
 
 	_licenses_dir="${pkgdir}/usr/share/licenses/${_pkg_name}"
 	mkdir -p "${_licenses_dir}"
@@ -35,7 +36,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 	echo "#/bin/sh
 cd ${_install_path}
-./SnootGame.sh" > "${pkgdir}/usr/bin/${_pkg_name}"
+./${_game_name}.sh" > "${pkgdir}/usr/bin/${_pkg_name}"
 	chmod +x "${pkgdir}/usr/bin/${_pkg_name}"
 
 	install -Dm755 "${srcdir}/snoot_game.desktop" "${pkgdir}/usr/share/applications/snoot_game.desktop"
