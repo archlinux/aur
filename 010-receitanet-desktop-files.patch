@@ -1,0 +1,32 @@
+--- a/usr/share/applications/rfb-receitanet.desktop
++++ b/usr/share/applications/rfb-receitanet.desktop
+@@ -2,7 +2,11 @@
+ Version=1.0
+ Type=Application
+ Terminal=false
+-Exec=java --add-exports jdk.crypto.mscapi/sun.security.mscapi=ALL-UNNAMED --add-opens=java.base/java.security=ALL-UNNAMED -jar '/opt/Programas RFB/Receitanet/receitanet.jar'
+-Name=Receitanet 1.32 
+-Comment=Executa Receitanet 1.32
+-Icon=/opt/Programas RFB/Receitanet/imagens/Receitanet.xpm
++Path=/usr/bin
++Exec=receitanet
++Name=Receitanet
++Comment=Programa para envio de arquivos à Receita Federal do Brasil
++Icon=receitanet
++StartupWMClass=serpro-receitanet-gui-ReceitanetApp
++StartupNotify=false
++Categories=Application;
+--- a/usr/share/applications/rfb-receitanet-ajuda.desktop
++++ b/usr/share/applications/rfb-receitanet-ajuda.desktop
+@@ -2,7 +2,9 @@
+ Version=1.0
+ Type=Application
+ Terminal=false
+-Exec=java -jar '/opt/Programas RFB/Receitanet/receitanet.jar' -ajuda
++Exec=java -jar '/usr/share/java/receitanet/receitanet.jar' -ajuda
+ Name=Ajuda do Receitanet
+ Comment=Ajuda do Receitanet
+-Icon=/opt/Programas RFB/Receitanet/imagens/Ajuda.xpm
++Icon=receitanet-ajuda
++StartupNotify=false
++Categories=Application;

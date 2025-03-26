@@ -1,17 +1,20 @@
 pkgbase = receitanet
-	pkgdesc = Programa Oficial da Receita para envio do IRPF
-	pkgver = 1.24
-	pkgrel = 2
-	url = http://www.receita.fazenda.gov.br
+	pkgdesc = Program for sending files to brazilian federal taxes agency
+	pkgver = 1.32
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet
 	arch = any
-	license = custom
-	depends = java-runtime
-	depends = hicolor-icon-theme
-	depends = desktop-file-utils
-	source = http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.24-1.noarch.rpm
-	source = Copyright
-	md5sums = 57e8b9488b3c03059690a0dbc1e32f16
-	md5sums = 0482abdccc0286f64ed66981fcca8975
+	license = LicenseRef-custom
+	depends = java-runtime=11
+	depends = sh
+	noextract = Receitanet-1.32.deb
+	source = https://servicos.receita.fazenda.gov.br/publico/programas/receitanet/Receitanet-1.32.deb
+	source = receitanet.sh
+	source = LICENSE
+	source = 010-receitanet-desktop-files.patch
+	sha256sums = cd83766298282df78c69da5b4cfc6d9435403005849e426c2b38c30a6d9e92db
+	sha256sums = 67ff45ba0254b37102d038dc9a1df056b568f372348cbd6a60cac6651d5f599d
+	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
+	sha256sums = b6097ce94080e7efa7aebe45e8da462fb61ff05fc9a5cfa2e638a4e0d4b7a641
 
 pkgname = receitanet
-

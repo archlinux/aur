@@ -1,49 +1,38 @@
-# Maintainer: Márcio Sousa Rocha <marciosr10@gmail.com>
-
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Márcio Sousa Rocha <marciosr10@gmail.com>
 
 pkgname=receitanet
-pkgver=1.24
-pkgrel=2
-license=('custom')
-
-arch=(any)
-pkgdesc='Programa Oficial da Receita para envio do IRPF'
-url='http://www.receita.fazenda.gov.br'
-
-source=(http://www.receita.fazenda.gov.br/publico/programas/receitanet/receitanet-1.24-1.noarch.rpm
-        Copyright)
-        
-md5sums=('57e8b9488b3c03059690a0dbc1e32f16'
-         '0482abdccc0286f64ed66981fcca8975')
-
-depends=('java-runtime' 'hicolor-icon-theme' 'desktop-file-utils')
-
+pkgver=1.32
+pkgrel=1
+pkgdesc='Program for sending files to brazilian federal taxes agency'
+arch=('any')
+url='https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/receitanet'
+license=('LicenseRef-custom')
+depends=('java-runtime=11' 'sh')
+source=("https://servicos.receita.fazenda.gov.br/publico/programas/receitanet/Receitanet-${pkgver}.deb"
+        'receitanet.sh'
+        'LICENSE'
+        '010-receitanet-desktop-files.patch')
+noextract=("Receitanet-${pkgver}.deb")
+sha256sums=('cd83766298282df78c69da5b4cfc6d9435403005849e426c2b38c30a6d9e92db'
+            '67ff45ba0254b37102d038dc9a1df056b568f372348cbd6a60cac6651d5f599d'
+            'a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67'
+            'b6097ce94080e7efa7aebe45e8da462fb61ff05fc9a5cfa2e638a4e0d4b7a641')
 
 prepare() {
-	cd "$srcdir"/usr/share/applications
-	sed -i "s|java -jar '/opt/Programas\ RFB/Receitanet/receitanet.jar'|receitanet|" rfb-receitanet.desktop
-	sed -i 's|/opt/Programas\ RFB/Receitanet/imagens/Receitanet.xpm|receitanet|' rfb-receitanet.desktop
-	echo 'Categories=Network;' >> rfb-receitanet.desktop
+    mkdir -p "receitanet-${pkgver}/data"
+    bsdtar -xf "Receitanet-${pkgver}.deb" -C "receitanet-${pkgver}"
+    bsdtar -xf "receitanet-${pkgver}/data.tar.gz" -C "receitanet-${pkgver}/data"
+    patch -d "receitanet-${pkgver}/data" -Np1 --binary -i "${srcdir}/010-receitanet-desktop-files.patch"
 }
 
 package() {
-	cd "$srcdir"/opt/Programas\ RFB/Receitanet
-	
-	install -d "$pkgdir"/usr/{bin,share/{icons/hicolor/32x32/apps,applications,licenses/receitanet,receitanet}}
-	
-	cp -rf lib "$pkgdir"/usr/share/receitanet/
-	
-	install -Dm644 receitanet.dat "$pkgdir"/usr/share/receitanet/
-	install -Dm644 receitanet.jar "$pkgdir"/usr/share/receitanet/
-	
-	install -Dm644 imagens/Receitanet.xpm "$pkgdir"/usr/share/icons/hicolor/32x32/apps/receitanet.xpm
-	install -Dm644 "$srcdir"/usr/share/applications/rfb-receitanet.desktop "$pkgdir"/usr/share/applications/receitanet.desktop
-	
-	install -Dm644 "$srcdir"/Copyright "$pkgdir"/usr/share/licenses/receitanet/
-	
-	echo -e '#!/bin/sh\ncd /usr/share/receitanet' > "$pkgdir"/usr/bin/receitanet
-	echo 'java -jar /usr/share/receitanet/receitanet.jar' >> "$pkgdir"/usr/bin/receitanet
-	
-	chmod 755 "$pkgdir"/usr/bin/receitanet
-
+    install -D -m644 "receitanet-${pkgver}/data/opt/Programas RFB/Receitanet/receitanet".{dat,jar} -t "${pkgdir}/usr/share/java/receitanet"
+    cp -dr --no-preserve='ownership' "receitanet-${pkgver}/data/opt/Programas RFB/Receitanet/lib" "${pkgdir}/usr/share/java/receitanet"
+    install -D -m644 "receitanet-${pkgver}/data/opt/Programas RFB/Receitanet/imagens"/Ajuda.xpm "${pkgdir}/usr/share/pixmaps/receitanet-ajuda.xpm"
+    install -D -m644 "receitanet-${pkgver}/data/opt/Programas RFB/Receitanet/imagens"/Receitanet.xpm "${pkgdir}/usr/share/pixmaps/receitanet.xpm"
+    install -D -m644 "receitanet-${pkgver}/data/usr/share/applications/rfb-receitanet-ajuda.desktop" "${pkgdir}/usr/share/applications/receitanet-ajuda.desktop"
+    install -D -m644 "receitanet-${pkgver}/data/usr/share/applications/rfb-receitanet.desktop" "${pkgdir}/usr/share/applications/receitanet.desktop"
+    install -D -m755 receitanet.sh "${pkgdir}/usr/bin/${pkgname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
