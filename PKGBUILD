@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.7.4
+pkgver=1.7.7
 pkgrel=3
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -24,6 +24,8 @@ depends=(
   python-typing_extensions
   python-jinja
   python-grpcio
+  python-google-genai
+  python-mistralai
 )
 makedepends=(
   python-build
@@ -40,6 +42,8 @@ checkdepends=(
   python-pytest
   python-pytest-asyncio
   python-docstring-parser
+  python-typing-inspection
+  python-google-generativeai
 )
 optdepends=(
   'python-anthropic: support for Anthropic models'
@@ -48,7 +52,7 @@ optdepends=(
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d5881a2387a44e944a75e8d749fd8e632136102533360a5aa301c400c3d47d61')
+sha256sums=('fe2410b52a76a0f74c1c0700cb4d942d7bca62e9d97fac86e1e9f3fcb2297b4d')
 
 _archive="$_pkgname-$pkgver"
 
@@ -87,7 +91,14 @@ check() {
     --deselect tests/llm/test_anthropic/test_multimodal.py \
     --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode \
     --deselect tests/llm/test_anthropic/test_reasoning.py \
-    --deselect tests/llm/test_perplexity/test_modes.py
+    --deselect tests/llm/test_perplexity/test_modes.py \
+    --deselect tests/llm/test_mistral/test_retries.py \
+    --deselect tests/llm/test_mistral/test_modes.py \
+    --deselect tests/llm/test_genai/test_stream.py \
+    --deselect tests/llm/test_genai/test_simple.py \
+    --deselect tests/llm/test_genai/test_retries.py \
+    --deselect tests/llm/test_genai/test_multimodal.py \
+    --deselect tests/llm/test_genai/test_format.py
 }
 
 package() {
