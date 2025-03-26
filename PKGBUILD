@@ -10,7 +10,7 @@ license=("GPL3")
 _java_version=17
 depends=(
     'bash'
-    'java-environment-openjdk>='${_java_version}
+    'java-environment>='${_java_version}
     'limine'
     'snapper'
     'btrfs-progs'
