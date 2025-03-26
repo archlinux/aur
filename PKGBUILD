@@ -8,14 +8,14 @@ pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
 url='http://xenia.jp'
 license=('BSD-3-Clause')
-depends=('gtk3'
+depends=('glib2'
+         'gtk3'
          'libx11'
          'libxcb'
          'sdl2'
          'zlib')
 makedepends=('clang'
              'git'
-             'libpthread-stubs'
              'llvm'
              'ninja'
              'premake'
@@ -118,16 +118,16 @@ prepare() {
     git -C "${pkgname}" -c protocol.file.allow=always submodule update "${submodule}"
   done
 
-  cd "${pkgname}"
+  pushd "${pkgname}" || return
   ./xenia-build setup
 }
 
 build() {
-  cd "${pkgname}"
+  pushd "${pkgname}" || return
   ./xenia-build build \
     --config Release \
-    --target "${_binname}" \
-    $(echo ${MAKEFLAGS} | grep -oE '\-j\s?[0-9]+' | sed -r 's/-j([0-9]+)/-j \1/' | head -n 1)
+    --target "xenia-app" \
+    $(echo "${MAKEFLAGS}" | grep -oE '\-j\s?[0-9]+' | sed -r 's/-j([0-9]+)/-j \1/' | head -n 1)
 }
 
 package() {
