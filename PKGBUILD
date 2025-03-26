@@ -3,7 +3,7 @@
 
 pkgname='bzr-player'
 pkgver='2.0.75'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('i686' 'x86_64')
 url="http://bzrplayer.blazer.nu"
