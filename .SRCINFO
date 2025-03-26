@@ -1,11 +1,13 @@
 pkgbase = python-hdf5storage
 	pkgdesc = Read and write a wide range of Python types to/from HDF5 formatted files.
 	pkgver = 0.1.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/frejanordsiek/hdf5storage
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-build
 	depends = python
 	depends = python-numpy
 	depends = python-h5py
