@@ -1,43 +1,42 @@
-# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Maintainer:
+# Contributor: Filipe Nascimento <flipee at tuta dot io>
 
-pkgname=qrcp
-pkgver=0.11.2
+_pkgname="qrcp"
+pkgname="$_pkgname"
+pkgver=0.11.6
 pkgrel=1
-pkgdesc="Transfer files over Wi-Fi from your computer to a mobile device by scanning a QR code without leaving the terminal"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+pkgdesc="Transfer files over WiFi from computer to mobile by scanning a QR code at the terminal"
 url="https://github.com/claudiodangelis/qrcp"
 license=('MIT')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fd8723e1f792902a1a0eff07242b2915eeec66741c08f5fa1ecdaefce607f168')
+
+_pkgsrc="$_pkgname-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('a3eff505f366713fcb7694e0e292ff2da05e270f9539b6a8561c4cf267ec23c8')
 
 build() {
-    cd $pkgname-$pkgver
+  cd "$_pkgsrc"
 
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode=external
-            -X \"github.com/claudiodangelis/qrcp/version.version=$pkgver\"
-            -X \"github.com/claudiodangelis/qrcp/version.date=$(date -d@"$SOURCE_DATE_EPOCH" +%Y-%m-%dT%H:%M:%SZ)\"" \
+  go build
 
-    ./qrcp completion bash | install -Dm644 /dev/stdin share/bash-completion/completions/qrcp
-    ./qrcp completion zsh | install -Dm644 /dev/stdin share/zsh/site-functions/_qrcp
-    ./qrcp completion fish | install -Dm644 /dev/stdin share/fish/vendor_completions.d/qrcp.fish
+  ./qrcp completion bash | install -Dm644 /dev/stdin share/bash-completion/completions/qrcp
+  ./qrcp completion zsh | install -Dm644 /dev/stdin share/zsh/site-functions/_qrcp
+  ./qrcp completion fish | install -Dm644 /dev/stdin share/fish/vendor_completions.d/qrcp.fish
 }
 
 package() {
-    cd $pkgname-$pkgver
-    install -Dm755 $pkgname -t "$pkgdir/usr/bin"
-    cp -r share/ "$pkgdir/usr"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cd "$_pkgsrc"
+  install -Dm755 qrcp -t "$pkgdir/usr/bin"
+  cp -r share/ "$pkgdir/usr"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
