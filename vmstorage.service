@@ -11,7 +11,7 @@ User=victoriametrics
 Group=victoriametrics
 WorkingDirectory=/var/lib/victoriametrics/cluster-data
 EnvironmentFile=-/etc/conf.d/vmstorage
-ExecStart=/usr/bin/vmstorage --storageDataPath="/var/lib/victoriametrics/cluster-data" $VMSTORAGE_ARGS
+ExecStart=/usr/bin/vmstorage --storageDataPath="/var/lib/victoriametrics/cluster-data" --loggerDisableTimestamps --loggerOutput="stdout" $VMSTORAGE_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=1048576

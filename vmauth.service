@@ -9,7 +9,7 @@ Wants=network-online.target nss-lookup.target
 User=victoriametrics
 Group=victoriametrics
 EnvironmentFile=-/etc/conf.d/vmauth
-ExecStart=/usr/bin/vmauth --auth.config="/etc/victoriametrics/vmauth.yml" $VMAUTH_ARGS
+ExecStart=/usr/bin/vmauth --auth.config="/etc/victoriametrics/vmauth.yml" --loggerDisableTimestamps --loggerOutput="stdout" $VMAUTH_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=1048576

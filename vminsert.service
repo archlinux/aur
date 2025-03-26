@@ -10,7 +10,7 @@ Wants=network-online.target nss-lookup.target
 User=victoriametrics
 Group=victoriametrics
 EnvironmentFile=-/etc/conf.d/vminsert
-ExecStart=/usr/bin/vminsert $VMINSERT_ARGS
+ExecStart=/usr/bin/vminsert --loggerDisableTimestamps --loggerOutput="stdout" $VMINSERT_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=1048576
