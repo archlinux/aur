@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -27,8 +27,8 @@ build() {
 	cmake -B build -S "$pkgname-unified-source-$_date-$_commit" -G Ninja \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
-	-DCMAKE_C_FLAGS="${CFLAGS/-Wp,-D_FORTIFY_SOURCE=3 /} -flto=thin" \
-	-DCMAKE_CXX_FLAGS="${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=3 /} -flto=thin" \
+	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
 	-DUSE_DISCORD_PRESENCE=ON \
