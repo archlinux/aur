@@ -7,7 +7,11 @@ pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad 
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
-depends=('gtk3' 'libsecret' 'nss')
+depends=(
+  'gtk3'
+  'libsecret'
+  'nss'
+)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
