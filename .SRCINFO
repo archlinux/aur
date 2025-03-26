@@ -1,7 +1,7 @@
 pkgbase = kerncraft-git
 	pkgdesc = Loop Kernel Analysis and Performance Modeling Toolkit
 	pkgver = r1290
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RRZE-HPC/kerncraft
 	arch = any
 	license = GPLv3
@@ -21,10 +21,11 @@ pkgbase = kerncraft-git
 	depends = python-pyparsing
 	depends = python-networkx
 	depends = python-psutil
-	optdepends = intel-compiler-base
+	optdepends = iaca
 	optdepends = gcc
 	optdepends = python-matplotlib
 	provides = kerncraft
+	conflicts = kerncraft
 	source = git+https://github.com/RRZE-HPC/kerncraft.git
 	sha256sums = SKIP
 
