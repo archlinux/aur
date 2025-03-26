@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=yaylog-bin
 pkgver=3.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility to list installed packages with filtering and sorting, written in Go."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Zweih/yaylog"
