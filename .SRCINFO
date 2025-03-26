@@ -1,7 +1,7 @@
 pkgbase = calf-no-gui
 	pkgdesc = LV2 plug-in suite and standalone Jack host - GUI disabled
 	pkgver = 0.90.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://calf-studio-gear.org
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -9,7 +9,6 @@ pkgbase = calf-no-gui
 	makedepends = lv2
 	depends = expat
 	depends = fluidsynth
-	depends = hicolor-icon-theme
 	depends = jack
 	provides = calf
 	conflicts = calf

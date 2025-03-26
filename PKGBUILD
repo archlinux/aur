@@ -3,14 +3,14 @@
 _pkgname=calf
 pkgname="$_pkgname-no-gui"
 pkgver=0.90.5
-pkgrel=1
+pkgrel=2
 pkgdesc='LV2 plug-in suite and standalone Jack host - GUI disabled'
 arch=('x86_64')
 url='https://calf-studio-gear.org'
 license=('LGPL-2.1-only')
 provides=('calf')
 conflicts=('calf')
-depends=('expat' 'fluidsynth' 'hicolor-icon-theme' 'jack')
+depends=('expat' 'fluidsynth' 'jack')
 makedepends=('cmake' 'lv2')
 source=("https://github.com/calf-studio-gear/calf/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('af694c09b063c83ea475aa500ad9fc1fc44f7ca3a612952f0d74ca384c6ef993ff7b61c9d54122450966304d6f5f4e6a60e5a62a415ee09d75c66108063a5f70')
@@ -23,6 +23,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DWANT_EXPERIMENTAL=ON
     -DWANT_GUI=OFF
+    -DWANT_LASH=OFF
   )
   cmake "${cmake_options[@]}"
   cmake --build build
