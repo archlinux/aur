@@ -5,21 +5,46 @@
 # adapted from package: pianoteq-stage-trial-bin
 # adapted from pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
+# the source package must be downloaded manually
+# this can be done by going to the link here:
+# https://www.modartt.com/download?file=pianoteq_stage_linux_v841.7z
+# The downloaded files must be placed in the appropriate directory
+# - makepkg: The same directory as this PKGBUILD
+# - yay:
+
 pkgname=pianoteq-stage
 pkgver=8.4.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
 url="https://www.pianoteq.com/pianoteq"
-license=('LGPL')
+license=('custom')
 depends=('alsa-lib' 'freetype2' 'ttf-font' 'libx11')
 makedepends=('gendesk' 'p7zip')
 optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
-# the source package must be downloaded manually
-# this can be done by going to the link here:
-# https://www.modartt.com/download?file=pianoteq_stage_linux_v841.7z
+
+_sourcefile="./pianoteq_stage_linux_v${pkgver//./}.7z"
+if [ ! -f ${_sourcefile} ]; then
+  echo ""
+  echo "	Due to license and website restriction, to build this package, the source file must be downloaded manually."
+  echo "	You can download the source file of Pianoteq Stage $pkgver from here:"
+  echo ""
+  echo "	https://www.modartt.com/download?file=pianoteq_stage_linux_v${pkgver//./}.7z"
+  echo ""
+  echo "	You must be logged in and own a valid copy of Pianoteq Stage in order to download"
+  echo ""
+  echo "	The Downloaded file must be placed in the appropriate directory depending on your AUR helper (or lack of thereof) here:"
+  echo "		- makepkg: Same directory as this PKGBUILD"
+  echo "		- yay: /home/<user>/.cache/yay/pianoteq-stage"
+  echo "		- paru: /home/<user>/.cache/paru/clone/pianoteq-stage/                                                                                                    "
+  echo ""
+  echo "Operation Aborted"
+  echo ""
+  return 1
+fi
+
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 b2sums=('d981a40c51b8272301eb4d2c165d8a6a6bf507c8b58fb849fce14be0ae01f6aa2663a3d210c48c6d9859f5635b6caf546d058784c42d2d7cb9a693995f010598'
