@@ -6,13 +6,13 @@ pkgbase = icingaweb2
 	install = icingaweb2.install
 	arch = any
 	license = GPL
-	depends = php
+	depends = php-legacy
 	depends = icinga-php-library>=0.9.0
 	depends = icinga-php-thirdparty>=0.11.0
-	optdepends = php-gd: export data to PDF
-	optdepends = php-imagick: graphs in PDF exports
-	optdepends = php-intl: support for internationalization
-	optdepends = php-pgsql: for PostgreSQL backend
+	optdepends = php-legacy-gd: export data to PDF
+	optdepends = php-legacy-imagick: graphs in PDF exports
+	optdepends = php-legacy-intl: support for internationalization
+	optdepends = php-legacy-pgsql: for PostgreSQL backend
 	source = icingaweb2-2.12.2.tar.gz::https://github.com/Icinga/icingaweb2/archive/v2.12.2.tar.gz
 	sha256sums = b15687a499f1774aaf953216990c5c94639a19a68977c288847b857541c84649
 
