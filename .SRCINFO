@@ -1,14 +1,17 @@
 pkgbase = 5ire-extracted
 	pkgdesc = 5ire - cross-platform desktop AI assistant (extracted from Appimage)
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nanbingxyz/5ire
 	arch = x86_64
-	license = custom:Modified-Apache-2.0
+	license = custom:Modified-Apache-License-2.0
 	noextract = 5ire-0.9.8-x86_64.AppImage
+	noextract = LICENSE
 	options = !strip
 	options = !debug
 	source = 5ire-0.9.8-x86_64.AppImage::https://github.com/nanbingxyz/5ire/releases/download/v0.9.8/5ire-0.9.8-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/nanbingxyz/5ire/refs/heads/main/LICENSE
 	sha256sums = 67538593d1e34f4bf01c0b631144079ec5a3df2a26ff7c9522432c630aa6247a
+	sha256sums = SKIP
 
 pkgname = 5ire-extracted
