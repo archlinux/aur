@@ -1,0 +1,17 @@
+pkgbase = python-poetry-plugin-migrate
+	pkgdesc = Poetry plugin to migrate pyproject.toml from Poetry v1 to v2 (PEP-621 compliant)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/zyf722/poetry-plugin-migrate
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python<4.0
+	depends = python-poetry>=2.0.0
+	source = https://files.pythonhosted.org/packages/source/p/poetry_plugin_migrate/poetry_plugin_migrate-0.1.1.tar.gz
+	sha256sums = c645a4755982afa6d19be1e2f7bef94377157151ce259d14057fa4061221b81c
+
+pkgname = python-poetry-plugin-migrate
