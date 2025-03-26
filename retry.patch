@@ -1,0 +1,104 @@
+From 2712da205b1280bca17834db0f423e513196128e Mon Sep 17 00:00:00 2001
+From: Rehan <rehanalirana@tuta.io>
+Date: Mon, 27 Nov 2023 18:56:39 -0500
+Subject: [PATCH] Retry up to 3 times on password authentication failure
+
+---
+ doas.h   |  2 ++
+ pam.c    | 19 ++++++++++++++-----
+ shadow.c | 39 ++++++++++++++++++++++-----------------
+ 3 files changed, 38 insertions(+), 22 deletions(-)
+
+diff --git a/doas.h b/doas.h
+index a8aa41b..b7a877a 100644
+--- a/doas.h
++++ b/doas.h
+@@ -44,6 +44,8 @@ char **prepenv(const struct rule *, const struct passwd *,
+ #define PERSIST		0x4
+ #define NOLOG		0x8
+ 
++#define AUTH_RETRIES	3
++
+ #ifdef USE_PAM
+ void pamauth(const char *, const char *, int, int, int);
+ #endif
+diff --git a/pam.c b/pam.c
+index fa483b8..813aa27 100644
+--- a/pam.c
++++ b/pam.c
+@@ -286,11 +286,20 @@ pamauth(const char *user, const char *myname, int interactive, int nopass, int p
+ 		    "\rdoas (%.32s@%.32s) password: ", myname, host);
+ 
+ 		/* authenticate */
+-		ret = pam_authenticate(pamh, 0);
+-		if (ret != PAM_SUCCESS) {
+-			pamcleanup(ret, sess, cred);
+-			syslog(LOG_AUTHPRIV | LOG_NOTICE, "failed auth for %s", myname);
+-			errx(1, "Authentication failed");
++		for (int i = 0; i < AUTH_RETRIES; i++) {
++			ret = pam_authenticate(pamh, 0);
++			if (ret != PAM_SUCCESS) {
++				syslog(LOG_AUTHPRIV | LOG_NOTICE, "failed auth for %s", myname);
++
++				if (i == AUTH_RETRIES - 1) {
++					pamcleanup(ret, sess, cred);
++					errx(1, "Authentication failed");
++				}
++				else
++					warnx("Authentication failed");
++			}
++			else
++				break;
+ 		}
+ 	}
+ 
+diff --git a/shadow.c b/shadow.c
+index 2569b58..b6b2669 100644
+--- a/shadow.c
++++ b/shadow.c
+@@ -80,23 +80,28 @@ shadowauth(const char *myname, int persist)
+ 	snprintf(cbuf, sizeof(cbuf),
+ 			"\rdoas (%.32s@%.32s) password: ", myname, host);
+ 	challenge = cbuf;
+-
+-	response = readpassphrase(challenge, rbuf, sizeof(rbuf), RPP_REQUIRE_TTY);
+-	if (response == NULL && errno == ENOTTY) {
+-		syslog(LOG_AUTHPRIV | LOG_NOTICE,
+-			"tty required for %s", myname);
+-		errx(1, "a tty is required");
+-	}
+-	if (response == NULL)
+-		err(1, "readpassphrase");
+-	if ((encrypted = crypt(response, hash)) == NULL) {
+-		explicit_bzero(rbuf, sizeof(rbuf));
+-		errx(1, "Authentication failed");
+-	}
+-	explicit_bzero(rbuf, sizeof(rbuf));
+-	if (strcmp(encrypted, hash) != 0) {
+-		syslog(LOG_AUTHPRIV | LOG_NOTICE, "failed auth for %s", myname);
+-		errx(1, "Authentication failed");
++	for (int i = 0; i < AUTH_RETRIES; i++) {
++		response = readpassphrase(challenge, rbuf, sizeof(rbuf), RPP_REQUIRE_TTY);
++		if (response == NULL && errno == ENOTTY) {
++			syslog(LOG_AUTHPRIV | LOG_NOTICE,
++				"tty required for %s", myname);
++			errx(1, "a tty is required");
++		}
++		if (response == NULL)
++			err(1, "readpassphrase");
++		if ((encrypted = crypt(response, hash)) == NULL) {
++			explicit_bzero(rbuf, sizeof(rbuf));
++			(i == AUTH_RETRIES - 1) ? errx(1, "Authentication failed") : warnx("Authentication failed");
++		}
++		else {
++			explicit_bzero(rbuf, sizeof(rbuf));
++			if (strcmp(encrypted, hash) != 0) {
++				syslog(LOG_AUTHPRIV | LOG_NOTICE, "failed auth for %s", myname);
++				(i == AUTH_RETRIES - 1) ? errx(1, "Authentication failed") : warnx("Authentication failed");
++			}
++			else
++				break;
++		}
+ 	}
+ 
+ #ifdef USE_TIMESTAMP

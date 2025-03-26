@@ -1,0 +1,18 @@
+pkgbase = opendoas-retry
+	pkgdesc = Run commands as super user or another user, with retries
+	pkgver = 6.8.2
+	pkgrel = 1
+	url = https://github.com/Duncaen/OpenDoas
+	arch = x86_64
+	arch = i686
+	license = custom:ISC
+	depends = pam
+	provides = opendoas
+	provides = doas
+	conflicts = opendoas
+	source = opendoas-retry::git+https://github.com/Duncaen/OpenDoas.git#tag=v6.8.2
+	source = retry.patch
+	sha256sums = 43b4c2de1aaa31aac1d322b98883334b864c606783c4dfb3ddbfa0d88af9332b
+	sha256sums = SKIP
+
+pkgname = opendoas-retry
