@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-bin
 _pkgname=Onlook
-pkgver=0.2.20
+pkgver=0.2.21
 _electronversion=35
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Prebuilt version.Use system-wide electron)"
@@ -23,11 +23,11 @@ makedepends=(
     'asar'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}-linux/${_pkgname}-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}-linux/${_pkgname}-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('280e34eec4ed7354108cdf3def4eb421809cd51965bbf314cc4e2942892d3289')
-sha256sums_x86_64=('d73ccfad4b537103a313e072fcb564de1d1a0e486f6bd2535ee04e2507af4ff8')
+sha256sums_aarch64=('2ee5af5fde18148133f0500b8957e782b33d4ceb05bc314e2a1a949282e466a5')
+sha256sums_x86_64=('c79c0e1fd0629c1e9dc0cd046d94fbf7971a4cdcb4da6d1f4e0417fc2387f884')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
