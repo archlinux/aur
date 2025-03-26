@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-symengine')
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Fast symbolic manipulation library, written in C++ (mingw-w64)'
 url='http://sympy.org/'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-boost')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-libmpc' 'mingw-w64-primesieve' 'mingw-w64-llvm' 'mingw-w64-flint')
 source=("https://github.com/symengine/symengine/releases/download/v$pkgver/symengine-$pkgver.tar.gz")
-sha256sums=('f46bcf037529cd1a422369327bf360ad4c7d2b02d0f607a62a5b09c74a55bb59')
+sha256sums=('11c5f64e9eec998152437f288b8429ec001168277d55f3f5f1df78e3cf129707')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
