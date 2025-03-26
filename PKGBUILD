@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=converse
 _pkgname=Converse
-pkgver=0.1.0
+pkgver=0.2.0
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c48678b0786b8c6fc28fdefa5ef992078024ceb695e60283ccf09a3d242689ec'
+sha256sums=('3817d10c524146b0fc4e40f96a122d9a057d50ecc36ca4320235cb79ac794b87'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -64,7 +64,7 @@ prepare() {
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi    
+    fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     icns2png -x icons/"${_pkgname}.icns" -o ./
