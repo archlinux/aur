@@ -1,5 +1,5 @@
 # Maintainer: thirdwinter thirdwinters@gmail.com
-pkgname=foamshot
+pkgname=foamshot-bin
 pkgver=v0.1.1
 pkgrel=1
 epoch=
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/Thirdwinter/foamshot/releases/download/$pkgver/$pkgname-linux-x86_64")
+source=("https://github.com/Thirdwinter/foamshot/releases/download/$pkgver/foamshot-linux-x86_64")
 noextract=()
 sha256sums=("2b32b0b1d4c41f34045611ea84a56f98ee0d276575979a2407a7a75853784793")
 validpgpkeys=()
@@ -41,5 +41,5 @@ validpgpkeys=()
 # }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-linux-x86_64" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/foamshot-linux-x86_64" "$pkgdir/usr/bin/foamshot"
 }
