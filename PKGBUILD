@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=woniu_ali
 pkgname="${_appname//_/-}-bin"
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="蜗牛云盘PC版"
-arch=("x86_64")
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://snail8.cn/app"
 _dlurl="https://www.aliyundrive.com/s/fqu79Z2dBbu/folder/638720ab185b2cf913ce4f438aacd4395844098b"
 _mrurl="https://github.com/zxp19821005/My_AUR_Files"
@@ -18,28 +21,47 @@ depends=(
     'gtk2'
     'mpv'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_mrurl}/releases/download/${_appname}-${pkgver}/${_appname}_linux_x64_${pkgver}.deb"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('9279d0419eddf8b083e8952dab9d88f773446e047d622c74c5e2a7675919c0cc'
-            '019043cb49dbe1b45db9a551a1e70a07d3098c585a94e4b1284d6d3a4554f2dc')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_appname}_linux_x64|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed -e "s|/opt/${_appname}_linux_x64/${_appname}_linux_x64 %U|${pkgname%-bin} %U|g" \
-        -e "s|/opt/${_appname}_linux_x64/${_appname}_linux_x64.png|${pkgname%-bin}|g" \
-        -e "s|Utility|Network;|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}_linux_x64.desktop"
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_mrurl}/releases/download/${_appname}-${pkgver}/${_appname}_linux_arm64_${pkgver}.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_mrurl}/releases/download/${_appname}-${pkgver}/${_appname}_linux_x64_${pkgver}.rpm")
+sha256sums=('95c4e7fcdebf229da8f58a47cda68ec09b4524fe34b56df2dfc89faa5644facb')
+sha256sums_aarch64=('905d818c6b32dc3ec66863748e28ed4e00e962d54d7a41b01385e2e30e0b02de')
+sha256sums_x86_64=('27cd03d10eb22f17a842648b63cd25fa1e7ad630b26f6962a7bbd68532e9ca86')
+prepare() {
+    case "${CARCH}" in
+        aarch64)
+            _archname='arm64'
+            ;;
+        x86_64)
+            _archname='x64'
+            ;;
+    esac
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_appname}_linux_${_archname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\/opt\/${_appname}_linux_${_archname}\/${_appname}_linux_${_archname} %U/${pkgname%-bin} %U/g
+        s/\/opt\/${_appname}_linux_${_archname}\/${_appname}_linux_${_archname}.png/${pkgname%-bin}/g
+        s/Utility/Network;/g
+    " "${srcdir}/opt/${_appname}_linux_${_archname}/${_appname}_linux_${_archname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/mpv"
-    cp -r "${srcdir}/opt/${_appname}_linux_x64/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    case "${CARCH}" in
+        aarch64)
+            _archname='arm64'
+            ;;
+        x86_64)
+            _archname='x64'
+            ;;
+    esac
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_appname}_linux_${_archname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/bin/mpv" "${pkgdir}/usr/lib/${pkgname%-bin}/mpv/mpv"
-    install -Dm644 "${srcdir}/usr/share/applications/${_appname}_linux_x64.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/opt/${_appname}_linux_x64/${_appname}_linux_x64.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${_appname}_linux_${_archname}/${_appname}_linux_${_archname}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/opt/${_appname}_linux_${_archname}/${_appname}_linux_${_archname}.png" \
+        "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
