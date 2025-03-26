@@ -5,11 +5,11 @@
 _name=click_option_group
 pkgname=python-click-option-group
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Option groups missing in Click"
 arch=(any)
 url="https://github.com/click-contrib/click-option-group"
-license=(BSD)
+license=(BSD-3-Clause)
 depends=(
   python
   python-click
@@ -18,6 +18,7 @@ makedepends=(
   python-build
   python-installer
   python-hatch
+  python-hatch-vcs
   python-wheel
 )
 checkdepends=(python-pytest)
