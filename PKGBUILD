@@ -1,3 +1,5 @@
+# Maintainer: Rin <icealtria at gmail dot com>
+
 pkgname='tlm-bin'
 pkgdesc='Local CLI Copilot, powered by Ollama.'
 pkgver='1.2'
