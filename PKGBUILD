@@ -1,5 +1,5 @@
 pkgname=kathara
-pkgver=3.7.8
+pkgver=3.7.9
 pkgrel=1
 pkgdesc="A lightweight container-based network emulation tool."
 arch=('any')
@@ -32,7 +32,7 @@ prepare() {
 build() {
   cd $srcdir/Kathara-$pkgver/docs && make roff-build
   cd $srcdir/Kathara-$pkgver/scripts/autocompletion/ && $srcdir/venv/bin/python generate_autocompletion.py $srcdir/Kathara-$pkgver/scripts/autocompletion/kathara.bash-completion
-  #cd $srcdir/Kathara-$pkgver/ && $srcdir/venv/bin/python -m pytest tests
+  cd $srcdir/Kathara-$pkgver/ && $srcdir/venv/bin/python -m pytest tests
   cp $srcdir/Kathara-$pkgver/scripts/Linux-Pkg/kathara.spec $srcdir/Kathara-$pkgver/src/
   cd $srcdir/Kathara-$pkgver/src/ && $srcdir/venv/bin/pyinstaller --distpath=./kathara.dist --workpath=./kathara.build kathara.spec
 }
@@ -50,10 +50,10 @@ package() {
   install -p -m 644 $srcdir/Kathara-$pkgver/scripts/autocompletion/kathara.bash-completion $pkgdir/etc/bash_completion.d/
 
   install -d $pkgdir/usr/lib/$pkgname
-  chmod g+s $srcdir/Kathara-$pkgver/src/kathara.dist/kathara
   cp -r $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/_internal $pkgdir/usr/lib/$pkgname/_internal
-  chmod -R 755 $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/_internal
-  install -p -m 755 $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/kathara $pkgdir/usr/lib/$pkgname/
+  find $pkgdir/usr/lib/$pkgname/_internal -type f -exec chmod 644 {} \;
+  install -p -m 2755 -g 962 $srcdir/Kathara-$pkgver/src/kathara.dist/kathara/kathara $pkgdir/usr/lib/$pkgname/
   install -d -m 755 $pkgdir/usr/bin
-  ln -sf /usr/lib/$pkgname/kathara "$pkgdir/usr/bin/$pkgname"
+  ln -sf /usr/lib/$pkgname/kathara $pkgdir/usr/bin/$pkgname
 }
+
