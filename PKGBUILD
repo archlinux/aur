@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-auto-lyrics
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Curses based lyrics display and fetcher for cmus music player"
 arch=('any')
