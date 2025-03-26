@@ -1,7 +1,7 @@
 pkgbase = qrcp
 	pkgdesc = Transfer files over WiFi from computer to mobile by scanning a QR code at the terminal
 	pkgver = 0.11.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/claudiodangelis/qrcp
 	arch = i686
 	arch = x86_64
