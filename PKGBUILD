@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=embertune-bin
 _pkgname=EmberTune
-pkgver=0.1.7
+pkgver=0.2.1
 _electronversion=35
 pkgrel=1
 pkgdesc="A desktop music player with a focus on design and functionality, aims to be a solid alternative to your streaming services without any ads.(Prebuilt version.Use system-wide electron)"
@@ -18,10 +18,10 @@ makedepends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/DylanAkp/EmberTune/main/LICENSE"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/DylanAkp/EmberTune/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4e2340bb65d2b5efad85a50c3d09f5dbb88b1823756ec472f469610d3c27cc93'
+sha256sums=('9329ce66729e15cbe5373348fa168c7aadfcd3b77c2824971d8a5cd6a6da8b1f'
             '2596c629e297252208c9a49402be4cf61fda1cfef7a6d9eb2fd298da425f757a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -41,5 +41,5 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
