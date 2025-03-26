@@ -3,7 +3,7 @@
 
 pkgname=python-markitdown
 _pkgname=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Utility tool for converting various files to Markdown"
 arch=(any)
@@ -26,6 +26,7 @@ depends=(
   python-speechrecognition
   python-pathvalidate
   python-cobble #not requested in pyproject.toml but apparently needed at runtime
+  python-olefile
 )
 makedepends=(
   python-build
@@ -36,7 +37,7 @@ makedepends=(
 )
 #source=("https://files.pythonhosted.org/packages/14/d8/e23bd08cd9749cb16ec5832a9e02d5f715efe2c7fc7e2637afaf41df2eee/${_pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3501fe8088191bedb7bd31fb4188e08289149a4b84524c8a935d19704fb7ecc1')
+sha256sums=('9c9d1cdc627dfa105a1924dd9745915a9f0a4b0c04a21ffff20576b5446126da')
 
 _pkgdir="$_pkgname-$pkgver/packages/markitdown/"
 build() {

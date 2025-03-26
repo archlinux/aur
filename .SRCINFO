@@ -1,6 +1,6 @@
 pkgbase = python-markitdown
 	pkgdesc = Utility tool for converting various files to Markdown
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/microsoft/markitdown
 	arch = any
@@ -26,7 +26,8 @@ pkgbase = python-markitdown
 	depends = python-speechrecognition
 	depends = python-pathvalidate
 	depends = python-cobble
-	source = python-markitdown-0.1.0.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 3501fe8088191bedb7bd31fb4188e08289149a4b84524c8a935d19704fb7ecc1
+	depends = python-olefile
+	source = python-markitdown-0.1.1.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 9c9d1cdc627dfa105a1924dd9745915a9f0a4b0c04a21ffff20576b5446126da
 
 pkgname = python-markitdown
