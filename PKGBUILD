@@ -1,46 +1,51 @@
-# Maintainer: doublesack <doublesackI@gmail.com>
-pkgname=('python-qdldl')
-_module='qdldl-python'
-pkgver=v0.1.5.post0
-pkgrel=3
-pkgdesc="Python interface to the QDLDL free LDL factorization routine for quasi-definite linear systems: Ax = b"
-url="https://github.com/osqp/qdldl-python"
-depends=(
-    'python-numpy'
-    'python-scipy'
-    ) 
-makedepends=('python-setuptools'
-	     'pybind11'
-	     'python-wheel'
-	     'python-build'
-	     'python-installer'
-	     'cmake')
-provides=('python-qdldl')
-conflicts=('python-qdldl-git')
-license=('Apache')
-arch=('x86_64')
-source=("git+https://github.com/osqp/qdldl-python.git#tag=${pkgver}"
-	"git+https://github.com/osqp/qdldl.git"
-)
-sha256sums=(
-	'SKIP'
-	'SKIP'
-)
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 
+_pyname=qdldl-python
+pkgname=python-qdldl
+pkgver=0.1.7.post5
+pkgrel=2
+pkgdesc='Python interface to the QDLDL free LDL factorization routine for quasi-definite linear systems'
+url='https://github.com/oxfordcontrol/qdldl-python/'
+license=(Apache-2.0)
+arch=(x86_64)
+depends=(gcc-libs
+         glibc
+         python
+         python-scipy)
+makedepends=(cmake
+             git
+             pybind11
+             python-build
+             python-installer
+             python-setuptools
+             python-wheel)
+checkdepends=(python-pytest)
+source=(git+https://github.com/osqp/$_pyname#tag=v$pkgver
+        git+https://github.com/oxfordcontrol/qdldl)
+sha256sums=('97a009c64d5081e61473b382210d64066256713e6761e4be331b81c4f1c23b57'
+            'SKIP')
 
 prepare() {
-	cd qdldl-python
-	git submodule init
-	git config submodule.qdldl.url ${srcdir}/qdldl
-	git submodule update --init --recursive
+  cd $_pyname
+  git submodule init
+  git submodule set-url c/qdldl "$srcdir"/qdldl
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    cd qdldl-python
-    python -m build --wheel --no-isolation
+  cd $_pyname
+  python -m build --wheel --no-isolation --skip-dependency-check
+}
+
+check() {
+  cd $_pyname
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -v
 }
 
 package() {
-    cd qdldl-python
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd $_pyname
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
