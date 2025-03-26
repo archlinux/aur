@@ -1,6 +1,6 @@
 pkgbase = configurator
 	pkgdesc = An extensible tool to dynamically generate config files from SMD with Jinja 2 templating support.
-	pkgver = v0.1.0alpha
+	pkgver = v0.2.1
 	pkgrel = 1
 	url = https://github.com/OpenCHAMI/configurator
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = configurator
 	license = MIT
 	provides = configurator
 	conflicts = configurator
-	source_x86_64 = https://github.com/OpenCHAMI/configurator/releases/download/v0.1.0-alpha/configurator.tar.gz
-	sha256sums_x86_64 = 28e10f1e39757bbdc3a503de74dd4d8c610d9c78e89665fb42012e8ef7834d0f
+	source_x86_64 = https://github.com/OpenCHAMI/configurator/releases/download/v0.2.1/configurator_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b0b45ca438b04cfc51da1758f965e46c2b5369f26d4f11e58666b65c2eb1932d
 
 pkgname = configurator
