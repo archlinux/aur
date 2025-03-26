@@ -3,13 +3,39 @@
 pkgname=python-vllm
 _pkgname=vllm
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
 license=(Apache-2.0)
-depends=(python-installer python-sympy numactl python-pytorch python-build python-setuptools)
-makedepends=(git gcc13)
+depends=(
+  python-sympy 
+  numactl 
+  python-pytorch 
+  python-sphinx
+  python-aiohttp
+  python-cachetools
+  python-uvloop
+  python-fastapi
+  uvicorn
+  python-soundfile
+  python-starlette
+  python-tqdm
+  python-boto3
+  python-openai
+  python-importlib-metadata
+  python-torchvision
+  python-pydantic
+  python-psutil
+  python-opencv
+  python-py-cpuinfo
+  python-huggingface-hub)
+makedepends=(
+  git 
+  gcc13
+  python-installer 
+  python-setuptools
+  python-build)
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('ff2a1952f02e21a93e1e2b2d07868d73b9934c3ac95441d10fee9b0763e6fc21')
 _jobs=3
