@@ -2,8 +2,8 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.31
-_electronversion=20
+pkgver=5.25.32
+_electronversion=22
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
 arch=('x86_64')
@@ -22,11 +22,11 @@ makedepends=(
     '7zip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}${pkgver}/${pkgname%-bin}-${pkgver}-x64.exe"
+    "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}${pkgver}/${pkgname%-bin}-${pkgver}-win.exe"
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c5bb3554fc63d6b033bed68d264980dc72a60572d8cc9794fb8ad16e05b09a98'
+sha256sums=('ffa4c25532ffce70b28d7a0d595bf71b447d2b33de0cacf7e5d015819e0271a2'
             'acce6ce0e604ac50abcc25e5197a46708bfda9502a6232a34b99c10666e5a6d2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
