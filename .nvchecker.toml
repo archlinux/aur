@@ -1,0 +1,6 @@
+[wkhtmltopdf-static]
+source="github"
+github="wkhtmltopdf/packaging"
+use_latest_release=true
+from_pattern="-"
+to_pattern="+"
