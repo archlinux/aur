@@ -1,7 +1,7 @@
 pkgname=wrdlist
 pkgver=0.0.5
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'aarh64')
 pkgdesc="Lightweight Wordlists Generator"
 url="https://github.com/6z7y56/wrdlist"
 license=('MIT')

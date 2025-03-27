@@ -4,6 +4,7 @@ pkgbase = wrdlist
 	pkgrel = 1
 	url = https://github.com/6z7y56/wrdlist
 	arch = x86_64
+	arch = aarh64
 	license = MIT
 	makedepends = rust
 	makedepends = make
