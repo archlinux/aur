@@ -1,6 +1,6 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
-pkgname=filewarden-release
+pkgname=filewarden
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Password-based symmetric encryption of files"
