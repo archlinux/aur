@@ -1,0 +1,6 @@
+src/
+pkg/
+.history/
+*.AppImage
+*.part
+*.pkg.tar.zst

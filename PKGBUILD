@@ -1,7 +1,8 @@
 # Maintainer: yifwon <wyf9661 at gmail dot com>
+# Contributor: witt <1989161762 at qq dot com>
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
-pkgver=26.0.15
+pkgver=26.1.1
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
@@ -9,22 +10,24 @@ url="https://www.diagrams.net/"
 _githuburl="https://github.com/jgraph/drawio-desktop"
 license=('Apache2')
 options=(!strip)
+provides=(drawio-desktop)
 conflicts=(drawio-desktop)
 depends=('zlib' 'hicolor-icon-theme' 'glibc' 'fuse2')
 _install_path=/opt/${pkgname}
-source_x86_64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-x86_64-${pkgver}.AppImage")
-sha1sums_x86_64=('SKIP')
-source_aarch64=("${_pkgname}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-arm64-${pkgver}.AppImage")
-sha1sums_aarch64=('SKIP')
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-x86_64-${pkgver}.AppImage")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-arm64-${pkgver}.AppImage")
+sha1sums_x86_64=('d8aa2fc2a0b2ce91b757b7d06edf78d0e55d3163')
+sha1sums_aarch64=('c06c677893262839ce1b07aee75860d059256205')
+
 prepare() {
-    chmod a+x "${_pkgname}-${pkgver}.AppImage"
-    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
-    sed 's/Exec=/\#Exec=/g' -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
-    echo "Exec=${_pkgname} --no-sandbox %U" >> "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
+    "./${_pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed -i "s/Exec=.*/Exec=${_pkgname}/g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
+
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
-    for icons in 16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512 720x720 1024x1024;do
+    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${_pkgname}.AppImage"
+    for icons in 16x16 32x32 48x48 64x64 96x96 128x128 192x192 256x256 512x512 1024x1024;do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${icons}/apps/${_pkgname}.png"
     done
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
