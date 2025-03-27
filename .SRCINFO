@@ -1,0 +1,23 @@
+pkgbase = laines
+	pkgdesc = Cycle-accurate NES emulator in ~1000 lines of code
+	pkgver = r124+gb56dac7
+	pkgrel = 1
+	url = https://github.com/AndreaOrru/LaiNES
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = clang
+	makedepends = gendesk
+	makedepends = simpleini
+	depends = gcc-libs
+	depends = glibc
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	source = LaiNES-b56dac7482abb2ee633787d152a77b10be741e41.tar.gz::https://github.com/AndreaOrru/LaiNES/archive/b56dac7482abb2ee633787d152a77b10be741e41.tar.gz
+	source = laines_bugfix.patch::https://github.com/AndreaOrru/LaiNES/pull/44.patch?full_index=1
+	source = laines_fhs_res_path.patch
+	b2sums = 027c16c5c9852af9c3c9b5bbf408b3d75479e39d3f8ded5fbf867661495a812571aa1cf9e809d6a8575af3ae113dc0ffb65ea6e37f9724923e632e09bc60e764
+	b2sums = d18ca6d11607a1c9b48d28ab7c451b08ef80d20f4933580f989119c93c65eee6798aeff3b89648c7271e36b2c8a46320911ce97a0aadf011fae3251ceeaeb067
+	b2sums = c5671fc4cec97e51d273c9453b624087892dae94d10c0aa0eb4a97b2ee53ee3611faed01b5f226d3ea803316d50f01ae6be54fec41745edb2d7fe9732c06f545
+
+pkgname = laines

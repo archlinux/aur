@@ -1,0 +1,16 @@
+--- a/src/gui.cpp
++++ b/src/gui.cpp
+@@ -68,11 +68,11 @@
+                                      SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING,
+                                      WIDTH, HEIGHT);
+ 
+-    font = TTF_OpenFont("res/font.ttf", FONT_SZ);
++    font = TTF_OpenFont("/usr/share/laines/res/font.ttf", FONT_SZ);
+     keys = SDL_GetKeyboardState(0);
+ 
+     // Initial background:
+-    SDL_Surface* backSurface  = IMG_Load("res/init.png");
++    SDL_Surface* backSurface  = IMG_Load("/usr/share/laines/res/init.png");
+     background = SDL_CreateTextureFromSurface(renderer, backSurface);
+     SDL_SetTextureColorMod(background, 60, 60, 60);
+     SDL_FreeSurface(backSurface);
