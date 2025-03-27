@@ -1,0 +1,4 @@
+
+post_install() {
+	 chmod +x /usr/bin/tasky
+}

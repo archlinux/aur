@@ -1,0 +1,16 @@
+pkgbase = tasky
+	pkgdesc = Tasky is a command line TODO list app currently in beta version
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/shahriaarrr/Tasky
+	install = tasky.install
+	arch = any
+	license = GPL3
+	provides = tasky
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/shahriaarrr/Tasky/releases/download/V0.6/tasky.zip
+	validpgpkeys = 53024A9A018E141CE97E1ADFA8CF00618E0F7C0A
+	sha256sums = SKIP
+
+pkgname = tasky
