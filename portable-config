@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+# This is your Application ID, avoid conflict
+appID="com.larksuite.suite"
+
+# This is a friendly name of an application. It should only contain ASCII characters and not spaces.
+friendlyName="Lark"
+
+# This is the state directory of your application, which is located under "XDG_DATA_HOME"
+stateDirectory="Lark_Data"
+
+# This is the target executable to launch
+launchTarget="/opt/bytedance/lark/bytedance-lark"
+
+# Takes boolean value. When enabled, do not process XAuth files and enable X access. Generally this should be always false.
+waylandOnly="false"
+
+# Takes boolean value. Binds /dev/video* into the sandbox. Required if target application uses /dev/video* interfaces directly instead of v4l2.
+bindCameras="true"
+
+# Takes boolean value. Binds PipeWire socket into the sandbox. Required if target application doesn't use Portals.
+bindPipewire="false"
+
+dbusWake="true"

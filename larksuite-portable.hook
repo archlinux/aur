@@ -1,0 +1,14 @@
+[Action]
+When = PostTransaction
+Exec = /usr/lib/larksuite-portable/install-hook.sh
+Depends = larksuite-portable
+Description = Configuring Larksuite
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/lib/larksuite-portable/*
+Target = usr/bin/lark
+Target = usr/bin/bytedance-lark-stable
+Target = usr/share/menu/lark.menu
