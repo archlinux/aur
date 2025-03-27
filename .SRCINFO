@@ -9,6 +9,7 @@ pkgbase = python-or-tools
 	arch = armv7h
 	license = Apache-2.0
 	makedepends = cmake
+	makedepends = benchmark
 	makedepends = git
 	makedepends = python-installer
 	makedepends = python-setuptools

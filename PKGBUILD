@@ -11,7 +11,7 @@ url="https://github.com/google/${_base}"
 license=(Apache-2.0)
 depends=(abseil-cpp coin-or-cbc coin-or-clp eigen glpk re2 scip swig
   pybind11 python-absl python-mypy-protobuf python-numpy) # pybind11-abseil pybind11-protobuf
-makedepends=(cmake git python-installer python-setuptools python-wheel python-virtualenv)
+makedepends=(cmake benchmark git python-installer python-setuptools python-wheel python-virtualenv)
 # checkdepends(gtest)
 optdepends=('cplex: CPLEX solver support'
   'python-matplotlib: used by some examples'
