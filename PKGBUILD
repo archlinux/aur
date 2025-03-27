@@ -1,6 +1,6 @@
 # Maintainer: Wenqian <lazycat7706@gmail.com>
 
-pkgname=fwd
+pkgname=fwd-release
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Password-based symmetric encryption of files"
