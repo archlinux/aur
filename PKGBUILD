@@ -1,4 +1,4 @@
-# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
+# Maintainer: Emily <info@emy.sh>
 pkgname=nspire-tools-git
 provides=('nspire-tools-git')
 pkgver=r2.6a7fccc
