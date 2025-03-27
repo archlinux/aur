@@ -9,8 +9,8 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.13.6
-pkgrel=3
+pkgver=2.13.7
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -31,13 +31,13 @@ makedepends=(
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#tag=v$pkgver"
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
-  0001-meson-Build-fixes.patch
-  xml2-config
+  0001-meson-Install-a-xml2-config-script.patch
+  0002-meson-Build-fixes.patch
 )
-b2sums=('84fd36291960d78ebef4c373c15c29bf4efd17fe59174cca70bad6fe8ac73dd333cdea6ed6f577db2107991fa6b6d6fb20f7551cb640cbbfe38ff696b9a0b9ba'
+b2sums=('fc6186c28db0582fc52a0247e2a333c7030a62005efa6b98eb982acd78a28fc8bf2a542b340f86549cb6ac724d2f9fc94d4d8fdce374847fef61dcadd80132a2'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be'
-        '15438434f5f2fa450c3ff92b552bc3029cb1dc42e7a3d607af5690ded6e10bd0119275d447018e9083d3bf9d07c96c6c3d6b01bf69d2b6d4e5c385bbb3c74416'
-        'c85651b242884d37d8f23292f3d3f475005f819975a30ab2233f3e2d0adae6ba46eab85d52e46d94940b0f01e8a411460153e8ceeb1e7449cb30c629022b5da4')
+        '9c9925ea96fc993b6e5dffb68629f0864d6d3445605c0de92bf07156c81f88fbe4efb46f5784ce8dc5c87d8ccd4f8689dce09a91925f53b840887a514a6b2b8d'
+        'a42e284cd50e87a6eb4bd66bc02f968fc9f79922e000295d9778c5f2974985251509d58214203e9f542bad365e85136f7f07672bd4b6e338e89b0bd9b14190f1')
 
 prepare() {
   cd libxml2
@@ -46,7 +46,10 @@ prepare() {
   ln -s ../xmlconf
 
   # Meson fixes
-  git apply -3 ../0001-meson-Build-fixes.patch
+  git cherry-pick -n c2e2d76211e27df3c882616a14b4da24df7d3cb3
+  git cherry-pick -n 064a02114a0e35ac9d87dd1a0952e6c474273a68
+  git apply -3 ../0001-meson-Install-a-xml2-config-script.patch
+  git apply -3 ../0002-meson-Build-fixes.patch
 }
 
 build() {
@@ -70,7 +73,6 @@ package_libxml2() {
   provides=(libxml2.so)
 
   meson install -C build --destdir "$pkgdir"
-  install -D xml2-config -t "$pkgdir/usr/bin"
 
   # Split docs
   mkdir -p doc/usr/share

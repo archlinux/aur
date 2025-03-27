@@ -1,0 +1,105 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 13 Mar 2025 18:32:18 +0100
+Subject: [PATCH] meson: Install a xml2-config script
+
+This one does not need build-time configuration but forwards to
+`pkg-config` instead. It is mostly (and hopefully sufficiently)
+compatible with the script installed by autotools.
+---
+ meson.build       | 11 +++++++++-
+ xml2-config-meson | 56 +++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 66 insertions(+), 1 deletion(-)
+ create mode 100755 xml2-config-meson
+
+diff --git a/meson.build b/meson.build
+index ee373feb638d..448c329bb664 100644
+--- a/meson.build
++++ b/meson.build
+@@ -271,7 +271,7 @@ endforeach
+ # [X] libxml-2.0.pc.in
+ # [X] libxml2-config.cmake.in
+ # [X] python/setup.py.in
+-# [N] xml2-config.in
++# [X] xml2-config.in
+ 
+ ## config.h
+ config_h = configuration_data()
+@@ -789,6 +789,15 @@ configure_file(
+ 
+ install_data(files('libxml.m4'), install_dir: dir_data / 'aclocal')
+ 
++## xml2-config script
++
++install_data(
++    'xml2-config-meson',
++    install_dir: dir_bin,
++    install_mode: 'rwxr-xr-x',
++    rename: 'xml2-config',
++)
++
+ if support_tls == false
+     message('===============================================================')
+     message('WARNING: Your C compiler appears to not support thread-local')
+diff --git a/xml2-config-meson b/xml2-config-meson
+new file mode 100755
+index 000000000000..0403b966a4b9
+--- /dev/null
++++ b/xml2-config-meson
+@@ -0,0 +1,56 @@
++#!/bin/sh
++
++usage() {
++    cat <<EOF
++${2:+$2
++
++}Usage: xml2-config <OPTION...>
++
++Options:
++  --prefix              print libxml prefix
++  --prefix=DIR          change libxml prefix
++  --libs                print library linking information
++  --dynamic             skip libraries only necessary for static linking
++  --cflags              print pre-processor and compiler flags
++  --modules             module support enabled
++  --help                display this help and exit
++  --version             output version information
++EOF
++    exit "$1"
++}
++
++if [ "$#" -lt 1 ]; then
++    usage 1 "Need at least one option."
++fi
++
++prefix=0
++set_prefix=
++libs=0
++libflag=--static
++cflags=0
++modules=0
++version=0
++
++for arg in "$@"; do
++    case $arg in
++        --prefix)   prefix=1 ;;
++        --prefix=*) set_prefix="${arg#*=}" ;;
++        --libs)     libs=1 ;;
++        --dynamic)  libflag=--shared ;;
++        --cflags)   cflags=1 ;;
++        --modules)  modules=1 ;;
++        --help)     usage 0 ;;
++        --version)  version=1 ;;
++        *)          usage 1 "Unknown option: $arg" ;;
++    esac
++done
++
++set --
++[ "$prefix"  -eq 1 ] && set -- "$@" --variable=prefix
++[ -n "$set_prefix" ] && set -- "$@" --define-variable=prefix="$set_prefix"
++[ "$libs"    -eq 1 ] && set -- "$@" --libs "$libflag"
++[ "$cflags"  -eq 1 ] && set -- "$@" --cflags
++[ "$modules" -eq 1 ] && set -- "$@" --variable=modules
++[ "$version" -eq 1 ] && set -- "$@" --modversion
++
++exec ${PKG_CONFIG:-pkg-config} "$@" libxml-2.0
