@@ -1,0 +1,11 @@
+--- a/sljit/sljitConfigInternal.h
++++ b/sljit/sljitConfigInternal.h
+@@ -142,6 +142,8 @@
+ #define SLJIT_CONFIG_SPARC_32 1
+ #elif defined(__tilegx__)
+ #define SLJIT_CONFIG_TILEGX 1
++#elif defined(__riscv)
++#define SLJIT_CONFIG_RISCV64 1
+ #else
+ /* Unsupported architecture */
+ #define SLJIT_CONFIG_UNSUPPORTED 1
