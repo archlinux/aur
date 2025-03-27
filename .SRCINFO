@@ -1,9 +1,10 @@
 pkgbase = android-x86-pcre
 	pkgdesc = A library that implements Perl 5-style regular expressions (Android x86)
 	pkgver = 8.45
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pcre.org/
 	arch = any
+	groups = android-pcre
 	license = BSD
 	makedepends = android-configure
 	makedepends = android-x86-bzip2
@@ -17,8 +18,12 @@ pkgbase = android-x86-pcre
 	options = !emptydirs
 	source = http://downloads.sourceforge.net/pcre/pcre-8.45.tar.bz2
 	source = http://downloads.sourceforge.net/pcre/pcre-8.45.tar.bz2.sig
+	source = 0001-Add-riscv64-support.patch
+	source = 0001-Remove-arch-restrictions.patch
 	validpgpkeys = 45F68D54BBE23FB3039B46E59766E084FB0F43D8
 	md5sums = 4452288e6a0eefb2ab11d36010a1eebb
 	md5sums = SKIP
+	md5sums = 4c20c5f8250090062a2bba23459a007c
+	md5sums = 18e9da1810e8fde1ce9009fc4c1b3c12
 
 pkgname = android-x86-pcre
