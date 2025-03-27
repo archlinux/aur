@@ -5,11 +5,8 @@ pkgbase = steamos-add-to-steam
 	url = https://github.com/vicrodh/steamos-add-to-steam
 	arch = x86_64
 	license = MIT
-	depends = kdialog
-	depends = kmimetypefinder
-	depends = python
-	depends = steam
-	depends = flatpak
+	optdepends = steam: Native Steam installation is recommended
+	optdepends = flatpak: For Steam installed via Flatpak
 	source = git+https://github.com/vicrodh/steamos-add-to-steam.git
 	sha256sums = SKIP
 
