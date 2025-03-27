@@ -10,10 +10,10 @@ friendlyName="Lark"
 stateDirectory="Lark_Data"
 
 # This is the target executable to launch
-launchTarget="/opt/bytedance/lark/bytedance-lark"
+launchTarget=${launchTarget:-"/opt/bytedance/lark/bytedance-lark"}
 
 # Takes boolean value. When enabled, do not process XAuth files and enable X access. Generally this should be always false.
-waylandOnly="false"
+waylandOnly=${waylandOnly:-"false"}
 
 # Takes boolean value. Binds /dev/video* into the sandbox. Required if target application uses /dev/video* interfaces directly instead of v4l2.
 bindCameras="true"
