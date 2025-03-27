@@ -1,0 +1,162 @@
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+
+pkgbase=radicle-explorer-git
+pkgname=(radicle-{explorer,httpd}-git)
+pkgver=0.23.0.r5.g29b952a3f
+pkgrel=1
+pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
+arch=('x86_64')
+license=('GPL-3.0-only' 'Apache-2.0 OR MIT')
+_node="seed.radicle.xyz"
+_rid="rad:z4V1sjrXqjvFdnCUbxPFqd5p4DtH5"
+url="https://app.radicle.xyz/nodes/$_node/$_rid"
+makedepends=('git' 'cargo' 'asciidoctor' 'pnpm')
+source=(
+	"radicle-explorer::git+https://$_node/${_rid#rad:}.git"
+	"radicle-explorer.config.json"
+	"systemd.patch"
+)
+b2sums=('SKIP'
+        'd29bf8a4344d407cdc19cce3d6d8ef2f28e97454c07978301ef1009a995ba8f352ad706b7230f33d290d7b055d8a8c80c80164625463adc4e0b1191b1c4573f2'
+        '9e45139fee702f2d43852b6257ec9629df67cdffa4d1bc4c269dd7b1041070167704c3bee3a3eecf90d30647e9823dec837768798472990ea45cba576d0d55fd')
+
+pkgver() {
+	cd radicle-explorer
+	git describe --long --tags | sed -r 's#^releases/##; s/^v//; s/-rc\./rc/; s/[^-]*-g/r&/; s/-/./g'
+}
+
+prepare() {
+	cd radicle-explorer
+	pnpm import
+	git apply - <<EOF
+diff --git a/package.json b/package.json
+index 7f89a61a..f83791cd 100644
+--- a/package.json
++++ b/package.json
+@@ -76,2 +76,7 @@
+-  }
++  },
++  "pnpm": {
++    "onlyBuiltDependencies": [
++      "esbuild"
++    ]
++  }
+ }
+EOF
+# 	cat >pnpm-workspace.yaml <<EOF
+# onlyBuiltDependencies:
+#   - esbuild
+# EOF
+	pnpm install --shamefully-hoist
+
+	cd radicle-httpd
+
+	# sanitize provided systemd units
+	git apply -3 "$srcdir/systemd.patch"
+
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
+build() {
+	cd radicle-explorer
+	export VITE_RUNTIME_CONFIG=true
+	pnpm build
+
+	# _Disable_ cross-toolchain LTO because we are using different toolchains
+	# for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
+	# In this project, C/C++ code is linked into Rust code. Therefore, apply
+	# a workaround to force generation of normal object code on C side:
+	CFLAGS+=" -ffat-lto-objects"
+	CXXFLAGS+=" -ffat-lto-objects"
+
+	cd radicle-httpd
+	export RADICLE_VERSION="$pkgver"
+	cargo build \
+		--frozen \
+		--release \
+		--bins \
+		# EOL
+
+	mkdir -p target/release/man
+	for _man in *.adoc; do
+		asciidoctor --doctype manpage --backend manpage --destination-dir target/release/man "$_man"
+	done
+
+	# XXX: tests rebuild and overwrite some of the binaries
+	cp -a target/release -T target/dist
+}
+
+check() {
+	cd radicle-explorer/radicle-httpd
+	(
+	# Ideally, we'd use `env -i`, but `cargo test` forces a recompilation
+	# if build flags don't match (+ we want to test what we ship anyway).
+	# As a stop-gap, unset variables that are known to break tests
+	# (and might have been set in makepkg.conf).
+	unset "${!GIT_@}"
+	cargo test \
+		--frozen \
+		--release \
+		--all-features \
+		# EOL
+	)
+}
+
+package_radicle-explorer-git() {
+	pkgdesc+=" - explorer (frontend)"
+	license=('GPL-3.0-only')
+	optdepends=(
+		'radicle-httpd: local backend for radicle-explorer'
+	)
+	provides=('radicle-explorer')
+	conflicts=('radicle-explorer')
+
+	cd radicle-explorer
+
+	install -dm755 \
+		"$pkgdir/usr/share/radicle-explorer"
+	cp -dR --preserve=timestamps \
+		build \
+		-T "$pkgdir/usr/share/radicle-explorer"
+	install -Dm644 \
+		config/default.json \
+		-T "$pkgdir/usr/share/radicle-explorer/config.json.example"
+	# TODO: install into /etc?
+	install -Dm644 \
+		"$srcdir/radicle-explorer.config.json" \
+		-T "$pkgdir/usr/share/radicle-explorer/config.json"
+
+	install -Dm644 \
+		LICENSE \
+		-t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_radicle-httpd-git() {
+	pkgdesc+=" - explorer (backend)"
+	license=('Apache-2.0 OR MIT')
+	depends=('zlib' 'radicle-node')
+	provides=('radicle-httpd')
+	conflicts=('radicle-httpd')
+
+	cd radicle-explorer/radicle-httpd
+
+	install -Dm755 \
+		target/dist/radicle-httpd \
+		-t "$pkgdir/usr/bin"
+
+	install -Dm644 \
+		target/dist/man/radicle-httpd.1 \
+		-t "$pkgdir/usr/share/man/man1"
+
+	install -Dm644 \
+		systemd/system/* \
+		-t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 \
+		systemd/user/* \
+		-t "$pkgdir/usr/lib/systemd/user"
+
+	install -Dm644 \
+		LICENSE-APACHE \
+		LICENSE-MIT \
+		-t "$pkgdir/usr/share/licenses/$pkgname"
+}

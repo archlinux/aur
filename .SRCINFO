@@ -1,0 +1,33 @@
+pkgbase = radicle-explorer-git
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git
+	pkgver = 0.23.0.r5.g29b952a3f
+	pkgrel = 1
+	url = https://app.radicle.xyz/nodes/seed.radicle.xyz/rad:z4V1sjrXqjvFdnCUbxPFqd5p4DtH5
+	arch = x86_64
+	license = GPL-3.0-only
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = asciidoctor
+	makedepends = pnpm
+	source = radicle-explorer::git+https://seed.radicle.xyz/z4V1sjrXqjvFdnCUbxPFqd5p4DtH5.git
+	source = radicle-explorer.config.json
+	source = systemd.patch
+	b2sums = SKIP
+	b2sums = d29bf8a4344d407cdc19cce3d6d8ef2f28e97454c07978301ef1009a995ba8f352ad706b7230f33d290d7b055d8a8c80c80164625463adc4e0b1191b1c4573f2
+	b2sums = 9e45139fee702f2d43852b6257ec9629df67cdffa4d1bc4c269dd7b1041070167704c3bee3a3eecf90d30647e9823dec837768798472990ea45cba576d0d55fd
+
+pkgname = radicle-explorer-git
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - explorer (frontend)
+	license = GPL-3.0-only
+	optdepends = radicle-httpd: local backend for radicle-explorer
+	provides = radicle-explorer
+	conflicts = radicle-explorer
+
+pkgname = radicle-httpd-git
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - explorer (backend)
+	license = Apache-2.0 OR MIT
+	depends = zlib
+	depends = radicle-node
+	provides = radicle-httpd
+	conflicts = radicle-httpd
