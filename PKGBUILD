@@ -1,8 +1,8 @@
-# Maintainer: Jove Yu <yushijun110 [at] gmail.com>
+# Maintainer: Jove Yu <yushijun110@gmail.com>
 # Maintainer: Guoxin "7Ji" Pu <pugokushin@gmail.com>
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
-pkgver=12.8.2.19831
+pkgver=12.8.2.20327
 pkgrel=1
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
@@ -21,9 +21,9 @@ options=(!strip !zipman !debug)
 source_x86_64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_amd64.deb")
 source_aarch64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_arm64.deb")
 source_loong64=("https://wps-linux-365.wpscdn.cn/wps/download/ep/Linux365/${pkgver: -5}/wps-office_${pkgver}.AK.preload.sw_loongarch64.deb")
-sha256sums_x86_64=('016afa12da8f360bc693106de12dfa155e55f224673b8158b83b9bb13fda27b1')
-sha256sums_aarch64=('293cc93a2ae27e40a557b06a49dd97bb147fee7892a70a67190cff0c181b85fb')
-sha256sums_loong64=('92ea37416fa236f99feafce94b6fa960b851f965af681a20f1db400b74aa106b')
+sha256sums_x86_64=('37eda7ea2ed10a82a3010e8f76cfdda5fba99ca47adb84548868f6710405a479')
+sha256sums_aarch64=('8c1c5818848b0d2ff01601ca5dbc6d5ad689ebd07307d35a31d532793043e7f3')
+sha256sums_loong64=('f92600fc4fb909f19d4ef4ecb81b09e93b9c8744b8e31ece87ca0aca13ecbed1')
 
 prepare() {
   xz -df data.tar.xz
@@ -73,13 +73,16 @@ python -c 'import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))'/"
   sed -i '$a Categories=Office;' usr/share/applications/wps-office-officeassistant.desktop
 
   # fix background process
-  sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && export gOptExt=-multiply' usr/bin/{wps,wpp,et,wpspdf}
+  sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && export gOptExt=-multiply' \
+    usr/bin/{wps,wpp,et,wpspdf}
 
   # fix input method
-  sed -i '2i [[ "$XMODIFIERS" == "@im=fcitx" ]] && export QT_IM_MODULE=fcitx' usr/bin/{wps,wpp,et,wpspdf}
+  sed -i '2i [[ "$XMODIFIERS" == "@im=fcitx" ]] && export QT_IM_MODULE=fcitx' \
+    usr/bin/{wps,wpp,et,wpspdf}
 
   # allow custom fontconfig
-  sed -i '2i [[ -f ~/.config/Kingsoft/fonts/fonts.conf ]] && export FONTCONFIG_FILE=~/.config/Kingsoft/fonts/fonts.conf' usr/bin/{wps,wpp,et,wpspdf}
+  sed -i '2i [[ -f ~/.config/Kingsoft/fonts/fonts.conf ]] && export FONTCONFIG_FILE=~/.config/Kingsoft/fonts/fonts.conf' \
+    usr/bin/{wps,wpp,et,wpspdf}
 
   # fix xxx Njk0QkYtWVVEQkctRUFSNjktQlBSR0ItQVRRWEgK
   sed -i 's|YUA..=NsbhfV4nLv_oZGENyLSVZA..|YUA..=WHfH10HHgeQrW2N48LfXrA..|' \
