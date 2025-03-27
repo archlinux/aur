@@ -8,12 +8,13 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libcap-ng
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A library for Linux that makes using posix capabilities easy (Android ${_android_arch})"
 url='https://people.redhat.com/sgrubb/libcap-ng/'
 license=('GPL-2.0-or-later'
          'LGPL-2.1-or-later')
+groups=('android-libcap-ng')
 depends=('android-ndk')
 makedepends=('android-configure'
              'swig')
@@ -24,7 +25,7 @@ md5sums=('8635fae2b1ead2381a9630d00e8f80b7'
          '2ecb9b10f198c5222237864ab215d217')
 
 prepare() {
-    cd "$srcdir/libcap-ng-$pkgver"
+    cd "${srcdir}/libcap-ng-${pkgver}"
     source android-env ${_android_arch}
 
     if [ "${ANDROID_MINIMUM_PLATFORM}" -lt 23 ]; then
@@ -37,7 +38,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/libcap-ng-$pkgver"
+    cd "${srcdir}/libcap-ng-${pkgver}"
     source android-env ${_android_arch}
 
     android-${_android_arch}-configure \
@@ -47,10 +48,10 @@ build() {
 }
 
 package() {
-    cd "$srcdir/libcap-ng-$pkgver"
+    cd "${srcdir}/libcap-ng-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
