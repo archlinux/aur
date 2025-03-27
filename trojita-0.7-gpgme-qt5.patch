@@ -1,0 +1,21 @@
+diff -rauN trojita-0.7/CMakeLists.txt trojita-0.7-gpgme-qt5-patch/CMakeLists.txt
+--- trojita-0.7/CMakeLists.txt	2016-06-15 09:17:23.000000000 +0200
++++ trojita-0.7-gpgme-qt5-patch/CMakeLists.txt	2025-03-27 18:09:18.362770268 +0100
+@@ -94,7 +94,7 @@
+ trojita_find_package(Git "" "" "" "")
+ 
+ trojita_find_package(Mimetic "" "http://www.codesink.org/mimetic_mime_library.html" "C++ MIME Library" "Required for client-side MIME parsing" WITH_MIMETIC)
+-trojita_find_package(KF5Gpgmepp "" "https://quickgit.kde.org/?p=gpgmepp.git" "C++ bindings for gpgme" "Needed for encrypted/signed e-mails" WITH_GPGMEPP)
++trojita_find_package(QGpgmeQt5 "" "https://quickgit.kde.org/?p=gpgmepp.git" "C++ bindings for gpgme" "Needed for encrypted/signed e-mails" WITH_GPGMEPP)
+ trojita_option(WITH_CRYPTO_MESSAGES "Enable support for encrypted messages" AUTO "WITH_MIMETIC;WITH_GPGMEPP")
+ 
+ if(WIN32)
+@@ -629,7 +629,7 @@
+     if (WIN32)
+       target_link_libraries(Cryptography KF5::Gpgmepp KF5::QGpgme)
+     else()
+-      target_link_libraries(Cryptography KF5::Gpgmepp-pthread KF5::QGpgme)
++      target_link_libraries(Cryptography QGpgme)
+     endif()
+   endif()
+ endif()
