@@ -1,37 +1,53 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.315
+pkgver=8.3.522
 pkgrel=1
 pkgdesc="A VLSI layout system"
+_git_url="https://github.com/RTimothyEdwards/magic"
 url="http://opencircuitdesign.com/magic/"
 arch=('i686' 'x86_64')
-license=('custom:copyright')
-depends=('tcl' 'tk' 'libx11')
-makedepends=('tcsh')
-optdepends=('mesa: for better graphics'
-            'cairo: for better graphics'
-            'glu: for better graphics'
-            'blt: to create a tree diagram of the cell hierarchy in a design')
-changelog="$pkgname.changelog"
-source=("http://opencircuitdesign.com/magic/archive/$pkgname-$pkgver.tgz")
-md5sums=('83d9c6582e5bb4c6275d4359fd529e3d')
+license=('LicenseRef-Custom')
+depends=(
+   'glibc'
+   'tcl'
+   'tk'
+   'libx11'
+   'python'
+   'bash'
+)
+makedepends=(
+   'git'
+   'gcc'
+   'make'
+   'tcsh'
+   #'ghostscript'
+)
+optdepends=(
+   'opengl-driver: For graphics acceleration'
+   'cairo: for better graphics'
+   'glu: for better graphics'
+   'blt: to create a tree diagram of the cell hierarchy in a design'
+)
+_archive="${pkgname}-${pkgver}"
+source=("${_archive}::git+${_git_url}#tag=${pkgver}")
+b2sums=('84b7e115e40c032472a48febb9a2bf840995165a4ba4cf531297019280fa7438ba7735682fb4208d666b2e66a0aa314dbe9e7fdd16cc44af16039bf2b24c3bab')
+
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver/"
+   cd "${_archive}"
    ./configure --prefix=/usr
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver/"
-   make -j1 DESTDIR="$pkgdir" MANDIR=/usr/share/man install
-   install -d "$pkgdir/usr/share/licenses/$pkgname"
-   if [ -x /usr/bin/ps2ascii ]; then
-      /usr/bin/ps2ascii "$pkgdir/usr/lib/magic/doc/copyright.ps" > "$pkgdir/usr/share/licenses/$pkgname/copyright"
-   else
-      install -m644 "$pkgdir/usr/lib/magic/doc/copyright.ps" "$pkgdir/usr/share/licenses/magic"
-   fi
+   cd "${_archive}"
+   make DESTDIR="$pkgdir" MANDIR=/usr/share/man install
+
+   # License
+   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
+   # Avoid name collision
    mv "$pkgdir/usr/share/man/man1/extcheck.1" "$pkgdir/usr/share/man/man1/extcheck-magic.1"
 }
 
