@@ -1,0 +1,13 @@
+pkgbase = fwd
+	pkgdesc = Password-based symmetric encryption of files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fioncat/filewarden
+	arch = x86_64
+	license = MIT
+	options = !strip
+	options = !debug
+	source = fwd-0.1.0::https://github.com/fioncat/filewarden/releases/download/v0.1.0/fwd-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 23cedf36753dc94a321f337743bc8aacf890a83e4aed7c4aeaab4dc0cc7c10ed
+
+pkgname = fwd
