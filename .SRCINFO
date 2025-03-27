@@ -1,0 +1,15 @@
+pkgbase = nfuspire-git
+	pkgdesc = Nspire FUSE filesystem
+	pkgver = 0.r1.g9d5b53e
+	pkgrel = 1
+	url = https://github.com/EmilyCSh/nfuspire
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = pkgconfig
+	makedepends = libnspire
+	depends = libnspire
+	source = nfuspire-git::git+https://github.com/EmilyCSh/nfuspire.git
+	sha256sums = SKIP
+
+pkgname = nfuspire-git
