@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Fabian Bornschein <fabiscafe@mailbox.org>
+Date: Wed, 19 Feb 2025 09:05:01 +0100
+Subject: [PATCH] gdesktopappinfo: Add more known terminals
+
+---
+ gio/gdesktopappinfo.c        | 3 +++
+ gio/tests/desktop-app-info.c | 9 +++++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/gio/gdesktopappinfo.c b/gio/gdesktopappinfo.c
+index e3d6325cb183..e7bdea0fe703 100644
+--- a/gio/gdesktopappinfo.c
++++ b/gio/gdesktopappinfo.c
+@@ -2700,6 +2700,9 @@ prepend_terminal_to_vector (int          *argc,
+     const char *exec_arg;
+   } known_terminals[] = {
+     { "xdg-terminal-exec", NULL },
++    { "ghostty", "-e" },
++    { "ptyxis", "--" },
++    { "app.devsuite.Ptyxis", "--" },
+     { "kgx", "-e" },
+     { "gnome-terminal", "--" },
+     { "mate-terminal", "-x" },
+diff --git a/gio/tests/desktop-app-info.c b/gio/tests/desktop-app-info.c
+index c16e15a715a3..460c33d88cb9 100644
+--- a/gio/tests/desktop-app-info.c
++++ b/gio/tests/desktop-app-info.c
+@@ -1401,6 +1401,12 @@ get_terminal_divider (const char *terminal_name)
+ {
+   if (g_str_equal (terminal_name, "xdg-terminal-exec"))
+     return NULL;
++  if (g_str_equal (terminal_name, "ghostty"))
++    return "-e";
++  if (g_str_equal (terminal_name, "ptyxis"))
++    return "--";
++  if (g_str_equal (terminal_name, "app.devsuite.Ptyxis"))
++    return "--";
+   if (g_str_equal (terminal_name, "kgx"))
+     return "-e";
+   if (g_str_equal (terminal_name, "gnome-terminal"))
+@@ -1923,6 +1929,9 @@ main (int   argc,
+   guint i;
+   const gchar *supported_terminals[] = {
+     "xdg-terminal-exec",
++    "ghostty",
++    "ptyxis",
++    "app.devsuite.Ptyxis",
+     "kgx",
+     "gnome-terminal",
+     "mate-terminal",
