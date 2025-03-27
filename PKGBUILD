@@ -2,7 +2,7 @@
 pkgname=tpopup
 pkgver=0.1.7
 pkgrel=1
-pkgdesc="simple popup with text from file or command line"
+pkgdesc="simple popup with text from file or command line (Qt6)"
 arch=(any)
 url="https://sr.ht/~minshall/tpopup/"
 license=('MIT')
