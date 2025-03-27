@@ -1,6 +1,6 @@
 pkgbase = roxide
 	pkgdesc = A git repositories manager CLI, easy to use and very fast
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/fioncat/roxide
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = roxide
 	conflicts = roxide
 	options = !strip
 	options = !debug
-	source = roxide-0.18.0::https://github.com/fioncat/roxide/releases/download/v0.18.0/roxide-linux-amd64.tar.gz
-	sha256sums = f7a436e316d8b948ac964c1a9b5e8766f201011ab2c53545cb020d79167fe478
+	source = roxide-0.18.1::https://github.com/fioncat/roxide/releases/download/v0.18.1/roxide-linux-amd64.tar.gz
+	sha256sums = e8002663339586be45b50d6a5e37ff192e9b6ba77102dfef4043dd7c3317ff2a
 
 pkgname = roxide
