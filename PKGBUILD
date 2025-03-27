@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 _pkgname=torsocks
-pkgname=${_pkgname-git}
+pkgname=${_pkgname}-git
 pkgver=2.5.0.r601.7868aab
 pkgrel=1
 pkgdesc='Torsocks allows you to use most socks-friendly applications in a safe way with Tor.'

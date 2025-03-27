@@ -1,4 +1,4 @@
-pkgbase = torsocks
+pkgbase = torsocks-git
 	pkgdesc = Torsocks allows you to use most socks-friendly applications in a safe way with Tor.
 	pkgver = 2.5.0.r601.7868aab
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = torsocks
 	source = git+https://gitlab.torproject.org/tpo/core/torsocks.git
 	md5sums = SKIP
 
-pkgname = torsocks
+pkgname = torsocks-git
