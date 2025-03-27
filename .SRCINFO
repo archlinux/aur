@@ -1,6 +1,6 @@
 pkgbase = python-ultralytics
-	pkgdesc = Ultralytics YOLOv8 for SOTA object detection, multi-object tracking, instance segmentation, pose estimation and image classification.
-	pkgver = 8.3.96
+	pkgdesc = Object detection, multi-object tracking, instance segmentation, pose estimation and image classification.
+	pkgver = 8.3.97
 	pkgrel = 1
 	url = https://github.com/ultralytics/ultralytics
 	arch = any
@@ -28,8 +28,9 @@ pkgbase = python-ultralytics
 	depends = python-flatbuffers
 	depends = yt-dlp
 	depends = python-onnx
-	source = python-ultralytics-8.3.96.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v8.3.96.tar.gz
-	sha256sums = 16ed0de98e31e5683e1ea9b6376879b23dff8e40ffa847ac43e4808d6a7dfb91
+	depends = python-tensorflow
+	source = python-ultralytics-8.3.97.tar.gz::https://github.com/ultralytics/ultralytics/archive/refs/tags/v8.3.97.tar.gz
+	sha256sums = 115794e743b5b23f9b4b021b734e688cf78bf77fa36669980b59b4857d77ee2f
 
 pkgname = python-ultralytics
 	depends = python
@@ -51,3 +52,4 @@ pkgname = python-ultralytics
 	depends = python-flatbuffers
 	depends = yt-dlp
 	depends = python-onnx
+	depends = python-tensorflow
