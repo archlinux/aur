@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
 pkgname=i3-auto-layout
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Automatic, optimal tiling for i3wm "
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
