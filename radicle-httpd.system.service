@@ -1,0 +1,36 @@
+# Example systemd system service unit file for `radicle-httpd`.
+#
+# When running radicle-httpd for just one user, e.g. for a private
+# radicle-explorer deployment, it may be run as a user service, see
+# `../user/*.service`.
+#
+[Unit]
+Description=Radicle HTTP Daemon
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/radicle-httpd --listen ${RADICLE_HTTPD_LISTEN} $RADICLE_HTTPD_ARGS
+KillMode=mixed
+Restart=always
+RestartSec=3
+
+EnvironmentFile=-%E/conf.d/radicle-httpd
+Environment=RADICLE_HTTPD_LISTEN=127.0.0.1:8777
+Environment=RADICLE_HTTPD_ARGS=
+Environment=RAD_HOME=%S/radicle
+Environment=RUST_BACKTRACE=1
+Environment=RUST_LOG=info
+
+# Basic hardening options. For more, please refer to `systemd-analyze security`.
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+User=radicle
+Group=radicle
+
+[Install]
+WantedBy=multi-user.target

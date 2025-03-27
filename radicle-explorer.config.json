@@ -1,0 +1,14 @@
+{
+  "nodes": {
+    "defaultHttpdPort": 443,
+    "defaultLocalHttpdPort": 7235,
+    "defaultHttpdScheme": "https"
+  },
+  "preferredSeeds": [
+    {
+      "hostname": "127.0.0.1",
+      "port": 7235,
+      "scheme": "http"
+    }
+  ]
+}
