@@ -13,8 +13,6 @@ makedepends=(
 	'xdg-user-dirs'
 )
 _common_depends=(
-	'alsa-lib'
-	'bzip2'
 	'freetype2'
 	'gcc-libs'
 	'glib2'
