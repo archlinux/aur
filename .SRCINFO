@@ -1,7 +1,7 @@
 pkgbase = trojita
 	pkgdesc = A Qt IMAP email client
 	pkgver = 0.7
-	pkgrel = 12
+	pkgrel = 13
 	url = https://trojita.flaska.net
 	arch = x86_64
 	license = GPL

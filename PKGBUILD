@@ -1,11 +1,12 @@
-# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Maintainer: Aaron Fischer <mail@aaron-fischer.net>
+# Co-Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: birdflesh <antkoul at gmail dot com>
 
 pkgname=trojita
 pkgver=0.7
-pkgrel=12
+pkgrel=13
 pkgdesc='A Qt IMAP email client'
 arch=(x86_64)
 url='https://trojita.flaska.net'
