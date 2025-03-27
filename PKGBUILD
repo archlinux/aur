@@ -18,6 +18,7 @@ license=('GPL-3.0-or-later')
 
 provides=("$_name" "${_name}-static")
 conflicts=("$_name" "${_name}-static")
+replaces=("${_name}-static")
 
 depends=(
   'bzip2' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glib2'

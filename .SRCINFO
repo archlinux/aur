@@ -33,6 +33,7 @@ pkgbase = wkhtmltopdf-bin
 	provides = wkhtmltopdf-static
 	conflicts = wkhtmltopdf
 	conflicts = wkhtmltopdf-static
+	replaces = wkhtmltopdf-static
 	options = !strip
 	source_i386 = wkhtmltopdf-0.12.6.1-3-bookworm-i386.deb::https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_i386.deb
 	sha256sums_i386 = 79ac95fe69bb7ef356b88884a3659c0f03ce679711a78869f0f877f80f20d26c
