@@ -1,7 +1,7 @@
 pkgbase = aider-chat
 	pkgdesc = AI pair programming in your terminal
 	pkgver = 0.79.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aider-AI/aider
 	arch = any
 	license = Apache-2.0
@@ -63,8 +63,8 @@ pkgbase = aider-chat
 	source = aur-install-notice.patch
 	source = fix-build-from-tarball.patch
 	sha512sums = ca8039215f2114a0e5c1a26d83b63a274747df820cc108d832fd7899b1708668d3156ae933c94556abfd3ca93ceb2853f3bbb209249bad81c77a3bd9e2487ce0
-	sha512sums = ced2b6a5bf42b9f9ac6164caf3c1c844d02e6cd24608929810b2a0d5d547746c5817485212e48abbd3e71a40d3cad39f1b9178d2a72d526947e5d8c468bdd968
-	sha512sums = f4f906b7a3bc631cbe0603e85fcad051320afc98d87ea9df16b831fbf24c1c83c2b417698aa6d32ada14828daf9035cf1e7fec1c11c7856ae80954c76c8a26ba
+	sha512sums = abd72fc596f3b5f0e96dfe069f017d3cdbb8700d1734f32c6b4b2cc9d61b06a66eed4151959b013cae52cf3339d02715d6cc4d83e9e3ba473d739fcf6e0bdd2c
+	sha512sums = a6fb5e00ae88ed02db00b61b36bb4b5ffef3e79ccfdc2314c9a702f50ffe4d7e5556a0b1eceb21c23b3d8ed2192af7eb47b6676bd0d9aaa568a7797b6badd174
 	sha512sums = 87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b
 
 pkgname = aider-chat

@@ -1,58 +1,7 @@
-From 311fab052f1bf03156c312f43c5bf92ea9438ecc Mon Sep 17 00:00:00 2001
-From: Claudia Pellegrino <claui@users.noreply.github.com>
-Date: Mon, 10 Mar 2025 12:17:21 +0100
-Subject: [PATCH 1/5] AUR-specific: replace auto-updater with a notice
-
----
- aider/versioncheck.py | 26 ++++----------------------
- 1 file changed, 4 insertions(+), 22 deletions(-)
-
-diff --git a/aider/versioncheck.py b/aider/versioncheck.py
-index ac511a02..bf1490ab 100644
---- a/aider/versioncheck.py
-+++ b/aider/versioncheck.py
-@@ -36,29 +36,11 @@ def install_upgrade(io, latest_version=None):
-     else:
-         new_ver_text = "Install latest version of aider?"
- 
--    docker_image = os.environ.get("AIDER_DOCKER_IMAGE")
--    if docker_image:
--        text = f"""
--{new_ver_text} To upgrade, run:
--
--    docker pull {docker_image}
-+    text = f"""
-+{new_ver_text} To upgrade, use the latest version available on the AUR.
- """
--        io.tool_warning(text)
--        return True
--
--    success = utils.check_pip_install_extra(
--        io,
--        None,
--        new_ver_text,
--        ["aider-chat"],
--        self_update=True,
--    )
--
--    if success:
--        io.tool_output("Re-run aider to use new version.")
--        sys.exit()
--
--    return
-+    io.tool_warning(text)
-+    return True
- 
- 
- def check_version(io, just_check=False, verbose=False):
--- 
-2.49.0
-
-
-From f0efa84eddebc9e5969561848367090e832d38e4 Mon Sep 17 00:00:00 2001
+From 31e7b00bf063dddb1a184c9df83efa21ec90a6b7 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:14:04 +0100
-Subject: [PATCH 2/5] AUR-specific: replace `/help` feature installer
+Subject: [PATCH 1/4] AUR-specific: replace `/help` feature installer
 
 The interactive `/help` feature requires an optional package from the
 AUR. Replace the automatic installer with a notice that asks the user
@@ -88,7 +37,7 @@ index c76188d1..c8772f0b 100755
  
  def get_package_files():
 diff --git a/aider/utils.py b/aider/utils.py
-index 42012417..f3e10383 100644
+index 1204db17..ee89fbc1 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
 @@ -330,6 +330,22 @@ def touch_file(fname):
@@ -118,17 +67,17 @@ index 42012417..f3e10383 100644
 2.49.0
 
 
-From ee9932a37d4b1a2bcd3857572b3c357a6a0c9840 Mon Sep 17 00:00:00 2001
+From 8b716756dab80557055bb2c2e051b55fc644f496 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 21:29:12 +0100
-Subject: [PATCH 3/5] AUR-specific: replace google-aiplatform installer
+Subject: [PATCH 2/4] AUR-specific: replace google-aiplatform installer
 
 ---
  aider/models.py | 7 +++----
  1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/aider/models.py b/aider/models.py
-index 945e1676..432cbdbe 100644
+index bf8bcc11..749671f9 100644
 --- a/aider/models.py
 +++ b/aider/models.py
 @@ -18,7 +18,7 @@ from PIL import Image
@@ -140,7 +89,7 @@ index 945e1676..432cbdbe 100644
  
  RETRY_TIMEOUT = 60
  
-@@ -960,11 +960,10 @@ def check_for_dependencies(io, model_name):
+@@ -963,11 +963,10 @@ def check_for_dependencies(io, model_name):
  
      # Check if this is a Vertex AI model and ensure google-cloud-aiplatform is installed
      elif model_name.startswith("vertex_ai/"):
@@ -158,10 +107,10 @@ index 945e1676..432cbdbe 100644
 2.49.0
 
 
-From 179384865ba9b1c93469800583f5d6e88f6c35b9 Mon Sep 17 00:00:00 2001
+From 7e5080b19917338743b4a1eb12fa390712e6d8f0 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:15:53 +0100
-Subject: [PATCH 4/5] AUR-specific: replace main branch auto-upgrader
+Subject: [PATCH 3/4] AUR-specific: replace main branch auto-upgrader
 
 Ask user to download and install the `aider-chat-git` package if they
 wish to follow the main development branch.
@@ -192,10 +141,10 @@ index bf1490ab..4ca0ecd1 100644
 2.49.0
 
 
-From 7a2541386ed68adf7575f7341de7dc6058f46546 Mon Sep 17 00:00:00 2001
+From 4fe55abb76339174bde8917a9e1541550345f791 Mon Sep 17 00:00:00 2001
 From: Claudia Pellegrino <claui@users.noreply.github.com>
 Date: Mon, 10 Mar 2025 13:33:05 +0100
-Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
+Subject: [PATCH 4/4] AUR-specific: replace GUI feature installer
 
 ---
  aider/main.py  |  5 ++---
@@ -203,7 +152,7 @@ Subject: [PATCH 5/5] AUR-specific: replace GUI feature installer
  2 files changed, 2 insertions(+), 57 deletions(-)
 
 diff --git a/aider/main.py b/aider/main.py
-index 2e0299e6..9431d12f 100644
+index a52d04ae..8444ffbc 100644
 --- a/aider/main.py
 +++ b/aider/main.py
 @@ -204,11 +204,10 @@ def check_gitignore(git_root, io, ask=True):
@@ -221,7 +170,7 @@ index 2e0299e6..9431d12f 100644
  
  
 diff --git a/aider/utils.py b/aider/utils.py
-index f3e10383..a58e0753 100644
+index ee89fbc1..b1f7303a 100644
 --- a/aider/utils.py
 +++ b/aider/utils.py
 @@ -193,20 +193,6 @@ def split_chat_history_markdown(text, include_tool=False):
