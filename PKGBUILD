@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2025.02.20.r0.ge0a82be
+pkgver=2025.03.27.r0.gfd1cd93
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=('x86_64')
@@ -49,21 +49,15 @@ build() {
     sed -i "s/\/usr\/bin\/${pkgname%-git}/${pkgname%-git} %U/g" Distributions/"${pkgname%-git}".desktop
     #sed '38i\#include <QInputDialog>' -i Source/dooble.cc
     sed -i "/-Werror/d" "${pkgname%-git}.pro"
+    cp Translations/dooble_zh_CN_simple.qm Translations/dooble_zh_CN.qm
+    cp Translations/dooble_zh_CN_simple.ts Translations/dooble_zh_CN.ts
     qmake -o Makefile "${pkgname%-git}.pro"
     make
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 "${srcdir}/${pkgname//-/.}/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Data/"*.txt -t "${pkgdir}/usr/lib/${pkgname%-git}/Data"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Documentation/Documents/"*.pdf -t "${pkgdir}/usr/lib/${pkgname%-git}/Documentation"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Documentation/"{KDE,TO-DO} -t "${pkgdir}/usr/lib/${pkgname%-git}/Documentation"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Icons/Logo/${pkgname%-git}.png" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Translations/"*.qm -t "${pkgdir}/usr/lib/${pkgname%-git}/Translations"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Translations/${pkgname%-git}_zh_CN_simple.qm" "${pkgdir}/usr/lib/${pkgname%-git}/Translations/${pkgname%-git}_zh_CN.qm"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Charts/"* -t "${pkgdir}/usr/lib/${pkgname%-git}/Charts"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Data/"*.txt -t "${pkgdir}/usr/lib/${pkgname%-git}/Data"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/Data/README" -t "${pkgdir}/usr/lib/${pkgname%-git}/Data"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/"{Charts,Contributions,Data,Distributions,Documentation,Icons,Translations,UI} "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/Icons/Logo/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname//-/.}/Distributions/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
