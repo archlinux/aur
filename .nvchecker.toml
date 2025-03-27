@@ -1,0 +1,4 @@
+[apache-spark]
+source = "regex"
+url = 'https://dlcdn.apache.org/spark/'
+regex = 'href="spark-(\d+\.\d+\.\d+)/"'
