@@ -1,4 +1,4 @@
-# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
+# Maintainer: Emily <info@emy.sh>
 # Contributor: Dan Printzell <me@vild.io>
 
 pkgname=('serve-d')
