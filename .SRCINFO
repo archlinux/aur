@@ -1,6 +1,6 @@
 pkgbase = r-jsonlite
 	pkgdesc = A Simple and Robust JSON Parser and Generator for R
-	pkgver = 1.9.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=jsonlite
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = r-jsonlite
 	optdepends = r-sf
 	optdepends = r-testthat
 	optdepends = r-vctrs
-	source = https://cran.r-project.org/src/contrib/jsonlite_1.9.1.tar.gz
-	md5sums = 0d807e16cb0b5112012b5124e2b897c0
-	b2sums = 97a7e73be7b568064600746e4cd4eef43fa4036ba44b88ed70a731c102601f649d30eb23c8b67aeff938cbefe05929afba852dca2c958f4359f5cded70ed406c
+	source = https://cran.r-project.org/src/contrib/jsonlite_2.0.0.tar.gz
+	md5sums = 3e54e6fbc0c9063936e3d01e91419c14
+	b2sums = b847ecd3c72a99c4732e00b5c9137f64f7267fda0ecde08f83f4759675d8c27b9655abab7060e9cb6d65f6cf066c909028fcec71e08b23ae1dad5ab8f987488d
 
 pkgname = r-jsonlite
