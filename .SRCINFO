@@ -1,6 +1,6 @@
 pkgbase = python-pyspark
 	pkgdesc = Apache Spark Python API
-	pkgver = 3.5.1
+	pkgver = 3.5.5
 	pkgrel = 1
 	url = https://pypi.org/project/pyspark
 	arch = any
@@ -9,14 +9,14 @@ pkgbase = python-pyspark
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python-py4j>=0.10.9.7
-	optdepends = python-pandas>=1.0.5
-	optdepends = python-pyarrow>=4.0.0
-	optdepends = python-numpy>=1.15
-	optdepends = python-grpcio>=1.48
-	optdepends = python-grpcio<1.57
-	optdepends = python-googleapis-common-protos==1.56.4
-	source = https://pypi.org/packages/source/p/pyspark/pyspark-3.5.1.tar.gz
-	sha256sums = dd6569e547365eadc4f887bf57f153e4d582a68c4b490de475d55b9981664910
+	depends = python-py4j
+	optdepends = python-pandas
+	optdepends = python-pyarrow
+	optdepends = python-numpy
+	optdepends = python-grpcio
+	optdepends = python-grpcio-status
+	optdepends = python-googleapis-common-protos
+	source = https://pypi.org/packages/source/p/pyspark/pyspark-3.5.5.tar.gz
+	sha256sums = 6effc9ce98edf231f4d683fd14f7270629bf8458c628d6a2620ded4bb34f3cb9
 
 pkgname = python-pyspark

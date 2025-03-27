@@ -1,0 +1,3 @@
+[python-pyspark]
+source='pypi'
+pypi='pyspark'
