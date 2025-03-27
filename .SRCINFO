@@ -1,6 +1,6 @@
 pkgbase = tresorit
 	pkgdesc = Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.
-	pkgver = 3.5.1192.4010
+	pkgver = 3.5.1244.4360
 	pkgrel = 1
 	url = http://www.tresorit.com/
 	install = tresorit.install
@@ -11,7 +11,7 @@ pkgbase = tresorit
 	makedepends = sed
 	depends = bash
 	depends = libglvnd
-	source = tresorit_installer_3.5.1192.4010.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run
+	source = tresorit_installer_3.5.1244.4360.run::https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run
 	source = https://support.tresorit.com/hc/article_attachments/360009964719/check_signature.sh
 	source = tresorit.service
 	sha512sums = f51f7afb574ec1f54180ff543c78351a9b1f325e945fe2965a7c3e21ca011dbdc08a044270aab45e9872de5fa1b114b063449d2196510adb795edb29a77084bd
