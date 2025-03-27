@@ -7,7 +7,7 @@
 
 _name=wkhtmltopdf
 
-pkgname=${_name}-static
+pkgname=${_name}-bin
 pkgver=0.12.6.1+3
 _version="${pkgver//+/-}"
 pkgrel=1

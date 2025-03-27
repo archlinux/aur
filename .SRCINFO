@@ -1,4 +1,4 @@
-pkgbase = wkhtmltopdf-static
+pkgbase = wkhtmltopdf-bin
 	pkgdesc = convert HTML to PDF using Webkit and Qt (upstream static build)
 	pkgver = 0.12.6.1+3
 	pkgrel = 1
@@ -41,4 +41,4 @@ pkgbase = wkhtmltopdf-static
 	source_x86_64 = wkhtmltopdf-0.12.6.1-3-bookworm-x86_64.deb::https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.bookworm_amd64.deb
 	sha256sums_x86_64 = 98ba0d157b50d36f23bd0dedf4c0aa28c7b0c50fcdcdc54aa5b6bbba81a3941d
 
-pkgname = wkhtmltopdf-static
+pkgname = wkhtmltopdf-bin
