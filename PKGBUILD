@@ -12,7 +12,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.0.2.r116.g8db61f2
+pkgver=31.0.2.r138.g3e84469
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
@@ -120,7 +120,7 @@ _source_cef() {
   _cef_src="cef_binary_${_cef_branch}_linux_${CARCH}"
   _cef_ext="tar.xz"
   _cef_filename="$_cef_src$_cef_ver.$_cef_ext"
-  _cef_dl_url="https://cdn-fastly.obsproject.com/downloads/"
+  _cef_dl_url="https://cdn-fastly.obsproject.com/downloads"
 
   source+=("$_cef_filename"::"$_cef_dl_url/$_cef_filename")
   sha256sums+=('SKIP')
