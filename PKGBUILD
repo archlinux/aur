@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python-bravado-core' 'python-msgpack' 'python-dateutil' 'python-yaml' 'python-requests' 'python-six' 'python-simplejson' 'python-monotonic' 'python-typing_extensions')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Yelp/bravado/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('8016436b66d75840c47746b9f88893dd')
+md5sums=('05e6edaf1f02e850e7a607fae77c6c7f')
 
 build() {
   cd "$srcdir"/bravado-$pkgver

@@ -16,6 +16,6 @@ pkgbase = python-bravado
 	depends = python-monotonic
 	depends = python-typing_extensions
 	source = python-bravado-11.1.0.tar.gz::https://github.com/Yelp/bravado/archive/refs/tags/v11.1.0.tar.gz
-	md5sums = 8016436b66d75840c47746b9f88893dd
+	md5sums = 05e6edaf1f02e850e7a607fae77c6c7f
 
 pkgname = python-bravado
