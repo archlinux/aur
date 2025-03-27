@@ -1,7 +1,7 @@
 # Maintainer: Rihards Skuja <rhssk at posteo dot eu>
 
 pkgname=slc-cli
-pkgver=5.8.0.0
+pkgver=5.10.2.1
 pkgrel=1
 pkgdesc='Command line tool to generate projects with Silicon Labs SDK'
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip')
 depends=('java-runtime' 'python-requests' 'python-websockets' 'python-colorama')
 source=("$pkgname-$pkgver.zip::https://www.silabs.com/documents/login/software/slc_cli_linux.zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('f99d6bc2c4d002f397bcc27bd389eebfabb230b863e349da614f838b53274d3f')
+sha256sums=('f91e2e8898fcbeaccad61a554d4fd5ef9a469008fdc2dbe70ae7cc541f24b44f')
 
 prepare() {
 	bsdtar -xpf "$pkgname-$pkgver.zip"
