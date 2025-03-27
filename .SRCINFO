@@ -1,7 +1,7 @@
 pkgbase = openchrom
 	pkgdesc = Visualization and analysis of mass spectrometric and chromatographic data
 	pkgver = 1.5.4
-	pkgrel = 4
+	pkgrel = 1
 	url = https://openchrom.net/
 	arch = x86_64
 	license = EPL
