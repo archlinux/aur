@@ -1,7 +1,7 @@
 pkgbase = tal-noisemaker-bin
 	pkgdesc = A free soft synth by TAL Software
 	pkgver = 5.0.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tal-software.com/products/tal-noisemaker
 	arch = x86_64
 	groups = pro-audio

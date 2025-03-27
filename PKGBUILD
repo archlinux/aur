@@ -1,7 +1,7 @@
 pkgbase=tal-noisemaker-bin
 pkgname=("${pkgbase/-bin}-clap-bin" "${pkgbase/-bin}-vst-bin" "${pkgbase/-bin}-vst3-bin")
 pkgver=5.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc='A free soft synth by TAL Software'
 arch=('x86_64')
 url='https://tal-software.com/products/tal-noisemaker'
