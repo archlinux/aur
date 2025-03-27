@@ -1,6 +1,6 @@
 pkgbase = perl-io-interactive
 	pkgdesc = Utilities for interactive I/O
-	pkgver = 1.025
+	pkgver = 1.026
 	pkgrel = 1
 	url = https://metacpan.org/dist/IO-Interactive
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = perl-io-interactive
 	checkdepends = perl-test-pod
 	checkdepends = perl-test-pod-coverage
 	depends = perl
-	source = https://www.cpan.org/modules/by-module/IO/IO-Interactive-1.025.tar.gz
-	sha512sums = b9aca9d3920ea256e5b2c3e19559e7626ab076b36b38b58eecf087d8a2614b805a0226246bf035eb41b801a0972dfb19e1c99d2f8105bd403db5017e84b6e2dc
+	source = https://www.cpan.org/modules/by-module/IO/IO-Interactive-1.026.tar.gz
+	sha512sums = d8c0af451a1f45e2e2ec5cc8dc3fca777d59dc04a301bf83dbe4f3839038e04744d69e9cdc82f9e5f4f8c59fac1fcb81cd7134f6d080e36eb4a25bd27bfd01d3
 
 pkgname = perl-io-interactive
