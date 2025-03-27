@@ -1,4 +1,6 @@
 # Maintainer: TheCyberArcher@protonmail.ch
+# Contributor: Emilio Reggi <nag@mailbox.org>
+
 pkgname=ymuse-bin
 _pkgname=ymuse
 pkgver=0.22
@@ -6,7 +8,7 @@ pkgrel=2
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon (MPD)."
 arch=('x86_64')
 url="https://yktoo.com/en/software/ymuse/#software-downloads"
-license=('Apache')
+license=('Apache-2.0')
 depends=('gtk3')
 optdepends=('mpd')
 provides=("${_pkgname}")
