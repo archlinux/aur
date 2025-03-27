@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+    <mime-type type="application/gamemaker-data">
+        <comment>GameMaker asset file</comment>
+        <sub-class-of type="application/octet-stream"/>
+        <glob pattern="data.win"/>
+        <glob pattern="data.unx"/>
+        <icon name="undertalemodtool"/>
+    </mime-type>
+</mime-info>

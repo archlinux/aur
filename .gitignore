@@ -1,7 +1,7 @@
-undertalemodtool-0.7.0.0.zip.part
-undertalemodtool-0.7.0.0.zip
+undertalemodtool-*.zip.part
+undertalemodtool-*.zip
 PKGBUILD-namcap.log
-undertalemodtool-bin-0.7.0.0-2-x86_64-package.log
-undertalemodtool-bin-0.7.0.0-2-x86_64-prepare.log
-undertalemodtool-bin-0.7.0.0-2-x86_64.pkg.tar.zst
-undertalemodtool-bin-0.7.0.0-2-x86_64.pkg.tar.zst-namcap.log
+undertalemodtool-bin-*-package.log
+undertalemodtool-bin-*-prepare.log
+undertalemodtool-bin-*.pkg.tar.zst
+undertalemodtool-bin-*.pkg.tar.zst-namcap.log

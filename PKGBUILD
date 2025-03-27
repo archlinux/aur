@@ -4,7 +4,7 @@ pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
 pkgver=0.7.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 
 pkgdesc="The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)"
@@ -15,13 +15,15 @@ depends=("wine" "bash")
 makedepends=("unzip")
 
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/UndertaleModTool_v${pkgver}-Windows-SingleFile.zip" 
-        "${_pkgname}.sh" 
-		"icon.png" 
-		"undertalemodtool.exe.desktop")
-sha256sums=("838c4c01e6517c91c8ff0817030ef288a81142e2c3e00c15c6b869ab87c28ca8" 
-			"1638dabce4fbd32d515156442def0dec3fef8e3c2e1fa9748f81f0151cb38430" 
-			"SKIP" 
-			"67144b28927cc4835a9ec6e567f927478fb510f77b3d2bcaa12ef505e3e54978")
+        "${_pkgname}.sh"
+		"undertalemodtool.exe.desktop"
+		"gamemaker-data.xml"
+		"icon.png")
+sha256sums=("838c4c01e6517c91c8ff0817030ef288a81142e2c3e00c15c6b869ab87c28ca8"
+			"1638dabce4fbd32d515156442def0dec3fef8e3c2e1fa9748f81f0151cb38430"
+			"156ab7105b93ed653aa180e91535e41a5d56de279c8707c6acc23e526209f655"
+			"SKIP"
+			"SKIP")
 
 
 noextract=("${_pkgname}-${pkgver}.zip")
@@ -42,4 +44,6 @@ package(){
 	install -Dm644 undertalemodtool.exe.desktop "$pkgdir"/usr/share/applications/undertalemodtool.exe.desktop
 	# Install icon
 	install -Dm644 icon.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png
+	# Install MIME type
+	install -Dm644 gamemaker-data.xml "$pkgdir"/usr/share/mime/packages/gamemaker-data.xml
 }

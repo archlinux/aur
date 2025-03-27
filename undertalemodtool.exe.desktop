@@ -8,3 +8,4 @@ Categories=Application;Development;
 Icon=undertalemodtool
 Comment=The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!) 
 StartupWMClass=undertalemodtool.exe
+MimeType=application/gamemaker-data
