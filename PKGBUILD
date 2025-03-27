@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=probe-rs-git
-pkgver=0.26.0.r11.g2c65f78
-pkgrel=1
+pkgver=0.27.0.r72.gb639d3f
+pkgrel=2
 pkgdesc="A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host"
 arch=($CARCH)
 url="https://github.com/probe-rs/probe-rs"
@@ -28,7 +28,7 @@ depends=(gcc-libs
     libftdi
     systemd-libs)
 makedepends=(git
-    cargo
+    rust
     cmake
     openssl
     pkgconf)
@@ -43,6 +43,7 @@ prepare() {
     cd "${srcdir}/${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
