@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=fuse-archive
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)"
 arch=(x86_64)
 url="https://github.com/google/fuse-archive"

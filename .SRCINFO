@@ -1,7 +1,7 @@
 pkgbase = fuse-archive
 	pkgdesc = FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/fuse-archive
 	arch = x86_64
 	license = Apache-2.0
