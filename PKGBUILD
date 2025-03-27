@@ -7,7 +7,7 @@
 ## build root via __FILE__ macro
 
 pkgname=arcan
-pkgver=0.6.3.4
+pkgver=0.7.0.1
 pkgrel=1
 pkgdesc="Game Engine meets a Display Server meets a Multimedia Framework"
 arch=(x86_64)
@@ -38,7 +38,7 @@ depends=(espeak-ng
          )
 makedepends=(cmake meson ruby wayland-protocols xcb-util)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/letoram/arcan/archive/${pkgver}.tar.gz")
-sha256sums=('8ffdd67e99df7fae4de739f530f51ca1583eb6b6dbb2fd4cd5c29913e85200e5')
+sha256sums=('63d925d100389e7a1074a8746a080a01d94739df487c2f8e311eb49adc006c6e')
 
 build() {
   export CFLAGS+=" -Wno-error=format-security"

@@ -1,6 +1,6 @@
 pkgbase = arcan
 	pkgdesc = Game Engine meets a Display Server meets a Multimedia Framework
-	pkgver = 0.6.3.4
+	pkgver = 0.7.0.1
 	pkgrel = 1
 	url = https://github.com/letoram/arcan
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = arcan
 	depends = file
 	depends = libglvnd
 	depends = libdrm
-	source = arcan-0.6.3.4.tar.gz::https://github.com/letoram/arcan/archive/0.6.3.4.tar.gz
-	sha256sums = 8ffdd67e99df7fae4de739f530f51ca1583eb6b6dbb2fd4cd5c29913e85200e5
+	source = arcan-0.7.0.1.tar.gz::https://github.com/letoram/arcan/archive/0.7.0.1.tar.gz
+	sha256sums = 63d925d100389e7a1074a8746a080a01d94739df487c2f8e311eb49adc006c6e
 
 pkgname = arcan
