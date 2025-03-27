@@ -1,7 +1,7 @@
 pkgbase=tal-reverb4
 pkgname=("${pkgbase}-clap-bin" "${pkgbase}-vst-bin" "${pkgbase}-vst3-bin")
 pkgver=4.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple algorithmic reverb V4 by TAL Software'
 arch=('x86_64')
 url='https://tal-software.com/tal-reverb-4'

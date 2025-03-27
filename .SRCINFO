@@ -1,7 +1,7 @@
 pkgbase = tal-reverb4
 	pkgdesc = A simple algorithmic reverb V4 by TAL Software
 	pkgver = 4.0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://tal-software.com/tal-reverb-4
 	arch = x86_64
 	groups = pro-audio
