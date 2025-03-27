@@ -2,14 +2,14 @@
 
 pkgname="mozilla-conf-openssh"
 pkgver="20250327"
-pkgrel=2
+pkgrel=3
 arch=("any")
 pkgdesc="Mozilla infosec guidelines configuration for OpenSSH"
 url="https://infosec.mozilla.org/guidelines/openssh"
 license=("MIT")
 depends=(
 	"awk"
-	"openssh"
+	"openssh>=6.7"
 )
 source=(
 	"client.conf"

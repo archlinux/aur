@@ -1,12 +1,12 @@
 pkgbase = mozilla-conf-openssh
 	pkgdesc = Mozilla infosec guidelines configuration for OpenSSH
 	pkgver = 20250327
-	pkgrel = 2
+	pkgrel = 3
 	url = https://infosec.mozilla.org/guidelines/openssh
 	arch = any
 	license = MIT
 	depends = awk
-	depends = openssh
+	depends = openssh>=6.7
 	source = client.conf
 	source = server.conf
 	b2sums = 5e2d05d8db7d3b0bb07e24224e196bd855182d4c7d0bb52904ccb817338aa7e388bd0aed3331ffccea51d4749f616d605341dd5e535cf893de1f4700acd5d99d
