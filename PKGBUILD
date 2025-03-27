@@ -2,7 +2,7 @@
 
 pkgname=emu80-git
 _pkgname=emu80
-_commit=0658e04
+_commit=cc14243
 _pkgver=4.0.509
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
