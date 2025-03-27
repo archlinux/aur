@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=downloader
-_pkgver=0.4
+_pkgver=0.4.1
 pkgname=r-${_pkgname,,}
-pkgver=0.4
-pkgrel=4
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Download Files over HTTP and HTTPS'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1890e75b028775154023f2135cafb3e3eed0fe908138ab4f7eff1fc1b47dafab')
+sha256sums=('74595ff67e9600e3bbe25fa2daf2eec770fab9eaaea12e63b61a32086e035175')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
