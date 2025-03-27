@@ -4,8 +4,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-avisynthplus
-pkgver=3.7.3
-pkgrel=3
+pkgver=3.7.4
+pkgrel=1
 arch=('any')
 pkgdesc="An improved version of the AviSynth frameserver (Android ${_android_arch})"
 url='https://avs-plus.net/'
@@ -17,13 +17,19 @@ makedepends=('android-cmake'
              "android-${_android_arch}-devil")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/AviSynth/AviSynthPlus/archive/v${pkgver}/avisynthplus-${pkgver}.tar.gz")
-md5sums=('e18f562c225aa04792f318a2d3039418')
+md5sums=('16a5930b6234155a3a3e9ce432474c5f')
+
+prepare() {
+    cd "${srcdir}/AviSynthPlus-${pkgver}"
+
+    if [[ "${ANDROID_MINIMUM_PLATFORM}" -lt 28 ]]; then
+        sed -i 's/ = aligned_alloc/ = memalign/g' avs_core/filters/exprfilter/exprfilter.cpp
+    fi
+}
 
 build() {
     cd "${srcdir}/AviSynthPlus-${pkgver}"
     source android-env ${_android_arch}
-
-    # Building CXX object avs_core/CMakeFiles/AvsCore.dir/filters/exprfilter/exprfilter.cpp.o
 
     android-${_android_arch}-cmake \
         -S . \
