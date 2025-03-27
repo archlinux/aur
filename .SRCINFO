@@ -14,7 +14,7 @@ pkgbase = itgmania-bin
 	conflicts = itgmania
 	source = https://github.com/itgmania/itgmania/releases/download/v1.0.1/ITGmania-1.0.1-Linux.tar.gz
 	source = itgmania.sh
-	sha256sums = 7c098717b2ba2e5a3220f2d837a126cf24a5359485049254f5d995d1597357e7
+	sha256sums = 77004761e43ad34e31a106905c5ba9f45e4407260a34d02abc82a8fee547aca5
 	sha256sums = 0249497c6eb7969362d8a93e1bb50c3259e5dc3873f8c94a40503d1321f03810
 
 pkgname = itgmania-bin
