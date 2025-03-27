@@ -1,7 +1,7 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.6.1.git+eb2b22b0
+pkgver=0.6.3.git+b816ff86c
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
@@ -17,7 +17,7 @@ source=(git+$url#branch=main
         sysusers.conf
         tmpfiles.d)
 b2sums=('SKIP'
-        'e3ee6c4d8c00d263ff48b757e63b9867ad34b3e41eb9659e10668007fd0c59f7acb392c604c9c17f7ec1a6ace0dc78101d147de567b576424c89329d6ccb3ac8'
+        'dfa742756583835ba46a3825dcb70a52136509d8a8010935600f056b317da2e4ec06b8f16b9c8507d21f891980a74f6d227932973cfad80060eea396b5b60dd9'
         '3aabf135c4f18e1ad745ae8800db782b25b15305dfeaaa031b4501408ab7e7d01f66e8ebb5be59fc813cfbff6788d08d2e48dcf24ecc480a40ec9db8dbce9fec'
         'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
 
