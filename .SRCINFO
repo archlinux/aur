@@ -1,6 +1,6 @@
 pkgbase = python-eth-account
 	pkgdesc = Account abstraction library for web3.py
-	pkgver = 0.13.5
+	pkgver = 0.13.6
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-account
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-eth-account
 	depends = python-ckzg
 	depends = python-pydantic
 	depends = python-toolz
-	source = eth-account-0.13.5.tar.gz::https://github.com/ethereum/eth-account/archive/v0.13.5.tar.gz
-	sha512sums = 946d891f9ab568289c5b3d83f403e1de69f4fc770e6f4ee890ddfda0f8f7ca3ee6ad4778a852ca4744bdc37a3dc27199a9bfdafca2eac54fb78dd5c8b66dbc16
+	source = eth-account-0.13.6.tar.gz::https://github.com/ethereum/eth-account/archive/v0.13.6.tar.gz
+	sha512sums = a0db31ed86eb5b8f436ee8403f4762141c10ca0c2a53a7921baa4a66800224db4d30c17436ee17fdfef771ba5e3705cf63634c75d19ad07002086c375bdb4329
 
 pkgname = python-eth-account
