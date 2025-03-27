@@ -7,12 +7,12 @@
 # See https://wiki.archlinux.org/index.php/Makepkg#Signature_checking
 # for more details # on package signing.
 pkgname=librepcb
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=(
   'glu'
   'hicolor-icon-theme'
@@ -22,7 +22,6 @@ depends=(
   'qt6-base'
   'qt6-declarative'
   'qt6-svg'
-  'quazip-qt6'
 )
 makedepends=(
   'cmake'
@@ -30,13 +29,15 @@ makedepends=(
   'qt6-tools'
   'fontobene-qt-qt6'
   'gtest'
+  'rust'
+  'cargo'
 )
 source=(
   "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip"
   "https://download.librepcb.org/releases/$pkgver/librepcb-$pkgver-source.zip.asc"
 )
 sha256sums=(
-  'f6e9a375ab9f8fda2486481ee49e9359a0ab9a4ae2d5778e2e27f414ad98e829'
+  '0c5313142ab3d689fc998ea432eb86a41d7c010e6dd5a70a633eaba0bcf75845'
   'SKIP'
 )
 validpgpkeys=('D6F9AF572228C5BCD6B538407EF3061F5C8D5E25')
@@ -48,7 +49,6 @@ prepare() {
   rm -rf libs/fontobene-qt/
   rm -rf libs/muparser/
   rm -rf libs/polyclipping/
-  rm -rf libs/quazip/
   rm -rf libs/googletest/
 
   # Remove bundled hoedown, it is not needed on Qt >=5.14
@@ -69,7 +69,6 @@ build() {
     -DUNBUNDLE_FONTOBENE_QT=1 \
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
-    -DUNBUNDLE_QUAZIP=1 \
     -DUNBUNDLE_GTEST=1 \
     -Wno-dev
   cmake --build build
