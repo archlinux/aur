@@ -1,0 +1,15 @@
+pkgbase = adw-gimp3-git
+	pkgdesc = adw-gtk3 patches for GIMP 3
+	pkgver = r22.6a0f4c8
+	pkgrel = 1
+	url = https://github.com/dp0sk/adw-gimp3
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = adw-gtk-theme
+	provides = adw-gimp3
+	conflicts = adw-gimp3
+	source = git+https://github.com/dp0sk/adw-gimp3.git
+	sha256sums = SKIP
+
+pkgname = adw-gimp3-git
