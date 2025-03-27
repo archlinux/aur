@@ -1,0 +1,19 @@
+pkgbase = android-riscv64-libdc1394
+	pkgdesc = Library to control IEEE 1394 based cameras (Android riscv64)
+	pkgver = 2.2.7
+	pkgrel = 2
+	url = https://damien.douxchamps.net/ieee1394/libdc1394/
+	arch = any
+	groups = android-libdc1394
+	license = LGPL-2.1-or-later
+	makedepends = android-configure
+	depends = android-riscv64-libraw1394
+	depends = android-riscv64-libusb
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/libdc1394/libdc1394-2.2.7.tar.gz
+	md5sums = 003856054d39f12c18ab9e0f1e527e2c
+
+pkgname = android-riscv64-libdc1394
