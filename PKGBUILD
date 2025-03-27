@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bilibili-manga-watermark-remover
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="bilibili漫画 哔哩哔哩漫画 B漫 去水印工具(无痕 无损)，带图形界面"
 arch=($CARCH)
@@ -22,7 +22,7 @@ depends=(
     webkit2gtk-4.1
 )
 makedepends=(
-    cargo
+    rust
     cargo-tauri
     pnpm
 )
@@ -30,20 +30,31 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48b8c9795c66a7b35ed2060c4d45648c70433e8f29b4e7f033f2da85071f4ad6')
+sha256sums=('70513ce755573604db2df5e158035bdea5ba0520b30c125344ec0dc326538b2d')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    pnpm install
-    cd src-tauri
-    cargo build --release
-    #     pnpm tauri build
+    export CARGO_HOME="${srcdir}/.cargo"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+    } >>.npmrc
+
+    NODE_ENV=development pnpm install --force
+    NODE_ENV=production pnpm tauri build -b deb
 }
 
 # check() {
