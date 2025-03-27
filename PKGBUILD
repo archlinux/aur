@@ -16,8 +16,8 @@ pkgdesc='convert HTML to PDF using Webkit and Qt (upstream static build)'
 url='https://github.com/wkhtmltopdf/packaging'
 license=('GPL-3.0-or-later')
 
-provides=("$_name")
-conflicts=("$_name")
+provides=("$_name" "${_name}-static")
+conflicts=("$_name" "${_name}-static")
 
 depends=(
   'bzip2' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glib2'
