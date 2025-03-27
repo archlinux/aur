@@ -1,0 +1,12 @@
+pkgbase = animolauncher-git
+	pkgdesc = GUI for launching applications, written in blazingly fast Rust!
+	pkgver = 0.4.0_beta
+	pkgrel = 1
+	url = https://codeberg.org/AnimoUtils/animolauncher
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cargo
+	source = https://codeberg.org/AnimoUtils/animolauncher-git/archive/dev.tar.gz
+	sha512sums = 21ff9b33fd6691f4f1945c5b15e90c89415850d6ec917bc2eeeccd06d83fc5ee5626855b5536abe7757042849e86ca5b65972f9bed8fb6c4458510414f732d8a
+
+pkgname = animolauncher-git
