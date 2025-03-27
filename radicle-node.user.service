@@ -1,0 +1,55 @@
+# This is the systemd user service for running a per-user instance of `radicle-node`.
+#
+# When running radicle-node on a server, it should be run as a system service
+# by a separate user.
+#
+# If your Radicle key is passphrase-protected, you will have to set the
+# `RAD_PASSPHRASE` environment variable to the passphrase supplied during
+# `rad auth`, e.g.
+#
+#   [Service]
+#   Environment=RAD_PASSPHRASE=snickerdoodle
+#
+# Or, preferably, use a systemd credential named `xyz.radicle.node.passphrase`:
+#
+#   [Service]
+#   LoadCredentialEncrypted=xyz.radicle.node.passphrase
+#
+# Create the (encrypted) credential with:
+#
+#   $ systemd-creds encrypt - ~/.config/credstore.encrypted/xyz.radicle.node.passphrase
+#
+# (see systemd-creds(1) for extra options, e.g. using TPM for encryption)
+#
+[Unit]
+Description=Radicle Node
+
+# Use systemd for the control UNIX socket to allow socket activation
+# (which might be useful for on-demand startup of a per-user instance).
+# The file mode considerations mentioned in the system service do not apply here.
+# NOTE: when changing $RAD_HOME, change the socket path accordingly.
+Wants=radicle-node.socket
+
+[Service]
+ExecStart=/usr/bin/radicle-node --log-logger systemd --listen ${RADICLE_NODE_LISTEN} $RADICLE_NODE_ARGS
+KillMode=mixed
+Restart=always
+RestartSec=3
+
+#ConfigurationDirectory=radicle
+#StateDirectory=radicle
+
+#EnvironmentFile=-%E/radicle/radicle-node.env
+Environment=RADICLE_NODE_LISTEN="127.0.0.1:8776"
+Environment=RADICLE_NODE_ARGS=
+#Environment=RAD_HOME=%S/radicle
+Environment=RUST_BACKTRACE=1
+Environment=RUST_LOG=info
+
+# Basic hardening options. For more, please refer to `systemd-analyze security`.
+NoNewPrivileges=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=default.target
+Also=radicle-node.socket

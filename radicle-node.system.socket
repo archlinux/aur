@@ -1,0 +1,16 @@
+[Unit]
+Description=Radicle Node Control Socket
+PartOf=radicle-node.service
+
+[Socket]
+FileDescriptorName=control
+ListenStream=%S/radicle/node/control.sock
+
+SocketMode=0644
+DirectoryMode=0755
+
+SocketUser=radicle
+SocketGroup=radicle
+
+[Install]
+WantedBy=sockets.target

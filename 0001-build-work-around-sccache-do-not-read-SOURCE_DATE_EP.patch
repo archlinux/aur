@@ -1,0 +1,67 @@
+From ab6bcae0b1bfc89608d12bf848a104fb773b1dad Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Fri, 16 Jan 2026 05:31:18 +0100
+Subject: [PATCH 1/5] build: work around sccache, do not read
+ `$SOURCE_DATE_EPOCH`
+
+---
+ build.rs                                 | 1 +
+ crates/radicle-cli/src/main.rs           | 2 +-
+ crates/radicle-node/src/lib.rs           | 2 +-
+ crates/radicle-remote-helper/src/main.rs | 2 +-
+ 4 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/build.rs b/build.rs
+index ebeefed0..60c9df81 100644
+--- a/build.rs
++++ b/build.rs
+@@ -81,6 +81,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+     });
+ 
+     println!("cargo::rustc-env=RADICLE_VERSION={version}");
++    println!("cargo::rustc-env=RADICLE_TIMESTAMP={commit_time}");
+     println!("cargo::rustc-env=SOURCE_DATE_EPOCH={commit_time}");
+     println!("cargo::rustc-env=GIT_HEAD={hash}");
+ 
+diff --git a/crates/radicle-cli/src/main.rs b/crates/radicle-cli/src/main.rs
+index 3aa59e47..2e56b702 100644
+--- a/crates/radicle-cli/src/main.rs
++++ b/crates/radicle-cli/src/main.rs
+@@ -30,7 +30,7 @@ Do you have feedback?
+  - Mail <\x1b]8;;mailto:feedback@radicle.xyz\x1b\\feedback@radicle.xyz\x1b]8;;\x1b\\>
+    (Messages are automatically posted to the public #feedback channel on Zulip.)\
+ ";
+-pub const TIMESTAMP: &str = env!("SOURCE_DATE_EPOCH");
++pub const TIMESTAMP: &str = env!("RADICLE_TIMESTAMP");
+ pub const VERSION: Version = Version {
+     name: NAME,
+     version: RADICLE_VERSION,
+diff --git a/crates/radicle-node/src/lib.rs b/crates/radicle-node/src/lib.rs
+index 88b3a0f2..d2abaf36 100644
+--- a/crates/radicle-node/src/lib.rs
++++ b/crates/radicle-node/src/lib.rs
+@@ -35,7 +35,7 @@ pub const VERSION: Version = Version {
+     name: env!("CARGO_PKG_NAME"),
+     commit: env!("GIT_HEAD"),
+     version: env!("RADICLE_VERSION"),
+-    timestamp: env!("SOURCE_DATE_EPOCH"),
++    timestamp: env!("RADICLE_TIMESTAMP"),
+ };
+ 
+ /// This node's user agent string.
+diff --git a/crates/radicle-remote-helper/src/main.rs b/crates/radicle-remote-helper/src/main.rs
+index 525b5255..df5f9853 100644
+--- a/crates/radicle-remote-helper/src/main.rs
++++ b/crates/radicle-remote-helper/src/main.rs
+@@ -39,7 +39,7 @@ pub const VERSION: Version = Version {
+     name: env!("CARGO_BIN_NAME"),
+     commit: env!("GIT_HEAD"),
+     version: env!("RADICLE_VERSION"),
+-    timestamp: env!("SOURCE_DATE_EPOCH"),
++    timestamp: env!("RADICLE_TIMESTAMP"),
+ };
+ 
+ fn main() {
+-- 
+2.53.0.8.g57fba0c4633
+
