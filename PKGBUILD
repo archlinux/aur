@@ -9,7 +9,6 @@ arch=(x86_64)
 url="https://github.com/google/fuse-archive"
 license=('Apache-2.0')
 depends=(
-  fuse2
   fuse3
   glibc
   libarchive

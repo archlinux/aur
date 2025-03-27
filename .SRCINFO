@@ -7,7 +7,6 @@ pkgbase = fuse-archive
 	license = Apache-2.0
 	checkdepends = python
 	makedepends = boost
-	depends = fuse2
 	depends = fuse3
 	depends = glibc
 	depends = libarchive
