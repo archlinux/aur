@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-bravado
-pkgver=11.0.3
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="Python client library for Swagger 2.0 services"
 arch=('x86_64')
