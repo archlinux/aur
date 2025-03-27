@@ -1,7 +1,7 @@
 #Maintainer: shahriar Ghasempour
 pkgname=tasky
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Tasky is a command line TODO list app currently in beta version"
 arch=('any')
 url="https://github.com/shahriaarrr/Tasky"
@@ -13,7 +13,6 @@ options=(!strip !emptydirs)
 install=tasky.install
 source=("https://github.com/shahriaarrr/Tasky/releases/download/V0.6/tasky.zip")
 sha256sums=('SKIP')
-validpgpkeys=('F7B72A7695EA3651D24EC2798D1EDA199B4BD085')
 
 package() {
     install -dm755 "${pkgdir}"
