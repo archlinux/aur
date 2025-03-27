@@ -1,0 +1,24 @@
+pkgbase = android-riscv64-libxt
+	pkgdesc = X11 toolkit intrinsics library (Android riscv64)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = any
+	license = custom
+	makedepends = android-configure
+	makedepends = android-riscv64-xorg-util-macros
+	depends = android-riscv64-libsm
+	depends = android-riscv64-libx11
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXt-1.3.1.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXt-1.3.1.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	validpgpkeys = C52048C0C0748FEE227D47A2702353E0F7E48EDB
+	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
+	md5sums = 9acd189c68750b5028cf120e53c68009
+	md5sums = SKIP
+
+pkgname = android-riscv64-libxt
