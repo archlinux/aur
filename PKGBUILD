@@ -1,3 +1,4 @@
+# Paintainer : TheCyberArcher <thecyberarcher@protonmail.com>
 # Maintainer : tadly <me@tadly.de>
 
 pkgname=parsec-bin
@@ -8,24 +9,11 @@ url='http://parsec.app'
 license=('custom')
 arch=('x86_64')
 provides=('parsec')
-depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb' 'ffmpeg4.4' 'openssl-1.1' 'libxi')
+depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb' 'ffmpeg4.4' 'openssl-1.1' 'libxi' 'pipewire-alsa')
 optdepends=('libva: For hardware accelerated decoding')
 
 source=("$pkgname-$pkgver.deb::https://builds.parsecgaming.com/package/parsec-linux.deb")
 sha256sums=("f1691ba3a97534604f5f640c26cceafaef672ccf7ab6eed66114d0abafc2cccf")
-
-#source_arm=("$pkgname-$pkgver.deb::https://builds.parsecgaming.com/package/parsec-rpi.deb")
-#sha256sums_arm=('a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802')
-#
-#source_armv6h=($source_arm)
-#sha256sums_armv6h=($sha256sums_arm)
-#
-#source_armv7h=($source_arm)
-#sha256sums_armv7h=($sha256sums_arm)
-#
-#source_aarch64=($source_arm)
-#sha256sums_aarch64=($sha256sums_arm)
-
 options=('!strip')
 
 package() {
