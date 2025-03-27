@@ -44,5 +44,5 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/freetube.svg"
   cd ..
-  install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/freetube.desktop"
 }
