@@ -1,6 +1,6 @@
 pkgbase = python-obsws
 	pkgdesc = A Python SDK for OBS Studio WebSocket v5.0
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/aatikturk/obsws-python
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-obsws
 	depends = python
 	depends = python-tomli
 	depends = python-websocket-client
-	source = python-obsws-1.7.0.tar.gz::https://github.com/aatikturk/obsws-python/archive/9402f2e472e018617e2c15179ea24cad355a5e0e.tar.gz
+	source = python-obsws-1.7.1.tar.gz::https://github.com/aatikturk/obsws-python/archive/f52ac163b8bd295c11cf04e51039aadbc93ed678.tar.gz
 	sha256sums = 0fc8e7a538f99f2271989f754f457a9f92f160b514f787f31c4096c76dbdee48
 
 pkgname = python-obsws
