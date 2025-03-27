@@ -13,7 +13,7 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=7.0.15
+pkgver=7.0.16
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
@@ -36,7 +36,7 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb-7.0.2-sconstruct.patch
         mongodb-4.4.29-no-enterprise.patch
         mongodb-7.0.14-system-boost.patch)
-sha256sums=('a79b63cbc4a4f44f1ba3c021dddb65e920bd4a35e1f6db9fa741cad8a0730c3f'
+sha256sums=('54bd8bee37ef413c3286bbda43fc719935547cd521dc2ac87051c9f136de016e'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '4ff40320e04bf8c3e05cbc662f8ea549a6b8494d1fda64b1de190c88587bfafd'
