@@ -13,8 +13,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.4_1.0.1_0.16.10-1"
-_minecraft_ver_latest="1.21.4"
+_ver="1.21.5_1.0.3_0.16.10-1"
+_minecraft_ver_latest="1.21.5"
 
 IFS="-" read -ra _ver_temp <<<"$_ver"
 IFS="_" read -ra _pkgver_temp <<<"${_ver_temp[0]}"
@@ -60,7 +60,7 @@ source=(
 noextract=("fabric-${_pkgver}.jar")
 sha512sums=(
 	'dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556'
-	'6e77702af63d9eb6e83adb01aa96a6e057811f524a7787ae48519cd85352f142c30a35f9d9c7794164726eb11e12ce664da6c3a40c8ada3e0294063f38f4636b'
+	'2732d318f295ffc4ad34d1a873e4cba4b55fd14bbfa3ff2e15d56026cad338a7649472554eb81dccfe3b14b9c451a89923fd9ac91f8f75900b69da966c86ddfb'
 )
 
 prepare() {
