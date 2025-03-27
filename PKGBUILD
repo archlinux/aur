@@ -5,7 +5,7 @@
 pkgname=qgpgme-qt5
 _pkgbase=gpgme
 pkgver=1.23.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Qt5 bindings for GPGme"
 arch=('x86_64')
 url='https://www.gnupg.org/related_software/gpgme/'
@@ -47,5 +47,10 @@ package() {
   cd ${_pkgbase}-${pkgver}/lang/qt
 
   make DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/usr/include
+  install -d "${pkgdir}"/usr/include/qgpgme-qt5
+  mv "${pkgdir}"/usr/include/{qgpgme,QGpgME} "${pkgdir}"/usr/include/qgpgme-qt5/.
+
+  mv "${pkgdir}"/usr/lib/cmake/QGpgme "${pkgdir}"/usr/lib/cmake/QGpgmeQt5
+  mv "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeConfig.cmake "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5Config.cmake
+  mv "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeConfigVersion.cmake "${pkgdir}"/usr/lib/cmake/QGpgmeQt5/QGpgmeQt5ConfigVersion.cmake
 }
