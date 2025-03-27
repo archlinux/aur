@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.5.6.r0.1ecca41
+pkgver=1.5.7.r3.cf294a2
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -42,11 +42,13 @@ package() {
   # Java Application
   install -Dm755 cie-java/build/libs/CIEID-standalone.jar \
     "${pkgdir}/usr/share/cieid/cieid.jar"
-  install -Dm644 "data/cieid.desktop" \
-    "${pkgdir}/usr/share/applications/cieid.desktop"
-  install -Dm755 data/logo.png \
-    "${pkgdir}/usr/share/pixmaps/cieid.png"
-  install -Dm755 "data/cieid.sh" \
+  install -Dm644 data/app.m0rf30.cieid.desktop \
+    "${pkgdir}/usr/share/applications/app.m0rf30.cieid.desktop"
+  install -Dm755 data/app.m0rf30.cieid.png \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/app.m0rf30.cieid.png"
+  install -Dm644 data/app.m0rf30.cieid.metainfo.xml \
+    "${pkgdir}/usr/share/metainfo/app.m0rf30.cieid.metainfo.xml"
+  install -Dm755 data/cieid.sh \
     "${pkgdir}/usr/bin/cieid"
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/cieid/LICENSE"
