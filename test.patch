@@ -1,0 +1,12 @@
+diff -urN autograd-1.7.0-orig/tests/test_scipy.py autograd-1.7.0/tests/test_scipy.py
+--- autograd-1.7.0-orig/tests/test_scipy.py	2025-03-27 13:10:21.257950899 -0400
++++ autograd-1.7.0/tests/test_scipy.py	2025-03-27 13:10:29.408092213 -0400
+@@ -124,7 +124,7 @@
+     def test_dirichlet_logpdf_alpha(): combo_check(stats.dirichlet.logpdf,      [1])([x], [alpha])
+ 
+     ### Misc ###
+-    def test_logsumexp1(): combo_check(special.logsumexp, [0], modes=['fwd', 'rev'])([1.1, R(4), R(3,4)],                axis=[None, 0],    keepdims=[True, False])
++    def test_logsumexp1(): combo_check(special.logsumexp, [0], modes=['fwd', 'rev'])([np.array([1.1]), R(4), R(3,4)],                axis=[None, 0],    keepdims=[True, False])
+     def test_logsumexp2(): combo_check(special.logsumexp, [0], modes=['fwd', 'rev'])([R(3,4), R(4,5,6), R(1,5)],         axis=[None, 0, 1], keepdims=[True, False])
+     def test_logsumexp3(): combo_check(special.logsumexp, [0], modes=['fwd', 'rev'])([R(4)], b = [np.exp(R(4))],         axis=[None, 0],    keepdims=[True, False])
+     def test_logsumexp4(): combo_check(special.logsumexp, [0], modes=['fwd', 'rev'])([R(3,4),], b = [np.exp(R(3,4))],    axis=[None, 0, 1], keepdims=[True, False])
