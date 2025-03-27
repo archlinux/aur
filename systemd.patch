@@ -1,0 +1,138 @@
+diff --git a/systemd/dnssd/radicle-node.dnssd b/systemd/dnssd/radicle-node.dnssd
+index ad56890b..5b1cdb4e 100644
+--- a/systemd/dnssd/radicle-node.dnssd
++++ b/systemd/dnssd/radicle-node.dnssd
+@@ -6,7 +6,7 @@ Type=_radicle-node._tcp
+ # Recommendation for "Instance Name"
+ # (see RFC 6763, Sec. 4.1.1, <https://datatracker.ietf.org/doc/html/rfc6763#section-4.1.1>):
+ # Something that identifies your node, maybe it's alias, but could be something else.
+-Name=example
++Name=%H
+ 
+ # If your node is configured to listen on a different port, please change.
+ Port=8776
+@@ -16,4 +16,4 @@ Port=8776
+ #
+ #   "nid=<public key of your node>"
+ #
+-TxtText="nid=z6…"
++#TxtText="nid=z6…"
+diff --git a/systemd/system/radicle-node.service b/systemd/system/radicle-node.service
+index 7423ace3..ff2856b7 100644
+--- a/systemd/system/radicle-node.service
++++ b/systemd/system/radicle-node.service
+@@ -3,35 +3,42 @@
+ # When running radicle-node for just one user, e.g. on a laptop,
+ # it should be run as a user service, see `../user/*.service`.
+ #
+-# For more information on how to install and configure this service,
+-# please read:
++# If your Radicle key is passphrase-protected, you will have to set the
++# `RAD_PASSPHRASE` environment variable to the passphrase supplied during
++# `rad auth`, e.g.
+ #
+-# https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html
+-# https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
++#   [Service]
++#   Environment=RAD_PASSPHRASE=snickerdoodle
+ #
+ [Unit]
+ Description=Radicle Node
+ After=network.target network-online.target
+-Requires=network-online.target
++Wants=network-online.target
+ 
+ [Service]
+-ExecStart=/usr/local/bin/radicle-node --listen 0.0.0.0:8776 --force
+-KillMode=process
++ExecStart=/usr/bin/radicle-node --log-logger systemd $RADICLE_NODE_ARGS
++KillMode=mixed
+ Restart=always
+ RestartSec=3
+-# Basic hardening options. For more please refer to `systemd-analyze security`.
++
++ConfigurationDirectory=radicle
++StateDirectory=radicle
++
++EnvironmentFile=-%E/conf.d/radicle-node
++Environment=RADICLE_NODE_ARGS=--listen 0.0.0.0:8776 --force
++Environment=RAD_HOME=%S/radicle
++Environment=RUST_BACKTRACE=1
++Environment=RUST_LOG=info
++
++# Basic hardening options. For more, please refer to `systemd-analyze security`.
+ PrivateTmp=true
+ ProtectSystem=strict
++ProtectHome=true
+ NoNewPrivileges=true
+ MemoryDenyWriteExecute=true
+ 
+-# If your Radicle key is passphrase-protected, you will have to set the
+-# `RAD_PASSPHRASE` environment variable to the passphrase supplied during
+-# `rad auth`.
+-#Environment=RAD_PASSPHRASE=snickerdoodle
+-
+-User=seed
+-Group=seed
++User=radicle
++Group=radicle
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/systemd/user/radicle-node.service b/systemd/user/radicle-node.service
+index 65d60a40..a06c9feb 100644
+--- a/systemd/user/radicle-node.service
++++ b/systemd/user/radicle-node.service
+@@ -3,36 +3,33 @@
+ # When running radicle-node on a server, it should be run as
+ # a system service by a separate user, see `../system/*.service`.
+ #
+-# For more information on how to install and configure this service,
+-# please read:
++# If your Radicle key is passphrase-protected, you will have to set the
++# `RAD_PASSPHRASE` environment variable to the passphrase supplied during
++# `rad auth`, e.g.
+ #
+-# https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html
+-# https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
++#   [Service]
++#   Environment=RAD_PASSPHRASE=snickerdoodle
+ #
+ [Unit]
+ Description=Radicle Node
+-After=network.target network-online.target
+-Requires=network-online.target
+ 
+ [Service]
+-ExecStart=/usr/bin/radicle-node --log
+-KillMode=process
++ExecStart=/usr/bin/radicle-node --log-logger systemd $RADICLE_NODE_ARGS
++KillMode=mixed
+ Restart=always
+ RestartSec=3
+-# Basic hardening options. For more please refer to `systemd-analyze security`.
+-PrivateTmp=true
+-ProtectHome=true
+-MemoryDenyWriteExecute=true
+ 
+-# If your Radicle key is passphrase-protected, you will have to set the
+-# `RAD_PASSPHRASE` environment variable to the passphrase supplied during
+-# `rad auth`.
+-#Environment=RAD_PASSPHRASE=snickerdoodle
+-Environment=RAD_HOME=/home/seed/.radicle RUST_BACKTRACE=1
++#ConfigurationDirectory=radicle
++#StateDirectory=radicle
++
++#EnvironmentFile=-%E/radicle/radicle-node.env
++Environment=RADICLE_NODE_ARGS=
++#Environment=RAD_HOME=%S/radicle
++Environment=RUST_BACKTRACE=1
++Environment=RUST_LOG=info
+ 
+ # Basic hardening options. For more, please refer to `systemd-analyze security`.
+-PrivateTmp=true
+-ProtectHome=true
++NoNewPrivileges=true
+ MemoryDenyWriteExecute=true
+ 
+ [Install]

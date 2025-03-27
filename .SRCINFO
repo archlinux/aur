@@ -1,0 +1,29 @@
+pkgbase = radicle-git
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git
+	pkgver = 1.7.0rc0.r12.g03bbe5241
+	pkgrel = 1
+	url = https://radicle.xyz
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = asciidoctor
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = git
+	depends = openssh
+	source = heartwood::git+https://seed.radicle.xyz/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git
+	source = systemd.patch
+	b2sums = SKIP
+	b2sums = 02a9d5d6a3dbcdb2f2192bf9ffa28569fcf1e95fa9a43bbbc98bc26aa9e3a7d32cb0fa84d89a560c4c9431f8a027b34d57bd10071c0b02f4b9ce5a4bd465edd1
+
+pkgname = radicle-cli-git
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - cli
+	provides = radicle-cli
+	conflicts = radicle-cli
+
+pkgname = radicle-node-git
+	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - node
+	provides = radicle-node
+	conflicts = radicle-node
