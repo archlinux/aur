@@ -4,6 +4,7 @@ pkgbase = archtry
 	pkgrel = 1
 	url = https://github.com/6z7y56/archtry
 	arch = x86_64
+	arch = aarh64
 	license = MIT
 	makedepends = rust
 	makedepends = make
