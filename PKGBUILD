@@ -3,7 +3,7 @@
 pkgname=hslinkupper
 _name=HSLinkUpper
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="HSLinkUpper is a simple tool that allows you to config HSLink."
 arch=($CARCH)
@@ -26,10 +26,9 @@ depends=(
     webkit2gtk-4.1
 )
 makedepends=(
-    git
     hidapi
     pnpm
-    cargo
+    rust
     cargo-tauri
 )
 optdepends=()

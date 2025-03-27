@@ -1,14 +1,13 @@
 pkgbase = hslinkupper
 	pkgdesc = HSLinkUpper is a simple tool that allows you to config HSLink.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HSLink/HSLinkUpper
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = hidapi
 	makedepends = pnpm
-	makedepends = cargo
+	makedepends = rust
 	makedepends = cargo-tauri
 	depends = cairo
 	depends = gdk-pixbuf2
