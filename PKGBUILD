@@ -4,7 +4,7 @@
 pkgname=python-markitdown
 _pkgname=${pkgname#python-}
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility tool for converting various files to Markdown"
 arch=(any)
 url="https://github.com/microsoft/markitdown"
@@ -27,6 +27,7 @@ depends=(
   python-pathvalidate
   python-cobble #not requested in pyproject.toml but apparently needed at runtime
   python-olefile
+  python-magika
 )
 makedepends=(
   python-build
