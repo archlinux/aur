@@ -9,7 +9,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.20.0.0.g3ef5793
+pkgver=1.21.0.0.gf781ac9
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,12 +20,9 @@ depends=(
 	'libxkbcommon'
 	'libxkbfile'
 	'libxinerama'
-	'libnotify'
 	'libei'
 	'libportal'
 	'qt6-base'
-	'gdk-pixbuf2'
-	'pugixml'
 	'tomlplusplus'
 	'openssl'
 )
