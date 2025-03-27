@@ -32,63 +32,51 @@ prepare() {
     gzip -fd "{}" \;
 }
 
-build() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/opt/${_pkgname}"
-  if [ -d "cups/lib" ]; then
-    find "cups/lib" -type f \
-      -execdir install -Dm755 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/lib/cups/filter/{}" \;
-      # -exec patchelf --remove-rpath "{}" \; \
+package() {
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  if [ -d "usr" ]; then
+    cp -vr --no-preserve=ownership "usr" "${pkgdir}"
   fi
-  if [ -d "lib/cups" ]; then
-    find "lib/cups" -type f \
-      -execdir install -Dm755 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/lib/cups/filter/{}" \;
+  
+  cd "opt/${_pkgname}"
+  for dir in "cups/lib/filter" "lib/cups/filter"; do
+    [ -d "${dir}" ] || continue
+    find "${dir}" -type f -execdir \
+      install -vDm755 "{}" "${pkgdir}/usr/lib/cups/filter/{}" \;
       # -exec patchelf --remove-rpath "{}" \; \
-  fi
+  done
 
   if [ -d "doc" ]; then
     find "doc" -type f -execdir \
-      install -Dm644 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/doc/${_pkgname}/{}" \;
+      install -vDm644 "{}" "${pkgdir}/usr/share/doc/${_pkgname}/{}" \;
   fi
 
-  if [ -d "lib" ]; then
-    find "lib"   -maxdepth 1 -type f,l -execdir \
-      cp -P --preserve=mode,ownership "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/lib/{}" \;
-  fi
-  if [ -d "lib64" ]; then
-    find "lib64" -maxdepth 1 -type f,l -execdir \
-      cp -P --preserve=mode,ownership "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/lib/{}" \;
-  fi
+  for dir in "lib" "lib64"; do
+    [ -d "${dir}" ] || continue
+    find "${dir}" -maxdepth 1 -type f,l -execdir \
+      cp -vP --preserve=mode,ownership "{}" "${pkgdir}/usr/lib/{}" \;
+  done
 
   if [ -d "ppds" ]; then
-    find "ppds" -type f -execdir \
-      install -Dm644 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/cups/model/${_pkgname}/{}" \;
+    find "ppds" -type f -name '*.ppd' -execdir \
+      install -Dm644 "{}" "${pkgdir}/usr/share/cups/model/${_pkgname}/{}" \;
   fi
 
   if [ -d "share" ]; then
     find "share" -type f -exec \
-      install -Dm644 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/{}" \;
+      install -Dm644 "{}" "${pkgdir}/usr/{}" \;
   fi
 
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  rm -rf "opt"
-
-  cd "usr/share"
+  cd "${pkgdir}/usr/share"
   find "cups" -type f -name '*.ppd' -exec \
     sed -e "s|/opt/${_pkgname}/cups/lib/filter/||g" \
         -e "s|/opt/${_pkgname}/lib/cups/filter/||g" \
         -i "{}" +
 
   cd "doc/${_pkgname}"
-  rm -f "copyright"
-  find . -maxdepth 1 -type f \( -name '*COPYING*' -o -name '*LICENSE*' -o -name '*license*' \) \
-    -execdir install -Dm644 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/licenses/${_pkgname}/{}" \; \
-    -exec rm "{}" +
-  # find . -maxdepth 1 -type f \
-  #   -execdir install -Dm644 "{}" "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/doc/${_pkgname}/{}" \; \
-  #   -exec rm "{}" +
-}
+  rm -f ./*copyright* ./*Debian ./*INSTALL*
 
-package() {
-  cd "${srcdir}"
-  cp -r --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
+  find . -maxdepth 1 -type f \( -name '*COPYING*' -o -name '*LICENSE*' -o -name '*license*' \) \
+    -execdir install -vDm644 "{}" "${pkgdir}/usr/share/licenses/${_pkgname}/{}" \; \
+    -exec rm -f "{}" +
 }
