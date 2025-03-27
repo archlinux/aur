@@ -2,7 +2,7 @@
 
 pkgname=manhuagui-downloader
 pkgver=0.4.2
-pkgrel=1
+pkgrel=5
 pkgdesc="漫画柜 manhuagui 看漫画 下载器，带图形界面，支持下载隐藏内容、导出PDF"
 arch=($CARCH)
 url="https://github.com/lanyeeee/manhuagui-downloader"
@@ -24,7 +24,7 @@ depends=(
     webkit2gtk-4.1
 )
 makedepends=(
-    cargo
+    rust
     cargo-tauri
     git
     pnpm
@@ -38,16 +38,27 @@ sha256sums=('abcfc58a4281c0d02d9ba7554affc652c7bfe5a19137798876c3fcc915f86269')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    pnpm install
-    cd src-tauri
-    cargo build --release
-    #     pnpm tauri build
+    export CARGO_HOME="${srcdir}/.cargo"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+    } >>.npmrc
+
+    NODE_ENV=development pnpm install --force
+    NODE_ENV=production pnpm tauri build -b deb
 }
 
 # check() {

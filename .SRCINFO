@@ -1,11 +1,11 @@
 pkgbase = manhuagui-downloader
 	pkgdesc = 漫画柜 manhuagui 看漫画 下载器，带图形界面，支持下载隐藏内容、导出PDF
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/lanyeeee/manhuagui-downloader
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rust
 	makedepends = cargo-tauri
 	makedepends = git
 	makedepends = pnpm
