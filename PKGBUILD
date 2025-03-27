@@ -73,6 +73,10 @@ package_vital-synth-vst3-bin() {
 package_vital-synth-standalone-bin() {
     pkgdesc+=' - standalone'
     depends=("${_common_depends[@]}")
+    optdepends=(
+        'jack: audio backend'
+        'alsa-lib: audio-backend'
+      )
     install -vDm755 "$srcdir/VitalInstaller/bin/Vital" "$pkgdir/usr/bin/Vital"
     install -vDm644 "$srcdir/vital-synth.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/vital-synth.png"
     install -vDm644 "$srcdir/Vital Synth.desktop" "$pkgdir/usr/share/applications/Vital Synth.desktop"

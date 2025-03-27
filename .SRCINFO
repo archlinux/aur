@@ -68,3 +68,5 @@ pkgname = vital-synth-standalone-bin
 	depends = glibc
 	depends = libglvnd
 	depends = libsecret
+	optdepends = jack: audio backend
+	optdepends = alsa-lib: audio-backend
