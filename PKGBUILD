@@ -2,7 +2,7 @@
 
 pkgname=jmcomic-downloader
 pkgver=0.14.0
-pkgrel=1
+pkgrel=5
 pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器，带图形界面，已打包exe，带收藏夹，免费下载收费的漫画，下载速度飞快"
 arch=($CARCH)
 url="https://github.com/lanyeeee/jmcomic-downloader"
@@ -22,7 +22,7 @@ depends=(
     webkit2gtk-4.1
 )
 makedepends=(
-    cargo
+    rust
     cargo-tauri
     pnpm
 )
@@ -34,16 +34,27 @@ sha256sums=('6f1a15113b95666875c0980882ee7aba75e216d3a0a0c991e5fda58503315413')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    pnpm install
-    cd src-tauri
-    cargo build --release
-    #     pnpm tauri build
+    export CARGO_HOME="${srcdir}/.cargo"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+    } >>.npmrc
+
+    NODE_ENV=development pnpm install --force
+    NODE_ENV=production pnpm tauri build -b deb
 }
 
 # check() {
