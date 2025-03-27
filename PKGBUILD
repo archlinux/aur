@@ -8,11 +8,12 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-libmp4v2
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A C/C++ library to create, modify and read MP4 files (Android ${_android_arch})"
 url="https://mp4v2.org/"
 license=('MPL')
+groups=('android-libmp4v2')
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
