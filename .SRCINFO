@@ -1,5 +1,5 @@
 pkgbase = anytype-pre
-	pkgdesc = The everything app for those who celebrate trust & autonomy
+	pkgdesc = The everything app for those who celebrate trust & autonomy (pre-release)
 	pkgver = 0.46.0
 	pkgrel = 1
 	url = https://anytype.io/
