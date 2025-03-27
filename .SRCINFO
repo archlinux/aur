@@ -1,0 +1,15 @@
+pkgbase = mozilla-conf-openssh
+	pkgdesc = Mozilla infosec guidelines configuration for OpenSSH
+	pkgver = 20250327
+	pkgrel = 1
+	url = https://github.com/lzlrd/wsl-hello-sudo
+	arch = any
+	license = MIT
+	depends = awk
+	depends = openssh
+	source = client.conf
+	source = server.conf
+	b2sums = 5e2d05d8db7d3b0bb07e24224e196bd855182d4c7d0bb52904ccb817338aa7e388bd0aed3331ffccea51d4749f616d605341dd5e535cf893de1f4700acd5d99d
+	b2sums = fa7c565012b3f2900f53d102e4b22a5363948256a2e9f3d69886e724ec33d508329445e3a15ea6b86d249e8c804e250e5a2089ba4620f65753cde03fa6160f3a
+
+pkgname = mozilla-conf-openssh
