@@ -2,7 +2,7 @@
 
 pkgname="mozilla-conf-openssh"
 pkgver="20250327"
-pkgrel=1
+pkgrel=2
 arch=("any")
 pkgdesc="Mozilla infosec guidelines configuration for OpenSSH"
 url="https://infosec.mozilla.org/guidelines/openssh"
