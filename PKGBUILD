@@ -2,7 +2,7 @@
 
 pkgname=abracadabra
 _appname=AbracaDABra
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)"
 arch=("x86_64" "aarch64")
@@ -22,7 +22,7 @@ makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations" "qcustomplot")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("b1931fc600e0e7d32d59dead3b1c2c9c038162236bd484069fcebc6c41567535")
+sha256sums=("eaaade306707f38ef2febe081c62edc9590cf4cb31a3545383433eb789a07140")
 
 build() {
   mkdir -p "${srcdir}/${_appname}-${pkgver}/build"
