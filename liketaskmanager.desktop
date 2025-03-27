@@ -3,6 +3,6 @@ Type=Application
 Name=LikeTaskManager
 GenericName=System Monitor
 Comment=Tool that mimics the permformance monitoring of Windows Task Manager
-Exec=liketaskmanager
+Exec=LikeTaskManager
 Icon=utilities-system-monitor
 Categories=Qt;System;

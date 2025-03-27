@@ -1,0 +1,17 @@
+diff --unified --recursive --text a/LikeTaskManager.pro b/LikeTaskManager.pro
+--- a/LikeTaskManager.pro	2025-03-27 11:01:50.241291504 -0600
++++ b/LikeTaskManager.pro	2025-03-27 11:09:46.341654890 -0600
+@@ -64,11 +64,8 @@
+ TRANSLATIONS += \
+     LikeTaskManager_de_AT.ts
+ 
+-#INCLUDEPATH += /usr/include/qwt
+-#LIBS += -lqwt-qt5
+-
+-INCLUDEPATH += /home/jk/libs/qwt/install-6.3.0/include
+-LIBS += -L/home/jk/libs/qwt/install-6.3.0/lib/ -lqwt
++INCLUDEPATH += /usr/include/qwt
++LIBS += -lqwt
+ 
+ 
+ 
