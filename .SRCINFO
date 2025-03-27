@@ -1,0 +1,20 @@
+pkgbase = undertalemodtool-bin
+	pkgdesc = The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)
+	pkgver = 0.7.0.0
+	pkgrel = 1
+	url = https://github.com/UnderminersTeam/UndertaleModTool
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = unzip
+	depends = wine
+	noextract = undertalemodtool-0.7.0.0.zip
+	source = undertalemodtool-0.7.0.0.zip::https://github.com/UnderminersTeam/UndertaleModTool/releases/download/0.7.0.0/UndertaleModTool_v0.7.0.0-Windows-SingleFile.zip
+	source = undertalemodtool.sh
+	source = icon.png
+	source = undertalemodtool.exe.desktop
+	sha256sums = 838c4c01e6517c91c8ff0817030ef288a81142e2c3e00c15c6b869ab87c28ca8
+	sha256sums = 44c0b92d7ce0226978a6b256e0988161524cc7171e029bafc43d59815ddff2ef
+	sha256sums = SKIP
+	sha256sums = 67144b28927cc4835a9ec6e567f927478fb510f77b3d2bcaa12ef505e3e54978
+
+pkgname = undertalemodtool-bin
