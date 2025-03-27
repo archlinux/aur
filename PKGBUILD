@@ -8,18 +8,19 @@ pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
 url='http://xenia.jp'
 license=('BSD-3-Clause')
-depends=('glib2'
-         'gtk3'
-         'libx11'
-         'libxcb'
-         'sdl2'
-         'zlib')
 makedepends=('clang'
              'git'
              'llvm'
              'ninja'
              'premake'
              'python')
+depends=('glib2'
+         'gtk3'
+         'hicolor-icon-theme'
+         'libx11'
+         'libxcb'
+         'sdl2'
+         'zlib')
 conflicts=('xenia' 'xenia-git')
 provides=('xenia')
 # TODO: Use system installed deps for non-forked libs
@@ -59,6 +60,7 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'zarchive::git+https://github.com/exzap/ZArchive.git'
         'zlib::git+https://github.com/madler/zlib.git'
         'zstd::git+https://github.com/facebook/zstd.git'
+        "${pkgname}.desktop"
         '0001-use-system-premake5.patch'
         '0002-use-cmake-build-instead.patch'
         '0003-disable-portable-mode.patch::https://github.com/xenia-canary/xenia-canary/pull/535/commits/38058a15d5670e14ab1b6b11f78f78ed6e7b6a6c.patch')
@@ -98,6 +100,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
             'd8df7c6d7047fdc4278315b733a470843eab608f8bba5b8ea4355e8c4f44c88f'
             'd6027c91a57272211a6b49adb2a8af6a740716ed9cfa4f95bd74ce4df3491fc2'
             'fd314745ca74654afcd047028d2000ac359e106b2bf75b0fa3ff24ec6b08aa8b')
@@ -133,4 +136,17 @@ build() {
 package() {
   install -Dm755 "${pkgname}"/build/bin/Linux/Release/"${_binname}" "${pkgdir}"/usr/bin/xenia
   install -Dm644 "${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+
+  # Desktop file
+  install -Dm755 "${pkgname}".desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
+
+  # Icons
+  install -Dm644 "${pkgname}"/assets/icon/16.png "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/32.png "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/48.png "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/jp.xenia.Xenia.png
+  install -Dm644 "${pkgname}"/assets/icon/1024.png "${pkgdir}"/usr/share/icons/hicolor/1024x1024/apps/jp.xenia.Xenia.png
 }

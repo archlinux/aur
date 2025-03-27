@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game;Emulator;
+Comment=An experimental open-source Xbox 360 emulator
+GenericName=Xbox 360 Emulator
+Exec=xenia
+Icon=jp.xenia.Xenia
+Name=Xenia
+Type=Application
