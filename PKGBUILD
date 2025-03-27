@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=trojita-git
-pkgver=0.7.r439.g10033f1b
-pkgrel=1
+pkgver=0.7.r723.g5338fea9
+pkgrel=2
 pkgdesc="A fast QT IMAP e-mail client"
 arch=(i686 x86_64)
 url="http://trojita.flaska.net"
@@ -13,22 +13,31 @@ conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake' 'boost')
 
-source=('git+https://invent.kde.org/pim/trojita.git')
-md5sums=('SKIP')
+source=('git+https://invent.kde.org/pim/trojita.git'
+        'trojita-qgpgme5.patch')
+md5sums=('SKIP'
+         '8439d6c1546e5a3a624f023cc1a473e3')
 
 pkgver() {
   cd "$srcdir/trojita"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/trojita"
+  patch -Np1 < "${srcdir}"/trojita-qgpgme5.patch
+}
+
 build() {
   cd "$srcdir/trojita"
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWITH_TESTS=OFF \
         -DWITH_QT5=ON \
         -DWITH_QTKEYCHAIN_PLUGIN=ON \
         -DWITH_GPGMEPP=ON \
         -DWITH_CRYPTO_MESSAGES=ON \
+        -DCMAKE_PREFIX_PATH=/usr/lib/cmake/QGpgmeQt5 \
         .
   make
 }

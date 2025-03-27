@@ -1,0 +1,12 @@
+diff -rauN trojita-git/CMakeLists.txt trojita-qgpgme5-patch/CMakeLists.txt
+--- trojita-git/CMakeLists.txt	2025-03-27 18:54:11.308032573 +0100
++++ trojita-qgpgme5-patch/CMakeLists.txt	2025-03-27 19:02:22.753729814 +0100
+@@ -70,7 +70,7 @@
+ 
+ trojita_find_package(Mimetic "" "http://www.codesink.org/mimetic_mime_library.html" "C++ MIME Library" "Required for client-side MIME parsing" WITH_MIMETIC)
+ trojita_find_package(Gpgmepp "1.8.0" "https://gnupg.org/related_software/gpgme/index.html" "C++ bindings for gpgme" "Needed for encrypted/signed e-mails" WITH_GPGMEPP)
+-trojita_find_package(QGpgme "1.8.0" "https://gnupg.org/related_software/gpgme/index.html" "Qt bindings for gpgme" "Needed for encrypted/signed e-mails" WITH_GPGMEPP)
++trojita_find_package(QGpgmeQt5 "1.8.0" "https://gnupg.org/related_software/gpgme/index.html" "Qt bindings for gpgme" "Needed for encrypted/signed e-mails" WITH_GPGMEPP)
+ if(NOT WITH_GPGMEPP)
+     trojita_find_package(KF5Gpgmepp "" "https://commits.kde.org/gpgmepp?path=/" "C++ bindings for gpgme" "Needed for encrypted/signed e-mails" WITH_KF5_GPGMEPP)
+     trojita_option(WITH_CRYPTO_MESSAGES "Enable support for encrypted messages" AUTO "WITH_MIMETIC;WITH_KF5_GPGMEPP")
