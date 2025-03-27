@@ -8,7 +8,12 @@ url='https://tal-software.com/products/tal-noisemaker'
 license=('EULA')
 groups=('pro-audio')
 replaces=('tal-noisemaker')
-_common_depends=('glibc')
+makedepends=('unzip')
+_common_depends=(
+	'freetype2'
+	'gcc-libs'
+	'glibc'
+)
 source=('https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip')
 sha512sums=('2387236eee7d374f37a19475c2473396f51a142b4d6b87983a871cdea754a1146bf1c9d3c2c5a8993cd07afc8e2f29675f9cc9ecd40405ab4c36b3d3c19503c4')
 b2sums=('12f92dd9c87c99c3d22787da532c6648d193d33c18d92b7909f4f604c772108ac7d9676f5d8efa73c8c9eebb8467953cc6218ed2f03f7e0f209bc3fb65055c2f')
