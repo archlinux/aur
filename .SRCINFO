@@ -1,13 +1,13 @@
 pkgbase = nvflash
 	pkgdesc = A tool to update the the firmware of Nvidia display adapters.
 	pkgver = 5.867
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.techpowerup.com/download/nvidia-nvflash/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = unknown
-	makedepends = wget
+	makedepends = curl
 	makedepends = unzip
 	depends = glibc
 	depends = gcc-libs
