@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=proton-mail
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 _nodeversion=22
 pkgdesc="Proton official desktop application for Proton Mail and Proton Calendar"
 arch=('x86_64' 'aarch64')
@@ -29,11 +29,11 @@ optdepends=(
   'trash-cli: file deletion support (trash-put)'
 )
 conflicts=('protonmail-desktop')
-_commit=f44daaae9d941327c545b8cd32501e1213c0a0bd  # 1.6.0
+_commit=7a01897bc833a544c1360572ced583ceb604ca24  # 1.8.0
 source=("git+https://github.com/ProtonMail/WebClients.git#commit=${_commit}"
         "$pkgname.desktop"
         '0001-fix-webpack-config.patch')
-sha256sums=('8139dea2a22a7a3f6724e9613314a9ad1b30647fcbcb624839326ef258b4d50b'
+sha256sums=('0de4a59f74b5b4da9755455ecf6aa8eaa9515c9092f764cac940e12c8838b534'
             '24cb263b7b61b5d64f49e4ead46d6f10c5d4a06599b0bb6334c3958721255fdb'
             '390856b2972a8b54953261ebfd0caf27f30fd91d44c0046acffe27aab41d55ba')
 
