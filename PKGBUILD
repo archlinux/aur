@@ -6,8 +6,8 @@
 # Contributor: z3ntu <luca.emanuel.weiss@gmail.com>
 
 pkgname='f3'
-pkgver=8.0
-pkgrel=2
+pkgver=9.0
+pkgrel=1
 pkgdesc='Simple tool that tests flash cards capacity and performance to see if they live up to claimed specifications'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/AltraMayor/f3'
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('parted')
 makedepends=('systemd')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fb5e0f3b0e0b0bff2089a4ea6af53278804dfe0b87992499131445732e311ab4')
+sha256sums=('569ec069dc3ec1c74d90d6704aa8b7f45240f5998a9dc6f14f1736c917506ecb')
 
 build() {
   make -C "${pkgname}-${pkgver}" {,extra}
