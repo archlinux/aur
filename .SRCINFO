@@ -1,7 +1,7 @@
 pkgbase = yaylog-git
 	pkgdesc = A CLI utility to list installed packages with filtering and sorting, written in Go.
-	pkgver = 3.35.0.r0.ga924259
-	pkgrel = 2
+	pkgver = 3.36.0.r0.gd955e15
+	pkgrel = 1
 	url = https://github.com/Zweih/yaylog
 	arch = any
 	license = MIT
