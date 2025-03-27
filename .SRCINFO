@@ -1,7 +1,7 @@
 pkgbase = socos
 	pkgdesc = Commandline tool for controlling Sonos devices
-	pkgver = 0.2.r33.g7719b54
-	pkgrel = 2
+	pkgver = r215.7719b54
+	pkgrel = 1
 	url = https://github.com/SoCo/socos
 	arch = any
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = socos
 	depends = python-setuptools
 	depends = python-soco
 	options = !emptydirs
-	source = git+https://github.com/SoCo/socos.git#commit=7719b54873235abc068a6bcfbf606e518baeeffc
-	md5sums = SKIP
+	source = git+https://github.com/SoCo/socos.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = d1767cf8f8caf414fa00c6e09f121c2a848570fe9261c735597647f20aa3b0d6
 
 pkgname = socos
