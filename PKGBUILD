@@ -6,8 +6,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-cairo-bootstrap
-pkgver=1.18.2
-pkgrel=3
+pkgver=1.18.4
+pkgrel=1
 arch=('any')
 pkgdesc="2D graphics library with support for multiple output devices (Android ${_android_arch})"
 license=('LGPL'
@@ -28,7 +28,7 @@ source=("https://gitlab.freedesktop.org/cairo/cairo/-/archive/${pkgver}/cairo-${
         "0001-Added-missing-headers-and-symbols.patch"
         "0002-ipc-rmid-deferred-release.patch"
         "0026-create-argb-fonts.all.patch")
-md5sums=('d31c3a866bfdfcd3e97e1bf4ed4bafba'
+md5sums=('4abef192526f92774f8edcb88d47be95'
          'f56d559a886e4f6cf2c0aa567a0b8645'
          'ee5b94e1591fe0e1b8cc035f9a699b16'
          'b4d8fac687dd2b01879ca62452c15732')
