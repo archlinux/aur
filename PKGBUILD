@@ -1,4 +1,4 @@
-# Maintainer: Ernesto Castellotti <ernesto@castellotti.net>
+# Maintainer: Emily <info@emy.sh>
 # Contributor: Martin -nexus- Mlynář <nexus+arch@smoula.net>
 
 pkgname=tayga
