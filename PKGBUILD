@@ -2,16 +2,19 @@
 
 pkgbase=csnet
 pkgname=csnet
-_tagname=2025-03-18
+_tagname=2025-03-27
 pkgver=${_tagname//-/.}
-pkgrel=3
-pkgdesc="csnet client for linux"
+pkgrel=4
+pkgdesc="CSNet (Computer Science Network) client for linux"
 license=('LicenseRef-scancode-commercial-license')
 url="https://aite.xyz/product/csnet/client"
 arch=($CARCH)
 options=(!strip !debug)
 depends=()
 makedepends=(libarchive)
+optdepends=(
+    'anyproxy: A transparent proxy written in Golang.'
+)
 provides=(${pkgname} ${pkgname}-bin)
 conflicts=(${pkgname} ${pkgname}-bin)
 replaces=()
@@ -35,10 +38,10 @@ sha256sums=('99e4dfd7cf1e77a455f94485e51a55d1ba05cbfa48e0e8457a9ae0bad6e50cea'
             'e32ce02eb3e8b74f673cc211bc51cebaf4050145cd96b397d9d5079f99eec623'
             '3f43a522d49952f4a486cadcedde3b6faad1dbd12723c3a52e31f74b956f51fd'
             '6b672ef98c36869bb7a753061be9abe5d5551639e38b98039db2d410288c62e5'
-            'b6ff625636490d40654c1dda4897aedf990f22d6b01992d8e937e748155ae6b9'
-            '2acf5de28a97b5785600e8dd57d104b304d6eadcb43dce21e5a1e808efd4d4df'
-            '0bc78d8aa71179f6faa6581cfbad5c2b06f87d82f54f41e1eaca2b11e6719ae0'
-            '6a3101dda17a4132d8a1a335ea427951b37c458ba3f1879596bd22d6737c2838')
+            '9b9c247ba12503ca19c93d2c5a1e4d861f68182e5d5952ab54823efbc85b3ce4'
+            '1f17dba8fd26908c12ffd00b32cc884dc5ed21af31e450ec0e6f3f91384beef4'
+            '52eec0647beecd07d50e9caa2802106a4372d6397d18181fe42c33a916d88f02'
+            'f8a5b02d009df012b9ebf81e9b10518e46d7ee14bc2b9230fba57c346d095128')
 noextract=()
 
 package() {
