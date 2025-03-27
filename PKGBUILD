@@ -2,32 +2,23 @@
 
 pkgbase=wx-tools
 pkgname=wx-tools
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 groups=()
-pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets.
-"
+pkgdesc="wxTools: A Serial Port, UDP, TCP, and WebSocket Debugging Assistant Based on wxWidgets."
 arch=($CARCH)
 url="https://github.com/x-tools-author/wx-tools"
 license=('LicenseRef-wxWindows')
 provides=(${pkgname} wx-tools)
 conflicts=(${pkgname} wx-tools)
 depends=(
-    cairo
     sh
     gcc-libs
-    gdk-pixbuf2
-    glib2
     glibc
-    gtk3
-    gspell
     hicolor-icon-theme
-    libpng
     libunwind
-    libx11
-    libxkbcommon
-    pango
-    pcre2
+    wxwidgets-common
+    wxwidgets-gtk3
 )
 makedepends=(
     git
@@ -41,26 +32,26 @@ makedepends=(
     sdl2-compat
     ninja
     webkit2gtk-4.1
-    wxwidgets-gtk3
     pkgconf
 )
 checkdepends=(
     gtest
 )
 optdepends=()
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8e048c7636c0f264aea506c9f9b81229d28ed44771c8c7ce43ea6aa91016efd2')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('09c294d66c729edbd3d0eb330ba32ca3b53be49bb15fd057a273455eadf01da6')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
     export CXXFLAGS+=" ${CPPFLAGS}"
     export LDFLAGS+=" ${LDFLAGS}"
 
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
-    cmake -DCMAKE_BUILD_TYPE=None \
+    cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DWXT_GENERATE_MSIX:BOOL=OFF \
         -B build \
         -G Ninja \
         -Wno-dev
@@ -69,13 +60,12 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/build/assets/wxTools"
-    install -Dm0755 wxTools -t "${pkgdir}/usr/share/${pkgname}/"
-    cp -r {files,i18n} "${pkgdir}/usr/share/${pkgname}/"
+    install -Dm0755 "${srcdir}/${pkgname}/build/assets/wxTools/wxTools" -t "${pkgdir}/usr/share/${pkgname}/"
+    cd "${srcdir}/${pkgname}/"
+    cp -r res/{files,i18n} "${pkgdir}/usr/share/${pkgname}/"
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/wxTools.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.x-tools-author.wx-tools.svg"
+    install -Dm644 "LICENCE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "wxTools.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.x-tools-author.wx-tools.svg"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
