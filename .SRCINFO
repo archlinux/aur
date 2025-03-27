@@ -1,0 +1,16 @@
+pkgbase = steamos-add-to-steam
+	pkgdesc = Replicates the Steam Deck 'Add to Steam' functionality for KDE Plasma 6 on Arch Linux. This package adds a context menu item to launchers and Dolphin service menus, allowing users to add any application as a non-Steam game in their Steam library.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vicrodh/steamos-add-to-steam
+	arch = x86_64
+	license = MIT
+	depends = kdialog
+	depends = kmimetypefinder
+	depends = python
+	depends = steam
+	depends = flatpak
+	source = git+https://github.com/vicrodh/steamos-add-to-steam.git
+	sha256sums = SKIP
+
+pkgname = steamos-add-to-steam
