@@ -1,7 +1,7 @@
 pkgbase = citron
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://citron-emu.org
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -40,20 +40,20 @@ pkgbase = citron
 	options = !debug
 	source = citron::git+https://git.citron-emu.org/Citron/Citron.git#tag=v0.6.1-canary-refresh
 	source = cubeb::git+https://github.com/mozilla/cubeb.git#commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
-	source = discord-rpc::git+https://git.citron-emu.org/Citron/discord-rpc.git#commit=20cc99aeffa08a4834f156b6ab49ed68618cf94a
-	source = dynarmic::git+https://git.citron-emu.org/Citron/dynarmic.git#commit=ba8192d89078af51ae6f97c9352e3683612cdff1
+	source = discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git#commit=20cc99aeffa08a4834f156b6ab49ed68618cf94a
+	source = dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git#commit=ba8192d89078af51ae6f97c9352e3683612cdff1
 	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=cacef3039d277c448c89336290ec3937270b0996
-	source = sirit::git+https://git.citron-emu.org/Citron/sirit.git#commit=ab75463999f4f3291976b079d42d52ee91eebf3f
-	source = mbedtls::git+https://git.citron-emu.org/Citron/mbedtls.git#commit=8c88150ca139e06aa2aae8349df8292a88148ea1
+	source = sirit::git+https://github.com/yuzu-mirror/sirit.git#commit=ab75463999f4f3291976b079d42d52ee91eebf3f
+	source = mbedtls::git+https://github.com/yuzu-mirror/mbedtls.git#commit=8c88150ca139e06aa2aae8349df8292a88148ea1
 	source = xbyak::git+https://github.com/herumi/xbyak.git#commit=a1ac3750f9a639b5a6c6d6c7da4259b8d6790989
 	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git#commit=39a64fb4e7e42216f14f0ec51ccc5fa85e651432
 	source = cpp-jwt::git+https://github.com/arun11299/cpp-jwt.git#commit=4a970bc302d671476122cbc6b43cc89fbf4a96ec
 	source = libadrenotools::git+https://github.com/bylaws/libadrenotools.git#commit=8fae8ce254dfc1344527e05301e43f37dea2df80
 	source = tzdb_to_nx::git+https://github.com/lat9nq/tzdb_to_nx.git#commit=97929690234f2b4add36b33657fe3fe09bd57dfd
 	source = VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#commit=c788c52156f3ef7bc7ab769cb03c110a53ac8fcb
-	source = breakpad::git+https://git.citron-emu.org/Citron/breakpad.git#commit=c89f9dddc793f19910ef06c13e4fd240da4e7a59
+	source = breakpad::git+https://github.com/yuzu-mirror/breakpad.git#commit=c89f9dddc793f19910ef06c13e4fd240da4e7a59
 	source = simpleini::git+https://github.com/brofield/simpleini.git#commit=6048871ea9ee0ec24be5bd099d161a10567d7dc2
-	source = oaknut::git+https://git.citron-emu.org/Citron/oaknut.git#commit=94c726ce0338b054eb8cb5ea91de8fe6c19f4392
+	source = oaknut::git+https://github.com/yuzu-mirror/oaknut.git#commit=94c726ce0338b054eb8cb5ea91de8fe6c19f4392
 	source = Vulkan-Utility-Libraries::git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git#commit=bc3a4d9fd9b46729651a3cec4f5226f6272b8684
 	source = googletest::git+https://github.com/google/googletest.git#commit=800f5422ac9d9e0ad59cd860a2ef3a679588acb4
 	source = sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git#commit=aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a
