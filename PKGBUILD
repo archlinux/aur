@@ -2,7 +2,7 @@
 
 pkgname=wnacg-downloader
 pkgver=0.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="绅士漫画 wnacg.com wnacg 的多线程下载器，带图形界面 支持导出 cbz 和 pdf"
 arch=($CARCH)
 url="https://github.com/lanyeeee/wnacg-downloader"
@@ -19,9 +19,11 @@ depends=(
     gtk3
     hicolor-icon-theme
     libsoup3
+    openssl
     webkit2gtk-4.1
 )
 makedepends=(
+    git
     rust
     cargo-tauri
     pnpm
