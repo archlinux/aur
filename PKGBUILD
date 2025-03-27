@@ -3,10 +3,10 @@
 # Contributor: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Contributor: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=8.0.2
+pkgver=8.0.3
 _pkgver_major=$(cut -d '.' -f 1 <<<"$pkgver")
 _pkgver_major_middle=$(cut -d '.' -f 1-2 <<<"$pkgver")
-pkgrel=2
+pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
 url='https://www.snapgene.com/about'
@@ -49,7 +49,7 @@ depends=('qt6-base'
 )
 # A valid licence is required to use the full version of snapgene
 source=("https://cdn.snapgene.com/downloads/SnapGene/"$_pkgver_major".x/"$_pkgver_major_middle"/"$pkgver"/"$pkgname"_"$pkgver"_linux.rpm" "snapgene")
-sha512sums=('5baee173eb97410dbdbf6536bddc3476a1f7cad40da71a5d8ad49a57dbce37e376b652e0e8110b11c9c0b1c1efdf2eb667d5139895902134a6607eb0194c0899' 'b6e85e1a3e1ed9d07159b58abf6fecfb76bfd19752b67fbf156baaab696df83aa8b0fcfc49c93263dd56ea2f47926ddc4dac0b4b011f53112426e8545d1197be')
+sha512sums=('978e2fe41ba596b4d7757f19e2e051a9ba45ecec2247f963ac5f9effc4f3d89596e66f8af6168746aef62972867665f94d789b12933df8a6a06aa1af98fa5cf8' 'b6e85e1a3e1ed9d07159b58abf6fecfb76bfd19752b67fbf156baaab696df83aa8b0fcfc49c93263dd56ea2f47926ddc4dac0b4b011f53112426e8545d1197be')
 
 package() {
     cd "$pkgdir"
