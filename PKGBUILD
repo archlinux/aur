@@ -2,13 +2,13 @@
 # Contributor: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 
 pkgname=dh-make-golang
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="debianize go library packages"
 arch=('x86_64' 'i686')
 url=https://github.com/Debian/dh-make-golang
 license=('BSD')
-depends=('pristine-tar' 'git-buildpackage')
+depends=('git-buildpackage')
 makedepends=('go'
              'pandoc'
              'git')
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  6e704bb56ae3d253dc30a12eb8587d70443b0bc2136db312647e03887f979d2d
+  13f86275887783984eae146c96d52ecd7e4738540df7b9b4219fc46efc619bc9
 )
 
 build() {
