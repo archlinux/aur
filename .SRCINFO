@@ -1,6 +1,6 @@
 pkgbase = clamav-gui
 	pkgdesc = This application provides a graphical user interface for clamav and freshclam with an integrated service menu for Konqueror/Dolphin to scan files directly from your file manager.
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/wusel1007/clamav-gui
 	arch = x86_64

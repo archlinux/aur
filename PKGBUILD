@@ -2,7 +2,7 @@
 pkgname=clamav-gui
 _pkgname=ClamAV-GUI-QT6-1.1.0-127.2
 __pkgname=ClamAV-GUI-QT6-1.1.2
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="This application provides a graphical user interface for clamav and freshclam with an integrated service menu for Konqueror/Dolphin to scan files directly from your file manager."
 url="https://github.com/wusel1007/clamav-gui"
