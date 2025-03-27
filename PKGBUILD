@@ -11,6 +11,11 @@ options=('!strip')
 depends=('jlink-software-and-documentation')
 source=("$pkgname-$pkgver.zip::https://www.silabs.com/documents/public/software/SimplicityCommander-Linux.zip")
 sha256sums=('144659c5740ad4989ad4e820829450584648692a849490b4d8b51ae776ab3982')
+noextract=("$pkgname-$pkgver.zip")
+
+prepare() {
+	bsdtar -xpf "$pkgname-$pkgver.zip"
+}
 
 package() {
 	cd "SimplicityCommander-Linux"
