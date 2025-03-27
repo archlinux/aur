@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=perl-regexp-pattern-license
-pkgver=3.11.1
+pkgver=3.11.2
 pkgrel=1
 pkgdesc="Regular expressions for legal licenses"
 arch=('any')
@@ -13,7 +13,7 @@ checkdepends=('perl-regexp-pattern' 'perl-re-engine-re2' 'perl-test2-suite'
               'perl-try-tiny')
 optdepends=('perl-re-engine-re2')
 source=("https://www.cpan.org/modules/by-module/Regexp/Regexp-Pattern-License-v${pkgver}.tar.gz")
-sha512sums=('11c30b9673e4d009ecb871d70345e38ce692b1c53e8614d35f8ce4e7b7edfea65c8f18880929138fc1fab6ce1dee3633bb23c06ca456c5dd81928b093c57609d')
+sha512sums=('15275dac71efbcee4fe011d11d4353e95b6e2045f31ca7162c8fe78de733a4242f3d7b950b5d345b4fae0ae2c3cdff2a5a4c029f37f0a6402bffff897d452a6d')
 
 build() {
   cd "${srcdir}/Regexp-Pattern-License-v${pkgver}"
