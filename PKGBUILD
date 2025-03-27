@@ -18,7 +18,7 @@ sha512sums=('85279dfa59377eda1e12c25cfc77326068a07c27dd5223ca1978903bba56a253f16
 
 build() {
     cd $_pkgbase
-    rm dist/*.whl
+    rm -f dist/*.whl
     python -m build --wheel --no-isolation
 }
 
