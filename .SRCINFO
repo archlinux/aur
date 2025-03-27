@@ -1,6 +1,6 @@
 pkgbase = meeters-bin
 	pkgdesc = Watches an ical calendar file URL and will notify shortly before a meeting begins
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/aggregat4/meeters
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = meeters-bin
 	depends = libappindicator-gtk3
 	provides = meeters
 	conflicts = meeters
-	source_x86_64 = meeters-v1.6.2-linux-x86.tar.gz::https://github.com/aggregat4/meeters/releases/download/v1.6.2/meeters-v1.6.2-linux-x86.tar.gz
-	sha256sums_x86_64 = b29fae7ba090c29c9b77fb032d9151fe90d130dc2c70ca750b09e3d11f9495a1
-	source_i686 = meeters-v1.6.2-linux-x86.tar.gz::https://github.com/aggregat4/meeters/releases/download/v1.6.2/meeters-v1.6.2-linux-x86.tar.gz
-	sha256sums_i686 = b29fae7ba090c29c9b77fb032d9151fe90d130dc2c70ca750b09e3d11f9495a1
+	source_x86_64 = meeters-v1.7.0-linux-x86.tar.gz::https://github.com/aggregat4/meeters/releases/download/v1.7.0/meeters-v1.7.0-linux-x86.tar.gz
+	sha256sums_x86_64 = cef90acc085e3cc468d68da2de40ac0f51b58a109f03e7dc54dae9243916a8f9
+	source_i686 = meeters-v1.7.0-linux-x86.tar.gz::https://github.com/aggregat4/meeters/releases/download/v1.7.0/meeters-v1.7.0-linux-x86.tar.gz
+	sha256sums_i686 = cef90acc085e3cc468d68da2de40ac0f51b58a109f03e7dc54dae9243916a8f9
 
 pkgname = meeters-bin
