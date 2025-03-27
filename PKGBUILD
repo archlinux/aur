@@ -7,7 +7,12 @@ arch=('x86_64')
 url='https://tal-software.com/tal-reverb-4'
 license=('EULA')
 groups=('pro-audio')
-_common_depends=('glibc')
+makedepends=('unzip')
+_common_depends=(
+	'freetype2'
+	'gcc-libs'
+	'glibc'
+)
 source=('https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip')
 sha512sums=('eeebc59d286901f60c55bae150c38669195ddda3e56a63aae92db955578f2f1cbd38abaae75cab0501e1f2d4e7890fbe11acb0452dd3880cb66b9c6cb889f1bb')
 b2sums=('85d8142955fb9cc07c54007e2cf89a659d9409fe12fed964e72eb1981d820419db354d812d32426867522aebb73835c05530df6e4eca78a99f7268991f9acb9f')
