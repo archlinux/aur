@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=python-qtile-ebenezer
-pkgver=0.1.29
+pkgver=0.1.30
 pkgrel=1
 provides=("$pkgname")
 conflicts=("$pkgname")
