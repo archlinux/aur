@@ -1,0 +1,32 @@
+diff -ruN ffmpeg-4.0/configure patched/configure
+--- ffmpeg-4.0/configure	2018-04-20 12:02:55.000000000 +0200
++++ patched/configure	2018-05-13 10:55:23.199869611 +0200
+@@ -3644,10 +3644,10 @@
+ SLIBSUF=".so"
+ SLIBNAME='$(SLIBPREF)$(FULLNAME)$(SLIBSUF)'
+ SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
+-SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR)'
++SLIBNAME_WITH_MAJOR='$(SLIBPREF)$(FULLNAME)-$(LIBMAJOR)$(SLIBSUF)'
+ LIB_INSTALL_EXTRA_CMD='$$(RANLIB) "$(LIBDIR)/$(LIBNAME)"'
+-SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'
+-SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
++SLIB_INSTALL_NAME='$(SLIBNAME_WITH_MAJOR)'
++SLIB_INSTALL_LINKS='$(SLIBNAME)'
+ VERSION_SCRIPT_POSTPROCESS_CMD="cat"
+
+ asflags_filter=echo
+
+@@ -5101,10 +5101,10 @@
+         elif enabled aarch64; then
+             LIBTARGET="arm64"
+         fi
+-        if enabled shared; then
++        #if enabled shared; then
+             # Cannot build both shared and static libs when using dllimport.
+-            disable static
+-        fi
++        #    disable static
++        #fi
+         enabled shared && ! enabled small && test_cmd $windres --version && enable gnu_windres
+         enabled x86_32 && check_ldflags -Wl,--large-address-aware
+         shlibdir_default="$bindir_default"
