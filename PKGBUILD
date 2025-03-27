@@ -1,30 +1,22 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
+# Maintainer: Marek Grzelak <marek.grzelak@seqre.dev>
+
 pkgname=cot
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
-epoch=
 pkgdesc="The Rust web framework for lazy developers - CLI tool"
 arch=('x86_64')
 url="https://cot.rs"
 license=('MIT OR Apache-2.0')
-groups=()
-depends=()
-makedepends=('rust')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+makedepends=('cargo')
+checkdepends=('cargo')
 source=("cot-cli-$pkgver.tar.gz::https://github.com/cot-rs/cot/archive/cot-cli-v$pkgver.tar.gz")
-noextract=()
-md5sums=('6ccf0eb372f29ed022a1ca294de091ae')
-validpgpkeys=()
+md5sums=('405c050465fe6b296e9b999851c0cc89')
+sha256sums=('7052bcccb3628d702852bfe90f684ecc8a7ec4595e0ca3a8916c2865703ae7b9')
+b2sums=('b2c6b65a4896b1f3d09c45eeec0be65b2044d46f9366d15845823ca680f78139ab8023271aaf75429139bad4abc13d7b4a5c85a22d563b365941f49c4b2e5f6f')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
+export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
 
 prepare() {
     cd "$pkgname-cot-cli-v$pkgver"
@@ -36,16 +28,32 @@ build() {
     cd "$pkgname-cot-cli-v$pkgver"
 
     cargo build --frozen --release --all-features --target-dir target --bin cot
+
+    local cot="cargo run --frozen --release --bin cot --"
+    mkdir -p man completions
+    $cot cli manpages --output-dir "man"
+    $cot cli completions bash > "completions/${pkgname}"
+    $cot cli completions elvish > "completions/${pkgname}.elv"
+    $cot cli completions fish > "completions/${pkgname}.fish"
+    $cot cli completions zsh > "completions/_${pkgname}"
 }
 
 check() {
-    return 0
+    cd "$pkgname-cot-cli-v$pkgver"
+    cargo check --frozen --release
 }
 
 package() {
     cd "$pkgname-cot-cli-v$pkgver"
 
-    install -Dm 755 target/release/cot -t "${pkgdir}/usr/bin"
+    install -Dm 755 -t "${pkgdir}/usr/bin" target/release/cot
     install -Dm 644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    find man -maxdepth 1 -type f -exec install -Dm 644 -t "${pkgdir}/usr/share/man/man1/" {} +
+
+    install -Dm 644 -t "${pkgdir}/usr/share/bash-completion/completions/" "completions/${pkgname}"
+    install -Dm 644 -t "${pkgdir}/usr/share/elvish/lib/" "completions/${pkgname}.elv"
+    install -Dm 644 -t "${pkgdir}/usr/share/fish/vendor_completions.d/" "completions/${pkgname}.fish"
+    install -Dm 644 -t "${pkgdir}/usr/share/zsh/site-functions/" "completions/_${pkgname}"
 }

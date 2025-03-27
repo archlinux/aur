@@ -1,12 +1,15 @@
 pkgbase = cot
 	pkgdesc = The Rust web framework for lazy developers - CLI tool
-	pkgver = 0.1.4
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://cot.rs
 	arch = x86_64
 	license = MIT OR Apache-2.0
-	makedepends = rust
-	source = cot-cli-0.1.4.tar.gz::https://github.com/cot-rs/cot/archive/cot-cli-v0.1.4.tar.gz
-	md5sums = 6ccf0eb372f29ed022a1ca294de091ae
+	checkdepends = cargo
+	makedepends = cargo
+	source = cot-cli-0.2.0.tar.gz::https://github.com/cot-rs/cot/archive/cot-cli-v0.2.0.tar.gz
+	md5sums = 405c050465fe6b296e9b999851c0cc89
+	sha256sums = 7052bcccb3628d702852bfe90f684ecc8a7ec4595e0ca3a8916c2865703ae7b9
+	b2sums = b2c6b65a4896b1f3d09c45eeec0be65b2044d46f9366d15845823ca680f78139ab8023271aaf75429139bad4abc13d7b4a5c85a22d563b365941f49c4b2e5f6f
 
 pkgname = cot

@@ -1,5 +1,4 @@
-anime-relations*.txt
 src/
-tundra/
+pkg/
 *.pkg.tar.zst
 *.tar.gz
