@@ -2,8 +2,13 @@
 Changelog
 =========
 
-**Tags**     : 4.3.0 (2022-11-05) -> 4.14.0 (2025-03-23)
-             : 42 commits.
+**Tags**     : 4.3.0 (2022-11-05) -> 4.15.0 (2025-03-27)
+             : 44 commits.
+
+* 2025-03-27  : **4.15.0**
+
+                option-data routers can be single IP or list of IPs
+ 2025-03-23     update Docs/Changelog.rst Docs/kea_config.pdf
 
 * 2025-03-23  : **4.14.0**
 
