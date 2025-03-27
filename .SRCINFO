@@ -1,0 +1,18 @@
+pkgbase = android-riscv64-libksba
+	pkgdesc = A CMS and X.509 access library (Android riscv64)
+	pkgver = 1.6.7
+	pkgrel = 2
+	url = https://www.gnupg.org/related_software/libksba/index.html
+	arch = any
+	groups = android-libksba
+	license = GPL
+	makedepends = android-configure
+	depends = android-riscv64-libgpg-error
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://gnupg.org/ftp/gcrypt/libksba/libksba-1.6.7.tar.bz2
+	md5sums = 7e736de467b67c7ea88de746c31ea12f
+
+pkgname = android-riscv64-libksba
