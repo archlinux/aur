@@ -2,7 +2,7 @@
 
 pkgname=copymanga-downloader
 pkgver=0.5.0
-pkgrel=1
+pkgrel=5
 pkgdesc="拷贝漫画 copymanga 的多线程下载器，带图形界面，带收藏夹，支持下载下架的漫画，没有每分钟15次API请求的限制，已打包exe，下载速度飞快。 "
 arch=($CARCH)
 url="https://github.com/lanyeeee/copymanga-downloader"
@@ -22,7 +22,7 @@ depends=(
     webkit2gtk-4.1
 )
 makedepends=(
-    cargo
+    rust
     cargo-tauri
     git
     pnpm
@@ -35,16 +35,27 @@ sha256sums=('45d7f79671df726c08c460f9adcaf9db139aebf9fa35bd50bf78c9005a859bd3')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
 
-    pnpm install
-    cd src-tauri
-    cargo build --release
-    #     pnpm tauri build
+    export CARGO_HOME="${srcdir}/.cargo"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir="${srcdir}"/.pnpm_cache"
+        echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+    } >>.npmrc
+
+    NODE_ENV=development pnpm install --force
+    NODE_ENV=production pnpm tauri build -b deb
 }
 
 # check() {
