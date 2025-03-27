@@ -4,14 +4,14 @@ pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
 pkgver=0.7.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 
 pkgdesc="The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)"
 url="https://github.com/UnderminersTeam/UndertaleModTool"
 license=("GPL-3.0-only")
 
-depends=("wine")
+depends=("wine" "bash")
 makedepends=("unzip")
 
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/UndertaleModTool_v${pkgver}-Windows-SingleFile.zip" 

@@ -9,7 +9,7 @@ if [ ! -d "$WINEPREFIX" ]; then
 fi
 
 # If session is Wayland and file "$WINEPREFIX/forceX" doesn't exit, force Wayland mode
-if [ echo $XDG_SESSION_TYPE == "wayland" ] && [ ! -f "$WINEPREFIX/forceX" ]; then
+if [[ "$XDG_SESSION_TYPE" == "x11" &&  ! -f "$WINEPREFIX/forceX" ]]; then
     export DISPLAY= 
 fi
 
