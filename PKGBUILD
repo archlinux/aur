@@ -5,7 +5,7 @@ pkgver="20250327"
 pkgrel=1
 arch=("any")
 pkgdesc="Mozilla infosec guidelines configuration for OpenSSH"
-url="https://github.com/lzlrd/wsl-hello-sudo"
+url="https://infosec.mozilla.org/guidelines/openssh"
 license=("MIT")
 depends=(
 	"awk"
