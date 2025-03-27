@@ -1,4 +1,4 @@
-# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
+# Maintainer: Emily <info@emy.sh>
 pkgdesc="A crappy lightweight alternative to the Nspire-specific parts of TiLP built with a simple API and with minimal dependancies."
 _pkgname=libnspire
 pkgname=${_pkgname}-git
