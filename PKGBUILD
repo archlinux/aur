@@ -2,28 +2,28 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=poezio
-pkgver=0.14
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A full-featured command-line IRC-like XMPP (Jabber) client"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://poez.io"
-license=('zlib')
-depends=('python' 'python-slixmpp')
-makedepends=('python-setuptools' 'python-sphinx')
+license=('GPL-3.0-or-later')
+depends=('python' 'python-slixmpp' 'python-setuptools')
+makedepends=('python-sphinx')
 source=("https://codeberg.org/poezio/poezio/archive/v${pkgver}.tar.gz")
 optdepends=('poezio-omemo: OMEMO plugin'
-            'python-potr-git: OTR plugin'
+            'python-aiohttp: file upload'
             'python-pyinotify: Autoaway with screen plugin (also works with tmux)'
             'figlet: ASCII art plugin')
 
-sha256sums=('8aefdb226c887c81f0f5758972211b173418184ecfcca7796ccfe84c363530a4')
-
+sha256sums=('d2919b76f3ee7f53ce871c795e91a749ca2fafbf77aeed8f0b9e5cc5f5bcae63')
 build() {
     cd "$pkgname"
-    python setup.py build
+    rm -f dist/*.whel
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname"
-    python setup.py install --skip-build --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

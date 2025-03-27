@@ -1,21 +1,21 @@
 pkgbase = poezio
 	pkgdesc = A full-featured command-line IRC-like XMPP (Jabber) client
-	pkgver = 0.14
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://poez.io
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
-	license = zlib
-	makedepends = python-setuptools
+	license = GPL-3.0-or-later
 	makedepends = python-sphinx
 	depends = python
 	depends = python-slixmpp
+	depends = python-setuptools
 	optdepends = poezio-omemo: OMEMO plugin
-	optdepends = python-potr-git: OTR plugin
+	optdepends = python-aiohttp: file upload
 	optdepends = python-pyinotify: Autoaway with screen plugin (also works with tmux)
 	optdepends = figlet: ASCII art plugin
-	source = https://codeberg.org/poezio/poezio/archive/v0.14.tar.gz
-	sha256sums = 8aefdb226c887c81f0f5758972211b173418184ecfcca7796ccfe84c363530a4
+	source = https://codeberg.org/poezio/poezio/archive/v0.15.1.tar.gz
+	sha256sums = d2919b76f3ee7f53ce871c795e91a749ca2fafbf77aeed8f0b9e5cc5f5bcae63
 
 pkgname = poezio
