@@ -19,7 +19,7 @@ source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/Undertale
 		"icon.png" 
 		"undertalemodtool.exe.desktop")
 sha256sums=("838c4c01e6517c91c8ff0817030ef288a81142e2c3e00c15c6b869ab87c28ca8" 
-			"44c0b92d7ce0226978a6b256e0988161524cc7171e029bafc43d59815ddff2ef" 
+			"1638dabce4fbd32d515156442def0dec3fef8e3c2e1fa9748f81f0151cb38430" 
 			"SKIP" 
 			"67144b28927cc4835a9ec6e567f927478fb510f77b3d2bcaa12ef505e3e54978")
 
