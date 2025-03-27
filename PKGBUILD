@@ -1,8 +1,8 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.5.canary.refresh.r42.gae75413
-pkgrel=2
+pkgver=v0.6.1.canary.refresh.r10.gebfc9d8
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -14,20 +14,20 @@ conflicts=('citron')
 options=(!debug)
 source=(citron::git+https://git.citron-emu.org/Citron/Citron.git
         cubeb::git+https://github.com/mozilla/cubeb.git
-        dynarmic::git+https://git.citron-emu.org/Citron/dynarmic.git
+        dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
         Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-        sirit::git+https://git.citron-emu.org/Citron/sirit.git
+        sirit::git+https://github.com/yuzu-mirror/sirit.git
         SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers
-        mbedtls::git+https://git.citron-emu.org/Citron/mbedtls.git
+        mbedtls::git+https://github.com/yuzu-mirror/mbedtls.git
         xbyak::git+https://github.com/herumi/xbyak.git
         cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
         cpp-jwt::git+https://github.com/arun11299/cpp-jwt.git
         libadrenotools::git+https://github.com/bylaws/libadrenotools.git
         tzdb_to_nx::git+https://github.com/lat9nq/tzdb_to_nx.git
         VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
-        breakpad::git+https://git.citron-emu.org/Citron/breakpad.git
+        breakpad::git+https://github.com/yuzu-mirror/breakpad.git
         simpleini::git+https://github.com/brofield/simpleini.git
-        oaknut::git+https://git.citron-emu.org/Citron/oaknut.git
+        oaknut::git+https://github.com/yuzu-mirror/oaknut.git
         Vulkan-Utility-Libraries::git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
         googletest::git+https://github.com/google/googletest.git
         sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake.git
