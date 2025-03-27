@@ -17,6 +17,7 @@ pkgbase = appimagetool-git
 	depends = gpgme
 	depends = hicolor-icon-theme
 	depends = libgcrypt
+	optdepends = zsync: for binary delta updates
 	provides = appimagetool
 	conflicts = appimagetool
 	source = appimagetool::git+https://github.com/AppImage/appimagetool.git

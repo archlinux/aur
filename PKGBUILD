@@ -10,6 +10,7 @@ url="https://github.com/AppImage/${_pkgname}"
 license=('MIT')
 depends=('curl' 'gcc-libs' 'glib2' 'glibc' 'gpgme' 'hicolor-icon-theme' 'libgcrypt')
 makedepends=('cmake>=3.21' 'git')
+optdepends=('zsync: for binary delta updates')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
