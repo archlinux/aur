@@ -1,6 +1,6 @@
 pkgbase = needrestart
 	pkgdesc = Restart daemons after library updates.
-	pkgver = 3.8
+	pkgver = 3.9
 	pkgrel = 1
 	url = https://github.com/liske/needrestart
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = needrestart
 	depends = perl-libintl-perl
 	optdepends = iucode-tool: for outdated microcode detection
 	options = !emptydirs
-	source = needrestart-3.8.tar.gz::https://github.com/liske/needrestart/archive/v3.8.tar.gz
+	source = needrestart-3.9.tar.gz::https://github.com/liske/needrestart/archive/v3.9.tar.gz
 	source = needrestart.hook
-	sha256sums = 42664e0b1b98fef1e5e849118b9985ac951516c4d5eb24a7da15d058da647c90
+	sha256sums = 709f4ac9e87483fc7cb1887c5720f671e1f9a509ad92b99a5dc6bb3189592cda
 	sha256sums = e5c6696a281f5445a3b7e2b7d1055f9189a2c39d4940721aa0c2718780f15f63
 
 pkgname = needrestart
