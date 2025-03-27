@@ -17,7 +17,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.1.0_devel.203217.2ee3bef2522.d41d8cd
+pkgver=25.1.0_devel.203440.f26cf5633dd.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -107,8 +107,8 @@ pkgver() {
 prepare() {
   # although removing _build folder in build() function feels more natural,
   # that interferes with the spirit of makepkg --noextract
-  if [  -d _build ]; then
-    rm -rf _build
+  if [  -d build ]; then
+    rm -rf build
   fi
 
   local _patchfile

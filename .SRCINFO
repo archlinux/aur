@@ -1,6 +1,6 @@
 pkgbase = mesa-amdonly-gaming-git
 	pkgdesc = An open-source implementation of the OpenGL specification
-	pkgver = 25.1.0_devel.203217.2ee3bef2522.d41d8cd
+	pkgver = 25.1.0_devel.203440.f26cf5633dd.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org/
 	arch = x86_64
@@ -105,9 +105,9 @@ pkgname = amdonly-gaming-mesa-git
 	depends = zstd
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = mesa
-	provides = libva-mesa-driver=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
-	provides = mesa-libgl=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
-	provides = mesa-vdpau=:25.1.0_devel.203217.2ee3bef2522.d41d8cd-1
+	provides = libva-mesa-driver=:25.1.0_devel.203440.f26cf5633dd.d41d8cd-1
+	provides = mesa-libgl=:25.1.0_devel.203440.f26cf5633dd.d41d8cd-1
+	provides = mesa-vdpau=:25.1.0_devel.203440.f26cf5633dd.d41d8cd-1
 	provides = libva-driver
 	provides = opengl-driver
 	provides = vdpau-driver
