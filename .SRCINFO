@@ -1,0 +1,25 @@
+pkgbase = appimagetool-git
+	pkgdesc = Low-level tool to generate an AppImage from an existing AppDir
+	pkgver = r61.c247c92
+	pkgrel = 1
+	url = https://github.com/AppImage/appimagetool
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.21
+	makedepends = git
+	depends = curl
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gpgme
+	depends = hicolor-icon-theme
+	depends = libgcrypt
+	provides = appimagetool
+	conflicts = appimagetool
+	source = appimagetool::git+https://github.com/AppImage/appimagetool.git
+	sha256sums = SKIP
+
+pkgname = appimagetool-git
