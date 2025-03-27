@@ -1,6 +1,6 @@
 # Maintainer: bipin Kumar <kbipinkumar@pm.me>
 pkgname=subread
-pkgver=2.0.8
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="a general-purpose read aligner which can align both genomic DNA-seq and RNA-seq reads, https://doi.org/10.1093/nar/gkt214"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://subread.sourceforge.net/"
 license=('GPL')
 depends=('glibc' 'zlib')
 source=($pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/subread/files/subread-$pkgver/subread-$pkgver-source.tar.gz)
-sha256sums=('cb5dadf71c850f128a8347223fe0ce19e1c17e3959e9f3eba90e8090671f8570')
+sha256sums=('fdf8a84cf145edab4984070e71595612c97ad3741afdb8d25f93dae7c8703433')
 
 prepare() {
 	cd "$pkgname-$pkgver-source/src"
