@@ -3,16 +3,16 @@
 #   Shayne Hartford<shayneehartford@gmail.com>
 pkgname=nvflash
 pkgver=5.867
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to update the the firmware of Nvidia display adapters."
 url="https://www.techpowerup.com/download/nvidia-nvflash/"
 arch=('x86_64' 'i686' 'aarch64')
 license=('unknown')
 depends=('glibc' 'gcc-libs')
 makedepends=('wget' 'unzip')
-DLAGENTS=("https::/usr/bin/wget --method POST --header 'content-type:\ application/x-www-form-urlencoded' --body-data id=2271&server_id=14 -O %o %u")
+DLAGENTS=("https::/usr/bin/wget --method POST --header 'content-type:\ application/x-www-form-urlencoded' --body-data id=2807&server_id=14 -O %o %u")
 source=("${pkgname}-${pkgver}.zip::https://www.techpowerup.com/download/nvidia-nvflash/")
-sha256sums=('989c17bba1393bdcf4971cfae713ead8629fda4e1db37272d8e98575a85c3c68')
+sha256sums=('73ab51e121129059f1377b3bf21a8001f6649d64af2471455499c803a9c80301')
 
 #prepare() {
 #	wget \
