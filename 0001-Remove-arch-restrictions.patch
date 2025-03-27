@@ -1,0 +1,13 @@
+--- a/pcre_jit_compile.c
++++ b/pcre_jit_compile.c
+@@ -61,10 +61,6 @@
+ 
+ #include "sljit/sljitLir.c"
+ 
+-#if defined SLJIT_CONFIG_UNSUPPORTED && SLJIT_CONFIG_UNSUPPORTED
+-#error Unsupported architecture
+-#endif
+-
+ /* Defines for debugging purposes. */
+ 
+ /* 1 - Use unoptimized capturing brackets.
