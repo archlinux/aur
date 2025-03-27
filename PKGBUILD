@@ -1,16 +1,16 @@
 # Maintainer: Emily <info@emy.sh>
 pkgname=nspire-tools-git
 provides=('nspire-tools-git')
-pkgver=r2.6a7fccc
+pkgver=r3.2a92cf2
 pkgrel=1
 pkgdesc="The Swiss Army Knife for Ti-NSpire"
 arch=('any')
-url="https://github.com/ErnyTech/nspire-tools"
+url="https://github.com/EmilyCSh/nspire-tools"
 license=('MPL-2.0')
 depends=('liblphobos' 'libnspire-git')
 makedepends=('dub' 'ldc')
 source=(
-    "git+https://github.com/ErnyTech/nspire-tools.git"
+    "git+https://github.com/EmilyCSh/nspire-tools.git"
 )
 sha1sums=(
     'SKIP'
