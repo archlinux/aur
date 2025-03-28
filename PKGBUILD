@@ -1,3 +1,4 @@
+# Maintainer: TheCyberArcher <thecyberarcher@protonmail.ch>
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apple-music-desktop
@@ -12,7 +13,7 @@ depends=(alsa-lib
          bash
          cairo
          dbus
-         electron28
+         electron
          expat
          gcc-libs
          glib2
