@@ -2,7 +2,7 @@
 
 pkgname='python-skyfield'
 _name=${pkgname#python-}
-pkgver='1.49'
+pkgver='1.52'
 pkgrel=1
 pkgdesc="Elegant astronomy for Python"
 url="https://rhodesmill.org/skyfield/"
@@ -12,7 +12,7 @@ checkdepends=('python-mock' 'python-pytz')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('20883027b2bbf4017dd916b64faaeb3713a8f88d7c8e353c15cd030ac63be92c')
+sha256sums=('3d0d335a81b8db36d4a658636f211fe51122cda43908ec2573a956ec93e91dec')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
