@@ -1,7 +1,7 @@
 pkgbase = swiftly-bin
 	pkgdesc = A Swift toolchain installer and manager, written in Swift.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 1
 	url = https://swiftlang.github.io/swiftly/
 	arch = x86_64
 	arch = aarch64
