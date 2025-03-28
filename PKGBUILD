@@ -1,45 +1,49 @@
-# Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
+# Maintainer: envolution
+# Contributor: Hauke Rehfeld <aur@haukerehfeld.de>
 # Contributor: Retro Gamer <https://github.com/eGax>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=trenchbroom-bin
-pkgver='v2024.2.26.g1877724f3'
-pkgrel=3
-pkgdesc="TrenchBroom is a free (GPLv3+), cross platform level editor supporting Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath."
+pkgver=2025.2
+pkgrel=1
+pkgdesc="Level editor supporting Daikatana, D-DayNormandy, Digital Paintball 2, Half-life, Heretic 2, Hexen 2, Kingpin, Neverball, Quake, Quake 2, Quake 3, Quetoo, and Wrath."
 arch=("x86_64")
 url="https://trenchbroom.github.io/"
-license=("GPL3")
-
-makedepends=("git" "pandoc" "qt6-base" "cmake" "ninja" "qt6-svg" "libxcb" "zip" "unzip")
-depends=("freeimage" "freetype2" "mesa" "libgl" "freeglut" "libxxf86vm" "glew" "glm" "tinyxml2")
-conflicts=("trenchbroom" "trenchbroom-git")
+license=("GPL-3.0-or-later")
+conflicts=("trenchbroom")
 provides=("trenchbroom")
+options=(!strip)
 
-source=("trenchbroom::git+https://github.com/TrenchBroom/TrenchBroom.git#branch=4753-2")
-
-sha1sums=('SKIP')
+source=("https://github.com/TrenchBroom/TrenchBroom/releases/download/v${pkgver}/TrenchBroom-Linux-x86_64-v${pkgver}-Release.zip")
+sha256sums=('5cabe0cd45d92a81a7dba15ffeda8e9ddb79918dc547112cc532b5a7f8c8bf13')
 
 prepare() {
-  cd trenchbroom
-	# cmake requires a CmakeLists.txt from this submodule
-	# -c submodule."lib/BinaryLibs".active=0
-  git -c submodule."lib/freetype/freetype-windows-binaries".active=0 submodule update --init --recursive
-}
-
-_BUILDDIR=build
-
-build() {
-	mkdir -p "$_BUILDDIR"
-	cd "$_BUILDDIR"
-	cmake "$srcdir/trenchbroom" -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="cmake/packages" -DCMAKE_TOOLCHAIN_FILE="vcpkg/scripts/buildsystems/vcpkg.cmake"
-	# we were running into weird xcb errors, which made this necessary to force headless builds
-	# might be useful incase you ARE building on a headless system
-	#QT_QPA_PLATFORM=offscreen cmake --build . --target TrenchBroom
-	cmake --build . --target TrenchBroom
+  # Make sure the AppImage is executable and extract its contents
+  chmod +x TrenchBroom.AppImage
+  ./TrenchBroom.AppImage --appimage-extract
 }
 
 package() {
-	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/trenchbroom.desktop" "${pkgdir}/usr/share/applications/trenchbroom.desktop"
-	cd "${srcdir}/$_BUILDDIR"
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
+  install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -d "$pkgdir/usr/share/licenses/trenchbroom/fonts"
+  install -d "$pkgdir/usr/share/TrenchBroom"
+  install -d "$pkgdir/usr/share/applications"
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/opt/TrenchBroom"
+
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/trenchbroom.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/trenchbroom.png"
+
+  install -Dm644 squashfs-root/usr/share/TrenchBroom/LICENSE.txt \
+    "$pkgdir/usr/share/licenses/trenchbroom/LICENSE.txt"
+  install -Dm644 squashfs-root/usr/share/TrenchBroom/fonts/SIL\ Open\ Font\ License.txt \
+    "$pkgdir/usr/share/licenses/trenchbroom/fonts/SIL Open Font License.txt"
+
+  cp -r squashfs-root/* "$pkgdir/opt/TrenchBroom/"
+  chmod -R u+rx "$pkgdir/opt/TrenchBroom"
+  ln -s "/opt/TrenchBroom/usr/bin/trenchbroom" "$pkgdir/usr/bin/trenchbroom"
+  install -Dm644 squashfs-root/trenchbroom.desktop "$pkgdir/usr/share/applications/trenchbroom.desktop"
+  chmod 644 "$pkgdir/usr/share/applications/trenchbroom.desktop"
 }
+
+# vim:set ts=2 sw=2 et:

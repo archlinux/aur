@@ -1,0 +1,5 @@
+[trenchbroom-bin]
+source = 'github'
+github = 'TrenchBroom/TrenchBroom'
+use_latest_release = true
+prefix = 'v'
