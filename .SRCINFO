@@ -1,6 +1,6 @@
 pkgbase = element-call
 	pkgdesc = Group calls powered by Matrix
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/element-hq/element-call
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = element-call
 	makedepends = git
 	makedepends = nodejs-lts-jod
 	provides = element-call
-	source = git+https://github.com/element-hq/element-call#tag=v0.8.0
-	md5sums = 63942d06f512eaf45cd234c8123fe3ae
+	source = git+https://github.com/element-hq/element-call#tag=v0.9.0
+	md5sums = 087811398228de85526b1786462e7d18
 
 pkgname = element-call
