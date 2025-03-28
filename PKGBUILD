@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiddlywiki-app-bin
 _pkgname='TiddlyWiki App '
-pkgver=2.6.10
+pkgver=2.6.12
 _electronversion=35
 pkgrel=1
 pkgdesc="A TiddlyWiki desktop application that provides a silkier desktop experience.(Prebuilt version.Use system-wide electron)一个 TiddlyWiki 桌面应用，提供更加丝滑的桌面端使用体验。"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2a5a59a88d04ad4c9a571af0e947cb0b72d227147744e65383c614e5ec66f93f'
+sha256sums=('3d9576a7cf83be96898cc30d9c26092bf02ee795e73c3a23a82e6531201767ed'
             '801cd318b77f7cc43b71e5bf59b79476c94d4981025655f7d1c4f3ef4faaf162'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
