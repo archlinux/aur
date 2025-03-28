@@ -1,12 +1,12 @@
 pkgbase = clash-geoip
 	pkgdesc = GeoIP files for Clash
-	pkgver = 202503270019
+	pkgver = 202503281408
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/geoip
 	arch = any
 	license = CC-BY-SA-4.0
 	license = GPL-3.0-or-later
-	source = clash-geoip-202503270019.mmdb::https://github.com/Loyalsoldier/geoip/releases/download/202503270019/Country.mmdb
-	sha256sums = 9ca2eccdf254a28f1a634965357641da7bda35bbd8f5b47214261270187c0109
+	source = clash-geoip-202503281408.mmdb::https://github.com/Loyalsoldier/geoip/releases/download/202503281408/Country.mmdb
+	sha256sums = 0bfcaa6ca435ce7e80fed6b6ab41fd22e93ba34e0087fbc0422d189fbe095df5
 
 pkgname = clash-geoip
