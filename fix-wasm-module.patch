@@ -1,0 +1,27 @@
+From 5eee90dde29e545d906c11f34074b0c6d24893cf Mon Sep 17 00:00:00 2001
+From: Levi Zim <rsworktech@outlook.com>
+Date: Fri, 17 Jan 2025 20:36:17 +0800
+Subject: [PATCH] fix: ensure wasm module matches frontend build
+
+Fix #100
+---
+ tools/build-from-source/src/main.rs | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/tools/build-from-source/src/main.rs b/tools/build-from-source/src/main.rs
+index 3bccfaa..281eca3 100644
+--- a/tools/build-from-source/src/main.rs
++++ b/tools/build-from-source/src/main.rs
+@@ -40,6 +40,12 @@ fn main() -> anyhow::Result<()> {
+     let dst = project.join("assets/artifacts/book.mjs");
+     std::fs::copy(src, dst)?;
+ 
++    // copy typst ts renderer wasm module
++    let src =
++        project.join("node_modules/@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.wasm");
++    let dst = project.join("assets/artifacts/typst_ts_renderer_bg.wasm");
++    std::fs::copy(src, dst)?;
++
+     println!("Running cargo build...");
+     let mut cmd = Command::new("cargo");
+     cmd.args(["build", "--release"]);
