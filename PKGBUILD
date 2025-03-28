@@ -1,7 +1,7 @@
 # Maintainer: karboncore
 
 pkgname=mealie
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='A self hosted recipe manager'
 arch=(any)
@@ -14,18 +14,23 @@ depends=(python-fastapi python-sqlalchemy python-pyjwt python-text-unidecode pyt
          python-recipe-scrapers-git python-extruct-git python-requests python-lxml uvicorn
          python-aiofiles python-aniso8601 python-appdirs python-paho-mqtt python-pydantic
          python-pydantic-settings python-dotenv python-yaml python-rapidfuzz python-tzdata
-         python-poetry python-itsdangerous sqlite)
-makedepends=(git python-build python-wheel python-installer yarn nodejs-lts-hydrogen)
+         python-poetry python-itsdangerous python-ingredient-parser python-floret python-numpy sqlite)
+makedepends=(git python-build python-wheel python-installer yarn nodejs)
 optdepends=('postgresql: for postgresql support'
             'python-psycopg2: for postgresql support')
 source=(https://github.com/mealie-recipes/mealie/archive/refs/tags/v${pkgver}.tar.gz
         mealie.sh
         mealie.service
         mealie.sysusers)
-sha256sums=('fd1421d0b557b52da70512705bdcb2de8fcfb90c7afd3c9267d96418243888a8'
+sha256sums=('9a801874a7012b9282da4e204825b7c0a321ad91fd8bbbd3bbc4a224f16e0555'
             'fbc0583e1019073b05b34a09e52be359939647481e38a5213565172f5fcf2fae'
             'bf98963b77085e7a1aaf77afab7f2760d6dfe00f3c4dcbf50250eb376dc56487'
             '1a6b434a125f6940e53f8ba6613426f50c8ca8d5e7a447a80efd57016b917208')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"/frontend
+  yarn upgrade
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
