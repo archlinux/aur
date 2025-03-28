@@ -12,7 +12,7 @@ license=('unknown')
 depends=()
 options=('!strip')
 source=(
-    "Solian-x86_64-$_buildcommit.AppImage::https://github.com/Texas0295/Solian-AUR-Host/raw/refs/heads/main/Solian-x86_64-$_buildcommit.AppImage"
+    "Solian-x86_64-$_buildcommit.AppImage::https://raw.github.com/Texas0295/Solian-AUR-Host/main/Solian-x86_64-$_buildcommit.AppImage"
     "Solian.desktop"
     "Solian.png"
 )
