@@ -2,7 +2,7 @@
 
 pkgbase=yoctools
 pkgname=python-yoctools
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 epoch=
 pkgdesc="(Yun on Chip) 以极简开发为理念，以 CPU 架构、芯片平台、操作系统、云服务和开发套件为基础，助力开发者从芯片到云的全链路高效设计，是面向 IoT 领域的全栈技术平台"
@@ -45,7 +45,7 @@ install=
 changelog=
 source=("${pkgbase}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgbase::1}/$pkgbase/$pkgbase-$pkgver.tar.gz")
 noextract=()
-sha256sums=('f05b1ec1f4343312cf55e2e2882e83b391aa0cbf139d72279bb5b3f9e1da079e')
+sha256sums=('cd43e7468c7832f8e2730c75585be105b315a5cff572fad53ba7986fe5cfd050')
 #validpgpkeys=()
 
 build() {
