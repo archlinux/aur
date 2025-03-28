@@ -9,9 +9,6 @@ url="https://github.com/DeckThemes/CSSLoader-Desktop"
 license=('GPL')
 groups=()
 depends=("fuse2" "openssl-1.1")
-optdepends=("decky-loader-bin:To use CSSLoader"
-	    "decky-loader-prerelease-bin:To use CSSLoader"
-)
 makedepends=()
 checkdepends=()
 optdepends=()
