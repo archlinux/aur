@@ -4,7 +4,7 @@ pkgbase = yubioath-desktop
 	pkgrel = 4
 	url = https://github.com/Yubico/yubioath-desktop
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	makedepends = python
 	depends = qt5-base
@@ -22,7 +22,7 @@ pkgbase = yubioath-desktop
 	validpgpkeys = 8D0B4EBA9345254BCEC0E843514F078FF4AB24C3
 	validpgpkeys = 57A9DEED4C6D962A923BB691816F3ED99921835E
 	validpgpkeys = 9E885C0302F9BB9167529C2D5CBA11E6ADC7BCD1
-	sha512sums = SKIP
+	sha512sums = b7139e99301cf1dffe21f1d16c5ad45c7331fd3fc940a5c2b4ef39902ed693db5a5d5896f5515bd368d4957bf64d5a8253e5bfeab3127d44f923e45155952e44
 	sha512sums = 3147b875c246ad9290a669145f9bf61b7c3af6f176114609787cdbe960b139dac6a249f0aa8316872a630eec8a6fd75251aeb6dd5ed8c45a37103a646b2333f1
 
 pkgname = yubioath-desktop
