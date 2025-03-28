@@ -1,0 +1,26 @@
+post_install() {
+  local version="$(cat /usr/lib/dkms/mt76/dkms.conf | grep PACKAGE_VERSION | cut -d= -f2 | tr -d '\" ')"
+  local src="/usr/lib/dkms/mt76"
+  local dst="/usr/src/mt76-${version}"
+
+  echo ">>> Installing mt76 DKMS module for kernel(s)..."
+
+  if [ -d "$src" ]; then
+    cp -r "$src" "$dst"
+    dkms add -m mt76 -v "$version"
+    dkms build -m mt76 -v "$version"
+    dkms install -m mt76 -v "$version"
+  else
+    echo "!!! mt76 source not found at $src"
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  local version="r4269.de635e1e"
+  dkms remove -m mt76 -v "$version" --all || true
+}
+

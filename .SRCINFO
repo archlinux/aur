@@ -1,0 +1,21 @@
+pkgbase = mt76-dkms-git
+	pkgdesc = DKMS build of the MediaTek mt76 wireless driver from OpenWRT (with mt7925 support)
+	pkgver = r4269.de635e1e
+	pkgrel = 1
+	url = https://github.com/openwrt/mt76
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = dkms
+	depends = git
+	optdepends = linux-headers: build for default Arch Linux kernel
+	optdepends = linux-zen-headers: build for Zen kernel
+	optdepends = linux-lts-headers: build for LTS kernel
+	provides = mt76-dkms
+	conflicts = mt76-dkms
+	source = git+https://github.com/openwrt/mt76.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = mt76-dkms-git
