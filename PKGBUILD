@@ -8,25 +8,27 @@ url="https://codeberg.org/AnimoUtils/animolauncher"
 license=('GPL-2.0-only')
 makedepends=(cargo)
 source=("https://codeberg.org/AnimoUtils/animolauncher/archive/dev.tar.gz")
-sha512sums=("21ff9b33fd6691f4f1945c5b15e90c89415850d6ec917bc2eeeccd06d83fc5ee5626855b5536abe7757042849e86ca5b65972f9bed8fb6c4458510414f732d8a")
+sha512sums=("853046fefafa110802999f489aca2aa8cf5eb8aeb544950b92023019475f1bf1526b7e7d39c890df4017926aee3c21546f42eca11fe855e18f264f9076d91520")
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir/animolauncher"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    cd "$srcdir/animolauncher"
     cargo build --frozen --release --all-features
 }
 
 check() {
     export RUSTUP_TOOLCHAIN=stable
+    cd "$srcdir/animolauncher"
     cargo test --frozen --all-features
 }
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/animolauncher/target/release/animolauncher"
 }
-
