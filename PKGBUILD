@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.5.226
+pkgver=5.5.227
 _electronversion=18
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
@@ -34,8 +34,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('73f8a29d63eaeb9f1f6714bcbb52dd63700df03e826d02747866c64683a68f70')
-sha256sums_x86_64=('e7c3fff5064ea64df6ee03ccfe00cb49c866b97a4e4799017fb53cc64b055944')
+sha256sums_aarch64=('b9d3e298e42f710c5a9803c9b48f64b7b5d3a890b9d3819888c27ec7cf00588c')
+sha256sums_x86_64=('856a532ec311a26cff54e7123c5db670ff3319c216dbc398b7092b737e031b02')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
