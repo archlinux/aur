@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cultivation
 _pkgname=Cultivation
-pkgver=1.5.7
+pkgver=1.5.8
 _nodeversion=16
 pkgrel=1
 pkgdesc="A custom launcher designed to make it as easy as possible to proxy anime game traffic to private servers."
@@ -19,13 +19,12 @@ makedepends=(
     'curl'
     'rust'
     'yarn'
-    'gcc'
     'git'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('a5d8c0f7640d340062696fcdf25b8aacbd4ab72f652fad8c67aa3e6462e0d435')
+sha256sums=('0e6dd0d42ca093a3e4d921ea406d9d22f3c9f3c78542c69ca2c8c9e705a9645f')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -55,6 +54,7 @@ prepare() {
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        sed -i "s/https:\/\/github.com\/an-anime-team/https:\/\/github.moeyy.xyz\/https:\/\/github.com\/an-anime-team/g" src-tauri/Cargo.toml
     fi
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
