@@ -6,7 +6,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 
 pkgname=devscripts
-pkgver=2.25.5
+pkgver=2.25.6
 pkgrel=1
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
@@ -46,8 +46,8 @@ source=(
     "https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.tar.xz"
     fixes.patch
 )
-sha256sums=('ef533a030de51558ff19e80a17387074e61d9a48c70ba0e7b649571adf6d6ea7'
-            'f8e7ce50c0d008c5d38c94b93c9fc560e5dd2cc8f06eeb2909b0b1784911b768')
+sha256sums=('309022afff6f9b5096ac81e69b587390e06ee00489e60259070b7e7bdb2723a4'
+            '7aef55eaf111cf2ec99f68d9a69357bd8b5f400d3260ccf99c981ab37de93b07')
 
 prepare(){
     # Sometimes there is the version in the tarball, sometimes not.

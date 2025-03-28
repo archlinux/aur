@@ -1,28 +1,25 @@
-diff -urN devscripts-2.21.2/po4a/Makefile devscripts-2.21.2_patched/po4a/Makefile
---- devscripts-2.21.2/po4a/Makefile	2021-03-16 14:16:39.000000000 +0100
-+++ devscripts-2.21.2_patched/po4a/Makefile	2021-06-10 12:31:21.021880200 +0200
-@@ -34,7 +34,7 @@
- 	pod2man --utf8 --center=" " --release="$(DESC_$(dir $@))" $< > $@
+diff -urN a/po4a/Makefile b/po4a/Makefile
+--- a/po4a/Makefile	2025-03-27 22:14:20.000000000 +0100
++++ b/po4a/Makefile	2025-03-28 15:03:25.754220434 +0100
+@@ -35,4 +35,4 @@
  %.1:: %.dbk translate
- 	xsltproc --nonet \
+ 	mkdir -p $(LANGS)
+ 	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
-+	  /usr/share/xml/docbook/xsl-stylesheets-$(shell pacman -Q docbook-xsl | sed -E 's|.* ([0-9.]+)-.*|\1|')/manpages/docbook.xsl $<
- 	# /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/other.xsl
- 	# (which is imported by the above stylesheet) insists in writing the output
- 	# to where it wants to.  we can only move the file ourselves.
-diff -urN devscripts-2.21.2/scripts/Makefile devscripts-2.21.2_patched/scripts/Makefile
---- devscripts-2.21.2/scripts/Makefile	2021-03-16 14:16:39.000000000 +0100
-+++ devscripts-2.21.2_patched/scripts/Makefile	2021-06-10 12:35:12.481880200 +0200
-@@ -87,7 +87,7 @@
++	  /usr/share/xml/docbook/xsl-stylesheets/manpages/docbook.xsl $<
+diff -urN a/scripts/Makefile b/scripts/Makefile
+--- a/scripts/Makefile	2024-12-12 16:54:36.000000000 +0100
++++ b/scripts/Makefile	2025-03-28 15:02:45.444814214 +0100
+@@ -91,7 +91,7 @@
  	pod2man --utf8 --center=" " --release="Debian Utilities" $< > $@
  %.1: %.dbk
  	xsltproc --nonet -o $@ \
 -	  /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl $<
-+	  /usr/share/xml/docbook/xsl-stylesheets-$(shell pacman -Q docbook-xsl | sed -E 's|.* ([0-9.]+)-.*|\1|')/manpages/docbook.xsl $<
++	  /usr/share/xml/docbook/xsl-stylesheets/manpages/docbook.xsl $<
  
  # Syntax checker
  test_sh: $(SH_CHECKS)
-@@ -142,7 +142,7 @@
+@@ -166,7 +166,7 @@
  test: test_pl test_sh test_py
  
  install: all
