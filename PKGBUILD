@@ -3,7 +3,7 @@
 pkgname=eclipse-embedcpp
 pkgver=4.35
 _release=2025-03
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse IDE for Embedded C/C++ Developers(Chinese Mirror)"
 arch=('x86_64')
 url="https://www.eclipse.org"
@@ -37,7 +37,7 @@ END
 Name=Eclipse-Embedcpp
 Comment=Eclipse IDE for Embedded C/C++ Developers
 Icon=/usr/share/$pkgname/icon.xpm
-Exec=/usr/share/$pkgname/eclipse
+Exec=env GDK_BACKEND=x11 /usr/share/$pkgname/eclipse
 Terminal=false
 Type=Application
 Categories=Development;IDE;Java;
