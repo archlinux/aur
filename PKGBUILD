@@ -1,7 +1,7 @@
 #Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=glance-bin
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="A self-hosted dashboard that puts all your feeds in one place"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
