@@ -1,0 +1,4 @@
+[sou]
+source = "git"
+git = "https://github.com/knqyf263/sou.git"
+prefix = "v"

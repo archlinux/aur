@@ -1,0 +1,17 @@
+pkgbase = sou
+	pkgdesc = A tool for exploring files in container image layers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/knqyf263/sou
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/knqyf263/sou/archive/refs/tags/v0.2.0/sou-0.2.0.tar.gz
+	sha256sums = ddbf687eb45fd880daf5feeec9a663fd988ce22360d77beb045af0192e5d9bee
+
+pkgname = sou
