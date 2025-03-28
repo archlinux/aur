@@ -1,6 +1,6 @@
 pkgbase = matcha-bin
 	pkgdesc = A mock chat interaction development tool
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/A-kirami/matcha
 	arch = x86_64
@@ -8,17 +8,9 @@ pkgbase = matcha-bin
 	makedepends = binutils
 	depends = gtk3
 	depends = webkit2gtk-4.1-imgpaste
-	depends = glibc
-	depends = glib2
-	depends = libsoup3
-	depends = gcc-libs
-	depends = cairo
-	depends = openssl
-	depends = gdk-pixbuf2
-	depends = hicolor-icon-theme
 	provides = matcha
 	conflicts = matcha
-	source = matcha-bin-0.4.6.deb::https://github.com/A-kirami/matcha/releases/download/v0.4.6/matcha_0.4.6_amd64.deb
-	sha256sums = 74dd82856dce05e684e5dcbe6ab98ab23f6f4cbb3b86df70655f223cded1e62b
+	source = matcha-bin-0.4.7.deb::https://github.com/A-kirami/matcha/releases/download/v0.4.7/matcha_0.4.7_amd64.deb
+	sha256sums = 064c591e7ac3ff9b48aae469a6b86d0a329b2a0b92f6258434dc02df94875564
 
 pkgname = matcha-bin
