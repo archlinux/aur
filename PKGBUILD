@@ -1,19 +1,16 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
+# Maintainer: redponike <proton (dot) me>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgname=python-beartype
 _pkgname=${pkgname#python-}
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.2
+pkgrel=1
 pkgdesc="Unbearably fast near-real-time hybrid runtime-static type-checking in pure Python"
-arch=(any)
+arch=('any')
 url="https://github.com/beartype/beartype"
-license=(MIT)
-depends=(
-  python
-  python-numpy
-  python-typing_extensions
-)
+license=('MIT')
+depends=('python>=3.9')
 makedepends=(
   python-build
   python-hatchling
@@ -21,12 +18,16 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  python-nptyping
   python-pytest
-  python-sphinx
+  python-numpy
+  python-xarray
+  python-click
+  python-rich-click
+  python-pygments
+  python-typing_extensions
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e7ad00eebf527d60f30e0b391209b561dabd2074b608c50e26c94c2d8250a6cd')
+sha256sums=('d06c10e442c4e4e84f080ba7f41ddac1b46d7d8e4d7f80bb95f6075a06ff61fe')
 
 build() {
   cd "$_pkgname-$pkgver"
