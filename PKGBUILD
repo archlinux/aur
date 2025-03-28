@@ -5,7 +5,7 @@
 
 pkgname='qt6-wasm'
 
-_qtver=6.8.2
+_qtver=6.8.3
 _emsdkver=3.1.56
 _emsdk=4.0.3
 
@@ -27,9 +27,7 @@ makedepends=(cmake ninja
              qt6-remoteobjects=${_qtver}
              qt6-scxml=${_qtver}
 )
-conflicts=()
 groups=('qt-wasm' 'qt6-wasm')
-install=$pkgname.install
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_qt}.tar.xz"
         "https://github.com/emscripten-core/emsdk/archive/refs/tags/${_emsdk}.tar.gz"
         'qtwasm_env.sh'
@@ -40,7 +38,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/sing
 # https://17797152399858172281.googlegroups.com/attach/12036d62e8f2a/0001-cmake-QtBuildInternalsExtra.cmake.in-Patch-out-embed.patch?part=0.0.1&view=1&view=1&vt=ANaJVrE9sl_mZ0X1hLMbYFWN-vllz3OwGD8lcLaPm6Du2jY-KE_-YabjHUIqtXqMhx7Lk1j0x_sYmC5j4kJNK1BH32jMeEEpR3jXxh10v5-kl7hFkK22Hy0
 
 
-sha256sums=('659d8bb5931afac9ed5d89a78e868e6bd00465a58ab566e2123db02d674be559'
+sha256sums=('cdd3a69967208276bb01af7ace7dba0ba53e679f886a4cbe624225c60fb73f2c'
             '91f711089f73d385295246beec35a7b4302e1732f5d7406ee792065fea0a0b65'
             '9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865'
             '8617181969f97d1a245295ad62537c64267f0a4646ff832cd55b37282f4f4ad9'
@@ -117,4 +115,5 @@ package() {
   ## env
   cp ${srcdir}/qtwasm_env.sh ${pkgdir}${_opt}/
   sed -i "s/EMSDKVER/$_emsdkver/" ${pkgdir}${_opt}/qtwasm_env.sh
+  rm "${pkgdir}/${_opt}/emsdk/upstream/emscripten/cache/" -rf
 }
