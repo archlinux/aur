@@ -1,12 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vutronmusic-git
 _pkgname=VutronMusic
-pkgver=1.6.0.r0.g45fcdea
-_electronversion=33
-_nodeversion=20
+pkgver=1.6.0.r12.ga783da8
+_electronversion=34
+_nodeversion=22
 pkgrel=1
 pkgdesc="A high-quality third-party NetEase Cloud Music player that supports local music playback, offline playlists, and desktop lyrics.(Use system-wide electron)高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示、Linux-gnome桌面状态栏歌词显示."
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/stark81/VutronMusic"
 license=('MIT')
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -20,7 +23,6 @@ makedepends=(
     'git'
     'curl'
     'gendesk'
-    'gcc'
     'yarn'
 )
 source=(
