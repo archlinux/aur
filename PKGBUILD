@@ -2,7 +2,7 @@
 
 pkgname=open-tv-bin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and powerful IPTV app'
 arch=('x86_64')
 url='https://github.com/fredolx/open-tv'
@@ -12,6 +12,7 @@ depends=(
         'yt-dlp'
         'webkit2gtk-4.1'
         'ffmpeg'
+        'libayatana-appindicator'
         )
 options=(
     !emptydirs
