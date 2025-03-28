@@ -1,7 +1,7 @@
 # Maintainer: Kiwi42 <pullthisplug dash aur at yahoo dot com>
 
 pkgname=threat-dragon-ng
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Electron Threat Modelling and diagramming tool by Mike Goodwin @ OWASP"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-git}" owasp-threat-dragon)
 depends=(alsa-lib cairo gtk3 hicolor-icon-theme libxkbcommon nspr nss pango)
 options=(!debug)
 source=("${pkgname}-${pkgver}.deb::https://github.com/OWASP/threat-dragon/releases/download/v${pkgver}/threat-dragon_${pkgver}_amd64.deb")
-sha256sums=('d7e0f8cadb4baef9fec58be6a6fa0e996a659aaa0977f2233dfa368c4164e4d7')
+sha256sums=('bd456ad96fece0f5ce3be85851759009cceb3f74845f23ef7f23410e991f592f')
 
 
 package() {
