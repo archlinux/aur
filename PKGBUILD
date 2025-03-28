@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-fmt
-pkgver=11.1.3
+pkgver=11.1.4
 pkgrel=1
 arch=('any')
 pkgdesc="Open-source formatting library for C++ (Android ${_android_arch})"
@@ -16,7 +16,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/fmtlib/fmt/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('757441924b10c138d4d15ed65e853635')
+md5sums=('10c2ae163accd3b82e6b8b4dff877645')
 
 build() {
     cd "${srcdir}/fmt-${pkgver}"
