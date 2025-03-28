@@ -14,6 +14,7 @@ sha256sums=('f99f47e3d362cd3a1e8ac3f1e060ad7d0426244520ebd968f3ef01870fc1a955')
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export RUSTFLAGS="-C link-arg=-lzstd"
 
     cargo clean 
     cargo build --release 
