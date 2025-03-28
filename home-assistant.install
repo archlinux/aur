@@ -3,10 +3,9 @@
 pre_upgrade() {
   if [ $(vercmp $2 1:2025.3.0-1 ) -le 0 ]; then
     echo '==> home-assistant systemd service will be changed to static user'
-    echo '==> files form /var/lib/private/hass/ will be moved to /var/lib/hass/'
+    echo '==> files from /var/lib/private/hass/ will be moved to /var/lib/hass/'
     if [[ -L /var/lib/hass ]] && [[ -d /var/lib/private/hass ]] ; then
       unlink /var/lib/hass
-      unlink /var/log/hass
       mv /var/lib/private/hass /var/lib/hass
       chown -R hass: /var/lib/hass
     fi

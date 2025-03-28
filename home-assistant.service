@@ -6,6 +6,8 @@ After=network.target
 Restart=on-failure
 User=hass
 Group=hass
+LogsDirectory=hass
+StateDirectory=hass
 WorkingDirectory=/var/lib/hass
 Environment=HOME=/var/lib/hass
 Environment=PATH=/usr/bin:/var/lib/hass/.venv/bin
@@ -15,7 +17,7 @@ ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install wheel
 ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install /usr/share/home-assistant/homeassistant-@VERSION@-py3-none-any.whl
 ExecStart=/var/lib/hass/.venv/bin/hass \
   --config /var/lib/hass/ \
-  --log-file /var/lib/hass/log/home-assistant.log \
+  --log-file /var/log/hass/home-assistant.log \
   --log-rotate-days 1
 RestartForceExitStatus=100
 TimeoutSec=15min
