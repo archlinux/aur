@@ -2,8 +2,8 @@
 
 pkgname=vimix-kanagawa-cursors
 pkgver=2.0.0
-pkgrel=1
-pkgdesc="Kanagawa recolour of the Vimix cursor theme by vinceliuice"
+pkgrel=2
+pkgdesc="XCursor theme using Kanagawa colours, based on Vimix cursors"
 arch=(any)
 url="https://github.com/walldmtd/vimix-kanagawa-cursors"
 license=("GPL-3.0-or-later")

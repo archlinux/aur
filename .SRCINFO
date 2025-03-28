@@ -1,7 +1,7 @@
 pkgbase = vimix-kanagawa-cursors
-	pkgdesc = Kanagawa recolour of the Vimix cursor theme by vinceliuice
+	pkgdesc = XCursor theme using Kanagawa colours, based on Vimix cursors
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/walldmtd/vimix-kanagawa-cursors
 	arch = any
 	license = GPL-3.0-or-later
