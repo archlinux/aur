@@ -1,7 +1,7 @@
 # Maintainer: Adam Honse <calcprogrammer1@gmail.com>
 
 pkgname=touchpad-emulator-git
-pkgver=0.1.r4.g8edaa67
+pkgver=0.1.r13.g5801621
 pkgrel=1
 pkgdesc="Virtual mouse for Linux phones"
 arch=('x86_64' 'aarch64')
@@ -30,4 +30,6 @@ package() {
     install -Dm755 LaunchTouchpadEmulator.sh "$pkgdir"/usr/bin/LaunchTouchpadEmulator.sh
     install -Dm644 TouchpadEmulator.png "$pkgdir"/usr/share/icons/TouchpadEmulator.png
     install -Dm755 TouchpadEmulator.desktop "$pkgdir"/usr/share/applications/TouchpadEmulator.desktop
+    install -Dm644 10-uinput.rules -t "$pkgdir"/usr/lib/udev/rules.d/
+    install -Dm644 uinput.conf -t "$pkgdir"/usr/lib/modules-load.d/
 }
