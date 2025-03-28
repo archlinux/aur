@@ -1,0 +1,16 @@
+pkgbase = alert
+	pkgdesc = Emergency alarm system with visual and audio alerts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/abinot/alert
+	arch = any
+	license = GPL3
+	depends = mplayer
+	depends = alsa-utils
+	depends = sudo
+	source = alert.sh
+	source = alert1.mp3
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = alert
