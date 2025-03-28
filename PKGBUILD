@@ -3,7 +3,7 @@
 
 pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
-_buildver=251.23774.119
+_buildver=251.23774.207
 _pkgver=2025.1
 if ! [[ $_buildver ]]; then _dlver=${_pkgver}; pkgver=${_pkgver}
 else _dlver=${_buildver}; pkgver=${_pkgver}pre+${_buildver}
@@ -22,8 +22,8 @@ source_x86_64=("RustRover-${_dlver}-${arch[0]}.tar.gz::https://download-cdn.jetb
 source_aarch64=("RustRover-${_dlver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-${_dlver}-${arch[1]}.tar.gz")
 sha256sums=('cd4f42c4d3f9c0fb967a96da2c0c71884df55fe21409a97d12690e8a4c878a06'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
-sha256sums_x86_64=('25196d03236db996071468576e7222b95ce229695877f075189c68ac90f4900e')
-sha256sums_aarch64=('b4f93de4ebfbd49ca9cc515e1a3d7377263f6f5647f198be7704fa1f9c664256')
+sha256sums_x86_64=('1c81ec3be3785edaa4afcb85b68baeebad8744d8f52716ffcb2ad8f3ed38ffd4')
+sha256sums_aarch64=('d2d1a1582f9b22dfdba4eb151f74174ac56f8c8525c864ebc41a096c3a20b2e8')
 
 package_rustrover-eap() {
   depends=(
