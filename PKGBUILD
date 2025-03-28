@@ -2,12 +2,12 @@
 
 pkgbase=libfive-git
 pkgname=('libfive-git' 'libfive-studio-git')
-pkgver=rip.dmc.r2166.g248c15c
+pkgver=rip.dmc.r2186.g7189931
 pkgrel=1
 arch=("i686" "x86_64")
 url="https://libfive.com"
 license=("GPL2")
-makedepends=("git" "cmake" "boost" "eigen" "pkgconf")
+makedepends=("git" "cmake" "boost" "eigen" "pkgconf" "python-distutils-extra")
 source=("git+https://github.com/libfive/libfive.git" "libfive-studio.desktop")
 sha256sums=('SKIP'
             'c0abfad437a3e658f1f81981ee5c79df2573440833a611b3e07de8b3f5c3b732'
