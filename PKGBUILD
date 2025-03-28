@@ -1,8 +1,8 @@
 # Maintainer: Peter Justin <peter.justin@outlook.com>
 pkgname=d2rloader-git
 _pkgname=d2rloader
-pkgver=v1.2.0.r1.g95a2a8c
-pkgrel=3
+pkgver=v1.2.0.r7.g9431b73
+pkgrel=1
 pkgdesc="Cross-platform Diablo 2 Resurrected Loader written in Python/Qt "
 arch=('any')
 url="https://github.com/sh4nks/d2rloader"
@@ -15,6 +15,7 @@ depends=(
   'python-unidecode'
   'python-loguru'
   'lutris'
+  'wmctrl'
 )
 
 provides=("${pkgname%-git}=$pkgver")
