@@ -1,6 +1,6 @@
 pkgbase = moordyn
 	pkgdesc = MoorDyn is a lumped-mass model for simulating the dynamics of mooring systems connected to floating offshore structures
-	pkgver = 2.3.5
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/FloatingArrayDesign/MoorDyn
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = moordyn
 	depends = gcc-libs
 	depends = glibc
 	depends = vtk
-	source = git+https://github.com/FloatingArrayDesign/MoorDyn.git#tag=v2.3.5
-	sha256sums = 4d331a03e5cd4c10efc169cff3eacb88eb5be31a4e4089e53200c2f0e132434c
+	source = git+https://github.com/FloatingArrayDesign/MoorDyn.git#tag=v2.4.0
+	sha256sums = 4d8965512166021bbf6ca2de9d60e453e7229f1533fb0f1dcfc2b0f0180043df
 
 pkgname = moordyn
