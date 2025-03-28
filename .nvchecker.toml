@@ -1,0 +1,4 @@
+[loggo]
+source = "git"
+git = "https://github.com/aurc/loggo.git"
+prefix = "v"

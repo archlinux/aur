@@ -1,0 +1,17 @@
+pkgbase = loggo
+	pkgdesc = A powerful terminal app for structured log streaming
+	pkgver = 0.3.21
+	pkgrel = 1
+	url = https://github.com/aurc/loggo
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/aurc/loggo/archive/refs/tags/v0.3.21/loggo-0.3.21.tar.gz
+	sha256sums = 86d3855a531a19c7725cf4400b06e24081c9a3889abb1ca4239b045917de8303
+
+pkgname = loggo
