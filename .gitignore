@@ -1,0 +1,4 @@
+lightning-*.tar.gz
+python-lightning-*-any.pkg.tar.zst
+pkg/
+src/

@@ -1,0 +1,24 @@
+pkgbase = python-lightning
+	pkgdesc = The Deep Learning framework to train, deploy, and ship AI products Lightning fast.
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/Lightning-AI/lightning
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-fsspec
+	depends = python-lightning-utilities
+	depends = python-psutil
+	depends = python-pyaml
+	depends = python-torchmetrics
+	depends = python-pytorch-lightning
+	depends = python-typing_extensions
+	depends = python-packaging
+	depends = python-pytorch
+	depends = python-tqdm
+	source = https://github.com/Lightning-AI/pytorch-lightning/releases/download/2.5.1/lightning-2.5.1.tar.gz
+	sha512sums = ede7eb51d27f1fe9b1fc426316cb71421cc44db29030eea154492dfca0f1ac99814f12deb55e329a69e2fadccf6b4db902122d64b2d915ad31eabd18416da71d
+
+pkgname = python-lightning
