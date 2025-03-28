@@ -1,7 +1,7 @@
 # Maintainer: yuf <yuf at yufarch dot com>
 
 pkgname='siki'
-pkgver=0.33.13
+pkgver=0.33.14
 pkgrel=1
 pkgdesc='An Electrom-based application for browsing and posting to message boards'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 )
 options=(!strip)
 source=("${pkgname}-${pkgver}-amd64.deb::${url}/archives/${pkgver}/Siki-${pkgver}-amd64.deb")
-sha512sums=('e092601ecddc0850d2549cc17bd6669293124e3039f4c9d2fbc4a30ec272d1cb917cecaf3da1513ba430c39b2e5bc0a3fe933732b1d0225c38c9c4e783278c7c')
+sha512sums=('1d3816dae049b042ce152cb11f37ddfba9eda858fb5b3397dab5f09c4b13a80548ccb65a4a5435ae0aa02b84d6d48acb565fb46a8733e69eba7ded7624340646')
 
 package() {
   # Extract data.tar.xz
