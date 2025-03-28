@@ -1,29 +1,31 @@
 # Maintainer: Yaroslav Nikitenko <metst13 at gmail dot com>
 
 pkgname='yarsync'
-pkgver='0.2.1'
-pkgrel=2
+pkgver='0.3'
+# when a new version of the software is released, this number should be set to 1.
+# https://wiki.archlinux.org/title/PKGBUILD#pkgrel
+pkgrel=1
 pkgdesc="Yet Another Rsync is a file synchronization and backup tool"
 url="https://github.com/ynikitenko/yarsync"
 depends=('python>=3.6')
-makedepends=(python-build python-installer python-wheel rsync python-setuptools python-pytest python-pytest-mock)
+makedepends=(python-build python-installer python-wheel rsync python-pytest python-pytest-mock)
 license=('GPL3')
 arch=('any')
 install="yarsync.install"
 # We don't use tag hash, because we control the repository and it's easier
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ynikitenko/yarsync/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('208c947813568b9d6d736ffadb9c510651c43a58d64ddd52afe219b1097c535c')
+sha256sums=('fd47811708c3b907eea401077dba3ee8cdc9a397cdd491a162fd74f9f3ebb887')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     depends+=("rsync>=3.1.0")
     cd "${srcdir}/${pkgname}-${pkgver}"
     # install egg-info
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     # install actual source
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     cp -r yarsync ${pkgdir}${site_packages}
