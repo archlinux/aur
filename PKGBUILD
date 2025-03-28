@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gclus
-_pkgver=1.3.2
+_pkgver=1.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Clustering Graphics"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ff6434ccb88afcfc6628374a21e7338')
-b2sums=('1a09b086c13e3e7995ba4a8f646139f968b72532c07cb7077b9922720844007d9f44c96be69894cf976faadb15a0c8d4d75c4cbb3b7d2a02f316f90a77de960a')
+md5sums=('55a07fea4021912ce125be81f8418fcb')
+b2sums=('e7ee6044bcc307e023f5e99545222d91dee26f48cae4cfd07474e42c15a1a45b7abca8efcba75f7624242201365ea185c0f5fae02fdb425aa40880e5049c0a02')
 
 build() {
   mkdir build
