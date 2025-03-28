@@ -1,6 +1,6 @@
 pkgbase = fflogs-uploader-appimage
 	pkgdesc = FFLogs Uploader appimage
-	pkgver = 8.16.2
+	pkgver = 8.16.25
 	pkgrel = 2
 	url = https://github.com/RPGLogs/Uploaders-fflogs/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = fflogs-uploader-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = fuse2
-	noextract = fflogs-v8.16.2.AppImage
+	noextract = fflogs-v8.16.25.AppImage
 	options = !strip
-	source_x86_64 = fflogs-v8.16.2.AppImage::https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v8.16.2/fflogs-v8.16.2.AppImage
+	source_x86_64 = fflogs-v8.16.25.AppImage::https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v8.16.25/fflogs-v8.16.25.AppImage
 	source_x86_64 = fflogs-uploader.desktop
-	sha256sums_x86_64 = 0d1d51b235bcb10e0fd5546b0c39d240f3d5087bf80bf427aa82b50f88905bfb
-	sha256sums_x86_64 = 8100c985a491a8ee2ddb52d947b4bc000eb888f9904ada2a5462fb3bb77e7332
+	sha256sums_x86_64 = 81945f5df89cf5977ec304e78c752f55eedcb221a7c4bbe86311fe47f21ca8ad
+	sha256sums_x86_64 = 017d359d64f8190f10e0242bf525acae4cb99c18e9f0500d0b33710779b3f1ae
 
 pkgname = fflogs-uploader-appimage
