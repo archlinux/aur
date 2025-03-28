@@ -1,0 +1,21 @@
+pkgbase = python-ingredient-parser-git
+	pkgdesc = A tool to parse recipe ingredients into structured data
+	pkgver = 1442.2f4fc96
+	pkgrel = 1
+	url = https://github.com/strangetom/ingredient-parser
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-nltk
+	depends = nltk-data
+	depends = python-crfsuite
+	depends = python-pint
+	provides = python-ingredient-parser
+	source = git+https://github.com/strangetom/ingredient-parser.git
+	sha256sums = SKIP
+
+pkgname = python-ingredient-parser-git
