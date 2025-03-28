@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.0.32
+pkgver=0.0.34
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('207ae3dcebde078134ad34c5090a62bd64e3488bd044ff84b4d8bbafef7e44fd')
+sha256sums=('5e102d9c51d506248afaf21d555f85494c8a9be5a612744d22474e7f6c9482ba')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 #check() {
@@ -42,7 +42,16 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  for target in deb-fix-build deb-upstream-deps dep-server ogni "$pkgname-deb" "$pkgname-dist" report-apt-deps-status; do
+  targets=(
+    deb-fix-build
+    deb-upstream-deps
+    dep-server
+    ogni
+    "$pkgname-deb"
+    "$pkgname-dist"
+    report-apt-deps-status
+  )
+  for target in ${targets[*]}; do
     install -Dm755 target/release/${target} -t "$pkgdir/usr/bin/"
   done
 }
