@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.0.31
+pkgver=3.0.32
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -28,7 +28,6 @@ makedepends=(
     'nvm'
     'npm'
     'zip'
-    'gcc'
     'curl'
     'yarn'
     'python-setuptools'
@@ -38,7 +37,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('aefc3e258678dc7f9403a090e0119b10a5e520e12cedaad9ff3cc9f4a4a6ce55'
+sha256sums=('4a412f8c8e3bf68ef8730061782a797282b9dace7840c55f64611b1685df8e0c'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -75,7 +74,6 @@ prepare() {
         echo apps/{desktop,web} packages/{crypto,editor,logger,streamable-fs,theme,ui,sodium,clipper} servers/theme | xargs -n 1 cp .npmrc
     fi
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
-    # Install packages
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
     NODE_ENV=development    npm run bootstrap -- --scope=web
     NODE_ENV=development    npm run bootstrap -- --scope=desktop
