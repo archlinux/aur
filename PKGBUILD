@@ -5,7 +5,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
 pkgver='0.266.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A static type checker for JavaScript'
 # If you're running on aarch64, you have to add it to the arch array of some AUR ocaml dependencies
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,8 @@ _sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	# Use ocaml 5.2 keywords, as the 5.3 effect keyword breaks the build, use release build mode
-	OCAMLPARAM='_,keywords=5.2' FLOW_RELEASE=1 make
-	OCAMLPARAM='_,keywords=5.2' FLOW_RELEASE=1 make -C src/parser dist/libflowparser.zip
+	FLOW_RELEASE=1 make
+	FLOW_RELEASE=1 make -C src/parser dist/libflowparser.zip
 }
 
 check() {
