@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.5.7.r3.cf294a2
+pkgver=1.5.7.r11.cc5d3db
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -48,6 +48,11 @@ package() {
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/app.m0rf30.cieid.png"
   install -Dm644 data/app.m0rf30.cieid.metainfo.xml \
     "${pkgdir}/usr/share/metainfo/app.m0rf30.cieid.metainfo.xml"
+  install -Dm644 data/libcie-pkcs11.module \
+    "${pkgdir}/usr/share/p11-kit/modules/libcie-pkcs11.module"
+  mkdir -p "${pkgdir}/usr/lib/pkcs11"
+  ln -s /usr/lib/libcie-pkcs11.so \
+    "${pkgdir}/usr/lib/pkcs11/libcie-pkcs11.so"
   install -Dm755 data/cieid.sh \
     "${pkgdir}/usr/bin/cieid"
   install -Dm644 LICENSE \
