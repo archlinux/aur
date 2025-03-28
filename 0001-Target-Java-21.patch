@@ -1,4 +1,4 @@
-From f9ac9e3cc907e7a58781ce0c5cf3be79bb809200 Mon Sep 17 00:00:00 2001
+From b92f4a9e20d4e2a8ebe8cce6cd75d0516b881388 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:28:59 +0800
 Subject: [PATCH 1/2] Target Java 21
@@ -9,15 +9,15 @@ Subject: [PATCH 1/2] Target Java 21
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/HMCL/build.gradle.kts b/HMCL/build.gradle.kts
-index 645a055d0..d3764fb87 100644
+index a53d87750..ae6abee55 100644
 --- a/HMCL/build.gradle.kts
 +++ b/HMCL/build.gradle.kts
-@@ -8,7 +8,7 @@ import java.security.spec.PKCS8EncodedKeySpec
+@@ -9,7 +9,7 @@ import java.security.spec.PKCS8EncodedKeySpec
  import java.util.zip.ZipFile
  
  plugins {
 -    id("com.github.johnrengelman.shadow") version "7.1.2"
-+    id("com.gradleup.shadow") version "8.3.5"
++    id("com.gradleup.shadow") version "8.3.6"
  }
  
  val isOfficial = System.getenv("HMCL_SIGNATURE_KEY") != null
@@ -37,5 +37,5 @@ index 2317dbc93..27774c7bc 100644
          options.encoding = "UTF-8"
      }
 -- 
-2.47.0
+2.49.0
 

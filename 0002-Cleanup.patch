@@ -1,4 +1,4 @@
-From 4ef5f277fdd8afe8ac246f51255a95857f8b4eca Mon Sep 17 00:00:00 2001
+From d4076bc90ee0374ce3eefd5fc26f9745ac77e621 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -9,12 +9,12 @@ Co-authored-by: zhaose <weiliang1503@outlook.com>
  .../java/org/jackhuang/hmcl/Metadata.java     |   2 -
  .../org/jackhuang/hmcl/ui/Controllers.java    |   6 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   3 -
- .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  91 ------
+ .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  96 ------
  .../hmcl/ui/account/CreateAccountPane.java    |  16 -
  .../hmcl/ui/download/VersionsPage.java        |  12 -
  .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  73 -----
- .../hmcl/ui/main/LauncherSettingsPage.java    |  14 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 145 +--------
+ .../hmcl/ui/main/LauncherSettingsPage.java    |   9 +-
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 164 +---------
  .../org/jackhuang/hmcl/ui/main/RootPage.java  |  11 -
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
@@ -27,7 +27,7 @@ Co-authored-by: zhaose <weiliang1503@outlook.com>
  .../jackhuang/hmcl/upgrade/UpdateHandler.java | 281 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
  .../hmcl/game/GameDumpGenerator.java          |   6 +-
- 22 files changed, 3 insertions(+), 1398 deletions(-)
+ 22 files changed, 3 insertions(+), 1417 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
@@ -39,7 +39,7 @@ Co-authored-by: zhaose <weiliang1503@outlook.com>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 4bd9c2838..f26fb76c6 100644
+index 469823189..a02b910e4 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 @@ -30,8 +30,6 @@ import org.jackhuang.hmcl.setting.SambaException;
@@ -93,10 +93,10 @@ index 06198bfb9..b8d0d50f1 100644
      public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
      public static final Path HMCL_DIRECTORY;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 44e208ac5..96d67623f 100644
+index 4372b81ce..615e5a717 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -386,12 +386,6 @@ public final class Controllers {
+@@ -406,12 +406,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
@@ -132,10 +132,10 @@ index 5af27b6a6..69988b270 100644
          lblCrash.setWrapText(true);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 deleted file mode 100644
-index e6b1e9925..000000000
+index 69e51c595..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 +++ /dev/null
-@@ -1,91 +0,0 @@
+@@ -1,96 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2021  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -179,6 +179,9 @@ index e6b1e9925..000000000
 -
 -public final class UpgradeDialog extends JFXDialogLayout {
 -    public UpgradeDialog(RemoteVersion remoteVersion, Runnable updateRunnable) {
+-        maxWidthProperty().bind(Controllers.getScene().widthProperty().multiply(0.7));
+-        maxHeightProperty().bind(Controllers.getScene().heightProperty().multiply(0.7));
+-
 -        setHeading(new Label(i18n("update.changelog")));
 -        setBody(new ProgressIndicator());
 -
@@ -199,11 +202,13 @@ index e6b1e9925..000000000
 -                node = node.nextSibling();
 -            } while (node != null);
 -
+-            renderer.mergeLineBreaks();
 -            return renderer.render();
 -        }).whenComplete(Schedulers.javafx(), (result, exception) -> {
 -            if (exception == null) {
 -                ScrollPane scrollPane = new ScrollPane(result);
 -                scrollPane.setFitToWidth(true);
+-                FXUtils.smoothScrolling(scrollPane);
 -                setBody(scrollPane);
 -            } else {
 -                LOG.warning("Failed to load update log, trying to open it in browser");
@@ -228,7 +233,7 @@ index e6b1e9925..000000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index a5d8bee8b..5ee7e554a 100644
+index a2dc9c8b9..c7aaddc85 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 @@ -57,7 +57,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
@@ -269,10 +274,10 @@ index a5d8bee8b..5ee7e554a 100644
                  this.server = ((BoundAuthlibInjectorAccountFactory) factory).getServer();
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
-index a64bf1aea..2be9fed0c 100644
+index ea0f1c68f..4a8e1156b 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
-@@ -46,7 +46,6 @@ import org.jackhuang.hmcl.ui.SVG;
+@@ -54,7 +54,6 @@ import org.jackhuang.hmcl.ui.SVG;
  import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
  import org.jackhuang.hmcl.ui.animation.TransitionPane;
  import org.jackhuang.hmcl.ui.construct.ComponentList;
@@ -280,7 +285,7 @@ index a64bf1aea..2be9fed0c 100644
  import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
  import org.jackhuang.hmcl.ui.construct.RipplerContainer;
  import org.jackhuang.hmcl.ui.wizard.Navigation;
-@@ -92,13 +91,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
+@@ -107,13 +106,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
          this.libraryId = libraryId;
          this.navigation = navigation;
  
@@ -292,11 +297,11 @@ index a64bf1aea..2be9fed0c 100644
 -        this.setTop(hintPane);
 -
          root = new TransitionPane();
-         {
-             spinner = new JFXSpinner();
-@@ -261,10 +253,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
- 
-     private void onBack() { navigation.onPrev(true); }
+         BorderPane toolbarPane = new BorderPane();
+         JFXButton btnRefresh;
+@@ -359,10 +351,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
+         navigation.onPrev(true);
+     }
  
 -    private void onSponsor() {
 -        FXUtils.openLink("https://bmclapidoc.bangbang93.com");
@@ -385,10 +390,10 @@ index 23c954eff..000000000
 -
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-index 8e59718fe..c5f3cd9e2 100644
+index 20dd5cf19..fbf0ec481 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-@@ -48,7 +48,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -47,7 +47,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
      private final TabHeader.Tab<DownloadSettingsPage> downloadTab = new TabHeader.Tab<>("downloadSettingsPage");
      private final TabHeader.Tab<HelpPage> helpTab = new TabHeader.Tab<>("helpPage");
      private final TabHeader.Tab<AboutPage> aboutTab = new TabHeader.Tab<>("aboutPage");
@@ -396,7 +401,7 @@ index 8e59718fe..c5f3cd9e2 100644
      private final TransitionPane transitionPane = new TransitionPane();
  
      public LauncherSettingsPage() {
-@@ -58,9 +57,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+@@ -57,9 +56,8 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          personalizationTab.setNodeSupplier(PersonalizationPage::new);
          downloadTab.setNodeSupplier(DownloadSettingsPage::new);
          helpTab.setNodeSupplier(HelpPage::new);
@@ -406,21 +411,16 @@ index 8e59718fe..c5f3cd9e2 100644
 +        tab = new TabHeader(gameTab, javaManagementTab, settingsTab, personalizationTab, downloadTab, helpTab, aboutTab);
  
          tab.select(gameTab);
-         gameTab.initializeIfNeeded();
-@@ -109,12 +107,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
-                         helpItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(helpTab));
-                         helpItem.setOnAction(e -> tab.select(helpTab));
-                     })
--                    .addNavigationDrawerItem(feedbackItem -> {
--                        feedbackItem.setTitle(i18n("feedback"));
--                        feedbackItem.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
--                        feedbackItem.activeProperty().bind(tab.getSelectionModel().selectedItemProperty().isEqualTo(feedbackTab));
--                        feedbackItem.setOnAction(e -> tab.select(feedbackTab));
--                    })
-                     .addNavigationDrawerItem(aboutItem -> {
-                         aboutItem.setTitle(i18n("about"));
-                         aboutItem.setLeftGraphic(wrap(SVG.INFORMATION_OUTLINE));
-@@ -143,10 +135,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+         gameTab.getNode().loadVersion(Profiles.getSelectedProfile(), null);
+@@ -77,7 +75,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
+                 .addNavigationDrawerTab(tab, downloadTab, i18n("download"), SVG.DOWNLOAD)
+                 .startCategory(i18n("help").toUpperCase(Locale.ROOT))
+                 .addNavigationDrawerTab(tab, helpTab, i18n("help"), SVG.HELP)
+-                .addNavigationDrawerTab(tab, feedbackTab, i18n("feedback"), SVG.FEEDBACK)
+                 .addNavigationDrawerTab(tab, aboutTab, i18n("about"), SVG.INFO);
+         FXUtils.setLimitWidth(sideBar, 200);
+         setLeft(sideBar);
+@@ -100,10 +97,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
          tab.select(gameTab);
      }
  
@@ -432,10 +432,10 @@ index 8e59718fe..c5f3cd9e2 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 7cded1d27..aa45c8523 100644
+index 94717c7cf..ea54f59f0 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-@@ -54,9 +54,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+@@ -56,9 +56,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
  import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
  import org.jackhuang.hmcl.ui.versions.GameItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
@@ -445,7 +445,7 @@ index 7cded1d27..aa45c8523 100644
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
  
-@@ -77,14 +74,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -79,14 +76,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(menu);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -460,28 +460,54 @@ index 7cded1d27..aa45c8523 100644
      private final JFXButton menuButton;
  
      {
-@@ -101,64 +94,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -103,90 +96,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          setPadding(new Insets(20));
  
 -        if (Metadata.isNightly() || (Metadata.isDev() && !Objects.equals(Metadata.VERSION, config().getShownTips().get(ANNOUNCEMENT)))) {
--            AnnouncementCard announcementCard = null;
--
+-            String title;
+-            String content;
 -            if (Metadata.isNightly()) {
--                announcementCard = new AnnouncementCard(i18n("update.channel.nightly.title"), i18n("update.channel.nightly.hint"), null);
--            } else if (Metadata.isDev()) {
--                announcementCard = new AnnouncementCard(i18n("update.channel.dev.title"), i18n("update.channel.dev.hint"), this::hideAnnouncementPane);
+-                title = i18n("update.channel.nightly.title");
+-                content = i18n("update.channel.nightly.hint");
+-            } else {
+-                title = i18n("update.channel.dev.title");
+-                content = i18n("update.channel.dev.hint");
 -            }
 -
--            if (announcementCard != null) {
--                VBox announcementBox = new VBox(16);
--                announcementBox.getChildren().add(announcementCard);
+-            VBox announcementCard = new VBox();
 -
--                announcementPane = new TransitionPane();
--                announcementPane.setContent(announcementBox, ContainerAnimations.NONE);
+-            BorderPane titleBar = new BorderPane();
+-            titleBar.getStyleClass().add("title");
+-            titleBar.setLeft(new Label(title));
 -
--                getChildren().add(announcementPane);
--            }
+-            Node hideNode = SVG.CLOSE.createIcon(Theme.blackFill(), 20);
+-            hideNode.setCursor(Cursor.HAND);
+-            titleBar.setRight(hideNode);
+-            FXUtils.onClicked(hideNode, () -> {
+-                if (announcementPane != null) {
+-                    if (Metadata.isDev()) {
+-                        config().getShownTips().put(ANNOUNCEMENT, Metadata.VERSION);
+-                    }
+-
+-                    announcementPane.setContent(new StackPane(), ContainerAnimations.FADE);
+-                }
+-            });
+-
+-            TextFlow body = FXUtils.segmentToTextFlow(content, Controllers::onHyperlinkAction);
+-            body.setLineSpacing(4);
+-
+-            announcementCard.getChildren().setAll(titleBar, body);
+-            announcementCard.setSpacing(16);
+-            announcementCard.getStyleClass().addAll("card", "announcement");
+-
+-            VBox announcementBox = new VBox(16);
+-            announcementBox.getChildren().add(announcementCard);
+-
+-            announcementPane = new TransitionPane();
+-            announcementPane.setContent(announcementBox, ContainerAnimations.NONE);
+-
+-            getChildren().add(announcementPane);
 -        }
 -
 -        updatePane = new StackPane();
@@ -501,7 +527,7 @@ index 7cded1d27..aa45c8523 100644
 -            StackPane.setMargin(hBox, new Insets(9, 12, 9, 16));
 -            {
 -                Label lblIcon = new Label();
--                lblIcon.setGraphic(SVG.UPDATE.createIcon(Theme.whiteFill(), 20, 20));
+-                lblIcon.setGraphic(SVG.UPDATE.createIcon(Theme.whiteFill(), 20));
 -
 -                TwoLineListItem prompt = new TwoLineListItem();
 -                prompt.setSubtitle(i18n("update.bubble.subtitle"));
@@ -513,7 +539,7 @@ index 7cded1d27..aa45c8523 100644
 -            }
 -
 -            JFXButton closeUpdateButton = new JFXButton();
--            closeUpdateButton.setGraphic(SVG.CLOSE.createIcon(Theme.whiteFill(), 10, 10));
+-            closeUpdateButton.setGraphic(SVG.CLOSE.createIcon(Theme.whiteFill(), 10));
 -            StackPane.setAlignment(closeUpdateButton, Pos.TOP_RIGHT);
 -            closeUpdateButton.getStyleClass().add("toggle-icon-tiny");
 -            StackPane.setMargin(closeUpdateButton, new Insets(5));
@@ -525,7 +551,7 @@ index 7cded1d27..aa45c8523 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -229,7 +164,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -257,7 +166,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -534,7 +560,7 @@ index 7cded1d27..aa45c8523 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -242,40 +177,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -270,40 +179,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
@@ -575,7 +601,7 @@ index 7cded1d27..aa45c8523 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -284,26 +185,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -312,19 +187,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -592,17 +618,10 @@ index 7cded1d27..aa45c8523 100644
 -        showUpdate.set(false);
 -    }
 -
--    public void hideAnnouncementPane() {
--        if (announcementPane != null) {
--            config().getShownTips().put(ANNOUNCEMENT, Metadata.VERSION);
--            announcementPane.setContent(new StackPane(), ContainerAnimations.FADE);
--        }
--    }
--
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -321,30 +202,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -342,30 +204,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
@@ -634,11 +653,11 @@ index 7cded1d27..aa45c8523 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 21301dee7..9c0c12c2f 100644
+index 6769cfa41..a5a9517df 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -42,7 +42,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
- import org.jackhuang.hmcl.ui.nbt.NBTHelper;
+ import org.jackhuang.hmcl.ui.nbt.NBTFileType;
  import org.jackhuang.hmcl.ui.versions.GameAdvancedListItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
@@ -762,7 +781,7 @@ index 90df9e610..2de8c21d2 100644
      protected void clearCacheDirectory() {
          FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index 0bfc1ba6a..2c90a7b77 100644
+index 5f57b36a0..2c90a7b77 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 @@ -51,11 +51,6 @@ public abstract class SettingsView extends StackPane {
@@ -818,7 +837,7 @@ index 0bfc1ba6a..2c90a7b77 100644
 -                        btnUpdate = new JFXButton();
 -                        btnUpdate.setOnAction(e -> onUpdate());
 -                        btnUpdate.getStyleClass().add("toggle-icon4");
--                        btnUpdate.setGraphic(SVG.UPDATE.createIcon(Theme.blackFill(), 20, 20));
+-                        btnUpdate.setGraphic(SVG.UPDATE.createIcon(Theme.blackFill(), 20));
 -
 -                        updatePane.setHeaderRight(btnUpdate);
                      }
@@ -1825,5 +1844,5 @@ index 36ab72ee2..eae748add 100644
      }
  }
 -- 
-2.47.0
+2.49.0
 
