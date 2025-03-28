@@ -1,18 +1,18 @@
 pkgbase = tiddlywiki-app-bin
 	pkgdesc = A TiddlyWiki desktop application that provides a silkier desktop experience.(Prebuilt version.Use system-wide electron)一个 TiddlyWiki 桌面应用，提供更加丝滑的桌面端使用体验。
-	pkgver = 2.6.5
+	pkgver = 2.6.7
 	pkgrel = 1
 	url = https://oeyoews.github.io/tiddlywiki-app/
 	arch = x86_64
 	license = MIT
 	depends = electron35
-	provides = tiddlywiki-app=2.6.5
+	provides = tiddlywiki-app=2.6.7
 	conflicts = tiddlywiki-app
 	options = !emptydirs
-	source = tiddlywiki-app-2.6.5.deb::https://github.com/oeyoews/tiddlywiki-app/releases/download/v2.6.5/tiddlywiki-app_2.6.5.deb
-	source = LICENSE-2.6.5::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v2.6.5/LICENSE
+	source = tiddlywiki-app-2.6.7.deb::https://github.com/oeyoews/tiddlywiki-app/releases/download/v2.6.7/tiddlywiki-app_2.6.7.deb
+	source = LICENSE-2.6.7::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v2.6.7/LICENSE
 	source = tiddlywiki-app.sh
-	sha256sums = 5b2eb090701d2c6293354b27785e5e2c3552f071bf8ace65a6afe97f9feba82c
+	sha256sums = 802601dded2644423cbaa032b11361477aea60cc2cb5fb31f2e99a38b172c939
 	sha256sums = 801cd318b77f7cc43b71e5bf59b79476c94d4981025655f7d1c4f3ef4faaf162
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
