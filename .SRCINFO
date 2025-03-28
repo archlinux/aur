@@ -1,0 +1,17 @@
+pkgbase = intentrace-bin
+	pkgdesc = strace with intent, it goes all the way for you instead of half the way
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/sectordistrict/intentrace
+	arch = x86_64
+	license = MIT
+	provides = intentrace
+	conflicts = intentrace
+	source = LICENSE-0.7.4::https://raw.githubusercontent.com/sectordistrict/intentrace/v0.7.4/LICENSE
+	source = README-0.7.4::https://raw.githubusercontent.com/sectordistrict/intentrace/v0.7.4/README.md
+	sha256sums = 002c2696d92b5c8cf956c11072baa58eaf9f6ade995c031ea635c6a1ee342ad1
+	sha256sums = d3e130f4946ff1c7fa052c0b29fcadbca87de52908ea04b101288b9fbb06d2ef
+	source_x86_64 = intentrace-0.7.4::https://github.com/sectordistrict/intentrace/releases/download/v0.7.4/intentrace-x86_64
+	sha256sums_x86_64 = a56e622c12957cb9e77610ade0639cdc10d5a0a17cc2fedf76a9f7b722890a5e
+
+pkgname = intentrace-bin
