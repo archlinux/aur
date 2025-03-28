@@ -4,7 +4,7 @@ pkgname="limine-dracut-support"
 pkgver=1.11.5
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
-arch=("any")
+arch=("x86_64")
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz")
 license=("GPL3")
@@ -39,9 +39,9 @@ check_java_version() {
     fi
 
     if [[ "$java_version" -lt ${_java_version} ]]; then
-        echo "Error: Java version $java_version is older than the required  ${_java_version}."
+        echo "Error: Java version $java_version is older than the required ${_java_version}."
         echo "Please check with: 'archlinux-java status'"
-        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or  a newer version."
+        echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
         return 1
     fi
 }
