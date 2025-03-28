@@ -1,7 +1,7 @@
 pkgbase = alert
 	pkgdesc = Emergency alarm system with visual and audio alerts
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.1
+	pkgrel = 3
 	url = https://github.com/abinot/alert
 	arch = any
 	license = GPL3

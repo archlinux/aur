@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=alert
-pkgver=1.0
-pkgrel=1
+pkgver=1.1
+pkgrel=3
 pkgdesc="Emergency alarm system with visual and audio alerts"
 arch=('any')
 url="https://github.com/abinot/alert"
