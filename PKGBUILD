@@ -2,22 +2,22 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-rosettasciio
 pkgshort=rosettasciio
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Rosetta Scientific Input Output library"
 arch=('any')
 url="http://hyperspy.org/rosettasciio"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 
 depends=('python'
-         'python-dask>=2021.5.1'
+         'python-dask>=2022.9.2'
          'python-dateutil'
 	 'python-h5py>=2.3'
 	 'python-imageio>=2.16'
 	 'python-numba>=0.53'
          'python-numpy>=1.20.0'
          'python-pint>=0.8'
-         'python-box>=6'
+         'python-box>7.3.1'
          'python-yaml'
          )
 
@@ -33,8 +33,15 @@ optdepends=(
          'python-msgpack: zspy'
          )
 
-
 makedepends=('python-setuptools' )
+
+checkdepends=('python-filelock'
+              'python-pooch'
+              'python-pytest>=3.6'
+              'python-pytest-cov'
+              'python-pytest-rerunfailures'
+              'python-pytest-xdist'
+             )
 
 provides=('rsciio')
 
@@ -45,4 +52,4 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-md5sums=('983f2fb9e8798f90a557579e47cdd7b7')
+md5sums=('e51b563832150b307bda724b039203ff')
