@@ -1,7 +1,8 @@
 pkgbase = slimevr-beta-bin
 	pkgdesc = SlimeVR FBT software beta version
 	pkgver = 0.14.0rc2
-	pkgrel = 3
+	pkgrel = 4
+	epoch = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server/
 	install = slimevr-beta-bin.install
 	arch = x86_64

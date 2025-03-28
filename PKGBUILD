@@ -2,7 +2,8 @@
 # Contributor: Kruemmelbande
 pkgname=slimevr-beta-bin
 pkgver=0.14.0rc2
-pkgrel=3
+pkgrel=4
+epoch=1
 pkgdesc="SlimeVR FBT software beta version"
 arch=('x86_64')
 url="https://github.com/SlimeVR/SlimeVR-Server/"
