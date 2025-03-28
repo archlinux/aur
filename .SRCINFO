@@ -1,0 +1,19 @@
+pkgbase = serconv
+	pkgdesc = Batch conversion of hyper-spectral SER files to TIFF
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://jesseds.gitlab.io/serconv
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = libtiff
+	depends = qt6-base
+	depends = openssl
+	source = https://gitlab.com/jesseds/serconv/-/archive/v1.3.1/serconv-v1.3.1.tar.gz
+	source = serconv.desktop
+	sha256sums = d4449fa9d7ed5a8a59c7f7b56e0db84a12bb5386663de7fd7215bfc73c70c298
+	sha256sums = a3e8a32332b256af361f8bfb1591c4c202fedb143685bd11660eae1b022793fd
+
+pkgname = serconv

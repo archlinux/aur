@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SERConv
+Icon=/usr/share/pixmaps/serconv.svg
+Exec=/usr/bin/serconv
