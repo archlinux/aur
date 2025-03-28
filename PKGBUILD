@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='4.2.10.20250305'
+pkgver='4.2.13.20250328'
 pkgrel='1'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -11,7 +11,7 @@ source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.
         extrae-issue-27-fix-pie-address-translation.patch
         extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(f477e1eacba4f1a8ac1e16288ce9d037cee7b1c4d87147ffa4929ea311c354b65f1e4a68d9a754590777aa70f344e0a2ebad9c3e4cbc1dac1fa38e066b3a063d
+sha512sums=(faf83ff48b424d8bc608f04494288f91413f62c09791a9118c9ae39391874dc68e30bdf3283ddfbade73d2cb0ea4b82d912b893aa8740333a87644c429f3af87
             ce6e5f3994118783fd1e05de7336782e4df4eaf3b2a277174ea536b0d391f418cb36682c1e1b3adee3b4d2aa07f25af58998525c79d0567f7afa88dda048c413
             e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
@@ -36,7 +36,7 @@ build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	# For now, ignore new errors from GCC 14 (see https://gcc.gnu.org/gcc-14/porting_to.html)
-	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion"
+	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types"
 
 	# Avoid build failures under GCC 15 due to function declarations without parameters
 	# (see https://gcc.gnu.org/gcc-15/porting_to.html#c23-fn-decls-without-parameters)
