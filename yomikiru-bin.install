@@ -1,0 +1,4 @@
+post_install() {
+    echo "Yomikiru's automatic updates are designed for debian based systems. You should disable them."
+}
+
