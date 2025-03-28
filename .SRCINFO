@@ -1,6 +1,6 @@
 pkgbase = maomaowm-git
 	pkgdesc = A Wayland compositor with smooth animation
-	pkgver = r163.0e2a566
+	pkgver = r166.20bd984
 	pkgrel = 1
 	url = https://github.com/DreamMaoMao/maomaowm
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = maomaowm-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = debugedit
+	makedepends = base-devel
 	makedepends = wayland-protocols>=1.41
 	depends = glibc
 	depends = wayland>=1.23.1

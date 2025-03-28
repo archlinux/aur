@@ -21,6 +21,8 @@ makedepends=(
   git
   meson
   ninja
+  debugedit
+  base-devel
   'wayland-protocols>=1.41'
 )
 
