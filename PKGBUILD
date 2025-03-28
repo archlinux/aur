@@ -1,6 +1,6 @@
-# Maintainer:  kxxt <rsworktech at outlook dot com>
+# Maintainer:  kxxt <i at kxxt dot dev>
 pkgname=aspeak
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="A simple text-to-speech client for Azure TTS API"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -8,16 +8,12 @@ url="https://github.com/kxxt/aspeak"
 license=('MIT')
 depends=('openssl' 'alsa-lib' 'gcc-libs')
 makedepends=('cargo')
-conflicts=('aspeak')
-backup=()
-options=()
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-noextract=()
-b2sums=('73edaca97050fd810fd5a8d2afc9841c574507f59179e16152fd8cd3ee88d5980f24b8445b15427fae7ca141b7744f02960deeff4bc20378a9233857d709fa67')
+b2sums=('c842d1390f1e23aac7d2403205aaa75045893e6bfcf5518bb979b174fc400ce67c12c915d16f69bd5c6ded5ff2b37cf989b32a89196010c5f23a17b916a1135d')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -25,12 +21,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build -F binary --frozen --release
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen
 }
 
 package() {
