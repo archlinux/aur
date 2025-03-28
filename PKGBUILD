@@ -1,17 +1,17 @@
 #!/bin/sh
-# Maintainer: hairlinehd <slimender123@gmail.com>
+# Maintainer: hairlinehd
 pkgname='obgk'
 _pkgname='obgk'
 pkgver=latest
 pkgrel=1
 pkgdesc="osu!stable video and background deleter"
 arch=('x86_64')
-url="https://github.com/shoplifterhd/obgk"
+url="https://github.com/hairlinehd/obgk"
 license=('Unlicense')
 depends=('bash' 'fd' 'findutils' 'wget')
 makedepends=('git')
 optdepends=('zenity: nice gui to select your songs folder')
-source=('git+https://github.com/shoplifterhd/obgk.git')
+source=('git+https://github.com/hairlinehd/obgk.git')
 md5sums=('SKIP')
 
 pkgver() {
