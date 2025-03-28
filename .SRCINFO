@@ -1,6 +1,6 @@
 pkgbase = r-rvg
 	pkgdesc = R Graphics Devices for Vector Graphics Output
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rvg
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-rvg
 	depends = r-xml2
 	optdepends = r-grid
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rvg_0.3.4.tar.gz
-	sha256sums = a057c30f00e11592c1d65c892ec9c99131eddc2600793024d184c4be881e2768
+	source = https://cran.r-project.org/src/contrib/rvg_0.3.5.tar.gz
+	sha256sums = 80917103dbdba98d46c052106d8ee0e97c093feb07fea25bda2a34d3e5c601f0
 
 pkgname = r-rvg
