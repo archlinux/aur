@@ -1,45 +1,70 @@
-# Maintainer:
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 # Contributor: Sam Whited <sam@samwhited.com>
 # Contributor: Brian Clemens <brian@tiuxo.com>
 # Contributor: Přemysl Janouch <p.janouch@gmail.com>
 
 pkgname=hugo-git
-_pkgname=hugo
-pkgver=v0.54.0.r1.g5383fe458c0c
-pkgrel=2
-pkgdesc="Fast and Flexible Static Site Generator in Go"
-arch=('x86_64')
+pkgver=0.145.0.r28.g6f14dbe24
+pkgrel=1
+pkgdesc="A fast and flexible static site generator"
+arch=('i686' 'x86_64')
 url="https://gohugo.io/"
-conflicts=('hugo')
-provides=('hugo')
-options=('!strip')
-license=('Apache')
+license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('go' 'git')
-optdepends=('pygmentize: syntax-highlight code snippets')
-source=('git+https://github.com/gohugoio/hugo.git')
+makedepends=('git' 'go')
+optdepends=('dart-saas: required to transpile Sass to CSS'
+            'python-docutils: required for reStructuredText support')
+provides=("hugo=$pkgver")
+conflicts=('hugo')
+source=("git+https://github.com/gohugoio/hugo.git")
 sha256sums=('SKIP')
 
+
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
+
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "hugo"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-  cd "${srcdir}"/${_pkgname}
-  # Respect LDFLAGS
-  EXTLDFLAGS=${LDFLAGS}
-  LDFLAGS="-X github.com/gohugoio/hugo/hugolib.CommitHash=`git rev-parse --short HEAD`"
-  GOCACHE="${srcdir}/cache" go build --tags extended \
-    -ldflags "-linkmode external -extldflags '${EXTLDFLAGS}' -s -w ${LDFLAGS}"
+  cd "hugo"
 
+  go build \
+    -tags extended,withdeploy
   ./hugo gen man
 }
 
-package() {
-  install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}"/LICENSE     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/${_pkgname}"/man/*.1  -t "${pkgdir}/usr/share/man/man1/"
+check() {
+  cd "hugo"
+
+  #go test \
+  #  ./...
 }
 
-# vim: ts=2 sw=2 et:
+package() {
+  cd "hugo"
+
+  GOBIN="$pkgdir/usr/bin" \
+    go install \
+      -tags extended,withdeploy
+
+  install -Dm644 man/*.1 -t "$pkgdir/usr/share/man/man1"
+
+  install -d \
+    "$pkgdir/usr/share/bash-completion/completions" \
+    "$pkgdir/usr/share/fish/vendor_completions.d" \
+    "$pkgdir/usr/share/zsh/site-functions"
+
+  "$pkgdir/usr/bin/hugo" completion bash > "$pkgdir/usr/share/bash-completion/completions/hugo"
+  "$pkgdir/usr/bin/hugo" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/hugo.fish"
+  "$pkgdir/usr/bin/hugo" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_hugo"
+}
