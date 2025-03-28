@@ -60,7 +60,7 @@ package() {
 
     # amd_s2idle.py to amd_s2idle-analysis
     install -dm755 "${pkgdir}/usr/bin"
-    install -m644 "${srcdir}/amd_s2idle.py" "${pkgdir}/usr/bin/amd_s2idle-analysis"
+    install -m755 "${srcdir}/amd_s2idle.py" "${pkgdir}/usr/bin/amd_s2idle-analysis"
 
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
