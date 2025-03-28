@@ -8,6 +8,7 @@ pkgbase = maomaowm-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = fakeroot
 	makedepends = debugedit
 	makedepends = base-devel
 	makedepends = wayland-protocols>=1.41
