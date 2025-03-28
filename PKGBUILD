@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
 _pkgname='Stapxs QQ Lite'
-pkgver=3.1.1
+pkgver=3.1.2
 _electronversion=31
 pkgrel=1
 epoch=
@@ -24,8 +24,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6278370ea1b52a7babeb02b286f51e54f1d1b49a20680315b042d8a66b0a07af')
-sha256sums_x86_64=('36c0ed6156a53b07652cc1f54a5450abc65d5e53a256a7788b517777ae76f1b7')
+sha256sums_aarch64=('8c84fd0dc0d0fee8ad6b04763ab8feb4657d42436c55b0aaf7b3c5090b3b9b38')
+sha256sums_x86_64=('4a3a950e797fbd00361440a16dd9219880810e5cd1796742ae121c5ee151d8fc')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -42,7 +42,7 @@ package() {
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-    	install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
 			-t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
 	done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
