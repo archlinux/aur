@@ -1,7 +1,7 @@
 pkgbase = freetype2-qdoled-aw3225qf
 	pkgdesc = freetype optimized for AW3225QF subpixel layout
 	pkgver = 2.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = FTL OR GPL-2.0-or-later
@@ -23,7 +23,7 @@ pkgbase = freetype2-qdoled-aw3225qf
 	b2sums = f9591c6998df02b072adaf38a968e91deae8ed4d53ea0cb74d08982c4f0e48b1a98c1378a698164e4f730f07a3b0bea308a94fcc2e2b8ce9967dbf9478b599bd
 	b2sums = b7e3b72e2d6aed548c1762a16ee08ac47a05caf29c5d37ef03c6791e6dbd109fdfef0b246540c35e968d54f2103b70e80eccff72ac54d34224c6d064aa53d720
 	b2sums = b83a599da8eef1c39a268482db8e82f03a2c9b68850a0ec782e9839e7b45a3b0f989d997647eb55e5b18f2fe0c988e73f0ec6c4eb4c0787689f9e0213faa4320
-	b2sums = 9e21afc8350a55ab085fb042c9ad1f8cecb5496307787558d8b6c4d92d437f351ab7bb50d9d45906fb388b0d46f59874b42ac239a96f26956c26792ddfd01264
+	b2sums = d2665b02765e879699bedf3da5315be34c54a18a3bc82c666aacaa911a074e500429ecaf07d4df010add6c6451459aaff9a6ca8d165220a833140c0c6311b5d0
 	b2sums = a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d
 
 pkgname = freetype2-qdoled-aw3225qf

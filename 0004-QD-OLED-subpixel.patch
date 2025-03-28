@@ -1,5 +1,5 @@
 diff --git a/src/smooth/ftsmooth.c b/src/smooth/ftsmooth.c
-index f0acc1ea4..5612e148d 100644
+index f0acc1ea4..ef1258ac4 100644
 --- a/src/smooth/ftsmooth.c
 +++ b/src/smooth/ftsmooth.c
 @@ -95,12 +95,12 @@
@@ -15,7 +15,7 @@ index f0acc1ea4..5612e148d 100644
 +    sub[0].x = -15;
 +    sub[0].y = -15;
 +    sub[1].x = -11;
-+    sub[1].y = 19;
++    sub[1].y = 21;
 +    sub[2].x = 19;
 +    sub[2].y = -15;
  
