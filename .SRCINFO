@@ -1,6 +1,6 @@
 pkgbase = headlamp-bin
 	pkgdesc = A Kubernetes web UI that is fully-featured, user-friendly and extensible
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://headlamp.dev/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = headlamp-bin
 	options = !debug
 	options = !strip
 	options = !emptydirs
-	source = headlamp-0.29.0.tar.gz::https://github.com/headlamp-k8s/headlamp/releases/download/v0.29.0/Headlamp-0.29.0-linux-x64.tar.gz
+	source = headlamp-0.30.0.tar.gz::https://github.com/headlamp-k8s/headlamp/releases/download/v0.30.0/Headlamp-0.30.0-linux-x64.tar.gz
 	source = headlamp.svg::https://raw.githubusercontent.com/headlamp-k8s/headlamp/main/frontend/src/resources/icon-dark.svg
 	source = headlamp.desktop
-	b2sums = b839e37b0da309fed4b0a2766d3e98d42f6b5898e212eac5653010b490685053742ab01adc5f82ece7b550c5b52dc2c2a11aea587de3f796d0455e7c3932c59a
+	b2sums = 13df5ef5ed85701c82b9aa93dde1ad153d6d569766160c86c7621c9a4d88853278e3c126c23dd928f905f0004f12c853c041f73f65441ce64c2b20824e4197af
 	b2sums = 60dfacf0a97e0a642a25ca38e54a0c9448598ad0d9f40afe0966029536c40d502940068a1029463ce63df9e5216d4eba7fbd75538cedfdfd10f4014b8673a5bb
 	b2sums = 775b6f07693b57548517b7e2f5cbf576daac8cc4ab744289ae2d8bb986d3609f8c5330776603fbf140a264bb31d3bba2dff3db5435aef22f9ddcabddc25c2853
 
