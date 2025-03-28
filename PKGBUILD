@@ -4,7 +4,7 @@
 pkgbase=wps-office-365-edu
 pkgname=('wps-office-365-edu' 'wps-office-365-edu-fonts')
 pkgver=12.8.2.20327
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office for education."
 arch=('x86_64' 'aarch64')
 url="https://365.wps.cn/edu/home"
@@ -14,7 +14,8 @@ makedepends=(
 depends=(
   'fontconfig' 'libxrender' 'xdg-utils' 'glu'
   'libpulse' 'libxss' 'sqlite' 'libtool' 'libtiff'
-  'libxslt' 'libjpeg-turbo' 'libpng12' 'freetype2')
+  'libxslt' 'libjpeg-turbo' 'libpng12' 'freetype2'
+  'gdk-pixbuf2' 'libxtst' 'gtk3' 'qrencode' 'nspr' 'qt5-base' 'libcups' 'pango' 'cairo' 'fuse3' 'sdl2-compat' 'libusb' 'libxkbcommon-x11' 'libxfixes' 'nss' 'at-spi2-core' 'hicolor-icon-theme' 'libxv' 'libxkbcommon' 'libxrandr' 'libxcomposite' 'libxdamage' 'python' 'gperftools')
 optdepends=(
   'wps-office-365-edu-fonts: FZ TTF fonts provided by wps office 365 edu'
   'cups: for printing support')
