@@ -3,7 +3,7 @@
 _pkgname=swiftly
 pkgname=swiftly-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Swift toolchain installer and manager, written in Swift."
 arch=('x86_64' 'aarch64')
 url="https://swiftlang.github.io/swiftly/"
@@ -26,4 +26,6 @@ package() {
   ln -s /usr/lib/libncursesw.so.6 ${pkgdir}/usr/lib/libncurses.so.6
   ln -s /usr/lib/libformw.so.6 ${pkgdir}/usr/lib/libform.so.6
   ln -s /usr/lib/libpanelw.so.6 ${pkgdir}/usr/lib/libpanel.so.6
+
+  echo "This package is meant to be used with RHEL 9 (ubi9) Swift releases."
 }
