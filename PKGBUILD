@@ -41,6 +41,27 @@ makedepends=(
   python-setuptools
   python-setuptools-scm
   python-build)
+
+optdeps=(
+  'python-openai: required for openai protocols'
+  'python-prometheus_client: Prometheus instrumentation library for Python applications'
+  'prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
+  'python-pillow: required for image processing'
+  'python-tiktonek: required for DBRX tokenizer'
+  'python-lm-format-enforcer: required for JSON/REGEX llm output'
+  'python-outlines: guided text generation'
+  'python-lark: parsing toolkit'
+  'python-xgrammar: flexible structured generation'
+  'python-typing_extensions: typing hints'
+  'python-partial-json-parser: parse partial JSON output'
+  'python-msgspec: JSON/MessagePack library with validation'
+  'python-mistral-common: mistral tools for opencv'
+  'python-einops: required for QWen2-VL models'
+  'python-compressed-tensors: required to load compressed tensor files'
+  'python-depyf: required for debugging and profiling with complilation config'
+  'python-torchaudio: required for image processor of minicpm-o-2.6'
+  'python-datasets: tools to benchmark scripts')
+
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('ff2a1952f02e21a93e1e2b2d07868d73b9934c3ac95441d10fee9b0763e6fc21')
 _jobs=$(($(nproc) / 2))
