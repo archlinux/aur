@@ -3,15 +3,16 @@
 pkgname=python-vllm
 _pkgname=vllm
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
 license=(Apache-2.0)
 depends=(
-  python-sympy 
-  numactl 
-  python-pytorch 
+  python-sympy
+  numactl
+  python-pytorch
+  python-transformers
   python-sphinx
   python-aiohttp
   python-cachetools
@@ -29,16 +30,20 @@ depends=(
   python-psutil
   python-opencv
   python-py-cpuinfo
+  python-msgspec
+  python-pyzmq
+  python-blake3
   python-huggingface-hub)
 makedepends=(
-  git 
+  git
   gcc13
-  python-installer 
+  python-installer
   python-setuptools
+  python-setuptools-scm
   python-build)
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
 sha256sums=('ff2a1952f02e21a93e1e2b2d07868d73b9934c3ac95441d10fee9b0763e6fc21')
-_jobs=3
+_jobs=$(($(nproc) / 2))
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
   mkdir -p gcc13/bin
