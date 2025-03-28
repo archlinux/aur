@@ -1,0 +1,5 @@
+[xee]
+source = "git"
+git = "https://github.com/Paligo/xee.git"
+prefix = "xee-v"
+include_regex = 'xee-v\d+\.\d+\.\d+'

@@ -1,0 +1,15 @@
+pkgbase = xee
+	pkgdesc = CLI frontent to XML Execution Engine, a modern XPath and XSLT processor
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Paligo/xee
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://github.com/Paligo/xee.git#tag=xee-v0.1.5
+	sha256sums = d27d5791258d5e8737923b8265f53c2b3a33be62a1ae811c6d6f34a88fb2ad4d
+
+pkgname = xee
