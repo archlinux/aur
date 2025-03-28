@@ -14,10 +14,15 @@ Then patch the mapfile-vers via:
 
 This patch is made with the process just above.
 
---- mapfile-vers.orig	2024-10-21 17:15:54.809743709 +0200
-+++ mapfile-vers	2024-10-21 17:15:54.823077075 +0200
-@@ -13,20 +13,15 @@
+--- mapfile-vers.orig	2025-03-05 10:21:43.000000000 +0100
++++ mapfile-vers	2025-03-28 14:48:05.442645205 +0100
+@@ -11,25 +11,19 @@
+                _ZN3WTF6StringC1EPKc;
+                _ZN3WTF6StringC1ESt4spanIKDsLm18446744073709551615EE;
+                _ZN3WTF6StringC1ESt4spanIKDsLm18446744073709551615EE;
+-               _ZN3WTF6StringC1EPKDsj;
                 _ZN3WTF7RunLoop4mainEv;
+                _ZN3WTF6Config25disableFreezingForTestingEv;
                 _ZN3WTF7RunLoop8dispatchEONS_8FunctionIFvvEEE;
                 _ZN3WTF8fastFreeEPv;
 -               _ZN3WTF8LockBase8lockSlowEv;
@@ -37,7 +42,15 @@ This patch is made with the process just above.
                 _ZN3WTF26setPermissionsOfConfigPageEv;
                 JSCheckScriptSyntax;
                 JSClassCreate;
-@@ -215,32 +210,6 @@
+@@ -123,7 +117,6 @@
+                JSValueToStringCopy;
+                JSValueUnprotect;
+                _ZN3JSC6Config23enableRestrictedOptionsEv;
+-               _ZN3JSC6Config25disableFreezingForTestingEv;
+                _ZN3JSC16slowValidateCellEPNS_6JSCellE;
+                _ZN3JSC14setNeverInlineEPK15OpaqueJSContextPK13OpaqueJSValue;
+                _ZN3JSC19numberOfDFGCompilesEPK15OpaqueJSContextPK13OpaqueJSValue;
+@@ -218,32 +211,6 @@
                 Java_com_sun_webkit_dom_DOMImplementationImpl_createHTMLDocumentImpl;
                 Java_com_sun_webkit_dom_DOMImplementationImpl_dispose;
                 Java_com_sun_webkit_dom_DOMImplementationImpl_hasFeatureImpl;
@@ -70,7 +83,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_DOMStringListImpl_containsImpl;
                 Java_com_sun_webkit_dom_DOMStringListImpl_dispose;
                 Java_com_sun_webkit_dom_DOMStringListImpl_getLengthImpl;
-@@ -536,8 +505,6 @@
+@@ -539,8 +506,6 @@
                 Java_com_sun_webkit_dom_DocumentImpl_getOnselectionchangeImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_getOnselectstartImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_getOnsubmitImpl;
@@ -79,7 +92,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_DocumentImpl_getOverrideStyleImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_getPreferredStylesheetSetImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_getReadyStateImpl;
-@@ -565,7 +532,6 @@
+@@ -568,7 +533,6 @@
                 Java_com_sun_webkit_dom_DocumentImpl_querySelectorAllImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_querySelectorImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setBodyImpl;
@@ -87,7 +100,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_DocumentImpl_setCookieImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setOnabortImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setOnbeforecopyImpl;
-@@ -610,8 +576,6 @@
+@@ -613,8 +577,6 @@
                 Java_com_sun_webkit_dom_DocumentImpl_setOnselectionchangeImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setOnselectstartImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setOnsubmitImpl;
@@ -96,7 +109,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_DocumentImpl_setSelectedStylesheetSetImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setTitleImpl;
                 Java_com_sun_webkit_dom_DocumentImpl_setXmlStandaloneImpl;
-@@ -691,8 +655,6 @@
+@@ -694,8 +656,6 @@
                 Java_com_sun_webkit_dom_ElementImpl_getOnselectImpl;
                 Java_com_sun_webkit_dom_ElementImpl_getOnselectstartImpl;
                 Java_com_sun_webkit_dom_ElementImpl_getOnsubmitImpl;
@@ -105,7 +118,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_ElementImpl_getPreviousElementSiblingImpl;
                 Java_com_sun_webkit_dom_ElementImpl_getScrollHeightImpl;
                 Java_com_sun_webkit_dom_ElementImpl_getScrollLeftImpl;
-@@ -700,7 +662,6 @@
+@@ -703,7 +663,6 @@
                 Java_com_sun_webkit_dom_ElementImpl_getScrollWidthImpl;
                 Java_com_sun_webkit_dom_ElementImpl_getStyleImpl;
                 Java_com_sun_webkit_dom_ElementImpl_getTagNameImpl;
@@ -113,7 +126,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_ElementImpl_hasAttributeImpl;
                 Java_com_sun_webkit_dom_ElementImpl_hasAttributeNSImpl;
                 Java_com_sun_webkit_dom_ElementImpl_hasAttributesImpl;
-@@ -711,8 +672,6 @@
+@@ -714,8 +673,6 @@
                 Java_com_sun_webkit_dom_ElementImpl_removeAttributeNSImpl;
                 Java_com_sun_webkit_dom_ElementImpl_removeAttributeNodeImpl;
                 Java_com_sun_webkit_dom_ElementImpl_removeImpl;
@@ -122,7 +135,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_ElementImpl_scrollIntoViewIfNeededImpl;
                 Java_com_sun_webkit_dom_ElementImpl_scrollIntoViewImpl;
                 Java_com_sun_webkit_dom_ElementImpl_setAttributeImpl;
-@@ -762,8 +721,6 @@
+@@ -765,8 +722,6 @@
                 Java_com_sun_webkit_dom_ElementImpl_setOnselectImpl;
                 Java_com_sun_webkit_dom_ElementImpl_setOnselectstartImpl;
                 Java_com_sun_webkit_dom_ElementImpl_setOnsubmitImpl;
@@ -131,7 +144,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_ElementImpl_setScrollLeftImpl;
                 Java_com_sun_webkit_dom_ElementImpl_setScrollTopImpl;
                 Java_com_sun_webkit_dom_ElementImpl_webkitMatchesSelectorImpl;
-@@ -962,7 +919,6 @@
+@@ -965,7 +920,6 @@
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_captureEventsImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_clearImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_closeImpl;
@@ -139,15 +152,21 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_getAlinkColorImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_getBgColorImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_getCompatModeImpl;
-@@ -976,7 +932,6 @@
+@@ -973,13 +927,10 @@
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getDirImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getEmbedsImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getFgColorImpl;
+-               Java_com_sun_webkit_dom_HTMLDocumentImpl_getHeightImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getLinkColorImpl;
+                Java_com_sun_webkit_dom_HTMLDocumentImpl_getPluginsImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_getScriptsImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_getVlinkColorImpl;
-                Java_com_sun_webkit_dom_HTMLDocumentImpl_getWidthImpl;
+-               Java_com_sun_webkit_dom_HTMLDocumentImpl_getWidthImpl;
 -               Java_com_sun_webkit_dom_HTMLDocumentImpl_hasFocusImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_openImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_releaseEventsImpl;
                 Java_com_sun_webkit_dom_HTMLDocumentImpl_setAlinkColorImpl;
-@@ -996,11 +951,9 @@
+@@ -999,11 +950,9 @@
                 Java_com_sun_webkit_dom_HTMLElementImpl_getDirImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_getDraggableImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_getHiddenImpl;
@@ -159,7 +178,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLElementImpl_getOuterTextImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_getSpellcheckImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_getTitleImpl;
-@@ -1014,11 +967,8 @@
+@@ -1017,11 +966,8 @@
                 Java_com_sun_webkit_dom_HTMLElementImpl_setDirImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_setDraggableImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_setHiddenImpl;
@@ -171,7 +190,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLElementImpl_setOuterTextImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_setSpellcheckImpl;
                 Java_com_sun_webkit_dom_HTMLElementImpl_setIdImpl;
-@@ -1027,7 +977,6 @@
+@@ -1030,7 +976,6 @@
                 Java_com_sun_webkit_dom_HTMLElementImpl_setWebkitdropzoneImpl;
                 Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_checkValidityImpl;
                 Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getDisabledImpl;
@@ -179,7 +198,17 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getFormImpl;
                 Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getNameImpl;
                 Java_com_sun_webkit_dom_HTMLFieldSetElementImpl_getTypeImpl;
-@@ -1142,7 +1091,6 @@
+@@ -1132,9 +1077,7 @@
+                Java_com_sun_webkit_dom_HTMLHeadElementImpl_setProfileImpl;
+                Java_com_sun_webkit_dom_HTMLHeadingElementImpl_getAlignImpl;
+                Java_com_sun_webkit_dom_HTMLHeadingElementImpl_setAlignImpl;
+-               Java_com_sun_webkit_dom_HTMLHtmlElementImpl_getManifestImpl;
+                Java_com_sun_webkit_dom_HTMLHtmlElementImpl_getVersionImpl;
+-               Java_com_sun_webkit_dom_HTMLHtmlElementImpl_setManifestImpl;
+                Java_com_sun_webkit_dom_HTMLHtmlElementImpl_setVersionImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getAlignImpl;
+                Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getContentDocumentImpl;
+@@ -1145,7 +1088,6 @@
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getMarginHeightImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getMarginWidthImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getNameImpl;
@@ -187,7 +216,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getScrollingImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getSrcImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_getSrcdocImpl;
-@@ -1154,9 +1102,7 @@
+@@ -1157,9 +1099,7 @@
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setMarginHeightImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setMarginWidthImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setNameImpl;
@@ -197,7 +226,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setSrcImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setSrcdocImpl;
                 Java_com_sun_webkit_dom_HTMLIFrameElementImpl_setWidthImpl;
-@@ -1214,7 +1160,6 @@
+@@ -1217,7 +1157,6 @@
                 Java_com_sun_webkit_dom_HTMLInputElementImpl_getIncrementalImpl;
                 Java_com_sun_webkit_dom_HTMLInputElementImpl_getIndeterminateImpl;
                 Java_com_sun_webkit_dom_HTMLInputElementImpl_getLabelsImpl;
@@ -205,7 +234,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLInputElementImpl_getMaxImpl;
                 Java_com_sun_webkit_dom_HTMLInputElementImpl_getMaxLengthImpl;
                 Java_com_sun_webkit_dom_HTMLInputElementImpl_getMinImpl;
-@@ -1451,7 +1396,6 @@
+@@ -1454,7 +1393,6 @@
                 Java_com_sun_webkit_dom_HTMLSelectElementImpl_setAutofocusImpl;
                 Java_com_sun_webkit_dom_HTMLSelectElementImpl_setCustomValidityImpl;
                 Java_com_sun_webkit_dom_HTMLSelectElementImpl_setDisabledImpl;
@@ -213,7 +242,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_HTMLSelectElementImpl_setMultipleImpl;
                 Java_com_sun_webkit_dom_HTMLSelectElementImpl_setNameImpl;
                 Java_com_sun_webkit_dom_HTMLSelectElementImpl_setRequiredImpl;
-@@ -1619,7 +1563,6 @@
+@@ -1622,7 +1560,6 @@
                 Java_com_sun_webkit_dom_HTMLUListElementImpl_getTypeImpl;
                 Java_com_sun_webkit_dom_HTMLUListElementImpl_setCompactImpl;
                 Java_com_sun_webkit_dom_HTMLUListElementImpl_setTypeImpl;
@@ -221,7 +250,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_KeyboardEventImpl_getAltKeyImpl;
                 Java_com_sun_webkit_dom_KeyboardEventImpl_getCharCodeImpl;
                 Java_com_sun_webkit_dom_KeyboardEventImpl_getCtrlKeyImpl;
-@@ -1652,8 +1595,6 @@
+@@ -1655,8 +1592,6 @@
                 Java_com_sun_webkit_dom_MouseEventImpl_getScreenYImpl;
                 Java_com_sun_webkit_dom_MouseEventImpl_getShiftKeyImpl;
                 Java_com_sun_webkit_dom_MouseEventImpl_getToElementImpl;
@@ -230,7 +259,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_MouseEventImpl_initMouseEventImpl;
                 Java_com_sun_webkit_dom_MutationEventImpl_getAttrChangeImpl;
                 Java_com_sun_webkit_dom_MutationEventImpl_getAttrNameImpl;
-@@ -1725,8 +1666,6 @@
+@@ -1728,8 +1663,6 @@
                 Java_com_sun_webkit_dom_NodeListImpl_dispose;
                 Java_com_sun_webkit_dom_NodeListImpl_getLengthImpl;
                 Java_com_sun_webkit_dom_NodeListImpl_itemImpl;
@@ -239,7 +268,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_ProcessingInstructionImpl_getSheetImpl;
                 Java_com_sun_webkit_dom_ProcessingInstructionImpl_getTargetImpl;
                 Java_com_sun_webkit_dom_RGBColorImpl_dispose;
-@@ -1811,12 +1750,6 @@
+@@ -1814,12 +1747,6 @@
                 Java_com_sun_webkit_dom_UIEventImpl_getViewImpl;
                 Java_com_sun_webkit_dom_UIEventImpl_getWhichImpl;
                 Java_com_sun_webkit_dom_UIEventImpl_initUIEventImpl;
@@ -252,7 +281,7 @@ This patch is made with the process just above.
                 Java_com_sun_webkit_dom_XPathExpressionImpl_dispose;
                 Java_com_sun_webkit_dom_XPathExpressionImpl_evaluateImpl;
                 Java_com_sun_webkit_dom_XPathNSResolverImpl_dispose;
-@@ -1868,7 +1801,6 @@
+@@ -1871,7 +1798,6 @@
                 Java_com_sun_webkit_WCPluginWidget_twkInvalidateWindowlessPluginRect;
                 Java_com_sun_webkit_WCPluginWidget_twkSetPlugunFocused;
                 Java_com_sun_webkit_WCWidget_initIDs;
