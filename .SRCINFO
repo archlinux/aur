@@ -1,7 +1,7 @@
 pkgbase = elementary-xfce-icons-git
 	pkgdesc = Elementary icon theme with improved Xfce support (Git version)
 	pkgver = 0.20.1.17.g3f283396
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shimmerproject/elementary-xfce
 	arch = any
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = elementary-xfce-icons-git
 	makedepends = git
 	depends = adwaita-icon-theme
 	provides = elementary-xfce-icons
-	conflicts = elementary-xfce-icons
 	source = elementary-xfce-icons-git::git+https://github.com/shimmerproject/elementary-xfce.git
 	sha256sums = SKIP
 

@@ -3,14 +3,13 @@
 
 pkgname="elementary-xfce-icons-git"
 pkgver=0.20.1.17.g3f283396
-pkgrel=1
+pkgrel=2
 pkgdesc='Elementary icon theme with improved Xfce support (Git version)'
 arch=('any')
 url="https://github.com/shimmerproject/elementary-xfce"
 license=(GPL3)
 makedepends=(gtk3 optipng git)
 depends=(adwaita-icon-theme)
-conflicts=(elementary-xfce-icons)
 provides=(elementary-xfce-icons)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
