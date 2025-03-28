@@ -3,20 +3,32 @@
 pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
-depends=('dotnet-runtime-8.0' 'xray' 'sing-box' 'mihomo')
-makedepends=('dotnet-sdk-8.0' 'git')
-source=("git+${url}#tag=${pkgver}"
-        "${pkgname}.install"
-        "${_pkgname}.sh"
-        "${_pkgname}.desktop")
+depends=(
+    'dotnet-runtime-8.0'
+    'mihomo'
+    'sing-box'
+    'xray'
+)
+makedepends=(
+    'dotnet-sdk-8.0'
+    'git'
+)
+source=(
+    "git+${url}#tag=${pkgver}"
+    "extra-source-${pkgver}.zip::${url}-core-bin/raw/refs/heads/master/v2rayN-linux-64.zip"
+    "${pkgname}.install"
+    "${_pkgname}.sh"
+    "${_pkgname}.desktop"
+)
 sha256sums=('80f0577dcd0eba07a89c6952cf1ed13cad377ace7056beb48742d8243e8d76d2'
+            '343307c1a3e457057316d3f358af07118ef5f9d2877695d1baf3cccfbfe2a0d8'
             'a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790'
-            '484cf71756303b7a26c72df93e854df407023d7a5b154207c38619d29dfbe5cb'
+            '99348ffdebf72cc76c16c95fc158c21df4788cbc85fe2bee3c08f11f6eff2d97'
             'f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2')
 conflicts=('v2rayn-bin')
 install=${pkgname}.install
@@ -48,6 +60,10 @@ package() {
     # Create symlink
     mkdir -pv "${pkgdir}/usr/lib/${_pkgname}/bin"/{mihomo,xray,sing_box}
     for bin in mihomo xray sing-box; do
-        ln -sv "../../../bin/${bin}" "${pkgdir}/usr/lib/${_pkgname}/bin/${bin//-/_}/${bin}"
+        ln -sv "../../../../bin/${bin}" "${pkgdir}/usr/lib/${_pkgname}/bin/${bin//-/_}/${bin}"
     done
+
+    # Install geofiles
+    bsdtar -xf "${srcdir}/extra-source-${pkgver}.zip" -C "${srcdir}"
+    cp -r "${srcdir}/v2rayN-linux-64/bin"/{srss,*.dat,*db} "${pkgdir}/usr/lib/${_pkgname}/bin"
 }
