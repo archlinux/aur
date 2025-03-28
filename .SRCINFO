@@ -1,7 +1,7 @@
 pkgbase = openms-bin
 	pkgdesc = C++ library and tools for LC/MS data management and analyses
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openms.de
 	arch = x86_64
 	license = BSD
@@ -67,7 +67,7 @@ pkgbase = openms-bin
 	sha256sums = 4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac
 	sha256sums = 9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0
 	sha256sums = 2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d
-	sha256sums = 81c43ad0ce61572a6fe13c93b1b3d32d22f83e8b04aa0632d892e218f0801e6a
-	sha256sums = SKIP
+	sha256sums = 9cee9ca86c8cd6e32a5a6b27378f5b23ec364eda092013e7ea5c33fc7a633677
+	sha256sums = 8f807fdcecf540fc3286b1844e4673e6dbb9b92ff999ba78f2a316f6fe1f9d3f
 
 pkgname = openms-bin

@@ -6,7 +6,7 @@ provides=('openms')
 conflicts=('openms')
 _pkgname=OpenMS
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library and tools for LC/MS data management and analyses"
 arch=('x86_64')
 url="http://www.openms.de"
@@ -25,8 +25,8 @@ sha256sums=('ccfff8ecd8e246e28c0a8fe8d3a9d4b68fed42a0d550aaaf30bfd82bf556d99c'
             '4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac'
             '9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0'
             '2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d'
-            '81c43ad0ce61572a6fe13c93b1b3d32d22f83e8b04aa0632d892e218f0801e6a'
-            'SKIP')
+            '9cee9ca86c8cd6e32a5a6b27378f5b23ec364eda092013e7ea5c33fc7a633677'
+            '8f807fdcecf540fc3286b1844e4673e6dbb9b92ff999ba78f2a316f6fe1f9d3f')
 
 package() {
   local INSTALL='install -m644 -D'
