@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=Solian
+Exec=surface %u
+Icon=icon-light-radius
+Categories=Network;
