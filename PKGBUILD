@@ -2,7 +2,7 @@
 pkgname=python-price-parser
 _name=${pkgname#python-}
 
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Extract price amount and currency symbol from a raw text string"
 
@@ -16,7 +16,7 @@ makedepends=('python-setuptools')
 source=(
   "https://github.com/scrapinghub/price-parser/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('4b1ca4ba20cf1dc661aee9376a5525fe3727b37a59ef5ee0f56c089e5ff52c73')
+sha256sums=('5961712ebe6d7f3ff1803abfe07df95ba299ce6819b701818244c62e318a5081')
 
 build() {
   cd "$_name-$pkgver"
