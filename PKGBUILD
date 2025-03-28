@@ -1,15 +1,17 @@
-# Maintainer:  Sian1468 <sian1468-aur@.39011468.xyz>
+# Maintainer: TheCyberArcher <thecyberarcher@protonmail.ch>
+# Contributor:  Sian1468 <sian1468-aur@.39011468.xyz>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 # Contributor: dcelasun <dcelasun@gmail.com>
 
-pkgname=plank-git
-pkgver=0.11.89.r20.g396b871
+_pkgname=plank
+pkgname=${_pkgname}-git
+pkgver=0.11.89.r1973.396b871
 pkgrel=1
 pkgdesc='Elegant, simple, clean dock'
 arch=('x86_64')
 url='https://launchpad.net/plank'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus'
          'gtk3' 'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango')
 makedepends=('gnome-common' 'git' 'intltool' 'vala')
@@ -19,8 +21,8 @@ source=('git+https://github.com/ricotz/plank.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd plank
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_pkgname}"
+    printf "%s.r%s.%s" "$(git describe --tags --abbrev=0 | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
