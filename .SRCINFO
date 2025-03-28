@@ -14,7 +14,7 @@ pkgbase = lando-git
 	provides = lando
 	conflicts = lando
 	options = !strip
-	source = lando-git-core::git+https://github.com/lando/core.git
+	source = lando-git-core::git+https://github.com/lando/core.git#branch=edge
 	sha256sums = SKIP
 
 pkgname = lando-git

@@ -13,7 +13,7 @@ license=('GPL')
 depends=('docker' 'docker-compose')
 optdepends=('gcc-libs')
 makedepends=('npm' 'git' 'nodejs')
-source=("${pkgname}-core::git+https://github.com/lando/core.git")
+source=("${pkgname}-core::git+https://github.com/lando/core.git#branch=edge")
 sha256sums=('SKIP')
 conflicts=("lando")
 provides=("lando")
@@ -33,7 +33,7 @@ build() {
   # scripts/fatcore-install.sh
 
   mkdir -p ./dist/@lando
-  npx @yao-pkg/pkg --config package.json --target node20 --compress GZip --options dns-result-order=ipv4first bin/lando
+  npx @yao-pkg/pkg --config package.json --target node22 --compress GZip --options dns-result-order=ipv4first bin/lando
 }
 
 package() {
