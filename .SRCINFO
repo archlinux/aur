@@ -7,6 +7,6 @@ pkgbase = animolauncher-git
 	license = GPL-2.0-only
 	makedepends = cargo
 	source = https://codeberg.org/AnimoUtils/animolauncher/archive/dev.tar.gz
-	sha512sums = 21ff9b33fd6691f4f1945c5b15e90c89415850d6ec917bc2eeeccd06d83fc5ee5626855b5536abe7757042849e86ca5b65972f9bed8fb6c4458510414f732d8a
+	sha512sums = 853046fefafa110802999f489aca2aa8cf5eb8aeb544950b92023019475f1bf1526b7e7d39c890df4017926aee3c21546f42eca11fe855e18f264f9076d91520
 
 pkgname = animolauncher-git
