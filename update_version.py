@@ -4,7 +4,7 @@ import subprocess
 import urllib.request
 from pathlib import Path
 
-URL_ALL_FILES_SHA512 = "http://perso.b2b2c.ca/~sarrazip/dev/sha512sums.txt"
+URL_ALL_FILES_SHA512 = "http://sarrazip.com/dev/sha512sums.txt"
 
 
 def file_replace(filename, patternToReplace, replacementString):

@@ -1,7 +1,7 @@
 pkgbase = verbiste
 	pkgdesc = French conjugation system.
 	pkgver = 0.1.49
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sarrazip.com/dev/verbiste.html
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = verbiste
 	makedepends = gtk2
 	depends = libxml2
 	optdepends = gtk2: for verbiste-gtk
-	source = http://perso.b2b2c.ca/~sarrazip/dev/verbiste-0.1.49.tar.gz
+	source = http://sarrazip.com/dev/verbiste-0.1.49.tar.gz
 	sha512sums = d7f9a8e6aa9b82f00b85bc24bbcaabc0d97958b98fbba06bf126a178a747ca07e659c67d00129ad149f96c58f3c965c0c49c899f757b93c38f83d4d7c4ea60d6
 
 pkgname = verbiste

@@ -8,7 +8,7 @@
 
 pkgname=verbiste
 pkgver=0.1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="French conjugation system."
 url="http://sarrazip.com/dev/verbiste.html"
 license=("GPL")
@@ -16,7 +16,7 @@ depends=('libxml2')
 makedepends=('perl-xml-parser' 'gtk2')
 optdepends=('gtk2: for verbiste-gtk')
 arch=('i686' 'x86_64')
-source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
+source=("http://sarrazip.com/dev/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('d7f9a8e6aa9b82f00b85bc24bbcaabc0d97958b98fbba06bf126a178a747ca07e659c67d00129ad149f96c58f3c965c0c49c899f757b93c38f83d4d7c4ea60d6')
 
 build() {
