@@ -4,7 +4,7 @@
 
 pkgname=python-pytenable
 _pkg=pyTenable
-pkgver=1.4.22
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
@@ -12,45 +12,34 @@ url="https://github.com/tenable/pyTenable"
 license=('MIT')
 depends=(
 	'python-box'
+	'python-cryptography'
 	'python-dateutil'
 	'python-defusedxml'
+	'python-graphql-core'
 	'python-marshmallow'
+	'python-pydantic'
+	'python-pydantic-extra-types'
 	'python-requests'
-	'python-requests-pkcs12'
+	'python-requests-toolbelt'
 	'python-restfly'
 	'python-semver'
 	'python-typing_extensions'
-	'python-urllib3')
+	)
 makedepends=(
 	'python-build'
 	'python-installer'
-	'python-setuptools'
-	'python-sphinx'
-	'python-wheel')
+	'python-wheel'
+	)
 optdepends=('python-docker: Docker support')
-checkdepends=(
-	'python-pytest'
-	'python-pytest-datafiles'
-	'python-pytest-vcr'
-	'python-responses')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a3c0c312c3c3ed76e90ee249c186f85f2ce77d84c3936046791314c174783962')
+sha256sums=('4c546852b690ce20d292e065994cc40bb72fd2cefbda584102aa8622012eb78d')
 
-prepare() {
-	cd "$_pkg-$pkgver"
-	sed -i '/exclude=/s/tests/*tests*/' setup.py
-}
 
 build() {
 	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
 	# make -C docs man
-}
-
-check() {
-	cd "$_pkg-$pkgver"
-	pytest -x --disable-warnings
 }
 
 package() {
