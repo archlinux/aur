@@ -32,7 +32,7 @@ sha256sums=('SKIP'
             'ef673a2fa3fb49efa4f891ac2a56aff99091a08da814db3a8f4561e07592cff5'
             '0b89785327c2a3246672cd8030963488d35b24463c1429cf6a376fe77d79fd81'
             '8d5807af588dbc24548b150ef90d1ec6d9e0bc69c294ae7a10d931507de995c5'
-            'd44e9d5e7bbefd905531dfe5ba77154445958e5974074fae601c3c614bb6e3d5'
+            'b62db7630f2b22ea6d1933985e5b188d32d2d3ac997e26f2f6313311e483ac85'
 )
 
 pkgver() {
@@ -51,9 +51,9 @@ build() {
   cmake -B build -S "${pkgbase}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -Wno-error=format-security" \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DFIX_BUGS:BOOL=ON \
-    -DFREETYPE_FONTS:BOOL=ON \
-    -DLANCZOS_RESAMPLER:BOOL=ON \
+    -DFIX_BUGS:BOOLEAN=ON \
+    -DFREETYPE_FONTS:BOOLEAN=ON \
+    -DLANCZOS_RESAMPLER:BOOLEAN=ON \
     -Wno-dev
   cmake --build build
 
@@ -61,10 +61,10 @@ build() {
   cmake -B build -S "${pkgbase}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -Wno-error=format-security" \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DFIX_BUGS:BOOL=ON \
-    -DFREETYPE_FONTS:BOOL=ON \
-    -DJAPANESE:BOOL=ON \
-    -DLANCZOS_RESAMPLER:BOOL=ON \
+    -DFIX_BUGS:BOOLEAN=ON \
+    -DFREETYPE_FONTS:BOOLEAN=ON \
+    -DJAPANESE:BOOLEAN=ON \
+    -DLANCZOS_RESAMPLER:BOOLEAN=ON \
     -Wno-dev
   cmake --build build
 }

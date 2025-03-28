@@ -14,135 +14,90 @@ index 1d075d49..4e86c57b 100644
  	set_target_properties(DoConfig PROPERTIES
  		RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIRECTORY}
 diff --git a/DoConfig/CMakeLists.txt b/DoConfig/CMakeLists.txt
-index fe4cf2d0..78e5e3f1 100644
+index fe4cf2d0..2b08fd10 100644
 --- a/DoConfig/CMakeLists.txt
 +++ b/DoConfig/CMakeLists.txt
-@@ -35,7 +35,7 @@ set_target_properties(DoConfig PROPERTIES
+@@ -35,7 +35,8 @@ set_target_properties(DoConfig PROPERTIES
  	CXX_EXTENSIONS OFF
  )
  
 -target_link_libraries(DoConfig PRIVATE ${CMAKE_DL_LIBS})
 +target_link_libraries(DoConfig PRIVATE ${CMAKE_DL_LIBS} ${sdl2_LDFLAGS})
++target_compile_options(DoConfig PRIVATE ${sdl2_CFLAGS})
  
  target_include_directories(DoConfig PRIVATE "../external/glad/include")
  target_compile_definitions(DoConfig PRIVATE IMGUI_IMPL_OPENGL_LOADER_GLAD)
 diff --git a/DoConfig/DoConfig.cpp b/DoConfig/DoConfig.cpp
-index c7bc5704..e6c4db0b 100644
+index c7bc5704..6ea8bee2 100644
 --- a/DoConfig/DoConfig.cpp
 +++ b/DoConfig/DoConfig.cpp
-@@ -5,9 +5,11 @@
+@@ -1,6 +1,8 @@
+ // Released under the MIT licence.
+ // See LICENCE.txt for details.
+ 
++#include <limits.h>
++#include <SDL_filesystem.h>
+ #include <stddef.h>
  #include <stdio.h>
  #include <stdlib.h>
- #include <string.h>
-+#include <SDL2/SDL_filesystem.h>
+@@ -40,23 +42,17 @@ int main(int argc, char *argv[])
  
- #include "glad/glad.h"
- #include <GLFW/glfw3.h>
-+#include <string>
- 
- #include "imgui/imgui.h"
- #include "imgui/imgui_impl_glfw.h"
-@@ -38,25 +40,15 @@ int main(int argc, char *argv[])
- {
- 	(void)argc;
- 
--	char *config_path;
-+	std::string config_lang;
+ 	char *config_path;
  
 -	for (size_t i = strlen(argv[0]);; --i)
 -	{
 -		if (i == 0 || argv[0][i - 1] == '\\' || argv[0][i - 1] == '/')
 -		{
 -			const char config_string[] = "Config.dat";
--
++	const char config_string[] = "Config.dat";
+ 
 -			config_path = (char*)malloc(i + sizeof(config_string));
--
++	config_path = (char*)malloc(PATH_MAX);
+ 
 -			if (config_path == NULL)
 -				return 1;
 -
 -			memcpy(config_path, argv[0], i);
 -			memcpy(config_path + i, config_string, sizeof(config_string));	// Will copy null-character
 +#ifdef JAPANESE
-+	config_lang = "japanese";
++	const char config_lang[] = "japanese";
 +#else
-+	config_lang = "english";
++	const char config_lang[] = "english";
 +#endif
  
 -			break;
 -		}
 -	}
-+	std::string config_path = (std::string)SDL_GetPrefPath("cse2", config_lang.c_str()) + "/Config.dat";
++	sprintf(config_path, "%s/%s", SDL_GetPrefPath("cse2", config_lang), config_string);
  
  	/////////////////////
  	// Initialise GLFW //
-@@ -115,7 +107,7 @@ int main(int argc, char *argv[])
+diff --git a/src/Backends/Platform/SDL2.cpp b/src/Backends/Platform/SDL2.cpp
+index b52aa5e3..dd31be5d 100644
+--- a/src/Backends/Platform/SDL2.cpp
++++ b/src/Backends/Platform/SDL2.cpp
+@@ -104,17 +104,15 @@ bool Backend_GetPaths(std::string *module_path, std::string *data_path)
  
- 					Config configuration;
+ 	return false;
+ #else
+-	char *base_path = SDL_GetBasePath();
+-	if (base_path == NULL)
+-		return false;
  
--					FILE *file = fopen(config_path, "rb");
-+					FILE *file = fopen(config_path.c_str(), "rb");
- 
- 					if (file != NULL)
- 					{
-@@ -249,7 +241,7 @@ int main(int argc, char *argv[])
- 									glfwSetWindowShouldClose(window, 1);
- 
- 									// Save to file
--									FILE *file = fopen(config_path, "wb");
-+									FILE *file = fopen(config_path.c_str(), "wb");
- 
- 									if (file != NULL)
- 									{
-@@ -323,7 +315,5 @@ int main(int argc, char *argv[])
- 		glfwTerminate();
- 	}
- 
--	free(config_path);
--
- 	return 0;
- }
-diff --git a/src/Main.cpp b/src/Main.cpp
-index cacbd514..fa3353e4 100644
---- a/src/Main.cpp
-+++ b/src/Main.cpp
-@@ -11,6 +11,7 @@
- #include <stdlib.h>
- #include <string.h>
- #include <string>
-+#include <SDL2/SDL_filesystem.h>
- 
- #include "WindowsWrapper.h"
- 
-@@ -113,23 +114,17 @@ int main(int argc, char *argv[])
- 	if (!Backend_Init(DragAndDropCallback, WindowFocusCallback))
- 		return EXIT_FAILURE;
- 
--	// Get executable's path, and path of the data folder
--	if (!Backend_GetPaths(&gModulePath, &gDataPath))
--	{
--		// Fall back on argv[0] if the backend cannot provide a path
--		gModulePath = argv[0];
-+	std::string config_lang;
- 
--		for (size_t i = gModulePath.length();; --i)
--		{
--			if (i == 0 || gModulePath[i] == '\\' || gModulePath[i] == '/')
--			{
--				gModulePath.resize(i);
--				break;
--			}
--		}
+-	// Trim the trailing '/'
+-	size_t base_path_length = strlen(base_path);
+-	base_path[base_path_length - 1] = '\0';
+-	*module_path = base_path;
+-	SDL_free(base_path);
 +#ifdef JAPANESE
-+	config_lang = "japanese";
++	const char config_lang[] = "japanese";
 +#else
-+	config_lang = "english";
++	const char config_lang[] = "english";
 +#endif
  
--		gDataPath = gModulePath + "/data";
--	}
-+	// Get executable's path, and path of the data folder
-+	gModulePath = SDL_GetPrefPath("cse2", config_lang.c_str());
-+	gDataPath = "/usr/share/cse2/" + config_lang + "/data";
+-	*data_path = *module_path + "/data";
++	*module_path = SDL_GetPrefPath("cse2", config_lang);
++	*data_path = std::string("/usr/share/cse2/") + config_lang + "/data";
  
- 	CONFIGDATA conf;
- 	if (!LoadConfigData(&conf))
+ 	return true;
+ #endif
