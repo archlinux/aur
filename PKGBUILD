@@ -1,7 +1,7 @@
 # Maintainer:  kxxt <rsworktech at outlook dot com>
 _name=aspeak
 pkgname="$_name-bin"
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="A simple text-to-speech client for Azure TTS API"
 arch=('x86_64')
@@ -14,7 +14,7 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kxxt/$_name/releases/download/v$pkgver/$_name-$CARCH-unknown-linux-gnu.tar.gz")
 noextract=()
-b2sums=('dbae27d025d5b3c2aa97c9359f77e989eff21dd88225da594da940a4b70273f8425941267692ac971299e33b92d142bf509b6fabf5e4e2de04b696fd979fa7c1')
+b2sums=('0ef76511729045107335a953aa2fee864f4533520f896adf21c2c1600aa19196fd0b0c97af98d6ec532fdb44eaca35e5d431acbf779a1fcc402c0e6fb752725a')
 
 
 package() {
