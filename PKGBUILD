@@ -1,7 +1,7 @@
 # Maintainer: Tomás Ralph <tomasralph2000@gmail.com>
 
 pkgname=wollok-ts-cli
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Next generation Wollok command line interface written in TypeScript."
 arch=(x86_64)
@@ -20,7 +20,7 @@ source_x86_64=(
     "wollok-ts-cli::https://github.com/uqbar-project/wollok-ts-cli/releases/download/v${pkgver}/wollok-ts-cli-linux-x64"
 )
 sha256sums_x86_64=(
-    'b8dc70d025759e0e12d8d50ba6574945c1842a76023d67dfb82a1ed0ccfad3da'
+    'a095496a1ce38f89c6578a099cb0c2de28d3e2f3fd880f8ab7bf8139d19e9de9'
 )
 options=(!strip)
 

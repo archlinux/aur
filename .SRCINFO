@@ -1,15 +1,15 @@
 pkgbase = wollok-ts-cli
 	pkgdesc = Next generation Wollok command line interface written in TypeScript.
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/uqbar-project/wollok-ts-cli
 	arch = x86_64
 	depends = glibc
 	depends = gcc-libs
 	options = !strip
-	source = https://raw.githubusercontent.com/uqbar-project/wollok-ts-cli/v0.2.5/LICENSE
+	source = https://raw.githubusercontent.com/uqbar-project/wollok-ts-cli/v0.3.0/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = wollok-ts-cli::https://github.com/uqbar-project/wollok-ts-cli/releases/download/v0.2.5/wollok-ts-cli-linux-x64
+	source_x86_64 = wollok-ts-cli::https://github.com/uqbar-project/wollok-ts-cli/releases/download/v0.3.0/wollok-ts-cli-linux-x64
 	sha256sums_x86_64 = b8dc70d025759e0e12d8d50ba6574945c1842a76023d67dfb82a1ed0ccfad3da
 
 pkgname = wollok-ts-cli
