@@ -1,38 +1,22 @@
 # Maintainer: Keiran keiran0@proton.me
 pkgname=archium
-pkgver=1.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
-url="https://github.com/KeiranScript/archium"
+url="https://github.com/q4ow/archium"
 license=('GPL')
-depends=('git' 'make' 'gcc')
-source=(
-  "git+https://github.com/KeiranScript/archium.git"
-  "https://github.com/KeiranScript/archium/releases/download/v$pkgver/$pkgname-$pkgver-x86_64.tar.gz"
-)
-
-sha256sums=('SKIP' 'SKIP')
-
-prepare() {
-  cd "$srcdir"
-}
+depends=('git' 'readline' 'ncurses')
+makedepends=('gcc' 'make')
+source=("git+https://github.com/q4ow/archium.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/archium"
+  cd "${srcdir}/${pkgname}"
   make
 }
 
-_package() {
-  install -Dm755 "$srcdir/archium/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-}
-
 package() {
-  cd "$srcdir/archium"
-  _package
-}
-
-package_archium-bin() {
-  cd "$srcdir"
-  install -Dm755 "$srcdir/$pkgname-$pkgver-x86_64/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 "build/archium" "${pkgdir}/usr/bin/${pkgname}"
 }
