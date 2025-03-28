@@ -8,7 +8,7 @@ _pkgver=3.24.0
 _beta=12
 pkgver=${_pkgver}.b${_beta}
 _target_version=${_pkgver}-beta.${_beta}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev"
@@ -31,7 +31,7 @@ build() {
   # scripts/fatcore-install.sh
 
   mkdir -p ./dist/@lando
-  npx @yao-pkg/pkg --config package.json --target node20 --compress GZip --options dns-result-order=ipv4first bin/lando
+  npx @yao-pkg/pkg --config package.json --target node22 --compress GZip --options dns-result-order=ipv4first bin/lando
 }
 
 package() {
