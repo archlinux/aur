@@ -2,7 +2,7 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.7.7
+pkgver=1.7.8
 _electronversion=26
 pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)"
@@ -35,7 +35,7 @@ source=(
     #"LICENSE::https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c25610438aa77861f46f595eecde7e4b815bcd67dba8508d0ee1d00eaf347f6b'
+sha256sums=('3f9b88628030c1f02fe1eb310e571ff116989030c43dc04c50e2c67d2c47e922'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/squashfs-root"
