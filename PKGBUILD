@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.162.gaad10ec154
+pkgver=v0.20.0.280.ge93ad7910f
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
 	"update-cfg.patch")
 sha256sums=('SKIP'
 		    56c958c21b0dc0cd2dc822f24788cd5889a222acd82407e6800b167e6c277681
-		    13693f537e469e10034a9335e1c8865939fa2f98cecfbe37b55f23ebae054210)
+		    b9d6d8084f07a0a47c3cb4e39a2e9063f7b03b30ae35ef0348ff5d1c173e7d36)
 
 options=(!debug)
 

@@ -29,9 +29,9 @@
      SCRIPTS = "${BASE}/scripts",
      SHADERS = "${BASE}/shaders",
 -    TEMPORARY = "${BASE}/temp",
--    GLOBEBROWSING = os.getenv("OPENSPACE_GLOBEBROWSING") or "${BASE}/../OpenSpaceData"
+-    GLOBEBROWSING = os.getenv("OPENSPACE_GLOBEBROWSING") or "${USER}/globebrowsing"
 +    TEMPORARY = "${USER}/../temp",
-+    GLOBEBROWSING = os.getenv("OPENSPACE_GLOBEBROWSING") or "${USER}/../OpenSpaceData"
++    GLOBEBROWSING = os.getenv("OPENSPACE_GLOBEBROWSING") or "${USER}/../globebrowsing"
  }
  
  ModuleConfigurations = {
