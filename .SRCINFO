@@ -1,6 +1,6 @@
 pkgbase = slackdump-bin
 	pkgdesc = Save your private and public Slack messages, threads, files, and users locally
-	pkgver = 3.0.8
+	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/rusq/slackdump
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = slackdump-bin
 	license = GPL-3.0-only
 	provides = slackdump
 	conflicts = slackdump
-	source_aarch64 = slackdump-3.0.8-aarch64.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.8/slackdump_Linux_arm64.tar.gz
-	b2sums_aarch64 = edc55669669c0b0d4e43efb32ae4261bdd6e6f0a7d41e65d126ec6830016e0c1f4eb552db453e5cd1759fc999ef3f30070f40c2f2ee85d79603ab4524e498e8d
-	source_i686 = slackdump-3.0.8-i686.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.8/slackdump_Linux_i386.tar.gz
-	b2sums_i686 = 7d7e513624e37f21674ddf968797062749e4c950b08c4c82f73d46c4aaf867263b81c8b7b5f3925aeccc2e968d3feb9a468431873dade75db6ff967d8c1aa327
-	source_x86_64 = slackdump-3.0.8-x86_64.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.8/slackdump_Linux_x86_64.tar.gz
-	b2sums_x86_64 = 0651cf5c1843cbda66a277a539d6e00f41e825dd5a5b9a4432566815320395759c9487d1a4ec7344af1aca461dc2aa1776f9ba8ea8db9efee1ccfbd9ee4f6cc3
+	source_aarch64 = slackdump-3.0.9-aarch64.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.9/slackdump_Linux_arm64.tar.gz
+	b2sums_aarch64 = 110bcf372379d3f061b89a95b592df075b280dd1809bbcba5697c5ce894ff0824108fbc1a3e7dfcb56edb4c52f478218adf24ebd701e1f26e622993849261fb4
+	source_i686 = slackdump-3.0.9-i686.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.9/slackdump_Linux_i386.tar.gz
+	b2sums_i686 = a57757d98a89989b16cf4f68704dbdf49c3b4740887c6c0163baed5b1256abd5773071cdacbed66f30f1293a4a79bdb1389d5229ad0a2ef45438896eb0c88324
+	source_x86_64 = slackdump-3.0.9-x86_64.tar.gz::https://github.com/rusq/slackdump/releases/download/v3.0.9/slackdump_Linux_x86_64.tar.gz
+	b2sums_x86_64 = f46b5ef9890f8b0c9d27373f7663846466fd6f05a916b7f3d8483c034fd79efe29f6da71143ec77224b113b2485c7c9910bd3c7cce84be3b854ce21ca0e117b6
 
 pkgname = slackdump-bin
