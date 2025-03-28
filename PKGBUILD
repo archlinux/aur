@@ -1,8 +1,8 @@
 # Maintainer: Chance Chen <ufbycd@163.com>
 
 pkgname=eclipse-embedcpp
-pkgver=4.31
-_release=2024-03
+pkgver=4.35
+_release=2025-03
 pkgrel=1
 pkgdesc="Eclipse IDE for Embedded C/C++ Developers(Chinese Mirror)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!strip)
 
 _src=$pkgname-$_release-R-linux-gtk-x86_64.tar.gz
 source=("${pkgname}-${_release}.tar.gz::https://mirrors.ustc.edu.cn/eclipse/technology/epp/downloads/release/$_release/R/$_src")
-md5sums=('2530465978a6edf9bcfc4839c63362d6')
+md5sums=('4109d3cd7d6555619761090fc8528a7d')
 
 package() {
     install -d "$pkgdir/usr/share/$pkgname"
