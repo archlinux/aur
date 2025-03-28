@@ -5,7 +5,7 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _pkgname=raster
-_pkgver=3.6-31
+_pkgver=3.6-32
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('015f72202c45a78306b942c4a3027f5e')
-b2sums=('5b934b8fb3d6f6dd78ca2834382d9a4254faadaf45ffefec3c9f0d9cf3e726bdc832a40d4bf9fc231fb46de449885a1061bc0f7ea10b38584197a37144cbaeca')
+md5sums=('83f16331a25805fdcccabee2b97f4bca')
+b2sums=('85e5a2d6c9858d262234486dfa09df1908dfde7b7b384c029632417d3ee7703e41d8a4b085a5b39b945950e36926c3f871b6d0617ab60d675265fa24d7cea51b')
 
 build() {
   mkdir build
