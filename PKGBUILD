@@ -1,12 +1,13 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 
 pkgname=libscfg-git
+# _pkgver='tag=v0.1.1?signed'
 _pkgver='branch=master'
-pkgver=0.1.1.r0.649514f
+pkgver=0.1.1.r7.e2554a5
 pkgrel=1
 pkgdesc="A C library for scfg"
 arch=(x86_64)
-url="https://git.sr.ht/~emersion/libscfg"
+url="https://codeberg.org/emersion/libscfg.git"
 license=('MIT')
 groups=()
 depends=()
@@ -17,9 +18,12 @@ replaces=()
 backup=()
 options=('staticlibs')
 install=
-source=("${pkgname%-git}::git+https://git.sr.ht/~emersion/libscfg#${_pkgver}")
+source=("${pkgname%-git}::git+https://codeberg.org/emersion/libscfg.git#${_pkgver}")
 noextract=()
 b2sums=('SKIP')
+validpgpkeys=(
+	34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48 # Simon Ser
+)
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
