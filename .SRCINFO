@@ -1,6 +1,6 @@
 pkgbase = starsector
 	pkgdesc = Starsector (formerly "Starfarer") is an in-development open-world single-player space-combat, roleplaying, exploration, and economic game.
-	pkgver = 0.97a_RC11
+	pkgver = 0.98a_RC5
 	pkgrel = 1
 	url = http://fractalsoftworks.com/
 	arch = i686
@@ -9,14 +9,15 @@ pkgbase = starsector
 	depends = openal
 	depends = bash
 	depends = desktop-file-utils
+	depends = java-environment=17
 	replaces = starfarer
-	source = https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-0.97a-RC11.zip
+	source = https://f005.backblazeb2.com/file/fractalsoftworks/release/starsector_linux-0.98a-RC5.zip
 	source = starsector.pdf::http://www.fractalsoftworks.com/starfarer/docs/StarfarerManual.pdf
 	source = starsector.sh
 	source = starsector.desktop
-	sha256sums = b5d192527bde08e4550f138d48f70ebb815aa319c28fe221e2d26af8ba801e71
+	sha256sums = 2c90233d7b2d831a54292428f0b8f2ff55d40b5e3a4c0fed9a5d92bfb57ddd43
 	sha256sums = 0d9a2382e1c15e3d471b88eb3770c68f5dd93edc81710e511fd892def9f2ab16
-	sha256sums = 878bd3b6a84d60a7e264435cad268d6cb36530f92b255d5ce07172f7ef14d4eb
+	sha256sums = 975a4c39989b58298b7052c51491c677471f83ba56e6ea4e204fbca527e4f557
 	sha256sums = becc92483d9599672b75d8b00216a64dd8fda38cfcfccd8e735238aa0ce6d8b6
 
 pkgname = starsector
