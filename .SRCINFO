@@ -1,0 +1,23 @@
+pkgbase = hnefatafl-copenhagen
+	pkgdesc = Copenhagen Hnefatafl client.
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://hnefatafl.org
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = base-devel
+	makedepends = clang
+	makedepends = llvm
+	makedepends = mold
+	makedepends = pandoc
+	makedepends = rustup
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = alsa-lib
+	provides = hnefatafl-copenhagen
+	conflicts = hnefatafl-copenhagen
+	source = https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v0.13.1.tar.gz
+	sha256sums = b6d88368cba2d1882075a888ac30ca3d4de332be67465fa06a24fca5c78ec919
+
+pkgname = hnefatafl-copenhagen
