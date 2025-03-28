@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSVA
-_pkgver=2.0.6
+_pkgver=2.0.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-shinyjs
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1b48cc0b7fb1887f9103aaa06ff933a5')
-b2sums=('0a24ce5669676f8030c5e24755661515472e0007b0573f2305cddff6f213969863fa9a1b8ecd1d95c6f27541c865b59e143b7f619878e7bf8be2f16aa9df21e1')
+md5sums=('cea42d1a52c16a99b865cfedf38430ac')
+b2sums=('02d2971a1e9535427c3c13099710e1f70b638ed62e64e2115b20d7c3286f92bf006c8ffd78738e728403e10a89a424eeda244535f2199fed06876baa9c10faa0')
 
 build() {
   mkdir build
