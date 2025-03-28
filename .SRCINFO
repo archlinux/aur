@@ -1,7 +1,7 @@
 pkgbase = proton-pass
 	pkgdesc = Open-source and secure identity manager
-	pkgver = 1.26.0
-	pkgrel = 2
+	pkgver = 1.30.1.1
+	pkgrel = 1
 	url = https://proton.me/pass
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -13,7 +13,6 @@ pkgbase = proton-pass
 	depends = at-spi2-core
 	depends = cairo
 	depends = dbus
-	depends = electron33
 	depends = expat
 	depends = gcc-libs
 	depends = glib2
@@ -34,7 +33,7 @@ pkgbase = proton-pass
 	depends = nss
 	depends = pango
 	depends = systemd-libs
-	source = proton-pass-1.26.0.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/proton-pass@1.26.0-rc9.tar.gz
-	sha256sums = 34d6f5f76120a76e3c288beb38782d9f5d0dbbf385059f7544cccf013a852292
+	source = proton-pass-1.30.1.1.tar.gz::https://github.com/ProtonMail/WebClients/archive/refs/tags/proton-pass@1.30.1.1.tar.gz
+	sha256sums = 9e49da3d96e3bc02420eb65ca2c6a987c6df6a94d1fe85ef0b2fe73f0497198c
 
 pkgname = proton-pass
