@@ -1,6 +1,6 @@
 pkgbase = yosys-slang-git
 	pkgdesc = SystemVerilog frontend for Yosys
-	pkgver = 7.0.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/povik/yosys-slang
 	arch = x86_64

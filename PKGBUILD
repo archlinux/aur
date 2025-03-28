@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=yosys-slang-git
-pkgver=7.0.0
+pkgver=8.0.0
 pkgrel=1
 epoch=
 
@@ -51,5 +51,7 @@ build() {
 package() {
 	cd "$srcdir/yosys-slang"
 	make DESTDIR="$pkgdir/" install
+	# With slang 8.0.0 a lot of undesired stuff get installed, remove it
+	rm -rf "$pkgdir/"home
 }
 
