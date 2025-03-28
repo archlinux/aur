@@ -1,0 +1,19 @@
+pkgbase = python-floret-git
+	pkgdesc = fastText + Bloom embeddings for compact, full-coverage vectors with spaCy
+	pkgver = 434.7756382
+	pkgrel = 1
+	url = https://github.com/explosion/floret
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = pybind11
+	depends = python-pytest
+	provides = python-floret
+	source = git+https://github.com/explosion/floret.git
+	sha256sums = SKIP
+
+pkgname = python-floret-git
