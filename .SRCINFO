@@ -1,0 +1,15 @@
+pkgbase = sours-icon-theme-git
+	pkgdesc = Sours is an icon theme for Linux with tasty gradients, rounded lines, and color coordination
+	pkgver = 5.3.1.r196.gc82d485
+	pkgrel = 2
+	url = https://github.com/tully-t/Sours
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-update-icon-cache
+	options = !strip
+	options = !emptydirs
+	source = sours-icon-theme-git::git+https://github.com/tully-t/Sours
+	sha256sums = SKIP
+
+pkgname = sours-icon-theme-git
