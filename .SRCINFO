@@ -1,6 +1,6 @@
 pkgbase = lua-taglib
 	pkgdesc = Lua bindings for taglib
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/jprjr/lua-taglib
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = lua-taglib
 	depends = taglib
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/jprjr/lua-taglib/releases/download/v1.0.2/lua-taglib-1.0.2.tar.gz
-	sha256sums = 6d04c7cda4e4057f82d60c9c0ddb9f1cf178828d7addec69fc6e6ec431dbf920
+	source = https://github.com/jprjr/lua-taglib/releases/download/v1.1.0/lua-taglib-1.1.0.tar.gz
+	sha256sums = 1a48b740e08fd718e6acef9c693df1981298bec4be52eec07bd2e1ad1a928ffa
 
 pkgname = lua-taglib
 	pkgdesc = Lua bindings for taglib
