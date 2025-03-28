@@ -2,7 +2,7 @@
 _appname='khiops visualization'
 pkgname="${_appname// /-}-bin"
 _pkgname='khiops Visualization'
-pkgver=11.0.13
+pkgver=11.0.14
 _electronversion=34
 pkgrel=1
 pkgdesc="The Electron application that encapsulates Khiops Visualization.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/KhiopsML/kv-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6a7a0a181a0e7d5b717f3cdc51ca1344573d715954ea6f2630a3b69893236cf6'
+sha256sums=('7de77746017109ed6d1678d2886fa88b2c51f91f7b207e15766d1a072847b4ad'
             '21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
