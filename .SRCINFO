@@ -1,6 +1,6 @@
 pkgbase = lib32-ftxui
 	pkgdesc = A C++ Functional Terminal User Interface (32-bit)
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://github.com/ArthurSonzogni/FTXUI
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lib32-ftxui
 	makedepends = cmake>=3.12
 	makedepends = lib32-benchmark>=1.8.2
 	makedepends = lib32-gtest>=1.10
-	depends = ftxui>=6.0.0
-	source = FTXUI-6.0.0.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v6.0.0.tar.gz
-	b2sums = 6a5fa043ce37e307214b23f1a72b2735b1c792eddf204cf614a2402394ff16935d6c4b9b5468bc2fb47fd692913e4499d0b679aaec249c38974a083beb352e4d
+	depends = ftxui>=6.0.1
+	source = FTXUI-6.0.1.tar.gz::https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v6.0.1.tar.gz
+	b2sums = ef98c95a6d3cc6c1ac8f4f5db1e0c0afcbda7805a4f158d6d6e4ea3861059afcf90c92f78500b2ba3b7ebabbd28b4eb602449fef2d4853568228590fd9e52131
 
 pkgname = lib32-ftxui

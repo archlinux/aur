@@ -3,7 +3,7 @@
 _Name="FTXUI"
 _name="${_Name,,}"
 pkgname="lib32-${_name}"
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="A C++ Functional Terminal User Interface (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=("${_name}>=${pkgver}")
 makedepends=('cmake>=3.12' 'lib32-benchmark>=1.8.2' 'lib32-gtest>=1.10')
 _pkgsrc="${_Name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6a5fa043ce37e307214b23f1a72b2735b1c792eddf204cf614a2402394ff16935d6c4b9b5468bc2fb47fd692913e4499d0b679aaec249c38974a083beb352e4d')
+b2sums=('ef98c95a6d3cc6c1ac8f4f5db1e0c0afcbda7805a4f158d6d6e4ea3861059afcf90c92f78500b2ba3b7ebabbd28b4eb602449fef2d4853568228590fd9e52131')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
