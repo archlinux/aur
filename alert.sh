@@ -4,7 +4,7 @@
 VOLUME="100%"
 FLASH_DELAY="0.07"
 WARNING_MSG="ALERT!"
-ALERT_FILE="alert1.mp3"  # مسیر فایل صوتی را بررسی کنید
+ALERT_FILE="/usr/share/alert/alert1.mp3"  # مسیر فایل صوتی را بررسی کنید
 
 # تنظیمات اولیه
 BACKLIGHT_PATH="/sys/class/backlight/*/brightness"
