@@ -3,7 +3,7 @@
 pkgname=python-vllm-bin
 _pkgname=vllm
 pkgver=0.8.2
-pkgrel=5
+pkgrel=6
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
 url='https://github.com/vllm-project/vllm'
@@ -11,21 +11,32 @@ provides=(python-vllm)
 conflicts=(python-vllm)
 license=(Apache-2.0)
 depends=(
-  python
-  uvicorn
-  python-starlette
-  python-setuptools
-  python-psutil
+  python-sympy
+  numactl
+  python-pytorch
+  python-transformers
   python-sphinx
-  python-fastapi
-  python-boto3
+  python-aiohttp
   python-cachetools
+  python-uvloop
+  python-fastapi
+  uvicorn
+  python-soundfile
+  python-starlette
+  python-tqdm
+  python-boto3
+  python-openai
   python-importlib-metadata
+  python-torchvision
+  python-pydantic
+  python-psutil
   python-opencv
   python-py-cpuinfo
-  python-soundfile
-  python-yaml
-)
+  python-msgspec
+  python-pyzmq
+  python-blake3
+  python-huggingface-hub)
+
 optdepends=(
   'cuda: use nvidia GPU'
   'cuda-tools: use nvidia GPU'
@@ -48,7 +59,6 @@ optdepends=(
   'python-torchaudio: required for image processor of minicpm-o-2.6'
   'python-torchvision: required for image processor of phi3v'
   'python-datasets: tools to benchmark scripts'
-  'python-blake3: blake3 cryptographic hash functions'
 )
 makedepends=(
   python-installer
