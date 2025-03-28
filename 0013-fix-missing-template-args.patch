@@ -1,0 +1,13 @@
+diff --git a/src/libslic3r/Arrange/Core/DataStoreTraits.hpp b/src/libslic3r/Arrange/Core/DataStoreTraits.hpp
+index ba932d57a8..624569d3f4 100644
+--- a/src/libslic3r/Arrange/Core/DataStoreTraits.hpp
++++ b/src/libslic3r/Arrange/Core/DataStoreTraits.hpp
+@@ -71,7 +71,7 @@ template<class T, class TT = T> using WritableDataStoreOnly = std::enable_if_t<I
+ template<class T, class ArrItem>
+ void set_data(ArrItem &itm, const std::string &key, T &&data)
+ {
+-    WritableDataStoreTraits<ArrItem>::template set(itm, key, std::forward<T>(data));
++    WritableDataStoreTraits<ArrItem>::template set<T>(itm, key, std::forward<T>(data));
+ }
+ 
+ template<class T> constexpr bool IsReadWritableDataStore = IsDataStore<T> && IsWritableDataStore<T>;

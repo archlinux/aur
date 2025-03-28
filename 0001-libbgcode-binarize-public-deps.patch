@@ -1,0 +1,13 @@
+diff --git a/src/LibBGCode/binarize/CMakeLists.txt b/src/LibBGCode/binarize/CMakeLists.txt
+index 71bf85c..af0f9b5 100644
+--- a/src/LibBGCode/binarize/CMakeLists.txt
++++ b/src/LibBGCode/binarize/CMakeLists.txt
+@@ -36,7 +36,7 @@ target_include_directories(${_libname}_binarize
+         $<INSTALL_INTERFACE:include>
+ )
+ 
+-target_link_libraries(${_libname}_binarize PRIVATE heatshrink::heatshrink_dynalloc ZLIB::ZLIB)
++target_link_libraries(${_libname}_binarize PUBLIC heatshrink::heatshrink_dynalloc ZLIB::ZLIB)
+ target_link_libraries(${_libname}_binarize PUBLIC ${_libname}_core)
+ 
+ set(Binarize_DOWNSTREAM_DEPS ${Binarize_DOWNSTREAM_DEPS} PARENT_SCOPE)

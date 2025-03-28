@@ -1,0 +1,15 @@
+This patch is an addition to https://bugs.gentoo.org/attachment.cgi?id=914594
+
+diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
+index 822bc4e2d9..dfbb037ed0 100644
+--- a/src/slic3r/GUI/FreeCADDialog.cpp
++++ b/src/slic3r/GUI/FreeCADDialog.cpp
+@@ -64,7 +64,7 @@ namespace GUI {
+     class ExecVar {
+     public:
+         boost::process::opstream pyin;
+-        boost::asio::io_service ios;
++        boost::asio::io_context ios;
+         std::future<std::string> data_out;
+         std::future<std::string> data_err;
+         std::unique_ptr<boost::process::child> process;
