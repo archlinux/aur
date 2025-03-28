@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <mtorromeo@archlinux.org>
 
 pkgname=intentrace
-pkgver=0.4.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='strace with intent, it goes all the way for you instead of half the way'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust')
 source=("https://github.com/sectordistrict/intentrace/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8cba3cfcafd0e16e02cd2bca0666f31667da36d6fac60eed7afff6f46940f948')
+sha256sums=('561ed8bbacd9c4a0baed3db75821de0692c880c0261f06c0c2ec1ea4f2e26ccb')
 
 prepare() {
     cd $pkgname-$pkgver
