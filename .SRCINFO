@@ -1,7 +1,7 @@
 pkgbase = hslinkupper
 	pkgdesc = HSLinkUpper is a simple tool that allows you to config HSLink.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/HSLink/HSLinkUpper
 	arch = x86_64
 	license = MIT
@@ -27,6 +27,8 @@ pkgbase = hslinkupper
 	options = !strip
 	options = !debug
 	source = HSLinkUpper-1.0.0.tar.gz::https://github.com/HSLink/HSLinkUpper/archive/refs/tags/v1.0.0.tar.gz
+	source = 49-hslink.rules
 	sha256sums = 27b630a7d515380e21a48787eff4f8c1c2cbd899f35dd1943199da6fb7bbfd10
+	sha256sums = 62ed4502fadf9f1b772f018e75ff0f70b86f8277cf56c293973b6de70d9d36f5
 
 pkgname = hslinkupper

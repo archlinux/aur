@@ -3,7 +3,7 @@
 pkgname=hslinkupper
 _name=HSLinkUpper
 pkgver=1.0.0
-pkgrel=2
+pkgrel=4
 epoch=
 pkgdesc="HSLinkUpper is a simple tool that allows you to config HSLink."
 arch=($CARCH)
@@ -34,9 +34,12 @@ makedepends=(
 optdepends=()
 checkdepends=()
 options=('!strip' '!debug')
-source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "49-hslink.rules"
+)
 noextract=()
-sha256sums=('27b630a7d515380e21a48787eff4f8c1c2cbd899f35dd1943199da6fb7bbfd10')
+sha256sums=('27b630a7d515380e21a48787eff4f8c1c2cbd899f35dd1943199da6fb7bbfd10'
+            '62ed4502fadf9f1b772f018e75ff0f70b86f8277cf56c293973b6de70d9d36f5')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}/src-tauri"
@@ -72,6 +75,7 @@ package() {
     cd "${srcdir}/${_name}-${pkgver}"
     #     tar xpf src-tauri/target/release/bundle/deb/${pkganame}_${pkgver}_amd64/data.tar.gz -C ${pkgdir}
     #     chown -R root:root ${pkgdir}
+    install -Dvm644 ${srcdir}/49-hslink.rules -t ${pkgdir}/usr/lib/udev/rules.d/
     install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
     install -Dm755 src-tauri/target/release/hslinkupper ${pkgdir}/usr/bin/${pkgname%-git}
     install -Dm644 src-tauri/icons/128x128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
