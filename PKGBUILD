@@ -2,7 +2,7 @@
 # Maintainer: ThePanz <thepanz@gmail.com>
 
 pkgname=docker-credential-secretservice-bin
-pkgver=0.8.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Store docker credentials using the D-Bus Secret Service"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source_aarch64=(
     "LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v${pkgver}/LICENSE"
 )
 
-b2sums_x86_64=('8ba2ea951618cbd35dc8e138558e5d5625fd0ef622fad1d1662dffc21291c55a77070fde65f1082b22dd92950d84f82a9f4f4ffcc51c9b98e359d2b7a6fe0a09'
+b2sums_x86_64=('91a58d2ea0b8b70e7ef833ecedfb42bdbe0bd8d0acb620b8675423b36582418c3f01307faff036315f88919949e074301f7477432eaab2e2f0ea39ce87899ae6'
                '7e5e1fc19b9fd4204acb61ea546d7ff33b1b7d913a27680a4a032365312e4a488ff4b3ac498d8c80c8ce374d7700085ed71b46f75438cd9d6bbee653be209806')
-b2sums_aarch64=('646e7503680825149c2d83d1265ee462df5c5c3db3d42065c4d31bb21cf53ccb4c4a88f41572485d8c53bbd632c8e98ee1eb01ae91e6d894a3f4058e4a8c2dc8'
+b2sums_aarch64=('b1aaab249223a65afe02ed8c39e3c55b4ff50915e897214fcc4bbc509f7e04dd9b3608d9f7bb1b121c83e6d3e802138ab6b646f68b163b26a04634c83ed54faf'
                 '7e5e1fc19b9fd4204acb61ea546d7ff33b1b7d913a27680a4a032365312e4a488ff4b3ac498d8c80c8ce374d7700085ed71b46f75438cd9d6bbee653be209806')
 
 package() {
