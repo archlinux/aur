@@ -1,6 +1,6 @@
 pkgbase = cable
 	pkgdesc = A PyQt6 application to dynamically modify Pipewire and Wireplumber settings
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/magillos/Cable
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = cable
 	depends = python
 	depends = python-pyqt6
 	depends = python-jack-client
-	source = cable-0.7.1.tar.gz::https://github.com/magillos/Cable/archive/refs/tags/0.7.1.tar.gz
-	sha256sums = bab3072fc64040cd0e14e07f273731c4707dbe4439b8d718812ca98357c46de3
+	source = cable-0.7.2.tar.gz::https://github.com/magillos/Cable/archive/refs/tags/0.7.2.tar.gz
+	sha256sums = ccce6434a7f55cf0159e3611731751b88db8ac3d51a5f4f3a1a54ee5e32b1bc1
 
 pkgname = cable
