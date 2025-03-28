@@ -1,55 +1,45 @@
-# Original maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: redponike <proton (dot) me>
 # Maintainer: Alex Hirzel <alex@hirzel.us>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=python-pytorch-lightning
-_name=${pkgname#python-}
-pkgver=2.5.0rc0
+_pkgname=pytorch_lightning
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="The lightweight PyTorch wrapper for high-performance AI research"
 arch=('any')
 url='https://lightning.ai'
 license=('Apache-2.0')
 depends=(
-  python-fastapi
-  python-fsspec
-  python-google-api-core
-  python-jsonargparse
-  python-lightning-utilities
-  python-matplotlib
-  python-mpi4py
-  python-pandas
-  python-psutil
-  python-pyaml
-  python-pydeprecate
-  python-pytest
-  python-rich
-  python-scikit-learn
-  python-tensorboardx
-  python-torchmetrics
-  python-torchvision
-  python-twine
-  tensorboard
-  uvicorn
+  'python-fsspec'
+  'python-lightning-utilities'
+  'python-packaging'
+  'python-pytorch'
+  'python-pyaml'
+  'python-torchmetrics'
+  'python-tqdm'
+  'python-typing_extensions'
 )
 optdepends=(
-  'python-apex: mixed precision support'
-  'python-horovod: for distributed training'
+  'python-bitsandbytes'
+  'python-hydra-core'
+  'python-jsonargparse'
+  'python-matplotlib'
+  'python-omegaconf'
+  'python-rich'
+  'python-tensorboardx'
 )
-makedepends=(
-  python-build
-  python-installer
-  python-wheel
-)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('561cda5b3bceabdb94b4e9a7f4c9f8d3d39cdf47a7e2b6bc4c4cc2b59ad6313f4df0e1a2de696acaa74b36aa2758235125c1e2c1961600b3e0118e922a4b2167')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('e32f8c6fb4d75e643d88042078b0fbbbf29dd61f411214748b86e4b0ff539a45f05cdb9da12d1e0a46169a4a81e69bec62783e1b5e4ff7ef4bb220d7e90ffdf7')
 
 build() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	python setup.py build
+  cd "${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${_pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 # vim:set ts=2 sw=2 et:
