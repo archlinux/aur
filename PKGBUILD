@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aya-bin
 _pkgname=AYA
-pkgver=1.3.0
+pkgver=1.4.0
 _electronversion=30
 pkgrel=1
 pkgdesc="A desktop application for easily controlling android devices, which can be considered as a GUI wrapper for ADB.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ea0040471bb2f227f018c83505a76f5578473d11c46e5563299152056292c3e1'
+sha256sums=('487dce5e53dee65c9dc400a9955dcff8ffa2606e7f76a44c1224f0a24d9250af'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
