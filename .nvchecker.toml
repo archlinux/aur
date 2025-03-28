@@ -1,0 +1,5 @@
+[gameshell]
+source = 'github'
+github = 'phyver/GameShell'
+use_latest_release = true
+prefix = 'v'

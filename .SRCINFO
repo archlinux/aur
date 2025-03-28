@@ -1,10 +1,10 @@
 pkgbase = gameshell
 	pkgdesc = A game to learn (or teach) how to use standard commands in a Unix shell
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/phyver/GameShell
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	depends = gettext
 	depends = awk
 	optdepends = man-db: extra missions
@@ -16,9 +16,9 @@ pkgbase = gameshell
 	optdepends = xorg-xeyes: extra missions
 	optdepends = util-linux: extra missions
 	provides = gameshell
-	source = gameshell-0.5.1.sh::https://github.com/phyver/GameShell/releases/download/v0.5.1/gameshell.sh
+	source = gameshell-0.6.0.sh::https://github.com/phyver/GameShell/releases/download/v0.6.0/gameshell.sh
 	source = run_gameshell.sh
-	b2sums = bb577ac0a4ea4ef22287ae85bbb05262acba6cbbfef7856ab10a107dcb19b13b7195de3d0a49c5d12fa9fa8fc3bd37f7d5b577682e951a5b514f6e1e0f8e1d9d
-	b2sums = 4efea74d72365dce9c131bf6cd8f7c42ece00072f8a07a1b9e60f95feab6dbf5dd63c434bf37eaab9d90e968d89584fd21e789aa997f1b1d7d1e0b9000bc0001
+	b2sums = 9f1664719d16f6405dddfb7f3fe7f3041cbf67e95d5c11cf58ae1eab8446513d75007f16db678e05f886f628941775d17cfcb4aeeb28351ca77f4fe5ef28d21e
+	b2sums = f8863d28f5ce629f6aaa53b8b4dd0477991896b77e4eec318c4c75e70a7db1b69616b1e8d3ad7b4ba7f2385dcab8fdbe2537e3d2c4abc8f29d2bffcdb3e170b7
 
 pkgname = gameshell
