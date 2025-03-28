@@ -4,10 +4,10 @@
 pkgname='python-ledger-bitcoin'
 _name='ledger_bitcoin'
 pkgver='0.4.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for Ledger Nano Bitcoin application"
 url="https://github.com/LedgerHQ/app-bitcoin-new"
-depends=('python' 'python-btchip' 'python-ledgercomm')
+depends=('python' 'python-btchip' 'python-ledgercomm' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 license=('Apache-2.0')
 arch=('any')
@@ -18,7 +18,6 @@ b2sums=('066c1df0c19a007cef8837a61e66366ab6cc10ad0aff79cc0eab5a38fe4ee9414189d94
 
 build() {
     cd "$_name-$pkgver"
-    sed -i '/typing-extensions/d' ./pyproject.toml ./setup.cfg
     python -m build --wheel --no-isolation
 }
 

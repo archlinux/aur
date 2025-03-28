@@ -1,7 +1,7 @@
 pkgbase = python-ledger-bitcoin
 	pkgdesc = Client for Ledger Nano Bitcoin application
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LedgerHQ/app-bitcoin-new
 	arch = any
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = python-ledger-bitcoin
 	depends = python
 	depends = python-btchip
 	depends = python-ledgercomm
+	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/l/ledger_bitcoin/ledger_bitcoin-0.4.0.tar.gz
 	b2sums = 066c1df0c19a007cef8837a61e66366ab6cc10ad0aff79cc0eab5a38fe4ee9414189d9424ec6a58e138e26c1a220e4673e27cb657fa06922fa738428ff74bdfc
 
