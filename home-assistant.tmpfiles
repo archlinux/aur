@@ -1,0 +1,2 @@
+d /var/lib/hass 0755 hass hass -
+d /var/lib/hass/log 0755 hass hass -
