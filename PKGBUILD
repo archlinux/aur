@@ -4,7 +4,7 @@
 pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -16,8 +16,7 @@ makedepends=('pnpm' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${_pkgname}-service.tar.gz::https://github.com/${pkgname}/${_pkgname}-service/archive/refs/tags/${CARCH}-unknown-linux-gnu.tar.gz")
 sha512sums=('cab56682388d469894c13e797ae0de9ebed9aa1b04d5a1199eb7cc2434281f6692d52eeec34ad66012e65fbcef78e7873ee59c0c3f1dc5534881e1bacf0f1b4f'
-            '394d3fa0275ff706671c355c9e6496400b72fc71c70223ad8ca910356abc19623ba3343818a8a24d487994472b61def823af13e36a723786194f805e6143000a')
-options=('!lto')
+            '2c29872251b0d86222cd1bba394525660b2f2c06972876a0d1050815d918ab434b4e2490b0730a445706ef8284d669885234fbf46479d09a83f3e452a125aa03')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
@@ -27,6 +26,7 @@ prepare() {
 
 build() {
 	cd "${_pkgname}-service-${CARCH}-unknown-linux-gnu/"
+	export CFLAGS+=" -ffat-lto-objects"
 	_prepare_service
 	_build_service
 	_check_service
@@ -37,7 +37,7 @@ build() {
 	ln -s /usr/bin/clash-meta "./src-tauri/sidecar/verge-mihomo-${CARCH}-unknown-linux-gnu"
 	ln -s /usr/bin/clash-meta "./src-tauri/sidecar/verge-mihomo-alpha-${CARCH}-unknown-linux-gnu"
 	install -vDm644 ./src/locales/* -t ./src-tauri/resources/locales/
-	NODE_OPTIONS="--max_old_space_size=4096" pnpm build -b deb
+	pnpm build -b deb
 }
 
 package() {
