@@ -1,0 +1,5 @@
+/libfive/
+/pkg/
+/src/
+
+*.pkg.tar.zst
