@@ -10,12 +10,13 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-gtest
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 arch=('any')
 pkgdesc="Google Test - C++ testing utility (Android ${_android_arch})"
 url='https://github.com/google/googletest'
 license=('BSD')
+groups=('android-gtest')
 depends=('android-ndk')
 makedepends=('android-cmake'
              'python')
@@ -26,7 +27,7 @@ provides=("android-${_android_arch}-gmock")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/googletest/archive/v${pkgver}.tar.gz"
         '0001-gtest-version.patch')
-md5sums=('7e11f6cfcf6498324ac82d567dcb891e'
+md5sums=('9a75eb2ac97300cdb8b65b1a5833f411'
          '4b2b6493b95389d3428470eb3f904df6')
 
 prepare() {
