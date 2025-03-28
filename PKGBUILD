@@ -8,8 +8,7 @@ pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fo
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://developers.italia.it/it/cie"
 license=('BSD')
-depends=('crypto++' 'openssl' 'pcsclite' 'java-runtime')
-noextract=('libpodofo.tar.gz')
+depends=('crypto++' 'openssl' 'pcsclite' 'podofo' 'java-runtime')
 makedepends=('git' 'gradle' 'meson')
 install="${pkgname%-git}.install"
 

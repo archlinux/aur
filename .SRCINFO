@@ -18,8 +18,8 @@ pkgbase = cie-middleware-git
 	depends = crypto++
 	depends = openssl
 	depends = pcsclite
+	depends = podofo
 	depends = java-runtime
-	noextract = libpodofo.tar.gz
 	source = cie-middleware::git+https://github.com/M0Rf30/cie-middleware-linux
 	sha256sums = SKIP
 
