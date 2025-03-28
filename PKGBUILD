@@ -1,4 +1,5 @@
 # Maintainer: honjow
+# shellcheck disable=SC2034
 pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
@@ -11,8 +12,6 @@ url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=(
-    amdgpu-test-scripts-common-git
-    amd-s2idle-analysis-script-git
     cage
     expect
     efibootmgr
@@ -36,8 +35,10 @@ optdepends=(
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz"
+        "amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py")
+sha256sums=('SKIP'
+            '8ac3427f959278c3d0d4d900b3fd84076b15eeeeaf280436befe93e960133aaf')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
@@ -56,6 +57,10 @@ package() {
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
     # 复制软链接 覆盖
     find "${source_dir}/bin" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
+
+    # amd_s2idle.py to amd_s2idle-analysis
+    install -dm755 "${pkgdir}/usr/bin"
+    install -m644 "${srcdir}/amd_s2idle.py" "${pkgdir}/usr/bin/amd_s2idle-analysis"
 
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
