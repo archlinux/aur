@@ -4,7 +4,7 @@
 pkgname=clash-verge-rev
 _pkgname=${pkgname%-rev}
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -41,8 +41,7 @@ build() {
 }
 
 package() {
-	cd "${pkgname}-${pkgver}/"
-	tar -xpf src-tauri/target/release/bundle/deb/Clash\ Verge_${pkgver}_*/data.tar.gz -C "${pkgdir}"
+	cp -a ${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/Clash\ Verge_${pkgver}_*/data/* "${pkgdir}"
 }
 
 _prepare_service() {
