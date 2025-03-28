@@ -7,7 +7,7 @@ _android_arch=riscv64
 pkgbase=android-${_android_arch}-harfbuzz
 pkgname=("android-${_android_arch}-harfbuzz"
          "android-${_android_arch}-harfbuzz-icu")
-pkgver=10.4.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (Android ${_android_arch})"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=('android-meson'
              'ragel')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('ed58426c4c878e169917f4d7e2ae823b')
+md5sums=('632e3a92ef145bb77a0cdaf04fb2449b')
 
 build() {
     cd "${srcdir}/harfbuzz-${pkgver}"
@@ -60,7 +60,7 @@ package_android-riscv64-harfbuzz() {
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
 
-    mkdir -p "hb-icu"/${ANDROID_PREFIX}/{include/harfbuzz,lib/pkgconfig}
+    mkdir -p "hb-icu/${ANDROID_PREFIX}"/{include/harfbuzz,lib/pkgconfig}
     mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}"/libharfbuzz-icu* "hb-icu/${ANDROID_PREFIX_LIB}"
     mv -vf "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/harfbuzz-icu.pc" "hb-icu/${ANDROID_PREFIX_LIB}/pkgconfig"
     mv -vf "${pkgdir}/${ANDROID_PREFIX_INCLUDE}/harfbuzz/hb-icu.h" "hb-icu/${ANDROID_PREFIX_INCLUDE}/harfbuzz"
