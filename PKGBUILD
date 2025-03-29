@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/outfoxxed/hy3'
 license=('GPL3')
 makedepends=('git' 'cmake')
-depends=('gcc-libs' 'glibc' 'hyprland=0.48.0')
+depends=('gcc-libs' 'glibc' 'hyprland=0.48.1')
 conflicts=('hyprland-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/hl$pkgver.tar.gz")
 sha256sums=('da7116d3fa9cf4a2fd450f2d05c8c2cb8241f2f90c8c3a9e047e429e89aa8a84')
