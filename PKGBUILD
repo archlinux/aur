@@ -6,8 +6,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libusb
-pkgver=1.0.27
-pkgrel=3
+pkgver=1.0.28
+pkgrel=1
 arch=('any')
 pkgdesc="Library that provides generic access to USB devices (Android ${_android_arch})"
 url="https://libusb.info/"
@@ -17,7 +17,7 @@ depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libusb/libusb/releases/download/v${pkgver}/libusb-${pkgver}.tar.bz2")
-md5sums=('1fb61afe370e94f902a67e03eb39c51f')
+md5sums=('4022135a84975b292cf48381fbc8ffd8')
 
 prepare() {
     cd "${srcdir}/libusb-${pkgver}"
