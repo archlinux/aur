@@ -4,7 +4,7 @@
 pkgname=xfce4-notifyd-pango-markup-git
 pkgver=0.9.7.r83.g68bcaf1
 pkgrel=1
-pkgdesc='notification daemon for the xfce desktop - git checkout with a patch to allow notification bodies to have pango markup based off of: https://aur.archlinux.org/packages/xfce4-notifyd-git'
+pkgdesc='notification daemon for the xfce desktop - git checkout with a patch to allow notification body, summary, and button to have pango markup. based off of: https://aur.archlinux.org/packages/xfce4-notifyd-git'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://goodies.xfce.org/projects/applications/xfce4-notifyd'
