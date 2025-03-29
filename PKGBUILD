@@ -1,6 +1,6 @@
 # Maintainer: Ian Lansdowne <idlansdowneatgmaildotcom>
 pkgname=nrel-sam
-pkgrel=1
+pkgrel=2
 pkgver=2024.12.12.r0.ssc.298
 _wxver=3.2.6
 _gtestver=1.16.0
@@ -10,6 +10,7 @@ url='https://sam.nrel.gov/'
 license=('BSD-3-Clause')
 depends=()
 makedepends=(gendesk git gcc libcurl-gnutls gtk2 mesa freeglut icoutils)
+conflicts=(nrel-sam-bin)
 source=("git+https://github.com/NREL/SAM.git#tag=$pkgver"
         "git+https://github.com/NREL/lk.git#tag=$pkgver"
         "git+https://github.com/NREL/wex.git#tag=$pkgver"

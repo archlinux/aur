@@ -1,7 +1,7 @@
 pkgbase = nrel-sam
 	pkgdesc = A free desktop application for techno-economic analysis of energy technologies
 	pkgver = 2024.12.12.r0.ssc.298
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sam.nrel.gov/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -13,6 +13,7 @@ pkgbase = nrel-sam
 	makedepends = mesa
 	makedepends = freeglut
 	makedepends = icoutils
+	conflicts = nrel-sam-bin
 	source = git+https://github.com/NREL/SAM.git#tag=2024.12.12.r0.ssc.298
 	source = git+https://github.com/NREL/lk.git#tag=2024.12.12.r0.ssc.298
 	source = git+https://github.com/NREL/wex.git#tag=2024.12.12.r0.ssc.298
