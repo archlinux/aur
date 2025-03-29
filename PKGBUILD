@@ -1,20 +1,21 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=embridge-bin
-pkgver=3.1.9.1
+pkgver=3.3.0.2
 pkgrel=1
-pkgdesc='Secure channel between network applications and keys stored in hardware tokens'
+pkgdesc='emBridge Service to access crypto tokens'
 arch=(x86_64)
 url='https://embridge.emudhra.com'
 license=('custom')
-depends=('curl' 'libunwind' 'lttng-ust2.12' 'openssl-1.1' 'icu')
+depends=('ca-certificates' 'curl' 'libunwind' 'lttng-ust2.12' 'numactl' 'openssl' 'icu')
 source=("emBridge-${pkgver}.zip::https://resources.emudhra.com/hs/Ubuntu/latest/emBridge.zip")
-sha512sums=('526e1e522116fc348d20515ec864a664862d6759b2ebdd9b6f60927b24ac2ad0da48bf869370ddd58212dc9834b0fec04fa18340c481f884ce29cb3f32189ce0')
-options=('libtool' 'staticlibs' '!strip')
+sha512sums=('0f053fddabb8b17b4e23bee2be6f06597294af7a4ea05255ec6b894968d6af8b2a75b7b31012d4b1ddcbb5515d79823301a03e74d8e3bfb72dcd74c2cf1aa542')
+options=('!debug' 'libtool' 'staticlibs' '!strip')
 
 package() {
     cd "${srcdir}"
     msg2 "Extracting the emBridge-v${pkgver}.deb"
     ar po "emBridge-v${pkgver}.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xf - --no-same-owner
+    find "${pkgdir}/opt" -type d -exec chmod 755 {} \+
     cd "${pkgdir}/opt/eMudhra/emBridge"
     find . -type f -exec chmod 644 {} \+
     find . -name '*.dll' -exec chmod 755 {} \+
