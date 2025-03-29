@@ -12,7 +12,7 @@ url="https://github.com/lieser/${_dkim}"
 license=('MIT')
 depends=('thunderbird')
 source=(
-  "${_dkim}.xpi::https://github.com/lieser/dkim_verifier/releases/download/v${pkgver}/dkim_verifier-6.0.1.xpi"
+  "${_dkim}.xpi::https://github.com/lieser/dkim_verifier/releases/download/v${pkgver}/dkim_verifier-${pkgver}.xpi"
   "LICENSE::https://raw.githubusercontent.com/lieser/dkim_verifier/refs/tags/v${pkgver}/LICENSE.txt"
   "THIRDPARTY_LICENSE::https://raw.githubusercontent.com/lieser/dkim_verifier/refs/tags/v${pkgver}/THIRDPARTY_LICENSE.txt"
 )
