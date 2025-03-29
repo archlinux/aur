@@ -5,15 +5,14 @@
 
 _pkgname=arx-libertatis
 pkgname=$_pkgname-git
-pkgver=1.2.r2753.gc7a0947
+pkgver=1.2.r2756.g5b95e4c
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only) (Git)'
 url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('sdl2' 'zlib' 'freetype2' 'openal' 'glew' 'libepoxy' 'qt6-base' 'curl')
 optdepends=('gdb: generate detailed crash reports'
-            'arx-fatalis-data-demo: game data from official freeware demo'
             'arx-fatalis-data-gog: game data from gog.com installer'
             'arx-fatalis-data-copy: gamedata from existing Windows installation'
             'blender: Blender plugin to import/export Arx model files')
@@ -59,7 +58,7 @@ build() {
   #
   # CMAKE_BUILD_TYPE=Release
   #   can be changed to CMAKE_BUILD_TYPE=Debug to get a debug build,
-  #   which will run signifincantly slower but enables more runtime
+  #   which will run significantly slower but enables more runtime
   #   checks and generates better crash reports.
 
   cmake --build 'build'
