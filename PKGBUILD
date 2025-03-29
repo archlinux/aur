@@ -3,22 +3,23 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=compiledb
-pkgver=0.10.1
+pkgver=0.10.7
 pkgrel=3
 pkgdesc="Tool for generating Clang's JSON Compilation Database file for GNU make-based build systems"
 
 replaces=(compiledb-generator)
 
 arch=("any")
-url="https://github.com/nickdiego/compiledb-generator"
-license=("GPL3")
+url="https://github.com/nickdiego/compiledb"
+license=("GPL-3.0-only")
 
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3f288e4897e2b17b4dd8070d3ad9e9fc627961faa4d0be29a78f6c619e055f36')
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('97752d8810b6977654a11a22cdc41bf6b71473bcdb5da312bc135f36d6af8271')
 
 depends=(
     "python"
     "python-click"
+    # AUR dependencies
     "python-bashlex"
     "python-shutilwhich"
 )
@@ -26,6 +27,7 @@ makedepends=(
     "python-build"
     "python-installer"
     "python-setuptools"
+    "python-setuptools-scm"
     "python-wheel"
 )
 checkdepends=(
