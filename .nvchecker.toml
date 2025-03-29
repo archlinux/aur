@@ -1,0 +1,5 @@
+[thunderbird-dkimverifier]
+source = 'github'
+github = 'lieser/dkim_verifier'
+use_latest_release = true
+prefix = 'v'
