@@ -1,0 +1,16 @@
+pkgbase = guile-bzip2
+	pkgdesc = Guile wrapper for the libbzip2 library.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://ngyro.com/software/guile-bzip2.html
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = GPL3
+	depends = bzip2
+	depends = guile
+	depends = guile-bytestructures
+	source = https://files.ngyro.com/guile-bzip2/guile-bzip2-0.1.0.tar.gz
+	sha256sums = b02d9ecc02224df863ec5fa2972b08a8c13985885bc2c9c28ca9a2f75d99dde2
+
+pkgname = guile-bzip2
