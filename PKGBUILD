@@ -1,7 +1,7 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
 pkgver=8.33
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
 url="https://github.com/rigaya/$_UpstreamPkgName"
@@ -25,6 +25,7 @@ sha256sums=('27bca27753bf28da29f946574371ea609eebe77c6a12c83ee4c7d16aa3961fd6'
 
 prepare() {
 	cd $_UpstreamPkgName
+	git rm AMF
 	git submodule init
 	git config --local submodule.cppcodec "$srcdir/cppcodec"
 	git config --local submodule.clRNG "$srcdir/clRNG"

@@ -1,7 +1,7 @@
 pkgbase = vceenc
 	pkgdesc = AMD Video Codec based command line encoder
 	pkgver = 8.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rigaya/VCEEnc
 	arch = x86_64
 	license = MIT
