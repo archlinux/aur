@@ -1,0 +1,12 @@
+pkgbase = ttf-atkinson-hyperlegible-nerd
+	pkgdesc = Nerd-font style patched font of the Atkinson Hyperlegible fonts
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://www.brailleinstitute.org/freefont
+	arch = any
+	license = OFL
+	makedepends = font-patcher
+	source = https://github.com/googlefonts/atkinson-hyperlegible-next-mono/archive/154d50362016cc3e873eb21d242cd0772384c8f9.tar.gz
+	sha256sums = d8b50ca876781ef6c2f0e1dd1a7ed6896a7f7769242e76be901b98c6d7edfafb
+
+pkgname = ttf-atkinson-hyperlegible-nerd
