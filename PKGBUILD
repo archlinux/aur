@@ -1,16 +1,16 @@
-# Maintainer: lantw44 (at) gmail (dot) com
+# Contributor: lantw44 (at) gmail (dot) com
 
 pkgname=disarchive
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Disassembler of software archives for long-term preservation'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://ngyro.com/software/disarchive.html'
 license=('GPL3')
-depends=('guile' 'guile-gcrypt' 'guile-lzma' 'gzip' 'tar' 'xz' 'zlib')
+depends=('guile' 'guile-gcrypt' 'guile-lzma' 'guile-bzip2' 'gzip' 'tar' 'xz' 'zlib' 'bzip2')
 checkdepends=('guile-quickcheck')
 source=("https://files.ngyro.com/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('020b7bbf91d3a5ab245ee62631d183448a256aa087529c1dfc27db6427bd529b')
+sha256sums=('13813a48cbe190cc21508b2313e38d77dbdd6658c2c310eceb4aff0021f494e8')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
