@@ -1,0 +1,22 @@
+pkgbase = xnedit
+	pkgdesc = XNEdit text editor (a fork of the classic NEdit)
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/unixwork/xnedit
+	arch = x86_64
+	license = GPL2
+	makedepends = bison
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = pod2man
+	makedepends = pkg-config
+	depends = fontconfig
+	depends = libxft
+	depends = libxrender
+	depends = libxt
+	depends = openmotif
+	source = git+https://github.com/unixwork/xnedit#tag=v1.6.2
+	sha256sums = 2ffbab8daf4f776e5d6ad8d2799656e42dab8f1b2e580a3f6662904c9ec8a306
+
+pkgname = xnedit
