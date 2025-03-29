@@ -6,16 +6,21 @@ pkgname=${_pkgname}-bin
 pkgver=1.2.3
 pkgrel=1
 pkgdesc="A modern redis desktop manager. A better redis GUI client."
+
 arch=("x86_64")
+
 url="https://redis.tinycraft.cc/"
+
 license=("GPL-3.0-or-later")
+
 depends=('glibc' 'hicolor-icon-theme' 'gtk3' 'glib2' 'webkit2gtk' 'gdk-pixbuf2')
 optdepends=()
+
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 replaces=()
-source=("${_pkgname}_${pkgver}-${arch}.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
 
+source=("${_pkgname}_${pkgver}-${arch}.deb::https://github.com/tiny-craft/tiny-rdm/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
 sha256sums=('2359abe5d2f6248981eada8e9eb6c9a0149be74132ac2fe1309d0ac503d4f573')
 
 prepare(){
