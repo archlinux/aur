@@ -8,15 +8,17 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2025.04
+pkgver=2025.12
 pkgrel=1
-_npu_compiler_tag=npu_ud_2025_04_rc2
-_openvino_commit=99d7cd4bc4492b81a99bc41e2d2469da1a929491
+_npu_compiler_tag=npu_ud_2025_12_rc2
+_openvino_commit=8d5f583bc7e56152440192806b3acda619a997fe
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
 license=('Apache-2.0')
 depends=(
+    'gcc-libs'
+    'glibc'
     'onetbb'
     'pugixml'
     'zlib'
@@ -52,7 +54,6 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         'git+https://github.com/intel/ittapi.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
-        'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
@@ -68,9 +69,8 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         '040-intel-npu-compiler-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-level-zero-disable-werror.patch')
-sha256sums=('6d6b8597d45c3c22223965251538a8d4e8703f55ed67d47bbfc5ea0cb40657c9'
-            '6839c4c3018c274156cc910fbc81c1f9f74ef37c5bbbbb03e7f323cb81453db6'
-            'SKIP'
+sha256sums=('f0368514eed2814b4530f4ac514659af7c3068f2455d3547a3bc8c05e4fdaf8b'
+            'e1a37e41b5bb4ab654dea8c2e0961ae068142c8a73d285aa6da2984b37c51f4c'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -143,7 +143,6 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/ittapi/ittapi.url "${srcdir}/ittapi"
     git -C openvino config --local submodule.ncc.url "${srcdir}/ncc"
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
-    git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.url "${srcdir}/flatbuffers"
     git -C openvino config --local submodule.thirdparty/snappy.update none
