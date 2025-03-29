@@ -7,6 +7,12 @@ pkgbase = css-loader-desktop-bin
 	license = GPL
 	depends = fuse2
 	depends = openssl-1.1
+	depends = libgtk3
+	depends = libglvnd
+	depends = cairo
+	depends = david
+	depends = graphite
+	depends = libcloudproviders
 	source = https://github.com/DeckThemes/CSSLoader-Desktop/releases/download/v1.2.1/CSSLoader.Desktop_1.2.1.AppImage
 	sha256sums = SKIP
 
