@@ -1,7 +1,7 @@
 pkgbase = vapour
 	pkgdesc = An alternative open source Steam client
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Daniel-Griffiths/vapour
 	arch = x86_64
 	license = MIT
