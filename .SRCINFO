@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (mingw-w64)
-	pkgver = 2024.3
+	pkgver = 2025.1
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-spirv-headers
 	makedepends = mingw-w64-spirv-tools
@@ -14,7 +14,7 @@ pkgbase = mingw-w64-shaderc
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = shaderc-2024.3.tar.gz::https://github.com/google/shaderc/archive/v2024.3.tar.gz
-	sha256sums = d5c68b5de5d4c7859d9699054493e0a42a2a5eb21b425d63f7b7dd543db0d708
+	source = shaderc-2025.1.tar.gz::https://github.com/google/shaderc/archive/v2025.1.tar.gz
+	sha256sums = 358f9fa87b503bc7a3efe1575fbf581fca7f16dbc6d502ea2b02628d2d0d4014
 
 pkgname = mingw-w64-shaderc

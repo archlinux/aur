@@ -2,17 +2,17 @@
 
 _pkgname=shaderc
 pkgname=mingw-w64-${_pkgname}
-pkgver=2024.3
+pkgver=2025.1
 pkgrel=1
 pkgdesc='Collection of tools, libraries and tests for shader compilation (mingw-w64)'
 url="https://github.com/google/${_pkgname}"
 arch=('any')
-license=('Apache')
+license=('Apache-2.0')
 depends=('mingw-w64-glslang')
 makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'mingw-w64-spirv-tools' 'python' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d5c68b5de5d4c7859d9699054493e0a42a2a5eb21b425d63f7b7dd543db0d708')
+sha256sums=('358f9fa87b503bc7a3efe1575fbf581fca7f16dbc6d502ea2b02628d2d0d4014')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -26,8 +26,12 @@ prepare() {
 
 	sed -i \
 		-e '/find_package(Threads)/a find_package(glslang)\nfind_package(SPIRV-Tools-opt)' \
-		-e 's/glslang SPIRV/glslang::glslang glslang::SPIRV/' \
-		'libshaderc_util/CMakeLists.txt'
+		-e 's/glslang /glslang::glslang /' \
+		-e 's/glslang::glslang SPIRV/glslang::glslang glslang::SPIRV/' \
+		-e 's/SPIRV # from glslang/glslang::SPIRV/' \
+		'libshaderc_util/CMakeLists.txt' \
+		'glslc/CMakeLists.txt' \
+		'libshaderc/CMakeLists.txt'
 
 	# de-vendor libs and disable git versioning
 	sed '/examples/d;/third_party/d' -i CMakeLists.txt
