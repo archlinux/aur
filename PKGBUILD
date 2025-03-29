@@ -1,29 +1,29 @@
 # Maintainer: hekel <hekel at vivaldi dot net>
-# Contributor: zneix <zneix@zneix.eu>
-# Based off: https://aur.archlinux.org/packages/chatterino2-7tv-git
 
 pkgname="chatterino2-7tv-native-git"
 pkgver=7.5.2beta1.r60.g5b60c10
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes. Additionally patched to use your native QT Style: https://github.com/hekel/chatterino-stuffs'
 url="https://github.com/SevenTV/chatterino7"
 license=('MIT')
 arch=('x86_64')
 
 depends=(
-  libavif
-  openssl
-  qt6-5compat
-  qt6-base
-  qt6-imageformats
-  qt6-svg
-  qtkeychain-qt6
+  'libavif'
+  'openssl'
+  'qt6-5compat'
+  'qt6-base'
+  'qt6-imageformats'
+  'qt6-svg'
+  'qtkeychain-qt6'
 )
 makedepends=(
-  boost
-  cmake
-  git
-  ninja
+  'boost'
+  'cmake'
+  'expected-lite'
+  'git'
+  'ninja'
+  'rapidjson'
 )
 optdepends=(
   'streamlink: For piping streams to video players'
@@ -35,21 +35,19 @@ conflicts=('chatterino')
 _pkgsrc="chatterino7"
 source=(
   "git+https://github.com/SevenTV/chatterino7"
-  "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-  "git+https://github.com/pajlada/settings"
-  "git+https://github.com/pajlada/signals"
-  "git+https://github.com/pajlada/serialize"
-  "git+https://github.com/Tencent/rapidjson"
-  "git+https://github.com/Chatterino/websocketpp"
   "git+https://github.com/arsenm/sanitizers-cmake"
+  "git+https://github.com/Chatterino/crash-handler"
+  "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
+  "git+https://github.com/Chatterino/websocketpp"
+  "git+https://github.com/pajlada/settings"
+  "git+https://github.com/pajlada/serialize"
+  "git+https://github.com/pajlada/signals"
   "git+https://github.com/Neargye/magic_enum"
   "git+https://github.com/mackron/miniaudio"
-  "git+https://github.com/Chatterino/crash-handler"
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/nativeQT-and-StyleSheet.patch"
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-svg-icons.patch"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -89,7 +87,6 @@ prepare () {
   git config submodule.lib/settings.url "$srcdir/settings"
   git config submodule.lib/signals.url "$srcdir/signals"
   git config submodule.lib/serialize.url "$srcdir/serialize"
-  git config submodule.lib/rapidjson.url "$srcdir/rapidjson"
   git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
   git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
   git config submodule.lib/magicenum.url "$srcdir/magicenum"
