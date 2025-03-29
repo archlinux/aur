@@ -2,7 +2,7 @@
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
 pkgname="xrizer-git"
-pkgver="0.1.r20.g4fbcfc6"
+pkgver="0.2.r12.g89474fa"
 pkgrel="1"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR."
 arch=("x86_64")
