@@ -1,16 +1,17 @@
 pkgbase = arch-udev-usb-sync
 	pkgdesc = Fine tune write cache and impose buffer limits when USB storage device is plugged
-	pkgver = 0.12
-	pkgrel = 3
-	url = https://codeberg.org/wonky/arch-udev-usb-sync
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/applications/udev-usb-sync
 	install = arch-udev-usb-sync.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = hdparm
 	depends = bc
 	conflicts = udev-usb-sync
 	backup = etc/udev-usb-sync/udev-usb-sync.conf
-	source = arch-udev-usb-sync-0.12.tar.gz::https://codeberg.org/wonky/arch-udev-usb-sync/archive/v0.12.tar.gz
-	sha256sums = 860efd8c14e67576d1cd8d5b6ae0065d478fa7a020f0ad7f2768b20f132390c3
+	source = git+https://gitlab.manjaro.org/applications/udev-usb-sync.git#tag=1.0
+	sha256sums = 3521ec30dc7f769e80376a6f1b90cdc5b919a20fd9061cdaec50888f7fe1c72b
 
 pkgname = arch-udev-usb-sync

@@ -1,5 +1,5 @@
 post_install() {
-	udevadm control --reload
+	/usr/bin/udevadm control --reload
 }
 
 post_upgrade() {
