@@ -5,12 +5,13 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libsm
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 arch=('any')
 pkgdesc="X11 Session Management library (Android ${_android_arch})"
 license=('custom')
 url="https://xorg.freedesktop.org/"
+groups=('android-libsm')
 depends=("android-${_android_arch}-libice")
 makedepends=("android-configure"
              "android-${_android_arch}-xorg-util-macros"
@@ -18,7 +19,7 @@ makedepends=("android-configure"
              "android-${_android_arch}-xorgproto")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libSM-${pkgver}.tar.xz"{,.sig})
-md5sums=('ef6167bfcb675f65a790e0f517a87455'
+md5sums=('3aeeea05091db1c69e6f768e0950a431'
          'SKIP')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
 
