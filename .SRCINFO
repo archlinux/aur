@@ -1,11 +1,12 @@
 pkgbase = zug-git
 	pkgdesc = Transducers for C++
-	pkgver = r79.5dfc408
-	pkgrel = 1
+	pkgver = r151.6623704
+	pkgrel = 2
 	url = https://github.com/arximboldi/zug
 	arch = any
-	license = Boost
+	license = BSL-1.0
 	makedepends = git
+	makedepends = catch2
 	makedepends = cmake
 	provides = zug
 	conflicts = zug
@@ -13,4 +14,3 @@ pkgbase = zug-git
 	md5sums = SKIP
 
 pkgname = zug-git
-

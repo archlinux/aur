@@ -1,13 +1,15 @@
-# Maintainer: Ulrich Huber <ulrich@huberulrich.de>
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: Ulrich Huber <ulrich@huberulrich.de>
+
 pkgname=zug-git
-pkgrel=1
-pkgver=r79.5dfc408
+pkgrel=2
+pkgver=r151.6623704
 pkgdesc="Transducers for C++"
 arch=('any')
 url="https://github.com/arximboldi/zug"
-license=('Boost')
+license=('BSL-1.0')
 depends=()
-makedepends=('git' 'cmake')
+makedepends=('git' 'catch2' 'cmake')
 provides=('zug')
 conflicts=('zug')
 source=(${pkgname}::git+https://github.com/arximboldi/zug.git)
