@@ -1,7 +1,7 @@
 # Maintainer: <Azad Zeynalov>
 pkgname=khazarfetch-git
-pkgver=2.5
-pkgrel=2
+pkgver=2bd6e0c
+pkgrel=1
 pkgdesc="Minimal fetch tool"
 arch=('x86_64')
 url="https://github.com/khazar-os-linux/khazarfetch"
@@ -28,3 +28,4 @@ package() {
     install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
+
