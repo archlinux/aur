@@ -1,19 +1,16 @@
 # Maintainer: Ian Lansdowne <idlansdowneatgmaildotcom>
 pkgname=nrel-sam-bin
-pkgrel=1
-pkgver=2024.12.12
+pkgrel=2
+pkgver=2024.12.12.r0.ssc.298
 pkgdesc='A free desktop application for techno-economic analysis of energy technologies'
 arch=(x86_64)
 url='https://sam.nrel.gov/'
 license=('BSD-3-Clause')
 depends=()
 makedepends=('gendesk')
-source=('sam.run::https://sam.nrel.gov/download/77-sam-2024-12-12-for-linux/file.html' 'file://SAM.png')
+conflicts=(nrel-sam)
+source=('sam.run::https://samrepo.nrelcloud.org/beta-releases/sam-linux-2024-12-12.run' 'file://SAM.png')
 sha256sums=('ededc3ce2b0137e4776c48ffc42eaa2be894ae897c32e44bf28d26151ded10eb' '6a918ccd7f7ed5c103042482dc3ae73a8c69a75e80c909b20ffa41c33693c379')
-
-pkgver() {
-    sed '/^SAMVER=/! d; s/[^=]*=//' "$srcdir/sam.run"
-}
 
 build() {
     echo "  -> Extracting archive..."
@@ -34,7 +31,7 @@ EOF
     gendesk -f -n \
         --pkgname 'sam' \
         --pkgdesc "$pkgdesc" \
-        --name "System Advisor Model (SAM) $pkgver" \
+        --name "System Advisor Model (SAM)" \
         --genericname 'SAM' \
         --comment 'techno-economic analysis of energy technologies' \
         --categories 'Development;Science;' \
@@ -45,7 +42,7 @@ EOF
 
 package() {
     echo "  -> Moving files from build area to package area directly to save space..."
-    mv "$srcdir/build/"* "$pkgdir"
+    cp -r "$srcdir/build/"* "$pkgdir"
 
     echo "  -> Installing desktop files..."
     install -Dm644 "$srcdir/sam.desktop" \
