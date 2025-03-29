@@ -3,7 +3,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname='python-jax-bin'
 _name='jax'
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Composable transformations of Python+NumPy programs'
 arch=('any')
@@ -23,7 +23,7 @@ provides=("python-jax")
 conflicts=("python-jax")
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('2aef7d1912df329470c47ce8f2e6521c105e84aa620311494048c391235087c6')
+sha256sums=('f17fcb0fd61dc289394af6ce4de2dada2312f2689bb0d73642c6f026a95fbb2c')
 
 build() {
 	cd $_name-$pkgver

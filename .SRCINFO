@@ -1,6 +1,6 @@
 pkgbase = python-jax-bin
 	pkgdesc = Composable transformations of Python+NumPy programs
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/jax-ml/jax/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-jax-bin
 	optdepends = python-requests: Distributed computations
 	provides = python-jax
 	conflicts = python-jax
-	source = https://files.pythonhosted.org/packages/source/j/jax/jax-0.5.2.tar.gz
-	sha256sums = 2aef7d1912df329470c47ce8f2e6521c105e84aa620311494048c391235087c6
+	source = https://files.pythonhosted.org/packages/source/j/jax/jax-0.5.3.tar.gz
+	sha256sums = f17fcb0fd61dc289394af6ce4de2dada2312f2689bb0d73642c6f026a95fbb2c
 
 pkgname = python-jax-bin
