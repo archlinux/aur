@@ -3,7 +3,6 @@
 # it should be replaced with the official Nerd Font version when available.
 
 pkgname=ttf-atkinson-hyperlegible-nerd
-_name="A Hyperlegible Nerd Font" #shortened name
 pkgver=1.00
 _hash_mono=154d50362016cc3e873eb21d242cd0772384c8f9 #mono only
 pkgrel=1
@@ -21,7 +20,7 @@ build(){
   # patch the fonts
   mkdir output
   # parallel font-patcher
-  find fonts/ttf -name '*.ttf' | xargs -I {} -P $(nproc) fontforge -script /usr/share/font-patcher/font-patcher -q --complete --careful --outputdir output/ --name "$_name" "{}"
+  find fonts/ttf -name '*.ttf' | xargs -I {} -P $(nproc) fontforge -script /usr/share/font-patcher/font-patcher -q --complete --careful --outputdir output/ --makegroups 5 --metrics TYPO "{}"
 }
 
 package() {
