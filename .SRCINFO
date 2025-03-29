@@ -1,6 +1,6 @@
 pkgbase = moonscraper-chart-editor-bin
 	pkgdesc = Moonscraper Chart Editor is a song editor for Guitar Hero style rhythm games.
-	pkgver = 1.5.7
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = https://github.com/FireFox2000000/Moonscraper-Chart-Editor
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = moonscraper-chart-editor-bin
 	provides = moonscraper-chart-editor
 	conflicts = moonscraper-chart-editor
 	options = !strip
-	source = moonscraper-1.5.7.tar.gz::https://github.com/FireFox2000000/Moonscraper-Chart-Editor/releases/download/1.5.7/Moonscraper.Chart.Editor.v1.5.7.Linux.Universal.tar.gz
-	source = moonscraper-chart-editor.desktop::https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/1.5.7/aur/moonscraper-chart-editor.desktop
-	source = LICENSE::https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/1.5.7/LICENSE
-	sha1sums = 1118d9d5fc14d3c5001e67768a6ac5697959459c
+	source = moonscraper-1.5.8.tar.gz::https://github.com/FireFox2000000/Moonscraper-Chart-Editor/releases/download/1.5.8/Moonscraper.Chart.Editor.v1.5.8.Linux.Universal.tar.gz
+	source = moonscraper-chart-editor.desktop::https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/1.5.8/aur/moonscraper-chart-editor.desktop
+	source = LICENSE::https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/1.5.8/LICENSE
+	sha1sums = 941298e7a4993427c28308075e4a738c91923e58
 	sha1sums = e4c64c84730ee05b26e521537fc09fa82925fe72
 	sha1sums = 2d61750d08d43082718a1548810f76be186a9030
-	b2sums = a70d1c2e53d3c93093ac4396368336b37ea42eb8530f66a5bee5eb6a7bf85652640facf9c2c5d627630572c721a6021ba55160f27a14844546ba074d0a8f774a
+	b2sums = 3a988ee676c5ae91cfb030cb9de6a599f8a59a3235aece0d00729011d015f42be8d7748a5a0b7f4ca9b53d684a1a647b8cd8c7bd23858408aa4018ee5e81df9c
 	b2sums = 83253333bbc384026b0adc2ec7a489dccc1b22205eb190ed764e8604e2bb48f9d9dd882a395234ab618c84d33094ef74c5d124091c11757b078f4f722e04afa0
 	b2sums = 2c77abcaab52025cd9813a4139463b891bcb6efd1b2728a6d4e4ee4512cc89e7908cf5108220379df6b532001086f303d4ac2e4614696459348cda92992eeb3e
 
