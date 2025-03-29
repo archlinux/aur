@@ -2,7 +2,7 @@
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics-git
-pkgver=0.11.1.r189.798512a9
+pkgver=0.11.1.r190.0c1aba1d
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics (git version)'
 arch=(x86_64)
@@ -24,9 +24,9 @@ makedepends=(
   lld
   python
   asciidoc
-  gdk-pixbuf2 # for building gdk-pixbuf loader
-  gimp # for building GIMP plugin
-  java-environment # for building JNI bindings
+  #gdk-pixbuf2 # for building gdk-pixbuf loader
+  #gimp # for building GIMP plugin
+  #java-environment # for building JNI bindings
 )
 provides=(
   $_pkgname
@@ -52,17 +52,20 @@ source=(
   git+https://github.com/libjxl/$_pkgname.git
   git+https://skia.googlesource.com/skcms.git
   git+https://github.com/webmproject/sjpeg.git
+  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
 )
 sha256sums=(
+  SKIP
   SKIP
   SKIP
   SKIP
 )
 
 prepare() {
-  git -C $_pkgname submodule init third_party/{skcms,sjpeg}
+  git -C $_pkgname submodule init third_party/{skcms,sjpeg,libjpeg-turbo}
   git -C $_pkgname config submodule.third_party/skcms.url "$srcdir/skcms"
   git -C $_pkgname config submodule.third_party/sjpeg.url "$srcdir/sjpeg"
+  git -C $_pkgname config submodule.third_party/libjpeg-turbo.url "$srcdir/libjpeg-turbo"
   git -C $_pkgname -c protocol.file.allow=always submodule update
 }
 
@@ -83,7 +86,7 @@ build() {
     -DJPEGXL_ENABLE_DEVTOOLS=ON \
     -DJPEGXL_ENABLE_DOXYGEN=OFF \
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
-    -DJPEGXL_ENABLE_PLUGINS=ON \
+    -DJPEGXL_ENABLE_PLUGINS=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -DJPEGXL_FORCE_SYSTEM_HWY=ON
   make -C build
