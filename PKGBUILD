@@ -15,17 +15,17 @@ depends=(
 )
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/khazarfetch"
     git describe --tags --abbrev=0 2>/dev/null || git rev-parse --short HEAD
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    g++ -o "$pkgname" "$pkgname.cpp"
+    cd "$srcdir/khazarfetch"
+    g++ -o "$pkgname" khazarfetch.cpp
 }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/khazarfetch/$pkgname" "$pkgdir/usr/bin/$pkgname"
     chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
 
