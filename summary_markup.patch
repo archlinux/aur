@@ -1,0 +1,11 @@
+--- xfce4-notifyd/xfce-notify-window.c.og	2025-03-28 22:25:05.899528559 -0700
++++ xfce4-notifyd/xfce-notify-window.c	2025-03-28 22:36:21.667520928 -0700
+@@ -1214,7 +1214,7 @@
+ {
+     g_return_if_fail(XFCE_IS_NOTIFY_WINDOW(window));
+ 
+-    gtk_label_set_text(GTK_LABEL(window->summary), summary);
++    gtk_label_set_markup(GTK_LABEL(window->summary), summary);
+     if(summary && *summary) {
+         gtk_widget_show(window->summary);
+         window->has_summary_text = TRUE;

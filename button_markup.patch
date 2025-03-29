@@ -1,0 +1,13 @@
+--- xfce4-notifyd/xfce-notify-window.c.og	2025-03-28 22:25:05.899528559 -0700
++++ xfce4-notifyd/xfce-notify-window.c	2025-03-28 22:55:02.262749719 -0700
+@@ -1471,8 +1471,8 @@
+             }
+ 
+             if (img == NULL) {
+-                gchar *cur_button_text_escaped = g_markup_printf_escaped("<span size='small'>%s</span>",
+-                                                                         cur_button_text);
++                gchar *cur_button_text_escaped = g_strconcat("<span size='small'>", cur_button_text, "</span>");
++
+ 
+                 lbl = gtk_label_new(NULL);
+                 gtk_label_set_markup(GTK_LABEL(lbl), cur_button_text_escaped);

@@ -1,0 +1,14 @@
+--- xfce4-notifyd/xfce4-notifyd/xfce-notify-window.c.og	2025-03-28 22:25:05.899528559 -0700
++++ xfce4-notifyd/xfce4-notifyd/xfce-notify-window.c	2025-03-28 22:26:58.294681638 -0700
+@@ -1235,9 +1235,9 @@
+     g_return_if_fail(XFCE_IS_NOTIFY_WINDOW(window));
+ 
+     if(body && *body) {
+-        gchar *sanitized_body = xfce_notify_sanitize_markup(body);
++        gchar *sanitized_body = body;
+         gtk_label_set_markup (GTK_LABEL (window->body), sanitized_body);
+-        g_free(sanitized_body);
++        // g_free(sanitized_body);
+         gtk_widget_show(window->body);
+         window->has_body_text = TRUE;
+     } else {
