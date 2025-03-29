@@ -1,7 +1,7 @@
 pkgbase = rastertokpsl-git
 	pkgdesc = rastertokpsl CUPS filter for Kyocera printers built from source
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/brainrom/rastertokpsl-re
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = rastertokpsl-git
 	provides = rastertokpsl=1
 	conflicts = rastertokpsl
 	conflicts = rastertokpsl-fs-1040
+	conflicts = kyocera-print-driver
 	source = git+https://github.com/brainrom/rastertokpsl-re.git
 	sha256sums = SKIP
 
