@@ -8,13 +8,15 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler-git
-pkgver=2025.04rc2.r0.g5fd0b93
+pkgver=2025.12rc2.r0.g0514ba3
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) compiler (git version)'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
 license=('Apache-2.0')
 depends=(
+    'gcc-libs'
+    'glibc'
     'onetbb'
     'pugixml'
     'zlib'
@@ -53,7 +55,6 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         'git+https://github.com/intel/ittapi.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
-        'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
@@ -70,7 +71,6 @@ source=('git+https://github.com/openvinotoolkit/npu_compiler.git'
         '010-openvino-disable-werror.patch'
         '020-openvino-level-zero-disable-werror.patch')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -150,7 +150,6 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/ittapi/ittapi.url "${srcdir}/ittapi"
     git -C openvino config --local submodule.ncc.url "${srcdir}/ncc"
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
-    git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.url "${srcdir}/flatbuffers"
     git -C openvino config --local submodule.thirdparty/snappy.update none
