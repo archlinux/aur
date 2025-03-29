@@ -10,7 +10,7 @@
 _pkgname="wings3d"
 pkgname="$_pkgname"
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='3D modeler using the winged edge data structure'
 url="https://www.wings3d.com/"
 license=('GPL-2.0-or-later')
@@ -52,14 +52,14 @@ package() {
   install -dm755 "$pkgdir/usr/lib/$_pkgname"
   cp --reflink=auto -a wings-*-linux/lib/"$_pkgsrc"/* "$pkgdir/usr/lib/$_pkgname/"
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << 'END'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env bash
 GDK_BACKEND=x11 exec /usr/bin/erl -noinput -smp \
   -pa /usr/lib/wings3d/ebin \
-  -run wings_start start_halt "$@"
+  -run wings_start start_halt "\$@"
 END
 
-  install -Dm644 /dev/stdin -t "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=Wings 3D
@@ -72,5 +72,5 @@ StartupNotify=false
 Categories=Graphics;3DGraphics;
 END
 
-  chmod -R u=rwX,go=rX,go-w "$pkgdir"
+  chmod -R u+rwX,go+rX,go-w "$pkgdir"
 }
