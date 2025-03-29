@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Theme Collection for AwesomeWM, updated for 3.5.2. This is the successor of awesome34-themes-git"
 arch=('any')
 url="https://github.com/serialoverflow/${_gitname}"
-license=('GPL')
+license=('GPL-2.0-only' 'CC-BY-SA-3.0')
 depends=('awesome')
 makedepends=('git')
 source=("git+https://github.com/serialoverflow/${_gitname}.git")
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "${_gitname}"
-	
+
 	rm README
 	rm -rf "0-screenshots"
 }
