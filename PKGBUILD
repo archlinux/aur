@@ -51,7 +51,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  install -Dm644 \
+    /dev/null \
+    "${pkgdir}/opt/xrizer/bin/version.txt"
   install -Dm755 \
     "${srcdir}/${pkgname}/target/release/libxrizer.so" \
     "${pkgdir}/opt/xrizer/bin/linux64/vrclient.so"
