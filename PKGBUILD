@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Minimal fetch tool"
 arch=('x86_64')
 url="https://github.com/khazar-os-linux/khazarfetch"
-license=('GPL-v3.0')
+license=('GPL-3.0')
 source=("git+https://github.com/khazar-os-linux/khazarfetch.git")
 sha256sums=('SKIP')
 depends=(
@@ -21,11 +21,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/khazarfetch"
-    g++ -o "$pkgname" khazarfetch.cpp
+    make
 }
 
 package() {
-    install -Dm755 "$srcdir/khazarfetch/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    chmod 755 "$pkgdir/usr/bin/$pkgname"
+    cd "$srcdir/khazarfetch"
+    make DESTDIR="$pkgdir" install
 }
 
