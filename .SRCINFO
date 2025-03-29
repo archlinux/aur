@@ -1,0 +1,18 @@
+pkgbase = python-tkinter-tooltip
+	pkgdesc = An easy and customisable ToolTip implementation for Tkinter
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/gnikit/tkinter-tooltip
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-scm
+	depends = python
+	depends = python-setuptools-scm
+	depends = python-importlib-metadata
+	source = https://files.pythonhosted.org/packages/source/t/tkinter_tooltip/tkinter_tooltip-3.1.2.tar.gz
+	sha256sums = dac8a6720c851936dfea2d96f90920a4dac31b46b78379c5e0ef0b6ed8af2964
+
+pkgname = python-tkinter-tooltip
