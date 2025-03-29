@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-libxslt
 	pkgdesc = XML stylesheet transformation library (Android aarch64)
-	pkgver = 1.1.42
+	pkgver = 1.1.43
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = android-aarch64-libxslt
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.42/libxslt-v1.1.42.tar.gz
+	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.43/libxslt-v1.1.43.tar.gz
 	source = 0001-Allow-undefined.patch
 	source = 0002-Disable-programs-test-docs.patch
-	md5sums = 839a3d767b12d37cf716b47a801254ed
+	md5sums = cdb0024ed189f7e6e968e33a18444b3c
 	md5sums = 44cd43c2b6e620197a78aa2973a23f0c
 	md5sums = 054e65c82ccafb95e5fe7b148a153fec
 
