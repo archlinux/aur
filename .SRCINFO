@@ -1,6 +1,6 @@
 pkgbase = spm-arch
 	pkgdesc = Simple Package Manager Wrapper for Arch Linux
-	pkgver = 1.0.1
+	pkgver = 1.0.1.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/Simple_Package_Manager
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = spm-arch
 	optdepends = fish: for fish shell integration
 	provides = spm
 	conflicts = spm
-	source = spm-arch-1.0.1.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v1.0.1/spm-1.0.1.tar.gz
-	sha256sums = 21ea35fc7ee6a88072e863257952825c49dd02feeae4274d722cf63fcfb64d5a
+	source = spm-arch-1.0.1.2.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v1.0.1.2/spm-1.0.1.2.tar.gz
+	sha256sums = 22d3aa74d50db1f4f0c069899938f86b5b002962dbd04d6004ec8d675da5f9e7
 
 pkgname = spm-arch

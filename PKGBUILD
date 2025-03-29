@@ -1,5 +1,5 @@
 pkgname=spm-arch
-pkgver=1.0.1
+pkgver=1.0.1.2
 pkgrel=1
 pkgdesc="Simple Package Manager Wrapper for Arch Linux"
 arch=('any')
@@ -10,7 +10,7 @@ optdepends=('fish: for fish shell integration')
 provides=('spm')
 conflicts=('spm')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/spm-$pkgver.tar.gz")
-sha256sums=('21ea35fc7ee6a88072e863257952825c49dd02feeae4274d722cf63fcfb64d5a')
+sha256sums=('22d3aa74d50db1f4f0c069899938f86b5b002962dbd04d6004ec8d675da5f9e7')
 
 package() {
     cd "$srcdir"
