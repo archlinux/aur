@@ -1,99 +1,65 @@
 
-## 9.0.0
+## 10.0.0
 
-- Swapped over to using SQLite for index
+- Reworked document indexing into a multi-stage pipeline
 
-    - Memory usage is much slimmer/stays flat
+    - This significantly improves the indexing throughput by allowing
+      I/O tasks and computational tasks to run concurrently
 
-        - For the sample of 1.4GB worth of PDFs used, after indexing, 9.0.0-rc1 uses
-          1.9GB of memory, while 9.0.0-rc2 uses 39MB
+    - See [issue #11](https://github.com/darrenldl/docfd/issues/11)
 
-    - Search is a bit slower
+- **Breaking** changes in index DB design - index DBs made by previous version
+  of Docfd are not compatible
 
-    - Added token length limit of 500 bytes to accommodate word table limit in index DB
+    - Optimized DB design, on average the index DB is roughly 60% smaller
+      compared to Docfd 9.0.0 index DB
 
-        - This means during indexing, if Docfd encounters a very long token,
-          e.g. serial number, long hex string, it will be split into chunks of
-          up to 500 bytes
+    - See [issue #11](https://github.com/darrenldl/docfd/issues/11)
 
-- Added `Ctrl`+`C` exit key binding to key binding info on screen
+- Added functionality to filter files via fzf
 
-- Updated exit keys
+    - This is grouped under filter mode. The previous filter mode
+      is renamed to filter regex mode.
 
-    - To exit Docfd: `q`, `Ctrl`+`Q` or `Ctrl`+`C`
+    - `f` enters filter mode
 
-    - To exit other modes: `Esc`
+        - `f` again activates filter files via fzf functionality
 
-- Now defaults to not scanning hidden files and directories
+        - `r` activates the filter regex mode, which was previously
+          just called the filter mode
 
-    - This behaviour is now enabled via the `--hidden` flag
+- Fixed incomplete search results when file path filter field is updated while
+  search is ongoing
 
-- Changed to allow `--add-exts` and `--single-line-add-exts` to be specified multiple times
+    - Updating file path filter always cancels the current search (if there is one)
+      and start a new search after the filter is in place
 
-- Changed return code to be 1 when there are no results for `--sample` or `--search`
+    - Previously, documents with partial search results due to cancellation
+      are kept
 
-- Added `--no-pdftotext` and `--no-pandoc` flags
+    - Docfd now discards said documents, forcing the new search to complete the
+      search results of these documents
 
-    - Docfd also notes the presence of these flags in error message if there
-      are PDF files but no pdftotext command is available, and same with files
-      relying on pandoc
+- Removed `--no-cache` flag
 
-- Renamed `drop path` command to just `drop`
+    - Previously was unused completey
 
-- Added drop unselected key binding, and the associated command `drop all except`
+    - It is difficult to share an in-memory SQlite DB
+      between threads, so discarding this flag entirely
 
-- Various key binding help info grid adjustments
+    - See [issue #11](https://github.com/darrenldl/docfd/issues/11)
 
-## 9.0.0-rc1
+- Swapped to using proper unicode segmentation for tokenisation
 
-- Changed default cache size from 100 to 10000
+    - This should reduce the index size for Western non-English languages
+      significantly
 
-    - Index after compression doesn't take up that much space, and storage is
-      generally cheap enough these days
+- Added screen split ratios for hiding left or right pane completely
 
-- Adjusted cache eviction behaviour to be less strict on when eviction happens
-  and thus less expensive
+- Minor UI/UX fixes
 
-- Renamed `--cache-size` to `--cache-soft-limit`
+    - Drop mode is now disabled when search is still ongoing or when either search field or filter field has an error
 
-- Removed periodic GC compact call to avoid freezes when working with many
-  files
+    - Added missing update of search and filter status when undoing/redoing, or when replaying command history
 
-- Removed GC compact call during file indexing core loops to reduce overhead
-
-- Added progress bars to initial document processing stage
-
-- Swapped to using C backend for BLAKE2B hashing, this gives >20x speedup depending on CPU
-
-- Swapped from JSON+GZIP to CBOR+GZIP serialization for indices
-
-- Changed help info rotation key from `h` to `?`
-
-- Renamed discard mode to drop mode
-
-- Added command history editing functionality
-
-- Added `--commands-from` command line argument
-
-- Added `--tokens-per-search-scope-level` command line argument
-
-- Concurrency related bug fixes
-
-    - Unlikely to encounter in normal workflows with human input speed
-
-    - https://github.com/darrenldl/docfd/commit/14fcc45b746e6156f29eb989d70700476977a3d7
-
-    - https://github.com/darrenldl/docfd/commit/bfd63d93562f8785ecad8152005aa0f823185699
-
-    - https://github.com/darrenldl/docfd/commit/4e0aa6785ce80630d0cd3cda6e316b7b15a4fb4b
-
-- Replaced print mode with copy mode
-
-- Replaced single file view with key binding to change screen split ratio
-  to remove feature discrepencies
-
-- Added narrow mode for search scope narrowing
-
-- Renamed `--index-chunk-token-count` to `--index-chunk-size`
-
-- Renamed `--sample-count-per-doc` to `--samples-per-doc`
+        - This is most noticeable when the status indicates an error, but undoing does not return it to OK
