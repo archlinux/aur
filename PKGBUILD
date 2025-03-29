@@ -11,7 +11,7 @@ epoch=1
 pkgdesc='Library for Pamac package manager based on libalpm - flatpak and snap support enabled'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
 	'libalpm.so=15'
 	'flatpak'
