@@ -2,7 +2,7 @@
 
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
-pkgver=0.24.6
+pkgver=0.25.5
 pkgrel=1
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
@@ -35,9 +35,8 @@ source=(
     "https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
-    "python313.patch"
 )
-sha256sums=('cb4e60875cfc59be3b0539dcbaf0370816b6cbb51cc87e01e7b127675199f3bc'
+sha256sums=('41c15a53b6feb385dbf7b2fb7b5b7c7d75c5eb3acdf25d6b45e093c85f6b4f60'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c'
             '64ff19bdd6b7ae294ca79b67f92fa8bf843e9c1941c29911d94dafda30e4a12d')
@@ -45,7 +44,6 @@ sha256sums=('cb4e60875cfc59be3b0539dcbaf0370816b6cbb51cc87e01e7b127675199f3bc'
 prepare() {
     cd "$_pkgname-$pkgver"
     rm -rf dist
-    cat ../python313.patch | patch -p1
 }
 
 build() {
