@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libx11
-pkgver=1.8.11
+pkgver=1.8.12
 pkgrel=1
 arch=('any')
 pkgdesc="X11 client-side library (Android ${_android_arch})"
@@ -21,7 +21,7 @@ makedepends=('android-configure'
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/libX11-${pkgver}.tar.xz"{,.sig}
         '0001-Fix-missing-symbols.patch')
-md5sums=('e12f988eb037b978071e21b2d58d1d70'
+md5sums=('146d770e564812e00f97e0cbdce632b7'
          'SKIP'
          '7aa12ed8ce6ef220c1e0b8c2b2982d27')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
