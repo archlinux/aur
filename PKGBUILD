@@ -12,8 +12,12 @@ arch=("any")
 license=("PSF")
 url="https://github.com/mbr/shutilwhich"
 
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('4292a973312c58ca1935ea75d7bd378b17668ef6aacfc812d00019e0726dea44')
+source=(
+    "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/mbr/$_name/refs/heads/master/LICENSE"
+)
+sha256sums=('4292a973312c58ca1935ea75d7bd378b17668ef6aacfc812d00019e0726dea44'
+            'a5e91eb1396daf80ad69801436d6fa7029141a7e05083af681ff54a57a6d7f9e')
 
 depends=(
     "python"
@@ -48,5 +52,5 @@ check () {
 package () {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
