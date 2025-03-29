@@ -1,9 +1,10 @@
 pkgbase = android-x86-libsm
 	pkgdesc = X11 Session Management library (Android x86)
-	pkgver = 1.2.5
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
+	groups = android-libsm
 	license = custom
 	makedepends = android-configure
 	makedepends = android-x86-xorg-util-macros
@@ -14,10 +15,10 @@ pkgbase = android-x86-libsm
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/libSM-1.2.5.tar.xz
-	source = https://xorg.freedesktop.org//releases/individual/lib/libSM-1.2.5.tar.xz.sig
+	source = https://xorg.freedesktop.org//releases/individual/lib/libSM-1.2.6.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libSM-1.2.6.tar.xz.sig
 	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
-	md5sums = ef6167bfcb675f65a790e0f517a87455
+	md5sums = 3aeeea05091db1c69e6f768e0950a431
 	md5sums = SKIP
 
 pkgname = android-x86-libsm
