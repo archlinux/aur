@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=2.1.1
-_pkgtarget=v2.1.1
+pkgver=2.2.0
+_pkgtarget=v2.2
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
@@ -15,7 +15,8 @@ depends=(
 )
 makedepends=(
   python-build
-  python-hatchling
+  python-setuptools
+  python-wheel
 )
 optdepends=(
   'autoconf: support for Autotools package management'
@@ -55,8 +56,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  ac74fb2cb0ca02061ade7dcd3af09dbb773f2ea694de2c111d82451f4719e0998071b1a1a48d95dc1b6709f401ec4b5b44503881330bdc2a5cb71b930d6271ee
-  47810e0926bf3966d35d72537036279f9d790a5075d2c37748891c3019743c5a8ed44d13f1370759709a35fe5b54e82a9027fb978d3bc150380e1b60aa845b18
+  6ec3d99532770445b629d2174621cea435a21af0533301fede82240babe67fec1491ab8a57753b4936d9b079003e3ab257db7f33a79e536a09d4f88213f4e2cd
+  536ef9c7513a74ba34278d49a2d1566e304281667ec4f0f52634172a1374da7e6280b2fa434836bac1d3760707e43f96a95a7bd69ce861c67a4482f6491144d7
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
