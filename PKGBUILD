@@ -1,7 +1,7 @@
 # Maintainer: Lerentis <lerentis@uploadfilter24.eu>
 
 pkgname=overmind-cli-bin
-pkgver=v1.7.6
+pkgver=v1.7.8
 _build=${pkgver:1}
 pkgrel=1
 pkgdesc='Identify the blast radius and risks for Terraform changes in real time'
@@ -13,8 +13,8 @@ source_x86_64=(${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/overmindte
 source_aarch64=(${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/overmindtech/cli/releases/download/${pkgver}/overmind_cli_${_build}_Linux_arm64.tar.gz)
 
 noextract=(${pkgname}-${pkgver}-x86_64.tar.gz ${pkgname}-${pkgver}-aarch64.tar.gz)
-sha256sums_x86_64=('b7f2b38672d05bc87426cbb0058a1aa992c5eb8e3ef334493def6b822c014ac4')
-sha256sums_aarch64=('f1b43944711c108980b314e650adff80695aace2ee32b081975357e0113e792d')
+sha256sums_x86_64=('95ac07d469b456f248e115b835dd07a95f36db06b38a384f6c55467551392115')
+sha256sums_aarch64=('2c11c8991e105f46f70ea4df6d94b66c899386344aa21e6fe78a27e4594ea978')
 
 prepare() {
 	mkdir -p overmind
