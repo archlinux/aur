@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=DistributionUtils
-_pkgver=0.6-1
+_pkgver=0.6-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Distribution Utilities"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-variancegamma
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('07fb4777b695b505d1dc0cfbc65209da')
-b2sums=('de6ce23b71e16e7be4f51fc425573a02776fceb6fecaf554ae89ba4fc39e54e9f280d2421b1408ad1acb12e3d06f54608aebb383614dcef3b21c81f08720edbf')
+md5sums=('f57fbeda6de9fd18a226c620155b7408')
+b2sums=('5514790c3ed6c9af009f29410b82e754eee4a41fe44fd147125f3f6d3bac9b16120f079f0ba53d5c840ceb1ade9cc2239e0ec28ffaa3dfc1cb785c3ce9bffb8b')
 
 build() {
   mkdir build
