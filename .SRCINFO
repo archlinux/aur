@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-xtrans
 	pkgdesc = X transport library (Android aarch64)
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = android-aarch64-xtrans
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://xorg.freedesktop.org//releases/individual/lib/xtrans-1.5.2.tar.xz
-	md5sums = 1155b410c778f805659baf4373db2b92
+	source = https://xorg.freedesktop.org//releases/individual/lib/xtrans-1.6.0.tar.xz
+	md5sums = 6ad67d4858814ac24e618b8072900664
 
 pkgname = android-aarch64-xtrans
