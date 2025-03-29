@@ -13,6 +13,7 @@ depends=(
   'usbutils'
   'xorg-xrandr'
 )
+makedepends=('make' 'gcc')
 
 pkgver() {
     cd "$srcdir/khazarfetch"
