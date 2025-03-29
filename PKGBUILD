@@ -1,4 +1,5 @@
 pkgname=mingw-w64-spirv-tools
+epoch=1
 pkgver=1.4.309.0
 _tag="vulkan-sdk-${pkgver}"
 pkgrel=1
