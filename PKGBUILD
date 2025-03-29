@@ -3,7 +3,7 @@
 _base=jupyter-book
 pkgname=python-${_base}
 pkgdesc="Build a book with Jupyter Notebooks and Sphinx"
-pkgver=2.0.0a2
+pkgver=2.0.0a3
 pkgrel=1
 arch=(any)
 url="https://${_base/-/}.org"
@@ -11,7 +11,7 @@ license=(BSD-3-Clause)
 depends=(python-jupyter-core jupyter-server python-ipykernel python-platformdirs nodejs npm)
 makedepends=(python-build python-installer python-hatch-nodejs-version python-hatch-deps-selector python-hatch-jupyter-builder)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('6f10f3fc4c8c712e7916fdfd8810e0a6b22c45ec419ee330212552139784adcc528644f00daf61e1be0df08e76845a01296ac6c866c9cab1ea03553c719ec8de')
+sha512sums=('6b6c398294b09684dc3cd740afef526ce761ffbea1ef6c3e3d858a792d54eefaa88bf121fc2774320155078139ace503e29172cc718339d2a5a4651dc649ae3e')
 
 build() {
   cd ${_base}-${pkgver}
