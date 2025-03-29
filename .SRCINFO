@@ -1,0 +1,13 @@
+pkgbase = twenty-twenty-twenty
+	pkgdesc = 20-20-20 is a program that alerts every 20 minutes to look something at 20 feet away for 20 seconds, written in Golang.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thiagokokada/twenty-twenty-twenty
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = alsa-lib
+	source = https://github.com/thiagokokada/twenty-twenty-twenty/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = twenty-twenty-twenty
