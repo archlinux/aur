@@ -7,10 +7,10 @@ url="https://github.com/hakimel/reveal.js"
 license=(MIT)
 makedepends=('npm')
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('57fb12ee53fd7a4b999b455461e332d560191f1dd5108e9ec5f43d8a6c17cbf5'
+sha256sums=('359b575dd51bbda32f89b2fd4c7dc46ad7389a805572158916c29252f7a27333'
             '34014800f4126ac2525e224166f099f26628612e95c41f76d70841b63138c989')
 arch=(any)
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 source=(
 	"${_pkgname}-${pkgver}.tgz"::"https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
