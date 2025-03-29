@@ -28,6 +28,7 @@ makedepends=(
 )
 optdepends=(
   'streamlink: For piping streams to video players'
+  'qt6-wayland: For Wayland support'
 )
 
 provides=('chatterino')
@@ -115,7 +116,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DUSE_SYSTEM_QTKEYCHAIN=ON
     -DUSE_PRECOMPILED_HEADERS=OFF
-    -DBUILD_WITH_QT6=ON
     -DCHATTERINO_UPDATER=OFF
     -Wno-dev
   )

@@ -20,6 +20,7 @@ pkgbase = chatterino2-7tv-native-git
 	depends = qt6-svg
 	depends = qtkeychain-qt6
 	optdepends = streamlink: For piping streams to video players
+	optdepends = qt6-wayland: For Wayland support
 	provides = chatterino
 	conflicts = chatterino
 	options = !lto
