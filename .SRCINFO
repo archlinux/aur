@@ -1,5 +1,5 @@
 pkgbase = parus
-	pkgdesc = A package search tool for Paru using Skim. It can be used to install, upgrade, query and remove packages.
+	pkgdesc = A package search tool for Paru using Skim
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/salvoton/parus

@@ -2,7 +2,7 @@
 pkgname=parus
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A package search tool for Paru using Skim. It can be used to install, upgrade, query and remove packages."
+pkgdesc="A package search tool for Paru using Skim"
 arch=("any")
 url="https://github.com/salvoton/parus"
 license=("GPL")
