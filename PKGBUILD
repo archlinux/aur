@@ -3,7 +3,7 @@
 _pkgname=glslang
 pkgname=mingw-w64-${_pkgname}
 pkgver=15.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
 url='https://github.com/KhronosGroup/glslang'
@@ -20,6 +20,11 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DALLOW_EXTERNAL_SPIRV_TOOLS=ON )
+
+prepare() {
+	cd "$_srcdir"
+	sed -i 's/if (NOT BUILD_SHARED_LIBS)/if (1)/' 'SPIRV/CMakeLists.txt'
+}
 
 build() {
 	for _arch in ${_architectures}; do
