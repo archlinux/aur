@@ -12,7 +12,7 @@ depends=('qt5-tools' 'qt5-multimedia' 'libjpeg-turbo' 'libpng12' 'gsl' 'openmpi'
 provides=($pkgname)
 conflicts=($pkgname)
 source=("${pkgname}::https://github.com/buddhi1980/mandelbulber2/archive/2.33.tar.gz")
-sha256sums=('dc52488bdcec95ce8bb6044938b968c04b0b4dfde14b1868e01f2ae39eefbe6f')
+sha256sums=('4ac632f40c10c9582f74ff8e6a8df9b6e2e6b4cab3e4daf9f74ed7ba736e1b60')
 
 build()
 {
