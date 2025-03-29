@@ -1,6 +1,6 @@
 pkgbase = resources-git
 	pkgdesc = Monitor your system resources and processes
-	pkgver = 1.6.0.r52.g46a50ba
+	pkgver = 1.8.0.r4.g1e08f67
 	pkgrel = 1
 	url = https://apps.gnome.org/Resources
 	arch = x86_64
