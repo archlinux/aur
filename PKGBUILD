@@ -1,14 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-mullvad-indicator-git
 _uuid=mullvadindicator@pobega.github.com
-pkgver=45.r1.g7727c09
+pkgver=48.r0.g7954eb1
 pkgrel=1
 pkgdesc="GNOME extension to track Mullvad connectivity"
 arch=('any')
 url="https://github.com/Pobega/gnome-shell-extension-mullvad-indicator"
 license=('Apache-2.0')
 depends=('gnome-shell')
-makedepends=('git' 'zip')
+makedepends=(
+  'git'
+  'zip'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Pobega/gnome-shell-extension-mullvad-indicator.git')
@@ -16,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
