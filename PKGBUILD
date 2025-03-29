@@ -13,8 +13,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/spm-$pkgver.ta
 sha256sums=('21ea35fc7ee6a88072e863257952825c49dd02feeae4274d722cf63fcfb64d5a')
 
 package() {
-    cd "$srcdir/spm-1.0.1"
-    
+    cd "$srcdir"
+
     # Install main script
     install -Dm755 spm.sh "$pkgdir/usr/bin/spm"
     # Install systemd service and timer
