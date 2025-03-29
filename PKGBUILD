@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL')
 makedepends=('cryptsetup')
 source=('support-detached-header.patch')
-sha256sums=('52012bd402eae8b46c3368711d790643581fdfad27eae3bb894e1cc407a6ce15')
+sha256sums=('a880da9ac283f7d13d0cb1a175a6b26c517d4cfcb819cffbe181375328f80b76')
 
 build() {
     cp /usr/lib/initcpio/install/encrypt install-encrypt-dh
