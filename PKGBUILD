@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=7.82
+pkgver=8.01
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('MIT')
 # While cuda and nvidia are not strictly necessary accoring the ldd
 # the program will not work at all without them installed.
 depends=('cuda>=10' 'ffmpeg' 'libass' 'vapoursynth' 'libdovi')
-makedepends=('git' 'gcc13' 'cargo-c')
+makedepends=('git' 'gcc' 'cargo-c')
 source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/tplgy/cppcodec.git
         ldflags-adjustments.patch)
-sha256sums=('c5875551a3bddde5478e30b199c82b304120bf50d372a9d79ccd95a267f72ffb'
+sha256sums=('490498128db220ccd931b8528c17acfe7f09878e59cb44106e01d326fcb8a183'
             'SKIP'
             '9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5')
 
@@ -28,7 +28,7 @@ build() {
 	git submodule init
 	git config --local submodule.cppcodec "$srcdir/cppcodec"
         git submodule update cppcodec
-	CXX=g++-13 ./configure --prefix=/usr
+	./configure --prefix=/usr
 	make
 }
 
