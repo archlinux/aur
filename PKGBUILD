@@ -7,7 +7,7 @@
 # Contributor: Mike Douglas <code_monkey@gooeylinux.org>
 
 pkgname="gtypist"
-pkgver=2.10
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Universal typing tutor"
 arch=('x86_64')
@@ -17,9 +17,9 @@ depends=('glibc' 'ncurses' 'perl')
 makedepends=('help2man')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz"
-#         "${_pkgsrc}.tar.gz.sig::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz.sig"
+        # "${_pkgsrc}.tar.gz.sig::https://ftp.gnu.org/gnu/${pkgname}/${_pkgsrc}.tar.gz.sig"
         "${pkgname}_ncurses_is_ncursesw.patch")
-sha256sums=('f1e79cd95742c84c6d035f6d8f393a2a1be0e00b1c016a22462df16d6667562c'
+sha256sums=('09fdea05597b9c44e28dd795b8c9eb79a6afe4d02fef19ea6eb9956bc0813413'
             '9de7d6ef0bafc559a50011ca1ad4f66d43e955016f03475488b09e9dd7b08740')
 # validpgpkeys=('F8F09C0B79F90A20F953FB1CA6D813D8C94AFA52'  # Tim Marston <edam@waxworlds.org>
 #               '02AEC665007301C280C5C43A0FB807D2E7C7C96C') # 
