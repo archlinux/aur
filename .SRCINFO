@@ -1,6 +1,6 @@
 pkgbase = librime-qjs-git
 	pkgdesc = Rime input method engine, with librime-qjs
-	pkgver = r169.bde86b3
+	pkgver = 1.0.0.r21.gbde86b3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/HuangJian/librime-qjs

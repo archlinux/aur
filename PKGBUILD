@@ -1,7 +1,7 @@
 # Maintainer: XYenon <i@xyenon.bid>
 
 pkgname=librime-qjs-git
-pkgver=r169.bde86b3
+pkgver=1.0.0.r21.gbde86b3
 # https://gitlab.archlinux.org/archlinux/packaging/packages/librime/-/blob/main/PKGBUILD
 _librimetag=1.12.0
 _octagramcommit=dfcc15115788c828d9dd7b4bff68067d3ce2ffb8
@@ -55,7 +55,7 @@ pkgver() {
     cd librime/plugins/librime-qjs
     (
         set -o pipefail
-        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags --abbrev=7 --exclude=latest 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
