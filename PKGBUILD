@@ -1,6 +1,6 @@
 pkgname=mingw-w64-spirv-headers
 epoch=1
-pkgver=1.3.283.0
+pkgver=1.4.309.0
 pkgrel=1
 pkgdesc='SPIR-V Headers (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-${pkgver}/spirv-headers-${pkgver}.tar.gz")
-sha256sums=('a68a25996268841073c01514df7bab8f64e2db1945944b45087e5c40eed12cb9')
+sha256sums=('a96f8b4f2dfb18f7432e5c523e220ab0075372a9509e0c25fbff21c76af0de7c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
