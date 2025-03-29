@@ -1,0 +1,25 @@
+pkgbase = gpstk-git
+	pkgdesc = Core library and applications for use with GNSS/ satellite navigation (deprecated; upstream project is archived, successor: 'gnsstk' and 'gnsstk-apps'.)
+	pkgver = 8.0.0+16.r6655.20220528.a39846939
+	pkgrel = 1
+	url = https://gitlab.com/sgl-ut/gpstk
+	arch = i686
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	optdepends = bash: For '/usr/bin/gpstk-config'.
+	provides = gpstk=8.0.0+16.r6655.20220528.a39846939
+	provides = df_diff
+	provides = libgpstk.so
+	conflicts = gpstk
+	conflicts = df_diff
+	conflicts = gnsstk-apps
+	conflicts = libgpstk.so
+	source = gpstk::git+https://gitlab.com/sgl-ut/gpstk.git
+	sha256sums = SKIP
+
+pkgname = gpstk-git
