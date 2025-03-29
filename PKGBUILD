@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='An open-source audio processing library for changing the tempo, pitch and playback rates of audio streams or audio files (32 bit)'
 arch=('x86_64')
 url='https://www.surina.net/soundtouch'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('lib32-gcc-libs' $_pkgname)
 makedepends=('cmake' 'git' 'ninja')
 source=("git+https://codeberg.org/$_pkgname/$_pkgname.git#tag=${pkgver}")
