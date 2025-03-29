@@ -4,7 +4,7 @@
 _pkgname=gnsstk
 pkgname="${_pkgname}-git"
 pkgver=14.3.0+25.r7729.20231218.cbba16f6d
-pkgrel=4
+pkgrel=5
 pkgdesc="Library for GNSS (Global Navigation Satellite System) stuff: Provides a core library to facilitate the development of GNSS applications."
 arch=(
   "i686"
@@ -100,19 +100,27 @@ build() {
     #-DPIP_WHEEL_SWITCH=OFF # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4.
     #-DPYTHON_USER_INSTALL=OFF # Currently, fails to build the python binding; see https://gitlab.com/sgl-ut/gnsstk/-/issues/4.
     -DTEST_SWITCH=ON
+    -DUSE_RPATH=OFF
+    -DVERSIONED_HEADER_INSTALL=ON
   )
 
   cmake -S "${_pkgname}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPYTHON_INSTALL_PREFIX=/usr \
-    -DTEST_SWITCH=OFF \
-    -DVERSIONED_HEADER_INSTALL=OFF \
     "${_cmake_config_opts[@]}" \
     -Wno-dev
 
   make -C build
 }
+
+# 2025-03-29: Tests fail.
+#check() {
+#  cd "${srcdir}"
+#
+#  make -C build test
+#}
+
 package() {
   cd "${srcdir}"
 
