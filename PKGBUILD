@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=shef
 # renovate: datasource=github-releases depName=eduardoagarcia/shef
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='directory and filename linter'
 arch=('x86_64')
@@ -9,7 +9,7 @@ _repo_prefix='github.com/eduardoagarcia'
 _repo_name="${pkgname%-git}"
 url="https://${_repo_prefix}/${_repo_name}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('739086216b0bd6711b22cf4344e1c73588694a3bdca264e78b1bd512449cb861')
+sha256sums=('1f00449a462879e03534d939171b3dbbe58fa68854d392e3b5e66a7d8d2a62c1')
 license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')
