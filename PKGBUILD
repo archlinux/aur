@@ -1,5 +1,5 @@
 pkgname=xnedit
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="XNEdit text editor (a fork of the classic NEdit)"
 url=https://github.com/unixwork/xnedit
@@ -21,7 +21,7 @@ makedepends=(
 	pkg-config
 )
 source=(git+https://github.com/unixwork/xnedit#tag=v$pkgver)
-sha256sums=('2ffbab8daf4f776e5d6ad8d2799656e42dab8f1b2e580a3f6662904c9ec8a306')
+sha256sums=('ae188af55ea747b3ffc9f7a0e2d69d805de7d4045598d062a9d567adff0c16c9')
 
 prepare() {
 	cd $pkgname
