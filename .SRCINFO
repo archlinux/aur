@@ -1,0 +1,16 @@
+pkgbase = lonefire
+	pkgdesc = A tool downloading artworks which format is PNG/JPG format on pixiv
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Syukkic/lonefire
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rustup
+	makedepends = git
+	depends = glibc
+	depends = openssl
+	depends = gcc-libs
+	source = lonefire-0.1.0.tar.gz::https://github.com/Syukkic/lonefire/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 52c929f8c035da78b680f78d14a8c298cb6d8538fa3104ee2b96549c0ad03aeb
+
+pkgname = lonefire
