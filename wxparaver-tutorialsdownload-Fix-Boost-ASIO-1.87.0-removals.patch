@@ -1,0 +1,87 @@
+From 7ecd888e2ebb9e8c5582851d3c50bff61022708e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sat, 29 Mar 2025 18:14:25 +0000
+Subject: [PATCH] tutorialsdownload: Fix Boost ASIO 1.87.0 removals
+
+---
+ src/tutorialsdownload.cpp | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
+
+diff --git a/src/tutorialsdownload.cpp b/src/tutorialsdownload.cpp
+index a1921fd..6ce9dc2 100644
+--- a/src/tutorialsdownload.cpp
++++ b/src/tutorialsdownload.cpp
+@@ -121,13 +121,13 @@ void TutorialsProgress::updateInstall( int whichValue )
+ class client
+ {
+   public:
+-    client( boost::asio::io_service& io_service,
++    client( boost::asio::io_context& io_context,
+             boost::asio::ssl::context& context,
+             const std::string& server, const std::string& path,
+             ofstream& storeFile,
+             TutorialsProgress *progress )
+-            : resolver_( io_service ),
+-              socket_( io_service, context ),
++            : resolver_( io_context ),
++              socket_( io_context, context ),
+               store_( storeFile ),
+               progress_( progress )
+     {
+@@ -143,8 +143,7 @@ class client
+ 
+         // Start an asynchronous resolve to translate the server and service names
+         // into a list of endpoints.
+-        tcp::resolver::query query( server, "https" );
+-        resolver_.async_resolve( query,
++        resolver_.async_resolve( server, "https",
+                                  boost::bind( &client::handle_resolve,
+                                               this,
+                                               boost::asio::placeholders::error,
+@@ -154,7 +153,7 @@ class client
+   private:
+ 
+     void handle_resolve( const boost::system::error_code& err,
+-                         tcp::resolver::iterator endpoint_iterator )
++                         const tcp::resolver::results_type& endpoints )
+     {
+       if ( !err )
+       {
+@@ -162,7 +161,7 @@ class client
+         socket_.set_verify_callback( boost::bind( &client::verify_certificate, this, _1, _2 ) );
+ 
+         boost::asio::async_connect( socket_.lowest_layer(), 
+-                                    endpoint_iterator,
++                                    endpoints,
+                                     boost::bind( &client::handle_connect, 
+                                                  this,
+                                                  boost::asio::placeholders::error ) );
+@@ -536,9 +535,9 @@ bool TutorialsDownload::downloadTutorialsList() const
+     boost::asio::ssl::context ctx( boost::asio::ssl::context::sslv23 );
+     ctx.set_default_verify_paths();
+ 
+-    boost::asio::io_service io_service;
+-    client c( io_service, ctx, server, path, storeFile, nullptr );
+-    io_service.run();
++    boost::asio::io_context io_context;
++    client c( io_context, ctx, server, path, storeFile, nullptr );
++    io_context.run();
+ 
+     doneDownload = true;
+   }
+@@ -580,9 +579,9 @@ bool TutorialsDownload::download( const TutorialData& whichTutorial, string& tut
+     boost::asio::ssl::context ctx( boost::asio::ssl::context::sslv23 );
+     ctx.set_default_verify_paths();
+ 
+-    boost::asio::io_service io_service;
+-    client c( io_service, ctx, std::string( server.mb_str() ), std::string( path.mb_str() ), storeFile, &progress );
+-    io_service.run();
++    boost::asio::io_context io_context;
++    client c( io_context, ctx, std::string( server.mb_str() ), std::string( path.mb_str() ), storeFile, &progress );
++    io_context.run();
+   }
+   catch ( ParaverKernelException& e )
+   {
+-- 
+2.49.0
+
