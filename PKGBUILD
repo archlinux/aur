@@ -3,7 +3,7 @@
 
 pkgname=jeveassets
 pkgver=7.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
