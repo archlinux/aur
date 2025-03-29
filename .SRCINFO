@@ -1,0 +1,22 @@
+pkgbase = vapour
+	pkgdesc = An alternative open source Steam client
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Daniel-Griffiths/vapour
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = yarn
+	depends = nss
+	depends = libcups
+	depends = gtk3
+	depends = alsa-lib
+	source = https://github.com/Daniel-Griffiths/vapour/archive/refs/tags/2.0.1.tar.gz
+	source = Vapour.desktop
+	source = icon.svg
+	sha256sums = a5ab8fef8079d665e45de1696dd8e5d65acc3f8651a4e77ef86b59ddacffa33d
+	sha256sums = fd4f30c2b1a0fd4524ed9978eb716f3eefc7dddefa2247e0e57146f0d5874624
+	sha256sums = 7f05435023e9dafeedd74769ac66dcc73fadf35ad24c8b2fe9509c37375bf401
+	depends_x86_64 = lib32-at-spi2-core
+
+pkgname = vapour

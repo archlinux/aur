@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+TryExec=vapour
+Exec=vapour
+Icon=vapour
+Categories=Network;Game;
+MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink
+
+Name=Vapour
+GenericName=Game Manager
+Comment=An alternative open source Steam client
+
