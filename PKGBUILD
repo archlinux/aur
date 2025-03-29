@@ -4,16 +4,16 @@
 
 _target=aarch64-none-elf
 pkgname=${_target}-gcc-bin
-pkgver=13.3.rel1
+pkgver=14.2.rel1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM64 target"
 arch=('x86_64' 'aarch64')
 url="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads"
 license=('GPL' 'LGPL')
 source_x86_64=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${CARCH}-${_target}.tar.xz)
-sha256sums_x86_64=('7fedf894040580b1db747d06ac5d4263c46e591ffe7695656d1da5accb00a159')
+sha256sums_x86_64=('eb54c4727440d03199a6af9a6d021e77f45410cad39effce4e5a1c10a88b7f04')
 source_aarch64=(https://developer.arm.com/-/media/Files/downloads/gnu/${pkgver}/binrel/arm-gnu-toolchain-${pkgver}-${CARCH}-${_target}.tar.xz)
-sha256sums_aarch64=('fad7d567be5c095943d42f7078ea6f9a8452062dfe151152c2ec825814d254e0')
+sha256sums_aarch64=('c4f0daab43f78e0d56ec2bdad76b98a0223ce12ce7fc51a6ce82f9cc6c6dfba0')
 options=('!strip' '!debug')
 provides=(aarch64-none-elf-gcc aarch64-none-elf-gcc-binutils aarch64-none-elf-gdb)
 conflicts=(aarch64-none-elf-toolchain aarch64-none-elf-gcc aarch64-none-elf-gcc-binutils aarch64-none-elf-gdb)
