@@ -4,7 +4,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libfabric
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 arch=('any')
 pkgdesc="User-space API for OpenFabrics Interfaces (OFI) (Android ${_android_arch})"
@@ -19,7 +19,7 @@ source=("https://github.com/ofiwg/libfabric/releases/download/v${pkgver}/libfabr
         '0003-Remove-shmctl.patch'
         '0004-Fix-osd.patch'
         '0005-Fix-smr.patch')
-md5sums=('5a7559e18ed934ad6112498daf57b1e1'
+md5sums=('5739118445d72d6ed960d606eff5791b'
          'a86bc3102e6f00bb8310cd42250c80ab'
          '0eda3ac07a34acb8a50a3472dacc7d9b'
          '0d567377eeab5a196dc87fe7ee2171a2'
