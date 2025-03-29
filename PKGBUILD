@@ -44,10 +44,14 @@ source=(
   "git+https://github.com/pajlada/signals"
   "git+https://github.com/Neargye/magic_enum"
   "git+https://github.com/mackron/miniaudio"
+  "git+https://github.com/lua/lua"
+  "git+https://github.com/ThePhD/sol2"
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/nativeQT-and-StyleSheet.patch"
   "https://github.com/hekel/chatterino-stuffs/raw/refs/heads/master/native-qt/fix-svg-icons.patch"
 )
 sha256sums=(
+  'SKIP'
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -95,6 +99,8 @@ prepare () {
   git config submodule.lib/websocketpp.url "$srcdir/websocketpp"
   git config submodule.lib/miniaudio.url "$srcdir/miniaudio"
   git config submodule.lib/magicenum.url "$srcdir/magicenum"
+  git config submodule.lib/sol2.url "$srcdir/sol2"
+  git config submodule.lib/lua/src.url "$srcdir/lua"
   git config submodule.tools/crash-handler.url "$srcdir/crash-handler"
   git -c protocol.file.allow=always submodule update
 }
@@ -134,7 +140,7 @@ package() {
 
   cd "$_pkgsrc"
 
-  install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
+  install -Dm644 "resources/com.chatterino.chatterino.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/com.chatterino.chatterino.png"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
