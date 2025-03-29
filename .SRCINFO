@@ -1,18 +1,23 @@
 pkgbase = css-loader-desktop-bin
 	pkgdesc = The official desktop app for CSSLoader (Decky Loader Required)
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DeckThemes/CSSLoader-Desktop
 	arch = x86_64
 	license = GPL
 	depends = fuse2
 	depends = openssl-1.1
-	depends = libgtk3
+	depends = gtk3
 	depends = libglvnd
 	depends = cairo
 	depends = david
 	depends = graphite
 	depends = libcloudproviders
+	depends = dbus
+	depends = brotli
+	depends = libwebp
+	depends = libxrandr
+	depends = libxcursor
 	source = https://github.com/DeckThemes/CSSLoader-Desktop/releases/download/v1.2.1/CSSLoader.Desktop_1.2.1.AppImage
 	sha256sums = SKIP
 

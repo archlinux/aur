@@ -1,14 +1,14 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=css-loader-desktop-bin
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="The official desktop app for CSSLoader (Decky Loader Required)"
 arch=(x86_64)
 url="https://github.com/DeckThemes/CSSLoader-Desktop"
 license=('GPL')
 groups=()
-depends=("fuse2" "openssl-1.1" "gtk3" "libglvnd" "cairo" "david" "graphite" "libcloudproviders")
+depends=("fuse2" "openssl-1.1" "gtk3" "libglvnd" "cairo" "david" "graphite" "libcloudproviders" "dbus" "brotli" "libwebp" "libxrandr" "libxcursor")
 makedepends=()
 checkdepends=()
 optdepends=()
