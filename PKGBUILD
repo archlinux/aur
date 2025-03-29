@@ -7,7 +7,7 @@
 
 _suffix=browser
 pkgname="obs-studio-${_suffix}"
-_pkgver=31.0.2
+_pkgver=31.0.3
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
