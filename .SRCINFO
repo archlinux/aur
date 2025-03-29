@@ -10,7 +10,6 @@ pkgbase = css-loader-desktop-bin
 	depends = gtk3
 	depends = libglvnd
 	depends = cairo
-	depends = david
 	depends = graphite
 	depends = libcloudproviders
 	depends = dbus
