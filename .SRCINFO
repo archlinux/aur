@@ -1,6 +1,6 @@
 pkgbase = librime-qjs-git
 	pkgdesc = Rime input method engine, with librime-qjs
-	pkgver = r79.4c08cc3
+	pkgver = r169.bde86b3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/HuangJian/librime-qjs
@@ -11,6 +11,7 @@ pkgbase = librime-qjs-git
 	makedepends = boost
 	makedepends = gtest
 	makedepends = ninja
+	makedepends = npm
 	depends = boost-libs
 	depends = capnproto
 	depends = gcc-libs
@@ -22,19 +23,20 @@ pkgbase = librime-qjs-git
 	depends = lua
 	depends = google-glog
 	depends = marisa
-	depends = quickjs-ng
-	provides = librime
+	provides = librime=1.12.0
 	conflicts = librime
 	source = git+https://github.com/rime/librime.git#tag=1.12.0
 	source = git+https://github.com/lotem/librime-octagram.git#commit=dfcc15115788c828d9dd7b4bff68067d3ce2ffb8
 	source = git+https://github.com/hchunhui/librime-lua.git#commit=e3912a4b3ac2c202d89face3fef3d41eb1d7fcd6
 	source = git+https://github.com/HuangJian/librime-qjs.git
+	source = git+https://github.com/quickjs-ng/quickjs.git
 	source = git+https://github.com/rime/librime-charcode.git#commit=55e7f563e999802d41a13ba02657c1be4b2011b4
 	source = git+https://github.com/lotem/librime-proto.git#commit=657a923cd4c333e681dc943e6894e6f6d42d25b4
 	source = git+https://github.com/rime/librime-predict.git#commit=920bd41ebf6f9bf6855d14fbe80212e54e749791
 	sha512sums = 3c2ad932f4c87226f11646f6ee3bc4f18387dc776956cdee913feca753f00fa523b32d562020544d8ce0d63bf33fa71d6dacaac4c7628a941878dc27c4c8981b
 	sha512sums = 1d4c633d15a810b97171f9d44c8474b59e857253310a961a2ab93042bc8bc5c86e549c60816470959c35b68909fcfad14e0661ca28627289f18c1445eb690485
 	sha512sums = 241475088d11d76f947dfe008d1e7b772014f00520f96f97bd1c98d9c8706180398e7d9f8fe47e1d6ec9963470911ce8825fc8cb23e24eb2ac094f8dcf6241d1
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = c21a1384f7eba77afdcda4bd0cffcdfa1bc6989e009f02c685160de443f8fc658bee7def57fe93162b3d5f31d366b48271d7204b4f6e7dd057facb2787703a15
 	sha512sums = e9b2aa47a87f96af97fc55686e85d905bd7bb06b633a9a318aeeea2731d87b38e50f9f821c2e68a30d58f4daaeaff97124247c1028a049ced922c6e7b4cc20ab
