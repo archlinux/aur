@@ -1,0 +1,11 @@
+--- a/ze_graph_ext.h
++++ b/ze_graph_ext.h
+@@ -11,7 +11,7 @@
+ #pragma once
+ #endif
+ 
+-#include "ze_api.h"
++#include <level_zero/ze_api.h>
+ #include "ze_graph_profiling_ext.h"
+ 
+ #ifndef ZE_GRAPH_EXT_NAME

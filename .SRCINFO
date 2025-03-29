@@ -1,6 +1,6 @@
 pkgbase = intel-npu-driver
 	pkgdesc = Intel Neural Processing Unit (NPU) driver
-	pkgver = 1.13.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/intel/linux-npu-driver/
 	install = intel-npu-driver.install
@@ -11,14 +11,14 @@ pkgbase = intel-npu-driver
 	makedepends = git
 	makedepends = level-zero-headers
 	makedepends = libdrm
+	depends = gcc-libs
+	depends = glibc
 	depends = gtest
-	depends = openssl
 	depends = level-zero-loader
 	depends = opencv
-	depends = systemd-libs
 	depends = yaml-cpp
 	optdepends = intel-npu-compiler: for compiling OpenVINO IR models
-	source = git+https://github.com/intel/linux-npu-driver.git#tag=v1.13.0
+	source = git+https://github.com/intel/linux-npu-driver.git#tag=v1.16.0
 	source = git+https://github.com/intel/level-zero-vpu-extensions.git
 	source = git+https://github.com/openvinotoolkit/vpux_plugin_elf.git
 	source = git+https://android.googlesource.com/platform/external/perfetto.git
@@ -27,14 +27,16 @@ pkgbase = intel-npu-driver
 	source = 020-intel-npu-driver-rename-installed-binaries.patch
 	source = 030-intel-npu-driver-disable-gtest-and-yaml.patch
 	source = 040-intel-npu-driver-fix-firmware-install-path.patch
-	sha256sums = f6342398f4d219b7fc734b03e0c90abcd6149444eea93a00ace409774f1f9a5b
+	source = 050-intel-npu-driver-use-system-level-zero.patch
+	sha256sums = 3efe31c3bd568181bae3b077d234e460104d8ecffb9feb82e9c80de87e8d4e40
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe
-	sha256sums = 4dad75ab65bd244d1be9a3bc62ff81da357c3a181693761081acaa82be3fe6b3
-	sha256sums = 898c41bb43b4d53ea0ab61bc8aad37b51702826442a9bfba08476804993dcba1
+	sha256sums = 5b6f0d482c1597c72dc37b16378f5c3891e8744e10f75e4a2f6784f13d6e0469
+	sha256sums = cb63bccfcd662dafb5c4e1013ede4ea741bd33dadb87cf06a05be29bc1c3e892
 	sha256sums = 861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8
 	sha256sums = c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825
+	sha256sums = a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25
 
 pkgname = intel-npu-driver
