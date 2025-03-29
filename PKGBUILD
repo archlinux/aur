@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libavif
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=('any')
 pkgdesc="Library for encoding and decoding .avif files (Android ${_android_arch})"
@@ -22,7 +22,7 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/archive/v${pkgver}/libavif-${pkgver}.tar.gz")
-md5sums=('ec292cb8d51c0aa02f9fd5ef2419c853')
+md5sums=('042743746b899c94b84749b852ccc018')
 
 build() {
     cd "${srcdir}/libavif-${pkgver}"
