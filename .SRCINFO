@@ -1,7 +1,7 @@
 pkgbase = thunderbird-dkimverifier
 	pkgdesc = Thunderbird add-on that verifies DKIM signatures according to the RFC 6376
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lieser/dkim_verifier
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = thunderbird-dkimverifier
 	noextract = dkim_verifier.xpi
 	noextract = LICENSE
 	noextract = THIRDPARTY_LICENSE
-	source = dkim_verifier.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/dkim-verifier/addon-438634-latest.xpi?src=dp-btn-primary
+	source = dkim_verifier.xpi::https://github.com/lieser/dkim_verifier/releases/download/v6.0.1/dkim_verifier-6.0.1.xpi
 	source = LICENSE::https://raw.githubusercontent.com/lieser/dkim_verifier/refs/tags/v6.0.1/LICENSE.txt
 	source = THIRDPARTY_LICENSE::https://raw.githubusercontent.com/lieser/dkim_verifier/refs/tags/v6.0.1/THIRDPARTY_LICENSE.txt
 	sha256sums = f7b0e4849b8c2b218c1927e145994e544808781c1a10607cda9d1d868c2bd7bb

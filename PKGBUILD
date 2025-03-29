@@ -5,14 +5,14 @@
 _dkim='dkim_verifier'
 pkgname='thunderbird-dkimverifier'
 pkgver=6.0.1
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Thunderbird add-on that verifies DKIM signatures according to the RFC 6376'
 arch=('any')
 url="https://github.com/lieser/${_dkim}"
 license=('MIT')
 depends=('thunderbird')
 source=(
-  "${_dkim}.xpi::https://addons.mozilla.org/thunderbird/downloads/latest/dkim-verifier/addon-438634-latest.xpi?src=dp-btn-primary"
+  "${_dkim}.xpi::https://github.com/lieser/dkim_verifier/releases/download/v${pkgver}/dkim_verifier-6.0.1.xpi"
   "LICENSE::https://raw.githubusercontent.com/lieser/dkim_verifier/refs/tags/v${pkgver}/LICENSE.txt"
   "THIRDPARTY_LICENSE::https://raw.githubusercontent.com/lieser/dkim_verifier/refs/tags/v${pkgver}/THIRDPARTY_LICENSE.txt"
 )
