@@ -1,41 +1,38 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2
-pkgver=2.2.7
+pkgver=2.2.10
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
 url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=(
+  'dmidecode'
+  'gawk'
   'gtk3'
+  'iperf3'
   'libsoup3'
-)
-makedepends=(
-  'cmake'
+  'lm_sensors'
+  'mesa-utils'
+  'pciutils'
   'qt5-base'
+  'sysbench'
+  'udisks2'
+  'usbutils'
+  'vulkan-tools'
+  'xdg-utils'
 )
+makedepends=('cmake')
 checkdepends=('appstream')
 optdepends=(
-  'dmidecode: Memory Devices / System DMI module'
   'fwupd: Firmware module'
-  'gawk: determine System Type'
-  'iperf3: Internal Network Speed benchmark'
-  'lm_sensors: Sensors module'
-  'mesa-utils: GLX info for Display module'
-  'pciutils: PCI Devices module'
-  'qt5-base: OpenGL benchmark'
-  'sysbench: SysBench CPU benchmark'
-  'udisks2: Storage module'
-  'usbutils: USB Devices module'
-  'vulkan-tools: display Vulkan information'
-  'xdg-utils: open your browser for bugs, homepage & links'
   'xorg-xrandr: read monitor setup'
 )
 provides=('hardinfo')
 conflicts=('hardinfo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('1856d067b5cb8516ef98ca9962d31d68ed14ed66cc42edb93d08265a03bc5f6e')
+sha256sums=('050231efc8a6ff50637872765f31c99367dc43b49f553fa7de93110864515fa9')
 
 build() {
   cmake -B build -S "$pkgname-release-$pkgver" \
