@@ -1,6 +1,6 @@
 pkgbase = python-tensorstore-bin
 	pkgdesc = Library for reading and writing large multi-dimensional arrays.
-	pkgver = 0.1.72
+	pkgver = 0.1.73
 	pkgrel = 1
 	url = https://github.com/google/tensorstore
 	arch = x86_64

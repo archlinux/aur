@@ -3,7 +3,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=python-tensorstore-bin
 _name=tensorstore
-pkgver=0.1.72
+pkgver=0.1.73
 pkgrel=1
 pkgdesc='Library for reading and writing large multi-dimensional arrays.'
 arch=('x86_64' 'aarch64')
