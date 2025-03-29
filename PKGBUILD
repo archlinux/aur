@@ -2,15 +2,15 @@
 
 pkgname=local-ai-vulkan-openblas
 pkgver=2.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The free, Open Source alternative to OpenAI, Claude and others. (Vulkan acceleration and openblas as fallback)"
 provides=(local-ai local-ai-vulkan)
 conflicts=(local-ai local-ai-vulkan)
 arch=(x86_64)
 url=https://localai.io
 license=(MIT)
-depends=(glibc gcc-libs grpc protobuf abseil-cpp zlib piper-phonemize openblas vulkan-icd-loader)
-makedepends=(git cmake go protoc-gen-go protoc-gen-go-grpc upx fmt spdlog blas-openblas blas64-openblas
+depends=(glibc gcc-libs grpc protobuf abseil-cpp zlib openblas vulkan-icd-loader)
+makedepends=(git cmake go protoc-gen-go protoc-gen-go-grpc upx blas-openblas blas64-openblas
              vulkan-headers shaderc)
 source=("git+https://github.com/mudler/LocalAI.git#tag=v$pkgver"
         "local-ai.service")
@@ -20,6 +20,8 @@ sha256sums=('ef5e3a6403e50feb4d16bfd9af958ab6e63eb9c567d9babed524ac7fc0785bb1'
 prepare() {
     cd "$srcdir/LocalAI"
     make prepare-sources
+    sed -i "s/-lfmt -lspdlog -lucd//" \
+        sources/go-piper/Makefile
 }
 
 build() {
@@ -30,10 +32,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    MAKE_COMMON_ARGS=(ONNX_VERSION="$(find /usr/lib -maxdepth 1 -mindepth 1 -type f \
-                                          -name "libonnxruntime.so.*" -printf "%f\n" -quit | \
-                                      sed "s/libonnxruntime.so.//")"
-                      CGO_LDFLAGS_WHISPER="${LDFLAGS}"
+    MAKE_COMMON_ARGS=(CGO_LDFLAGS_WHISPER="${LDFLAGS}"
                       GO_TAGS="stablediffusion,tts,p2p")
     echo "Building llama.cpp-fallback with openblas..."
     make "${MAKE_COMMON_ARGS[@]}" BUILD_TYPE=openblas backend-assets/grpc/llama-cpp-fallback
