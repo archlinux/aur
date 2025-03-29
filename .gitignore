@@ -4,4 +4,6 @@ lunarml-*/
 
 #
 lunarml-*.tar.???
+lunarml-*.zst
+lunarml-*.gz
 

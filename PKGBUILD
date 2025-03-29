@@ -1,7 +1,8 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 
 pkgname=lunarml-git
-pkgver=v0.1.0.r0.g031a459
+_pkgname=${pkgname%-git}
+pkgver=v0.2.1.r4.g9e5351f
 pkgrel=1
 pkgdesc="A Standard ML compiler that produces Lua/JavaScript "
 arch=(x86_64)
@@ -35,11 +36,12 @@ build() {
 
 package() {
   cd ${pkgname}
+  make install PREFIX=${pkgdir}/usr
+  sed -e "s;__LIBDIR__;/usr/lib/lunarml;" < bin/lunarml-wrapper > ${pkgdir}/usr/bin/lunarml
 
-  mkdir -p ${pkgdir}/usr/share/${pkgname}/
-  cp -r example ${pkgdir}/usr/share/${pkgname}/
+  mkdir -p ${pkgdir}/usr/share/${_pkgname}/
+  cp -r example ${pkgdir}/usr/share/${_pkgname}/
 
-  install -Dm755 bin/lunarml ${pkgdir}/usr/bin/lunarml
-  install -Dm644 --target-directory=${pkgdir}/usr/share/licenses/${pkgname} LICENSE
+  install -Dm644 --target-directory=${pkgdir}/usr/share/licenses/${_pkgname} LICENSE
 }
 
