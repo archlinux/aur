@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/hoppscotch/releases/releases/download/v${pkgver}-${pkgrel}/Hoppscotch_linux_x64.deb")
-sha512sums_x86_64=('00cee6e741599d33bf411b29c8005a626d08be19ef866f91418b23dc67224b81049ac5a9c08934be921c61256e5e998d03334e4c289abb7a5f2a5a1117575490')
+sha512sums_x86_64=('b303a83083fd87cc9d8642c54e8d73beb0ea30172867993c2ec041e9a068e6e473786de23bd3c7a5885619bb00279c020044ecc2e129cfa72527f01c350b655f')
 
 package(){
 
