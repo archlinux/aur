@@ -1,7 +1,7 @@
 # Maintainer: Gowtham2003 <gowtham2003g@gmail.com>
 # Contributor: Gowtham2003 <gowtham2003g@gmail.com>
 pkgname=hoppscotch-bin
-pkgver=25.2.3
+pkgver=25.3.0
 pkgrel=0
 pkgdesc="Hoppscotch. Open source API development ecosystem"
 arch=('x86_64')
