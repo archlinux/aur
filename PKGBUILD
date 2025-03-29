@@ -1,10 +1,11 @@
 # Maintainer: Jakub Kądziołka <kuba@kadziolka.net>
 # Maintainer: basxto <archlinux basxto de>
 # Maintainer: ISSOtm <arch@eldred.fr>
+# Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
 
 pkgname=sameboy-git
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
-pkgver=0.16.6.r54.d34579e
+pkgver=1.0.r17.4e35048
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
@@ -13,7 +14,7 @@ provides=(sameboy)
 conflicts=(sameboy)
 depends=(sdl2 hicolor-icon-theme)
 # Upstream suggests using clang, but gcc is supported on Linux: https://github.com/LIJI32/SameBoy/issues/164#issuecomment-486464194
-makedepends=(rgbds make git)
+makedepends=(rgbds make git coreutils)
 source=(git+https://github.com/LIJI32/SameBoy)
 sha1sums=('SKIP')
 
@@ -23,7 +24,7 @@ pkgver() {
 }
 
 build() {
-	make -C SameBoy sdl xdg-thumbnailer CONF=release PREFIX=/usr
+	MAKEFLAGS="${MAKEFLAGS} -j$(nproc)"	make -C SameBoy sdl xdg-thumbnailer CONF=release PREFIX=/usr
 }
 
 package() {
