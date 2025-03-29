@@ -1,6 +1,6 @@
 pkgbase = sing-box-bin
 	pkgdesc = The universal proxy platform (binary version).
-	pkgver = 1.11.5
+	pkgver = 1.11.6
 	pkgrel = 1
 	url = https://github.com/SagerNet/sing-box
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = sing-box-bin
 	sha512sums = 0541f144ee33bb4cb182231794065babae530260b95bff26cbeb5491ab856d40e247895d130629f9dbef58dcd6652f0c69d3e28f57f3bae916d36294565399b0
 	sha512sums = 5afe85ede1e8af0f9caa2db7cd03dec3c7aa0a135feefe26f77748742b22402b90f3d8d8172e535b3c1353b136620e6f20d66d2d782ea8687a66b6c4e6c82650
 	sha512sums = 6f83236630828c2315806f4b857d54266fe06872822b6b6b48c05f21db428e6e1308ffb04cb96fea5a0bf914a2467d7034af4827667389525e8e3b2e234c6528
-	source_x86_64 = sing-box-1.11.5-x86_64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.11.5/sing-box-1.11.5-linux-amd64.tar.gz
-	sha512sums_x86_64 = 852eab24cf3d1b2cb674e794b1503e0b061621bd712f8a15f270ee46587414dfec4ff5c73fa3ff68c9476c3e2b8a929fd97db20f8f4dcc9de7d45098c2480186
-	source_armv7h = sing-box-1.11.5-armv7h.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.11.5/sing-box-1.11.5-linux-armv7.tar.gz
-	sha512sums_armv7h = 19ba731ada2dacf85e43b9ee383ff05636257a20c46de0d7698511fb8b498a9bbf6ccf0c68b7f2a5b42becb47b38030d4f91afad605029e76d1e090a22bc7381
-	source_aarch64 = sing-box-1.11.5-aarch64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.11.5/sing-box-1.11.5-linux-arm64.tar.gz
-	sha512sums_aarch64 = df1ae1fa71d1a7d3e1fb8d1454dd17f57928c8ebb17864c602cc54164f2b86a34819ae9adc5965a65ff81073a09a3082bbc0d27515499c2ed75c84a8bb088504
+	source_x86_64 = sing-box-1.11.6-x86_64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.11.6/sing-box-1.11.6-linux-amd64.tar.gz
+	sha512sums_x86_64 = e453a7daefe1bc05351aa2b2384a208d85d3f4eb3cc7576319d677dfb0ae85b84ff09049dfd958d9b20b13793ab914ec823fa8e227c8b7cbc508eebe7f6cb645
+	source_armv7h = sing-box-1.11.6-armv7h.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.11.6/sing-box-1.11.6-linux-armv7.tar.gz
+	sha512sums_armv7h = 253a57861396729be477be87740afe6ded0e5adb9c189b42141efb58a40a9e8987faed5bed9bbd540ade4cb2e7a60f8ac341ee662accd894bd32867a990fdb57
+	source_aarch64 = sing-box-1.11.6-aarch64.tar.gz::https://github.com/SagerNet/sing-box/releases/download/v1.11.6/sing-box-1.11.6-linux-arm64.tar.gz
+	sha512sums_aarch64 = e8f03a5382ea2891adb7ee790b15adb63d39d60654442d2398520b5bb70d87cef2f07f846126e34ae70b7fac252dbedbc8f5e62423f17af2afcfb61f93e9f764
 
 pkgname = sing-box-bin
