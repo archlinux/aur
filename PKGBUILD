@@ -7,7 +7,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-mpfr
-_pkgver=4.2.1
+_pkgver=4.2.2
 _patchver=0
 
 if (( _patchver == 0 )); then
@@ -22,13 +22,14 @@ pkgdesc="Multiple-precision floating-point library (Android ${_android_arch})"
 url='https://www.mpfr.org/'
 license=('GPL-3.0-or-later'
          'LGPL-3.0-or-later')
+groups=('android-mpfr')
 depends=("android-${_android_arch}-gmp")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 # NOTE: download potentially existing patches from upstream:
 # `curl patches.diff -o https://www.mpfr.org/mpfr-${_pkgver}/allpatches`
-source=("https://ftp.gnu.org/gnu/mpfr/mpfr-$_pkgver.tar.xz"{,.sig})
-md5sums=('523c50c6318dde6f9dc523bc0244690a'
+source=("https://ftp.gnu.org/gnu/mpfr/mpfr-${_pkgver}.tar.xz"{,.sig})
+md5sums=('7c32c39b8b6e3ae85f25156228156061'
          'SKIP')
 validpgpkeys=('07F3DBBECC1A39605078094D980C197698C3739D'
               'A534BE3F83E241D918280AEB5831D11A0D4DB02A') # Vincent Lefevre <vincent@vinc17.net>
@@ -59,7 +60,7 @@ package() {
     cd "${srcdir}/mpfr-${_pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="$pkgdir" install
+    make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
