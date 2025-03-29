@@ -5,6 +5,7 @@ pkgbase = solian
 	url = https://solsynth.dev
 	arch = x86_64
 	license = unknown
+	depends = libnotify>=0.8.6
 	conflicts = solian-bin-git
 	conflicts = solian-bin
 	options = !strip

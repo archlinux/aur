@@ -9,7 +9,9 @@ pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
 url="https://solsynth.dev"
 license=('unknown')
-depends=()
+depends=(
+    "libnotify>=0.8.6"
+)
 options=('!strip')
 source=(
     "Solian-x86_64-$_buildcommit.AppImage::https://raw.github.com/Texas0295/Solian-AUR-Host/main/Solian-x86_64-$_buildcommit.AppImage"
