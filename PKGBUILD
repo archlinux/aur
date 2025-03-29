@@ -17,7 +17,7 @@ makedepends=(
 	gcc
 	git
 	make
-	pod2man
+	perl # pod2man
 	pkg-config
 )
 source=(git+https://github.com/unixwork/xnedit#tag=v$pkgver)
