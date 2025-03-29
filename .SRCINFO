@@ -1,7 +1,7 @@
 pkgbase = css-loader-desktop-bin
 	pkgdesc = The official desktop app for CSSLoader (Decky Loader Required)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DeckThemes/CSSLoader-Desktop
 	arch = x86_64
 	license = GPL

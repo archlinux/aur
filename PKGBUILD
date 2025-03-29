@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=css-loader-desktop-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The official desktop app for CSSLoader (Decky Loader Required)"
 arch=(x86_64)
