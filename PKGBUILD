@@ -1,27 +1,27 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=8.32
+pkgver=8.33
 pkgrel=1
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
 url="https://github.com/rigaya/$_UpstreamPkgName"
 license=('MIT')
 depends=('ffmpeg' 'libass' 'vapoursynth' 'libdovi' 'libhdr10plus-rs')
-makedepends=('git' 'gcc' 'cargo-c')
+makedepends=('git' 'gcc' 'cargo-c' 'amf-headers')
 source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/tplgy/cppcodec.git
-        git+https://github.com/GPUOpen-LibrariesAndSDKs/AMF.git
         git+https://github.com/clMathLibraries/clRNG.git
         git+https://github.com/cubicdaiya/dtl
         ldflags-adjustments.patch
-        fix-finding-hdr10plus.patch)
-sha256sums=('48d9597721ed02c25c016313b7e986b2e6efb7a685916e81ea46c2f5c9f8fded'
-            'SKIP'
+        fix-finding-hdr10plus.patch
+				use-system-AMF-headers.patch)
+sha256sums=('27bca27753bf28da29f946574371ea609eebe77c6a12c83ee4c7d16aa3961fd6'
             'SKIP'
             'SKIP'
             'SKIP'
             '8e6a15e88584bf1bdaa931d010c877b627c706086e449da141dedde95efc8aa4'
-            '58d3b689ef7fa067d5023c44793774661bf12d65514e69136dfc79fc102bd771')
+            '58d3b689ef7fa067d5023c44793774661bf12d65514e69136dfc79fc102bd771'
+            '6a220c869f96750231b87c82faa485a38a715055b09a1de427e8b216e316390f')
 
 prepare() {
 	cd $_UpstreamPkgName
@@ -29,11 +29,11 @@ prepare() {
 	git config --local submodule.cppcodec "$srcdir/cppcodec"
 	git config --local submodule.clRNG "$srcdir/clRNG"
 	git config --local submodule.dtl "$srcdir/dtl"
-	git config --local submodule.AMF "$srcdir/AMF"
 	git -c protocol.file.allow=always submodule update
 
 	patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
 	patch --forward --strip=1 --input="${srcdir}/fix-finding-hdr10plus.patch"
+	patch --forward --strip=1 --input="${srcdir}/use-system-AMF-headers.patch"
 }
 
 build() {
