@@ -9,9 +9,9 @@ pkgdesc='Command line utility for viewing YouTube videos'
 url='https://github.com/trizen/youtube-viewer'
 license=('Artistic2.0')
 epoch=1
-pkgver=3.11.4
+pkgver=3.11.5
 pkgrel=1
-depends=(perl perl-data-dump perl-file-sharedir perl-json perl-lwp-protocol-https perl-libwww perl-unicode-linebreak)
+depends=(perl perl-data-dump perl-file-sharedir perl-json perl-lwp-protocol-https perl-libwww perl-unicode-linebreak yt-dlp)
 makedepends=(perl-module-build)
 optdepends=(
     'mpv: play videos with MPV'
@@ -21,7 +21,6 @@ optdepends=(
     'perl-term-readline-gnu: better STDIN support'
     'vlc: play videos with VLC'
     'wget: download videos with wget'
-    'youtube-dl: play videos with encrypted signatures'
 )
 arch=(any)
 source=(
@@ -31,7 +30,7 @@ source=(
 install=youtube-viewer.install
 validpgpkeys=(89CD05032EDAE45FCB946F1FBD8E555F4A7E19D1)
 # sums provided by packager makepkg -g
-b2sums=('86684a5f4607fe8b614f4ce003b29de65ff918b694ed054078458ebc227e209bfa794b98d6cccb81295c7d6eb20b273b381565784734508ca3b3be7d00e37d8a'
+b2sums=('dc00702680807d5d097d1d49dee51c7b73d4c82064ae8a4394a74c5a4eab62b1a3158334247048428135f7c79ece6b38cc6a68c59b348c3d2c152fbc002e8ab7'
         'SKIP')
 
 build() {
