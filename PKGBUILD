@@ -1,13 +1,14 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=filkoll-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.0.r4.67221b4
+pkgver=0.2.3.r0.de00aa9
 pkgrel=1
 pkgdesc="Fast command-not-found handler for Arch Linux"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/filkoll"
 license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
+options=('!lto') # LTO breaks with C dependencies
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=('filkoll::git+https://github.com/VorpalBlade/filkoll')
