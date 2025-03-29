@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/resucutie/localbooru"
 license=('GPL-3.0')
 depends=('bash')
-source=("$pkgname-$pkgver.zip::https://github.com/resucutie/localbooru/releases/download/$pkgver/localbooru-linux-binaries.zip"
+source=("$pkgname.zip::https://github.com/resucutie/localbooru/releases/download/$pkgver/localbooru-linux-binaries.zip"
 "icon.png")
 sha256sums=('9f7d276280bef6f71055af5f2b9e6e167b17cd79f259c2bcedd177729a29b35f'
             '7258c7fca495ae03bcb8117bcb9f5d851f970ac39538aa6f09544acb612cc724')
