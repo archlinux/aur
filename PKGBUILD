@@ -3,11 +3,11 @@
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
 
-: ${_cksum:=7f9200e3df66b72709e833a0c3105ca8a5fec483f7b3326f7c8d410a1e64a29f}
+: ${_cksum:=e0ca62b4e30047aa7c31391d9a96d9882beaa63af22a2fe658dda37d95458473}
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.24.1
+pkgver=13.24.2
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
