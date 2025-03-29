@@ -3,7 +3,7 @@
 
 pkgname=rkdeveloptool-git
 _pkgname=${pkgname%-git}
-pkgver=1.32.r69.46bb4c0
+pkgver=1.32.r83.304f073
 pkgrel=1
 epoch=1
 pkgdesc='The firmware upgrade tool for Rockchip SoC, consider to be a opensource version of upgrade_tool'
@@ -13,7 +13,7 @@ license=('GPL-2.0-only')
 provides=($_pkgname)
 conflicts=($_pkgname)
 makedepends=('git')
-depends=('libusb')
+depends=('glibc' 'gcc-libs' 'libusb')
 source=('git+https://github.com/rockchip-linux/rkdeveloptool.git')
 sha256sums=('SKIP')
 
