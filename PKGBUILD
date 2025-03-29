@@ -2,7 +2,7 @@
 # Maintainer: make0x20
 
 pkgname='mkl-bin'
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Mookie Launcher - A terminal command launcher menu'
 url='https://github.com/make0x20/mkl'
@@ -11,14 +11,14 @@ license=('GPL-3.0')
 provides=('mkl')
 conflicts=('mkl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/make0x20/mkl/releases/download/v0.2.2/mkl_linux_arm64")
-sha256sums_aarch64=('be6d48558546b4ed7b92d4b2338194ad93e9fd869043b6fd20f6330d0ddb3307')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/make0x20/mkl/releases/download/v0.2.3/mkl_linux_arm64")
+sha256sums_aarch64=('a6e63ffb1b59404ba6660f0468414f5e0e2be7a56890b6424a0b5c2f692bb69a')
 
-source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/make0x20/mkl/releases/download/v0.2.2/mkl_linux_386")
-sha256sums_i686=('7a7ec8574bb28ce05c045b06357befed6636d511d6f9dde8423e0b0bfa55b817')
+source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/make0x20/mkl/releases/download/v0.2.3/mkl_linux_386")
+sha256sums_i686=('c280959c6523ca82187b9cc0cfac54773a4fe796bc675041573aae0fde055979')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/make0x20/mkl/releases/download/v0.2.2/mkl_linux_amd64")
-sha256sums_x86_64=('ade3685cb5680c1fd1dddb84d45b0f4276bb5a5c43756db2c900a456758b1a2d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/make0x20/mkl/releases/download/v0.2.3/mkl_linux_amd64")
+sha256sums_x86_64=('7051dfbbf8c211f611389395264d76d337af56bc4740840e34442b9eb79fe0bf')
 
 package() {
   install -Dm755 "${srcdir}/mkl-bin_${pkgver}_x86_64.binary" "${pkgdir}/usr/bin/mkl"
