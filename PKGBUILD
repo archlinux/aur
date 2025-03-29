@@ -1,99 +1,129 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 pkgname=sudachi
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://sudachi.emuplace.app
 license=(GPL-3.0-or-later)
 provides=('sudachi')
-depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' 'sdl2-compat' 'ffmpeg' 'gamemode' 'hicolor-icon-theme' 'brotli')
-makedepends=('git' 'cmake' 'nasm' 'doxygen' 'ninja' 'zip' 'unzip' 'spirv-headers' 'vulkan-headers' 'vulkan-utility-libraries')
+depends=('qt6-base' 'qt6-wayland' 'qt6-tools' 'sdl3' 'ffmpeg' 'gamemode' 'hicolor-icon-theme' 'brotli')
+makedepends=('git' 'cmake' 'nasm' 'doxygen' 'ninja' 'zip' 'unzip' 'rapidjson')
 conflicts=('sudachi')
 options=(!debug)
-source=(sudachi::https://github.com/emuplace/sudachi.emuplace.app/releases/download/v1.0.14/latest.zip
-		enet::https://github.com/lsalzman/enet/archive/refs/tags/v1.3.18.tar.gz
-		dynarmic::git+https://github.com/sudachi-emu/dynarmic
-		libusb::https://github.com/libusb/libusb/archive/refs/tags/v1.0.27.tar.gz
-    sirit::git+https://github.com/sudachi-emu/sirit
-    mbedtls::git+https://github.com/sudachi-emu/mbedtls
-    xbyak::https://github.com/herumi/xbyak/archive/refs/tags/v6.73.tar.gz
-    opus::https://github.com/xiph/opus/archive/refs/tags/v1.5.2.tar.gz
-    SDL::https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.12.tar.gz
-		cpp-httplib::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.18.6.tar.gz
-		ffmpeg::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.1.tar.gz
-    cpp-jwt::https://github.com/arun11299/cpp-jwt/archive/refs/tags/v1.4.tar.gz
-    libadrenotools::https://github.com/bylaws/libadrenotools/archive/refs/tags/v1.0.tar.gz
-    VulkanMemoryAllocator::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v3.2.1.tar.gz
-    breakpad::git+https://github.com/sudachi-emu/breakpad
-    simpleini::https://github.com/brofield/simpleini/archive/refs/tags/v4.22.tar.gz
-    oaknut::git+https://github.com/sudachi-emu/oaknut
-    vcpkg::git+https://github.com/microsoft/vcpkg#tag=2025.01.13
-    tzdb_to_nx::https://github.com/lat9nq/tzdb_to_nx/archive/refs/tags/221202.tar.gz
-    cubeb::git+https://github.com/mozilla/cubeb
-    googletest::https://github.com/google/googletest/archive/refs/tags/v1.15.2.tar.gz
-    sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake
-    cubeb-coreaudio-rs::git+https://github.com/mozilla/cubeb-coreaudio-rs#branch=trailblazer
-    cubeb-pulse-rs::git+https://github.com/mozilla/cubeb-pulse-rs#branch=dev
-    zycore::https://github.com/zyantific/zycore-c/archive/refs/tags/v1.5.1.tar.gz
-    linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass#branch=master
-    tz::git+https://github.com/eggert/tz#tag=2025a)
-b2sums=(2ded3551a1daa676d9273396837b80878d4f9cc88c16a13ed9322965971a24b456cac871cf5efab8d859f29301a14bf71a5628f416acad91ee7e2efe62c8ef4d
-				f8b4abf31d998b3b87a89010401ab9613ef819f5612929137147d1cfba04236568da270bcc1e633afeb4db37435e31a5d0e2f39088151f98b54a4ad8fb67210f
-				'SKIP'
-				ae697cfbbd3f7d160b687d846e5a5153e29466b75ba8379de33aad63e50d244031aef74bdbf028307b5cbe31aedcabc8c84909b4f519c406696bc9317756d0b3
-				'SKIP'
-				'SKIP'
-				ba0597dd2f01973750f3ac50b821a6c4d8cc03203ba8b03a8943f016c1ca088f50cf8b87a7422bde4388d596be9c73823201911ef7d23408641f860eb842155b
-				9a8a710e341b57551c3c5d1bd1979372e0c2120fe6d3fdb10bc90caa9b29b6cebe62aa118fb2884f25660fb99dcc5b8a6b521d675b1f3def8da9af3fd9b90637
-				ac5bfec1053b67bb06514401d906d23ef53a49489d273085ed753e94f09c6fb619922a807ca87161e436803c63374f039021f31ce8562819e1d91023862c7751
-				bee65790b8f2a19f80fd8f38799d650ceaef021b6e9f28b2fd0678f4c50b95d210f9764775d67365e65e6f9e03d6999091f28aa553655444c8ff369172cf13f9
-				cc4afe1cd3f74e5275831b5a225f544399d8e6f61611fc623a0edb2cda8adf1d69f27233f8b7dc749682a2fd87d4212193e143b2acb729aa47fb5851ba879085
-				5ded054cca527b803507d49edac82946cea2e9458ca783c5e693bba18313db1aba5c021eb79447bd4d2a077cb3483b9cf11e3119b9920eb4a9b35c43ea8a188e
-				7c41a3b1342b9f726f965f7f11e2a3b959ecfb4a38052f9a7603de826e3f57dabf72bb40894f97d9829061db6a34d31c243f5ea18019c2b466033f988a128844
-				b863bdc3c92e1e98ececf1ec8a8a901553a7abe70f91171f907627d91224aa52ba5b8522ef92e04727d2e36dad7d98441104a08e095ef64e672ccef82f352939
-				'SKIP'
-				22c63d089aa30b9a15644b485b4f8238e4bf5c8bffad887eff2fa738f10d5506e960dda505dc858d72795a16ed6ba20850c90796a9ec18ef3117a6330baa2a48
-				'SKIP'
-				'SKIP'
-				7af924ac6ab78e4b28c8cb5971cb715c7bea02c0a14847ac64a4da3e1e5b27042f912d6970dad8093aca55d590a44beef06ac260d42c65ffc42b2b37d74b48e0
-				'SKIP'
-				2525d7a8572364cc2c2c129197201fc31e3cb4aadf4be37a995447a9b8e393205628e666dd190dca9a169b693883a5a2a5cafd6432cc3d1263a0c834ff8cf121
-				'SKIP'
-				'SKIP'
-				'SKIP'
-				18d82cc4efecef9b98646d305f5ec7934c60a8f278cd7b24464e1416486034b20f96d434d8a164d3ce181159dfc54db46a81c437b467017981847a4bcbbc6b73
-				'SKIP'
-				'SKIP')
-
+source=(sudachi::https://github.com/emuplace/sudachi.emuplace.app/releases/download/v${pkgver}/latest.zip
+	enet::git+https://github.com/lsalzman/enet#tag=v1.3.18
+	dynarmic::git+https://github.com/sudachi-emu/dynarmic#commit=efa2ebefe1f502fc886cbbcebabed2506121eb24
+	libusb::git+https://github.com/libusb/libusb#tag=v1.0.24
+	discord-rpc::git+https://github.com/sudachi-emu/discord-rpc
+	vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers#tag=v1.4.310
+	sirit::git+https://github.com/sudachi-emu/sirit
+	mbedtls::git+https://github.com/sudachi-emu/mbedtls
+	xbyak::git+https://github.com/herumi/xbyak#tag=v6.73
+	opus::git+https://github.com/xiph/opus#tag=v1.3.1
+	cpp-httplib::git+https://github.com/yhirose/cpp-httplib#commit=65ce51aed7f15e40e8fb6d2c0a8efb10bcb40126
+	ffmpeg::git+https://github.com/FFmpeg/FFmpeg#tag=n7.1
+	cpp-jwt::git+https://github.com/arun11299/cpp-jwt
+	libadrenotools::git+https://github.com/bylaws/libadrenotools
+	VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator#tag=v3.2.1
+	breakpad::git+https://github.com/sudachi-emu/breakpad#commit=bf1260ddb8d405e95cd5c4507ddaca45d10dd842
+	simpleini::git+https://github.com/brofield/simpleini
+	oaknut::git+https://github.com/sudachi-emu/oaknut#commit=a3135650b39a9595d3852c4784d432c95a3b1af2
+	Vulkan-Utility-Libraries::git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries#tag=v1.4.310
+	vcpkg::git+https://github.com/microsoft/vcpkg
+	tzdb_to_nx::git+https://github.com/lat9nq/tzdb_to_nx
+	cubeb::git+https://github.com/mozilla/cubeb
+	SDL3::git+https://github.com/libsdl-org/sdl#tag=release-3.2.8
+	googletest::git+https://github.com/google/googletest
+	sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake
+	cubeb-coreaudio-rs::git+https://github.com/mozilla/cubeb-coreaudio-rs#branch=trailblazer
+	cubeb-pulse-rs::git+https://github.com/mozilla/cubeb-pulse-rs#branch=dev
+	linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass#branch=master
+	SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers
+	tz::git+https://github.com/eggert/tz
+	zycore::git+https://github.com/zyantific/zycore-c)
+	
+b2sums=('deacfbf286580efea76745c973b497eaa83a27b8157cb3af978e8911ad94f2d428c98c1160fd56d99762670a6fd8a618f562c49c6b69661c6ff7cce5a912feda'
+        '2a447d114b091b51a2bb1d20ab885a8ea02c19c2b4f24ae9e8af60275aedce9e652b05401a54002c7c5fc8790012fc7cd6c55006656fff21af558d3e79ccd877'
+        '93a2d62c7c1371c48725ccd03f1c2b4b0d491bb58081238d73fe2d8592c4362a21560fa03f2507c0ef340fc61a06562e2789782a7694a506f62aaa792c987b73'
+        '4274bb7227e90f3652bd7a5048ac0ff5b24d0c6a86cbaed1b02c18a84ee6ae5ade6a861bb9f4833166197d939f3745994cce15baed815098254e4ab2d3ea76af'
+        'SKIP'
+        '1c5899b459bf936250eed654e61bc108b3853e1847764a5a74176444ccebbb6e7a383ddac42ee3b2dc27f74e3a375f7c0360ab70585d3a2bf0602fee324b8db7'
+        'SKIP'
+        'SKIP'
+        '0d89124eec3ac2acadfd91f8d34eebc75619b805eb9dbec52d99068e0ed4e57fa3b681e1ce9aaa11c3dcef18677d5ff56fae230f2af42ec1e4cb1118412c1483'
+        'f262820a87d3840f9560430b05e70c9621580301b3f156fd187d82b567e95a9476c75cf5fbe888271097f95f428f45a11cd84e1ec00dd4dd8c2744d1f324b922'
+        '8b19e4063fdfb623aa83c715ce499da17bea6159287eb60e8e11faa2e574b90eb1c6bc9ab3331231e15c03bc503bde542701494802dc7d9c5afa34d98ec2f086'
+        'c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40'
+        'SKIP'
+        'SKIP'
+        'aca4f69aed630852f3aec4bdd4b6fd35935cc896c682e1b1d660bce0da54b40617889fa4a9ae788d49472be5bd12f9bf609f7a7a74ce5139ce904b8c8bd39976'
+        '8938523994f0fd698c95fc196ae85114b3e5d38c76f33bc593e76e433a45a3350c0d8cf7f1c95fe3d0d59c43d69017bdcbe7f668ca563b6155ee8cce87fbf0c9'
+        'SKIP'
+        'f44c8b6d5b929999ddaeec5ea99fc02787056a0b0e7b68653b9b620dd714e0fe6334deb47ffc3774f03787cd1a147bc1b8c63dfb248c20de26247cd2e6b0a590'
+        'a608b1aecd793e3c9d21badb9dc0e44067aab5084723698b880f946e0af61843bf808f45dcb017f5206e53f3cc2be57816fdf59950750a15865e20b7cc5fe54e'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        '690393dc7f099d9f45a9727a41ed072c90c514853fdb401519886c034ca8ed7280a1e32c1dffd6971472638565f5f72eb2ffcde828ddd072a34eea790273df46'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
+        
 prepare() {
-	mv -T enet-1.3.18 externals/enet
-	mv dynarmic externals/
-	mv -T libusb-1.0.27 externals/libusb/libusb
-	mkdir -p externals/dynarmic/externals/zydis/dependencies
-	mv -T zycore-c-1.5.1 externals/dynarmic/externals/zydis/dependencies/zycore
-	mv sirit externals/
-	mv mbedtls externals/
-	mv -T xbyak-6.73 externals/xbyak
-	mv -T opus-1.5.2 externals/opus
-	mv -T SDL-release-2.30.12 externals/SDL
-	mv -T cpp-httplib-0.18.6 externals/cpp-httplib
-	mv -T FFmpeg-n7.1 externals/ffmpeg/ffmpeg
-	mv -T cpp-jwt-1.4 externals/cpp-jwt
-	mv -T libadrenotools-1.0 externals/libadrenotools
-	mv linkernsbypass externals/libadrenotools/lib/
-	mv -T VulkanMemoryAllocator-3.2.1 externals/VulkanMemoryAllocator
-	mv breakpad externals/
-	mv -T simpleini-4.22 externals/simpleini
-	mv oaknut externals/
-	mv vcpkg externals/
-	mv -T tzdb_to_nx-221202 externals/nx_tzdb/tzdb_to_nx
-	mv tz externals/nx_tzdb/tzdb_to_nx/externals/tz/
-	mv cubeb externals/
-    mv -T googletest-1.15.2 externals/cubeb/googletest
-    mv sanitizers-cmake externals/cubeb/cmake/
-    mv cubeb-coreaudio-rs externals/cubeb/src/
-    mv cubeb-pulse-rs externals/cubeb/src/
+  git init
+  
+  for _submodule in enet dynarmic discord-rpc vulkan-headers sirit mbedtls xbyak opus cpp-httplib cpp-jwt libadrenotools VulkanMemoryAllocator breakpad simpleini oaknut Vulkan-Utility-Libraries vcpkg cubeb SDL3;
+    do
+      rm -rf externals/$_submodule
+      git -c protocol.file.allow=always submodule add "${srcdir}/$_submodule" externals/$_submodule
+    done
+    
+  rm -rf externals/libusb/libusb
+  git -c protocol.file.allow=always submodule add ${srcdir}/libusb externals/libusb/libusb
+  
+  rm -rf externals/ffmpeg/ffmpeg
+  git -c protocol.file.allow=always submodule add ${srcdir}/ffmpeg externals/ffmpeg/ffmpeg
+  
+  rm -rf externals/nx_tzdb/tzdb_to_nx
+  git -c protocol.file.allow=always submodule add ${srcdir}/tzdb_to_nx externals/nx_tzdb/tzdb_to_nx
+
+  pushd externals/cubeb
+    git config submodule.googletest.url ${srcdir}/googletest
+    git config submodule.cmake/sanitizers-cmake.url ${srcdir}/sanitizers-cmake
+    git config submodule.src/cubeb-coreaudio-rs.url ${srcdir}/cubeb-coreaudio-rs
+    git config submodule.src/cubeb-pulse-rs.url ${srcdir}/cubeb-pulse-rs
+    git -c protocol.file.allow=always submodule update
+  popd
+  
+  pushd externals/libadrenotools
+    git config submodule.lib/linkernsbypass.url ${srcdir}/linkernsbypass
+    git -c protocol.file.allow=always submodule update
+  popd
+  
+  pushd externals/sirit
+    git config submodule.externals/SPIRV-Headers.url ${srcdir}/SPIRV-Headers
+    git -c protocol.file.allow=always submodule update
+  popd
+  
+  pushd externals/nx_tzdb/tzdb_to_nx
+    git config submodule.externals/tz/tz.url ${srcdir}/tz
+    git -c protocol.file.allow=always submodule update
+  popd
+  
+  pushd externals/dynarmic/externals/zydis
+    git config submodule.dependencies/zycore.url ${srcdir}/zycore
+    git -c protocol.file.allow=always submodule update
+  popd
+  
+  sed -i 's/\bwindow\b/render_window/g' "${srcdir}/src/sudachi_cmd/emu_window/emu_window_sdl3_vk.cpp"
+  sed -i '/namespace {/d' src/core/guest_memory.h
+  sed -i '/} \/\/ namespace Core::Memory/d' src/core/guest_memory.h
 }
 
 build() {
@@ -102,23 +132,15 @@ build() {
     -DSUDACHI_TESTS=OFF \
     -DENABLE_QT6=ON \
     -DENABLE_QT_TRANSLATION=ON \
-    -DSUDACHI_USE_QT_MULTIMEDIA=ON \
-    -DSUDACHI_USE_QT_WEB_ENGINE=ON \
-    -DSUDACHI_DOWNLOAD_ANDROID_VVL=OFF \
-    -DSUDACHI_USE_BUNDLED_QT=OFF \
-    -DSUDACHI_USE_BUNDLED_FFMPEG=ON \
     -DSUDACHI_USE_BUNDLED_VCPKG=ON \
-    -DSUDACHI_USE_BUNDLED_SDL2=OFF \
-    -DUSE_SDL2_FROM_EXTERNALS=OFF \
-    -DSUDACHI_USE_EXTERNAL_VULKAN_HEADERS=OFF \
-    -DSUDACHI_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
-    -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
+    -DSUDACHI_USE_BUNDLED_FFMPEG=ON \
+    -DSUDACHI_USE_BUNDLED_QT=OFF \
+    -DSUDACHI_USE_BUNDLED_SDL3=ON \
     -DSUDACHI_ENABLE_LTO=ON \
     -DSUDACHI_USE_FASTER_LD=OFF \
-    -DSUDACHI_CHECK_SUBMODULES=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_C_FLAGS="-march=native" \
-    -DCMAKE_CXX_FLAGS="-march=native"
+    -DCMAKE_CXX_FLAGS="-march=native -mtune=native -Wno-unused-variable" \
+    -DCMAKE_C_FLAGS="-march=native -mtune=native"
   ninja -C build
 }
 

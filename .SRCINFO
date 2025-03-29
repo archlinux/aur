@@ -1,6 +1,6 @@
 pkgbase = sudachi
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://sudachi.emuplace.app
 	arch = x86_64
@@ -12,15 +12,11 @@ pkgbase = sudachi
 	makedepends = ninja
 	makedepends = zip
 	makedepends = unzip
-	makedepends = spirv-headers
-	makedepends = vulkan-headers
-	makedepends = vulkan-utility-libraries
+	makedepends = rapidjson
 	depends = qt6-base
-	depends = qt6-webengine
-	depends = qt6-multimedia
 	depends = qt6-wayland
 	depends = qt6-tools
-	depends = sdl2-compat
+	depends = sdl3
 	depends = ffmpeg
 	depends = gamemode
 	depends = hicolor-icon-theme
@@ -28,58 +24,66 @@ pkgbase = sudachi
 	provides = sudachi
 	conflicts = sudachi
 	options = !debug
-	source = sudachi::https://github.com/emuplace/sudachi.emuplace.app/releases/download/v1.0.14/latest.zip
-	source = enet::https://github.com/lsalzman/enet/archive/refs/tags/v1.3.18.tar.gz
-	source = dynarmic::git+https://github.com/sudachi-emu/dynarmic
-	source = libusb::https://github.com/libusb/libusb/archive/refs/tags/v1.0.27.tar.gz
+	source = sudachi::https://github.com/emuplace/sudachi.emuplace.app/releases/download/v1.0.15/latest.zip
+	source = enet::git+https://github.com/lsalzman/enet#tag=v1.3.18
+	source = dynarmic::git+https://github.com/sudachi-emu/dynarmic#commit=efa2ebefe1f502fc886cbbcebabed2506121eb24
+	source = libusb::git+https://github.com/libusb/libusb#tag=v1.0.24
+	source = discord-rpc::git+https://github.com/sudachi-emu/discord-rpc
+	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers#tag=v1.4.310
 	source = sirit::git+https://github.com/sudachi-emu/sirit
 	source = mbedtls::git+https://github.com/sudachi-emu/mbedtls
-	source = xbyak::https://github.com/herumi/xbyak/archive/refs/tags/v6.73.tar.gz
-	source = opus::https://github.com/xiph/opus/archive/refs/tags/v1.5.2.tar.gz
-	source = SDL::https://github.com/libsdl-org/SDL/archive/refs/tags/release-2.30.12.tar.gz
-	source = cpp-httplib::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.18.6.tar.gz
-	source = ffmpeg::https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.1.tar.gz
-	source = cpp-jwt::https://github.com/arun11299/cpp-jwt/archive/refs/tags/v1.4.tar.gz
-	source = libadrenotools::https://github.com/bylaws/libadrenotools/archive/refs/tags/v1.0.tar.gz
-	source = VulkanMemoryAllocator::https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/refs/tags/v3.2.1.tar.gz
-	source = breakpad::git+https://github.com/sudachi-emu/breakpad
-	source = simpleini::https://github.com/brofield/simpleini/archive/refs/tags/v4.22.tar.gz
-	source = oaknut::git+https://github.com/sudachi-emu/oaknut
-	source = vcpkg::git+https://github.com/microsoft/vcpkg#tag=2025.01.13
-	source = tzdb_to_nx::https://github.com/lat9nq/tzdb_to_nx/archive/refs/tags/221202.tar.gz
+	source = xbyak::git+https://github.com/herumi/xbyak#tag=v6.73
+	source = opus::git+https://github.com/xiph/opus#tag=v1.3.1
+	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib#commit=65ce51aed7f15e40e8fb6d2c0a8efb10bcb40126
+	source = ffmpeg::git+https://github.com/FFmpeg/FFmpeg#tag=n7.1
+	source = cpp-jwt::git+https://github.com/arun11299/cpp-jwt
+	source = libadrenotools::git+https://github.com/bylaws/libadrenotools
+	source = VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator#tag=v3.2.1
+	source = breakpad::git+https://github.com/sudachi-emu/breakpad#commit=bf1260ddb8d405e95cd5c4507ddaca45d10dd842
+	source = simpleini::git+https://github.com/brofield/simpleini
+	source = oaknut::git+https://github.com/sudachi-emu/oaknut#commit=a3135650b39a9595d3852c4784d432c95a3b1af2
+	source = Vulkan-Utility-Libraries::git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries#tag=v1.4.310
+	source = vcpkg::git+https://github.com/microsoft/vcpkg
+	source = tzdb_to_nx::git+https://github.com/lat9nq/tzdb_to_nx
 	source = cubeb::git+https://github.com/mozilla/cubeb
-	source = googletest::https://github.com/google/googletest/archive/refs/tags/v1.15.2.tar.gz
+	source = SDL3::git+https://github.com/libsdl-org/sdl#tag=release-3.2.8
+	source = googletest::git+https://github.com/google/googletest
 	source = sanitizers-cmake::git+https://github.com/arsenm/sanitizers-cmake
 	source = cubeb-coreaudio-rs::git+https://github.com/mozilla/cubeb-coreaudio-rs#branch=trailblazer
 	source = cubeb-pulse-rs::git+https://github.com/mozilla/cubeb-pulse-rs#branch=dev
-	source = zycore::https://github.com/zyantific/zycore-c/archive/refs/tags/v1.5.1.tar.gz
 	source = linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass#branch=master
-	source = tz::git+https://github.com/eggert/tz#tag=2025a
-	b2sums = 2ded3551a1daa676d9273396837b80878d4f9cc88c16a13ed9322965971a24b456cac871cf5efab8d859f29301a14bf71a5628f416acad91ee7e2efe62c8ef4d
-	b2sums = f8b4abf31d998b3b87a89010401ab9613ef819f5612929137147d1cfba04236568da270bcc1e633afeb4db37435e31a5d0e2f39088151f98b54a4ad8fb67210f
+	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers
+	source = tz::git+https://github.com/eggert/tz
+	source = zycore::git+https://github.com/zyantific/zycore-c
+	b2sums = deacfbf286580efea76745c973b497eaa83a27b8157cb3af978e8911ad94f2d428c98c1160fd56d99762670a6fd8a618f562c49c6b69661c6ff7cce5a912feda
+	b2sums = 2a447d114b091b51a2bb1d20ab885a8ea02c19c2b4f24ae9e8af60275aedce9e652b05401a54002c7c5fc8790012fc7cd6c55006656fff21af558d3e79ccd877
+	b2sums = 93a2d62c7c1371c48725ccd03f1c2b4b0d491bb58081238d73fe2d8592c4362a21560fa03f2507c0ef340fc61a06562e2789782a7694a506f62aaa792c987b73
+	b2sums = 4274bb7227e90f3652bd7a5048ac0ff5b24d0c6a86cbaed1b02c18a84ee6ae5ade6a861bb9f4833166197d939f3745994cce15baed815098254e4ab2d3ea76af
 	b2sums = SKIP
-	b2sums = ae697cfbbd3f7d160b687d846e5a5153e29466b75ba8379de33aad63e50d244031aef74bdbf028307b5cbe31aedcabc8c84909b4f519c406696bc9317756d0b3
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = ba0597dd2f01973750f3ac50b821a6c4d8cc03203ba8b03a8943f016c1ca088f50cf8b87a7422bde4388d596be9c73823201911ef7d23408641f860eb842155b
-	b2sums = 9a8a710e341b57551c3c5d1bd1979372e0c2120fe6d3fdb10bc90caa9b29b6cebe62aa118fb2884f25660fb99dcc5b8a6b521d675b1f3def8da9af3fd9b90637
-	b2sums = ac5bfec1053b67bb06514401d906d23ef53a49489d273085ed753e94f09c6fb619922a807ca87161e436803c63374f039021f31ce8562819e1d91023862c7751
-	b2sums = bee65790b8f2a19f80fd8f38799d650ceaef021b6e9f28b2fd0678f4c50b95d210f9764775d67365e65e6f9e03d6999091f28aa553655444c8ff369172cf13f9
-	b2sums = cc4afe1cd3f74e5275831b5a225f544399d8e6f61611fc623a0edb2cda8adf1d69f27233f8b7dc749682a2fd87d4212193e143b2acb729aa47fb5851ba879085
-	b2sums = 5ded054cca527b803507d49edac82946cea2e9458ca783c5e693bba18313db1aba5c021eb79447bd4d2a077cb3483b9cf11e3119b9920eb4a9b35c43ea8a188e
-	b2sums = 7c41a3b1342b9f726f965f7f11e2a3b959ecfb4a38052f9a7603de826e3f57dabf72bb40894f97d9829061db6a34d31c243f5ea18019c2b466033f988a128844
-	b2sums = b863bdc3c92e1e98ececf1ec8a8a901553a7abe70f91171f907627d91224aa52ba5b8522ef92e04727d2e36dad7d98441104a08e095ef64e672ccef82f352939
-	b2sums = SKIP
-	b2sums = 22c63d089aa30b9a15644b485b4f8238e4bf5c8bffad887eff2fa738f10d5506e960dda505dc858d72795a16ed6ba20850c90796a9ec18ef3117a6330baa2a48
+	b2sums = 1c5899b459bf936250eed654e61bc108b3853e1847764a5a74176444ccebbb6e7a383ddac42ee3b2dc27f74e3a375f7c0360ab70585d3a2bf0602fee324b8db7
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 7af924ac6ab78e4b28c8cb5971cb715c7bea02c0a14847ac64a4da3e1e5b27042f912d6970dad8093aca55d590a44beef06ac260d42c65ffc42b2b37d74b48e0
+	b2sums = 0d89124eec3ac2acadfd91f8d34eebc75619b805eb9dbec52d99068e0ed4e57fa3b681e1ce9aaa11c3dcef18677d5ff56fae230f2af42ec1e4cb1118412c1483
+	b2sums = f262820a87d3840f9560430b05e70c9621580301b3f156fd187d82b567e95a9476c75cf5fbe888271097f95f428f45a11cd84e1ec00dd4dd8c2744d1f324b922
+	b2sums = 8b19e4063fdfb623aa83c715ce499da17bea6159287eb60e8e11faa2e574b90eb1c6bc9ab3331231e15c03bc503bde542701494802dc7d9c5afa34d98ec2f086
+	b2sums = c7ec6b1db61608195117b79f3f0c8f6323c3abeb39721359da0f10e7d739da8301e04ff5fa83c022f86fc760f66e00066f9a50d97b771f797ccc679f9d912c40
 	b2sums = SKIP
-	b2sums = 2525d7a8572364cc2c2c129197201fc31e3cb4aadf4be37a995447a9b8e393205628e666dd190dca9a169b693883a5a2a5cafd6432cc3d1263a0c834ff8cf121
+	b2sums = SKIP
+	b2sums = aca4f69aed630852f3aec4bdd4b6fd35935cc896c682e1b1d660bce0da54b40617889fa4a9ae788d49472be5bd12f9bf609f7a7a74ce5139ce904b8c8bd39976
+	b2sums = 8938523994f0fd698c95fc196ae85114b3e5d38c76f33bc593e76e433a45a3350c0d8cf7f1c95fe3d0d59c43d69017bdcbe7f668ca563b6155ee8cce87fbf0c9
+	b2sums = SKIP
+	b2sums = f44c8b6d5b929999ddaeec5ea99fc02787056a0b0e7b68653b9b620dd714e0fe6334deb47ffc3774f03787cd1a147bc1b8c63dfb248c20de26247cd2e6b0a590
+	b2sums = a608b1aecd793e3c9d21badb9dc0e44067aab5084723698b880f946e0af61843bf808f45dcb017f5206e53f3cc2be57816fdf59950750a15865e20b7cc5fe54e
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 18d82cc4efecef9b98646d305f5ec7934c60a8f278cd7b24464e1416486034b20f96d434d8a164d3ce181159dfc54db46a81c437b467017981847a4bcbbc6b73
+	b2sums = 690393dc7f099d9f45a9727a41ed072c90c514853fdb401519886c034ca8ed7280a1e32c1dffd6971472638565f5f72eb2ffcde828ddd072a34eea790273df46
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 
