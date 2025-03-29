@@ -4,7 +4,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-kmod
-pkgver=34
+pkgver=34.1
 pkgrel=1
 pkgdesc="Linux kernel module management tools and library (Android ${_android_arch})"
 arch=('any')
@@ -20,7 +20,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-${pkgver}.tar."{xz,sign}
         '0001-Use-getcwd.patch'
         '0002-Disable-fread_unlocked.patch')
-md5sums=('3e6c5c9ad9c7367ab9c3cc4f08dfde62'
+md5sums=('bdc01ba7d330685af597c16c5f58c0e2'
          'SKIP'
          'c3d62ea51e242a716752f988c742a4b8'
          '6ddd10de2a083afac2d59058ed8bada1')
