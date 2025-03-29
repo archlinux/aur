@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-liburing
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 arch=('any')
 pkgdesc="Linux-native io_uring I/O access library (Android ${_android_arch})"
@@ -19,7 +19,7 @@ makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/axboe/liburing/archive/refs/tags/liburing-${pkgver}.tar.gz"
         '0001-Fix-libs-install.patch')
-md5sums=('769d83fc56b7316579c361756cbf5ec1'
+md5sums=('50cbca5567878abaeb6824909b647422'
          '8134d4faf929451e20da833737788284')
 
 prepare() {
