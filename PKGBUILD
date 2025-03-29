@@ -1,6 +1,6 @@
 pkgname=mingw-w64-spirv-tools
-pkgver=2024.2
-_tag="${pkgver}.rc1"
+pkgver=1.4.309.0
+_tag="vulkan-sdk-${pkgver}"
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules (mingw-w64)'
 arch=('any')
@@ -9,8 +9,8 @@ license=('Apache')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-spirv-headers' 'git' 'make' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v${_tag}.tar.gz")
-sha256sums=('e433d40b5b4bf2bc3c819e34d7bf6194937df4d74e2f8dee8012bd8fd69e7f8a')
+source=("https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/${_tag}.tar.gz")
+sha256sums=('6b8577054c575573ead3ad71cb6a2c0b3397b64c746cc3c99e48cc5e324c1b55')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
