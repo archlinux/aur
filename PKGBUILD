@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.11.4.r0.g6ea9088
+pkgver=3.11.5.r0.gccbb6f4
 pkgrel=1
 pkgdesc="A lightweight YouTube client for Linux"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('youtube-viewer')
 conflicts=('youtube-viewer')
 
-depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'perl-unicode-linebreak')
+depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'perl-unicode-linebreak' 'yt-dlp')
 
 optdepends=(
     'ffmpeg: conversions and MKV merging'
@@ -23,7 +23,6 @@ optdepends=(
     'mpv: play videos with MPV (recommended)'
     'vlc: play videos with VLC'
     'wget: download videos with wget'
-    'youtube-dl: play videos with encrypted signatures'
 )
 
 source=('git+https://github.com/trizen/youtube-viewer.git')
