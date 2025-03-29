@@ -4,7 +4,7 @@
 # Maintainer: TTsdzb <ttsdzb at outlook dot com>
 
 pkgname=hmcl-bin
-_ver=3.6.11.273
+_ver=3.6.12
 pkgver=${_ver}
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
@@ -18,12 +18,12 @@ source=("hmcl.desktop"
         "hmcl-launch-script"
         "icon@8x.png"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/javafx/LICENSE"
-        "${pkgname}-${pkgver}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
+        "${pkgname}-${pkgver}.jar::https://github.com/HMCL-dev/HMCL/releases/download/release-${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'ebbb213b2e21321af6b1825740b2b8f66e70a922a4427e90fa21a2c998b39b34'
             'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'df6e27b459c4cacb2c692d0366b91e0daad97712838349c7257158571e556335')
+            'a1fac6ec255920e0c9a0713aa3047d3fbbe20650a16a6605e4f12915e78e1f81')
 
 noextract=("${pkgname}-${pkgver}.jar")
 
