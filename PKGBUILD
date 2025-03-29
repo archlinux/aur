@@ -1,14 +1,15 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 # Maintainer: Kevin_Liu <we123445@outlook.com>
+# Maintainer: CloverGit <clovergit@hotmail.com>
 
 pkgname=vofa+
 _pkgname=vofaplus
 pkgver=1.3.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A high degree of freedom embedded debugging tool with plugins support."
 arch=('x86_64')
 url="https://www.vofa.plus/"
-license=('unknown')
+license=('custom')
 provides=("${_pkgname}")
 options=('!strip')
 source=("${pkgname}-${pkgver}.pkg.tar.zst::https://je00.github.io/downloads/${pkgname}-${pkgver}-1-${CARCH}.pkg.tar.zst")
@@ -38,5 +39,8 @@ package() {
   # symbolic link
   install -dm755 ${pkgdir}/usr/bin/
   ln -sf /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+
+  # fix missing libcrypto.so.1.1
+  ln -sf /opt/${pkgname}/lib/libcrypto-1_1-x64.so ${pkgdir}/opt/${pkgname}/lib/libcrypto.so.1.1
  }
 # vim: set sw=2 ts=2 et:
