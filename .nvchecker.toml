@@ -1,4 +1,4 @@
 [lib32-benchmark]
-source = "git"
-git = "https://github.com/google/benchmark.git"
-prefix = "v"
+source = "archpkg"
+archpkg = "benchmark"
+strip_release = true
