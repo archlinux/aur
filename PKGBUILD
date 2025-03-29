@@ -1,27 +1,25 @@
-# Maintainer: ju6ge judge@felixrichter.tech
+# Maintainer: Redchin Daniil redchindaniil@gmail.com
+# Contributor: ju6ge judge@felixrichter.tech (original `alexandrie-pg` maintainer)
 #
 # This package uses the date of the latest commit to set package version. This is because
 # `alexandrie` has no version or tags that could be used. The package should be hostable on a
 # private pkg repo and therefore an increasing version number is required.`
 _pkgname=alexandrie
-pkgname=$_pkgname-pg
+pkgname=$_pkgname-pg-fix
 pkgver=0.1.0_20231113
-pkgrel=1
-pkgdesc='Rust private crates registry - with postgres backend'
+pkgrel=2
+pkgdesc='Rust private crates registry - with postgres backend. Temporary fixed version of alexandrie-pg. When the original package is fixed - this will be merged/removed into the original.'
 arch=(x86_64)
 url='https://github.com/Hirevo/alexandrie'
 license=('mit')
 _source_revision='4f94ae968ac130c735f6d3ad917b9d99757d7fcc'
 source=("git+https://github.com/Hirevo/alexandrie.git#commit=$_source_revision")
-sha256sums=('SKIP')
+sha256sums=('636e2e7cb5edc9b8e6418576cd02fc2ec460e59b0266d88d6bec8ff4925ffc87')
 provides=('alexandrie')
+conflicts=('alexandrie' 'alexandrie-pg')
 options=(!lto)
 makedepends=('cargo' 'base-devel' 'pkgconf')
 depends=('postgresql-libs' 'git' 'openssl' 'oniguruma' 'diesel-cli')
-
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-}
 
 build() {
     cd "$srcdir/$_pkgname"

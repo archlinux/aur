@@ -1,7 +1,7 @@
-pkgbase = alexandrie-pg
-	pkgdesc = Rust private crates registry - with postgres backend
+pkgbase = alexandrie-pg-fix
+	pkgdesc = Rust private crates registry - with postgres backend. Temporary fixed version of alexandrie-pg. When the original package is fixed - this will be merged/removed into the original.
 	pkgver = 0.1.0_20231113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hirevo/alexandrie
 	arch = x86_64
 	license = mit
@@ -14,8 +14,10 @@ pkgbase = alexandrie-pg
 	depends = oniguruma
 	depends = diesel-cli
 	provides = alexandrie
+	conflicts = alexandrie
+	conflicts = alexandrie-pg
 	options = !lto
 	source = git+https://github.com/Hirevo/alexandrie.git#commit=4f94ae968ac130c735f6d3ad917b9d99757d7fcc
-	sha256sums = SKIP
+	sha256sums = 636e2e7cb5edc9b8e6418576cd02fc2ec460e59b0266d88d6bec8ff4925ffc87
 
-pkgname = alexandrie-pg
+pkgname = alexandrie-pg-fix
