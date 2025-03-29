@@ -1,13 +1,15 @@
 # Maintainer: Eldred Habert <arch@eldred.fr>
+# Contributor: kleines Filmröllchen <kleines@filmroellchen.eu>
+
 pkgname=mesen2-git
-pkgver=r3251.18269da4
+pkgver=r3343.af9eda35
 pkgrel=1
 pkgdesc="Multi-system emulator (NES, SNES, Game Boy and PC Engine)"
 arch=('x86_64')
 url="https://www.mesen.ca"
 license=('GPL3')
 depends=(libevdev sdl2)
-makedepends=(dotnet-sdk-8.0 git zip clang)
+makedepends=(dotnet-sdk-8.0 git zip clang coreutils)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!strip !debug) # Reportedly, these break with C#..?
@@ -25,7 +27,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true # Uses Clang by default, which speeds up emulation by about 40%.
+	MAKEFLAGS="${MAKEFLAGS} -j$(nproc)" make  LTO=true SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true # Uses Clang by default, which speeds up emulation by about 40%.
 }
 
 package() {
