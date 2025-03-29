@@ -1,49 +1,126 @@
+diff -Naur trn-4.0-test77/common.h trn-4.0-test77-aur/common.h
+--- trn-4.0-test77/common.h	2000-11-11 09:41:07.000000000 -0800
++++ trn-4.0-test77-aur/common.h	2025-03-29 14:20:30.259381790 -0700
+@@ -963,3 +963,7 @@
+ #define NNTP_ERROR_IS_FATAL
+ #define NNTP_HANDLE_TIMEOUT
+ #define NNTP_HANDLE_AUTH_ERR
++
++int sighold(int sig);
++int sigrelse(int sig);
++
 diff -Naur trn-4.0-test77/Configure trn-4.0-test77-aur/Configure
 --- trn-4.0-test77/Configure	2010-09-01 23:12:26.000000000 -0700
-+++ trn-4.0-test77-aur/Configure	2022-07-27 12:45:50.403340652 -0700
-@@ -3047,6 +3047,7 @@
++++ trn-4.0-test77-aur/Configure	2025-03-29 14:19:24.841965773 -0700
+@@ -3047,7 +3047,8 @@
  echo "Checking for GNU cc in disguise and/or its version number..." >&4
  $cat >gccvers.c <<EOM
  #include <stdio.h>
+-int main() {
 +#include <stdlib.h>
- int main() {
++int main(void) {
  #ifdef __GNUC__
  #ifdef __VERSION__
-@@ -4096,6 +4097,7 @@
+ 	printf("%s\n", __VERSION__);
+@@ -4096,7 +4097,8 @@
  echo "Checking your choice of C compiler and flags for coherency..." >&4
  $cat > try.c <<'EOF'
  #include <stdio.h>
+-main() { printf("Ok\n"); exit(0); }
 +#include <stdlib.h>
- main() { printf("Ok\n"); exit(0); }
++int main(void) { printf("Ok\n"); exit(0); }
  EOF
  set X $cc $optimize $ccflags -o try $ldflags try.c $libs
-@@ -4303,6 +4305,7 @@
+ shift
+@@ -4303,8 +4305,9 @@
  echo "Checking for GNU C Library..." >&4
  cat >gnulibc.c <<EOM
  #include <stdio.h>
 +#include <stdlib.h>
  int
- main()
+-main()
++main(void)
  {
-@@ -5490,6 +5493,7 @@
+ #ifdef __GLIBC__
+     exit(0);
+@@ -4717,7 +4720,7 @@
+ 		else tval=false;
+ 		fi;;
+ 	*)
+-		echo "main() { extern short $1$tdc; printf(\"%hd\", $1$tc); }" > t.c;
++		printf "#include <stdio.h>\nint main(void) { extern short $1$tdc; printf(\"%hd\", $1$tc); }" > t.c;
+ 		if $cc $optimize $ccflags $ldflags -o t t.c $libs >/dev/null 2>&1;
+ 		then tval=true;
+ 		else tval=false;
+@@ -5189,13 +5192,14 @@
+ '')
+ 	$cat <<'EOT' >blurfl.c
+ #include <stdio.h>
+-main()
++#include <unistd.h>
++int main(void)
+ {
+ 	int i;
+ 
+ 	for (i = 0; i < 5; i++) {
+ 		putchar(i+'a');
+-		sleep(1);
++		/*sleep(1); Arch AUR removed for speed */
+ 	}
+ 	putchar('\n');
+ }
+@@ -5271,7 +5275,7 @@
+ echo " "
+ $echo "Checking to see if your C compiler groks the void type..."
+ $cat >void.c <<'EOCP'
+-void main(){;}
++int main(void){;}
+ EOCP
+ if $cc -c void.c >/dev/null 2>&1 ; then
+     d_novoid="$undef"
+@@ -5490,8 +5494,9 @@
  	$cat >foo.c <<EOCP
  #include <sys/types.h>
  #include <sys/wait.h>
 +#include <stdlib.h>
  
- main()
+-main()
++int main(void)
  {
-@@ -6080,6 +6084,7 @@
+ 	$type status;
+ 	int e = 0;
+@@ -6080,7 +6085,8 @@
  #ifdef I_SYSSELECT
  #include <sys/select.h>
  #endif
+-main()
 +#include <stdlib.h>
- main()
++int main(void)
  {
  	struct tm foo;
+ #ifdef S_TIMEVAL
+diff -Naur trn-4.0-test77/parsedate.y trn-4.0-test77-aur/parsedate.y
+--- trn-4.0-test77/parsedate.y	2000-05-24 22:11:42.000000000 -0700
++++ trn-4.0-test77-aur/parsedate.y	2025-03-29 14:09:14.485244296 -0700
+@@ -23,12 +23,14 @@
+ #include "config.h"
+ /*#include "config2.h"*/
+ #include <time.h>
++#include <string.h>
++
++int date_lex();
+ 
+ #define yyparse		date_parse
+ #define yylex		date_lex
+ #define yyerror		date_error
+ 
+-
+     /* See the LeapYears table in Convert. */
+ #define EPOCH		1970
+ #define END_OF_TIME	2038
 diff -Naur trn-4.0-test77/scan.c trn-4.0-test77-aur/scan.c
 --- trn-4.0-test77/scan.c	2000-05-24 22:11:42.000000000 -0700
-+++ trn-4.0-test77-aur/scan.c	2022-07-27 13:18:12.406702116 -0700
++++ trn-4.0-test77-aur/scan.c	2025-03-29 11:41:17.278645686 -0700
 @@ -16,6 +16,40 @@
  #include "EXTERN.h"
  #include "sorder.h"
@@ -87,7 +164,7 @@ diff -Naur trn-4.0-test77/scan.c trn-4.0-test77-aur/scan.c
  int cnum,type;
 diff -Naur trn-4.0-test77/scan.h trn-4.0-test77-aur/scan.h
 --- trn-4.0-test77/scan.h	2000-05-24 22:11:42.000000000 -0700
-+++ trn-4.0-test77-aur/scan.h	2022-07-27 13:18:48.943369305 -0700
++++ trn-4.0-test77-aur/scan.h	2025-03-29 11:41:17.278645686 -0700
 @@ -64,36 +64,36 @@
  
  /* the current values */
@@ -159,7 +236,7 @@ diff -Naur trn-4.0-test77/scan.h trn-4.0-test77-aur/scan.h
  /* show item numbers by default */
 diff -Naur trn-4.0-test77/Speller.SH trn-4.0-test77-aur/Speller.SH
 --- trn-4.0-test77/Speller.SH	2000-05-24 22:11:41.000000000 -0700
-+++ trn-4.0-test77-aur/Speller.SH	2022-07-27 12:45:50.403340652 -0700
++++ trn-4.0-test77-aur/Speller.SH	2025-03-29 11:41:17.278645686 -0700
 @@ -16,7 +16,7 @@
  # what pager you use--if you have kernal paging use cat
  pager="\${PAGER-$pager}"
@@ -169,3 +246,17 @@ diff -Naur trn-4.0-test77/Speller.SH trn-4.0-test77-aur/Speller.SH
  ispell_options=$ispell_options
  test=${test-test}
  sed=${sed-sed}
+diff -Naur trn-4.0-test77/term.h trn-4.0-test77-aur/term.h
+--- trn-4.0-test77/term.h	2010-09-01 23:12:26.000000000 -0700
++++ trn-4.0-test77-aur/term.h	2025-03-29 14:05:20.152900945 -0700
+@@ -2,6 +2,10 @@
+  */
+ /* This software is copyrighted as detailed in the LICENSE file. */
+ 
++extern int tputs(const char *str, int affcnt, int (*putc)(int));
++extern int tgetent(char *bp, const char *name);
++extern int tgetflag(const char *id);
++extern int tgetnum(const char *id);
+ 
+ EXT char ERASECH;		/* rubout character */
+ EXT char KILLCH;		/* line delete character */
