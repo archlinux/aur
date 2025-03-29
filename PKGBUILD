@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded-sse
 _debpkgname=hqplayer-embedded
 _debpkgver=5.12.0-35intel
 pkgver=5.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'x86_64_v3' 'x86_64_v4' 'aarch64')
@@ -21,6 +21,7 @@ sha256sums=('828ec4d978337baccab40742edb3a03bd83f6d9f40fff2b27eaa16a9852b9e1d'
             '9aa79c67c22924c02b2c43cacbd3fac21dd9abbd146819ce46fe2b34f0193ef0'
             '5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a')
 install=${pkgname}.install
+backup=(etc/hqplayer/hqplayerd.xml)
 
 package() {
  bsdtar xf data.tar.zst -C "$pkgdir"
