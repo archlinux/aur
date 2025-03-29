@@ -1,8 +1,8 @@
 pkgbase = python-ccm
 	pkgdesc = Cassandra Cluster Manager.
-	pkgver = 3.1.5
-	pkgrel = 2
-	url = http://github.com/pcmanus/ccm
+	pkgver = 3.1.6.dev3
+	pkgrel = 1
+	url = https://github.com/apache/cassandra-ccm
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-mock
@@ -18,9 +18,7 @@ pkgbase = python-ccm
 	depends = python-six
 	depends = python-psutil
 	optdepends = python-paramiko: Remote execution
-	source = https://files.pythonhosted.org/packages/source/c/ccm/ccm-3.1.5.tar.gz
-	source = https://download.java.net/openjdk/jdk7u75/ri/jdk_ri-7u75-b13-linux-x64-18_dec_2014.tar.gz
-	sha256sums = f07cc0a37116d2ce1b96c0d467f792668aa25835c73beb61639fa50a1954326c
-	sha256sums = b58f2666d2233bdb2f31b9370c2f5c89565ebe5f302cba491e3c6848d53b61dd
+	source = https://github.com/apache/cassandra-ccm/archive/refs/tags/cassandra-test.tar.gz
+	sha256sums = c881a62929df353038a088ce8e06996bb93fc2af4a3d9b4551ceb80b95719707
 
 pkgname = python-ccm
