@@ -2,8 +2,8 @@
 
 pkgbase=solian
 pkgname=solian-bin-git
-pkgver=2.4.2+85+gb61dbf92
-_buildcommit=61dbf92
+pkgver=2.4.2+85+gbdfe13de
+_buildcommit=dfe13de
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -11,6 +11,12 @@ url="https://solsynth.dev"
 license=('unknown')
 depends=(
     "libnotify>=0.8.6"
+    "gtk3>=3.24.49"
+    "mpv>=0.40.0"
+    "libkeybinder3>=0.3.2"
+    "gstreamer>=1.26.0"
+    "libayatana-appindicator>=0.5.93"
+    "libayatana-indicator>=0.9.4"
 )
 options=('!strip')
 source=(
