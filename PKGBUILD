@@ -3,7 +3,7 @@
 pkgname="chatterino2-7tv-native-git"
 pkgver=7.5.2beta1.r60.g5b60c10
 pkgrel=2
-pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes. Additionally patched to use your native QT Style: https://github.com/hekel/chatterino-stuffs'
+pkgdesc='Chatterino2 fork with support for 7tv; Patched for native QT & Kvantum Themes: https://github.com/hekel/chatterino-stuffs'
 url="https://github.com/SevenTV/chatterino7"
 license=('MIT')
 arch=('x86_64')
