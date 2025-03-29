@@ -68,6 +68,7 @@ build() {
 }
 
 check() {
+    rm -rf librime/build/plugins/librime-qjs/tests
     ln -sf ../../../plugins/librime-qjs/tests librime/build/plugins/librime-qjs/tests
     cd librime/build/plugins/librime-qjs/tests/js
     npm install
