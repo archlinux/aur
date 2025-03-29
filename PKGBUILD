@@ -7,7 +7,7 @@
 # Contributor: Moses Miller <Majora320@gmail.com>
 
 pkgname=counter-strike-2d
-pkgver=1.0.1.5
+pkgver=1.0.1.6
 _ver=${pkgver//./}
 pkgrel=1
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
@@ -37,7 +37,7 @@ backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/favorites.lst  opt/cs2d/sys/bans.lst
         opt/cs2d/sys/serverinfo.txt opt/cs2d/sys/servertransfer.lst
         opt/cs2d/sys/usgn_upw       opt/cs2d/sys/core/dls.cache)
-sha512sums=('838bb0d3cd3cde72d155d1ec859c00f2119be68a2e365fbe88af5a5dab176335f89a0eeecbbe6e4aa0bc8a25bec36c99e2be752e4fcafac79a10b2fab8fd428e'
+sha512sums=('ad607e4d463521cec131591aad8dc4bc649eb1e576c7746ecb0798bb3718edd765b776b6685e270be64a9db77a123afe3ca067ea449f1712b6e79fa93c773859'
             'b31b14cb97fcfef718dd2e15fe3d50cecbf875d1d71c794f0568491e497ddc7efad56749d5d4fc34ec1c645e670b9a6a72e4f893b50f0b5e01d5e3baeb0803db'
             '0c7c91ad4050543635e56ce0ecd9b55e5dc917c87655c69e0dc7e4252655223b7346106f54f2a550e09952cb0ec8afaedfab8dd3b18324b545485ba4fd4b07a4'
             '318e12d0be3a2cc48c70e34688d861a89db811c960a76439730c420b159d0a99718403806cfc546bf243627e91ad6f34a65c97ef77e3d9592b5baaaed24e34c2')
