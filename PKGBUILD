@@ -1,6 +1,6 @@
 # Maintainer: Keiran keiran0@proton.me
 pkgname=archium
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
