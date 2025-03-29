@@ -1,0 +1,5 @@
+[todoist-rs]
+source = 'github'
+github = 'illiteratewriter/todoist-rs'
+use_latest_release = true
+prefix = 'v'
