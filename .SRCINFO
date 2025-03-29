@@ -1,6 +1,6 @@
 pkgbase = vendir
 	pkgdesc = Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively
-	pkgver = 0.43.0
+	pkgver = 0.43.1
 	pkgrel = 1
 	url = https://carvel.dev/vendir
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vendir
 	makedepends = bash
 	makedepends = go
 	provides = vendir
-	source = vendir-0.43.0::https://github.com/carvel-dev/vendir/archive/v0.43.0.tar.gz
-	sha256sums = ce01d64dcbf7c63301692bb7434a3343d62531b2fde2cd222ab9fd87f5c1cb12
+	source = vendir-0.43.1::https://github.com/carvel-dev/vendir/archive/v0.43.1.tar.gz
+	sha256sums = f46ed216658b2e60e186750120bcf6208a85a39eac55e1b90490d2be16b0b0b4
 
 pkgname = vendir
