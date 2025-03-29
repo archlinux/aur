@@ -6,7 +6,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxslt
-pkgver=1.1.42
+pkgver=1.1.43
 pkgrel=1
 arch=('any')
 pkgdesc="XML stylesheet transformation library (Android ${_android_arch})"
@@ -21,7 +21,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://gitlab.gnome.org/GNOME/libxslt/-/archive/v${pkgver}/libxslt-v${pkgver}.tar.gz"
         '0001-Allow-undefined.patch'
         '0002-Disable-programs-test-docs.patch')
-md5sums=('839a3d767b12d37cf716b47a801254ed'
+md5sums=('cdb0024ed189f7e6e968e33a18444b3c'
          '44cd43c2b6e620197a78aa2973a23f0c'
          '054e65c82ccafb95e5fe7b148a153fec')
 
