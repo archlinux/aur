@@ -5,18 +5,18 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-xtrans
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 arch=('any')
 pkgdesc="X transport library (Android ${_android_arch})"
+url="https://xorg.freedesktop.org/"
 license=('custom')
 groups=('android-xtrans')
-url="https://xorg.freedesktop.org/"
 depends=('android-ndk')
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("${url}/releases/individual/lib/xtrans-${pkgver}.tar.xz")
-md5sums=('1155b410c778f805659baf4373db2b92')
+md5sums=('6ad67d4858814ac24e618b8072900664')
 
 build() {
     cd "$srcdir/xtrans-${pkgver}"
