@@ -1,7 +1,7 @@
 pkgbase = gnsstk-apps-git
 	pkgdesc = Utilities using the GNSSTk core library, a library for GNSS (Global Navigation Satellite System) stuff.
 	pkgver = 14.1.1.r7158.20231219.79a70c4f0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sgl-ut/gnsstk-apps
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = gnsstk-apps-git
 	optdepends = bash: For '/usr/bin/gnsstk-config'.
 	provides = gnsstk-apps=14.1.1.r7158.20231219.79a70c4f0
 	conflicts = gnsstk-apps
+	conflicts = gpstk
 	source = gnsstk-apps::git+https://gitlab.com/sgl-ut/gnsstk-apps.git
 	sha256sums = SKIP
 

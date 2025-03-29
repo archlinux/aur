@@ -4,7 +4,7 @@
 _pkgname=gnsstk-apps
 pkgname="${_pkgname}-git"
 pkgver=14.1.1.r7158.20231219.79a70c4f0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities using the GNSSTk core library, a library for GNSS (Global Navigation Satellite System) stuff."
 arch=(
   "i686"
@@ -32,6 +32,7 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+  "gpstk"
 )
 source=(
   "${_pkgname}::git+https://gitlab.com/sgl-ut/gnsstk-apps.git"
