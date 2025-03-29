@@ -1,9 +1,10 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7f4730e..7e77fc6 100755
+index 7f4730e..de42111 100755
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,24 +1,17 @@
- cmake_minimum_required(VERSION 2.4)
+-cmake_minimum_required(VERSION 2.4)
++cmake_minimum_required(VERSION 3.5)
  project(MasterPatch)
  
 -find_package(Qt4 REQUIRED)
