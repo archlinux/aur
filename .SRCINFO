@@ -1,0 +1,14 @@
+pkgbase = khazarfetch
+	pkgdesc = Minimal fetch tool
+	pkgver = 2.5
+	pkgrel = 2
+	url = https://github.com/khazar-os-linux/khazarfetch
+	arch = x86_64
+	license = GPL-v3.0
+	depends = inetutils
+	depends = usbutils
+	depends = xorg-xrandr
+	source = git+https://github.com/khazar-os-linux/khazarfetch.git
+	sha256sums = SKIP
+
+pkgname = khazarfetch
