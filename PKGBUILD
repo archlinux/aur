@@ -1,8 +1,8 @@
 # Author: Madotsuki <madotsuki@national.shitposting.agency>
 
 pkgname=mandelbulber2
-pkgver=2.32
-_pkgver_orig=2.32
+pkgver=2.33
+_pkgver_orig=2.33
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems."
 arch=('x86_64' 'i686')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('qt5-tools' 'qt5-multimedia' 'libjpeg-turbo' 'libpng12' 'gsl' 'openmpi')
 provides=($pkgname)
 conflicts=($pkgname)
-source=("${pkgname}::https://github.com/buddhi1980/mandelbulber2/archive/2.32.tar.gz")
-sha256sums=('404d0cfa7861d4dd440000d2a65911640b6937a48e789c9f28b6db87d15a2a10')
+source=("${pkgname}::https://github.com/buddhi1980/mandelbulber2/archive/2.33.tar.gz")
+sha256sums=('dc52488bdcec95ce8bb6044938b968c04b0b4dfde14b1868e01f2ae39eefbe6f')
 
 build()
 {
