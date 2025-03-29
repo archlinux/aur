@@ -1,5 +1,5 @@
 # Maintainer: <Azad Zeynalov>
-pkgname=khazarfetch
+pkgname=khazarfetch-git
 pkgver=2.5
 pkgrel=2
 pkgdesc="Minimal fetch tool"
