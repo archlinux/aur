@@ -1,9 +1,10 @@
-# Maintainer: fredbezies <fredbezies@gmail.com>
+# Maintainer: TheCyberArcher <thecyberarcher@protonmail.com>
+# Contributor: fredbezies <fredbezies@gmail.com>
 # Based on the work of Lari Tikkanen <lartza@wippies.com>
 
 pkgname=transmission-gtk-git
 _pkgname=transmission
-pkgver=4.1.0.beta.1.r1.g1e9a2986e
+pkgver=4.1.0.beta.2.r0.gac5c9e082
 pkgrel=1
 epoch=2
 pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)(Git version from github repository)"
@@ -29,6 +30,7 @@ makedepends=(
 	qt6-svg
 	qt6-tools
 	systemd
+	git
 )
 
 optdepends=('notification-daemon: Desktop notification support'
