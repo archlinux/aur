@@ -3,7 +3,7 @@
 
 pkgname=todoist-rs
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal client for Todoist"
 arch=("x86_64")
 url='https://github.com/illiteratewriter/todoist-rs'
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/todoist" -t "$pkgdir/usr/bin"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/todoist" "$pkgdir/usr/bin/todoist-rs"
   install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
   #install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname-$pkgver/LICENSE" -- does not exist in current release tag
 }
