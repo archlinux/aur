@@ -1,0 +1,15 @@
+pkgbase = gh-heat
+	pkgdesc = A terminal GitHub contribution heatmap generator written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ahacad/gh-heat
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = gh-heat-0.1.0.tar.gz::https://github.com/ahacad/gh-heat/archive/v0.1.0.tar.gz
+	sha256sums = c69cd94e9c3b6a1eb2fbe7fcab0cee4f2da9728bb95d6950b291822a98f6bce2
+
+pkgname = gh-heat
