@@ -5,7 +5,7 @@
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=10.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/darrenldl/docfd'
@@ -29,9 +29,13 @@ source_x86_64=(
 )
 changelog="$pkgname.changelog"
 
+build() {
+  ./docfd --help=groff > docfd.1
+}
+
 package() {
-  install -vsDm0755 -t "$pkgdir/usr/bin" \
-    docfd
+  install -vsDm0755 -t "$pkgdir/usr/bin" docfd
+  install -vDm0644  -t "$pkgdir/usr/share/man/man1" docfd.1
 
   for _doc in CHANGELOG README; do
     install -vDm0644 "$_doc-$pkgver.md" \
