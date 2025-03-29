@@ -1,7 +1,7 @@
 pkgbase = solian
 	pkgdesc = Next Generation Network Center (unstable)
 	pkgver = 2.4.2+85+gbdfe13de
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solsynth.dev
 	arch = x86_64
 	license = unknown
