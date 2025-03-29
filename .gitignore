@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!archlinux-gnome.svg
 !.nvchecker.toml
+!LICENSE
+!archlinux-gnome.svg
