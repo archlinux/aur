@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-libsoup3
 	pkgdesc = HTTP client/server library for GNOME (Android armv7a-eabi)
-	pkgver = 3.6.4
+	pkgver = 3.6.5
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libsoup
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = android-armv7a-eabi-libsoup3
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/libsoup/-/archive/3.6.4/libsoup-3.6.4.tar.bz2
-	md5sums = a481699155cd392ef8879a28093b97a0
+	source = https://gitlab.gnome.org/GNOME/libsoup/-/archive/3.6.5/libsoup-3.6.5.tar.bz2
+	md5sums = 343595b48c2227b9ecd557b6c46bbb6d
 
 pkgname = android-armv7a-eabi-libsoup3
