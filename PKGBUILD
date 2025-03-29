@@ -148,8 +148,9 @@
 # all targets currently compiling instead of
 # the 'pv' magic we're doing.
 #
-# Set to anything but null to activate.
-: "${_show_compile:=""}"
+# Active by default.
+# Set to 'n' or 'false' to show the 'pv' output.
+: "${_show_compile:="y"}"
 
 ### BUILD OPTIONS END
 
@@ -165,15 +166,15 @@
 
 
 # Kernel version
-_kernel_major=6.12
-_kernel_minor=10
+_kernel_major=6.13
+_kernel_minor=7
 # Clear Linux patches version
-_clr=9-1535
+_clr=6.13.6-1551
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
 _src_linux=linux-${_kernel_major}
-_src_clr=${_kernel_major}.${_clr}
+_src_clr=${_clr}
 
 # Package information
 pkgbase=linux-clear-cjktty-zfs
@@ -194,7 +195,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
   "cl-linux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_src_clr}"
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.0"
+  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.1"
   "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.9.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
@@ -293,8 +294,8 @@ _update_defconfig() {
 	done
 
 	# 编译zfs前面的准备
-	make ${BUILD_FLAGS[*]} CFLAGS="-O2 -march=native" CXXFLAGS="-O2 -march=native -lstdc++" prepare -j$(nproc)
-	make ${BUILD_FLAGS[*]} CFLAGS="-O2 -march=native" CXXFLAGS="-O2 -march=native -lstdc++" modules_prepare -j$(nproc)
+	make ${BUILD_FLAGS[*]} prepare -j$(nproc)
+	make ${BUILD_FLAGS[*]} modules_prepare -j$(nproc)
 
 	# 添加zfs补丁
 	cd ${srcdir}/"zfs"
@@ -494,10 +495,10 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    if [ -n "${_show_compile}" ]; then
-        make ${BUILD_FLAGS[*]} all
-    else
+    if [[ "${_show_compile}" == "n" ]] || [[ "${_show_compile}" == "false" ]]; then
         make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
+    else
+        make ${BUILD_FLAGS[*]} all
     fi
 }
 
@@ -619,14 +620,14 @@ done
 
 # Taken from https://www.kernel.org/signature.html
 validpgpkeys=(
-  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
-  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin
-  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings
+  "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds (torvalds@kernel.org)
+  "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman (gregkh@kernel.org)
+  "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
+  "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
 )
-sha256sums=("b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb"
+sha256sums=("e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
             "SKIP"
-            "99168905b0a1eccd88205e85d982c762fe84dc268806e851ba80828c120852a1"
+            "3c33fc5a395406d58627007548f3682dce18eab9991d937c9ccfb8e610c37d2a"
             "SKIP"
             "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61"
             'SKIP'
