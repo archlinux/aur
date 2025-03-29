@@ -3,7 +3,7 @@
 
 pkgname=mathgl
 pkgver=8.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for making high-quality scientific graphics"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net"
@@ -13,18 +13,15 @@ makedepends=('cmake' 'gcc' 'make')
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgname%208.0/$pkgname-$pkgver.tar.gz" "new_libharu.patch")
 sha256sums=('71660995684a6b0a2823f678f6c438ababa474a115246cdf5f9b0b460abfcac1'
             '4b73de3f1f5069a207ed5124d40dd16d09c0d89cedb8605c461545bf19ed68c9')
+options=('staticlibs')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
   patch -Np1 -i ../new_libharu.patch
 }
 
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-      	[[ -d build ]] && rm -rf build
-    	mkdir build && cd build
-
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -Denable-all-widgets=OFF \
            -Denable-double=ON \
@@ -41,13 +38,13 @@ build() {
            -Denable-gsl=ON \
            -Denable-png=ON \
            -Denable-qt6=ON \
-           -Denable-qt6asqt=ON
+           -Denable-qt6asqt=ON \
+           -B "${srcdir}/_build" \
+           -S "${srcdir}/${pkgname}-${pkgver}"
   
-  make -j$(nproc)
-  cp ../translations/mathgl_en.mo .
+  cmake --build "${srcdir}/_build" --parallel $(nproc)
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/_build"
 }

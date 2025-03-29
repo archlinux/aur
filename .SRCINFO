@@ -1,7 +1,7 @@
 pkgbase = mathgl
 	pkgdesc = A library for making high-quality scientific graphics
 	pkgver = 8.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mathgl.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = mathgl
 	depends = libharu
 	depends = libpng
 	depends = freeglut
+	options = staticlibs
 	source = https://sourceforge.net/projects/mathgl/files/mathgl/mathgl%208.0/mathgl-8.0.2.tar.gz
 	source = new_libharu.patch
 	sha256sums = 71660995684a6b0a2823f678f6c438ababa474a115246cdf5f9b0b460abfcac1
