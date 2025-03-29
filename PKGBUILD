@@ -2,8 +2,8 @@
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
 pkgname="opencomposite-git"
-pkgver="r1185.d6b63a6"
-pkgrel="2"
+pkgver="r1212.97bf852"
+pkgrel="1"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR."
 arch=("x86_64")
 url="https://gitlab.com/znixian/OpenOVR"
