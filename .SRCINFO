@@ -1,5 +1,5 @@
 pkgbase = spm-arch
-	pkgdesc = Simple Package Manager Wrapper for Arch Linux
+	pkgdesc = Intuitive fzf package manager/wrapper for pacman tasks
 	pkgver = 1.0.1.2
 	pkgrel = 1
 	url = https://github.com/adelmonte/Simple_Package_Manager
@@ -12,6 +12,6 @@ pkgbase = spm-arch
 	provides = spm
 	conflicts = spm
 	source = spm-arch-1.0.1.2.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v1.0.1.2/spm-1.0.1.2.tar.gz
-	sha256sums = 22d3aa74d50db1f4f0c069899938f86b5b002962dbd04d6004ec8d675da5f9e7
+	sha256sums = 1a4823e6f2fa48a11405b0426bc18c8bcec63d379d3f0b4a3d8c9b1c65f5e5d3
 
 pkgname = spm-arch
