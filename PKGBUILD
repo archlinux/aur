@@ -1,7 +1,7 @@
 # Maintainer: Paul Bastian <paul.bastian@posteo.de>
 pkgname=librespot-java
-pkgver=1.6.3
-pkgrel=1
+pkgver=1.6.5
+pkgrel=0
 pkgdesc="A Spotify Connect enabled headless client"
 arch=('any')
 url="https://github.com/librespot-org/librespot-java"
@@ -15,7 +15,7 @@ source=("https://github.com/librespot-org/librespot-java/releases/download/v$pkg
         "https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java-restart.service"
         "https://raw.githubusercontent.com/paulbastian/aur/master/librespot-java/librespot-java-restart.timer")
 noextract=("librespot-player-$pkgver.jar")
-sha256sums=('543d002d2cfe153be0aea732b0d29e0fe6aa7a768cd1f3f070a766e201eb1a20'
+sha256sums=('2367c37cc4d9cc5c3d725243aa24f2c11d1a8e1bff4841cb7993cf16442be26b'
             '732a44a47780420484fdddff0c2ec206f58af3b4eddd71aa871e5b755890e3ee'
             '4d0b3452768be2eb380f6ae49c5d7fdfb0a095f699f71ce2a1697260b0c89b3a'
             'b1d29eed6e653ea37cc8d2d8c685ab0b12f646cfd12cf2d2d4a631442e3614bf'
