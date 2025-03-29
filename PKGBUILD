@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=jmcomic-downloader
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器，带图形界面，已打包exe，带收藏夹，免费下载收费的漫画，下载速度飞快"
 arch=($CARCH)
@@ -31,7 +31,7 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('afba8c7a2b2397bd982a770ef4b9513247edbee739a0a93be0cd37b2cbf99466')
+sha256sums=('a80d2802603bd8ca892c5d354bc0250a7f23905e6f3cbe7ccd8a841bbd851232')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/src-tauri"
