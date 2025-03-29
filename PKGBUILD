@@ -2,7 +2,7 @@
 
 pkgname=vapour
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An alternative open source Steam client"
 arch=('x86_64')
 license=('MIT')
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'a5ab8fef8079d665e45de1696dd8e5d65acc3f8651a4e77ef86b59ddacffa33d'
-  'fd4f30c2b1a0fd4524ed9978eb716f3eefc7dddefa2247e0e57146f0d5874624'
+  '64971702c8e973935fed0b1d9e4f58070c77ae0da58975c86b4dfddbc0fd2316'
   '7f05435023e9dafeedd74769ac66dcc73fadf35ad24c8b2fe9509c37375bf401'
 )
 
