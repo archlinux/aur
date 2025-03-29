@@ -4,7 +4,7 @@
 
 pkgname=yarr
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted RSS reader with vue.js front and sqlite back'
 arch=('aarch64' 'x86_64')
 url='https://github.com/nkanaev/yarr'
@@ -13,6 +13,7 @@ license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('glibc')
 makedepends=('git' 'go' 'make')
 options=('lto')
+conflicts=("$pkgname"-{bin,git})
 
 _githash=da569b3
 
