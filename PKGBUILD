@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/$_pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita' 'pamac-cli')
 optdepends=(
 	'polkit-kde-agent: authentication agent for KDE'
