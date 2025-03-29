@@ -81,6 +81,11 @@ prepare () {
   patch -p1 -i $srcdir/nativeQT-and-StyleSheet.patch || exit 1
   patch -p1 -i $srcdir/fix-svg-icons.patch || exit 1
 
+  # Disable updating of unused submodules
+  git config submodule.lib/googletest.update "none"
+  git config submodule.lib/WinToast.update "none"
+  git config submodule.lib/qtkeychain.update "none"
+
   git submodule init
   git config submodule.cmake/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
   git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
