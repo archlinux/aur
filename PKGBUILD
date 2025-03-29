@@ -3,7 +3,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=python-g4f
 _name=g4f
-pkgver=0.4.8.6
+pkgver=0.4.9.9
 pkgrel=1
 pkgdesc='The official gpt4free repository | various collection of powerful language models'
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-requests' 'python-pycryptodome' 'python-curl-cffi>=0.6.2'
          'python-aiohttp-socks' 'python-pywebview' 'python-plyer' 'python-cryptography' 'python-nodriver')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b17ac03511392e96244f3a77d182deb02ce2c4cbeeca9859295a6e1807ed6d40')
+sha256sums=('8f15106d17ea27f2a46b14c91c100f860ef7d34a29bd15494bcb7704d9e766aa')
 
 build() {
     cd $_name-$pkgver
