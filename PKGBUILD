@@ -25,12 +25,12 @@ sha256sums=('SKIP'
           '1c20a0381d85bbb0fbac0bc93a40f191848a00996a254d56da2d068a920f1648')
 
 pkgver() {
-  cd $srcdir/$_pkgbase
+  cd "$srcdir/$_pkgbase"
   git describe --tags --long | sed 's|Release-||;s|[_-]|.|g'
 }
 
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgbase"
   cargo build --release
 }
 
