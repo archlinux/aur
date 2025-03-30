@@ -1,6 +1,6 @@
 pkgbase = tlrc-git
 	pkgdesc = Official tldr client written in Rust.
-	pkgver = v1.8.0.r40.g2a197f2
+	pkgver = v1.11.0.r1.g97359d0
 	pkgrel = 1
 	url = https://github.com/tldr-pages/tlrc
 	arch = x86_64

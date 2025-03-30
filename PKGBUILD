@@ -2,7 +2,7 @@
 
 pkgname=tlrc-git
 _pkgname=tlrc
-pkgver=v1.8.0.r40.g2a197f2
+pkgver=v1.11.0.r1.g97359d0
 pkgrel=1
 pkgdesc='Official tldr client written in Rust.'
 arch=('x86_64' 'aarch64')
