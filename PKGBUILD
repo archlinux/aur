@@ -1,7 +1,7 @@
 # Maintainer: Yuki Joou <yukijoou@kemonomimi.gay>
 pkgname=axmldec
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stand-alone binary AndroidManifest.xml decoder"
 arch=(x86_64)
 url="https://github.com/ytsutano/axmldec"
@@ -9,15 +9,17 @@ license=('ISC')
 depends=('boost' 'zlib' 'minizip-ng')
 makedepends=('cmake' 'doxygen')
 source=("git+${url}"
-		"use-system-minizip.patch")
+		"minizip-use-largefile-source.patch")
 sha256sums=('SKIP'
-            'ec6e298a912a19131af2da4ac0ccd45d0ce58a51e2470380e86eafb6a2803609')
+            '26505f6e816ec34a2c1b0dcab41425be263ab4cabdb1005c5991cf274ba8d88f')
 
 prepare() {
 	cd "$srcdir"/"$pkgname"
 	git submodule update --init --recursive
 	git checkout "v${pkgver}"
-	git apply ../use-system-minizip.patch
+	pushd external/minizip
+	git apply ../../../../minizip-use-largefile-source.patch
+	popd
 	mkdir build/
 	cd build/
 	cmake -DCMAKE_BUILD_TYPE=Release ..

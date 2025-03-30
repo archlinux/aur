@@ -1,0 +1,15 @@
+diff --git a/ioapi.c b/ioapi.c
+index 63063d3..ff418c1 100755
+--- a/ioapi.c
++++ b/ioapi.c
+@@ -11,6 +11,10 @@
+    See the accompanying LICENSE file for the full text of the license.
+ */
+ 
++#define fopen64 fopen
++#define ftello64 ftello
++#define fseeko64 fseeko
++
+ #include <stdlib.h>
+ #include <string.h>
+ 

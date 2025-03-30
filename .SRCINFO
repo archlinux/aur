@@ -1,7 +1,7 @@
 pkgbase = axmldec
 	pkgdesc = Stand-alone binary AndroidManifest.xml decoder
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ytsutano/axmldec
 	arch = x86_64
 	license = ISC
@@ -11,8 +11,8 @@ pkgbase = axmldec
 	depends = zlib
 	depends = minizip-ng
 	source = git+https://github.com/ytsutano/axmldec
-	source = use-system-minizip.patch
+	source = minizip-use-largefile-source.patch
 	sha256sums = SKIP
-	sha256sums = ec6e298a912a19131af2da4ac0ccd45d0ce58a51e2470380e86eafb6a2803609
+	sha256sums = 26505f6e816ec34a2c1b0dcab41425be263ab4cabdb1005c5991cf274ba8d88f
 
 pkgname = axmldec
