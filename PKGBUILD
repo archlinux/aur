@@ -1,6 +1,6 @@
 # Maintainer: VDawg @ vdawg  tuta  io
 pkgname=moo
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Sick terminal music player with smart playlists."
 arch=('x86_64' 'aarch64')
