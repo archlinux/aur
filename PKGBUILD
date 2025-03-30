@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname="mandarine"
 pkgname=$_pkgname-git
-pkgver=r10275.aecb146
+pkgver=r10300.9bbb672
 pkgrel=1
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
@@ -146,7 +146,8 @@ build() {
 	-DUSE_SYSTEM_ZSTD=ON \
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
-	-DUSE_SYSTEM_BOOST=OFF
+	-DUSE_SYSTEM_BOOST=OFF \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake --build build
 }
 package() {
