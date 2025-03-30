@@ -1,7 +1,7 @@
 pkgbase = system76-kbd-led-git
 	pkgdesc = System76 keyboard backlight LED controller.
 	pkgver = 0.1.r14.gba5bbd7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kevr/system76-kbd-led
 	install = system76-kbd-led.install
 	arch = x86_64
