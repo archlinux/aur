@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r8555.gf7d7eec
+pkgver=0.1.r8824.g54c42f9c2
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -81,7 +81,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -123,6 +123,7 @@ build() {
                             -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
                             -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+                            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
                             -DCMAKE_INSTALL_PREFIX=/usr \
                             $(yq -cr '[."config-opts"[] | select(. | test("_COMPILER") | not)] | join(" ")' "$flatpakdir/$dep")
                         ninja -C "build-$dep_name"
