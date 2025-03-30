@@ -1,6 +1,6 @@
 # Maintainer: Mixaz <mixazplus at gmail dot com>
 pkgname=xenoprobes-git
-pkgver=r32.efcf48e
+pkgver=r33.f10a775
 pkgrel=1
 pkgdesc="Utility program for Xenoblade Chronicles X to search for optimal data probe configuration"
 arch=('x86_64')
@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cmake -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
+	cmake -B build -D CMAKE_INSTALL_PREFIX=/usr -G Ninja -W no-dev
 	cmake --build build/
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	DESTDIR="$pkgdir/" cmake --install build/ --prefix /usr
+	DESTDIR="$pkgdir/" cmake --install build
 }

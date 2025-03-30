@@ -1,6 +1,6 @@
 pkgbase = xenoprobes-git
 	pkgdesc = Utility program for Xenoblade Chronicles X to search for optimal data probe configuration
-	pkgver = r32.efcf48e
+	pkgver = r33.f10a775
 	pkgrel = 1
 	url = https://github.com/minneyar/xenoprobes
 	arch = x86_64
