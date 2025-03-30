@@ -1,5 +1,5 @@
 diff --git a/dlls/kernelbase/thread.c b/dlls/kernelbase/thread.c
-index 12e1777262a..b50224175f3 100644
+index bc8210bd43a..c3b3f020ad6 100644
 --- a/dlls/kernelbase/thread.c
 +++ b/dlls/kernelbase/thread.c
 @@ -344,6 +344,7 @@ HANDLE WINAPI DECLSPEC_HOTPATCH OpenThread( DWORD access, BOOL inherit, DWORD id
@@ -7,6 +7,6 @@ index 12e1777262a..b50224175f3 100644
      CLIENT_ID cid;
  
 +    memset(&attr, 0, sizeof(attr));
-     attr.Length = sizeof(attr);
-     attr.RootDirectory = 0;
-     attr.Attributes = inherit ? OBJ_INHERIT : 0;
+     InitializeObjectAttributes( &attr, NULL, inherit ? OBJ_INHERIT : 0, 0, NULL );
+     cid.UniqueProcess = 0;
+     cid.UniqueThread = ULongToHandle( id );
