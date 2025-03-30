@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2120.1
-pkgrel=2
+pkgver=2120.2
+pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'open
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 options=(!lto)
-_date=20250322
-_commit=6ecee96
+_date=20250329
+_commit=32bb14f
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz")
-sha256sums=('8039c40f2b963353c8ba6cc8370186608e3751526fb8a05374c49c8a3c3c1299')
+sha256sums=('68fd93c2350979e19d6dd8a47722010c1540420d3e36f76a6f5b79ce3679292b')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
@@ -51,6 +51,7 @@ build() {
 	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 	-DENABLE_QT_TRANSLATION=ON \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	-Wno-dev
 
 	cmake --build build
