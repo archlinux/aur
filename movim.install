@@ -4,3 +4,9 @@ post_install() {
     echo "https://wiki.archlinux.org/title/Movim"
 }
 
+post_upgrade() {
+    echo ""
+    echo "Migrate database:"
+    echo "cd /usr/share/webapps/movim/; sudo -u movim php /usr/share/webapps/movim/vendor/bin/phinx migrate"
+    echo ""
+}

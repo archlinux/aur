@@ -1,0 +1,8 @@
+--- /etc/apache2/conf-available/movim.conf	2025-02-17 16:34:14.000000000 +0400
++++ /etc/apache2/conf-available/movim.conf	2025-03-22 03:11:42.033808362 +0400
+@@ -1,4 +1,4 @@
+-<Directory /var/www/movim/public/>
++<Directory /usr/share/webapps/movim/public/>
+     DirectoryIndex index.php
+     Options +FollowSymLinks -Indexes
+     AllowOverride FileInfo Options

@@ -1,0 +1,17 @@
+--- /etc/systemd/system/movim.service	2025-02-17 16:34:14.000000000 +0400
++++ /etc/systemd/system/movim.service	2025-03-22 03:14:09.293818711 +0400
+@@ -3,10 +3,12 @@
+ After=nginx.service network.target local-fs.target
+ 
+ [Service]
+-User=www-data
++User=movim
+ Type=simple
++Environment=CACHE_PATH=/var/cache/webapps/movim/cache/
++Environment=LOG_PATH=/var/log/webapps/movim/
+ ExecStart=/usr/bin/php daemon.php start
+-WorkingDirectory=/var/www/movim/
++WorkingDirectory=/usr/share/webapps/movim
+ StandardOutput=journal
+ SyslogIdentifier=movim
+ PIDFile=/run/movim.pid

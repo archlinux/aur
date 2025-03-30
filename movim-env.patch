@@ -1,0 +1,22 @@
+--- .env.example	2025-02-17 16:34:14.000000000 +0400
++++ .env.example	2025-03-22 03:25:46.529869709 +0400
+@@ -1,14 +1,17 @@
+ # Database configuration
+ DB_DRIVER=pgsql
+-DB_HOST=localhost
++DB_HOST=/run/postgresql
+ DB_PORT=5432
+ DB_DATABASE=movim
+ DB_USERNAME=movim
+-DB_PASSWORD=movim
+ 
+ # Daemon configuration
+ DAEMON_URL=https://public-movim.url/ # Public URL of your Movim instance
+ DAEMON_PORT=8080 # Port on which the daemon will listen
+ DAEMON_INTERFACE=127.0.0.1 # Interface on which the daemon will listen, must be an IP
++##DAEMON_INTERFACE=unix:///run/movim.sock # Interface on which the daemon will listen, must be an IP
+ DAEMON_DEBUG=false
+ DAEMON_VERBOSE=false
++
++CACHE_PATH=/var/cache/webapps/movim/cache/
++LOG_PATH=/var/log/webapps/movim/
