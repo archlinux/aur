@@ -5,7 +5,7 @@
 _pkgname=autorestic
 pkgname="${_pkgname}-git"
 pkgver=1.8.3+10.r541.20241114.48fa20b
-pkgrel=1
+pkgrel=2
 pkgdesc='Config driven, easy backup cli for restic. Latest git checkout.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cupcakearmy/$_pkgname"
@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'git-lfs'
   'go'
 )
 provides=(
