@@ -3,3 +3,4 @@ source = "github"
 github = "minbrowser/min"
 use_max_tag = true
 prefix = "v"
+exclude_regex = ".*(beta).*"
