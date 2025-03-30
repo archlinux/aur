@@ -3,19 +3,20 @@
 _base=holoviews
 pkgname=python-${_base}
 pkgver=1.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="With Holoviews, your data visualizes itself"
 arch=(any)
 url="https://${_base}.org"
 license=(BSD-3-Clause)
 depends=(python-panel python-colorcet)
-makedepends=(python-build python-installer python-hatchling python-wheel)
+makedepends=(python-build python-installer python-hatch-vcs python-wheel)
 optdepends=('jupyter-nbconvert: for use holoviews command')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
 sha512sums=('1f66f7a3a0e7d69773463f161a9f837a0ed3230c3d0b857c3b03900b4f6a555d24cd4aa8400694a29c213b1c28b4604f87fa9ecadf29160b8a1d116f7bf6b5e1')
 
 build() {
   cd ${_base}-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 

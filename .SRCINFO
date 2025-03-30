@@ -1,13 +1,13 @@
 pkgbase = python-holoviews
 	pkgdesc = With Holoviews, your data visualizes itself
 	pkgver = 1.20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://holoviews.org
 	arch = any
 	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	makedepends = python-wheel
 	depends = python-panel
 	depends = python-colorcet
