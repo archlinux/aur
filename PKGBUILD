@@ -3,11 +3,12 @@
 _pkgbase=libbestline
 pkgname=libbestline-git
 pkgver=r41.5a0bc4b
-pkgrel=1
+pkgrel=2
 pkgdesc="ANSI Standard X3.64 Teletypewriter Command Session Library"
 url="https://github.com/jart/bestline"
 arch=('any')
 license=('BSD-2-Clause')
+provides=("libbestline.so" "libbestline")
 makedepends=('git')
 source=("libbestline::git+https://github.com/jart/bestline.git")
 sha256sums=('SKIP')
