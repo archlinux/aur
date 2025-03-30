@@ -1,11 +1,11 @@
 pkgbase = gettext-git
 	pkgdesc = GNU internationalization library
-	pkgver = 0.21.r12.ge645b7d56
+	pkgver = 0.24.r29.gd65c1d5cb
 	pkgrel = 1
 	url = https://www.gnu.org/software/gettext/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = fpc
 	makedepends = grep
@@ -17,7 +17,7 @@ pkgbase = gettext-git
 	depends = gperf
 	depends = libunistring
 	depends = ncurses
-	provides = gettext=0.21.r12.ge645b7d56
+	provides = gettext=0.24.r29.gd65c1d5cb
 	conflicts = gettext
 	source = git+https://git.savannah.gnu.org/git/gettext.git
 	sha256sums = SKIP

@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gettext-git
-pkgver=0.21.r12.ge645b7d56
+pkgver=0.24.r29.gd65c1d5cb
 pkgrel=1
 pkgdesc="GNU internationalization library"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gettext/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'glib2' 'gperf' 'libunistring' 'ncurses')
 makedepends=('git' 'fpc' 'grep' 'help2man' 'wget' 'xz')
 provides=("gettext=$pkgver")
