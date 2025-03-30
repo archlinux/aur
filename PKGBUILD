@@ -24,9 +24,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
 sha512sums=('7e3db8809dd8069ef3f0be0590a4a492b49b3f92dcf1e8cfb0e66310e6cf1d87365cf53b1eefe6c5d137282ec4b49ec3f2a185af20bf9c03153497e5bc785381')
 b2sums=('ecec471e7892f41613eb30ae2203c1a5dbe2a45cc56f231ad99c9d63a39c2a41855e7f6ecf08b3beea4b73da3032363206c154bd5d8ff4b36634cd2d8c78ffcf')
 
-prepare() {
-  sed -i 's|Exec=|Exec=/usr/bin/|' Improve-ImgSLI-$pkgver/$pkgname.desktop
-}
+ prepare() {
+  sed -i "s|^Exec=.*|Exec=$pkgname|" "$pkgname.desktop"
+ }
+
+ package() {
+-  cd Improve-ImgSLI-$pkgver
 
 package() {
   cd Improve-ImgSLI-$pkgver
