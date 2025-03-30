@@ -70,6 +70,9 @@ prepare() {
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
 
+  # Electron from 34.4.x/35.x onwards, creates strange artifacts on ArchLinux, lets downgrande to electron 34.3.x
+  sed -i 's/\"electron\": \"35.1.0\"/\"electron\": \"34.3.4\"/g' package.json
+
   # Install dependencies for sticker-creator
   pnpm --prefix ./sticker-creator/ install
 
