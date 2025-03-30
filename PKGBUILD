@@ -1,6 +1,6 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=gnome-shell-extension-bubblemail
-pkgver=24
+pkgver=25
 pkgrel=0
 pkgdesc="New and unread mail indicator (Local, Imap, Pop3, Gmail, Yahoo mail...) for gnome shell"
 pkgfolder="bubblemail-gnome-shell"
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('meson')
 depends=('dconf' 'gnome-shell' 'bubblemail')
 source=("https://framagit.org/razer/${pkgfolder}/-/archive/v${pkgver}/${pkgfolder}-v${pkgver}.tar.bz2")
-sha256sums=('5439699a23791576ede71051a784b0407e2b03ee1139d8252a51df85a5aa9e7e')
+sha256sums=('3d1ee302e6fc093de0c6ab0ebd66a014f5767155cebc465804a37d10c8aa8fad')
 
 build() {
     cd ${srcdir}/${pkgfolder}-v${pkgver}
