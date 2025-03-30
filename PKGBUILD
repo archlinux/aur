@@ -1,8 +1,8 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=pixelchart
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Map binary data into a beautiful chart'
 arch=('any')
 url='https://noraj.github.io/PixelChart/'
@@ -11,7 +11,7 @@ depends=('ruby' 'ruby-paint' 'ruby-docopt' 'libvips' 'imagemagick' 'ruby-rmagick
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 noextract=("$pkgname-$pkgver.gem")
-b2sums=('e1673f5d50916f98820e36a1cd46cbeef404c83a6c0b9b4288d779e4b7ca14bb5a47a32072e030549bdd8bbba24a5225a0b6ffd151f96655e36175217731dc44')
+b2sums=('38fe6c72d2ce0b6431de4579b6f15c8ebb2778ba2445ff63eb6284e4d04916d264d3f5b2b46e50119798863cd87ad2dcb37d10733a6970b95970d201631f64ae')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
