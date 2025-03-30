@@ -3,8 +3,8 @@
 _pyname="aardwolf"
 _pkgname="python-${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=0.2.9+5.r129.20241107.e6ae5c1
-pkgrel=2
+pkgver=0.2.9+8.r132.20250315.fa06dc4
+pkgrel=1
 pkgdesc="Asynchronous RDP protocol implementation for python."
 arch=(
   'aarch64'
@@ -31,7 +31,7 @@ depends=(
   'python-asn1tools'
   'python-bitstruct' # Needed by 'python-asn1tools', but there it was forgotten, so we place it here for now.
   'python-pyperclip>=1.8.2'
-  'python-arc4>=0.3.0' #faster than cryptodome
+  'python-arc4>=0.3.0' # faster than cryptodome
   'python-pillow>=9.0.0'
 )
 makedepends=(
