@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
     # Comment out the Nexuiz gamepack (the URL doesn't work)
-    patch -d ${pkgname} -p1 < ../gamepack-manager-workaround.patch
+    patch -d "${pkgname}" -p1 < ../gamepack-manager-workaround.patch
 
     # Fetch the Crunch submodule
     cd "${srcdir}/${pkgname}"
@@ -50,6 +50,7 @@ build() {
     # use -DGAMEPACKS_LICENSE_LIST=none and -DGAMEPACKS_NAME_LIST="Unvanquished Xonotic".
     # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for further instructions.
     cmake -G "Unix Makefiles" -S. -Bbuild \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DFHS_INSTALL=ON \
