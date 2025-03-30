@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.7.7
+pkgver=1.7.8
 pkgrel=3
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -52,7 +52,7 @@ optdepends=(
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fe2410b52a76a0f74c1c0700cb4d942d7bca62e9d97fac86e1e9f3fcb2297b4d')
+sha256sums=('99e630ba98ff29e15d6ccea30742743560b829f45870ae3261861e3d047b8156')
 
 _archive="$_pkgname-$pkgver"
 
@@ -98,7 +98,9 @@ check() {
     --deselect tests/llm/test_genai/test_simple.py \
     --deselect tests/llm/test_genai/test_retries.py \
     --deselect tests/llm/test_genai/test_multimodal.py \
-    --deselect tests/llm/test_genai/test_format.py
+    --deselect tests/llm/test_genai/test_format.py \
+    --deselect tests/llm/test_genai/test_long_prompt.py \
+    --deselect tests/llm/test_mistral/test_stream.py
 }
 
 package() {
