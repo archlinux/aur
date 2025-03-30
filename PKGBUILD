@@ -2,8 +2,8 @@
 # Maintainer: Youssef Fathy <youssefessamasu@gmail.com>
 
 pkgname='go-pray-bin'
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc='Prayer times CLI to remind you to Go pray'
 url='https://github.com/0xzer0x/go-pray'
 arch=('x86_64')
@@ -12,26 +12,18 @@ provides=('go-pray')
 conflicts=('go-pray')
 depends=('alsa-lib')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.7/go-pray_linux_x86_64.tar.gz")
-sha256sums_x86_64=('da002db6afc2a0a361040934b8430dc7b9c05ec5ebfa6332f1a78d06da513681')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.8/go-pray_linux_x86_64.tar.gz")
+sha256sums_x86_64=('5d44ddd8290211ad2890c9db1997d8406ffca0e2c8e18db126b61e6f2b6d3ed5')
 
 package() {
   # bin
   install -Dm755 ./go-pray "${pkgdir}/usr/bin/go-pray"
 
-  cat <<EOF >tmpconfig.yml
-calcuation:
-    method: UAQ
-location:
-    lat: 0
-    long: 0
-EOF
-
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
-  ./go-pray --config tmpconfig.yml completion bash >"${pkgdir}/usr/share/bash-completion/completions/go-pray"
-  ./go-pray --config tmpconfig.yml completion zsh >"${pkgdir}/usr/share/zsh/site-functions/_go-pray"
-  ./go-pray --config tmpconfig.yml completion fish >"${pkgdir}/usr/share/fish/vendor_completions.d/go-pray.fish"
+  ./go-pray completion bash > "${pkgdir}/usr/share/bash-completion/completions/go-pray"
+  ./go-pray completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_go-pray"
+  ./go-pray completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/go-pray.fish"
 }
