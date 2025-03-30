@@ -3,7 +3,7 @@
 pkgname=('lua-taglib' 'lua51-taglib' 'lua52-taglib' 'lua53-taglib')
 pkgbase='lua-taglib'
 pkgdesc="Lua bindings for taglib"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://github.com/jprjr/lua-taglib'
@@ -12,7 +12,7 @@ depends=('taglib' 'gcc-libs' 'glibc')
 makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
 source=("https://github.com/jprjr/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.gz")
 
-sha256sums=('1a48b740e08fd718e6acef9c693df1981298bec4be52eec07bd2e1ad1a928ffa')
+sha256sums=('2671230d13751bbcd633ef8ea305dafa9ff8be23e08de89442d138f7d1c5d9d2')
 
 build() {
     local cmake_options=(
