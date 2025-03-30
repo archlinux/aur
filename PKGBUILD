@@ -1,43 +1,29 @@
 # Maintainer: Pixel
 
 pkgname=walrs
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A fast color scheme generator"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Pixel2175/walrs"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo' 'git')
-backup=('etc/walrs/templates/colors.json')
-source=("git+https://github.com/Pixel2175/walrs.git#branch=main")
-
-sha256sums=('SKIP')
+makedepends=('rust' 'cargo' 'git' 'make')
+source=("git+https://github.com/Pixel2175/walrs.git")
+sha256sums=('86848eb08a41cc8d23bfd656448b520e14ffd6945c7e39866d8a8cee7e4c7710')
 
 build() {
   cd "$srcdir/$pkgname"
-  cargo build --release --locked
+  make build
 }
 
 check() {
   cd "$srcdir/$pkgname"
-  cargo test --release --locked
+  make check
 }
 
 package() {
   cd "$srcdir/$pkgname"
-
-  # binary
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-  # templates folder
-  install -dm755 "$pkgdir/etc/$pkgname/templates"
-  cp -r templates/* "$pkgdir/etc/$pkgname/templates/"
-
-  # license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # readme
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
