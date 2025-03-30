@@ -1,9 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-bake-modernize
-pkgver=0.18.0
-_commit=a64fc317f4d68ae0097d8d77fe5a6b5d95a286d3
-pkgrel=5
+pkgver=0.33.0
+pkgrel=1
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
 url='https://github.com/ioquatix/bake-modernize'
@@ -25,16 +24,22 @@ checkdepends=(
   ruby-bake-test-external
   ruby-bundler
   ruby-covered
+  ruby-decode
   ruby-sus
 )
 options=(!emptydirs)
-source=(git+https://github.com/ioquatix/bake-modernize.git#commit=$_commit)
-sha256sums=('SKIP')
+source=(git+https://github.com/ioquatix/bake-modernize.git#tag=v$pkgver)
+sha512sums=('4584c6f7f20f0e8ad782ebfe589b368519bbe978ae048680c79dd57b7f8066d4397ea94cfe0b45d309bf0ab9720c03f4cdb9d8a386ee8b7bbdac0dcc49f0591c')
+b2sums=('9cd5401d260d6c090059364a994e2f19ebf56da1897331efd18c19eeb60042da2ec60b1348f210d669c01b3b08cda26ad23e1db3827a27d6b143a64f9d05b35f')
 
 prepare() {
   cd bake-modernize
   sed -i -e '/signing_key/d' -e 's/~>/>=/' bake-modernize.gemspec
-  sed -i '/bake-gem/d;/bake-github-pages/d;/utopia-project/d' gems.rb
+
+  sed --in-place \
+    --expression '/group :maintenance/,/end/d' \
+    --expression '/rubocop/d' \
+    gems.rb
 }
 
 build() {
