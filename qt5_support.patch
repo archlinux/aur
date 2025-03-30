@@ -4,7 +4,7 @@ index 7f4730e..de42111 100755
 +++ b/CMakeLists.txt
 @@ -1,24 +1,17 @@
 -cmake_minimum_required(VERSION 2.4)
-+cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
  project(MasterPatch)
  
 -find_package(Qt4 REQUIRED)

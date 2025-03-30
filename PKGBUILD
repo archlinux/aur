@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=doom2masterlevelspatch
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Unofficial Master Levels For Doom 2 Patcher For ZDoom (Join all Master Levels WADs)"
 url=http://maniacsvault.net/projects
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("http://maniacsvault.net/files/masterlevelspatch.7z"
         qt5_support.patch)
 
 sha256sums=(bd2e1a432084af72db2c860959392132db45ddc43abec61c101249c613b672c2
-            126c9787a71cd70bd4430eba549c23760cf3b8b51199adf2ee528468aab1d010)
+            9bd1f0f9d8d3902d4cfcfc72d5c42ddbf97d5648f5b4257d6d38f8a6b9b3a318)
 
 prepare() {
 	# Extract relevant license excerpt from readme.txt
