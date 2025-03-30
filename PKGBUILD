@@ -3,7 +3,7 @@
 # Contributor: ston <2424284164@qq.com>
 pkgname=go-musicfox
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
@@ -30,9 +30,9 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export GOPATH=${srcdir}
     go build -o ../musicfox -ldflags "-s -w \
-		-X 'github.com/go-musicfox/go-musicfox/pkg/constants.AppVersion=v${pkgver}' 	\
-		-X 'github.com/go-musicfox/go-musicfox/pkg/constants.LastfmKey=${LASTFM_KEY}'	\
-		-X 'github.com/go-musicfox/go-musicfox/pkg/constants.LastfmSecret=${LASTFM_SECRET}' " cmd/musicfox.go
+       -X 'github.com/go-musicfox/go-musicfox/internal/types.AppVersion=v${pkgver}'    \
+       -X 'github.com/go-musicfox/go-musicfox/internal/types.LastfmKey=${LASTFM_KEY}'  \
+       -X 'github.com/go-musicfox/go-musicfox/internal/types.LastfmSecret=${LASTFM_SECRET}' " cmd/musicfox.go
 }
 
 package() {
