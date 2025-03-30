@@ -6,7 +6,7 @@
 _pkgname=alexandrie
 pkgname=$_pkgname-pg
 pkgver=0.1.0_20231113
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust private crates registry - with postgres backend'
 arch=(x86_64)
 url='https://github.com/Hirevo/alexandrie'
@@ -16,12 +16,8 @@ source=("git+https://github.com/Hirevo/alexandrie.git#commit=$_source_revision")
 sha256sums=('SKIP')
 provides=('alexandrie')
 options=(!lto)
-makedepends=('cargo' 'base-devel' 'pkgconf')
+makedepends=('cargo' 'base-devel' 'pkgconf' 'rustup')
 depends=('postgresql-libs' 'git' 'openssl' 'oniguruma' 'diesel-cli')
-
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-}
 
 build() {
     cd "$srcdir/$_pkgname"
