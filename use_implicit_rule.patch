@@ -1,0 +1,11 @@
+diff --git a/Makefile b/Makefile
+index 9bb8efa..867316b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,4 @@
+-exchange: exchange.c
+-	gcc -O2 -Wall -pedantic -std=c11 -Werror -o exchange $^
++exchange: exchange.o
+ 
+ .PHONY: clean install
+ 

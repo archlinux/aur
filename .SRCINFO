@@ -1,0 +1,17 @@
+pkgbase = exchange-git
+	pkgdesc = Exchange names of two files or directories atomically
+	pkgver = r8.6ea7b39
+	pkgrel = 1
+	url = https://github.com/AbhyudayaSharma/exchange
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = exchange
+	conflicts = exchange
+	source = git+https://github.com/AbhyudayaSharma/exchange.git
+	source = use_implicit_rule.patch
+	sha256sums = SKIP
+	sha256sums = 1e1a9b33273e58d5bbf6632f1d97452392fa4db67c8b2a8cf30fc15089361019
+
+pkgname = exchange-git
