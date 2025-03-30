@@ -3,7 +3,7 @@
 
 pkgname=improve-imgsli
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
 url="https://github.com/Loganavter/$pkgname"
@@ -27,9 +27,6 @@ b2sums=('ecec471e7892f41613eb30ae2203c1a5dbe2a45cc56f231ad99c9d63a39c2a41855e7f6
  prepare() {
   sed -i "s|^Exec=.*|Exec=$pkgname|" "$pkgname.desktop"
  }
-
- package() {
--  cd Improve-ImgSLI-$pkgver
 
 package() {
   cd Improve-ImgSLI-$pkgver
