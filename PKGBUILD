@@ -2,7 +2,7 @@
 
 pkgname=woman
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust Live Dev Environment with screen|tmux and web monitoring via ttyd"
 arch=('any')
 url="https://github.com/hackia/woman"
@@ -15,6 +15,6 @@ sha512sums=('490bd41d9a5809eae63ac4fcd2f27dd44bd568bca500aec208df219bb304fde3d00
 
 package() {
   cd "$pkgname-$pkgver"
-  make install
+  sudo make install
 }
 

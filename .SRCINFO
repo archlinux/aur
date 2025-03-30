@@ -1,7 +1,7 @@
 pkgbase = woman
 	pkgdesc = Rust Live Dev Environment with screen|tmux and web monitoring via ttyd
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hackia/woman
 	arch = any
 	license = GPL
