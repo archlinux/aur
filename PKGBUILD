@@ -1,7 +1,7 @@
 # Maintainer: shinrax2
-_pkgname=per-device-application-volume
+_reponame=per-device-application-volume
 pkgname=pdav
-pkgver=0.0.3
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="user daemon to automatically save and restore application volume settings based on default output device for pulseaudio/pipewire-pulse"
 arch=(any)
@@ -14,11 +14,13 @@ md5sums=('SKIP')
 install=pdav.install
 
 package() {
-    cd $_pkgname
+    cd $_reponame
     install -Dm755 "pdav" \
         -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 quirks.json \
+        "$pkgdir/usr/share/pdav/quirks.json"
     install -Dm644 pdav.service \
         "$pkgdir/etc/systemd/user/pdav.service"
 }

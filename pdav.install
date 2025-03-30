@@ -4,7 +4,7 @@ post_install() {
     echo "[PDAV] 'systemctl --user --now enable pdav.service'"
 }
 
-post_update() {
+post_upgrade() {
     echo "[PDAV] Please restart your user daemon with the following commands"
     echo "[PDAV] 'systemctl --user daemon-reload'"
     echo "[PDAV] 'systemctl --user --now restart pdav.service'"
