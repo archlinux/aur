@@ -4,7 +4,7 @@
 pkgname="ryzenctrl-git"
 epoch=1
 pkgver=0.5.3.992.r155.20250306.17af29d
-pkgrel=1
+pkgrel=2
 pkgdesc="Fine-tuning of power limits and frequency of APU Ryzen Mobile"
 url="https://github.com/xodj/RyzenAdjCtrl"
 arch=("x86_64")
@@ -35,16 +35,20 @@ conflicts=(
 source=(
   "xodj-RyzenAdjCtrl::git+https://github.com/xodj/RyzenAdjCtrl.git"
   #"ryzenadj::git+https://github.com/FlyGoat/RyzenAdj.git" # Needed for `lib/ryzenadj.h`, and needed to be downloaded to `ryzenadj`.
+  "ryzenctrl_fix-elif-in-CtrlBus.h::https://github.com/xodj/RyzenAdjCtrl/commit/e82a61a47baa87809c709f2639fe90ec4c24ea94.patch"  # See 
 )
 sha256sums=(
   "SKIP"
   #"SKIP"
+  "87e5b6994eb427fc84f19b50fff96dec533ba3b2e5f219a968ce507984dbc2fd"
 )
 
 prepare() {
   cd "${srcdir}/xodj-RyzenAdjCtrl"
 
   mkdir -p build
+
+  patch -Np1 --follow-symlinks -i "${srcdir}/ryzenctrl_fix-elif-in-CtrlBus.h"
 
   git log > git.log
 }
