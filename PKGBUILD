@@ -4,8 +4,8 @@
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 
 pkgname="rpcs3"
-pkgver=0.0.35
-pkgrel=2
+pkgver=0.0.36
+pkgrel=1
 pkgdesc="An open-source PlayStation 3 emulator/debugger written in C++"
 arch=('aarch64' 'x86_64')
 url="https://rpcs3.net"
@@ -15,20 +15,22 @@ depends=('alsa-lib' 'curl' 'faudio' 'ffmpeg' 'flatbuffers>=2' 'gcc-libs' 'glew'
          'glibc' 'glu' 'hicolor-icon-theme' 'libevdev' 'libgl' 'libice'
          'libpng' 'libpulse' 'libsm' 'libusb>=1' 'libx11' 'libxext' 'llvm-libs'
          'openal' 'opencv' 'pugixml>=1.15' 'qt6-base' 'qt6-declarative'
-         'qt6-multimedia' 'qt6-svg' 'sdl2>=2.24' 'systemd-libs'
-         'vulkan-icd-loader' 'zlib') # 'wolfssl>=4.7'
+         'qt6-multimedia' 'qt6-svg' 'sdl3' 'systemd-libs' 'vulkan-icd-loader'
+         'zlib') # 'wolfssl>=4.7'
 makedepends=('clang' 'cmake>=3.28' 'lld' 'llvm')
 optdepends=('vulkan-validation-layers'
             'rpcs3-udev: support DualShock 3, 4 and DualSense controllers')
 options=('!lto' '!strip')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('3472e89638b0ee9f0d3d99307dfee4d5a293df194d24bb6daf34f309b26a229da7ca2528957e3da53b46619c843eb2c425e70d92fdbe639edadb8cf7b960ec29'
+b2sums=('7b1cfb7ee71ccdf54a60a440d2fa7e8966af4e9d39623423021c3d6b8ea9b2b0a406028e35bb45147df90c3ed5bbdadae4fef234246384640d9c391a69efb0d4'
         '923bfada8484a3bb91dd92a242d7096017b77fd399a90052af121658221069215e277d51fb4b9b95821b9272e44618f91883c2dc49bfb671c52a941d54aec182'
         '0e60f4230975ccf83f1cd82e4effdac4e4e7a8eaa718f6244a132f727d15df3f0d264812b741fa770ff1c1e12e49bf017c126035cb234d66cec0bc9a2bae67e5'
         '17b054083ce178255f19026d175986225f6f803a21e0cef4ce9a557ac50057578d3ae76d3b179fe25d0febd5e05d5d5feb28f9761045a8e41497b92a966196ec'
         '2842b50f7b6640c8d6f07f4be715b3152f1b9b35eede8d4035581654cc3bd86f52bec13fe0b0aadca27f4b75b0f5f2decce290234a9b6ae754c392da489f7a84'
         '208041ba68fc7b26d3fd800e1a26c79d8f011142fff1f6ea519d71972762299816eb10b3204a8bd4fe872bb19fe5639e5782db4e40333cb2073c7fb32153e6e7'
+        '84892b7d19a90bafb7f0aea683eef9a3474697275e522e14ba9da65a0c46f5a38219ee02b60152d7d242e375bb6b59f9810d39ec19704575e5bc1629ab55e511'
+        '1f982f09d202828eeaa06892904c83d301103894cea3a22b033c24fde3a40fc03a5957148430222e69029a32db3537d4e2a84d81cdb1dbd461d80a87cb82db8b'
         'ec1330941df3fff6538fbfc0e9609fb022ffe2507c3622242dc69a4c4758714f89452dcc0e0902cbe8fbfd3f76185b042adf7e386abdb2a202403b3d8786d6a2'
         '414379fcb08d78a96fd7788f3708e7ca41b1ea21a4145427f486704c563658c709b9eaddef360cca7cf42c3e0a6c3d7e400132957231f960f660bcc4f1b89db7'
         '8c7b4e1c788a07c1092be813555b1774a713693dd995183671d60b1896f96e105631447cb8c69bbcb13c380388b632d38a2c59be19903bc259ae6b57a181612a'
@@ -45,11 +47,13 @@ declare -rAg _modules_name_map=(
   # rpcs3
   [3rdparty/7zip/7zip]=https://github.com/ip7z/7zip/archive/e5431fa6f5505e385c6f9367260717e9c47dc2ee.tar.gz
   # [3rdparty/FAudio]=https://github.com/FNA-XNA/FAudio/archive/af74e661c1bd8b105840d14485cc01d9c782b513.tar.gz
+  [3rdparty/GPUOpen/VulkanMemoryAllocator]=https://github.com/Megamouse/VulkanMemoryAllocator/archive/37064843398c69cc0ca7f8cf5b33128c03a2bd74.tar.gz
   [3rdparty/OpenAL/openal-soft]=https://github.com/kcat/openal-soft/archive/90191edd20bb877c5cbddfdac7ec0fe49ad93727.tar.gz
   [3rdparty/SoundTouch/soundtouch]=https://github.com/RPCS3/soundtouch/archive/394e1f58b23dc80599214d2e9b6a5e0dfd0bbe07.tar.gz
   [3rdparty/asmjit/asmjit]=https://github.com/asmjit/asmjit/archive/416f7356967c1f66784dc1580fe157f9406d8bff.tar.gz
   [3rdparty/cubeb/cubeb]=https://github.com/mozilla/cubeb/archive/70b4e3db7822de4d534959885cda109d6edbee36.tar.gz
   # [3rdparty/curl/curl]=https://github.com/curl/curl/archive/57495c64871d18905a0941db9196ef90bafe9a29.tar.gz
+  [3rdparty/discord-rpc/discord-rpc]=https://github.com/Vestrel/discord-rpc/archive/171b2142ac8acdf016c231e36dc7a8d48daff19c.tar.gz
   # [3rdparty/ffmpeg]=https://github.com/RPCS3/ffmpeg-core/archive/ec6367d3ba9d0d57b9d22d4b87da8144acaf428f.tar.gz
   # [3rdparty/flatbuffers]=https://github.com/google/flatbuffers/archive/595bf0007ab1929570c7671f091313c8fc20644e.tar.gz
   [3rdparty/fusion/fusion]=https://github.com/xioTechnologies/Fusion/archive/066d4a63b2c714b20b0a8073a01fda7c5c6763f6.tar.gz
@@ -71,6 +75,8 @@ declare -rAg _modules_name_map=(
   # cubeb
   [3rdparty/cubeb/cubeb/cmake/sanitizers-cmake]=https://github.com/arsenm/sanitizers-cmake/archive/aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a.tar.gz
   [3rdparty/cubeb/cubeb/googletest]=https://github.com/google/googletest/archive/800f5422ac9d9e0ad59cd860a2ef3a679588acb4.tar.gz
+  # discord-rpc
+  # [3rdparty/discord-rpc/discord-rpc/thirdparty/rapidjson-1.1.0/thirdparty/gtest]=
 )
 
 declare -rg _ignore_modules=(
@@ -86,6 +92,7 @@ declare -rg _ignore_modules=(
   "3rdparty/pugixml"
   # "3rdparty/wolfssl/wolfssl"
   "3rdparty/zlib/zlib"
+  "3rdparty/discord-rpc/discord-rpc/thirdparty/rapidjson-1.1.0/thirdparty/gtest"
 )
 
 _get_source_name_string() {
