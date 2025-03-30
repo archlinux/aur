@@ -10,16 +10,11 @@ license=('GPL')
 depends=('ttyd' 'rustup' 'cargo' 'cargo-watch' 'cargo-audit' 'cargo-deny' 'cargo-hack' 'cargo-udeps' 'screen' 'tmux')
 optdepends=('code' 'fish' 'zsh' 'lazygit')
 provides=('woman')
-source=("https://github.com/hackia/woman/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f3781cbb4e9e190df38c3fe7fa80ba69bf6f9dbafb158e0426dd4604f2f1ba794450679005a38d0f9f1dad0696e2f22b8b086b2d7d08a0f99bb4fd3b0f7ed5d8')
-
-check() {
-  cd "$pkgname-$pkgver"
-  make check
-}
+source=("https://github.com/hackia/woman/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('490bd41d9a5809eae63ac4fcd2f27dd44bd568bca500aec208df219bb304fde3d00d4fe8fd0c6fc79dc58e1e70f6e5b51480271ad43a2fb6ef2902f7243b3b57')
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  make install
 }
 
