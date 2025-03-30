@@ -4,8 +4,11 @@ pkgbase = sinpass
 	pkgrel = 1
 	url = https://github.com/rickert156/SinPass
 	arch = any
-	license = GPLv3
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
+	depends = python-pip
 	source = sinpass::git+https://github.com/rickert156/SinPass.git
 	sha256sums = SKIP
 
