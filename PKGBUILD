@@ -11,32 +11,33 @@ makedepends=("rust" "cargo" "git" "blueprint-compiler" "meson" "libvirt" "libvir
 depends=(libadwaita gtk4 hicolor-icon-theme dconf gcc-libs glib2 glibc spice-gtk spice-protocol phodav python-pyparsing libcacard spice freerdp2 vte4 json-c libtirpc gtk-vnc)
 source=("git+https://github.com/theCapypara/field-monitor#tag=v${pkgver}")
 sha256sums=('cdb3461d9963d2f20d61b1988395f4de9f2c69bbe08f6bc1a79134034f8ad526')
-options=(!lto)
+options=()
 
 function prepare() {
+	export RUSTUP_TOOLCHAIN=stable
 	export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-	meson subprojects download --sourcedir="${srcdir}/field-monitor"
+	#meson subprojects download --sourcedir="${srcdir}/field-monitor"
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 function build() {
+	export RUSTUP_TOOLCHAIN=stable
 	export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-	export RUST_BACKTRACE=1
-	arch-meson "${srcdir}/field-monitor" build
+	#export RUST_BACKTRACE=1
+	arch-meson "${srcdir}/field-monitor" build --buildtype=release
 	meson compile -C build
 }
 
 function check() {
+	export RUSTUP_TOOLCHAIN=stable
 	export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-	meson test -C build
-	rm -rf "${srcdir}/install"
-	mkdir -p "${srcdir}/install"
-	export RUST_BACKTRACE=1
-	export GIT_CONFIG_GLOBAL=""
-	meson install -C build --destdir "${srcdir}/install"
+	meson test -C build --no-rebuild --print-errorlogs
+	
 }
 
 function package() {
-	cp -a \
-		"${srcdir}/install"/* \
-		"${pkgdir}/"
+	meson install \
+		-C build \
+		--no-rebuild \
+		--destdir "${srcdir}/install"
 }
