@@ -64,7 +64,7 @@ build() {
       -DCMAKE_BUILD_TYPE=None \
       -DBUILD_TESTS=OFF \
       -DPYTHON_EXECUTABLE=/usr/bin/python \
-      -DPYTHON_CONFIG_SUFFIX='python3.13-config' \
+      -DPYTHON_CONFIG_SUFFIX='python-config' \
       -DCMAKE_POLICY_VERSION_MINIMUM=3.30
 
     cmake --build build --parallel 4
