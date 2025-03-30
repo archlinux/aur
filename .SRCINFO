@@ -1,7 +1,7 @@
 pkgbase = python-gpytorch
 	pkgdesc = A highly efficient implementation of Gaussian Processes in PyTorch
 	pkgver = 1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gpytorch.ai
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-gpytorch
 	depends = python-scipy
 	depends = python-mpmath
 	optdepends = ipython: for [examples] module
-	optdepends = jupyter: for [examples] module
+	optdepends = jupyter-notebook: for [examples] module
 	optdepends = python-matplotlib: for [examples] module
 	optdepends = python-scipy: for [examples] module
 	optdepends = python-torchvision: for [examples] module

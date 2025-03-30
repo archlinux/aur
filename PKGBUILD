@@ -4,7 +4,7 @@
 pkgname=python-gpytorch
 _pkgname=${pkgname#python-}
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly efficient implementation of Gaussian Processes in PyTorch'
 arch=('x86_64')
 url='https://gpytorch.ai'
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 checkdepends=('python-pytest' 'python-nbval' 'flake8')
 optdepends=(
             'ipython: for [examples] module'
-            'jupyter: for [examples] module'
+            'jupyter-notebook: for [examples] module'
             'python-matplotlib: for [examples] module'
             'python-scipy: for [examples] module'
             'python-torchvision: for [examples] module'
