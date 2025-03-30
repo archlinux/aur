@@ -1,0 +1,4 @@
+[mcut]
+source = "git"
+git = "https://github.com/cutdigital/mcut.git"
+prefix = "v"
