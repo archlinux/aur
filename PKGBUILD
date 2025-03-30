@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=rime-moe-pinyin
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="moeOS RIME 全拼方案"
 arch=('any')
