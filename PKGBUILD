@@ -39,5 +39,5 @@ function package() {
 	meson install \
 		-C build \
 		--no-rebuild \
-		--destdir "${srcdir}/install"
+		--destdir "${pkgdir}"
 }
