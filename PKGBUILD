@@ -8,15 +8,15 @@
 
 pkgname=gtypist-git
 pkgver=2.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc="universal typing tutor"
 arch=('x86_64')
 url="http://www.gnu.org/software/gtypist/gtypist.html"
 license=("GPL3")
 depends=('ncurses' 'perl')
 makedepends=('git' 'gengetopt' 'help2man')
-provides=(gtypist)
-conflicts=(gtypist)
+conflicts=("gtypist")
+provides=('gtypist=${pkgver}')
 source=("git+https://git.savannah.gnu.org/git/gtypist.git"
 	ncurses.patch)
 sha256sums=('SKIP'
@@ -40,3 +40,8 @@ package() {
   make prefix="$pkgdir"/usr install
 }
 
+pkgver() {
+  cd "gtypist"
+  git describe --long --tags --abbrev=7 | sed 's/release.//'\
+	  				| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
