@@ -2,9 +2,9 @@
 
 pkgname=flowfox
 _pkgname=flowfox
-pkgver=135.0.1
+pkgver=137.0.0
 pkgrel=1
-_github_rel=135.0.1-1
+_github_rel=137.0.0-1
 url=https://github.com/Troplo/ffox
 conflicts=("flowfox-bin")
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Source version.)"
@@ -310,8 +310,3 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 }
-sha256sums=('c0c1c769c4d0f725a340d567021bb81170a30417aae31af632c62320bcf22f1e'
-            '67bd4db8eb21be88d80dc0df8cdabbea59295784c2614157e963162504324053'
-            '6e1e97053fa272ad282428cf05b8cde07842353e8dfff7210c91c74842a3e71e'
-            '33c251a087926ef2c1398f7b7ea5b9bad8ab71c624590f9d1df754cb52d3d4b6')
-sha256sums_x86_64=('51fd74d4a28e046fe91ba42fa0474e286c616dd4697d1865fb9a0e7795192331')
