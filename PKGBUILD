@@ -11,7 +11,7 @@
 _pkgname=kube-burner
 
 pkgname=kube-burner-bin
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc='Kubernetes performance and scale test orchestration framework written in golang.'
 arch=('x86_64' 's390x' 'arm64' 'ppc64le')
@@ -25,10 +25,10 @@ source_s390x=("${_pkgname}-${pkgver}-s390x.tar.gz::https://github.com/kube-burne
 source_arm64=("${_pkgname}-${pkgver}-arm64.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-arm64.tar.gz")
 source_ppc64le=("${_pkgname}-${pkgver}-ppc64le.tar.gz::https://github.com/kube-burner/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-V${pkgver}-linux-ppc64le.tar.gz")
 
-sha256sums_x86_64=('555e8cc50b191c3dd9b5734ab530987b1ef8198e6ad2c372fed8c849f90ee0e9')
-sha256sums_s390x=('c63624311be794f52f544e63d92be053733c4cab87ead8e52b1bc366ccacc9ed')
-sha256sums_arm64=('d553e3244e3f796228d787c9f9190d67c7314a4a0cbf68d2a8281870267e8f28')
-sha256sums_ppc64le=('050d1eed12441fd1fff07d75c2f94cad29695f81258fb81671a9a7dc44efd7c6')
+sha256sums_x86_64=('3881e688ba9416939be689b7ed7991784f572c6216bf52cfd8433fa3ac85ddec')
+sha256sums_s390x=('11a0a63be1998d40197730ea967d7dc0cc159218f0c9f030dadbefa3290564f7')
+sha256sums_arm64=('c8c6aa88c4804a1a7fe187a42ea58ab2ed20e2cc65aa37194f7527ca8875a4d5')
+sha256sums_ppc64le=('18f26d82c9844278a68049e1310820a1d4cdf7468e2c8d7250be0f63fdb85202')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
