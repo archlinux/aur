@@ -4,7 +4,7 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20240410.r16.g1b7e6358c
+pkgver=20241226.r36.gb284dbd0f
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -39,7 +39,9 @@ build() {
     cd "${srcdir}"
     cmake -S $_pkgname -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_BUILD_TYPE='None' \
+	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
         -DNCNN_BUILD_EXAMPLES=OFF \
         -DNCNN_VULKAN=ON \
         -DNCNN_SYSTEM_GLSLANG=OFF \
@@ -48,6 +50,8 @@ build() {
         -DNCNN_STDIO=ON \
         -DNCNN_STRING=ON \
         -DNCNN_BUILD_TOOLS=1 \
+	-DGLSLANG_TARGET_DIR=/usr/lib/cmake \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev
     cmake --build build
 }
