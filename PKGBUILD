@@ -2,28 +2,39 @@
 
 pkgname=unisec
 _gemname=$pkgname
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Unicode Security Toolkit.'
 arch=('any')
-url='https://acceis.github.io/unisec'
-#url='https://github.com/Acceis/unisec'
+url='https://noraj.github.io/unisec'
 license=('MIT')
-depends=('ruby' 'ctf-party' 'ruby-dry-cli' 'ruby-paint' 'ruby-twitter_cldr'
-         'ruby-unicode-confusable')
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-noextract=("$_gemname-$pkgver.gem")
-b2sums=('5e323a59654ee9edcbd92aa31692ec0465f4c9548cf86e4eca9b9f160ba7bfade13545141fa6ceedaf7a9945c3fef89dab462cc24dda1ff2f3473d82ee0fadd5')
+depends=('ruby')
+makedepends=('git' 'ruby-bundler')
+source=("https://github.com/noraj/$pkgname/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('5922fde428d93ad12df1ade61d188d5f4e8731d704a824e69b7f8beeb7c4d4199393ad327c1b34382b7b2fba7477a78ddd38f2c2263e094ba15da68fbf6e3093')
+install="$pkgname.install"
 
 package() {
-  _gemhome="$(gem env home)"
+  cd "$pkgname-$pkgver"
 
-  gem install --ignore-dependencies --no-user-install --no-document \
-    -i "$pkgdir/$_gemhome" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
 
-  rm "$pkgdir/$_gemhome/cache/$_gemname-$pkgver.gem"
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" *.md
+  cp -rT --no-preserve=ownership --preserve=all --no-dereference docs/ "$pkgdir/usr/share/doc/$pkgname"
 
-  install -Dm 644 "$pkgdir/$_gemhome/gems/$_gemname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  rm -rf docs/ *.md LICENSE .github/ docs-tools/ test/ .* Rakefile
+
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/$pkgname/"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+bundle exec ruby bin/$pkgname "\$@"
+EOF
+
+  chmod +x "$pkgdir"/usr/bin/*
 }
 

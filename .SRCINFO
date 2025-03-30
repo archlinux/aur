@@ -1,18 +1,15 @@
 pkgbase = unisec
 	pkgdesc = Unicode Security Toolkit.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
-	url = https://acceis.github.io/unisec
+	url = https://noraj.github.io/unisec
+	install = unisec.install
 	arch = any
 	license = MIT
+	makedepends = git
+	makedepends = ruby-bundler
 	depends = ruby
-	depends = ctf-party
-	depends = ruby-dry-cli
-	depends = ruby-paint
-	depends = ruby-twitter_cldr
-	depends = ruby-unicode-confusable
-	noextract = unisec-0.0.5.gem
-	source = https://rubygems.org/downloads/unisec-0.0.5.gem
-	b2sums = 5e323a59654ee9edcbd92aa31692ec0465f4c9548cf86e4eca9b9f160ba7bfade13545141fa6ceedaf7a9945c3fef89dab462cc24dda1ff2f3473d82ee0fadd5
+	source = https://github.com/noraj/unisec/archive/refs/tags/0.0.6.tar.gz
+	sha512sums = 5922fde428d93ad12df1ade61d188d5f4e8731d704a824e69b7f8beeb7c4d4199393ad327c1b34382b7b2fba7477a78ddd38f2c2263e094ba15da68fbf6e3093
 
 pkgname = unisec
