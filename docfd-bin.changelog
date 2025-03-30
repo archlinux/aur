@@ -1,65 +1,16 @@
 
-## 10.0.0
+## 10.1.0
 
-- Reworked document indexing into a multi-stage pipeline
+- Added back index DB entry pruning
 
-    - This significantly improves the indexing throughput by allowing
-      I/O tasks and computational tasks to run concurrently
+    - Previously missing after swapping to SQLite DB
 
-    - See [issue #11](https://github.com/darrenldl/docfd/issues/11)
+    - Also renamed `--cache-soft-limit` to `--cache-limit` to
+      reflect the new pruning logic
 
-- **Breaking** changes in index DB design - index DBs made by previous version
-  of Docfd are not compatible
+    - Fixes [issue #12](https://github.com/darrenldl/docfd/issues/12)
 
-    - Optimized DB design, on average the index DB is roughly 60% smaller
-      compared to Docfd 9.0.0 index DB
+- Swapped to a better `doc_id` allocation strategy to minimise
+  `doc_id` size in DB
 
-    - See [issue #11](https://github.com/darrenldl/docfd/issues/11)
-
-- Added functionality to filter files via fzf
-
-    - This is grouped under filter mode. The previous filter mode
-      is renamed to filter regex mode.
-
-    - `f` enters filter mode
-
-        - `f` again activates filter files via fzf functionality
-
-        - `r` activates the filter regex mode, which was previously
-          just called the filter mode
-
-- Fixed incomplete search results when file path filter field is updated while
-  search is ongoing
-
-    - Updating file path filter always cancels the current search (if there is one)
-      and start a new search after the filter is in place
-
-    - Previously, documents with partial search results due to cancellation
-      are kept
-
-    - Docfd now discards said documents, forcing the new search to complete the
-      search results of these documents
-
-- Removed `--no-cache` flag
-
-    - Previously was unused completey
-
-    - It is difficult to share an in-memory SQlite DB
-      between threads, so discarding this flag entirely
-
-    - See [issue #11](https://github.com/darrenldl/docfd/issues/11)
-
-- Swapped to using proper unicode segmentation for tokenisation
-
-    - This should reduce the index size for Western non-English languages
-      significantly
-
-- Added screen split ratios for hiding left or right pane completely
-
-- Minor UI/UX fixes
-
-    - Drop mode is now disabled when search is still ongoing or when either search field or filter field has an error
-
-    - Added missing update of search and filter status when undoing/redoing, or when replaying command history
-
-        - This is most noticeable when the status indicates an error, but undoing does not return it to OK
+- Added blinking when drop mode is disabled but `d` is pressed

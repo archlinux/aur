@@ -4,8 +4,8 @@
 
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=10.0.0
-pkgrel=3
+pkgver=10.1.0
+pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/darrenldl/docfd'
@@ -42,16 +42,15 @@ package() {
       "$pkgdir/usr/share/docs/$pkgname/$_doc.md"
   done
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-    LICENSE
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 sha256sums_aarch64=(
-  'f8867f8ce8de57fbefcf3d4dc127016aaab29fc5e849c37d7b807021adf98927'
+  '398b6f2bf45b0e47d266c821da855fd7d21fc97550369ee03b4767a0774067cd'
   'SKIP' 'SKIP' 'SKIP'
 )
 sha256sums_x86_64=(
-  '8298959f312bc9396c4e9dbc2e63edc00f0d500297991e43373102db68daa40d'
+  'aa2fbd4bb573af7f8dd7b34e3ceaa5c1ec643042ee84edb6a059d017b0fd4634'
   'SKIP' 'SKIP' 'SKIP'
 )
 
