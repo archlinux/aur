@@ -1,5 +1,6 @@
 #Maintainer: Reid Nelsen (dillweed) <drn102@gmail.com>
 
+pkgbase='xen-guest-agent'
 pkgname='xen-guest-agent-git'
 pkgver=0.4.0.55.g5c274e6
 pkgrel=1
@@ -23,7 +24,7 @@ sha256sums=('SKIP'
           '1c20a0381d85bbb0fbac0bc93a40f191848a00996a254d56da2d068a920f1648')
 
 pkgver() {
-  cd $pkgname
+  cd $srcdir/$pkgname
   git describe --tags --long | sed 's|Release-||;s|[_-]|.|g'
 }
 
