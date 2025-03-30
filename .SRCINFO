@@ -1,7 +1,7 @@
 pkgbase = improve-imgsli
 	pkgdesc = Image comparison tool with magnifying glass feature
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/Loganavter/improve-imgsli
 	arch = any
 	license = MIT
