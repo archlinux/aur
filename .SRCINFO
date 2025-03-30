@@ -1,22 +1,22 @@
 pkgbase = flow-bin
 	pkgdesc = A static type checker for JavaScript - binary version
-	pkgver = 0.266.0
+	pkgver = 0.266.1
 	pkgrel = 1
 	url = https://flow.org
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = flow=0.266.0
+	provides = flow=0.266.1
 	conflicts = flow
-	source = flow-bin-0.266.0-bash-completion::https://github.com/facebook/flow/raw/v0.266.0/resources/shell/bash-completion
-	source = flow-bin-0.266.0-LICENSE::https://github.com/facebook/flow/raw/v0.266.0/LICENSE
+	source = flow-bin-0.266.1-bash-completion::https://github.com/facebook/flow/raw/v0.266.1/resources/shell/bash-completion
+	source = flow-bin-0.266.1-LICENSE::https://github.com/facebook/flow/raw/v0.266.1/LICENSE
 	b2sums = 31a3133c70ea57e8fd8025add5701b9be627020d4f82655e7911853b33e3197eb53893fd119348112839d877a8d668aedfa15c7bb214de8f573b8453f69c4cc3
 	b2sums = 20291e21101540292f47589798cc1264fd5fc496b556ccdb1264381ff093a6be8677270fa7b3d342a42d78758b1f2d41fb4a759d3a590c41cefd0b375b8d8b70
-	source_x86_64 = flow-bin-0.266.0-x86_64.zip::https://github.com/facebook/flow/releases/download/v0.266.0/flow-linux64-v0.266.0.zip
-	source_x86_64 = flow-bin-0.266.0-parser-x86_64.zip::https://github.com/facebook/flow/releases/download/v0.266.0/libflowparser-linux64-v0.266.0.zip
-	b2sums_x86_64 = 35579f188b2eea3e68fc0e82be81c856e09fd8f6d488c3b267110cb054c890e6583ec63ef69e817fb63f46cdc36152ca37ecfe00d61e7bbe57a6c5707048852e
-	b2sums_x86_64 = be3f7be2e06ff371ce800188469e26453cdabd346c7c715419f3f56b9fe4b1917acece20c7510b9172ba31210d969d644e8e122d6138dfa54f9d58f68ea1b127
-	source_aarch64 = flow-bin-0.266.0-aarch64.zip::https://github.com/facebook/flow/releases/download/v0.266.0/flow-linux-arm64-v0.266.0.zip
-	b2sums_aarch64 = 0db479711e592034941e457b3168eb1dd4511080b56b5667d02d8b00c21e43d8617e183e52733ea7a3c2790211557d7b00cbb399fdffe5dd19082693e622133f
+	source_x86_64 = flow-bin-0.266.1-x86_64.zip::https://github.com/facebook/flow/releases/download/v0.266.1/flow-linux64-v0.266.1.zip
+	source_x86_64 = flow-bin-0.266.1-parser-x86_64.zip::https://github.com/facebook/flow/releases/download/v0.266.1/libflowparser-linux64-v0.266.1.zip
+	b2sums_x86_64 = e2868f153e265e6d1ba20f4936a76eae49fa5ed46572b570b7c85d68421c72537c7c5f272b11c78426a64d28112660397898ac6b464574578854bcc22b096e73
+	b2sums_x86_64 = 650060aed831cd5c9f33a4b767ba9e0d655e05a02daa68efe0ff6409d38c112cebe4f7410a559e7f5a19a0d07fab9186084fb930d588961331376c5889048919
+	source_aarch64 = flow-bin-0.266.1-aarch64.zip::https://github.com/facebook/flow/releases/download/v0.266.1/flow-linux-arm64-v0.266.1.zip
+	b2sums_aarch64 = 3389e40bb35e866d8f1acf253c39811b1bdd356ab60750fc521297c264827eb12f10825ec1ca0f7da2cdc1a12fd57a8de19b10fb3a44cf855a2e98db0c4f8beb
 
 pkgname = flow-bin
