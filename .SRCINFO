@@ -1,7 +1,7 @@
 pkgbase = panda3ds
 	pkgdesc = HLE 3DS emulator
 	pkgver = 0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wheremyfoodat/Panda3DS
 	arch = x86_64
 	license = GPL-3.0-only

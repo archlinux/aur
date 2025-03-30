@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricane
 pkgname=panda3ds
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc="HLE 3DS emulator"
 arch=(x86_64)
 url="https://github.com/wheremyfoodat/Panda3DS"
@@ -125,8 +125,8 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-	export CFLAGS="$CFLAGS -flto=thin"
-	export CXXFLAGS="$CXXFLAGS -flto=thin"
+	CFLAGS="$CFLAGS -flto=thin -DNDEBUG"
+	CXXFLAGS="$CXXFLAGS -flto=thin -DNDEBUG"
 	_cmake_args=(
 	-DCMAKE_INSTALL_PREFIX=/usr
 	-DCMAKE_BUILD_TYPE=None
@@ -139,6 +139,7 @@ build() {
 	-GNinja
 	-DCMAKE_C_COMPILER=clang
 	-DCMAKE_CXX_COMPILER=clang++
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	)
 
 	cmake -S $pkgname -B build ${_cmake_args[@]}
