@@ -1,7 +1,7 @@
 pkgbase = pyside2
 	pkgdesc = CPython bindings generator for C++ libraries - Debian rel 3.1
 	pkgver = 5.15.16+3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.qt.io/Qt_for_Python
 	arch = x86_64
 	license = LGPL-3.0-or-later
@@ -31,9 +31,11 @@ pkgbase = pyside2
 	source = https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.16-src/pyside-setup-opensource-src-5.15.16.tar.xz
 	source = http://deb.debian.org/debian/pool/main/p/pyside2/pyside2_5.15.16-3.1.debian.tar.xz
 	source = Modify-sendCommand-signatures.patch
+	source = cmake-findpython.patch
 	sha256sums = 6d3ed6fd17275ea74829ab56df9c2e7641bfca6b5b201cf244998fa81cf07360
 	sha256sums = 523d191e45b1a9720e8eb8ea66fd930f49ffad54df1295ca09efea8838257aa6
 	sha256sums = 2f39461136a718a9f75bd94c1e71fc358764af25f68c650fd503c777e32ff302
+	sha256sums = 4d82961c7f978dadae6e82c73fb0a239dbb62db5f66106975f75dd25161843e9
 
 pkgname = pyside2
 	pkgdesc = Enables the use of Qt5 APIs in Python applications
@@ -61,6 +63,9 @@ pkgname = pyside2
 pkgname = pyside2-tools
 	pkgdesc = Tools for PySide2
 	depends = pyside2
+	depends = qt5-base
+	depends = gcc-libs
+	depends = glibc
 
 pkgname = shiboken2
 	pkgdesc = Generates bindings for C++ libraries using CPython source code
@@ -72,4 +77,5 @@ pkgname = shiboken2
 pkgname = python-shiboken2
 	pkgdesc = Python bindings for shiboken2
 	depends = python
+	depends = python-numpy
 	depends = pyside2
