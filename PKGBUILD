@@ -43,6 +43,8 @@ prepare() {
   done
 
   sed -i 's/$(MAKE)/ninja/g' edgetx/CMakeLists.txt
+  sed -i 's/cmake_policy(SET CMP0026 OLD)/cmake_policy(SET CMP0026 NEW)/' edgetx/companion/src/CMakeLists.txt
+  sed -i 's/cmake_policy(SET CMP0023 OLD)/cmake_policy(SET CMP0023 NEW)/' edgetx/cmake/GenericDefinitions.cmake
 
   cd "$srcdir/edgetx/radio/src/thirdparty/"
   git submodule init
@@ -104,6 +106,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DGVARS=YES \
       -DHELI=YES \
       -DLUA=YES \
