@@ -1,0 +1,4 @@
+[libnest2d]
+source = "git"
+git = "https://github.com/tamasmeszaros/libnest2d.git"
+prefix = "v"

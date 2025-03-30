@@ -1,38 +1,47 @@
-# Maintainer: Jelle van der Waa <jelle@archlinux.org
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Jelle van der Waa <jelle@archlinux.org
 
-pkgname=libnest2d
-pkgver=0.4
-pkgrel=2
-pkgdesc='2D irregular bin packaging and nesting library written in modern C++'
-arch=(x86_64)
-url='https://github.com/tamasmeszaros/libnest2d'
-license=('LGPL')
-depends=(nlopt polyclipping)
-makedepends=(boost cmake git)
-source=(git+https://github.com/tamasmeszaros/libnest2d#commit=da4782500da4eb8cb6e38e5e3f10164ec5a59778
-        allow-disallowed-area.patch::https://patch-diff.githubusercontent.com/raw/tamasmeszaros/libnest2d/pull/18.patch
-        fix-cpp-version.patch)
-sha512sums=('SKIP'
-            '3aa147e48671f61e15f1c779bf96852a62c5ec9d2dce7e4d2fa10e72769342f45961598ef961306a206455e86f3d9a2544ab7b03e28937541e88d98a6b34d491'
-            '956919502f9110a79729c74745a9095fa82c9f914f6b527fc91ea4f2864960a5437588efa6cd50cdb4970b51ae05cbdae48913f80357a38342b494cd416ba28e')
-
-prepare() {
-  cd ${pkgname}
-  # https://github.com/tamasmeszaros/libnest2d/pull/18
-  patch -Np1 -i ${srcdir}/allow-disallowed-area.patch
-
-  patch -Np1 -i ${srcdir}/fix-cpp-version.patch
-
-  mkdir build
-}
+pkgname="libnest2d"
+_commit_rel="85d66c7a3b89cbd1eba61251b135d968b92bedd9" # 0.4
+_commit="663daa69e1d7478669f714218e27681edbc96640" # r61
+pkgver="0.4+r61+g${_commit::7}"
+pkgrel=1
+pkgdesc="2D irregular bin packaging and nesting library written in modern C++"
+arch=('x86_64')
+url="https://github.com/tamasmeszaros/${pkgname}"
+license=('LGPL-3.0-only')
+depends=('gcc-libs' 'glibc' 'nlopt' 'polyclipping')
+makedepends=('boost>=1.58' 'cmake>=3.1')
+provides=("${pkgname}_clipper_nlopt.so")
+_pkgsrc="${pkgname}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz"
+        "${pkgname}_allow_disallowed_area.patch::${url}/pull/18.patch?full_index=1")
+b2sums=('84423e658d0afd24036b45378baef5270e947939e5186e57cbf1c513a6c7629462291ce8707cba5fb0ee9e246301c17673cc1867e10ac3de888a775863fb2ae4'
+        'f6b7cb5dac0e8073461dac71a156e6441fd7844cbd5b867713eb1422cf4c4d7b92f18bc1b81c49520ef0d45390de8e346ab9fee1081fb1ca9be87da6020896ed')
 
 build() {
-  cd ${pkgname}/build
-  export CXXFLAGS+=" -ffat-lto-objects"
-  cmake .. -DLIBNEST2D_HEADER_ONLY=OFF -DCMAKE_INSTALL_PREFIX=/usr
+  local cmake_options=(
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
+    -Wno-dev
+    -DCMAKE_BUILD_TYPE:STRING='None'
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -DLIBNEST2D_BUILD_UNITTESTS=OFF
+    -DBUILD_SHARED_LIBS=ON
+    -DLIBNEST2D_HEADER_ONLY=OFF
+  )
+
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
+  cmake --build "${_pkgsrc}/build"
 }
 
 package() {
-  cd ${pkgname}/build
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
+
+  cd "${_pkgsrc}"
+  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
