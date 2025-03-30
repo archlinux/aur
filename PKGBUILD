@@ -2,7 +2,7 @@
 
 pkgname=nmcrcon-git
 pkgver=r12.0eb27a4
-pkgrel=2
+pkgrel=3
 pkgdesc=" Yet another Minecraft RCON client that isn't against humanity and actually works."
 url="https://github.com/nicholascw/nmcrcon"
 arch=('any')
@@ -30,4 +30,5 @@ package () {
   cd "$srcdir/nmcrcon"
   install -Dm755 nmcrcon -t "${pkgdir}/usr/bin/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/nmcrcon/"
+  install -Dm644 COPYRIGHT -t "${pkgdir}/usr/share/licenses/nmcrcon/"
 }
