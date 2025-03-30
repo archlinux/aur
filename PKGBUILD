@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonamil.com
 pkgname=krunner-symbols-git
 pkgver=1.1.0.r35.g844195b
-pkgrel=2
+pkgrel=3
 pkgdesc=" A lightweight KRunner plugin (Plasma 6) to retrieve unicode symbols, or any other string, based on a corresponding keyword."
 arch=('x86_64')
 url="https://github.com/domschrei/krunner-symbols"
@@ -26,7 +26,8 @@ build() {
 	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DLOCATION_PLUGIN=/usr/lib/qt6/plugins \
-	-DLOCATION_CONFIG="share/config"
+	-DLOCATION_CONFIG="share/config" \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 	cmake --build build
 }

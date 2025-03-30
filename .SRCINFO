@@ -1,7 +1,7 @@
 pkgbase = krunner-symbols-git
 	pkgdesc = A lightweight KRunner plugin (Plasma 6) to retrieve unicode symbols, or any other string, based on a corresponding keyword.
 	pkgver = 1.1.0.r35.g844195b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/domschrei/krunner-symbols
 	arch = x86_64
 	license = GPL-3.0-only
