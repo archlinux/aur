@@ -5,7 +5,7 @@
 _pkgname=jd-gui
 pkgname=${_pkgname}-bin
 pkgver=1.7.1
-pkgrel=8
+pkgrel=9
 pkgdesc='A standalone Java decompiler GUI'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/QuentiumYT/${_pkgname}"
@@ -27,7 +27,7 @@ sha512sums=('c34b6091cac06962df72aa163c4cb3a15c654262eecd281cb8504d3d02f635e9c6a
             '767c54d4147e5d223ffa453a3094d8f7f8a33832d1c92cd8a189fd8fbaa7dec00767a5ff8e29caf295de65780b0745e062f796c4aa2d8ab368b1fe20e03ff3b2'
             'd224dd23bcb057c65eb1470dc9f83eefa67f41cec0193099902059e86882bf0525bb660d323d2f62743d3cd3e9aec468e5a7686eb2fd33774f89bc519ef7b49c'
             'd300ac330c141b57e5b62f57b5d0462d5618fd67660bfb3bb2c89723686ed76c1e5b34fc670ab9f026e23b6645854a2ee90596a9b496d0b91d46ecf2013f4e17'
-            '41e99f1884d7c9e17353b44afea846bb4ab639518a83188fcbafcf4c49924fc8bd8cc6c87de931f537aadde85fcec0ca876c28c9eaa39b6c136e3a3b911f8659'
+            'd989c90d609399d97cb23779a21437f8f4d096ee311d51355f75b54d40cb677b167680fd2c7b269c042f90251b4aa1f13a66e63ca263bb7051f74f0c50bf6a9a'
             'b2328bed9c9191f1ee1292bb453f2f66a9db4990934d816d001ce7cbac3104da93e45aa37ec9e9bd3dac8fa4eb2f5b61e51a05c6126b837ae1634adfa6820af9')
 
 build() {
