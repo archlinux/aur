@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=rime-moe-pinyin
-pkgver=3.5
+pkgver=4.1
 pkgrel=1
 pkgdesc="moeOS RIME 全拼方案"
 arch=('any')
@@ -8,24 +8,26 @@ url="https://github.com/Kimiblock/moeOS-pinyin"
 license=('GPL-3.0-or-later')
 depends=("rime-pinyin-moegirl" "rime-pinyin-zhwiki")
 provides=('rime-moe-pinyin')
-source=("git+https://github.com/Kimiblock/moeOS-pinyin.git#tag=${pkgver}")
-sha256sums=("SKIP")
+source=(
+	pinyin::"git+https://github.com/Kimiblock/moeOS-pinyin.git#tag=${pkgver}"
+	wanxiang-lts-zh-hans.gram::"https://github.com/Kimiblock/moeOS-pinyin/raw/refs/heads/master/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram")
+sha256sums=("SKIP" 'SKIP')
 makedepends=("git" "git-lfs")
 
 function prepare() {
-	cd moeOS-pinyin
+	cd pinyin
 	git submodule update --init --depth 1 --remote
 }
 
 function package() {
-	cd moeOS-pinyin
+	cd pinyin
 	mkdir -p "${pkgdir}/usr/share"
-	cp "${srcdir}/moeOS-pinyin/rime-data" -r "${pkgdir}/usr/share"
-	install -Dm644 "${srcdir}/moeOS-pinyin/default.yaml" "${pkgdir}/usr/share/moeOS-Docs/ibus-rime.conf.d/default.yaml"
-	rm -r "${pkgdir}/usr/share/rime-data/others/rime-ice/others"
+	cp "${srcdir}/pinyin/rime-data" -r "${pkgdir}/usr/share"
+	install -Dm644 "${srcdir}/pinyin/default.yaml" "${pkgdir}/usr/share/moeOS-Docs/ibus-rime.conf.d/default.yaml"
 	for dir in $(ls "${pkgdir}/usr/share/rime-data/others"); do
 		rm -rf "${pkgdir}/usr/share/rime-data/others/${dir}/.git"
 	done
+	install -Dm644 "${srcdir}/wanxiang-lts-zh-hans.gram" "${pkgdir}/usr/share/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram"
 	chmod -R 755 "${pkgdir}/usr/share/rime-data"
 }
 
