@@ -2,7 +2,7 @@
 pkgbase="sherlock-launcher" 
 pkgname="sherlock-launcher-bin" 
 pkgver=0.1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
 url="https://github.com/skxxtz/sherlock"
@@ -11,7 +11,7 @@ depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('cargo' 'rust')
 
 # Define sources per subpackage
-source=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-bin-linux-x86_64.tar.gz")
+source=("https://github.com/skxxtz/sherlock/releases/download/v${pkgver}/sherlock-v${pkgver}-${pkgrel}-bin-linux-x86_64.tar.gz")
 sha256sums=('SKIP')
 
 # Prepare source for Git version
