@@ -1,8 +1,8 @@
-# Maintainer Boradorka
+# Maintainer: Boradorka
 
 pkgname=improve-imgsli
-pkgver=1.4.2
-pkgrel=4
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
 url="https://github.com/Loganavter/$pkgname"
@@ -20,8 +20,8 @@ depends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('fc6a28f4b3aaaa5225f7696590cc0d4d01b0f08dc76a25141fcc308f3128359703000f175bf3111064464cc3e87a6f50acd8cee1a3a376a1cc975150299a0b99')
-b2sums=('6284c1ca3660b8730fa551f88a28b152e2bf07c76c376f4e009ff04e63aa33e89fc890d491e16b6a191c1cb85e5a6449e916ee40e09569874117868d0711daed')
+sha512sums=('40ab58cf59aae0bba21e0cd3f39814eb367423353d793350d17e3e309291182ca16f9fad38433046517ead8d3111d7346e450b6a6587246f1b1e3f2723e6b834')
+b2sums=('e32c53ada2d2fab6db7bd578a4771b851182598514a08e3a5cd10b23c3e53902b540e68febce68c7ec5e214fc657bf60f85026b85f43d166eb199cb28dbe533a')
 
 prepare() {
   sed -i 's|Exec=|Exec=/usr/bin/|' Improve-ImgSLI-$pkgver/$pkgname.desktop
@@ -35,6 +35,7 @@ package() {
   install -vDm 644 image_comparison_app.py -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 image_processing.py     -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 flag_icons.py           -t "$pkgdir"/usr/lib/$pkgname/
+  install -vDm 644 SourceSans3-Regular.ttf -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 translations.py         -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 $pkgname.desktop        -t "$pkgdir"/usr/share/applications/
   install -vDm 644 33.png                     "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
