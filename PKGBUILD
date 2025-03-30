@@ -3,13 +3,13 @@
 pkgname=nmcrcon-git
 pkgver=r41.5a0bc4b
 pkgrel=1
-pkgdesc="ANSI Standard X3.64 Teletypewriter Command Session Library"
-url="https://github.com/jart/bestline"
+pkgdesc=" Yet another Minecraft RCON client that isn't against humanity and actually works."
+url="https://github.com/nicholascw/nmcrcon"
 arch=('any')
 license=('GPL-3.0-only')
 depends=('libbestline')
 makedepends=('git')
-source=("nmcrcon::git+https://github.com/jart/bestline.git")
+source=("nmcrcon::git+https://github.com/nicholascw/nmcrcon.git")
 sha256sums=('SKIP')
 
 pkgver () {
