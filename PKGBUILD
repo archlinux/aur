@@ -1,6 +1,6 @@
 # Maintainer: Yury Gubich <blue@macaw.me>
 pkgname=mlc
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Media Library Compiler: rips your media library to a lossy compilation"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake>=3.5' 'gcc>=7.0')
 optdepends=()
 
 source=("$pkgname-$pkgver.tar.gz::https://git.macaw.me/blue/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8bdf0afd598d69224b01dddd6138c7ff76f2fda65dfb857f44b3f46be9a9c25d')
+sha256sums=('7cf2f159b59c4c899a3a1c1550f8e58a97111f64e2e41c629b76a1eccdbdaf88')
 build() {
         cd "$srcdir/$pkgname"
         cmake . -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release
