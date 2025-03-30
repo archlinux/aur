@@ -1,14 +1,14 @@
 pkgbase = aspisec
 	pkgdesc = Removes the traces left by offensive security tools.
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://noraj.github.io/aspisec/
 	install = aspisec.install
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-bundler
-	source = https://github.com/noraj/aspisec/archive/refs/tags/0.1.0.tar.gz
-	b2sums = aa31f3a6f2cce047d3de1e5a34be8c8b606241f8f5a9bf127193c5405a7e416232684db07d0ce6e772da1449cb23236564f2a8cf0d5f53fb0772ff864345d79a
+	source = https://github.com/noraj/aspisec/archive/refs/tags/0.2.0.tar.gz
+	b2sums = 4a06f5fd39b498d608be5667c18f6f3b4582e6104eeee5c4a274f99364a40d3237bcc393b7f19d64818c5d01e420f2b387a433798aa59045cb5030aa10fd455e
 
 pkgname = aspisec
