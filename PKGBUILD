@@ -1,24 +1,32 @@
-# Maintainer: Eduardo Parra Mazuecos<eduparra90@gmail.com>
+# Maintainer: Danilo <aur ät dbrgn döt ch>
+# Original submitter: Eduardo Parra Mazuecos<eduparra90@gmail.com>
 
 pkgname=nodejs-socket-cli-js
 _npmname=@socketsecurity/cli
-pkgver=0.9.0
+_npmname_short=cli
+pkgver=0.14.67
 pkgrel=1
 pkgdesc="The Socket CLI tool"
 arch=("any")
-url="https://github.com/SocketDev/${pkgname#nodejs-}/"
+url="https://github.com/SocketDev/socket-cli/"
 license=("MIT")
-depends=("nodejs" "unzip")
-makedepends=("npm")
-source=(https://registry.npmjs.org/$_npmname/-/cli-${pkgver}.tgz)
-noextract=("${pkgname}-${pkgver}.tgz")
-sha1sums=("23093a1b227deaccc973fad36d446db98c1845f9")
-sha256sums=("f16679ef7260d0ca5a6f7da86b966952c34da1baf943e0a97af9cb76828fcc10")
+depends=("nodejs")
+makedepends=("npm" "python" "python-setuptools")
+source=("https://registry.npmjs.org/${_npmname}/-/${_npmname_short}-${pkgver}.tgz")
+noextract=("${_npmname_short}-${pkgver}.tgz")
+sha256sums=("3d1882886b35e2b4c7ec080f5ced2542f4f1795b8d371e4abc87227af16660ca")
 
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  # Install package
+  npm install -g --omit=dev --omit=optional --prefix "${pkgdir}/usr" "${srcdir}/${_npmname_short}-${pkgver}.tgz"
+
+  # Install license
+  licensedir="${pkgdir}/usr/share/licenses/${pkgname}/"
+  mkdir -p "$licensedir"
+  tar xf "${srcdir}/${_npmname_short}-${pkgver}.tgz" --strip-components=1 -C "${licensedir}" package/LICENSE
+  chmod 644 "${licensedir}/LICENSE"
+
+  # Remove manpages
+  find "${pkgdir}" -type f -name "*.1" -delete
+  find "${pkgdir}" -type f -name "*.1.txt" -delete
 }
