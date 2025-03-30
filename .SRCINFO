@@ -1,6 +1,6 @@
 pkgbase = preview
 	pkgdesc = A simple file manager written in Bash with file preview capabilities, inspired by fff, lesspipe, and ranger.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/felipefacundes/preview
 	arch = any

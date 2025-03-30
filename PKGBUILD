@@ -2,7 +2,7 @@
 
 pkgname=preview
 pre_ver=1.0
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A simple file manager written in Bash with file preview capabilities, inspired by fff, lesspipe, and ranger.'
 arch=('any')
@@ -86,6 +86,7 @@ check() {
 package() {
     cd "$srcdir/$pkgname" || true
     install -Dm755 "preview" "$pkgdir/usr/bin/preview"
+    install -Dm644 "preview.desktop" "$pkgdir/usr/share/applications/preview.desktop"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "preview.1.gz" "$pkgdir/usr/share/man/man1/preview.1.gz"
