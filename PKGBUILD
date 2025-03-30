@@ -3,7 +3,7 @@
 _Name="FTXUI"
 pkgbase="${_Name,,}"
 pkgname=("${pkgbase}"{,'-docs','-examples'})
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="A C++ Functional Terminal User Interface"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ _pkgsrc="${_Name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}_build_docs_target_all.patch"
         "${pkgbase}_make_examples_installable.patch")
-b2sums=('ef98c95a6d3cc6c1ac8f4f5db1e0c0afcbda7805a4f158d6d6e4ea3861059afcf90c92f78500b2ba3b7ebabbd28b4eb602449fef2d4853568228590fd9e52131'
+b2sums=('9ee2280a9fd48a8949ab48ace4a7d68968a61fa78c1965b722823206a522d2685c84daee37a05ff3315a710442078adba0243f7b827817ef5d08d8881f742bee'
         '6e06886a3d23764715d3c6e63d94a32c4474dc83387954c622380d268e4a63416b78258ad94da69863160bb0fc0ab9822848177f5a1df0239436ea142b76bbf0'
         'c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596')
 
