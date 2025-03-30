@@ -9,8 +9,8 @@ _electron="electron34"  # As of 2025-02-10, electron33 and 34 actually work. ele
 _nodeversion=20         # As of 2024-10-20, the minimum version of `nodejs` is 20. As of 2025-02-10, the maximum version is 22. As of 2025-03-05, version 20 is needed since version 22 results in Segmentation Fault (and version 21 is incompatible at build time already).
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
-pkgver=1.11.90.sc.0.test.0.r530.20250116.a9f81d8
-pkgrel=3
+pkgver=1.11.95.sc.0.test.0.r531.20250315.eff14ca
+pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
