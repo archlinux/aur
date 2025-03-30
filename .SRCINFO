@@ -7,7 +7,7 @@ pkgbase = veil-bin
 	conflicts = veil
 	provides = veil
 	arch = x86_64
-	source_x86_64 = https://github.com/try-veil/veil/releases/download/v0.0.2/veil_0.0.2_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = bc0c0acd71979174b4974076b05819d892aa85db9c65da079b5b979b914b08b5
+	source_x86_64 = https://github.com/try-veil/veil/releases/download/v0.0.2-test/veil_0.0.2-test_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 875f226fcca2f0a384e48a8e15f6577624938406ecde9e634c11b1e6df5dbf97
 	
 pkgname = veil-bin
