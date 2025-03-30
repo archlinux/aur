@@ -3,7 +3,8 @@
 # The pkgbuild is based on the original pkgbuild for citra.
 
 pkgname=lime3ds-git
-pkgver=r10490.6fedff7
+pkgver=r10410.5c76221
+epoch=1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
@@ -15,18 +16,18 @@ conflicts=('lime3ds-appimage' 'lime3ds')
 provides=('lim3ds')
 options=('!lto')
 source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
-        "boost::git+https://github.com/blitzingeagle/ext-boost.git"
+        "boost::git+https://github.com/azahar-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
         "catch2::git+https://github.com/catchorg/Catch2.git"
         "soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
-        "dynarmic::git+https://github.com/rtiangha/dynarmic.git"
+        "dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
         "git+https://github.com/herumi/xbyak.git"
         "git+https://github.com/lsalzman/enet.git"
         "git+https://github.com/benhoyt/inih.git"
-        "libressl::git+https://github.com/blitzingeagle/ext-libressl-portable.git"
+        "libressl::git+https://github.com/azahar-emu/ext-libressl-portable.git"
         "git+https://github.com/libusb/libusb.git"
         "git+https://github.com/mozilla/cubeb"
-        "git+https://github.com/blitzingeagle/discord-rpc.git"
+        "git+https://github.com/azahar-emu/discord-rpc.git"
         "git+https://github.com/arun11299/cpp-jwt.git"
         "git+https://github.com/wwylele/teakra.git"
         "git+https://github.com/lvandeve/lodepng.git"
@@ -38,9 +39,9 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "git+https://github.com/KhronosGroup/glslang"
         "vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator"
         "vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers"
-        "git+https://github.com/blitzingeagle/sirit"
+        "git+https://github.com/azahar-emu/sirit"
         "git+https://github.com/knik0/faad2"
-        "library-headers::git+https://github.com/blitzingeagle/ext-library-headers.git"
+        "library-headers::git+https://github.com/azahar-emu/ext-library-headers.git"
         "git+https://github.com/bylaws/libadrenotools"
         "git+https://github.com/merryhime/oaknut.git"
         "git+https://github.com/septag/dds-ktx"
@@ -53,11 +54,11 @@ source=("Lime3DS::git+https://github.com/Lime3DS/Lime3DS"
         "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
         #libadrenotools submodule
         "git+https://github.com/bylaws/liblinkernsbypass.git"
-        "lime3ds-compatibility-list::git+https://github.com/Lime3DS/compatibility-list"
+        "lime3ds-compatibility-list::git+https://github.com/azahar-emu/compatibility-list"
         #dynarmic submodules
         "git+https://github.com/lioncash/biscuit"
         "catch::git+https://github.com/catchorg/Catch2"
-        "git+https://github.com/rtiangha/mcl"
+	"git+https://github.com/azahar-emu/mcl"
         "git+https://github.com/Tessil/robin-map"
         "zycore::git+https://github.com/zyantific/zycore-c"
         "git+https://github.com/zyantific/zydis"
@@ -142,11 +143,15 @@ prepare() {
     
     cd "$srcdir/Lime3DS/externals/dynarmic/"
     git submodule init
-    for submodule in {biscuit,catch,fmt,mcl,robin-map,xbyak,zycore,zydis}
+    for submodule in {biscuit,catch,fmt,mcl,oaknut,robin-map,xbyak,zycore,zydis}
     do
     git config submodule.externals/${submodule}.url "$srcdir/${submodule}"
     done
-    git config submodule.externals/dynarmic/oaknut.url "$srcdir/oaknut-dynarmic"
+    git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/Lime3DS/externals/dynarmic/externals/zydis"
+    git submodule init
+    git config submodule.dependencies/zycore.url "$srcdir/zycore"
     git -c protocol.file.allow=always submodule update --init
     
     cd "$srcdir/Lime3DS"
@@ -180,7 +185,8 @@ build() {
         -DUSE_SYSTEM_SDL2=ON \
         -DUSE_SYSTEM_SOUNDTOUCH=ON \
         -DUSE_SYSTEM_VULKAN_HEADERS=ON \
-        -DUSE_SYSTEM_ZSTD=ON
+        -DUSE_SYSTEM_ZSTD=ON \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
     cmake --build build
 }
