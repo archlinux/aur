@@ -1,7 +1,7 @@
 pkgbase = appimagelauncher
 	pkgdesc = Helper for running and integrating AppImages
 	pkgver = 2.2.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/TheAssassin/AppImageLauncher
 	arch = x86_64
 	arch = aarch64
