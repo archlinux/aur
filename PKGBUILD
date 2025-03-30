@@ -4,8 +4,8 @@
 
 _gemname=useragent
 pkgname=ruby-$_gemname
-pkgver=0.16.10
-pkgrel=2
+pkgver=0.16.11
+pkgrel=1
 pkgdesc='HTTP User Agent parser'
 arch=(any)
 url='http://github.com/gshutler/useragent'
@@ -22,4 +22,4 @@ package() {
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('1794380d9ea5c087d687bbfe14752f81839293f238c1132ef05c9344f09e65bb')
+sha256sums=('700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844')
