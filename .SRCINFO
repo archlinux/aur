@@ -1,7 +1,7 @@
 pkgbase = fcitx5-chinese-addons-without-browser
 	pkgdesc = Addons related to Chinese, including IME previous bundled inside fcitx4, without browser
-	pkgver = 5.1.7
-	pkgrel = 2
+	pkgver = 5.1.8
+	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-chinese-addons
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -12,13 +12,12 @@ pkgbase = fcitx5-chinese-addons-without-browser
 	makedepends = fmt
 	makedepends = ninja
 	depends = fcitx5-qt
-	depends = hicolor-icon-theme
 	depends = libime
 	depends = opencc
 	optdepends = fcitx5-lua: Lua and imeapi support from pinyin
 	provides = fcitx5-chinese-addons
 	conflicts = fcitx5-chinese-addons
-	source = fcitx5-chinese-addons::git+https://github.com/fcitx/fcitx5-chinese-addons.git?#tag=5.1.7
-	sha512sums = 6c44c99d2ae9545735f710c750a11c95009a44e94a80f26e8e32a48c5a2c261eca050e0dc4299485644d50b3ccb60be6c402800338dcbdc3e08246e4ff507f40
+	source = fcitx5-chinese-addons_5.1.8.tar.gz::https://github.com/fcitx/fcitx5-chinese-addons/archive/refs/tags/5.1.8.tar.gz
+	sha512sums = 91a4c9a13c141d6bce958f74afc87a32ff481664f24019022c039bcb7472075cf10227afd471596a165973b47003b6a93884a0b29d2785c6bc795d914ba16cf1
 
 pkgname = fcitx5-chinese-addons-without-browser
