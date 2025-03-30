@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.13
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=3
+pkgrel=4
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -139,7 +139,8 @@ skia_enable_{particles,skparagraph,sktext}=false)"
 -DENABLE_UPDATER=OFF -DENABLE_{SCRIPTING,WEBSOCKET}=ON \
 -DLAF_WITH_{EXAMPLES,TESTS}=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" \
--DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES
+-DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
+-DCMAKE_POLICY_VERSION_MINIMUM=3.5 # workaround
 	cmake --build build
 }
 
