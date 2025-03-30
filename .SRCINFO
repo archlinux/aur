@@ -1,18 +1,24 @@
 pkgbase = otf-apple-pingfang
 	pkgdesc = Apple公司的苹方字体合集，由网友二次修改，收集自网络.
-	pkgver = v3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom:apple-restricted-font
-	makedepends = git
-	source = git+https://github.com/witt-bit/applePingFangFonts.git
-	sha256sums = SKIP
+	makedepends = tar
+	source = https://github.com/witt-bit/applePingFangFonts/releases/download/3.0.1/pingFang-20.0d4e1.tar.gz
+	source = https://github.com/witt-bit/applePingFangFonts/releases/download/3.0.1/pingFangRelaxed-19.0d5e3.tar.gz
+	source = https://github.com/witt-bit/applePingFangFonts/releases/download/3.0.1/pingFangUI-20.0d15e3.tar.gz
+	sha256sums = 0215ed14d69e3faecd3754ead14265d488b8fbea891a23ca1a93f7f5bdd02aa5
+	sha256sums = cf1d3c696c6a73ea550b8f156caa7938ffd88bf5f99a558c71b6862f6be5e003
+	sha256sums = 1246b6a54ef7a0ddf1ce02da76d9ec9fcc03d948b7c6258dbeae93815e427f80
 
 pkgname = otf-apple-pingfang
 	pkgdesc = Apple公司出品的苹方字体
 	arch = any
 	provides = otf-apple-pingfang
+	provides = pingfang
+	provides = pingfang-fonts
 	conflicts = ttf-pingfang
 	conflicts = ttf-pingfang-git
 

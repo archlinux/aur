@@ -1,4 +1,6 @@
 *.zst
-src
-pkg
-applePingFangFonts
+src/
+pkg/
+applePingFangFonts/
+.history/
+*.tar.gz
