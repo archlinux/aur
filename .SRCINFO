@@ -1,0 +1,14 @@
+pkgbase = chronoleak
+	pkgdesc = ICMP Timestamp Remote Time Leaker.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/noraj/ChronoLeak
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = hping
+	noextract = chronoleak-0.0.1.gem
+	source = https://rubygems.org/downloads/chronoleak-0.0.1.gem
+	sha512sums = 3880f55a8112e00e40430dfa837142837d58bd84e0357e1afe01af207244b88c44a4bfe5e44d9063ac9fc72530f4e109b97c028ca5d299c226da2c83f613d9d3
+
+pkgname = chronoleak
