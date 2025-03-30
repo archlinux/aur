@@ -1,13 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clight-gui-git
 pkgver=r93.29e7216
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt GUI for Clight"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nullobsi/clight-gui"
 license=('GPL-3.0-or-later')
-depends=('clight' 'qt5-charts')
-makedepends=('git' 'cmake' 'qt5-tools')
+depends=(
+  'clight'
+  'qt5-charts'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'qt5-tools'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/nullobsi/clight-gui.git'
@@ -17,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -26,6 +33,7 @@ build() {
     -DCMAKE_PREFIX_PATH='/usr/lib/cmake/Qt5' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DGENERATE_TRANSLATIONS='ON' \
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -Wno-dev
   cmake --build build
 }
