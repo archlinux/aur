@@ -1,16 +1,17 @@
 pkgbase = walrs
 	pkgdesc = A fast color scheme generator
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/Pixel2175/walrs
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = make
 	depends = gcc-libs
-	backup = etc/walrs/templates/colors.json
-	source = git+https://github.com/Pixel2175/walrs.git#branch=main
-	sha256sums = SKIP
+	source = git+https://github.com/Pixel2175/walrs.git
+	sha256sums = 86848eb08a41cc8d23bfd656448b520e14ffd6945c7e39866d8a8cee7e4c7710
 
 pkgname = walrs
