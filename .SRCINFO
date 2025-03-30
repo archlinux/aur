@@ -1,24 +1,26 @@
 pkgbase = gregorio
 	pkgdesc = Command-line tool to typeset Gregorian chant
-	pkgver = 6.0.0
+	pkgver = 6.1.0
 	pkgrel = 1
-	url = http://gregorio-project.github.io
+	url = https://gregorio-project.github.io
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
+	license = OFL-1.0
+	license = GPL-3.0-with-font-exception
 	depends = texlive-core
 	depends = texlive-fontsextra
 	depends = texlive-bin
 	depends = texlive-formatsextra
 	depends = texlive-latexextra
+	optdepends = texlive-langeuropean: Latin language for TeX Live
 	provides = gregorio
 	conflicts = gregorio-svn
 	conflicts = gregorio-git
 	conflicts = gregoriotex
-	source = https://github.com/gregorio-project/gregorio/releases/download/v6.0.0/gregorio-6.0.0.tar.bz2
-	source = https://github.com/gregorio-project/gregorio/releases/download/v6.0.0/supp_fonts-6_0_0.zip
-	sha256sums = e2a3da9cb760cfd3bd152440bbd40c1776be430de8f421dc21cee70ae48a63b2
-	sha256sums = 22d3c890c32f2e4e4be35b8245f5a2772dd05a6954f08c3c9b02a8002142e07f
+	source = https://github.com/gregorio-project/gregorio/releases/download/v6.1.0/gregorio-6.1.0.tar.bz2
+	source = https://github.com/gregorio-project/gregorio/releases/download/v6.1.0/supp_fonts-6_1_0.zip
+	sha256sums = 7781843c3f454067e18236e27cfb593143fa0eff6f6df15482b163cb4a4f2ca4
+	sha256sums = 5c45b53435b15f9bd527e29760711a6cb1769ae5206848e9c731aa2af9589c95
 
 pkgname = gregorio
-
