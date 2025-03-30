@@ -2,7 +2,7 @@
 # Maintainer: Yash Mittal <yash@techsavvyash.dev>
 
 pkgname='veil-bin'
-pkgver=0.0.2
+pkgver=0.0.0
 pkgrel=1
 pkgdesc='Veil - An opinionated, fully featured, modular observability stack for APIs. Allows you to sell, monitor, authenticate your APIs.'
 url='https://github.com/try-veil/veil'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('veil')
 conflicts=('veil')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/try-veil/veil/releases/download/v0.0.2-test-releaser/veil_0.0.2-test-releaser_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('065b2859925a095a2f251dea42ea22029ca4ec649887ab5d22c51fe0001dc12d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/try-veil/veil/releases/download/v0.0.0-release-test/veil_0.0.0-release-test_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9429306bfb236e745dd8205727900a12ff13415a2a11e65ba483f0ee13c11517')
 
 package() {
   # bin
