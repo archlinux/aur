@@ -15,5 +15,6 @@ pkgbase = rime-moe-pinyin-git
 	source = pinyin::git+https://github.com/Kimiblock/moeOS-pinyin.git
 	source = wanxiang-lts-zh-hans.gram::https://github.com/Kimiblock/moeOS-pinyin/raw/refs/heads/master/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = rime-moe-pinyin-git

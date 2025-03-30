@@ -15,7 +15,7 @@ source=(
 	pinyin::"git+https://github.com/Kimiblock/moeOS-pinyin.git"
 	wanxiang-lts-zh-hans.gram::"https://github.com/Kimiblock/moeOS-pinyin/raw/refs/heads/master/rime-data/others/LMDG/wanxiang-lts-zh-hans.gram"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 function pkgver() {
 	cd pinyin
@@ -30,8 +30,8 @@ function prepare() {
 function package() {
 	cd pinyin
 	mkdir -p "${pkgdir}/usr/share"
-	cp "${srcdir}/moeOS-pinyin/rime-data" -r "${pkgdir}/usr/share"
-	install -Dm644 "${srcdir}/moeOS-pinyin/default.yaml" "${pkgdir}/usr/share/moeOS-Docs/ibus-rime.conf.d/default.yaml"
+	cp "${srcdir}/pinyin/rime-data" -r "${pkgdir}/usr/share"
+	install -Dm644 "${srcdir}/pinyin/default.yaml" "${pkgdir}/usr/share/moeOS-Docs/ibus-rime.conf.d/default.yaml"
 	for dir in $(ls "${pkgdir}/usr/share/rime-data/others"); do
 		rm -rf "${pkgdir}/usr/share/rime-data/others/${dir}/.git"
 	done
