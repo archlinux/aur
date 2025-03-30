@@ -2,7 +2,7 @@
 # Maintainer: Youssef Fathy <youssefessamasu@gmail.com>
 
 pkgname='go-pray-bin'
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Prayer times CLI to remind you to Go pray'
 url='https://github.com/0xzer0x/go-pray'
@@ -12,17 +12,15 @@ provides=('go-pray')
 conflicts=('go-pray')
 depends=('alsa-lib')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.10/go-pray_linux_x86_64.tar.gz")
-sha256sums_x86_64=('ee62c94efc2feb26020a83fc26976856a72e34eec085ce4b4dbf1105056344f8')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/0xzer0x/go-pray/releases/download/v0.1.11/go-pray_linux_x86_64.tar.gz")
+sha256sums_x86_64=('a336c4e98d7560150fc39dece5d39eb479b460def668fac09f034fe3fe2da66c')
 
 package() {
   # bin
   install -Dm755 ./go-pray "${pkgdir}/usr/bin/go-pray"
 
-  cat <<EOF >tmpconfig.yml
-  calcuation: { method: "UAQ" }
-  location: { lat: 0, long: 0 }
-  EOF
+  # create temporary config file
+  printf 'calculation: { method: "UAQ" }\nlocation: { lat: 0, long: 0 }\n' > tmpconfig.yml
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
