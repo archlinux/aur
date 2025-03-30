@@ -2,7 +2,7 @@
 
 pkgname=ruby-ruby-vips
 _gemname=ruby-vips
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Ruby extension for the vips image processing library.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby' 'libvips' 'ruby-ffi')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('dca6aafb4d103e2d09b329519759f3993c110aa802e9d39c947dd572c8ef744e14b1b28549ce8b86a92346b0a3bf5c172ece3918ae8a87f1f0fb99b99d6a1970')
+b2sums=('50725e52c5d57794509704bfcbf065092d85bf5dfb0d2069ffb38a238358630a1d68cde2a2a3dd011b178f76de3c3a1b7553e24bd5e8092b2b4dc68270ddb20c')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -27,3 +27,4 @@ package() {
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
