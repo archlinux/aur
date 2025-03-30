@@ -1,7 +1,8 @@
 pkgbase = contextfree-git
 	pkgdesc = Generates images from written instructions called a grammar (latest commit)
-	pkgver = 3.4.2.r4.g71dc256
-	pkgrel = 2
+	pkgver = 3.4.2.2.r5.gc5f00522
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/MtnViewJohn/context-free
 	arch = aarch64
 	arch = i686

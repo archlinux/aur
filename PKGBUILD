@@ -1,4 +1,4 @@
-# -*- sh -*-
+# -*- mode: sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
@@ -8,8 +8,9 @@
 
 _pkgname='contextfree'
 pkgname="$_pkgname-git"
-pkgver=3.4.2.r4.g71dc256
-pkgrel=2
+pkgver=3.4.2.2.r5.gc5f00522
+pkgrel=1
+epoch=1
 pkgdesc='Generates images from written instructions called a grammar (latest commit)'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/MtnViewJohn/context-free'
@@ -20,7 +21,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 options=('lto')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 
 _srcdir='context-free'
 
@@ -28,7 +29,7 @@ pkgver() {
   cd "$_srcdir"
 
   git describe --tags --long \
-  | sed 's/^Version//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  | sed 's/^Version//;s/^v//;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
 }
 
 prepare() {
@@ -58,9 +59,10 @@ build() {
 package() {
   cd "$_srcdir"
 
-  install -vDm0755 cfdg "$pkgdir/usr/bin/cfdg"
+  install -vDm0755 -t "$pkgdir/usr/bin" cfdg
+
   install -vdm0755 "$pkgdir/usr/share/$pkgname"
-  cp -vrf input "$pkgdir/usr/share/$pkgname/examples"
+  cp -vrf  input   "$pkgdir/usr/share/$pkgname/examples"
 }
 
 # eof
