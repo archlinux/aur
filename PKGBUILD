@@ -1,11 +1,8 @@
-# Maintainer: envolution
-# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
-# Contributor: nfnty <arch@nfnty.se>
+# Maintainer: witt <1929161762 at qq dot com>
 
 pkgname=shotcut-git
 pkgdesc='Cross-platform Qt based Video Editor - Git latest'
-pkgver=25.01.05+r6500+gfcdd9c645
+pkgver=25.03.29+r6598+g86552b847
 pkgrel=1
 arch=('x86_64')
 url='https://www.shotcut.org'
@@ -13,6 +10,8 @@ license=('GPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-translations'
          'mlt' 'movit' 'ffmpeg' 'libx264' 'libvpx' 'lame' 'frei0r-plugins' 'ladspa' 'qt6-charts')
 optdepends=('swh-plugins: Several audio filters')
+provides=("shotcut")
+conflicts=('shotcut' 'shotcut-bin')
 makedepends=('qt6-tools' 'git' 'cmake' 'ninja' 'clang')
 source=("git+https://github.com/mltframework/shotcut.git")
 sha512sums=('SKIP')
@@ -36,21 +35,22 @@ build() {
   compile_version=${compile_version%%+*}   # Then remove everything after first '+'
 
   #   https://github.com/mltframework/shotcut/issues/1275
-  export CXXFLAGS+=" -DSHOTCUT_NOUPGRADE"
+  export CXXFLAGS+=" -DSHOTCUT_NOUPGRADE -w"
 
   cmake \
     -Bbuild \
     -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSHOTCUT_VERSION=$compile_version
-  cmake --build build --verbose
+    -DSHOTCUT_VERSION="$compile_version" \
+    -Wno-dev >/dev/null
+  cmake --build build > /dev/null
 }
 
 package() {
   cd shotcut
 
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build > /dev/null
 }
 
 # vim: ts=2 sw=2 et:

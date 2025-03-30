@@ -1,6 +1,6 @@
 pkgbase = shotcut-git
 	pkgdesc = Cross-platform Qt based Video Editor - Git latest
-	pkgver = 25.01.05+r6500+gfcdd9c645
+	pkgver = 25.03.29+r6598+g86552b847
 	pkgrel = 1
 	url = https://www.shotcut.org
 	arch = x86_64
@@ -25,6 +25,9 @@ pkgbase = shotcut-git
 	depends = ladspa
 	depends = qt6-charts
 	optdepends = swh-plugins: Several audio filters
+	provides = shotcut
+	conflicts = shotcut
+	conflicts = shotcut-bin
 	source = git+https://github.com/mltframework/shotcut.git
 	sha512sums = SKIP
 
