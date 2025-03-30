@@ -2,11 +2,11 @@
 
 pkgname=flowfox-bin
 _pkgname=flowfox
-pkgver=135.0.1
+pkgver=137.0
 pkgrel=1
 url=https://github.com/Troplo/ffox
 conflicts=("flowfox")
-_github_rel=firefox-135.0.1.en-US.linux-x86_64-1
+_github_rel=firefox-137.0.en-US.linux-x86_64-1
 pkgdesc="Fork of Firefox with minimal changes, including rebinding of default keyboard shortcuts to better match Chromium. Not affiliated with Mozilla. (Binary version)"
 arch=('x86_64' 'i686')
 license=(MPL GPL LGPL)
@@ -93,4 +93,4 @@ package() {
 sha256sums=('c0c1c769c4d0f725a340d567021bb81170a30417aae31af632c62320bcf22f1e'
             '67bd4db8eb21be88d80dc0df8cdabbea59295784c2614157e963162504324053'
             '6e1e97053fa272ad282428cf05b8cde07842353e8dfff7210c91c74842a3e71e')
-sha256sums_x86_64=('6704f1226488d5e041ea164f8d62f33fdd8071a75983747cbad2fdf48a1b5c35')
+sha256sums_x86_64=('fa9f2934117451ffa28e9c89664f905b19d887261def113cb9bb1b8fd1cade76')
