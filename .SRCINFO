@@ -1,7 +1,7 @@
 pkgbase = python-colcon-package-information
 	pkgdesc = An extension for colcon-core to provide information about the packages.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/colcon-package-information/
 	arch = any
 	license = Apache
