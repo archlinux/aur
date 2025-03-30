@@ -1,6 +1,6 @@
 pkgbase = hidapi-testgui-git
 	pkgdesc = 'hidapi-hidraw-testgui' and 'hidapi-libusb-testgui' for hidapi.
-	pkgver = 0.14.0+42.r667.20250114.b26f057
+	pkgver = 0.14.0+48.r673.20250313.0ab6c14
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/libusb/hidapi
@@ -25,7 +25,7 @@ pkgbase = hidapi-testgui-git
 	optdepends = libudev.so: for the hidraw backend -- hidapi-hidraw.so
 	optdepends = libhidapi-hidraw.so=0: To use 'hidapi-hidraw-testgui'.
 	optdepends = libhidapi-libusb.so=0: To use 'hidapi-libusb-testgui'.
-	provides = hidapi-testgui=0.14.0+42.r667.20250114.b26f057
+	provides = hidapi-testgui=0.14.0+48.r673.20250313.0ab6c14
 	conflicts = hidapi-testgui
 	source = hidapi::git+https://github.com/libusb/hidapi.git
 	sha256sums = SKIP
