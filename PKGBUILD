@@ -24,7 +24,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_CXX_FLAGS_RELEASE='-m32 -DNDEBUG' \
-        -DCMAKE_INSTALL_LIBDIR=lib32
+        -DCMAKE_INSTALL_LIBDIR=lib32 \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake --build build
 }
 
