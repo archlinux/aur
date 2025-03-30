@@ -1,5 +1,5 @@
 pkgname=ccode
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="CLI tool to consolidate code files"
 arch=('x86_64' 'aarch64')
@@ -8,11 +8,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/x45iq/ccode/archive/v$pkgver.tar.gz")
-sha256sums=('8966afea3f6280efb856bae008cf07012ca78dde268d91bcbd4a2b797fee2b0a')
+sha256sums=('7ddf42d96ec90b51add089bb6576d713faa4e5a1160907a733c4032c0436ef25')
 
 build() {
   cd "$pkgname-$pkgver"
-  go build -o ccode ./cmd
+  go build -o ccode
 }
 
 package() {
