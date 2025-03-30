@@ -4,8 +4,8 @@
 
 pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=4.1.5
-pkgrel=3
+pkgver=4.1.6
+pkgrel=1
 url="https://git.shouldnt.work/fuxino/${pkgname}"
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -23,7 +23,7 @@ optdepends=('python-systemd: use systemd log'
 conflicts=('simple_backup-git')
 source=(git+${url}?signed#tag=${pkgver})
 validpgpkeys=('7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514')
-sha256sums=('4da838282fff813f82ee0408996c989078a206eabce07112b4e3ee8b057e34cf')
+sha256sums=('b3b29d9e2e1b7b949e95674d9a401e8eeb0d5f898e8450473dce94f799ee9df3')
 
 build()
 {
