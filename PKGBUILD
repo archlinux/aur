@@ -33,7 +33,7 @@ esac
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=4.3.1+81.r13566.20250330.75990d760
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -153,11 +153,13 @@ provides=(
 )
 source=(
   "${_pkgname}::git://git.claws-mail.org/claws.git#branch=${_gitbranch}"
+  "autogen-add-autopoint.patch"
   "0000_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
 )
 sha256sums=(
-  'SKIP'
-  '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
+  'SKIP'                                                              # Main upstream git source
+  'd47a48f3990c9c229703c92dde14b7bdf4c11bd97e576b0bf6e2d978ed9da358'  # 'autogen-add-autopoint.patch'
+  '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'  # '0000_encoding.diff'
 )
 case "${_PROTECTEDHEADERSPATCHVARIANT}" in
   'nopicturesplease')
@@ -214,6 +216,13 @@ fi
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+
+  # Fix issues appearing with gettext 0.24 (see https://www.claws-mail.org/bugzilla/show_bug.cgi?id=4856#c18):
+  for _patch in "${srcdir}/autogen-add-autopoint.patch"; do
+    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+    patch -Np1 --follow-symlinks -i "${_patch}"
+  done
+  rm -fv po/Makefile.in.in
 
   for _patch in "${srcdir}/0000_encoding.diff"; do
    msg2 "Applying patch '${_patch}' ..."

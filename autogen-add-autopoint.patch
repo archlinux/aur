@@ -1,0 +1,8 @@
+diff -rU1 claws-mail.orig/autogen.sh claws-mail/autogen.sh
+--- claws-mail.orig/autogen.sh	2025-03-30 19:41:14.054640397 +0200
++++ claws-mail/autogen.sh	2025-03-30 19:42:33.334643718 +0200
+@@ -52,2 +52,3 @@
+ ${LIBTOOL} \
++  && autopoint -f \
+   && aclocal -I m4 \
+Only in claws-mail.orig/po: Makefile.in.in
