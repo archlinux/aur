@@ -2,8 +2,8 @@
 
 pkgname=python-rodi
 _name=${pkgname#python-}
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.0.7
+pkgrel=1
 epoch=
 pkgdesc="Implementation of dependency injection for Python 3"
 arch=('any')
@@ -36,15 +36,16 @@ checkdepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('f533e315d84b63824efcc67526a156ad5fb0a158f1ccbc41e0db3944d0c08693')
+sha256sums=('68fc3306e37d44218602c254503ec849a54c703b7ea5bc2a70ac6f55248e6e3a')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    rm -rf LICENSE
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dvm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+
 }
