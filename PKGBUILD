@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r118095.g95217872ad
+pkgver=7.2.r119073.g2657e1679e
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -40,7 +40,7 @@ depends=(
   libjxl
   libmodplug
   libopenmpt
-  libplacebo
+  libplacebo-git
   libpulse
   libraw1394
   librsvg
