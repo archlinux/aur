@@ -7,7 +7,7 @@ pkgdesc='Xen guest agent tools written in Rust'
 url='https://gitlab.com/xen-project/xen-guest-agent'
 license=('GPL-3.0-or-later')
 
-_pkgbase='xen-gest-agent'
+_pkgbase='xen-guest-agent'
 
 arch=('x86_64')
 
