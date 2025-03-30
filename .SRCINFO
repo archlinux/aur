@@ -11,13 +11,14 @@ pkgbase = autorestic-git
 	makedepends = git
 	makedepends = git-lfs
 	makedepends = go
+	makedepends = makepkg-git-lfs-proto
 	depends = glibc
 	depends = restic
 	provides = autorestic=1.8.3+10.r541.20241114.48fa20b
 	provides = autorestic-doc=1.8.3+10.r541.20241114.48fa20b
 	conflicts = autorestic
 	conflicts = autorestic-doc
-	source = autorestic::git+https://github.com/cupcakearmy/autorestic.git
+	source = autorestic::git-lfs+https://github.com/cupcakearmy/autorestic.git
 	sha256sums = SKIP
 
 pkgname = autorestic-git

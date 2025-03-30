@@ -2,6 +2,8 @@
 # Contributor: buckket <felix+arch at buckket dot org>
 # Contributor: tippfehlr <tippfehlr at tippfehlr dot eu>
 
+VCSCLIENTS+=('git-lfs::git-lfs')
+
 _pkgname=autorestic
 pkgname="${_pkgname}-git"
 pkgver=1.8.3+10.r541.20241114.48fa20b
@@ -18,6 +20,7 @@ makedepends=(
   'git'
   'git-lfs'
   'go'
+  'makepkg-git-lfs-proto'
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -27,7 +30,7 @@ conflicts=(
   "${_pkgname}"
   "${_pkgname}-doc"
 )
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git-lfs+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
