@@ -1,14 +1,15 @@
 pkgbase = admesh
-	pkgdesc = Program for processing STL triangulated solid meshes
-	pkgver = 0.98.4
+	pkgdesc = CLI and C library for processing triangulated solid meshes
+	pkgver = 0.98.5+r27+gd775906
 	pkgrel = 1
-	url = https://github.com/admesh/admesh/
+	url = https://admesh.readthedocs.io
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3.2
 	depends = glibc
-	source = https://github.com/admesh/admesh/releases/download/v0.98.4/admesh-0.98.4.tar.gz
-	md5sums = 0500cce63664809cbf707df8bfdcee61
+	provides = libadmesh.so
+	source = admesh-d77590614cc4da46a142207b5d9fc5cfdc937032.tar.gz::https://github.com/admesh/admesh/archive/d77590614cc4da46a142207b5d9fc5cfdc937032.tar.gz
+	b2sums = e3d165dd1b7497c7152916b69aa1f34be82da06c95e0f2bbd21144df488645299d70b46d6e7aa224865881b5ddee479e16d5c78c3dda3f0a6a43c204911f30a1
 
 pkgname = admesh
-

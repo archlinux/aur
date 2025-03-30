@@ -1,0 +1,4 @@
+[admesh]
+source = "git"
+git = "https://github.com/admesh/admesh.git"
+prefix = "v"
