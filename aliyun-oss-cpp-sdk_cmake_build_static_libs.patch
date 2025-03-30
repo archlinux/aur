@@ -1,0 +1,52 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,12 +27,16 @@
+ set(TARGET_OUTPUT_NAME_PREFIX "alibabacloud-oss-" CACHE STRING "The target's output name prefix")
+ 
+ #Options
+-option(BUILD_SHARED_LIBS  "Enable shared library" OFF)
++option(BUILD_SHARED_LIBS  "Enable shared library" ON)
++option(BUILD_STATIC_LIBS  "Enable static library" OFF)
+ option(BUILD_SAMPLE "Build sample" ON)
+ option(BUILD_TESTS "Build unit and perfermence tests" OFF)
+ option(ENABLE_COVERAGE "Flag to enable/disable building code with -fprofile-arcs and -ftest-coverage. Gcc only" OFF)
+ option(ENABLE_RTTI "Flag to enable/disable building code with RTTI information" ON)
+ 
++if(NOT BUILD_SHARED_LIBS AND NOT BUILD_STATIC_LIBS)
++    message(FATAL_ERROR "You must enable at least one of BUILD_SHARED_LIBS or BUILD_STATIC_LIBS.")
++endif()
+ 
+ #Platform
+ if (CMAKE_CROSSCOMPILING)
+--- a/sdk/CMakeLists.txt
++++ b/sdk/CMakeLists.txt
+@@ -133,6 +133,7 @@
+ endif()
+     
+ #static lib
++if (BUILD_STATIC_LIBS)
+ add_library(${PROJECT_NAME}${STATIC_LIB_SUFFIX} STATIC
+     ${sdk_header}
+     ${sdk_src})
+@@ -157,6 +158,7 @@
+ 
+ target_compile_options(${PROJECT_NAME}${STATIC_LIB_SUFFIX} 
+     PRIVATE "${SDK_COMPILER_FLAGS}" "${EXTRA_DEFINE}")
++endif()
+ 
+ #shared lib
+ if (BUILD_SHARED_LIBS)
+@@ -210,11 +212,13 @@
+ install(FILES ${sdk_public_header}
+     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/alibabacloud/oss)
+ 
++if (BUILD_STATIC_LIBS)
+ install(TARGETS  ${PROJECT_NAME}${STATIC_LIB_SUFFIX}
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+     )
++endif()
+ 
+ if (BUILD_SHARED_LIBS)
+ install(TARGETS  ${PROJECT_NAME}

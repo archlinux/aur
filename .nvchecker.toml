@@ -1,0 +1,4 @@
+[aliyun-oss-cpp-sdk]
+source = "git"
+git = "https://github.com/aliyun/aliyun-oss-cpp-sdk.git"
+prefix = "v"
