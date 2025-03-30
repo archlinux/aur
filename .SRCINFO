@@ -1,14 +1,13 @@
 pkgbase = gregorio
 	pkgdesc = Command-line tool to typeset Gregorian chant
 	pkgver = 6.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gregorio-project.github.io
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-only
 	license = OFL-1.0
 	license = GPL-3.0-with-font-exception
-	depends = texlive-core
 	depends = texlive-fontsextra
 	depends = texlive-bin
 	depends = texlive-formatsextra

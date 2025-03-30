@@ -5,13 +5,13 @@
 pkgbase=gregorio
 pkgname="$pkgbase"
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 _pkgver_underscores=$(echo $pkgver | sed -e 's/\./_/g')
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=https://gregorio-project.github.io
 arch=("i686" "x86_64")
 license=("GPL-3.0-only" "OFL-1.0" "GPL-3.0-with-font-exception")
-depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra")
+depends=("texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra")
 optdepends=("texlive-langeuropean: Latin language for TeX Live")
 conflicts=("gregorio-svn" "gregorio-git" "gregoriotex")
 provides=("gregorio")
