@@ -27,7 +27,7 @@ package() {
     conflicts=("sherlock-launcher-git")
     cd "$srcdir"
     mkdir -p extracted
-    tar -xzf "sherlock-v${pkgver}-bin-linux-x86_64.tar.gz" -C extracted
+    tar -xzf "sherlock-v${pkgver}-${pkgrel}-bin-linux-x86_64.tar.gz" -C extracted
     install -Dm755 "extracted/sherlock" "$pkgdir/usr/bin/sherlock"
     install -Dm644 "extracted/LICENSE" "$pkgdir/usr/share/licenses/sherlock-launcher/LICENSE"
 }
