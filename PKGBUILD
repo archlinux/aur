@@ -1,13 +1,20 @@
 # # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mgba-highscore-git
-pkgver=r8541.6d96510
+pkgver=r8795.8df1bc7
 pkgrel=1
 pkgdesc="Highscore port of mGBA"
 arch=('x86_64')
 url="https://github.com/alice-mkh/mgba"
 license=('MPL-2.0')
-depends=('ffmpeg' 'libepoxy' 'libhighscore-git')
-makedepends=('cmake' 'git')
+depends=(
+  'ffmpeg'
+  'libepoxy'
+  'libhighscore-git'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/alice-mkh/mgba.git')
@@ -40,13 +47,16 @@ build() {
     -DBUILD_SDL='OFF' \
     -DBUILD_HIGHSCORE='ON' \
     -DSKIP_LIBRARY='ON' \
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -Wno-dev
   cmake --build build
 }
 
 package() {
-  cmake -DCOMPONENT=mgba_highscore mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+  cmake -DCOMPONENT=mgba_highscore mgba \
+    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
-  cmake -DCOMPONENT="${pkgname%-git}" mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+  cmake -DCOMPONENT="${pkgname%-git}" mgba \
+    -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
     -P build/cmake_install.cmake
 }
