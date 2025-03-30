@@ -3,8 +3,8 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2557.757a17fb
-pkgrel=2
+pkgver=r2559.a9942601
+pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -15,9 +15,11 @@ depends=('bash' 'cairo' 'gdk-pixbuf2' 'gcc-libs' 'glibc' 'glib2' 'gtk2' 'gtkglex
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
 source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git"
-        "git+https://github.com/DaemonEngine/crunch.git")
+        "git+https://github.com/DaemonEngine/crunch.git"
+        "gamepack-manager-workaround.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '4e9034298b7e517c9451efa6a2930128a9a83f85b75652b798de3cffc9b759f7')
 
 pkgver() {
     cd "${srcdir}/${pkgname}/"
@@ -25,9 +27,12 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}"
+    # Comment out the Nexuiz gamepack (the URL doesn't work)
+    patch -d ${pkgname} -p1 < ../gamepack-manager-workaround.patch
 
     # Fetch the Crunch submodule
+    cd "${srcdir}/${pkgname}"
     git submodule init
     git config submodule.libs/crunch.url "${srcdir}/crunch"
     git -c protocol.file.allow=always submodule update

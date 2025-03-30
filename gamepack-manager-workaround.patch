@@ -1,0 +1,13 @@
+diff --git a/gamepack-manager b/gamepack-manager
+index a248987d..78bd71d5 100755
+--- a/gamepack-manager
++++ b/gamepack-manager
+@@ -72,7 +72,7 @@ JediAcademy     proprietary  git     https://gitlab.com/netradiant/gamepacks/jed
+ JediOutcast     proprietary  git     https://gitlab.com/netradiant/gamepacks/jedioutcast-mapeditor-support.git
+ Kingpin         unknown      git     https://gitlab.com/netradiant/gamepacks/kingpin-mapeditor-support.git
+ Neverball       proprietary  git     https://gitlab.com/netradiant/gamepacks/neverball-mapeditor-support.git
+-Nexuiz          GPL          gitdir  git://git.icculus.org/divverent/nexuiz.git misc/netradiant-NexuizPack master
++#Nexuiz          GPL          gitdir  git://git.icculus.org/divverent/nexuiz.git misc/netradiant-NexuizPack master
+ OpenArena       GPL          git     https://github.com/NeonKnightOA/oagamepack.git
+ Osirion         GPL          zip     http://ingar.intranifty.net/files/netradiant/gamepacks/OsirionPack.zip
+ Prey            proprietary  git     https://gitlab.com/netradiant/gamepacks/prey-mapeditor-support.git
