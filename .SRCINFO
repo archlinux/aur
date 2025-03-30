@@ -1,11 +1,13 @@
 pkgbase = wl-binclock
 	pkgdesc = binary clock for wayland in rust
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dongdigua/wl-binclock
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
 	source = wl-binclock-1.1.2.tar.gz::https://github.com/dongdigua/wl-binclock/archive/refs/tags/1.1.2.tar.gz
 	sha256sums = 3479e7d78fbe2b8e4a136638da3604f2e660da729f1a848bdebaba8a6f943c30
 
