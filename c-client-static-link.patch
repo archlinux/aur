@@ -1,0 +1,11 @@
+--- a/acinclude/ac_with_cclient.m4	2025-03-31 00:08:02.522117420 +0300
++++ b/acinclude/ac_with_cclient.m4	2025-03-31 00:08:21.726337133 +0300
+@@ -46,7 +46,7 @@
+    dnl Looking for c-client libraries
+    dnl
+    AC_MSG_CHECKING([for c-client library])
+-   for l in `eval "echo {${CCLIENTLOCATIONS}}{,/c-client,/lib/c-client,/lib,/lib64}/{libc-client,libc-client4,c-client}.so"` ; do
++   for l in `eval "echo {${CCLIENTLOCATIONS}}{,/c-client,/lib/c-client,/lib,/lib64}/{libc-client,libc-client4,c-client}.a"` ; do
+     if test -r "$l" ; then
+      AC_MSG_RESULT([found ${l}])
+      CCLIENT_LIBS="$l"
