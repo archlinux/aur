@@ -2,7 +2,7 @@
 # Contributor: Paul <paul@mram.io>
 pkgname=mcpelauncher-msa-ui-qt-git
 pkgver=0.9.0.r1.gcfcebaa
-pkgrel=4
+pkgrel=5
 pkgdesc="Microsoft Account authentication user interface (Qt) for the mcpelauncher-msa-daemon"
 arch=('x86_64' 'i686')
 url="https://github.com/minecraft-linux/msa-manifest"
@@ -40,7 +40,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'f969127d7b7ed0a8a63c2bbeae002588')
+         'SKIP')
 
 pkgver() {
   cd "$srcdir/msa-manifest"
@@ -64,6 +64,7 @@ build() {
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DENABLE_MSA_DAEMON=OFF \
   -DENABLE_MSA_QT_UI=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
   -Wno-dev
 
   cmake --build build

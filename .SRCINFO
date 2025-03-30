@@ -1,7 +1,7 @@
 pkgbase = mcpelauncher-msa-ui-qt-git
 	pkgdesc = Microsoft Account authentication user interface (Qt) for the mcpelauncher-msa-daemon
 	pkgver = 0.9.0.r1.gcfcebaa
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/minecraft-linux/msa-manifest
 	arch = x86_64
 	arch = i686
@@ -41,6 +41,6 @@ pkgbase = mcpelauncher-msa-ui-qt-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = f969127d7b7ed0a8a63c2bbeae002588
+	md5sums = SKIP
 
 pkgname = mcpelauncher-msa-ui-qt-git
