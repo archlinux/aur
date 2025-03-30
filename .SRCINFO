@@ -1,7 +1,7 @@
 pkgbase = moderncore
 	pkgdesc = parts of an abandoned Wayland compositor repurposed for image viewers
 	pkgver = 20250323
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wolfpld/moderncore
 	arch = x86_64
 	license = BSD-3-Clause
@@ -13,6 +13,9 @@ pkgbase = moderncore
 	makedepends = wayland-protocols
 	makedepends = vulkan-headers
 	makedepends = vulkan-utility-libraries
+	makedepends = shaderc
+	makedepends = libsixel
+	makedepends = libxkbcommon
 	depends = cairo
 	depends = lcms2
 	depends = libexif
@@ -29,12 +32,12 @@ pkgbase = moderncore
 	depends = pugixml
 	optdepends = poppler-glib
 	source = moderncore-20250323.tar.gz::https://github.com/wolfpld/moderncore/archive/refs/tags/20250323.tar.gz
-	source = tracy::git+https://github.com/wolfpld/tracy.git#tag=9074461
+	source = tracy::git+https://github.com/wolfpld/tracy.git#tag=2d9169e
 	source = vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#tag=v3.2.1
 	source = stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08
 	source = base64::git+https://github.com/aklomp/base64.git#tag=v0.5.2
 	sha256sums = 1c34b8a23229c04bbb04095d6808764fc22b07405ddd600f9cd3ebc75a303e8a
-	sha256sums = SKIP
+	sha256sums = cb38d8eb30597fe9b347fb8d1e3aabe56f58cc255e61fd6b59b6ee393d7fc91e
 	sha256sums = 3ba3a3b0e349e7731e862e9826ac9ba0f1122fa3eda2ada3eb22c3930108d768
 	sha256sums = e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90
 	sha256sums = c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7

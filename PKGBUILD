@@ -3,13 +3,25 @@
 pkgbase=moderncore
 pkgname=(vv iv)
 pkgver=20250323
-pkgrel=1
-_tracy_commit=9074461
+pkgrel=2
+_tracy_commit=2d9169e
 pkgdesc="parts of an abandoned Wayland compositor repurposed for image viewers"
 arch=('x86_64')
 url="https://github.com/wolfpld/moderncore"
 license=('BSD-3-Clause')
-makedepends=(git cmake ninja python openmp wayland-protocols vulkan-headers vulkan-utility-libraries)
+makedepends=(
+	git
+	cmake
+	ninja
+	python
+	openmp
+	wayland-protocols
+	vulkan-headers
+	vulkan-utility-libraries
+	shaderc
+	libsixel
+	libxkbcommon
+)
 depends=(
 	cairo
 	lcms2
@@ -37,7 +49,7 @@ source=(
 	"base64::git+https://github.com/aklomp/base64.git#tag=v0.5.2"
 )
 sha256sums=('1c34b8a23229c04bbb04095d6808764fc22b07405ddd600f9cd3ebc75a303e8a'
-            'SKIP'
+            'cb38d8eb30597fe9b347fb8d1e3aabe56f58cc255e61fd6b59b6ee393d7fc91e'
             '3ba3a3b0e349e7731e862e9826ac9ba0f1122fa3eda2ada3eb22c3930108d768'
             'e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90'
             'c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7')
@@ -85,4 +97,6 @@ package_iv() {
 	install -Dm 755 "$srcdir/build/iv" -t "$pkgdir/usr/bin"
 	install -Dm 644 "$srcdir/$pkgbase-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/iv"
 	install -Dm 644 "$srcdir/$pkgbase-$pkgver/doc/iv.md" "$pkgdir/usr/share/doc/iv/README.md"
+	install -Dm 644 "$srcdir/$pkgbase-$pkgver/src/tools/iv/desktop/iv.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm 644 "$srcdir/$pkgbase-$pkgver/src/tools/iv/assets/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/iv.svg"
 }
