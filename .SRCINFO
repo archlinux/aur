@@ -1,0 +1,23 @@
+pkgbase = xenoprobes-git
+	pkgdesc = Utility program for Xenoblade Chronicles X to search for optimal data probe configuration
+	pkgver = r32.efcf48e
+	pkgrel = 1
+	url = https://github.com/minneyar/xenoprobes
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = boost
+	depends = fmt
+	depends = gcc-libs
+	depends = spdlog
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-svg
+	provides = xenoprobes
+	conflicts = xenoprobes
+	source = git+https://github.com/minneyar/xenoprobes.git
+	sha256sums = SKIP
+
+pkgname = xenoprobes-git
