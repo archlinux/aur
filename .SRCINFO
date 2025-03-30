@@ -1,6 +1,6 @@
 pkgbase = yomikiru-bin
 	pkgdesc = An offline desktop reader for manga, comics, webtoons, and novels. Offers a customizable reading experience with extensive settings, shortcuts, themes and layouts.
-	pkgver = 2.19.7
+	pkgver = 2.19.8
 	pkgrel = 1
 	url = https://github.com/mienaiyami/yomikiru
 	install = yomikiru-bin.install
@@ -22,7 +22,7 @@ pkgbase = yomikiru-bin
 	options = !emptydirs
 	options = !debug
 	options = !lto
-	source_x86_64 = https://github.com/mienaiyami/yomikiru/releases/download/v2.19.7/Yomikiru-v2.19.7-amd64.deb
-	sha512sums_x86_64 = 9988c8b3a86c39ea6a30bcb7edb44a3e2fb65f290a802f7ab06a4a0094a6b1e730c047556a2e12f3fb32b99e85fa58407a450f93cfc71777ec6437d372dbb72b
+	source_x86_64 = https://github.com/mienaiyami/yomikiru/releases/download/v2.19.8/Yomikiru-v2.19.8-amd64.deb
+	sha512sums_x86_64 = eaea7eb3275a42cf38b18b11349bf7265de0d0491135033345d2e0e344e32129aab753c1a47ee081c4b70885b00c2d6b088b31d776167383a6883db49c8cba2b
 
 pkgname = yomikiru-bin
