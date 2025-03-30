@@ -1,66 +1,45 @@
-XPipe 15 comes with many new features, performance improvements, and many bug fixes. Note that the installation data layout has been changed and executables have been moved around. This will break some shortcuts and the old restart functionality after an update. So if you're updating from within XPipe, it won't automatically restart for this update.
+XPipe 16 comes with docker compose support, a new batch mode, keepass support, terminal multiplexer support, performance improvements, and many bug fixes.
 
-## Tailscale SSH support
+## Docker
 
-You can now connect to devices in your tailnet via Tailscale SSH and your locally installed tailscale command-line client. This integration supports multiple accounts as well to switch between different tailnets.
+This release introduces support for docker compose. Containers in compose projects are grouped together and can be managed all at the same time via the compose project entry.
 
-## Custom icons
+The container state information shown is also improved, always showing the container state in combination with the system information.
 
-You can now add custom icons to use for your connections. This implementation replaces the old model of shipping the icons from https://github.com/selfhst/icons along XPipe. Instead, you can now dynamically add sources of icons. This can either be a local directory or a remote git repository that can be cloned and pulled by xpipe. XPipe will pick up any .svg files in there, rasterize them to cached .pngs, and display them in XPipe. As default icon sources, it will still come with https://github.com/selfhst/icons, but now it can fetch these icons at runtime. If you are using the git vault, you can also add icons to a synced directory in your git vault to have access to them on all systems.
+## Batch mode
 
-Your existing custom icons set for connections are not lost, it just requires you to first update the icons and then restart XPipe.
+There is now a batch mode available which allows you to select multiple systems via checkboxes and perform actions for the entire batch. This can include starting/stopping, automatically adding available subconnections, or running scripts on all systems.
 
-## Package manager repositories
+You can toggle the batch mode in the top left corner.
 
-There is now an apt repository available at https://apt.xpipe.io and an rpm repository available at https://rpm.xpipe.io. You can add them as sources to apt or your rpm-based package manager. This allows you to also install and upgrade xpipe via your native package manager instead of using the built-in self-updater. 
+## Terminals
 
-## New docs
+There is now built-in support for the terminal multiplexers tmux, zellij, and screen. There's also now support to run custom init commands for the terminal session to configure the terminal appearance specific to XPipe.
 
-There is a new documentation site https://docs.xpipe.io. The goal is to expand this over time to provide proper documentation for many features. If you're looking for documentation for a certain feature, let me know.
+On Windows, you now have the ability to use a WSL or Cygwin environment as the terminal environment, allowing you to use the new terminal multiplexer integration seamlessly on Windows as well.
+
+## Password managers
+
+The password manager integration has been improved and made more robust:
+- There is now support for KeePassXC
+- Password manager requests are cached, fixing potential password manager overload issues when a lot of passwords are queried
+- The password $KEY identifier has been adapted to reflect the individual name of the password key reference
 
 ## Other
 
-- Rework application styling
-- Improve performance when having many connections and categories
-- Add new action to run scripts in the file browser and show their output without having to open a terminal
-- The Homelab/Pro preview for new features is now handled automatically, you don't have to enable it anymore
-- You can now import saved PuTTY sessions on a system when searching for available connections. This also works for KiTTY
-- The custom service command opener will now use \$PORT instead of \$ADDRESS to allow for the use of commands that have a separate port argument
-- Add support for Gnome Console and Ptyxis Terminal
+- The SSH gateway implementation has been reworked so that you can now use local SSH keys and other identities for connections with gateways
+- Various speed improvements for shell operations
+- Various startup speed improvements
+- The scripts context menu now shows the respective scripts icons instead of generic ones
+- There is now built-in support to refresh an SSO openpubkey with the opkssh tool when needed
+- The Windows application will now block the shutdown until save/sync has finished, preventing vault corruption caused by a sudden shutdown
+- Add setting to disable HTTPs TLS verification for license activation API calls for cases where TLS traffic is decrypted in your organization
 
 ## Fixes
 
-- Fix user interface not being responsive for a few seconds after launch
-- Fix VSCode open actions not showing if code executable was not in PATH
-- Fix startup failure on Windows systems when vcredist140.dll was missing
-- Fix various issues with shells to Android systems
-- Fix issues on Linux systems where language en_US.UTF-8 was not available
-- Fix docked file browser terminal staying ahead of other windows even if XPipe loses focus
-- Fix permission denied errors on terminal launch when file system had noexec flag set
-- Fix git synced vault keys not working on other systems
-- Fix double sudo prompt when elevating to root in file browser
-- Fix file browser shift selection not marking selected files
-- Fix file browser yellow keyboard focus indicator showing after typing path
-- Fix ssh service tunnel sometimes failing with a timeout on close
-- Fix modal dialogs flickering a bit
-- Fix some icons resetting on updates
-- Fix desktop shortcuts not launching actions properly
-- Fix teleport integration failing for newer teleport versions
-- Fix MobaXterm integration not working correctly
-- Fix git sync SSH key password always prompting, even if it is specified in place
-- Fix creation dialog for scripts and identities still referring to the name as connection name
-- Fix password prompts for tunneled VM SSH connections showing wrong hostname as localhost
-- Fix Windows Terminal start up failing if it was the first time that it was launched on the system
-- Fix some translations not updating when changing display language
-- Fix custom service open command not working properly with PowerShell
-- Fix shortcut actions not running when daemon had to be started first
-- Fix browser directory list entering endless loop if directory contained symlink to itself
-- Fix certain actions like RDP failing when XPipe was launched from pwsh
-- Fix terminal selection defaulting to Wave if no other terminal is found
-- Fix vault version incompatibility notice only offering to disable the git sync
-- Fix several cases where adding/deleting vault users would corrupt vault data
-- Fix vault user encryption settings not updating properly
-- Fix shell init scripts being run multiple times when background shell session was active
-- Fix restart button not working for custom workspace locations
-- Fix git readme list updating each time when using a different vault user
-- Fix installation type detection being wrong when using installer and portable installation side by side
+- Fix Windows msi updates failing when initial installation was installed per-user as an Administrator
+- Fix Windows msi updates launching XPipe as Administrator when restarting if it was a system-wide program files installation
+- Fix some dialog content shifting around on initial show
+- Fix application restart after update not applying current workspace directory
+- Fix custom service commands not launching properly with PowerShell as the local shell
+- Fix update check being influenced by the local GitHub rate limiting
