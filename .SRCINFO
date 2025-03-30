@@ -1,6 +1,6 @@
 pkgbase = ruby-xapian-ruby
 	pkgdesc = Xapian libraries and Ruby bindings
-	pkgver = 1.4.22
+	pkgver = 1.4.27
 	pkgrel = 1
 	url = https://rubygems.org/gems/xapian-ruby
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = ruby-xapian-ruby
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = xapian-core>=1:1.4.18
-	noextract = xapian-ruby-1.4.22.gem
+	noextract = xapian-ruby-1.4.27.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/xapian-ruby-1.4.22.gem
-	sha256sums = 026a866b431a96e6503ca2090cd5090aef564f37efd21bb5b2f6e8a8c57c9f76
+	source = https://rubygems.org/downloads/xapian-ruby-1.4.27.gem
+	sha256sums = 4134bc1f63bb1023d9654050988344e18aebef46124e2555e781c881077be000
 
 pkgname = ruby-xapian-ruby
