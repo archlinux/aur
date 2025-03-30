@@ -1,6 +1,6 @@
 pkgbase = ccode
-	pkgdesc = CLI tool to consolidate code files into a single output
-	pkgver = 1.0.0
+	pkgdesc = CLI tool to consolidate code files
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/x45iq/ccode
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ccode
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = ccode-1.0.0.tar.gz::https://github.com/x45iq/ccode/archive/v1.0.0.tar.gz
-	sha256sums = f3cc23c84c7358ad0a03ecb3d64e3889114788d55d2523bc9f5fb81f38526560
+	source = ccode-1.0.3.tar.gz::https://github.com/x45iq/ccode/archive/v1.0.3.tar.gz
+	sha256sums = 8966afea3f6280efb856bae008cf07012ca78dde268d91bcbd4a2b797fee2b0a
 
 pkgname = ccode
