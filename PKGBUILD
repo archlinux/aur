@@ -2,7 +2,8 @@
 
 pkgname=flair
 _module=flair-brookslab
-pkgver=2.0.0
+pkgver=2.1.0
+_tag=v${pkgver}
 pkgrel=1
 pkgdesc="Tool for correction, isoform definition, and alternative splicing analysis of nanopore cDNA, native RNA, and PacBio sequencing reads"
 arch=('any')
@@ -39,12 +40,14 @@ makedepends=(
              'python-build'
              'python-installer'
              'python-wheel'
+             'python-poetry'
+             'git'
             )
 
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-       
-sha256sums=('bc1fe441e5610f19a2c95b6dc0aca588244bb7d48b3eb07b6fa424d8e251619c')
+source=($_module-$pkgver::git+https://github.com/BrooksLabUCSC/flair.git#tag=${_tag})
+
+sha256sums=('7db946e67f646e077ebd54636bb397eb60e1dc384bb96754df7b30b8a7a94ac2')
 
 build() {
     cd "$_module-$pkgver"
