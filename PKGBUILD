@@ -22,6 +22,8 @@ depends=(
     'libcap'
     'libdrm'
     'libevdev'
+    'libicuuc.so'  # icu
+    'libminiupnpc.so'  # miniupnpc
     'libmfx'
     'libnotify'
     'libpulse'
@@ -31,7 +33,6 @@ depends=(
     'libxfixes'
     'libxrandr'
     'libxtst'
-    'miniupnpc'
     'numactl'
     'openssl'
     'opus'
@@ -55,6 +56,7 @@ prepare() {
 
     patchelf \
     --replace-needed libminiupnpc.so.1{8,9} \
+    --replace-needed libicuuc.so.7{5,6} \
     "usr/bin/sunshine"
     # --replace-needed libboost_locale.so.1.8{3,6}.0 \
     # --replace-needed libboost_log.so.1.8{3,6}.0 \
