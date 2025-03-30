@@ -1,0 +1,13 @@
+pkgbase = veil-bin
+	pkgdesc = Veil - An opinionated, fully featured, modular observability stack for APIs. Allows you to sell, monitor, authenticate your APIs.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/try-veil/veil
+	license = MIT
+	conflicts = veil
+	provides = veil
+	arch = x86_64
+	source_x86_64 = https://github.com/try-veil/veil/releases/download/v0.0.2/veil_0.0.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bc0c0acd71979174b4974076b05819d892aa85db9c65da079b5b979b914b08b5
+	
+pkgname = veil-bin
