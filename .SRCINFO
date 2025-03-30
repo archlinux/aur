@@ -1,7 +1,7 @@
 pkgbase = guile-hall
 	pkgdesc = Project manager and build tool for GNU guile
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/a-sassmannshausen/guile-hall
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = guile-hall
 	depends = texinfo
 	optdepends = guix: for GNU Guix integration
 	source = https://gitlab.com/a-sassmannshausen/guile-hall/-/archive/0.4.1/guile-hall-0.4.1.tar.gz
-	sha256sums = 547085953485164a981ca982dd5b8bef0d17cc5b8d6a50ef841a1c80ef39c31a
+	sha256sums = 8bf70fa795db3032be710a41fd316b92a87da2c2c909658412d0c36c4142e9be
 
 pkgname = guile-hall
