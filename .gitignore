@@ -3,4 +3,3 @@
 !.SRCINFO
 !PKGBUILD
 !disable-update-check.patch
-!fix-cmake-4.patch
