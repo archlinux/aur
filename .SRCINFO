@@ -1,0 +1,12 @@
+pkgbase = sinpass
+	pkgdesc = Open Source Password Manager
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/rickert156/SinPass
+	arch = any
+	license = GPLv3
+	depends = python
+	source = sinpass::git+https://github.com/rickert156/SinPass.git
+	sha256sums = SKIP
+
+pkgname = sinpass
