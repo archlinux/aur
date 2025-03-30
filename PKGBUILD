@@ -1,8 +1,8 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlgcd
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
 url='https://git.sr.ht/~shtrophic/gmlgcd'
@@ -25,19 +25,21 @@ source=(
         "tmpfiles-gmlgcd.conf"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('22fdf0cbfce5eff5e424d66ac4b11d3e96168f7d1cce94a540e005d5b8c60278'
+sha256sums=('7b5985f04e5820134ab6f2532169cb5108e51559b7ae0678185b4556935555e1'
             'SKIP'
             'e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d'
             'd5414cc42d81608d0d8267d3d2d1e7ef7323abdecf96a33af54bae9416f0050e')
 
 prepare() {
-	sed -i 's|/usr/local|/usr|g' "$srcdir/$pkgname-$pkgver/$pkgname.service"
+	cd "$srcdir/$pkgname-$pkgver"
+	sed -i 's|/usr/local|/usr|g' "$pkgname.service"
+	meson subprojects download
 }
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	meson setup builddir --buildtype release --prefix=/usr
+	meson setup builddir --buildtype release --prefix=/usr --wrap-mode=nodownload
 	meson compile -C builddir
 }
 
@@ -49,7 +51,7 @@ check() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	meson install -C builddir --destdir "$pkgdir"
+	meson install -C builddir --destdir "$pkgdir" --skip-subprojects foocgi
 
 	install -Dm 644 gmlgcd.service -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm 644 "$srcdir/sysusers-gmlgcd.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
