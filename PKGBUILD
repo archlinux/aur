@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=wol-rs
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Wake up remote hosts with Wake On LAN magic packets'
 arch=('i686' 'x86_64')
 url="https://github.com/swsnr/wol.rs"
@@ -13,11 +13,11 @@ makedepends=('rust' 'cargo')
 options=()
 source=(
     "${url}/releases/download/v${pkgver}/wol-v${pkgver}.tar.zst"
-    "wol-vendor-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/vendor.tar.zst"
+    "${url}/releases/download/v${pkgver}/wol-v${pkgver}-vendor.tar.zst"
     "config.toml"
 )
-sha256sums=('61b51a2b8008fedb3c162494ee5c7a79da63b40150e8a766b412400fd29f2edc'
-            'd4c99fe4949938fb9aec5038686a494a9e8705a682c6485b2e2ac3fa86f87f10'
+sha256sums=('51ad6c48630012f085530de8a567e1d9ee48042d12ff30ff693c5f2dca8a2781'
+            '5c1907068d552ba8116852e74f4651af3abc79da2663a0a5d62275d60c39d2da'
             '8dc330c974e99a362fd8d27f5d76f485da9559f80d576e0fd9ffb1779e4dd881')
 
 prepare() {
