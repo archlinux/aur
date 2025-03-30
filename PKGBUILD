@@ -2,8 +2,8 @@
 # Co-maintainer: Nebulosa
 
 pkgname=improve-imgsli
-pkgver=2.0.2
-pkgrel=1
+pkgver=2.0.3
+pkgrel=2
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
 url="https://github.com/Loganavter/$pkgname"
@@ -21,8 +21,8 @@ depends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('c9e02901400b45b00035aeafa691c716e257b331212c5cf848285209ed77cccb3f77680c38b1d0460916589d5ccb11fc00b3689108cccaf76a8faad882d740fb')
-b2sums=('480b0a3cf0de42af4638d00229aba5b8de483840b452b76b8db7d65fd015dbcbb3b800f5c81596ff26e5262f2897d34de4e8edd0d668822272de9109870233b5')
+sha512sums=('7e3db8809dd8069ef3f0be0590a4a492b49b3f92dcf1e8cfb0e66310e6cf1d87365cf53b1eefe6c5d137282ec4b49ec3f2a185af20bf9c03153497e5bc785381')
+b2sums=('ecec471e7892f41613eb30ae2203c1a5dbe2a45cc56f231ad99c9d63a39c2a41855e7f6ecf08b3beea4b73da3032363206c154bd5d8ff4b36634cd2d8c78ffcf')
 
 prepare() {
   sed -i 's|Exec=|Exec=/usr/bin/|' Improve-ImgSLI-$pkgver/$pkgname.desktop
