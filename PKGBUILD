@@ -32,7 +32,7 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.3.1+80.r13565.20250330.5ce047a13
+pkgver=4.3.1+81.r13566.20250330.75990d760
 pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
@@ -63,6 +63,7 @@ depends=(
   'startup-notification'
 )
 makedepends=(
+  'ayatana-ido'
   'git'
   'glib2-devel'
   'python>=3'
@@ -71,10 +72,14 @@ makedepends=(
   'bogofilter'
   'dillo'
   'gumbo-parser>=0.12'
+  'libayatana-appindicator'
   'libcanberra'
+  'libdbusmenu-glib'
   'libgdata'
+  'libgoa'
   'libical'
   'libnotify'
+  'libxml2'
   'libytnef'
   'poppler-glib'
   # 'pygtk' # This requires python2 stuff to build. Most probably obsolete as (make) dependency.
@@ -105,7 +110,10 @@ optdepends=(
   'harfbuzz:          for many plugins'
   'jpilot:            for jpilot (palm pilot connection) plugin.'
   'libarchive:        for archive plugin and various other plugins.'
+  'ayatana-ido:       for notification plugin.'
   'libcanberra:       for notification plugin.'
+  'libdbusmenu-glib:  for notification plugin.'
+  'libayatana-appindicator: for notification plugon.'
   'libgpg-error:      for GPG and S-MIME plugins.'
   'libical:           for vcalendar plugin.'
   'libnotify:         for notification plugin.'
@@ -121,7 +129,6 @@ optdepends=(
   'libgdata:          for gdata plugin.'
   'libgoa:            for gdata plugin.'
   'libxml2:           for gdata plugin.'
-  'libsoup:           for gdata and fancy html viewer plugins.'
 )
 replaces=(
   'claws-mail-extra-plugins'
@@ -179,8 +186,15 @@ fi
 if [ "${_TOOLKIT}" == "gtk2" ]; then
   _fancy_config_opts=('--disable-fancy-plugin')
 else
-  makedepends+=('webkit2gtk')
-  optdepends+=('webkit2gtk:        for fancy webkit html viewer plugin')
+  makedepends+=(
+    'libsoup3'
+    'webkit2gtk-4.1'
+  )
+  optdepends+=(
+    'libjavascriptcoregtk-4.1.so: for fancy webkit html viewer plugin.'
+    'libwebkit2gtk-4.1.so:        for fancy webkit html viewer plugin.'
+    'libsoup3:                    for fancy webkit html viewer plugin.'
+  )
   _fancy_config_opts=('--enable-fancy-plugin')
 fi
 if "${_WITH_NETWORKMANAGER}"; then

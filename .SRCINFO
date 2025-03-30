@@ -1,12 +1,13 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
-	pkgver = 4.3.1+80.r13565.20250330.5ce047a13
+	pkgver = 4.3.1+81.r13566.20250330.75990d760
 	pkgrel = 1
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = ayatana-ido
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = python>=3
@@ -14,10 +15,14 @@ pkgbase = claws-mail-protectedheaders-git
 	makedepends = bogofilter
 	makedepends = dillo
 	makedepends = gumbo-parser>=0.12
+	makedepends = libayatana-appindicator
 	makedepends = libcanberra
+	makedepends = libdbusmenu-glib
 	makedepends = libgdata
+	makedepends = libgoa
 	makedepends = libical
 	makedepends = libnotify
+	makedepends = libxml2
 	makedepends = libytnef
 	makedepends = poppler-glib
 	makedepends = docbook-utils
@@ -25,7 +30,8 @@ pkgbase = claws-mail-protectedheaders-git
 	makedepends = texlive-core
 	makedepends = texlive-formatsextra
 	makedepends = ccache
-	makedepends = webkit2gtk
+	makedepends = libsoup3
+	makedepends = webkit2gtk-4.1
 	depends = cairo
 	depends = compface
 	depends = dbus-glib
@@ -65,7 +71,10 @@ pkgbase = claws-mail-protectedheaders-git
 	optdepends = harfbuzz: for many plugins
 	optdepends = jpilot: for jpilot (palm pilot connection) plugin.
 	optdepends = libarchive: for archive plugin and various other plugins.
+	optdepends = ayatana-ido: for notification plugin.
 	optdepends = libcanberra: for notification plugin.
+	optdepends = libdbusmenu-glib: for notification plugin.
+	optdepends = libayatana-appindicator: for notification plugon.
 	optdepends = libgpg-error: for GPG and S-MIME plugins.
 	optdepends = libical: for vcalendar plugin.
 	optdepends = libnotify: for notification plugin.
@@ -81,15 +90,16 @@ pkgbase = claws-mail-protectedheaders-git
 	optdepends = libgdata: for gdata plugin.
 	optdepends = libgoa: for gdata plugin.
 	optdepends = libxml2: for gdata plugin.
-	optdepends = libsoup: for gdata and fancy html viewer plugins.
-	optdepends = webkit2gtk: for fancy webkit html viewer plugin
-	provides = claws=4.3.1+80.r13565.20250330.5ce047a13
-	provides = claws-mail=4.3.1+80.r13565.20250330.5ce047a13
-	provides = claws-mail-gtk3=4.3.1+80.r13565.20250330.5ce047a13
-	provides = claws-mail-title-superset=4.3.1+80.r13565.20250330.5ce047a13
-	provides = claws-mail-protectedheaders=4.3.1+80.r13565.20250330.5ce047a13
+	optdepends = libjavascriptcoregtk-4.1.so: for fancy webkit html viewer plugin.
+	optdepends = libwebkit2gtk-4.1.so: for fancy webkit html viewer plugin.
+	optdepends = libsoup3: for fancy webkit html viewer plugin.
+	provides = claws=4.3.1+81.r13566.20250330.75990d760
+	provides = claws-mail=4.3.1+81.r13566.20250330.75990d760
+	provides = claws-mail-gtk3=4.3.1+81.r13566.20250330.75990d760
+	provides = claws-mail-title-superset=4.3.1+81.r13566.20250330.75990d760
+	provides = claws-mail-protectedheaders=4.3.1+81.r13566.20250330.75990d760
 	provides = claws-mail-bash-completion
-	provides = claws-mail-extra-plugins=4.3.1+80.r13565.20250330.5ce047a13
+	provides = claws-mail-extra-plugins=4.3.1+81.r13566.20250330.75990d760
 	conflicts = claws
 	conflicts = claws-mail
 	conflicts = claws-mail-protectedheaders
