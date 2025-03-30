@@ -1,7 +1,7 @@
 # Maintainer: Jörg Hettwer <jh_gitlab@gmx-topmail.de>
 pkgname='g15ctrld'
-pkgver=1.5.155555
-pkgrel=1
+pkgver=1.5.15
+pkgrel=2
 pkgdesc="A new daemon controlling the G15 Logitech Gaming Keyboardi for x11 and
 wayland"
 arch=('x86_64')
