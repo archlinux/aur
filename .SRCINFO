@@ -1,7 +1,7 @@
 pkgbase = papis-git
 	pkgdesc = Command-line document and bibliography manager
-	pkgver = 0.14.r13.gd396c744
-	pkgrel = 2
+	pkgver = 0.14.1.r17.gc2ea7ed4
+	pkgrel = 1
 	url = https://github.com/papis/papis
 	arch = any
 	license = GPL-3.0-or-later
@@ -33,6 +33,7 @@ pkgbase = papis-git
 	depends = python-arxiv
 	depends = python-beautifulsoup4
 	depends = python-bibtexparser<2
+	depends = python-citeproc-py
 	depends = python-click
 	depends = python-colorama
 	depends = python-doi
