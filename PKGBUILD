@@ -1,7 +1,8 @@
 # Maintainer: Boradorka
+# Co-maintainer: Nebulosa
 
 pkgname=improve-imgsli
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
@@ -20,8 +21,8 @@ depends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('a6e2255f0a807ad3af07eadcd4137ba68c73d37c39772ecfca2d6bae686228bb0696d1d169f518f29b4a01b4bcfdbf8f2e659d4ce0147161483e2f90906397b3')
-b2sums=('8e088bf28edb5a097bac75c34f95cf114f8d0974855374071c5779a92961d29ec9977c733c22f3121ecf125b204f9433b3aabb4b743be82fd0148e2890ccc519')
+sha512sums=('c9e02901400b45b00035aeafa691c716e257b331212c5cf848285209ed77cccb3f77680c38b1d0460916589d5ccb11fc00b3689108cccaf76a8faad882d740fb')
+b2sums=('480b0a3cf0de42af4638d00229aba5b8de483840b452b76b8db7d65fd015dbcbb3b800f5c81596ff26e5262f2897d34de4e8edd0d668822272de9109870233b5')
 
 prepare() {
   sed -i 's|Exec=|Exec=/usr/bin/|' Improve-ImgSLI-$pkgver/$pkgname.desktop
