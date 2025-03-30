@@ -2,21 +2,20 @@
 
 pkgname=edgetx-companion
 pkgver=2.11.0
-pkgrel=1
+pkgrel=0.3
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
 license=('GPL-2.0-only')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-serialport' 'sdl2')
-optdepends=('dfu-util: tool for flashing stm32 based radios')
-makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib'
-             'avr-gcc' 'avr-libc' 'bc' 'clang' 'cmake' 'fox' 'gcc' 'git' 'icu' 'ninja' 'python'
-             'python-jinja' 'python-lz4' 'python-pillow' 'python-pyqt5' 'qt5-svg'
+makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'avr-gcc' 'avr-libc'
+             'bc' 'clang' 'cmake' 'dfu-util' 'doxygen' 'fox' 'gcc' 'git' 'graphviz' 'icu' 'ninja'
+             'openssl-1.1' 'python' 'python-jinja' 'python-lz4' 'python-pillow' 'python-pyqt5' 'qt5-svg'
              'qt5-tools' 'qt5-translations' 'sed' 'xsd')
 options=('!debug')
 provides=('companion')
 conflicts=('companion')
-source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
+source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver-rc3"
         "git+https://github.com/raphaelcoeffic/AccessDenied.git"
         "git+https://github.com/FreeRTOS/FreeRTOS-Kernel.git"
         "git+https://github.com/adfernandes/segger-rtt.git"
@@ -26,7 +25,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/microsoft/uf2"
         "git+https://github.com/signal11/hidapi")
-b2sums=('024826402eaf156b36d300d162a0e90a70f82902901e3a78a669d0c6f63dc12b7cbebec089110d38b2965cfeb59759ccb5761fbcf4c1712483d03be50d5416c9'
+b2sums=('653da451f47977169d1bed523d349f302ca08264bbfd504df51483f19c963e5ab43db42dabeabec05e6713de1084c8722b2262de505a666a9e19dc50dd199066'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -40,10 +39,10 @@ b2sums=('024826402eaf156b36d300d162a0e90a70f82902901e3a78a669d0c6f63dc12b7cbebec
 prepare() {
   # Deactivate these statements; they bundle the libs for AppImage.
   for pattern in "LIBSSL1" "LIBUSB1" "DFU_UTIL"; do
-      sed -i "s/if(${pattern}_FOUND)/if(false)/g" ./edgetx/companion/src/CMakeLists.txt
+      sed -i "s/if(${pattern}_FOUND)/if(false)/g" edgetx/companion/src/CMakeLists.txt
   done
 
-  sed -i 's/$(MAKE)/ninja/g' ./edgetx/CMakeLists.txt
+  sed -i 's/$(MAKE)/ninja/g' edgetx/CMakeLists.txt
 
   cd "$srcdir/edgetx/radio/src/thirdparty/"
   git submodule init
@@ -99,7 +98,7 @@ build() {
 
     rm -f CMakeCache.txt native/CMakeCache.txt
     cmake \
-      -S "$srcdir/edgetx" \
+      -S .. \
       -G Ninja \
       -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja \
       -DCMAKE_BUILD_TYPE=Release \
