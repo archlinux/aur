@@ -1,6 +1,6 @@
 pkgbase = plutovg-git
 	pkgdesc = A standalone 2D vector graphics library in C.
-	pkgver = 0.0.12.r187.20250131.3e6f922
+	pkgver = 1.0.0+3.r201.20250319.aa7beaa
 	pkgrel = 1
 	url = https://github.com/sammycage/plutovg
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = plutovg-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	provides = plutovg=0.0.12.r187.20250131.3e6f922
+	provides = plutovg=1.0.0+3.r201.20250319.aa7beaa
 	conflicts = plutovg
 	options = !lto
 	source = plutovg::git+https://github.com/sammycage/plutovg.git
