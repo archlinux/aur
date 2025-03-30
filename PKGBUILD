@@ -5,13 +5,12 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.18.1.r2.g357b101c
-_pandoc_type=commit
+pkgver=0.3.18.2.r8.g1162f36
+_pandoc_type=stock
 _pandoc_ver=3.6.4
 _pandoc_lua_ver=0.4.1.1
-# _pandoc_commit=c21a07a972b206cfa7d8aa1e410c299db015f784
-_pandoc_commit=a92f44da424796261dc1a192511084f7f8620949
-pkgrel=4
+_pandoc_commit=c21a07a972b206cfa7d8aa1e410c299db015f784
+pkgrel=1
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
 url="https://github.com/lierdakil/${_pkgname}"
