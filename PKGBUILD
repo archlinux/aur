@@ -2,12 +2,17 @@
 # Contributor: David Becker <dasmau89@gmail.com>
 pkgname=freegemas
 pkgver=22.02
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source version of the well known Bejeweled written in C++ using SDL2"
 arch=('x86_64')
 url="https://github.com/JoseTomasTocino/freegemas"
 license=('GPL-2.0-or-later')
-depends=('jsoncpp' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
+depends=(
+  'jsoncpp'
+  'sdl2_image'
+  'sdl2_mixer'
+  'sdl2_ttf'
+)
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop")
@@ -18,6 +23,7 @@ build(){
   cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -Wno-dev
   cmake --build build
 }

@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!freegemas.desktop
 !.nvchecker.toml
+!LICENSE
+!freegemas.desktop
