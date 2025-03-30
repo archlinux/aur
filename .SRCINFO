@@ -1,7 +1,7 @@
 pkgbase = smoothpaper
 	pkgdesc = A wallpaper changer daemon for X11 Window Mangers with smooth transitions between wallpapers.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matjam/smoothpaper
 	arch = x86_64
 	makedepends = cmake
