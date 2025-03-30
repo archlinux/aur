@@ -1,6 +1,6 @@
 pkgbase = tty0tty-dkms-git
 	pkgdesc = tty0tty Virtual Serial Cable (DKMS and userspace variant).
-	pkgver = 1.2+66.r82.20241006.9452a60
+	pkgver = 1.2+67.r83.20250225.c74e50e
 	pkgrel = 1
 	url = https://github.com/freemed/tty0tty
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = tty0tty-dkms-git
 	depends = dkms
 	optdepends = glibc: For '/usr/bin/tty0tty'.
 	optdepends = python-pyserial: For example script '/usr/share/doc/tty0tty/examples/tnt1_echo_tnt0.py'.
-	provides = tty0tty=1.2+66.r82.20241006.9452a60
-	provides = tty0tty-pts=1.2+66.r82.20241006.9452a60
-	provides = tty0tty-doc=1.2+66.r82.20241006.9452a60
+	provides = tty0tty=1.2+67.r83.20250225.c74e50e
+	provides = tty0tty-pts=1.2+67.r83.20250225.c74e50e
+	provides = tty0tty-doc=1.2+67.r83.20250225.c74e50e
 	conflicts = tty0tty
 	conflicts = tty0tty-pts
 	source = tty0tty::git+https://github.com/freemed/tty0tty.git
