@@ -2,7 +2,7 @@
 
 pkgname="code-translucent"
 pkgver=1.98.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source build of Visual Studio Code (vscode) editor with translucent window, official marketplace, unblocked proprietary features and wayland support!"
 
 arch=(
@@ -126,7 +126,7 @@ build() {
 
 	npm install --cpu="${_vscode_arch}"
 
-	gulp --max_old_space_size=8192 vscode-linux-"${_vscode_arch}"-min
+	gulp --max-old-space-size=8192 vscode-linux-"${_vscode_arch}"-min
 
 }
 
