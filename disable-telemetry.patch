@@ -1,0 +1,85 @@
+From 231fe439b6fbacfb0612aa6278d96863a654aa3e Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 30 Mar 2025 13:36:55 +0200
+Subject: [PATCH] Always disable telemetry
+
+For packaging moz-phab as a system package, telemetry would require a
+dedicated SDK package (gleam-sdk) just for telemetry. That package may
+not be available on the platform.
+
+As a workaround, disable telemetry altogether.
+
+Note that disabling telemetry does not keep you anonymous, as this is
+a code contribution review tool, and your full name is already known to
+Mozilla.
+---
+ mozphab/telemetry.py | 28 ++--------------------------
+ tests/conftest.py    |  6 ------
+ 2 files changed, 2 insertions(+), 32 deletions(-)
+
+diff --git a/mozphab/telemetry.py b/mozphab/telemetry.py
+index bd6ae46..c5f2913 100644
+--- a/mozphab/telemetry.py
++++ b/mozphab/telemetry.py
+@@ -126,32 +126,8 @@ def update_user_data():
+     if not is_employee_changed:
+         return
+ 
+-    # Switch on Telemetry for employee or ask to opt-in for non-employee
+-    if user_data.is_employee:
+-        logger.warning(
+-            "Enabled collecting MozPhab usage data.\n"
+-            "See https://moz-conduit.readthedocs.io/en/latest"
+-            "/mozphab-data-collection.html"
+-        )
+-        config.telemetry_enabled = True
+-    else:
+-        # user is new or no longer employee
+-        opt_in = (
+-            prompt(
+-                "Would you like to allow MozPhab to collect usage data?",
+-                ["Yes", "No"],
+-            )
+-            == "Yes"
+-        )
+-        if opt_in:
+-            config.telemetry_enabled = True
+-        else:
+-            logger.info(
+-                "MozPhab usage data collection disabled.\n"
+-                "See https://moz-conduit.readthedocs.io/en/latest"
+-                "/mozphab-data-collection.html"
+-            )
+-            config.telemetry_enabled = False
++    # Always disable telemetry
++    config.telemetry_enabled = False
+     config.write()
+ 
+ 
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 12adeaf..6f7845a 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -15,7 +15,6 @@ from pathlib import Path
+ from unittest import mock
+ 
+ import pytest
+-from glean import testing
+ 
+ # NOTE: Set the environment variables before importing any of mozphab modules.
+ os.environ["MOZPHAB_NO_USER_CONFIG"] = "1"
+@@ -390,11 +389,6 @@ def user_data(m_file):
+     return user.UserData()
+ 
+ 
+-@pytest.fixture(name="reset_glean", scope="function", autouse=True)
+-def fixture_reset_glean():
+-    testing.reset_glean(application_id="mozphab", application_version="0.1.86")
+-
+-
+ @pytest.fixture(autouse=True)
+ def mock_load_api_token(monkeypatch, request):
+     if "no_mock_token" not in request.keywords:
+-- 
+2.49.0
+

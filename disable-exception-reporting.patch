@@ -1,0 +1,88 @@
+From 01c4bf4173d7df4b628743a93bbd68efa8e18b75 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 30 Mar 2025 15:31:21 +0200
+Subject: [PATCH] Disable exception reporting by default
+
+Exceptions might be packaging-related. So out of courtesy, do not report
+exceptions to the upstream project by default.
+---
+ README.md            | 4 ++--
+ mozphab/config.py    | 2 +-
+ mozphab/mozphab.py   | 3 ++-
+ tests/test_config.py | 4 ++--
+ 4 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/README.md b/README.md
+index 1d13f20..e7aaf6f 100644
+--- a/README.md
++++ b/README.md
+@@ -59,7 +59,7 @@ self_auto_update = False
+ get_pre_releases = False
+ 
+ [error_reporting]
+-report_to_sentry = True
++report_to_sentry = False
+ ```
+ 
+ - `ui.no_ansi` : Never use ANSI colours (default: auto-detected).
+@@ -107,7 +107,7 @@ report_to_sentry = True
+ - `get_pre_releases` : When `True` moz-phab auto-update will fetch pre-releases
+    if they are available, otherwise pre-releases will be ignored (default: `False`).
+ - `error_reporting.report_to_sentry` : When `True` moz-phab will submit exceptions
+-   to Sentry so moz-phab devs can see unreported errors.
++   to Sentry so moz-phab devs can see unreported errors (default: `False`).
+ 
+ ### Environment Variables
+ 
+diff --git a/mozphab/config.py b/mozphab/config.py
+index 23d2fd1..b6d865d 100644
+--- a/mozphab/config.py
++++ b/mozphab/config.py
+@@ -65,7 +65,7 @@ class Config(object):
+             get_pre_releases = False
+ 
+             [error_reporting]
+-            report_to_sentry = True
++            report_to_sentry = False
+ 
+             [telemetry]
+             enabled = False
+diff --git a/mozphab/mozphab.py b/mozphab/mozphab.py
+index 80290c0..7682192 100644
+--- a/mozphab/mozphab.py
++++ b/mozphab/mozphab.py
+@@ -162,7 +162,8 @@ def main(argv: List[str], *, is_development: bool):
+         else:
+             logger.error("%s: %s", e.__class__.__name__, e)
+             logger.error("Run moz-phab again with '--trace' to show debugging output")
+-        report_to_sentry(e)
++        if not is_development and config.report_to_sentry:
++            report_to_sentry(e)
+         sys.exit(1)
+ 
+ 
+diff --git a/tests/test_config.py b/tests/test_config.py
+index 46ce45f..316787e 100644
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -30,7 +30,7 @@ def test_defaults(config):
+     assert config.self_last_check == 0
+     assert config.self_auto_update is False
+     assert config.get_pre_releases is False
+-    assert config.report_to_sentry is True
++    assert config.report_to_sentry is False
+     assert config.telemetry_enabled is False
+ 
+ 
+@@ -74,7 +74,7 @@ def test_write(config):
+     assert new_config.self_last_check == 0
+     assert new_config.self_auto_update is False
+     assert new_config.get_pre_releases is False
+-    assert new_config.report_to_sentry is True
++    assert new_config.report_to_sentry is False
+     assert new_config.telemetry_enabled is True
+ 
+ 
+-- 
+2.49.0
+

@@ -1,0 +1,6 @@
+[moz-phab]
+source = "github"
+github = "mozilla-conduit/review"
+# Exclude tags from the 1.xy epoch that had no patch versions and later became 0.1.xy
+exclude_regex = "(1\\.)?\\d+"
+use_max_tag = true

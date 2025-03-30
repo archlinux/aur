@@ -1,0 +1,120 @@
+From 2414381490bda475c0ccd81aba7ab99e7905da32 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sun, 30 Mar 2025 16:32:47 +0200
+Subject: [PATCH] Disable self-updater
+
+Instead of auto-updating from PyPI, print a warning that the user
+download and install the latest version from the AUR.
+---
+ README.md                       |  5 +++--
+ mozphab/commands/self_update.py |  8 ++++----
+ mozphab/config.py               |  2 +-
+ mozphab/mozphab.py              | 14 ++++----------
+ tests/test_config.py            |  4 ++--
+ 5 files changed, 14 insertions(+), 19 deletions(-)
+
+diff --git a/README.md b/README.md
+index b73b706..1d13f20 100644
+--- a/README.md
++++ b/README.md
+@@ -55,7 +55,7 @@ create_commit = True
+ 
+ [updater]
+ self_last_check = 0
+-self_auto_update = True
++self_auto_update = False
+ get_pre_releases = False
+ 
+ [error_reporting]
+@@ -102,7 +102,8 @@ report_to_sentry = True
+    time an update check was performed for this script.  set to `-1` to disable
+    this check.
+ - `self_auto_update` : When `True` moz-phab will auto-update if a new version is
+-    available. If `False` moz-phab will only warn about the new version.
++    available. If `False` moz-phab will only warn about the new version (default:
++    `False`).
+ - `get_pre_releases` : When `True` moz-phab auto-update will fetch pre-releases
+    if they are available, otherwise pre-releases will be ignored (default: `False`).
+ - `error_reporting.report_to_sentry` : When `True` moz-phab will submit exceptions
+diff --git a/mozphab/commands/self_update.py b/mozphab/commands/self_update.py
+index 5cc00b4..beba493 100644
+--- a/mozphab/commands/self_update.py
++++ b/mozphab/commands/self_update.py
+@@ -29,10 +29,10 @@ def self_update(_):
+         log_windows_update_message()
+         return
+ 
+-    with wait_message(f"Upgrading to version {new_version}"):
+-        self_upgrade()
+-
+-    logger.info(f"Upgraded to version {new_version}")
++    logger.warning(
++        "To upgrade, download and install the latest version"
++        " from the Arch User Repository (AUR)."
++    )
+ 
+ 
+ def add_parser(parser):
+diff --git a/mozphab/config.py b/mozphab/config.py
+index 2ced78b..23d2fd1 100644
+--- a/mozphab/config.py
++++ b/mozphab/config.py
+@@ -61,7 +61,7 @@ class Config(object):
+ 
+             [updater]
+             self_last_check = 0
+-            self_auto_update = True
++            self_auto_update = False
+             get_pre_releases = False
+ 
+             [error_reporting]
+diff --git a/mozphab/mozphab.py b/mozphab/mozphab.py
+index 58f27cc..80290c0 100644
+--- a/mozphab/mozphab.py
++++ b/mozphab/mozphab.py
+@@ -104,16 +104,10 @@ def main(argv: List[str], *, is_development: bool):
+             if new_version and environment.IS_WINDOWS:
+                 log_windows_update_message()
+             elif new_version and config.self_auto_update:
+-                try:
+-                    with wait_message(f"Upgrading to version {new_version}"):
+-                        self_upgrade()
+-                    restart_mozphab()
+-                except Exception as e:
+-                    logger.warning(
+-                        f"Failed to upgrade: {e};"
+-                        " continuing with current version..."
+-                        " Please report a bug if this behaviour persists."
+-                    )
++                logger.warning(
++                    "To upgrade, download and install the latest version"
++                    " from the Arch User Repository (AUR)."
++                )
+ 
+         repo = None
+         if args.needs_repo:
+diff --git a/tests/test_config.py b/tests/test_config.py
+index e3106d2..46ce45f 100644
+--- a/tests/test_config.py
++++ b/tests/test_config.py
+@@ -28,7 +28,7 @@ def test_defaults(config):
+     assert config.always_full_stack is False
+     assert config.create_commit is True
+     assert config.self_last_check == 0
+-    assert config.self_auto_update is True
++    assert config.self_auto_update is False
+     assert config.get_pre_releases is False
+     assert config.report_to_sentry is True
+     assert config.telemetry_enabled is False
+@@ -72,7 +72,7 @@ def test_write(config):
+     assert new_config.create_topic is True
+     assert new_config.always_full_stack is True
+     assert new_config.self_last_check == 0
+-    assert new_config.self_auto_update is True
++    assert new_config.self_auto_update is False
+     assert new_config.get_pre_releases is False
+     assert new_config.report_to_sentry is True
+     assert new_config.telemetry_enabled is True
+-- 
+2.49.0
+
