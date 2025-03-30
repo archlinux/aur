@@ -6,8 +6,8 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=freefilesync
-pkgver=14.2
-pkgrel=3
+pkgver=14.3
+pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -22,7 +22,7 @@ source=(
 )
 noextract=("FreeFileSync_${pkgver}_Source.zip.1")
 sha256sums=('SKIP'
-            'c7022fa1e5aefe18131f0020b37f6795f6f75012bf4c8df2a06fbd4519b0fb6a'
+            '17ca08a06f92687c214fb680fa2629f7f796c867fa0a20c81a6e98da9c74c252'
             '225dd46b25b5d720c4e845f75422f36b7cf1a162f238ba311cfa5550729e3635'
             'e4cf88bfa73949ef56cafbc1486d5b894ce803a4bdfd6238e9051e12c86a7f6d'
             'f150d549facc261397985cbdc18272055fa7e3b7e81a1ac582e3182af69674de')
@@ -30,16 +30,18 @@ sha256sums=('SKIP'
 prepare() {
     bsdunzip FreeFileSync/Build/Resources/Icons.zip {FreeFileSync,RealTimeSync}.png
     sed -i 's|-2|-3|' FreeFileSync/Source/{Makefile,RealTimeSync/Makefile}
+	sed -i 's|#undef|//#undef|' zen/{socket.h,sys_error.h}
     sed -i 's|#error|//#error|' FreeFileSync/Source/{application.cpp,RealTimeSync/application.cpp}
     sed -i 's|::g_object_ref|g_object_ref|' FreeFileSync/Source/base/icon_loader.cpp
     sed -i '/animalImg/s/^/\/\//' FreeFileSync/Source/ui/small_dlgs.cpp
     patch -p1 < gui.patch
     dlg='FreeFileSync/Source/ui/main_dlg.cpp'
-    sed -i '1261cwxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();' $dlg
-    sed -i '1262cfor (size_t i = 0; i < paneArray.size(); ++i) paneCaptions.emplace_back(&paneArray[i], paneArray[i].caption);' $dlg
-    sed -i '3128cconst wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();' $dlg
-    sed -i '3129cfor (size_t i = 0; i < paneArray.size(); ++i){ wxAuiPaneInfo& paneInfo = paneArray[i];' $dlg
-    sed -i '3147c}' $dlg 
+    sed -i '1282cwxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();' $dlg
+    sed -i '1285cfor (size_t i = 0; i < paneArray.size(); ++i)' $dlg
+	sed -i '1286c  paneCaptions.emplace_back(&paneArray[i], paneArray[i].caption);' $dlg
+    sed -i '3152cconst wxAuiPaneInfoArray& paneArray = auiMgr_.GetAllPanes();' $dlg
+    sed -i '3153cfor (size_t i = 0; i < paneArray.size(); ++i){ wxAuiPaneInfo& paneInfo = paneArray[i];' $dlg
+    sed -i '3171c}' $dlg
     sed -i 's|wxApp::||' wx+/darkmode.h
     sed -i '13i enum class Appearance{System,Light,Dark};' wx+/darkmode.h
     sed -i 's|const wxReadOnly|wx|' wx+/grid.cpp wx+/grid.h \
