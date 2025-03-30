@@ -1,6 +1,6 @@
 pkgbase = protonup-qt
 	pkgdesc = Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://davidotek.github.io/protonup-qt
 	arch = any
@@ -34,9 +34,9 @@ pkgbase = protonup-qt
 	optdepends = xorg-xwininfo: required for SteamTinkerLaunch
 	optdepends = xxd: required for SteamTinkerLaunch
 	optdepends = yad: required for SteamTinkerLaunch
-	source = protonup-qt-2.11.1.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v2.11.1.tar.gz
+	source = protonup-qt-2.12.0.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v2.12.0.tar.gz
 	source = net.davidotek.pupgui2.sh
-	sha256sums = c0ef535fd7aafbca63be005a1c04828699ccd4c26c0943e32aaea2d5324395fc
+	sha256sums = a2d13b0ad9ad7092e45b170bd69b2dcdc0b9dd19b1fc3d63fd5817df6232efef
 	sha256sums = 732fd88026a801d64ffb85c98c1bc53536100524cced87ab86a112d83de07c1f
 
 pkgname = protonup-qt
