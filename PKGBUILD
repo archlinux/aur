@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 _pkgname=MoarVM
-pkgver=2024.12
+pkgver=2025.03
 pkgrel=1
 pkgdesc="A VM with adaptive optimization and JIT compilation, built for Rakudo"
 arch=(i686 x86_64 aarch64)
@@ -12,16 +12,16 @@ depends=('zstd')
 makedepends=('perl>=5.8')
 options=('!makeflags')
 source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz")
-b2sums=('77dea3d6d1f7c4bea58ad25ec1c6e9c3e6bd29309f058054098252c8cc9f0930f8857e200aea8438d10a6045c67b77ae2d6f1ae2e33e128b1d59f325c207f648')
+b2sums=('db5064f5feb4efa8ab5e5e1bbde05a84c3129c5cbeac17f22c3171cf5e0411e7398f6391b45eb00cc0851f30d5f4891df6852a4bfcd86ab1889a251e4f92b0a8')
 
 build() {
-	cd $_pkgname-$pkgver
+	cd $_pkgname-${pkgver}0
 
 	perl Configure.pl --prefix=/usr
 	make
 }
 package() {
-	cd $_pkgname-$pkgver
+	cd $_pkgname-${pkgver}0
 	make DESTDIR="$pkgdir/" install
 }
 
