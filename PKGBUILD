@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Chris Hölzer <jamarleydev at proton dot me>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Pascal Ernster <aur at hardfalcon dot net>
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
