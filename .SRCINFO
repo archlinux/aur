@@ -1,4 +1,4 @@
-pkgbase = xen-guest-agent-git
+pkgbase = xen-guest-agent
 	pkgdesc = Xen guest agent tools written in Rust
 	pkgver = 0.4.0.55.g5c274e6
 	pkgrel = 1
