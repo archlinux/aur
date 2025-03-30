@@ -2,7 +2,7 @@
 # Contributor: moparisthebest <admin dot archlinux AT moparisthebest dot com>
 
 pkgname=rusty-keys-nosystemd-git
-pkgver=0.0.3.r90.20230905.270cdca
+pkgver=0.0.3.r92.20250219.1eb82d2
 pkgrel=1
 pkgdesc="uinput level keyboard mapper for linux"
 url="https://code.moparisthebest.com/moparisthebest/rusty-keys"
