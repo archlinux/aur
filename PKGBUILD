@@ -11,8 +11,8 @@ license=('MIT')
 provides=('veil')
 conflicts=('veil')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/try-veil/veil/releases/download/v0.0.0-release-test/veil_0.0.0-release-test_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9429306bfb236e745dd8205727900a12ff13415a2a11e65ba483f0ee13c11517')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/try-veil/veil/releases/download/v0.0.0-gorelease-test/veil_0.0.0-gorelease-test_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('36cce7aa1c1cbc70b54fcba0d46d7b0565e1ca41327478308f59f72db0cdc562')
 
 package() {
   # bin
