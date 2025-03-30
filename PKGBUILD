@@ -3,7 +3,7 @@
 
 pkgname=improve-imgsli
 pkgver=2.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
 url="https://github.com/Loganavter/$pkgname"
