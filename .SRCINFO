@@ -1,6 +1,6 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
-	pkgver = 4.3.1+77.r13562.20250327.1324da453
+	pkgver = 4.3.1+80.r13565.20250330.5ce047a13
 	pkgrel = 1
 	epoch = 0
 	url = https://www.claws-mail.org/
@@ -24,6 +24,7 @@ pkgbase = claws-mail-protectedheaders-git
 	makedepends = lynx
 	makedepends = texlive-core
 	makedepends = texlive-formatsextra
+	makedepends = ccache
 	makedepends = webkit2gtk
 	depends = cairo
 	depends = compface
@@ -82,13 +83,13 @@ pkgbase = claws-mail-protectedheaders-git
 	optdepends = libxml2: for gdata plugin.
 	optdepends = libsoup: for gdata and fancy html viewer plugins.
 	optdepends = webkit2gtk: for fancy webkit html viewer plugin
-	provides = claws=4.3.1+77.r13562.20250327.1324da453
-	provides = claws-mail=4.3.1+77.r13562.20250327.1324da453
-	provides = claws-mail-gtk3=4.3.1+77.r13562.20250327.1324da453
-	provides = claws-mail-title-superset=4.3.1+77.r13562.20250327.1324da453
-	provides = claws-mail-protectedheaders=4.3.1+77.r13562.20250327.1324da453
+	provides = claws=4.3.1+80.r13565.20250330.5ce047a13
+	provides = claws-mail=4.3.1+80.r13565.20250330.5ce047a13
+	provides = claws-mail-gtk3=4.3.1+80.r13565.20250330.5ce047a13
+	provides = claws-mail-title-superset=4.3.1+80.r13565.20250330.5ce047a13
+	provides = claws-mail-protectedheaders=4.3.1+80.r13565.20250330.5ce047a13
 	provides = claws-mail-bash-completion
-	provides = claws-mail-extra-plugins=4.3.1+77.r13562.20250327.1324da453
+	provides = claws-mail-extra-plugins=4.3.1+80.r13565.20250330.5ce047a13
 	conflicts = claws
 	conflicts = claws-mail
 	conflicts = claws-mail-protectedheaders
@@ -97,6 +98,7 @@ pkgbase = claws-mail-protectedheaders-git
 	conflicts = sylpheed-claws
 	replaces = claws-mail-extra-plugins
 	replaces = sylpheed-claws
+	options = ccache
 	source = claws-mail::git://git.claws-mail.org/claws.git#branch=master
 	source = 0000_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset
 	source = read_enc_subject.tar.gz::http://web.archive.org/web/20240721164805/https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2350
