@@ -1,0 +1,15 @@
+pkgbase = ccode
+	pkgdesc = CLI tool to consolidate code files into a single output
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/x45iq/ccode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = ccode-1.0.0.tar.gz::https://github.com/x45iq/ccode/archive/v1.0.0.tar.gz
+	sha256sums = f3cc23c84c7358ad0a03ecb3d64e3889114788d55d2523bc9f5fb81f38526560
+
+pkgname = ccode
