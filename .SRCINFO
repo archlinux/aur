@@ -1,0 +1,17 @@
+pkgbase = yay-faster-cn
+	pkgdesc = Use github mirror to speed yay up in China.
+	pkgver = 0.11
+	pkgrel = 2
+	url = https://github.com/iamzhz/yay-faster-cn
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = git
+	depends = wget
+	depends = yay
+	source = https://github.com/iamzhz/yay-faster-cn/releases/download/v0.11/yay_faster_cn_v0.11.tar.gz
+	sha256sums = 1cae0f846fbf2ddbb22efcec735cf0dc01e04620c873a29338bb8e3b2948bb3b
+
+pkgname = yay-faster-cn
