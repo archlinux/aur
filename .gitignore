@@ -1,5 +1,6 @@
 /mod_tile
 /pkg
 /src
+*.patch
 *.tar.gz
 *.zst
