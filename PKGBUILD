@@ -6,7 +6,7 @@
 _pkgname=grub4dos-efi
 pkgname="${_pkgname}-git"
 pkgver=r765.20241216.c0655e7
-pkgrel=2
+pkgrel=3
 pkgdesc="GRUB4DOS EFI binaries."
 arch=(
   'i386'
@@ -52,7 +52,7 @@ source=(
 sha256sums=(
   # 'SKIP'                                                              # Upstream source, default branch
   'SKIP'                                                              # Upstream source, efi branch
-  '0fe8292c02e28ee181c43a694d156ccc6a16e34962d774dd745350a77eb42f09'  # preset_menu-efi.fixsearchpath.diff
+  '12543085edbcc7467a0e981e42040ee08d1026206cd4a7f8861b00c005bcef11'  # preset_menu-efi.fixsearchpath.diff
   'e79008c08505b8db515bc461e9c0e5ae65889f4ec608708f6648ad9605884eea'  # menu.list-efi.customisations.diff
   '2b0c54aa048efbe2dabdb4d3503788a5002a6d62252b504871833b4b470a74e6'  # "79_grub4dos"
   '457c17d8660aadeb7c6ef844319fa24ae77183b428c9ce5d438423ba75728052'  # menu_arch.lst
@@ -60,6 +60,7 @@ sha256sums=(
 
 
 prepare() {
+
   cd "${srcdir}/${_pkgname}-efi"
   local _efipatch
   for _efipatch in "${srcdir}/preset_menu-efi.fixsearchpath.diff" "${srcdir}/menu.list-efi.customisations.diff"; do
