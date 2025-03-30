@@ -1,6 +1,6 @@
 pkgbase = scopebuddy-git
 	pkgdesc = gamescope helper script
-	pkgver = 1.0.0.r1.g7207629
+	pkgver = 1.1.0.r0.g170e154
 	pkgrel = 1
 	url = https://github.com/HikariKnight/ScopeBuddy
 	arch = any
@@ -13,6 +13,9 @@ pkgbase = scopebuddy-git
 	depends = coreutils
 	optdepends = steam: Steam integration
 	optdepends = gamemode: gamemode integration
+	optdepends = plasma-desktop: Automatic display detection
+	optdepends = libkscreen: Automatic display detection
+	optdepends = jq: Automatic display detection
 	provides = scopebuddy
 	conflicts = scopebuddy
 	source = scopebuddy::git+https://github.com/HikariKnight/ScopeBuddy
