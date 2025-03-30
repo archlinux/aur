@@ -5,7 +5,7 @@ _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron32'
 pkgver=2.104.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
 url='https://www.ledger.com/ledger-live'
@@ -34,6 +34,8 @@ build() {
 
   export UV_USE_IO_URING=0
   export GIT_REVISION="${pkgver}"
+  export COREPACK_INTEGRITY_KEYS=0
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
   corepack enable pnpm
   pnpm i --filter="${_appname}..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld:deps
