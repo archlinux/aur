@@ -1,6 +1,6 @@
 pkgbase = cloud-nuke-bin
 	pkgdesc = AWS cloud account cleaning tool
-	pkgver = 0.39.0
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/gruntwork-io/cloud-nuke
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cloud-nuke-bin
 	license = MIT
 	provides = cloud-nuke
 	conflicts = cloud-nuke
-	source_x86_64 = cloud-nuke-0.39.0-x86_64::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.39.0/cloud-nuke_linux_amd64
-	sha512sums_x86_64 = ee42d8a2ed9722c53803b5051b9f8dd446917e302436b84ba4af8cedb00d2bee50eae538913adbf943f5c76df934d3d267fe4cb364ac2cad937ddbdf0b518a4b
-	source_i386 = cloud-nuke-0.39.0-i386::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.39.0/cloud-nuke_linux_386
-	sha512sums_i386 = 970af7ef4e06562a4bd4f4c4a6a6861636380358a930b6bb4a4106ed44dec145370d9bf5fc3f30cc3e3276e474f80fd087f434cb33d0daef5de6a6c9a36d9eb0
-	source_aarch64 = cloud-nuke-0.39.0-aarch64::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.39.0/cloud-nuke_linux_arm64
-	sha512sums_aarch64 = 52e13781213a23616adbe9e8177060eca291d434677a6d162b72c56d5351e631e571ce1d473667c0ce5dab353eb576f86c1ed54b4fc7a19be841dad4fa37a79c
+	source_x86_64 = cloud-nuke-0.40.0-x86_64::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.40.0/cloud-nuke_linux_amd64
+	sha512sums_x86_64 = 82f29339abeb42c0695f78f28d9d5f748c3c13daeed5b143aff7a122b728600b0a00b4bbb11239a7f08f2ae7f5f6b2bec531920af42fb5faf97b454608347d33
+	source_i386 = cloud-nuke-0.40.0-i386::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.40.0/cloud-nuke_linux_386
+	sha512sums_i386 = cee69730d23ddabc51d576abfceede1a43de63a51904da5e3eb6bbc6b79b5e3c09b0d88645bbc6f1769a04424f7cabe1d56a9d990e74d579ec230ae0e4f55721
+	source_aarch64 = cloud-nuke-0.40.0-aarch64::https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.40.0/cloud-nuke_linux_arm64
+	sha512sums_aarch64 = 9534bc115a42c2ae15c951b7383a9e0611ca81a0dfbe80e354891f88279827c07858506f01d662e8b7a4d77b26ae92032e2653be33ec999cc1a15ce0d871dad0
 
 pkgname = cloud-nuke-bin
