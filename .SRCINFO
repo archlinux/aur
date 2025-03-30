@@ -1,6 +1,6 @@
 pkgbase = lasso-launcher
 	pkgdesc = LASSO Actively Simplifies System Operations. LASSO is a hackable desktop launcher, combined with a dashboard and system bar. It features a simple terminal based interface.
-	pkgver = git
+	pkgver = v25.3
 	pkgrel = 1
 	url = https://github.com/gro-david/lasso
 	arch = any
