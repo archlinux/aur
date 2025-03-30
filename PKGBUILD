@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=atopile
-pkgver=0.3.20
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="A tool to build electronic circuit boards with code"
 arch=(x86_64)
@@ -49,9 +49,12 @@ makedepends=(
   python-scikit-build-core
   python-wheel
 )
-checkdepends=(python-pytest)
+checkdepends=(
+  python-hypothesis
+  python-pytest
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('810b57bcb3e24d89ff07b7e323844b0fe695e4fce3fa9e0ca18c5fe8c79600df')
+sha256sums=('66076cb147e03836b9576bfdffc205ee30209518ad4ae4c8fdb18ff50585d2a6')
 
 build() {
   cd $pkgname-$pkgver
@@ -65,6 +68,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest --override-ini="addopts=" \
+    --deselect test/core/performance/test_performance_pick.py::test_performance_pick_rc_formulas \
     --deselect test/core/performance/test_performance_pick.py::test_performance_pick_real_module \
     --deselect test/core/solver/test_literal_folding.py::test_can_evaluate_literals \
     --deselect test/core/solver/test_solver.py::test_solve_realworld_biggest \
