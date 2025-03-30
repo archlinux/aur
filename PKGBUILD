@@ -2,7 +2,7 @@
 
 pkgname=orca-slicer-git
 pkgver=2.3.1.r24828.933b282
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -15,13 +15,12 @@ options=('!debug' '!emptydirs')
 provides=("orca-slicer")
 source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git"
         "https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch"
-        "cmake=min-version.patch"
+        "cmake-min-version.patch"
         "wxWidgets-cmake-min-version.patch")
 b2sums=('SKIP'
         'cc7791841533e07787a4921b688fdd885782a67320936d445ad04102a68e8e044b5bf52a58d987d158ae522ae4f02a56a3525ccfd1831ef6a3b6459be14bd408'
         '562dcd07530faef0d9fdddf1e009075f67105c8239e4b1402cd890f7a89be8b11671dd6ecc7b55a155f2d05247070bb0b8ff84f2170ce2454ab818018be80e48'
         '1459ce126dd80a891006d2c40a001e75dc146ac9eb6ad8e975a3e4672ebb914baabecd8a4048742fab03e2820242f614449dd23a8e721bd5c945c8765e986a5a')
-
 
 pkgver() {
   cd $pkgname
@@ -43,10 +42,7 @@ prepare() {
   # Set cmake_minimum_required to 3.5 for all dependencies
   cp wxWidgets-cmake-min-version.patch $pkgname/deps/wxWidgets/wxWidgets-cmake-min-version.patch
   cd $pkgname
-  git apply ../cmake=min-version.patch
-  
-
-  
+  git apply ../cmake-min-version.patch
 }
 
 build() {
