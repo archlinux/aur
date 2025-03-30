@@ -1,7 +1,7 @@
 pkgbase = ruby-bake-modernize
 	pkgdesc = Automatically modernize parts of your project/gem
 	pkgver = 0.18.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ioquatix/bake-modernize
 	arch = any
 	license = MIT
