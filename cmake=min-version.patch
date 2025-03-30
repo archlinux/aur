@@ -1,0 +1,44 @@
+diff --git a/deps/CMakeLists.txt b/deps/CMakeLists.txt
+index b24ee20e2..e59edc7b6 100644
+--- a/deps/CMakeLists.txt
++++ b/deps/CMakeLists.txt
+@@ -128,6 +128,7 @@ if (NOT IS_CROSS_COMPILE OR NOT APPLE)
+         DOWNLOAD_DIR        ${DEP_DOWNLOAD_DIR}/${projectname}
+         ${_gen}
+         CMAKE_ARGS
++            -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+             -DCMAKE_INSTALL_PREFIX:STRING=${DESTDIR}
+             -DCMAKE_MODULE_PATH:STRING=${PROJECT_SOURCE_DIR}/../cmake/modules
+             -DCMAKE_PREFIX_PATH:STRING=${DESTDIR}
+@@ -157,6 +158,7 @@ elseif(FLATPAK)
+         DOWNLOAD_DIR        ${DEP_DOWNLOAD_DIR}/${projectname}
+         ${_gen}
+         CMAKE_ARGS
++            -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+             -DCMAKE_INSTALL_PREFIX:STRING=${DESTDIR}
+             -DCMAKE_MODULE_PATH:STRING=${PROJECT_SOURCE_DIR}/../cmake/modules
+             -DCMAKE_PREFIX_PATH:STRING=${DESTDIR}
+@@ -185,6 +187,7 @@ else()
+         DOWNLOAD_DIR        ${DEP_DOWNLOAD_DIR}/${projectname}
+         ${_gen}
+         CMAKE_ARGS
++            -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+             -DCMAKE_INSTALL_PREFIX:STRING=${DESTDIR}
+             -DCMAKE_PREFIX_PATH:STRING=${DESTDIR}
+             -DBUILD_SHARED_LIBS:BOOL=OFF
+diff --git a/deps/wxWidgets/wxWidgets.cmake b/deps/wxWidgets/wxWidgets.cmake
+index 1097e6cfc..9cf27a790 100644
+--- a/deps/wxWidgets/wxWidgets.cmake
++++ b/deps/wxWidgets/wxWidgets.cmake
+@@ -25,9 +25,11 @@ endif ()
+ orcaslicer_add_cmake_project(
+     wxWidgets
+     GIT_REPOSITORY "https://github.com/SoftFever/Orca-deps-wxWidgets"
++    PATCH_COMMAND git apply ${CMAKE_CURRENT_LIST_DIR}/wxWidgets-cmake-min-version.patch
+     GIT_SHALLOW ON
+     DEPENDS ${PNG_PKG} ${ZLIB_PKG} ${EXPAT_PKG} ${TIFF_PKG} ${JPEG_PKG}
+     CMAKE_ARGS
++        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+         -DwxBUILD_PRECOMP=ON
+         ${_wx_toolkit}
+         "-DCMAKE_DEBUG_POSTFIX:STRING="

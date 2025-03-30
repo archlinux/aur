@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4063020..d498b78 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,7 +7,7 @@
+ # Licence:     wxWindows licence
+ #############################################################################
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if(NOT CMAKE_CONFIGURATION_TYPES)
+     get_property(HAVE_MULTI_CONFIG_GENERATOR GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+diff --git a/build/cmake/modules/cotire.cmake b/build/cmake/modules/cotire.cmake
+index bb69643..e91f7e4 100644
+--- a/build/cmake/modules/cotire.cmake
++++ b/build/cmake/modules/cotire.cmake
+@@ -37,7 +37,7 @@ set(__COTIRE_INCLUDED TRUE)
+ if (NOT CMAKE_SCRIPT_MODE_FILE)
+ 	cmake_policy(PUSH)
+ endif()
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ if (NOT CMAKE_SCRIPT_MODE_FILE)
+ 	cmake_policy(POP)
+ endif()
+diff --git a/build/cmake/modules/cotire_test/CMakeLists.txt b/build/cmake/modules/cotire_test/CMakeLists.txt
+index dd14262..6d865bc 100644
+--- a/build/cmake/modules/cotire_test/CMakeLists.txt
++++ b/build/cmake/modules/cotire_test/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # cotire example project
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if (POLICY CMP0058)
+ 	# Ninja requires custom command byproducts to be explicit
