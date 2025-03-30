@@ -4,9 +4,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-canary-bin
-pkgver=2.1.0.111
+pkgver=2.1.0.112
 pkgrel=1
-_date=2025-03-15
+_date=2025-03-26
 _branch=canary
 pkgdesc="A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers"
 url="http://duplicati.com"
@@ -41,8 +41,8 @@ sha256sums=('fbc76396405c645a3b9b7f00973540d4824f0cf634fa8369c6dfe2dd711cb38c'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
             '99591e96c340b49b47341315cb42f8ac12ca66dc4d22550e4acd37cce84e8b36')
-sha256sums_x86_64=('3009122955d660f7d1c90ae840911e457a2b88f3a6009b0a53ff834e10c88159')
-sha256sums_aarch64=('20a38039e07784d59c8de548cb8e8fd8d66b818c56b12a99deed3501d7c9dac7')
+sha256sums_x86_64=('f3e0f85b03726d45712804542d38a13bc3743afb7672f97484b221c354a0d2dc')
+sha256sums_aarch64=('93485e6bd92a6554e0ff66ed3fb065dc4fa0f7f9230eec70ed66b2714a5821f7')
 
 
 
