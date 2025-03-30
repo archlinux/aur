@@ -3,6 +3,7 @@ pkgname=lasso-launcher
 pkgrel=1
 pkgdesc="LASSO Actively Simplifies System Operations. LASSO is a hackable desktop launcher, combined with a dashboard and system bar. It features a simple terminal based interface."
 arch=('any')
+pkgver="git"
 url="https://github.com/gro-david/lasso"
 license=('MIT')
 depends=('python' 'python-psutil' 'fzf' 'alacritty')
