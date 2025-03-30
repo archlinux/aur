@@ -1,6 +1,6 @@
 pkgbase = ruffle-nightly
 	pkgdesc = A Flash Player emulator written in Rust. (Nightly version)
-	pkgver = 0.1.0+nightly+20250328
+	pkgver = 0.1.0+nightly+20250330
 	pkgrel = 1
 	url = https://ruffle.rs/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = ruffle-nightly
 	makedepends = rust-wasm
 	makedepends = rust-src
 	options = !lto
-	source = git+https://github.com/ruffle-rs/ruffle.git#tag=nightly-2025-03-28
+	source = git+https://github.com/ruffle-rs/ruffle.git#tag=nightly-2025-03-30
 	source = chromium-extension-ruffle.key
-	sha256sums = 70f7c09f5a6ae715a0f3c0303849aa9210d832980978cde0578e55269b36b979
+	sha256sums = ce1012435282831e439f44568d91f9f02443da2d7dae612149fee1511b02733f
 	sha256sums = dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46
 
 pkgname = ruffle-nightly
