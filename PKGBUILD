@@ -5,7 +5,7 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="Canonical's display server"
 url="https://github.com/canonical/mir"
@@ -14,26 +14,26 @@ license=('GPL-2.0-or-later OR GPL-3.0-or-later')
 depends=(boost-libs libglvnd lttng-ust libepoxy libxml++2.6 libinput yaml-cpp
          libxkbcommon  freetype2  hicolor-icon-theme libxcursor
 
-        egl-wayland wayland
+         egl-wayland wayland
 
-        glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm
+         glib2 glibc gcc-libs util-linux-libs libxcb libxkbcommon-x11 libdrm mesa libx11 gtest glibmm sh
 
-        # capnproto google-glog gflags liburcu nettle libevdev protobuf  python-gobject
-)
+         # capnproto google-glog gflags liburcu nettle libevdev protobuf  python-gobject
+         )
 makedepends=(glm doxygen graphviz cmake boost umockdev wlcs glmark2
 
              python-pillow python-dbus
              #gcovr lcov valgrind
              python-dbusmock
              glib2-devel
-)
+             )
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos')
 options=(!lto)
 source=("https://github.com/canonical/mir/releases/download/v${pkgver}/mir-${pkgver}.tar.xz")
-sha256sums=('3656b2f3751346d1afd70963b5de062179602cb7e6fd8d0ca3aba03ccae83a44')
+sha256sums=('ba57313abc6e4ef6819907d6968a79e033cd25aa8844de0074411808e72caba7')
 
 # glm not found but is listed here
 
