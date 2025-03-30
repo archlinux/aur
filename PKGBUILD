@@ -19,7 +19,6 @@ prepare() {
 }
 
 build() {
-    export GO_EXTLINK_ENABLED=1
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
