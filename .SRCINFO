@@ -1,6 +1,6 @@
 pkgbase = readarr-nightly-bin
 	pkgdesc = Ebook and audiobook collection manager for newsgroup and torrent users (nightly builds)
-	pkgver = 0.4.13.2760
+	pkgver = 0.4.14.2761
 	pkgrel = 1
 	url = https://readarr.com
 	install = readarr.install
@@ -40,11 +40,11 @@ pkgbase = readarr-nightly-bin
 	sha256sums = d8111e48780aa7417f43b3d6d1a447be2b3c574542f615fad2bf39b57b4ec871
 	sha256sums = fcfa28c1be4f67cfa641dc6076780ee07ab973e55bf676174315e417f73003ad
 	sha256sums = a4cfdf882ab62dea54d85dfae4a633cf21bce597a19c3287d90c024e3ff399ce
-	source_x86_64 = Readarr.nightly.0.4.13.2760.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.13.2760&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = 6d53d4379d34bd351d582cfa535a0fd2ea8b5be2c285b08a64c8676089d0e782
-	source_aarch64 = Readarr.nightly.0.4.13.2760.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.13.2760&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = a981b5b85ca7dba27a1254de788f0ecdfea45619ba11928a309fb850546196a4
-	source_armv7h = Readarr.nightly.0.4.13.2760.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.13.2760&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = 9e2be4db107fa84f688656760e4fcdfa61288233dbd2c81ffe7f647869194c61
+	source_x86_64 = Readarr.nightly.0.4.14.2761.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.14.2761&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 90a378efa04baa370d33680acd8d2f260c158a453392e7454d7d41ca56a2e8bf
+	source_aarch64 = Readarr.nightly.0.4.14.2761.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.14.2761&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 2f0aec4c790b09cfa2019b48665a0c5e02f8af7e23d7bcfcdd62a59c9dee323d
+	source_armv7h = Readarr.nightly.0.4.14.2761.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.4.14.2761&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = c9e5ef27191f333e3a14200c260d1807029521889850c034636ea2d5ed393b14
 
 pkgname = readarr-nightly-bin
