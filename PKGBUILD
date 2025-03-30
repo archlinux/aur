@@ -2,7 +2,7 @@
 
 pkgname=en-croissant
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
 url='https://github.com/franciscoBSalgueiro/en-croissant'
@@ -14,6 +14,11 @@ depends=(
   'gdk-pixbuf2'
   'glib2'
   'glibc'
+
+  # https://aur.archlinux.org/packages/en-croissant#comment-1017641
+  # https://github.com/tauri-apps/tauri/issues/4642#issuecomment-1643229562
+  'gst-plugins-good'
+
   'gtk3'
   'hicolor-icon-theme'
   'libsoup'
