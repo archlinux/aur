@@ -3,7 +3,7 @@
 pkgname=smoothpaper
 pkgdesc="A wallpaper changer daemon for X11 Window Mangers with smooth transitions between wallpapers."
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 url=https://github.com/matjam/smoothpaper
 arch=(x86_64)
 depends=('libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxext')
@@ -23,6 +23,7 @@ fi
 ./vcpkg/bootstrap-vcpkg.sh
 mkdir -p build
 cd build
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 cmake .. -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_MAKE_PROGRAM=make --preset=Release
 mkdir -p Release
 cd Release
