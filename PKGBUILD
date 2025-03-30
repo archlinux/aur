@@ -26,7 +26,7 @@ unset _pkgtype
 
 _pkgname="dolphin-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2503.r45.gde997d6
+pkgver=2503.r174.g9819d66
 pkgrel=1
 pkgdesc='A Gamecube and Wii emulator'
 url="https://github.com/dolphin-emu/dolphin"
@@ -83,20 +83,6 @@ if [[ "${_build_clang::1}" == "t" ]]; then
 else
   options+=(!lto)
 fi
-
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
 
 _source_main() {
   provides=(
@@ -207,7 +193,9 @@ prepare() {
   sed '/_ARCHIVE_/d' -i "$srcdir/$_pkgsrc/CMakeLists.txt"
 }
 
-build() {
+build() (
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
   export CC CXX CFLAGS CXXFLAGS LDFLAGS
   local _pkgver _cmake_options _ldflags _cflags _cxxflags
 
@@ -284,7 +272,7 @@ END
 
   cmake "${_cmake_options[@]}"
   cmake --build build
-}
+)
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
