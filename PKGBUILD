@@ -13,21 +13,13 @@ sha256sums=('SKIP')  # Пропущено, так как используешь 
 
 package() {
     cd "$srcdir/$pkgname"
-
-    # Установка основного скрипта
     install -Dm755 SinPass.py "$pkgdir/usr/bin/sinpass"
     
-    # Установка зависимостей
-    cd "$srcdir/$pkgname"
-    python3 -m pip install --root="$pkgdir" --prefix=/usr --no-warn-script-location .
-
-    # Установка дополнительных папок и файлов
-    install -Dm644 README.md "$pkgdir/usr/share/doc/sinpass/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sinpass/LICENSE"
-
-    # Установка модулей
+    # Установка модуля SinCity и других зависимостей
     cp -r SinCity "$pkgdir/usr/lib/python3.*/site-packages/sinpass/"
     cp -r module "$pkgdir/usr/lib/python3.*/site-packages/sinpass/"
 
-    # Если есть другие модули, можно добавить аналогичные команды
+    # Установка документации
+    install -Dm644 README.md "$pkgdir/usr/share/doc/sinpass/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sinpass/LICENSE"
 }
