@@ -1,14 +1,14 @@
 pkgbase = kma
 	pkgdesc = An ultra-fast mapping method designed to map raw reads directly against redundant databases using seed and extend.
-	pkgver = 1.4.17
-	pkgrel = 0
+	pkgver = 1.4.22
+	pkgrel = 1
 	url = https://bitbucket.org/genomicepidemiology/kma/src/master/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	depends = zlib
 	depends = glibc
-	source = kma::git+https://bitbucket.org/genomicepidemiology/kma.git#tag=1.4.17
-	sha256sums = efd33b858c7c70ab0091125f8ef1220c5203859e130765bba8a2d5c193c8d25a
+	source = kma::git+https://bitbucket.org/genomicepidemiology/kma.git#tag=1.4.22
+	sha256sums = 21afd4bbde7cc8a259c79aa6664eed7aa1da7203a816abbddf96b933cd7223e5
 
 pkgname = kma
