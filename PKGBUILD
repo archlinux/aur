@@ -3,13 +3,14 @@
 
 pkgname=slade
 pkgver=3.2.7
-pkgrel=9
+pkgrel=10
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 #slade -------------
-depends=('bzip2'
+depends=(
+  'bzip2'
   'fluidsynth'
   'freeimage'
   'ftgl'
@@ -30,7 +31,8 @@ sha256sums=('842aa562dc0aa39627866babe0ea3bb033aac3a2be2c2aaa71d8be3664f617ad'
             'b4f2e8ebac43c0fc351a3c94b6fad6862d8cc9cdb55f7a224747d1066a2e09f5')
 
 #wxwidgets -------------------
-makedepends+=(cmake
+makedepends+=(
+  cmake
   git
   glu
   gst-plugins-base
@@ -81,7 +83,8 @@ build() {
     -DwxUSE_LIBPNG=sys -DwxUSE_LIBTIFF=sys \
     -DwxUSE_LIBLZMA=sys -DwxUSE_NANOSVG=sys \
     -DwxUSE_LIBMSPACK=ON -DwxUSE_PRIVATE_FONTS=ON \
-    -DwxUSE_GTKPRINT=ON -DwxUSE_GLCANVAS_EGL=OFF
+    -DwxUSE_GTKPRINT=ON -DwxUSE_GLCANVAS_EGL=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.30
   cmake --build build-wxwidgets
 
   # Generate translation files (Makefile needed for this step)
