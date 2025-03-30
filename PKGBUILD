@@ -1,26 +1,39 @@
-# Maintainer: RubenKelevra <ruben+aur-python-uptime@vfn-nrw.de>
+# Maintainer: swweetp <swweetp@outlook.com>
 
 pkgname=python-uptime
-pkgver=3.0.2~nightly
+_name=${pkgname#python-}
+_name=${_name//-/_}
+pkgver=3.0.1
 pkgrel=1
-pkgdesc="This module provides a cross-platform way to retrieve system uptime and boot time."
-arch=('any')
+epoch=
+pkgdesc="Cross-platform way to retrieve system uptime and boot time"
+arch=('x86_64')
 url="https://github.com/Cairnarvon/uptime"
-license=('BSD')
-#depends=('')
-#source=("${url}/archive/${pkgver}.tar.gz")
-_commit='1ddfd06bb300c00e6dc4bd2a9ddf9bf1aa27b1bb'
-source=("${pkgname}-${pkgver}.zip::https://codeload.github.com/Cairnarvon/uptime/zip/${_commit}")
-sha256sums=('c034ac0dab8aef7332f4ee123f0be2e2e4f1afff9e08b5159ae115698a48a727')
-
+license=('BSD-2-Clause')
+groups=()
+depends=(python glibc)
+makedepends=(python-build python-installer python-wheel)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-$pkgver.tar.gz")
+noextract=()
+sha256sums=('7c300254775b807ce46e3dcbcda30aa3b9a204b9c57a7ac1e79ee6dbe3942973')
+validpgpkeys=()
 
 build() {
-	#cd "${srcdir}/uptime-${pkgver}"
-	cd "${srcdir}/uptime-${_commit}"
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	#cd "${srcdir}/uptime-${pkgver}"
-	cd "${srcdir}/uptime-${_commit}"
-	python setup.py install --root="$pkgdir"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 COPYING.txt -t $pkgdir/usr/share/licenses/$pkgname/
 }
