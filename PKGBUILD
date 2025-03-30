@@ -16,7 +16,7 @@ options=()
 function prepare() {
 	export RUSTUP_TOOLCHAIN=stable
 	export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src"
-	#meson subprojects download --sourcedir="${srcdir}/field-monitor"
+	cd field-monitor
 	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
