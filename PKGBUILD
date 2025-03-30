@@ -32,8 +32,8 @@ esac
 
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=4.3.1+81.r13566.20250330.75990d760
-pkgrel=2
+pkgver=4.3.1+84.r13569.20250330.d15484088
+pkgrel=1
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -225,26 +225,26 @@ prepare() {
   rm -fv po/Makefile.in.in
 
   for _patch in "${srcdir}/0000_encoding.diff"; do
-   msg2 "Applying patch '${_patch}' ..."
+   printf '%s\n' "   > Applying patch '${_patch}' ..."
    patch -N -p1 --follow-symlinks -i "${_patch}"
   done
 
   case "${_PROTECTEDHEADERSPATCHVARIANT}" in
    'nopicturesplease')
      if [ "${_TOOLKIT}" == "gtk2" ]; then
-       msg2 "Patching '0002_protectedheaders.patch' for GTK2 ..."
+       printf '%s\n' "   > Patching '0002_protectedheaders.patch' for GTK2 ..."
        patch -N --follow-symlinks -i "${srcdir}/protectedheaders.patch.for-gtk2.patch" -o "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch" "${srcdir}/0002_protectedheaders.patch"
      else
        cp "${srcdir}/0002_protectedheaders.patch" "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"
      fi
      for _patch in "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"; do
-       msg2 "Applying patch '${_patch}' ..."
+       printf '%s\n' "   > Applying patch '${_patch}' ..."
        patch -N -p1 --follow-symlinks -i "${_patch}"
      done
    ;;
    'filippo')
      for _patch in "${srcdir}"/{0001-PGP-MIME-fix-leak-of-MimeInfo-if-parsing-fails,0002-Substitute-Subject-header-when-decrypting,0003-TextView-move-header-extraction-to-textview_process_,0004-PGPMime-return-full-decrypted-message-instead-of-fir}.patch; do
-       msg2 "Applying patch '${_patch}' ..."
+       printf '%s\n' "   > Applying patch '${_patch}' ..."
        patch -N -p1 --follow-symlinks -i "${_patch}"
      done
    ;;
@@ -254,12 +254,12 @@ prepare() {
    ;;
   esac
 
-  msg2 "Generating git log ..."
+  printf '%s\n' "   > Generating git log ..."
   git log > "${srcdir}/git.log"
 
   # Generate ./configure
   # if [ ! -e configure ]; then
-  msg2 "Generating './configure' ..."
+  printf '%s\n' "   > Generating './configure' ..."
   NOCONFIGURE=1 ./autogen.sh
   # fi
 }
@@ -340,14 +340,14 @@ build() {
     --enable-demo-plugin
   )
 
-  msg2 "Running './configure <options>' ..."
+  printf '%s\n' "   > Running './configure <options>' ..."
   ./configure "${_configure_opts[@]}"
-  msg2 "Running 'make' ..."
+  printf '%s\n' "   > Running 'make' ..."
   make
 
   # build extra tools
   pushd tools 2>/dev/null
-  msg2 "Running 'make' in './tools/' ..."
+  printf '%s\n' "   > Running 'make' in './tools/' ..."
   make
   popd 2>/dev/null
 }
@@ -355,11 +355,11 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  msg2 "Runnung 'make install' ..."
+  printf '%s\n' "   > Runnung 'make install' ..."
   make DESTDIR="${pkgdir}" install
 
   # install extra tools
-  msg2 "Installing extra tools ..."
+  printf '%s\n' "   > Installing extra tools ..."
   # all executables and .conf files; only top directory
   pushd tools 2>/dev/null
   for _file in *.pl *.sh *.py tb2claws-mail update-po uudec uuooffice; do
@@ -374,7 +374,7 @@ package() {
   popd 2>/dev/null
 
   # Install more information
-  msg2 "Installing extra documentation and license ..."
+  printf '%s\n' "   > Installing extra documentation and license ..."
   for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES version; do
       install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
@@ -384,6 +384,6 @@ package() {
   install -D -v -m644 'COPYING' "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
   # Install bash completion
-  msg2 "Installing bash completion ..."
+  printf '%s\n' "   > Installing bash completion ..."
   install -D -v -m644 "tools/bash_completion/claws-mail" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 }
