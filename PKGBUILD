@@ -2,11 +2,18 @@
 # Contributor: buckket <felix+arch at buckket dot org>
 # Contributor: tippfehlr <tippfehlr at tippfehlr dot eu>
 
+# Need a special download agent for 'git-lfs', otherwise source code checkout fails with  
+# ```
+# Downloading .github/logo.afdesign (19 KB)
+# Error downloading object: .github/logo.afdesign (f6acf1c): Smudge error: Error downloading .github/logo.afdesign (f6acf1c9e8ed0165eeca4eb354ac370e773578b09fd9fb981d0cc2b8df47f652): error transferring "f6acf1c9e8ed0165eeca4eb354ac370e773578b09fd9fb981d0cc2b8df47f652": [0] remote missing object f6acf1c9e8ed0165eeca4eb354ac370e773578b09fd9fb981d0cc2b8df47f652
+# ```  
+# See also [this forum thread](https://bbs.archlinux.org/viewtopic.php?id=250669).
+
 VCSCLIENTS+=('git-lfs::git-lfs')
 
 _pkgname=autorestic
 pkgname="${_pkgname}-git"
-pkgver=1.8.3+10.r541.20241114.48fa20b
+pkgver=1.8.3+13.r544.20250322.bb29a98
 pkgrel=2
 pkgdesc='Config driven, easy backup cli for restic. Latest git checkout.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
