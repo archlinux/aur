@@ -3,7 +3,7 @@
 # Contributor: ston <2424284164@qq.com>
 pkgname=go-musicfox
 pkgver=4.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
@@ -21,8 +21,6 @@ sha256sums=('SKIP'
 build() {
     echo ${pkgsrcdir}
     cd ${pkgsrcdir}
-    export LASTFM_KEY=$(awk 'NR==1{print $3}' $HOME/.config/go-musicfox/lastfm_auth)
-    export LASTFM_SECRET=$(awk 'NR==2{print $3}' $HOME/.config/go-musicfox/lastfm_auth)
     export GOPROXY="https://goproxy.cn,direct"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
     export CGO_LDFLAGS="${LDFLAGS}"
@@ -41,7 +39,6 @@ package() {
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm755 "${srcdir}/musicfox" "${pkgdir}/usr/bin/musicfox"
     install -Dm644 "${srcdir}/go-musicfox-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 "${srcdir}/lastfm_auth" "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 "${srcdir}/go-musicfox-${pkgver}/configs/go-musicfox.ini" "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 "${srcdir}/go-musicfox-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
