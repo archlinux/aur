@@ -5,7 +5,7 @@ _date=20250128
 _hash=418c25c
 _tag=r1.2.1
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='3ds emulator - citra fork with tweaks/enhancements'
 url='https://github.com/mandarine3ds/mandarine'
@@ -41,7 +41,8 @@ build() {
 	-DUSE_SYSTEM_OPENSSL=ON \
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
-	-DUSE_SYSTEM_VULKAN_HEADERS=OFF
+	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake --build build
 }
 package() {
