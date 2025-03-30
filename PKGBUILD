@@ -2,18 +2,18 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=adbmanager
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="ADB manager for Android devices"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/adbmanager"
 license=('GPL-3.0-or-later')
-depends=('android-tools' 'gtk2' 'iproute2' 'nmap' 'sakura')
+depends=('android-tools' 'gtk2' 'iproute2' 'nmap' 'sakura' '7zip')
 makedepends=('lazarus')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.png")
-sha256sums=('ee128c90c8fdf431224b1983b8c7755675ea1a85e181717f60ea40ddb2b1acf1'
+sha256sums=('7fdce69de2a14a097dfcd4d9b1ee381bb73474f5fb92430124b6ba611af72bf1'
             'dfcea6314f6c08ae8efad0503f15669c20e10589d967718f5f44b313cf4ea922'
             '39cdcaa6d98f543486b6b5720b43007db0e191444f282934405e42ad77ecbbfa')
 
