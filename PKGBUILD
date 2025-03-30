@@ -4,7 +4,7 @@
 # Contributor: Přemysl Janouch <p.janouch@gmail.com>
 
 pkgname=hugo-git
-pkgver=0.145.0.r28.g6f14dbe24
+pkgver=0.145.0.r29.gc15ebce2f
 pkgrel=1
 pkgdesc="A fast and flexible static site generator"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://gohugo.io/"
 license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'go')
-optdepends=('dart-saas: required to transpile Sass to CSS'
+optdepends=('dart-sass: required to transpile Sass to CSS'
             'python-docutils: required for reStructuredText support')
 provides=("hugo=$pkgver")
 conflicts=('hugo')
