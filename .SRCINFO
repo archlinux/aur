@@ -1,16 +1,16 @@
 pkgbase = python-url-normalize
 	pkgdesc = URL normalization for Python
-	pkgver = 1.4.3
-	pkgrel = 17
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/niksite/url-normalize
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-socket
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry
-	depends = python-six
-	source = url-normalize-1.4.3.tar.gz::https://github.com/niksite/url-normalize/archive/1.4.3.tar.gz
-	sha512sums = 46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c556420b22a9ee2c08e70e5b408aab7f44cea5e15d1ebe3d717c0c77706bfb8
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-idna
+	source = url-normalize-2.0.1.tar.gz::https://github.com/niksite/url-normalize/archive/v2.0.1.tar.gz
+	sha512sums = 09c708d6de3e47329b2e416c0b73e8f44e91cb42d646d084add5d246c32c731b104d91a7288157da0bef7ba53356c702a749424db387db112591c11c4c43caf9
 
 pkgname = python-url-normalize

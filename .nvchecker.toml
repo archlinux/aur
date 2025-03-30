@@ -1,0 +1,5 @@
+[python-url-normalize]
+source = "github"
+github = "niksite/url-normalize"
+use_latest_release = "true"
+prefix = "v"
