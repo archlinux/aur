@@ -4,7 +4,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.1.6.r28.g908bd84c5
+pkgver=3.2.6.r230.g210b317d8
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
@@ -31,7 +31,6 @@ pkgver() {
 }
 
 build() {
-	#CFLAGS+=" -ffat-lto-objects"
 	export CFLAGS+=" -m32"
 	export CXXFLAGS+=" -m32"
 	export LDFLAGS+=" -m32"
