@@ -1,0 +1,17 @@
+pkgbase = pinors
+	pkgdesc = simple pretty minimal notification app for Unix (x11)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Pixel2175/pino-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = make
+	depends = gcc-libs
+	source = git+https://github.com/Pixel2175/walrs.git
+	sha256sums = 1d226a5b8a28bd1f6a865b3611c18ae630ec14fa91e265ff2ce782de03c85842
+
+pkgname = pinors
