@@ -1,6 +1,6 @@
 # Maintainer: Pixel
 
-pkgname=pinors
+pkgname=pino-rs
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="simple pretty minimal notification app for Unix (x11)"
