@@ -4,7 +4,7 @@
 pkgname=sameboy
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
 license=(MIT)
@@ -13,7 +13,7 @@ conflicts=(sameboy-git)
 # Upstream suggests using clang, but gcc is supported on Linux: https://github.com/LIJI32/SameBoy/issues/164#issuecomment-486464194
 makedepends=(rgbds make)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LIJI32/SameBoy/archive/v${pkgver}.tar.gz")
-md5sums=('5f4cb2d592b0232519ef848081881633')
+md5sums=('b23e0bb700847506e4cf5345a767d754')
 
 build(){
 	cd "${srcdir}/SameBoy-${pkgver}"
