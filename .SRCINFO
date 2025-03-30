@@ -1,15 +1,14 @@
 pkgbase = ruby-useragent
 	pkgdesc = HTTP User Agent parser
-	pkgver = 0.16.10
-	pkgrel = 2
+	pkgver = 0.16.11
+	pkgrel = 1
 	url = http://github.com/gshutler/useragent
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = useragent-0.16.10.gem
+	noextract = useragent-0.16.11.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/useragent-0.16.10.gem
-	sha256sums = 1794380d9ea5c087d687bbfe14752f81839293f238c1132ef05c9344f09e65bb
+	source = https://rubygems.org/downloads/useragent-0.16.11.gem
+	sha256sums = 700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
 
 pkgname = ruby-useragent
-
