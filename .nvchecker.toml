@@ -1,0 +1,4 @@
+[ruby-dry-monads]
+source = "git"
+git = "https://github.com/dry-rb/dry-monads.git"
+prefix = "v"
