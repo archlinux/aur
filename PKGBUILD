@@ -2,22 +2,19 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.23.1.beta.r8113.cb06628
+pkgver=0.23.3.beta.r8309.bca1cbf
 pkgrel=1
-pkgdesc='An open source desktop YouTube player built with privacy in mind - built from git source tree, with the system electron (unsupported).'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc='A private YouTube client - built from latest git, with the default electron.'
+arch=('x86_64')
 url="https://freetubeapp.io"
 license=('AGPL-3.0-or-later')
-depends=('electron')
 makedepends=('git' 'yarn')
-provides=('freetube')
-conflicts=('freetube')
+provides=("${pkgname%-electron-git}")
+conflicts=("${pkgname%-electron-git}")
 source=(git+https://github.com/FreeTubeApp/FreeTube
-        freetube.desktop
-        freetube.sh)
+       freetube.desktop)
 sha256sums=("SKIP" 
-            "ada2b4b8f6a1e8896acbce4f4d311228d2c86026c273ffa00afa3247294f8b1e" 
-            "a060f380f6614ce920a7b1905b9a23c26712a8a640d6af4e930bc2909183bc98")
+            "496fc67b30fa66e8eff1e551121e5bb7ae0253bfb804b3a902d4e7bd3cdcbc26")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,7 +22,6 @@ pkgver() {
 }
 
 prepare() {
-  sed -i "5i electronDist: '/usr/lib/electron'," "$srcdir/$_pkgname/_scripts/ebuilder.config.js"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.js"
 }
 
@@ -36,13 +32,25 @@ build() {
 }
 
 package() {
-  install -d "${pkgdir}"/{usr/bin,usr/lib/$pkgname}
-  cp -R "./$_pkgname/build/linux-unpacked/resources/app.asar" "$pkgdir/usr/lib/$pkgname"
-  install -Dm755 "./freetube.sh" "$pkgdir/usr/bin/freetube"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/lib/${pkgname%-electron-git}"
+
+  # copying libs
+  cp -R "./$_pkgname/build/linux-unpacked/." "$pkgdir/usr/lib/${pkgname%-electron-git}"
+
+  # executable
+  ln -s  "$pkgdir/usr/lib/${pkgname%-electron-git}/freetube" "$pkgdir/usr/bin/freetube"
   
   cd $_pkgname
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # licence
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-electron-git}/LICENSE"
+
+  # icon
   install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/freetube.svg"
+  
   cd ..
+
+  # desktop file
   install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/freetube.desktop"
 }
