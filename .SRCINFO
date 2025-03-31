@@ -1,12 +1,15 @@
 pkgbase = asm-lsp
 	pkgdesc = A language server for NASM/GAS/GO Assembly
-	pkgver = 0.6.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://crates.io/crates/asm-lsp
-	arch = any
-	license = custom:BSD-2-Clause
+	arch = x86_64
+	arch = riscv64
+	license = BSD-2-Clause
 	makedepends = cargo
-	source = https://github.com/bergercookie/asm-lsp/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 71348b181f77fbd0005bd6abbdfd793816cb581541a17e6ccd8714e0fcb7e755
+	options = !lto
+	source = asm-lsp-0.10.0.tar.gz::https://github.com/bergercookie/asm-lsp/archive/refs/tags/v0.10.0.tar.gz
+	sha512sums = 97642c90f665c7cd86c72e0124655799c1773b8cc91915c071af97dd1dfd41881c0a3db187a0278aac887466499ad4dba22a6d7b2d0ad2636a83a88143cd6ef4
+	b2sums = 7e05af30f4eeb8985bdea74edac8495bb41ff24a88ec05f88bdaed1824d286d90bb8ccc76d792d4fb52b285010586e6715a723deaed7a1fd7feb2985e7a5ef67
 
 pkgname = asm-lsp
