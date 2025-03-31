@@ -1,0 +1,17 @@
+pkgbase = aikadm-frontend-git
+	pkgdesc = Default frontend for html-greet
+	pkgver = 0.0.0.r31.11bc1d1
+	pkgrel = 1
+	url = https://github.com/HumXC/aikadm-frontend
+	arch = any
+	license = custom
+	makedepends = nodejs
+	makedepends = npm
+	provides = aikadm-frontend
+	conflicts = aikadm-frontend
+	options = !strip
+	options = !debug
+	source = aikadm-frontend::git+https://github.com/HumXC/aikadm-frontend.git
+	sha256sums = SKIP
+
+pkgname = aikadm-frontend-git
