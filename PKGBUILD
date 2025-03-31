@@ -22,6 +22,8 @@ pkgver() {
 
 build() {
 	cd "$_pkgbase"
+	rm -rf build
+	mkdir build
 
 	clang++ -Os -static -ffunction-sections -fdata-sections -fvisibility=hidden \
 		-flto -Wl,--gc-sections -o "build/abx2xml" "abx2xml.cpp"
