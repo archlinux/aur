@@ -11,6 +11,7 @@ checkdepends=('python-nose')
 makedepends=(
     'git'
     'python-setuptools'
+    'python-versioneer'
     'python-build' 'python-installer' 'python-wheel'
     'rnc2rng'
 )

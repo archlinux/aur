@@ -8,6 +8,7 @@ pkgbase = python-citeproc-py
 	checkdepends = python-nose
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-versioneer
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
