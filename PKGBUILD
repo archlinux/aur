@@ -4,7 +4,7 @@
 
 pkgname='makesure'
 pkgver=0.9.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple AWK-based task/command runner with declarative goals and dependencies'
 arch=('any')
 url='https://github.com/xonixx/makesure'
@@ -20,7 +20,7 @@ package() {
 
   install -vDm0755 makesure "$pkgdir/usr/bin/makesure"
   install -vDm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/makesure"
-  install -vDm0644 -t "$pkgdir/usr/share/docs/$pkgname/" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     CHANGELOG.md README.md docs/*.md
   install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
