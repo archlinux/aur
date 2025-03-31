@@ -1,7 +1,7 @@
-# Maintainer: Stick <stick@stma.is>
+# Maintainer: Gonsolo <gonsolo@gmail.com>
 
 pkgname=scalafmt
-pkgver=3.8.3
+pkgver=3.9.4
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
