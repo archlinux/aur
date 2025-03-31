@@ -1,10 +1,11 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: BlackEagle <ike.devolder@gmail.com>
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+27+g658f34ec4
+pkgver=1.4.1+38+g1fc7fe0e1
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -17,7 +18,7 @@ depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp 
          zlib glib2 sqlite libx11 gstreamer glibc gcc-libs abseil-cpp qt5-base fftw
 
          libprotobuf.so)
-makedepends=(git boost cmake qt5-tools sparsehash)
+makedepends=(git boost cmake3 qt5-tools sparsehash)
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'
   'gst-plugins-good: "Good" plugin libraries'
@@ -26,8 +27,8 @@ optdepends=(
   'gst-libav: Libav plugin'
   'gvfs: Various devices support')
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=658f34ec40dde09b473bdda3d90050455e724fad")
-sha256sums=('17076cfb4bc6ed771904ee99a57bcffaca55ee9983ebf9f41ef3e4fd0faf111d')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=1fc7fe0e1e828a58f6a961aa4f75a7fbd7eb5786")
+sha256sums=('7d956efe2e0be5fdf51ade47a44123f0debf5b289b29b8c790126e221e250920')
 
 pkgver() {
   cd Clementine
