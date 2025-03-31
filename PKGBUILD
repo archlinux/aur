@@ -2,22 +2,22 @@
 
 pkgname=asix-ax88179-dkms
 _pkgname="${pkgname%-*}"
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='A kernel module for ASIX AX88179B USB network adapters'
 url="https://www.asix.com.tw/en/product/USBEthernet/Super-Speed_USB_Ethernet/AX88179B"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('dkms')
 arch=('any')
 
 _archivename="ASIX_USB_NIC_Linux_Driver_Source_v${pkgver}"
 source=(
-    "${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/1893"
+    "${_archivename}.tar.bz2::https://www.asix.com.tw/en/support/download/file/1943"
     'dkms.conf'
     'modprobe.conf'
 )
 sha256sums=(
-    '3bd582dae7a3a7c0f32ecd5dcd8f8971475109aaedb6511ec4b0ce3d55e418eb'
+    '72275d911077f15dc7fbbb1fa5041a184e13ebb8fc74c3d2475689cfc152f8c7'
     '280c3fd129bb3ac8b763e65dbbe7383ca795a435021f4c978a7f6b03d696b616'
     '652e3715724de0c1893ffbdfc48a66c7c09e82015429f10254869934dea40b55'
 )
