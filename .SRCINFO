@@ -1,11 +1,11 @@
 pkgbase = garnet-bin
 	pkgdesc = A high-performance cache-store from Microsoft Research
 	pkgver = 1.0.61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://microsoft.github.io/garnet
 	arch = x86_64
 	license = MIT
-	depends = dotnet-runtime
+	depends = dotnet-runtime-9.0
 	depends = gcc-libs
 	depends = glibc
 	depends = libaio

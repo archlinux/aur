@@ -3,7 +3,7 @@
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
 pkgver=1.0.61
-pkgrel=2
+pkgrel=3
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
 license=('MIT')
@@ -11,7 +11,7 @@ arch=('x86_64')
 options=('!strip')
 conflicts=($_pkgname)
 provides=($_pkgname)
-depends=("dotnet-runtime" "gcc-libs" "glibc" "libaio")
+depends=("dotnet-runtime-9.0" "gcc-libs" "glibc" "libaio")
 
 source=(
 	"garnet-${pkgver}.tar.xz::https://github.com/microsoft/${_pkgname}/releases/download/v${pkgver}/linux-x64-based.tar.xz"
