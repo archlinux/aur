@@ -6,4 +6,4 @@ changeUser
 changePath
 downloadJDownloader
 
-exec bin/java -jar JDownloader.jar "$@"
+exec java/bin/java -jar JDownloader.jar "$@"

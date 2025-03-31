@@ -42,7 +42,7 @@ fi
 
 LOGFILE="JDownloader.service.log"
 if [ -t 0 -a "${AS_DAEMON}" -eq 2 ] ; then
-  exec bin/java -Djava.awt.headless=true -jar JDownloader.jar -norestart "$@"
+  exec java/bin/java -Djava.awt.headless=true -jar JDownloader.jar -norestart "$@"
 else
   if [ -f "$LOGFILE" ]; then
     # Save the old Logfile (this automatically removes the n-2 one, if there is one)
@@ -50,9 +50,9 @@ else
   fi 
   echo "All output is redirected to \"$(readlink -f "${LOGFILE}")\"" 
   if [ "${AS_DAEMON}" -eq 0 ]; then
-    nohup bin/java -Djava.awt.headless=true -jar JDownloader.jar "$@" >"${LOGFILE}" 2>&1 &
+    nohup java/bin/java -Djava.awt.headless=true -jar JDownloader.jar "$@" >"${LOGFILE}" 2>&1 &
   else
-    exec bin/java -Djava.awt.headless=true -jar JDownloader.jar "$@" >"${LOGFILE}" 2>&1
+    exec java/bin/java -Djava.awt.headless=true -jar JDownloader.jar "$@" >"${LOGFILE}" 2>&1
   fi
 fi
 sleep 5

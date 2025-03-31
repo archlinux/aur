@@ -3,7 +3,7 @@
 pkgname=jdownloader2-jre
 # The package version is the same as latest LTS Java version https://support.jdownloader.org/en/knowledgebase/article/install-jdownloader-on-nas-and-embedded-devices
 pkgver=21.0.6+7
-pkgrel=1
+pkgrel=2
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA with bundled JRE.'
 arch=('x86_64' 'aarch64')
 conflicts=(jdownloader2)
@@ -36,8 +36,8 @@ source=('JDownloader'
 		'jdownloader.service')
 source_x86_64=("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-${pkgver}/OpenJDK21U-jre_x64_linux_hotspot_${pkgver//+/_}.tar.gz")
 source_aarch64=("https://github.com/adoptium/temurin21-binaries/releases/download/jdk-${pkgver}/OpenJDK21U-jre_aarch64_linux_hotspot_${pkgver//+/_}.tar.gz")
-sha256sums=('36c2c8480def24338b280fe92f271a166261acead87efef27fa4dd27d2030bbd'
-            'dfc1ded52756419d8b3df685b5e47a36be268bac5d3e3e05bb426b633d35bbe9'
+sha256sums=('33ec73a05ffaa7484bddffe89db6af1b059cfc67fdeb732ecd8e7595f9864650'
+            'adcd9626b47a2e2a24b56fed401ff97aae361bbe45a420a66711e0c9b01a04f2'
             'dca392fad29c70eff609ec25abaefd33343c8a6c98088e0719c6746759ed0aa5'
             'ddea1dc41023cfdae4db91a23a86ebf8a6be294ee8ba59307f68f97c839d5f31'
             '1c9949bfeaf3595783eec9501e600cb8c4443e04f72d57c095560fb66dcd53d1'
@@ -62,7 +62,6 @@ sha256sums_aarch64=('f1b78f2bd6d505d5e0539261737740ad11ade3233376b4ca52e6c72fbef
 
 package() {
 	install -d -m755 "${pkgdir}/opt/JDownloader"
-	cp -r "$srcdir/jdk-21.0.6+7-jre"/* "$pkgdir/opt/JDownloader/"
 	install -D -m755 "${srcdir}/JDownloader"                   "${pkgdir}/opt/JDownloader/JDownloader"
 	install -D -m755 "${srcdir}/JDownloaderHeadless"           "${pkgdir}/opt/JDownloader/JDownloaderHeadless"
 	install -D -m755 "${srcdir}/JDownloaderHeadlessCtl"        "${pkgdir}/opt/JDownloader/JDownloaderHeadlessCtl"
@@ -85,6 +84,8 @@ package() {
 	install -D -m644 "${srcdir}/jdownloader48.png"     "${pkgdir}/usr/share/icons/hicolor/48x48/apps/jdownloader.png"
 	install -D -m644 "${srcdir}/jdownloader256.png"    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/jdownloader.png"
 	install -D -m644 "${srcdir}/jdownloader.service"   "${pkgdir}/usr/lib/systemd/system/jdownloader.service"
+	install -d -m755 "${pkgdir}/opt/JDownloader/java"
+	cp -r "$srcdir/jdk-21.0.6+7-jre"/* "$pkgdir/opt/JDownloader/java"
 	install -d -m2775 "${pkgdir}/opt/JDownloader"
 	mkdir -p "${pkgdir}/usr/bin"
 
