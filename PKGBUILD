@@ -6,12 +6,13 @@
 _pkgname=ZeroBraneStudio
 pkgname=zerobrane-studio
 pkgver=2.01
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight Lua-based IDE for Lua'
 arch=(any)
 url='https://studio.zerobrane.com/'
 license=(MIT)
 _luadeps=(copas
+          coxpcall
           filesystem
           lpeg
           sec
@@ -33,7 +34,7 @@ source=("https://github.com/pkulchenko/$_pkgname/archive/$pkgver/$_archive.tar.g
         user.lua)
 sha256sums=('2570b3fec51414572fde6cfd4c633b904f00d5eb387b7bc3296ffb07730d4e28'
             '44f3a18f169a571bace71c67c398917ea0ff1c163c7d22bec49aed7585bcb9b2'
-            '46c752eb6fc3493d7c4123f543379b29dc25a7a0b6d56d155867d6aff6908b59')
+            '86146be2dd2182b61c72f4fcbdff1867137a96c708d5838a66a3260dd6ac326b')
 
 prepare() {
 	cd "$_archive"
@@ -43,9 +44,10 @@ prepare() {
 build() {
 	cd "$_archive"
 	cmake -S build -B build \
-		-D CMAKE_BUILD_TYPE=Release \
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-D CMAKE_BUILD_TYPE=None \
 		-D CMAKE_INSTALL_PREFIX=/usr
-    make -C build
+	make -C build
 }
 
 package() {
