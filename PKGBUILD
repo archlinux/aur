@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.7.0.r43.gb0a12c02e
+pkgver=0.7.0.r46.ga2a1ecde0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -23,6 +23,7 @@ makedepends=(
 	'git'
 	'half>=1.12'
 	'libpng>=1.6'
+	'libusb>=1.0.27'
 	'magic_enum>=0.9.7'
 	'qt6-base'
 	'qt6-multimedia'
@@ -108,6 +109,7 @@ package() {
 		'libpng16.so'
 		'libswresample.so'
 		'libswscale.so'
+		'libusb-1.0.so'
 		'libxxhash.so'
 		'libz.so'
 		# 'libZydis.so'
