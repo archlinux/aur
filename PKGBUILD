@@ -10,7 +10,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r27.g658f34ec4.0.g658f34ec4
+pkgver=1.4.1.r38.g1fc7fe0e1.0.g1fc7fe0e1
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -23,7 +23,7 @@ depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp 
          zlib glib2 sqlite libx11 gstreamer glibc gcc-libs abseil-cpp qt5-base fftw
 
          libprotobuf.so)
-makedepends=(boost cmake git qt5-tools sparsehash)
+makedepends=(boost cmake3 git qt5-tools sparsehash)
 optdepends=(
   'gst-plugins-base: "Base" plugin libraries'
   'gst-plugins-good: "Good" plugin libraries'
