@@ -5,7 +5,7 @@ pkgname="azahar-appimage"
 # to update automatically:
 #       1. run makepkg
 #_url="$(curl -s "https://api.github.com/repos/azahar-emu/azahar/releases/latest" | jq -r '.assets[].browser_download_url | select(test("citra-linux-appimage.*tar.gz"))')"
-pkgver=2120.1
+pkgver=2120.2
 
 pkgrel=1
 epoch=1
