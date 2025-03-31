@@ -1,0 +1,4 @@
+[lua-grail]
+source = "git"
+git = "https://github.com/Omikhleia/grail.git"
+prefix = "v"

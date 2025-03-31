@@ -1,0 +1,30 @@
+pkgbase = lua-grail
+	pkgdesc = a small Lua graphics library that lets you draw lines, polygons and curves
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Omikhleia/grail
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	source = https://github.com/Omikhleia/grail/archive/v1.0.0/grail-1.0.0.tar.gz
+	sha256sums = e5e9ce5ba84afa25442836e2230e522cfc1bd50348c21ce5adb903796c3c1244
+
+pkgname = lua-grail
+	depends = lua-penlight
+	depends = lua-rough
+
+pkgname = lua51-grail
+	depends = lua51-penlight
+	depends = lua51-rough
+
+pkgname = lua52-grail
+	depends = lua52-penlight
+	depends = lua52-rough
+
+pkgname = lua53-grail
+	depends = lua53-penlight
+	depends = lua53-rough
