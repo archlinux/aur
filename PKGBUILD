@@ -2,7 +2,7 @@
 
 _rockname=markdown.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=2.3.2
+pkgver=2.4.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Native Markdown and Djot support for the SILE typesetting system'
@@ -10,6 +10,7 @@ arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
 license=(MIT)
 _siledeps=(embedders
+           highlighter
            labelrefs
            ptable
            silex
@@ -22,7 +23,7 @@ makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('b19856e75cbaa4a32f65eb21624daa7be0467a2f16f2ab80a704dbe4b81dae13')
+sha256sums=('3365de469edef3969decb1bb3e0597ca1a144af76428fc6f79dadb98ba60431b')
 
 package() {
 	cd "$_archive"
