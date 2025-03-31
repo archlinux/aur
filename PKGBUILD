@@ -1,6 +1,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
-# Maintainer: JustKidding <jk@vin.ovh>
+# Maintainer: Siavosh Kasravi <siavosh.kasravi@gmail.com>
+# Contributor: JustKidding <jk@vin.ovh>
 # Contributor: James P. Harvey <jamespharvey20 at gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -13,8 +14,8 @@
 pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=7.0.16
-pkgrel=2
+pkgver=8.0.4
+pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -22,7 +23,8 @@ license=("SSPL-1.0")
 depends=('libstemmer' 'snappy' 'yaml-cpp' 'libunwind' 'curl' 'zstd' 'zlib'
          'libsasl' 'openssl' 'glibc' 'gcc-libs')
 makedepends=('python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
-             'python-yaml' 'python-requests' 'python-pymongo')
+             'python-yaml' 'python-requests' 'python-pymongo' 'python-gitpython'
+             'python-distro' 'python-retry')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh: interactive shell to connect with MongoDB')
 backup=("etc/mongodb.conf")
@@ -35,12 +37,12 @@ source=("https://github.com/mongodb/mongo/archive/refs/tags/r$pkgver.tar.gz"
         mongodb-5.0.2-no-compass.patch
         mongodb-7.0.2-sconstruct.patch
         mongodb-4.4.29-no-enterprise.patch)
-sha256sums=('54bd8bee37ef413c3286bbda43fc719935547cd521dc2ac87051c9f136de016e'
+sha256sums=('1fa8bb002983580fd3668099ce218778a294d864db4d3721fffc6782bea6ba2c'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
-            '4ff40320e04bf8c3e05cbc662f8ea549a6b8494d1fda64b1de190c88587bfafd'
+            '3438f7f463b98270d1fe580b3153c19cff1c86c18745a40d4f2984e73086005e'
             '41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
-            'd43f727f12bab10c7a67818f7206cdcdb3b43c289e5ad2c497267fc275bc8416'
+            '52119e543a575b236c688b293a472d4ab6aac9f8b92cc222a1c867d710efac31'
             '7cd27b2ce15cc6efdce07ef934ed3d9356025ebade4856a9d0a75a80f7c08905')
 sha256sums_aarch64=('6dd9f20e153ff2a3e185d9411e9d9ec54ba8ed29a0a1489828ccb047205cceac')
 source_aarch64=(extrapatch-sconstruct.patch)
