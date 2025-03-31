@@ -3,7 +3,7 @@
 _gemname='dry-logic'
 pkgname="ruby-${_gemname}"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Predicate logic with rule composition'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -13,6 +13,7 @@ depends=(
   ruby-concurrent
   ruby-dry-core
   ruby-zeitwerk
+  ruby-bigdecimal
 )
 makedepends=(
   ruby-rdoc

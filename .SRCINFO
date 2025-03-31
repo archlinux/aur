@@ -1,7 +1,7 @@
 pkgbase = ruby-dry-logic
 	pkgdesc = Predicate logic with rule composition
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dry-rb/dry-logic
 	arch = any
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = ruby-dry-logic
 	depends = ruby-concurrent
 	depends = ruby-dry-core
 	depends = ruby-zeitwerk
+	depends = ruby-bigdecimal
 	options = !emptydirs
 	source = https://github.com/dry-rb/dry-logic/archive/v1.5.0/ruby-dry-logic-1.5.0.tar.gz
 	source = https://patch-diff.githubusercontent.com/raw/dry-rb/dry-logic/pull/90.patch
