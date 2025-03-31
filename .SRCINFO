@@ -1,0 +1,17 @@
+pkgbase = android-xml-converter-git
+	pkgdesc = Android Binary XML (ABX) conversion tools
+	pkgver = 1.r14.gca2d429
+	pkgrel = 1
+	url = https://github.com/rhythmcache/android-xml-converter
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	depends = clang
+	provides = android-xml-converter
+	conflicts = android-xml-converter
+	source = android-xml-converter::git+https://github.com/rhythmcache/android-xml-converter.git
+	sha256sums = SKIP
+
+pkgname = android-xml-converter-git
