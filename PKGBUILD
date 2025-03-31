@@ -2,7 +2,7 @@
 
 _basename=capter
 pkgname=${_basename}-bin
-pkgver=2.4.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A simple cross-platform screenshot tool made in rust"
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=("Apache-2.0")
 conflicts=("${_basename}")
 provides=("${_basename}")
 makedepends=('tar')
-depends=("git" "gtk3" "xdotool" "libayatana-appindicator" "libxcb" "libxrandr" "dbus")
+depends=("gdk-pixbuf2" "gtk3" "xdotool" "libxtst" "glibc" "libx11" "libxcb" "gcc-libs" "pango" "hicolor-icon-theme" "glib2" "cairo" "dbus")
 source=("https://github.com/decipher3114/Capter/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
-sha256sums=('9e28a8f36bb1b757569fdc01f959be4722527723641f37da209aeb27a4b3bc18')
+sha256sums=('2c5775888ddc8518f863f126bd283ed6c15b43b5a7b9a7619cfc4274ca42bda2')
 
 package() {
     cd "${pkgdir}"
