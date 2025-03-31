@@ -1,12 +1,12 @@
 pkgbase = aider-chat-venv
 	pkgdesc = AI pair programming in your terminal
-	pkgver = 0.74.0
-	pkgrel = 2
+	pkgver = 0.80.0
+	pkgrel = 1
 	url = https://github.com/Aider-AI/aider
 	arch = any
 	license = Apache-2.0
 	makedepends = jq
-	depends = python
+	makedepends = uv
 	provides = aider-chat
 	provides = aider-chat
 	conflicts = aider-chat
