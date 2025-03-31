@@ -2,7 +2,7 @@
 
 pkgname=emulationstation-de
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="ES-DE (EmulationStation Desktop Edition) is a frontend for browsing and launching games from your multi-platform collection"
 arch=('x86_64')
 url="https://es-de.org"
@@ -15,7 +15,7 @@ md5sums=('a13433450984721335c0db7186334896')
 
 build() {
         export CXXFLAGS=""
-        cmake -DAUR_BUILD=on -B emulationstation-de-stable-3.1-AUR -S emulationstation-de-stable-3.1-AUR
+        cmake -DAUR_BUILD=on -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B emulationstation-de-stable-3.1-AUR -S emulationstation-de-stable-3.1-AUR
         make -C emulationstation-de-stable-3.1-AUR -j6
 }
 
