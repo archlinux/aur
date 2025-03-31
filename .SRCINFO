@@ -1,6 +1,6 @@
 pkgbase = purr
 	pkgdesc = Unoffical CLI for Catppuccin port developers
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/uncenter/purr
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = purr
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
-	source = purr-1.2.1.tar.gz::https://github.com/uncenter/purr/archive/v1.2.1.tar.gz
-	sha256sums = c6f2e7fe7dd0c77ea97b339f0bbb59dc4281e35926bf691f6073070cebc8284c
+	source = purr-1.3.0.tar.gz::https://github.com/uncenter/purr/archive/v1.3.0.tar.gz
+	sha256sums = 0a5ff1483985b9218b277056b8500de37098da4cf0f8aa299c0284ae8eb07338
 
 pkgname = purr

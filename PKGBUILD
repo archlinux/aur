@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=purr
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Unoffical CLI for Catppuccin port developers'
 arch=('x86_64')
 url="https://github.com/uncenter/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c6f2e7fe7dd0c77ea97b339f0bbb59dc4281e35926bf691f6073070cebc8284c')
+sha256sums=('0a5ff1483985b9218b277056b8500de37098da4cf0f8aa299c0284ae8eb07338')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'openssl')
 
