@@ -1,6 +1,6 @@
 pkgbase = todoist-rs
 	pkgdesc = terminal client for Todoist
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 2
 	url = https://github.com/illiteratewriter/todoist-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = todoist-rs
 	depends = gcc-libs
 	depends = openssl
 	depends = glibc
-	source = todoist-rs-0.0.6.tar.gz::https://github.com/illiteratewriter/todoist-rs/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = 50ba6dedb5b91c5f38dfd107dabbe236bd0a3a658f39d9fe1b77132548ee2f1f
+	source = todoist-rs-0.0.7.tar.gz::https://github.com/illiteratewriter/todoist-rs/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = ae34fdf8a781d8eed86098eb32ec6289e3970a5d009c4837b6ed6a0729a94b4f
 
 pkgname = todoist-rs

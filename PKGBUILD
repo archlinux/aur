@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=todoist-rs
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=2
 pkgdesc="terminal client for Todoist"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(gcc-libs openssl glibc)
 makedepends=("rust" "cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/illiteratewriter/todoist-rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('50ba6dedb5b91c5f38dfd107dabbe236bd0a3a658f39d9fe1b77132548ee2f1f')
+sha256sums=('ae34fdf8a781d8eed86098eb32ec6289e3970a5d009c4837b6ed6a0729a94b4f')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -29,7 +29,7 @@ build() {
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/todoist" "$pkgdir/usr/bin/todoist-rs"
   install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
-  #install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname-$pkgver/LICENSE" -- does not exist in current release tag
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
