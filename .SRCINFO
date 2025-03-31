@@ -1,6 +1,6 @@
 pkgbase = hyprpad
 	pkgdesc = A simple, fast text editor with Vim keybinds
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/gingrspacecadet/hyprpad
 	arch = x86_64

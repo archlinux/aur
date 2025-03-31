@@ -1,6 +1,6 @@
 #Maintainer: gingrspacecadet@github.comi
 pkgname=hyprpad
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A simple, fast text editor with Vim keybinds"
 arch=('x86_64')
