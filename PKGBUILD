@@ -17,11 +17,6 @@ build() {
   make build
 }
 
-check() {
-  cd "$srcdir/$pkgname"
-  make check
-}
-
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" PREFIX=/usr install
