@@ -1,7 +1,7 @@
 pkgbase = owncloud-client-desktop-shell-integration-nautilus
 	pkgdesc = A Python extension for Nautilus and its forks Nemo and Caja to provide shell integration for the ownCloud desktop client for the GNOME, Cinnamon and MATE desktop environments.
 	pkgver = 6.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/owncloud/client-desktop-shell-integration-nautilus
 	arch = any
 	license = GPL-2.0
