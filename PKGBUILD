@@ -4,27 +4,26 @@
 
 pkgname='fhtagn'
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Literate testing for command-line programs'
 arch=('any')
 url='https://github.com/xonixx/fhtagn'
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('awk')
-checkdepends=('makesure')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 check() {
   cd "$pkgname-$pkgver"
 
   # Please note that this will download tush
-  makesure tested_by_gawk
+  ./makesure tested_by_gawk
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
   install -vDm0755 fhtagn.awk "$pkgdir/usr/bin/fhtagn"
-  install -vDm0644 README.md  "$pkgdir/usr/share/docs/$pkgname/README.md"
+  install -vDm0644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -vDm0644 LICENSE    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

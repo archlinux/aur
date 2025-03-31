@@ -1,11 +1,10 @@
 pkgbase = fhtagn
 	pkgdesc = Literate testing for command-line programs
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xonixx/fhtagn
 	arch = any
 	license = MIT
-	checkdepends = makesure
 	depends = awk
 	source = fhtagn-0.2.1.tar.gz::https://github.com/xonixx/fhtagn/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = 8695bf88d66f3df0e2fc9fe275bb181039ca060ebbbb9ca2e838c1ae207d19c4
