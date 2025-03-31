@@ -1,7 +1,7 @@
 pkgbase = ctranslate2
 	pkgdesc = A C++ and Python library for efficient inference with Transformer models.
 	pkgver = 4.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opennmt.net/CTranslate2
 	arch = x86_64
 	license = MIT

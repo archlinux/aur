@@ -6,7 +6,7 @@ pkgname=(
 )
 pkgbase=ctranslate2
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -98,6 +98,7 @@ build() {
     -DWITH_CUDA='ON' \
     -DCUDA_DYNAMIC_LOADING='ON' \
     -DCUDA_ARCH_LIST='Common' \
+    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -Wno-dev
   cmake --build build
 
