@@ -4,7 +4,7 @@
 # Contributor: bender02 at archlinux dot us
 
 pkgname="aescrypt"
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cmake>=3.21')
 _pkgsrc="${pkgname}_cli-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/aescrypt_cli/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d361e96737d00fd8104b405b02991be1ce512c9270f814d416461a39ffdd5919f6e844ecd2905c70aea1e73bd9a67454264f9d891effe1f8cbbe5f8539499085'
+b2sums=('a5ce49f25a348dbf7b00d809dc8ff5491fb9c94fe8c76ab4ce64334849129099da8563a6506f7c2d143496002657c735389afdec1c06ab5cc833f2648fd41fb1'
         'c48e0ab1de4b5788341bd3e65e3a4f9ccabb3cee9b90aaaf6321606f764cf70cb362ae49faff3feaa9c6cec9997e47d685654ac3ac0533bd2fc828334c43b78a'
         'cdb88dc44ae824eba4bdfb0627acf5e55c99116c0348ec78cfa09554d426172dbb3b87c6050e534de28ca7c5bce7ca8bc8a26f1cbb828c09823a03ebb0345f5e'
         'b76e34bcab4cfd3657036d886fd3b3313e9a4f1ee32c2f2a086443b2f8255ad84c08674fbf7451bdb22dd8c37a73f27879fbde14e3979fed0b9d0f3e5300cdf6'
