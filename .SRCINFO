@@ -1,7 +1,7 @@
 pkgbase = sile-highlighter
 	pkgdesc = A code syntax higlighting package for the SILE typesetting system
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Omikhleia/highlighter.sile
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = sile-highlighter
 	depends = sile
 	depends = sile-labelrefs
 	source = https://github.com/Omikhleia/highlighter.sile/archive/v0.2.1/highlighter.sile-0.2.1.tar.gz
+	source = https://github.com/orbitalquark/scintillua/archive/a16207a779afea341fc477bb5dbf17fc304dccc6.zip
 	sha256sums = dc3cb31187d26a7b87079c13d19d26631e1757d44086df5b97a6d60fa18f2df7
+	sha256sums = 16a93350d4d342b35d2dda820d8cddb3f8ef35c2d9e2a7eeac80821ade3ee6e8
 
 pkgname = sile-highlighter
