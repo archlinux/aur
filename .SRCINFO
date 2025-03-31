@@ -1,6 +1,6 @@
 pkgbase = azahar-git
 	pkgdesc = Nintendo 3DS emulator based on Citra
-	pkgver = 2120.rc1.r40.gf083a6e5d
+	pkgver = 2120.rc1.r56.g5ade69f5f
 	pkgrel = 1
 	url = https://azahar-emu.org/
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = azahar-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
-	provides = azahar=2120.rc1.r40.gf083a6e5d
+	provides = azahar=2120.rc1.r56.g5ade69f5f
 	conflicts = azahar
 	source = azahar::git+https://github.com/azahar-emu/azahar.git
 	source = azahar-boost::git+https://github.com/azahar-emu/ext-boost.git
@@ -44,11 +44,11 @@ pkgbase = azahar-git
 	source = azahar-dynarmic::git+https://github.com/azahar-emu/dynarmic.git
 	source = azahar-mcl::git+https://github.com/azahar-emu/mcl.git
 	source = azahar-sirit::git+https://github.com/azahar-emu/sirit.git
+	source = azahar-soundtouch::git+https://github.com/azahar-emu/soundtouch.git
 	source = dds-ktx::git+https://github.com/septag/dds-ktx.git
 	source = faad2::git+https://github.com/knik0/faad2.git
 	source = lodepng::git+https://github.com/lvandeve/lodepng.git
 	source = nihstro::git+https://github.com/neobrain/nihstro.git
-	source = soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git
 	source = teakra::git+https://github.com/wwylele/teakra.git
 	source = xbyak::git+https://github.com/herumi/xbyak.git
 	b2sums = SKIP

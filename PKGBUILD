@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2120.rc1.r40.gf083a6e5d
+pkgver=2120.rc1.r56.g5ade69f5f
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -51,11 +51,11 @@ source=(
 	"$_pkgname-dynarmic::git+https://github.com/azahar-emu/dynarmic.git"
 	"$_pkgname-mcl::git+https://github.com/azahar-emu/mcl.git"
 	"$_pkgname-sirit::git+https://github.com/azahar-emu/sirit.git"
+	"$_pkgname-soundtouch::git+https://github.com/azahar-emu/soundtouch.git"
 	"dds-ktx::git+https://github.com/septag/dds-ktx.git"
 	"faad2::git+https://github.com/knik0/faad2.git"
 	"lodepng::git+https://github.com/lvandeve/lodepng.git"
 	"nihstro::git+https://github.com/neobrain/nihstro.git"
-	"soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git"
 	"teakra::git+https://github.com/wwylele/teakra.git"
 	"xbyak::git+https://github.com/herumi/xbyak.git"
 )
@@ -92,16 +92,17 @@ prepare() {
 	git config submodule.lodepng.url ../lodepng
 	git config submodule.nihstro.url ../nihstro
 	git config submodule.sirit.url ../$_pkgname-sirit
-	git config submodule.soundtouch.url ../soundtouch
+	git config submodule.soundtouch.url ../$_pkgname-soundtouch
 	git config submodule.teakra.url ../teakra
 	git config submodule.xbyak.url ../xbyak
 	git -c protocol.file.allow=always submodule update
-	mkdir -p ../build
-	ln -sr .git ../build
-	sed -i '/check_submodules_present()/d' CMakeLists.txt
 	cd externals/dynarmic
 	git config submodule.mcl.url ../../../$_pkgname-mcl
 	git -c protocol.file.allow=always submodule update
+	# fix for missing submodules
+	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
+	# fix for cmake 4
+	sed -i '/VERSION/s/3\.2\.0/3.5/' ../discord-rpc/CMakeLists.txt
 }
 
 build() {
@@ -126,11 +127,13 @@ build() {
 		-D USE_SYSTEM_LIBS=ON
 		-Wno-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cd $_pkgname
+	cmake "${options[@]}" -B build
 	cmake --build build
 }
 
 check() {
+	cd $_pkgname
 	ctest --output-on-failure --test-dir build
 }
 
@@ -146,6 +149,7 @@ package() {
 		'libzstd.so'
 		'libZydis.so'
 	)
+	cd $_pkgname
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 }
