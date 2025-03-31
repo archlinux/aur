@@ -1,0 +1,15 @@
+pkgbase = biblos-git
+	pkgdesc = Epub ebook filesystem based catalog viewer inside Documents or in config specified dir
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/biblos
+	arch = any
+	license = GPL-3.0
+	depends = unzip
+	depends = webappview-git
+	provides = biblos
+	conflicts = biblos
+	source = git+https://gitverse.ru/naierchou/biblos.git
+	sha256sums = SKIP
+
+pkgname = biblos-git
