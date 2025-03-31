@@ -1,6 +1,6 @@
 pkgbase = python-udsoncan
 	pkgdesc = Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry.
-	pkgver = 1.24.1
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://pypi.org/project/udsoncan
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-udsoncan
 	conflicts = python-udsoncan
 	options = !strip
 	options = !debug
-	source = udsoncan-1.24.1.tar.gz::https://files.pythonhosted.org/packages/source/u/udsoncan/udsoncan-1.24.1.tar.gz
-	sha256sums = 8dfeff52df9a87985de53ddfa649931bf44456d314828b50352c75335207f3d3
+	source = udsoncan-1.25.0.tar.gz::https://files.pythonhosted.org/packages/source/u/udsoncan/udsoncan-1.25.0.tar.gz
+	sha256sums = 78ec1ab1b07acb2430f80a759b0b2608fc13d1bc4a150f38f1b890dba407bee1
 
 pkgname = python-udsoncan
