@@ -1,24 +1,31 @@
 pkgbase = bacula-client
 	pkgdesc = Enterprise ready, network based backup program
-	pkgver = 15.0.2
+	pkgver = 15.0.3
 	pkgrel = 1
 	url = https://www.bacula.org
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-only
+	depends = acl
+	depends = gcc-libs
+	depends = libcap
+	depends = ncurses
 	depends = openssl
+	depends = zlib
+	depends = zstd
+	optdepends = bash: support for some util scripts
 	optdepends = lzo: LZO support
-	provides = bacula-fd=15.0.2
+	optdepends = perl: support for some provided scripts
+	optdepends = python: to use key-manager.py and other provided scripts
+	provides = bacula-fd=15.0.3
 	conflicts = bacula
 	backup = etc/bacula/bconsole.conf
 	backup = etc/bacula/bacula-fd.conf
-	source = https://downloads.sourceforge.net/project/bacula/bacula/15.0.2/bacula-15.0.2.tar.gz
-	source = https://downloads.sourceforge.net/project/bacula/bacula/15.0.2/bacula-15.0.2.tar.gz.sig
+	source = https://downloads.sourceforge.net/project/bacula/bacula/15.0.3/bacula-15.0.3.tar.gz
+	source = https://downloads.sourceforge.net/project/bacula/bacula/15.0.3/bacula-15.0.3.tar.gz.sig
 	source = bacula-fd.service
-	source = fix-build.patch::https://gitlab.bacula.org/bacula-community-edition/bacula-community/-/commit/c18d2ee1b1743facc057ee9e3ee9bfbd63299a64.patch
 	validpgpkeys = 5235F5B668D81DB61704A82DC0BE2A5FE9DF3643
-	b2sums = 1dd0722ce2bb6363936ed9cc9df1b6d842945f17277c77f40884bafc4b0a254c5fdd2c21bd200c6ca8b77c8eb718a319552e50135c9925d2b4ad81a64ab819d2
+	b2sums = 16af09af709406fce5e05b101c3ab1337e24816b353cc1a00c0efe05ba798fdf21f3a36ca1c3f867ff4bd768822494ba5f45d6555d0978754d30e08cfaa638dc
 	b2sums = SKIP
 	b2sums = 40e2965c025f76c93d8e5c248b49177cbffc65b1afef620437f486132696730211df0b06b0c9bb5377acb4b57d897e4d0e4dc806fa0301c85f7cf9f771ee479a
-	b2sums = 35e382d80cef97c192022f713b8b336c4771eae9c7c5ab6e6696128c13d6e82256c49d306c7b5157222444348ed73290e9c0846a522e21ee604a734e9b6e6e3d
 
 pkgname = bacula-client
