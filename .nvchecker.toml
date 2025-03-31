@@ -1,0 +1,4 @@
+[lua-rough]
+source = "git"
+git = "https://github.com/Omikhleia/rough-lua.git"
+prefix = "v"
