@@ -361,6 +361,7 @@ struct editorSyntax HLDB[] = {
 void editorSetStatusMessage(const char *fmt, ...);
 void editorRefreshScreen();
 char *editorPrompt(char *prompt, void (*callback)(char *, int));
+void editorOpenFromString(char *content); // Add this prototype
 
 /*** terminal ***/
 
