@@ -1,6 +1,6 @@
 pkgbase = minijinja-cli-bin
 	pkgdesc = Command-line utility for the MiniJinja template engine
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/minijinja
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = minijinja-cli-bin
 	depends = glibc
 	provides = minijinja-cli
 	conflicts = minijinja-cli
-	source_x86_64 = minijinja-cli-bin-2.8.0.src.tar.xz::https://github.com/mitsuhiko/minijinja/releases/download/2.8.0/minijinja-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 4c9d3d628644a5b2b280c9a3b71187b33d22a1dfd6664d86fd27eeb702d0c7b8
-	source_aarch64 = minijinja-cli-bin-2.8.0.src.tar.xz::https://github.com/mitsuhiko/minijinja/releases/download/2.8.0/minijinja-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 2691ddcd2c4a9d7f2a3db66448067d050c84e293e2cdaeadbdfe4ab319ef8a5c
+	source_x86_64 = minijinja-cli-bin-2.9.0.src.tar.xz::https://github.com/mitsuhiko/minijinja/releases/download/2.9.0/minijinja-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2339e1a517fc00807116d3745711e018ede207938aa69ab3464c2c0d9aedea0d
+	source_aarch64 = minijinja-cli-bin-2.9.0.src.tar.xz::https://github.com/mitsuhiko/minijinja/releases/download/2.9.0/minijinja-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 3e077564599650804e541374363c029f34389b7750fd959ddb91526294e34845
 
 pkgname = minijinja-cli-bin
