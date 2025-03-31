@@ -1,19 +1,21 @@
 pkgbase = python-hep_ml
 	pkgdesc = Specific machine learning tools for purposes of high energy physics
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://arogozhnikov.github.io/hep_ml/
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-nose
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-scikit-learn
 	depends = python-scipy
 	depends = python-six
 	depends = python-pandas
 	depends = python-theano
-	source = python-hep_ml-0.7.2.tar.gz::https://github.com/arogozhnikov/hep_ml/archive/v0.7.2.tar.gz
-	b2sums = a9da308da46ecc70aa1829e01b1e1692f5231c498ee6d6687132fbd03b3b6b1e028a4e1ae53a53e8f7e024784fcb47278ce17d8bbd310193b4be57955babd123
+	source = python-hep_ml-0.7.3.tar.gz::https://github.com/arogozhnikov/hep_ml/archive/v0.7.3.tar.gz
+	b2sums = 05350efe152771a5913686fe143fb614df8209f77ab9f2193bb573c46d462f77cadf36f88abee259a37fb2f634fdd965eab379ee067c9551e19feb960a5ce4c8
 
 pkgname = python-hep_ml

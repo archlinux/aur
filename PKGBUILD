@@ -2,21 +2,21 @@
 
 _pkgname=hep_ml
 pkgname="python-${_pkgname}"
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Specific machine learning tools for purposes of high energy physics"
 arch=('any')
 url="https://arogozhnikov.github.io/hep_ml/"
-license=('Apache')
-makedepends=('python-setuptools')
+license=('Apache-2.0')
+makedepends=(python-build python-installer python-wheel)
 depends=('python-numpy' 'python-scikit-learn' 'python-scipy' 'python-six' 'python-pandas' 'python-theano')
 checkdepends=('python-nose')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/arogozhnikov/${_pkgname}/archive/v${pkgver}.tar.gz")
-b2sums=('a9da308da46ecc70aa1829e01b1e1692f5231c498ee6d6687132fbd03b3b6b1e028a4e1ae53a53e8f7e024784fcb47278ce17d8bbd310193b4be57955babd123')
+b2sums=('05350efe152771a5913686fe143fb614df8209f77ab9f2193bb573c46d462f77cadf36f88abee259a37fb2f634fdd965eab379ee067c9551e19feb960a5ce4c8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -27,7 +27,7 @@ check() {
 package_python-hep_ml() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
