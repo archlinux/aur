@@ -13,7 +13,7 @@ pkgbase = clamav-gui
 	depends = qt6-translations
 	depends = clamav
 	depends = desktop-file-utils
-	source = https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_Tumbleweed/src/ClamAV-GUI-QT6-1.1.2-127.3.src.rpm
+	source = https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_Tumbleweed/src/ClamAV-GUI-QT6-1.1.2-127.4.src.rpm
 	sha256sums = SKIP
 
 pkgname = clamav-gui

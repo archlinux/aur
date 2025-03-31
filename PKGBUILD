@@ -1,6 +1,6 @@
 # Contributor: Calogero e Angelo Scarnà <info@codelinsoft.it>
 pkgname=clamav-gui
-_pkgname=ClamAV-GUI-QT6-1.1.0-127.3
+_pkgname=ClamAV-GUI-QT6-1.1.2-127.4
 __pkgname=ClamAV-GUI-QT6-1.1.2
 pkgver=1.1.2
 pkgrel=2
@@ -9,7 +9,7 @@ url="https://github.com/wusel1007/clamav-gui"
 arch=('x86_64')
 depends=('qt6-base' 'qt6-connectivity' 'qt6-declarative' 'qt6-svg' 'qt6-tools'  'qt6-translations' 'clamav' 'desktop-file-utils')
 license=(GPLv3)
-source=('https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_Tumbleweed/src/ClamAV-GUI-QT6-1.1.2-127.3.src.rpm'
+source=('https://download.opensuse.org/repositories/home:/wusel1007/openSUSE_Tumbleweed/src/ClamAV-GUI-QT6-1.1.2-127.4.src.rpm'
         )
 sha256sums=("SKIP"
             )
