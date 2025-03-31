@@ -18,6 +18,7 @@ sha256sums=('1ed2188ddc28001054799e80992dd063c23a808c0efb09a45f8c8249f6ba1c45')
 build() {
 	cd $srcdir/$pkgname-$pkgver/ || exit
 	sed -i "s/lib64/lib/g" CMakeLists.txt
+ 
 	mkdir build || exit
 	cd build || exit
 	cmake .. -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=RELEASE -DUIMGUI_INSTALL=ON -DCMAKE_INSTALL_PREFIX="/usr/" || exit
