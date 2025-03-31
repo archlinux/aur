@@ -34,7 +34,7 @@ sha512sums=(
 prepare() {
   [[ -d squashfs-root ]] && rm -rf squashfs-root
   chmod 755 UltiMaker-Cura-${pkgver}-linux-X64.AppImage
-  ./UltiMaker-Cura-${pkgver}-linux-X64.AppImage --appimage-extract
+  ./UltiMaker-Cura-${pkgver}-linux-X64.AppImage --appimage-extract >/dev/null
   hardlink --content --maximize squashfs-root
   cd squashfs-root
   sed -i 's|^Comment=.*|Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.|' com.ultimaker.cura.desktop
