@@ -7,7 +7,7 @@ pkgdesc="addons for openhab4 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
 license=("EPL")
-depends=("openhab4=4.3.4")
+depends=("openhab4")
 
 conflicts=("openhab4-snapshot-addons")
 

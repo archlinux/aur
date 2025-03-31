@@ -5,7 +5,7 @@ pkgbase = openhab4-addons
 	url = http://www.openhab.org/
 	arch = any
 	license = EPL
-	depends = openhab4=4.3.4
+	depends = openhab4
 	conflicts = openhab4-snapshot-addons
 	source = openhab-addons-4.3.4.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/4.3.4/openhab-addons-4.3.4.kar
 	sha256sums = 6582dfa1eae6691d81c310d5c50768c772af12c6905b103a9e811aac2bcfaed2
