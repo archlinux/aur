@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="code2prompt"
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="CLI tool to convert your codebase into a single LLM prompt"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 _pkgsrc="${pkgname}-${pkgver}"
 # source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 source=("${_pkgsrc}.crate::https://static.crates.io/crates/${pkgname}/${_pkgsrc}.crate")
-sha256sums=('84c6db4a38ae783b0db1e85f1606c095da26a8d6eb4f1aa81bedbbb75541af0c')
+sha256sums=('0d641a51aa4058c8e90665836bdbb5119f075a66b03bff3319b356440bdf407b')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

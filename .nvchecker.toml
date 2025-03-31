@@ -1,4 +1,7 @@
 [code2prompt]
-source = "git"
-git = "https://github.com/mufeedvh/code2prompt.git"
-prefix = "v"
+source = "cratesio"
+cratesio = "code2prompt"
+
+# source = "git"
+# git = "https://github.com/mufeedvh/code2prompt.git"
+# prefix = "v"
