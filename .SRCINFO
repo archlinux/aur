@@ -1,7 +1,7 @@
 pkgbase = scrutiny-bin
 	pkgdesc = Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnalogJ/scrutiny
 	install = scrutiny.install
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = scrutiny-bin
 	b2sums = f634bb3b85695225af5bc77a0e5ec3e09844fa4794b40381e1a6d1e81ac31cdb1d5b342c13bec33537dfed399777017bd3f323a53873d7356abd9eac5f77e677
 	b2sums = 60006f6ef9e37dd06d2ce64b9f87deebca9b3021db792a1367773a950ccf10ca708f165c6573a5b9766a5c5dd6b4aa4ec3d5967b1538639a8be8bd35f260b5ca
 	b2sums = 4d523a659a268383ab334668ec1c1ca6cfa66bfb0ed54e4a82cb17a44dad32fffab530014811f1e937af2c54327edb77ace0c3cfb5b0fe091a01ce8df4ce2994
-	b2sums = b76a16ea73807f5624adea7df186bc63c34c73701ca865d42f13b7d718bb88436a1e9510367c8f4af2525473523dfce9722f9da5153aafa1e3d51007510b5c52
+	b2sums = a98118d0c156d056a89ba1177a338a4061e54a029f9c6021cd8f71c77e6acdbf4b4432e371f07f04177655496b3f30818284d089958e7896b22479515bb18bf9
 	b2sums = 9220ff8673c9976b16abf35b9e4f94d541ff1472c4854f149e2bd09accfba0aa142f17b9d3485fe41ece823256fe53d5665c6761846b071b9975408fefdd443b
 	source_x86_64 = https://github.com/AnalogJ/scrutiny/releases/download/v0.8.1/scrutiny-web-linux-amd64
 	source_x86_64 = https://github.com/AnalogJ/scrutiny/releases/download/v0.8.1/scrutiny-collector-metrics-linux-amd64
