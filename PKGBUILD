@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='yampl-bin'
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Yaml templating via line-comments'
 url='https://github.com/clevyr/yampl'
@@ -11,14 +11,14 @@ license=('Apache-2.0')
 provides=('yampl')
 conflicts=('yampl')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.9.0/yampl_0.9.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('50506b30e639a8f4f6ae4f025a3cbb41ee1df7b25ee9f26bd93626b61c7f2965')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.9.1/yampl_0.9.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('f00cafa7cf1068e579c63c30abcbb3e7fbb51620a60a0eb5db03a2ed99010a19')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.9.0/yampl_0.9.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('511734dffe2f6a0522b2883ed214429ca686d5021686c6c53ff1abd9d9b312fe')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.9.1/yampl_0.9.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('8861926e45415c2f404f404f6f48fe175ca671773934dd065f6284913da7900d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.9.0/yampl_0.9.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('d32cc7f5a9faf4a672872888376f6244e076150d023fd406e76f67c762fe1af6')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/clevyr/yampl/releases/download/v0.9.1/yampl_0.9.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('6d50e94646316213818477dccca835441536f416056c39348696e22c89591952')
 
 package() {
   # bin
