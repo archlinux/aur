@@ -1,0 +1,16 @@
+pkgbase = simarrange
+	pkgdesc = STL 2D plate packer with collision simulation
+	pkgver = 20131022+r12+g8238ce5
+	pkgrel = 1
+	url = https://github.com/kliment/simarrange
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = admesh
+	depends = argtable
+	depends = gcc-libs
+	depends = glibc
+	depends = opencv2
+	source = simarrange-8238ce568c3ce23e1ad5fbfec55031907bd23f77.tar.gz::https://github.com/kliment/simarrange/archive/8238ce568c3ce23e1ad5fbfec55031907bd23f77.tar.gz
+	b2sums = 104640c75b54aadb722ac5e61a9b2caec37685f01212220164c4fd58ff722858c8bdd72019217900315f73698324efa58141dc2821326f4275959a7e2f1f849d
+
+pkgname = simarrange
