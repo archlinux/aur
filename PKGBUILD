@@ -4,15 +4,14 @@ _pkgname='sharedaccess'
 pkgname=${_pkgname}-git
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-pkgver=1.2.7.r0.gca33cf5
+pkgver=1.2.7.r1.g10ce3ae
 pkgrel=1
 pkgdesc='C++17 library to make sharing a resource with multiple threads easier.'
 url="https://gitlab.com/patlefort/${_pkgname}"
-license=('GPL3')
-depends=()
+license=('GPL-3.0-only')
+depends=('boost')
 makedepends=('cmake' 'git')
 arch=('any')
-optdepends=('boost: provide upgradeable locks')
 sha256sums=('SKIP')
 source=("git+${url}.git")
 
@@ -25,7 +24,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S ${_pkgname} -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S ${_pkgname} -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 
