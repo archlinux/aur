@@ -1,6 +1,6 @@
 pkgbase = rustdesk-bin
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required.
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://github.com/rustdesk/rustdesk
 	install = rustdesk-bin.install
@@ -24,9 +24,9 @@ pkgbase = rustdesk-bin
 	options = !strip
 	options = !lto
 	options = !debug
-	source_x86_64 = rustdesk-1.3.8-x86_64.pkg.tar.zst::https://github.com/rustdesk/rustdesk/releases/download/1.3.8/rustdesk-1.3.8-0-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 72d451d9985119be4c2249f96826b451ec0d0b79e669fa1835d7d7aeeab87007
-	source_aarch64 = rustdesk-1.3.8-aarch64.rpm::https://github.com/rustdesk/rustdesk/releases/download/1.3.8/rustdesk-1.3.8-0.aarch64.rpm
-	sha256sums_aarch64 = ac96636ebd77ab15c5dd85579dcb09543e230cea60192b59590c4844628691c7
+	source_x86_64 = rustdesk-1.3.9-x86_64.pkg.tar.zst::https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-0-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = ede7a0aa6f48e263ab2fcc39f00c03212937a5253434c73202a5ccae136ec167
+	source_aarch64 = rustdesk-1.3.9-aarch64.rpm::https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-0.aarch64.rpm
+	sha256sums_aarch64 = 69b4b945a6d81773ff771ba12ee7dc55eb9904a92a4fba1aa93773e8b9f586c7
 
 pkgname = rustdesk-bin
