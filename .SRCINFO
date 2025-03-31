@@ -1,17 +1,17 @@
 pkgbase = lib32-luajit
 	pkgdesc = Just-in-time compiler and drop-in replacement for Lua 5.1 (32-bit)
-	pkgver = 2.1.1736781742
+	pkgver = 2.1.1741730670
 	pkgrel = 1
 	url = https://luajit.org
 	arch = x86_64
 	license = MIT
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = luajit>=2.1.1736781742
+	depends = luajit>=2.1.1741730670
 	provides = libluajit-5.1.so
 	options = emptydirs
-	source = LuaJIT-a4f56a459a588ae768801074b46ba0adcfb49eb1.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/a4f56a459a588ae768801074b46ba0adcfb49eb1.tar.gz
-	sha256sums = b4120332a4191db9c9da2d81f9f11f0d4504fc4cff2dea0f642d3d8f1fcebd0e
-	b2sums = 847d1ce1a73986fddaa3c43d7dc6c49e942231758ad2fc06276769df82e0ca4239ad1e8481a7177ad43bf60af5afc58ae9e3f8c77bf051d06d8cf268f0bcfd7e
+	source = LuaJIT-538a82133ad6fddfd0ca64de167c4aca3bc1a2da.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/538a82133ad6fddfd0ca64de167c4aca3bc1a2da.tar.gz
+	sha256sums = 7acbc36be8f21072422eb9a5e5fc468d0eaa55bec1b70260d651e845684621e2
+	b2sums = d95324b6a12919107f33d12e168ac798a91e829d8ddda7a2362dd6dff893e68e5fcc68322023216ab84352507107a2bff9934a87c1aa1427185645157cc78fc8
 
 pkgname = lib32-luajit

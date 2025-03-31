@@ -10,9 +10,9 @@ _Name="LuaJIT"
 _name="${_Name,,}"
 pkgname="lib32-${_name}"
 # LuaJIT has a "rolling release" where you should follow git HEAD
-_commit=a4f56a459a588ae768801074b46ba0adcfb49eb1
+_commit=538a82133ad6fddfd0ca64de167c4aca3bc1a2da
 # The patch version is the timestamp of the above git commit, obtain via `git show -s --format=%ct`
-_ct=1736781742
+_ct=1741730670
 pkgver="2.1.${_ct}"
 pkgrel=1
 pkgdesc="Just-in-time compiler and drop-in replacement for Lua 5.1 (32-bit)"
@@ -25,8 +25,8 @@ provides=("lib${_name}-5.1.so")
 options=('emptydirs')
 _pkgsrc="${_Name}-${_commit}"
 source=("LuaJIT-${_commit}.tar.gz::${_url}/archive/${_commit}.tar.gz")
-sha256sums=('b4120332a4191db9c9da2d81f9f11f0d4504fc4cff2dea0f642d3d8f1fcebd0e')
-b2sums=('847d1ce1a73986fddaa3c43d7dc6c49e942231758ad2fc06276769df82e0ca4239ad1e8481a7177ad43bf60af5afc58ae9e3f8c77bf051d06d8cf268f0bcfd7e')
+sha256sums=('7acbc36be8f21072422eb9a5e5fc468d0eaa55bec1b70260d651e845684621e2')
+b2sums=('d95324b6a12919107f33d12e168ac798a91e829d8ddda7a2362dd6dff893e68e5fcc68322023216ab84352507107a2bff9934a87c1aa1427185645157cc78fc8')
 
 build() {
   export CFLAGS+=" -m32"
