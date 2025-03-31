@@ -1,6 +1,6 @@
 pkgbase = firefox-bin
 	pkgdesc = Standalone web browser from mozilla.org - Static binaries from upstream
-	pkgver = 136.0.4
+	pkgver = 137.0
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/new/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = firefox-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=136.0.4
+	provides = firefox=137.0
 	conflicts = firefox
 	options = !strip
 	source = firefox.sh
@@ -30,13 +30,13 @@ pkgbase = firefox-bin
 	sha256sums = 9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703
 	sha256sums = c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef
 	sha256sums = 1c432537a46ffe64b3069bc2c2e7e069797223607b181e77492e74b38e90c730
-	source_x86_64 = firefox-136.0.4-x86_64.tar.xz::https://archive.mozilla.org/pub/firefox/releases/136.0.4/linux-x86_64/en-US/firefox-136.0.4.tar.xz
-	source_x86_64 = firefox-136.0.4-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/136.0.4/linux-x86_64/en-US/firefox-136.0.4.tar.xz.asc
-	sha256sums_x86_64 = ffebf056b2d6cb477ed5768b899d84b6ba553787ca9465cd5783f5e3ebbe75d7
+	source_x86_64 = firefox-137.0-x86_64.tar.xz::https://archive.mozilla.org/pub/firefox/releases/137.0/linux-x86_64/en-US/firefox-137.0.tar.xz
+	source_x86_64 = firefox-137.0-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/137.0/linux-x86_64/en-US/firefox-137.0.tar.xz.asc
+	sha256sums_x86_64 = 4d2d0a64a11f8aab7a1be583e1e4cddfaf2671967212b369a87489f3c11c3ac9
 	sha256sums_x86_64 = SKIP
-	source_i686 = firefox-136.0.4-i686.tar.xz::https://archive.mozilla.org/pub/firefox/releases/136.0.4/linux-i686/en-US/firefox-136.0.4.tar.xz
-	source_i686 = firefox-136.0.4-i686.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/136.0.4/linux-i686/en-US/firefox-136.0.4.tar.xz.asc
-	sha256sums_i686 = 7b4a1712e85fa2883af59955314e80795db358df8ebafc269843c86c0c7345e2
+	source_i686 = firefox-137.0-i686.tar.xz::https://archive.mozilla.org/pub/firefox/releases/137.0/linux-i686/en-US/firefox-137.0.tar.xz
+	source_i686 = firefox-137.0-i686.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/137.0/linux-i686/en-US/firefox-137.0.tar.xz.asc
+	sha256sums_i686 = cbfbeaca5d6026f3d8f72a555aa18ac1c60c618868aeb7595b235879f58d0f7e
 	sha256sums_i686 = SKIP
 
 pkgname = firefox-bin
