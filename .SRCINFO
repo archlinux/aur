@@ -1,7 +1,7 @@
 pkgbase = citra-appimage
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger, GUI version, already compiled
-	pkgver = 20240516
-	pkgrel = 3
+	pkgver = 20240927
+	pkgrel = 1
 	epoch = 1
 	url = https://citra-emu.org
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = citra-appimage
 	replaces = citra-bin
 	replaces = citra-qt-bin
 	options = !strip
-	source = https://github.com/PabloMK7/citra/releases/download/r64e3e9f/citra-linux-appimage-20240516-64e3e9f.tar.gz
+	source = https://archive.org/download/citra-emulator-pablomk7-fork/git/r608383e/citra-linux-appimage-20240927-608383e.tar.gz
 	source = citra.desktop
-	b2sums = SKIP
+	b2sums = 74d037791de0d37124d6064e698f30f7b1a13d0b6f3fdc391d0bba97fbe1b0501719fdaef09f8550961c79b5b3e0d28e6cd07e95ef55ebf6a669e22a506578c2
 	b2sums = 1c12c015380367b599cb56cabfdcf9065e2cbb04e3145d0dcfdfc5e2cb404926c2851e58383c930f569b67da8f89095164b7d1f482f39fb5e1f5a1c26e1853b0
 
 pkgname = citra-appimage
