@@ -2,7 +2,7 @@
 
 pkgname=llama.cpp-sycl-f32
 _pkgname=${pkgname%%-sycl-f32}
-pkgver=b5005
+pkgver=b5006
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)"
 arch=(x86_64 armv7h aarch64)
@@ -33,7 +33,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('d89f9a6668a5581e1f57dedcf193bbe30b6380257b479e6b3e23cbf8f8b16e8e'
+sha256sums=('e16d76f626d3b749e6240999e5c670ba8883c568020e65216719d9485f94473a'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
