@@ -1,7 +1,7 @@
 pkgbase = helion-git
 	pkgdesc = A modern Doom FPS engine, made with C# and GPU usage in mind
 	pkgver = 0.9.6.1.r129.g664657f
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Helion-Engine/Helion
 	arch = x86_64
 	license = GPL3

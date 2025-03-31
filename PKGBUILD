@@ -1,7 +1,7 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 pkgname=helion-git
 pkgver=0.9.6.1.r129.g664657f
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
@@ -49,9 +49,7 @@ package() {
 	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./README.md "$pkgdir"/opt/Helion/
 	install -Dm644 ./SoundFonts/Default.sf2 "$pkgdir"/opt/Helion/SoundFonts/
-	mkdir -m=644 -p "$pkgdir"/bin
-	ln -s "$pkgdir"/opt/Helion/Helion "$pkgdir"/bin/helion
 	mkdir -m=644 -p "$pkgdir"/usr/share/applications/ && mkdir -m=644 -p "$pkgdir"/usr/share/icons/
-	install -Dm644 "$srcdir"/helion.desktop "$pkgdir"/usr/share/applications/
-	install -Dm644 "$srcdir"/helion.ico "$pkgdir"/usr/share/icons/
+	install -Dm644 "$srcdir"/helion.desktop "$pkgdir"/usr/share/applications/helion.desktop
+	install -Dm644 "$srcdir"/helion.ico "$pkgdir"/usr/share/pixmaps/helion.ico
 }
