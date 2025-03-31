@@ -16,7 +16,7 @@ source=("joypixels-linux-${pkgver}.ttf::https://cdn.joypixels.com/arch-linux/fon
         "license-free-${pkgver}-${pkgrel}.pdf::https://cdn.joypixels.com/free-license.pdf"
         "license-appendix-${pkgver}-${pkgrel}.pdf::https://cdn.joypixels.com/arch-linux/appendix/joypixels-license-appendix.pdf")
 sha256sums=('7c95040bebcb69676e81963ee0a82e4138f342ee85b5b8dbbad7d05d1f657eae'
-            'f70f4927455b310b02caf0140592800a8357c8cdaea30493f909067212ea74ae'
+            'b8572500ff2ff25387c9a1f51f2f122215a881ebcf723adddf09fa347b3e64e6'
             '05084e4ddbbb0c241bb0ff4e307853a9e6236fa1c617b7cba44af31b6bfc5e2d')
 
 package() {
