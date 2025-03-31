@@ -1,7 +1,9 @@
+# Maintainer: Lefthook <lefthook@evilmartians.com>
+
 pkgname=lefthook-bin
-pkgver=1.11.5
+pkgdesc="Git hooks manager"
+pkgver=1.11.6
 pkgrel=1
-pkgdesc="git hooks manager"
 arch=('x86_64' 'aarch64')
 url="https://github.com/evilmartians/lefthook"
 license=('MIT')
@@ -10,9 +12,9 @@ makedepends=()
 provides=('lefthook')
 conflicts=('lefthook')
 source_x86_64=("https://github.com/evilmartians/lefthook/releases/download/v${pkgver}/lefthook_${pkgver}_Linux_x86_64.gz")
-source_aarch64=("https://github.com/evilmartians/lefthook/releases/download/v${pkgver}/lefthook_${pkgver}_Linux_arm64.gz")
-sha256sums_x86_64=('4cdc8a46f33706868efaca729f6b8800ecd6b4bd05b6330c832bb4bfa35011b3')
-sha256sums_aarch64=('ef529ae2b1229cb4f6ba349fdc9e7191b900408709dee461090dcfa205ddd00e')
+source_aarch64=("https://github.com/evilmartians/lefthook/releases/download/v${pkgver}/lefthook_${pkgver}_Linux_aarch64.gz")
+sha256sums_x86_64=('fe55bda07b8e99a9074df5e9dc99d1d2e453380b7412049ebab29e15852ec6ac')
+sha256sums_aarch64=('5dfcbe09ffc695c027364878d6b1091789dc672e9828b2673ab0fa3ec7ab0e94')
 
 build() {
 	cd "${srcdir}"
