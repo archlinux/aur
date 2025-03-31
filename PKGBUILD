@@ -17,7 +17,7 @@ depends=(openal
 makedepends=('dotnet-runtime' 'clang')
 conflicts=('helion')
 source=("git+https://github.com/Helion-Engine/Helion"
-		"Helion.desktop"
+		"helion.desktop"
 		"helion.ico")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
