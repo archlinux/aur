@@ -26,31 +26,27 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  yarn --cache-folder "${srcdir}/yarn-cache" install
-  yarn --cache-folder "${srcdir}/yarn-cache" run build
+  cd $_pkgname
+  yarn install
+  yarn run build
 }
 
 package() {
+  install -d "${pkgdir}/usr/lib/freetube"
   install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/lib/${pkgname%-electron-git}"
 
   # copying libs
-  cp -R "./$_pkgname/build/linux-unpacked/." "$pkgdir/usr/lib/${pkgname%-electron-git}"
+  cp -R ./$_pkgname/build/linux-unpacked/. "${pkgdir}/usr/lib/freetube/"
 
   # executable
-  ln -s  "$pkgdir/usr/lib/${pkgname%-electron-git}/freetube" "$pkgdir/usr/bin/freetube"
+  ln -s /usr/lib/freetube/freetube "${pkgdir}/usr/bin/freetube"
   
-  cd $_pkgname
-
   # licence
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-electron-git}/LICENSE"
+  install -Dm644 ./$_pkgname/LICENSE "${pkgdir}/usr/share/licenses/freetube/LICENSE"
 
   # icon
-  install -Dm644 "./_icons/icon.svg" "$pkgdir/usr/share/pixmaps/freetube.svg"
+  install -Dm644 ./$_pkgname/_icons/icon.svg "${pkgdir}/usr/share/pixmaps/freetube.svg"
   
-  cd ..
-
   # desktop file
-  install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/freetube.desktop"
+  install -Dm644 ./freetube.desktop "${pkgdir}/usr/share/applications/freetube.desktop"
 }
