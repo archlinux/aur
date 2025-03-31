@@ -6,8 +6,8 @@ _pkgname=Dopamine
 __pkgname=dopamine
 pkgname=dopamine-appimage-preview
 __pkgver=3.0.0-preview
-prevver=37
-_pkgver=${__pkgver}.${prevver}
+_prevver=37
+_pkgver=${__pkgver}.${_prevver}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="The audio player that keeps it simple"
@@ -18,9 +18,9 @@ depends=(alsa-lib gtk3 nss)
 provides=(dopamine)
 conflicts=(dopamine)
 options=(!strip)
-source_x86_64=(https://github.com/digimezzo/dopamine/releases/download/v${__pkgver}.${prevver}/Dopamine-${__pkgver}.${prevver}.AppImage)
+source_x86_64=(https://github.com/digimezzo/dopamine/releases/download/v${__pkgver}.${_prevver}/Dopamine-${__pkgver}.${_prevver}.AppImage)
 source=("dopamine.desktop")
-sha512sums=('c27e980de4fb9e9a4a7b714c65c35aef9fe37e13f4589e5c1160e927df4dd9e0370999995d092b7009829bc1e410cd7fbfbd4f3fb11ffa05d5c5cfb1657ba793')
+sha512sums=('79ecf7f1bd5f9562289a945f4e07a17adce0e5de9ea005b3b791bc66c2ef3890cc144af4c9364464dd4c34b4789f03b0e56fc743b2ec9d26fab9dcb4f9c3a255')
 sha512sums_x86_64=('25cfa9366aa11870f7a5ee8ed48d73a546d749ed2f42377fb41f5f228f6bb5398677dcd072aad04131eb994b7174ab75474c22f1849345342f104f46b8629059')
 
 prepare() {
