@@ -5,7 +5,7 @@
 
 pkgname="rpcs3"
 pkgver=0.0.36
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source PlayStation 3 emulator/debugger written in C++"
 arch=('aarch64' 'x86_64')
 url="https://rpcs3.net"
@@ -183,10 +183,12 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
+    -Wno-dev
     -DCMAKE_BUILD_TYPE:STRING='None'
     -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DCMAKE_SKIP_RPATH=ON
-    -DCMAKE_LINKER=lld \
+    -DCMAKE_LINKER=lld
     -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
     -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
     -DUSE_NATIVE_INSTRUCTIONS=OFF # disable '-march=native'
@@ -204,7 +206,6 @@ build() {
     -DUSE_SYSTEM_PUGIXML=ON
     -DUSE_SYSTEM_WOLFSSL=OFF
     -DUSE_SYSTEM_ZLIB=ON
-    -Wno-dev
   )
 
   cd "${srcdir}"
