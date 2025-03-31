@@ -1,4 +1,5 @@
 nco-*.tar.gz
+nco/
 src
 pkg
 nco-*.pkg.tar*

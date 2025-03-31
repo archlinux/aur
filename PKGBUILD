@@ -3,7 +3,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 
 pkgname=nco
-pkgver=5.3.2
+pkgver=5.3.3
 pkgrel=1
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
@@ -23,25 +23,26 @@ depends=(
 )
 makedepends=(
   'antlr2'
+  'git'
 )
 options=('!libtool')
 
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/nco/nco/archive/$pkgver.tar.gz"
+  "git+https://github.com/nco/nco.git#tag=$pkgver"
   'use_antlr2.patch'
 )
 sha256sums=(
-  '645179433e0f54e7e6fefa9fcc74c1866ad55dd69f0fccbc262c550fcc186385'
+  '73082e9144215bb723b662b55f752e684a7308aa9813481e4fbd8a61265a762b'
   '762e7d1857efed1abf4950d747b84e83f55b4557a1c63d839f9b6addb15fc7c0'
 )
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd nco
   patch -p0 -i "$srcdir/use_antlr2.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd nco
   ./configure \
     --prefix=/usr \
     --with-hdf5-plugin-path=/usr/lib/hdf5/plugin \
@@ -50,12 +51,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd nco
   make check
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd nco
   make DESTDIR="$pkgdir" install install-html
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
