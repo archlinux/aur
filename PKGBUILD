@@ -3,7 +3,7 @@
 
 pkgname=rpcs3-git
 pkgver=0.0.36.r17723.2f8ed1a6bd
-pkgrel=1
+pkgrel=2
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
 url=https://github.com/RPCS3/rpcs3
@@ -123,7 +123,8 @@ build() {
     -DUSE_SYSTEM_WOLFSSL=OFF \
     -DCMAKE_LINKER=lld \
     -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
-    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
+    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   
   cmake --build build
 }
