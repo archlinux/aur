@@ -1,7 +1,7 @@
 pkgbase = ruby-highline
 	pkgdesc = A higher level command-line oriented interface
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JEG2/highline
 	arch = x86_64
 	license = MIT
