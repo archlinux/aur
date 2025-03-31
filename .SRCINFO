@@ -1,6 +1,6 @@
 pkgbase = xivlauncher-bin
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online - github binary artifact wrapper
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/goatcorp/XIVLauncher.Core
 	arch = x86_64
@@ -11,17 +11,17 @@ pkgbase = xivlauncher-bin
 	depends = desktop-file-utils
 	depends = jxrlib
 	optdepends = steam
-	provides = xivlauncher=1.1.1
+	provides = xivlauncher=1.1.2
 	conflicts = xivlauncher
 	conflicts = xivlauncher-git
 	conflicts = xivlauncher-rb
 	options = !strip
 	options = !debug
-	source = XIVLauncher.Core.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/1.1.1/XIVLauncher.Core-arch.tar.gz
+	source = XIVLauncher.Core.tar.gz::https://github.com/goatcorp/XIVLauncher.Core/releases/download/1.1.2/XIVLauncher.Core-arch.tar.gz
 	source = 512.png::https://raw.githubusercontent.com/goatcorp/XIVLauncher.Core/main/misc/linux_distrib/512.png
 	source = XIVLauncher.desktop
 	source = xivlauncher-core
-	sha512sums = 227b40463fdf09b04671c2ecda2a8b4aad6847e8e74680db51439cc5a1a3ed484830a06d64eee73f8c831b7adc4b530b528506bed69c80763fbb23a53d895387
+	sha512sums = a3a447af894963319c7ce95ef442f412abc13a23182669abe4ca1c91e64bbb996d965df59fb0d6382540b4cf82ba554e93c560f74dff03dabff49fac16bc8a8b
 	sha512sums = 0c33502cd915132151fa4b6c94899bf3f8806c2943469609cdda09365ff78be863215abd2741048d6c9a934a22dca0f8a8a2c67074c38abc6f67984c393859c4
 	sha512sums = c06130b67efff8aa53760cb9c8bd764d4307624ec42c52d58cce388863e64788821f6f836857f200452e75de3b5311466074c70b81ad6d70ab60b286ddfda2e8
 	sha512sums = 1b4584216828fac294d9955924a89bba716bcb6f1ec582e50f3169e1501eb3d637cb89f921d887d8aba20eb4a4166915e9812aad634bcfd10ab97324164aaec5
