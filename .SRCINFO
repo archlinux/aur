@@ -1,6 +1,6 @@
 pkgbase = bento
 	pkgdesc = Fancy stream processing made operationally mundane
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 0
 	url = https://warpstreamlabs.github.io/bento/
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = bento
 	makedepends = go
 	provides = bento
 	conflicts = bento
-	source = bento-1.5.0.tar.gz::https://github.com/warpstreamlabs/bento/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 4912104da3a8311dfe36aaf8dbe4d8c73a58d6ed643d18f4edb05acdb95d9d95
+	source = bento-1.6.0.tar.gz::https://github.com/warpstreamlabs/bento/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 84c0d4841a924690dcbf6f380c28065c4e4033085066e0d2e8d4a346673ec7ce
 
 pkgname = bento
