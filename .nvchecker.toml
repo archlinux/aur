@@ -1,0 +1,4 @@
+[ruby-dry-core]
+source = "git"
+git = "https://github.com/dry-rb/dry-core.git"
+prefix = "v"
