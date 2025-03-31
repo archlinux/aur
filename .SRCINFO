@@ -1,7 +1,7 @@
 pkgbase = sudachi
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 1.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sudachi.emuplace.app
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -30,8 +30,8 @@ pkgbase = sudachi
 	source = libusb::git+https://github.com/libusb/libusb#tag=v1.0.24
 	source = discord-rpc::git+https://github.com/sudachi-emu/discord-rpc
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers#tag=v1.4.310
-	source = sirit::git+https://github.com/sudachi-emu/sirit
-	source = mbedtls::git+https://github.com/sudachi-emu/mbedtls
+	source = sirit::git+https://github.com/sudachi-emu/sirit#commit=795ef4d8318c7d344da99c076dd60e5580d3d5ac
+	source = mbedtls::git+https://github.com/sudachi-emu/mbedtls#commit=86ed7bfaa80079a97c763a651d0b2cd8d9d59100
 	source = xbyak::git+https://github.com/herumi/xbyak#tag=v6.73
 	source = opus::git+https://github.com/xiph/opus#tag=v1.3.1
 	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib#commit=65ce51aed7f15e40e8fb6d2c0a8efb10bcb40126
@@ -43,7 +43,7 @@ pkgbase = sudachi
 	source = simpleini::git+https://github.com/brofield/simpleini
 	source = oaknut::git+https://github.com/sudachi-emu/oaknut#commit=a3135650b39a9595d3852c4784d432c95a3b1af2
 	source = Vulkan-Utility-Libraries::git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries#tag=v1.4.310
-	source = vcpkg::git+https://github.com/microsoft/vcpkg
+	source = vcpkg::git+https://github.com/microsoft/vcpkg#tag=2025.02.14
 	source = tzdb_to_nx::git+https://github.com/lat9nq/tzdb_to_nx
 	source = cubeb::git+https://github.com/mozilla/cubeb
 	source = SDL3::git+https://github.com/libsdl-org/sdl#tag=release-3.2.8
@@ -52,7 +52,7 @@ pkgbase = sudachi
 	source = cubeb-coreaudio-rs::git+https://github.com/mozilla/cubeb-coreaudio-rs#branch=trailblazer
 	source = cubeb-pulse-rs::git+https://github.com/mozilla/cubeb-pulse-rs#branch=dev
 	source = linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass#branch=master
-	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers
+	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers#commit=c214f6f2d1a7253bb0e9f195c2dc5b0659dc99ef
 	source = tz::git+https://github.com/eggert/tz
 	source = zycore::git+https://github.com/zyantific/zycore-c
 	b2sums = deacfbf286580efea76745c973b497eaa83a27b8157cb3af978e8911ad94f2d428c98c1160fd56d99762670a6fd8a618f562c49c6b69661c6ff7cce5a912feda
@@ -61,8 +61,8 @@ pkgbase = sudachi
 	b2sums = 4274bb7227e90f3652bd7a5048ac0ff5b24d0c6a86cbaed1b02c18a84ee6ae5ade6a861bb9f4833166197d939f3745994cce15baed815098254e4ab2d3ea76af
 	b2sums = SKIP
 	b2sums = 1c5899b459bf936250eed654e61bc108b3853e1847764a5a74176444ccebbb6e7a383ddac42ee3b2dc27f74e3a375f7c0360ab70585d3a2bf0602fee324b8db7
-	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = 4592c7d25bb118ffbe50307cfdea37c310a21da326fcf6132b563d892ea3cc4abef9a41c2e63dc015904c000829f4af6d1dfc475e97620f67a1fcb876d80c59e
+	b2sums = 2dfddbebb1ae11e8e1a435f1e17721143e411f57af147667139983d5be5fdf5d633ebcfb70c94868b1cdd3c417b915020b2cd0c1398efcdfdb2ff19bf1ede37c
 	b2sums = 0d89124eec3ac2acadfd91f8d34eebc75619b805eb9dbec52d99068e0ed4e57fa3b681e1ce9aaa11c3dcef18677d5ff56fae230f2af42ec1e4cb1118412c1483
 	b2sums = f262820a87d3840f9560430b05e70c9621580301b3f156fd187d82b567e95a9476c75cf5fbe888271097f95f428f45a11cd84e1ec00dd4dd8c2744d1f324b922
 	b2sums = 8b19e4063fdfb623aa83c715ce499da17bea6159287eb60e8e11faa2e574b90eb1c6bc9ab3331231e15c03bc503bde542701494802dc7d9c5afa34d98ec2f086
@@ -74,7 +74,7 @@ pkgbase = sudachi
 	b2sums = SKIP
 	b2sums = f44c8b6d5b929999ddaeec5ea99fc02787056a0b0e7b68653b9b620dd714e0fe6334deb47ffc3774f03787cd1a147bc1b8c63dfb248c20de26247cd2e6b0a590
 	b2sums = a608b1aecd793e3c9d21badb9dc0e44067aab5084723698b880f946e0af61843bf808f45dcb017f5206e53f3cc2be57816fdf59950750a15865e20b7cc5fe54e
-	b2sums = SKIP
+	b2sums = 53a96ba10063d90b6750896374847e5e5cafd47b9fc65bb71a6e0597362aa28806b834252d934d92da645a839b17234339b1b53f7d99eb3630bac75ff9a9d30a
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = 690393dc7f099d9f45a9727a41ed072c90c514853fdb401519886c034ca8ed7280a1e32c1dffd6971472638565f5f72eb2ffcde828ddd072a34eea790273df46
@@ -83,7 +83,7 @@ pkgbase = sudachi
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = SKIP
+	b2sums = 686239a1a777acde8e9ac22bf338dec5d553e6846919cfd8f907693774f335a44632c13dbbb5d1cdaba968c67edd88f20ec6dc4ee2d289a5f5149bf04bf4dad6
 	b2sums = SKIP
 	b2sums = SKIP
 
