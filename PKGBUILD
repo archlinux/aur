@@ -3,15 +3,15 @@
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
 pkgver=r11790.7d26d35fc
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
 arch=('i686' 'x86_64')
-license=('GPL2'
-         'LGPL2.1'
-         'ZLIB')
-depends=('alsa-lib' 'hicolor-icon-theme' 'jansson' 'libblocksruntime' 'libdispatch')
-makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse'
+license=('GPL-2.0-or-later'
+         'LGPL-2.1-or-later'
+         'Zlib')
+depends=('hicolor-icon-theme' 'jansson' 'libblocksruntime' 'libdispatch')
+makedepends=('alsa-lib' 'curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse'
              'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
              'ffmpeg' 'gtk2' 'gtk3' 'clang' 'libpipewire')
 optdepends=('gtk2: for the GTK2 interface'
