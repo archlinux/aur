@@ -1,27 +1,23 @@
 pkgbase = pokerth
 	pkgdesc = Client to online Poker game written in C++/Qt
 	pkgver = 1.1.2
-	pkgrel = 49
+	pkgrel = 50
 	url = http://www.pokerth.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom
-	makedepends = boost=1.86.0
+	makedepends = boost
 	depends = curl
-	depends = boost-libs=1.86.0
+	depends = boost-libs
 	depends = gsasl
 	depends = protobuf
 	depends = qt5-base
 	depends = sdl_mixer
 	depends = tinyxml
 	source = https://sourceforge.net/projects/pokerth/files/pokerth/1.1.2/pokerth-1.1.2.tar.gz
-	source = pokerth-1.1.2.patch
-	source = pokerth-1.1.2.patch.2019
-	source = pokerth-1.1.2.patch.2020
 	source = pokerth-1.1.2.patch.2023
 	source = pokerth-1.1.2.patch.2023.xdg
-	source = pokerth-1.1.2.patch.2024.boost_deps
 	md5sums = 8fd7d7fc7ece17315e58aa3240dd4586
 	md5sums = 0ef5541fc6008dfb2521dcab47afb659
 	md5sums = 50d427bd8afc57fb61e186de6c4e5601
@@ -29,5 +25,8 @@ pkgbase = pokerth
 	md5sums = a9b886e89d5c262c95c1d90e459d519c
 	md5sums = e61eae14e6394f4745245e2ef42d812c
 	md5sums = 5a563f6b3b144b0e6c2eb4bacd4ca3d4
+	md5sums = fccb2e36cdd6a71fa4c724ec7ee7aab5
+	md5sums = ef647991fb46f0c334931a801b173fb6
+	md5sums = c5c635158e5cb3227905e89e7fef1d02
 
 pkgname = pokerth

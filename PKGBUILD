@@ -1,34 +1,48 @@
 # Maintainer: blacktav <blacktav at gmail dot com>
 # Contributor: based on unknown abandoned pokerth-final from 2012-12-27
-# Patches: xx55tt, viktoracoric, Mailaender, jiocash
+# Patches: xx55tt, viktoracoric, Mailaender, jlocash
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=49
+pkgrel=50
 
 pkgdesc="Client to online Poker game written in C++/Qt"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
 license=('GPL' 'custom')
-depends=('curl' 'boost-libs=1.86.0' 'gsasl' 'protobuf'
+depends=('curl' 'boost-libs' 'gsasl' 'protobuf'
          'qt5-base' 'sdl_mixer' 'tinyxml')
 
-makedepends=('boost=1.86.0')
+makedepends=('boost')
+
+# pin boost to 1.86.0
+#depends=('curl' 'boost-libs=1.86.0' 'gsasl' 'protobuf'
+#         'qt5-base' 'sdl_mixer' 'tinyxml')
+
+#makedepends=('boost=1.86.0')
 
 source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz
-        ${pkgname}-${pkgver}.patch
-        ${pkgname}-${pkgver}.patch.2019
-        ${pkgname}-${pkgver}.patch.2020
+#        ${pkgname}-${pkgver}.patch
+#        ${pkgname}-${pkgver}.patch.2019
+#        ${pkgname}-${pkgver}.patch.2020
         ${pkgname}-${pkgver}.patch.2023
         ${pkgname}-${pkgver}.patch.2023.xdg
-        ${pkgname}-${pkgver}.patch.2024.boost_deps)
+#        ${pkgname}-${pkgver}.patch.2024.boost_deps
+#        ${pkgname}-${pkgver}.patch.2025.boost-1.87
+#        ${pkgname}-${pkgver}.patch.2025.websocketpp
+#        ${pkgname}-${pkgver}.patch.2025.moredeps
+        )
 md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
          '0ef5541fc6008dfb2521dcab47afb659'
          '50d427bd8afc57fb61e186de6c4e5601'
          '5bdcc1f2240c20f4b766b183d93836b3'
          'a9b886e89d5c262c95c1d90e459d519c'
          'e61eae14e6394f4745245e2ef42d812c'
-         '5a563f6b3b144b0e6c2eb4bacd4ca3d4')
+         '5a563f6b3b144b0e6c2eb4bacd4ca3d4'
+         'fccb2e36cdd6a71fa4c724ec7ee7aab5'
+         'ef647991fb46f0c334931a801b173fb6'
+         'c5c635158e5cb3227905e89e7fef1d02'
+         )
 
 # -------------------------------------------------------------------------
 # Possible build speed-ups
@@ -48,30 +62,39 @@ prepare() {
 
   # ---< required for v1.1.2 >--------------------------------------------------
   # these changes should be incorporated in next release ~feb-2018
-  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch"
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch"
   # ----------------------------------------------------------------------------
   # changes to permit building with boost 1.70
-  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2019"
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2019"
   # ----------------------------------------------------------------------------
   # change to permit building with boost 1.74
   # see also DEFINE+="BOOST_BIND_GLOBAL_PLACEHOLDERS" in build below
-  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2020"
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2020"
   # ----------------------------------------------------------------------------
   # change to explicitly link libabsl_log_internal_message.so and
   #                           libabsl_log_internal_check_op.so
   #                           patch revised by xx55tt
   # change to explicitly link libabsl_log_internal_nullguard
-  #                           patch revised by jiocash 2024/12
+  #                           patch revised by jlocash 2024/12
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023"
   # ----------------------------------------------------------------------------
   # change to use XDG_CONFIG_HOME if available
   # changes suggested by @viktoracoric
-  # patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023.xdg"
+#   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023.xdg"
   # ----------------------------------------------------------------------------
   # change to adapt to boost deprecation removals in 1.85
   # corrections taken from upstream
   # adapts to BOOST_VERSION: should work with either 1.83 or 1.86
-  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2024.boost_deps"
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2024.boost_deps"
+  # ----------------------------------------------------------------------------
+  # Patches & much effort by jlocash
+  # change to adapt to boost deprecation removals in 1.87
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2025.boost-1.87"
+  # change to adapt to boost & webapp deprecation removals
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2025.websocketpp"
+  # ----------------------------------------------------------------------------
+  # minor changes to adapt to various deprecations
+#  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2025.moredeps"
   # ----------------------------------------------------------------------------
 
   # good idea to do this at all times
