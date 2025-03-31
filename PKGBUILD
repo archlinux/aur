@@ -3,7 +3,7 @@
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-kombu
-pkgver=5.5.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="A messaging library for Python"
 arch=(any)
@@ -55,7 +55,7 @@ optdepends=(
   'python-zstandard: for zstd compression support'
 )
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a396443ceb493f09778a9a312ec2d55c1dfb66719fccbd579e792fc701ab6fcf')
+sha256sums=('4b118945eef8e802ec1c58c53d9978deec5ce75e5ed2e8dadba7a7b89233bb6e')
 
 build() {
   cd ${pkgname#python-}-$pkgver
