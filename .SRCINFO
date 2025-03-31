@@ -1,6 +1,6 @@
 pkgbase = duckstation-git
 	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)
-	pkgver = 0.1.r8824.g54c42f9c2
+	pkgver = 0.1.r8839.gb798d8f1a
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -53,6 +53,7 @@ pkgbase = duckstation-git
 	optdepends = ffmpeg: Video capture support
 	provides = duckstation
 	conflicts = duckstation
+	options = lto
 	source = git+https://github.com/stenzek/duckstation.git
 	source = stenzek.shaderc::git+https://github.com/stenzek/shaderc.git
 	source = spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git

@@ -2,7 +2,7 @@
 
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r8824.g54c42f9c2
+pkgver=0.1.r8839.gb798d8f1a
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -57,6 +57,7 @@ optdepends=(
     'jack: JACK support'
     'ffmpeg: Video capture support'
 )
+options=(lto)
 provides=(duckstation)
 conflicts=(duckstation)
 source=(
