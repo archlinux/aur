@@ -201,6 +201,79 @@ char *C_HL_keywords[] = {
   "void|", NULL
 };
 
+char *PYTHON_HL_extensions[] = { ".py", NULL };
+char *PYTHON_HL_keywords[] = {
+  "def", "class", "if", "elif", "else", "while", "for", "break", "continue",
+  "return", "try", "except", "finally", "import", "from", "as", "pass", "raise",
+  "with", "yield", "lambda", "global", "nonlocal", "assert", "del", "and", "or",
+  "not", "is", "in", "True", "False", "None",
+  "int|", "float|", "str|", "list|", "dict|", "set|", "tuple|", NULL
+};
+
+char *JS_HL_extensions[] = { ".js", ".jsx", ".ts", ".tsx", NULL };
+char *JS_HL_keywords[] = {
+  "function", "class", "if", "else", "while", "for", "break", "continue",
+  "return", "try", "catch", "finally", "throw", "import", "export", "default",
+  "let", "const", "var", "new", "delete", "typeof", "instanceof", "in", "of",
+  "true", "false", "null", "undefined", "NaN", "Infinity",
+  "Number|", "String|", "Boolean|", "Array|", "Object|", "Promise|", NULL
+};
+
+char *MD_HL_extensions[] = { ".md", ".markdown", NULL };
+char *MD_HL_keywords[] = { NULL }; // Markdown doesn't use traditional keywords
+
+char *HTML_HL_extensions[] = { ".html", ".htm", NULL };
+char *HTML_HL_keywords[] = {
+  "html", "head", "body", "title", "meta", "link", "script", "style", "div",
+  "span", "h1", "h2", "h3", "h4", "h5", "h6", "p", "a", "img", "ul", "ol", "li",
+  "table", "tr", "td", "th", "form", "input", "button", "textarea", "select",
+  "option", "br", "hr", "!--", NULL
+};
+
+char *CSS_HL_extensions[] = { ".css", NULL };
+char *CSS_HL_keywords[] = {
+  "color", "background", "margin", "padding", "border", "width", "height",
+  "font", "display", "position", "absolute", "relative", "fixed", "flex",
+  "grid", "align", "justify", "content", "overflow", "z-index", "visibility",
+  "opacity", "animation", "transition", NULL
+};
+
+char *JSON_HL_extensions[] = { ".json", NULL };
+char *JSON_HL_keywords[] = {
+  "true", "false", "null", NULL
+};
+
+char *XML_HL_extensions[] = { ".xml", ".xsl", ".svg", NULL };
+char *XML_HL_keywords[] = {
+  "xml", "version", "encoding", "stylesheet", "svg", "path", "rect", "circle",
+  "line", "text", "g", "defs", "use", "symbol", "viewBox", NULL
+};
+
+char *BASH_HL_extensions[] = { ".sh", ".bash", NULL };
+char *BASH_HL_keywords[] = {
+  "if", "then", "else", "elif", "fi", "for", "while", "do", "done", "case",
+  "esac", "function", "return", "break", "continue", "echo", "read", "exit",
+  "trap", "export", "unset", "declare", "local", "true", "false", NULL
+};
+
+char *JAVA_HL_extensions[] = { ".java", NULL };
+char *JAVA_HL_keywords[] = {
+  "class", "interface", "enum", "extends", "implements", "public", "private",
+  "protected", "static", "final", "void", "int", "long", "double", "float",
+  "char", "boolean", "new", "return", "if", "else", "while", "for", "switch",
+  "case", "break", "continue", "try", "catch", "finally", "throw", "throws",
+  "import", "package", "this", "super", "null", "true", "false", NULL
+};
+
+char *PHP_HL_extensions[] = { ".php", NULL };
+char *PHP_HL_keywords[] = {
+  "echo", "print", "if", "else", "elseif", "while", "for", "foreach", "break",
+  "continue", "return", "function", "class", "public", "private", "protected",
+  "static", "final", "abstract", "interface", "extends", "implements", "new",
+  "try", "catch", "finally", "throw", "global", "const", "var", "true", "false",
+  "null", NULL
+};
+
 struct editorSyntax HLDB[] = {
   {
     "c",
@@ -209,6 +282,76 @@ struct editorSyntax HLDB[] = {
     "//", "/*", "*/",
     HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
   },
+  {
+    "python",
+    PYTHON_HL_extensions,
+    PYTHON_HL_keywords,
+    "#", NULL, NULL,
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "javascript",
+    JS_HL_extensions,
+    JS_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "markdown",
+    MD_HL_extensions,
+    MD_HL_keywords,
+    NULL, NULL, NULL,
+    0
+  },
+  {
+    "html",
+    HTML_HL_extensions,
+    HTML_HL_keywords,
+    "<!--", NULL, "-->",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "css",
+    CSS_HL_extensions,
+    CSS_HL_keywords,
+    "/*", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "json",
+    JSON_HL_extensions,
+    JSON_HL_keywords,
+    NULL, NULL, NULL,
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "xml",
+    XML_HL_extensions,
+    XML_HL_keywords,
+    "<!--", NULL, "-->",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "bash",
+    BASH_HL_extensions,
+    BASH_HL_keywords,
+    "#", NULL, NULL,
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "java",
+    JAVA_HL_extensions,
+    JAVA_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  },
+  {
+    "php",
+    PHP_HL_extensions,
+    PHP_HL_keywords,
+    "//", "/*", "*/",
+    HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+  }
 };
 
 #define HLDB_ENTRIES (sizeof(HLDB) / sizeof(HLDB[0]))
@@ -1207,14 +1350,86 @@ void editorDeleteLine() {
   E.cx = 0;
 }
 
+// Add undo/redo stack
+typedef struct {
+  char *content;
+  int cx, cy;
+} EditorState;
+
+#define UNDO_STACK_SIZE 100
+EditorState undo_stack[UNDO_STACK_SIZE];
+EditorState redo_stack[UNDO_STACK_SIZE];
+int undo_top = -1, redo_top = -1;
+
+void pushUndoState() {
+  if (undo_top < UNDO_STACK_SIZE - 1) {
+    undo_stack[++undo_top].content = editorRowsToString(NULL);
+    undo_stack[undo_top].cx = E.cx;
+    undo_stack[undo_top].cy = E.cy;
+  }
+}
+
+void pushRedoState() {
+  if (redo_top < UNDO_STACK_SIZE - 1) {
+    redo_stack[++redo_top].content = editorRowsToString(NULL);
+    redo_stack[redo_top].cx = E.cx;
+    redo_stack[redo_top].cy = E.cy;
+  }
+}
+
+void undo() {
+  if (undo_top >= 0) {
+    pushRedoState();
+    char *state = undo_stack[undo_top].content;
+    E.cx = undo_stack[undo_top].cx;
+    E.cy = undo_stack[undo_top].cy;
+    undo_top--;
+    editorOpenFromString(state);
+    free(state);
+  }
+}
+
+void redo() {
+  if (redo_top >= 0) {
+    pushUndoState();
+    char *state = redo_stack[redo_top].content;
+    E.cx = redo_stack[redo_top].cx;
+    E.cy = redo_stack[redo_top].cy;
+    redo_top--;
+    editorOpenFromString(state);
+    free(state);
+  }
+}
+
+void editorOpenFromString(char *content) {
+  // Clear current editor state
+  while (E.numrows > 0) editorDelRow(0);
+  char *line = strtok(content, "\n");
+  while (line) {
+    editorInsertRow(E.numrows, line, strlen(line));
+    line = strtok(NULL, "\n");
+  }
+  E.dirty = 0;
+}
+
+// Modify editorProcessKeypress to handle new commands
 void editorProcessKeypress() {
   static int vi_mode = 1; // Start in normal mode
   static int last_key = 0; // For multi-key commands like 'gg'
+  static char yank_buffer[1024] = ""; // Simple yank buffer
   int c = editorReadKey();
 
   if (vi_mode) {
-    if (last_key == 'g' && c == 'g') {
-      editorMoveToFileStart();
+    if (last_key == 'd' && c == 'd') {
+      pushUndoState();
+      editorDeleteLine();
+      last_key = 0;
+      return;
+    } else if (last_key == 'y' && c == 'y') {
+      if (E.cy < E.numrows) {
+        strncpy(yank_buffer, E.row[E.cy].chars, E.row[E.cy].size);
+        yank_buffer[E.row[E.cy].size] = '\0';
+      }
       last_key = 0;
       return;
     }
@@ -1238,44 +1453,30 @@ void editorProcessKeypress() {
       case 'l':
         editorMoveCursor(ARROW_RIGHT);
         break;
-      case 'w':
-        editorMoveToWordEnd();
-        break;
-      case 'e':
-        editorMoveToWordEnd();
-        if (E.cx < E.row[E.cy].size) E.cx++; // Move to the end of the word
-        break;
-      case 'b':
-        editorMoveToPrevWord();
-        break;
-      case '%':
-        editorJumpToMatchingBracket();
-        break;
-      case '0':
-        editorMoveToLineStart();
-        break;
-      case '^':
-        editorMoveToFirstNonWhitespace();
-        break;
-      case '$':
-        editorMoveToLineEnd();
-        break;
-      case 'G':
-        editorMoveToFileEnd();
-        break;
-      case 'g':
-        last_key = 'g'; // Wait for the next key to complete 'gg'
-        break;
       case 'd':
-        editorDeleteLine();
+        last_key = 'd'; // Wait for the next key to complete 'dd'
         break;
-      case 'x':
-        editorDelChar();
+      case 'y':
+        last_key = 'y'; // Wait for the next key to complete 'yy'
         break;
-      case 'o':
-        editorInsertNewline();
-        vi_mode = 0; // Switch to insert mode
-        editorSetStatusMessage("-- INSERT --");
+      case 'p':
+        if (strlen(yank_buffer) > 0) {
+          pushUndoState();
+          editorInsertRow(E.cy + 1, yank_buffer, strlen(yank_buffer));
+          E.cy++;
+        }
+        break;
+      case 'P':
+        if (strlen(yank_buffer) > 0) {
+          pushUndoState();
+          editorInsertRow(E.cy, yank_buffer, strlen(yank_buffer));
+        }
+        break;
+      case 'u':
+        undo();
+        break;
+      case CTRL_KEY('r'):
+        redo();
         break;
       case ':':
         editorCommandLine();
@@ -1290,6 +1491,7 @@ void editorProcessKeypress() {
   } else {
     switch (c) {
       case '\r':
+        pushUndoState();
         editorInsertNewline();
         break;
 
@@ -1301,6 +1503,7 @@ void editorProcessKeypress() {
       case BACKSPACE:
       case CTRL_KEY('h'):
       case DEL_KEY:
+        pushUndoState();
         if (c == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
         editorDelChar();
         break;
@@ -1313,6 +1516,7 @@ void editorProcessKeypress() {
         break;
 
       default:
+        pushUndoState();
         editorInsertChar(c);
         break;
     }
