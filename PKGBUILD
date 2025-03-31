@@ -7,7 +7,7 @@ pkgver=2.7.61.0
 _pkgtag=$pkgver
 # https://github.com/supermerill/SuperSlicer/blob/2.7.61.0/deps/%2BLibBGCode/LibBGCode.cmake
 _libbgcode=6f43cb004ef3d3bda37dde49f6235e24d2717629
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
@@ -23,6 +23,7 @@ depends=(
 	'libspnav'
 	'nanosvg'
 	'nlopt'
+	'opencascade'
 	'openvdb'
 	'qhull>=2020.2-4'
 	'slicer-udev'
@@ -50,6 +51,7 @@ source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0003-openexr3.patch"
         "0004-fix-opencascade-version-check.patch"
         "0005-fix-opencascade-libs.patch"
+        "0006-cmake3.5.patch"
         "0008-boost1.85.patch"
         "0009-fix-multiple-choice.patch"
         "0010-occtwrapper-install-dir.patch"
@@ -66,6 +68,7 @@ sha512sums=('0d72bf61adcafe8eef2ed860449dc25ca295ba0732d956bff8c0ae50b381387b803
             '840e51b8feb3568ff46d309ece063f7188018fcaa43d19ec50ede408fdf2c237a3b7eaa11ba24409d8c3f7d6f5fb270181508cc56e0b2b0fef68b766130ef1eb'
             '8512ace14c71b04eb98532e71592447475cf7feccf1c85f376487615c8a95f6afa645e4581f577ee26d91532c57f389eac7534a875d5a24e871f3ef593af33c9'
             'a01abf748f82bc423f2c012ac430f78cfd5e56dede1d5999376e780267d0302d9a2a80c3eb15226c2f82102dda4c567c721ff99ab1fdeef504cbf9d9cb63ca53'
+            '7ff2c1b39d18bd0e2cdf56582281f04509ae92e9c8837c67b99afcebffe293688fc9d93c4a790b231413bf8bafda803db9fc90b312db03c989122e4319bab66b'
             'ca9f407d87d8dd0181077bc2da5a8e2f8995eed88a4787b73ee6c62ef6d2380fd1394fe5412cdc34276d4182bce6f272173e9ccb653d1e28978e16f379114002'
             '6d7ab93042a75f04e1c3c8f294d19dd39abaf22aa75caf996c6a0cf753f6472134a3d4fa443b73924800b2d3a710416a931745c168911c0df3709fb71ec00570'
             '92929ba1cb6ee104a10f34a649eba3789ca02f1725104a57412279ff68c46614b1812b13e7dcdf0d235618b9f2a868b4798b1404d9e712d9f1efd46e6c71fcb5'
@@ -105,6 +108,7 @@ prepare() {
 		"$srcdir/0003-openexr3.patch" \
 		"$srcdir/0004-fix-opencascade-version-check.patch" \
 		"$srcdir/0005-fix-opencascade-libs.patch" \
+		"$srcdir/0006-cmake3.5.patch" \
 		"$srcdir/0008-boost1.85.patch" \
 		"$srcdir/0009-fix-multiple-choice.patch" \
 		"$srcdir/0010-occtwrapper-install-dir.patch" \
@@ -152,7 +156,7 @@ build() {
 package() {
 	cd "$srcdir/SuperSlicer-$_pkgtag/build"
 
-	DESTDIR="$pkgdir" samu install
+	DESTDIR="$pkgdir" ninja install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
 	rm -r "$pkgdir/usr/lib/udev" # provided by slicer-udev
 }
