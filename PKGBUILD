@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-firstuseauthenticator
 pkgdesc="Authenticator to help new users create a password on first JupyterHub login"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 url="https://github.com/jupyterhub/firstuseauthenticator"
 license=('BSD-3-Clause')
@@ -27,7 +27,7 @@ source=(
   "git+${url}.git#tag=$pkgver"
 )
 sha256sums=(
-  'd8fa53b174038e4bb3993ada20255dd96f8932ca68c4bac8145f17948dce5327'
+  'dbb2c915da0e95683f479fbc3ae8e794152c1f562f1e0d1d4c5eda500e20d306'
 )
 
 build() {
