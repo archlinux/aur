@@ -338,6 +338,10 @@ _update_defconfig() {
     # Library routines
     scripts/config -k -e FONT_TER16x32
 
+    # EDAC enablement for modern CPUs
+    scripts/config -e EDAC_AMD64 \
+                -e EDAC_IGEN6
+
     # Enable LLVM compilation
     [[ -n "${_use_llvm_lto}" ]] && scripts/config -d LTO_NONE \
                                                 -e LTO \
