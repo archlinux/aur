@@ -1,7 +1,7 @@
 pkgbase = python-audible-cli
-	pkgdesc = Command line interface (cli) for the audible package.
+	pkgdesc = A command line interface for audible package. With the cli you can download your Audible books, cover, chapter files.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkb79/audible-cli
 	arch = any
 	license = AGPL3
@@ -19,9 +19,7 @@ pkgbase = python-audible-cli
 	depends = python-tabulate
 	depends = python-toml
 	depends = python-tqdm
-	provides = python-audible-cli
-	conflicts = python-audible-cli
-	source = https://files.pythonhosted.org/packages/source/a/audible-cli/audible-cli-0.3.1.tar.gz
-	sha256sums = e4b712d3a3f0bd74c39048a277704c5bff0590c3c914c54644a295326eadb241
+	source = https://github.com/mkb79/audible-cli/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = eb07065c8a8c3992e7eed3b12e18398bfba32fad7e86b99c59f004335a37ba4f
 
 pkgname = python-audible-cli
