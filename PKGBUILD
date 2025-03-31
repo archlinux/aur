@@ -2,8 +2,8 @@
 
 pkgname=python-quiffen
 _pkgname=${pkgname#python-}
-pkgver=2.0.13
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Quiffen is a Python package for parsing QIF (Quicken Interchange Format) files.'
 arch=('any')
 url="https://github.com/isaacharrisholt/quiffen"
@@ -20,16 +20,11 @@ makedepends=(
 	python-poetry-core
 	python-build
 	python-installer
+	python-pdm-backend
 	python-wheel
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6db15210c7f2179e901c83715183ce3b31cf80ad0262bdc6742d5341989d384e')
-
-prepare() {
-	cd ${_pkgname}-${pkgver}
-	sed -i '/pydantic =/d' pyproject.toml
-	sed -i '/pandas =/d' pyproject.toml
-}
+sha256sums=('3b6bd9e706f0334e9ef8e85f87a15b047735cf89f933d6915626ad67e2e259d7')
 
 build() {
 	cd ${_pkgname}-${pkgver}
