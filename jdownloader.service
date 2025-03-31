@@ -1,0 +1,15 @@
+[Unit]
+Description=JDownload Headless
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/JDownloader/JDownloaderHeadlessCtl start
+ExecStop=/opt/JDownloader/JDownloaderHeadlessCtl stop
+User=jdownloader
+Group=jdownloader
+
+
+[Install]
+WantedBy=multi-user.target
