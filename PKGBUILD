@@ -3,7 +3,7 @@
 pkgname=garnet-bin
 _pkgname=${pkgname/-bin/}
 pkgver=1.0.61
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance cache-store from Microsoft Research'
 url='https://microsoft.github.io/garnet'
 license=('MIT')
@@ -11,7 +11,7 @@ arch=('x86_64')
 options=('!strip')
 conflicts=($_pkgname)
 provides=($_pkgname)
-depends=("dotnet-runtime-8.0" "gcc-libs" "glibc" "libaio")
+depends=("dotnet-runtime" "gcc-libs" "glibc" "libaio")
 
 source=(
 	"garnet-${pkgver}.tar.xz::https://github.com/microsoft/${_pkgname}/releases/download/v${pkgver}/linux-x64-based.tar.xz"
@@ -27,9 +27,9 @@ package() {
 
 	local garnet_location="$pkgdir/usr/lib/garnet" 
 
-	install -Dm755 "GarnetServer" -t $garnet_location
-	install -Dm644 "garnet.conf" "$pkgdir/etc/garnet/garnet-server.conf"
-	install -Dm644 "liblua54.so" "libnative_device.so" -t $garnet_location
+	install -Dm755 "net9.0/GarnetServer" -t $garnet_location
+	install -Dm644 "net9.0/garnet.conf" "$pkgdir/etc/garnet/garnet-server.conf"
+	install -Dm644 "net9.0/liblua54.so" "net9.0/libnative_device.so" -t $garnet_location
 
 	mkdir -p "$pkgdir/usr/bin"
 	ln -sr "$pkgdir/usr/lib/garnet/GarnetServer" "$pkgdir/usr/bin/GarnetServer"
