@@ -1,11 +1,11 @@
 pkgbase = gmv-git
 	pkgdesc = This is a video surveillance implementation based on GB28181: compatible with 2016 and 2022 versions.
-	pkgver = 0.1.r26.g9b0c186
+	pkgver = 0.1.r49.g74b3767
 	pkgrel = 1
 	url = https://github.com/epimore/gmv
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = rust
 	makedepends = cmake
 	makedepends = git
 	makedepends = pkgconf

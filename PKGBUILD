@@ -2,7 +2,7 @@
 
 pkgname=gmv-git
 _name=${pkgname%-git}
-pkgver=0.1.r26.g9b0c186
+pkgver=0.1.r49.g74b3767
 pkgrel=1
 pkgdesc="This is a video surveillance implementation based on GB28181: compatible with 2016 and 2022 versions."
 arch=($CARCH)
@@ -26,7 +26,7 @@ depends=(
     systemd-libs
 )
 makedepends=(
-    cargo
+    rust
     cmake
     git
     pkgconf
@@ -49,6 +49,8 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
     cd "${srcdir}/${_name}"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
