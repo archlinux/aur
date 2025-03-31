@@ -1,0 +1,18 @@
+pkgbase = plank-reloaded-docklet-picky-git
+	pkgdesc = Color Picker docklet for Plank Reloaded
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/zquestz/picky
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = intltool
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	depends = plank
+	source = git+https://github.com/zquestz/picky.git
+	sha256sums = SKIP
+
+pkgname = plank-reloaded-docklet-picky-git
