@@ -41,13 +41,13 @@ package() {
 	# Helion doesn't check for native Linux directories at the moment, so /opt will have to do.
 	#There might be a better way of going about this, but right now this works.
 	mkdir -m=644 -p "$pkgdir"/opt/Helion/SoundFonts
-	install -Dm755 ./Helion "$pkgdir"/opt/Helion/
-	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/
-	install -Dm644 ./libfluidsynth.so.3 "$pkgdir"/opt/Helion/
-	install -Dm644 ./libglfw.so.3.3 "$pkgdir"/opt/Helion/
-	install -Dm644 ./libSDL2.so "$pkgdir"/opt/Helion/
-	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/
-	install -Dm644 ./README.md "$pkgdir"/opt/Helion/
-	install -Dm644 ./SoundFonts/default.sf2 "$pkgdir"/opt/Helion/SoundFonts
-	ln -s "$pkgdir"/opt/Helion/Helion / "$pkgdir"/bin/helion
+	install -Dm755 ./Helion "$pkgdir"/opt/Helion/helion
+	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/assets.pk3
+	install -Dm644 ./libfluidsynth.so.3 "$pkgdir"/opt/Helion/libfluidsynth.so.3
+	install -Dm644 ./libglfw.so.3.3 "$pkgdir"/opt/Helion/libglfw.so.3.3
+	install -Dm644 ./libSDL2.so "$pkgdir"/opt/Helion/libSDL2.so
+	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/libzmusic.so
+	install -Dm644 ./README.md "$pkgdir"/opt/Helion/README.md
+	install -Dm644 ./SoundFonts/default.sf2 "$pkgdir"/opt/Helion/SoundFonts/default.sf2
+	ln -s "$pkgdir"/opt/Helion/helion "$pkgdir"/bin/helion
 }
