@@ -3,7 +3,7 @@ pkgname=owncloud-client-desktop-shell-integration-nautilus
 _resources_pkgname=client-desktop-shell-integration-resources
 pkgver=6.0.0
 _resources_pgkver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python extension for Nautilus and its forks Nemo and Caja to provide shell integration for the ownCloud desktop client for the GNOME, Cinnamon and MATE desktop environments."
 arch=('any')
 url="https://github.com/owncloud/client-desktop-shell-integration-nautilus"
@@ -31,7 +31,7 @@ build() {
     mkdir -p "${_cmake_build_dir}"
     cmake -B "${_cmake_build_dir}" \
           -DCMAKE_BUILD_TYPE=Release \
-          --install-prefix "${pkgdir}"
+          --install-prefix "${pkgdir}/usr"
 
     # then build the extension
     cd "${srcdir}/${_archivedir}"
@@ -41,7 +41,7 @@ build() {
           -DownCloudShellResources_DIR="${srcdir}/${_resources_archivedir}/${_cmake_build_dir}" \
           -DCMAKE_BUILD_TYPE=Release \
           -G Ninja \
-          --install-prefix "${pkgdir}"
+          --install-prefix "${pkgdir}/usr"
 }
 
 package() {
