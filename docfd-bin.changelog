@@ -1,16 +1,10 @@
 
-## 10.1.0
+## 10.1.1
 
-- Added back index DB entry pruning
+- Minor fix for "filter files via fzf" functionality
 
-    - Previously missing after swapping to SQLite DB
+    - Previously, if instead of making a selection,
+      the user quits fzf (e.g. pressing `Ctrl`+`C`, `Ctrl`+`Q`),
+      Docfd also closes with it
 
-    - Also renamed `--cache-soft-limit` to `--cache-limit` to
-      reflect the new pruning logic
-
-    - Fixes [issue #12](https://github.com/darrenldl/docfd/issues/12)
-
-- Swapped to a better `doc_id` allocation strategy to minimise
-  `doc_id` size in DB
-
-- Added blinking when drop mode is disabled but `d` is pressed
+    - Now Docfd just discards the interaction and goes back to the main UI
