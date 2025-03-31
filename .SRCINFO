@@ -1,0 +1,19 @@
+pkgbase = libayatana-appindicator-glib-git
+	pkgdesc = Ayatana Application Indicators shared library (GLib-2.0 reimplementation)
+	pkgver = r2144.66f8279
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators/libayatana-appindicator-glib
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = gi-docgen
+	makedepends = cmake-extras
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gcc-libs
+	depends = glib2
+	source = git+https://github.com/AyatanaIndicators/libayatana-appindicator-glib
+	sha256sums = SKIP
+
+pkgname = libayatana-appindicator-glib-git
