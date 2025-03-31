@@ -1,5 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Maintainer: Bruno Pagani <archange@archlinux.org>
+# Contributor: Robert Schiele <rschiele@gmail.com>
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
@@ -9,61 +10,85 @@ pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL-3.0-only')
-depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp')
-makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python')
+depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
+         'expat' 'glew' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
+         'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
+         'wxwidgets-gtk3' 'z3' 'zlib')
+makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
+             'cereal' 'cgal' 'eigen')
 options=('!makeflags')
-source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('ee0efd43729ae4a0dc16372f6a562d577e482f62e9b1851d8a5f30c61d9f317d')
+source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${pkgname}-${pkgver/_/-}.tar.gz
+        fixes_boost.patch
+        fixes_cgal.patch
+        fixes_nanosvg.patch)
+sha256sums=('ee0efd43729ae4a0dc16372f6a562d577e482f62e9b1851d8a5f30c61d9f317d'
+            '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
+            '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
+            'ecd2e2a367ca08cea7178f3807f5b59e318ac601fc6d8976910f99a6362f5213')
+
+prepare() {
+  cd PrusaSlicer-version_${pkgver/_/-}
+  # We want to use the system OpenVDB
+  rm cmake/modules/FindOpenVDB.cmake
+  # Dynamically link system OpenCASCADE
+  sed -i -e 's/\(OpenCASCADE\).*\(REQUIRED\)/\1 \2/
+             /TK/d
+             s/^\(set(OCCT_LIBS\)/\1 TKDESTEP/' \
+      src/occt_wrapper/CMakeLists.txt
+  patch -Np1 -i "${srcdir}"/fixes_boost.patch
+  patch -Np1 -i "${srcdir}"/fixes_cgal.patch
+  patch -Np1 -i "${srcdir}"/fixes_nanosvg.patch
+}
 
 build() {
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
-  cd PrusaSlicer-version_${pkgver}
-
-  # This is super ugly right now: We're using 100% vendored deps but upstream
-  # won't provide any support if we use system deps. We think this is dirty but
-  # it's really not worth the fight. There were multiple bugs when we didn't
-  # use their vendored deps.
-  cd deps
-
-  # Fix recurring ABI issue. See
+  # Use all packages currently available in extra from the system.
+  # While upstream does not provide any support if we are using system deps,
+  # the alignment of ABI incompatibiities seem more challenging. Additionally,
+  # using the vendor deps would create extra responsibility in this package to
+  # apply security fixes for issues fixed in the system deps.
+  # Therefore we should instead explain how to properly verify issues against
+  # the upstream Flatpak to decide whether they are upstream issues to be
+  # reported there or are packaging issues we should look for by ourselves.
+  # This approach should also fix recurring ABI issue. See
   # https://gitlab.archlinux.org/archlinux/packaging/packages/prusa-slicer/-/issues/2
-  rm -r +JPEG
-
-  # Use some packages from the system but not all, see https://github.com/prusa3d/PrusaSlicer/issues/11239
   cmake \
       -G Ninja \
-      -B build \
-      -DDEP_WX_GTK3=ON \
-      -DPrusaSlicer_deps_PLATFORM_PACKAGES="JPEG;PNG;MPFR;GMP"
-  ninja -C build
-  cd ..
+      -S PrusaSlicer-version_${pkgver/_/-}/deps \
+      -B deps_${pkgver} \
+      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
+  ninja -C deps_${pkgver}
 
-  mkdir build
-  cd build
-  cmake .. \
+  cmake \
       -G Ninja \
+      -S PrusaSlicer-version_${pkgver/_/-} \
+      -B build_${pkgver} \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=lib \
-      -DCMAKE_PREFIX_PATH=$(pwd)/../deps/build/destdir/usr/local \
-      -DSLIC3R_STATIC=1 \
+      -DCMAKE_PREFIX_PATH=$(pwd)/deps_${pkgver}/destdir/usr/local \
+      -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
       -DSLIC3R_FHS=ON \
       -DSLIC3R_PCH=OFF \
       -DSLIC3R_GTK=3
-  ninja
+  ninja -C build_${pkgver}
 }
 
 check() {
-  cd PrusaSlicer-version_${pkgver}/build
+  cd build_${pkgver}
 
   ctest
+
+  # Build a dummy binary linking against OCCTWrapper.so to make the linker tell
+  # us whether there are unresolved symbols left. There is no upstream
+  # build-time check for this at the moment.
+  echo 'int main(){}' | g++ -o /dev/null src/OCCTWrapper.so -x c -
 }
 
 package_prusa-slicer() {
   optdepends=('slicer-udev: 3D printer connection rules')
 
-  cd PrusaSlicer-version_${pkgver}
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build_${pkgver} install
 
   # Desktop icons
   mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/

@@ -1,0 +1,43 @@
+commit 8a8c36cd77b099fd949bb306178a0a54f2c450fa
+Author: Robert Schiele <rschiele@gmail.com>
+Date:   Sun Mar 30 18:06:28 2025 +0200
+
+    proper usage of NanoSVG
+    
+    The old code materialized the library code into the slicer binary
+    instead of linking the library itself. This does complicate the
+    structure and since I didn't really see the point I changed this to just
+    link the library.
+
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index f7773673ae..879cb4350c 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -609,6 +609,7 @@ target_include_directories(libslic3r PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/.. ${CMA
+ target_include_directories(libslic3r PUBLIC ${EXPAT_INCLUDE_DIRS})
+ 
+ find_package(JPEG REQUIRED)
++find_package(NanoSVG REQUIRED)
+ 
+ target_link_libraries(libslic3r PRIVATE
+     libnest2d
+@@ -625,6 +626,7 @@ target_link_libraries(libslic3r PRIVATE
+     PNG::PNG
+     ZLIB::ZLIB
+ 	JPEG::JPEG
++    NanoSVG::nanosvg
+     qoi
+     fastfloat
+     int128
+diff --git a/src/libslic3r/Format/SL1_SVG.cpp b/src/libslic3r/Format/SL1_SVG.cpp
+index e5af3ece35..be198fa20f 100644
+--- a/src/libslic3r/Format/SL1_SVG.cpp
++++ b/src/libslic3r/Format/SL1_SVG.cpp
+@@ -17,7 +17,6 @@
+ #include "libslic3r/Zipper.hpp"
+ #include "libslic3r/libslic3r.h"
+ 
+-#define NANOSVG_IMPLEMENTATION
+ #include <cstdint>
+ #include <algorithm>
+ #include <string_view>
