@@ -5,7 +5,7 @@
 _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/niksite/${_base}"
@@ -14,7 +14,7 @@ depends=(python-idna)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('09c708d6de3e47329b2e416c0b73e8f44e91cb42d646d084add5d246c32c731b104d91a7288157da0bef7ba53356c702a749424db387db112591c11c4c43caf9')
+sha512sums=('37545382ddfc08740ecb776f541bf0f75ee40b681b87f139dd4c4f7755f60c665a66d4d8e552a1dc566ab871b766e054c1e42da9dcd7df00622ea9f3793523cc')
 
 build() {
   cd ${_base}-${pkgver}
