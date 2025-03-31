@@ -1,12 +1,13 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=jdownloader2-jre
+# The package version is the same as latest LTS Java version https://support.jdownloader.org/en/knowledgebase/article/install-jdownloader-on-nas-and-embedded-devices
 pkgver=21.0.6+7
 pkgrel=1
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and MEGA with bundled JRE.'
 arch=('x86_64' 'aarch64')
-conflicts=()
-replaces=()
+conflicts=(jdownloader2)
+provides=(jdownloader2)
 url='https://jdownloader.org/'
 # https://board.jdownloader.org/showthread.php?p=517795#post517795
 license=('LicenseRef-GPL-3.0+proprietary')
