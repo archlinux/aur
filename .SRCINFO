@@ -1,7 +1,7 @@
 pkgbase = docfd-bin
 	pkgdesc = TUI multiline fuzzy document finder (pre-compiled)
 	pkgver = 10.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darrenldl/docfd
 	changelog = docfd-bin.changelog
 	arch = aarch64

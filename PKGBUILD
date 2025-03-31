@@ -5,7 +5,7 @@
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=10.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/darrenldl/docfd'
@@ -39,7 +39,7 @@ package() {
 
   for _doc in CHANGELOG README; do
     install -vDm0644 "$_doc-$pkgver.md" \
-      "$pkgdir/usr/share/docs/$pkgname/$_doc.md"
+      "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
   done
 
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
