@@ -1,0 +1,23 @@
+pkgbase = aikadm-git
+	pkgdesc = Web based greeter for greetd
+	pkgver = 0.0.0.r58.f8a9cd0
+	pkgrel = 1
+	url = https://github.com/HumXC/aikadm
+	arch = x86_64
+	license = custom
+	makedepends = wails
+	makedepends = go
+	makedepends = npm
+	makedepends = nodejs
+	depends = greetd
+	depends = webkit2gtk
+	depends = cage
+	optdepends = aikadm-frontend: default frontend
+	provides = aikadm
+	conflicts = aikadm
+	source = aikadm::git+https://github.com/HumXC/aikadm.git
+	source = aikadm-frontend::git+https://github.com/HumXC/aikadm-frontend
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aikadm-git
