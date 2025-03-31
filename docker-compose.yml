@@ -1,0 +1,9 @@
+services:
+  makepkg:
+    image: archlinux:base-devel
+    container_name: makepkg
+    volumes:
+      - .:/package
+    user: 1000:1000
+    working_dir: /package
+    command: bash -c "makepkg --printsrcinfo > .SRCINFO && makepkg"
