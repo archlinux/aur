@@ -1,0 +1,15 @@
+pkgbase = android-xml-converter-bin
+	pkgdesc = Android Binary XML (ABX) conversion tools
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/rhythmcache/android-xml-converter
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = Apache-2.0
+	provides = android-xml-converter
+	conflicts = android-xml-converter
+	source = https://github.com/rhythmcache/android-xml-converter/releases/download/v1/build-all-arch-linux-android.zip
+	sha256sums = SKIP
+
+pkgname = android-xml-converter-bin
