@@ -1,7 +1,7 @@
 # Maintainer: walldmtd <walldmtd at proton dot me>
 
 pkgname=vimix-kanagawa-hyprcursors
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Hyprcursor theme using Kanagawa colours, based on Vimix cursors"
 arch=(any)
@@ -9,8 +9,8 @@ url="https://github.com/walldmtd/vimix-kanagawa-cursors"
 license=("GPL-3.0-or-later")
 source=("${pkgname}-wave-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-wave.tar.gz"
         "${pkgname}-lotus-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-lotus.tar.gz")
-b2sums=('de27200e40581c82b9220267b32aeb5c78570e0c20432ae018b95093c57aca1e77c3d80e3fc831dd90e950fde3a03f9b2231e924670c9d371d4962d141dabf58'
-        '6820801d2ca8afca97382be07fe682fce2460b892bf66ef8a5f260cf0ec9227bbe9b82db04177044c601364ab97e8dbee1ac2f5d1cc91f0ef31b7a7e80a1d577')
+b2sums=('4e97cff29a5bc8cc2e4a39928ad1a7c8a908a6e60d97dfb3819019ca0196c74ee27b01d24306cdfeac78ecde3964670f3b174f20b475d82297b25945ba3d4a6c'
+        'e50c0a8f09e11b110403158819da0947701db7ad7f551d81bfa05daaae67890660ca4a21c3ce10482cdb6c1e9a6a5add95699ed31c0f5f2fc7d8c116e6fb9ce5')
 
 package() {
     install -d "${pkgdir}"/usr/share/icons/{"${pkgname}-wave","${pkgname}-lotus"}
