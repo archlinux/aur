@@ -1,0 +1,22 @@
+pkgbase = blisp-git
+	pkgdesc = ISP tool & library for Bouffalo Labs RISC-V Microcontrollers and SoCs
+	pkgver = v0.0.4.r30.ge45941c
+	pkgrel = 1
+	url = https://github.com/pine64/blisp
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = powerpc
+	arch = powerpc64
+	arch = powerpc64le
+	arch = riscv64
+	license = MIT
+	makedepends = git
+	provides = blisp
+	conflicts = blisp
+	source = git+https://github.com/pine64/blisp/
+	source = termios.patch
+	sha256sums = SKIP
+	sha256sums = 373366d48729a2ccc678fcb6ec5d5bdd15d663c77b27552e744908a72a9e5916
+
+pkgname = blisp-git
