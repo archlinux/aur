@@ -1,39 +1,38 @@
-# Maintainer: Colin Arnott <colin@urandom.co.uk>
-pkgname="brlaser-git"
-pkgver=v3.r35.g3946f2e
+# Maintainer: Brli <brli [at] aur.no.reply>
+_pkgname='brlaser'
+pkgname="${_pkgname}-git"
+pkgver=6.2.7.r3.gbffa87a
 pkgrel=1
-pkgdesc="CUPS driver for the Brother DCP-7065DN"
-arch=('x86_64')
-url="https://github.com/pdewacht/brlaser"
+pkgdesc="Brother laser printer driver, git version"
+arch=('x86_64' 'armv7h' 'aarch64')
+url="https://github.com/Owl-Maintain/brlaser"
 license=('GPL2')
 depends=('cups')
-makedepends=('git' 'cmake')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
-sha512sums=('SKIP')
+makedepends=('cmake' 'git')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+replaces=("$_pkgname")
+source=("git+https://github.com/Owl-Maintain/${_pkgname}.git")
+b2sums=('SKIP')
 
 pkgver() {
-	cd $pkgname
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd $pkgname
-	cmake .
+    cd "${_pkgname}" || exit
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $pkgname
-	make
+	cmake -S "${_pkgname}" \
+	      -B build \
+	      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	      -D CMAKE_BUILD_TYPE=Release
+	cmake --build build
 }
 
 check() {
-	cd $pkgname
+	cd build || exit
 	make -k check
 }
 
 package() {
-	cd $pkgname
-	make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir" cmake --install build
 }

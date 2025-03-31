@@ -1,17 +1,19 @@
 pkgbase = brlaser-git
-	pkgdesc = CUPS driver for the Brother DCP-7065DN
-	pkgver = v3.r35.g3946f2e
+	pkgdesc = Brother laser printer driver, git version
+	pkgver = 6.2.7.r3.gbffa87a
 	pkgrel = 1
-	url = https://github.com/pdewacht/brlaser
+	url = https://github.com/Owl-Maintain/brlaser
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
 	depends = cups
 	provides = brlaser
 	conflicts = brlaser
-	source = brlaser-git::git+https://github.com/pdewacht/brlaser
-	sha512sums = SKIP
+	replaces = brlaser
+	source = git+https://github.com/Owl-Maintain/brlaser.git
+	b2sums = SKIP
 
 pkgname = brlaser-git
-
