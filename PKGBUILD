@@ -2,7 +2,7 @@
 # Contributor: GPereira <goncalo_pereira@outlook.pt>
 # Contributor: mibu <mib@kanp.ai>
 pkgname=lightburn-bin
-pkgver=1.7.07
+pkgver=1.7.08
 pkgrel=1
 pkgdesc="A layout, editing, and control software for lasercutters."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=('lightburn.sh' 'lightburn.desktop' "https://release.lightburnsoftware.com/LightBurn/Release/LightBurn-v$pkgver/LightBurn-Linux64-v$pkgver.7z")
 sha256sums=('da8104be7ff99f86f92b42281bc81aef35cc05140de450d17a7fd298595f8ff8'
             'f72e86774d4396240b46e07e947edf9cdf5f8d526a70129c447fed7c173c4867'
-            '305bfecb5195a22a38a24ee77a0a57e0005ac9aed9facf33a8cf39621385c55a')
+            '746fc0dfdfd26a9c92e86192282b0752f60df8238dba5fece791d38bd09ce7d8')
 
 package() {
 	mkdir -p "$pkgdir/opt/lightburn"
