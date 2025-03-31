@@ -1,0 +1,11 @@
+pkgbase = hyprwindow
+	pkgdesc = A minimal application/workspace switcher for Hyprland.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/44David/hyprwindow
+	arch = x86_64
+	license = MIT
+	source = https://github.com/44David/hyprwindow/releases/download/v1.0/hyprwindow-1.0-x86_64.tar.gz
+	sha256sums = 77642492fe653d3b575b889132dc21eba21a8d4f6be6b26ab6be56b0294f557f
+
+pkgname = hyprwindow
