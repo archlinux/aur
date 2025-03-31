@@ -1,45 +1,21 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
 pkgname=nightscape
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Double-entry accounting system"
-arch=('any')
-depends=('mktxn'
-         'perl6'
-         'perl6-config-toml'
-         'perl6-file-presence')
-checkdepends=('perl')
-makedepends=('git')
-groups=('perl6')
-url="https://github.com/atweiden/nightscape"
-license=('UNLICENSE')
-source=($pkgname-$pkgver::git+https://github.com/atweiden/nightscape
-        git+https://github.com/atweiden/txn-examples)
-sha256sums=('SKIP' 'SKIP')
+pkgdesc="A terminal-based night sky simulation with stars, moon, and rare events like comets and UFOs."
+arch=('x86_64')
+url="https://github.com/xhon4/nightscape"
+license=('MIT')
+depends=('rust' 'signal-hook' 'crossterm')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Running tests...'
-  cp -dpr --no-preserve=ownership "$srcdir/txn-examples" t/data
-  PERL6LIB=lib prove -r -e perl6
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  msg2 'Installing license...'
-  install -Dm 644 UNLICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-
-  msg2 'Installing documentation...'
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-
-  msg2 'Installing...'
-  export RAKUDO_LOG_PRECOMP=1
-  export RAKUDO_RERESOLVE_DEPENDENCIES=0
-  perl6-install-dist \
-    --to="$pkgdir/usr/share/perl6/vendor" \
-    --for=vendor \
-    --from=.
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
