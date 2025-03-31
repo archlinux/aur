@@ -43,7 +43,7 @@ package() {
 	mkdir -m=644 -p "$pkgdir"/opt/Helion/SoundFonts
 	install -Dm755 ./Helion "$pkgdir"/opt/Helion/
 	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/
-	install -Dm644 ./libfluidsynth.so.3"$pkgdir"/opt/Helion/
+	install -Dm644 ./libfluidsynth.so.3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libglfw.so.3.3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libSDL2.so "$pkgdir"/opt/Helion/
 	install -Dm644 ./libzmusic.so "$pkgdir"/opt/Helion/
