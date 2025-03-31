@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.2
-	pkgrel = 9
+	pkgrel = 10
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -54,6 +54,7 @@ pkgbase = compiz
 	source = 0006-Drop-toggle-shaded-since-it-s-no-longer-included-in-.patch
 	source = 0007-64-bit-time-t-compat.patch
 	source = 1001-fix-crash-in-vertexbuffer.patch
+	source = 1002-fix-wrapmode.patch
 	sha256sums = cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c
 	sha256sums = 6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
@@ -63,5 +64,6 @@ pkgbase = compiz
 	sha256sums = 9b9e92a7174f2255f408d340dcb7b765211777cd92fe9ed17b5888ff13578291
 	sha256sums = 90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c
 	sha256sums = 859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a
+	sha256sums = 9d107c0f15462e281d341e8b2e94830ba8f39b87c3cf4b853791537a10b20253
 
 pkgname = compiz

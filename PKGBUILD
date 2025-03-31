@@ -8,7 +8,7 @@
 _pkgname='compiz'
 pkgname="$_pkgname"
 pkgver=0.9.14.2
-pkgrel=9
+pkgrel=10
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -99,6 +99,9 @@ source=(
 
   # https://bugs.launchpad.net/compiz/+bug/2060620
   "1001-fix-crash-in-vertexbuffer.patch"
+
+  # https://bugs.launchpad.net/compiz/+bug/2103951
+  "1002-fix-wrapmode.patch"
 )
 sha256sums=(
   'cfa061e93b032275ff9e7041f582a8f6d5ae271cf8a89e6bc74e3d3635999d3c'
@@ -112,6 +115,7 @@ sha256sums=(
   '90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c'
 
   '859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a'
+  '9d107c0f15462e281d341e8b2e94830ba8f39b87c3cf4b853791537a10b20253'
 )
 
 prepare() {

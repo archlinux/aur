@@ -1,0 +1,42 @@
+diff --git a/compizconfig/ccsm/ccm/Settings.py b/compizconfig/ccsm/ccm/Settings.py
+index 0f5104f66..dc4ee4947 100644
+--- a/compizconfig/ccsm/ccm/Settings.py
++++ b/compizconfig/ccsm/ccm/Settings.py
+@@ -23,6 +23,7 @@
+ from gi.repository import GLib
+ from gi.repository import Gtk
+ from gi.repository import Gdk
++from gi.repository import Pango
+ 
+ from ccm.Constants import TableDef, TableX, KeyModifier, Edges, ImageStock, FilterName, FilterLongDesc, FilterValue, FilterAll, DataDir
+ from ccm.Conflicts import KeyConflict, ButtonConflict, EdgeConflict
+@@ -115,7 +116,7 @@ class Setting(object):
+         label.set_markup(style % desc)
+         label.props.xalign = 0
+         label.set_size_request(160, -1)
+-        label.props.wrap_mode = Gtk.WrapMode.WORD
++        label.props.wrap_mode = Pango.WrapMode.WORD
+         label.set_line_wrap(True)
+         self.Label = label
+ 
+diff --git a/compizconfig/ccsm/ccm/Utils.py b/compizconfig/ccsm/ccm/Utils.py
+index 1040bb9c6..cecd1f75c 100644
+--- a/compizconfig/ccsm/ccm/Utils.py
++++ b/compizconfig/ccsm/ccm/Utils.py
+@@ -24,6 +24,7 @@ from gi.repository import GLib
+ from gi.repository import Gtk
+ from gi.repository import Gdk
+ from gi.repository import GObject
++from gi.repository import Pango
+ import weakref
+ 
+ from ccm.Constants import ImageNone, ImagePlugin, ImageCategory, ImageThemed, ImageStock, DataDir, IconDir
+@@ -174,7 +175,7 @@ class Label(Gtk.Label):
+     def __init__(self, value = "", wrap = 160):
+         Gtk.Label.__init__(self, label=value)
+         self.props.xalign = 0
+-        self.props.wrap_mode = Gtk.WrapMode.WORD
++        self.props.wrap_mode = Pango.WrapMode.WORD
+         self.props.max_width_chars = 20;
+         self.set_line_wrap(True)
+         self.set_size_request(wrap, -1)
