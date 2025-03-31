@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.46
+pkgver=7.1.1.47
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -22,7 +22,7 @@ url='https://www.imagemagick.org/'
 license=('LicenseRef-Custom')
 makedepends=(
     # official repositories:
-        'perl' 'jbigkit' 'opencl-headers' 'glu' 'ghostpcl' 'ghostxps'
+        'perl' 'jbigkit' 'opencl-headers' 'glu'
         'zstd' 'chrpath' 'xorgproto'
         'lcms2' 'libraqm' 'liblqr' 'fftw' 'libxml2' 'fontconfig' 'freetype2' 'libxext'
         'libx11' 'bzip2' 'zlib' 'libltdl' 'djvulibre' 'libraw'
@@ -34,7 +34,7 @@ makedepends=(
         'dmalloc' 'flif' 'libfpx' 'libumem-git' 'magickcache-git'
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc})
-sha256sums=('026d2c73fbfd92923b7da880973812913957babd437e9063dcdf7fdba9054f8a'
+sha256sums=('2396cd3c4237cfbc09a89d31d1cee157ee11fbc8ec1e540530e10175cb707160'
             'SKIP')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
@@ -106,10 +106,7 @@ build() {
         --with-windows-font-dir='/usr/local/share/fonts/WindowsFonts' \
         --with-apple-font-dir='/usr/share/fonts/TTF' \
         --with-fontpath='/usr/share/fonts/Type1' \
-        PSDelegate='/usr/bin/gs' \
-        XPSDelegate='/usr/bin/gxps' \
-        PCLDelegate='/usr/bin/gpcl6'
-        
+        PSDelegate='/usr/bin/gs'
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
 }
