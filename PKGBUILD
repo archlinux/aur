@@ -1,7 +1,7 @@
 # Maintainer: kinker31<dp223171@gmail.com>
 pkgname=helion-git
 pkgver=0.9.6.1.r129.g664657f
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern Doom FPS engine, made with C# and GPU usage in mind"
 arch=('x86_64')
 url="https://github.com/Helion-Engine/Helion"
@@ -40,7 +40,7 @@ package() {
 	
 	# Helion doesn't check for native Linux directories at the moment, so /opt will have to do.
 	#There might be a better way of going about this, but right now this works.
-	mkdir -m=644 -p /opt/Helion/SoundFonts
+	mkdir -m=644 -p "$pkgdir"/opt/Helion/SoundFonts
 	install -Dm755 ./Helion "$pkgdir"/opt/Helion/
 	install -Dm644 ./assets.pk3 "$pkgdir"/opt/Helion/
 	install -Dm644 ./libfluidsynth.so.3"$pkgdir"/opt/Helion/
