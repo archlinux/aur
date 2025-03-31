@@ -2,7 +2,7 @@
 Name=Emu80-git
 Comment=Emulator for bunch of Soviet PCs. Git build.
 GenericName=Emulator
-Exec=env QT_QPA_PLATFORM=xcb /usr/bin/emu80-git
+Exec=/usr/bin/emu80-git
 Type=Application
 Icon=emu80
 Categories=Utility;Development;Emulator;

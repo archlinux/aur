@@ -2,8 +2,8 @@
 
 pkgname=emu80-git
 _pkgname=emu80
-_commit=9279c16
-_pkgver=4.0.510
+_commit=0d351f7
+_pkgver=4.0.511
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs. Git version"
@@ -13,7 +13,7 @@ license=("GPL3")
 depends=("emu80-base" "qt6-base" "qt6-multimedia")
 makedepends=("base-devel")
 source=("${pkgname}::git+https://github.com/vpyk/emu80v4.git#commit=${_commit}" "shortcut.desktop")
-sha256sums=("SKIP" "f8b2636ad8f9b55e96f0e39aa2b245ba11999a352fca245de78aae8f98ad0709")
+sha256sums=("SKIP" "7206828b1279e8387454da6f31bf74ff7319c89f79a6abc396508a6f263db59b")
 
 build() {
 	cd "${pkgname}"
