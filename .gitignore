@@ -1,1 +1,2 @@
-0001-Bug-1882209-Update-encoding_rs-to-0.8.34-to-deal-wit.patch
+*.log
+chroot/
