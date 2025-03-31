@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Helion
+Type=Application
+Icon=/usr/share/pixmaps/helion.ico
+Comment=Modern Doom engine, made in C#
+Exec=helion
+Terminal=false
+StartupNotify=false
