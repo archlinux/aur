@@ -7,7 +7,7 @@ pkgdesc='Fancy stream processing made operationally mundane'
 url='https://warpstreamlabs.github.io/bento/'
 _url='https://github.com/warpstreamlabs/bento'
 _branch='main'
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=0
 arch=(aarch64 armv7h x86_64)
 license=("MIT")
@@ -16,9 +16,9 @@ conflicts=($_pkgname)
 source=("${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_armv7h=("${_url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.tar.gz")
-sha256sums=('5755b900afc9b7537396afab9ebbae1cf17a83e1d1fda759ef463bfd1595b620')
-sha256sums_aarch64=('862fc0a6633f792e607819fe873e8a8bed7b185483b5fb6e6883203955cac7c4')
-sha256sums_armv7h=('d7bdb9bf49128ae3299edc0ab07a36a704e4a56c78dead96c13c9166e40e2055')
+sha256sums=('7be29a41095770332271cedf69611723fe0bc4ab09a88834357ee69395423e3c')
+sha256sums_aarch64=('e5e02c6d160aa97dc5ff000fae512d1ba09298cb69ce3c34df901e5ec946bfaa')
+sha256sums_armv7h=('eaa00b2676d67557be3f4f0faab534076ac74f0197ad6ef894a32f07450efa1e')
 
 package() {
   install -Dm755 $_pkgname "${pkgdir}/usr/bin/${_pkgname}"
