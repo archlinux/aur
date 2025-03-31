@@ -1,6 +1,6 @@
 pkgbase = r-rcppspdlog
 	pkgdesc = R and C++ Interfaces to 'spdlog' C++ Header Library for Logging
-	pkgver = 0.0.20
+	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppSpdlog
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-rcppspdlog
 	depends = r
 	depends = r-rcpp
 	optdepends = r-simplermarkdown
-	source = https://cran.r-project.org/src/contrib/RcppSpdlog_0.0.20.tar.gz
-	sha256sums = 9b2a0a955874e89183247235f43698c241cffc6e00ce70a2a4aa4a0f751ad601
+	source = https://cran.r-project.org/src/contrib/RcppSpdlog_0.0.21.tar.gz
+	sha256sums = 6ef62d3c4d87334c9c83d81449d85009497163163f19f87227bfb8792e533c69
 
 pkgname = r-rcppspdlog
