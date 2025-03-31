@@ -2,10 +2,4 @@
 
 unset QT_STYLE_OVERRIDE
 
-egl_vendor=/usr/share/glvnd/egl_vendor.d/50_mesa.json
-
-if lsmod | grep -q nvidia && [[ "$XDG_SESSION_TYPE" = 'wayland' && -f "$egl_vendor" ]]; then
-    __EGL_VENDOR_LIBRARY_FILENAMES="$egl_vendor" MESA_LOADER_DRIVER_OVERRIDE=zink /opt/ultimaker-cura/AppRun "$@"
-else
-    /opt/ultimaker-cura/AppRun "$@"
-fi
+/opt/ultimaker-cura/AppRun "$@"
