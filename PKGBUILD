@@ -6,7 +6,7 @@
 _pkgname=ZeroBraneStudio
 pkgname=zerobrane-studio
 pkgver=2.01
-pkgrel=4
+pkgrel=5
 pkgdesc='A lightweight Lua-based IDE for Lua'
 arch=(any)
 url='https://studio.zerobrane.com/'
@@ -54,7 +54,7 @@ package() {
 	cd "$_archive"
 	make -C build DESTDIR="$pkgdir" install
 	install -Dm0644 -t "$pkgdir/etc/$pkgname/" "$srcdir/user.lua"
-	install -dm0655 "$pkgdir/usr/share/zbstudio/cfg"
+	install -dm0755 "$pkgdir/usr/share/zbstudio/cfg"
 	ln -sf "/etc/$pkgname/user.lua" "$pkgdir/usr/share/zbstudio/cfg"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	cp -a lualibs "$pkgdir/usr/share/zbstudio/"

@@ -1,7 +1,7 @@
 pkgbase = zerobrane-studio
 	pkgdesc = A lightweight Lua-based IDE for Lua
 	pkgver = 2.01
-	pkgrel = 4
+	pkgrel = 5
 	url = https://studio.zerobrane.com/
 	arch = any
 	license = MIT
