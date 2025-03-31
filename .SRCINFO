@@ -1,6 +1,6 @@
 pkgbase = ltspice
 	pkgdesc = SPICE simulator, schematic capture and waveform viewer.
-	pkgver = 24.1.0
+	pkgver = 24.1.6
 	pkgrel = 1
 	url = https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = ltspice
 	source = ltspice.sh
 	source = ltspice-help.sh
 	source = conv.sh
-	source = https://ltspice.analog.com/download/24.1.0/LTspice64.msi
+	source = LTspice64-24.1.6.msi::https://ltspice.analog.com/download/24.1.6/LTspice64.msi
 	sha256sums = 456c0e6550f8d7ee354aca18f9d421be023b6bcb6afe80d9e8bc558b7d8961a6
 	sha256sums = 3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e
 	sha256sums = 9d1eb3d868376960050469324f8c7e7fbf674bfcbcac76c2a10934dbe77f6b6c
-	sha256sums = 404f065708fadb95d73ba8135ef8ac2e851b8cd1d57db9cd77dae64047e84815
+	sha256sums = 3503afc7ee46bc3d93842e7eb27df5833150a1a228014590694f9fef3da8eac2
 
 pkgname = ltspice
