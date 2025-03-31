@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git' 'make')
 source=("git+https://github.com/Pixel2175/walrs.git")
-sha256sums=('86848eb08a41cc8d23bfd656448b520e14ffd6945c7e39866d8a8cee7e4c7710')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
