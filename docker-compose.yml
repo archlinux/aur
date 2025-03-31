@@ -6,4 +6,4 @@ services:
       - .:/package
     user: 1000:1000
     working_dir: /package
-    command: bash -c "makepkg --printsrcinfo > .SRCINFO && makepkg"
+    command: bash -c "makepkg --printsrcinfo > .SRCINFO"
