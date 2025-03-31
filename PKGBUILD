@@ -5,10 +5,10 @@
 
 # General package information
 pkgname=krack
-pkgver=0.4.1
+pkgver=0.9
 pkgrel=1
 pkgdesc="Krathalan's packaging softwares"
-url="https://github.com/krathalan/krack"
+url="https://codeberg.org/krathalan/krack"
 license=("GPL3")
 arch=("any")
 
@@ -21,16 +21,16 @@ makedepends=("git" "scdoc")
 conflicts=("krack-git")
 
 # Download information
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
+source=("${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
-sha256sums=("606cf4783d189f6670eb1e65372cb5eddedc8daf367b8157b1f71ba96f467b1f"
-            "08bb8401eda586b9fabee0ff7a85096c5a013ee255ecbdf8e7656c5d36378ca9")
+sha256sums=("c6050c741890e5ace1098d9f4f52c13f27ad389b3abedeab6354c64f18901b3b"
+            "c40375f4f4b2cad568c0c181444e6b6e3006697eff0a6f3cfca4655d94b9bf54")
 validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
 
 build()
 {
   # Generate man pages
-  cd "${srcdir}/${pkgname}-${pkgver}/man" || exit
+  cd "${srcdir}/${pkgname}/man" || exit
 
   for manpage in ./*.scd; do
     scdoc < "${manpage}" > "${manpage%.scd}"
@@ -39,7 +39,7 @@ build()
 
 package()
 {
-  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}" || exit
 
   # /etc conf
   install -D -m644 etc/build.conf "${pkgdir}/etc/krack/build.conf"
@@ -63,6 +63,8 @@ package()
   # bash completion
   install -D -m644 bash-completion/krackctl "${pkgdir}/usr/share/bash-completion/completions/krackctl"
 
-  # systemd service
+  # systemd services
+  install -D -m644 lib/systemd/system/krack-build@.service "${pkgdir}/usr/lib/systemd/system/krack-build@.service"
+  install -D -m644 lib/systemd/system/krack-build@.timer "${pkgdir}/usr/lib/systemd/system/krack-build@.timer"
   install -D -m644 lib/systemd/system/krack-receive.service "${pkgdir}/usr/lib/systemd/system/krack-receive.service"
 }
