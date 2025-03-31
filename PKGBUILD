@@ -3,7 +3,7 @@
 _gemname='dry-core'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A toolset of small support modules used throughout the dry-rb ecosystem'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
