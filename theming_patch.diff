@@ -1,8 +1,8 @@
 diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
-index 71f6915d..a90c0df1 100644
+index b01727e5..27c6c7d6 100644
 --- a/src/adw-style-manager.c
 +++ b/src/adw-style-manager.c
-@@ -284,6 +284,23 @@ notify_high_contrast_cb (AdwStyleManager *self)
+@@ -431,6 +431,24 @@ notify_high_contrast_cb (AdwStyleManager *self)
    g_object_notify_by_pspec (G_OBJECT (self), props[PROP_HIGH_CONTRAST]);
  }
  
@@ -23,15 +23,16 @@ index 71f6915d..a90c0df1 100644
 +               "gtk-application-prefer-dark-theme", is_dark_variant, NULL);
 +}
 +
++
  static void
  adw_style_manager_constructed (GObject *object)
  {
-@@ -308,27 +325,6 @@ adw_style_manager_constructed (GObject *object)
+@@ -456,32 +474,6 @@ adw_style_manager_constructed (GObject *object)
                               self,
                               G_CONNECT_SWAPPED);
  
 -    if (!adw_is_granite_present () && !g_getenv ("GTK_THEME")) {
--      g_object_set (gtk_settings_get_for_display (self->display),
+-      g_object_set (self->gtk_settings,
 -                    "gtk-theme-name", "Adwaita-empty",
 -                    NULL);
 -
@@ -49,14 +50,19 @@ index 71f6915d..a90c0df1 100644
 -      gtk_style_context_add_provider_for_display (self->display,
 -                                                  GTK_STYLE_PROVIDER (self->accent_provider),
 -                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
+-
+-      self->fonts_provider = gtk_css_provider_new ();
+-      gtk_style_context_add_provider_for_display (self->display,
+-                                                  GTK_STYLE_PROVIDER (self->fonts_provider),
+-                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
 -    }
 -
      self->animations_provider = gtk_css_provider_new ();
      gtk_css_provider_load_from_string (self->animations_provider,
                                         "* { transition: none; }");
-@@ -364,6 +360,17 @@ adw_style_manager_constructed (GObject *object)
- 
+@@ -535,6 +527,17 @@ adw_style_manager_constructed (GObject *object)
    update_dark (self);
+   update_fonts (self);
    update_stylesheet (self, UPDATE_ALL);
 +
 +  if (self->display && !adw_is_granite_present () && !g_getenv ("GTK_THEME")) {

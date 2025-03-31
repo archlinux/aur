@@ -1,8 +1,8 @@
 # Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
 
 pkgname=libadwaita-without-adwaita-git
-pkgver=1.6.3
-pkgrel=16
+pkgver=1.7.0
+pkgrel=17
 url="https://gnome.pages.gitlab.gnome.org/libadwaita"
 pkgdesc='libadwaita; Includes a patch to not overwrite the system theme'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
