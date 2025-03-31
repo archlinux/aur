@@ -2,7 +2,7 @@
 # Contributor: nb5p
 
 pkgname=vimcdoc
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Vim Chinese Documentation"
 url="http://vimcdoc.sf.net"
@@ -11,7 +11,7 @@ arch=('any')
 license=('custom:vimcdoc')
 depends=('vim')
 source=("https://nchc.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-$pkgver.tar.gz")
-sha256sums=('08f7fb85dc5c7d2535749336d0268262d3a6be213a8bdf2d0de90073be187046')
+sha256sums=('768e97c4c8aa1818e0e7b1b4c8cde716082187c0109582e4f2c032e82fed55a7')
 
 package() {
   cd vimcdoc-$pkgver
