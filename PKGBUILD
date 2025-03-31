@@ -1,7 +1,7 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 # old maintainer: Dominik Heidler <dominik@heidler.eu>
 pkgname=rtl_433-git
-pkgver=r3573.54a886bf
+pkgver=r3635.b91e971a
 pkgrel=1
 pkgdesc="Program to decode radio transmissions from devices on the ISM bands (and other frequencies"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h')

@@ -1,6 +1,6 @@
 pkgbase = rtl_433-git
 	pkgdesc = Program to decode radio transmissions from devices on the ISM bands (and other frequencies
-	pkgver = r3573.54a886bf
+	pkgver = r3635.b91e971a
 	pkgrel = 1
 	url = https://github.com/merbanan/rtl_433
 	arch = i686
