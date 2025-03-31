@@ -1,0 +1,4 @@
+[scalafmt]
+source = "git"
+git = "https://github.com/scalameta/scalafmt"
+prefix = "v"
