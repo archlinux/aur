@@ -1,15 +1,16 @@
 pkgbase = sile-piecharts
 	pkgdesc = Pie charts for the SILE typesetting system
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/Omikhleia/piecharts.sile
 	arch = any
 	license = MIT
 	makedepends = lua51
 	makedepends = luarocks
+	depends = lua51-grail
 	depends = sile
 	depends = sile-silex
-	source = https://github.com/Omikhleia/piecharts.sile/archive/v0.3.0/piecharts.sile-0.3.0.tar.gz
-	sha256sums = 3a7421046f6b318b3d90758fae2b9f86548c7de989ad277431cccd4dc1a43e0d
+	source = https://github.com/Omikhleia/piecharts.sile/archive/v1.0.0/piecharts.sile-1.0.0.tar.gz
+	sha256sums = 9c78d59c39e6b4684a9e1249b02c8eb219a7623a940602d6eaa4bdb9051b0806
 
 pkgname = sile-piecharts
