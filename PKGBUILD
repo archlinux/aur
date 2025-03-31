@@ -2,8 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=cmake
+pkgname=cmake3
 pkgver=3.31.6
+provides=(${pkgname%3}=$pkgver)
+conflicts=(${pkgname%3})
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -36,7 +38,7 @@ sha512sums=('c478e688b909e689c5b5ffb2269c8d4c86029f6b0947491c6ed527b00ba93ff21f1
 validpgpkeys=(CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA) # Brad King <brad.king@kitware.com>
 
 build() {
-  cd ${pkgname}
+  cd ${pkgname%3}
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
     --docdir=/share/doc/cmake \
@@ -50,10 +52,10 @@ build() {
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname%3}
   make DESTDIR="${pkgdir}" install
 
   rm -r "$pkgdir"/usr/share/doc/cmake/html/_sources
   emacs -batch -f batch-byte-compile "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
-  install -Dm644 Copyright.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 Copyright.txt "${pkgdir}"/usr/share/licenses/${pkgname%3}/LICENSE
 }
