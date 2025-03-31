@@ -1,7 +1,7 @@
 pkgbase = backlight-sync-git
 	pkgdesc = Automatic backlight sync between a laptop and a monitor
-	pkgver = r17.f65d3d9
-	pkgrel = 2
+	pkgver = r23.2067e96
+	pkgrel = 1
 	url = https://github.com/Stebalien/backlight-sync
 	arch = any
 	license = GPL3
