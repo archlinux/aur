@@ -2,7 +2,7 @@
 
 pkgname=alpaca-ai
 _pkgname=alpaca
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/Jeffser/${_pkgname%-git}"
 license=(GPL-3.0-or-later)
 options=(!debug)
 source=($url/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-b2sums=('9d87c11cc359bdcd356e07e4455bd7eb4535a1557986a105e14fa1b32f5a36d6c1fed47f7fb006bd70a9ace42df39383b5fdb296262dc665dd97874f2d9f94ae')
+b2sums=('SKIP')
 depends=(
     dconf
     gdk-pixbuf2
