@@ -14,11 +14,13 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  make build
+  cargo build --release
 }
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm755 target/release/walrs "$pkgdir/usr/bin/walrs"
+  install -d "$pkgdir/etc/walrs/templates"
+  cp -r templates/* "$pkgdir/etc/walrs/templates/"
 }
 
