@@ -1,0 +1,17 @@
+pkgbase = hyprpad
+	pkgdesc = A simple, fast text editor with Vim keybinds
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/gingrspacecadet/hyprpad
+	arch = x86_64
+	license = AGPL
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = ncurses
+	source = hyprpad.c
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hyprpad
