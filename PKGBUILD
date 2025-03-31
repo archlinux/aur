@@ -1,9 +1,9 @@
-# Maintainer: decipher3114 <decipher3114@gmail.com>
+# Maintainer: decipher
 pkgname=capter
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 epoch=
-pkgdesc="A simple cross-platform screenshot tool"
+pkgdesc="Cross-Platform Screen Capture and Annotation Tool"
 arch=('x86_64')
 depends=(gtk3 
 xdotool 
@@ -16,7 +16,7 @@ conflicts=()
 replaces=()
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/decipher3114/Capter/releases/latest/download/capter_${pkgver}_x86_64.tar.gz)
-sha512sums=("8c7bb3ae51582f997b072f6d848b984c6ca5d359079c04f524c8b371b62f7d703037527a54d0b4edc27075f7880c4622b0f0fce6204dc18fd21863d971d432f0")
+sha512sums=("327033476fbf1b3f7d1e2f96ed47402aa38cd4855b76f0e5aaad0b3d3462f2605645327429dc927986bee36ef974f4c1f1adef5791847201a66231580f111004")
 package() {
 	cp -r "${srcdir}"/* "${pkgdir}"/
 }
