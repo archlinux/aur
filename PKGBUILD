@@ -1,7 +1,7 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer@live.de> 
 
 pkgname=gotlsaflare
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Update TLSA DANE records on Cloudflare from X509 certificate"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 license=('MIT')
 makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('e581c8af9c233a04284599943da127471cf0acdcbfc895190189359592c614cc')
+sha256sums=('fa911971c8accaadf52617c73ad41696c877b6864e3f6c5927a7e673ca1528e1')
 
 build() {
     GOPATH=$(pwd)/..
