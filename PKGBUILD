@@ -2,7 +2,7 @@
 
 _name="aescrypt"
 pkgname="${_name}-gui"
-pkgver=4.2.3
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES) - GUI"
 arch=('any')
@@ -16,8 +16,8 @@ replaces=("${pkgname}-bin")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}.tar.gz::${url}/download/v${pkgver%%.*}/linux/${pkgname//-/_}-${pkgver}-Linux-x86_64.tar.gz")
-sha256sums=('777bb24d99051038676bd1faa4947171165a8af84f195479e1cf93858ea069e8'
-            '7d5efd9b1ba27bb4557178dea82e9759c3732008765269d0706cbe7b0a39c380')
+sha256sums=('2d205b34d60ce48fe5679c42c35f827b46a29a77bf5e8c5a4ca95a0eec619ca6'
+            'bc7db7ffc9117f8078ec794ff8b6eb4e349fdff0ee908e2cafebf68c1051696c')
 # validpgpkeys=('C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4') # Terrapane Support <support@terrapane.com> (https://github.com/terrapane/aescrypt_linux/blob/master/README.md#signed-release-packages)
 
 prepare() {
