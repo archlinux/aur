@@ -1,0 +1,16 @@
+pkgbase = gemini-cli-go-git
+	pkgdesc = Terminal-based tool for interacting with Gemini written in Go
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/eliben/gemini-cli
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = go>=1.23.0
+	depends = glibc>=2.36
+	optdepends = sqlite
+	conflicts = gemini-cli
+	source = git+https://github.com/eliben/gemini-cli.git
+	md5sums = SKIP
+
+pkgname = gemini-cli-go-git
