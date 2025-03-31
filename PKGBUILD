@@ -7,8 +7,8 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.79.0
-pkgrel=2
+pkgver=0.80.0
+pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
 url='https://github.com/Aider-AI/aider'
@@ -71,6 +71,7 @@ checkdepends=(
 )
 # shellcheck disable=SC2016  # Not meant to expand
 optdepends=(
+  'aider-chat-docs: offline documentation'
   'chromium: for web scraping'
   # Packages are yet to be written, see comment in `check()`
   # 'python-llama-index-embeddings-huggingface: to use the interactive `/help` feature'
@@ -83,15 +84,22 @@ source=(
   'archlinux-use-system.patch'
   'aur-install-notice.patch'
   'fix-build-from-tarball.patch'
+  'github-pr-3692.patch'
 )
 
-sha512sums=('ca8039215f2114a0e5c1a26d83b63a274747df820cc108d832fd7899b1708668d3156ae933c94556abfd3ca93ceb2853f3bbb209249bad81c77a3bd9e2487ce0'
+sha512sums=('a0aad679ead5adf5047514cd717c3ed73d48c152bf700efbacb13ef09f91ffa173ce3eb42884db70ebac9ce96b952549397d17ddf8ceabecfc713b5f8fe2ef53'
             'abd72fc596f3b5f0e96dfe069f017d3cdbb8700d1734f32c6b4b2cc9d61b06a66eed4151959b013cae52cf3339d02715d6cc4d83e9e3ba473d739fcf6e0bdd2c'
             'a6fb5e00ae88ed02db00b61b36bb4b5ffef3e79ccfdc2314c9a702f50ffe4d7e5556a0b1eceb21c23b3d8ed2192af7eb47b6676bd0d9aaa568a7797b6badd174'
-            '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b')
+            '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b'
+            '914cb0e6d4dfa807f57cbbff8b8c8bde8c245e01a4585eedea79c08a705d5b1a00f13ef78d371b6342c04960acb874e273cb4b4510432644dd85ab287b8b85c6')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
+
+  # Remove this patch once the upstream author has merged PR #3692 and
+  # included it in a stable release.
+  # See also: https://github.com/Aider-AI/aider/pull/3692
+  patch -p1 < ../github-pr-3692.patch
 
   # Replace custom downloads with system packages
   patch -p1 < ../archlinux-use-system.patch
@@ -190,6 +198,7 @@ package_aider-chat() {
 # shellcheck disable=SC2128
 package_aider-chat-docs() {
   depends=()
+  optdepends=()
 
   cd "${_gitpkgname}-${pkgver}"
 
