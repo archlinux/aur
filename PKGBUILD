@@ -2,20 +2,20 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20250323
-_pkgver=15-20250323
+pkgver=15.1.0.snapshot20250330
+_pkgver=15-20250330
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.2
-pkgrel=2
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://gcc.gnu.org'
-makedepends=(binutils cargo doxygen gcc-ada gcc-d git lib32-glibc lib32-gcc-libs python zstd)
+makedepends=(binutils doxygen gcc-ada gcc-d git lib32-glibc lib32-gcc-libs python rust zstd)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/${CHOST}/${_realver}
@@ -34,7 +34,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('68bd1c2ad24202f669b257df0842a32c44279263ad6f51be954d4899243a8c5a'
+sha256sums=('21d47f6bfb415c037aa29166a2e79ba7b4b6c8b140dc3d99d1ae592218ca2880'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
