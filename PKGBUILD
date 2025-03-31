@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="talm"
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Manage Talos Linux the GitOps Way!"
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d56bdb913b5c03a9386339310b2d5c26ac09a08dea4ab5726fa37717c6a003c')
+sha256sums=('5cfce454bf5fdefae8fca1286d36b10200dea066d906f44023bd6e58af8b7d73')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
