@@ -1,7 +1,7 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=gmlgcd
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='The gemlog comment daemon'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=(
         "tmpfiles-gmlgcd.conf"
 )
 validpgpkeys=(10F1CC925057D456798EBF9C1B3EB6FE2D338B4A)
-sha256sums=('7b5985f04e5820134ab6f2532169cb5108e51559b7ae0678185b4556935555e1'
+sha256sums=('5270e7d7af4ad7f4885f72b2c636ae577853a001735b6a292378265ab390c55a'
             'SKIP'
             'e071442fbd90cf80ce528344d4849f6372c8e75d236f3dca9a56c03f3586d92d'
             'd5414cc42d81608d0d8267d3d2d1e7ef7323abdecf96a33af54bae9416f0050e')
