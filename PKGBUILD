@@ -4,7 +4,7 @@
 
 pkgname=lime3ds
 pkgver=2119.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 url='https://github.com/Lime3DS/lime3DS-archive'
@@ -14,8 +14,14 @@ depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-base' 'qt6-multimedia' 'ffmpeg' 'libfd
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 conflicts=('lime3ds-appimage' 'lime3ds-git')
 options=('!lto')
-source=("https://github.com/Lime3DS/lime3DS-archive/releases/download/$pkgver/$pkgname-unified-source-$pkgver.tar.xz")
-md5sums=('60aeb81bb0825594cfed33dbc29dd4a8')
+source=("https://github.com/Lime3DS/lime3DS-archive/releases/download/$pkgver/$pkgname-unified-source-$pkgver.tar.xz"
+		"robin-map_fix.patch")
+md5sums=('60aeb81bb0825594cfed33dbc29dd4a8'
+         '6e30462371800f21c53904f101f5d46d')
+
+prepare() {
+	patch $srcdir/$pkgname-unified-source-$pkgver/CMakeLists.txt robin-map_fix.patch
+}
 
 build() {
     # Fix to help cmake find libusb
@@ -45,6 +51,7 @@ build() {
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
 	-DUSE_SYSTEM_ZSTD=ON \
+	-DDYNARMIC_USE_BUNDLED_EXTERNALS=ON \
 	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake --build build
 }

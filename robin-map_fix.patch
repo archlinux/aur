@@ -1,0 +1,11 @@
+--- CMakeLists.txt	2024-11-09 17:11:11.155381400 -0500
++++ "CMakeLists (copy).txt"	2025-03-30 21:31:00.260177107 -0400
+@@ -272,7 +272,7 @@
+ endif()
+ 
+ # Use system tsl::robin_map if available (otherwise we fallback to version bundled with dynarmic)
+-find_package(tsl-robin-map QUIET)
++# find_package(tsl-robin-map QUIET)
+ 
+ # Platform-specific library requirements
+ # ======================================
