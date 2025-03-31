@@ -1,4 +1,4 @@
-# Maintainer: Daniel Salwasser <daniel.salwasser AT outlook DOT com>y
+# Maintainer: Daniel Salwasser <daniel.salwasser AT outlook DOT com>
 
 pkgname=kaminpar
 pkgver=3.4.1.r0.gdf92c6a
