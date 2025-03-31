@@ -1,6 +1,6 @@
 # Maintainer: Iván Zaera Avellón <ivan dot zaera at protonmail dot com>
 pkgname=owntracks-recorder
-pkgver=0.9.8
+pkgver=1.0.0
 pkgrel=2
 pkgdesc='Lightweight program for storing and accessing location data published via MQTT (or HTTP) by the OwnTracks apps.'
 arch=('i686' 'pentium4' 'x86_64')
@@ -21,6 +21,7 @@ makedepends=(
 	'libsodium'
 	'lua'
 	'mosquitto'
+	'pkgconf'
 )
 backup=(
 	'etc/owntracks-recorder.conf'
@@ -29,7 +30,7 @@ install='install.sh'
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/owntracks/recorder/archive/refs/tags/$pkgver.tar.gz"
 )
-sha256sums=("d16f6fcd98a00862253dafc32faea80bdf3b35dc7d337bc349c9f23cf90e2ecd")
+sha256sums=("f0fa4b413675128037b26ceabef48c29947426f989467e200e0739ff0c92bf00")
 
 build() {
 	cd "${srcdir}/recorder-${pkgver}"
