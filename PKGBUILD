@@ -1,6 +1,6 @@
 # Maintainer: Your Name <superchief@evertvorster.com>
 pkgname=dynamic-power-daemon
-pkgver=1.0.4
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="A dynamic power daemon for managing system performance based on load"
 arch=('any')
