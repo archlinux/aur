@@ -37,7 +37,7 @@ build() {
   # Use system's electron
   sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron\",\n/" package.json
 
-  pnpm i
+  pnpm i --frozen-lockfile
   pnpm package:dir
 }
 
