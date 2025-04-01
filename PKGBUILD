@@ -3,13 +3,13 @@
 
 pkgname=arrow-tools
 pkgver=0.22.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of handy CLI tools to convert CSV and JSON to Apache Arrow and Parquet"
 arch=('x86_64')
 url="https://github.com/domoritz/arrow-tools"
 license=('Apache-2.0' 'MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 BINFILES=(
