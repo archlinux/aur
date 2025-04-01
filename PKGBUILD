@@ -5,8 +5,8 @@
 
 pkgname=hmcl-stable-bin
 pkgver=3.6.12
-pkgrel=1
-pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
+pkgrel=2
+pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular.(Use the official launch script)"
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
