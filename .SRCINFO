@@ -14,6 +14,7 @@ pkgbase = python-glcontext
 	depends = python
 	depends = libx11
 	depends = libglvnd
+	optdepends = egl-wayland: Run on Wayland session
 	source = https://github.com/moderngl/glcontext/archive/refs/tags/3.0.0.tar.gz
 	sha512sums = dc38b4f019d939c619d0981468f84fae72d8958a3e139901ba0866a6c0e6ffa35f566fcd0061cd9ad89dd20881ab9b84da8e9913c1944f70565457775e90bc26
 
