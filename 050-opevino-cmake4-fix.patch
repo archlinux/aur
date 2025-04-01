@@ -1,0 +1,230 @@
+--- a/thirdparty/zlib/zlib/CMakeLists.txt
++++ b/thirdparty/zlib/zlib/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.4.4...3.15.0)
++cmake_minimum_required(VERSION 3.5.0...3.15.0)
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
+ 
+ project(zlib C)
+--- a/thirdparty/ocl/cl_headers/tests/conan/CMakeLists.txt
++++ b/thirdparty/ocl/cl_headers/tests/conan/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ project(PackageTest C)
+ 
+ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+--- a/thirdparty/json/nlohmann_json/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.14)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ ##
+ ## PROJECT
+--- a/thirdparty/json/nlohmann_json/docs/mkdocs/docs/integration/conan/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/docs/mkdocs/docs/integration/conan/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ project(json_example)
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ add_definitions("-std=c++11")
+ 
+ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+--- a/thirdparty/json/nlohmann_json/docs/mkdocs/docs/integration/vcpkg/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/docs/mkdocs/docs/integration/vcpkg/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ project(json_example)
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ find_package(nlohmann_json CONFIG REQUIRED)
+ 
+--- a/thirdparty/json/nlohmann_json/tests/cmake_add_subdirectory/project/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/tests/cmake_add_subdirectory/project/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.14)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ project(DummyImport CXX)
+ 
+--- a/thirdparty/json/nlohmann_json/tests/cmake_import/project/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/tests/cmake_import/project/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.14)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ project(DummyImport CXX)
+ 
+--- a/thirdparty/json/nlohmann_json/tests/cmake_import_minver/project/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/tests/cmake_import_minver/project/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.14)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ project(DummyImportMinVer CXX)
+ 
+--- a/thirdparty/json/nlohmann_json/tests/cmake_target_include_directories/project/CMakeLists.txt
++++ b/thirdparty/json/nlohmann_json/tests/cmake_target_include_directories/project/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1...3.14)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ project(DummyImport CXX)
+ 
+--- a/thirdparty/gflags/gflags/CMakeLists.txt
++++ b/thirdparty/gflags/gflags/CMakeLists.txt
+@@ -19,7 +19,7 @@
+ ## depend on the gflags library should link to the "gflags::gflags" library target.
+ ##
+ ## Example CMakeLists.txt of user project which requires separate gflags installation:
+-##   cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++##   cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
+ ##
+ ##   project(Foo)
+ ##
+@@ -29,7 +29,7 @@
+ ##   target_link_libraries(foo gflags::gflags)
+ ##
+ ## Example CMakeLists.txt of user project which requires separate single-threaded static gflags installation:
+-##   cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++##   cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
+ ##
+ ##   project(Foo)
+ ##
+@@ -39,7 +39,7 @@
+ ##   target_link_libraries(foo gflags::gflags)
+ ##
+ ## Example CMakeLists.txt of super-project which contains gflags source tree:
+-##   cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
++##   cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
+ ##
+ ##   project(Foo)
+ ##
+@@ -70,7 +70,7 @@
+ ## - GFLAGS_INSTALL_SHARED_LIBS
+ ## - GFLAGS_INSTALL_STATIC_LIBS
+ 
+-cmake_minimum_required (VERSION 3.0.2 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.5.0 FATAL_ERROR)
+ 
+ if (POLICY CMP0042)
+   cmake_policy (SET CMP0042 NEW)
+--- a/thirdparty/gflags/gflags/test/config/CMakeLists.txt
++++ b/thirdparty/gflags/gflags/test/config/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ ## gflags package configuration tests
+ 
+-cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.5.0 FATAL_ERROR)
+ 
+ project (gflags_${TEST_NAME})
+ 
+--- a/thirdparty/gflags/gflags/test/nc/CMakeLists.txt
++++ b/thirdparty/gflags/gflags/test/nc/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ ## gflags negative compilation tests
+ 
+-cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.5.0 FATAL_ERROR)
+ 
+ if (NOT TEST_NAME)
+   message (FATAL_ERROR "Missing TEST_NAME CMake flag")
+--- a/thirdparty/gtest/gtest/CMakeLists.txt
++++ b/thirdparty/gtest/gtest/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Note: CMake support is community-based. The maintainers do not use CMake
+ # internally.
+ 
+-cmake_minimum_required(VERSION 2.8.8)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (POLICY CMP0048)
+   cmake_policy(SET CMP0048 NEW)
+--- a/thirdparty/gtest/gtest/googlemock/CMakeLists.txt
++++ b/thirdparty/gtest/gtest/googlemock/CMakeLists.txt
+@@ -42,7 +42,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gmock VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.6.4)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (COMMAND set_up_hermetic_build)
+   set_up_hermetic_build()
+--- a/thirdparty/gtest/gtest/googletest/CMakeLists.txt
++++ b/thirdparty/gtest/gtest/googletest/CMakeLists.txt
+@@ -53,7 +53,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gtest VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.6.4)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (POLICY CMP0063) # Visibility
+   cmake_policy(SET CMP0063 NEW)
+--- a/src/plugins/intel_npu/thirdparty/yaml-cpp/CMakeLists.txt
++++ b/src/plugins/intel_npu/thirdparty/yaml-cpp/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # 3.5 is actually available almost everywhere, but this a good minimum.
+ # 3.14 as the upper policy limit avoids CMake deprecation warnings.
+-cmake_minimum_required(VERSION 3.4...3.14)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ # enable MSVC_RUNTIME_LIBRARY target property
+ # see https://cmake.org/cmake/help/latest/policy/CMP0091.html
+--- a/src/plugins/intel_npu/thirdparty/yaml-cpp/test/gtest-1.11.0/CMakeLists.txt
++++ b/src/plugins/intel_npu/thirdparty/yaml-cpp/test/gtest-1.11.0/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Note: CMake support is community-based. The maintainers do not use CMake
+ # internally.
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (POLICY CMP0048)
+   cmake_policy(SET CMP0048 NEW)
+--- a/src/plugins/intel_npu/thirdparty/yaml-cpp/test/gtest-1.11.0/googlemock/CMakeLists.txt
++++ b/src/plugins/intel_npu/thirdparty/yaml-cpp/test/gtest-1.11.0/googlemock/CMakeLists.txt
+@@ -42,7 +42,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gmock VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (COMMAND set_up_hermetic_build)
+   set_up_hermetic_build()
+--- a/src/plugins/intel_npu/thirdparty/yaml-cpp/test/gtest-1.11.0/googletest/CMakeLists.txt
++++ b/src/plugins/intel_npu/thirdparty/yaml-cpp/test/gtest-1.11.0/googletest/CMakeLists.txt
+@@ -53,7 +53,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gtest VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (POLICY CMP0063) # Visibility
+   cmake_policy(SET CMP0063 NEW)
+--- a/src/plugins/intel_cpu/thirdparty/onednn/CMakeLists.txt
++++ b/src/plugins/intel_cpu/thirdparty/onednn/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ # limitations under the License.
+ #===============================================================================
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if(POLICY CMP0022)
+     cmake_policy(SET CMP0022 NEW)
+--- a/src/plugins/intel_cpu/thirdparty/onednn/tests/other/subproject/CMakeLists.txt
++++ b/src/plugins/intel_cpu/thirdparty/onednn/tests/other/subproject/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ # To test run:
+ # mkdir -p build && cd build && cmake .. && make -j && ./project_app
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ set(PROJECT_NAME "Project")
+ 

@@ -1,12 +1,11 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
 	pkgver = 2025.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
-	license = LicenseRef-Custom
-	makedepends = abseil-cpp
+	license = LicenseRef-custom
 	makedepends = cmake
 	makedepends = flatbuffers
 	makedepends = git
@@ -50,6 +49,7 @@ pkgbase = openvino
 	source = 020-openvino-disable-werror.patch
 	source = 030-openvino-level-zero-disable-werror.patch
 	source = 040-openvino-protobuf23-fix.patch
+	source = 050-opevino-cmake4-fix.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha256sums = 5f560596631a1428f378468215d21dee44dd0dd2556f1ece3352dcb775397940
 	sha256sums = SKIP
@@ -76,9 +76,11 @@ pkgbase = openvino
 	sha256sums = 8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f
 	sha256sums = f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a
 	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
+	sha256sums = ce883a506fc7964d10f03a20fa4620d69fef4aa5c4a2ecb07ce9d13d29dba7fc
 
 pkgname = openvino
-	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
 	depends = onetbb
 	depends = protobuf
 	depends = pugixml
@@ -91,6 +93,8 @@ pkgname = openvino
 
 pkgname = openvino-intel-gpu-plugin
 	pkgdesc = Intel GPU plugin for OpenVINO
+	depends = gcc-libs
+	depends = glibc
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
@@ -99,6 +103,8 @@ pkgname = openvino-intel-gpu-plugin
 
 pkgname = openvino-intel-npu-plugin
 	pkgdesc = Intel NPU plugin for OpenVINO
+	depends = gcc-libs
+	depends = glibc
 	depends = intel-npu-compiler
 	depends = intel-npu-driver
 	depends = onetbb
@@ -108,6 +114,8 @@ pkgname = openvino-intel-npu-plugin
 
 pkgname = python-openvino
 	pkgdesc = Python bindings for OpenVINO
+	depends = gcc-libs
+	depends = glibc
 	depends = openvino=2025.0.0
 	depends = python
 	depends = python-numpy
