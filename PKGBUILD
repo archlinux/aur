@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=autonomics
-_pkgver=1.14.8
+_pkgver=1.14.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -88,8 +88,8 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('22be85a3c5964354245ed2e3f66f22c0')
-b2sums=('af501a8f62e346659a0fbd60f5d143365771a605ee1a088d45b73b2e15442a521789bb3a7ddb1d1ed788492274eae9981d8ce202022fa6ae7fc840de219ae1f8')
+md5sums=('a96f0d7aec7e57cabce980db286a5c64')
+b2sums=('07a6d80a6d95b8ad568edb3b11961391eafbde318d195d797d9f5a0e5811776cf8e9e0e925f2644213304d45863f915cf0c3043c1ee723c39073de4307e31041')
 
 build() {
   mkdir build
