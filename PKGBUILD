@@ -1,4 +1,5 @@
-# Maintainer: Callum Parsey <callum@neoninteger.au>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Contributor: Callum Parsey <callum@neoninteger.au>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Yufan You <ouuansteve at gmail>
 
@@ -8,21 +9,17 @@ pkgver=0.13.0
 pkgrel=1
 pkgdesc='Language server for Dockerfiles'
 arch=('any')
-url='https://github.com/rcjsuen/dockerfile-language-server-nodejs'
+url='https://github.com/rcjsuen/dockerfile-language-server'
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-replaces=('dockerfile-language-server-bin' 'nodejs-dockerfile-language-server-nodejs')
-changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('2e6a287dcf5de6be2a1c01f149a8c3717fa0bc8a689cc355d94198081779d067')
+sha512sums=('afc1b04065411ee463f379c562803bba519fa7ab60507f20c653d16a9d1ec2eae811bfd780fe0ab4bb0850837d0af9136607bf2245fb71b15354ed25abd819dc')
 noextract=("$pkgname-$pkgver.tgz")
 
-PURGE_TARGETS=('CHANGELOG.md')
-
 package() {
-	export NODE_ENV=production
-	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" --build-from-source "$pkgname-$pkgver.tgz"
+    export NODE_ENV=production
+    npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
 	install -d \
 		"$pkgdir/usr/share/licenses/$pkgname/" \
 		"$pkgdir/usr/share/doc/$pkgname/"
@@ -35,5 +32,4 @@ package() {
 	ln -s \
 		"/usr/lib/node_modules/$_npmname/README.md" \
 		"$pkgdir/usr/share/doc/$pkgname/"
-	chown -R root:root "$pkgdir/"
 }

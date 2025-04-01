@@ -1,0 +1,3 @@
+[dockerfile-language-server]
+source = "npm"
+npm = "dockerfile-language-server-nodejs"
