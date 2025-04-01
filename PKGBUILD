@@ -1,7 +1,7 @@
 # Maintainer:Magillos <kerown at gmail com>
 
 pkgname=cable
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A PyQt6 application to dynamically modify Pipewire and Wireplumber settings"
 arch=('any')
@@ -14,7 +14,7 @@ if [ -n "${USE_LOCAL}" ]; then
   sha256sums=('SKIP')
 else
   source=("cable-$pkgver.tar.gz::https://github.com/magillos/Cable/archive/refs/tags/$pkgver.tar.gz")
-  sha256sums=('59caa62ca612a266f06ad90f0972db9fe4762b93dc43a876ff41392d282b8426')
+  sha256sums=('158325f6cfb5f300b1c3880772d7d428f0c7c32c653380fdb2903b08a9ef7a1e')
 fi
 
 
