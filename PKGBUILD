@@ -3,7 +3,7 @@
 pkgname='opencoarrays'
 _name='OpenCoarrays'
 pkgver=2.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A transport layer for coarray Fortran compilers."
 arch=('x86_64')
 url="https://github.com/sourceryinstitute/OpenCoarrays"
@@ -24,6 +24,15 @@ noextract=()
 source=("https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${pkgver}/OpenCoarrays-${pkgver}.tar.gz")
 sha256sums=(e13f0dc54b966b0113deed7f407514d131990982ad0fe4dea6b986911d26890c)
 
+
+prepare() {
+
+  # -- add '--use-hwthread-cpus' to test_parameters
+  sed -i '/set(test_parameters -np ${num_caf_img} ${test_parameters})/i\
+  set(test_parameters ${test_parameters} --use-hwthread-cpus)' "${srcdir}/${_name}-${pkgver}/CMakeLists.txt"
+
+}
+
 build() {
 
   cd "${srcdir}/${_name}-${pkgver}"
@@ -32,6 +41,8 @@ build() {
   export CC="$(command -v gcc)"
   cmake \
     -B build \
+    -D openmpi=TRUE \
+    -D N_CPU="$(nproc)" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
 

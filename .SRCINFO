@@ -1,7 +1,7 @@
 pkgbase = opencoarrays
 	pkgdesc = A transport layer for coarray Fortran compilers.
 	pkgver = 2.10.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sourceryinstitute/OpenCoarrays
 	arch = x86_64
 	license = BSD
