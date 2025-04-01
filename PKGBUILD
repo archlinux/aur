@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-numpy-quaternion
-pkgver=2024.0.7
+pkgver=2024.0.8
 pkgrel=1
 pkgdesc="Add built-in support for quaternions to NumPy"
 url="https://quaternion.readthedocs.io/"
@@ -16,6 +16,7 @@ optdepends=(
   "python-numba: speedup of numerical functions"
 )
 makedepends=(
+  'git'
   'python-build'
   'python-hatchling'
   'python-installer'
@@ -26,28 +27,28 @@ checkdepends=(
  'python-pytest-cov'
 )
 
-_pypi=numpy_quaternion
 source=(
-  "https://files.pythonhosted.org/packages/source/${_pypi::1}/${_pypi/_/-}/$_pypi-$pkgver.tar.gz"
+  "git+https://github.com/moble/quaternion.git#tag=v$pkgver"
 )
 sha256sums=(
-  '99f4c401c0330fb15b9c718b1b372248dd22dcd475fc0bd7dcff2fdcb688c257'
+  '5d23661b769e2ccb41fee55503f9b6e7f89b7af71a59250d0ee2400e4fcc8f83'
 )
 
 build() {
-  cd "$_pypi-$pkgver"
+  cd quaternion
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_pypi-$pkgver"
+  cd quaternion
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/numpy_quaternion-$pkgver-"*.whl
   test-env/bin/python -m pytest --no-cov
 }
 
 package() {
-  cd "$_pypi-$pkgver"
+  cd quaternion
   python -m installer --destdir="$pkgdir" "dist/numpy_quaternion-$pkgver-"*.whl
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
