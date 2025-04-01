@@ -2,10 +2,10 @@
 # Contributor: Kiri <kiri@vern.cc>
 
 _pkgname=RProtoBuf
-_pkgver=0.4.23
+_pkgver=0.4.24
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="R Interface to the 'Protocol Buffers' 'API' (Version 2 or 3)"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -22,8 +22,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('02d14296c87b0a73ca8b988da459f48c')
-b2sums=('16db97d24df02e9c36e3f7d6e78d716794864cfea3dd28e3fda732bbcd4261f64af1a5469183a2d7c84d8fabfb63c398a9c4a49ef329b0dbae424eea016e30fd')
+md5sums=('4e353071689363226c7cdf16c82387a1')
+b2sums=('1be0a8b6e4413fc18fccb31a12a9d813f73c5b7de2f399be6489d65a166dc29474272f7dbf1d3a62a426657fb83d6b29b99e18ae31ffc07762a154b9df262ecf')
 
 build() {
   mkdir build
