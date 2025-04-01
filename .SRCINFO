@@ -1,0 +1,16 @@
+pkgbase = octave-femoctave
+	pkgdesc = A simple FEM package for solving scalar problems in one or two space dimensions
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = https://github.com/andreasstahel/femoctave
+	install = octave-femoctave.install
+	arch = x86_64
+	groups = octave-forge
+	license = GPL-3.0-or-later
+	depends = octave>=4.2.0
+	optdepends = triangle<=1.6
+	noextract = v.2.1.8.tar.gz
+	source = https://github.com/AndreasStahel/FEMoctave/archive/refs/tags/v.2.1.8.tar.gz
+	sha256sums = 890346b7c389f9f91c1d9ab3efddab00312cd9621deaf6e7f60d790dbd605bf6
+
+pkgname = octave-femoctave
