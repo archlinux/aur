@@ -16,8 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # Use the latest commit hash if no tags are available
-  git describe --tags --long 2>/dev/null || echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  # Generate a valid version string by replacing invalid characters
+  git describe --tags --long 2>/dev/null | sed 's/-/./g' || echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
