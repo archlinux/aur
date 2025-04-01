@@ -14,7 +14,7 @@ note() {
 }
 
 post_install() {
-    note "Custom flags should be put directly in: ~/.config/ticktick-flags.conf"
+    note "Custom flags should be put directly in: ~/.config/ticktick/user-flags.conf"
 }
 
 post_upgrade() {
