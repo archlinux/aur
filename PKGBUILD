@@ -29,7 +29,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   # "Test_deployManifests" requires heavy dependency 'kind' (https://kind.sigs.k8s.io/)
-  go test ./... -skip '^Test_deployManifests$'
+  go test ./...
 }
 
 package() {
