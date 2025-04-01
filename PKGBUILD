@@ -3,7 +3,7 @@
 _pkgname=ucspi-tcp
 pkgname=ucspi-tcp-re
 pkgver=0.88
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy-to-use command-line tools for building TCP client-server applications."
 arch=('x86_64' 'aarch64')
 provides=('tcpserver' 'tcpclient')
@@ -13,7 +13,7 @@ license=('unknown')
 source=("http://cr.yp.to/ucspi-tcp/ucspi-tcp-0.88.tar.gz"
         "ucspi-tcp-re.patch")
 sha256sums=('4a0615cab74886f5b4f7e8fd32933a07b955536a3476d74ea087a3ea66a23e9c'
-            '9d599c6362a4fab5335c5ee90b3c2a9ffe6dff30b3e15a3516e8dbcc6bc289f2')
+            '6ccbc665d4916e252cd9e45de99c39b90894d679d97a024e9b0eb23600d9d45b')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
