@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=scenario-rs-gui-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A powerful automation tool for executing remote commands and transferring files via SSH.(Prebuilt version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('be0c145f4d2246a5ffcf78e8799637656cbc272b982963b84356616b5dcae25d')
+sha256sums=('d0ddf90b57592ffe5fa3354f54a511d3fcd3b47da73dc17d3a0a7438d1629f99')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     _icon_sizes=(32x32 128x128 256x256@2)
