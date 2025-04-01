@@ -1,11 +1,12 @@
-# Maintainer: effeffe - Filippo Falezza <filippo dot falezza at outlook dot com>
-_pkgname=tuxedo-drivers-xmg
-pkgname=tuxedo-drivers-xmg-dkms-git
-pkgver=v4.4.2.r4.g03da958
+# Maintainer: Steven Seifried <gitlab@canox.net>
+# Contributor: Steven Seifried <gitlab@canox.net>
+_pkgname=tuxedo-drivers
+pkgname=tuxedo-drivers-dkms
+pkgver=4.12.2
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
-license=("GPL3")
+license=('GPL-2.0-or-later')
 arch=('x86_64')
 depends=('dkms')
 options=(!debug)
@@ -14,8 +15,7 @@ optdepends=('linux-headers: build modules against Arch kernel'
             'linux-zen-headers: build modules against ZEN kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
 # tuxedo-keyboard-ite = ite_8291, ite_8291_lb, ite_8297 and ite_829x
-provides=('tuxedo-drivers-dkms'
-          'tuxedo-keyboard'
+provides=('tuxedo-keyboard'
           'tuxedo-keyboard-ite'
           'tuxedo-io'
           'clevo-wmi'
@@ -25,38 +25,37 @@ provides=('tuxedo-drivers-dkms'
           'ite_8291_lb'
           'ite_8297'
           'ite_829x')
-conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms' 'tuxedo-drivers-dkms')
-#backup=(etc/modprobe.d/tuxedo_keyboard.conf)
+conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 source=(
-  ${_pkgname}::git+https://github.com/effeffe/tuxedo-drivers-XMG.git
-  tuxedo_io.conf
-  dkms.conf
-  )
+  $pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz
+  tuxedo_compatibility_check.patch
+  tuxedo_io.patch
+)
 sha256sums=(
-  'SKIP'
-  'd94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c'
-  '3ed9dc778b10d762e81215de23d9bd2075ee99f725b632a41bd3b687c24b7990'
-  )
+  '19171ee42d2c3d1773941f948ac7f8b74a76c902cd482ad5aa9106c17b6e6486'
+  'ef88dad138adedf52e6ec0cc406084194da2bb43b33e9abc96c3edb7738ac602'
+  'dec506a44a5f34fdab2f1d7222fc97210234be6fd034ca6532fa8f0f1ce84d14'
+)
 sha512sums=(
+  '39e08f2929c4bfaeb29faac35d6d177b58629a7fd2f92c3ee6f5872d49d530584752221e8ae3b3102f95fd16300b74ac721badf407895ec0738b6a4a0c6e4967'
   'SKIP'
-  '3101d1063e9c45eccb505fa21578cba33ae5c85b3d5b1c62c90806ad9d7b04410c91ded7a7115a85d1f6ecbd90ccc9e5f2ecf269dac4a557baa017a629bbcf81'
-  '745141b7765b88e67f84b7327653f7185bcd066333349336bf6db1f0ce30b804d145caed6236fe3cd5fab643e8d11d6f48ddd936d070be2c437d63d89ab74190'
-  )
+  'SKIP'
+)
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+  patch -Np0 -i "${srcdir}"/tuxedo_compatibility_check.patch
+  patch -Np0 -i "${srcdir}"/tuxedo_io.patch
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/src/${_pkgname}"
+  mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
   mkdir -p "${pkgdir}/etc/udev/rules.d/"
-  sed -i "s/#MODULE_VERSION#/${pkgver}/" dkms.conf
-  install -Dm644 dkms.conf -t "$pkgdir/usr/src/${_pkgname%}/"
-  install -Dm644 "${_pkgname%}"/Makefile -t "$pkgdir/usr/src/${_pkgname%}/"
-  install -Dm644 "${_pkgname%}"/tuxedo_keyboard.conf -t "$pkgdir/usr/lib/modprobe.d/"
-  install -Dm644 "$srcdir/tuxedo_io.conf" -t "$pkgdir/usr/lib/modules-load.d/"
-  #cp -avr "${_pkgname%}"/* "$pkgdir/usr/src/${_pkgname%}/"
-  cp -avr "${_pkgname%}"/src/* "$pkgdir/usr/src/${_pkgname%}/"
-  install -Dm644 "${_pkgname%}"/99-z-tuxedo-systemd-fix.rules -t "$pkgdir/etc/udev/rules.d/"
+  mkdir -p "${pkgdir}/usr/lib/udev/hwdb.d"
+  install -Dm644 "${_pkgname%}-$pkgver"/debian/tuxedo-drivers.dkms "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
+  sed -i "s/#MODULE_VERSION#/${pkgver}/" "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
+  install -Dm644 "${_pkgname%}-$pkgver"/tuxedo_keyboard.conf -t "$pkgdir/usr/lib/modprobe.d/"
+  cp -ar "${_pkgname%}-$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
+  install -Dm644 "${_pkgname%}-$pkgver"/99-z-tuxedo-systemd-fix.rules -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-$pkgver"/99-infinityflex-touchpanel-toggle.rules  -t "$pkgdir/etc/udev/rules.d/"
+  install -Dm644 "${_pkgname%}-$pkgver"/61-sensor-infinityflex.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d"
 }
