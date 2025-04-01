@@ -1,0 +1,12 @@
+pkgbase = vfdecrypt
+	pkgdesc = A tool for decrypting .dmg files, reworked to support OpenSSL 3
+	pkgver = 2025.1
+	pkgrel = 1
+	url = https://github.com/ahmadjerjawi/vfdecrypt-linux
+	arch = x86_64
+	license = GPL3
+	depends = openssl
+	source = git+https://github.com/ahmadjerjawi/vfdecrypt-linux.git
+	sha256sums = SKIP
+
+pkgname = vfdecrypt
