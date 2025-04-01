@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1@gmail.com>
 pkgname=typhoon-git
 _pkgname=typhoon
-pkgver=r103.gdf1fe35
+pkgver=v0.9.5.r2.g5ea0092
 pkgrel=1
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
@@ -15,9 +15,8 @@ source=("git+$url#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  # Generate a valid version string by replacing invalid characters
-  git describe --tags --long 2>/dev/null | sed 's/-/./g' || echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

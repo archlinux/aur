@@ -1,6 +1,6 @@
 pkgbase = typhoon-git
 	pkgdesc = A stylish weather app based on Stormcloud
-	pkgver = r103.gdf1fe35
+	pkgver = v0.9.5.r2.g5ea0092
 	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/typhoon
 	arch = any
