@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.81.2
+pkgver=3.82.1
 _electronversion=33
 _nodeversion=18
 pkgrel=1
@@ -20,7 +20,6 @@ makedepends=(
     'npm'
     'yarn'
     'nvm'
-    'gcc'
     'curl'
     'git'
     'python'
@@ -29,7 +28,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2713ceebc734333dc7c9e941fef67dfbb672c809a290792c6dcc4b9537c6def7'
+sha256sums=('cac8be1281307b50b45abf33d4c147eabd0c5cfa50eac728789df0dc0c7ac9c1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,7 +47,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -79,6 +77,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=development    yarn run electron-rebuild
     NODE_ENV=development    yarn node scripts/download-pandoc.js
     NODE_ENV=development    yarn node scripts/download-plantuml.js
