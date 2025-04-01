@@ -5,7 +5,7 @@ _name=mapbox_earcut_python
 
 pkgname=python-mapbox-earcut
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for the C++ implementation of the Mapbox Earcut library."
 
 arch=("x86_64")
@@ -29,6 +29,8 @@ makedepends=(
     "python-wheel"
 )
 checkdepends=(
+    "python-numpy"
+    "python-pytest"
     "python-virtualenv"
 )
 
@@ -40,12 +42,10 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    python -m venv venv
-    (
-        source venv/bin/activate
-        pip install ./dist/*.whl pytest
-        python -m pytest
-    )
+    python -m venv --system-site-packages venv
+    source venv/bin/activate
+    pip install ./dist/*.whl
+    python -m pytest
     rm -rf venv
 }
 
