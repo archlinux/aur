@@ -3,7 +3,7 @@
 
 pkgname=youtube-to-mp3
 pkgver=3.9.9.98
-pkgrel=4
+pkgrel=5
 pkgdesc='Downloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
@@ -17,7 +17,7 @@ depends=('hicolor-icon-theme'
 provide=('youtube-to-mp3')
 conflicts=('youtube-to-mp3')
 source_x86_64=("${pkgname}-$(date +%F-%H).amd64.deb::https://schinfo.de/MediaHuman/YouTubeToMP3.amd64.deb")
-sha256sums_x86_64=('44c8e2355373bcbdda74063b54cfde465060fdbee25d5d7f4821b9ea40b9b631')
+sha256sums_x86_64=('26be62dc8d54557e7f40c6496c14a35b77761b98a83cd9ff82a1cf546d337571')
 
 pkgver() {
   bsdtar -xf control.tar.xz -C .
