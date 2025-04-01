@@ -2,7 +2,7 @@
 
 _binname=xenia_canary
 pkgname=xenia-canary-git
-pkgver=r7790.5f918ef28
+pkgver=r7796.4b24f128f
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -113,6 +113,7 @@ prepare() {
   patch -d "${pkgname}" -Np1 < 0001-use-system-premake5.patch
   patch -d "${pkgname}" -Np1 < 0002-use-cmake-build-instead.patch
   patch -d "${pkgname}" -Np1 < 0003-disable-portable-mode.patch
+  sed --in-place '/fatalwarnings("All")/d' "${pkgname}"/premake5.lua
 
   for submodule in $(git -C "${pkgname}" submodule | awk '{print $2}')
   do
