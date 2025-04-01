@@ -21,6 +21,7 @@ depends=(
     "python-pillow"
     # AUR dependencies
     "python-pyglet"
+    "python-pyglm"
     "python-pyrr"
 )
 makedepends=(

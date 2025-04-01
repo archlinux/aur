@@ -18,6 +18,7 @@ pkgbase = python-moderngl-window
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pyglet
+	depends = python-pyglm
 	depends = python-pyrr
 	source = https://github.com/moderngl/moderngl-window/archive/refs/tags/3.1.1.tar.gz
 	sha512sums = 16835aafd0f93094fb47b81001f2e5ab838dfd37b4c009b461c92ab6aeb93beabdbbedc3f0712766320cefa167578ea5f8c16b2d2d768f0f89358cc87000f3d6
