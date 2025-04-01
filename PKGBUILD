@@ -14,7 +14,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=259afa59d73d676bec2ae89beacd949e08d54d3f70a7f8b0a742315095751abb}
+: ${_cksum:=53e7a3f028b6119ba499245bde0fa10275752817408a4a36b5a34ad74a4727b2}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +26,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.13.8
+pkgver=6.13.9
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -91,10 +91,12 @@ if [[ ${_build_vfio::1} == "t" ]]; then
 fi
 
 if [[ ${_build_arch_patch::1} == "t" ]]; then
+  [[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
+
   _dl_url_arch='https://github.com/archlinux/linux'
   _srctag=$(
     curl -sSfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
-      | grep -Eo "v${pkgver}-arch[0-9]+" \
+      | grep -Eom1 "v${_pkgver}\S*-arch[0-9]+" \
       | sort -rV | head -1
   )
   : ${_srctag:=v${pkgver}-arch1}
@@ -107,20 +109,6 @@ if [[ ${_build_arch_patch::1} == "t" ]]; then
     'SKIP'
   )
 fi
-
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
 
 if [[ ${_build_clang::1} == "t" ]]; then
   makedepends+=(clang llvm lld)
