@@ -2,7 +2,7 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.5.20
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
@@ -45,6 +45,17 @@ depends=(python
         python-markdown
         python-numpy
         python-opensearch
+        python-opentelemetry
+        python-opentelemetry-exporter-otlp-proto-grpc
+        python-opentelemetry-instrumentation
+        python-opentelemetry-instrumentation-httpx
+        python-opentelemetry-instrumentation-logging
+        python-opentelemetry-instrumentation-redis
+        python-opentelemetry-instrumentation-requests
+        python-opentelemetry-instrumentation-sqlalchemy
+        python-opentelemetry-instrumentation-aiohttp-client
+        python-opentelemetry-sdk
+        python-opentelemetry-semantic-conventions
         python-passlib
         python-peewee
         python-peewee-migrate
@@ -82,7 +93,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-sha1sums=('e801a43a3e9a1c62aa0f7755b654c9d648b193d1'
+sha1sums=('df3a5ccc39ca6229a1b913e22d3d2754e6b74144'
           '3dc37cbf6a962fe16c3f5f740b7100e9ae87fd8e'
           '8a1fad8ffad186f3265e173557eb160c06497435'
           'fc563a2f3e240d76672b09c4627d654248d70186')
