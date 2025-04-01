@@ -1,0 +1,32 @@
+[Unit]
+Description=Workout Tracker Server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/workout-tracker/env
+ExecStart=/usr/bin/workout-tracker
+WorkingDirectory=%S/%N
+StateDirectory=%N
+DynamicUser=true
+
+# Security hardening
+CapabilityBoundingSet=
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+NoNewPrivileges=true
+RestrictSUIDSGID=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectKernelTunables=true
+RestrictRealtime=true
+RestrictNamespaces=true
+ReadWritePaths=/var/lib/workout-tracker
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
