@@ -1,0 +1,2 @@
+#!/bin/bash
+MESA_LOADER_DRIVER_OVERRIDE=zink WEBKIT_DISABLE_DMABUF_RENDERER=1 __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json exec "/opt/bambustudio-bin/AppRun" "$@"
