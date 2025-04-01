@@ -2,7 +2,7 @@
 pkgname=aware
 pkgver=0.1.4
 pkgrel=1
-pkgdesc="Простой супервизор процессов на Rust"
+pkgdesc="Simple process supervisor in Rust"
 arch=('x86_64')
 url="https://github.com/spice-itself/aware"
 license=('MIT')

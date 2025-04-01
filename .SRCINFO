@@ -1,5 +1,5 @@
 pkgbase = aware
-	pkgdesc = Простой супервизор процессов на Rust
+	pkgdesc = Simple process supervisor in Rust
 	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/spice-itself/aware
