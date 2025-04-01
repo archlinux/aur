@@ -1,5 +1,5 @@
 pkgname=fancylock-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/tuxx/fancylock"
