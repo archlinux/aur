@@ -1,12 +1,11 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for optimizing and deploying deep learning models (git version)
-	pkgver = 2024.6.0.r511.g6b5c0a59ef9
+	pkgver = 2025.0.1.r701.g7c6610a4dcc
 	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
-	license = LicenseRef-Custom
-	makedepends = abseil-cpp
+	license = LicenseRef-custom
 	makedepends = cmake
 	makedepends = flatbuffers
 	makedepends = git
@@ -46,10 +45,12 @@ pkgbase = openvino-git
 	source = git+https://github.com/openvinotoolkit/telemetry.git
 	source = git+https://github.com/libxsmm/libxsmm.git
 	source = git+https://github.com/openvinotoolkit/shl.git
+	source = git+https://github.com/ARM-software/kleidiai.git
+	source = git+https://github.com/herumi/xbyak_riscv.git
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
-	source = 030-openvino-level-zero-disable-werror.patch
-	source = 040-openvino-protobuf23-fix.patch
+	source = 030-openvino-protobuf23-fix.patch
+	source = 040-opevino-cmake4-fix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -71,20 +72,23 @@ pkgbase = openvino-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 83f377300c2acd520cc4af19e2a54b2cbf5459166df4d95258e99a7538b5f954
-	sha256sums = 8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f
-	sha256sums = f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ab3960a3af2f060a0ddb7ed8900cd2bc497887b0cd0dbd51f822986162b7a112
+	sha256sums = c86feb93653b85605fc946dda4114e9c27e25c841e787d8d949be103e25f12e9
 	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
+	sha256sums = c80a4d6e6e3e30960859f42c14586483e4038d8f6db60b388cea73dca9978a91
 
 pkgname = openvino-git
-	depends = abseil-cpp
+	depends = gcc-libs
+	depends = glibc
+	depends = onetbb
 	depends = protobuf
 	depends = pugixml
-	depends = onetbb
 	depends = snappy
 	optdepends = openvino-intel-gpu-plugin-git: for Intel GPU plugin
 	optdepends = openvino-intel-npu-plugin-git: for Intel NPU plugin
-	provides = openvino
+	provides = openvino=2025.0.1.r701.g7c6610a4dcc
 	provides = intel-openvino-git
 	conflicts = openvino
 	conflicts = intel-openvino-git
@@ -92,28 +96,34 @@ pkgname = openvino-git
 
 pkgname = openvino-intel-gpu-plugin-git
 	pkgdesc = Intel GPU plugin for OpenVINO (git version)
+	depends = gcc-libs
+	depends = glibc
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2024.6.0.r511.g6b5c0a59ef9
+	depends = openvino=2025.0.1.r701.g7c6610a4dcc
 	depends = pugixml
 	provides = openvino-intel-gpu-plugin
 	conflicts = openvino-intel-gpu-plugin
 
 pkgname = openvino-intel-npu-plugin-git
 	pkgdesc = Intel NPU plugin for OpenVINO (git version)
+	depends = gcc-libs
+	depends = glibc
 	depends = intel-npu-compiler
 	depends = intel-npu-driver
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2024.6.0.r511.g6b5c0a59ef9
+	depends = openvino=2025.0.1.r701.g7c6610a4dcc
 	depends = pugixml
 	provides = openvino-intel-npu-plugin
 	conflicts = openvino-intel-npu-plugin
 
 pkgname = python-openvino-git
 	pkgdesc = Python bindings for OpenVINO (git version)
-	depends = openvino=2024.6.0.r511.g6b5c0a59ef9
+	depends = gcc-libs
+	depends = glibc
+	depends = openvino=2025.0.1.r701.g7c6610a4dcc
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
@@ -122,7 +132,7 @@ pkgname = python-openvino-git
 	optdepends = python-opencv: for filling vectors in benchmark
 	optdepends = python-pillow: for Torchvision to OpenVINO preprocessing converter
 	optdepends = python-pytorch: for PyTorch frontend and Torchvision to OpenVINO preprocessing converter
-	optdepends = python-tensorflow: for TensorFlow frontent
+	optdepends = python-tensorflow: for TensorFlow frontend
 	optdepends = python-torchvision: for Torchvision to OpenVINO preprocessing converter
 	provides = python-openvino
 	conflicts = python-openvino

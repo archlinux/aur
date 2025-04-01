@@ -6,14 +6,13 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2024.6.0.r511.g6b5c0a59ef9
+pkgver=2025.0.1.r701.g7c6610a4dcc
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
-license=('Apache-2.0' 'LicenseRef-Custom')
+license=('Apache-2.0' 'LicenseRef-custom')
 makedepends=(
-    'abseil-cpp'
     'cmake'
     'flatbuffers'
     'git'
@@ -53,10 +52,12 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
         'git+https://github.com/openvinotoolkit/shl.git'
+        'git+https://github.com/ARM-software/kleidiai.git'
+        'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
-        '030-openvino-level-zero-disable-werror.patch'
-        '040-openvino-protobuf23-fix.patch')
+        '030-openvino-protobuf23-fix.patch'
+        '040-opevino-cmake4-fix.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -78,10 +79,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '83f377300c2acd520cc4af19e2a54b2cbf5459166df4d95258e99a7538b5f954'
-            '8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f'
-            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a'
-            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce')
+            'SKIP'
+            'SKIP'
+            'ab3960a3af2f060a0ddb7ed8900cd2bc497887b0cd0dbd51f822986162b7a112'
+            'c86feb93653b85605fc946dda4114e9c27e25c841e787d8d949be103e25f12e9'
+            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce'
+            'c80a4d6e6e3e30960859f42c14586483e4038d8f6db60b388cea73dca9978a91')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -116,12 +119,14 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
-    patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/030-openvino-level-zero-disable-werror.patch"
-    patch -d openvino -Np1 -i "${srcdir}/040-openvino-protobuf23-fix.patch"
+    patch -d openvino -Np1 -i "${srcdir}/030-openvino-protobuf23-fix.patch"
+    patch -d openvino -Np1 -i "${srcdir}/040-opevino-cmake4-fix.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -182,15 +187,16 @@ build() {
 
 package_openvino-git() {
     depends=(
-        'abseil-cpp'
+        'gcc-libs'
+        'glibc'
+        'onetbb'
         'protobuf'
         'pugixml'
-        'onetbb'
         'snappy')
     optdepends=(
         'openvino-intel-gpu-plugin-git: for Intel GPU plugin'
         'openvino-intel-npu-plugin-git: for Intel NPU plugin')
-    provides=('openvino' 'intel-openvino-git')
+    provides=("openvino=${pkgver}" 'intel-openvino-git')
     conflicts=('openvino' 'intel-openvino-git')
     replaces=('intel-openvino-git')
     
@@ -214,6 +220,8 @@ package_openvino-git() {
 package_openvino-intel-gpu-plugin-git() {
     pkgdesc='Intel GPU plugin for OpenVINO (git version)'
     depends=(
+        'gcc-libs'
+        'glibc'
         'intel-compute-runtime'
         'ocl-icd'
         'onetbb'
@@ -229,6 +237,8 @@ package_openvino-intel-gpu-plugin-git() {
 package_openvino-intel-npu-plugin-git() {
     pkgdesc='Intel NPU plugin for OpenVINO (git version)'
     depends=(
+        'gcc-libs'
+        'glibc'
         'intel-npu-compiler'
         'intel-npu-driver'
         'onetbb'
@@ -245,6 +255,8 @@ package_openvino-intel-npu-plugin-git() {
 package_python-openvino-git() {
     pkgdesc='Python bindings for OpenVINO (git version)'
     depends=(
+        'gcc-libs'
+        'glibc'
         "openvino=${pkgver}"
         'python'
         'python-numpy'
@@ -256,7 +268,7 @@ package_python-openvino-git() {
         #'python-openvino-tokenizers: for OpenVINO converter (OVC)'
         'python-pillow: for Torchvision to OpenVINO preprocessing converter'
         'python-pytorch: for PyTorch frontend and Torchvision to OpenVINO preprocessing converter'
-        'python-tensorflow: for TensorFlow frontent'
+        'python-tensorflow: for TensorFlow frontend'
         'python-torchvision: for Torchvision to OpenVINO preprocessing converter')
     provides=('python-openvino')
     conflicts=('python-openvino')

@@ -64,7 +64,7 @@
      # symbolic links
 --- a/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
-@@ -28,7 +28,7 @@ ov_add_target(ADD_CPPLINT
+@@ -32,7 +32,7 @@ ov_add_target(ADD_CPPLINT
                        npu_tools_utils)
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -73,7 +73,7 @@
                            CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
-@@ -41,13 +41,13 @@ endif()
+@@ -45,13 +45,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
@@ -91,7 +91,7 @@
  endif()
 --- a/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
-@@ -52,7 +52,7 @@ ov_add_target(ADD_CPPLINT
+@@ -56,7 +56,7 @@ ov_add_target(ADD_CPPLINT
                LINK_LIBRARIES PRIVATE ${DEPENDENCIES})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -100,7 +100,7 @@
                            CXX_STANDARD 17)
  
  #
-@@ -60,13 +60,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
+@@ -64,13 +64,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
  #
  
  install(TARGETS ${TARGET_NAME}
@@ -118,7 +118,7 @@
  endif()
 --- a/src/plugins/intel_npu/tools/single-image-test/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/single-image-test/CMakeLists.txt
-@@ -50,7 +50,7 @@ ov_add_target(ADD_CPPLINT
+@@ -54,7 +54,7 @@ ov_add_target(ADD_CPPLINT
  ov_set_threading_interface_for(${TARGET_NAME})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -127,7 +127,7 @@
                            CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
-@@ -63,13 +63,13 @@ endif()
+@@ -67,13 +67,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
