@@ -17,6 +17,7 @@ pkgbase = better-control-git
 	depends = python
 	depends = power-profiles-daemon
 	depends = python-psutil
+	depends = python-qrcode
 	depends = gammastep
 	depends = python-pydbus
 	depends = python-requests
