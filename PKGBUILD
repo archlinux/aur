@@ -1,21 +1,31 @@
-# Maintainer: Albert Latham <me@albertlatham.com>
+# Maintainer: envolution
+# Contributor: Albert Latham <me@albertlatham.com>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="plasticity-bin"
-pkgver="24.2.4"
-pkgrel="1"
-pkgdesc="Plasticity is a 3D modeling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow."
+pkgver=25.1.8
+pkgrel=1
+pkgdesc="3D modeling software for concept artists"
 arch=("x86_64")
-license=("nonfree")
+license=("LicenseRef-custom")
 url='https://github.com/nkallen/plasticity'
 depends=(alsa-lib at-spi2-atk at-spi2-core atk cairo dbus desktop-file-utils expat gdk-pixbuf2 glib2 gtk3 gvfs
-         hicolor-icon-theme kde-cli-tools libcups libdrm libnotify libx11 libxcb libxcomposite libxdamage libxext
-         libxfixes libxkbcommon libxrandr libxtst mesa nspr nss pango trash-cli xdg-utils)
+  hicolor-icon-theme kde-cli-tools libcups libdrm libnotify libx11 libxcb libxcomposite libxdamage libxext
+  libxfixes libxkbcommon libxrandr libxtst mesa nspr nss pango trash-cli xdg-utils)
 optdepends=('discord: For communication with the devs'
-            'apparmor: Extra protection'
-            'pulseaudio: For sound')
-source=("https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb")
-sha512sums=("84072c7620647d3ba771450e555c9ff2e60c7263d6baa8f1b9fc50b7b6731af2597dd1de92848544256e9f54064204d4067bbc0d0b3b755badccc07405cfcb8c")
+  'apparmor: Extra protection'
+  'pulseaudio: For sound')
+source=(
+  "https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb"
+  "https://raw.githubusercontent.com/nkallen/plasticity/refs/tags/v${pkgver}/LICENSE"
+)
+sha512sums=('4dbb526ed04d9d8ba2373b3913138d29fa85d7f76abb0fe21fd6a368e5d96014aa13f7f73c45536f37906b9a5b90e680bb10945669a56d8658960426ed1ca07c'
+            '1fbd6b24b4022331307ee3b8266fc6eee956238b5854633071848c145a044127f6d6eadc8c07c288c4dcd16c0de10e933ff21c5d8c715c273902cdeffded4bcd')
+options=(!strip)
 
 package() {
-    tar -xvf data.tar.zst -C "$pkgdir"
+  tar -xvf data.tar.zst -C "$pkgdir"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  echo "https://www.plasticity.xyz/eula" > "$pkgdir/usr/share/licenses/$pkgname/EULA"
 }
+# vim:set ts=2 sw=2 et:

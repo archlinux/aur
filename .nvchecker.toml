@@ -1,0 +1,5 @@
+[plasticity-bin]
+source = 'github'
+github = 'nkallen/plasticity'
+use_latest_release = true
+prefix = 'v'
