@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=embertune-bin
 _pkgname=EmberTune
-pkgver=0.2.1
+pkgver=0.2.2
 _electronversion=35
 pkgrel=1
 pkgdesc="A desktop music player with a focus on design and functionality, aims to be a solid alternative to your streaming services without any ads.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DylanAkp/EmberTune/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9329ce66729e15cbe5373348fa168c7aadfcd3b77c2824971d8a5cd6a6da8b1f'
+sha256sums=('b508fc8b8f3948cccf687144fe9ab8a11641ac069ea5d379e70dfda10b4eb22b'
             '2596c629e297252208c9a49402be4cf61fda1cfef7a6d9eb2fd298da425f757a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
