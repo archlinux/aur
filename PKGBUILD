@@ -11,7 +11,7 @@ url="https://github.com/Vencord/Vesktop"
 license=('GPL-3.0-only')
 
 depends=('electron')
-makedepends=('git' 'nodejs>=18')
+makedepends=('git' 'pnpm')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
@@ -38,15 +38,12 @@ build() {
 
   # Add unpacked icon extraction script
   sed -i '/"beforePack": "scripts\/build\/sandboxFix.js",/a\ \ \ \ \ \ \ \ "afterPack": "'$srcdir'/afterPack.js",' package.json
-  # Use corepack pnpm for postinstall
-  sed -i 's/"postinstall": "pnpm updateArrpcDB"/"postinstall": "corepack pnpm updateArrpcDB"/' package.json
 
   # Use system's electron
   sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron\",\n/" package.json
 
-  corepack pnpm i
-  corepack pnpm build
-  corepack pnpx electron-builder --dir
+  pnpm i
+  pnpm package:dir
 }
 
 package() {

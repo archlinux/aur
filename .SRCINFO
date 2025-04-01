@@ -7,7 +7,7 @@ pkgbase = vesktop-electron-git
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = nodejs>=18
+	makedepends = pnpm
 	depends = electron
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
