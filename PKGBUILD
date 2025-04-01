@@ -2,8 +2,8 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.76'
-pkgrel='3'
+pkgver='2.0.77'
+pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
@@ -20,7 +20,7 @@ source=("$_zip::https://github.com/aargirakis/BZRPlayer/releases/download/${pkgv
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_setup"
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_mimes")
 noextract=("$_zip")
-sha256sums=('6c54444a06d5b9fa202ee5dbf854bb1c697bd19174dadec3f5b51970e8e28ddb'
+sha256sums=('adad2221d586073472262efd9c390a70e6d683ed86a5f4177e57c7b889ba0cc1'
   'SKIP'
   'SKIP'
   'SKIP')
