@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lavascope-bin
 _pkgname=LavaScope
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A cross-platform GUI tool to monitor and manage firewall rules.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ChaserZ98/lavascope/${pkgver}/LICENSE"
 )
-sha256sums=('bff978aedb6a2253b9755e7777b8a4ffb4ed9f04fc4b8bc1b8c35a6cf449ec2f'
+sha256sums=('3b073cefbaf43d46e63c92a657cd58eb3d79a0889f2bc8acb2bddd6cf3904a1c'
             '730e9114f7b8b46d400ae0d80d76f2fb809d096555251f91593733b56efdd084')
 prepare() {
     sed -i "s/Comment=${_pkgname}/Comment=${pkgdesc}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"

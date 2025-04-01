@@ -1,6 +1,6 @@
 pkgbase = lavascope-bin
 	pkgdesc = A cross-platform GUI tool to monitor and manage firewall rules.(Prebuilt version)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ChaserZ98/lavascope
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = lavascope-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = lavascope=0.1.1
+	provides = lavascope=0.1.2
 	conflicts = lavascope
-	source = lavascope-0.1.1.rpm::https://github.com/ChaserZ98/lavascope/releases/download/0.1.1/LavaScope_0.1.1_amd64.rpm
-	source = LICENSE-0.1.1::https://raw.githubusercontent.com/ChaserZ98/lavascope/0.1.1/LICENSE
-	sha256sums = bff978aedb6a2253b9755e7777b8a4ffb4ed9f04fc4b8bc1b8c35a6cf449ec2f
+	source = lavascope-0.1.2.rpm::https://github.com/ChaserZ98/lavascope/releases/download/0.1.2/LavaScope_0.1.2_amd64.rpm
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/ChaserZ98/lavascope/0.1.2/LICENSE
+	sha256sums = 3b073cefbaf43d46e63c92a657cd58eb3d79a0889f2bc8acb2bddd6cf3904a1c
 	sha256sums = 730e9114f7b8b46d400ae0d80d76f2fb809d096555251f91593733b56efdd084
 
 pkgname = lavascope-bin
