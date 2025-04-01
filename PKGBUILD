@@ -1,7 +1,7 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
 _pkgname=tuxedo-drivers
-pkgname=tuxedo-drivers-dkms
+pkgname=tuxedo-drivers-xmg-dkms-git
 pkgver=4.12.2
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers for keyboard, keyboard backlight & general hardware I/O using the SysFS interface"
