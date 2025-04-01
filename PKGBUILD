@@ -36,7 +36,7 @@ package() {
   install -Dm644 data/app.m0rf30.cieid.desktop \
     "${pkgdir}/usr/share/applications/app.m0rf30.cieid.desktop"
   install -Dm755 data/app.m0rf30.cieid.png \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/app.m0rf30.cieid.png"
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/app.m0rf30.cieid.svg"
   install -Dm644 data/app.m0rf30.cieid.metainfo.xml \
     "${pkgdir}/usr/share/metainfo/app.m0rf30.cieid.metainfo.xml"
   install -Dm644 data/libcie-pkcs11.module \
