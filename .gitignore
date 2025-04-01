@@ -1,0 +1,4 @@
+src/
+mac/
+pkg/
+*.pkg.tar.zst

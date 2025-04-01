@@ -1,0 +1,30 @@
+pkgbase = multi-account-containers-lite
+	pkgdesc = Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy
+	pkgver = 8.2.1001
+	pkgrel = 1
+	url = https://codeberg.org/Konsortium/multi-account-containers-lite
+	arch = any
+	groups = firefox-addons
+	license = MPL-2.0
+	makedepends = git
+	makedepends = node-gyp
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = strip-nondeterminism
+	makedepends = zip
+	source = mac::git+https://codeberg.org/Konsortium/multi-account-containers-lite#commit=e516217bb2e6e19774ab9784f701fae08af73e0c
+	sha512sums = SKIP
+
+pkgname = multi-account-containers-lite
+
+pkgname = firedragon-multi-account-containers-lite
+
+pkgname = firefox-multi-account-containers-lite
+
+pkgname = floorp-multi-account-containers-lite
+
+pkgname = icecat-multi-account-containers-lite
+
+pkgname = librewolf-multi-account-containers-lite
+
+pkgname = midori-multi-account-containers-lite
