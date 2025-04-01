@@ -2,7 +2,7 @@
 
 pkgname=krita-ai-diffusion
 pkgver=1.32.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A plugin to use generative AI in image painting and editing workflows from within Krita"
 arch=('any')
 url="https://github.com/Acly/krita-ai-diffusion"
@@ -28,6 +28,10 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "add-regex-to-requirements.patch")
 sha256sums=('9b1730cce23be9abcde207e6185936ed347a5bbb785519b62e3f476dbbdf536f'
             '3cdb6f448e78ae8bcfe4427d6a7b44a732b375366aa52dd4aaceb11f328edaf0')
+
+# If `git lfs install` was run before, `makepkg` may error
+# Set this env var to resolve
+export GIT_LFS_SKIP_SMUDGE=1
 
 prepare() {
     # The plugin itself will run inside Krita's embedded Python,
