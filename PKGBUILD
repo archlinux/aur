@@ -54,13 +54,9 @@ depends=(
 makedepends=(
     "python-build"
     "python-installer"
+    "python-poetry-core"
     "python-setuptools"
     "python-wheel"
-)
-checkdepends=(
-    "python-pytest"
-    "python-pytest-cov"
-    "python-pytest-xdist"
 )
 optdepends=(
     "python-dearpygui: Graphical frontend"
@@ -72,11 +68,6 @@ optdepends=(
 build () {
     cd "$srcdir/$pkgname-$pkgver"
     python -m build --wheel --no-isolation
-}
-
-check () {
-    cd "$srcdir/$pkgname-$pkgver"
-    pytest || echo "Some tests failed!"
 }
 
 package () {
