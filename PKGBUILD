@@ -1,28 +1,28 @@
 # Maintainer: Chris G <aur@szlig.net>
 pkgname=openterface_qt
 _pkgname=Openterface_QT
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Openterface Mini-KVM Host Application"
 arch=('x86_64')
 url="https://openterface.com/"
 license=('AGPL-3.0-only')
 depends=(qt6-base qt6-multimedia qt6-serialport qt6-svg qt6-multimedia-ffmpeg hicolor-icon-theme libusb)
+makedepends=(qt6-tools clang)
 install="openterfaceQT.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TechxArtisanStudio/Openterface_QT/archive/v${pkgver}.tar.gz"
         "openterfaceQT.desktop")
-sha256sums=('901b40b0d49ac6b5ff05d4b68e9b3da9639262b5a8ea256d991899fac04bbbcb'
+sha256sums=('8e140642a943c029005c06af765c970c7af167252e21abd2752c9760f117d18c'
             '48d2a22fb5816c9bd7aa7641eb1a4d127effee888a823ce9dcc972b24741cce7')
 
 
-prepare() {
+build() {
 	cd "$srcdir/$_pkgname-$pkgver"
+
+	/usr/lib/qt6/lrelease openterfaceQT.pro
+
 	mkdir build && cd build
 	qmake6 ..	
-}
-
-build() {
-	cd "$srcdir/$_pkgname-$pkgver/build"
 	make
 }
 
