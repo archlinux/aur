@@ -1,6 +1,6 @@
 pkgbase = before-dawn-git
-	pkgdesc = A desktop screensaver app using web technologies.Use system-wide electron.
-	pkgver = 0.32.0.r0.g11945ce
+	pkgdesc = A desktop screensaver app using web technologies.(Use system-wide electron)
+	pkgver = 0.35.0.r0.g8e5fe9c
 	pkgrel = 1
 	url = https://github.com/muffinista/before-dawn
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = before-dawn-git
 	makedepends = npm
 	makedepends = gendesk
 	makedepends = nvm
-	makedepends = cmake
-	makedepends = gcc
 	makedepends = curl
-	depends = electron32
+	makedepends = git
+	depends = electron35
 	depends = ruby
-	provides = before-dawn=0.32.0
+	provides = before-dawn=0.35.0
 	conflicts = before-dawn
 	source = before-dawn.git::git+https://github.com/muffinista/before-dawn.git
 	source = before-dawn.sh

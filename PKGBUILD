@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=before-dawn-git
 _pkgname="Before Dawn"
-pkgver=0.32.0.r0.g11945ce
-_electronversion=32
-_nodeversion=20
+pkgver=0.35.0.r0.g8e5fe9c
+_electronversion=35
+_nodeversion=22
 pkgrel=1
-pkgdesc="A desktop screensaver app using web technologies.Use system-wide electron."
+pkgdesc="A desktop screensaver app using web technologies.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/muffinista/before-dawn"
 license=('MIT')
@@ -19,9 +19,8 @@ makedepends=(
     'npm'
     'gendesk'
     'nvm'
-    'cmake'
-    'gcc'
     'curl'
+    'git'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
@@ -41,7 +40,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -54,22 +53,27 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'   
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx node bin/build-icon.js
     NODE_ENV=production     npx node bin/download-screensavers.js
     NODE_ENV=production     npm run compile
