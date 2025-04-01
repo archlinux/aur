@@ -1,0 +1,15 @@
+pkgbase = plex-media-server-openrc
+	pkgdesc = OpenRC service for Plex Media Server
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/plex-media-server-openrc
+	arch = any
+	license = custom
+	depends = openrc
+	depends = plex-media-server
+	source = plex.conf.d
+	source = plex.init.d
+	sha256sums = fa43b4aa21d378b8bf64bc53f7fcb8ef700ed9cbeebffccd70f0080c010c2cd9
+	sha256sums = e9bb58b7daeff881c18c45c754b5d62aee81acff9803b9553ac8da8a91328a2e
+
+pkgname = plex-media-server-openrc
