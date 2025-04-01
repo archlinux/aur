@@ -1,18 +1,18 @@
 # Maintainer: Joseph DiGiovanni <jdigiovanni78 at gmail dot com>
 
 pkgname=gnome-shell-extension-fullscreen-to-new-workspace-git
-pkgver=r44.8237de3
-pkgrel=2
+pkgver=r53.18faccb
+pkgrel=1
 
-source=("git+https://github.com/onsah/fullscreen-to-new-workspace.git")
+source=("git+https://github.com/corgijan/fullscreen-to-new-workspace.git")
 
 sha256sums=(SKIP)
 
-pkgdesc="New, maximized and fullscreen windows will be moved to empty workspaces"
+pkgdesc="Fullscreen to New Workspace Gnome Extension (Revived Version)"
 arch=('any')
-url="https://github.com/onsah/fullscreen-to-new-workspace"
+url="https://github.com/corgijan/fullscreen-to-new-workspace"
 license=('GPL3')
-depends=('gnome-shell>=3.38')
+depends=('gnome-shell>=48')
 provides=('gnome-shell-extension-fullscreen-to-new-workspace')
 conflicts=('gnome-shell-extension-fullscreen-to-new-workspace')
 
