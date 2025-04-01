@@ -1,6 +1,6 @@
 pkgbase = list-listening-sockets
 	pkgdesc = Tool for listing listening sockets
-	pkgver = 0.2.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/jcaesar/lls
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = list-listening-sockets
 	license = MIT
 	makedepends = rust
 	provides = list-listening-sockets
-	source = list-listening-sockets-0.2.0.tgz::https://crates.io/api/v1/crates/lls/0.2.0/download
-	sha256sums = 682c4f58d83c841fbb89f9f282ef0cc0e537834b869c87750b37f6148119c72c
-	b2sums = 9eda05b5293c6cd793731bfb54fbe83ed589e605d3fa11e6c329d7599788ca08f6339ca378cf3ec8f7dc6a7bd0cc410fc021cfd4276dadb3cd12d7a388a42e68
+	source = list-listening-sockets-0.4.1.tgz::https://crates.io/api/v1/crates/lls/0.4.1/download
+	sha256sums = eeef4c17ba78581901321286262032b9a4c268fa9b7421301c267b5bc10d206f
+	b2sums = 80857703005d74096e8d586a916684ed45cc71ec4c49d0ee2c599735362272c69513eca1f2cf01130f541f3d654b64483169203ab42b4534a5b621045f8ebefb
 
 pkgname = list-listening-sockets
