@@ -1,0 +1,11 @@
+post_install() {
+  echo "==> This package has been renamed to 'qp'. Please install 'qp' instead."
+}
+
+post_upgrade() {
+  echo "==> This package is deprecated. It has been renamed to 'qp'."
+}
+
+pre_remove() {
+  echo "==> You are removing 'yaylog'. If you still need the functionality, install 'qp'."
+}
