@@ -1,29 +1,28 @@
 # Maintainer: Mark <speedorama1 at gmail dot com>
 
-_pkgname=koboldcpp
 pkgname=koboldcpp-bin
-pkgver=1.86.2
+pkgver=1.87
 pkgrel=1
 pkgdesc="A simple one-file way to run various GGML and GGUF models with KoboldAI's UI"
 arch=('x86_64')
-url="https://github.com/LostRuins/${_pkgname}"
+url="https://github.com/LostRuins/koboldcpp"
 license=('AGPL3')
 depends=('glibc')
 conflicts=('koboldcpp')
 provides=("koboldcpp=$pkgver")
 source=(
-  "https://github.com/LostRuins/${_pkgname}/releases/download/v$pkgver/koboldcpp-linux-x64-nocuda"
+  "https://github.com/LostRuins/koboldcpp/releases/download/v$pkgver/koboldcpp-linux-x64-nocuda"
   "koboldcpp.desktop"
   "koboldcpp.png"
 )
 sha256sums=(
-  '9860293222265f5c99a2b805d87f1bb6876dcf50c5af9fa3fa2459a55192b0ec'
+  '09728d53fe2a49ab81af6bb10ee189e60eaa49a5968eb87350b69cd45f464e33'
   'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
   'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
 
 package() {
-  install -D -m 0755 "koboldcpp-linux-x64-nocuda" "$pkgdir/usr/bin/${_pkgname}"
-  install -D -m 0644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-  install -D -m 0644 "$srcdir/${_pkgname}.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+  install -D -m 0755 "koboldcpp-linux-x64-nocuda" "$pkgdir/usr/bin/koboldcpp"
+  install -D -m 0644 "$srcdir/koboldcpp.desktop" "$pkgdir/usr/share/applications/koboldcpp.desktop"
+  install -D -m 0644 "$srcdir/koboldcpp.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/koboldcpp.png"
 }
