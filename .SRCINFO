@@ -1,15 +1,15 @@
 pkgbase = alhp-keyring
 	pkgdesc = ALHP PGP keyring
-	pkgver = 20240426
-	pkgrel = 2
+	pkgver = 20250401
+	pkgrel = 1
 	url = https://somegit.dev/ALHP/alhp-keyring
 	install = alhp-keyring.install
 	arch = any
 	license = GPL-3.0-or-later
-	source = https://f.alhp.dev/alhp-keyring/alhp-keyring-20240426.tar.gz
-	source = https://f.alhp.dev/alhp-keyring/alhp-keyring-20240426.tar.gz.sig
-	validpgpkeys = 2E3B2B05A332A7DB9019797848998B4039BED1CA
-	b2sums = b33b814a4e03f1684e77bbd6b5f556c9568ee069a6f63416bbc10bb84be19db1b2391d2e100a81b77bde0706cc299efaacef853dd564b2e52e727b55e103f1d7
+	source = https://f.alhp.dev/alhp-keyring/alhp-keyring-20250401.tar.gz
+	source = https://f.alhp.dev/alhp-keyring/alhp-keyring-20250401.tar.gz.sig
+	validpgpkeys = 00B25193054EA4BC7BA870848CA32F8BF3BC8088
+	b2sums = ecf1ff3d89c9a525b9d23352b4eafe8420d4b1b79f7deec70f213441d55baf94bf8e39fcc6dc4cec225d486ca46e50ceafbcbc797b4edd552923438e74932481
 	b2sums = SKIP
 
 pkgname = alhp-keyring
