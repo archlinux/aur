@@ -1,6 +1,6 @@
 pkgbase = gwyddion-no-python2
 	pkgdesc = A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis
-	pkgver = 2.67
+	pkgver = 2.68
 	pkgrel = 1
 	url = https://gwyddion.net/
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = gwyddion-no-python2
 	optdepends = hdf5: import of Ergo data files
 	provides = gwyddion
 	conflicts = gwyddion
-	source = https://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.67.tar.xz
-	sha256sums = 90aeaf4de00373696b0bef4a82ac45b6287ad9c7b7aca6249068d4d2a4fc8d61
+	source = https://downloads.sourceforge.net/sourceforge/gwyddion/gwyddion-2.68.tar.xz
+	sha256sums = 725c3f71738362b10b1e2cf76d391684cf2f15a71a2b34ef1caddabd6d5a9bfa
 
 pkgname = gwyddion-no-python2
