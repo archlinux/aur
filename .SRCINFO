@@ -1,11 +1,12 @@
 pkgbase = ledger-live
 	pkgdesc = Maintain your Ledger devices
 	pkgver = 2.106.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ledger.com/ledger-live
 	arch = x86_64
 	license = MIT
 	makedepends = node-gyp
+	makedepends = pnpm
 	makedepends = nvm
 	depends = ledger-udev
 	depends = electron32
