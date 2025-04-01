@@ -1,6 +1,6 @@
 pkgbase = python-deltachat-bin
 	pkgdesc = Python bindings for the Delta Chat Core library - Binary package
-	pkgver = 1.142.7
+	pkgver = 1.155.6
 	pkgrel = 1
 	url = https://pypi.org/project/deltachat/
 	arch = x86_64
