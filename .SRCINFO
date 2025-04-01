@@ -1,7 +1,7 @@
 pkgbase = libnest2d
 	pkgdesc = 2D irregular bin packaging and nesting library written in modern C++
 	pkgver = 0.4+r61+g663daa6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tamasmeszaros/libnest2d
 	arch = x86_64
 	license = LGPL-3.0-only

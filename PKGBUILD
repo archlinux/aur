@@ -5,7 +5,7 @@ pkgname="libnest2d"
 _commit_rel="85d66c7a3b89cbd1eba61251b135d968b92bedd9" # 0.4
 _commit="663daa69e1d7478669f714218e27681edbc96640" # r61
 pkgver="0.4+r61+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="2D irregular bin packaging and nesting library written in modern C++"
 arch=('x86_64')
 url="https://github.com/tamasmeszaros/${pkgname}"
@@ -27,6 +27,7 @@ build() {
     -Wno-dev
     -DCMAKE_BUILD_TYPE:STRING='None'
     -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DLIBNEST2D_BUILD_UNITTESTS=OFF
     -DBUILD_SHARED_LIBS=ON
     -DLIBNEST2D_HEADER_ONLY=OFF
