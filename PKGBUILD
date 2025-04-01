@@ -3,7 +3,7 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.34.1
+pkgver=1.35.0
 _electronversion=34
 pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy.(Prebuilt version.Use system-wide electron)"
@@ -28,22 +28,22 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('f8d8cdad2469c825fbc3d93ae8d7085906302e5a63623637fd7ce09ca7e91bce')
-sha256sums_armv7h=('52edb4008ed1d1bdc8cbf8d0cb0bec15f5056a1ae19db18a4689aeb85d424df7')
-sha256sums_x86_64=('829923198b87c016372302b96d787320f3e8b124d9ebb85c96618b4f83d3b06e')
+sha256sums_aarch64=('8e7872ef6a44b392f042f08d803af6be260717585ff7a11922caa1e2d15d696d')
+sha256sums_armv7h=('457c086946dc4eae007d8d93a21306f9df497d61d5740acf160a99fc482b0bb5')
+sha256sums_x86_64=('6d066842e8d0f0fa9aad0bd7cb5f56a32a67937ac75e8710c3b229cbcfc89220')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app/
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
