@@ -8,7 +8,7 @@ pkgdesc="A minimalist interpreter"
 arch=('x86_64')
 license=('GPL3')
 #depends=('nlohmann-json')
-source=("git+https://github.com/DameChocolateYa/sbell.git#branch=main")
+source=("git+https://github.com/DameChocolateYa/sbell.git#branch=master")
 md5sums=('SKIP')
 
 build() {
