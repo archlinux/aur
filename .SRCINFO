@@ -1,6 +1,6 @@
 pkgbase = lib32-faudio
 	pkgdesc = XAudio2 reimplementation
-	pkgver = 24.06
+	pkgver = 25.03
 	pkgrel = 1
 	url = https://github.com/FNA-XNA/FAudio/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lib32-faudio
 	depends = lib32-dbus
 	depends = lib32-sdl2
 	depends = faudio
-	source = https://github.com/FNA-XNA/FAudio/archive/24.06/faudio-24.06.tar.gz
-	sha512sums = d8fb3c2303c81163a26f437edce5ae428f4769a28107eb21f1fdb637421480928fc6f0031fc053caa762db901d659336a6e2ffad78ece9ab03ba4f312b00deb6
+	source = https://github.com/FNA-XNA/FAudio/archive/25.03/faudio-25.03.tar.gz
+	sha512sums = ec1f37a73aa5ad57841e297d8ee730b8b161144bc0624e29e9ba7b86c6f2d8657b2b20169603616701db04d99a9522dd1463c043e2c0e64eb7d980f4909327c7
 
 pkgname = lib32-faudio
