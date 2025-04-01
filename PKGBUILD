@@ -4,14 +4,14 @@ _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 _electron='electron32'
-pkgver=2.105.0.r0.g7f71cb8
+pkgver=2.106.0.r0.g1377a30
 pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
 depends=('ledger-udev' "${_electron}")
-makedepends=('git' 'node-gyp' 'nvm')
+makedepends=('git' 'node-gyp' 'pnpm' 'nvm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main"
@@ -35,9 +35,6 @@ build() {
   _nvm_install
 
   export UV_USE_IO_URING=0
-  export COREPACK_INTEGRITY_KEYS=0
-  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-  corepack enable pnpm
   pnpm i --filter="ledger-live-desktop..." --filter="ledger-live" --frozen-lockfile --unsafe-perm
   pnpm build:lld
 
