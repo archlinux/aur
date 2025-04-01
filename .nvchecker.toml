@@ -1,4 +1,5 @@
 [lib32-vulkan-tools]
 source = "git"
 git = "https://github.com/KhronosGroup/Vulkan-Tools.git"
-prefix = "v"
+prefix = "vulkan-sdk-"
+include_regex = "vulkan-sdk-.*"

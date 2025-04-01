@@ -1,24 +1,23 @@
 pkgbase = lib32-vulkan-tools
 	pkgdesc = Vulkan Utilities and Tools (32-bit)
-	pkgver = 1.4.303
-	pkgrel = 2
+	pkgver = 1.4.309.0
+	pkgrel = 1
 	url = https://www.khronos.org/vulkan/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = python
-	makedepends = vulkan-headers>=1:1.4.303
+	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = glslang
 	makedepends = spirv-tools
 	makedepends = git
+	makedepends = volk
 	depends = lib32-libx11
 	depends = lib32-libxcb
 	depends = lib32-wayland
 	depends = lib32-vulkan-icd-loader
-	source = lib32-vulkan-tools-1.4.303.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/v1.4.303.tar.gz
-	source = git+https://github.com/zeux/volk.git#commit=a7fa8bedcb5df472d8b16122f77585ad8fc63899
-	sha256sums = 958b646bbc5ac0a54908342df30da8c183690f579dce7f7130ac93d433d9d3a8
-	sha256sums = b233d5ef123ab40f5990dbc3c0e561a7bfd1e807a42a06964bdaa5be197530ff
+	source = lib32-vulkan-tools-1.4.309.0.tar.gz::https://github.com/KhronosGroup/Vulkan-Tools/archive/vulkan-sdk-1.4.309.0.tar.gz
+	sha256sums = d854ff4324b519ff4a1cf5d9e9c333e5244ea7870fad6eadd73efd7b04aedcb0
 
 pkgname = lib32-vulkan-tools
