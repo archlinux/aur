@@ -5,8 +5,9 @@ pkgbase = dwire-debug-git
 	url = https://github.com/dcwbrown/dwire-debug
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = gtk3
+	depends = libusb-compat
 	source = git+https://github.com/dcwbrown/dwire-debug.git
 	md5sums = SKIP
 
