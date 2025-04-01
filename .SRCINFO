@@ -1,17 +1,18 @@
 pkgbase = typhoon
-	pkgdesc = A weather application based on Stormcloud
-	pkgver = 0.8.94
-	pkgrel = 3
-	url = https://www.launchpad.net/typhoon
+	pkgdesc = A stylish weather app based on Stormcloud
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/archisman-panigrahi/typhoon
 	arch = any
 	license = GPL3
-	makedepends = python2-distutils-extra
-	depends = dconf
-	depends = python2-gobject
-	depends = yelp
-	depends = webkitgtk
-	source = https://launchpad.net/typhoon/trunk/0.8.94/+download/typhoon_0.8.94.tar.gz
-	md5sums = 659f85cb08b4c0bdffe943d507c83362
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = webkit2gtk
+	depends = python
+	depends = imagemagick
+	source = https://github.com/archisman-panigrahi/typhoon/archive/refs/tags/v0.9.5.tar.gz
+	sha256sums = 0504d97a117e7cf8e3bd2e1e3302f1fd95863b715ede793ed79f169df242cbe0
 
 pkgname = typhoon
-

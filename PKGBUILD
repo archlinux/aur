@@ -1,19 +1,23 @@
-# Maintainer: willemw <willemw12@gmail.com>
-
+# Maintainer: Archisman Panigrahi <apandada1@gmail.com>
 pkgname=typhoon
-pkgver=0.8.94
-pkgrel=3
-pkgdesc="A weather application based on Stormcloud"
+pkgver=0.9.5
+pkgrel=1
+pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
-url="https://www.launchpad.net/typhoon"
+url="https://github.com/archisman-panigrahi/typhoon"
 license=('GPL3')
-makedepends=('python2-distutils-extra')
-depends=('dconf' 'python2-gobject' 'yelp' 'webkitgtk')
-source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/${pkgname}_$pkgver.tar.gz)
-md5sums=('659f85cb08b4c0bdffe943d507c83362')
+depends=('gtk3' 'webkit2gtk' 'python' 'imagemagick')
+makedepends=('git' 'meson' 'ninja')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0504d97a117e7cf8e3bd2e1e3302f1fd95863b715ede793ed79f169df242cbe0')
 
-package() {
-  cd $pkgname
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  meson setup build --prefix=/usr
+  meson compile -C build
 }
 
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  DESTDIR="$pkgdir" meson install -C build
+}
