@@ -1,0 +1,17 @@
+pkgbase = jumpserver-client-bin
+	pkgdesc = JumpServer linux Client
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://www.jumpserver.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = jumpserver-client
+	conflicts = jumpserver-client
+	options = !strip
+	source_x86_64 = jumpserver-client-bin-3.0.2-x86_64.deb::https://github.com/jumpserver/clients/releases/download/v3.0.2/JumpServer-Client-Installer-linux-v3.0.2-amd64.deb
+	sha256sums_x86_64 = f995cc9dfc88407b98eefc8f9c0ca330f868fcd6cdf8f425252c967a53f5bbe0
+	source_aarch64 = jumpserver-client-bin-3.0.2-aarch64.deb::https://github.com/jumpserver/clients/releases/download/v3.0.2/JumpServer-Client-Installer-linux-v3.0.2-arm64.deb
+	sha256sums_aarch64 = 9b5b845e07e404b046a9548ae210150e082b10faaee9505e5beeacd6757f9b96
+
+pkgname = jumpserver-client-bin
