@@ -10,6 +10,13 @@ _appdata="${_appdataprefix}/${_appname}"
 pre_install() {
     echo "Creaing user open-webui..."
     getent passwd $_appuser >/dev/null || useradd -r -s /bin/false -d "$_apphome" "$_appuser"
+    echo "Cleaning up virtual environment for $_appname... if found"
+    rm -rf "${_apphome}/venv"
+}
+
+pre_upgrade() {
+    echo "Cleaning up virtual environment for $_appname..."
+    rm -rf "${_apphome}/venv"
 }
 
 _install() {
@@ -20,13 +27,12 @@ _install() {
 
     if [ ! -d "./venv" ]; then
         echo "Setting up virtual environment for $_appname..."
-        su "$_appuser" -s /bin/bash -c "python3.10 -m venv ${_apphome}/backend/venv" || return 1
+        su "$_appuser" -s /bin/bash -c "python3.12 -m venv ${_apphome}/backend/venv" || return 1
     fi
     echo "Updating python virtual environment..."
     su "$_appuser" -s /bin/bash -c "cd ${_apphome}/backend && ./venv/bin/pip install -r requirements.txt" || return 1
 
 
-    echo $(head -c 12 /dev/random | base64) > "$KEY_FILE"
     # Install default config if needed
     if [ ! -f "/etc/${_appname}.conf" ]; then
         # Generate the secret key if needed

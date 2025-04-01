@@ -1,22 +1,22 @@
-# Maintainer: Ben Davis <bendavis78@gmail.com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Ben Davis <bendavis78@gmail.com>
 
 _appname="open-webui"
 _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname="${_appname}-git"
+pkgver=0.6.0.r0.g04799f1
 pkgrel=1
-pkgver=0.3.8.r16.geff736a
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
-arch=("x86_64")
-url="https://openwebui.com/"
+arch=("any")
+url="https://github.com/open-webui/open-webui"
 license=("MIT")
-groups=()
-depends=("python311")
-makedepends=("git" "npm")
-provides=("stable-diffusion-ui")
+depends=('python312')
+makedepends=('git' 'npm' 'nvm')
+optdepends=('ollama' 'tika-server')
 source=(
-    "${pkgname}::git+https://github.com/open-webui/open-webui"
+    "${pkgname}::git+${url}"
     "open-webui.service"
     "open-webui.conf"
 )
@@ -24,22 +24,52 @@ install="${pkgname}.install"
 sha1sums=('SKIP'
           '9b789adb8d91f15ece2187af4aec810847d4b0b2'
           'fb015c224b9529988823f0e24d65ab4a004d30c0')
-options=("!strip" "!debug")
+options=(!strip !debug)
+
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 pkgver() {
     cd "$srcdir/$pkgname"
     git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    _ensure_local_nvm
+    nvm install lts/iron
+}
+
 build() {
+    _ensure_local_nvm
     cd "$srcdir/$pkgname"
+    export NODE_OPTIONS="--max_old_space_size=4096"
     npm install
+    npm run format
+    npm run i18n:parse
     npm run build
+}
+
+check() {
+    _ensure_local_nvm
+    cd "$srcdir/$pkgname"
+    export NODE_OPTIONS="--max_old_space_size=4096"
+    npm run test:frontend
 }
 
 package() {
     # Install systemd service
     install -Dm644 "./$_appname.service" "$pkgdir/usr/lib/systemd/system/$_appname.service"
+
+    # Install license
+    install -Dm 644 "$srcdir/${pkgname}"/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Install the default config file to /usr/share/$_appname/open-webui.conf
     install -d "$pkgdir/usr/share/$_appname"
@@ -50,7 +80,8 @@ package() {
 
     install -d "$pkgdir${_appprefix}/$_appname"
     install -d "$pkgdir${_appdataprefix}/$_appname"
-    
+    install -d "$pkgdir/${_appdataprefix}/$_appname/data"
+
     # copy over files
     cp -R "$srcdir/${pkgname}/." "$pkgdir${_appprefix}/$_appname"
 
@@ -59,13 +90,13 @@ package() {
     rm -rf "$pkgdir${_appprefix}/$_appname/.git"
 
     # Fix permissions
-    echo "Setting permissions for $pkgdir${_appprefix}/$_appname" 
+    echo "Setting permissions for $pkgdir${_appprefix}/$_appname"
     chmod 755 "$pkgdir${_appprefix}/$_appname"
     find "$pkgdir${_appprefix}/$_appname" -type d -exec chmod 755 {} \;
     find "$pkgdir${_appprefix}/$_appname" -type f -exec chmod 644 {} \;
 
-    echo "Setting permissions for $pkgdir${_appdataprefix}/$_appname" 
+    echo "Setting permissions for $pkgdir${_appdataprefix}/$_appname"
     chmod 755 "$pkgdir${_appdataprefix}/$_appname"
-    find "$pkgdir${_appdataprefix}/$_appname" -type d -exec chmod 775 {} \;
+    find "$pkgdir${_appdataprefix}/$_appname" -type d -exec chmod 700 {} \;
     find "$pkgdir${_appdataprefix}/$_appname" -type f -exec chmod 664 {} \;
 }
