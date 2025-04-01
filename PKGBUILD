@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-systemview
-pkgver=3.60b
+pkgver=3.60c
 pkgrel=0
 epoch=10
 pkgdesc="Segger SystemView for Linux"
@@ -12,7 +12,7 @@ groups=('jlink')
 depends=('jlink-software-and-documentation' 'jlink-systemview-target-src')
 source_x86_64=("SystemView_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/systemview/systemview_linux_tgz64")
 source=("SystemView.desktop" "SystemView.svg")
-md5sums_x86_64=('815dadad2ca44c1dedf286fc37d1d85c')
+md5sums_x86_64=('16d400a449e95efd8049ec6b5462c952')
 md5sums=('89e75b3008c53de7fc22c00da5abba01' '54635efec35cdbb6f60b997a8fceee74')
 url="https://www.segger.com/downloads/jlink/"
 
