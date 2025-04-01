@@ -2,21 +2,16 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=recastnavigation-openmw
 _pkgname=recastnavigation
-# recastnavigation hasn't had an official release in a long time and openmw includes recast as external component
-# following them to determine which commit to use.
-# switching to https://github.com/recastnavigation/recastnavigation/commit/c393777d26d2ff6519ac23612abf8af42678c9dd c393777d26d2ff6519ac23612abf8af42678c9dd
-# https://gitlab.com/OpenMW/openmw/-/issues/7457
-
 _pkgver=1.6.0
 pkgver=1.6.0.r832.c393777d
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Navigation-mesh Toolset for openmw"
 url="https://github.com/recastnavigation/recastnavigation"
 arch=('x86_64' 'aarch64')
 license=('Zlib')
 makedepends=(git cmake sdl2 glut)
-# use https://github.com/recastnavigation/recastnavigation/commit/c393777d26d2ff6519ac23612abf8af42678c9dd c393777d26d2ff6519ac23612abf8af42678c9dd
+# use https://github.com/recastnavigation/recastnavigation/commit/c393777d26d2ff6519ac23612abf8af42678c9dd
 # https://gitlab.com/OpenMW/openmw/-/issues/7457 for more info
 source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=c393777d26d2ff6519ac23612abf8af42678c9dd")
 sha256sums=("SKIP")
@@ -37,8 +32,9 @@ build() {
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D BUILD_SHARED_LIBS=ON \
         -D RECASTNAVIGATION_DEMO=OFF \
-		-D RECASTNAVIGATION_TESTS=OFF \
-		-D RECASTNAVIGATION_EXAMPLES=OFF
+        -D RECASTNAVIGATION_TESTS=OFF \
+        -D RECASTNAVIGATION_EXAMPLES=OFF \
+        -D CMAKE_POLICY_VERSION_MINIMUM=3.5
     VERBOSE=1 make -C _build
 }
 
