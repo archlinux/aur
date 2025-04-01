@@ -15,7 +15,9 @@ optdepends=('linux-headers: build modules against Arch kernel'
             'linux-zen-headers: build modules against ZEN kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
 # tuxedo-keyboard-ite = ite_8291, ite_8291_lb, ite_8297 and ite_829x
-provides=('tuxedo-keyboard'
+provides=(
+          'tuxedo-drivers-dkms'
+          'tuxedo-keyboard'
           'tuxedo-keyboard-ite'
           'tuxedo-io'
           'clevo-wmi'
@@ -25,7 +27,7 @@ provides=('tuxedo-keyboard'
           'ite_8291_lb'
           'ite_8297'
           'ite_829x')
-conflicts=('tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
+conflicts=('tuxedo-keyboard-dkms' 'tuxedo-drivers-dkms' 'tuxedo-keyboard-ite-dkms')
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/tuxedocomputers/tuxedo-drivers/archive/v${pkgver}.tar.gz
   tuxedo_compatibility_check.patch
