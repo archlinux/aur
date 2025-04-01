@@ -1,15 +1,20 @@
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-	set -e
+set -e
 set -u
 
 DISPLAY=''
 
 echo "Running post install script..."
+
+# This script may run not from the app's dist directory (this true in case of DEB package)
+# The placeholder is overriden during the package configuration
 SCRIPT_DIR="/opt/myoffice-standard-home-edition"
 CO_PRODUCT_ARTIFACT_SUFFIX="-home-edition"
 
-source "${SCRIPT_DIR}/Common.3.2.0.sh"
+source "${SCRIPT_DIR}/Common.3.3.0.sh"
+
+# Initialize licensing - for linux create cache of HW ids, due to reading of them requires root access
 createHardwareIdCache()
 {
     local boardSerial=$(cat /sys/devices/virtual/dmi/id/board_serial | tr -d '\n')
@@ -24,23 +29,30 @@ createHardwareIdCache()
 if [[ "revision.dat" != "" ]]; then
     createHardwareIdCache
 fi
+
+# Workaround for bug in xdg. See https://bugs.archlinux.org/task/33316 for details
 mkdir -p /usr/share/desktop-directories/
 
 registerAppMime()
 {
+    # Set default mimetypes for apps https://jira.ncloudtech.ru:8090/browse/DES-905
     xdg-mime default "$1" $(grep ^MimeType "/usr/share/applications/$1" | cut -d = -f 2- | tr ';' ' ') > /dev/null 2> /dev/null || true
 }
 
+# register in desktop environment
 for name in "${APPS[@]}"; do
     registerAppMime "${name}.desktop"
 done
 
+# Registering our own mime types
 if [[ "${ENABLE_MIME_REGISTRATION}" != "0" ]]; then
     xdg-mime install --mode system --novendor "${SCRIPT_DIR}/myoffice_mimes.xml" > /dev/null 2> /dev/null
 fi
 
 registerIcon()
 {
+    # Workaround for an issue in the xdg-icon-resource utility
+    # For details see https://bugs.launchpad.net/ubuntu/+source/xdg-utils/+bug/1488787
     xdg-icon-resource install --noupdate --theme "$1" --mode system --novendor --context "$2" --size "$4" /usr/share/icons/hicolor/$4x$4/$3${CO_PRODUCT_ARTIFACT_SUFFIX}_$4.png "$5"
 }
 
@@ -59,14 +71,18 @@ if [[ "${INSTALL_SVG_ICONS}" == "0" ]]; then
     done
 fi
 
+# TODO: register own mime types if Libre was not installed
 if [[ ${UPDATE_MIME_DATABASE_WORKAROUND} -eq 0 ]]; then
     update-mime-database /usr/share/mime
 else
     PKGSYSTEM_ENABLE_FSYNC=0 update-mime-database /usr/share/mime
 fi
 
+# Fonts
 fc-cache
 
+# We need to turn on antialiasing in Astra Linux to make fonts rendering better in our app.
+# It has been agreed with the developers of Astra. These changes are restored during the uninstallation.
 backupFontConfig()
 {
     local fontConfigFolder="/etc/fonts/conf.avail"
@@ -81,15 +97,19 @@ if [[ "$IFW_LINUX_DISTRIBUTION" == "astra" ]]; then
     backupFontConfig "29-fly-rendering.conf" # Used in version 1.5
 fi
 
+# Apps icons registered to hicolor theme, so need to refresh it
 xdg-icon-resource forceupdate --theme hicolor --mode system
 gtk-update-icon-cache -ft "${DEFAULT_ICON_PREFIX}/hicolor" > /dev/null 2> /dev/null || true
+
 # Send installation telemetry
+if [ $SUDO_USER ]; then auser=$SUDO_USER; else auser=`whoami`; fi
+echo "Install app as user ${auser}"
 if [[ " ${ARTIFACTS} " == *"text"* ]]; then
-    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Text Home Edition.sh\" --log-file=CONSOLE --install -platform offscreen" || true
+    runAs "${auser}" "cd ${SCRIPT_DIR} && \"./MyOffice Text Home Edition.sh\" --install -platform offscreen" || true
 elif [[ " ${ARTIFACTS} " == *"spreadsheet"* ]]; then
-    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Spreadsheet Home Edition.sh\" --log-file=CONSOLE --install -platform offscreen" || true
+    runAs "${auser}" "cd ${SCRIPT_DIR} && \"./MyOffice Spreadsheet Home Edition.sh\" --install -platform offscreen" || true
 elif [[ " ${ARTIFACTS} " == *"presentation-home-edition "* ]]; then
-    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Presentation Home Edition.sh\" --log-file=CONSOLE --install -platform offscreen" || true
+    runAs "${auser}" "cd ${SCRIPT_DIR} && \"./MyOffice Presentation Home Edition.sh\" --install -platform offscreen" || true
 fi
 
 # Unsigned extensions administration default settings
@@ -105,6 +125,7 @@ if [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS,,}" = "false" ] || [ "${CO_
       echo -e "\nUnsafeExtensionsEnabled=false\n" >> "${ADMIN_SETTINGS_FILE}"
     fi
 fi
+
 echo "Done."
 	update-desktop-database -q
 }
@@ -114,15 +135,18 @@ post_upgrade() {
 }
 
 pre_remove() {
-	set -e
+set -e
 set -u
 
 DISPLAY=''
 
+# This script may run not from the app's dist directory (this true in case of DEB package)
+# The placeholder is overriden during the package configuration
 SCRIPT_DIR="/opt/myoffice-standard-home-edition"
 CONFIG_DIR="New Cloud Technologies Ltd."
+LKSDK_DIR_NAME="LkSdkWorkingDir"
 
-source "${SCRIPT_DIR}/Common.3.2.0.sh"
+source "${SCRIPT_DIR}/Common.3.3.0.sh"
 
 if [[ "${TAG}" == "upgrade" || "${TAG}" == "1" ]]; then
     echo "Skipping uninstall step..."
@@ -131,6 +155,7 @@ fi
 
 IFW_MENU_DEST_DIR=$(probe_menu_installation_path)
 
+# Unistalling icons
 for size in "${IFW_ICON_SIZE[@]}"; do
     for name in "${APPS[@]}"; do
         xdg-icon-resource uninstall --theme hicolor --mode system --size "${size}" --context apps --size "${size}" "${name}"
@@ -158,6 +183,7 @@ if [[ "${INSTALL_RASTER_ICONS_ONLY}" == "1" ]]; then
         fi
 
         if [[ "${IFW_ICON_THEME_NAME}" == "hicolor" ]]; then
+            # This theme is already uninstalled
             continue
         fi
 
@@ -194,6 +220,7 @@ findAndRestore()
     fi
 }
 
+# Restoring overwritten icons
 if [ -d "${BACKUP_DIR}/icons" ]; then
     cd "${BACKUP_DIR}/icons/"
     findAndRestore .
@@ -201,12 +228,14 @@ if [ -d "${BACKUP_DIR}/icons" ]; then
     rm -rf "${BACKUP_DIR}/icons"
 fi
 
+# Deleting added icons
 if [ -f "${MAINTENANCE_DIR}/icons.list" ]; then
     for f in $(cat "${MAINTENANCE_DIR}/icons.list"); do
         rm -f "${f}" || true
     done
 fi
 
+# Restoring font config changes
 restoreFontConfig()
 {
     local fontConfigFolder="/etc/fonts/conf.avail"
@@ -234,7 +263,7 @@ for IFW_ICON_THEME_NAME in ${ICON_THEMES}; do
     fi
 
     updateCacheForTheme "${IFW_ICON_THEME_NAME}"
-    done
+done
 
 # Send uninstall statistics and telemetry
 if [[ " ${ARTIFACTS} " == *"text"* ]]; then
