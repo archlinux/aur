@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="bilibili-appimage"
 _pkgver=1.16.3
-_subver=2
+_subver=3
 release_tag="${_pkgver}-${_subver}"
 pkgver="${_pkgver}.${_subver}"
 pkgrel=1
