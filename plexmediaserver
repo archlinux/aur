@@ -1,0 +1,11 @@
+type = process
+command = /usr/lib/plexmediaserver/Plex\ Media\ Server
+logfile = /var/log/plexmediaserver.log
+depends-on = network
+restart = true
+restart-delay = 5
+restart-limit-count = 3
+restart-limit-interval = 60
+env-file = /etc/conf.d/plexmediaserver
+run-as = plex
+working-dir = /var/lib/plex
