@@ -8,6 +8,7 @@ pkgbase = vesktop-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = pnpm
+	makedepends = npm
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss

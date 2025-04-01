@@ -11,7 +11,7 @@ url="https://github.com/Vencord/Vesktop"
 license=('GPL-3.0-only')
 
 depends=('alsa-lib' 'gtk3' 'nss')
-makedepends=('git' 'pnpm')
+makedepends=('git' 'pnpm' 'npm')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
