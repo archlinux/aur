@@ -1,0 +1,17 @@
+pkgbase = ntpperf-git
+	pkgdesc = A tool for measuring performance of NTP servers and PTP masters
+	pkgver = r28.4d1de40
+	pkgrel = 1
+	url = https://github.com/mlichvar/ntpperf
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = libpcap
+	optdepends = gnutls: for Network Time Security (NTS) support
+	source = git+https://github.com/mlichvar/ntpperf.git
+	sha256sums = SKIP
+
+pkgname = ntpperf-git
