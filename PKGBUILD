@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.7.0.r46.ga2a1ecde0
+pkgver=0.7.0.r48.g9ee5d06
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -68,7 +68,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^v\.\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -80,8 +80,6 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# fix for cmake 4
-	sed -i '/VERSION/s/3\.2\.0/3.5/' externals/discord-rpc/CMakeLists.txt
 }
 
 build() {
