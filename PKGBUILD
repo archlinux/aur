@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-enhanced-bin
 _pkgname='Stremio Enhanced'
-pkgver=0.8
+pkgver=0.9
 _electronversion=28
 pkgrel=1
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
@@ -23,8 +23,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.ico::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v${pkgver}/images/icon.ico"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('20c35fc75d48aa20e97fc5c041611d74a522fb7c0674110b8f7fb8b023b47c4f'
-            '7a6005231b78b0865a5fdce20f083382a3dff613c1404db856283fdb796b74ae'
+sha256sums=('497d85d1de22b7b6898c546b5ef8cb6ff324a2bc6c15bf2022d0ba0f8c86c51b'
+            'ed5f1a7791770773ed4aa8ba31fa28b3bb2cc1a263e0ed1997c290a6248a896a'
             'f549b47258defcef9c2864b740151c60f4510af184d346c38a6f8d081222b7a5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -39,13 +39,13 @@ prepare() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
-   install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-   _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}_"*_"${_icons}"x32.png \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
