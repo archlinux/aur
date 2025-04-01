@@ -9,8 +9,8 @@
 #     gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
 
 pkgname=mullvad-browser-bin
-pkgver=14.0.7
-pkgrel=2
+pkgver=14.0.9
+pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
