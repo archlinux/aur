@@ -2,43 +2,36 @@
 
 pkgname='perl-data-entropy'
 _dist='Data-Entropy'
-pkgver='0.007'
-pkgrel='4'
+pkgver='0.008'
+pkgrel='1'
 pkgdesc="Contains the Data::Entropy module, a collection of fundamental algorithms that use entropy."
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-crypt-rijndael' 'perl-http-lite' 'perl-data-float' 'perl-params-classify')
-makedepends=('perl-module-build')
+depends=('perl-crypt-rijndael' 'perl-http-lite' 'perl-data-float' 'perl-params-classify' 'perl-crypt-urandom')
 url="https://metacpan.org/release/$_dist"
-source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz")
-md5sums=('8608fdbf690fc21caf170310134c892b')
-sha512sums=('f845fabcac67ab16d44f8bbefa0fc09df171efd6cd9ae2f2ee7e189cbb707cf074705763a022941cbfdda5ab4e03b85eacdb7942a504644a40970c42b5a7e0b9')
+source=("https://cpan.metacpan.org/authors/id/R/RR/RRWO/$_dist-$pkgver.tar.gz")
+md5sums=('378ed905d74a8b6a0bf03a045935a836')
+sha512sums=('60f6d54e38a0b24343e7f595d21d1134f1c52bbcdf3224bdae53abcc1fda67cc7629b294b11c8d864f652768e629f2700cad96e0c66391f07117bfd445af197d')
 _distdir="$_dist-$pkgver"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_distdir"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
