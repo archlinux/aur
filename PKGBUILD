@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navithingy-bin
 _pkgname=NaviThingy
-pkgver=0.5.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A Navidrome client built with Tauri and Svelte.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${_pkgname}${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vMohammad24/NaviThingy/${_pkgname}${pkgver}/LICENSE"
 )
-sha256sums=('a4231785b06d922f6fefd63a58eb30193876b3a0529952d559b4d7d628c4e5e2'
+sha256sums=('f779a06d4ae7d2a86ff3d5608a4c3274f3ba18ac85c3e08366f72864fec4d0d2'
             '44754fe43cb73bdafbd0fa5371c92cacae5682bcd10ed5f85e1085b8901e7ab9')
 prepare() {
     sed -i "s/Categories=/Categories=Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
