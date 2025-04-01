@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.0.32] - unreleased
+## [2.0.33] - unreleased
+- Fix duplicite device detected on macOS 13.3
+
+## [2.0.32] - 2022-10-03 (in Trezor Suite)
+- Fix possible memory leak in libusb config descriptor
 - libusb: update to 1.0.26
 - hidapi: update to 0.12.0 and move to a submodule
 - Fix build and notarization for all platforms
 - Remove custom patches for Windows 7 
 
-## [2.0.31] - 2021-03-12
+## [2.0.31] - 2021-03-12 (in Trezor Suite)
 - hidapi: update to 0.10.1
 - libusb: update to 1.0.24
 - Fix bootloader not recognized on Windows accidentally introduced in 2.0.30 (5438e38d)
