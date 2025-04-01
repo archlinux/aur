@@ -2,9 +2,9 @@
 # Contributor: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yank-note-bin
 _pkgname=Yank-Note
-pkgver=3.81.2
+pkgver=3.82.1
 _electronversion=33
-pkgrel=2
+pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.(Prebuilt version.Use system-wide electron)'
 arch=(
     'aarch64'
@@ -27,19 +27,21 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-${pkgver}.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0d6118c58375bc00982d89fdf96e21dfcfaa35b2ac9ace25412a0d9baf7c3c59')
-sha256sums_x86_64=('87f9bf8c5d3e118b0d6fdcac47fd30e395f4e5c0899ab27fe4dbd298a7cca58c')
+sha256sums_aarch64=('ec53afd730dfd123947ffe0903c52dbf06b4e141ac23977488fbfde3f3f98327')
+sha256sums_x86_64=('0085263349668947a76ad5dfc99a041968cbc32a223163cf2a91c2202fcff0d7')
 prepare() {
-    sed -e "
-        s/@electronversion@/${_electronversion}/
-        s/@appname@/${pkgname%-bin}/
-        s/@runname@/app.asar/
-        s/@cfgdirname@/yank.note/
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/yank.note/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s/\"\/opt\/${_pkgname//-/ }\/${pkgname%-bin}\"/${pkgname%-bin}/;s/Markdown;/Utility;/" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "
+        s/\"\/opt\/${_pkgname//-/ }\/${pkgname%-bin}\"/${pkgname%-bin}/g
+        s/Markdown;/Utility;/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
