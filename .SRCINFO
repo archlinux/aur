@@ -1,6 +1,6 @@
 pkgbase = sourcetrail
 	pkgdesc = Interactive source explorer for C/C++ and Java
-	pkgver = 2025.3.3
+	pkgver = 2025.4.1
 	pkgrel = 1
 	url = https://github.com/xiota/sourcetrail
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = sourcetrail
 	makedepends = java-environment=21
 	makedepends = lld
 	makedepends = llvm
-	makedepends = archlinux-java-run
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
@@ -28,10 +27,7 @@ pkgbase = sourcetrail
 	depends = sqlite
 	depends = tinyxml
 	optdepends = java-runtime
-	optdepends = python
-	optdepends = python-jedi
-	optdepends = python-parso
-	source = sourcetrail::git+https://github.com/xiota/sourcetrail.git#commit=5a7a4599522e54a0f9ec463ecf9b4c312c5765f6
+	source = sourcetrail::git+https://github.com/xiota/sourcetrail.git#commit=59503c7449e9557fa43490f2fa8a0183d05480a2
 	sha256sums = SKIP
 
 pkgname = sourcetrail
