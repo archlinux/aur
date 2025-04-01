@@ -1,7 +1,7 @@
 pkgbase = python-moderngl-window
 	pkgdesc = A utility library for ModernGL making window creation and resource loading simple.
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moderngl/moderngl-window
 	arch = any
 	license = MIT

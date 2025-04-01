@@ -53,7 +53,7 @@ check () {
     python -m venv --system-site-packages venv
     source venv/bin/activate
     pip install ./dist/*.whl
-    pytest
+    python -m pytest
     rm -rf venv
 }
 
