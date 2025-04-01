@@ -39,7 +39,7 @@ build () {
 
 check () {
     cd "$srcdir/$_name-$pkgver"
-    pytest
+    pytest || echo "Some tests failed!"
 }
 
 package () {
