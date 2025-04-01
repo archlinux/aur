@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-session
 	pkgdesc = Ayatana Indicator showing session management, status and user switching
-	pkgver = 24.5.0
+	pkgver = 24.5.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-session
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ayatana-indicator-session
 	depends = hicolor-icon-theme
 	depends = librda
 	depends = glib2-devel
-	source = ayatana-indicator-session-24.5.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-session/archive/24.5.0.tar.gz
-	md5sums = 65adb16e5f0fd8798a9565a00a701f50
+	source = ayatana-indicator-session-24.5.1.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-session/archive/24.5.1.tar.gz
+	md5sums = bf7530633a81ba7819bbaa40335a8190
 
 pkgname = ayatana-indicator-session
