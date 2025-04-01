@@ -5,7 +5,7 @@ _name=mapbox_earcut_python
 
 pkgname=python-mapbox-earcut
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the C++ implementation of the Mapbox Earcut library."
 
 arch=("x86_64")
@@ -16,6 +16,8 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('3700a25de44e73edd762b5cfa0c43fa73ebbf95f811694bfc8bb77f07dc9512c3fb814b409b5ea88c9e1a32cc5272f3ae33c1e4e323afe8b139cf8b96f1edc54')
 
 depends=(
+    "gcc-libs"
+    "glibc"
     "python"
 )
 makedepends=(
@@ -31,7 +33,7 @@ checkdepends=(
 )
 
 build () {
-    cd "$srcdir/$_name-$pkgver" || exit
+    cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
 }
 
@@ -48,7 +50,7 @@ check () {
 }
 
 package () {
-    cd "$srcdir/$_name-$pkgver" || exit
+    cd "$srcdir/$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

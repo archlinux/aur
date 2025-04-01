@@ -1,7 +1,7 @@
 pkgbase = python-mapbox-earcut
 	pkgdesc = Python bindings for the C++ implementation of the Mapbox Earcut library.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skogler/mapbox_earcut_python
 	arch = x86_64
 	license = ISC
@@ -12,6 +12,8 @@ pkgbase = python-mapbox-earcut
 	makedepends = python-scikit-build-core
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = gcc-libs
+	depends = glibc
 	depends = python
 	source = https://github.com/skogler/mapbox_earcut_python/archive/refs/tags/v1.0.3.tar.gz
 	sha512sums = 3700a25de44e73edd762b5cfa0c43fa73ebbf95f811694bfc8bb77f07dc9512c3fb814b409b5ea88c9e1a32cc5272f3ae33c1e4e323afe8b139cf8b96f1edc54
