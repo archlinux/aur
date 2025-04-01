@@ -9,9 +9,9 @@ url="https://github.com/archisman-panigrahi/typhoon"
 provides=($_pkgname)
 conflicts=($_pkgname)
 license=('MIT')
-depends=('gtk3' 'webkit2gtk' 'python')
+depends=('gtk3' 'webkit2gtk' 'python' 'imagemagick')
 makedepends=('git' 'meson' 'ninja')
-source=("git+$url#branch=develop")
+source=("git+$url#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {

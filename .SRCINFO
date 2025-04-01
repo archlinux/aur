@@ -11,9 +11,10 @@ pkgbase = typhoon-git
 	depends = gtk3
 	depends = webkit2gtk
 	depends = python
+	depends = imagemagick
 	provides = typhoon
 	conflicts = typhoon
-	source = git+https://github.com/archisman-panigrahi/typhoon#branch=develop
+	source = git+https://github.com/archisman-panigrahi/typhoon#branch=master
 	sha256sums = SKIP
 
 pkgname = typhoon-git
