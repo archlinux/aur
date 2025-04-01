@@ -1,0 +1,13 @@
+pkgbase = tget-bin
+	pkgdesc = Like wget but for torrents
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/sweetbbak/tget
+	arch = x86_64
+	license = MIT
+	provides = tget
+	conflicts = tget
+	source_x86_64 = https://github.com/sweetbbak/tget/releases/download/V0.1/tget_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = efe781958536f786e216125a9d385578d459211127b9eeb925a55c9137cabe38
+
+pkgname = tget-bin
