@@ -1,0 +1,54 @@
+#!/bin/bash
+
+declare -r PACKAGE_ROOT_DIR=/opt/turing-smart-screen-python/
+
+function print_usage () {
+    echo "Usage: $0 [command] [options]"
+    echo ""
+    echo "Commands:"
+    echo "  help            Show this help message and exit"
+    echo "  main            Run the main application"
+    echo "  configure       Run the configuration tool"
+    echo "  theme-editor    Run the theme editor"
+    echo ""
+    echo "Options:"
+    echo "  -h, --help      Show this help message and exit"
+}
+
+if [ "$(id -u)" -eq 0 ]; then
+    mkdir -p /var/log/turing-smart-screen-python/
+    cd /var/log/turing-smart-screen-python/
+elif [ -v HOME ] && [ -w $HOME ]; then
+    mkdir -p $HOME/.local/share/turing-smart-screen-python/
+    cd $HOME/.local/share/turing-smart-screen-python/
+else 
+    mkdir -p /tmp/turing-smart-screen-python-${UID}/
+    cd /tmp/turing-smart-screen-python-${UID}/
+fi
+
+if [ "$#" -eq 0 ]; then
+    print_usage
+    exit 1
+fi
+if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "help" ]; then
+    print_usage
+    exit 0
+fi
+
+if [ "$1" = "main" ]; then
+    shift
+    exec ${PACKAGE_ROOT_DIR}/main.py "$@"
+elif [ "$1" = "configure" ]; then
+    shift
+    exec ${PACKAGE_ROOT_DIR}/configure.py "$@"
+elif [ "$1" = "theme-editor" ]; then
+    shift
+    exec ${PACKAGE_ROOT_DIR}/theme-editor.py "$@"
+else
+    echo "Unknown command: $1"
+    print_usage
+    exit 1
+fi
+
+    
+

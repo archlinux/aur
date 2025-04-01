@@ -1,0 +1,11 @@
+post_install() {
+    echo To run turing-smart-screen you must be a member of the turing-smart-screen group.
+    echo Run the following command and then log in again:
+    echo \$ sudo usermod -aG turing-smart-screen YOUR_USERNAME
+    echo 
+    echo The owner of the smart screen device will be set to root:turing-smart-screen.
+    echo If you do not want this behavior, run the following command:
+    echo \$ ln -s /dev/null /etc/udev/rules.d/65-turing-smart-screen.rules
+    echo
+    echo Run turing-smart-screen --help to see the available options.
+}

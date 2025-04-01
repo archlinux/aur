@@ -1,0 +1,12 @@
+SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="454d", ATTRS{idProduct}=="4e41", GOTO="turing_smart_screen"
+SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1d6b", ATTRS{idProduct}=="0121", GOTO="turing_smart_screen"
+SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="0525", ATTRS{idProduct}=="a4a7", GOTO="turing_smart_screen"
+SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="ca21", GOTO="turing_smart_screen"
+SUBSYSTEM=="tty", ACTION=="add", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="5722", GOTO="turing_smart_screen"
+
+GOTO="turing_smart_screen_end"
+
+LABEL="turing_smart_screen"
+GROUP="turing-smart-screen", MODE="0660"
+
+LABEL="turing_smart_screen_end"
