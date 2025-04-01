@@ -1,33 +1,20 @@
-pkgname=timer-rs-bin
-_pkgname=timer
-pkgver=0.7.3
+# Maintainer: Pando85 <pando855@gmail.com>
+_pkgname=timer-rs
+pkgname="${_pkgname}-bin"
+pkgver=0.8.7
 pkgrel=1
-pkgdesc="Simple countdown terminal alarm. Useful for pomodoros too. Git release binary"
-arch=('x86_64')
+pkgdesc="Timer application"
+arch=('x86_64' 'aarch64')
 url="https://github.com/pando85/timer"
-license=('GPL-3.0-only')
-groups=()
-depends=()
-makedepends=()
-optdepends=()
-provides=('timer')
-conflicts=(timer-rs-git)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-_urlprefix="https://github.com/pando85/${_pkgname}/releases/download/v${pkgver}"
-_source="${_pkgname}-${pkgver}-${arch}-unknown-linux-gnu.tar.gz"
-source=(${_urlprefix}/${_source})
-noextract=()
-sha256sums=('9717f8934db0ab630cb0df0f4ee947a1bffa30aa3b5da3a66932a03773a395b1')
+license=('GPL')
+depends=('gcc-libs'
+         'alsa-lib')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-prepare() {
-  cd "${srcdir}"
-  tar -xf "$_source"
-}
+source=("https://github.com/pando85/timer/releases/download/v${pkgver}/timer-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
+sha256sums=('5a131081feae4c457453c790540c7536c093bdea9ab7988989d6f2729d186aaf')
 
 package() {
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 }
