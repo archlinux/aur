@@ -1,0 +1,13 @@
+pkgbase = toru-bin
+	pkgdesc = Bittorrent streaming CLI tool for animes
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/sweetbbak/toru
+	arch = x86_64
+	license = MIT
+	provides = toru
+	conflicts = toru
+	source_x86_64 = https://github.com/sweetbbak/toru/releases/download/v0.3.3/toru_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b748bc40aeeecbc33025f89b4bbb91e246ca5bf8ceb98f9c74257cc485329ccb
+
+pkgname = toru-bin
