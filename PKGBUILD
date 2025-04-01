@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=stu
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="TUI for AWS S3"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('cfee52dc6b966708b71534e685c80a90009afde08cac1684c1b580422cb5bd6339c694a9dd0a4c6fd5029097094ac843a99484ef7fc2be1d2fd1b691acbc64c9')
+sha512sums=('eb7f0d7d8239d1380da9c7a3cc914006ca182e79942d2e438040d207e75c94b91153edcde60ceabbcf12ee314dd4ceba6757f804c01c2c65043f11da8ebdb2d8')
 options=('!lto')
 
 prepare() {
