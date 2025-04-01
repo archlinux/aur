@@ -2,7 +2,7 @@
 _appname=typora
 pkgname="${_appname}-free-with-plugin"
 _pkgname=Typora
-pkgver=1.13.6
+pkgver=1.13.7
 _typoraver=0.11.18
 _electronversion=13
 pkgrel=1
@@ -35,7 +35,7 @@ source=(
 )
 source_aarch64=("${pkgname}-${_typoraver}-aarch64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_arm64.deb")
 source_x86_64=("${pkgname}-${_typoraver}-x86_64.deb::${_dlurl}/releases/download/v${_typoraver}/${_appname}_${_typoraver}_amd64.deb")
-sha256sums=('fa0b84fc2e6360c506c6af3e4f8ea256e7d8c13df7c389068c4c9afbe8e55d09')
+sha256sums=('960df51e1199171e79917abed0aa45457ad409bc468befd523b2b01842d4938f')
 sha256sums_aarch64=('12ad46732c4da7d9414701c584fee942baf83b89165563f18ba03d859eb59ad8')
 sha256sums_x86_64=('a202935a754c4b7344cc947db143e12885e4a716ca5f70f607f0318c346bb6c6')
 prepare() {
@@ -47,10 +47,11 @@ prepare() {
     sed -i "s/<script src=\".\/appsrc\/window\/frame.js\" defer=\"defer\"><\/script>/<script src=\".\/appsrc\/window\/frame.js\" defer=\"defer\"><\/script><script src=\".\/plugin\/index.js\" defer=\"defer\"><\/script>/g" \
         "${srcdir}/usr/share/${_appname}/resources/window.html"
     cp -Pr --no-preserve=ownership "${srcdir}/${_appname}_plugin-${pkgver}/"{assets,plugin} "${srcdir}/usr/share/${_appname}/resources"
-    _linkfiles=(locales chrome_100_percent.pak chrome_200_percent.pak icudtl.dat libEGL.so libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak)
-    for _file in "${_linkfiles[@]}";do
-        rm -rf "${srcdir}/usr/share/${_appname}/${_file}"
-        ln -sf "/usr/lib/electron${_electronversion}/${_file}" "${srcdir}/usr/share/${_appname}/${_file}"
+    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
+        libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
+    for _files in "${_file_list[@]}";do
+        rm -rf "${srcdir}/usr/share/${_appname}/${_files}"
+        ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/usr/share/${_appname}/${_files}"
     done
 }
 package() {
