@@ -1,7 +1,7 @@
 # Maintainer: tblFlip <root@tblflip.de>
 
 pkgname=tagstudio
-pkgver=alpha9.5.1
+pkgver=alpha9.5.2
 pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
@@ -30,9 +30,21 @@ depends=(
 	"python-pydub>=0.25.1"
 	"python-sqlalchemy>=2.0.34"
 	"python-structlog>=24.4.0"
+	"python-toml>=0.10.2"
+	"python-pydantic>=2.9.2"
 	"qt6-tools"
 	"qt6-multimedia"
 	"qt6-svg"
+	"dbus"
+	"ffmpeg"
+)
+
+optdepends=(
+	"libva"
+	"libvdpau"	
+	"libxrandr"
+	"pipewire"
+	"qt-wayland"
 )
 
 makedepends=(
@@ -40,6 +52,7 @@ makedepends=(
 	"python-installer"
 	"python-wheel"
 	"python-setuptools-scm"
+	"python-hatchling"
 )
 
 source=(
@@ -50,7 +63,7 @@ source=(
 )
 
 sha256sums=(
-	"27e450a5dc0ff729fd05e7552dd19e65766f728262f581605b08057d7f7b1c33"
+	"2a034db1310c9d16b209094ed4d4c23cad3ef46b5de5eb87855694d06954fe38"
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
 	"7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
@@ -61,16 +74,16 @@ conflicts=("$pkgname")
 
 build() {
 	cd "TagStudio-$_pkgver"
-	cp ../MANIFEST.in .
 	# setuptools allegedly does not support PEP-639 yet
 	sed -i 's/license = "GPL-3.0-only"/license = {text = "GPL-3.0-only"}/' pyproject.toml
+	# python-opencv currently does not ship cv2.typing
+	sed -i 's/from cv2.typing import MatLike/class MatLike: pass/' src/tagstudio/qt/widgets/thumb_renderer.py
 	python -m build --wheel --no-isolation
 }
 
 package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	cd "TagStudio-$_pkgver"
-	install -Dm644 "tagstudio/resources/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+	install -Dm644 "src/tagstudio/resources/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
