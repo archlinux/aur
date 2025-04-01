@@ -1,6 +1,6 @@
 pkgbase = adbmanager-bin
 	pkgdesc = ADB manager for Android devices.(Prebuilt version)
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = adbmanager-bin
 	depends = nmap
 	depends = gtk2
 	depends = sakura
-	provides = adbmanager=3.2
+	provides = adbmanager=3.3
 	conflicts = adbmanager
-	source = adbmanager-3.2.rpm::https://github.com/AKotov-dev/adbmanager/releases/download/v3.2/adbmanager-3.2-0.mrx9.x86_64.rpm
+	source = adbmanager-3.3.rpm::https://github.com/AKotov-dev/adbmanager/releases/download/v3.3/adbmanager-3.3-0.mrx9.x86_64.rpm
 	source = adbmanager.sh
-	sha256sums = 04e17c2de6788aa2b06e9ff116e3b165d8e6cbef141916e6027aabf323b85d65
+	sha256sums = 20f06873698c56261972932562af4a51c497567a05089e56d4b54342e32a1795
 	sha256sums = b046dc662796f382c9300642d94724a97c20baf60de1fe9b34844a6a735aaf7d
 
 pkgname = adbmanager-bin
