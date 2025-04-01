@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=diffr
-_pkgver=0.1
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Display Differences Between Two Files using Codediff Library'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e82ec76b4eadee8ec682f83a8a9d3ffe6309fc31e6c66db573d6e7f8fdb5bc79')
+sha256sums=('60ca909e62b4e8f48bcd934df1c840e0b461c9f3355317a03445f2184f8bb31a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
