@@ -11,11 +11,11 @@ depends=('libadwaita' 'libsoup3' 'json-glib' 'libxml2')
 makedepends=('meson' 'blueprint-compiler' 'gobject-introspection' 'glib2-devel')
 checkdepends=('appstream-glib')
 optdepends=('libbacktrace-git')
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('02797aa4197d9d0cc4466e50c6fded51bb9164a33ff036fdd5eb51674a2346cd')
+source=(git+https://github.com/mjakeman/$pkgname.git#tag=v$pkgver)
+md5sums=(SKIP)
 
 build() {
-    arch-meson $pkgname-$pkgver build -Dbacktrace=false
+    arch-meson $pkgname build -Dbacktrace=false
     meson compile -C build
 }
 
