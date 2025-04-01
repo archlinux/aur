@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MuMIn
-_pkgver=1.48.4
+_pkgver=1.48.11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Multi-Model Inference"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-performance
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2df3a28a9214d4f926a4ef1fa7f98143')
-b2sums=('e3c62139d5e915d47e3fb16877fb905d8922301a50cd7c1b6230400ff4899ee9ee8e298b096f987a2a0767cebddac02ee0bd5ada2decdaaa50ace8cd7df27c57')
+md5sums=('7ebbdfbc2246f40d247675d77037acfc')
+b2sums=('97e20b8d735caa75aa96c50b93304c8944be8c9c899cf299af516a39a5928b3c4ad795206bd9e0a02cdd80145946694dfc5de9adfde19fa9566965dd00b4ad27')
 
 build() {
   mkdir build
