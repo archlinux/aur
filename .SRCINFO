@@ -1,8 +1,9 @@
 pkgbase = yaylog-git
-	pkgdesc = A CLI utility to list installed packages with filtering and sorting, written in Go.
-	pkgver = 3.41.0.r0.g3e2bbd2
-	pkgrel = 1
+	pkgdesc = (DEPRECATED) This package has been renamed to 'qp'. Please install 'qp' instead.
+	pkgver = 3.41.0.r0.gfe7ee78
+	pkgrel = 2
 	url = https://github.com/Zweih/yaylog
+	install = yaylog.install
 	arch = any
 	license = MIT
 	makedepends = go
