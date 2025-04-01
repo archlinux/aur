@@ -1,0 +1,14 @@
+pkgbase = aware
+	pkgdesc = Простой супервизор процессов на Rust
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/spice-itself/aware
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/spice-itself/aware.git
+	sha256sums = SKIP
+
+pkgname = aware
