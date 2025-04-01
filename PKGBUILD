@@ -18,8 +18,8 @@ sha512sums=('afc1b04065411ee463f379c562803bba519fa7ab60507f20c653d16a9d1ec2eae81
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
-    export NODE_ENV=production
-    npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
+	export NODE_ENV=production
+	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
 	install -d \
 		"$pkgdir/usr/share/licenses/$pkgname/" \
 		"$pkgdir/usr/share/doc/$pkgname/"
