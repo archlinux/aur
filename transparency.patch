@@ -1,4 +1,4 @@
-From 61d0b383fb84da52bc2f707abf517d1c5c1102cb Mon Sep 17 00:00:00 2001
+From 0bdc26020ceafc74a308ff128dc0bfa34dd78a59 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/4] Restore transparency
@@ -155,10 +155,10 @@ index 4e661244..aa109078 100644
  #define TERMINAL_SETTING_CONTEXT_INFO_KEY               "context-info"
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 7d7cc40e..2813aa15 100644
+index 2b7626d1..f16265c5 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
-@@ -1076,7 +1076,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1309,7 +1309,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_COLORS_SET_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_BACKGROUND_COLOR_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_FOREGROUND_COLOR_KEY) ||
@@ -169,7 +169,7 @@ index 7d7cc40e..2813aa15 100644
      update_color_scheme (screen);
  
    if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
-@@ -1164,6 +1166,8 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1397,6 +1399,8 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -178,7 +178,7 @@ index 7d7cc40e..2813aa15 100644
    gboolean use_theme_colors;
  
    context = gtk_widget_get_style_context (widget);
-@@ -1207,6 +1211,18 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1440,6 +1444,18 @@ update_color_scheme (TerminalScreen *screen)
      }
  
    colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
@@ -197,7 +197,7 @@ index 7d7cc40e..2813aa15 100644
    vte_terminal_set_colors (VTE_TERMINAL (screen), &fg, &bg,
                             colors, n_colors);
    vte_terminal_set_color_bold (VTE_TERMINAL (screen), boldp);
-@@ -1214,6 +1230,10 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1447,6 +1463,10 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen), cursor_fgp);
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
@@ -234,10 +234,10 @@ index 36eb7ce7..a41d2de2 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.48.1
+2.49.0
 
 
-From cbf01579735146dee629e0bb109a7388da0d3dda Mon Sep 17 00:00:00 2001
+From a3eb7ecc26726c115a53c3efa2bfd86f260ba4e5 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/4] window: Make the drawing robust across all themes
@@ -296,10 +296,10 @@ index a41d2de2..11d93419 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.48.1
+2.49.0
 
 
-From 36e67454351384d71fc9ae83a3c1f211b88c3696 Mon Sep 17 00:00:00 2001
+From d35e89b0a3c7bbf9e646a5b6dca72af8c0a46038 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/4] screen, window: Extra padding around transparent
@@ -312,10 +312,10 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 2813aa15..8746fe43 100644
+index f16265c5..9cb924bb 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
-@@ -159,6 +159,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
+@@ -170,6 +170,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
  static gboolean terminal_screen_popup_menu (GtkWidget *widget);
  static gboolean terminal_screen_button_press (GtkWidget *widget,
                                                GdkEventButton *event);
@@ -324,7 +324,7 @@ index 2813aa15..8746fe43 100644
  static void terminal_screen_child_exited  (VteTerminal *terminal,
                                             int status);
  
-@@ -606,6 +608,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
+@@ -842,6 +844,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    widget_class->drag_data_received = terminal_screen_drag_data_received;
    widget_class->button_press_event = terminal_screen_button_press;
    widget_class->popup_menu = terminal_screen_popup_menu;
@@ -332,7 +332,7 @@ index 2813aa15..8746fe43 100644
  
    terminal_class->child_exited = terminal_screen_child_exited;
  
-@@ -1151,6 +1154,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1384,6 +1387,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
    g_object_thaw_notify (object);
  }
  
@@ -365,7 +365,7 @@ index 2813aa15..8746fe43 100644
  static void
  update_color_scheme (TerminalScreen *screen)
  {
-@@ -1166,7 +1195,6 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1399,7 +1428,6 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -373,7 +373,7 @@ index 2813aa15..8746fe43 100644
    gboolean transparent;
    gboolean use_theme_colors;
  
-@@ -1231,9 +1259,7 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1464,9 +1492,7 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
  
@@ -384,7 +384,7 @@ index 2813aa15..8746fe43 100644
  }
  
  static void
-@@ -1775,6 +1801,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
+@@ -2008,6 +2034,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
    terminal_screen_popup_info_unref (info);
  }
  
@@ -431,10 +431,10 @@ index 11d93419..61857bfe 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.48.1
+2.49.0
 
 
-From 619463399af636a890d9d5331865284374fd80fc Mon Sep 17 00:00:00 2001
+From 0316c2c3391d2d153f5dba1c3a9ad9e79e70dfe9 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 4/4] Restore translations for setting a title and transparency
@@ -734,7 +734,7 @@ index 586c1e4d..4bd84679 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/be.po b/po/be.po
-index 75b26123..1a1620a1 100644
+index 6b10c3b7..1325c3fb 100644
 --- a/po/be.po
 +++ b/po/be.po
 @@ -2533,3 +2533,6 @@ msgstr "_Закрыць акно"
@@ -929,10 +929,10 @@ index a6e8fb42..c9ed8508 100644
 +msgid "Set Title"
 +msgstr "Estableix el títol"
 diff --git a/po/cs.po b/po/cs.po
-index 9cf70a75..3cec4465 100644
+index 312a1bb2..ad60ee6b 100644
 --- a/po/cs.po
 +++ b/po/cs.po
-@@ -2555,6 +2555,14 @@ msgstr "Selhala analýza argumentů: %s\n"
+@@ -2548,6 +2548,14 @@ msgstr "Selhala analýza argumentů: %s\n"
  
  #~ msgid "Armenian"
  #~ msgstr "Arménské"
@@ -996,7 +996,7 @@ index f3fbaec7..352fcf1c 100644
 +msgid "Transparent background"
 +msgstr "Gennemsigtig baggrund"
 diff --git a/po/de.po b/po/de.po
-index b831ea3a..e923a4f8 100644
+index aba926f8..156a1717 100644
 --- a/po/de.po
 +++ b/po/de.po
 @@ -2673,3 +2673,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
@@ -1313,10 +1313,10 @@ index e3a35ae3..e4f135f8 100644
 +msgid "Transparent background"
 +msgstr "پس‌زمینه‌ی شفاف"
 diff --git a/po/fi.po b/po/fi.po
-index 30e6d7cf..de92a033 100644
+index 424c6839..fed8a68a 100644
 --- a/po/fi.po
 +++ b/po/fi.po
-@@ -2808,9 +2808,21 @@ msgstr "Virhe tulkittaessa argumentteja: %s\n"
+@@ -2893,9 +2893,21 @@ msgstr "Virhe tulkittaessa argumentteja: %s\n"
  #~ msgid "_Update login records when command is launched"
  #~ msgstr "_Päivitä kirjautumistallenne kun komento käynnistetään"
  
@@ -1491,10 +1491,10 @@ index 76b459cf..485beeac 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "\"%s\" જેવી કોઈ રૂપરેખા નથી, મૂળભૂત રૂપરેખા વાપરી રહ્યા છે\n"
 diff --git a/po/he.po b/po/he.po
-index d319eabe..ef1b2681 100644
+index b8c40d30..8478b139 100644
 --- a/po/he.po
 +++ b/po/he.po
-@@ -2902,17 +2902,17 @@ msgstr "Failed to parse arguments: %s\n"
+@@ -2891,17 +2891,17 @@ msgstr "Failed to parse arguments: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "גודל בררת מחדל:"
  
@@ -1518,7 +1518,7 @@ index d319eabe..ef1b2681 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "השפה הנוכחית"
-@@ -3726,8 +3726,8 @@ msgstr "Failed to parse arguments: %s\n"
+@@ -3715,8 +3715,8 @@ msgstr "Failed to parse arguments: %s\n"
  #~ msgid "_Solid color"
  #~ msgstr "צבע _אחיד"
  
@@ -1597,10 +1597,10 @@ index aa384812..4a28d9ae 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/hu.po b/po/hu.po
-index d20e10fb..a9043fe1 100644
+index 9fdac18d..0090b54d 100644
 --- a/po/hu.po
 +++ b/po/hu.po
-@@ -2486,3 +2486,15 @@ msgstr "_Ablak bezárása"
+@@ -2567,3 +2567,15 @@ msgstr "_Ablak bezárása"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "A paraméterek feldolgozása meghiúsult: %s\n"
@@ -1643,13 +1643,13 @@ index aaf2d9b2..4d466f16 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/id.po b/po/id.po
-index ec2bab7f..892c6493 100644
+index c5deea8b..7de90500 100644
 --- a/po/id.po
 +++ b/po/id.po
-@@ -2542,3 +2542,15 @@ msgstr "Tutup Jende_la"
- #, c-format
- msgid "Failed to parse arguments: %s\n"
- msgstr "Gagal mengurai argumen: \"%s\"\n"
+@@ -2509,3 +2509,15 @@ msgstr "Gagal mengurai argumen: \"%s\"\n"
+ 
+ #~ msgid "_Detach Tab"
+ #~ msgstr "_Pisahkan Tab"
 +
 +msgid "Transparent background"
 +msgstr "Latar belakang transparan"
@@ -1703,10 +1703,10 @@ index ab72bc42..690281a6 100644
 +msgid "Set Title"
 +msgstr "タイトルを設定する"
 diff --git a/po/ka.po b/po/ka.po
-index ed2d747e..abd30d4b 100644
+index 185ebbe3..66bc6026 100644
 --- a/po/ka.po
 +++ b/po/ka.po
-@@ -179,6 +179,11 @@ msgstr "პროფილის ადამიანისთვის-სა
+@@ -205,6 +205,11 @@ msgstr "პროფილის ადამიანისთვის-სა
  msgid "Human-readable name of the profile."
  msgstr "პროფილის ადამიანისთვის-სასიამოვნო წასაკითხი სახელი."
  
@@ -2321,7 +2321,7 @@ index b25a2cb4..3855b2f3 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index 0db6f389..5a7de508 100644
+index 743971be..97b825e6 100644
 --- a/po/pt.po
 +++ b/po/pt.po
 @@ -2950,11 +2950,11 @@ msgstr "Falha ao processar argumentos: %s\n"
@@ -2363,10 +2363,10 @@ index 0db6f389..5a7de508 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparente som_breado ou imagem de fundo:"
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index 68b4cd90..e6d7ed43 100644
+index 76c9a6bb..17ec292e 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
-@@ -2575,3 +2575,15 @@ msgstr "Falha ao analisar os argumentos: %s\n"
+@@ -2577,3 +2577,15 @@ msgstr "Falha ao analisar os argumentos: %s\n"
  #~ msgctxt "theme variant"
  #~ msgid "Dark"
  #~ msgstr "Escuro"
@@ -2398,10 +2398,10 @@ index 627aea90..14d04172 100644
  #~ msgid "_Unlimited"
  #~ msgstr "_Neliminat"
 diff --git a/po/ru.po b/po/ru.po
-index f977d040..3db81cd6 100644
+index 5a3fffcc..9681640a 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -2853,3 +2853,19 @@ msgstr "Не удалось разобрать аргументы: %s\n"
+@@ -2846,3 +2846,19 @@ msgstr "Не удалось разобрать аргументы: %s\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Добавить или удалить…"
@@ -2489,10 +2489,10 @@ index e6745075..20d303c8 100644
 +msgid "Set Title"
 +msgstr "Nastaviť titulok"
 diff --git a/po/sl.po b/po/sl.po
-index 2c328cd5..d80b9d15 100644
+index 6b0332ee..155c52e4 100644
 --- a/po/sl.po
 +++ b/po/sl.po
-@@ -2520,3 +2520,15 @@ msgstr "_Zapri okno"
+@@ -2527,3 +2527,15 @@ msgstr "_Zapri okno"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Napaka med razčlenjevanjem argumentov: %s\n"
@@ -2639,10 +2639,10 @@ index 45dbad07..852c47cc 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index 0d129cfc..ee846826 100644
+index 422b2cb7..2ab3f587 100644
 --- a/po/sv.po
 +++ b/po/sv.po
-@@ -2885,5 +2885,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
+@@ -2876,5 +2876,17 @@ msgstr "Misslyckades med att tolka argument: %s\n"
  #~ msgid "Unknown completion request for \"%s\""
  #~ msgstr "Okänd kompletteringsbegäran för \"%s\""
  
@@ -2875,10 +2875,10 @@ index 63263749..496da331 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/tr.po b/po/tr.po
-index 371873b2..61f658db 100644
+index 8e5489f3..0057036c 100644
 --- a/po/tr.po
 +++ b/po/tr.po
-@@ -2467,3 +2467,15 @@ msgstr "_Pencereyi Kapat"
+@@ -2524,3 +2524,15 @@ msgstr "_Pencereyi Kapat"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Bağımsız değişkenler ayrıştırılamadı: %s\n"
@@ -2910,10 +2910,10 @@ index 313f76b9..be608976 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/uk.po b/po/uk.po
-index f9b251e3..f1832aa9 100644
+index 5ab08e2c..7885cf9e 100644
 --- a/po/uk.po
 +++ b/po/uk.po
-@@ -2573,3 +2573,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
+@@ -2562,3 +2562,18 @@ msgstr "Не вдається визначити аргументи: %s\n"
  
  #~ msgid "Georgian"
  #~ msgstr "Грузинське"
@@ -3051,10 +3051,10 @@ index cb78ec67..a4f3b4dd 100644
  #: ../src/terminal-window.c:986
  msgid "Set _Character Encoding"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index 9ec7923f..3a80cd5e 100644
+index 5d51cba6..34a5ff42 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
-@@ -2877,17 +2877,17 @@ msgstr "无法处理参数：%s\n"
+@@ -2882,17 +2882,17 @@ msgstr "无法处理参数：%s\n"
  #~ msgid "Default size:"
  #~ msgstr "默认大小："
  
@@ -3078,7 +3078,7 @@ index 9ec7923f..3a80cd5e 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "当前区域"
-@@ -3000,3 +3000,6 @@ msgstr "无法处理参数：%s\n"
+@@ -3005,3 +3005,6 @@ msgstr "无法处理参数：%s\n"
  
  #~ msgid "_Find..."
  #~ msgstr "查找(_F)..."
@@ -3156,5 +3156,5 @@ index d692f648..4bdaac8a 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.48.1
+2.49.0
 
