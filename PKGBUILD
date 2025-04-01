@@ -3,7 +3,7 @@
 _pkgname=vesktop
 pkgname=vesktop-git
 pkgdesc="A standalone Electron-based Discord app with Vencord & improved Linux support"
-pkgver=1.5.5.r16.g8f94196
+pkgver=1.5.5.r17.g391ad94
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -40,7 +40,7 @@ build() {
   # Add unpacked icon extraction script.
   sed -i '/"beforePack": "scripts\/build\/sandboxFix.js",/a\ \ \ \ \ \ \ \ "afterPack": "'$srcdir'/afterPack.js",' package.json
 
-  pnpm i
+  pnpm i --frozen-lockfile
   pnpm package:dir
 }
 
