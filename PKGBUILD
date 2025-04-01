@@ -2,7 +2,7 @@
 _appname="youtube music for desktop"
 pkgname="${_appname// /-}-bin"
 _pkgname=YouTube-Music-for-Desktop
-pkgver=0.14.7
+pkgver=0.14.8
 _electronversion=33
 pkgrel=1
 pkgdesc="Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)"
@@ -29,24 +29,24 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('92ddfe9b25dddd41b2ff0e8cb9bb1351dd85dc54f6c04cc4ce4d52cb65931e53')
-sha256sums_x86_64=('a17e9d835d106441fdecf94f6273c5a093b765990f79dc27f99c469e3fb7e4fd')
+sha256sums_aarch64=('553a7911cd78c8c45cd18870ede132c4a6510154f0466da29e1ba3e554bf727a')
+sha256sums_x86_64=('ac60682096109fdf212ce87a488ab3f4f1607b751320741c0cd749f4db7d1229')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
         s/Categories=Music/Categories=AudioVideo/g
-    " -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    " "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
