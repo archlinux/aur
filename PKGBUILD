@@ -3,7 +3,7 @@
 
 pkgname='bzr-player'
 pkgver='2.0.76'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
@@ -14,6 +14,7 @@ options=(!strip)
 _zip="BZR-Player-$pkgver.zip"
 _setup="bzr2_setup.sh"
 _mimes="x-bzr-player.xml"
+install=$pkgname.install
 source=("$_zip::https://github.com/aargirakis/BZRPlayer/releases/download/${pkgver}/BZR-Player-${pkgver}.zip"
   "$pkgname.sh"
   "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_setup"
