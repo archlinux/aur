@@ -29,6 +29,7 @@ makedepends=(
     "python-wheel"
 )
 checkdepends=(
+    "python-pytest"
     "python-virtualenv"
 )
 
@@ -40,12 +41,10 @@ build () {
 check () {
     cd "$srcdir/$_name-$pkgver"
 
-    python -m venv venv
-    (
-        source venv/bin/activate
-        pip install ./dist/*.whl pytest
-        python -m pytest
-    )
+    python -m venv --system-site-packages venv
+    source venv/bin/activate
+    pip install ./dist/*.whl
+    python -m pytest
     rm -rf venv
 }
 
