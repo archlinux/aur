@@ -1,0 +1,19 @@
+pkgbase = wooz-git
+	pkgdesc = zoom / magnifier utility for Wayland
+	pkgver = r1.e221728
+	pkgrel = 1
+	url = https://github.com/negrel/wooz
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pango
+	makedepends = wayland-protocols
+	depends = wayland
+	provides = wooz
+	conflicts = wooz
+	source = git+https://github.com/negrel/wooz
+	sha256sums = SKIP
+
+pkgname = wooz-git
