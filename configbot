@@ -45,7 +45,7 @@ expect {
 	"Do you want to include strn's scan and score features?" { send y\r ; exp_continue; }  
 	"Directories to use for library searches?" { send "/usr/local/lib /lib /usr/lib /usr/heimdal/lib\r" ; exp_continue; } 
 	"What is the file extension used for shared libraries?" { send so\r ; exp_continue; }  
-	"Any additional libraries?" { send -- "-lresolv -lhdb -lnsl\r" ; exp_continue; } 
+	"Any additional libraries?" { send -- "-lresolv -lnet -lnsl\r" ; exp_continue; } 
 	"What optimizer/debugger flag should be used?" { send -- -O\r ; exp_continue; } 
 	"Any additional cc flags?" { send -- -I/usr/local/include\r ; exp_continue; }  
 	"Any additional ld flags (NOT including libraries)?" { send  -- "-L/usr/local/lib -L/usr/heimdal/lib\r" ; exp_continue; }  
