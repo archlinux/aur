@@ -2,8 +2,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=yoctopuce
-pkgver=2.0.64286
-pkgrel=2
+pkgver=2.0.65451
+pkgrel=1
 pkgdesc="C++ library for interfacing with Yoctopuce devices"
 arch=($CARCH)
 url="https://github.com/yoctopuce/yoctolib_cpp"
@@ -19,7 +19,7 @@ provides=('libyocto.so' 'libyapi.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'LICENSE'
 )
-sha256sums=('2ba89d6867ba5add43d7bff4f25869e00cebed9612448686ce1385bc9136e0df'
+sha256sums=('e4112538208701212a38e4e46093aa15e85182f46b711d6019d894fef6c1d1c5'
             '2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30')
 
 build() {
