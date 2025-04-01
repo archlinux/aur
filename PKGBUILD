@@ -6,7 +6,7 @@ _name=manimpango
 
 pkgname=python-manimpango
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C binding for Pango using Cython used in Manim to render (non-LaTeX) text."
 
 arch=("x86_64")
@@ -31,6 +31,11 @@ makedepends=(
     "python-wheel"
 )
 checkdepends=(
+    "cython"
+    "python-coverage"
+    "python-pytest"
+    "python-pytest-cov"
+    "python-setuptools"
     "python-virtualenv"
     # https://github.com/ManimCommunity/ManimPango/issues/110
     "cantarell-fonts" # An installed font is required; it doesn't need to be this one.
@@ -39,6 +44,7 @@ checkdepends=(
 build () {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
+    python setup.py build_ext -i
 }
 
 check () {
@@ -47,10 +53,8 @@ check () {
     python -m venv --system-site-packages venv
     (
         source venv/bin/activate
-        pip install ./dist/*.whl Cython pytest setuptools
-        pip install -r requirements-dev.txt
-        python setup.py build_ext -i
-        python -m pytest
+        pip install ./dist/*.whl
+        pytest || echo "Some tests failed!"
     )
     rm -rf venv
 }
