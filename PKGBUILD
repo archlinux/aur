@@ -5,9 +5,9 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.4.0.r0.g7000bad
+pkgver=1.4.2.r4.g540ec19
 pkgrel=1
-pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (latest git commit)'
+pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
@@ -27,7 +27,7 @@ makedepends=(
   'python-wheel'
 )
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 source=("$_srcname::git+$url.git")
 sha256sums=('SKIP')
 options=('lto')
@@ -53,6 +53,7 @@ build() {
     * ) : pass ;;
   esac
 
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5  # or else won't build
   python -m build --wheel --no-isolation
 }
 
