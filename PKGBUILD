@@ -1,11 +1,12 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='betula'
 pkgname="$_pkgname-git"
-pkgver=1.2.0.r55.ge83a303
+pkgver=1.4.0.r1.ge4e6b90
 pkgrel=1
-pkgdesc='Federated personal link collection manager (built from latest commit)'
+pkgdesc='Federated personal link collection manager (latest git commit)'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://git.sr.ht/~bouncepaw/$_pkgname"
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -13,7 +14,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 options=('lto')
 
