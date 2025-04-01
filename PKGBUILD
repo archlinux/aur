@@ -38,7 +38,7 @@ replaces=(sk-chos-addon-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz"
         "amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py")
 sha256sums=('SKIP'
-            '8ac3427f959278c3d0d4d900b3fd84076b15eeeeaf280436befe93e960133aaf')
+            'SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
