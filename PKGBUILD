@@ -49,14 +49,19 @@ build () {
 
 check () {
     cd "$srcdir/$_name-$pkgver"
+    result=1
 
     python -m venv --system-site-packages venv
-    (
-        source venv/bin/activate
+    source venv/bin/activate
+
+    {
         pip install ./dist/*.whl
-        pytest || echo "Some tests failed!"
-    )
+        pytest
+        result=$?
+    }
+
     rm -rf venv
+    return $result
 }
 
 package () {
