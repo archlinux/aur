@@ -1,12 +1,12 @@
 pkgbase = vesktop-electron
 	pkgdesc = An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported
 	pkgver = 1.5.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Vencord/Vesktop
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
-	makedepends = nodejs>=18
+	makedepends = pnpm
 	depends = electron
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
