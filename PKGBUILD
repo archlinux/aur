@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=miru
 pkgname="${_pkgname}-viewer-git"
-pkgver=1.3.0.r3.g080670f
-_electronversion=31
-_nodeversion=20
+pkgver=1.3.2.r0.gc440d96
+_electronversion=35
+_nodeversion=22
 pkgrel=1
-pkgdesc="GitHub Issue/Pull Request/Release viewer.Use system-wide electron."
+pkgdesc="GitHub Issue/Pull Request/Release viewer.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/ytakahashi/miru"
 license=("MIT")
@@ -20,8 +20,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'cmake'
-    'gcc'
     'curl'
 )
 source=(
@@ -42,7 +40,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -53,7 +51,6 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${_pkgname}-viewer-git" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -80,8 +77,13 @@ build() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/\/\${version}//g" electron-builder.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    sed -i "s/\/\${version}//g" electron-builder.json
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config=electron-builder.json
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
