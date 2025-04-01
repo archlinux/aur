@@ -3,7 +3,7 @@
 
 _name=qmmp
 pkgname=${_name}-1
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Qt based audio-player (1.x branch)"
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
 
 _snapshot="${_name}-${pkgver}"
 source=("${url}/files/${_name}/${pkgver%.*}/${_snapshot}.tar.bz2")
-sha256sums=('993e57d8e11b083bb6f246738505edf35d498ffe82a1936f3129b8bb09eab244')
+sha256sums=('eab631f599bf64f1fdef13165b0bdf4031c8a061a575b732f4c39e052d247acc')
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
