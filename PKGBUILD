@@ -2,37 +2,24 @@
 
 pkgname=smoothpaper
 pkgdesc="A wallpaper changer daemon for X11 Window Mangers with smooth transitions between wallpapers."
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 url=https://github.com/matjam/smoothpaper
 arch=(x86_64)
-depends=('libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxext')
-makedepends=('cmake' 'make' 'base-devel' 'ninja' 'gcc' 'git' 'zip' 'unzip')
+depends=('mesa' 'glad' 'libxrender' 'libva')
+makedepends=('go' 'base-devel' 'zip' 'unzip')
 
 source=(https://github.com/matjam/smoothpaper/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('fb7bdc5a9d09ff8df3545a924d79cb8afff16eb1ec272eda7afd31e2674bc477')
+sha256sums=('eab91f28f3e519987b17898c429e38d8a45bd70f28e477605574d52d382c6aef')
 
 build() {
-export VCPKG_DISABLE_METRICS=1
 cd $pkgname-$pkgver
-
-if [ ! -d "vcpkg" ]; then
-  git clone https://github.com/microsoft/vcpkg
-fi
-
-./vcpkg/bootstrap-vcpkg.sh
-mkdir -p build
-cd build
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-cmake .. -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_MAKE_PROGRAM=make --preset=Release
-mkdir -p Release
-cd Release
-make
+go build -o smoothpaper ./cmd/smoothpaper 
 }
 
 package() {
 mkdir -p $pkgdir/usr/bin
-cp $pkgname-$pkgver/build/Release/smoothpaper $pkgdir/usr/bin
+cp $pkgname-$pkgver/smoothpaper $pkgdir/usr/bin
 mkdir -p $pkgdir/etc/xdg/smoothpaper
 cp $pkgname-$pkgver/smoothpaper.toml $pkgdir/etc/xdg/smoothpaper
 }
