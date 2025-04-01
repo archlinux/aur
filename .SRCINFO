@@ -1,6 +1,6 @@
 pkgbase = esp-idf-git
 	pkgdesc = Espressif IoT Development Framework. Official development framework for ESP32.
-	pkgver = 5.2.dev.r3213.4e04c00d1c
+	pkgver = 5.5.dev.r2752.a3864c088d
 	pkgrel = 1
 	url = https://github.com/espressif/esp-idf
 	install = esp-idf-git.install
@@ -9,7 +9,7 @@ pkgbase = esp-idf-git
 	arch = aarch
 	arch = aarch64
 	arch = armv7h
-	license = Apache
+	license = Apache-2.0
 	depends = ccache
 	depends = cmake
 	depends = dfu-util
