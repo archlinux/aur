@@ -1,13 +1,12 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go."
 arch=("any")
 url="https://github.com/Zweih/qp"
 license=("GPL3")
 makedepends=("go>=1.24.1")
-provides=("qp")
 conflicts=("qp-bin" "qp-git")
 replaces=("yaylog")
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
