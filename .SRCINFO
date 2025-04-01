@@ -1,16 +1,17 @@
 pkgbase = nora-bin
 	pkgdesc = An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.0.0_stable
-	pkgrel = 3
-	url = https://github.com/Sandakan/Nora
+	pkgver = 3.1.0_stable
+	pkgrel = 1
+	url = https://noramusic.netlify.app/
 	arch = x86_64
 	license = MIT
-	depends = electron30
+	depends = electron35
+	depends = nodejs
 	conflicts = nora
-	source = nora-3.0.0_stable.deb::https://github.com/Sandakan/Nora/releases/download/v3.0.0-stable/Nora.Setup.3.0.0-stable-linux-amd64.deb
-	source = LICENSE-3.0.0_stable.txt::https://raw.githubusercontent.com/Sandakan/Nora/v3.0.0-stable/LICENSE.txt
+	source = nora-3.1.0_stable.rpm::https://github.com/Sandakan/Nora/releases/download/v3.1.0-stable/Nora.v3.1.0-stable-linux-x86_64.rpm
+	source = LICENSE-3.1.0_stable.txt::https://raw.githubusercontent.com/Sandakan/Nora/v3.1.0-stable/LICENSE.txt
 	source = nora.sh
-	sha256sums = 92aa57f9ec455a51c8d26664b460916d70b68a4e36f104907d68a67c4868beef
+	sha256sums = 341ca9fc980e6873164b37f0ce7a4b692dfc968d3ed505f9f1a426b6e8571667
 	sha256sums = 7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
