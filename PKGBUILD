@@ -2,9 +2,9 @@
 
 pkgbase=solian
 pkgname=solian-bin-git
-pkgver=2.4.2+85+gbdfe13de
-_buildcommit=dfe13de
-pkgrel=2
+pkgver=2.4.2+85+gb4c9f3e7
+_buildcommit=4c9f3e7
+pkgrel=3
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
 url="https://solsynth.dev"
