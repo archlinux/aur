@@ -1,6 +1,6 @@
 pkgbase = i3-auto-layout
 	pkgdesc = Automatic, optimal tiling for i3wm
-	pkgver = 0.3.13
+	pkgver = 0.3.16
 	pkgrel = 1
 	url = https://github.com/pando85/i3-auto-layout
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = i3-auto-layout
 	depends = i3-wm
 	provides = i3-auto-layout
 	conflicts = i3-auto-layout
-	source = git+https://github.com/pando85/i3-auto-layout.git#tag=v0.3.13?signed
+	source = git+https://github.com/pando85/i3-auto-layout.git#tag=v0.3.16?signed
 	validpgpkeys = CD1DB60B2C8465FD50028EF6D381D73787B45B3E
 	sha512sums = SKIP
 
