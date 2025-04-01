@@ -5,7 +5,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=Tauon
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 _kissfftver=131.1.0
 _miniaudiocommit=4a5b74bef029b3592c54b6048650ee5f972c1a48
 pkgdesc="A modern music player"
@@ -16,7 +16,7 @@ license=('GPL-3.0-or-later')
 depends=(
 	'python-pillow'
 	'python-pylast'
-	'python-pysdl2' # AUR
+	'python-pysdl3' # AUR
 	'python-send2trash'
 	'python-musicbrainzngs'
 	'python-mutagen'
@@ -34,7 +34,6 @@ depends=(
 	'flac'
 	'noto-fonts-extra'
 	'noto-fonts'
-	'sdl2_image'
 	'xdg-utils'
 	'mpg123'
 	'opusfile'
