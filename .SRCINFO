@@ -1,7 +1,7 @@
 pkgbase = athena-jot
 	pkgdesc = Print sequential or random data
 	pkgver = 9.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm
 	arch = x86_64

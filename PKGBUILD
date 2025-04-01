@@ -3,7 +3,7 @@
 
 pkgname="athena-jot"
 pkgver="9.0"
-pkgrel="3"
+pkgrel="4"
 epoch="1"
 pkgdesc="Print sequential or random data"
 arch=("x86_64")
@@ -18,7 +18,7 @@ build() {
   cd "${srcdir}"
   tar xvf "${pkgname}-${pkgver}.tar.gz"
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
