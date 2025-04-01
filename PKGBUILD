@@ -77,7 +77,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('3e0359474061e65df2e95c1df013eecfd0e6d0c4a9e93da2a386239b2fdc3c7d'
+sha256sums=('e665699524ea5d54cbf9048983486d84a50bfc98b05f70370c2f3af4747343b3'
             'SKIP'
             '64d7bbc770898be67e8b8c228f7f4b9a925db03e2e2ec2570ae513b1578c72da'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
