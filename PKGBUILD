@@ -1,0 +1,33 @@
+# Maintainer: Fernando Nunez <me@fernandonunez.io>
+pkgname=qp-git
+pkgver=4.0.0.r0.gb4ba2c2
+pkgrel=1
+pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go."
+arch=("any")
+url="https://github.com/Zweih/qp"
+license=("GPL3")
+makedepends=("go>=1.24.1" "git")
+provides=("qp")
+conflicts=("qp" "qp-bin")
+replaces=("yaylog-git")
+source=("qp::git+https://github.com/Zweih/qp.git")
+sha256sums=('SKIP')
+
+_binaryname="qp"
+
+pkgver() {
+  cd "$srcdir/qp"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/qp"
+  export CGO_ENABLED=0
+  go build -trimpath -o ${_binaryname} ./cmd/${_binaryname}
+}
+
+package() {
+  cd "$srcdir/qp"
+  install -Dm755 "${_binaryname}" "$pkgdir/usr/bin/${_binaryname}"
+  install -Dm644 "${_binaryname}.1" "$pkgdir/usr/share/man/man1/${_binaryname}.1"
+}
