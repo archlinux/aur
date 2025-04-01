@@ -1,7 +1,7 @@
 pkgbase = python-ttkbootstrap
 	pkgdesc = Theme extension for tkinter inspired by Bootstrap
-	pkgver = 1.10.1
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/israel-dryer/ttkbootstrap
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-ttkbootstrap
 	depends = python
 	depends = python-pillow
 	depends = tk
-	source = https://files.pythonhosted.org/packages/source/t/ttkbootstrap/ttkbootstrap-1.10.1.tar.gz
-	sha256sums = 53925525c4104f9e345627500dced2d0392ad74324b2a81467aaee3ffbe1a474
+	source = https://files.pythonhosted.org/packages/source/t/ttkbootstrap/ttkbootstrap-1.12.0.tar.gz
+	sha256sums = 4a99627c779f3f8e8f6e6111ea88a3eb4d954e6074bb33980ee5e0851eb496c4
 
 pkgname = python-ttkbootstrap
