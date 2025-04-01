@@ -9,7 +9,7 @@
 
 pkgname=tea-qt
 pkgver=63.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
 arch=(x86_64)
 url="https://tea.ourproject.org/"
