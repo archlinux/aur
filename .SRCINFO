@@ -1,6 +1,6 @@
 pkgbase = m3u8-downloader-bin
 	pkgdesc = M3U8-Downloader, electron, multi-threading, resumable upload, encrypted video download cache.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.2.10
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/12343954/M3U8-Downloader
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = m3u8-downloader-bin
 	makedepends = asar
 	depends = electron24
 	depends = nodejs
-	provides = m3u8-downloader=2.2.10
+	provides = m3u8-downloader=2.3.1
 	conflicts = m3u8-downloader
-	source = m3u8-downloader-2.2.10.deb::https://github.com/12343954/M3U8-Downloader/releases/download/2.2.10/M3U8-Downloader-linux_amd64-2.2.10.deb
+	source = m3u8-downloader-2.3.1.deb::https://github.com/12343954/M3U8-Downloader/releases/download/2.3.1/M3U8-Downloader-linux_amd64-2.3.1.deb
 	source = m3u8-downloader.sh
-	sha256sums = 822eb7634ad1326880ef56917ed63e265648693fb99a3cc5fd13c9a9e59517e6
+	sha256sums = 6c44e459d595af1c73045ae0c3c35f547403936cbc5a1dd2cdd9714e16a322a2
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = m3u8-downloader-bin
