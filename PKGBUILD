@@ -2,7 +2,7 @@
 # See https://www.gnu.org/licenses/gpl-3.0.txt for more details.
 
 pkgname=sbell
-pkgver=1.1.1
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A minimalist interpreter"
 arch=('x86_64')
