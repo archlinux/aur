@@ -3,7 +3,7 @@
 _pkgname=vesktop
 pkgname=vesktop-electron-git
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided Electron. Unsupported"
-pkgver=1.5.5.r13.gfd91a23
+pkgver=1.5.5.r17.g391ad94
 pkgrel=1
 
 arch=("x86_64" "aarch64")
@@ -42,7 +42,7 @@ build() {
   # Use system's electron
   sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron\",\n/" package.json
 
-  pnpm i
+  pnpm i --frozen-lockfile
   pnpm package:dir
 }
 
