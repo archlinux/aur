@@ -1,17 +1,20 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 
-pkgname=timer-rs
-pkgver=0.8.5
+_pkgname=timer-rs
+pkgname="${_pkgname}"
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="Simple countdown terminal alarm"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/pando85/timer"
 license=('GPL')
 depends=('gcc-libs'
-         'pkg-config'
          'alsa-lib')
 makedepends=('cargo'
+             'pkgconf'
              'git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+$url.git#tag=v${pkgver}?signed")
 validpgpkeys=('CD1DB60B2C8465FD50028EF6D381D73787B45B3E')
 sha512sums=('SKIP')
