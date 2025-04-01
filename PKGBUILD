@@ -19,7 +19,7 @@ sha256sums=('8e140642a943c029005c06af765c970c7af167252e21abd2752c9760f117d18c'
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 
-	/usr/lib/qt6/lrelease openterfaceQT.pro
+	/usr/lib/qt6/bin/lrelease openterfaceQT.pro
 
 	mkdir build && cd build
 	qmake6 ..	
