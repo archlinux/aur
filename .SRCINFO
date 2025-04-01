@@ -1,20 +1,37 @@
 pkgbase = rabbitremotecontrol-bin
 	pkgdesc = Remote control. Support VNC, RDP, Terminal, SSH, TELNET etc.(Prebuilt version)
-	pkgver = 0.0.32
+	pkgver = 0.0.33
 	pkgrel = 1
 	url = https://github.com/KangLin/RabbitRemoteControl
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = qt6-base
 	depends = qt6-scxml
 	depends = qt6-multimedia
-	provides = rabbitremotecontrol=0.0.32
+	depends = libjpeg6-turbo
+	depends = libpcap
+	depends = libvncserver
+	depends = openssl
+	depends = cmark
+	optdepends = freerdp
+	optdepends = libssh
+	optdepends = libssh2
+	optdepends = qtermwidget
+	optdepends = libtelnet
+	optdepends = libdatachannel
+	optdepends = qxmpp
+	optdepends = pcapplusplus
+	optdepends = ffmpeg
+	provides = rabbitremotecontrol=0.0.33
 	conflicts = rabbitremotecontrol
 	options = !strip
 	options = staticlibs
-	source = rabbitremotecontrol-0.0.32.deb::https://github.com/KangLin/RabbitRemoteControl/releases/download/v0.0.32/RabbitRemoteControl_0.0.32_amd64.deb
 	source = rabbitremotecontrol.sh
-	sha256sums = b29462d462e6fa140d283d531f2f9d80dfbe3ed7b4b2e5d81e44f04c4a8ae1a1
 	sha256sums = b6255be5cbf5685c1195a41cdad5a2490c403d6641c56c065040d5dbd3589aad
+	source_aarch64 = rabbitremotecontrol-0.0.33-aarch64.rpm::https://github.com/KangLin/RabbitRemoteControl/releases/download/v0.0.33/rabbitremotecontrol-0.0.33-1.fc41.aarch64.rpm
+	sha256sums_aarch64 = ea64a8f03415e38f3fda231257ce03683ac390fc8ff255df81f7ead78b902308
+	source_x86_64 = rabbitremotecontrol-0.0.33-x86_64.rpm::https://github.com/KangLin/RabbitRemoteControl/releases/download/v0.0.33/rabbitremotecontrol-0.0.33-1.fc41.x86_64.rpm
+	sha256sums_x86_64 = a015b968bd2ae31097104c67b41aeb385dbb7d05fce0c85c991fd45b3caa467d
 
 pkgname = rabbitremotecontrol-bin
