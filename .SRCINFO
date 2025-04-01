@@ -1,14 +1,14 @@
 pkgbase = python-fastfeedparser-git
-	pkgdesc = High performance RSS, Atom and RDF parser in Python (latest commit)
-	pkgver = r47.3196672
-	pkgrel = 3
+	pkgdesc = High performance RSS, Atom and RDF parser in Python (built from latest git commit)
+	pkgver = r57.2da82e8
+	pkgrel = 1
 	url = https://github.com/kagisearch/fastfeedparser
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools>=42
+	makedepends = python-setuptools>=67.0
 	makedepends = python-wheel
 	depends = python>=3.7
 	depends = python-dateparser
