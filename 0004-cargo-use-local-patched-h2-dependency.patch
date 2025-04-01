@@ -12,14 +12,14 @@ diff --git a/Cargo.toml b/Cargo.toml
 index 27fec0ef..98a68309 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -163,6 +163,7 @@ zstd-safe = "6.0"
+@@ -161,6 +161,7 @@ zstd-safe = "6.0"
  # Local path overrides
  # NOTE: You must run `cargo update` after changing this for it to take effect!
  [patch.crates-io]
 +h2 = { path = "../h2" }
- 
+ pbs-api-types = { path = "../proxmox/pbs-api-types" }
+ #proxmox-acme = { path = "../proxmox/proxmox-acme" }
  #proxmox-apt = { path = "../proxmox/proxmox-apt" }
- proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
 -- 
 2.47.1
 

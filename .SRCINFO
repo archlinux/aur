@@ -1,7 +1,7 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 3.3.2
-	pkgrel = 3
+	pkgver = 3.3.4
+	pkgrel = 1
 	url = https://pbs.proxmox.com
 	arch = x86_64
 	arch = aarch64
@@ -18,8 +18,8 @@ pkgbase = proxmox-backup-client
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = proxmox-backup-client-3.3.2::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.3.2
-	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=619c290cf8e6e99a5a7aa05ffdcf7dd30dea30bd
+	source = proxmox-backup-client-3.3.4::git://git.proxmox.com/git/proxmox-backup.git#tag=v3.3.4
+	source = proxmox::git://git.proxmox.com/git/proxmox.git#commit=b82e51f15a6d90b1442dd3a085ce9525c01631b6
 	source = proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git
 	source = pxar::git://git.proxmox.com/git/pxar.git
 	source = pathpatterns::git://git.proxmox.com/git/pathpatterns.git
@@ -28,9 +28,7 @@ pkgbase = proxmox-backup-client
 	source = 0002-docs-drop-all-but-client-man-pages.patch
 	source = 0003-cargo-downgrade-http-to-0.2.12.patch
 	source = 0004-cargo-use-local-patched-h2-dependency.patch
-	source = 0005-sys-use-correct-pointer-type-for-mkdtemp-return-valu.patch
 	source = elf-strip-unused-dependencies.sh
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP

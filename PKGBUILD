@@ -1,8 +1,8 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=3.3.2
-pkgrel=3
+pkgver=3.3.4
+pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
 url="https://pbs.proxmox.com"
@@ -17,7 +17,7 @@ makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-s
 options=(!lto)
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=619c290cf8e6e99a5a7aa05ffdcf7dd30dea30bd"
+    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=b82e51f15a6d90b1442dd3a085ce9525c01631b6"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
     "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
@@ -26,13 +26,11 @@ source=(
     "0002-docs-drop-all-but-client-man-pages.patch"
     "0003-cargo-downgrade-http-to-0.2.12.patch"
     "0004-cargo-use-local-patched-h2-dependency.patch"
-    "0005-sys-use-correct-pointer-type-for-mkdtemp-return-valu.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -59,7 +57,6 @@ prepare() {
   _apply 0002-docs-drop-all-but-client-man-pages.patch
   (cd "${srcdir}/h2"; _apply 0003-cargo-downgrade-http-to-0.2.12.patch)
   _apply 0004-cargo-use-local-patched-h2-dependency.patch
-  (cd "${srcdir}/proxmox"; _apply 0005-sys-use-correct-pointer-type-for-mkdtemp-return-valu.patch)
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"

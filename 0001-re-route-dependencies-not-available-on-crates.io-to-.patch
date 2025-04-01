@@ -5,14 +5,14 @@ Subject: [PATCH] re-route dependencies not available on crates.io to git repos
 
 Signed-off-by: Thomas Lamprecht <thomas@lamprecht.org>
 ---
- Cargo.toml | 155 +++++++++++--------------------------------------------------
- 1 file changed, 31 insertions(+), 124 deletions(-)
+ Cargo.toml | 146 ++++++++++++-------------------------------------------------
+ 1 file changed, 27 insertions(+), 119 deletions(-)
 
 diff --git a/Cargo.toml b/Cargo.toml
 index d14f320a..27fec0ef 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -42,8 +42,6 @@ members = [
+@@ -41,8 +41,6 @@ members = [
  
      "proxmox-backup-banner",
      "proxmox-backup-client",
@@ -21,7 +21,7 @@ index d14f320a..27fec0ef 100644
  
      "pxar-bin",
  ]
-@@ -112,7 +110,6 @@ pbs-tools = { path = "pbs-tools" }
+@@ -111,7 +109,6 @@ pbs-tools = { path = "pbs-tools" }
  # regular crates
  anyhow = "1.0"
  async-trait = "0.1.56"
@@ -29,15 +29,15 @@ index d14f320a..27fec0ef 100644
  base64 = "0.13"
  bitflags = "2.4"
  bytes = "1.0"
-@@ -126,7 +123,6 @@ flate2 = "1.0"
+@@ -125,7 +122,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
  h2 = { version = "0.4", features = [ "stream" ] }
 -handlebars = "3.0"
  hex = "0.4.3"
- http = "0.2"
  hyper = { version = "0.14", features = [ "full" ] }
-@@ -162,139 +158,50 @@ xdg = "2.2"
+ libc = "0.2"
+@@ -160,138 +156,50 @@ xdg = "2.2"
  zstd = { version = "0.12", features = [ "bindgen" ] }
  zstd-safe = "6.0"
  
@@ -54,7 +54,6 @@ index d14f320a..27fec0ef 100644
 -futures.workspace = true
 -h2.workspace = true
 -hex.workspace = true
--http.workspace = true
 -hyper.workspace = true
 -libc.workspace = true
 -log.workspace = true
@@ -115,13 +114,13 @@ index d14f320a..27fec0ef 100644
 -proxmox-time.workspace = true
 -proxmox-uuid.workspace = true
 -proxmox-worker-task.workspace = true
+-pbs-api-types.workspace = true
 -
 -# in their respective repo
 -proxmox-acme.workspace = true
 -pxar.workspace = true
 -
 -# proxmox-backup workspace/internal crates
--pbs-api-types.workspace = true
 -pbs-buildcfg.workspace = true
 -pbs-client.workspace = true
 -pbs-config.workspace = true
@@ -135,7 +134,9 @@ index d14f320a..27fec0ef 100644
  # Local path overrides
  # NOTE: You must run `cargo update` after changing this for it to take effect!
  [patch.crates-io]
- 
+-#pbs-api-types = { path = "../proxmox/pbs-api-types" }
++pbs-api-types = { path = "../proxmox/pbs-api-types" }
+ #proxmox-acme = { path = "../proxmox/proxmox-acme" }
  #proxmox-apt = { path = "../proxmox/proxmox-apt" }
 -#proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
 -#proxmox-async = { path = "../proxmox/proxmox-async" }
@@ -195,7 +196,6 @@ index d14f320a..27fec0ef 100644
 +proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
 +proxmox-worker-task = { path = "../proxmox/proxmox-worker-task" }
  
- #proxmox-acme = { path = "../proxmox/proxmox-acme" }
 -#pathpatterns = {path = "../pathpatterns" }
 -#pxar = { path = "../pxar" }
 +pathpatterns = {path = "../pathpatterns" }
