@@ -1,6 +1,6 @@
 pkgbase = python-openvino-telemetry
 	pkgdesc = Pythno library for sending statistics data from the OpenVINO toolkit components
-	pkgver = 2025.0.0
+	pkgver = 2025.1.0
 	pkgrel = 1
 	url = https://github.com/openvinotoolkit/telemetry/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-openvino-telemetry
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = openvino-telemetry::git+https://github.com/openvinotoolkit/telemetry.git#commit=efcbd7fe8401bc37ca693bb052d441a2bf049353?signed
+	source = openvino-telemetry::git+https://github.com/openvinotoolkit/telemetry.git#commit=1fa43eee43d3372be09da32dab8040d819587297?signed
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = 6d1f91b0e037018ae20abad8c9272f5d612fd8ef781f8d2dd4ff925c056aae0a
+	sha256sums = 0ef8d7499b6e1a909378e0772f7cf0e1d738fd2a05fa9af5ca29177adbdc0008
 
 pkgname = python-openvino-telemetry
