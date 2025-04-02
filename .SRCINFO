@@ -1,6 +1,6 @@
 pkgbase = python-py-geth
 	pkgdesc = Python wrapping for running Go-Ethereum as a subprocess
-	pkgver = 5.3.0
+	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/ethereum/py-geth
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-py-geth
 	depends = python-requests
 	depends = python-semantic-version
 	depends = python-typing_extensions
-	source = py-geth-5.3.0.tar.gz::https://github.com/ethereum/py-geth/archive/v5.3.0.tar.gz
-	sha512sums = f98848e7f8f5773ec54da752b658c08d6c2478e295dcedf685daf826282c94f4b002d806c3fd200aa762c868f308e3f19b51a1a930461889716b7c0401997687
+	source = py-geth-5.4.0.tar.gz::https://github.com/ethereum/py-geth/archive/v5.4.0.tar.gz
+	sha512sums = 5657b1f15c258e24451fa95c1c07caa6584a346c220ddf1d103b90e58cf9dbf1a2382d9b22f392b58da1e512ceda7c4abc46b1e89ff11fe7105c0ec48b719a3e
 
 pkgname = python-py-geth
