@@ -1,6 +1,6 @@
 pkgbase = md-tauri-bin
 	pkgdesc = A modern Markdown editor built with Tauri and Vue 3, providing a seamless desktop experience for Markdown editing and preview.(Prebuilt version)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/CrazyMrYan/md-tauri
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = md-tauri-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = libsoup
-	provides = md-tauri=1.1.1
+	provides = md-tauri=1.1.2
 	conflicts = md-tauri
-	source = md-tauri-1.1.1.deb::https://github.com/CrazyMrYan/md-tauri/releases/download/v1.1.1/md-tauri_1.1.1_amd64-1.1.1.deb
-	source = LICENSE-1.1.1::https://raw.githubusercontent.com/CrazyMrYan/md-tauri/v1.1.1/LICENSE
-	sha256sums = d19e8fc69fa5d83871e115167994a72aa6b87ae36f0bf2a832bd9da34b89b015
+	source = md-tauri-1.1.2.deb::https://github.com/CrazyMrYan/md-tauri/releases/download/v1.1.2/md-tauri_1.1.2_amd64-1.1.2.deb
+	source = LICENSE-1.1.2::https://raw.githubusercontent.com/CrazyMrYan/md-tauri/v1.1.2/LICENSE
+	sha256sums = 5e56511a1bb6284a808be3418decc90029d43b006be6918f9f0c6dd82366a356
 	sha256sums = 0637ca3d95394b496a9e0878bd64aa6dd50c1952d2c07d643281e134d1403d39
 
 pkgname = md-tauri-bin
