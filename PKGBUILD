@@ -3,7 +3,7 @@
 
 pkgname=hmcl-beta-bin
 pkgver=3.6.11.273
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -11,7 +11,6 @@ license=('GPL3')
 depends=('java-runtime' 'gtk2' 'java-openjfx')
 provides=('hmcl')
 conflicts=('hmcl')
-replaces=('hmcl-stable-bin')
 source=("hmcl.desktop"
 	"hmcl.png"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/refs/heads/main/LICENSE"
