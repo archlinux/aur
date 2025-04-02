@@ -5,9 +5,9 @@
 
 _pkgname="skippy-xd"
 pkgname="$_pkgname-git"
-pkgver=2024.12.26.r105.ga6b6dd6
-pkgrel=1
-pkgdesc="A full-screen Exposé-style task switcher for X11"
+pkgver=2025.02.28.r66.gaf6e2a5
+pkgrel=2
+pkgdesc="A full-screen task switcher for X11, similar to Overview and Exposé"
 url="https://github.com/felixfung/skippy-xd"
 license=("GPL-2.0-or-later")
 arch=("i686" "x86_64")
@@ -43,7 +43,7 @@ pkgver() {
 
 prepare() {
   # set version for AUR Edition
-  sed -E 's&^(\s*version:).*$&\1 '"'- $pkgver - AUR Edition',&" -i "$_pkgsrc/meson.build"
+  echo "- $pkgver - AUR Edition" > "$_pkgsrc/version.txt"
 }
 
 build() {
