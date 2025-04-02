@@ -1,0 +1,4 @@
+[convertwithmoss]
+source = "github"
+github = "git-moss/ConvertWithMoss"
+use_max_tag = true
