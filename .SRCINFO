@@ -1,13 +1,13 @@
 pkgbase = clementine
 	pkgdesc = A modern music player and library organizer
 	pkgver = 1.4.1+38+g1fc7fe0e1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clementine-player/Clementine
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = boost
-	makedepends = cmake3
+	makedepends = cmake
 	makedepends = qt5-tools
 	makedepends = sparsehash
 	depends = chromaprint
