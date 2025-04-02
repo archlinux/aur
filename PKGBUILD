@@ -1,6 +1,6 @@
 pkgname=fetchify
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/GrandTheBest/fetchify"
 license=('GNU General Public License')
@@ -14,6 +14,6 @@ package() {
     tar -xvzf fetchify-1.0.0-linux-amd64.tar.gz
 
     # Копируем файл fetchify в нужную директорию
-    install -Dm755 "$srcdir/fetchify" "$pkgdir/usr/bin/fetchify"    
+    install -Dm755 "fetchify/fetchify" "$pkgdir/usr/bin/fetchify"    
 }
 

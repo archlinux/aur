@@ -1,6 +1,6 @@
 pkgbase = fetchify
 	pkgver = 1.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/GrandTheBest/fetchify
 	arch = x86_64
 	license = GNU General Public License
