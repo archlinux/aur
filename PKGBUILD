@@ -1,6 +1,6 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname=consolation
-pkgver=0.10.0
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Libinput-based console pointer support for copy-paste, similar to gpm"
 arch=('x86_64')
