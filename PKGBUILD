@@ -1,5 +1,8 @@
-pkgname=mingw-w64-soundtouch
-pkgver=2.3.1
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+
+_pkgname=soundtouch
+pkgname=mingw-w64-${_pkgname}
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='An audio processing library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -7,33 +10,42 @@ makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 arch=('any')
 url='https://www.surina.net/soundtouch/'
-license=('LGPL2.1')
-source=(https://codeberg.org/soundtouch/soundtouch/archive/${pkgver}.tar.gz)
-sha256sums=('42633774f372d8cb0a33333a0ea3b30f357c548626526ac9f6ce018c94042692')
+license=('LGPL-2.1-or-later')
+source=("${_pkgname}-${pkgver}.tar.gz::https://codeberg.org/soundtouch/soundtouch/archive/${pkgver}.tar.gz")
+sha256sums=('43b23dfac2f64a3aff55d64be096ffc7b73842c3f5665caff44975633a975a99')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_flags=(
+	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse2'
+	-DCMAKE_POLICY_VERSION_MINIMUM='3.5' -DSOUNDSTRETCH=OFF
+)
+_srcdir="${_pkgname}"
 
-prepare () {
-  cd "$srcdir"/soundtouch
+prepare() {
+	cd "${_srcdir}"
+
+	sed -i '/target_compile_options(SoundTouch PRIVATE ${COMPILE_OPTIONS})/d' 'CMakeLists.txt'
 }
 
 build() {
-  cd "$srcdir"/soundtouch
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    CXXFLAGS="-msse2" ${_arch}-cmake ..
-    make
-    popd
-  done
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
+		cmake --build "build-${_arch}"
+	done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/soundtouch/build-${_arch}
-    make install DESTDIR="${pkgdir}"
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-  done
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+	done
 }
 
