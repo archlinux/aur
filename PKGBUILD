@@ -2,7 +2,7 @@
 pkgname=moneydance-bin
 _pkgname=Moneydance
 pkgver=2024.4.5253
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use and full-featured personal finance app that doesn't compromise your privacy. "
 arch=('x86_64')
 url="https://infinitekind.com/moneydance"
@@ -30,6 +30,7 @@ prepare() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{lib/"${pkgname%-bin}",bin}
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/."* "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
