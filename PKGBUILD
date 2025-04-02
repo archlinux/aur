@@ -1,25 +1,30 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-protes
 _pkgname=${pkgname#python-}
-_pkghash=421029b501fdebe87bf35521cdfad95f921bf108
-pkgver=0.2.3
+_pkghash=b99c2a6a554b0b1b423f3f459d2b129c996a8ede
+pkgver=0.3.11
 pkgrel=1
 pkgdesc='Probability optimizer with tensor sampling'
 arch=('any')
 url='https://github.com/anabatsh/protes'
 license=('MIT')
-depends=('python-jax' 'python-optax')
+depends=('python-jax' 'python-matplotlib' 'python-optax')
 makedepends=('python-build' 'python-installer')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$_pkghash.zip")
-sha256sums=('7099db4d9bcbe6f0ca20fe510e7fdee078cb8c17f15680c175c1da5ee016f78f')
+sha256sums=('fe01c55e65ad33fea80b8b901bab66b42d34748793fe4c64e4cd7c13ab90e6f0')
 
 prepare() {
-    mv PROTES-$_pkghash $_pkgname-$pkgver
+    ln -sf PROTES-$_pkghash $_pkgname-$pkgver
 }
 
 build() {
     cd $_pkgname-$pkgver
     python -m build -n -w
+}
+
+check() {
+    cd $_pkgname-$pkgver
+    PYTHONPATH=$PWD python -c 'import protes'
 }
 
 package() {
