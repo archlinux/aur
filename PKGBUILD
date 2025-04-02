@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=tailwindcss-cli
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='A utility-first CSS framework for rapidly building custom user interfaces.'
 arch=("any")
@@ -16,7 +16,7 @@ source=("https://registry.npmjs.org/@tailwindcss/cli/-/cli-${pkgver}.tgz"
 
 noextract=("cli-${pkgver}.tgz")
 
-sha256sums=('6aec338b83d5152d75973fd2bf63c31f47a1b0b69cdfb1888c995fcc727c1e45'
+sha256sums=('0e9d6c67465eef2ed7446b09c9571af67effb11b13483f8394c05ca48b915bcb'
             '60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985')
 
 package() {
