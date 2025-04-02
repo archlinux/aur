@@ -1,0 +1,17 @@
+pkgbase = frei-bin
+	pkgdesc = A modern replacement for the 'free' command-line utility
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/frei
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = frei
+	conflicts = frei
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/alexcoder04/frei/v0.2.0/LICENSE
+	source = README-0.2.0::https://raw.githubusercontent.com/alexcoder04/frei/v0.2.0/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 2eb84a0aa63a08d2e5e09c2750a5ef1e4e3bd20d866237f8fa8dab3100da219c
+	source_x86_64 = frei-0.2.0::https://github.com/alexcoder04/frei/releases/download/v0.2.0/frei-linux-amd64
+	sha256sums_x86_64 = ba71da84d1044fa772416f8e82d9602bf076899b3e509c8d64654adc87c10958
+
+pkgname = frei-bin
