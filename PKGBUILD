@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwix-js-electron-bin
 _pkgname="Kiwix-JS-Electron"
-pkgver=3.5.4
+pkgver=3.5.8
 _electronversion=29
-pkgrel=2
+pkgrel=1
 pkgdesc="Kiwix JS Offline Browser implemented as a Progressive Web App (PWA), and packaged as Electron, NWJS and UWP apps for Windows and Linux.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -26,18 +26,18 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_i686=("${pkgname%-bin}-${pkgver}-i686.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E-i386.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-E.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('5a2240bd53e1b7e136a414ad4570fb509d7c0dedfbc7fd4f287576f74c925e1e')
-sha256sums_i686=('ff2647343b01c6503808d0333a50734cd8a248f71621c6a27fe823fee198c73a')
-sha256sums_x86_64=('c6f68e96d5e1d5805ad9181e8e6e4e77c31cba624497c41c5b41ae9b44b3c0b8')
+sha256sums_aarch64=('012bcfb63e71e6f8ef1d3cfaa4749e96fdc74a62b89a6a062426d5b6ee08300f')
+sha256sums_i686=('dd36a4f37170467e0d322b981baa950659d63252a4f65368f6e71ca67df7ebec')
+sha256sums_x86_64=('19526f03a398815a152440c63e1ec14a6ae2fbd6a2af6d9763edd014db26761a')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
