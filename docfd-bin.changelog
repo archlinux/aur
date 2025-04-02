@@ -1,19 +1,13 @@
 
-## 10.1.2
+## 10.1.3
 
-- Minor fix for "reload all doucments" when fzf was used to pick documents initially, i.e. `docfd [PATH]... ?`, or any variation where `?` appears anywhere in the path list
+- Minor fixes
 
-    - Under this workflow, later "reload all" should use the same selection
-      instead of having the user select again in fzf, which is cumbersome
+    - "Reload document" now removes the document if the document is no longer accessible
 
-    - Now Docfd correctly reuses the selection when "reload all" is requested,
-      if fzf was used initially to pick documents
-
-    - This does technically mean the functionality is now less flexible,
-      since if `docfd ?` alike is used, "reload all" no longer discovers
-      new files
-
-    - But the convenience from reusing the selection outweighs the flexibility
-      in practically all use cases from author's experience
+    - Docfd now only checks the existence of directly specified files
+      at launch, e.g. `file.txt` in `docfd file.txt`. This means
+      "reload all documents" now does not error out due to files becoming
+      no longer accessible.
 
 See /usr/share/doc/docfd-bin/CHANGELOG.md for previous changes.
