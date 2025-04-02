@@ -2,15 +2,15 @@
 
 _pkgname=tumbler
 pkgname=${_pkgname}-devel
-pkgver=4.19.3
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="D-Bus service for applications to request thumbnails"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/tumbler/start"
-license=('GPL2' 'LGPL')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
 depends=('gdk-pixbuf2' 'libxfce4util')
-makedepends=('glib2-devel' 'ffmpegthumbnailer' 'poppler-glib' 'libgsf'
+makedepends=('meson' 'glib2-devel' 'ffmpegthumbnailer' 'poppler-glib' 'libgsf'
              'libopenraw' 'freetype2' 'libgepub')
 optdepends=('ffmpegthumbnailer: for video thumbnails'
             'poppler-glib: for PDF thumbnails'
@@ -21,21 +21,20 @@ optdepends=('ffmpegthumbnailer: for video thumbnails'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 backup=('etc/xdg/tumbler/tumbler.rc')
-source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('536733405893c121c16a37a998671f886b98f8e878c8294d8c7d881ad5c90275')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('794b3da6b0665c59dea97dcfe307de0f7f5207b1ce4490b57b379b2571609b35')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  local meson_options=(
+    -D gtk-doc=true
+    -D gst-thumbnailer=disabled
+  )
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --disable-debug \
-    --disable-gstreamer-thumbnailer
-  make
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
+
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
