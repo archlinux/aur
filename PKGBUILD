@@ -4,7 +4,7 @@
 
 pkgname=python-jdatetime
 _name=jdatetime
-pkgver=4.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Jalali calendar binding for Python based on Python`s datetime module'
 arch=('any')
@@ -13,7 +13,7 @@ license=('Python')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1dd0ee210160c7bd30002803c443e6260ac602ea65b065652a1d567d3bfdca7a')
+sha256sums=('c81d5898717b82b609a3ce2a73f8b8d3230b0c757e5c0de9d6b1acfdc224f551')
 
 build() {
 	cd $_name-$pkgver
