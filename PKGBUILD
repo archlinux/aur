@@ -3,7 +3,7 @@
 # Contributor: Tu Yu-Hsuan <dobe0331@gmail.com>
 
 pkgname=orfeo-toolbox
-pkgver=9.1.0
+pkgver=9.1.1
 _pkgver=9.1
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
@@ -22,12 +22,12 @@ options=()
 install=
 changelog=
 
-source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver-Linux.tar.gz"
         "package.patch"
 		"git+https://github.com/jmichel-otb/GKSVM.git")
 noextract=()
 
-md5sums=('5755c0f319ab374e3b433d1b15c96149'
+md5sums=('9841af57fab4f31b798a02989b89eba4'
          'bd00bd7eb67a29635a4a2bc0b6682e29'
          'SKIP')
 
@@ -35,26 +35,22 @@ md5sums=('5755c0f319ab374e3b433d1b15c96149'
 _gitname="GKSVM"
 
 prepare() {
-	## Module for monteverdi build
-	echo $srcdir
 	cd 	$srcdir/  
 	cp -ra $srcdir/GKSVM $srcdir/Modules/Remote
-	#commenting version detection for FindMUParser.cmake since it causes an error
-	#sed -i '62 s/^/#/' $srcdir/CMake/FindMuParser.cmake
-	#sed -i '63 s/^/#/' $srcdir/CMake/FindMuParser.cmake
-    patch -Np1 -i ../package.patch
+    #patch -Np1 -i ../package.patch
 	
 }
 
 
 
 build() {
+  echo $pkgdir
   cd $srcdir/
  
-if  [ -d "$srcdir/build/" ]; then
+  if  [ -d "$srcdir/build/" ]; then
    rm -rf $srcdir/build/
- fi
-mkdir $srcdir/build/
+  fi
+  mkdir $srcdir/build/
  
   cd $srcdir/build
  
@@ -64,7 +60,7 @@ mkdir $srcdir/build/
   -DBUILD_EXAMPLES=OFF \
   -DBUILD_TESTING=OFF \
   -DOTB_USE_CURL=ON \
-  -DOTB_WRAP_PYTHON=ON \
+  -DOTB_WRAP_PYTHON=OFF \
   -DBUILD_SHARED_LIBS=ON \
   -DOTBGroup_FeaturesExtraction=ON \
   -DOTBGroup_Hyperspectral=ON \
@@ -87,10 +83,13 @@ mkdir $srcdir/build/
   -DOTB_USE_SHARK=OFF \
   -DITK_DIR=/opt/insight-toolkit4 \
   -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
-  -DCMAKE_CXX_STANDARD=11 \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DCMAKE_CXX_FLAGS:STRING="-march=native" \
   -DBoost_USE_STATIC_LIBS=OFF
          
   make
+
+
  
 }
  
@@ -103,7 +102,10 @@ package() {
  
   cd "$srcdir/"build
   make DESTDIR="$pkgdir" install
-  mkdir ${pkgdir}/usr/bin/tools/
-  install -D -m644 "$srcdir/build/post_install.sh" "${pkgdir}/usr/bin/tools/"
+  #mkdir ${pkgdir}/usr/bin/tools/
+  #install -D -m644 "$srcdir/build/post_install.sh" "${pkgdir}/usr/bin/tools/"
+  export OTB_INSTALL_DIR=$pkgdir/usr
+  export CMAKE_DIRS=$pkgdir/usr/lib/cmake
+  #sh $srcdir/build/post_install.sh
 
 }
