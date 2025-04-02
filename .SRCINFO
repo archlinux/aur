@@ -1,0 +1,13 @@
+pkgbase = time-log
+	pkgdesc = A tool to timestamp plaintext real-time logs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/USSURATONCACHI/time-log
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = pandoc
+	source = git+https://github.com/USSURATONCACHI/time-log.git#tag=v1.0.0
+	sha256sums = 76f8099ba91f8dbbeb6d78bbbe694ef360eb33ac7aaedd67a41ad98ac883d23d
+
+pkgname = time-log
