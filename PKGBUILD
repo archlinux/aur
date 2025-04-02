@@ -1,3 +1,4 @@
+# Maintainer: Balakrishnan Balasubramanian <aur@balki.me>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 _name=genson
