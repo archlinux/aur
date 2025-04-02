@@ -1,12 +1,11 @@
 pkgbase = libretro-parallel-n64-git
 	pkgdesc = Nintendo 64 core
-	pkgver = r5223.0a67445c
+	pkgver = r5261.f8605345
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/parallel-n64
 	arch = x86_64
 	arch = i686
-	arch = armv6h
 	arch = armv7h
 	arch = aarch64
 	groups = libretro
@@ -18,6 +17,7 @@ pkgbase = libretro-parallel-n64-git
 	depends = libretro-core-info
 	provides = libretro-parallel-n64
 	conflicts = libretro-parallel-n64
+	options = !lto
 	source = libretro-parallel-n64-git::git+https://github.com/libretro/parallel-n64
 	sha256sums = SKIP
 

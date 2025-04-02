@@ -5,11 +5,11 @@
 # Contributor: Thomas Schneider <maxmusterm@gmail.com>
 
 pkgname=libretro-parallel-n64-git
-pkgver=r5223.0a67445c
+pkgver=r5261.f8605345
 pkgrel=1
 epoch=1
 pkgdesc="Nintendo 64 core"
-arch=(x86_64 i686  armv6h armv7h aarch64)
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/libretro/parallel-n64"
 license=(GPL2 'custom:multiple OSI licenses')
 groups=(libretro)
@@ -17,6 +17,7 @@ depends=(libgl libretro-core-info)
 makedepends=(git mesa)
 provides=(libretro-parallel-n64)
 conflicts=(libretro-parallel-n64)
+options=(!lto)
 source=("${pkgname}::git+https://github.com/libretro/parallel-n64")
 sha256sums=('SKIP')
 
@@ -41,7 +42,7 @@ build() {
 	CFLAGS="-march=armv8-a+crc+simd -mtune=cortex-a72 -DNO_ASM -DARM -DARM_ASM -DDONT_WANT_ARM_OPTIMIZATIONS -DARM_FIX -DCLASSIC -DARM64"
 	makeargs="HAVE_PARALLEL=1 WITH_DYNAREC=aarch64 HAVE_NEON=0 HAVE_OPENGL=0 GLES=0"
     fi
-    make  ${makeargs}
+  make  ${makeargs}
 }
 
 package() {
