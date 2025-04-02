@@ -1,0 +1,4 @@
+[libkar]
+source = "git"
+git = "https://github.com/kipr/libkar.git"
+prefix = "v"
