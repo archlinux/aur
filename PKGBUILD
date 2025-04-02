@@ -2,8 +2,8 @@
 
 _name=gradio
 pkgname=python-${_name}
-pkgver=5.22.0
-pkgrel=2
+pkgver=5.23.3
+pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/gradio-app/gradio'
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name}@${pkgver}.tar.gz")
 source_x86_64=("pnpm::https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-x64")
 source_aarch64=("pnpm::https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-arm64")
-sha256sums=('e2754d4354228da2fc54f9aa006cff1319b6e2ee0a71462474340374c1f64f7f')
+sha256sums=('5553935e3412aae01190115735b3edd363901063ceaab69b0af62e28d7604c76')
 sha256sums_x86_64=('038f2a41ccdabc823d09e5697fff85f2e74d5c37591f6d58dfd33a59ffa17fc0')
 sha256sums_aarch64=('2f8069dbb472b93a54d4c016b2e36968586c87f62e659dd966472a78cada5d99')
 depends=('python>=3.10' 'python-aiofiles' 'python-anyio' 'python-audioop-lts' 'python-fastapi' 'python-ffmpy' 'python-groovy' 'python-gradio-client' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-ruff' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'python-urllib3' 'uvicorn')
@@ -26,10 +26,10 @@ prepare(){
 
 build() {
   cd "${srcdir}"/${_name}-${_name}-${pkgver}
-  python ${_name}/__init__.py
   python scripts/generate_theme.py
   env PATH="${srcdir}"/${_name}-${_name}-${pkgver}:$PATH ./pnpm i --frozen-lockfile --ignore-scripts
   env PATH="${srcdir}"/${_name}-${_name}-${pkgver}:$PATH ./pnpm build
+  python -c "import gradio"
   python -m build --wheel --no-isolation
 }
 
@@ -64,7 +64,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/pip install -U gradio-pdf # Prevent cercular dependencies
-  test-env/bin/python -m pytest "${pytest_options[@]}" test
+  PATH="${srcdir}/${_name}-${_name}-${pkgver}/test-env/bin:$PATH" test-env/bin/python -m pytest "${pytest_options[@]}" test
 }
 
 package() {
