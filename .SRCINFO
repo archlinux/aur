@@ -1,0 +1,20 @@
+pkgbase = ydbg
+	pkgdesc = 移动办公 An office software for government & enterprise, developed by China Mobile.
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://zhengqi.10086.cn/hebangong/index.html
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-ydbg
+	depends = gtk3
+	depends = libwebp
+	depends = kwin
+	depends = libbsd
+	options = !strip
+	options = !debug
+	source_x86_64 = https://dlydbg.cmzq-office.com/pc/uos_1.0.6_amd64.deb
+	sha512sums_x86_64 = 736ef40a14ec799c9857200f1f4aa5f99ab598164a42bbb75b563d3c139f068f462d92131f08618e56f36a21dbf40e62e9e07cf38d39cc2d30a76814c0f0d1b5
+	source_aarch64 = https://dlydbg.cmzq-office.com/pc/uos_1.0.6_arm64.deb
+	sha512sums_aarch64 = 7cb8948d4eab79d3e73853c6bbbc418660256f097d26ec0c5caeef7762c2d1cd772a3fea300d14b87b9841a4483cef636f0a9ede72fca0c95eebfd24e0f67285
+
+pkgname = ydbg
