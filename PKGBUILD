@@ -5,8 +5,8 @@
 # Contributor: congyiwu <congyiwu AT gmail DOT com>
 
 pkgname=json-c-git
-pkgver=r1340.6e481aa
-pkgrel=1
+pkgver=r1376.7bca694
+pkgrel=2
 epoch=1
 pkgdesc="A JSON implementation in C"
 url="https://github.com/json-c/json-c/wiki"
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -S json-c -B build -G Ninja \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
