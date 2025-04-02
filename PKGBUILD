@@ -1,8 +1,8 @@
 # Maintainer: oech3
 
-pkgname=coreutils-uutils-bin-symlink
+pkgname=coreutils-uutils-symlink
 pkgver=0.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="(use at own risk) symlinks to replace coreutils with uutils"
 arch=('x86_64')
 license=('MIT')

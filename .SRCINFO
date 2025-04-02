@@ -1,7 +1,7 @@
-pkgbase = coreutils-uutils-bin-symlink
+pkgbase = coreutils-uutils-symlink
 	pkgdesc = (use at own risk) symlinks to replace coreutils with uutils
 	pkgver = 0.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uutils.github.io/
 	arch = x86_64
 	license = MIT
