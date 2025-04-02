@@ -6,36 +6,31 @@
 
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
-pkgver=4.19.5
-pkgrel=3
+pkgver=4.21.0
+pkgrel=1
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-power-manager/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('libxfce4ui' 'libxfce4util>=4.19.2' 'upower' 'libnotify' 'xfce4-notifyd' 'hicolor-icon-theme' 'networkmanager')
-makedepends=('xfce4-panel' 'wayland' 'wayland-protocols' 'glib2-devel' 'wlr-protocols')
+depends=('libxfce4ui>=4.21.0' 'upower' 'libnotify' 'xfce4-notifyd' 'hicolor-icon-theme')
+makedepends=('meson' 'xfce4-panel' 'wayland' 'wayland-protocols' 'glib2-devel' 'wlr-protocols')
 optdepends=('xfce4-panel: Xfce panel plugin support')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${pkgver%.*}/xfce4-power-manager-${pkgver}.tar.bz2")
-sha256sums=('239cacd96ee06820cbf8364f285a5ecdccfdf3cbd5d6033bbbb22fdc5875305d')
+source=("https://archive.xfce.org/src/xfce/xfce4-power-manager/${pkgver%.*}/xfce4-power-manager-${pkgver}.tar.xz")
+sha256sums=('5c2d40fa9daa34cdbbe101b1ba59d4d747b2bc3ccfc3b2ac43b0687c0fdfbfca')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  local meson_options=(
+    -D x11=enabled
+    -D wayland=enabled
+  )
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --sbindir=/usr/bin \
-    --localstatedir=/var \
-    --enable-network-manager \
-    --enable-polkit \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
