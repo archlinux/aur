@@ -1,2 +1,3 @@
 *.log
 chroot/
+!keys/pgp/*.asc
