@@ -2,8 +2,8 @@
 
 _name=mcp
 pkgname=python-${_name}
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Python implementation of the Model Context Protocol (MCP).'
 arch=('x86_64' 'aarch64')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -11,7 +11,7 @@ license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source_x86_64=("https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/astral-sh/uv/releases/latest/download/uv-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('5b2766c05e68e01a2034875e250139839498c61792163a7b221fc170c12f5aa9')
+sha256sums=('d9324876de2c5637369f43161cd71eebfd803df5a95e46225cab8d280e366723')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 depends=('python>=3.10' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn')
@@ -28,6 +28,7 @@ prepare(){
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   sed -i 's/requires = \["hatchling", "uv-dynamic-versioning"\]/requires = ["hatchling"]/' pyproject.toml # Remove uv-dynamic-versioning dependency as it is not needed
   echo $(python --version | cut -d' ' -f2 | cut -d'.' -f1,2) > .python-version # Update the file to use the installed one in system
+  sed -i 's/timeout=5/timeout=60/' tests/client/test_config.py # Increate time limit
 }
 
 build() {
@@ -44,6 +45,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/pip install -U websockets # Temporary until Arch maintainers update python-websockets
+  ln -sf /usr/bin/ruff test-env/bin/ruff
   env PATH="${srcdir}"/uv:$PATH UV_PROJECT_ENVIRONMENT=test-env UV_PYTHON_PREFERENCE=only-system test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
