@@ -1,15 +1,15 @@
 # Maintainer: pinsl <johannes.neyer at gmail dot com>
 
 pkgname=nrfutil
-pkgver=7.13.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="unified command line utility for Nordic products"
 arch=("x86_64")
 url="https://www.nordicsemi.com/Products/Development-tools/nRF-Util"
 license=("custom")
-depends=("jlink-software-and-documentation")
+optdepends=("jlink-software-and-documentation: for most commands (e.g. device)")
 source=("https://files.nordicsemi.com/ui/api/v1/download?repoKey=swtools&path=external/nrfutil/packages/nrfutil/nrfutil-${arch}-unknown-linux-gnu-${pkgver}.tar.gz")
-sha256sums=("477385ff7e34c4469bfb4cda99fc2f7a3635e9f8f2ff74ebcccbd0681955c47c")
+sha256sums=("5a51b15259fc4bf84f0ec4c65466bca9389671f11ac3d6cbdc2b8aa859d60a70")
 
 package() {
   cd "${srcdir}/nrfutil-${arch}-unknown-linux-gnu-${pkgver}/data/"
