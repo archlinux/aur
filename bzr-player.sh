@@ -37,14 +37,17 @@ if [ ! -d "$WINEPREFIX" ]; then
   # --- app data setup ---
   ln -s "$bzr2_path_sys/BZRPlayer.exe" "$bzr2_path_home/$bzr2"
 
-  readarray -d '' root_dlls < <(find "$bzr2_path_sys" -maxdepth 1 -type f -iname '*.dll' -print0)
+  readarray -d '' dlls < <(find "$bzr2_path_sys" -maxdepth 1 -type f -iname '*.dll' -print0)
 
-  for root_dll in "${root_dlls[@]}"; do
-    ln -s "$root_dll" "$bzr2_path_home"
+  for dll in "${dlls[@]}"; do
+    ln -s "$dll" "$bzr2_path_home"
   done
 
-  ln -s "$bzr2_path_sys/data" "$bzr2_path_home"
-  ln -s "$bzr2_path_sys/platforms" "$bzr2_path_home"
+  readarray -d '' dirs < <(find "$bzr2_path_sys" -mindepth 1 -maxdepth 1 -type d -print0)
+
+  for dir in "${dirs[@]}"; do
+    ln -s "$dir" "$bzr2_path_home"
+  done
   # END --- app data setup ---
 fi
 
