@@ -1,7 +1,7 @@
 pkgbase = uutils-diffutils-bin
 	pkgdesc = Rust implementation of diffutils
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uutils/diffutils
 	arch = x86_64
 	license = Apache-2.0
