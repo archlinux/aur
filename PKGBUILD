@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tablite-git
 _pkgname=Tablite
-pkgver=r188.cf6f05a
+pkgver=r226.ec299c7
 _nodeversion=23
 pkgrel=1
 pkgdesc="🪶 An ai driven lightweight database GUI built on Tauri."
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-git}")
 depends=(
     'gtk3'
     'gdk-pixbuf2'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 makedepends=(
     'nvm'
