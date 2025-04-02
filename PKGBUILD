@@ -1,35 +1,30 @@
-# Maintainer: Jonathan Hudson <jh+mwptools@daria.co.uk>
-_pkgname=blackbox-tools
-pkgname=blackbox-tools-inav
-pkgver=r240.edbf99a
-pkgrel=1
-pkgdesc='tools for examining INAV blackbox logs - master'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' )
-url='https://github.com/iNavflight/blackbox-tools.git'
-license=('GPL3')
-makedepends=('git')
-depends=('cairo')
-provides=("$_pkgname")
-conflicts=("blackbox-tools-git" )
-source=("blackbox-tools::git+$url")
-sha512sums=('SKIP')
-_bbversion="5.0.0-rc2"
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Contributor: Jonathan Hudson <jh+mwptools@daria.co.uk>
 
-pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+pkgname=blackbox-tools-inav
+pkgver=8.0.0
+pkgrel=1
+pkgdesc='tools for examining INAV blackbox logs'
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/iNavFlight/blackbox-tools"
+license=('GPL-3.0-or-later')
+makedepends=('git')
+depends=('cairo' 'freetype2')
+provides=('blackbox-tools')
+conflicts=('blackbox-tools' 'blackbox-tools-git')
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha512sums=('8a5bdcc962f986c0d3205b23d172eb2bb70d986532e96ae1f13ab026105405304b1826f0cf8460bc3c3eedb5cd81628835ead11afc2bfcb8ed716afe6726f89b')
 
 build() {
-  cd $_pkgname
-  make
+	cd $pkgname
+	make
 }
 
 package() {
-  # executable
-   cd $_pkgname
-   install -Dm755 obj/blackbox_decode "$pkgdir/usr/bin/blackbox_decode"
-   install -Dm755 obj/blackbox_render "$pkgdir/usr/bin/blackbox_render"
-   install -Dm755 obj/encoder_testbed "$pkgdir/usr/bin/encoder_testbed"
-   install -Dm644 tools/blackbox_decode_complete.sh $pkgdir/usr/share/bash-completion/completions/blackbox_decode
+	cd $pkgname
+	install -Dm755 obj/blackbox_decode -t "$pkgdir/usr/bin/"
+	install -Dm755 obj/blackbox_render -t "$pkgdir/usr/bin/"
+	install -Dm755 obj/encoder_testbed -t "$pkgdir/usr/bin/"
+	install -Dm644 tools/blackbox_decode_complete.sh \
+		"$pkgdir/usr/share/bash-completion/completions/blackbox_decode"
 }

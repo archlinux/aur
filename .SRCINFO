@@ -1,20 +1,20 @@
 pkgbase = blackbox-tools-inav
-	pkgdesc = tools for examining INAV blackbox logs - master
-	pkgver = r240.edbf99a
+	pkgdesc = tools for examining INAV blackbox logs
+	pkgver = 8.0.0
 	pkgrel = 1
-	url = https://github.com/iNavflight/blackbox-tools.git
+	url = https://github.com/iNavFlight/blackbox-tools
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = cairo
 	provides = blackbox-tools
 	conflicts = blackbox-tools-git
-	source = blackbox-tools::git+https://github.com/iNavflight/blackbox-tools.git
-	sha512sums = SKIP
+	source = blackbox-tools-inav::git+https://github.com/iNavFlight/blackbox-tools#tag=v8.0.0
+	sha512sums = 8a5bdcc962f986c0d3205b23d172eb2bb70d986532e96ae1f13ab026105405304b1826f0cf8460bc3c3eedb5cd81628835ead11afc2bfcb8ed716afe6726f89b
 
 pkgname = blackbox-tools-inav
