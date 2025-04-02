@@ -1,0 +1,4 @@
+2c2
+< requires = [ "setuptools<74", "wheel", "cffi>=1.14.5" ]
+---
+> requires = [ "setuptools", "wheel", "cffi>=1.14.5" ]
