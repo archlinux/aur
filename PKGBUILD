@@ -1,5 +1,6 @@
-# Maintainer: Ns2Kracy <2220496937@qq.com>
-# Maintainer: CorrectRoadH <correctroadh@gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Ns2Kracy <2220496937@qq.com>
+# Contributor: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-user-service
 pkgver=0.4.8
 pkgrel=1
