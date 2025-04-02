@@ -3,7 +3,7 @@
 _pkgname=rsntp
 pkgname=rsntp-git
 pkgver=r17.06281a9
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental multi-threaded high-performance NTP server in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlichvar/rsntp"
@@ -26,4 +26,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "target/release/rsntp" "${pkgdir}/usr/bin/rsntp"
+    install -Dm644 README.adoc "${pkgdir}/usr/share/doc/${_pkgname}/README.adoc"
 }
