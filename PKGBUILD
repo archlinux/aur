@@ -2,9 +2,9 @@
 
 _pkgname=exo
 pkgname=${_pkgname}-devel
-pkgver=4.19.2
+pkgver=4.21.0
 pkgrel=1
-pkgdesc='Extensions to Xfce (Development version)'
+pkgdesc='Deprecated extensions to Xfce (Development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://docs.xfce.org/xfce/exo/start'
 license=('GPL2' 'LGPL')
@@ -14,7 +14,7 @@ makedepends=('gtk-doc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2c921824c1009472b172fb5e4510d3d91a138a1cd327964b7900a27d241a5045')
+sha256sums=('26f85ca2db3bcf99d8b8af28b0d565b0186ccc3d2ed4a5ba315f6a589b8bc2c9')
 
 build() {
   cd "${_pkgname}-${pkgver}"
