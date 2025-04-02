@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shutter-encoder-bin
-_pkgname="Shutter Encoder"
+_pkgname='Shutter Encoder'
 pkgver=18.8
-pkgrel=1
-pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux"
+pkgrel=2
+pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)"
 arch=("x86_64")
 url="https://www.shutterencoder.com"
 _ghurl="https://github.com/paulpacifico/shutter-encoder"
@@ -30,22 +30,22 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2a155b5bdb978de567d80bc7c330f43007f73be851491963478cc1cf1c361b4e'
+sha256sums=('c99e91d85dfba50a6dee2fcf2649f7de44e827a8dc9f87629f932e1def207f52'
             'a81897397409f2d750ead9f53f7cded8bffbb765da2305dea006d2fb4fcd2b1d')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${pkgname%-bin}/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     find "${srcdir}" -type d -exec chmod 755 {} \;
     find "${srcdir}" -type f -name "*.*" -perm 777 -exec chmod 644 {} \;
     find "${srcdir}" -type f -perm 777 -exec chmod 755 {} \;
-    sed "s/\"\/usr\/lib\/${_pkgname}\/AppRun\"/\/usr\/lib\/${pkgname%-bin}\/AppRun/g" -i "${srcdir}/usr/lib/${_pkgname}/${pkgname%-bin}"
-    sed -e "
+    sed -i "s/\"\/usr\/lib\/${_pkgname}\/AppRun\"/\/usr\/lib\/${pkgname%-bin}\/AppRun/g" "${srcdir}/usr/lib/${_pkgname}/${pkgname%-bin}"
+    sed -i -e "
         s/\/usr\/lib\/${_pkgname}\/usr\/bin\/icon.png/${pkgname%-bin}/g
         s/\/usr\/share\/icons\/hicolor\/256x256\/apps\/icon/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname// /_}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname// /_}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
