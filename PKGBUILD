@@ -76,14 +76,14 @@ _schemas=('pinyin 全拼'
           'sogou  搜狗')
 
 _conflicts=()
-for _schema in "${_schemas[@]}"; do
-    _name=${_schema%% *}
-    _conflicts+=(${pkgbase}-${_name,,})
+for _line in "${_schemas[@]}"; do
+    _schema=${_line%% *}
+    _conflicts+=(${pkgbase}-${_schema,,})
 done
 
-for _schema in "${_schemas[@]}"; do
-    _name=${_schema%% *}
-    _pkgname=${pkgbase}-${_name,,}
+for _line in "${_schemas[@]}"; do
+    _schema=${_line%% *}
+    _pkgname=${pkgbase}-${_schema,,}
 
     conflicts=()
     for _c in "${_conflicts[@]}"; do
@@ -91,12 +91,13 @@ for _schema in "${_schemas[@]}"; do
     done
 
     pkgname+=("${_pkgname}")
+    _name=${_line##* }
     eval "package_$_pkgname() {
-        depends=("rime-wanxiang-base")
-        pkgdesc="万象拼音基础版（${_name}方案）"
+        depends=('rime-wanxiang-base')
+        pkgdesc='万象拼音基础版（"${_name}"方案）'
         conflicts=("${conflicts[@]}")
 
-        _package $_schema
+        _package $_line
     }"
 done
 

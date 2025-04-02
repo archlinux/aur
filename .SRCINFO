@@ -22,7 +22,7 @@ pkgname = rime-wanxiang-base
 	depends = rime-wanxiang-data
 
 pkgname = rime-wanxiang-pinyin
-	pkgdesc = 万象拼音基础版（pinyin方案）
+	pkgdesc = 万象拼音基础版（全拼方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
@@ -30,7 +30,7 @@ pkgname = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-zrm
-	pkgdesc = 万象拼音基础版（zrm方案）
+	pkgdesc = 万象拼音基础版（自然码方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-flypy
@@ -38,7 +38,7 @@ pkgname = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-flypy
-	pkgdesc = 万象拼音基础版（flypy方案）
+	pkgdesc = 万象拼音基础版（小鹤方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
@@ -46,7 +46,7 @@ pkgname = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-mspy
-	pkgdesc = 万象拼音基础版（mspy方案）
+	pkgdesc = 万象拼音基础版（微软方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
@@ -54,7 +54,7 @@ pkgname = rime-wanxiang-mspy
 	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-sogou
-	pkgdesc = 万象拼音基础版（sogou方案）
+	pkgdesc = 万象拼音基础版（搜狗方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
