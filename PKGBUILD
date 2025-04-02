@@ -3,7 +3,7 @@
 
 pkgname=hmcl-beta-bin
 pkgver=3.6.11.273
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
