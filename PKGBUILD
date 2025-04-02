@@ -3,7 +3,7 @@ pkgname=brisqi-bin
 _pkgname=Brisqi
 pkgver=0.18.0
 _electronversion=35
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline-first personal Kanban app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://brisqi.com"
@@ -16,11 +16,11 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-setup-${pkgver}-linux-amd64.deb"
-    "LICENSE-${pkgver}.html::${url}/terms"
+    "LICENSE.html::${url}/terms"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('778e5ccafebe3ac7f71f357875227172786fa28497637d5dda9f703e0a7f6e8b'
-            '72edb0b68f37fcf1d1ce860c4e2e9ba3d022e32e120f22d45d13458872e0fb78'
+            'SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -42,5 +42,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}//LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}//LICENSE.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
