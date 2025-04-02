@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=kometa
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://kometa.wiki'
 arch=('any')
@@ -36,7 +36,7 @@ source=(
   'kometa.tmpfiles'
 )
         
-sha256sums=('c731512c779634c41d00fd9fe7992f20edd422f5b74abcd896253c0e806d8f7e'
+sha256sums=('dcb897ef76ed25466233293df5bcb844b19447b47091f63f292c4e54048320c2'
             '5cc9f70c2a594e27f23eca4af7d23eedfa58cc44a9849d0cee91fe887aafb24e'
             'aff68f18a53e34c9778da238a2143e30dacb72d9009a219f3e5eb45cf1735e20'
             '1d81571ea9be45f2d53aa21c920b93b6fdb1c9b17c6f9490ca94b1676ae27e13')
