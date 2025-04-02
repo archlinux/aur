@@ -1,7 +1,7 @@
 pkgbase = python-lynxpresence
 	pkgdesc = Discord RPC and Rich Presence wrapper library
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/C0rn3j/lynxpresence
 	arch = any
 	license = MIT
