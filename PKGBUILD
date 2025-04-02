@@ -6,9 +6,9 @@ pkgname='python-urllib3-future-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname/-/.}"
-pkgver=2.12.911.r0.gf3a19bdf
-pkgrel=2
-pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (latest commit)'
+pkgver=2.12.915.r0.g60af644f
+pkgrel=1
+pkgdesc='Powerful HTTP 1.1, 2, and 3 client with both sync and async interfaces (built from latest git commit)'
 arch=('any')
 url='https://github.com/jawah/urllib3.future'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -57,8 +57,8 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install -Dm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -vDm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # eof
