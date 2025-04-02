@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
-pkgver=0.11.28
+pkgver=0.11.29
 pkgrel=1
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -9,13 +9,13 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'openssl')
 makedepends=('cargo' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rustup' 'webkit2gtk-4.1') options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('66a7e4863559ca3dba97ec2cbe0e8becf39bc778726c9483571ca71f2c8d6f5f')
+sha256sums=('bcced6eb1951666714d77d01e949d425bf75b9e4f27b693b49425095fc032ff2')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
     export RUSTUP_TOOLCHAIN=stable
     cargo --locked install trunk@0.21.12 --no-default-features --features rustls
-    cargo --locked install tauri-cli@2.4.0
+    cargo --locked install tauri-cli@2.4.1
     cargo --locked install cargo-auditable@0.6.6
     rustup toolchain install $RUSTUP_TOOLCHAIN --target wasm32-unknown-unknown --profile minimal --no-self-update
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
