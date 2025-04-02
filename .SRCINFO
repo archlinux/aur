@@ -1,0 +1,11 @@
+pkgbase = awatcher-bundle-bin
+	pkgdesc = ActivityWatch-compatible activity and idle watchers, with bundled aw server
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/2e3s/awatcher
+	arch = x86_64
+	license = MPL-2.0
+	source_x86_64 = https://github.com/2e3s/awatcher/releases/download/v0.3.1/awatcher_0.3.1-1_amd64.deb
+	sha256sums_x86_64 = 7f70109e91d86e002b83f218a2da17557eefa2b10fd05663b841f567f2354935
+
+pkgname = awatcher-bundle-bin
