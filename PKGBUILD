@@ -13,7 +13,10 @@ depends=('garcon' 'libxfce4ui>=4.21.0' 'xfconf' 'libnotify' 'libcanberra'
          'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra'
          'wayland' 'gtk-layer-shell')
 makedepends=('meson' 'xfce4-dev-tools' 'xf86-input-libinput' 'glib2-devel')
-optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling')
+optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling'
+            'xiccd: for displays support in xfce4-color-settings'
+            'cups: for printers support in xfce4-color-settings'
+            'sane: for scanners support in xfce4-color-settings')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"

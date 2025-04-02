@@ -25,6 +25,9 @@ pkgbase = xfce4-settings-devel
 	depends = wayland
 	depends = gtk-layer-shell
 	optdepends = python: xfce4-compose-mail -- "mailto:" URI handling
+	optdepends = xiccd: for displays support in xfce4-color-settings
+	optdepends = cups: for printers support in xfce4-color-settings
+	optdepends = sane: for scanners support in xfce4-color-settings
 	provides = xfce4-settings=4.21.0
 	conflicts = xfce4-settings
 	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.21/xfce4-settings-4.21.0.tar.xz
