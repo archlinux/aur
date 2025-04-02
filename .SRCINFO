@@ -1,7 +1,7 @@
 pkgbase = uutils-findutils
 	pkgdesc = Rust implementation of findutils
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uutils/findutils
 	arch = i686
 	arch = x86_64
