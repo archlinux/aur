@@ -4,25 +4,24 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.10.0
+pkgver=3.12.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/logfire'
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28.0.3.tgz"
-               "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.3.tgz")
-source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.3.tgz"
-                "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.3.tgz")
-sha256sums=('fe241864c708a7ec9c3f1c23f107f3e3d68373b41ec9ebefee7ef035a73b38e4')
-sha256sums_x86_64=('d1810799dad3ca21647728e4b501bf64def617f2a3e8cdcdfcd5e4a5d0e69e5c'
-                   'f9e3102a996c3b24ab2cebfa169bb9cb4bbb95b866358b285ab65d3a3b9b4800')
-sha256sums_aarch64=('6a5fe587e1224871a87ef46dede1dd65cfb69a2c61e1368556f59c2e78d67d7f'
-                    '0a1a09e4f43aa416de539c238a33438a31955475dbee91f38413b4a8c69be070')
+source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28.0.4.tgz"
+               "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.4.tgz")
+source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.4.tgz"
+                "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.4.tgz")
+sha256sums=('e4dc3d5e50802979500e8763e8c296df9fc0579b34da5fedeac25f0fc15e46a2')
+sha256sums_x86_64=('6b130fa5fb13516620d5ece0b63f63a495cede428bb2f9e24449022e9d72e0cb'
+                   '0d0c2680d924671df0ac33d53dd71f410dfb253fb4fa5e8a0a231951234781c9')
+sha256sums_aarch64=('d3291093e8ed576ed9e237b24dc4556a9ed21ff25d4c26578df612cb6fe0480f'
+                    'ce155e65690fc1cbbd3656495458d3ca004af2404a35d37953ea2123d6c4bbf6')
 depends=('python>=3.8')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-anyio'
-              'python-httpx'
+checkdepends=('python-httpx'
               'python-aiohttp'
               'python-redis'
               'python-pymongo'
@@ -90,27 +89,6 @@ checkdepends=('python-anyio'
               'python-websockets'
               'python-pydantic-ai-slim')
 
-update_compression_methods() {
-    local file="$1"
-    local compression_methods="gzip, deflate"
-    if pacman -Q python-brotli &>/dev/null || pacman -Q python-brotlicffi &>/dev/null; then
-        compression_methods+=", br"
-    fi
-    if pacman -Q python-zstandard &>/dev/null; then
-        compression_methods+=", zstd"
-    fi
-    sed -i -E "s/gzip, deflate(, br)?(, zstd)?/\1$compression_methods/" "$file"
-}
-
-prepare(){
-  cd "${srcdir}"/${_name0//-/_}-${pkgver}
-  # Adding necessary encoding headers if exist
-  update_compression_methods tests/otel_integrations/test_httpx.py
-  update_compression_methods tests/otel_integrations/test_starlette.py
-  # The python-psycopg2 build process is the same as psycopg2-binary
-  sed -i "s/assert check_version('psycopg2-binary', '2.7.3.1', Psycopg2Instrumentor())/assert check_version('psycopg2-binary', '2.7.3.1', Psycopg2Instrumentor()) or check_version('psycopg2', '2.7.3.1', Psycopg2Instrumentor())/" tests/otel_integrations/test_psycopg.py
-}
-
 build() {
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m build --wheel --no-isolation ${_name1}
@@ -169,25 +147,25 @@ package_python-logfire() {
   pkgdesc='The best Python observability tool!'
   depends+=('python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-instrumentation' 'python-rich' 'python-protobuf' 'python-typing_extensions' 'python-executing')
   optdepends=('python-opentelemetry-instrumentation-system-metrics: system-metrics'
-            'python-opentelemetry-instrumentation-asgi: asgi'
-            'python-opentelemetry-instrumentation-wsgi: wsgi'
-            'python-opentelemetry-instrumentation-aiohttp-client: aiohttp'
-            'python-opentelemetry-instrumentation-celery: celery'
-            'python-opentelemetry-instrumentation-django: django'
-            'python-opentelemetry-instrumentation-fastapi: fastapi'
-            'python-opentelemetry-instrumentation-flask: flask'
-            'python-opentelemetry-instrumentation-httpx: httpx'
-            'python-opentelemetry-instrumentation-starlette: starlette'
-            'python-opentelemetry-instrumentation-sqlalchemy: sqlalchemy'
-            'python-opentelemetry-instrumentation-asyncpg: asyncpg'
-            'python-opentelemetry-instrumentation-psycopg: psycopg'
-            'python-opentelemetry-instrumentation-psycopg2: psycopg2'
-            'python-opentelemetry-instrumentation-pymongo: pymongo'
-            'python-opentelemetry-instrumentation-redis: redis'
-            'python-opentelemetry-instrumentation-requests: requests'
-            'python-opentelemetry-instrumentation-mysql: mysql'
-            'python-opentelemetry-instrumentation-sqlite3: sqlite3'
-            'python-opentelemetry-instrumentation-aws-lambda: aws-lambda')
+              'python-opentelemetry-instrumentation-asgi: asgi'
+              'python-opentelemetry-instrumentation-wsgi: wsgi'
+              'python-opentelemetry-instrumentation-aiohttp-client: aiohttp'
+              'python-opentelemetry-instrumentation-celery: celery'
+              'python-opentelemetry-instrumentation-django: django'
+              'python-opentelemetry-instrumentation-fastapi: fastapi'
+              'python-opentelemetry-instrumentation-flask: flask'
+              'python-opentelemetry-instrumentation-httpx: httpx'
+              'python-opentelemetry-instrumentation-starlette: starlette'
+              'python-opentelemetry-instrumentation-sqlalchemy: sqlalchemy'
+              'python-opentelemetry-instrumentation-asyncpg: asyncpg'
+              'python-opentelemetry-instrumentation-psycopg: psycopg'
+              'python-opentelemetry-instrumentation-psycopg2: psycopg2'
+              'python-opentelemetry-instrumentation-pymongo: pymongo'
+              'python-opentelemetry-instrumentation-redis: redis'
+              'python-opentelemetry-instrumentation-requests: requests'
+              'python-opentelemetry-instrumentation-mysql: mysql'
+              'python-opentelemetry-instrumentation-sqlite3: sqlite3'
+              'python-opentelemetry-instrumentation-aws-lambda: aws-lambda')
   url='https://github.com/pydantic/logfire'
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
