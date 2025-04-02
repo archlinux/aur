@@ -5,9 +5,9 @@
 # Contributor: mnabid
 
 pkgname=zoom-system-qt
-pkgver=6.4.1.587
-pkgrel=2
-pkgdesc="(Experimental) Zoom Workspace client with system libraries"
+pkgver=6.4.3.827
+pkgrel=1
+pkgdesc="Zoom Workspace client with system libraries"
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
@@ -19,13 +19,13 @@ makedepends=(patchelf binutils)
 optdepends=('qt5-wayland: Wayland support'
 	'qt5-webengine: SSO login'
 	'xdg-desktop-portal-impl: Screen sharing,etc... for Wayland'
-	{chromium,sqlite,vivaldi-ffmpeg-codecs}': CEF support'
+	{chromium,sqlite,vivaldi-ffmpeg-codecs}': Webview'
 	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unknown. Bundled in original.'
 	)
 provides=(zoom)
 conflicts=(zoom)
 source=("${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('379c623e965022a43c213359d4afa041cc4eca0e85f83a6a59c936e8f3c9478e1129bdce49ee2ce5a7afdee14b9b956698c5fa7c2fbd67c17a0f92794f33d705')
+sha512sums=('749e8879ce3f6260dec95686e30068d2d220c8036992efb110d800d334e7933efaa09fad97b646bfee9aba7fe747aebea6ea540729e3feccee9f679bdf131ddc')
 options=(!strip emptydirs)
 build() {	
 	cd opt/zoom
@@ -34,7 +34,7 @@ build() {
 		do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
 	done
 	echo Replacing bundled libs
-	rm -r {libOpenCL.so.1,libav*,libmpg123.so,libswresample.so.4,translations,Qt,qt.conf}
+	rm -r {libOpenCL.so.1,libav*,libmpg123.so,libswresample.so.4,translations,Qt,qt.conf,version.txt}
 	mkdir -p Qt/lib #for ZoomWebviewHost
 	ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
 	#libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
