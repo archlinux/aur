@@ -43,5 +43,6 @@ package() {
   install -Dm644 "build/zsh_completion" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm644 "build/fish_completion" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 
-  cp -rv docs/pages "${pkgdir}/usr/share/doc/${_pkgname}/docs"
+  install -d "${pkgdir}/usr/share/doc/"
+  cp -r docs/pages "${pkgdir}/usr/share/doc/${pkgname}"
 }
