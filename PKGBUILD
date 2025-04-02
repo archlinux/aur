@@ -11,7 +11,6 @@ depends=('gst-plugin-gtk4' 'libadwaita' 'xxhash')
 makedepends=('blueprint-compiler' 'git' 'meson' 'vala')
 checkdepends=('appstream')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.com/daikhan/daikhan.git')
 sha256sums=('SKIP')
 
