@@ -1,7 +1,7 @@
 # Maintainer: Nathan Ollerenshaw <chrome@stupendous.net>
 
 pkgname=smoothpaper
-pkgdesc="A wallpaper changer daemon for X11 Window Mangers with smooth transitions between wallpapers."
+pkgdesc="A wallpaper daemon for Wayland Compositors and X11 Window Mangers using OpenGL for smooth fading."
 pkgver=2.4.0
 pkgrel=1
 url=https://github.com/matjam/smoothpaper
