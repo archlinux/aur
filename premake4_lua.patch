@@ -1,10 +1,12 @@
---- "src/premake-4.4-beta5/build/gmake.unix/Premake4 copy.make"	2025-04-02 12:58:36.495930555 +0200
-+++ b/build/gmake.unix/Premake4.make	2025-04-02 13:01:14.235294725 +0200
-@@ -24,12 +24,12 @@
+--- a/build/gmake.unix/Premake4.make
++++ b/build/gmake.unix/Premake4.make
+@@ -23,13 +23,13 @@
+   OBJDIR     = obj/Release
    TARGETDIR  = ../../bin/release
    TARGET     = $(TARGETDIR)/premake4
-   DEFINES   += -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+-  DEFINES   += -DLUA_USE_POSIX -DLUA_USE_DLOPEN
 -  INCLUDES  += -I../../src/host/lua-5.1.4/src
++  DEFINES   +=
 +  INCLUDES  += -I/usr/include/lua5.1
    ALL_CFLAGS    += $(CFLAGS)   $(DEFINES) $(INCLUDES)
    ALL_CXXFLAGS  += $(CXXFLAGS) $(DEFINES) $(INCLUDES)

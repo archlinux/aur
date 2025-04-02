@@ -17,7 +17,7 @@ source=("${_pkgsrc}.zip::https://downloads.sourceforge.net/project/${_name}/${_N
         "${pkgname}_manpage.patch")
 sha256sums=('0fa1ed02c5229d931e87995123cdb11d44fcc8bd99bba8e8bb1bbc0aaa798161'
             '62b44ad425c7af970214b21e54c78948c8042bf5b13edd899c5c7dd00835022a'
-            '227245b893eed1b76b9c701b44670e5c8d524242be5a7e2173800c8bfe065d5e'
+            'bd1dd0b292fe197f748acd2262f1137522af88659c734bc573107fee4883a929'
             'f3c8b20fa231a496f41781ad449f75ec36555d216166cd77c2b709acf62693f6')
 
 prepare() {
