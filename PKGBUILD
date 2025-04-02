@@ -2,10 +2,10 @@
 # Maintainer: LuckyTurtleDev [aur at lukas1818 dot de]
 
 _crate="youtube-tui"
-_cratever="0.8.1"
+_cratever="0.8.2"
 pkgname="youtube-tui"
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='An aesthetically pleasing YouTube TUI written in Rust'
 url='https://siriusmart.github.io/youtube-tui'
 license=('GPL-3.0-or-later')
@@ -15,8 +15,8 @@ makedepends=('cargo' 'cargo-auditable')
 optdepends=('konsole: Default terminal emulator'
             'yt-dlp: Default YouTube downloader')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/youtube-tui/0.8.1/download")
-sha512sums=('d203cb4c691e3834e1e65e7ad23c89f397bef5dcecce09c58f5bcd5ff894d4f16b2c82d0b652898556d4e54a38d57e63ab183ae26b66b57d90be668b71f5148d')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/youtube-tui/0.8.2/download")
+sha512sums=('9119b1cfab2555bb37da92d0449d69791f7281138261c75a913c8834e87bf41e3c97e0460c9cbb470572e521098a1a47902bd6098635dd3d65133f2236363581')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
