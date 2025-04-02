@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=soundcloud
 pkgname="${_appname}-rpc-bin"
-pkgver=0.0.8
+pkgver=0.0.9
 _electronversion=24
 pkgrel=1
 pkgdesc="🎵 A SoundCloud Client with Discord Rich Presence, Dark Mode, Last.fm, and AdBlock Support.(Prebuilt version.Use system-wide electron)"
@@ -17,11 +17,11 @@ makedepends=(
     'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-${pkgver}-installer-linux.AppImage"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-installer-linux.AppImage"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0d556e8f01f5d483dd9f44cc97149a3827f1ad1c420b51b0b8ccf74ab727a427'
+sha256sums=('13e59b0d03bb61c5b54932386831daaaaff0934ab4f90ac50772ccf0017c6d1f'
             'de7ae1038162d14df6bc9ec2a6f717a46d0c57deba4e4fffe4cea07595b0c68d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
