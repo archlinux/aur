@@ -3,9 +3,9 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname="Nuclear Player"
-pkgver=0.6.44
+pkgver=0.6.45
 _electronversion=33
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources.(Use system-wide electron)"
 arch=('any')
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9442b798bc38ca6648a40d4bfeeff5443dcc63c0015658a5a8b80816e6a94b42'
+sha256sums=('b9cac2b84f6355e71235abadfaeca54479905bf6f72c0b99199dc206983789dd'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
