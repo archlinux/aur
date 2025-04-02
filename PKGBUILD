@@ -1,8 +1,9 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
 
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+
 pkgname='gut'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='An easy-to-use git client'
 arch=('aarch64' 'x86_64')
@@ -13,7 +14,7 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 options=('lto')
 
-_pkgdate='2024-11-20'
+_pkgdate='2025-04-01'
 _pkgver="$pkgver ($_pkgdate)"
 
 prepare() {
@@ -72,10 +73,10 @@ package() {
 }
 
 sha256sums=(
-  '6e9f8bed00dcdf6ccb605384cb3b46afea8ad16c8b4a823c0cc631f9e92a9535'
+  '49431ba0d24f9abf4c7cdbdf1956d2b6e70e16f955b5bbb70d8d8f4b8a5a48d1'
 )
 b2sums=(
-  'a584190a8a1bb30d66853403d6c1ffa8e89024ded406a67d828969bb68bba6d211e8d082fa167500981ec7c05256686b910db8cdee2ebf5daf3045c46ee58987'
+  'cac2e4429b629ad04c6d76e7e4aef028f64a1a7ed478a2ac9f3c23e255fe84a29c2e49b86f04d9ed2cb1c4b89e05c8f676a98f6f5ed02810595d7ffaba286929'
 )
 
 # eof
