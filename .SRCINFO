@@ -1,5 +1,5 @@
 pkgbase = odict-bin
-	pkgdesc = A modern, blazingly-fast dictionary file format for everyone (CLI)
+	pkgdesc = Lightning-fast dictionary file format and toolchain
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://odict.org

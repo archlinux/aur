@@ -3,8 +3,8 @@
 pkgname=odict-bin
 _pkgname="${pkgname%-bin}"
 pkgver=2.0.0
-pkgrel=1
-pkgdesc="A modern, blazingly-fast dictionary file format for everyone (CLI)"
+pkgrel=2
+pkgdesc="Lightning-fast dictionary file format and toolchain"
 arch=('x86_64')
 url="https://odict.org"
 license=('GPL-3.0-only')
