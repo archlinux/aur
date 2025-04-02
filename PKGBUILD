@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=m3u8downloader-bin
 _pkgname="M3U8 Downloader"
-pkgver=0.6.6
+pkgver=0.8.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Yet another m3u8 downloader.(Prebuilt version.Use system-wide electron)"
@@ -25,23 +25,23 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/gonwan/m3u8-downloader/v${pkgver}/icons/icon256x256.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4412fcd6936428c6bb22e0efa35c0459a4892284d30f8252feb081ef8fdb8d63'
+sha256sums=('9c97fa0c29a17b3e871457d90ddf354015ec4892d5a98d66c764a6c0c5e3c0f4'
             'c42b28b97e0485bf0298aac09ef9f9be169682b5467d8e3eb6334bd2b31129b3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
-   install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-v${pkgver}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-   cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}-v${pkgver}-linux-x64/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-v${pkgver}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}-v${pkgver}-linux-x64/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
