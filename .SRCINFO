@@ -1,7 +1,7 @@
 pkgbase = autorestic
 	pkgdesc = Config driven, easy backup cli for restic
 	pkgver = 1.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cupcakearmy/autorestic
 	arch = i686
 	arch = x86_64

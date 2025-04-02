@@ -3,7 +3,7 @@
 
 pkgname=autorestic
 pkgver=1.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Config driven, easy backup cli for restic'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cupcakearmy/$pkgname"
@@ -43,6 +43,6 @@ package() {
   install -Dm644 "build/zsh_completion" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm644 "build/fish_completion" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 
-  install -d "${pkgdir}/usr/share/doc/"
-  cp -r docs/pages "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 CHANGELOG.md DEVELOPMENT.md README.md -t "$pkgdir/usr/share/doc/$pkgname" 
+  cp -r docs/pages "$pkgdir/usr/share/doc/$pkgname"
 }
