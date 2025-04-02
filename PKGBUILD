@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2120.rc1.r56.g5ade69f5f
+pkgver=2120.rc1.r57.gf298d75
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -78,7 +78,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -101,8 +101,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# fix for missing submodules
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
-	# fix for cmake 4
-	sed -i '/VERSION/s/3\.2\.0/3.5/' ../discord-rpc/CMakeLists.txt
 }
 
 build() {
