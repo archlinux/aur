@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IntelliJ IDEA Community Edition
+Comment=Intelligent Java IDE
+Exec=intellij-idea-community-edition %u
+Icon=intellij-idea-community-edition
+Terminal=false
+StartupWMClass=jetbrains-idea
+Type=Application
+Categories=Development;IDE;
