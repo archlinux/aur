@@ -1,4 +1,5 @@
-# Maintainer: Doron Behar <doron.behar@gmail.com>
+# Maintainer: Orestis Floros <orestisflo@gmail.com>
+# Contributor: Doron Behar <doron.behar@gmail.com>
 
 pkgname=xkb-switch
 pkgver=1.8.5
