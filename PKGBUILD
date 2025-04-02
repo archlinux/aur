@@ -2,12 +2,12 @@
 _appname=iptvnator
 pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
-pkgver=0.16.5
+pkgver=0.16.6
 _electronversion=27
 pkgrel=1
-pkgdesc="IPTV player application.(Prebuilt version.Use system-wide electron)"
+pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
-url="https://github.com/pigzillaaaaa/iptvnator-electron"
+url="https://github.com/Mikoshi-nyudo/iptvnator-electron"
 license=('MIT')
 provides=("${_appname}=${pkgver}")
 conflicts=("${_appname}")
@@ -16,11 +16,11 @@ depends=(
     'mpv'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_0.16.4_amd64.deb"
-    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/pigzillaaaaa/iptvnator-electron/v${pkgver}/LICENSE.md"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb"
+    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Mikoshi-nyudo/iptvnator-electron/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e354ab003589d612fe317a8dc5af765ac5651204d5492321c038827832866136'
+sha256sums=('705758c9c3a6ed637db621a2b8dfea752f1e0e8ff14315bc93bd6cf24cb37d90'
             '475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
