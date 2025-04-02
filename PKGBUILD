@@ -1,7 +1,7 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname=consolation
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Libinput-based console pointer support for copy-paste, similar to gpm"
 arch=('x86_64')
 url="https://salsa.debian.org/consolation-team/consolation"
@@ -9,7 +9,7 @@ license=('GPL')
 makedepends=('help2man')
 depends=('libevdev>=0.9.1' 'libinput>=1.21' 'systemd-libs>=183')
 source=("https://deb.debian.org/debian/pool/main/c/consolation/${pkgname}_${pkgver}.orig.tar.xz")
-md5sums=('d062066b16411a035217626568c51eed')
+sha256sums=('50ecf54a5b3b0e34c10eb9ed07d4de5acebe044bbe8c4caff2574d7bab3aa853')
 
 prepare() {
 	cd "$pkgname-$pkgver"
