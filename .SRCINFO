@@ -7,6 +7,8 @@ pkgbase = aurmor
 	license = GPL-3.0-or-later
 	depends = base-devel
 	depends = git
+	depends = json-c
+	depends = libcurl-gnutls
 	source = aurmor::git+https://github.com/carlyle-felix/aurmor.git
 	sha256sums = SKIP
 
