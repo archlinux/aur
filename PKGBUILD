@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 pkgname=goman-git
 _pkgname=goman
-pkgver=0.3.2.r0.gf6d80a0
+pkgver=0.4.0.r4.ged8e53a
 pkgrel=1
 pkgdesc="Fetches the repo's readme as a man page replacement."
 arch=(i686 x86_64)
@@ -21,8 +21,13 @@ pkgver() {
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  go mod tidy
+}
+
 build() {
-  cd $srcdir/$_pkgname
+  cd "$srcdir/${pkgname%-git}"
   go build
 }
 

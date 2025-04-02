@@ -1,6 +1,6 @@
 pkgbase = goman-git
 	pkgdesc = Fetches the repo's readme as a man page replacement.
-	pkgver = 0.3.2.r0.gf6d80a0
+	pkgver = 0.4.0.r4.ged8e53a
 	pkgrel = 1
 	url = https://github.com/appliedgocode/goman
 	arch = i686
