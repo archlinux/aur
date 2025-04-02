@@ -2,7 +2,7 @@
 
 pkgname=python-gspread
 _pkgname=gspread
-pkgver=6.1.4
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Google Spreadsheets Python API"
 arch=('any')
@@ -18,7 +18,7 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-_check() {
+check() {
   cd "$srcdir/$_pkgname-$pkgver"
   pytest
 }
@@ -29,4 +29,4 @@ package() {
   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('babe83c0cfdfe1a57b484d22a6abed2f1b603657513243234fccdc7dd3191bd58f730111e0c645a8d37ff927923e4da8e3167cc99ee0952d909eb80c25c20db8')
+sha512sums=('d719d5851cb4b63f1658c433d984c5c2a1cce9a21f1ea76bd8d425693826285c24871baa81e1397df54d3b888ec2bfe4ed6a5328f55dc16fdb6875e7c9afbdee')
