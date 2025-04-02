@@ -2,8 +2,8 @@
 
 _pkgname=sptlrx
 pkgname=$_pkgname-git
-pkgver=1.2.2.r14.be71eb5
-pkgrel=2
+pkgver=1.2.3.r0.a8ee388
+pkgrel=1
 pkgdesc='Synchronized lyrics in your terminal'
 arch=(x86_64)
 url=https://github.com/raitonoberu/sptlrx
@@ -41,4 +41,5 @@ package() {
     install -Dm755 -t "$pkgdir"/usr/bin $_pkgname
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE
     install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname README.md
+    install -Dm644 -t "$pkgdir"/usr/share/man/man5 man/$pkgname.5
 }
