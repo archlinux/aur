@@ -10,7 +10,7 @@ pkgbase = omada-controller
 	depends = java-jsvc
 	depends = curl
 	depends = mongodb>=3
-	depends = mongodb<5
+	depends = mongodb<8
 	conflicts = omada-sdn-controller
 	source = https://static.tp-link.com/upload/software/2025/202501/20250109/Omada_SDN_Controller_v5.15.8.2_linux_x64.tar.gz
 	source = git+http://github.com/murtuzaakhtari/omada-controller-scripts.git

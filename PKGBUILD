@@ -11,7 +11,7 @@ _baseos='linux_x64'
 arch=('x86_64')
 url='https://support.omadanetworks.com/us/product/omada-software-controller/?resourceType=download'
 license=('custom')
-depends=('java-runtime=11' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<5')
+depends=('java-runtime=11' 'java-jsvc' 'curl' 'mongodb>=3' 'mongodb<8')
 makedepends=('git')
 #provides=('sdn-controller')
 conflicts=('omada-sdn-controller')
