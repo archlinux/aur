@@ -1,0 +1,28 @@
+pkgbase = rime-wanxiang-data
+	pkgdesc = 万象词库
+	pkgver = 20250402
+	pkgrel = 1
+	url = https://github.com/amzxyz/RIME-LMDG
+	arch = any
+	license = CC-BY-4.0
+	makedepends = rime-prelude
+	makedepends = rime-essay
+	makedepends = sed
+	source = https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
+	source = https://github.com/amzxyz/RIME-LMDG/releases/download/dict-nightly/cn_dicts.zip
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.1.tar.gz
+	sha256sums = 28a34da7f25ae6edbb9906abd9aecb4cf31f0ec004709a23bf602fc1630cafb6
+	sha256sums = f5009c5146f73db291e3e0e295be038b30259e4355ed4c0cd98b7634061c3b53
+	sha256sums = 79e62930d9fd08f583cd94750d55ca46701588744a8df413b199ff4aae851a02
+
+pkgname = rime-wanxiang-data
+	pkgdesc = 万象词库 Meta 包
+	depends = rime-wanxiang-gram-zh-hans
+	depends = rime-wanxiang-dict-cn
+
+pkgname = rime-wanxiang-gram-zh-hans
+	pkgdesc = 万象词库——语法模型
+	replaces = rime-lmdg
+
+pkgname = rime-wanxiang-dict-cn
+	pkgdesc = 万象词库——中文词库
