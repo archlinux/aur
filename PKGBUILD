@@ -1,12 +1,12 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=quake2rtx-bin
 _pkgname=quake2rtx
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Ray-traced version of Quake II."
 arch=(x86_64)
 url="https://github.com/NVIDIA/Q2RTX"
-license=('GPL')
+license=('GPL-2.0-or-later')
 groups=()
 depends=(zlib curl sdl2 vulkan-headers vulkan-driver)
 makedepends=()
@@ -16,7 +16,7 @@ provides=('quake2rtx')
 conflicts=('quake2rtx')
 replaces=()
 source=("https://github.com/NVIDIA/Q2RTX/releases/download/v${pkgver}/q2rtx-${pkgver}-linux.tar.gz" "https://github.com/NVIDIA/Q2RTX/raw/master/setup/q2rtx.png" "https://github.com/NVIDIA/Q2RTX/raw/master/setup/q2rtx.desktop")
-sha256sums=('7309ad2f2d062275c651a5c0fc0552427682215a8099472e4778cb61517290f3'
+sha256sums=('7467a33056d8c98f9abef6bfdb02a6a2904a311ec669c59a68241cf588f93222'
             '6cd3cbcb85b9c5659ae36e5e30e618fe99ee27b5c513eb7ec1e25556bef0a323'
             'f896d23661044c1a0c9cf0ff577d2509d817869bd57dcfe78c9139e8160e75db')
 
