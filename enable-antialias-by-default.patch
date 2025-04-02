@@ -1,10 +1,10 @@
-diff -Naur ./xfce4-settings-4.19.0.orig/xfsettingsd/xsettings.xml ./xfce4-settings-4.19.0/xfsettingsd/xsettings.xml
---- ./xfce4-settings-4.19.0.orig/xfsettingsd/xsettings.xml	2023-04-19 11:06:04.033915733 -0400
-+++ ./xfce4-settings-4.19.0/xfsettingsd/xsettings.xml	2023-04-19 11:06:24.075729658 -0400
+diff -Naur ./xfce4-settings-4.21.0.orig/xfsettingsd/xsettings.xml ./xfce4-settings-4.21.0/xfsettingsd/xsettings.xml
+--- ./xfce4-settings-4.21.0.orig/xfsettingsd/xsettings.xml	2025-04-02 09:51:51.498413233 -0400
++++ ./xfce4-settings-4.21.0/xfsettingsd/xsettings.xml	2025-04-02 09:52:02.649237283 -0400
 @@ -19,9 +19,9 @@
    </property>
    <property name="Xft" type="empty">
-     <property name="DPI" type="int" value="-1"/>
+     <property name="DPI" type="int" value="96"/>
 -    <property name="Antialias" type="int" value="-1"/>
 +    <property name="Antialias" type="int" value="1"/>
      <property name="Hinting" type="int" value="-1"/>

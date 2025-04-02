@@ -2,25 +2,24 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.19.4
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Settings manager for xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('exo' 'garcon' 'libxfce4ui>=4.19.5' 'xfconf' 'libnotify' 'libcanberra'
+depends=('exo' 'garcon' 'libxfce4ui>=4.21.0' 'xfconf' 'libnotify' 'libcanberra'
          'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra'
          'wayland' 'gtk-layer-shell')
-makedepends=('xf86-input-libinput' 'glib2-devel')
+makedepends=('meson' 'xfce4-dev-tools' 'xf86-input-libinput' 'glib2-devel')
 optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling')
-
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2"
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
         'enable-antialias-by-default.patch')
-sha256sums=('a18885b66d255dc7ea8e95b77bc6283ae3388adc280ba287079dcb2207dc23af'
-            '25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac')
+sha256sums=('7190c72917577be4eeb474d9978ade4a254653b34882df784c419578f490f37a'
+            'fea2dd8ace227a7e3ebaea687eae43680595d8fd6e1ade532a1e62805c5f0f14')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -30,23 +29,15 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  local meson_options=(
+    -D x11=enabled
+    -D wayland=enabled
+  )
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --enable-xrandr \
-    --enable-xcursor \
-    --enable-libnotify \
-    --enable-libxklavier \
-    --enable-pluggable-dialogs \
-    --enable-sound-settings \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }

@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce
-	pkgver = 4.19.4
+	pkgver = 4.21.0
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = i686
@@ -8,12 +8,14 @@ pkgbase = xfce4-settings-devel
 	arch = armv7h
 	arch = aarch64
 	groups = xfce4-devel
-	license = GPL2
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = xfce4-dev-tools
 	makedepends = xf86-input-libinput
 	makedepends = glib2-devel
 	depends = exo
 	depends = garcon
-	depends = libxfce4ui>=4.19.5
+	depends = libxfce4ui>=4.21.0
 	depends = xfconf
 	depends = libnotify
 	depends = libcanberra
@@ -24,11 +26,11 @@ pkgbase = xfce4-settings-devel
 	depends = wayland
 	depends = gtk-layer-shell
 	optdepends = python: xfce4-compose-mail -- "mailto:" URI handling
-	provides = xfce4-settings=4.19.4
+	provides = xfce4-settings=4.21.0
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.19/xfce4-settings-4.19.4.tar.bz2
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.21/xfce4-settings-4.21.0.tar.xz
 	source = enable-antialias-by-default.patch
-	sha256sums = a18885b66d255dc7ea8e95b77bc6283ae3388adc280ba287079dcb2207dc23af
-	sha256sums = 25176aa463740d344c194d94771b7bfd9550809fd2ecd0e86acceb925afcf1ac
+	sha256sums = 7190c72917577be4eeb474d9978ade4a254653b34882df784c419578f490f37a
+	sha256sums = fea2dd8ace227a7e3ebaea687eae43680595d8fd6e1ade532a1e62805c5f0f14
 
 pkgname = xfce4-settings-devel
