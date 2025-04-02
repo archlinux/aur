@@ -2,7 +2,7 @@
 _base=loopy
 pkgname=python-${_base}
 pkgdesc="A code generator for array-based code on CPUs and GPUs"
-pkgver=2024.1
+pkgver=2025.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/inducer/${_base}"
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pyopencl)
 optdepends=('python-pyopencl: for PyOpenCL support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('29c7dab05c96f49ac6de2f6bab95fa9ac2fa7c78486a72362e914ed89eacecf20fce64ec411cee73a65d2d4badb4489d5ebe90c1d297b923227630503e447e64')
+sha512sums=('3db111d1d6417f157c5f819ec68d03bdb8e3b5dfddd86edbe23f3d95919eab922151cc6f7b49c15355b3ec1c383c8d83ea45f245ab948b70bed15a6c1a267fbb')
 
 build() {
   cd ${_base}-${pkgver}
