@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-diffutils-git
-pkgver=0.4.2.r49.g009d64a
+pkgver=0.4.2.r53.g9bc5348
 pkgrel=1
 pkgdesc="Rust implementation of diffutils"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ package() {
   for path in "$pkgdir/usr/bin"/*; do
     dir=$(dirname $path)
     basename=$(basename $path)
-    mv "$dir/$basename" "$dir/uutils-$basename"
+    mv "$dir/$basename" "$dir/uu-$basename"
   done
 
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/uutils-diffutils"

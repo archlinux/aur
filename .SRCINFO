@@ -1,6 +1,6 @@
 pkgbase = uutils-diffutils-git
 	pkgdesc = Rust implementation of diffutils
-	pkgver = 0.4.2.r49.g009d64a
+	pkgver = 0.4.2.r53.g9bc5348
 	pkgrel = 1
 	url = https://github.com/uutils/diffutils
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = uutils-diffutils-git
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	provides = uutils-diffutils=0.4.2.r49.g009d64a
+	provides = uutils-diffutils=0.4.2.r53.g9bc5348
 	conflicts = uutils-diffutils
 	source = git+https://github.com/uutils/diffutils.git
 	sha256sums = SKIP
