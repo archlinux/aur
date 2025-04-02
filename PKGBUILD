@@ -4,8 +4,8 @@
 
 pkgname='gut'
 pkgver=0.3.2
-pkgrel=1
-pkgdesc='An easy-to-use git client'
+pkgrel=2
+pkgdesc='A beginner friendly porcelain for git'
 arch=('aarch64' 'x86_64')
 url="https://github.com/julien040/$pkgname"
 license=('MIT')  # SPDX-License-Identifier: MIT
