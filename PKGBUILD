@@ -2,10 +2,10 @@
 
 pkgname=s
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow."
 arch=('i686' 'x86_64')
-url="http://github.com/zquestz/s"
+url="https://github.com/zquestz/s"
 license=('MIT')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
