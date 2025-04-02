@@ -1,11 +1,12 @@
 pkgbase = jcal-git
 	pkgdesc = Jalali calendar is a small and portable free software library to manipulate date and time in Jalali calendar system
 	pkgver = 0.5.1.r13.g3cb54e5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/jcal/
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = automake
 	depends = readline
 	provides = jcal
 	source = git+https://github.com/persiancal/jcal.git

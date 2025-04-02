@@ -5,7 +5,7 @@ pkgname='jcal-git'
 _gitname=${pkgname%-git}
 #The real value will be calculated by pkgver() function
 pkgver=0.5.1.r13.g3cb54e5
-pkgrel=2
+pkgrel=3
  
 pkgdesc="Jalali calendar is a small and portable free software library to manipulate date and time in Jalali calendar system"
 url="http://www.nongnu.org/jcal/"
@@ -14,8 +14,7 @@ arch=('any')
 license=('GPL3')
 provides=('jcal') 
 depends=('readline')
-makedepends=('git')
-builddepends=('automake')
+makedepends=('git' 'automake')
 source=('git+https://github.com/persiancal/jcal.git')
 md5sums=('SKIP')
  
