@@ -2,35 +2,29 @@
 
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
-pkgver=4.19.4
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Application finder for Xfce (development release)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-appfinder/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('libxfce4ui' 'garcon' 'xfconf' 'hicolor-icon-theme')
-rovides=("${_pkgname}=${pkgver}")
+depends=('libxfce4ui>=4.21.0' 'garcon' 'xfconf' 'hicolor-icon-theme')
+makedepends=('meson')
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
-source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('86e4cb953206ca2659fef9d26f0ee7992b8f4b7478d530fc93d1a78c749cbf37')
+source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.xz")
+sha256sums=('e3befc3e73d2315074eb88933f2b042c5b417f4f7f24be9bd4f4508a091037b7')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  local meson_options=(
+  )
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
-
