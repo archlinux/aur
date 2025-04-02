@@ -1,5 +1,6 @@
-# Maintainer: Ns2Kracy <2220496937@qq.com>
-# Maintainer: CorrectRoadH <correctroadh@gmail.com>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Ns2Kracy <2220496937@qq.com>
+# Contributor: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-app-management
 pkgver=0.4.16
 pkgrel=1
@@ -12,7 +13,7 @@ backup=('etc/casaos/app-management.conf')
 
 source_x86_64=(
 	${url}/releases/download/v${pkgver}-alpha2/linux-amd64-${pkgname}-v${pkgver}-alpha2.tar.gz
-    ${url}/releases/download/v${pkgver}-alpha2/linux-amd64-${pkgname}-migration-tool-v${pkgver}-alpha2.tar.gz
+    ${url}/releases/download/v${pkgver}/linux-amd64-${pkgname}-migration-tool-v${pkgver}-alpha2.tar.gz
 )
 source_aarch64=(
     ${url}/releases/download/v${pkgver}-alpha2/linux-arm64-${pkgname}-v${pkgver}-alpha2.tar.gz
