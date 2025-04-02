@@ -1,0 +1,4 @@
+[pcompiler]
+source = "git"
+git = "https://github.com/kipr/pcompiler.git"
+prefix = "v"
