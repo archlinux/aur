@@ -1,0 +1,20 @@
+pkgbase = dbptk-desktop-bin
+	pkgdesc = A cross-platform app built on Electron that uses DBPTK UI as a viewer for relational databases.(Prebuilt version.Use system-wide electron)
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/keeps/dbptk-desktop
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = asar
+	makedepends = fuse2
+	depends = electron34
+	depends = python
+	depends = python-lxml
+	provides = dbptk-desktop=3.0.4
+	conflicts = dbptk-desktop
+	source = dbptk-desktop-3.0.4.AppImage::https://github.com/keeps/dbptk-desktop/releases/download/v3.0.4/dbptk-desktop-3.0.4-linux-x86_64.AppImage
+	source = dbptk-desktop.sh
+	sha256sums = 7f04f6d3cc9b5cd44660b41fb17435873fca84d1a22ac705a7e40605afb4f236
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = dbptk-desktop-bin
