@@ -2,4 +2,3 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!disable-update-check.patch

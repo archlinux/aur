@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-git
-pkgver=r1843.68ddf01
+pkgver=r1847.e919116
 pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
@@ -11,21 +11,12 @@ provides=('jellyfin-media-player')
 conflicts=('jellyfin-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git' 'python')
-source=('git+https://github.com/jellyfin/jellyfin-media-player.git'
-    "disable-update-check.patch")
-sha256sums=('SKIP'
-            '23727ef8f727ac17af228f29aa5508230caac9d02f37d6c12908fcf50d4f382a')
+source=('git+https://github.com/jellyfin/jellyfin-media-player.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd jellyfin-media-player
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd jellyfin-media-player
-  for patch_file in ../*.patch; do
-    patch -Np1 < "${patch_file}"
-  done
 }
 
 build() {
@@ -37,6 +28,7 @@ build() {
     -DCMAKE_BUILD_TYPE='Debug' \
     -DCMAKE_INSTALL_PREFIX='/usr/' \
     -DCMAKE_SKIP_RPATH=1 \
+    -DCHECK_FOR_UPDATES=OFF \
     -DQTROOT=build/qt \
     -Wno-dev
   cmake --build build
