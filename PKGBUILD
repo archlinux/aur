@@ -2,15 +2,15 @@
 
 pkgname=coreutils-uutils-symlink
 pkgver=0.0.29
-pkgrel=2
+pkgrel=3
 pkgdesc="(use at own risk) symlinks to replace coreutils with uutils"
 arch=('x86_64')
-license=('MIT')
+license=('GPL3' 'MIT')
 url="https://uutils.github.io/"
 
-depends=(uutils-{coreutils,findutils-bin})
-provides=(coreutils findutils b3sum)
-conflicts=(coreutils findutils b3sum sha3sum coreutils-uutils)
+depends=(uutils-coreutils)
+conflicts=(coreutils b3sum sha3sum coreutils-uutils)
+provides=(coreutils b3sum)
 
 package() {
 	mkdir -p "$pkgdir"/usr/bin
@@ -18,7 +18,7 @@ package() {
 	do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
 	done
 	rm "$pkgdir"/usr/bin/{kill,more,uptime}
-	for f in find xargs #Is diffutils-bin incomplete?
-	do ln -sf /usr/bin/uutils-"$f" "$pkgdir"/usr/bin/"$f"
-	done
+	#for f in find xargs #error in makepkg.
+	#do ln -sf /usr/bin/uutils-"$f" "$pkgdir"/usr/bin/"$f"
+	#done
 }
