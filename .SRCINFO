@@ -1,0 +1,16 @@
+pkgbase = coreutils-uutils-symlink
+	pkgdesc = (use at own risk) symlinks to replace coreutils with uutils
+	pkgver = 0.0.29
+	pkgrel = 1
+	url = https://uutils.github.io/
+	arch = x86_64
+	license = MIT
+	depends = uutils-coreutils
+	provides = coreutils
+	provides = b3sum
+	conflicts = coreutils
+	conflicts = b3sum
+	conflicts = sha3sum
+	conflicts = coreutils-uutils
+
+pkgname = coreutils-uutils-symlink
