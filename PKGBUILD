@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 
 pkgname=sptlrx
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Synchronized lyrics in your terminal'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 
 makedepends=(go)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(779190d18de56d663a737797d2350453052c94456b223595a65dfcce4606c4b5)
+sha256sums=(19f704a9eb1ce689912ac342794f028bbc8dc04ecfb5edd64017ee1c46d54e94)
 
 build () {
     cd "$srcdir"/$pkgname-$pkgver
@@ -32,4 +32,5 @@ package() {
     install -Dm755 -t "$pkgdir"/usr/bin $pkgname
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
     install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README.md
+    install -Dm644 -t "$pkgdir"/usr/share/man/man5 man/$pkgname.5
 }
