@@ -2,35 +2,31 @@
 
 _pkgname=garcon
 pkgname=${_pkgname}-devel
-pkgver=4.19.3
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Implementation of the freedesktop.org menu specification"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/tumbler/start"
-license=('LGPL')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('libxfce4ui')
-makedepends=('python' 'gobject-introspection')
+depends=('libxfce4ui>=4.21.0')
+makedepends=('meson' 'xfce4-dev-tools' 'gobject-introspection' 'gtk-doc')
 replaces=('libxfce4menu')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/garcon/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('21e3f6abcd2ee20aa8bbe8f2e3fa7abc553c45a2df9dddb45a7188ff35aeb528')
+source=("https://archive.xfce.org/src/xfce/garcon/${pkgver%.*}/$_pkgname-$pkgver.tar.xz")
+sha256sums=('3acc3f6b81059199f4e6646da7b6ca39edf84ea90dd3ff87088ffca6aa108269')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  local meson_options=(
+    -D gtk-doc=true
+  )
 
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
+
 package() {
-  cd "${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
