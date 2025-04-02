@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Mazhar Hussain <realmazharhussain@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=daikhan-git
 pkgver=r615.13c3260
