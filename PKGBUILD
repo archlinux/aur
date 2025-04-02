@@ -2,8 +2,8 @@
 
 pkgname=python-biosutilities
 _name=${pkgname#python-}
-pkgver=25.2.23
-pkgrel=5
+pkgver=25.4.2
+pkgrel=1
 epoch=
 pkgdesc="Various BIOS Utilities for Modding/Research"
 arch=('any')
@@ -40,7 +40,7 @@ source=(
     "main-$pkgver.py::https://github.com/platomav/BIOSUtilities/raw/refs/heads/main/main.py"
 )
 noextract=()
-sha256sums=('cda4caf7bb92f1cc1f0d610ea0e6b8b8888e32a3998a84685b44bb6b5a78c467'
+sha256sums=('e2bcc4a2b73905b3b8c8621c3cf4fb5440d5fbd1df74fd8603e85e443adb27ce'
             '5a4b7e3b7a46de5e6c3477f3157ffb6e9860a3fe5208f614ce6ffdbbda2579a4')
 
 prepare() {
