@@ -3,7 +3,7 @@
 _gemname='dry-types'
 pkgname="ruby-${_gemname}"
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
