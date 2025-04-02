@@ -1,6 +1,6 @@
 pkgbase = fancylock-bin
 	pkgdesc = A media-playing screen locker (precompiled binary)
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/tuxx/fancylock
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fancylock-bin
 	depends = pam
 	conflicts = fancylock
 	provides = fancylock
-	source = https://github.com/tuxx/fancylock/releases/download/v0.0.6/fancylock-linux-amd64.tar.gz
+	source = https://github.com/tuxx/fancylock/releases/download/v0.0.7/fancylock-linux-amd64.tar.gz
 	sha256sums = SKIP
 	options = !debug
 
