@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps
-pkgver=1.7.11
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Linglong is the container application toolkit of deepin.'
 arch=($CARCH)
@@ -51,7 +51,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}.install"
 )
-sha256sums=('960a17b3bc038fb49049930ad58af00a4bae7cadbe4cb094bcdc0cf384405717'
+sha256sums=('3d7813d17aa6a7c6cb2961203a335c76385936e0ae2ce7dad7a0bb88301a6d0c'
             '2ede7bc18aad4065a5c3f4552af1dde0b029099d572670b118a1453bf3d75f66')
 
 build() {
