@@ -3,7 +3,7 @@
 _pkgname=kubectl-argo-rollouts
 _pkgname_upstream_suffix=-linux-amd64
 pkgname=$_pkgname-bin
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Kubectl plugin for argo rollouts"
 arch=(x86_64)
@@ -11,8 +11,8 @@ depends=(kubectl)
 url="https://github.com/argoproj/argo-rollouts"
 license=(Apache-2.0)
 source=($_pkgname::https://github.com/argoproj/argo-rollouts/releases/download/v$pkgver/$_pkgname$_pkgname_upstream_suffix)
-sha512sums=('49208c43dbe8738d4bc94b04492c637b3df2eeda007939e11fb99eb96575e56547dc6528625310d923b4cff6d2230d51da8439ac06481a91e74c3710db802160')
-b2sums=('2570abc9817973e19ee54aee24eb58ab27b34a13200be94e184e0414989620cdfa4a055991f74b01d2710ddd7433e5ad40863fdc524ceb2a5239659c7ff791ea')
+sha512sums=('ab809310816345062f8db4fb5d3926ea504ecdc70a3eb3290c44349391caf8b0dc3f6509489650eddf699461aaa63936b50e21883995629fd60e6e52bb0fe835')
+b2sums=('49d18ccce0f610e1e0f77d084cd5d40b2d810d25b14791e9929a8bc131daaeaaae776dedd59a672e18251d9fda94aacf32ca70c366724cf0f7fc089ba109a986')
 
 build() {
   chmod +x $_pkgname
