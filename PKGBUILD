@@ -60,6 +60,8 @@ prepare() {
   echo "Done patch for Ruby 3.2"
 }
 
+# disabling XSLT to build https://github.com/qtwebkit/qtwebkit/issues/1097
+
 build() {
   local _flags=(
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
@@ -67,6 +69,8 @@ build() {
     -DUSE_LD_GOLD=OFF
     -DENABLE_XSLT=OFF
     -DENABLE_TOOLS=OFF
+    -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   )
 
   cmake -B build -S "qtwebkit-${_pkgver}" -Wno-dev \
@@ -75,8 +79,6 @@ build() {
     "${_flags[@]}"
 
   cmake --build build
-
-# disabling XSLT to build https://github.com/qtwebkit/qtwebkit/issues/1097
 }
 
 package() {
