@@ -5,15 +5,21 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=qiv
-pkgver=2.3.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Quick Image Viewer (qiv) is a very small and fast GDK/Imlib image viewer"
 arch=('x86_64')
 url="https://spiegl.de/qiv/"
 license=('GPL2')
-depends=('file' 'gtk2' 'imlib2' 'libexif' 'lcms2' 'desktop-file-utils')
-source=(https://codeberg.org/ciberandy/qiv/archive/v$pkgver.zip)
-sha256sums=('f6dec9b4ac649da5f49b3bbcd5498d210093dc1bc08e89a66d3983580478c3e3')
+depends=('file' 'gtk3' 'gdk-pixbuf2' 'libexif' 'lcms2' 'desktop-file-utils')
+source=(https://codeberg.org/ciberandy/qiv/archive/v$pkgver.zip 0001-fixes-build-failure-with-gdk3.patch)
+sha256sums=('58ae9e05ce09a619a66bc3027fd92d295e5bc0932a64cf6da3c02ac8618aacf2'
+            'd4bf58dfcb77e8769195888108a611bf4821c4453c330a7a14ac2bf04aff6363')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch -p 1 -i "$srcdir/0001-fixes-build-failure-with-gdk3.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname"
