@@ -3,7 +3,7 @@ _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
 pkgver=1.7.11
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -20,6 +20,7 @@ depends=(
     'nspr'
     'alsa-lib'
     'nss'
+    "electron${_electronversion}"
 )
 options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
