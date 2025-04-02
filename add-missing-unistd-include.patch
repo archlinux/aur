@@ -1,0 +1,11 @@
+diff --git a/aigunconstraint.c b/aigunconstraint.c
+--- a/aigunconstraint.c
++++ b/aigunconstraint.c
+@@ -26,6 +26,7 @@ IN THE SOFTWARE.
+ #include <stdarg.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+
+ static const char * USAGE =
+ "usage: aigunconstraint [-h][-v] [<input> [<output>]]\n"

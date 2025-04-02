@@ -1,22 +1,26 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=aiger
 pkgver=1.9.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A format, library and set of utilities for And-Inverter Graphs (AIGs)"
 arch=(x86_64)
 url="http://fmv.jku.at/aiger/"
 license=('MIT' 'BSD')
 source=("http://fmv.jku.at/aiger/$pkgname-$pkgver.tar.gz"
         "makefile-install.patch"
-        "configure-sh-commas-in-cflags.patch")
+        "configure-sh-commas-in-cflags.patch"
+        "add-missing-unistd-include.patch"
+)
 sha256sums=('1e50d3db36f5dc5ed0e57aa4c448b9bcf82865f01736dde1f32f390b780350c7'
             '7103083de75ad6af76ee5272ba3c372741ccf1bcbd88fee6902eba8f2a0e416e'
-            'e7abca2a8ed4a3fd36d8b65c2b9e7ab79210729f23b3130c5065f4c1b1ec1234')
+            'e7abca2a8ed4a3fd36d8b65c2b9e7ab79210729f23b3130c5065f4c1b1ec1234'
+            '7b4bc90f9dfa8fc39962dda6821c757926f42da629e678bb8c1cd71dcd01e65a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 < "$srcdir/makefile-install.patch"
 	patch -p1 < "$srcdir/configure-sh-commas-in-cflags.patch"
+	patch -p1 < "$srcdir/add-missing-unistd-include.patch"
 }
 
 build() {
