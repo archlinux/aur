@@ -1,0 +1,4 @@
+[blackbox-tools-inav]
+source = "git"
+git = "https://github.com/iNavFlight/blackbox-tools.git"
+prefix = "v"
