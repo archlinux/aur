@@ -1,11 +1,11 @@
 # Maintainer: Nikita Almakov <nikita.almakov@gmail.com>
 
 pkgname=rate-mirrors-bin
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool - pre-built with musl"
 url="https://github.com/westandskif/rate-mirrors"
-license=('custom')
+license=('CC-BY-NC-SA-3.0')
 options=(!lto)
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v${pkgver}/rate-mirrors-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/westandskif/rate-mirrors/releases/download/v${pkgver}/rate-mirrors-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
@@ -27,5 +27,5 @@ package() {
 }
 
 #vim: syntax=sh
-sha256sums_x86_64=('ded88187cc251d94432696c6020b585bae6ad7eec75d57972805c9dfdccbdfc0')
-sha256sums_aarch64=('6f1f096d77a3cab17b82114a27c9d97608a8df1288ccd055b4da53d68ecbad4d')
+sha256sums_x86_64=('2ba214321532b9342fd3c39f38458a932663cf7df3d48b44dbffe950725f5a0b')
+sha256sums_aarch64=('6c0338384c49189acc0f64d54afc7c4a6c8130d197b645b024a5fee253403ca7')
