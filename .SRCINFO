@@ -1,13 +1,20 @@
 pkgbase = premake4
 	pkgdesc = A simple build configuration and project generation tool
 	pkgver = 4.4beta5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://premake.github.io
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = glibc
+	depends = lua51
 	source = premake-4.4-beta5.zip::https://downloads.sourceforge.net/project/premake/Premake/4.4/premake-4.4-beta5-src.zip
+	source = premake4_build_flags.patch
+	source = premake4_lua.patch
+	source = premake4_manpage.patch
 	sha256sums = 0fa1ed02c5229d931e87995123cdb11d44fcc8bd99bba8e8bb1bbc0aaa798161
+	sha256sums = 62b44ad425c7af970214b21e54c78948c8042bf5b13edd899c5c7dd00835022a
+	sha256sums = 227245b893eed1b76b9c701b44670e5c8d524242be5a7e2173800c8bfe065d5e
+	sha256sums = f3c8b20fa231a496f41781ad449f75ec36555d216166cd77c2b709acf62693f6
 
 pkgname = premake4

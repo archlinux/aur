@@ -1,0 +1,272 @@
+--- a/build/gmake.unix/Premake4.make
++++ b/build/gmake.unix/Premake4.make
+@@ -23,16 +23,14 @@
+   OBJDIR     = obj/Release
+   TARGETDIR  = ../../bin/release
+   TARGET     = $(TARGETDIR)/premake4
+-  DEFINES   += -DNDEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
++  DEFINES   += -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+   INCLUDES  += -I../../src/host/lua-5.1.4/src
+-  ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -Os
+-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
+-  ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+-  ALL_LDFLAGS   += $(LDFLAGS) -L. -s -rdynamic
++  ALL_CFLAGS    += $(CFLAGS)   $(DEFINES) $(INCLUDES)
++  ALL_CXXFLAGS  += $(CXXFLAGS) $(DEFINES) $(INCLUDES)
++  ALL_LDFLAGS   += $(LDFLAGS)
+   LDDEPS    +=
+   LIBS      += $(LDDEPS) -lm -ldl
+-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
++  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+   define PREBUILDCMDS
+   endef
+   define PRELINKCMDS
+@@ -167,198 +165,198 @@
+ ifneq (,$(PCH))
+ $(GCH): $(PCH)
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) -x c-header $(ALL_CFLAGS) -MMD -MP $(DEFINES) $(INCLUDES) -o "$@" -MF "$(@:%.gch=%.d)" -c "$<"
++	$(SILENT) $(CC) -x c-header $(ALL_CFLAGS) -MP $(DEFINES) $(INCLUDES) -o "$@" "$(@:%.gch)" -c "$<"
+ endif
+ 
+ $(OBJDIR)/os_chdir.o: ../../src/host/os_chdir.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_copyfile.o: ../../src/host/os_copyfile.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_getcwd.o: ../../src/host/os_getcwd.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_getversion.o: ../../src/host/os_getversion.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_is64bit.o: ../../src/host/os_is64bit.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_isdir.o: ../../src/host/os_isdir.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_isfile.o: ../../src/host/os_isfile.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_match.o: ../../src/host/os_match.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_mkdir.o: ../../src/host/os_mkdir.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_pathsearch.o: ../../src/host/os_pathsearch.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_rmdir.o: ../../src/host/os_rmdir.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_stat.o: ../../src/host/os_stat.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/os_uuid.o: ../../src/host/os_uuid.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/path_isabsolute.o: ../../src/host/path_isabsolute.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/premake.o: ../../src/host/premake.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/premake_main.o: ../../src/host/premake_main.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/scripts.o: ../../src/host/scripts.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/string_endswith.o: ../../src/host/string_endswith.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lapi.o: ../../src/host/lua-5.1.4/src/lapi.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lauxlib.o: ../../src/host/lua-5.1.4/src/lauxlib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lbaselib.o: ../../src/host/lua-5.1.4/src/lbaselib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lcode.o: ../../src/host/lua-5.1.4/src/lcode.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ldblib.o: ../../src/host/lua-5.1.4/src/ldblib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ldebug.o: ../../src/host/lua-5.1.4/src/ldebug.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ldo.o: ../../src/host/lua-5.1.4/src/ldo.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ldump.o: ../../src/host/lua-5.1.4/src/ldump.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lfunc.o: ../../src/host/lua-5.1.4/src/lfunc.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lgc.o: ../../src/host/lua-5.1.4/src/lgc.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/linit.o: ../../src/host/lua-5.1.4/src/linit.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/liolib.o: ../../src/host/lua-5.1.4/src/liolib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/llex.o: ../../src/host/lua-5.1.4/src/llex.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lmathlib.o: ../../src/host/lua-5.1.4/src/lmathlib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lmem.o: ../../src/host/lua-5.1.4/src/lmem.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/loadlib.o: ../../src/host/lua-5.1.4/src/loadlib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lobject.o: ../../src/host/lua-5.1.4/src/lobject.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lopcodes.o: ../../src/host/lua-5.1.4/src/lopcodes.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/loslib.o: ../../src/host/lua-5.1.4/src/loslib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lparser.o: ../../src/host/lua-5.1.4/src/lparser.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lstate.o: ../../src/host/lua-5.1.4/src/lstate.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lstring.o: ../../src/host/lua-5.1.4/src/lstring.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lstrlib.o: ../../src/host/lua-5.1.4/src/lstrlib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ltable.o: ../../src/host/lua-5.1.4/src/ltable.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ltablib.o: ../../src/host/lua-5.1.4/src/ltablib.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/ltm.o: ../../src/host/lua-5.1.4/src/ltm.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lundump.o: ../../src/host/lua-5.1.4/src/lundump.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lvm.o: ../../src/host/lua-5.1.4/src/lvm.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+ $(OBJDIR)/lzio.o: ../../src/host/lua-5.1.4/src/lzio.c
+ 	@echo $(notdir $<)
+-	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" -MF $(@:%.o=%.d) -c "$<"
++	$(SILENT) $(CC) $(ALL_CFLAGS) $(FORCE_INCLUDE) -o "$@" $(@:%.o) -c "$<"
+ 
+--include $(OBJECTS:%.o=%.d)
++-include $(OBJECTS:%.o)
+ ifneq (,$(PCH))
+   -include $(OBJDIR)/$(notdir $(PCH)).d
+ endif
