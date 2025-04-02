@@ -1,6 +1,6 @@
 pkgbase = opn
 	pkgdesc = Open files with the chosen application from the terminal
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/MatthiasKunnen/opn
 	arch = i686
@@ -15,9 +15,11 @@ pkgbase = opn
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = go>=1.23
+	depends = shared-mime-info
 	depends = xdg-utils
 	options = !lto
-	source = opn::git+https://github.com/MatthiasKunnen/opn?signed#tag=v0.3.1
-	b2sums = c8a99540bae3703d7c8ebc751105279b13c3209492ed75621dc0c5660664b96b76c285181213d66dbd3df2f9f701fac0fbb24efd412b6a418a2d2ace6a63f1cd
+	source = opn::git+https://github.com/MatthiasKunnen/opn?signed#tag=v0.4.0
+	validpgpkeys = B671D7AA931EE8E445553211E4A91905E1F26CB1
+	b2sums = b337ff05373901eebae2088500b424afc706b88d181fd5a05b57cf699a16e3f1eac839829c517c3362868c9123947a3f5243696094d7db2701314faf170503d6
 
 pkgname = opn

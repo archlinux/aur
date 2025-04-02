@@ -1,7 +1,7 @@
 # Maintainer: Matthias Kunnen <matthias.kunnen@gmail.com>
 # shellcheck disable=SC2034,SC2164
 pkgname=opn
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Open files with the chosen application from the terminal'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7l' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -11,7 +11,7 @@ makedepends=(
 	git
 	'go>=1.23'
 )
-depends=('xdg-utils')
+depends=('shared-mime-info' 'xdg-utils')
 
 # While it seems to build at the moment, let's not try our luck.
 # https://github.com/golang/go/issues/43505
@@ -28,15 +28,17 @@ source=("$pkgname::git+$url?signed#tag=v$pkgver")
 # - https://github.com/orgs/community/discussions/46034
 # This could lead to these checksums suddenly failing.
 #
-# GPG is already used to sign commits and tags but would require users to add the key to their
-# keyring which adds friction. For now, we won't use it though this might change later.
-#
 # The user must be protected from the tag being moved to another commit.
 # With the existing system, this requires checksums.
 #
 # If you want to make sure that these checksums match the source code, clone the repo and use:
 # GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null git -c core.abbrev=no archive --format tar v$pkgver | b2sum
-b2sums=('c8a99540bae3703d7c8ebc751105279b13c3209492ed75621dc0c5660664b96b76c285181213d66dbd3df2f9f701fac0fbb24efd412b6a418a2d2ace6a63f1cd')
+b2sums=('b337ff05373901eebae2088500b424afc706b88d181fd5a05b57cf699a16e3f1eac839829c517c3362868c9123947a3f5243696094d7db2701314faf170503d6')
+
+# Get the key from:
+# 1. The aur source under keys/pgp with gpg --import keys/pgp/*.asc
+# 2. A keyserver: gpg --receive-keys FINGERPRINT_HERE
+validpgpkeys=('B671D7AA931EE8E445553211E4A91905E1F26CB1') # Matthias Kunnen <matthias.kunnen@gmail.com>
 
 build() {
 	cd "$pkgname"
