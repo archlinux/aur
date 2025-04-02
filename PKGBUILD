@@ -2,16 +2,16 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=4.19.5
+pkgver=4.21.0
 pkgrel=1
 pkgdesc='File manager for Xfce (development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
 url='https://thunar.xfce.org'
-depends=('desktop-file-utils' 'exo>=4.19.0' 'gtk3' 'hicolor-icon-theme' 'libgudev'
-         'libexif' 'libnotify' 'libpng' 'libxfce4ui' 'libxfce4util')
-makedepends=('xfce4-panel' 'gtk-doc' 'gobject-introspection')
+depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libgudev'
+         'libexif' 'libnotify' 'libpng' 'libxfce4ui>=4.21.0' 'libxfce4util')
+makedepends=('meson' 'xfce4-dev-tools' 'xfce4-panel' 'gtk-doc' 'gobject-introspection')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
             'xfce4-panel: trash applet'
             'tumbler: for thumbnail previews'
@@ -21,27 +21,20 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
             'catfish: file search')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('16a4b9af80b5ea25655b522e97963ac589ef84b855ea7010c85fb3be61d396a0')
+source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('3f9bd698ab9dc14e63102cdb9853c48d3fc5b1b9753bfec47b8643d2f472b99e')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    ./configure \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --libexecdir=/usr/lib \
-        --localstatedir=/var \
-        --disable-static \
-        --enable-gio-unix \
-        --enable-gudev \
-        --enable-exif \
-        --enable-pcre \
-        --enable-gtk-doc \
-        --disable-debug
-    make
+  local meson_options=(
+    -D gtk-doc=true
+    -D gudev=enabled
+    -D exif=enabled
+  )
+
+  arch-meson "${_pkgname}-${pkgver}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
