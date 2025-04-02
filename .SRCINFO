@@ -1,6 +1,6 @@
 pkgbase = gnome-rtfm
 	pkgdesc = Offline documentation browser, dash docset reader
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/hugopl/rtfm
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = gnome-rtfm
 	depends = libadwaita>=1:1.5.0
 	depends = sqlite>=3.45.2
 	depends = webkitgtk-6.0>=2.44.0
-	source = gnome-rtfm-0.6.0.tar.gz::https://github.com/hugopl/rtfm/archive/v0.6.0.tar.gz
-	sha256sums = 5d37b72b9fa0d44b855926b17fe53daa91c71ecd02b6028febae010973ab0d40
+	source = gnome-rtfm-0.6.2.tar.gz::https://github.com/hugopl/rtfm/archive/v0.6.2.tar.gz
+	sha256sums = 7bc371b2845e7d932e98d392e287fb389def8625fc86b052fb6f38478e6afb2d
 
 pkgname = gnome-rtfm
