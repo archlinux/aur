@@ -2,15 +2,15 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=24.06.r401.g0482c6d
+pkgver=24.12.r248.g05ebdee
 pkgrel=1
 epoch=1
 pkgdesc='A clone of Media Player Classic reimplemented in Qt.'
 url='https://github.com/mpc-qt/mpc-qt'
 arch=('x86_64')
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('mpv' 'qt6-svg')
-makedepends=('git' 'qt6-tools')
+makedepends=('cmake' 'git' 'qt6-tools')
 optdepends=('libva-intel-driver: backend for Intel cards'
             'udisks2: to detect available discs')
 provides=('mpc-qt')
@@ -20,18 +20,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd mpc-qt
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g;s/.master//g'
 }
 
 build() {
-  cd mpc-qt
-  qmake6 PREFIX=/usr mpc-qt.pro \
-    QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
-    QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
-    QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
-  make
+  cmake -B build -S mpc-qt \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DMPCQT_VERSION="${pkgver}"
+  cmake --build build
 }
 
 package() {
-  make -C mpc-qt INSTALL_ROOT="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
