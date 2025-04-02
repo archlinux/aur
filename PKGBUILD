@@ -3,14 +3,13 @@
 # Contributor: Mubashshir <ahmubashshir@gmail.com>
 pkgname=update-notifier
 pkgver=0.7.7
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple pacman update notifier"
 arch=(any)
 url="https://github.com/Chrysostomus/$pkgname"
-license=('custom:MIT')
+license=('MIT')
 depends=('awk'
-        'dunst>=1.3.2-2'
-        'libnotify'
+        'notification-daemon'
         'bash')
 optdepends=('yaourt: for AUR support'
         'gnome-terminal: for integration with gnome-update-notifications'
@@ -19,8 +18,8 @@ optdepends=('yaourt: for AUR support'
         'trizen: for AUR support'
         'pacaur: for AUR support')
 makedepends=('git')
-source=("git+https://github.com/Chrysostomus/$pkgname")
-md5sums=('SKIP')
+source=("git+https://github.com/Chrysostomus/$pkgname.git#commit=38cc29b60ddf79b64a602fbf6341920ebb4d43d2")
+sha256sums=('SKIP')
 
 package () {
         cd "$srcdir"
