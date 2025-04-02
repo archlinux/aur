@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-findutils-git
-pkgver=0.7.0.r17.g50b7ec6
-pkgrel=2
+pkgver=0.7.0.r83.g5235d78
+pkgrel=1
 pkgdesc="Rust implementation of findutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/findutils"
@@ -52,7 +52,7 @@ package() {
   for path in "$pkgdir/usr/bin"/*; do
     dir=$(dirname $path)
     basename=$(basename $path)
-    mv "$dir/$basename" "$dir/uutils-$basename"
+    mv "$dir/$basename" "$dir/uu-$basename"
   done
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/uutils-findutils"

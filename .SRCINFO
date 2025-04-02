@@ -1,7 +1,7 @@
 pkgbase = uutils-findutils-git
 	pkgdesc = Rust implementation of findutils
-	pkgver = 0.7.0.r17.g50b7ec6
-	pkgrel = 2
+	pkgver = 0.7.0.r83.g5235d78
+	pkgrel = 1
 	url = https://github.com/uutils/findutils
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = uutils-findutils-git
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	provides = uutils-findutils=0.7.0.r17.g50b7ec6
+	provides = uutils-findutils=0.7.0.r83.g5235d78
 	conflicts = uutils-findutils
 	source = git+https://github.com/uutils/findutils.git
 	sha256sums = SKIP
