@@ -1,0 +1,79 @@
+--- a/Makefile
++++ b/Makefile
+@@ -34,7 +34,7 @@
+ 
+ # binaries using shared libraries
+ sobin:
+-	rm -f bin/lua bin/luac
++	rm -f bin/lua$V bin/luac$V
+ 	cd src/lua; $(MAKE)
+ 	cd src/luac; $(MAKE)
+ 
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -63,7 +63,7 @@
+ 	lvm.h \
+ 	lzio.h
+ 
+-T= $(LIB)/liblua.a
++T= $(LIB)/liblua$V.a
+ 
+ all: $T
+ 
+--- a/src/lib/Makefile
++++ b/src/lib/Makefile
+@@ -10,7 +10,7 @@
+ OBJS= lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o lstrlib.o
+ SRCS= lauxlib.c lbaselib.c ldblib.c liolib.c lmathlib.c lstrlib.c
+ 
+-T= $(LIB)/liblualib.a
++T= $(LIB)/liblualib$V.a
+ 
+ all: $T
+ 
+--- a/src/lua/Makefile
++++ b/src/lua/Makefile
+@@ -9,17 +9,17 @@
+ OBJS= lua.o
+ SRCS= lua.c
+ 
+-T= $(BIN)/lua
++T= $(BIN)/lua$V
+ 
+ all: $T
+ 
+-$T: $(OBJS) $(LIB)/liblua.a $(LIB)/liblualib.a
+-	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua -llualib $(EXTRA_LIBS)
++$T: $(OBJS) $(LIB)/liblua$V.a $(LIB)/liblualib$V.a
++	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua$V -llualib$V $(EXTRA_LIBS)
+ 
+-$(LIB)/liblua.a:
++$(LIB)/liblua$V.a:
+ 	cd ..; $(MAKE)
+ 
+-$(LIB)/liblualib.a:
++$(LIB)/liblualib$V.a:
+ 	cd ../lib; $(MAKE)
+ 
+ clean:
+--- a/src/luac/Makefile
++++ b/src/luac/Makefile
+@@ -8,14 +8,14 @@
+ OBJS= dump.o luac.o opt.o print.o stubs.o
+ SRCS= dump.c luac.c opt.c print.c stubs.c luac.h print.h
+ 
+-T= $(BIN)/luac
++T= $(BIN)/luac$V
+ 
+ all: $T
+ 
+-$T: $(OBJS) $(LIB)/liblua.a
+-	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua
++$T: $(OBJS) $(LIB)/liblua$V.a
++	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua$V
+ 
+-$(LIB)/liblua.a:
++$(LIB)/liblua$V.a:
+ 	cd ..; $(MAKE)
+ 
+ clean:

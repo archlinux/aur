@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@
+ 	strip bin/lua bin/luac
+ 
+ # official installation
+-install: all strip
++install: all
+ 	mkdir -p $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN)
+ 	$(INSTALL_EXEC) bin/* $(INSTALL_BIN)
+ 	$(INSTALL_DATA) include/*.h $(INSTALL_INC)

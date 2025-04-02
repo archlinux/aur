@@ -1,0 +1,23 @@
+pkgbase = lua40
+	pkgdesc = Powerful lightweight programming language designed for extending applications
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://www.lua.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = liblua4.0.so
+	provides = liblualib4.0.so
+	source = lua-4.0.1.tar.gz::https://www.lua.org/ftp/lua-4.0.1.tar.gz
+	source = lua40_strip.patch
+	source = lua40_cflags.patch
+	source = lua40_ldflags.patch
+	source = lua40_version.patch
+	sha256sums = df746e149cf6939e90009d2e540eee918d585b4d1bc6d68b19316a050d484d2a
+	sha256sums = 6956f1e3ef68381d11bbbf3a3e0370997b83639cfeab681061c352055d416c58
+	sha256sums = 2b21e98d1629471dfa98e590cdaf9e3ea234c30aa4d3e700b45989813998bf7f
+	sha256sums = 4a77aaed0536305656fd2637f6f152411a647965e721dd0c97ba567870584a4e
+	sha256sums = d410c202a495d858b5371a16496588bcde975177776c18ba9bce13cd2304af63
+
+pkgname = lua40
