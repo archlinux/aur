@@ -2,7 +2,7 @@
 
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
-pkgver=0.25.5
+pkgver=0.25.6
 pkgrel=2
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
@@ -36,7 +36,7 @@ source=(
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
 )
-sha256sums=('41c15a53b6feb385dbf7b2fb7b5b7c7d75c5eb3acdf25d6b45e093c85f6b4f60'
+sha256sums=('4c759f531411f3fa5c9a95805e74cc7da6b10a39dd87a13b9db82c283f028570'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c')
 
