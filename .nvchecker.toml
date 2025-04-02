@@ -1,0 +1,5 @@
+[hypre]
+source = "github"
+github = "hypre-space/hypre"
+use_latest_release = "true"
+prefix = "v"
