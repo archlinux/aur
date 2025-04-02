@@ -3,7 +3,7 @@
 
 pkgname=vk-calls-bin
 pkgbasename='vk-calls'
-pkgver=1.36.23357
+pkgver=1.40.29767
 pkgrel=1
 pkgdesc="VK Calls for fast conference calls"
 arch=('x86_64')
