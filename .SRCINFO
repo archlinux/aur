@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	pkgdesc = A Gtk4/libAdwaita fork from the desktop icons project, with several enhancements, better multimonitor support, GSConnect integration. For Gnome Shell 47, 48.
-	pkgver = 95
+	pkgver = 96
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng-git
 	conflicts = gnome-shell-extension-desktop-icons
-	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=d881644a14cb5e4c6ad95103d55923421ea430f2
+	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=452da11569940cbf880060f3af2a922c2b432df5
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
