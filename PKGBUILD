@@ -1,7 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=claude-code
 _full_pkgname="@anthropic-ai/${pkgname}"
-pkgver=0.2.57
+pkgver=0.2.59
 pkgrel=1
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 	'ripgrep: enhanced file search'
 )
 source=("https://registry.npmjs.org/$_full_pkgname/-/$pkgname-$pkgver.tgz")
-b2sums=('5e623811d40e7dc67ccccc06bd24ecefefb6ea30c59aa41d25f30de7387b242a49ce5a23069c0874840c3705454c5bce8e0a34180cfa1781ac74c51375034f68')
+b2sums=('5ed828ec8b39d07be98a6cfed35dfcb65af5e9a20efa186dad8abc0f54a7e989ef2685619c3b534d570dd39d9ac9a27404a917d77977299a95f3dcf648d5f471')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
