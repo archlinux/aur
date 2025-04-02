@@ -2,16 +2,15 @@
 
 _pkgname=xfdesktop
 pkgname=${_pkgname}-git
-pkgver=4.19.2+107+g1d283aef
+pkgver=4.20.1+84+g7b300b96
 pkgrel=1
 pkgdesc="A desktop manager for Xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfdesktop/start"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 groups=('xfce4-git')
-depends=('thunar' 'garcon' 'hicolor-icon-theme' 'libwnck3'
-         'libxfce4windowing>=4.19.1' 'gtk-layer-shell')
-makedepends=('git' 'xfce4-dev-tools' 'glib2-devel')
+depends=('thunar' 'garcon' 'hicolor-icon-theme' 'libxfce4ui>=4.21.0' 'libxfce4windowing' 'gtk-layer-shell')
+makedepends=('git' 'meson' 'xfce4-dev-tools' 'glib2-devel')
 conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver%%+*}")
 replaces=('xfce4-menueditor')
@@ -25,21 +24,16 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  local meson_options=(
+    -D tests=false
+    -D x11=enabled
+    -D wayland=enabled
+  )
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --enable-thunarx \
-    --enable-notifications \
-    --enable-wayland \
-    --disable-debug
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  meson install -C build --destdir "$pkgdir"
 }
