@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=plexamp-bin
 _pkgname=Plexamp
-pkgver=4.11.5
+pkgver=4.12.0
 _electronversion=28
 pkgrel=1
 pkgdesc="Modern music client for Plex.(Prebuilt version.Use system-wide electron)"
@@ -22,8 +22,8 @@ source=(
     "LICENSE.html::https://www.plex.tv/media-server-downloads/?cat=computer&plat=linux#remodal-terms"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d5611d3bdcc130bd64b9b03bc921df0826b8509a2bb299cf878da2fc9dcea58'
-            '322adefdcee9792b6c08b1e8d0d865b74f1a3db3cd9fdc2060a9ca8c8aa0ec43'
+sha256sums=('3c1a51d14062e8b55e25478314ba16f9d6c5719c58af315131d9b3d737be87a2'
+            'SKIP'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
