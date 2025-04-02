@@ -4,7 +4,7 @@ _name="lua"
 pkgver=4.0.1
 _api="${pkgver%.*}"
 pkgname="${_name}${_api//./}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful lightweight programming language designed for extending applications"
 arch=('i686' 'x86_64')
 url="https://www.lua.org"
@@ -48,7 +48,8 @@ build() {
       ln -vsf "${lib}${_api}.so.${ver}" "${lib}.so.${ver}"
     done
 
-    ln -vsf "${lib}${_api}.so.${ver}" "${lib}${_api}.so.${_api%.*}"
+    ln -vsf "${lib}${_api}.so.${pkgver}" "${lib}${_api}.so"
+    ln -vsf "${lib}${_api}.so.${pkgver}" "${lib}${_api}.so.${_api}"
   done
 
   cd "${srcdir}/${_pkgsrc}"
@@ -61,8 +62,7 @@ package() {
     INSTALL_ROOT="${pkgdir}/usr" \
     INSTALL_INC="${pkgdir}/usr/include/${_name}${_api}" \
     INSTALL_MAN="${pkgdir}/usr/share/man/man1" \
-    INSTALL_EXEC="install -m 0755" \
-    INSTALL_DATA="install -m 0644" \
+    INSTALL_DATA="cp -d" \
     install
   
   find "doc" -type f ! -name '*.1' -execdir \

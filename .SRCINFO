@@ -1,7 +1,7 @@
 pkgbase = lua40
 	pkgdesc = Powerful lightweight programming language designed for extending applications
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lua.org
 	arch = i686
 	arch = x86_64
