@@ -5,8 +5,8 @@
 
 pkgname=hmcl-stable-bin
 pkgver=3.6.12
-pkgrel=2
-pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular.(Use the official launch script)"
+pkgrel=3
+pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
 license=('GPL3')
@@ -30,3 +30,4 @@ package() {
   install -Dm644 "hmcl.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+install=hmcl-stable-bin.install

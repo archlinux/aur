@@ -1,0 +1,15 @@
+post_install() {
+    echo "This package is ready to be merged into hmcl-bin, so please run"
+    echo "	$ paru -S hmcl-bin"
+    echo "or"
+    echo "	$ yay -S hmcl-bin"
+    echo "to replace it."
+}
+
+post_upgrade() {
+    echo "This package is ready to be merged into hmcl-bin, so please run"
+    echo "	$ paru -S hmcl-bin"
+    echo "or"
+    echo "	$ yay -S hmcl-bin"
+    echo "to replace it."
+}
