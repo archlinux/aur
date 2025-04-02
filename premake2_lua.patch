@@ -1,0 +1,41 @@
+--- a/Premake.make
++++ b/Premake.make
+@@ -8,7 +8,7 @@
+ 
+   CFLAGS +=
+   CXXFLAGS +=
+-  LDFLAGS += 
++  LDFLAGS += -llua4.0 -llualib4.0
+   TARGET = premake
+ endif
+ ifeq ($(CONFIG),Release)
+@@ -61,29 +61,6 @@
+ 	$(OBJDIR)/vs2005.o \
+ 	$(OBJDIR)/vs7.o \
+ 	$(OBJDIR)/vs6.o \
+-	$(OBJDIR)/lapi.o \
+-	$(OBJDIR)/lauxlib.o \
+-	$(OBJDIR)/lbaselib.o \
+-	$(OBJDIR)/lcode.o \
+-	$(OBJDIR)/ldebug.o \
+-	$(OBJDIR)/ldo.o \
+-	$(OBJDIR)/lfunc.o \
+-	$(OBJDIR)/lgc.o \
+-	$(OBJDIR)/liolib.o \
+-	$(OBJDIR)/llex.o \
+-	$(OBJDIR)/lmathlib.o \
+-	$(OBJDIR)/lmem.o \
+-	$(OBJDIR)/lobject.o \
+-	$(OBJDIR)/lparser.o \
+-	$(OBJDIR)/lstate.o \
+-	$(OBJDIR)/lstring.o \
+-	$(OBJDIR)/lstrlib.o \
+-	$(OBJDIR)/ltable.o \
+-	$(OBJDIR)/ltests.o \
+-	$(OBJDIR)/ltm.o \
+-	$(OBJDIR)/lundump.o \
+-	$(OBJDIR)/lvm.o \
+-	$(OBJDIR)/lzio.o \
+ 	$(OBJDIR)/posix.o \
+ 
+ VPATH = Src Src/Lua
