@@ -2,7 +2,7 @@
 
 pkgname='perl-data-float'
 _dist='Data-Float'
-pkgver='0.014'
+pkgver='0.015'
 pkgrel='1'
 pkgdesc="Contains the Data::Float module, native floating point numerical data type"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -11,8 +11,8 @@ options=('!emptydirs')
 depends=('perl')
 url="https://metacpan.org/release/$_dist"
 source=("https://cpan.metacpan.org/authors/id/R/RR/RRWO/$_dist-$pkgver.tar.gz")
-md5sums=('b7a0f112aced16612e777af2d2c9de55')
-sha512sums=('853fd703f05e1c20ed89379b461ebe7ef6df277ba8b9c9b2967a2969d5db4dd2a4dbe1df98c8a6e0a8356b57b7e750fb95b960d9dd92c62b8bdf2951b87a8369')
+md5sums=('6d83c3e1987229756cd00afb58d784cf')
+sha512sums=('9a757a2398e7213ea172ab444de0aa1d06ee69d5d2447e8cd071ee8c2a8749ce4ee8616e479d0bf4c42e2db6acdf2bb3c80c82c0a28b28c54d38021239672515')
 _distdir="$_dist-$pkgver"
 
 build() {
