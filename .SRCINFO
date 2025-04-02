@@ -16,4 +16,4 @@ pkgbase = coreutils-uutils-symlink
 	conflicts = sha3sum
 	conflicts = coreutils-uutils
 
-pkgname = coreutils-uutils-bin-symlink
+pkgname = coreutils-uutils-symlink
