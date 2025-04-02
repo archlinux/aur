@@ -1,7 +1,7 @@
 pkgbase = esp-idf
 	pkgdesc = Espressif IoT Development Framework. Official development framework for ESP32.
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/espressif/esp-idf
 	install = esp-idf.install
 	arch = i686
@@ -22,6 +22,6 @@ pkgbase = esp-idf
 	noextract = esp-idf-v5.4.1.zip
 	options = !strip
 	source = https://github.com/espressif/esp-idf/releases/download/v5.4.1/esp-idf-v5.4.1.zip
-	sha256sums = 6b6b9e7b5e1d6b946e6cfd062a3ce1cc8bb5957befdda683c2a0d9cb16a45015
+	sha256sums = d78e49aafe46e35d34bc8804b64f23cd0a6cabdfe221876ba59f68b4534f0839
 
 pkgname = esp-idf
