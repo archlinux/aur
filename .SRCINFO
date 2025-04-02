@@ -1,7 +1,7 @@
 pkgbase = gausssum
 	pkgdesc = A Program for getting results of Gaussian and GAMESS
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gausssum.sourceforge.net
 	arch = any
 	license = GPL
@@ -9,8 +9,8 @@ pkgbase = gausssum
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-cclib
-	source = http://prdownloads.sourceforge.net/gausssum/GaussSum-3.0.2.tar.gz
-	sha1sums = 5ca1761ac8d306354a25990da6207b23100f229c
+	depends = tk
+	source = https://github.com/gausssum/gausssum/archive/9e4903654075ed536a8b9077614556def6c34564.zip
+	sha1sums = 43720330087821b17322667a3271a67cc5acc870
 
 pkgname = gausssum
-

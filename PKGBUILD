@@ -1,16 +1,16 @@
 # PKGBUILD template to install gaussSum
-# Maintainer: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
+# Contributor: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 # Contributor: Xyne <xyne at archlinux dot us>
 pkgname=gausssum
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Program for getting results of Gaussian and GAMESS"
-depends=('gnuplot' 'python-numpy' 'python-matplotlib' 'python-cclib')
+depends=('gnuplot' 'python-numpy' 'python-matplotlib' 'python-cclib' 'tk')
 arch=('any')
 license=('GPL')
 url="http://gausssum.sourceforge.net"
-source=(http://prdownloads.sourceforge.net/gausssum/GaussSum-${pkgver}.tar.gz)
-sha1sums=('5ca1761ac8d306354a25990da6207b23100f229c')
+source=(https://github.com/gausssum/gausssum/archive/9e4903654075ed536a8b9077614556def6c34564.zip)
+sha1sums=('43720330087821b17322667a3271a67cc5acc870')
 
 package() {
     #Create required directories
@@ -20,7 +20,7 @@ package() {
     mkdir -p ${pkgdir}/usr/share/pixmaps
 
     #Install program
-    cd ${srcdir}/GaussSum-${pkgver}
+    cd ${srcdir}/gausssum-9e4903654075ed536a8b9077614556def6c34564/src
     sed -e '16asys.path.append("/usr/share")' -i ./GaussSum.py
     sed -e "s:\"Docs\":\"doc\", \"gausssum\":" -i ./gausssum/gausssumgui.py
     install -D -m755 GaussSum.py ${pkgdir}/usr/bin/gausssum
@@ -28,16 +28,16 @@ package() {
     chmod -R 755 ${pkgdir}/usr/share/gausssum
 
     #Install docs
-    cd ${srcdir}/GaussSum-${pkgver}
-    cp -r Docs ${pkgdir}/usr/share/doc/gausssum
+    cd ${srcdir}/gausssum-9e4903654075ed536a8b9077614556def6c34564
+    cp -r docs ${pkgdir}/usr/share/doc/gausssum
     chmod -R 755 ${pkgdir}/usr/share/doc/gausssum
     
     #Install icon
-    cd ${srcdir}/GaussSum-${pkgver}
+    cd ${srcdir}/gausssum-9e4903654075ed536a8b9077614556def6c34564/logo
     install -D -m644 GaussSum.ico ${pkgdir}/usr/share/pixmaps/gausssum.ico
 
     #Create and install menu entry
-    cd ${srcdir}/GaussSum-${pkgver}
+    cd ${srcdir}/gausssum-9e4903654075ed536a8b9077614556def6c34564/src
     cat > GaussSum.desktop <<EOF
 [Desktop Entry]
 Type=Application
