@@ -2,8 +2,8 @@
 
 _gemname='dry-types'
 pkgname="ruby-${_gemname}"
-pkgver=1.7.2
-pkgrel=3
+pkgver=1.8.2
+pkgrel=1
 pkgdesc='Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -31,8 +31,8 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('401372b73b55947d1ba6619903cacd422be1a04ffdd3746d3323a68afa98fcea3d87a4bf1d81a9e9a389b2dcd8dd3a9d096f6982d168528d9fadf60e0fc33076')
-b2sums=('e0ebd390bea2178a9a348b65bc7cb5af8657d61f66a77ba52ba26e64aab44c2bd6d142c164c023002244aded5da7175199108c069635b1031d469d7e678f0ed1')
+sha512sums=('f034271d43f91162bd9ac5d5b309b91ec088141b2db9ac59c03059b173480ca552d561c122defe924ca0636abac6bc1516ee2984ec6eac0985e2b51e76c2e311')
+b2sums=('acc67223f4429210d8fe5397a11d2383f9425504e6dd4679f87f69ee54084f59c11d99b37eb2f6853818c96747376e4ed100aa2cd8c515d60288fb59a5b75621')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
