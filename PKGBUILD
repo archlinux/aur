@@ -2,7 +2,7 @@
 
 pkgname=uutils-diffutils
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust implementation of diffutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/diffutils"
@@ -40,9 +40,10 @@ package() {
 
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/uutils-diffutils"
 
-  for path in "$pkgdir/usr/bin"/*; do
-    dir=$(dirname $path)
-    basename=$(basename $path)
-    mv "$dir/$basename" "$dir/uutils-$basename"
-  done
+  # cannot use custom "uu" prefix
+  #for path in "$pkgdir/usr/bin"/*; do
+  #  dir=$(dirname $path)
+  #  basename=$(basename $path)
+  #  mv "$dir/$basename" "$dir/uu-$basename"
+  #done
 }
