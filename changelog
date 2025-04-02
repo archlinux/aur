@@ -1,3 +1,10 @@
+2025-03-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.4.3-1:
+    ASF now comes with built-in modern Scalar swagger UI, which replaces previously used swagger-ui. You can browse new interface using standard /swagger URL (@JustArchi #3391).
+    ASF now responds to ClientGetClientAppList Steam request, potentially fixing some account-related incompatibilities when logged in (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-02-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.3.3-1:
     Added inventory [Bots] command and ASF API endpoint for fetching inventory summary (@JustArchi #3378).
