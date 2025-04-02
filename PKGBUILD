@@ -9,11 +9,11 @@
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
 _pkgver=1.16.3
-_subver=2
+_subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 epoch=5
-pkgrel=2
+pkgrel=1
 pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -36,8 +36,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('13d667feaa65f5bd3e236f8088a608f4109b9c841691651397b647f2ca433e55')
-sha256sums_x86_64=('e72184d31227dc75eecd912229e3a323ac9a1d1617afb18f3e0485ba7ed8ddc7')
+sha256sums_aarch64=('a64eb8414343be05d1e5a63f0a503fc072a1424fb6f06272edc48dac015dd53b')
+sha256sums_x86_64=('21f38573b12ef6c1e319620ae6122e9801178ac5e24499ec18a121e3f5e787fc')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
