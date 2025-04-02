@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=3dfsb
 Comment=A 3D file browser
-Icon=system-file-manager
+Icon=3dfsb
 Exec=/usr/bin/3dfsb
 Terminal=false
 Type=Application

@@ -1,0 +1,595 @@
+diff --git a/3dfsb.c b/3dfsb.c
+index 099518d..553a2a4 100644
+--- a/3dfsb.c
++++ b/3dfsb.c
+@@ -182,6 +182,40 @@ static GLfloat verTex2[] = {
+ 	0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 1.0, -1.0
+ };
+ 
++/* Global function variables */
++void (*TDFSB_FUNC_IDLE) (void), (*TDFSB_FUNC_DISP) (void);
++void (*TDFSB_FUNC_MOUSE) (int button, int state), (*TDFSB_FUNC_MOTION) (int x, int y);
++int (*TDFSB_FUNC_KEY) (unsigned char key);
++int (*TDFSB_FUNC_UPKEY) (unsigned char key);
++
++int TDFSB_ANIM_STATE;		// This keeps track of the state of the "approach" action that brings you closer to an object in 4 steps
++GLdouble centX, centY;
++GLdouble tposx, tposy, tposz;
++GLdouble vposx, vposy, vposz, uposy;
++GLdouble smoox, smooy, smooz, smoou;
++GLdouble lastposz, lastposx;
++int forwardkeybuf, leftkeybuf, rightkeybuf, backwardkeybuf, upkeybuf, downkeybuf;
++
++GLdouble TDFSB_OA_DX, TDFSB_OA_DY, TDFSB_OA_DZ;
++
++int TDFSB_SHADE, TDFSB_FILENAMES, TDFSB_SHOW_DISPLAY, TDFSB_XL_DISPLAY, TDFSB_HAVE_MOUSE, TDFSB_ANIM_COUNT, TDFSB_OBJECT_SEARCH;
++int TDFSB_SPEED_DISPLAY, TDFSB_SHOW_HELP, TDFSB_SHOW_FPS, TDFSB_FLY_DISPLAY, TDFSB_CLASSIC_DISPLAY;
++int TDFSB_SHOW_THROTTLE, TDFSB_SHOW_BALL, TDFSB_FPS_DISP, TDFSB_FPS_DT, TDFSB_SHOW_CONFIG_FPS;
++
++tree_entry *TDFSB_OBJECT_SELECTED;
++tree_entry *INPUT_OBJECT;
++tree_entry *TDFSB_OA;
++
++/* The help text is printed out by:
++ * - the input system's "help" key handler for the console out)
++ * - the display() function for the on-screen display
++ */
++char *help_str;
++
++unsigned char TDFSB_KEY_FINDER;
++
++char cfpsbuf[12], throttlebuf[14], flybuf[12], classicbuf[12], ballbuf[20], fpsbuf[12];
++
+ /*      Texture      Normals         Vertex        */
+ 
+ // Used both for the on-screen display and for the console help text
+diff --git a/3dfsb.h b/3dfsb.h
+index 0f282d2..4f8e658 100644
+--- a/3dfsb.h
++++ b/3dfsb.h
+@@ -81,40 +81,40 @@ void noDisplay(void);
+ Uint32 fps_timer(void);
+ 
+ /* Global function variables */
+-void (*TDFSB_FUNC_IDLE) (void), (*TDFSB_FUNC_DISP) (void);
+-void (*TDFSB_FUNC_MOUSE) (int button, int state), (*TDFSB_FUNC_MOTION) (int x, int y);
+-int (*TDFSB_FUNC_KEY) (unsigned char key);
+-int (*TDFSB_FUNC_UPKEY) (unsigned char key);
++extern void (*TDFSB_FUNC_IDLE) (void), (*TDFSB_FUNC_DISP) (void);
++extern void (*TDFSB_FUNC_MOUSE) (int button, int state), (*TDFSB_FUNC_MOTION) (int x, int y);
++extern int (*TDFSB_FUNC_KEY) (unsigned char key);
++extern int (*TDFSB_FUNC_UPKEY) (unsigned char key);
+ 
+ /*
+  * Global variables
+  */
+-int TDFSB_ANIM_STATE;		// This keeps track of the state of the "approach" action that brings you closer to an object in 4 steps
+-GLdouble centX, centY;
+-GLdouble tposx, tposy, tposz;
+-GLdouble vposx, vposy, vposz, uposy;
+-GLdouble smoox, smooy, smooz, smoou;
+-GLdouble lastposz, lastposx;
+-int forwardkeybuf, leftkeybuf, rightkeybuf, backwardkeybuf, upkeybuf, downkeybuf;
++extern int TDFSB_ANIM_STATE;		// This keeps track of the state of the "approach" action that brings you closer to an object in 4 steps
++extern GLdouble centX, centY;
++extern GLdouble tposx, tposy, tposz;
++extern GLdouble vposx, vposy, vposz, uposy;
++extern GLdouble smoox, smooy, smooz, smoou;
++extern GLdouble lastposz, lastposx;
++extern int forwardkeybuf, leftkeybuf, rightkeybuf, backwardkeybuf, upkeybuf, downkeybuf;
+ 
+-GLdouble TDFSB_OA_DX, TDFSB_OA_DY, TDFSB_OA_DZ;
++extern GLdouble TDFSB_OA_DX, TDFSB_OA_DY, TDFSB_OA_DZ;
+ 
+-int TDFSB_SHADE, TDFSB_FILENAMES, TDFSB_SHOW_DISPLAY, TDFSB_XL_DISPLAY, TDFSB_HAVE_MOUSE, TDFSB_ANIM_COUNT, TDFSB_OBJECT_SEARCH;
+-int TDFSB_SPEED_DISPLAY, TDFSB_SHOW_HELP, TDFSB_SHOW_FPS, TDFSB_FLY_DISPLAY, TDFSB_CLASSIC_DISPLAY;
+-int TDFSB_SHOW_THROTTLE, TDFSB_SHOW_BALL, TDFSB_FPS_DISP, TDFSB_FPS_DT, TDFSB_SHOW_CONFIG_FPS;
++extern int TDFSB_SHADE, TDFSB_FILENAMES, TDFSB_SHOW_DISPLAY, TDFSB_XL_DISPLAY, TDFSB_HAVE_MOUSE, TDFSB_ANIM_COUNT, TDFSB_OBJECT_SEARCH;
++extern int TDFSB_SPEED_DISPLAY, TDFSB_SHOW_HELP, TDFSB_SHOW_FPS, TDFSB_FLY_DISPLAY, TDFSB_CLASSIC_DISPLAY;
++extern int TDFSB_SHOW_THROTTLE, TDFSB_SHOW_BALL, TDFSB_FPS_DISP, TDFSB_FPS_DT, TDFSB_SHOW_CONFIG_FPS;
+ 
+-tree_entry *TDFSB_OBJECT_SELECTED;
+-tree_entry *INPUT_OBJECT;
+-tree_entry *TDFSB_OA;
++extern tree_entry *TDFSB_OBJECT_SELECTED;
++extern tree_entry *INPUT_OBJECT;
++extern tree_entry *TDFSB_OA;
+ 
+ /* The help text is printed out by:
+  * - the input system's "help" key handler for the console out)
+  * - the display() function for the on-screen display
+  */
+-char *help_str;
++extern char *help_str;
+ 
+-unsigned char TDFSB_KEY_FINDER;
++extern unsigned char TDFSB_KEY_FINDER;
+ 
+-char cfpsbuf[12], throttlebuf[14], flybuf[12], classicbuf[12], ballbuf[20], fpsbuf[12];
++extern char cfpsbuf[12], throttlebuf[14], flybuf[12], classicbuf[12], ballbuf[20], fpsbuf[12];
+ 
+ #endif
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0a504e..34e5efa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,8 @@
+ # cmake . ; make
+ # ...to build 3dfsb.
+ # More ideas to improve this file: http://sourceforge.net/p/hugin/hugin/ci/default/tree/CMakeLists.txt
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.19)
++cmake_policy(VERSION 3.19)
+ 
+ project(3dfsb C)
+ 
+@@ -31,18 +32,19 @@ ENDIF(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+ 
+ # Generate xpm images from png images
+ IF(NOT MOGRIFY)
+-   EXEC_PROGRAM(mogrify ARGS -format xpm images/*.png
++   EXEC_PROGRAM(mogrify ${CMAKE_CURRENT_SOURCE_DIR} ARGS -format xpm images/*.png
+                 OUTPUT_VARIABLE MOGRIFY)
+    SET(MOGRIFY "${MOGRIFY}" CACHE STRING "Mogrify")
+ ENDIF(NOT MOGRIFY)
+ 
+ # Generate .h files from resource files
+ IF(NOT XXD)
+-   EXEC_PROGRAM(xxd ARGS -i resources/xorg.conf resources/xorg.conf.h
++   EXEC_PROGRAM(xxd ${CMAKE_CURRENT_SOURCE_DIR} ARGS -i resources/xorg.conf resources/xorg.conf.h
+                 OUTPUT_VARIABLE XXD)
+    SET(XXD "${XXD}" CACHE STRING "XXD")
+ ENDIF(NOT XXD)
+ 
++find_package(PkgConfig REQUIRED)
+ find_package(SDL REQUIRED)
+ find_package(SDL_image REQUIRED)
+ find_package(OpenGL REQUIRED)
+@@ -51,22 +53,25 @@ find_package(GStreamer REQUIRED)
+ find_package(LibMagic REQUIRED)
+ find_package(ImageMagick COMPONENTS mogrify REQUIRED)
+ find_package(LibM REQUIRED)
+-find_package(GLIB COMPONENTS gobject REQUIRED)
++pkg_check_modules(GLIB2 REQUIRED IMPORTED_TARGET glib-2.0)
++pkg_check_modules(GOBJECT2 REQUIRED IMPORTED_TARGET gobject-2.0)
++#find_package(GLIB COMPONENTS gobject REQUIRED)
+ find_package(X11 REQUIRED)
+ find_package(Xdo REQUIRED)
+ 
+ find_library(X11_XTest_LIB Xtst ${X11_LIB_SEARCH_PATH})
+ 
+-include_directories(${SDL_INCLUDE_DIR}
+-                    ${GSTREAMER_INCLUDE_DIRS}
+-                   )
++include_directories(${SDL_INCLUDE_DIR} ${GSTREAMER_INCLUDE_DIRS} ${GLIB_INCLUDE_DIRS})
+ 
+-add_library(input input.c)
+-add_library(str_replace str_replace.c)
+-add_library(media media.c)
+-add_library(config config.c)
+-add_library(tools tools.c)
++#add_library(input STATIC input.c)
++#add_library(str_replace STATIC str_replace.c)
++#add_library(media STATIC media.c)
++#add_library(config STATIC config.c)
++#add_library(tools STATIC tools.c)
+ 
+-add_executable(3dfsb 3dfsb.c)
+-add_dependencies(3dfsb images)
+-target_link_libraries(3dfsb input str_replace media config tools ${SDL_LIBRARY} ${SDL_IMAGE_LIBRARIES} ${OPENGL_LIBRARIES} ${GSTREAMER_LIBRARIES} ${GLUT_glut_LIBRARY} ${LibMagic_LIBRARY} ${LibM_LIBRARY} ${GLIB_GOBJECT_LIBRARIES} ${GLIB_LIBRARIES} ${XDO_LIBRARIES} ${X11_XTest_LIB})
++#target_link_libraries(media PRIVATE ${GSTREAMER_LIBRARIES} PkgConfig::GLIB2)
++
++add_executable(3dfsb 3dfsb.c input.c str_replace.c media.c config.c tools.c)
++target_link_libraries(3dfsb PRIVATE ${GSTREAMER_LIBRARIES} SDL SDL_image OpenGL::GL OpenGL::GLU GLUT::GLUT ${LibMagic_LIBRARY} ${LibM_LIBRARY} PkgConfig::GLIB2 PkgConfig::GOBJECT2 ${XDO_LIBRARIES} ${X11_XTest_LIB} X11::X11)
++
++install(TARGETS 3dfsb)
+diff --git a/cmake/Modules/FindGLIB.cmake b/cmake/Modules/FindGLIB.cmake
+index 519e8b9..182e37b 100644
+--- a/cmake/Modules/FindGLIB.cmake
++++ b/cmake/Modules/FindGLIB.cmake
+@@ -56,7 +56,6 @@ get_filename_component(_GLIB_LIBRARY_DIR ${GLIB_LIBRARIES} PATH)
+ find_path(GLIBCONFIG_INCLUDE_DIR
+     NAMES glibconfig.h
+     HINTS ${PC_LIBDIR} ${PC_LIBRARY_DIRS} ${_GLIB_LIBRARY_DIR}
+-          ${PC_GLIB_INCLUDEDIR} ${PC_GLIB_INCLUDE_DIRS}
+     PATH_SUFFIXES glib-2.0/include
+ )
+ 
+@@ -95,26 +94,9 @@ foreach (_component ${GLIB_FIND_COMPONENTS})
+     elseif (${_component} STREQUAL "gthread")
+         find_library(GLIB_GTHREAD_LIBRARIES NAMES gthread-2.0 HINTS ${_GLIB_LIBRARY_DIR})
+         set(ADDITIONAL_REQUIRED_VARS ${ADDITIONAL_REQUIRED_VARS} GLIB_GTHREAD_LIBRARIES)
+-    elseif (${_component} STREQUAL "gio-unix")
+-        # gio-unix is compiled as part of the gio library, but the include paths
+-        # are separate from the shared glib ones. Since this is currently only used
+-        # by WebKitGTK+ we don't go to extraordinary measures beyond pkg-config.
+-        pkg_check_modules(GIO_UNIX QUIET gio-unix-2.0)
+     endif ()
+ endforeach ()
+ 
+ include(FindPackageHandleStandardArgs)
+ FIND_PACKAGE_HANDLE_STANDARD_ARGS(GLIB REQUIRED_VARS GLIB_INCLUDE_DIRS GLIB_LIBRARIES ${ADDITIONAL_REQUIRED_VARS}
+                                        VERSION_VAR   GLIB_VERSION)
+-
+-mark_as_advanced(
+-    GLIBCONFIG_INCLUDE_DIR
+-    GLIB_GIO_LIBRARIES
+-    GLIB_GIO_UNIX_LIBRARIES
+-    GLIB_GMODULE_LIBRARIES
+-    GLIB_GOBJECT_LIBRARIES
+-    GLIB_GTHREAD_LIBRARIES
+-    GLIB_INCLUDE_DIR
+-    GLIB_INCLUDE_DIRS
+-    GLIB_LIBRARIES
+-)
+diff --git a/cmake/Modules/FindGStreamer.cmake b/cmake/Modules/FindGStreamer.cmake
+index 7444760..8843c1c 100644
+--- a/cmake/Modules/FindGStreamer.cmake
++++ b/cmake/Modules/FindGStreamer.cmake
+@@ -19,9 +19,7 @@
+ #  gstreamer-app:        GSTREAMER_APP_INCLUDE_DIRS and GSTREAMER_APP_LIBRARIES
+ #  gstreamer-audio:      GSTREAMER_AUDIO_INCLUDE_DIRS and GSTREAMER_AUDIO_LIBRARIES
+ #  gstreamer-fft:        GSTREAMER_FFT_INCLUDE_DIRS and GSTREAMER_FFT_LIBRARIES
+-#  gstreamer-mpegts:     GSTREAMER_MPEGTS_INCLUDE_DIRS and GSTREAMER_MPEGTS_LIBRARIES
+ #  gstreamer-pbutils:    GSTREAMER_PBUTILS_INCLUDE_DIRS and GSTREAMER_PBUTILS_LIBRARIES
+-#  gstreamer-tag:        GSTREAMER_TAG_INCLUDE_DIRS and GSTREAMER_TAG_LIBRARIES
+ #  gstreamer-video:      GSTREAMER_VIDEO_INCLUDE_DIRS and GSTREAMER_VIDEO_LIBRARIES
+ #
+ # Copyright (C) 2012 Raphael Kubo da Costa <rakuco@webkit.org>
+@@ -46,82 +44,72 @@
+ # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-
+ find_package(PkgConfig)
+-
+ # Helper macro to find a GStreamer plugin (or GStreamer itself)
+ #   _component_prefix is prepended to the _INCLUDE_DIRS and _LIBRARIES variables (eg. "GSTREAMER_AUDIO")
+ #   _pkgconfig_name is the component's pkg-config name (eg. "gstreamer-1.0", or "gstreamer-video-1.0").
++#   _header is the component's header, relative to the gstreamer-1.0 directory (eg. "gst/gst.h").
+ #   _library is the component's library name (eg. "gstreamer-1.0" or "gstvideo-1.0")
+-macro(FIND_GSTREAMER_COMPONENT _component_prefix _pkgconfig_name _library)
+-
+-    string(REGEX MATCH "(.*)>=(.*)" _dummy "${_pkgconfig_name}")
+-    if ("${CMAKE_MATCH_2}" STREQUAL "")
+-        pkg_check_modules(PC_${_component_prefix} "${_pkgconfig_name} >= ${GStreamer_FIND_VERSION}")
+-    else ()
+-        pkg_check_modules(PC_${_component_prefix} ${_pkgconfig_name})
+-    endif ()
+-    set(${_component_prefix}_INCLUDE_DIRS ${PC_${_component_prefix}_INCLUDE_DIRS})
+-
++macro(FIND_GSTREAMER_COMPONENT _component_prefix _pkgconfig_name _header _library)
++    # FIXME: The QUIET keyword can be used once we require CMake 2.8.2.
++    pkg_check_modules(PC_${_component_prefix} ${_pkgconfig_name})
++    find_path(${_component_prefix}_INCLUDE_DIRS
++        NAMES ${_header}
++        HINTS ${PC_${_component_prefix}_INCLUDE_DIRS} ${PC_${_component_prefix}_INCLUDEDIR}
++        PATH_SUFFIXES gstreamer-1.0
++    )
+     find_library(${_component_prefix}_LIBRARIES
+         NAMES ${_library}
+         HINTS ${PC_${_component_prefix}_LIBRARY_DIRS} ${PC_${_component_prefix}_LIBDIR}
+     )
+ endmacro()
+-
+ # ------------------------
+ # 1. Find GStreamer itself
+ # ------------------------
+-
+ # 1.1. Find headers and libraries
+-FIND_GSTREAMER_COMPONENT(GSTREAMER gstreamer-1.0 gstreamer-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_BASE gstreamer-base-1.0 gstbase-1.0)
+-
++FIND_GSTREAMER_COMPONENT(GSTREAMER gstreamer-1.0 gst/gst.h gstreamer-1.0)
++FIND_GSTREAMER_COMPONENT(GSTREAMER_BASE gstreamer-base-1.0 gst/gst.h gstbase-1.0)
++# 1.2. Check GStreamer version
++if (GSTREAMER_INCLUDE_DIRS)
++    if (EXISTS "${GSTREAMER_INCLUDE_DIRS}/gst/gstversion.h")
++        file(READ "${GSTREAMER_INCLUDE_DIRS}/gst/gstversion.h" GSTREAMER_VERSION_CONTENTS)
++        string(REGEX MATCH "#define +GST_VERSION_MAJOR +\\(([0-9]+)\\)" _dummy "${GSTREAMER_VERSION_CONTENTS}")
++        set(GSTREAMER_VERSION_MAJOR "${CMAKE_MATCH_1}")
++        string(REGEX MATCH "#define +GST_VERSION_MINOR +\\(([0-9]+)\\)" _dummy "${GSTREAMER_VERSION_CONTENTS}")
++        set(GSTREAMER_VERSION_MINOR "${CMAKE_MATCH_1}")
++        string(REGEX MATCH "#define +GST_VERSION_MICRO +\\(([0-9]+)\\)" _dummy "${GSTREAMER_VERSION_CONTENTS}")
++        set(GSTREAMER_VERSION_MICRO "${CMAKE_MATCH_1}")
++        set(GSTREAMER_VERSION "${GSTREAMER_VERSION_MAJOR}.${GSTREAMER_VERSION_MINOR}.${GSTREAMER_VERSION_MICRO}")
++    endif ()
++endif ()
++# FIXME: With CMake 2.8.3 we can just pass GSTREAMER_VERSION to FIND_PACKAGE_HANDLE_STANDARD_ARGS as VERSION_VAR
++#        and remove the version check here (GSTREAMER_FIND_VERSION would be passed to FIND_PACKAGE).
++set(VERSION_OK TRUE)
++if (GSTREAMER_FIND_VERSION_EXACT)
++    if (NOT(("${GSTREAMER_FIND_VERSION}" VERSION_EQUAL "${GSTREAMER_VERSION}")))
++        set(VERSION_OK FALSE)
++    endif ()
++else ()
++    if ("${GSTREAMER_VERSION}" VERSION_LESS "${GSTREAMER_FIND_VERSION}")
++        set(VERSION_OK FALSE)
++    endif ()
++endif ()
+ # -------------------------
+ # 2. Find GStreamer plugins
+ # -------------------------
+-
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_APP gstreamer-app-1.0 gstapp-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_AUDIO gstreamer-audio-1.0 gstaudio-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_FFT gstreamer-fft-1.0 gstfft-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_MPEGTS gstreamer-mpegts-1.0>=1.4.0 gstmpegts-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_PBUTILS gstreamer-pbutils-1.0 gstpbutils-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_TAG gstreamer-tag-1.0 gsttag-1.0)
+-FIND_GSTREAMER_COMPONENT(GSTREAMER_VIDEO gstreamer-video-1.0 gstvideo-1.0)
+-
++FIND_GSTREAMER_COMPONENT(GSTREAMER_APP gstreamer-app-1.0 gst/app/gstappsink.h gstapp-1.0)
++FIND_GSTREAMER_COMPONENT(GSTREAMER_AUDIO gstreamer-audio-1.0 gst/audio/audio.h gstaudio-1.0)
++FIND_GSTREAMER_COMPONENT(GSTREAMER_FFT gstreamer-fft-1.0 gst/fft/gstfft.h gstfft-1.0)
++FIND_GSTREAMER_COMPONENT(GSTREAMER_PBUTILS gstreamer-pbutils-1.0 gst/pbutils/pbutils.h gstpbutils-1.0)
++FIND_GSTREAMER_COMPONENT(GSTREAMER_VIDEO gstreamer-video-1.0 gst/video/video.h gstvideo-1.0)
+ # ------------------------------------------------
+ # 3. Process the COMPONENTS passed to FIND_PACKAGE
+ # ------------------------------------------------
+-set(_GSTREAMER_REQUIRED_VARS GSTREAMER_INCLUDE_DIRS GSTREAMER_LIBRARIES GSTREAMER_VERSION GSTREAMER_BASE_INCLUDE_DIRS GSTREAMER_BASE_LIBRARIES)
+-
++set(_GSTREAMER_REQUIRED_VARS GSTREAMER_INCLUDE_DIRS GSTREAMER_LIBRARIES VERSION_OK GSTREAMER_BASE_INCLUDE_DIRS GSTREAMER_BASE_LIBRARIES)
+ foreach (_component ${GStreamer_FIND_COMPONENTS})
+     set(_gst_component "GSTREAMER_${_component}")
+     string(TOUPPER ${_gst_component} _UPPER_NAME)
+-
+     list(APPEND _GSTREAMER_REQUIRED_VARS ${_UPPER_NAME}_INCLUDE_DIRS ${_UPPER_NAME}_LIBRARIES)
+ endforeach ()
+-
+ include(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(GStreamer REQUIRED_VARS _GSTREAMER_REQUIRED_VARS
+-                                            VERSION_VAR   GSTREAMER_VERSION)
+-
+-mark_as_advanced(
+-    GSTREAMER_APP_INCLUDE_DIRS
+-    GSTREAMER_APP_LIBRARIES
+-    GSTREAMER_AUDIO_INCLUDE_DIRS
+-    GSTREAMER_AUDIO_LIBRARIES
+-    GSTREAMER_BASE_INCLUDE_DIRS
+-    GSTREAMER_BASE_LIBRARIES
+-    GSTREAMER_FFT_INCLUDE_DIRS
+-    GSTREAMER_FFT_LIBRARIES
+-    GSTREAMER_INCLUDE_DIRS
+-    GSTREAMER_LIBRARIES
+-    GSTREAMER_MPEGTS_INCLUDE_DIRS
+-    GSTREAMER_MPEGTS_LIBRARIES
+-    GSTREAMER_PBUTILS_INCLUDE_DIRS
+-    GSTREAMER_PBUTILS_LIBRARIES
+-    GSTREAMER_TAG_INCLUDE_DIRS
+-    GSTREAMER_TAG_LIBRARIES
+-    GSTREAMER_VIDEO_INCLUDE_DIRS
+-    GSTREAMER_VIDEO_LIBRARIES
+-)
++FIND_PACKAGE_HANDLE_STANDARD_ARGS(GStreamer DEFAULT_MSG ${_GSTREAMER_REQUIRED_VARS})
+diff --git a/compile.sh b/compile.sh
+index b078bff..997fa45 100755
+--- a/compile.sh
++++ b/compile.sh
+@@ -75,7 +75,7 @@ if uname -s | grep -i -c "LINUX" > /dev/null; then
+ 
+     # -Wconversion fails for a non-fixable reason, IIRC...
+     # -Werror=format-nonliteral fails when we read the command to execute from the config file and put it in an snprintf() to substitute the %s... but can't we just do a simple find and replace of the %s?
+-    warnings="-pedantic -pedantic-errors -std=c99 -Waggregate-return -Wall -Wcast-align -Wcast-qual -Wchar-subscripts  -Wcomment -Wdisabled-optimization -Werror -Wextra -Wfloat-equal  -Wformat -Wformat-security -Wformat-y2k -Wformat=2 -Wmissing-prototypes -Wpointer-arith -Wshadow -Wstrict-prototypes -Wunused"
++    warnings="-pedantic -pedantic-errors -std=c99 -Waggregate-return -Wall -Wcast-align -Wcast-qual -Wchar-subscripts  -Wcomment -Wdisabled-optimization -Wextra -Wfloat-equal  -Wformat -Wformat-security -Wformat-y2k -Wformat=2 -Wmissing-prototypes -Wpointer-arith -Wshadow -Wstrict-prototypes -Wunused"
+ 
+     # This fails
+     #gccopt="-static -static-libgcc"
+diff --git a/config.c b/config.c
+index a80648f..c0f4e9e 100644
+--- a/config.c
++++ b/config.c
+@@ -8,6 +8,53 @@
+ 
+ #define TDFSB_CUSTOM_EXECUTE_STRING_INIT	"cd \"%%s\"; x-terminal-emulator &"
+ 
++unsigned char TDFSB_KC_FLY, TDFSB_KC_HELP, TDFSB_KC_HOME;
++unsigned char TDFSB_KC_FS, TDFSB_KC_DOT, TDFSB_KC_RELEASE_MOUSE;
++unsigned char TDFSB_KC_RL, TDFSB_KC_CDU, TDFSB_KC_IMBR;
++unsigned char TDFSB_KC_INFO, TDFSB_KC_DISP, TDFSB_KC_CRH;
++unsigned char TDFSB_KC_FPS, TDFSB_KC_GCR, TDFSB_KC_SHD;
++unsigned char TDFSB_KC_NAME, TDFSB_KC_SORT, TDFSB_KC_CLASS;
++unsigned char TDFSB_KC_UP, TDFSB_KC_DOWN, TDFSB_KC_LEFT;
++unsigned char TDFSB_KC_RIGHT, TDFSB_KC_SAVE, TDFSB_KC_FTH;
++unsigned char TDFSB_KC_FORWARD, TDFSB_KC_BACKWARD;
++
++char TDFSB_CURRENTPATH[4096];
++char TDFSB_CUSTOM_EXECUTE_STRING[4096];
++
++int SWX, SWY;			// Window size X,Y
++int PWX, PWY;			// Full screen window size X,Y
++int PWD;			// Full screen color depth
++
++GLint TDFSB_BALL_DETAIL;
++GLint TDFSB_WAS_NOREAD;
++unsigned int TDFSB_MAX_TEX_SIZE;	// This cause Out-Of-Memory at 8192 and beyond if I enter a directory with high resolution images or video. So 1024 is a nice default, this uses around 150MB of RAM when going into a directory with around 300 high resolution images.
++GLfloat mousesense;
++GLfloat mousespeed;		// 1-20, with 1 being maximum
++GLfloat headspeed;		// 1.1-2.0, with 2.0 being maximum
++
++GLfloat TDFSB_GG_R, TDFSB_GG_G, TDFSB_GG_B;
++GLfloat TDFSB_BG_R, TDFSB_BG_G, TDFSB_BG_B;
++GLfloat TDFSB_FN_R, TDFSB_FN_G, TDFSB_FN_B;
++
++int TDFSB_ICUBE;
++int TDFSB_SHOW_DOTFILES;
++int TDFSB_DIR_ALPHASORT;
++int TDFSB_FULLSCREEN;
++
++int TDFSB_CONFIG_FULLSCREEN;
++int TDFSB_SHOW_CROSSHAIR;
++int TDFSB_GROUND_CROSS;
++int TDFSB_CLASSIC_NAV;
++int TDFSB_MODE_FLY;
++
++int TDFSB_FPS_CONFIG;
++int TDFSB_MW_STEPS;
++int TDFSB_CSE_FLAG;
++long TDFSB_US_RUN;
++int TDFSB_FPS_CACHE;
++int TDFSB_FPS_REAL;
++int TDFSB_ALERT_KC;
++
+ const char *TDFSB_KEYLIST_NAMES[] = { "KeyFlying", "KeyHelp", "KeyJumpHome",
+ 	"KeyFullScreen", "KeyDotFilter", "KeyMouseRelease",
+ 	"KeyReload", "KeyCDup", "KeyImageBricks",
+diff --git a/config.h b/config.h
+index 6aa5065..dbf413d 100644
+--- a/config.h
++++ b/config.h
+@@ -5,52 +5,52 @@
+ 
+ // The global variables below are used by 3dfsb.c
+ 
+-unsigned char TDFSB_KC_FLY, TDFSB_KC_HELP, TDFSB_KC_HOME;
+-unsigned char TDFSB_KC_FS, TDFSB_KC_DOT, TDFSB_KC_RELEASE_MOUSE;
+-unsigned char TDFSB_KC_RL, TDFSB_KC_CDU, TDFSB_KC_IMBR;
+-unsigned char TDFSB_KC_INFO, TDFSB_KC_DISP, TDFSB_KC_CRH;
+-unsigned char TDFSB_KC_FPS, TDFSB_KC_GCR, TDFSB_KC_SHD;
+-unsigned char TDFSB_KC_NAME, TDFSB_KC_SORT, TDFSB_KC_CLASS;
+-unsigned char TDFSB_KC_UP, TDFSB_KC_DOWN, TDFSB_KC_LEFT;
+-unsigned char TDFSB_KC_RIGHT, TDFSB_KC_SAVE, TDFSB_KC_FTH;
+-unsigned char TDFSB_KC_FORWARD, TDFSB_KC_BACKWARD;
+-
+-char TDFSB_CURRENTPATH[4096];
+-char TDFSB_CUSTOM_EXECUTE_STRING[4096];
+-
+-int SWX, SWY;			// Window size X,Y
+-int PWX, PWY;			// Full screen window size X,Y
+-int PWD;			// Full screen color depth
+-
+-GLint TDFSB_BALL_DETAIL;
+-GLint TDFSB_WAS_NOREAD;
+-unsigned int TDFSB_MAX_TEX_SIZE;	// This cause Out-Of-Memory at 8192 and beyond if I enter a directory with high resolution images or video. So 1024 is a nice default, this uses around 150MB of RAM when going into a directory with around 300 high resolution images.
+-GLfloat mousesense;
+-GLfloat mousespeed;		// 1-20, with 1 being maximum
+-GLfloat headspeed;		// 1.1-2.0, with 2.0 being maximum
+-
+-GLfloat TDFSB_GG_R, TDFSB_GG_G, TDFSB_GG_B;
+-GLfloat TDFSB_BG_R, TDFSB_BG_G, TDFSB_BG_B;
+-GLfloat TDFSB_FN_R, TDFSB_FN_G, TDFSB_FN_B;
+-
+-int TDFSB_ICUBE;
+-int TDFSB_SHOW_DOTFILES;
+-int TDFSB_DIR_ALPHASORT;
+-int TDFSB_FULLSCREEN;
+-
+-int TDFSB_CONFIG_FULLSCREEN;
+-int TDFSB_SHOW_CROSSHAIR;
+-int TDFSB_GROUND_CROSS;
+-int TDFSB_CLASSIC_NAV;
+-int TDFSB_MODE_FLY;
+-
+-int TDFSB_FPS_CONFIG;
+-int TDFSB_MW_STEPS;
+-int TDFSB_CSE_FLAG;
+-long TDFSB_US_RUN;
+-int TDFSB_FPS_CACHE;
+-int TDFSB_FPS_REAL;
+-int TDFSB_ALERT_KC;
++extern unsigned char TDFSB_KC_FLY, TDFSB_KC_HELP, TDFSB_KC_HOME;
++extern unsigned char TDFSB_KC_FS, TDFSB_KC_DOT, TDFSB_KC_RELEASE_MOUSE;
++extern unsigned char TDFSB_KC_RL, TDFSB_KC_CDU, TDFSB_KC_IMBR;
++extern unsigned char TDFSB_KC_INFO, TDFSB_KC_DISP, TDFSB_KC_CRH;
++extern unsigned char TDFSB_KC_FPS, TDFSB_KC_GCR, TDFSB_KC_SHD;
++extern unsigned char TDFSB_KC_NAME, TDFSB_KC_SORT, TDFSB_KC_CLASS;
++extern unsigned char TDFSB_KC_UP, TDFSB_KC_DOWN, TDFSB_KC_LEFT;
++extern unsigned char TDFSB_KC_RIGHT, TDFSB_KC_SAVE, TDFSB_KC_FTH;
++extern unsigned char TDFSB_KC_FORWARD, TDFSB_KC_BACKWARD;
++
++extern char TDFSB_CURRENTPATH[4096];
++extern char TDFSB_CUSTOM_EXECUTE_STRING[4096];
++
++extern int SWX, SWY;			// Window size X,Y
++extern int PWX, PWY;			// Full screen window size X,Y
++extern int PWD;			// Full screen color depth
++
++extern GLint TDFSB_BALL_DETAIL;
++extern GLint TDFSB_WAS_NOREAD;
++extern unsigned int TDFSB_MAX_TEX_SIZE;	// This cause Out-Of-Memory at 8192 and beyond if I enter a directory with high resolution images or video. So 1024 is a nice default, this uses around 150MB of RAM when going into a directory with around 300 high resolution images.
++extern GLfloat mousesense;
++extern GLfloat mousespeed;		// 1-20, with 1 being maximum
++extern GLfloat headspeed;		// 1.1-2.0, with 2.0 being maximum
++
++extern GLfloat TDFSB_GG_R, TDFSB_GG_G, TDFSB_GG_B;
++extern GLfloat TDFSB_BG_R, TDFSB_BG_G, TDFSB_BG_B;
++extern GLfloat TDFSB_FN_R, TDFSB_FN_G, TDFSB_FN_B;
++
++extern int TDFSB_ICUBE;
++extern int TDFSB_SHOW_DOTFILES;
++extern int TDFSB_DIR_ALPHASORT;
++extern int TDFSB_FULLSCREEN;
++
++extern int TDFSB_CONFIG_FULLSCREEN;
++extern int TDFSB_SHOW_CROSSHAIR;
++extern int TDFSB_GROUND_CROSS;
++extern int TDFSB_CLASSIC_NAV;
++extern int TDFSB_MODE_FLY;
++
++extern int TDFSB_FPS_CONFIG;
++extern int TDFSB_MW_STEPS;
++extern int TDFSB_CSE_FLAG;
++extern long TDFSB_US_RUN;
++extern int TDFSB_FPS_CACHE;
++extern int TDFSB_FPS_REAL;
++extern int TDFSB_ALERT_KC;
+ 
+ int read_or_create_config_file(void);
+ void save_config(void);
+diff --git a/media.c b/media.c
+index f19f1e6..d36bf79 100644
+--- a/media.c
++++ b/media.c
+@@ -31,6 +31,8 @@
+ // Quite ugly, but we need the keyboard map to run setxkbmap after STARTX
+ #define	GETXKBMAP	"DISPLAY=:0 setxkbmap -query | grep layout | cut -c 13-15"
+ 
++tree_entry *TDFSB_MEDIA_FILE;
++
+ /* GStreamer stuff */
+ GstPipeline *pipeline = NULL;
+ 
+diff --git a/media.h b/media.h
+index dd73714..3b60865 100644
+--- a/media.h
++++ b/media.h
+@@ -3,7 +3,7 @@
+ 
+ #include "3dfsb.h"
+ 
+-tree_entry *TDFSB_MEDIA_FILE;
++extern tree_entry *TDFSB_MEDIA_FILE;
+ 
+ struct texture_description {
+ 	unsigned int originalwidth;
+diff --git a/tools.c b/tools.c
+index 328c2b2..03feeaa 100644
+--- a/tools.c
++++ b/tools.c
+@@ -23,6 +23,10 @@
+ 
+ #define XDG_QUERY_DEFAULT	"xdg-mime query default "
+ 
++int CURRENT_TOOL;		// The tool (or weapon) we are currently holding
++
++char *tool[NUMBER_OF_TOOLS];
++
+ static void xdg_open(char *fullpath, int display_number)
+ {
+ 	// Ugly hack to check if it is a .desktop file that contains a URL= entry
+diff --git a/tools.h b/tools.h
+index 744c2d4..e94159b 100644
+--- a/tools.h
++++ b/tools.h
+@@ -11,9 +11,9 @@
+ #define OPEN_STRING		" will be opened with "
+ #define OPEN_STRING_LENGTH	21
+ 
+-int CURRENT_TOOL;		// The tool (or weapon) we are currently holding
++extern int CURRENT_TOOL;		// The tool (or weapon) we are currently holding
+ 
+-char *tool[NUMBER_OF_TOOLS];
++extern char *tool[NUMBER_OF_TOOLS];
+ 
+ int apply_tool_on_object(struct tree_entry *object, char *currentpath);
+ 

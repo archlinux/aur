@@ -1,22 +1,27 @@
 pkgbase = 3dfsb
 	pkgdesc = 3D file browser
-	pkgver = 1.2
-	pkgrel = 2
-	url = https://github.com/tomvanbraeckel/3dfsb/
+	pkgver = 1.2.r17.g7c89d1a
+	pkgrel = 1
+	url = https://github.com/3dfsb-dev/3dfsb
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = imagemagick
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = xxd
 	depends = freeglut
 	depends = file
 	depends = sdl_image
 	depends = glu
 	depends = gstreamer
-	depends = xdotool-git
-	source = https://github.com/tomvanbraeckel/3dfsb/archive/v1.2.tar.gz
+	depends = xdotool
+	source = git+https://github.com/3dfsb-dev/3dfsb#commit=7c89d1a3f6b208427725915ca7a725241f12f0f5
+	source = fix.patch
 	source = 3dfsb.desktop
-	sha256sums = e04497251a4ffb4c003ed0c22316501cf2e95c201d233ddbb9c79c2f9d696c2e
-	sha256sums = c53f4ba2ed02513c3ec60f9182fb25c71f03d19e60498f563d960bd93bc6eb84
+	sha256sums = 9b1a0c8b664347f457af94bb315bef4db90eac1a7c43dc7f9c8e279a772fbd49
+	sha256sums = 12fb674fa6ed0a0880adb673e53a12a87e274e920f6288551ea134ac752d79d1
+	sha256sums = 7c6c88c8e0b1a5492f3537bd851a812a7b8b861da0d9f3a6c12c2c91d5e3d7da
 
 pkgname = 3dfsb
-
