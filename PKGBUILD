@@ -78,11 +78,24 @@ _schemas=('pinyin 全拼'
 _conflicts=()
 for _schema in "${_schemas[@]}"; do
     _name=${_schema%% *}
+    _conflicts+=(${pkgbase}-${_name,,})
+done
+
+for _schema in "${_schemas[@]}"; do
+    _name=${_schema%% *}
     _pkgname=${pkgbase}-${_name,,}
-    _conflicts+=("${_pkgname}")
+
+    conflicts=()
+    for _c in "${_conflicts[@]}"; do
+        [[ $_c != "$_pkgname" ]] && conflicts+=("${_c}")
+    done
 
     pkgname+=("${_pkgname}")
     eval "package_$_pkgname() {
+        depends=("rime-wanxiang-base")
+        pkgdesc="万象拼音基础版（${_name}方案）"
+        conflicts=("${conflicts[@]}")
+
         _package $_schema
     }"
 done
@@ -99,13 +112,6 @@ _rime_deploy() {
 _package() {
     local _schema=$1
     local _name=$2
-
-    depends=("rime-wanxiang-base")
-    pkgdesc="万象拼音基础版（${_name}方案）"
-    conflicts=()
-    for _c in "${_conflicts[@]}"; do
-        [[ $_c != "$pkgname" ]] && conflicts+=("${_c}")
-    done
 
     cd "${srcdir}/rime_wanxiang-${pkgver}"
 

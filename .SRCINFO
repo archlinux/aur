@@ -8,6 +8,10 @@ pkgbase = rime-wanxiang
 	makedepends = rime-prelude
 	makedepends = rime-essay
 	makedepends = sed
+	conflicts = rime-wanxiang-pinyin
+	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-flypy
+	conflicts = rime-wanxiang-mspy
 	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.1.tar.gz
 	sha256sums = daf8abcf764a2736eac2efb6abf2b2bc5d2a7258b698b86ae303913b48b41735
 
@@ -18,11 +22,41 @@ pkgname = rime-wanxiang-base
 	depends = rime-wanxiang-data
 
 pkgname = rime-wanxiang-pinyin
+	pkgdesc = 万象拼音基础版（pinyin方案）
+	depends = rime-wanxiang-base
+	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-flypy
+	conflicts = rime-wanxiang-mspy
+	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-zrm
+	pkgdesc = 万象拼音基础版（zrm方案）
+	depends = rime-wanxiang-base
+	conflicts = rime-wanxiang-pinyin
+	conflicts = rime-wanxiang-flypy
+	conflicts = rime-wanxiang-mspy
+	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-flypy
+	pkgdesc = 万象拼音基础版（flypy方案）
+	depends = rime-wanxiang-base
+	conflicts = rime-wanxiang-pinyin
+	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-mspy
+	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-mspy
+	pkgdesc = 万象拼音基础版（mspy方案）
+	depends = rime-wanxiang-base
+	conflicts = rime-wanxiang-pinyin
+	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-flypy
+	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-sogou
+	pkgdesc = 万象拼音基础版（sogou方案）
+	depends = rime-wanxiang-base
+	conflicts = rime-wanxiang-pinyin
+	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-flypy
+	conflicts = rime-wanxiang-mspy
