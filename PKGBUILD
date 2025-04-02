@@ -3,7 +3,7 @@
 # Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert
-pkgver=0.27.5
+pkgver=0.27.7
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
     -DQHOTKEY_INSTALL=OFF \
     -DBUILD_PLUGIN_APPLICATIONS=ON \
     -DBUILD_PLUGIN_CAFFEINE=ON \
-    -DBUILD_PLUGIN_CALCULATOR_QALCULATE=ON \
+    -DBUILD_PLUGIN_CALCULATOR-QALCULATE=ON \
     -DBUILD_PLUGIN_CHROMIUM=ON \
     -DBUILD_PLUGIN_CLIPBOARD=ON \
     -DBUILD_PLUGIN_DATETIME=ON \
@@ -60,4 +60,4 @@ package() {
   install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha512sums=('04eb603cf5ab309e8b99ac02802a3cd7a8cdab04ac1ec9eaf294e57c1f4934000163c84e3b5c6f2be9635ca39aa780fc4808a211bbdbef9f4485ba669f07c353')
+sha512sums=('67968700ff7e66ccf30466591d9951ccef9af2d5182172dcd91a412d95ebe7441d43d5c9ac6b29356385583bc3d6a2b8a39ab6b69b4a4c578b552813b2949c73')
