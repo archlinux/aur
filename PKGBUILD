@@ -4,7 +4,7 @@ _orgname=cosmos
 _reponame=gaia
 _pkgname=${_reponame}d
 pkgname=${_pkgname}-bin
-pkgver=22.3.1
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="Cosmos SDK application for the Cosmos Hub"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=(${_pkgname})
 source=("https://raw.githubusercontent.com/${_orgname}/${_reponame}/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgname}-v${pkgver}-linux-x86_64::https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64")
 sha256sums=('98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc')
-sha256sums_x86_64=('af2d26b7a0b01119819ffe2de764fdbf16169c509e306b53d25f860924dcfc9a')
+sha256sums_x86_64=('e3ad0a5827c66ed126853f247f40f601f62c65699175fc731b4d10bdb66089c5')
 
 package() {
     install -D "${_pkgname}-v${pkgver}-linux-${CARCH}" "$pkgdir/usr/bin/${_pkgname}"
