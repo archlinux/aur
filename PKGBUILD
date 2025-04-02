@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=134.0.6998.165
+pkgver=135.0.7049.52
 pkgrel=1
 _manual_clone=0
 _system_abseil=1
@@ -27,7 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('dd6a8d05771dc4879a8a74779e54fff0313ef1345be721167a594dd7bfe4c239'
+sha256sums=('bc07d4b8f8377a218a2f5b5c5ae8276535650b2a524706d4959ed54322874950'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
@@ -308,6 +308,12 @@ build() {
     )
     ;;
   esac
+
+  if (( _system_abseil )); then
+    # Fixes https://github.com/abseil/abseil-cpp/issues/1747
+    # ld.lld: error: undefined symbol: absl::lts_20250127::log_internal::LogMessage& absl::lts_20250127::log_internal::LogMessage::operator<<<unsigned long, 0>(unsigned long const&)
+    CXXFLAGS+=' -fclang-abi-compat=17'
+  fi
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'

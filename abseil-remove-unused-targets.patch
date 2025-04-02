@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2025-02-25 20:55:16.000000000 +0100
-+++ third_party/abseil-cpp/BUILD.gn	2025-03-04 12:33:06.013173356 +0100
+--- third_party/abseil-cpp/BUILD.gn	2025-03-31 17:23:48.000000000 +0200
++++ third_party/abseil-cpp/BUILD.gn	2025-04-02 11:27:18.501349379 +0200
 @@ -62,7 +62,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -25,7 +25,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/memory",
      "//third_party/abseil-cpp/absl/meta:type_traits",
      "//third_party/abseil-cpp/absl/numeric:bits",
-@@ -116,11 +111,9 @@
+@@ -116,15 +111,11 @@
    # Dependencies that preferably shouldn't be public in chromium.
    public_deps += [
      # public in abseil, but deprecated in chromium, yet used.
@@ -34,12 +34,20 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      # base/logging.cc uses this non-public absl dependency while there no better
      # alternative to inject abort hook. See notes in `base/logging.cc`.
 -    "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+ 
+     # absl internal utilities used by protobuf.
+-    "//third_party/abseil-cpp/absl/container:layout",
+-    "//third_party/abseil-cpp/absl/utility:if_constexpr",
    ]
  
    if (is_component_build) {
-@@ -274,12 +267,8 @@
+@@ -276,16 +267,10 @@
+       deps = [
+         "absl/algorithm:algorithm_test",
          "absl/algorithm:container_test",
+-        "absl/base:attributes_test",
          "absl/base:config_test",
+-        "absl/base:iterator_traits_test",
          "absl/base:no_destructor_test",
 -        "absl/base:nullability_default_nonnull_test",
          "absl/base:nullability_test",
@@ -48,9 +56,9 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
 -        "absl/base:tracing_internal_strong_test",
 -        "absl/base:tracing_internal_weak_test",
          "absl/cleanup:cleanup_test",
- 
-         # TODO(mbonadei): Fix issue with EXPECT_DEATH and uncomment.
-@@ -290,8 +279,6 @@
+         "absl/container:common_policy_traits_test",
+         "absl/container:fixed_array_test",
+@@ -293,8 +278,6 @@
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -58,8 +66,8 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
 -        "absl/container:node_hash_set_test",
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
-         "absl/container:raw_hash_set_test",
-@@ -300,11 +287,8 @@
+         "absl/container:sample_element_size_test",
+@@ -302,11 +285,8 @@
          "absl/crc:crc_cord_state_test",
          "absl/crc:crc_memcpy_test",
          "absl/crc:non_temporal_memcpy_test",
@@ -71,7 +79,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -328,7 +312,6 @@
+@@ -330,7 +310,6 @@
          "absl/log:vlog_is_on_test",
          "absl/log/internal:fnmatch_test",
          "absl/log/internal:stderr_log_sink_test",
@@ -79,7 +87,20 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/memory:memory_test",
          "absl/meta:type_traits_test",
          "absl/numeric:int128_test",
-@@ -359,7 +342,6 @@
+@@ -351,12 +330,9 @@
+         "absl/strings:cord_rep_btree_reader_test",
+         "absl/strings:cord_rep_btree_test",
+         "absl/strings:cord_rep_crc_test",
+-        "absl/strings:cord_test",
+         "absl/strings:cordz_functions_test",
+-        "absl/strings:cordz_handle_test",
+         "absl/strings:cordz_info_statistics_test",
+         "absl/strings:cordz_info_test",
+-        "absl/strings:cordz_sample_token_test",
+         "absl/strings:cordz_test",
+         "absl/strings:cordz_update_scope_test",
+         "absl/strings:cordz_update_tracker_test",
+@@ -364,7 +340,6 @@
          "absl/strings:has_absl_stringify_test",
          "absl/strings:has_ostream_operator_test",
          "absl/strings:match_test",
@@ -87,7 +108,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:str_format_arg_test",
          "absl/strings:str_format_bind_test",
          "absl/strings:str_format_checker_test",
-@@ -370,11 +352,7 @@
+@@ -375,11 +350,7 @@
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",
@@ -98,9 +119,9 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
 -        "absl/synchronization:per_thread_sem_test",
          "absl/synchronization:waiter_test",
          "absl/time:time_test",
-         "absl/types:optional_test",
---- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-02-25 20:55:16.000000000 +0100
-+++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-03-04 12:33:07.153230288 +0100
+         "absl/types:span_test",
+--- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-03-31 17:23:48.000000000 +0200
++++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-04-02 11:27:18.575351558 +0200
 @@ -18,7 +18,6 @@
    public = [ "distribution_caller.h" ]
    deps = [
@@ -184,7 +205,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/googletest:gtest",
    ]
  }
-@@ -338,7 +325,6 @@
+@@ -323,7 +310,6 @@
      ":iostream_state_saver",
      ":uniform_helper",
      "//third_party/abseil-cpp/absl/base:config",
