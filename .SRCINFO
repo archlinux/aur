@@ -1,6 +1,6 @@
 pkgbase = wine-osu-spectator-wow64
 	pkgdesc = A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations) (WoW64 version)
-	pkgver = 10.3.w171.sfa0cd8e
+	pkgver = 10.4.w163.s5b64f43
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine-wow64.install
@@ -14,7 +14,6 @@ pkgbase = wine-osu-spectator-wow64
 	makedepends = flex
 	makedepends = gawk
 	makedepends = gcc
-	makedepends = opencl-icd-loader
 	makedepends = giflib
 	makedepends = libxslt
 	makedepends = libpng
@@ -95,7 +94,6 @@ pkgbase = wine-osu-spectator-wow64
 	optdepends = libxinerama
 	optdepends = libxcomposite
 	optdepends = giflib
-	optdepends = opencl-icd-loader
 	optdepends = libpng
 	optdepends = libxslt
 	optdepends = mpg123
@@ -114,10 +112,10 @@ pkgbase = wine-osu-spectator-wow64
 	source = Makefile.single
 	source = makedep-fix.patch
 	source = buildiswow64
-	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=e66405a5040ac233ebdc7bdd925919ad63b4dd69
+	source = wine::git+https://gitlab.winehq.org/wine/wine.git#commit=8e2aea6290e823d2f5023e2bff5c2fec0880a65d
 	source = lto-fixup.patch
-	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=03-19-2025-e66405a5-fa0cd8ea
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=fa0cd8ead07e8308dae196122b38f95ef031187e
+	source = git+https://github.com/whrvt/wine-osu-patches.git#tag=04-01-2025-8e2aea62-5b64f435
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=5b64f435e92f270c4792ae3788dbb167c7dc629c
 	sha512sums = 05e6d1148841b7844155e9992ad16fe8cfe924db4092a9aeb707d47551c63df5b6ba3a8036f8b70d1320b07ca11458a8bf614baf9f82542c96e7b72c48de6a8f
 	sha512sums = 59920a54e9bd8d1f73c15675f7df29829680b59f4d1c4fc74fe710e4b596fd6a96f3b43994eb5da0fd1e50299b0ada933c6f3796e1d0698febb7870995f7f266
 	sha512sums = 3ce23732b9c433a9b295e366fc397ad8ff21624fbde635facfdd9435fd3132f51a7adf30d2a7b097d5509f8e333a144bcea550b9c6c479b9129d1405b90e8431

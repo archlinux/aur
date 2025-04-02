@@ -14,7 +14,7 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.3.w171.sfa0cd8e
+pkgver=10.4.w163.s5b64f43
 pkgrel=1
 eval pkgrel=1
 
@@ -33,11 +33,14 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization winex11-MWM_Decorations)
+_disabled_staging=(dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization
+                   user32-recursive-activation user32-alttab-focus winex11-Window_Style winex11.drv-Query_server_position)
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
+                   # dsound-EAX causes crashing in osu! with compat. mode enabled
+                   # WM/winex11 patches are just really broken
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="03-19-2025-e66405a5-fa0cd8ea"
+_patchbase_tag="04-01-2025-8e2aea62-5b64f435"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -48,8 +51,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=e66405a5040ac233ebdc7bdd925919ad63b4dd69
-_desired_staging_commit=fa0cd8ead07e8308dae196122b38f95ef031187e
+_desired_wine_commit=8e2aea6290e823d2f5023e2bff5c2fec0880a65d
+_desired_staging_commit=5b64f435e92f270c4792ae3788dbb167c7dc629c
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -185,7 +188,7 @@ depends=(
 
 makedepends=(autoconf bison ccache perl fontforge flex gawk
 #  python # for make_vulkan
-  gcc         opencl-icd-loader
+  gcc         
   giflib      libxslt
   libpng      sdl2
   libxmu      gsm
@@ -202,7 +205,7 @@ makedepends=(autoconf bison ccache perl fontforge flex gawk
 
 optdepends=(
   libxinerama     libxcomposite
-  giflib          opencl-icd-loader
+  giflib
   libpng          libxslt
   mpg123          sdl2
   alsa-plugins    samba
@@ -213,8 +216,8 @@ optdepends=(
 
 if [ "${_wow64build}" != "true" ]; then
   depends+=(lib32-libxkbcommon libvulkan.so=1-32 lib32-gst-plugins-good lib32-gnutls lib32-libxcomposite lib32-libpulse lib32-fontconfig lib32-lcms2 lib32-libxml2 lib32-libxcursor lib32-libxrandr lib32-libxdamage lib32-libxi lib32-gettext lib32-freetype2 lib32-glu lib32-libsm lib32-gcc-libs lib32-libpcap)
-  makedepends+=(lib32-ffmpeg-minimal-dev lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-opencl-icd-loader lib32-libxslt lib32-sdl2)
-  optdepends+=(lib32-ffmpeg lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-opencl-icd-loader lib32-libxslt lib32-vkd3d lib32-sdl2)
+  makedepends+=(lib32-ffmpeg-minimal-dev lib32-zlib lib32-xz lib32-wayland lib32-gtk3 lib32-attr lib32-giflib lib32-libpng lib32-libxmu lib32-libxxf86vm lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-lib lib32-mesa lib32-mesa-libgl lib32-libxslt lib32-sdl2)
+  optdepends+=(lib32-ffmpeg lib32-gst-libav lib32-libusb lib32-libxinerama lib32-giflib lib32-libpng lib32-libldap lib32-mpg123 lib32-openal lib32-alsa-plugins lib32-alsa-lib lib32-libjpeg-turbo lib32-libxcomposite lib32-libxinerama lib32-libxslt lib32-vkd3d lib32-sdl2)
   if [ "${_use_clang}" = "true" ]; then makedepends+=(lib32-clang lib32-llvm-libs); fi
 fi
 makedepends=("${makedepends[@]}" "${depends[@]}")
@@ -362,7 +365,7 @@ _set_vars() {
       _extra_crossld_flags+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
     fi
 
-    CPPFLAGS="-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
+    CPPFLAGS="-D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
     _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
                     -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
 
@@ -742,7 +745,7 @@ build() { _set_vars;
     git -C "${srcdir}"/wine/ config --unset user.email &>/dev/null || true
     git -C "${srcdir}"/wine/ config --unset user.name &>/dev/null || true
     cp -r "${HOME}/.config/edwkspc/wine/".* "${srcdir}"/wine/ &>/dev/null || true
-    printf '%s\n%s\n%s\n%s' '.vscode' '.gitignore' '*patch' '.clang-format' > "${srcdir}"/wine/.gitignore || true # vscode? cringe!
+    printf '%s\n%s\n%s\n%s\n%s' '.vscode' '.gitignore' '*patch' '.clang-format' '.clangd' > "${srcdir}"/wine/.gitignore || true # vscode? cringe!
   else
     # was it worth it?
     rm -rf "${srcdir}"/*-build || true
