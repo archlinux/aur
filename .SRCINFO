@@ -1,7 +1,7 @@
 pkgbase = nullfsvfs-dkms
 	pkgdesc = Virtual black hole file system that behaves like /dev/null
-	pkgver = 0.17
-	pkgrel = 4
+	pkgver = 0.18
+	pkgrel = 1
 	url = https://github.com/abbbi/nullfsvfs
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,8 +9,8 @@ pkgbase = nullfsvfs-dkms
 	depends = make
 	conflicts = nullfs
 	conflicts = nullfs-dkms
-	source = nullfsvfs-0.17.tar.gz::https://github.com/abbbi/nullfsvfs/archive/refs/tags/v0.17.tar.gz
-	sha256sums = f2f9ba2515704693f7a48d5dd3dc2ca12c45e33419fcf4ec1c3c258571cdd850
-	b2sums = f0ff528551b4c160458de8e133fbbc3390d000be217ba42bca522e1d5c78c325e47aebe8cc7e25582000838eaca5d930ad98a5d62809fa9f512334f9a4443baa
+	source = nullfsvfs-0.18.tar.gz::https://github.com/abbbi/nullfsvfs/archive/refs/tags/v0.18.tar.gz
+	sha256sums = 57359622ffc3e78b629013f63985b5878d3d3eb450f3d4b0df996d7f3e60d421
+	b2sums = fda30636980cda7a4f008e05813853ec33833606b032734eba27ad815827dffa7e8857081981482730f6eb52869d292a7dccb7607ddf0bda48ed68c9a655d329
 
 pkgname = nullfsvfs-dkms
