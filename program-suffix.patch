@@ -1,12 +1,25 @@
+From b4695b946739e10d44fb5f5e6df1a7858dbde987 Mon Sep 17 00:00:00 2001
+From: Frederik Schwan <frederik@tty42.de>
+Date: Wed, 2 Apr 2025 22:27:15 +0200
+Subject: [PATCH] add compatibility changes to allow both 64 bit and 32 bit
+ versions of the package to be installed at the same time
+
+---
+ etc/pcscd.service.in | 10 +++++-----
+ meson.build          |  7 ++++---
+ meson.options        |  5 +++++
+ 3 files changed, 14 insertions(+), 8 deletions(-)
+
 diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
-index 65ad6a69..89aa1072 100644
+index 3c5fc7f7..bafe9356 100644
 --- a/etc/pcscd.service.in
 +++ b/etc/pcscd.service.in
-@@ -1,12 +1,12 @@
+@@ -1,13 +1,13 @@
  [Unit]
  Description=PC/SC Smart Card Daemon
 -Requires=pcscd.socket
 +Requires=pcscd@program_suffix@.socket
+ @requires_polkit@
  Documentation=man:pcscd(8)
  
  [Service]
@@ -17,11 +30,16 @@ index 65ad6a69..89aa1072 100644
 +ExecReload=@sbindir_exp@/pcscd@program_suffix@ --hotplug
 +EnvironmentFile=-@sysconfdir@/default/pcscd@program_suffix@
  
+ # Paths
+ ProtectProc=invisible
+@@ -44,4 +44,4 @@ SystemCallFilter=~@resources @privileged
+ SystemCallArchitectures=native
+ 
  [Install]
 -Also=pcscd.socket
 +Also=pcscd@program_suffix@.socket
 diff --git a/meson.build b/meson.build
-index 83ef6c3c..0c6e39e1 100644
+index f07bc1c9..413334f2 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -29,6 +29,7 @@ confgen_data = configuration_data({
@@ -32,7 +50,7 @@ index 83ef6c3c..0c6e39e1 100644
    })
  
  # tests for functions
-@@ -139,7 +140,7 @@ features += 'serialconfdir=' + get_option('serialconfdir')
+@@ -153,7 +154,7 @@ features += 'serialconfdir=' + get_option('serialconfdir')
  # generate PCSCLITE_FEATURES
  conf_data.set('PCSCLITE_FEATURES', '"' + ' '.join(features) + '"')
  
@@ -41,7 +59,7 @@ index 83ef6c3c..0c6e39e1 100644
    sources : pcscd_src,
    include_directories : incdir,
    dependencies : pcscd_dep,
-@@ -243,11 +244,11 @@ if get_option('libsystemd')
+@@ -285,11 +286,11 @@ if get_option('libsystemd')
    systemd = dependency('systemd')
    unit = get_option('systemdunit')
    systemdsystemunitdir = systemd.get_variable(pkgconfig : 'systemd' + unit + 'unitdir')
@@ -56,15 +74,18 @@ index 83ef6c3c..0c6e39e1 100644
    install_dir : systemdsystemunitdir,
    configuration : confgen_data)
 diff --git a/meson.options b/meson.options
-index 85afb3b6..7edaf4c7 100644
+index f0b58cac..9e62bcc1 100644
 --- a/meson.options
 +++ b/meson.options
-@@ -54,3 +54,8 @@ option('filter_names',
+@@ -53,3 +53,8 @@ option('filter_names',
    type : 'boolean',
-   value : 'true',
+   value : true,
    description : 'reader filtering using PCSCLITE_FILTER_IGNORE_READER_NAMES and PCSCLITE_FILTER_EXTEND_READER_NAMES')
 +
 +option('program_suffix',
 +  type : 'string',
 +  value : '',
 +  description : 'suffix for programs')
+-- 
+2.49.0
+

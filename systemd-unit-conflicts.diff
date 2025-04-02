@@ -1,11 +1,21 @@
+From 846dacaad6d1074d9c5b7de2e547fe356793d0d4 Mon Sep 17 00:00:00 2001
+From: Frederik Schwan <frederik@tty42.de>
+Date: Wed, 2 Apr 2025 22:22:10 +0200
+Subject: [PATCH] add conflicts with 64 bit service
+
+---
+ etc/pcscd.service.in | 1 +
+ etc/pcscd.socket.in  | 1 +
+ 2 files changed, 2 insertions(+)
+
 diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
-index 34e8572a..6b56ca7e 100644
+index 3c5fc7f7..750d97c1 100644
 --- a/etc/pcscd.service.in
 +++ b/etc/pcscd.service.in
-@@ -1,6 +1,7 @@
- [Unit]
+@@ -2,6 +2,7 @@
  Description=PC/SC Smart Card Daemon
- Requires=pcscd@program_suffix@.socket
+ Requires=pcscd.socket
+ @requires_polkit@
 +Conflicts=pcscd.service
  Documentation=man:pcscd(8)
  
@@ -21,3 +31,6 @@ index 0a5654b9..96d91f4f 100644
  
  [Socket]
  ListenStream=@ipcdir@/pcscd.comm
+-- 
+2.49.0
+
