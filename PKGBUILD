@@ -1,91 +1,169 @@
-# Maintainer: Tony Lambiris <tony@libpcap.net>
+# Maintainer: Evgenii Alekseev
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Manuel Schneider  <manuelschneid3r at googles mail>
 
 pkgname=albert-git
 _pkgname=${pkgname%-git}
-pkgver=0.20.14.r13.gee101532
-pkgrel=1
+pkgver=0.27.7.r2.g65e5093
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
-url="https://github.com/albertlauncher"
-license=('GPL')
-depends=('hicolor-icon-theme' 'qt6-scxml' 'qt6-svg')
-makedepends=('cmake' 'git' 'libqalculate' 'muparser' 'pybind11' 'python')
-optdepends=('libqalculate: calculator plugin'
-            'muparser: another calculator plugin'
-            'python: python extension'
-            'python-urllib3: python web plugins')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git"
-        "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
-        "mirrors/python::git+https://github.com/albertlauncher/python.git"
-        "mirrors/qhotkey::git+https://github.com/Skycoder42/QHotkey.git")
+url="https://github.com/${_pkgname}launcher"
+license=('LicenseRef-Albert')
+depends=('hicolor-icon-theme' 'qt6-5compat' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'qt6-svg')
+makedepends=('cmake' 'git' 'libqalculate' 'pybind11' 'python' 'qt6-tools')
+optdepends=('ddgr: duckduckgo search plugin'
+	'libarchive: documentation plugin'
+	'libqalculate: calculator plugin')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git+${url}/${_pkgname}.git"
+	"git+${url}/i18n.git"
+	"git+https://github.com/QtCommunity/QHotkey.git"
+	"git+https://github.com/QtCommunity/QNotification.git"
+	"git+${url}/${_pkgname}-plugin-applications.git"
+	"git+${url}/${_pkgname}-plugin-bluetooth.git"
+	"git+${url}/${_pkgname}-plugin-caffeine.git"
+	"git+${url}/${_pkgname}-plugin-calculator-qalculate.git"
+	"git+${url}/${_pkgname}-plugin-chromium.git"
+	"git+${url}/${_pkgname}-plugin-clipboard.git"
+	"git+${url}/${_pkgname}-plugin-contacts.git"
+	"git+${url}/${_pkgname}-plugin-datetime.git"
+	"git+${url}/${_pkgname}-plugin-debug.git"
+	"git+${url}/${_pkgname}-plugin-dictionary.git"
+	"git+${url}/${_pkgname}-plugin-docs.git"
+	"git+${url}/${_pkgname}-plugin-files.git"
+	"git+${url}/${_pkgname}-plugin-hash.git"
+	"git+${url}/${_pkgname}-plugin-menubar.git"
+	"git+${url}/${_pkgname}-plugin-mpris.git"
+	"git+${url}/${_pkgname}-plugin-path.git"
+	"git+${url}/${_pkgname}-plugin-python.git"
+	"git+${url}/${_pkgname}-plugin-snippets.git"
+	"git+${url}/${_pkgname}-plugin-ssh.git"
+	"git+${url}/${_pkgname}-plugin-system.git"
+	"git+${url}/${_pkgname}-plugin-timer.git"
+	"git+${url}/${_pkgname}-plugin-timezones.git"
+	"git+${url}/${_pkgname}-plugin-urlhandler.git"
+	"git+${url}/${_pkgname}-plugin-vpn.git"
+	"git+${url}/${_pkgname}-plugin-websearch.git"
+	"git+${url}/${_pkgname}-plugin-widgetsboxmodel-qss.git"
+	"git+${url}/${_pkgname}-plugin-widgetsboxmodel.git"
+	"git+${url}/python.git"
+)
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
 
 pkgver() {
-  cd "$srcdir/albert"
-
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
+	cd "${_pkgname}/"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
-  mkdir -p build
+	cd "${_pkgname}/"
 
-  cd "$srcdir/albert"
-  git submodule sync
-  git submodule update --init --recursive --remote
+	git submodule init
+	git config submodule.plugins.url "${srcdir}/plugins/"
+	git config submodule.i18n.url "${srcdir}/i18n/"
+	git config submodule.lib/QHotkey.url "${srcdir}/QHotkey/"
+	git config submodule.lib/QNotification.url "${srcdir}/QNotification/"
+	git config submodule.plugins/applications.url "${srcdir}/${_pkgname}-plugin-applications/"
+	git config submodule.plugins/bluetooth.url "${srcdir}/${_pkgname}-plugin-bluetooth/"
+	git config submodule.plugins/caffeine.url "${srcdir}/${_pkgname}-plugin-caffeine/"
+	git config submodule.plugins/calculator-qalculate.url "${srcdir}/${_pkgname}-plugin-calculator-qalculate/"
+	git config submodule.plugins/chromium.url "${srcdir}/${_pkgname}-plugin-chromium/"
+	git config submodule.plugins/clipboard.url "${srcdir}/${_pkgname}-plugin-clipboard/"
+	git config submodule.plugins/contacts.url "${srcdir}/${_pkgname}-plugin-contacts/"
+	git config submodule.plugins/datetime.url "${srcdir}/${_pkgname}-plugin-datetime/"
+	git config submodule.plugins/debug.url "${srcdir}/${_pkgname}-plugin-debug/"
+	git config submodule.plugins/dictionary.url "${srcdir}/${_pkgname}-plugin-dictionary/"
+	git config submodule.plugins/docs.url "${srcdir}/${_pkgname}-plugin-docs/"
+	git config submodule.plugins/files.url "${srcdir}/${_pkgname}-plugin-files/"
+	git config submodule.plugins/hash.url "${srcdir}/${_pkgname}-plugin-hash/"
+	git config submodule.plugins/menubar.url "${srcdir}/${_pkgname}-plugin-menubar/"
+	git config submodule.plugins/mpris.url "${srcdir}/${_pkgname}-plugin-mpris/"
+	git config submodule.plugins/path.url "${srcdir}/${_pkgname}-plugin-path/"
+	git config submodule.plugins/python.url "${srcdir}/${_pkgname}-plugin-python/"
+	git config submodule.plugins/snippets.url "${srcdir}/${_pkgname}-plugin-snippets/"
+	git config submodule.plugins/ssh.url "${srcdir}/${_pkgname}-plugin-ssh/"
+	git config submodule.plugins/system.url "${srcdir}/${_pkgname}-plugin-system/"
+	git config submodule.plugins/timer.url "${srcdir}/${_pkgname}-plugin-timer/"
+	git config submodule.plugins/timezones.url "${srcdir}/${_pkgname}-plugin-timezones/"
+	git config submodule.plugins/urlhandler.url "${srcdir}/${_pkgname}-plugin-urlhandler/"
+	git config submodule.plugins/vpn.url "${srcdir}/${_pkgname}-plugin-vpn/"
+	git config submodule.plugins/websearch.url "${srcdir}/${_pkgname}-plugin-websearch/"
+	git config submodule.plugins/widgetsboxmodel-qss.url "${srcdir}/${_pkgname}-plugin-widgetsboxmodel-qss/"
+	git config submodule.plugins/widgetsboxmodel.url "${srcdir}/${_pkgname}-plugin-widgetsboxmodel/"
+	git -c protocol.file.allow=always submodule update
 
-  git config submodule.plugins.url "$srcdir/plugins"
-  git -c protocol.file.allow=always submodule update plugins
+	cd plugins/python/
+	git rm pybind11
+	git submodule init
+	git config submodule.plugins.url "${srcdir}/python/"
+	git -c protocol.file.allow=always submodule update
 
-  git config submodule.lib/QHotkey.url "$srcdir/qhotkey"
-  git -c protocol.file.allow=always submodule update lib/QHotkey
-
-  cd "$srcdir/albert/plugins"
-  git submodule init
-  git config submodule.python/plugins.url "$srcdir/python"
-  git -c protocol.file.allow=always submodule update python/plugins
+	sed -i 's/add_subdirectory(pybind11)/find_package(pybind11 REQUIRED)/' CMakeLists.txt
 }
 
 build() {
-  cd build
+	cmake -B build -S "${_pkgname}" \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
+		-DQHOTKEY_INSTALL=OFF \
+		-DBUILD_APPLICATIONS_XDG=ON \
+		-DBUILD_CALCULATOR_QALCULATE=ON \
+		-DBUILD_CHROMIUM=ON \
+		-DBUILD_CLIPBOARD=ON \
+		-DBUILD_DATETIME=ON \
+		-DBUILD_DEBUG=OFF \
+		-DBUILD_FILES=ON \
+		-DBUILD_HASH=ON \
+		-DBUILD_PYTHON=ON \
+		-DBUILD_QMLBOXMODEL=ON \
+		-DBUILD_SNIPPETS=ON \
+		-DBUILD_SSH=ON \
+		-DBUILD_SYSTEM=ON \
+		-DBUILD_TEMPLATE=OFF \
+		-DBUILD_TERMINAL=ON \
+		-DBUILD_URLHANDLER=ON \
+		-DBUILD_WEBSEARCH=ON \
+		-DBUILD_WIDGETSBOXMODEL=ON
 
-  cmake ../$_pkgname \
-    -DCMAKE_BUILD_TYPE=MinSizeRel \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_FIND_PACKAGE_RESOLVE_SYMLINKS=ON \
-    -DQHOTKEY_INSTALL=OFF \
-    -DBUILD_WIDGETSBOXMODEL=ON \
-    -DBUILD_APPLICATIONS_XDG=ON \
-    -DBUILD_CALCULATOR=ON \
-    -DBUILD_CHROMIUM=ON \
-    -DBUILD_DEBUG=OFF \
-    -DBUILD_FILES=ON \
-    -DBUILD_HASH=ON \
-    -DBUILD_PYTHON=ON \
-    -DBUILD_SNIPPETS=ON \
-    -DBUILD_SSH=ON \
-    -DBUILD_SYSTEM=ON \
-    -DBUILD_TEMPLATE=OFF \
-    -DBUILD_TERMINAL=ON \
-    -DBUILD_URLHANDLER=ON \
-    -DBUILD_WEBSEARCH=ON
-
-  make
+	cmake --build build
 }
 
 package() {
-  cd build
-
-  make DESTDIR="$pkgdir/" install
-
-  # remove some trash
-  rm -r "$pkgdir/usr/share/albert/python/plugins/.archive"
-  rm -r "$pkgdir/usr/share/albert/python/plugins/.git"*
+	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm644 "${_pkgname}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-# vim:set ts=2 sw=2 et:
