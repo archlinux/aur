@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn
-pkgver=2.6.13
+pkgver=2.6.14
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         '0001-unprivileged.patch'
         'sysusers.conf'
         'tmpfiles.conf')
-sha256sums=('3673c6f52b6ab988c0db556582a68efdc7cd81fe2ea744f3b6cc9e377c7a3087'
+sha256sums=('d8d156ddde53a011740a1fc23929b5caca3db42cd6b94e43e8ddaeb8608bc212'
             'bb47b298b59300a4282fc4d0b69dcdd8dcfb72d2ff2f702f96ea369a8381456a'
             '15669f82ac8b412eb3840ba9b39de20ca9b04bf082516c229577a5cb4e1a9610'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
