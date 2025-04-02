@@ -24,19 +24,11 @@ check() {
   local pytest_options=(
     -vv
     --override-ini="addopts="
-    # Need OpenAI API
-    --deselect tests/test_config.py::test_set_default_openai_api
-    --deselect tests/test_openai_chatcompletions.py::test_get_response_with_text_message
-    --deselect tests/test_openai_chatcompletions.py::test_get_response_with_refusal
-    --deselect tests/test_openai_chatcompletions.py::test_get_response_with_tool_call
-    --deselect tests/test_openai_chatcompletions_stream.py::test_stream_response_yields_events_for_text_content
-    --deselect tests/test_openai_chatcompletions_stream.py::test_stream_response_yields_events_for_refusal_content
-    --deselect tests/test_openai_chatcompletions_stream.py::test_stream_response_yields_events_for_tool_call
   )
   cd "${srcdir}"/${_name//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  OPENAI_API_KEY=fake-for-tests test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
