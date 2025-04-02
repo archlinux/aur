@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.42.1
+pkgver=1.42.2
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('x86_64')
@@ -34,7 +34,7 @@ _dldir="${pkgver%.*}"
 source=("http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz"
 	"http://download.libguestfs.org/nbdkit/${_dldir}-stable/nbdkit-${pkgver}.tar.gz.sig"
 )
-sha256sums=('0338bc743e7d38b2ab974c5a91df7641d3c755d35853227715b72526a099e0a1'
+sha256sums=('670aac6792f2df7ea4f18585a63f2c9a318f9e81cfc371863152f631b0ec4b5c'
             'SKIP')
 
 build() {
