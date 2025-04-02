@@ -1,6 +1,6 @@
 pkgbase = audirvana-studio
 	pkgdesc = Audirvana Studio audio player
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://audirvana.com/
 	install = audirvana-studio.install
@@ -12,9 +12,9 @@ pkgbase = audirvana-studio
 	depends = avahi
 	depends = curl
 	depends = libxml2
-	source = https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-studio/audirvana-studio_2.10.1_amd64.deb
+	source = https://audirvana.com/delivery/linux/apt-repo/pool/non-free/audirvana-studio/audirvana-studio_2.10.2_amd64.deb
 	source = audirvanaStudio.service
-	sha256sums = 3378a964320e811d3401d54d02c2fe7a59f913647f9c1f09ec96744a61c8fae5
+	sha256sums = daa49ff30dc43c70f15a67c8251abe9b7c3f03e5ea87bd3ac356091fbf50a654
 	sha256sums = d1750d6eb360f3d348b2a016288ca4dae3ed544bbe62c1d802fa0fb59c487658
 
 pkgname = audirvana-studio
