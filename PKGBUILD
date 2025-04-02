@@ -1,6 +1,6 @@
 pkgname=gephgui-wry-bin
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The command-line Geph5 client"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
@@ -23,5 +23,7 @@ package() {
 
   find "$pkgdir" -type d -exec chmod 755 {} +
   find "$pkgdir" -type f -exec chmod 644 {} +
+  find "$pkgdir/usr/bin" -type f -exec chmod 755 {} + 2>/dev/null || true
+  find "$pkgdir/usr/lib" -type f -exec chmod 755 {} + 2>/dev/null || true
 }
 

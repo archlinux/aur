@@ -1,7 +1,7 @@
 pkgbase = gephgui-wry-bin
 	pkgdesc = The command-line Geph5 client
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geph-official/gephgui-wry
 	arch = x86_64
 	license = MPL-2.0
