@@ -1,7 +1,7 @@
 pkgbase = kbtin
 	pkgdesc = Very heavily extended clone of well-known TinTin++
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kilobyte/kbtin
 	arch = x86_64
 	license = GPL-2.0-or-later

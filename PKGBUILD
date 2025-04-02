@@ -2,7 +2,7 @@
 
 pkgname=kbtin
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very heavily extended clone of well-known TinTin++"
 arch=('x86_64')
 url="https://github.com/kilobyte/kbtin"
@@ -14,6 +14,7 @@ sha512sums=('94b3b07381b6b8f37b14266d37f574a9b2381fcbe8bc2ae0a15cec6e25c435d9730
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
   cmake --build build
 }
