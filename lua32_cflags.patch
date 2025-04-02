@@ -1,0 +1,9 @@
+--- a/config
++++ b/config
+@@ -64,5 +65,5 @@
+ INCS= -I$(INC) $(EXTRA_INCS)
+ DEFS= $(COMPAT) $(NUMBER) $(OLD_ANSI) $(EXTRALIB) $(EXTRA_DEFS)
+ 
+-CFLAGS= -O2 $(WARN) $(INCS) $(DEFS)
++CFLAGS= $(MYCFLAGS) $(WARN) $(INCS) $(DEFS)
+ 

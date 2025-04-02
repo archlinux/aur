@@ -1,0 +1,68 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -61,7 +61,7 @@
+ 	lvm.h \
+ 	lzio.h
+ 
+-T= $(LIB)/liblua.a
++T= $(LIB)/liblua$(VERSION).a
+ 
+ all: $T
+ 
+--- a/src/lib/Makefile
++++ b/src/lib/Makefile
+@@ -10,7 +10,7 @@
+ OBJS= linit.o ldblib.o liolib.o lmathlib.o lstrlib.o
+ SRCS= linit.c ldblib.c liolib.c lmathlib.c lstrlib.c
+ 
+-T= $(LIB)/liblualib.a
++T= $(LIB)/liblualib$(VERSION).a
+ 
+ all: $T
+ 
+--- a/src/lua/Makefile
++++ b/src/lua/Makefile
+@@ -9,17 +9,17 @@
+ OBJS= lua.o
+ SRCS= lua.c
+ 
+-T= $(BIN)/lua
++T= $(BIN)/lua$(VERSION)
+ 
+ all: $T
+ 
+-$T: $(OBJS) $(LIB)/liblua.a $(LIB)/liblualib.a
+-	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua -llualib -lm
++$T: $(OBJS) $(LIB)/liblua$(VERSION).a $(LIB)/liblualib$(VERSION).a
++	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua$(VERSION) -llualib$(VERSION) -lm
+ 
+-$(LIB)/liblua.a:
++$(LIB)/liblua$(VERSION).a:
+ 	cd ..; $(MAKE)
+ 
+-$(LIB)/liblualib.a:
++$(LIB)/liblualib$(VERSION).a:
+ 	cd ../lib; $(MAKE)
+ 
+ clean:
+--- a/src/luac/Makefile
++++ b/src/luac/Makefile
+@@ -8,14 +8,14 @@
+ OBJS= dump.o luac.o opcode.o opt.o print.o stubs.o test.o
+ SRCS= dump.c luac.c opcode.c opt.c print.c stubs.c test.c luac.h opcode.h
+ 
+-T= $(BIN)/luac
++T= $(BIN)/luac$(VERSION)
+ 
+ all: $T
+ 
+-$T: $(OBJS) $(LIB)/liblua.a
+-	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua
++$T: $(OBJS) $(LIB)/liblua$(VERSION).a
++	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua$(VERSION)
+ 
+-$(LIB)/liblua.a:
++$(LIB)/liblua$(VERSION).a:
+ 	cd ..; $(MAKE)
+ 
+ clean:

@@ -1,0 +1,22 @@
+--- a/src/lua/Makefile
++++ b/src/lua/Makefile
+@@ -14,7 +14,7 @@
+ all: $T
+ 
+ $T: $(OBJS) $(LIB)/liblua.a $(LIB)/liblualib.a
+-	$(CC) -o $@ $(OBJS) -L$(LIB) -llua -llualib -lm
++	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua -llualib -lm
+ 
+ $(LIB)/liblua.a:
+ 	cd ..; $(MAKE)
+--- a/src/luac/Makefile
++++ b/src/luac/Makefile
+@@ -13,7 +13,7 @@
+ all: $T
+ 
+ $T: $(OBJS) $(LIB)/liblua.a
+-	$(CC) -o $@ $(OBJS) -L$(LIB) -llua
++	$(CC) -o $@ $(OBJS) $(LDFLAGS) -L$(LIB) -llua
+ 
+ $(LIB)/liblua.a:
+ 	cd ..; $(MAKE)

@@ -1,0 +1,21 @@
+pkgbase = lua32
+	pkgdesc = Powerful lightweight programming language designed for extending applications
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://www.lua.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = liblua3.2.so
+	provides = liblualib3.2.so
+	source = lua-3.2.2.tar.gz::https://www.lua.org/ftp/lua-3.2.2.tar.gz
+	source = lua32_cflags.patch
+	source = lua32_ldflags.patch
+	source = lua32_version.patch
+	sha256sums = 4e04059f43acdcde5f7fd491c731df9279dac87d288a08c6eaeb31760c9876e0
+	sha256sums = a87fa36e77ef22ae2aa56ed29e0d840d7b3e67eab5e42f608addf52b50b4d235
+	sha256sums = 52a14cb01e5ced24892249986d98c0e4aa1228f2021471aaeada2da3923b2b90
+	sha256sums = 7477ce78990c111a6bc035fa7bf10c4366d8921619eb54cb6f962f4acda9d234
+
+pkgname = lua32
