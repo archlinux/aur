@@ -1,9 +1,9 @@
 # Maintainer: buckket <felix+arch at buckket dot org>
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=autorestic
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Config driven, easy backup cli for restic'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cupcakearmy/$pkgname"
@@ -31,7 +31,7 @@ build() {
   go build -o build
 
   for shell in bash zsh fish; do
-    ./build/$pkgname completion $shell >"build/${shell}_completion"
+    ./build/$pkgname completion $shell > "build/${shell}_completion"
   done
 }
 
@@ -42,4 +42,6 @@ package() {
   install -Dm644 "build/bash_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -Dm644 "build/zsh_completion" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -Dm644 "build/fish_completion" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+
+  cp -rv docs/pages "${pkgdir}/usr/share/doc/${_pkgname}/docs"
 }
