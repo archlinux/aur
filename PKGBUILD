@@ -2,7 +2,7 @@
 # Contributor: Ns2Kracy <2220496937@qq.com>
 # Contributor: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-gateway
-pkgver=0.4.8
+pkgver=0.4.15
 pkgrel=1
 pkgdesc='CasaOS Gateway is a dynamic API gateway service that can be used to expose APIs from different other HTTP based services.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,16 +12,16 @@ groups=('casaos')
 backup=('etc/casaos/gateway.ini')
 
 source_x86_64=(
-	${url}/releases/download/v${pkgver}-alpha2/linux-amd64-${pkgname}-v${pkgver}-alpha2.tar.gz
-    ${url}/releases/download/v${pkgver}-alpha2/linux-amd64-${pkgname}-migration-tool-v${pkgver}-alpha2.tar.gz
+	${url}/releases/download/v${pkgver}-alpha1/linux-amd64-${pkgname}-v${pkgver}-alpha1.tar.gz
+    ${url}/releases/download/v${pkgver}-alpha/linux-amd64-${pkgname}-migration-tool-v${pkgver}-alpha1.tar.gz
 )
 source_aarch64=(
-    ${url}/releases/download/v${pkgver}-alpha2/linux-arm64-${pkgname}-v${pkgver}-alpha2.tar.gz
-    ${url}/releases/download/v${pkgver}-alpha2/linux-arm64-${pkgname}-migration-tool-v${pkgver}-alpha2.tar.gz
+    ${url}/releases/download/v${pkgver}-alpha/linux-arm64-${pkgname}-v${pkgver}-alpha1.tar.gz
+    ${url}/releases/download/v${pkgver}-alpha/linux-arm64-${pkgname}-migration-tool-v${pkgver}-alpha1.tar.gz
 )
 source_armv7h=(
-	${url}/releases/download/v${pkgver}-alpha2/linux-arm-7-${pkgname}-v${pkgver}-alpha2.tar.gz
-    ${url}/releases/download/v${pkgver}-alpha2/linux-arm-7-${pkgname}-migration-tool-v${pkgver}-alpha2.tar.gz
+	${url}/releases/download/v${pkgver}-alpha/linux-arm-7-${pkgname}-v${pkgver}-alpha1.tar.gz
+    ${url}/releases/download/v${pkgver}-alpha/linux-arm-7-${pkgname}-migration-tool-v${pkgver}-alpha1.tar.gz
 )
 
 sha256sums_x86_64=('b138a5bc9442c2d8b2b55e9842036a97f9bcfec3b01cc001fdc1f601294c4af6'
