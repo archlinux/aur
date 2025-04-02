@@ -1,6 +1,6 @@
 pkgbase = vi-mongo
 	pkgdesc = Terminal User Interface for MongoDB
-	pkgver = 0.1.22
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/kopecmaciej/vi-mongo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vi-mongo
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = vi-mongo-0.1.22.tar.gz::https://github.com/kopecmaciej/vi-mongo/archive/v0.1.22.tar.gz
-	sha256sums = 9d628ffc0250b156a96d22501f176d166af1f02437f34b37ce5babcdddb7d133
+	source = vi-mongo-0.1.23.tar.gz::https://github.com/kopecmaciej/vi-mongo/archive/v0.1.23.tar.gz
+	sha256sums = 5d1c7c4c831b0d6a03c19293b19f057cc84da595dfca76b26bdd7d651ca7aa3e
 
 pkgname = vi-mongo
