@@ -1,10 +1,10 @@
 # Maintainer: Denis Klester <dinisoft@gmail.com>
 _pkgname=rtl8723bu
 pkgname=${_pkgname}-dkms-git
-pkgver=r279.af3a408
+pkgver=r281.02a3bd2
 pkgrel=1
 pkgdesc="Driver for RTL8723BU DKMS version"
-url="https://github.com/lwfinger/${_pkgname}"
+url="https://github.com/dini/${_pkgname}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 arch=('any')
