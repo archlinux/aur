@@ -33,10 +33,10 @@ check() {
 
   cd ${srcdir}/${_base}-${pkgver}/tests/integration/test_unit_cube
   ${srcdir}/${_base}-${pkgver}/test-env/bin/micro-manager-precice micro-manager-config-local-adaptivity.json &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python unit_cube.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python unit_cube.py 2
 
   ${srcdir}/${_base}-${pkgver}/test-env/bin/micro-manager-precice micro-manager-config-global-adaptivity.json &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python unit_cube.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python unit_cube.py 2
 
   cd ${srcdir}/${_base}-${pkgver}/tests/unit
   ${srcdir}/${_base}-${pkgver}/test-env/bin/python -m unittest test_micro_manager.py
@@ -50,20 +50,20 @@ check() {
 
   cd ${srcdir}/${_base}-${pkgver}/examples
   ${srcdir}/${_base}-${pkgver}/test-env/bin/micro-manager-precice micro-manager-python-config.json &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py no_adaptivity
 
   ${srcdir}/${_base}-${pkgver}/test-env/bin/micro-manager-precice micro-manager-python-adaptivity-config.json &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py adaptivity
 
   pushd cpp-dummy
   c++ -O3 -Wall -shared -std=c++11 -fPIC $(python3 -m pybind11 --includes) micro_cpp_dummy.cpp -o micro_dummy$(python3-config --extension-suffix)
   popd
 
   ${srcdir}/${_base}-${pkgver}/test-env/bin/micro-manager-precice micro-manager-cpp-config.json &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py no_adaptivity
 
   ${srcdir}/${_base}-${pkgver}/test-env/bin/micro-manager-precice micro-manager-cpp-adaptivity-config.json &
-  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py
+  ${srcdir}/${_base}-${pkgver}/test-env/bin/python macro_dummy.py adaptivity
 }
 
 package() {
