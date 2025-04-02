@@ -2,7 +2,7 @@
 # Contributor: Sean Anderson <seanga2@gmail.com>
 
 pkgname=citus
-pkgver=11.1.1
+pkgver=13.0.3
 pkgrel=1
 pkgdesc='Scalable PostgreSQL for multi-tenant and real-time workloads'
 arch=('x86_64')
@@ -23,9 +23,8 @@ makedepends=(
   'clang'
 )
 install='citus.install'
-_commit='b7ae596fe8a4758f251cafc6ebb95ae9b971d202'
-source=("$pkgname::git+https://github.com/citusdata/citus#commit=$_commit")
-b2sums=('SKIP')
+source=("$pkgname::git+https://github.com/citusdata/citus#commit=v$pkgver")
+b2sums=('a46030e5bbc91f71f33418acac70c5fb1f4e524eaea1515f7426d2b325a5385f73aef0c8e2802d784e7928a0b43d7eceb78924161bb71a05988e88975fa3eb44')
 
 pkgver() {
   cd "$pkgname"

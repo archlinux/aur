@@ -1,6 +1,6 @@
 pkgbase = citus
 	pkgdesc = Scalable PostgreSQL for multi-tenant and real-time workloads
-	pkgver = 11.1.1
+	pkgver = 13.0.3
 	pkgrel = 1
 	url = https://www.citusdata.com
 	install = citus.install
@@ -19,7 +19,7 @@ pkgbase = citus
 	depends = zstd
 	depends = curl
 	depends = openssl
-	source = citus::git+https://github.com/citusdata/citus#commit=b7ae596fe8a4758f251cafc6ebb95ae9b971d202
-	b2sums = SKIP
+	source = citus::git+https://github.com/citusdata/citus#commit=v13.0.3
+	b2sums = a46030e5bbc91f71f33418acac70c5fb1f4e524eaea1515f7426d2b325a5385f73aef0c8e2802d784e7928a0b43d7eceb78924161bb71a05988e88975fa3eb44
 
 pkgname = citus
