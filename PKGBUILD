@@ -1,9 +1,9 @@
 # Maintainer: M-Maciej <io3v819oa@mozmail.com>
 
 pkgname=hyprland-screenshot
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="A Hyprland-specific screenshot tool using grim, slurp, wl-copy, hyprctl, jq, libnotify and shutter sound with libcanberra."
+pkgdesc="A hyprland screenshot tool with area, window, monitor, all monitors modes, using grim, slurp, notifications with libnotify and shutter sound with libcanberra."
 arch=('any')
 url="https://github.com/M-Maciej/hyprland-screenshot"
 license=('LicenseRef-0BSD')

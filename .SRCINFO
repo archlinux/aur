@@ -1,6 +1,6 @@
 pkgbase = hyprland-screenshot
-	pkgdesc = A Hyprland-specific screenshot tool using grim, slurp, wl-copy, hyprctl, jq, libnotify and shutter sound with libcanberra.
-	pkgver = 1.0.0
+	pkgdesc = A hyprland screenshot tool with area, window, monitor, all monitors modes, using grim, slurp, notifications with libnotify and shutter sound with libcanberra.
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/M-Maciej/hyprland-screenshot
 	arch = any
