@@ -1,0 +1,13 @@
+pkgbase = hemu-browser
+	pkgdesc = A simple web browser built with PyQt5
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-pyqt5
+	depends = qt5-webengine
+	source = browser.py
+	sha256sums = SKIP
+
+pkgname = hemu-browser
