@@ -1,7 +1,7 @@
 # Maintainer: 
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=daikhan-git
-pkgver=r494.22e037a
+pkgver=r615.13c3260
 pkgrel=1
 pkgdesc="A media player for the modern desktop"
 arch=('x86_64')

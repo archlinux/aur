@@ -1,11 +1,11 @@
 pkgbase = daikhan-git
 	pkgdesc = A media player for the modern desktop
-	pkgver = r494.22e037a
+	pkgver = r615.13c3260
 	pkgrel = 1
 	url = https://gitlab.com/daikhan/daikhan
 	arch = x86_64
 	license = GPL-3.0-or-later
-	checkdepends = appstream-glib
+	checkdepends = appstream
 	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = meson
