@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=137.0a1+20250213.1+h67ec343f7371
+pkgver=139.0a1+20250402.1+hbefa35dc6ab4
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -87,7 +87,7 @@ source=(
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
-  # https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
+  # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
 sha256sums=('SKIP'

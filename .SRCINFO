@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Fast, Private & Safe Web Browser (Nightly version)
-	pkgver = 137.0a1+20250213.1+h67ec343f7371
+	pkgver = 139.0a1+20250402.1+hbefa35dc6ab4
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/channel/desktop/#nightly
 	arch = x86_64
