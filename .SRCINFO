@@ -1,6 +1,6 @@
 pkgbase = karpor
 	pkgdesc = Kubernetes visualization tool for developer and platform engineering teams
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/KusionStack/karpor
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = karpor
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = karpor-0.6.3.tar.gz::https://github.com/KusionStack/karpor/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = b958f39cc2a8235cb2440f08893fb2f0177d3eea5d2ffd981974d0b8f1974bf0
+	source = karpor-0.6.4.tar.gz::https://github.com/KusionStack/karpor/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = 250396007312e719bc3edf344a4ae950ce8fa67a400e73d8e2f16bd72fe3f9e4
 
 pkgname = karpor
