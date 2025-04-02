@@ -75,15 +75,16 @@ _schemas=('pinyin 全拼'
           'mspy   微软'
           'sogou  搜狗')
 
+_conflicts=()
 for _schema in "${_schemas[@]}"; do
-  _name=${_schema%% *}
-  _pkgname=${pkgbase}-${_name,,}
+    _name=${_schema%% *}
+    _pkgname=${pkgbase}-${_name,,}
+    _conflicts+=("${_pkgname}")
 
-  pkgname+=("${_pkgname}")
-
-  eval "package_$_pkgname() {
-    _package $_schema
-  }"
+    pkgname+=("${_pkgname}")
+    eval "package_$_pkgname() {
+        _package $_schema
+    }"
 done
 
 _rime_deploy() {
@@ -101,6 +102,10 @@ _package() {
 
     depends=("rime-wanxiang-base")
     pkgdesc="万象拼音基础版（${_name}方案）"
+    conflicts=()
+    for _c in "${_conflicts[@]}"; do
+        [[ $_c != "$pkgname" ]] && conflicts+=("${_c}")
+    done
 
     cd "${srcdir}/rime_wanxiang-${pkgver}"
 
