@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas-git
 _pkgname=Commas
-pkgver=0.37.0.r1.ge7ac7b5
-_electronversion=34
-_nodeversion=20
+pkgver=0.37.0.r36.g1e3b5cd
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner.(Use system-wide electron)"
 arch=('x86_64')
@@ -52,7 +52,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -80,7 +79,8 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     pnpm run build
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     pnpm run pack
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
