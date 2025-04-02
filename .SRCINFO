@@ -1,7 +1,7 @@
 pkgbase = uutils-diffutils-git
 	pkgdesc = Rust implementation of diffutils
 	pkgver = 0.4.2.r53.g9bc5348
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uutils/diffutils
 	arch = i686
 	arch = x86_64
