@@ -5,7 +5,7 @@
 
 pkgname=cronet
 pkgver=135.0.7049.52
-pkgrel=1
+pkgrel=2
 _manual_clone=0
 _system_abseil=1
 _system_clang=1
@@ -48,8 +48,7 @@ fi
 declare -gA _system_libs=(
   [brotli]=brotli
   [double-conversion]=double-conversion
-  # ICU 76 is not supported yet: https://bugs.gentoo.org/943216
-  #[icu]=icu
+  [icu]=icu
   [zlib]=minizip
   [zstd]=zstd
 )
@@ -68,7 +67,7 @@ _unwanted_bundled_libs=(
   build/config/freetype
   third_party/harfbuzz-ng
   third_party/highway
-  # third_party/icu
+  third_party/icu
   third_party/jsoncpp
   third_party/libaom
   third_party/libdrm
