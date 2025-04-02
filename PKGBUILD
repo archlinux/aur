@@ -3,7 +3,7 @@
 
 pkgname=hmcl-beta-bin
 pkgver=3.6.11.273
-pkgrel=3
+pkgrel=4
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -15,10 +15,10 @@ source=("hmcl.desktop"
 	"hmcl.png"
         "LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/refs/heads/main/LICENSE"
         "${pkgname}-${pkgver}-${pkgrel}.sh::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.sh")
-sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
+sha256sums=('ef5edb4285293c77162374e15f01f3540c7f511f6d9ab5b7244c4b01eb8512de'
             '29120471641c51aae3ee84f8bcc16e1e4148c153085f71ccb9680415007f82ad'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'f237b5de413e19b334a2491221e5e42ca190a7b931a162280675c4295517038b')
+            'd3de4798bb928656e32f4e3488995123eee5e1d933eb4d15ab4d61d1e5f048e1')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.sh")
 
