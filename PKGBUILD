@@ -7,7 +7,7 @@
 
 pkgname=cjson-git
 pkgver=1.7.18.r11.g12c4bf1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultralightweight JSON parser in ANSI C"
 arch=('x86_64')
 url="https://github.com/DaveGamble/cJSON"
@@ -25,7 +25,9 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S cJSON -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+    cmake -B build -S cJSON \
+       -DENABLE_CJSON_UTILS=On -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+       -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev
     make -C build
 }
 
