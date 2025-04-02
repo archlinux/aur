@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=opkssh
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="opkssh (OpenPubkey SSH)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/openpubkey/opkssh"
 license=('Apache-2.0')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f719c582bebddae857c99fb996dbc4fbd1db771124a7a0f1cca18c27e06250b8')
+sha256sums=('308d8936604a8af91780f36530cbcff00c48543f5535db55245aa85d63b8dc4a')
 
 prepare(){
   cd "$pkgname-$pkgver"
