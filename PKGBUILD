@@ -1,9 +1,9 @@
 # Maintainer: Dario Cvitanović <dario.cvitanovic04@gmail.com>
 
 pkgname=sdl3_ttf
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
-pkgdesc="Support for TrueType (.ttf) font files with Simple Directmedia Layer"
+pkgdesc="Support for TrueType font files with Simple Directmedia Layer (Version 3)"
 arch=('x86_64')
 url="https://github.com/libsdl-org/SDL_ttf"
 license=('0BSD')
@@ -11,7 +11,7 @@ depends=('sdl3' 'freetype2' 'harfbuzz')
 makedepends=('cmake')
 conflicts=('sdl3_ttf-git')
 source=("https://github.com/libsdl-org/SDL_ttf/releases/download/release-${pkgver}/SDL3_ttf-${pkgver}.tar.gz")
-sha256sums=('9a741defb7c7d6dff658d402cb1cc46c1409a20df00949e1572eb9043102eb62')
+sha256sums=('63547d58d0185c833213885b635a2c0548201cc8f301e6587c0be1a67e1e045d')
 
 build() {
   cmake -B build -S "SDL3_ttf-${pkgver}" \
