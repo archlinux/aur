@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fury-git
 _pkgname=Fury
-pkgver=0.0.37.r0.g8a5b833
+pkgver=0.1.2.r10.g9ef3a5d
 _electronversion=28
 _nodeversion=20
 pkgrel=1
@@ -43,13 +43,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -58,7 +58,7 @@ prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
@@ -71,7 +71,7 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     icotool -x build/icon.ico -o build
-    sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" audioManager.js
+    sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" subtitles.js
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
 }

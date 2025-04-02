@@ -1,6 +1,6 @@
 pkgbase = fury-git
 	pkgdesc = Multimedia player built with Electron JS.(Use system-wide electron)
-	pkgver = 0.0.37.r0.g8a5b833
+	pkgver = 0.1.2.r10.g9ef3a5d
 	pkgrel = 1
 	url = https://github.com/naveen-devang/Fury
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = fury-git
 	depends = electron28
 	depends = nodejs
 	depends = ffmpeg
-	provides = fury=0.0.37
+	provides = fury=0.1.2
 	conflicts = fury
 	source = fury.git::git+https://github.com/naveen-devang/Fury.git
 	source = fury.sh
