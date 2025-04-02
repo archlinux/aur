@@ -2,7 +2,7 @@
 
 _pkgname=metatube-server
 pkgname="${_pkgname}-bin"
-pkgver=1.2.11
+pkgver=1.2.12
 pkgrel=1
 pkgdesc="MetaTube Server"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le' 's390x')
@@ -27,13 +27,13 @@ sha256sums=('b607c8fd8f92c19d549969e5ec9b35c60bc42a2797e1bd233d58819dea1c3cfa'
             'cf7f3035a723e4307185562bc845deb051d7cea804531b72b044c3b78860cc55'
             'afb0c09c4b7ade9ac23018452a1da49d7e8f7e45adb83e4bc073ef1f9d363a76'
             '641a2a92fc01b04679b02fba1101bee991f627fc795b18a5c46ff970d17fe0da')
-sha256sums_i686=('205f323779503ca60b0327292fa8c29de83286bd117b691f5c99cdb6a00eab78')
-sha256sums_x86_64=('86bb0aaccc2c3027ebd13dff122fb7fc92decbb0c5c532c159e48511a6e2aa17'
-                   '3684fdc4c877b78d933d2e236283e16d5cce705222c28189b5a62307c8735afc')
-sha256sums_aarch64=('2fbc477692a84d0744edd2eb0c4f3df954dcbd6115689edc96addb41189f05ff')
-sha256sums_armv7h=('fe0017d7da75ee50f4b8e57df488e4d205dc68a705b142d8e7f131c35a3ece0f')
-sha256sums_ppc64le=('748a773d16f232960edcb642ff89e20b7c52a45d991e72b9456958280e4a4321')
-sha256sums_s390x=('8fe73435c99234aa7313c57314dcb6f98d507efd368544fa2f521a5ae69cca70')
+sha256sums_i686=('fb57983cfe80947b1a3560653763f27d054fcacd77eb12d0c295d4981d80a1cc')
+sha256sums_x86_64=('5250e17c905fda530398dd19cdc7608883cd3bc3ca96ca1ce2bc1aa26c191f0c'
+                   'd84086702e4ca313769c38cbb01134b4ae9f53ed889f96b8dc3b5e450af49caf')
+sha256sums_aarch64=('bbd1021e99feca82331d02ce8907e10eaaf0de2fd35b84a5d51564d29c2a3d45')
+sha256sums_armv7h=('bd9fb6a35179271b0e7fe5e0be2aabaf5f3f6cf8baaeb6e736cc365c35e1a6d0')
+sha256sums_ppc64le=('be65e06907100cf021f135417fac14611250dcc8957dd4d2dd5799d9dfe6c1fa')
+sha256sums_s390x=('63a82683abdcc0806e67b909ad05902d3d77dbc101c4edbec798a97c8758060d')
 noextract=("${_pkgname}-${pkgver}"-x86_64{,-v3}.zip)
 
 prepare() {
