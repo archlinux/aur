@@ -1,7 +1,7 @@
 pkgbase = ntpperf-git
 	pkgdesc = A tool for measuring performance of NTP servers and PTP masters
 	pkgver = r28.4d1de40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlichvar/ntpperf
 	arch = x86_64
 	arch = aarch64
