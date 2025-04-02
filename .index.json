@@ -1,6 +1,6 @@
 {
   ".i": 5,
   "crate": "svg2pdf-cli",
-  "version": "0.12.0",
-  "pkgrel": 2
+  "version": "0.13.0",
+  "pkgrel": 1
 }
