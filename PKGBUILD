@@ -2,10 +2,10 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="cargo-duplicates"
-_cratever="0.7.0"
+_cratever="0.8.4"
 pkgname="cargo-duplicates"
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='Cargo subcommand for displaying when different versions of a same dependency ...'
 url='https://crates.io/crates/cargo-duplicates'
 license=('MIT')
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('gcc-libs' 'curl')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-duplicates/0.7.0/download")
-sha512sums=('0d25a04413aab445c108bda6b9b7c8279ea3c80140c06a37f351c64933ea311cd57e660141c448185212372eb7e9e187a6440829e49e2c074434f7307e5b1486')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-duplicates/0.8.4/download")
+sha512sums=('309c5e3a84b306b219c44358d6887ca304c63ed6049f3599488f5aa09a32b49c2990cf85a393f6a3a18aba7bec1319f3351de7cb81dd07e4b449749b4355bb5c')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')

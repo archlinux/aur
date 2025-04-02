@@ -1,6 +1,6 @@
 {
   ".i": 5,
   "crate": "cargo-duplicates",
-  "version": "0.7.0",
-  "pkgrel": 2
+  "version": "0.8.4",
+  "pkgrel": 1
 }
