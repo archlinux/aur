@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=2.32.0.r13.gab4445157
+pkgver=2.32.0.r31.gf0a8e09f7
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,10 +16,9 @@ optdepends=('alsa-lib: ALSA audio driver'
             'jack: JACK audio driver'
             'pipewire: PipeWire audio driver'
             'libdecor: Wayland client decorations')
-
 source=("git+https://github.com/libsdl-org/SDL.git#branch=SDL2")
-provides=("sdl2=$pkgver")
-conflicts=(sdl2 sdl2-minimal-hg)
+provides=('sdl2=$pkgver' 'sdl2-compat')
+conflicts=('sdl2' 'sdl2-compat')
 sha512sums=('SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 pkgver() {
