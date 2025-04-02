@@ -1,4 +1,4 @@
-pkgbase = coreutils-uutils-symlink
+pkgbase = coreutils-uutils-bin-symlink
 	pkgdesc = (use at own risk) symlinks to replace coreutils with uutils
 	pkgver = 0.0.29
 	pkgrel = 1
@@ -6,11 +6,14 @@ pkgbase = coreutils-uutils-symlink
 	arch = x86_64
 	license = MIT
 	depends = uutils-coreutils
+	depends = uutils-findutils-bin
 	provides = coreutils
+	provides = findutils
 	provides = b3sum
 	conflicts = coreutils
+	conflicts = findutils
 	conflicts = b3sum
 	conflicts = sha3sum
 	conflicts = coreutils-uutils
 
-pkgname = coreutils-uutils-symlink
+pkgname = coreutils-uutils-bin-symlink
