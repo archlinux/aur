@@ -1,7 +1,7 @@
 # Maintainer: Hoream <hoream@qq.com>
 _pkgname="pacfiles"
 pkgname="${_pkgname}-git"
-pkgver=r15.9eac630
+pkgver=0.2.7.r0.g40989df
 pkgrel=1
 pkgdesc="A pacman -F alternative that runs blazingly fast"
 url="https://github.com/lilydjwg/pacfiles"
@@ -23,7 +23,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }

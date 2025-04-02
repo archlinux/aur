@@ -1,6 +1,6 @@
 pkgbase = pacfiles-git
 	pkgdesc = A pacman -F alternative that runs blazingly fast
-	pkgver = r15.9eac630
+	pkgver = 0.2.7.r0.g40989df
 	pkgrel = 1
 	url = https://github.com/lilydjwg/pacfiles
 	arch = x86_64
