@@ -1,7 +1,7 @@
 # Maintainer: Ns2Kracy <2220496937@qq.com>
 # Maintainer: CorrectRoadH <correctroadh@gmail.com>
 pkgname=casaos-app-management
-pkgver=0.4.3
+pkgver=0.4.16
 pkgrel=1
 pkgdesc='App management service manages CasaOS app lifecycle, such as installation, running, etc.'
 arch=('x86_64' 'aarch64' 'armv7h')
