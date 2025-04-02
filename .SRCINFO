@@ -1,0 +1,17 @@
+pkgbase = juice-client-bin
+	pkgdesc = A light Electron client for Kirka.io.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.14
+	pkgrel = 1
+	url = https://juice.irrvlo.xyz/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = fuse2
+	depends = electron10
+	provides = juice-client=1.1.14
+	conflicts = juice-client
+	source = juice-client-1.1.14.AppImage::https://github.com/irrvlo/juice-client/releases/download/v1.1.14/juice-client-1.1.14-linux-x86_64.AppImage
+	source = juice-client.sh
+	sha256sums = 6c3424b39819d8bf71ef9634251eb85c3e72cc53cce9d718b7fd841083a5ccaa
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = juice-client-bin
