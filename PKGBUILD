@@ -1,19 +1,18 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
-# -*- sh -*-
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname='python-jh2'
-_pkgname="${pkgname}"
-_srcname="${_pkgname/python-/}"
-pkgver=5.0.3
-pkgrel=2
+_srcname='h2'
+pkgver=5.0.8
+pkgrel=1
 pkgdesc='HTTP/2 State-Machine based protocol implementation'
 arch=('aarch64' 'x86_64')
-url='https://pypi.org/project/h2/'
+url='https://github.com/jawah/h2'
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=(
   'gcc-libs'
   'glibc'
-  'python>=3.7'
+  'python'
 )
 makedepends=(
   'python-build'
@@ -22,33 +21,19 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=(
-  "https://files.pythonhosted.org/packages/source/${_srcname::1}/$_srcname/$_srcname-$pkgver.tar.gz"
-)
-sha256sums=(
-  'c13d97a3f82a02e6a2a89606f1ffe1771670266dc7746140e00e66c4dad12b14'
-)
-options=('lto')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5467be3d50472ced50947707288926d23e9e0f4a563d2863bbda9f2e54e53b4b')
+
+_srcdir="$_srcname-$pkgver"
 
 build() {
-  cd "$_srcname-$pkgver"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
+  cd "$_srcdir"
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_srcname-$pkgver"
+  cd "$_srcdir"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
@@ -58,5 +43,3 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     LICENSE
 }
-
-# eof

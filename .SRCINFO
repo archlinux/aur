@@ -1,8 +1,8 @@
 pkgbase = python-jh2
 	pkgdesc = HTTP/2 State-Machine based protocol implementation
-	pkgver = 5.0.3
-	pkgrel = 2
-	url = https://pypi.org/project/h2/
+	pkgver = 5.0.8
+	pkgrel = 1
+	url = https://github.com/jawah/h2
 	arch = aarch64
 	arch = x86_64
 	license = MIT
@@ -13,9 +13,8 @@ pkgbase = python-jh2
 	makedepends = python-wheel
 	depends = gcc-libs
 	depends = glibc
-	depends = python>=3.7
-	options = lto
-	source = https://files.pythonhosted.org/packages/source/j/jh2/jh2-5.0.3.tar.gz
-	sha256sums = c13d97a3f82a02e6a2a89606f1ffe1771670266dc7746140e00e66c4dad12b14
+	depends = python
+	source = python-jh2-5.0.8.tar.gz::https://github.com/jawah/h2/archive/refs/tags/v5.0.8.tar.gz
+	sha256sums = 5467be3d50472ced50947707288926d23e9e0f4a563d2863bbda9f2e54e53b4b
 
 pkgname = python-jh2
