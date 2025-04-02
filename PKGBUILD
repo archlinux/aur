@@ -47,16 +47,23 @@ prepare() {
   patch -p1 -i ../qt5-webkit-icu76.patch         # Fix build with ICU 76
 }
 
+# disabling XSLT to build https://github.com/qtwebkit/qtwebkit/issues/1097
+
 build() {
-  cmake -B build -S qtwebkit -Wno-dev \
+  local _flags=(
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
+    -DPORT=Qt
+    -DUSE_LD_GOLD=OFF
+    -DENABLE_XSLT=OFF
+    -DENABLE_TOOLS=OFF
+    -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  )
+
+  cmake -B build -S "qtwebkit" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
-    -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python \
-    -DPORT=Qt \
-    -DUSE_LD_GOLD=OFF \
-    -DENABLE_XSLT=OFF \
-    -DENABLE_TOOLS=OFF
+    "${_flags[@]}"
 
   cmake --build build
 }
