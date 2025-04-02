@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=latex-enumitem
 _pkgname=${pkgname#latex-}
-pkgver=3.9
+pkgver=3.11
 pkgrel=1
 pkgdesc="Customize the three basic lists (enumerate, itemize and description)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(unzip)
 noextract=(enumitem.zip)
 source=($_pkgname-$pkgver.zip::http://mirror.ctan.org/macros/latex/contrib/$_pkgname.zip)
 install=$pkgname.install
-sha256sums=('3b0354cfc32dee3ee1cfac2789a16d247f4ffefa6e84c0513c7ede6bb9b1089b')
+sha256sums=('112f692bc5c4909c2fa617fc72c470d9612394530f95728add3a50cb09555287')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/texmf
