@@ -1,6 +1,6 @@
 pkgbase = davix-git
 	pkgdesc = Client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP procols
-	pkgver = 0.8.9.r0.gf5a141a6
+	pkgver = 0.8.10.r0.gf8a307d0
 	pkgrel = 1
 	url = https://github.com/cern-fts/davix
 	arch = x86_64

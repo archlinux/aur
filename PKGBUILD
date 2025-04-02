@@ -5,7 +5,7 @@
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname=davix-git
-pkgver=0.8.9.r0.gf5a141a6
+pkgver=0.8.10.r0.gf8a307d0
 pkgrel=1
 pkgdesc="Client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP procols"
 arch=('x86_64')
@@ -35,16 +35,17 @@ build() {
     -DLIB_SUFFIX="" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
   cmake --build build
 }
 
 check() {
-  make -C build test
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
 
 # vim: set ts=2 sw=2 et:
