@@ -13,7 +13,6 @@ pkgbase = xfce4-settings-devel
 	makedepends = xfce4-dev-tools
 	makedepends = xf86-input-libinput
 	makedepends = glib2-devel
-	depends = exo
 	depends = garcon
 	depends = libxfce4ui>=4.21.0
 	depends = xfconf

@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('exo' 'garcon' 'libxfce4ui>=4.21.0' 'xfconf' 'libnotify' 'libcanberra'
+depends=('garcon' 'libxfce4ui>=4.21.0' 'xfconf' 'libnotify' 'libcanberra'
          'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra'
          'wayland' 'gtk-layer-shell')
 makedepends=('meson' 'xfce4-dev-tools' 'xf86-input-libinput' 'glib2-devel')
