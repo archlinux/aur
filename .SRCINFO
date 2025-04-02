@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = An emulator for classic IBM PC clones
-	pkgver = 4.2.1.r396.g7fb508e0e
+	pkgver = 4.2.1.r1448.g420a08ee2
 	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
@@ -11,10 +11,10 @@ pkgbase = 86box-git
 	makedepends = git
 	makedepends = cmake>=3.21
 	makedepends = extra-cmake-modules
-	makedepends = libserialport
 	makedepends = ninja
 	makedepends = qt6-tools
 	makedepends = vde2
+	makedepends = vulkan-headers
 	depends = fluidsynth
 	depends = hicolor-icon-theme
 	depends = libserialport
