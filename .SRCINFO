@@ -1,6 +1,6 @@
 pkgbase = bilibili
 	pkgdesc = Linux version based on Beilai official client porting supports roaming.(Use system-wide electron).基于哔哩哔哩官方客户端移植的Linux版本,支持漫游
-	pkgver = 1.16.3_2
+	pkgver = 1.16.3_3
 	pkgrel = 1
 	url = https://github.com/msojocs/bilibili-linux
 	arch = aarch64
@@ -20,9 +20,9 @@ pkgbase = bilibili
 	depends = libappindicator-gtk3
 	provides = bilibili
 	conflicts = bilibili
-	source = bilibili-1.16.3_2.tar.gz::https://github.com/msojocs/bilibili-linux/archive/refs/tags/v1.16.3-2.tar.gz
+	source = bilibili-1.16.3_3.tar.gz::https://github.com/msojocs/bilibili-linux/archive/refs/tags/v1.16.3-3.tar.gz
 	source = bilibili.sh
-	sha256sums = beae34e853d8f4a4d3b2f26da87e2025c791d57eb2ae3daea0d7e3a3d7a459a7
+	sha256sums = 47eec0a7d4b829bdb7943d92d1de897e84fe899087330b8221ae153c3a785377
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = bilibili

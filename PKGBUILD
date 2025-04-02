@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
 _pkgver=1.16.3
-_subver=2
+_subver=3
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 _nodeversion=22
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}-${_subver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('beae34e853d8f4a4d3b2f26da87e2025c791d57eb2ae3daea0d7e3a3d7a459a7'
+sha256sums=('47eec0a7d4b829bdb7943d92d1de897e84fe899087330b8221ae153c3a785377'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -46,13 +46,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}"
     electronDist="/usr/lib/electron${_electronversion}"
