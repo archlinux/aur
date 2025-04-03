@@ -3,14 +3,14 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=29.0rc2.r44243
+pkgver=29.0rc3.r44374
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
 url="https://bitcoin.org"
 license=('MIT')
-depends=('qt5-base' 'miniupnpc' 'openssl' 'protobuf' 'boost-libs' 'db4.8' 'qrencode' 'zeromq' 'libevent' 'desktop-file-utils')
-makedepends=('qt5-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'cmake' 'libtool' 'python3')
+depends=('qt6-base' 'miniupnpc' 'openssl' 'protobuf' 'boost-libs' 'db4.8' 'qrencode' 'zeromq' 'libevent' 'desktop-file-utils')
+makedepends=('qt6-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'cmake' 'libtool' 'python3')
 provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli' 'bitcoin-core')
 conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' 'bitcoin-core-git' 'bitcoin-cli' 'bitcoin-tx')
 source=('git+https://github.com/bitcoin/bitcoin.git'
