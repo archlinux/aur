@@ -1,6 +1,6 @@
 pkgbase = frescobaldi-git
 	pkgdesc = A LilyPond sheet music text editor.
-	pkgver = 3.3.0.r233.g8ff97f09
+	pkgver = 4.0.0.r5.g3746515f
 	pkgrel = 1
 	url = http://www.frescobaldi.org/
 	arch = any
@@ -26,11 +26,9 @@ pkgbase = frescobaldi-git
 	optdepends = python-pygame: MIDI playback (alternate engine)
 	optdepends = hyphen-lang: hyphenation patterns for desired languages
 	optdepends = python-pycups: Printing to a local CUPS server
-	provides = frescobaldi=3.3.0.r233.g8ff97f09-1
+	provides = frescobaldi=4.0.0.r5.g3746515f-1
 	conflicts = frescobaldi
 	source = frescobaldi-git::git+https://github.com/frescobaldi/frescobaldi.git
-	source = https://github.com/frescobaldi/frescobaldi/raw/eb89720c7d8694d45ed3fd8c469ce5ea815af8bf/MANIFEST.in
 	md5sums = SKIP
-	md5sums = 04b07980f66d883dca25359dd873fefe
 
 pkgname = frescobaldi-git

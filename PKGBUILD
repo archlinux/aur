@@ -2,7 +2,7 @@
 # Contributor: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.3.0.r233.g8ff97f09
+pkgver=4.0.0.r5.g3746515f
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -37,10 +37,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}"::'git+https://github.com/frescobaldi/frescobaldi.git'
-        "https://github.com/frescobaldi/frescobaldi/raw/eb89720c7d8694d45ed3fd8c469ce5ea815af8bf/MANIFEST.in")
-md5sums=('SKIP'
-         '04b07980f66d883dca25359dd873fefe')
+source=("${pkgname}"::'git+https://github.com/frescobaldi/frescobaldi.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -50,8 +48,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  # Fix i18n inclusion
-  printf "\n[tool.setuptools.package-data]\n\"*\" = [\"*\"]\n" >> pyproject.toml
   tox -e mo-generate
   tox -e linux-generate
   # Provided by hyphen-*
@@ -61,7 +57,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  #cp ../MANIFEST.in .
   python -m build --wheel --no-isolation
 }
 
