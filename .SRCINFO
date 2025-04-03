@@ -1,6 +1,6 @@
 pkgbase = netflix
 	pkgdesc = Unnofficial Netflix desktop application
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/netflix-desktop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = netflix
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/netflix-desktop/application/-/archive/1.0.12/application-1.0.12.tar.bz2
-	sha256sums = 29675bd1766020a115f3ee181b75bfced8dfb5ecb5ad58b4d455d6e55486590b
+	source = https://gitlab.com/linuxbombay/netflix-desktop/application/-/archive/1.0.13/application-1.0.13.tar.bz2
+	sha256sums = 1078d7a45586aa75e5a1a9f3e24acf9fe7002d345efa6c2218cbf5134c8262ed
 
 pkgname = netflix
