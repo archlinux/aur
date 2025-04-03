@@ -1,8 +1,10 @@
 # Maintainer: Your Name <your.email@domain.com>
 pkgname=memprocfs
 providers=(memprocfs)
-pkgver=5.12.7
-pkgrel=1
+pkgver=5.14
+pkgrel=8
+pkgdate='20250323'
+
 pkgdesc="MemProcFS is an easy and convenient way of viewing physical memory as files in a virtual file system."
 arch=('x86_64' 'aarch64')
 url="https://github.com/ufrisk/MemProcFS"
@@ -10,10 +12,10 @@ license=('GPL3')
 depends=('fuse' 'lz4' 'openssl' 'libusb')
 optdepends=('python: for python bindings')
 
-source_x86_64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.12/MemProcFS_files_and_binaries_v${pkgver}-linux_x64-20241115.tar.gz")
-source_aarch64=("https://github.com/ufrisk/MemProcFS/releases/download/v5.12/MemProcFS_files_and_binaries_v${pkgver}-linux_aarch64-20241115.tar.gz")
-sha512sums_x86_64=('5cacdd3da66c45fee3c3f77f094ec3ebb214aa3457476adfb90a9bbda51d397170951c1832c3b345fcada0b534697d23e2786842707c246457f72a32db09fc6b')
-sha512sums_aarch64=('1a22d0c05cc0d42cf3b40140b654eefaf2ee09543f4ba62504053311b6317cff7372860964b0e202e421ed715c702f04d63f2951897368b8a26546d43a5ef4cf')
+source_x86_64=("https://github.com/ufrisk/MemProcFS/releases/download/v${pkgver}/MemProcFS_files_and_binaries_v${pkgver}.${pkgrel}-linux_x64-${pkgdate}.tar.gz")
+source_aarch64=("https://github.com/ufrisk/MemProcFS/releases/download/v${pkgver}/MemProcFS_files_and_binaries_v${pkgver}.${pkgrel}-linux_aarch64-${pkgdate}.tar.gz")
+sha256sums_x86_64=('a6c2560613bb2d83a475ad03d6e041e790e881fda0e33ac301995b2dc8518bd0')
+sha512sums_aarch64=('e975da8671ad7fadc63228be13e84c21fae1df2bb05836b1f24603b5c22a4870 ')
 
 package() {
     cd "$srcdir"
