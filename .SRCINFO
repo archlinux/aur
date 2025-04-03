@@ -1,13 +1,13 @@
 pkgbase = r-oompabase
 	pkgdesc = Class Unions, Matrix Operations, and Color Schemes for OOMPA
-	pkgver = 3.2.9
-	pkgrel = 3
+	pkgver = 3.2.10
+	pkgrel = 1
 	url = https://cran.r-project.org/package=oompaBase
 	arch = any
 	license = Apache-2.0
 	depends = r
-	source = https://cran.r-project.org/src/contrib/oompaBase_3.2.9.tar.gz
-	md5sums = e4697828589889278211385df36c0dcc
-	b2sums = 933a5e6b281715077ee7f78b079b20e78c1c0db278c91e775fab669829bae7b551fbc627bbb6df30ce03fba68cc745744208c54fbb3da8e5b4c4616eb2b20baa
+	source = https://cran.r-project.org/src/contrib/oompaBase_3.2.10.tar.gz
+	md5sums = 25817e7f83d2b2ccbfa80be999514411
+	b2sums = 1962557b9001dbc1f0c243535e6a445dbee24f659d79e3829fe68c0cc41aa7ddf9906a076e2ed75025f7d1ee0a8bf98d118c4d867dc6b001b40af6f01d2c9779
 
 pkgname = r-oompabase
