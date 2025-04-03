@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-opengl'
-pkgver='0.70'
+pkgver='0.7004'
 pkgrel='2'
 pkgdesc="Interface to OpenGL drawing/imaging library"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ options=('!emptydirs')
 depends=('perl' 'freeglut>=2.8.1' 'glu>=9.0.0')
 [ -z "$DISPLAY" ] && makedepends+=('xorg-server-xvfb')
 url='https://metacpan.org/release/OpenGL/'
-source=("https://cpan.metacpan.org/authors/id/C/CH/CHM/OpenGL-${pkgver}.tar.gz")
-md5sums=('8b651500162e9b999347a06dc0664ab6')
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETJ/OpenGL-${pkgver}.tar.gz")
+sha256sums=('38fc206b436f12ec53f6c468512fd19a2f232dbd089a215cc66c55a70bb38e2a')
 _distdir="OpenGL-$pkgver"
 
 build() {
