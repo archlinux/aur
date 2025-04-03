@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20250314.r0.gda920b7df701
+pkgver=20250403.r0.gf0a16f536332
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -73,16 +73,11 @@ makedepends=(
   xz
   git
 )
-_lucjanver=next
-#_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
-_lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
-
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-sep/0002-arch-Kconfig-Default-to-maximum-amount-of-ASLR-bits.patch"
-        "${_lucjanpath}/arch-patches-sep/0003-x86-insn_decoder_test-allow-longer-symbol-names.patch"
-         # the main kernel config files
-        'config')
+        0001-zen_add_disallow_unprivileged_clone_newuser.patch
+        0002-defaut-maximum-amount-aslr-bits.patch
+        0003-skip-simpledrm-nvidia.patch
+        config)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -319,7 +314,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'a36cb291972bec8126eac3cf08050043808287a5b7d92740f22c91d80526ab5ce180a1164a4421b0fda02361e67b871a57e8dfe2107f61fabcffae11a157bac4'
-            '4a12f0eec366d9c09964103b286634bad17e57c6f7a61e17a59975d5ce75449e3fd8cf638b7cb2445cf79d910c691d6d4b3f394a19067ee010d917eaccc01e78'
-            '61b2ce55da94705f16d25434a1e2a9f259a68982b0fa24844a100104c06696a47394509bedd6680dfcc07fda668e94feb547ee7a7fc48f10fd9f70c82056f7ab'
-            'e30ce70d39767ea35dce96212e46d7867eaf79306fca79569aa6b2e27860f20ab1e228811f4d0fcae68cfac103d21da22000c07df248efe05eb3efc966cc2960')
+            'e6f3fe9d250ba1c893983653e75988145ac0db189ffcb3c060b5a83c6bd40f475d6a216692b0f6f5803082bf08837e8faa1b007edca80b38b1fc05cff97b4229'
+            'a6bfcb3e9a0ece10aefc22094cb6ce892cbb1bd8be4bd0c3b154605b8d76ed8da754031c07d33d46bdc7afe7f57fe863d61ab501f245c778271281e56ac38cf8'
+            'c80c012db7dc8cc0cbd14bb6c08da9da28c5c72c5cd2835b936be300e1e73aeb02b7618ef1276f54ff6547c53ac9599e11fc8a48b0a51c2f7e2ee35bfa3ea49b'
+            '3ec45a0d7820126eeb31212aeadbc1d7e672082c9a7c9084ba0a088f85e63d45021d92b403ced7ec156776d830d06427711a81de7cdf3c129a07c2a357519909')
