@@ -1,14 +1,14 @@
 # Maintainer: Zeal Wierslee <zeal@wierslee.me>
 pkgname=sugarjar
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="A git/github helper inspired by arcanist (and others)"
 arch=('x86_64')
 url="https://github.com/jaymzh/sugarjar"
 license=('Apache')
 depends=('git' 'github-cli' 'libxcrypt-compat' 'ruby' 'rubygems' 'ruby-mixlib-log' 'ruby-mixlib-shellout' 'ruby-pastel' 'ruby-deep_merge')
 source=("https://github.com/jaymzh/sugarjar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("27dcadee28327585cf26d1285a0a4806352c3d118131d9efde3729d7956510bd")
+sha256sums=("0ecdf0dcf44fb863b27a965cfe8d52b0436eb46f08503f2ab3a36d0bfea0b6e7")
 
 package() {
   local _gemdir="$(env -i ruby -e'puts Gem.default_dir')"
