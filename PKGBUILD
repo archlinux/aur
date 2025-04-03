@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Eyolfson <jon@eyl.io>
 pkgname=dynamorio-bin
-pkgver=10.0.0
+pkgver=11.3.0
 pkgrel=1
 pkgdesc="A dynamic binary instrumentation framework"
 url="http://dynamorio.org"
@@ -12,11 +12,12 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/DynamoRIO/dynamorio/releases/download/release_${pkgver}/DynamoRIO-Linux-${pkgver}.tar.gz")
-sha256sums=('21eaa23570e12dfa5eab8443589481c1eaedfc73ce71647720d121d2e3ba74d6')
+#FIXME: Remove "-1" part on new version.
+source=("https://github.com/DynamoRIO/dynamorio/releases/download/release_${pkgver}-1/DynamoRIO-Linux-${pkgver}.tar.gz")
+sha256sums=('ae02049df5c4daeb82d4087aaa0d38bf58cdd26b38fb6042dccf27cbc32ceed9')
 
 package() {
-  cd "${srcdir}/DynamoRIO-Linux-${pkgver}"
+  cd "${srcdir}/DynamoRIO-Linux-${pkgver}-1"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   mv License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
