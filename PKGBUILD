@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://mobirise.com/"
 license=('custom')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
-source=("MobiriseSetup.deb")
+source=("https://download.mobirise.com/MobiriseSetup.deb")
 sha256sums=('050175c940be4bc921b98d0f345097652bf50a3c1fa229a516fe95d06dd03e06')
 
 package() {
