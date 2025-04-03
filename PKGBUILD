@@ -16,5 +16,5 @@ package() {
     cd $srcdir/fluent-emoji-webfont-$pkgver
 
     install -Dm644 dist/FluentEmoji{Color,Flat,HighContrast}.ttf -t $pkgdir/usr/share/fonts/fluent-emoji
-
+    install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 }
