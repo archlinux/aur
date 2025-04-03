@@ -1,6 +1,6 @@
 pkgbase = fotema
 	pkgdesc = Photo gallery for Linux
-	pkgver = 1.19.1
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/blissd/fotema
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = fotema
 	depends = libshumate
 	depends = onnxruntime
 	depends = opencv
-	source = fotema-1.19.1.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v1.19.1.tar.gz
-	sha256sums = 626f43a83a722225ddafef79391213fec4234c2d9dea5e5053618b433710b277
+	source = fotema-1.20.0.tar.gz::https://github.com/blissd/fotema/archive/refs/tags/v1.20.0.tar.gz
+	sha256sums = 52f018dcd01b690745f5cb8d039cb01ea356482823cf83961469e6f532bfcb9e
 
 pkgname = fotema
