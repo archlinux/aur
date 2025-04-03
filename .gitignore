@@ -1,5 +1,9 @@
-*.gz
-*.xz
-*.zst
-pkg/
-src/
+/*
+!/*.desktop
+!/*.install
+!/*.sh
+!/*.sysusers
+!/*.tmpfiles
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
