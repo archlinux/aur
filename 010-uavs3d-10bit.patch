@@ -1,6 +1,6 @@
 --- a/source/CMakeLists.txt
 +++ b/source/CMakeLists.txt
-@@ -104,7 +104,7 @@ MESSAGE(STATUS "Target CPU\t\t\t: ${UAVS3D_TARGET_CPU}")
+@@ -109,7 +109,7 @@ MESSAGE(STATUS "Target CPU\t\t\t: ${UAVS3D_TARGET_CPU}")
  find_package(Threads REQUIRED)
  set(prefix "${CMAKE_INSTALL_PREFIX}")
  set(includedir "include")
