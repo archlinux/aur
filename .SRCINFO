@@ -1,6 +1,6 @@
 pkgbase = aingdesk
 	pkgdesc = a simple and easy-to-use AI assistant that supports knowledge bases, model APIs, sharing, internet search, and intelligent agents.(Use system-wide electron)
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://www.aingdesk.com/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = aingdesk
 	depends = python
 	depends = python-requests
 	optdepends = ollama: Use your local LLMs
-	source = aingdesk-1.1.8::git+https://github.com/aingdesk/AingDesk#tag=v1.1.8
+	source = aingdesk-1.1.9::git+https://github.com/aingdesk/AingDesk#tag=v1.1.9
 	source = aingdesk.sh
-	sha256sums = 6999990105ac4775c47d147c9e22d063a61f1f7b4669bb4e69b8fb5b24feb378
+	sha256sums = 9e81b6992c1ebcd4e75c131998515f1ee2bcdcf618e7ddc8051babd4a235a953
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = aingdesk
