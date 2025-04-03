@@ -1,41 +1,49 @@
 # Maintainer: Tuneful <tuneful "dot" su "at" yandex "dot" com>
 
 pkgname=yunhu
-pkgver=1.5.33
+pkgver=1.6.13+188
 pkgrel="1"
-pkgdesc="yunhu-1.55.33 for Linux (Commercial software, please refer to the license terms.)"
+pkgdesc="yunhu-1.6.13+188 for Linux (Commercial software, please refer to the license terms.)"
 arch=('x86_64')
-url="https://chat-web-go.jwzhd.com"
+url="https://www.yhchat.com/"
 license=('proprietary')
 depends=(
 	libayatana-appindicator
 	mpv
 	jq
 )
-source=("https://app-cdn1.jwznb.com/linux/yunhu-linux-1.5.33.tar.gz")
-sha256sums=('5adb057146a8661c1f54bf6c6c85fc40fbe465b314a02bf4a2d535ad088f1366')
+source=("https://app-cdn1.jwznb.com/linux/yunhu-1.6.13+188-linux.tar.gz")
+sha256sums=('881bf287e0f8ccc40e8c5ca967d4c433706a3032fc834e66fc350750ec0348a7')
 
 package() {
 	export LD_PRELOAD=/usr/lib/libfakeroot/libfakeroot.so
-    cd "$srcdir"
+	cd "$srcdir"
 	mkdir -p "$pkgdir/opt/"
-    tar -xzvf "yunhu-linux-1.5.33.tar.gz" -C "$pkgdir/opt/"
-    mv "$pkgdir/opt/yunhu-linux-1.5.33" "$pkgdir/opt/yunhu/"
-	if [[ ! -d /usr/share/icons/hicolor/320x320 ]]; then
-		sudo mkdir -p /usr/share/icons/hicolor/320x320/app
+	tar -xzvf "yunhu-1.6.13+188-linux.tar.gz" -C "$pkgdir/opt/"
+	mv "$pkgdir/opt/yunhu-1.6.13+188-linux/yunhu" "$pkgdir/opt/"
+	install -Dm644 "$srcdir/yunhu-1.6.13+188-linux/applications/yunhu.desktop" "$pkgdir/usr/share/applications/yunhu.desktop"
+	for size in 16x16 32x32 48x48 64x64 128x128 256x256
+	do
+		install -Dm644 "$srcdir/yunhu-1.6.13+188-linux/icons/hicolor/$size/apps/yunhu.png" "$pkgdir/usr/share/icons/hicolor/$size/apps/yunhu.png"
+	done
+
+
+	# 确保目标路径存在
+	mkdir -p "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/lib"
+
+	# 创建符号链接
+	ln -sf "$pkgdir/opt/yunhu/yunhu" "$pkgdir/usr/bin/yunhu"
+
+	# 设置执行权限
+	chmod +x "$pkgdir/usr/bin/yunhu"
+
+	# 检查系统中是否存在 /usr/lib/libmpv.so.1
+	if [ ! -e /usr/lib/libmpv.so.1 ]; then
+		# 创建符号链接
+		ln -sf /usr/lib/libmpv.so.2 "$pkgdir/usr/lib/libmpv.so.1"
 	fi
 
-	echo "[Desktop Entry]
-Type=Application
-Version=1.5.33
-Name=yunhu
-Name[zh_CN]=云湖
-Icon=/usr/share/icons/hicolor/320x320/app/yunhu.png
-Exec=/opt/yunhu/yunhu %U
-Categories=Social;
-Keywords=云湖;聊天;社交;软件;
-StartupNotify=true" > yunhu.desktop
-
-	install -Dm644 "$srcdir/yunhu.desktop" "$pkgdir/usr/share/applications/yunhu.desktop"
-	install -Dm644 "$pkgdir/opt/yunhu/data/flutter_assets/images/appIcon/icon_original.png" $pkgdir/usr/share/icons/hicolor/320x320/app/yunhu.png
+	# 删除不需要的目录
+	rm -rf "$pkgdir/opt/yunhu-1.6.13+188-linux/"
 }

@@ -1,14 +1,14 @@
 pkgbase = yunhu
-	pkgdesc = yunhu-1.55.33 for Linux (Commercial software, please refer to the license terms.)
-	pkgver = 1.5.33
+	pkgdesc = yunhu-1.6.13+188 for Linux (Commercial software, please refer to the license terms.)
+	pkgver = 1.6.13+188
 	pkgrel = 1
-	url = https://chat-web-go.jwzhd.com
+	url = https://www.yhchat.com/
 	arch = x86_64
 	license = proprietary
 	depends = libayatana-appindicator
 	depends = mpv
 	depends = jq
-	source = https://app-cdn1.jwznb.com/linux/yunhu-linux-1.5.33.tar.gz
-	sha256sums = 5adb057146a8661c1f54bf6c6c85fc40fbe465b314a02bf4a2d535ad088f1366
+	source = https://app-cdn1.jwznb.com/linux/yunhu-1.6.13+188-linux.tar.gz
+	sha256sums = 881bf287e0f8ccc40e8c5ca967d4c433706a3032fc834e66fc350750ec0348a7
 
 pkgname = yunhu
