@@ -1,7 +1,7 @@
-From 0bfd3839d4ca293acb587c16188983b7f9236876 Mon Sep 17 00:00:00 2001
+From 07a3dd527b4ca28cf86b4917b7c7a59ecef7813b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 2 Nov 2020 13:47:45 +0100
-Subject: [PATCH 05/20] Fix libjpeg workaround for conflict with rpcndr.h
+Subject: [PATCH 05/19] Fix libjpeg workaround for conflict with rpcndr.h
 
 Otherwise it won't compile against mingw-w64-libjpeg-turbo. This version of
 libjpeg seems to take care of the conflict already as long as jconfig.h is
@@ -25,5 +25,5 @@ index 59b73587c52..cc0c3702f31 100644
  #ifdef const
  #  undef const          // remove crazy C hackery in jconfig.h
 -- 
-2.48.1
+2.49.0
 
