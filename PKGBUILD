@@ -1,24 +1,34 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Alice Vega <aalicevegaa at proton mail dot com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=wmsysmon
-pkgver=0.7.7
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="A WindowMaker dock applet for system monitoring."
 arch=('i686' 'x86_64')
-url="http://www.gnugeneration.com/software/"
+url="https://github.com/voyageur/wmsysmon"
 license=('GPL')
-depends=('libxpm')
-source=("http://www.gnugeneration.com/software/wmsysmon/${pkgname}-${pkgver}.tar.gz"
-	"${pkgname}.patch")
-md5sums=('0f8ec86a9808f5123c22ff427559fc48'
-         '294458cf7791c083fa162e718541cea5')
+depends=('libxpm' 'libdockapp')
+source=("https://github.com/voyageur/wmsysmon/archive/refs/tags/0.8.1.tar.gz")
+md5sums=('3cd7e687f56608e70a90ed67803c68ff')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 <"${srcdir}/${pkgname}.patch"
+  cd "${pkgname}-${pkgver}/src"
   make
 }
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}/src"
   make DESTDIR="$pkgdir" install
+  
+  if [[ -f "README" ]]; then
+	install -m 644 -D "README" "$pkgdir/usr/share/doc/$pkgname/README"
+  fi
+    
+  if [[ -f "CHANGES" ]]; then
+	install -m 644 -D "CHANGES" "$pkgdir/usr/share/doc/$pkgname/CHANGES"
+  fi
+    
+  if [[ -f "COPYING" ]]; then
+	install -m 644 -D "COPYING" "$pkgdir/usr/share/doc/$pkgname/COPYING"
+  fi
 }
