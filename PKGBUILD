@@ -1,43 +1,57 @@
-# Maintainer: spider-mario <spidermario@free.fr>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: spider-mario <spidermario@free.fr>
+
 pkgname=brunsli-git
-pkgver=r13.bf755c7
+pkgver=0.1.r85.gcbbc39a
 pkgrel=1
-pkgdesc="Lossless JPEG repacker"
+pkgdesc='Lossless JPEG repacker (git version)'
 arch=('x86_64')
-url="https://github.com/google/brunsli"
+url='https://github.com/google/brunsli/'
 license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'cmake' 'clang')
+depends=('gcc-libs' 'glibc')
+makedepends=('cmake' 'git' 'python')
 provides=('brunsli')
 conflicts=('brunsli')
-source=('git+https://github.com/google/brunsli.git')
-sha512sums=('SKIP')
-
-pkgver() {
-	cd brunsli
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=('git+https://github.com/google/brunsli.git'
+        'git+https://github.com/google/googletest.git'
+        'git+https://github.com/google/brotli.git'
+        '010-brunsli-use-local-sources-for-dependencies.patch'
+        '020-brunsli-googletest-cmake4-fix.patch'
+        '030-brunsli-brotli-cmake4-fix.patch')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'a3e576154381db0774ef46c41f603ad8c6699239dd8a4d9fff4e712aa87547f4'
+            '4859b5b832c38ca53341a8c96ccbc56d62e47ba4734f7f7f408158afa67d4acb'
+            '2a0b812e917c1fa9f3c06f4ce40868c8b35e0a00201af22e2a2dec698e1e4349')
 
 prepare() {
-	cd brunsli
-	git submodule update --init
+    git -C googletest config --local advice.detachedHead false
+    git -C brotli config --local advice.detachedHead false
+    
+    git -C googletest checkout "$(awk '/GIT_TAG/ { print $2; exit; }' brunsli/CMakeLists.txt)"
+    git -C brotli checkout "$(awk '/GIT_TAG/ { a=$2 } END { print a }' brunsli/CMakeLists.txt)"
+    
+    patch -d brunsli -Np1 -i "${srcdir}/010-brunsli-use-local-sources-for-dependencies.patch"
+    patch -d googletest -Np1 -i "${srcdir}/020-brunsli-googletest-cmake4-fix.patch"
+    patch -d brotli -Np1 -i "${srcdir}/030-brunsli-brotli-cmake4-fix.patch"
+}
+
+pkgver() {
+    git -C brunsli describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-	mkdir -p build
-	cd build
-	cmake \
-		-DCMAKE_C_COMPILER=clang \
-		-DCMAKE_CXX_COMPILER=clang++ \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
-		"$srcdir"/brunsli
-	make
+    cmake -B build -S brunsli \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-	cd build
-	install -Dm644 "$srcdir"/brunsli/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-	install -Dm755 cbrunsli "$pkgdir"/usr/bin/cbrunsli
-	install -Dm755 dbrunsli "$pkgdir"/usr/bin/dbrunsli
+    DESTDIR="$pkgdir" cmake --install build
+    install -D -m755 build/{cbrunsli,dbrunsli} -t "${pkgdir}/usr/bin"
+    install -D -m644 brunsli/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

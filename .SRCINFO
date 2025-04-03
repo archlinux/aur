@@ -1,18 +1,28 @@
 pkgbase = brunsli-git
-	pkgdesc = Lossless JPEG repacker
-	pkgver = r13.bf755c7
+	pkgdesc = Lossless JPEG repacker (git version)
+	pkgver = 0.1.r85.gcbbc39a
 	pkgrel = 1
-	url = https://github.com/google/brunsli
+	url = https://github.com/google/brunsli/
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
-	makedepends = clang
+	makedepends = git
+	makedepends = python
 	depends = gcc-libs
+	depends = glibc
 	provides = brunsli
 	conflicts = brunsli
 	source = git+https://github.com/google/brunsli.git
-	sha512sums = SKIP
+	source = git+https://github.com/google/googletest.git
+	source = git+https://github.com/google/brotli.git
+	source = 010-brunsli-use-local-sources-for-dependencies.patch
+	source = 020-brunsli-googletest-cmake4-fix.patch
+	source = 030-brunsli-brotli-cmake4-fix.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a3e576154381db0774ef46c41f603ad8c6699239dd8a4d9fff4e712aa87547f4
+	sha256sums = 4859b5b832c38ca53341a8c96ccbc56d62e47ba4734f7f7f408158afa67d4acb
+	sha256sums = 2a0b812e917c1fa9f3c06f4ce40868c8b35e0a00201af22e2a2dec698e1e4349
 
 pkgname = brunsli-git
-
