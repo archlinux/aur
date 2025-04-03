@@ -7,7 +7,7 @@ url="https://mirrors.slackware.com/slackware/slackware64-current/slackware64/n/"
 license=('custom')
 depends=()
 source=("https://slackware.uk/slackware/slackware64-15.0/slackware64/n/biff+comsat-0.17-x86_64-4.txz")
-sha256sums=('SKIP') # Replace with actual checksum
+sha256sums=('33edbed5fc23a1329f1c27df867b252a7bb41fd31d50bf608cde3edd7b63fcf3')
 
 prepare() {
     # Rename the downloaded file to match the expected filename
