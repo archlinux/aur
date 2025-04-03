@@ -2,8 +2,8 @@
 
 pkgbase=nanomq-git
 pkgname=(nanomq{,-sqlite,-msquic,-full}-git)
-pkgver=0.23.2.r23.geabdfde3
-pkgrel=2
+pkgver=0.23.5.r3.gf6e8cde4
+pkgrel=1
 pkgdesc="Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge"
 arch=($CARCH)
 url="https://github.com/nanomq/nanomq"
@@ -139,6 +139,7 @@ package_nanomq-git() {
         -DNNG_ENABLE_TLS=ON \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
         -B build_nanomq \
         -G Ninja
@@ -159,6 +160,7 @@ package_nanomq-sqlite-git() {
         -DNNG_ENABLE_SQLITE=ON \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
         -B build_nanomq-sqlite \
         -G Ninja
@@ -182,6 +184,7 @@ package_nanomq-msquic-git() {
         -DNNG_ENABLE_SQLITE=ON \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
         -B build_nanomq-msquic \
         -G Ninja
@@ -218,6 +221,7 @@ package_nanomq-full-git() {
         -DBUILD_BENCH=ON \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
         -B build_nanomq-full \
         -G Ninja
