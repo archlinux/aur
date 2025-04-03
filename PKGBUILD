@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2025.03.27.r0.gfd1cd93
+pkgver=2025.04.02.r0.g54a6bff
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=('x86_64')
@@ -20,13 +20,9 @@ optdependes=(
     'bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so'
 )
 makedepends=(
-    'findutils'
     'base-devel'
     'qt6-base'
     'qt6-charts'
-    'gcc'
-    'cmake'
-    'fakeroot'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
