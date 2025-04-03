@@ -4,7 +4,7 @@
 # Contributor: Jyotin Goel <b22ai063@iitj.ac.in>
 
 pkgname='spok-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Sans Password or Key (SPoK) - An easier way for remote server authentication'
 url='https://github.com/devlup-labs/spok'
@@ -13,11 +13,11 @@ license=('MIT')
 provides=('spok')
 conflicts=('spok')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devlup-labs/spok/releases/download/0.1.1/spok_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('b912c83607b513ea35ab103abbd8c2e780b5d011c14d25eaed863a73692bef57')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devlup-labs/spok/releases/download/0.1.2/spok_0.1.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('3dda69cd9e73d292be594900137ccbb11b858eb16900f5f5760cd7c06800b344')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devlup-labs/spok/releases/download/0.1.1/spok_0.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('9e0812f2144ad6586fb70661c84077bfe46939e5b45d492e1712de9cab399824')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devlup-labs/spok/releases/download/0.1.2/spok_0.1.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('1b27fe02c58a1656ab86e8830a2b05f9e763108bd03d865fc29d11725c08f379')
 
 package() {
   install -Dm755 "./bin/spok" "${pkgdir}/usr/bin/spok"
