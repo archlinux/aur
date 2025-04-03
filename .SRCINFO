@@ -7,6 +7,8 @@ pkgbase = aurx
 	license = GPL-3.0-or-later
 	depends = base-devel
 	depends = git
+	depends = json-c
+	depends = libcurl-gnutls
 	source = aurx::git+https://github.com/carlyle-felix/aurx.git
 	sha256sums = SKIP
 

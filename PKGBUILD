@@ -10,6 +10,8 @@ license=( 'GPL-3.0-or-later' )
 depends=(
         'base-devel'
         'git'
+        'json-c'
+        'libcurl-gnutls'
 )
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
