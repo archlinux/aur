@@ -1,0 +1,20 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -59,7 +59,7 @@ MESSAGE(STATUS "uavs3e version \t\t: ${uavs3e_version}")
+ find_package(Threads REQUIRED)
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
+ set(includedir "include")
+-set(libdir "lib")
++set(libdir "lib/uavs3e-10bit")
+ set(pc_file "${CONFIG_DIR}/${LIBNAME}.pc")
+ 
+ set(CMAKE_INSTALL_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}/${includedir}")
+@@ -99,6 +99,6 @@ target_link_libraries(${LIBNAME} pthread)
+ endif()
+ 
+ install(TARGETS uavs3e LIBRARY DESTINATION ${CMAKE_INSTALL_LIB_DIR} ARCHIVE DESTINATION ${CMAKE_INSTALL_LIB_DIR})
+-install(FILES ../inc/uavs3e.h DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR}/uavs3e/)
+-install(FILES ../inc/com_api.h DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR}/uavs3e/)
++install(FILES ../inc/uavs3e.h DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR}/uavs3e-10bit)
++install(FILES ../inc/com_api.h DESTINATION ${CMAKE_INSTALL_INCLUDE_DIR}/uavs3e-10bit)
+ install(FILES ${CONFIG_DIR}/${LIBNAME}.pc DESTINATION ${CMAKE_INSTALL_PKGCONFIG_DIR})
