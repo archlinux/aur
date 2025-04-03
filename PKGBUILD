@@ -1,8 +1,8 @@
 # Maintainer: atomicfs
 
 pkgname=firmware-action
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="Build system for firmware images for several open source firmware solutions"
 url="https://github.com/9elements/firmware-action"
 arch=(x86_64)
@@ -16,14 +16,8 @@ depends=(
 optdepends=(
 	'dagger'
 )
-source=(
-  "${url}/archive/v${pkgver}.tar.gz"
-  "firmware-action.conf"
-)
-sha256sums=(
-  'e0dd1ab0e8c32a692577ee74b615a2e7a1521352743c709542dafd13ce7877f8'
-  'a557b037eb84353c2991e8bccdf4dd1dcf019024ea7a4123789bf3bc6881e73d'
-)
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('ce783e3b18e0b990f10a5fd194e284460cbc6734025780f43b98a74d108e0a82')
 
 build() {
 	cd "${pkgname}-${pkgver}/cmd/firmware-action"
@@ -38,5 +32,5 @@ package() {
 	install -Dm 644 "shell-completion/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 	install -Dm 644 "shell-completion/${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 
-	install -Dm 644 "${srcdir}/${pkgname}.conf" "${pkgdir}/lib/modules-load.d/${pkgname}.conf"
+	install -Dm 644 "cmd/firmware-action/kernel-modules-load.conf" "${pkgdir}/lib/modules-load.d/${pkgname}.conf"
 }
