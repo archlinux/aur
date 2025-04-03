@@ -29,21 +29,18 @@ package() {
 
 
 	# 确保目标路径存在
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/lib"
-
-	# 创建符号链接
-	ln -sf "$pkgdir/opt/yunhu/yunhu" "$pkgdir/usr/bin/yunhu"
-
-	# 设置执行权限
-	chmod +x "$pkgdir/usr/bin/yunhu"
+	install -d "$pkgdir/usr/lib"
+	install -d "$pkgdir/usr/bin"
 
 	# 检查系统中是否存在 /usr/lib/libmpv.so.1
 	if [ ! -e /usr/lib/libmpv.so.1 ]; then
 		# 创建符号链接
-		ln -sf /usr/lib/libmpv.so.2 "$pkgdir/usr/lib/libmpv.so.1"
+		ln -s /usr/lib/libmpv.so.2 "$pkgdir/usr/lib/libmpv.so.1"
 	fi
+
+	ln -s /opt/yunhu/yunhu "$pkgdir/usr/bin"
 
 	# 删除不需要的目录
 	rm -rf "$pkgdir/opt/yunhu-1.6.13+188-linux/"
 }
+
