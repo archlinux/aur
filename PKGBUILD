@@ -12,7 +12,7 @@ source=("MobiriseSetup.deb")
 sha256sums=('050175c940be4bc921b98d0f345097652bf50a3c1fa229a516fe95d06dd03e06')
 
 package() {
-    bsdtar -xf "${srcdir}/mobiriseSetup.deb"
+    bsdtar -xf "${srcdir}/MobiriseSetup.deb"
     install -dm755 "${pkgdir}/opt"
     cp -r opt/mobirise "${pkgdir}/opt/"
 
