@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-serialbus
-_qtver=6.8.2
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('1919d6bad2d935587fdb629c9737ced2ffe3c104c6b54bedb350ea9593b9a112')
+sha256sums=('0d46093411f2256e2c27d7a2d56fccb51b52753f14eb92a1a93e0da04585593f')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
