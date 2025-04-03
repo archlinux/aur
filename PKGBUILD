@@ -22,6 +22,7 @@ depends=(
   'fontconfig'
   'freetype2'
   'hicolor-icon-theme'
+  'libavif'
   'libheif'
   'libjxl'
   'librsvg'
