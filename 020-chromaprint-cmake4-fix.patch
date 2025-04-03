@@ -1,0 +1,52 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.5)
+ 
+ set(chromaprint_VERSION_MAJOR 1)
+ set(chromaprint_VERSION_MINOR 5)
+--- a/src/3rdparty/googletest/CMakeLists.txt
++++ b/src/3rdparty/googletest/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Note: CMake support is community-based. The maintainers do not use CMake
+ # internally.
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (POLICY CMP0048)
+   cmake_policy(SET CMP0048 NEW)
+--- a/src/3rdparty/googletest/docs/pkgconfig.md
++++ b/src/3rdparty/googletest/docs/pkgconfig.md
+@@ -19,7 +19,7 @@ examples here we assume you want to comp
+ Using `pkg-config` in CMake is fairly easy:
+ 
+ ```cmake
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ 
+ cmake_policy(SET CMP0048 NEW)
+ project(my_gtest_pkgconfig VERSION 0.0.1 LANGUAGES CXX)
+--- a/src/3rdparty/googletest/googlemock/CMakeLists.txt
++++ b/src/3rdparty/googletest/googlemock/CMakeLists.txt
+@@ -42,7 +42,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gmock VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (COMMAND set_up_hermetic_build)
+   set_up_hermetic_build()
+--- a/src/3rdparty/googletest/googletest/CMakeLists.txt
++++ b/src/3rdparty/googletest/googletest/CMakeLists.txt
+@@ -53,7 +53,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gtest VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ if (POLICY CMP0063) # Visibility
+   cmake_policy(SET CMP0063 NEW)
