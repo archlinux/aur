@@ -23,7 +23,7 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS='-l git2 -l mimalloc -l onig'
+    export RUSTFLAGS='${RUSTFLAGS} -l git2 -l mimalloc -l onig'
     cargo build --frozen --release -p limbo_cli
 }
 
