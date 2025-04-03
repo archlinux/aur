@@ -3,7 +3,7 @@
 # Contributor: Caio Novais <caionov08 at gmail dot com>
 
 pkgname=pfetch
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=("$pkgname")
 conflicts=('pfetch-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2f467e4353410c8419654a848eba21c0c5937268d2355334b1f3b218af02ed03')
+sha256sums=('c127bdc21351cc7f462d3b05338ba163cc475481cb5d02cb6372a90272639942')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/pfetch" "$pkgdir/usr/bin/pfetch"
