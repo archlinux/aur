@@ -1,0 +1,13 @@
+pkgbase = swf_animation
+	pkgdesc = A command line tool for extracting Adobe flash animations
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/aojiaoxiaolinlin/swf_animation
+	arch = any
+	license = MIT,
+	license = Apache
+	makedepends = cargo
+	source = https://github.com/aojiaoxiaolinlin/swf_animation/archive/refs/tags/V1.1.0.zip
+	sha256sums = c68b396dbf7edabfa0b6d1af96a1f63cd7dfc71ff17fd3e226eb5c843c118660
+
+pkgname = swf_animation
