@@ -27,51 +27,30 @@ provides=(
   'fchat=3'
 )
 source=(
-  "$pkgname::git+https://github.com/Fchat-Horizon/Horizon#tag=v$pkgver"
+  "https://github.com/Fchat-Horizon/Horizon/releases/download/v$pkgver/F-Chat.Horizon-linux-x64.tar.gz"
+  "$pkgname.sh"
   'fchat.desktop'
+  'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/electron/build/icon.png'
+  'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE'
 )
-sha256sums=('79ca98734b7291f791a74dc84f5c857b06ac49f1cf5cb654ebc586b787c07b71'
-            'edd24949c861656c3ce667ae919f42b41495877dae600a1e2d2570e869ae4ead')
-
-prepare() {
-  local _electron_version="$(cat $_electron_dist/version)"
-  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
-    -i "$srcdir/$pkgname/package.json"
-}
-
-build() {
-  export HOME="$srcdir/tmp_home"
-  export XDG_CACHE_HOME="$srcdir/tmp_cache"
-  export XDG_CONFIG_HOME="$srcdir/tmp_config"
-  export XDG_DATA_HOME="$srcdir/tmp_data"
-  export XDG_STATE_HOME="$srcdir/tmp_state"
-  
-  cd $pkgname
-  pnpm install
-  cd electron
-  pnpm install
-  node ../webpack production
-  pnpm -c exec "electron-builder --linux --dir -c.electronDist=${_electron_dist} -c.electronVersion=$(cat $_electron_dist/version)"
-}
+sha256sums=('22458a2a33ad6252ad8ccd300a626dc47c995c29763a9da366be99fcdddf455a'
+            '6853b8e9d7ce674b063fe277c98fc9dcec4be4949731e6134a5f134d48892be5'
+            '4b4b0cee797f2878e0541dbea64e5b97fbb3d0789619fe75ed1120aee3999220'
+            'dec49091c629a2e5956e14b32a823f2a63cd1549f4b1d650d3ad32948d95e822'
+            'b13bdf6682ae4d90990ebbd3b1472b91001b20c49c87d4366cc3cadb4dc084b4')
 
 package() {
-  # Set up the built executable
-  install -d "$pkgdir"/opt/$pkgname
-  cp -a "$srcdir"/$pkgname/electron/dist/linux-unpacked/. "$pkgdir"/opt/$pkgname
-  chmod 755 "$pkgdir"/opt/$pkgname/$_pkgname
+  cd "$srcdir"
+  
+  # Move misc resources to their correct place
+  install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 fchat.desktop -t "$pkgdir"/usr/share/applications
+  install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/$pkgname
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
-  # Create symlink to executable
-  install -d "$pkgdir"/usr/bin
-  ln -s /opt/$pkgname/$_pkgname "$pkgdir"/usr/bin/$pkgname
-
-  # Move .desktop file
-  install -d "$pkgdir"/usr/share/applications
-  cp "$srcdir"/fchat.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-
-  # Move icon
-  install -d "$pkgdir"/usr/share/pixmaps
-  cp "$srcdir"/$pkgname/electron/build/icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-
-  # Licenses
-  install -Dm644 "$srcdir"/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  # We're using system electron, so pull out just what we actually need.
+  cd 'F-Chat Horizon-linux-x64/resources/'
+  install -dm0755 "$pkgdir"/usr/share/$pkgname
+  find . -type d -exec install -d {,"$pkgdir"/usr/share/$pkgname/}{} \;
+  find . -type f -exec install -D {,"$pkgdir"/usr/share/$pkgname/}{} \;
 }
