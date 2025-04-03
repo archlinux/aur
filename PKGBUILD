@@ -15,6 +15,6 @@ sha256sums=('8eff57d0f6034440bebe79784fca3de13233bee4edab0fbe661614a0b9d63f11')
 package() {
     cd $srcdir/fluent-emoji-webfont-$pkgver
 
-    mkdir -p $pkgdir/usr/share/fonts/TTF/fluent-emoji
-    find $srcdir -name "*.ttf" -exec install -Dm644 {} -t $pkgdir/usr/share/fonts/TTF/fluent-emoji \;
+    install -Dm644 dist/FluentEmoji{Color,Flat,HighContrast}.ttf -t $pkgdir/usr/share/fonts/fluent-emoji
+
 }
