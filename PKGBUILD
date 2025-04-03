@@ -4,7 +4,7 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.11.0.r26689.5774b60
+pkgver=10.11.0.r27207.d1ed659
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
@@ -56,8 +56,8 @@ build(){
   #   ==> ERROR: A failure occurred in package().
   # without indicating any sort of failure.
   dotnet publish --configuration Release Jellyfin.Server --output "$PWD"/publish
-  # Clean up the runtimes folder (keep linux-*)
-  rm -rfv publish/runtimes/{alpine-*,osx*,tizen-*,win*}
+  # Clean up the runtimes folder (keep glibc linux-*)
+  rm -rfv publish/runtimes/{alpine-*,linux-musl-*,osx*,tizen-*,win*}
 }
 
 package_jellyfin-git() {
