@@ -1,13 +1,13 @@
 _pkgname=yavta
 pkgname=${_pkgname}-git
-pkgver=r129.c7b5b75
+pkgver=r134.547e499
 pkgrel=1
 pkgdesc='Yet Another V4L2 Test Application'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://git.ideasonboard.org/yavta.git'
 makedepends=('git' 'meson')
 license=('GPL2')
-source=("${_pkgname}::git+https://git.ideasonboard.org/git/yavta.git")
+source=("${_pkgname}::git+https://git.ideasonboard.org/yavta.git")
 md5sums=('SKIP')
 
 pkgver() {
