@@ -1,14 +1,14 @@
 # Maintainer: Shi Yanling <sylphenix@outlook.com>
 
 pkgname=sff
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="Simple and fast terminal file manager"
 arch=('x86_64')
 license=('BSD')
 url="https://codeberg.org/sylphenix/sff"
 depends=('ncurses' 'file' 'glibc')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
