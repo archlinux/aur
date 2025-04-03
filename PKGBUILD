@@ -1,16 +1,16 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 pkgname=limbo
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc='Limbo is a work-in-progress, in-process OLTP database management system, compatible with SQLite.'
 url='https://github.com/tursodatabase/limbo'
 license=('MIT')
 arch=('x86_64')
-makedepends=(cargo mimalloc libgit2)
+makedepends=(cargo mimalloc libgit2 oniguruma)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz"
         'prune-deps.patch')
-sha256sums=('b6e50fb85d7a46027881e9413c3f18724de4bcd0c25448cf9aaa28a33c7b63b7'
-            'fb95dee89a7e7b34cefd5958ab39ffa15fcd774817f25ff2aec561c7334e9e64')
+sha256sums=('8b9150db603bf4a77a7767937f72492395c55b16df769dbceccd97fbb3cdca6b'
+            'd3518ed68d3866b3cbb9bace3374b652ef06daaf1035985c64266a5c981c390c')
 
 prepare() {
     cd "${pkgname}_cli-$pkgver"
@@ -23,7 +23,7 @@ build() {
     cd "${pkgname}_cli-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src -l mimalloc -l git2"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src -l mimalloc -l git2 -l onig"
     cargo build --frozen --release -p limbo_cli
 }
 
