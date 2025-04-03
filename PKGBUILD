@@ -3,7 +3,7 @@
 
 pkgname=napcatqq-git
 _pkgname=NapCatQQ
-pkgver=r3754.3d2bca3f
+pkgver=r3891.7ec61f08
 pkgrel=1
 pkgdesc="现代化的基于 NTQQ 的 Bot 协议端实现"
 arch=('x86_64'
@@ -23,6 +23,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    # 删除转发消息深度限制
+    find . -name "SendMsg.ts" -exec sed -i '/if (dp >= 3) {/,/}/d' {} \;
 }
 
 build() {
