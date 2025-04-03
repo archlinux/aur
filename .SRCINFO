@@ -1,7 +1,7 @@
 pkgbase = slib
 	pkgdesc = Library of functions for Scheme implementations
 	pkgver = 3c1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://people.csail.mit.edu/jaffer/SLIB.html
 	arch = any
 	license = custom
