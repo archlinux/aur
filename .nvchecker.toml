@@ -1,0 +1,4 @@
+[ttf-fluent-emoji]
+source = "git"
+git = "https://github.com/tetunori/fluent-emoji-webfont.git"
+prefix = "v"
