@@ -1,6 +1,6 @@
 pkgbase = android-x86-qt6-connectivity
 	pkgdesc = Provides access to Bluetooth hardware (android)
-	pkgver = 6.8.2
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = android-x86-qt6-connectivity
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtconnectivity-everywhere-src-6.8.2.tar.xz
-	sha256sums = e617120e084ac369fd6064f2c177de9e1c2cd9989a1f1774eea131800d52812a
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtconnectivity-everywhere-src-6.9.0.tar.xz
+	sha256sums = ff402f8dacb2b9f9308afcea67118ae1645ce6466f2d41a8d5c12fd2fa168598
 
 pkgname = android-x86-qt6-connectivity
