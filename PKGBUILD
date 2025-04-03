@@ -2,7 +2,7 @@
 
 pkgname=aurx
 pkgver=20250403
-pkgrel=4
+pkgrel=5
 pkgdesc="An AUR helper written in C."
 arch=('x86_64')
 url="https://github.com/carlyle-felix/aurx"
@@ -22,5 +22,5 @@ build() {
 
 package() {
         cd "${srcdir}/${pkgname}"
-        sudo make install
+        make install
 }
