@@ -5,6 +5,7 @@ pkgdesc="fluent-emoji by Microsoft"
 arch=('any')
 url="https://github.com/tetunori/fluent-emoji-webfont"
 license=('MIT')
+provides=('emoji-font')
 depends=('fontconfig')
 source=(
     "https://github.com/tetunori/fluent-emoji-webfont/archive/refs/tags/v$pkgver.tar.gz"
