@@ -1,10 +1,10 @@
-# Maintainer: fenchdeveloper <fenchdeveloper@email.com>
+
 pkgname=ascii-live-client
 pkgver=1.0
 pkgrel=1
 pkgdesc="C++ client for ascii.live animations"
 arch=('x86_64')
-url="https://github.com/ваш-логин/ascii-live-client"
+url="https://github.com/FenchsApps/ascii-live-client"
 license=('MIT')
 depends=('curl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FenchsApps/ascii-live-client/archive/v$pkgver.tar.gz")
