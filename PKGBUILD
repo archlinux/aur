@@ -2,7 +2,7 @@
 
 pkgname=aurx
 pkgver=20250403
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper written in C."
 arch=('x86_64')
 url="https://github.com/carlyle-felix/aurx"
