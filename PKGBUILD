@@ -18,6 +18,7 @@ sha256sums=('04db3bd65077d580d8ca9a402d58088cb6376dae3d7a255d74cf0a298cd7a377'
             '8589e056924b938efc00cf7f5cfb75285888cfb2f9af28e1be2f0c0500f8bf2e')
 
 package() {
+  unzip SQL-Power-Architect-generic-${pkgver}.tar.zip
   tar xf SQL-Power-Architect-generic-${pkgver}.tar.gz
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/lib/$pkgname"
