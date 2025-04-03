@@ -36,9 +36,9 @@ sha256sums=('03c77db4e8dc64cae722d01ea953e5c8ec07026fc91c9fad5cd1dff7b4fb1cce'
             '8035781b1812ee1f289e0cdd0d26828534d7090272be3954e00cec364eba44e7'
             '87d7d6a0396815b3f7dbde4c3dc8714fa8055d16b1419ae3b19f86627a1899a7')
 
-pkgver() {
-	date +%Y%m%d
-}
+#pkgver() {
+#	date +%Y%m%d
+#}
 
 package_ibus-input-support() {
 	pkgdesc+=" for ibus"
