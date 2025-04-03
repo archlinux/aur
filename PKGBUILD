@@ -1,4 +1,4 @@
-# Maintainer: wackbyte <wackbyte@protonmail.com>
+# Maintainer: wackbyte <im@purring.fyi>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=uiua
