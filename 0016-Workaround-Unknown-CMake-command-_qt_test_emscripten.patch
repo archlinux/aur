@@ -1,7 +1,7 @@
-From 61a3acd1860850a0dcac575a7c18ea16933fb418 Mon Sep 17 00:00:00 2001
+From d39de7b7a9d4473b932a25376b92cf9532631470 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:28:03 +0200
-Subject: [PATCH 17/20] Workaround `Unknown CMake command
+Subject: [PATCH 16/19] Workaround `Unknown CMake command
  "_qt_test_emscripten_version".`
 
 Not sure why `QtPublicWasmToolchainHelpers.cmake` is not included
@@ -14,7 +14,7 @@ Change-Id: Id63c90a1f564688849c5bd7193195faa1eb38a0a
  1 file changed, 5 insertions(+)
 
 diff --git a/src/corelib/Qt6WasmMacros.cmake b/src/corelib/Qt6WasmMacros.cmake
-index b590d893962..9bdd24b719d 100644
+index e185ef67490..6ba42615f46 100644
 --- a/src/corelib/Qt6WasmMacros.cmake
 +++ b/src/corelib/Qt6WasmMacros.cmake
 @@ -1,6 +1,11 @@
@@ -30,5 +30,5 @@ index b590d893962..9bdd24b719d 100644
  function(_qt_internal_wasm_add_target_helpers target)
  
 -- 
-2.48.1
+2.49.0
 

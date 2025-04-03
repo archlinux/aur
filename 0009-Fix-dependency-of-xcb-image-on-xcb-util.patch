@@ -1,7 +1,7 @@
-From 0ca05e7a569076631bdf958fa9e813e9c90e1a50 Mon Sep 17 00:00:00 2001
+From 770d58d3c19571f5a255b88263066d96d2c86349 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:49:36 +0200
-Subject: [PATCH 09/20] Fix dependency of xcb-image on xcb-util
+Subject: [PATCH 09/19] Fix dependency of xcb-image on xcb-util
 
 Considering this linker error, xcb-image apparently depends on xcb-util:
 ```
@@ -44,5 +44,5 @@ index 26b9bf89633..0ae21f774c6 100644
  set(XCB_XFIXES_component_deps XCB RENDER SHAPE)
  set(XCB_XVMC_component_deps XCB XV)
 -- 
-2.48.1
+2.49.0
 

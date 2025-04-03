@@ -1,7 +1,7 @@
-From 12bd07c0053b22caf4d859c9dd6c9aa54dc7a7d3 Mon Sep 17 00:00:00 2001
+From 4097181e0e83a178076ed25b924133b5425ae304 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 20:31:12 +0100
-Subject: [PATCH 13/20] Fix errors due to disabled exceptions with cpp_winrt
+Subject: [PATCH 13/19] Fix errors due to disabled exceptions with cpp_winrt
  support
 
 The winrt headers use exceptions so code using them must be compiled
@@ -9,11 +9,24 @@ with exceptions enabled.
 
 Change-Id: I216f65b260062ff2020f8a288ddda78c3e9fc3c9
 ---
- src/plugins/platforms/windows/CMakeLists.txt | 1 +
- 1 file changed, 1 insertion(+)
+ src/plugins/platforms/direct2d/CMakeLists.txt | 1 +
+ src/plugins/platforms/windows/CMakeLists.txt  | 1 +
+ 2 files changed, 2 insertions(+)
 
+diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
+index 8d63de1d051..ff2a9989d54 100644
+--- a/src/plugins/platforms/direct2d/CMakeLists.txt
++++ b/src/plugins/platforms/direct2d/CMakeLists.txt
+@@ -8,6 +8,7 @@
+ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
+     OUTPUT_NAME qdirect2d
+     PLUGIN_TYPE platforms
++    EXCEPTIONS
+     SOURCES
+         ../windows/qtwindowsglobal.h
+         ../windows/qwin10helpers.cpp ../windows/qwin10helpers.h
 diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
-index cc4460cb182..ead1c89f29f 100644
+index 9fc555504bc..4c171a3c755 100644
 --- a/src/plugins/platforms/windows/CMakeLists.txt
 +++ b/src/plugins/platforms/windows/CMakeLists.txt
 @@ -9,6 +9,7 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
@@ -25,5 +38,5 @@ index cc4460cb182..ead1c89f29f 100644
          main.cpp
          qtwindowsglobal.h
 -- 
-2.48.1
+2.49.0
 
