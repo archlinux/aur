@@ -12,17 +12,17 @@ provides=('waku')
 conflicts=('waku')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0-alpha2/waku_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c896dd6d3ee240eace916b63ef6df42a039a37b9383d3a27db0f3b95613da73c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0/waku_Linux_arm64.tar.gz")
+sha256sums_aarch64=('d7807b8ca559668c36734c1218683124434cf9043a70a01923059bcb93c8d0ef')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0-alpha2/waku_Linux_armv7.tar.gz")
-sha256sums_armv7h=('58d433aabd05f7e2650201cd7bc22c5c3b0b887e1108cdcd4f0b654cfd407f99')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0/waku_Linux_armv7.tar.gz")
+sha256sums_armv7h=('8876df48a796a7617485cbc916fa5e31090e8855bddb4376ae4d5f42258432a5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0-alpha2/waku_Linux_i386.tar.gz")
-sha256sums_i686=('2b0ff966ad8cd4f60a3e65dcece277bc777cb5f3f42e94150786351e6f60be7b')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0/waku_Linux_i386.tar.gz")
+sha256sums_i686=('0f63a80c1553a0966dc40a8c1cbcbc37dbc713c608fbbd2fc389f35f45f3581e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0-alpha2/waku_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a33ae8b03425e91682b83b43e107997a300317439bdddd669cc1ca01efb122bf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caffeine-addictt/waku/releases/download/v0.9.0/waku_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('96f1bb79f2fbffc22857f226fb55726c15de4eec528f72d2d6c2756ba0d46205')
 
 package() {
   # bin
