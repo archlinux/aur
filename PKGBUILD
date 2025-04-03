@@ -2,8 +2,8 @@
 # Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
 
 pkgname=youtube-to-mp3
-pkgver=3.9.9.98
-pkgrel=5
+pkgver=3.9.9.99
+pkgrel=1
 pkgdesc='Downloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
