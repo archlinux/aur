@@ -6,9 +6,9 @@ pkgname='python-textcase-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=0.2.0.r24.gc752b23
+pkgver=0.2.1.r17.g35372b0
 pkgrel=1
-pkgdesc='Feature complete Python text case conversion library (built from latest git commit)'
+pkgdesc='Feature-rich Python text case conversion library (built from latest git commit)'
 arch=('any')
 url="https://github.com/zobweyt/$_srcname"
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
@@ -43,7 +43,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    {CHANGELOG,CONTRIBUTING,README}.md
+    {CHANGELOG,CODE_OF_CONDUCT,CONTRIBUTING,README,SECURITY}.md
 }
 
 # eof
