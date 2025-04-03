@@ -8,10 +8,10 @@ pkgname=(
   gdm-prime
   libgdm-prime
 )
-pkgver=47.0
+pkgver=48.0
 pkgrel=1
 pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
-url="https://wiki.gnome.org/Projects/GDM"
+url="https://gitlab.gnome.org/GNOME/gdm"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
@@ -62,7 +62,7 @@ source=(
   0001-Xsession-Don-t-start-ssh-agent-by-default.patch
   0002-nvidia-prime.patch
 )
-b2sums=('68e4833abdeb0c1f6bf64ddf35b725b06d379e26e7c4f757e5a958786803605bc072e1a224d7249f00bdf752e7db91bb95f81ca792f5a71f428a906a09457d12'
+b2sums=('d08d2137f630999b2f36bd8b798805e145fd7350fc4a092056cfdddd2170ae57b3b17a3a8f44f4c08a7e527a165fdce0dfa7a934188bc487d2a6d5bd848497b0'
         'f7e868fdd7cc121433de1572583eb728f4d186cd4f52c6d6c8f2ccf4a3cf781144ff71f704f13571ddb97a1ff4ec55cfa3df25d38737ad19da21e84ddc2d3ee4'
         'b02edd38bb178b457379717633f935f18bea153470905d34675a587c807a4c0de79e48cc82c53ec5a139d667f57c13e652ea6d9cb3a7fcd05bdd59b9cf715b45')
 
@@ -121,7 +121,6 @@ package_gdm-prime() {
     etc/pam.d/gdm-smartcard
   )
   groups=(gnome)
-  install=gdm-prime.install
 
   meson install -C build --destdir "$pkgdir"
 
@@ -153,6 +152,12 @@ END
   install -Dm644 /dev/stdin usr/lib/sysusers.d/gdm.conf <<END
 g gdm 120 -
 u gdm 120 "Gnome Display Manager" /var/lib/gdm
+END
+
+  install -Dm644 /dev/stdin usr/share/glib-2.0/schemas/org.gnome.login-screen.gschema.override <<END
+[org.gnome.login-screen]
+enable-smartcard-authentication=false
+logo='/usr/share/pixmaps/archlinux-logo-text-dark.svg'
 END
 
   _pick libgdm usr/include
