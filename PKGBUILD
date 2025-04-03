@@ -1,33 +1,30 @@
-# Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+
 pkgname=rx_tools
 pkgver=1.0.3
-pkgrel=2
-pkgdesc='rx_fm, rx_power, and rx_sdr tools for receiving data from SDRs, based on rtl_fm, rtl_power, and rtl_sdr from librtlsdr, but using the SoapySDR vendor-neutral SDR support library instead, intended to support a wider range of devices than RTL-SDR'
-url="https://github.com/rxseger/$pkgname"
+pkgrel=4
+pkgdesc='Implementation of librtlsdr rtl_* tools using SoapySDR as the driver backend'
+url="https://github.com/rxseger/rx_tools"
 arch=('x86_64')
 license=('GPL2')
-depends=('soapysdr' 'glibc')
+depends=('soapysdr')
 makedepends=('cmake')
 source=("$url/archive/v$pkgver.zip")
-sha256sums=('35ddd6056a67f1ddc3b35c6be91714c765145d6b4cbbea0656ca3f40fee0eb7a')
+sha512sums=('6afc5e99061725a5cab79418ea5a912a9de73d2a5abd5932e17b1ef6b6b4c0c079fd8502dd37ce039244ba2aab692001736f371d2ef1570be6c2fb2ab30f7c72')
 
-prepare()
-{
-    cd "$pkgname-$pkgver"
+build(){
+  mkdir -p $pkgname-$pkgver/build
+  cd $pkgname-$pkgver/build
 
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
-}
+  cmake .. \
+  	-DCMAKE_INSTALL_PREFIX=/usr
 
-build()
-{
-    cd "$pkgname-$pkgver"
-
-    make
+  make
 }
 
 package()
 {
-    cd "$pkgname-$pkgver"
+    cd $pkgname-$pkgver/build
 
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="$pkgdir" install
 }
