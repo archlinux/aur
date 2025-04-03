@@ -4,7 +4,7 @@
 # Contributor: yochananmarqos
 
 pkgname=notepadnext
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Cross-platform reimplementation of Notepad++"
 arch=('x86_64')
@@ -13,17 +13,17 @@ license=('GPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'libxcb' 'qt6-5compat' 'hicolor-icon-theme' 'qt6-base')
 makedepends=('git' 'qt6-tools')
 source=("$pkgname::git+$url#tag=v$pkgver"
-        'git+https://github.com/alex-spataru/QSimpleUpdater'
-        'git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System'
-        'git+https://github.com/editorconfig/editorconfig-core-qt'
-        'git+https://github.com/itay-grudev/SingleApplication'
-	'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/')
-sha256sums=('3f132945694db22a5bd963ee628b5c5098215a986373557c85eda99b50252bc2'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+    'git+https://github.com/alex-spataru/QSimpleUpdater'
+    'git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System'
+    'git+https://github.com/editorconfig/editorconfig-core-qt'
+    'git+https://github.com/itay-grudev/SingleApplication'
+    'git+https://gitlab.freedesktop.org/uchardet/uchardet.git/')
+sha256sums=('5e0062af581a0006ee3eece84ef71bef7e94de4e3b1c77539815ca8f2ae35622'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
