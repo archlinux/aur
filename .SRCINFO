@@ -1,0 +1,12 @@
+pkgbase = ascii-live-client
+	pkgdesc = C++ client for ascii.live animations
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ваш-логин/ascii-live-client
+	arch = x86_64
+	license = MIT
+	depends = curl
+	source = ascii-live-client-1.0.tar.gz::https://github.com/ваш-логин/ascii-live-client/archive/v1.0.tar.gz
+	sha256sums = f579c9714c5e76a4e478a4c172c4e11a7c91842f922fa4ab9fb9fda5fd1a0d41
+
+pkgname = ascii-live-client
