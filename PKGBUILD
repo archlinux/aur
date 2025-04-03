@@ -2,21 +2,25 @@
 
 pkgname=uavs3d
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An AVS3 decoder supporting AVS3-P2 baseline profile'
 arch=('x86_64')
 url='https://github.com/uavs3/uavs3d/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('glibc')
-makedepends=('git' 'cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/uavs3/uavs3d.git#tag=v${pkgver}"
-        '010-uavs3d-10bit.patch')
-sha256sums=('SKIP'
-            'a49296d0ce59fbb0dd4194505f077c69d0975018c1c8ae38a86f1780530e96ac')
+        '010-uavs3d-10bit.patch'
+        '020-uavs3d-cmake4-fix.patch')
+sha256sums=('5104ececbacaa6dc12100bc994c853d021732eb5201136b02fa42bff364c588d'
+            'a49296d0ce59fbb0dd4194505f077c69d0975018c1c8ae38a86f1780530e96ac'
+            'dec008c952b314da03d8664fb88eacff1b847c7140b1f1501f20659bb83a2017')
 
 prepare() {
     cp -a uavs3d uavs3d-10bit
     patch -d uavs3d-10bit -Np1 -i "${srcdir}/010-uavs3d-10bit.patch"
+    patch -d uavs3d-10bit -Np1 -i "${srcdir}/020-uavs3d-cmake4-fix.patch"
+    patch -d uavs3d -Np1 -i "${srcdir}/020-uavs3d-cmake4-fix.patch"
 }
 
 build() {
