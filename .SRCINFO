@@ -1,0 +1,16 @@
+pkgbase = web-blocker-git
+	pkgdesc = A tool to block unwanted websites using iptables
+	pkgver = r20.1f5bd0e
+	pkgrel = 1
+	url = https://github.com/Duvet05/web-blocker
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = iptables
+	depends = python3
+	depends = python-dnspython
+	source = git+https://github.com/Duvet05/web-blocker.git
+	sha256sums = SKIP
+
+pkgname = web-blocker-git
