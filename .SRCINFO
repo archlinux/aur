@@ -1,6 +1,6 @@
 pkgbase = escrcpy-bin
 	pkgdesc = 📱 Graphical Scrcpy to display and control Android, devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。
-	pkgver = 1.29.2
+	pkgver = 1.29.3
 	pkgrel = 1
 	url = https://github.com/viarotel-org/escrcpy
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = escrcpy-bin
 	makedepends = asar
 	depends = electron33
 	depends = scrcpy
-	provides = escrcpy=1.29.2
+	provides = escrcpy=1.29.3
 	conflicts = escrcpy
 	source = escrcpy.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = escrcpy-1.29.2-aarch64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.29.2/Escrcpy-1.29.2-linux-arm64.deb
-	sha256sums_aarch64 = b4777247c0f9d9295df4a2e2731fb847e70eb7e2ae0928e14c8a91277a113fc6
-	source_x86_64 = escrcpy-1.29.2-x86_64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.29.2/Escrcpy-1.29.2-linux-amd64.deb
-	sha256sums_x86_64 = 876f46f9963e5bc48905c277bd14a7cfc0fc28625d256126f5d5d3c698a586f3
+	source_aarch64 = escrcpy-1.29.3-aarch64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.29.3/Escrcpy-1.29.3-linux-arm64.deb
+	sha256sums_aarch64 = c1f1273e92b3df360c001b646c441f3623280d7391b23709e58e7ab0d9ab3760
+	source_x86_64 = escrcpy-1.29.3-x86_64.deb::https://github.com/viarotel-org/escrcpy/releases/download/v1.29.3/Escrcpy-1.29.3-linux-amd64.deb
+	sha256sums_x86_64 = 0224c269c76b70c84d669b1ffb1d66fb8b635d4d33431632e4782ed9bfe712c3
 
 pkgname = escrcpy-bin
