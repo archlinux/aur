@@ -1,7 +1,7 @@
-From 26f2a9acfade8e39ff1819b95f6bedae58fb140a Mon Sep 17 00:00:00 2001
+From 42ebf6809f08f0da249da7e207228545cbc47f08 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 17 Feb 2024 23:11:18 +0100
-Subject: [PATCH 16/20] Workaround linker error about missing symbol
+Subject: [PATCH 15/19] Workaround linker error about missing symbol
  `__sync_bool_compare_and_swap_16`
 
 This error only happens when compiling for the x86_64-w64-mingw32 target
@@ -19,10 +19,10 @@ Change-Id: I1b96a6dc44c5f7d527dbed9db58b4f030f175721
  4 files changed, 20 insertions(+)
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index e9c813461ec..e39c9c099e5 100644
+index 5cde8505d66..c2eec84bd0d 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -858,6 +858,11 @@ qt_internal_extend_target(Core CONDITION WASM
+@@ -874,6 +874,11 @@ qt_internal_extend_target(Core CONDITION WASM
          text/qlocale_wasm.cpp
  )
  
@@ -51,10 +51,10 @@ index acd3754f4e5..0557c60afd1 100644
  set_property(TARGET QNLMNIPlugin PROPERTY
      AUTOGEN_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/autogen")
 diff --git a/src/plugins/platforms/direct2d/CMakeLists.txt b/src/plugins/platforms/direct2d/CMakeLists.txt
-index 278af74af0b..f0012caffa8 100644
+index ff2a9989d54..383b18a95fa 100644
 --- a/src/plugins/platforms/direct2d/CMakeLists.txt
 +++ b/src/plugins/platforms/direct2d/CMakeLists.txt
-@@ -81,6 +81,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
+@@ -83,6 +83,11 @@ qt_internal_add_plugin(QWindowsDirect2DIntegrationPlugin
          runtimeobject
  )
  
@@ -67,10 +67,10 @@ index 278af74af0b..f0012caffa8 100644
  set_source_files_properties("../windows/openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 diff --git a/src/plugins/platforms/windows/CMakeLists.txt b/src/plugins/platforms/windows/CMakeLists.txt
-index ead1c89f29f..6c45c3bc470 100644
+index 4c171a3c755..d82e9f8ac9c 100644
 --- a/src/plugins/platforms/windows/CMakeLists.txt
 +++ b/src/plugins/platforms/windows/CMakeLists.txt
-@@ -69,6 +69,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
+@@ -70,6 +70,11 @@ qt_internal_add_plugin(QWindowsIntegrationPlugin
          runtimeobject
  )
  
@@ -83,5 +83,5 @@ index ead1c89f29f..6c45c3bc470 100644
  set_source_files_properties("openglblacklists/default.json"
      PROPERTIES QT_RESOURCE_ALIAS "default.json"
 -- 
-2.48.1
+2.49.0
 
