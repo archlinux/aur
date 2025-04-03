@@ -1,19 +1,20 @@
 # Maintainer: steffeno <steffeno dash etc at protonmail dot com>
 _pkgname=ly
 pkgname="$_pkgname"-git
-pkgver=1.0.0.r94.gc87d5b4
+pkgver=1.0.0.r173.g4345a99
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=(i686 x86_64 aarch64)
-url="https://github.com/fairyglade/$_pkgname"
+url="https://codeberg.org/AnErrupTion/ly.git"
 license=('custom:WTFPL')
 depends=(pam)
-makedepends=(zig git libxcb)
+makedepends=('zig>=0.14.0' git libxcb)
 optdepends=('xorg-xauth: for X server sessions')
 conflicts=(ly)
 provides=(ly)
 backup=(etc/"$_pkgname"/{config.ini,setup.sh})
-source=("git+$url.git")
+source=("git+$url")
+
 md5sums=('SKIP')
 
 pkgver() {
