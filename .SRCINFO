@@ -1,12 +1,12 @@
 pkgbase = gmocli
 	pkgdesc = command-line interface for searching emoji characters with associated gitmoji descriptions
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/duhdugg/gmocli
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = gmocli-1.1.0.tar.gz::https://static.crates.io/crates/gmocli/gmocli-1.1.0.crate
-	sha256sums = 482f81e509cc8694c5f9a39215a1e6d87437f621efc1a9afd0517ff5f33a923a
+	source = gmocli-1.2.1.tar.gz::https://static.crates.io/crates/gmocli/gmocli-1.2.1.crate
+	sha256sums = aa22d8609a08c0cc2e2d207f54095b4178f6fc4ef22f41f9a01df37dd0aaaed5
 
 pkgname = gmocli

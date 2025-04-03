@@ -1,7 +1,7 @@
 # Maintainer: Doug Elkin <aur@dougelkin.com>
 
 pkgname=gmocli
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="command-line interface for searching emoji characters with associated gitmoji descriptions"
 url='https://github.com/duhdugg/gmocli'
@@ -11,7 +11,7 @@ depends=()
 optdepends=()
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('482f81e509cc8694c5f9a39215a1e6d87437f621efc1a9afd0517ff5f33a923a')
+sha256sums=('aa22d8609a08c0cc2e2d207f54095b4178f6fc4ef22f41f9a01df37dd0aaaed5')
 
 prepare() {
   cd "$pkgname-$pkgver"
