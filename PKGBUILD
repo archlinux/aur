@@ -22,16 +22,16 @@ _scriptTailMd5sums[7.4]=b9878ccca286ec7faa4d230633294853
 _scriptTailMd5sums[7.4a]=6f987a683f17b3595cc5993c1b1375ed
 _scriptTailMd5sums[8.0]=e53bd9e7beabb2eb1c6857bea61ccdde
 
-# locale, key account, original name, version, (optional) replacement name
+# locale, key account, original name, latest tested version, (optional) replacement name
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
 _prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Czechia=(cs_CZ 4860 'CEWE fotosvet' 7.3.3 "CEWE fotosvět")
 _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 8.0.2 'CEWE Fotobuch')
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 8.0.3 'CEWE Fotobuch')
 _prams_Fotowelt=(de_DE 6822 'CEWE Fotowelt' 7.4.0)
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 8.0.2)
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 8.0.3)
 _prams_Pixum=(de_DE 1291 'Pixum Fotowelt' 7.3.3)
 _prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
