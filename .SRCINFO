@@ -1,6 +1,6 @@
 pkgbase = varia
 	pkgdesc = Download manager based on aria2
-	pkgver = 2025.1.24
+	pkgver = 2025.4.3
 	pkgrel = 1
 	url = https://github.com/giantpinkrobots/varia
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = varia
 	depends = python-gobject
 	depends = python-requests
 	depends = yt-dlp
-	source = varia-2025.1.24.tar.gz::https://github.com/giantpinkrobots/varia/archive/refs/tags/v2025.1.24.tar.gz
-	sha256sums = 37c795fb5db7b4b58a6261818e702ce4b6996f7844fd61fb70882642003f6176
+	source = varia-2025.4.3.tar.gz::https://github.com/giantpinkrobots/varia/archive/refs/tags/v2025.4.3.tar.gz
+	sha256sums = 96941b6391a5eec0d3177dd448992192b87e5d5f1ed9ebc90793941e67490dbd
 
 pkgname = varia
