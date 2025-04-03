@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=m3u8downloader-bin
-_pkgname="M3U8 Downloader"
-pkgver=0.8.0
+_pkgname='M3U8 Downloader'
+pkgver=0.8.1
 _electronversion=28
 pkgrel=1
 pkgdesc="Yet another m3u8 downloader.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/gonwan/m3u8-downloader/v${pkgver}/icons/icon256x256.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9c97fa0c29a17b3e871457d90ddf354015ec4892d5a98d66c764a6c0c5e3c0f4'
+sha256sums=('b77bf88f37d87ee0758625f12e8c9179e921bd60c8cd6467d4abb77b9a94b428'
             'c42b28b97e0485bf0298aac09ef9f9be169682b5467d8e3eb6334bd2b31129b3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
