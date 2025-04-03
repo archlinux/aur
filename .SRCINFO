@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-svg-static
 	pkgdesc = Classes for displaying the contents of SVG files (mingw-w64)
-	pkgver = 6.8.2
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-qt6-svg-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtsvg-everywhere-src-6.8.2.tar.xz
-	sha256sums = aa2579f21ca66d19cbcf31d87e9067e07932635d36869c8239d4decd0a9dc1fa
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtsvg-everywhere-src-6.9.0.tar.xz
+	sha256sums = ec359d930c95935ea48af58b100c2f5d0d275968ec8ca1e0e76629b7159215fc
 
 pkgname = mingw-w64-qt6-svg-static
