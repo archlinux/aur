@@ -1,6 +1,6 @@
 pkgbase = qp-git
 	pkgdesc = qp - Query Packages. A CLI utility for querying installed packages, written in Go.
-	pkgver = 4.1.0.r0.gd97acdd
+	pkgver = 4.1.3.r0.g5baef61
 	pkgrel = 1
 	url = https://github.com/Zweih/qp
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = qp-git
 	replaces = yaylog-bin
 	replaces = yaylog-git
 	source = qp::git+https://github.com/Zweih/qp.git
+	source = news::git+https://github.com/Zweih/qp.git#branch=packaging
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = qp-git

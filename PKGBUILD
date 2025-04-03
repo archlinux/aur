@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=4.1.0.r0.gd97acdd
+pkgver=4.1.3.r0.g5baef61
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go."
 arch=("any")
@@ -10,8 +10,11 @@ makedepends=("go>=1.24.1" "git")
 provides=("qp")
 conflicts=("qp" "qp-bin")
 replaces=('yaylog' 'yaylog-bin' 'yaylog-git')
-source=("qp::git+https://github.com/Zweih/qp.git")
-sha256sums=('SKIP')
+source=(
+  "qp::git+https://github.com/Zweih/qp.git"
+  "news::git+https://github.com/Zweih/qp.git#branch=packaging"
+)
+sha256sums=('SKIP' 'SKIP')
 
 _binaryname="qp"
 
@@ -30,4 +33,5 @@ package() {
   cd "$srcdir/qp"
   install -Dm755 "${_binaryname}" "$pkgdir/usr/bin/${_binaryname}"
   install -Dm644 "${_binaryname}.1" "$pkgdir/usr/share/man/man1/${_binaryname}.1"
+  install -Dm644 "$srcdir/news/NEWS" "$pkgdir/usr/share/doc/${pkgname}/NEWS"
 }
