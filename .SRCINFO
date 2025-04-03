@@ -1,0 +1,14 @@
+pkgbase = libkovanserial
+	pkgdesc = The library behind kovan and computer interaction over serial
+	pkgver = r97+gd84ef9b
+	pkgrel = 1
+	url = https://github.com/kipr/libkovanserial
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake>=2.8
+	depends = gcc-libs
+	depends = glibc
+	source = libkovanserial-d84ef9b5bc3c50e4baec4aaf79f20f79f0e10861.tar.gz::https://github.com/kipr/libkovanserial/archive/d84ef9b5bc3c50e4baec4aaf79f20f79f0e10861.tar.gz
+	b2sums = e0392e3c8607b85dfbc8a68d0ca1b41bc0441fd228c313e7b6c1126de91bb43ef3054895417b047bc989d4435d98042e6b4c1e97eb27da75f45303b930e00e60
+
+pkgname = libkovanserial
