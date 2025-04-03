@@ -42,7 +42,7 @@ build() {
 	cd build
 	# the Arch package guidelines say to use
 	# /usr/lib instead of /usr/libexec.
-	cmake .. -DWITH_QT6=true -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DWITH_QT6=true -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make
 }
 
