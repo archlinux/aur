@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Binance
+Exec=/opt/Binance/binance --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=binance
+StartupWMClass=Binance
+Comment=Buy & sell Crypto in minutes, join the world’s largest crypto exchange.
+MimeType=x-scheme-handler/binance;
+Categories=Network;

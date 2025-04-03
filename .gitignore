@@ -1,0 +1,7 @@
+#keep it clean
+*
+!binance-electron.install
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!binance.desktop
