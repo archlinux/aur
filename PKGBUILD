@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.39.0.r557.g1dd0e49f83
+pkgver=0.40.0.r47.g07571859ac
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -127,7 +127,7 @@ depends=(
 license=('custom')
 url='http://mpv.io'
 makedepends=(
-             # 'amf-headers'
+             'amf-headers'
              'avisynthplus'
              'clang'
              'fontconfig'
@@ -262,7 +262,7 @@ prepare() {
     '--disable-mbedtls'
     '--disable-programs'
     '--enable-alsa'
-    '--disable-amf'
+    '--enable-amf'
     '--enable-bzlib'
     '--enable-chromaprint'
     '--enable-cuvid'
