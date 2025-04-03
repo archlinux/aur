@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-qt6-sensors
 	pkgdesc = Provides access to sensor hardware and motion gesture recognition (android)
-	pkgver = 6.8.2
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = android-x86-64-qt6-sensors
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtsensors-everywhere-src-6.8.2.tar.xz
-	sha256sums = 8a817c9b001ad0abdbf15064826ca6a8ee6b66fef8f04b4343ac9f7b2ddbf4ca
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtsensors-everywhere-src-6.9.0.tar.xz
+	sha256sums = a46137c1f4a768d00397a2f83de7018318b0ca35d39c848da62d1783b368e467
 
 pkgname = android-x86-64-qt6-sensors
