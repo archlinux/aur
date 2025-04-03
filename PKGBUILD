@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=5.9.0.3
+pkgver=5.10.1.0
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -19,6 +19,8 @@ depends=(
     'curl'
     'ffmpeg'
     'freeimage'
+    'gcc-libs'
+    'glibc'
     'hicolor-icon-theme'
     'icu'
     'libmediainfo'
@@ -46,7 +48,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
         '010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch'
         '020-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-fix-cmake-dependencies-detection.patch')
-sha256sums=('cd811c0ae655eafbc4c8784fb0f0b5c6070adc1112761d171329f2c4fb0ae180'
+sha256sums=('b18d03e7976c7452373e6c49c2ca1f4010ac88cebafc03a4112e2cb29e15d46d'
             'SKIP'
             'a88c8cd94606427b9ab0bdbbf059e905554616a2b18981e4fb4c1c2cadc73d65'
             '62e79d30acafdc13855851e64c4419d8ee4a0b213089ea352882b49413e549f4'
@@ -58,9 +60,9 @@ prepare() {
     #git -C MEGAsync -c protocol.file.allow='always' submodule update
     
     # https://github.com/meganz/MEGAsync/issues/1010
-    # https://github.com/meganz/MEGAsync/blob/v5.9.0.3_OSX/src/MEGASync/control/Version.h#L20-L21
+    # https://github.com/meganz/MEGAsync/blob/v5.10.1.0_OSX/src/MEGASync/control/Version.h#L20-L21
     git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout 7b9051370b97cb15182fb6675a4f0c70b6153153
+    git -C meganz-sdk checkout b53514e72d569be8993cbe4b2c991da0ded08b78
     rm -r MEGAsync/src/MEGASync/mega
     ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
@@ -77,6 +79,7 @@ build() {
         -DCMAKE_MODULE_PATH:PATH="${srcdir}/MEGAsync/src/MEGASync/mega/cmake/modules/packages" \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -DENABLE_DESIGN_TOKENS_IMPORTER:BOOL='OFF' \
+        -DENABLE_DESKTOP_APP_TESTS:BOOL='OFF' \
         -Wno-dev
     cmake --build build --target MEGAsync
 }
