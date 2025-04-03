@@ -1,4 +1,4 @@
-pkgbase = web-blocker-git
+pkgbase = web-blocker
 	pkgdesc = A tool to block unwanted websites using iptables
 	pkgver = r20.1f5bd0e
 	pkgrel = 1
