@@ -1,7 +1,7 @@
 pkgbase = python-textcase-git
 	pkgdesc = Feature-rich Python text case conversion library (built from latest git commit)
 	pkgver = 0.2.1.r17.g35372b0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zobweyt/textcase
 	arch = any
 	license = GPL-3.0-or-later
