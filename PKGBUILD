@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 makedepends=('help2man')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}::${_urlraw}/README.md"
-        "CHANGELOG-${pkgver}::${_urlraw}/CHANGELOG.md")
+        "README-${pkgver}.md::${_urlraw}/README.md"
+        "CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[0]}-musl.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[1]}-musl.tar.gz")
 sha256sums=('c343db79b3fcfe53edf567483cd2f47c63c104ccc6fa6c3dfbab1c8bc2c251ca'
@@ -40,10 +40,10 @@ package() {
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 "CHANGELOG-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 
 	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
 }
