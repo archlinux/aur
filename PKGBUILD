@@ -17,12 +17,12 @@ source=("https://github.com/sarnold/gitchangelog/releases/download/${pkgver}/${_
 sha256sums=('08c863fd91447ab58e64e50e787ee7f0f3d2f2184369fe4f7ae3d8fda8ce1632')
 
 build() {
-    cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/${_pkgname}-${pkgver}
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/${_pkgname}-${pkgver}
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
