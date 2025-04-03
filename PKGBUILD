@@ -1,6 +1,6 @@
 # Maintainer: bziemons <ben@rs485.network>
 pkgname=chr-editor-git
-pkgver=r932.9c3c094
+pkgver=r953.ff621e4
 pkgrel=1
 pkgdesc="Retro-style terminal-based text editor with desktop-like shortcuts utilizing Tui Widgets and integration with KDE's syntax highlighting engine."
 arch=("x86_64")
@@ -16,6 +16,7 @@ sha512sums=('SKIP')
 # if you want to build chr-editor without syntax highlighting, set CHR_NO_SYNTAX_HIGHLIGHTING to anything
 if [[ "${CHR_NO_SYNTAX_HIGHLIGHTING:+1}" != "1" ]]; then
     depends=("${depends[@]}" 'syntax-highlighting5')
+    makedepends=("${makedepends[@]}" 'cmake')
     CHR_EXTRA_MESON_ARGS="${CHR_EXTRA_MESON_ARGS:-} -D syntax_highlighting=true"
 fi
 
