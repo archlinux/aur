@@ -3,9 +3,9 @@
 pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.10.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
 depends=(

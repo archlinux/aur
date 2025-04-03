@@ -1,10 +1,11 @@
 pkgbase = v2rayn
 	pkgdesc = A GUI client supporting Xray core, sing-box core and other cores
 	pkgver = 7.10.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/2dust/v2rayN
 	install = v2rayn.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = dotnet-sdk-8.0
 	makedepends = git
