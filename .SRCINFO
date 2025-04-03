@@ -1,7 +1,7 @@
 pkgbase = audirvana-studio
 	pkgdesc = Audirvana Studio audio player
 	pkgver = 2.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audirvana.com/
 	install = audirvana-studio.install
 	arch = x86_64

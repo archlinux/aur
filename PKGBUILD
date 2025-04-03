@@ -2,7 +2,7 @@
 
 pkgname=audirvana-studio
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Audirvana Studio audio player"
 arch=('x86_64')
 url="https://audirvana.com/"
@@ -18,6 +18,7 @@ bsdtar xf data.tar.gz -C "$pkgdir"
 install -Dm644 "audirvanaStudio.service" "$pkgdir/usr/lib/systemd/user/audirvanaStudio.service"
 install -Dm644 "$pkgdir/opt/audirvana/studio/share/CREDITS" "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
 install -Dm644 "$pkgdir/opt/audirvana/studio/share/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+chmod 4755 "$pkgdir/opt/audirvana/studio/smb_mount_helper"
 rm -rf "$pkgdir/opt/audirvana/studio/share/etc"
 rm -f "$pkgdir/opt/audirvana/studio/share/CREDITS"
 rm -f "$pkgdir/opt/audirvana/studio/share/LICENSE"
