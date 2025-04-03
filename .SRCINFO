@@ -1,19 +1,18 @@
 pkgbase = megatools
 	pkgdesc = CLI for MEGA
-	pkgver = 1.11.3.20250203
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://xff.cz/megatools
 	arch = x86_64
 	license = GPL2
 	makedepends = asciidoc
 	makedepends = docbook2x
+	makedepends = git
 	makedepends = meson
 	depends = curl
 	depends = glib2
-	source = https://xff.cz/megatools/builds/megatools-1.11.3.20250203.tar.gz
-	source = https://xff.cz/megatools/builds/megatools-1.11.3.20250203.tar.gz.asc
+	source = git+https://xff.cz/git/megatools?signed#tag=1.11.3
 	validpgpkeys = EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
-	sha256sums = 37a426ecd360220c9d6c1389c19a9e8f3e07077a9d996e3fd9f756657c1df0a9
-	sha256sums = SKIP
+	sha256sums = de1722ece8a2a4f96f8ce78698b962a8ec3645de98ea4a1ab442c7e5c8258cdd
 
 pkgname = megatools
