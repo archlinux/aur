@@ -1,3 +1,7 @@
+##  forticlient-vpn - 7.4.3.1736 - 2025-04-02
++ forticlient-vpn - 7.4.3.1736 - `release 1`
+  + fixed filestore url
+
 ##  forticlient-vpn - 7.4.0.1636 - 2025-01-08
 * forticlient-vpn - 7.4.0.1636 - `release 3`
   + added net-tools as a dependency
