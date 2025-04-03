@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=textcompare
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A simple desktop app to compare old and new text"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
 )
 makedepends=('meson')
 source=("TextCompare-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('502096d0cfc0c728377e1e207a7c3fe8d4e97d28c79bba23d40480028c748719')
+sha256sums=('17e2c318f84d08123142477f6c8f72e9e9163664abcd74d95c368768ecb7338e')
 
 build() {
   arch-meson "TextCompare-$pkgver" build
