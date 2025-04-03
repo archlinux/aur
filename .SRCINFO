@@ -1,6 +1,6 @@
 pkgbase = squawk-cli
 	pkgdesc = Linter for PostgreSQL, focused on migrations
-	pkgver = 1.5.5
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://squawkhq.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = squawk-cli
 	makedepends = jq
 	depends = libpg_query>=16
 	options = !lto
-	source = https://github.com/sbdchd/squawk/archive/refs/tags/v1.5.5.tar.gz
+	source = https://github.com/sbdchd/squawk/archive/refs/tags/v1.6.0.tar.gz
 	source = dynamic-pg_query-linking.patch
-	sha256sums = cdad88b212044c9e8d739d1cabe5dcc65e0ca8e76dd8f6fb89c91152c55b8e6a
+	sha256sums = e6f0041fc288f1df360c57ef8442784aa3542f10f6b0d67d524e9f593f6565f2
 	sha256sums = SKIP
 
 pkgname = squawk-cli
