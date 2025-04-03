@@ -3,7 +3,7 @@
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
 pkgver=3.0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -25,6 +25,7 @@ depends=(
 	'mingw-w64-libraw'
 	'mingw-w64-libheif'
 	'mingw-w64-ptex'
+	'mingw-w64-openvdb'
 )
 makedepends=('mingw-w64-cmake' 'mingw-w64-robin-map' 'mingw-w64-boost' 'ninja')
 #checkdepends=('python')
