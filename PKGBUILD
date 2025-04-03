@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='gosmee-bin'
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc='gosmee - A webhook and https://smee.io forwarder'
 url='https://github.com/chmouel/gosmee'
@@ -11,11 +11,11 @@ license=('Apache 2.0')
 provides=('gosmee')
 conflicts=('gosmee')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/v0.23.1/gosmee_0.23.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('65954210a618ca6cbc16ceae935c23058338a04f752800d2132d63d4c72b4e2b')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/v0.23.2/gosmee_0.23.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('7515454bec5a19e127aab6e31b925d25eb158c1d23f577b7b1e4b951b6af75fd')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/v0.23.1/gosmee_0.23.1_linux_x86_64.tar.gz")
-sha256sums_x86_64=('5face254437a0bb8a4af629bf79d973a781abcdd1ad29393bb2a640bc40e934a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/v0.23.2/gosmee_0.23.2_linux_x86_64.tar.gz")
+sha256sums_x86_64=('7d89d7ec6d846215a1300d406a05479183ec50b9afc8cbcda6ca622081669293')
 
 package() {
   # bin
