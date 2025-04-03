@@ -2,18 +2,18 @@
 
 pkgname=kf6-servicemenus-flacconvert
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE service menus for flac file converting'
 arch=('any')
-url='https://github.com/marco-mania/kf6-servicemenus-flacconvert'
+url='https://invent.kde.org/marcon/kf6-servicemenus-flacconvert.git/'
 license=('GPL')
 depends=('dolphin' 'kdialog' 'flac' 'lame' 'opus-tools')
 conflicts=("kde-servicemenus-flacconvert" "kf5-servicemenus-flacconvert")
 replaces=("kde-servicemenus-flacconvert" "kf5-servicemenus-flacconvert")
 
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${url}/-/archive/v2/${pkgname}-v${pkgver}.tar.gz")
 
-sha256sums=('05f78d02f171773f4b0c97cda1cf051700194835cb85328b0ffcec4e0d48db54')
+sha256sums=('5ef65ff560e08ff3fd90718767869e5d08c5a1428730d6341fb2ab7d356effbc')
 
 package() {
     cd "${srcdir}"
