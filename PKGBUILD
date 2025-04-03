@@ -1,6 +1,6 @@
 # Maintainer: Feydreva <feydreva.aur at paradize dot io>
 pkgname=winamax-bin
-pkgver=2.7.2
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="Winamax Poker"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('unknown')
 depends=(libxtst nss mesa alsa-lib mesa)
 optdepends=(libappindicator-gtk3)
 source=("https://dl.winamax.fr/client/electron/linux/all/winamax-${pkgver}.deb")
-sha256sums=('569db464b8a2931fe4a2284a33a59c2d340a7088b9ed9261e7f8e7787882a000')
+sha256sums=('7fb23aff992ba9101c354c1b262629c0f31ab7465735c3a12d98e6e91bb1540c')
 
 package() {
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
