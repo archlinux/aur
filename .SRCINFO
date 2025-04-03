@@ -1,6 +1,6 @@
 pkgbase = python-g4f
 	pkgdesc = The official gpt4free repository | various collection of powerful language models
-	pkgver = 0.4.9.9
+	pkgver = 0.5.0.2
 	pkgrel = 1
 	url = https://github.com/xtekky/gpt4free
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = python-g4f
 	depends = python-plyer
 	depends = python-cryptography
 	depends = python-nodriver
-	source = https://files.pythonhosted.org/packages/source/g/g4f/g4f-0.4.9.9.tar.gz
-	sha256sums = 8f15106d17ea27f2a46b14c91c100f860ef7d34a29bd15494bcb7704d9e766aa
+	source = https://files.pythonhosted.org/packages/source/g/g4f/g4f-0.5.0.2.tar.gz
+	sha256sums = e741165032cc71153e7befc98d693cfd6db9ae723d77e036839fd8726ca179f1
 
 pkgname = python-g4f
