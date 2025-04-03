@@ -1,26 +1,24 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Alice Vega <aalicevegaa at proton mail dot com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Alexej Magura <agm2819*gmail*com>
 # Contributor: libernux <dutchman55l@gmx.com>
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=wmcore
-pkgver=0.0.2
-pkgrel=12
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="A windowmaker dockapp which shows the usage of each core in the system"
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/362"
-url="http://web.archive.org/web/20121114121553/http://dockapps.windowmaker.org/file.php/id/362"
+url="https://www.dockapps.net/wmcore"
 license=('GPL')
 depends=('libxpm')
-#source=("http://dockapps.windowmaker.org/download.php/id/917/${pkgname}-${pkgver}.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz" "list.patch")
-md5sums=('26899aba55f84e649178ab8ab18f331e'
-         'ce22a4016c93b0a1ee211e997f12a4e9')
+source=("https://www.dockapps.net/download/${pkgname}-${pkgver}.tar.xz")
+md5sums=('77c765a11844f1f60f10f549653b88d4')
 
 prepare() {
     cd $pkgname-$pkgver
-    make clean
-    patch -Np2 -b -z .orig <../list.patch
+    ./configure
 }
 
 build() {
