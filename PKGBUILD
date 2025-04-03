@@ -2,7 +2,7 @@
 # Maintainer: Xuanwo <github at xuanwo dot io>
 
 pkgname=tana
-pkgver=1.0.24
+pkgver=1.0.26
 pkgrel=1
 pkgdesc="The Everything OS. The all-in-one workspace"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=(
 	"https://github.com/tanainc/tana-desktop-releases/releases/download/v${pkgver}/Tana-linux-x64-${pkgver}.zip"
 	"tana.desktop"
 	"tana.png")
-sha512sums_x86_64=('236465e443d6514717bc5b6aaaff7bb89bc43017809218e4aa72bf1dd5072d45b28dc7e6f41faf0f92be997953ffb8e500d685a0c3b9af216090975e261f2ddc'
+sha512sums_x86_64=('2e5a198f87771a9b9ec45bcf1183e5a1ff4d96391937ecf3e13506ce4cb39382e1145d089a6cd07299fb2eca917d97a6b5f193df9df9892f145c802821f19193'
                    'aba951628007b1c1fb004732e78295689b4d95d189b935f428a6195197a665776057a71358437fcb89af415bc39b2a8d332ab75569e0e5cc1ce6b5b0c4f95107'
                    'fd59c24253b0b7981524f50f8e3882aed59f4d3d9c1e8b99067cb706de5d7224a9f13407b1af1a90c91138cbe49484c553243793d7832f9d1ed3d78062a4d8e1')
 
