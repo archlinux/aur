@@ -1,13 +1,14 @@
 pkgbase = can-utils
 	pkgdesc = Linux-CAN / SocketCAN user space applications
 	pkgver = 2025.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-can/can-utils
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL2
+	arch = riscv64
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
