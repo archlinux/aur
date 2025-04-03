@@ -1,0 +1,4 @@
+[aurvote-utils]
+source = "git"
+git = "https://github.com/jadenPete/aurvote-utils.git"
+prefix = "v"
