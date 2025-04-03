@@ -1,6 +1,6 @@
 pkgbase = desktop-wakatime-bin
 	pkgdesc = A system tray app for automatic time tracking and metrics generated from your Figma, Postman, etc. usage.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.1.2
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://wakatime.com/windows
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = desktop-wakatime-bin
 	license = BSD-3-Clause
 	makedepends = fuse2
 	depends = electron32
-	provides = desktop-wakatime=2.1.2
+	provides = desktop-wakatime=2.1.4
 	conflicts = desktop-wakatime
-	source = LICENSE-2.1.2::https://raw.githubusercontent.com/wakatime/desktop-wakatime/v2.1.2/LICENSE
+	source = LICENSE-2.1.4::https://raw.githubusercontent.com/wakatime/desktop-wakatime/v2.1.4/LICENSE
 	source = desktop-wakatime.sh
 	sha256sums = e24e2e299e12cd69f5703c98bc70bde26642b4be896f36bc1e4ca00bb497e399
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = desktop-wakatime-2.1.2-aarch64.AppImage::https://github.com/wakatime/desktop-wakatime/releases/download/v2.1.2/wakatime-linux-arm64.AppImage
-	sha256sums_aarch64 = d6c5df873d61e83a8f88bfd8b13097b3c414700d3c6e81989c12e6c9b74d487d
-	source_x86_64 = desktop-wakatime-2.1.2-x86_64.AppImage::https://github.com/wakatime/desktop-wakatime/releases/download/v2.1.2/wakatime-linux-x86_64.AppImage
-	sha256sums_x86_64 = 94df5d2f266da0398f31abe3f7ed97e33f868e6f8e920165d6a05838336db712
+	source_aarch64 = desktop-wakatime-2.1.4-aarch64.AppImage::https://github.com/wakatime/desktop-wakatime/releases/download/v2.1.4/wakatime-linux-arm64.AppImage
+	sha256sums_aarch64 = 20fe05290d5d28f9b08a3ba09589236e8dad59ecca9b96f6e6e288bba722464f
+	source_x86_64 = desktop-wakatime-2.1.4-x86_64.AppImage::https://github.com/wakatime/desktop-wakatime/releases/download/v2.1.4/wakatime-linux-x86_64.AppImage
+	sha256sums_x86_64 = 4eddef186ebfa26e7767effe4817a2dbe608d7d9eaf5c8c93c3370ec5ea689ca
 
 pkgname = desktop-wakatime-bin

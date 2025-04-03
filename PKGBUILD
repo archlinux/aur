@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=wakatime
 pkgname="desktop-${_appname}-bin"
-pkgver=2.1.2
+pkgver=2.1.4
 _electronversion=32
 pkgrel=1
 pkgdesc="A system tray app for automatic time tracking and metrics generated from your Figma, Postman, etc. usage.(Prebuilt version.Use system-wide electron)"
@@ -28,17 +28,17 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/wakatime-linux-x86_64.AppImage")
 sha256sums=('e24e2e299e12cd69f5703c98bc70bde26642b4be896f36bc1e4ca00bb497e399'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d6c5df873d61e83a8f88bfd8b13097b3c414700d3c6e81989c12e6c9b74d487d')
-sha256sums_x86_64=('94df5d2f266da0398f31abe3f7ed97e33f868e6f8e920165d6a05838336db712')
+sha256sums_aarch64=('20fe05290d5d28f9b08a3ba09589236e8dad59ecca9b96f6e6e288bba722464f')
+sha256sums_x86_64=('4eddef186ebfa26e7767effe4817a2dbe608d7d9eaf5c8c93c3370ec5ea689ca')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
