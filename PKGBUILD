@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-shadertools
-_qtver=6.8.2
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtshadertools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d1d5f90e8885fc70d63ac55a4ce4d9a2688562033a000bc4aff9320f5f551871')
+sha256sums=('916c40281ac3dee23b163f6ca73fb5bdeee344838b9a922b6f36269642d6f4bb')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
