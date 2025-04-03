@@ -4,7 +4,7 @@
 
 _base=chatterbot
 pkgname=python-${_base}
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A machine learning, conversational dialog engine for creating chatbots."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-mathparse' 'python-dateutil' 'python-sqlalchemy' 'pyth
 checkdepends=('python-sphinx' 'python-nose' 'flake8')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('af2cfc2b01af3b5e49b03bb0c523225049e5bc6495f140f31d470a26b8418d9594b687f4156903bde2b92309a1d3644724cae1be97a729fd35904ddacdc8d6a1')
+sha512sums=('75fec142dc144ce5bdbbf5bacca06025d66b1099cf0cb69dbe98e3cfa1727f50af9f67208493b790286afc830a45068582709a91f93ff2ed197b3a66af5aedc6')
 
 build() {
   cd "ChatterBot-${pkgver}"

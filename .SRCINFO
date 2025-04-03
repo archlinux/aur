@@ -1,6 +1,6 @@
 pkgbase = python-chatterbot
 	pkgdesc = A machine learning, conversational dialog engine for creating chatbots.
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/gunthercox/chatterbot
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-chatterbot
 	depends = python-pymongo
 	depends = python-pint
 	depends = python-chatterbot-corpus-git
-	source = python-chatterbot-1.2.4.tar.gz::https://github.com/gunthercox/chatterbot/archive/refs/tags/1.2.4.tar.gz
-	sha512sums = af2cfc2b01af3b5e49b03bb0c523225049e5bc6495f140f31d470a26b8418d9594b687f4156903bde2b92309a1d3644724cae1be97a729fd35904ddacdc8d6a1
+	source = python-chatterbot-1.2.5.tar.gz::https://github.com/gunthercox/chatterbot/archive/refs/tags/1.2.5.tar.gz
+	sha512sums = 75fec142dc144ce5bdbbf5bacca06025d66b1099cf0cb69dbe98e3cfa1727f50af9f67208493b790286afc830a45068582709a91f93ff2ed197b3a66af5aedc6
 
 pkgname = python-chatterbot
