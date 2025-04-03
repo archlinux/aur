@@ -1,0 +1,11 @@
+pkgbase = sentry-wizard
+	pkgdesc = Sentry Project Setup Wizard
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/getsentry/sentry-wizard
+	arch = x86_64
+	license = MIT
+	source = https://github.com/getsentry/sentry-wizard/releases/download/v4.6.0/sentry-wizard-linux-x64
+	sha256sums = 2eca4e2471fb8534063f0e226047b374335da2495d5e6fbb6887071ba9ae8837
+
+pkgname = sentry-wizard
