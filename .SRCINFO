@@ -1,6 +1,6 @@
 pkgbase = android-x86-qt6-tools
 	pkgdesc = A cross-platform application and UI framework (tools, android)
-	pkgver = 6.8.2
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = android-x86-qt6-tools
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qttools-everywhere-src-6.8.2.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qttools-everywhere-src-6.9.0.tar.xz
 	source = 0001-Enable-only-SQL-plugins-which-are-known-to-work.patch
-	sha256sums = 326381b7d43f07913612f291abc298ae79bd95382e2233abce982cff2b53d2c0
-	sha256sums = d6bdb507b7aae7364ca6384cf454ca6d6b2b07bb581046b9aaab2fa7eef5f277
+	sha256sums = fa645589cc3f939022401a926825972a44277dead8ec8607d9f2662e6529c9a4
+	sha256sums = 366eb72473986f07203aeddd457ef2821756cdfc90e0d35752d617098bea6191
 
 pkgname = android-x86-qt6-tools
