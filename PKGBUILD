@@ -1,6 +1,6 @@
 pkgname=ttf-fluent-emoji
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="fluent-emoji by Microsoft"
 arch=('any')
 url="https://github.com/tetunori/fluent-emoji-webfont"
