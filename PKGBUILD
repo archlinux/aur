@@ -2,7 +2,7 @@
 
 pkgname=aurx
 pkgver=20250403
-pkgrel=8
+pkgrel=9
 pkgdesc="An AUR helper written in C."
 arch=('x86_64')
 url="https://github.com/carlyle-felix/aurx"
@@ -17,10 +17,10 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 build() {
 	cd "${srcdir}/${pkgname}"
-        make DESTDIR="${pkgdir}"
+        make
 }
 
 package() {
         cd "${srcdir}/${pkgname}"
-        make DESTDIR="${pkgdir}" install
+        make DESTDIR="$pkgdir" install
 }
