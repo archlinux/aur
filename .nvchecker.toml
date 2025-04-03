@@ -1,0 +1,4 @@
+[archlinux-themes-sddm]
+source = "git"
+git = "https://github.com/Guidobelix/archlinux-themes-sddm.git"
+prefix = "v"
