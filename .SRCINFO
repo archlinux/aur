@@ -1,6 +1,6 @@
 pkgbase = cursor-bin-patched
 	pkgdesc = Cursor App - AI-first coding environment, patched for custom flag support
-	pkgver = 0.48.6
+	pkgver = 0.48.7
 	pkgrel = 1
 	url = https://www.cursor.com/
 	install = cursor.install
@@ -8,9 +8,9 @@ pkgbase = cursor-bin-patched
 	license = custom:Proprietary
 	provides = cursor-bin
 	conflicts = cursor-bin
-	noextract = Cursor-0.48.6-x86_64.AppImage
+	noextract = Cursor-0.48.7-x86_64.AppImage
 	options = !strip
-	source_x86_64 = https://downloads.cursor.com/production/7da827d66e9b56a846349698c70129a436421245/linux/x64/Cursor-0.48.6-x86_64.AppImage
-	sha512sums_x86_64 = 76051dd954a6998dd8681b543667d27103137a71b97fbb074e5513138ea3e50d7b2686df3ee90e8e0ec08840288f9b4c2817a2d2fb92b73ed0309a0ba2398c6f
+	source_x86_64 = https://downloads.cursor.com/production/66290080aae40d23364ba2371832bda0933a3641/linux/x64/Cursor-0.48.7-x86_64.AppImage
+	sha512sums_x86_64 = bb621792695e0850f205060e3b76dea715e5afaed389762a192c4391de990d66f9ff690c916146364edc78bcdefa645c6b8eb02d02f072708f5cbd15a5097e04
 
 pkgname = cursor-bin-patched
