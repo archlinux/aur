@@ -4,7 +4,7 @@
 
 pkgname=perl-crypt-urandom
 _cpanname=Crypt-URandom
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 pkgdesc="Provide non blocking randomness"
 arch=('any')
@@ -14,8 +14,8 @@ depends=('perl')
 makedepends=('perl-test-pod')
 url="https://metacpan.org/release/$_cpanname"
 source=("http://search.cpan.org/CPAN/authors/id/D/DD/DDICK/$_cpanname-$pkgver.tar.gz")
-md5sums=('56f7d4e3af42fa683b4241adc03e349c')
-sha512sums=('f6978ae8fff4c56bfa2941d962f3c1c81965c93db450d49224c34b6809048a37b001c9eebbebd697908ce5d7bd85d793d541cf2bd73e59da59ece3f292fd1fc4')
+md5sums=('011113679de05d1c2bea37fe92f60278')
+sha512sums=('8cc54711c8c260926ce4d6b777a1e797699d09a7425df26afde4427d2a5c63902391d9fdf9ad488555849a242fac23a8d4af16867da982f96384cd70ccb14898')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
