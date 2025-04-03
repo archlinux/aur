@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.4.r2608.g657d1c99db
+pkgver=2.9.4.r2802.g7b7234e19b
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=($CARCH)
@@ -22,6 +22,7 @@ depends=(
   gtk3
   harfbuzz
   libepoxy
+  libgpiod
   librsvg
   libtirpc
   libusb
@@ -45,17 +46,20 @@ depends=(
   python-opengl
   python-numpy
   python-matplotlib
-  python-poppler-qt5
+  #   python-poppler-qt5
   #   python-psycopg
+  python-pillow
   python-pyqt5
   python-pyserial
   python-pyzmq
   python-xlib
   #   python-validate-pyproject
+  readline
   tk
   tcl
   zlib
   # AUR
+  python-yapps2
   #   gtksourceview2
   #   python-pyodbc
   # python-espeak
@@ -65,12 +69,13 @@ makedepends=(
   asciidoc
   bc
   boost
+  dblatex
   gettext
   glu
   git
   libeatmydata
-  libgpiod
   libxaw
+  libxslt
   intltool
   openbsd-netcat
   procps-ng
@@ -78,11 +83,13 @@ makedepends=(
   python-pillow
   python-sphinx
   man-db
+  texlive-bin
+  texlive-binextra
   #AUR
   bwidget
   #   tclx
   linkchecker
-  python-yapps2
+  termcap
 )
 checkdepends=()
 provides=('linuxcnc')
@@ -115,16 +122,6 @@ prepare() {
     -iname update_ini | xargs perl -p -i -e "s/python/python3/"
   patch -Np2 -i "${srcdir}/libtirpc.patch"
   sed -i 's|/usr/local/etc/emc2/configs|/etc/emc2/configs|g' Makefile.inc.in
-  #   sed -i 's|libgpiod <|libgpiod >|g' configure.ac
-  #   sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile.orig
-  #   ./autogen.sh
-  #   ./configure --prefix=/usr \
-  #    --enable-non-distributable=yes \
-  #    --with-realtime=uspace \
-  #    --without-libmodbus \
-  #    --with-python=/usr/bin/python3 \
-  #    --disable-gtk2
-  #
   sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile
 
   autoreconf -i
@@ -139,13 +136,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/src"
-  #   make
+  make
   eatmydata make -O -j$((1 + $(nproc))) default pycheck V=1
   # Note that the package build covers html docs
   eatmydata make -O -j$((1 + $(nproc))) manpages V=1
   #   eatmydata make -O -j$((1+$(nproc))) translateddocs V=1
   eatmydata make -O -j$((1 + $(nproc))) default pycheck V=1
-
 }
 
 # check() {
