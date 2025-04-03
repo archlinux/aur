@@ -1,0 +1,15 @@
+pkgbase = hyprgrass-meta
+	pkgdesc = Meta package to install dependencies and enable Hyprgrass for Hyprland
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/horriblename/hyprgrass
+	arch = any
+	license = custom
+	makedepends = meson
+	makedepends = ninja
+	depends = hyprland
+	depends = glm
+	provides = hyprgrass-meta
+	conflicts = hyprgrass-meta
+
+pkgname = hyprgrass-meta
