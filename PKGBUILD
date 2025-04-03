@@ -1,5 +1,5 @@
 pkgname=ttf-fluent-emoji
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="fluent-emoji by Microsoft"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('fontconfig')
 source=(
     "https://github.com/tetunori/fluent-emoji-webfont/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('3522cdc43ebf8780a7b46312cc201c98287e4d999ebaa2c374fc19f68ed02c30')
+sha256sums=('8eff57d0f6034440bebe79784fca3de13233bee4edab0fbe661614a0b9d63f11')
 
 package() {
     cd $srcdir/fluent-emoji-webfont-$pkgver
