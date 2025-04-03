@@ -1,6 +1,6 @@
 pkgbase = shef
 	pkgdesc = directory and filename linter
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/eduardoagarcia/shef
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = shef
 	depends = glibc
 	provides = shef
 	conflicts = shef-git
-	source = shef-0.2.7.tar.gz::https://github.com/eduardoagarcia/shef/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = bb136ede0b42f35486279a095a1d94beeb927b5cb1b26b8c8eccc91b8e72c9ba
+	source = shef-0.2.8.tar.gz::https://github.com/eduardoagarcia/shef/archive/refs/tags/v0.2.8.tar.gz
+	sha256sums = 34159e19f416053f04f69362380ce526a0e3917c0b037cd76f80264d31ceefdd
 
 pkgname = shef
