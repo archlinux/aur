@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xeve-git
-pkgver=0.5.0.r7.g0e655a8
+pkgver=0.5.1.r24.g7b21466
 pkgrel=1
 pkgdesc='MPEG-5 EVC (Essential Video Coding) encoder (git version)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/mpeg5/xeve.git'
         '010-xeve-disable-werror.patch'
         '020-xeve-fix-pkg-config.patch')
 sha256sums=('SKIP'
-            '8c4b607f34a5d39e824f86d00ab101849595cb49a2f67eed131487d658ec7206'
+            '6d5fb6f1109a3c65a80574ea3d3be91aa5fd73f22141ecae3862fa09aba0ba08'
             '68ae77132ec2b3dd8de641d16f3d7cc0de819ddb116484809445666b4d215187')
 
 prepare() {
