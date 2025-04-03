@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
-pkgver=4.1.0
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go."
 arch=("any")
@@ -10,7 +10,7 @@ makedepends=("go>=1.24.1")
 conflicts=("qp-bin" "qp-git")
 replaces=("yaylog' 'yaylog-bin' 'yaylog-git")
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
-sha256sums=('8d7bc92dd83b258a179ef9d977b8904545180d233c1760281482656140551dc7')
+sha256sums=('96abea734f284d714c7c9dd569b0c32b47ac95acbe4a5ad265b897b6d9987928')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
@@ -22,4 +22,5 @@ package() {
   cd "$srcdir/$pkgname-v$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+  install -Dm644 "NEWS" "$pkgdir/usr/share/doc/${pkgname}/NEWS"
 }
