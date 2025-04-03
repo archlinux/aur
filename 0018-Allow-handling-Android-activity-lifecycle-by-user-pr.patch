@@ -1,7 +1,7 @@
-From e23994459a5ad11c367465a3c287d4e409963efe Mon Sep 17 00:00:00 2001
+From 777ee23ce9235010234bd150b7ed410e4dd56268 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 16 Jan 2025 21:21:50 +0100
-Subject: [PATCH 20/20] Allow handling Android activity lifecycle by user
+Subject: [PATCH 18/19] Allow handling Android activity lifecycle by user
  provided methods
 
 Change-Id: I52107fadaea431c2932c1a1948ca7d2c889abd6d
@@ -10,7 +10,7 @@ Change-Id: I52107fadaea431c2932c1a1948ca7d2c889abd6d
  1 file changed, 20 insertions(+), 5 deletions(-)
 
 diff --git a/src/android/jar/src/org/qtproject/qt/android/QtActivityBase.java b/src/android/jar/src/org/qtproject/qt/android/QtActivityBase.java
-index 79c67d87823..cac5fb7200b 100644
+index 291d91bb8bd..6be9ce5c65d 100644
 --- a/src/android/jar/src/org/qtproject/qt/android/QtActivityBase.java
 +++ b/src/android/jar/src/org/qtproject/qt/android/QtActivityBase.java
 @@ -73,7 +73,7 @@ public class QtActivityBase extends Activity
@@ -43,7 +43,7 @@ index 79c67d87823..cac5fb7200b 100644
              // We don't yet have a reliable way to keep the app
              // running properly in case of an Activity only restart,
              // so for now restart the whole app.
-@@ -168,16 +173,26 @@ public class QtActivityBase extends Activity
+@@ -156,16 +161,26 @@ public class QtActivityBase extends Activity
          QtNative.setApplicationState(QtNative.ApplicationState.ApplicationSuspended);
      }
  
@@ -74,5 +74,5 @@ index 79c67d87823..cac5fb7200b 100644
      }
  
 -- 
-2.48.1
+2.49.0
 
