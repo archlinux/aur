@@ -2,7 +2,7 @@
 
 pkgname=qt-mpv-bg-wlr
 pkgver=0.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A mpv based video wallpaper program for wlroots based wayland compositors. (Video Dynamic Wallpaper for Linux)."
 arch=('x86_64')
 url="https://github.com/lisuke/$pkgname"

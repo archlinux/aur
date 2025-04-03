@@ -1,7 +1,7 @@
 pkgbase = qt-mpv-bg-wlr
 	pkgdesc = A mpv based video wallpaper program for wlroots based wayland compositors. (Video Dynamic Wallpaper for Linux).
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lisuke/qt-mpv-bg-wlr
 	arch = x86_64
 	license = GPL3
