@@ -1,0 +1,4 @@
+[sentry-wizard]
+source = "git"
+git = "https://github.com/getsentry/sentry-wizard.git"
+prefix = "v"
