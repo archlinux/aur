@@ -1,13 +1,19 @@
 pkgbase = nixfmt
-	pkgdesc = A formatter for Nix code
+	pkgdesc = An opinionated formatter for Nix
 	pkgver = 0.6.0
-	pkgrel = 4
-	url = https://github.com/serokell/nixfmt
+	pkgrel = 5
+	url = https://github.com/NixOS/nixfmt
 	arch = x86_64
-	license = MPL2
-	makedepends = cabal-install
-	depends = ghc
-	source = nixfmt-0.6.0.tar.gz::https://github.com/serokell/nixfmt/archive/v0.6.0.tar.gz
+	license = MPL-2.0
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-cmdargs
+	depends = haskell-megaparsec
+	depends = haskell-parser-combinators
+	depends = haskell-safe-exceptions
+	depends = haskell-scientific
+	source = https://github.com/NixOS/nixfmt/archive/v0.6.0.tar.gz
 	b2sums = 79abe243eec4b403a3571153f68ccbf5b3e2e342ffbe5f78318f3612ef3c073dcf5afa922276edd50a763a85463ffd617622fd2524d4fc55af7e4e8e91312325
 
 pkgname = nixfmt
