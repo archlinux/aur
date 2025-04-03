@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-connectivity
-_qtver=6.8.2
+_qtver=6.9.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtconnectivity-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e617120e084ac369fd6064f2c177de9e1c2cd9989a1f1774eea131800d52812a')
+sha256sums=('ff402f8dacb2b9f9308afcea67118ae1645ce6466f2d41a8d5c12fd2fa168598')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
