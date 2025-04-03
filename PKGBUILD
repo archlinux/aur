@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onemouse-bin
-_pkgname="One Mouse"
-pkgver=1.1.0
+_pkgname='One Mouse'
+pkgver=2.0.0
 _electronversion=30
 pkgrel=1
-pkgdesc="An intranet remote control tool.一个内网远程控制工具"
-arch=("x86_64")
+pkgdesc="An intranet remote control tool.(Prebuilt version.Use system-wide electron)一个内网远程控制工具"
+arch=('x86_64')
 url="https://github.com/Scanood/onemouse"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -14,19 +14,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/release-v${pkgver}/onemouse_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ce5f4f61e49483324f85395e06ae7d8e2433a0f39a2b2c71a154d57dc868c52'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+sha256sums=('fa48a1f23f66e786967f744ec61d579510f412aff51ed8b8a9ee28c76f5ad639'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
