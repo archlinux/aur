@@ -2,7 +2,7 @@
 
 pkgbase=magiskboot-git
 pkgname=magiskboot-git
-pkgver=28001.73.r13.g6115b52
+pkgver=28102.81.r9.g44bac7a
 pkgrel=1
 pkgdesc="Magiskboot_ndk"
 arch=($CARCH)
@@ -26,7 +26,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^Magiskboot-//g;s/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^Magiskboot-//g;s/^magisk_bins-//g;s/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
@@ -38,7 +38,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    python ./build.py --build_binary
+
+    python3 ./build.py --setup_ndk
+    python3 ./build.py --build_binary
+
 }
 
 package() {
@@ -55,4 +58,5 @@ package() {
     elif [ ${CARCH} = "riscv64" ]; then
         install -Dm755 out/riscv64/magiskboot ${pkgdir}/usr/bin/magiskboot
     fi
+
 }
