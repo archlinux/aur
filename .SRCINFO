@@ -17,8 +17,8 @@ pkgbase = soh-bin
 	source = https://gitlab.com/linuxbombay/soh/shipwright/-/archive/1.2/shipwright-1.2.tar.bz2
 	sha256sums = 867be3fc33d28aa2819dfdfdf10706b4ecdab7dc837c9295b025f5f60fddb3d2
 	source_x86_64 = shipwright-9.0.0-linux-x64.tar.xz::https://gitlab.com/linuxbombay/soh/binaries/9.0.0/-/raw/main/shipwright-linux-x64.tar.xz
-	sha256sums_x86_64 = 510c1c475b77a663905abb8130a942a2f3bd008f5aab1a85211676848705b935
+	sha256sums_x86_64 = ebbbb72af584940ff9866ce79441beafc49bb433c3e6b306d3f5c57fe3e589c1
 	source_aarch64 = shipwright-9.0.0-linux-arm64.tar.xz::https://gitlab.com/linuxbombay/soh/binaries/9.0.0/-/raw/main/shipwright-linux-arm64.tar.xz
-	sha256sums_aarch64 = 2bc4c9f97ad0061f34e1630eb044d1abea6d7701a6090d1f455ee9fe4d8068c8
+	sha256sums_aarch64 = e452a769cd930ba32fa0cb2a5c030fde6c65e1afbdf7448214ee278ceae992c6
 
 pkgname = soh-bin
