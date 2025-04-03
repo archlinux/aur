@@ -1,7 +1,7 @@
 # Maintainer: cap153 <1536989047@qq.com>
 
 pkgname=easytier-bin
-pkgver=2.1.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="由Rust和Tokio驱动，一个简单、安全、去中心化的内网穿透VPN组网方案"
 conflicts=("easytier" "easytier-git")
@@ -9,8 +9,8 @@ arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
 license=('Apache License 2.0')
 source=("easytier-example.service")
-source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v2.1.2/easytier-linux-x86_64-v2.1.2.zip")
-source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v2.0.2/easytier-linux-aarch64-v2.1.2.zip")
+source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v$pkgver/easytier-linux-x86_64-v$pkgver.zip")
+source_aarch64=("$pkgname-$pkgver-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v$pkgver/easytier-linux-aarch64-v$pkgver.zip")
 sha256sums=('SKIP')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')

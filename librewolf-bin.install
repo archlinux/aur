@@ -1,11 +1,11 @@
 post_upgrade() {
   echo ">>    创建新的服务文件 /etc/systemd/system/easytier-example.service"
-	echo ">>    也可以使用`sudo easytier-cli service install`命令来安装官方提供的服务文件"
+	echo ">>    也可以使用sudo easytier-cli service install命令来安装官方提供的服务文件"
 	echo ">>    根据需要修改 ExecStart 后面的命令行参数"
   echo ">>    查看 https://www.easytier.top/guide/network/install-as-a-systemd-service.html"
   echo ">>    获取更多的帮助信息。"
   echo ">>    Create a new service file /etc/systemd/system/easytier-example.service"
-	echo ">>    You can also use `sudo easytier-cli service install` to install the official service file"
+	echo ">>    You can also use sudo easytier-cli service install to install the official service file"
 	echo ">>    and modify the command line parameters after ExecStart as needed"
   echo ">>    Check out https://www.easytier.top/guide/network/install-as-a-systemd-service.html"
   echo ">>    for more information on this."

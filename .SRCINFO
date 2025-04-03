@@ -1,6 +1,6 @@
 pkgbase = easytier-bin
 	pkgdesc = 由Rust和Tokio驱动，一个简单、安全、去中心化的内网穿透VPN组网方案
-	pkgver = 2.1.2
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/EasyTier/EasyTier
 	install = librewolf-bin.install
@@ -12,9 +12,9 @@ pkgbase = easytier-bin
 	options = !strip
 	source = easytier-example.service
 	sha256sums = SKIP
-	source_x86_64 = easytier-bin-2.1.2-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v2.1.2/easytier-linux-x86_64-v2.1.2.zip
+	source_x86_64 = easytier-bin-2.2.4-x86_64.zip::https://github.com/EasyTier/EasyTier/releases/download/v2.2.4/easytier-linux-x86_64-v2.2.4.zip
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = easytier-bin-2.1.2-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v2.0.2/easytier-linux-aarch64-v2.1.2.zip
+	source_aarch64 = easytier-bin-2.2.4-aarch64.zip::https://github.com/EasyTier/EasyTier/releases/download/v2.2.4/easytier-linux-aarch64-v2.2.4.zip
 	sha256sums_aarch64 = SKIP
 
 pkgname = easytier-bin
