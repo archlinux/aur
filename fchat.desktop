@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=F-Chat Horizon
+StartupWMClass=horizon-electron
+Comment=A continuation of the heavily modified F-Chat Rising client.
+Exec=fchat-horizon
+Icon=fchat-horizon.png
+Categories=Internet;Network;InstantMessaging;
+Path=/usr/bin
+

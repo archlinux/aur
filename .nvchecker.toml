@@ -1,0 +1,4 @@
+[fchat-horizon]
+source = "git"
+git = "https://github.com/Fchat-Horizon/Horizon.git"
+prefix = "v"
