@@ -1,11 +1,11 @@
 pkgbase = svdtools
 	pkgdesc = svdtools is a set of tools for modifying vendor-supplied, often buggy SVD files. It can be imported as a library for use in other applications, or run directly via the included svdtools CLI utility.
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/rust-embedded/svdtools
 	arch = x86_64
 	license = MIT AND Apache-2.0
-	makedepends = cargo
+	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
 	optdepends = svd2rust: Generate Rust register maps (`struct`s) from SVD files
@@ -17,7 +17,7 @@ pkgbase = svdtools
 	replaces = svdtools-rust
 	options = !strip
 	options = !lto
-	source = svdtools-0.4.5.tar.gz::https://github.com/rust-embedded/svdtools/archive/refs/tags/v0.4.5.tar.gz
-	sha256sums = 905f68ad353726d2d38cb54eb48a2abdf00a76433a4a467347cef03dd7f3f9c4
+	source = svdtools-0.4.6.tar.gz::https://github.com/rust-embedded/svdtools/archive/refs/tags/v0.4.6.tar.gz
+	sha256sums = bd706f6137b221a2eef1c413d3e6affdf1c323663e7cc12b1397f4a608609e2d
 
 pkgname = svdtools
