@@ -1,6 +1,6 @@
 pkgbase = rockchip-mpp
 	pkgdesc = Rockchip Media Process Platform (MPP)
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/rockchip-linux/mpp/
@@ -9,7 +9,8 @@ pkgbase = rockchip-mpp
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	source = https://github.com/rockchip-linux/mpp/archive/1.0.8/rockchip-mpp-1.0.8.tar.gz
-	sha256sums = 6bdae04719ac3d5e2ba38e105f9f8649ebf5336418bed17616580311cfbfb927
+	depends = glibc
+	source = https://github.com/rockchip-linux/mpp/archive/1.0.9/rockchip-mpp-1.0.9.tar.gz
+	sha256sums = c8cc854ecdb72c09f087acaf2288d05f2173d0331720a00984ce5b1562d89afd
 
 pkgname = rockchip-mpp

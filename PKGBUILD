@@ -1,17 +1,17 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=rockchip-mpp
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 epoch=1
 pkgdesc='Rockchip Media Process Platform (MPP)'
 arch=('x86_64')
 url='https://github.com/rockchip-linux/mpp/'
 license=('Apache-2.0' 'MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake')
 source=("https://github.com/rockchip-linux/mpp/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6bdae04719ac3d5e2ba38e105f9f8649ebf5336418bed17616580311cfbfb927')
+sha256sums=('c8cc854ecdb72c09f087acaf2288d05f2173d0331720a00984ce5b1562d89afd')
 
 build() {
     cmake -B build -S "mpp-${pkgver}" \
