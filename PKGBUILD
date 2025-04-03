@@ -7,7 +7,7 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=1
+pkgrel=2
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -21,8 +21,9 @@ _scriptTailMd5sums[7.3]=8cf896344365958462902bfb340201cd
 _scriptTailMd5sums[7.4]=b9878ccca286ec7faa4d230633294853
 _scriptTailMd5sums[7.4a]=6f987a683f17b3595cc5993c1b1375ed
 _scriptTailMd5sums[8.0]=e53bd9e7beabb2eb1c6857bea61ccdde
+_scriptTailMd5sums[8.0a]=6efd0d054bdaf2ab91f1cd606cd98233
 
-# locale, key account, original name, version, (optional) replacement name
+# locale, key account, original name, latest tested version, (optional) replacement name
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
 _prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
@@ -107,6 +108,7 @@ check() {
 	# md5sum of script body should match package version unless a setup file was provided:
 	local index=${pkgver%.*}
 	[ $index = 7.4 -a ${pkgver#$index.} -gt 2 ] && index=7.4a
+	[ $index = 8.0 -a ${pkgver#$index.} -gt 2 ] && index=8.0a
 	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ "${_scriptTailMd5sums[$index]}" == $md5sum -o -n "$_SETUP_FILE" ]
 }
 
