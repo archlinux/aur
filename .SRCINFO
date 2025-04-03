@@ -1,17 +1,16 @@
 pkgbase = python-poppler-qt5
 	pkgdesc = Python binding to libpoppler-qt5
 	pkgver = 0.75.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/frescobaldi/python-poppler-qt5
 	arch = any
 	license = LGPL
 	makedepends = python-sip4
 	makedepends = sip4
 	makedepends = python-setuptools
-	depends = python-pyqt5
+	depends = python-pyqt5-sip4
 	depends = poppler-qt5
 	source = https://github.com/frescobaldi/python-poppler-qt5/archive/v0.75.0.tar.gz
 	sha256sums = 92e6bd8f4ce90ba4e3e0c2ada026b643481ba1b109d45e8fdbdaedca8416a995
 
 pkgname = python-poppler-qt5
-
