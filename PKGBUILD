@@ -2,7 +2,7 @@
 _pkgname=discord-rpc
 pkgname=$_pkgname-git
 pkgver=3.4.0.r10.g963aa9f
-pkgrel=6
+pkgrel=7
 pkgdesc="Discord Rich Presence library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/discord/discord-rpc"
@@ -16,18 +16,21 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DBUILD_SHARED_LIBS=ON \
-		-DCLANG_FORMAT_SUFFIX=ignore \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+	local options=(
+		-D BUILD_SHARED_LIBS=ON
+		-D CLANG_FORMAT_SUFFIX=ignore
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
