@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xevd-git
-pkgver=0.5.0.r0.g70e18a5
+pkgver=0.5.0.r21.gd4331b7
 pkgrel=1
 pkgdesc='MPEG-5 EVC (Essential Video Coding) decoder (git version)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/mpeg5/xevd.git'
         '010-xevd-disable-werror.patch'
         '020-xevd-fix-pkg-config.patch')
 sha256sums=('SKIP'
-            '2a7eff2690c0d4d441df97ad37fd7a0e3e0a03705665dad12201f8d8d997f191'
+            '20dd0090336f534d47734446bb24865f5fd93b66ecb05b18f985ccc9876f52a3'
             '28e46788d188dbbd27c0b47d2c4510029491f434cccfa41967b60d94def36d4a')
 
 prepare() {
