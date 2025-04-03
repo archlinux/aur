@@ -1,0 +1,18 @@
+pkgbase = youtube-transcript-fetcher-bin
+	pkgdesc = A simple Electron app to fetch and save Youtube transcripts.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Zyztem/Youtube-Transcript-Fetcher
+	arch = x86_64
+	license = MIT
+	depends = electron35
+	provides = youtube-transcript-fetcher=1.0.0
+	conflicts = youtube-transcript-fetcher
+	source = youtube-transcript-fetcher-1.0.0-x86_64.deb::https://github.com/Zyztem/Youtube-Transcript-Fetcher/releases/download/v1.0.0/transcripts_1.0.0_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/Zyztem/Youtube-Transcript-Fetcher/main/LICENSE
+	source = youtube-transcript-fetcher.sh
+	sha256sums = 2e99076db96206d25946c1d3d3811772b6a8bc37b1a3b333ab88603ee9900264
+	sha256sums = f3d628a4ec5ed150807f81ebac4504a40f30a47b16158742f57a5b1ba248cb95
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = youtube-transcript-fetcher-bin
