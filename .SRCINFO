@@ -1,20 +1,24 @@
 pkgbase = brunsli
 	pkgdesc = Lossless JPEG repacker
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/brunsli/
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
+	makedepends = git
+	makedepends = python
 	depends = gcc-libs
+	depends = glibc
 	source = git+https://github.com/google/brunsli.git#tag=v0.1
 	source = git+https://github.com/google/brotli.git
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/google/highwayhash.git
+	source = 010-brunsli-cmake4-fix.patch
+	sha256sums = 842cb1ec23a6d244e6eebd1b253ae44e0bbff57c0fbf5dc8b153b10220ec4ca2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c9b251f1d89abef7e9e22923ef1d41909f3857cc9f337d87edd96ba75f7b8464
 
 pkgname = brunsli
