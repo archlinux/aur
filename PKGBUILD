@@ -7,10 +7,10 @@
 
 pkgname="keypunch-git"
 _appname="keypunch"
-pkgver=5.1.r64.g9821b63
+pkgver=5.1.r66.g1c07b2c
 pkgrel=1
 pkgdesc='Practice your typing skills'
-url='https://github.com/bragefuglseth/keypunch'
+url='https://kkgithub.com/bragefuglseth/keypunch'
 _app_website='https://apps.gnome.org/Keypunch'
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
