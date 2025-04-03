@@ -7,7 +7,7 @@ pkgdesc='Limbo is a work-in-progress, in-process OLTP database management system
 url='https://github.com/tursodatabase/limbo'
 license=('MIT')
 arch=('x86_64')
-makedepends=(cargo mimalloc libgit2 oniguruma)
+makedepends=(cargo libgit2 mimalloc oniguruma)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
@@ -23,7 +23,7 @@ build() {
     cd "$_pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    export RUSTFLAGS='-l mimalloc -l git2 -l onig'
+    export RUSTFLAGS='-l git2 -l mimalloc -l onig'
     cargo build --frozen --release -p limbo_cli
 }
 
