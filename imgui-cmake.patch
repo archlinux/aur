@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 68a5c40..4f82b6e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,8 +110,8 @@ if(IMGUI_BUILD_WIN32_BINDING)
+ endif()
+ 
+ if(IMGUI_FREETYPE)
+-    find_package(freetype CONFIG REQUIRED)
+-    target_link_libraries(${PROJECT_NAME} PUBLIC freetype)
++    include(FindFreetype)
++    target_link_libraries(${PROJECT_NAME} PUBLIC Freetype::Freetype)
+     target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/misc/freetype/imgui_freetype.cpp)
+     target_compile_definitions(${PROJECT_NAME} PUBLIC IMGUI_ENABLE_FREETYPE)
+ endif()
+diff --git a/imgui-config.cmake.in b/imgui-config.cmake.in
+index a996b04..ad58ac1 100644
+--- a/imgui-config.cmake.in
++++ b/imgui-config.cmake.in
+@@ -23,7 +23,7 @@ if (@IMGUI_BUILD_VULKAN_BINDING@)
+ endif()
+ 
+ if (@IMGUI_FREETYPE@)
+-    find_dependency(freetype CONFIG)
++    include(FindFreetype)
+ endif()
+ 
+ if (@IMGUI_FREETYPE_LUNASVG@)

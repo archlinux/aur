@@ -1,18 +1,18 @@
 pkgbase = raytracinginvulkan-git
 	pkgdesc = Implementation of Peter Shirley's Ray Tracing In One Weekend book
-	pkgver = 7.r16.g5316859
+	pkgver = 7.r32.g92170b6
 	pkgrel = 1
 	url = https://github.com/GPSnoopy/RayTracingInVulkan
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = boost
 	makedepends = vulkan-headers
 	makedepends = stb
+	makedepends = git
 	depends = boost-libs
-	depends = glfw-x11
+	depends = glfw
 	depends = glm
-	depends = imgui=1.89.9
 	depends = tinyobjloader
 	depends = vulkan-icd-loader
 	depends = glslang
@@ -23,11 +23,19 @@ pkgbase = raytracinginvulkan-git
 	optdepends = vulkan-amdgpu-pro: 2nd best vulkan driver for AMD
 	optdepends = amdvlk: 3rd best vulkan driver for AMD
 	optdepends = vulkan-intel: Includes vulkan driver for Intel
-	provides = raytracinginvulkan=7.r16.g5316859
+	provides = raytracinginvulkan
 	conflicts = raytracinginvulkan
 	source = raytracinginvulkan::git+https://github.com/GPSnoopy/RayTracingInVulkan.git
-	source = glslang.patch
+	source = imgui-1.91.6.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.91.6.tar.gz
+	source = CMakeLists.1.91.6.txt::https://raw.githubusercontent.com/microsoft/vcpkg/16601c6e7ee15aeccac771185916cd6f6fe1ba50/ports/imgui/CMakeLists.txt
+	source = imgui-config.1.91.6.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/16601c6e7ee15aeccac771185916cd6f6fe1ba50/ports/imgui/imgui-config.cmake.in
+	source = imgui-cmake.patch
+	source = RayTracer
 	sha256sums = SKIP
-	sha256sums = 4cd8b72df0816b2d0140c0f840e8e619ea48101ad01636dfa9ff3ab0b65ce99a
+	sha256sums = c5fbc5dcab1d46064001c3b84d7a88812985cde7e0e9ced03f5677bec1ba502a
+	sha256sums = 469172229e8a2e6ddb00105c4a764fa452ab143d21edd0b30cea589bf0b75191
+	sha256sums = 2a441c1709b0ec7c0de1f403944ba5b8d8c059c02adcea9f8550bf33303eb7bb
+	sha256sums = e7706c6bd8143b9faddc3eabb16e016d4f84e605c402d459fdc5036170a4b365
+	sha256sums = 2dbf05310df36933b0263cbe5ccfe8b9ef042326797e63eb4449eabc22e5c2f5
 
 pkgname = raytracinginvulkan-git

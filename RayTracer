@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /opt/raytracinginvulkan/bin || exit 1
+exec ./RayTracer "$@"
