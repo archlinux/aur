@@ -1,7 +1,7 @@
 # Maintainer: Mathias Nedrebø <mathias.nedrebo@zivid.com>
 
 pkgname=zivid-tools
-pkgver='2.14.2+1a322f18_1'
+pkgver='2.15.0+5fcc365b_1'
 pkgrel=1
 pkgdesc='Defining the Future of 3D Machine Vision'
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=()
 
 groups=(zivid-all)
 
-source=(https://downloads.zivid.com/sdk/releases/2.14.2+1a322f18-1/u20/zivid-tools_2.14.2+1a322f18-1_amd64.deb)
-sha256sums=(23132ace0928b3359e4ed7a6a17a1c1822581254cfec1aa5ceeb87c8a2e82f34)
+source=(https://downloads.zivid.com/sdk/releases/2.15.0+5fcc365b-1/u20/zivid-tools_2.15.0+5fcc365b-1_amd64.deb)
+sha256sums=(3b8b9899b0bc9deb763c407e5b087e8583a96bd46c68a5bce18aca7a0ba7cff4)
 
 options=(!strip)
 
