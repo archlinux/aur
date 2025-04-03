@@ -11,7 +11,7 @@ pkgbase = sioyek-devel
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	depends = libmupdf=1.25.5
+	depends = libmupdf>=1.25
 	depends = qt6-speech
 	depends = qt6-declarative
 	depends = qt6-svg

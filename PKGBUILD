@@ -7,7 +7,7 @@ pkgdesc="A PDF viewer designed for reading research papers and technical books."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
 url="https://github.com/ahrm/sioyek"
 license=("GPL3")
-depends=('libmupdf=1.25.5' qt6-speech qt6-declarative qt6-svg sqlite3 zlib)
+depends=('libmupdf>=1.25' qt6-speech qt6-declarative qt6-svg sqlite3 zlib)
 optdepends=(qt6-wayland)
 makedepends=("cmake" "git")
 provides=("sioyek")
