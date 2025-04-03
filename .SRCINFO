@@ -1,6 +1,6 @@
 pkgbase = android-x86-qt6-lottie
 	pkgdesc = A family of player software for a certain json-based file format for describing 2d vector graphics animations (android)
-	pkgver = 6.8.2
+	pkgver = 6.9.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = android-x86-qt6-lottie
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtlottie-everywhere-src-6.8.2.tar.xz
-	sha256sums = 5ed43eb20d0393dd05c890fb3548deb3b82bad6b0265c12d4995940b238ebe20
+	source = https://download.qt.io/official_releases/qt/6.9/6.9.0/submodules/qtlottie-everywhere-src-6.9.0.tar.xz
+	sha256sums = d4ba1614a587a279266036b1b08ac854718458fdd39708b37afde74f0b4afabe
 
 pkgname = android-x86-qt6-lottie
