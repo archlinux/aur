@@ -4,18 +4,21 @@
 
 _pkgname=mudita-center
 pkgname="${_pkgname}"-appimage
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer."
 arch=('x86_64')
-url="https://github.com/mudita/mudita-center"
+url="https://mudita.com/products/software-apps/mudita-center/"
+_url="https://github.com/mudita/mudita-center"
 license=('GPL-3.0-or-later')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source=("${_appimage}::https://github.com/mudita/mudita-center/releases/download/${pkgver}/Mudita-Center.AppImage")
+source=("${_appimage}::${_url}/releases/download/${pkgver}/Mudita-Center.AppImage")
 noextract=("${_appimage}")
-sha512sums=('71038b3b32454f41cf1d6d397e6441eb31089545736ad4ca9ad6af913562a0f5c078cf2f920f0660e2eba0beb280009966f35ef65f731a9fe4a759e1d86c0e73')
+sha512sums=('9458e63d2c04bc53a3f4709502fd6dabc7eac69bf2251e80f1f1e43d9bd1bb2dad4b1b78c1449252ce4c3b0b8df1bab46fef5032e943002e21d6be6f0fc73695')
+conflicts=("mudita-center" "mudita-center-bin" "mudita-center-git")
+
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
