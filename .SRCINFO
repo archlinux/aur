@@ -1,6 +1,6 @@
 pkgbase = windsurf
 	pkgdesc = Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance.
-	pkgver = 1.5.9
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://codeium.com/
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = windsurf
 	provides = windsurf
 	conflicts = windsurf
 	options = !strip
-	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.5.9.deb
+	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.6.1.deb
 	source = windsurf.png::https://raw.githubusercontent.com/watzon/aur-packages/refs/heads/main/packages/windsurf/windsurf.png
 	source = windsurf-bin.sh::https://raw.githubusercontent.com/watzon/aur-packages/refs/heads/main/packages/windsurf/windsurf-bin.sh
 	sha256sums = SKIP

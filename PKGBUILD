@@ -2,7 +2,7 @@
 
 pkgname=windsurf
 _pkgname=windsurf
-pkgver=1.5.9
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Tomorrow's Editor, Today. Built to keep you in flow state with instant, invaluable AI developer assistance."
 arch=('x86_64')
@@ -77,7 +77,7 @@ sha256sums=(
 prepare() {
     mkdir -p "${srcdir}/deb_file/data"
     bsdtar -xf "${srcdir}/Windsurf-linux-x64-${pkgver}.deb" -C "${srcdir}/deb_file"
-    tar -xf "${srcdir}/deb_file/data.tar.zst" -C "${srcdir}/deb_file/data"
+    tar -xf "${srcdir}/deb_file/data.tar.xz" -C "${srcdir}/deb_file/data"
 }
 
 package() {    
