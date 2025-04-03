@@ -19,7 +19,7 @@ sha256sums=('665b2096611b960572b40ad7e943e9c6cca58da5f3885e148868578b15fbf8ef'
   '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
 install_man_pages() {
-  for manpage in "$srcdir/man/"*; do
+  for manpage in "$srcdir/coredns-$pkgver/man/"*; do
     section="${manpage##*.}"
     install -Dm644 "$manpage" "$pkgdir/usr/share/man/man${section}/$(basename "$manpage")"
   done
