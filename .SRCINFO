@@ -1,22 +1,22 @@
 pkgbase = tiddlywiki-app-bin
 	pkgdesc = A TiddlyWiki desktop application that provides a silkier desktop experience.(Prebuilt version.Use system-wide electron)一个 TiddlyWiki 桌面应用，提供更加丝滑的桌面端使用体验。
-	pkgver = 3.3.6
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://oeyoews.github.io/tiddlywiki-app/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron35
-	provides = tiddlywiki-app=3.3.6
+	provides = tiddlywiki-app=3.5.1
 	conflicts = tiddlywiki-app
 	options = !emptydirs
-	source = LICENSE-3.3.6::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v3.3.6/LICENSE
+	source = LICENSE-3.5.1::https://raw.githubusercontent.com/oeyoews/tiddlywiki-app/v3.5.1/LICENSE
 	source = tiddlywiki-app.sh
 	sha256sums = 801cd318b77f7cc43b71e5bf59b79476c94d4981025655f7d1c4f3ef4faaf162
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = tiddlywiki-app-3.3.6-aarch64.deb::https://github.com/oeyoews/tiddlywiki-app/releases/download/v3.3.6/tiddlywiki-app_3.3.6-arm64.deb
-	sha256sums_aarch64 = 1860b776f30e9c8c860746faf263c869309dd2c3997bf9f35310e251f04e84b9
-	source_x86_64 = tiddlywiki-app-3.3.6-x86_64.deb::https://github.com/oeyoews/tiddlywiki-app/releases/download/v3.3.6/tiddlywiki-app_3.3.6-amd64.deb
-	sha256sums_x86_64 = 7d4b3b83f9bf5b03b3f9e7c92ee11e20d41554f04c23897e4b6e27af0f6564ac
+	source_aarch64 = tiddlywiki-app-3.5.1-aarch64.deb::https://github.com/oeyoews/tiddlywiki-app/releases/download/v3.5.1/tiddlywiki-app_3.5.1-arm64.deb
+	sha256sums_aarch64 = 1e15fc69004e515ab517b5a08612a78cf26fe9e70e12198dd97d55f65c71a7c8
+	source_x86_64 = tiddlywiki-app-3.5.1-x86_64.deb::https://github.com/oeyoews/tiddlywiki-app/releases/download/v3.5.1/tiddlywiki-app_3.5.1-amd64.deb
+	sha256sums_x86_64 = 2205de999e4ea70c68d048c873190dbad75f4de3c431ee4a76a137a36566d2bb
 
 pkgname = tiddlywiki-app-bin
