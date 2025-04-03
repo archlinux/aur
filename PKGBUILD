@@ -3,7 +3,7 @@
 # Contributor : Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : mickael9 <mickael9 at gmail dot com>
 pkgname=wapiti
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Comprehensive web app vulnerability scanner written in Python'
 arch=('any')
@@ -41,7 +41,7 @@ options=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('b61065496298f535c6d9b2fbc0fa1027c0b44edc9b3f3eb5f1952dfecc226d12')
+sha256sums=('35147a2b8f62050ba718e246f1905508ea0af38bff6f46b4bfa5c42191342742')
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     # Use pip to install the package into the pkg directory
