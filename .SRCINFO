@@ -1,7 +1,7 @@
 pkgbase = appimagetool-git
 	pkgdesc = Low-level tool to generate an AppImage from an existing AppDir
 	pkgver = r61.c247c92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AppImage/appimagetool
 	arch = aarch64
 	arch = armv7h
@@ -17,6 +17,7 @@ pkgbase = appimagetool-git
 	depends = gpgme
 	depends = hicolor-icon-theme
 	depends = libgcrypt
+	depends = squashfs-tools
 	optdepends = zsync: for binary delta updates
 	provides = appimagetool
 	conflicts = appimagetool

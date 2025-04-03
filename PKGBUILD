@@ -3,12 +3,13 @@
 _pkgname="appimagetool"
 pkgname="${_pkgname}-git"
 pkgver=r61.c247c92
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level tool to generate an AppImage from an existing AppDir"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/AppImage/${_pkgname}"
 license=('MIT')
-depends=('curl' 'gcc-libs' 'glib2' 'glibc' 'gpgme' 'hicolor-icon-theme' 'libgcrypt')
+depends=('curl' 'gcc-libs' 'glib2' 'glibc' 'gpgme' 'hicolor-icon-theme'
+         'libgcrypt' 'squashfs-tools')
 makedepends=('cmake>=3.21' 'git')
 optdepends=('zsync: for binary delta updates')
 provides=("${_pkgname}")
