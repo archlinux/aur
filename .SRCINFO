@@ -1,14 +1,18 @@
 pkgbase = git-incrypt-git
 	pkgdesc = A git remote helper to encrypt git repositories incrementally
-	pkgver = 0.9.0.r2.g40433bf
+	pkgver = 0.9.0.r3.gcb554a2
 	pkgrel = 1
 	url = https://github.com/schiele/git-incrypt/
 	arch = any
 	license = GPL2
 	makedepends = asciidoc
 	makedepends = xmlto
+	makedepends = python-pylint
+	makedepends = python-pycodestyle
+	makedepends = man
 	depends = git
 	depends = python-pygit2
+	depends = gnupg
 	source = git+https://github.com/schiele/git-incrypt.git
 	sha256sums = SKIP
 
