@@ -21,6 +21,7 @@ build() {
   sed -i 's/true/trueval/g' src/config.c
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Dlibdir=/usr/lib \
         -DC_INCLUDE_PATH="$C_INCLUDE_PATH:/usr/include/ruby-3.3.5/" \
         -D WARN_FLAGS:STRING="-Wall -Wextra" \
