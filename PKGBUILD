@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=34.3.2
+pkgver=34.5.0
 _gcc_patches=132
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -63,8 +63,10 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/$_gcc_patches/chromium-patches-$_gcc_patches.tar.bz2
         # Chromium
+        add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
         compiler-rt-adjust-paths.patch
         blink-fix-missing-stdlib-include.patch
+        webrtc-fix-build-with-pipewire-1.4.patch
         # Electron
         default_app-icon.patch
         electron-launcher.sh
@@ -75,7 +77,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         # BEGIN managed sources
         chromium-mirror::git+https://github.com/chromium/chromium.git#tag=132.0.6834.210
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
-        chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v20.18.3
+        chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v20.19.0
         chromium-mirror_third_party_engflow-reclient-configs::git+https://github.com/EngFlow/reclient-configs.git#commit=955335c30a752e9ef7bff375baab5e0819b6c00d
         chromium-mirror_third_party_clang-format_script::git+https://chromium.googlesource.com/external/github.com/llvm/llvm-project/clang/tools/clang-format.git#commit=3c0acd2d4e73dd911309d9e970ba09d58bf23a62
         chromium-mirror_third_party_libc++_src::git+https://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git#commit=8e31ad42561900383e10dbefc1d3e8f38cedfbe9
@@ -239,10 +241,12 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
         # END managed sources
         )
-sha256sums=('0f1fddb69e9210cf808e8710a2def25d8c42b18cdacf396cdb2b02875f01bbba'
+sha256sums=('52f0f3bf42f15a813b76de9120b6f7d9ea819e5a09211667bd9ffdd0b467bc34'
             '40cd0f3cc33adf19c7413a35d4a48c24f1b2507e9c12f1b29cf6573ad1b9148d'
+            'd3dd9b4132c9748b824f3dcf730ec998c0087438db902bc358b3c391658bebf5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'a4a822e135b253c93089a80c679842cc470c6936742767ae09d952646889abd6'
+            '74a2d428f7f09132c4a923e816a5a9333803f842003d650cd4a95a35e5457253'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             '13fcf26193f4417fd5dfbc82a3f24e5c7a1cce82f729f6a73f1b1d3a7b580b34'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
@@ -251,7 +255,7 @@ sha256sums=('0f1fddb69e9210cf808e8710a2def25d8c42b18cdacf396cdb2b02875f01bbba'
             '2c8cd28cee0e1df1862e801794f210d2b7cac652f943cf94f43c2abe26f2a2f4'
             '88de07ecb31f08ccbc445f21093dd479eede1f7ffc783b35499cd3099b39cf49'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
-            '69afd4d3bf3cb220799bb2c495eaa50fd9cfd0090650b66ece5ce1aebe83c29f'
+            '1f777ab427990d47a4e69184970dc0c868fc383b9d52b80bf8d1a36c4995d3e1'
             '3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5'
             'b7ab26b28122102827dbbefa54a38f9d59729bbdab889dcc6dba672141590717'
             'ca032b6efa176ea66f16383dfbba5a5b78bb81727246a607bce6e1254466a5aa'
@@ -506,6 +510,8 @@ prepare() {
   patch -Np0 -i ../blink-fix-missing-stdlib-include.patch
 
   ## Upstream fixes
+  patch -Np1 -d third_party/webrtc <../webrtc-fix-build-with-pipewire-1.4.patch
+  patch -Np1 -i ../add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
