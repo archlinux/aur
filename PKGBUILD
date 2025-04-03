@@ -1,16 +1,16 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 # Maintainer: snakeroot <cwa AT pipeline DOT com>
 pkgname='slimpris2'
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc='MPRIS remote control of Lyrion Music Server (Logitech Media Server/Slimserver)'
 arch=('any')
 url='https://github.com/mavit/slimpris2'
 license=('GPL3')
 makedepends=('intltool' 'pandoc' 'systemd')
-depends=('python>=3.6' 'python-dbus' 'python-gobject' 'python-pyxdg' 'python-simplejson' 'python-six')
+depends=('libsoup' 'python>=3.6' 'python-dbus' 'python-gobject' 'python-pyxdg' 'python-simplejson' 'python-six')
 source=(slimpris2-${pkgver}.tar.gz::"https://github.com/mavit/slimpris2/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b7a6f1ca66e6a8f47a39cd6561c9140122165bc33a0aed63824a124a5c3c0a28')
+sha256sums=('62557934a0a2e5762fb4e406621940a7f9d832cf1a1c9a0e1670a7014a773236')
 
 build() {
   cd "$pkgname-$pkgver"
