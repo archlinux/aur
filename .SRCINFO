@@ -1,7 +1,7 @@
 pkgbase = xinput-gtk-git
 	pkgdesc = xinput-gtk is a GTK3 frontend for Xorg XInput
 	pkgver = r6.ge672fac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mehedirm6244/xinput-gtk/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -20,6 +20,8 @@ pkgbase = xinput-gtk-git
 	conflicts = xinput-gtk
 	conflicts = xinput-gtk-git
 	source = xinput-gtk::git+https://github.com/mehedirm6244/xinput-gtk.git
+	source = xinput-gtk.desktop
 	sha256sums = SKIP
+	sha256sums = 00cff9b7d7f387f1b136f0fb37776973833ce1492f52b6280040399c587e0d95
 
 pkgname = xinput-gtk-git

@@ -3,7 +3,7 @@
 _pkgname=xinput-gtk
 pkgname=xinput-gtk-git
 pkgver=r6.ge672fac
-pkgrel=1
+pkgrel=2
 pkgdesc='xinput-gtk is a GTK3 frontend for Xorg XInput'
 arch=('x86_64')
 url='https://github.com/mehedirm6244/xinput-gtk/'
@@ -13,8 +13,10 @@ makedepends=('cmake' 'git')
 optdepends=()
 provides=('xinput-gtk')
 conflicts=('xinput-gtk' 'xinput-gtk-git')
-source=("xinput-gtk::git+https://github.com/mehedirm6244/xinput-gtk.git")
-sha256sums=('SKIP')
+source=(  "xinput-gtk::git+https://github.com/mehedirm6244/xinput-gtk.git"
+          "${_pkgname}.desktop" )
+sha256sums=('SKIP'
+            '00cff9b7d7f387f1b136f0fb37776973833ce1492f52b6280040399c587e0d95')
 
 pkgver() {
   cd "${_pkgname}"
@@ -33,8 +35,8 @@ build() {
 }
 
 package() {
+  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   cd "${_pkgname}/build"
-
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 

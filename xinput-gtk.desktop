@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/xinput-gtk %u
+TryExec=/usr/bin/xinput-gtk
+Name=xinput-gtk
+Comment=xinput-gtk
+Icon=xorg
+Categories=System;Utility
+Keywords=xinput-gtk;
