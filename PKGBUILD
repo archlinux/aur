@@ -1,29 +1,30 @@
-# Maintainer: Aniket-Pradhan aniket17133@iiitd.ac.in
-# Owner: Valentin Lab valentin.lab@kalysto.org
+# Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
+# Contributor: Aniket-Pradhan aniket17133@iiitd.ac.in
+# Contributor: Valentin Lab valentin.lab@kalysto.org
 
 _pkgname=gitchangelog
 pkgname=python-gitchangelog
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Creates a changelog from git log history."
 url="https://github.com/sarnold/gitchangelog"
 license=("BSD")
 depends=('python')
-optdepends=('python-pystache')
-makedepends=('git' 'python-setuptools' 'python-pip' 'python-wheel')
+optdepends=('python-pystache' 'python-mako')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 arch=("x86_64")
-source=("git+https://github.com/sarnold/${_pkgname}#tag=${pkgver}")
+source=("https://github.com/sarnold/gitchangelog/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('08c863fd91447ab58e64e50e787ee7f0f3d2f2184369fe4f7ae3d8fda8ce1632')
 
 build() {
-	cd ${srcdir}/${_pkgname}
-	python setup.py build
+    cd ${srcdir}/${_pkgname}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd ${srcdir}/${_pkgname}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-sha256sums=('32799a97f232967209caf4f80a9b06a7e75aca2c32640caa17a4a168a4a7e092')
