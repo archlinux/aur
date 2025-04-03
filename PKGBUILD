@@ -2,7 +2,7 @@
 
 pkgname=kibot
 _name=${pkgname}
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 epoch=
 pkgdesc="KiCad automation utility"
@@ -66,7 +66,7 @@ install=
 changelog=
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e2b41a448654754fa85b1e5b5f9af1554b9ee8fbffbe0f21fb258e6a695bcd6f')
+sha256sums=('928eb8f5dec93db4498f63a667d995c01e532e65f2674b0420d594838311c081')
 #validpgpkeys=()
 
 build() {
