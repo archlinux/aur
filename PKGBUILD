@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=134.0.6998.177
+pkgver=135.0.7049.52
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -38,13 +38,15 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         webrtc-fix-build-with-pipewire-1.4.patch
         skia-only-call-format_message-when-needed.patch
+        add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('bed3de0ca7fe13a627dc533ed75d59c74078fc037361b71f727bc2c71659bf9d'
+sha256sums=('bc07d4b8f8377a218a2f5b5c5ae8276535650b2a524706d4959ed54322874950'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '74a2d428f7f09132c4a923e816a5a9333803f842003d650cd4a95a35e5457253'
             '271c7a767005b09e212808cfef7261dca00ea28ba7b808f69c3b5b9f202511d1'
+            'd3dd9b4132c9748b824f3dcf730ec998c0087438db902bc358b3c391658bebf5'
             'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374')
@@ -72,7 +74,7 @@ optdepends=("${optdepends[@]}"
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            '14cf8e073b0f1e9fd32792bd245e7ece9d5a39590fe69d3477df023a30289b90')
+            '5046e5bbf98d7c1b23152ff4e558d0b3419ab933f0ccc26e095ed384f09a716a')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -139,6 +141,7 @@ prepare() {
   # Upstream fixes
   patch -Np1 -d third_party/webrtc <../webrtc-fix-build-with-pipewire-1.4.patch
   patch -Np1 -d third_party/skia <../skia-only-call-format_message-when-needed.patch
+  patch -Np1 -i ../add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
