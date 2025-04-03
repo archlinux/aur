@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=juice-client-bin
 _pkgname='Juice Client'
-pkgver=1.1.14
+pkgver=1.1.15
 _electronversion=10
 pkgrel=1
 pkgdesc="A light Electron client for Kirka.io.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6c3424b39819d8bf71ef9634251eb85c3e72cc53cce9d718b7fd841083a5ccaa'
+sha256sums=('71e145766c76e6ec65a26fd90eba542caa14ea5ffc286ffd2ccc760446930d66'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
