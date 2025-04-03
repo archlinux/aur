@@ -1,17 +1,18 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Alice Vega <aalicevegaa at proton mail dot com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: lspci <agm2819 at gmail dot com>
 # Contributor: Mario Blättermann <mariobl@gnome.org>
 
 pkgname=wmweather+-git
 _pkgname=wmweather+
-pkgver=r72.98823ac
+pkgver=r87.3933948
 pkgrel=1
 pkgdesc="Downloads the National Weather Service METAR bulletins, ANV and MRF forecasts, and any weather map for display in a WindowMaker dockapp"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/wmweatherplus"
 license=('GPL')
 groups=('x11')
-depends=('pcre' 'libxpm' 'curl' 'windowmaker-crm-git')
+depends=('pcre2' 'libxpm' 'curl' 'windowmaker')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 makedepends=('git')
