@@ -1,0 +1,13 @@
+pkgbase = ragit
+	pkgdesc = git-like rag pipeline
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/baehyunsol/ragit
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = ragit-0.3.5.tar.gz::https://github.com/baehyunsol/ragit/archive/refs/tags/v0.3.5.tar.gz
+	sha256sums = f69c1b85159f9ea01244a935db2cdbc322d412424a6100be55d9cd61f9147a25
+
+pkgname = ragit
