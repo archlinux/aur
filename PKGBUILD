@@ -13,9 +13,20 @@ sha256sums=('050175c940be4bc921b98d0f345097652bf50a3c1fa229a516fe95d06dd03e06')
 
 package() {
     bsdtar -xf "${srcdir}/MobiriseSetup.deb"
-    install -dm755 "${pkgdir}/opt"
-    cp -r opt/mobirise "${pkgdir}/opt/"
 
-    install -Dm644 usr/share/applications/mobirise.desktop "$pkgdir/usr/share/applications/mobirise.desktop"
-    install -Dm644 usr/share/icons/hicolor/256x256/apps/mobirise.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/mobirise.png"
+    # Copiar mobirise a /opt
+    if [[ -d "opt/mobirise" ]]; then
+        install -dm755 "${pkgdir}/opt"
+        cp -r opt/mobirise "${pkgdir}/opt/"
+    fi
+
+    # Copiar .desktop si existe
+    if [[ -f "usr/share/applications/mobirise.desktop" ]]; then
+        install -Dm644 usr/share/applications/mobirise.desktop "${pkgdir}/usr/share/applications/mobirise.desktop"
+    fi
+
+    # Copiar icono si existe
+    if [[ -f "usr/share/icons/hicolor/256x256/apps/mobirise.png" ]]; then
+        install -Dm644 usr/share/icons/hicolor/256x256/apps/mobirise.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/mobirise.png"
+    fi
 }
