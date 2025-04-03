@@ -1,4 +1,4 @@
-pkgbase = biff-comsat
+pkgbase = biff-comsat-bin
 	pkgdesc = Mail arrival notification daemon. Comsat incoming mail, biff requests notification.
 	pkgver = 0.17
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = biff-comsat
 	source = https://mirrors.slackware.com/slackware/slackware64-current/slackware64/n//biff-comsat-0.17-x86_64-4.txz
 	sha256sums = SKIP
 
-pkgname = biff-comsat
+pkgname = biff-comsat-bin
