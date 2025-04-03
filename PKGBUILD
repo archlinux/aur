@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=reader-project-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="XML based feed reader for your desktop.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/rahuldshetty/reader-project/v${pkgver}/LICENSE"
 )
-sha256sums=('53bd71b9ee631626134d4e136669641801450dc854e65808f6e10097e2aadf10'
+sha256sums=('a528a2bfc59dc3f47f9656e4223ab8673d6dc312664131585b2cb2e1ad0c487a'
             '84afb780728548ed34cc26b8490d3f84f7753010c7c1eae92141db7c0869fbf5')
 prepare() {
     sed -i -e "
