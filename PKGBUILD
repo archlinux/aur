@@ -1,7 +1,7 @@
 # Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=nspire-merge
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Merging Lua source files and images for TI-Nspire projects"
 arch=('x86_64')
 url="https://github.com/alexcoder04/nspire-merge"
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('66fcd955ec8ae484fb8c03787cf59ed0')
+sha256sums=('aa1993fcd0f088b34683800e721467dc9ee597af1f22a23c681fec2b5a18794d')
 
 package() {
     cd "$pkgname-$pkgver"
