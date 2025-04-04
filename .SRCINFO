@@ -1,0 +1,30 @@
+pkgbase = zing-23-bin
+	pkgdesc = Azul Platform Prime Stream Build (Formerly Zing) is a modern, TCK-compliant Java platform based on OpenJDK, free for development.
+	pkgver = 23.0.2
+	pkgrel = 3
+	url = https://docs.azul.com/prime/prime-quick-start-tar
+	install = zing-23-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-runtime-headless=23
+	provides = java-runtime-headless-openjdk=23
+	provides = jre23-openjdk-headless=23.0.2
+	provides = java-runtime=23
+	provides = java-runtime-openjdk=23
+	provides = jre23-openjdk=23.0.2
+	provides = java-environment=23
+	provides = java-environment-openjdk=23
+	provides = jdk23-openjdk=23.0.2
+	provides = jdk-openjdk=23.0.2
+	source = zing-23-bin.install
+	b2sums = 94a2f1ca81e4e28a3848571a2d87fc58ed15fb7a3bc4dbf07e56f6458e66891a04707732df4f7c7c9b55fc84e62bfc4e61c0cd08ada1bc8f01bf9fd7b0f5c58f
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM25.02.0.0/zing25.02.0.0-2-jdk23.0.2-linux_x64.tar.gz
+	b2sums_x86_64 = 9b5083ba8d0baafcb7f0ac3434729646fbbb4deed97ed533a3a5e441154c4c387f643e1262947e5b4d613a0cb0c5cb0010bf57e0b35f8c65578720fdbd4ecf47
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM25.02.0.0/zing25.02.0.0-2-jdk23.0.2-linux_aarch64.tar.gz
+	b2sums_aarch64 = 46a5d8c87c809ad7c684ac3042e290dc7552b4b9cff68bde10a7f85aa5ab3c077e7f8cd28ece8247b43965eb181e3123ffc6f6b0dc05b28566b1f40f56e97545
+
+pkgname = zing-23-bin
