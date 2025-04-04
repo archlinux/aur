@@ -1,0 +1,17 @@
+pkgbase = golored-bin
+	pkgdesc = Color your shell scripts' output
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/golored
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = golored
+	conflicts = golored
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/alexcoder04/golored/v1.0.0/LICENSE
+	source = README-1.0.0::https://raw.githubusercontent.com/alexcoder04/golored/v1.0.0/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = fc0e45942a622a83cd9bc76403f7dd3c2a346524460e0057f8716faa5f492b41
+	source_x86_64 = golored-1.0.0::https://github.com/alexcoder04/golored/releases/download/v1.0.0/golored-linux-amd64
+	sha256sums_x86_64 = 5b4f5db78cb2ab66d0f80a1a297d017fc03a64cc6994dbb20b97a19a99a5e906
+
+pkgname = golored-bin
