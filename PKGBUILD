@@ -8,6 +8,7 @@ url='https://github.com/shogo82148/mecab'
 conflicts=('mecab')
 provides=('mecab')
 license=('BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/shogo82148/mecab.git")
 md5sums=('SKIP')
 
