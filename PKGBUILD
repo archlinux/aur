@@ -5,7 +5,7 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
@@ -14,16 +14,16 @@ url='https://simplex.chat/'
 _rawurl='https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable'
 source=(
   "$_pkgname-$pkgver::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$_platform"
-  "$_rawurl/PRIVACY.md"
-  "$_rawurl/README.md"
-  "$_rawurl/docs/CLI.md"
-  "$_rawurl/docs/SIMPLEX.md"
+  "PRIVACY-$pkgver.md::$_rawurl/PRIVACY.md"
+  "README-$pkgver.md::$_rawurl/README.md"
+  "CLI-$pkgver.md::$_rawurl/docs/CLI.md"
+  "SIMPLEX-$pkgver.md::$_rawurl/docs/SIMPLEX.md"
   'logo-symbol-dark.svg'
   'logo-symbol-light.svg'
   'simplex-chat.desktop'
 )
 sha512sums=(
-  '97925fe63fbd494d9c816a86405d17b487c0deff325d511d52575f227603999865ed44194a08ee046e7726cc010e04e3565d6fa6933b8b2e9885271279c584d0'
+  '797f8b8cd80223778fe3a276827e4249473449e5ef379399e251fdb036ea844d297be2e6d5908a0361930941670c6804ec753ac3f6e09ee7693e393f6abb48dc'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -60,8 +60,11 @@ package() {
   cd "$srcdir"
 
   install -vDm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
-    {CLI,PRIVACY,README,SIMPLEX}.md
+
+  for _doc in CLI PRIVACY README SIMPLEX; do
+    install -vDm0644 "$_doc-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
+  done
+
   install -vDm0644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   install -vDm0644 "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
