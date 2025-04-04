@@ -1,6 +1,6 @@
 pkgbase = adbmanager
 	pkgdesc = ADB manager for Android devices
-	pkgver = 3.2
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
@@ -11,10 +11,11 @@ pkgbase = adbmanager
 	depends = iproute2
 	depends = nmap
 	depends = sakura
-	source = adbmanager-3.2.tar.gz::https://github.com/AKotov-dev/adbmanager/archive/refs/tags/v3.2.tar.gz
+	depends = 7zip
+	source = adbmanager-3.4.tar.gz::https://github.com/AKotov-dev/adbmanager/archive/refs/tags/v3.4.tar.gz
 	source = adbmanager.desktop
 	source = adbmanager.png
-	sha256sums = ee128c90c8fdf431224b1983b8c7755675ea1a85e181717f60ea40ddb2b1acf1
+	sha256sums = 429ae0a1b8ef2a3194177158718cb59c24287e905a5340cc54831e722e422954
 	sha256sums = dfcea6314f6c08ae8efad0503f15669c20e10589d967718f5f44b313cf4ea922
 	sha256sums = 39cdcaa6d98f543486b6b5720b43007db0e191444f282934405e42ad77ecbbfa
 
