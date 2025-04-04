@@ -1,6 +1,6 @@
 pkgbase = libretro-bsnes-jg-git
 	pkgdesc = Super Nintendo Entertainment System core
-	pkgver = r1732.aa6d2111732.aa6d211
+	pkgver = 1732.aa6d211
 	pkgrel = 1
 	url = https://github.com/libretro/bsnes-jg
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = libretro-bsnes-jg-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libretro-core-info
-	provides = libretro-bsnes-jg=1:1732.aa6d2111732.aa6d211
+	provides = libretro-bsnes-jg=1:1732.aa6d211
 	conflicts = libretro-bsnes-jg
 	source = libretro-bsnes-jg::git+https://github.com/libretro/bsnes-jg.git
 	b2sums = SKIP
