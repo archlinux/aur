@@ -1,14 +1,15 @@
 pkgbase = awf-gtk2
 	pkgdesc = Theme preview application for GTK 2
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
 	license = GPL3
-	depends = gtk2
+	depends = gtk2>=2.24.0
+	depends = libnotify>=0.7.0
 	depends = hicolor-icon-theme
 	conflicts = awf-git
-	source = https://github.com/luigifab/awf-extended/archive/v2.8.1/awf-extended-2.8.1.tar.gz
-	sha256sums = 9370d2906a2e60fad41017057bac950934ceb8e1a03d47254d7d52c8860ff18c
+	source = https://github.com/luigifab/awf-extended/archive/v2.9.0/awf-extended-2.9.0.tar.gz
+	sha256sums = eaa1028bf833832017c5c8ea715f039df98f6c083aee847d87a5ffccebaee68b
 
 pkgname = awf-gtk2
