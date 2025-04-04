@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.24.4
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -22,13 +22,16 @@ prepare() {
   # link with shared blas/lapack libs: https://github.com/OpenModelica/OpenModelica/issues/10304
   sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
 
-  # boost 1.87 compat
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/13441.patch | patch -p1
+  # build with cmake 3.x
+  wget https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh
+  rm -rf cmake3
+  mkdir -p cmake3
+  sh cmake-3.31.6-linux-x86_64.sh --skip-license --prefix=$PWD/cmake3
 }
 
 build() {
   cd "$srcdir/OpenModelica"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
+  ./cmake3/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
   make -C build
 }
 
