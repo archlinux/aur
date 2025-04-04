@@ -1,0 +1,20 @@
+pre_install() {
+    echo -e "==== installing 115 Browser ===="
+}
+
+_help() {
+    echo -e "115Master 是一个 115 网盘的 Tampermonkey 脚本，旨在提升 115网盘 的浏览体验："
+    echo -e "  https://github.com/cbingb666/115master"
+    echo -e "一键安装 115master.user.js 安装 【115Master】脚本："
+    echo -e "  https://github.com/cbingb666/115master/releases/latest/download/115master.user.js"
+}
+
+post_install() {
+    _help
+    echo -e "==== 115 Browser installed ===="
+}
+
+post_upgrade() {
+    _help
+    echo -e "==== 115 Browser upgradeed ===="
+}

@@ -1,8 +1,9 @@
 pkgbase = 115-browser-bin
 	pkgdesc = 115 Browser / 115 浏览器
 	pkgver = 35.13.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://115.com/product_browser
+	install = 115-browser-bin.install
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
 	makedepends = libarchive
@@ -20,6 +21,8 @@ pkgbase = 115-browser-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = 115-browser-bin-35.13.0.2.deb::https://down.115.com/client/115pc/lin/115br_v35.13.0.2.deb
+	source_x86_64 = 115-browser-bin.install
 	sha256sums_x86_64 = 4c133e512d07b4ae6fc6a3a60bafd88dc4e019b847c4000313cb939280955507
+	sha256sums_x86_64 = ce0e3cdf98637003986feb9abb198cf04135333116f44e1642ba438d344a6a2e
 
 pkgname = 115-browser-bin
