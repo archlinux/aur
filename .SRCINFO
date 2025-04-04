@@ -1,6 +1,6 @@
 pkgbase = icingadb
 	pkgdesc = Icinga configuration and state database supporting multiple environments
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/Icinga/icingadb
@@ -13,10 +13,10 @@ pkgbase = icingadb
 	provides = icingadb
 	provides = icingadb-migrate
 	backup = etc/icingadb/config.yml
-	source = https://github.com/Icinga/icingadb/archive/refs/tags/v1.2.1.tar.gz
+	source = https://github.com/Icinga/icingadb/archive/refs/tags/v1.3.0.tar.gz
 	source = icingadb.sysusers
 	source = icingadb.service
-	sha256sums = d309cd5b36781ad6f915947726c43cc34d7962dbb9b2360a98782a2079a8e4b3
+	sha256sums = 0ab871b48badd08d43dfdfcc708def1873f17ec861b1003632ad06c347eb0672
 	sha256sums = SKIP
 	sha256sums = SKIP
 
