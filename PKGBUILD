@@ -1,8 +1,7 @@
-# Maintainer: alexcoder04 <https://github.com/alexcoder04>
+# Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=shclrz
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-epoch=
 pkgdesc="coloring output in the shell"
 arch=('any')
 url="https://github.com/alexcoder04/shclrz"
@@ -21,10 +20,9 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('f292c2e57ad2f69a998a18b209e50672')
-validpgpkeys=()
+sha256sums=('98706e0d07a005c364330cd612e62f4e4a0c5b13e431fba1f37e8b8b5f443db6')
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   DESTDIR="$pkgdir/" make install
 }
