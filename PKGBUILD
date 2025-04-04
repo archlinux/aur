@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=Copulas
 pkgname=python-${_base,,}
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Create tabular synthetic data using copulas-based modeling"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-markupsafe' 'python-scikit-learn' 'jupyter-notebook')
 checkdepends=(python-pytest python-invoke)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2b6097ab01b5745302beab2cf55631d5b0a454a91a9faa17dee554957b24e98c40d3ba69c8e5668fc19aa426af27f8fac78b9f0ee6c34345afe59d73d290e9ad')
+sha512sums=('a36370491a865d5fd87f039de5c8806fc220197a04731bb68bf5e340d40e2a653f2791c4c0558f4ba661d27bf29935db30b6685b29d7b84b85507eb415d93cb1')
 
 prepare() {
   sed -i 's/np.NaN/np.nan/' ${_base}-${pkgver}/${_base,,}/multivariate/tree.py
