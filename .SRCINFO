@@ -1,0 +1,18 @@
+pkgbase = mod-pitchshifter-git
+	pkgdesc = Pitch shifter lv2 effects from mod-audio
+	pkgver = r245.efd26e6
+	pkgrel = 1
+	url = https://github.com/mod-audio/mod-pitchshifter
+	arch = aarch64
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = AGPLv2
+	makedepends = make
+	makedepends = armadillo
+	makedepends = python-mpmath
+	provides = mod-pitchshifter
+	source = git+https://github.com/mod-audio/mod-pitchshifter.git
+	sha256sums = SKIP
+
+pkgname = mod-pitchshifter-git
