@@ -1,6 +1,6 @@
 pkgbase = foxtelgo
 	pkgdesc = Unnofficial FoxtelGo desktop application
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/foxtelgo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = foxtelgo
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.0.12/application-1.0.12.tar.bz2
+	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.0.13/application-1.0.13.tar.bz2
 	sha256sums = f43af3432857d8ff95a4c5c212396e9ecd14840b2c3a5f13538b3061e26dabf0
 
 pkgname = foxtelgo
