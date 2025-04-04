@@ -7,6 +7,8 @@ pkgbase = gedit-gnuplot
 	license = GPL
 	depends = gedit
 	source = gnuplot.lang
+	source = gp-files.patch
 	sha256sums = ffce11a5edbe0b0360090c5f039ff7e12d67844c7ae4f8936da357f19aa1cbc0
+	sha256sums = df90b5e873ecba1c209b47532b2669ad119db43db493d7cc45e4606d686d4820
 
 pkgname = gedit-gnuplot

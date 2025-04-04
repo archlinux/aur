@@ -1,0 +1,10 @@
+--- original/gnuplot.lang	2025-04-04 23:44:45.552035659 +0100
++++ patched/gnuplot.lang	2025-04-05 00:07:38.517056293 +0100
+@@ -23,6 +23,7 @@
+   <metadata>
+     <property name="mimetypes">text/x-gnuplot</property>
+     <property name="globs">*.plt</property>
++    <property name="globs">*.gp</property>
+     <property name="line-comment-start">#</property>
+   </metadata>
+ 
