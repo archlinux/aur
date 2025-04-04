@@ -1,0 +1,29 @@
+diff --git a/run-one b/run-one
+index ca1d888..c23e100 100755
+--- a/run-one
++++ b/run-one
+@@ -56,9 +56,9 @@ fi
+ mkdir -p "$DIR"
+ 
+ # Calculate the hash of the command and arguments
+ CMD="$@"
+-CMDHASH=$(echo "$CMD" | md5sum | awk '{print $1}')
++CMDHASH=$(echo "$CMD" | sha512sum | awk '{print $1}')
+ FLAG="$DIR/$CMDHASH"
+ 
+ base="$(basename $0)"
+ case "$base" in
+@@ -70,9 +70,12 @@ case "$base" in
+ 		ps="$CMD"
+ 		# Loop through matching pids
+ 		for p in $(pgrep -u "$USER" -f "^$ps$" || true); do
+ 			# Try to kill pid
+-			kill $p
++			if [ "$p" = "$$" ] ; then
++				continue
++			fi
++			ps $p >/dev/null && kill $p
+ 			# And then block until killed
+ 			while ps $p >/dev/null 2>&1; do
+ 				kill $p
+ 				sleep 1

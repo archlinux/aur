@@ -1,12 +1,14 @@
 pkgbase = run-one
 	pkgdesc = Run just one instance of a command and its args at a time
 	pkgver = 1.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dustinkirkland/run-one
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = sh
 	source = run-one-1.18.tgz::https://github.com/dustinkirkland/run-one/archive/refs/tags/1.18.tar.gz
+	source = fix-pgrep.patch
 	sha256sums = 6cbc8e375701cc231c6247be676d6201aa6d6e716a448f1603abb949d370bcae
+	sha256sums = f59fcd60e04d85a7835bbbb51ae31b5a87ff8a01c621bb1035e8e45006cefa77
 
 pkgname = run-one
