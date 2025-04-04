@@ -1,0 +1,17 @@
+pkgbase = gupload-bin
+	pkgdesc = Serve an HTTP server to transfer files between machines on the local network
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexcoder04/gupload
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = gupload
+	conflicts = gupload
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/alexcoder04/gupload/v0.1.0/LICENSE
+	source = README-0.1.0::https://raw.githubusercontent.com/alexcoder04/gupload/v0.1.0/README.md
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+	sha256sums = 20ff03bb72540f52264b4ce864af6a5691a5e367525504a8ebcf32db5158b792
+	source_x86_64 = gupload-0.1.0::https://github.com/alexcoder04/gupload/releases/download/v0.1.0/gupload
+	sha256sums_x86_64 = bb9cbfeed08c6081c2e76e5950febb6a63782dc01d0263dbc3322cc1a494549a
+
+pkgname = gupload-bin
