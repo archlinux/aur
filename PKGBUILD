@@ -10,7 +10,7 @@
 
 pkgver=34.5.0
 _gcc_patches=132
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -251,7 +251,7 @@ sha256sums=('52f0f3bf42f15a813b76de9120b6f7d9ea819e5a09211667bd9ffdd0b467bc34'
             '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             'ff588a8a4fd2f79eb8a4f11cf1aa151298ffb895be566c57cc355d47f161f53f'
-            '2c8cd28cee0e1df1862e801794f210d2b7cac652f943cf94f43c2abe26f2a2f4'
+            'b7d75c9d9c176db2de7cb162b4e6106af28605a0374a20c20104d5e4c6b0030c'
             '88de07ecb31f08ccbc445f21093dd479eede1f7ffc783b35499cd3099b39cf49'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             '1f777ab427990d47a4e69184970dc0c868fc383b9d52b80bf8d1a36c4995d3e1'
