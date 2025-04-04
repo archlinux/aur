@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2025.0.0
-pkgrel=2
+pkgrel=3
 _commit=1f68be9f5945f2a239ada580e62c992d820f9cb7
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
@@ -56,8 +56,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-level-zero-disable-werror.patch'
-        '040-openvino-protobuf23-fix.patch'
-        '050-opevino-cmake4-fix.patch')
+        '040-openvino-protobuf23-fix.patch')
 sha256sums=('5f560596631a1428f378468215d21dee44dd0dd2556f1ece3352dcb775397940'
             'SKIP'
             'SKIP'
@@ -82,8 +81,7 @@ sha256sums=('5f560596631a1428f378468215d21dee44dd0dd2556f1ece3352dcb775397940'
             'd9d65a752744d324b43033fb223a50ab945090278a801d797c55649587210216'
             '8858496f3e2409d4d72802e9dd6823167309feee35086c591212692883f8bb7f'
             'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a'
-            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce'
-            'ce883a506fc7964d10f03a20fa4620d69fef4aa5c4a2ecb07ce9d13d29dba7fc')
+            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -125,7 +123,6 @@ prepare() {
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/030-openvino-level-zero-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/040-openvino-protobuf23-fix.patch"
-    patch -d openvino -Np1 -i "${srcdir}/050-opevino-cmake4-fix.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -147,6 +144,7 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_CXX_STANDARD:STRING='17' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING="3.5.0" \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DENABLE_SSE42:BOOL='OFF' \
         -DENABLE_AVX2:BOOL='OFF' \
