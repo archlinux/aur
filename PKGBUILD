@@ -1,7 +1,7 @@
 # Maintainer: Zack Didcott
 
 pkgname=snakedream-git
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Python interface for a Daydream controller."
 arch=("any")
