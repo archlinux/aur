@@ -19,6 +19,7 @@ pkgbase = libindi-toupbase
 	depends = libnncam=2.1.3
 	depends = libaltaircam=2.1.3
 	depends = libmallincam=2.1.3
+	depends = libsvbonycam=2.1.3
 	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.3.tar.gz
 	sha256sums = bcb7cf2b9053c5b1e052a35247ec499a9d513f4ed257178b244c190394d0daa6
 
