@@ -1,4 +1,4 @@
 pkg/
 src/
 *.pkg.tar.zst
-kf6-servicemenus-flacconvert-v*.tar.gz
+v*.tar.gz
