@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.0.1.r701.g7c6610a4dcc
+pkgver=2025.0.1.r736.gaca44edba34
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -56,8 +56,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
-        '030-openvino-protobuf23-fix.patch'
-        '040-opevino-cmake4-fix.patch')
+        '030-openvino-protobuf23-fix.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -83,8 +82,7 @@ sha256sums=('SKIP'
             'SKIP'
             'ab3960a3af2f060a0ddb7ed8900cd2bc497887b0cd0dbd51f822986162b7a112'
             'c86feb93653b85605fc946dda4114e9c27e25c841e787d8d949be103e25f12e9'
-            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce'
-            'c80a4d6e6e3e30960859f42c14586483e4038d8f6db60b388cea73dca9978a91')
+            'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -126,7 +124,6 @@ prepare() {
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-openvino-protobuf23-fix.patch"
-    patch -d openvino -Np1 -i "${srcdir}/040-opevino-cmake4-fix.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino

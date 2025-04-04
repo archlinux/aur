@@ -1,6 +1,6 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for optimizing and deploying deep learning models (git version)
-	pkgver = 2025.0.1.r701.g7c6610a4dcc
+	pkgver = 2025.0.1.r736.gaca44edba34
 	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
@@ -50,7 +50,6 @@ pkgbase = openvino-git
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
 	source = 030-openvino-protobuf23-fix.patch
-	source = 040-opevino-cmake4-fix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -77,7 +76,6 @@ pkgbase = openvino-git
 	sha256sums = ab3960a3af2f060a0ddb7ed8900cd2bc497887b0cd0dbd51f822986162b7a112
 	sha256sums = c86feb93653b85605fc946dda4114e9c27e25c841e787d8d949be103e25f12e9
 	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
-	sha256sums = c80a4d6e6e3e30960859f42c14586483e4038d8f6db60b388cea73dca9978a91
 
 pkgname = openvino-git
 	depends = gcc-libs
@@ -88,7 +86,7 @@ pkgname = openvino-git
 	depends = snappy
 	optdepends = openvino-intel-gpu-plugin-git: for Intel GPU plugin
 	optdepends = openvino-intel-npu-plugin-git: for Intel NPU plugin
-	provides = openvino=2025.0.1.r701.g7c6610a4dcc
+	provides = openvino=2025.0.1.r736.gaca44edba34
 	provides = intel-openvino-git
 	conflicts = openvino
 	conflicts = intel-openvino-git
@@ -101,7 +99,7 @@ pkgname = openvino-intel-gpu-plugin-git
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2025.0.1.r701.g7c6610a4dcc
+	depends = openvino=2025.0.1.r736.gaca44edba34
 	depends = pugixml
 	provides = openvino-intel-gpu-plugin
 	conflicts = openvino-intel-gpu-plugin
@@ -114,7 +112,7 @@ pkgname = openvino-intel-npu-plugin-git
 	depends = intel-npu-driver
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2025.0.1.r701.g7c6610a4dcc
+	depends = openvino=2025.0.1.r736.gaca44edba34
 	depends = pugixml
 	provides = openvino-intel-npu-plugin
 	conflicts = openvino-intel-npu-plugin
@@ -123,7 +121,7 @@ pkgname = python-openvino-git
 	pkgdesc = Python bindings for OpenVINO (git version)
 	depends = gcc-libs
 	depends = glibc
-	depends = openvino=2025.0.1.r701.g7c6610a4dcc
+	depends = openvino=2025.0.1.r736.gaca44edba34
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
