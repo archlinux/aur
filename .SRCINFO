@@ -1,0 +1,25 @@
+pkgbase = minmon-bin
+	pkgdesc = An opinionated minimal monitoring and alarming tool.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/flo-at/minmon
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	provides = minmon
+	conflicts = minmon
+	source = systemd.minmon-0.10.0.service::https://raw.githubusercontent.com/flo-at/minmon/v0.10.0/systemd.minmon.service
+	source = LICENSE-APACHE-0.10.0::https://raw.githubusercontent.com/flo-at/minmon/v0.10.0/LICENSE-APACHE
+	source = LICENSE-MIT-0.10.0::https://raw.githubusercontent.com/flo-at/minmon/v0.10.0/LICENSE-MIT
+	source = README-0.10.0.md::https://raw.githubusercontent.com/flo-at/minmon/v0.10.0/README.md
+	sha256sums = c04d770b0fa2d71bbb20e1ca60773321f9b0d3c1d6367caaa1c4ad2a383d6ca9
+	sha256sums = 827e04431ccf5cbe334a7a6f24c4dea4a5a3636c27d4d91afc0a7098971ac510
+	sha256sums = 1c245bcffc08d2989d9dbe43aca3f89a4b7f17ee22ba683c6df314cc2a4a857e
+	sha256sums = afb97989bc1a008905401decf251a1617af657d1f1e705fec93733e80e9f1d60
+	source_x86_64 = https://github.com/flo-at/minmon/releases/download/v0.10.0/minmon-linux-x86_64.tar.gz
+	sha256sums_x86_64 = eb8caa02c1da6f7d512dcb8f1859ffc6922dbdbccc7a5f6fe1bc8db41c419250
+	source_aarch64 = https://github.com/flo-at/minmon/releases/download/v0.10.0/minmon-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5b308b219762d106df4f7a6f2a9be577781a6d54bfb8e89774fba62bf6bdc2a9
+
+pkgname = minmon-bin
