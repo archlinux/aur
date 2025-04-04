@@ -1,4 +1,5 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Primary source: https://wiki.gnome.org/attachments/Projects(2f)GtkSourceView(2f)LanguageDefinitions/gnuplot.lang
 
 pkgname='gedit-gnuplot'
 pkgver='1.0.0'
