@@ -1,16 +1,21 @@
 pkgbase = yamagi-quake2-ref_vk-git
 	pkgdesc = Vulkan renderer for yamagi-quake2 (development version)
-	pkgver = 1.0.2.r8.g649279b
+	pkgver = 1.0.9.r3.g21bde3c
 	pkgrel = 1
-	url = https://github.com/yquake2/ref_vk/
+	url = https://github.com/yquake2/ref_vk
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = custom
+	license = GPL-2.0-only
+	license = MIT
+	license = Unlicense
+	makedepends = vulkan-headers
+	depends = glibc
 	depends = yamagi-quake2
+	depends = sdl3
+	optdepends = vulkan-validation-layers
 	provides = yamagi-quake2-ref_vk
 	conflicts = yamagi-quake2-ref_vk
 	source = yamagi-quake2-ref_vk::git+https://github.com/yquake2/ref_vk.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = yamagi-quake2-ref_vk-git
