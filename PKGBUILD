@@ -1,36 +1,57 @@
-# Maintainer: Tobias Borgert <tobias (dot) borgert (at) gmail (dot) com>
+# Maintainer: DownerCase <downercase8 (at) gmail (dot) com>
 
 pkgname=fineftp-server
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="FineFTP is a minimal FTP server library for Windows and Unix flavors"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/eclipse-ecal/fineftp-server"
 license=('MIT')
-depends=('asio')
-makedepends=()
-optdepends=()
-source=(https://github.com/eclipse-ecal/fineftp-server/archive/v$pkgver.tar.gz
-        Findasio.cmake.patch)
-md5sums=('ac03b3921b65b34be8cfa7176cf5acd4'
-         '4073a681f63f2b346acefebe026f506f')
-
-prepare() {
-    patch --forward --strip=1 --input="../Findasio.cmake.patch" "$pkgname-$pkgver/thirdparty/asio-module/Findasio.cmake"
-}
+depends=(
+	gcc-libs
+	glibc
+)
+makedepends=(
+	asio
+	cmake
+	gtest
+	curl
+)
+source=(
+	"$pkgname-$pkgver.tar.gz::https://github.com/eclipse-ecal/fineftp-server/archive/v$pkgver.tar.gz"
+)
+sha256sums=('93b0f9ef7007136be1ba83b3d80b059b79a361fe0af8bbadbf6df1bacfcf203e')
 
 build() {
-    cd $pkgname-$pkgver
-    mkdir -p _build
-    cd _build
-    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
+	local cmake_options=(
+		-S "$pkgname-$pkgver"
+		-B build
+		-DCMAKE_BUILD_TYPE=None
+		-DCMAKE_INSTALL_PREFIX=/usr
+		-DBUILD_SHARED_LIBS=ON
+		-DFINEFTP_SERVER_BUILD_SAMPLES=OFF
+		-DFINEFTP_SERVER_BUILD_TESTS=ON
+		-DFINEFTP_SERVER_USE_BUILTIN_ASIO=OFF
+		-DFINEFTP_SERVER_USE_BUILTIN_GTEST=OFF
+		-DCMAKE_MODULE_PATH="$(pwd)/$pkgname-$pkgver/thirdparty/asio-module"
+		-Dasio_INCLUDE_DIR=/usr/include
+	)
+	cmake "${cmake_options[@]}"
+	cmake --build build
+}
 
+check() {
+	local ctest_flags=(
+		--test-dir build
+		# show the stdout and stderr when the test fails
+		--output-on-failure
+		# Tests cannot be run in parallel
+		--parallel 1
+	)
+	ctest "${ctest_flags[@]}"
 }
 
 package() {
-    cd $pkgname-$pkgver
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cd _build
-    DESTDIR="$pkgdir" make install
+	install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	DESTDIR="$pkgdir" cmake --install build
 }
