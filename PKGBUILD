@@ -3,7 +3,7 @@
 
 pkgname=tidal-hifi
 pkgver=5.18.2
-pkgrel=0
+pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
