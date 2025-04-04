@@ -1,0 +1,27 @@
+From 6029f0985acb3059945c7758dcb97d596b6ba51b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Fri, 4 Apr 2025 20:18:16 +0000
+Subject: [PATCH] application: Set prgname to application ID
+
+Using the application ID ensures that Wayland compositors could match the
+window with the application and show the appropriate icon for them.
+---
+ src/application.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/application.rs b/src/application.rs
+index b8c83e8..e2c2862 100644
+--- a/src/application.rs
++++ b/src/application.rs
+@@ -21,7 +21,7 @@ impl Application {
+         let window = Window::new();
+ 
+         glib::set_application_name(&format!("VectorSlicer{}", config::NAME_SUFFIX));
+-        glib::set_prgname(Some("vector-slicer"));
++        glib::set_prgname(Some(config::APP_ID));
+ 
+         let builder = gtk::Builder::new_from_resource("/org/gnome/design/VectorSlicer/shortcuts.ui");
+         let dialog: gtk::ShortcutsWindow = builder.get_object("shortcuts").unwrap();
+-- 
+GitLab
+

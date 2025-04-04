@@ -1,0 +1,35 @@
+From 9564fa89129dea4206afe6616f3b66e8ffb3a7e0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 25 Nov 2024 11:32:02 +0100
+Subject: [PATCH] build: Use appstream for appdata validation test
+
+appstream-glib is under heavy maintenance mode and recommends using
+appstream instead.
+---
+ data/meson.build | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index b5b3278..54c5ce9 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -42,12 +42,12 @@ appdata_file = i18n.merge_file (
+   install_dir: datadir / 'metainfo'
+ )
+ # Validate Appdata
+-appstream_util = find_program('appstream-util', required: false)
+-if appstream_util.found()
++appstreamcli = find_program('appstreamcli', required: false)
++if appstreamcli.found()
+   test(
+-    'validate-appdata', appstream_util,
++    'validate-appdata', appstreamcli,
+     args: [
+-      'validate-relax', '--nonet', appdata_file.full_path()
++      'validate', '--no-net', '--explain', appdata_file.full_path()
+     ]
+   )
+ endif
+-- 
+GitLab
+
