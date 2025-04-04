@@ -1,19 +1,22 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=run-one
-pkgver=1.17
-pkgrel=3
+pkgver=1.18
+pkgrel=1
 pkgdesc="Run just one instance of a command and its args at a time"
 arch=('any')
-url="https://launchpad.net/run-one"
-license=('GPL3')
+url="https://github.com/dustinkirkland/run-one"
+license=('GPL-3.0-or-later')
 depends=('sh')
-source=("$pkgname-$pkgver.tgz::$url/trunk/$pkgver/+download/${pkgname}_$pkgver.orig.tar.gz")
-sha256sums=('b7c9b257b52f29ba0d923a4dfee4edd47332ebeca0200c65f309eb6ae33f701f')
+source=("$pkgname-$pkgver.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+
+sha256sums=('6cbc8e375701cc231c6247be676d6201aa6d6e716a448f1603abb949d370bcae')
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit
+
 	install -Dvt "$pkgdir/usr/bin/" \
 		run-one \
 		keep-one-running \
@@ -21,5 +24,8 @@ package() {
 		run-one-until-failure \
 		run-one-until-success \
 		run-this-one
-	install -Dvm644 "$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+
+	install -Dvm644 "$pkgname.1" -t "${pkgdir}/usr/share/man/man1/"
+
+	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
