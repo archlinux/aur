@@ -1,0 +1,24 @@
+From 7b7d02ec4cc031cacba5664fd0e7c27b39eaaed8 Mon Sep 17 00:00:00 2001
+From: Root <175176948+RKNF404@users.noreply.github.com>
+Date: Thu, 3 Apr 2025 23:41:53 -0400
+Subject: [PATCH] fix: only bind ld.so.preload if it exists (#277)
+
+---
+ build/trivalent.sh | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/build/trivalent.sh b/build/trivalent.sh
+index eacbc37..c6d9d12 100755
+--- a/build/trivalent.sh
++++ b/build/trivalent.sh
+@@ -82,4 +82,9 @@ exec < /dev/null
+ exec > >(exec cat)
+ exec 2> >(exec cat >&2)
+ 
+-exec /usr/bin/bwrap --dev-bind / / --ro-bind /dev/null /etc/ld.so.preload "$HERE/$CHROMIUM_NAME" $CHROMIUM_FLAGS "$@"
++BWRAP_ARGS="--dev-bind / /"
++if [ -f "/etc/ld.so.preload" ]; then
++  BWRAP_ARGS+=" --ro-bind /dev/null /etc/ld.so.preload"
++fi
++
++exec /usr/bin/bwrap $BWRAP_ARGS "$HERE/$CHROMIUM_NAME" $CHROMIUM_FLAGS "$@"
