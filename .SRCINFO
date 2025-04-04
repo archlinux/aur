@@ -1,6 +1,6 @@
 pkgbase = python-biliass
 	pkgdesc = 将 B 站 XML/protobuf 弹幕转换为 ASS 弹幕
-	pkgver = 2.2.0
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/yutto-dev/yutto/tree/main/packages/biliass
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-biliass
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-maturin
-	source = https://pypi.io/packages/source/b/biliass/biliass-2.2.0.tar.gz
-	sha256sums = 94328ebc52e641516cd32d22c1fa6f2d6a5a648c8f0494802d691bb3e8175d4e
+	source = https://pypi.io/packages/source/b/biliass/biliass-2.2.2.tar.gz
+	sha256sums = 4da1609a565568a3d9d8a9e56c2a10de95519606795860019fcc2f70360366c2
 
 pkgname = python-biliass

@@ -2,7 +2,7 @@
 
 pkgname=python-biliass
 _pypiname=biliass
-pkgver=2.2.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='将 B 站 XML/protobuf 弹幕转换为 ASS 弹幕'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=()
 makedepends=(python-build python-installer python-wheel python-maturin)
 source=("https://pypi.io/packages/source/${_pypiname:0:1}/$_pypiname/$_pypiname-$pkgver.tar.gz")
-sha256sums=('94328ebc52e641516cd32d22c1fa6f2d6a5a648c8f0494802d691bb3e8175d4e')
+sha256sums=('4da1609a565568a3d9d8a9e56c2a10de95519606795860019fcc2f70360366c2')
 
 build() {
     cd "$_pypiname-$pkgver"
