@@ -2,7 +2,7 @@ pkgbase = keypunch-git
 	pkgdesc = Practice your typing skills
 	pkgver = 5.1.r66.g1c07b2c
 	pkgrel = 1
-	url = https://kkgithub.com/bragefuglseth/keypunch
+	url = https://github.com/bragefuglseth/keypunch
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = keypunch-git
 	depends = libadwaita
 	provides = keypunch
 	conflicts = keypunch
-	source = git+https://kkgithub.com/bragefuglseth/keypunch.git
+	source = git+https://github.com/bragefuglseth/keypunch.git
 	sha256sums = SKIP
 
 pkgname = keypunch-git
