@@ -5,7 +5,7 @@
 
 _repository='LibreCAD'
 pkgname=librecad-git
-pkgver=2.2.2_alpha.latest.r229.g7528d8184
+pkgver=2.2.2_alpha.latest.r352.g7befe2a
 pkgrel=1
 pkgdesc="A 2D CAD drawing tool based on the community edition of QCad."
 arch=('x86_64')
@@ -24,7 +24,7 @@ function pkgver
 {
     cd "$_repository"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 function build
@@ -44,7 +44,7 @@ function package
 {
     cd "$_repository"
 
-    install -m 644 -Dt "$pkgdir/usr/share/pixmaps" librecad/res/main/librecad.png
+    install -m 644 -Dt "$pkgdir/usr/share/pixmaps" librecad/res/images/librecad.png
     install -m 644 -Dt "$pkgdir/usr/share/applications" desktop/librecad.desktop
     install -m 644 -Dt "$pkgdir/usr/share/man/man1" desktop/librecad.1
 
