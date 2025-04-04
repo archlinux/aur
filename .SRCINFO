@@ -1,6 +1,6 @@
 pkgbase = aws-iam-authenticator-bin
 	pkgdesc = A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
-	pkgver = 0.6.30
+	pkgver = 0.6.31
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/aws-iam-authenticator
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = aws-iam-authenticator-bin
 	license = Apache-2.0
 	provides = aws-iam-authenticator
 	conflicts = aws-iam-authenticator
-	source_x86_64 = aws-iam-authenticator_0.6.30_x86_64::https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.30/aws-iam-authenticator_0.6.30_linux_amd64
-	sha256sums_x86_64 = a36dd03a75833d5846cb044cfbaaae15800cefa346805647fe454c5d1871d1c6
-	source_aarch64 = aws-iam-authenticator_0.6.30_aarch64::https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.30/aws-iam-authenticator_0.6.30_linux_arm64
-	sha256sums_aarch64 = f6621ca85dc5c257a53968a2b9fd67bb4e15ca88fcb05eaea96dbb73fd1d991d
+	source_x86_64 = aws-iam-authenticator_0.6.31_x86_64::https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.31/aws-iam-authenticator_0.6.31_linux_amd64
+	sha256sums_x86_64 = a0a828913d71305792eeca4ff71f2abce6d9fcff7b7612b765f760012aad4727
+	source_aarch64 = aws-iam-authenticator_0.6.31_aarch64::https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.31/aws-iam-authenticator_0.6.31_linux_arm64
+	sha256sums_aarch64 = a38e26787110fecc1104d346a23f9864070f7c4a29aea09d41e3a280d2bde53c
 
 pkgname = aws-iam-authenticator-bin
