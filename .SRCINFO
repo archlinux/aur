@@ -1,11 +1,12 @@
 pkgbase = mn88472-firmware
 	pkgver = 6.427.2017
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.astrometa.com.tw/
 	arch = any
 	groups = dvb-firmware
-	license = unknown
+	license = LicenseRef-proprietary
 	makedepends = p7zip
+	makedepends = zstd
 	source = https://dl.dropbox.com/s/ffckhetzp3vmjio/AMDVBT2_Setup_170427.exe
 	b2sums = b8027cd4715b3c9c08827dd30e99b69b6b2b8cd45ccd35ac01bac527eaa5cbf09219dc4b2515b1635ada690d4b845db0b12d12aaf1be57117b6a8222f81464c1
 
