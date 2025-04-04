@@ -3,10 +3,10 @@
 
 _java_ver=8
 _jdkname="zing-${_java_ver}"
-_zing_build="24.12.0.0"
-_zing_weirdnumber="6"
+_zing_build="25.02.0.0"
+_zing_weirdnumber="2"
 pkgname="${_jdkname}-bin"
-pkgver="${_java_ver}.0.432"
+pkgver="${_java_ver}.0.442"
 pkgrel=4
 pkgdesc='Azul Platform Prime is a modern, TCK-compliant Java platform based on OpenJDK.'
 arch=('aarch64' 'x86_64')
@@ -35,8 +35,8 @@ source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_buil
 source=("${pkgname}.install")
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/ZVM23.12.0.0/zing23.12.0.0-4-jdk8.0.392-linux_x64.tar.gz
-sha256sums_aarch64=('9cc022609ad3cd3d3e6726e3adf4c4c6ceb5cf2e4211e9bbccbe2c555fc5b23c')
-sha256sums_x86_64=('eff5bd82096bfcf019de48be281fe88ea0a4d85600527d814375dfb16a14c434')
+sha256sums_aarch64=('8d96de6ec392c20e93178f9400f8ebc92020cbd77bda55530302d9dd83d37782')
+sha256sums_x86_64=('8855a7e0863401b851066108e43b66e19f4ede302e9767f2e04ab2205518b087')
 sha256sums=('1762188053ca0c6413cfeb4fba26a5075072726fe230e54e1a18a1793abe5b84')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
