@@ -21,6 +21,7 @@ compare-versions:
 	cat PKGBUILD | sed -r -n -e 's/^\s*pkgver\s*=\s*([0-9\.]+)\s*$$/\1/p'
 	curl -s https://desktop.download.sipgate.com/latest.yml | yq '.version'
 	curl -s https://desktop.download.sipgate.com/latest-linux.yml | yq '.version'
+	curl -s https://desktop.download.sipgate.com/latest-mac.yml | yq '.version'
 
 clean:
 	rm -rf src pkg sipgate-app-clinq*.tar.zst

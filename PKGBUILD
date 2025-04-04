@@ -1,9 +1,9 @@
 # Maintainer: Oliver Wegner <oliver.wegner(at)csr-informatik(dot)de>
 
 pkgname=sipgate-app-clinq
-pkgdesc="Telephony desktop application for sipgate Clinq customers"
-pkgver=2.7.1
-_distfile="sipgate%20CLINQ-${pkgver}-amd64.deb"
+pkgdesc="Telephony desktop application for sipgate customers"
+pkgver=2.8.4
+_distfile="sipgate-${pkgver}-amd64.deb"
 pkgrel=1
 arch=('x86_64')
 url="https://sipgate.de/app"
@@ -18,8 +18,8 @@ source=(
 )
 noextract=("${_distfile}")
 b2sums=(
-	'a59d4fc894688f9b4b30d9f6ae37e4f5ad34f8d4c0ec430b1bd96b4877e4f084c11cd4a5a1968628dd27ceb103c9e0b81c82b003f175d4bc9013144b89a6b13e'
-	'8c9ad55d10db55c4c97f45f119e43d68abfa5acab6424b88eddafaa4e706b7a997569ea1da973b04482230c22ccdda3a1baada1a520b7d06e23ae76a96478eb1'
+	'49de305c310ce5bda6fbc14c69b2495ac996b1d51d451901c36d12fcf16a7eb222abe87f2d02ce0c3bd13569e621bd3542f2c410e68760358275f9bdb40e6461'
+	'16f877664cb574917a7c5f6d310523e0dda7b00c162621410fc81de94e85f2a6699749210c931b7269b1063d434c41da44c5ee96cbb0eb621420746a76723830'
 )
 
 pkgver() {
@@ -39,15 +39,15 @@ package() {
 
 	# move LICENSE files to intended location
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-	mv "${pkgdir}/opt/sipgate CLINQ/LICENSE.electron.txt" \
+	mv "${pkgdir}/opt/sipgate/LICENSE.electron.txt" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/"
-	mv "${pkgdir}/opt/sipgate CLINQ/LICENSES.chromium.html" \
+	mv "${pkgdir}/opt/sipgate/LICENSES.chromium.html" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/"
 
 	# copy run script
 	install -dm755 "${pkgdir}/usr/bin"
 	install -Dm755 "run-sipgate-desktop.sh" \
-		"${pkgdir}/opt/sipgate CLINQ/run-sipgate-desktop.sh"
-	ln -s "/opt/sipgate CLINQ/run-sipgate-desktop.sh" \
+		"${pkgdir}/opt/sipgate/run-sipgate-desktop.sh"
+	ln -s "/opt/sipgate/run-sipgate-desktop.sh" \
 		"${pkgdir}/usr/bin/sipgate-desktop"
 }

@@ -42,6 +42,6 @@ if [ $? -ge 2 ]; then
   echo "$MSG" >&2
   exit 1
 else
-  exec /opt/sipgate\ CLINQ/sipgate-desktop
+  exec /opt/sipgate/sipgate-desktop
 fi
 

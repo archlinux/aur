@@ -1,18 +1,18 @@
 pkgbase = sipgate-app-clinq
-	pkgdesc = Telephony desktop application for sipgate Clinq customers
-	pkgver = 2.7.1
+	pkgdesc = Telephony desktop application for sipgate customers
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://sipgate.de/app
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = dpkg
 	provides = sipgate-app-clinq
-	noextract = sipgate%20CLINQ-2.7.1-amd64.deb
+	noextract = sipgate-2.8.4-amd64.deb
 	options = !debug
-	source = https://desktop.download.sipgate.com/sipgate%20CLINQ-2.7.1-amd64.deb
+	source = https://desktop.download.sipgate.com/sipgate-2.8.4-amd64.deb
 	source = run-sipgate-desktop.sh
-	b2sums = a59d4fc894688f9b4b30d9f6ae37e4f5ad34f8d4c0ec430b1bd96b4877e4f084c11cd4a5a1968628dd27ceb103c9e0b81c82b003f175d4bc9013144b89a6b13e
-	b2sums = 8c9ad55d10db55c4c97f45f119e43d68abfa5acab6424b88eddafaa4e706b7a997569ea1da973b04482230c22ccdda3a1baada1a520b7d06e23ae76a96478eb1
+	b2sums = 49de305c310ce5bda6fbc14c69b2495ac996b1d51d451901c36d12fcf16a7eb222abe87f2d02ce0c3bd13569e621bd3542f2c410e68760358275f9bdb40e6461
+	b2sums = 16f877664cb574917a7c5f6d310523e0dda7b00c162621410fc81de94e85f2a6699749210c931b7269b1063d434c41da44c5ee96cbb0eb621420746a76723830
 
 pkgname = sipgate-app-clinq
 	depends = gtk3
