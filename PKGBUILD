@@ -23,15 +23,12 @@ prepare() {
   sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
 
   # build with cmake 3.x
-  wget https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.sh
-  rm -rf cmake3
-  mkdir -p cmake3
-  sh cmake-3.31.6-linux-x86_64.sh --skip-license --prefix=$PWD/cmake3
+  curl -fSsL https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz | tar xz
 }
 
 build() {
   cd "$srcdir/OpenModelica"
-  ./cmake3/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
+  ./cmake-3.31.6-linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
   make -C build
 }
 
