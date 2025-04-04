@@ -7,7 +7,7 @@ _Name="osgEarth"
 pkgbase="${_Name,,}"
 pkgname=("${pkgbase}"{,'-docs'})
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=('aarch64' 'i686' 'x86_64')
 url="https://www.pelicanmapping.com/home-1/opensource"
@@ -91,7 +91,7 @@ package_osgearth() {
   install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 
   find "data" "tests" -type f -exec \
-    install -Dm644 "{}" "${pkgdir}/usr/share/${_Name}/{}" \;
+    install -Dm644 "{}" "${pkgdir}/usr/share/${pkgbase}/{}" \;
 }
 
 package_osgearth-docs() {

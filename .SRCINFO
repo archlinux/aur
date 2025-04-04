@@ -1,7 +1,7 @@
 pkgbase = osgearth
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pelicanmapping.com/home-1/opensource
 	arch = aarch64
 	arch = i686
