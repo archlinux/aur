@@ -1,6 +1,6 @@
 pkgbase = drawio
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 26.1.1
+	pkgver = 26.2.2
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = drawio
 	makedepends = ant
 	makedepends = npm
 	options = !strip
-	source = drawio-26.1.1.tar.gz::https://github.com/jgraph/drawio/archive/refs/tags/v26.1.1.tar.gz
-	sha512sums = da77ffdb7debb4ca45e607725a44931b7cd1735db786955f6eb4e7e9791eddc319a95909967d1388c19d73f44c4461b52b2d57a0f2f9e0d11cf16445a19b4c75
+	source = drawio-26.2.2.tar.gz::https://github.com/jgraph/drawio/archive/refs/tags/v26.2.2.tar.gz
+	sha512sums = 1d1197b5df863347129c9c42f8a81c4501aa7f8881680e11851a0c513efa7a2916885e2694a391c75cc08d8c8aba325deb8e0b495ea392d4ba95e03794ebab55
 
 pkgname = drawio
