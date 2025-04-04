@@ -1,0 +1,6 @@
+post_install() {
+    echo "Note: to use ZVM, you need to add the following path to PATH:"
+    echo "export PATH=\$PATH:\${XDG_DATA_HOME:-$HOME/.local/share}/zvm/bin"
+    echo "You can add this line to your shell configuration file (e.g., ~/.bashrc or ~/.zshrc)."
+    echo "After adding, run 'source ~/.bashrc' or 'source ~/.zshrc' to apply the changes."
+}
