@@ -19,7 +19,7 @@ sha256sums=(
 )
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "tchMaterial-parser-$pkgver"
   cp ../../setup.py .
   cp ../../*.desktop .
   mv src/tchMaterial-parser.pyw src/main.py
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "tchMaterial-parser-$pkgver"
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   #sudo chmod +x /usr/bin/tchMaterial-parser
