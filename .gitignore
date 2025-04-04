@@ -1,5 +1,6 @@
 *.pkg.tar.*
 *.deb
-/pkg/
-/src/
-/tags
+pkg/
+src/
+.history/
+LICENSE*

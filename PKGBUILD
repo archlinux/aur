@@ -1,36 +1,49 @@
-# Maintainer: Johannes Wienke <languitar@semipol.de>
+# Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=drawio-desktop-bin
-pkgver=24.7.5
+pkgver=26.2.2
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
-arch=('x86_64')
-url="https://github.com/jgraph/drawio-desktop"
-license=('Apache')
+arch=('x86_64' 'aarch64')
+url="https://www.drawio.com"
+license=('Apache-2.0')
 depends=(
     "gtk3"
     "libxss"
     "nss"
     "alsa-lib"
 )
-provides=('drawio-desktop')
+provides=('drawio-desktop' 'drawio-desktop-bin')
 conflicts=('drawio-desktop')
-optdepends=()
-makedepends=()
-source=("${pkgname}-${pkgver}.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-amd64-${pkgver}.deb")
-sha256sums=('196fd079cf2625be122d2ab94342ddb9547ff500d7398daaf35432aee1674973')
+# optdepends=()
+# makedepends=()
+source=(
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/jgraph/drawio-desktop/refs/heads/dev/LICENSE"
+)
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-amd64-${pkgver}.deb")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v${pkgver}/drawio-arm64-${pkgver}.deb")
+sha256sums=('b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1')
+sha256sums_x86_64=('ce60cf16d231a8c6cee8bbd6d7cbe1f2fc0ce6bb30de399dc6529605ae71dcec')
+sha256sums_aarch64=('b6e466cdc98ef3766978628a082220994dbb87b5cf2ee4346af9af6b3ad3f36f')
 
 prepare() {
-    cd "${srcdir}"
-    /usr/bin/ar p "${pkgname}-${pkgver}.deb" data.tar.xz | bsdtar xf -
+    # extract deb archive
+	[ -f "data.tar.xz" ] && bsdtar -xf data.tar.xz
+	[ -f "data.tar.zst" ] && bsdtar -xf data.tar.zst
+
+    rm -r "usr/share/doc"
+    mv usr/share/applications/drawio.desktop usr/share/applications/drawio-desktop.desktop
+    sed -i "s|Exec=/opt/drawio/drawio %U|Exec=/opt/${pkgname%-bin}/drawio %U|g" usr/share/applications/drawio-desktop.desktop
+    sed -i "s|Name=drawio|Name=${pkgname%-bin}|g" usr/share/applications/drawio-desktop.desktop
 }
 
 package() {
-    cd "${srcdir}"
-    cp -R opt "${pkgdir}/opt"
-    cp -R usr "${pkgdir}/usr"
-    chmod 4755 "${pkgdir}/opt/drawio/chrome-sandbox"
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "/opt/drawio/drawio" "${pkgdir}/usr/bin/draw.io"
-    ln -sf "/opt/drawio/drawio" "${pkgdir}/usr/bin/drawio"
+    install -dm755 "${pkgdir}/opt"
+    cp -r "${srcdir}/opt/drawio" "${pkgdir}/opt/${pkgname%-bin}"
+    cp -r "${srcdir}/usr" "${pkgdir}/"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf "/opt/${pkgname%-bin}/drawio" "${pkgdir}/usr/bin/drawio"
+
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
