@@ -4,8 +4,10 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: mutantmonkey <mutantmonkey@gmail.com>
 
-_pkgname=sendmail # libmilter is bundled with the sendmail source
-pkgname=libmilter
+_origname=sendmail # libmilter is bundled with the sendmail source
+_pkgname=libmilter
+pkgname=libmilter-sharedlib
+pkgbase="${pkgname}"
 pkgver=8.18.1
 pkgrel=4
 pkgdesc='Implementation of the sendmail Mail Filter API'
