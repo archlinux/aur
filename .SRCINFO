@@ -1,0 +1,13 @@
+pkgbase = sdf_mono_atlas
+	pkgdesc = Tool for generating a monospaced ASCII SDF atlas
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jakubsmolaga/sdf_mono_atlas
+	arch = x86_64
+	license = Unlicense
+	makedepends = clang
+	makedepends = make
+	source = sdf_mono_atlas-1.0.0.tar.gz::https://github.com/jakubsmolaga/sdf_mono_atlas/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c170436e55e8c0d19f61b00c50be1384793b45ec1358a8e99dac9705830d3dab
+
+pkgname = sdf_mono_atlas
