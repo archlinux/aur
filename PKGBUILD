@@ -46,6 +46,8 @@ prepare() {
   cd "$pkgname"
   stack config set resolver lts-23.1 # ghc-9.8.4
 
+  # Note -- need to bump filepath for ghc-lib-parser
+  # and touching a boot package means we need to touch all the others
   _bumpVer directory 1.3.9.0
   _bumpVer filepath  1.5.4.0
   _bumpVer process   1.6.25.0
