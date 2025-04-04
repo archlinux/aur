@@ -1,12 +1,12 @@
 pkgbase = golored
 	pkgdesc = color shell scripts' output
-	pkgver = 0.0.3
+	pkgver = 1.0.0
 	pkgrel = 3
 	url = https://github.com/alexcoder04/golored
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = https://github.com/alexcoder04/golored/archive/refs/tags/v0.0.3.tar.gz
-	md5sums = 8561eb21f693deac1cd9777de426a699
+	source = https://github.com/alexcoder04/golored/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 35fd91df89daabc8e66e7215904c2c06fde9fc552edab6d196421bef1c440182
 
 pkgname = golored
