@@ -16,9 +16,9 @@ options=(!emptydirs !lto)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
 sha512sums=('932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396'
 'SKIP')
-validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
-              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
-              13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
+validpgpkeys=('33C235A34C46AA3FFB293709A328C3A2C3C45C06'  # Jakub Jelinek <jakub@redhat.com>
+              'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62'  # Jakub Jelinek <jakub@redhat.com>
+              '13975A70E63C361C73AE69EF6EEB81F8981C74C7') # Richard Guenther <richard.guenther@gmail.com>
 _basedir=gcc-$pkgver
 
 prepare() {
