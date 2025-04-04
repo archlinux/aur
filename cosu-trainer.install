@@ -1,0 +1,14 @@
+post_install() {
+   echo "Granting CAP_SYS_PTRACE to /usr/bin/osumem.."
+   setcap cap_sys_ptrace=eip /usr/bin/osumem
+   inform_usage
+}
+
+post_upgrade() {
+    post_install
+}
+
+inform_usage() {
+    echo "Before running 'cosu-trainer', make sure to launch 'osumem' to allow"
+    echo "the program to access to your osu! data."
+}
