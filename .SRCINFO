@@ -1,0 +1,18 @@
+pkgbase = firefox-esr-extension-bitwarden
+	pkgdesc = Bitwarden browser extension for Firefox ESR
+	pkgver = 2025.3.2
+	pkgrel = 1
+	url = https://github.com/bitwarden/clients/tree/main/apps/browser
+	arch = any
+	groups = firefox-esr-addons
+	license = GPL-3.0-or-later
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = unzip
+	makedepends = zip
+	makedepends = jq
+	optdepends = firefox-esr
+	source = firefox-esr-extension-bitwarden-2025.3.2.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v2025.3.2.tar.gz
+	b2sums = 0b14794ae2c44ead90a0db928a080a134b52e2a49eb01bb4a8203ec6c743faa644ee1a0f6de33879d696603a33a339b38f98981ef3945176db3071a7d6885b4f
+
+pkgname = firefox-esr-extension-bitwarden
