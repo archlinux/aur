@@ -1,0 +1,27 @@
+pkgbase = stalwart-mail-server
+	pkgdesc = Secure & Modern All-in-One Mail Server
+	pkgver = 0.11.7
+	pkgrel = 1
+	url = https://github.com/stalwartlabs/mail-server
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = cargo
+	makedepends = cargo-auditable
+	makedepends = protobuf
+	makedepends = clang
+	depends = glibc
+	depends = gcc-libs
+	options = !buildflags
+	source = https://github.com/stalwartlabs/mail-server/archive/v0.11.7/mail-server-0.11.7.tar.gz
+	source = config.toml
+	source = stalwart-mail.service
+	source = stalwart-mail.sysusers
+	source = stalwart-mail.tmpfiles
+	sha512sums = ba586e589d58c8231c53a240a012fa613dbfdc7b4ad341d1bdb1eac28851775e5df5be492a48f392d125814c48de1a33d45b1a87702dafe4e24d26935cae0138
+	sha512sums = 6c5eb49d1b9707e35e811f959b702af2988667287bdbf484a305b2bc8ef1bd96d49054698bb5bb177cd3ca798e42a6a41efd46ee3be2d6a4765edda38d7a3995
+	sha512sums = c3b66be0f6cf6a31b646bfb8ae20e847932bc9ca1de5b572716340e45532d8f24faa5b71531c835fc9319c4950412194f8b5deafee73e8650559ddd8d64903eb
+	sha512sums = ab307a09fcb802fdec29811b51288ed1e80f3f00550e60d2f82310892aa900f15a68942e531f78269b5527f4f6c69b1c255cf108d8d19dbf10f535f0ffa9f66a
+	sha512sums = c811d14233606bd3fdb698e781c11acc4626c14546d6a678aa12a482a40e22384b3fd2879f845cfce0ccb14d23eaaeff68625c9a9f922da6956eba7e4d88aa00
+
+pkgname = stalwart-mail-server

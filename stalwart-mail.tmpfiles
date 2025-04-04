@@ -1,0 +1,2 @@
+d /var/lib/stalwart-mail        0700 stalwart-mail stalwart-mail - -
+d /var/lib/stalwart-mail/data   0700 stalwart-mail stalwart-mail - -

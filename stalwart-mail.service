@@ -1,0 +1,21 @@
+[Unit]
+Description=Stalwart Mail Server
+Conflicts=postfix.service sendmail.service exim4.service
+ConditionPathExists=/etc/stalwart-mail/config.toml
+After=network-online.target
+
+[Service]
+Type=simple
+LimitNOFILE=65536
+KillMode=process
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+ExecStart=/usr/bin/stalwart-mail --config=/etc/stalwart-mail/config.toml
+SyslogIdentifier=stalwart-mail
+User=stalwart-mail
+Group=stalwart-mail
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
