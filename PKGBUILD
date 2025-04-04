@@ -2,7 +2,7 @@
 
 pkgname=trivalent-bin
 pkgver=135.0.7049.52
-pkgrel=2
+pkgrel=3
 pkgdesc="A hardened chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
 url="https://github.com/secureblue/Trivalent"
@@ -21,15 +21,17 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'qt6-base: QT UI support')
 source=("https://repo.secureblue.dev/Packages/trivalent-135.0.7049.52-435910.x86_64.rpm"
         "https://repo.secureblue.dev/Packages/trivalent-common-135.0.7049.52-435910.x86_64.rpm"
-        "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-135.0.7049.52-435910.x86_64.rpm")
+        "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-135.0.7049.52-435910.x86_64.rpm"
+        "only-bind-ld-so-preload-if-it-exists.patch")
 sha256sums=('1d87f113465c8d6a18c807a288a6582ccaea62a794f83bff3d92b9d5a1f6c2b8'
             '31cdd94b2bc3e0d59ffb06e0319e9895f27530a48ad17e16abd06a7e8050f373'
-            'ad53f1b352ef04a908d6cd353eb2f586188026812649b30bbf742fb59a26d519')
+            'ad53f1b352ef04a908d6cd353eb2f586188026812649b30bbf742fb59a26d519'
+            '27d046cc159892b2f5efe2defeeb1c126cb7ce3c81888c6b19354343affe1d3f')
 
 prepare() {
+	patch -Np2 -d "${srcdir}/usr/lib64/trivalent" -i "${srcdir}/only-bind-ld-so-preload-if-it-exists.patch"
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
 	sed -i 's/$(arch)/$(uname -m)/' "${srcdir}/etc/trivalent/trivalent.conf"
-	patch -Np2 -d "${srcdir}/usr/lib/" -i only-bind-ld-so-preload-if-it-exists.patch
 }
 
 package() {
