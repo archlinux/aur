@@ -1,7 +1,7 @@
 pkgbase = wooz-git
 	pkgdesc = zoom / magnifier utility for Wayland
-	pkgver = r1.e221728
-	pkgrel = 1
+	pkgver = r169.aa33ad2
+	pkgrel = 2
 	url = https://github.com/negrel/wooz
 	arch = x86_64
 	license = MIT

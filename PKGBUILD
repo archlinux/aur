@@ -1,7 +1,8 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=wooz-git
-pkgver=r1.e221728
-pkgrel=1
+_reponame=wooz
+pkgver=r169.aa33ad2
+pkgrel=2
 pkgdesc='zoom / magnifier utility for Wayland'
 arch=(x86_64)
 url='https://github.com/negrel/wooz'
@@ -20,11 +21,11 @@ pkgver() {
 }
 
 build() {
-	arch-meson build $pkgname
+	arch-meson build $_reponame
 	ninja -C build
 }
 
 package() {
 	DESTDIR="$pkgdir" ninja -C build install
-	install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 $_reponame/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
