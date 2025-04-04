@@ -1,4 +1,4 @@
-# Maintainer: Gde Mahardhikha Satrigraha <dijedodol@yahoo.com>
+# Maintainer: Peter Donka <peter.donka@gmail.com>
 pkgname=kube-ps1
 pkgver=0.9.0
 pkgrel=1
