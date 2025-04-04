@@ -1,6 +1,6 @@
 pkgbase = fmodengine
 	pkgdesc = FMOD Engine API and tools - Audio engine and toolset for games.
-	pkgver = 2.03.06
+	pkgver = 2.03.07
 	pkgrel = 1
 	url = https://www.fmod.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fmodengine
 	makedepends = jq
 	makedepends = patchelf
 	depends = glibc
-	noextract = fmodstudioapi20306linux.tar.gz
+	noextract = fmodstudioapi20307linux.tar.gz
 	options = !strip
 	source = LICENSE.html
 	sha256sums = 6288db3085c1d1dbefaa3a4c93cd0e8f5a3f589849cc6f5b8812c80fafac474c
