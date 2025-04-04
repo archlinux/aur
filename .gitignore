@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.nvchecker.toml
+!.gitignore
+!site.config.m4
+!*.patch

@@ -1,0 +1,49 @@
+--- sendmail-8.18.1/libmilter/Makefile.m4	2024-01-31 08:38:32.000000000 +0200
++++ sendmail-8.18.1/libmilter/Makefile.m4.new	2025-04-02 20:11:56.266695031 +0200
+@@ -9,9 +9,15 @@
+ SMSRCDIR=ifdef(`confSMSRCDIR', `confSMSRCDIR', `${SRCDIR}/sendmail')
+ PREPENDDEF(`confINCDIRS', `-I${SMSRCDIR} ')
+ 
++dnl Extract milter version number from `mfapi.h' file
++define(`runCtest', `esyscmd(`echo -e "#include <stdio.h>\n#include \"../include/libmilter/mfapi.h\"\nint main(){'$1`;return 0;}" | gcc -x c -I../include -o ctest - && ./ctest && rm -f ctest')')dnl
++define(`conf_libmilter_SOVERSION', runCtest(`printf(\"%d.%d.%d\", SM_LM_VRS_MAJOR(SMFI_VERSION), SM_LM_VRS_MINOR(SMFI_VERSION), SM_LM_VRS_PLVL(SMFI_VERSION))'))dnl
++define(`conf_libmilter_SONAME', runCtest(`printf(\"%d\", SM_LM_VRS_PLVL(SMFI_VERSION))'))dnl
++
+ bldPRODUCT_START(`library', `libmilter')
+ define(`bldINSTALLABLE', `true')
+ define(`LIBMILTER_EXTRAS', `errstring.c strl.c')
++APPENDDEF(`confCCOPTS', `-fPIC')
+ APPENDDEF(`confENVDEF', `-DNOT_SENDMAIL -Dsm_snprintf=snprintf')
+ define(`bldSOURCES', `main.c engine.c listener.c worker.c handler.c comm.c smfi.c signal.c sm_gethost.c monitor.c LIBMILTER_EXTRAS ')
+ define(`confBEFORE', `LIBMILTER_EXTRAS')
+@@ -28,6 +34,30 @@
+ 
+ 
+ divert(bldTARGETS_SECTION)
++sm_libmilter_soname = conf_libmilter_SONAME
++sm_libmilter_soversion = conf_libmilter_SOVERSION
++
++libmilter.a: libmilter.so.${sm_libmilter_soversion}
++libmilter.so.${sm_libmilter_soversion}: ${BEFORE} ${libmilterOBJS}
++	${CC} -shared -pthread \
++		${CFLAGS} ${confCCOPTS} -fPIC ${confLDOPTS} ${LDOPTS_SO} \
++		-o libmilter.so.${sm_libmilter_soversion} \
++		-Wl,-soname,${sm_libmilter_soname} \
++		${libmilterOBJS}
++	${LN} ${LNOPTS} libmilter.so.${sm_libmilter_soversion} libmilter.so.${sm_libmilter_soname}
++	${LN} ${LNOPTS} libmilter.so.${sm_libmilter_soname} libmilter.so
++
++install-libmilter: install-libmilter-shared
++install-libmilter-shared: libmilter.so.${sm_libmilter_soversion}
++	${INSTALL} -d ${DESTDIR}${LIBDIR}
++	${INSTALL} -c -o ${LIBOWN} -g ${LIBGRP} -m ${LIBMODE} libmilter.so.${sm_libmilter_soversion} ${DESTDIR}${LIBDIR}
++	${LN} ${LNOPTS} libmilter.so.${sm_libmilter_soversion} ${DESTDIR}${LIBDIR}/libmilter.so.${sm_libmilter_soname}
++	${LN} ${LNOPTS} libmilter.so.${sm_libmilter_soname} ${DESTDIR}${LIBDIR}/libmilter.so
++
++libmilter-clean: libmilter-clean-shared
++libmilter-clean-shared:
++	rm -f libmilter.so libmilter.so.${sm_libmilter_soname} libmilter.so.${sm_libmilter_soversion}
++
+ # Install the API header files
+ MFAPI=	${SRCDIR}/inc`'lude/libmilter/mfapi.h
+ MFDEF=	${SRCDIR}/inc`'lude/libmilter/mfdef.h
