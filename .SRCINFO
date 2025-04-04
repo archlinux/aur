@@ -1,7 +1,7 @@
 pkgbase = v2ray-bin
 	pkgdesc = A platform for building proxies to bypass network restrictions
 	pkgver = 5.29.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v2fly/v2ray-core
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = v2ray-bin
 	options = !debug
 	source = v2ray_5.29.3.zip::https://github.com/v2fly/v2ray-core/releases/download/v5.29.3/v2ray-linux-64.zip
 	source = LICENSE
-	sha512sums = 8d5e71837dfc2d2f510fd5d18e9b023ad3b406ccd709a94854c10da4abef8f9f60e645ade1c8f6f23f969c24c207539de300b483a2643eedf3edeb620f73356b
+	sha512sums = ebeb3a1a46530b39382257237191e2181af29a1bbceb65207415f0f076d6c507656862b58b8b9d4059d41561c7f3ab7cde8f6bdb54593a7918578b3c879a6117
 	sha512sums = 866fed989ae66146085718c7d12dcff81de0e3f6be426a8407ddf8c7da4dc68f71e3ff1324621a25e8f6edfdad3fc6ff2e6f72971731a0ff248a35808a6599c9
 
 pkgname = v2ray-bin
