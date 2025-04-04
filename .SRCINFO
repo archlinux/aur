@@ -1,6 +1,6 @@
 pkgbase = fritzbox-tools
 	pkgdesc = Manage FRITZ!Box devices via command line.
-	pkgver = 0.45
+	pkgver = 0.46
 	pkgrel = 1
 	url = https://mengelke.de/Projekte/FritzBox-Tools
 	install = fritzbox-tools.download
@@ -11,9 +11,9 @@ pkgbase = fritzbox-tools
 	makedepends = tinyxxd
 	makedepends = bash
 	depends = php>=4.4
-	provides = fritzbox-tools=0.45
+	provides = fritzbox-tools=0.46
 	backup = opt/fritzbox-tools/fb_config.json
-	source = fb_tools-0.45.txz::https://mengelke.de/Projekte/FritzBox-Tools;fb_tools.txz
-	md5sums = 8da307128071ba4c271b9232fb915f70
+	source = fb_tools-0.46.txz::https://mengelke.de/Projekte/FritzBox-Tools;fb_tools.txz
+	md5sums = 10f008a7bea1ab6741cb76d920f170b7
 
 pkgname = fritzbox-tools
