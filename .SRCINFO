@@ -1,16 +1,15 @@
-pkgbase = windscribe-v2-bin
+pkgbase = windscribe-no-systemd
 	pkgdesc = Windscribe GUI tool for Linux
 	pkgver = 2.14.12
 	pkgrel = 1
 	url = https://windscribe.com/guides/linux
-	install = windscribe-v2-bin.install
+	install = windscribe-no-systemd.install
 	arch = x86_64
 	license = GPL2
 	depends = nftables
 	depends = c-ares
 	depends = freetype2
 	depends = hicolor-icon-theme
-	depends = systemd
 	depends = glibc>=2.28
 	depends = glib2
 	depends = zlib
@@ -35,4 +34,4 @@ pkgbase = windscribe-v2-bin
 	source = https://deploy.totallyacdn.com/desktop-apps/2.14.12/windscribe_2.14.12_x86_64.pkg.tar.zst
 	sha1sums = e04d96b77362917c3fa99ca50941698045e6c99c
 
-pkgname = windscribe-v2-bin
+pkgname = windscribe-no-systemd
