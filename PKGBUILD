@@ -1,6 +1,6 @@
 # Maintainer: alexcoder04 <alexcoder04@protonmail.com>
 pkgname=frei
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A modern replacement for the 'free' command-line utility"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('c026e049ccce590a6707a4fac5ee0d55')
+sha256sums=('78954501bdaad628482b895cf4fbc2e6101119ad56d20fe420a99a5b2180cc63')
 
 build(){
     cd "$pkgname-$pkgver"
