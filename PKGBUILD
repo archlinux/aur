@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=4.2.0.r0.g9963dba
-pkgrel=2
+pkgver=4.2.1.r2.ge50b2dc
+pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go."
 arch=("any")
 url="https://github.com/Zweih/qp"
