@@ -1,19 +1,20 @@
 pkgbase = yamagi-quake2-ctf
 	pkgdesc = Quake II - Three Wave Capture The Flag for yamagi-quake2
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://www.yamagi.org/quake2/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = custom
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = glibc
 	depends = sh
 	depends = yamagi-quake2
-	source = http://deponie.yamagi.org/quake2/quake2-ctf-1.10.tar.xz
+	source = http://deponie.yamagi.org/quake2/quake2-ctf-1.11.tar.xz
 	source = yamagi-quake2-ctf.sh
 	source = yamagi-quake2-ctf.desktop
-	sha256sums = f4cb494dd3fe36b012e547524157dac4222c5f45d1dcd713e6abdbf981e8fc23
-	sha256sums = 9a9abd8d720a719180713163261fed154ec34787c82dda2b9465aefd9890b64c
-	sha256sums = 1191c20ea0e7609d28b44d678ff02b2f06b95a7037d1adfd02e963a62b8f3af2
+	b2sums = abc4ce8c852f687c08e503e802f6d203b1090f3c903e38f38eb9f8c3127ef2b51b45455f3573ce2aae2482615caba4f315d30c9ea20210d26aeba23c9af0bc73
+	b2sums = a795e4c5fe15f5de92ad454cb165ead6a385a31451bf856a7191740ee9164f54d32fbd8eedf48c2585e47ed60c79c2caf84a5cb21d50ef3e8c6f0834c5e5e6ac
+	b2sums = e982a00b16c4982aea0fd566632b5c4e2d0680059025b56a92d844795700b65d77a79c9506dee07a8ab537bee960b3307c29f72b464d72d8a34a9244a04e2d47
 
 pkgname = yamagi-quake2-ctf

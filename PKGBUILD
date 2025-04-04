@@ -1,40 +1,40 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributors: Frederic Bezies, Ronan Rabouin
+# Contributors: Frederic Bezies, Ronan Rabouin, Yamashiro <dev cosmicheron com>
 
-pkgname=yamagi-quake2-ctf
-pkgver=1.10
-pkgrel=1
-arch=('i686' 'x86_64')
-pkgdesc="Quake II - Three Wave Capture The Flag for yamagi-quake2"
-url="https://www.yamagi.org/quake2/"
-license=('GPL' 'custom')
-depends=('sh' 'yamagi-quake2')
-source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
-        "$pkgname.sh"
-        "$pkgname.desktop")
-sha256sums=('f4cb494dd3fe36b012e547524157dac4222c5f45d1dcd713e6abdbf981e8fc23'
-            '9a9abd8d720a719180713163261fed154ec34787c82dda2b9465aefd9890b64c'
-            '1191c20ea0e7609d28b44d678ff02b2f06b95a7037d1adfd02e963a62b8f3af2')
+pkgname='yamagi-quake2-ctf'
+pkgver='1.11'
+pkgrel='1'
+arch=('i686' 'x86_64' 'aarch64')
+pkgdesc='Quake II - Three Wave Capture The Flag for yamagi-quake2'
+url='https://www.yamagi.org/quake2/'
+license=('GPL-2.0-only')
+depends=('glibc' 'sh' 'yamagi-quake2')
+source=(
+    "http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
+    "$pkgname.sh"
+    "$pkgname.desktop")
+b2sums=(
+    'abc4ce8c852f687c08e503e802f6d203b1090f3c903e38f38eb9f8c3127ef2b51b45455f3573ce2aae2482615caba4f315d30c9ea20210d26aeba23c9af0bc73'
+    'a795e4c5fe15f5de92ad454cb165ead6a385a31451bf856a7191740ee9164f54d32fbd8eedf48c2585e47ed60c79c2caf84a5cb21d50ef3e8c6f0834c5e5e6ac'
+    'e982a00b16c4982aea0fd566632b5c4e2d0680059025b56a92d844795700b65d77a79c9506dee07a8ab537bee960b3307c29f72b464d72d8a34a9244a04e2d47'
+)
 
 build() {
-  make -C ${pkgname#*-}-$pkgver
+    make -C ${pkgname#*-}-$pkgver
 }
 
 package() {
-  cd ${pkgname#*-}-$pkgver
+    cd "${pkgname#*-}-${pkgver}"
 
-  # game library
-  install -Dm644 -t "$pkgdir"/usr/lib/yamagi-quake2/ctf release/game.so
+    # game library
+    install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2/ctf" 'release/game.so'
 
-  # game launcher
-  install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
+    # game launcher
+    install -Dm755 "../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  # doc
-  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README
+    # doc
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
 
-  # desktop entry
-  install -Dm644 -t "$pkgdir"/usr/share/applications ../$pkgname.desktop
-
-  # license
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+    # desktop entry
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "../${pkgname}.desktop"
 }
