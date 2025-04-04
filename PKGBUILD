@@ -1,17 +1,18 @@
-# Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
+# Maintainer: Lauri Gustafsson <lauri dot gustafsson at iki dot fi>
+# Maintainer: Benjamin Brienen <benjamin dot brienen at outlook dot com>
 pkgname=wgsl-analyzer-bin
-pkgver=0.9.11
+_pkgver=2025-03-30
+pkgver=${_pkgver//-}
 pkgrel=1
 pkgdesc='A language server for the WGSL shading language'
 url='https://github.com/wgsl-analyzer/wgsl-analyzer'
-source=("wgsl-analyzer-${pkgver}::https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/v$pkgver/wgsl-analyzer-linux-x64")
-noextract=("${source[@]%%::*}")
+source=("wgsl-analyzer-${pkgver}.gz::https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/${_pkgver}/wgsl-analyzer-${CARCH}-unknown-linux-gnu.gz")
 arch=('x86_64')
-license=('MIT' 'APACHE')
-depends=('gcc-libs')
+license=('MIT' 'Apache-2.0')
+depends=('glibc')
 conflicts=('wgsl-analyzer')
 provides=('wgsl-analyzer')
-sha256sums=('4620043a96f95442414f12814ead2696a7ad1b503e980c9b6a7eb514242180c1')
+sha256sums=('825de3c091c5631a23b0d80033a39af603a5983af2775915604570f67be8328f')
 options=('!debug')
 
 package() {
