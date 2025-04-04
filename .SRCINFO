@@ -1,13 +1,14 @@
 pkgbase = wgsl-analyzer
 	pkgdesc = A language server for the WGSL shading language
 	pkgver = 20250330
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wgsl-analyzer/wgsl-analyzer
 	arch = x86_64
 	arch = aarch64
-	license = MIT
-	license = APACHE
+	license = MIT OR Apache-2.0
 	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
 	provides = wgsl-analyzer
 	conflicts = wgsl-analyzer
 	source = wgsl-analyzer-20250330.tar.gz::https://github.com/wgsl-analyzer/wgsl-analyzer/archive/refs/tags/2025-03-30.tar.gz
