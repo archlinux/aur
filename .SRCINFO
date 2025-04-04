@@ -1,0 +1,17 @@
+pkgbase = shclrz-bin
+	pkgdesc = Colored output in the shell made simple
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/alexcoder04/shclrz
+	arch = x86_64
+	license = GPL-3.0-or-later
+	provides = shclrz
+	conflicts = shclrz
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/alexcoder04/shclrz/v0.3.1/LICENSE
+	source = README-0.3.1::https://raw.githubusercontent.com/alexcoder04/shclrz/v0.3.1/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 7839ecf5ef23edaa373b282ce17197cfb90ba80130855cbaa8bdf4fa05b65564
+	source_x86_64 = shclrz-0.3.1::https://github.com/alexcoder04/shclrz/releases/download/v0.3.1/shclrz
+	sha256sums_x86_64 = 99583ddf1032154fad67e3c166002c4d8e4ae54f08e1244c0f362e85546cba81
+
+pkgname = shclrz-bin
