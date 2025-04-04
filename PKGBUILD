@@ -5,7 +5,7 @@
 _pkgname="horizon-electron"
 pkgname="fchat-horizon"
 pkgver=1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A continuation of the heavily modified F-Chat Rising client. Uses system electron."
 url="https://github.com/Fchat-Horizon/Horizon"
 license=('MIT')
