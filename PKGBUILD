@@ -18,26 +18,26 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD)"
+    cd "${srcdir}/${_pkgname}"
+    echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD)"
 }
 
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 check() {
-	cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
