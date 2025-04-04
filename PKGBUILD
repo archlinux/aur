@@ -1,14 +1,16 @@
 # Maintainer: Gde Mahardhikha Satrigraha <dijedodol@yahoo.com>
 pkgname=kube-ps1
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A script that lets you add the current Kubernetes context and namespace configured on kubectl to your Bash/Zsh prompt"
 arch=('any')
 url="https://github.com/jonmosco/kube-ps1"
 license=('APACHE')
 depends=('grep' 'kubectl')
-source=('https://github.com/jonmosco/kube-ps1/archive/v0.7.0.tar.gz')
-md5sums=('4cfab48cf524132b97d7b9255ac21f42')
+source=(
+$pkgname.tar.gz::https://github.com/jonmosco/kube-ps1/archive/v${pkgver}.tar.gz
+)
+md5sums=('441cc43fa130b71ec41258ae310e414b')
 
 install="${pkgname}.pacman"
 
