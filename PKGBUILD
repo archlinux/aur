@@ -3,12 +3,12 @@
 pkgname=wgsl-analyzer-bin
 _pkgver=2025-03-30
 pkgver=${_pkgver//-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for the WGSL shading language'
 url='https://github.com/wgsl-analyzer/wgsl-analyzer'
 source=("wgsl-analyzer-${pkgver}.gz::https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/${_pkgver}/wgsl-analyzer-${CARCH}-unknown-linux-gnu.gz")
 arch=('x86_64')
-license=('MIT' 'Apache-2.0')
+license=('MIT OR Apache-2.0')
 depends=('glibc')
 conflicts=('wgsl-analyzer')
 provides=('wgsl-analyzer')
