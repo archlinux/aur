@@ -1,0 +1,20 @@
+pkgbase = spectro-cam-rs-git
+	pkgdesc = A cross-platform GUI for webcam-based spectrometers.
+	pkgver = 0.2.0.r92
+	pkgrel = 1
+	url = https://github.com/DerFetzer/spectro-cam-rs
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	makedepends = git
+	provides = spectro-cam-rs
+	conflicts = spectro-cam-rs
+	options = !lto
+	source = spectro-cam-rs::git+https://github.com/DerFetzer/spectro-cam-rs.git
+	sha256sums = SKIP
+
+pkgname = spectro-cam-rs-git
