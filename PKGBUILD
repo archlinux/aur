@@ -29,7 +29,7 @@ provides=(
 source=(
   "https://github.com/Fchat-Horizon/Horizon/releases/download/v$pkgver/F-Chat.Horizon-linux-x64.tar.gz"
   "$pkgname.sh"
-  'fchat.desktop'
+  "$pkgname.desktop"
   'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/electron/build/icon.png'
   'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE'
 )
@@ -44,8 +44,8 @@ package() {
   
   # Move misc resources to their correct place
   install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 fchat.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/$pkgname
+  install -Dm644 "$pkgname".desktop -t "$pkgdir"/usr/share/applications
+  install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   # We're using system electron, so pull out just what we actually need.
