@@ -1,0 +1,27 @@
+pkgbase = neuralrack-git
+	pkgdesc = Neural model and impulse response file loader
+	pkgver = r165.47ef5cf
+	pkgrel = 1
+	url = https://github.com/brummer10/NeuralRack
+	arch = aarch64
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = BSD-3-Clause
+	checkdepends = lv2lint
+	makedepends = cairo
+	makedepends = libsndfile
+	makedepends = lv2
+	makedepends = xxd
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	source = git+https://github.com/brummer10/NeuralRack.git
+	sha256sums = SKIP
+
+pkgname = neuralrack-git
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libcairo.so
+	depends = libsndfile.so
