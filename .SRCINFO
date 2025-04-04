@@ -1,6 +1,6 @@
 pkgbase = anytype-alpha
 	pkgdesc = The everything app for those who celebrate trust & autonomy
-	pkgver = 0.45.22
+	pkgver = 0.45.28
 	pkgrel = 2
 	url = https://anytype.io/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = anytype-alpha
 	conflicts = anytype-alpha-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/anyproto/anytype-ts/releases/download/v0.45.22-alpha/anytype_0.45.22-alpha_amd64.deb
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.45.28-alpha/anytype_0.45.28-alpha_amd64.deb
 	source = anytype.sh
-	sha256sums = 7eabd02ea15aa68b11e522c1c588c4eaba044a9d316b160d238d31a46df0955a
+	sha256sums = ebe81d6cefbbdce81b8fa9304e56e81a330cad930d052b37a2f935f55d61f6cd
 	sha256sums = 8688c3f1f2b7e43b1f033549dd8018b7d2d2a9523e4d12995bce43d768e17c3a
 
 pkgname = anytype-alpha
