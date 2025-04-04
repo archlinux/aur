@@ -1,5 +1,5 @@
 pkgname=amphi-notes
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A note-taking app created by Amphi'
 url=https://amphi.site
@@ -7,10 +7,10 @@ arch=('x86_64' 'aarch64')
 license=(APACHE)
 depends=(fuse2 mpv mimalloc)
 options=(!debug)
-source_x86_64=("${url}/releases/notes/notes-linux-x64-1.0.0.deb")
-source_aarch64=("${url}/releases/notes/notes-linux-arm64-1.0.0.deb")
-sha256sums_x86_64=("7500353014a76b88f3b202998c239250661561cf2840b2313be00935a1fd5060")
-sha256sums_aarch64=("31af9a3429e1c73eb5d605d0dff113901e6abacae784a2cc2ff7afb9e1412cce")
+source_x86_64=("${url}/releases/notes/notes-linux-x64-1.1.0.deb")
+source_aarch64=("${url}/releases/notes/notes-linux-arm64-1.1.0.deb")
+sha256sums_x86_64=("d509a37a7d23e0ad31a93b0330a0918f6fb800f03a1c35f382c736915e474ed3")
+sha256sums_aarch64=("8d028fde9cfaabf7b7418c63439aa9652ab913898a531036635490c81cb20e1b")
 _pkgdesktop="amphi-notes.desktop"
 
 
