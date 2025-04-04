@@ -1,7 +1,7 @@
 # Maintainer: Zack Didcott
 
 pkgname=lyri-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="HTTP music dashboard to control playback via playerctl and display lyrics."
 arch=("any")
