@@ -1,4 +1,4 @@
-pkgname=tchMaterial-parser
+pkgname=tchmaterial-parser
 pkgver=3.0
 pkgrel=1
 pkgdesc="国家中小学智慧教育平台 电子课本下载工具，帮助您从智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。 "
