@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.47.r26.gace1b1e
+pkgver=1.0.0.alpha.47.r86.g6a96a43
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64' 'aarch64')
@@ -53,7 +53,8 @@ prepare() {
 build() {
   arch-meson "${pkgname%-git}" build \
     -Dtests=true \
-    -Dfuzz_tests=false
+    -Dfuzz_tests=false \
+    -Dinstalled_tests=false
   meson compile -C build
 }
 
