@@ -1,0 +1,2 @@
+'lact-openrc' is licensed under GNU General Public License, version 3.0, or any later version.
+See https://www.gnu.org/licenses/gpl-3.0.en.html for the license text.

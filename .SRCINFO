@@ -1,0 +1,18 @@
+pkgbase = lact-openrc
+	pkgdesc = OpenRC init script for lact.
+	pkgver = 20250404.01
+	pkgrel = 1
+	url = https://github.com/ilya-zlobintsev/LACT
+	arch = any
+	license = GPL-3.0-or-later
+	depends = lact
+	optdepends = openrc: To make use of this initscript.
+	options = !emptydirs
+	source = lact.openrc-init
+	source = copying-info.txt
+	source = license-gpl3.txt::https://www.gnu.org/licenses/gpl-3.0.txt
+	sha256sums = a8bd6db18d405ce08613d7bf0e96517fe30422a54e5d69d54a7bdd4d13dbe06e
+	sha256sums = 55dea4a1301ea1c8dd9cfa7c7eefa6bf90bbf4ca1886c184f8517a6fd6ac6c5f
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = lact-openrc

@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+### Copyright 2025 under the GNU General Public License 3.0 or later.
+
+depend() {
+  after modules
+}
+
+
+_DAEMON="/usr/bin/lact"
+_DAEMON_ARGS=('daemon')
+_PIDFILE="/run/lact.pid"
+
+name='lact'
+description="Linux GPU Configuration Tool -- settings daemon"
+respawn_delay=1
+respawn_period=600
+respawn_max=5
+command="${_DAEMON}"
+command_args="${_DAEMON_ARGS[@]}"
+pidfile="${_PIDFILE}"
+command_background=true
