@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec electron34 /usr/lib/elecwhat/app.asar "$@"
+
