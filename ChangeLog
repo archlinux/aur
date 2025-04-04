@@ -1182,3 +1182,17 @@ Fixes:
 - The iCloud connector panel is now correctly showing guidance about the requirement of an app-specific password.
 - The "Done" date is removed from Obsidian tasks if they are re-opened.
 
+
+=== Morgen 3.6.11
+New Features:
+- Creating tasks in Morgen is now more intuitive. The dedicated task button lets you edit all task properties upfront, including which list it should be assigned—no more automatic Inbox assignments. Plus, the sidebar now stays on your current tab, rather than switching by default to Morgen tasks.
+
+Improvements:
+- You can now move multiple recurring events at once while automatically adjusting all future occurrences based on their set recurrence patterns.
+- We refined the RSVP buttons in the event panel for a more intuitive experience.
+- It's now faster to switch between the detail panels of events.
+- The sidebar now handles large task lists more efficiently for a more responsive experience when displaying many tasks at once.
+ 
+Fixes:
+- An issue showing the label "No attendees" on some events with attendees has been fixed.
+- A bug that could cause events and tasks not to be saved when moved by only a few minutes in the calendar has been rectified.
