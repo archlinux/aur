@@ -1,12 +1,12 @@
 pkgbase = libmilter-sharedlib
 	pkgdesc = Implementation of the sendmail Mail Filter API
 	pkgver = 8.18.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.proofpoint.com/us/sendmail-open-source
 	arch = x86_64
 	license = Sendmail
-	source = https://ftp.sendmail.org/libmilter.8.18.1.tar.gz
-	source = https://ftp.sendmail.org/libmilter.8.18.1.tar.gz.sig
+	source = https://ftp.sendmail.org/sendmail.8.18.1.tar.gz
+	source = https://ftp.sendmail.org/sendmail.8.18.1.tar.gz.sig
 	source = site.config.m4
 	source = Patch01-fd-passing-libmilter.patch
 	source = Patch02-Allow-setting-local-CFLAGS-devtools-M4-UNIX-defines.patch

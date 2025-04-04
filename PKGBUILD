@@ -9,13 +9,13 @@ _pkgname=libmilter
 pkgname=libmilter-sharedlib
 pkgbase="${pkgname}"
 pkgver=8.18.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Implementation of the sendmail Mail Filter API'
 url='https://www.proofpoint.com/us/sendmail-open-source'
 arch=('x86_64')
 license=('Sendmail')
 source=(
-  "https://ftp.sendmail.org/$_pkgname.$pkgver.tar.gz"{,.sig}
+  "https://ftp.sendmail.org/$_origname.$pkgver.tar.gz"{,.sig}
   'site.config.m4'
   'Patch01-fd-passing-libmilter.patch'
   'Patch02-Allow-setting-local-CFLAGS-devtools-M4-UNIX-defines.patch'
@@ -38,7 +38,7 @@ b2sums=('3afa36073fd611c7fdb43ef0ab9f02d5fb8ae388e9471bdc7275c6c9dcee0a654f46dde
         '4cd0b57b7a26edf95cabf9892c0378e27a8609afd640c4e9b7bcd6011c7a882c292650df823630f336b4bd7583bd934851a523e391d85933cc9351587033cac1')
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$_origname-$pkgver"
   patch -p1 -i ../Patch01-fd-passing-libmilter.patch # FS#49421
 
   # Set Arch Linux specific options
@@ -52,7 +52,7 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver/$pkgname"
+  cd "$_origname-$pkgver/$_pkgname"
   ./Build
 }
 
@@ -61,15 +61,15 @@ package() {
   install -vd "$pkgdir/usr/lib"
 
   # install library files
-  cd "$_pkgname-$pkgver/$pkgname"
+  cd "$_origname-$pkgver/$_pkgname"
   ./Build DESTDIR="$pkgdir" install
 
   # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" ../LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$_pkgname" ../LICENSE
 
   # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ../README
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" docs/*
+  install -vDm644 -t "$pkgdir/usr/share/doc/$_pkgname" ../README
+  install -vDm644 -t "$pkgdir/usr/share/doc/$_pkgname" docs/*
 
   # correct permissions
   chown -R root:root "$pkgdir"
