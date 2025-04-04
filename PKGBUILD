@@ -3,8 +3,8 @@
 # Contributor: Adam Fontenot <fontenot@ucla.edu>
 pkgname=libheif-highmem
 pkgver=1.19.7
-pkgrel=1
-pkgdesc='An HEIF and AVIF file format decoder and encoder with 1GB memory support'
+pkgrel=2
+pkgdesc='An HEIF and AVIF file format decoder and encoder with 1GB memory and 2000 max items support'
 arch=(x86_64)
 url='https://github.com/strukturag/libheif'
 license=(GPL3)
@@ -39,7 +39,8 @@ sha256sums=('d0286fc91459872716ac6ac352b8f49c612d77ab2b4269786eebe01c14ae8559')
 build() {
   # Patch the memory limit
   mv "${srcdir}/libheif" "${srcdir}/${pkgname}"
-  sed -i 's/.max_memory_block_size = 512 \* 1024 \* 1024,  \/\/ 512 MB/.max_memory_block_size = 1024 * 1024 * 1024,  \/\/ 1024 MB/' ${srcdir}/${pkgname}/libheif/security_limits.cc      
+  sed -i 's/.max_memory_block_size = 512 \* 1024 \* 1024,  \/\/ 512 MB/.max_memory_block_size = 1024 * 1024 * 1024,  \/\/ 1024 MB/' ${srcdir}/${pkgname}/libheif/security_limits.cc
+  sed -i 's/.max_items = 1000,/.max_items = 2000,/' ${srcdir}/${pkgname}/libheif/security_limits.cc      
   cmake -B build -S $pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_DAV1D=ON \

@@ -1,7 +1,7 @@
 pkgbase = libheif-highmem
-	pkgdesc = An HEIF and AVIF file format decoder and encoder with 1GB memory support
+	pkgdesc = An HEIF and AVIF file format decoder and encoder with 1GB memory and 2000 max items support
 	pkgver = 1.19.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strukturag/libheif
 	arch = x86_64
 	license = GPL3
