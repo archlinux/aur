@@ -86,7 +86,7 @@ _refresh_local_() {
 		mv "${KEPT_DIR}" "${KEEP_DIR}"
 	fi
 
-	[[ ! -f "${_TB_APP_DIR_}/Browser/start-tor-browser" ]] || \
+	[[ ! -f "${_TA_APP_DIR_}/Browser/start-tor-browser" ]] || \
 		echo "${_TA_VERSION_}" > "${_TA_VER_FILE_}"
 
 }

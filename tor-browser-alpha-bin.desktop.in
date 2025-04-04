@@ -1,5 +1,5 @@
 [Dsektop Entry]
-Version=14.5a4
+Version=14.5a5
 Type=Application
 Name=Tor Browser Alpha
 Exec=tor-browser %u

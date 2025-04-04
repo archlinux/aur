@@ -7,7 +7,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-alpha-bin"
-pkgver='14.5a4'
+pkgver='14.5a5'
 pkgrel=1
 pkgdesc='Alpha Version of Tor Browser'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -62,11 +62,11 @@ source=("${pkgname}.svg"
 
 sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
             '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
-            '636e1c292783884f7df4f44bbf2f02c63972ac252686d90bb251c100fb561df9'
-            '7c3f3b6aa74d8e556a4bfb9e0a47920dc2cb1c94243efebc40a785bf50562799')
-sha256sums_i686=('4dca5d16b14d8c205c9644db9c1ecca4f78b918c18f6231638025168ab2a5f7e'
+            '7dd870e7c8769fd5a801762bda33e61bc06f65c11cc7fefa17d0f2484cec8b1b'
+            '03acb2a3a9650575df745e8899283be15357cd4ccdb507d448a80128a1c3790e')
+sha256sums_i686=('c95e2ee0d2d1866ae2072dc58546c2e941af9302b3f0358a5314bca9b7d106cd'
                  'SKIP')
-sha256sums_x86_64=('6f7e174f1d48f97f4d2e1cc5fd60d31d5a5cbc0d0a59bdc0dbcb4637c54c26f2'
+sha256sums_x86_64=('6509e50444fd443c5d589b369d420455a10e1fc1f832c93d0e626058112c6daf'
                    'SKIP')
 
 
