@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 pkgname=gw
-pkgver=1.1.4
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Genome browser and variant annotation"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'freetype2' 'fontconfig' 'glfw' 'htslib')
 makedepends=('make')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ceb439bdd699810d2b2b0e265c10956045a758de4e96c3a47149f83fc451b1cd')
+sha256sums=('efc18736bb79491fff60b56b8a4198095d15c6c53bede5b370130d890a3f3074')
 
 prepare(){
   cd $srcdir/$pkgname-$pkgver

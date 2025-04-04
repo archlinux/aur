@@ -1,6 +1,6 @@
 pkgbase = gw
 	pkgdesc = Genome browser and variant annotation
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kcleal/gw
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gw
 	depends = fontconfig
 	depends = glfw
 	depends = htslib
-	source = https://github.com/kcleal/gw/archive/refs/tags/v1.1.4.tar.gz
-	sha256sums = ceb439bdd699810d2b2b0e265c10956045a758de4e96c3a47149f83fc451b1cd
+	source = https://github.com/kcleal/gw/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = efc18736bb79491fff60b56b8a4198095d15c6c53bede5b370130d890a3f3074
 
 pkgname = gw
