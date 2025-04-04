@@ -2,7 +2,7 @@
 
 pkgname="qman"
 pkgver="1.4.0"
-pkgrel="1"
+pkgrel="2"
 epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=("x86_64" "aarch64")
@@ -32,9 +32,15 @@ build() {
     "-Dgzip=enabled"
     "-Dbzip2=enabled"
     "-Dlzma=enabled"
+    "-Dtests=disabled"
   )
-  arch-meson build "${pkgname}-${pkgver}" ${opts}
+  arch-meson build "${pkgname}-${pkgver}" "${opts[@]}"
   meson compile -C build
+}
+
+check() {
+  arch-meson build "${pkgname}-${pkgver}" --reconfigure -Dtests=enabled
+  meson test -C build
 }
 
 package() {
