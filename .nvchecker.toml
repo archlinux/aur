@@ -1,0 +1,4 @@
+[blend2d]
+source = "regex"
+url = "https://blend2d.com/download.html"
+regex = "blend2d-(.*).tar.gz\""
