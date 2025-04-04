@@ -1,0 +1,18 @@
+pkgbase = tserili-git
+	pkgdesc = Bible reader for modules of MyBible mobile application
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/tserili
+	arch = any
+	license = GPL-3.0
+	depends = mybible-module-kjv
+	depends = webappview-git
+	optdepends = mybible-module-pbti
+	optdepends = mybible-module-ogb
+	optdepends = mybible-module-rst
+	provides = tserili
+	conflicts = tserili
+	source = git+https://gitverse.ru/naierchou/tserili.git
+	sha256sums = SKIP
+
+pkgname = tserili-git
