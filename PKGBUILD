@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.4.r2802.g7b7234e19b
+pkgver=2.9.4.r2806.g868975c2da
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=($CARCH)
@@ -136,11 +136,11 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/src"
-  make
+  #   make
   eatmydata make -O -j$((1 + $(nproc))) default pycheck V=1
   # Note that the package build covers html docs
   eatmydata make -O -j$((1 + $(nproc))) manpages V=1
-  #   eatmydata make -O -j$((1+$(nproc))) translateddocs V=1
+  #   eatmydata make -O -j$((1 + $(nproc))) translateddocs V=1
   eatmydata make -O -j$((1 + $(nproc))) default pycheck V=1
 }
 
