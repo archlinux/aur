@@ -2,13 +2,13 @@
 
 pkgname=libsurvive
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 _data_commit=5cc2fc085d11ef98ad5936a745d4a42954b207ca
 pkgdesc='Tracking system for Lighthouse and Vive based devices'
 arch=('x86_64')
 url='https://github.com/cntools/libsurvive/'
 license=('MIT')
-depends=('cblas' 'lapacke' 'libpcap' 'libusb' 'zlib')
+depends=('cblas' 'glibc' 'lapacke' 'libpcap' 'libusb' 'zlib')
 optdepends=('xr-hardware: for acessing additional devices')
 makedepends=('git' 'cmake' 'eigen')
 source=("git+https://github.com/cntools/libsurvive.git#tag=v${pkgver}"
@@ -53,6 +53,7 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/install-sciplot" \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING="3.5.0" \
         -DSCIPLOT_BUILD_DOCS:BOOL='OFF' \
         -DSCIPLOT_BUILD_EXAMPLES:BOOL='OFF' \
         -DSCIPLOT_BUILD_TESTS:BOOL='OFF' \
@@ -62,7 +63,7 @@ build() {
     # libsurvive
     # NOTE: tests fails to pass when using 'None' build type
     export sciplot_DIR="${srcdir}/install-sciplot"
-    export CXXFLAGS+=" -I ${srcdir}/install-sciplot/include"
+    export CXXFLAGS+=" -isystem${srcdir}/install-sciplot/include"
     cmake -B build-libsurvive -S libsurvive \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
@@ -71,14 +72,14 @@ build() {
         -DENABLE_api_example:BOOL='OFF' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -Wno-dev
-    make -C build-libsurvive
+    cmake --build build-libsurvive
 }
 
 check() {
     ctest --test-dir build-libsurvive --output-on-failure
 }
 
-package() {    
+package() {
     DESTDIR="$pkgdir" cmake --install build-libsurvive
     mv "${pkgdir}/usr/bin"/{,survive-}sensors-readout
     rm -r "${pkgdir}/usr"/{include/{cnkalman,cnmatrix},lib/{lib{cnkalman,cnmatrix,mpfit}.a,pkgconfig/{cnkalman,cnmatrix}.pc}}
