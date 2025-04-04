@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.5.r14.geab1b243
+pkgver=2.6.r6.gc4eab08f
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -68,16 +68,20 @@ prepare() {
 	sed -i '/FMT_HEADER_ONLY/d' src/Common/precompiled.h
 	# https://github.com/cemu-project/Cemu/pull/1436
 	sed -i '/set/s/"glslang"/"glslang::glslang"/' src/Cafe/CMakeLists.txt
+	# fix for cmake 4
+	sed -i '/VERSION/s/3\.2\.0/3.5/' dependencies/discord-rpc/CMakeLists.txt
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DALLOW_PORTABLE=OFF \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DENABLE_VCPKG=OFF \
+	local options=(
+		-D ALLOW_PORTABLE=OFF
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D ENABLE_VCPKG=OFF
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
