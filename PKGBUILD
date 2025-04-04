@@ -2,7 +2,7 @@
 # create Arch package with: makepkg -si
 # create .SRCINFO with:     makepkg --printsrcinfo > .SRCINFO
 pkgname='qemu-web-desktop'
-pkgver=25.04.04
+pkgver=25.04.05
 pkgrel=1
 pkgdesc="Remote desktop service with virtual machines in a browser (DARTS)."
 arch=('x86_64' 'aarch64')
