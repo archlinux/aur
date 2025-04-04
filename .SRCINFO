@@ -1,7 +1,7 @@
 pkgbase = unleashedrecomp-bin
 	pkgdesc = An unofficial PC port of the Xbox 360 version of Sonic Unleashed created through the process of static recompilation
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://github.com/Jujstme/UnleashedRecomp
 	arch = x86_64
 	license = GPL3
@@ -21,11 +21,11 @@ pkgbase = unleashedrecomp-bin
 	depends = vulkan-driver
 	optdepends = wayland: Wayland support
 	provides = unleashedrecomp
-	source = https://github.com/Jujstme/UnleashedRecomp/releases/download/1.0.2/UnleashedRecomp.zip
+	source = https://github.com/Jujstme/UnleashedRecomp/releases/download/1.0.3-1/UnleashedRecomp-1.0.3-1.zip
 	source = https://raw.githubusercontent.com/hedge-dev/UnleashedRecompResources/e5a4adccb30734321ac17347090abeb6690dab70/images/game_icon.png
 	source = io.github.hedge_dev.unleashedrecomp.desktop
-	sha256sums = 820ef41d7ae3ef2d8bf0a34c981aebad3ce7c578bfcb99bbf564dc64e98e5e47
+	sha256sums = f35672448f57fe94d407e945b5dcd7ef9f85efb754f74992570efe7bcfeaf852
 	sha256sums = 6d9fe76d8e6573acf537388bde3cc1495d2920dc350950186581c80e83faf42d
-	sha256sums = b2c95666db3991f2a21f4e52adf54eea7ada4edb72258c6dab6d91fb316cb77a
+	sha256sums = 240e4787823422d32417f2b0b939ca34f9f35444891d1be2998f4297cf528911
 
 pkgname = unleashedrecomp-bin

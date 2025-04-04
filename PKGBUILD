@@ -1,8 +1,8 @@
 # Maintainer: Jujstme <just.tribe at gmail dot com>
 
 pkgname=unleashedrecomp-bin
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="An unofficial PC port of the Xbox 360 version of Sonic Unleashed created through the process of static recompilation"
 arch=('x86_64')
 url="https://github.com/Jujstme/UnleashedRecomp"
@@ -28,14 +28,14 @@ optdepends=(
 )
 provides=('unleashedrecomp')
 source=(
-  "https://github.com/Jujstme/UnleashedRecomp/releases/download/1.0.2/UnleashedRecomp.zip"
+  "https://github.com/Jujstme/UnleashedRecomp/releases/download/1.0.3-1/UnleashedRecomp-1.0.3-1.zip"
   "https://raw.githubusercontent.com/hedge-dev/UnleashedRecompResources/e5a4adccb30734321ac17347090abeb6690dab70/images/game_icon.png"
   "io.github.hedge_dev.unleashedrecomp.desktop"
 )
 sha256sums=(
-  '820ef41d7ae3ef2d8bf0a34c981aebad3ce7c578bfcb99bbf564dc64e98e5e47'
+  'f35672448f57fe94d407e945b5dcd7ef9f85efb754f74992570efe7bcfeaf852'
   '6d9fe76d8e6573acf537388bde3cc1495d2920dc350950186581c80e83faf42d'
-  'b2c95666db3991f2a21f4e52adf54eea7ada4edb72258c6dab6d91fb316cb77a'
+  '240e4787823422d32417f2b0b939ca34f9f35444891d1be2998f4297cf528911'
 )
 
 package() {

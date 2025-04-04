@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Unleashed Recompiled
-Exec=UnleashedRecomp
+Exec=UnleashedRecomp --sdl-video-driver wayland
 Type=Application
 Icon=io.github.hedge_dev.unleashedrecomp
 Categories=Game;
