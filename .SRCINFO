@@ -1,0 +1,14 @@
+pkgbase = regname
+	pkgdesc = mass renamer TUI written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/linkdd/regname
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/linkdd/regname/archive/v0.1.0/regname-0.1.0.tar.gz
+	sha256sums = 460a822020556f5ebf6e9de05107f3e29b5c34669b8c52903795bb8b03dae0c8
+
+pkgname = regname

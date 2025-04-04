@@ -1,0 +1,4 @@
+[regname]
+source = "git"
+git = "https://github.com/linkdd/regname.git"
+prefix = "v"
