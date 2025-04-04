@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-nightly"
-_electron='electron33'
-_electronpackage='electron33'
+_electron='electron34'
+_electronpackage='electron34'
 pkgver=6.7.8.nightly.15
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
