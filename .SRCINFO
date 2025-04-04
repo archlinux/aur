@@ -1,7 +1,7 @@
 pkgbase = zvm-bin
 	pkgdesc = Version manager for Zig compilers (binary version)
 	pkgver = 0.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tristanisham/zvm
 	install = path.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = zvm-bin
 	source = zvm.bash
 	source = path.install
 	sha256sums = 6149c9a360f7fcde722b0d3c54a129737d10142857b26d1aaf1a5ec9737bb459
-	sha256sums = d5c523f9c1f569dbc622ec6f7b2acbe62f8d85464ef26426076373f2cde703e2
+	sha256sums = 08cd47b1b748b3b5a6b29bd012a9d09bbd70717180debe7edcf2a2d230b2089d
 	sha256sums = 66da3559a9c3083f4e9dcbc288891974dac57bc4c2ed27bd4d434131ca6f65d2
 	source_x86_64 = zvm-bin-0.8.6-x86_64.tar::https://github.com/tristanisham/zvm/releases/download/v0.8.6/zvm-linux-amd64.tar
 	sha256sums_x86_64 = 26523066e1b8f06266671dae52dae210c743d2c5d115a09e880957294bc91e8f

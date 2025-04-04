@@ -3,7 +3,7 @@
 _pkgname='zvm'
 pkgname="$_pkgname-bin"
 pkgver='0.8.6'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Version manager for Zig compilers (binary version)'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -31,7 +31,7 @@ source_ppc64le=(
 )
 
 sha256sums=('6149c9a360f7fcde722b0d3c54a129737d10142857b26d1aaf1a5ec9737bb459'
-            'd5c523f9c1f569dbc622ec6f7b2acbe62f8d85464ef26426076373f2cde703e2'
+            '08cd47b1b748b3b5a6b29bd012a9d09bbd70717180debe7edcf2a2d230b2089d'
             '66da3559a9c3083f4e9dcbc288891974dac57bc4c2ed27bd4d434131ca6f65d2')
 sha256sums_x86_64=('26523066e1b8f06266671dae52dae210c743d2c5d115a09e880957294bc91e8f')
 sha256sums_aarch64=('a0f8530a0787cee047a8f38f54ecf941f20f91fe771e3558df3533d56cb3e03a')
