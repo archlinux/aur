@@ -1,0 +1,15 @@
+pkgbase = mybible-module-mgb
+	pkgdesc = MyBible mobile application's MGB (modern georgian bible) module
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-mgb
+	arch = any
+	license = custom
+	makedepends = sqlite3
+	depends = sqlite3
+	provides = mybible-module-mgb
+	conflicts = mybible-module-mgb
+	source = git+https://gitverse.ru/naierchou/mybible-module-mgb.git
+	sha256sums = SKIP
+
+pkgname = mybible-module-mgb
