@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2025.03.27
+pkgver=2025.04.02
 pkgrel=1
 pkgdesc="A minimal, scientific, and stable Web browser"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/textbrowser/dooble/archive/refs/tags/${pkgver}.tar.gz"
         "git+https://github.com/textbrowser/dooble-dictionaries.git"
         "${pkgname}.sh")
-sha256sums=('dbd2e3da70202ef00a7c81a402fed6f8e89ecac8f3fd1293a221a35cdbdde3f5'
+sha256sums=('53748c148b6592492d24b1346a49335c43fddab38327fb03f3b98b5066f005bc'
             'SKIP'
             '39705af759145ffa3cb670353e8fe459228f92d70ae98aa16212006f0c239c1b')
 
