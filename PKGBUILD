@@ -3,8 +3,8 @@
 
 _pkgname='ferdium'
 pkgname="$_pkgname-nightly-bin"
-_electron='electron33'
-_electronpackage='electron33'
+_electron='electron34'
+_electronpackage='electron34'
 pkgverorg='7.0.1-nightly.15'
 pkgver='7.0.1.nightly.15'
 pkgrel='1'
