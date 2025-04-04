@@ -2,15 +2,18 @@
 
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack'
 license=('MIT')
-depends=('vapoursynth'
+depends=(
+  'vapoursynth'
   'python-rich'
-  'python-jetpytools')
+  'python-jetpytools'
+  'python-typing_extensions'
+)
 makedepends=('python-pip')
 optdepends=(
   'vapoursynth-plugin-eedi2'
@@ -81,8 +84,8 @@ conflicts=(
   vapoursynth-plugin-vssource
   vapoursynth-plugin-vstools
 )
-source=("https://files.pythonhosted.org/packages/5b/08/5059bb464113071fb8319a370761ea9bdfe2e855232a16734bcd3b810581/vsjetpack-0.2.2-py3-none-any.whl")
-sha256sums=('9ed10736c1ec26a0c08a9d87c67ab8cc94570d4eb7cb12ea201fbe2d2848d16e')
+source=("https://files.pythonhosted.org/packages/49/1b/9b011ad087dba45d6e2d8249d4b3fb4db00bb96d9bc2d02db8e20e40387c/vsjetpack-0.3.0-py3-none-any.whl")
+sha256sums=('e91a5fb6db993ea2cf5540bd85d087ca1d89cb2d75899a89cd1f52f565a4fe7e')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
