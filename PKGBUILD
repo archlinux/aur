@@ -1,15 +1,15 @@
 pkgname=awf-gtk4
-pkgver=2.8.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Theme preview application for GTK 4"
 arch=('x86_64')
 url='https://github.com/luigifab/awf-extended'
 license=('GPL3')
-depends=('gtk4' 'hicolor-icon-theme')
+depends=('gtk4' 'libnotify>=0.7.0' 'hicolor-icon-theme')
 #makedepends=('autoconf' 'automake' 'desktop-file-utils' 'gcc' 'gettext' 'gtk4')
 #conflicts=('awf-git')
 source=("https://github.com/luigifab/awf-extended/archive/v${pkgver}/awf-extended-${pkgver}.tar.gz")
-sha256sums=("9370d2906a2e60fad41017057bac950934ceb8e1a03d47254d7d52c8860ff18c")
+sha256sums=("eaa1028bf833832017c5c8ea715f039df98f6c083aee847d87a5ffccebaee68b")
 
 prepare() {
   mv "awf-extended-$pkgver" "$pkgname-$pkgver"
@@ -34,7 +34,6 @@ package() {
   desktop-file-install --dir="$pkgdir/usr/share/applications/" "data/$pkgname.desktop"
 
   install -Dpm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dpm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -dm 755 "$pkgdir/usr/share/applications/icons/hicolor/"
   for file in data/icons/*/*/awf.png; do mv $file ${file/\/awf.png/\/$pkgname.png}; done
