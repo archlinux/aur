@@ -1,10 +1,11 @@
 pkgbase = bookmarksync-git
 	pkgdesc = Sync file picker bookmarks (pinned folders) for KDE and GTK
 	pkgver = 0.3.0.r9.g275cddf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jlu5/bookmarksync
 	arch = x86_64
 	license = GPLv3
+	makedepends = cmake
 	makedepends = git
 	makedepends = kiconthemes
 	makedepends = kio

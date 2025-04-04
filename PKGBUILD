@@ -2,13 +2,13 @@
 
 pkgname=bookmarksync-git
 pkgver=0.3.0.r9.g275cddf
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync file picker bookmarks (pinned folders) for KDE and GTK"
 arch=(x86_64)
 url="https://github.com/jlu5/bookmarksync"
 license=('GPLv3')
 depends=(qt6-base)
-makedepends=(git kiconthemes kio)
+makedepends=(cmake git kiconthemes kio)
 source=(git+https://github.com/jlu5/bookmarksync.git)
 sha256sums=("SKIP")
 
