@@ -1,0 +1,15 @@
+pkgbase = loopor-git
+	pkgdesc = Looper plugin for LV2, specifically for the Mod Devices pedal board. Tested on Mod Duo and Mod Dwarf.
+	pkgver = r38.a55eed7
+	pkgrel = 1
+	url = https://github.com/stevie67/loopor
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = MIT
+	makedepends = make
+	provides = loopor.lv2
+	source = git+https://github.com/stevie67/loopor.git
+	sha256sums = SKIP
+
+pkgname = loopor-git
