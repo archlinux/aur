@@ -1,6 +1,6 @@
 pkgname=yay-faster-cn
-pkgver=0.11
-pkgrel="2"
+pkgver=0.2
+pkgrel="3"
 pkgdesc="Use github mirror to speed yay up in China."
 arch=('any')
 url="https://github.com/iamzhz/yay-faster-cn"
@@ -12,10 +12,10 @@ makedepends=('python-setuptools')
 
 
 source=("https://github.com/iamzhz/yay-faster-cn/releases/download/v${pkgver}/yay_faster_cn_v${pkgver}.tar.gz")
-sha256sums=('1cae0f846fbf2ddbb22efcec735cf0dc01e04620c873a29338bb8e3b2948bb3b')
+sha256sums=('dd64b97ed3b167a3a303dced96823c94e1d53878b65d6e380f66f9e8eb72ebb0')
 
 build() {
-  cd "yay_faster_cn_v$pkgver"  # 匹配压缩包内的目录名
+  cd "yay_faster_cn_v$pkgver"
   python -m build --wheel --no-isolation
 }
 

@@ -1,7 +1,7 @@
 pkgbase = yay-faster-cn
 	pkgdesc = Use github mirror to speed yay up in China.
-	pkgver = 0.11
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 3
 	url = https://github.com/iamzhz/yay-faster-cn
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = yay-faster-cn
 	depends = git
 	depends = wget
 	depends = yay
-	source = https://github.com/iamzhz/yay-faster-cn/releases/download/v0.11/yay_faster_cn_v0.11.tar.gz
-	sha256sums = 1cae0f846fbf2ddbb22efcec735cf0dc01e04620c873a29338bb8e3b2948bb3b
+	source = https://github.com/iamzhz/yay-faster-cn/releases/download/v0.2/yay_faster_cn_v0.2.tar.gz
+	sha256sums = dd64b97ed3b167a3a303dced96823c94e1d53878b65d6e380f66f9e8eb72ebb0
 
 pkgname = yay-faster-cn
