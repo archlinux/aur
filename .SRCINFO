@@ -1,0 +1,12 @@
+pkgbase = gedit-gnuplot
+	pkgdesc = gnuplot color highlighting for gedit
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GtkSourceView/LanguageDefinitions
+	arch = any
+	license = GPL
+	depends = gedit
+	source = gnuplot.lang
+	sha256sums = ffce11a5edbe0b0360090c5f039ff7e12d67844c7ae4f8936da357f19aa1cbc0
+
+pkgname = gedit-gnuplot

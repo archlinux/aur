@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ GtkSourceView language definition file for gnuplot scripts
+
+ Author: Andreas Gaeb, March 2010
+ Copyright (C) 2010 Andreas Gaeb
+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+<language id="gnuplot" _name="GNUplot" version="2.0" _section="Scientific">
+  <metadata>
+    <property name="mimetypes">text/x-gnuplot</property>
+    <property name="globs">*.plt</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <styles>
+    <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+    <style id="function" _name="Function" map-to="def:function"/>
+    <style id="options" _name="Options" map-to="def:preprocessor"/>
+    <style id="constant" _name="Constants" map-to="def:constant"/>
+    <style id="floating-point" _name="Floating point number" map-to="def:floating-point"/>
+    <style id="decimal" _name="Decimal integer number" map-to="def:decimal"/>
+  </styles>
+
+  <definitions>
+
+    <context id="keywords" style-ref="keyword">
+        <keyword>cd|call|clear|exit|fit|if|help|history|load|pause|plot</keyword>
+        <keyword>print|pwd|quit|replot|reread|reset|save|set|shell|show</keyword>
+        <keyword>splot|system|test|unset|update</keyword>
+    </context>
+
+    <context id="plot_keywords" style-ref="keyword">
+        <keyword>all|at|by|every|from|index|using|to|with|x|y|z</keyword>
+    </context>
+
+    <context id="options" style-ref="options">
+        <keyword>angles|arrow|autoscale|bars|boxwidth|clabel|clip|cntrparam</keyword>
+        <keyword>colorbox|contour|decimsign|dgrid3d|dummy|encoding|font|format</keyword>
+        <keyword>grid|historysize|isosamples|key|locale|logscale|mapping</keyword>
+        <keyword>mouse|multiplot|offsets|origin|output|palette|parametric</keyword>
+        <keyword>pm3d|polar|print|samples|size|style|surface|terminal|ticscale</keyword>
+        <keyword>ticslevel|timestamp|timefmt|title|view|zero|zeroaxis|label</keyword>
+        <keyword>tics|margin|cb(label|range|data|m?tics)|[xyz]2?(range|data|label|zeroaxis)</keyword>
+        <keyword>[blrt]margin|[rtuv]range|(no)?m?cbtics|(no)?m?[xyz]2?tics|[xyz]2?[md]tics</keyword>
+    </context>
+
+    <context id="function" style-ref="function">
+        <keyword>abs|a?cosh?|arg|a?sinh?|a?tanh?|atan2|bes[jy][01]|ceil</keyword>
+        <keyword>erfc?|exp|floor|[il]?gamma|ibeta|imag|int|log(10)?|rand</keyword>
+        <keyword>real|sgn|sqrt</keyword>
+    </context>
+
+    <context id="constant" style-ref="constant">
+        <!-- pairwise constants -->
+        <keyword>(no)?border|(no)?labels|(no)?autotitles|(no)?filled|(no)?offset</keyword>
+        <keyword>(no)?undefined|(no)?reverse|(no)?ratio|(no)?head|(no)?rotate|(no)?point</keyword>
+        <keyword>(no)?box|(no)?square|(no)?mirror|(no)?verbose|(no)?altdiagonal</keyword>
+        <keyword>(no)?ftriangles|(no)?hidden3d|(no)?bentover|(no)?enhanced|(no)?doubleclick</keyword>
+        <keyword>(no)?zoom(jump|coordinates)|(no)?polardistance|(no)?errorvariables|(no)?pls_allcF|(no)?writeback</keyword>
+        <!-- plot constants -->
+        <keyword>pi|degrees|radians|default|restore|user|[lL]eft|[rR]ight</keyword>
+        <keyword>center|top|bottom|outside|below|front|back|layerdefault</keyword>
+        <keyword>tiny|small|medium|large|giant|absolute|relative|vertical</keyword>
+        <keyword>horizontal|(fix)?(min|max)|(keep)?fix|on|off|begin|end</keyword>
+        <keyword>in|out|push|pop|zero|one|two|empty|solid|pattern|linear|(cubic|b)spline</keyword>
+        <keyword>bdefault|base|both|iso_8859_(1|2|15)|cp(850|852|437)|koi8r|cartesian</keyword>
+        <keyword>spherical|cylindrical|gray|color|positive|negative|fill</keyword>
+        <keyword>line(style|type|width)?|ls|lt|point(type|size)|pt|ps</keyword>
+        <keyword>textcolor|tc|xy|xz|yz|xyz|(clipboard|mouse)format|trianglepattern|mouseoptions</keyword>
+        <keyword>heads|arrowstyle|as|rto|boxes|filledcurves|financebars|candlesticks</keyword>
+        <keyword>(box|boxxy|x|xy|y)errorbars|(x|xy|y)errorlines|dots|(f|hi)steps</keyword>
+        <keyword>impulses|lines(points)?|steps|points|vectors|binary|matrix</keyword>
+        <keyword>axis|autofreq|(load|font)path|(log|data)?file|scans(automatic|backward|forward)</keyword>
+        <keyword>separator|corners2color|(geo)?mean|median|clip[14]in|c[1234]</keyword>
+        <keyword>flush|(im|ex)plicit|order|auto|levels|discrete|incremental</keyword>
+        <keyword>closed|commentschars|data|defined|font|functions?|height</keyword>
+        <keyword>width|map|maxcolors|missing|model|rgbformulae|samplen|spacing</keyword>
+    </context>
+
+
+    <context id="floating-point" style-ref="floating-point">
+      <match extended="true">
+        (?&lt;![\w\.])
+        ([0-9]+[Ee][-+]?[0-9]+|
+         ([0-9]*\.[0-9]+|[0-9]+\.)([Ee][-+]?[0-9]+)?)
+        [i]?
+        (?![\w\.])
+      </match>
+    </context>
+
+    <context id="decimal" style-ref="decimal">
+        <match extended="true">
+            (?&lt;![\w\.])
+            [0-9]+[uUlL]*
+            (?![\w\.])
+        </match>
+    </context>
+
+    <context id="gnuplot">
+      <include>
+        <context ref="def:shell-like-comment"/>
+        <context ref="def:string"/>
+        <context ref="def:single-quoted-string"/>
+        <context ref="keywords"/>
+        <context ref="plot_keywords"/>
+        <context ref="options"/>
+        <context ref="function"/>
+        <context ref="constant"/>
+        <context ref="decimal"/>
+        <context ref="floating-point"/>
+      </include>
+
+    </context>
+
+  </definitions>
+
+</language>
