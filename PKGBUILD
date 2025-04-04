@@ -2,40 +2,40 @@
 # Contributors: Frederic Bezies, Ronan Rabouin, Yamashiro <dev cosmicheron com>
 
 pkgname='yamagi-quake2-rogue'
-pkgver=2.12
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgver='2.13'
+pkgrel='1'
+arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
 url='https://www.yamagi.org/quake2/'
-license=('GPL-2.0' 'custom')
-depends=('sh' 'yamagi-quake2')
+license=('GPL-2.0-only')
+depends=('glibc' 'sh' 'yamagi-quake2')
 install="${pkgname}.install"
-source=("https://deponie.yamagi.org/quake2/${pkgname#*-}-${pkgver}.tar.xz"
-        "${pkgname}.sh"
-        "${pkgname}.desktop")
-sha512sums=('d63b8ecd5297510606f9dae9b09da0924c464a55a25079828af6222a3eeca696fde693702071b2182f2fb99ba44a627614df9a1f77fafbab1f6181d90b2d1198'
-            '5c124891f985f4777be3b402c5579b0bf6c0c4651921cbe3ca1deb1c64e1486c97b017fdd633de3c90ceb588efbf18a9393531d2eb2ec28a6e2896866863d9a9'
-            'e535b2a1e1ea583997ac889eccc9243b3628c733999f0cfebe170c08a5659b0971864c4117c5b5c1eaa99e0714a775f8c52841c1f611297128e26bf291d391ac')
+source=(
+    "https://deponie.yamagi.org/quake2/${pkgname#*-}-${pkgver}.tar.xz"
+    "${pkgname}.sh"
+    "${pkgname}.desktop")
+b2sums=(
+    'df67e204c3188ef0ee56e34dafaa4edc3293b539ac45b74fb117bf78defad43e5a067bba044cc6cbb96a2fd7d548bbf9bb9acaa41bd1b9d69bd29b315b93c3f4'
+    '453640327b8867b260475428012ebb958e2cee6f30ddbed82e2074c126d0d6e137087fb74a65ef46cd38e8d22532012d32f15fb0917dd6f127c6fd56c78e86a8'
+    'd80b2328eb85a5461205eebbda04b357e42996f026a1f3cd52fe04066775bed5b73990e6956c164f96d63696c5961ad5ed03e4a9eeb1000a69e60c74aa888c65'
+)
 
 build() {
-  make -C "${pkgname#*-}-${pkgver}"
+    make -C "${pkgname#*-}-${pkgver}"
 }
 
 package() {
-  cd "${pkgname#*-}-${pkgver}"
+    cd "${pkgname#*-}-${pkgver}"
 
-  # game library
-  install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2/rogue" 'release/game.so'
+    # game library
+    install -Dm644 -t "${pkgdir}/usr/lib/yamagi-quake2/rogue" 'release/game.so'
 
-  # game launcher
-  install -Dm755 "../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    # game launcher
+    install -Dm755 "../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  # doc
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README'
+    # doc
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
 
-  # desktop entry
-  install -Dm644 -t "${pkgdir}/usr/share/applications" "../${pkgname}.desktop"
-
-  # license
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
+    # desktop entry
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "../${pkgname}.desktop"
 }
