@@ -15,7 +15,7 @@ source=(
   elecwhat
   "https://github.com/piec/elecwhat/releases/download/v${pkgver}/elecwhat-${pkgver}.pacman"
 )
-sha256sums=('ea326ddf1f290cc2611c5de3e1a4e8d16ae4948408d2acf64934998c917066f3'
+sha256sums=('8b8da3bd9ce00f1fd6a746685d996217d7dc03220471eaeff6c600408f5fd378'
             'a4ca41068e8e8d5cf18ed41acada3306f2f6e5e27915e735f77b80c83df65717')
 
 package() {
