@@ -6,7 +6,7 @@ pkgname='python-fastfeedparser-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=0.3.7.r57.2da82e8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='High performance RSS, Atom and RDF parser in Python (built from latest git commit)'
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
 )
 source=("git+$url.git")
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 
 pkgver() {
