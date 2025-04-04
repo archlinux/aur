@@ -1,7 +1,7 @@
 pkgbase = nym-vpn-app-bin
 	pkgdesc = NymVPN desktop client
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,7 @@ pkgbase = nym-vpn-app-bin
 	depends = glib2
 	depends = libsoup3
 	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
 	depends = nym-vpnd
 	provides = nym-vpn-app
 	conflicts = nym-vpn-app
