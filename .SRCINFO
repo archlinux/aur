@@ -1,7 +1,7 @@
 pkgbase = ilorest
 	pkgdesc = HPE RESTful Interface Tool
-	pkgver = 5.3.0.0
-	pkgrel = 4
+	pkgver = 6.0.0.0
+	pkgrel = 1
 	url = https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_8b4b824586db4353bbfebe795f&tab=releaseNotes
 	changelog = ChangeLog
 	arch = x86_64
@@ -27,10 +27,9 @@ pkgbase = ilorest
 	depends = python-prompt_toolkit
 	depends = python-certifi
 	depends = python-wcwidth
-	depends = python-future
 	provides = ilorest
 	conflicts = ilorest-bin
-	source = https://github.com/HewlettPackard/python-redfish-utility/archive/refs/heads/master.zip
-	sha256sums = 91bf155495c379dfd307cc03cbd5acbd99c54eb8ebb104e32aa305ad85ed5766
+	source = https://github.com/HewlettPackard/python-redfish-utility/releases/download/v6.0.0.0/ilorest-6.0.0.0.tar.gz
+	sha256sums = 89406688ba606bc98ccd2f09d03439d756d323b558a4665a8ce8e872c5f2dcb9
 
 pkgname = ilorest
