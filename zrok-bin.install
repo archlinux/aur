@@ -1,0 +1,11 @@
+#!/bin/sh
+
+post_install() {
+    echo ">"
+    echo "> If you wish to use the zrok agent, please 'zrok enable <your_account_token>' first (to create your home .zrok directory)"
+    echo ">"
+    echo "> Then, do 'systemctl enable --now --user zrok-agent'"
+    echo ">"
+    echo "> More information on the zrok agent can be found here: 'https://docs.zrok.io/docs/guides/agent'"
+	echo ">"
+}
