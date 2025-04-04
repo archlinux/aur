@@ -1,5 +1,6 @@
+_filename=octane_server_prime_2024.1.2-29.20.0-stable
 pkgname=octane-server-prime
-pkgver=2024.1_29.14
+pkgver=2024.1.2_29.20.0
 pkgrel=1
 pkgdesc="The free tier OctaneRender server by OTOY"
 arch=('x86_64')
@@ -8,14 +9,14 @@ depends=()
 optdepends=()
 makedepends=()
 url="https://home.otoy.com/render/octane-render/demo/"
-source=(https://render.otoy.com/plugindownloads/a2/e1/48/0c/octane_server_prime_2024.1-29.14-stable.run)
-noextract=('octane_server_prime_2024.1-29.14-stable.run')
-sha256sums=('5ec9ce03edc0d5ddbe827051e63cb099bf41981994939c2753266ce0e728fc1e')
+source=(https://render.otoy.com/plugindownloads/57/47/a8/72/octane_server_prime_2024.1.2-29.20.0-stable.run)
+noextract=('octane_server_prime_2024.1.2-29.20.0-stable.run')
+sha256sums=('069c8a7a5a1af294a35b9bf52716372b04398ced9776d76a1a51df3dc4b56cdb')
 
 prepare()
 {
-  chmod +x octane_server_prime_2024.1-29.14-stable.run
-  ./octane_server_prime_2024.1-29.14-stable.run -e
+  chmod +x ${_filename}.run
+  ./${_filename}.run -e
 }
 
 package()
