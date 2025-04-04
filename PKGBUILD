@@ -1,7 +1,7 @@
 # Maintainer: Zenn <mine.minefis@gmail.com>
 pkgname=wl_shimeji-git
 _pkgname=wl_shimeji
-pkgver=0.0.2.r171.2fc41b1
+pkgver=0.0.2.r172.fbb2e14
 pkgrel=1
 pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
@@ -19,6 +19,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
+    git checkout fbb2e148981386863410f4fadecc240af6dc9e6a
 	git submodule update --init --recursive
 }
 
