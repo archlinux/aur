@@ -1,7 +1,7 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=deadbeef-plugins-kode54-git
-pkgver=r91.1820899
-pkgrel=2
+pkgver=r93.f623d26
+pkgrel=1
 pkgdesc="A set of plugins for DeaDBeeF (Git version)"
 url="https://bitbucket.org/losnoco/deadbeef_plugins"
 arch=('x86_64')
@@ -12,18 +12,22 @@ license=('GPL2'
 makedepends=('cmake' 'git')
 depends=('deadbeef' 'zlib' 'libbass' 'libbassmidi' 'libbass_mpc' 'libbassflac' 'libbassopus'
          'libbasswv' 'libopenmpt' 'vgmstream-git' 'libmgba')
-source=('git+https://bitbucket.org/losnoco/deadbeef_plugins.git')
-md5sums=('SKIP')
+source=('git+https://bitbucket.org/losnoco/deadbeef_plugins.git'
+	'libvgm.patch')
+md5sums=('SKIP'
+         '84386467667f5daf4e91c6491c6fa113')
 
 prepare() {
   cd "$srcdir/deadbeef_plugins"
   # skip osx/deps and external/apbuild submodules
   git -c submodule."plugins/vgm/vgmstream".update=none -c submodule."plugins/xsf/mGBA".update=none submodule update --init --recursive
+  cd "$srcdir/deadbeef_plugins/plugins/libvgm/libvgm"
+  patch -Np1 -i "$srcdir/libvgm.patch"
 }
 
 build() {
   cd "$srcdir/deadbeef_plugins/plugins"
-  make
+  env CMAKE_POLICY_VERSION_MINIMUM=3.5 make
 }
 
 package() {
