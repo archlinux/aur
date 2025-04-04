@@ -1,6 +1,6 @@
 pkgbase = pdav-git
-	pkgdesc = user daemon to automatically save and restore application volume settings based on default output device for pulseaudio/pipewire-pulse
-	pkgver = 0.1.0.r0.g4b739a5
+	pkgdesc = user daemon to automatically save and restore application volume settings based on default output device for pulseaudio/pipewire-pulse (git version)
+	pkgver = 0.2.0.r0.g16b3544
 	pkgrel = 1
 	url = https://github.com/shinrax2/per-device-application-volume
 	install = pdav.install

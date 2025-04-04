@@ -1,9 +1,9 @@
 # Maintainer: shinrax2
 _reponame=per-device-application-volume
 pkgname=pdav-git
-pkgver=0.1.0.r0.g4b739a5
+pkgver=0.2.0.r0.g16b3544
 pkgrel=1
-pkgdesc="user daemon to automatically save and restore application volume settings based on default output device for pulseaudio/pipewire-pulse"
+pkgdesc="user daemon to automatically save and restore application volume settings based on default output device for pulseaudio/pipewire-pulse (git version)"
 arch=(any)
 url="https://github.com/shinrax2/per-device-application-volume"
 license=('MIT')
@@ -19,14 +19,23 @@ pkgver() {
 
 }
 
+build() {
+    cd $_reponame
+    python3 -m venv .venv
+    .venv/bin/python3 -m pip install -r requirements.txt
+    .venv/bin/python3 build-gui.py
+}
+
 package() {
     cd $_reponame
     install -Dm755 "pdav" \
         -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE \
+    install -Dm755 "dist/pdav-gui" \
+        -t "$pkgdir/usr/bin"
+    install -Dm644 "LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 quirks.json \
+    install -Dm644 "quirks.json" \
         "$pkgdir/usr/share/pdav/quirks.json"
-    install -Dm644 pdav.service \
+    install -Dm644 "pdav.service" \
         "$pkgdir/etc/systemd/user/pdav.service"
 }
