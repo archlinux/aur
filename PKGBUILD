@@ -1,7 +1,7 @@
 # Maintainer: carlyle
 
 pkgname=aurx
-pkgver=1.0.0.r1.g6728774
+pkgver=1.0.0.r5.gcfbfc37
 pkgrel=1
 pkgdesc="An AUR helper written in C."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 source=("${pkgname}::git+${url}.git")
 pkgver() {
         cd "$pkgname"
-        git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 sha256sums=('SKIP')
 build() {
