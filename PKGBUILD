@@ -2,7 +2,7 @@
 
 _pkgname=pymssql
 pkgname=python-pymssql
-pkgver=2.3.2
+pkgver=2.3.4
 pkgrel=1
 pkgdesc='DB-API (PEP-249) interface to Microsoft SQL Server'
 arch=('x86_64')
@@ -29,11 +29,11 @@ checkdepends=(
   python-sqlalchemy
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('08707cea3c4477078930c43720233046fe2fb0582e292ab51946d9aaa31be46b9ff15cc4a1dca2708c01136bcb05f1b6bb164c2518bc11e4004af62aeace48c6')
+sha512sums=('59d2e61462548c05dc425bf71d5d505067534167a66a0ce20272e1350668bfddfa2b792801a2e3f29a902d3a60348dca6677ed01335ef2e2e511b246b845ccdb')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation -x
 }
 
 check() {
