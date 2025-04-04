@@ -1,7 +1,7 @@
 pkgbase = uavs3e
 	pkgdesc = An AVS3 encoder supporting AVS3-P2 baseline profile
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uavs3/uavs3e/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -10,9 +10,7 @@ pkgbase = uavs3e
 	depends = glibc
 	source = git+https://github.com/uavs3/uavs3e.git#tag=v1.3
 	source = 010-uavs3e-10bit.patch
-	source = 020-uavs3e-cmake4-fix.patch
 	sha256sums = 8f0c7391751dd1b99d535e02128af545ea1f0e0d9177149615cd20741eaa8741
 	sha256sums = 644fc12d9f03f69c02034b06994c87fff4ebb2bdac02f98f3900ed390b95539c
-	sha256sums = e480b19092673839a9382ecfe6dc4d936f79dbb1a95951d8fa392f7fc3050ea9
 
 pkgname = uavs3e
