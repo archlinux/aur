@@ -1,18 +1,18 @@
 pkgbase = p4
 	pkgdesc = Perforce's Helix command-line client
-	pkgver = 2024.2.2697822
+	pkgver = 2024.2.2726408
 	pkgrel = 1
 	url = https://www.perforce.com
 	arch = x86_64
 	license = custom:p4
 	depends = glibc
 	source = LICENSE
-	source = 24.2-20250110-p4::https://www.perforce.com/downloads/perforce/r24.2/bin.linux26x86_64/p4
-	source = 24.2-20250110-p4.asc::https://www.perforce.com/downloads/perforce/r24.2/bin.linux26x86_64/p4.asc
+	source = 24.2-20250404-p4::https://www.perforce.com/downloads/perforce/r24.2/bin.linux26x86_64/p4
+	source = 24.2-20250404-p4.asc::https://www.perforce.com/downloads/perforce/r24.2/bin.linux26x86_64/p4.asc
 	validpgpkeys = 7123CB760FF18869
 	validpgpkeys = E58131C0AEA7B082C6DC4C937123CB760FF18869
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	sha256sums = d9163d7b7c863978a4874356b9f985e5a785f1ca1e520ce8dc86e3c16189d966
+	sha256sums = d8933c2d0e517e9f69f0f8e92f4c5115c6a7916d281ebcf3cfaf86f967771088
 	sha256sums = SKIP
 
 pkgname = p4
