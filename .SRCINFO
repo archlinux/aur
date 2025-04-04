@@ -1,6 +1,6 @@
 pkgbase = jay-git
 	pkgdesc = A Wayland Compositor
-	pkgver = r1240.ec862648
+	pkgver = r1251.c6ca7c22
 	pkgrel = 1
 	url = https://github.com/mahkoh/jay
 	arch = x86_64

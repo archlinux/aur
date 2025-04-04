@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=r1240.ec862648
+pkgver=r1251.c6ca7c22
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -49,11 +49,13 @@ pkgver() {
 
 build() {
   cd jay/
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --frozen --release
 }
 
 check() {
   cd jay/
+  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --release
 }
 
