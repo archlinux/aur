@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.7.r89.g8535e2f5
+pkgver=2.2.10.r17.g55382539
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3
 depends=(
   'dmidecode'
   'gawk'
+  'glfw'
   'gtk3'
   'iperf3'
   'libsoup3'
@@ -25,6 +26,9 @@ depends=(
 makedepends=(
   'cmake'
   'git'
+  'glslang'
+  'shaderc'
+  'vulkan-headers'
 )
 checkdepends=('appstream')
 optdepends=(
