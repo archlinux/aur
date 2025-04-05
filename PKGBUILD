@@ -2,7 +2,7 @@
 
 _pkgname=scikeras
 pkgname="python-${_pkgname}"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Scikit-Learn compatible wrappers for Keras Models"
 arch=(any)
@@ -10,8 +10,9 @@ url="https://github.com/adriangb/${_pkgname}"
 license=(MIT)
 depends=(python python-importlib-metadata python-packaging python-numpy python-scipy python-scikit-learn python-tensorflow)
 makedepends=(python-build python-installer python-wheel python-poetry)
+checkdepends=('python-pytest' 'python-responses')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=(a6a3281b7b45b43d3404f751acdfb2618daadfff0d18730d2b9314d43389001620da6077f7d50623d340677da1516885ab5bfccc02ad18a144fe5e0f31ea305b)
+b2sums=(f47cec261085c0a69cf3836cf9068c4a98f7bdd5ea9384477bf5fbee2510067e43d90c541aa9f89944d7fd928a8be778026fdf63726eb69a1e15c2e96208df3f)
 
 build() {
     cd "$_pkgname-$pkgver"
