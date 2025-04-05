@@ -10,7 +10,7 @@ license=('CC-BY-4.0')
 
 url="https://github.com/amzxyz/rime_wanxiang"
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('daf8abcf764a2736eac2efb6abf2b2bc5d2a7258b698b86ae303913b48b41735')
+sha256sums=('83e5ccb8a4a969b570a8d82d7e8c9cfaf64f3ac074169a10bea19b5f3de2086c')
 
 makedepends=("rime-prelude" "rime-essay" "sed")
 
