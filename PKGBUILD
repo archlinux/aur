@@ -4,7 +4,7 @@
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
 
 pkgname=pmd
-pkgver=7.11.0
+pkgver=7.12.0
 pkgrel=1
 pkgdesc="Extensible cross-language static code analyzer"
 arch=('any')
@@ -13,7 +13,7 @@ license=('BSD' 'Apache')
 depends=('java-runtime>=11')
 makedepends=('java-environment>=11' 'maven' 'unzip')
 source=("$pkgname-$pkgver.zip::$url/releases/download/pmd_releases%2F$pkgver/pmd-dist-$pkgver-src.zip")
-sha256sums=('8092c0023026e259467b64855ab9dd7c8ac237c343a1f7a6fff7305a7ce69685')
+sha256sums=('9d7944534bb0fca206b2d2c2fd53520036766611765cd8d58631b27f7cea15aa')
 
 prepare() {
 	cd "pmd-src-$pkgver"
