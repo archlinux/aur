@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2025.04.02.r0.g54a6bff
+pkgver=2025.04.05.r0.g5110b43
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=('x86_64')
@@ -20,7 +20,6 @@ optdependes=(
     'bzip2: needed in plugins/multimedia/libffmpegmediaplugin.so'
 )
 makedepends=(
-    'base-devel'
     'qt6-base'
     'qt6-charts'
 )
@@ -37,10 +36,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-git}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     cd "${srcdir}/${pkgname//-/.}"
     sed -i "s/\/usr\/bin\/${pkgname%-git}/${pkgname%-git} %U/g" Distributions/"${pkgname%-git}".desktop
     #sed '38i\#include <QInputDialog>' -i Source/dooble.cc
