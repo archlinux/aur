@@ -1,6 +1,6 @@
 pkgbase = nettle7
 	pkgdesc = A low-level cryptographic library (legacy version)
-	pkgver = 3.5.1
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://www.lysator.liu.se/~nisse/nettle
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = nettle7
 	depends = gmp
 	provides = libnettle.so.7
 	provides = libhogweed.so.5
-	source = https://ftp.gnu.org/gnu/nettle/nettle-3.5.1.tar.gz
-	source = https://ftp.gnu.org/gnu/nettle/nettle-3.5.1.tar.gz.sig
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.10.1.tar.gz
+	source = https://ftp.gnu.org/gnu/nettle/nettle-3.10.1.tar.gz.sig
 	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
-	sha512sums = f738121b9091cbe79435fb5d46b45cf6f10912320c233829356908127bab1cac6946ca56e022a832380c44f2c10f21d2feef64cb0f4f41e3da4a681dc0131784
+	sha512sums = e8673bbcde9cde859ccae75ed6c9c30591e68a995a7c6d724106cfd67a5a5bd45b3468d742443b6565628849d0fd29505a28ca5ee4e89dd13197cdb51429f96c
 	sha512sums = SKIP
 
 pkgname = nettle7
