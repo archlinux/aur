@@ -26,7 +26,8 @@ sha1sums=('SKIP')
 
 build() {
   cmake -B build -S ${pkgname} -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" \
-        -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off"
+        -DCMAKE_BUILD_TYPE="None" -DDEV_BUILD="Off" \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cd build
   make
 }
