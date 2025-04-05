@@ -4,15 +4,15 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
-_tb_displayname=Thunderbird
+_tb_displayname=ThunderbirdESR
 _tb_theme=thunderbird
 
-_pkgname=thunderbird
-pkgname=thunderbird-globalmenu
-pkgver=128.4.0
+_pkgname=thunderbird-esr
+pkgname=thunderbird-esr-globalmenu
+pkgver=128.9.1
 pkgrel=1
-_tb_srcname="$_pkgname-$pkgver"
-pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
+_tb_srcname="${_pkgname%%-*}-$pkgver"
+pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch)"
 url="https://www.thunderbird.net/"
 arch=(x86_64)
 license=(MPL-2.0)
@@ -110,7 +110,7 @@ prepare() {
 
 		# Branding
 		ac_add_options --with-branding=comm/mail/branding/$_tb_theme
-		ac_add_options --enable-update-channel=release
+		ac_add_options --enable-update-channel=esr
 		ac_add_options --with-distribution-id=org.archlinux
 		ac_add_options --with-app-name=$_pkgname
 		export MOZILLA_OFFICIAL=1
@@ -128,7 +128,7 @@ prepare() {
 		# Features
 		ac_add_options --enable-alsa
 		ac_add_options --enable-jack
-		ac_add_options --enable-crashreporter
+		ac_add_options --disable-crashreporter
 		ac_add_options --disable-updater
 		ac_add_options --disable-tests
 
@@ -186,6 +186,7 @@ package() {
 	# Distribution
 	install -Dvm644 /dev/stdin "$vendordir/default-pref.js" <<-END
 		// Use LANG environment variable to choose locale
+		pref("intl.locale.matchOS", true);
 		pref("intl.locale.requested", "");
 
 		// Don't disable extensions in the application directory
@@ -231,10 +232,11 @@ package() {
 
 	# Metainfo
 	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
-		RELEASE_NOTES_URL="https://www.${_pkgname}.net/en-US/${_pkgname}/${pkgver}esr/releasenotes/" \
+		RELEASE_NOTES_URL="https://www.${_pkgname%%-*}.net/en-US/${_pkgname%%-*}/${pkgver}esr/releasenotes/" \
 		MANIFEST_URL="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname" \
 		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
-			sed "s|org\.mozilla\.Thunderbird|$desktopid|g" \
+			sed -e "s|org\.mozilla\.Thunderbird|$desktopid|g" \
+				-e "s|<name>Thunderbird</name>|<name>$_tb_displayname</name>|" \
 				comm/taskcluster/docker/tb-flatpak/org.mozilla.Thunderbird.appdata.xml.in)\
 	)
 
@@ -245,7 +247,8 @@ package() {
 
 	# Desktop
 	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
-		sed -e "s|Exec=thunderbird|Exec=/usr/bin/$_pkgname|g" \
+		sed -e "/^Name.*=/s|Thunderbird|$_tb_displayname|g" \
+			-e "s|Exec=thunderbird|Exec=/usr/bin/$_pkgname|g" \
 			-e "s|Icon=.*\$|Icon=$desktopid|g" \
 			-e "s|StartupWMClass=thunderbird|StartupWMClass=$_pkgname|" \
 			"$srcdir/$desktopid.desktop"\
@@ -265,7 +268,7 @@ package() {
 	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
 }
 
-sha1sums=('21a167582e10d2f63917209b87958be29ff14829'
+sha1sums=('128bbf84744f1b5e304110c2382725ab0231d190'
           'SKIP'
           '9788a6edefd4d34d25788f2914eb3b096690d2b7'
           '3fcb94ed04ece9c8cd511573a9db8fc2613f57bd'
