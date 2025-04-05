@@ -1,6 +1,6 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fmt' 'gcc-libs' 'gdk-
          'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'luajit'
          'mesa' 'nspr' 'nss' 'pango')
 makedepends=('cmake' 'git')
-optdepends=('jre17-openjdk: runelite/hdos' 'gtk2: rs3' 'openssl-1.1: rs3')
+optdepends=('jre17-openjdk: runelite/hdos' 'gtk2: rs3' 'openssl-1.1: rs3' 'umu-launcher: osrs official client')
 source=("git+https://github.com/Adamcake/Bolt.git#tag=${pkgver}"
         "https://adamcake.com/cef/cef-126.0.6478.183-linux-x86_64-minimal-ungoogled.tar.gz"
         "fmt.patch"
