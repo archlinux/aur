@@ -3,7 +3,7 @@
 
 # Official Documentation: https://actualbudget.org/docs/install/
 pkgname=actual-server
-pkgver=25.3.1
+pkgver=25.4.0
 pkgrel=1
 pkgdesc="Actual Budget Server"
 arch=('any')
@@ -30,7 +30,8 @@ __gitpkg="${pkgname%-*}-${pkgver}"
 build() {
     cd "${srcdir}/${__gitpkg}"
     yarn config set enableTelemetry 0
-    yarn workspaces focus @actual-app/sync-server --production
+    yarn install
+    yarn build:server
 }
 
 package() {
