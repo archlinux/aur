@@ -1,8 +1,8 @@
-# Maintainer: Hajos Attila <linux.alucard@gmail.com>
+# Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
 
 pkgname=sunshine-beta-bin
 _pkgname=sunshine-beta-bin
-pkgver=2025.404.122107
+pkgver=2025.404.171304
 _gittag=v$pkgver
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight"
