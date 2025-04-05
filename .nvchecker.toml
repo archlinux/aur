@@ -1,0 +1,5 @@
+[autopsy]
+source = "git"
+git = "https://github.com/sleuthkit/autopsy.git"
+prefix = "autopsy-"
+include_regex = "autopsy-\\d+\\.\\d+\\.\\d+"
