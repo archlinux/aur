@@ -23,21 +23,22 @@ noextract=()
 md5sums=("SKIP") #autofill using updpkgsums
 
 pkgver() {
-	cd ${srcdir}/anubis
-	echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+        cd ${srcdir}/anubis
+        echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/anubis"
-	npm install postcss postcss-cli
-	make deps
-	make assets
-	cd var
-	go build -v ../cmd/anubis
+        cd "${srcdir}/anubis"
+        npm install postcss postcss-cli
+        make deps
+        make assets
+        npm run assets
+        cd var
+        go build -v ../cmd/anubis
 }
-	
+
 package() {
-	install -Dm755 "${srcdir}/anubis/var/anubis" "${pkgdir}"/usr/bin/anubis
-	install -Dm644 "${srcdir}/anubis/run/anubis@.service" "${pkgdir}"/usr/lib/systemd/system/anubis@.service
-	install -Dm644 "${srcdir}/anubis/run/default.env" "${pkgdir}"/etc/anubis/default.env
+        install -Dm755 "${srcdir}/anubis/var/anubis" "${pkgdir}"/usr/bin/anubis
+        install -Dm644 "${srcdir}/anubis/run/anubis@.service" "${pkgdir}"/usr/lib/systemd/system/anubis@.service
+        # install -Dm644 "${srcdir}/anubis/run/default.env" "${pkgdir}"/etc/anubis/default.env
 }
