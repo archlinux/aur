@@ -1,7 +1,7 @@
 pkgbase = kde_gemini
 	pkgdesc = 自动切换kde桌面主题
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = www.github.com/leessmin/kde_gemini
 	arch = x86_64
 	license = LGPL3
