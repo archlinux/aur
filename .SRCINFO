@@ -12,6 +12,6 @@ pkgbase = ngp-git
 	provides = ngp
 	conflicts = ngp
 	source = ngp-git::git+https://github.com/jonathanklee/ngp.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ngp-git

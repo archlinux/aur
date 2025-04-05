@@ -11,7 +11,7 @@ makedepends=(cmake git libconfig pcre)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   git -C $pkgname describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -20,11 +20,10 @@ pkgver() {
 build() {
   CFLAGS="$CFLAGS -Wno-error=stringop-truncation"
 
-  cmake -B build -S $pkgname -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
+  cmake -B build -S $pkgname -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev
   make -C build
 }
 
 package() {
   make -C build DESTDIR="$pkgdir/" install
 }
-
