@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('d3610e2616dcc5bb0d125f01beba2ed74963b074347a5ca6a1f1524bdbc39c73'
             '655dd7ff95f32948857ae8378614a5b3022c03fec91ef260a0b392bd39e1d291'
-            '341bc0f8670640fab789d19f4e6e8e9da0fc282531fddae976c52f431798641d')
+            '1057b326e587edf2f81dc35c6c9cdd2e63d9af1c68e331d7ac8a4bc22ff9de49')
 
         package() {
 	tar xf data.tar.xz -C "${pkgdir}"
