@@ -4,11 +4,11 @@
 pkgname=digitalclock5
 _pkgname=DigitalClock5
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern digital clock application"
 arch=('x86_64')
 url="https://github.com/Kolcha/DigitalClock5"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('qt6-multimedia' 'qt6-tools' 'qt6-svg' 'qt6-base' 'ninja' 'cmake')
 makedepends=('git')
 install=$pkgname.install
@@ -24,7 +24,7 @@ sha256sums=('d2c401f3337a9a807f646e3c3dd6e7a5239d5335f3e8dadc99fd8c375c1732fc'
             'SKIP'
             'SKIP'
             'SKIP'
-            '07163fcd7e9f93529b3e31f7e2ff62012deabba884cab3b6a861fed33982c2e5'
+            '23fd7f483064ad9743b4dbdeb144a90791fd2aba9be20aa712c570a0f8e15587'
             '353cab3b079779c5ad3255fe3ffae21c28f4140e1e1c92f5b1c860c6f06e24e8'
             'b3953c72141ea3a80ad353a2f66eee22614722571d8306fc1989a60df4858c81')
 
