@@ -1,15 +1,13 @@
 pkgbase = python-parmed
 	pkgdesc = Amber parameter file editor
-	pkgver = 3.2.0
-	pkgrel = 2
-	url = https://github.com/parmed/parmed
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://parmed.github.io/ParmEd
 	arch = any
 	license = LGPL2.1
-	checkdepends = python-tox
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/parmed/parmed/archive/3.2.0.tar.gz
-	sha256sums = 5522cb6218b467a7b9f5c8dd5f81a59d199f8712b8d02a1ad6c9161647256821
+	source = https://github.com/ParmEd/ParmEd/archive/4.3.0.tar.gz
+	b2sums = 66da35ece5f6c244b8205f3889bee3c86471b3d54814ba3dd6096ab5f057b1276d74b1fe4f37523a629ecb18412aafddc0ed13e68d24abe10dda40247d0b30e4
 
 pkgname = python-parmed
-
