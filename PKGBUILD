@@ -109,7 +109,7 @@ prepare() {
 
 		# Branding
 		ac_add_options --with-branding=browser/branding/$_ff_theme
-		ac_add_options --enable-update-channel=release
+		ac_add_options --enable-update-channel=esr
 		ac_add_options --with-distribution-id=org.archlinux
 		ac_add_options --with-app-name=$_pkgname
 		export MOZILLA_OFFICIAL=1
@@ -127,7 +127,7 @@ prepare() {
 		# Features
 		ac_add_options --enable-alsa
 		ac_add_options --enable-jack
-		ac_add_options --enable-crashreporter
+		ac_add_options --disable-crashreporter
 		ac_add_options --disable-updater
 		ac_add_options --disable-tests
 
