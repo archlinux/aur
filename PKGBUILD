@@ -7,8 +7,6 @@
 : ${_build_level:=1}
 : ${_build_git:=true}
 
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-
 unset _pkgtype
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
 [[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
@@ -17,7 +15,7 @@ unset _pkgtype
 
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.r246.ge5f13b6
+pkgver=2.4.r256.g3114394
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -58,6 +56,7 @@ _source_flycast() {
   local _sources_add=(
     'bylaws.libadrenotools'::'git+https://github.com/bylaws/libadrenotools.git'
     'flyinghead.asio'::'git+https://github.com/flyinghead/asio.git'
+    'flyinghead.libchdr'::'git+https://github.com/flyinghead/libchdr.git'
     #'flyinghead.mingw-breakpad'::'git+https://github.com/flyinghead/mingw-breakpad.git'
     #'google.googletest'::'git+https://github.com/google/googletest.git'
     #'google.oboe'::'git+https://github.com/google/oboe.git'
@@ -67,7 +66,6 @@ _source_flycast() {
     'khronosgroup.vulkan-headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
     'libsdl-org.sdl'::'git+https://github.com/libsdl-org/SDL.git'
     'retroachievements.rcheevos'::'git+https://github.com/RetroAchievements/rcheevos.git'
-    'rtissera.libchdr'::'git+https://github.com/rtissera/libchdr.git'
     'vinniefalco.luabridge'::'git+https://github.com/vinniefalco/LuaBridge.git'
     'vkedwardli.spout2'::'git+https://github.com/vkedwardli/Spout2.git'
     'vkedwardli.syphon-framework'::'git+https://github.com/vkedwardli/Syphon-Framework.git'
@@ -84,6 +82,7 @@ _source_flycast() {
     local _submodules=(
       'bylaws.libadrenotools'::'core/deps/libadrenotools'
       'flyinghead.asio'::'core/deps/asio'
+      'flyinghead.libchdr'::'core/deps/libchdr'
       #'flyinghead.mingw-breakpad'::'core/deps/breakpad'
       #'google.googletest'::'core/deps/googletest'
       #'google.oboe'::'core/deps/oboe'
@@ -93,7 +92,6 @@ _source_flycast() {
       'khronosgroup.vulkan-headers'::'core/deps/Vulkan-Headers'
       'libsdl-org.sdl'::'core/deps/SDL'
       'retroachievements.rcheevos'::'core/deps/rcheevos'
-      'rtissera.libchdr'::'core/deps/libchdr'
       'vinniefalco.luabridge'::'core/deps/luabridge'
       'vkedwardli.spout2'::'core/deps/Spout'
       'vkedwardli.syphon-framework'::'core/deps/Syphon'
