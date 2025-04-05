@@ -3,3 +3,5 @@
 *.pkg.t*
 pkg/
 src/
+
+update.sh
