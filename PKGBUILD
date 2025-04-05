@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RJSONIO
-_pkgver=1.3-1.11
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f7830bcc92035b68f5ea76e931fd653d')
-b2sums=('62d712d2b240ce0d9126729eeece3d0d8826d846ef747b937d46b793c42db6c5c99366805260990a74c7101f862568d4d1a1a37e41630f710eb3193155437f37')
+md5sums=('f43a5bc14ece5584ebde01731845bc59')
+b2sums=('f3121114d8d4a9d4cedb711995d5a1c5fa08155ad98a619418f63be41c6a55733bc7235ad6c299190882993c2445b1f5925b784faff85c68b680c3c7bd855321')
 
 build() {
   mkdir build
