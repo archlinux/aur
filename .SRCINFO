@@ -22,6 +22,7 @@ pkgbase = better-control-git
 	depends = gammastep
 	depends = python-pydbus
 	depends = python-requests
+	depends = usbguard
 	provides = better-control
 	conflicts = better-control
 	source = git+https://github.com/quantumvoid0/better-control.git
