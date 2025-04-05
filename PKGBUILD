@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/Feur-Inc/BetterX-Desktop"
 license=('GPL3')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'libnotify' 'electron' 'libxcrypt-compat')  # Added libxcrypt-compat
-makedepends=('git' 'pnpm' 'python' 'ruby' 'base-devel')  # Added ruby and base-devel for fpm
+makedepends=('git' 'bun' 'python' 'ruby' 'base-devel')  # Added ruby and base-devel for fpm
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
@@ -23,12 +23,12 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  pnpm install
+  bun install
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  pnpm run build:arch
+  bun run build:arch
 }
 
 package() {
