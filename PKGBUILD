@@ -1,33 +1,54 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=gromit-mpx-git
-_gitname=gromit-mpx
-pkgver=1.3.r26.g7c83680
+pkgver=1.7.0.r7.ga982685
 pkgrel=1
-pkgdesc="Desktop annotation tool. GTK3 multi-pointer variant of original gromit utility."
-arch=('i686' 'x86_64')
-url="https://github.com/bk138/gromit-mpx"
-license=("GPL2")
-depends=('libappindicator-gtk3')
-makedepends=('cmake')
-provides=('gromit')
-conflicts=('gromit')
-source=("git+https://github.com/bk138/gromit-mpx.git")
-md5sums=('SKIP')
+pkgdesc='On-screen annotation tool (git version)'
+arch=('x86_64')
+url='https://github.com/bk138/gromit-mpx/'
+license=('GPL-2.0-or-later')
+depends=(
+    'cairo'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
+    'gtk3'
+    'hicolor-icon-theme'
+    'libappindicator-gtk3'
+    'libx11'
+    'libxi'
+    'lz4')
+makedepends=(
+    'cmake'
+    'git')
+provides=('gromit-mpx')
+conflicts=('gromit-mpx')
+backup=('etc/gromit-mpx/gromit-mpx.cfg')
+source=('git+https://github.com/bk138/gromit-mpx.git')
+sha256sums=('SKIP')
+
+prepare() {
+    git -C gromit-mpx submodule init
+    git -C gromit-mpx config --local submodule.flatpak/shared-modules.update none
+    git -C gromit-mpx -c protocol.file.allow='always' submodule update
+}
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git -C gromit-mpx describe --long --tags --abbrev='7' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$srcdir/$_gitname"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    make
+    cmake -B build -S gromit-mpx \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING="3.5.0" \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-    cd "$srcdir/$_gitname"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir" cmake --install build
 }
-
