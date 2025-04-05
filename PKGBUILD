@@ -4,7 +4,7 @@
 _pkgname='insomnia'
 _upkgname='Insomnia'
 pkgname="${_pkgname}-bin"
-pkgver=11.0.0
+pkgver=11.0.2
 pkgrel=1
 epoch=1
 pkgdesc='API Client and Design Platform for GraphQL and REST'
@@ -17,10 +17,13 @@ optdepends=("libappindicator-gtk3: StatusNotifierItem support"
 	    "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+
 source=("${_url_source}/releases/download/core@${pkgver}/${_upkgname}.Core-${pkgver}.deb"
         "${_url_source}/raw/core@${pkgver}/LICENSE")
-sha256sums=('dcbf8f7cb8ff400e05f5ea3e5570651722abd1136a72623d0135849d9f06f9cd'
+
+sha256sums=('1f934660ea67d303b19552d3cf2c00f8d0e1dd88de9bfc2c3ba09043c4d14b97'
             '4197d1eeea274289901dc8b68e16f538ceb535ce1ff592f6895c0a7439908ca2')
+
 package() {
   tar -xvf 'data.tar.xz' -C "${pkgdir}"
   rm -rf "${pkgdir}/usr/share/doc"
