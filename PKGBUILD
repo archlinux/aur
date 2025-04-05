@@ -2,7 +2,7 @@
 # Contributor: jthvai
 
 pkgname=naps2
-pkgver=8.1.2
+pkgver=8.1.3
 pkgrel=1
 pkgdesc="NAPS2 - Not Another PDF Scanner. Scan documents to PDF and more, as simply as possible."
 arch=("aarch64" "x86_64")
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=("!strip" "!debug")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cyanfish/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=("4b6844c6c58fb35e83317a8a27f799c24426c680c682a2c24a940f286648df33d4630906e4711702f942a4ca68f420fa40312bac45e4823aee0cdd36c42d91c9")
+b2sums=("7cdd14041b22558318f0558ec41abc35fd4cce6e2bba9846ec177833c370fc7529cee2760a9e6526d19210424339b3eb0082497bcc604b5b1c4db9423ff8e091")
 
 build() {
     cd "$pkgname-$pkgver"
