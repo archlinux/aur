@@ -6,6 +6,8 @@
 : ${_build_level:=1}
 : ${_build_git:=false}
 
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 unset _pkgtype
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
 [[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
