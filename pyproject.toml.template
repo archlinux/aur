@@ -6,6 +6,9 @@ requires = ["setuptools"]
 name = "shrinko8"
 version = "{{ version }}"
 
+[project.scripts]
+shrinko8 = "shrinko8.shrinko8:main"
+
 [tool.setuptools]
 packages = ["shrinko8"]
 

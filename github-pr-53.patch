@@ -1,0 +1,113 @@
+From dcafca6f32ddee913160d1f2e3ea9e2819b5a972 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Sat, 5 Apr 2025 20:53:52 +0200
+Subject: [PATCH] Allow `main()` to be called with zero arguments
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Standard packaging tools such as pip or PyPA’s `installer` use a feature
+called entry points, so they can automatically generate platform
+executables on the fly [1] [2] as the user installs a wheel. That allows
+users to type e.g. `shrinko8` instead of `python shrinko8.py`.
+
+Entry points are functions that offer a zero-arguments form. [3] [4]
+Contrary to languages such as C or Java, an entry point in Python
+doesn’t conveniently receive command-line arguments via function
+parameters. Instead, it is expected to actively query the arguments from
+e.g. `sys.argv` if need be.
+
+Adding a zero-argument form to `main` is a first step towards making
+shrinko8 compatible with standard packaging tools, and helps in case you
+ever decide to publish shrinko8 on PyPI and allow users to `pip install`
+it.
+
+It also makes it a little easier for system-level package maintainers to
+package `shrinko8` and `shrinkotron` as executables.
+
+[1]: https://github.com/pypa/pip/blob/06c8024bc50b198b91cad6df80d72a742d524e3d/src/pip/_vendor/distlib/scripts.py#L42-L49
+
+[2]: https://github.com/pypa/installer/blob/7656f5d41943c21757243efa9deef636591bada2/src/installer/scripts.py#L35-L43
+
+[3]: https://discuss.python.org/t/why-do-script-entrypoints-require-a-function-be-specified/14090
+
+[4]: https://packaging.python.org/en/latest/specifications/entry-points/
+---
+ run_tests.py   | 7 ++++---
+ shrinko.py     | 5 +++--
+ shrinko8.py    | 2 +-
+ shrinkotron.py | 2 +-
+ 4 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/run_tests.py b/run_tests.py
+index 426ed28..6b50d76 100644
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ from test_utils import *
+-import argparse, fnmatch
++import argparse, fnmatch, sys
+ 
+ parser = argparse.ArgumentParser()
+ parser.add_argument("--measure", action="store_true", help="print the input/output counts for successful tests")
+@@ -271,8 +271,9 @@ def run():
+     run_test("TRON_constmin", "consttron.p64", "consttronmin.p64", "--minify", "--avoid-base64", target=Target.picotron)
+     run_test("TRON_load", "loadtron.p64", "loadtron.p64", "--minify-safe-only", target=Target.picotron)
+ 
+-def main(raw_args):
++def main(raw_args=None):
+     global g_opts
++    raw_args = raw_args if raw_args else sys.argv[1:]
+     g_opts = parser.parse_args(raw_args)
+     init_tests(g_opts)
+     
+@@ -290,4 +291,4 @@ def main(raw_args):
+     return end_tests()
+ 
+ if __name__ == "__main__":
+-    sys.exit(main(sys.argv[1:]))
++    sys.exit(main())
+diff --git a/shrinko.py b/shrinko.py
+index 080a14a..c34522e 100644
+--- a/shrinko.py
++++ b/shrinko.py
+@@ -9,7 +9,7 @@
+ from picotron_defs import PicotronContext, Cart64Source, get_default_picotron_version
+ from picotron_cart import Cart64Format, read_cart64, write_cart64, merge_cart64, filter_cart64, preproc_cart64
+ from picotron_cart import write_cart64_compressed_size, write_cart64_version
+-import argparse
++import argparse, sys
+ 
+ k_version = 'v1.2.3c'
+ 
+@@ -651,7 +651,8 @@ def handle_output(args, cart, extra_carts):
+ 
+     parser = create_parser()
+ 
+-    def main(raw_args):
++    def main(raw_args=None):
++        raw_args = raw_args if raw_args else sys.argv[1:]
+         try:
+             if not raw_args: # help is better than usage
+                 parser.print_help(sys.stderr)
+diff --git a/shrinko8.py b/shrinko8.py
+index dac5fa3..8109ee3 100644
+--- a/shrinko8.py
++++ b/shrinko8.py
+@@ -6,4 +6,4 @@
+ main = create_main(Language.pico8)
+ 
+ if __name__ == "__main__":
+-    sys.exit(main(sys.argv[1:]))
++    sys.exit(main())
+diff --git a/shrinkotron.py b/shrinkotron.py
+index c565d74..5ec911c 100644
+--- a/shrinkotron.py
++++ b/shrinkotron.py
+@@ -6,4 +6,4 @@
+ main = create_main(Language.picotron)
+ 
+ if __name__ == "__main__":
+-    sys.exit(main(sys.argv[1:]))
++    sys.exit(main())
