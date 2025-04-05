@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tray-link-bin
 _pkgname="Tray Link"
-pkgver=1.1.31
+pkgver=1.1.32
 _electronversion=24
 pkgrel=1
-pkgdesc="System tray application to provide a shortcut for your projects on vscode and github-desktop"
+pkgdesc="System tray application to provide a shortcut for your projects on vscode and github-desktop.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://github.com/thejoaov/tray-link"
 license=("MIT")
@@ -14,20 +14,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5a8a7f3d88fb7d3b662e83de6c44ebcf0e7baa655a7aca1d49cfcfd3e1902896'
+sha256sums=('83177f5262715ce2036c0a220acc9d6fa21568b4b829924074fdc34862e11be6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${pkgname%-bin}/
         s/@options@//
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
