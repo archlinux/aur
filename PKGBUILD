@@ -7,14 +7,15 @@
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
 # Contributor: Davide Depau <davide at depau dot eu>
 
+# from jdk-21.0.6+7_openj9-0.49.0 to jdk-21.0.7+5_openj9-0.51.0-m2
 pkgname=jdk21-openj9-bin
 _jdkver=21
 _jdkminor=0
-_jdkpatch=6
+_jdkpatch=7
 _jdksubpatch=0
 _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdksubpatch}
-_openj9ver=0.49.0
-_buildvershort=7
+_openj9ver=0.51.0-m2
+_buildvershort=5
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=2
@@ -35,7 +36,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('9a37a30a3803c00a3dbdb9c7d61f8a1cdf2d798e1a08903d35d7b55cc6ac2747')
+sha256sums=('ea374cbbe6e67f1563fc4a1270a1791ac662f508470797661c5094c2867f8a4c')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
