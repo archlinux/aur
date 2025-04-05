@@ -5,8 +5,8 @@
 pkgname=python-parmed
 _pkgname=ParmEd
 pkgver=4.3.0
-pkgrel=2
-pkgdesc="Amber parameter file editor"
+pkgrel=3
+pkgdesc="General tool for aiding in investigations of biomolecular systems using popular molecular simulation packages"
 arch=('x86_64')
 url="https://parmed.github.io/ParmEd"
 license=('LGPL-2.1-only')

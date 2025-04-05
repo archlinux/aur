@@ -1,7 +1,7 @@
 pkgbase = python-parmed
-	pkgdesc = Amber parameter file editor
+	pkgdesc = General tool for aiding in investigations of biomolecular systems using popular molecular simulation packages
 	pkgver = 4.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://parmed.github.io/ParmEd
 	arch = x86_64
 	license = LGPL-2.1-only
