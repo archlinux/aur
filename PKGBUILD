@@ -2,7 +2,7 @@
 
 pkgname=mesonlsp
 pkgver=4.3.7
-pkgrel=4
+pkgrel=5
 pkgdesc='Meson language server'
 arch=(x86_64)
 url=https://github.com/JCWasmx86/mesonlsp
