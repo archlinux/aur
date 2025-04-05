@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=pocket-casts
 pkgname="${_pkgname}-desktop-bin"
-pkgver=0.10.1
+pkgver=0.10.2
 _electronversion=34
 pkgrel=1
 pkgdesc="The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)"
@@ -28,21 +28,21 @@ source=(
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('cb12f3c90559d5a078f04c89ba6ad75313cd79e992c311fc0e12063fef879f69')
-sha256sums_x86_64=('cf4fef4e110fd208931e44e0d37b111771412e87ce89844dfd603726c83b76aa')
+sha256sums_aarch64=('2b723168d64fd0a57bb3b0656b9ff8640d66fe714ff2a8028eb98dd654ec8b04')
+sha256sums_x86_64=('ecd90aabea1828546e437bc5b67a3db42c65304dad3d0b0bbc0145489bdae8c7')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/${_pkgname} %U/${pkgname%-bin} %U/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
