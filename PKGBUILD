@@ -5,7 +5,7 @@
 
 pkgname=wiliwili
 pkgver=1.5.1
-pkgrel=2
+pkgrel=4
 pkgdesc='专为手柄控制设计的第三方跨平台B站客户端'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xfangfang/wiliwili'
@@ -18,6 +18,10 @@ b2sums=('3cad9d65f4db60e5220f315c97d5d3e81f537b7a4033aef5a2e3664cff455e9745dfc84
 prepare() {
   git -C "${srcdir}/${pkgname}" rm library/{OpenCC,QR-Code-generator,pystring}
   git -C "${srcdir}/${pkgname}" submodule update --init --recursive
+
+  # Update borealis to the latest commit to temporarily fix a CMake version compatibility issue.
+  # Please delete this line after the new version is released.
+  git -C "${srcdir}/${pkgname}" submodule update --remote library/borealis
 
   cmake \
     -B "${srcdir}/build" \
