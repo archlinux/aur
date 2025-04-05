@@ -28,7 +28,7 @@
 +	${CC} -shared -pthread \
 +		${CFLAGS} ${confCCOPTS} -fPIC ${confLDOPTS} ${LDOPTS_SO} \
 +		-o libmilter.so.${sm_libmilter_soversion} \
-+		-Wl,-soname,${sm_libmilter_soname} \
++		-Wl,-soname,libmilter.so.${sm_libmilter_soname} \
 +		${libmilterOBJS}
 +	${LN} ${LNOPTS} libmilter.so.${sm_libmilter_soversion} libmilter.so.${sm_libmilter_soname}
 +	${LN} ${LNOPTS} libmilter.so.${sm_libmilter_soname} libmilter.so
