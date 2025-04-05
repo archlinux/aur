@@ -4,7 +4,7 @@
 pkgname='supermariowar-bin'
 _pkgname='supermariowar'
 pkgdesc="Super Mario War multiplayer game."
-pkgver='2024.10.17'
+pkgver='2025.04.03'
 _pkgver="${pkgver//./-}"
 pkgrel=1
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 install="${_pkgname}.install"
 noextract=( 'icons.tar.gz' )
-sha256sums=('35b04f3461f28d7729f18653a130df976bb26554446cf07cadcb7b4019a6bb0f'
+sha256sums=('6f5a6e9faf80b96cc63b2068b6ba0db2f069aa8d07fe4e7f0773c9a93ca6f8a5'
             'd92e0c1390e45a09f5c3a56d23d44cd6723cd4cb81fefac33a783acc79301bbc')
 
 package() {
@@ -38,5 +38,7 @@ package() {
 
 #icons and .desktop files
   tar xf "${srcdir}/icons.tar.gz" -C "${pkgdir}"
+# Reset ownership to root:root
+  find "${pkgdir}/usr/share/" -type f -exec chown root:root {} \;
 }
 
