@@ -7,6 +7,8 @@
 : ${_build_level:=1}
 : ${_build_git:=true}
 
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 unset _pkgtype
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
 [[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
@@ -15,7 +17,7 @@ unset _pkgtype
 
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.r232.g44f7740
+pkgver=2.4.r246.ge5f13b6
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
