@@ -3,7 +3,7 @@
 _pkgname=ginkgo
 pkgbase=ginkgo-hpc-git
 pkgname=(ginkgo-hpc{,-docs,-cuda,-hip}-git)
-pkgver=r8256.abe9ecf7f9
+pkgver=r8482.cea1be7fbd
 pkgrel=1
 pkgdesc="Numerical linear algebra software package"
 arch=(x86_64)
@@ -29,6 +29,7 @@ makedepends=(
   graphviz
   texlive-bin
   texlive-latexextra
+  yaml-cpp  # for tests
   # -cuda
   cuda
   # -hip
@@ -45,7 +46,7 @@ source=(
   split_cuda_library.patch
 )
 b2sums=('SKIP'
-        '3dd2558f399a4e9e7176021415b53e8f06e41c328df920ed254890ffc4c2a430344162c5054bb8d8f4ef2c53ae4029084fd85f89f46a047ebf5707a70fb6d7fe')
+        '1d7c35edb141a4d9cf5aa1ca51aec6e923e09c5353d7ef05bdb576fc1b4fceb59204162f66b3c63a550a682c953922ee4ae9b24bf87ba9ba7555465a1b3c53ec')
 
 pkgver() {
   cd $_pkgname
@@ -60,7 +61,9 @@ prepare() {
 
 build() {
   local common_cmake_flags=(
-    -S $_pkgname -G Ninja
+    -S $_pkgname
+    -G Ninja
+    -Wno-dev
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
     -DGINKGO_BUILD_REFERENCE=ON
@@ -74,9 +77,9 @@ build() {
   )
   # In general, we want to list all real archs (sm_XX) and the latest virtual arch (compute_XX) for future PTX compatibility.
   # Valid values can be discovered from nvcc --help
-  local _cuda_archs="50;52;53;60;61;62;70;72;75;80;86;87;89;90;90a;90a-virtual"
+  local cuda_archs="50;52;53;60;61;62;70;72;75;80;86;87;89;90;90a;100;100a;101;101a;120;120a;120-virtual"
   # archs gfx1010;gfx1012;gfx1030;gfx1100;gfx1101;gfx1102 are not supported: https://github.com/ginkgo-project/ginkgo/issues/1429
-  local _amdgpu_archs="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942"
+  local amdgpu_archs="gfx906;gfx908;gfx90a;gfx940;gfx941;gfx942"
 
   # base package
   cmake -B build "${common_cmake_flags[@]}" \
@@ -87,7 +90,7 @@ build() {
 
   # -cuda package
   cmake -B build-cuda "${common_cmake_flags[@]}" \
-    -DCMAKE_CUDA_ARCHITECTURES="$_cuda_archs" \
+    -DCMAKE_CUDA_ARCHITECTURES="$cuda_archs" \
     -DGINKGO_BUILD_CUDA=ON \
     -DGINKGO_BUILD_HIP=OFF \
     -DGINKGO_BUILD_SYCL=OFF
@@ -95,17 +98,17 @@ build() {
 
   # -hip package
   # LTO does not work with HIP
-  local _hip_flags="${CXXFLAGS/-flto=auto/}"
-  local _cxx_flags="${CXXFLAGS/-flto=auto/}"
+  export HIPFLAGS="${CXXFLAGS/-flto=auto/}"
+  export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
   # HIP does not support -fcf-protection
-  _hip_flags="${_hip_flags/-fcf-protection/}"
+  export HIPFLAGS="${HIPFLAGS/-fcf-protection/}"
   # Ginkgo does not support _GLIBCXX_ASSERTIONS for device builds https://github.com/ginkgo-project/ginkgo/issues/1143#issuecomment-2036957897
-  _hip_flags="${_hip_flags/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+  export HIPFLAGS="${HIPFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+  # Compile source code for supported GPU archs in parallel
+  export HIPFLAGS="$HIPFLAGS -parallel-jobs=$(nproc)"
   cmake -B build-hip "${common_cmake_flags[@]}" \
     -DCMAKE_CXX_COMPILER=/opt/rocm/lib/llvm/bin/amdclang++ \
-    -DCMAKE_CXX_FLAGS="$_cxx_flags" \
-    -DCMAKE_HIP_FLAGS="$_hip_flags" \
-    -DCMAKE_HIP_ARCHITECTURES="$_amdgpu_archs" \
+    -DCMAKE_HIP_ARCHITECTURES="$amdgpu_archs" \
     -DGINKGO_BUILD_CUDA=OFF \
     -DGINKGO_BUILD_HIP=ON \
     -DGINKGO_BUILD_SYCL=OFF
