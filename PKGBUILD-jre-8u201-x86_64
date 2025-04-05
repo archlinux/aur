@@ -3,7 +3,7 @@
 
 pkgname=xmage
 pkgver=1.4.56
-pkgrel=2
+pkgrel=3
 _java_version=8u201
 _java_dir=jre1.8.0_201
 
