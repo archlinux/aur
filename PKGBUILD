@@ -1,7 +1,8 @@
 # Maintainer: ihipop <ihipop at gmail dot com>
 _pkgname=warp-terminal
 pkgname="${_pkgname}-bin"
-pkgver=0.2025.01.08.08.02.stable_04
+pkgver=0.2025.04.02.08.11.stable.03
+_pkgver=0.2025.04.02.08.11.stable_03
 pkgrel=1
 pkgdesc="Warp is the intelligent terminal with AI and your dev team's knowledge built-in."
 arch=('x86_64' 'aarch64')
@@ -12,20 +13,19 @@ conflicts=("${_pkgname}")
 options=('!strip')
 depends=()
 source=(
-    "${pkgname%-bin}-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/warp-terminal-v${pkgver}-1-$CARCH.pkg.tar.zst"
+    "${_pkgname}-_amd64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_${pkgver}_amd64.deb"
     "LICENSE.txt"
 )
-sha256sums=(
-            '1c74271f84aa8eeebc442059c54a66765a4deb148c07edda97cc0a80bbaf3d5b'
-            '341bc0f8670640fab789d19f4e6e8e9da0fc282531fddae976c52f431798641d'
-           )
+sha256sums=('d3610e2616dcc5bb0d125f01beba2ed74963b074347a5ca6a1f1524bdbc39c73'
+            '341bc0f8670640fab789d19f4e6e8e9da0fc282531fddae976c52f431798641d')
 
-build() {
-    rm -f *.zst .*
-    install -Dm644 "${srcdir}/LICENSE.txt" "${srcdir}/opt/warpdotdev/warp-terminal/"
-    rm LICENSE.txt
-}
+        package() {
+	tar xf data.tar.xz -C "${pkgdir}"
+	#install -d "${pkgdir}/opt/warpdotdev/${_pkgname}"
+	cd $pkgdir
+	install -d "$pkgdir/usr/bin/"
+	install -d "$pkgdir/opt/$_pkgname"
+pwd
+  ln -s "/opt/warpdotdev/$_pkgname/warp" "$pkgdir/usr/bin/$_pkgname"
 
-package() {
-    cp -a "${srcdir}/." "${pkgdir}"
 }
