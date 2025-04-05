@@ -6,7 +6,7 @@
 _pkgname="forkgram"
 pkgname="$_pkgname"
 pkgver=5.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL-3.0-or-later')
@@ -71,6 +71,13 @@ _pkgsrc="frk-v$pkgver-full"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext")
 sha256sums=('609e786de65a925abe9aa491757d98ccd9ed3e0c98c0b9985f95fe14605bcf16')
+
+prepare() {
+  # for Qt 6.9
+  sed -E -e 's&QGenericUnixServices&QDesktopUnixServices&' \
+    -e 's&qgenericunixservices_p&qdesktopunixservices_p&' \
+    -i "$_pkgsrc/Telegram/lib_base/base/platform/linux/base_linux_xdp_utilities.cpp"
+}
 
 build() {
   local _cmake_options=(
