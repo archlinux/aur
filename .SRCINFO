@@ -1,6 +1,6 @@
 pkgbase = pip-player-git
-	pkgdesc = A simple application to play PiP(Picture-in-Picture) with any links that you like.Use system-wide electron.
-	pkgver = 1.0.1.r3.g1e5c827
+	pkgdesc = A simple application to play PiP(Picture-in-Picture) with any links that you like.(Use system-wide electron)
+	pkgver = 1.2.0.r0.g6c1262f
 	pkgrel = 1
 	url = https://github.com/WickyPlays/pip-player
 	arch = any
@@ -10,12 +10,8 @@ pkgbase = pip-player-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	makedepends = yarn
-	makedepends = node-gyp
-	makedepends = gcc
-	makedepends = cmake
 	depends = electron31
-	provides = pip-player=1.0.1
+	provides = pip-player=1.2.0
 	conflicts = pip-player
 	source = pip-player.git::git+https://github.com/WickyPlays/pip-player
 	source = pip-player.sh
