@@ -1,0 +1,2 @@
+21d20
+< DIRS-$(CONFIG_ISAL) += isalbuild
