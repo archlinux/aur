@@ -28,7 +28,7 @@ makedepends=(
 )
 
 provides=(maomaowm wayland-compositor)
-conflicts=(maomaowm)
+conflicts=(maomaowm maomaowm-git maomaowm-round)
 source=("$pkgname::git+https://github.com/DreamMaoMao/maomaowm.git")
 md5sums=('SKIP')
 

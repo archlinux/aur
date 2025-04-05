@@ -22,6 +22,8 @@ pkgbase = maomaowm-git
 	provides = maomaowm
 	provides = wayland-compositor
 	conflicts = maomaowm
+	conflicts = maomaowm-git
+	conflicts = maomaowm-round
 	source = maomaowm-git::git+https://github.com/DreamMaoMao/maomaowm.git
 	md5sums = SKIP
 
