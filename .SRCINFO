@@ -1,5 +1,5 @@
 pkgbase = identities-git
-	pkgdesc = GTK password manager
+	pkgdesc = Modern password-store client made for GNOME
 	pkgver = 0.1.0.r0.gb09a715
 	pkgrel = 1
 	url = https://github.com/k8ieone/identities
