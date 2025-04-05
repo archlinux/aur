@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soulfire-bin
 _pkgname=SoulFire
-pkgver=1.9.0
+_wrname=soufire
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="A frontend for the SoulFire server. It mainly targets the web, but uses native APIs using Tauri.(Prebuilt version)"
 arch=('x86_64')
@@ -16,11 +17,14 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_wrname}_${pkgver}_amd64.deb"
 )
-sha256sums=('6d0ffb04f5c30db2aa7b54e9d5a585d5b6e45229b3bf3a7c1583a8895f66afc6')
+sha256sums=('81527e7f193aea4deef6eb36fb1fc5e8847af0930fda2e83ab49938e7ff7d80b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
+    sed -i "s/Name=${_wrname}/Name=${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_wrname}.desktop"
+    sed -i "s/com.${pkgname%-bin}mc.${pkgname%-bin}/${pkgname%-bin}/g" \
+        "${srcdir}/usr/share/metainfo/com.${pkgname%-bin}mc.${pkgname%-bin}.metainfo.xml"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
@@ -29,5 +33,7 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_wrname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/metainfo/com.${pkgname%-bin}mc.${pkgname%-bin}.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
 }
