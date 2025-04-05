@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=14.0.20250222
+Name=Flashpoint Archive
+GenericName=Flashpoint
+Comment=An archive for games and animations from the web.
+Icon=/opt/flashpoint/Launcher/icon.svgz
+Exec=/usr/bin/env -S WINEPREFIX="/opt/flashpoint/FPSoftware/Wine" /opt/flashpoint/Launcher/flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab
+Path=/opt/flashpoint/Launcher
+Terminal=false
+Categories=Archiving;Game
+SingleMainWindow=true
