@@ -1,6 +1,6 @@
 pkgbase = python-markdown-exec
 	pkgdesc = Utilities to execute code blocks in Markdown files
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://pawamoy.github.io/markdown-exec
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-markdown-exec
 	makedepends = python-pdm-backend
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/markdown_exec/markdown_exec-1.10.2.tar.gz
-	md5sums = 6e6d640b167c41eefc4e2d3d0566f297
+	source = https://files.pythonhosted.org/packages/source/m/markdown_exec/markdown_exec-1.10.3.tar.gz
+	md5sums = f55a526b4b3c05d7f3f499d0814dac6e
 
 pkgname = python-markdown-exec
 	depends = python-pymdown-extensions>=9
