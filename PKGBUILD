@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgbase=commafeed
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Reader inspired self-hosted personal RSS reader (native standalone version)"
 url="https://github.com/Athou/commafeed"
 arch=('x86_64')
@@ -30,6 +30,7 @@ _package() {
   _db=${db,,}
 
   pkgdesc="Google Reader inspired self-hosted personal RSS reader (${db} database)"
+  backup=("/var/lib/commafeed-${_db}/config/application.properties")
 
   install -Dm644 "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/target/quarkus-generated-doc/application.properties \
     "${pkgdir}"/var/lib/${pkgname}/config/application.properties
