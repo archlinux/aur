@@ -1,7 +1,7 @@
 pkgbase = ayugram-desktop
 	pkgdesc = Desktop Telegram client with good customization and Ghost mode.
 	pkgver = 5.12.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/AyuGram/AyuGramDesktop
 	arch = x86_64
 	license = GPL-3.0-only
@@ -52,7 +52,7 @@ pkgbase = ayugram-desktop
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	source = AyuGram-v5.12.3.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v5.12.3.tar.gz
-	source = ayugram-desktop-5.12.3-fix-build-on-qt-6.9.0.diff::https://github.com/desktop-app/lib_base/pull/268.diff
+	source = lib_base-fix-build-on-qt-6.9.0.diff::https://github.com/desktop-app/lib_base/pull/268.diff
 	source = cld3-b48dc46512566f5a2d41118c8c1116c4f96dc661.tar.gz::https://github.com/google/cld3/archive/b48dc46512566f5a2d41118c8c1116c4f96dc661.tar.gz
 	source = lib_webrtc-169ba6b1d5e58e9d1cfa7b7d5c85c119e6c6e2db.tar.gz::https://github.com/desktop-app/lib_webrtc/archive/169ba6b1d5e58e9d1cfa7b7d5c85c119e6c6e2db.tar.gz
 	source = lib_rpl-9a3ce435f4054e6cbd45e1c6e3e27cfff515c829.tar.gz::https://github.com/desktop-app/lib_rpl/archive/9a3ce435f4054e6cbd45e1c6e3e27cfff515c829.tar.gz

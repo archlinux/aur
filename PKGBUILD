@@ -2,7 +2,7 @@
 
 pkgname=ayugram-desktop
 pkgver=5.12.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop Telegram client with good customization and Ghost mode."
 arch=("x86_64")
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -28,7 +28,7 @@ optdepends=(
 )
 source=(
     "AyuGram-v$pkgver.tar.gz::https://github.com/AyuGram/AyuGramDesktop/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname-$pkgver-fix-build-on-qt-6.9.0.diff::https://github.com/desktop-app/lib_base/pull/268.diff"
+    "lib_base-fix-build-on-qt-6.9.0.diff::https://github.com/desktop-app/lib_base/pull/268.diff"
 )
 declare -Ag _modules_name_map=(
     [cmake]=https://github.com/desktop-app/cmake_helpers/archive/90e6d73100a9fd2dc4c30a270c3bbc1d35924f32.tar.gz
@@ -185,7 +185,7 @@ prepare() {
     #https://github.com/telegramdesktop/tdesktop/issues/26489#issuecomment-1627555107
     #CMAKE_BUILD_TYPE must match libtg_owt's
 
-    patch -Np1 -d Telegram/lib_base -i "$srcdir/fix-build-on-qt-6.9.0.diff"
+    patch -Np1 -d Telegram/lib_base -i "$srcdir/lib_base-fix-build-on-qt-6.9.0.diff"
 }
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
