@@ -5,7 +5,7 @@
 pkgbase=devilutionx
 pkgname=("${pkgbase}" "${pkgbase}-fonts" "${pkgbase}-voices")
 pkgver=1.5.4 # renovate: datasource=github-tags depName=diasurgical/devilutionX
-pkgrel=2
+pkgrel=3
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
@@ -23,6 +23,7 @@ build() {
   cmake -S "${pkgbase}-src-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DBUILD_TESTING=off \
     -DCPACK=ON \
     -Bbuild
