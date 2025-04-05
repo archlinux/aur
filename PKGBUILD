@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shutter-encoder-bin
 _pkgname='Shutter Encoder'
-pkgver=18.8
-pkgrel=2
+pkgver=18.9
+pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)"
 arch=("x86_64")
 url="https://www.shutterencoder.com"
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c99e91d85dfba50a6dee2fcf2649f7de44e827a8dc9f87629f932e1def207f52'
+sha256sums=('8b4c8482b7d5b6d3b540f815d3523d0d4a3b3051111a93123e44426b7c5ed895'
             'a81897397409f2d750ead9f53f7cded8bffbb765da2305dea006d2fb4fcd2b1d')
 prepare() {
     sed -i -e "
