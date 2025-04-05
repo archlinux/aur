@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=reader-pro-bin
-pkgver=3.2.12
-pkgrel=2
+pkgver=3.2.13
+pkgrel=1
 epoch=
 pkgdesc="Read 3 Server Edition"
 arch=(any)
@@ -28,7 +28,7 @@ source=("reader-server-${pkgver}.zip::${url}/releases/download/v${pkgver}/reader
     reader-pro-single.service
     reader-pro-multi.service)
 noextract=(reader-server-${pkgver}.zip)
-sha256sums=('fdcfe65503c0c00c2791e26ad83a4aff8665d966578c1eb8da093edc834b733b'
+sha256sums=('38dd9b385099a4a57bdf7f63f1d93375b1148e5160ec230b394ced014848e695'
             '20ec09cb6a0938212df8dabf5509f595f8f7c0f73394dbee3bf6b77f84509a6e'
             '059e68054efc84a19644366a3006c0501ac75cc5d5db9e2a3b8fac476bac3d8c'
             '250551acd0680c5ea1082803341524316a461c21e3576daa2da666fcd9c71f0c'
