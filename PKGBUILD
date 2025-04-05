@@ -6,7 +6,7 @@ pkgname=java-openjdk-ea-bin
 _majorver=25
 _buildver=17
 pkgver=${_majorver}b${_buildver}
-pkgrel=1
+pkgrel=2
 
 
 _JARCH='x64'
