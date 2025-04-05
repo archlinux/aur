@@ -12,7 +12,7 @@ __pkgname=konform
 _ffsrcver=136.0
 _lwrelver=200
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork with increased customizability"
 url="https://codeberg.org/konform-browser/source"
 arch=(x86_64 aarch64)
@@ -94,6 +94,7 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
   'firefox-ublock-origin: Content filter extension'
   'firefox-decentraleyes: Local emulation of Content Delivery Networks'
+  'konform-multi-account-containers-lite: First-class multi-account-containers integration'
 )
 
 if [[ "${_build_profiled}" == "true" ]]; then
