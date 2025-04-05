@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview
-pkgver=5.13.2
+pkgver=5.13.3
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:4}/ParaView-v${pkgver}.tar.xz")
-md5sums=('c1c3883e0cab2d132e8a4d43f29873e9')
+md5sums=('d6285629137d4bc21ac1f4507f90a20e')
 
 _architectures="x86_64-w64-mingw32"
 
