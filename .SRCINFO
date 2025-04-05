@@ -1,0 +1,15 @@
+pkgbase = mybible-module-ntpt
+	pkgdesc = MyBible mobile application's NTPT (New Testament Patriarchal Text) bible module
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://gitverse.ru/naierchou/mybible-module-ntpt
+	arch = any
+	license = custom
+	makedepends = sqlite3
+	depends = sqlite3
+	provides = mybible-module-ntpt
+	conflicts = mybible-module-ntpt
+	source = git+https://gitverse.ru/naierchou/mybible-module-ntpt.git
+	sha256sums = SKIP
+
+pkgname = mybible-module-ntpt
