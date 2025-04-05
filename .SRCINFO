@@ -1,0 +1,12 @@
+pkgbase = ttf-publik
+	pkgdesc = Publik sans-serif TrueType font family by Essen International
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://fonnts.com/publik/
+	arch = any
+	license = LicenseRef-custom
+	source = ttf-publik-1.001.zip::https://fonnts.com/downloads/fonnts.com-460467.zip
+	sha256sums = 9195d71dff869f26289f192538f7e30366a701ca93925b08a997bf3616f125e5
+	b2sums = f05ea547ac02353df29037e416f2bafb1aedb0e0f923c50b6a7f9ff7bd2899817778f4ad94cbccd378c77f6000fe6e43e9b9e13d2e55079798fba0e10b72ddb0
+
+pkgname = ttf-publik
