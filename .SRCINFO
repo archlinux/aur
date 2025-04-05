@@ -13,7 +13,7 @@ pkgbase = rime-wanxiang-data
 	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.1.tar.gz
 	sha256sums = 6448ecbe9e78a0443013fc11da2bfff8d32d0c45fa84ede0e4c0a03db8d41eaf
 	sha256sums = 30a30fae667d021a688c70f0f0ba75352bc265417c70fefd2c84f48c7c302bf9
-	sha256sums = 79e62930d9fd08f583cd94750d55ca46701588744a8df413b199ff4aae851a02
+	sha256sums = 83e5ccb8a4a969b570a8d82d7e8c9cfaf64f3ac074169a10bea19b5f3de2086c
 
 pkgname = rime-wanxiang-data
 	pkgdesc = 万象词库 Meta 包
