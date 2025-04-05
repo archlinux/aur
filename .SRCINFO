@@ -1,14 +1,15 @@
 pkgbase = openfreebuds
 	pkgdesc = Manager for HUAWEI FreeBuds
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://mmk.pw/en/openfreebuds
 	arch = any
 	license = GPLv3
 	makedepends = python-pip
 	makedepends = python
-	makedepends = python-poetry
+	makedepends = python-pdm
 	makedepends = qt6-tools
+	makedepends = just
 	depends = python
 	depends = python-dbus-next
 	depends = python-psutil
@@ -16,7 +17,7 @@ pkgbase = openfreebuds
 	depends = python-qasync
 	depends = python-aiohttp
 	depends = python-pillow
-	source = openfreebuds-0.16.1::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.16.1
+	source = openfreebuds-0.17.0::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.17.0
 	md5sums = SKIP
 
 pkgname = openfreebuds
