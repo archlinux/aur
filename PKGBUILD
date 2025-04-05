@@ -1,6 +1,6 @@
 # Maintainer:  Fabian Maurer<dark.shadow4@web.de>
 # Contributor: Martin Dünkelmann<nc-duenkekl3@netcologne.de>
-# Contributor: Shaoyu Tseng<zandimna@autistici.org>
+# Contributor: Shaoyu Tseng<dev@notyourcomputer.net>
 # Contributor: Daniel Egeberg <daniel.egeberg@gmail.com
 # Contributor: Sławomir Kowalski <suawekk+aur@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
