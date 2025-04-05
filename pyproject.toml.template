@@ -1,0 +1,13 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools"]
+
+[project]
+name = "pyth"
+version = "{{ version }}"
+
+[project.scripts]
+pyth = "pyth:main"
+
+[tool.setuptools]
+packages = ["pyth"]

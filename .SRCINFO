@@ -1,0 +1,31 @@
+pkgbase = pyth-git
+	pkgdesc = Pyth, an extremely concise language
+	pkgver = r767.97cdf30
+	pkgrel = 1
+	url = https://github.com/isaacg1/pyth
+	arch = any
+	groups = esolang
+	license = MIT
+	checkdepends = python-sympy
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-j2cli
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	depends = python
+	depends = python-pillow
+	depends = python-qualify
+	optdepends = python-sympy: to speed up integer factorization
+	provides = pyth=r767.97cdf30
+	conflicts = pyth
+	source = pyth::git+https://github.com/isaacg1/pyth.git
+	source = __init__.py.template
+	source = pyproject.toml.template
+	sha512sums = SKIP
+	sha512sums = 0c3783ae96c6a7bae8a27f4f7aad7ff422c3d37bca610aefd4e613029fa316e1d5a3a411dc9341295de4c9b9cb997faaaf9672ba0f19c107bcd537cc6590e7df
+	sha512sums = 5fe7332182bc4b35498a2298d026e27ac4dd528f9897eac8145f6e949c18fb776dfbf36a89902dfbdb4c4f41dcdbffb33e7ee8693522c25fa96ba85ef4b40bef
+
+pkgname = pyth-git
