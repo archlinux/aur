@@ -11,7 +11,7 @@ pkgname=zen-browser-bin
 _pkgname=zen-browser
 _desktopname=zen
 pkgver=1.11b
-pkgrel=2
+pkgrel=3
 pkgdesc="Performance oriented Firefox-based web browser"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zen-browser/desktop"
@@ -27,8 +27,8 @@ options=(!strip)
 provides=("zen-browser=$pkgver")
 conflicts=('zen-browser')
 
-source_x86_64=("zen-browser-$pkgver-x86_64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-x86_64.tar.xz")
-source_aarch64=("zen-browser-$pkgver-aarch64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-aarch64.tar.xz")
+source_x86_64=("zen-browser-$pkgver-$pkgrel-x86_64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-x86_64.tar.xz")
+source_aarch64=("zen-browser-$pkgver-$pkgrel-aarch64.tar.bz2::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.linux-aarch64.tar.xz")
 
 source=("$_pkgname.sh"
         "$_desktopname.desktop"
