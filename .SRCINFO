@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-linkding-bin
+	pkgdesc = Companion extension for the self-hosted linkding bookmark service
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://github.com/sissbruecker/linkding-extension
+	arch = any
+	license = MIT
+	noextract = {b86e4813-687a-43e6-ab65-0bde4ab75758}.xpi
+	source = {b86e4813-687a-43e6-ab65-0bde4ab75758}.xpi::https://addons.mozilla.org/firefox/downloads/file/4449452/linkding_extension-1.14.0.xpi
+	source = https://raw.githubusercontent.com/sissbruecker/linkding-extension/refs/heads/master/LICENSE.txt
+	b2sums = 2b0865caaf599d479ddce8e549d5ab0ee610ba11d6529497b2e02758a9d9e48d138dcf69184bfde589847594ba8007a8621f220555996e4aa82bee58189190dd
+	b2sums = af4ab5e0e01d2fb2533f8e16b636b8d73217f084631785c0427d5bf97427c6e9ff5af0530df123e64d3f048a3e80d061562ca978f35eb9bc640e904ddb295ae8
+
+pkgname = librewolf-extension-linkding-bin
+
+pkgname = firefox-extension-linkding-bin
