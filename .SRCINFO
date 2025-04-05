@@ -1,7 +1,7 @@
 pkgbase = commafeed
 	pkgdesc = Google Reader inspired self-hosted personal RSS reader (native standalone version)
 	pkgver = 5.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Athou/commafeed
 	arch = x86_64
 	license = APACHE-2.0
