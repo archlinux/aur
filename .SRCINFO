@@ -1,7 +1,7 @@
 pkgbase = crazydiskinfo-git
 	pkgdesc = Interactive ncurses S.M.A.R.T. viewer
 	pkgver = 1.1.0.r0.g803a585
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/otakuto/crazydiskinfo
 	arch = x86_64
 	license = MIT
