@@ -2,7 +2,7 @@
 pkgname=rabbitremotecontrol-bin
 _pkgname=RabbitRemoteControl
 _rpmname="io.github.KangLin.${_pkgname}"
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
 pkgdesc="Remote control. Support VNC, RDP, Terminal, SSH, TELNET etc.(Prebuilt version)"
 arch=(
@@ -42,8 +42,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.fc41.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.fc41.x86_64.rpm")
 sha256sums=('b6255be5cbf5685c1195a41cdad5a2490c403d6641c56c065040d5dbd3589aad')
-sha256sums_aarch64=('ea64a8f03415e38f3fda231257ce03683ac390fc8ff255df81f7ead78b902308')
-sha256sums_x86_64=('a015b968bd2ae31097104c67b41aeb385dbb7d05fce0c85c991fd45b3caa467d')
+sha256sums_aarch64=('bcdb91a149fc72650dd8608e04807b6b6a128b21607415ad4666fca56b6c4d6c')
+sha256sums_x86_64=('fe02f4d793332781fb3f50c624bc87a67b8d8a0d0fc4700f5934922da8449df8')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
