@@ -1,0 +1,5 @@
+[sleuthkit-java]
+source = "git"
+git = "https://github.com/sleuthkit/sleuthkit.git"
+prefix = "sleuthkit-"
+include_regex = "sleuthkit-\\d+\\.\\d+\\.\\d+"
