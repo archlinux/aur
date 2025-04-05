@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
@@ -15,18 +15,18 @@ depends=(chromaprint gst-plugins-base gst-plugins-good qt6-base
          # namcap implicit depends
          glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
          taglib gst-plugins-base-libs)
-makedepends=(git cmake boost qt6-tools)
+makedepends=(git cmake boost qt6-tools qt6-xcb-private-headers)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
 provides=(strawberry)
 conflicts=(strawberry)
 source=("git+https://github.com/jonaski/strawberry.git#tag=${pkgver}")
-sha256sums=('a8782c616e8abf3e41d23f3c2125b21584ea6a250f8041872ca2c5be221924f2')
+sha256sums=('ed0586103f090e2504b6a1170d60fc88e4f02f1280db43a47de6da67949621d2')
 
 build() {
   local _flags=(
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT"
+    #-DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT"
     -DENABLE_TIDAL=OFF
     -DENABLE_QOBUZ=OFF
     -DENABLE_SPOTIFY=OFF
@@ -34,7 +34,9 @@ build() {
     -DENABLE_GPOD=OFF
     -DENABLE_MTP=OFF
     -DENABLE_PULSE=OFF
-    #-DENABLE_STREAMTAGREADER=OFF
+    -DENABLE_STREAMTAGREADER=OFF
+    -DENABLE_DISCORD_RPC=OFF
+    -DENABLE_DEBUG_OUTPUT=OFF
   )
 
   cmake -B build -S "strawberry" -Wno-dev \
