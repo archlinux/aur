@@ -6,12 +6,13 @@ pkgname=(
   firefox-multi-account-containers-lite
   floorp-multi-account-containers-lite
   icecat-multi-account-containers-lite
+  konform-multi-account-containers-lite
   librewolf-multi-account-containers-lite
   midori-multi-account-containers-lite
 )
 
 pkgver=8.2.1001
-pkgrel=1
+pkgrel=2
 pkgdesc="Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy"
 arch=('any')
 license=('MPL-2.0')
@@ -66,6 +67,13 @@ package_icecat-multi-account-containers-lite() {
   export depends=('multi-account-containers-lite')
   mkdir -p "$pkgdir/usr/lib/icecat/browser/extensions/"
   ln -s /usr/lib/mozilla/browser/extensions/multi-account_containers.xpi "$pkgdir/usr/lib/icecat/browser/extensions/multi-account_containers.xpi"
+}
+
+package_konform-multi-account-containers-lite() {
+  export groups=('konform-addons')
+  export depends=('multi-account-containers-lite')
+  mkdir -p "$pkgdir/usr/lib/konform/browser/extensions/"
+  ln -s /usr/lib/mozilla/browser/extensions/multi-account_containers.xpi "$pkgdir/usr/lib/konform/browser/extensions/multi-account_containers.xpi"
 }
 
 package_librewolf-multi-account-containers-lite() {

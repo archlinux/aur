@@ -1,7 +1,7 @@
 pkgbase = multi-account-containers-lite
 	pkgdesc = Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy
 	pkgver = 8.2.1001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Konsortium/multi-account-containers-lite
 	arch = any
 	groups = firefox-addons
@@ -24,6 +24,8 @@ pkgname = firefox-multi-account-containers-lite
 pkgname = floorp-multi-account-containers-lite
 
 pkgname = icecat-multi-account-containers-lite
+
+pkgname = konform-multi-account-containers-lite
 
 pkgname = librewolf-multi-account-containers-lite
 
