@@ -1,7 +1,7 @@
 pkgbase = perl-webservice-nfsn
 	pkgdesc = Client for the NearlyFreeSpeech.NET API
-	pkgver = 1.03
-	pkgrel = 2
+	pkgver = 1.04
+	pkgrel = 3
 	url = https://metacpan.org/pod/WebService::NFSN
 	arch = any
 	license = PerlArtistic
@@ -13,8 +13,8 @@ pkgbase = perl-webservice-nfsn
 	depends = perl-json-xs
 	depends = perl-lwp-protocol-https
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/Christopher_J_Madsen/WebService-NFSN-1.03.tar.gz
-	md5sums = ebb32adbf4af1f240a7d5d1c69c6251c
-	sha256sums = 3d5ded0bc7a8a0f73ef662bff3dda14d665ed6ef158d427945250e697aa8389b
+	source = https://cpan.metacpan.org/authors/Christopher_J_Madsen/WebService-NFSN-1.04.tar.gz
+	md5sums = 921cb763fa7f66dacd7ce50756d7256a
+	sha256sums = 61139c1740eceb1a21bfe40095e1b69b18ec6d74d2776074301b13d37d27b494
 
 pkgname = perl-webservice-nfsn
