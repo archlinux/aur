@@ -1,7 +1,7 @@
 pkgbase = ngs-lang-git
-	pkgdesc = NGS: Next Generation Shell (latest commit)
-	pkgver = 0.2.16.r6.g9f5eb49
-	pkgrel = 2
+	pkgdesc = NGS: Next Generation Shell (built from latest git commit)
+	pkgver = 0.2.17.r0.g10a4a0da
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = ngs-lang-git
 	makedepends = peg
 	makedepends = uthash
 	depends = gc
+	depends = gcc-libs
 	depends = glibc
 	depends = json-c
 	depends = libffi
@@ -20,6 +21,7 @@ pkgbase = ngs-lang-git
 	provides = ngs-lang
 	conflicts = ngs
 	conflicts = ngs-lang
+	options = lto
 	source = git+https://github.com/ngs-lang/ngs.git
 	sha256sums = SKIP
 

@@ -1,15 +1,15 @@
 # -*- sh -*-
 
+#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Comtributor: Stefan Husmann <stefan-husmann@t-online.de>
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='ngs-lang-git'
 _pkgname="${pkgname/-git}"
-pkgver=0.2.16.r6.g9f5eb49
-pkgrel=2
+pkgver=0.2.17.r0.g10a4a0da
+pkgrel=1
 epoch=1
-pkgdesc='NGS: Next Generation Shell (latest commit)'
+pkgdesc='NGS: Next Generation Shell (built from latest git commit)'
 arch=('x86_64')
 url='https://github.com/ngs-lang/ngs'
 license=('GPL-3.0-or-later')
@@ -22,20 +22,22 @@ makedepends=(
 )
 depends=(
   'gc'
+  'gcc-libs'
   'glibc'
   'json-c'
   'libffi'
   'pcre'
 )
 provides=('ngs' "$_pkgname")
-conflicts=('ngs' "$_pkgname")
+conflicts=("${provides[@]}")
 source=('git+https://github.com/ngs-lang/ngs.git')
+options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
   cd 'ngs'
 
-  git describe --tags | cut -c2- | sed 's+-+.r+' |tr - .
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
 }
 
 prepare() {
@@ -81,13 +83,9 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     ../{CHANGELOG,readme}.md ../one-liners.txt
 
-  cd "$pkgdir/usr"
+  cd "$pkgdir"
 
-  rm -vrf doc
-  mv -v man share/
-  find   "$pkgdir/usr/bin" -type f -exec chmod o-w {} +
-  install -vdm0755 "$pkgdir/usr/share/doc/$pkgname/demo"
-  mv -vf "$pkgdir/usr/bin/"*.ngs "share/doc/$pkgname/demo/"
+  rm -vrf usr/share/doc/NGS
 }
 
 # vim: ts=2 sw=2 et:
