@@ -1,7 +1,7 @@
 pkgbase = nccl
 	pkgdesc = Library for NVIDIA multi-GPU and multi-node collective communication primitives
 	pkgver = 2.26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/nccl/
 	arch = x86_64
 	license = BSD-3-Clause

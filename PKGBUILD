@@ -6,7 +6,7 @@
 pkgname=nccl
 pkgver=2.26.2
 _upstr_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=(x86_64)
 url='https://developer.nvidia.com/nccl/'
@@ -60,6 +60,9 @@ build() {
                        -gencode=arch=compute_120,code=sm_120 \
                        -gencode=arch=compute_120a,code=sm_120a \
                        -gencode=arch=compute_120,code=compute_120"
+
+  # do not use cudart_static, it leads to weird issues like https://github.com/NVIDIA/nccl/issues/1660
+  export CUDARTLIB=cudart
 
   export CXXFLAGS+=" -ffat-lto-objects"
   make CXX="$NVCC_CCBIN" CUDA_HOME=/opt/cuda PREFIX=/usr src.build
