@@ -1,8 +1,8 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=4.3.0.r1.ge50b2dc
+pkgver=4.4.0.r0.ge50b2dc
 pkgrel=1
-pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go."
+pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
 url="https://github.com/Zweih/qp"
 license=("GPL3")
