@@ -1,7 +1,7 @@
 pkgbase = python-spacy-bin
 	pkgdesc = Industrial-strength Natural Language Processing (NLP) in Python
 	pkgver = 3.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/explosion/spaCy
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = python-spacy-bin
 	depends = python-weasel
 	provides = python-spacy
 	conflicts = python-spacy
-	source = https://github.com/explosion/spaCy/releases/download/release-v3.8.5/spacy-3.8.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = https://files.pythonhosted.org/packages/dd/cf/5349e326ced174047e1e4124fac34f9dbe8206143f719bb15fa1ff25e88a/spacy-3.8.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 	md5sums = 0154e1931af078e50e5f4383ba2f5556
 
 pkgname = python-spacy-bin
