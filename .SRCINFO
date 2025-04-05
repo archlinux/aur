@@ -1,6 +1,6 @@
 pkgbase = ginkgo-hpc-git
 	pkgdesc = Numerical linear algebra software package
-	pkgver = r8256.abe9ecf7f9
+	pkgver = r8482.cea1be7fbd
 	pkgrel = 1
 	url = https://ginkgo-project.github.io/
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = ginkgo-hpc-git
 	makedepends = graphviz
 	makedepends = texlive-bin
 	makedepends = texlive-latexextra
+	makedepends = yaml-cpp
 	makedepends = cuda
 	makedepends = hip-runtime-amd
 	makedepends = hipblas
@@ -31,7 +32,7 @@ pkgbase = ginkgo-hpc-git
 	source = git+https://github.com/ginkgo-project/ginkgo.git
 	source = split_cuda_library.patch
 	b2sums = SKIP
-	b2sums = 3dd2558f399a4e9e7176021415b53e8f06e41c328df920ed254890ffc4c2a430344162c5054bb8d8f4ef2c53ae4029084fd85f89f46a047ebf5707a70fb6d7fe
+	b2sums = 1d7c35edb141a4d9cf5aa1ca51aec6e923e09c5353d7ef05bdb576fc1b4fceb59204162f66b3c63a550a682c953922ee4ae9b24bf87ba9ba7555465a1b3c53ec
 
 pkgname = ginkgo-hpc-git
 	optdepends = ginkgo-hpc-docs: for documentation
