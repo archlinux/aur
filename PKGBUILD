@@ -2,8 +2,8 @@
 _pkgname=dosbox
 pkgname="${_pkgname}-staging-bin"
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
-pkgver=0.82.0
-pkgrel=2
+pkgver=0.82.1
+pkgrel=1
 pkgdesc="A modern continuation of DOSBox with advanced features and current development practices.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/dosbox-staging/dosbox-staging"
@@ -27,13 +27,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}-v${pkgver}.tar.xz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fd491de6e989da2b34be743fd419735befc80e6f507ec15b9b3ea6164624dabf'
+sha256sums=('0b7ca2e0f1fbc10fe51c05011f6cad72d10608658de0a58e22a5a936d5e7d075'
             '5e664ddfd6f8016b079a4244fdc5746a253658554324f73dc5e406bf7d354456')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     sed -i "s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}-linux"*/desktop/"${_appname}".desktop
 }
