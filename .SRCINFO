@@ -1,6 +1,6 @@
 pkgbase = python-ezpadova
 	pkgdesc = A python package that allows you to download PADOVA isochrones directly from website
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = http://mfouesneau.github.io/ezpadova
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-ezpadova
 	makedepends = python-pandas
 	makedepends = python-scipy
 	makedepends = python-pytest
-	source = https://github.com/mfouesneau/ezpadova/archive/refs/tags/v2.0.1.tar.gz
-	md5sums = ffc7e7b4a08055add1f0e3f651c92bc2
+	source = https://github.com/mfouesneau/ezpadova/archive/refs/tags/v2.0.3.tar.gz
+	md5sums = e4dfcfa48daea25a8f4723c3e87b5720
 
 pkgname = python-ezpadova
 	depends = python>=3.9
