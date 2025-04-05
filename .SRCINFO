@@ -1,12 +1,12 @@
 pkgbase = stringzilla
 	pkgdesc = Up to 10x faster strings for C, C++, Python, Rust and Swift.
-	pkgver = 3.10.10
+	pkgver = 3.12.3
 	pkgrel = 1
 	url = https://github.com/ashvardanian/StringZilla
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
-	source = stringzilla-v3.10.10.tar.gz::https://github.com/ashvardanian/StringZilla/archive/refs/tags/v3.10.10.tar.gz
-	sha512sums = 8009fe2e25c514628a299a74716e8fd6aa298fc4846495dff4f6c22d67c0a7d4062bfa74e8c18a20e1aa95d233fdedbd14f788881fcd4e2ce48ead9596c9d62b
+	source = stringzilla-v3.12.3.tar.gz::https://github.com/ashvardanian/StringZilla/archive/refs/tags/v3.12.3.tar.gz
+	sha512sums = 436b2b639d9d66d62d618d07174231f4e4dd9855edc6e03a5746c8c2f5205c2af9be9dfbf88a95fc12bb8d4abfffdf925fd85c0bd14b5ab3734d2f1105990f41
 
 pkgname = stringzilla

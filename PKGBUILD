@@ -2,13 +2,12 @@
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 # The PKGBUILD for StringZilla.
-# Maintainer: Matheus <matheusgwdl@protonmail.com>
-# Contributor: Matheus <matheusgwdl@protonmail.com>
+# Maintainer: Collins Kimutai <ngenocollins599@gmail.com>
 
 readonly _pkgname="StringZilla"
 
 pkgname="stringzilla"
-pkgver="3.10.10"
+pkgver="3.12.3"
 pkgrel="1"
 pkgdesc="Up to 10x faster strings for C, C++, Python, Rust and Swift."
 arch=("x86_64")
@@ -16,11 +15,12 @@ url="https://github.com/ashvardanian/${_pkgname}"
 license=("Apache-2.0")
 makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("8009fe2e25c514628a299a74716e8fd6aa298fc4846495dff4f6c22d67c0a7d4062bfa74e8c18a20e1aa95d233fdedbd14f788881fcd4e2ce48ead9596c9d62b")
+sha512sums=("436b2b639d9d66d62d618d07174231f4e4dd9855edc6e03a5746c8c2f5205c2af9be9dfbf88a95fc12bb8d4abfffdf925fd85c0bd14b5ab3734d2f1105990f41")
 
 _compile()
 {
     cmake -B "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/ \
+	-D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
         -D STRINGZILLA_BUILD_BENCHMARK=OFF \
