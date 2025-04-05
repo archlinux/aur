@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Librewolf fork with increased customizability
 	pkgver = 136.0.4.100
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
