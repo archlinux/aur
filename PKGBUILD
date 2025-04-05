@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=wolfclu
-pkgver=0.1.5
+pkgver=0.1.8
 pkgrel=0
 pkgdesc="This is the wolfSSL Command Line Utility (wolfCLU)."
 arch=("x86_64")
@@ -17,13 +17,13 @@ source=(
 )
 
 sha512sums=(
-	"c431439c3f70219a3abe362b991c225ac0a457bcd393ec9bb2e9313147aa96d8093bd32bcd4f7204f157c753077d0b309665c7f03ca96c5c8af529c71424233d"
+	"711e121a9953164301cc3ec134d02850cfb39404cee27ec359fcd18d74eb677e52591fa5d0c44887b6ecf57dcfd353442c16527a1ce869050e0ced1021a9442c"
 )
 
 prepare() {
 	cd "${srcdir}/${_build_directory}"
 	./autogen.sh
-	./configure --enable-wolfclu
+	./configure --prefix=/usr
 }
 
 build() {
@@ -39,7 +39,4 @@ check() {
 package() {
 	cd "${srcdir}/${_build_directory}"
 	DESTDIR="${pkgdir}" make install
-	mkdir -p "$pkgdir/usr/share/man/man1"
-	cp -r "$pkgdir/usr/local/share/man/man1" "$pkgdir/usr/share/man"
-	rm -rf "$pkgdir/usr/local/share"
 }
