@@ -17,12 +17,6 @@ depends=(
   'libsecret'
   'libappindicator-gtk3'
 )
-makedepends=(
-  'git'
-  'nodejs'
-  'pnpm'
-  'npm'
-)
 provides=(
   'fchat=3'
 )
