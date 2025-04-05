@@ -1,6 +1,6 @@
 # Maintainer: Tyler Triplett <tylertriplett@protonmail.com>
 pkgname=natt
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="gtk3 X11 Screen Temperature Scheduler"
 arch=('x86_64')
