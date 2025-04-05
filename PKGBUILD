@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Warp is the intelligent terminal with AI and your dev team's knowledge built-in."
 arch=('x86_64' 'aarch64')
 url="https://warp.dev"
-license=('custom')
+license=('custom:WARP')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip')

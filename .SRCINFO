@@ -5,7 +5,7 @@ pkgbase = warp-terminal-bin
 	url = https://warp.dev
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = custom:WARP
 	provides = warp-terminal=0.2025.04.02.08.11.stable.03
 	conflicts = warp-terminal
 	options = !strip
