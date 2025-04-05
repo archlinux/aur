@@ -2,8 +2,8 @@
 
 pkgname=kde_gemini
 pkgver=0.5.0
-pkgrel=2
-pkgdesc="自动切换kde桌面主题"
+pkgrel=3
+pkgdesc="Light/dark theme switcher for kde plasma"
 arch=('x86_64')
 url="www.github.com/leessmin/kde_gemini"
 license=('LGPL3')
