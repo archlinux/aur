@@ -1,0 +1,4 @@
+[passkeez]
+source = "git"
+git = "https://github.com/Zig-Sec/PassKeeZ.git"
+prefix = "v"
