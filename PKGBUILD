@@ -1,26 +1,25 @@
-# Maintainer: Takina Lina <0tkl.zhaoqing@gmail.com>
+# Maintainer: lakejason0 <lakesarchive@outlook.com>
 
 pkgname=ttf-plangothic
-pkgver=1.8.5752
+pkgver=2.9.5771
 pkgrel=1
-pkgdesc='遍黑体项目（Plangothic Project）'
+pkgdesc='Plangothic Project (遍黑体), based on Source Han Sans, contains glyphs of Extension blocks of CJK Unified Ideographs.'
 arch=(any)
 url='https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project'
-license=(OFL)
+license=(OFL-1.1)
 depends=(fontconfig)
 source=(
-  PlangothicP1-Regular-$pkgver.ttf::"https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V$pkgver/PlangothicP1-Regular.fallback.ttf"
-  PlangothicP2-Regular-$pkgver.ttf::"https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V$pkgver/PlangothicP2-Regular.ttf"
-  $pkgname-LICENSE::"https://raw.githubusercontent.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/V$pkgver/LICENSE"
+    $pkgname-$pkgver-PlangothicP1-Regular.ttf::"https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V$pkgver/PlangothicP1-Regular.ttf"
+    $pkgname-$pkgver-PlangothicP2-Regular-$pkgver.ttf::"https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V$pkgver/PlangothicP2-Regular.ttf"
+    $pkgname-$pkgver-LICENSE::"https://raw.githubusercontent.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/V$pkgver/LICENSE.txt"
 )
-sha256sums=(
-  '5c0d547f9a34f125d0bf2e0d61822c40b8bfb65f88119dff8b52d37f2f781981'
-  '07bf3d045942fa9cacf362ee54180e1ade4bbadc5292e314a0f89c659e96299d'
-  '0cc04930dcbd2e233275b9afc7bbb2093726ecc1d1f2a1c0ef9dee8ff04c89d3'
+b2sums=('144da5b163455247d30ed0a2cbd27dcb448182f12591b5b581e951b3584f10824b4ba22f8d7640f762765b656d76750bcc7abd052680c041bdf93e6fcfd0da3b'
+    '5329c860eb94f9ecd69c0e0c46d439f2d396064cfb5cac0907ac737b1dc43aa78d24a338246b791eab3f2a94e68cd34c61f3b3aa20f56289a05133dc81a94250'
+    'e3b7def662ec2412a460be8aebf5da2c2e57955d30438a7222c800c5ef6f5dce32cf510ea3f57f3435d93758725c172ea4e7e28d91f17ef049b45d4a428f88d9'
 )
 
 package() {
-  install -Dm644 "$srcdir/PlangothicP1-Regular-$pkgver.ttf" "$pkgdir/usr/share/fonts/plangothic/PlangothicP1-Regular.ttf"
-  install -Dm644 "$srcdir/PlangothicP2-Regular-$pkgver.ttf" "$pkgdir/usr/share/fonts/plangothic/PlangothicP2-Regular.ttf"
-  install -Dm644 "$srcdir/$pkgname-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$pkgname-$pkgver-PlangothicP1-Regular-$pkgver.ttf" "$pkgdir/usr/share/fonts/plangothic/PlangothicP1-Regular.ttf"
+    install -Dm644 "$srcdir/$pkgname-$pkgver-PlangothicP2-Regular-$pkgver.ttf" "$pkgdir/usr/share/fonts/plangothic/PlangothicP2-Regular.ttf"
+    install -Dm644 "$srcdir/$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
