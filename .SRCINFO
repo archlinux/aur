@@ -1,6 +1,7 @@
 pkgbase = wastebin-bin
+	pkgdesc = wastebin is a minimal pastebin.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matze/wastebin
 	arch = x86_64
 	license = MIT

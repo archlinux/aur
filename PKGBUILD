@@ -1,8 +1,8 @@
 pkgname=wastebin-bin
 _pkgname=wastebin
 pkgver=3.0.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc='wastebin is a minimal pastebin.'
 arch=("x86_64")
 url="https://github.com/matze/${_pkgname}"
 provides=(${_pkgname})
