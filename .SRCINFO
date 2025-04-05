@@ -1,7 +1,7 @@
 pkgbase = netease-popo
 	pkgdesc = Netease POPO for linux
 	pkgver = 3.71.1.13000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.netease.com
 	arch = x86_64
 	license = LicenseRef-popo
@@ -9,6 +9,8 @@ pkgbase = netease-popo
 	depends = numactl
 	options = !strip
 	options = !emptydirs
+	source = netease-popo.sh
+	sha512sums = 293c5e8635df28104a43c7a1a4129c98e263d5c2ce845321d7b5f4cb0da91cd65f3e22d63369169a56ef645044056dcbbad0e5ddd0da512f048d21665c92dcdc
 	source_x86_64 = https://popo.gdl.netease.com/file/popolinux/POPO-setup_prod_1691735489662.deb
 	sha512sums_x86_64 = 77cf0da179be048185a1d67d7ac2954139cf2ab692f72c7b0161f26e182ce24e74019dcc39218767349cf653220c1958ee20ce0431308b67e6967eed6b24bd11
 
