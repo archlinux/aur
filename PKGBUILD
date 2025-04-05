@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=1.2.7.r11.g2b5255386
+pkgver=1.2.7.r82.g3dce84c73
 pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 armv7h aarch64)
@@ -16,7 +16,7 @@ depends=(chromaprint gst-plugins-base gst-plugins-good qt6-base
          taglib gst-plugins-base-libs gdk-pixbuf2
 
          libicuuc.so libicui18n.so libgpod.so)
-makedepends=(git cmake boost qt6-tools)
+makedepends=(git cmake boost qt6-tools qt6-xcb-private-headers rapidjson)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
@@ -30,20 +30,19 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd strawberry
-  install -d strawberry-build
-}
-
 build() {
-  cd strawberry/strawberry-build
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  local _flags=(
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT"
-  make
+  )
+
+  cmake -B build -S "strawberry" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd strawberry/strawberry-build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
