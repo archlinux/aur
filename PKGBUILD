@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.27.3
+pkgver=1.27.4
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -27,7 +27,7 @@ source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
-sha256sums=('3b3f1b387e6327ae4f1b89904c7ba85a9001903bbe37b58acb175233af4b00eb'
+sha256sums=('5f216c839bb3611016f56813308bacac360f991666cfa28e6d02d3f605c5cbe0'
             'dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e'
             '26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f')
 validpgpkeys=()
