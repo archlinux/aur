@@ -1,0 +1,22 @@
+pkgbase = chisel-bin
+	pkgdesc = A fast TCP/UDP tunnel over HTTP
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/VHSgunzo/chisel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = chisel
+	conflicts = chisel
+	options = !strip
+	source = LICENSE-1.10.1::https://raw.githubusercontent.com/VHSgunzo/chisel/v1.10.1/LICENSE
+	source = README-1.10.1.md::https://raw.githubusercontent.com/VHSgunzo/chisel/v1.10.1/README.md
+	sha256sums = 1edfe3540212ff667e460e212b31178e405139fdff18d643bdd49b05623ac3ac
+	sha256sums = 14d3afb380b65c3df805ee0bf5c666f93490cf7cd3dfd50f6b2e01a7db349ada
+	source_x86_64 = https://github.com/VHSgunzo/chisel/releases/download/v1.10.1/chisel-linux-x86_64
+	sha256sums_x86_64 = bd1423acc243b15c189a2a95e379104638bc915115a18f11ab3d0b07d09b5cb4
+	source_aarch64 = https://github.com/VHSgunzo/chisel/releases/download/v1.10.1/chisel-linux-aarch64
+	sha256sums_aarch64 = 9bc4784bc739edc3df9f1d23e3fc21f6697bf28a04ae32ec11dfa0ab63ee5e22
+
+pkgname = chisel-bin
