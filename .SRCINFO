@@ -1,0 +1,15 @@
+pkgbase = samsung-ssd-fwupdate
+	pkgdesc = A script to ease downloading and updating Samsung SSD firmware on Linux.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.les-miquelots.net/samsung-ssd-fwupdate
+	arch = x86_64
+	license = MIT
+	depends = curl
+	depends = unzip
+	provides = samsung-ssd-fwupdate
+	conflicts = samsung-ssd-fwupdate-git
+	source = https://git.les-miquelots.net/samsung-ssd-fwupdate/snapshot/samsung-ssd-fwupdate-1.0.zip
+	sha256sums = 9c7a924db76c19edc0bb21724eeb7020dc5cf6128e7bbffb5a44f3b054d173f2
+
+pkgname = samsung-ssd-fwupdate
