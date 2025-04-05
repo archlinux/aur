@@ -1,5 +1,5 @@
 pkgname=tempesta
-pkgver=0.0.58
+pkgver=0.0.59
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust"
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,11 @@ depends=('glibc')
 
 case "$arch" in
   "x86_64")
-    source=("https://github.com/x71c9/tempesta/releases/download/v0.0.58/tempesta-x86_64-unknown-linux-gnu.tar.gz")
+    source=("https://github.com/x71c9/tempesta/releases/download/v0.0.59/tempesta-x86_64-unknown-linux-gnu.tar.gz")
     sha256sums=('SKIP')
     ;;
   "aarch64")
-    source=("https://github.com/x71c9/tempesta/releases/download/v0.0.58/tempesta-aarch64-unknown-linux-gnu.tar.gz")
+    source=("https://github.com/x71c9/tempesta/releases/download/v0.0.59/tempesta-aarch64-unknown-linux-gnu.tar.gz")
     sha256sums=('SKIP')
     ;;
   *)
