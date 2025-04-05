@@ -1,6 +1,6 @@
 # Maintainer: Clément Foucher <cfoucher-pkg at outlook dot fr>
 pkgname=geteduroam
-pkgver=0.6
+pkgver=0.8
 pkgrel=1
 pkgdesc="Configure your Eduroam Wifi connection"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('go>=1.18'
              'make'
             )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/$pkgname/linux-app/archive/$pkgver.tar.gz")
-sha256sums=('6be5c61b64a347d3b15d5f1a60f09a46660ffbd98b93bb8ddd4b8dca12f9782f')
+sha256sums=('f8cfc66c6eb9b206a43952ae46f66d4ee4ff9980a4e21bb36c0b0a30b2296480')
 build() {
         mv "$srcdir/linux-app-$pkgver" "$srcdir/$pkgname-$pkgver"
         cd "$srcdir/$pkgname-$pkgver"
@@ -31,8 +31,8 @@ package() {
         mkdir "$pkgdir/usr/lib"
         mkdir "$pkgdir/usr/lib/systemd"
         mkdir "$pkgdir/usr/lib/systemd/system"
-        cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam-notifs.service" "$pkgdir/usr/lib/systemd/system"
-        cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam-notifs.timer" "$pkgdir/usr/lib/systemd/system"
+        cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam/geteduroam-notifs.service" "$pkgdir/usr/lib/systemd/system"
+        cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam/geteduroam-notifs.timer" "$pkgdir/usr/lib/systemd/system"
 
         mkdir "$pkgdir/usr/share"
         cp -r "$srcdir/$pkgname-$pkgver/cmd/geteduroam-gui/resources/share/applications" "$pkgdir/usr/share/"
