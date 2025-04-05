@@ -10,6 +10,7 @@ pkgbase = flashpoint-bin
 	depends = openssl-1.1
 	depends = php
 	depends = gtk3
+	depends = wine
 	depends = xorg-server
 	depends = sdl2
 	depends = java-runtime
