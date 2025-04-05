@@ -1,0 +1,9 @@
+[Unit]
+Description=Logitech G13 gameboard service
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/bin/g13-ak /usr/share/g13-ak/configs/default.json
+
+[Install]
+WantedBy=default.target
