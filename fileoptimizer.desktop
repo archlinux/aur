@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=FileOptimizer
+GenericName=Lossless File Size Optimizer
+Comment=Reduce file sizes without quality loss for over 500 formats
+Exec=fileoptimizer %F
+Icon=fileoptimizer
+Terminal=false
+Categories=Utility;System;Compression;
+MimeType=application/x-compressed-tar;application/x-bzip-compressed-tar;application/x-tar;application/x-tarz;application/zip;application/x-7z-compressed;image/png;image/jpeg;image/gif;image/svg+xml;application/pdf;
+StartupNotify=true
