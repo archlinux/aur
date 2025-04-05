@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DrawDB
+Exec=drawdb-client %U
+Terminal=false
+Type=Application
+Icon=drawdb-client
+StartupWMClass=DrawDB
+Comment=An unoffical client DrawDB by electron
+Categories=Development;
