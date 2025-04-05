@@ -1,7 +1,7 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=8.33
-pkgrel=2
+pkgver=8.35
+pkgrel=1
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
 url="https://github.com/rigaya/$_UpstreamPkgName"
@@ -15,7 +15,7 @@ source=(git+${url}.git#tag=${pkgver}
         ldflags-adjustments.patch
         fix-finding-hdr10plus.patch
 				use-system-AMF-headers.patch)
-sha256sums=('27bca27753bf28da29f946574371ea609eebe77c6a12c83ee4c7d16aa3961fd6'
+sha256sums=('96149873649d10488c4a489efa4c2fb73e2449cab8afc2df6063ed8f933db23a'
             'SKIP'
             'SKIP'
             'SKIP'

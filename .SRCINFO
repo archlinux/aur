@@ -1,7 +1,7 @@
 pkgbase = vceenc
 	pkgdesc = AMD Video Codec based command line encoder
-	pkgver = 8.33
-	pkgrel = 2
+	pkgver = 8.35
+	pkgrel = 1
 	url = https://github.com/rigaya/VCEEnc
 	arch = x86_64
 	license = MIT
@@ -14,14 +14,14 @@ pkgbase = vceenc
 	depends = vapoursynth
 	depends = libdovi
 	depends = libhdr10plus-rs
-	source = git+https://github.com/rigaya/VCEEnc.git#tag=8.33
+	source = git+https://github.com/rigaya/VCEEnc.git#tag=8.35
 	source = git+https://github.com/tplgy/cppcodec.git
 	source = git+https://github.com/clMathLibraries/clRNG.git
 	source = git+https://github.com/cubicdaiya/dtl
 	source = ldflags-adjustments.patch
 	source = fix-finding-hdr10plus.patch
 	source = use-system-AMF-headers.patch
-	sha256sums = 27bca27753bf28da29f946574371ea609eebe77c6a12c83ee4c7d16aa3961fd6
+	sha256sums = 96149873649d10488c4a489efa4c2fb73e2449cab8afc2df6063ed8f933db23a
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
