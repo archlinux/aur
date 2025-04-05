@@ -1,7 +1,7 @@
 pkgbase = relagit
 	pkgdesc = The elegant solution to graphical version control.
-	pkgver = 0.16.8
-	pkgrel = 2
+	pkgver = r1081.78fc85e
+	pkgrel = 1
 	url = https://github.com/relagit/relagit
 	arch = x86_64
 	license = GNU Lesser General Public License v3.0

@@ -1,8 +1,8 @@
 # Maintainer: Mads Ravn <https://github.com/madsravn>
 # Maintainer: Lenin Garizabalo <https://github.com/IGUNUBLUE/>
 pkgname=relagit
-pkgver=0.16.8
-pkgrel=2
+pkgver=r1081.78fc85e
+pkgrel=1
 pkgdesc="The elegant solution to graphical version control."
 arch=("x86_64")
 url="https://github.com/relagit/relagit"
