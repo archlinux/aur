@@ -3,12 +3,12 @@
 
 pkgname=bisq2
 pkgver=2.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The Decentralized Trading Platform"
 arch=('x86_64')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('java-runtime>=22')
+depends=('java-runtime>=22' 'tor')
 makedepends=('java-environment>=22' 'git')
 source=("git+https://github.com/bisq-network/bisq2#tag=v$pkgver"
   "git+https://github.com/bisq-network/bitcoind.git"
