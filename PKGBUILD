@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=18.0.0.r0.g3f8fdba59
+pkgver=18.1.0.r49.gcbcefb7be
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -122,6 +122,7 @@ build() {
     -DENABLE_LLDB=1 \
     -DWITH_MYSQL=0 \
     -DCOPY_WX_LIBS=0 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 
 
   # build
