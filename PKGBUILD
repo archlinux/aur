@@ -17,7 +17,7 @@ depends=(
     "jemalloc"
 )
 makedepends=(
-    "cmake" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
+    "cmake" "ninja" "python" "range-v3" "tl-expected" "microsoft-gsl" "meson"
     "extra-cmake-modules" "wayland-protocols" "plasma-wayland-protocols" "libtg_owt"
     "gobject-introspection" "boost" "fmt" "mm-common" "perl-xml-parser" "python-packaging"
     "glib2-devel"
@@ -191,7 +191,7 @@ build() {
     CXXFLAGS+=' -ffat-lto-objects'
     # https://github.com/AyuGram/AyuGramDesktop/blob/dev/docs/building-linux.md#building-the-project
     # for API_ID and API_HASH
-    cmake -B build -S AyuGramDesktop-$pkgver \
+    cmake -B build -S AyuGramDesktop-$pkgver -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID="${MAKEPKG_AYUGRAM_API_ID:-2040}" \

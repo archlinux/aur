@@ -6,6 +6,7 @@ pkgbase = ayugram-desktop
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = python
 	makedepends = range-v3
 	makedepends = tl-expected
