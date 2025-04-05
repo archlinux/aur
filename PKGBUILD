@@ -22,13 +22,15 @@ prepare() {
 
   # miniunz.c:141:11: error: implicit declaration of function mkdir
   sed -i "50i#include <sys/stat.h>" ThirdParty/Minizip/minizip/miniunz.c
+
+  # build with cmake 3.x
+  curl -fSsL https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz | tar xz
 }
 
 build() {
   cd "$srcdir"/fmi-library-${pkgver}
-  mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_TESTS=OFF ..
-  make
+  ./cmake-3.31.6-linux-x86_64/bin/cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_TESTS=OFF -B build .
+  make -C build
 }
 
 package() {
