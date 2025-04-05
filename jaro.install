@@ -1,0 +1,7 @@
+post_install() {
+    echo "copy the configuration sample file into your home directory:"
+    echo "cp /usr/share/jaro/associations ~/.config/associations"
+    echo "please read github page: https://github.com/isamert/jaro"
+    echo "and configure the config file: ~/.config/associations"
+    echo "based on your needs."
+}

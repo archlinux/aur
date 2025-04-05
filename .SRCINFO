@@ -1,13 +1,17 @@
 pkgbase = jaro
 	pkgdesc = a highly customizable xdg-open alternative
-	pkgver = 0.5.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/isamert/jaro
+	install = jaro.install
 	arch = any
-	license = GPL-3
-	depends = guile
-	source = https://github.com/isamert/jaro/archive/v0.5.5.zip
-	sha512sums = 4eb66c099cb19c72ef66b93125b1d9bdc63f4180a4343062904467212aa1015fd2ef7fa48edd2b81475c357e9706c754cc7f5dfbee9297de38b152fdf096ae4e
+	license = GPL-3.0-only
+	makedepends = guile
+	optdepends = perl-file-mimeinfo
+	provides = jaro
+	source = jaro-1.0.0-beta.tar.gz::https://github.com/isamert/jaro/archive/refs/tags/v1.0.0-beta.tar.gz
+	source = associations
+	sha256sums = d9b5e15e199adc56d7aefe3aff051bb048659659e9b813550d38ef4af6aeb8f6
+	sha256sums = c481391685dc674880ae01b57fdf86bf406ef55014eecb47dde10e51bbd5ca16
 
 pkgname = jaro
-

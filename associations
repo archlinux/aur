@@ -1,0 +1,96 @@
+;; -*- mode: scheme; -*-
+
+;;; Configuration
+
+;; Optional, for dynamically selecting programs/methods on runtime:
+(set!
+ dynamic-menu-program
+ (oscase
+  #:darwin "choose"
+  #:gnu/linux "rofi -dmenu"))
+
+;; An example conditional runner definition for detecting the Kitty
+;; terminal
+(define-conditional-runner (kitty _)
+  (getenv "KITTY_PID"))
+
+;;; Bindings
+
+;; Open pdf/ps/epub etc. with zathura, based on mimetype
+(bind
+ #:pattern '("(application|text)/(x-)?(pdf|postscript|ps|epub.*)" "image/(x-)?eps")
+ #:program '(zathura %f))
+
+;; Open torrent files and magnet links using qBittorrent
+(bind
+ #:pattern '("^magnet:" "\\.torrent$")
+ #:program '(qbittorrent --skip-dialog=false %f))
+
+;; Open images using `imv` program
+(bind
+ #:pattern "^image/.*"
+ ;; imv does not directly load images of the directory, so we start
+ ;; imv in the directory or our image and set the first image to the
+ ;; image that we want to open
+ #:program '(imv -n %f %d)
+ ;; If we are inside the Kitty terminal, simply use it's ability to
+ ;; show images instead of using an external program
+ #:kitty '(kitty +kitten icat %f)
+ ;; If the jaro is started with --method=gallery option, then defer
+ ;; opening this file to nomacs definition down below
+ #:gallery 'nomacs)
+
+;; Open a Zoom link. Extract the meeting number and password from the
+;; link using regexp capture groups and feed it into the zoom app
+;; using t %1 and %2
+(bind
+ #:pattern "https://.*zoom\\.us/j/(\\w+)\\?pwd=(\\w+)"
+ #:program '(zoom zoommtg://zoom.us/join?confno=%1&pwd=%2))
+
+(bind
+ #:pattern "https://.*"
+ #:program '(google-chrome-stable %f))
+
+;; If a compressed file is opened with jaro, then display a menu using
+;; rofi (on Linux) or choose (on MacOS) to as user what to do with
+;; this file. See beginning of this example file for menu program
+;; configuration.
+(bind
+ ;; Give this binding a name, which we will utilize later
+ #:name 'archive
+ #:pattern "^application/(x-)?(tar|gzip|bzip2|lzma|xz|compress|7z|rar|gtar|zip)(-compressed)?"
+ ;; Instead of doing something directly, let user select one of the
+ ;; methods (#:unpack, #:unpack-to-directory, #:view) of this binding.
+ #:program (select-one-of #:methods)
+ ;; Unpack the archive using atool
+ #:unpack '(atool --extract %f)
+ ;; Let user select a directory with `zenity` to extract the archive
+ ;; into, using atool again
+ #:unpack-to-directory "atool --extract-to=$(zenity --file-selection --title='Choose a directory' --directory) %f"
+ ;; Open the archive using `file-roller`.
+ #:view '(file-roller %f))
+
+(bind
+ ;; Given a jar or apk file...
+ #:pattern ".(jar|apk)$"
+ ;; ...show a menu of: run, archive.unpack, archive.unpack-to-directory
+ #:program (select-one-of #:methods 'archive.view 'archive.unpack 'archive.unpack-to-directory)
+ ;; ^^ #:methods refers the methods of this binding. There is only one: "run"
+ ;; ^^ 'archive.<method> refers to the methods of 'archive binding.
+
+ ;; Here, instead of directly running an external command we use the
+ ;; "program" syntax. It simply let's us run arbitrary Guile scheme
+ ;; code. Inside "program", the variables %1 %2 %3... etc are bound to
+ ;; the capture groups from the #:pattern and the "run" let's you run
+ ;; external programs using the syntax that you are familiar from the
+ ;; earlier bindings.
+ #:run (program
+         (match %1
+           ["jar" (run (java -jar %f))]
+           ["apk" (run (notify-send "Can't run APK files. Install an Android Emulator?"))])))
+
+;; A named binding, referenced above
+(bind
+ #:name 'nomacs
+ #:pattern "^image/.*"
+ #:program '(nomacs %f))
