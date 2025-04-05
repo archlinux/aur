@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=XMCL
+Exec=/usr/bin/xmcl %U
+Terminal=false
+Type=Application
+Icon=xmcl
+StartupWMClass=xmcl
+MimeType=x-scheme-handler/xmcl;
+Comment=X Minecraft Launcher - A modern Minecraft launcher
+Comment[zh_CN]=X Minecraft Launcher - 一个现代化的 Minecraft 启动器
+Categories=Game;
