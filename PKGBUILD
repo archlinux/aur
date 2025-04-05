@@ -3,7 +3,7 @@
 _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.21.0.r67.g19cbeae
+pkgver=0.22.0.r15.g99a27a2
 pkgrel=1
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
@@ -121,6 +121,6 @@ package_python-hyperqueue-git() {
   provides=(python-hyperqueue)
 
   cd $_name
+  python -m installer --destdir "$pkgdir" target/wheels/*.whl
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
-  python -m installer -d "$pkgdir" target/wheels/*.whl
 }
