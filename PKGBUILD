@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/foxtelgo"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('f43af3432857d8ff95a4c5c212396e9ecd14840b2c3a5f13538b3061e26dabf0')
+sha256sums=('bdb325e1671960decbe440c8b2202a0e0fef09523b932aa75e04a01d656252c4')
 
 
 package() {
