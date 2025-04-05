@@ -1,39 +1,43 @@
-# Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
-pkgname=('python-bonsai')
-_name=${pkgname#python-}
-pkgver=1.5.1
+# Maintainer: devome <evinedeng@hotmail.com>
+# Contributer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+
+_pkgname=bonsai
+pkgname="python-$_pkgname"
+pkgver=1.5.3
 pkgrel=1
-pkgdesc="Python module for LDAPv3 using libldap2/WinLDAP"
-arch=('x86_64')
+pkgdesc="Python 3 module for accessing LDAP directory servers."
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://github.com/noirello/bonsai'
 license=('MIT')
-makedepends=('python-setuptools')
-depends=('libldap>=2' 'libsasl>=2' 'python>=3.6' 'krb5')
+depends=('libldap>=2' 'libsasl>=2' 'python>=3.8' 'krb5')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-timeout')
 optdepends=('python-gevent: enable bonsai.gevent'
             'python-tornado: enable bonsai.tornado'
             'python-trio: enable bonsai.trio')
-options=(!emptydirs)
-sha256sums=('9fc83ff9b94ac029ccedbc01ce96d1ac7b9ad2228ceaff8aba5fe622861cebe4')
-source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bc9c13b225efa0a86d22fd9b66e0acd536dae3e7eddb8d3a662f12bbb61b698e')
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py build
+    cd "${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/$_name-$pkgver"
-  py3_suffix=$(python -V | sed -r 's/.*3\.([0-9]+)\..*/3\1/')
-  PYTHONPATH="build/lib.linux-$arch-cpython-$py3_suffix" \
-    python -m pytest -k 'not (test_asyncio or test_gevent or'` \
-      `' test_ldapclient or test_ldapconnection or test_ldapentry or'` \
-      `' test_ldapreference or test_pool or test_tornado or test_trio or'` \
-      `' test_utils)'
+    local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="tmp_install" dist/*.whl
+
+    export PYTHONPATH="$PWD/tmp_install/$_site_packages/:$PYTHONPATH:$PWD/tests"
+    pytest -vv -k 'not (test_asyncio or test_gevent or'` \
+        `' test_ldapclient or test_ldapconnection or test_ldapentry or'` \
+        `' test_ldapreference or test_pool or test_tornado or test_trio or'` \
+        `' test_utils)'
 }
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
