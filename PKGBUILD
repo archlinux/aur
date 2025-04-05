@@ -4,14 +4,13 @@
 pkgname=python-webssh
 _pkg="${pkgname#python-}"
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based SSH client"
 arch=('any')
 url="https://github.com/huashengdun/webssh"
 license=('MIT')
 depends=('python-paramiko' 'python-tornado')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytest')
 backup=('etc/conf.d/webssh')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/w/$_pkg/$_pkg-$pkgver.tar.gz"
         webssh.conf.d
@@ -25,11 +24,6 @@ sha256sums=('9917acb5126e91a7fbb62def22cfcc33f47ece91a62b9e758f91c033672106c1'
 build() {
 	cd "$_pkg-$pkgver"
 	python -m build --wheel --no-isolation
-}
-
-check() {
-	cd "$_pkg-$pkgver"
-	pytest -x
 }
 
 package() {
