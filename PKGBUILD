@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="A continuation of the heavily modified F-Chat Rising client. Uses system electron."
 url="https://github.com/Fchat-Horizon/Horizon"
 license=('MIT')
-arch=('any')
+arch=('x86_64')
 
 depends=(
   'electron'
@@ -17,9 +17,9 @@ depends=(
   'libsecret'
   'libappindicator-gtk3'
 )
-provides=(
-  'fchat=3'
-)
+provides=('fchat')
+conflicts=('fchat')
+
 source=(
   "https://github.com/Fchat-Horizon/Horizon/releases/download/v$pkgver/F-Chat.Horizon-linux-x64.tar.gz"
   "$_pkgname.sh"
