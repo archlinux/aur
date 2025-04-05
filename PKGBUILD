@@ -3,25 +3,30 @@
 # Certificate installed at /usr/share/adguard-cli/
 
 pkgname=adguard-cli-bin
-pkgver=0.99.12
+pkgver=0.99.43
+_pkgstatus='nightly'
 pkgrel=2
 pkgdesc='Surf the Web ad-free and safely. Shields up'
 arch=('x86_64')
 url='https://adguard.com/'
 
 _file="adguard-cli"
+_file1="adguard_root_helper"
 _full_name="${_file}-${pkgver}-linux-${arch}"
 
 source=(
-	"https://github.com/AdguardTeam/AdGuardCLI/releases/download/v${pkgver}-nightly/${_full_name}.tar.gz"
+	"https://github.com/AdguardTeam/AdGuardCLI/releases/download/v${pkgver}-${_pkgstatus}/${_full_name}.tar.gz"
 )
-sha256sums=('dd9f6c6918509e5ce8003c40d2a6581677d1da899ad158a0d0bc77ada6eff479')
+sha256sums=('d0d2f31113594656dc906d30ffe991a3dd0864f781422d1232997219e13deeaf')
 
 package() {
+    cd "${srcdir}/${_full_name}"
     install -D "${_file}" "${pkgdir}/usr/share/${_file}/${_file}"
+    install -D "${_file1}" "${pkgdir}/usr/share/${_file}/${_file1}"
     install -D "bash-completion.sh" "${pkgdir}/usr/share/bash-completion/completions/${_file}.sh"
     install -D "install_cert.sh" "${pkgdir}/usr/share/${_file}/install-cert.sh"
     install -D "defaults.zip" "${pkgdir}/usr/share/${_file}/defaults.zip"
     mkdir -p "${pkgdir}/usr/bin"
     ln -s /usr/share/${_file}/${_file} "${pkgdir}/usr/bin/${_file}"
+    ln -s /usr/share/${_file}/${_file1} "${pkgdir}/usr/bin/${_file1}"
 }
