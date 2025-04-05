@@ -1,6 +1,6 @@
 pkgbase = deepl-linux-electron
 	pkgdesc = DeepL Integration for Linux. Select text in any application and simply press Ctrl+C and another shortcut to translate it.(Use system-wide electron)
-	pkgver = 1.5.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/kumakichi/Deepl-linux-electron
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = deepl-linux-electron
 	makedepends = git
 	makedepends = curl
 	makedepends = yarn
-	depends = electron32
-	source = deepl-linux-electron-1.5.0.tar.gz::https://github.com/kumakichi/Deepl-linux-electron/archive/refs/tags/v1.5.0.tar.gz
+	depends = electron33
+	source = deepl-linux-electron-1.6.1::git+https://github.com/kumakichi/Deepl-linux-electron#tag=v1.6.1
 	source = deepl-linux-electron.sh
-	sha256sums = 46568ff7adbd3dd504a167e7861afec482988ec9c18b1a0bc2032ff8b758dd81
+	sha256sums = fe7acd0b8462c5afe2626208aa1b8cad51743aae9f659798e67b58185dd40e8f
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = deepl-linux-electron
