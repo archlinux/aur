@@ -2,13 +2,13 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.5.8.r0.3b398e2
+pkgver=1.5.9.r1.f0a5139
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://developers.italia.it/it/cie"
 license=('BSD')
-depends=('crypto++' 'openssl' 'pcsclite' 'podofo' 'java-runtime')
+depends=('crypto++' 'java-runtime' 'libnotify' 'openssl' 'pcsclite' 'podofo')
 makedepends=('git' 'gradle' 'meson')
 install="${pkgname%-git}.install"
 
@@ -16,7 +16,7 @@ source=("${pkgname%-git}::git+https://github.com/M0Rf30/${pkgname%-git}-linux")
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/podofo.//')" 
+  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/podofo.//')"
 }
 
 build() {
