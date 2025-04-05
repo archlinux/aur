@@ -2,7 +2,7 @@
 pkgname='muon'
 oldName='snowflake'
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical SFTP client and terminal emulator with helpful utilities.'
 arch=('any')
 url="https://github.com/subhra74/snowflake"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('java-runtime>=11' 'hicolor-icon-theme' 'bash')
 makedepends=('java-environment>=11' 'maven')
 replaces=('snowflake')
-conflicts=('snowflake')
+conflicts=('snowflake' 'muon-ssh')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/subhra74/snowflake/archive/v${pkgver}.tar.gz"
     "${pkgname}"

@@ -1,7 +1,7 @@
 pkgbase = muon
 	pkgdesc = Graphical SFTP client and terminal emulator with helpful utilities.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subhra74/snowflake
 	arch = any
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = muon
 	depends = hicolor-icon-theme
 	depends = bash
 	conflicts = snowflake
+	conflicts = muon-ssh
 	replaces = snowflake
 	source = muon-1.0.4.tar.gz::https://github.com/subhra74/snowflake/archive/v1.0.4.tar.gz
 	source = muon
