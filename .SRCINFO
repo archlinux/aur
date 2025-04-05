@@ -10,8 +10,10 @@ pkgbase = warp-terminal-bin
 	conflicts = warp-terminal
 	options = !strip
 	source = warp-terminal-_amd64.deb::https://releases.warp.dev/stable/v0.2025.04.02.08.11.stable_03/warp-terminal_0.2025.04.02.08.11.stable.03_amd64.deb
+	source = warp-terminal-_arm64.deb::https://releases.warp.dev/stable/v0.2025.04.02.08.11.stable_03/warp-terminal_0.2025.04.02.08.11.stable.03_arm64.deb
 	source = LICENSE.txt
 	sha256sums = d3610e2616dcc5bb0d125f01beba2ed74963b074347a5ca6a1f1524bdbc39c73
+	sha256sums = 655dd7ff95f32948857ae8378614a5b3022c03fec91ef260a0b392bd39e1d291
 	sha256sums = 341bc0f8670640fab789d19f4e6e8e9da0fc282531fddae976c52f431798641d
 
 pkgname = warp-terminal-bin
