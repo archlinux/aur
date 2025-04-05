@@ -3,7 +3,7 @@
 
 pkgname=python-webssh
 _pkg="${pkgname#python-}"
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Web-based SSH client"
 arch=('any')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source
         webssh.conf.d
         webssh.service
         sysusers.conf)
-sha256sums=('83745141459b8c745a65155e92611372b1d8795208a5eb5e08287ba36f2304b6'
+sha256sums=('9917acb5126e91a7fbb62def22cfcc33f47ece91a62b9e758f91c033672106c1'
             'd14c4c025468b8a4801b8f93dccad10da638934ec394bf34f9523bbcfe358286'
             'cd7f5fc4b81fc1757fca6c00b5fadf1e24954d6c21682e6a3876b0de9e7be291'
             '5f4eca9aeb0744f06d14e90d0aae74d91a1953056c27a186c793bc104c22f832')
