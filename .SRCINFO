@@ -1,0 +1,17 @@
+pkgbase = censo
+	pkgdesc = Commandline ENergetic SOrting of Conformer Rotamer Ensembles
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://xtb-docs.readthedocs.io/en/latest/CENSO_docs/censo.html
+	arch = any
+	license = LGPL-3.0-only
+	license = GPL-3.0-only
+	depends = bash
+	depends = python
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	source = https://github.com/grimme-lab/CENSO/releases/download/v2.1.2/censo-2.1.2.tar.gz
+	b2sums = 18acd5030c049d00f22deb5ad67d7ece24548d76ad0638449135a07a62e910a940f6dba527cd6c4aebcebe2448bb549cc87e53a33e488242ef6b963c09664894
+
+pkgname = censo
