@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=7.7.3
+pkgver=7.7.4
 pkgrel=1
 pkgdesc="Easy building of TUIs in Python"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest'
               'python-yaml')
 #source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('a79bc2b858424051c9a640a3353d57fd854c7d7073a0cae1989eb4196a4380e7')
+sha256sums=('f29598693ee299192f50be648933d65820e4b9a6e258007fd4bf898e3eb6c47d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
