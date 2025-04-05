@@ -11,7 +11,7 @@ pkgbase = pacfilemerge
 	depends = gcc-libs
 	depends = boost-libs
 	depends = nlohmann-json
-	source = pacmerge-1.0.0.tar.gz::https://github.com/FenchsApps/pacmerge/archive/v1.0.0.tar.gz
+	source = v1.0.0.tar.gz::https://github.com/FenchsApps/pacmerge/archive/v1.0.0.tar.gz
 	sha256sums = 197047a76ab4ce8b1a580afe8e2fb732922494ab925c63f2cbf528b3204bf551
 
 pkgname = pacfilemerge 

@@ -8,7 +8,7 @@ url="https://github.com/FenchsApps/pacmerge"
 license=('MIT')
 depends=('gcc-libs' 'boost-libs' 'nlohmann-json')
 makedepends=('cmake' 'boost' 'nlohmann-json')
-source=("pacmerge-$pkgver.tar.gz::https://github.com/FenchsApps/pacmerge/archive/v$pkgver.tar.gz")
+source=("v$pkgver.tar.gz::https://github.com/FenchsApps/pacmerge/archive/v$pkgver.tar.gz")
 sha256sums=('197047a76ab4ce8b1a580afe8e2fb732922494ab925c63f2cbf528b3204bf551')
 
 build() {
