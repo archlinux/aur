@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.2_alpha2502281653
+pkgver=0.8.2_alpha2504051503
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -70,7 +70,7 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/b0c80ed.patch"
 
 )
-sha256sums=('5f657e6deca42805e22f8207887716507e01ccb8574d00385a87f61212c38a82'
+sha256sums=('9de964c86b969a642630aef8703352c0e14c295750636e723c1d26922586e78f'
             'SKIP'
             'SKIP'
             'SKIP'
