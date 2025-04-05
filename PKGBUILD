@@ -10,7 +10,7 @@ _pkgauthor=coredns
 _pkgname=coredns
 pkgname=${_pkgname}-bin
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,9 +18,10 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('Apache-2.0')
 provides=($pkgname)
 conflicts=($pkgname)
-source=(Corefile
-        coredns.service
-        coredns-sysusers.conf
+backup=('etc/coredns/Corefile')
+source=('Corefile'
+        'coredns.service'
+        'coredns-sysusers.conf'
         "${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=(coredns_${pkgver}_x86_64.tar.gz::https://github.com/coredns/coredns/releases/download/v${pkgver}/coredns_${pkgver}_linux_amd64.tgz)
 source_aarch64=(coredns_${pkgver}_aarch64.tar.gz::https://github.com/coredns/coredns/releases/download/v${pkgver}/coredns_${pkgver}_linux_arm64.tgz)

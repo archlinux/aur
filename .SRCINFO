@@ -1,13 +1,14 @@
 pkgbase = coredns-bin
 	pkgdesc = A DNS server that chains plugins
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coredns/coredns
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	provides = coredns-bin
 	conflicts = coredns-bin
+	backup = etc/coredns/Corefile
 	source = Corefile
 	source = coredns.service
 	source = coredns-sysusers.conf
