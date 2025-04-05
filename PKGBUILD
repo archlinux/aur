@@ -2,8 +2,8 @@
 
 : ${_electron_dist:=/usr/lib/electron}
 
-_pkgname="horizon-electron"
-pkgname="fchat-horizon"
+_pkgname="fchat-horizon"
+pkgname="fchat-horizon-bin"
 pkgver=1.30.1
 pkgrel=2
 pkgdesc="A continuation of the heavily modified F-Chat Rising client. Uses system electron."
@@ -22,8 +22,8 @@ provides=(
 )
 source=(
   "https://github.com/Fchat-Horizon/Horizon/releases/download/v$pkgver/F-Chat.Horizon-linux-x64.tar.gz"
-  "$pkgname.sh"
-  "$pkgname.desktop"
+  "$_pkgname.sh"
+  "$_pkgname.desktop"
   'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/electron/build/icon.png'
   'https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE'
 )
@@ -37,14 +37,14 @@ package() {
   cd "$srcdir"
   
   # Move misc resources to their correct place
-  install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "$pkgname".desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/$_pkgname
+  install -Dm644 "$_pkgname".desktop -t "$pkgdir"/usr/share/applications
+  install -Dm644 icon.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 
   # We're using system electron, so pull out just what we actually need.
   cd 'F-Chat Horizon-linux-x64/resources/'
-  install -dm0755 "$pkgdir"/usr/share/$pkgname
-  find . -type d -exec install -d {,"$pkgdir"/usr/share/$pkgname/}{} \;
-  find . -type f -exec install -D {,"$pkgdir"/usr/share/$pkgname/}{} \;
+  install -dm0755 "$pkgdir"/usr/share/$_pkgname
+  find . -type d -exec install -d {,"$pkgdir"/usr/share/$_pkgname/}{} \;
+  find . -type f -exec install -D {,"$pkgdir"/usr/share/$_pkgname/}{} \;
 }
