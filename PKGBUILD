@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-bin
 _pkgname=Fishing-Funds
-pkgver=8.4.1
-_electronversion=34
+pkgver=8.4.2
+_electronversion=35
 pkgrel=1
 pkgdesc="Fund, Market, Stocks, Virtual Currency Status Bar Display Small Applications, based on Electron.(Prebuilt version.Use system-wide electron)基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=(
@@ -25,17 +25,17 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('ecacf52c831e022da651d6e519ee197f140ddacb33368eb6d1ee0b08c34deb86')
-sha256sums_x86_64=('ec3ccc049e52af97bc02ddcb324ad894a4a15f3c93d7a2950431f4f3b453818e')
+sha256sums_aarch64=('21651d770b86a84cf331cd6efac6d42e445655d999660c4ec4f22f8c3c9fe8e1')
+sha256sums_x86_64=('e5ab7e8a8f02ab995d9b1d2ee4b2671d0dedcb769020268328ee68e0bda10180')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname//_/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} \;
@@ -50,7 +50,7 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-      install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-        -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
 }
