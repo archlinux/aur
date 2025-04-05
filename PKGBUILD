@@ -1,13 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=video-subtitle-master-git
 _pkgname='Video Subtitle Master'
-pkgver=1.4.2.r0.g552ed42
+_zhsname='妙幕'
+pkgver=2.0.3.r1.g9a9fb83
 _electronversion=30
 _nodeversion=20
 pkgrel=1
 pkgdesc="a powerful desktop application for batch generating subtitles for videos and translating them into other languages.(Use system-wide electron)"
 arch=('any')
-url="https://github.com/buxuku/video-subtitle-master"
+url="https://github.com/buxuku/SmartSub"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -23,7 +24,6 @@ makedepends=(
     'git'
     'curl'
     'yarn'
-    'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -44,17 +44,17 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    sed -i "5i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -81,8 +81,9 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config=electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

@@ -1,8 +1,8 @@
 pkgbase = video-subtitle-master-git
 	pkgdesc = a powerful desktop application for batch generating subtitles for videos and translating them into other languages.(Use system-wide electron)
-	pkgver = 1.4.2.r0.g552ed42
+	pkgver = 2.0.3.r1.g9a9fb83
 	pkgrel = 1
-	url = https://github.com/buxuku/video-subtitle-master
+	url = https://github.com/buxuku/SmartSub
 	arch = any
 	license = MIT
 	makedepends = gendesk
@@ -11,13 +11,12 @@ pkgbase = video-subtitle-master-git
 	makedepends = git
 	makedepends = curl
 	makedepends = yarn
-	makedepends = gcc
 	depends = electron30
 	depends = python-openai-whisper
 	depends = nodejs
-	provides = video-subtitle-master=1.4.2
+	provides = video-subtitle-master=2.0.3
 	conflicts = video-subtitle-master
-	source = video-subtitle-master.git::git+https://github.com/buxuku/video-subtitle-master
+	source = video-subtitle-master.git::git+https://github.com/buxuku/SmartSub
 	source = video-subtitle-master.sh
 	sha256sums = SKIP
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
