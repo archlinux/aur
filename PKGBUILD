@@ -7,7 +7,7 @@
 pkgname='ngs-lang-git'
 _pkgname="${pkgname/-git}"
 pkgver=0.2.17.r0.g10a4a0da
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='NGS: Next Generation Shell (built from latest git commit)'
 arch=('x86_64')
