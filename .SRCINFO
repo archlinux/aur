@@ -1,6 +1,6 @@
 pkgbase = identities-git
 	pkgdesc = GTK password manager
-	pkgver = r66.ce4673a
+	pkgver = 0.1.0.r0.gb09a715
 	pkgrel = 1
 	url = https://github.com/k8ieone/identities
 	arch = x86_64

@@ -1,6 +1,6 @@
 _name='identities'
 pkgname="$_name-git"
-pkgver=r66.ce4673a
+pkgver=0.1.0.r0.gb09a715
 pkgrel=1
 pkgdesc="GTK password manager"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${_name}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
