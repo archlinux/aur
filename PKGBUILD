@@ -3,32 +3,32 @@
 
 pkgname=itext-rups-bin
 _pkgname=itext-rups
-pkgver=7.2.5
-pkgrel=2
+pkgver=25.03
+pkgrel=1
 pkgdesc='iText RUPS is a tool to view PDF structure in a Swing GUI.'
 provides=("$_pkgname")
 arch=('any')
-url='https://github.com/itext/i7j-rups/'
+url='https://github.com/itext/rups'
 license=('AGPL3')
 depends=(bash java-runtime hicolor-icon-theme)
-makedepends=('imagemagick')
+makedepends=('imagemagick>=7')
 sha256sums=('c9b4e4c2b77b89c1e01354d059ea6abf0ea34fff0b33ad50d349ad875cb93d6a'
             'c213befd1132bebcbc588a7ef52c0089682767618317bd09128668d3550218b3'
-            '509e81cbe629b331a80e9344a11fe573e6e4e065c4319c1532ac175da9af5dec'
+            '6c3da33137ec3a0e76df60c6c3fa7e0ea66218fa0c3c61a6d92b8d3c3f182840'
             '226be57182f49ed2667a606d04251b47d0427850f71dd469d92a864173d5745d')
 source=(
     "itext-rups.sh"
     "itext-rups.desktop"
-    "https://github.com/itext/i7j-rups/releases/download/${pkgver}/iText7-RUPS-${pkgver}-only-jars.zip"
-    "https://raw.githubusercontent.com/itext/i7j-rups/${pkgver}/src/main/resources/com/itextpdf/rups/logo.png"
+    "https://github.com/itext/rups/releases/download/${pkgver}/iText-RUPS-${pkgver}-only-jars.zip"
+    "https://raw.githubusercontent.com/itext/rups/${pkgver}/src/main/resources/com/itextpdf/rups/logo.png"
 )
 
 build() {
-    convert -resize 48x48 logo.png "itext-rups-48x48.png"
-    convert -resize 64x64 logo.png "itext-rups-64x64.png"
-    convert -resize 128x128 logo.png "itext-rups-128x128.png"
-    convert -resize 256x256 logo.png "itext-rups-256x256.png"
-    convert -resize 512x512 logo.png "itext-rups-512x512.png"
+    magick logo.png -resize 48x48 "itext-rups-48x48.png"
+    magick logo.png -resize 64x64 "itext-rups-64x64.png"
+    magick logo.png -resize 128x128 "itext-rups-128x128.png"
+    magick logo.png -resize 256x256 "itext-rups-256x256.png"
+    magick logo.png -resize 512x512 "itext-rups-512x512.png"
     # the logo.png is originally 1024x1024
 }
 
