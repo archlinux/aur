@@ -4,15 +4,15 @@
 
 pkgbase="lombok"
 pkgname=('lombok-common' 'lombok-eclipse-java' 'lombok-eclipse-jee' 'lombok-spring-tool-suite')
-pkgver=1.18.36
+pkgver=1.18.38
 pkgrel=1
-pkgdesc="Project Lombok integrated with several Eclipse-based installations"
+pkgdesc="Project Lombok integrated with several Eclipse-based installations."
 makedepends=('java-runtime')
 arch=("any")
 url="https://projectlombok.org"
 license=('MIT')
 source=("https://projectlombok.org/downloads/lombok-${pkgver}.jar")
-sha256sums=('73b6b05b6a2d365b700bab08d30f94de9d336490bc0acce5b6181fef48cbf18e')
+sha256sums=('1e1e427c36ff63c44fd30ef292d9e773ea3154460ab6265d3fed7e6f5bc50fb9')
 noextract=("lombok.jar")
 
 build() {
@@ -28,19 +28,19 @@ package_lombok-common() {
 }
 
 package_lombok-eclipse-java() {
-    pkgdesc="Lombok integration with Eclipse IDE for Java Developers"
+    pkgdesc="Lombok integration with Eclipse IDE for Java Developers."
     depends=(lombok-common=$pkgver-$pkgrel 'eclipse-java-bin')
     install=lombok-eclipse.install
 }
 
 package_lombok-eclipse-jee() {
-    pkgdesc="Lombok integration with Eclipse IDE for Java EE Developers"
+    pkgdesc="Lombok integration with Eclipse IDE for Java EE Developers."
     depends=(lombok-common=$pkgver-$pkgrel 'eclipse-jee-bin')
     install=lombok-eclipse.install
 }
 
 package_lombok-spring-tool-suite() {
-    pkgdesc="Lombok integration with Spring Tool Suite (STS)"
+    pkgdesc="Lombok integration with Spring Tool Suite (STS)."
     depends=(lombok-common=$pkgver-$pkgrel 'spring-tool-suite')
     install=lombok-sts.install
 }
