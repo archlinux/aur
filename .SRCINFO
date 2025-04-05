@@ -1,7 +1,7 @@
 pkgbase = muon-ssh
 	pkgdesc = Graphical SFTP client and terminal emulator (SSH) with helpful utilities.
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/devlinx9/muon-ssh
 	arch = any
 	license = GPL3
@@ -10,6 +10,8 @@ pkgbase = muon-ssh
 	depends = java-runtime>=11
 	depends = hicolor-icon-theme
 	depends = bash
+	provides = muon
+	conflicts = muon
 	source = muon-ssh-2.4.0.tar.gz::https://github.com/devlinx9/muon-ssh/archive/v2.4.0.tar.gz
 	source = muon-ssh
 	source = muon-ssh.desktop

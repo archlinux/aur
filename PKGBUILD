@@ -1,13 +1,15 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname='muon-ssh'
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical SFTP client and terminal emulator (SSH) with helpful utilities.'
 arch=('any')
 url="https://github.com/devlinx9/muon-ssh"
 license=('GPL3')
 depends=('java-runtime>=11' 'hicolor-icon-theme' 'bash')
 makedepends=('java-environment>=11' 'maven')
+provides=('muon')
+conflicts=('muon')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/devlinx9/muon-ssh/archive/v${pkgver}.tar.gz"
     "${pkgname}"
