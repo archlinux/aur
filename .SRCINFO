@@ -1,17 +1,17 @@
 pkgbase = telegram-a-appimage
 	pkgdesc = Official Telegram Web client version A AppImage version
-	pkgver = 10.9.9
+	pkgver = 10.9.48
 	pkgrel = 1
 	url = https://web.telegram.org/a/get/
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = telegram-a-appimage-10.9.9.AppImage
+	noextract = telegram-a-appimage-10.9.48.AppImage
 	options = !strip
-	source_x86_64 = telegram-a-appimage-10.9.9.AppImage::https://github.com/Ajaxy/telegram-tt/releases/download/v10.9.9/Telegram-A-x86_64.AppImage
-	source_x86_64 = https://github.com/Ajaxy/telegram-tt/raw/v10.9.9/LICENSE
-	sha256sums_x86_64 = 19047943bd402b774bb7c3a819b3338e797d4459b3976e1798a100c503a3f930
+	source_x86_64 = telegram-a-appimage-10.9.48.AppImage::https://github.com/Ajaxy/telegram-tt/releases/download/v10.9.48/Telegram-A-x86_64.AppImage
+	source_x86_64 = https://github.com/Ajaxy/telegram-tt/raw/v10.9.48/LICENSE
+	sha256sums_x86_64 = 2364cc436caf038f5751efb1bb56aeb75c266d47bf6676172b75b93e6a49347e
 	sha256sums_x86_64 = e1c0ad728983d8a57335e52cf1064f1affd1d454173d8cebd3ed8b4a72b48704
 
 pkgname = telegram-a-appimage
