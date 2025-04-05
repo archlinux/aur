@@ -2,14 +2,14 @@
 
 pkgname=hikounomizu
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform-based, anime-styled fighting game"
 arch=('x86_64')
 url="https://hikounomizu.org"
 license=('custom')
 depends=('sdl2' 'sdl2_image' 'libgl' 'freetype2' 'openal' 'libvorbis' 'enet' 'pugixml')
 makedepends=('cmake>=3.25' 'gendesk')
-source=("https://download.tuxfamily.org/hnm/1.1/hikounomizu-1.1-src-withdata.tar.bz2")
+source=("https://gitlab.com/api/v4/projects/9166374/packages/generic/hikounomizu/1.1/hikounomizu-1.1-src-withdata.tar.bz2")
 md5sums=('3ff578225dd9783c5d4c84fbbe8f0979')
 
 
