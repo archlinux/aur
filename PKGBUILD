@@ -4,7 +4,7 @@
 pkgname=coolercontrol-bin
 _pkgname=${pkgname%-bin}
 _app_id="org.$_pkgname.CoolerControl"
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices (binary release)"
 arch=('x86_64')
@@ -30,8 +30,8 @@ source=(
   "https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  'e70ba298a9ccc6e758152c424087f8b23dd6d694dd237f633ec01db6fe1abedf'
-  'ced4fb060785d3dcd6b3c58d825477e379f4d406c4b448d0bf2bcffcad33ae3b'
+  '0583e979e00a3cf032d48baff0e6dcf4127768f64a8952ac88de5326c56d4ce4'
+  'f0850097914fb8892ee49c03c5cea55e78c8f3e6aa99b417fc86f44250b6bdbd'
 )
 
 check() {
@@ -50,6 +50,7 @@ package() {
   install -Dm644 "packaging/metadata/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
   install -Dm644 "packaging/metadata/$_app_id.png" -t "$pkgdir/usr/share/pixmaps/"
   install -Dm644 "packaging/metadata/$_app_id.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "packaging/metadata/${_app_id}-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
