@@ -1,0 +1,25 @@
+pkgbase = scenefx0.17-git
+	pkgdesc = scenefx 0.17.4
+	pkgver = r235.d1323e6
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/scenefx
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols>=1.41
+	depends = glibc
+	depends = wayland>=1.23.1
+	depends = libinput>=1.27.1
+	depends = libdrm
+	depends = pixman
+	depends = libxkbcommon
+	depends = wlroots0.17
+	provides = scenefx
+	conflicts = scenefx
+	conflicts = scenefx-git
+	source = scenefx0.17-git::git+https://github.com/DreamMaoMao/scenefx.git
+	md5sums = SKIP
+
+pkgname = scenefx0.17-git
