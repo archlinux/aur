@@ -4,4 +4,5 @@ Name=Keymapp
 Exec=keymapp
 Icon=keymapp
 Terminal=false
+StartupWMClass=keymapp
 Categories=Settings;HardwareSettings;
