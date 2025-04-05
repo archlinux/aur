@@ -1,7 +1,7 @@
 # Maintainer: shinrax2
 _reponame=per-device-application-volume
 pkgname=pdav-git
-pkgver=0.2.0.r0.g16b3544
+pkgver=0.3.1.r0.geddfa6b
 pkgrel=1
 pkgdesc="user daemon to automatically save and restore application volume settings based on default output device for pulseaudio/pipewire-pulse (git version)"
 arch=(any)
@@ -28,14 +28,16 @@ build() {
 
 package() {
     cd $_reponame
-    install -Dm755 "pdav" \
-        -t "$pkgdir/usr/bin"
-    install -Dm755 "dist/pdav-gui" \
-        -t "$pkgdir/usr/bin"
-    install -Dm644 "LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "quirks.json" \
-        "$pkgdir/usr/share/pdav/quirks.json"
-    install -Dm644 "pdav.service" \
-        "$pkgdir/etc/systemd/user/pdav.service"
+    install -Dm755 "pdav" -t "$pkgdir/usr/bin"
+    install -Dm755 "dist/pdav-gui" -t "$pkgdir/usr/bin"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "quirks.json" -t "$pkgdir/usr/share/pdav"
+    install -Dm644 "pdav-gui.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "l10n/en.json" -t "$pkgdir/usr/share/pdav/l10n"
+    install -Dm644 "l10n/de.json" -t "$pkgdir/usr/share/pdav/l10n"
+    install -Dm644 "images/icon-256x256.png" -t "$pkgdir/usr/share/pdav/images"
+    install -Dm644 "images/icon-128x128.png" -t "$pkgdir/usr/share/pdav/images"
+    install -Dm644 "images/icon-64x64.png" -t "$pkgdir/usr/share/pdav/images"
+    install -Dm644 "images/icon-32x32.png" -t "$pkgdir/usr/share/pdav/images"
+    install -Dm644 "pdav.service" -t "$pkgdir/etc/systemd/user"
 }
