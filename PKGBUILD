@@ -2,7 +2,7 @@
 
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-glamor
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp, with glamor enabled. Only works on Intel and AMD GPUs."
 arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
@@ -18,10 +18,8 @@ source=(
   "$url/archive/refs/tags/v$pkgver.tar.gz"
   'glamor.patch'
 )
-sha256sums=(
-  'd7349ab98116d367ba43d94b991bf2d47e85f063e9a32421df435be910743d2a'
-  '10d289d1a11c9a5a8b4c6af534c2f9e7900ae2b4351860a063ba572010d95912'
-)
+sha256sums=('b4168992159f8f0148d10d7207ff8de51924cc40671cc28942a82e7bf07ef41e'
+            '0aa0b27b66122217bd6ca2466496fe3be8738c4debe247f9af7fdaa08487622e')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"

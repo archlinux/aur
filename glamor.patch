@@ -1,59 +1,27 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -25,9 +25,11 @@ PKG_CHECK_MODULES([XORG_SERVER], [xorg-server >= 0], [],
-   [AC_MSG_ERROR([please install xserver-xorg-dev, xorg-x11-server-sdk or xorg-x11-server-devel])])
- if test "x${enable_glamor}" = "xyes"; then
-   PKG_CHECK_MODULES([XORG_SERVER_GLAMOR], [xorg-server >= 1.19.0])
-+  PKG_CHECK_MODULES([LIBDRM], [libdrm >= 0], [], [AC_MSG_ERROR([please install libdrm-dev or libdrm-devel])])
-   PKG_CHECK_MODULES([XORG_SERVER_GBM], [gbm >= 0], [], [AC_MSG_ERROR([please install libgbm-dev or mesa-libgbm-devel])])
-   PKG_CHECK_MODULES([XORG_SERVER_EPOXY], [epoxy >= 0], [], [AC_MSG_ERROR([please install libepoxy-dev or libepoxy-devel])])
-   PKG_CHECK_MODULES([XORG_SERVER_EGL], [egl >= 0], [], [AC_MSG_ERROR([please install libegl1-mesa-dev or mesa-libEGL-devel])])
-+  PKG_CHECK_VAR([XORG_SERVER_MODULES], [xorg-server], [moduledir])
- fi
-
- if test "x$XRDP_CFLAGS" = "x"; then
-
-
-
 --- a/module/Makefile.am
 +++ b/module/Makefile.am
-@@ -22,12 +22,13 @@ if WITH_GLAMOR
- EXTRA_FLAGS += -DXORGXRDP_GLAMOR -DGLAMOR_FOR_XORG
- EXTRA_SOURCES += rdpEgl.c
- EXTRA_HEADERS += rdpEgl.h
--EGLLIB += -lepoxy
+@@ -20,10 +20,10 @@ ASMLIB += x86/libxorgxrdp-asm.la
  endif
 
- AM_CFLAGS = \
-   $(XORG_SERVER_CFLAGS) \
-   $(XRDP_CFLAGS) \
-+  $(LIBDRM_CFLAGS) \
-+  $(EPOXY_CFLAGS) \
-   -DPACKAGE_VERSION_MAJOR=@package_version_major@ \
-   -DPACKAGE_VERSION_MINOR=@package_version_minor@ \
-   -DPACKAGE_VERSION_PATCHLEVEL=@package_version_patchlevel@ \
-@@ -82,6 +83,9 @@ noinst_HEADERS = \
+ if WITH_GLAMOR
+-EXTRA_FLAGS += $(LIBDRM_CFLAGS) -DXORGXRDP_GLAMOR -DGLAMOR_FOR_XORG
++EXTRA_FLAGS += $(LIBDRM_CFLAGS) $(EPOXY_CFLAGS) -DXORGXRDP_GLAMOR -DGLAMOR_FOR_XORG
+ EXTRA_SOURCES += rdpEgl.c
+ EXTRA_HEADERS += rdpEgl.h
+-EGLLIB += -L$(XORG_SERVER_MODULES) -lglamoregl -lepoxy
++EGLLIB += -L$(XORG_SERVER_MODULES) -lglamoregl
+ LIB_SEARCH_PATH += -R$(XORG_SERVER_MODULES)
+ endif
+
+@@ -93,6 +93,9 @@ noinst_HEADERS = \
  libxorgxrdp_la_LTLIBRARIES = libxorgxrdp.la
 
- libxorgxrdp_la_LDFLAGS = -module -avoid-version
+ libxorgxrdp_la_LDFLAGS = -module -avoid-version $(LIB_SEARCH_PATH)
 +if WITH_GLAMOR
-+libxorgxrdp_la_LDFLAGS += $(EPOXY_LDFLAGS) -L$(XORG_SERVER_MODULES) -lglamoregl -Wl,-rpath,$(XORG_SERVER_MODULES)
++libxorgxrdp_la_LDFLAGS += $(EPOXY_LDFLAGS) -L$(XORG_SERVER_MODULES) -lglamoregl -Wl, -rpath,$(XORG_SERVER_MODULES)
 +endif
 
  libxorgxrdp_ladir = $(moduledir)
-
-
-
---- a/xrdpdev/Makefile.am
-+++ b/xrdpdev/Makefile.am
-@@ -13,6 +13,7 @@ endif
- AM_CFLAGS = \
-   $(XORG_SERVER_CFLAGS) \
-   $(XRDP_CFLAGS) \
-+  $(LIBDRM_CFLAGS) \
-   -DPACKAGE_VERSION_MAJOR=@package_version_major@ \
-   -DPACKAGE_VERSION_MINOR=@package_version_minor@ \
-   -DPACKAGE_VERSION_PATCHLEVEL=@package_version_patchlevel@ \
 
 
 
