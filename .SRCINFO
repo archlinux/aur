@@ -8,6 +8,7 @@ pkgbase = python-fx2-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	depends = python-libusb1
 	provides = python-fx2
 	source = git+https://github.com/whitequark/libfx2.git
 	sha256sums = SKIP
