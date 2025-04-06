@@ -1,17 +1,18 @@
 pkgbase = qtemu-git
 	pkgdesc = Qt5 GUI front-end for QEMU, similar to VirtualBox.
-	pkgver = r247.d230e82
+	pkgver = 2.1.r26.gd6c2d66
 	pkgrel = 1
 	url = https://gitlab.com/qtemu/gui
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-svg
 	depends = qemu
-	depends = qt5-base
+	depends = qt6-base
 	conflicts = qtemu
 	source = qtemu-git::git+https://gitlab.com/qtemu/gui.git
 	sha256sums = SKIP
 
 pkgname = qtemu-git
-
