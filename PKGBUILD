@@ -5,8 +5,8 @@
 
 _pkgname=soundtouch
 pkgname=lib32-$_pkgname
-pkgver=2.3.3
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='An open-source audio processing library for changing the tempo, pitch and playback rates of audio streams or audio files (32 bit)'
 arch=('x86_64')
 url='https://www.surina.net/soundtouch'
@@ -14,7 +14,7 @@ license=('LGPL-2.1-or-later')
 depends=('lib32-gcc-libs' $_pkgname)
 makedepends=('cmake' 'git' 'ninja')
 source=("git+https://codeberg.org/$_pkgname/$_pkgname.git#tag=${pkgver}")
-sha256sums=('60ed34e8efe81938e6782d78d5ef5ab347a08ff57b47395043853ebeb0eee3ab')
+sha256sums=('6ea20477dfd6ccf38abb9d917213315d0be2ad21eac1905f22069724c277ec17')
 
 prepare() {
 	cd "${_pkgname}"
@@ -23,8 +23,6 @@ prepare() {
 }
 
 build() {
-	cd ${srcdir}
-
 	cmake -S "${_pkgname}" -B build -G Ninja \
 		-DCMAKE_BUILD_TYPE='Release' \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -37,8 +35,6 @@ build() {
 }
 
 package() {
-	cd ${srcdir}
-
 	DESTDIR="${pkgdir}" cmake --install build
 	rm -rf "${pkgdir}"/usr/{bin,doc,include,share}
 }
