@@ -4,7 +4,10 @@ _appName=EFIBootEditor
 _pkgauthor=Neverous
 _pkgname=efibooteditor
 pkgname=${_pkgname}-bin
-pkgver=1.5.2
+pkgver=1.5.3
+_qtversion=6.8.3
+_ubuntuversion=24.04
+_compiler=CLang
 pkgrel=1
 pkgdesc="Boot Editor for (U)EFI based systems."
 arch=('x86_64' 'aarch64')
@@ -19,10 +22,10 @@ makedepends=('tar')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.txt"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_appName}-v${pkgver}-ubuntu-24.04-qt-6.2.4-GCC.deb")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_appName}-v${pkgver}-ubuntu-${_ubuntuversion}-qt-${_qtversion}-${_compiler}.deb")
 sha256sums=('e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118'
             'e46766a93708412ae6f11c6f2775c33c75dc8264b8c4815bb3c424560de3dba2')
-sha256sums_x86_64=('82afd4436b27c0c3e7a2ac5220fbd7a3957923dba21001db73f7898ce7b78961')
+sha256sums_x86_64=('ebba18313748cce5299bd9df10e648cee6a6b466305f799052b9aa7ef2ddd7f6')
 
 
 package() {
