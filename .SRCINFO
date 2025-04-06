@@ -1,0 +1,23 @@
+pkgbase = gtktester
+	pkgdesc = Library with widgets for Gtk+ widget tests
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://gitlab.com/gsvg/gtktester
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = xorg-server-xvfb
+	checkdepends = gvfs
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = gobject-introspection-runtime
+	depends = gtk4
+	depends = glibc
+	depends = glib2
+	depends = gxml
+	depends = gresg
+	source = git+https://gitlab.com/gsvg/gtktester.git#tag=2.0.1
+	sha256sums = e185e466ac1e57302bf90461a14c4c8519fe5153b439dce589bd3776eb942962
+
+pkgname = gtktester
