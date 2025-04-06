@@ -1,16 +1,18 @@
 pkgbase = primitive
 	pkgdesc = Reproducing images with geometric primitives
-	pkgver = r152.0373c21
-	pkgrel = 2
-	url = https://github.com/fogleman/primitive
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bmaltais/primitive
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = go
 	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = imagemagick: for GIF output support
 	provides = primitive
 	conflicts = primitive
-	source = primitive::git+https://github.com/fogleman/primitive.git
-	md5sums = SKIP
+	source = primitive-1.0.tar.gz::https://github.com/bmaltais/primitive/archive/refs/tags/1.0.tar.gz
+	sha256sums = f3fa7b3552de9a157f4a4e558f19c3a40c04b61b14ce8f4368d5ef36d5093af6
 
 pkgname = primitive

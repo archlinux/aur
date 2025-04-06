@@ -1,38 +1,43 @@
-# Maintainer: Bastien Traverse <firstname at lastname dot email>
-# Maintainer: Felix Buehler <account@buehler.rocks>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
+# Contributor: Felix Buehler
+# Contributor: zethra <jediben97@gmail.com>
 
-pkgname=primitive
-pkgver=r152.0373c21
-pkgrel=2
-pkgdesc='Reproducing images with geometric primitives'
+_pkgauthor=bmaltais
+_pkgname=primitive
+pkgname=${_pkgname}
+pkgver=1.0
+pkgrel=1
+pkgdesc="Reproducing images with geometric primitives"
 arch=('i686' 'x86_64')
-url="https://github.com/fogleman/primitive"
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
-makedepends=('go' 'git')
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=("$pkgname::git+$url.git")
-md5sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-# Support both current absence of tags and possible future addition
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('glibc')
+makedepends=('git' 'go')
+optdepends=('imagemagick: for GIF output support')
+
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/1.0.tar.gz")
+sha256sums=('f3fa7b3552de9a157f4a4e558f19c3a40c04b61b14ce8f4368d5ef36d5093af6')
 
 build() {
 	unset GOBIN
-  GOPATH="$srcdir" go install -v -gcflags "-trimpath $GOPATH/src" \
-    "${url#https://}@latest"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOPATH="${srcdir}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
+
+	go install -v -gcflags "-trimpath $GOPATH/src" "${url#https://}@${pkgver}"
 }
 
 package() {
-	install -D "$srcdir/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$srcdir/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -d "$pkgdir/usr/share/$pkgname"
-	cp -r "$srcdir/$pkgname"/{bot,examples,scripts} "$pkgdir/usr/share/$pkgname"
-	find "$pkgdir/usr/share/$pkgname" -type f -name *.py -exec chmod +x {} \;
+	install -Dm755 "${srcdir}/bin/${_pkgname}" "$pkgdir/usr/bin/${pkgname%-git}"
+
+	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
