@@ -1,6 +1,6 @@
 pkgbase = ppsspp-git
 	pkgdesc = A PSP emulator written in C++
-	pkgver = 1.17.1.r785.cbdb2a37eb
+	pkgver = 1.18.1.r1606.f573b0c72c
 	pkgrel = 1
 	url = https://www.ppsspp.org/
 	arch = x86_64
@@ -36,8 +36,6 @@ pkgname = ppsspp-git
 	depends = libpng
 	depends = libzip
 	depends = ppsspp-assets-git
-	depends = qt5-base
-	depends = qt5-multimedia
 	depends = sdl2
 	depends = sdl2_ttf
 	depends = snappy

@@ -11,7 +11,7 @@ pkgname=(
   ppsspp-git
   ppsspp-assets-git
 )
-pkgver=1.17.1.r785.cbdb2a37eb
+pkgver=1.18.1.r1606.f573b0c72c
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64 aarch64)
@@ -94,8 +94,6 @@ package_ppsspp-git() {
     libpng
     libzip
     ppsspp-assets-git
-    qt5-base
-    qt5-multimedia
     sdl2
     sdl2_ttf
     snappy
