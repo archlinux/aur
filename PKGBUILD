@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=1.0p2vef
+pkgver=1.0p3b
 pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
@@ -47,21 +47,20 @@ depends=(
   xcb-util-keysyms
   xcb-util-renderutil
   xcb-util-wm
+  xfconf
+  xfwm4
+  xorg-xinit
+  xorg-server
+  xorg-xprop
+  xsettingsd
   zlib
 )
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
-source=(
-  "${pkgname%-desktop-bin}-$pkgver.tar.gz::$url/files/${pkgname/-desktop/}-release.tar.gz/download"
-  "${pkgname%-desktop-bin}-$pkgver.rss::$url/rss?path=/"
-)
+source=("${pkgname%-desktop-bin}-$pkgver.tar.gz::$url/files/${pkgname/-desktop/}-release.tar.gz/download")
 noextract=("${pkgname%-desktop-bin}-$pkgver.tar.gz")
-b2sums=('SKIP' 'SKIP')
-
-prepare() {
-  md5sum -c <<< "$(grep -Eo "[0-9a-z]{32}" ${pkgname%-desktop-bin}-$pkgver.rss) ${pkgname%-desktop-bin}-$pkgver.tar.gz"
-}
+b2sums=('302cd16a27599df119156241b3b472ed8062409e3f0dbe3eb2cfe6c5e8a3af83a1d5cc5ab82ad4f903f6549b0dda39007718918b6c0111621c728718e5f6e84e')
 
 package() {
   install -vd "$pkgdir"/opt/${pkgname%-desktop-bin}
@@ -85,4 +84,9 @@ package() {
 
   sed -i 's|^# export|export|g' "$pkgdir"/opt/${pkgname%-desktop-bin}/${pkgname%-bin}
   sed -i 's|^# export|export|g' "$pkgdir"/opt/${pkgname%-desktop-bin}/${pkgname%-desktop-bin}-panel
+
+  # Running standalone
+  install -vDm 777 "$pkgdir"/opt/${pkgname%-desktop-bin}/standalone-run/usr/bin/${pkgname%-desktop-bin}-session             -t "$pkgdir"/usr/bin/
+  install -vDm 777 "$pkgdir"/opt/${pkgname%-desktop-bin}/standalone-run/usr/share/xsessions/${pkgname%-desktop-bin}.desktop -t "$pkgdir"/usr/share/xsessions
+  sed -i 's|LIGHTBAR_PORTABLE_MODE=0|STANDALONE_MODE=1|' "$pkgdir"/opt/${pkgname%-desktop-bin}/${pkgname%-bin}
 }
