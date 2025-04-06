@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2025.3.4
+	pkgver = 2025.4.1
 	pkgrel = 1
 	epoch = 1
 	url = https://home-assistant.io/
@@ -23,18 +23,18 @@ pkgbase = home-assistant
 	depends = python
 	depends = tzdata
 	depends = zlib
-	source = home-assistant::git+https://github.com/home-assistant/core.git#tag=2025.3.4
+	source = home-assistant::git+https://github.com/home-assistant/core.git#tag=2025.4.1
 	source = remove-setuptools-constraint.patch
 	source = home-assistant.service
 	source = home-assistant.sysusers
 	source = home-assistant.tmpfiles
-	sha512sums = 4b90feff4fd58cdefae8633b06ec5d060d7b7ec96102dde57cf1037a82ba711587fa11c7e3e6d892bee8d4cf92ef824f7941a8318ee1492f8cd0e5b2d719227c
-	sha512sums = f32cbdc8a94088493e06adf57de9407341ec1c16d641ad6a3bfcafa1983946a32d207af8af63590e99d915be4df6ab2a7405a096cfa127a10df16692eb2afe00
+	sha512sums = 0f853411be56f2cc6aa19111d63de8cbd05d1d7ea8d14246af4052ea0f5e0a5b73303600dddca7b6a6e9febf932027a17b33fc0df118b78559743594d86af2ef
+	sha512sums = 02324e1e33bfd2d3ec2ceaeaef61f9eb36ba9d2a315544f2ea229ef1c27467229436dbd5e578165b42e2f38135d2cc11423eb1df26d9e9ff8532244e8daf70d4
 	sha512sums = 0a421907c1f53426fa42245bd90823e7d0d2ccbd11cc479a87f9d7cfd5d96bf3de37d10865c00233ef175e6274d4b2bf31cf7915870eb29b279a575235373647
 	sha512sums = ec05b47011adea19ee71a7793968c20a95648f45e581dab1462faec85ff31d968acd5eac35729e52c46a7eeb046a2961093283160167622d4da9773562ec8273
 	sha512sums = 8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad
-	b2sums = 416059110265b0807c8ad923167e97bf38630e32574368098c845825a25ba90d5f3543a721c762a0f2d6fd2f570d20e2f5ddb476a5cbe04a2b9ffa580da42c3f
-	b2sums = b64675219c7b8d909275dd2dfce16a5f5049fef91ba3cf0a4c02f6f4b9dbc360e68b7025a9d3a21aac8457d5378508b4d7bfa5eae86ed7ab98bace77ea10a6c3
+	b2sums = 5611447f9c611585c72a60faa6be2fe12d8f5e392990975149b3b40c0e4f5e58910b6ea1355c8a9e2d18d80e4c52654bfde20403baae297edf11e6db5a1413d2
+	b2sums = 4851cd787b6c35015050c1ef3622e017444a93e238ed6ed5e6ae6793c094e701ad9d7798fd85b5fb308f6827bfdfe72e7b7ad1cb6b6b992acbb87ba33b382de4
 	b2sums = 20b1847203eb236c58ce29b6d502fbad2804479dc31edc8f6a5da0a5a0bfaa22519f7262afe503d06c6c2efd26ee7819a549efb0096b661ed6eb277b441533f9
 	b2sums = 8a023a2215712044fb5115d1b81e55fad2c74f2e836cfe7f3f1e7c3778e4903c25ba7e429aedfd74b566be542aa50ea0d486b616c6d5b0315d993a9599e454f8
 	b2sums = ffb45bcc9cc396282f417a066c01f1137f25cc8ccd55f484b442d136ca3eb8569949a88e99f5cc3f4af4ee0ed60392711c5cda772e364b3959ba6e64e6bbfea5
