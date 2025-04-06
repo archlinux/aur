@@ -1,7 +1,7 @@
 pkgbase = 2s2h-bin
 	pkgdesc = An unofficial port of The Legend of Zelda Majora's Mask Binary package
 	pkgver = 1.1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/linuxbombay/2s2h
 	arch = x86_64
 	arch = aarch64
