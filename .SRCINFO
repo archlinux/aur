@@ -1,0 +1,13 @@
+pkgbase = ranger-cpp-git
+	pkgdesc = A Fast Implementation of Random Forests
+	pkgver = r1567.2f226e5
+	pkgrel = 1
+	url = https://github.com/imbs-hl/ranger
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = glibc
+	source = git+https://github.com/imbs-hl/ranger
+	sha256sums = SKIP
+
+pkgname = ranger-cpp-git
