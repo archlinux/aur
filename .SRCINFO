@@ -1,18 +1,17 @@
 pkgbase = svgvi
 	pkgdesc = SVG Text Editor and Viewer
-	pkgver = 1.6.0
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = https://gitlab.com/pwmc/svgvi
+	url = https://gitlab.com/gsvg/svgvi
 	arch = x86_64
-	license = GPL3
-	makedepends = cmake
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
+	makedepends = gresg
 	depends = gsvgtk
-	depends = gtksourceview3
-	source = git+https://gitlab.com/pwmc/svgvi.git#commit=09d6675810acf034cd3ef1fe069df78f74ea2854
-	sha256sums = SKIP
+	depends = gtksourceview5
+	source = git+https://gitlab.com/gsvg/svgvi.git#tag=2.0.2
+	sha256sums = 31a67716a6324717eb92486291b59f9ae79a68622c8abd6a4a9a731a4dfc7afe
 
 pkgname = svgvi
-

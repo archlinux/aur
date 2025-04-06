@@ -1,31 +1,23 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=svgvi
-pkgver=1.6.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="SVG Text Editor and Viewer"
 arch=(x86_64)
-url="https://gitlab.com/pwmc/svgvi"
-license=(GPL3)
-depends=(gsvgtk gtksourceview3)
-makedepends=(cmake git meson vala)
-checkdepends=()
-optdepends=()
-_commit=09d6675810acf034cd3ef1fe069df78f74ea2854  # tags/1.6.0^0
-source=("git+https://gitlab.com/pwmc/svgvi.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $pkgname
-}
+url="https://gitlab.com/gsvg/svgvi"
+license=(GPL-3.0-only)
+depends=(gsvgtk gtksourceview5)
+makedepends=(git meson vala gresg)
+source=("git+https://gitlab.com/gsvg/svgvi.git#tag=${pkgver}")
+sha256sums=('31a67716a6324717eb92486291b59f9ae79a68622c8abd6a4a9a731a4dfc7afe')
 
 build() {
-  arch-meson $pkgname build
+  export CFLAGS+=" -Wno-implicit-function-declaration"
+  export CXXFLAGS+=" -Wno-implicit-function-declaration"
+
+  arch-meson svgvi build
   meson compile -C build
 }
 
@@ -34,5 +26,6 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="${pkgdir}" meson install -C build
+  ln -s /usr/bin/mx.pwmc.Svgvi "${pkgdir}/usr/bin/svgvi"
 }
