@@ -1,7 +1,7 @@
 pkgbase = fcd-bin
 	pkgdesc = Text mode file manager combining the best features of ranger and mc
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bugnano/fcd
 	arch = x86_64
 	arch = aarch64
