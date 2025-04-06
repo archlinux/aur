@@ -1,27 +1,33 @@
 # Maintainer: Gustavo Alvarez Lopez <sl1pkn07@gmail.com>
 
 pkgname=np2kai-git
-pkgver=0.86.rev.22.145.g606fafa
+pkgver=0.86.rev.22.169.gda21965
 pkgrel=1
 pkgdesc="Neko Project II Kai, a PC-9801 emulator. (GIT version)"
 arch=('x86_64')
 url='http://domisan.sakura.ne.jp/article/np2kai/np2kai.html'
 license=('MIT')
-depends=('gtk2'
-         'sdl2_mixer'
-         'sdl2_ttf'
-         )
-makedepends=('cmake'
-             'nasm'
-             )
+depends=(
+  'gtk2' 'libgtk-x11-2.0.so'
+  'sdl2_mixer'
+  'sdl2_ttf'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'nasm'
+  'ninja'
+)
 conflicts=('np2kai')
 provides=('np2kai')
-source=('git+https://github.com/AZO234/NP2kai.git'
-        'git+https://github.com/aminosbh/sdl2-cmake-modules.git'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            )
+source=(
+  'git+https://github.com/AZO234/NP2kai.git'
+  'git+https://github.com/aminosbh/sdl2-cmake-modules.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 options=('debug')
 
 pkgver() {
@@ -35,12 +41,17 @@ prepare() {
     git config submodule.cmake/sdl2-cmake-modules.url "${srcdir}/sdl2-cmake-modules"
     git -c protocol.file.allow=always submodule update --init \
       cmake/sdl2-cmake-modules
+
+   sed 's|no-incompatible-function-pointer-types|no-incompatible-pointer-types -Wno-implicit-int|g' -i CMakeLists.txt
 }
 
 build() {
-  cd NP2kai
+  pushd NP2kai
+  export NP2KAI_VERSION="$(git describe --tags --abbrev=0)"
+  export NP2KAI_HASH="$(git rev-parse --short HEAD)"
+  popd
 
-  cmake -S . -B build \
+  cmake -S NP2kai -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_MANDIR=/usr/share/man/man1 \
@@ -49,19 +60,20 @@ build() {
     -DBUILD_I286=ON \
     -DBUILD_HAXM=ON \
     -DUSE_X=ON \
-    -DUSE_HAXM=OFF \
+    -DUSE_SDL2=ON \
     -DUSE_SDL=OFF \
     -DUSE_SDL_MIXER=ON \
     -DUSE_SDL_TTF=ON \
+    -DUSE_HAXM=OFF \
     -DUSE_ASYNCCPU=ON \
-    -DUSE_VST3SDK=OFF
+    -DUSE_VST3SDK=OFF \
+    -G Ninja
 
   cmake --build build
 }
 
 package() {
-  cd NP2kai
   DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 NP2kai/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
