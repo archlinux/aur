@@ -2,7 +2,7 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27206.eaa9c9e3a
+pkgver=r27211.2384d30c2
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
@@ -133,6 +133,7 @@ build() {
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DFFmpeg_COMPONENTS="swscale;avutil;avfilter;avcodec" \
     -DFFmpeg_PREFIX=$srcdir/externals/ffmpeg/ffmpeg \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -GNinja \
     -Wno-dev
   ninja -C build
