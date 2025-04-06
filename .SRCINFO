@@ -1,0 +1,18 @@
+pkgbase = landrun-bin
+	pkgdesc = Run any Linux process in a secure, unprivileged sandbox using Landlock LSM
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/Zouuup/landrun
+	arch = x86_64
+	license = MIT
+	makedepends = help2man
+	provides = landrun
+	conflicts = landrun
+	source = LICENSE-0.1.14::https://raw.githubusercontent.com/Zouuup/landrun/v0.1.14/LICENSE
+	source = README-0.1.14.md::https://raw.githubusercontent.com/Zouuup/landrun/v0.1.14/README.md
+	sha256sums = f613c30920743111429f7c1cb801f49ccaafe8ae3319b3b0a5f8aca94e5fc082
+	sha256sums = 1d355c7c297d5291fb6b5fa5d9ca2efbc9ce5e20f792246093ec435b522c3205
+	source_x86_64 = landrun-0.1.14::https://github.com/Zouuup/landrun/releases/download/v0.1.14/landrun-linux-amd64
+	sha256sums_x86_64 = 645178e3239cd33760560834e50efea0864183a2a8a82faf199760dffee6dd71
+
+pkgname = landrun-bin
