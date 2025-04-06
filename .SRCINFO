@@ -1,7 +1,7 @@
 pkgbase = hwatch
 	pkgdesc = A modern alternative to the watch command
 	pkgver = 0.3.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blacknon/hwatch
 	arch = x86_64
 	license = MIT

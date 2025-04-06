@@ -3,7 +3,7 @@
 
 pkgname=hwatch
 pkgver=0.3.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern alternative to the watch command"
 arch=('x86_64')
 url="https://github.com/blacknon/hwatch"
@@ -15,16 +15,22 @@ sha256sums=('b0c7da2b8279e483a88019f07a058c978c324f37cd67c34b50de46fb5bd0db16')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cargo test --frozen
 }
 
