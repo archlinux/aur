@@ -1,4 +1,5 @@
 # Maintainer:  pvg <pvg@poczta.fm>
+# Contributor: Felix Rohrbach <kde@fxrh.de>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Spike29 <leguen.yannick@gmail.com>
 # Contributor: Samir Faci <csgeek@archlinux.us>
@@ -6,7 +7,8 @@
 
 # Based on https://aur.archlinux.org/cgit/aur.git/tree/?h=qxmpp
 
-pkgbase=qxmpp-qt5
+_realname='qxmpp'
+pkgbase='qxmpp-qt5'
 pkgname=('qxmpp-qt5' 'qxmpp-doc')
 pkgver=1.10.3
 pkgrel=1
@@ -20,7 +22,7 @@ source=(git+https://invent.kde.org/libraries/qxmpp#tag=v$pkgver)
 sha256sums=('a6b057048d119714172cd5a7fe1a4ae2724c476b6bc85486edbe3c6866465419')
 
 build() {
-	cmake -S $pkgbase -B buildqt5 \
+	cmake -S $_realname -B buildqt5 \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DBUILD_DOCUMENTATION=1 \
 	-DCMAKE_INSTALL_LIBDIR=lib \
