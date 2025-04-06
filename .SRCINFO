@@ -1,7 +1,7 @@
 pkgbase = xwayland-run
 	pkgdesc = Set of small utilities revolving around running Xwayland
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/ofourdan/xwayland-run
 	arch = any
 	license = GPL-2.0-or-later
@@ -9,8 +9,15 @@ pkgbase = xwayland-run
 	depends = python
 	depends = xorg-xauth
 	optdepends = xorg-xwayland: X11 server
+	provides = wlheadless-run
+	provides = xwayland-run
+	provides = xwfb-run
+	conflicts = wlheadless-run
+	conflicts = xwayland-run
+	conflicts = xwfb-run
 	options = !debug
-	source = https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/archive/0.0.4/xwayland-run-0.0.4.tar.gz
+	source = xwayland-run-0.0.4.tar.gz::https://gitlab.freedesktop.org/ofourdan/xwayland-run/-/archive/0.0.4/xwayland-run-0.0.4.tar.gz
+	sha512sums = 280edfe833f8e298d48f3e35a7f0a35c2ab408eaaa7e5337464d9c55653cd3d2c4469431842338f4bd13ee545a5ea8092e26f45bebafd98f17eb4c4d5fef01ed
 	b2sums = 31eae9fbb1a4f8ce112400ccd2e00e28fa78cb880949ac9b291998dddbe1caeb4eb97dec249189ea6b6ba2cb9e87d9687766815bcba5a2cd4f4ea0fca8b27ca2
 
 pkgname = xwayland-run

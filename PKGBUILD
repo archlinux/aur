@@ -2,7 +2,7 @@
 
 pkgbase=xwayland-run
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of small utilities revolving around running Xwayland"
 pkgname=($pkgbase $pkgbase-cage $pkgbase-gnome-kiosk $pkgbase-kwin $pkgbase-mutter)
 arch=(any)
@@ -12,14 +12,13 @@ depends=(
   python
   xorg-xauth
 )
-makedepends=(
-  meson
-)
-optdepends=(
-  'xorg-xwayland: X11 server'
-)
+makedepends=(meson)
+optdepends=('xorg-xwayland: X11 server')
+provides=(wlheadless-run xwayland-run xwfb-run)
+conflicts=(wlheadless-run xwayland-run xwfb-run)
 options=(!debug)
-source=($url/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgbase-$pkgver.tar.gz")
+sha512sums=('280edfe833f8e298d48f3e35a7f0a35c2ab408eaaa7e5337464d9c55653cd3d2c4469431842338f4bd13ee545a5ea8092e26f45bebafd98f17eb4c4d5fef01ed')
 b2sums=('31eae9fbb1a4f8ce112400ccd2e00e28fa78cb880949ac9b291998dddbe1caeb4eb97dec249189ea6b6ba2cb9e87d9687766815bcba5a2cd4f4ea0fca8b27ca2')
 
 _build_and_install() {
@@ -30,7 +29,8 @@ _build_and_install() {
 }
 
 for _p in "${pkgname[@]}"; do
-  _waycom=$([[ "$_p" == "$pkgbase" ]] && echo "weston" || echo "${_p#$pkgbase-}")
+  _waycom="${_p#$pkgbase-}"
+  [[ "$_p" == "$pkgbase" ]] && _waycom="weston"
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
     pkgdesc+=\" (${_waycom^})\"
