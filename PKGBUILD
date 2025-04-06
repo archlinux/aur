@@ -1,7 +1,7 @@
 # Maintainer: danihek
 
 pkgname='themecord'
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Discord theme will always match your wallpaper!"
 arch=('any')
