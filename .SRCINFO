@@ -1,6 +1,6 @@
 pkgbase = geany-git
 	pkgdesc = Fast and lightweight IDE (git version)
-	pkgver = 2.0.0.r118.gef2255bce
+	pkgver = 2.0.0.r412.g6a266bff0
 	pkgrel = 1
 	url = https://www.geany.org/
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = geany-git
 	optdepends = vte3: enbedded terminal support
 	provides = geany
 	conflicts = geany
+	conflicts = geany-themes
 	source = geany::git+https://github.com/geany/geany.git
 	sha256sums = SKIP
 

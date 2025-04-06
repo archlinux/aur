@@ -4,7 +4,7 @@
 
 _pkgname=geany
 pkgname=$_pkgname-git
-pkgver=2.0.0.r118.gef2255bce
+pkgver=2.0.0.r412.g6a266bff0
 pkgrel=1
 pkgdesc='Fast and lightweight IDE (git version)'
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=(
   'vte3: enbedded terminal support'
 )
 provides=($_pkgname)
-conflicts=($_pkgname)
+conflicts=($_pkgname geany-themes)
 source=("$_pkgname::git+https://github.com/$_pkgname/$_pkgname.git")
 sha256sums=('SKIP')
 
