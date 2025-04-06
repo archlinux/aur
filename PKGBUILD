@@ -21,6 +21,7 @@ prepare () {
   sed -i "s|LIBRARY DESTINATION lib/\${LINSTALL_PATH})|LIBRARY DESTINATION lib/\${LINSTALL_PATH} RUNTIME DESTINATION bin)|g" CMakeLists.txt
   sed -i "s|march=native|march=nocona|g" GKlibSystem.cmake
   sed -i "s|Werror|Wall|g" GKlibSystem.cmake
+  sed -i "s|VERSION 2.8|VERSION 3.5|g" CMakeLists.txt
 }
 
 build() {
