@@ -1,6 +1,6 @@
 _name=mizani
 pkgname=python-$_name
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='Scales for python'
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
 	python-pytest-cov
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e3247ea12c746c8104767d7e42a2d16473173c7bc314f298d8294a58f4653353')
+sha256sums=('85704b4f1a1a33f51097999e9836838eb9f0875b663d967029d6eff42d0e605f')
 
 build() {
 	cd "$_name-$pkgver"
