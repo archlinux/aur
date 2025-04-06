@@ -1,0 +1,5 @@
+[bork-bin]
+source = "github"
+github = "kristoff-it/bork"
+use_latest_release = true
+prefix = "v"

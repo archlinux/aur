@@ -1,0 +1,20 @@
+pkgbase = bork-bin
+	pkgdesc = TUI chat client tailored for livecoding on Twitch
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/kristoff-it/bork
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	provides = bork
+	conflicts = bork
+	source = bork-0.4.0-README.md::https://github.com/kristoff-it/bork/raw/refs/tags/0.4.0/README.md
+	source = bork-0.4.0-LICENSE::https://github.com/kristoff-it/bork/raw/refs/tags/0.4.0/LICENSE
+	sha256sums = 98686f12ef9358ca5e8da65efd2df39a83193f7c754a70a9295e176f317ef459
+	sha256sums = 1bab36151409a81fa1bfb8c71d54ba63e88247555fd22db6f5948a6f6e8f01a6
+	source_aarch64 = bork-0.4.0-aarch64.tar.xz::https://github.com/kristoff-it/bork/releases/download/0.4.0/aarch64-linux.tar.xz
+	sha256sums_aarch64 = fdf91ab3e94dcecae6e467d0ea1ee0bc92f9c946294992940ab9c33f6e3bbc32
+	source_x86_64 = bork-0.4.0-x86_64.tar.xz::https://github.com/kristoff-it/bork/releases/download/0.4.0/x86_64-linux-musl.tar.xz
+	sha256sums_x86_64 = e4bae41715777fc74f3c93cf2a5f8badc525f1e343d9362ecf9516aa2eb89cca
+
+pkgname = bork-bin
