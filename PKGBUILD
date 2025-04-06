@@ -1,6 +1,6 @@
 _name='identities'
 pkgname="$_name-git"
-pkgver=0.1.0.r0.gb09a715
+pkgver=0.1.2.r0.g251b147
 pkgrel=1
 pkgdesc="Modern password-store client made for GNOME"
 arch=('x86_64' 'aarch64')
