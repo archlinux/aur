@@ -1,0 +1,61 @@
+commit 00fa60f3e4591cedd5ff1b358fc1eba711e7d856
+Author: MCJack123 <jackmacwindowslinux@gmail.com>
+Date:   Sun Apr 6 00:12:21 2025 -0400
+
+    Fixed API breakage from Poco
+    
+    Why would they do this?
+
+diff --git a/src/configuration.cpp b/src/configuration.cpp
+index cbac541..65ab482 100644
+--- a/src/configuration.cpp
++++ b/src/configuration.cpp
+@@ -11,6 +11,7 @@
+ #include <fstream>
+ #include <unordered_map>
+ #include <configuration.hpp>
++#include <Poco/JSON/JSONException.h>
+ #include "platform.hpp"
+ #include "runtime.hpp"
+ #include "terminal/SDLTerminal.hpp"
+diff --git a/src/main.cpp b/src/main.cpp
+index 9ab0814..38976a2 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -34,6 +34,7 @@ static void* releaseNotesThread(void* data);
+ #include <Poco/URI.h>
+ #include <Poco/Checksum.h>
+ #include <Poco/JSON/Parser.h>
++#include <Poco/JSON/JSONException.h>
+ #ifndef __EMSCRIPTEN__
+ #include <Poco/Net/HTTPSClientSession.h>
+ #include <Poco/Net/HTTPRequest.h>
+diff --git a/src/peripheral/printer.cpp b/src/peripheral/printer.cpp
+index 7d8d239..ce19aa3 100644
+--- a/src/peripheral/printer.cpp
++++ b/src/peripheral/printer.cpp
+@@ -37,7 +37,11 @@ static std::unordered_map<HPDF_STATUS, const char *> pdf_errors = {
+     {HPDF_ENCRYPT_INVALID_PASSWORD, "1. Tried to set the owner password to NULL.\t2. Owner and user password are the same."},
+     {HPDF_ERR_UNKNOWN_CLASS, "Internal error. Data consistency was lost."},
+     {HPDF_EXCEED_GSTATE_LIMIT, "Stack depth > HPDF_LIMIT_MAX_GSTATE."},
++#ifdef HPDF_FAILED_TO_ALLOC_MEM
++    {HPDF_FAILED_TO_ALLOC_MEM, "Memory allocation failed."},
++#else
+     {HPDF_FAILD_TO_ALLOC_MEM, "Memory allocation failed."},
++#endif
+     {HPDF_FILE_IO_ERROR, "File processing failed. (Detailed code is set.)"},
+     {HPDF_FILE_OPEN_ERROR, "Cannot open a file. (Detailed code is set.)"},
+     {HPDF_FONT_EXISTS, "Tried to load a font that has been registered."},
+diff --git a/src/util.hpp b/src/util.hpp
+index b8ab2d1..fce8d46 100644
+--- a/src/util.hpp
++++ b/src/util.hpp
+@@ -22,6 +22,8 @@ extern "C" {
+ #include <vector>
+ #include <Poco/JSON/JSON.h>
+ #include <Poco/JSON/Parser.h>
++#include <Poco/JSON/Object.h>
++#include <Poco/JSON/Array.h>
+ #include <Poco/Net/HTTPResponse.h>
+ #include <Computer.hpp>
+ #include <Terminal.hpp>
