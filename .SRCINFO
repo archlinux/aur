@@ -1,13 +1,12 @@
 pkgbase = windsurf.vim-git
 	pkgdesc = Free, ultrafast Copilot alternative for Vim and Neovim
 	pkgver = 1.20.8.r9.g272c6e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Exafunction/codeium.vim/
 	arch = any
 	license = MIT
+	depends = vim-plugin-runtime
 	depends = gzip
-	optdepends = vim
-	optdepends = neovim
 	source = git+https://github.com/Exafunction/codeium.vim.git
 	sha256sums = SKIP
 
