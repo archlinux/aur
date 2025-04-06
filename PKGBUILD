@@ -1,6 +1,6 @@
 _name='identities'
 pkgname="$_name"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Modern password-store client made for GNOME"
 arch=('x86_64' 'aarch64')
