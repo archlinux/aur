@@ -1,14 +1,14 @@
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
 pkgname=monicelli-git
-pkgver=r326.f7fc90d
+pkgver=r330.3fbec65
 pkgrel=1
 pkgdesc="An esoterical programming language based on the so-called \"supercazzole\" from the movie Amici Miei, a masterpiece of the Italian comedy."
 arch=('i686' 'x86_64')
 url="https://github.com/esseks/monicelli"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=()
-depends=()
-makedepends=('git' 'bison>=3' 'flex>=2.5' 'cmake' 'clang14' 'ragel' 'llvm14')
+depends=('llvm18-libs')
+makedepends=('git' 'bison>=3' 'flex>=2.5' 'cmake' 'clang18' 'ragel' 'llvm18')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -42,7 +42,7 @@ build() {
 	fi 
 	cd build
 	 
-	LLVM_DIR=/usr/lib/llvm14 LDFLAGS="$(/usr/lib/llvm14/bin/llvm-config --ldflags) -lLLVM-14" CXXFLAGS="$(/usr/lib/llvm14/bin/llvm-config --cxxflags)" cmake ..
+	LLVM_DIR=/usr/lib/llvm18 LDFLAGS="$(/usr/lib/llvm18/bin/llvm-config --ldflags) -lLLVM-18" CXXFLAGS="$(/usr/lib/llvm18/bin/llvm-config --cxxflags)" cmake ..
 	make
 }
 
