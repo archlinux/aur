@@ -3,13 +3,13 @@
 
 pkgname=openjlc
 pkgver=2.21.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra-fast Gerber conversion tool written in Rust."
 arch=('x86_64')
 url="https://github.com/canmi21/openjlc"
 license=('MIT')
-depends=('glibc')
-makedepends=('cargo')
+depends=('glibc' 'zstd')
+makedepends=('cargo' 'zstd')
 
 source=("git+https://github.com/canmi21/openjlc.git#branch=main" 
         "https://raw.githubusercontent.com/canmi21/openjlc/main/LICENSE")

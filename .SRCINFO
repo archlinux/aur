@@ -1,12 +1,14 @@
 pkgbase = openjlc
 	pkgdesc = Ultra-fast Gerber conversion tool written in Rust.
 	pkgver = 2.21.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/canmi21/openjlc
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = zstd
 	depends = glibc
+	depends = zstd
 	source = git+https://github.com/canmi21/openjlc.git#branch=main
 	source = https://raw.githubusercontent.com/canmi21/openjlc/main/LICENSE
 	sha256sums = SKIP
