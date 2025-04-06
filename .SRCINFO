@@ -17,6 +17,7 @@ pkgbase = css-loader-desktop-bin
 	depends = libwebp
 	depends = libxrandr
 	depends = libxcursor
+	depends = webkit2gtk
 	source = https://github.com/DeckThemes/CSSLoader-Desktop/releases/download/v1.2.1/CSSLoader.Desktop_1.2.1.AppImage
 	sha256sums = SKIP
 
