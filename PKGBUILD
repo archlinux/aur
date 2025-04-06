@@ -1,8 +1,8 @@
-# Maintainer: SDKBN
+# Maintainer: Ender_Shiru
 # Credit to sum01 
 pkgname=sqlitecpp
 _dirname='SQLiteCpp'
-pkgver=3.3.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='A smart and easy to use C++ SQLite3 wrapper.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('sqlite>=3.19')
 optdepends=('sqlcipher: for database encryption API')
 makedepends=('cmake>=3.1')
 source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz")
-sha512sums=('9702b17c55b1b3bc46a72d5c204b560249e9c1f02647c864fd4ca54011e4b0238638800ee870baa5106512a9568338d3faa9c9f9799d42fbd558d10376e3b73a')
+sha512sums=('e65695765756570d3b2df9151c968f76d434b9ec1dbcffa71e6b58a0cad005dc60c03ac826269d0292ecda2ad2abfbf2acd1cb71fb11967f53ff58140ea133fd')
 build() {
 	_has_sqlcipher='false'
 
