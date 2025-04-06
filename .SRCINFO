@@ -1,0 +1,19 @@
+pkgbase = efibooteditor-bin
+	pkgdesc = Boot Editor for (U)EFI based systems.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/Neverous/efibooteditor
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	makedepends = tar
+	provides = efibooteditor
+	conflicts = efibooteditor
+	source = LICENSE-1.5.2::https://raw.githubusercontent.com/Neverous/efibooteditor/v1.5.2/LICENSE.txt
+	source = README-1.5.2.md::https://raw.githubusercontent.com/Neverous/efibooteditor/v1.5.2/README.md
+	sha256sums = e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118
+	sha256sums = e46766a93708412ae6f11c6f2775c33c75dc8264b8c4815bb3c424560de3dba2
+	source_x86_64 = https://github.com/Neverous/efibooteditor/releases/download/v1.5.2/EFIBootEditor-v1.5.2-ubuntu-24.04-qt-6.2.4-GCC.deb
+	sha256sums_x86_64 = 82afd4436b27c0c3e7a2ac5220fbd7a3957923dba21001db73f7898ce7b78961
+
+pkgname = efibooteditor-bin
