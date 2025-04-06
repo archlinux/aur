@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="scikit-misc"
 pkgname="python-${_name}"
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=(
   "python>=3.10"
   "python-numpy>=2.0.0"
-  "blas-openblas"
+  "glibc"
 )
 makedepends=(
   "python-setuptools"
@@ -35,9 +35,7 @@ source=(
   "${_name}-${pkgver}"::"git+${url}#tag=v${pkgver}"
 )
 
-sha256sums=(
-  '488afbf88dad2b6a72afd8e445c3a607e06e4e740abadf399467f5c943eaa502'
-)
+sha256sums=('8e8c9b5501b320f65ce1cab1e54297653b8dd2099f43cc4fc5342cf8d6e8827d')
 
 _archive="${_name}-${pkgver}"
 
