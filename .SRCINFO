@@ -1,7 +1,7 @@
 pkgbase = redlib
 	pkgdesc = Private front-end for Reddit
-	pkgver = 0.35.1
-	pkgrel = 3
+	pkgver = 0.36.0
+	pkgrel = 1
 	url = https://github.com/redlib-org/redlib
 	arch = x86_64
 	license = AGPL-3.0
@@ -9,9 +9,7 @@ pkgbase = redlib
 	makedepends = git
 	options = !lto
 	backup = etc/redlib.conf
-	source = redlib-0.35.1.tar.gz::https://github.com/redlib-org/redlib/archive/refs/tags/v0.35.1.zip
-	source = revert-hyper-rustls-0.24.2.patch::https://github.com/redlib-org/redlib/commit/793047f63f0f603e342c919bbfc469c7569276fa.patch
-	sha256sums = 0704b696a41f4a666fb899ed447cbdd5773024a314a62cc7234c81b8d44d77d5
-	sha256sums = fd4884a37de41c64eebbffdea9605f1443b2c69b75e732ffa39647f11b1c7530
+	source = redlib-0.36.0.tar.gz::https://github.com/redlib-org/redlib/archive/refs/tags/v0.36.0.zip
+	sha256sums = cb5f474d2b38bfd5b14587af20459447f433188f72db1cd8f22178aecf753b0c
 
 pkgname = redlib
