@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-nvapi-vkreflex-layer-git
-pkgver=0.8.0.r120.g02a90c2
+pkgver=0.9.0.r1.g1734269
 pkgrel=1
 pkgdesc='Alternative NVAPI implementation on top of DXVK, Vulkan Reflex layer'
 arch=('x86_64')
