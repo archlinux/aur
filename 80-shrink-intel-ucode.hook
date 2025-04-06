@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = intel-ucode
+
+[Action]
+Description = Shrinking intel-ucode.img ...
+When = PostTransaction
+Exec = /usr/bin/iucode_tool -S /usr/lib/firmware/intel-ucode --overwrite --write-earlyfw=/boot/intel-ucode.img

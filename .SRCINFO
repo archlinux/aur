@@ -1,0 +1,12 @@
+pkgbase = intel-ucode-shrink-hook
+	pkgdesc = A hook to shrink intel-ucode.img
+	pkgver = 2.3.1
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = intel-ucode
+	depends = iucode-tool
+	source = 80-shrink-intel-ucode.hook
+	sha256sums = 79212ff73d826baf5e1b181376c2901618fc5c5c185ad7767a69a0505286ccf4
+
+pkgname = intel-ucode-shrink-hook
