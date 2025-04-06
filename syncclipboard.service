@@ -8,6 +8,10 @@ User = syncclipboard
 Restart = on-failure
 WorkingDirectory = /var/lib/syncclipboard
 ExecStart = /usr/bin/syncclipboard-server --contentRoot /var/lib/syncclipboard
+ProtectSystem = yes
+ProtectHome = yes
+PrivateTmp = yes
+NoNewPrivileges = yes
 
 [Install]
 WantedBy = multi-user.target
