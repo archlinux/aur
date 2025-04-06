@@ -1,8 +1,8 @@
 # Maintainer: shtrophic <aur at shtrophic dot net>
 
 pkgname=notesock
-pkgver=0.2.2
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Yet another terminal pastebin server"
 arch=(any)
 url="https://git.sr.ht/~shtrophic/notesock"
@@ -19,7 +19,7 @@ source=(
 	"tmpfiles-$pkgname.conf"
 )
 
-sha256sums=('6b654e51e2a60943eacf35db41e65baa15ec0e3512c4b10f69b7a81beeda2a30'
+sha256sums=('a07e9e1401c9857a679296561fe109d5a7d84985f3b072cdf2f1f3f00f5831cb'
             'SKIP'
             'd0a96a5ed09ff4f4495c51b95e5da6a7755f105b8b3f7ff9ec6f5038d1425f03'
             'e7be2fb5db531367a9c45363ed46bfee783a3be24e99ce3631c6627825e47c89'
