@@ -1,0 +1,7 @@
+/*.zip
+/*.tar.zst
+/pkg/
+/src/
+
+# not supposed to be versioned
+/current_version

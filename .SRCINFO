@@ -1,0 +1,23 @@
+pkgbase = mercury-mapper-bin
+	pkgdesc = A chart editor for Mercury. "Forked" from BAKKA-Avalonia, re-written for stability and ease of use.
+	pkgver = v4.0.8
+	pkgrel = 1
+	url = https://github.com/Yasu3D/MercuryMapper
+	arch = x86_64
+	license = MIT
+	depends = libgl
+	provides = mercury-mapper
+	conflicts = mercury-mapper
+	noextract = mercury-mapper-bin-v4.0.8.zip
+	source = mercury-mapper-bin-v4.0.8.zip::https://github.com/Yasu3D/MercuryMapper/releases/download/v4.0.8/MercuryMapper-Linux-x64.zip
+	source = mercury-mapper-bin.png::https://raw.githubusercontent.com/Yasu3D/MercuryMapper/refs/heads/master/Assets/AppIcon.png
+	source = mercury-mapper-bin-LICENCE.md::https://raw.githubusercontent.com/Yasu3D/MercuryMapper/refs/heads/master/LICENSE
+	source = mercury-mapper-bin.xml
+	source = mercury-mapper-bin.desktop
+	sha256sums = b90d418da3651b02a4e7666ba72515188b2c6ae99b693ea53243ebb0218c97fc
+	sha256sums = 95df58bef2d8a34d7f0daee739e28ca78c0dd9f7b6a401d9ad376e32b4718cc1
+	sha256sums = 7574c0121b5d56f8186d6cd6df664547a575315fa19c91480272c205bca457c4
+	sha256sums = 48955fa5f76e35ed7a546c29cc0036c42a597aa6e80a3985d92082fa7c906069
+	sha256sums = 2635dcd5262f66810912d7d21713ebaf82f3495811c3bd57bbb6b1287306c0de
+
+pkgname = mercury-mapper-bin
