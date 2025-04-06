@@ -37,7 +37,7 @@ prepare() {
 
 build() {
   cd "$srcdir"
-  arch-meson build -Dinstall_symlink=false -Dinstall_emoji=false
+  arch-meson build -Dinstall_symlink=false -Dinstall_emoji=false --buildtype=release -Dstrip=true
 }
 
 package() {
