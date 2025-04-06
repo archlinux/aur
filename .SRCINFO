@@ -1,0 +1,18 @@
+pkgbase = letsdns
+	pkgdesc = Manage DANE TLSA records in DNS servers
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.letsdns.de/
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-cryptography
+	depends = python-dnspython
+	depends = python-requests
+	source = letsdns-1.2.1.tar.gz::https://github.com/LetsDNS/letsdns/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = e974f77d7088f76a5e3149ed7d1e5149abddd601411490027bc7b3f2cb2ea9bb
+
+pkgname = letsdns
