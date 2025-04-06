@@ -27,6 +27,7 @@ pkgver() {
 build() {
 	cmake -B build -S "$srcdir/$pkgname" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+	    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-Wno-dev
 
 	make -C build
