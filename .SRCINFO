@@ -6,6 +6,7 @@ pkgbase = windsurf.vim-git
 	arch = any
 	groups = vim-plugins
 	license = MIT
+	makedepends = vim
 	depends = vim-plugin-runtime
 	depends = gzip
 	source = git+https://github.com/Exafunction/codeium.vim.git

@@ -9,6 +9,7 @@ url="https://github.com/Exafunction/codeium.vim/"
 license=('MIT')
 groups=(vim-plugins)
 depends=(vim-plugin-runtime gzip)
+makedepends=(vim)
 source=("git+https://github.com/Exafunction/codeium.vim.git")
 sha256sums=('SKIP')
 
