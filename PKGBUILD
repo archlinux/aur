@@ -3,7 +3,7 @@
 pkgbase=rime-wanxiang
 pkgname=(rime-wanxiang-base)
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型"
 arch=(any)
 license=('CC-BY-4.0')
@@ -71,9 +71,9 @@ package_rime-wanxiang-base() {
 _schemas=('pinyin 全拼'
           'zrm    自然码'
           # 'zrlong 自然龙'
-          'flypy  小鹤'
-          'mspy   微软'
-          'sogou  搜狗')
+          'flypy  小鹤双拼'
+          'mspy   微软双拼'
+          'sogou  搜狗双拼')
 
 _conflicts=()
 for _line in "${_schemas[@]}"; do
