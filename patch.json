@@ -291,6 +291,9 @@
 	},
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
+		"ms-azuretools.vscode-dev-azurecloudshell": [
+			"contribEditSessions"
+		],
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
 			"testRelatedCode"
@@ -497,7 +500,9 @@
 			"inlineCompletionsAdditions",
 			"chatReferenceBinaryData",
 			"languageModelSystem",
-			"languageModelCapabilities"
+			"languageModelCapabilities",
+			"languageModelDataPart",
+			"chatStatusItem"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -520,7 +525,9 @@
 		"ms-python.gather": [
 			"notebookCellExecutionState"
 		],
-		"ms-python.vscode-pylance": [],
+		"ms-python.vscode-pylance": [
+			"terminalShellEnv"
+		],
 		"ms-python.debugpy": [
 			"contribViewsWelcome",
 			"debugVisualization",
@@ -544,6 +551,9 @@
 			"notebookCellExecution",
 			"notebookVariableProvider",
 			"notebookReplDocument"
+		],
+		"donjayamanne.kusto": [
+			"notebookVariableProvider"
 		],
 		"ms-toolsai.tensorboard": [
 			"portsAttributes"
@@ -806,6 +816,7 @@
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azure-github-copilot",
 			"ms-azuretools.vscode-azureresourcegroups",
+			"ms-azuretools.vscode-dev-azurecloudshell",
 			"ms-edu.vscode-learning",
 			"ms-toolsai.vscode-ai",
 			"ms-toolsai.vscode-ai-remote"
@@ -817,6 +828,7 @@
 			"ms-vsliveshare.vsliveshare",
 			"ms-azuretools.vscode-azure-github-copilot",
 			"ms-azuretools.vscode-azureresourcegroups",
+			"ms-azuretools.vscode-dev-azurecloudshell",
 			"ms-edu.vscode-learning",
 			"ms-toolsai.vscode-ai",
 			"ms-toolsai.vscode-ai-remote"

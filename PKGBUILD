@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features-insiders
-pkgver=1.98.0
+pkgver=1.99.0
 pkgrel=1
 pkgdesc='Unblock some features in Code OSS, including features in VSCode Insiders'
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgname}.hook"
         'update.py')
 md5sums=('a270718448070ecda3050b7569510105'
          '9ed6f3972479ab6d3d053e7c47ead55a'
-         '47a6dd4f9a2e9567bf4999e7d5834be8'
+         '9845368a589435e0337131cca90994d6'
          '6923dcf184f1aa4948839c844d531581')
 
 package() {
