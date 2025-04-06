@@ -1,0 +1,4 @@
+[textual-image]
+source = "git"
+git = "https://github.com/lnqs/textual-image.git"
+prefix = "v"
