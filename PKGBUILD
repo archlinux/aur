@@ -1,4 +1,5 @@
-# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Maintainer: Piotr Dąbrowski <piotr_dab at op dot pl>
+# Contributor: Letu Ren <fantasquex at gmail dot com>
 # Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=python-onigurumacffi
