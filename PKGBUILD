@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
 pkgver=2.8.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -20,9 +20,11 @@ options=()
 install=
 changelog=
 source=("craftos2-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
-        "craftos2-lua-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v${pkgver}.tar.gz")
+        "craftos2-lua-${pkgver}.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v${pkgver}.tar.gz"
+        "0001-fix-poco.patch")
 noextract=()
-sha256sums=('01982222596e84eaff52d60e3d4d45dd151986df04c3b6d96d296917108239d9' '36ecf0b41b0b84c5bbb6fc87ac5b1f40a2c0c4b077a68d1f9c034646c5751922')
+sha256sums=('01982222596e84eaff52d60e3d4d45dd151986df04c3b6d96d296917108239d9' '36ecf0b41b0b84c5bbb6fc87ac5b1f40a2c0c4b077a68d1f9c034646c5751922'
+            'SKIP')
 validpgpkeys=()
 
 prepare() {
@@ -31,6 +33,7 @@ prepare() {
     mkdir icons
     unzip resources/linux-icons.zip -d icons
     make -C craftos2-lua -j$(nproc) linux MYCFLAGS=-Wno-error=incompatible-pointer-types
+    patch -Np1 -i ../0001-fix-poco.patch
 }
 
 build() {
