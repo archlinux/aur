@@ -5,10 +5,10 @@
 # Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
 
 _name=kadu
-_commit=7338f16
+_commit=cb8cdee
 pkgname=$_name-git
-pkgver=20240330
-pkgrel=2
+pkgver=20250405
+pkgrel=1
 pkgdesc='Qt-based Jabber/XMPP and Gadu-Gadu client'
 arch=('i686' 'x86_64')
 url='https://github.com/piotr-wrobel/kadu'
