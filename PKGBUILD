@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.10.r26.gb611083
+pkgver=2.2.10.r37.gb4b6c3e
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=(
   'gtk3'
   'iperf3'
   'libsoup3'
-  'libxkbcommon-x11'
   'lm_sensors'
   'mesa-utils'
   'pciutils'

@@ -1,6 +1,6 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.2.10.r26.gb611083
+	pkgver = 2.2.10.r37.gb4b6c3e
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	install = hardinfo2.install
@@ -17,7 +17,6 @@ pkgbase = hardinfo2-git
 	depends = gtk3
 	depends = iperf3
 	depends = libsoup3
-	depends = libxkbcommon-x11
 	depends = lm_sensors
 	depends = mesa-utils
 	depends = pciutils
