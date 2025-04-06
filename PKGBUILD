@@ -1,6 +1,6 @@
 # Maintainer: Amir Karimov <amirkarimov46@gmail.com>
 pkgname=anicli-ru
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Cli для просмотра аниме на русском языке."
 arch=('any')
