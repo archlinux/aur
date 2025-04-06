@@ -1,7 +1,7 @@
 pkgbase = modest
 	pkgdesc = Fast HTML renderer implemented as a pure C99 library with no outside dependencies
 	pkgver = 0.0.6.d021b90
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lexborisov/modest
 	arch = x86_64
 	license = LGPL2.1
@@ -14,6 +14,6 @@ pkgbase = modest
 	provides = myunicode
 	provides = myurl
 	source = git+https://github.com/lexborisov/modest#commit=d021b907517d0be30bd709dc9649bc9b54e4b4f4
-	md5sums = SKIP
+	md5sums = 7207566f575a7ba84c946f92dfde384c
 
 pkgname = modest
