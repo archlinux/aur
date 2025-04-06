@@ -4,7 +4,7 @@ _dotnet_ver=6.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-desktop"
-pkgver=0.7.8
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
@@ -16,7 +16,7 @@ source=("${_pkgname}::git+${url}.git"
         "${_pkgname}-${pkgver}.txt::${url}.Desktop/raw/refs/tags/v${pkgver}/version.txt"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
-            '890c0581581eb4d30693b0205032dde57afdf7dcc7280f01687dda3ed1e94943'
+            '87ef10f17dfd2103f7466e03f7a39767745d900587eb7807c4e0a52c3358b199'
             'c738a39534a5a9f005213f5347bfcea3558920f651e89d293a07415970e6eea5')
 case $CARCH in
     x86_64)  _dotnet_cpu=x64;;
