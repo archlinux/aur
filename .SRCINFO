@@ -1,8 +1,8 @@
 pkgbase = goxlr-utility-ui
 	pkgdesc = A UI Wrapper for the GoXLR Utility
 	pkgver = 0.0.6
-	pkgrel = 3
-	url = https://github.com/frostycoolslug/goxlr-utility-ui
+	pkgrel = 4
+	url = https://github.com/GoXLR-on-Linux/goxlr-utility-ui-wrapper-app
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -19,7 +19,7 @@ pkgbase = goxlr-utility-ui
 	depends = gstreamer
 	depends = gst-plugins-good
 	depends = goxlr-utility>=0.12.0
-	source = goxlr-utility-ui-0.0.6.tar.gz::https://github.com/frostycoolslug/goxlr-utility-ui/archive/refs/tags/v0.0.6.tar.gz
-	sha512sums = 9108f32736f5cc64ea1be83896ea83ea78b8a87e0dd961d71da576dea2e0753ea70da598e3e9d810d89aa6110813f96a41bdbe306fe9081509d10f36b0d0cd26
+	source = goxlr-utility-ui-wrapper-app-0.0.6.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility-ui-wrapper-app/archive/refs/tags/v0.0.6.tar.gz
+	sha512sums = 359ee7c6754f6072b4a417bdacf9bc0dde4231da87ed4b9906d0b0e027fee85fe5d3331ffe6f34156b125bbe6282d7521f05f09ea2c97e0323292317a42a0b95
 
 pkgname = goxlr-utility-ui
