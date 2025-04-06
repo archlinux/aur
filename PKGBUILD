@@ -114,7 +114,7 @@ sha256sums=(
 )
 
 package() {
-  for _i in "${srcdir}/"*.cer; do
+  for _i in "${srcdir}/"*${pkgver}.cer; do
     install -Dm644 "${_i}" "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/$(basename ${_i})"
   done
 }
