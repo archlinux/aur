@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AlgDesign
-_pkgver=1.2.1.1
+_pkgver=1.2.1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1beec173e3c5bb98f866a30774731428')
-b2sums=('4d89fef8bc51068cbde0b7d6185abf8dbc9636fac309454a3c54d19ef367fbebef70f9052ab4203f14903e3a7218ffde7e7b3028430709c21be20b2d1f6fb9dd')
+md5sums=('859ea10457d9ae41305c9f8c7081c95c')
+b2sums=('a05f5d4b3c54b7cfa65f0651b8dbb31ff6c5a4e15be9ef6fdd572a61443e2621e930d1f56d8d8c6cda8f3d9233b1ddf2a91d6721100a43c731fbd2eefc8cfff2')
 
 build() {
   mkdir build
