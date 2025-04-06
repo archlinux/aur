@@ -17,7 +17,10 @@ source=("$pkgname"::"git+https://github.com/szpajder/dumphfdl#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
-	cmake -B build -S "$srcdir/$pkgname" -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -B build \
+	    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	    -S "$srcdir/$pkgname" \
+	    -DCMAKE_INSTALL_PREFIX=/usr
 	make -C build
 }
 
