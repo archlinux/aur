@@ -1,6 +1,6 @@
 pkgbase = anicli-ru
 	pkgdesc = Cli для просмотра аниме на русском языке.
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/OMRIFIJI/anicli-ru
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = anicli-ru
 	depends = ffmpeg
 	depends = libxml2
 	options = !debug
-	source = anicli-ru-1.3.5.tar.gz::https://github.com/OMRIFIJI/anicli-ru/archive/refs/tags/v1.3.5.tar.gz
+	source = anicli-ru-1.3.6.tar.gz::https://github.com/OMRIFIJI/anicli-ru/archive/refs/tags/v1.3.6.tar.gz
 	sha256sums = d36a82fd53dc0e714d628c40cbe475ecc9a63405be71e6df5c54f2f55cf6b3ca
 
 pkgname = anicli-ru
