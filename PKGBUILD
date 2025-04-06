@@ -1,22 +1,17 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gresg
-pkgver=0.4.0+9+g207aa8b
-pkgrel=1
+pkgver=0.6.0
+pkgrel=2
 pkgdesc="XML resources generator"
 arch=(x86_64)
 url="https://gitlab.com/esodan/gresg"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(gxml)
 makedepends=(git meson vala)
-_commit=207aa8ba0e5fa3c5d3236ffb1783cc5a20e8842a  # master~2
-source=("git+https://gitlab.com/esodan/gresg#commit=$_commit")
+source=("git+https://gitlab.com/gsvg/gresg.git#tag=${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
 
 build() {
   arch-meson $pkgname build
