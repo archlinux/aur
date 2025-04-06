@@ -1,0 +1,23 @@
+pkgbase = libpkcs11-fnmtdnie
+	pkgdesc = PKCS11 library for DNIe and FNMT cards (Multicard)
+	pkgver = 1.6.9
+	pkgrel = 1
+	url = https://www.sede.fnmt.gob.es/descargas/descarga-software
+	install = libpkcs11-fnmtdnie.install
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	depends = glibc
+	depends = libgpg-error
+	depends = perl
+	depends = pcsclite
+	depends = libpcsclite.so
+	depends = pcsc-tools
+	depends = ccid
+	depends = ca-certificates-dnie
+	depends = ca-certificates-fnmt
+	options = debug
+	source = https://www.sede.fnmt.gob.es/documents/10445900/11635653/libpkcs11-fnmtdnie_1.6.9_amd64.deb
+	sha256sums = 59b16f112f4bcfc7d4b328497bdb04c3b603e4fdfcde4579b9f39024fc5946fb
+
+pkgname = libpkcs11-fnmtdnie
