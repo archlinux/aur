@@ -1,0 +1,11 @@
+--- pyproject.toml	2025-04-06 16:08:46.974247864 +0530
++++ pyproject.toml	2025-04-06 16:08:26.213640269 +0530
+@@ -24,7 +24,7 @@
+ authors = [
+   {name = "Gunther Cox"},
+ ]
+-license = "BSD-3-Clause"
++license = { file = "LICENSE", name = "BSD-3-Clause" }
+ readme = "README.md"
+ dynamic = ["version"]
+ keywords = [

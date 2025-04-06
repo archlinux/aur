@@ -8,6 +8,7 @@ pkgbase = python-chatterbot
 	checkdepends = python-sphinx
 	checkdepends = python-nose
 	checkdepends = flake8
+	checkdepends = python-huggingface-hub
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -27,6 +28,8 @@ pkgbase = python-chatterbot
 	depends = python-pint
 	depends = python-chatterbot-corpus-git
 	source = python-chatterbot-1.2.6.tar.gz::https://github.com/gunthercox/chatterbot/archive/refs/tags/1.2.6.tar.gz
+	source = fix-license-definition.patch
 	sha512sums = 09b55900145ec84fe908f9a75d11569826257d845de795d812b8d585e32c36d95950ba518a0a3a159df556379272e216bf0a250e7dfe6cc435f9fe686d46cc7e
+	sha512sums = 4d7aa747de58e5efab6fbb843989a700e1ae088cb2948f0c7a99d583d6dae197fe0349a8d8d4bf8bb8a935a65670026d0aeec97d25670df5b3fd1adbdd77d297
 
 pkgname = python-chatterbot
