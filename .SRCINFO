@@ -1,13 +1,13 @@
 pkgbase = chdig-bin
 	pkgdesc = Dig into ClickHouse with TUI interface (binaries for latest stable version)
-	pkgver = 24.4.1
+	pkgver = 25.3.1
 	pkgrel = 1
 	url = https://github.com/azat/chdig
 	arch = x86_64
 	license = MIT
 	provides = chdig
 	conflicts = chdig
-	source = https://github.com/azat/chdig/releases/download/v24.4.1/chdig-latest-x86_64.pkg.tar.zst
-	sha256sums = SKIP
+	source = https://github.com/azat/chdig/releases/download/v25.3.1/chdig-25.3.1-1-x86_64.pkg.tar.zst
+	sha256sums = 3befe0d7cef24774ebb16abb036477daffcef2490d53edbcbffe34cc6cb3f31b
 
 pkgname = chdig-bin
