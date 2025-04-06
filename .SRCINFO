@@ -1,6 +1,6 @@
 pkgbase = soapysdrplay3-luarvique-git
 	pkgdesc = Soapy SDR module for SDRPlay APIv3
-	pkgver = r148.ff1f38e
+	pkgver = r157.8328621
 	pkgrel = 1
 	url = http://www.sdrplay.com
 	install = soapysdrplay3-luarvique-git.install

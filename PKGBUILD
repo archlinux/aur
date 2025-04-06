@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: Joshua Rubin <me at jawa dot dev>
 pkgname=soapysdrplay3-luarvique-git
-pkgver=r148.ff1f38e
+pkgver=r157.8328621
 pkgrel=1
 pkgdesc="Soapy SDR module for SDRPlay APIv3"
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,7 +21,10 @@ pkgver() {
 }
 
 build() {
-	cmake -B build -S "$srcdir/$pkgname" -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -B build \
+	    -S "$srcdir/$pkgname" \
+	    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	    -DCMAKE_INSTALL_PREFIX=/usr
 	make -C build
 }
 
