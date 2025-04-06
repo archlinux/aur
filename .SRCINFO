@@ -1,0 +1,13 @@
+pkgbase = recycle
+	pkgdesc = Simple resource pool for recycling resources in C++
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://github.com/steinwurf/recycle
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/steinwurf/recycle.git#tag=7.0.0
+	sha256sums = f8f9b8d10c9900594e94b0236aea317f9163e3f9608f67e8b38d6890fee153d8
+
+pkgname = recycle

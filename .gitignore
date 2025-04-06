@@ -1,0 +1,7 @@
+pkg/
+src/
+recycle/
+*.tar
+*.tar.gz
+*.tar.zst
+*.log

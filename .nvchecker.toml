@@ -1,0 +1,3 @@
+[recycle]
+source = "git"
+git = "https://github.com/steinwurf/recycle.git"
