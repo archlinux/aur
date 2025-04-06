@@ -6,7 +6,6 @@ pkgbase = monicelli
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = git
 	makedepends = bison>=3
 	makedepends = flex>=2.5
 	makedepends = cmake
