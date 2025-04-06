@@ -1,4 +1,5 @@
-# Maintainer: Mingi Sung <fiestalake@disroot.org>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Mingi Sung <fiestalake@disroot.org>
 # Contributor: okhsunrog <me@gornushko.com>
 # Contributor: tinywrkb <tinywrkb@gmail.com>
 
@@ -9,13 +10,13 @@
 
 pkgname=ntfsprogs-ntfs3
 pkgver=2022.10.3
-pkgrel=6
+pkgrel=7
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://github.com/tuxera/ntfs-3g'
 arch=('x86_64')
-license=('GPL2')
-depends=('util-linux')
-makedepends=('git')
+license=('GPL-2.0-or-later')
+depends=('util-linux' 'gnutls' 'bash' 'libgcrypt' 'glibc' 'util-linux-libs')
+#makedepends=('git')
 conflicts=('ntfsprogs' 'ntfs-3g')
 provides=('ntfsprogs' 'ntfs-3g')
 source=("ntfs-3g_${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"

@@ -1,12 +1,16 @@
 pkgbase = ntfsprogs-ntfs3
 	pkgdesc = NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15
 	pkgver = 2022.10.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/tuxera/ntfs-3g
 	arch = x86_64
-	license = GPL2
-	makedepends = git
+	license = GPL-2.0-or-later
 	depends = util-linux
+	depends = gnutls
+	depends = bash
+	depends = libgcrypt
+	depends = glibc
+	depends = util-linux-libs
 	provides = ntfsprogs
 	provides = ntfs-3g
 	conflicts = ntfsprogs
