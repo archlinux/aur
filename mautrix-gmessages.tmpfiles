@@ -1,0 +1,5 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /etc/mautrix-gmessages 0750 root mautrix-gmessages
+z /etc/mautrix-gmessages/* 0640 mautrix-gmessages mautrix-gmessages -
+d /var/log/mautrix-gmessages 0700 mautrix-gmessages mautrix-gmessages
+d /var/lib/mautrix-gmessages 0700 mautrix-gmessages mautrix-gmessages

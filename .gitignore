@@ -1,0 +1,5 @@
+mautrix-gmessages/
+pkg/
+src/
+*.gz
+*.zst

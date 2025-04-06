@@ -1,0 +1,22 @@
+pkgbase = mautrix-gmessages
+	pkgdesc = A Matrix-gmessages puppeting bridge
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/mautrix/gmessages
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = libolm
+	backup = etc/mautrix-gmessages/mautrix-gmessages.yaml
+	source = mautrix-gmessages-0.6.1.tar.gz::https://github.com/mautrix/gmessages/archive/v0.6.1.tar.gz
+	source = sysusers-mautrix-gmessages.conf
+	source = mautrix-gmessages.tmpfiles
+	source = mautrix-gmessages.service
+	sha256sums = 028fd4e89b51de8f1b61bee03a4110eb5f8b921a063b07bd6e4ca9953ed4b4c4
+	sha256sums = 409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1
+	sha256sums = 2e5ecb77aa175c1ebce40a5ff560bb5ee26ed39b3d1f4cf6d62db2ad604050b4
+	sha256sums = 0f909a1b9170a72efc8cca5f51334b73d0e04e5346ae23b75169eaccca7574a2
+
+pkgname = mautrix-gmessages
