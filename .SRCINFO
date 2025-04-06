@@ -1,7 +1,7 @@
 pkgbase = gpu-screen-recorder-notification
 	pkgdesc = Notification in the style of ShadowPlay
 	pkgver = r73.63ede22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dec05eba.com/gpu-screen-recorder-notification
 	arch = x86_64
 	license = GPL-3.0-only
