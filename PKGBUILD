@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cdncheck"
-pkgver=1.1.12
+pkgver=1.1.13
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go>=1.19')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c006eca96b0cf49819db7d09942a5735eaddd976a4aa3d127f9d5aeb97ab71bb')
+sha256sums=('632589b424e77725f12f30f2ea7de8ae11333b1b2b8f2fdc9f4af4c27c114f98')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
