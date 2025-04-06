@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Shell
+Comment=OpenJDK Java @@VER@@ Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/liberica-jdk-21-standard/bin/jshell
+Terminal=true
+Type=Application
+Icon=liberica-jdk-21-standard
+Categories=Application;System;
