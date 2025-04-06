@@ -1,0 +1,25 @@
+pkgbase = fooyin-kode54-plugins-git
+	pkgdesc = A set of plugins for Fooyin (Git version)
+	pkgver = r9.f629abb
+	pkgrel = 1
+	url = https://github.com/kode54/fooyin-kode54-plugins
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	license = ZLIB
+	license = proprietary
+	makedepends = cmake
+	makedepends = git
+	depends = fooyin
+	depends = libbass
+	depends = libbassmidi
+	depends = libbass_mpc
+	depends = libbassflac
+	depends = libbassopus
+	depends = libbasswv
+	source = git+https://github.com/kode54/fooyin-kode54-plugins.git
+	source = git+https://github.com/kode54/midi_processing.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = fooyin-kode54-plugins-git
