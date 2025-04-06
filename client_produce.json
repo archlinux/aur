@@ -8,7 +8,7 @@
         "proxy_ipv6": true,
         "resolve_ipv4": true,
         "resolve_ipv6": true,
-        "priority_ipv6": false,
+        "priority_ipv6": true,
         "direct_all": false,
         "direct_china": true,
         "direct_private": true,
