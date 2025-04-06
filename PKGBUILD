@@ -22,6 +22,7 @@ build() {
   cmake -B build \
       -S "$pkgname-$pkgver" \
       -Wno-dev \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=None
   make -C build
