@@ -1,7 +1,7 @@
 pkgbase = hmcl-beta-bin
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular.
-	pkgver = 3.6.11.273
-	pkgrel = 6
+	pkgver = 3.6.12.274
+	pkgrel = 1
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
@@ -9,14 +9,14 @@ pkgbase = hmcl-beta-bin
 	depends = gtk2
 	provides = hmcl
 	conflicts = hmcl
-	noextract = hmcl-beta-bin-3.6.11.273-6.sh
+	noextract = hmcl-beta-bin-3.6.12.274-1.sh
 	source = hmcl.desktop
 	source = hmcl.png
 	source = LICENSE::https://raw.githubusercontent.com/HMCL-dev/HMCL/refs/heads/main/LICENSE
-	source = hmcl-beta-bin-3.6.11.273-6.sh::https://github.com/HMCL-dev/HMCL/releases/download/v3.6.11.273/HMCL-3.6.11.273.sh
+	source = hmcl-beta-bin-3.6.12.274-1.sh::https://github.com/HMCL-dev/HMCL/releases/download/v3.6.12.274/HMCL-3.6.12.274.sh
 	sha256sums = ef5edb4285293c77162374e15f01f3540c7f511f6d9ab5b7244c4b01eb8512de
 	sha256sums = 29120471641c51aae3ee84f8bcc16e1e4148c153085f71ccb9680415007f82ad
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = d3de4798bb928656e32f4e3488995123eee5e1d933eb4d15ab4d61d1e5f048e1
+	sha256sums = 5d7bda0562ed3fe3b9aa418289114dd94c5f008f520a27a0c3a6b04c4648aa1f
 
 pkgname = hmcl-beta-bin
