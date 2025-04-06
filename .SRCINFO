@@ -1,14 +1,15 @@
 pkgbase = hunspell-hr
 	pkgdesc = Croatian dictionary for Hunspell
-	pkgver = 1.0
+	pkgver = 2.1.20240828
 	pkgrel = 1
 	url = https://github.com/krunose/hunspell-hr
 	arch = any
-	license = MIT,
-	license = LGPL/SISSL
+	license = LGPL-2.0-or-later
+	license = LicenseRef-SISSL
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://github.com/krunose/hunspell-hr/archive/9ae404a8840fe9525deea22ef0a8fd95948fd544.zip
-	md5sums = 74b7536617a62455c5f8625d3463f581
+	source = hunspell-hr-2.1.20240828.zip::https://github.com/krunose/hunspell-hr/archive/refs/tags/v2.1-20240828.zip
+	source = SISSL.txt::https://raw.githubusercontent.com/spdx/license-list-data/main/text/SISSL.txt
+	md5sums = 883ac6a89b027ed5cb776824319c2bac
+	md5sums = SKIP
 
 pkgname = hunspell-hr
-
