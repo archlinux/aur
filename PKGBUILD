@@ -4,8 +4,8 @@
 _name=youplot
 _reponame=YouPlot
 pkgname=ruby-$_name
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 pkgdesc='A command line tool that draws plots on the terminal.'
 arch=(any)
 url='https://github.com/red-data-tools/YouPlot'
@@ -15,7 +15,7 @@ checkdepends=(ruby-rake ruby-bundler ruby-simplecov ruby-erb ruby-test-unit)
 depends=(ruby ruby-unicode_plot)
 options=(!emptydirs)
 source=("git+$url#tag=v$pkgver")
-sha256sums=('7260d6efe199bf543620ec98e6cd2e00fe2e09c9c2a76974ee0c219bcb1ea928')
+sha256sums=('abbdbe467b10c92efc30cc5aa693efe3e3a0208029a8eec64db95faac0067634')
 
 build() {
   cd "${_reponame}"
