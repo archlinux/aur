@@ -1,7 +1,7 @@
 pkgbase = ruby-enumerable-statistics
 	pkgdesc = Enumerable::Statistics provides some methods to calculate statistical summary in arrays and enumerables.
-	pkgver = 2.0.7
-	pkgrel = 2
+	pkgver = 2.0.8
+	pkgrel = 1
 	url = https://github.com/mrkn/enumerable-statistics
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = ruby-enumerable-statistics
 	checkdepends = ruby-yard
 	makedepends = git
 	depends = ruby
-	source = git+https://github.com/mrkn/enumerable-statistics#tag=v2.0.7
-	sha256sums = c2624cd01fd297c9ae43f8427eb2b97474c95774477a02e23ca94c8b2e67e5b8
+	source = git+https://github.com/mrkn/enumerable-statistics#tag=v2.0.8
+	sha256sums = f6d90f1e9ae836dc48ebf67e90c626c299d6d5a3c6cb514eef3e3192813a4167
 
 pkgname = ruby-enumerable-statistics

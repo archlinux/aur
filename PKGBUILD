@@ -3,8 +3,8 @@
 
 _name=enumerable-statistics
 pkgname=ruby-$_name
-pkgver=2.0.7
-pkgrel=2
+pkgver=2.0.8
+pkgrel=1
 pkgdesc='Enumerable::Statistics provides some methods to calculate statistical summary in arrays and enumerables.'
 arch=(x86_64)
 url='https://github.com/mrkn/enumerable-statistics'
@@ -13,7 +13,7 @@ makedepends=(git)
 checkdepends=(ruby-bundler ruby-rake ruby-rake-compiler ruby-rspec ruby-test-unit ruby-fuubar ruby-yard)
 depends=(ruby)
 source=("git+$url#tag=v$pkgver")
-sha256sums=('c2624cd01fd297c9ae43f8427eb2b97474c95774477a02e23ca94c8b2e67e5b8')
+sha256sums=('f6d90f1e9ae836dc48ebf67e90c626c299d6d5a3c6cb514eef3e3192813a4167')
 
 build() {
   cd "${_name}"
