@@ -21,7 +21,7 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/azahar-emu/azahar/releases/download/$pkgver/azahar-$pkgver-linux-appimage.tar.gz"
         "azahar.desktop")
-sha256sums=('1c049308ef57fdd363e2af17550c79a49c6bf601037774c83fbfedf3e16b1302'
+sha256sums=('5b273e302b56fa4ffadfdf37cc883e3619e359f557c7040656c87c01324f3af4'
             '2550dd1eac11f3d0cd8465f65b6a948b0633e97cc58f27c2847fcd9efc73e650')
 options=("!strip")
 
