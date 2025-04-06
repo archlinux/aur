@@ -1,17 +1,17 @@
 pkgbase = gsvg
 	pkgdesc = GObject API for SVG
-	pkgver = 0.5.3+140+gcbbb996
+	pkgver = 0.10.4
 	pkgrel = 1
-	url = https://gitlab.com/pwmc/gsvg
+	url = https://gitlab.com/gsvg/gsvg
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-only
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
+	makedepends = gobject-introspection
 	depends = gxml
 	depends = graphene
-	source = git+https://gitlab.com/pwmc/gsvg#commit=cbbb9967bd86fc5e602e407859239bf2dff4abad
-	sha256sums = SKIP
+	source = git+https://gitlab.com/gsvg/gsvg.git#tag=0.10.4
+	sha256sums = 841f1169d16cf68da896cdaf3ad4392e166980df58246786957e0f788d12c150
 
 pkgname = gsvg
-
