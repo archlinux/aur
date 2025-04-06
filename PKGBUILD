@@ -1,36 +1,47 @@
-# Maintainer: Felix Rohrbach <kde@fxrh.de>
+# Maintainer:  pvg <pvg@poczta.fm>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Spike29 <leguen.yannick@gmail.com>
 # Contributor: Samir Faci <csgeek@archlinux.us>
 # Contributor: TimothÃ©e Ravier <tim@siosm.fr>
 
-_realname='qxmpp'
-pkgname='qxmpp-qt5'
-pkgver='0.9.3'
-pkgrel='1'
-pkgdesc='An XMPP client library based on Qt & C++'
+# Based on https://aur.archlinux.org/cgit/aur.git/tree/?h=qxmpp
+
+pkgbase=qxmpp
+pkgname=('qxmpp-qt5' 'qxmpp-doc')
+pkgver=1.10.3
+pkgrel=1
+pkgdesc='Cross-platform C++ XMPP client and server library'
 arch=('i686' 'x86_64')
-url='https://github.com/qxmpp-project/qxmpp'
+url='https://invent.kde.org/libraries/qxmpp'
 license=('LGPL2.1')
-depends=('qt5-base')
-optdepends=('speex: required to enable speex audio codec'
-            'libvpx: required to enable vpx video codec'
-	    'libtheora: required to enable theora video codec') 
-conflicts=('qxmpp-git' 'qxmpp-leechcraft-git' 'qxmpp-qt5-git' 'qxmpp')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('f9391bedd5153ae19f68f25276bf2624c5020d09')
- 
+depends=('gstreamer' 'glibc' 'gcc-libs' 'glib2')
+makedepends=('cmake' 'doxygen')
+source=(git+https://invent.kde.org/libraries/qxmpp#tag=v$pkgver)
+sha256sums=('a6b057048d119714172cd5a7fe1a4ae2724c476b6bc85486edbe3c6866465419')
+
 build() {
-	cd "$srcdir/$_realname-$pkgver/"
-	[ -d build ] || mkdir build && cd build
-	qmake-qt5 PREFIX=/usr ..
+	cmake -S $pkgbase -B buildqt5 \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DBUILD_DOCUMENTATION=1 \
+	-DCMAKE_INSTALL_LIBDIR=lib \
+	-DBUILD_EXAMPLES=0 \
+	-DBUILD_TESTS=0 \
+	-DWITH_GSTREAMER=1 \
+	-DQT_VERSION_MAJOR=5
 
-	# In order to enable speex audio codec, vpx video codec or theora video codec,
-	# add QXMPP_USE_SPEEX=1, QXMPP_USE_VPX=1 and QXMPP_USE_THEORA=1 to qmake arguments.
-
-	make
+	cmake --build buildqt5
 }
 
-package() {
-	cd "$srcdir/$_realname-$pkgver/build"
-	make INSTALL_ROOT="$pkgdir" install
+package_qxmpp-qt5() {
+	depends+=("qt5-base" "qca-qt5")
+	DESTDIR="$pkgdir" cmake --install buildqt5
+	rm -rf "$pkgdir/usr/share"
+}
+
+package_qxmpp-doc(){
+	pkgdesc='Cross-platform C++ XMPP client and server library (documentation)'
+	arch=('any')
+	DESTDIR="$pkgdir" cmake --install buildqt5
+	rm -rf "$pkgdir/usr/include"
+	rm -rf "$pkgdir/usr/lib"
 }

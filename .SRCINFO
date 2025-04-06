@@ -1,21 +1,28 @@
-pkgbase = qxmpp-qt5
-	pkgdesc = An XMPP client library based on Qt & C++
-	pkgver = 0.9.3
+pkgbase = qxmpp
+	pkgdesc = Cross-platform C++ XMPP client and server library
+	pkgver = 1.10.3
 	pkgrel = 1
-	url = https://github.com/qxmpp-project/qxmpp
+	url = https://invent.kde.org/libraries/qxmpp
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	depends = qt5-base
-	optdepends = speex: required to enable speex audio codec
-	optdepends = libvpx: required to enable vpx video codec
-	optdepends = libtheora: required to enable theora video codec
-	conflicts = qxmpp-git
-	conflicts = qxmpp-leechcraft-git
-	conflicts = qxmpp-qt5-git
-	conflicts = qxmpp
-	source = https://github.com/qxmpp-project/qxmpp/archive/v0.9.3.tar.gz
-	sha1sums = f9391bedd5153ae19f68f25276bf2624c5020d09
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gstreamer
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	source = git+https://invent.kde.org/libraries/qxmpp#tag=v1.10.3
+	sha256sums = a6b057048d119714172cd5a7fe1a4ae2724c476b6bc85486edbe3c6866465419
 
 pkgname = qxmpp-qt5
+	depends = gstreamer
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = qt5-base
+	depends = qca-qt5
 
+pkgname = qxmpp-doc
+	pkgdesc = Cross-platform C++ XMPP client and server library (documentation)
+	arch = any
