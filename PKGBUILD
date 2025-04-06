@@ -3,7 +3,7 @@ pkgname="$_name"
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="Modern password-store client made for GNOME"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://github.com/k8ieone/$_name"
 license=('GPL-3.0-only')
 
