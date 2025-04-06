@@ -1,6 +1,6 @@
 pkgbase = openloco-git
 	pkgdesc = An open source re-implementation of Chris Sawyer's Locomotion
-	pkgver = 25.01.r2.gea4cb00e5
+	pkgver = 25.03.r2.gbd539e2da
 	pkgrel = 1
 	url = https://github.com/OpenLoco/OpenLoco
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = openloco-git
 	depends_x86_64 = lib32-sdl2
 	depends_x86_64 = lib32-libpng
 	depends_x86_64 = lib32-openal
+	depends_x86_64 = lib32-yaml-cpp
+	depends_x86_64 = lib32-fmt
 	optdepends_x86_64 = lib32-libpipewire: audio output
 	optdepends_x86_64 = lib32-libpulse: audio output
 	makedepends_x86_64 = lib32-gtest
-	makedepends_x86_64 = lib32-yaml-cpp
-	makedepends_x86_64 = lib32-fmt
 	optdepends_i686 = libpipewire: audio output
 	optdepends_i686 = libpulse: audio output
 
