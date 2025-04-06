@@ -1,0 +1,4 @@
+[ola]
+source = "github"
+github = "OpenLightingProject/ola"
+use_max_tag = true

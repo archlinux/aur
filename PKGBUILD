@@ -4,14 +4,15 @@
 pkgbase=ola
 pkgname=(ola ola-docs)
 pkgver=0.10.9
-pkgrel=8
+pkgrel=9
 pkgdesc='Open Lighting Architecture for controlling entertainment lighting equipment'
 arch=(x86_64 aarch64)
 url='https://www.openlighting.org'
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
 depends=()
-makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf-21
-  python-numpy python-protobuf util-linux-libs)
+makedepends=(avahi cppunit doxygen flake8 libftdi-compat liblo libmicrohttpd ncurses protobuf
+  protobuf-21 util-linux-libs)
+checkdepends=(python-numpy python-protobuf-21)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/OpenLightingProject/$pkgbase/archive/refs/tags/$pkgver.tar.gz"
         "fix-protobuf-v20.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1875.patch"
         "fix-liblo.patch::https://github.com/OpenLightingProject/$pkgbase/pull/1954.patch"
@@ -60,7 +61,7 @@ package_ola() {
   depends+=(avahi libftdi-compat liblo.so libmicrohttpd.so libncursesw.so libprotobuf.so libuuid.so)
   optdepends=('python: for python bindings'
               'python-numpy: for python bindings'
-              'python-protobuf: for python bindings')
+              'python-protobuf-21: for python bindings')
   cd $pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 }
