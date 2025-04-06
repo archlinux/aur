@@ -1,0 +1,14 @@
+--- src/monicelli/src/CMakeLists.txt	2023-11-24 01:23:23.940974790 +0100
++++ bao.txt	2023-11-24 01:23:19.467680667 +0100
+@@ -47,10 +47,7 @@
+ target_link_libraries(mcc PRIVATE lexer)
+ 
+ llvm_config(mcc
+-  core
+-  support
+-  "${MONICELLI_ARCH}codegen"
+-  "${MONICELLI_ARCH}asmparser"
++  
+ )
+ 
+ if (MONICELLI_LINKER)
