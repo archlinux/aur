@@ -1,16 +1,16 @@
 pkgbase = podman-tui
 	pkgdesc = Podman Terminal User Interface
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/containers/podman-tui
 	arch = x86_64
 	license = APACHE
-	makedepends = go>=1.21
+	makedepends = go>=1.23
 	makedepends = btrfs-progs
 	makedepends = make
 	makedepends = gcc
 	conflicts = podman-tui-git
-	source = podman-tui-1.4.0.tar.gz::https://github.com/containers/podman-tui/archive/v1.4.0.tar.gz
-	sha256sums = 0b385f11b7cff1143dabe4972c0fe2032a583024660d837658626e9a8e703d2f
+	source = podman-tui-1.5.0.tar.gz::https://github.com/containers/podman-tui/archive/v1.5.0.tar.gz
+	sha256sums = d9ba16d37f959d7ae5ca6650c3ccc7b0e1a726215791c99604f8f5955ee8f61d
 
 pkgname = podman-tui
