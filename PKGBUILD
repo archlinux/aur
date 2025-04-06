@@ -15,7 +15,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 license=('MIT')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('imagemagick: for GIF output support')
