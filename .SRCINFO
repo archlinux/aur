@@ -1,12 +1,12 @@
 pkgbase = networkminer
 	pkgdesc = A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer
-	pkgver = 2.9
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://www.netresec.com/?page=NetworkMiner
 	arch = any
 	license = GPL2
 	depends = mono
-	source = NetworkMiner_2-9.zip::https://www.netresec.com/?download=NetworkMiner
-	sha256sums = c610f6ba647ddd9c718e87018ee40595a4d72a52a6b3b7ceb53caf4fa8de6f05
+	source = NetworkMiner_3-0.zip::https://www.netresec.com/?download=NetworkMiner
+	sha256sums = 5d074a54e2f2f26d0a2cf5a2833ab08345f1a0eeba2bdf746835545ec23e3032
 
 pkgname = networkminer

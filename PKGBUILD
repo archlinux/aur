@@ -4,8 +4,8 @@
 
 set -u
 pkgname=networkminer
-pkgver=2.9
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer'
 arch=('any')
 url='https://www.netresec.com/?page=NetworkMiner'
@@ -13,13 +13,12 @@ license=('GPL2')
 depends=('mono')
 _srcname="NetworkMiner_${pkgver//\./-}"
 source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
-sha256sums=('c610f6ba647ddd9c718e87018ee40595a4d72a52a6b3b7ceb53caf4fa8de6f05')
+sha256sums=('5d074a54e2f2f26d0a2cf5a2833ab08345f1a0eeba2bdf746835545ec23e3032')
 
 package() {
   set -u
   install -d "${pkgdir}/opt/"
   mv "${srcdir}/${_srcname}" "${pkgdir}/opt/NetworkMiner"
-  chmod -R go+w "${pkgdir}/opt/NetworkMiner/AssembledFiles/" "${pkgdir}/opt/NetworkMiner/Captures/"
 
   # Launcher
   install -Dm755 <(cat << EOF
