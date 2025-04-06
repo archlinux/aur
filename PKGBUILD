@@ -1,4 +1,4 @@
-# Maintainer: Edmund Lodewijks <e.lodewijks at gmail.com>
+# Maintainer: Edmund Lodewijks <edmund at proteamail.com>
 
 ## NOTE: Since pkgver 1.2.0 this package builds from a new upstream!
 ##	 The Trusted Domain Project has not updated OpenARC in years.
@@ -6,13 +6,14 @@
 ##	 currently maintained.
 pkgname=openarc
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source implementation of the ARC email authentication system"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
-license=('BSD-2-Clause' 'LicenseRef-Sendmail-1.1')
-depends=('glibc' 'jansson' 'openssl' 'libidn2' 'libmilter')
-optdepends=('smtp-server: for using a local mail server'
+license=('BSD-2-Clause' 'Sendmail')
+depends=('glibc' 'jansson' 'libcrypto.so' 'libidn2.so' 'libmilter')
+optdepends=('systemd: system and service manager'
+	    'smtp-server: for using a local mail server'
 	    'bind: required only for signature verification (alternatives available)'
 	    'python: required for build, but also for tool "openarc-keygen"'
 	    'libmilter-sharedlib: libmilter, built with local CFLAGS, LDFLAGS, and shared library instead of static archive (recommended)'
@@ -20,32 +21,35 @@ optdepends=('smtp-server: for using a local mail server'
             'perl-mail-dkim: for optional tests'
 )
 makedepends=('git' 'python-miltertest')
-conflicts=('openarc-git' 'openarc-unofficial-patches' 'openarc-unofficial-patches-git')
+conflicts=('openarc-git' 'openarc-legacy')
+provides=('libopenarc.so')
 source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "openarc.service"
         "openarc.sysusers"
         "openarc.tmpfiles"
-	"Patch001-update-for-newer-systemd-and-harden.patch"
-	"Patch002-no-contrib-init-and-spec.patch"
+	"Patch01-systemd-service-file-upgrade-and-harden.patch"
+	"Patch02-Remove-config-for-other-OSs.patch"
 )
 #backup=('etc/openarc/openarc.conf')
 sha256sums=('08c6b35da8cf6d8953f8f203b38a5cdf1301a886bbd78eeb1026b48b0dc937ae'
             'd438b4a2e0ab5b247938213da7e8062fa5865e750e4f89d41471311edc163022'
             '31c399c0e3a69bb845b033ab5c0ad92d44cacb0fd58e0113cd1901e75900515e'
             'a27619fe3bbea2a0fd7c555851089722b1d67818bc014d1dce20620b5eb4bbc5'
-            '6bf9a72aa571816a7d48d444d15518abfe24dc037f5447ea79c788c040966215'
-            '0a53d22bfb87b1839c083381d94fd832dd70477924455c9b78195968cc5e40e4')
+            'a575b8c0c97e5806f80d94022e6c547234035d421e6b83a5a78c683ba3c3a25d'
+            '38e6dc16a91d0f8440cf12921e74bc7801ba3fc64bd799671f3222fec4642dc5')
 
 prepare() {
   cd "$srcdir"/"${pkgname}-${pkgver}"
-  autoreconf -i
+  
+  patch -p1 -i ../Patch01-systemd-service-file-upgrade-and-harden.patch
+  patch -p1 -i ../Patch02-Remove-config-for-other-OSs.patch
 
-  patch -Np0 < ../Patch001-update-for-newer-systemd-and-harden.patch
-  patch -Np0 < ../Patch002-no-contrib-init-and-spec.patch
+  autoreconf -fvi
 }
 
 build() {
   cd "$srcdir"/"${pkgname}-${pkgver}"
+
   ./configure \
      --prefix=/usr \
      --sbindir=/usr/bin \

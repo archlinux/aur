@@ -1,5 +1,5 @@
---- contrib/systemd/openarc.service.in	2025-01-07 00:09:10.000000000 +0200
-+++ contrib/systemd/openarc.service.in.new	2025-01-07 19:54:34.697754720 +0200
+--- openarc-1.2.1/contrib/systemd/openarc.service.in	2025-01-07 00:09:10.000000000 +0200
++++ openarc-1.2.1/contrib/systemd/openarc.service.in.new	2025-04-06 18:47:10.178209114 +0200
 @@ -8,13 +8,15 @@
  [Service]
  Type=simple
