@@ -1,7 +1,7 @@
 # Maintainer: okko <okko.contact@proton.me>
 
 pkgname=simplex-desktop-appimage
-pkgver=6.3.0
+pkgver=6.3.1
 pkgrel=1
 pkgdesc="The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 # !debug seems necessary on some systems too: https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/19
 options=(!strip !debug)
 
-_appimage_sum=bde367d0fccd0e47ba641b0890baeed57a98cf587e2c6bd957a72a0ed70c1fb281e8ed29508bd276f6f520967ce3257b69c5a15df18bbae47ce89a0347750953
+_appimage_sum=f4c7c2f6ebebc0ecb46c0501bdd0a5bf2945dc5b0377ee94f73e30ffbe2af05933f5be7b526116d598f3f9dc51fee0311297c73b8a7d51bb29bd927a137b8fa2
 _filename="simplex-desktop-${arch}-${pkgver}-${_appimage_sum}.AppImage"
 _squashfs_desktop_file="chat.simplex.app.desktop"
 _desktop_file="/usr/share/applications/simplex-desktop.desktop"
