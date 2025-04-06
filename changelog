@@ -1,0 +1,97 @@
+Revision history for Crypt-Argon2
+
+0.029     2024-08-05 23:18:21+02:00 Europe/Brussels
+          - Add runtime CPU checks to compile time checks
+
+0.028     2024-08-05 10:57:59+02:00 Europe/Brussels
+          - Call switched function in ifunc check
+
+0.027     2024-08-04 22:00:44+02:00 Europe/Brussels
+          - Remove debugging code from ifunc test
+
+0.026     2024-08-04 00:47:41+02:00 Europe/Brussels
+          - Add check for ifunc gcc feature
+
+0.025     2024-08-02 09:36:18+02:00 Europe/Brussels
+          - Add explicit include dir for include/
+
+0.024     2024-08-01 23:03:04+02:00 Europe/Brussels (TRIAL RELEASE)
+          - Depend on installed Dist::Build
+
+0.023     2024-08-01 13:05:09+02:00 Europe/Brussels (TRIAL RELEASE)
+          - Add runtime implementation switching
+          - Switch to using Dist::Build as install tool
+
+0.022     2024-04-12 01:28:41+02:00 Europe/Brussels
+          - allow arch to be configured via environment
+
+0.021     2024-04-03 23:39:28+02:00 Europe/Brussels
+          - Fix documentation of argon2_needs_rehash argument order
+
+0.020     2023-10-29 18:28:53+01:00 Europe/Brussels
+          - Only enable optimization when building in CPAN client
+
+0.019     2023-05-24 02:34:02+02:00 Europe/Amsterdam
+          - Switch to Apache Public License 2.0
+
+0.018     2023-05-15 19:59:20+02:00 Europe/Amsterdam
+          - Fix documentation markup failures
+
+0.017     2023-04-07 16:21:47+02:00 Europe/Amsterdam
+          - Add argon2_pass and argon2_raw
+          - Add argon2_types
+          - Remove argon2_crypt
+          - Add $type_regex
+
+0.016     2023-03-23 03:43:57+01:00 Europe/Amsterdam
+          - Reenable linking to pthread
+
+0.015     2023-03-22 16:21:00+01:00 Europe/Amsterdam
+          - Add optimized implementation
+          - Install argon2-calibrate
+
+0.014     2023-03-20 14:24:00+01:00 Europe/Amsterdam
+          - Add argon2_verify and argon2_crypt
+
+0.013     2023-02-10 16:07:16+01:00 Europe/Amsterdam
+          - Stricten up argon2_needs_rehash
+
+0.012     2022-04-06 13:39:19+02:00 Europe/Amsterdam
+          - Fix compilation on perl < 5.16
+
+0.011     2021-04-30 19:32:11+02:00 Europe/Amsterdam
+          - Added argon2-calibrate script
+
+0.010     2021-03-11 19:42:29+01:00 Europe/Amsterdam
+          - Correctly handle raw numbers as memory cost in argon2_needs_rehash
+
+0.009     2021-03-07 23:01:38+01:00 Europe/Amsterdam
+          - Added argon2d_pass and argon2d_verify
+          - Allow more strictly hashed values in argon2_needs_rehash
+
+0.008     2021-02-19 20:13:53+01:00 Europe/Amsterdam
+          - Add a argon2_needs_rehash function
+          - Enforce byte semantics for passwords and salts
+
+0.007     2020-03-07 16:52:17+01:00 Europe/Amsterdam
+          - Make 256M test an extended test
+
+0.006     2019-08-29 00:54:56+02:00 Europe/Amsterdam
+          - Update argon2 sources to 20190702
+          - Add -pthread option when compiling
+
+0.005     2018-04-12 00:59:47+02:00 Europe/Amsterdam
+          - Add libpthread for non-threaded perls
+
+0.004     2018-04-09 20:26:23+02:00 Europe/Amsterdam
+          - Export Argon2_id functions
+
+0.003     2018-03-19 19:31:21+01:00 Europe/Amsterdam
+          - Added argon2id support
+
+0.002     2016-09-21 23:24:25+02:00 Europe/Amsterdam
+          - Include an upstream fix to encoded_length
+          - Add attribution to original authors
+
+0.001     2016-09-21 10:36:32+02:00 Europe/Amsterdam
+          Initial release to an unsuspecting world
