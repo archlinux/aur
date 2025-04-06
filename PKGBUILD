@@ -2,7 +2,7 @@
 
 pkgname="landrun"
 _user="Zouuup"
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Run any Linux process in a secure, unprivileged sandbox using Landlock LSM"
 arch=('x86_64')
@@ -16,7 +16,7 @@ checkdepends=(curl)
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('54ada4a13b6fb3c61686a88fbd6e464c2f81b21fc0a5f8901eec546220e6f027ffa536d20c7db52cf3e018278e8d1079f7c3d990c3f81c8fb9f2d9e1c55b79d1')
+sha512sums=('387b8f37318b295baa781ede946fdbf2a2e3564f66673c8cccd6ed4f04393a5422cc493e484c0ff20b8fcb861a5aef96276f8b6fe9ca31f8b418464b104ed266')
 
 build() {
     cd "${pkgname}-${pkgver}"
