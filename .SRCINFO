@@ -17,6 +17,6 @@ pkgbase = identities
 	provides = identities
 	conflicts = identities
 	source = identities::git+https://github.com/k8ieone/identities#tag=0.1.3
-	sha512sums = 70a0ca1b34c663496621c717470d3c12c5ae8c78cb939c53c4d34fc1f9b25a9007ecb0f2d8cc35017c89434cdef7ceaa71950a9c7c851fb24f485cc5443ac691
+	sha512sums = a93c8ff9a8b4bd923c393b1f78077ca6075fa7ab5ad1d746ab20f0e400a338784bea7631ee40c7602f90c142c4bd7870b1b4618670f14e58beefe924669a3f80
 
 pkgname = identities
