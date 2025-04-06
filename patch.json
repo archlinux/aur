@@ -6,7 +6,15 @@
 		"publisherUrl": "https://marketplace.visualstudio.com/publishers",
 		"resourceUrlTemplate": "https://{publisher}.vscode-unpkg.net/{publisher}/{name}/{version}/{path}",
 		"extensionUrlTemplate": "https://www.vscode-unpkg.net/_gallery/{publisher}/{name}/latest",
-		"controlUrl": "https://main.vscode-cdn.net/extensions/marketplace.json"
+		"controlUrl": "https://main.vscode-cdn.net/extensions/marketplace.json",
+		"accessSKUs": [
+			"copilot_enterprise_seat",
+			"copilot_enterprise_seat_assignment",
+			"copilot_enterprise_trial_seat",
+			"copilot_for_business_seat",
+			"copilot_for_business_seat_assignment",
+			"copilot_for_business_trial_seat"
+		]
 	},
 	"extensionRecommendations": {
 		"ms-dotnettools.csdevkit": {
@@ -127,6 +135,14 @@
 				{
 					"pathGlob": "{**/*.prompty}",
 					"important": false
+				}
+			]
+		},
+		"typespec.typespec-vscode": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/*.tsp,**/tspconfig.yaml}",
+					"important": true
 				}
 			]
 		},
