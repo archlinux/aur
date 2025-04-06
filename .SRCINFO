@@ -1,13 +1,15 @@
-pkgbase = animeko
+pkgbase = animeko-appimage
 	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台
 	pkgver = 4.8.0_beta03
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/open-ani/animeko/
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = 7zip
 	depends = vlc
+	conflicts = animeko
+	replaces = animeko
 	source_x86_64 = https://d.myani.org/v4.8.0-beta03/ani-4.8.0-beta03-linux-x86_64.appimage
 	sha512sums_x86_64 = SKIP
 
-pkgname = animeko
+pkgname = animeko-appimage
