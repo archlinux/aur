@@ -47,6 +47,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DFL_BUILD_STATIC=OFF \
     -DFL_BUILD_TESTS=ON
   cmake --build build
