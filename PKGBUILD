@@ -1,7 +1,7 @@
 # Maintainer: zty012 <me@zty012.de>
 # Contributor: Littlefean <2385190373@qq.com>
 pkgname=project-graph-bin
-pkgver=1.4.41
+pkgver=r72
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/LiRenTech/project-graph/releases/download/v$pkgver/Project.Graph_1.4.41_amd64.deb")
-sha256sums_x86_64=('e9884489e639329dfae33f55ac1865dc1d5fa597c603460bb575ad7b552ebf85')
+sha256sums_x86_64=('92100f2db9e8974601409fa63828a3a8cf9877c4ff7c2091775237e58a727926')
 provides=('project-graph')
 conflicts=('project-graph-nightly-bin' 'project-graph-git')
 package() {
