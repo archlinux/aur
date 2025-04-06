@@ -1,10 +1,10 @@
 # Maintainer: texas0295 <texas0295@outlook.com>
 
+_buildcommit=ce3d19f
 pkgbase=solian
 pkgname=solian-bin-git
-pkgver=2.4.2+85+gbaa50561
-_buildcommit=aa50561
-pkgrel=4
+pkgver=2.4.2+85+gb$_buildcommit
+pkgrel=5
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
 url="https://solsynth.dev"
