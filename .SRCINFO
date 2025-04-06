@@ -1,6 +1,6 @@
 pkgbase = python-mkdocs-section-index
 	pkgdesc = MkDocs plugin to allow clickable sections that lead to an index page
-	pkgver = 0.3.9
+	pkgver = 0.3.10
 	pkgrel = 1
 	url = https://oprypin.github.io/mkdocs-section-index/
 	arch = any
@@ -12,18 +12,19 @@ pkgbase = python-mkdocs-section-index
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = mkdocs-material
-	source = https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v0.3.9.tar.gz
-	sha256sums = b4527f1e9c5db86a6ac6eae3edcd848b71c7b77097944508629146934f611481
+	makedepends = python-pymdown-extensions
+	source = https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v0.3.10.tar.gz
+	sha256sums = 48683894accdaad2e2d4da8fca122ec8261fb81946170f3cbdb63cccee0c46a3
 
 pkgname = mkdocs-section-index
-	depends = python>=3.8
+	depends = python>=3.9
 	depends = mkdocs>=1.2
 	optdepends = mkdocs-section-index-doc: Documentation for mkdocs-section-index
-	provides = python-mkdocs-section-index=0.3.9
+	provides = python-mkdocs-section-index=0.3.10
 	conflicts = python-mkdocs-section-index
 	replaces = python-mkdocs-section-index
 
 pkgname = mkdocs-section-index-doc
 	pkgdesc = Documentation for mkdocs-section-index
-	provides = python-mkdocs-section-index-doc=0.3.9
+	provides = python-mkdocs-section-index-doc=0.3.10
 	conflicts = python-mkdocs-section-index-doc
