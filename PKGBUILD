@@ -9,7 +9,7 @@ url="https://github.com/esseks/monicelli"
 license=('GPL-3.0-or-later')
 groups=()
 depends=('llvm18-libs')
-makedepends=('git' 'bison>=3' 'flex>=2.5' 'cmake' 'clang18' 'ragel' 'llvm18')
+makedepends=('bison>=3' 'flex>=2.5' 'cmake' 'clang18' 'ragel' 'llvm18')
 #provides=("${pkgname%-git}")
 #conflicts=("${pkgname%-git}")
 replaces=()
