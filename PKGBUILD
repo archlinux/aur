@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-ui
-pkgver=r310.e04cfb9
+pkgver=r311.746ce51
 pkgrel=1
 pkgdesc='A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay'
 arch=('x86_64')
@@ -26,12 +26,12 @@ depends=(
     'wayland'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder-ui.git.${pkgver}.tar.gz")
-sha512sums=('5be1fbd79f0328b582165191932755df27b0f2fa86349ecf9113698931a94c86500b845e9d972fb9510ebcc20ee1c60068c5e86238792fe548c0eb7b4b50ffdc')
+sha512sums=('cfcdcd8c31eb35ec2b06312c3d10b1fbb65ef22cfbad86201423ecbaa702ed51c369cfba78a3a75bc012901a56241a3cd4348c00599c20bb32b1866ea56ed894')
 install="${pkgname}.install"
 
 build() {
   cd "$srcdir"
-  arch-meson build
+  arch-meson build --buildtype=release -Dstrip=true
   meson compile -C build
 }
 
