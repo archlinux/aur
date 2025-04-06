@@ -1,8 +1,8 @@
 # Maintainer: shinka <shinnkka1@gmail.com>
 
 pkgname=animeko
-pkgver="4.8.0_beta01"
-pkgrel=2
+pkgver="4.8.0_beta03"
+pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
 url='https://github.com/open-ani/animeko/'
