@@ -2,8 +2,8 @@
 # Contributor: Canmi(Canmi21)
 
 pkgname=openjlc
-pkgver=2.21.7
-pkgrel=3
+pkgver=2.21.8
+pkgrel=1
 pkgdesc="Ultra-fast Gerber conversion tool written in Rust."
 arch=('x86_64')
 url="https://github.com/canmi21/openjlc"
