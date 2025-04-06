@@ -118,11 +118,13 @@ Module: aiohttp
     open_webui/utils/code_interpreter.py
     open_webui/utils/oauth.py
     open_webui/utils/telemetry/instrumentors.py
+    open_webui/utils/tools.py
 Module: requests
   Imported in:
     open_webui/config.py
     open_webui/main.py
     open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
     open_webui/retrieval/utils.py
     open_webui/retrieval/web/bing.py
@@ -403,6 +405,7 @@ Module: open_webui.env
     open_webui/models/tags.py
     open_webui/models/tools.py
     open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/models/colbert.py
@@ -584,6 +587,7 @@ Module: open_webui.utils.plugin
 Module: open_webui.utils.tools
   Imported in:
     open_webui/functions.py
+    open_webui/routers/configs.py
     open_webui/routers/tools.py
     open_webui/utils/middleware.py
 Module: open_webui.utils.misc
@@ -784,6 +788,9 @@ Module: open_webui.utils.code_interpreter
     open_webui/routers/utils.py
     open_webui/utils/middleware.py
 Module: jwt
+  Imported in:
+    open_webui/utils/auth.py
+Module: pytz
   Imported in:
     open_webui/utils/auth.py
 Module: fastapi.security
@@ -1109,6 +1116,7 @@ Module: langchain.text_splitter
 Module: langchain_core.documents
   Imported in:
     open_webui/retrieval/loaders/main.py
+    open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/utils.py
@@ -1322,6 +1330,9 @@ Module: langchain_community.document_loaders
   Imported in:
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/web/utils.py
+Module: open_webui.retrieval.loaders.mistral
+  Imported in:
+    open_webui/retrieval/loaders/main.py
 Module: langchain_core.document_loaders
   Imported in:
     open_webui/retrieval/loaders/tavily.py
