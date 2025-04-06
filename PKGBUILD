@@ -10,11 +10,12 @@ license=('AGPL-3.0-or-later')
 source_x86_64=("https://d.myani.org/v${pkgver//_/-}/ani-${pkgver//_/-}-linux-${CARCH}.appimage")
 sha512sums_x86_64=('SKIP')
 depends=('vlc')
+makedepends=('7zip')
 #options=('!strip' )
 
 prepare() {
 	chmod +x "${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage"
-	${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage --appimage-extract || true
+	7z x ${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage -o${srcdir}/squashfs-root
 	sed -i -E "s|Exec=Ani|Exec=/usr/bin/${pkgname}|g" "${srcdir}/squashfs-root/${pkgname}.desktop"
 	sed -i -E "s|Icon=icon|Icon=${pkgname}|g" "${srcdir}/squashfs-root/${pkgname}.desktop"
 }
