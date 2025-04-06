@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.79'
+pkgver='1.2.81'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -43,6 +43,7 @@ optdepends=(
     'sox: sound processing tools'
     'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
     'hamlib: synchronize frequency and modulation with external transceivers'
+    'lame: to compress recorded audio into MP3 format'
 
     # device support
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
@@ -71,7 +72,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '676adf552e76ecae1f3e7eb18b344b6bd7525c01fe005af779e3c4a520453066'
+    '81c6813b30a368c87813c91e98ae31e8db998829977773678ca34b614dd24a8b'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
