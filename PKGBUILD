@@ -1,6 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: David < david at rjamo dot dev >
 # Contributor: Tom < reztho at archlinux dot us >
+
 pkgname=libpkcs11-fnmtdnie
 pkgver=1.6.9
 pkgrel=1
