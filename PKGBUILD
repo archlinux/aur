@@ -2,7 +2,7 @@
 
 _pkgname=soundtouch
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='An audio processing library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -12,12 +12,12 @@ arch=('any')
 url='https://www.surina.net/soundtouch/'
 license=('LGPL-2.1-or-later')
 source=("${_pkgname}-${pkgver}.tar.gz::https://codeberg.org/soundtouch/soundtouch/archive/${pkgver}.tar.gz")
-sha256sums=('43b23dfac2f64a3aff55d64be096ffc7b73842c3f5665caff44975633a975a99')
+sha256sums=('3dda3c9ab1e287f15028c010a66ab7145fa855dfa62763538f341e70b4d10abd')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse2'
-	-DCMAKE_POLICY_VERSION_MINIMUM='3.5' -DSOUNDSTRETCH=OFF
+	-DSOUNDSTRETCH=OFF
 )
 _srcdir="${_pkgname}"
 
