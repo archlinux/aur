@@ -3,7 +3,7 @@
 
 pkgname=openjlc
 pkgver=2.21.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Ultra-fast Gerber conversion tool written in Rust."
 arch=('x86_64')
 url="https://github.com/canmi21/openjlc"
@@ -23,6 +23,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   cargo build --release
 }
 
