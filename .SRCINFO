@@ -1,0 +1,21 @@
+pkgbase = keepalived-exporter
+	pkgdesc = Prometheus exporter for Keepalived
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/mehdy/keepalived-exporter
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	depends = keepalived
+	backup = etc/conf.d/prometheus-keepalived-exporter
+	source = https://github.com/mehdy/keepalived-exporter/archive/refs/tags/v1.5.0.tar.gz
+	source = prometheus-keepalived-exporter
+	source = prometheus-keepalived-exporter.service
+	source = prometheus-keepalived-exporter.sysusers
+	sha256sums = f47294409c66fc22a55c2fc368616cb75f52156a0928ef7148bfed4bba4df63f
+	sha256sums = 8dc0a0bc730eadc6b8fe352923d11bf3499744f187ca8854bb81b8a4578fd558
+	sha256sums = de3f9cdc0f25c576ca7346ea909a7099dce529483601ea2872ad242fff4db769
+	sha256sums = d52f807f4d965b4f8a22238013a3476a1accf941e962b9a0866e58e0ec4676f4
+
+pkgname = prometheus-keepalived-exporter
