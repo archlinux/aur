@@ -1,0 +1,16 @@
+pkgbase = flatten-git
+	pkgdesc = CLI tool to merge file contents with a tree view, respecting .gitignore and .flattenignore
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/fabifont/flatten
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = flatten=0
+	conflicts = flatten
+	source = git+https://github.com/fabifont/flatten
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = flatten-git
