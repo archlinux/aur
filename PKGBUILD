@@ -2,12 +2,12 @@
 
 pkgname=changedetection.io
 pkgver=0.49.11
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=(any)
 url='https://github.com/dgtlmoon/changedetection.io'
 license=('Apache 2.0')
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-pip)
 depends=(# ordered per https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
          python-pyee
          python-flask-compress
