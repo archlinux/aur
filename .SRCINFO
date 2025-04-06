@@ -1,4 +1,4 @@
-pkgbase = qxmpp
+pkgbase = qxmpp-qt5
 	pkgdesc = Cross-platform C++ XMPP client and server library
 	pkgver = 1.10.3
 	pkgrel = 1

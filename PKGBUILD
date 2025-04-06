@@ -6,7 +6,7 @@
 
 # Based on https://aur.archlinux.org/cgit/aur.git/tree/?h=qxmpp
 
-pkgbase=qxmpp
+pkgbase=qxmpp-qt5
 pkgname=('qxmpp-qt5' 'qxmpp-doc')
 pkgver=1.10.3
 pkgrel=1
