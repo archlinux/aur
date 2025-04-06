@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aroma.apd
-_pkgver=0.7.0
+_pkgver=0.7.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="A Probe-Level Data File Format Used by 'aroma.affymetrix' [deprecated]"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-affxparser
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8378b2a1880dc55fdc8047b63705da05')
-b2sums=('9e83a2007a9afc19f29f96935b0b8c8fa20d3d37bbaf98560e2be953a8ae3dadc4b957ec54ce16e09c58ef43327e71f4837d2ee8920b32c147ddbc44554906e3')
+md5sums=('061509af986948e82ecabafdd3fd2d7a')
+b2sums=('e9661ba0dd81c50746a5fd22a28017d8e62d6ef162acce197a40b9c863767a8ceb41ce5f8f023d16f549c018c2e0f358c0d07cc8e13cdd4e84dc006a6d147f8b')
 
 build() {
   mkdir build
