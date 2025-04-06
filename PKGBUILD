@@ -17,6 +17,11 @@ makedepends=(
     meson
     blueprint-compiler
 )
+checkdepends=(
+    appstream-glib
+    desktop-file-utils
+)
+
 provides=(${_name})
 conflicts=(
     ${_name}
@@ -37,9 +42,9 @@ build() {
     meson compile -C build
 }
 
-#check() {
-#    meson test -C build --print-errorlogs
-#}
+check() {
+    meson test -C build --print-errorlogs
+}
 
 package() {
     DESTDIR="${pkgdir}" meson install -C build
