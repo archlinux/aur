@@ -1,0 +1,35 @@
+diff --git a/chromeos_keyboard_bl.c b/chromeos_keyboard_bl.c
+index f1b94aa..ab3ce7c 100644
+--- a/chromeos_keyboard_bl.c
++++ b/chromeos_keyboard_bl.c
+@@ -107,10 +107,9 @@ static int keyboard_backlight_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static int keyboard_backlight_remove(struct platform_device *pdev)
++static void keyboard_backlight_remove(struct platform_device *pdev)
+ {
+ 	backlight_device_unregister(platform_get_drvdata(pdev));
+-	return 0;
+ }
+ 
+ #ifdef CONFIG_PM_SLEEP
+diff --git a/chromeos_keyboard_leds.c b/chromeos_keyboard_leds.c
+index 801b2ac..f6c0619 100644
+--- a/chromeos_keyboard_leds.c
++++ b/chromeos_keyboard_leds.c
+@@ -94,13 +94,12 @@ err:
+ 	return ret;
+ }
+ 
+-static int keyboard_led_remove(struct platform_device *pdev)
++static void keyboard_led_remove(struct platform_device *pdev)
+ {
+ 	struct led_classdev *cdev = platform_get_drvdata(pdev);
+ 
+ 	platform_set_drvdata(pdev, NULL);
+ 	kfree(cdev);
+-	return 0;
+ }
+ 
+ static struct platform_driver keyboard_led_driver = {

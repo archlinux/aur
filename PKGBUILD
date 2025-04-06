@@ -6,7 +6,7 @@ _pkgbase=${pkgname%-*}
 # number or you can drop RELEASE completely." Rather than doing either, the
 # above acknowledgement (that 1.0 is totally wrong) will have to suffice.
 pkgver=1.0r24.g39568fa
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=(x86_64)
@@ -27,6 +27,12 @@ md5sums=(SKIP)
 pkgver() {
     cd "$srcdir/$_pkgbase"
     printf "1.0r%s.g%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
+}
+
+prepare() {
+    cp "$startdir"/remove_return_type.patch "$srcdir/$_pkgbase"
+    cd "$srcdir/$_pkgbase"
+    patch -p1 < remove_return_type.patch
 }
 
 build() {
