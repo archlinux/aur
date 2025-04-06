@@ -2,7 +2,7 @@
 # Contributor: Victor Bayas <victorsbayas at gmail dot com>
 
 pkgname=envycontrol
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="CLI tool for Nvidia Optimus graphics mode switching on Linux"
 arch=('any')
