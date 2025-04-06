@@ -10,7 +10,7 @@ depends=('mpv' 'ffmpeg' 'libxml2')
 makedepends=('go')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OMRIFIJI/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d36a82fd53dc0e714d628c40cbe475ecc9a63405be71e6df5c54f2f55cf6b3ca')
+sha256sums=('af16a0a847b2f8df007f5e186f926b3c580425f123385125093a8dfb37437b7a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
