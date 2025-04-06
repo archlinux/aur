@@ -14,7 +14,7 @@ sha512sums=('60aa989b0ae4e663aa654a6676b26509aba90e3e15b19f64f06d613487c9b498574
 
 build() {
   cd "$srcdir"
-  arch-meson build
+  arch-meson build --buildtype=release -Dstrip=true
   meson compile -C build
 }
 
