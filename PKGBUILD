@@ -10,10 +10,11 @@ pkgdesc="Boot Editor for (U)EFI based systems."
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-license=('LGPL3')
+license=('LGPL-3-0')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-qt5")
+depends=('glibc' 'libglvnd' 'gcc-libs' 'efivar' 'qt6-base' 'zlib')
 makedepends=('tar')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.txt"
@@ -29,7 +30,6 @@ package() {
 
 	# this extracts all into the pkgdir
 	tar -xf "${srcdir}/data.tar.gz"
-
 
 	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
