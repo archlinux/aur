@@ -85,9 +85,9 @@ for _line in "${_schemas[@]}"; do
     _schema=${_line%% *}
     _pkgname=${pkgbase}-${_schema,,}
 
-    conflicts=()
+    _pkgconflicts=()
     for _c in "${_conflicts[@]}"; do
-        [[ $_c != "$_pkgname" ]] && conflicts+=("${_c}")
+        [[ $_c != "$_pkgname" ]] && _pkgconflicts+=("${_c}")
     done
 
     pkgname+=("${_pkgname}")
@@ -95,7 +95,7 @@ for _line in "${_schemas[@]}"; do
     eval "package_$_pkgname() {
         depends=('rime-wanxiang-base')
         pkgdesc='万象拼音基础版（"${_name}"方案）'
-        conflicts=("${conflicts[@]}")
+        conflicts=("${_pkgconflicts[@]}")
 
         _package $_line
     }"

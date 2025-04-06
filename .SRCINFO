@@ -8,10 +8,6 @@ pkgbase = rime-wanxiang
 	makedepends = rime-prelude
 	makedepends = rime-essay
 	makedepends = sed
-	conflicts = rime-wanxiang-pinyin
-	conflicts = rime-wanxiang-zrm
-	conflicts = rime-wanxiang-flypy
-	conflicts = rime-wanxiang-mspy
 	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.1.tar.gz
 	sha256sums = 83e5ccb8a4a969b570a8d82d7e8c9cfaf64f3ac074169a10bea19b5f3de2086c
 
