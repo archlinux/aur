@@ -1,6 +1,6 @@
 pkgbase = todoist-appimage
 	pkgdesc = The to-do list to organize work & life.
-	pkgver = 9.12.1
+	pkgver = 9.13.0
 	pkgrel = 1
 	url = https://todoist.com/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = todoist-appimage
 	depends = zlib
 	depends = fuse2
 	depends = appimagelauncher
-	noextract = todoist-appimage-9.12.1.AppImage
+	noextract = todoist-appimage-9.13.0.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = todoist-appimage-9.12.1.AppImage::https://electron-dl.todoist.net/linux/Todoist-linux-9.12.1-x86_64-latest.AppImage
-	sha256sums_x86_64 = 4c087af64f8b04f54e0f43c6eb926b0d6d035e9ed2b1a152fcbb5b4460af002e
+	source_x86_64 = todoist-appimage-9.13.0.AppImage::https://electron-dl.todoist.net/linux/Todoist-linux-9.13.0-x86_64-latest.AppImage
+	sha256sums_x86_64 = 326e0373b25bdd3dde000ee01a970eabf5dd50a0c20b98e6da61b2db5c106416
 
 pkgname = todoist-appimage
