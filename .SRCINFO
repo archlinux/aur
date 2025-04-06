@@ -1,6 +1,6 @@
 pkgbase = s3share-cli-git
 	pkgdesc = CLI for s3share, an end-to-end-encrypted file-sharing platform built on an S3-compatible object storage.
-	pkgver = 16.3dce004
+	pkgver = 24.641c736
 	pkgrel = 1
 	url = https://github.com/Maxr1998/s3share-cli
 	arch = x86_64

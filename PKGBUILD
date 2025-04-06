@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=s3share-cli
 pkgname=$_pkgname-git
-pkgver=16.3dce004
+pkgver=24.641c736
 pkgrel=1
 pkgdesc="CLI for s3share, an end-to-end-encrypted file-sharing platform built on an S3-compatible object storage."
 arch=('x86_64' 'aarch64')
