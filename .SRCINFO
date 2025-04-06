@@ -1,18 +1,21 @@
 pkgbase = gsvgtk
 	pkgdesc = Library providing Gtk+ widgets to view and modify SVG documents
-	pkgver = 0.6.3+163+g0bdd6f8
+	pkgver = 0.11.0
 	pkgrel = 1
-	url = https://gitlab.com/pwmc/gsvgtk
+	url = https://gitlab.com/gsvg/gsvgtk
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-only
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
-	depends = gresg
+	makedepends = gobject-introspection
+	makedepends = gtktester
+	depends = gxml
 	depends = gsvg
-	depends = gtk3
-	source = git+https://gitlab.com/pwmc/gsvgtk#commit=0bdd6f87888da18de77b58dc02826987fca66bb1
+	depends = gtk4
+	options = !lto
+	source = git+https://gitlab.com/gsvg/gsvgtk.git#tag=0.11.0
 	sha256sums = SKIP
 
 pkgname = gsvgtk
-
