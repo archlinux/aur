@@ -30,5 +30,6 @@ package() {
   cd "${srcdir}/"
   tar --zstd -xf data.tar.zst
   mv usr "${pkgdir}/"
-  rm -fr "${pkgdir}/usr/share/libpkcs11-fnmtdnie/"*.crt
+  rm -fr "${pkgdir}/usr/share/applications"
+  rm -fr "${pkgdir}/usr/share/libpkcs11-fnmtdnie"
 }
