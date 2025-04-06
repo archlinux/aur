@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='Python implementation of Protocol Buffers data types with dataclasses support.'
 arch=('any')
@@ -27,7 +27,7 @@ checkdepends=('python-pytest'
               'python-pydantic')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/eigenein/protobuf/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('f6de2d15ba97700a502174f8e48f313bd33c05f7d33ae028e532b237fe6850c16473adc6bded080bf332cecbec9ae5f0e0b2d7e88c10b127d6d1ba91840e271f')
+sha512sums=('f04ea36c118f290b20aad00e8fa849330bd416aa9b8574cc8af27ef0124941bd37a9d28219056dcfc86f40dd63a0069a1b0c3fd25b676a332c58c167a11d55fb')
 
 prepare() {
 #   cd ${srcdir}/${_pyname}-${pkgver}
@@ -56,7 +56,7 @@ check() {
 }
 
 package_python-pure-protobuf() {
-    depends=('python>=3.7' 'python-typing_extensions>=4.4.0')
+    depends=('python>=3.9.0' 'python-typing_extensions>=4.4.0')
 #   optdepends=('python-pure-protobuf-doc: Documentation for pure-protobuf')
 #   cd ${srcdir}/${_pyname}-${pkgver}
     cd ${srcdir}/protobuf-${pkgver}
