@@ -1,0 +1,41 @@
+pkgbase = karakeep
+	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/karakeep-app/karakeep
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = jq
+	makedepends = pnpm
+	depends = chromium
+	depends = graphicsmagick
+	depends = ghostscript
+	depends = meilisearch
+	depends = monolith
+	depends = nodejs>=22
+	depends = pnpm
+	optdepends = hoarder-cli: karakeep cli tool
+	optdepends = ollama: for automatic tagging
+	optdepends = yt-dlp: for download video
+	replaces = hoarder
+	backup = etc/karakeep/karakeep.env
+	source = karakeep::git+https://github.com/karakeep-app/karakeep.git#tag=v0.23.1
+	source = karakeep.env
+	source = karakeep.sysusers
+	source = karakeep.target
+	source = karakeep.tmpfiles
+	source = karakeep-browser.service
+	source = karakeep-web.service
+	source = karakeep-workers.service
+	sha256sums = f5230989171e3c26dc6c6a13b80810b4ca2af14844dadf605c65ae968288c1a2
+	sha256sums = ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d
+	sha256sums = 0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399
+	sha256sums = 9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e
+	sha256sums = 15ec782d5dc557a6aad15140a1b8098438e57012291f2a0f3542686f5eda93ea
+	sha256sums = dc4ce21d936b7442e84eb521d8c519e02322808fbbadf23c27aa1bf4994fccf5
+	sha256sums = a54472075f050b9d60083c8086da9b196391cf666bd6734f411df80cef806626
+	sha256sums = b70f0a4ba817a00bc378ee9df5dbeb1098b1d98a747d7f53a53593f69af3585e
+
+pkgname = karakeep

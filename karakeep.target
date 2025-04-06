@@ -1,0 +1,7 @@
+[Unit]
+Description = Karakeep services
+After = network-online.target
+Wants = karakeep-web.service karakeep-workers.service karakeep-browser.service
+
+[Install]
+WantedBy = multi-user.target

@@ -1,0 +1,20 @@
+[Unit]
+Description = Karakeep Workers
+Wants = network-online.target karakeep-browser.service meilisearch.service ollama.service
+After = network-online.target karakeep-browser.service meilisearch.service ollama.service
+
+[Service]
+User = karakeep
+Restart = on-failure
+EnvironmentFile = -/etc/karakeep/karakeep.env
+Environment = DATA_DIR=/var/lib/karakeep
+WorkingDirectory = /usr/lib/karakeep/apps/workers
+ExecStart = /usr/bin/pnpm run start:prod
+TimeoutStopSec = 5
+SyslogIdentifier = karakeep-workers
+ProtectSystem = yes
+PrivateTmp = yes
+NoNewPrivileges = yes
+
+[Install]
+WantedBy = multi-user.target

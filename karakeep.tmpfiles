@@ -1,0 +1,2 @@
+d /var/lib/karakeep       0755 karakeep karakeep -
+d /var/lib/karakeep/cache 0755 karakeep karakeep -
