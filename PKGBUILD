@@ -2,7 +2,7 @@
 # Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=python-onigurumacffi
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Python cffi bindings for the oniguruma regex engine"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('oniguruma' 'python-cffi')
 makedepends=('python-setuptools')
 _pkgname=${pkgname#python-}
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('bf126a4663976389699f7a7de8dc3a05782a960484e11f674e24a3acfe0caa9a')
+sha256sums=('8a642fe93a3c3fd2ad28baf506d3364bcae04e9cb93aa63c08ac4a4180007b0c')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
