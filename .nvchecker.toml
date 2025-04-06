@@ -1,0 +1,6 @@
+[rtcqs]
+source = "gitea"
+host = "codeberg.org"
+gitea = "rtcqs/rtcqs"
+use_max_tag = true
+prefix = "v"
