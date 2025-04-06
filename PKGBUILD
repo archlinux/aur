@@ -7,7 +7,7 @@ pkgdesc="Simple and fast terminal file manager"
 arch=('x86_64')
 license=('BSD')
 url="https://codeberg.org/sylphenix/sff"
-depends=('ncurses' 'file' 'glibc')
+depends=('glibc' 'ncurses')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
@@ -19,4 +19,7 @@ build() {
 package() {
   cd ${pkgname}
   make install DESTDIR="${pkgdir}" PREFIX=/usr
+  mkdir -p ${pkgdir}/usr/share/doc/${pkgname}
+  cp ./CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG
+  chmod 644 ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG
 }
