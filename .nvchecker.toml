@@ -1,0 +1,8 @@
+[rustrover-eap]
+# ?release.type=(eap|release)
+url = "https://data.services.jetbrains.com/products?code=RR"
+encoding = 'utf8'
+source = "jq"
+# filter = '.[].releases | map(select(.type == "release")) | sort_by(.date) | reverse | .[0] | .version'
+# filter = '.[].releases | map(select(.type == "eap"))     | sort_by(.date) | reverse | .[0] | "\(.majorVersion)pre+\(.build)"'
+filter = '.[].releases | sort_by(.date) | reverse | .[0] | (if .type == "release" then .version else "\(.majorVersion)pre+\(.build)" end)'
