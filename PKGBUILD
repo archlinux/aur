@@ -1,28 +1,30 @@
-#Maintainer: Carlos Franke <carlos_franke at carlosfranke dot net>
+#Contributor: Carlos Franke <carlos_franke at carlosfranke dot net>
 #Contributor: Kyle Keen <keenerd@gmail.com>
 
-_pkgname=bdflib
-pkgname=python-$_pkgname
-pkgver=1.1.3
+pkgname=python-bdflib
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="A Python library for reading, writing and modifying bitmap fonts in BDF format"
+pkgdesc="Library for working with BDF font files"
 url="https://gitlab.com/Screwtapello/bdflib"
 arch=('any')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('python')
-conflicts=("python2-bdflib" "bdflib-git")
-provides=("bdflib")
-options=(!emptydirs)
-source=('https://files.pythonhosted.org/packages/87/3c/5d094c3299834546d361ec09f1a209d75efef50c2c8c51e31e61ec1c5f0a/bdflib-1.1.3.tar.gz')
-sha256sums=('aa3f3ad5fb459f8d85fbfb19896116678a77b4c6fd689d3f1ba54bd868337641')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/bdflib-v$pkgver.tar.gz")
+sha256sums=('31b3e5e45adb66cbe83fa6ec16bb70e125afea3e5d2f919db76109acbfe3bebd')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "bdflib-v$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "bdflib-v$pkgver"
+  python -m unittest -v
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "bdflib-v$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
