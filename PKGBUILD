@@ -25,6 +25,7 @@ prepare () {
   sed -i '/add_subdirectory("programs")/d' CMakeLists.txt
   echo "target_link_libraries(metis GKlib)" >> libmetis/CMakeLists.txt
   sed -i "s|march=native|march=nocona|g" conf/gkbuild.cmake
+  sed -i "s|VERSION 2.8|VERSION 3.5|g" CMakeLists.txt
 }
 
 build() {
