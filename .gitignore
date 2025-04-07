@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!license.html
+!todesk.install

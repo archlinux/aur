@@ -1,0 +1,28 @@
+post_install() {
+  systemctl daemon-reload
+  if systemctl -q is-active todeskd.service ;then
+    systemctl restart todeskd.service
+  fi
+
+  ECHOLEN=$(echo -e|awk '{print length($0)}')
+  if [ ${ECHOLEN} = '0' ]
+  then
+    ECHO='echo -e'
+  else
+    ECHO='echo'
+  fi
+  
+  $ECHO "\033[36m**************************************************************\033[0m"
+  $ECHO "\033[36m*  todeskd daemon service must be running for todesk to work *\033[0m"
+  $ECHO "\033[36m*  Type: systemctl start todeskd.service                     *\033[0m"
+  $ECHO "\033[36m*  Todesk Remote Control doesn't support Wayland, Xorg ONLY! *\033[0m"
+  $ECHO "\033[36m**************************************************************\033[0m"
+}
+
+# pre_upgrade() {
+#   chmod 0755 /opt/todesk
+# }
+
+post_upgrade() {
+  post_install
+}
