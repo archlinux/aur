@@ -1,48 +1,63 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # former Co-maintainer: Jan Korte <j.korte@me.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=retext-git
-pkgver=8.0.0.r1289.fa18e91
+_pkgname=ReText
+_appname="me.mitya57.${_pkgname}"
+pkgver=8.1.0.r2.g1997ef4
+_pyver=3.13
 pkgrel=1
 pkgdesc="A simple editor for Markdown and ReStructuredText markup languages."
 arch=('any')
 url="https://github.com/retext-project/retext"
-license=('GPL3')
-depends=('python-pyqt6'
-         'python-markups'
-         'shared-mime-info'
-         'xdg-utils'
-         'hicolor-icon-theme' 
-	 'desktop-file-utils')
-makedepends=('imagemagick' 'git' 'qt5-tools')
-optdepends=('python-markdown: for Markdown language support'
-            'python-docutils: for reStructuredText language support'
-            'python-pyenchant: for spell checking support'
-	    'qt6-webengine: for more powerfull preview')
-provides=("${pkgname%-git}")
+license=('GPL-2.0-or-later')
+provides=("${pkgname%-git}=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+${url}.git"
-        "retext.desktop"
-        "x-retext-markdown.xml"
-        "x-retext-rst.xml")
-sha256sums=('SKIP'
-            'a784275c951b330c2fc2ac2f5ac82b457ca09d37a0cf6e9e27e1e5716084d118'
-            'b51611479d3224eec2b58264ed91ace3eccb502b7b806dae3e7a3ab4aab8c4b8'
-            '6fef80cccb14813d9cc74810c397a6cd7831d1ca243536759a47c6e8b6cc977a')
-
+depends=(
+    'python'
+    'python-chardet'
+    'python-docutils'
+    'python-markdown'
+    'python-markups>=2.0.0'
+    'python-pygments'
+    'python-pyqt6'
+    'xdg-utils'
+    'python-gobject'
+    'gtk4'
+  )
+makedepends=(
+    'git'
+    'imagemagick'
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+    'qt6-tools'
+)
+optdepends=(
+    'python-pyqt6-webengine: for WebEngine preview'
+    'python-pyenchant: for spell checking support'
+)
+source=("${pkgname//-/.}::git+${url}.git")
+sha256sums=('SKIP')
 pkgver() {
-  cd $pkgname
-  printf "%s.r%s.%s" "$(awk -F\= '/^VERSION/ {print $2}' setup.py | tr -d \' | tr -d [:blank:])" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname//-/.}"
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
 build () {
-  cd $pkgname/ReText/locale
-  lrelease *.ts
+    cd "${srcdir}/${pkgname//-/.}"
+    python -m build --wheel --no-isolation
+    python -m installer --destdir="${srcdir}" dist/*.whl
+    sed -i "s/${_appname}/${pkgname%-git}/g" "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml"
 }
-
 package () {
-  cd $pkgname/
-  python setup.py install --root="$pkgdir"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/lib/python${_pyver}/site-packages"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/python${_pyver}/site-packages/${_pkgname}"* \
+        "${pkgdir}/usr/lib/python${_pyver}/site-packages"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+    install -Dm644 "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
 }
-
