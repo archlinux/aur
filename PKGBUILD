@@ -26,31 +26,31 @@ sha256sums=('6d4c00c7448c110e0d5df4e2e93a3efafd56db89ff98ca63cc12bab0dd1ac897'
             '01a5e6e2154a7e067108869b86df4e95cc04e6903a2bb76cb3f053aacad556cb')
 
 package() {
-  rm ${_appname}-v${_appver}-linux-x64.tar.gz
+  # rm ${pkgname}-v${pkgver}-linux-x64.tar.gz
 
   install -dm755 "${pkgdir}/opt/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/" "${pkgdir}/opt/${_appname}"
-	chmod +x "${pkgdir}/opt/${_appname}/Firebot v${_mainver}"
+  cp -r --no-preserve=mode,ownership "${srcdir}/" "${pkgdir}/opt/${pkgname}"
+	chmod +x "${pkgdir}/opt/${pkgname}/Firebot v${_mainver}"
 
   install -dm755 "${pkgdir}/usr/bin/"
-  cp --no-preserve=mode,ownership "${srcdir}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
-	chmod +x "${pkgdir}/usr/bin/${_appname}"
-  rm "${pkgdir}/opt/${_appname}/${_appname}.sh"
+  cp --no-preserve=mode,ownership "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+	chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  # rm "${pkgdir}/opt/${pkgname}/${pkgname}.sh"
 
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/48x48/apps/"
-  cp --no-preserve=mode,ownership "${srcdir}/logo48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_appname}.png"
+  cp --no-preserve=mode,ownership "${srcdir}/logo48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}.png"
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
-  cp --no-preserve=mode,ownership "${srcdir}/logo64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_appname}.png"
+  cp --no-preserve=mode,ownership "${srcdir}/logo64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps/"
-  cp --no-preserve=mode,ownership "${srcdir}/logo128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_appname}.png"
+  cp --no-preserve=mode,ownership "${srcdir}/logo128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
-  cp --no-preserve=mode,ownership "${srcdir}/logo256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_appname}.png"
+  cp --no-preserve=mode,ownership "${srcdir}/logo256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-  cp --no-preserve=mode,ownership "${srcdir}/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
+  cp --no-preserve=mode,ownership "${srcdir}/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   install -dm755 "${pkgdir}/usr/share/applications"
-  desktop-file-edit --set-name="Firebot v${_appver}" ${srcdir}/${_appname}.desktop
-  cp --no-preserve=mode,ownership "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
-  chmod +x "${pkgdir}/usr/share/applications/${_appname}.desktop"
-  rm "${pkgdir}/opt/${_appname}/${_appname}.desktop"
+  desktop-file-edit --set-name="Firebot v${_mainver}" ${srcdir}/${pkgname}.desktop
+  cp --no-preserve=mode,ownership "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  chmod +x "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # rm "${pkgdir}/opt/${pkgname}/${pkgname}.desktop"
 }
