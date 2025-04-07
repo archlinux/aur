@@ -1,7 +1,7 @@
 pkgbase = firebot
 	pkgdesc = A powerful all-in-one bot for Twitch streamers
 	pkgver = 5.64.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crowbartools/Firebot
 	arch = x86_64
 	license = GPL3

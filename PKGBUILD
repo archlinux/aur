@@ -3,7 +3,7 @@
 _mainver=5
 pkgname=firebot
 pkgver="${_mainver}.64.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful all-in-one bot for Twitch streamers"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
