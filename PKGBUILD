@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays
-pkgver=0.95.0
+pkgver=0.96.0
 pkgrel=1
-pkgdesc="Miracast implementation for GNOME"
+pkgdesc="Screencasting for GNOME. Supports the Miracast and Chromecast protocols."
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL-3.0-or-later')
@@ -29,7 +29,7 @@ optdepends=(
   'gstreamer-vaapi'
 )
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3ad6687352cf0b88099c3e2ba59923e034f2333a33c8017ce1b034454de90a2c')
+sha256sums=('454607156dad00f7ac8af9f6cfb5f849e5b56700f6578c5f50550b7e34e423f6')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
