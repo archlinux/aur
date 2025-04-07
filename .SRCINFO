@@ -1,6 +1,6 @@
 pkgbase = fudebako-git
 	pkgdesc = A GTK4 (GJS) based desktop shells
-	pkgver = 0.0.1
+	pkgver = r21.cff4401
 	pkgrel = 1
 	url = https://github.com/mcbeeringi/fudebako
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = fudebako-git
 	optdepends = gtk4-layer-shell
 	provides = fudebako
 	conflicts = fudebako
-	source = fudebako::git+https://github.com/mcbeeringi/fudebako.git
+	source = git+https://github.com/mcbeeringi/fudebako.git
 	sha256sums = SKIP
 
 pkgname = fudebako-git
