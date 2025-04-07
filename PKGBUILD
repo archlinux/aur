@@ -1,7 +1,7 @@
 pkgname=gephgui-wry-bin
-pkgver=5.0.2
-pkgrel=2
-pkgdesc="The command-line Geph5 client"
+pkgver=5.0.3
+pkgrel=1
+pkgdesc="Geph desktop GUI"
 arch=('x86_64')
 url="https://github.com/geph-official/gephgui-wry"
 download_url="https://github.com/geph-official/gephgui-pkg/releases/download"
@@ -10,10 +10,10 @@ provides=('gephgui-wry')
 conflicts=('gephgui-wry')
 depends=('webkit2gtk-4.1')
 source=(
-  "gephgui-wry-bin-5.0.2.deb::$download_url/v$pkgver/gephgui-wry_${pkgver}_amd64.deb"
+  "gephgui-wry-bin-$pkgver.deb::$download_url/v$pkgver/gephgui-wry_${pkgver}_amd64.deb"
   "geph.png::https://raw.githubusercontent.com/geph-official/gephgui-pkg/refs/heads/master/flatpak/icons/256x256/apps/io.geph.GephGui.png"
 )
-md5sums=('a6a8a0053c3502fc847321a6bca3906b'
+md5sums=('e3a5965e1b7a04bfca87dd2ad4366bc9'
          '4655e64a5d56c316383e1ffa79ddc772')
 
 package() {
