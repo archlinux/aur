@@ -1,6 +1,6 @@
 # Maintainer: Andrea Zanoni <andrea dot zanoni at polimi dot it>
 pkgname=mbdyn-git
-pkgver=r8479.eb3297c34
+pkgver=r18.fbacc87
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
