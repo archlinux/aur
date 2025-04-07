@@ -1,5 +1,10 @@
 Release history
 
+  Version 3.16 (2025-04-03)
+
+     * Corrected   fix   for  Read  device  identification  for  a  slave
+       conformity level of 1 triggered wrongly an Invalid reply error
+
   Version 3.15 (2024-09-27)
 
      * Add support to display integer values as unsigned values
