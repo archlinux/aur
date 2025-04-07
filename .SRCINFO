@@ -1,0 +1,14 @@
+pkgbase = ucn
+	pkgdesc = utility to print unicode symbol names
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mgumz/ucn
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = go
+	depends = glibc
+	source = ucn-1.0.0.tar.gz::https://github.com/mgumz/ucn/archive/v1.0.0.tar.gz
+	sha256sums = 12ec1d661fcdd60000f4843129b0f2de594951176421124c2ff64416dc41fa7b
+
+pkgname = ucn
