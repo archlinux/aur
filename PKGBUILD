@@ -5,8 +5,8 @@
 pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
-pkgver=0.4.r0.gd9e239d
-pkgrel=2
+pkgver=0.5.r0.g7f4b314
+pkgrel=1
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
@@ -18,32 +18,26 @@ optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
             'kvantum: Powerful extra customisable themes')
 provides=("${_pkgname}")
 conflicts=('koi')
-source=("${pkgname}::git+https://github.com/baduhai/Koi.git")
+source=("${_pkgname}::git+https://github.com/baduhai/Koi.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cmake -S "${srcdir}/${pkgname}/src/" \
-          -B "${srcdir}/${pkgname}/build/" \
-          -DCMAKE_INSTALL_PREFIX="/usr/"
+    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
+          -S "${srcdir}/${_pkgname}/src/" \
+          -B "${srcdir}/${_pkgname}/build/"
 
-    cmake --build "${srcdir}/${pkgname}/build/"
-}
-
-check() {
-    desktop-file-validate "${srcdir}/${pkgname}/src/${_pkgname}.desktop"
-    fdupes -r -s "${srcdir}/"
+    cmake --build "${srcdir}/${_pkgname}/build/"
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install "${srcdir}/${pkgname}/build/"
+    cmake --install "${srcdir}/${_pkgname}/build/"
 
-    install -Dm644 "${srcdir}/${pkgname}/src/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-
-    desktop-file-validate "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    fdupes -r -s "${pkgdir}/"
+# Checking `pkgdir` ...
+    desktop-file-validate "${pkgdir}/usr/share/applications/local.${__pkgname}DbusInterface.desktop"
+    fdupes -r -s          "${pkgdir}/"
 }
