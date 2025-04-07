@@ -3,7 +3,7 @@
 _pkgauthor=ankddev
 _pkgname=envfetch
 pkgname=${_pkgname}-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Lightweight CLI tool for working with environment variables'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 sha256sums=('b55367732c708aae2332981d9f093b62183876aeb28b424e4b4138db94737366'
-            'ecb8084ed5e905d6bda39a599c3eb270f30c7d97be8a0d2208535e2a598826a6')
-sha256sums_x86_64=('36bc18e01a9e774bd1a7fad940d7beef99d5bdba2ef16113af8164ffb5e6e1ff')
-sha256sums_aarch64=('5b1de98df8e08f71e3fd336db61e1cafb81e3476e382f55b41e60222651ff999')
+            'c26db59ff03d7b07c6b19338949672b47913362e3db370c89d397cd1bd6ada98')
+sha256sums_x86_64=('cea05a9e90053db11e39d4e5898b6ee150cf0537b5e1313992d2c35928c2c9ac')
+sha256sums_aarch64=('885c75256cfb62015c9ee5fb2a330af1c33d3697fb951644eb433276bc0999e0')
 
 prepare() {
   cd "${srcdir}/" || exit
