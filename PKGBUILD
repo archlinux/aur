@@ -2,23 +2,21 @@
 
 _pkgname=nym-binaries
 pkgname="${_pkgname}-bin"
-pkgver=2023.1
-_pkgvername=milka
+pkgver=2025.6
+_pkgvername=chuckles
 pkgrel=1
 pkgdesc="The Nym Privacy Platform binaries"
 arch=('x86_64')
 url="https://github.com/nymtech/nym"
 license=('Apache 2.0')
 _sources=(
-    explorer-api            2e843c53d8998f16f42bb96f61ae4a441244d6e285140ee7d87cb2de1d1ae55c
-    nym-api                 975506eab74af270a30398435198e00b05f87489b4cade71839a6f33522484f4
-    nym-cli                 d88fef42b50e3004d13e49e194365d76fa9620e78c71d77a71d934e009af55ea
-    nym-client              2944cd192f74db93e26d3369a53574d1778b0dbc9abda0ee48882e40ff41f1ab
-    nym-gateway             6c8e92e03048200308e0724675059c2dfba91d8cb0560857a3a319448bb0bf05
-    nym-mixnode             05367420b7b842f1850011e6dbc5fc25e9e794df4695725406171272d7105572
-    nym-network-requester   473f6842f58f30f8146964e528d4d604ae35416ecefd94fe860a4ccda596ed50
-    nym-network-statistics  51afc9e169289e1a2a0e513e3c7ecbc907fb2cccd2854c821bbf73106d65b413
-    nym-socks5-client       a362d6bf1859bf55c38ffdf87e77ee8910f654ca90cb80e3fbef06d3f8ba1002
+    nym-api                 c73745feef8e49ddae271b88932528e2df3c0d047fc3f6aeb59221ded4fde8c1
+    nym-cli                 7c900f52fdb7a986bdf1dbb538afa67a82a81b971f0ed4cbdc5017f9222ccd35
+    nym-client              ad6886f507d14773387934bf3b7f1b1a2b6353643ae99d7ce1811e0a75c74ce1
+    nym-network-requester   d9229139dd04bdbd713f21f7c22fa96f9d25231cbc3555dcb5ae9aee23438854
+    nym-node                c0abc782e26a4a73ac51524c0b0564182fafbe040028ea53a402259aca1a4a93
+    nym-socks5-client       2155fd4482c8c18e7408384cdd576a89e52a1fe39464d65ea0938346f6be5f78
+    nymvisor                7b878bf52e00461c31c60e61347f6d912bf73529177f12b5a0867046df1f5fff
 )
 source_x86_64=()
 sha256sums_x86_64=()
