@@ -2,7 +2,7 @@
 
 _gemname='bootsnap'
 pkgname="ruby-${_gemname}"
-pkgver=1.13.0
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="Boot large ruby/rails apps faster"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-msgpack')
 makedepends=('ruby-bundler' 'ruby-rake-compiler' 'ruby-rake')
 checkdepends=('ruby-minitest' 'ruby-mocha')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ea762680735540d37c98d1fba45bc6d416fc3c176f91626d93b345435bd9690aa439a26ffed43ddbf4810babb91b8cbf87f92546525d536a427cdb57f49262e1')
+sha512sums=('8f0b9a72cb6a8339c0e91d7b0a58ab31fd9f5c416494cfe42e1f3107625d1743653f039f257722dd040d16dc80372edfa6d707bd76aa7430246532263e1151e6')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
