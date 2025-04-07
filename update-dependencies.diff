@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index cb228bce8..f8839e431 100644
+index d25b01690..03075d979 100644
 --- a/package.json
 +++ b/package.json
-@@ -100,6 +100,9 @@
+@@ -102,6 +102,9 @@
      },
      "chai-enzyme": {
        "cheerio": "1.0.0-rc.10"
