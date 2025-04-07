@@ -1,7 +1,7 @@
 # Maintainer: carlyle
 
 pkgname=aurx
-pkgver=1.0.1.r6.g4ab427d
+pkgver=1.0.1.r15.gfc069e3
 pkgrel=1
 pkgdesc="An AUR helper written in C."
 arch=('x86_64')
