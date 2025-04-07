@@ -1,10 +1,11 @@
 pkgbase = moonlight-qt-axi
 	pkgdesc = GameStream client for PCs
 	pkgver = 6.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Axixi2233/moonlight-qt
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = vulkan-headers
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-svg
