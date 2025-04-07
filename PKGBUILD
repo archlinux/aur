@@ -2,14 +2,14 @@
 pkgname=less-reader-git
 _pkgname='Less Reader'
 _zhsname='简阅'
-pkgver=0.0.1.r4.gb34dc69
-_electronversion=31
+pkgver=0.0.3.r2.gd3e7545
+_electronversion=35
 _nodeversion=20
 pkgrel=1
 pkgdesc="An e-book reader developed based on Electron + Vue 3. Supported formats: epub, mobi, azw3, (pdf, txt are not supported yet)(Use system-wide electron)"
 arch=('any')
 url="https://github.com/laowus/Less-Reader"
-license=('LicenseRef-unknown')
+license=('Apache-2.0')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -80,6 +80,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/output/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/output/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/public/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
 }
