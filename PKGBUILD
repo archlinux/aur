@@ -6,7 +6,7 @@
 _pkgname="gitify"
 pkgname="$_pkgname-git"
 pkgver=6.2.0.r75.g111e9d0
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub tray icon and notifications"
 url="https://github.com/gitify-app/gitify"
 license=('MIT')
@@ -58,14 +58,14 @@ _nvm_env() {
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
   nvm install $_nodeversion
   nvm use $_nodeversion
-
-  _electron_version=$(cat /usr/lib/electron/version)
 }
 
 build() (
   _nvm_env
 
+  local _electron_version=$(cat /usr/lib/electron/version)
   local _electron_builder_options=(
+    --linux dir
     --publish never
     -c.electronDist="/usr/lib/electron${_electron_version%%.*}"
     -c.electronVersion="${_electron_version:?}"
@@ -82,13 +82,13 @@ build() (
   pnpm run build:main
   pnpm run build:renderer
   pnpm run prepare:remove-source-maps
-  pnpm -c exec "electron-builder --linux dir ${_electron_builder_options[*]}"
+  pnpm -c exec "electron-builder ${_electron_builder_options[*]}"
 )
 
-package() (
-  _nvm_env
+package() {
+  local _electron_version=$(cat /usr/lib/electron/version)
 
-  depends=("electron${_electron_version:-}")
+  depends=("electron${_electron_version%%.*}")
 
   install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
 
@@ -131,6 +131,6 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron${_electron_version:-} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
+exec electron${_electron_version%%.*} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
-)
+}
