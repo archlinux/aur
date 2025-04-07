@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2025.04.05.r0.g5110b43
+pkgver=2025.04.06.r1.ge39eea2
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=('x86_64')
@@ -25,10 +25,12 @@ makedepends=(
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
+    "${pkgname//-/.}-dictionaries::git+https://github.com/textbrowser/dooble-dictionaries"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '29b1db96c081272e804e319cec3d35978ace6bbf5b930bfb5cdb11f35d8e9a6e')
+            'SKIP'
+            '3a1457d397f4de6102c5722d7cae9e43da056117504d04ae74c5f8fec5c5fd52')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -40,19 +42,23 @@ build() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-git}.sh"
+    cd "${srcdir}/${pkgname//-/.}/Translations"
+    ln -sf qtbase_zh_CN.qm dooble_zh_CN.qm
+    ln -sf dooble_zh_CN_simple.ts dooble_zh_CN.ts
     cd "${srcdir}/${pkgname//-/.}"
+    export DOOBLE_DICTIONARIES_DIRECTORY="${srcdir}/${pkgname//-/.}-dictionaries/Dictionaries"
     sed -i "s/\/usr\/bin\/${pkgname%-git}/${pkgname%-git} %U/g" Distributions/"${pkgname%-git}".desktop
     #sed '38i\#include <QInputDialog>' -i Source/dooble.cc
     sed -i "/-Werror/d" "${pkgname%-git}.pro"
-    cp Translations/dooble_zh_CN_simple.qm Translations/dooble_zh_CN.qm
-    cp Translations/dooble_zh_CN_simple.ts Translations/dooble_zh_CN.ts
     qmake -o Makefile "${pkgname%-git}.pro"
     make
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 "${srcdir}/${pkgname//-/.}/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/"{Charts,Contributions,Data,Distributions,Documentation,Icons,Translations,UI} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/"{Charts,Contributions,Data,Distributions,Documentation,Icons,Translations,UI} \
+        "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}-dictionaries/Dictionaries" "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/Icons/Logo/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname//-/.}/Distributions/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"

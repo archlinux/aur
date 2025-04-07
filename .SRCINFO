@@ -1,6 +1,6 @@
 pkgbase = dooble-git
 	pkgdesc = Web browser based on QtWebEngine
-	pkgver = 2025.04.05.r0.g5110b43
+	pkgver = 2025.04.06.r1.ge39eea2
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = dooble-git
 	provides = dooble
 	conflicts = dooble
 	source = dooble.git::git+https://github.com/textbrowser/dooble.git
+	source = dooble.git-dictionaries::git+https://github.com/textbrowser/dooble-dictionaries
 	source = dooble.sh
 	sha256sums = SKIP
-	sha256sums = 29b1db96c081272e804e319cec3d35978ace6bbf5b930bfb5cdb11f35d8e9a6e
+	sha256sums = SKIP
+	sha256sums = 3a1457d397f4de6102c5722d7cae9e43da056117504d04ae74c5f8fec5c5fd52
 
 pkgname = dooble-git
