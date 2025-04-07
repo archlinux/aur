@@ -25,7 +25,7 @@ depends=(
     'xdg-utils'
     'python-gobject'
     'gtk4'
-  )
+)
 makedepends=(
     'git'
     'imagemagick'
@@ -49,15 +49,18 @@ pkgver() {
 }
 build () {
     cd "${srcdir}/${pkgname//-/.}"
+    mv data/"${_appname}.desktop" data/"${pkgname%-git}.desktop"
+    mv data/"${_appname}.metainfo.xml" data/"${pkgname%-git}.metainfo.xml"
+    sed -i "s/${_appname}/${pkgname%-git}/g" pyproject.toml
+    sed -i "s/${_appname}/${pkgname%-git}/g" data/"${pkgname%-git}.metainfo.xml"
     python -m build --wheel --no-isolation
     python -m installer --destdir="${srcdir}" dist/*.whl
-    sed -i "s/${_appname}/${pkgname%-git}/g" "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml"
 }
 package () {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib/python${_pyver}/site-packages"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/python${_pyver}/site-packages/${_pkgname}"* \
         "${pkgdir}/usr/lib/python${_pyver}/site-packages"
-    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
-    install -Dm644 "${srcdir}/usr/share/metainfo/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/metainfo/${pkgname%-git}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
 }
