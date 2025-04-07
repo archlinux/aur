@@ -5,7 +5,7 @@
 
 _gemname='railties'
 pkgname="ruby-${_gemname}"
-pkgver=6.1.4.1
+pkgver=8.0.2
 pkgrel=2
 pkgdesc='Tools for creating, working with, and running Rails applications'
 arch=('any')
