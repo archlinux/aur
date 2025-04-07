@@ -2,8 +2,8 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname="TriliumNext Notes"
-pkgver=0.92.4
-_electronversion=34
+pkgver=0.92.6
+_electronversion=35
 pkgrel=1
 pkgdesc="Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /}-v${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /}-v${pkgver}-linux-x64.rpm")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('64be9342a7a64b4704a47b444f9a20290d6b126c4dd6b48dc3a4e9c11462ef10')
-sha256sums_x86_64=('e43014879c14c2c9ec1a4cfefa97229b36e6291083a0ceeccfe5abf619b5ae66')
+sha256sums_aarch64=('ba943d08b00d923ef5dc9f934c0a87cf64818c58dc9cada598ccb7e781c90e8f')
+sha256sums_x86_64=('4612cd575c71ba210b96a0fe95ab3c22b41ee2e753291895319175c1d2ee18b7')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -52,8 +52,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_appname}/resources/"{app.asar.unpacked,styles,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    #cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${_appname}/dump-db" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    #install -Dm644 "${srcdir}/usr/lib/${_appname}/anonymize-database.sql" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/doc/${_appname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
