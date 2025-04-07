@@ -1,6 +1,6 @@
 # Maintainer: Amir Karimov <amirkarimov46@gmail.com>
 pkgname=anicli-ru
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Cli для просмотра аниме на русском языке."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mpv' 'ffmpeg' 'libxml2')
 makedepends=('go')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OMRIFIJI/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af16a0a847b2f8df007f5e186f926b3c580425f123385125093a8dfb37437b7a')
+sha256sums=('042a2110081c5906178b0c23c10775beed7f256a7448795e9bf8396c9ed65617')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
