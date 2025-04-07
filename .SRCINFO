@@ -1,7 +1,7 @@
 pkgbase = python-qh3-git
 	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)
-	pkgver = 1.4.2.r4.g540ec19
-	pkgrel = 2
+	pkgver = 1.4.3.r0.gc3fc061
+	pkgrel = 1
 	url = https://github.com/jawah/qh3
 	arch = aarch64
 	arch = x86_64

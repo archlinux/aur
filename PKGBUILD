@@ -5,8 +5,8 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.4.2.r4.g540ec19
-pkgrel=2
+pkgver=1.4.3.r0.gc3fc061
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -35,8 +35,7 @@ options=('lto')
 pkgver() {
   cd "$_srcname"
 
-  git describe --tags --long \
-  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
