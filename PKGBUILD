@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=survivalsvm
-_pkgver=0.0.5
+_pkgver=0.0.6
 pkgname=r-${_pkgname,,}
-pkgver=0.0.5
-pkgrel=3
+pkgver=0.0.6
+pkgrel=1
 pkgdesc='Survival Support Vector Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea4d39ebecb38e4e4e89891b2d5c2ba222344879bcdd8dac9be0078c73cb90ac')
+sha256sums=('804a8ffa13bad78b94d60a1d4998a8387885e473402e34fd6dee4d773ffdeb7a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
