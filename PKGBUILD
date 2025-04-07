@@ -10,7 +10,7 @@
 
 pkgname=jlc-assistant
 pkgver=5.0.69
-pkgrel=1
+pkgrel=2
 pkgdesc="jlc-assistant, PCB order, 嘉立创下单小助手，修正预编译版本"
 arch=('x86_64')
 url="https://download.jlc.com/pcAssit/"
@@ -21,11 +21,15 @@ source=("https://download.jlc.com/pcAssit/${pkgver}/JLCPcAssit-linux-x64-${pkgve
 sha256sums=('SKIP')
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/opt/jlc-assistant"
-  cp "${srcdir}/jlc-assistant-linux-x64-${pkgver}/jlc-assistant/jlc-assistant.dkt" "${pkgdir}/usr/share/applications/jlc-assistant.desktop"
-  cp -rf "${srcdir}/jlc-assistant-linux-x64-${pkgver}/jlc-assistant" "${pkgdir}/opt/jlc-assistant"
-  chmod -R 777 "${pkgdir}/opt/jlc-assistant"
+    cd "${srcdir}"
+    unzip -q "JLCPcAssit-linux-x64-${pkgver}.zip"
+    cd "jlc-assistant-linux-x64-${pkgver}"
+    rm -f install.sh uninstall.sh
+    install -d "${pkgdir}/opt/jlc-assistant"
+    cp -r jlc-assistant/* "${pkgdir}/opt/jlc-assistant"
+    chmod -R 777 "${pkgdir}/opt/jlc-assistant"
+    install -Dm644 "${pkgdir}/opt/jlc-assistant/jlc-assistant.dkt" \
+        "${pkgdir}/usr/share/applications/jlc-assistant.desktop"
 }
 
 # To build and install the package, run:
