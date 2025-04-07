@@ -1,5 +1,5 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Andreas 'Segaja' Schleifer <segaja at archlinux dot org>
 
 _gemname=cairo
