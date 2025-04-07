@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-session-git
-pkgver=1.0.0.alpha.6.r7.ge9858d9
-pkgrel=2
+pkgver=1.0.0.alpha.6.r11.g37c95bc
+pkgrel=1
 pkgdesc="Session manager for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-session"
@@ -83,7 +83,5 @@ build() {
 package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
-
-  install -Dm644 data/dconf/profile/cosmic -t "$pkgdir/usr/share/dconf/profile/"
 }
 
