@@ -1,7 +1,7 @@
 # Maintainer: Konrad Beckmann <konrad.beckmann@gmail.com>
 
 pkgname=airspyhf-git
-pkgver=r90.2bf53e1
+pkgver=r124.39f06a4
 pkgrel=1
 pkgdesc="Host code for AirspyHF+ SDR."
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,7 +25,7 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -Wno-dev ../
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -Wno-dev ../
   make
 }
 
