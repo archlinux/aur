@@ -3,8 +3,8 @@ of ST, ESC \, or BEL. rxvt-unicode tried to use the same type of termination
 as was in the query but didn't correctly handle the multiple-char sequence
 used for 7-bit queries. This fixes it.
 
---- src/command.C
-+++ src/command.C
+--- a/src/command.C
++++ b/src/command.C
 @@ -3021,8 +3021,13 @@
                  tt_printf ("%-.250s\012", rs[Rs_display_name]);
                break;
@@ -222,8 +222,8 @@ used for 7-bit queries. This fixes it.
          break;
  #endif
      }
---- src/rxvt.h
-+++ src/rxvt.h
+--- a/src/rxvt.h
++++ b/src/rxvt.h
 @@ -399,6 +399,12 @@
    C0_DLE, C0_DC1, C0_DC2, D0_DC3, C0_DC4, C0_NAK, C0_SYN, C0_ETB,
    C0_CAN, C0_EM , C0_SUB, C0_ESC, C0_IS4, C0_IS3, C0_IS2, C0_IS1,

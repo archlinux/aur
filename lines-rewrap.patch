@@ -1,5 +1,5 @@
---- src/screen.C
-+++ src/screen.C
+--- a/src/screen.C
++++ b/src/screen.C
 @@ -293,7 +293,6 @@
  
        int common_col = min (prev_ncol, ncol);

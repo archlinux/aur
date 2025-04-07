@@ -1,5 +1,5 @@
---- config.h.in
-+++ config.h.in
+--- a/config.h.in
++++ b/config.h.in
 @@ -291,6 +291,9 @@
  /* Define if you want 256-color support */
  #undef USE_256_COLORS
@@ -10,8 +10,8 @@
  /* Enable extensions on AIX 3, Interix.  */
  #ifndef _ALL_SOURCE
  # undef _ALL_SOURCE
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -734,6 +734,7 @@
  enable_assert
  enable_warnings
@@ -50,8 +50,8 @@
  # Check whether --enable-unicode3 was given.
  if test ${enable_unicode3+y}
  then :
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -197,6 +197,16 @@
    AC_DEFINE(USE_256_COLORS, 1, Define if you want 256-color support)
  fi
@@ -69,8 +69,8 @@
  AC_ARG_ENABLE(unicode3,
    [  --enable-unicode3       use 21 instead of 16 bits to represent unicode characters],
    [if test x$enableval = xyes -o x$enableval = xno; then
---- README.configure
-+++ README.configure
+--- a/README.configure
++++ b/README.configure
 @@ -9,8 +9,8 @@
  
      --enable-everything
@@ -103,8 +103,8 @@
          instance.
  
      --with-name=NAME (default: urxvt)
---- src/command.C
-+++ src/command.C
+--- a/src/command.C
++++ b/src/command.C
 @@ -1824,11 +1824,11 @@
    if (rs[Rs_fade])
      {
@@ -174,8 +174,8 @@
                else if (nargs > i + 4 && arg[i + 1] == 2)
                  {
                    unsigned int r = arg[i + 2];
---- src/init.C
-+++ src/init.C
+--- a/src/init.C
++++ b/src/init.C
 @@ -1138,7 +1138,7 @@
  
    for (i = 0; i < NRS_COLORS; i++)
@@ -235,8 +235,8 @@
    gcvalue.graphics_exposures = 0;
  
    gc = XCreateGC (dpy, vt,
---- src/main.C
-+++ src/main.C
+--- a/src/main.C
++++ b/src/main.C
 @@ -251,10 +251,10 @@
        for (int i = 0; i < TOTAL_COLORS; i++)
          if (ISSET_PIXCOLOR (i))
@@ -317,8 +317,8 @@
  }
  
  void
---- src/rxvtfont.C
-+++ src/rxvtfont.C
+--- a/src/rxvtfont.C
++++ b/src/rxvtfont.C
 @@ -243,20 +243,20 @@
  
  # ifdef HAVE_IMG
@@ -419,8 +419,8 @@
      }
  }
  
---- src/rxvtfont.h
-+++ src/rxvtfont.h
+--- a/src/rxvtfont.h
++++ b/src/rxvtfont.h
 @@ -72,8 +72,10 @@
    char *fontdesc;
  
@@ -434,8 +434,8 @@
  #else
    enum { fontCount =  31 };
  #endif
---- src/rxvt.h
-+++ src/rxvt.h
+--- a/src/rxvt.h
++++ b/src/rxvt.h
 @@ -41,7 +41,11 @@
  #else
  typedef uint16_t text_t; // saves lots of memory
@@ -585,8 +585,8 @@
    void scr_add_lines (const wchar_t *str, int len, int minlines = 0) noexcept;
    void scr_backspace () noexcept;
    void scr_tab (int count, bool ht = false) noexcept;
---- src/rxvtperl.xs
-+++ src/rxvtperl.xs
+--- a/src/rxvtperl.xs
++++ b/src/rxvtperl.xs
 @@ -802,6 +802,18 @@
  
  PROTOTYPES: ENABLE
@@ -715,8 +715,8 @@
                 ->replace (img);
  
              THIS->bg_img = img;
---- src/screen.C
-+++ src/screen.C
+--- a/src/screen.C
++++ b/src/screen.C
 @@ -628,12 +628,51 @@
      rstyle = SET_BGCOLOR (rstyle, color);
  }
@@ -870,8 +870,8 @@
        scrollBar.state = SB_STATE_IDLE;
        scrollBar.show (0);
      }
---- src/scrollbar.C
-+++ src/scrollbar.C
+--- a/src/scrollbar.C
++++ b/src/scrollbar.C
 @@ -72,8 +72,8 @@
                                   total_width (),
                                   term->szHint.height,
@@ -883,8 +883,8 @@
        XDefineCursor (term->dpy, win, leftptr_cursor);
  
        XSelectInput (term->dpy, win,
---- src/scrollbar-next.C
-+++ src/scrollbar-next.C
+--- a/src/scrollbar-next.C
++++ b/src/scrollbar-next.C
 @@ -154,15 +154,15 @@
  
    gcvalue.graphics_exposures = False;
@@ -913,8 +913,8 @@
  #if 0
    //color used by rxvt
    if (color.set (term, rgba (0x51aa, 0x5555, 0x5144)))
---- src/scrollbar-plain.C
-+++ src/scrollbar-plain.C
+--- a/src/scrollbar-plain.C
++++ b/src/scrollbar-plain.C
 @@ -38,7 +38,7 @@
        XGCValues gcvalue;
  
@@ -924,8 +924,8 @@
  
        pscrollbarGC = XCreateGC (term->dpy, win, GCForeground, &gcvalue);
      }
---- src/scrollbar-rxvt.C
-+++ src/scrollbar-rxvt.C
+--- a/src/scrollbar-rxvt.C
++++ b/src/scrollbar-rxvt.C
 @@ -158,11 +158,11 @@
  
        init |= SB_STYLE_RXVT;
@@ -941,8 +941,8 @@
        scrollbarGC = XCreateGC (term->dpy, term->vt, GCForeground, &gcvalue);
      }
    else
---- src/scrollbar-xterm.C
-+++ src/scrollbar-xterm.C
+--- a/src/scrollbar-xterm.C
++++ b/src/scrollbar-xterm.C
 @@ -49,13 +49,13 @@
          rxvt_fatal ("can't create bitmap\n");
  

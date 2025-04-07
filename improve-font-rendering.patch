@@ -1,5 +1,5 @@
---- src/rxvtfont.C
-+++ src/rxvtfont.C
+--- a/src/rxvtfont.C
++++ b/src/rxvtfont.C
 @@ -1253,98 +1253,60 @@
      return false;
  
@@ -148,8 +148,8 @@
  
            // the xft font cell might differ from the terminal font cell,
            // in which case we use the average between the two.
---- src/screen.C
-+++ src/screen.C
+--- a/src/screen.C
++++ b/src/screen.C
 @@ -2540,8 +2540,8 @@
                  XSetForeground (dpy, gc, lookup_color(fore, pix_colors));
  
@@ -161,8 +161,8 @@
              }
          }                     /* for (col....) */
      }                         /* for (row....) */
---- src/table/jis0208_1990_0.h
-+++ src/table/jis0208_1990_0.h
+--- a/src/table/jis0208_1990_0.h
++++ b/src/table/jis0208_1990_0.h
 @@ -2241,6 +2241,7 @@
  
  static uint32_t cs_jis0208_1990_0_from_unicode (unicode_t unicode) {

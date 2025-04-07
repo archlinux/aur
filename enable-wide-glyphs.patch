@@ -1,5 +1,5 @@
---- config.h.in
-+++ config.h.in
+--- a/config.h.in
++++ b/config.h.in
 @@ -18,6 +18,9 @@
  /* Define if you want your background to use the parent window background */
  #undef ENABLE_TRANSPARENCY
@@ -10,8 +10,8 @@
  /* Define if you want european extended codesets */
  #undef ENCODING_EU
  
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -739,6 +739,7 @@
  enable_combining
  enable_xft
@@ -71,8 +71,8 @@
  
  scrolltypes=plain
  
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -123,6 +123,7 @@
         support_8bitctrls=no
         support_iso14755=no
@@ -112,8 +112,8 @@
  if test x$support_iso14755 = xyes; then
    AC_DEFINE(ISO_14755, 1, Define if you want ISO 14755 extended support)
  fi
---- src/command.C
-+++ src/command.C
+--- a/src/command.C
++++ b/src/command.C
 @@ -237,7 +237,9 @@
  # endif
        scr_overlay_set (11, y + 1, ch, r);
@@ -124,8 +124,8 @@
          scr_overlay_set (12, y + 1, NOCHAR, r);
      }
  
---- src/rxvtfont.C
-+++ src/rxvtfont.C
+--- a/src/rxvtfont.C
++++ b/src/rxvtfont.C
 @@ -471,6 +471,7 @@
        else
          switch (t)
@@ -171,8 +171,8 @@
            ep->y = y_ + ascent;
  
            // the xft font cell might differ from the terminal font cell,
---- src/screen.C
-+++ src/screen.C
+--- a/src/screen.C
++++ b/src/screen.C
 @@ -977,7 +977,61 @@
  # endif
  #endif
@@ -250,8 +250,8 @@
                  drp[col + i + 1] = srp[col + i + 1] ^ RS_redraw;
  
                // force redraw before "careful" characters to avoid pixel droppings
---- src/xdefaults.C
-+++ src/xdefaults.C
+--- a/src/xdefaults.C
++++ b/src/xdefaults.C
 @@ -299,6 +299,9 @@
  #if ENABLE_STYLES
                                      "styles,"

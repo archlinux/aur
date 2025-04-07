@@ -4,10 +4,10 @@ _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 pkgver=9.31
-pkgrel=9
-url='http://software.schmorp.de/pkg/rxvt-unicode.html'
+pkgrel=10
+url='https://software.schmorp.de/pkg/rxvt-unicode.html'
 arch=('i686' 'x86_64')
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 makedepends=('signify')
 depends=(
     'libxft'
@@ -34,9 +34,9 @@ conflicts=(
 )
 _archive="$_pkgname-$pkgver"
 source=(
-    "http://dist.schmorp.de/$_pkgname/Attic/$_archive.tar.bz2"
-    "$_archive.tar.bz2.signature::http://dist.schmorp.de/$_pkgname/Attic/$_archive.tar.bz2.sig"
-    'dist.schmorp.de.pub::http://dist.schmorp.de/signing-key.pub'
+    "https://dist.schmorp.de/$_pkgname/Attic/$_archive.tar.bz2"
+    "$_archive.tar.bz2.signature::https://dist.schmorp.de/$_pkgname/Attic/$_archive.tar.bz2.sig"
+    'dist.schmorp.de.pub::https://dist.schmorp.de/signing-key.pub'
     'urxvt.desktop'
     'urxvtc.desktop'
     'urxvt-tabbed.desktop'
@@ -56,11 +56,11 @@ b2sums=('439a8c33b7260e0f2fd68b8a4409773c06c3bb7623b5dfbbb0742cc198c9fd25e8a2479
         '71072f1f262b0759f0251654b7563e0dc5b3f73bc3705321d4e75230c51692541a8f5aa289657714baeab93a9e7b404a0b3ce0eecafb116c389a640209916916'
         '7f760beda37d781ae5bfff280fb912b3210ed4e60c82d279706feb023e5e10e9c5abe8eaa9bef6d7da460df39808c56de91ee2d5ffc63ea0c2e402810fa3dfb5'
         '9e3c03390d44a53b933fd6e11f3b644c43f377d3848975d9a5d1b964b042aca08995c968ada22b143bdc014691282242c8e718820f16086b35588242eb71a15b'
-        '94b110f9901786c398c313199da17b5981644241de2385208d36a3cccbf029c518ee619bbadff0348405bc01cd8f24abf41aa361b2f140178345197c2b476e03'
-        '06b8a321a59c92ad781f882e454a4868a5b9e6bf482217568a6ed8a2e82e5e2e604bcea1efd79aa6dbaffb6c1e12416f4232966e718b2001142082a57e15468f'
-        'ba382f5b1b2d7494a2faee2674530fae21aa36ce9e6aea7375c354fa8036ef37f34759b164658856cb4bebbc8f34be79dc26eca83670b945e956dae1d54bf842'
-        '83cad5f2583ea152c7da1fc804a9ce7e7ee8d7b9735645b647172a8d0512c8cdcf44b45e16ccd3b8770c971749aecfc8d172009bffb479ca00d12b7697b012cd'
-        '05faae03a36b71fa5a9105f143b8e2d084014857cc4012c25a531808392c5a6e48ea72cd0857beb494d76b7b0a7943ec8da3e28e411d800e29b8ac6ae4e21788')
+        '74a5a77d3c76783448e4765a18c0dd7cda5823ce4e6fad747739496202eb991d8a8ac6a26e23492b9902f920b30f32cd533384bd27ef352c82cccb943cd8e5c0'
+        '136ffb38a0a5820a413ddf85a88556d57dc5ab9944454596402692f336cbc5ec96180534eba04f0921dfb9dcbe59a0849197842e12c65eab59ef0741e6ee3b91'
+        '564371ab9873c5bf12a95e0a2807a166eb472ae37f1fe6b5e6afd8335ca106f40dbce152fa9df11531df74d75a734cb32be57921223bbd0e7db85f4e27bd0f13'
+        '88c07389328c12b5c639b226d9a41d1d15eddeb7212431653832d53b0b786ef1be1dd7f32023ea19078b103217299fda8333668f73246b660a0e07aaa54ad108'
+        '4365664301075347df66c38ce994ef8700043a2ab09770f3e9caf8c98ba7673ab93507029782cc34efcd6c1cc203b6ea9139a7a411a8f3398f4f43f3bfb58519')
 
 prepare() {
     mv -v "$_archive.tar.bz2.signature" "$_archive.tar.bz2.sig"
@@ -69,13 +69,13 @@ prepare() {
     cd "$_archive"
 
     # WORKAROUND: multiple-char sequence for 7-bit queries
-    # http://lists.schmorp.de/pipermail/rxvt-unicode/2023q1/002640.html
-    patch -p0 -i ../7-bit-queries.patch
+    # https://lists.schmorp.de/pipermail/rxvt-unicode/2023q1/002640.html
+    patch -p1 -i ../7-bit-queries.patch
 
     # WORKAROUND: prompt position (revert lines-rewrap update in screen.C to 9.30)
-    # http://lists.schmorp.de/pipermail/rxvt-unicode/2023q2/002661.html
+    # https://lists.schmorp.de/pipermail/rxvt-unicode/2023q2/002661.html
     # https://wiki.archlinux.org/title/Rxvt-unicode#Wrong_shell_prompt_placement_after_upgrading_to_9.31
-    patch -p0 -i ../lines-rewrap.patch
+    patch -p1 -i ../lines-rewrap.patch
 
     ################################################################
     #                                                              #
@@ -87,14 +87,14 @@ prepare() {
     # the repo with original 24-bit-color.patch is no longer available:
     # https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
     # patch rewritten to work with version ≥ 9.26
-    patch -p0 -i ../24-bit-color.patch
+    patch -p1 -i ../24-bit-color.patch
 
     # https://aur.archlinux.org/packages/rxvt-unicode-cvs-patched-wideglyphs
-    patch -p0 -i ../enable-wide-glyphs.patch
+    patch -p1 -i ../enable-wide-glyphs.patch
 
     # https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch
     # patch rewritten to work with version ≥ 9.29
-    patch -p0 -i ../improve-font-rendering.patch
+    patch -p1 -i ../improve-font-rendering.patch
 }
 
 build() {
