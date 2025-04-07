@@ -1,0 +1,12 @@
+pkgbase = elastic-dashboard-bin
+	pkgdesc = A simple and modern dashboard for FRC
+	pkgver = 2025.2.2
+	pkgrel = 1
+	url = https://frc-elastic.gitbook.io/docs
+	arch = x86_64
+	license = MIT
+	provides = elastic_dashboard
+	source = elastic-linux-2025.2.2.zip::https://github.com/Gold872/elastic-dashboard/releases/download/v2025.2.2/Elastic-Linux.zip
+	md5sums = c913e674cd2a0859b3bb204631affe77
+
+pkgname = elastic-dashboard-bin
