@@ -17,14 +17,27 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
-        "README-${pkgver}.md::${_urlraw}/README.md")
+        "README-${pkgver}.md::${_urlraw}/README.md"
+        "TUTORIAL-${pkgver}.md::${_urlraw}/docs/Tutorial.md"
+        "fibonacci-memoized-${pkgver}.rsh::${_urlraw}/examples/fibonacci-memoized.rsh"
+        "fibonacci-${pkgver}.rsh::${_urlraw}/examples/fibonacci.rsh"
+        "guess-${pkgver}.rsh::${_urlraw}/examples/guess.rsh")
 source_x86_64=("${url}/releases/download/v${pkgver}-${pkgrel}/${_appname}-repl-${arch[0]}-unknown-linux-musl.tgz")
 source_aarch64=("${url}/releases/download/v${pkgver}-${pkgrel}/${_appname}-repl-${arch[1]}-unknown-linux-musl.tgz")
 sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
-            '37cf555782d1c9377100e98ce74780ab2b77da1c9572cec7411cdfb11d142c32')
+            '37cf555782d1c9377100e98ce74780ab2b77da1c9572cec7411cdfb11d142c32'
+            '0b96690b3b6fc02a9cb26bf775f4168d7bb7404ee498fc8fb83428c2d86c31de'
+            '4de35e1288bd083b3eb3dfa609c13d7f6b270c34d8bff7c8f2bd779591b7eac1'
+            '343653a05fb09514b663de3828019ea0ab50df0898ac94789d0bdbff950f935d'
+            '306c6c95be38ddc4eb30e1b28413ea3a7e13d1767ff7a85a4802f7b70fbfeba8')
 sha256sums_x86_64=('500247054cb75c780d34886542783ac9c865a21dfb8ba4c04c8af24cce0d10b1')
 sha256sums_aarch64=('e7f77aa7334c13cbdf1b80d34176c5cee032cb3b7d9089361825af7913c8698e')
 
+prepare() {
+	cd "${srcdir}/" || exit
+
+	sed -i '1s/^/#! \/bin\/reshell\n/' *.rsh
+}
 
 package() {
 	cd "${srcdir}/" || exit
@@ -34,4 +47,9 @@ package() {
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "TUTORIAL-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/TUTORIAL.md"
+
+	install -Dm755 "fibonacci-memoized-${pkgver}.rsh" "${pkgdir}/usr/share/${_execname}/examples/fibonacci-memoized.rsh"
+	install -Dm755 "fibonacci-${pkgver}.rsh" "${pkgdir}/usr/share/${_execname}/examples/fibonacci.rsh"
+	install -Dm755 "guess-${pkgver}.rsh" "${pkgdir}/usr/share/${_execname}/examples/guess.rsh"
 }
