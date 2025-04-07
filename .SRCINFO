@@ -1,7 +1,7 @@
 pkgbase = xenia-canary-bin
 	pkgdesc = Xenia Canary is an experimental fork of the Xenia emulator.
 	pkgver = 9132035
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xenia-canary
 	arch = x86_64
 	license = BSD-3-Clause

@@ -2,7 +2,7 @@
 
 pkgname="xenia-canary-bin"
 pkgver=9132035
-pkgrel=1
+pkgrel=2
 pkgdesc="Xenia Canary is an experimental fork of the Xenia emulator. "
 arch=('x86_64')
 url="https://github.com/xenia-canary"
@@ -64,9 +64,10 @@ package() {
   mkdir -p usr/share/applications
   echo "#!/bin/bash
   # wrapper that calls /usr/bin/xenia_canary in ~/.xenia-canary
-  mkdir -p $HOME/.xenia-canary
-  cd $HOME/.xenia-canary
-  exec /usr/bin/xenia_canary" > usr/bin/xenia-canary
+  mkdir -p \$HOME/.xenia-canary
+  cd \$HOME/.xenia-canary
+  cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary
+  exec \$HOME/.xenia-canary/xenia_canary" > usr/bin/xenia-canary
   chmod a+x usr/bin/xenia-canary
   echo "[Desktop Entry]
 Name=Xenia Canary
