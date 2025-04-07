@@ -1,6 +1,6 @@
 pkgbase = r-rms
 	pkgdesc = Regression Modeling Strategies
-	pkgver = 7.0.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rms
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-rms
 	optdepends = r-rmsb
 	optdepends = r-tcltk
 	optdepends = r-vgam
-	source = https://cran.r-project.org/src/contrib/rms_7.0-0.tar.gz
-	sha256sums = f72c6a798e649258aa4d9421113fef168563f26c7864a90bccfec7b4a43761a2
+	source = https://cran.r-project.org/src/contrib/rms_8.0-0.tar.gz
+	sha256sums = 278146d28b006fc0959b4a234f9c54fe9f052fe40e5d927a99bdd801a37c664a
 
 pkgname = r-rms
