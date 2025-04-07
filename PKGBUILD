@@ -12,7 +12,7 @@ depends=(gtk4
 makedepends=(cargo
              cargo-tauri
              cmake
-             nodejs
+             nodejs-lts-jod
              pnpm)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
