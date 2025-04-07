@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=oompaData
-_pkgver=3.1.4
+_pkgver=3.1.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b103227bf509aa32f5b74e1c19a06766')
-b2sums=('40209e9765976dae961af077798105203dd91ecf6146192e4e0acdf0b7d334769f4592a881ede442d6acdfbfec5952b160290a9fec2af62f3d94bdff41d924e8')
+md5sums=('7d31b67bd6c5729b457bfee63992e065')
+b2sums=('1af871c094322c759b8d0f9d10002d5b6f8561e0734c5ae3142d27f1675ac9baba7d96dddfacbc166c6aa530fb86ecfb79de2f5ab9913007fdc5bd49b1251fbd')
 
 build() {
   mkdir build
