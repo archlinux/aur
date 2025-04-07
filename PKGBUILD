@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-network-displays-git
-pkgver=0.95.0.r0.gbc136b1
+pkgver=0.96.0.r1.ge3b63f2
 pkgrel=1
-pkgdesc="Miracast implementation for GNOME"
+pkgdesc="Screencasting for GNOME. Supports the Miracast and Chromecast protocols."
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/gnome-network-displays"
 license=('GPL-3.0-or-later')
