@@ -5,7 +5,7 @@
 pkgname=swt
 pkgver=4.35
 pkgrel=1
-_date=202411201800
+_date=202502280140
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
