@@ -1,8 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=2.26.2
-_commit=d69acce3ea272b21b41613d1edc6bcdcd025b8a5
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Installer/Updater/Launcher for Northstar"
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -11,8 +10,8 @@ arch=('x86_64')
 depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk')
 makedepends=('cargo' 'git' 'npm')
 options+=('!lto')
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('942f809d152ccf78e599426f48f88c8c1a8bf06340d44277824caee349511434')
 
 prepare() {
 # Shortcut
@@ -25,7 +24,7 @@ Terminal=false
 Type=Application' > $pkgname.desktop
 
 # Only build the executable
-  cd FlightCore/src-tauri
+  cd FlightCore-$pkgver/src-tauri
   sed -i '/"bundle": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
 # Disable the updater
   sed -i '/"updater": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
@@ -43,16 +42,16 @@ Type=Application' > $pkgname.desktop
 }
 
 build() {
-  export CARGO_HOME="$srcdir/CARGO_HOME"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_HOME="$srcdir/CARGO_HOME"
   export npm_config_cache="$srcdir/npm_cache"
-  cd FlightCore
+  cd FlightCore-$pkgver
   npm run tauri build
 }
 
 package() {
   install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
-  cd FlightCore
+  cd FlightCore-$pkgver
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   cd docs
   install -Dm644 ../README.md DEV-TOOLS.md DEVELOPMENT.md FAQ.md TROUBLESHOOTING.md\
