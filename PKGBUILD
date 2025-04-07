@@ -15,7 +15,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-method_source' 'ruby-rake' 'ruby-thor')
 #checkdepends=('ruby-bundler' 'ruby-mysql2')
 source=("https://github.com/rails/rails/archive/v${pkgver}/rails-${pkgver}.tar.gz")
-sha512sums=('411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520')
+sha512sums=('d359714b510efe2876b8c800cc1faba517f5586c50c755428b73bf8e659ba915d10390c9992bb2b6915b229ce86a801862d26bbd43be965e081cdb12c9bb8e21')
 
 prepare() {
   cd "rails-${pkgver}/${_gemname}"
