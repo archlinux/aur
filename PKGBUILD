@@ -1,6 +1,6 @@
 # Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
 pkgname=adplug
-pkgver=2.3.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="AdLib sound player library"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="http://adplug.github.io/"
 license=('LGPL')
 depends=('libbinio')
 source=(https://github.com/adplug/adplug/releases/download/adplug-$pkgver/adplug-$pkgver.tar.bz2)
-md5sums=('35cb5005c512821ff480c10b43bba270')
+md5sums=('88b5320aa53c6558b4a3acac85a4a545')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
