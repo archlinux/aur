@@ -2,16 +2,17 @@
 
 pkgname=python-html-sanitizer
 _name=html_sanitizer
-pkgver=2.2.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Allowlist-based and very opinionated HTML sanitizer that can be used both for untrusted and trusted sources."
 arch=('any')
 url="https://pypi.org/project/html-sanitizer/"
-license=('GPL')
-depends=('python')
-makedepends=('python-setuptools' 'python-hatchling')
-source=("https://files.pythonhosted.org/packages/b8/ca/7e3d426dce533a392b88da844424f241387222e0dca8026265289a8c69e8/${_name}-${pkgver}.tar.gz")
-sha256sums=('e04e5bfdfb1940f634aaa44ab208bd189feb005ff035037057e579072321e915')
+license=('BSD-3-Clause')
+depends=('python' 'python-lxml-html-clean')
+makedepends=('python-setuptools' 'python-hatchling' 'python-build' 'python-installer')
+optdepends=('python-django: Ships with a module that can use Django settings') 
+source=("https://files.pythonhosted.org/packages/6a/71/84703065944d067694b1b63d69ff02a4248112ade0801353e51c5b522581/${_name}-${pkgver}.tar.gz")
+sha256sums=('8878c2383070e8a5023814d621e4133d15f8c013ec9a5619be280739d56d6ec5')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -21,4 +22,5 @@ build() {
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 "${srcdir}/${_name}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
