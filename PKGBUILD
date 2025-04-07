@@ -1,11 +1,12 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 # Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 
 _gemname='actionpack'
 pkgname="ruby-${_gemname}"
-pkgver=6.1.4.1
+pkgver=8.0.2
 pkgrel=4
 pkgdesc='Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server'
 arch=('any')
@@ -19,7 +20,7 @@ source=(
     "https://github.com/rails/rails/archive/v${pkgver}/rails-${pkgver}.tar.gz"
     'fix_tests.patch'
 )
-sha512sums=('411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520'
+sha512sums=('d359714b510efe2876b8c800cc1faba517f5586c50c755428b73bf8e659ba915d10390c9992bb2b6915b229ce86a801862d26bbd43be965e081cdb12c9bb8e21'
             'e25704542301f41fc81fa28c084f45646970a0308eaf9773920b67f09991d02cb822c0193eb7cb03b90a8967129296dabca2229c0869f7dfd13d583a5950a664')
 
 prepare() {
