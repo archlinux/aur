@@ -1,10 +1,10 @@
 pkgbase = ishell
 	pkgdesc = 轻量又高性能的SSH工具IShell：AI加持，快人一步
-	pkgver = 1.0.5
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://ishell.cc/
 	arch = x86_64
-	source = ishell-1.0.5.zip::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishell_linux_1.0.5.zip
-	sha256sums = 06316cb93610436d04bab676c04af80801f8b09fff200f1b0bfae306b1be4ede
+	source = ishell-2.0.5.zip::https://ishell-down.oss-cn-beijing.aliyuncs.com/ishell_linux_2.0.5.zip
+	sha256sums = 3f98cf9af95200d647ee8f61a885bd800b360254141191f45cf8a0a7660b9215
 
 pkgname = ishell
