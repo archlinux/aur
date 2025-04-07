@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 258.devel.r78832.27c947ec3df
+	pkgver = 258.devel.r80631.a94520dc78c
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -97,7 +97,7 @@ pkgname = systemd-git
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-libs-git=258.devel.r78832.27c947ec3df
+	depends = systemd-libs-git=258.devel.r80631.a94520dc78c
 	depends = acl
 	depends = libacl.so
 	depends = bash
@@ -132,7 +132,7 @@ pkgname = systemd-git
 	optdepends = libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
-	optdepends = systemd-ukify-git=258.devel.r78832.27c947ec3df: combine kernel and initrd into a signed Unified Kernel Image
+	optdepends = systemd-ukify-git=258.devel.r80631.a94520dc78c: combine kernel and initrd into a signed Unified Kernel Image
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = python: Unified Kernel Image with ukify
 	optdepends = curl: systemd-journal-upload, machinectl pull-tar and pull-raw
@@ -146,9 +146,9 @@ pkgname = systemd-git
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=258.devel.r78832.27c947ec3df
-	provides = udev=258.devel.r78832.27c947ec3df
-	provides = systemd=258.devel.r78832.27c947ec3df
+	provides = systemd-tools=258.devel.r80631.a94520dc78c
+	provides = udev=258.devel.r80631.a94520dc78c
+	provides = systemd=258.devel.r80631.a94520dc78c
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -189,41 +189,41 @@ pkgname = systemd-libs-git
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
-	provides = systemd-libs=258.devel.r78832.27c947ec3df
+	provides = systemd-libs=258.devel.r80631.a94520dc78c
 	conflicts = libsystemd
 	conflicts = systemd-libs
 	replaces = libsystemd
 
 pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved) (git version)
-	depends = systemd-git=258.devel.r78832.27c947ec3df
+	depends = systemd-git=258.devel.r80631.a94520dc78c
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=258.devel.r78832.27c947ec3df
+	provides = systemd-resolvconf=258.devel.r80631.a94520dc78c
 	conflicts = resolvconf
 	conflicts = systemd-resolvconf
 
 pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
-	depends = systemd-git=258.devel.r78832.27c947ec3df
-	provides = systemd-sysvcompat=258.devel.r78832.27c947ec3df
+	depends = systemd-git=258.devel.r80631.a94520dc78c
+	provides = systemd-sysvcompat=258.devel.r80631.a94520dc78c
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 
 pkgname = systemd-tests-git
 	pkgdesc = systemd tests (git version)
-	depends = systemd=258.devel.r78832.27c947ec3df
-	provides = systemd-tests=258.devel.r78832.27c947ec3df
+	depends = systemd=258.devel.r80631.a94520dc78c
+	provides = systemd-tests=258.devel.r80631.a94520dc78c
 	conflicts = systemd-tests
 
 pkgname = systemd-ukify-git
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image (git version)
-	depends = systemd-git=258.devel.r78832.27c947ec3df
+	depends = systemd-git=258.devel.r80631.a94520dc78c
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
 	optdepends = python-pillow: Show the size of splash image
 	optdepends = sbsigntools: Sign the embedded kernel
 	provides = ukify
-	provides = systemd-ukify=258.devel.r78832.27c947ec3df
+	provides = systemd-ukify=258.devel.r80631.a94520dc78c
 	conflicts = systemd-ukify

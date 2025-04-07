@@ -10,7 +10,7 @@ pkgname=('systemd-git'
          'systemd-tests-git'
          'systemd-ukify-git')
 pkgdesc='systemd (git version)'
-pkgver=258.devel.r78832.27c947ec3df
+pkgver=258.devel.r80631.a94520dc78c
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -109,7 +109,6 @@ build() {
     -Dlibidn2=enabled
     -Dlz4=enabled
     -Dman=enabled
-    -Dnscd=false
     -Dselinux=disabled
 
     # We disable DNSSEC by default, it still causes trouble:
@@ -117,7 +116,6 @@ build() {
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-dnssec=no
-    -Ddefault-hierarchy=unified
     -Ddefault-kill-user-processes=false
     -Ddefault-locale='C.UTF-8'
     -Dlocalegen-path=/usr/bin/locale-gen
