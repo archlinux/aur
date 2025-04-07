@@ -1,0 +1,13 @@
+pkgbase = secho
+	pkgdesc = A dramatic, colorful, emotionally unstable replacement for echo
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/CodeFlowShai/secho
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	source = secho-1.2.0.tar.gz::https://github.com/CodeFlowShai/secho/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = secho
