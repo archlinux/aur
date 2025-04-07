@@ -12,12 +12,10 @@ pkgbase = hyper-git
 	makedepends = libarchive
 	makedepends = libicns
 	makedepends = icoutils
-	makedepends = python>=3.8
+	makedepends = python
+	makedepends = gendesk
 	depends = nodejs
-	depends = gtk3
-	depends = alsa-lib
-	depends = nspr
-	depends = nss
+	depends = electron22
 	provides = hyper
 	conflicts = hyper
 	source = hyper.git::git+https://github.com/vercel/hyper.git

@@ -9,7 +9,7 @@ pkgname=hyper-git
 _pkgname=Hyper
 pkgver=4.0.0.canary.5.r405.g2a7bb18
 _electronversion=22
-_nodeversion=20
+_nodeversion=18
 pkgrel=1
 pkgdesc="A terminal built on web technologies."
 arch=('any')
@@ -20,10 +20,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=(
     'nodejs'
-    'gtk3'
-    'alsa-lib'
-    'nspr'
-    'nss'
+    "electron${_electronversion}"
 )
 makedepends=(
     'git'
@@ -33,7 +30,8 @@ makedepends=(
     'libarchive'
     'libicns'
     'icoutils'
-    'python>=3.8'
+    'python'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -51,21 +49,19 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="System" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "/npmjs/d" .yarnrc
+        sed -i "/registry.npmjs.org/d" ".yarnrc"
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            #echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -77,17 +73,22 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g;s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g;s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     icotool -i 5 -x build/canary.ico -o "${pkgname%-git}.png"
-    install -Dm755 -d "${srcdir}/${pkgname//-/.}/node_modules/electron/dist/"{x64,arm64}
-    touch "${srcdir}/${pkgname//-/.}/node_modules/electron/dist/"{x64,arm64}/snapshot_blob.bin
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --unsafe-perm
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "s/github\.com/mirrors\.ghproxy\.com\/https:\/\/github.com/g" node_modules/electron-mksnapshot/download-mksnapshot.js
-    fi
+    sed -i "51i\    fs.mkdirSync(pathToElectron, { recursive: true });" bin/cp-snapshot.js
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config=electron-builder.json
+    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome_crashpad_handler chromedriver chromedriver.debug chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
+		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
+	for _files in "${_file_list[@]}";do
+		ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/${pkgname//-/.}/dist/linux-"*/"${_files}"
+	done
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-git}"}
