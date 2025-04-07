@@ -2,13 +2,13 @@
 _reponame="JKPS"
 pkgname=jkps-git
 pkgver=0.3.r3.g52103f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows keystates, keys per second, total keys and current beats per minute."
 arch=('x86_64')
 url="https://github.com/JekiTheMonkey/JKPS"
 license=('MIT')
 groups=()
-depends=('sfml')
+depends=('sfml2')
 makedepends=('git' 'cmake')
 provides=('jkps')
 conflicts=('jkps')
