@@ -1,6 +1,6 @@
 pkgbase = ruby-activemodel
 	pkgdesc = A toolkit for building modeling frameworks (part of Rails)
-	pkgver = 6.1.4.1
+	pkgver = 8.0.2
 	pkgrel = 2
 	url = https://rubyonrails.org
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ruby-activemodel
 	depends = ruby
 	depends = ruby-activesupport
 	options = !emptydirs
-	source = https://github.com/rails/rails/archive/v6.1.4.1/rails-6.1.4.1.tar.gz
-	sha512sums = 411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520
+	source = https://github.com/rails/rails/archive/v8.0.2/rails-8.0.2.tar.gz
+	sha512sums = d359714b510efe2876b8c800cc1faba517f5586c50c755428b73bf8e659ba915d10390c9992bb2b6915b229ce86a801862d26bbd43be965e081cdb12c9bb8e21
 
 pkgname = ruby-activemodel
