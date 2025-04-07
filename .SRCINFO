@@ -1,12 +1,12 @@
 pkgbase = hola-proxy
 	pkgdesc = Standalone Hola proxy client
-	pkgver = 1.15.1
+	pkgver = 1.15.2
 	pkgrel = 1
 	url = https://github.com/Snawoot/hola-proxy
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/Snawoot/hola-proxy/archive/v1.15.1.tar.gz
-	sha256sums = e48f4451e0824ca0954e31d644eda250d8c050f39a6458475a9803008f257137
+	source = https://github.com/Snawoot/hola-proxy/archive/v1.15.2.tar.gz
+	sha256sums = db2867e5162df130c2da208d0022329b2c5f8d2d90c8119779567429ae926b70
 
 pkgname = hola-proxy
