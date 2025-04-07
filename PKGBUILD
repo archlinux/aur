@@ -1,12 +1,11 @@
 # Maintainer:
 # Contributor: Brad Johnson <bradsk88@gmail.com>
 
-: ${_electron_dist:=/usr/lib/electron}
 : ${_install_path:=usr/share}
 
 _pkgname="gitify"
 pkgname="$_pkgname-git"
-pkgver=6.0.0.r1.g43e7faf
+pkgver=6.2.0.r75.g111e9d0
 pkgrel=1
 pkgdesc="GitHub tray icon and notifications"
 url="https://github.com/gitify-app/gitify"
@@ -41,10 +40,6 @@ pkgver() {
 prepare() {
   icns2png -x "$_pkgsrc/assets/images/app-icon.icns"
   mv app-icon_512x512x32.png "$_pkgname.png"
-
-  local _electron_version="$(cat $_electron_dist/version)"
-  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
-    -i "$_pkgsrc/package.json"
 }
 
 _nvm_env() {
@@ -63,21 +58,38 @@ _nvm_env() {
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
   nvm install $_nodeversion
   nvm use $_nodeversion
+
+  _electron_version=$(cat /usr/lib/electron/version)
 }
 
 build() (
   _nvm_env
 
+  local _electron_builder_options=(
+    --publish never
+    -c.electronDist="/usr/lib/electron${_electron_version%%.*}"
+    -c.electronVersion="${_electron_version:?}"
+    --config ./config/electron-builder.js
+  )
+
+  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
+    -i "$_pkgsrc/package.json"
+
   cd "$_pkgsrc"
   npm install -g pnpm
   NODE_ENV=development pnpm install --ignore-scripts
 
-  pnpm run build
+  pnpm run build:main
+  pnpm run build:renderer
   pnpm run prepare:remove-source-maps
-  pnpm -c exec "electron-builder --linux dir --publish never -c.electronDist=${_electron_dist} -c.electronVersion=$(cat $_electron_dist/version)"
+  pnpm -c exec "electron-builder --linux dir ${_electron_builder_options[*]}"
 )
 
-package() {
+package() (
+  _nvm_env
+
+  depends=("electron${_electron_version:-}")
+
   install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
 
   install -Dm644 "$_pkgname.png" -t "$pkgdir/$_install_path/pixmaps/"
@@ -119,6 +131,6 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
+exec electron${_electron_version:-} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
-}
+)
