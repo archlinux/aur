@@ -1,0 +1,22 @@
+pkgbase = jack_delay-gui
+	pkgdesc = Latency testing GUI for JACK using PyQt6 and python-jack
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/magillos/jack_delay-GUI
+	arch = any
+	license = GPL3
+	depends = python-pyqt6
+	depends = python-jack-client
+	depends = jack_delay
+	source = https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/LICENSE
+	source = https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/latency_test.py
+	source = https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/com.example.latency.desktop
+	source = https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/Latency_test.svg
+	source = https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/setup.py
+	md5sums = 1ebbd3e34237af26da5dc08a4e440464
+	md5sums = b1714284a55eaeb4ccf75160f90461ec
+	md5sums = 88fb1564c06e37d0f7e639fe940b9bbb
+	md5sums = 67e5999db0ac7154c996aacbc0c7d0d9
+	md5sums = ca975d4a2b3c26e93433b4fda8002173
+
+pkgname = jack_delay-gui
