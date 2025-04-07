@@ -1,0 +1,18 @@
+pkgbase = secho-bin
+	pkgdesc = A dramatic, colorful, emotionally unstable replacement for echo
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/CodeFlowShai/secho
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	provides = secho
+	conflicts = secho
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/CodeFlowShai/secho/v1.2.0/LICENSE
+	source = README-1.2.0.md::https://raw.githubusercontent.com/CodeFlowShai/secho/v1.2.0/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = c274ba065e75b6a5c44f66f1ba20296cadc793371913173970b4dbfa5570af0b
+	source_x86_64 = secho-1.2.0::https://github.com/CodeFlowShai/secho/releases/download/v1.2.0/secho
+	sha256sums_x86_64 = b159b937a66719af89ad9da394cbc4b44f583440b3e15add6c9c7a83e43d77d5
+
+pkgname = secho-bin
