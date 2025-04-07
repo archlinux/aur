@@ -1,0 +1,18 @@
+pkgbase = jlc-assistant
+	pkgdesc = jlc-assistant, PCB order, 嘉立创下单小助手，修正预编译版本
+	pkgver = 5.0.69
+	pkgrel = 1
+	url = https://download.jlc.com/pcAssit/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = electron
+	depends = libappindicator-gtk3
+	depends = libnotify
+	conflicts = jlc-assistant-bin
+	source = https://download.jlc.com/pcAssit/5.0.69/JLCPcAssit-linux-x64-5.0.69.zip
+	sha256sums = SKIP
+
+pkgname = jlc-assistant
