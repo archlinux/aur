@@ -1,12 +1,10 @@
 pkgbase = coreutils-uutils-symlink
 	pkgdesc = (use at own risk) symlinks to replace coreutils with uutils
 	pkgver = 0.0.29
-	pkgrel = 3
-	url = https://uutils.github.io/
-	arch = x86_64
-	license = GPL3
-	license = MIT
+	pkgrel = 4
+	arch = any
 	depends = uutils-coreutils
+	depends = nix-busybox
 	provides = coreutils
 	provides = b3sum
 	conflicts = coreutils
