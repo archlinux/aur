@@ -1,15 +1,15 @@
 # Maintainer: Meow0x7E <Meow0x7E@outlook.com>
 pkgname=slow-scan-print
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='This CLI program prints text at fixed intervals by character or line, and its name was inspired by SSTV (Slow-Scan TV).'
 url='https://crates.io/crates/slow-scan-print'
 license=('MIT')
 makedepends=('cargo')
-depends=()
+depends=('gcc-libs')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('84889c5025ef7d0378f41a6100dc8c9ac2875979ebe13b99b2b2f48418a1c1c3')
+sha256sums=('acee357a3490437ddb73ab11fd2bfe8fa7f9d86a5087bf9900a74db8ed3f4df0')
 options=('!debug')
 
 prepare() {
