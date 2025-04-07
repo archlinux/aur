@@ -10,6 +10,7 @@ ExecReload=/bin/kill -HUP $MAINPID
 NoNewPrivileges=true
 ProtectHome=read-only
 ProtectSystem=strict
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target

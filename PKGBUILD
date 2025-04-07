@@ -1,32 +1,48 @@
 # Maintainer: Wallun <wallun@disroot.org>
 pkgname=prometheus-libvirt-exporter
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="A prometheus exporter for libvirt"
 arch=('x86_64')
-url="https://github.com/zhangjianweibj/prometheus-libvirt-exporter"
+url="https://github.com/inovex/prometheus-libvirt-exporter"
 options=()
 license=(MIT)
 depends=()
 optdepends=()
 makedepends=(
   'go'
+  'goreleaser'
 )
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         prometheus-libvirt-exporter.service)
-sha256sums=('f73940ebf884f26001151be085fe7a04e4f83b097b9344d67b1751bf7a9ddc46'
-            'b31552e3ce21a5c5e4e683b78e2fb4be0c1f56378271b14e1b39e925d0913085')
+sha256sums=('1513ae9b30609d9e759e7f06db696e45e2baa0c5e0ae50e9e4930609d500ed55'
+            'fd2852b523324e4b97efbe280b36b615f6d54895280b5ddd30e9fe60152bbec2')
+
+prepare() {
+  # Add a template in snapshot to avoid seing version X.Y.Z-SNAPSHOT-rndmhash
+  # when running 'prometheus-libvirt-exporter --version'
+  echo "snapshot:" | \
+  tee -a "${srcdir}/${pkgname}-${pkgver}/.goreleaser.yml"
+  echo "  version_template: \"${pkgver}\"" | \
+  tee -a "${srcdir}/${pkgname}-${pkgver}/.goreleaser.yml"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || 1
-  make
+
+  export GORELEASER_CURRENT_TAG="v${pkgver}"
+  export EXPORTER_VERSION="${pkgver}"
+
+  goreleaser build --clean \
+                   --single-target \
+                   --snapshot
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install binary
-  install -D -m0775 "${srcdir}/${pkgname}-${pkgver}/build/${pkgname}"\
+  install -D -m0775 "${srcdir}/${pkgname}-${pkgver}/dist/prometheus-libvirt-exporter_linux_amd64_v1/${pkgname}"\
     "${pkgdir}/usr/bin/${pkgname}"
 
   # Install systemd service file
