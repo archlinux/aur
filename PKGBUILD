@@ -1,0 +1,37 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_appauthor=ClementNerma
+_appname=ReShell
+_execname=${_appname,,}
+pkgname=${_execname}-bin
+pkgver=0.1.0
+pkgrel=1328
+pkgdesc="A modern shell for the future"
+arch=('x86_64' 'aarch64')
+url="https://github.com/${_appauthor}/${_appname}"
+_urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver}-${pkgrel}"
+license=('Apache-2.0')
+
+depends=()
+provides=("${_appname}")
+conflicts=("${_appname}")
+
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
+        "README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("${url}/releases/download/v${pkgver}-${pkgrel}/${_appname}-repl-${arch[0]}-unknown-linux-musl.tgz")
+source_aarch64=("${url}/releases/download/v${pkgver}-${pkgrel}/${_appname}-repl-${arch[1]}-unknown-linux-musl.tgz")
+sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
+            '37cf555782d1c9377100e98ce74780ab2b77da1c9572cec7411cdfb11d142c32')
+sha256sums_x86_64=('500247054cb75c780d34886542783ac9c865a21dfb8ba4c04c8af24cce0d10b1')
+sha256sums_aarch64=('e7f77aa7334c13cbdf1b80d34176c5cee032cb3b7d9089361825af7913c8698e')
+
+
+package() {
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_execname}" "${pkgdir}/usr/bin/${_execname}"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}

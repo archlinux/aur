@@ -1,0 +1,20 @@
+pkgbase = reshell-bin
+	pkgdesc = A modern shell for the future
+	pkgver = 0.1.0
+	pkgrel = 1328
+	url = https://github.com/ClementNerma/ReShell
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = ReShell
+	conflicts = ReShell
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/ClementNerma/ReShell/v0.1.0-1328/LICENSE.md
+	source = README-0.1.0.md::https://raw.githubusercontent.com/ClementNerma/ReShell/v0.1.0-1328/README.md
+	sha256sums = efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1
+	sha256sums = 37cf555782d1c9377100e98ce74780ab2b77da1c9572cec7411cdfb11d142c32
+	source_x86_64 = https://github.com/ClementNerma/ReShell/releases/download/v0.1.0-1328/ReShell-repl-x86_64-unknown-linux-musl.tgz
+	sha256sums_x86_64 = 500247054cb75c780d34886542783ac9c865a21dfb8ba4c04c8af24cce0d10b1
+	source_aarch64 = https://github.com/ClementNerma/ReShell/releases/download/v0.1.0-1328/ReShell-repl-aarch64-unknown-linux-musl.tgz
+	sha256sums_aarch64 = e7f77aa7334c13cbdf1b80d34176c5cee032cb3b7d9089361825af7913c8698e
+
+pkgname = reshell-bin
