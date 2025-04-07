@@ -1,4 +1,5 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-glfw
 pkgver=2.8.0
