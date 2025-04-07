@@ -1,6 +1,6 @@
 pkgbase = ironbar-git
 	pkgdesc = Customisable wlroots/sway bar written in rust
-	pkgver = 0.16.1.r81.gb296726
+	pkgver = 0.16.1.r212.gf2bc33e
 	pkgrel = 1
 	url = https://ironb.ar
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = ironbar-git
 	depends = libdbusmenu-gtk3
 	provides = ironbar
 	conflicts = ironbar
+	options = !buildflags
 	source = git+https://github.com/JakeStanger/ironbar
 	md5sums = SKIP
 
