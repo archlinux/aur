@@ -1,0 +1,27 @@
+pkgbase = lux-cli
+	pkgdesc = A luxurious package manager for Lua
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/nvim-neorocks/lux
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = luajit
+	depends = xz
+	depends = bzip2
+	depends = libgit2
+	depends = openssl
+	depends = libgpg-error
+	depends = gpgme
+	provides = lx
+	conflicts = lux-cli-git
+	options = !lto
+	options = !debug
+	source = lux-cli-0.2.1.tar.gz::https://static.crates.io/crates/lux-cli/lux-cli-0.2.1.crate
+	source = LICENSE-0.2.1.txt::https://raw.githubusercontent.com/nvim-neorocks/lux/refs/tags/lux-cli-v0.2.1/LICENSE
+	sha256sums = 9d757d34ecc3bd0ad2158141c673fdf28a52ad1bb7d3bfe689227e915f56ae27
+	sha256sums = f4a0df3d94b10aebad58f6e7668ddd0249ee2a21bae13615c342eb3e00d20733
+
+pkgname = lux-cli
