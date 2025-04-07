@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alspotron-bin
 _pkgname=Alspotron
-pkgver=0.24.1
-_electronversion=34
+pkgver=0.24.2
+_electronversion=35
 pkgrel=1
 pkgdesc="Shows the egg lyrics of the track, playing on Spotify / YouTube Music.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -21,16 +21,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('192efdcaefb2e17616ff7c493d6dc8819d246dfce89433bb4aea63f52d9f7e8f'
+sha256sums=('04c191940f7eaec177732d42af25fae2c6ad53066c4dd8aec4a7f01081e0beb5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
