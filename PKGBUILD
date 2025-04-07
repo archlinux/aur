@@ -13,7 +13,7 @@ optdepends=('coin-or-cbc: CBC MIP support'
             'glpk: GLPK MIP support'
             'gurobi: Gurobi MIP support'
             'z3: Z3 SMT support')
-url='http://picat-lang.org/'
+url='https://picat-lang.org/'
 license=('MPL-2.0')
 
 _pkgver=$(echo ${pkgver} | sed 's/\.//;s/#//')
