@@ -8,11 +8,10 @@
 # Contributor: Uffe Jakobsen <uffe@uffe.org>
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
-# 20210324: cone-1.2 fails check
 #
 
 pkgname=cone-simple
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode)."
@@ -37,7 +36,7 @@ source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgv
 
 #noextract=()
 
-sha256sums=('deab6caa60242b33e44c094148b6d6af190563aa46faf76ccffb17ef2ffc53aa')
+sha256sums=('8678ef250e722a24e841f55d3b867c21ce483569d1dcaadb2b05965ca9825f66')
 
 #
 #
