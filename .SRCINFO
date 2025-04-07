@@ -1,6 +1,6 @@
 pkgbase = ruby-actioncable
 	pkgdesc = Structure many real-time application concerns into channels over a single WebSocket connection
-	pkgver = 6.1.4.1
+	pkgver = 8.0.2
 	pkgrel = 1
 	url = https://rubyonrails.org
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ruby-actioncable
 	depends = ruby-nio4r
 	depends = ruby-websocket-driver
 	options = !emptydirs
-	source = https://github.com/rails/rails/archive/v6.1.4.1/rails-6.1.4.1.tar.gz
-	sha256sums = 7f827c32b617a185716d22803dc241d855cac831388b6cf6d7842d08e5bb20bb
+	source = https://github.com/rails/rails/archive/v8.0.2/rails-8.0.2.tar.gz
+	sha256sums = a63557570d8776897511604ab89b0d2fb413d2089ecd7627d4f250b4837b6db0
 
 pkgname = ruby-actioncable

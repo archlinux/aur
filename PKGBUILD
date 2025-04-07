@@ -2,7 +2,7 @@
 
 _gemname='actioncable'
 pkgname="ruby-${_gemname}"
-pkgver=6.1.4.1
+pkgver=8.0.2
 pkgrel=1
 pkgdesc='Structure many real-time application concerns into channels over a single WebSocket connection'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-nio4r' 'ruby-websocket-driver')
 source=("https://github.com/rails/rails/archive/v${pkgver}/rails-${pkgver}.tar.gz")
-sha256sums=('7f827c32b617a185716d22803dc241d855cac831388b6cf6d7842d08e5bb20bb')
+sha256sums=('a63557570d8776897511604ab89b0d2fb413d2089ecd7627d4f250b4837b6db0')
 
 prepapare() {
   cd "rails-${pkgver}/${_gemname}"
