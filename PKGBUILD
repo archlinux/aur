@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cargo-thanku
-pkgver=0.4.2
-pkgrel=0
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="A command-line tool for generating acknowledgments for your Rust project dependencies."
 arch=($CARCH)
 url="https://github.com/YuniqueUnic/cargo-thanku"
@@ -19,7 +19,13 @@ backup=()
 options=('!lto' '!debug')
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6be3cc1f6c681c886d138066f1176d7e300069e9c237a7e2d84c9b120f9c025b')
+sha256sums=('4d8556a1544c6f74547c60a86af198541b177ddebc06ab24e9d28f238797a951')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
