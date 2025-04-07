@@ -9,7 +9,7 @@ url="https://frc-elastic.gitbook.io/docs"
 license=('MIT')
 provides=($_pkgname)
 source=("elastic-linux-${pkgver}.zip::https://github.com/Gold872/elastic-dashboard/releases/download/v${pkgver}/Elastic-Linux.zip")
-md5sums=('c913e674cd2a0859b3bb204631affe77') #generate with 'makepkg -g'
+md5sums=('36c62779ca5e2735dec0d06ffe5a08a4') #generate with 'makepkg -g'
 
 package() {
     install -d "$pkgdir/opt/$_pkgname"
