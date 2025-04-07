@@ -1,5 +1,5 @@
 pkgbase = aqua-bin
-	pkgdesc = Declarative CLI Version manager written in Go
+	pkgdesc = Declarative CLI version manager
 	pkgver = 2.48.1
 	pkgrel = 1
 	url = https://github.com/aquaproj/aqua
