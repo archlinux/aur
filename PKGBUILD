@@ -7,7 +7,7 @@
 
 _pkgname="inspircd"
 pkgname="$_pkgname"
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc='Modular Internet Relay Chat (IRC) server'
 url="https://github.com/inspircd/inspircd"
@@ -41,7 +41,7 @@ install='inspircd.install'
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"https://github.com/inspircd/inspircd/archive/v$pkgver.$_pkgext")
-sha256sums=('d661648bdcb397d8bd2d4afe2746f8e991923d3d82e83d9fa215194f445977f7')
+sha256sums=('fcad041a46f1d7c635ba2ed41d7bcef1cfa2510a5692ac98b34f90420187c97b')
 
 build() {
   local _config_opts=(
