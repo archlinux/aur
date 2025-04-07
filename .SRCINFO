@@ -1,0 +1,15 @@
+pkgbase = wmusic
+	pkgdesc = wmusic is a dockapp that remote-controls MPRIS-compatible media players
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://www.dockapps.net/wmtime
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libxpm
+	depends = libdockapp
+	depends = playerctl
+	source = https://www.dockapps.net/download/wmusic-2.1.1.tar.gz
+	md5sums = 37965b256dfac7a9771f82e6954db54d
+
+pkgname = wmusic
