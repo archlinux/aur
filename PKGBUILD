@@ -1,30 +1,30 @@
-_pkgname=python-timbl
-pkgname=${_pkgname}-git
-pkgver=48
+
+pkgname=python-timbl-git
+pkgver=2025.01.22.r0.g5707c71
 pkgrel=1
 pkgdesc='Python binding for Timbl, a k-Nearest Neighbours machine learning suite'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/proycon/python-timbl"
-license=('GPL')
-depends=('python' 'libxml2' 'boost' 'timbl' 'python-setuptools')
-makedepends=('git' 'libtool')
-provides=("${_pkgname}")
-source=("git://github.com/proycon/python-timbl.git")
-_gitname=("python-timbl")
+license=('GPL-3.0-or-later')
+depends=('python' 'boost-libs' 'gcc-libs' 'timbl')
+makedepends=('boost' 'git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-scipy')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname"
-    git rev-list --count HEAD
+    cd "${pkgname%-git}"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
-
 build() {
-    cd "$srcdir/$_gitname"
-    python setup3.py build_ext --timbl-library-dir=/usr/lib --timbl-include-dir=/usr/include/  build
+    cd "${pkgname%-git}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_gitname"
-    python setup3.py build_ext --timbl-library-dir=/usr/lib --timbl-include-dir=/usr/include/ install --prefix=/usr --root="${pkgdir}"
+    cd "${pkgname%-git}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
