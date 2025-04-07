@@ -3,7 +3,7 @@
 # Contributor: libernux <dutchman55@gmx.com>
 pkgname=wmsystemtray
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="system tray designed as a Window Maker dockapp"
 arch=('i686' 'x86_64')
 #url="http://dockapps.windowmaker.org/file.php/id/355"
