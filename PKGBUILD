@@ -7,7 +7,7 @@ _name1=examples
 _name0=pydantic-ai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0})
-pkgver=0.0.52
+pkgver=0.0.53
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/pydantic-ai'
@@ -15,7 +15,7 @@ license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("https://github.com/denoland/deno/releases/latest/download/deno-aarch64-unknown-linux-gnu.zip")
-sha256sums=('abf18937911655b17f02667c846f6469fa4a7e7288f02a26a039bb22254c43e6')
+sha256sums=('ea8e369bd01153a2327d8fd5691a8014edc66f1d7e465e2d0985033ddf027418')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 depends=('python>=3.9')
@@ -67,7 +67,6 @@ check() {
   local pytest_options=(
     -vv
     --override-ini="addopts="
-    --deselect tests/providers/test_google_vertex.py::test_vertexai_provider
     -k "not evals.md"
   )
   cd "${srcdir}"/${_name0}-${pkgver}
