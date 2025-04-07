@@ -1,14 +1,13 @@
-diff -ura hamclock-4.13.orig/ESPHamClock/ESPHamClock.cpp hamclock-4.13.new/ESPHamClock/ESPHamClock.cpp
---- hamclock-4.13.orig/ESPHamClock/ESPHamClock.cpp	2025-02-06 08:21:22.000000000 -0800
-+++ hamclock-4.13.new/ESPHamClock/ESPHamClock.cpp	2025-02-14 10:50:18.235752774 -0800
-@@ -462,16 +462,6 @@
+--- hamclock-4.16.orig/ESPHamClock/ESPHamClock.cpp	2025-04-06 20:53:28.000000000 -0400
++++ hamclock-4.16.new/ESPHamClock/ESPHamClock.cpp	2025-04-06 21:26:41.136607212 -0400
+@@ -467,16 +467,6 @@
          NVWriteTZ (NV_DE_TZ, de_tz);
      }
  
 -    // ask to update if new version available -- never returns if update succeeds
 -    if (!skip_skip) {
 -        char nv[50];
--        if (newVersionIsAvailable (nv, sizeof(nv)) && askOTAupdate (nv)) {
+-        if (newVersionIsAvailable (nv, sizeof(nv)) && askOTAupdate (nv, false)) {
 -            if (askPasswd ("upgrade", false))
 -                doOTAupdate(nv);
 -            eraseScreen();
@@ -18,13 +17,13 @@ diff -ura hamclock-4.13.orig/ESPHamClock/ESPHamClock.cpp hamclock-4.13.new/ESPHa
      // init sensors
      initBME280();
  
-@@ -923,18 +913,16 @@
+@@ -927,18 +917,16 @@
      } else if (!SHOWING_PANE_0() && dx_info_for_sat && inBox (s, dx_info_b)) {
          drawDXSatMenu(s);
      } else if (inBox (s, version_b)) {
 -        char nv[50];
 -        if (newVersionIsAvailable(nv, sizeof(nv))) {
--            if (askOTAupdate (nv) && askPasswd ("upgrade", false))
+-            if (askOTAupdate (nv, false) && askPasswd ("upgrade", false))
 -                doOTAupdate(nv);
 -        } else {
 -            eraseScreen();
@@ -47,25 +46,18 @@ diff -ura hamclock-4.13.orig/ESPHamClock/ESPHamClock.cpp hamclock-4.13.new/ESPHa
          initScreen();
      } else if (inBox (s, wifi_b)) {
          // depends on what is currently displayed
-@@ -1223,13 +1211,9 @@
-     if (!timesUp (&check_t, check_dt) && !force)
-         return;
+@@ -1233,7 +1221,7 @@
+     static bool new_avail;
+     static char new_version[20];
+     if (timesUp (&checkv_t, checkv_dt))
+-        new_avail = newVersionIsAvailable (new_version, sizeof(new_version));
++        return;
  
--    // check for new version and reset timeout
-+    // show current version
-     char line[50];
--    bool new_avail = newVersionIsAvailable (line, sizeof(line));
--    check_t = millis();
--
--    // show current version, but highlight if new version is available
--    uint16_t col = new_avail ? RA8875_RED : GRAY;
-+    uint16_t col = GRAY;
-     selectFontStyle (LIGHT_FONT, FAST_FONT);
-     snprintf (line, sizeof(line), "V%s", hc_version);
-     uint16_t vw = getTextWidth (line);
-diff -ura hamclock-4.13.orig/ESPHamClock/Makefile hamclock-4.13.new/ESPHamClock/Makefile
---- hamclock-4.13.orig/ESPHamClock/Makefile	2025-02-06 08:21:22.000000000 -0800
-+++ hamclock-4.13.new/ESPHamClock/Makefile	2025-02-14 10:39:48.277507057 -0800
+     // perform update if scheduled
+     if (new_avail) {
+diff -ura hamclock-4.16.orig/ESPHamClock/Makefile hamclock-4.16.new/ESPHamClock/Makefile
+--- hamclock-4.16.orig/ESPHamClock/Makefile	2025-04-06 20:53:28.000000000 -0400
++++ hamclock-4.16.new/ESPHamClock/Makefile	2025-04-06 21:26:41.136607212 -0400
 @@ -43,7 +43,6 @@
  	Germano-Bold-16.o \
  	Germano-Bold-30.o \
@@ -74,10 +66,9 @@ diff -ura hamclock-4.13.orig/ESPHamClock/Makefile hamclock-4.13.new/ESPHamClock/
  	P13.o \
  	adif.o \
  	adif_parser.o \
-diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamClock/OTAupdate.cpp
---- hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp	2025-02-06 08:21:22.000000000 -0800
-+++ hamclock-4.13.new/ESPHamClock/OTAupdate.cpp	2025-02-14 10:27:18.617318418 -0800
-@@ -1,443 +1,9 @@
+--- hamclock-4.16.orig/ESPHamClock/OTAupdate.cpp	2025-04-06 20:53:28.000000000 -0400
++++ hamclock-4.16.new/ESPHamClock/OTAupdate.cpp	2025-04-06 21:45:38.762332718 -0400
+@@ -1,447 +1,9 @@
 -/* handle remote firmware updating
 +/* stub to report no updates available; auto-update is disabled in AUR build
   */
@@ -144,7 +135,7 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    bool found_newer = false;
 -
 -    Serial.printf ("%s/%s\n", backend_host, v_page);
--    if (wifiOk() && v_client.connect (backend_host, backend_port)) {
+-    if (v_client.connect (backend_host, backend_port)) {
 -        resetWatchdog();
 -
 -        // query page
@@ -212,6 +203,7 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    tft.fillRect (0, line_y, SCR_UPX-SCR_BGAP-1, tft.height() - line_y, RA8875_BLACK);
 -
 -    selectFontStyle (LIGHT_FONT, SMALL_FONT);
+-    tft.setTextColor (RA8875_WHITE);
 -    for (int i = top_line; i < n_lines && (line_y += LH) < tft.height() - FD; i++) {
 -        tft.setCursor (LINDENT, line_y);
 -        tft.print (line[i]);
@@ -272,7 +264,7 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -/* ask and return whether to install the given (presumably newer) version.
 - * default no if trouble of no user response.
 - */
--bool askOTAupdate(char *new_ver)
+-bool askOTAupdate(char *new_ver, bool init_yes)
 -{
 -    // prep
 -    eraseScreen();
@@ -293,7 +285,7 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    // draw yes/no boxes
 -    SBox no_b =  {NBOX_X, NBOX_Y, YNBOX_W, YNBOX_H};
 -    SBox yes_b = {YBOX_X, YBOX_Y, YNBOX_W, YNBOX_H};
--    bool active_yes = false;
+-    bool active_yes = init_yes;
 -    drawStringInBox ("No", no_b, !active_yes, RA8875_WHITE);
 -    drawStringInBox ("Yes", yes_b, active_yes, RA8875_WHITE);
 -
@@ -305,7 +297,7 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    WiFiClient v_client;
 -    char **lines = NULL;                        // malloced list of malloced strings -- N.B. free!
 -    int n_lines = 0;
--    if (wifiOk() && v_client.connect (backend_host, backend_port)) {
+-    if (v_client.connect (backend_host, backend_port)) {
 -        resetWatchdog();
 -
 -        // query page
@@ -327,6 +319,8 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -        while (getTCPLine (v_client, line, sizeof(line), NULL)) {
 -            maxStringW (line, SCR_UPX-SCR_BGAP-LINDENT-1);       // insure fit
 -            lines = (char **) realloc (lines, (n_lines+1) * sizeof(char*));
+-            if (!lines)
+-                fatalError ("no memory for %d version changes", n_lines+1);
 -            lines[n_lines++] = strdup (line);
 -        }
 -    }
@@ -381,11 +375,13 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    uint32_t t0 = millis();
 -    Serial.println ("Waiting for update y/n ...");
 -    bool finished = false;
--    bool result = false;
 -    while (!finished && count_s > 0) {
 -
 -        // check for scroll
 -        int prev_topl = top_line;
+-
+-        // needed if UTC button is flashing "Off"
+-        tft.setTextColor (RA8875_WHITE);
 -
 -        // update countdown
 -        wdDelay(10);
@@ -408,12 +404,11 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -            break;
 -        case CHAR_ESC:
 -            finished = true;
--            result = false;
+-            active_yes = false;
 -            break;
 -        case CHAR_CR:
 -        case CHAR_NL:
 -            finished = true;
--            result = active_yes;
 -            break;
 -        case CHAR_UP:
 -            if (MORE_UP)
@@ -433,12 +428,12 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -            if (inBox (s, yes_b)) {
 -                drawStringInBox ("Yes", yes_b, true, RA8875_WHITE);
 -                finished = true;
--                result = true;
+-                active_yes = true;
 -            }
 -            if (inBox (s, no_b)) {
 -                drawStringInBox ("No", no_b, false, RA8875_WHITE);
 -                finished = true;
--                result = false;
+-                active_yes = false;
 -            }
 -            if (inBox (s, sup_b)) {
 -                if (MORE_UP)
@@ -466,7 +461,7 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    free (lines);
 -
 -    // return result
--    return (result);
+-    return (active_yes);
 -}
 -
 -/* reload HamClock with the given version.
@@ -523,9 +518,9 @@ diff -ura hamclock-4.13.orig/ESPHamClock/OTAupdate.cpp hamclock-4.13.new/ESPHamC
 -    }
 +    return false;
  }
-diff -ura hamclock-4.13.orig/ESPHamClock/webserver.cpp hamclock-4.13.new/ESPHamClock/webserver.cpp
---- hamclock-4.13.orig/ESPHamClock/webserver.cpp	2025-02-06 08:21:22.000000000 -0800
-+++ hamclock-4.13.new/ESPHamClock/webserver.cpp	2025-02-14 10:37:33.416619442 -0800
+diff -ura hamclock-4.16.orig/ESPHamClock/webserver.cpp hamclock-4.16.new/ESPHamClock/webserver.cpp
+--- hamclock-4.16.orig/ESPHamClock/webserver.cpp	2025-04-06 20:53:28.000000000 -0400
++++ hamclock-4.16.new/ESPHamClock/webserver.cpp	2025-04-06 21:26:41.136607212 -0400
 @@ -3724,23 +3724,8 @@
   */
  static bool doWiFiUpdate (WiFiClient &client, char *unused_line, size_t line_len)
@@ -551,9 +546,9 @@ diff -ura hamclock-4.13.orig/ESPHamClock/webserver.cpp hamclock-4.13.new/ESPHamC
      return (true);
  }
  
-diff -ura hamclock-4.13.orig/ESPHamClock/wifi.cpp hamclock-4.13.new/ESPHamClock/wifi.cpp
---- hamclock-4.13.orig/ESPHamClock/wifi.cpp	2025-02-06 08:21:22.000000000 -0800
-+++ hamclock-4.13.new/ESPHamClock/wifi.cpp	2025-02-14 10:47:39.565156174 -0800
+diff -ura hamclock-4.16.orig/ESPHamClock/wifi.cpp hamclock-4.16.new/ESPHamClock/wifi.cpp
+--- hamclock-4.16.orig/ESPHamClock/wifi.cpp	2025-04-06 20:53:28.000000000 -0400
++++ hamclock-4.16.new/ESPHamClock/wifi.cpp	2025-04-06 21:26:41.136607212 -0400
 @@ -383,8 +383,8 @@
      if (WiFi.status() == WL_CONNECTED) {
  
