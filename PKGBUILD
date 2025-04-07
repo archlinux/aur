@@ -2,7 +2,7 @@
 pkgname=moonlight-qt-axi
 _pkgname=moonlight-qt
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GameStream client for PCs'
 arch=('x86_64')
 license=('GPL-3.0-or-later')
@@ -11,7 +11,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'ffmpeg' 'sdl2_ttf' 'sdl2-compat')
-builddepends=('vulkan-devel')
+builddepends=('vulkan-headers')
 optdepends=('libva-intel-driver: hardware acceleration for Intel GPUs GMA 4500 (2008) up to Coffee Lake (2017)'
             'intel-media-driver: hardware acceleration for Intel GPUs starting from Broadwell (2014) and newer (e.g. Intel Arc)'
             'qt6-wayland')
