@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.12.28.r1.g84bc9157
+pkgver=2.12.28.r8.gd36c81a0
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
@@ -24,6 +24,7 @@ prepare() {
     cd "${srcdir}/Icalingua"
     corepack use pnpm
     corepack pnpm install
+    sed -i '/externals/a "bindings",' icalingua/.electron-vue/webpack.main.config.ts
 }
 pkgver(){
     cd "${srcdir}/Icalingua"
