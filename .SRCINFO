@@ -1,0 +1,14 @@
+pkgbase = joymap
+	pkgdesc = A linux userspace device driver that allows joystick events to be remapped.
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://sourceforge.net/projects/linuxjoymap
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	source = joymap-0.5.9.tar.gz::https://sourceforge.net/projects/linuxjoymap/files/joymap-0.5.9.tar.gz/download
+	source = joymap.service
+	sha256sums = a4c178eae4693e51c114b2a1f462bde33b822edb31de2495693be2940b0fd1e7
+	sha256sums = 1ad47b6830ed73000689bdc2663f56f3df111a29b64e39dfc3ccd2a0562af36a
+
+pkgname = joymap

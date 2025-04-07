@@ -1,0 +1,9 @@
+[Unit]
+Description=Start joymap service.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/joymap %h/.config/joymap.map
+
+[Install]
+WantedBy=default.target
