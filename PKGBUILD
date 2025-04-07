@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2120.rc1.r57.gf298d75
+pkgver=2120.rc1.r63.g71c9c0c
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -106,6 +106,7 @@ prepare() {
 build() {
 	local options=(
 		-D CITRA_USE_PRECOMPILED_HEADERS=OFF
+		-D CITRA_WARNINGS_AS_ERRORS=OFF
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
