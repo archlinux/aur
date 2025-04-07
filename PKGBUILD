@@ -1,4 +1,5 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contrubutor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 # Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
