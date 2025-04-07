@@ -1,0 +1,16 @@
+pkgbase = jome
+	pkgdesc = Emoji picker desktop application
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/eepp/jome
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = qt5-base
+	makedepends = cmake>=3.30.0
+	makedepends = boost>=1.70.0
+	depends = qt5-base
+	source = https://github.com/eepp/jome/archive/refs/tags/v1.1.0.tar.gz
+	sha1sums = 71f1434bf39f821508746e8bebf5b234b0946441
+
+pkgname = jome
