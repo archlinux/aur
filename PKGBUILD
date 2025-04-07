@@ -5,9 +5,9 @@ pkgrel=1
 pkgdesc="A simple GTK3 application launcher"
 arch=('any')
 url="https://codeberg.org/ItsZariep/sglauncher"
-license=('GPL')
+license=('GPL3')
 depends=('gtk3' )
-makedepends=('git' 'gtk3' 'gtksourceview4')
+makedepends=('git' 'gtk3')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
