@@ -7,6 +7,6 @@ pkgbase = elastic-dashboard-bin
 	license = MIT
 	provides = elastic_dashboard
 	source = elastic-linux-2025.2.2.zip::https://github.com/Gold872/elastic-dashboard/releases/download/v2025.2.2/Elastic-Linux.zip
-	md5sums = c913e674cd2a0859b3bb204631affe77
+	md5sums = 36c62779ca5e2735dec0d06ffe5a08a4
 
 pkgname = elastic-dashboard-bin
