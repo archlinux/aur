@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=terra
-_pkgver=1.8-29
+_pkgver=1.8-42
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ae544abad9bd4e0782a01cae1116e8aa')
-b2sums=('4e6a4757ba1b386e8daccb99e9557d8d5c14c78bd0657a8b62682ae676dcfbbc5496aefea213283c7a66fe07935e4dc06f630a191b8458a58bdf491fc2176cb1')
+md5sums=('85317fcc06d5d304851c394c3f733728')
+b2sums=('cbe44ffe4ac7ca9e3d78b3e4c45cc1977a8fea85e4708d92b1d1b90698041cd03f20637c769606d9cd41aebf8e96cac5fe06742a5ad7cac9d61db4b608e42a73')
 
 build() {
   mkdir build
