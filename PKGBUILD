@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=telerising-api-bin
-pkgver=0.13.9
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='API web application providing Zattoo TV streams'
 arch=('x86_64')
@@ -16,14 +16,20 @@ source=(
 	startup.sh
 )
 sha512sums=(
-	4118c2f129daa0b76f338f9a3c710600d3c3f1ea2e7d91be9e31930d6107217bdf278b530ad5a4efc5a6cc8e3fb810f354e0b48fcde030e213a80b1dd18e2ed1 # telerising-v${pkgver}_x86-64_linux.zip
+	727ec22976609bb27ac5f621acc6bf9c98dea9e74d548e08ec663ec39feae51f49ba2236b054953c57d42eaf63b462d643345a3078b89a1056ecb5690b4408a7 # telerising-v${pkgver}_x86-64_linux.zip
 	be39dd0f5c079477969abcdbdaca6c74557772d8beefd7c0ff4194217cab5da83bde6051cd96355d47de209db2bad257a94267326e91292471a5b0580cf095e7 # telerising-api-bin.service
 	8d50a8b56efc882f247af83714916abe9f1d2e87830614f38d01790c04f0c0a7c7192e72426d1f4b6c90edc9a705f9e86b5fe7d44543a5755ffdfda2d894d313 # startup.sh
 )
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/"
-	mv "$srcdir/telerising/" "$pkgdir/usr/lib/$pkgname/"
+	mkdir -p "$pkgdir/usr/lib/$pkgname/certifi"
+
+	for file in api app _contextvars.so _cffi_backend.so _ssl.so _ctypes.so cryptography curl_cffi
+	do
+		mv "$srcdir/telerising/$file" "$pkgdir/usr/lib/$pkgname/"
+	done
+
+	ln -s /etc/ssl/cert.pem "$pkgdir/usr/lib/$pkgname/certifi/cacert.pem"
 
 	install -Dm0755 "$srcdir/startup.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
