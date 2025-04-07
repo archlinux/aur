@@ -2,7 +2,7 @@
 
 pkgname=openapoc-git
 _pkgname=openapoc
-pkgver=r3905.3ce2def9
+pkgver=r4005.9d020e77
 pkgrel=1
 pkgdesc='OpenApoc is an open-source re-implementation of the original X-COM: Apocalypse'
 arch=('x86_64')
@@ -38,7 +38,7 @@ build() {
   cd "${srcdir}/${pkgname}"
   mkdir build > /dev/null 2>&1 || echo -n
   cd build
-  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
   make
 }
 

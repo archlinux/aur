@@ -1,6 +1,6 @@
 pkgbase = openapoc-git
 	pkgdesc = OpenApoc is an open-source re-implementation of the original X-COM: Apocalypse
-	pkgver = r3905.3ce2def9
+	pkgver = r4005.9d020e77
 	pkgrel = 1
 	url = https://github.com/OpenApoc/OpenApoc
 	arch = x86_64
