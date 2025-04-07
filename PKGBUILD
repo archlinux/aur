@@ -3,8 +3,8 @@
 # Contributor: Kuba Kowalik <bell@0x07.pl>
 
 pkgname=libresprite
-pkgver=1.1+dev
-_pkgver=1.1-dev
+pkgver=1.1
+_pkgver=1.1
 pkgrel=2
 epoch=1
 pkgdesc='Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite'
@@ -39,7 +39,8 @@ build() {
         -DENABLE_UPDATER=OFF \
         -DUSE_SHARED_FREETYPE=ON \
         -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
-        -DCMAKE_INSTALL_PREFIX:STRING=/usr\
+        -DCMAKE_INSTALL_PREFIX:STRING=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -G Ninja ..
     ninja libresprite
 }
