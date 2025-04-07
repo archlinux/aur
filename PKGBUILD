@@ -4,7 +4,7 @@
 _pkgauthor=aquaproj
 _pkgname=aqua
 pkgname=${_pkgname}-bin
-pkgver=2.42.2
+pkgver=2.48.1
 pkgrel=1
 pkgdesc="Declarative CLI Version manager written in Go"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,8 +21,8 @@ install=aqua-bin.install
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('1261c8a5fdb1d6f27b473151085b35f03ac63e3a38e6dcdb64fcf220afe8a1d9')
-sha256sums_aarch64=('b8b4212f750de3d04bc2b515b4d246d99bd5bed9be97580a2e887a52b9079087')
+sha256sums_x86_64=('0e5eba436c0f55fbfda3becb679117731b30177bfed9e9bfe3d93cb9e6684b0b')
+sha256sums_aarch64=('b0a47a4f71fccf6eaa9e54e4a335a866baf94b766e7975f720e8a548706de77d')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"

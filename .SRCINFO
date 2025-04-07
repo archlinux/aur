@@ -1,6 +1,6 @@
 pkgbase = aqua-bin
 	pkgdesc = Declarative CLI Version manager written in Go
-	pkgver = 2.42.2
+	pkgver = 2.48.1
 	pkgrel = 1
 	url = https://github.com/aquaproj/aqua
 	install = aqua-bin.install
@@ -9,9 +9,9 @@ pkgbase = aqua-bin
 	license = MIT
 	provides = aqua
 	conflicts = aqua
-	source_x86_64 = https://github.com/aquaproj/aqua/releases/download/v2.42.2/aqua_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1261c8a5fdb1d6f27b473151085b35f03ac63e3a38e6dcdb64fcf220afe8a1d9
-	source_aarch64 = https://github.com/aquaproj/aqua/releases/download/v2.42.2/aqua_linux_arm64.tar.gz
-	sha256sums_aarch64 = b8b4212f750de3d04bc2b515b4d246d99bd5bed9be97580a2e887a52b9079087
+	source_x86_64 = https://github.com/aquaproj/aqua/releases/download/v2.48.1/aqua_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0e5eba436c0f55fbfda3becb679117731b30177bfed9e9bfe3d93cb9e6684b0b
+	source_aarch64 = https://github.com/aquaproj/aqua/releases/download/v2.48.1/aqua_linux_arm64.tar.gz
+	sha256sums_aarch64 = b0a47a4f71fccf6eaa9e54e4a335a866baf94b766e7975f720e8a548706de77d
 
 pkgname = aqua-bin
