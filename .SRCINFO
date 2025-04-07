@@ -1,0 +1,11 @@
+pkgbase = otf-kikai-chokoku-jis
+	pkgdesc = A standard font for sculpture standarized in JIS.
+	pkgver = 0.301
+	pkgrel = 1
+	url = https://font.kim
+	arch = any
+	license = custom
+	source = https://font.kim/ki-cho-jis_0301.zip
+	sha256sums = 55fe1a39a5d4a5c80903838f2fbc92409a999eeaf80b00ddc35c8d3c3217b4ee
+
+pkgname = otf-kikai-chokoku-jis
