@@ -2,7 +2,7 @@
 pkgname=elastic-dashboard-bin
 _pkgname=elastic_dashboard
 pkgver=2025.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and modern dashboard for FRC"
 arch=('x86_64')
 url="https://frc-elastic.gitbook.io/docs"
@@ -20,7 +20,11 @@ package() {
 
     install -d "${pkgdir}/usr/bin"
 
-    ln -s "$pkgdir/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    cat >"$pkgdir/usr/bin/$_pkgname" <<EOF
+#!/usr/bin/env bash
+
+/opt/$_pkgname/$_pkgname "$@"
+EOF
 
     install -d "$pkgdir/usr/share/applications"
 
