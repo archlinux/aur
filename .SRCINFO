@@ -1,0 +1,13 @@
+pkgbase = gawk-csv
+	pkgdesc = GAWK extension - read, parse, compose and write CVS
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gawkextlib/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gawkextlib
+	depends = glibc
+	source = https://sourceforge.net/projects/gawkextlib/files/snapshot/gawk-csv-snapshot.tar.gz/download
+	md5sums = 5230204bdaecf8b65844139ce9af8dce
+
+pkgname = gawk-csv
