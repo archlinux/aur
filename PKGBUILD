@@ -4,31 +4,31 @@
 # Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-extension-darkreader
-pkgver=4.9.74
+pkgver=4.9.105
 pkgrel=1
 pkgdesc='Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing'
-url=https://github.com/darkreader/darkreader
+url="https://github.com/darkreader/darkreader"
 arch=('any')
 license=('MIT')
 depends=('librewolf')
 makedepends=('git' 'npm' 'strip-nondeterminism')
 groups=('librewolf-addons')
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('cb138b944fc159d3eee90e5e1bb0f593dc3366926fbae12ea3d521e2855f9d2a')
 
 prepare() {
-  cd darkreader
+  cd darkreader-$pkgver
   npm ci
 }
 
 build() {
-  cd darkreader
+  cd darkreader-$pkgver
   npm run build
   strip-nondeterminism -t zip build/release/*.xpi
 }
 
 package() {
-  cd darkreader
+  cd darkreader-$pkgver
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 build/release/darkreader-firefox.xpi "$pkgdir/usr/lib/librewolf/browser/extensions/addon@darkreader.org.xpi"
 }
