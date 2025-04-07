@@ -23,8 +23,11 @@ package() {
     cat >"$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/usr/bin/env bash
 
+# shim for $_pkgname
+
 /opt/$_pkgname/$_pkgname "$@"
 EOF
+    chmod +x "$pkgdir/usr/bin/$_pkgname"
 
     install -d "$pkgdir/usr/share/applications"
 
