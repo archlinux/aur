@@ -1,8 +1,8 @@
 # Maintainer: Magillos <kerown at gmail com>
 pkgname=jack_delay-gui
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Latency testing GUI for JACK using PyQt6 and python-jack"
+pkgrel=2
+pkgdesc="GUI for jack_delay"
 arch=('any')
 url="https://github.com/magillos/jack_delay-GUI"
 license=('GPL3')
