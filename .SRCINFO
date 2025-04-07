@@ -1,6 +1,6 @@
 pkgbase = mbdyn-git
 	pkgdesc = The first *free* general purpose Multibody Dynamics analysis software
-	pkgver = r8479.eb3297c34
+	pkgver = r18.fbacc87
 	pkgrel = 1
 	url = www.mbdyn.org
 	install = mbdyn.install
