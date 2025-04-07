@@ -1,33 +1,53 @@
-# Maintainer: SanskritFritz (gmail)
+# Maintainer: Alice Vega <aalicevegaa at protonmail dot com>
+# Contributor: SanskritFritz (gmail)
 # Contributor: Brian Bidulock <bidulock@openss7.org>
  
 pkgname=wmgtemp
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 pkgdesc="Dockapp to graphically display CPU and SYS temperatures."
-url="http://fluxcode.net/projects/wmgtemp"
+url="https://www.dockapps.net/wmgtemp"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('libxpm' 'lm_sensors')
-source=("http://fluxcode.net/files/wmgtemp-1.1.tar.gz"
-	inline.patch)
-md5sums=('cce700b3a4ef74b2ec019d8e89bdf2f6'
-         'e9607a7259316854834b3ed4073697b7')
+source=("https://www.dockapps.net/download/wmgtemp-1.2.tar.gz")
+md5sums=('a595053ba7fab25e318d983df3af8ce8')
  
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np2 -b -z .orig -i ../inline.patch
+    cd "$pkgname-$pkgver"
+    ./configure
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i "/MANINSTDIR=/d" Makefile
-  make PREFIX="/usr"
+    cd "$pkgname-$pkgver"
+    make
 }
  
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -d "$pkgdir/usr/bin"
-  make INSTDIR="$pkgdir/usr/bin" MANINSTDIR="$pkgdir/usr/share/man/man1" install
-}
+    cd $pkgname-$pkgver
+    install -m 755 -D "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
+    if [[ -f "README" ]]; then
+	install -m 644 -D "README" "$pkgdir/usr/share/doc/$pkgname/README"
+    fi
+    
+    if [[ -f "CHANGES" ]]; then
+	install -m 644 -D "CHANGES" "$pkgdir/usr/share/doc/$pkgname/CHANGES"
+    fi
+    
+    if [[ -f "COPYING" ]]; then
+	install -m 644 -D "COPYING" "$pkgdir/usr/share/doc/$pkgname/COPYING"
+    fi
+
+    if [[ -f "HINTS" ]]; then
+	install -m 644 -D "HINTS" "$pkgdir/usr/share/doc/$pkgname/HINTS"
+    fi
+
+    if [[ -f "TODO" ]]; then
+	install -m 644 -D "TODO" "$pkgdir/usr/share/doc/$pkgname/TODO"
+    fi
+
+    if [[ -f "BUGS" ]]; then
+	install -m 644 -D "BUGS" "$pkgdir/usr/share/doc/$pkgname/BUGS"
+    fi
+}
