@@ -1,8 +1,9 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=python-exchange_calendars
 _pkgname=${pkgname#python-}
-pkgver=3.6.3
+pkgver=4.10
 pkgrel=1
 pkgdesc="Calendars for various securities exchanges"
 arch=('any')
@@ -11,7 +12,7 @@ makedepends=('python-setuptools')
 url="https://github.com/gerrymanoim/$_pkgname"
 license=('APACHE')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('99d151031a08397668d2707806566fdc7b3ae874e81ff13f876caed2f2a1731d')
+sha256sums=('3f25007e934c7e8c6f0fd43f4fd7959e64505f8aa6b1eb4d6c5da71ab8af054b')
 
 build() {
   cd $_pkgname-$pkgver
