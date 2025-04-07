@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname=Cherry-Studio
-pkgver=1.1.18
+pkgver=1.1.19
 _electronversion=31
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -35,8 +35,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('36827544014f67bfe9a950a1ebbb3faca47a71680d178afc33e8bc59bdf1186b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b98c529fba222a74e8bec6b15006d96f6d9f82f87f0d4c4c23d890d7f6b34196')
-sha256sums_x86_64=('1b0556ecba432ef69d1e26b31649f0ca1b32d5764126c6e07a7fc427f8e82a51')
+sha256sums_aarch64=('d5518cbc8c4ea1eefe60ad19aae61fc374381bf95d7c961f073475f9052af6d5')
+sha256sums_x86_64=('e8e31d1299801efe555b682d3a5f91c61b02d575eb5b9162110bf9d9c1160f05')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -58,7 +58,11 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_appname//-/}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_appname//-/}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
     install -Dm644 "${srcdir}/squashfs-root/${_appname//-/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
