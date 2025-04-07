@@ -35,8 +35,7 @@ source=(
 
 	# submodules for vita3k
 	'SPIRV-Cross'::'git+https://github.com/KhronosGroup/SPIRV-Cross.git'
-	'Vulkan-Headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
-	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/Macdu/VulkanMemoryAllocator-Hpp.git'
+	'VulkanMemoryAllocator-Hpp'::'git+https://github.com/YaaZ/VulkanMemoryAllocator-Hpp.git'
 	'better-enums'::'git+https://github.com/aantron/better-enums.git'
 	'capstone'::'git+https://github.com/aquynh/capstone.git'
 	'concurrentqueue'::'git+https://github.com/cameron314/concurrentqueue.git'
@@ -70,6 +69,7 @@ source=(
 
 	# submodules for VulkanMemoryAllocator-Hpp
 	'VulkanMemoryAllocator'::'git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
+	'Vulkan-Headers'::'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 
 	# submodules for capstone
 	#'tree-sitter-cpp'::'git+https://github.com/tree-sitter/tree-sitter-cpp.git'
@@ -150,7 +150,6 @@ prepare() {
 		# submodules for vita3k
 		local -A _submodules=(
 			['SPIRV-Cross']='external/SPIRV-Cross'
-			['Vulkan-Headers']='external/Vulkan-Headers'
 			['VulkanMemoryAllocator-Hpp']='external/VulkanMemoryAllocator-Hpp'
 			['better-enums']='external/better-enums'
 			['capstone']='external/capstone'
@@ -193,6 +192,7 @@ prepare() {
 		cd "external/VulkanMemoryAllocator-Hpp"
 		local -A _submodules=(
 			['VulkanMemoryAllocator']='VulkanMemoryAllocator'
+			['Vulkan-Headers']='Vulkan-Headers'
 		)
 		for key in ${!_submodules[@]} ; do
 			git submodule init "${_submodules[${key}]}"
