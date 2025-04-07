@@ -4,7 +4,7 @@
 
 _pkgname="vita3k"
 pkgname="$_pkgname-git"
-pkgver=r3738.3d53d7cb9
+pkgver=r3758.664ae22c4
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -146,6 +146,11 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 
+	_submodule_init() (
+		git submodule init "$1"
+		git submodule set-url "$1" "$2"
+		git -c protocol.file.allow=always submodule update "$1"
+	)
 	(
 		# submodules for vita3k
 		local -A _submodules=(
@@ -182,9 +187,7 @@ prepare() {
 			['yaml-cpp']='external/yaml-cpp'
 		)
 		for key in ${!_submodules[@]} ; do
-			git submodule init "${_submodules[${key}]}"
-			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+			_submodule_init "${_submodules[${key}]}" "${srcdir}/${key}"
 		done
 	)
 	(
@@ -195,9 +198,7 @@ prepare() {
 			['Vulkan-Headers']='Vulkan-Headers'
 		)
 		for key in ${!_submodules[@]} ; do
-			git submodule init "${_submodules[${key}]}"
-			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+			_submodule_init "${_submodules[${key}]}" "${srcdir}/${key}"
 		done
 	)
 	(
@@ -208,9 +209,7 @@ prepare() {
 			['sanitizers-cmake']='cmake/sanitizers-cmake'
 		)
 		for key in ${!_submodules[@]} ; do
-			git submodule init "${_submodules[${key}]}"
-			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+			_submodule_init "${_submodules[${key}]}" "${srcdir}/${key}"
 		done
 	)
 	(
@@ -220,9 +219,7 @@ prepare() {
 			['psp2rela']='psp2rela'
 		)
 		for key in ${!_submodules[@]} ; do
-			git submodule init "${_submodules[${key}]}"
-			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+			_submodule_init "${_submodules[${key}]}" "${srcdir}/${key}"
 		done
 	)
 	(
@@ -235,9 +232,7 @@ prepare() {
 			['vita3k-zlib']='zlib'
 		)
 		for key in ${!_submodules[@]} ; do
-			git submodule init "${_submodules[${key}]}"
-			git submodule set-url "${_submodules[${key}]}" "${srcdir}/${key}"
-			git -c protocol.file.allow=always submodule update "${_submodules[${key}]}"
+			_submodule_init "${_submodules[${key}]}" "${srcdir}/${key}"
 		done
 	)
 }
