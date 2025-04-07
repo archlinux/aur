@@ -1,41 +1,42 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=easyrpg-player
-pkgver=0.8
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://easyrpg.org"
-license=('GPL3')
-depends=("liblcf>=${pkgver:0:5}" 'sdl2' 'pixman' 'fmt' 'harfbuzz' 'libvorbis'
-         'mpg123' 'libsndfile' 'speexdsp' 'wildmidi' 'opusfile')
-optdepends=('wine: for installing the run time packages (RTP)'
+license=('GPL-3.0-or-later')
+makedepends=('cmake' 'ninja' 'nlohmann-json')
+depends=("liblcf>=$pkgver" 'sdl2' 'libpng' 'pixman' 'fmt' 'freetype2' 'harfbuzz'
+         'mpg123' 'libsndfile' 'libvorbis' 'opusfile' 'speexdsp' 'lhasa'
+         'hicolor-icon-theme')
+optdepends=('alsa-lib: native MIDI playback (needs sequencer)'
+            'wildmidi: decoder for MIDI (needs "GUS patches")'
+            'fluidsynth: better MIDI decoder (needs soundfont)'
             'libxmp: decoder for tracker music, used by few games'
-            'alsa-lib: native MIDI playback'
-            'fluidsynth: better MIDI decoder'
             'rpg2000-rtp: run time package for some 2k games'
-            'rpg2003-rtp: run time package for some 2k3 games')
+            'rpg2003-rtp: run time package for some 2k3 games'
+            'wine: for installing run time packages (RTP) manually')
 install=$pkgname.install
-source=("https://easyrpg.org/downloads/player/$pkgver/$pkgname-$pkgver.tar.xz"
-        "$pkgname-$pkgver-fmt-string_view-api.patch")
-sha256sums=('06e6d034348d1c52993d0be6b88fc3502a6c7718e366f691401539d5a2195c79'
-            '723d82c9ae8e38d3e56684c4115debb6af140f1db648871b355fbb88e9b24759')
+source=("https://easyrpg.org/downloads/player/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('51249fbc8da4e3ac2e8371b0d6f9f32ff260096f5478b3b95020e27b031dbd0d')
 
 prepare() {
-  patch -d $pkgname-$pkgver -p1 < $pkgname-$pkgver-fmt-string_view-api.patch
+  rm -rf aurbuild
 }
 
 build() {
-  cd $pkgname-$pkgver
-
-  ./configure --prefix=/usr --enable-fmmidi
-  make
+  cmake -S $pkgname-$pkgver -B aurbuild -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPLAYER_ENABLE_DRWAV=OFF
+  cmake --build aurbuild
 }
 
 check() {
-  make -C $pkgname-$pkgver check
+  cmake --build aurbuild --target check
 }
 
 package() {
-  make -C $pkgname-$pkgver DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install aurbuild
 }
