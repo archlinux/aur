@@ -1,2 +1,3 @@
-HTML-Packer-*.tar.gz
-perl-html-packer-*.log
+/HTML-Packer-*.tar.gz
+/perl-html-packer-*.log
+/src/
