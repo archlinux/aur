@@ -80,4 +80,5 @@ Terminal=false
 Icon=xenia-canary
 Comment=An experimental emulator for the Xbox 360.
 " > usr/share/applications/xenia-canary-bin.desktop
+  echo "If an older version of this package was installed, delete ~/.xenia-canary/xenia_canary to be able to run the new version. "
 }
