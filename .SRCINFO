@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-git
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - git version
-	pkgver = r18087.gfb4c7f0de
+	pkgver = r18424.g1adf0de07
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -28,9 +28,9 @@ pkgbase = mongodb-compass-isolated-git
 	source = fix-argv.diff
 	source = mongodb-compass.conf
 	b2sums = SKIP
-	b2sums = 7d840755448f0231304a809a9e9b584f548ae9e112f48c77fcbc924d6586cd27b9053f9e4bce7b50ad728c7f79a72621fd4942a70a02953835c7d79541fb2d32
+	b2sums = f4b3d86ede6f787a7adf3762911f8e74bf0ff658c906092a764d8080248c1a32cc8d2e536d14a19d7ced3374b267bc6b82f1a6d639ba623db21a5f2ea35af5b0
 	b2sums = 408f302c55df5d6c2fdba66d0b0666081780d625b34d1ca81b85061a2ae2ffbdc1a136a9199b76ee18a7f52ff6832db27d4a16796226ab8543b4621fc6827ade
-	b2sums = 2a07533bbd4697e8ad0e29402867662cc9d817dfbcfcde8bfa2e4e06f8df3c7d036822b8b33b49cb1d29a8b2c126c5a3381c6b2283e2732e4ca2943bd06bed68
+	b2sums = 69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436
 	b2sums = 42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec
 
 pkgname = mongodb-compass-isolated-git
