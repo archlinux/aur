@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=warteschlangensimulator-appimage
 _appname=Warteschlangensimulator
-pkgver=5.7.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="A free, platform independent, discrete-event, stochastic simulator which allows to model queueing systems in form of flowcharts."
 arch=("x86_64")
@@ -19,11 +19,11 @@ _install_path="/opt/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${_ghurl}/releases/download/${pkgver}/${_appname}-${CARCH}.AppImage"
 )
-sha256sums=('243950614c63dba948305427d2342e4ad44c4dd5bf72d4b82fdb08bb829b2fe2')
-build() {
+sha256sums=('6e85294f3c4e1a8684db5fda6eb704872aaa2a4104a5e47e6bd76f638c924037')
+prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/Simulator.sh/${pkgname%-appimage} --no-sandbox/g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i "s/Simulator.sh/${pkgname%-appimage} --no-sandbox/g" "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
