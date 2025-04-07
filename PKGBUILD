@@ -1,3 +1,4 @@
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 # Contributor: ycatz <thesummernightcat@gmail.com>
