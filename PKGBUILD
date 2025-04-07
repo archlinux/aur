@@ -2,7 +2,7 @@
 
 pkgname=hslinkupper
 _name=HSLinkUpper
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="HSLinkUpper is a simple tool that allows you to config HSLink."
@@ -36,7 +36,7 @@ checkdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('a8190bb1202d426582779d8568c30833675074e3ba5a405bb3b68ad347a53146')
+sha256sums=('79fa7dce7295784ab8a1818a2939c141f6472eacc3cec59483fff49bf00edee8')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}/src-tauri"
