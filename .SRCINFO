@@ -1,0 +1,13 @@
+pkgbase = python-hijridate
+	pkgdesc = Accurate Hijri-Gregorian dates converter based on Umm al-Qura calendar
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/dralshehri/hijridate
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-hatchling
+	depends = python-hatch-fancy-pypi-readme
+
+pkgname = python-hijridate
