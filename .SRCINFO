@@ -1,6 +1,6 @@
 pkgbase = tpopup
 	pkgdesc = simple popup with text from file or command line (Qt6)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://sr.ht/~minshall/tpopup/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tpopup
 	depends = python-pyqt6
 	depends = python-tomli
 	depends = python-pyxdg
-	source = git+https://git.sr.ht/~minshall/tpopup#tag=9769e4386ba59586312f226c1f715517e1443024?signed
+	source = git+https://git.sr.ht/~minshall/tpopup#tag=3efb81aa10c59abe6642f2bbf5ab40c60da4db68?signed
 	validpgpkeys = BB68C8D3A3D23B9B398FB50AC397C74C54A9EC4F
 	sha256sums = SKIP
 
