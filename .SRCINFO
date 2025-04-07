@@ -1,4 +1,4 @@
-pkgbase = todesk-bin-rpm
+pkgbase = todesk-rpm-bin
 	pkgdesc = Remote control and team work
 	pkgver = 4.7.2.0
 	pkgrel = 6
@@ -23,4 +23,4 @@ pkgbase = todesk-bin-rpm
 	source_aarch64 = https://dl.todesk.com/linux/todesk-v4.7.2.0-arm64.deb
 	sha256sums_aarch64 = 07a1239d0ea6b94f24e12b446d39cf6b23747b2e52f09c3dff50daa1394ae0b5
 
-pkgname = todesk-bin-rpm
+pkgname = todesk-rpm-bin
