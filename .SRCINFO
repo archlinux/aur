@@ -1,15 +1,15 @@
 pkgbase = rime-wanxiang
 	pkgdesc = 万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型
-	pkgver = 6.1
-	pkgrel = 3
+	pkgver = 6.2
+	pkgrel = 1
 	url = https://github.com/amzxyz/rime_wanxiang
 	arch = any
 	license = CC-BY-4.0
 	makedepends = rime-prelude
 	makedepends = rime-essay
 	makedepends = sed
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.1.tar.gz
-	sha256sums = 83e5ccb8a4a969b570a8d82d7e8c9cfaf64f3ac074169a10bea19b5f3de2086c
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.2.tar.gz
+	sha256sums = df056910012bece419f4ead34c7d8c9bef61f24c4e764d4bb958f7424f1e2254
 
 pkgname = rime-wanxiang-base
 	pkgdesc = 万象拼音基础版基础文件
@@ -22,32 +22,24 @@ pkgname = rime-wanxiang-pinyin
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
-	conflicts = rime-wanxiang-mspy
 	conflicts = rime-wanxiang-sogou
+	conflicts = rime-wanxiang-mspy
 
 pkgname = rime-wanxiang-zrm
 	pkgdesc = 万象拼音基础版（自然码方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-flypy
-	conflicts = rime-wanxiang-mspy
 	conflicts = rime-wanxiang-sogou
+	conflicts = rime-wanxiang-mspy
 
 pkgname = rime-wanxiang-flypy
 	pkgdesc = 万象拼音基础版（小鹤双拼方案）
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-sogou
 	conflicts = rime-wanxiang-mspy
-	conflicts = rime-wanxiang-sogou
-
-pkgname = rime-wanxiang-mspy
-	pkgdesc = 万象拼音基础版（微软双拼方案）
-	depends = rime-wanxiang-base
-	conflicts = rime-wanxiang-pinyin
-	conflicts = rime-wanxiang-zrm
-	conflicts = rime-wanxiang-flypy
-	conflicts = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-sogou
 	pkgdesc = 万象拼音基础版（搜狗双拼方案）
@@ -56,3 +48,11 @@ pkgname = rime-wanxiang-sogou
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-mspy
+
+pkgname = rime-wanxiang-mspy
+	pkgdesc = 万象拼音基础版（微软双拼方案）
+	depends = rime-wanxiang-base
+	conflicts = rime-wanxiang-pinyin
+	conflicts = rime-wanxiang-zrm
+	conflicts = rime-wanxiang-flypy
+	conflicts = rime-wanxiang-sogou

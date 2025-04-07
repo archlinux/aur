@@ -2,15 +2,15 @@
 
 pkgbase=rime-wanxiang
 pkgname=(rime-wanxiang-base)
-pkgver=6.1
-pkgrel=3
+pkgver=6.2
+pkgrel=1
 pkgdesc="万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型"
 arch=(any)
 license=('CC-BY-4.0')
 
 url="https://github.com/amzxyz/rime_wanxiang"
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('83e5ccb8a4a969b570a8d82d7e8c9cfaf64f3ac074169a10bea19b5f3de2086c')
+sha256sums=('df056910012bece419f4ead34c7d8c9bef61f24c4e764d4bb958f7424f1e2254')
 
 makedepends=("rime-prelude" "rime-essay" "sed")
 
@@ -68,12 +68,14 @@ package_rime-wanxiang-base() {
     done
 }
 
-_schemas=('pinyin 全拼'
-          'zrm    自然码'
-          # 'zrlong 自然龙'
-          'flypy  小鹤双拼'
-          'mspy   微软双拼'
-          'sogou  搜狗双拼')
+_schemas=('pinyin  全拼'
+          'zrm     自然码'
+          # 'zrlong  自然龙'
+          # 'abc     智能ABC'
+          'flypy   小鹤双拼'
+          'sogou   搜狗双拼'
+          # 'ziguang 紫光双拼'
+          'mspy    微软双拼')
 
 _conflicts=()
 for _line in "${_schemas[@]}"; do
@@ -116,14 +118,15 @@ _package() {
 
     cd "${srcdir}/rime_wanxiang-${pkgver}"
 
+    local _cn_en_user_dict=en_dicts/"${_name}"
     sed -Ei \
-        -e "/^set_shuru_schema:/,/^[[:space:]]*$/ { s/^(\s*__include:\s*)\S+(\s*.*)/\1${_name}\2/ }" \
+        -e "/^set_shuru_schema:/,/^[[:space:]]*$/ { s|^(\s*__include:\s*)\S+(\s*.*)|\1${_name}\2| }" \
+        -e "/^set_cn_en:/,/^[[:space:]]*$/ { s|^(\s*user_dict:\s*)\S+(\s*.*)|\1${_cn_en_user_dict}\2| }" \
         "wanxiang.schema.yaml"
 
-    _algebra=algebra_"${_schema}"
     for _s in wanxiang_{radical,en}.schema.yaml; do
         sed -Ei \
-            -e "/^set_shuru_schema:/,/^[[:space:]]*$/ { s/^(\s*__include:\s*)\S+(\s*.*)/\1${_algebra}\2/ }" \
+            -e "/^set_shuru_schema:/,/^[[:space:]]*$/ { s|^(\s*__include:\s*)\S+(\s*.*)|\1${_name}\2| }" \
             "${_s}"
     done
 
