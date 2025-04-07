@@ -1,8 +1,9 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.0.43
+	pkgver = 0.0.52
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	checkdepends = python-anyio
 	checkdepends = python-devtools
@@ -14,14 +15,17 @@ pkgbase = python-pydantic-ai
 	checkdepends = python-pytest-pretty
 	checkdepends = python-pytest-recording
 	checkdepends = python-diff-cover
-	checkdepends = python-httpx
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
-	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.0.43.tar.gz
-	sha256sums = 6c391cb2196c5ab18c1eaf606a42a0c7fbf557bf3ecc0db8170b793e4bfbcb5c
+	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.0.52.tar.gz
+	sha256sums = abf18937911655b17f02667c846f6469fa4a7e7288f02a26a039bb22254c43e6
+	source_x86_64 = https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/denoland/deno/releases/latest/download/deno-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = SKIP
 
 pkgname = python-pydantic-graph
 	pkgdesc = Graph and state machine librarys.
@@ -31,6 +35,18 @@ pkgname = python-pydantic-graph
 	depends = python-logfire-api
 	depends = python-pydantic
 	depends = python-typing-inspection
+
+pkgname = python-pydantic-evals
+	pkgdesc = Framework for evaluating stochastic code execution, especially code making use of LLMs.
+	url = https://github.com/pydantic/pydantic-ai/tree/main/pydantic_evals
+	depends = python>=3.9
+	depends = python-rich
+	depends = python-logfire-api
+	depends = python-pydantic
+	depends = python-pydantic-ai-slim
+	depends = python-anyio
+	depends = python-pyyaml
+	optdepends = python-logfire: logfire
 
 pkgname = python-pydantic-ai-slim
 	pkgdesc = Agent Framework / shim to use Pydantic with LLMs, slim package.
@@ -58,6 +74,7 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-prompt-toolkit: cli
 	optdepends = python-argcomplete: cli
 	optdepends = python-mcp: mcp
+	optdepends = python-pydantic-evals: evals
 
 pkgname = python-pydantic-ai-examples
 	pkgdesc = Examples of how to use PydanticAI and what it can do.
@@ -69,6 +86,7 @@ pkgname = python-pydantic-ai-examples
 	depends = python-requests
 	depends = python-groq
 	depends = python-anthropic
+	depends = python-pydantic-evals
 	depends = python-asyncpg
 	depends = python-fastapi
 	depends = python-logfire
@@ -101,5 +119,6 @@ pkgname = python-pydantic-ai
 	depends = python-prompt-toolkit
 	depends = python-argcomplete
 	depends = python-mcp
+	depends = python-pydantic-evals
 	optdepends = python-pydantic-ai-examples: examples
 	optdepends = python-logfire: logfire
