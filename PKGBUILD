@@ -1,7 +1,7 @@
 # Maintainer: Konrad Beckmann <konrad.beckmann@gmail.com>
 
 pkgname=soapyairspyhf-git
-pkgver=r28.b6cfbf5
+pkgver=r34.a2fd6cf
 pkgrel=1
 epoch=2
 pkgdesc="SoapySDR plugin for Airspy HF+"
@@ -24,7 +24,7 @@ build() {
 	cd "${srcdir}/${pkgname}"
 	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make
 }
 
