@@ -1,7 +1,7 @@
 pkgbase = dm-fotowelt
 	pkgdesc = an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de
-	pkgver = 8.0.2
-	pkgrel = 2
+	pkgver = 8.0.3
+	pkgrel = 1
 	url = https://www.fotoparadies.de/
 	install = dm-fotowelt.install
 	arch = i686
@@ -22,6 +22,6 @@ pkgbase = dm-fotowelt
 	conflicts = cewe-monlivrephoto-fr
 	options = !strip
 	source = https://dls.photoprintit.com/download/Data/1320-de_DE/hps/setup_dm_Fotowelt.tgz
-	sha256sums = 43aa880fa1692be6a0f45f0c7052444a09c5f6d609a49ccb681896a42d84ad25
+	sha256sums = cf4ae2955cb6e0c6e6b128b3ab5c64dd5b6831ffd9466d5a3ef3567df5710501
 
 pkgname = dm-fotowelt
