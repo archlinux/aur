@@ -1,12 +1,13 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 # Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 
 _gemname='activerecord'
 pkgname="ruby-${_gemname}"
-pkgver=6.1.4.1
-pkgrel=2
+pkgver=8.0.2
+pkgrel=1
 pkgdesc='Object-relational mapper framework (part of Rails)'
 arch=('any')
 url='https://rubyonrails.org'
