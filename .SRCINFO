@@ -1,6 +1,6 @@
 pkgbase = libresprite-git
 	pkgdesc = Animated sprite editor and pixel art tool
-	pkgver = 1.1.r59.ga678ddf
+	pkgver = 1.2.r8.gdaad25b
 	pkgrel = 1
 	url = https://github.com/LibreSprite/LibreSprite
 	arch = x86_64

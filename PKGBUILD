@@ -1,9 +1,11 @@
 # Maintainer:
 # Contributor: GodofGrunts <me@godofgrunts.xyz>
 
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 _pkgname="libresprite"
 pkgname="$_pkgname-git"
-pkgver=1.1.r59.ga678ddf
+pkgver=1.2.r8.gdaad25b
 pkgrel=1
 pkgdesc="Animated sprite editor and pixel art tool"
 url='https://github.com/LibreSprite/LibreSprite'
