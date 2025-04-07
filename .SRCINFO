@@ -1,0 +1,13 @@
+pkgbase = wastebin-moku-bin
+	pkgdesc = wastebin is a minimal pastebin. (perf patch)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/mokurin000/wastebin
+	arch = x86_64
+	license = MIT
+	provides = wastebin-moku
+	conflicts = wastebin
+	source = wastebin-moku-bin-3.1.0.zip::https://github.com/matze/wastebin/releases/download/3.1.0/wastebin_3.1.0_x86_64-unknown-linux-musl.zip
+	sha256sums = 73c8e11e114b2d8c732033bf8dff8b94f26ae6d8bc0acb0c0c3305cf0a9c61bc
+
+pkgname = wastebin-moku-bin
