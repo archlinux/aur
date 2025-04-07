@@ -4,38 +4,31 @@
 
 pkgname='koi'
 _pkgname='Koi'
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
 license=('LGPL3')
-depends=('gcc-libs' 'hicolor-icon-theme' 'plasma-desktop' 'plasma-integration' 'plasma-workspace')
-makedepends=('base-devel' 'qt6-base' 'qt6-tools' 'cmake'
-             'desktop-file-utils' 'extra-cmake-modules' 'fdupes')
+depends=('gcc-libs' 'plasma-desktop' 'plasma-integration' 'plasma-workspace' 'qt6-svg' 'hicolor-icon-theme')
+makedepends=('gcc' 'qt6-base' 'qt6-tools' 'cmake' 'extra-cmake-modules' 'desktop-file-utils' 'fdupes')
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
             'kvantum: Powerful extra customisable themes')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('bbf555fecfe23918aa0a526d13d564c1')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('0dec287d7754c94923b9e4007a26219d')
 
 build() {
-    cmake -S "${srcdir}/${_pkgname}-${pkgver}/src/" \
-          -B "${srcdir}/${_pkgname}-${pkgver}/build/" \
-          -DCMAKE_INSTALL_PREFIX="/usr/"
+    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
+          -S "${srcdir}/${_pkgname}-${pkgver}/src/" \
+          -B "${srcdir}/${_pkgname}-${pkgver}/build/"
 
     cmake --build "${srcdir}/${_pkgname}-${pkgver}/build/"
 }
 
-check() {
-    desktop-file-validate "${srcdir}/${_pkgname}-${pkgver}/src/${pkgname}.desktop"
-    fdupes -r -s "${srcdir}/"
-}
-
 package() {
-    DESTDIR="${pkgdir}" cmake --install "${srcdir}/${_pkgname}-${pkgver}/build/"
+    cmake --install "${srcdir}/${_pkgname}-${pkgver}/build/"
 
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-
-    desktop-file-validate "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    fdupes -r -s "${pkgdir}/"
+# Checking `pkgdir` ...
+    desktop-file-validate "${pkgdir}/usr/share/applications/local.${_pkgname}DbusInterface.desktop"
+    fdupes -r -s          "${pkgdir}/"
 }
