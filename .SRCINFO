@@ -1,7 +1,7 @@
 pkgbase = swt
 	pkgdesc = An open source widget toolkit for Java
-	pkgver = 4.34
-	pkgrel = 2
+	pkgver = 4.35
+	pkgrel = 1
 	url = https://www.eclipse.org/swt/
 	arch = x86_64
 	license = EPL-2.0
@@ -18,10 +18,10 @@ pkgbase = swt
 	optdepends = glu
 	optdepends = gtk3
 	optdepends = gtk4
-	noextract = swt-4.34-gtk-linux-x86_64.zip
-	source = https://download.eclipse.org/eclipse/downloads/drops4/R-4.34-202411201800/eclipse-platform-4.34-linux-gtk-x86_64.tar.gz
+	noextract = swt-4.35-gtk-linux-x86_64.zip
+	source = https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.35-202502280140/swt-4.35-gtk-linux-x86_64.zip
 	source = build-swt.xml
-	sha256sums = 2fd34dbe0d15f96bb23060c62c6a70696518e6d2cd77b45ccc0dfcabc56c18c6
+	sha256sums = 8f883ae19f8c8ac292b11f2ebc1b65800ffa3d9c3a9af135c3d55a676dd11547
 	sha256sums = e382ae40d3a437b10a960bab81800a5e372769011ab591de2ce11426d52e6b37
 
 pkgname = swt
