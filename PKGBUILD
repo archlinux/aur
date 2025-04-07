@@ -24,7 +24,7 @@ prepare() {
   # Enable shared library and use Makefiles
   sed -i 's/CONFIG_FLAGS = -DCMAKE_VERBOSE_MAKEFILE=1/CONFIG_FLAGS = -DBUILD_SHARED_LIBS=TRUE -DCMAKE_GENERATOR="Unix Makefiles"/' Makefile
   # Increase CMake version
-  sed -i 's/2.8/3.5/' CMakeLists.txt
+  sed -i 's/2.8/3.10/' CMakeLists.txt
 }
 
 build() {
