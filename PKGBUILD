@@ -1,7 +1,7 @@
 
 _pkgname=sdl3_shadercross
 pkgname=$_pkgname-git
-pkgver=r106.7258618
+pkgver=r108.7c1c545
 pkgrel=1
 pkgdesc="Shader translation library for SDL's GPU API"
 arch=('x86_64')
@@ -10,7 +10,6 @@ license=('Zlib')
 depends=('sdl3' 'spirv-cross' 'directx-shader-compiler')
 options=(!debug)
 makedepends=('cmake')
-conflicts=('sdl3_image-git')
 _pkgsrc="SDL_shadercross"
 source=("${_pkgsrc}::git+$url.git"
 #        "${_pkgsrc}-SPIRV-Cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git"
