@@ -6,7 +6,7 @@
 # Maintainer: Cooky-12 cooky-12@qq.com
 provides=('bluez')
 pkgname=('bluez-ps3')
-pkgver=5.80
+pkgver=5.82
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
@@ -15,10 +15,15 @@ makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docuti
 source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz fake-ps3.patch
         bluetooth.modprobe)
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('a4d0bca3299691f06d5bd9773b854638204a51a5026c42b0ad7f1c6cf16b459a'
+sha256sums=('0739fa608a837967ee6d5572b43fb89946a938d1c6c26127158aaefd743a790b'
             '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
             '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4')
 
+
+prepare() {
+  # Remove the vendored ell to avoid conflicts in header search paths
+  rm -r "bluez-${pkgver}"/ell
+}
 
 build() {
   cd bluez-${pkgver} ;  patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
@@ -36,6 +41,7 @@ build() {
           --enable-hid2hci \
           --enable-experimental \
           --enable-datafiles \
+          --enable-external-ell \
           --enable-library --enable-deprecated # libraries and these tools are deprecated
   make
 
@@ -69,7 +75,7 @@ check() {
 
 
 package_bluez-ps3() {
-  pkgdesc="Daemons for the bluetooth protocol stack ( add support for non shanwan fake ps3 controllers )"
+  pkgdesc="Daemons for the bluetooth protocol stack"
   depends=('systemd-libs' 'dbus' 'glib2' 'alsa-lib' 'glibc')
   backup=(etc/bluetooth/{main,input,network}.conf)
   conflicts=('bluez')
