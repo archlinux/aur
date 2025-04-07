@@ -20,7 +20,7 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+build() (
     [ -d "${srcdir}/build" ] && rm -r "${srcdir}/build"
     mkdir -p "${srcdir}/build/"{shaders,textures,extract}
     cd "${srcdir}/build"
@@ -85,7 +85,7 @@ build() {
     cat ../reshade-shaders/EffectPackages.ini |\
         SHELL=$(type -p bash) parallel -N1 --pipe --regexp --recstart '^\[[^\]]*\]' \
             extract_effect
-}
+)
 
 package() {
     local file
