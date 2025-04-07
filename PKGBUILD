@@ -23,7 +23,7 @@ sha512sums=('69127b7a777f9ba14cf399a7122000af9d6094a5f44be600a28384cfc0495c024fb
 prepare() {
   cd ${_base}-${pkgver}
   # Increase CMake version
-  sed -i 's/2.8/3.5/' CMakeLists.txt
+  sed -i 's/2.8/3.10/' CMakeLists.txt
   echo "target_link_libraries(metis PUBLIC \"-lGKlib\")" >>"libmetis/CMakeLists.txt"
 }
 
