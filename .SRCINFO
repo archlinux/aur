@@ -1,14 +1,21 @@
 pkgbase = sdl2-gamepad-mapper
 	pkgdesc = Generate SDL2 Controller mapping strings
-	pkgver = 0.0.4
-	pkgrel = 3
+	pkgver = 0.0.9
+	pkgrel = 1
 	url = https://gitlab.com/ryochan7/sdl2-gamepad-mapper
-	arch = any
+	arch = x86_64
+	license = GPL-3.0-only
 	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = vulkan-headers
 	depends = sdl2
-	depends = qt5-base
-	depends = qt5-quickcontrols2
-	source = git+https://gitlab.com/ryochan7/sdl2-gamepad-mapper#commit=7d3f7ad9780933bbeaa8bb76f5db3d501e5c1e2d
-	sha256sums = SKIP
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://gitlab.com/ryochan7/sdl2-gamepad-mapper.git#tag=v0.0.9
+	sha256sums = cdf0fbec951f369ebd1c64d34ccd3f907da54924b59acb6fc9cf9a37dbd0e16b
 
 pkgname = sdl2-gamepad-mapper
