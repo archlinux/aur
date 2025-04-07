@@ -1,4 +1,5 @@
-# Maintainer: Anatol Pomozov
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Anatol Pomozov
 
 _gemname=vte3
 pkgname=ruby-$_gemname
