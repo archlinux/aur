@@ -1,0 +1,17 @@
+pkgbase = fontpreview_sixel
+	pkgdesc = A lightning-fast, terminal-based font previewer with Sixel graphics support, designed for designers and developers who work with fonts in Linux/Unix environments.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/felipefacundes/fontpreview
+	arch = any
+	license = GPL
+	depends = bash
+	depends = fzf
+	depends = libsixel
+	depends = imagemagick
+	optdepends = feh: fallback image viewer for terminals without Sixel support
+	optdepends = file: for identifying file
+	source = git+https://github.com/felipefacundes/fontpreview.git
+	md5sums = SKIP
+
+pkgname = fontpreview_sixel
