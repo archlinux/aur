@@ -10,7 +10,7 @@ friendlyName="Obsidian"
 stateDirectory="Obsidian_Data"
 
 # This is the target executable to launch
-#launchTarget="gtk4-demo"
+launchTarget="electron35 /usr/lib/obsidian/app.asar"
 
 waylandOnly="adaptive"
 

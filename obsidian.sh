@@ -8,7 +8,7 @@ else
 	export _flag=''
 fi
 
-export launchTarget="electron34 /usr/lib/obsidian/app.asar --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL ${_flag} --enable-wayland-ime --wayland-text-input-version=3 $@"
+#export launchTarget="--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL ${_flag} --enable-wayland-ime --wayland-text-input-version=3 $@"
 
 if [[ "$@" = "--actions opendir" ]]; then
 	portable --actions opendir
@@ -17,5 +17,5 @@ elif [[ "$@" = "--actions share-files" ]]; then
 elif [[ "$@" = "--actions quit" ]]; then
 	portable --actions quit
 else
-	portable
+	portable -- --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL --enable-wayland-ime --wayland-text-input-version=3 --ozone-platform-hint=auto
 fi
