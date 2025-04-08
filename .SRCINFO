@@ -12,6 +12,7 @@ pkgbase = typhoon-git
 	depends = webkit2gtk
 	depends = python
 	depends = imagemagick
+	depends = python-dbus
 	provides = typhoon
 	conflicts = typhoon
 	source = git+https://github.com/archisman-panigrahi/typhoon#branch=master
