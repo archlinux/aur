@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2025.04.07
-pkgrel=1
+pkgrel=2
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -27,6 +27,7 @@ depends=(
     'python-psutil'
     'python-yaml'
     'tinyxml2'
+    'yaml-cpp'
 )
 makedepends=(
   'python-rosinstall_generator'
