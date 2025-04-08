@@ -1,7 +1,7 @@
 # Maintainer: Andre Smit <freevryheid@gmail.com>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=duckdb-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="An in-process SQL OLAP database management system"
 # arch=("aarch64" "armv7h" "i686" "x86_64")
@@ -12,10 +12,10 @@ provides=("duckdb")
 conflicts=("duckdb" "duckdb-git")
 source_aarch64=("duckdb_cli-linux-aarch64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/duckdb_cli-linux-aarch64.zip"
         "libduckdb-linux-aarch64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/libduckdb-linux-aarch64.zip")
-sha256sums_aarch64=('a0a656f1d5b07ecc7aa786c16fc54c4a2f20049c36ba3ae41f0f297bccc7e7ff'
-                    '882c451500f446f080eec42bf268a92a664a364ce0235ec257897de567e5d732')
-sha256sums_x86_64=('72c038a8a2a6647c68ed0e0df6aa47160c03f021917019ee135f07f9c4635afa'
-                   '8dda081c84ef1da07f19f953ca95e1c6db9b6851e357444a751ad45be8a14d36')
+sha256sums_aarch64=('04b394d4e2fa90fc135b3417a3fbadbb765de7cec01a80f179bf854f8ac702a3'
+                    'dc7146d861712a3b5f75a08e4e220306db713133933246c5b2cc39274d188828')
+sha256sums_x86_64=('fc153822f59283e0a9374168cce5bc85a9985e699d9857842597882062fd2cb5'
+                   '91b06f8d4bca471bab4f46c676ae2a58c9ca18987d0ec3d25fd95aabaf9eef3e')
 # sha256sums_armv7h=('ce8a72aca9467a7aa13293b297801110c14f07ae240736a7d773a0c19bbcdad4'
 #                    '60a1cf7ddb915bca91e5088ea2d9b15306321e920d80823d1594238d3064c55a')
 # sha256sums_i686=('679a0d3795176d169db200156414db1a2c9f16c2a8599cc3751753a8e087ee1e'
