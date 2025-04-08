@@ -1,14 +1,14 @@
 # Maintainer: 0fflineuser <0fflineuser@cock.li>
 
 pkgname="openrecall-git"
-_name="OpenRecall"
-pkgver=0.1
+pkgver=r79.140695f
 pkgrel=1
 pkgdesc="A fully open-source, privacy-first alternative to proprietary solutions like Microsoft's Windows Recall. You can easily access your digital history, enhancing your memory and productivity without compromising your privacy."
 arch=('any')
-url="https://pypi.org/project/OpenRecall/"
-license=('GPL3')
+url="https://github.com/openrecall/openrecall"
+license=('AGPL3')
 provides=(python-openrecall)
+conflicts=(python-openrecall)
 depends=(
   python
   python-flask
@@ -22,15 +22,28 @@ depends=(
   python-pillow
   #AUR
   python-sentence-transformers
+  python-doctr
 )
 optdepends=(python-pytorch-cuda python-pytorch-rocm)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=()
-source=("$_name-$pkgver-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('dc8c0d71be283e9cacb0c794fc4992da41eb39a8fe25976d652d903740598817')
+source=("git+https://github.com/openrecall/openrecall.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/openrecall"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/openrecall"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  python -m installer --prefix="/usr" --destdir="${pkgdir}" *.whl
+  cd "$srcdir/openrecall"
+  python -m installer --prefix="/usr" --destdir="${pkgdir}" dist/*.whl
+
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/openrecall" <<EOF
 #!/bin/bash
 exec python3 -m openrecall.app "\$@"
