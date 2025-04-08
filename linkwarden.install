@@ -11,7 +11,10 @@ post_install() {
 }
 
 post_upgrade() {
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Stop the linkwarden service: sudo systemctl stop linkwarden\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * In /usr/share/webapps/linkwarden run sudo -u linkwarden bash dbinit.sh. This will update your database, keeping the old data intact.\033[0m"
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * In /usr/share/webapps/linkwarden run sudo -u linkwarden yarn playwright install\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Start the linkwarden service: sudo systemctl start linkwarden\033[0m"
 }
 post_remove() {
     userdel linkwarden

@@ -1,13 +1,13 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=linkwarden
-pkgver=2.9.3
-pkgrel=2
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="Self hosted bookmark manager"
 arch=('x86_64')
 url="https://github.com/linkwarden/linkwarden"
 license=('AGPL-3.0')
 backup=("etc/linkwarden/app.conf")
-depends=('nodejs' 'yarn' 'postgresql' 'monolith' 'enchant' 'libwebp' 'nss' 'nspr' 'atkmm' 'libdrm' 'libxcomposite' 'libxdamage' 'libxrandr' 'mesa' 'libxkbcommon' 'pango' 'alsa-lib')
+depends=('nodejs' 'yarn' 'postgresql' 'monolith' 'enchant' 'libwebp' 'nss' 'nspr' 'atkmm' 'libdrm' 'libxcomposite' 'libxdamage' 'libxrandr' 'mesa' 'libxkbcommon' 'pango' 'alsa-lib' 'libcups')
 makedepends=()
 optdepends=()
 options=(!debug)
@@ -21,7 +21,7 @@ linkwarden.install
 linkwarden.service
 )
 sha512sums_x86_64=(
-e4a9a1a1d312587bf03022354e22a73b06dbb09dbf7b02e9daef94d19edaf76dfffbbfeebfeca8f246de459b762f0db43e27b3511d7f2314b2cded7dab77f8b3
+08237e38a21aa85f4956469d0dde50a5fd173a35fd33dd97f93945b3eef75d699f8cc17f500035380a6df4b63896178afde6fe8eb49915b2905f3870a354845b
 aeb567c588f903e58c1b87e41bd4a950eb775252226c1534a1621d01f46cfb2f27e32657c40d4b154e150ac9e80b62d7b532aac8d0bb8ce5f28c4a1ca454ce6d
 cc19aaf0156fa84fbbfa7dc13712426a7f2285c67552d4c2317b9de2769aefb3af6253d790edb28e026c242c1a8d4d5e2f4e08c385e5eb157eb0a03c25bef5f4
 ccc4088e8e9732164735781364d73e2d6d393477dd8d2f9b6f6b5aa2209784a08c4ce9350db565e0b6e02e94e590e839ad3b22d468952198fe67c09d75f9d188
