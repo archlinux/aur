@@ -1,7 +1,7 @@
 # Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 
 pkgname=subctl
-pkgver=0.14.7
+pkgver=0.20.0
 pkgrel=0
 pkgdesc='The subctl command-line utility simplifies the deployment and maintenance of Submariner by automating interactions with the Submariner Operator and providing diagnostic features.'
 arch=(x86_64)
