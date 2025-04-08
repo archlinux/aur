@@ -1,13 +1,13 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/iNavFlight/inav-configurator"
-source=(https://github.com/iNavFlight/inav-configurator/archive/8.0.0.zip)
-sha256sums=('540c5cb3d211b7ec6b27b42d7e2b16ec7819fe511dcb860bff31bce1bd0f15c2')
+source=(https://github.com/iNavFlight/inav-configurator/archive/8.0.1.zip)
+sha256sums=('2f3ca880d4128a0b4608642b661360a9edbd80fecf8bb3fcbd79842f2b862fca')
 provides=('inav-configurator')
 conflicts=('inav-configurator')
 options=(!strip)
@@ -63,7 +63,6 @@ package() {
 	cp -r * "$pkgdir/opt/inav/inav-configurator/"
 
 	install -Dm644 "$srcdir/$pkgname-$pkgver/assets/linux/inav-configurator.desktop" "$pkgdir/usr/share/applications/inav-configurator.desktop"
-	install -Dm644 "$srcdir/$pkgname-$pkgver/images/inav_icon_128.png" "$pkgdir/opt/inav/inav-configurator/icon/inav_icon_128.png"
 
 	install -d "$pkgdir/usr/bin/"
 	ln -s "/opt/inav/inav-configurator/inav-configurator" "$pkgdir/usr/bin/inav-configurator"
