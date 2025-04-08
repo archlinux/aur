@@ -1,7 +1,7 @@
 pkgbase = qrocrown-bin
-	pkgdesc = An enhanced launcher for keeping your games. By QRodEX for QRodEXers.
+	pkgdesc = An enhanced launcher for keeping your games. By QRodEX for QRodEXers.(Prebuilt version)
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qrodex/QroCrown
 	arch = x86_64
 	license = AGPL-3.0-only

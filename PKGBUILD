@@ -3,8 +3,8 @@ _appname=qro-crown
 pkgname="${_appname//-/}-bin"
 _pkgname=QroCrown
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="An enhanced launcher for keeping your games. By QRodEX for QRodEXers."
+pkgrel=2
+pkgdesc="An enhanced launcher for keeping your games. By QRodEX for QRodEXers.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Qrodex/QroCrown"
 license=('AGPL-3.0-only')
@@ -20,9 +20,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/app-v${pkgver}/${_appname}_${pkgver}_amd64.deb"
 )
 sha256sums=('2003bd658645e19ab51ce110c0d9564273a7d372d3e78ab3a14b5083039d9ef9')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|Development|Game|g" -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i "s/Development/Game/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_appname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
