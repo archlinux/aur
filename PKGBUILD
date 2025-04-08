@@ -2,7 +2,7 @@
 pkgname=fukayo-bin
 _appname=Fukayo
 pkgver=0.20.7_beta
-_electronversion=22
+_electronversion=24
 pkgrel=1
 pkgdesc="A desktop application to read your favorite manga/manhwa/manhua from your favorite websites.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')

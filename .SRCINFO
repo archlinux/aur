@@ -6,7 +6,7 @@ pkgbase = fukayo-bin
 	arch = x86_64
 	license = MIT
 	makedepends = fuse2
-	depends = electron22
+	depends = electron24
 	depends = nodejs
 	provides = fukayo=0.20.7_beta
 	conflicts = fukayo
