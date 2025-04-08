@@ -24,7 +24,7 @@ makedepends=(
   rust-src
   tar
   xz
-  modprobed-db
+  # modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -35,7 +35,7 @@ source=(
   config         # the main kernel config file
   
   # patches to config & for tuning purposes
-  modprobed.db
+  # modprobed.db
   choose-gcc-optimization.sh
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
@@ -64,7 +64,6 @@ sha256sums=('5bf122d1879fd64fadf0cecfcd477957ebce1bc5931c14835ee0eda88463e407'
             'c5b4773e9d402dd1fb9d198d6c65e1a400dcc994e27f6f82d0567301a84b8554'
             'SKIP'
             '85ca1138589c697a53480a68523bb68510f9cde16bc0b7d67dd80aeab88972ab'
-            'aa8e06cdebdf9259118399ac6f6af0fd5a21bfb78370a984e7e480805bb11f69'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
             '45facba068c39abd3d4e12107489960d5353c924d823f7cbb7cf4acb47eff785'
@@ -86,10 +85,10 @@ sha256sums=('5bf122d1879fd64fadf0cecfcd477957ebce1bc5931c14835ee0eda88463e407'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=15
+  _microarchitecture=93
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_MZEN3'
+  Microarchitecture='CONFIG_GENERIC_CPU3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -124,7 +123,7 @@ prepare() {
   ## Make use of modprobed-db, if installed
   ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  make LSMOD=../modprobed.db localmodconfig 
+  # make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
