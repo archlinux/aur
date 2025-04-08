@@ -1,7 +1,7 @@
 pkgbase = nixfmt
 	pkgdesc = An opinionated formatter for Nix
 	pkgver = 0.6.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/NixOS/nixfmt
 	arch = x86_64
 	license = MPL-2.0

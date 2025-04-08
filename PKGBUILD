@@ -2,7 +2,7 @@
 
 pkgname=nixfmt
 pkgver=0.6.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An opinionated formatter for Nix"
 url="https://github.com/NixOS/nixfmt"
 license=("MPL-2.0")
@@ -19,6 +19,7 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
+  gen-setup
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
     --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname --enable-tests \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
