@@ -4,10 +4,10 @@
 pkgname=ilorest-bin
 _pkgname=ilorest
 pkgver=6.0.0.0_29
-pkgrel=2
+pkgrel=3
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
-url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_8b4b824586db4353bbfebe795f&tab=releaseNotes"
+url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_d53fe081daee41e1b263fc1897&tab=releaseNotes"
 depends=('bash' 'libxcrypt-compat' 'python')
 makedepends=("python-pip" "python-ilorest-library")
 conflicts=('ilorest')
