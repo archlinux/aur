@@ -1,0 +1,11 @@
+--- org/src/3rdparty/javascriptcore/JavaScriptCore/jit/JITStubs.h	2016-09-17 23:55:14.000000000 +0300
++++ new/src/3rdparty/javascriptcore/JavaScriptCore/jit/JITStubs.h	2017-05-14 23:26:14.656165331 +0300
+@@ -316,7 +316,7 @@
+     EncodedJSValue JIT_STUB cti_op_to_primitive(STUB_ARGS_DECLARATION);
+     EncodedJSValue JIT_STUB cti_op_typeof(STUB_ARGS_DECLARATION);
+     EncodedJSValue JIT_STUB cti_op_urshift(STUB_ARGS_DECLARATION);
+-    EncodedJSValue JIT_STUB cti_vm_throw(STUB_ARGS_DECLARATION);
++    __attribute__((used)) EncodedJSValue JIT_STUB cti_vm_throw(STUB_ARGS_DECLARATION);
+     EncodedJSValue JIT_STUB cti_to_object(STUB_ARGS_DECLARATION);
+     JSObject* JIT_STUB cti_op_construct_JSConstruct(STUB_ARGS_DECLARATION);
+     JSObject* JIT_STUB cti_op_new_array(STUB_ARGS_DECLARATION);
