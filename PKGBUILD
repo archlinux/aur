@@ -3,7 +3,7 @@
 pkgname=openapoc-git
 _pkgname=openapoc
 pkgver=r4005.9d020e77
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenApoc is an open-source re-implementation of the original X-COM: Apocalypse'
 arch=('x86_64')
 url='https://github.com/OpenApoc/OpenApoc'
