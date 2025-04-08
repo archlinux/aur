@@ -1,3 +1,4 @@
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # Maintainer: Daniel Hahler <archlinux+aur@thequod.de>
 # Contributor: noonov <noonov@gmail.com>
 # Contributor: wtchappell <wtchappell@gmail.com>
