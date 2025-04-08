@@ -3,10 +3,10 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-_electron='electron33'
-_electronpackage='electron33'
+_electron='electron34'
+_electronpackage='electron34'
 pkgver=7.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
@@ -30,7 +30,7 @@ conflicts=(
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
 )
-sha512sums=('SKIP')
+sha512sums=('4a6d97ad96909ad2fe576f6003572d22922d59d59ffc8d17098e8ea0a616f29ef0c06107a3a0d3fddacbffe2f7e66bee40efc439cd1d2c9e923cfa4e9520b4f7')
 
 _sourcedirectory="$pkgname"
 
