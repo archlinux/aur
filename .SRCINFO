@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-pedro-raccoon
+	pkgdesc = Simple Plymouth theme with Pedro raccoon meme.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://filaco.dev/projects/plymouth-theme-pedro-raccoon
+	install = plymouth-theme-pedro-raccoon.install
+	arch = any
+	groups = plymouth-theme-pedro-raccoon
+	license = MIT
+	depends = plymouth
+	source = https://github.com/FilaCo/plymouth-theme-pedro-raccoon/releases/download/v1.1/pedro-raccoon.zip
+	sha256sums = 82d0e96ab00ac07197f62bf4479b4dd31af22a9493f49742024125e14c227ede
+
+pkgname = plymouth-theme-pedro-raccoon
