@@ -1,7 +1,7 @@
 # Maintainer: Digua Dong <dongdigua@outlook.com>
 pkgname=wl-binclock
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="binary clock for wayland in rust"
 arch=('x86_64')
 url="https://github.com/dongdigua/wl-binclock"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3479e7d78fbe2b8e4a136638da3604f2e660da729f1a848bdebaba8a6f943c30')
+sha256sums=('cb33ea54ffaeaa92aff0902eaa68045b9105515ecd317a09b304ce1004a6340b')
 
 build() {
   cd "$pkgname-$pkgver"
