@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-son
 	pkgdesc = Songhai language pack for Firefox Nightly
-	pkgver = 139.0a1.20250407.091419
+	pkgver = 139.0a1.20250407.212917
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-son
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-son-139.0a1.20250407.091419.xpi
-	source = firefox-nightly-i18n-son-139.0a1.20250407.091419.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-139.0a1.son.langpack.xpi
-	sha256sums = c3ebd58bd5a567454265afc8b446bd6c8c042552e9d1f036b141a818dccf46a9
+	noextract = firefox-nightly-i18n-son-139.0a1.20250407.212917.xpi
+	source = firefox-nightly-i18n-son-139.0a1.20250407.212917.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-139.0a1.son.langpack.xpi
+	sha256sums = 621e8e6710c4f18c8259bcbf035f567d519e38ef145154d76d70441fa75c883c
 
 pkgname = firefox-nightly-i18n-son
