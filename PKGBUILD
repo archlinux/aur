@@ -4,7 +4,7 @@
 pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
 
-_vfreenginx=1.27.4
+_vfreenginx=1.27.5
 _vlibressl=4.0.0
 _tests_commit=a23ab99972ae
 
@@ -33,13 +33,13 @@ source=("$url/download/freenginx-$_vfreenginx.tar.gz"{,.asc}
 	"hg+https://freenginx.org/hg/nginx-tests#revision=${_tests_commit}"
 	"service"
 	"logrotate")
-sha256sums=('9ceda8a77cff23e403179e43deb0b52f57e626db5c92e3724dda51e7b72b9beb'
-	    'SKIP'
-	    '4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4'
-	    'SKIP'
-	    'SKIP'
-	    'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
-	    'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
+sha256sums=('b7ce8dfc439aefb222f24e8dba4333f0f0c91b02b82c77aeac225b879b64d64d'
+            'SKIP'
+            '4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4'
+            'SKIP'
+            'af969848647e24de49f59ae0c1de043f2eaebaa59df2e26c0f45e5409167e251'
+            'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'
+            'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e')
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8  # Maxim Dounin <mdounin@mdounin.ru>
 	      A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5) # Brent Cook <busterb@gmail.com>
 
