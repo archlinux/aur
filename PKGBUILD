@@ -1,23 +1,30 @@
-# Maintainer: The-EDev <farook@the-e-dev.com>
+# Maintainer:
+# Contributor: The-EDev <farook@the-e-dev.com>
+
 pkgname=crow
-pkgver=1.0+5
-pkgrel=2
-pkgdesc="A Fast and Easy to use C++ microframework for the web."
+pkgver=1.2.1.2
+pkgrel=1
+pkgdesc="A Fast and Easy to use C++ microframework for the web"
 arch=(any)
 url="https://crowcpp.org"
-license=('custom:BSD-3-Clause')
-depends=('boost>=1.64.0')
-optdepends=('openssl: HTTPS support' 'zlib: HTTP compression support' 'cmake: Choose this if you plan on using CMake for your Crow project')
-conflicts=("$pkgname-git")
-changelog='changelog.md'
-source=("https://github.com/CrowCpp/$pkgname/releases/download/v$pkgver/crow-v$pkgver.tar.gz")
-md5sums=('9cc31cefd97e2ddbb8df77a2fe84d29a')
-sha256sums=('c299e8ac6c4286139ba14dc9555db9f15902182a2ddcb1e25ca0984f67152877')
+license=('BSD-3-Clause')
+makedepends=('asio' 'cmake')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CrowCpp/Crow/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('dc008515f64c9054250909a16bf0d9173af845d2c6d4e49ed6d3f0f32dfdc747')
+
+build() {
+    cmake -B build -S "${pkgname^}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCROW_BUILD_EXAMPLES=OFF \
+        -DCROW_BUILD_TESTS=OFF \
+        -DCROW_ENABLE_COMPRESSION=ON \
+        -DCROW_ENABLE_SSL=ON \
+        -Wno-dev
+    cmake --build build
+}
 
 package() {
-  echo "installing to \"$pkgdir/usr/local/\""
-  mkdir -p "$pkgdir/usr/local/include"
-  mkdir -p "$pkgdir/usr/local/lib"
-  cp -r "include" "$pkgdir/usr/local"
-  cp -r "lib" "$pkgdir/usr/local"
+    DESTDIR="${pkgdir}" cmake --install build
+    install -Dm644 "${pkgname^}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

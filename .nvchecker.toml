@@ -1,0 +1,5 @@
+[crow]
+source = "github"
+github = "CrowCpp/Crow"
+use_max_tag = true
+prefix = "v"
