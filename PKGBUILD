@@ -1,4 +1,5 @@
-# Maintainer: Clayton Craft <clayton@craftyguy.net>
+# Maintainer: Woody_1997 <jdj.harwood@protonmil.ch>
+# Contributor: Clayton Craft <clayton@craftyguy.net>
 pkgname=fmo
 pkgver=2.0
 pkgrel=2
@@ -6,7 +7,7 @@ pkgdesc="A tool for locating installed AUR orphans."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/craftyguy/fmo"
 license=('GPL3')
-depends=('auracle-git' 'python3')
+depends=('auracle' 'python3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://gitlab.com/craftyguy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
