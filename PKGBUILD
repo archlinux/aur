@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _basename="gtk"
-pkgver=4.18.3
+pkgver=4.18.4
 _name="${_basename}${pkgver%%.*}"
 pkgname="lib32-${_name}"
 pkgrel=1
@@ -28,11 +28,11 @@ _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz"
         '0001-HACK-Don-t-use-objcopy-for-resource-embedding.patch'
         "${pkgname}-querymodules."{hook,script})
-sha256sums=('081e1bc0b17db41a935af8d1f6f090fb1988936c42ff734d149f3d004119f8bb'
+sha256sums=('d4783ac15037c2c4275a8f1acc94f5fede28a516243fccb92ff54a11c15775ff'
             'fc14603646b033567b198e09c739b972088a8d01c1f0c65eeba0e8cba121cea1'
             '0d8697c9ec95117f5bf333f5a4469b5061de4b206d0699d328988c5683742eaa'
             '1c96fb5f09baf59987e4b97bf3af37ea8feedcc753b48c91ffc6bff080461f21')
-b2sums=('6d484722c517e770568a0d2218c6db794dbeffa99aeadf45f849cbd2a3aae8921af710ceb598025d1efb3b5d0e0348560b3bbff0b5d9e754fe9d0d5121ed1d35'
+b2sums=('f911615ae563563c82e8b122bb5b0b1002e5b7933e473a9eee090114f91644fc2e738ddc72665d03556c099366715e8f884fdb0be71e89bd525e95f5456d8ab6'
         'a672c99d673648a8af5c7e808642ce3ec91fecf336afddfbe0d4723c21cdf03787334754b0590de8617fc9eb10e71e25c2d91234857b1d10a9fe058ecbc72560'
         'bfc5e42867cf1f709561e477d1d7620c16764e46ea18b419c1093aea208e305f6e8635c541a3bde57468d3539e4c8ad47eb9886e5ad05197be1b9c2d0475e0c9'
         'f0372ba65b6203e569da5bc8b262e76f2b7f2682de3eca5006953e4de2e99785d9793044d2f5350cd2b863cb1760780deb36651a7ab20bc7ab317d1eeafcd07f')
