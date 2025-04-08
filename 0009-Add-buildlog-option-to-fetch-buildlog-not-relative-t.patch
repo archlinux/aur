@@ -8,14 +8,14 @@ Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Björn Bidar <bjorn.bidar@jolla.com>
 ---
- osc/commandline.py | 77 ++++++++++++++++++++++++++++++++++++++++------
- 1 file changed, 68 insertions(+), 9 deletions(-)
+ osc/commandline.py | 79 ++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 70 insertions(+), 9 deletions(-)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index acec45390d207eb87c50cd6eaf6a4f2a586f02f0..c1255a9c073578ced03d653a4caed8257ead0bc1 100644
+index 5942af4adfc28332852a8b3fbe8cbfbaea456109..6680e7b6a3eb9fd5137bea1c21461964e30714f3 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -6638,6 +6638,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6681,6 +6681,10 @@ Please submit there instead, or use --nodevelproject to force direct submission.
                    help='get log start or end from the offset')
      @cmdln.option('-s', '--strip-time', action='store_true',
                          help='strip leading build time from the log')
@@ -26,7 +26,7 @@ index acec45390d207eb87c50cd6eaf6a4f2a586f02f0..c1255a9c073578ced03d653a4caed825
      def do_buildlog(self, subcmd, opts, *args):
          """
          Shows the build log of a package
-@@ -6653,6 +6657,9 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6696,6 +6700,9 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          results' output. If the buildlog url is used buildlog command has the
          same behavior as remotebuildlog.
  
@@ -36,7 +36,13 @@ index acec45390d207eb87c50cd6eaf6a4f2a586f02f0..c1255a9c073578ced03d653a4caed825
          buildlog [REPOSITORY ARCH | BUILDLOGURL]
          """
  
-@@ -6669,26 +6676,46 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6708,30 +6715,52 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+         from .core import print_buildlog
+         from .core import store_read_package
+         from .core import store_read_project
++        from .core import is_package_dir
++        from .core import is_project_dir
+ 
          project = package = repository = arch = None
  
          apiurl = self.get_api_url()
@@ -91,7 +97,7 @@ index acec45390d207eb87c50cd6eaf6a4f2a586f02f0..c1255a9c073578ced03d653a4caed825
  
          if opts.multibuild_package:
              package = package + ":" + opts.multibuild_package
-@@ -6713,7 +6740,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
+@@ -6756,7 +6785,39 @@ Please submit there instead, or use --nodevelproject to force direct submission.
          elif opts.offset:
              offset = int(opts.offset)
          strip_time = opts.strip_time or conf.config['buildlog_strip_time']
@@ -130,5 +136,5 @@ index acec45390d207eb87c50cd6eaf6a4f2a586f02f0..c1255a9c073578ced03d653a4caed825
 +                               repository, arch,
 +                               offset, strip_time, None, None, pkg_log_file)
  
-     def print_repos(self, repos_only=False, exc_class=oscerr.WrongArgs, exc_msg='Missing arguments', project=None):
-         from .core import is_package_dir
+     def print_repos(
+         self, repos_only=False, exc_class=oscerr.WrongArgs, exc_msg="Missing arguments", project=None

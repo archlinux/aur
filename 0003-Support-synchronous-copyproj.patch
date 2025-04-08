@@ -9,10 +9,10 @@ Subject: [PATCH] Support synchronous copyproj
  2 files changed, 7 insertions(+)
 
 diff --git a/osc/commandline.py b/osc/commandline.py
-index 0542dcb5979cc49a320817282015958d8b1d836e..907655474ef8497eb4a8291e49e90b856398bd6e 100644
+index fe705d2a8b989b85afdb16409658839efdc51ece..73aa71a02d0f369b6f010d0f896ab1b93012de8b 100644
 --- a/osc/commandline.py
 +++ b/osc/commandline.py
-@@ -1963,6 +1963,8 @@ class Osc(cmdln.Cmdln):
+@@ -1986,6 +1986,8 @@ class Osc(cmdln.Cmdln):
  
      @cmdln.option('-b', '--with-binaries', action='store_true',
                          help='copy the built binaries over to avoid a rebuild')
@@ -21,7 +21,7 @@ index 0542dcb5979cc49a320817282015958d8b1d836e..907655474ef8497eb4a8291e49e90b85
      @cmdln.option('-H', '--with-history', action='store_true',
                          help='replicate the history of each package.')
      @cmdln.option('-o', '--make-older', action='store_true',
-@@ -1981,6 +1983,8 @@ class Osc(cmdln.Cmdln):
+@@ -2004,6 +2006,8 @@ class Osc(cmdln.Cmdln):
  
          The user must be able to create DESTPRJ
  
@@ -30,7 +30,7 @@ index 0542dcb5979cc49a320817282015958d8b1d836e..907655474ef8497eb4a8291e49e90b85
          usage:
              osc copyprj SOURCEPRJ DESTPRJ
          """
-@@ -2009,6 +2013,7 @@ class Osc(cmdln.Cmdln):
+@@ -2032,6 +2036,7 @@ class Osc(cmdln.Cmdln):
                       withhistory = opts.with_history,
                       makeolder = opts.make_older,
                       resign = opts.re_sign,
@@ -39,10 +39,10 @@ index 0542dcb5979cc49a320817282015958d8b1d836e..907655474ef8497eb4a8291e49e90b85
          print("done cp")
          print(r)
 diff --git a/osc/core.py b/osc/core.py
-index f0c959e7f24623aff5fe09695a3b7adc04f743b5..97e2035cb799d08dd7406e01c5ca4fc93d8a3f39 100644
+index 634b20790a3c2a9c4fc480c759708d8921320719..5851fb7c407e15d70bcd2578b7009f47aebc2e0f 100644
 --- a/osc/core.py
 +++ b/osc/core.py
-@@ -3842,6 +3842,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
+@@ -3890,6 +3890,8 @@ def copy_prj(src_apiurl, src_project, dst_project,
          query['resign'] = '1'
      if comment:
          query['comment'] = comment
