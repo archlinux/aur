@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=prql
 pkgname=prql-bin
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc='PRQL is a modern language for transforming data — a simple, powerful, pipelined SQL replacement'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(APACHE-2.0)
 provides=($_pkg)
 conflicts=($_pkg)
 source_x86_64=("$_git/releases/download/$pkgver/prqlc-$pkgver-$arch-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('6b753329ce220dbda7908eb8398941435673e4535d2ee7690e63387dc0eca651')
+sha256sums_x86_64=('13df1d80f4fca7cee48cb8df2db6c5e94e842085db22c379f9741176ba58e52f')
 
 package() {
     install -Dm0755 prqlc -t "$pkgdir/usr/bin/"
