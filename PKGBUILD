@@ -1,8 +1,9 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 _gemname='cancancan'
 pkgname="ruby-${_gemname}"
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Simple authorization solution for Rails. All permissions are stored in a single location"
 arch=('any')
@@ -12,7 +13,7 @@ options=(!emptydirs)
 depends=('ruby' )
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('6f00a56a9b96599d6e4aedcfaf531e478b1427f521a70b90adeec6ecbf5dad5670e8fc395164ba9fefc88a93409e4f1c8a17902269d45be1d5b9d7f428931d12')
+sha512sums=('2d42ad1c14debb6672565d3e8b7b767ffc2fc9b8c370823ca6e3854a7118ccad9db8727861caaddbc35eb95f65758d385167b47bbdafa17d8310a0fb57acf7bd')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
