@@ -1,6 +1,6 @@
 pkgbase = deeplink-launcher-bin
 	pkgdesc = A multiplatform app designed for executing and managing deeplinks.(Prebuilt version)
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://play.google.com/store/apps/details?id=dev.koga.deeplinklauncher.android
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = deeplink-launcher-bin
 	depends = libxrender
 	depends = libglvnd
 	depends = fontconfig
-	provides = deeplink-launcher=1.9.0
+	provides = deeplink-launcher=1.10.0
 	conflicts = deeplink-launcher
 	options = !emptydirs
-	source = deeplink-launcher-1.9.0.deb::https://github.com/FelipeKoga/deeplink-launcher/releases/download/v1.9.0/deeplink-launcher_1.2.0-1_amd64.deb
+	source = deeplink-launcher-1.10.0.deb::https://github.com/FelipeKoga/deeplink-launcher/releases/download/v1.10.0/deeplink-launcher_1.10.0-1_amd64.deb
 	source = deeplink-launcher.sh
-	sha256sums = 190c9dd5e8f571098a2d51104f5a6e1a3961ee72651ab4492af505e674dbd273
+	sha256sums = f0d7bd2fe69d25ae054df25b7f36707787e70f324c34c149d3792df1a63a4b30
 	sha256sums = b7cbffe78738d12856a1287503e32c0c22c484721fd87f33bdf091d003b320e5
 
 pkgname = deeplink-launcher-bin
