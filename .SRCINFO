@@ -1,0 +1,17 @@
+pkgbase = dottorrent-cli
+	pkgdesc = CLI tool for creating .torrent files
+	pkgver = 1.10.3
+	pkgrel = 1
+	url = https://github.com/kz26/dottorrent-cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-dottorrent
+	depends = python-humanfriendly
+	depends = python-tqdm
+	source = dottorrent-cli-1.10.3.tar.gz::https://files.pythonhosted.org/packages/source/d/dottorrent-cli/dottorrent-cli-1.10.3.tar.gz
+	sha256sums = bcd0f2b6e06871b29b27b4c9db36f611bd866b48613937c3f0bec269e9e86366
+
+pkgname = dottorrent-cli
