@@ -2,7 +2,7 @@
 # Maintainer: Ben Cooper
 
 pkgname=ziti-edge-tunnel
-pkgver=1.4.5
+pkgver=1.5.4.2
 pkgrel=1
 pkgdesc="The linux tunneller for your Ziti network."
 arch=(x86_64 aarch64 arm64 armhf arm)
@@ -27,11 +27,11 @@ sha256sums=('97881960e8763840782b936abbb94513ca929257738ad2bf96df45cc3a344628'
             '5efe7c102098705e0b1f4cfe7966a5b8c3cc88d0c0ee6427f5cc9c6126dc57a4'
             '2d9870a798d2b26dd8c11b1b031dec6dbf4d8ca9f05643e721a5d3134ab59d74'
             '7d5d3f1995228e360917aa1adeca2432f19e995d4ba437ba8b5b22d8d0c15745')
-sha256sums_x86_64=('9562dcf575defccd91d74eb54bf42b12e5fe98eac7d2bec815e73cda010fd666')
-sha256sums_aarch64=('e59d044cfac1607cdc442cba01d57a88ea6eb9269a283d485eaa7463dc4775bc')
-sha256sums_arm64=('e59d044cfac1607cdc442cba01d57a88ea6eb9269a283d485eaa7463dc4775bc')
-sha256sums_armhf=('7be46b2f5e4ac21084a17f1eb5c1c2bead23f2c248d1e85dfb06bc28040fc03b')
-sha256sums_arm=('7be46b2f5e4ac21084a17f1eb5c1c2bead23f2c248d1e85dfb06bc28040fc03b')
+sha256sums_x86_64=('9fac1046306dc8b6776f7508418efc93041734646dca2ecc111dfc03c3dd8c78')
+sha256sums_aarch64=('ae551ec52c9d729f9a95ad75b0e0b8606fd6ab70fc02b0a81b906e76c2b7e220')
+sha256sums_arm64=('ae551ec52c9d729f9a95ad75b0e0b8606fd6ab70fc02b0a81b906e76c2b7e220')
+sha256sums_armhf=('9a139d0d756085693ddd184f1b5fabffb1ab45ba039f40fc3bdb3dd1f05ffac5')
+sha256sums_arm=('9a139d0d756085693ddd184f1b5fabffb1ab45ba039f40fc3bdb3dd1f05ffac5')
 
 package() {
   install -D -m 0755 ziti-edge-tunnel ${pkgdir}/usr/bin/ziti-edge-tunnel
