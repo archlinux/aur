@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ma35d1-nuwriter-git
-pkgver=1e6f1b5
+pkgver=1.01.r0.g67de851
 pkgrel=1
 epoch=
 pkgdesc="MA35D1 NuWriter"
@@ -28,15 +28,19 @@ sha256sums=('SKIP'
 #validpgpkeys=()
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}/"
-    #     git describe --long --tags | sed 's/V//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-    git describe --always | sed 's|-|.|g'
+    cd "${srcdir}/${pkgname%-git}"
+    (
+        set -o pipefail
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}/gui/images/NuWriter.ico" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.ico"
     cp -ra ${srcdir}/${pkgname%-git}/ "${pkgdir}/usr/share/"
+    rm -rf "${pkgdir}/usr/share/${pkgname%-git}/.git"
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" <<EOF
 #!/bin/bash
