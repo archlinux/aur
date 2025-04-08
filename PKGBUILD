@@ -2,7 +2,7 @@
 
 pkgname=ros2-jazzy-base
 pkgver=2025.04.07
-pkgrel=2
+pkgrel=3
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -35,7 +35,6 @@ makedepends=(
 )
 conflicts=(
   "ros2-${_rosdist_short}"
-  'orocos-kdl'  # Build failure in python_orocos_kdl_vendor
 )
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
@@ -67,7 +66,8 @@ prepare() {
     patch -d "$srcdir/ros2/src/ros2/orocos_kdl_vendor" -p1 < ${srcdir}/orocos_kdl_vendor_cmake4.patch
 
     # https://github.com/ros/console_bridge/issues/100
-    git -C "$srcdir/ros2/src/ros2/console_bridge_vendor" apply console_bridge_vendor_cmake4.patch
+    git -C "$srcdir/ros2/src/ros2/console_bridge_vendor" checkout CMakeLists.txt
+    git -C "$srcdir/ros2/src/ros2/console_bridge_vendor" apply "$srcdir/console_bridge_vendor_cmake4.patch"
 }
 
 build() {
@@ -82,7 +82,7 @@ build() {
     # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.
     #                  They were using deprecated ASIO functionality, which is now removed.
     #                  See the following issue: https://github.com/eProsima/Fast-DDS/issues/5726
-    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DTHIRDPARTY_Asio=FORCE
+    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DTHIRDPARTY_Asio=FORCE -DCMAKE_IGNORE_PATH="/usr/share/orocos_kdl/cmake/"
 
     # Replace all references to srcdir in colcon shell files
      printf "Replace references to srcdir in colcon shell files\n"
