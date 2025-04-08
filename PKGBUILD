@@ -40,11 +40,13 @@ conflicts=(
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz"
-    "orocos_kdl_vendor.patch::https://github.com/ros2/orocos_kdl_vendor/pull/35.patch"
+    "orocos_kdl_vendor_cmake4.patch::https://github.com/ros2/orocos_kdl_vendor/pull/35.patch"
+    "console_bridge_vendor_cmake4.patch"
 )
 sha256sums=('2b8694d6773c1fb0767ad3438bf1d98ee6d002d750f32755e4476b19c93d46ae'
             'e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9'
-            '896cca4533470216bf1be24daa6dd22ed781fab6f457919e8c2a56726e04aaab')
+            '896cca4533470216bf1be24daa6dd22ed781fab6f457919e8c2a56726e04aaab'
+            'd2b905b6dccc972cdc83a9c1410bf15494dcc22c888bb2ccf36497b25bd9134b')
 
 prepare() {
     # Clone the repos
@@ -62,7 +64,10 @@ prepare() {
 
     # https://github.com/ros2/orocos_kdl_vendor/pull/35
     git -C "$srcdir/ros2/src/ros2/orocos_kdl_vendor" checkout orocos_kdl_vendor/CMakeLists.txt
-    patch -d "$srcdir/ros2/src/ros2/orocos_kdl_vendor" -p1 < ${srcdir}/orocos_kdl_vendor.patch
+    patch -d "$srcdir/ros2/src/ros2/orocos_kdl_vendor" -p1 < ${srcdir}/orocos_kdl_vendor_cmake4.patch
+
+    # https://github.com/ros/console_bridge/issues/100
+    git -C "$srcdir/ros2/src/ros2/console_bridge_vendor" apply console_bridge_vendor_cmake4.patch
 }
 
 build() {
