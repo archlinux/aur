@@ -1,8 +1,9 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 _gemname='secure_headers'
 pkgname="ruby-${_gemname}"
-pkgver=6.4.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Manages application of security headers with many safe defaults"
 arch=('any')
@@ -12,7 +13,7 @@ options=(!emptydirs)
 depends=('ruby')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('5063649a0a1026a0a4ec9878701d7bd5fbce4e50d5dcfd766de07090d4c700d5468f0067808453d964d0c0b0b869254cebffa0181d301909310b01f53eada2c4')
+sha512sums=('2aca8c7afbd2f5ff4b7fa87188c3b5cd4d87c3d153a439ab17834c5409f5ca45196dbbbb29123ffbadd000910cba998e9342d167210ab1155119afc7840fe847')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
