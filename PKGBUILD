@@ -1,7 +1,7 @@
 # Maintainer: carlyle
 
 pkgname=aurx
-pkgver=1.0.1.r15.gfc069e3
+pkgver=1.0.1.r22.gbc1a710
 pkgrel=1
 pkgdesc="An AUR helper written in C."
 arch=('x86_64')
@@ -10,9 +10,10 @@ license=( 'GPL-3.0-or-later' )
 depends=(
         'base-devel'
         'git'
+        'pacman'
+        'pacutils'
         'json-c'
         'libcurl-gnutls'
-        'pacman'
 )
 source=("${pkgname}::git+${url}.git")
 pkgver() {

@@ -1,15 +1,16 @@
 pkgbase = aurx
 	pkgdesc = An AUR helper written in C.
-	pkgver = 1.0.1.r15.gfc069e3
+	pkgver = 1.0.1.r22.gbc1a710
 	pkgrel = 1
 	url = https://github.com/carlyle-felix/aurx
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = base-devel
 	depends = git
+	depends = pacman
+	depends = pacutils
 	depends = json-c
 	depends = libcurl-gnutls
-	depends = pacman
 	source = aurx::git+https://github.com/carlyle-felix/aurx.git
 	sha256sums = SKIP
 
