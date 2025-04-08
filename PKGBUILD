@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=google-assistant-unofficial-desktop-client-bin
 _appname=g-assist
-_pkgname="Google Assistant"
+_pkgname='Google Assistant'
 pkgver=1.1.0
 _electronversion=10
 pkgrel=13
