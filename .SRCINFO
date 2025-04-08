@@ -1,6 +1,6 @@
 pkgbase = sway-input-config
 	pkgdesc = Sway Input Configurator
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/Sunderland93/sway-input-config
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = sway-input-config
 	depends = sway
 	provides = sway-input-config
 	conflicts = sway-input-config
-	source = https://codeload.github.com/Sunderland93/sway-input-config/zip/refs/tags/v1.4.2
-	sha256sums = 9c67e1bfbbd930ce3cac043a672d4df83e3b22e2d1bbcfa0a66edb041fa871bd
+	source = https://codeload.github.com/Sunderland93/sway-input-config/zip/refs/tags/v1.4.3
+	sha256sums = ccf37846d6b82af682ffb3f36cc41799b47481f0a2c549c120f36a9b84497b73
 
 pkgname = sway-input-config
