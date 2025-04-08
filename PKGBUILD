@@ -3,10 +3,10 @@
 # Contributor: Phil Schaf <flying-sheep@web.de>
 
 _pkgname=GeneNet
-_pkgver=1.2.16
+_pkgver=1.2.17
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="Modeling and Inferring Gene Networks"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8547162999d1f2af1cf03389f2b27a57')
-b2sums=('80b80557c10e081219013509498deea3d72448c4226d19912a9206b9db633756f1dc6e1fa7ed63f593cceb4330aecf1c38263f5d7adc8d4e03a6572997d25969')
+md5sums=('3ab16a153adafe2897fc2b2116fdeae3')
+b2sums=('cef38846011e3f18f27f47d92ffbbf94df0c658a0636229bc171e3b690e78bd09a94dad2f8ca47d542da6f19e9a19ae04a94055fb8c69ab9fbe4a8fc97a82f98')
 
 build() {
   mkdir build
