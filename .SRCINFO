@@ -11,9 +11,9 @@ pkgbase = ochami-bin
 	provides = ochami
 	arch = aarch64
 	source_aarch64 = https://github.com/OpenCHAMI/ochami/releases/download/v0.2.1/ochami_Linux_arm64.tar.gz
-	sha256sums_aarch64 = acc84e813162c94ff8831296bb6b9ce968d9f836c9fecee77d14d8075f40492e
+	sha256sums_aarch64 = b0f0479b96f7cc75776be4d2483f99c2ea8f75a5c917e322d9541936df075f89
 	arch = x86_64
 	source_x86_64 = https://github.com/OpenCHAMI/ochami/releases/download/v0.2.1/ochami_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 2d7e19eeb931dd95cda8795cc1d463b192dfff612bbf4fd6e2c447924d47b06a
+	sha256sums_x86_64 = d2e7007521ec104b46b7221bbcdbcdf1d9fb7bae13b0747a6d4e75a949afbea2
 	
 pkgname = ochami-bin
