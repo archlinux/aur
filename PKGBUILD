@@ -2,8 +2,8 @@
 # Contributor: yjun <jerrysteve1101 at gmail dot com>
 # Contributor: FlyInWind <2518509078@qq.com>
 pkgname=ynote-desktop-bin
-_zhsname="有道云笔记"
-pkgver=8.0.102
+_zhsname='有道云笔记'
+pkgver=8.1.0
 _electronversion=18
 pkgrel=1
 pkgdesc="Netease Youdao Ynote for Linux.(Prebuilt version.Use system-wide electron)"
@@ -23,11 +23,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2025%2F03%2F06%2Fa29d006b.deb"
+    "${pkgname%-bin}-${pkgver}.deb::https://cowork-common-public-cdn.lx.netease.com/artifact%2F2025%2F03%2F18%2F624abf6d.deb"
     "LICENSE.html::https://note.youdao.com/license.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7296d8052882c65000583fb3ec8660403331e175d2a625f963afb99903c9b0e8'
+sha256sums=('c509e25084c96a458c8564949c9164fb8f239876ddb57488a31f9dc1d9afa1e0'
             'a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
