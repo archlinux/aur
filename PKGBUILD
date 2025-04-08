@@ -15,12 +15,6 @@ optdepends=('python-paramiko: Remote execution')
 source=("${url}/archive/refs/tags/cassandra-test.tar.gz")
 sha256sums=('e97667ad7b0561e71961f5ce6ee6b6f732d6cf583fe7f6e1fe5920f6a2df78d8')
 
-prepare(){
-  # Fix test
-  cd "${srcdir}"/cassandra-ccm-cassandra-test
-  sed -i 's/assertEquals/assertEqual/g' tests/test_lib.py
-}
-
 build() {
   cd "${srcdir}"/cassandra-ccm-cassandra-test
   python -m build --wheel --no-isolation
