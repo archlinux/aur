@@ -1,0 +1,56 @@
+From 6bc3305884bbe9c2c0d6deabe7912d0afcf48533 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Tue, 8 Apr 2025 19:24:48 +0200
+Subject: [PATCH] Pin vendored `tree-sitter-tcl` to known-good rev
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream commit 802deaf [1] of the vendored `tree-sitter-tcl` dependency
+switched to language version 15 [2], which is incompatible with the
+version that tree-sitter-language-pack expects.
+
+This causes the TCL integration to fail. Here’s a small self-contained
+reproducer:
+
+```py
+from tree_sitter import Language, Parser
+import tree_sitter_language_pack.bindings.tcl as binding
+capsule = binding.language()
+language = Language(capsule)
+Parser(language)                # <== causes a ValueError
+```
+
+The reproducer results in the following error:
+
+> ValueError: Incompatible Language version 15. Must be between 13 and 14
+
+The following unit test fails with the same error:
+
+```py
+pytest -k 'test_get_parser[tcl]' --import-mode=append tests
+```
+
+Pin `tree-sitter-tcl` to the last known-good upstream commit.
+
+[1]: https://github.com/tree-sitter-grammars/tree-sitter-tcl/commit/802deaff8e127ee20f1d5f9e58ab959003f24b92
+
+[2]: https://github.com/tree-sitter-grammars/tree-sitter-tcl/blob/802deaff8e127ee20f1d5f9e58ab959003f24b92/src/parser.c#L9
+---
+ sources/language_definitions.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sources/language_definitions.json b/sources/language_definitions.json
+index 93fd981..1c347e8 100644
+--- a/sources/language_definitions.json
++++ b/sources/language_definitions.json
+@@ -475,7 +475,8 @@
+     "repo": "https://github.com/Flakebi/tree-sitter-tablegen"
+   },
+   "tcl": {
+-    "repo": "https://github.com/lewis6991/tree-sitter-tcl"
++    "repo": "https://github.com/lewis6991/tree-sitter-tcl",
++    "rev": "ce03bbd6bb74f902adfaa37a294c34cbe05ef940"
+   },
+   "terraform": {
+     "directory": "dialects/terraform",

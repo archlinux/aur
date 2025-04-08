@@ -2,7 +2,7 @@
 
 pkgname=python-tree-sitter-language-pack
 _gitpkgname=tree-sitter-language-pack
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Comprehensive collection of tree-sitter languages'
 arch=('x86_64')
@@ -44,12 +44,22 @@ checkdepends=(
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/Goldziher/tree-sitter-language-pack/archive/v${pkgver}.tar.gz"
+  'github-pr-31.patch'
 )
 
-sha512sums=('488f37ac28cfd821b2783892d843fd22f63a87cfc6f3f51389bf60ab8dbb2451e00947a96be3cf46a5e82443a3bafb87b22d4a523bcb21c0b1152b25ca3d980d')
+sha512sums=(
+  '0d1ce4bb5628cea03e51800a9d565897d08dd9a01bdac5c90c4cb981a6d119c2bc722f882329aaf6e6acbcd1b9ceb5a2171644cd774d53e66baaa7d3cfb03565'
+  '3b23c5126c11854c594f52fb953e095250b4ad5d40e0644ac07c0df9b8d7e05ea864771866d07cda80ab4238ac0cae14345979d739195a8e8ca580e302a67829'
+)
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
+
+  # Remove this patch once the upstream author has merged PR #31 and
+  # included it in a stable release.
+  # See also: https://github.com/Goldziher/tree-sitter-language-pack/pull/31
+  echo >&2 'Applying fix for TCL'
+  patch -p1 < ../github-pr-31.patch
 
   echo >&2 'Downloading and building vendored parsers'
   mkdir parsers
