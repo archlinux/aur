@@ -1,0 +1,15 @@
+pkgbase = hstdb-git
+	pkgdesc = Better history management for zsh.
+  pkgver = r155.1fa4460
+	pkgrel = 1
+	url = https://github.com/AlexanderThaller/hstdb
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = sqlite
+	provides = hstdb
+	source = hstdb::git+https://github.com/AlexanderThaller/hstdb
+	sha1sums = SKIP
+
+pkgname = hstdb-git
