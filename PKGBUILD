@@ -7,49 +7,49 @@ pkgname=(otf-geist
          otf-geist-mono
          ttf-geist-mono
          ttf-geist-mono-variable)
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.01
+pkgrel=1
 pkgdesc="A new font family for Vercel, created by Vercel in collaboration with Basement Studio"
 arch=('any')
 url="https://vercel.com/font"
 license=('OFL-1.1')
 source=("https://github.com/vercel/geist-font/releases/download/${pkgver}/Geist-v${pkgver}.zip"
-        "https://github.com/vercel/geist-font/releases/download/${pkgver}/GeistMono-v${pkgver}.zip")
-sha256sums=('fafb2a4ce068d293bd53c29cef517597cef6437dc5f6eb5ecca8bc40337ec179'
-            '70423ceba8d5f768a9a9a9cb56c449a5307d20679d951113acdf38d7107a548b')
+        "https://github.com/vercel/geist-font/releases/download/${pkgver}/GeistMono-${pkgver}.zip")
+sha256sums=('d12b5e123bdd5a9facbd52ab6a24756587b086d6a76fc629a28456675bfad4e3'
+            '2338de729353fa25e62581f87be9d6620ec246eac28179c2c2c9f77e5fdfa548')
 
 package_otf-geist() {
-  cd Geist
+  cd "Geist-v${pkgver}"
   install -Dm644 otf/*.otf -t "${pkgdir}/usr/share/fonts/OTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_ttf-geist() {
-  cd Geist
+  cd "Geist-v${pkgver}"
   install -Dm644 ttf/*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_ttf-geist-variable() {
-  cd Geist
+  cd "Geist-v${pkgver}"
   install -Dm644 variable/*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_otf-geist-mono() {
-  cd GeistMono
+  cd "GeistMono-${pkgver}"
   install -Dm644 otf/*.otf -t "${pkgdir}/usr/share/fonts/OTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_ttf-geist-mono() {
-  cd GeistMono
+  cd "GeistMono-${pkgver}"
   install -Dm644 ttf/*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_ttf-geist-mono-variable() {
-  cd GeistMono
+  cd "GeistMono-${pkgver}"
   install -Dm644 variable/*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
