@@ -14,12 +14,8 @@ source=('git+https://github.com/JakeStanger/ironbar')
 url='https://ironb.ar'
 md5sums=('SKIP')
 
-# weird linker error from `colpetto` crate
-# can occur with default makepkg flags.
-# seemingly copying those exact default flags into this file
-# makes it work, so no idea what's going on, but this sorts it.
 # See: <https://ironb.ar/issues/921>
-options=('!buildflags')
+options=('!lto')
 
 pkgver() {
     cd "$srcdir/ironbar"
@@ -28,17 +24,6 @@ pkgver() {
 
 build() {
     cd "$srcdir/ironbar"
-
-    # copied from a modern default makepkg.conf file -
-    # works around the `!buildflags`` issue described above.
-    CFLAGS="-march=native -O2 -pipe -fno-plt -fexceptions \
-        -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security \
-        -fstack-clash-protection -fcf-protection \
-        -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
-    CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
-    LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now \
-         -Wl,-z,pack-relative-relocs"
-
     cargo build --release --locked
 }
 

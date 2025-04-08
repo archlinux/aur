@@ -22,7 +22,7 @@ pkgbase = ironbar-git
 	depends = libdbusmenu-gtk3
 	provides = ironbar
 	conflicts = ironbar
-	options = !buildflags
+	options = !lto
 	source = git+https://github.com/JakeStanger/ironbar
 	md5sums = SKIP
 
