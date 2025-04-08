@@ -4,8 +4,8 @@ pkgname="${_pkgname}-ee-bin"
 _appname=BingGPT
 pkgver=0.4.8
 _electronversion=26
-pkgrel=1
-pkgdesc="BingGPT Enhanced Editon - Desktop application of new Bing's AI-powered chat.A rewritten version."
+pkgrel=2
+pkgdesc="BingGPT Enhanced Editon - Desktop application of new Bing's AI-powered chat.A rewritten version.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -21,25 +21,27 @@ provides=("${_pkgname}-desktop")
 depends=(
     "electron${_electronversion}"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_appname}-Linux-arm64-${pkgver}.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_appname}-Linux-amd64-${pkgver}.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_appname}-Linux-aarch64-${pkgver}.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-Linux-x86_64-${pkgver}.rpm")
 source=(
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('5ffdba0fdecb741422b8487fe0c32b406e402026b2bfb5b8cb0fcec149aa45ff')
-sha256sums_x86_64=('d5f5cef1d7d8a138cebe6316cb1a13963381c8e4f4f1e5cfe7316ab4430eea7e')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed -e "s|\"/opt/${_chsname}/${_appname}\"|${pkgname%-bin}|g" \
-        -e "s|/opt/${_appname}/${_pkgname}|${pkgname%-bin}|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-            -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('88d002f04196de20c24493f954b3a763601ea7008e9d78859480a680e21d3501')
+sha256sums_x86_64=('351c9b06eb6dda2a11640fafe182c2ab5d3b97f5975af8cbba577571a31380f3')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\"\/opt\/${_chsname}\/${_appname}\"/${pkgname%-bin}/g
+        s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
