@@ -5,7 +5,7 @@
 
 pkgname=snapper-git
 _gitname=snapper
-pkgver=0.10.3.git.2211.03a6f3b
+pkgver=0.12.1.git.2710.f124194a
 pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 provides=('snapper')
@@ -23,8 +23,8 @@ source=("snapper::git+https://github.com/openSUSE/snapper.git"
         "drift-file-path.patch"
         "usr-paths.patch")
 sha256sums=('SKIP'
-            '267118a198583fc1ff10f376e108c0600844e0b1370e44ac4674b20332bff106'
-            '0e76f2aef9ac05d719e25c2d60e7eba4b533778a57fe98fd047f256c6845f65f'
+            '527fc127eb0569eea9dcb888833e0b1f54302bfcb3a88f0101ae32837771bc61'
+            'a78fea96638cd686cb727316b68d0c44e6e3154e72947025774fc0e58c7dce35'
             '093c7993e466a0cf9c0794a971825f5f1b40047512857bc124ed0d63dbb306d6'
             '710da7638a1c123a6985398a15cd7c03432fc3b2d781e2d7a20a1a52669eed95')
 

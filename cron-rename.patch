@@ -1,14 +1,12 @@
 diff --git a/scripts/Makefile.am b/scripts/Makefile.am
-index 506f74a..407382c 100644
+index 1f8176c..b5df671 100644
 --- a/scripts/Makefile.am
 +++ b/scripts/Makefile.am
-@@ -17,7 +17,7 @@ endif
- EXTRA_DIST = snapper-hourly snapper-daily bash-completion.bash $(pam_snapper_SCRIPTS)
+@@ -17,6 +17,6 @@ endif
+ EXTRA_DIST = snapper-hourly bash-completion.bash zsh-completion.zsh $(pam_snapper_SCRIPTS)
  
  install-data-local:
 -	install -D snapper-hourly $(DESTDIR)/etc/cron.hourly/suse.de-snapper
--	install -D snapper-daily $(DESTDIR)/etc/cron.daily/suse.de-snapper
 +	install -D snapper-hourly $(DESTDIR)/etc/cron.hourly/snapper
-+	install -D snapper-daily $(DESTDIR)/etc/cron.daily/snapper
  	install -D --mode a+r,u+w bash-completion.bash $(DESTDIR)/usr/share/bash-completion/completions/snapper
- 
+ 	install -D --mode a+r,u+w zsh-completion.zsh $(DESTDIR)/usr/share/zsh/site-functions/_snapper
