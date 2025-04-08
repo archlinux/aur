@@ -13,7 +13,7 @@ pkgver=4.3.1683.g691e36425
 pkgrel=1
 pkgdesc='Highly configurable framework window manager'
 arch=('i686' 'x86_64')
-url='http://awesome.naquadah.org/'
+url='https://awesomewm.org/'
 license=('GPL2')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
          'lua' 'lua-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
