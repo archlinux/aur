@@ -5,8 +5,8 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.5.0
-pkgrel=3
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -37,7 +37,7 @@ makedepends=(
 #  'python-yaml'
 #)
 options=('!lto')  ## lto-wrapper fails with CUDA options enabled
-source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
+source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=$pkgver"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
         'git+https://github.com/google/googletest.git'
@@ -46,7 +46,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('914dc8abc9f3ef75ae74e5673e8a99fca85a4d7036ba708e0c6569ec7511f4ec'
+sha256sums=('78111a078f17b809274c3adf00ffa33c35c729f82bde17c64e091ebc5bd1b400'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -99,6 +99,7 @@ build() {
     -DCUDA_DYNAMIC_LOADING='ON' \
     -DCUDA_ARCH_LIST='Common' \
     -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
+    -DENABLE_CPU_DISPATCH='OFF' \
     -Wno-dev
   cmake --build build
 
