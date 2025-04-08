@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.3-215-gbee626bf
-_version=2.3+215+gbee626bf
+_tag=2.3-217-g125684fc
+_version=2.3+217+g125684fc
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
@@ -69,7 +69,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
-sha256sums=('f8eecf25241f993b1a8e68424b7215678461e2ff61125d778318791e3b159269'
+sha256sums=('91de8b7aea0a17487aad4d77a7192897034b3513b0e0578312283dd776f9bfa8'
             '5dbd9e1fec28d8b6eda3ed38b514322dc1386507e0a653c7a73061cdc41d9982'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             'e433c840c4cac5663ed169e90899efc1d1210649bf828bb412295902985f9ee5'
