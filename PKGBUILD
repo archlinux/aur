@@ -2,35 +2,55 @@
 
 _pkgname=3dslicer
 pkgname=3dslicer-git
-_pkgver=5.1.0
-pkgver=5.1.0.r27906.0f29c7c9a7
+pkgver=5.8.1.r184.cd62f821c9
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
   bzip2
   curl
   dcmtk
+  fftw
+  gcc13-libs
+  glibc
+  hwloc
   libarchive
   libffi
-  libxt
+  libglvnd
+  libice
+  libnsl
+  libpng
+  libsm
+  libtirpc
+  libx11
+  libxcrypt
+  libxcursor
+  libxext
+  libxfixes
+  libxrender
   openssl
+  rapidjson
   qt5-base
+  qt5-declarative
   qt5-multimedia
+  qt5-location
   qt5-script
   qt5-svg
   qt5-tools
+  qt5-webchannel
   qt5-webengine
   qt5-x11extras
   qt5-xmlpatterns
-  rapidjson
   sqlite
   teem
+  util-linux-libs
+  xz
+  zlib
 )
 makedepends=(
-  cmake
+  gcc13
   gendesk
   git
   subversion
@@ -40,34 +60,44 @@ provides=(3dslicer=${pkgver})
 conflicts=(3dslicer)
 source=("${_pkgname}::git+https://github.com/Slicer/Slicer.git"
         "${_pkgname}.svg::https://www.slicer.org/assets/img/3D-Slicer-Mark.svg"
+        "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz"
 )
 sha512sums=('SKIP'
-            '3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014')
+            '3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014'
+            '42395e20b10a8e9ef3e33014f9a4eed08d46ab952e02d2c1bbc8f6133eca0d7719fb75680f9bbff6552f20fcd1b73d86860f7f39388d631f98fb6f622b37cf04')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  ver=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-  echo "${_pkgver}.${ver}"
+  _max_tag=$(git tag --sort=-v:refname | head -n1)
+  _commit_count=$(git rev-list --count "${_max_tag}"..HEAD)
+  _commit_hash=$(git rev-parse --short HEAD)
+  _max_tag=$(echo "$_max_tag" | sed 's/^v//')
+  _full_version="${_max_tag}.r${_commit_count}.${_commit_hash}"
+  printf "%s" "${_full_version}"
 }
 
 prepare() {
+  # find sqlite with cmake's FindSQLite3
+  sed -i 's/find_package(${proj} REQUIRED)/find_package(SQLite3 REQUIRED)/' "${srcdir}/${_pkgname}/SuperBuild/External_sqlite.cmake"
   echo "Creating desktop file"
   gendesk -f -n --pkgname ${_pkgname} \
     --categories "Graphics;MedicalSoftware;Science;" \
     --exec "Slicer" \
     --icon "${_pkgname}" \
     --pkgdesc "${pkgdesc}"
-  # find sqlite with cmake's FindSQLite3
-  sed -i 's/find_package(${proj} REQUIRED)/find_package(SQLite3 REQUIRED)/' "${srcdir}/${_pkgname}/SuperBuild/External_sqlite.cmake"
-  # fix issue https://github.com/Slicer/Slicer/issues/6437
-  sed -i "s,list(APPEND Slicer_REQUIRED_QT_MODULES Script),list(APPEND Slicer_REQUIRED_QT_MODULES Script Test)," "${srcdir}/${_pkgname}/CMakeLists.txt"
 }
 
 build() {
-  cmake -B build -S "${srcdir}/${_pkgname}" \
+  export CC=/usr/bin/gcc-13
+  export CXX=/usr/bin/g++-13
+  # build with cmake 3.31.6, not working with cmake 4.0.0 yet
+  export PATH=${srcdir}/cmake-3.31.6-linux-x86_64/bin:${PATH}
+  cmake \
+    -B build -S "${srcdir}/${_pkgname}" \
     -DBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DEXTERNAL_PROJECT_OPTIONAL_CMAKE_ARGS="-DSQLite3_INCLUDE_DIRS=/usr/include;-DSQLite3_LIBRARIES=/usr/lib/libsqlite3.so" \
     -DSlicer_BUILD_DOCUMENTATION=OFF \
     -DSlicer_BUILD_I18N_SUPPORT=ON \
     -DSlicer_STORE_SETTINGS_IN_APPLICATION_HOME_DIR=OFF \
@@ -75,7 +105,6 @@ build() {
     -DSlicer_USE_SYSTEM_CTK=OFF \
     -DSlicer_USE_SYSTEM_CTKAPPLAUNCHER=OFF \
     -DSlicer_USE_SYSTEM_CTKAppLauncherLib=OFF \
-    -DSlicer_USE_SYSTEM_CTKResEdit=OFF \
     -DSlicer_USE_SYSTEM_DCMTK=ON \
     -DSlicer_USE_SYSTEM_ITK=OFF \
     -DSlicer_USE_SYSTEM_JsonCpp=OFF \
@@ -84,7 +113,6 @@ build() {
     -DSlicer_USE_SYSTEM_LibFFI=ON \
     -DSlicer_USE_SYSTEM_OpenSSL=ON \
     -DSlicer_USE_SYSTEM_PCRE=OFF \
-    -DSlicer_USE_SYSTEM_ParameterSerializer=OFF \
     -DSlicer_USE_SYSTEM_QT=ON \
     -DSlicer_USE_SYSTEM_RapidJSON=ON \
     -DSlicer_USE_SYSTEM_SimpleITK=OFF \
