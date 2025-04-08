@@ -3,7 +3,7 @@ pkgname=windows95-git
 _pkgname='Windows 95'
 pkgver=4.0.0.r1.g35f7c33
 _electronversion=34
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.(Use system-wide electron)"
 arch=('any')
@@ -29,9 +29,11 @@ options=(
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
+    "${pkgname//-/.}.rpm::${url}/releases/download/v${pkgver%.r*}/${pkgname%-git}-${pkgver%.r*}-1.x86_64.rpm"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
+            '9385f8f72be41b975c4e6a5f3c25ac5dc8bf4bf71ec75dff71aa91836767601f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -46,15 +48,17 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    install -Dm755 -d "${srcdir}/${pkgname//-/.}/images"
+    cp "${srcdir}/usr/lib/${pkgname%-git}/resources/app/images/"* "${srcdir}/${pkgname//-/.}/images"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -79,6 +83,10 @@ prepare() {
     fi
     icns2png -x assets/icon.icns -o assets
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i -e '
+        4i\const os = require("os");
+        s|`C:\\\\Users\\\\FelixRieseberg\\\\AppData\\\\Local\\\\Temp`|os.tmpdir();|g
+    ' forge.config.js
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
