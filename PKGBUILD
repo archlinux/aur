@@ -8,7 +8,7 @@ pkgname="${_pkgname}"-bin
 _subver="4.11"
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -62,17 +62,16 @@ sha256sums_i686=('f863ee1a3462038436a387227ee60aed11957a3decfa56417c62ad75d7813f
                  '9654be64612f157a89928166f220792b5ab76240081a40594d01f763902d1007')
 sha256sums_x86_64=('e6db902c0aadb703fcd7c415e72c8077d9e46acb5464a90ebe60bfe09c50a544'
                    'c40cc41da8f7958b4edbef953e9b0b4e830689467d1f1993c4d298677e6d0047')
+prepare() {
+    install -Dm755 -d "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    rm -rf "${srcdir}/${_pkgname}/"{gen,chromedriver.debug}
+    chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
+}
 package() {
-    install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
-    find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
-    for _folder in 'locales' 'resources'; do
-        cp -r --no-preserve=ownership --preserve=mode "${_folder}/" "${pkgdir}/usr/lib/${_pkgname}/${_folder}/"
-    done
-    chmod u+s "${pkgdir}/usr/lib/${_pkgname}/chrome-sandbox"
-    install -dm755 "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
-  
-    for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-        install -Dm644 "${_license}" "${pkgdir}/usr/share/licenses/${pkgname}/${_license}"
-    done
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
