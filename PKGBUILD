@@ -1,5 +1,6 @@
 # Generated using pip2pkgbuild - https://github.com/wenLiangcan/pip2pkgbuild | https://aur.archlinux.org/packages/pip2pkgbuild
-# Maintainer: Ryen Burns <bburns91@gmail.com>
+# Maintainer: Matthias Mailänder <matthias@mailaender.name>
+# Contributor: Ryen Burns <bburns91@gmail.com>
 
 pkgbase='python-submit50'
 pkgname=('python-submit50')
