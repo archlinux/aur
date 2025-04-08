@@ -3,12 +3,12 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.13.8.arch1
+pkgver=6.14.1.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
-arch=(x86_64)
+arch=(x86_64 x86_64_v3)
 license=(GPL-2.0-only)
 makedepends=(
   bc
@@ -24,7 +24,7 @@ makedepends=(
   rust-src
   tar
   xz
-#  modprobed-db
+  modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -35,13 +35,13 @@ source=(
   config         # the main kernel config file
   
   # patches to config & for tuning purposes
-#  modprobed.db
+  modprobed.db
   choose-gcc-optimization.sh
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
   # actual kernel patch series
-  0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
-  # asus-patch-series.patch
+  # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
+  asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
 #  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -59,14 +59,15 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('259afa59d73d676bec2ae89beacd949e08d54d3f70a7f8b0a742315095751abb'
+sha256sums=('5bf122d1879fd64fadf0cecfcd477957ebce1bc5931c14835ee0eda88463e407'
             'SKIP'
-            '8807a915606709dd8ab98fa836fadefda39ed500c48377355be09fe9a2caaf81'
+            'c5b4773e9d402dd1fb9d198d6c65e1a400dcc994e27f6f82d0567301a84b8554'
             'SKIP'
-            '797e4d772a62dd24cb281886ec844f718bb910f2b2bfe2de389d341aeb3e5bb1'
+            '85ca1138589c697a53480a68523bb68510f9cde16bc0b7d67dd80aeab88972ab'
+            'aa8e06cdebdf9259118399ac6f6af0fd5a21bfb78370a984e7e480805bb11f69'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            '2baff989b4ab826897f7da8c6fa3b25dea542ffedc9581eb45063a34a869cb6b'
+            '45facba068c39abd3d4e12107489960d5353c924d823f7cbb7cf4acb47eff785'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
@@ -85,10 +86,10 @@ sha256sums=('259afa59d73d676bec2ae89beacd949e08d54d3f70a7f8b0a742315095751abb'
 # 98, Intel Native = CONFIG_MNATIVE_INTEL
 # 99, AMD Native = CONFIG_MNATIVE_AMD
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=93
+  _microarchitecture=15
 fi
 if [ -z ${Microarchitecture+x} ]; then
-  Microarchitecture='CONFIG_GENERIC_CPU3'
+  Microarchitecture='CONFIG_MZEN3'
 fi
 
 export KBUILD_BUILD_HOST=archlinux
@@ -123,7 +124,7 @@ prepare() {
   ## Make use of modprobed-db, if installed
   ## To do this, you need to copy the database into this directory and enable the relevant lines 
   ## at the top of this file!
-  # make LSMOD=../modprobed.db localmodconfig 
+  make LSMOD=../modprobed.db localmodconfig 
 
   ## let user choose microarchitecture optimization in GCC  
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
@@ -237,6 +238,7 @@ _package() {
   )
   provides=(
     KSMBD-MODULE
+    NTSYNC-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
