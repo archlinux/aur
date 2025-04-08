@@ -1,48 +1,38 @@
-# Maintainer: Emilien Devos (unixfox) <contact@emiliendevos.be>
+# Contributor: Emilien Devos (unixfox) <contact@emiliendevos.be>
 
 pkgname=mkcert-git
-pkgver=r22.073ee25
+pkgver=1.4.4.r1.g1c1dc4e
 pkgrel=1
-pkgdesc="A simple zero-config tool to make locally-trusted development certificates with any names you'd like."
-arch=('x86_64' 'i686')
-source=("git://github.com/FiloSottile/${pkgname%-git}.git")
+pkgdesc="Simple tool for making locally-trusted development certificates"
+arch=('x86_64')
 url="https://github.com/FiloSottile/mkcert"
-license=('BSD')
-depends=('go')
-makedepends=('git')
-options=('!strip' '!emptydirs')
+license=('BSD-3-Clause')
+depends=('glibc')
+makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_gourl=github.com/FiloSottile/mkcert
-sha1sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
-
 
 build() {
-  GOPATH="$srcdir" go get -fix -v -x ${_gourl}
-}
-
-check() {
-  GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+  cd "${pkgname%-git}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  GO_LDFLAGS="-linkmode=external -X main.Version=v${pkgver%.r*}"
+  go build -v -ldflags "$GO_LDFLAGS"
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
-
-  #mkdir -p "$pkgdir/$GOPATH"
-  #cp -Rv --preserve=timestamps "$srcdir/"src "$pkgdir/$GOPATH"
-  #cp -Rv --preserve=timestamps "pkg/" "$pkgdir/$GOPATH"
-
-  # Package license (if available)
-  for f in LICENSE COPYING LICENSE.* COPYING.*; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" \
-        "$pkgdir/usr/share/licenses/$pkgname/$f"
-    fi
-  done
+  cd "${pkgname%-git}"
+  install -Dm755 -t "$pkgdir/usr/bin" mkcert
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
