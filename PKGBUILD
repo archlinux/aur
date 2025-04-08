@@ -5,7 +5,7 @@
 pkgname='python-libipld-git'
 _pkgname="${pkgname/-git/}"
 pkgver=3.0.1.r0.ga3b2a64
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Python library to work with IPLD: CAR, CID, DAG-CBOR, DAG-JSON, multibase (built from latest git commit)'
 arch=('x86_64')
 url='https://github.com/MarshalX/python-libipld'
