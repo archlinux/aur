@@ -5,9 +5,9 @@ pkgname=headset-bin
 _pkgname=Headset
 pkgver=4.2.1
 _electronversion=14
-pkgrel=9
-pkgdesc="An Electron-based music player for the busy ones"
-arch=(x86_64)
+pkgrel=10
+pkgdesc="An Electron-based music player for the busy ones.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://headsetapp.co/"
 _ghurl="https://github.com/headsetapp/headset-electron"
 license=('MIT')
@@ -17,21 +17,21 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com//headsetapp/headset-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f3582c22aef8b2081ab84ea0f2933acf4e4a4e6b1b7b8f4265af5a450103c0ca'
+sha256sums=('b636d252c7b1fe654369a8d3371d98d79a997f3bfdf126479982a2c7fd5cf360'
             '0fd4183b7556b9f1b93d974969bad60053ab01db10ed2b501d26ed6840766045'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
