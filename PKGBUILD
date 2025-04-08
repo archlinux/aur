@@ -1,23 +1,22 @@
-# Maintainer: e-tho <etho.ledroy@pm.me>
+# Maintainer: e-tho <@e-tho:matrix.org>
 pkgname=iwmenu-git
-pkgver=0.1.0.r58.g7a6967f
+pkgver=0.1.1.r38.ga13d928
 pkgrel=1
-pkgdesc="A menu-driven interface for managing Wi-Fi on Linux."
+pkgdesc="Menu-driven Wi-Fi management interface for Linux"
 arch=('x86_64')
 url="https://github.com/e-tho/${pkgname%-git}"
 license=('GPL-3.0-or-later')
-depends=('iwd' 'openssl' 'pkg-config')
+depends=('iwd')
 makedepends=('git' 'rust' 'cargo')
 provides=(${pkgname%-git}=${pkgver})
 conflicts=(${pkgname%-git}-bin ${pkgname%-git})
-options=('!debug' '!lto' '!strip')
+options=('!debug' '!strip')
 source=(${pkgname%-git}::git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${pkgname%-git}
-  # Format version: 0.1.0.r{number of commits}.g{short commit hash}
-  echo "0.1.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
