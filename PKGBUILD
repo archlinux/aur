@@ -41,6 +41,7 @@ build() {
         -DWEB_ENGINE=ON \
         -DBUILD_SHARED_LIBS=OFF \
         -DHUGGLE_EXT=TRUE \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
 
     make -C build
