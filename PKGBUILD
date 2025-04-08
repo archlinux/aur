@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=lux-cli
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A luxurious package manager for Lua"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate"
     "LICENSE-${pkgver}.txt::https://github.com/nvim-neorocks/lux/raw/refs/tags/v${pkgver}/LICENSE"
 )
-sha256sums=('092af28397e5b00a1c138dd7a30d9e08673475e222b74515da55478c464ab3bd'
+sha256sums=('0ea51974ec39bbd71cee825ac57845517e09ed7c1d2970a08224a238a9d82bd0'
             'f4a0df3d94b10aebad58f6e7668ddd0249ee2a21bae13615c342eb3e00d20733')
 
 prepare() {
