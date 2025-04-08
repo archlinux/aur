@@ -1,12 +1,13 @@
 pkgbase = caddy-custom
 	pkgdesc = Caddy web server with plugins
 	pkgver = 2.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/caddyserver/caddy
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
+	depends = glibc
 	provides = caddy
 	conflicts = caddy
 	backup = etc/caddy/Caddyfile
