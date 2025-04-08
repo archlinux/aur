@@ -1,9 +1,10 @@
-# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Maintainer: Ali Mohammad Pur <totally@fakegmail.ch>
+# Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r67701.ec1f7f87eaf
+pkgver=r68341.6b883c5ccb0
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -16,7 +17,7 @@ makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags')
 source=(
   "git+$url"
-  "git+https://github.com/microsoft/vcpkg.git#commit=74ec888e385d189b42d6b398d0bbaa6f1b1d3b0e" # 2025-02-07 (Toolchain/BuildVcpkg.py)
+  "git+https://github.com/microsoft/vcpkg.git#commit=533a5fda5c0646d1771345fb572e759283444d5f" # 2025-04-03 (Toolchain/BuildVcpkg.py)
   "ladybird.desktop"
 )
 sha256sums=(
@@ -36,12 +37,19 @@ build() {
   export VCPKG_ROOT="${srcdir}/vcpkg"
   export VCPKG_DISABLE_METRICS="true"
 
+  local use_linker=
+  if ! echo $'#if defined(__clang__)\nWE ARE ON CLANG\n#endif' | "${CC:-/usr/bin/cc}" -E - | grep -q 'WE ARE ON CLANG'; then
+    echo "Disabling LTO on Release build with GCC"
+    use_linker='-DENABLE_LTO_FOR_RELEASE=OFF'
+  fi
+
   cmake \
     --preset default \
     -B build \
     -S ladybird \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_BUILD_TYPE=Release \
+    $use_linker \
     -DVCPKG_OVERLAY_TRIPLETS="${srcdir}/ladybird/Meta/CMake/vcpkg/distribution-triplets" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
