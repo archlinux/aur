@@ -3,7 +3,7 @@
 # Contributor: Alex Xu <alex_y_xu dot yahoo at ca>
 pkgname=huggle
 pkgver=3.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Anti-vandalism tool for use on MediaWiki-based projects"
 arch=('i686' 'x86_64')
 url="https://en.wikipedia.org/wiki/Wikipedia:Huggle"
@@ -16,7 +16,7 @@ source=(
     "huggle-extensions.patch"
     "huggle-desktop.patch"
 )
-b2sums=('7481acf08dc51beca56f731e4c77118dc17e3142b615f2839322c7b50d11c927b1ddfeb64d91973be42a09cfef73351bc2fc550eb152fc228fb5aca3c7223905'
+b2sums=('af92d575a50bf93d876aaf5409058428e40a98a643f1ce3f6e079df03d05b7698f4711c7072a8ac877ef9601b228d2dbf15e46952f6c4145736995fd3fcdd090'
         'e37d338085329911277cabd58108a0be5114b2c3b0469d0e3ed4bfbabda02c85315698c1ce466cb3c9bb25adb4ba208f69a134b4eb9079a2f70b8a36815f077a'
         '4fa21457d39061bbba01c2e5f5ac9d6d703b56103fac82e48cff09d94b5ca4fe9a912756dad2c7c90079e556814654730b0c18f97f93de11b25b32ac740367ff')
 
@@ -27,8 +27,6 @@ prepare() {
     # Fix icon in huggle.desktop
     patch --forward --strip=1 --input="../huggle-desktop.patch"
     echo "+archlinux.${pkgrel}" >> src/huggle_core/version.txt
-    # Eliminate weird ._<filename> binary files present in huggle_3.4.13.tar.gz
-    find . -name "._*" -delete
 }
 
 build() {
