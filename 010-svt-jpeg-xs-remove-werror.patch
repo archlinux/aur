@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -304,7 +304,7 @@ endif()
+ if(MSVC OR MINGW)
+ #"-Wall" too big restrict for MSVC
+ else()
+-check_both_flags_add(-Wall -Werror)
++check_both_flags_add(-Wall)
+ endif()
+ 
+ set(SVT_JPEGXS_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
