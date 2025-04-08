@@ -1,0 +1,19 @@
+pkgbase = windows95-bin
+	pkgdesc = 💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.(Prebuilt version.Use system-wide electron)
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/felixrieseberg/windows95
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron34
+	depends = nodejs
+	provides = windows95=4.0.0
+	conflicts = windows95
+	options = !strip
+	options = !emptydirs
+	source = windows95-4.0.0.rpm::https://github.com/felixrieseberg/windows95/releases/download/v4.0.0/windows95-4.0.0-1.x86_64.rpm
+	source = windows95.sh
+	sha256sums = 9385f8f72be41b975c4e6a5f3c25ac5dc8bf4bf71ec75dff71aa91836767601f
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = windows95-bin
