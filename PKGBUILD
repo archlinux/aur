@@ -3,7 +3,7 @@
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=4.50.3
+pkgver=4.51.0
 pkgrel=1
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
@@ -11,7 +11,7 @@ url='https://github.com/huggingface/transformers'
 license=('Apache-2.0')
 depends=(
   'python-filelock'
-  'python-huggingface-hub>=0.24.0'
+  'python-huggingface-hub>=1:0.30.0'
   'python-numpy'
   'python-packaging'
   'python-regex'
@@ -31,11 +31,12 @@ optdepends=(
   'python-tensorflow: TensorFlow support'
   'python-tf-keras: Support for models in Keras 2 (e.g. BART)'
   'python-tf2onnx: TensorFlow support'
+  'python-hf-xet: xethub support'
 )
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('3f746fb28fdc033affe6043f012686066ee5a9360d935149ea6503ae28c5a526')
+sha256sums=('5298b01cc53a5e95536c419201768f686740e3dccf9c36e641ca3e51790fe9fb')
 
 prepare() {
   cd "transformers-$pkgver"
