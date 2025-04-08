@@ -8,7 +8,7 @@
 pkgname="keypunch-git"
 _appname="keypunch"
 pkgver=6.1.r4.g0100b4b
-pkgrel=1
+pkgrel=2
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch'
 _app_website='https://apps.gnome.org/Keypunch'
