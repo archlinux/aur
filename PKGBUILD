@@ -5,12 +5,15 @@
 pkgname='python-atproto-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.0.59.r1.g16a02f4
-pkgrel=2
-pkgdesc='The AT Protocol (Bluesky) SDK for Python (latest commit)'
+pkgver=0.0.59.r12.gad083e8
+pkgrel=1
+pkgdesc='The AT Protocol (Bluesky) SDK for Python (built from latest git commit)'
 arch=('any')
 url='https://github.com/MarshalX/atproto'
-license=('MIT')  # SPDX-License-Identifier: MIT
+license=(
+  'MIT'        # SPDX-License-Identifier: MIT (main package)
+  'CC0-1.0'    # SPDX-License-Identifier: CC0-1.0 (examples)
+)
 makedepends=(
   'git'
   'python-build'
@@ -37,8 +40,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_srcname"
 
-  git describe --tags --long \
-  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -55,6 +57,7 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGES,README,SECURITY}.md
+  cp -vfax examples "$pkgdir/usr/share/doc/"
 }
 
 # eof

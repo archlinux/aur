@@ -1,10 +1,11 @@
 pkgbase = python-atproto-git
-	pkgdesc = The AT Protocol (Bluesky) SDK for Python (latest commit)
-	pkgver = 0.0.59.r1.g16a02f4
-	pkgrel = 2
+	pkgdesc = The AT Protocol (Bluesky) SDK for Python (built from latest git commit)
+	pkgver = 0.0.59.r12.gad083e8
+	pkgrel = 1
 	url = https://github.com/MarshalX/atproto
 	arch = any
 	license = MIT
+	license = CC0-1.0
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
