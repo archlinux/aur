@@ -2,6 +2,7 @@
 pkgname=qtalarm
 pkgver=3.0.0
 pkgrel=1
+epoch=1
 pkgdesc="Cross-platform Alarm Clock written with QT6"
 arch=('i686' 'x86_64')
 url="https://random-hackery.net/page/qtalarm/"
