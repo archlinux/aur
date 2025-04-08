@@ -11,7 +11,7 @@ pkgdesc="G-code generator for 3D printers (Prusa, Voron, Creality, etc.) (binary
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
-depends=('zlib' 'fuse2')
+depends=('zlib' 'fuse3')
 options=('!strip' '!debug')
 replaces=('slic3r++')
 provides=("superslicer=$epoch:$pkgver")
