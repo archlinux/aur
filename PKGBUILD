@@ -1,3 +1,4 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor:  Liam Timms <timms5000@gmail.com>
 # Contributor: Frank Fishburn <frankthefishburn@gmail.com>
 
@@ -9,7 +10,7 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
@@ -19,7 +20,7 @@ depends=('python-click' 'python-networkx' 'python-nibabel' 'python-numpy' 'pytho
 makedepends=('python-numpydoc' 'python-sphinx' 'python-pytest' 'python-mock')
 optdepends=('python-pybids' 'python-dipy' 'ants' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('c484d6d1ba99d8c2e641bcd611614ed57c33c6cb33ff78bfbe3b2be4474a16fd')
+sha256sums=('9671f6ff9d98ecf397edfdb9e56cb84cd54022bc7659bdd0f98f3a4c7924fb6a')
 
 _setpaths(){
 
