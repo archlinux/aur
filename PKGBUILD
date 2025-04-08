@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=usql-bin
-pkgver=0.19.20
+pkgver=0.19.21
 pkgrel=1
 pkgdesc="Universal command-line interface for SQL databases"
 arch=(amd64 arm arm64 x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 provides=(usql)
 conflicts=(usql)
 source=("$url/releases/download/v$pkgver/usql-$pkgver-linux-$arch.tar.bz2")
-b2sums=('be8685dbfbb2d0660c3bef063bf1ee3e8c52f3d4845cb40ba2ab31d834dad605c696c945cec6d82e8da3f671bd3d749839c5429d88dfac214dfe22969eafd4ce')
+b2sums=('43d8d015eaf224b58e4fa34d3e210824b07c726ff1478d1616d434dfadbac159c804207ef9df4cc0de356f6114eeba2ebdde9fbdbe72e4db7f5b7a2fb7db2388')
 
 package() {
     install -Dm0755 usql -t "$pkgdir/usr/bin/"
