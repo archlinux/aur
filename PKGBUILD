@@ -1,7 +1,7 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
-
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 pkgname='schleuder-cli'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=3
 pkgdesc='A command line tool to create and manage schleuder-lists.'
 arch=(any)
@@ -11,7 +11,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-thor')
 checkdepends=('ruby-bundler' 'ruby-rspec')
 source=("https://0xacab.org/schleuder/schleuder-cli/-/archive/schleuder-cli-${pkgver}/schleuder-cli-schleuder-cli-${pkgver}.tar.gz")
-sha512sums=('6c2854bc5d46dea6936c1bfc5d502c5df3c170e92bbde663332426ed978de8fcb72f110ecd691a372530f917a75ed182f337d855d4f19bc7ab9b465a9c9c4766')
+sha512sums=('05927c903ddd8b26d74d813c6783c2304eb62caa7c4c50bcb83d0c9b68b41faf3f9b7323d85e86a3b6b76f1b186d43d5ae24ece571fc4d5567e4a20a91f8072e')
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
