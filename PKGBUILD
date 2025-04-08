@@ -71,7 +71,8 @@ build() {
     -DSYSCONFDIR=/etc \
     -DLUA_INCLUDE_DIR=/usr/include/luajit-$_LUAJIT_VERSION \
     -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so \
-    -DLUA_EXECUTABLE=/usr/bin/luajit
+    -DLUA_EXECUTABLE=/usr/bin/luajit \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
