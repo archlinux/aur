@@ -1,14 +1,15 @@
 pkgbase = whisper.cpp-git
 	pkgdesc = Port of OpenAI's Whisper model in C/C++
-	pkgver = 5a5c5dd
+	pkgver = v1.7.5.r13.gb1f5c11
 	pkgrel = 1
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = MIT
 	makedepends = git
+	makedepends = cmake
 	conflicts = whisper.cpp
 	source = whisper.cpp-git::git+https://github.com/ggerganov/whisper.cpp#branch=master
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = whisper.cpp-git
