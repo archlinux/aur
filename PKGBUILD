@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=entropy
-_pkgver=1.3.1
+_pkgver=1.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="Estimation of Entropy, Mutual Information and Related Quantities"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a65db89e6e130f8d420d6d3320121bce')
-b2sums=('1112f3a2b3da6d19032c4d34177374e9c6d28189a1e7b5ce5e8a0a1963b57e41832b674e89538f2595d3a33b5324fed1b195a84f620d259cee23de619eedd375')
+md5sums=('a7c849246cf7051373b8ea21950b61f3')
+b2sums=('b67fc265a6e5fc04bba9ec5ba0b2065acfa5b63ea70f33148396a3a8b80f3171c81d45dd32456624537464b67d6cbec608e899af9b819fda96c2d3253c84e9f6')
 
 build() {
   mkdir build
