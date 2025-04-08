@@ -1,8 +1,9 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 _gemname='simple_form'
 pkgname="ruby-${_gemname}"
-pkgver=5.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Forms made easy"
 arch=('any')
@@ -12,7 +13,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activemodel')
 makedepends=('ruby-bundler' 'ruby-rake')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('78c15d22bd1092cf76bea1e7e82253338016c0e4d62212b8bfa9cc34734d5ee520956299abf1ffe2bccadf30b3c2e79d1028d45668918a26f932830231500fde')
+sha512sums=('02d4fb4caf824810d4437efc72c6d386f80e181a1b4d430480bf1def56749598a77e129e4634bd10bb7bd548adf83fc99449e304147c3df13a6d2e857361024a')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
