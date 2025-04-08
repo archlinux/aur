@@ -1,7 +1,7 @@
 pkgbase = yakuza-bin
-	pkgdesc = An extensible linux application launcher
+	pkgdesc = An extensible linux application launcher.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fzdwx/yakuza
 	arch = x86_64
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = yakuza-bin
 	sha256sums = b600cbbddb06b1f607ca126ac9734807af56086dfe78f8c0be9e0886d9b04269
 	sha256sums = e68e39144f593ee54698780c64d4619b4e2f7a30af1a27acaa9691aef0e1f1bd
 	sha256sums = 9e05d771f47c0447e9147319523e1a2de79538b9e85f7ad1f4d657ac56648b38
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = yakuza-bin
