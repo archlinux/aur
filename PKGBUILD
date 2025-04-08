@@ -11,7 +11,7 @@ license=('GPL-2.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    #"electron${_electronversion}"
+    "electron${_electronversion}"
 )
 makedepends=(
     'asar'

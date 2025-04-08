@@ -6,6 +6,7 @@ pkgbase = copytranslator-bin
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = asar
+	depends = electron6
 	provides = copytranslator=9.1.0
 	conflicts = copytranslator
 	source = copytranslator-9.1.0.rpm::https://github.com/CopyTranslator/CopyTranslator/releases/download/v9.1.0/copytranslator-9.1.0.x86_64.rpm
