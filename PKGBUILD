@@ -2,7 +2,7 @@
 # Contributor: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
 _name='signal'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge (go rewrite)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(
   'go'
-  'libsignal-ffi=0.66.2' # AUR
+  'libsignal-ffi=0.67.4' # AUR
 )
 backup=(
   "etc/${pkgname}/config.yaml"
@@ -28,7 +28,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('3f89542f40c05c3b4aa33ca7d404f3cc4e8121d62e711f185415b3cbbf5ad561'
+sha256sums=('4c9d9616c2017d6fff15996f9ee04c4311bad779275100900c958826fe16eb58'
             'e9a6a88f7b08fa00b354c3d50ded995f5578e6a6b75b96988cc2b27432575ded'
             'b47c0829a9f285e0a4bd7852e601f325e1fa8385ea96eaa92cad204c0e583adf'
             '6bd18a77b692c79ca62d40fb430d780fb5f01c16c9ec4a19e139a733b7cc7a1f')
