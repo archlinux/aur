@@ -5,6 +5,7 @@ Requires=redis.service
 PartOf=paperless.target
 
 [Service]
+SyslogIdentifier=paperless/task-queue
 User=paperless
 Group=paperless
 WorkingDirectory=/usr/share/paperless/src

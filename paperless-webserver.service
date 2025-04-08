@@ -5,6 +5,7 @@ Requires=redis.service
 PartOf=paperless.target
 
 [Service]
+SyslogIdentifier=paperless/webserver
 User=paperless
 Group=paperless
 EnvironmentFile=/etc/paperless.conf

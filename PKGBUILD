@@ -4,9 +4,9 @@
 
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
-pkgver=2.14.7
-pkgrel=2
-pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents (version with bundled dependencies)"
+pkgver=2.15.0
+pkgrel=1
+pkgdesc="paperless-ngx: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
 arch=("x86_64" "aarch64")
@@ -14,6 +14,7 @@ provides=("paperless" "$pkgname")
 conflicts=("paperless" "paperless-ng" "paperless-ngx")
 replaces=("paperless-ngx")
 makedepends=(
+ "uv"
  "findutils"
  "mariadb"
  "postgresql"
@@ -42,6 +43,7 @@ optdepends=(
  "tika-server: extract metadata from files"
 )
 source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver.tar.xz"
+        "paperless.conf"
         "paperless.hook"
         "paperless.sysusers"
         "paperless.tmpfiles"
@@ -50,19 +52,18 @@ source=("https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkg
         "paperless-scheduler.service"
         "paperless-task-queue.service"
         "paperless-webserver.service"
-        "requirements.patch"
         "whoosh-filters.patch"
         "whoosh-intraword.patch")
-b2sums=('d286442d8bd6a83cdd6102f7e09fca3b57cd9d420932a044ee2ccaf313185b1985c6aa52fce73c80ca6f4bef21cc37f14d64fbff763e5e3461f5f939edba25db'
+b2sums=('aaff2a06d22510f464e918f023649646c886c5f466950d83a7bccdc45217247c183711d96443f6cc848a875765e48cae0703d4efdde9eaf54ebf2c0456005f15'
+        'a182b37e6d885094e41ff90b82f4685c1a1ae20f0b03cf1478b072e3161875df7a1ea3d2410a0a5791df5fd911430d216bf1be67a996a943e74f7d65df98f76d'
         '747a8b8774fa48073e58b9b3ba55b28ca505b193cf180467b1bcbbe3a2c44931a198f355163b377219299c8b43f0a74550e241f835d9941c594fe318ae5235cd'
         '586ad775e26aef216716c33d8951e00044a7f6866167d27dceab39d51b4fd46527693dfe4e085dc20d2e9193679122ad2b9ac8a1c03a98df747af15ecca24ca2'
         '4a59f0a0c6a4abad23cba01e216909f45a7064e93911b8ba3e3b394f52379e41898b8c9e1246ba034bc8d2fe6dc83f5cad926e265a17da7c7093d997cfe8b4f3'
         'd4eff17cf6b4642211d61545d3722cb626e35b591fc1f11dfc0d4bd3b303ac145777953d405b1bbdf6473512590d50169cf58db8251de2701cee4d7b151ef6be'
-        '22789413306028dae8ffbc791599a2f008412417930d093e198157b7d7955be7f386cea550172b5772738106308682d310d7278495087ffd94c257407328aa1a'
-        '6ecee87188daf05791ee1dbd152277e2dc09797988c2caf5f01cd2c630925332e3796159e7dce4f3ccb791f925b1c53aa91f89091254b5b55dc51322f9212509'
-        '03a55bc65ae9b066e001d56599dcc1d84f19cfba7bdb866bdbb64b6bc53637668a2b0783e3012d5c80638d55667a32058ca2c337c869de5225e19c37b32804f2'
-        '0d7784f9e1a960bdba55586032c2682bde0b17f601a08eead332e62a5782319e9dbcbe45b940772107c374f08e39c8d727ec0eb555b15c584238871f4ed5201f'
-        'a09df0b6501c54051b7d49c4721afac653bf54caf3dbd1323a3604c1f1460cb1b5fd61fb935ec13a463b60e02357ad2b0ebe4f5a979b5af52f3f6a4e18e434f7'
+        '3a294006b2c7cd856a5034c22634e1c4b6d2c623ef690e1a72b4ae85964b068636520ff3b417a290a7224fceec0d7097b108085f33df40fbd21bb613369fa5f4'
+        'fb642f0354a1fefc709c1a5278e042ca47becf1256d8e83ed631546812ff3c74b9821d7ae46dababd90cf6159ba79d94a4f8c31d3e79241a6b909de70776d56c'
+        'f8de2bcb231a577b14eb2ff33b646d503d1b071cbc0f3916c37f425098c37ead94c6d86838f5f37066281ce5dea50cab2d4c18792f59039ae77168a058af6c18'
+        '706718fee07c4d0b0af759b3054ee914a8492a3f1957b7354546da2ec333ab6581a4cd7f887c3d93181801cd253b685bffa7b11f590d9722e99317e63dd57fb8'
         '216180663dd139513b51e087e1ee59ada29482fd47e138caa9a9aead362722f9111c164e77f9f336afbad05326cc558e256d90f89a087fdbc1ba606bc2ee4517'
         '917d8a50a18b329abfcb19ee25fe8e85636979673f73ca806325eee8c0aa28af60580ac1d52d5b593ecf9e1d87a4bee051533988224b875bc7f42da02baf634b')
 backup=("etc/paperless.conf")
@@ -70,30 +71,11 @@ options=("!strip")
 install="paperless.install"
 
 prepare(){
- # use arch linux canonical paths
- sed -i "$_pkgname/paperless.conf" \
-     -e "s|#PAPERLESS_CONSUMPTION_DIR=../consume|PAPERLESS_CONSUMPTION_DIR=/var/lib/paperless/consume|" \
-     -e "s|#PAPERLESS_DATA_DIR=../data|PAPERLESS_DATA_DIR=/var/lib/paperless/data|" \
-     -e "s|#PAPERLESS_MEDIA_ROOT=../media|PAPERLESS_MEDIA_ROOT=/var/lib/paperless/media|" \
-     -e "s|#PAPERLESS_STATICDIR=../static|PAPERLESS_STATICDIR=/usr/share/paperless/static|" \
-     -e "s|#PAPERLESS_CONVERT_TMPDIR=/var/tmp/paperless|PAPERLESS_CONVERT_TMPDIR=/var/lib/paperless/tmp|"
- # remove hardcoded bind address
- sed -i "$_pkgname/gunicorn.conf.py" \
-     -e "s|bind = '0.0.0.0:8000'||"
- # add custom dir for uploaded files
- printf "\n# Uploads\n\nPAPERLESS_SCRATCH_DIR=/var/lib/paperless/uploads" >> "$_pkgname/paperless.conf"
- # add customizable bind address, will be used by paperless-webserver.service
- printf "\n\n# Webserver\n\nGUNICORN_CMD_ARGS='--bind=127.0.0.1:8000'" >> "$_pkgname/paperless.conf"
-
- # workaround for:
- # 	- https://github.com/paperless-ngx/paperless-ngx/issues/6862
- patch "$srcdir/$_pkgname/requirements.txt" < "$srcdir/requirements.patch"
-
  # create venv
  mkdir -p "$srcdir/venv"
- python -m venv "$srcdir/venv"
+ uv venv "$srcdir/venv"
  source "$srcdir/venv/bin/activate"
- pip install -r "$srcdir/$_pkgname/requirements.txt"
+ uv pip install -r "$srcdir/$_pkgname/requirements.txt"
  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
  deactivate
 
@@ -139,14 +121,21 @@ EOF
  # webserver
  cat << EOF > "$pkgdir/usr/lib/paperless/webserver"
 #!/usr/bin/bash
+
 source /usr/lib/paperless/bin/activate
-exec gunicorn -c /usr/share/paperless/gunicorn.conf.py paperless.asgi:application
+
+[ -n "\$PAPERLESS_BIND_ADDR" ] && export GRANIAN_HOST=\$PAPERLESS_BIND_ADDR
+[ -n "\$PAPERLESS_PORT" ] && export GRANIAN_PORT=\$PAPERLESS_PORT
+[ -n "\$PAPERLESS_WEBSERVER_WORKERS" ] && export GRANIAN_WORKERS=\$PAPERLESS_WEBSERVER_WORKERS
+[ -n "\$PAPERLESS_FORCE_SCRIPT_NAME" ] && export GRANIAN_URL_PATH_PREFIX=\$PAPERLESS_FORCE_SCRIPT_NAME
+
+exec granian --interface asginl --ws "paperless.asgi:application"
 EOF
  
  chmod 755 "$pkgdir/usr/lib/paperless/"{scheduler,task-queue,webserver} "$pkgdir/usr/share/paperless/src/manage.py" "$pkgdir/usr/bin/paperless-manage"
 
  # config file
- install -D -m 640 "$_pkgname/paperless.conf" "$pkgdir/etc/paperless.conf"
+ install -D -m 640 "$srcdir/paperless.conf" "$pkgdir/etc/paperless.conf"
  rm "$pkgdir/usr/share/paperless/paperless.conf"
  ln -s "/etc/paperless.conf" "$pkgdir/usr/share/paperless/paperless.conf"
  # optional pacman hook

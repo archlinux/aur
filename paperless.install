@@ -33,4 +33,19 @@ This process can be automated by running once
 
 INFO
  fi
+
+ if [ "$(vercmp "$2" "2.15.0")" -lt 0 ] && [ "$(vercmp "$1" "2.15.0")" -ge 0 ]; then
+  cat <<INFO
+
+Upgrading paperless-ngx from 2.14.x to 2.15.x requires migration of your webserver settings in /etc/paperless.conf:
+
+    GUNICORN_CMD_ARGS='--bind=127.0.0.1:8000'
+
+becomes:
+
+    PAPERLESS_BIND_ADDR=127.0.0.1
+    PAPERLESS_PORT=8000
+
+INFO
+ fi
 }

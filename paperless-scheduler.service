@@ -5,6 +5,7 @@ Requires=redis.service
 PartOf=paperless.target
 
 [Service]
+SyslogIdentifier=paperless/scheduler
 User=paperless
 Group=paperless
 WorkingDirectory=/usr/share/paperless/src
