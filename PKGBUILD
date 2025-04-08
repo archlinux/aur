@@ -1,20 +1,20 @@
 # Maintainer: jwr1
 
 pkgname=interstellar-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.'
 arch=(x86_64 aarch64)
 url=https://github.com/jwr1/interstellar
-license=(GPL-3.0-only)
+license=(AGPL-3.0-only)
 depends=(gtk3 xdg-user-dirs mpv)
 provides=(interstellar)
 conflicts=(interstellar)
 options=(!debug)
-source_x86_64=("${url}/releases/download/v${pkgver}/interstellar-linux-x86_64.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/interstellar-linux-aarch64.tar.gz")
-sha256sums_x86_64=('b73cc629ae986593cab429ea608df026a684513f9d67c6a970cdd8f73aab9f2c')
-sha256sums_aarch64=('f96334d00b9de6913dbbb134863dbfbe3e6888124e676acbd624b8114fe47202')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/interstellar-linux-x86_64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/interstellar-linux-aarch64.tar.gz")
+sha256sums_x86_64=('90059d0126fdac87a389005f3ef95fc21d7779e078fbceaecef83778e9dea326')
+sha256sums_aarch64=('4a8439feeab1dfc94c3509fc3ff0759e54a76ff2b47e45edfb12d1837ed9251d')
 
 package() {
 	# Setup directories
