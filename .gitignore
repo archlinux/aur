@@ -1,3 +1,7 @@
 *.tar.*
 pkg/
 src/
+**/.stfolder
+**/.stignore
+**/.directory
+**/.vscode

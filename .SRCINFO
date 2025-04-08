@@ -1,6 +1,6 @@
 pkgbase = libwacom-surface
 	pkgdesc = Library to identify Wacom tablets and their features - Patched for Microsoft Surface devices
-	pkgver = 2.13.0
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://github.com/linux-surface/libwacom
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = libwacom-surface
 	depends = glibc
 	optdepends = python-libevdev: for libwacom-show-stylus
 	optdepends = python-pyudev: for libwacom-show-stylus
-	provides = libwacom=2.13.0
+	provides = libwacom=2.15.0
 	conflicts = libwacom
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.13.0/libwacom-2.13.0.tar.xz
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.13.0/libwacom-2.13.0.tar.xz.sig
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.15.0/libwacom-2.15.0.tar.xz
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.15.0/libwacom-2.15.0.tar.xz.sig
 	source = 0001-Add-support-for-BUS_VIRTUAL.patch
 	source = 0002-Add-support-for-Intel-Management-Engine-bus.patch
 	source = 0003-data-Add-Microsoft-Surface-Pro-3.patch
@@ -38,7 +38,7 @@ pkgbase = libwacom-surface
 	source = 0016-data-Add-Microsoft-Surface-Laptop-Studio.patch
 	validpgpkeys = 594ABBA066118C7A02D10A80A8AF906D9307FBAD
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha256sums = acd18121441bbc00fc5c881fca08a33319ab814b798eac8d0be6354923f8fb08
+	sha256sums = 20cd65b1693129c3a6c003db0fe7fff7eccaf19fb04e89aaad9c20eb2151515a
 	sha256sums = SKIP
 	sha256sums = 696164b851014a204cb42dcee0b04e98680df4154494454aed499e1928811668
 	sha256sums = d7ba3b1fa5d29d3905be5bc6b70bb351afebd1343b57ca8b213af1279b7ded49

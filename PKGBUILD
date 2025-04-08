@@ -1,8 +1,8 @@
-# Maintainer: Maximilian Luz <luzmaximilian@gmail.com>
+# Maintainer: BinaryInk <hqxjlmnxs@mozmail.com>
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=2.13.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Library to identify Wacom tablets and their features - Patched for Microsoft Surface devices"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
     "0015-data-Add-Microsoft-Surface-Book-3-15.patch"
     "0016-data-Add-Microsoft-Surface-Laptop-Studio.patch"
 )
-sha256sums=('acd18121441bbc00fc5c881fca08a33319ab814b798eac8d0be6354923f8fb08'
+sha256sums=('20cd65b1693129c3a6c003db0fe7fff7eccaf19fb04e89aaad9c20eb2151515a'
             'SKIP'
             '696164b851014a204cb42dcee0b04e98680df4154494454aed499e1928811668'
             'd7ba3b1fa5d29d3905be5bc6b70bb351afebd1343b57ca8b213af1279b7ded49'
