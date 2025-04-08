@@ -2,7 +2,7 @@
 pkgname=soulfire-bin
 _pkgname=SoulFire
 _wrname=soufire
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="A frontend for the SoulFire server. It mainly targets the web, but uses native APIs using Tauri.(Prebuilt version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${_wrname}_${pkgver}_amd64.deb"
 )
-sha256sums=('81527e7f193aea4deef6eb36fb1fc5e8847af0930fda2e83ab49938e7ff7d80b')
+sha256sums=('d5239effb5e56e6f42935bdd019d3371fe4f39131bd589d5a585c55160f5d030')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Name=${_wrname}/Name=${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_wrname}.desktop"
