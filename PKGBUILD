@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-git"
 _pkgname="pay-respects"
-pkgver=0.6.12.r0.g340504a
+pkgver=0.7.2.r2.g722e740
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -10,10 +10,9 @@ license=('AGPL-3.0-or-later')
 provides=('pay-respects')
 install="$_pkgname.install"
 conflicts=('pay-respects')
-makedepends=('cargo' 'git' 'openssl' 'pkg-config')
-optdepends=(
-	'curl: AI requests'
-)
+makedepends=('cargo' 'git')
+options=(!debug !lto)
+optdepends=()
 source=($pkgname::git+$url)
 
 sha1sums=('SKIP')
@@ -35,7 +34,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export _DEF_PR_LIB=/usr/lib/pay-respects
-	cargo build --frozen --release --workspace --all-features
+	cargo build --frozen --release --workspace
 }
 
 package() {

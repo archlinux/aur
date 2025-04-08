@@ -11,11 +11,10 @@ pkgbase = pay-respects-git
 	license = AGPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
-	makedepends = openssl
-	makedepends = pkg-config
-	optdepends = curl: AI requests
 	provides = pay-respects
 	conflicts = pay-respects
+	options = !debug
+	options = !lto
 	source = pay-respects-git::git+https://github.com/iffse/pay-respects
 	sha1sums = SKIP
 
