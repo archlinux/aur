@@ -1,8 +1,9 @@
-# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 _gemname='database_cleaner-active_record'
 pkgname="ruby-${_gemname}"
-pkgver=2.0.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Strategies for cleaning databases using ActiveRecord. Can be used to ensure a clean state for testing'
 arch=('any')
@@ -12,7 +13,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-activerecord' 'ruby-database_cleaner-core')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f08ab3413be5fe1b17913d629054971997f95ac6551d7a5c07b5169367d0dcc4c0709487bbdae23c659c0b61548097c30110b6b0850ba6d96e92fa6814e8e926')
+sha512sums=('0910d281a573b3f0c142aec382e3f4b5fbfeb6ee5ae117dd10e5ddf3ef82479263629a379481a8b6b15eee813ac1d6e6f58e3713bf5e0f597e91c860c9e01b06')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
