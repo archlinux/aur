@@ -2,7 +2,7 @@
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-agent
 pkgver=4.11.2
-_remRevision=1
+_remRevision=2
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Wazuh Agent actively protects Arch Linux systems with advanced threat prevention, detection, and response capabilities."
@@ -11,26 +11,12 @@ url="https://wazuh.com/"
 license=('gpl2')
 depends=(
     'curl'
-    'gcc'
-    'make'
     'sudo'
-    'wget'
-    'expect'
-    'gnupg'
-    'perl-base'
     'perl'
-    'fakeroot'
     'python'
     'brotli'
-    'automake'
-    'autoconf'
-    'libtool'
-    'gawk'
-    'libsigsegv'
     'nodejs'
-    'base-devel'
     'inetutils'
-    'cmake'
 );
 optdepends=(
     'lsb-release'
@@ -56,14 +42,34 @@ sha512sums_aarch64=('a6e3a34a641accbd2dafe4fc5e1bef45d24e949fe712e748ebd8aa01927
 install=$pkgname.install
 
 package() {
-    #change permissions
+    # Cambiar permisos
     chmod -R +w "$srcdir/var/ossec"
-    #Setup
+    
+    # Configuración
     cd $pkgdir
     mv $srcdir/etc .
     mv $srcdir/usr .
     mv $srcdir/var .
-    #Set systemd service file perms
-    chmod 644 $pkgdir/usr/lib/systemd/system/wazuh-agent.service
     
+    # Asegurarse de que los archivos de configuración existen y tienen permisos adecuados
+    mkdir -p $pkgdir/var/ossec/etc
+    
+    # Verificamos si los archivos existen antes de intentar establecer permisos
+    if [ -f "$pkgdir/var/ossec/etc/ossec.conf" ]; then
+        chmod 644 $pkgdir/var/ossec/etc/ossec.conf
+    fi
+    
+    if [ -f "$pkgdir/var/ossec/etc/local_internal_options.conf" ]; then
+        chmod 644 $pkgdir/var/ossec/etc/local_internal_options.conf
+    fi
+    
+    # Si client.keys no existe, crear uno vacío con permisos adecuados
+    if [ ! -f "$pkgdir/var/ossec/etc/client.keys" ]; then
+        install -Dm644 /dev/null "$pkgdir/var/ossec/etc/client.keys"
+    else
+        chmod 644 $pkgdir/var/ossec/etc/client.keys
+    fi
+    
+    # Establecer permisos del archivo de servicio systemd
+    chmod 644 $pkgdir/usr/lib/systemd/system/wazuh-agent.service
 }

@@ -2,7 +2,7 @@ post_install()
 {
   echo "creating wazuh user and group"
   groupadd -f wazuh
-  usuario="wazuh" && id "$usuario" &>/dev/null || useradd -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
+  usuario="wazuh" && id "$usuario" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
   chown -R wazuh:wazuh /var/ossec
   echo "Done!"
   echo "Visit https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html and follow the configure instructions, also, check https://documentation.wazuh.com/current/user-manual/deployment-variables/deployment-variables-linux.html for deployment vars, and https://documentation.wazuh.com/current/user-manual/agent-enrollment/index.html if you didn't follow wazu's installation guide
@@ -11,4 +11,26 @@ post_install()
   systemctl daemon-reload
   systemctl enable wazuh-agent
   systemctl start wazuh-agent"
+}
+
+post_upgrade() {
+  # Asegurarse de que el usuario y grupo existan después de una actualización
+  groupadd -f wazuh
+  usuario="wazuh" && id "$usuario" &>/dev/null || useradd --system -g wazuh -d /var/ossec -s /usr/bin/nologin wazuh
+  
+  # Restaurar permisos correctos después de una actualización
+  chown -R wazuh:wazuh /var/ossec
+  
+  # Asegurarse de que los archivos de configuración tengan los permisos correctos
+  if [ -f "/var/ossec/etc/ossec.conf" ]; then
+    chmod 644 /var/ossec/etc/ossec.conf
+  fi
+  
+  if [ -f "/var/ossec/etc/local_internal_options.conf" ]; then
+    chmod 644 /var/ossec/etc/local_internal_options.conf
+  fi
+  
+  if [ -f "/var/ossec/etc/client.keys" ]; then
+    chmod 644 /var/ossec/etc/client.keys
+  fi
 }
