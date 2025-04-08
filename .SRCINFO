@@ -1,6 +1,6 @@
 pkgbase = waybar-lyric-git
 	pkgdesc = Get lyrics of currently playling song on waybar
-	pkgver = 0.2.2.r1.gef9d27d
+	pkgver = 0.6.1.r0.g3d82e2b
 	pkgrel = 1
 	url = https://github.com/Nadim147c/waybar-lyric
 	arch = x86_64

@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 _pkgname=waybar-lyric
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r1.gef9d27d
+pkgver=0.6.1.r0.g3d82e2b
 pkgrel=1
 pkgdesc="Get lyrics of currently playling song on waybar"
 arch=('x86_64')
@@ -22,15 +22,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/${_pkgname}" || exit
-
-    go build -trimpath -ldflags "-s -w" -o "${_pkgname}"
+    make
 }
 
 package() {
     cd "$srcdir/${_pkgname}" || exit
-
-    install -Dm755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/${_pkgname}/README.md"
+    make install PREFIX="$pkgdir/usr/"
 }
 
