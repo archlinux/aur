@@ -1,16 +1,16 @@
 pkgbase = epherome-bin
-	pkgdesc = Powerful Minecraft Launcher
-	pkgver = 0.7.1
-	pkgrel = 11
+	pkgdesc = Powerful Minecraft Launcher.(Prebuilt version)
+	pkgver = 1.0.0_5
+	pkgrel = 1
 	url = https://epherome.com/
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = electron22
-	provides = epherome=0.7.1
+	depends = webkit2gtk
+	depends = libsoup
+	depends = openssl-1.1
+	provides = epherome=1.0.0_5
 	conflicts = epherome
-	source = epherome-0.7.1.deb::https://github.com/ResetPower/Epherome/releases/download/0.7.1/Epherome-0.7.1.deb
-	source = epherome.sh
-	sha256sums = 7dc740a18e73eb11aaa1ef7dad8342857ab043fb81112dac36129a1f895e49a5
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	source = epherome-1.0.0_5.deb::https://github.com/ResetPower/Epherome/releases/download/1.0.0-5/epherome_1.0.0-5_amd64.deb
+	sha256sums = 038dbf77d61b593f86cb16f19b8c1e1305ee308b3dbb6c9e83e66777be7160cf
 
 pkgname = epherome-bin
