@@ -1,7 +1,7 @@
 # Maintainer: Samuel Collins <samuel.collins@live.co.uk>
 pkgname=openfortivpn-webview-qt
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Application to perform the SAML single sing-on and easily retrieve the SVPNCOOKIE needed by openfortivpn - Qt version"
 arch=(x86_64)
 url="https://github.com/gm-vm/openfortivpn-webview"
@@ -10,8 +10,8 @@ depends=(qt6-base qt6-webengine)
 makedepends=(git)
 optdepends=(openfortivpn)
 provides=(openfortivpn-webview)
-source=("$pkgname::git+https://github.com/gm-vm/openfortivpn-webview.git#tag=v$pkgver-electron")
-sha256sums=('40435cb64019cc3f014519fb277b6312ad7b7af2ac539cd26255655838d3d649')
+source=("$pkgname::git+https://github.com/gm-vm/openfortivpn-webview.git#tag=v$pkgver-qt")
+sha256sums=('14429fafab081055573a11f0e51dada4c8b2cc21a3fbb3496861b2ec88846db9')
 
 build() {
 	cd "$pkgname/openfortivpn-webview-qt"
