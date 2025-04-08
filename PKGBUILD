@@ -8,7 +8,7 @@ arch=("i686" "x86_64")
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
 
-makedepends=("git" )
+makedepends=("git" "cmake")
 depends=()
 conflicts=("${_pkgname}")
 provides=()
@@ -22,13 +22,17 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_BUILDDIR=build
 
 build() {
-  cd "$srcdir/$pkgname"
-  make
+  _BUILDDIR="$srcdir/build"
+
+  cmake -S "$srcdir/$pkgname" -B "$_BUILDDIR" -DCMAKE_INSTALL_PREFIX=/usr -W no-dev -D CMAKE_BUILD_TYPE=None
+  cmake --build "$_BUILDDIR"
 }
 
 package() {
-  install -Dm755 "${srcdir}/$pkgname/main" "${pkgdir}/usr/bin/$_pkgname"
+  _BUILDDIR="$srcdir/build"
+  DESTDIR="$pkgdir" cmake --install "$_BUILDDIR"
+  # compatability to previous make based build binary name
+  ln -s "/usr/bin/whisper-cli" "$pkgdir/usr/bin/${_pkgname}"
 }
