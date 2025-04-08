@@ -1,14 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasker-permissions-git
 pkgver=0.2.0.r4.g29860cb
-pkgrel=2
-_electronversion=33
+pkgrel=3
+_electronversion=34
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
 license=('Apache-2.0')
-depends=('android-tools' "electron${_electronversion}")
-makedepends=('git' 'npm')
+depends=(
+  'android-tools'
+  "electron${_electronversion}"
+)
+makedepends=(
+  'git'
+  'npm'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/joaomgcd/Tasker-Permissions.git'
@@ -20,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd Tasker-Permissions
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
