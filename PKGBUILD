@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=harmony-bin
 _pkgname=Harmony
-pkgver=0.10.1
+pkgver=0.11.1
 _electronversion=33
 pkgrel=1
 pkgdesc="Music manager for old-school DJs.(Prebuilt version.Use system-wide electron)"
@@ -20,22 +20,22 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('57683da90d0f550f9d25f8f402e634fe51d2196162a44dca416560bdad763e59'
+sha256sums=('c220d0825bfb5f8d6eea5e12f0d7b2987cbfa9d820d47a16aa092a0a249dbde5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Audio;/AudioVideo;/g
-    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
