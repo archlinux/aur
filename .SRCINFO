@@ -1,6 +1,6 @@
 pkgbase = jome
-	pkgdesc = Emoji picker desktop application
-	pkgver = 1.1.0
+	pkgdesc = Keyboard centric emoji picker desktop application
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/eepp/jome
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = jome
 	makedepends = cmake>=3.30.0
 	makedepends = boost>=1.70.0
 	depends = qt5-base
-	source = https://github.com/eepp/jome/archive/refs/tags/v1.1.0.tar.gz
-	sha1sums = 71f1434bf39f821508746e8bebf5b234b0946441
+	source = https://github.com/eepp/jome/archive/refs/tags/v1.2.0.tar.gz
+	sha1sums = c81d4f4dd6196ce0fff6e32ac40c741a40ec1abc
 
 pkgname = jome

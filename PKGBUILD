@@ -1,15 +1,15 @@
 # Maintainer: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=jome
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Emoji picker desktop application'
+pkgdesc='Keyboard centric emoji picker desktop application'
 arch=(i686 x86_64)
 url=https://github.com/eepp/jome
 license=(MIT)
 depends=(qt5-base)
 makedepends=(qt5-base 'cmake>=3.30.0' 'boost>=1.70.0')
 source=(https://github.com/eepp/jome/archive/refs/tags/v${pkgver}.tar.gz)
-sha1sums=(71f1434bf39f821508746e8bebf5b234b0946441)
+sha1sums=(c81d4f4dd6196ce0fff6e32ac40c741a40ec1abc)
 
 build() {
   cmake -S "${srcdir}/${pkgname}-${pkgver}" -B build \
