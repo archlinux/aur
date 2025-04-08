@@ -1,6 +1,6 @@
 pkgbase = dooble-git
 	pkgdesc = Web browser based on QtWebEngine
-	pkgver = 2025.04.06.r1.ge39eea2
+	pkgver = 2025.04.07.r0.g8f234b4
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble
 	arch = x86_64

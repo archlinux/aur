@@ -1,7 +1,7 @@
 # Maintainer: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 pkgname=dooble-git
 _pkgname=Dooble
-pkgver=2025.04.06.r1.ge39eea2
+pkgver=2025.04.07.r0.g8f234b4
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine"
 arch=('x86_64')
@@ -48,7 +48,6 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     export DOOBLE_DICTIONARIES_DIRECTORY="${srcdir}/${pkgname//-/.}-dictionaries/Dictionaries"
     sed -i "s/\/usr\/bin\/${pkgname%-git}/${pkgname%-git} %U/g" Distributions/"${pkgname%-git}".desktop
-    #sed '38i\#include <QInputDialog>' -i Source/dooble.cc
     sed -i "/-Werror/d" "${pkgname%-git}.pro"
     qmake -o Makefile "${pkgname%-git}.pro"
     make
