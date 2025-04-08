@@ -2,7 +2,7 @@
 pkgname=ucm-desktop-bin
 _pkgname='UCM Desktop'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop app companion to the UCM CLI.(Prebuilt version)"
 arch=('x86_64')
 url="https://unison-lang.org/"
@@ -14,7 +14,7 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
-    'ucm'
+    'ucm-bin'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/app-v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
