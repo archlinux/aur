@@ -6,7 +6,7 @@ pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
 pkgver=0.5.r0.g7f4b314
-pkgrel=1
+pkgrel=2
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
@@ -31,7 +31,7 @@ build() {
           -S "${srcdir}/${_pkgname}/src/" \
           -B "${srcdir}/${_pkgname}/build/"
 
-    cmake --build "${srcdir}/${_pkgname}/build/"
+    cmake --build "${srcdir}/${_pkgname}/build/" --parallel
 }
 
 package() {
