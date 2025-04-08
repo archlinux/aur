@@ -1,4 +1,5 @@
-# Maintainer : Yvaniak <ewen @ philippot dot biz>
+# To the new maintainer : add yourself here as Maintainer
+# Contributor: Yvaniak <ewen @ philippot dot biz>
 # Contributor: Plague-doctor <plague at privacyrequired dot com >
 # Contributor: tongpu
 
