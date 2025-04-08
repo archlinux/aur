@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-bin
 _pkgname=Meru
-pkgver=3.0.0_beta.10
+pkgver=3.0.0_beta.12
 _electronversion=35
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Prebuilt version.Use system-wide electron)"
@@ -22,8 +22,8 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/timche/meru/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b0071cc1f4421e8b6b1513d65ea5606b9dd816d8936a7d1995fb74e69fc4cadd'
-            '056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5'
+sha256sums=('cbc76c8b145d4a78089f161a8f2ab50ca67a7070c95f0e7758a14480586d1e54'
+            '4dbc33fbe1a32f5114e56ac6f6a72e5269ec71cf99c62731ad233bcd875a06f5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "

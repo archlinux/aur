@@ -1,20 +1,20 @@
 pkgbase = meru-bin
 	pkgdesc = 📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Prebuilt version.Use system-wide electron)
-	pkgver = 3.0.0_beta.10
+	pkgver = 3.0.0_beta.12
 	pkgrel = 1
 	url = https://github.com/timche/meru
 	arch = x86_64
 	license = MIT
 	depends = electron35
-	provides = meru=3.0.0_beta.10
+	provides = meru=3.0.0_beta.12
 	conflicts = meru
 	options = !emptydirs
 	options = !strip
-	source = meru-3.0.0_beta.10.deb::https://github.com/timche/meru/releases/download/v3.0.0-beta.10/meru_3.0.0-beta.10_amd64.deb
-	source = LICENSE-3.0.0_beta.10::https://raw.githubusercontent.com/timche/meru/v3.0.0-beta.10/LICENSE
+	source = meru-3.0.0_beta.12.deb::https://github.com/timche/meru/releases/download/v3.0.0-beta.12/meru_3.0.0-beta.12_amd64.deb
+	source = LICENSE-3.0.0_beta.12::https://raw.githubusercontent.com/timche/meru/v3.0.0-beta.12/LICENSE
 	source = meru.sh
-	sha256sums = b0071cc1f4421e8b6b1513d65ea5606b9dd816d8936a7d1995fb74e69fc4cadd
-	sha256sums = 056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5
+	sha256sums = cbc76c8b145d4a78089f161a8f2ab50ca67a7070c95f0e7758a14480586d1e54
+	sha256sums = 4dbc33fbe1a32f5114e56ac6f6a72e5269ec71cf99c62731ad233bcd875a06f5
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = meru-bin
