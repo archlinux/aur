@@ -500,8 +500,6 @@ prepare() {
   ln -sfn /usr/bin/java third_party/jdk/current/bin/
   ln -sfn /usr/bin/clang-format buildtools/linux64
 
-  sed -i 's/adler2/adler/' build/rust/std/BUILD.gn
-
   # Electron specific fixes
   patch -Np1 -i "${srcdir}/jinja-python-3.10.patch" -d "third_party/electron_node/tools/inspector_protocol/jinja2"
   patch -Np1 -i "${srcdir}/use-system-libraries-in-node.patch"
