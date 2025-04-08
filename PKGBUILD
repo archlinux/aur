@@ -1,10 +1,11 @@
+# Maintainer: Balakrishnan Balasubramanian <aur@balki.me>
 #Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=phanpy-bin
 _pkgver=2025.03.22.85d964f
 pkgver=${_pkgver//-/.}
-pkgrel=11
+pkgrel=1
 pkgdesc="A minimalistic opinionated Mastodon web client"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/cheeaun/phanpy/"
 license=('MIT')
 provides=('phanpy')
@@ -16,7 +17,6 @@ package() {
   cd ${srcdir}
   install -d "${pkgdir}"/usr/share/webapps/phanpy/
   cp -r * "${pkgdir}"/usr/share/webapps/phanpy/
-  echo "${pkgver}" > "${pkgdir}"/usr/share/webapps/phanpy/version
-
+  rm "${pkgdir}"/usr/share/webapps/phanpy/phanpy-dist.tar.gz
 }
 
