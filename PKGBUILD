@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 provides=()
 
 source=("${pkgname}::git+https://github.com/ggerganov/whisper.cpp#branch=master")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 
 pkgver() {
