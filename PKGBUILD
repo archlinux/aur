@@ -3,8 +3,8 @@ pkgname=whatstron-bin
 _pkgname=Whatstron
 pkgver=1.0.1
 _electronversion=28
-pkgrel=3
-pkgdesc="Unofficial WhatsApp desktop client for Linux"
+pkgrel=4
+pkgdesc="Unofficial WhatsApp desktop client for Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/murilopereirame/Whatstron"
 license=('LicenseRef-custom')
@@ -18,21 +18,26 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('e30f658747bdf57f7e80f41a59bcf88c00c8d40cd75c669f3b4e81491370b719'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g;s|InstantMessaging|Network|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/InstantMessaging/Network/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
