@@ -1,0 +1,5 @@
+[ttf-monocode]
+source = "github"
+github = "aaronmbos/monocode"
+use_max_tag = true
+prefix = "v"
