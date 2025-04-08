@@ -1,0 +1,18 @@
+[Unit]
+Description=DeepSeek V3 Free Service API
+After=network.target
+
+[Service]
+Type=simple
+User=deepseek-free-api
+Group=deepseek-free-api
+EnvironmentFile=/etc/deepseek-free-api/config.env
+WorkingDirectory=/usr/lib/deepseek-free-api
+ExecStart=/usr/bin/node index.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

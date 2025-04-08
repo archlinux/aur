@@ -1,0 +1,15 @@
+post_install() {
+    mkdir -p "/var/log/deepseek-free-api"
+    mkdir -p "/var/tmp/deepseek-free-api"
+    mkdir -p "/var/lib/deepseek-free-api"
+    chown -R deepseek-free-api:deepseek-free-api "/var/log/deepseek-free-api"
+    chown -R deepseek-free-api:deepseek-free-api "/var/tmp/deepseek-free-api"
+    chown -R deepseek-free-api:deepseek-free-api "/var/lib/deepseek-free-api"
+}
+
+post_remove() {
+    # Remove the log and tmp directories
+    rm -rf "/var/log/deepseek-free-api"
+    rm -rf "/var/tmp/deepseek-free-api"
+    rm -rf "/var/lib/deepseek-free-api"
+}
