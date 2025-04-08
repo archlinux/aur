@@ -1,6 +1,6 @@
 pkgbase = zizmor-git
 	pkgdesc = A static analysis tool for GitHub Actions
-	pkgver = 1.0.1.r345.c6fef48
+	pkgver = 1.5.2.r520.d2fa211
 	pkgrel = 1
 	url = https://github.com/woodruffw/zizmor
 	arch = x86_64

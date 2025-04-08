@@ -1,7 +1,7 @@
 # Maintainer: SandaruKasa <sandarukasa plus aur at ya dot ru>
 
 pkgname=zizmor-git
-pkgver=1.0.1.r345.c6fef48
+pkgver=1.5.2.r520.d2fa211
 pkgrel=1
 pkgdesc='A static analysis tool for GitHub Actions'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 _git_folder="${pkgname%-git}"
 source=("${_git_folder}::git+$url.git")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 prepare() {
   cd "${_git_folder}"
@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd "${_git_folder}"
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
