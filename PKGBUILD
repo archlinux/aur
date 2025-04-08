@@ -2,29 +2,38 @@
 
 _pkgname=pwsafe
 pkgname=passwordsafe
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
 url="https://pwsafe.org/"
-license=('Artistic2.0')
+license=('Artistic-2.0')
 depends=('wxwidgets-gtk3' 'yubikey-personalization' 'xerces-c' 'qrencode' 'file')
-makedepends=('zip' 'libxt' 'cmake' 'git')
+makedepends=('zip' 'libxt' 'cmake')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'pwsafe' 'pwsafe-gui')
 source=(passwordsafe-$pkgver.tar.gz::https://github.com/pwsafe/pwsafe/archive/$pkgver.tar.gz
 	passwordsafe-$pkgver.tar.gz.sig::https://github.com/pwsafe/pwsafe/releases/download/$pkgver/$pkgver.tar.gz.sig)
-validpgpkeys=('C8876BE69A8EC6414C8C8729B131423D7F2F1BB9')  # http://pgp.mit.edu/pks/lookup?op=vindex&search=0xB131423D7F2F1BB9
-sha1sums=('58c15eac9e3e4088058182e5c059b33422aef4f4'
+# Rony Shapiro (PasswordSafe signing key) <ronys@pwsafe.org>
+# https://keyserver.ubuntu.com/pks/lookup?search=0xB131423D7F2F1BB9&fingerprint=on&op=index
+validpgpkeys=('C8876BE69A8EC6414C8C8729B131423D7F2F1BB9')
+sha1sums=('af7df61acea9f1a29ca47577215b279d76f89e56'
           'SKIP')
+
+prepare() {
+	cd $_pkgname-$pkgver
+	# prevent harmless messages about =3 overrides
+	sed -i '/_FORTIFY_SOURCE=2/d' ./CMakeModules/harden/harden-gcc.cmake
+}
 
 build() {
 	cd $_pkgname-$pkgver
 	mkdir -p build
 	cd build
+
 	cmake .. -DNO_GTEST=ON \
 		 -DCMAKE_INSTALL_PREFIX=/usr \
-		 -DCMAKE_BUILD_TYPE=Release
+		 -DCMAKE_BUILD_TYPE=None
 
 	make
 }
@@ -32,5 +41,6 @@ build() {
 package() {
 	cd $_pkgname-$pkgver
 	cd build
+
 	DESTDIR="$pkgdir" make install
 }
