@@ -1,17 +1,15 @@
-pkgbase = gnome-shell-extension-lockkeys-git
+pkgbase = gnome-shell-extension-lockkeys
 	pkgdesc = Lock key state indicator for GNOME Shell.
-	pkgver = r130.328c44f
+	pkgver = 68
 	pkgrel = 1
 	url = https://github.com/kazysmaster/gnome-shell-extension-lockkeys
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	makedepends = git
 	depends = gnome-shell
 	depends = hicolor-icon-theme
-	provides = gnome-shell-extension-lockkeys
-	conflicts = gnome-shell-extension-lockkeys
-	source = gnome-shell-extension-lockkeys::git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys
-	sha512sums = SKIP
+	source = gnome-shell-extension-lockkeys::git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git#commit=f00ebbb2811cb38b00d6985dfb8f91fbc3052f23
+	sha256sums = 6cd81c8f54992782fe69dca15b7194ab9f5abd1faf37e35a26fd747198901afe
+	sha512sums = f5dd6ec58e00982d6dd942042a10138089c4b62ed32aba767cc192e3a9f60e12786f230cf03be40a750c4f2633dfc0bce2d65cdefc7a7a643c0c96a6a4d7b527
 
-pkgname = gnome-shell-extension-lockkeys-git
-
+pkgname = gnome-shell-extension-lockkeys
