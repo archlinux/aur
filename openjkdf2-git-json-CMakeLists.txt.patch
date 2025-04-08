@@ -1,0 +1,10 @@
+diff --git a/3rdparty/json/CMakeLists.txt b/3rdparty/json/CMakeLists.txt
+index f20d5613..0414638d 100644
+--- a/3rdparty/json/CMakeLists.txt
++++ b/3rdparty/json/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ ##
+ ## PROJECT

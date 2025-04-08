@@ -42,6 +42,7 @@ source=("${pkgname}::git+https://github.com/shinyquagsire23/OpenJKDF2.git"
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/libsdl-org/SDL.git'
         'git+https://github.com/libsdl-org/SDL_mixer.git'
+        'openjkdf2-git-json-CMakeLists.txt.patch'
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -53,6 +54,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            '6b20a3f7795058e19bf3801aff1fe87384a6cac50bdb814f8ee80fb5e82cd076a4bf420984302fcc180c5c7f25d8ae94ee94dd5b4f444102569749d93fcdb904'
 )
 
 pkgver() {
@@ -62,6 +64,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}" || exit
+  patch -Np1 < ../openjkdf2-git-json-CMakeLists.txt.patch
 
   git submodule init lib/freeglut
   git submodule init lib/glew

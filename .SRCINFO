@@ -37,6 +37,7 @@ pkgbase = openjkdf2-git
 	source = git+https://github.com/glennrp/libpng.git
 	source = git+https://github.com/libsdl-org/SDL.git
 	source = git+https://github.com/libsdl-org/SDL_mixer.git
+	source = openjkdf2-git-json-CMakeLists.txt.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -47,5 +48,6 @@ pkgbase = openjkdf2-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = 6b20a3f7795058e19bf3801aff1fe87384a6cac50bdb814f8ee80fb5e82cd076a4bf420984302fcc180c5c7f25d8ae94ee94dd5b4f444102569749d93fcdb904
 
 pkgname = openjkdf2-git
