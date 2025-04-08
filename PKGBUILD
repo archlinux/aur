@@ -2,7 +2,7 @@
 
 pkgname=animeko-appimage
 _pkgname=animeko
-pkgver="4.8.0_beta03"
+pkgver="4.8.0"
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
