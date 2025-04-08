@@ -1,17 +1,17 @@
 # Maintainer: bkacjios < blackops7799 at gmail dot com >
 
 pkgname=inav-configurator-bin
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the INAV flight control system"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iNavFlight/inav-configurator"
 
-source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/8.0.0/INAV-Configurator_linux_x64_8.0.0.zip)
-sha256sums_x86_64=('f20f03d8b78ea641de057aad6c5c93da7cf1c7638f736600d573ba9d5680cee4')
+source_x86_64=(https://github.com/iNavFlight/inav-configurator/releases/download/8.0.1/INAV-Configurator_linux_x64_8.0.1.zip)
+sha256sums_x86_64=('7d980175ad6ed375749995e2ec4bf0c3b679445d9662e6f443c1c7111eef8c9d')
 
-source_aarch64=(https://github.com/iNavFlight/inav-configurator/releases/download/8.0.0/INAV-Configurator_linux_arm64_8.0.0.zip)
-sha256sums_aarch64=('b008f0f1a5c57646d74c20e6d81681a6004cb3c7a2496da03e4be6a1e8d1c310')
+source_aarch64=(https://github.com/iNavFlight/inav-configurator/releases/download/8.0.1/INAV-Configurator_linux_arm64_8.0.1.zip)
+sha256sums_aarch64=('d1f2e34ecf458ba91c9dd2d8254e489d0effb14f11a5b59349ae40bf790f2c61')
 
 provides=('inav-configurator')
 conflicts=('inav-configurator')
