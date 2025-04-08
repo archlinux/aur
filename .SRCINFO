@@ -1,16 +1,17 @@
 pkgbase = python-skia
 	pkgdesc = Python binding to Skia Graphics Library (wheel)
-	pkgver = 87.7
+	pkgver = 87.8
 	pkgrel = 1
 	url = https://github.com/kyamagu/skia-python
 	arch = x86_64
+	arch = ararch64
 	license = BSD-3-Clause
 	makedepends = python-pip
 	depends = fontconfig
 	depends = opengl-driver
 	depends = python
 	options = !strip
-	source = https://files.pythonhosted.org/packages/cp313/s/skia-python/skia_python-87.7-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = 424d1ebd3f74a0990e2718e5736cf9fd8eeb4c4a06cb2d532625fdad95a10da2
+	source = https://files.pythonhosted.org/packages/cp313/s/skia-python/skia_python-87.8-cp313-cp313-manylinux_2_28_x86_64.whl
+	sha256sums = 2e9bd721d8c6159639a397dd861d2144f795aea74c1c6426808167038549b31c
 
 pkgname = python-skia
