@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-jazzy-base
-pkgver=2024.12.23
-pkgrel=2
+pkgver=2025.04.07
+pkgrel=1
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -18,7 +18,6 @@ depends=(
     'git'
     'libyaml'
     'lttng-ust'
-    'orocos-kdl'
     'pybind11'
     'python'
     'python-colcon-common-extensions'
@@ -33,13 +32,18 @@ makedepends=(
   'python-rosinstall_generator'
   'python-vcstool'
 )
-conflicts=("ros2-${_rosdist_short}")
+conflicts=(
+  "ros2-${_rosdist_short}"
+  'orocos-kdl'  # Build failure in python_orocos_kdl_vendor
+)
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz"
+    "orocos_kdl_vendor.patch::https://github.com/ros2/orocos_kdl_vendor/pull/35.patch"
 )
-sha256sums=('f0bf2fb3988381a35bf28653bb8c0f7cfae3297759b322bad8dccb6b9b45a3c7'
-            'e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9')
+sha256sums=('2b8694d6773c1fb0767ad3438bf1d98ee6d002d750f32755e4476b19c93d46ae'
+            'e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9'
+            '896cca4533470216bf1be24daa6dd22ed781fab6f457919e8c2a56726e04aaab')
 
 prepare() {
     # Clone the repos
@@ -54,6 +58,10 @@ prepare() {
 
     # https://github.com/ros/urdfdom_headers/pull/79
     git -C "$srcdir/ros2/src/ros/urdfdom_headers" cherry-pick -n 94953f0bd332e7a9fc2b54c2179763a00d9ab603
+
+    # https://github.com/ros2/orocos_kdl_vendor/pull/35
+    git -C "$srcdir/ros2/src/ros2/orocos_kdl_vendor" checkout orocos_kdl_vendor/CMakeLists.txt
+    patch -d "$srcdir/ros2/src/ros2/orocos_kdl_vendor" -p1 < ${srcdir}/orocos_kdl_vendor.patch
 }
 
 build() {
