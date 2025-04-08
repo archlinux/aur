@@ -3,7 +3,7 @@
 pkgname=otf-kikai-chokoku-jis
 pkgver=0.301
 pkgrel=1
-pkgdesc="A standard font for sculpture standarized in JIS."
+pkgdesc="A standard font for sculpture standarized in JIS. 機械彫刻用標準書体フォント"
 arch=('any')
 url='https://font.kim'
 license=('custom')
