@@ -9,13 +9,22 @@ _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.5.6
 _polygraphy_ver=0.49.20
 _tensorflow_quantization_ver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
 license=('Apache-2.0' 'LicenseRef-NVIDIA-SOFTWARE-DEVELOPMENT-KITS')
-makedepends=('git' 'cmake' 'cuda' 'cudnn' 'patchelf' 'python' 'python-build' 'python-installer'
-             'python-onnx' 'python-setuptools' 'python-wheel')
+makedepends=(
+    'cmake'
+    'cuda'
+    'cudnn'
+    'git'
+    'python'
+    'python-build'
+    'python-installer'
+    'python-onnx'
+    'python-setuptools'
+    'python-wheel')
 source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
@@ -28,6 +37,7 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch'
         '030-tensorrt-fix-gpu-archs-list.patch'
+        '040-tensorrt-python-cmake4-fix.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
 sha256sums=('33be0e61e3bf177bbbcabb4892bf013f0c8ac71d2be73f2803848a382cb14272'
@@ -42,6 +52,7 @@ sha256sums=('33be0e61e3bf177bbbcabb4892bf013f0c8ac71d2be73f2803848a382cb14272'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
             '3bedc30fcfa6bdbae9f42cb66df8207655a3d4c901eb31dcd0186c834f619bcf'
             '901f4d365a15adf741262cdf9c4e8a07e73ae70854bd2fc90b1b80d0cb4d3fdf'
+            '12a0f7e9c6a86eefd9b365d23b027c6bc65a2284c75edc0398620bb8711419dd'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -72,6 +83,7 @@ prepare() {
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/030-tensorrt-fix-gpu-archs-list.patch"
+    patch -d TensorRT -Np1 -i "${srcdir}/040-tensorrt-python-cmake4-fix.patch"
 }
 
 build() {
@@ -81,6 +93,7 @@ build() {
         -DBUILD_SAMPLES:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DGPU_ARCHS:STRING='50 52 53 60 61 62 70 72 75 80 86 87 89 90 100 101 120' \
         -DONNX_BUILD_PYTHON:BOOL='ON' \
         -DPROTOBUF_VERSION:STRING="$_protobuf_ver" \
@@ -114,7 +127,11 @@ build() {
 }
 
 package_tensorrt() {
-    depends=('cuda' 'cudnn')
+    depends=(
+        'cuda'
+        'cudnn'
+        'gcc-libs'
+        'glibc')
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
@@ -125,15 +142,6 @@ package_tensorrt() {
     ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
     ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
     
-    local _file
-    for _file in "${pkgdir}/usr/bin"/* "${pkgdir}/usr/lib"/libnvinfer_{builder_resource,dispatch,lean}".so.${pkgver%.*}"
-    do
-        if readelf -l "$_file" | grep -A1 'GNU_STACK' | tail -n1 | grep -q 'E'
-        then
-            patchelf --clear-execstack "$_file"
-        fi
-    done
-    
     install -D -m644 TensorRT/NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 TensorRT-LICENSE-AGREEMENT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
@@ -142,12 +150,20 @@ package_tensorrt() {
 package_python-tensorrt() {
     pkgdesc+=' (python bindings and tools)'
     license+=('LicenseRef-Custom')
-    depends=('python' 'python-numpy' 'tensorrt')
-    optdepends=('python-onnx: for onnx_graphsurgeon python module'
-                'python-onnxruntime: for onnx_graphsurgeon and polygraphy python modules'
-                'python-protobuf: for polygraphy and tensorflow-quantization python modules'
-                'python-tensorflow-cuda: for polygraphy python module'
-                'python-tf2onnx: for tensorflow-quantization python module')
+    depends=(
+        'gcc-libs'
+        'glibc'
+        'python'
+        'python-numpy'
+        'tensorrt')
+    optdepends=(
+        'python-colored: for onnx_graphsurgeon and polygraphy python modules'
+        'python-ml-dtypes: for onnx_graphsurgeon python module'
+        'python-onnx: for onnx_graphsurgeon python module'
+        'python-onnxruntime: for onnx_graphsurgeon python module'
+        'python-protobuf: for polygraphy python modules'
+        'python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules'
+        'python-tf2onnx: for tensorflow-quantization python module')
     provides=("python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
               "python-polygraphy=${_polygraphy_ver}"
               "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
