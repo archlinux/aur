@@ -1,6 +1,6 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 _pkgname=whisper.cpp
-pkgname=${_pkgname}-git
+pkgname="${_pkgname}-git"
 pkgver=5a5c5dd
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
