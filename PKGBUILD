@@ -7,8 +7,8 @@
 
 pkgname=mtplayer
 _realname=MTPlayer
-_majorver=19
-_minorver=2025.03.01
+_majorver=20
+_minorver=2025.04.07
 pkgver=${_majorver}__${_minorver}
 pkgrel=1
 pkgdesc="Offers access to the Mediathek of several public tv stations from DE/AT/CH"
@@ -19,7 +19,7 @@ depends=('java-runtime>=17' 'ffmpeg')
 optdepends=('vlc: play videos directly from MTPlayer')
 source=("https://github.com/xaverW/${_realname}/releases/download/version-${_majorver}/${_realname}-${pkgver}.zip"
         $pkgname.desktop $pkgname.sh)
-sha256sums=('8ae7f144d14b9511f36e0d2924aa4ff0fd4aff59d54bbbaa2bc3ccf476331b7a'
+sha256sums=('1df4f5d85638503a1cdc3924f126f889e5502250c81ac9f691e89c9809a9dd43'
             '227d28958ef76fa26dfef5101cddf9a75f7b33c409f741826ae7d6974f172667'
             'e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30')
 
