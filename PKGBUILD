@@ -5,13 +5,13 @@
 
 pkgname=gnudatalanguage
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
 license=("GPL-2.0-or-later")
 depends=("eccodes" "expat" "fftw" "gcc-libs" "glibc" "glpk" "graphicsmagick" "gsl" "hdf4" "hdf5"
-         "libgeotiff" "libpng" "libtiff" "libtirpc" "openmpi" "proj" "python"
+         "libgeotiff" "libpng" "libtiff" "libtirpc" "libx11" "openmpi" "proj" "python"
          "readline" "shapelib" "udunits" "wxwidgets-common" "wxwidgets-gtk3" "zlib")
 makedepends=("cmake" "eigen" "python-numpy" "qhull")
 checkdepends=("openssh")
@@ -32,7 +32,7 @@ build() {
     cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DEIGEN3=ON -DFFTW=ON -DGLPK=ON -DGRAPHICSMAGICK=ON \
         -DGRIB=ON -DHDF5=ON -DHDF=ON -DHDFDIR=/opt/hdf4 -DLIBPROJ=ON -DMAGICK=OFF -DMPI=ON \
         -DNETCDF=OFF -DPYTHON=ON -DPYTHONVERSION=3 -DPYTHON_MODULE=OFF -DQHULL=ON -DREADLINE=ON \
-        -DSHAPELIB=ON -DUDUNITS2=ON ..
+        -DSHAPELIB=ON -DUDUNITS2=ON -DX11=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 
     make
 }
