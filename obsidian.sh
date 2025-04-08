@@ -17,5 +17,5 @@ elif [[ "$@" = "--actions share-files" ]]; then
 elif [[ "$@" = "--actions quit" ]]; then
 	portable --actions quit
 else
-	portable -- --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL --enable-wayland-ime --wayland-text-input-version=3 --ozone-platform-hint=auto
+	portable -- --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL --enable-wayland-ime --wayland-text-input-version=3 ${_flag}
 fi

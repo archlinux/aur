@@ -17,7 +17,7 @@ source=("obsidian.sh"
         "obsidian.desktop"
         "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
 )
-sha256sums=('a63c02ec9cfd20559917e7d7c3a474f0312bded948598c79c1e5def9671a8291'
+sha256sums=('999ffd4fbe2ac37301b71477548e8754053e7577e3aff79663df205fa44a7e8e'
             'c6d142c645153c961b9e438b0e355b216c58968730859f1d26bc6135723b975c'
             '88504345238b1142b43880d93cf8546993e18bdf1597074b4d4360d0ce22ca41'
             '5d5ab49d08b24f61ef290a73248be1821b06820e327bbbaa65cc80d671f83bfa')
