@@ -2,7 +2,7 @@
 # Contributer: lestb <gitcommitter at email dot ardentcoding dot com>
 
 pkgname=log2ram
-pkgver=1.7b1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="ramlog like for systemd (Put log into a ram folder)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 backup=('etc/log2ram.conf')
 optdepends=('rsync: for better performance')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/azlux/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('50be6c7b46273052129b5343bd2eaa16ca21057a5837df89c48d3e623e0c3d62')
+sha256sums=('d8094f4c1e11e8efa2403128b4c47fa4cc2bf820c5222ee21c4eecf63471e5ad')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = log2ram
 	pkgdesc = ramlog like for systemd (Put log into a ram folder)
-	pkgver = 1.7b1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/azlux/log2ram
 	arch = any
 	license = MIT
 	optdepends = rsync: for better performance
 	backup = etc/log2ram.conf
-	source = log2ram-1.7b1.tar.gz::https://github.com/azlux/log2ram/archive/refs/tags/1.7b1.tar.gz
-	sha256sums = 50be6c7b46273052129b5343bd2eaa16ca21057a5837df89c48d3e623e0c3d62
+	source = log2ram-1.7.2.tar.gz::https://github.com/azlux/log2ram/archive/refs/tags/1.7.2.tar.gz
+	sha256sums = d8094f4c1e11e8efa2403128b4c47fa4cc2bf820c5222ee21c4eecf63471e5ad
 
 pkgname = log2ram
