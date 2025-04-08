@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-a11y"
-pkgver="24.4.2"
+pkgver="25.4.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator for Accessibility Settings"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 makedepends=("cmake" "cmake-extras" "systemd" "intltool")
 depends=("accountsservice" "glibc" "glib2" "onboard" "orca" "espeak-ng" "dconf" "magnus" "libayatana-common" "libx11" "libxrandr" "hicolor-icon-theme")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("a6ea07545e3d60180cb2622b60bf78a3")
+md5sums=("5a5f25ef12f8d0f1290e52b74a92da80")
 
 build()
 {

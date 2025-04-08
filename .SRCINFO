@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-a11y
 	pkgdesc = Ayatana Indicator for Accessibility Settings
-	pkgver = 24.4.2
+	pkgver = 25.4.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-a11y
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = ayatana-indicator-a11y
 	depends = libx11
 	depends = libxrandr
 	depends = hicolor-icon-theme
-	source = ayatana-indicator-a11y-24.4.2.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-a11y/archive/24.4.2.tar.gz
-	md5sums = a6ea07545e3d60180cb2622b60bf78a3
+	source = ayatana-indicator-a11y-25.4.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-a11y/archive/25.4.0.tar.gz
+	md5sums = 5a5f25ef12f8d0f1290e52b74a92da80
 
 pkgname = ayatana-indicator-a11y
