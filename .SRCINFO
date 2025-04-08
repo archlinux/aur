@@ -1,0 +1,14 @@
+pkgbase = hash-sentinel
+	pkgdesc = A tool for quickly identifying users in Active Directory who share identical NT hashes (passwords)
+	pkgver = latest.r2.g365b18c
+	pkgrel = 1
+	url = https://github.com/evait-security/hash-sentinel
+	arch = x86_64
+	license = MIT
+	makedepends = crystal
+	makedepends = shards
+	makedepends = git
+	source = hash-sentinel::git+https://github.com/evait-security/hash-sentinel
+	sha256sums = SKIP
+
+pkgname = hash-sentinel
