@@ -1,4 +1,5 @@
-# Maintainer: Romain Porte <microjoe@microjoe.org>
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: Romain Porte <microjoe@microjoe.org>
 
 pkgname=vue
 pkgver=3.3.0
