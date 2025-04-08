@@ -1,3 +1,4 @@
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -5,8 +6,6 @@
 # Contributor: xduugu
 # Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Vesa Kaihlavirta
-# URL: https://github.com/trollixx/aur-packages
-# Upstream: https://projects.archlinux.org/svntogit/community.git/tree/trunk?h=packages/awesome
 
 _pkgname=awesome
 pkgname=${_pkgname}-git
