@@ -2,7 +2,7 @@
 
 _name=sardana
 pkgname=python-${_name}
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Instrument control and data acquisition system"
 arch=("any")
@@ -13,11 +13,12 @@ depends=(
   python-numpy python-h5py libibus python-pytest spyder
   python-scipy libblockdev python-pyqt5-datavisualization
   python-jsonpointer gobject-introspection-runtime
+  python-pydantic python-mock python-jsonpatch python-ruamel-yaml
 )
 optdepends=(gedit gst-editing-services gom libgexiv2)
 makedepends=(python-setuptools)
 source=("${_name}-${pkgver}.tar.gz::https://gitlab.com/sardana-org/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=("0a9fd0d96b310b4947f5a1d9b09d8afc5b7b446f74b41bd4b2c92858c3def831")
+sha256sums=("1ab49c266f6e3d3143ca267a342d9a844a417b7839de432430866f8f56422105")
 
 build() {
   cd "${_name}-${pkgver}"
