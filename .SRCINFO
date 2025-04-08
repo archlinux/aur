@@ -1,6 +1,6 @@
 pkgbase = verdi-git
 	pkgdesc = The elegant Wayland compositor
-	pkgver = r211.5bdd3b3
+	pkgver = r236.1e10997
 	pkgrel = 1
 	url = https://github.com/verdiwm/verdi
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = verdi-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
+	makedepends = clang
+	makedepends = lld
 	depends = libinput
 	provides = verdi
 	conflicts = verdi

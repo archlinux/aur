@@ -1,7 +1,7 @@
 # Maintainer: Matilde Morrone <aur at morrone dot dev>
 
 pkgname=verdi-git
-pkgver=r211.5bdd3b3
+pkgver=r236.1e10997
 pkgrel=1
 pkgdesc="The elegant Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/verdiwm/verdi"
 license=('Apache-2.0')
 groups=('verdi')
 depends=('libinput')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'clang' 'lld')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/verdiwm/verdi.git')
