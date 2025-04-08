@@ -2,12 +2,12 @@
 # Contributor: maz-1 < ohmygod19993@gmail.com >
 
 pkgname=unshield-git
-pkgver=1.4.2.r12.g148d510
+pkgver=1.6.2.r0.g51de441
 pkgrel=1
-pkgdesc="Extracts CAB files from InstallShield installers"
-arch=('i686' 'x86_64')
+pkgdesc="Extracts CAB files from InstallShield installers (development version)"
+arch=('x86_64')
 url="https://github.com/twogood/unshield"
-license=('MIT')
+license=('custom')
 depends=('zlib' 'openssl')
 makedepends=('cmake' 'git')
 provides=('unshield')
@@ -16,7 +16,7 @@ source=("git+https://github.com/twogood/unshield")
 md5sums=('SKIP')
 
 pkgver() {
-	cd unshield
+  cd unshield
   git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
