@@ -1,21 +1,21 @@
 # Author: Martin Stibor <martin.von.reichenberg@proton.me>
 
 pkgname='opera-extras'
-#opera_ver: 116.0.5366.21 (stable)
-#opera_chromium_ver: 131.0.6778.86 (old-stable/stable)
-#ffmpeg_chromium_ver: 131.0.6778.109 (old-stable/stable)
+#opera_ver: 117.0.5408.197 (Stable)
+#opera_chromium_ver: 132.0.6834.210 (Extented Release - Windows)
+#ffmpeg_chromium_ver: 132.0.6834.84 (Old-old-stable/Old-stable/Stable)
 _pkgname='nwjs-ffmpeg-prebuilt'
-pkgver=0.94.1
+pkgver=0.95.0
 pkgrel=1
-pkgdesc="Full-featured DRM playback support of FFmpeg for Opera web browser"
+pkgdesc="Full-featured DRM playback support of FFmpeg (NW.JS) for Opera web browser"
 arch=('x86_64')
-url="https=//chromium.googlesource.com/chromium/third_party/ffmpeg/"
+url="https://nwjs.io"
 license=('custom')
 depends=('opera')
-makedepends=('libarchive' 'lsb-release' 'nodejs' 'nodejs-nopt' 'npm')
+makedepends=('git' 'libarchive' 'lsb-release' 'ninja' 'nodejs' 'nodejs-nopt' 'npm')
 optdepends=('chromium-widevine: Complementary codec enabling a premium web video content on Chromium based web browsers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz" 'COPYING')
-md5sums=('71aa098a96184866bae54f5fdf77e569' 'c408a301e3407c3803499ce9290515d6')
+md5sums=('f4dcd82c44bd57928faea933013bbec1' 'c408a301e3407c3803499ce9290515d6')
 
 build() {
        npm i ${srcdir}/${_pkgname}-${pkgver}/
@@ -24,10 +24,10 @@ build() {
 }
 
 package() {
-       mkdir  -p "${pkgdir}/usr/lib/opera/lib_extra/"
-       bsdtar -xf "${srcdir}/build/out/${pkgver}-linux-x64.zip" \
-              -C "${pkgdir}/usr/lib/opera/lib_extra/"
+       install -d     "${pkgdir}/usr/lib/opera/lib_extra/"
+       bsdtar  -xf    "${srcdir}/build/out/${pkgver}-linux-x64.zip" \
+               -C     "${pkgdir}/usr/lib/opera/lib_extra/"
 
-       mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-       cp -a "./COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+       install -Dm644 "${srcdir}/COPYING" \
+               -t     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
