@@ -1,0 +1,21 @@
+pkgbase = openfga
+	pkgdesc = Relationship-based access control
+	pkgver = 1.8.9
+	pkgrel = 0
+	url = https://github.com/openfga/openfga
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	source = openfga-1.8.9.tar.gz::https://github.com/openfga/openfga/archive/refs/tags/v1.8.9.tar.gz
+	source = openfga.service
+	source = config.yaml
+	source = sysusers.conf
+	source = tmpfiles.conf
+	b2sums = c90b1282483264a342eb2c608c77e38d651303efe3ad4d1cbe0c1386148d02662d98cb624e9e28651cf53abe32b934a5ecef530b847a86f56cce0f61f240feda
+	b2sums = 7c755f75f83a8b06e6afea225a203c672d186e314d6f347c1949488743b47684b4078452857b8e430a736a8d62c2fb74a330abe2d39a25b031af08ebc29f83d9
+	b2sums = 0cf0c6824d844a53af528c4ac15785140299f9b1c6a3304940710d3f07a7a3346c74780e4bf80770bc15a61166d21b4b3db460d2770f9a9775cdfd8d77293a1e
+	b2sums = 1cba873bfeed213bc702c20106c284f3d93d54e23578754fbd67babfe1ff2861d29a0a563b45e58d2d0ebc063de8d0ff57ec3650f7f6b09952b8939b96615ed0
+	b2sums = 91de9f416bc8eb033ac57eb4f8064eb21414a568217725dbee2ae3cd787c4788950b66f327d8614c7afe53c57faa1cb82d1a4644d7d0678be33258bf284f8e2b
+
+pkgname = openfga
