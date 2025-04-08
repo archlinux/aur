@@ -1,0 +1,11 @@
+diff --git a/CMakeModules/build_CLBlast.cmake b/CMakeModules/build_CLBlast.cmake
+--- a/CMakeModules/build_CLBlast.cmake
++++ b/CMakeModules/build_CLBlast.cmake
+@@ -69,6 +69,7 @@
+       BUILD_BYPRODUCTS ${CLBlast_location}
+       CONFIGURE_COMMAND ${CMAKE_COMMAND} ${extproj_gen_opts}
+         -Wno-dev <SOURCE_DIR>
++        -DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5
+         -DCMAKE_CXX_COMPILER:FILEPATH=${CMAKE_CXX_COMPILER}
+         "-DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}"
+         -DOVERRIDE_MSVC_FLAGS_TO_MT:BOOL=OFF
