@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'webkit2gtk' 'python' 'imagemagick' 'python-dbus')
 makedepends=('git' 'meson' 'ninja')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f9702b84c7a251f2a5094d01410aafc02bc0f5e30eee8852a7ea5e6f2288d03f')
+sha256sums=('ba327a058cc6342d1198fc4c282f65a88bf0b84a2afdb2377344835e4ef6f4da')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
