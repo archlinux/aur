@@ -22,10 +22,6 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$pkgname"
-}
-
 _BUILDDIR=build
 
 build() {
