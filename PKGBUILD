@@ -6,7 +6,7 @@ pkgname=(
 )
 pkgbase=ctranslate2
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
@@ -37,7 +37,7 @@ makedepends=(
 #  'python-yaml'
 #)
 options=('!lto')  ## lto-wrapper fails with CUDA options enabled
-source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=$pkgver"
+source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
         'git+https://github.com/google/googletest.git'
