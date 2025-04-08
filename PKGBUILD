@@ -1,7 +1,7 @@
 # Maintainer: Kino <cybao292261@163.com>
 
 pkgname=ros2-jazzy
-pkgver=2024.12.23
+pkgver=2025.04.07
 pkgrel=1
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/jazzy/"
