@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 _app_id="com.mtkennerly.$pkgname"
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
@@ -30,8 +30,8 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$url/releases/download/v$pkgver/$pkgname-v$pkgver-legal.zip")
-sha256sums=('c5aa44b95326028df48c14efd9d561991c0eb19c66bb72b8f21394a04439d1fe'
-            '373461e8485eee6e1cc1cf02ff2db5014d49505fd8d5bd21617fb14ec1953c56')
+sha256sums=('dacff74da8ee67d30984df4adcff82b5ad625d3b001d5b4b68b2bbcc2553edcb'
+            '8686a57c70c49b0b0efbcadfafbae2e0b934c2e416603cbf8c7a8b9d8f31dd0b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -44,7 +44,7 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
