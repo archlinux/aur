@@ -1,17 +1,17 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=3.0.3
+pkgver=2.26.2
 pkgrel=1
 pkgdesc="Installer/Updater/Launcher for Northstar"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 arch=('x86_64')
-depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk')
-makedepends=('cargo' 'git' 'npm')
+depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk-4.1')
+makedepends=('cargo' 'npm')
 options+=('!lto')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('942f809d152ccf78e599426f48f88c8c1a8bf06340d44277824caee349511434')
+sha256sums=('da695ebbc46bb5fbc71e0249e7668e1d0c644e6c2eff58f7726432b636319646')
 
 prepare() {
 # Shortcut
