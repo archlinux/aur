@@ -1,0 +1,4 @@
+[dcadec]
+source = "git"
+git = "https://github.com/foo86/dcadec.git"
+prefix = "v"
