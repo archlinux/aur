@@ -9,7 +9,7 @@ url="https://dcmfx.github.io"
 license=('AGPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dcmfx/dcmfx/archive/v$pkgver.tar.gz")
 sha256sums=('d5da431c9b9885621a21aaa4fb54f2b4bd5c1c0eb3e88eac62f49bf9c940e5ba')
-makedepends=('cargo' 'cmake' 'nasm')
+makedepends=('cargo' 'clang' 'cmake' 'nasm')
 depends=('gcc-libs' 'glibc' 'x264' 'x265')
 options=('!lto')
 
