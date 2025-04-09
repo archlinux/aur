@@ -1,13 +1,13 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
-source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64-clang.tar.xz")
-source_aarch64=("dwarfs-${pkgver}-Linux-aarch64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-aarch64-clang.tar.xz")
+source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64.tar.xz")
+source_aarch64=("dwarfs-${pkgver}-Linux-aarch64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-aarch64.tar.xz")
 arch=('x86_64' 'aarch64')
-license=('GPL3')
+license=('GPL3 AND MIT')
 depends=(
   'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash'
   'lz4' 'xz' 'zstd' 'libarchive'
@@ -15,11 +15,11 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('adc3fc58d36848a312e846f0e737056b7e406894e24fa20d80fcc476ca7f401f')
-sha256sums_aarch64=('7c0835b89871e48025b2e30577fb1b3c39927f9b86940dd3c5d7c41871e12533')
+sha256sums_x86_64=('4fd1e23a97d871d0536b818c11a58c58859627e347d10c1e211522c8dd56b328')
+sha256sums_aarch64=('15867a3e1b5a310ea27700806ce7d504c912de8741dddbb40430eee419c4532f')
 
 package() {
-  cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch-clang"
+  cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch"
 
   install -Dm755 bin/dwarfsck "${pkgdir}/usr/bin/dwarfsck"
   install -Dm755 bin/dwarfsextract "${pkgdir}/usr/bin/dwarfsextract"
