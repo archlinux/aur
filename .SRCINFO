@@ -1,6 +1,6 @@
 pkgbase = ruby-selenium-webdriver
 	pkgdesc = A browser automation framework and ecosystem
-	pkgver = 4.29.1
+	pkgver = 4.31.0
 	pkgrel = 1
 	url = https://github.com/SeleniumHQ/selenium
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ruby-selenium-webdriver
 	depends = ruby-rexml
 	depends = ruby-rubyzip
 	depends = ruby-websocket
-	noextract = selenium-webdriver-4.29.1.gem
+	noextract = selenium-webdriver-4.31.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/selenium-webdriver-4.29.1.gem
-	b2sums = 9cb55c86219f468330238064ef37ac1518d3fcdb5abab03ca37d97e101501c677fed73bc348d370698dbc4ffbe3199cdbf104e554b81bf3e1f6616a1482588d8
+	source = https://rubygems.org/downloads/selenium-webdriver-4.31.0.gem
+	b2sums = a0445455aba8b0c5d3a850cc67c623f4d2cf55254e1067ce8ade3a7837a14b8cc906758c5e88aa9b23e2c481d9d3493cf675c9dce62797ac418252dcc280d9cc
 
 pkgname = ruby-selenium-webdriver
