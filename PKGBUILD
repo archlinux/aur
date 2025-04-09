@@ -6,6 +6,7 @@ depends=('ffmpeg' 'gtk4>=4.12.0' 'gettext' 'sqlite' 'glib2' 'gobject-introspecti
 url="https://github.com/nikolaizombie1/waytrogen"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/"$pkgver".tar.gz")
 pkgrel=1
+conflicts=('waytrogen-bin')
 makedepends=('meson' 'ninja' 'rust' 'cargo' 'gcc' )
 optdepends=('hyprpaper: hyprland wallpaper setter'
 	    'swaybg: sway wallpaper setter'
