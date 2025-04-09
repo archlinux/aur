@@ -1,19 +1,18 @@
 pkgbase = wavy-bin
-	pkgdesc = A simple protocol testing tool that supports various connection types(now serial port only).
+	pkgdesc = A simple protocol testing tool that supports various connection types(now serial port only).(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/novrain/wavy
 	arch = x86_64
 	license = MIT
 	depends = electron28
-	depends = java-runtime
 	provides = wavy=1.0.1
 	conflicts = wavy
-	source = wavy-1.0.1.deb::https://github.com/novrain/wavy/releases/download/1.0.1/wavy_1.0.1_amd64.deb
+	source = wavy-1.0.1.rpm::https://github.com/novrain/wavy/releases/download/1.0.1/wavy-1.0.0-1.x86_64.rpm
 	source = LICENSE-1.0.1::https://raw.githubusercontent.com/novrain/wavy/1.0.1/LICENSE
 	source = wavy.sh
-	sha256sums = 8a16bdec4c84fb69ac3124e093b13a485e09aa5980b8104a0f40a158f965452c
+	sha256sums = b4015812bfa72fb8b453c1130291d3312b00a4b536ff3108967da574b9d402ca
 	sha256sums = 9f1a32e4c028facd2d42a3e5bb8c0bf6af386e3d48d2c205bb253694826f57be
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = wavy-bin
