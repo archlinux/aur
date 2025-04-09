@@ -1,6 +1,6 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=docs-data-alpinejs-git
-pkgver=0.0.1
+pkgver=0.0.0
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make install BASEDIR="$pkgdir"
+  make install BASEDIR="$pkgdir" SRCDIR="$srcdir"
 }

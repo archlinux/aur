@@ -1,6 +1,6 @@
 pkgbase = docs-data-alpinejs-git
 	pkgdesc = AlpineJs offline documentation data for docs viewer
-	pkgver = 0.0.1
+	pkgver = 0.0.0
 	pkgrel = 0
 	url = https://gitverse.ru/naierchou/docs-data-alpinejs
 	arch = any
