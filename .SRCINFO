@@ -1,0 +1,12 @@
+pkgbase = binfmt-love
+	pkgdesc = Register LOVE applications
+	pkgver = 1
+	pkgrel = 2
+	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
+	arch = any
+	license = Unlicense
+	depends = love
+	source = loveapp.conf
+	md5sums = d61810ce9d54ba84f85e33813edfecd9
+
+pkgname = binfmt-love
