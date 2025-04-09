@@ -2,7 +2,7 @@
 
 _name=pyjess
 pkgname=python-${_name}
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to Jess, a 3D template matching software."
 url="https://github.com/althonos/pyjess"
@@ -11,7 +11,7 @@ license=("MIT")
 depends=('python' 'python-pyopal' 'python-scoring-matrices')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(93777c121892e86ef33e266feb057850309d4423edbfbdcab13a97c081ba27ea)
+sha256sums=(040d7a31902c777886f60f07a4acfb20556cf02868e8604c5a64a9eb0f7cf096)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
