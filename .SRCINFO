@@ -1,0 +1,16 @@
+pkgbase = vyai
+	pkgdesc = A lightweight CLI tool to interact with the Gemini API from the terminal.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/vybraan/vyai
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = go
+	depends = git
+	provides = vyai
+	source = git+https://github.com/vybraan/vyai
+	md5sums = SKIP
+
+pkgname = vyai
