@@ -2,12 +2,12 @@
 _base=nutils
 pkgname=python-${_base}
 pkgdesc="Numerical Utilities for Finite Element Analysis"
-pkgver=8.8
+pkgver=9.0
 pkgrel=1
 arch=(any)
 url="https://github.com/evalf/${_base}"
 license=(MIT)
-depends=(python-appdirs python-bottombar python-numpy python-nutils-poly python-psutil python-stringly python-treelog)
+depends=(python-appdirs python-numpy python-nutils-poly python-stringly python-treelog)
 makedepends=(python-build python-installer python-flit-core) # python-wheel
 checkdepends=(python-pytest python-matplotlib graphviz python-scipy intel-oneapi-mkl python-meshio)
 optdepends=('python-scipy: for Scipy matrix backend support'
@@ -15,7 +15,7 @@ optdepends=('python-scipy: for Scipy matrix backend support'
   'python-matplotlib: for interpolation support'
   'python-meshio: for parsing gmsh files')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c03ee685025f7db4e9df98ceb3818f40296082f4dd953fc45a4a70aea122297b5e9c903a5ed9fa2e880c1e34d16bd5f6dfda314d97fc6993e23096ce54503271')
+sha512sums=('ad4ea096e329c7ed9d09eff2f341ddd303b86943a71ddf7fe0094fe987188ffc380b666c816d1ec5f29b6202d48ef6072424ea947afde875f46cf8ab6bca8207')
 
 build() {
   cd ${_base}-${pkgver}
