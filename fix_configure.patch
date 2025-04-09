@@ -1,6 +1,6 @@
 diff -Naur a/scangearmp/configure.in b/scangearmp/configure.in
---- a/scangearmp/configure.in  2010-02-17 03:22:34.000000000 +0100
-+++ b/scangearmp/configure.in  2013-01-12 17:45:51.574334791 +0100
+--- a/scangearmp/configure.in   2012-02-10 00:53:01.000000000 +0000
++++ b/scangearmp/configure.in   2025-04-09 00:02:31.157520901 +0000
 @@ -21,14 +21,12 @@
  AC_SUBST(enable_libpath)
 
@@ -16,3 +16,17 @@ diff -Naur a/scangearmp/configure.in b/scangearmp/configure.in
  AC_HEADER_STDC
  AC_PROG_RANLIB
 
+@@ -37,8 +35,12 @@
+ AC_SUBST(PACKAGE_CFLAGS)
+ AC_SUBST(PACKAGE_LIBS)
+
+-gimp_modules="gimp-2.0 >= 2.0.0"
+-PKG_CHECK_MODULES(GIMP, [$gimp_modules])
++AC_MSG_CHECKING([for GIMP 3 or GIMP 2])
++PKG_CHECK_MODULES(GIMP, [gimp-3.0 >= 3.0.0], [AC_MSG_RESULT([GIMP 3 found])], [
++  PKG_CHECK_MODULES(GIMP, [gimp-2.0 >= 2.0.0], [AC_MSG_RESULT([GIMP 2 found])], [
++    AC_MSG_ERROR([Could not find GIMP 3 or GIMP 2])
++  ])
++])
+ AC_SUBST(GIMP_CFLAGS)
+ AC_SUBST(GIMP_LIBS)

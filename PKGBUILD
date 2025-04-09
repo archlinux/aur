@@ -9,7 +9,7 @@ _id=405
 
 pkgname=scangearmp-${_name}
 pkgver=2.00
-pkgrel=3
+pkgrel=4
 _pkgver=2.00-1
 pkgdesc="Canon Scanner Driver (for ${_name} series)"
 url="http://support-my.canon-asia.com/contents/MY/EN/0100470802.html"
@@ -27,7 +27,7 @@ source=(
 md5sums=(
     'ccd538e1333bf34aa83900f093ecd9eb'
     '5fd4f2f00aad11ff108a2c642cf1a7c1'
-    '6ff76bfcfa4b4021e47677882772c895'
+    '4418bc11bb4b761cc6fcfb3659ac8f4c'
     'cedd3b24a29500813f4e0f81f9abca0e'
 )
 
@@ -97,8 +97,10 @@ package() {
     ln -s libcncpmslld${_id}.so.2.0.0 libcncpmslld${_id}.so
 
     # Make scangearmp usable from gimp
-    install -d -m 0755 ${pkgdir}/usr/lib/gimp/2.0/plug-ins/
-    ln -s /usr/bin/scangearmp ${pkgdir}/usr/lib/gimp/2.0/plug-ins/
+    local gimp_version="$(gimp --version | sed -En 's/[^0-9]*//p')"
+    local gimp_lib_dir="${pkgdir}/usr/lib/gimp/${gimp_version:0:1}.0/plug-ins/"
+    install -d -m 0755 $gimp_lib_dir
+    ln -s /usr/bin/scangearmp $gimp_lib_dir
 
     # Install .tbl and .dat files
     install -D -m 0755 ${srcdir}/scangearmp-source-${_pkgver}/${_id}/cnc*.tbl ${pkgdir}/usr/lib/bjlib/
