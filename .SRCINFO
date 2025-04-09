@@ -1,7 +1,7 @@
 pkgbase = lib32-libcue
 	pkgdesc = Parses so-called cue sheets and handles the parsed data (32-bit)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lipnitsk/libcue
 	arch = x86_64
 	license = GPL-2.0-only
@@ -9,6 +9,7 @@ pkgbase = lib32-libcue
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libcue>=2.3.0
+	provides = libcue.so
 	source = libcue-2.3.0.tar.gz::https://github.com/lipnitsk/libcue/archive/refs/tags/v2.3.0.tar.gz
 	sha512sums = fe2c39cc9794ac36c0706405e0432bab23228d343ba4e3395220d5b2a2ebf8b3c97e71d76a628f9144977c0dd56636f78d0c2d1f9f2b0d4068a837a258f035b6
 
