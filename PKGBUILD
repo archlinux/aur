@@ -1,8 +1,8 @@
 # Maintainer: Raimar Bühmann <raimar_at_buehmann dot de>
 
 pkgname=python-elitech-git
-pkgver=0.0.1.r18.20250325
-pkgrel=2
+pkgver=0.0.1.r18.20250407
+pkgrel=1
 pkgdesc="Command line tool and Python library for Elitech data logger"
 arch=('any')
 url="https://github.com/OpenHelios/python-elitech/"
