@@ -1,0 +1,16 @@
+pkgbase = whitesur-wallpapers-git
+	pkgdesc = macOS wallpapers which will change according to time
+	pkgver = r15.5c1d7ca
+	pkgrel = 1
+	url = https://github.com/vinceliuice/WhiteSur-wallpapers
+	arch = any
+	license = MIT
+	makedepends = git
+	source = whitesur-wallpapers-git::git+https://github.com/vinceliuice/WhiteSur-wallpapers.git
+	sha256sums = SKIP
+
+pkgname = 1080p-whitesur-wallpapers-git
+
+pkgname = 2k-whitesur-wallpapers-git
+
+pkgname = 4k-whitesur-wallpapers-git
