@@ -2,7 +2,7 @@
 # Contributer: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=dosbox-staging
-pkgver=0.82.0
+pkgver=0.82.1
 pkgrel=1
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
