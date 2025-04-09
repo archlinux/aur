@@ -12,6 +12,7 @@ pkgbase = mewline-git
 	depends = gnome-bluetooth-3.0
 	depends = dart-sass
 	depends = gray-git
+	depends = fabric-cli-git
 	depends = tesseract
 	depends = tesseract-data-eng
 	depends = tesseract-data-rus
