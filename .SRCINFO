@@ -1,0 +1,12 @@
+pkgbase = pyinstxtractor-git
+	pkgdesc = PyInstaller Extractor
+	pkgver = r61.bb936f9
+	pkgrel = 1
+	url = https://github.com/extremecoders-re/pyinstxtractor
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	source = git+https://github.com/extremecoders-re/pyinstxtractor.git
+	sha256sums = SKIP
+
+pkgname = pyinstxtractor-git
