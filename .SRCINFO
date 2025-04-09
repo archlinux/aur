@@ -1,6 +1,6 @@
 pkgbase = tserili-git
 	pkgdesc = Bible reader for modules of MyBible mobile application
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 0
 	url = https://gitverse.ru/naierchou/tserili
 	arch = any

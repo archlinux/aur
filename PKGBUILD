@@ -1,6 +1,6 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=tserili-git
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
@@ -21,7 +21,6 @@ pkgver() {
 }
 
 package() {
-  PREFIX="/usr/local"
   cd "$srcdir/${pkgname%-git}"
   make install BASEDIR="$pkgdir"
 }
