@@ -25,5 +25,5 @@ package() {
     uv pip install pyinstaller
     pyinstaller -F pyinstxtractor_ng.py --name pyinstxtractor-ng
 
-    install -Dm644 "${srcdir}/${_pkgname}/dist/${_main}" "${pkgdir}/usr/bin/${_main}"
+    install -Dm755 "${srcdir}/${_pkgname}/dist/${_main}" "${pkgdir}/usr/bin/${_main}"
 }
