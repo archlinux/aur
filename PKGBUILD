@@ -7,19 +7,19 @@ pkgbase=wordnet
 pkgname=(wordnet-common wordnet-progs)
 pkgver=3.1
 _srcver=3.0
-pkgrel=10
+pkgrel=11
 arch=('i686' 'x86_64')
 url="https://wordnet.princeton.edu/"
 license=("LicenseRef-custom")
 depends=('python' 'tk')
 source=(
   #"https://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
-  "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}-38.debian.tar.xz"
+  "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}-39.debian.tar.xz"
   "http://deb.debian.org/debian/pool/main/w/wordnet/wordnet_${_srcver}.orig.tar.gz"
   "https://wordnetcode.princeton.edu/wn${pkgver}.dict.tar.gz"
   wordnet.desktop
   wordnet.png)
-sha256sums=('84a0d648d879bca4b8514a24176260af7cecc3581a39980c6e1304c8ab641a53'
+sha256sums=('0e3001b38c6f77aaa276deff6276c9bbcb31dd17f32a9d2ee30e806bb4315c6e'
             '73572005ef8eb15be48ea1010d18082b80bfbf8684b78ce64bc3abf11db1f95f'
             '3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a'
             '10a4011b3d9705b2b0a1f496b33d926d4be21439c63f039b871d93f2d143ed0c'
