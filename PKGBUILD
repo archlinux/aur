@@ -23,7 +23,6 @@ makedepends=(
 provides=('obs-plugin-input-overlay')
 conflicts=(
 	'obs-plugin-input-overlay'
-	'obs-plugin-input-overlay-bin'
 )
 options=()
 source=('input-overlay::git+https://github.com/univrsal/input-overlay.git#branch=master')

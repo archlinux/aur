@@ -14,7 +14,6 @@ pkgbase = obs-plugin-input-overlay-git
 	depends = libuiohook
 	provides = obs-plugin-input-overlay
 	conflicts = obs-plugin-input-overlay
-	conflicts = obs-plugin-input-overlay-bin
 	source = input-overlay::git+https://github.com/univrsal/input-overlay.git#branch=master
 	sha256sums = SKIP
 
