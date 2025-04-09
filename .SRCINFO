@@ -1,6 +1,6 @@
 pkgbase = python-fortranformat
 	pkgdesc = Mimics Fortran textual IO in Python
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/brendanarnold/py-fortranformat
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-fortranformat
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = fortranformat-2.0.2.tar.gz::https://github.com/brendanarnold/py-fortranformat/archive/v2.0.2.tar.gz
-	sha512sums = fc2dd208d92b4e4d62e6507b0406d6fb35d2a1af52f0e3aa488be917bf6ba05cf679388451f0bdea6aa58b2f4161aa0c9572c0bc838ebf5bd9a365c0eed9c117
+	source = fortranformat-2.0.3.tar.gz::https://github.com/brendanarnold/py-fortranformat/archive/v2.0.3.tar.gz
+	sha512sums = e6a02c32f65b55bd7524d36e2fbcd7479d333db828a3d5a184b0a110369223d8335bade43e1882d261b8a1377e3e97bcd1e505992344523d5eb6cbea3cefe359
 
 pkgname = python-fortranformat

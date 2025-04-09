@@ -1,0 +1,5 @@
+[python-fortranformat]
+source = "github"
+github = "brendanarnold/py-fortranformat"
+use_max_tag = "true"
+prefix = "v"
