@@ -1,8 +1,8 @@
-# Maintainer : Nikolai Rodionov <allanger@zohomail.com>
+# Maintainer : Nikolai Rodionov <allanger@badhouseplants.net>
 
 _real_name=helm-git
 pkgname=${_real_name}-plug
-pkgver=0.15.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Helm Plugin - Install Helm Charts strait from Git repositories "
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/aslafy-z/helm-git"
 license=('MIT')
 makedepends=('nodejs' 'npm')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('e5c9d3804dc86f93fa42d30839a96943b98a711c1e64181162f8cdaac6057017df90fae495ad9cdc9a3ea07b3802132e4e782c88f3be50ea6eebe6f4d3220cae')
+sha512sums=('86aa322083def4f0a5284a8caeebbd548fa9f03b13aca3820d18a3e1033d9d06f3f41ba08fc36fa9ec44a625068065ddfde0c7ac45f84110aa1c2aa94b077bb9')
 srcdir=${_real_name}-${pkgver}
 
 package()
