@@ -63,7 +63,7 @@ pkgbase = waytrogen-bin
 	optdepends = mpvpaper: animated wallpapers using mpv
 	optdepends = swww: wallpaper setter with transitions
 	source = https://github.com/nikolaizombie1/waytrogen/releases/download/0.7.2/waytrogen_0.7.2_amd64
-	source = waytrogen-0.7.2.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.7.2.tar.gz
+	source = waytrogen-bin-0.7.2.tar.gz::https://github.com/nikolaizombie1/waytrogen/archive/refs/tags/0.7.2.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
 
