@@ -114,6 +114,7 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'python-pyscipopt: SCIP mixed integer linear programming backend'
             'rubiks: Rubiks cube algorithms'
             'sage-data-cunningham_tables: list of prime numbers in the Cunningham table'
+            'sage-notebook-exporter: convert flask notebooks to Jupyter'
             'sagemath-doc: HTML documentation'
             'sagemath-giac: giac integration backend'
             'shared_meataxe: faster matrix arithmetic over finite fields'
@@ -125,6 +126,9 @@ makedepends=(bliss
              cython
              git
              mcqd
+             meson-python
+             python-build
+             python-installer
              python-jinja
              python-pkgconfig
              python-setuptools
@@ -137,13 +141,6 @@ source=(git+https://github.com/sagemath/sage#branch=develop
         latte-count.patch)
 sha256sums=('SKIP'
             'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
-_pkgs=(standard
-       bliss
-       coxeter3
-       mcqd
-       meataxe
-       sirocco
-       tdlib)
 
 pkgver() {
   cd sage
@@ -155,34 +152,19 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
-
-  ./bootstrap
 }
 
 build() {
-  export SAGE_NUM_THREADS=$(($(nproc)/2))
-  export PYTHONPATH="$PWD"/sage/src
-
-  for _pkg in ${_pkgs[@]}; do
-    cd "$srcdir"/sage/pkgs/sagemath-$_pkg
-    python setup.py build
-  done
+  cd sage
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  for _pkg in ${_pkgs[@]}; do
-    cd "$srcdir"/sage/pkgs/sagemath-$_pkg
-    python setup.py install --root="$pkgdir" --optimize=1
-  done
-
-# fix symlinks to assets
-  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
-  for _i in $(ls "$srcdir"/sage/src/sage/ext_data/notebook-ipython); do
-    rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
-    ln -s $_pythonpath/sage/ext_data/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
-  done
+  cd sage
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
 # adjust threejs version
+  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   rm "$pkgdir"$_pythonpath/sage/ext_data/threejs/threejs-version.txt
   ln -s /usr/share/threejs-sage/version "$pkgdir"$_pythonpath/sage/ext_data/threejs/threejs-version.txt
 }
