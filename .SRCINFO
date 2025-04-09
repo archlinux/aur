@@ -1,13 +1,14 @@
 pkgbase = lib32-libdvdcss
 	pkgdesc = Portable abstraction library for DVD decryption (32 bit)
 	pkgver = 1.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.videolan.org/developers/libdvdcss.html
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libdvdcss>=1.4.3
+	provides = libdvdcss.so
 	source = libdvdcss-1.4.3.tar.bz2::https://download.videolan.org/pub/libdvdcss/1.4.3/libdvdcss-1.4.3.tar.bz2
 	sha256sums = 233cc92f5dc01c5d3a96f5b3582be7d5cee5a35a52d3a08158745d3d86070079
 
