@@ -1,7 +1,7 @@
 #Maintainer: Alessandro Bernardello <aleberna at erine dot eu>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=glance
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="A self-hosted dashboard that puts all your feeds in one place"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'riscv64' 'ppc64' 'ppc64le' 'mips' 'mips64' 'mips64el' 'mipsel')
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/glanceapp/glance/archive/re
         "tmpfiles.conf"
 )
 backup=('etc/glance.yml')
-b2sums=('04c8c4c00f5c2e1f886c646048530957aeb03212ea96f852a1d3cfa6568b5f337fc1fb85b1989f77e1b69af6935f8aa5c3ca144e0ff80b26726f6b7bb3bc6b5e'
+b2sums=('51fe716e329abd75668891fc1a05feeaa74a7a94db9e3a14389bcc09047e1792a2890432fb2ebbb444d0730adcc756a0eb73e40b43b04d3d720fb70c6e0554ff'
         '6c9f854855cf366eb47847f90c8ed38c531a71ef329575863cd570c5dc46849e5f34ae6549ec214652c1413debdf512646775fd163e149b5c89e99511644edf2'
         '4fc636320adf8b7810bd3b4786a6d30f848f6e183a1e351dc3780ea4d66c72ebb96f4fc6e9ed13277a385cbfdd3c07d5e1ec05dc0b12afc3b69270a3c5b7e971'
         'c77dfe04cf5b2f59e919e6dfc5fd85709d5c4bf0f1d83185c15efad2072b6a1389514df5a4ff80920b73690588d373b49e59a36fef2f51fba5bdc06e177dd46e')
