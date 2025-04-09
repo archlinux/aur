@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.256.02
-pkgrel=7.95
+pkgrel=7.97
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -27,6 +27,7 @@ source=('nvidia-drm-outputclass.conf'
         "0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
         "kernel-6.12.patch"
         "nvidia-470xx-fix-linux-6.13.patch"
+        "nvidia-470xx-fix-linux-6.14.patch"
         )
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
@@ -40,7 +41,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'dbdd609247740079446faf38482c7c14c03fbd71f816812d26c803b2619de7b7d7f034048fc8f662c5b864dd43b8e75aa7c09a837b31dd08655e6622f00ee1e3'
             'e1371e2ed622d642b0242a2be34438fae97fa33ef42afc1e7897177c10dc8831f20b9a8b37d25d9dc079743df03b10221decfb23577650233af8981a4ffb813c'
             'ef84759e29869c0663b7a026d62d53196575eb633fa7a80935bcd8f1e64da94ef1a386facca313c36f306f591de094c4e36f42e453c0e9421755df68f18ae1f0'
-            'c577d422799580e6a7b12670439dd7d68f9474ae17e96355144b7037d9a36228f22e53682f317ec7ca0f6a83d2520ede376350d02a2c072d0d195768f4115cba')
+            'c577d422799580e6a7b12670439dd7d68f9474ae17e96355144b7037d9a36228f22e53682f317ec7ca0f6a83d2520ede376350d02a2c072d0d195768f4115cba'
+            'b3a5133dfbb0b4404f0924fbfd219ed031eef1465625f84b7363d91d88d7b823bb5f13fa7726e309143a3eeaa10412af87c538ddc251677e5b02499d48f6d41b')
 
 create_links() {
     # create soname links
@@ -71,6 +73,7 @@ prepare() {
     patch -p1 -i "${srcdir}/kernel-6.10.patch"
     patch -p1 -i "${srcdir}/kernel-6.12.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.13.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.14.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf

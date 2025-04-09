@@ -1,0 +1,14 @@
+diff -u a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
+--- a/nvidia-drm/nvidia-drm-drv.c       2024-05-02 16:50:00.000000000 +0200
++++ b/nvidia-drm/nvidia-drm-drv.c       2025-04-09 08:45:50.752546448 +0200
+@@ -868,7 +868,9 @@
+     .name                   = "nvidia-drm",
+
+     .desc                   = "NVIDIA DRM driver",
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 14, 0)
+     .date                   = "20160202",
++#endif
+
+ #if defined(NV_DRM_DRIVER_HAS_DEVICE_LIST)
+     .device_list            = LIST_HEAD_INIT(nv_drm_driver.device_list),
+ .device_list            = LIST_HEAD_INIT(nv_drm_driver.device_list),
