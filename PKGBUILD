@@ -4,8 +4,8 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=135.0.7049.52
-pkgrel=2
+pkgver=135.0.7049.84
+pkgrel=1
 _manual_clone=0
 _system_abseil=1
 _system_clang=1
@@ -27,8 +27,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch)
-sha256sums=('bc07d4b8f8377a218a2f5b5c5ae8276535650b2a524706d4959ed54322874950'
-            'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+sha256sums=('c1e8d9cd9913d3e91d08b212d8346b2da48e884e5b180d5cd783f0c0756a20f7'
+            'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
             SKIP
