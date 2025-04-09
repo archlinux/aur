@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=gridformat
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Header-only C++-Library for grid file I/O"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(zlib lz4 xz hdf5-openmpi) #  highfive cgal onetbb metis
 makedepends=(cmake)
 # checkdepends=(deal-ii dune-grid dolfinx mfem) # dune-localfunctions
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('62c323090716bad4279b023f0e55d2d9a74e09bc8f6ce838f40925c67430af38661d70a3e74171905f7f668a38bf9c5613566d19abb549b0cb13345032d6d330')
+sha512sums=('78b3d97ef4d3eea22cfbbd0e8679774c0509cf5d7901a26e9f6e1f76c31f13c0bf56174bae5bae793754d68957a8edd8711b6f39554ae597e60bae0c45dfe9b7')
 
 build() {
   cmake \
