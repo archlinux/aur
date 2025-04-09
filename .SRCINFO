@@ -1,6 +1,6 @@
 pkgbase = xz-static
 	pkgdesc = Statically linked library for XZ and LZMA
-	pkgver = 5.8.0
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = https://tukaani.org/xz/
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = xz-static
 	license = LicenseRef-custom
 	license = LicenseRef-Autoconf-exception-macro
 	depends = sh
-	provides = liblzma.a=5.8.0
+	provides = liblzma.a=5.8.1
 	options = staticlibs
-	source = https://tukaani.org/xz/xz-5.8.0.tar.gz
-	source = https://tukaani.org/xz/xz-5.8.0.tar.gz.sig
+	source = https://tukaani.org/xz/xz-5.8.1.tar.gz
+	source = https://tukaani.org/xz/xz-5.8.1.tar.gz.sig
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
-	sha256sums = b523c5e47d1490338c5121bdf2a6ecca2bcf0dce05a83ad40a830029cbe6679b
+	sha256sums = 507825b599356c10dca1cd720c9d0d0c9d5400b9de300af00e4d1ea150795543
 	sha256sums = SKIP
 
 pkgname = xz-static
