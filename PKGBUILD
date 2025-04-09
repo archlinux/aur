@@ -6,12 +6,12 @@
 # https://github.com/gyroflow/gyroflow
 
 ## options
-: ${_commit=fd46e54b3c93e65c204f568ad9c0d3077c37e58b} # 1.6.0.r82
+: ${_commit=cb77de99b568a89fba6be87e1cecb911fa6406e1}
 
 _pkgname="gyroflow"
 pkgname="$_pkgname"
-pkgver=1.6.0
-pkgrel=4
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
