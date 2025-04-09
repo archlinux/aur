@@ -2,7 +2,7 @@
 _projectname='azure-keyvault-secrets'
 pkgname="python-$_projectname"
 pkgver='4.9.0'
-pkgrel=0
+pkgrel='1'
 pkgdesc="Microsoft Azure Key Vault Secrets Client Library for Python"
 arch=('any')
 _baseurl="https://github.com/Azure/azure-sdk-for-python"

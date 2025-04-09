@@ -1,7 +1,7 @@
 pkgbase = python-azure-keyvault-secrets
 	pkgdesc = Microsoft Azure Key Vault Secrets Client Library for Python
 	pkgver = 4.9.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/keyvault/azure-keyvault-secrets
 	arch = any
 	license = MIT
