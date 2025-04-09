@@ -2,14 +2,13 @@
 # Contributor: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
 license=('LicenseRef-megacmd')
 depends=(
-  'c-ares'
   'crypto++'
   'curl'
   'icu'
@@ -20,13 +19,14 @@ depends=(
   'readline'
   'sqlite'
   'zlib'
+  'fuse2'
 )
 makedepends=('cmake' 'git')
-_sdkhash=ddaaf5e587055897f3054a52d4a6dc74d52bb732
+_sdkhash=61013ee2331faf901d9ce88fc0fdf4def9ce4fbd
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
         "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
-sha512sums=('a0ff37c33de492f0751d27f46bd83f506314f43985a247e1fe0de7683f3a8bfc059d05441816147acbda95b349b4d39e56cdac5f3893b697cda4f77efb197ce4'
-            '92a0b5a30b3839f657531dad6298d88c5e08204be28a23086ab3dd5a3f3b3ff83cd42a72df38a803afcddce855a1d2ecaeee82e7d5becae9510f25fc88e9c536')
+sha512sums=('5b510cca8a1cc8480aa759856ca6f4af5a81967f34b05a03af66334a0004ebe295f7825b3d560d86371f71a57ab60952b3dc8b020480a47b35fee2ec781962bc'
+            '4b8b70d75e78898e651b794e155cc207ad79d5498001e66ba2dbfffc31b3794970cd4333f27a069771a4b5fb7eb3e6a4fbed0f8524fd9694a7795a55f9a8271d')
 
 prepare() {
   # Remove existing directory if it exists
@@ -56,11 +56,11 @@ build() {
   local cmake_options=(
     -B build
     -S "${pkgname}-${pkgver}"
-    -D CMAKE_INSTALL_PREFIX=/usr
-    -D CMAKE_BUILD_TYPE=RelWithDebInfo # None does not work: https://github.com/meganz/sdk/issues/2679
-    -D USE_FREEIMAGE=no
-    -D USE_PDFIUM=no
-    -D FULL_REQS=off
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo # None does not work: https://github.com/meganz/sdk/issues/2679
+    -DUSE_FREEIMAGE=no
+    -DUSE_PDFIUM=no
+    -DFULL_REQS=off
   )
   cmake "${cmake_options[@]}"
   cmake --build build
