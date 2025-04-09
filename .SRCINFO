@@ -9,11 +9,7 @@ pkgbase = yosys-slang-git
 	makedepends = git
 	makedepends = gcc
 	depends = yosys
-	conflicts = slang-verilog
-	conflicts = slang-verilog-git
 	source = git+https://github.com/povik/yosys-slang.git
-	source = Makefile.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = yosys-slang-git

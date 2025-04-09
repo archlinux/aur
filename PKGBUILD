@@ -13,22 +13,20 @@ license=('custom')
 depends=('yosys')
 makedepends=('cmake' 'git' 'gcc')
 
-conflicts=('slang-verilog' 'slang-verilog-git')
+conflicts=()
 
 source=(
 	"git+https://github.com/povik/yosys-slang.git"
-	"Makefile.patch"
 )
 sha256sums=(
-	'SKIP'
 	'SKIP'
 )
 
 prepare() {
 	cd "$srcdir/yosys-slang"
 	git submodule init
+	git submodule update third_party/fmt
 	git submodule update third_party/slang
-	patch -p1 < ../Makefile.patch
 }
 
 pkgver() {
@@ -43,15 +41,19 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/yosys-slang"
-	make configure-slang
-	make VERBOSE=1
+	#cd "$srcdir/"
+
+	cmake -S yosys-slang -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
+	make -C build VERBOSE=1
+
 }
 
 package() {
-	cd "$srcdir/yosys-slang"
+	cd "$srcdir/build"
+
 	make DESTDIR="$pkgdir/" install
-	# With slang 8.0.0 a lot of undesired stuff get installed, remove it
-	rm -rf "$pkgdir/"home
+
 }
 
