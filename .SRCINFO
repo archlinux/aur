@@ -1,0 +1,16 @@
+pkgbase = defactory
+	pkgdesc = Extract files from Indigo Rose Setup Factory installers without executing them.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/CYBERDEV/defactory
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = gzip
+	makedepends = zlib
+	depends = zlib
+	source = defactory-0.1.0.tar.gz::https://codeberg.org/CYBERDEV/defactory/archive/v0.1.0.tar.gz
+	sha512sums = 76bd271396a7e4aba624b4915f60d7a46f5b998db35383bbf4e038fb27bebffd454156dc2290c47dbbdf8cb31b77c33776df40b032f6c827908c0affe5c9aeaa
+
+pkgname = defactory
