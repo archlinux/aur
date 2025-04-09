@@ -30,7 +30,7 @@ package() {
 	install -Dm755 "_pay-respects-module-100-runtime-rules" "$pkgdir/usr/lib/pay-respects/_pay-respects-module-100-runtime-rules"
 	install -Dm755 "_pay-respects-fallback-100-request-ai" "$pkgdir/usr/lib/pay-respects/_pay-respects-fallback-100-request-ai"
 
-	install -Dm644  LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	# install -Dm644  LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:ft=sh
