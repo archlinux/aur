@@ -29,6 +29,7 @@ prepare(){
   sed -i 's/requires = \["hatchling", "uv-dynamic-versioning"\]/requires = ["hatchling"]/' pyproject.toml # Remove uv-dynamic-versioning dependency as it is not needed
   echo $(python --version | cut -d' ' -f2 | cut -d'.' -f1,2) > .python-version # Update the file to use the installed one in system
   sed -i 's/timeout=5/timeout=60/' tests/client/test_config.py # Increate time limit
+  sed -i 's/self.model_fields/self.__class__.model_fields/' src/mcp/server/fastmcp/utilities/func_metadata.py # Fix tests
 }
 
 build() {
