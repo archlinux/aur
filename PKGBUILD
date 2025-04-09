@@ -3,7 +3,7 @@
 
 pkgname=obs-plugin-input-overlay-git
 _pkgname=input-overlay
-pkgver=5.0.0.r7.g358bb3a
+pkgver=5.1.0.r3.g0992c07
 pkgrel=1
 pkgdesc='OBS Studio plugin showing keyboard, gamepad or mouse input as sources.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=(
 	'obs-plugin-input-overlay-bin'
 )
 options=()
-source=('git+https://github.com/univrsal/input-overlay.git#branch=master')
+source=('input-overlay::git+https://github.com/univrsal/input-overlay.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,7 +37,9 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init --recursive
-	cmake .
+	[ -d _build ] || mkdir _build
+	cd _build
+	cmake ..
 	make
 }
 
