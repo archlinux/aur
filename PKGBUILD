@@ -1,3 +1,5 @@
+# Maintainer: NekoLOvO <nekolyin@qq.com>
+
 pkgbase=whitesur-wallpapers-git
 pkgname=({1080p,2k,4k}-${pkgbase})
 pkgver=r15.5c1d7ca
@@ -5,7 +7,6 @@ pkgrel=1
 pkgdesc="macOS wallpapers which will change according to time"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-wallpapers"
-maintainer="NekoLOvO <nekolyin@qq.com>"
 license=('MIT')
 makedepends=('git')
 source=(${pkgbase}::"git+${url}.git")
