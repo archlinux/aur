@@ -1,0 +1,107 @@
+pkgbase = wuffs-git
+	pkgdesc = A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
+	pkgver = 0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	pkgrel = 1
+	url = https://github.com/google/wuffs
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = pentium4
+	arch = riscv64
+	license = MIT
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = git
+	makedepends = go
+	makedepends = libxcb
+	makedepends = lz4
+	makedepends = sdl2
+	makedepends = sdl2_image
+	makedepends = xcb-util-image
+	makedepends = xcb-util-renderutil
+	makedepends = zlib
+	makedepends = zstd
+	source = wuffs::git+https://github.com/google/wuffs.git
+	sha256sums = SKIP
+
+pkgname = wuffs-lib-git
+	pkgdesc = A memory-safe standard library for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
+	depends = glibc
+	depends = wuffs-license
+	optdepends = python-pywuffs: For python binding.
+	optdepends = wuffs-docs: For the documentation of this software.
+	provides = wuffs-lib=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = libwuffs.so
+	provides = libwuffs.a
+	conflicts = wuffs-lib
+
+pkgname = wuffs-examples-git
+	pkgdesc = Example programmes for wuffs, a memory-safe programming language and standard library for Wrangling Untrusted File Formats Safely.
+	depends = gcc-libs
+	depends = glibc
+	depends = sdl2
+	depends = sdl2_image
+	depends = xcb-util-image
+	depends = xcb-util-renderutil
+	depends = wuffs-license
+	optdepends = wuffs-docs: For the documentation of this software.
+	provides = wuffs-examples=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	conflicts = wuffs-examples
+
+pkgname = wuffs-fuzzers-git
+	pkgdesc = Fuzzer programmes for wuffs, a memory-safe programming language and standard library for Wrangling Untrusted File Formats Safely.
+	depends = gcc-libs
+	depends = glibc
+	depends = wuffs-license
+	optdepends = wuffs-docs: For the documentation of this software.
+	provides = wuffs-fuzzers=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	conflicts = wuffs-fuzzers
+
+pkgname = wuffs-lang-git
+	pkgdesc = A memory-safe programming language for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
+	depends = wuffs-license
+	optdepends = glibc: For 'ractool'.
+	optdepends = liblz4.so: For 'ractool'.
+	optdepends = libz.so: For 'ractool'.
+	optdepends = libzstd.so: For 'ractool'.
+	optdepends = wuffs-docs: For the documentation of this software.
+	provides = wuffs-lang=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = dumbindent=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = handsum=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = ractool=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = wuffs=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = wuffs-c=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	provides = wuffsfmt=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	conflicts = wuffs-lang
+	conflicts = dumbindent
+	conflicts = handsum
+	conflicts = ractool
+	conflicts = wuffs
+	conflicts = wuffs-c
+	conflicts = wuffsfmt
+
+pkgname = wuffs-docs-git
+	pkgdesc = Documentation for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.
+	arch = any
+	depends = wuffs-license
+	optdepends = wuffs-lib: The library this documentation is for.
+	optdepends = wuffs-lang: The programming language this documentation is for.
+	optdepends = wuffs-examples: The example programmes this documentation is for.
+	optdepends = wuffs-fuzzers: The fuzzer programmes this documentation is for.
+	provides = wuffs-docs=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	conflicts = wuffs-docs
+
+pkgname = wuffs-license-git
+	pkgdesc = Common license for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.
+	arch = any
+	depends = 
+	optdepends = wuffs-lib: The library this license is for.
+	optdepends = wuffs-lang: The programming language this license is for.
+	optdepends = wuffs-examples: The example programmes this license is for.
+	optdepends = wuffs-fuzzers: The fuzzer programmes this license is for.
+	provides = wuffs-license=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
+	conflicts = wuffs-license
