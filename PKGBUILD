@@ -1,6 +1,7 @@
 # Maintainer: Felipe Facundes
 
 pkgname=fontpreview_sixel
+repo=fontpreview
 pre_ver=1.0
 pkgver=1.0.1
 pkgrel=1
@@ -22,24 +23,24 @@ source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname" || true
+  cd "$srcdir/$repo" || true
   echo "${pre_ver}.$(git rev-list --count HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/$pkgname" || true
+    cd "$srcdir/$repo" || true
 }
 
 build() {
-    cd "$srcdir/$pkgname" || true
+    cd "$srcdir/$repo" || true
 }
 
 check() {
-    cd "$srcdir/$pkgname" || true
+    cd "$srcdir/$repo" || true
 }
 
 package() {
-    cd "$srcdir/$pkgname" || true
+    cd "$srcdir/$repo" || true
     install -Dm755 "fontpreview" "$pkgdir/usr/bin/fontpreview"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
