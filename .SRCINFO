@@ -1,16 +1,18 @@
-pkgbase = alpinejs-doc-git
-	pkgdesc = AlpineJs offline documentation viewer
+pkgbase = docs-data-alpinejs-git
+	pkgdesc = AlpineJs offline documentation data for docs viewer
 	pkgver = 0.0.1
 	pkgrel = 0
-	url = https://gitverse.ru/naierchou/alpinejs-doc
+	url = https://gitverse.ru/naierchou/docs-data-alpinejs
 	arch = any
 	license = MIT
 	depends = webappview-git
-	provides = alpinejs-doc
+	provides = docs-data-alpinejs
+	conflicts = docs-data-alpinejs
 	conflicts = alpinejs-doc
-	source = git+https://gitverse.ru/naierchou/alpinejs-doc.git
+	conflicts = alpinejs-doc-git
+	source = git+https://gitverse.ru/naierchou/docs-data-alpinejs.git
 	source = git+https://github.com/alpinejs/alpine.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = alpinejs-doc-git
+pkgname = docs-data-alpinejs-git
