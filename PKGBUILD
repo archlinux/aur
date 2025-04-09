@@ -17,7 +17,7 @@ sha512sums=('dc83d9267de56f5dc48fcab8ace1b3ac15850f4e179ee9e2745c2f8359ea378b2a8
 _distdir="Crypt-Argon2-0.029"
 
 build() {
-  cpanm -n -S Dist::Build@0.010
+  cpanm -n -S https://cpan.metacpan.org/authors/id/L/LE/LEONT/Dist-Build-0.010.tar.gz
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
