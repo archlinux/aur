@@ -1,5 +1,11 @@
+# Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: Mihai Militaru <mihai militaru at xmpp dot ro>
+# Contributor: carstene1ns <arch carsten-teibes.de>
+
 pkgname=mingw-w64-mbedtls2
-pkgver=2.28.9
+pkgver=2.28.10
 pkgrel=1
 pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl (mingw-w64)"
 arch=('any')
@@ -8,11 +14,11 @@ license=('Apache-2.0')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'git')
 options=(!strip !buildflags staticlibs !debug)
-_tag=b102d44b8500344336ddb5fdc6333aab18a99a34
-source=(git+https://github.com/ARMmbed/mbedtls.git#tag=${_tag}
+_tag=2fc8413bfcb51354c8e679141b17b3f1a5942561
+source=(git+https://github.com/Mbed-TLS/mbedtls.git#tag=${_tag}
         cmake-dll-soversion.patch)
-b2sums=('607ea3600ee6466a85919c6e6b6c66120fe8dd6033983e4cd782884fcf1178a587cd8556c78239718cc23686ed64f8349f4ff45d23510d90ae8d6837a05b83bd'
-        '6d50435bf384fdc1748fdb9d4017fac3ec8546c0e9f532e8922f6f5144b5a370eb33ddb2e527ffdb898a53edde6859808772507023c24ee5bda92b2c04725d26')
+b2sums=('5556a44b7df49fb6cabf046915218cdd3f1176b5e63febae3697d7d5e701d1e0d97d0cb107c5ad4f852d8f4296ff1fe1bbfd21fe822b2a153ceccaf9849290d1'
+        'e7b4e9201e6d720daafaa7b9619945c3bd0a595384f171d0d570f79b0fd404f4889e8e9a6aa62ad18142d9c7f14d19950c3e4cdf54a95d2a010caa38ed2003d9')
 
 pkgver() {
   cd mbedtls
@@ -38,6 +44,7 @@ build() {
       -DMBEDTLS_FATAL_WARNINGS=OFF \
       -DCMAKE_INSTALL_INCLUDEDIR=include/mbedtls2 \
       -DCMAKE_INSTALL_LIBDIR=lib/mbedtls2 \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -Wno-dev \
       ..
     make
