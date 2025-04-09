@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=vscodium-insiders
-pkgver=1.100.02311
+pkgver=1.100.02391
 pkgrel=1
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -36,6 +36,7 @@ makedepends=(
     'patch'
     'python'
     'pkg-config'
+    'rustup'
 )
 provides=('codium-insiders')
 conflicts=(
@@ -49,7 +50,7 @@ source=(
 )
 sha256sums=('9d17eb0074bcd7b75ffd8c56718254c96108c01f857570f951d1e9a109269405'
             'ca34047d62b5b433c2039151b9d55674a8aacdd1af57041d54387b76e44cd442'
-            '0c956a7fceddae52bf8d3fb4263e31f192e07a379c0aab3f60bc3e0d9281964e')
+            'b424cccda2483d94d36ec7042119df4c10c4e5de15745c00e41d1027a1740798')
 
 ###############################################################################
 
@@ -101,6 +102,8 @@ install_node() {
 
 build() {
     install_node
+    
+    rustup default stable
 
     # Remove old build
     if [ -d "vscode" ]; then
