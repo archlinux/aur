@@ -1,0 +1,14 @@
+pkgbase = ttf-winky-sans
+	pkgdesc = sans-serif typeface by typofactur inspired by comic sans
+	pkgver = 1.205
+	pkgrel = 1
+	url = https://github.com/typofactur/winkysans
+	arch = any
+	license = OFL-1.1-no-RFN
+	makedepends = git
+	makedepends = python
+	makedepends = cairo
+	source = git+https://github.com/typofactur/winkysans#commit=c5e3734
+	sha256sums = SKIP
+
+pkgname = ttf-winky-sans
