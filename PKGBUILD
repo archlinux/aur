@@ -2,9 +2,9 @@
 pkgname=tauview-bin
 _pkgname=Tauview
 pkgver=0.0.12
-pkgrel=1
-pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri."
-arch=("x86_64")
+pkgrel=2
+pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri.(Prebuilt version)"
+arch=('x86_64')
 url="https://github.com/sprout2000/tauview"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -15,18 +15,21 @@ depends=(
     'webkit2gtk'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/sprout2000/tauview/v${pkgver}/LICENSE.md"
 )
-sha256sums=('dc3af0261206c26b324c6d741199b6263ac49ffea50927574fb403366421149e'
+sha256sums=('2dd5267e6ea37577f7388d20bd74573b4632310e37992c123dacdede70526275'
             'b68cbd15f8aa5af28a19a93bf42d55e909d5ef19570af1855a6c6d4d41645db9')
-build() {
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|Name=${pkgname%-bin}|Name=${_pkgname}|g;s|Categories=|Categories=Utility;|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+prepare() {
+    sed -i -e "
+        s/Name=${pkgname%-bin}/Name=${_pkgname}/g
+        s/Categories=/Categories=Graphics;/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-    for _icons in 32x32 128x128 256x256@2;do
+    _icon_sizes=(32x32 128x128 256x256@2)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
     done
