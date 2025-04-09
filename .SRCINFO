@@ -1,7 +1,7 @@
 pkgbase = whisperpix-bin
-	pkgdesc = Add comments to your photos with your voice
+	pkgdesc = Add comments to your photos with your voice.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/graham-walker/WhisperPix
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = whisperpix-bin
 	source = whisperpix.sh
 	sha256sums = f5c0b5b52505f4ad5fa6b72556ca19adbe559a70cf2534d1000ad204706c09e6
 	sha256sums = 5fc34925726421c2268a2a719ceebe463aef8ad39480b1d08daee3044fd6381e
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = whisperpix-bin
