@@ -1,7 +1,7 @@
 pkgbase = lib32-libmpcdec
 	pkgdesc = Musepack decoding library (32 bit)
 	pkgver = 0.1+r475
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://musepack.net
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = lib32-libmpcdec
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libmpcdec>=0.1+r475
+	provides = libmpcdec.so
 	source = musepack_src_r475.tar.gz::https://files.musepack.net/source/musepack_src_r475.tar.gz
 	source = 01_am-maintainer-mode.patch
 	source = 02_link-libm.patch

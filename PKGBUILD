@@ -7,7 +7,7 @@ _name="libmpcdec"
 pkgname="lib32-${_name}"
 _revision=475
 pkgver="0.1+r${_revision}"
-pkgrel=4
+pkgrel=5
 epoch=1
 _rel=475
 pkgdesc="Musepack decoding library (32 bit)"
@@ -16,6 +16,7 @@ url="https://musepack.net"
 license=('BSD-3-Clause')
 depends=('lib32-glibc' "${_name}>=${pkgver}")
 makedepends=('lib32-gcc-libs')
+provides=("${_name}.so")
 _pkgsrc="musepack_src_r${_revision}"
 source=("${_pkgsrc}.tar.gz::https://files.musepack.net/source/${_pkgsrc}.tar.gz"
         '01_am-maintainer-mode.patch'
