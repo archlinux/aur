@@ -1,6 +1,6 @@
 pkgbase = tauview-git
 	pkgdesc = Minimalist image viewer based on Leaflet.js and Tauri.
-	pkgver = 0.0.14.r0.g576aef9
+	pkgver = 0.0.14.r1.gc9efd92
 	pkgrel = 1
 	url = https://github.com/sprout2000/tauview
 	arch = any

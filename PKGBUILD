@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tauview-git
 _pkgname=Tauview
-pkgver=0.0.14.r0.g576aef9
+pkgver=0.0.14.r1.gc9efd92
 _nodeversion=20
 pkgrel=1
 pkgdesc="Minimalist image viewer based on Leaflet.js and Tauri."
@@ -38,7 +38,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
     export CARGO_HOME="${srcdir}/.cargo"
@@ -50,19 +50,22 @@ build() {
         echo 'disturl=https://registry.npmmirror.com/-/binary/node/' >> .npmrc
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        sed -i "s/github.com/gitdl.cn\/https:\/\/github.com/" src-tauri/Cargo.toml
-    fi        
+        sed -i "s/github.com/ghproxy.net\/https:\/\/github.com/" src-tauri/Cargo.toml
+    fi
     NODE_ENV=development    npm install
-    NODE_ENV=production     npx tauri build -b deb
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    sed -i "s/targets\"\: \"all/targets\"\: \"deb/g" src-tauri/tauri.conf.json
+    NODE_ENV=production     npm run tauri build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/bin/"${pkgname%-git}" \
-        -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/share/applications/"${pkgname%-git}.desktop" \
-        -t "${pkgdir}/usr/share/applications"
+    cd "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data
+    install -Dm755 usr/bin/"${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm644 usr/share/applications/"${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(32x32 128x128 256x256@2)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/share/icons/hicolor/"${_icons}/apps/${pkgname%-git}.png" \
+        install -Dm644 usr/share/icons/hicolor/"${_icons}/apps/${pkgname%-git}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
