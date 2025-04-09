@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-bin
-pkgver=4.8.0
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("x86_64" "aarch64" "armv7h")
@@ -17,9 +17,9 @@ source_x86_64+=("${_release_url}-x86_64${_ext}")
 source_aarch64+=("${_release_url}-aarch64${_ext}")
 source_armv7h+=("${_release_url}-armv7h${_ext}")
 
-sha256sums_x86_64=("0f18b1d2c41f550b35f4364486ac58ab9a13a6572cf90edab6b9a9fc2de602ee")
-sha256sums_aarch64=("3c0982c20769b9c917dc0a8c8b7edf27f8f4d3858935d9848795ecb074415384")
-sha256sums_armv7h=("1a22f7b309adb12de645385caf676dce2ce4f640d613f1b3201234283fbb1a4e")
+sha256sums_x86_64=("af46f3c0cbdf6d40d6ff160d1b44ac21525ec674b73fcfa3e36fac911513d6f3")
+sha256sums_aarch64=("4fd0af7b21d92da55cb80e9119f3818d01ea50235592b992b07d6432064a6d7d")
+sha256sums_armv7h=("78e561abc6bf38aa0ef00eb6131a265f42773745b114daeac316a6313dea3fde")
 
 package() {
   tar -xzf "$srcdir/qp-v${pkgver}-${CARCH}${_ext}" -C "$srcdir"
