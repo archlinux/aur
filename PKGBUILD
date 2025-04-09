@@ -3,7 +3,7 @@
 # Contributor: YuutaW <i@yuuta.moe>
 
 pkgname=rsshub-git
-pkgver=r9177.93498412b
+pkgver=r14091.0f43236cae
 pkgrel=1
 pkgdesc="Everything is RSSible"
 # The built package bundles native Node.js extensions like OpenCC
@@ -11,8 +11,8 @@ arch=('x86_64')
 url="https://rsshub.app/"
 license=('MIT')
 depends=('nodejs')
-# rsshub uses yarn, and some deps (ex: re2) uses npm
-makedepends=('npm' 'yarn' 'node-gyp' 'git')
+# rsshub uses pnpm, and some deps (ex: re2) uses npm
+makedepends=('npm' 'pnpm' 'node-gyp' 'git')
 optdepends=(
   'chromium: for routes using a headless browser'
 )
@@ -24,7 +24,7 @@ source=("$pkgname::git+https://github.com/DIYgod/RSSHub.git"
         "rsshub_tmpfile.conf")
 sha512sums=('SKIP'
             'f8f0e8195a05cc7cd43630a2ce3b28250279d3b4adbfa3693b57b23ea70013b9e5de8ab4905a6411152bdf0ab470d5873c11f6836fc281c8fd961f520a10f3b4'
-            '7fdcbbec994bfbeab8a52f31786e1034f48f78ffcdc0de69ea23eda6bc377424be900922b87db06b834429fcaeeed4c9a2b3a3291ca4df4d1f9ad4b9fc421a17'
+            '8b234f05567ab289bac7eb2e617861de65a2ea293c8e859f1c499b46d800f4babdb949672970b94e6890f22cc28d4b4f302ecb30b0a2416b9ffa685dc5a9b117'
             '892a82aa32c0f486009eb2b620b8fd5b8674de6a36ab16d42545e64fbdb7184b7d1f2ca63d6841ec420f639bc714df88dd32c17803772aa489a4c5f12f7ec96f'
             'ae2fd7a452716fccd0f421176aba9b9971edf9a9a3f241bd023044f9bce140dfcad0777eff9d47a891264d0ea49ce9f9f7671043b44fd2bcf7c9f484c08b8449')
 # clean-nm.sh leaves many empty directories
@@ -45,14 +45,12 @@ prepare() {
 
 build() {
     cd $pkgname
-    # Not using --production here as minify-docker.js needs devDependencies.
-    # Unused dependencies will be cleaned up, anyway.
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true yarn --cache-folder "${srcdir}/yarn-cache"
 
-    # Cleanup node modules, as Dockerfile does.
-    node ./scripts/docker/minify-docker.js
-    rm -rf node_modules
-    mv app-minimal/node_modules .
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true pnpm install --store-dir "${srcdir}/pnpm-store"
+
+    pnpm build
+
+    rm -rf node_modules/.cache
 }
 
 package() {
