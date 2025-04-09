@@ -1,0 +1,73 @@
+[Unit]
+Description=ntripcaster daemon
+Documentation=https://igs.bkg.bund.de/ntrip/bkgcaster/
+After=network.target
+Wants=network.target
+
+[Service]
+Type=forking
+KillMode=process
+WorkingDirectory=/etc/ntripcaster/
+#ExecStartPre=/bin/sh -c 'mkdir -p /var/log/ntripcaster /etc/ntripcaster >/dev/null 2>&1'
+ExecStart=/usr/bin/ntripdaemon -d /etc/ntripcaster -b
+PIDFile=/run/ntripcaster/caster.pid
+
+WatchdogSec=15
+NotifyAccess=all
+
+Restart=always
+RestartSec=5
+
+TimeoutStopFailureMode=kill
+TimeoutStopSec=15
+
+User=ntrip
+Group=ntrip
+
+CapabilityBoundingSet=
+AmbientCapabilities=
+NoNewPrivileges=true
+
+RootDirectory=/usr/share/ntripcaster
+ProtectSystem=strict
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectClock=true
+PrivateTmp=true
+PrivateDevices=true
+DeviceAllow=char-rtc:rw:rwm
+NotifyAccess=main
+UMask=0077
+ReadWritePaths=/run/ntripcaster /var/log/ntripcaster
+
+RemoveIPC=true
+PrivateUsers=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+ProtectHostname=true
+ProtectProc=invisible
+ProcSubset=pid
+PrivateMounts=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources
+SystemCallFilter=~@privileged
+SystemCallArchitectures=native
+
+IPAddressDeny=any
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+PrivateNetwork=true
+
+
+# If executed as normal user you may have to increase some limits
+# Number of open file descriptors
+#LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target

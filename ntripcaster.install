@@ -1,0 +1,14 @@
+post_install() {
+  getent group ntrip >/dev/null || groupadd -r ntrip
+  getent passwd ntrip >/dev/null || useradd -r -g ntrip -d /usr/share/ntripcaster -s /usr/bin/nologin -c "NTRIP Caster Daemon" ntrip
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/ntripcaster-tmpfiles.conf
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/ntripcaster-tmpfiles.conf	
+}
+
+post_remove() {
+    echo "NOTE: The 'ntrip' user and group have not been removed."
+    echo "      To remove manually: userdel ntrip && groupdel ntrip"
+}

@@ -1,0 +1,3 @@
+d /etc/ntripcaster 0755 root root -
+d /run/ntripcaster 0755 ntrip ntrip -
+d /var/log/ntripcaster 0755 ntrip ntrip -

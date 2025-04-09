@@ -1,8 +1,9 @@
 pkgbase = ntripcaster
 	pkgdesc = BKG Professional caster disseminates real-time GNSS data streams via NTRIP
 	pkgver = 2.0.47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://igs.bkg.bund.de/ntrip/bkgcaster
+	install = ntripcaster.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-only
@@ -13,8 +14,12 @@ pkgbase = ntripcaster
 	depends = glibc
 	optdepends = libwrap: for tcp_wrapper support
 	optdepends = python: for scripting
-	backup = etc/ntripcaster.conf
+	backup = etc/ntripcaster/ntripcaster.conf
 	source = https://igs.bkg.bund.de/root_ftp/NTRIP/software/caster/ntripcaster-2.0.47.tar.bz2
+	source = ntripcaster.tmpfiles
+	source = ntripcaster.service
 	sha256sums = 52676a9b85156b16255b4eb54c41c55ec2553e17196929bdec89bf1525b3deec
+	sha256sums = 6f4b86cafff8d239745bd9705c4d1f51a558d99e3c8ade70f200eb574a7e9b93
+	sha256sums = a613f80c795836a275c33177d855741778dc961b75c43b7fcf7d55c6f6268734
 
 pkgname = ntripcaster
