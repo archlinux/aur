@@ -1,0 +1,14 @@
+pkgbase = betafpv-configurator
+	pkgdesc = BETAFPV Configurator — software for configuring BETAFPV drones
+	pkgver = 2.0
+	pkgrel = 0
+	epoch = 1
+	url = https://github.com/BETAFPV/BETAFPV_Configurator
+	arch = x86_64
+	license = GPL3
+	provides = betafpv-configurator
+	options = !debug
+	source = https://github.com/BETAFPV/BETAFPV_Configurator/releases/download/V2.0.0/BETAFPV_Configurator_2.0_linux_x64.deb
+	sha256sums = 488893cb2473c68c819e6a5a187f1eb66ef7ded505af141afee7534b62f06c94
+
+pkgname = betafpv-configurator
