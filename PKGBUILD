@@ -2,8 +2,8 @@
 
 pkgname=masterpdfeditor-qt_include
 _pkgname=${pkgname%-qt_include}
-pkgver=5.9.87
-_pkgver=5.9.87-1
+pkgver=5.9.89
+_pkgver=5.9.89
 pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
@@ -11,7 +11,6 @@ _checksum="$(curl https://code-industry.net/checksum-information/ | grep master-
 arch=('x86_64')
 license=('custom')
 depends=(libgl
-		 nspr
 		 nss
 		 pkcs11-helper
 		 sane
