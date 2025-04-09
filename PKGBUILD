@@ -6,7 +6,7 @@
 
 pkgbase=gdal-libkml
 pkgname=(gdal-libkml python-gdal-libkml)
-pkgver=3.10.2
+pkgver=3.10.3
 pkgrel=1
 provides=("gdal=${pkgver}")
 pkgdesc="A translator library for raster and vector geospatial data formats (with libkml support)"
@@ -23,7 +23,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # ogdi
 changelog=gdal.changelog
 source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz)
-b2sums=('d37fc6c41c8111ddf50c0650eb51e04012bf30976493bbd6dd363ddd8f4a21168b908faf8ef2cab733653107e1ab3c7a1b4fdeb7818157f3d171ec92478bc4e5')
+b2sums=('deb9af3034b86d1b74a348b56cb8fec6a9ccdfa57dade0d1bbd02ab952c6fff2f4673c8f9f77843687fff54b3d507817c8e43640e8007f1da0b39909ddafa9ac')
 
 build() {
     #-DCMAKE_CXX_STANDARD=20 \
