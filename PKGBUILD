@@ -6,7 +6,7 @@ pkgname=(rime-wanxiang-data
          rime-wanxiang-dict-cn)
 _schema_version=6.3
 pkgver=20250409
-pkgrel=1
+pkgrel=2
 pkgdesc="万象词库"
 arch=(any)
 license=('CC-BY-4.0')
@@ -16,7 +16,7 @@ source=("wanxiang-lts-zh-hans.${pkgver}.gram::${url}/releases/download/LTS/wanxi
         "https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v${_schema_version}.tar.gz")
 sha256sums=('b91ecc1f9d32be8b945961d7529311bf5c512a1c05c78941d9c0fe61a0af06da'
             '9a1c547af7150584ee74cbfa8586c479e3666366bbb151fd74ade90ea2509aec'
-            '90d777a225dac07d11ebc42e5d79e697103649a31c52dcf3e9e87010a61d5f72')
+            '58f0bf6f455065ca23332c48e56040aaba953d1e49a319796659d878419b525b')
 
 makedepends=("rime-prelude" "rime-essay" "sed")
 
