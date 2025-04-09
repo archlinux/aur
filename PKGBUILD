@@ -3,8 +3,8 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=certbot
-pkgver=3.3.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc='An ACME client'
 arch=('any')
 license=('Apache-2.0')
@@ -45,18 +45,15 @@ source=(
   'tmpfiles.conf'
   'certbot-renew.service'
   'certbot-renew.timer'
-  'dd876a40-minus-changelog.patch'
 )
-sha512sums=('893a291ee08ce75d1690d2b1c8622977b02345483e5828a4605c34feb5d3da94e1872f53b2e28bf8dea07044bab9af9b3751e815ae89bc2641be309569384e1a'
+sha512sums=('f83cdab4ea9795e89b8650f29de78b89c7df6dadd2d2e0f75f2ce83986f01568669bbd86946c8e25dc3575ebde6a7fcc7571e6b4913801a43491d608050160ca'
             'fbb7bb4591876aeb2e118c3f3fc8ff507b6a3127de0f921c689e1d74c70320b4f2b8bf05b488ec4f714259701f1ac54e64a9f6181475da6bd6d1e3da3a602217'
             'ad639f33201089d5531d1b1dcd163e2f85bd84a6a9aa233bb04f1f86b34a4f9afa4aed274a27cc89a0664150e80af31742d425923015d585b781a8b139cb8954'
-            '471d371de385daf18f58a2e4eaed74f0d2d9931beb74ee28481ffb17ce4e4450752c135b920b6efd17a16f84f99fe38b69e6602e230ba09059f85390b08aaba1'
-            '72fa6bea1fb02f3ee6fa61785360e1f02f20671b4310909cbc44a0f6016b12e1e1099fbeb6c8d90e27b2d1784f6c3866d06f800c120159636eba96a0f9ce3ccb')
-b2sums=('d8d5ef1244e23705224d7642001356266cee802c9f82f828b1807b8ffa1656596a97467e1db5cd1e520b09dc6c9ef6c21bd86ed4c7cf4582bb7f96dfebc4fb6f'
+            '471d371de385daf18f58a2e4eaed74f0d2d9931beb74ee28481ffb17ce4e4450752c135b920b6efd17a16f84f99fe38b69e6602e230ba09059f85390b08aaba1')
+b2sums=('10139118f94c1e8c3e1500e5e9c49f35cd99255aac1c7acfe62c404b8397add173c131a45bbe39fbb0eea3efe376db342bfc62e81b610174cb5a052c3d51c7e2'
         '7d2c26a9953d3b5a899053bdd7bd77051c67abe6480af2bfaaee06f20a399b0b4ccccc0af35cfe9e6d2b1fc833dbff928ba46771a9127720073dda29aef9a2e0'
         '773be7c45aaf84b79b260053dd4555be1b913238f680cf2c816e20d585db21c11ff41c985915ab0804bb3bc78af2e1e09133ed3b04e276e6379f63e9522064c1'
-        'a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81'
-        '519459ff02dd805ae202ff3e3462d10ee5efabb6f0945621f6b55abaff7aca3337db87b3bef99c66d07a38f4f89a498e32f3d1f7375f1afaae32077077bc8373')
+        'a75e09a662be6ce1bc533c39bea8ecfd6c0feb3f0066db854de701c1af71534bca750ef5b50826446708823564945aac887649225d15a347efd864dd1e1a8e81')
 
 prepare() {
   cd "$_repo/$pkgname"
@@ -65,10 +62,6 @@ prepare() {
   sed \
     -e '/setuptools>=/d' \
     -i setup.py
-
-  # backport fix for josepy/cryptography/pyopenssl
-  cd ..
-  patch -p1 -i "$srcdir/dd876a40-minus-changelog.patch"
 }
 
 build() {
