@@ -1,8 +1,8 @@
 pkgbase = python-elitech-git
 	pkgdesc = Command line tool and Python library for Elitech data logger
 	pkgver = 0.0.1.r18.20250407
-	pkgrel = 1
-	url = https://github.com/OpenHelios/python-elitech/
+	pkgrel = 2
+	url = https://github.com/pasccom/python-elitech/
 	arch = any
 	license = GPL-3.0
 	makedepends = python-setuptools
@@ -10,7 +10,7 @@ pkgbase = python-elitech-git
 	depends = elitech-udev
 	depends = python
 	depends = python-hid-parser-elitech
-	source = python-elitech-git::git+https://github.com/OpenHelios/python-elitech/
+	source = python-elitech-git::git+https://github.com/pasccom/python-elitech/
 	sha256sums = SKIP
 
 pkgname = python-elitech-git
