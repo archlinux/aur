@@ -5,7 +5,7 @@
 # -*- sh -*-
 
 pkgname='nb'
-pkgver=7.14.0
+pkgver=7.16.1
 pkgrel=1
 pkgdesc="A command-line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -68,7 +68,7 @@ package() {
   done
 }
 
-sha256sums=('8000372d30907a04be1c12a2ddba43df3a8122fe74206411729ce28a602d1fa3')
-b2sums=('8ac989a0dae9d964d7d838cbddc111bc6741aa71a5e7495fe0954ffd915875d36492445c2629623c2b9493298af695b5082249642bb7a3ca37d171f164852663')
+sha256sums=('d173f20041ecf35f74ce1e559c78eb3c4ecf4bd790b44bacccc1769503164dd6')
+b2sums=('3a9cca65132ef0a024fa78e6fad859197d3ed10b8ed24e0744f5239694c970f929b8c24394a8b3d1411761bfe713a9e1417ce6aac3d798494a8c33feeeee8411')
 
 # eof
