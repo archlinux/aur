@@ -2,7 +2,7 @@
 
 _pkgname=mdcx
 pkgname="${_pkgname}-git"
-pkgver=120240924.r156.e5c0df9
+pkgver=120240924.r177.b35ef5b
 pkgrel=1
 pkgdesc="Movie metadata scraper"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ url="https://github.com/sqzw-x/${_pkgname}"
 license=("GPL-3.0-or-later")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-makedepends=("python39")
+makedepends=("git" "python39")
 source=("${_pkgname}::git+${url}.git"
         "${_pkgname}.desktop"
         "${_pkgname}.png")

@@ -1,6 +1,6 @@
 pkgbase = mdcx-git
 	pkgdesc = Movie metadata scraper
-	pkgver = 120240924.r156.e5c0df9
+	pkgver = 120240924.r177.b35ef5b
 	pkgrel = 1
 	url = https://github.com/sqzw-x/mdcx
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = mdcx-git
 	arch = aarch64
 	arch = riscv64
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = python39
 	provides = mdcx
 	conflicts = mdcx
