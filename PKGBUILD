@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=certbot-dns-ovh
-pkgver=3.3.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='OVH DNS Authenticator plugin for Certbot'
 arch=('any')
@@ -25,8 +25,8 @@ checkdepends=('python-pytest')
 # hundred tarballs.
 _repo='github.com-certbot-certbot'
 source=("$_repo::git+https://github.com/certbot/certbot#tag=v$pkgver")
-sha512sums=('893a291ee08ce75d1690d2b1c8622977b02345483e5828a4605c34feb5d3da94e1872f53b2e28bf8dea07044bab9af9b3751e815ae89bc2641be309569384e1a')
-b2sums=('d8d5ef1244e23705224d7642001356266cee802c9f82f828b1807b8ffa1656596a97467e1db5cd1e520b09dc6c9ef6c21bd86ed4c7cf4582bb7f96dfebc4fb6f')
+sha512sums=('f83cdab4ea9795e89b8650f29de78b89c7df6dadd2d2e0f75f2ce83986f01568669bbd86946c8e25dc3575ebde6a7fcc7571e6b4913801a43491d608050160ca')
+b2sums=('10139118f94c1e8c3e1500e5e9c49f35cd99255aac1c7acfe62c404b8397add173c131a45bbe39fbb0eea3efe376db342bfc62e81b610174cb5a052c3d51c7e2')
 
 prepare() {
   cd "$_repo/$pkgname"
