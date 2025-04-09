@@ -63,11 +63,34 @@ package() {
   cp $srcdir/1024.png usr/share/icons/hicolor/1024x1024/apps/xenia-canary.png
   mkdir -p usr/share/applications
   echo "#!/bin/bash
-  # wrapper that calls /usr/bin/xenia_canary in ~/.xenia-canary
-  mkdir -p \$HOME/.xenia-canary
-  cd \$HOME/.xenia-canary
-  cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary
-  exec \$HOME/.xenia-canary/xenia_canary" > usr/bin/xenia-canary
+
+# bash wrapper that runs xenia_canary after copying it to \$HOME/.xenia-canary
+
+copybinary () {
+  cp -vf /usr/bin/xenia_canary \$HOME/.xenia-canary/
+}
+
+mkdir -p \$HOME/.xenia-canary
+cd \$HOME/.xenia-canary
+
+if [ -f \$HOME/.xenia-canary/xenia_canary ]; then
+  if command -v sha512sum &> /dev/null; then 
+    if [ $(sha512sum /usr/bin/xenia_canary | cut -d ' ' -f 1) != $(sha512sum \$HOME/.xenia-canary/xenia_canary | cut -d ' ' -f 1 ) ]; then 
+      echo "hash different between binary from /usr/bin and \$HOME/.xenia-canary"
+      copybinary
+    else
+      cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary/
+    fi
+  else
+    echo "no sha512sum command" 
+    cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary/
+  fi
+else
+  echo "\$HOME/.xenia-canary/xenia_canary does not exist"
+  copybinary
+fi
+
+exec \$HOME/.xenia-canary/xenia_canary" > usr/bin/xenia-canary
   chmod a+x usr/bin/xenia-canary
   echo "[Desktop Entry]
 Name=Xenia Canary
@@ -80,5 +103,5 @@ Terminal=false
 Icon=xenia-canary
 Comment=An experimental emulator for the Xbox 360.
 " > usr/share/applications/xenia-canary-bin.desktop
-  echo "If an older version of this package was installed, delete ~/.xenia-canary/xenia_canary to be able to run the new version. "
+  #echo "If an older version of this package was installed, delete ~/.xenia-canary/xenia_canary to be able to run the new version. "
 }
