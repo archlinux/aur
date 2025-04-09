@@ -1,0 +1,27 @@
+pkgbase = okpanel-git
+	pkgdesc = A custom AGS panel for hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/JohnOberhauser/OkPanel
+	arch = any
+	license = GPL3
+	makedepends = rsync
+	depends = aylurs-gtk-shell-git
+	depends = gvfs
+	depends = sox
+	depends = wf-recorder
+	depends = pipewire-pulse
+	depends = grim
+	depends = slurp
+	depends = networkmanager
+	depends = wireplumber
+	depends = bluez
+	depends = bluez-utils
+	depends = dart-sass
+	depends = upower
+	depends = brightnessctl
+	depends = ttf-jetbrains-mono-nerd
+	source = git+https://github.com/JohnOberhauser/OkPanel.git
+	sha256sums = SKIP
+
+pkgname = okpanel-git
