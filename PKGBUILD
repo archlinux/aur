@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Tool for building tasks for informatics competitions, with support for cache, distributed computations and more"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('cargo')
 optdepends=('texlive-core: booklet compilations')
 source=("https://github.com/olimpiadi-informatica/task-maker-rust/archive/v${pkgver}.tar.gz")
-sha256sums=('b1337916d49ef0d2abcbd6f5b323caa7d87f2f976022d6d92f99872d58f58798')
+sha256sums=('99d01cd6ea56fd36e0564c59bb49c38a53890733d879911e38ec857cfddb2768')
 
 build() {
     cd "$srcdir/task-maker-rust-${pkgver}"
