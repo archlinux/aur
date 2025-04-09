@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://www.freedownloadmanager.org/"
 license=('Freeware')
 depends=('openssl' 'xdg-utils' 'ffmpeg' 'libtorrent' 'gst-plugins-base')
-# source=("${pkgname}-${pkgver}-amd64.deb::http://debrepo.freedownloadmanager.org/pool/main/f/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-source=("https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
+source=("${pkgname}-${pkgver}-amd64.deb::http://debrepo.freedownloadmanager.org/pool/main/f/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+# source=("https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
 sha256sums=("ca3c9107fe2f9d55c1f199a2719c6cac4342094b69edb451d18639c7426d9938")
 
 prepare() {
