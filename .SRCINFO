@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = Window manager and compositor for GNOME
 	pkgver = 48.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -75,8 +75,10 @@ pkgbase = mutter-performance
 	depends = xorg-xwayland
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git#tag=48.1
 	source = git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3
+	source = 3751-fixed.patch
 	b2sums = e3a2b13d0345b9e4d5b55ba5b62a1f9c52346ebdfdc385de78d3bafeeda653d6c704837e37f374b93d8ffcae4b50bfb78be4e98511862acaa3535bc33989fca7
 	b2sums = f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf
+	b2sums = 851b9430438654ed47541528fac67c43b0c2dd60dd8f896084b90250481d18464b4e85e1bdd6cd1f38b2c75b66ac9d76119c71be1b6867843e925fc0f15e07d6
 
 pkgname = mutter-performance
 	groups = gnome
