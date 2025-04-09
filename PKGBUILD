@@ -1,25 +1,26 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
-pkgname=docs-data-alpinejs-git
+pkgname=alpinejs-doc-git
 pkgver=0.0.1
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "alpinejs-doc" "alpinejs-doc-git")
-pkgdesc="AlpineJs offline documentation data for docs viewer"
+conflicts=("${pkgname%-git}")
+pkgdesc="AlpineJs offline documentation viewer"
 arch=('any')
-url="https://gitverse.ru/naierchou/docs-data-alpinejs"
+url="https://gitverse.ru/naierchou/alpinejs-doc"
 license=('MIT')
 depends=('webappview-git')
 makedepends=()
-source=("git+https://gitverse.ru/naierchou/docs-data-alpinejs.git" "git+https://github.com/alpinejs/alpine.git")
+source=("git+https://gitverse.ru/naierchou/alpinejs-doc.git" "git+https://github.com/alpinejs/alpine.git")
 sha256sums=("SKIP" "SKIP")
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git rev-parse --short HEAD
-}
-
 package() {
+  PREFIX="/usr/local"
   cd "$srcdir/${pkgname%-git}"
-  make install BASEDIR="$pkgdir" SRCDIR="$srcdir"
+  install -d ${pkgdir}/usr/share/applications
+  install -d ${pkgdir}${PREFIX}/share/webappview/
+  install -d ${pkgdir}${PREFIX}/share/webappview/markdown/alpinejs/
+  cp -r $srcdir/alpine/packages/docs/src/* ${pkgdir}${PREFIX}/share/webappview/markdown/alpinejs/
+  cp -r application/* ${pkgdir}${PREFIX}/share/webappview/
+  cp -r shortcuts/* ${pkgdir}/usr/share/applications
 }
