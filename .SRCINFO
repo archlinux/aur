@@ -1,6 +1,6 @@
 pkgbase = micromamba-bin
 	pkgdesc = Tiny version of mamba, the fast conda package installer
-	pkgver = 2.0.8.0
+	pkgver = 2.1.0.0
 	pkgrel = 1
 	url = https://github.com/mamba-org/mamba
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = micromamba-bin
 	provides = micromamba
 	conflicts = micromamba
 	options = strip
-	source_x86_64 = micromamba-2.0.8.0-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/2.0.8/linux-64/micromamba-2.0.8-0.tar.bz2
-	sha512sums_x86_64 = 6836ef1bcabb1ec3654f564a858d9eecff24a0e29197ccac049aab37d936f1cb0fa3f53b14c2ee7efd634e136d6773757270108f109446de5d3cb0c342ccff70
-	source_aarch64 = micromamba-2.0.8.0-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/2.0.8/linux-aarch64/micromamba-2.0.8-0.tar.bz2
-	sha512sums_aarch64 = 971b87ff89341bcb11b2972af554dce1e5e71f2b9c910c231e03fbc9112618aa936b84b693f979ebc9972cf1c7ea9bc34b21f21ad918b811d1d0766a3ace183f
-	source_powerpc64le = micromamba-2.0.8.0-powerpc64le.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/2.0.8/linux-ppc64le/micromamba-2.0.8-0.tar.bz2
-	sha512sums_powerpc64le = acfcac079dc122ec65be6109e54d22af7275b1f713a21ecff38280c7f72a57e1e1ffb7ba081015273eeb2d44caa97b8768012d841d266a83be372bd4afefe648
+	source_x86_64 = micromamba-2.1.0.0-x86_64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/2.1.0/linux-64/micromamba-2.1.0-0.tar.bz2
+	sha512sums_x86_64 = 04f0d88affce2af06b14eb79a2d96061f00d16fb938a42e0198f44facd773c14969e8d3eb6cfe0d7c8e84910748d83f1bf5911966432e0c0016515860d458d00
+	source_aarch64 = micromamba-2.1.0.0-aarch64.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/2.1.0/linux-aarch64/micromamba-2.1.0-0.tar.bz2
+	sha512sums_aarch64 = ec07cc177410aaab35af4e5651ea499b4452d75bea0de335f4b308b007b5d7d453052349a7e95e7cbba4aab8e4c061a6b397d6e98be42cc3a79b3b812d3176e1
+	source_powerpc64le = micromamba-2.1.0.0-powerpc64le.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/2.1.0/linux-ppc64le/micromamba-2.1.0-0.tar.bz2
+	sha512sums_powerpc64le = f58c020da2ccbefb75a5a47fc43844b35742837477d6142bd76e46b57e640c1cfc05b6c4e769fa62ef851798dc12b1353f7432b765b650898bcc152c49df4006
 
 pkgname = micromamba-bin
