@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.13.8
+_kernver=6.14.1
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.13.8-arch1-1
+_KERNNAME=6.14.1-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-6.13.8.arch1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-headers-6.13.8.arch1-1-x86_64.pkg.tar.zst
-_docspkg=linux-docs-6.13.8.arch1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-6.14.1.arch1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-headers-6.14.1.arch1-1-x86_64.pkg.tar.zst
+_docspkg=linux-docs-6.14.1.arch1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('d135105222fb45fee7d88e0926c8450253c8147a49acdd1121f1c4f02cecad34'
-            '0714dafb48d0a7720342687e958cdbd14795aa73b4c7d237d427ea86ca9c2310'
-            '2a9a33588a5f8ca8e9312c691dc656a5e2001acd5241372ac30ec1dc36eece8f')
+sha256sums=('032134059998b76a7f94a3d05d56b5101f7b086100ed077797d888fdb91fcc27'
+            '27d30fc65b1c0d9e5e4a489872d0e3c336350160944b188145ce55d366f637ab'
+            'c32fc9d9b094d600ca600fd214c15ae7a892b32a90d57e7f400d9175aeb6ada0')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.13.8.arch1-1-bin() {
+package_linux6.14.1.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -61,6 +61,7 @@ package_linux6.13.8.arch1-1-bin() {
               'scx-scheds: to use sched-ext schedulers'
               'wireless-regdb: to set the correct wireless channels of your country')
   provides=(KSMBD-MODULE
+            NTSYNC-MODULE
             VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch
@@ -70,7 +71,7 @@ package_linux6.13.8.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.13.8.arch1-1-headers-bin() {
+package_linux6.14.1.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -79,7 +80,7 @@ package_linux6.13.8.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.13.8.arch1-1-docs-bin() {
+package_linux6.14.1.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
