@@ -2,7 +2,7 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1833_2025.03.19
+pkgver=1846_2025.04.05
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
@@ -36,6 +36,7 @@ makedepends=(
         'cmake'
         'python-protobuf'
         'python-setuptools'
+        'vulkan-headers'
 )
 optdepends=(
         'intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]'
@@ -74,7 +75,8 @@ prepare() {
 
 build() {
   cd ${_gitname}/build
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DCHIAKI_USE_SYSTEM_CURL="ON"
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" \
+    -DCHIAKI_USE_SYSTEM_CURL="ON" -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
