@@ -15,6 +15,7 @@ optdepends=('hyprpaper: hyprland wallpaper setter'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 sha256sums=('SKIP')
 license=('Unlicence')
+options=(!'debug')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
