@@ -1,4 +1,4 @@
-# Contributor: Anonymous
+# Contributor: lionel@les-miquelots.net
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-crypt-argon2'
