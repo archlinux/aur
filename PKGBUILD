@@ -1,7 +1,7 @@
-pkgver=1.6.4
-pkgrel=164
+pkgver=1.7.0
+pkgrel=170
 sha256sums=(
-    41f35ca85965df8ab1396f4f0be87f7a4de360758f8e70a833afb105263f1621
+    1ba408772cc3502e34a23a8387027befcc0c593e013c4a7087414f9b85cf88b3
     c621dce4fd45c2e911848fb03f7e4da7d0e31e03a08d7186b54e58e2a92593be
 )
 _pkgname=pixiv-multiplatform
