@@ -1,7 +1,7 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=webappview-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -9,7 +9,7 @@ pkgdesc="Web application runner and source inspector for javascript and html fil
 arch=('x86_64')
 url="https://gitverse.ru/naierchou/webappview"
 license=('GPL-3.0')
-depends=('go' 'gtk3' 'webkit2gtk')
+depends=('go' 'gtk3' 'webkit2gtk' 'bash' 'lua')
 makedepends=('git' 'go' 'gtk3' 'webkit2gtk')
 source=("git+https://gitverse.ru/naierchou/webappview.git")
 sha256sums=("SKIP")
