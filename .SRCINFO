@@ -1,0 +1,16 @@
+pkgbase = bintools
+	pkgdesc = suckless and very opinionated binary analysis tools.
+	pkgver = v0.1.0.r0.366a172
+	pkgrel = 1
+	url = https://github.com/Tomcat-42/bintools
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	provides = bintools
+	conflicts = bintools
+	options = !debug
+	options = strip
+	source = bintools::git+https://github.com/Tomcat-42/bintools.git
+	md5sums = SKIP
+
+pkgname = bintools
