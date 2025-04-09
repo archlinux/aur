@@ -1,16 +1,15 @@
 pkgbase = lib32-libmpcdec
 	pkgdesc = Musepack decoding library (32 bit)
 	pkgver = 0.1+r475
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
-	url = http://musepack.net/
+	url = https://musepack.net
 	arch = x86_64
-	license = custom
-	makedepends = lib32-libreplaygain
-	makedepends = lib32-libcue
+	license = BSD-3-Clause
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = libmpcdec
-	source = http://files.musepack.net/source/musepack_src_r475.tar.gz
+	depends = libmpcdec>=0.1+r475
+	source = musepack_src_r475.tar.gz::https://files.musepack.net/source/musepack_src_r475.tar.gz
 	source = 01_am-maintainer-mode.patch
 	source = 02_link-libm.patch
 	source = 03_mpcchap.patch
@@ -18,14 +17,13 @@ pkgbase = lib32-libmpcdec
 	source = 05_visibility.patch
 	source = 1001_missing_extern_kw.patch
 	source = add_subdir-objects.patch
-	sha256sums = a4b1742f997f83e1056142d556a8c20845ba764b70365ff9ccf2e3f81c427b2b
-	sha256sums = 76b5b7295f5e0be5de7edeb2ef481fe912cef349be5bd26f8b0870572a1ed5ee
-	sha256sums = cf7ded3474ecefbe877a672539996b99dd6d62be546b74b70c4d56a7b943952d
-	sha256sums = c6ef8e91b8e4450854d14e47fb4b4bde643b3f22a0d30cd0fae79d1897feb9f7
-	sha256sums = b184df85c164cb6f37e077b5511bee994e767f25f641d5a44ad3877db0e7eba1
-	sha256sums = db78faeb4944ab443c89a1da058693e419a8eef1ca4859550afcc6232ec407fb
-	sha256sums = b736438a93fa5cc10bde753e82a0ce432db5c8c9a4a0689baa738d421166bff4
-	sha256sums = 88e2d7df269c8f19daccb98bd9d1a2bdc9002c7ea03ca093e2dc68b0fb04e636
+	b2sums = 601762738199bd67278d934d927c35d6ba1d286be9fd57ebf2e89dca271f563e85cf023f8860bfd30b501039bba5fd68eaf2d65dce65d0dcf5ce6d75a6e692aa
+	b2sums = 940b71df9e4d582a0da733174048168aacd1f80c69d9cf2f163545cf1cdd83165eca5c18597c4f271c52f55b8085f69079a9df4e3fee3875d2853062afbbb1cd
+	b2sums = 65a3b3c2fd6e265d88075834f8d479fc40c0bf11d674c4d2ffce12b595460327bcf33931ae7c16a5b78273de10e962144764e950f2cb0ae74ece01b892526456
+	b2sums = 9c10c33bcf991facf959d41a4f24a32162631db26d2aa33e969e7d1884094cef39103bcd9d0422af2d29ca1f5963cd8d91137ffcdbb31f36c221a2c4d74715ef
+	b2sums = a5c96c5a80d76cbbb25a5647c6d754d82203936949f2720772776267f6752811f2c511e8df59a58570bba9ffe3b9482b0294eeed4364e2a4602a15d142759add
+	b2sums = e96e7928ad05bc0713ede3fbc8b5053cf1a456067faa481fa17f5156d61f6c1052b47ff27fe0e7e70d4e40fd62fae9cd0c57c5e28b149501a37dc323031a8bb5
+	b2sums = 5204b8b9596ef5663f7678cdd533a227df9722f3d66f66ea9fe151a76de6070e3801f51be657588cb14839239d6d2ed8c5a5f7e80a61f79a1eda22b72026658a
+	b2sums = 366e7a668d9c47be947b3ae785db7e0804d3d3537aa5df4c833386e8b04fc98f3c4dc1f32a0beaabf7721deae853ad6bce9acd7bae1ad1621dae1bb908a200c2
 
 pkgname = lib32-libmpcdec
-

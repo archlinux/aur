@@ -1,0 +1,4 @@
+[lib32-libmpcdec]
+source = "archpkg"
+archpkg = "libmpcdec"
+strip_release = true
