@@ -1,0 +1,4 @@
+[slidev-cli]
+source = "npm"
+npm= "@slidev/cli"
+
