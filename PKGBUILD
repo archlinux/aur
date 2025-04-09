@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-git"
 _pkgname="pay-respects"
-pkgver=0.7.2.r2.g722e740
+pkgver=0.7.3.r0.g0289192
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -11,7 +11,6 @@ provides=('pay-respects')
 install="$_pkgname.install"
 conflicts=('pay-respects')
 makedepends=('cargo' 'git')
-options=(!debug !lto)
 optdepends=()
 source=($pkgname::git+$url)
 
@@ -33,6 +32,7 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export CFLAGS+=" -ffat-lto-objects"
 	export _DEF_PR_LIB=/usr/lib/pay-respects
 	cargo build --frozen --release --workspace
 }
