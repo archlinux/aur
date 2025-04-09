@@ -20,7 +20,7 @@ build() {
 }
 
 
-package_waytrogen() {
+package() {
   cd "$pkgname-$pkgver"
   ls -la
   meson setup builddir --prefix=/usr -Dprecompiled_binary=$(realpath ../waytrogen_${pkgver}_amd64)
