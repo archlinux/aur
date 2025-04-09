@@ -1,0 +1,4 @@
+[lib32-gst-plugins-rs]
+source = "archpkg"
+archpkg = "gst-webrtc-signalling-server"
+strip_release = true
