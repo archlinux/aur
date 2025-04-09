@@ -8,6 +8,7 @@ pkgbase = landrun-bin
 	makedepends = help2man
 	provides = landrun
 	conflicts = landrun
+	conflicts = landrun-git
 	source = LICENSE-0.1.14::https://raw.githubusercontent.com/Zouuup/landrun/v0.1.14/LICENSE
 	source = README-0.1.14.md::https://raw.githubusercontent.com/Zouuup/landrun/v0.1.14/README.md
 	sha256sums = f613c30920743111429f7c1cb801f49ccaafe8ae3319b3b0a5f8aca94e5fc082
