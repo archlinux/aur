@@ -1,6 +1,6 @@
 pkgbase = prowlarr-bin
 	pkgdesc = Indexer manager/proxy for usenet and torrent users.
-	pkgver = 1.32.2.4987
+	pkgver = 1.33.3.5008
 	pkgrel = 1
 	url = https://prowlarr.com
 	install = prowlarr.install
@@ -46,11 +46,11 @@ pkgbase = prowlarr-bin
 	sha256sums = 5aa5a7800453d13948430744ca9f32584bf64f09daadf534e6eb2f6c5c452b4c
 	sha256sums = ee61f5621eae6ab932fb093a4f75a0ab11bf9e3ca829f0d34c25014f68aeff7d
 	sha256sums = 75591d19518bafc60862c60848ecad84f92c7f2b47b2b4eeafcbbbd650a43043
-	source_x86_64 = Prowlarr.master.1.32.2.4987.linux-core-x64.tar.gz::https://prowlarr.servarr.com/v1/update/master/updatefile?version=1.32.2.4987&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = 6c7748f9e5414003d001c78fdb30e7c63f6e87fcf9680f385b595e14ee45c34c
-	source_aarch64 = Prowlarr.master.1.32.2.4987.linux-core-arm64.tar.gz::https://prowlarr.servarr.com/v1/update/master/updatefile?version=1.32.2.4987&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = e1ba8af9f124624f4b2b7b2e5a0aa84b37fdbcab4fa5b606b842fad8cfca1d1e
-	source_armv7h = Prowlarr.master.1.32.2.4987.linux-core-arm.tar.gz::https://prowlarr.servarr.com/v1/update/master/updatefile?version=1.32.2.4987&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = f7b49854006b42280e48c7703ad12dfe9bdae27e62614dd0e7a29f0673c467f7
+	source_x86_64 = Prowlarr.master.1.33.3.5008.linux-core-x64.tar.gz::https://prowlarr.servarr.com/v1/update/master/updatefile?version=1.33.3.5008&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = f28c1c08e3d229f66b0317ae193f1d6679a76c0b508b2bf5d8af58af42898501
+	source_aarch64 = Prowlarr.master.1.33.3.5008.linux-core-arm64.tar.gz::https://prowlarr.servarr.com/v1/update/master/updatefile?version=1.33.3.5008&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = a32799ad40b69793bad9f92734175fc041f7a76b455d7f1f16b11a03bbd6a118
+	source_armv7h = Prowlarr.master.1.33.3.5008.linux-core-arm.tar.gz::https://prowlarr.servarr.com/v1/update/master/updatefile?version=1.33.3.5008&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = 84bd851d8594159da799b55ea311150f3d860bcea38600ad0d034b06b319c77d
 
 pkgname = prowlarr-bin
