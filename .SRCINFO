@@ -10,6 +10,7 @@ pkgbase = chiaki-ng
 	makedepends = cmake
 	makedepends = python-protobuf
 	makedepends = python-setuptools
+	makedepends = vulkan-headers
 	depends = curl
 	depends = ffmpeg
 	depends = fftw

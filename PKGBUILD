@@ -37,6 +37,7 @@ makedepends=(
         'cmake'
         'python-protobuf'
         'python-setuptools'
+        'vulkan-headers'
 )
 optdepends=(
         'intel-media-driver: vaapi backend for Intel GPUs [>= Broadwell]'
@@ -70,7 +71,8 @@ prepare() {
 
 build() {
   cd ${pkgname}/build
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" -DCHIAKI_USE_SYSTEM_CURL="ON"
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" \
+    -DCHIAKI_USE_SYSTEM_CURL="ON" -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
