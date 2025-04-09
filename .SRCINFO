@@ -1,7 +1,7 @@
 pkgbase = ttf-winky-sans
-	pkgdesc = sans-serif typeface by typofactur inspired by comic sans
+	pkgdesc = A sans-serif typeface by typofactur inspired by Microsoft Comic Sans
 	pkgver = 1.205
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/typofactur/winkysans
 	arch = any
 	license = OFL-1.1-no-RFN

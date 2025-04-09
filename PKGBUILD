@@ -1,8 +1,8 @@
 # Maintainer: zephyrdrh <zephyrdrh at gmx dot de>
 pkgname=ttf-winky-sans
 pkgver=1.205
-pkgrel=1
-pkgdesc="sans-serif typeface by typofactur inspired by comic sans"
+pkgrel=2
+pkgdesc="A sans-serif typeface by typofactur inspired by Microsoft Comic Sans" 
 arch=('any')
 url="https://github.com/typofactur/winkysans"
 license=('OFL-1.1-no-RFN')
