@@ -1,7 +1,7 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full-debug'
-pkgver=11.3.0
+pkgver=11.3.1
 pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
@@ -50,7 +50,7 @@ source=(
   'geant4-full-debug.install'
 )
 sha256sums=(
-  '1da4318b3f96f87f4d47558a32dab269b8f3fc956708038c28e72a180b0efba6'
+  'c93ca996f6f35aa43f948ffcaba9603468df01deeb62f61c33ba769227c319fe'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
 )
 install="geant4-full-debug.install"
@@ -94,6 +94,7 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
   cd "${srcdir}"/build
 
   cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=4.0 \
     -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DGEANT4_BUILD_MULTITHREADED=ON \
