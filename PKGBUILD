@@ -2,8 +2,8 @@
 
 _my_pkg=myoffice-standard-home-edition
 pkgname=${_my_pkg}-bin
-pkgver=3.3.1.44
-pkgrel=2
+pkgver=3.3.44
+pkgrel=3
 pkgdesc="A set of office applications for creating text and spreadsheet documents. Home edition."
 arch=('x86_64')
 url="https://myoffice.ru/products/standard-home-edition/"
