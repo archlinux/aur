@@ -2,7 +2,7 @@
 
 _pkgname="meeters"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Watches an ical calendar file URL and will notify shortly before a meeting begins"
 arch=('x86_64' 'i686')
@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-v${pkgver}"
 source_i686=("${_pkgsrc}-linux-x86.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86.tar.gz")
 source_x86_64=("${_pkgsrc}-linux-x86.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86.tar.gz")
-sha256sums_x86_64=('cef90acc085e3cc468d68da2de40ac0f51b58a109f03e7dc54dae9243916a8f9')
-sha256sums_i686=('cef90acc085e3cc468d68da2de40ac0f51b58a109f03e7dc54dae9243916a8f9')
+sha256sums_x86_64=('bc410e2fc2794d9ad552a944dac6e4a9b972f93e5700c31d76c21a6bdf533ebf')
+sha256sums_i686=('bc410e2fc2794d9ad552a944dac6e4a9b972f93e5700c31d76c21a6bdf533ebf')
 
 package() {
   cd "${srcdir}"
