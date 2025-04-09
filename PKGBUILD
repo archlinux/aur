@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Kootz - skxxtz@gmail.com
 pkgbase="sherlock-launcher" 
 pkgname="sherlock-launcher-bin" 
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
 url="https://github.com/skxxtz/sherlock"
