@@ -1,10 +1,10 @@
 pkgbase = mewline-git
 	pkgdesc = 😺 Elegant and extensible status bar for the meowrch distribution
-	pkgver = r31.0ccf9bb
+	pkgver = r1.0.0
 	pkgrel = 1
 	url = https://github.com/meowrch/mewline
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = python-uv
 	depends = python
 	depends = python-virtualenv
@@ -12,6 +12,10 @@ pkgbase = mewline-git
 	depends = gnome-bluetooth-3.0
 	depends = dart-sass
 	depends = gray-git
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = tesseract-data-rus
+	depends = cliphist
 	source = git+https://github.com/meowrch/mewline.git
 	sha256sums = SKIP
 
