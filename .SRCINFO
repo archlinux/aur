@@ -1,0 +1,35 @@
+pkgbase = python-pywuffs-git
+	pkgdesc = This project is intended to enable using Wuffs the Library from Python code.
+	pkgver = 2.0.1.r41.20250405.2e62bc5
+	pkgrel = 1
+	url = https://github.com/dev0x13/pywuffs
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = pentium4
+	arch = riscv64
+	license = MIT
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = git
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = wuffs-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = python>=3
+	optdepends = python-pysimplegui
+	provides = pywuffs=2.0.1.r41.20250405.2e62bc5
+	provides = python-pywuffs=2.0.1.r41.20250405.2e62bc5
+	conflicts = pywuffs
+	conflicts = python-pywuffs
+	source = python-pywuffs::git+https://github.com/dev0x13/pywuffs.git
+	sha256sums = SKIP
+
+pkgname = python-pywuffs-git
