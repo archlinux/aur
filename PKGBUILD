@@ -2,7 +2,7 @@
 # Previous Maintainer: Y7n05h < echo WTduMDVoQHk3bjA1aC5kZXY= | base64 -d >
 # Contributor: Y7n05h
 pkgname=ecapture
-pkgver=0.8.12
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="capture SSL/TLS text content without CA cert using eBPF"
 arch=("x86_64" "aarch64")
@@ -11,7 +11,7 @@ license=("Apache")
 depends=("glibc")
 makedepends=("clang" "go" "bpf" "git")
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('cc1db6fea040a7b8972fcec4ab57dd1603021c921d014184f7e684581467a2a9')
+sha256sums=('9c88b11eee6616fb96f1f380394073c6a1bd80890cd6e1ba8152444f8e98bc25')
 prepare() {
 	cd "$pkgname"
 	# sed -i 's/-w -s/-compressdwarf=false -linkmode external -extldflags \\"\$\{LDFLAGS\}\\"/g' Makefile
