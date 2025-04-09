@@ -1,0 +1,4 @@
+[gonic]
+source = "git"
+git = "https://github.com/sentriz/gonic.git"
+prefix = "v"
