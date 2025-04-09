@@ -1,6 +1,6 @@
 pkgbase = quimup
 	pkgdesc = A simple Qt6 frontend to MPD
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/quimup/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = quimup
 	depends = mpd
 	depends = qt6-base
 	depends = taglib
-	source = quimup-2.1.0-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%202.1/Quimup-2.1.0.source.tar.gz
-	sha512sums = c7d86deaa6483ea9467e2bc8dd7e413f67ebf271713cab939cda8c9689a52651b45724d99cdec7d72350273fb59e2542acf82ebc9da1cea8e0210f575351e686
+	source = quimup-2.1.1-source.tar.gz::https://sourceforge.net/projects/quimup/files/Quimup%202.1.1/Quimup-2.1.1.source.tar.gz
+	sha512sums = 4adec84bcd6e9825a1610fb74be5768d1d3eeeb641fdb57b64db6904a0b8cfad48fc9cb53732f169710528085d9433e35f936a519a8128b822a89fa971b5533b
 
 pkgname = quimup
