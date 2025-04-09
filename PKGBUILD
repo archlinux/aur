@@ -5,8 +5,8 @@ _pkgname=scarb
 pkgname=${_pkgname}-bin
 _orgname=software-mansion
 _github=${_orgname}/${_pkgname}
-pkgver=2.11.3
-pkgrel=2
+pkgver=2.11.4
+pkgrel=1
 pkgdesc='The Cairo package manager'
 arch=('x86_64' 'aarch64')
 url='https://docs.swmansion.com/scarb'
@@ -15,8 +15,8 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/${_github}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('e452689688c4af1330f1c4b95384cf3266e30f9afff13566154a208946c2cfb6')
-sha256sums_aarch64=('9d58c15837ad47656da28e9ce7ce31694d3cd5df95b82cc2153b7f4d59b9da6d')
+sha256sums_x86_64=('356b0211123cb8aefc589bc277d7475168032dce0675de55fcaf0dabe684abfb')
+sha256sums_aarch64=('87793daaa6a618747e0b53ca891a09b81d1303f2cf8be1711d4c2596cb425afb')
 
 package() {
 	for each_executable in $(ls "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu/bin/"); do
