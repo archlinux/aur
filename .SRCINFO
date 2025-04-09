@@ -1,7 +1,7 @@
 pkgbase = python-mcp
 	pkgdesc = Python implementation of the Model Context Protocol (MCP).
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = x86_64
 	arch = aarch64

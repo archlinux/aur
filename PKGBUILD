@@ -3,7 +3,7 @@
 _name=mcp
 pkgname=python-${_name}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of the Model Context Protocol (MCP).'
 arch=('x86_64' 'aarch64')
 url='https://github.com/modelcontextprotocol/python-sdk'
