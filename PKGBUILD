@@ -1,10 +1,10 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=docs-data-alpinejs-git
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "alpinejs-doc")
+conflicts=("${pkgname%-git}" "alpinejs-doc" "alpinejs-doc-git")
 pkgdesc="AlpineJs offline documentation data for docs viewer"
 arch=('any')
 url="https://gitverse.ru/naierchou/docs-data-alpinejs"
