@@ -1,37 +1,55 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-_pkgname="stirling-pdf"
+_reponame=Stirling-PDF
+_pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
 pkgver=0.45.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
-url="https://github.com/Stirling-Tools/Stirling-PDF"
+url="https://github.com/Stirling-Tools/${_reponame}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 license=("GPL-3.0-or-later")
 backup=("etc/${_pkgname}/${_pkgname}.env")
-depends=("java-runtime-headless>=17" "libreoffice-fresh" "ocrmypdf" "pngquant" "python-opencv" "tesseract-data-eng" "unoconv" "unpaper")
+depends=(
+    "fontconfig"
+    "java-runtime-headless>=21"
+    "libreoffice"
+    "pngquant"
+    "poppler"
+    "python-opencv"
+    "python-pdf2image"
+    "python-pillow"
+    "python-unoserver"
+    "python-weasyprint"
+    "qpdf"
+    "tesseract-data-eng"
+)
 optdepends=("jbig2enc: for certain OCR functionality")
-source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/Stirling-PDF-with-login.jar"
+source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_reponame}-with-login.jar"
+        "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.env"
         "${_pkgname}.service"
+        "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('41a33737c39a6ffbc8c54224e2068b2ca53b100bfa29d90cbfbad3f9d41616d3'
-            '21eb87b52d8502b10b339f9d2267530fcaa73f849317ad25102b6bd489ce9280'
-            '4abb93db9f1f000ddb3d1f25dbda9f207a3f8fd8a783c264115271e36662e9f3'
-            '0f8b3d727955536ae3ed98e8aeccb8f073e4c97c36a95de595624a71ea5fdd11'
+sha256sums=('31eccb63f2465c04cbca6f73e33e8e91390063e69e5d9a43339c05197126cdaa'
+            '015a3429410fe6f89476b4330beacb489f79988c9200268d27403f8416eede82'
+            'd395992889fdf60de430509cd5866fc4606548aa1ba8f134b7e6bd4e29f293c9'
+            'd717c3d0d7165f33d12e6230e2ad87f42d2fc26debe3c2a5c516d2e754c93203'
+            'cc15280066c4e188edb30596fb02eabf46e5335642a4202366408cc36208e8f0'
+            'efdf233d59cf82bc331e3ea85e912e7f534ed0d821674e232e3fc827f699ef43'
             '554fbc114c32f4b81fe3b8199e936881e26b5649098c495acfd4cd77eefd2612')
 noextract=("${_pkgname}-${pkgver}.jar")
-_langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces
-        chi_sim chi_sim_vert chi_tra chi_tra_vert chr cos cym dan dan_frak deu deu_frak div dzo ell eng enm epo
-        equ est eus fao fas fil fin fra frk frm fry gla gle glg grc guj hat heb
-        hin hrv hun hye iku ind isl ita ita_old jav jpn jpn_vert kan kat kat_old kaz khm
-        kir kmr kor kor_vert lao lat lav lit ltz mal mar mkd mlt mon mri msa
-        mya nep nld nor oci ori osd pan pol por pus que ron rus san sin slk
-        slk_frak slv snd spa spa_old sqi srp srp_latn sun swa swe syr tam tat
-        tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
+
+_langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces chi_sim chi_sim_vert
+        chi_tra chi_tra_vert chr cos cym dan dan_frak deu deu_frak div dzo ell enm epo equ
+        est eus fao fas fil fin fra frk frm fry gla gle glg grc guj hat heb  hin hrv hun hye
+        iku ind isl ita ita_old jav jpn jpn_vert kan kat kat_old kaz khm kir kmr kor kor_vert
+        lao lat lav lit ltz mal mar mkd mlt mon mri msa mya nep nld nor oci ori osd pan pol
+        por pus que ron rus san sin slk slk_frak slv snd spa spa_old sqi srp srp_latn sun swa
+        swe syr tam tat tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
 
 for lang in ${_langs[@]}; do
     optdepends+=("tesseract-data-${lang}: for ${lang} language OCR")
@@ -41,6 +59,10 @@ package() {
     install -Dm644 "${_pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}.jar"
     install -Dm644 "${_pkgname}.env"           "${pkgdir}/etc/${_pkgname}/${_pkgname}.env"
     install -Dm644 "${_pkgname}.service"       "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm755 "${_pkgname}.sh"            "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${_pkgname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
     install -Dm644 "${_pkgname}.tmpfiles"      "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+    cd "${_reponame}-${pkgver}/src/main/resources"
+    install -Dm644 static/fonts/*.ttf       -t "${pkgdir}/usr/share/fonts/${_pkgname}"
 }

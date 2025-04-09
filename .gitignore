@@ -1,4 +1,5 @@
 /pkg
 /src
-*.pkg.tar.*
 *.jar
+*.pkg.tar.*
+*.tar.gz
