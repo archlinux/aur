@@ -1,0 +1,23 @@
+pkgbase = typhoon-bin
+	pkgdesc = A stylish weather app based on Stormcloud
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = http://eaglemode.sourceforge.net/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = tar
+	depends = gtk3
+	depends = webkit2gtk
+	depends = python
+	depends = python-dbus
+	depends = python-gobject
+	depends = bash
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = imagemagick
+	provides = typhoon
+	conflicts = typhoon
+	source_x86_64 = https://github.com/archisman-panigrahi/typhoon/releases/download/v0.9.7/typhoon_0.9.7_all.deb
+	sha256sums_x86_64 = e0ed19d233e767b0b91213f8571d5cadaebb5dd31e1069ae70cbee781ab48833
+
+pkgname = typhoon-bin
