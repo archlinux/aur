@@ -1,5 +1,5 @@
 pkgname="fudebako-git"
-pkgver=r21.cff4401
+pkgver=r24.ceaf576
 pkgrel=1
 pkgdesc="A GTK4 (GJS) based desktop shells"
 arch=('any')
