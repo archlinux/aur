@@ -1,15 +1,16 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
+# Maintainer: Bill Sideris <bill88t@feline.gr>
 # Contributor: Xevnar <xevnar AT gmail.com>
 # Thanks: Lukas Fleischer (community/qtspim)
 # Thanks: Lukas Jirkovsky (community/qtspim)
 # Thanks: Chih-Hsuan Yen (aur/spim-svn)
 
 pkgname=spimsuite-svn
-pkgver=r739
+pkgver=r764
 pkgrel=1
 pkgdesc="spim + xspim + QtSpim"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://spimsimulator.sourceforge.net/"
 license=('BSD')
 depends=('glibc' # spim
@@ -38,7 +39,7 @@ pkgver() {
 prepare() {
   # QtSpim
   cd "$srcdir/${pkgname%-svn}/QtSpim"
-  rm parser_yacc.* scanner_lex.*
+  rm parser_yacc.* scanner_lex.* || true
 }
 
 build() {

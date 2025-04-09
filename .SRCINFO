@@ -1,9 +1,10 @@
 pkgbase = spimsuite-svn
 	pkgdesc = spim + xspim + QtSpim
-	pkgver = r739
+	pkgver = r764
 	pkgrel = 1
 	url = http://spimsimulator.sourceforge.net/
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = subversion
 	makedepends = imake
@@ -29,4 +30,3 @@ pkgbase = spimsuite-svn
 	md5sums = SKIP
 
 pkgname = spimsuite-svn
-
