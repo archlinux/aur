@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -14,12 +14,16 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-js
 options=(!lto)
 _date=20250329
 _commit=32bb14f
-source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz")
-sha256sums=('68fd93c2350979e19d6dd8a47722010c1540420d3e36f76a6f5b79ce3679292b')
+source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz"
+	"qt-6.9.0.diff::$url/commit/e341dcf238193995b7e61c8353f000d49aee7f33.diff")
+sha256sums=('68fd93c2350979e19d6dd8a47722010c1540420d3e36f76a6f5b79ce3679292b'
+            '249f987d055a9ce9f14a583851c3a79d9234aad65c686e621a569ef1736275fe')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
-	}
+	patch -p1 < "$srcdir/qt-6.9.0.diff"
+	sed -i 's/VERSION 3.2.0/VERSION 3.5/' externals/discord-rpc/CMakeLists.txt
+}
 
 build() {
 	cd "$srcdir"
@@ -51,7 +55,6 @@ build() {
 	-DCMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4" \
 	-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
 	-DENABLE_QT_TRANSLATION=ON \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 	-Wno-dev
 
 	cmake --build build
