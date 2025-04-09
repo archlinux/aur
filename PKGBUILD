@@ -1,12 +1,12 @@
 # Maintainer: Drommer <drommer@github.com>
 
 pkgname=stacer-git
-pkgver=1.3.0.r3.g07a0966
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Linux System Optimizer and Monitoring"
 url="https://stacer.quentium.fr/"
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('qt6-charts' 'qt6-svg')
 makedepends=('git' 'cmake' 'qt6-tools')
 provides=('stacer')
@@ -21,13 +21,15 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
+
+  sed -i "s|Qt6 Qt5|Qt6|" CMakeLists.txt
   mkdir build
 
   cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++ -B build -S .
   make -C build
 
-  lupdate stacer/stacer.pro -no-obsolete
-  lrelease stacer/stacer.pro
+  /usr/lib/qt6/bin/lupdate stacer/stacer.pro -no-obsolete
+  /usr/lib/qt6/bin/lrelease stacer/stacer.pro
 }
 
 package() {
@@ -35,13 +37,13 @@ package() {
 
   install -Dm755 "build/output/stacer" -t "${pkgdir}/usr/share/stacer"
   install -Dm755 "build/output/lib/libstacer-core.a" -t "${pkgdir}/usr/share/stacer/lib"
-  install -Dm644 "applications/stacer.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "translations"/*.qm -t "${pkgdir}/usr/share/stacer/translations"
 
   for i in 16 32 64 128 256; do
     install -Dm644 "icons/hicolor/${i}x${i}/apps/stacer.png" -t "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
   done
 
-  install -Dm644 "translations"/*.qm -t "${pkgdir}/usr/share/stacer/translations"
+  install -Dm644 "applications/stacer.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/stacer"
 
   mkdir "${pkgdir}/usr/bin"
