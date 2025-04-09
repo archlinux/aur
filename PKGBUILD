@@ -94,6 +94,7 @@ setenv G4PARTICLEHPDATA /opt/Geant4/Libraries/G4TENDL1.4" > Geant4.csh
   cd "${srcdir}"/build
 
   cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=4.0 \
     -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
     -DCMAKE_BUILD_TYPE=RelWithDebug \
     -DGEANT4_BUILD_MULTITHREADED=ON \
