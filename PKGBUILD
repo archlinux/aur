@@ -13,28 +13,26 @@ conflicts=(nanomq)
 makedepends=(libarchive)
 backup=(etc/nanomq.conf)
 install="${pkgname}.install"
-noextract=("${pkgver}-"{x86_64,aarch64,armel,armv7h}".deb")
+noextract=("${pkgver}-"{x86_64,aarch64,armel,armv7h}".rpm")
 source=(nanomq.service)
-source_x86_64=("${pkgver}-x86_64.deb::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-amd64.deb")
-source_aarch64=("${pkgver}-aarch64.deb::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-arm64.deb")
-source_armel=("${pkgver}-armel.deb::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armel.deb")
-source_armv7h=("${pkgver}-armv7h.deb::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armhf.deb")
+source_x86_64=("${pkgver}-x86_64.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-x86_64.rpm")
+source_aarch64=("${pkgver}-aarch64.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-arm64.rpm")
+source_armel=("${pkgver}-armel.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armel.rpm")
+source_armv7h=("${pkgver}-armv7h.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armhf.rpm")
 sha512sums=('7b86f32e35697f0f955f3d562637c5e067ac9b6691c7b6957d9106836445ffb75690530d72c5a0613519daaff7459ffbc776b2b3210d2a727053b097c8d950ee')
-sha512sums_x86_64=('23852e6208e9bd3b37802077af05dd95ee441f0bf3f4236188e47d10ee8c1ae34f606592842c6c30590038b71f7544d9c96091f0558bdafbb64e7c9e7fc37ca9')
-sha512sums_aarch64=('1ac6876e1e737e0f59412638571cf078e7f52dc0accdd21f8d8fed6930f7572a00c817c57d9c8705d6624efc6054f5a2a1665bc2ccc1b0c52ba347372e02f02c')
-sha512sums_armel=('1e19e1853fa762986f04887a3af49b63957f4e051f033be2ebcee61bceb4231d6d12953cd2342ca7d55f8f79ca6859f2c37ddb0898e04ef812a5663bd1263b48')
-sha512sums_armv7h=('c46fc9557812b826d00dec41c4638ab0c63643544618d392321c1bbc244a0ecc573c19c26916333da23570901ec06ce6b0ee040ddd21b01d1d78a180bef37c2d')
+sha512sums_x86_64=('e48ae2427a6c4be7522d4b72fc3c9301f799a6a1f997212ae44eede3f998b96af9e2029622e774c377a65da3c3fce5efc8cd84761be82c19dc5a295a7b815eff')
+sha512sums_aarch64=('bc4c4a93bf6a2d935a2cfbddf3d1f4f5c9171e35a013a93e2e5a2d134c7b740e423a5ea0c740724ff6bb85f162a0a0f76da3566947b65aca76776d3764cddbe8')
+sha512sums_armel=('93bb595299d04c84ecd4d61caf7b281b5ab14525675b489778792ba2819318de7dffdbf03c2e848cc449886aa499b02a8b699932301bfc99c92e7127fe57fcad')
+sha512sums_armv7h=('3975bf1b077014cd3ec105b30edbc5b6d92d40b92e2c97fc328aed407538a7879cfa366fc9e447bb163882d6e09933375df21ed0bb44a9b6e60159aa8438fc6c')
 
 prepare() {
-  cd "${srcdir}"
-  rm -f "${srcdir}/data.tar.xz"
-  bsdtar -xf "${pkgver}-${CARCH}.deb" data.tar.xz
-  mkdir -p "${srcdir}/${pkgver}-${CARCH}"
-  bsdtar -xzf data.tar.xz --strip-components 1 -C "${srcdir}/${pkgver}-${CARCH}"
+  rm -rf "${srcdir}/root"
+  mkdir -p "${srcdir}/root"
+  bsdtar -xf "${srcdir}/${pkgver}-${CARCH}.rpm" -C "${srcdir}/root"
 }
 
 package() {
-  cd "${srcdir}/${pkgver}-${CARCH}"
+  cd "${srcdir}/root"
 
   install --directory \
     "${pkgdir}/usr/bin" \
