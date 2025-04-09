@@ -1,6 +1,6 @@
 pkgbase = ahk_x11-bin
 	pkgdesc = AutoHotkey for Linux.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/phil294/AHK_X11
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = ahk_x11-bin
 	conflicts = ahk_x11
 	options = !debug
 	options = !strip
-	source = ahk_x11-bin-1.0.4.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.4.tar.gz
-	source = ahk_x11-bin-1.0.4.AppImage::https://github.com/phil294/AHK_X11/releases/download/1.0.4/ahk_x11.AppImage
-	sha512sums = 0227310b3c730bec3e077701c192c2e938cadf66b6975e4a995f96a9ebb7f132e0529237dfdbf7247e662f775da48763806123f051a0d8eb3a39dd49f2043a22
-	sha512sums = 3a346774822ce686af9e107459935184e31f3e17722deaabc3d5e5d583f8dc6ae0a49b814029c03e76685ffe4d4443446ebe438e9479d0c0a2e3778b93c9c56e
+	source = ahk_x11-bin-1.0.5.tar.gz::https://github.com/phil294/AHK_X11/archive/refs/tags/1.0.5.tar.gz
+	source = ahk_x11-bin-1.0.5.AppImage::https://github.com/phil294/AHK_X11/releases/download/1.0.5/ahk_x11.AppImage
+	sha512sums = 858b7e21577dbac09a58f7cdad48a5375b04bd94e784dfd4f39c5d61297e8a19883e0b6c2b497c28dfcd430839d1c0a6f6522d197b740db9ecb072683ce73063
+	sha512sums = 1db4f837142d54fcd1a177fca3efe531c186c312bf10a98bf06ae70227f747b2bfb2484d999bfc4ebe29a1d471d97d014d637505ba7ee627762a5a4347104713
 
 pkgname = ahk_x11-bin
