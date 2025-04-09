@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-bin
 _pkgname=Onlook
-pkgver=0.2.25
+pkgver=0.2.26
 _electronversion=35
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Prebuilt version.Use system-wide electron)"
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('b6054979d7a99dd45dbb3f38214852e22407039b7682b154e073895e6091d0e9')
-sha256sums_x86_64=('8c1ed76e1f045a0a0e575c9dffc46fc7abfa0791c3637a76dbba93113966d167')
+sha256sums_aarch64=('105671adb1e5ff8511c8347cb74f7959f64309307140b5226e41f8beff696d70')
+sha256sums_x86_64=('dd038995c6c0345c25eafc63df5ad928384a0c1089612f492be612a3b4d928d9')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -48,7 +48,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,bun} -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,bun} "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
