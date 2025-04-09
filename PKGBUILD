@@ -1,7 +1,7 @@
 # Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=oterm
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A text-based terminal client for Ollama"
 arch=('any')
@@ -42,4 +42,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('fce7e129dd607cf97c8575c8545294d77ea352d6463d4958c4fb1179240aafbe7ebc502e0895d8a5c952405186ce6a7f6524cbaa35da05267ec9be685a174d18')
+b2sums=('0baf32add412dfa36cb13f8a35f4d3d4c4a21b2abd046b5c129421b1d3ab0987adfe7af201467a4b95a2b2eabc44168ecbecb77d0fb36c2844fe13b70214e0a1')
