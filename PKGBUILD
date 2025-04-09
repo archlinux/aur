@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=pak
-_pkgver=0.8.0.1
+_pkgver=0.8.0.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,9 +45,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('3dd18300813a41d0bf7479009b4d6ab1'
+md5sums=('dff734c1b69ff2bbc8302efa4e8dfdb9'
          '29b1470e2d25f82ebeafc02fe3b2594a')
-b2sums=('7213f6474df4fdabcd35102d8cc6620319a3dc51e5b8ebbf5d0bed179f05fae5f5c2a460eb42ab49f0777cd46e045efcb2884e7c3d203c23bb3245b31cc4e62c'
+b2sums=('0c7d639f521777264c9f55f74d833acf676c5633bc5ebeaf8a53e29861d4542d5f7df6e7dd5cfefd68d8304e1a090a401595d08a7989bbee91efd211a87f4ece'
         'b422c6a23d6850831433fdcf3e81684189bdaea1735fcc85edeff3202fe084f4167876949ff9ddfd5654cb2ce202ed005800a217dfe9bb12fb8240456880b4f1')
 
 prepare() {
