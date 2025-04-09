@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.6.0
-pkgrel=13
+pkgrel=14
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -246,6 +246,9 @@ _prepare() {
 
   # Build aotriton from source instead of downloading a binary
   export AOTRITON_INSTALL_FROM_SOURCE=1
+
+  # Fix build issues for onnx with cmake 4.0
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
 }
 
 build() {
