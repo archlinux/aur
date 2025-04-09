@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Einstein
+Comment=NewtonOS running on other operating systems.
+GenericName=Emulator
+Exec=/usr/local/bin/einstein-emulator
+Icon=einstein-emulator
+Type=Application

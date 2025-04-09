@@ -1,0 +1,20 @@
+pkgbase = einstein-emulator
+	pkgdesc = NewtonOS running on other operating systems
+	pkgver = 2024.12.26
+	pkgrel = 1
+	url = https://github.com/pguyot/Einstein
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = clang
+	makedepends = cmake
+	makedepends = libbsd
+	makedepends = libpulse
+	depends = libbsd
+	depends = libpulse
+	options = !emptydirs
+	source = einstein-emulator-2024.12.26.tar.gz::https://github.com/pguyot/Einstein/archive/refs/tags/v2024.12.26.tar.gz
+	source = einstein.desktop
+	sha256sums = 6b8f580ed00388550ee4740ca73157e25e7ac3a3dd97055ba21a0591a268d447
+	sha256sums = 1faf3f02701cde73086aa8d51fb7e150520c4cb49d0c74f4e0618529df1006de
+
+pkgname = einstein-emulator
