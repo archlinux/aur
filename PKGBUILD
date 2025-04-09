@@ -14,7 +14,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=53e7a3f028b6119ba499245bde0fa10275752817408a4a36b5a34ad74a4727b2}
+: ${_cksum:=5bf122d1879fd64fadf0cecfcd477957ebce1bc5931c14835ee0eda88463e407}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +26,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.13.9
+pkgver=6.14.1
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -81,12 +81,12 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]]; then
   source+=(
-    1001-6.13.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.13.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-6.14.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    '569742a1c7ce7996ee4c650c444ed13d650fff7b84f23a16e6358693e58aee9f'
-    '40bb65492702d3f92dd67f8f1e424a1c686f1ff2e2d7d2566451693a7adc09f3'
+    '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
+    '827b169cf33da439d1d01e5c24ddee229879d57db4b9e1ea219c49289a249384'
   )
 fi
 

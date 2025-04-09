@@ -1,20 +1,20 @@
-From 32d421bf11726bac8f1bbf105095db02023117d5 Mon Sep 17 00:00:00 2001
+From 330fad536d9da07f6fb8f58901d939ea3292238f Mon Sep 17 00:00:00 2001
 From: xiota <>
-Date: Mon, 27 Jan 2025 05:45:27 +0000
+Date: Tue, 1 Apr 2025 14:48:21 +0000
 Subject: [PATCH] i915-vga-arbiter
 
 ---
- .../drm/i915/display/intel_display_driver.c   | 20 +++++++++--
+ .../drm/i915/display/intel_display_driver.c   | 18 ++++++++--
  .../drm/i915/display/intel_display_driver.h   |  1 +
  .../drm/i915/display/intel_display_params.c   |  3 ++
  .../drm/i915/display/intel_display_params.h   |  1 +
  drivers/gpu/drm/i915/display/intel_vga.c      | 33 +++++++++++++++++++
  drivers/gpu/drm/i915/display/intel_vga.h      |  4 +++
  .../gpu/drm/xe/compat-i915-headers/i915_drv.h |  7 ++++
- 7 files changed, 66 insertions(+), 3 deletions(-)
+ 7 files changed, 64 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display_driver.c b/drivers/gpu/drm/i915/display/intel_display_driver.c
-index 56b78cf6b..b787f82dc 100644
+index 50ec0c3c7..a1b005db2 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_driver.c
 +++ b/drivers/gpu/drm/i915/display/intel_display_driver.c
 @@ -30,6 +30,7 @@
@@ -25,7 +25,7 @@ index 56b78cf6b..b787f82dc 100644
  #include "intel_display_power.h"
  #include "intel_display_types.h"
  #include "intel_display_wa.h"
-@@ -221,9 +222,11 @@ int intel_display_driver_probe_noirq(struct drm_i915_private *i915)
+@@ -222,9 +223,11 @@ int intel_display_driver_probe_noirq(struct intel_display *display)
  
  	intel_bios_init(display);
  
@@ -39,10 +39,10 @@ index 56b78cf6b..b787f82dc 100644
 +	}
  
  	/* FIXME: completely on the wrong abstraction layer */
- 	ret = intel_power_domains_init(i915);
-@@ -520,6 +523,12 @@ int intel_display_driver_probe(struct drm_i915_private *i915)
+ 	ret = intel_power_domains_init(display);
+@@ -523,6 +526,12 @@ int intel_display_driver_probe(struct intel_display *display)
  
- 	intel_overlay_setup(i915);
+ 	intel_overlay_setup(display);
  
 +	/*
 +	 * Must do this after fbcon init so that
@@ -53,21 +53,16 @@ index 56b78cf6b..b787f82dc 100644
  	/* Only enable hotplug handling once the fbdev is fully set up. */
  	intel_hpd_init(i915);
  
-@@ -566,9 +575,13 @@ void intel_display_driver_register(struct drm_i915_private *i915)
- /* part #1: call before irq uninstall */
- void intel_display_driver_remove(struct drm_i915_private *i915)
- {
-+	struct intel_display *display = &i915->display;
-+
- 	if (!HAS_DISPLAY(i915))
+@@ -572,6 +581,8 @@ void intel_display_driver_remove(struct intel_display *display)
+ 	if (!HAS_DISPLAY(display))
  		return;
  
 +	intel_vga_enable_mem(display);
 +
- 	flush_workqueue(i915->display.wq.flip);
- 	flush_workqueue(i915->display.wq.modeset);
- 
-@@ -599,6 +612,7 @@ void intel_display_driver_remove_noirq(struct drm_i915_private *i915)
+ 	flush_workqueue(display->wq.flip);
+ 	flush_workqueue(display->wq.modeset);
+ 	flush_workqueue(display->wq.cleanup);
+@@ -603,6 +614,7 @@ void intel_display_driver_remove_noirq(struct intel_display *display)
  	intel_unregister_dsm_handler();
  
  	/* flush any delayed tasks or pending work */
@@ -76,22 +71,22 @@ index 56b78cf6b..b787f82dc 100644
  
  	intel_hdcp_component_fini(display);
 diff --git a/drivers/gpu/drm/i915/display/intel_display_driver.h b/drivers/gpu/drm/i915/display/intel_display_driver.h
-index 42cc4af6d..3b233969b 100644
+index 2966ff91b..ca0dc7577 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_driver.h
 +++ b/drivers/gpu/drm/i915/display/intel_display_driver.h
-@@ -13,6 +13,7 @@ struct drm_i915_private;
- struct drm_modeset_acquire_ctx;
+@@ -13,6 +13,7 @@ struct drm_modeset_acquire_ctx;
+ struct intel_display;
  struct pci_dev;
  
 +extern void intel_vga_disable_mem(struct intel_display *display);
  bool intel_display_driver_probe_defer(struct pci_dev *pdev);
- void intel_display_driver_init_hw(struct drm_i915_private *i915);
- void intel_display_driver_early_probe(struct drm_i915_private *i915);
+ void intel_display_driver_init_hw(struct intel_display *display);
+ void intel_display_driver_early_probe(struct intel_display *display);
 diff --git a/drivers/gpu/drm/i915/display/intel_display_params.c b/drivers/gpu/drm/i915/display/intel_display_params.c
-index 024de8abc..efc57e90c 100644
+index f92e4640a..e463b0b13 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_params.c
 +++ b/drivers/gpu/drm/i915/display/intel_display_params.c
-@@ -94,6 +94,9 @@ intel_display_param_named_unsafe(force_reset_modeset_test, bool, 0400,
+@@ -99,6 +99,9 @@ intel_display_param_named_unsafe(force_reset_modeset_test, bool, 0400,
  intel_display_param_named(disable_display, bool, 0400,
  	"Disable display (default: false)");
  
@@ -102,7 +97,7 @@ index 024de8abc..efc57e90c 100644
  	"Enable verbose logs (ie. WARN_ON()) in case of unexpected hw state conditions.");
  
 diff --git a/drivers/gpu/drm/i915/display/intel_display_params.h b/drivers/gpu/drm/i915/display/intel_display_params.h
-index dcb6face9..1900b9ff9 100644
+index 5317138e6..5451b18b6 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_params.h
 +++ b/drivers/gpu/drm/i915/display/intel_display_params.h
 @@ -40,6 +40,7 @@ struct drm_printer;
@@ -203,5 +198,5 @@ index 84b0991b3..a908e706e 100644
  #define INTEL_INFO(dev_priv)	(&((dev_priv)->info))
  #define IS_I830(dev_priv)	(dev_priv && 0)
 -- 
-2.48.1
+2.49.0
 
