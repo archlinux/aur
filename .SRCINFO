@@ -1,0 +1,12 @@
+pkgbase = pyinstxtractor-ng-git
+	pkgdesc = PyInstaller Extractor Next Generation
+	pkgver = r28.b733293
+	pkgrel = 1
+	url = https://github.com/pyinstxtractor/pyinstxtractor-ng
+	arch = any
+	license = GPL-3.0-only
+	makedepends = uv
+	source = git+https://github.com/pyinstxtractor/pyinstxtractor-ng.git
+	sha256sums = SKIP
+
+pkgname = pyinstxtractor-ng-git
