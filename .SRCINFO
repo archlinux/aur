@@ -1,6 +1,6 @@
 pkgbase = cbm
 	pkgdesc = Color Bandwidth Meter - display in real time the network traffic speed
-	pkgver = 0.3.2
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/resurrecting-open-source-projects/cbm
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = cbm
 	makedepends = autoconf
 	makedepends = automake
 	depends = ncurses
-	source = cbm-0.3.2.tar.gz::https://github.com/resurrecting-open-source-projects/cbm/archive/refs/tags/0.3.2.tar.gz
-	sha256sums = 2014491b160bce82ac11558611f735f6fbeffcd6f5ae006ae0ab09cdd7f5c152
+	source = cbm-0.4.tar.gz::https://github.com/resurrecting-open-source-projects/cbm/archive/refs/tags/0.4.tar.gz
+	sha256sums = 07f995cebf1eefd78a2f488be56a56c24378270c63c6e5f302d8557922bb4920
 
 pkgname = cbm
