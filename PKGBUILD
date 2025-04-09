@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=natscli-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="The NATS Command Line Interface"
 arch=(x86_64)
@@ -13,8 +13,8 @@ provides=('nats')
 
 source=("https://github.com/nats-io/natscli/releases/download/v${pkgver}/nats-${pkgver}-linux-amd64.zip")
 
-sha256sums=('d603c2ab08c8a7bdfdffa07acaf07f076bc08a5966a8df3495d01cd4fd031126')
+sha256sums=('726d69bdb5f75d55f1062afc3d59171ed50f0e5dbc9fe69690d3c80a847297c4')
 
 package() {
-	install -D -m755 $srcdir/nats-${pkgver}-linux-amd64/nats $pkgdir/usr/bin/nats
+  install -D -m755 $srcdir/nats-${pkgver}-linux-amd64/nats $pkgdir/usr/bin/nats
 }
