@@ -1,0 +1,3 @@
+[watch-your-lan]
+source = "git"
+git = "https://github.com/aceberg/WatchYourLAN.git"
