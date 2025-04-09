@@ -9,7 +9,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/gojue/ecapture"
 license=("Apache")
 depends=("glibc")
-makedepends=("clang" "go" "bpf" "git")
+makedepends=("clang" "go" "bpf" "git" "linux-headers" "libelf" "llvm" "pkgconf")
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 sha256sums=('9c88b11eee6616fb96f1f380394073c6a1bd80890cd6e1ba8152444f8e98bc25')
 prepare() {
@@ -26,6 +26,7 @@ build() {
     export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
 	make
 }
+
 package() {
 	cd "$pkgname"
 	install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin"

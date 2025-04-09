@@ -10,6 +10,10 @@ pkgbase = ecapture
 	makedepends = go
 	makedepends = bpf
 	makedepends = git
+	makedepends = linux-headers
+	makedepends = libelf
+	makedepends = llvm
+	makedepends = pkgconf
 	depends = glibc
 	source = ecapture::git+https://github.com/gojue/ecapture#tag=v1.0.1
 	sha256sums = 9c88b11eee6616fb96f1f380394073c6a1bd80890cd6e1ba8152444f8e98bc25
