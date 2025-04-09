@@ -8,8 +8,18 @@ pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
 url="https://wiki.gnome.org/Projects/liblarch"
 license=('LGPL-3.0-or-later')
-depends=('gtk3' 'python-cairo' 'python-gobject')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=(
+  'gtk3'
+  'python-cairo'
+  'python-gobject'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_name"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
