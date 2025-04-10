@@ -1,0 +1,4 @@
+[lib32-libavif]
+source = "archpkg"
+archpkg = "libavif"
+strp_release = true

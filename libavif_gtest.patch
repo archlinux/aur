@@ -1,0 +1,13 @@
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -43,6 +43,10 @@
+     add_test(NAME avifyuv_${AVIFYUV_MODE} COMMAND avifyuv -m ${AVIFYUV_MODE})
+ endforeach()
+ 
++if(AVIF_GTEST)
++    find_package(GTest REQUIRED)
++endif()
++
+ if(AVIF_FUZZTEST OR AVIF_GTEST OR AVIF_BUILD_APPS)
+     add_library(aviftest_helpers OBJECT gtest/aviftest_helpers.cc)
+     target_link_libraries(aviftest_helpers PUBLIC avif_apps avif)

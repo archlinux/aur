@@ -1,0 +1,27 @@
+pkgbase = lib32-libavif
+	pkgdesc = Library for encoding and decoding .avif files (32-bit)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/AOMediaCodec/libavif
+	arch = x86_64
+	license = LicenseRef-libavif
+	makedepends = cmake>=3.13
+	makedepends = lib32-gdk-pixbuf2
+	makedepends = lib32-gtest
+	depends = lib32-aom
+	depends = lib32-libdav1d
+	depends = lib32-gcc-libs
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-libwebp
+	depends = lib32-libyuv
+	depends = lib32-rav1e
+	depends = lib32-svt-av1
+	depends = libavif>=1.2.1
+	provides = libavif.so
+	source = libavif-1.2.1.tar.gz::https://github.com/AOMediaCodec/libavif/archive/refs/tags/v1.2.1.tar.gz
+	source = libavif_gtest.patch
+	sha256sums = 9c859c7c12ccb0f407511bfe303e6a7247f5f6738f54852662c6df8048daddf4
+	sha256sums = 2b35300a447f70d56809f35be961e6c12dff3e9034043775a42f4c0aba6a09c5
+
+pkgname = lib32-libavif
