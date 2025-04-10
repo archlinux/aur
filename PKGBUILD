@@ -13,6 +13,7 @@ groups=('obs-plugins')
 depends=(
 	'obs-studio>=28.0.0'
 	'libuiohook'
+	'pkgconf'
 )
 makedepends=(
 	'cmake'
@@ -44,7 +45,7 @@ build() {
 
 package() {
 	_prjdir="${srcdir}/${_pkgname}"
-	install -D -m755 "${_prjdir}/input-overlay.so" "${pkgdir}/usr/lib/obs-plugins/input-overlay.so"
+	install -D -m755 "${_prjdir}/_build/input-overlay.so" "${pkgdir}/usr/lib/obs-plugins/input-overlay.so"
 	install -D -m644 "${_prjdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/obs/obs-plugins/input-overlay"
 	cp -r "${_prjdir}/data/locale" "${pkgdir}/usr/share/obs/obs-plugins/input-overlay/locale"
