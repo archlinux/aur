@@ -22,7 +22,7 @@ index c9ae492597d..12389fa8f00 100644
   */
 -void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 -                      struct syscall_frame *frame, void *syscall_cfa )
-+void __attribute__((used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++void __attribute__((retain,used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 +                                            struct syscall_frame *frame, void *syscall_cfa )
  {
      struct arm_thread_data *thread_data = (struct arm_thread_data *)&teb->GdiTebBatch;
@@ -37,7 +37,7 @@ index 57d9c375076..6d3efaed31c 100644
   */
 -void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 -                      struct syscall_frame *frame, void *syscall_cfa )
-+void __attribute__((used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++void __attribute__((retain,used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 +                                            struct syscall_frame *frame, void *syscall_cfa )
  {
      struct arm64_thread_data *thread_data = (struct arm64_thread_data *)&teb->GdiTebBatch;
@@ -52,7 +52,7 @@ index 8ae7afc769e..058a6a50d0e 100644
   */
 -void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 -                      struct syscall_frame *frame, void *syscall_cfa )
-+void __attribute__((used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++void __attribute__((retain,used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 +                                            struct syscall_frame *frame, void *syscall_cfa )
  {
      struct x86_thread_data *thread_data = (struct x86_thread_data *)&teb->GdiTebBatch;
@@ -67,7 +67,7 @@ index caa85249896..0e293430879 100644
   */
 -void call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 -                      struct syscall_frame *frame, void *syscall_cfa )
-+void __attribute__((used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
++void __attribute__((retain,used)) call_init_thunk( LPTHREAD_START_ROUTINE entry, void *arg, BOOL suspend, TEB *teb,
 +                                            struct syscall_frame *frame, void *syscall_cfa )
  {
      struct amd64_thread_data *thread_data = (struct amd64_thread_data *)&teb->GdiTebBatch;
@@ -94,7 +94,7 @@ index d0551bae63a..3df0884d611 100644
  
  static int thread_data[256];
  
-+__attribute__((used))
++__attribute__((retain,used))
  struct
  {
      /* this is the kernel modify_ldt struct */
@@ -103,7 +103,7 @@ index d0551bae63a..3df0884d611 100644
  #elif defined(__x86_64__)
  
 -void *thread_data[256];
-+void __attribute__((used)) *thread_data[256];
++void __attribute__((retain,used)) *thread_data[256];
  
  /*
   * The _start function is the entry and exit point of this program
@@ -112,7 +112,7 @@ index d0551bae63a..3df0884d611 100644
  #elif defined(__aarch64__)
  
 -void *thread_data[256];
-+void __attribute__((used)) *thread_data[256];
++void __attribute__((retain,used)) *thread_data[256];
  
  /*
   * The _start function is the entry and exit point of this program
@@ -121,7 +121,7 @@ index d0551bae63a..3df0884d611 100644
  #elif defined(__arm__)
  
 -void *thread_data[256];
-+void __attribute__((used)) *thread_data[256];
++void __attribute__((retain,used)) *thread_data[256];
  
  /*
   * The _start function is the entry and exit point of this program
@@ -130,7 +130,7 @@ index d0551bae63a..3df0884d611 100644
   *  Note, we assume that the binary is a dynamically linked ELF shared object.
   */
 -void* wld_start( void **stack )
-+void* __attribute__((used)) wld_start( void **stack )
++void* __attribute__((retain,used)) wld_start( void **stack )
  {
      long i, *pargc;
      char **argv, **p;
