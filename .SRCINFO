@@ -1,10 +1,11 @@
 pkgbase = minedigger-bin
-	pkgdesc = Simple match-3 game prototype for Linux, Windows and Android
+	pkgdesc = Simple match-3 game prototype.(Prebuilt version)
 	pkgver = 1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://play.google.com/store/apps/details?id=com.neodesys.minedigger
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = gendesk
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
@@ -16,6 +17,6 @@ pkgbase = minedigger-bin
 	source = minedigger.sh
 	sha256sums = 8d88a7a1d9d4547789f9f828632aca4273e09ca72799c4c7238af3e850d3b1ae
 	sha256sums = e544a0f449e2e13fd4d5367d1ae4bcf9dd85c93cf9057189477bc282c4b5fff0
-	sha256sums = 7019f01739290e75a96bf55b912862790ab3c6db61dcb3210be207e2bd3b3f00
+	sha256sums = 66ba0a42698a2815cfec1c2a5a2b459e4ea9c054481c859acf5dd4aa84d49ce8
 
 pkgname = minedigger-bin
