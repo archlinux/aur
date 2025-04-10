@@ -1,8 +1,9 @@
-# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Maintainer: Harriet O'Brien <harrietobrien@protonmail.com"
+# Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
 _name=pyquil
 pkgname=python-$_name
-pkgver=4.6.2
+pkgver=4.16.1 
 pkgrel=1
 pkgdesc='A Python library for quantum programming using Quil.'
 arch=(any)
@@ -27,15 +28,20 @@ depends=(
 optdepends=(
     'ipython: latex'
     'python-sphinx: docs'
-    # 'python-sphinx-rtd-theme: docs'
     'python-nbsphinx: docs'
     'python-recommonmark: docs'
     'quilc: local compiler server'
     'qvm: local quantum virtual machine server'
 )
-makedepends=(python-build python-installer python-poetry python-wheel)
+makedepends=(
+    python-build
+    python-installer
+    python-poetry
+    python-wheel
+)
+# https://github.com/rigetti/pyquil/archive/refs/tags/v4.16.1.tar.gz
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('084bd3a16bb971d31e327e4ea3760885567661831f968c804dd228b1a6626a9ce7af71691840c5af529e072f75f7dfdc1cd60033fe0dcdbd2998d3666f6e6ff6')
+sha256sums=('33c2c407bc4545872fb5abbba0146745a43629cac07d85f6b979425e1f5c9c97')
 
 build() {
     cd $_name-$pkgver
