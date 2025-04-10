@@ -3,7 +3,7 @@
 
 pkgname=python-pytest-recording
 pkgver=0.13.2
-pkgrel=4
+pkgrel=5
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -18,22 +18,16 @@ optdepends=(
 )
 checkdepends=(python-coverage python-pytest-httpbin python-pytest-mock python-requests python-werkzeug)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877')
+source+=("$pkgname-PR169.patch::https://github.com/kiwicom/pytest-recording/pull/169.patch")
+sha256sums=('000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877'
+            '770a0b04f9b29c86f65f5013e01966dc0782259ee2387e7e6c2c4154d8016ef2')
 
 prepare(){
     cd "${srcdir}/${_src_folder}"
 
-    # Implement upstream PR 169: Disable pretty plugin in pytest
-    # (the patch there is based on HEAD, meaning it will miss some tests that
-    # have been removed since 0.13.2 was released)
-    sed -i 's/\(runpytest([^)]*\)/\1, "-p no:pretty"/' tests/test_blocking_network.py
-    sed -i 's/\(runpytest([^)]*\)/\1, "-p no:pretty"/' tests/test_plugin.py
-    sed -i 's/\(runpytest([^)]*\)/\1, "-p no:pretty"/' tests/test_recording.py
-    sed -i 's/\(runpytest([^)]*\)/\1, "-p no:pretty"/' tests/test_replaying.py
-    sed -i 's/result = testdir.runpytest(, "-p no:pretty")/result = testdir.runpytest("-p no:pretty")/' tests/test_blocking_network.py
-    sed -i 's/result = testdir.runpytest(, "-p no:pretty")/result = testdir.runpytest("-p no:pretty")/' tests/test_plugin.py
-    sed -i 's/result = testdir.runpytest(, "-p no:pretty")/result = testdir.runpytest("-p no:pretty")/' tests/test_recording.py
-    sed -i 's/result = testdir.runpytest(, "-p no:pretty")/result = testdir.runpytest("-p no:pretty")/' tests/test_replaying.py
+    # Disable pretty pytest plugin in recursive pytest invocations
+    # (it messes up the layouts, causing spurious test failures)
+    patch -p1 < ../"$pkgname-PR169.patch"
 }
 
 build() {
