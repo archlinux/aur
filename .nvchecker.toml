@@ -1,0 +1,4 @@
+[lib32-hwloc]
+source = "archpkg"
+archpkg = "hwloc"
+strip_release = true

@@ -1,26 +1,21 @@
 pkgbase = lib32-hwloc
-	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures
-	pkgver = 2.9.2
+	pkgdesc = Portable Hardware Locality is a portable abstraction of hierarchical architectures (32-bit)
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://www.open-mpi.org/projects/hwloc/
 	arch = x86_64
-	license = BSD
-	makedepends = lib32-cairo
-	makedepends = lib32-libx11
+	license = BSD-3-Clause
+	makedepends = lib32-gcc-libs
 	makedepends = lib32-libxml2
-	makedepends = lib32-pciutils
-	depends = hwloc
+	depends = hwloc>=2.12.0
 	depends = lib32-glibc
 	depends = lib32-libpciaccess
-	depends = lib32-libtool
+	depends = lib32-libtool>=2.2.6
 	depends = lib32-systemd
-	optdepends = lib32-cairo
-	optdepends = lib32-libx11
-	optdepends = lib32-libxml2
-	optdepends = lib32-pciutils
-	options = !docs
-	source = https://download.open-mpi.org/release/hwloc/v2.9/hwloc-2.9.2.tar.bz2
-	sha512sums = ed38bd608eac81d3182243f0b63c6da070be918fdd8c876ca35fd63cccb4e25684b28bb045d033c53cd7b53451795d28e05e0bd876a5a0231de06c76ace11fef
-	b2sums = 70737325888b87f90f95799490621e209864430813deff4731dbbbaa7be900d6d58fa874b3da5e851b553af00ba17e387762d3825bb9a592ffb311705b4a6833
+	optdepends = lib32-libxml2: full XML import/export support
+	provides = libhwloc.so
+	source = hwloc-2.12.0.tar.bz2::https://www.open-mpi.org/software/hwloc/v2.12/downloads/hwloc-2.12.0.tar.bz2
+	sha512sums = 0486eb8fc49ded213ae84eb78ca87429570230b46513f90b6015a2ebc61f02c2b4f1203074a36813515ada0a8be2509d823ed03dc7ca5a065fb957523462cf30
+	b2sums = 4fc582a2204ce9edb786a2978c9c5cf0766981ecc54d98e4a07aeece0f696f404b6b069cc0974378c5bdc36d15865c7420ff1871733b1adf17cea23f706a7168
 
 pkgname = lib32-hwloc
