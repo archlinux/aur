@@ -1,7 +1,7 @@
 pkgbase = timetracker-bin
-	pkgdesc = An application to track your work time ⏰
+	pkgdesc = An application to track your work time ⏰.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.9.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DerKommentator/time-tracker
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,6 @@ pkgbase = timetracker-bin
 	source = timetracker-0.9.24.AppImage::https://github.com/DerKommentator/time-tracker/releases/download/v0.9.24/TimeTracker-0.9.24-linux-x86_64.AppImage
 	source = timetracker.sh
 	sha256sums = 150d910ce346ecfb89d5624d3d925b07047c85d9655dd9a31e1d9e640d261907
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = timetracker-bin
