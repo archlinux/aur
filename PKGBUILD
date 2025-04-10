@@ -3,14 +3,14 @@ pkgname=python-rgb565-converter
 _name=${pkgname#python-}
 
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python script to convert images into rgb565 as required by some tft libraries"
 
 arch=('any')
 url="https://github.com/CommanderRedYT/rgb565-converter"
 license=('MIT')
 
-depends=('python')
+depends=('python' 'python-pillow')
 makedepends=('python-setuptools')
 
 source=(
