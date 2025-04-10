@@ -12,24 +12,18 @@ makedepends=('maven' 'unzip')
 _jdkver=23.0.1+11
 source=("cryptomator-cli-${pkgver//_/-}.tar.gz::https://github.com/cryptomator/cli/archive/refs/tags/${pkgver//_/-}.tar.gz"
         "cryptomator-cli-${pkgver//_/-}.tar.gz.asc::https://github.com/cryptomator/cli/releases/download/${pkgver//_/-}/cryptomator-cli-${pkgver//_/-}.tar.gz.asc")
-source_x86_64=("jdk.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
-source_aarch64=("jdk.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
-noextract=('jdk.tar.gz')
+source_x86_64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
+source_aarch64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
+noextract=("jdk-${_jdkver}.tar.gz")
 sha256sums=('0b0f09bbf6e597b481f45be18f5b7b23eaa46061b9f8a1e4ad1ef8eb79293139'
             'SKIP')
-sha256sums_x86_64=('2400267e4e9c0f6ae880a4d763af6caf18c673714bdee5debf8388b0b5d52886')
-sha256sums_aarch64=('808e3843293e50515bf02ad2f956e543da65e32dac82ae7a266a147b3485c61a')
 options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')
 
 build() {
-  export JAVA_HOME="${srcdir}/jdk"
-  export JMODS_PATH="${srcdir}/jmods:${JAVA_HOME}/jmods"
-
-  tar xvfz jdk.tar.gz --transform 's!^[^/]*!jdk!'
-
-  mkdir jmods
+  export JAVA_HOME="${srcdir}/jdk-${_jdkver}"
+  tar xfz "jdk-${_jdkver}.tar.gz"
 
   cd "${srcdir}/cli-${pkgver//_/-}"
 
