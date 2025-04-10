@@ -1,11 +1,13 @@
 pkgname=tempesta
-pkgver=0.0.64
+pkgver=0.0.65
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/x71c9/tempesta"
 license=('MIT')
 depends=('glibc')
+optdepends=('fzf' 'wofi')
+makedepends=('cargo')
 
 case "$arch" in
   "x86_64")
@@ -21,10 +23,20 @@ case "$arch" in
     exit 1
     ;;
 esac
+
+prepare() {
+  cd "-"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target ""
+}
+
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release
+  cd "-"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 } 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}/target/release/tempesta" "${pkgdir}/usr/bin/tempesta"
+  cd "-"
+  install -Dm0755 -t "/usr/bin/" "target/release/"
 }
