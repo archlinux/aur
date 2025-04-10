@@ -1,0 +1,14 @@
+pkgbase = pcb-tracer-git
+	pkgdesc = A PCB tracing tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rpelorosso/pcb-tracer
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	source = git+https://github.com/rpelorosso/pcb-tracer.git
+	md5sums = SKIP
+
+pkgname = pcb-tracer-git
