@@ -14,7 +14,7 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.4.w163.s5b64f43
+pkgver=10.5.w90.saa0c839
 pkgrel=1
 eval pkgrel=1
 
@@ -33,14 +33,12 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization
-                   user32-recursive-activation user32-alttab-focus winex11-Window_Style winex11.drv-Query_server_position)
+_disabled_staging=(dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
-                   # WM/winex11 patches are just really broken
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="04-01-2025-8e2aea62-5b64f435"
+_patchbase_tag="04-10-2025-647004cd-aa0c8391"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -51,8 +49,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=8e2aea6290e823d2f5023e2bff5c2fec0880a65d
-_desired_staging_commit=5b64f435e92f270c4792ae3788dbb167c7dc629c
+_desired_wine_commit=647004cd5d7ee93ad8b53abb8939da87be3e25a0
+_desired_staging_commit=aa0c8391eb7c7cf7e31d850150f6f2527eaffc28
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -152,7 +150,7 @@ if [ "${_use_mingw}" = "nomingw" ]; then
 elif [ "${_use_lto}" = "true" ]; then
   ## don't needlessly add the lto fixup if we don't want lto
   source+=("lto-fixup.patch")
-  sha512sums+=('86b448cec7defe6538c3a23779b7a116c9d835ecc87f3e3846d169ab241710ef0f7c9529078d920756df55cf8df5a6dc4a94280f68c7a0cf952f5b9fa8383574')
+  sha512sums+=('7d02ef59e9223e1d64e0f27532d2df947b6a9029a0859be9b02fca0daa543cce400af827cd0272f3fac3a3c9bc606c34f0521cd21bd45c1d523b8d9747709df7')
 fi
 
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
@@ -291,12 +289,12 @@ _set_vars() {
       _cc="$(command -v gcc)"
       _cxx="$(command -v g++)"
 
-      _extra_native_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + gcc opts
+      _extra_native_flags+=" -static-libgcc -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + gcc opts
       if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
         makedepends+=(lld) # bfd is so slow
 
         _lto_flags+=" -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
-        _extra_ld_flags+=" -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
+        _extra_ld_flags+=" -static-libgcc -fuse-ld=lld -ffat-lto-objects -fuse-linker-plugin -fdevirtualize-at-ltrans -flto-partition=one -flto"
         export wine_preloader_LDFLAGS="-fuse-ld=bfd"
         export wine64_preloader_LDFLAGS="-fuse-ld=bfd"
         export preloader_CFLAGS="-fuse-ld=bfd"
@@ -307,12 +305,16 @@ _set_vars() {
 
       if [ "${_use_clang}" = "true" ]; then
         makedepends+=(polly lld)
-        _extra_native_flags+=" ${_polly_flags}"
+        _extra_native_flags+=" ${_polly_flags} -rtlib=compiler-rt -unwindlib=libgcc -static-libgcc"
+        _extra_ld_flags+=" -rtlib=compiler-rt -unwindlib=libgcc -static-libgcc"
+      else
+        _extra_native_flags+=" -static-libgcc"
+        _extra_ld_flags+=" -static-libgcc"
       fi
 
       if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
         _extra_ld_flags+=" -flto=${_lto_type} -fuse-ld=lld"
-        _lto_flags+=" -flto=${_lto_type} -D__LLD_LTO__"
+        _lto_flags+=" -flto=${_lto_type} -Wl,--lto-whole-program-visibility -D__LLD_LTO__"
         export wine_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
         export wine64_preloader_LDFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
         export preloader_CFLAGS="-fno-lto -fuse-ld=lld -Wl,--no-relax"
@@ -367,12 +369,12 @@ _set_vars() {
 
     CPPFLAGS="-D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
     _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
-                    -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
+                    -mno-stack-arg-probe -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
 
     _GCC_FLAGS="${_common_cflags:-} ${_lto_flags:-} ${_extra_native_flags:-} ${CPPFLAGS:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
     _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
 
-    _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -static-libgcc -Wl,-O2,--sort-common,--as-needed,--gc-sections"
+    _LD_FLAGS="${_GCC_FLAGS:-} ${_extra_ld_flags:-} -Wl,-O2,--sort-common,--as-needed,--gc-sections,--hash-style=gnu"
     _CROSS_LD_FLAGS="${_common_cflags:-} ${_extra_crossld_flags:-} ${CPPFLAGS:-}"
 
     _GCC_FLAGS=$(echo "${_GCC_FLAGS}" | tr ' ' '\n' | awk '!seen[$0]++' | tr '\n' ' ' | sed 's/ $//')
@@ -421,13 +423,13 @@ _set_vars
 
 _set_vars64() {
   _common_64_cflags='' # "-march=x86-64 -mtune=native"
-  _common_32_cflags='' # "-m32 -march=i686 -mtune=native"
+  _common_32_cflags='-fno-omit-frame-pointer' # "-m32 -march=i686 -mtune=native"
 
   _set_vars
 
   # if [ -f "/usr/lib/libunwind.a" ] && [ -f "/usr/lib/libz.a" ] && [ -f "/usr/lib/liblzma.a" ]; then
   #   export UNWIND_CFLAGS=""
-  #   export UNWIND_LIBS="-static-libgcc -l:libunwind.a -l:liblzma.a -l:libz.a"
+  #   export UNWIND_LIBS="-l:libunwind.a -l:liblzma.a -l:libz.a"
   # fi
 
   export CROSSCC="${x86_64_CC}"
@@ -436,7 +438,7 @@ _set_vars64() {
 _set_vars32() {
   export PKG_CONFIG_PATH="/usr/lib32/ffmpeg-minimal-dev/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH}"
   _common_64_cflags='' # "-m32 -march=i686 -mtune=native"
-  _common_32_cflags='' # "-m32 -march=i686 -mtune=native"
+  _common_32_cflags='-fno-omit-frame-pointer' # "-m32 -march=i686 -mtune=native"
 
   _set_vars
 
@@ -762,6 +764,7 @@ build() { _set_vars;
     --with-wayland              --without-capi
     --silent                    --without-v4l2
     --enable-silent-rules       --without-netapi
+                                --disable-msv1_0
   )
 
   _wine64opts+=(
