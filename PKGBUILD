@@ -2,7 +2,7 @@
 # -*- mode: sh -*-
 
 pkgname='betula'
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Self-hosted personal link collection manager'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -53,5 +53,5 @@ package() {
   install -Dm0644 "README.md"    "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
-sha256sums=('0f7ea4a632dca7791a3f59578b923b352185074b5025d3df2a8ddc2d789408ef')
+sha256sums=('1c67b159a43bd69020e00a3ef923ea9218893d050c867a8aee34e9dd3b40385d')
 
