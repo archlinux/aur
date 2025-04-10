@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=todoist-wrapper-bin
 _pkgname=Todoist
-pkgver=4.20250405014635
+pkgver=4.20250410014910
 _electronversion=35
 pkgrel=1
 pkgdesc="Electron Wrapper for Todoist on Linux.(Prebuilt version.Use system-wide electron)"
@@ -16,7 +16,6 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'icoutils'
 )
 options=(
     '!emptydirs'
@@ -27,7 +26,7 @@ source=(
     "${pkgname%-bin}.png::https://www.todoist.com/static/favicon-16x16.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a9107a5a380d216107a099552108489811b2b86519d90aa46a245441551eab36'
+sha256sums=('96e81a140ea4703747605bfca8e00475e636fdb3268f2c3e7a2e1b4ed4df4aa4'
             '3260f6adfa0d38458fa2ebcb3a7a51fc4901b9239576d2f25016c15027e88966'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -39,7 +38,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
-    #icotool -x "${srcdir}/${pkgname%-bin}.ico" -o "${srcdir}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
