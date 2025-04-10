@@ -1,14 +1,14 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=lowfi
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely simple lofi player."
 arch=('any')
 url="https://github.com/talwat/$pkgname"
 license=('MIT')
 makedepends=('cargo' 'alsa-lib' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('2005d4b5e69d2d0f963468ef00c4506362d475bd957b088fab7d94210be9f5d4a2f340489e9b121df95ba192d951db37f2c599b7598fafb6f39c72dd3c7c806a')
+sha512sums=('0b1919e915bfaf8ccdf19c4e39d7a3e50271ed0f953d6d8c72e80cae51cc8eca2d5d932d6613424fd62100c3f445e1986a46e45c79eeb265bea19b43bd2f2e97')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -31,5 +31,3 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 
-sha512sums=('0b1919e915bfaf8ccdf19c4e39d7a3e50271ed0f953d6d8c72e80cae51cc8eca2d5d932d6613424fd62100c3f445e1986a46e45c79eeb265bea19b43bd2f2e97')
-sha512sums=('0b1919e915bfaf8ccdf19c4e39d7a3e50271ed0f953d6d8c72e80cae51cc8eca2d5d932d6613424fd62100c3f445e1986a46e45c79eeb265bea19b43bd2f2e97')
