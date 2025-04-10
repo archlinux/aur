@@ -6,22 +6,22 @@
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
 license=('GPL-3.0-only')
 _flutterchannel=stable
-_flutterversion=3.24.5
+_flutterversion=3.27.4
 depends=('xdg-user-dirs' 'gtk3' 'mpv')
 makedepends=('ninja' 'cmake' 'clang' 'git' 'patchelf')
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/${_flutterchannel}/linux/flutter_linux_${_flutterversion}-${_flutterchannel}.tar.xz"
-    "${_pkgname}-${pkgver}.tar.gz::https://github.com/xiaoyaocz/dart_simple_live/archive/refs/tags/v${pkgver}.tar.gz"
+    "git+https://github.com/xiaoyaocz/dart_simple_live.git#tag=v${pkgver}"
 )
-sha256sums=('a7c82f551a9eae018e078f6bb186171e5a77920d35a3d75a61d9a593d0a9e4ae'
-            'b7baf050ef362098a528354e63073ee15b5cf5b3c51832c37c8e35baabea71bb')
+sha256sums=('64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344'
+            '0615258299f076c2cc2f3486b92ff5f1482b343df6b456eb27bb2ff449d64e74')
 case "${CARCH}" in
   "x86_64")
     export _dartarch="x64"
@@ -40,7 +40,7 @@ prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
   flutter config --no-analytics
   flutter config --enable-linux-desktop
-  cd ${_pkgname}-${pkgver}/simple_live_app
+  cd ${_pkgname}/simple_live_app
   sed -i "s/use_header_bar = TRUE/use_header_bar = FALSE/g" linux/my_application.cc
   rm -rf pub-cache
   mkdir pub-cache
@@ -52,13 +52,13 @@ prepare() {
 build() {
   export PATH="${srcdir}/flutter/bin:$PATH"
   export PUB_CACHE="${srcdir}/${_pkgname}-${pkgver}/${_appname}/pub-cache"
-  cd ${_pkgname}-${pkgver}/${_appname}
+  cd ${_pkgname}/${_appname}
   flutter build linux --no-pub
 }
 
 package() {  
   # enter the output directory of the Flutter build
-  cd "${srcdir}/${_pkgname}-${pkgver}/simple_live_app/build/linux/$_dartarch/release"
+  cd "${srcdir}/${_pkgname}/simple_live_app/build/linux/$_dartarch/release"
 
   # configure the installation directory using cmake
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr/lib/${_pkgname} .
@@ -69,8 +69,8 @@ package() {
   # link executable into PATH
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${_pkgname}/${_appname}" "${pkgdir}/usr/bin/${_pkgname}"  # icon
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # desktop entry
   install -dm755 "${pkgdir}/usr/share/applications"
