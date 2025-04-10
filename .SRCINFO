@@ -1,6 +1,6 @@
 pkgbase = apertium
 	pkgdesc = Core tools (driver script, transfer, tagger, formatters) for the FOSS RBMT system Apertium
-	pkgver = 3.9.4
+	pkgver = 3.9.12
 	pkgrel = 1
 	url = https://www.apertium.org/
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = apertium
 	depends = libxml2>=2.6.17
 	depends = gettext
 	depends = icu
-	source = apertium-3.9.4.tar.gz::https://github.com/apertium/apertium/archive/refs/tags/v3.9.4.tar.gz
-	sha256sums = ecfbc9e2d8366ecc156e6858a6165aa4da17b00b74ee59664225994fe8806dc2
+	source = apertium-3.9.12.tar.gz::https://github.com/apertium/apertium/archive/refs/tags/v3.9.12.tar.gz
+	sha256sums = 1a719e7338898f82891d3c4cbc1fb8bb4f575173df7b7313dd3802176ce234fe
 
 pkgname = apertium
