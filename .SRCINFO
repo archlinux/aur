@@ -1,7 +1,7 @@
 pkgbase = speed-dreams-bin
 	pkgdesc = Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism.
 	pkgver = 2.4.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://speed-dreams.net/
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = speed-dreams-bin
 	depends = gcc-libs
 	depends = freeglut
 	depends = libglvnd
-	depends = libjpeg
+	depends = libjpeg6-turbo
 	depends = minizip
 	depends = freealut
 	depends = mesa
