@@ -1,14 +1,13 @@
 pkgbase = prepros-bin
-	pkgdesc = Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.
+	pkgdesc = Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.(Prebuilt version.Use system-wide electron)
 	pkgver = 7.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://prepros.io
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron25
 	depends = perl
 	depends = ruby
-	depends = java-runtime
 	depends = libva>=2.20.0
 	depends = nodejs
 	options = !strip
