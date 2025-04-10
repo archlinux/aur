@@ -1,21 +1,5 @@
 pkgbase = swift-format
 	pkgdesc = Formatting technology for Swift source code
-	pkgver = 600.0.0
-	pkgrel = 3
-	url = https://github.com/apple/swift-format
-	arch = i686
-	arch = x86_64
-	license = Apache-2.0
-	makedepends = git
-	depends = swift-language
-	source = swift-format-600.0.0.tar.gz::https://github.com/apple/swift-format/archive/600.0.0.tar.gz
-	source = 0001-Fix-infinite-loop-on-Windows-caused-by-checking-path.patch
-	sha256sums = 5d03930216701939bd34f82575a475bcb8d1962e095066449eedc5e22226d8b6
-	sha256sums = 15b59fbab0cdea348b9888260d5615320a1610ff8a9921438e81fd59cd42f9e8
-
-pkgname = swift-format
-pkgbase = swift-format
-	pkgdesc = Formatting technology for Swift source code
 	pkgver = 601.0.0
 	pkgrel = 1
 	url = https://github.com/apple/swift-format
