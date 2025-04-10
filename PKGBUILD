@@ -26,7 +26,7 @@ source=("config.yaml"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums=('33c62a3c62ea49951748b0bac638efd0514575230f13993059bff630f2d7853c'
+sha256sums=('6822d248cbd5a7a5c38bbd904752e0067d2421ea22ece950f8ac971daa34bce1'
             'be029852597e0751469f9c7405cb990f7b630cf394dd6d2a56a32a28f409a511'
             'dcbd4bbf50f4910032115da354b4ca13ba978deb086a0dc64bda687a24583f70'
             '206ea9930d24e31dd65b662735459bcdd0dce5cfba915c611849761db55d2fe5'

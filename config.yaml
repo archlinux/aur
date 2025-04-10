@@ -1,4 +1,5 @@
 # Default config file for 'fetter'
+# Originial
 
 mode: audit
 audit:
@@ -11,4 +12,17 @@ logging:
   level: info
 
 rules:
-  _:
+  fetter:
+    paths: [/usr/bin/fetter]
+    action: execute
+    group: fetter
+    trigger: journal
+
+groups:
+  fetter:
+
+triggers:
+  journal:
+    run: systemd-cat
+    args: ['echo', 'FETTER was executed!']
+    user: nobody
