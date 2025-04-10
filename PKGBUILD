@@ -4,7 +4,7 @@
 
 pkgname=ast-grep-bin
 pkgver=0.36.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and easy tool for code searching, linting, rewriting at large scale"
 arch=('x86_64' aarch64)
 url="https://github.com/ast-grep/ast-grep"
@@ -20,6 +20,6 @@ b2sums_x86_64=('c9c3bfc9b0ca8ac9c3bbfbbd7b2da77b47c519315026d5557b8e22b4e0f5a72e
 b2sums_aarch64=('e80d99ac67f17775dd8620f679c0066517d66f2c5168c240ed833663f394e830626c1346dbc58226d9473903a27fa4e4627733fbb479313578b9848ef6af4344')
 
 package() {
-	find $srcdir -name "sg" -type f -print -exec install -vDm755 {} "$pkgdir/usr/bin/ast-grep" \;
+	find $srcdir -name "ast-grep" -type f -print -exec install -vDm755 {} "$pkgdir/usr/bin/ast-grep" \;
 	install -vDm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 }

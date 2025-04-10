@@ -1,7 +1,7 @@
 pkgbase = ast-grep-bin
 	pkgdesc = A fast and easy tool for code searching, linting, rewriting at large scale
 	pkgver = 0.36.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ast-grep/ast-grep
 	arch = x86_64
 	arch = aarch64
