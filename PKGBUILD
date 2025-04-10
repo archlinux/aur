@@ -3,7 +3,7 @@
 
 pkgname=assistant
 pkgver=6.3.0
-pkgrel=2
+pkgrel=3
 _pkg=1273
 pkgdesc='Secure remote access to computers over a local network or over the Internet.'
 arch=('x86_64')
@@ -27,4 +27,5 @@ package() {
 #	cp "${srcdir}/usr/lib/libtiff.so.6.0.0" "${pkgdir}/opt/${pkgname}/lib/libtiff.so.6"
 	install -D -m644 "${pkgdir}/opt/${pkgname}/license/License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/License.rtf"
 	install -D -m644 "${pkgdir}/opt/${pkgname}/scripts/${pkgname}.desktop" "${pkgdir}/usr/share/applications/remote-${pkgname}.desktop"
+	install -D -m644 "${pkgdir}/opt/${pkgname}/scripts/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
