@@ -1,18 +1,16 @@
 pkgbase = python-pyimg4
 	pkgdesc = A Python library/CLI tool for parsing Apple's Image4 format
-	pkgver = 0.8.6
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/m1stadev/PyIMG4
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-remotezip
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
-	makedepends = python-poetry-core
-	makedepends = python-poetry-dynamic-versioning
+	makedepends = python-hatchling
 	depends = python
 	depends = python-asn1
 	depends = python-click
@@ -20,7 +18,7 @@ pkgbase = python-pyimg4
 	depends = python-pylzss
 	depends = python-lzfse
 	depends = python-apple-compress
-	source = python-pyimg4-0.8.6::git+https://github.com/m1stadev/PyIMG4.git#tag=v0.8.6
-	sha256sums = 80176e7af3df19d8fe9814ed0fc2a02849a24adfbb89a522962cba86efdee9a9
+	source = python-pyimg4-0.8.8.tar.gz::https://github.com/m1stadev/PyIMG4/archive/refs/tags/v0.8.8.tar.gz
+	sha256sums = 9172b198f8defb6c5e6ebf6ca9f16b58485833c9407723c480e414cfa7ec4daf
 
 pkgname = python-pyimg4
