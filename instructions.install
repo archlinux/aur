@@ -13,6 +13,15 @@ dashboard:
 "
 }
 
+post_upgrade() {
+  echo
+  echo -e "${BOLD}Attention!${RESET}"
+  echo -e "The binary at ${GREEN}/usr/bin/wayvr_dashboard${RESET} has been renamed to ${GREEN}/usr/bin/wayvr-dashboard${RESET}"
+  echo -e "You may want to edit the exec line in ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET} to point to the new binary."
+  echo -e "This message will be removed in ${BOLD}3 days${RESET} to give users enough time to take notice."
+  echo
+}
+
 post_remove() {
-  echo -e "If you no longer want to use wayvr-dashboard, you may want to remove or modify ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET}"
+  echo -e "If you no longer want to use ${BOLD}wayvr-dashboard${RESET}, you may want to remove or modify ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET}"
 }
