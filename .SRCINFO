@@ -1,0 +1,17 @@
+pkgbase = lib32-verdict
+	pkgdesc = Compute quality functions of 2 and 3-dimensional regions (32-bit)
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/sandialabs/verdict
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake>=3.16
+	makedepends = lib32-gtest
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = verdict>=1.4.2
+	provides = libverdict.so
+	source = verdict-1.4.2.tar.gz::https://github.com/sandialabs/verdict/archive/refs/tags/1.4.2.tar.gz
+	sha256sums = 225c8c5318f4b02e7215cefa61b5dc3f99e05147ad3fefe6ee5a3ee5b828964b
+
+pkgname = lib32-verdict
