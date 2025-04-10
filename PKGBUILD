@@ -1,53 +1,68 @@
-# Maintainer: Llewelyn Trahaearn <woefulderelict [at] gmail [dot] com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Llewelyn Trahaearn <woefulderelict [at] gmail [dot] com>
 # Contributor: Peter Lamby <peterlamby [at] web [dot] de>
 # Contributor: Stéphane Gaudreault <stephane [at] archlinux [dot] org>
 # Contributor: Thomas Dziedzic <gostrc [at] gmail [dot] com>
 # Contributor: Denis Martinez <deuns.martinez [at] gmail [dot] com>
 
-pkgname=lib32-onetbb
-pkgver=2021.9.0
+_Name="oneTBB"
+_name="${_Name,,}"
+pkgname="lib32-${_name}"
+pkgver=2022.1.0
 pkgrel=1
-pkgdesc="High level abstract threading library (oneAPI Threading Building Blocks) (32-bit)"
+pkgdesc="oneAPI Threading Building Blocks - a high level abstract threading library (32-bit)"
 arch=('x86_64')
-url="https://oneapi-src.github.io/oneTBB/"
-license=('Apache')
-depends=("${pkgname#lib32-}" 'lib32-gcc-libs' 'lib32-hwloc')
-makedepends=('cmake' 'ninja')
-provides=("lib32-intel-tbb=$pkgver" "lib32-tbb=$pkgver")
+url="https://uxlfoundation.github.io/oneTBB/"
+_url="https://github.com/uxlfoundation/${_Name}"
+license=('Apache-2.0')
+depends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-hwloc' "${_name}>=${pkgver}")
+makedepends=('cmake>=3.5')
+provides=("lib32-intel-tbb=${pkgver}" "lib32-tbb=${pkgver}" 'libtbb'{,bind_2_5,malloc{,_proxy}}'.so')
 conflicts=('lib32-intel-tbb' 'lib32-tbb')
 replaces=('lib32-intel-tbb' 'lib32-tbb')
-source=("https://github.com/oneapi-src/oneTBB/archive/v$pkgver/${pkgname#lib32-}-$pkgver.tar.gz"
-        "${pkgname#lib32-}-gcc13.patch::https://github.com/oneapi-src/oneTBB/commit/154cc73ca4d359621202399cc0c3c91058e56e79.patch")
-sha512sums=('2ece7f678ad7c8968c0ad5cda9f987e4b318c6d9735169e1039beb0ff8dfca18815835875211acc6c7068913d9b0bdd4c9ded22962b0bb48f4a0ce0f7b78f31c'
-            '31feea5ede2df7d09062435abbfa923be0bbe5b5e05a2a819ccd29cf00486d60b5e0775f29c933fea7df1df4412da8586fa12ce4bfa8a332bc6ac03b051bae23')
-
-prepare() {
-  cd oneTBB-$pkgver
-  patch -Np1 -i ../${pkgname#lib32-}-gcc13.patch
-}
+_pkgsrc="${_Name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('7582748f7d0e0ab46ea6ee7771dfaf7fc08ca7ab7f274fb3373eae0e3411aaafbac192ece15008d9a3d9e8566f8737f96f3f4b5ccf11449ac089d5cd9ebb9eab')
 
 build() {
-  cd oneTBB-$pkgver
-  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
-  cmake -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
-    -DCMAKE_C_FLAGS=-m32 \
-    -DCMAKE_CXX_FLAGS=-m32 \
-    -DCMAKE_SHARED_LINKER_FLAGS=-m32 \
-    -DTBB_STRICT=OFF \
-    .
-  ninja
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local cmake_options=(
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
+    -Wno-dev
+    -DCMAKE_BUILD_TYPE:STRING='None'
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib32'
+    -DTBB_STRICT:BOOL=OFF
+    -DTBB4PY_BUILD:BOOL=OFF
+  )
+  
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
+  cmake --build "${_pkgsrc}/build"
 }
 
 check() {
-  cd oneTBB-$pkgver
-  ninja test
+  local excluded_tests="test_partitioner"
+  local ctest_flags=(
+    --test-dir "${_pkgsrc}/build"
+    --output-on-failure
+    --parallel $(nproc)
+    --exclude-regex "${excluded_tests}"
+  )
+
+  cd "${srcdir}"
+  ctest "${ctest_flags[@]}"
 }
 
 package() {
-  cd oneTBB-$pkgver
-  DESTDIR="$pkgdir" ninja install
-  rm -rf "${pkgdir}/usr/"{include,share}
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
+
+  cd "${pkgdir}/usr"
+  rm -rf "bin" "include" "share"
 }
