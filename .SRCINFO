@@ -1,18 +1,19 @@
 pkgbase = zapret-git
 	pkgdesc = Bypass deep packet inspection
-	pkgver = 70.r14.gf62b289
-	pkgrel = 1
+	pkgver = 70.6.r7.gb12b1a5
+	pkgrel = 2
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = libnetfilter_queue
+	depends = bind
 	depends = curl
 	depends = ipset
 	depends = iptables
+	depends = libnetfilter_queue
+	depends = nmap
 	depends = systemd
-	optdepends = nmap: blockcheck script uses ncat
-	provides = zapret=70.r14.gf62b289
+	provides = zapret=70.6.r7
 	conflicts = zapret
 	backup = opt/zapret/config
 	backup = opt/zapret/config.nfqws
@@ -21,8 +22,3 @@ pkgbase = zapret-git
 	sha256sums = SKIP
 
 pkgname = zapret-git
-	depends = curl
-	depends = ipset
-	depends = iptables
-	depends = systemd
-	depends = libnetfilter_queue
