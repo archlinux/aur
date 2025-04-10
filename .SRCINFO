@@ -11,6 +11,6 @@ pkgbase = task-maker-rust
 	makedepends = cargo
 	optdepends = texlive-core: booklet compilations
 	source = https://github.com/olimpiadi-informatica/task-maker-rust/archive/v0.6.7.tar.gz
-	sha256sums = 99d01cd6ea56fd36e0564c59bb49c38a53890733d879911e38ec857cfddb2768
+	sha256sums = e810bd49088ea48944a7e6e1fa64603ad78ccbc6e224e76b6775e75fcb147a61
 
 pkgname = task-maker-rust
