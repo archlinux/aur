@@ -1,7 +1,7 @@
 pkgbase = listen1-desktop-bin
-	pkgdesc = One for all free music in China
+	pkgdesc = One for all free music in China.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.32.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://listen1.github.io/listen1
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,6 @@ pkgbase = listen1-desktop-bin
 	source = listen1-desktop.sh
 	sha256sums = 5ac63be98672a30850a97765e6474ea95ce0cb5a9330eee6d6d1db62860a1916
 	sha256sums = d2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = listen1-desktop-bin
