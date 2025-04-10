@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=dug-bin
-_pkgver=dug-20240918
+_pkgver=dug-20250318
 pkgver=${_pkgver#dug-}
 pkgrel=1
 pkgdesc='Extensible DNS libraries written purely in Haskell'
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 provides=('dug')
 conflicts=('dug')
 source=("${url}/releases/download/${_pkgver}/dug-linux-x86_64")
-sha256sums=('b53c855a6c95bebb0e4cc7d41f36ba6117d21374ab6f35b611ddbbd6afe24991')
+sha256sums=('473642cb517d7e0c1b4c407b36c5de1d7c48d8d478020ba3acffb44f59820c0b')
 
 package() {
   cd "$srcdir"
