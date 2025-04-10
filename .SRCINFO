@@ -1,0 +1,16 @@
+pkgbase = how
+	pkgdesc = AI assistant in command line
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/saeziae/how
+	arch = any
+	license = BSD 2-Clause
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = glow
+	depends = ollama
+	source = https://github.com/saeziae/how/archive/refs/tags/v0.1.tar.gz
+	sha256sums = b28394557120b4e1d16a809ea33995c42a8e4a31e16d376e7b4c96ea033d4859
+
+pkgname = how
