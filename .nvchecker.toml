@@ -1,0 +1,4 @@
+[lib32-imath]
+source = "archpkg"
+archpkg = "imath"
+strip_release = true

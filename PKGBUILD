@@ -1,37 +1,65 @@
-# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 
-_basename=imath
-pkgname=lib32-imath
-pkgver=3.1.9
+_Name="Imath"
+_name="${_Name,,}"
+pkgname="lib32-${_name}"
+pkgver=3.1.12
+_api="${pkgver%.*}"
 pkgrel=1
-pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (32-bit)'
-url='https://github.com/AcademySoftwareFoundation/Imath'
-arch=(x86_64)
-license=(BSD)
-depends=(lib32-gcc-libs imath)
-makedepends=(cmake)
-source=("https://github.com/AcademySoftwareFoundation/Imath/archive/v$pkgver/$_basename-$pkgver.tar.gz")
-sha256sums=('f1d8aacd46afed958babfced3190d2d3c8209b66da451f556abd6da94c165cf3')
+pkgdesc="A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (32-bit)"
+arch=('x86_64')
+url="https://www.openexr.com"
+_url="https://github.com/AcademySoftwareFoundation/${_Name}"
+license=('BSD-3-Clause')
+depends=("${_name}>=${pkgver}" 'lib32-gcc-libs' 'lib32-glibc')
+makedepends=('cmake>=3.12')
+provides=("lib${_Name}-${_api//./_}.so")
+_pkgsrc="${_Name}-${pkgver}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8a1bc258f3149b5729c2f4f8ffd337c0e57f09096e4ba9784329f40c4a9035da')
 
 build() {
-    export CC='gcc -m32'
-    export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local cmake_options=(
+    -G 'Unix Makefiles'
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
+    -Wno-dev
+    -DCMAKE_BUILD_TYPE:STRING='None'
+    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -DCMAKE_INSTALL_LIBDIR='lib32'
+    -DPYTHON:BOOL=OFF
+    -DBUILD_WEBSITE:BOOL=OFF
+    -DBUILD_TESTING:BOOL=ON
+  )
+  
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
+  cmake --build "${_pkgsrc}/build"
+}
 
-    cmake -B build -S Imath-$pkgver \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_LIBDIR=lib32 \
-        -DPYTHON=OFF
+check() {
+  local excluded_tests="Imath.testBoxAlgo|Imath.testBox|Imath.testFrustum"
+  local ctest_flags=(
+    --test-dir "${_pkgsrc}/build"
+    --output-on-failure
+    --parallel $(nproc)
+    --exclude-regex "${excluded_tests}"
+  )
 
-    cmake --build build
+  cd "${srcdir}"
+  ctest "${ctest_flags[@]}"
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
-    rm -r "${pkgdir}/usr/include"
-
-    install -Dm644 Imath-$pkgver/LICENSE.md -t "$pkgdir"/usr/share/licenses/$pkgname
+  cd "${pkgdir}/usr"
+  rm -rf "bin" "include" "share"
 }
