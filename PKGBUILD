@@ -1,14 +1,14 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=clock-tui
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A clock, timer, and stopwatch for your terminal"
 arch=("x86_64")
 url="https://github.com/race604/clock-tui"
 license=('MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1f592ca74e84d39bcd6f31a69f368422a68e4c9f2d786a193faaae49a389f392')
+sha256sums=('08bb8b207e7b740e156513bb917f8abb8492663806224bbab202c5fe1b168480')
 
 build() {
   cd "$pkgname-$pkgver"
