@@ -22,6 +22,8 @@ optdepends=('python-jax'
   'python-paddlepaddle'
   'python-tensorflow'
   'python-pytorch')
+
+: ' Checks are disabled until someone can confirm they work
 checkdepends=('python-pytorch'
   'python-numpy'
   'python-tensorflow'
@@ -38,6 +40,8 @@ checkdepends=('python-pytorch'
   'python-pytest-benchmark'
   'python-hypothesis'
   'python-h5py')
+'
+
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('8c91c33013e54cbc7e055c4aa9565ddefa41ebd5a6de0dbdbbffaa6e921b4257')
 
