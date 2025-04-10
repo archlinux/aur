@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-fontconfig
-pkgver=2.16.0
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="A library for configuring and customizing font access (mingw-w64)"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=('mingw-w64-configure'
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.freedesktop.org/fontconfig/fontconfig.git#tag=${pkgver}"
         "0007-pkgconfig.mingw.patch")
-b2sums=('839b16dbb95da285518bbbe303e2acdf3537be96bd161e20501409cb9891d824c65e9f98ee038310b7ab3857745993138f21a91f193120d782e289ec3206d94e'
+b2sums=('ace40c14991c4c1e27db77fe633950ab7ae4f8e4a1af4fe21226f52bb7489f366b997ed1de3f21071af347338c85c39358b40f4713158ce2830c9b64fdeb487a'
         '2e63a8467b940cd56af9e9b13c04848d07466f3b0b778b74405bbea47f8db87625cd65e6d42e446169c930374544cca9a01ac77df6bffc8790cc455f72b5a56b')
 
 prepare() {
