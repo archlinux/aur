@@ -1,8 +1,8 @@
 # Maintainer: G34RZ <g3arz@dockservices.co>
 pkgbase=system76-power-gui
 pkgname=system76-power-gui
-pkgver=0.1.0
-pkgrel=9
+pkgver=0.1.1
+pkgrel=0
 pkgdesc="GUI application for System76 Power Management"
 arch=('x86_64')
 url="https://gitea.dockservices.co/G34RZ/system76-power-GUI.git"
