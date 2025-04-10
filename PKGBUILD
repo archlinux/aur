@@ -1,5 +1,5 @@
 pkgname=tempesta
-pkgver=0.0.65
+pkgver=0.0.66
 pkgrel=1
 pkgdesc="The fastest and lightest bookmark manager CLI written in Rust"
 arch=('x86_64' 'aarch64')
@@ -9,20 +9,8 @@ depends=('glibc')
 optdepends=('fzf' 'wofi')
 makedepends=('cargo')
 
-case "$arch" in
-  "x86_64")
-    source+=(${pkgname}-${pkgver}-${arch}::"https://github.com/x71c9/tempesta/releases/download/v${pkgver}/tempesta-${arch}-unknown-linux-gnu.tar.gz")
-    sha256sums=('SKIP')
-    ;;
-  "aarch64")
-    source+=(${pkgname}-${pkgver}-${arch}::"https://github.com/x71c9/tempesta/releases/download/v${pkgver}/tempesta-${arch}-unknown-linux-gnu.tar.gz")
-    sha256sums=('SKIP')
-    ;;
-  *)
-    echo "Error: Unsupported architecture $arch. Please open a github issue if you want to support it: https://github.com/x71c9/tempesta/issues" >&2
-    exit 1
-    ;;
-esac
+source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
+sha256sums=('2e8236c1916c0f468391b42e11bc14e2db8e03b0ba1d706c2880a18d477c6f90')
 
 prepare() {
   cd "-"
