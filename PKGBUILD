@@ -37,7 +37,6 @@ sha256sums_i686=('fccdc701a4630bf84281d54fc94d825e6d41a52c90f136c263ff945e2c8a00
 sha256sums_aarch64=('ff4da31b3f411f78de22ba11e4e940f9d6919cb20313bfbb9bf2d6f4ed16fdc6')
 
 
-
 package() {
 	cd "${srcdir}/" || exit
 
