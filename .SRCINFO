@@ -1,0 +1,21 @@
+pkgbase = qnetstatview
+	pkgdesc = QNetStatView - program that will show you detailed listings of all TCP and UDP endpoints on your system, including the local and remote addresses and state of TCP connections.
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = https://bitbucket.org/admsasha/qnetstatview
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qt6-5compat
+	depends = qt6-base
+	provides = qnetstatview
+	conflicts = qnetstatview
+	source = https://bitbucket.org/admsasha/qnetstatview/get/v1.5.8.tar.gz
+	sha256sums = 1dd2bb18cb6dab448218eaa29c132be119a4df576f5c12b637241f21467f66fc
+
+pkgname = qnetstatview
