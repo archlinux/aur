@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=way-edges
 pkgname=way-edges-git
-pkgver=r507.eca5129
+pkgver=r582.f30deee
 pkgrel=1
 pkgdesc="Hidden widget on screen edges"
 arch=('x86_64' 'aarch64')
@@ -32,9 +32,17 @@ pkgver() {
   # printf "%s" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd "$_pkgname"
-  RUSTFLAGS="--cfg tokio_unstable" cargo build --release
+
+  export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src --cfg tokio_unstable"
+  cargo build --release --frozen
 }
 
 package() {
