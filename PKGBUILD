@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.4.r112.gcf6bdfd2260
+pkgver=10.5.r90.g647004cd5d7
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
@@ -16,17 +16,16 @@ source=(
   ntsync-10.4-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
-  HACK-winex11.drv-Let-the-WM-focus-our-windows-by-def.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
   0002-wine.inf-Set-a-valid-Win10-ProductId.patch
   0003-wineboot-On-prefix-upgrade-update-win10-build-number.patch
   0004-wineboot-Generate-better-DigitalProductId.patch
   0005-wineboot-Load-root-certificates-on-prefix-update.patch
   Avoid-winemenubuilder-to-startup-explorer.exe.patch
-  include-use-ntsync.h-v7-module-header-as-an-in-tree-header.patch
   kernelbase-Fix-uninitialized-structs-in-OpenThread.patch
   winecfg-Add-tweaks-tab-page.patch
 )
+
 sha512sums=(
   'SKIP'
   'SKIP'
@@ -35,14 +34,12 @@ sha512sums=(
   '9351377f0d7aa2e4fef7571e34eec68e2b6a5373b23d22134fa1fa1fde84293c684497a632ac712ef6b57362a89ad993372b51d6a9e4eeef4466475a07cf178f'
   '55771f934e86b0c23bc3740c98da732c1d9b8cbf0f3452aec1e4f1b46d8253c5700bbcf9e778a782247901a3a94315aea7fd66d8a90729ec5b2f032fb06ad0fc'
   '5b8e10e9087cae45421ce31056d63f3af53b7bb1d3e8233673ac954ebeb3abb066ece51dd7f5762e3d95b5aacfa5b2f07ff0a14686e8880b97b8dfc3bb2e15f8'
-  '3421baf2dc5dcbc410b1b5d3842466090617d6bcbe50a6b735bec39802ac28a841cd5667ade0d2839559547f3772e77534d6940db0cab03d7864ebfebbfc1460'
   '270616bad6cc9f7c11b9a3f72a43568b233921dc30438fc0e42a00c831795238b6d144f352c8c23f261ef96f0248f62cf9f976053f7006824f7ba27191671ae4'
   'c3f8a6f8e0ea2dfe843cf93ab488bb8b24b86161f924fc153e875489f5091fb1703525f40ff0511b349491f4623a10e42d130fd007197c29dfc5eb94701010ce'
   '3c3e1e0418890523469f6ad5f00f54e822e30f347c785cbee222f4ee9c1918188e82b178b5c2a9e09e17734f98288d2c7d8d0b108414f03dc2f9c66a0431a602'
   'a78554ff2d7146921e8083a592da0d9a758859413c118cbe64744ee8b22089d0e5420a3f5ab6c592bb76900fd79c9f55c4c803d8a5a10f9fc4328e55e49e044d'
   '6e5e372f8d9bc26a22b5d56be4d17e7a6c8e4dbdc310145a23c182eaf3c22ba733fecaf73f1e9a92d3297d61f49652d09f112623bdfc81421cb741a52964d836'
   '3d621035add00dc8b5801956a7e76b4348ee2ab34c2f383e644acb88307087d339c2932e41c1053fb1128cb63efe69407953c867fe68b13b988687491711f99b'
-  'ad7644691ccba09220b3b0f140f635eb786ce330b92cfb03f9a2229de410d8de5e87087295b7896148d2d8f62e15e17bc9da87f7ade6883acd59e3d19a48abc7'
   'f82afc38194a456b22475e3f74a19e960ccbc39e641e0c8bbe9fa5db2249f0eb07f2c0e82b7e5b823cfb308037074ed4990ece18fdcef81f368d6e58bcc04be7'
   '4fa2226b9e1d40f6fc1022a1c10b3a9693e8b735924039953f8268669e9670d5c5f547b85c8d6a38b398940feb186e94462c60974b5865932cab2bcf2a1c91e0'
 )
@@ -80,6 +77,7 @@ makedepends=(
   vulkan-headers
   vulkan-icd-loader
   mingw-w64-gcc
+  "linux-api-headers>=6.14"
 )
 optdepends=(
   alsa-lib
@@ -120,7 +118,6 @@ prepare() {
 
   # NTSync for Wine 10.4
   patch -Np1 -i "${srcdir}/ntsync-10.4-staging.patch"
-  patch -Np1 -i "${srcdir}/include-use-ntsync.h-v7-module-header-as-an-in-tree-header.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"
@@ -136,9 +133,6 @@ prepare() {
   # Make keyboard shortcuts independent of layout
   # https://bugs.winehq.org/show_bug.cgi?id=30984
   patch -Np1 -i "${srcdir}/winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch"
-
-  # Fixes losing input focus after Alt-Tab in Unity games
-  patch -Np1 -i "${srcdir}/HACK-winex11.drv-Let-the-WM-focus-our-windows-by-def.patch"
 
   # Fixes "The explorer process failed to start" issue
   patch -Np1 -i "${srcdir}/Avoid-winemenubuilder-to-startup-explorer.exe.patch"
@@ -213,7 +207,6 @@ package() {
 
   # NTSync additions
   echo "ntsync" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/wine-pure.conf"
-  echo 'KERNEL=="ntsync", MODE="0644"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/50-wine-pure.rules"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
