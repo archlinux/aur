@@ -1,0 +1,13 @@
+pkgbase = gtest-src
+	pkgdesc = Google Test Source - C++ testing utility
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://github.com/google/googletest
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = gtest
+	source = googletest-1.16.0.tar.gz::https://github.com/google/googletest/archive/v1.16.0.tar.gz
+	sha512sums = bec8dad2a5abbea8e9e5f0ceedd8c9dbdb8939e9f74785476b0948f21f5db5901018157e78387e106c6717326558d6642fc0e39379c62af57bf1205a9df8a18b
+	b2sums = e5f301987fd4b73cfc8e900ac476b38444994c63bd2f334fdc58704f9e6e966cc03a2dba7ddc033624e89853a15b2592530a1180c3e56be7a28928ed370a9e27
+
+pkgname = gtest-src
