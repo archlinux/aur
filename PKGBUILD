@@ -7,6 +7,7 @@ pkgdesc='一个可爱且任性的 B 站视频下载器'
 arch=('any')
 url='https://github.com/yutto-dev/yutto'
 license=('GPL-3.0-only')
+# same order as https://github.com/yutto-dev/yutto/blob/main/pyproject.toml
 depends=(
     'python-aiofiles'
     'python-biliass'
@@ -16,7 +17,11 @@ depends=(
     'python-h2'
     'python-socksio'
     'python-pydantic'
+    'python-returns'
     'ffmpeg'
+)
+optdepends=(
+    'python-mcp: Model Context Protocol support'
 )
 makedepends=(python-build python-installer python-wheel python-hatchling)
 source=("https://pypi.io/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
