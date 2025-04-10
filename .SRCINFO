@@ -1,6 +1,6 @@
 pkgbase = sdl2trs
 	pkgdesc = TRS-80 Model I/III/4/4P emulator (with hardware rendering)
-	pkgver = 1.2.31
+	pkgver = 1.2.32
 	pkgrel = 1
 	url = https://gitlab.com/jengun/sdltrs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sdl2trs
 	makedepends = cmake
 	depends = hicolor-icon-theme
 	depends = sdl2
-	source = https://gitlab.com/jengun/sdltrs/-/archive/ef8d573d2eba590b483f74146cc94b167045a574/sdltrs-ef8d573d2eba590b483f74146cc94b167045a574.tar.gz
-	sha512sums = SKIP
+	source = https://gitlab.com/jengun/sdltrs/-/archive/bb1f26757232a1700f4ed6cadcd251f215832bb9/sdltrs-bb1f26757232a1700f4ed6cadcd251f215832bb9.tar.gz
+	b2sums = SKIP
 
 pkgname = sdl2trs
