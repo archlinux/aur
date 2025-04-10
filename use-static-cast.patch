@@ -1,0 +1,51 @@
+From 7f3a2be69751259eb59a295455189117ca761301 Mon Sep 17 00:00:00 2001
+From: Lucas Siauve <lucas.siauve@epita.fr>
+Date: Mon, 24 Mar 2025 22:06:58 +0100
+Subject: [PATCH] fix: use static cast from Gtk.EventControllerKey to
+ Gtk.ShortcutController
+
+---
+ src/Dialogs/LabelPicker.vala                   | 2 +-
+ src/Dialogs/Preferences/PreferencesWindow.vala | 2 +-
+ src/Dialogs/ProjectPicker/ProjectPicker.vala   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/Dialogs/LabelPicker.vala b/src/Dialogs/LabelPicker.vala
+index da68cb649..1adef217d 100644
+--- a/src/Dialogs/LabelPicker.vala
++++ b/src/Dialogs/LabelPicker.vala
+@@ -75,7 +75,7 @@ public class Dialogs.LabelPicker : Adw.Dialog {
+ 		});
+ 
+ 		var destroy_controller = new Gtk.EventControllerKey ();
+-		add_controller (destroy_controller);
++		add_controller ((Gtk.ShortcutController) destroy_controller);
+ 		destroy_controller.key_released.connect ((keyval, keycode, state) => {
+ 			if (keyval == 65307) {
+ 				hide_destroy ();
+diff --git a/src/Dialogs/Preferences/PreferencesWindow.vala b/src/Dialogs/Preferences/PreferencesWindow.vala
+index b30ab8590..d803ac13e 100644
+--- a/src/Dialogs/Preferences/PreferencesWindow.vala
++++ b/src/Dialogs/Preferences/PreferencesWindow.vala
+@@ -36,7 +36,7 @@ public class Dialogs.Preferences.PreferencesWindow : Adw.PreferencesDialog {
+ 		Services.EventBus.get_default ().disconnect_typing_accel ();
+ 		
+ 		var destroy_controller = new Gtk.EventControllerKey ();
+-        add_controller (destroy_controller);
++        add_controller ((Gtk.ShortcutController) destroy_controller);
+         destroy_controller.key_released.connect ((keyval, keycode, state) => {
+             if (keyval == 65307) {
+                 close ();
+diff --git a/src/Dialogs/ProjectPicker/ProjectPicker.vala b/src/Dialogs/ProjectPicker/ProjectPicker.vala
+index 64d579d15..9319e3eec 100644
+--- a/src/Dialogs/ProjectPicker/ProjectPicker.vala
++++ b/src/Dialogs/ProjectPicker/ProjectPicker.vala
+@@ -169,7 +169,7 @@ public class Dialogs.ProjectPicker.ProjectPicker : Adw.Dialog {
+         })] = submit_button;
+ 
+         var destroy_controller = new Gtk.EventControllerKey ();
+-        add_controller (destroy_controller);
++        add_controller ((Gtk.ShortcutController) destroy_controller);
+         signal_map[destroy_controller.key_released.connect ((keyval, keycode, state) => {
+             if (keyval == 65307) {
+                 hide_destroy ();
