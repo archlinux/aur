@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dbus
-pkgver=1.16.0
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (mingw-w64)"
 arch=('any')
@@ -18,12 +18,7 @@ makedepends=('mingw-w64-meson'
 provides=('mingw-w64-libdbus')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#tag=dbus-${pkgver}")
-b2sums=('fbfd46f34bbae03ad39c600c94e1573967db6f6cca7d0f35adc1770754cec62d42711c930ddea59d7215e7302e283de335dbb9fec76d9652926b4da4c45fb5b4')
-
-pkgver() {
-  cd "${srcdir}/dbus"
-  git describe --tags | sed 's/^dbus-//;s/-/+/g'
-}
+b2sums=('669cd4203fbac908db3a20c5b51355d9e84b68c9cc94f8de52e35544a636c6d5d1df8ee2bbdfd6dead53a6bd9865db547aa4af0e913bac697b138c698840d3ce')
 
 build() {
   cd "${srcdir}/dbus"
