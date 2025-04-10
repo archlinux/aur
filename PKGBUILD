@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Pelorosso <rodrigo.pelorosso@gmail.com>
 
-pkgname=pcb-tracer-git
+pkgname=pcb-tracer
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A PCB tracing tool"
