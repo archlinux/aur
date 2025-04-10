@@ -1,6 +1,6 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=lowfi
-pkgver=1.5.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An extremely simple lofi player."
 arch=('any')
@@ -31,3 +31,5 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 
+sha512sums=('0b1919e915bfaf8ccdf19c4e39d7a3e50271ed0f953d6d8c72e80cae51cc8eca2d5d932d6613424fd62100c3f445e1986a46e45c79eeb265bea19b43bd2f2e97')
+sha512sums=('0b1919e915bfaf8ccdf19c4e39d7a3e50271ed0f953d6d8c72e80cae51cc8eca2d5d932d6613424fd62100c3f445e1986a46e45c79eeb265bea19b43bd2f2e97')
