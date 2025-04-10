@@ -1,7 +1,7 @@
 pkgbase = qprompt
 	pkgdesc = Teleprompter software for video creators
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://qprompt.app/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,6 +13,6 @@ pkgbase = qprompt
 	depends = kcrash5
 	depends = ki18n5
 	source = QPrompt-Teleprompter-1.1.6.tar.gz::https://github.com/Cuperino/QPrompt-Teleprompter/archive/refs/tags/v1.1.6.tar.gz
-	b2sums = fd5b2946e5f5abe48c9b7d0a681caee6673963c62b3d4f43337d40ecadc21940bb05a5f2dc81d818f323a9aab5f080e9d0a580a1edcae7fca47acc1a7f38687d
+	b2sums = 3f8f06275b9d1c15bc9c0a49a59ccf867385dacf6ae4e1c07c6bb11ce7a641a74b744a46ed66ef0373debd3d5db1db36fd8433f6cd943c283fe3e2cec953282c
 
 pkgname = qprompt
