@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linglong-tools
-pkgver=1.17.0
-pkgrel=0
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='A command line helper for linglong.'
 arch=($CARCH)
 url='https://github.com/myml/linglong-tools'
@@ -32,7 +32,7 @@ source=(
   "${pkgname}.conf"
   "${pkgname}.sh"
 )
-sha256sums=('1755e74b6103b70c4fd46af0b78e6bfb1c80036a483d4397af32892cf05e2727'
+sha256sums=('20ccd4f411ff9a796f5574547f5c9917ff8a4aea39550a9ac75155f0c8d2433b'
             'ca5310a6046c27fde5d5ef3751bcfd62b13c6ac0fcce929fc852dd0533aa8786'
             'a8c629db431fad5da26cca63fb511d965f153a409b541520352eac8f283dc6de')
 
