@@ -6,29 +6,36 @@ pkgver=0.13.2
 pkgrel=6
 _name=${pkgname#python-}
 _name="${_name//-/_}"
-_src_folder="${_name}-${pkgver}"
 pkgdesc='Pytest plugin to record network interactions with VCR.py'
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://pypi.org/project/$_name"
+_url='https://github.com/kiwicom/pytest-recording'
 license=('MIT')
 depends=(python 'python-vcrpy>=7.0.0' python-pytest)
 makedepends=(python-build python-installer python-hatchling)
 optdepends=(
     'python-pycurl: Block pycurl-based network connections'
 )
-checkdepends=(python-coverage python-pytest-httpbin python-pytest-mock python-requests python-werkzeug)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877')
+checkdepends=(
+    python-coverage
+    python-pytest
+    python-pytest-httpbin
+    python-pytest-mock
+    python-requests
+    python-werkzeug
+)
+source=("$pkgname-$pkgver::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('979a7849e758ed1d6ba17056533c75ac901f30a420d8229342bf4c5043cb86fb')
 
 build() {
-    cd "${srcdir}/${_src_folder}"
+    cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 
     python -m installer --destdir=tmp_install dist/*.whl
 }
 
 check() {
-    cd "${srcdir}/${_src_folder}"
+    cd "$pkgname-$pkgver"
 
     local _site_packages
     _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
@@ -40,7 +47,7 @@ check() {
 }
 
 package() {
-    cd "${srcdir}/${_src_folder}"
+    cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
