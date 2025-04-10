@@ -10,6 +10,7 @@ pkgbase = gitbutler
 	makedepends = cmake
 	makedepends = nodejs-lts-jod
 	makedepends = pnpm
+	makedepends = jq
 	depends = gtk4
 	depends = webkit2gtk-4.1
 	source = https://github.com/gitbutlerapp/gitbutler/archive/release%2F0.14.16/gitbutler-release-0.14.16.tar.gz

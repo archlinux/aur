@@ -13,7 +13,8 @@ makedepends=(cargo
              cargo-tauri
              cmake
              nodejs-lts-jod
-             pnpm)
+             pnpm
+             jq)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
 sha256sums=('ba6a5fe387174bba7dad08889d1b25ab9a89060ecbf01c7ccd15a1b810f1eb69')
@@ -22,6 +23,19 @@ prepare() {
 	cd "$_archive"
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	pnpm install --frozen-lockfile
+
+	# disable ad-hoc pre-build script (we do it by hand in build(), see below)
+	# disable updater artifacts (breaks build with "Unable to find a bundled project for the updater")
+	# todo: disable updater completely (.plugins.updater |= null)
+	# inject version (see scripts/release.sh)
+	jq '.
+		| (.build.beforeBuildCommand |= "")
+		| (.bundle.createUpdaterArtifacts |= false)
+		| (.version |= $pkgver)
+		' \
+		--arg pkgver "$pkgver" \
+		crates/gitbutler-tauri/tauri.conf.release.json \
+		>tauri.conf.arch.json
 }
 
 build() {
@@ -30,14 +44,34 @@ build() {
 	export CXXFLAGS+=' -ffat-lto-objects'
 	export RUSTFLAGS+=' --cfg tokio_unstable'
 	export RUSTC_BOOTSTRAP=1
-	env \
-		CARGO_TARGET_DIR=target \
-	cargo build --release
-	# cargo tauri build --bundles deb
+	export CARGO_TARGET_DIR="$PWD/target"
+
+	# keep in sync with crates/gitbutler-tauri/tauri.conf.release.json
+	pnpm build:desktop -- --mode production
+	cargo build \
+		--release --bins \
+		-p gitbutler-git
+	# keep in sync with crates/gitbutler-tauri/inject-git-binaries.sh
+	local _triple="$(rustc -vV | sed -n 's/host: //p')"
+	for bin in target/release/gitbutler-git-{askpass,setsid}; do
+		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-${_triple}"
+	done
+	# tauri does not have "bare files" bundler, piggyback on the deb one
+	cargo tauri build \
+		--bundles deb \
+		--config tauri.conf.arch.json
 }
 
 package() {
 	cd "$_archive"
-	local target="target/release/$pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "$target"-{tauri,git-askpass,git-setsid}
+	cp -vdR --preserve=mode,timestamps \
+		target/release/bundle/deb/*/data \
+		-T "$pkgdir"
+
+	# rename the .desktop file to match the Tauri app ID, in order to
+	# provide expected behavior w/ enableGTKAppId in tauri.conf.json
+	mv "$pkgdir/usr/share/applications"/{GitButler.desktop,com.gitbutler.app.desktop}
+
+	install -Dm644 LICENSE.md \
+		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
