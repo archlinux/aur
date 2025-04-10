@@ -1,0 +1,14 @@
+pkgbase = image2display-bin
+	pkgdesc = Cross platform GUI converting images or fonts into array data.
+	pkgver = 1.1.6.2
+	pkgrel = 1
+	url = https://github.com/chenxuuu/image2display/releases
+	arch = x86_64
+	license = MIT
+	depends = skia-sharp
+	depends = dotnet-runtime
+	conflicts = image2display
+	source = https://github.com/chenxuuu/image2display/releases/download/1.1.6.2/Image2Display-linux-x64.tar.gz
+	sha256sums = SKIP
+
+pkgname = image2display-bin
