@@ -3,15 +3,16 @@ pkgname=openbao
 pkgver=2.2.0
 # NOTE: this commit should match the commit of the release version
 _commit='a2bf51c891680240888f7363322ac5b2d080bb23'
-pkgrel=2
+pkgrel=3
 pkgdesc="solution to manage, store, and distribute sensitive data"
 arch=("x86_64")
 url="https://openbao.org"
 license=('MPL-2.0')
 depends=(glibc)
-makedepends=(go go-tools yarn npm)
+makedepends=(go go-tools yarn npm nodejs-lts)
 optdepends=()
 options=()
+backup=(etc/openbao/openbao.hcl, etc/default/openbao)
 install=openbao.install
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/openbao/openbao/archive/refs/tags/v$pkgver.tar.gz"
