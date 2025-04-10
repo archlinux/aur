@@ -45,7 +45,7 @@ package() {
      dim=$(echo $i | gawk 'match($0, /([0-9]+)x[0-9]+/ , a) {print a[1]}')
      ico_dir=${pkgdir}/usr/share/icons/hicolor/${dim}x${dim}/apps
      mkdir -p "${ico_dir}"
-     convert icons.ico[$cnt] -thumbnail ${dix}x${dim} -flatten ${ico_dir}/meshmixer.png
+     magick icons.ico[$cnt] -thumbnail ${dix}x${dim} -flatten ${ico_dir}/meshmixer.png
      cnt=$((cnt+1))
     done
 }
