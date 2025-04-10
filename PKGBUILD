@@ -1,6 +1,6 @@
 # Maintainer: Prabir Shrestha <mail@prabir.me>
 pkgname=rblog-bin
-pkgver=0.276.0
+pkgver=0.277.0
 pkgrel=1
 pkgdesc="Blog app"
 url="https://github.com/prabirshrestha/rblog"
@@ -8,9 +8,9 @@ license=("MIT")
 arch=("x86_64")
 provides=("rblog-bin")
 conflicts=("rblog")
-source=("https://github.com/prabirshrestha/rblog/releases/download/v0.276.0/rblog-v0.276.0-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=("7762fdbfe4d1067fce97cb00fbdd9cab235ac33b4f2fba5518b01e3c87edad43")
+source=("https://github.com/prabirshrestha/rblog/releases/download/v0.277.0/rblog-v0.277.0-x86_64-unknown-linux-musl.tar.gz")
+sha256sums=("04dc5bb579aba81aca13d4a235815202b2131143cc604715290a4ff3a4a6647d")
 
 package() {
-    install -Dm755 "rblog-v0.276.0-x86_64-unknown-linux-musl/rblog" "$pkgdir/usr/bin/rblog"
+    install -Dm755 "rblog-v0.277.0-x86_64-unknown-linux-musl/rblog" "$pkgdir/usr/bin/rblog"
 }
