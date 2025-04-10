@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.522
+pkgver=8.3.526
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -14,6 +14,7 @@ depends=(
    'tcl'
    'tk'
    'libx11'
+   'libz.so'
    'python'
    'bash'
 )
@@ -32,7 +33,7 @@ optdepends=(
 )
 _archive="${pkgname}-${pkgver}"
 source=("${_archive}::git+${_git_url}#tag=${pkgver}")
-b2sums=('84b7e115e40c032472a48febb9a2bf840995165a4ba4cf531297019280fa7438ba7735682fb4208d666b2e66a0aa314dbe9e7fdd16cc44af16039bf2b24c3bab')
+b2sums=('9afeea5369e29d18facbf464e23ec31bfef8f85798e02fe20f7dc852e028cc21ca2e7ce71eb3bfeaf04ba1445ef4b8b8f34fcd8d004c4919619f73a5b74d2c6f')
 
 
 build() {
