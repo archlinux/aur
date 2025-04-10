@@ -4,9 +4,8 @@ pkgname=parsify-desktop
 _pkgname=Parsify
 _appname="@${pkgname//-/}"
 pkgver=2.0.1
-_electronversion=21
-pkgrel=2
-pkgdesc="Next generation notepad-based calculator, built with extendibility and privacy in mind."
+pkgrel=3
+pkgdesc="Next generation notepad-based calculator, built with extendibility and privacy in mind.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url='https://parsify.app'
 _ghurl="https://github.com/parsify-dev/desktop"
@@ -21,22 +20,25 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('be2dd9116fdbed8cd1052841db57375d384fe5bb9659c74bce50eacaefaefe48'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|\"\/opt\/${_pkgname}\/${_appname}\"|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i -e "
+        s/\"\/opt\/${_pkgname}\/${_appname}\"/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/"LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
