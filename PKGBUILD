@@ -4,7 +4,7 @@
 # Contributor: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=ltex-ls-plus
 pkgname="${_pkgname}-bin"
-pkgver=18.5.0
+pkgver=18.5.1
 pkgrel=1
 pkgdesc="LTeX Language Server: LSP language server for LanguageTool with support for LaTeX, Markdown, and others (fork of ltex-ls)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('java-runtime>=21' 'bash')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('aed4437ec654c211f6b1727151628106dd0a348accf392286d8049b7130be567')
+sha256sums=('912b3fd078bd1b997adf6f9dab11a196f3090a2cf328563f76aed4c80af7bacb')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
