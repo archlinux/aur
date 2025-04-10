@@ -6,7 +6,7 @@
 _name="poppler"
 pkgbase="lib32-${_name}"
 pkgname=("${pkgbase}"{,'-glib'}) # ,'qt'{'5','6'}
-pkgver=25.03.0
+pkgver=25.04.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (32-bit)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::${url}/${_pkgsrc}.tar.xz"
         "${_pkgsrc}.tar.xz.sig::${url}/${_pkgsrc}.tar.xz.sig"
         "test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=91ee031c882634c36f2f0f2f14eb6646dd542fb9")
-sha256sums=('97da4ff88517a6bbd729529f195f85c8d7a0c3bb4a3d57cb0c685cbb052fe837'
+sha256sums=('b010c596dce127fba88532fd2f1043e55ea30601767952d0f2c0a80e7dc0da3d'
             'SKIP'
             '2f797eea1e904012d3c2d1c69ed92ac51e444bf7934447945fedd6c749fef4f2')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
@@ -40,6 +40,7 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
+    -Wno-dev
     -DCMAKE_BUILD_TYPE:STRING='Release'
     -DCMAKE_INSTALL_PREFIX:PATH='/usr'
     -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib32'
@@ -51,7 +52,6 @@ build() {
     -DENABLE_QT6:BOOL=OFF
     -DENABLE_QT5:BOOL=OFF
     -DINSTALL_GLIB_DEMO:BOOL=OFF
-    -Wno-dev
   )
 
   cd "${srcdir}"
