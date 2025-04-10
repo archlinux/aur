@@ -1,0 +1,16 @@
+pkgbase = lib32-libdeflate
+	pkgdesc = Heavily optimized library for DEFLATE/zlib/gzip compression and decompression (32-bit)
+	pkgver = 1.23
+	pkgrel = 1
+	url = https://github.com/ebiggers/libdeflate
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.10
+	makedepends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libdeflate>=1.23
+	provides = libdeflate.so
+	source = libdeflate-1.23.tar.gz::https://github.com/ebiggers/libdeflate/archive/refs/tags/v1.23.tar.gz
+	b2sums = 6921aaf0fde3a2c1a8b04484879c64c2da2ee499353927fa20e8816932a4ccdc53af302f978eb099ee01f1a4c2ac5184529886d1c2a7adcb388ddd9fbd2b078f
+
+pkgname = lib32-libdeflate

@@ -1,0 +1,4 @@
+[lib32-libdeflate]
+source = "archpkg"
+archpkg = "libdeflate"
+strip_release = true
