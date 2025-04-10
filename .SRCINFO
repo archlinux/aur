@@ -14,3 +14,17 @@ pkgbase = swift-format
 	sha256sums = 15b59fbab0cdea348b9888260d5615320a1610ff8a9921438e81fd59cd42f9e8
 
 pkgname = swift-format
+pkgbase = swift-format
+	pkgdesc = Formatting technology for Swift source code
+	pkgver = 601.0.0
+	pkgrel = 1
+	url = https://github.com/apple/swift-format
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = swift-bin
+	source = swift-format-601.0.0.tar.gz::https://github.com/apple/swift-format/archive/601.0.0.tar.gz
+	sha256sums = ab5e3323fc1bfd55d158ae074774d7f5eecd3b2d93f7eb731397b53b5f06b4ec
+
+pkgname = swift-format
