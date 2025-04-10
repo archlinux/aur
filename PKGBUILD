@@ -1,9 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_commit=a3ee183cd3a5d65d3780eefbe75df4f98bca08c6
-
 pkgname=lisaem
-pkgver=RC5_2024.07.28
+pkgver=RC5_2025.03.15
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Apple Lisa computer emulator"
@@ -13,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('wxwidgets-gtk3')
 makedepends=('git')
 source=("$pkgname-$_pkgver.tar.gz::$url/archive/refs/tags/$_pkgver.tar.gz")
-b2sums=('91349042cf3819aa9dff503ef9ccfbb16f133e664bbdfa9b317418787f81751ea62c76cc18053c528f4336781a119c8b2abe98d62caa9dcb75382358d4e9b67a')
+b2sums=('594922cd9f24e36b45d8bf962143701c38f97ca472de2c92eac426cf3a80e9088ccec686c6097d8139d3cc156f84f3e8e1f4951d9f73fe72623c7910cab2aed8')
 
 prepare() {
   cd $pkgname-$_pkgver
