@@ -1,0 +1,12 @@
+diff --git a/absl/log/CMakeLists.txt b/absl/log/CMakeLists.txt
+index 78adbf1d..b64822dd 100644
+--- a/absl/log/CMakeLists.txt
++++ b/absl/log/CMakeLists.txt
+@@ -637,7 +637,6 @@ absl_cc_library(
+     GTest::gmock
+     GTest::gtest
+   PUBLIC
+-  TESTONLY
+ )
+ 
+ absl_cc_library(

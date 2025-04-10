@@ -1,0 +1,18 @@
+pkgbase = lib32-abseil-cpp
+	pkgdesc = Collection of C++ library code designed to augment the C++ standard library (32-bit)
+	pkgver = 20250127.1
+	pkgrel = 1
+	url = https://abseil.io
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake>=3.16
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-gtest
+	depends = abseil-cpp>=20250127.1
+	source = abseil-cpp-20250127.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/refs/tags/20250127.1.tar.gz
+	source = scoped-mock-log.patch
+	sha256sums = b396401fd29e2e679cace77867481d388c807671dc2acc602a0259eeb79b7811
+	sha256sums = a6cbc612a2b96fcbd52d081e03e8581107ceb4827edb19d96510a31c568e1396
+
+pkgname = lib32-abseil-cpp
