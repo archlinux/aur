@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb70-bin"
-pkgver=7.0.16
+pkgver=7.0.17
 _basever=7.0
 _basedist="focal"
 pkgrel="1"
@@ -38,10 +38,10 @@ noextract=(
 sha256sums=('47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             'e5273bfee70fb114d7d17d03ef43cc6aae209c4224253abf4c9954cbcc087fc8'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('0f8c96486c51d0b96414904cbb69704e5877afffad6aa0a7079e837db9b8b316'
-                   '87263cede3143ca190627b0a9f56e01ec608f6a12eb1d08bd3fda80cad46e8db')
-sha256sums_aarch64=('85ef3ed1de5643d6ee61507587da6142d97c1130dce897df7c50e030ce179350'
-                    '982a5eb83a7db74d23c6b6d904bd8cff220ab9e45d6ee0941661f81f4fcec5cf')
+sha256sums_x86_64=('59a492d1399917d0533ee2da57c3ad4b3c6303cd36591afd37ccef59ab478d54'
+                   'e1ee11c4ac18d63d8d09a920e9a04c6411dbbe03f46f91d9d9055808f2b8efe6')
+sha256sums_aarch64=('b7711d373b1d9170ed826ed3a2fe6dc22327a6cfe3f4829e6ff286835d7b75ae'
+                    '1afa7edea1b6ee4e410c424d00a29d09e46871f05318710c994b1563c3d15b1f')
 
 prepare() {
   mkdir -p output
