@@ -3,8 +3,8 @@ pkgname=stealthplane-bin
 _pkgname=StealthPlane
 pkgver=1.1.0
 _electronversion=29
-pkgrel=1
-pkgdesc="A floating web browser app designed to stay on top of other windows for seamless multitasking."
+pkgrel=2
+pkgdesc="A floating web browser app designed to stay on top of other windows for seamless multitasking.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://github.com/mahdi991613487/StealthPlane"
 license=('MIT')
@@ -28,22 +28,24 @@ source=(
 )
 sha256sums=('afb46b0ec2ecc4b0f00ad6fab9199b1478e51974f711cd5ddcf2b743cc869a4d'
             '738958cc40fe219a82ef6b340c356dd696327904c72aaaffc25858124a5f96fc'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${pkgname%-bin}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/License-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    for _icons in 32 64 128 512 1024 2048;do
+    _icon_sizes=(32 64 128 512 1024 2048)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app/src/assets/${_pkgname}${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname%-bin}.png"
     done
