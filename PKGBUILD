@@ -1,19 +1,19 @@
-# Maintainer: zezadas <aur at sefod dot eu>
-# Fork of [mutantmonkey](https://aur.archlinux.org/packages/trousers/)
+# Maintainer: ilovemikael <itsmeguys2247@gmail.com>
+# Fork of [mutantmonkey](https://aur.archlinux.org/packages/opencryptoki)
 
 pkgname=opencryptoki-git
 pkgname_=opencryptoki
-pkgver=v3.17.0.r47.g16007527
+pkgver=3.24.0.r102.g213568b4
 pkgrel=1
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/opencryptoki/opencryptoki"
 license=('CPL')
 depends=('openssl' 'trousers')
-makedepends=('expect')
+makedepends=('expect' 'jq')
 conflicts=('opencryptoki')
 provides=(opencryptoki)
-source=("git://github.com/opencryptoki/opencryptoki.git"
+source=("git+https://github.com/opencryptoki/opencryptoki.git"
         opencryptoki.sysusers.conf
         opencryptoki.tmpfiles.conf)
 sha256sums=('SKIP'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$pkgname_"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }            
             
 build() {
