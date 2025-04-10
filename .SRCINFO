@@ -1,11 +1,11 @@
 pkgbase = wivrn-server
 	pkgdesc = A wireless Monado-based OpenXR runtime for standalone headsets.
-	pkgver = 0.24
-	pkgrel = 2
+	pkgver = 0.24.1
+	pkgrel = 1
 	url = https://github.com/WiVRn/WiVRn
 	install = wivrn-server.install
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = boost-libs
 	makedepends = eigen
@@ -35,7 +35,7 @@ pkgbase = wivrn-server
 	optdepends = opencomposite: OpenVR to OpenXR translation layer
 	optdepends = xrizer: Another OpenVR to OpenXR translation layer
 	provides = openxr-runtime
-	source = wivrn-server-0.24.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v0.24.tar.gz
-	sha256sums = 6359d88e0784cb774186aad2c0fa3b88039990135d47d87085d7af4ef8414f57
+	source = wivrn-server-0.24.1.tar.gz::https://github.com/WiVRn/WiVRn/archive/refs/tags/v0.24.1.tar.gz
+	sha256sums = 7d9d08754b45201c7e2d8e4515672a4e1f4d045fbc8200cb317182f4c79e882e
 
 pkgname = wivrn-server
