@@ -1,11 +1,11 @@
 pkgbase = pcl
 	pkgdesc = A standalone, large scale, open project for 2D/3D image and point cloud processing
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pointclouds.org
 	arch = x86_64
 	license = BSD-3-Clause
-	checkdepends = gtest
+	checkdepends = gtest-src
 	makedepends = adios2
 	makedepends = anari-sdk
 	makedepends = cgns
