@@ -2,14 +2,14 @@
 
 _pkgname="aiomqtt"
 pkgname=python-${_pkgname}
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="The idiomatic asyncio MQTT client"
 arch=(x86_64)
 url="https://github.com/empicano/${_pkgname}"
 license=('BSD')
 depends=('python-paho-mqtt' 'python-poetry-dynamic-versioning')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 )
