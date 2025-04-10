@@ -1,4 +1,4 @@
-# Maintainer: neeshy <neeshy@tfwno.gf>
+# Maintainer: archfapper <archfapper@aur.archlinux.org>
 # Contributor: Nguyễn Chính Hữu <huupoke12@gmail.com>
 # Contributor: Ammon Smith <ammon.i.smith@gmail.com>
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
@@ -8,14 +8,14 @@
 # Contributor: "donaldtrump" [AUR]
 pkgname=osu-lazer-git
 _pkgname=osu
-pkgver=latest
+pkgver=2025.403.0.r168.6bb84e4364
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. Rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT AND CC-BY-NC-4.0')
-depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime')
-makedepends=('git' 'dotnet-sdk')
+depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-8.0')
+makedepends=('git' 'dotnet-sdk-8.0')
 provides=('osu-lazer')
 conflicts=('osu-lazer')
 source=("git+https://github.com/ppy/osu.git"
