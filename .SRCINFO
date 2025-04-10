@@ -1,7 +1,7 @@
 pkgbase = vmdfmt
 	pkgdesc = Markdown autoformatter similar to gofmt
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bobertlo/vmd
 	arch = any
 	license = ISC
