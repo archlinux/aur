@@ -1,6 +1,6 @@
 pkgbase = deadbeef-plugins-kode54-git
 	pkgdesc = A set of plugins for DeaDBeeF (Git version)
-	pkgver = r93.f623d26
+	pkgver = r95.a7cfb6c
 	pkgrel = 1
 	url = https://bitbucket.org/losnoco/deadbeef_plugins
 	arch = x86_64
@@ -22,8 +22,6 @@ pkgbase = deadbeef-plugins-kode54-git
 	depends = vgmstream-git
 	depends = libmgba
 	source = git+https://bitbucket.org/losnoco/deadbeef_plugins.git
-	source = libvgm.patch
 	md5sums = SKIP
-	md5sums = 84386467667f5daf4e91c6491c6fa113
 
 pkgname = deadbeef-plugins-kode54-git
