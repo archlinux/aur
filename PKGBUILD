@@ -1,14 +1,15 @@
 # Maintainer: Debucquoy Anthony (tonitch) <d.tonitch@gmail.com>
 pkgname=wickedengine-editor
-pkgver=0.71.532
+_pkgname=WickedEngine
+pkgver=0.71.727
 pkgrel=1
 pkgdesc="3D engine with modern graphics "
 arch=('any')
 url="https://wickedengine.net/"
 license=('MIT')
 depends=("sdl2")
-source=("https://github.com/turanszkij/$pkgname/releases/download/v${pkgver}/Editor.Linux.zip")
-sha256sums=('7be7c94cfb4526f64ca0aee382aa781cf29e0d0c57c5568000d490a131d0aeaa')
+source=("https://github.com/turanszkij/$_pkgname/releases/download/v${pkgver}/Editor.Linux.zip")
+sha256sums=('424df7ac52de8435a1060e82693926b1590148ffb4efb3d2be5f5330aee0dc97')
 
 package() {
 	install -d $pkgdir/opt/wickedengine
