@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=WaveTracker
+Comment=A free and open source music-making software using wavetable synthesis and sampling to generate sounds.
+GenericName=Music tracker
+Exec=/usr/local/bin/wavetracker
+Icon=wavetracker
+Type=Audio;AudioEditing;Midi;Sequencer;Music;
