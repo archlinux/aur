@@ -8,14 +8,14 @@
 
 _pack=nurbs
 pkgname=octave-$_pack
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Collection of routines for the creation, and manipulation of Non-Uniform Rational B-Splines (NURBS), based on the NURBS toolbox by Mark Spink."
 arch=(any)
 url="https://gnu-octave.github.io/packages/$_pack/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=('octave-forge')
-depends=('octave>=5.1')
+depends=('octave>=5.1.0')
 makedepends=()
 optdepends=()
 backup=()
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('a74666a1e204b9feda22c9792b87939239221fd816383bc39f75db72b62a209b')
+sha256sums=('41f175b6ef73fc54163438ab46ce4e3f721124e1a4911da59c710b9f722d9276')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
