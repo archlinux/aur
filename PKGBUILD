@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=oblivion-desktop
-pkgver=2.61.0
+pkgver=2.68.0
 pkgrel=1
 pkgdesc="Unofficial Warp Client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' "${_electron}")
 makedepends=('gendesk' 'nvm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.sh")
-sha256sums=('1b00bbef7eb2cdf74eef48130ee5f58e1bea8d1a66c517b418b307795542e576'
+sha256sums=('e1e45066c5438ba55fe644c07ff9a99f27893b562013dcd7bcabc8e5321bdfab'
             '31676f8268a42b7cc292e7e8d71e8dab3f41f9b4a5332471134428d821b4338f')
 
 prepare() {
