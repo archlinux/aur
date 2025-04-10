@@ -11,6 +11,7 @@ depends=('system76-power' 'polkit' 'gtk3')
 makedepends=('go' 'gcc' 'git')
 
 prepare() {
+    make -j$(nproc)
     mkdir -p "$srcdir/$pkgname-$pkgver"
     cd "$startdir"
     cp -t "$srcdir/$pkgname-$pkgver/" \
