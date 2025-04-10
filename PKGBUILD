@@ -1,12 +1,12 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_friction_docs_commit=940076205a9226628d20bbf7bc333d9dcf1d749b
-_friction_icon_theme_commit=c7f676e48db6bf43db3f9bb2e723b2526ca42d0d
+_friction_docs_commit=bfb094ceaa262da12dac8122249ba35040bcdb2a
+_friction_icon_theme_commit=d48d33af3dbdc90f84c038575f556f747558eab2
 _gperftools_commit=b97c293c812c7ec3cdeccd50a89769e746c01377
-_skia_commit=f6e5f9e8dfa6d410d626a6c48882a2e1ab3db36a
+_skia_commit=835261b1bd114f9047ccb95025466028cd8880b1
 
 pkgname=friction
-pkgver=1.0.0_beta.2
+pkgver=1.0.0_rc.1
 _pkgver=${pkgver/_/-}
 pkgrel=1
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("$pkgname-$_pkgver.tar.gz::$_url_github/$pkgname/archive/refs/tags/v${_p
         "friction-icon-theme-$_friction_icon_theme_commit.tar.gz::$_url_github/friction-icon-theme/archive/$_friction_icon_theme_commit.tar.gz"
         "gperftools-$_gperftools_commit.tar.gz::$_url_github/gperftools/archive/$_gperftools_commit.tar.gz"
         "skia-$_skia_commit.tar.gz::$_url_github/skia/archive/$_skia_commit.tar.gz")
-b2sums=('dda557424e093d0cce087942a6d5f3e28294918ac01a8563613b43b7b954a350c1c04b63b5d94e39939b8bb9a60f3d8c47bcf0296d8e99e341deff5a93530645'
+b2sums=('4879707a2269c2c05f486d2f953303904f6585a340b75058b7c5c83d91d3c283e62f2e62bffb91d0a551539683f4ec7fbbc5cf8f0e7bbaa99efb8715df187e36'
         'SKIP'
         'SKIP'
         'SKIP'
