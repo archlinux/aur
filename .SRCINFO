@@ -1,7 +1,7 @@
 pkgbase = magic
 	pkgdesc = A VLSI layout system
 	pkgver = 8.3.526
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencircuitdesign.com/magic/
 	arch = i686
 	arch = x86_64
@@ -14,13 +14,14 @@ pkgbase = magic
 	depends = tcl
 	depends = tk
 	depends = libx11
-	depends = libz.so
+	depends = zlib
 	depends = python
 	depends = bash
-	optdepends = opengl-driver: For graphics acceleration
-	optdepends = cairo: for better graphics
-	optdepends = glu: for better graphics
+	optdepends = libgl: OpenGL for performant 2D graphics, needs "glu" as well
+	optdepends = glu: Vector fonts for OpenGL renderer
+	optdepends = cairo: 2D accelerated graphics, alternative to OGL
 	optdepends = blt: to create a tree diagram of the cell hierarchy in a design
+	options = !ccache
 	source = magic-8.3.526::git+https://github.com/RTimothyEdwards/magic#tag=8.3.526
 	b2sums = 9afeea5369e29d18facbf464e23ec31bfef8f85798e02fe20f7dc852e028cc21ca2e7ce71eb3bfeaf04ba1445ef4b8b8f34fcd8d004c4919619f73a5b74d2c6f
 
