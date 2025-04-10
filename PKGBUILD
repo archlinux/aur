@@ -2,8 +2,8 @@
 # Maintainer: v9pzm7 <751000925#qq.com>
 _pkgbase=simple-live-app
 pkgname=simple-live-app-bin
-_build_id=10706
-_version=1.7.6
+_build_id=10707
+_version=1.7.7
 pkgver=${_version}.${_build_id}
 pkgrel=1
 
@@ -16,7 +16,7 @@ provides=("$_pkgbase")
 # conflicts=("$pkgname-git" "$pkgname-beta")
 
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v${_version}/simple_live_app-${_version}+${_build_id}-linux.deb")
-sha256sums_x86_64=('47ae6ab67f9802a0c88df0c42a469b3bb57a1a113c6483890f02a690405d05bb')
+sha256sums_x86_64=('78376473ab6f8e12facad0d679dc44e6df79b682c6d1541daecf8e7c9849b910')
 depends=('libmpv.so' 'xdg-user-dirs')
 makedepends=('patchelf')
 options=(!debug)
@@ -28,5 +28,4 @@ package() {
     ln -s /usr/share/simple_live_app/simple_live_app  "$pkgdir"/usr/bin/
 
     patchelf --replace-needed libmpv.so.1 libmpv.so "$pkgdir"/usr/share/simple_live_app/lib/libmedia_kit_video_plugin.so
-    patchelf --replace-needed libmpv.so.1 libmpv.so "$pkgdir"/usr/share/simple_live_app/lib/libmedia_kit_native_event_loop.so
 }
