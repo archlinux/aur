@@ -3,7 +3,7 @@
 
 pkgname=python-pytest-recording
 pkgver=0.13.2
-pkgrel=5
+pkgrel=6
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -18,17 +18,7 @@ optdepends=(
 )
 checkdepends=(python-coverage python-pytest-httpbin python-pytest-mock python-requests python-werkzeug)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source+=("$pkgname-PR169.patch::https://github.com/kiwicom/pytest-recording/pull/169.patch")
-sha256sums=('000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877'
-            '770a0b04f9b29c86f65f5013e01966dc0782259ee2387e7e6c2c4154d8016ef2')
-
-prepare(){
-    cd "${srcdir}/${_src_folder}"
-
-    # Disable pretty pytest plugin in recursive pytest invocations
-    # (it messes up the layouts, causing spurious test failures)
-    patch -p1 < ../"$pkgname-PR169.patch"
-}
+sha256sums=('000c3babbb466681457fd65b723427c1779a0c6c17d9e381c3142a701e124877')
 
 build() {
     cd "${srcdir}/${_src_folder}"
@@ -43,6 +33,8 @@ check() {
     local _site_packages
     _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
     export PYTHONPATH="$PWD/tmp_install/$_site_packages"
+    export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+    export PYTEST_PLUGINS=pytest_httpbin.plugin,pytest_mock,pytest_recording.plugin
 
     python -m pytest
 }
