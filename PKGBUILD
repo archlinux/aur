@@ -2,7 +2,7 @@
 
 pkgname=reader-bin
 pkgver=0.4.7
-pkgrel=0
+pkgrel=1
 pkgdesc="A minimal command line reader offering better readability of web pages on the CLI."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mrusme/reader"
@@ -26,6 +26,6 @@ sha256sums_aarch64=('9849b9321abbf31844ea68aabea78f5c32b47edc0ce956027077fce856f
 
 package() {
   install -D -m755 reader "${pkgdir}/usr/bin/reader"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/reader/LICENSE"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/reader/README.md"
 }
