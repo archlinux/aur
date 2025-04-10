@@ -15,10 +15,9 @@ depends=(
     "mpv"
     "libkeybinder3"
     "gstreamer"
-    "libayatana-appindicator>=0.5.93"
+    "libayatana-appindicator"
     "libayatana-indicator"
     'libnotify'
- 
 )
 
 options=('!strip')
@@ -48,7 +47,6 @@ pkgver(){
 prepare() {
     export PUB_CACHE="$srcdir/pub_cache"  
     cd "$srcdir/$_reponame"
-    flutter doctor -v
     flutter pub get
 }
 
@@ -56,7 +54,7 @@ build(){
     export PUB_CACHE="$srcdir/pub_cache"  
     cd "$srcdir/$_reponame"
 
-    CXXFLAGS="-Wno-unused-result" flutter build linux --no-pub --release
+    flutter build linux --no-pub --release
 
     # AppImage
     mkdir Solian.AppDir
@@ -91,7 +89,7 @@ package(){
 
     # Link executable
     ln -s "/opt/${pkgname}/Solian-x86_64.AppImage" "${pkgdir}/usr/bin/solian-bin-git"
-    
+
     # Install desktop file
     cat > $pkgdir/usr/share/applications/Solian.desktop << EOF
 [Desktop Entry]

@@ -16,7 +16,7 @@ pkgbase = solian
 	depends = mpv
 	depends = libkeybinder3
 	depends = gstreamer
-	depends = libayatana-appindicator>=0.5.93
+	depends = libayatana-appindicator
 	depends = libayatana-indicator
 	depends = libnotify
 	conflicts = solian-bin-git
