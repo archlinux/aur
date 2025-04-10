@@ -1,10 +1,10 @@
 # Maintainer: claymorwan <claymorwan@proton.me> <claymorw@gmail.com>
 
-_pkgname="asset-ripper"
+_sourceName="asset-ripper"
 _exeName="AssetRipper.GUI.Free"
 
 pkgname=asset-ripper-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="GUI Application to work with engine assets, asset bundles, and serialized files"
 arch=(x86_64 aarch64)
@@ -13,13 +13,13 @@ depends=('gcc-libs' 'dbus' 'glibc')
 
 source=("https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/LICENSE.md"
         "https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/$pkgver/Media/Images/LogoReimagined/LogoReimaginedTransparent.png")
-source_x86_64=("$_pkgname-x86_64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/$pkgver/AssetRipper_linux_x64.zip")
-source_aarch64=("$_pkgname-aarch64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/$pkgver/AssetRipper_linux_arm64.zip")
+source_x86_64=("$_sourceName-x86_64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/$pkgver/AssetRipper_linux_x64.zip")
+source_aarch64=("$_sourceName-aarch64.tar.gz::https://github.com/AssetRipper/AssetRipper/releases/download/$pkgver/AssetRipper_linux_arm64.zip")
 
-sha256sums=('SKIP'
-            'SKIP')
-sha256sums_x86_64=('7267d897668ba24513d5366dbbfce3b52413021562e4a6a7b5691e60be4fa387')
-sha256sums_aarch64=('025fb2015f30fbfb8eb85691ea6483e38b1806209825e3a7f32c530d07e9761a')
+sha256sums=('8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b'
+            '223a74636902eeed55ad13a44e7292ff9f532df24c706dd8d566b33d00246757')
+sha256sums_x86_64=('2308676ce09009b9a3ab467cfedfe361c8eb7932066881f391319798ff8aeff2')
+sha256sums_aarch64=('2975f46f86b283d57179847231de3a4ab1b31b77b3b911fa8276ced93f6ff16b')
 
 license=("GPL-3.0-only")
 options=("!debug")
@@ -27,24 +27,22 @@ options=("!debug")
 package() {
   install -d "$pkgdir/usr/bin/"
   install -d "$pkgdir/usr/share/applications/"
-
-  install -Dm755 "$_exeName" "$pkgdir/opt/$_pkgname/$_exeName"
-  install -Dm755 "crunch.dll" "$pkgdir/opt/$_pkgname/crunch.dll"
-  install -Dm755 "crunchunity.dll" "$pkgdir/opt/$_pkgname/crunchunity.dll"
-  install -Dm755 "libcapstone.so" "$pkgdir/opt/$_pkgname/libcapstone.so"
-  install -Dm755 "libTexture2DDecoderNative.so" "$pkgdir/opt/$_pkgname/libTexture2DDecoderNative.so"
-  install -Dm755 "Photino.Native.so" "$pkgdir/opt/$_pkgname/Photino.Native.so"
+  
+  _install_file=("$_exeName" "crunch.dll" "crunchunity.dll" "libcapstone.so" "libTexture2DDecoderNative.so" "Photino.Native.so")
+  for _file in ${_install_file[@]}; do
+    install -Dm755 "$_file" "$pkgdir/opt/$_sourceName/$_file"
+  done
 
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -D LogoReimaginedTransparent.png "$pkgdir/usr/share/icons/$_pkgname.png"
+  install -D LogoReimaginedTransparent.png "$pkgdir/usr/share/icons/$_sourceName.png"
 
-  ln -s "/opt/$_pkgname/$_exeName" "$pkgdir/usr/bin/$_pkgname"
+  ln -s "/opt/$_sourceName/$_exeName" "$pkgdir/usr/bin/$_sourceName"
 
-  install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_pkgname.desktop << EOF
+  install -Dm0644 /dev/stdin $pkgdir/usr/share/applications/$_sourceName.desktop << EOF
 [Desktop Entry]
 Name=Asset Ripper
-Exec=$_pkgname
-Icon=$_pkgname
+Exec=$_sourceName
+Icon=$_sourceName
 Terminal=false
 Type=Application
 Comment=GUI asset ripper
