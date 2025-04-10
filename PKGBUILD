@@ -3,7 +3,7 @@
 
 pkgname='perl-crypt-argon2'
 pkgver='0.029'
-pkgrel='17'
+pkgrel='18'
 pkgdesc="Perl interface to the Argon2 key derivation functions"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -17,7 +17,6 @@ sha512sums=('dc83d9267de56f5dc48fcab8ace1b3ac15850f4e179ee9e2745c2f8359ea378b2a8
 _distdir="Crypt-Argon2-0.029"
 
 build() {
-  cpanm -n -S https://cpan.metacpan.org/authors/id/L/LE/LEONT/Dist-Build-0.010.tar.gz
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
@@ -25,6 +24,8 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
+    cpanm -l perldeps -n https://cpan.metacpan.org/authors/id/L/LE/LEONT/Dist-Build-0.010.tar.gz
+    export PERL5LIB="$srcdir/$_distdir/perldeps/lib/perl5"
     /usr/bin/perl Build.PL
     /usr/bin/perl Build
   )
@@ -32,14 +33,14 @@ build() {
 
 check() {
   cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB="$srcdir/$_distdir/perldeps/lib/perl5"
     /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+  PERL5LIB="$srcdir/$_distdir/perldeps/lib/perl5" /usr/bin/perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
