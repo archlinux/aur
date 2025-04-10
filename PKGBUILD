@@ -1,7 +1,7 @@
 # Maintainer: zephyrdrh <zephyrdrh at gmx dot de>
 pkgname=ttf-winky-sans
 pkgver=1.205
-pkgrel=2
+pkgrel=3
 pkgdesc="A sans-serif typeface by typofactur inspired by Microsoft Comic Sans" 
 arch=('any')
 url="https://github.com/typofactur/winkysans"
@@ -16,6 +16,6 @@ build() {
 }
 
 package() {
-	install -Dm644 winkysans/fonts/ttf/*.ttf -t "${pkgdir}/usr/share/fonts/TTF/WinkySans/"
+	install -Dm644 winkysans/fonts/ttf/*.ttf -t "${pkgdir}/usr/share/fonts/WinkySans/"
 	install -Dm644 winkysans/OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
