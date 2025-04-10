@@ -4,7 +4,7 @@
 
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
-pkgver=0.5.4.r94.g641767d
+pkgver=0.5.4.r102.ged58dd8
 pkgrel=1
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
@@ -59,6 +59,9 @@ prepare(){
         done
         git -c protocol.file.allow=always submodule update
     done
+
+    # CMake 3.1 compatibility has been dropped by CMake
+    sed -i "1 s/3.1/3.5/" "${srcdir}/${pkgname}/src/backend_scene/third_party/SPIRV-Reflect/CMakeLists.txt"
 }
 pkgver(){
     cd "${srcdir}/${pkgname}"
