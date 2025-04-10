@@ -13,7 +13,11 @@ pkgbase = gitbutler
 	makedepends = jq
 	depends = gtk4
 	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = libgit2
 	source = https://github.com/gitbutlerapp/gitbutler/archive/release%2F0.14.16/gitbutler-release-0.14.16.tar.gz
+	source = unvendor.patch
 	sha256sums = ba6a5fe387174bba7dad08889d1b25ab9a89060ecbf01c7ccd15a1b810f1eb69
+	sha256sums = 5a88854ac7fbdf1edbb342de8ec4ef6d0fc7e8a7fcc3499bc7fabc1215f047dc
 
 pkgname = gitbutler

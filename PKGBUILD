@@ -8,7 +8,9 @@ pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
 arch=(x86_64)
 license=(LicenseRef-FSL-1.1-MIT)
 depends=(gtk4
-         webkit2gtk-4.1)
+         webkit2gtk-4.1
+         openssl
+         libgit2)
 makedepends=(cargo
              cargo-tauri
              cmake
@@ -16,11 +18,17 @@ makedepends=(cargo
              pnpm
              jq)
 _archive="$pkgname-release-$pkgver"
-source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
-sha256sums=('ba6a5fe387174bba7dad08889d1b25ab9a89060ecbf01c7ccd15a1b810f1eb69')
+source=("$url/archive/release%2F$pkgver/$_archive.tar.gz"
+	"unvendor.patch")
+sha256sums=('ba6a5fe387174bba7dad08889d1b25ab9a89060ecbf01c7ccd15a1b810f1eb69'
+            '5a88854ac7fbdf1edbb342de8ec4ef6d0fc7e8a7fcc3499bc7fabc1215f047dc')
 
 prepare() {
 	cd "$_archive"
+
+	# do not vendor system libraries
+	patch -Np1 -i "$srcdir/unvendor.patch"
+
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	pnpm install --frozen-lockfile
 
