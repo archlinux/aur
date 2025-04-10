@@ -5,7 +5,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-cairo
-pkgver=1.18.2
+pkgver=1.18.4
 pkgrel=1
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64)"
 arch=('any')
@@ -26,7 +26,7 @@ replaces=("${pkgname}-bootstrap")
 options=('!strip' '!buildflags' 'staticlibs')
 source=("git+https://gitlab.freedesktop.org/cairo/cairo.git#tag=$pkgver"
         "0026-create-argb-fonts.all.patch")
-b2sums=('ff661ec100a24a457c91b928ad537e783e59ffc56812aa1d1da09bfe425390f8e6df0191a7993aeb56e9b064403a389d252e64f557f09ea6f773f821a021c9ca'
+b2sums=('10dd8012e5a24307aa1c9fc7b2418c4385dceba81e034520e098a5864992cc202c2ff65bd398234d532695a62e5b11da60b071ddf36c547ce064c4cbe4f568b4'
         '62c63b4ecfec80e179bad977dcaea53e2818d2a3f58a9753f0441b9c0f776a8ef104bb188305692fd134c2c0e8559f7dc713689efb3876fec6b3115d8259b064')
 
 pkgver() {
