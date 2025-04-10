@@ -1,7 +1,7 @@
 # Maintainer: AntiApple4life <antiapple at antiapple dot net>
 pkgname=wayvr-dashboard-git
-pkgver=0.3.0.r8.gaf6f8b3
-_artver=0.3.1
+pkgver=0.3.0.r10.g5cd7233
+_artver=0.3.2
 pkgrel=1
 pkgdesc="WayVR Dashboard is a work-in-progress overlay application (WayVR/wlx-overlay-s plugin via IPC) for launching various applications and games directly into a VR desktop environment"
 arch=('x86_64')
@@ -33,5 +33,5 @@ build() {
 }
 
 package() {
-  cp -a ${pkgname%-git}/src-tauri/target/release/bundle/deb/wayvr_dashboard_${_artver}_*/data/* "${pkgdir}"
+  cp -a ${pkgname%-git}/src-tauri/target/release/bundle/deb/wayvr-dashboard_${_artver}_*/data/* "${pkgdir}"
 }
