@@ -2,8 +2,8 @@
 pkgname=music-you-bin
 pkgver=3.0.1
 _electronversion=27
-pkgrel=2
-pkgdesc="一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端"
+pkgrel=3
+pkgdesc="A beautiful and minimalist Material Design 3 (Material You) style NetEase Cloud Music Player pc client side.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://music-you-next.vercel.app"
 _ghurl="https://github.com/GuMengYu/music-you"
@@ -14,21 +14,23 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('389881bc7dca96cf17dca9c059109fcf4722d0c8d3ca5f5baaf4b6ad6eae1c74'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|Audio;Music|AudioVideo|g" \
-        -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+sha256sums=('34bae9036ea2bf05a0e986bfafcbc4e3cb8f0aeb4589b72b2fb13afd48e38d77'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\/opt\/${pkgname%-bin}\///g
+        s/Audio;Music/AudioVideo/g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
