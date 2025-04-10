@@ -11,7 +11,6 @@ depends=('system76-power' 'polkit' 'gtk3')
 makedepends=('go' 'gcc' 'git')
 
 prepare() {
-    make -j$(nproc)
     mkdir -p "$srcdir/$pkgname-$pkgver"
     cd "$startdir"
     cp -t "$srcdir/$pkgname-$pkgver/" \
@@ -26,6 +25,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+    export MAKEFLAGS="-j$(nproc)"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
