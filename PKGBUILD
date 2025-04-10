@@ -2,7 +2,7 @@
 
 _pkgname="faircamp"
 pkgname="${_pkgname}-bin"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A static site generator for audio producers"
 arch=('x86_64')
@@ -22,11 +22,11 @@ source=("${_pkgsrc}-ALTERNATIVES.md::${_url}/raw/tag/${pkgver}/ALTERNATIVES.md"
         "${_pkgsrc}-README.md::${_url}/raw/tag/${pkgver}/README.md")
 source_x86_64=("${_pkgsrc}-x86_64.deb::${url}/packages/${_pkgsrc//-/_}-1+deb12_amd64.deb")
 sha256sums=('6228260876ad0e3a96a573ad5cc1eef5ed9614241c593289e4042247a3bb3887'
-            '47189358305e78a84e2ef4a00223e6593909bd14d35ef99ebf033cd4bed81983'
-            'c3d5f1b3dce03fb643e76793b141edc4eebe10ffb88c83703c4aea5b27272f3d'
-            '57dc2c4356225b1c59eb1adb08cac2ebefc189ac0a9fc371db42d19d7959b12b'
-            '2811f2ccf2ba1e28a564aa3fda30f6a0b6966fcc92eb45c8b1ce1311488f1f22')
-sha256sums_x86_64=('8dff0755f98bad575ef539d4987154a92c3af4ccdad093f1b63c37eb5f86a69d')
+            'fe2940e7e351f99600dd9640d5b4273a2027598092e627a1799c7c26dd2f96ac'
+            'a59c9f23d41f005d9ff4699d225174b7e19e34f048306a3b6507b21f68efcf1b'
+            '4e31d93f62851f71b53a2be259f5b63509937e35887a97298908ebb359ceff7e'
+            '644956aece12d055c1664cd72ec9e24deb09c77730fb953bd956bc601d0abdb7')
+sha256sums_x86_64=('5434bf77236a3392b44c2bc1d73865ef44f5a3cfddf2a316aeed4702ca0eb2e0')
 
 prepare() {
   cd "${srcdir}"
