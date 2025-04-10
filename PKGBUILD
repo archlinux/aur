@@ -1,6 +1,6 @@
 pkgname=xfce4-systemload-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.2.r66.gf0d2499
+pkgver=1.3.3.r7.g9acb03c
 pkgrel=1
 pkgdesc='A system load plugin for the Xfce4 panel'
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ provides=('xfce4-systemload-plugin')
 makedepends=('xfce4-dev-tools' 'intltool' 'git')
 options=('!libtool')
 install=xfce4-systemload-plugin.install
-source=('git://git.xfce.org/panel-plugins/xfce4-systemload-plugin')
+source=('git+https://gitlab.xfce.org/panel-plugins/xfce4-systemload-plugin.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	  cd "$_pkgname"
-	    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	    git describe --long --tags | sed 's/^xfce4-systemload-plugin-//;s/\([^-]*-g\)/r\1/;s/-/./g'
     }
 
 build() {
