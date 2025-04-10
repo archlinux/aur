@@ -1,7 +1,7 @@
 pkgbase = sc-controller
 	pkgdesc = User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers.
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/C0rn3j/sc-controller
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = sc-controller
 	depends = xorg-xinput
 	conflicts = sc-controller-git
 	conflicts = scc
-	source = sc-controller-0.5.0::git+https://github.com/C0rn3j/sc-controller.git#tag=v0.5.0
-	sha256sums = 67babdca7eb17ef19b9907c5d00eacde0d1f75eae0252af0906ae8e05522c731
+	source = sc-controller-0.5.1::git+https://github.com/C0rn3j/sc-controller.git#tag=v0.5.1
+	sha256sums = 29843d3a01ce3abe28610287b334176fbf61213f001d7bddc799721b5c9efc7c
 
 pkgname = sc-controller
