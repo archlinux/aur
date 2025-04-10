@@ -8,9 +8,9 @@ pkgbase = python-ytsp-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-httpx
-	provides = ytsp
+	provides = python-ytsp
 	provides = youtube-search-python
-	conflicts = ytsp
+	conflicts = python-ytsp
 	conflicts = youtube-search-python
 	source = git+https://github.com/jonesroot/ytsp.git#branch=dev
 	b2sums = SKIP

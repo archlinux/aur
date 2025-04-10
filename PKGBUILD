@@ -10,8 +10,8 @@ url="https://github.com/jonesroot/ytsp"
 license=('MIT')
 depends=('python-httpx')
 makedepends=('git' 'python-setuptools')
-provides=("$_pkgname" 'youtube-search-python')
-conflicts=("$_pkgname" 'youtube-search-python')
+provides=("python-$_pkgname" 'youtube-search-python')
+conflicts=("python-$_pkgname" 'youtube-search-python')
 source=("git+${url}.git#branch=dev")
 b2sums=('SKIP')
 
