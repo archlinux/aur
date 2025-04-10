@@ -2,12 +2,12 @@
 
 pkgname=flightcore
 pkgver=2.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Installer/Updater/Launcher for Northstar"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 arch=('x86_64')
-depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk-4.1')
+depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk')
 makedepends=('cargo' 'npm')
 options+=('!lto')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
