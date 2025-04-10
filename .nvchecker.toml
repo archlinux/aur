@@ -1,0 +1,4 @@
+[lib32-libyuv]
+source = "archpkg"
+archpkg = "libyuv"
+strip_release = true
