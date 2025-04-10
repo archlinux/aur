@@ -2,7 +2,7 @@
 Type=Application
 Name=VPC Shift Tool
 Comment=Tool for replicating VIRPIL joystick states from one device to another
-Exec=/usr/bin/shift_tool
+Exec=/usr/local/bin/shift_tool
 Terminal=false
 Categories=Utility;Game;
 Keywords=joystick;virpil;vpc;
