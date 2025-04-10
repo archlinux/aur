@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=4.9.0.r0.ga5d93f3
+pkgver=4.10.0.r0.g150d37c
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
@@ -33,5 +33,5 @@ package() {
   cd "$srcdir/qp"
   install -Dm755 "${_binaryname}" "${pkgdir}/usr/bin/${_binaryname}"
   install -Dm644 "${_binaryname}.1" "${pkgdir}/usr/share/man/man1/${_binaryname}.1"
-  install -Dm644 "${srcdir}/news/NEWS" "${pkgdir}/usr/share/doc/${pkgname}/NEWS"
+  install -Dm644 "${srcdir}/news/NEWS" "${pkgdir}/usr/share/doc/qp/NEWS"
 }
