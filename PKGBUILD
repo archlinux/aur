@@ -3,8 +3,8 @@
 # Contributor: Rodrigo Severo <rsev at protonmail dot com>
 
 pkgname='therion'
-pkgver='6.3.3'
-pkgrel='2'
+pkgver='6.3.4'
+pkgrel='1'
 pkgdesc="Cave surveying: processes survey data and generates maps or 3D models of caves"
 arch=('x86_64' 'i686')
 url="http://therion.speleo.sk"
@@ -39,13 +39,13 @@ makedepends=(
 source=(
 	"http://github.com/therion/therion/archive/v${pkgver}.tar.gz"
 	'therion_ini.patch'
-	'add_library-STATIC.patch'
+	'pull-652-fix-nosurvey-equate.patch'
 )
 
 sha256sums=(
-	'55d5e5bd2f6cf27cd32f9cb096c15ced6939605f1c1754a97456551112481ce5'
+	'e678a539aeab436465556e769fa9ecbc51b2944f8969a34b29cc3fdc6d78765a'
 	'0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3'
-	'54756514e46ede74eb418f7b234d8290cea6b1904bf52109a5d5620900d7ee02'
+        '676842b3eb77c3f1b422d2e42aedbbd40472f3aa5b456321d424ac5c3c7ba886'
 )
 
 backup=(
@@ -62,8 +62,7 @@ prepare() {
   # patch to get UTF8 and available fonts
   patch -p0 -i ${srcdir}/therion_ini.patch
 
-  # fix static linking
-  patch -p1 -i ${srcdir}/add_library-STATIC.patch
+  patch -p1 -i ${srcdir}/pull-652-fix-nosurvey-equate.patch
 }
 
 build() {
