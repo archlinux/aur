@@ -8,7 +8,7 @@ url='https://www.unison-lang.org/'
 license=('custom')
 depends=('gmp' 'zlib')
 
-source=("ucm-$pkgver::https://github.com/unisonweb/unison/releases/download/release%2F$pkgver/ucm-linux.x64.tar.gz"
+source=("ucm-$pkgver::https://github.com/unisonweb/unison/releases/download/release%2F$pkgver/ucm-linux-x64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
 sha256sums=('780a9a137f0cfeca4cdedd00affb09c0634f68d4ff3fd2df9f6648b16ef9912f'
             '26537a8bd08791aef2f335fd296b00023b292546b8a1b35223c11abca39cd6ed')
