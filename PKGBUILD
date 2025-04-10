@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2025-01-09
-_rustc=1.84.0
+_date=2025-02-20
+_rustc=1.85.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.85.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,13 +38,13 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-b2sums=('9cb1c5b9fa9b0ee8a3150d634b58f4d14c38342f19cffbdcaa4e783150f9b3c516763d549d9998d90e11377cd59e9d9442a99079aafccdc005739b075574447a'
+b2sums=('9f33a710a3e567d92f56091920643f5ef2ddf2ad52acb5d9ee78496a7b5dbc10da5a51c72cf2a6f66d543a531d3138a49767c98501ae4e885e03988d2ccfbb59'
         'SKIP'
-        '8d100f68345ed3e7a0bf09c26e3af29f9c3a22ce44017a610b8216d2385d1f279dad4a12d4da942e102d366092caa4a818955538425fcf760e2b7dcc8bfec623'
+        '1c88b5c2c839f1d8a5d8fa4f269e21e0f7b45534663b0a7e5c53fb018d1cc6a9db6641dfbc75ac0cb451254d0f9d9bf22bd91ae6e6ca392baa2c0e0e9bed75ec'
         'SKIP'
-        '8b9173ef3761f53596ec384c42c125321a650ffafca721a1509d11eb02a0fd2b4653a7e6b24af03b61bf53c5529d2587a1ce63db19ee5342b3eb92d57bbeec44'
+        'e4882c13cf9fa26c481d62e40815388b56b5976a7796d5bf1a7d4fe481a2c11f55aab3cc1c1eb0a71a6e5d6a2551895814427891d60ae5e31445b79fdc2139e0'
         'SKIP'
-        '76c0a82c379c424ed65b9d5539c9da867c88428472466b522d8d493269621bb50d6317f3334f58e2a5815893a4bd115e1e9faa27adf7d74152e51804ecd36e2e'
+        'd29e59c97e1ba6fc0a1b88fdd958fd1ab88338326a5f46b5f78993a1bd7ecb94d96d80e6a7ed540806de8901079d85b38a7b8cefe81112550646cb4b666050d6'
         'SKIP'
         '64d5f24e0df05529161b3c9d241c8576047692410ee28069004493ff56bbe056cf8a343b95e380fc8a05a418b475c0ecd54c17152265b08a6b6c503e8e154880')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
@@ -80,7 +80,7 @@ package() {
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rustc,cargo}
   mv "${pkgdir}"/${_prefix}/share/doc/cargo/LICENSE-* "${pkgdir}/usr/share/licenses/${pkgname}/cargo/"
-  mv "${pkgdir}"/${_prefix}/share/doc/rustc/{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rustc/"
+  mv "${pkgdir}"/${_prefix}/share/doc/rustc/{licenses,COPYRIGHT*} "${pkgdir}/usr/share/licenses/${pkgname}/rustc/"
 
   # remove unused files
   rm -r "${pkgdir}/etc"
