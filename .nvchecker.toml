@@ -1,0 +1,4 @@
+[lib32-openexr]
+source = "archpkg"
+archpkg = "openexr"
+strip_release = true
