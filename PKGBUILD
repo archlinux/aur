@@ -3,7 +3,7 @@
 
 pkgname=papis
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
 url='https://github.com/papis/papis'
@@ -101,7 +101,9 @@ check() {
   _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   export PYTHONPATH="$PWD/tmp_install/$_site_packages"
 
-  python -m pytest papis tests
+  export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+  python -m pytest -p pytest_cov -p papis_testing \
+      papis tests
 }
 
 package() {
