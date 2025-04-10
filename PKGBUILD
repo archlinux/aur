@@ -4,8 +4,8 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.59.2
-pkgrel=2
+pkgver=2.60.0
+pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
@@ -24,7 +24,7 @@ makedepends=('cargo-c'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=$pkgver")
-b2sums=('d806f7336282eb5a935c5c91b340ed5d9dcb6556f105138948f9f83774edc9de6bc9fd8591617b55e591d644c62ad09f8eccf092707ef11dcf1f93c513b86fbf')
+b2sums=('031ba234890844b059715e782c5d65a4261891964fb60ffec21d9fac312a734c4a5758f4b8a485dbd9de6b690906b3aa4505887e4717733c34aea9e9c6f2c1bb')
 
 pkgver() {
   cd "${srcdir}/librsvg"
