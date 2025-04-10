@@ -1,0 +1,22 @@
+pkgbase = pipe-cutter-bin
+	pkgdesc = Command line tool to filter out some of the data piped in
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/juan-leon/pipe-cutter
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = pipe-cutter
+	conflicts = pipe-cutter
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/juan-leon/pipe-cutter/v0.1.2/LICENSE
+	source = README-0.1.2.md::https://raw.githubusercontent.com/juan-leon/pipe-cutter/v0.1.2/README.md
+	sha256sums = 6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e
+	sha256sums = d3d3df420543fd3250b16e7fe46f02a8b79310d3d4be4445c3b84831c36a2caf
+	source_x86_64 = https://github.com/juan-leon/pipe-cutter/releases/download/v0.1.2/pipe-cutter-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0e62e87a3fefcea4d9704a72e3ee69a36946072d5b535586f189b4f301f283b7
+	source_i686 = https://github.com/juan-leon/pipe-cutter/releases/download/v0.1.2/pipe-cutter-v0.1.2-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 686c4952c00db324d46a635433aa7a12ed489156c56212320c5b9de59ffc3dbc
+
+pkgname = pipe-cutter-bin
