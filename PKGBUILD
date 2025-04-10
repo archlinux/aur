@@ -17,7 +17,7 @@ arch=(any)
 url="https://gnu-octave.github.io/packages/$_pack/"
 license=('GPL-3.0-or-later')
 groups=('octave-forge')
-depends=('octave>=4.2.0')
+depends=('octave>=7.1.0')
 makedepends=()
 optdepends=()
 backup=()

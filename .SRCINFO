@@ -7,7 +7,7 @@ pkgbase = octave-image
 	arch = any
 	groups = octave-forge
 	license = GPL-3.0-or-later
-	depends = octave>=4.2.0
+	depends = octave>=7.1.0
 	noextract = image-2.16.0.tar.gz
 	source = https://downloads.sourceforge.net/octave/image-2.16.0.tar.gz
 	sha256sums = 9bb26cca58eb1fbedfb3f84e3d2e7e1eeb5e16d7ebe3235b7c107d94f58d1417
