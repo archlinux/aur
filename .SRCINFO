@@ -1,12 +1,10 @@
 pkgbase = mingw-w64-xz
 	pkgdesc = Library and command line tools for XZ and LZMA compressed files (mingw-w64)
-	pkgver = 5.6.4
+	pkgver = 5.8.1
 	pkgrel = 1
 	url = https://tukaani.org/xz/
 	arch = any
-	license = custom
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later AND 0BSD AND LicenseRef-Public-Domain AND LGPL-2.1-or-later
 	makedepends = mingw-w64-configure
 	makedepends = git
 	makedepends = po4a
@@ -15,8 +13,8 @@ pkgbase = mingw-w64-xz
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://github.com/tukaani-project/xz#tag=v5.6.4
+	source = git+https://github.com/tukaani-project/xz#tag=v5.8.1
 	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
-	b2sums = 264604298ee025ef01ec0439b6a339f25f4b18131b3f222eca2764df98bb41de5a22439b91349760b436b2ded31c132983cdcb277ec54b0097dd51063b4c0cd8
+	b2sums = 531086fa6354468e9c940275cd55bfe934ec1a14c964c89501f2c99d61b8fae1c74b432fa3364e3976156497bb8e856ac2b7616deec5d970da3f1cd03a8f8d7f
 
 pkgname = mingw-w64-xz
