@@ -1,0 +1,7 @@
+*
+config.yaml
+fetter.service
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO

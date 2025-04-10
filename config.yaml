@@ -1,0 +1,14 @@
+# Default config file for 'fetter'
+
+mode: audit
+audit:
+  mode: override
+
+name: fetter
+
+logging:
+  file: /tmp/fetter.log
+  level: info
+
+rules:
+  _:

@@ -1,0 +1,19 @@
+[Unit]
+Description=Move processes into control groups based on configurable actions
+After=remote-fs.target syslog.target time-sync.target
+Before=shutdown.target
+
+[Service]
+Type=simple
+ExecStartPre=mkdir /sys/fs/cgroup/systemd
+ExecStartPre=mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
+ExecStart=fetter run
+ExecReload=/bin/kill -TERM $MAINPID
+ExecStop=/bin/kill -TERM $MAINPID
+ExecStopPost=umount /sys/fs/cgroup/systemd
+ExecStopPost=rmdir /sys/fs/cgroup/systemd
+Restart=always
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
