@@ -3,4 +3,5 @@ source = "github"
 github = "ProtonMail/WebClients"
 use_max_tag = true
 include_regex = "proton-pass@(.*)"
+exclude_regex = ".*(alpha|rc).*"
 prefix = "proton-pass@"
