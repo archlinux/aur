@@ -1,7 +1,7 @@
 pkgbase = antares-sql-bin
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.7.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://antares-sql.app/
 	arch = aarch64
 	arch = armv7h
@@ -19,6 +19,6 @@ pkgbase = antares-sql-bin
 	source_armv7h = antares-sql-0.7.34-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.34/Antares-0.7.34-linux_armv7l.deb
 	sha256sums_armv7h = 56c29188d0571c0ac5ce057153c839d0098091bac5aa7e3653469a601b573990
 	source_x86_64 = antares-sql-0.7.34-x86_64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.34/Antares-0.7.34-linux_amd64.deb
-	sha256sums_x86_64 = 0f5cbefad698025afa9cfc5a40ed40fdf245c4b19b2165b2582965ec9b765af6
+	sha256sums_x86_64 = 91f9dce9842521741eba22562e956b03236290bd63a290cd5ae7164f5272c13b
 
 pkgname = antares-sql-bin

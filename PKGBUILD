@@ -4,7 +4,7 @@ pkgname="${_pkgname}-sql-bin"
 _appname=Antares
 pkgver=0.7.34
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -30,22 +30,22 @@ sha256sums=('7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('30d2a9f6723c9348338e9b5f366fa514ad379df68c2047576682e490e5211cc8')
 sha256sums_armv7h=('56c29188d0571c0ac5ce057153c839d0098091bac5aa7e3653469a601b573990')
-sha256sums_x86_64=('0f5cbefad698025afa9cfc5a40ed40fdf245c4b19b2165b2582965ec9b765af6')
+sha256sums_x86_64=('91f9dce9842521741eba22562e956b03236290bd63a290cd5ae7164f5272c13b')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${_appname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
-package() {    
+package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_appname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
