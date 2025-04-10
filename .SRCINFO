@@ -1,7 +1,7 @@
 pkgbase = sff
 	pkgdesc = Simple and fast terminal file manager
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/sylphenix/sff
 	arch = x86_64
 	license = BSD

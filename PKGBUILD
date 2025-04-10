@@ -2,7 +2,7 @@
 
 pkgname=sff
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and fast terminal file manager"
 arch=('x86_64')
 license=('BSD')
