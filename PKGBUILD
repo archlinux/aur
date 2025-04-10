@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgbase=xcursor-simp1e
-pkgname=(xcursor-simp1e{-breeze,{,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord,mix}-{dark,light},-tokyo-night{,-light,-storm},-rose-pine{,-dawn,-moon}})
+pkgname=(xcursor-simp1e{{,-breeze,-adw}{,-dark},-catpuccin-{frappe,latte,macchiato,mocha},-{solarized,gruvbox,nord,mix}-{dark,light},-tokyo-night{,-light,-storm},-rose-pine{,-dawn,-moon},-zenburn})
 pkgdesc='An aesthetic cursor theme'
-pkgver=20230817
-pkgrel=3
+pkgver=20250223
+pkgrel=1
 url=https://gitlab.com/cursors/simp1e
 arch=(any)
 makedepends=(git librsvg python-pillow xorg-xcursorgen)
@@ -105,4 +105,7 @@ package_xcursor-simp1e-rose-pine-dawn () {
 }
 package_xcursor-simp1e-rose-pine-moon () {
 	_package Simp1e-Rose-Pine-Moon
+}
+package_xcursor-simp1e-zenburn () {
+	_package Simp1e-Zenburn
 }
