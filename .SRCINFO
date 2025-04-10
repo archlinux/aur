@@ -1,15 +1,15 @@
 pkgbase = octave-image
 	pkgdesc = The Octave-forge Image package provides functions for processing images. The package also provides functions for feature extraction, image statistics, spatial and geometric transformations, morphological operations, linear filtering, and much more.
-	pkgver = 2.14.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/image/
 	install = octave-image.install
 	arch = any
 	groups = octave-forge
-	license = custom
+	license = GPL-3.0-or-later
 	depends = octave>=4.2.0
-	noextract = image-2.14.0.tar.gz
-	source = https://downloads.sourceforge.net/octave/image-2.14.0.tar.gz
-	sha256sums = 7515ea211a8cb8ef5d9d3bab85a36e9df5475e8b05a919a078e0d52746077133
+	noextract = image-2.16.0.tar.gz
+	source = https://downloads.sourceforge.net/octave/image-2.16.0.tar.gz
+	sha256sums = 9bb26cca58eb1fbedfb3f84e3d2e7e1eeb5e16d7ebe3235b7c107d94f58d1417
 
 pkgname = octave-image
