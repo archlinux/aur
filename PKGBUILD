@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-git
-pkgver=1.1.8.r0.g08862a8
+pkgver=1.2.0.r1.g5d2ece5
 pkgrel=1
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -14,17 +14,17 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
-	'git+https://github.com/melonDS-emu/melonDS.git'
-	'git+https://github.com/libretro/libretro-common.git'
-	'git+https://github.com/andoalon/embed-binaries.git'
-	'git+https://github.com/g-truc/glm.git'
-	'git+https://gitlab.freedesktop.org/slirp/libslirp.git'
-	'git+https://github.com/RobLoach/pntr.git'
-	'git+https://github.com/fmtlib/fmt.git'
-	'git+https://github.com/yohhoy/yamc.git'
-	'git+https://github.com/martinmoene/span-lite.git'
-	'git+https://github.com/HowardHinnant/date.git'
-	'git+https://github.com/madler/zlib.git'
+	"date::git+https://github.com/HowardHinnant/date.git"
+	"embed-binaries::git+https://github.com/andoalon/embed-binaries.git"
+	"fmt::git+https://github.com/fmtlib/fmt.git"
+	"glm::git+https://github.com/g-truc/glm.git"
+	"jessetg-libretro-common::git+https://github.com/JesseTG/libretro-common.git"
+	"jessetg-libslirp::git+https://github.com/JesseTG/libslirp-mirror.git"
+	"jessetg-melonds::git+https://github.com/JesseTG/melonDS.git"
+	"pntr::git+https://github.com/RobLoach/pntr.git"
+	"span-lite::git+https://github.com/martinmoene/span-lite.git"
+	"yamc::git+https://github.com/yohhoy/yamc.git"
+	"zlib::git+https://github.com/madler/zlib.git"
 )
 b2sums=(
 	'SKIP'
@@ -43,33 +43,29 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd $_pkgname
-	# https://github.com/JesseTG/melonds-ds/pull/244
-	sed -i '$a target_link_libraries(slirp PRIVATE libretro-common)' cmake/libslirp.cmake
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	# shellcheck disable=SC2154
-	cmake -S $_pkgname -B build \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DDATE_REPOSITORY_URL="$srcdir"/date \
-		-DEMBED_BINARIES_REPOSITORY_URL="$srcdir"/embed-binaries \
-		-DFMT_REPOSITORY_URL="$srcdir"/fmt \
-		-DGLM_REPOSITORY_URL="$srcdir"/glm \
-		-DLIBRETRO_COMMON_REPOSITORY_URL="$srcdir"/libretro-common \
-		-DLIBSLIRP_REPOSITORY_URL="$srcdir"/libslirp \
-		-DMELONDS_REPOSITORY_URL="$srcdir"/melonDS \
-		-DPNTR_REPOSITORY_URL="$srcdir"/pntr \
-		-DSPAN_LITE_REPOSITORY_URL="$srcdir"/span-lite \
-		-DYAMC_REPOSITORY_URL="$srcdir"/yamc \
-		-DZLIB_REPOSITORY_URL="$srcdir"/zlib \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
+		-D DATE_REPOSITORY_URL="$srcdir"/date
+		-D EMBED_BINARIES_REPOSITORY_URL="$srcdir"/embed-binaries
+		-D FMT_REPOSITORY_URL="$srcdir"/fmt
+		-D GLM_REPOSITORY_URL="$srcdir"/glm
+		-D LIBRETRO_COMMON_REPOSITORY_URL="$srcdir"/jessetg-libretro-common
+		-D LIBSLIRP_REPOSITORY_URL="$srcdir"/jessetg-libslirp
+		-D MELONDS_REPOSITORY_URL="$srcdir"/jessetg-melonds
+		-D PNTR_REPOSITORY_URL="$srcdir"/pntr
+		-D SPAN_LITE_REPOSITORY_URL="$srcdir"/span-lite
+		-D YAMC_REPOSITORY_URL="$srcdir"/yamc
+		-D ZLIB_REPOSITORY_URL="$srcdir"/zlib
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
