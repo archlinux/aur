@@ -1,0 +1,18 @@
+pkgbase = python-ytsp-git
+	pkgdesc = Search and get YouTube videos and playlists
+	pkgver = r339.0ead13a
+	pkgrel = 1
+	url = https://github.com/jonesroot/ytsp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-httpx
+	provides = ytsp
+	provides = youtube-search-python
+	conflicts = ytsp
+	conflicts = youtube-search-python
+	source = git+https://github.com/jonesroot/ytsp.git#branch=dev
+	b2sums = SKIP
+
+pkgname = python-ytsp-git
