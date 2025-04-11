@@ -1,5 +1,5 @@
 pkgbase = sixgrid-bin
-	pkgdesc = Open-Source Desktop Client for e926/e621 and websites alike
+	pkgdesc = Open-Source Desktop Client for e926/e621 and websites alike.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.3.7_3
 	pkgrel = 3
 	url = https://github.com/SixGrid/sixgrid
