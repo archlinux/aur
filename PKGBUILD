@@ -6,8 +6,8 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.16.2
-pkgrel=2
+pkgver=3.16.3
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
 url=https://github.com/sharkautarch/gamescope/tree/nvidia-fix
@@ -50,10 +50,11 @@ makedepends=(
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-commit=186f3a3ed0ce8eb5f3a956d3916a3331ea4e3ab2
+commit=f1f105b3a95b4fec5c92e8a10e6927cbb76fe804
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#commit=$commit"
   "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
+  "cmake-4.0-fix.diff::https://github.com/ValveSoftware/openvr/pull/1890.diff"
   "reverts-bd722f7.patch") # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 
 prepare() {
@@ -78,6 +79,9 @@ prepare() {
   msg2 'Retrieving meson build dependencies...'
   sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
   meson subprojects download stb
+
+  msg2 "Applying cmake 4.0 fix"
+  patch --no-backup-if-mismatch -d subprojects/openvr -Np1 -i "$srcdir/cmake-4.0-fix.diff"
 }
 
 #pkgver() {
@@ -107,8 +111,9 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=4bc5333a2cbba0b0b88559f281dbde04b849e6ef') # End
 
-sha512sums=('506b945022d4cf11738b189468727790a6d6979be9fd6f6ed58b880c5e353e1750c3f153e6c5c8f7e1b88ca10d31abe97b664efc18559f82cab54a1ccc697c4a'
+sha512sums=('0a3f77c84839446dfc995d5d9371734973809b1434b0b75a01c4b3184b3020258bcd9d256db2e8c4f63e8b3c006dcd1ed4740e2f1cb7a2e2500f78d61bc2b4fb'
             '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
+            '0e6f1fc123e5e35e0155e63c1b976fd920d2b64e396138fc3f914cc59b45b3e6553533f193aec8c88f17bfa5b5a1da0eb300cc472fd30791ad422633e0eb141e'
             '52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27'
             '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
             '0a6fc80fd713c86117fab40e1b92ba8953bb8e68c4ac933fa8f6c04a4b10edba6ebb19cfc74d560c6007d5bcb3ca9d4de63d6cae800f1d426a97ff25f0b7f0fc'
