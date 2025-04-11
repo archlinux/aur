@@ -11,7 +11,7 @@ depends=('glib2' 'gtk3>=3.24' 'libx11' 'curl' 'gdk-pixbuf2'
 makedepends=('git' 'sed' 'coreutils' 'meson')
 provides=("rp-bookshelf")
 conflicts=("rp-bookshelf-git")
-source=('git+https://github.com/raspberrypi-ui/bookshelf.git')
+source=('git+https://github.com/raspberrypi-ui/bookshelf.git#commit=53102fb6f4b0324cc89635f0ef58966c6b847a74')
 sha256sums=('SKIP')
 
 pkgver() {

@@ -20,7 +20,7 @@ pkgbase = rp-bookshelf
 	depends = glibc
 	provides = rp-bookshelf
 	conflicts = rp-bookshelf-git
-	source = git+https://github.com/raspberrypi-ui/bookshelf.git
+	source = git+https://github.com/raspberrypi-ui/bookshelf.git#commit=53102fb6f4b0324cc89635f0ef58966c6b847a74
 	sha256sums = SKIP
 
 pkgname = rp-bookshelf
