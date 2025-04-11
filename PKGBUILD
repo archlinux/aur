@@ -8,15 +8,15 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gcc-stage2
-pkgver=14.2.1.git+ab884fffe3f
+pkgver=14.2.1.git+1cd744a6828f
 _majorver="14.2.1"
-_commit=ab884fffe3fc82a710bea66ad651720d71c938b8
+_commit=1cd744a6828f6ab9179906d16434ea40b6404737
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-depends=("${_target}-binutils>=2.40" "${_target}-glibc-headers>=2.38")
+depends=("${_target}-binutils>=2.42" "${_target}-glibc-headers>=2.40")
 makedepends=(binutils gcc glibc zlib)
 options=(!emptydirs !distcc !strip)
 conflicts=("${_target}-gcc-stage1")
@@ -27,7 +27,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('82b674a17bbac14acbf16b10e9d61e928e5630cd56635eb97acfeda849d4ebbf')
+sha256sums=('33378643f1c72686181f9d3fcd09caf9b06815324467f5dc9b9a3ea41cfba4b4')
 
 pkgver() {
   cd gcc
