@@ -2,7 +2,7 @@
 
 pkgname=grep-compat
 pkgname_=grep
-pkgver=3.11
+pkgver=3.12
 pkgrel=1
 pkgdesc='A string search utility (without egrep and fgrep warnings when used in scripts)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('texinfo')
 provides=('grep')
 conflicts=('grep')
 source=("https://ftp.gnu.org/gnu/$pkgname_/$pkgname_-$pkgver.tar.xz")
-sha512sums=('f254a1905a08c8173e12fbdd4fd8baed9a200217fba9d7641f0d78e4e002c1f2a621152d67027d9b25f0bb2430898f5233dc70909d8464fd13d7dd9298e65c42')
+sha512sums=('c54b4db5a8b9afe098c088decd94977746305284d716666a60bac82b4edc0fae4acf828970b5b6fc7d58ecd549f638e17e6958f33a71fedcc7d7415b9228b161')
 
 prepare() {
   cd $pkgname_-$pkgver
