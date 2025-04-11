@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.20.1
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -41,8 +41,8 @@ checkdepends=(
   'bind'
 )
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('1c4d1ea4e500e4579d803fa166ef813e1fbc402886b974231945bb7d5755f02c28c57cf94fdd772f130d9c7a46f591bb4eefeae6187b2b626eb4f8d85845a3a7')
-b2sums=('2805c2dbe6192fe7386097cd956bd7c270eb7def432020ef770a4b3855e4c5c05de43841762ebb683f6a4dc8d0afcbd4c80c673df2e568a036d8e9300394769c')
+sha512sums=('515eb37adc4b645b0dc1b2b2ff07566f449169f9e4d09d177686d4bfabe00bfdb077fe19913a2a7b987973bac01d0b9eef0c24acc9e2f5f61a835d3c12a5b0f2')
+b2sums=('7ce88d71b0f5a78b2ebaefb29afa48fa638c492cc939c6a5b4fa2d116501497c592b9d521c6de8eb6611d0fbb3ba0811964f64f4b3131bc7f7acef48d81125fe')
 
 build() {
   cd "$pkgname"
