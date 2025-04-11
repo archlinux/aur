@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.14.1.arch1
+pkgver=6.14.2.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -24,7 +24,7 @@ makedepends=(
   rust-src
   tar
   xz
-  # modprobed-db
+  #  modprobed-db
 )
 options=('!strip' '!debug')
 _srcname=linux-${pkgver%.*}
@@ -35,13 +35,14 @@ source=(
   config         # the main kernel config file
   
   # patches to config & for tuning purposes
-  # modprobed.db
+  #  modprobed.db
   choose-gcc-optimization.sh
   more-uarches-for-kernel-6.8+.patch::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/refs/heads/master/lite-more-x86-64-ISA-levels-for-kernel-6.8-rc4%2B.patch"
 
   # actual kernel patch series
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.13/asus-patch-series.patch"
-  asus-patch-series.patch
+  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.14/0003-asus.patch"
+  # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
 #  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
@@ -59,14 +60,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('5bf122d1879fd64fadf0cecfcd477957ebce1bc5931c14835ee0eda88463e407'
+sha256sums=('c5c682a354ea3190139357a57d34a79e5c37221ace823a938e10116b577a2e1b'
             'SKIP'
-            'c5b4773e9d402dd1fb9d198d6c65e1a400dcc994e27f6f82d0567301a84b8554'
+            '69f432c56f7f94f0ad185f1ce30f620115d48b61fc554e92de2a056311c50a62'
             'SKIP'
-            '85ca1138589c697a53480a68523bb68510f9cde16bc0b7d67dd80aeab88972ab'
+            '30a1bb8334bf716ac94e9feeb94a7e375688f1763e71b6afbda793639f1a4ef2'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
-            '45facba068c39abd3d4e12107489960d5353c924d823f7cbb7cf4acb47eff785'
+            '10b5c094730453d106dd15d9db89668e28b5e7d788d8f1de129861bfd0e1ec6f'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
