@@ -1,0 +1,6 @@
+52-LibreCAL.rules
+
+pkg
+src
+
+librecal-udev-*.pkg.tar.zst
