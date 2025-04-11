@@ -12,7 +12,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/pyfetch"  # Changed from $pkgname to match actual directory
   install -Dm755 pyfetch "$pkgdir/usr/bin/pyfetch"
   install -Dm644 config.ini "$pkgdir/etc/pyfetch/config.ini"
   install -Dm644 config.ini "$pkgdir/usr/share/doc/pyfetch/config.ini.example"
