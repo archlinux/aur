@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-git
-pkgver=1.2.7.r82.g3dce84c73
+pkgver=1.2.9.r1.gaab988917
 pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors"
 arch=(x86_64 i686 armv7h aarch64)
@@ -16,7 +16,7 @@ depends=(chromaprint gst-plugins-base gst-plugins-good qt6-base
          taglib gst-plugins-base-libs gdk-pixbuf2
 
          libicuuc.so libicui18n.so libgpod.so)
-makedepends=(git cmake boost qt6-tools qt6-xcb-private-headers rapidjson)
+makedepends=(git cmake boost qt6-tools rapidjson sparsehash vulkan-headers)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
