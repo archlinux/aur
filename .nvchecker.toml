@@ -1,0 +1,8 @@
+[kcgi]
+source = "github"
+github = "kristapsdz/kcgi"
+use_max_tag = true
+include_regex = 'VERSION_\d+_\d+_\d+'
+prefix = "VERSION_"
+from_pattern = "_"
+to_pattern = "."
