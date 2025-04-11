@@ -1,26 +1,29 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 _torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
-pkgver=1.9.2
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
 url="https://www.galpy.org"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools' 'gsl'
-             'python-wheel'
              'python-build'
-             'python-installer')
-#checkdepends=('python-pytest'
+             'python-installer')  # wheel required by new setuptools
+#checkdepends=('python-pytest-xdist'
 #              'python-astropy'
 #              'python-scipy'
-#              'python-matplotlib')
+#              'python-matplotlib'
+#)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-        "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz")
-md5sums=('844b300bc57e9ead0190abc9552b0084'
+        "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz"
+#       "${pkgver}-conftest.py::https://github.com/jobovy/galpy/raw/refs/tags/v1.10.2/tests/conftest.py"
+    )
+md5sums=('5c59ca8ceb708c0fdf851b761f5f52d4'
          'f84f68196975d1efbac800b1a5703c45')
 
 get_pyver() {
@@ -32,6 +35,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     mv ${srcdir}/{Torus-${_torus_commit},${_pyname}-${pkgver}/galpy/actionAngle/actionAngleTorus_c_ext/torus}
+#   ln -s {${srcdir}/${pkgver}-,tests/}conftest.py
 #   sed -i 's/numpy.float)/numpy.float64)/' galpy/util/leung_dop853.py
 #   sed -i "/directnbody/s/directnbody/.directnbody/" Snapshot.py
 #   sed -i "/from\ Snapshot/s/Snapshot/.Snapshot/" snapshotMovies.py
@@ -49,7 +53,7 @@ build() {
 #    # takes a lot of time
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
-#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count \
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 \
 #        --ignore=tests/test_amuse.py \
 #        --ignore=tests/test_snapshotpotential.py \
 #        --ignore=tests/test_sphericaldf.py \
@@ -96,7 +100,7 @@ build() {
 #        --deselect=tests/test_streamgapdf.py::test_sample_offset \
 #        --deselect=tests/test_streamgapdf.py::test_sample_offset_leading \
 #        --deselect=tests/test_streamgapdf_impulse.py::test_impulse_deltav_general_fullintegration_zeroforce \
-#        --deselect=tests/test_streamspraydf.py::test_center || warning "Tests failed"
+#        --deselect=tests/test_streamspraydf.py::test_center #|| warning "Tests failed"
 #
 ##   nosetests
 #}
