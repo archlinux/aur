@@ -13,8 +13,8 @@ source=(
   "https://github.com/ansilove/ansilove/releases/download/${pkgver}/ansilove-${pkgver}.tar.gz"
   "https://github.com/ansilove/libansilove/releases/download/${libver}/libansilove-${libver}.tar.gz"
 )
-sha256sums=('a2f24918ffe01332ea18b2ffab2da4ccad55c7e4a4edcf1c64a1c017d2e4e930'
-            'c6aa32bcef54b05b9af535c621f7044156295a49cea3cfaf1c868e359be59203')
+sha256sums=('60b1f1b6e4a5be287bb19310ea526c631a0bea5f4cb550f33c301a4b1ec30abf'
+            '8bd4d0775ff558aacfebd7e7e284baa96d781183bf767283bf8410f44a2e2434')
 arch=('x86_64' 'i686')
 
 build() {
