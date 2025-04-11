@@ -1,11 +1,9 @@
 pkgbase = rosepad
 	pkgdesc = A simple cross-platform text editor made for writing notes, letters, poems, and such with ease with a beautiful UI.
-	pkgver = 0.0.8
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/TMG8047KG/RosePad
-	install = rosepad.install
 	arch = x86_64
-	arch = aarch64
 	license = GPL
 	depends = cairo
 	depends = desktop-file-utils
@@ -16,9 +14,10 @@ pkgbase = rosepad
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk
+	provides = rosepad
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/TMG8047KG/RosePad/releases/download/v0.0.8/rosepad_0.0.8_amd64.deb
-	sha256sums_x86_64 = bbd101e240f79cba41594ed167afdcc83ca2c7e96a6ba59ebdd58dcc8ff9c2dd
+	source_x86_64 = https://github.com/TMG8047KG/RosePad/releases/download/v0.1.1/rosepad_0.1.1_amd64.deb
+	sha256sums_x86_64 = 09a04027df279c237b8ba767c2f96dff3ffbf1644d805bd5ad13adebff6e9785
 
 pkgname = rosepad
