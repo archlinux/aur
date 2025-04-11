@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-${_name0}
 pkgname=(python-${_name1} python-${_name0})
-pkgver=3.12.0
+pkgver=3.13.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/logfire'
@@ -14,7 +14,7 @@ source_x86_64=("https://download.docker.com/linux/static/stable/x86_64/docker-28
                "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-28.0.4.tgz")
 source_aarch64=("https://download.docker.com/linux/static/stable/aarch64/docker-28.0.4.tgz"
                 "https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-28.0.4.tgz")
-sha256sums=('e4dc3d5e50802979500e8763e8c296df9fc0579b34da5fedeac25f0fc15e46a2')
+sha256sums=('7fd5c5400ca12c58ffd95124228909d0fb474fbf08b7c27abb8aa8aeb7c99d6c')
 sha256sums_x86_64=('6b130fa5fb13516620d5ece0b63f63a495cede428bb2f9e24449022e9d72e0cb'
                    '0d0c2680d924671df0ac33d53dd71f410dfb253fb4fa5e8a0a231951234781c9')
 sha256sums_aarch64=('d3291093e8ed576ed9e237b24dc4556a9ed21ff25d4c26578df612cb6fe0480f'
@@ -31,7 +31,6 @@ checkdepends=('python-httpx'
               'python-dirty-equals'
               'python-pytest'
               'python-pytest-django'
-              'python-pytest-pretty'
               'python-pydantic'
               'python-requests'
               'python-sqlalchemy'
@@ -86,8 +85,7 @@ checkdepends=('python-httpx'
               'python-greenlet'
               'python-pytest-xdist'
               'python-openai-agents'
-              'python-websockets'
-              'python-pydantic-ai-slim')
+              'python-websockets')
 
 build() {
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
@@ -130,6 +128,7 @@ check() {
   run_docker_rootless
   cd "${srcdir}"/${_name0//-/_}-${pkgver}
   python -m venv --system-site-packages test-env
+  test-env/bin/pip install -U pydantic-ai-slim # Fix cercular dependency
   test-env/bin/python -m installer ${_name1}/dist/*.whl
   test-env/bin/python -m installer dist/*.whl
   TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=${XDG_RUNTIME_DIR}/docker.sock DOCKER_HOST=unix:///${XDG_RUNTIME_DIR}/docker.sock test-env/bin/python -m pytest "${pytest_options[@]}" tests
