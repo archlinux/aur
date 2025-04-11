@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=savedesktop
 _app_id=io.github.vikdevelop.SaveDesktop
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Save and load KDE Plasma, Xfce and GNOME-based DE configuration"
 arch=('any')
@@ -14,10 +14,10 @@ depends=(
   'python-gobject'
 )
 makedepends=('git')
-_commit=880df8d3b85de3c0c96a0e27490196bbb09163ff  # tags/3.5.3-1^0
+_commit=0659085a26a954a2f318a3873f4ea3f32074bc9f  # tags/3.5.4^0
 source=("git+https://github.com/vikdevelop/SaveDesktop.git#commit=${_commit}"
         "$pkgname.sh")
-sha256sums=('6a6bdbee8f5fa57548486dd1877ef60fb0afef13f6b578c3e03c60d94d300d5b'
+sha256sums=('a254d840d5d202f9242bf529c5a26d977b88250e0633da2390e7c3f060c2f32b'
             '69571f87e5eb4754c9b35c62d0311b1bf0e040cf79d5478a050d46efb1a4809a')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 
 check() {
   cd SaveDesktop
-  appstreamcli validate --no-net "flatpak/${_app_id}.metainfo.xml" || :
+  appstreamcli validate --no-net "flatpak/${_app_id}.metainfo.xml"
   desktop-file-validate "flatpak/${_app_id}.desktop"
 }
 
