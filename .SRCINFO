@@ -1,7 +1,7 @@
 pkgbase = weektodo-bin
-	pkgdesc = A Free and Open Source Weekly Planner. Stop prioritizing what's on your schedule and start scheduling your priorities.
+	pkgdesc = A Free and Open Source Weekly Planner. Stop prioritizing what's on your schedule and start scheduling your priorities.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://weektodo.me/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,6 +11,6 @@ pkgbase = weektodo-bin
 	source = weektodo-2.2.0.pacman::https://github.com/manuelernestog/weektodo/releases/download/v2.2.0/WeekToDo-2.2.0.pacman
 	source = weektodo.sh
 	sha256sums = 098a3556bad8d2af812d25f17d1f8ffcf67b8225ebc9816d2631596d722c59af
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = weektodo-bin
