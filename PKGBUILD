@@ -3,8 +3,8 @@ pkgname=silex-desktop-bin
 _pkgname="Silex desktop"
 pkgver=2.7.30
 _electronversion=10
-pkgrel=2
-pkgdesc="A no-code tool for building websites. It also lets you code when needed. It can be used online, offline or in a JAMStack project."
+pkgrel=3
+pkgdesc="A no-code tool for building websites. It also lets you code when needed. It can be used online, offline or in a JAMStack project.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="http://www.silex.me/"
 _ghurl="https://github.com/silexlabs/silex-desktop"
@@ -25,17 +25,18 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('a8101bf627150ec99b93327566a5121a62631d97d99420833af75cb0fde87fc4'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
