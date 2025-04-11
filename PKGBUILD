@@ -3,8 +3,8 @@
 pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
-pkgver=35.13.0.2
-pkgrel=3
+pkgver=35.15.0.2
+pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
@@ -29,7 +29,7 @@ source_x86_64=(
     "${pkgname}-${pkgver}.deb::https://down.115.com/client/115pc/lin/115br_v${pkgver}.deb"
     "${pkgname}.install"
 )
-sha256sums_x86_64=('4c133e512d07b4ae6fc6a3a60bafd88dc4e019b847c4000313cb939280955507'
+sha256sums_x86_64=('2fc526ed61e435517afc15a01d1a84f4cb04c234f642f7cbf4c7e278c23ca0ee'
                    'ce0e3cdf98637003986feb9abb198cf04135333116f44e1642ba438d344a6a2e')
 noextract=("${pkgname}-${pkgver}.deb")
 
