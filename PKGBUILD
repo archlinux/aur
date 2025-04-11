@@ -3,12 +3,12 @@ pkgname=picturama-bin
 _pkgname=Picturama
 pkgver=1.3.0
 _electronversion=9
-pkgrel=4
-pkgdesc="Digital image organizer powered by the web"
-arch=("x86_64")
+pkgrel=5
+pkgdesc="Digital image organizer powered by the web.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://picturama.github.io/"
 _ghurl="https://github.com/picturama/picturama"
-license=("MIT")
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -24,22 +24,23 @@ source=(
 )
 sha256sums=('a40fc27395841cf3220ed7db3ba98717d3b3a24fc1733b81759218fbd28c3e3a'
             'b8ff1b44d19d011a234dc2490176e17231321a397f742088679c6c96555aba25'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${_pkgname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${pkgname%-bin} %U|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun/${pkgname%-bin} %U/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    cp -r "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64" \
+    cp -Pr --no-preserve=ownership "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64" \
         "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.4-linux-x64"
     rm -rf "${srcdir}/app.asar.unpacked/node_modules/sqlite3/lib/binding/electron-v9.0-linux-x64"
-    sed "s|process.resourcesPath|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/dist/"{app.js,background.js}
+    find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
