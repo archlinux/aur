@@ -3,7 +3,7 @@
 pkgbase=rime-wanxiang
 pkgname=(rime-wanxiang-base)
 pkgver=6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型"
 arch=(any)
 license=('CC-BY-4.0')
@@ -118,15 +118,15 @@ _package() {
 
     cd "${srcdir}/rime_wanxiang-${pkgver}"
 
-    local _cn_en_user_dict=en_dicts/"${_name}"
+    local _cn_en_user_dict=en_dicts/"${_schema}"
     sed -Ei \
-        -e "/^set_shuru_schema:/,/^[[:space:]]*$/ { s|^(\s*__include:\s*)\S+(\s*.*)|\1${_name}\2| }" \
-        -e "/^set_cn_en:/,/^[[:space:]]*$/ { s|^(\s*user_dict:\s*)\S+(\s*.*)|\1${_cn_en_user_dict}\2| }" \
+        -e "/^set_shuru_schema:/,/^[^[:space:]]/ { s|^(\s+__include:\s*)\S+(\s*.*)|\1${_name}\2| }" \
+        -e "/^set_cn_en:/,/^[^[:space:]]/ { s|^(\s+user_dict:\s*)\S+(\s*.*)|\1${_cn_en_user_dict}\2| }" \
         "wanxiang.schema.yaml"
 
     for _s in wanxiang_{radical,en}.schema.yaml; do
         sed -Ei \
-            -e "/^set_shuru_schema:/,/^[[:space:]]*$/ { s|^(\s*__include:\s*)\S+(\s*.*)|\1${_name}\2| }" \
+            -e "/^set_shuru_schema:/,/^[^[:space:]]/ { s|^(\s+__include:\s*)\S+(\s*.*)|\1${_name}\2| }" \
             "${_s}"
     done
 
