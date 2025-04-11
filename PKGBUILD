@@ -44,8 +44,6 @@ build() {
     -DLIBCXX_ENABLE_ASSERTIONS=ON \
     -DLIBCXX_USE_COMPILER_RT=ON \
     -DLIBUNWIND_INSTALL_INCLUDE_DIR="\usr\include\unwind" \
-    -DLIBUNWIND_SHARED_OUTPUT_NAME="unwind1" \
-    -DLIBUNWIND_STATIC_OUTPUT_NAME="unwind1" \
     ../llvm-project-$pkgver.src/runtimes
   ninja cxx cxxabi unwind
 }
@@ -54,9 +52,11 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install-cxx
   DESTDIR="$pkgdir" ninja -C build install-cxxabi
   DESTDIR="$pkgdir" ninja -C build install-unwind
+  rm -f "$pkgdir/usr/lib/libunwind.so"
   install -Dm0644 llvm-project-$pkgver.src/libcxx/CREDITS.TXT "$pkgdir"/usr/share/licenses/libc++/CREDITS
   install -Dm0644 llvm-project-$pkgver.src/libcxx/LICENSE.TXT "$pkgdir"/usr/share/licenses/libc++/LICENSE
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/CREDITS.TXT "$pkgdir"/usr/share/licenses/libc++abi/CREDITS
   install -Dm0644 llvm-project-$pkgver.src/libcxxabi/LICENSE.TXT "$pkgdir"/usr/share/licenses/libc++abi/LICENSE
-  install -Dm0644 llvm-project-$pkgver.src/libunwind/LICENSE.TXT "$pkgdir"/usr/share/licenses/llvm-libunwind/LICENSE
+  install -Dm0644 llvm-project-$pkgver.src/libunwind/LICENSE.TXT "$pkgdir"/usr/share/licenses/libunwind1/LICENSE
+
 }
