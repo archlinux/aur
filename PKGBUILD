@@ -12,7 +12,7 @@ install=$pkgname.install
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver.tar.gz"
 
   install -Dm755 passpony "$pkgdir/usr/bin/passpony"
   install -Dm644 clean_wordlist.txt "$pkgdir/usr/share/passpony/clean_wordlist.txt"
