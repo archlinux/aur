@@ -1,0 +1,6 @@
+SUBSYSTEM!="usb|usb_device", GOTO="ft4222_rules_end"
+ACTION!="add", GOTO="ft4222_rules_end"
+
+ATTRS{idVendor}=="0403", ATTRS{idProduct}=="601c", MODE="0666", GROUP="tty"
+
+LABEL="ft4222_rules_end"

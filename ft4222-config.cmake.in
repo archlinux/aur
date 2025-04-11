@@ -1,0 +1,40 @@
+include(CMakePackageConfigHelpers)
+
+include(CMakeFindDependencyMacro)
+
+set(FT4222_VERSION @PROJECT_VERSION@)
+
+# 提供选项控制使用静态库还是动态库
+option(FT4222_USE_STATIC "Link ft4222 statically" OFF)
+
+if(FT4222_USE_STATIC)
+    # 静态库配置
+    if(NOT TARGET ft4222::ft4222)
+        add_library(ft4222::ft4222 STATIC IMPORTED)
+        set_target_properties(ft4222::ft4222 PROPERTIES
+            IMPORTED_LOCATION "@PACKAGE_LIBRARY_STATIC_FILE@"
+            INTERFACE_INCLUDE_DIRECTORIES "@PACKAGE_INCLUDE_DIR@"
+            VERSION ${FT4222_VERSION}
+        )
+        message(STATUS "ft4222: Using static library")
+    endif()
+else()
+    # 动态库配置
+    if(NOT TARGET ft4222::ft4222)
+        add_library(ft4222::ft4222 SHARED IMPORTED)
+        set_target_properties(ft4222::ft4222 PROPERTIES
+            IMPORTED_LOCATION "@PACKAGE_LIBRARY_FILE@"
+            INTERFACE_INCLUDE_DIRECTORIES "@PACKAGE_INCLUDE_DIR@"
+            VERSION ${FT4222_VERSION}
+        )
+        message(STATUS "ft4222: Using shared library")
+    endif()
+endif()
+
+# Install configuration
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/ft4222-config-version.cmake"
+    VERSION ${FT4222_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
