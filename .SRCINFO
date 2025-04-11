@@ -1,0 +1,17 @@
+pkgbase = mpvcovergrabber-git
+	pkgdesc = MPV script that shows cover and metadata for audio and video using LLMs and APIs like Last.fm o TMDB
+	pkgver = r5.90ae274
+	pkgrel = 1
+	url = https://gitlab.com/teraflops/mpvcovergrabber
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv
+	depends = curl
+	depends = coreutils
+	optdepends = ollama: local inference with modelos like gemma2
+	optdepends = llama-cuda: accel backend for Ollama
+	source = git+https://gitlab.com/teraflops/mpvcovergrabber.git
+	md5sums = SKIP
+
+pkgname = mpvcovergrabber-git
