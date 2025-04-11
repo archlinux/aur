@@ -1,2 +1,2 @@
 [filter "pkgver"]
-	clean = sed -E 's/(\w*pkgver=[[:digit:].]+)(\.r[[:digit:]]+.g[[:alnum:]]+)/\1/g'
+	clean = 's/([[:space:]]*pkgver[[:space:]]?=[[:space:]]?[[:digit:].]+)(\.r[[:digit:]]+.g[[:alnum:]]+)/\1/g' 

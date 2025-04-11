@@ -1,6 +1,6 @@
 pkgbase = pq-cli
 	pkgdesc = Progress Quest: the CLI edition
-	pkgver = 1.0.2.r14.g7790e52
+	pkgver = 1.0.2
 	pkgrel = 4
 	url = https://github.com/rr-/pq-cli
 	arch = any
