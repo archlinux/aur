@@ -9,8 +9,6 @@ pkgbase = mkeditor-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron34
 	provides = mkeditor=2.6.2
