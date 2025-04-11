@@ -3,16 +3,16 @@
 
 pkgname=rtcqs
 pkgdesc='Scanner for potential real-time bottlenecks'
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 arch=(any)
 url='https://codeberg.org/rtcqs/rtcqs'
 license=(MIT)
 depends=(hicolor-icon-theme python)
-makedepends=(git python-build python-installer python-setuptools python-wheel)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 groups=(pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/rtcqs/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('826301e06da9b42466ab3cd15b3b98fcc8c30fd9026ef2c196c28bbab844b97a')
+sha256sums=('9e7b2b6010cd1a0d4eee1a0eced1318081762059c9a95d925b166776f8c4cf32')
 
 build() {
   cd $pkgname

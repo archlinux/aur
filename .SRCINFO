@@ -1,19 +1,18 @@
 pkgbase = rtcqs
 	pkgdesc = Scanner for potential real-time bottlenecks
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://codeberg.org/rtcqs/rtcqs
 	arch = any
 	groups = pro-audio
 	license = MIT
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = hicolor-icon-theme
 	depends = python
-	source = rtcqs-0.6.5.tar.gz::https://codeberg.org/rtcqs/rtcqs/archive/v0.6.5.tar.gz
-	sha256sums = 826301e06da9b42466ab3cd15b3b98fcc8c30fd9026ef2c196c28bbab844b97a
+	source = rtcqs-0.6.6.tar.gz::https://codeberg.org/rtcqs/rtcqs/archive/v0.6.6.tar.gz
+	sha256sums = 9e7b2b6010cd1a0d4eee1a0eced1318081762059c9a95d925b166776f8c4cf32
 
 pkgname = rtcqs
