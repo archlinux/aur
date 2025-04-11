@@ -1,7 +1,7 @@
-# Maintainer: dringsim <dringsim@qq.com> 
+# Maintainer: dringsim <dringsim@qq.com>
 _hkgname=ghc-syntax-highlighter
 pkgname=haskell-ghc-syntax-highlighter
-pkgver=0.0.8.0
+pkgver=0.0.9.0
 pkgrel=1
 pkgdesc="Syntax highlighter for Haskell using the lexer of GHC"
 license=(BSD-3-Clause)
@@ -10,7 +10,6 @@ url="https://hackage.haskell.org/package/$_hkgname"
 depends=(ghc-libs haskell-ghc-lib-parser)
 makedepends=(ghc)
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
-sha256sums=('47649e6d25e506c0b929b83b426b8392c3383657536b4cca8e0e97a341c2cbe8')
 
 build() {
   cd "$_hkgname-$pkgver"
@@ -43,3 +42,4 @@ package() {
   rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE.md"
 }
 
+sha256sums=('0a39768b619634fc165989ca26ae716c53942dd32d433b117437a6e700005635')
