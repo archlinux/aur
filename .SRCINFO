@@ -1,15 +1,16 @@
 pkgbase = rp-bookshelf
 	pkgdesc = Browser for Raspberry Pi Press publications in PDF format
-	pkgver = r132.75ca8c4
+	pkgver = r137.53102fb
 	pkgrel = 1
 	url = https://github.com/raspberrypi-ui/bookshelf
 	arch = x86_64
 	arch = i686
-	arch = arm64
+	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = git
 	makedepends = sed
 	makedepends = coreutils
+	makedepends = meson
 	depends = glib2
 	depends = gtk3>=3.24
 	depends = libx11
