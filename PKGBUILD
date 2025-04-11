@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer <contact@madeofmagicandwires.online>
 pkgname=pq-cli
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Progress Quest: the CLI edition"
 arch=('any')
 url="https://github.com/rr-/pq-cli"
