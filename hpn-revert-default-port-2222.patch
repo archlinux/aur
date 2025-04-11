@@ -26,7 +26,7 @@ index 5f9c04279..b85ec82c7 100644
 @@ -168,7 +168,7 @@ typedef enum {
  	oTcpRcvBufPoll, oHPNDisabled,
  	oNoneEnabled, oNoneMacEnabled, oNoneSwitch,
- 	oDisableMTAES,
+ 	oDisableMTAES, oUseMPTCP,
 -	oMetrics, oMetricsPath, oMetricsInterval, oFallback, oFallbackPort,
 +	oMetrics, oMetricsPath, oMetricsInterval,
  	oVisualHostKey,
@@ -87,6 +87,22 @@ index 5f9c04279..b85ec82c7 100644
  	if (options->control_persist == -1) {
  		options->control_persist = 0;
  		options->control_persist_timeout = 0;
+@@ -3805,7 +3789,6 @@ dump_client_config(Options *o, const cha
+ 	dump_cfg_fmtint(oNoneSwitch, o->none_switch);
+ 	dump_cfg_fmtint(oNoneEnabled, o->none_enabled);
+ 	dump_cfg_fmtint(oNoneMacEnabled, o->nonemac_enabled);
+-	dump_cfg_fmtint(oFallback, o->fallback);
+ 	dump_cfg_fmtint(oMetrics, o->metrics);
+ 
+ 
+@@ -3820,7 +3803,6 @@ dump_client_config(Options *o, const cha
+ 	dump_cfg_int(oObscureKeystrokeTiming,
+ 	    o->obscure_keystroke_timing_interval);
+ 	dump_cfg_int(oMetricsInterval, o->metrics_interval);
+-	dump_cfg_int(oFallbackPort, o->fallback_port);
+ 
+ 	/* String options */
+ 	dump_cfg_string(oBindAddress, o->bind_address);
 diff --git a/readconf.h b/readconf.h
 index 452751b36..953be98ab 100644
 --- a/readconf.h
@@ -97,7 +113,7 @@ index 452751b36..953be98ab 100644
          char   *metrics_path; /* path for the metrics files */
 -	int     fallback; /* en|disable fallback port (def: true) */
 -	int     fallback_port; /* port to fallback to (def: 22) */
- 	int	rekey_interval;
+ 	int     use_mptcp;
  
  	int	no_host_authentication_for_localhost;
 diff --git a/ssh.c b/ssh.c
