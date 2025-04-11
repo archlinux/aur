@@ -8,13 +8,29 @@ pkgdesc="Cross platform LAN File transfer application built with Qt C++ framewor
 arch=("x86_64")
 url="https://github.com/abdularis/LAN-Share/releases"
 license=("GPL-3.0")
-depends=("qt5-base" "gcc-libs")
+depends=("qt5-base" "gcc-libs" "imagemagick")
 options=('!strip')
-source=("https://github.com/abdularis/LAN-Share/releases/download/${pkgver}/lanshare_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('SKIP')
+source=(
+  "https://github.com/abdularis/LAN-Share/releases/download/${pkgver}/lanshare_${pkgver}-${pkgrel}_amd64.deb"
+  "LANShare.desktop::https://raw.githubusercontent.com/abdularis/LAN-Share/refs/heads/master/packaging/linux/debian/LANShare.desktop"
+  "lanshare.sh::https://raw.githubusercontent.com/abdularis/LAN-Share/refs/heads/master/packaging/linux/debian/LANShare.sh"
+  "logo.png::https://raw.githubusercontent.com/abdularis/LAN-Share/refs/heads/master/packaging/linux/debian/lanshare-icon.png"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   ar x "${srcdir}/lanshare_${pkgver}-${pkgrel}_amd64.deb"
   tar -xf data.tar.xz -C "${pkgdir}"
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+
+  install -Dm644 "${srcdir}/LANShare.desktop" "${pkgdir}/usr/share/applications/lanshare.desktop"
+
+  install -Dm755 "${srcdir}/lanshare.sh" "${pkgdir}/usr/bin/lanshare"
+  sed -i 's|^./LANShare|/usr/bin/lanshare|' "${pkgdir}/usr/bin/lanshare"
+  sed -i 's|^export LD_LIBRARY_PATH=./|export LD_LIBRARY_PATH=/usr/lib/lanshare|' "${pkgdir}/usr/bin/lanshare"
+
+  icon_sizes=(16 32 48 64 128 256)
+  for size in "${icon_sizes[@]}"; do
+    install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+    magick "${srcdir}/lanshare-icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/lanshare.png"
+  done
 }
