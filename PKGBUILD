@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mangabox-bin
 _pkgname=MangaBox
-pkgver=0.0.20
+pkgver=0.1.0
 _electronversion=34
 pkgrel=1
 pkgdesc="An Electron client for Komga.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('296681dedd9130e3f186f1f7c8f9c89f0c39677c6660372172f2e8a31906258e'
+sha256sums=('ee7fc24a35cbc08570a4ff97b511b3542dd1c43d8486f40d27be75020b99ed62'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
