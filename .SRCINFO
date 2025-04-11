@@ -1,0 +1,13 @@
+pkgbase = lan-share-bin
+	pkgdesc = Cross platform LAN File transfer application built with Qt C++ framework
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/abdularis/LAN-Share/releases
+	arch = x86_64
+	license = GPL-3.0
+	depends = qt5-base
+	depends = gcc-libs
+	source = https://github.com/abdularis/LAN-Share/releases/download/1.2.1/lanshare_1.2.1-1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = lan-share-bin
