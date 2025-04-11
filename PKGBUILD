@@ -7,7 +7,7 @@ _OTRExporter_commit=41052efcdf8df8e67517cc93da8975fcd4e14af9
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
@@ -22,7 +22,7 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "soh.desktop")
-sha256sums=('12da5f3fc78dc475f1544c278e77be5b49fdf1ef82617def77de0f8a0533890b'
+sha256sums=('3262ba07b01684352b43ea2c551355cb077055503392cc0c63ca5fff9e680781'
             '0e257911cb69080451c475aac27f78912219d6f2514d661069b7551207dfaf36'
             'e52682090897c015b129c2a701a47553da648980e1e1e829248e1ad0ff6f3bee'
             '176ad7bc15d476a271645fb2646450de977cd24d800530baf76b382424f6eb5d'
