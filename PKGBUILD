@@ -6,7 +6,7 @@ _static_build=false
 _mercury_dependency='mercury>=22.01.8-2'
 
 pkgname=bower-mail
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A curses terminal client for the Notmuch email system"
 arch=(x86_64)
@@ -19,7 +19,7 @@ conflicts=('bower')
 license=(GPL-3.0-or-later)
 source=("bower-$pkgver.tar.gz::https://github.com/wangp/bower/archive/$pkgver.tar.gz"
 		arch.patch)
-b2sums=('621c6b1ca0a2a6728141d50f25bae9635f83a45b57243aab5239e97fc033674824b8ff0e087ab85657d41e47aeec6e60e7c86809fe23545c8d480608ace0aeb1'
+b2sums=('fc7ff1b093dc4e72a5a173d0f4fbe28b5cfdf5a6a4c7f74ce222b251c88c0b23feea22c6181f0e719370de4f2f6e286e30bb939d3c66bbbe52fef3e2f630259c'
         '20f10c1d6e7516f91ca4baee45f833da7844870a94ec4f7b4f3a0f8b31ba43e143fd9589de9b12cd02e420ea50a1407b2e5ec796de253108ab7e8cd38dbbf103')
 
 if $_static_build ; then
