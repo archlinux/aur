@@ -1,6 +1,35 @@
 Version history
 ===============
 
+0.10.31
+-------
+
+2025-04-11
+
+Don't limit the length of the level title and the level author in the editor.
+If you enter too long a text, the level browser will abbreviate it as before.
+
+Allow a livestream note in singleplayer. Create the text file
+`./user/streamnote.txt` and enter lines, e.g., "Help solve!" or "No spoilers!"
+Lines will appear in big font until the first empty line; remaining lines will
+appear in small font. The livestream note replaces the buttons next to the
+skill panel; use their hotkeys instead. If you don't create a livestream note,
+the buttons appear as before.
+
+Fix a crash during play after building with the recently released DMD 2.111.0.
+The crash was: The copying method in struct for a lix crashed on return.
+
+Fix a crash during play in LDC debug builds. The crash was: Emplacing classes
+into the Debris struct triggered the assertion "chunk is not aligned".
+
+Improve compile times. On my Intel i5-6600 (4x 3.3 GHz), it takes 3.5 seconds
+to build Lix in debug mode now, 34 % faster than the 4.7 seconds from before.
+Dependency build times and link times are as before.
+
+Bump dub package optional from 1.3.0 to 1.3.1 to fix deprecation warnings.
+
+
+
 0.10.30
 -------
 
@@ -11,7 +40,7 @@ Add 34 new multiplayer levels by Hyperlodge.
 NepsterLix: Fix backroute in Miner Preservation Society. Fix typos in
 Introducing Climbers, Cannonballs in the Air.
 
-Updated Allegro 5 DLLS to the hotfix version 5.2.11-nightly.20250218.
+Updated Allegro 5 DLLs to the hotfix version 5.2.11-nightly.20250218.
 This fixes the broken Alt+Tab and broken Winkey from Allegro 5.2.10
 on Windows with the Direct3D backend.
 
@@ -38,11 +67,6 @@ but show fallback text instead of the image.
 When a translation string with format specifiers (%d, %s, ...) fails to
 conform to expectations, log the bad translation only once per program run.
 Before, the same bad translation could appear several times in the log file.
-
-Refactor the int priority to struct Priority
-bb2c9c3d Add @nogc, remove @property
-95eae4ac Rename INetClient -> NetClient
-f88f6df0 Rename NetClient -> TcpNetClient
 
 
 
