@@ -1,18 +1,17 @@
 pkgbase = lunatask
 	pkgdesc = lunatask.app (unofficial and *not* supported by Lunatask developers)
-	pkgver = 2.0.4
+	pkgver = 2.0.20
 	pkgrel = 0
 	url = https://lunatask.app
 	arch = x86_64
 	license = proprietary
-	depends = gconf
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
 	options = !strip
-	source = https://github.com/lunatask/lunatask/releases/download/v2.0.4/Lunatask-2.0.4.AppImage
-	sha512sums = 06132790a0ce5c5846ebe47a6ff0b0745182f7679a7572b307d3c5fcc5719bfd3af6cd0f9ab1a9d68660ad94f47d1afc8a181d96fa37015567f08093a38ef828
+	source = https://github.com/lunatask/lunatask/releases/download/v2.0.20/Lunatask-2.0.20.AppImage
+	sha512sums = 0c6ae52d3f6465ce41e90b92508c3d769bb168259db78fc4f6b7f5be56ab3d081262f09b9ebab8405dd2fdd57ddf72584e1e5790f3db7e95e14a3ac68ff72a93
 
 pkgname = lunatask
