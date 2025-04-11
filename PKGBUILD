@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus
 _pkgname=Altus
-pkgver=5.6.2
-_electronversion=28
-_nodeversion=18
+pkgver=5.7.0
+_electronversion=35
+_nodeversion=22
 pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support.Use system-wide electron."
 arch=('any')
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('01080058da64cc8f9e793d2fb6e1cb347e3e3f6ec062da2702b366ce6cacfd03'
+sha256sums=('63d699e06b72692f70ff68398c30744c3cb9bc38ab6723990da586933fa2b962'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
