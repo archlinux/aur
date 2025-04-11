@@ -2,7 +2,7 @@
 pkgname=py-fetch
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="A FastFetch-like system information tool written in Python with customizable ASCII art"
+pkgdesc="An independent python-system-information-tool written in Python with customizable ASCII art"
 arch=('any')
 url="https://github.com/binarylinuxx/pyfetch"
 license=('GPL3')

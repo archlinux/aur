@@ -1,5 +1,5 @@
 pkgbase = py-fetch
-	pkgdesc = A FastFetch-like system information tool written in Python with customizable ASCII art
+	pkgdesc = An independent python-system-information-tool written in Python with customizable ASCII art
 	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/binarylinuxx/pyfetch
