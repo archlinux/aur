@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=znote-bin
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
 )
 sha256sums=('f009c52b4d8ceb103946d853f232d83d6de645765cc2d47d863cd05c4347db96'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('8408a170cc53bba09b3447879756447078e0a1519f8e4349dc47ab8395bd6d49')
-sha256sums_x86_64=('14d83968b7eca5f37cac3b38463b6f6c1a99c959170836677fa9c25ec6ab5729')
+sha256sums_aarch64=('a8d877f3f7640fc5cd74b81ce483638d03dccd8d5ae573b6afcbf81bca55846e')
+sha256sums_x86_64=('66c572af718a171a9edf40cefad28b0e7ca8a904818552f7dd3c593637f76e53')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -40,7 +40,7 @@ prepare() {
     chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} \;
+    find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
