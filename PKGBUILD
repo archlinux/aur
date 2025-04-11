@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=1.2.8
-pkgrel=1
+pkgver=1.2.9
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
@@ -15,14 +15,14 @@ depends=(chromaprint gst-plugins-base gst-plugins-good qt6-base
          # namcap implicit depends
          glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
          taglib gst-plugins-base-libs)
-makedepends=(git cmake boost qt6-tools qt6-xcb-private-headers)
+makedepends=(git cmake boost qt6-tools sparsehash vulkan-headers)
 optdepends=('gst-libav: additional codecs'
             'gst-plugins-bad: additional codecs'
             'gst-plugins-ugly: additional codecs')
 provides=(strawberry)
 conflicts=(strawberry)
 source=("git+https://github.com/jonaski/strawberry.git#tag=${pkgver}")
-sha256sums=('ed0586103f090e2504b6a1170d60fc88e4f02f1280db43a47de6da67949621d2')
+sha256sums=('df593058049ec918cdc42a14b9a8ea33627aa0b488f7386a4a0cf06f5a7639fb')
 
 build() {
   local _flags=(
