@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.49.12
+pkgver=0.49.13
 _electronversion=35
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -31,9 +31,9 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('67e64741f5d0b6653800a17a68f8451defcfd15ef3006db2ec71f1ebfb1baf8f')
-sha256sums_armv7h=('1159364675f695b50ad3b425daba8b82ee0ac5e0d85f40196cf0c7cb23e0911d')
-sha256sums_x86_64=('1441c0abfcb65f597d776a2a5f3ffae42128927a40d7445387798da568a35544')
+sha256sums_aarch64=('0767501c808027dde54257ccd678212278c5611262dd7f7d12af7df423fe93cb')
+sha256sums_armv7h=('835fe75305295154d99d350014b25024c06cd63ab4c09147ae314a9d1afa3cc9')
+sha256sums_x86_64=('1d94824beba3ffff11a72ae31db5129cdb2602b79eccc8e200a65ca328a28328')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
