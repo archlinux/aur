@@ -4,7 +4,7 @@
 
 pkgname=waterfox-bin
 pkgver=6.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Current/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
@@ -18,8 +18,43 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
   'speech-dispatcher: Text-to-Speech'
   'hunspell-en_US: Spell checking, American English')
 provides=("waterfox=${pkgver}")
-source=('waterfox.desktop'
-  'https://cdn1.waterfox.net/waterfox/releases/'"${pkgver}"'/Linux_x86_64/waterfox-'"${pkgver}"'.tar.bz2')
+source=("https://cdn1.waterfox.net/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
+        "waterfox.desktop")
+
+#agent lizard
+export _agent="Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
+# override the download function and split out filename since waterfox's web admin wants to make life difficult
+download_file() {
+  # source url with/without :: filename identifier
+  if [[ "$1" == *"::"* ]]; then
+    local url="${1#*::}"  #everything before ::
+    local output_file="${1%%::*}"  #grab download name pre ::
+  else
+    local url="$1"
+    local output_file="$2"
+  fi
+  
+  # if we still don't have a filename, get it from the url
+  if [ -z "$output_file" ]; then
+    output_file=$(basename "$url")
+  fi
+  
+  # imagine being able to download a file normally
+  curl -L \
+    -A "$_agent" \
+    -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
+    -H "Accept-Language: en-US,en;q=0.5" \
+    -H "Referer: https://www.waterfox.net/" \
+    -H "Connection: keep-alive" \
+    -H "Upgrade-Insecure-Requests: 1" \
+    -o "$output_file" \
+    "$url"
+  
+  return $?
+}
+
+#use our override function for the download 
+DLAGENTS=('https::/bin/bash -c "download_file %u %o"')
 
 package() {
   # Create the necessary directories.
@@ -69,6 +104,6 @@ END
   ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox-g
 }
 
-sha512sums=('d0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6'
-            '3ecab7bca4ad70088ab1eb107dfb2d3a9918349ce08f84ff0042d112e74ef58cca8524a68c46e8e00414843bdb3437266678859a50bffd97bdac5a86bd644b03')
+sha512sums=('3ecab7bca4ad70088ab1eb107dfb2d3a9918349ce08f84ff0042d112e74ef58cca8524a68c46e8e00414843bdb3437266678859a50bffd97bdac5a86bd644b03'
+            'd0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6')
 # vim:set ts=2 sw=2 et:

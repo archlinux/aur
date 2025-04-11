@@ -1,4 +1,4 @@
 [waterfox-bin]
-source="regex"
-url="https://www.waterfox.net/download/"
-regex="Linux_x86_64/waterfox-([0-9.]+).tar.bz2"
+source='github'
+github='BrowserWorks/Waterfox'
+use_latest_tag=true
