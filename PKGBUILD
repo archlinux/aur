@@ -2,7 +2,7 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('golang-mockery')
 replaces=('golang-mockery')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('472380b8d1b0838274e3e3f8f11008504840aa08ffe61ce3184804d29f111b29')
+sha256sums=('64cdd33987aaf091e735afcddbf4fe1bb848ef977c664e27ecde9c015a665602')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
