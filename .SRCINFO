@@ -1,7 +1,7 @@
 pkgbase = sixgrid-bin
 	pkgdesc = Open-Source Desktop Client for e926/e621 and websites alike
 	pkgver = 0.3.7_3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SixGrid/sixgrid
 	arch = x86_64
 	license = Apache-2.0
@@ -15,6 +15,6 @@ pkgbase = sixgrid-bin
 	source = sixgrid-0.3.7_3.AppImage::https://github.com/SixGrid/sixgrid/releases/download/0.3.7-3/sixgrid-linux-amd64.AppImage
 	source = sixgrid.sh
 	sha256sums = 91e76e9c56bb375b6994421a586a6393c061b8b4ad1b88e0117727c4d1640d08
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = sixgrid-bin
