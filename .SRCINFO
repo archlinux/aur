@@ -1,0 +1,14 @@
+pkgbase = python-danmakuc
+	pkgdesc = Faster conversion for larger Danmaku to Ass format
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/HFrost0/danmakuC
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = python-protobuf
+	source = https://files.pythonhosted.org/packages/source/d/danmakuC/danmakuC-0.3.6.tar.gz
+	sha256sums = db6b7dcf3dba1595c08a37a6f27f925fb40b9b8c110ff013872ac575c9c30132
+
+pkgname = python-danmakuc
