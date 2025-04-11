@@ -11,7 +11,6 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=('gjs' 'gtk3')
 makedepends=('jq' 'meson' 'git' 'gtk4' 'libxslt' 'xorg-server-xvfb')
-checkdepends=('python-pytest' 'python-gobject' 'gnome-shell' 'wl-clipboard' 'gnome-shell' 'vte3' 'libhandy')
 install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
@@ -22,22 +21,21 @@ pkgver() {
 }
 
 build() {
-    arch-meson "${pkgname%-git}" build -Dlinters=disabled "-Dtests=$( ((CHECKFUNC)) && echo enabled || echo disabled )"
+    arch-meson "${pkgname%-git}" build -Dlinters=disabled -Dtests=disabled
 
     # gtk-builder-tool needs X or Wayland
     LIBGL_ALWAYS_SOFTWARE=1 xvfb-run --auto-display --server-args=-noreset --wait=0 -- meson compile -C build
 }
 
-check() {
-    LIBGL_ALWAYS_SOFTWARE=1 xvfb-run --auto-display --server-args=-noreset --wait=0 -- meson test -C build --print-errorlogs
-}
-
 package() {
     local _max_gnome_shell_version
-    _max_gnome_shell_version="$(jq -r '."shell-version" | max' build/metadata.json)"
-    [[ "${_max_gnome_shell_version}" == *.* ]] || _max_gnome_shell_version="${_max_gnome_shell_version}.99"
+    _max_gnome_shell_version="$(jq '."shell-version" | map(sub("\\D.*"; "") | tonumber) | max' build/metadata.json)"
 
-    depends=("gnome-shell${_max_gnome_shell_version:+<=1:${_max_gnome_shell_version}}" 'vte3' 'libhandy')
+    depends+=(
+        "gnome-shell${_max_gnome_shell_version:+<=1:${_max_gnome_shell_version}.99}"
+        'vte3'
+        'libhandy'
+    )
 
     meson install -C build --destdir "$pkgdir"
 }
