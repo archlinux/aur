@@ -3,8 +3,8 @@
 
 pkgname=linode-cli
 pkgver=5.56.3
-_pkgver=4.197.1
-pkgrel=2
+_pkgver=4.198.0
+pkgrel=3
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://techdocs.akamai.com/cloud-computing/docs/cli"
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgnam
         "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/archive/refs/tags/v${_pkgver}.tar.gz")
 noextract=("${pkgname%%-*}-api-docs-${_pkgver}.tar.gz")
 sha512sums=('f2d173671405dbbbaac1abf82dfe7ffaace5c49c7992dfb2177a2b32fca0350f85133ce091d3234db2e3793bb13090c76a0c6a6ac698c2fa24eccc87eb00242f'
-            'ebe971def6727a0a23adb9d958f5fd298b09a774d33c0c85ab76018e58c4d80676464cbc2d864948b610598c0acf2f77ca4357312108d788bdc1b854d5da0382')
+            '9bf4e6d3cb14cde411548cc370c0828cdc2eb1ecabc6650c1b41d289a5d71ad7e2dc7483a40e05d3b6273efba6be212f8991d1c61fe0717f91e141ff9842128d')
 
 prepare() {
   # Extract API spec
