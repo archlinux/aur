@@ -7,6 +7,7 @@ pkgbase = lan-share-bin
 	license = GPL-3.0
 	depends = qt5-base
 	depends = gcc-libs
+	options = !strip
 	source = https://github.com/abdularis/LAN-Share/releases/download/1.2.1/lanshare_1.2.1-1_amd64.deb
 	sha256sums = SKIP
 
