@@ -10,7 +10,7 @@ pkgbase = python-csdr-luarvique
 	makedepends = python-setuptools
 	depends = python
 	depends = gcc-libs
-	depends = csdr
+	depends = csdr-luarvique
 	provides = python-csdr
 	conflicts = python-csdr
 	source = python-csdr-luarvique::git+https://github.com/luarvique/pycsdr#tag=0.18.29
