@@ -12,10 +12,9 @@ depends=("qt5-base" "gcc-libs" "imagemagick")
 options=('!strip')
 source=(
   "https://github.com/abdularis/LAN-Share/releases/download/${pkgver}/lanshare_${pkgver}-${pkgrel}_amd64.deb"
-  "lanshare.sh::https://raw.githubusercontent.com/abdularis/LAN-Share/refs/heads/master/packaging/linux/debian/LANShare.sh"
   "logo.png::https://raw.githubusercontent.com/abdularis/LAN-Share/refs/heads/master/packaging/linux/debian/lanshare-icon.png"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 
 package() {
   ar x "${srcdir}/lanshare_${pkgver}-${pkgrel}_amd64.deb"
@@ -23,9 +22,11 @@ package() {
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
 
-  install -Dm755 "${srcdir}/lanshare.sh" "${pkgdir}/usr/bin/lanshare"
-  sed -i 's|^./LANShare|/usr/bin/lanshare|' "${pkgdir}/usr/bin/lanshare"
-  sed -i 's|^export LD_LIBRARY_PATH=./|export LD_LIBRARY_PATH=/usr/lib/lanshare|' "${pkgdir}/usr/bin/lanshare"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/lanshare" << 'EOF'
+#!/bin/bash
+export LD_LIBRARY_PATH=/opt/lanshare
+exec /opt/lanshare/LANShare "$@"
+EOF
 
   icon_sizes=(16 32 48 64 128 256)
   for size in "${icon_sizes[@]}"; do
