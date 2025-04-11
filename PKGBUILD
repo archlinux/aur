@@ -7,7 +7,7 @@
 
 pkgname=zoom-system-qt
 pkgver=6.4.3.827
-pkgrel=2
+pkgrel=3
 pkgdesc="Zoom Workspace client with system libraries"
 arch=('x86_64')
 license=('LicenseRef-zoom')
@@ -32,7 +32,7 @@ build() {
 	cd opt/zoom
 	echo Removing Qt5 symbol version and RPATH
 	for b in zoom zopen ZoomLauncher ZoomWebviewHost aomhost libaomagent.so
-		do patchelf --remove-needed libffmpeg.so --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
+		do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
 	done
 	echo Replacing bundled libs
 	rm -r {libOpenCL.so.1,libav*,libmpg123.so,libswresample.so.4,translations,Qt,qt.conf,version.txt}
@@ -42,8 +42,8 @@ build() {
 	#libdvf=libpng+libjpeg+glew+zlib+? onednn~libmkldll? libclDNN~openvino?
 	cd cef #Updating CEF(https://cef-builds.spotifycdn.com/index.html) seems impossible. ABI?
 	mv locales{,-b};mkdir locales;mv locales{-b,}/en-US.pak;rm -r locales-b #needed for ZoomWebviewHost
-	patchelf --replace-needed libffmpeg.so libavformat.so libcef.so
-	rm -r libffmpeg.so* libsqlite3.so* chrome-sandbox
+	ln -sf /usr/lib/libavformat.so libffmpeg.so*
+	rm -r libsqlite3.so* chrome-sandbox
 	for f in *.{pak,dat,json} {libEGL,libGLESv2,libvulkan,libvk_swiftshader}.so*
 		do ln -sf {/usr/lib/chromium/,}$f
 	done
