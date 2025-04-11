@@ -1,0 +1,20 @@
+pkgbase = moocs-collect-cli
+	pkgdesc = CLI tool to download lecture slides from INIAD MOOCs (from source)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/yu7400ki/moocs-collect
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = dbus
+	depends = openssl
+	provides = moocs-collect-cli
+	conflicts = moocs-collect-cli-git
+	conflicts = moocs-collect-cli-bin
+	source = https://github.com/yu7400ki/moocs-collect/archive/refs/tags/cli-v0.3.1.tar.gz
+	sha256sums = c6fdb6ee70b86ba2b5f2f5cd3902bff3b444e6f873b75df341f22f1ef21ee962
+
+pkgname = moocs-collect-cli
