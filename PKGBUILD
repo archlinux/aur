@@ -7,7 +7,7 @@ _projectname=electron
 _major=36
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='0.0-beta.4'
+_subver='0.0-beta.5'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-}"
 pkgrel=1
@@ -40,6 +40,10 @@ optdepends=(
     'trash-cli: file deletion support (trash-put)'
     "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
 )
+noextract=(
+    "${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
+    "${_pkgname}-${pkgver}-${CARCH}.zip"
+)
 source_aarch64=(
     "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-arm64.zip"
     "${_pkgname}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-arm64.zip"
@@ -52,12 +56,12 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
-sha256sums_aarch64=('77465f6840178f80a5e47cddfdb041e967f3a01a743b1f3007c6dbebb839e474'
-                    '8c3413cd9749ccf795671f55cb1d027f707468a358911c77d757471508ca8fe2')
-sha256sums_armv7h=('f4a493128af9c34d64ac48c458ea2a3310328bc82888a0206213d2e1b3524030'
-                   '8a0e80c2a053f57d75983681c4de2594b7e27d84e709797270abc8373075f4d8')
-sha256sums_x86_64=('94e45a3aa50d6f2fda5d9fda92cb1adeb353357ba08da68e2fa1dd751919c5c3'
-                   '8e0926589d202d37cc19dc43b7b7f6cf64e1032aa206bb41e430cc47a1493990')
+sha256sums_aarch64=('d3b58e6a4dc00f79a40aff9c1b843e56829bdee3c04ec42d17a5344be341b9f0'
+                    'af8e16166d7518fd39dd8a1f52e0533e787f2cbba5d46d49f206ff5ace2c44f4')
+sha256sums_armv7h=('4500e3a0eda317d66688fa641100abbba5e14bbc5759bd671257fa2551cbd47d'
+                   '818a944ea8bd1c5f7ff6249c6bee52bebe4339e5389367dcade7c685e9a51fda')
+sha256sums_x86_64=('c0fbc9cd461033d9f579062e37d4e9d17c3730cc118a6f725868f0be78c853ba'
+                   '2454131f9d866d27043c1ed9e6eb38f220e2f32b1bb77219c1486950c2b09a1f')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
