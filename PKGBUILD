@@ -19,21 +19,17 @@ sha256sums=('SKIP' 'SKIP')
 package() {
   ar x "${srcdir}/lanshare_${pkgver}-${pkgrel}_amd64.deb"
   tar -xf data.tar.xz -C "${pkgdir}"
-
   find "${pkgdir}" -type d -exec chmod 755 {} +
-
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/lanshare" << 'EOF'
 #!/bin/bash
-export LD_LIBRARY_PATH=/opt/lanshare
-exec /opt/lanshare/LANShare "$@"
+export LD_LIBRARY_PATH=/opt/lan-share/lib
+exec /usr/lib/LANShare/LANShare "$@"
 EOF
-
   icon_sizes=(16 32 48 64 128 256)
   for size in "${icon_sizes[@]}"; do
     install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
     magick "${srcdir}/logo.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/lanshare.png"
   done
-
   install -d "${pkgdir}/usr/share/applications"
   echo "[Desktop Entry]
 Name=lanshare
