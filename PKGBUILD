@@ -11,7 +11,6 @@ _checksum="$(curl https://code-industry.net/checksum-information/ | grep master-
 arch=('x86_64')
 license=('custom')
 depends=(libgl
-		 nss
 		 pkcs11-helper
 		 sane
 		 xcb-util-image

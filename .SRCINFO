@@ -7,7 +7,6 @@ pkgbase = masterpdfeditor-qt_include
 	license = custom
 	makedepends = patchelf
 	depends = libgl
-	depends = nss
 	depends = pkcs11-helper
 	depends = sane
 	depends = xcb-util-image
