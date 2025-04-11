@@ -1,0 +1,4 @@
+[bower-mail]
+source = "github"
+github = "wangp/bower"
+use_max_tag = true
