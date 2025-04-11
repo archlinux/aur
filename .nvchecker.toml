@@ -1,0 +1,3 @@
+[redis-plus-plus]
+source = "git"
+git = "https://github.com/sewenew/redis-plus-plus.git"
