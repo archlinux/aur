@@ -1,12 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=commas
 _pkgname=Commas
-pkgver=0.37.0
-_electronversion=34
-_nodever=20
+pkgver=0.38.0
+_electronversion=35
+_nodever=22
 pkgrel=1
 pkgdesc="A hackable, pluggable terminal, and also a command runner.(Use system-wide electron)"
-arch=("x86_64")
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/CyanSalt/commas"
 license=('ISC')
 conflicts=("${pkgname}")
@@ -20,12 +23,13 @@ makedepends=(
     'nvm'
     'curl'
     'pnpm'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1024f327bf2a301a056db6cf3c1c5f35137bfb0d6465ad9ad3118af7c96c8fc8'
+sha256sums=('82e07fccd64acd21ed74780bfcadb23a3d6e6b7ac2d6cf66a575334a5cd6f688'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -34,17 +38,16 @@ _ensure_local_nvm() {
     nvm use "${_nodever}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     #export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -59,6 +62,7 @@ prepare() {
         echo "virtual-store-dir-max-length=80"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        sed -i "/registry.npmjs.org/d" .npmrc
         {
         echo 'registry=https://registry.npmmirror.com'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
@@ -76,7 +80,8 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm node build/build.mjs
+    NODE_ENV=production     pnpm node build/pack.mjs -- --local
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
