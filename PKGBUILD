@@ -1,7 +1,7 @@
 # Contributor: wilke
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=harsh-bin
-pkgver=0.10.18
+pkgver=0.10.19
 pkgrel=1
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('harsh')
 
 case "$CARCH" in
     x86_64) _pkgarch="x86_64"
-sha256sums=('4e960cda6ffe3d01b3d07861624eacc3671bde1e6e9f74e335f09e5d7e7731f4')
+sha256sums=('e15d0ea8256bef93224c297df07f3f50e8b39f9c387da90103c0b3f456a52682')
            ;;
     armv64h) _pkgarch="arm64"
            ;;
