@@ -4,7 +4,7 @@
 
 pkgname=python-pybrowsers
 _pkgname=browsers
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=2
 pkgdesc="Python library for detecting and launching browsers"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
   python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a6b34aaf3e47d5a871a12f94829a44d884e259370e230eeedeb948d3f0bd7ef9')
+sha256sums=('60a5209805d1f26504ba328ee88a01aac77b02e1a9b6e0b9884dd1ac28e74dd3')
 
 _archive="$_pkgname-$pkgver"
 
