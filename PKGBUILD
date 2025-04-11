@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher-bwrap
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
@@ -9,26 +9,26 @@ url="https://github.com/an-anime-team/an-anime-game-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
 	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'portable')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 optdepends=(
 	 'mangohud: FPS Overlay'
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
-source=("$url/archive/refs/tags/${pkgver}.tar.gz"
+source=("git+$url.git"
 	"portable-config"
 	"start.sh")
-sha256sums=('e1a69cc1fd8a4fc7ec087ab705496245890138ec15015689b88d20e5ec74bd82'
-            '36dfa9fef68f90e2baf6361cf42c99880d985a3bc8249c15ef14ca87adde0dee'
-            '4895bf6a6bd4297cfb8a51e01ed39cd0e7a6e17fd96a83a06b581138c4443e4b')
+sha256sums=('SKIP'
+            'd00b17f2db3c3271778981290205229f05f66caea7e7aef12d5ed867a7261a14'
+            'c4efe09cb144042a073a7cc83de416dd78c19941687253d25e34a1cbe90a1a77')
 
 prepare() {
-	cd "$srcdir/an-anime-game-launcher-$pkgver"
+	cd "$srcdir/an-anime-game-launcher"
 	export RUSTUP_TOOLCHAIN=stable
     	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "$srcdir/an-anime-game-launcher-$pkgver"
+	cd "$srcdir/an-anime-game-launcher"
     	export RUSTUP_TOOLCHAIN=stable
     	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/an-anime-game-launcher-$pkgver"
+	cd "$srcdir/an-anime-game-launcher"
 	install -Dm755 "target/release/anime-game-launcher" "$pkgdir/usr/bin/an-anime-game-launcher"
 	install -Dm644 "assets/anime-game-launcher.desktop" "$pkgdir/usr/share/applications/an-anime-game-launcher.desktop"
 	install -Dm644 "assets/images/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/moe.launcher.an-anime-game-launcher.png"
