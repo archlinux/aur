@@ -2,8 +2,8 @@
 
 pkgname=d4m-git
 _pkgname=${pkgname%-git}
-pkgver=r124.402ef8a
-pkgrel=00
+pkgver=r191.4b493ff
+pkgrel=1
 pkgdesc="Project Diva MegaMix+ mod manager"
 arch=('any')
 license=('MIT')
@@ -28,12 +28,12 @@ makedepends=(
     'git'
     'python-setuptools'
     'python-setuptools-scm'
+    'python-setuptools-git-versioning-git'
 )
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
