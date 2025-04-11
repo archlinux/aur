@@ -1,0 +1,21 @@
+pkgbase = ghex-git
+	pkgdesc = a hex editor for the GNOME desktop
+	pkgver = 48.alpha.r37.g710127d
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/ghex
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = itstool
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk4
+	depends = libadwaita
+	provides = ghex
+	conflicts = ghex
+	source = git+https://gitlab.gnome.org/GNOME/ghex.git
+	sha256sums = SKIP
+
+pkgname = ghex-git
