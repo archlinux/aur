@@ -16,7 +16,7 @@ pkgname=(
 pkgdesc="A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives."
 
 pkgver=0.4.0+alpha.9+35.r3873.20250303.9cb703b2
-pkgrel=1
+pkgrel=2
 
 arch=(
   'i686'
@@ -129,7 +129,7 @@ package_wuffs-lib-git() {
   install -Dvm644 -t "${pkgdir}/usr/share/doc/wuffs-lib" release/c/README.md
 
   install -dvm644 "${pkgdir}/usr/share/licenses"
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses"/wuffs-lib-git
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-lib-git
 }
 
 package_wuffs-examples-git() {
@@ -165,7 +165,7 @@ package_wuffs-examples-git() {
   install -Dvm644 -t "${pkgdir}/usr/share/doc/wuffs-examples" example/README.md
 
   install -dvm644 "${pkgdir}/usr/share/licenses"
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses"/wuffs-examples-git
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-examples-git
 }
 
 package_wuffs-fuzzers-git() {
@@ -197,7 +197,7 @@ package_wuffs-fuzzers-git() {
   install -Dvm644 -t "${pkgdir}/usr/share/doc/wuffs-fuzzers" fuzz/c/std/README.md
 
   install -dvm644 "${pkgdir}/usr/share/licenses"
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses"/wuffs-fuzzers-git
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-fuzzers-git
 }
 
 package_wuffs-lang-git() {
@@ -239,7 +239,7 @@ package_wuffs-lang-git() {
   install -Dvm755 -t "${pkgdir}/usr/bin"  "${GOBIN}"/{dumbindent,handsum,ractool,wuffs,wuffs-c,wuffsfmt}
 
   install -dvm644 "${pkgdir}/usr/share/licenses"
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses"/wuffs-lang-git
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-lang-git
 }
 
 package_wuffs-docs-git() {
@@ -265,7 +265,7 @@ package_wuffs-docs-git() {
   cp -rv doc "${pkgdir}/usr/share/doc/${_pkgbase}"/
 
   install -dvm644 "${pkgdir}/usr/share/licenses"
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses"/wuffs-docs-git
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-docs-git
 }
 
 package_wuffs-license-git() {
@@ -288,6 +288,7 @@ package_wuffs-license-git() {
   cd "${srcdir}/${_gitname}"
 
   cd "${srcdir}/${_gitname}"
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgbase}"  LICENSE LICENSE-APACHE LICENSE-MIT
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses"/wuffs-license-git
+  install -Dvm644 -t "${pkgdir}/usr/share/licenses/wuffs"  LICENSE LICENSE-APACHE LICENSE-MIT
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-license-git
+  ln -svr "${pkgdir}/usr/share/licenses/wuffs" "${pkgdir}/usr/share/licenses"/wuffs-license
 }

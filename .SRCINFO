@@ -1,7 +1,7 @@
 pkgbase = wuffs-git
 	pkgdesc = A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
 	pkgver = 0.4.0+alpha.9+35.r3873.20250303.9cb703b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/wuffs
 	arch = i686
 	arch = x86_64
