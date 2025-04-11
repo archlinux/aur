@@ -1,0 +1,107 @@
+commit e1e1ac1a8367d8bbe992da7a59e1b3e27b32a14a
+Author: Robert Schiele <rschiele@gmail.com>
+Date:   Fri Apr 11 12:14:23 2025 +0200
+
+    integrate OCCTWrapper
+    
+    We link OpenCASCADE dynamically, which reduces the size of
+    OCCTWrapper.so to about 60 to 70 KB. That size does probably not justify
+    cluttering the /usr/bin namespace with a shared library that never
+    belonged there in the beginning. So let's just link this small junk of
+    code into the main binary itself, reducing complexity for the price of
+    creating a hard dependency to the OpenCASCADE package.
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c6ddf2e1d4..9bbaca2710 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -167,8 +167,6 @@ if (SLIC3R_GUI)
+         target_link_libraries(PrusaSlicer PRIVATE ws2_32 uxtheme setupapi)
+     elseif (APPLE)
+         target_link_libraries(PrusaSlicer PRIVATE "-framework OpenGL")
+-    else ()
+-        target_link_libraries(PrusaSlicer PRIVATE -ldl)
+     endif ()
+     if (WIN32)
+         find_library(PSAPI_LIB NAMES Psapi)
+diff --git a/src/libslic3r/CMakeLists.txt b/src/libslic3r/CMakeLists.txt
+index 879cb4350c..65b9110b8b 100644
+--- a/src/libslic3r/CMakeLists.txt
++++ b/src/libslic3r/CMakeLists.txt
+@@ -646,7 +646,7 @@ target_link_libraries(libslic3r PUBLIC
+     libseqarrange
+ )
+ 
+-if (APPLE)
++if (APPLE OR LINUX)
+     # TODO: we need to fix notarization with the separate shared library
+     target_link_libraries(libslic3r PUBLIC OCCTWrapper)
+ endif ()
+diff --git a/src/libslic3r/Format/STEP.cpp b/src/libslic3r/Format/STEP.cpp
+index c55f0dd861..fdae053209 100644
+--- a/src/libslic3r/Format/STEP.cpp
++++ b/src/libslic3r/Format/STEP.cpp
+@@ -26,7 +26,7 @@
+ 
+ namespace Slic3r {
+ 
+-#if __APPLE__
++#ifndef _WIN32
+ extern "C" bool load_step_internal(const char *path, OCCTResult* res, std::optional<std::pair<double, double>> deflections /*= std::nullopt*/);
+ #endif
+ 
+@@ -37,7 +37,7 @@ LoadStepFn get_load_step_fn()
+ {
+     static LoadStepFn load_step_fn = nullptr;
+ 
+-#ifndef __APPLE__
++#ifdef _WIN32
+     constexpr const char* fn_name = "load_step_internal";
+ #endif
+ 
+@@ -61,22 +61,8 @@ LoadStepFn get_load_step_fn()
+             FreeLibrary(module);
+             throw;
+         }
+-#elif __APPLE__
+-        load_step_fn = &load_step_internal;
+ #else
+-        libpath /= "OCCTWrapper.so";
+-        void *plugin_ptr = dlopen(libpath.c_str(), RTLD_NOW | RTLD_GLOBAL);
+-
+-        if (plugin_ptr) {
+-            load_step_fn = reinterpret_cast<LoadStepFn>(dlsym(plugin_ptr, fn_name));
+-            if (!load_step_fn) {
+-                dlclose(plugin_ptr);
+-                throw Slic3r::RuntimeError(std::string("Cannot load function from OCCTWrapper.so: ") + fn_name
+-                                           + "\n\n" + dlerror());
+-            }
+-        } else {
+-            throw Slic3r::RuntimeError(std::string("Cannot load OCCTWrapper.so:\n\n") + dlerror());
+-        }
++        load_step_fn = &load_step_internal;
+ #endif
+     }
+ 
+diff --git a/src/occt_wrapper/CMakeLists.txt b/src/occt_wrapper/CMakeLists.txt
+index 9228c8c2ff..f56680c604 100644
+--- a/src/occt_wrapper/CMakeLists.txt
++++ b/src/occt_wrapper/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.13)
+ project(OCCTWrapper)
+ 
+-if (APPLE)
++if (APPLE OR LINUX)
+     # TODO: we need to fix notarization with the separate shared library
+     add_library(OCCTWrapper STATIC OCCTWrapper.cpp)
+ else ()
+@@ -34,5 +34,6 @@ target_link_libraries(OCCTWrapper libslic3r admesh)
+ 
+ include(GNUInstallDirs)
+ 
+-install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
+-
++if (NOT LINUX)
++    install(TARGETS OCCTWrapper DESTINATION "${CMAKE_INSTALL_BINDIR}")
++endif ()

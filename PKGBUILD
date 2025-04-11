@@ -20,11 +20,13 @@ options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${pkgname}-${pkgver/_/-}.tar.gz
         fixes_boost.patch
         fixes_cgal.patch
-        fixes_nanosvg.patch)
+        fixes_nanosvg.patch
+        integrate_occtwrapper.patch)
 sha256sums=('ee0efd43729ae4a0dc16372f6a562d577e482f62e9b1851d8a5f30c61d9f317d'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
             '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
-            'ecd2e2a367ca08cea7178f3807f5b59e318ac601fc6d8976910f99a6362f5213')
+            'ecd2e2a367ca08cea7178f3807f5b59e318ac601fc6d8976910f99a6362f5213'
+            'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
@@ -38,6 +40,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/fixes_boost.patch
   patch -Np1 -i "${srcdir}"/fixes_cgal.patch
   patch -Np1 -i "${srcdir}"/fixes_nanosvg.patch
+  patch -Np1 -i "${srcdir}"/integrate_occtwrapper.patch
 }
 
 build() {
@@ -78,11 +81,6 @@ check() {
   cd build_${pkgver}
 
   ctest
-
-  # Build a dummy binary linking against OCCTWrapper.so to make the linker tell
-  # us whether there are unresolved symbols left. There is no upstream
-  # build-time check for this at the moment.
-  echo 'int main(){}' | g++ -o /dev/null src/OCCTWrapper.so -x c -
 }
 
 package_prusa-slicer() {
