@@ -3,7 +3,7 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
@@ -13,9 +13,11 @@ depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python')
 options=('!makeflags')
 source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('316620f227bc572b2b18dd134f3eade113a4317d8b4aaea2c181cfc268c3751a')
+sha256sums=('ee0efd43729ae4a0dc16372f6a562d577e482f62e9b1851d8a5f30c61d9f317d')
 
 build() {
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
   cd PrusaSlicer-version_${pkgver}
 
   # This is super ugly right now: We're using 100% vendored deps but upstream
