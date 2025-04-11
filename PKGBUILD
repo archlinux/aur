@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.maier-komor.de/xjobs.html"
 license=('GPL-2.0')
 depends=('glibc' 'ncurses')
+makedepends=('make' 'gcc')
 source=("http://www.maier-komor.de/xjobs/$pkgname-$pkgver.tgz")
 md5sums=('61d12fac69b7f7b97f10655754b58399')
 sha1sums=('2034ec50ab776be2a38cc21675a08875a7f23863')
