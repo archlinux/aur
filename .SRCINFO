@@ -21,6 +21,8 @@ pkgbase = d4m-git
 	depends = python-simple-term-menu
 	depends = python-vdf
 	depends = python-libarchive
+	depends = python-appdirs
+	depends = python-packaging
 	source = d4m-git::git+https://github.com/brod8362/d4m.git
 	sha256sums = SKIP
 

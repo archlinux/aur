@@ -19,6 +19,8 @@ depends=(
     'python-simple-term-menu'
     'python-vdf'
     'python-libarchive'
+    'python-appdirs'
+    'python-packaging'
 )
 makedepends=(
     'python-build'
