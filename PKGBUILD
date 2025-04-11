@@ -15,7 +15,7 @@ arch=("x86_64")
 url="https://github.com/cake-tech/${_pkgname}"
 license=("MIT")
 depends=("at-spi2-core" "cairo" "fontconfig" "gcc-libs" "gdk-pixbuf2" "glib2" "glibc" "gtk3" "harfbuzz" "libepoxy" "libgcrypt" "libgpg-error" "lz4" "pango" "util-linux-libs" "xz")
-source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux.tar.xz"
+source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux_Beta.tar.xz"
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
 sha512sums=("ecc7a00803525228627e29898b228ac650568b8f8e44e0c59a01643a0a930d9a1e3ffc233cc825493db54ec618e005ec475ac6f5651bade6c2fa76b7a83518cf"
