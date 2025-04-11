@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('peroxide-ssh-manager-bin')
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A terminal-based SSH connection manager written in Rust"
 arch=('x86_64')
