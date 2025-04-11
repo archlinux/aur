@@ -7,8 +7,8 @@ pkgdesc="INDI driver for products manufactured by indi-fli"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL-2.1-or-later)
 arch=(i686 x86_64 aarch64)
-depends=(libindi=${pkgver} libfli )
-makedepends=(cmake)
+depends=(libindi=${pkgver} libfli=${pkgver})
+makedepends=(cmake libfli=${pkgver})
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
 sha256sums=("bcb7cf2b9053c5b1e052a35247ec499a9d513f4ed257178b244c190394d0daa6")
 
