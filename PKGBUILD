@@ -12,7 +12,7 @@ depends=()
 makedepends=('go' 'git')
 provides=('cassowary')
 conflicts=('cassowary-bin')
-source=("git+https://github.com/rogerwelin/cassowary.git")
+source=("cassowary::git+https://github.com/rogerwelin/cassowary.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/cassowary"
   export CGO_ENABLED=0
-  go build -o cassowary -trimpath -ldflags="-s -w"
+  go build -o cassowary -trimpath -ldflags="-s -w" ./cmd
 }
 
 package() {
