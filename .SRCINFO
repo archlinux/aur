@@ -9,6 +9,6 @@ pkgbase = opensbi
 	provides = opensbi
 	options = !strip
 	source = https://github.com/riscv-software-src/opensbi/releases/download/v1.6/opensbi-1.6-rv-bin.tar.xz
-	md5sums = de1644ef1c898be11c6624da46be92e2
+	md5sums = 9adab34d8edaf41d4431c5426ef0a2f0
 
 pkgname = opensbi
