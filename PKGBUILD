@@ -3,7 +3,7 @@
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 _base=datashader
 pkgname=python-${_base}
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Quickly and accurately render even the largest data"
 arch=(any)
@@ -12,7 +12,7 @@ license=(BSD-3-Clause)
 depends=(python-colorcet python-dask python-multipledispatch python-numba python-pillow python-scipy python-xarray)
 makedepends=(python-build python-installer python-hatch-vcs python-wheel)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('7eadeda209cd831d184e4c2e0dbf6f57c38b7ff96ed61e93df58c5386726ae29e69516f9be9ad4d18924e87cb64c8d2dc8515467107bf6536491a03968a45790')
+sha512sums=('67f5de590ecdbdea8a9d4e9f0fef5a09efe7665525b16c5e1fc3f1a33382ca36d21a07d736b0e5f74240185fc7b85446aba732c3445f4d62f84ab2cca128c58d')
 
 build() {
   cd ${_base}-${pkgver}
