@@ -3,8 +3,8 @@ pkgname=ldtk-bin
 _pkgname=LDtk
 pkgver=1.5.3
 _electronversion=24
-pkgrel=3
-pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness"
+pkgrel=4
+pkgdesc="Modern and efficient 2D level editor with a strong focus on user-friendliness.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://ldtk.io/"
 _ghurl="https://github.com/deepnight/ldtk"
@@ -26,21 +26,22 @@ source=(
 )
 sha256sums=('8bb1c870ab35d2cadfbf08a119d3049e7986a2a80558d2610babc67fcd502566'
             'f409a37a40e823efefddac3140d991141633d4db3cec4f8667bc23b846dcc335'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-          -e "s|@appname@|${pkgname%-bin}|g" \
-          -e "s|@runname@|app.asar|g" \
-          -e "s|@cfgdirname@|${_pkgname}|g" \
-          -e "s|@options@|levelIndex=1|g" \
-          -i "${srcdir}/${pkgname%-bin}.sh"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     mv "${srcdir}/${_pkgname} ${pkgver} installer.AppImage" "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/" -type d -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "s|misc_JsTools.getExeDir()|\"\/usr\/lib\/${pkgname%-bin}\"|g" -i "${srcdir}/app.asar.unpacked/assets/js/renderer.js"
+    sed "s/misc_JsTools.getExeDir()/\"\/usr\/lib\/${pkgname%-bin}\"/g" -i "${srcdir}/app.asar.unpacked/assets/js/renderer.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
@@ -48,9 +49,10 @@ package() {
     install -Dm755 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/squashfs-root/extraFiles" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
-      install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-        -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
     install -Dm644 "${srcdir}/squashfs-root/usr/share/mime/${pkgname%-bin}.xml" -t "${pkgdir}/usr/share/mime"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
