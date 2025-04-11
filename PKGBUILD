@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vfox-bin
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 pkgdesc="A cross-platform and extendable version manager with support for Java, Node.js, Flutter, .Net & more.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -24,10 +24,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_armv7.rpm")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_i386.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_x86_64.rpm")
-sha256sums_aarch64=('6edcfbbaf06a334ca39812d811e957751e48d53ec0d0d25452f12980988feb62')
-sha256sums_armv7h=('52db562dba5527d0215b94d850a1f692eeab6214f55b07f92c0f02e72d91d2e2')
-sha256sums_i686=('7cc9f277eb0cd8ce725b7e99c9068506017fcffa89996d04805876595d7e454e')
-sha256sums_x86_64=('7f533408ddfec823179fd28e6df4bc62321098779b1d0627d3426d21c33869cb')
+sha256sums_aarch64=('0cd0382f4791e8c3a80743f2b10bd7b7b1627966a0bb48595e8abfd538dbc4b1')
+sha256sums_armv7h=('e6da86014c35906891a6447b776ec510ea3516f2061f98d6a7820bc8a86cd2ff')
+sha256sums_i686=('935161910787f9aee3e79a2f6acfa7343e1d17b596a257c910ab1e650e993e03')
+sha256sums_x86_64=('fe7578dadddbf1a8d5947ab46ddb087e1e4ae4598892308677fc39f5f8cca965')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/bash-completion/completions/${pkgname%-bin}" -t "${pkgdir}/usr/share/bash-completion/completions"
