@@ -1,8 +1,8 @@
 pkgbase=navicat-premium-lite
 pkgname=("${pkgbase}-en" "${pkgbase}-cs")
 provides=("${pkgbase}")
-pkgver=17.2.1
-pkgrel=2
+pkgver=17.2.2
+pkgrel=1
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64' 'aarch64')
 url="https://www.navicat.com/products/navicat-premium-lite"
@@ -25,7 +25,7 @@ package_navicat-premium-lite-en() {
 
 	_lang=en
 	_app="${pkgbase}-${_lang}-${CARCH}-${pkgver}.AppImage"
-	
+
 	cd "$srcdir/" && rm -rf "squashfs-root"
 	chmod +x "${_app}" && ./"${_app}" --appimage-extract
 
@@ -41,7 +41,7 @@ package_navicat-premium-lite-cs() {
 
 	_lang=cs
 	_app="${pkgbase}-${_lang}-${CARCH}-${pkgver}.AppImage"
-	
+
 	cd "$srcdir/" && rm -rf "squashfs-root"
 	chmod +x "${_app}" && ./"${_app}" --appimage-extract
 
