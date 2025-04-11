@@ -1,4 +1,4 @@
-# Maintainer: Brod8362 <brod8362@gmail.com>
+# Maintainer: oldkingOK <oldkingok.creeper@gmail.com>
 
 pkgname=d4m-git
 _pkgname=${pkgname%-git}
