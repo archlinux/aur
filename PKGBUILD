@@ -3,7 +3,7 @@
 
 pkgname=yabsnap
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('3306f6363919959f71a2c4a8a0664fd2')
 install="$pkgname".install
 
-check() {
+build() {
   cd "$pkgname"-"$pkgver"/artifacts
   # One-time action to do after downloading the package.
   gzip -c "$pkgname".manpage > "$pkgname".1.gz

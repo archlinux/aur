@@ -1,7 +1,7 @@
 pkgbase = yabsnap
 	pkgdesc = Btrfs automated snapshot manager.
 	pkgver = 2.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hirak99/yabsnap
 	install = yabsnap.install
 	arch = any
