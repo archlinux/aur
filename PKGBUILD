@@ -21,11 +21,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/cassowary"
+  cd "$srcdir/cassowary/cmd/cassowary"
   export CGO_ENABLED=0
   go build -o cassowary -trimpath -ldflags="-s -w" .
 }
 
 package() {
-  install -Dm755 "$srcdir/cassowary/cassowary" "$pkgdir/usr/bin/cassowary"
+  install -Dm755 "$srcdir/cassowary/cmd/cassowary/cassowary" "$pkgdir/usr/bin/cassowary"
 }
