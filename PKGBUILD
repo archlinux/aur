@@ -3,12 +3,11 @@
 
 pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
-_buildver=251.23774.271
-_pkgver=2025.1
-if ! [[ $_buildver ]]; then _dlver=${_pkgver}; pkgver=${_pkgver}
-else _dlver=${_buildver}; pkgver=${_pkgver}pre+${_buildver}
-fi
+pkgver=2025.1pre+251.23774.271
 pkgrel=1
+if [[ ${pkgver} =~ (.+)pre\+(.+) ]]; then _dlver="${BASH_REMATCH[2]}"
+else _dlver="${pkgver}"
+fi
 pkgdesc='JetBrains IDE for Rust Developers (EAP)'
 arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/rust/nextversion/'
