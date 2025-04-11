@@ -1,7 +1,7 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
 _pkgname='wootility'
 pkgname="${_pkgname}5-appimage"
-pkgver='5.0.5'
+pkgver='5.0.6'
 _appimage="${_pkgname^}-${pkgver}.AppImage"
 pkgrel=1
 pkgdesc="Utility for configuring Wooting keyboards (v${pkgver//_/-})"
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}" 'wootility5-beta' 'wootility-appimage' 'wootility3-appi
 options=(!strip)
 source=("https://wootility-updates.ams3.cdn.digitaloceanspaces.com/wootility-linux/${_appimage}"
         '70-wooting.rules')
-b2sums=('f42c100eb893b4b87f0b4646fcdc178f1c68567172cb0c015b4501d0f2439b70136b650fa9611e11eca6500a60f63bdd6c3f11db8b8522e8158f258fa6b3bcf5'
+b2sums=('01f4997054be96dcbee8bbb6d4f68874d23bb1507898337e4e4165c6c417f183cca947b4d7fb98e2500a4c85011e95b1d2d45c993aa1949bb5122452d97367d9'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
