@@ -10,8 +10,8 @@
 
 _target="arm-linux-gnueabihf"
 pkgname="${_target}-binutils"
-pkgver=2.43.1
-pkgrel=2
+pkgver=2.44
+pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
@@ -20,7 +20,7 @@ depends=(glibc libelf zlib zstd)
 makedepends=(gcc glibc libelf zlib zstd)
 options=(!emptydirs !distcc !strip)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz{,.sig})
-sha256sums=('13f74202a3c4c51118b797a39ea4200d3f6cfbe224da6d1d95bb938480132dfd'
+sha256sums=('ce2017e059d63e67ddb9240e9d4ec49c2893605035cd60e92ad53177f4377237'
             'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
