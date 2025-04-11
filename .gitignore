@@ -1,0 +1,6 @@
+v*.tar.gz
+
+pkg
+src
+
+librevna-gui-*.pkg.tar.zst
