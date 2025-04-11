@@ -1,8 +1,8 @@
 # Maintainer: Florian Schweiger <mpkmpoza@duck.com>
 upstream_name=actions-for-nautilus
 pkgname="$upstream_name-git"
-pkgver=v1.6.1_4_g0a3c7ce
-pkgrel=2
+pkgver=1.7.1.r2.g708051e
+pkgrel=1
 pkgdesc='Nautilus extension to add arbitrary actions to the file selection context menu'
 arch=('x86_64')
 url='https://github.com/bassmanitram/actions-for-nautilus'
@@ -24,7 +24,7 @@ prepare() {
 }
 pkgver() {
 	cd "$upstream_name"
-	git describe --tags | tr - _
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 package() {
 	cd "$upstream_name"
