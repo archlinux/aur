@@ -5,8 +5,8 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.4.3.r0.gc3fc061
-pkgrel=2
+pkgver=1.4.4.r0.g5d39bc0
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -17,7 +17,6 @@ depends=(
   'python>3.7'
 )
 makedepends=(
-  'clang'
   'cmake'
   'git'
   'python-build'
@@ -52,6 +51,7 @@ build() {
     * ) : pass ;;
   esac
 
+  export RUSTFLAGS="$RUSTFLAGS -C link-args=-Wl,-z,shstk"
   export CMAKE_POLICY_VERSION_MINIMUM=3.5  # or else won't build
   python -m build --wheel --no-isolation
 }
@@ -65,6 +65,7 @@ package() {
     LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     {CHANGELOG,README}.rst SECURITY.md
+  cp -vfax examples "$pkgdir/usr/share/doc/"
 }
 
 # eof
