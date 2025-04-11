@@ -8,7 +8,7 @@ url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL-2.1-or-later)
 arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libtoupcam=${pkgver} libbressercam=${pkgver} libmeadecam=${pkgver} libogmacam=${pkgver} libstarshootg=${pkgver} libtscam=${pkgver} libomegonprocam=${pkgver} libnncam=${pkgver} libaltaircam=${pkgver} libmallincam=${pkgver} libsvbonycam=${pkgver})
-makedepends=(cmake)
+makedepends=(cmake libtoupcam=${pkgver} libbressercam=${pkgver} libmeadecam=${pkgver} libogmacam=${pkgver} libstarshootg=${pkgver} libtscam=${pkgver} libomegonprocam=${pkgver} libnncam=${pkgver} libaltaircam=${pkgver} libmallincam=${pkgver} libsvbonycam=${pkgver})
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
 sha256sums=("bcb7cf2b9053c5b1e052a35247ec499a9d513f4ed257178b244c190394d0daa6")
 
