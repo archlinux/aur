@@ -1,13 +1,12 @@
 # based on https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/main/PKGBUILD
 
 # Maintainer: nuvole <mitltlatltl@gmail.com>
+# EOL: Apr, 2025 (Unlikely to continue maintenance, you cna adopt it if necessary)
 
 _variant=gaokun3
 pkgbase=linux-$_variant
-# TODO: 6.12.y is a branch version, try to fetch from 6.12 to 6.20
-# to get the latest branch, then fetch kernel version from Makefile
-pkgver=6.13.y
-pkgrel=7
+pkgver=6.14.y
+pkgrel=1
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -32,56 +31,37 @@ options=(
 
 _srcname=linux
 
+# Apr, 2025
+# Since 6.14, dsi_related_rebase_required/*patch can't be applied anymore,
+# I will not fix them anymore, it is EOL for me. but don't worry, these
+# patches are not necessary to enable any notable features, check it only
+# when you are planning to bring up internal panel.
 _patch_list=(
 0001-Revert-clk-qcom-Park-shared-RCGs-upon-registration.patch
-0002-drm-msm-dsi-change-sync-mode-to-sync-on-DSI0-rather-.patch
-0003-drm-msm-dpu1-improve-support-for-active-CTLs.patch
-0004-drm-msm-dpu1-use-one-active-CTL-if-it-is-available.patch
-0005-drm-msm-dpu-populate-has_active_ctls-in-the-catalog.patch
-0006-drm-msm-dpu1-dpu_encoder_phys_-proper-support-for-ac.patch
-0007-drm-msm-dpu-Drop-BIT-DPU_CTL_SPLIT_DISPLAY-from-acti.patch
-0008-drm-msm-dpu-uncap-intf-num-limit.patch
-0009-drm-msm-dsi-Add-support-for-DSI-2.5.1.patch
-0010-drm-msm-dsi-add-support-for-DSI-PHY-on-SC8280XP.patch
-0011-arm64-dts-qcom-sx8280xp-Add-dsi-node-for-SC8280XP.patch
-0012-arm64-dts-qcom-sx8280xp-add-refgen-regulator.patch
 0013-arm64-dts-qcom-sc8280xp-add-MDSS-registers-interconn.patch
 0014-arm64-dts-qcom-add-the-slpi-node-for-sc8280xp.patch
-0015-firmware-qcom-uefisecapp-add-Huawei-Matebook-E-GO.patch
-0016-arm64-dts-qcom-Add-support-for-Huawei-Matebook-E-Go-.patch
 )
 
 _patch_list_sha256sums=(
 798a05ea08755422a85a75d0eb88de268af4ad76589f9f17232911eb791573c5
-93df8188996451e8a14ff1f38cf18e28b71e9c70549e27b54f93e9321072b108
-0b6e50ba23dd4f9f7d159e56ef92fd65d8490e351387f880f384e995eebe4691
-31be29393e04ef80a7ddeb6395f00402c90e446265b2b81ea010b7869337dd5d
-694ae27d0348f6562d592d2481e5f81828e11bc723c1dd53cc09b622595d67cb
-1c210b6ef50fc20c9f76cd5de2a7dc9e3b301dc0aab637ff6cf408da117cbe92
-32ad4d7c9084cc11604621879b07a1c7b3f5da09aa854c7e6f7f4e66ae3ab512
-120305412f40b66fa06b7a883f5d73531bedb82f751e43365af2d2743d2540f7
-f2ca6e74cf1c9ed65eb68ae7c0e242c4e4277d118be465ad5f2ee7a9d74e6924
-a78055b07fed6bb53ec8c2a6ca5f54f4adc60afa0d623d2a9e2377e531bf3926
-4e07c5b271c5d4948137839440a380e5d7123f330167070ffb89603e3accff64
-188245e8115f0e79bc6b65c66c833229c0976f7bedbbe70e04debc97d2797cd6
 d6e473571cd9fd214e5c177efc6820015225faf46f3567763f2f69c0af2abd08
 cb6dd640354a85149190a05b9404c0869114a6873fcf9f5869a64e0dadc76085
-2d5ac92500450c884bc94b6f54d64269c21dc924464b48c1be154de73bb3320e
-3a522391fd53f545deb4e56af872dfe0709629ccdf23d8f787d8d670a924be37
 )
 
 source=(
-  config # dirty, need clean
+  config
   linux-gaokun3.preset
   mkinitcpio-gaokun3.conf
   sc8280xp-huawei-gaokun3.dts
+  sc8280xp-huawei-gaokun3-camera.dtsi
   update-grub
 )
 sha256sums=(
-  '8d4f7dc9ac18eaa5706fee1537e16dc773a2f358305802ca3b0c37ecd27f22c5'
+  '9d21526a1a2b8c50bf8fae233a444207424ad3dd28c5566a15b6fd4571930324'
   '53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d'
   '739469d0083cd08f685870f5ae832546243cb97d0843b70b76867485e6502a9f'
-  '754cae9bb18ff65b18eb868c1112b8486a621e05775a44ec6f7ef0b5835a5bae'
+  'afef7e0d1e355ca6a7c403d53611d1f9b3db2ea5eac000e45c1c47613c3e8872'
+  'daffd3bdd3de87d454954eaa471ff8bcfa321e50cdb82a4452226b17c698ebf2'
   '3bb0d75940d7ff605f412608bc4d83c08938d0c52c705ed2bc5b265f084bea29'
 )
 
@@ -108,17 +88,14 @@ prepare() {
   git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
   cd $_srcname
   git apply $srcdir/00*patch # Not using git am to avoid setting git identity
-  rm -rf .git # or our kernel name with the hash tag
-  cp $srcdir/sc8280xp-huawei-gaokun3.dts arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts
-
-  echo "Setting version..."
-  echo "${pkgbase#linux}" > localversion.10-pkgname
-  echo "-$pkgrel" > localversion.20-pkgrel
+  rm -rf .git # to avoid getting our kernel name polluted with the hash tag or dirty or +
+  cp $srcdir/sc8280xp-huawei-gaokun3*.dts* arch/arm64/boot/dts/qcom/
 
   # when we repeat build something
   rm scripts/kconfig/conf scripts/mod/modpost scripts/mod/mk_elfconfig \
      scripts/dtc/dtc scripts/dtc/fdtoverlay scripts/basic/fixdep \
-     scripts/asn1_compiler scripts/kallsyms scripts/sorttable || :
+     scripts/asn1_compiler scripts/kallsyms scripts/sorttable \
+     scripts/kconfig/mconf || :
 
   echo "Setting config..."
   cp $srcdir/config .config

@@ -20,6 +20,7 @@
 
 #include "sc8280xp.dtsi"
 #include "sc8280xp-pmics.dtsi"
+#include "sc8280xp-huawei-gaokun3-camera.dtsi"
 
 / {
 	chassis-type = "tablet";
@@ -30,7 +31,7 @@
 		i2c4 = &i2c4;
 		i2c15 = &i2c15;
 		serial0 = &uart2;
-//		serial1 = &uart17;
+		serial1 = &uart17;
 	};
 
 	chosen {
@@ -721,7 +722,7 @@
 		compatible = "himax,hx83121a";
 		reg = <0>;
 
-		pinctrl-0 = <&disp_reset_n>;
+		pinctrl-0 = <&disp_reset_n>, <&mdp_vsync_active>;
 		pinctrl-names = "default";
 
 		reset-gpios = <&tlmm 38 GPIO_ACTIVE_LOW>;
@@ -1030,7 +1031,7 @@
 
 &sound {
 	compatible = "qcom,sc8280xp-sndcard";
-	model = "SC8280XP-HUAWEI-MATEBOOKEGO";
+	model = "SC8280XP-HUAWEI-GAOKUN3";
 	audio-routing = "SpkrLeft IN", "WSA_SPK1 OUT",
 			"SpkrRight IN", "WSA_SPK2 OUT",
 			"IN1_HPHL", "HPHL_OUT",
@@ -1183,13 +1184,11 @@
 	};
 };
 
-/*
 &uart17 {
     compatible = "qcom,geni-debug-uart";
 
     status = "okay";
 };
-*/
 
 &usb_0 {
 	dr_mode = "host";
@@ -1363,7 +1362,7 @@
 
 &tlmm {
 
-	gpio-reserved-ranges = <70 2>, <74 6>, <83 4>, <125 2>, <128 2>, <154 4>;
+	gpio-reserved-ranges = <70 2>, <74 6>, <83 4>, <125 2>, <128 2>;
 
 	bt_default: bt-default-state {
 		hstp-bt-en-pins {
@@ -1400,6 +1399,13 @@
 		function = "qup15";
 		drive-strength = <2>;
 		bias-pull-up;
+	};
+
+	mdp_vsync_active: mdss-te-state {
+		pins = "gpio8";
+		function = "mdp_vsync";
+		drive-strength = <2>;
+		bias-disable;
 	};
 
 	mode_pin_active: mode-pin-state {
