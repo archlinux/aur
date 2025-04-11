@@ -1,0 +1,4 @@
+[matcha-gtk-theme]
+source = "git"
+git = "https://github.com/vinceliuice/Matcha-gtk-theme.git"
+exclude_regex = "v2019.*"
