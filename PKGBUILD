@@ -6,7 +6,7 @@ pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=1.4.4.r0.g5d39bc0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -65,7 +65,7 @@ package() {
     LICENSE
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     {CHANGELOG,README}.rst SECURITY.md
-  cp -vfax examples "$pkgdir/usr/share/doc/"
+  cp -vfax examples "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # eof
