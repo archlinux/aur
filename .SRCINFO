@@ -6,13 +6,7 @@ pkgbase = gnome-shell-extension-ddterm
 	install = gnome-shell-extension-ddterm.install
 	arch = any
 	license = GPL-3.0-or-later
-	checkdepends = gnome-shell<=1:48.99
-	checkdepends = vte3
-	checkdepends = libhandy
-	checkdepends = python-pytest
-	checkdepends = python-gobject
-	checkdepends = wl-clipboard
-	makedepends = jq
+	checkdepends = jq
 	makedepends = meson
 	makedepends = git
 	makedepends = gtk4
@@ -24,6 +18,8 @@ pkgbase = gnome-shell-extension-ddterm
 	sha256sums = 43653f7cb26b1d5d824cbf4958b510cc2543cb0fd2adca3e80f9d0542ada1404
 
 pkgname = gnome-shell-extension-ddterm
+	depends = gjs
+	depends = gtk3
 	depends = gnome-shell<=1:48.99
 	depends = vte3
 	depends = libhandy
