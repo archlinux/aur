@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="BitTorrent client ⚡. For mobile, desktop & server.(Prebuilt version)"
 arch=(
@@ -17,6 +17,7 @@ depends=(
     'curl'
     'gtk3'
     'openssl'
+    'mpv'
 )
 makedepends=(
     'gendesk'
@@ -31,15 +32,15 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.zip")
-sha256sums=('710f05cb6868daefc69ce9f974eafa4cef7f956cecc39d54b21d2a22a87f832e'
+sha256sums=('8310a77ea2a7bbb3fdfeba4b073d59cc54b8e40d553ec4553d0bd668cc4b931a'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('e64b6cebebded3cd1bcf2cc2dae318f4367da2c38c72b20347622fa3bb83eea2')
-sha256sums_x86_64=('947e6dfae870f886d958605f3bebf96a9a68cd491bb0dac4bb8fc4f908ed463b')
+sha256sums_aarch64=('f09e959715f56796105f4dabb05587045d240ddb45eefe49dc4f58316b0d79e4')
+sha256sums_x86_64=('e9469e9a1bc45e0bbb7f527c6c6da7b71c91042af755e3b7a94ec2b08a6c254d')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-bin}"
 }
 package() {
