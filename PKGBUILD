@@ -4,7 +4,7 @@ pkgver=1.0.3
 _electronversion=25
 pkgrel=1
 pkgdesc="An x86 emulator/VM by Qrodex. Or a GUI wrapper for the v86-module.(Prebuilt version.Use system-wide electron)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/Qrodex/venom86"
 license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
