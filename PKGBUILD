@@ -3,7 +3,7 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.45.3
+pkgver=0.45.4
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
@@ -26,7 +26,21 @@ depends=(
     "qpdf"
     "tesseract-data-eng"
 )
-optdepends=("jbig2enc: for certain OCR functionality")
+optdepends=("jbig2enc: for certain OCR functionality"
+            "tesseract-data-chi_sim: Chinese Simplified language OCR"
+            "tesseract-data-deu: German language OCR"
+            "tesseract-data-fra: French language OCR"
+            "tesseract-data-por: Portuguese language OCR"
+            "noto-fonts: google noto ttf fonts"
+            "noto-fonts-cjk: google noto Chinese/Japanese/Korean fonts"
+            "noto-fonts-extra: google noto ttf fonts additional variants"
+            "terminus-font: monospace bitmap font"
+            "ttf-dejavu: based on the Bitstream Vera Fonts with a wider range of characters"
+            "ttf-liberation: which aims at metric compatibility with Arial, Times New Roman, and Courier New"
+            "ttf-libertinus: extended math fonts support"
+            "ttf-ms-win11-auto: Microsoft windows 11 fonts"
+            "ttf-ms-win11-auto-zh_cn: Microsoft windows 11 Chinese Simplified fonts"
+            "ttf-wps-fonts: WPS office fonts")
 source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_reponame}-with-login.jar"
         "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.env"
@@ -34,26 +48,14 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('555544c173690a7fb57baa1dd4171687b8abf8d56257c2d7a3c913f556583606'
-            'e5c1139d024b657d6c28eba020aafa2795f1edcdde8fa3a3e9920f566e6dcbaa'
+sha256sums=('9c535fc5a44fd1de035028b7569c13cb4e185882c493e90eb18b6fc332cb45f9'
+            '7fb7725c135cf9888fee32872b663d609225aaf6a43b2ddb8703b3b5428385b6'
             'd395992889fdf60de430509cd5866fc4606548aa1ba8f134b7e6bd4e29f293c9'
-            'd717c3d0d7165f33d12e6230e2ad87f42d2fc26debe3c2a5c516d2e754c93203'
-            'cc15280066c4e188edb30596fb02eabf46e5335642a4202366408cc36208e8f0'
+            '815d0d2c05daf40384a27413fba1dbd9d7db749a98b881d3ed113c164a83e833'
+            '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
             'efdf233d59cf82bc331e3ea85e912e7f534ed0d821674e232e3fc827f699ef43'
             '554fbc114c32f4b81fe3b8199e936881e26b5649098c495acfd4cd77eefd2612')
 noextract=("${_pkgname}-${pkgver}.jar")
-
-_langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces chi_sim chi_sim_vert
-        chi_tra chi_tra_vert chr cos cym dan dan_frak deu deu_frak div dzo ell enm epo equ
-        est eus fao fas fil fin fra frk frm fry gla gle glg grc guj hat heb  hin hrv hun hye
-        iku ind isl ita ita_old jav jpn jpn_vert kan kat kat_old kaz khm kir kmr kor kor_vert
-        lao lat lav lit ltz mal mar mkd mlt mon mri msa mya nep nld nor oci ori osd pan pol
-        por pus que ron rus san sin slk slk_frak slv snd spa spa_old sqi srp srp_latn sun swa
-        swe syr tam tat tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
-
-for lang in ${_langs[@]}; do
-    optdepends+=("tesseract-data-${lang}: for ${lang} language OCR")
-done
 
 package() {
     install -Dm644 "${_pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${_pkgname}.jar"
@@ -63,6 +65,10 @@ package() {
     install -Dm644 "${_pkgname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
     install -Dm644 "${_pkgname}.tmpfiles"      "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
 
-    cd "${_reponame}-${pkgver}/src/main/resources"
+    cd "${_reponame}-${pkgver}"
+    install -Dm644 LICENSE                  -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -Dm644 *.md                     -t "${pkgdir}/usr/share/doc/${_pkgname}"
+
+    cd "src/main/resources"
     install -Dm644 static/fonts/*.ttf       -t "${pkgdir}/usr/share/fonts/${_pkgname}"
 }
