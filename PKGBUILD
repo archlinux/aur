@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus-bin
 _pkgname=Altus
-pkgver=5.6.2
-_electronversion=28
+pkgver=5.7.0
+_electronversion=35
 pkgrel=1
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support.Prebuilt version.Use system-wide electron."
 arch=('x86_64')
@@ -29,7 +29,7 @@ options=(
     '!strip'
     '!emptydirs'
 )
-sha256sums=('50291230a3dadbaa5b8080b703869377420933142a358bd97a2f4c8844de6aa6'
+sha256sums=('ef998d1171fe0bf811a6dab70b1d8651d9b7fa0a036c8bc7ce9625d2d5375a85'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -52,6 +52,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
