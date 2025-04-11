@@ -2,14 +2,14 @@
 pkgname=('hyprland-plugin-borders-plus-plus' 'hyprland-plugin-csgo-vulkan-fix' 'hyprland-plugin-hyprbars' 'hyprland-plugin-hyprexpo' 'hyprland-plugin-hyprtrails' 'hyprland-plugin-hyprwinwrap')
 pkgbase='hyprland-plugins'
 pkgver='0.48.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Official plugins for Hyprland'
 arch=('x86_64')
 url='https://github.com/hyprwm/hyprland-plugins'
 license=('BSD')
 depends=('hyprland=0.48.1')
 makedepends=('git' 'hyprland')
-source=("$pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git#commit=6dca4ece21864e329394b81cfc767778089097e2")
+source=("$pkgbase::git+https://github.com/hyprwm/hyprland-plugins.git#commit=1f332c09a2382cb23da0f69a6f504f8b33433831")
 sha256sums=('SKIP')
 
 build() {
