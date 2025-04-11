@@ -1,7 +1,7 @@
 # Maintainer: Joe Maples <joe@maples.dev>
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-cozette-ttf
-_cozettever=1.26.0
+_cozettever=1.28.0
 _nfver=3.3.0
 pkgver="${_cozettever}_${_nfver}"
 pkgrel=1
@@ -15,7 +15,7 @@ source=(
   "https://github.com/ryanoasis/nerd-fonts/releases/download/v$_nfver/FontPatcher.zip"
 )
 sha256sums=(
-  '946a5c368a68c463f5d7b7ef5786f488e8eb5059769e650650573614be6152dc'
+  'c6213c91a492735c848fdecfaa0c52de35cce87c7f1ec17b79d5b9b8907ce828'
   'ce4284e7d1a8816d29bb3a358e33a44e55804792e7925ed0022ba1b3ab1a9d34'
 )
 
