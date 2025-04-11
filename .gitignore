@@ -1,0 +1,6 @@
+v*.tar.gz
+
+pkg
+src
+
+librecal-gui-*.pkg.tar.zst
