@@ -1,0 +1,13 @@
+pkgbase = yaffshiv-git
+	pkgdesc = A simple YAFFS file system parser and extractor
+	pkgver = r45.f6f0ef7
+	pkgrel = 1
+	url = https://github.com/devttys0/yaffshiv
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/devttys0/yaffshiv
+	sha256sums = SKIP
+
+pkgname = yaffshiv-git
