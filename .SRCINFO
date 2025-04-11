@@ -1,8 +1,8 @@
 pkgbase = vislcg3
 	pkgdesc = Compiler and parser for Constraint Grammar (CG), a paradigm for robust, rule-based Natural Language Parsing.
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
-	url = https://visl.sdu.dk/cg3.html
+	url = https://edu.visl.dk/cg3.html
 	install = vislcg3.install
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vislcg3
 	makedepends = cmake
 	depends = icu
 	optdepends = perl: cg3-autobin.pl auto-compile-and-run wrapper
-	source = vislcg3-1.5.0.tar.gz::https://github.com/GrammarSoft/cg3/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 7af5c844a082830d137d06e7988a90c8c474b055c7e444ff1cfdbcc996cdb9d9
+	source = vislcg3-1.5.1.tar.gz::https://github.com/GrammarSoft/cg3/archive/refs/tags/v1.5.1.tar.gz
+	sha256sums = d9a2af99e0bb28498650753961179923e1d909d256e9489fca34847fc6181b45
 
 pkgname = vislcg3
