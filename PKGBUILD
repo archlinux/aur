@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.5.r90.g647004cd5d7
+pkgver=10.5.r123.g813f921a357
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.4-staging.patch
+  ntsync-10.5-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
@@ -31,7 +31,7 @@ sha512sums=(
   'SKIP'
   '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
   'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-  '9351377f0d7aa2e4fef7571e34eec68e2b6a5373b23d22134fa1fa1fde84293c684497a632ac712ef6b57362a89ad993372b51d6a9e4eeef4466475a07cf178f'
+  '27829436a3fb1df8bcf267985d0d25387c768f9a08103cdbd8b3d234b163f028295a4367f4bfeeb0a7538f3ace8a6f2148ef3c2b485d8bc21a1161f0d736b8bc'
   '55771f934e86b0c23bc3740c98da732c1d9b8cbf0f3452aec1e4f1b46d8253c5700bbcf9e778a782247901a3a94315aea7fd66d8a90729ec5b2f032fb06ad0fc'
   '5b8e10e9087cae45421ce31056d63f3af53b7bb1d3e8233673ac954ebeb3abb066ece51dd7f5762e3d95b5aacfa5b2f07ff0a14686e8880b97b8dfc3bb2e15f8'
   '270616bad6cc9f7c11b9a3f72a43568b233921dc30438fc0e42a00c831795238b6d144f352c8c23f261ef96f0248f62cf9f976053f7006824f7ba27191671ae4'
@@ -43,7 +43,6 @@ sha512sums=(
   'f82afc38194a456b22475e3f74a19e960ccbc39e641e0c8bbe9fa5db2249f0eb07f2c0e82b7e5b823cfb308037074ed4990ece18fdcef81f368d6e58bcc04be7'
   '4fa2226b9e1d40f6fc1022a1c10b3a9693e8b735924039953f8268669e9670d5c5f547b85c8d6a38b398940feb186e94462c60974b5865932cab2bcf2a1c91e0'
 )
-
 pkgdesc="Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)"
 url="https://github.com/ventureoo/PKGBUILDs"
 arch=(x86_64)
@@ -116,8 +115,8 @@ prepare() {
     -W server-Signal_Thread \
     -W eventfd_synchronization
 
-  # NTSync for Wine 10.4
-  patch -Np1 -i "${srcdir}/ntsync-10.4-staging.patch"
+  # NTSync for Wine 10.5
+  patch -Np1 -i "${srcdir}/ntsync-10.5-staging.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"
