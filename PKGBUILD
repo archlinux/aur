@@ -14,7 +14,7 @@ provides=('pororoca')
 conflicts=('pororoca')
 options=(!strip)
 source=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/alexandrehtrb/Pororoca/releases/download/${pkgver}${_subver}/${_app_name}_${pkgver}_amd64.deb")
-sha256sums=('09896a812a902dcf96b184e1f56e653dc718c31a6a05a8edc403d5ecb1b5f1ef')
+sha256sums=('b7bcc42f6052eb30496282d35585d27e3b53749c3415a8c6dfa44879b4c22c4e')
 
 package() {
     bsdtar -O -xf *.deb data.tar.zst | bsdtar -C "${pkgdir}" -xJf -
