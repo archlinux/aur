@@ -1,20 +1,22 @@
 pkgbase = zig-git
-	pkgdesc = a programming language prioritizing robustness, optimality, and clarity
-	pkgver = 0.11.0.r3596.gfbb38a7682
+	pkgdesc = General-purpose programming language and toolchain
+	pkgver = 0.14.0.git+a5f4107d3e
 	pkgrel = 1
-	url = https://ziglang.org
-	arch = i686
+	url = https://ziglang.org/
 	arch = x86_64
-	arch = aarch64
 	license = MIT
+	checkdepends = lib32-glibc
 	makedepends = cmake
-	makedepends = git
+	makedepends = llvm
 	depends = clang
-	depends = llvm
 	depends = lld
-	provides = zig
+	depends = llvm-libs
 	conflicts = zig
-	source = git+https://github.com/ziglang/zig.git
-	md5sums = SKIP
+	replaces = zig
+	options = !lto
+	source = git+https://github.com/ziglang/zig#branch=0.14.x
+	source = skip-localhost-test.patch
+	sha256sums = SKIP
+	sha256sums = eeb5f0f72035c52bf558ffc77a171a3ddf93eac7d663ef0c82826007763717a8
 
 pkgname = zig-git
