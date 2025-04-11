@@ -31,6 +31,6 @@ package() {
   icon_sizes=(16 32 48 64 128 256)
   for size in "${icon_sizes[@]}"; do
     install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    magick "${srcdir}/lanshare-icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/lanshare.png"
+    magick "${srcdir}/logo.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/lanshare.png"
   done
 }
