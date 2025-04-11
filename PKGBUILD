@@ -3,7 +3,7 @@
 
 _name=NeuralRack
 pkgname=${_name,,}-git
-pkgver=r165.47ef5cf
+pkgver=r168.db10baf
 pkgrel=1
 pkgdesc="Neural model and impulse response file loader"
 url="https://github.com/brummer10/$_name"
