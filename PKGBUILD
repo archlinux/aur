@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer <contact@madeofmagicandwires.online>
 pkgname=pq-cli
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Progress Quest: the CLI edition"
 arch=('any')
 url="https://github.com/rr-/pq-cli"
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${_COMMIT}"
+  cd "${srcdir}/${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_COMMIT}"
+  cd "${srcdir}/${pkgname}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 

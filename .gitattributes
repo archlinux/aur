@@ -1,2 +1,2 @@
 PKGBUILD filter=pkgver
-.SRCINFO filter=pkgver
+./.SRCINFO filter=pkgver
