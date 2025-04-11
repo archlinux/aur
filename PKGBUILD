@@ -8,21 +8,33 @@
 # Contributor: AscendLiu <ascendliu@qq.com>
 pkgname=libftd2xx
 pkgver=1.4.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('x86_64')
 url="http://www.ftdichip.com/"
 license=('Proprietary')
 depends=('glibc')
 options=(staticlibs)
-source=(55-ft2232.rules)
-sha256sums=('5fb3f1642c75d6fcda589e2d86b1dbfc7b84a9f63ebef135968a27641203065d')
+source=(55-ft2232.rules
+        ftd2xx-config.cmake.in)
+sha256sums=('f48e0c36821bebfcf791da0831ce7e10965c5a537e222e54f92cb0b2d4497cda'
+        'SKIP')
 sha256sums_x86_64=('e260a4594a313583b87bf230c79cec9d46f11db6dcfd7c7d4f963279703214d3')
 source_x86_64=("https://ftdichip.com/wp-content/uploads/2025/03/libftd2xx-linux-x86_64-1.4.33.tgz")
 
+prepare() {
+    # Generate the final CMake configuration file
+    sed -e "s|@PROJECT_VERSION@|${pkgver}|g" \
+        -e "s|@PACKAGE_LIBRARY_FILE@|/usr/lib/${pkgname}.so|g" \
+        -e "s|@PACKAGE_LIBRARY_STATIC_FILE@|/usr/lib/${pkgname}.a|g" \
+        -e "s|@PACKAGE_INCLUDE_DIR@|/usr/include|g" \
+        ftd2xx-config.cmake.in > ftd2xx-config.cmake
+}
+
+
 package() {
         # Make required dirs
-        mkdir -p ${pkgdir}/usr/{lib,include}
+        mkdir -p ${pkgdir}/usr/{lib,include,lib/cmake/ftd2xx}
 
         # Install versioned so file as well as static library
         install -Dm755 ${srcdir}/linux-x86_64/${pkgname}.so ${pkgdir}/usr/lib/${pkgname}.so
@@ -37,4 +49,7 @@ package() {
 
         # Install udev rules
         install -D -m644 "${srcdir}"/55-ft2232.rules "${pkgdir}"/etc/udev/rules.d/55-ft2232.rules
+
+        # Install CMake config files
+        install -Dm644 "${srcdir}"/ftd2xx-config.cmake "${pkgdir}"/usr/lib/cmake/ftd2xx/ftd2xx-config.cmake
 }

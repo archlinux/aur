@@ -1,0 +1,32 @@
+include(CMakePackageConfigHelpers)
+
+include(CMakeFindDependencyMacro)
+
+set(FTD2XX_VERSION @PROJECT_VERSION@)
+
+option(FTD2XX_USE_STATIC "Link ftd2xx statically" OFF)
+
+if(FTD2XX_USE_STATIC)
+    add_library(ftd2xx::ftd2xx STATIC IMPORTED)
+    set_target_properties(ftd2xx::ftd2xx PROPERTIES
+        IMPORTED_LOCATION "@PACKAGE_LIBRARY_STATIC_FILE@"
+        INTERFACE_INCLUDE_DIRECTORIES "@PACKAGE_INCLUDE_DIR@"
+        VERSION ${FTD2XX_VERSION}
+    )
+    message(STATUS "ftd2xx: Using static library")
+else()
+    add_library(ftd2xx::ftd2xx SHARED IMPORTED)
+    set_target_properties(ftd2xx::ftd2xx PROPERTIES
+        IMPORTED_LOCATION "@PACKAGE_LIBRARY_FILE@"
+        INTERFACE_INCLUDE_DIRECTORIES "@PACKAGE_INCLUDE_DIR@"
+        VERSION ${FTD2XX_VERSION}
+    )
+    message(STATUS "ftd2xx: Using shared library")
+endif()
+
+# Install configuration
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/ftd2xx-config-version.cmake"
+    VERSION ${FTD2XX_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
