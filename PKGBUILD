@@ -25,7 +25,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo build --release
+    cargo build --release --all-features
+}
+
+check() {
+    cd "$srcdir/$_pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
