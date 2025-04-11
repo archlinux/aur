@@ -3,7 +3,7 @@
 
 pkgname=dae
 pkgver=1.0.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Linux lightweight and high-performance transparent proxy solution based on eBPF."
 arch=('x86_64' 'aarch64')
 url="https://github.com/daeuniverse/${pkgname}"
@@ -26,7 +26,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export BUILD_ARGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export BUILD_ARGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	make VERSION="${pkgver}"
 }
 
