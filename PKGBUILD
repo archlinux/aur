@@ -3,20 +3,20 @@
 
 _crate="hickory-dns"
 pkgname="hickory-dns-git"
-pkgver=0.25.0.a4.r115.g9aaad40f7
+pkgver=0.25.1.r117.gc001f67f2
 pkgrel=1
 pkgdesc='Hickory DNS is a safe and secure DNS server with DNSSEC support. Eventually t...'
 url='https://hickory-dns.org/'
 license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cargo-auditable')
 replaces=('trust-dns-git')
 conflicts=('hickory-dns')
 provides=('hickory-dns')
 
 source=("$_crate::git+https://github.com/$_crate/$_crate"
-		'hickory-dns.service')
+        'hickory-dns.service')
 sha512sums=('SKIP'
             'fc985e788258f918f7239d207418b1c68a110cff3722682b812b34548727e077f71745c07f28df28999523c80a54480a688fdf2cbf7c1ffa068cce24c3f49baf')
 
@@ -38,11 +38,26 @@ build() {
 	
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
 	
-	cargo build \
+	cargo auditable build \
 		-p "$_crate" \
 		--locked \
-		--features 'dns-over-https-rustls,dns-over-h3,dns-over-quic' \
+		--features 'h3-ring,https-ring,quic-ring,tls-ring,dnssec-ring,rustls-platform-verifier,blocklist,recursor,resolver' \
+		--release
+}
+
+check() {
+	cd "$srcdir/$_crate"
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=" -ffat-lto-objects"
+
+	cargo test \
+		-p "$_crate" \
+		--locked \
+		--features 'h3-ring,https-ring,quic-ring,tls-ring,dnssec-ring,rustls-platform-verifier,blocklist,recursor,resolver' \
 		--release
 }
 
