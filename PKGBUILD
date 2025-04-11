@@ -41,13 +41,13 @@ options=('!strip')
 package() {
   cd $pkgdir
   tar xf $srcdir/data.tar.gz
-  echo "Speed Dreams wants /usr/lib/librhash.so.0, which doesn't seem to exist when rhash is installed on Arch."
-  if [ ! -f /usr/lib/librhash.so.0 ]; then
-    echo "Symlinking /usr/lib/librhash.so /usr/lib/librhash.so.0"
-    ln -s /usr/lib/librhash.so $pkgdir/usr/lib/librhash.so.0
-  else
-    echo "It seems like you already have it though! "
-  fi
+  #echo "Speed Dreams wants /usr/lib/librhash.so.0, which doesn't seem to exist when rhash is installed on Arch."
+  #if [ ! -f /usr/lib/librhash.so.0 ]; then
+  echo "Symlinking /usr/lib/librhash.so /usr/lib/librhash.so.0"
+  ln -sfv /usr/lib/librhash.so $pkgdir/usr/lib/librhash.so.0
+  #else
+  #  echo "It seems like you already have it though! "
+  #fi
   ln -s /usr/lib/x86_64-linux-gnu/libsolid.so $pkgdir/usr/lib/
   ln -s /usr/lib/x86_64-linux-gnu/libbroad.so $pkgdir/usr/lib/
   ln -s /usr/lib/x86_64-linux-gnu/libmoto.so $pkgdir/usr/lib
