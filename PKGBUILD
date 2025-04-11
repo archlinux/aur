@@ -5,7 +5,7 @@ pkgname=flashpoint-bin
 _pkgname=Flashpoint
 pkgver=14.0.1
 _electronversion=19
-pkgrel=2
+pkgrel=3
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Infinity Edition.(Prebuilt version)"
 arch=('x86_64')
 url="https://flashpointarchive.org"
@@ -37,9 +37,11 @@ options=(
 noextract=("${pkgname%-bin}-${pkgver}.7z")
 source=(
     "${pkgname%-bin}-${pkgver}.7z::https://download.unstable.life/upload/fp${pkgver}_lin_main_20250222.7z"
+    "${pkgname%-bin}.png::https://raw.githubusercontent.com/FlashpointProject/Flashpoint-Website/master/images/icon.png"
     "${pkgname%-bin}.desktop"
 )
 sha256sums=('bab843b8422da500056698819aa6752804eedb8ba130380403e4f49532d8537e'
+            '942e3a0c70833fadb25b3bf44503e7590d976f048d04fbe29ae4fc35dbcd5037'
             '8784a3536919f917c9848fc577a9ea7649fdd709cd543f4b127a7057fc3f2e41')
 prepare(){
     install -Dm755 -d "${srcdir}/opt/${pkgname%-bin}"
