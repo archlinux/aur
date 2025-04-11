@@ -1,5 +1,4 @@
 [python-mecab]
-source="github-graphql"
-github="SamuraiT/mecab-python3"
-use_max_tag=true
+source="pypi"
+pypi="mecab-python3"
 prefix="v"
