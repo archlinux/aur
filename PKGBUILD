@@ -1,7 +1,7 @@
 # Maintainer: laggykiller <chaudominic2 at gmail dot com>
 pkgname=python-apngasm-python
 _name=apngasm_python
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A nanobind python API for apngasm, a tool/library for APNG assembly & disassembly with compression support.'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'python-pillow: allow pillow related functions'
     'python-numpy: allow pillow and numpy related functions')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('9f801237c2865832fab223c432149cb0f6062746b46683db76aecb951c34f731')
+sha256sums=('d45fcad4e6f6a2fb6c5e6e689b87bf2c8fe56b63c37efe65b3bd3e134dfab95d')
 
 build() {
     cd $_name-$pkgver
