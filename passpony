@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+
+import argparse
+import secrets
+import math
+import sys
+import os
+
+version = "1.0.0"
+
+default_wordlist = "/usr/share/passpony/clean_wordlist.txt"
+
+def load_wordlist(path):
+    with open(path, 'r') as f:
+        words = [line.strip() for line in f if line.strip()]
+    return words
+
+def generate_passphrase(words, count, separator):
+    return separator.join(secrets.choice(words) for _ in range(count))
+
+def calculate_entropy(wordlist_size, num_words):
+    return round(num_words * math.log2(wordlist_size), 2)
+
+def copy_to_clipboard(text):
+    try:
+        import pyperclip
+        pyperclip.copy(text)
+        print("📋 Copied to clipboard!")
+    except ImportError:
+        print("⚠️ pyperclip not installed. Skipping clipboard.")
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="🐎 Passpony: A cute, secure Diceware-style passphrase generator"
+    )
+    parser.add_argument('-n', '--words', type=int, default=4, help='Number of words (default: 4)')
+    parser.add_argument('-s', '--sep', default=' ', help='Separator between words (default: space)')
+    parser.add_argument('-w', '--wordlist', default=default_wordlist, help='Path to wordlist')
+    parser.add_argument('-c', '--copy', action='store_true', help='Copy result to clipboard')
+    parser.add_argument('-e', '--entropy', action='store_true', help='Show entropy information')
+    parser.add_argument('-q', '--quiet', action='store_true', help='Only output the passphrase')
+    parser.add_argument('-p', '--private', action='store_true', help='Hide the passphrase (only useful in combination with --copy / -c)')
+    parser.add_argument('-v', '--version', action='version', version=f'Passpony {version} 🐴')
+    
+    args = parser.parse_args()
+
+    if not os.path.exists(args.wordlist):
+        print(f"❌ Wordlist not found: {args.wordlist}")
+        sys.exit(1)
+
+    words = load_wordlist(args.wordlist)
+    passphrase = generate_passphrase(words, args.words, args.sep)
+
+    if len(words) < 1000:
+        print("⚠️ Warning: wordlist seems small, entropy may be weak.")
+
+    if not args.private:
+        if not args.quiet:
+            print(f"🐴 Your passphrase:\n   {passphrase}")
+        else:
+            print(passphrase)
+
+    if args.entropy:
+        entropy = calculate_entropy(len(words), args.words)
+        print(f"🔐 Entropy: ~{entropy} bits")
+
+    if args.copy:
+        copy_to_clipboard(passphrase)
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,13 @@
+pkgbase = passpony
+	pkgdesc = Cute and secure Diceware-style passphrase generator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/symphonic-navigator/passpony
+	install = passpony.install
+	arch = any
+	license = GPL3
+	depends = python
+	source = passpony-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = passpony

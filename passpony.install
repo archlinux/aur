@@ -1,0 +1,4 @@
+post_install() {
+  echo "🔐 Passpony installed! Run with 'passpony'."
+  echo "💡 For clipboard support, install python-pyperclip."
+}
