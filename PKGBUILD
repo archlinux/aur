@@ -2,7 +2,7 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=7.0.7
+pkgver=7.0.8
 pkgrel=0
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64' 'armv7' 'aarch64')
@@ -12,7 +12,7 @@ depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialpor
 makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry-git' 'amiberry-lite')
-source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=135d230c5514a7aa680536dbad27c98758446bf2')
+source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=780343f5c96051753ddfd9c54a5b51f3de89ac5f')
 sha256sums=('SKIP')
 options=('!lto')
 
@@ -30,7 +30,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install ${pkgname}/build
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications/"
-  
+
 # adding desktop entry
   echo "[Desktop Entry]" > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   echo "Type=Application" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
@@ -40,5 +40,5 @@ package() {
   echo "Icon=/usr/share/amiberry/data/amiberry.png" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   echo "Exec=/usr/bin/${pkgname}" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   echo "Terminal=false" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  chmod 644 "${pkgdir}/usr/share/applications/${pkgname}.desktop" 
+  chmod 644 "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
