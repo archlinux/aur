@@ -3,7 +3,7 @@
 
 _target=arm-linux-gnueabihf
 pkgname=${_target}-gdb
-pkgver=15.2
+pkgver=16.2
 pkgrel=1
 pkgdesc='The GNU Debugger'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(boost expat gdb-common glibc gmp guile libelf mpfr ncurses python readl
 makedepends=(boost expat gcc glibc gmp guile libelf mpfr ncurses python readline source-highlight xz zstd)
 options=(!emptydirs !strip)
 source=(http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz{,.sig})
-sha256sums=('83350ccd35b5b5a0cba6b334c41294ea968158c573940904f00b92f76345314d'
+sha256sums=('4002cb7f23f45c37c790536a13a720942ce4be0402d929c9085e92f10d480119'
             'SKIP')
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker <brobecker@adacore.com>
 
