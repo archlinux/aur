@@ -5,7 +5,7 @@
 pkgname=matcha-gtk-theme
 _pkgver=2025-04-11
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat design theme for GTK 3, GTK 2 and GNOME Shell"
 arch=('any')
 url="https://vinceliuice.github.io/theme-matcha.html"
@@ -19,7 +19,7 @@ optdepends=(
 options=('!strip')
 install="$pkgname.install"
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/vinceliuice/Matcha-gtk-theme/archive/${_pkgver}.tar.gz")
-sha256sums=('945856e788cc04fc704c9ab7adb75a936a21a51d38c51c25629097da6af4021b')
+sha256sums=('8a3f71a3b9fd4907b28686e228e337d27742018e6dfa8e338326fe77115f5ea7')
 
 prepare() {
   cd "Matcha-gtk-theme-${_pkgver}"
