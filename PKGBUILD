@@ -2,7 +2,7 @@
 # Contributor: Canmi (Canmi21)
 
 pkgname=cassowary-git
-pkgver=r217.424c1e0
+pkgver="0.18.0"
 pkgrel=1
 pkgdesc="🚀 Modern cross-platform HTTP load-testing tool written in Go"
 arch=('x86_64')
@@ -21,11 +21,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/cassowary/cmd"
+  cd "$srcdir/cassowary"
   export CGO_ENABLED=0
-  go build -o cassowary -trimpath -ldflags="-s -w" .
+  go build -o cassowary -trimpath -ldflags="-s -w"
 }
 
 package() {
-  install -Dm755 "$srcdir/cassowary/cmd/cassowary" "$pkgdir/usr/bin/cassowary"
+  install -Dm755 "$srcdir/cassowary/cassowary" "$pkgdir/usr/bin/cassowary"
 }
