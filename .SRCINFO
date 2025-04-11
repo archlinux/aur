@@ -1,0 +1,25 @@
+pkgbase = limine-mkinitcpio-hook
+	pkgdesc = Install kernel for Limine bootloader.
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://gitlab.com/Zesko/limine-entry-tool
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = maven
+	depends = bash
+	depends = grep
+	depends = java-environment>=17
+	depends = limine
+	depends = mkinitcpio
+	depends = efibootmgr
+	optdepends = systemd: bootctl detects ESP path automatically.
+	optdepends = sbctl: signs bootable EFI files for Secure Boot when enabled.
+	optdepends = journalctl-desktop-notification: It notifies you on Desktop when an error occurs.
+	provides = limine-entry-tool
+	conflicts = limine-entry-tool
+	backup = etc/limine-entry-tool.conf
+	source = limine-entry-tool-1.14.0.tar.gz::https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.14.0/limine-entry-tool-1.14.0.tar.gz
+	sha256sums = e2c1d59da4560e85132d65c00b190f21b06e294624271e19f3cd07cf88030cec
+
+pkgname = limine-mkinitcpio-hook
