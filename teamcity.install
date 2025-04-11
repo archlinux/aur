@@ -1,6 +1,6 @@
 post_install() {
   systemd-sysusers teamcity.conf
-  chown -R teamcity /opt/teamcity /var/lib/teamcity
+  chown -R teamcity:teamcity /opt/teamcity /var/lib/teamcity
   echo "If you want to use a different Java, set it in /etc/conf.d/teamcity"
   echo
   echo "To start Teamcity instance:"
@@ -16,5 +16,5 @@ pre_upgrade() {
 
 post_upgrade() {
   systemd-sysusers teamcity.conf
-  chown -R teamcity /opt/teamcity /var/lib/teamcity
+  chown -R teamcity:teamcity /opt/teamcity /var/lib/teamcity
 }

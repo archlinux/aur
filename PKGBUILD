@@ -4,7 +4,7 @@
 # Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=teamcity
-pkgver=2024.12.2
+pkgver=2025.03
 pkgrel=1
 pkgdesc='Continuous integration server from JetBrains'
 arch=('any')
@@ -18,7 +18,7 @@ source=("https://download.jetbrains.com/teamcity/TeamCity-$pkgver.tar.gz"
         'teamcity-sysusers.conf'
         'teamcity-tmpfiles.conf'
         'teamcity.conf')
-sha256sums=('ea6341fa0b5376f0384322e47dbed0a412aff8f8c690ca0528ab63642f8c4db8'
+sha256sums=('d2740fadd556b85f5d5ed3caf0c5a39c7f830a005d45841314c73dc57120c6f7'
             'abe89ea6be4cb54750568f27c2173cd1b46b49b4aac0cc727d3604b1178cd8fb'
             '59e68ab2524e66f7c074ac4215a0449ed9242160946ef3364d378e015525e749'
             'b74128251ac1943ff48956bb2849731423b712d078ec76f1a8959532f0161c91'
