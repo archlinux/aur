@@ -1,0 +1,14 @@
+pkgbase = ghidra-extension-bflt-loader-git
+	pkgdesc = bFLT file loader extension for Ghidra
+	pkgver = r9.63340fe
+	pkgrel = 1
+	url = https://github.com/Baldanos/ghidra-bflt-loader
+	arch = any
+	license = MIT
+	makedepends = gradle
+	depends = ghidra
+	depends = java-environment>=17
+	source = bFLTLoader::git+https://github.com/Baldanos/ghidra-bflt-loader
+	sha256sums = SKIP
+
+pkgname = ghidra-extension-bflt-loader-git
