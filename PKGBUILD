@@ -1,4 +1,4 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
