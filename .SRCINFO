@@ -1,22 +1,23 @@
 pkgbase = icu73
 	pkgdesc = International Components for Unicode library (version 73)
 	pkgver = 73.2
-	pkgrel = 5
-	url = https://icu.unicode.org/
+	pkgrel = 6
+	url = https://icu.unicode.org
 	arch = x86_64
-	license = custom:icu
+	license = LicenseRef-Unicode-3.0
+	license = BSD-2-Clause
+	license = BSD-3-Clause
+	license = NAIST-2003
 	makedepends = python
-	makedepends = clang
-	makedepends = make
-	makedepends = patch
 	depends = gcc-libs
+	depends = glibc
 	depends = sh
-	provides = libicudata.so=73
-	provides = libicui18n.so=73
-	provides = libicuio.so=73
-	provides = libicutest.so=73
-	provides = libicutu.so=73
-	provides = libicuuc.so=73
+	provides = libicudata.so=73-64
+	provides = libicui18n.so=73-64
+	provides = libicuio.so=73-64
+	provides = libicutest.so=73-64
+	provides = libicutu.so=73-64
+	provides = libicuuc.so=73-64
 	conflicts = icu73-bin
 	source = ICU-22512.patch
 	source = https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz
