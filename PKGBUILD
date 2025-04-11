@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/cassowary"
   export CGO_ENABLED=0
-  go build -o cassowary -trimpath -ldflags="-s -w" ./cmd
+  go build -o cassowary -trimpath -ldflags="-s -w" .
 }
 
 package() {
