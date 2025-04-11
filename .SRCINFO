@@ -1,6 +1,6 @@
 pkgbase = yazi-nightly-bin
 	pkgdesc = 💥 Blazing fast terminal file manager written in Rust, based on async I/O.
-	pkgver = 25.3.7.20250317.c5808a0
+	pkgver = 25.4.8.20250411.bef4810
 	pkgrel = 1
 	url = https://yazi-rs.github.io
 	arch = x86_64
@@ -15,13 +15,14 @@ pkgbase = yazi-nightly-bin
 	optdepends = ripgrep: for file content searching
 	optdepends = fzf: for quick file subtree navigation
 	optdepends = zoxide: for historical directories navigation
-	optdepends = imagemagick: for SVG, Font, HEIC, and JPEG XL preview
-	optdepends = xclip: for system clipboard support
-	optdepends = wl-clipboard: for system clipboard support
-	optdepends = xsel: for system clipboard support
+	optdepends = imagemagick: for Font, HEIC, and JPEG XL preview
+	optdepends = resvg: for SVG preview
+	optdepends = xclip: for Linux clipboard support
+	optdepends = wl-clipboard: for Linux clipboard support
+	optdepends = xsel: for Linux clipboard support
 	provides = yazi
 	conflicts = yazi
-	source = yazi-20250317-x86_64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-x86_64-unknown-linux-gnu.zip
+	source = yazi-20250411-x86_64.zip::https://github.com/sxyazi/yazi/releases/download/nightly/yazi-x86_64-unknown-linux-gnu.zip
 	sha256sums = SKIP
 
 pkgname = yazi-nightly-bin
