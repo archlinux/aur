@@ -1,16 +1,23 @@
 pkgbase = zig-git
 	pkgdesc = General-purpose programming language and toolchain
 	pkgver = 0.14.0.git+a5f4107d3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ziglang.org/
 	arch = x86_64
 	license = MIT
 	checkdepends = lib32-glibc
 	makedepends = cmake
-	makedepends = llvm
-	depends = clang
-	depends = lld
-	depends = llvm-libs
+	makedepends = llvm>=19.1
+	depends = clang>=19.1
+	depends = icu
+	depends = libffi
+	depends = libxml2
+	depends = lld>=19.1
+	depends = llvm-libs>=19.1
+	depends = ncurses
+	depends = xz
+	depends = zlib
+	depends = zstd
 	conflicts = zig
 	replaces = zig
 	options = !lto
