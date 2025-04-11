@@ -1,7 +1,7 @@
 pkgbase = python-tifffile
 	pkgdesc = Read and write image data from and to TIFF files
 	pkgver = 2025.3.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cgohlke/tifffile
 	arch = any
 	license = BSD-3-Clause
@@ -15,6 +15,7 @@ pkgbase = python-tifffile
 
 pkgname = python-tifffile
 	depends = python-numpy
+	depends = tk
 	optdepends = python-matplotlib>=3.10.1: required for plotting
 	optdepends = python-imagecodecs>=2025.3.30: required for encoding or decoding LZW, JPEG, etc. compressed segments
 	optdepends = python-lxml>=5.3.1: required only for validating and printing XML
