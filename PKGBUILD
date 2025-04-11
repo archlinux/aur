@@ -2,7 +2,7 @@
 
 pkgname=icu73
 pkgver=73.2
-pkgrel=6
+pkgrel=7
 pkgdesc='International Components for Unicode library (version 73)'
 arch=(x86_64)
 url="https://icu.unicode.org"
@@ -46,7 +46,8 @@ package() {
   cd icu/source
   make DESTDIR="${pkgdir}" install
 
-  rm -rf "${pkgdir}"/usr/{bin,include,share,lib/{icu,pkgconfig,*.so}}
+  mv "${pkgdir}"/usr/include/unicode{,-73}
+  rm -rf "${pkgdir}"/usr/{bin,share,lib/{icu,pkgconfig,*.so}}
 
   # Install license
   install -Dm644 "${srcdir}"/icu/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
