@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-bin
 _pkgname=Meru
-pkgver=3.0.0_beta.13
+pkgver=3.0.0_beta.15
 _electronversion=35
 pkgrel=1
-pkgdesc="📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+pkgdesc="📮 Nifty Gmail desktop app.(previously Gmail Desktop).(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/timche/meru"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
@@ -18,13 +21,15 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/timche/meru/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1674cf1cb56ca513a94726b9cf8714e908fe498c0f2adbe12870b25f6fecf48e'
-            '4dbc33fbe1a32f5114e56ac6f6a72e5269ec71cf99c62731ad233bcd875a06f5'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb")
+sha256sums=('4dbc33fbe1a32f5114e56ac6f6a72e5269ec71cf99c62731ad233bcd875a06f5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('41cdbc10126adf4e164c8f4f0a25fd5756d7188311ead5312d5a33ae9d149d93')
+sha256sums_x86_64=('16136c75c85912e94445885c426ea649a418485a49f194d6f47eb09576f9153a')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
