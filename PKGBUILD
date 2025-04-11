@@ -1,6 +1,7 @@
 # Maintainner: bash000000 <hidden>
 
 pkgname=crun-krun-wasm
+_pkgname=crun
 pkgver=1.21
 pkgrel=1
 pkgdesc="A fast and lightweight fully featured OCI runtime and C library for running containers"
@@ -16,7 +17,7 @@ validpgpkeys=('AC404C1C0BF735C63FF4D562263D6DF2E163E1EA')
 sha256sums=('c807b5ae99273adff712a2d894896d3cbae9f7ecc985763725c3b0e06d01257b')
 
 build() {
-    cd "$pkgname"
+    cd "$_pkgname"
     ./autogen.sh
     ./configure \
         --prefix=/usr \
@@ -31,6 +32,6 @@ build() {
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_pkgname"
     make DESTDIR="$pkgdir" install
 }
