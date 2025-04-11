@@ -1,0 +1,29 @@
+pkgbase = crun-krun-wasm
+	pkgdesc = A fast and lightweight fully featured OCI runtime and C library for running containers
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://github.com/containers/crun
+	arch = x86_64
+	license = LGPL
+	makedepends = libtool
+	makedepends = python
+	makedepends = go-md2man
+	makedepends = systemd
+	makedepends = git
+	depends = yajl
+	depends = systemd-libs
+	depends = libcap
+	depends = libseccomp
+	depends = criu
+	depends = libkrun
+	depends = wasmer
+	depends = spin
+	depends = lua
+	provides = oci-runtime
+	provides = crun
+	conflicts = crun
+	source = git+https://github.com/containers/crun.git#tag=1.21?signed
+	validpgpkeys = AC404C1C0BF735C63FF4D562263D6DF2E163E1EA
+	sha256sums = c807b5ae99273adff712a2d894896d3cbae9f7ecc985763725c3b0e06d01257b
+
+pkgname = crun-krun-wasm
