@@ -10,7 +10,7 @@ _pkgname=Notesnook
 pkgver=3.0.32
 _electronversion=31
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -33,11 +33,11 @@ makedepends=(
     'python-setuptools'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('4a412f8c8e3bf68ef8730061782a797282b9dace7840c55f64611b1685df8e0c'
+sha256sums=('66a2e6db2c7401a1b5d30dad0bfcd95b2dec14e9fc5bf7f15c8c12f93a1e974b'
             '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -77,6 +77,7 @@ prepare() {
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
     NODE_ENV=development    npm run bootstrap -- --scope=web
     NODE_ENV=development    npm run bootstrap -- --scope=desktop
+    cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
     NODE_ENV=development    npm install sqlite-better-trigram
 }
 build() {
@@ -87,7 +88,7 @@ build() {
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npm run bundle
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.config.js"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
