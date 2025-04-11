@@ -1,0 +1,28 @@
+[Unit]
+Description=Start joymap system service.
+
+[Service]
+Type=simple
+User=joymap
+Group=joymap
+ExecStartPre=+-/usr/bin/setfacl -m u:joymap:rw /dev/uinput
+ExecStart=/usr/bin/joymap /etc/joymap.map
+
+NoNewPrivileges=true
+Nice=-10
+ProtectSystem=strict
+PrivateTmp=true
+DeviceAllow=/dev/uinput
+DeviceAllow=char-input
+PrivateNetwork=true
+PrivateIPC=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+
+
+[Install]
+WantedBy=multi-user.target

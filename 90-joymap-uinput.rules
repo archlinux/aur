@@ -1,0 +1,14 @@
+KERNEL=="uinput", TAG+="uaccess", OPTIONS+="static_node=uinput"
+
+#KERNEL=="uinput", ACTION=="add", GOTO="joymap_uinput_add"
+#GOTO="joymap_uinput_end"
+
+#LABEL="joymap_uinput_add"
+#TEST=="/usr/bin/setfacl", GOTO="joymap_uinput_setfacl"
+#GOTO="joymap_uinput_end"
+
+#LABEL="joymap_uinput_setfacl"
+#RUN+="/usr/bin/setfacl -m u:joymap:rw /dev/$name"
+#GOTO="joymap_uinput_end"
+
+#LABEL="joymap_uinput_end"

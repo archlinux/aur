@@ -2,7 +2,7 @@
 
 pkgname=joymap
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A linux userspace device driver that allows joystick events to be remapped.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/linuxjoymap'
@@ -11,9 +11,16 @@ depends=()
 makedepends=()
 source=(
 	"$pkgname-$pkgver.tar.gz::${url}/files/$pkgname-${pkgver}.tar.gz/download"
-	'joymap.service')
+	'joymap-user.service'
+	'joymap-system.service'
+	'joymap-sysuser.conf'
+	'90-joymap-uinput.rules')
 sha256sums=('a4c178eae4693e51c114b2a1f462bde33b822edb31de2495693be2940b0fd1e7'
-            '1ad47b6830ed73000689bdc2663f56f3df111a29b64e39dfc3ccd2a0562af36a')
+            '427aae12107225ed8e47a2c9ec77539723cce98f340316a08d9d68b0514b78ec'
+            '645d3cce9d9d196428348e638841626a8df83b0fad90c0c6bcae39e4de87010a'
+            '1bbbbe0f795adcb11f7284d17b0e67dc6c3d8577f4509f83e64936d99e504fc7'
+            '61068aaf6e67b8739acbdc93f44353f4666a00bfd3fae8b50c952a97b7a35ac6')
+install='joymap.install'
 
 _srcdir="$pkgname-${pkgver}"
 
@@ -23,7 +30,10 @@ build() {
 }
 
 package() {
-	install -Dm644 'joymap.service' -t "${pkgdir}/usr/lib/systemd/user"
+	install -Dm644 'joymap-user.service' "${pkgdir}/usr/lib/systemd/user/joymap.service"
+	install -Dm644 'joymap-system.service' "${pkgdir}/usr/lib/systemd/system/joymap.service"
+	install -Dm644 'joymap-sysuser.conf' "${pkgdir}/usr/lib/sysusers.d/joymap.conf"
+	install -Dm644 '90-joymap-uinput.rules' -t "${pkgdir}/usr/lib/udev/rules.d"
 
 	cd "${_srcdir}"
 	install -Dm755 'loadmap' "${pkgdir}/usr/bin/joymap"
