@@ -143,3 +143,17 @@
              COMPONENT ${NPU_INTERNAL_COMPONENT}
              ${OV_CPACK_COMP_NPU_INTERNAL_EXCLUDE_ALL})
  endif()
+--- a/src/common/util/src/file_util.cpp
++++ b/src/common/util/src/file_util.cpp
+@@ -435,9 +435,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
+ 
+     // plugin can be found either:
+ 
+-    // 1. in openvino-X.Y.Z folder relative to libopenvino.so
++    // 1. in openvino folder relative to libopenvino.so
+     std::ostringstream str;
+-    str << "openvino-" << OpenVINO_VERSION;
++    str << "openvino";
+     const auto sub_folder = str.str();
+ 
+     std::string abs_file_path = ov::util::path_join({ov_library_path, sub_folder, plugin}).string();

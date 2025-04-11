@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.0.1.r736.gaca44edba34
+pkgver=2025.1.0.r255.g373026a8cfc
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -80,8 +80,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ab3960a3af2f060a0ddb7ed8900cd2bc497887b0cd0dbd51f822986162b7a112'
-            'c86feb93653b85605fc946dda4114e9c27e25c841e787d8d949be103e25f12e9'
+            '7abb6c63fafe68091b0899977341763059fd004378dc424db5ca6dde18a6b095'
+            '53a36bfbd4543ce2075a750dd5068893674e798abd79398eb91003701120a5d1'
             'bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -162,8 +162,9 @@ build() {
         -DENABLE_INTEL_NPU:BOOL='ON' \
         -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='ON' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
-        -DENABLE_SAMPLES:BOOL='OFF' \
+        -DENABLE_PLUGINS_XML:BOOL='ON' \
         -DENABLE_PYTHON:BOOL='ON' \
+        -DENABLE_SAMPLES:BOOL='OFF' \
         -DENABLE_SYSTEM_FLATBUFFERS:BOOL='ON' \
         -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \

@@ -1,6 +1,6 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for optimizing and deploying deep learning models (git version)
-	pkgver = 2025.0.1.r736.gaca44edba34
+	pkgver = 2025.1.0.r255.g373026a8cfc
 	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
@@ -73,8 +73,8 @@ pkgbase = openvino-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ab3960a3af2f060a0ddb7ed8900cd2bc497887b0cd0dbd51f822986162b7a112
-	sha256sums = c86feb93653b85605fc946dda4114e9c27e25c841e787d8d949be103e25f12e9
+	sha256sums = 7abb6c63fafe68091b0899977341763059fd004378dc424db5ca6dde18a6b095
+	sha256sums = 53a36bfbd4543ce2075a750dd5068893674e798abd79398eb91003701120a5d1
 	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
 
 pkgname = openvino-git
@@ -86,7 +86,7 @@ pkgname = openvino-git
 	depends = snappy
 	optdepends = openvino-intel-gpu-plugin-git: for Intel GPU plugin
 	optdepends = openvino-intel-npu-plugin-git: for Intel NPU plugin
-	provides = openvino=2025.0.1.r736.gaca44edba34
+	provides = openvino=2025.1.0.r255.g373026a8cfc
 	provides = intel-openvino-git
 	conflicts = openvino
 	conflicts = intel-openvino-git
@@ -99,7 +99,7 @@ pkgname = openvino-intel-gpu-plugin-git
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2025.0.1.r736.gaca44edba34
+	depends = openvino=2025.1.0.r255.g373026a8cfc
 	depends = pugixml
 	provides = openvino-intel-gpu-plugin
 	conflicts = openvino-intel-gpu-plugin
@@ -112,7 +112,7 @@ pkgname = openvino-intel-npu-plugin-git
 	depends = intel-npu-driver
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2025.0.1.r736.gaca44edba34
+	depends = openvino=2025.1.0.r255.g373026a8cfc
 	depends = pugixml
 	provides = openvino-intel-npu-plugin
 	conflicts = openvino-intel-npu-plugin
@@ -121,7 +121,7 @@ pkgname = python-openvino-git
 	pkgdesc = Python bindings for OpenVINO (git version)
 	depends = gcc-libs
 	depends = glibc
-	depends = openvino=2025.0.1.r736.gaca44edba34
+	depends = openvino=2025.1.0.r255.g373026a8cfc
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
