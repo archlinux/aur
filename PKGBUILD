@@ -73,7 +73,7 @@ build() {
     --app-version "0.0.1.0" \
     --java-options "-Dorg.cryptomator.cli.version=${pkgver//_*/}-aur" \
     --java-options "--enable-preview" \
-    --java-options "--enable-native-access=${NATIVE_ACCESS_PACKAGE}" \
+    --java-options "--enable-native-access=${NATIVE_ACCESS_PACKAGE},org.fusesource.jansi" \
     --java-options "-Xss5m" \
     --java-options "-Xmx256m" \
     --java-options "-Dfile.encoding=utf-8" \
