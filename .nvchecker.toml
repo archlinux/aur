@@ -1,4 +1,0 @@
-[ryujinx]
-source = "git"
-git = "https://github.com/Ryubing/Ryujinx.git"
-exclude_regex = '^[A-Za-z].*'
