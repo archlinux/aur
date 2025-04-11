@@ -1,7 +1,7 @@
 pkgbase = flood-bin
 	pkgdesc = A modern web UI for various torrent clients with a Node.js backend and React frontend
 	pkgver = 4.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jesec/flood
 	arch = x86_64
 	license = GPL-3.0
