@@ -1,7 +1,7 @@
 pkgbase = python-session-info
 	pkgdesc = Print version information for loaded modules in the current session, python, and OS
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://gitlab.com/joelostblom/session_info
 	arch = any
 	license = BSD-3-Clause
@@ -11,7 +11,7 @@ pkgbase = python-session-info
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-stdlib-list
-	source = git+https://gitlab.com/joelostblom/session_info.git#tag=1.0.0
-	sha256sums = 6eea5b8c9ba01d0a978fd6236ae5b03ea04be957ff40e8eb5da164213121a224
+	source = git+https://gitlab.com/joelostblom/session_info.git#tag=v1.0.1
+	sha256sums = d4b5aa4d2fefb4631a731ec24b46ef9c020ab59ff500ee938da16cfe63b16d85
 
 pkgname = python-session-info
