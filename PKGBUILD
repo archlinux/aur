@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=startupmsg
-_pkgver=0.9.7
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for Start-Up Messages"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fc060141694340354365f082bcb2de35')
-b2sums=('cd0690675c25c0272777a767f8fef97fbc0d158208bcc7a395f2453da22229228d1278084b577a8c0aead04438830312b85dae4de009faf8d2b032d18bc3baf3')
+md5sums=('2c45703069072e10978c005d143366fd')
+b2sums=('378b191fe50987c3d1c57b8fa431336bb8aedba7dac4e529bca57c3955dc8af3bdd243a1cf09bcbca051eccee51d643c16da517625326be61f4a60c75834c3ca')
 
 build() {
   mkdir build
