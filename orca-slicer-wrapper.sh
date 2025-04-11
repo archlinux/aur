@@ -1,11 +1,11 @@
 #!/bin/bash
-DIR="/usr/lib/orca-slicer"
+DIR="/usr/lib/OrcaSlicer"
 export LD_LIBRARY_PATH="$DIR/bin:$LD_LIBRARY_PATH"
 
 # OrcaSlicer will segfault on systems where locale info is not as expected
 export LC_ALL=C
 
-#Use Zink to run OpenGL on top of Vulkan bypassing the problematic NVIDIA OpenGL stack while retaining hardware acceleration.
+# Use Zink to run OpenGL on top of Vulkan bypassing the problematic NVIDIA OpenGL stack while retaining hardware acceleration.
 if [ "$XDG_SESSION_TYPE" = "wayland" ] && [ "$ZINK_DISABLE_OVERRIDE" != "1" ]; then
     if command -v glxinfo >/dev/null 2>&1; then
         RENDERER=$(glxinfo | grep "OpenGL renderer string:" | sed 's/.*: //')

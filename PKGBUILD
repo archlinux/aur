@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r24908.32efc17
+pkgver=2.3.1.r24918.82bc52c
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -16,16 +16,12 @@ optdepends=('mesa: Enables Zink fallback workaround for NVIDIA on Wayland'
             'nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
 provides=("orca-slicer")
-source=("$pkgname::git+https://github.com/SoftFever/OrcaSlicer.git"
-        "orca-slicer-wrapper.sh"
-        "https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch"
-        "cmake-min-version.patch"
-        "wxWidgets-cmake-min-version.patch")
+source=($pkgname::git+https://github.com/SoftFever/OrcaSlicer.git
+        orca-slicer-wrapper.sh
+        https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch)
 b2sums=('SKIP'
-        'aa8f847eef062b7999d33ec23e9abb5dd666221ee31aae4d94117eba96038da069d43be5e65321820172fc1c82ce9c674e8c4f833d01bb87d4e5db284c159156'
-        'cc7791841533e07787a4921b688fdd885782a67320936d445ad04102a68e8e044b5bf52a58d987d158ae522ae4f02a56a3525ccfd1831ef6a3b6459be14bd408'
-        '562dcd07530faef0d9fdddf1e009075f67105c8239e4b1402cd890f7a89be8b11671dd6ecc7b55a155f2d05247070bb0b8ff84f2170ce2454ab818018be80e48'
-        '1459ce126dd80a891006d2c40a001e75dc146ac9eb6ad8e975a3e4672ebb914baabecd8a4048742fab03e2820242f614449dd23a8e721bd5c945c8765e986a5a')
+        'ea635f7745795d535ddf8cf317b27986ae28c177ea3fd7764c3314f9ca152672d17af22541cd9f6efc08a04fd02b2bda502f867fd2dd6888c58cf9b5d7c6c2a4'
+        'cc7791841533e07787a4921b688fdd885782a67320936d445ad04102a68e8e044b5bf52a58d987d158ae522ae4f02a56a3525ccfd1831ef6a3b6459be14bd408')
 
 pkgver() {
   cd $pkgname
@@ -41,25 +37,21 @@ prepare() {
   # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
   # cherry pick an OCCT commit to make it build with system freetype
-  cat 7236e83dcc1e7284e66dc61e612154617ef715d6.patch >>  $pkgname/deps/OCCT/0001-OCCT-fix.patch
+  cat 7236e83dcc1e7284e66dc61e612154617ef715d6.patch >> $pkgname/deps/OCCT/0001-OCCT-fix.patch
   # Fix xgettext: case-sensitive mismatches
   sed -i 's|src/slic3r/GUI/AMSMappingPopup.cpp|src/slic3r/GUI/AmsMappingPopup.cpp|g' $pkgname/localization/i18n/list.txt
-  # Set cmake_minimum_required to 3.5 for all dependencies
-  cp wxWidgets-cmake-min-version.patch $pkgname/deps/wxWidgets/wxWidgets-cmake-min-version.patch
-  cd $pkgname
-  git apply ../cmake-min-version.patch
 }
 
 build() {
   cd $pkgname
   export CXXFLAGS="${CXXFLAGS} -flto"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   
   cmake \
     -G Ninja \
     -S deps \
     -B deps/build \
-    -DDEP_WX_GTK3=ON \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DDEP_WX_GTK3=ON
   ninja -C deps/build
 
   cmake \
@@ -72,8 +64,7 @@ build() {
     -DSLIC3R_STATIC=1 \
     -DORCA_TOOLS=1 \
     -DSLIC3R_FHS=1 \
-    -DSLIC3R_GTK=3 \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DSLIC3R_GTK=3
   ninja -C build
   
   # add localizations
@@ -84,8 +75,8 @@ package() {
   cd $pkgname
   
   DESTDIR="$pkgdir" ninja -C build install
-  install -d "$pkgdir/usr/lib/orca-slicer/"
-  mv "$pkgdir/usr/bin/orca-slicer" "$pkgdir/usr/lib/orca-slicer/"
+  install -d "$pkgdir/usr/lib/OrcaSlicer/"
+  mv "$pkgdir/usr/bin/orca-slicer" "$pkgdir/usr/lib/OrcaSlicer/"
   install -Dm755 "$srcdir/orca-slicer-wrapper.sh" "$pkgdir/usr/bin/orca-slicer"
   install -Dm644 doc/*.md -t "$pkgdir/usr/share/doc/OrcaSlicer/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/OrcaSlicer/LICENSE"
