@@ -1,5 +1,5 @@
 pkgname=hailo-pci
-pkgver=4.20.0
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="Hailo AI accelerator PCIe driver and matching firmware"
 arch=('aarch64' 'x86_64')
@@ -8,7 +8,7 @@ license=('GPL-2.0')
 makedepends=('gcc')
 provides=('hailo8_fw.bin' 'hailo_pci.ko')
 source=("https://github.com/hailo-ai/hailort-drivers/archive/v${pkgver}.tar.gz")
-sha256sums=('42759c946d1680bcb8b3b24039021323d1bec51e030fb422a6256e01b0454477')
+sha256sums=('624468126c1e5609475389271b3d2878cb6e7e40df9e85bad95be464a3e11be3')
 
 build() {
   cd hailort-drivers-${pkgver}
