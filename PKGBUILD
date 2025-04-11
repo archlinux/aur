@@ -1,7 +1,7 @@
 
 # Maintainer: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=1.22.3
+pkgver=1.22.4
 pkgrel=1
 epoch=
 pkgdesc="A systemd GUI to manage your Services, Timers, Sockets and other units. You can enable, disable, stop and start them. Also, you can view their config file and peak at their journal logs."
@@ -20,21 +20,21 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=CHANGELOG.md
-_commit=069c2b1f8e8c0b3b8fbca011fcd8266379611d45
+_commit=b597b8242d30c80aee6ea9bb45559c9d9d1c0932
 source=("https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('01d7631820be2b4d4facc53b442fa196476830cf49f1830b107c41cc776a17bd')
+sha256sums=('414e3b497bc414ff9990e0afeed5978c4d4ed95979a90a6cd4c774a3c33f1877')
 validpgpkeys=()
-pkgsrcdir=$pkgname-$pkgver
+_pkgsrcdir=$pkgname-$pkgver
 
 prepare() {
-	cd $pkgsrcdir
+	cd $_pkgsrcdir
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd $pkgsrcdir
+	cd $_pkgsrcdir
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --locked --release --features default
@@ -47,9 +47,9 @@ build() {
 #}
 
 package() {
-	install -Dm755 "$pkgsrcdir/target/release/sysd-manager" -t "$pkgdir/usr/bin"
-	install -Dm644 "$pkgsrcdir/data/applications/io.github.plrigaux.sysd-manager.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 "$pkgsrcdir/data/icons/hicolor/scalable/apps/io.github.plrigaux.sysd-manager.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-	install -Dm644 "$pkgsrcdir/data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
-	install -Dm644 "$pkgsrcdir/data/metainfo/io.github.plrigaux.sysd-manager.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
+	install -Dm755 "$_pkgsrcdir/target/release/sysd-manager" -t "$pkgdir/usr/bin"
+	install -Dm644 "$_pkgsrcdir/data/applications/io.github.plrigaux.sysd-manager.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$_pkgsrcdir/data/icons/hicolor/scalable/apps/io.github.plrigaux.sysd-manager.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+	install -Dm644 "$_pkgsrcdir/data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
+	install -Dm644 "$_pkgsrcdir/data/metainfo/io.github.plrigaux.sysd-manager.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
 }
