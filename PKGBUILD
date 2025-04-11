@@ -1,5 +1,6 @@
 # Maintainer: Lenn <huangyanjie@huangyanjie.com>
-pkgname=ishell_pro
+pkgname=ishell-pro-desktop
+pkginstallname=ishell-pro
 pkgver=2.0.5
 pkgrel=1
 pkgdesc="基于flutter的轻量级功能强大的SSH客户端"
@@ -42,36 +43,36 @@ prepare(){
 }
 
 package() {
-  install -dm755 "$pkgdir/opt/$pkgname"
+  install -dm755 "$pkgdir/opt/$pkginstallname"
   #install -dm755 "$pkgdir/usr/bin"
 
   # 复制全部文件到 /opt
   cp -r --no-preserve=ownership --preserve=mode \
 	  "$srcdir"/bundle/{data,ishell_pro,lib} \
-	  "$pkgdir/opt/$pkgname"
+	  "$pkgdir/opt/$pkginstallname"
 
-  install -Dm755 /dev/null "$pkgdir/usr/bin/$pkgname"
-  cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+  install -Dm755 /dev/null "$pkgdir/usr/bin/$pkginstallname"
+  cat > "$pkgdir/usr/bin/$pkginstallname" <<EOF
 #!/bin/sh
-cd /opt/$pkgname
+cd /opt/$pkginstallname
 exec ./ishell_pro "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/$pkgname"
+  chmod +x "$pkgdir/usr/bin/$pkginstallname"
 
 
-  install -Dm644 /dev/null "$pkgdir/usr/share/applications/$pkgname.desktop"
-  cat > "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+  install -Dm644 /dev/null "$pkgdir/usr/share/applications/$pkginstallname.desktop"
+  cat > "$pkgdir/usr/share/applications/$pkginstallname.desktop" <<EOF
 [Desktop Entry]
 Name=iShell Pro
 Comment=Modern Flutter-based SSH client
-Exec=$pkgname
-Icon=/opt/$pkgname/data/flutter_assets/static/img/new_logo_black_512.png
+Exec=$pkginstallname
+Icon=/opt/$pkginstallname/data/flutter_assets/static/img/new_logo_black_512.png
 Terminal=false
 Type=Application
 Categories=Utility;TerminalEmulator;
 StartupWMClass=ishell_pro
 EOF
 	if [-f "$srcdir/data/flutter_assets/static/img/new_logo_black_512.png"]; then
-		install -Dm644 "$srcdir/data/flutter_assets/static/img/new_logo_black_512.png $pkgdir/usr/share/pixmaps/$pkgname.png" 
+		install -Dm644 "$srcdir/data/flutter_assets/static/img/new_logo_black_512.png $pkgdir/usr/share/pixmaps/$pkginstallname.png" 
 	fi
 }
