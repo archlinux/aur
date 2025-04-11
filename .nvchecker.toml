@@ -1,0 +1,5 @@
+[cvbasic]
+source = "github"
+github = "nanochess/CVBasic"
+use_max_tag = true
+prefix = "v"
