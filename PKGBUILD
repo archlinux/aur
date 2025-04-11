@@ -5,7 +5,7 @@ pkgver=1.2.0.r23.g1ee9a4d
 _electronversion=33
 _nodeversion=22
 pkgrel=1
-pkgdesc="A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.Use system-wide electron."
+pkgdesc="A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.(Use system-wide electron)"
 arch=('any')
 url="http://blog.charlestang.org/HexoPress/"
 _ghurl="https://github.com/charlestang/HexoPress"
@@ -40,14 +40,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -55,7 +55,7 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
@@ -69,6 +69,9 @@ build() {
         sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
     fi
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run package
 }
 package() {

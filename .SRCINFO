@@ -1,5 +1,5 @@
 pkgbase = hexopress-git
-	pkgdesc = A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.Use system-wide electron.
+	pkgdesc = A client software designed specifically for editing blog articles and managing blog content that supports Hexo!.(Use system-wide electron)
 	pkgver = 1.2.0.r23.g1ee9a4d
 	pkgrel = 1
 	url = http://blog.charlestang.org/HexoPress/
