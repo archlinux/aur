@@ -1,7 +1,7 @@
 # Maintainer: Julian Raufelder <arch@raufelder.com>
 
 pkgname=cryptomator-cli
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="CLI Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('any')
@@ -9,14 +9,16 @@ url="https://cryptomator.org/"
 license=('GPL3')
 depends=('fuse3')
 makedepends=('maven' 'unzip')
-_jdkver=23.0.1+11
+_jdkver=24+36
 source=("cryptomator-cli-${pkgver//_/-}.tar.gz::https://github.com/cryptomator/cli/archive/refs/tags/${pkgver//_/-}.tar.gz"
         "cryptomator-cli-${pkgver//_/-}.tar.gz.asc::https://github.com/cryptomator/cli/releases/download/${pkgver//_/-}/cryptomator-cli-${pkgver//_/-}.tar.gz.asc")
-source_x86_64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
-source_aarch64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin23-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK23U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
+source_x86_64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin24-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK24U-jdk_x64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
+source_aarch64=("jdk-${_jdkver}.tar.gz::https://github.com/adoptium/temurin24-binaries/releases/download/jdk-${_jdkver//\+/%2B}/OpenJDK24U-jdk_aarch64_linux_hotspot_${_jdkver//\+/_}.tar.gz")
 noextract=("jdk-${_jdkver}.tar.gz")
-sha256sums=('0b0f09bbf6e597b481f45be18f5b7b23eaa46061b9f8a1e4ad1ef8eb79293139'
+sha256sums=('d3402534ba460c09159e1fc0a9fc0ef7bc5a9f8c15452ff821757261bab4657a'
             'SKIP')
+sha256sums_x86_64=('c340dee97b6aa215d248bc196dcac5b56e7be9b5c5d45e691344d40d5d0b171d')
+sha256sums_aarch64=('18071047526ab4b53131f9bb323e8703485ae37fcb2f2c5ef0f1b7bab66d1b94')
 options=('!strip')
 
 validpgpkeys=('58117AFA1F85B3EEC154677D615D449FE6E6A235')

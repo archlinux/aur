@@ -1,6 +1,6 @@
 pkgbase = cryptomator-cli
 	pkgdesc = CLI Multiplatform transparent client-side encryption of your files in the cloud.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://cryptomator.org/
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = cryptomator-cli
 	makedepends = maven
 	makedepends = unzip
 	depends = fuse3
-	noextract = jdk-23.0.1+11.tar.gz
+	noextract = jdk-24+36.tar.gz
 	options = !strip
-	source = cryptomator-cli-0.6.1.tar.gz::https://github.com/cryptomator/cli/archive/refs/tags/0.6.1.tar.gz
-	source = cryptomator-cli-0.6.1.tar.gz.asc::https://github.com/cryptomator/cli/releases/download/0.6.1/cryptomator-cli-0.6.1.tar.gz.asc
+	source = cryptomator-cli-0.6.2.tar.gz::https://github.com/cryptomator/cli/archive/refs/tags/0.6.2.tar.gz
+	source = cryptomator-cli-0.6.2.tar.gz.asc::https://github.com/cryptomator/cli/releases/download/0.6.2/cryptomator-cli-0.6.2.tar.gz.asc
 	validpgpkeys = 58117AFA1F85B3EEC154677D615D449FE6E6A235
-	sha256sums = 0b0f09bbf6e597b481f45be18f5b7b23eaa46061b9f8a1e4ad1ef8eb79293139
+	sha256sums = d3402534ba460c09159e1fc0a9fc0ef7bc5a9f8c15452ff821757261bab4657a
 	sha256sums = SKIP
 
 pkgname = cryptomator-cli
