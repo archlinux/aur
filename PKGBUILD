@@ -10,7 +10,7 @@ url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
 arch=(i686 x86_64 aarch64)
 depends=(libindi=${pkgver} libqsi=${pkgver})
-makedepends=(cmake)
+makedepends=(cmake libqsi=${pkgver})
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "fix_cmake.patch")
 sha256sums=("bcb7cf2b9053c5b1e052a35247ec499a9d513f4ed257178b244c190394d0daa6" "8bd2d012125f56071cb41137bf1039fad03e4e44396d059413631a0b8e478771")
 
