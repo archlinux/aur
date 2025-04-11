@@ -14,8 +14,8 @@ _commit=1cd744a6828f6ab9179906d16434ea40b6404737
 _gmpver=6.3.0
 _islver=0.26
 _mpcver=1.3.1
-_mpfrver=4.2.1
-pkgrel=1
+_mpfrver=4.2.2
+pkgrel=2
 pkgdesc="The GNU Compiler Collection"
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -44,7 +44,7 @@ sha256sums=('33378643f1c72686181f9d3fcd09caf9b06815324467f5dc9b9a3ea41cfba4b4'
             'SKIP'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
             'ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8'
-            '277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2'
+            'b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01'
             'SKIP'
             'ce57c73ef16f4d56c2bec4cee79d876b5f2e67e85da1988b3a2cf4049575556a'
             '9252eca98be0183732f83c383e4680a40f756bab11df9269b53484fccf106874')
