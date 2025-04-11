@@ -1,7 +1,7 @@
 pkgbase = wavetracker
 	pkgdesc = A free and open source music-making software for Windows with experimental patches to run on Linux.
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/squiggythings/WaveTracker
 	arch = x86_64
 	license = GPL-2.0
@@ -10,7 +10,6 @@ pkgbase = wavetracker
 	makedepends = imagemagick
 	depends = alsa-lib
 	depends = dotnet-runtime
-	depends = ffmpeg
 	options = !emptydirs
 	source = wavetracker-1.1.2.tar.gz::https://github.com/squiggythings/WaveTracker/archive/refs/tags/v1.1.2.tar.gz
 	source = wavetracker.desktop

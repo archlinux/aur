@@ -1,7 +1,7 @@
 # Maintainer: User0 <user0thenyancat@proton.me>
 pkgname=wavetracker
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source music-making software for Windows with experimental patches to run on Linux."
 arch=('x86_64')
 url="https://github.com/squiggythings/WaveTracker"
@@ -10,7 +10,6 @@ options=('!emptydirs')
 depends=(
     "alsa-lib"
     "dotnet-runtime"
-    "ffmpeg"
 )
 makedepends=(
     "dotnet-runtime"
