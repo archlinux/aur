@@ -1,0 +1,20 @@
+pkgbase = python-biliarchiver
+	pkgdesc = Archiving tool for Bilibili based on bilix
+	pkgver = 0.1.20
+	pkgrel = 1
+	url = https://github.com/saveweb/biliarchiver
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-bilix
+	depends = python-internetarchive
+	depends = python-danmakuc
+	depends = python-browser-cookie3
+	depends = python-click
+	depends = python-click-option-group
+	source = https://files.pythonhosted.org/packages/source/b/biliarchiver/biliarchiver-0.1.20.tar.gz
+	sha256sums = b686be765de5c9575b795c8ad13f6718a967bbc6bcd69525cff1b6d6855b7122
+
+pkgname = python-biliarchiver
