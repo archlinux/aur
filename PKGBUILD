@@ -2,31 +2,31 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=wakeup-git
-pkgver=49db7f6
+pkgver=r54.49db7f6
 pkgrel=1
-pkgdesc="A timer that will wake your system from suspend to RAM."
+pkgdesc='A timer that will wake your system from suspend to RAM.'
 arch=('i686' 'x86_64')
 url="https://github.com/fogobogo/wakeup"
-license=('GPL')
-depends=('linux-api-headers' 'pm-utils')
+license=('GPL-2.0')
+depends=('glibc' 'pm-utils')
 makedepends=('git')
-provides=('wakeup')
-conflicts=('wakeup')
-source=("$pkgname::git+https://github.com/fogobogo/wakeup.git")
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver(){
-  cd "${srcdir}/$pkgname"
-  git describe --always | sed 's|-|.|g'
+	cd "${srcdir}/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
 }
 
 build(){
-  cd "${srcdir}/${pkgname}"
-  make
+	cd "${srcdir}/${pkgname}"
+	make
 }
 
 package(){
-  cd "${srcdir}/${pkgname}"
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+	cd "${srcdir}/${pkgname}"
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
-

@@ -1,18 +1,17 @@
 pkgbase = wakeup-git
 	pkgdesc = A timer that will wake your system from suspend to RAM.
-	pkgver = 49db7f6
+	pkgver = r54.49db7f6
 	pkgrel = 1
 	url = https://github.com/fogobogo/wakeup
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0
 	makedepends = git
-	depends = linux-api-headers
+	depends = glibc
 	depends = pm-utils
 	provides = wakeup
 	conflicts = wakeup
-	source = wakeup-git::git+https://github.com/fogobogo/wakeup.git
+	source = wakeup-git::git+https://github.com/fogobogo/wakeup
 	md5sums = SKIP
 
 pkgname = wakeup-git
-
