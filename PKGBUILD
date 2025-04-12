@@ -1,6 +1,6 @@
 pkgname=sbsondemand
 _pkgname=SBSonDemand
-pkgver=1.0.0
+pkgver=1.0.1.aurpatch
 pkgrel=1
 pkgdesc="Unofficial SBS on Demand desktop app."
 arch=('x86_64' 'arm7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('cfcee419bdba568c760e11631e0cf18e46f70edc8ffcb71227cec75d9998532a')
+sha256sums=('8c325f2b78968f952b42ad4c690c5c0d4901abd049aa40af34837bafe16c15f4')
 
 package() {
     cd "$srcdir/application-$pkgver"
