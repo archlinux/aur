@@ -3,7 +3,7 @@
 
 pkgname=mosek
 pkgdesc="A commercial solver for mathematical optimization problems."
-pkgver=11.0.8
+pkgver=11.0.16
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'execstack')
 optdepends=('python: Python bindings')
 options=('!strip')
 source=("mosek-${pkgver}.tar.bz2::https://download.mosek.com/stable/${pkgver}/mosektools${_mosekarch}.tar.bz2")
-sha256sums=('9bd7cfbfbe61d8df7e9290c25175936ab0f1d30fdd1ab4cc47a7adc477901280')
+sha256sums=('322716fd9f9f580854027a43c4c7f5f9587321e5b5e57a53ffdc91dac2494f79')
 
 prepare() {
 	# Work around "ImportError: libmosek64.so.11.0: cannot enable executable
