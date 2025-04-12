@@ -1,6 +1,6 @@
 pkgbase = python-123-client
 	pkgdesc = Python wrapper for 123 webdisk.
-	pkgver = 0.0.5
+	pkgver = 0.0.5.1
 	pkgrel = 1
 	url = https://pypi.org/project/
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-123-client
 	conflicts = python-123-client
 	options = !strip
 	options = !debug
-	source = python_123_client-0.0.5.tar.gz::https://files.pythonhosted.org/packages/source/p/python_123_client/python_123_client-0.0.5.tar.gz
-	sha256sums = 04669f1b86ae4fd68e60faa8fe7f9ee43ea2865bbafabfd1e76714cafb3c80fb
+	source = python_123_client-0.0.5.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_123_client/python_123_client-0.0.5.1.tar.gz
+	sha256sums = 5b9b7a9fea6187f2401e09af784ff961a1100174712787733c78fbef95a99311
 
 pkgname = python-123-client
