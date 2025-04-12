@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r1447.g71010603d
+pkgver=1.4.0.development.snapshot.006.r2027.g117e34f8f
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -19,21 +19,26 @@ makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'hicolor-icon-theme'
              'jack' 'lib32-gcc-libs' 'libpulse' 'libsndfile' 'libspeechd'
              'libx11' 'libxi' 'mesa' 'microsoft-gsl' 'nlohmann-json' 'openssl'
              'opus' 'poco' 'protobuf' 'python' 'qt6-svg' 'qt6-tools' 'rnnoise'
-             'speech-dispatcher' 'speexdsp' 'xdg-utils')
+             'spdlog' 'speech-dispatcher' 'speexdsp' 'xdg-utils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/mumble-voip/mumble.git'
         'git+https://github.com/mumble-voip/minhook.git'
         'git+https://github.com/mumble-voip/mach_override.git'
-        'git+https://github.com/mumble-voip/rnnoise.git'
         'git+https://github.com/mumble-voip/SPSCQueue.git'
+        'git+https://github.com/mumble-voip/utfcpp.git'
+        'git+https://github.com/gabime/spdlog.git'
         'git+https://github.com/Krzmbrzl/cmake-compiler-flags.git'
         'git+https://github.com/Krzmbrzl/FindPythonInterpreter.git'
-        'git+https://github.com/wolfpld/tracy.git'
-        'git+https://github.com/nlohmann/json.git'
+        'git+https://github.com/lipis/flag-icons.git'
         'git+https://github.com/microsoft/GSL.git'
+        'git+https://github.com/nlohmann/json.git'
+        'git+https://github.com/SOCI/soci.git'
+        'git+https://github.com/wolfpld/tracy.git'
+        'git+https://github.com/xiph/rnnoise.git'
         'git+https://github.com/xiph/speexdsp.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -45,14 +50,19 @@ prepare() {
   git submodule init
   git config submodule.3rdparty/minhook.url "$srcdir/minhook"
   git config submodule.3rdparty/mach-override-src.url "$srcdir/mach_override"
+  git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
   git config submodule.3rdparty/rnnoise-src.url "$srcdir/rnnoise"
-  git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
-  git config submodule.3rdparty/cmake-compiler-flags-src.url "$srcdir/cmake-compiler-flags"
   git config submodule.3rdparty/FindPythonInterpreter.url "$srcdir/FindPythonInterpreter"
   git config submodule.3rdparty/tracy.url "$srcdir/tracy"
   git config submodule.3rdparty/nlohmann_json.url "$srcdir/json"
   git config submodule.3rdparty/gsl.url "$srcdir/GSL"
-  git config submodule.3rdparty/speexdsp.url "$srcdir/speexdsp"
+  git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
+  git config submodule.3rdparty/cmake-compiler-flags.url "$srcdir/cmake-compiler-flags"
+  git config submodule.3rdparty/flag-icons.url "$srcdir/flag-icons"
+  git config submodule.3rdparty/utfcpp.url "$srcdir/utfcpp"
+  git config submodule.3rdparty/soci.url "$srcdir/soci"
+  git config submodule.3rdparty/spdlog.url "$srcdir/spdlog"
+
   git -c protocol.file.allow=always submodule update
 }
 
@@ -68,6 +78,7 @@ build() {
     -Dbundled-gsl='OFF' \
     -Dbundled-json='OFF' \
     -Dbundled-rnnoise='OFF' \
+    -Dbundled-spdlog='OFF' \
     -Dbundled-speex='OFF' \
     -Dupdate='OFF' \
     -Wno-dev
@@ -93,6 +104,7 @@ package() {
     'poco'
     'qt6-svg'
     'rnnoise'
+    'spdlog'
     'speexdsp' 'libspeexdsp.so'
     'xdg-utils'
   )
