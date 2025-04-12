@@ -18,8 +18,8 @@ optdepends=(
   'python-numpy: convert_hf_to_gguf.py python script'
   'python-pytorch: convert_hf_to_gguf.py python script'
 )
-conflicts=("${pkgname%%-git}")
-provides=("${pkgname%%-git}")
+conflicts=("${pkgname%%-git}" 'llama.cpp')
+conflicts=("${pkgname%%-git}" 'llama.cpp')
 source=("${pkgname%%-git}::git+${url}"
   "kompute::git+https://github.com/nomic-ai/kompute.git"
   "llama.cpp.conf"
