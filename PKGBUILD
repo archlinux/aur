@@ -4,7 +4,7 @@ _name=OpenFIRE-App
 _QTver=Qt6
 pkgname=openfireapp-git
 pkgver=r259.68eef8a
-pkgrel=2
+pkgrel=3
 pkgdesc='Configuration utility for the OpenFIRE lightgun system.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/TeamOpenFIRE/OpenFIRE-App'
@@ -35,7 +35,7 @@ prepare() {
 build() {
   mkdir "$srcdir/$_name/build"
   cd "$srcdir/$_name/build"
-  cmake .. -DOFAPP_GITHASH=$(git rev-parse --short HEAD) -DOFAPP_QT_VERSIONS=$_QTver
+  cmake .. -DOFAPP_GITHASH=$(git rev-parse --short HEAD) -DOFAPP_QT_VERSIONS=$_QTver -DCMAKE_BUILD_TYPE=Release
   make
 }
 
