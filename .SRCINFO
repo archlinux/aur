@@ -1,0 +1,23 @@
+pkgbase = ggml-cublas-git
+	pkgdesc = Tensor library for machine learning (with NVIDIA CUDA optimizations)
+	pkgver = r1942.f71d538
+	pkgrel = 1
+	url = https://github.com/ggml-org/ggml
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc13
+	makedepends = git
+	depends = cuda
+	provides = ggml-cublas
+	provides = ggml
+	provides = libggml
+	conflicts = ggml-cublas
+	conflicts = ggml
+	conflicts = libggml
+	source = ggml-cublas::git+https://github.com/ggml-org/ggml
+	sha256sums = SKIP
+
+pkgname = ggml-cublas-git
