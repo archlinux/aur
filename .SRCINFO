@@ -1,6 +1,6 @@
 pkgbase = passage-git
 	pkgdesc = A fork of password-store that uses age as backend.
-	pkgver = 1.7.4a0.r5.1262d30
+	pkgver = 1.7.4a0.r526.4e4c5ae
 	pkgrel = 1
 	url = https://github.com/FiloSottile/passage
 	arch = any
