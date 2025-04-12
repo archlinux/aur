@@ -1,6 +1,6 @@
 pkgname=stingray
 _pkgname=Stingray
-pkgver=1.0.3
+pkgver=1.0.4.aurpatch
 pkgrel=1
 pkgdesc="Custom client for a private Jellyfin server."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('cd3e86eddf4457a3bce3d29aa3a27666c994c8cf2b2f30aab52ca2c0079b8163')
+sha256sums=('df334b1215c6c5cb8d04c21c4ddcf2a9c8fadb0ca860dd00e89d170c1e249c6c')
 
 
 package() {
