@@ -1,0 +1,21 @@
+pkgbase = stable-diffusion.cpp-hipblas-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with AMD ROCm optimizations)
+	pkgver = r211.10c6501
+	pkgrel = 1
+	url = https://github.com/leejet/stable-diffusion.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = rocm-hip-sdk
+	depends = hipblas
+	conflicts = stable-diffusion.cpp-hipblas
+	conflicts = stable-diffusion.cpp
+	source = stable-diffusion.cpp-hipblas::git+https://github.com/leejet/stable-diffusion.cpp
+	source = git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = stable-diffusion.cpp-hipblas-git
