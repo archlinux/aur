@@ -2,7 +2,7 @@
 pkgbase=system76-power-gui-x11
 pkgname=system76-power-gui-x11
 pkgver=0.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="GUI application for System76 Power Management"
 arch=('x86_64')
 url="https://gitea.dockservices.co/G34RZ/system76-power-GUI-xll.git"
@@ -45,7 +45,7 @@ package() {
     install -Dm644 system76-power-gui-x11.desktop "$pkgdir/usr/share/applications/system76-power-gui-x11.desktop"
     
     # Install polkit rules
-    install -Dm644 90-system76-power-x11.rules "$pkgdir/usr/share/polkit-1/rules.d/90-system76-power-x11.rules"
+    install -Dm644 90-system76-power-gui-x11.rules "$pkgdir/usr/share/polkit-1/rules.d/90-system76-power-gui-x11.rules"
     
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
