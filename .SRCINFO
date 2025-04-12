@@ -1,19 +1,22 @@
 pkgbase = python-jpype1
 	pkgdesc = Python to Java bridge, an effort to allow Python programs full access to Java class libraries
-	pkgver = 1.4.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/jpype-project/jpype
 	arch = x86_64
-	license = APACHE
-	makedepends = python-setuptools
+	license = Apache-2.0
 	makedepends = ant
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-typing_extensions
 	depends = python-packaging
 	depends = java-runtime
 	conflicts = jpype
 	conflicts = python-jpype
-	source = JPype1-1.4.1.tar.gz::https://github.com/jpype-project/jpype/archive/v1.4.1.tar.gz
-	sha256sums = a5f56760560b75aef9db782140ad69f65786b5d253e153261ff4d067ae181ae9
+	source = JPype1-1.5.2.tar.gz::https://github.com/jpype-project/jpype/archive/v1.5.2.tar.gz
+	sha256sums = e5bb06e49cfa3879bd29e1a4cf2b92b417ff5a5d6f5bca4fb1bc20194db150df
 
 pkgname = python-jpype1
