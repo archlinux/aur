@@ -1,40 +1,30 @@
 # Maintainer: Gustavo alvarez <sl1pkn07@gmail.com>
 
 pkgname=kwave-git
-pkgver=23.11.70.r3926.64746e68
+pkgver=25.07.70.r4305.c4c63fcd
 pkgrel=1
 pkgdesc="A sound editor for KDE. (GIT version)"
 arch=('x86_64')
-url='https://kde.org/applications/en/multimedia/org.kde.kwave'
+url='https://apps.kde.org/kwave'
 license=('GPL')
 depends=(
   'gcc-libs' # libgcc_s.so libstdc++.so
   'glibc' # libc.so libm.so
-  'qt5-base' # libQt5Concurrent.so libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Network.so libQt5Widgets.so libQt5Xml.so 
-  'qt5-multimedia' # libQt5Multimedia.so
-  'solid5' # libKF5Solid.so
-  'sonnet5' # libKF5SonnetUi.so
-  'karchive5' # libKF5Archive.so
-  'kauth5' # libKF5Auth.so libKF5AuthCore.so
-  'kbookmarks5' # libKF5Bookmarks.so
-  'kcodecs5' # libKF5Codecs.so
-  'kcompletion5' # libKF5Completion.so
-  'kconfig5' # libKF5ConfigCore.so libKF5ConfigGui.so
-  'kconfigwidgets5' # libKF5ConfigWidgets.so
-  'kcoreaddons5' # libKF5CoreAddons.so
-  'kcrash5' # libKF5Crash.so
-  'kdbusaddons5' # libKF5DBusAddons.so
-  'ki18n5' # libKF5I18n.so
-  'kiconthemes5' # libKF5IconThemes.so
-  'kio5' # libKF5KIOCore.so libKF5KIOFileWidgets.so libKF5KIOGui.so libKF5KIOWidgets.so
-  'kitemviews5' # libKF5ItemViews.so
-  'kjobwidgets5' # libKF5JobWidgets.so
-  'kservice5' # libKF5Service.so
-  'ktextwidgets5' # libKF5TextWidgets.so
-  'kwidgetsaddons5' # libKF5WidgetsAddons.so
-  'kwindowsystem5' # libKF5WindowSystem.so
-  'kxmlgui5' # libKF5XmlGui.so
-  'libx11' # libX11.so
+  'qt6-base' # libQt5Concurrent.so libQt5Core.so libQt5DBus.so libQt5Gui.so libQt5Network.so libQt5Widgets.so libQt5Xml.so
+  'qt6-multimedia' # libQt5Multimedia.so
+  'karchive' # libKF6Archive.so
+  'kcompletion' # libKF6Completion.so
+  'kconfig' # libKF6ConfigCore.so libKF6ConfigGui.so
+  'kconfigwidgets' # libKF6ConfigWidgets.so
+  'kcoreaddons' # libKF6CoreAddons.so
+  'kcrash' # libKF6Crash.so
+  'kdbusaddons' # libKF6DBusAddons.so
+  'ki18n' # libKF6I18n.so
+  'kiconthemes' # libKF6IconThemes.so
+  'kio' # libKF6KIOCore.so libKF6KIOFileWidgets.so libKF6KIOGui.so libKF6KIOWidgets.so
+  'ktextwidgets' # libKF6TextWidgets.so
+  'kwidgetsaddons' # libKF6WidgetsAddons.so
+  'kxmlgui' # libKF6XmlGui.so
   'alsa-lib' 'libasound.so'
   'audiofile' 'libaudiofile.so'
   'libsamplerate' 'libsamplerate.so'
@@ -45,7 +35,8 @@ makedepends=(
   'git'
   'cmake'
   'extra-cmake-modules'
-  'kdoctools5'
+  'qt6-tools'
+  'kdoctools'
   'doxygen'
   'python'
   'librsvg'
