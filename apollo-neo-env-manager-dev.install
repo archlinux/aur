@@ -1,0 +1,53 @@
+post_install() {
+  echo "正在设置Apollo Neo Environment Manager..."
+  
+  # 创建必要的软链接
+  ln -snf /opt/apollo/aem/aem /usr/bin/aem
+  mkdir -p /etc/bash_completion.d && ln -snf /opt/apollo/aem/auto_complete.bash /etc/bash_completion.d/aem
+  mkdir -p /usr/share/zsh/functions/Completion/Unix && ln -snf /opt/apollo/aem/auto_complete.zsh /usr/share/zsh/functions/Completion/Unix/_aem
+  
+  # 导入GPG密钥
+  if [ ! -d /etc/apt/keyrings ]; then
+    mkdir -p /etc/apt/keyrings
+  fi
+  
+  cat /usr/share/apollo-neo-env-manager-dev/apollo.gpg.key | gpg --dearmor > /etc/apt/keyrings/apolloauto.gpg
+  chmod a+r /etc/apt/keyrings/apolloauto.gpg
+  
+  # 创建Apollo软件源配置
+  if [ ! -d /etc/apt/sources.list.d ]; then
+    mkdir -p /etc/apt/sources.list.d
+  fi
+  
+  # 为了兼容Ubuntu的程序，添加Apollo软件源配置
+  cat > /etc/apt/sources.list.d/apolloauto.list << EOF
+deb [arch=amd64 signed-by=/etc/apt/keyrings/apolloauto.gpg] https://apollo-pkg-beta.cdn.bcebos.com/apollo/core jammy main
+EOF
+  
+  echo "安装完成。您可以使用 'aem' 命令启动Apollo环境管理器。"
+  echo "注意：这是从Ubuntu移植的软件包，某些功能可能需要适配Arch Linux环境。"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo "正在清理Apollo Neo Environment Manager..."
+  
+  # 清理软链接
+  rm -f /etc/bash_completion.d/aem
+  rm -f /usr/share/zsh/functions/Completion/Unix/_aem
+  rm -f /usr/bin/aem
+  rm -rf /opt/apollo/neo/packages/env-manager-dev
+  
+  # 清理GPG密钥
+  if [ -f /etc/apt/keyrings/apolloauto.gpg ]; then
+    rm -f /etc/apt/keyrings/apolloauto.gpg
+  fi
+  
+  # 清理软件源配置
+  if [ -f /etc/apt/sources.list.d/apolloauto.list ]; then
+    rm -f /etc/apt/sources.list.d/apolloauto.list
+  fi
+} 
