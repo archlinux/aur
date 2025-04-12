@@ -1,18 +1,16 @@
 pkgbase = python-concurrencytest
 	pkgdesc = Python testtools extension for running unittest suites concurrently.
-	pkgver = 0.1.2.4
+	pkgver = 0.1.2.22
 	pkgrel = 1
 	url = https://github.com/cgoldberg/concurrencytest
 	arch = any
-	license = GPL3
+	license = GPL-2.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-testtools
 	depends = python-subunit
-	source = https://github.com/cgoldberg/concurrencytest/archive/c807f3e1428ff91ad93f270306966bc6597f3adf.zip
-	source = fix_warnings.patch
-	md5sums = 223e5dd7a97d95a464de3a06c4734aba
-	md5sums = 26a55216936cd4c7970d0ced04bc9c47
+	source = https://github.com/cgoldberg/concurrencytest/archive/c91cd62f45985abe907d86839dcb858db60f1419.zip
+	sha256sums = 9006e37e28af9751a7f0883dcfec0cf3ba2a18a17c8c6f205bb7842fe69dcdf2
 
 pkgname = python-concurrencytest
