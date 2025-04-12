@@ -20,14 +20,15 @@ unset _pkgtype
 
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.212.r1.gfbc95f2
-pkgrel=2
+pkgver=2.3.268.r0.gc359c0e
+pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 depends=(
+  kddockwidgets-qt6 # AUR
   libpcap
   libpng
   libpulse
@@ -189,13 +190,13 @@ build() (
   if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
     local _cflags _cxxflags
     _cflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
     )
     CFLAGS="${_cflags[@]}"
 
     _cxxflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
     )
     CXXFLAGS="${_cxxflags[@]}"
