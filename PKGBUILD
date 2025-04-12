@@ -12,7 +12,7 @@ options=('!strip' '!emptydirs')
 provides=('project-graph')
 conflicts=('project-graph-bin' 'project-graph-git')
 install=${pkgname}.install
-source_x86_64=('https://github.com/LiRenTech/project-graph/releases/download/nightly/Project.Graph_0.0.0-nightly.r266_amd64.deb')
+source_x86_64=('https://github.com/LiRenTech/project-graph/releases/download/nightly/Project Graph_0.0.0-nightly.r293_amd64.deb')
 sha256sums_x86_64=('dc00e7451cb97437627c4c6f2d4c3ece2f88075e527ae66b28c05cfdd71df894')
 package() {
   # Extract package data
