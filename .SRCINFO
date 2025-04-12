@@ -1,7 +1,7 @@
 pkgbase = torrentz2-git
 	pkgdesc = Torrent file creator and editor with v1/v2/hybrid support in Rust
 	pkgver = 89b20b5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/liliumstar/torrentz2
 	arch = x86_64
 	license = GPL3

@@ -2,7 +2,7 @@
 _pkgname=torrentz2
 pkgname="$_pkgname-git"
 pkgver=89b20b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Torrent file creator and editor with v1/v2/hybrid support in Rust"
 arch=(x86_64)
 url='https://codeberg.org/liliumstar/torrentz2'
