@@ -1,7 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-lsa
-pkgver=008.007.011.000
+pkgver=008.012.007.000
+_mr=8.12 # 7.32 for 85xx series, 8.12 for 86xx series
 pkgrel=1
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
@@ -23,17 +24,19 @@ makedepends=('patchelf')
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
 source=(
   'LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf::https://docs.broadcom.com/doc/pub-005092'
-  'LSI_Storage_Authority_Software_User_Guide_rev2.10.pdf::https://techdocs.broadcom.com/content/dam/broadcom/techdocs/data-center-solutions/tools/generated-pdfs/DB15-001161-23.pdf'
+  'LSI_Storage_Authority_Software_User_Guide_rev2.15.pdf::https://techdocs.broadcom.com/content/dam/broadcom/techdocs/data-center-solutions/tools/generated-pdfs/DB15-001161-33.pdf'
+  "${pkgver}_MR7.32_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/${pkgver}_MR7.32_LSA_Linux.zip"
+  "${pkgver}_MR8.12_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/LSA_Linux_${pkgver}_MR8.12.zip"
   'lsi_lsa.service'
   'lsa_launcher.sh'
-  "${pkgver}_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/${pkgver}_LSA_Linux.zip"
 )
 sha256sums=(
   '5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03'
-  '4fbbbd1c72b1d7c9a29279fc135ae1e4a74c6942f47e0c579dc86800c2eaf62d'
+  '42d6ba73101efcbea9e354d60b7bdc5f4e3c48639e285a9858e454541b3b7f2f'
+  '58c139353c6ac1a3b75cd351a4a37d08acda7df3b3b31a03ade3cd5ac5db22a3'
+  'ab1edfe9986870a3607160f9ef08a4df7ba462590620b2424b00453b4fadee07'
   '5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17'
   '1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a'
-  '91600844c3aa5012dbda61c2f2c91b3dfe71e10b4a71bab5092964887b882e8a'
 )
 install=lsi-lsa.install
 backup=(
@@ -43,6 +46,12 @@ backup=(
   'opt/lsi/LSIStorageAuthority/conf/monitor/config-current.json'
 )
 options=('!strip')
+if [ "${_mr}" = "7.32" ]; then
+  noextract=("${pkgver}_MR8.12_LSA_Linux.zip")
+fi
+if [ "${_mr}" = "8.12" ]; then
+  noextract=("${pkgver}_MR7.32_LSA_Linux.zip")
+fi
 
 _create_links() {
   # create soname links
@@ -58,7 +67,8 @@ package() {
   cd "${pkgdir}"
 
   # Extract LSA RPM
-  for i in $(find "${srcdir}/gcc_11.2.x" -type f -name "LSIStorageAuthority-${pkgver}*.rpm"); do bsdtar -xf "${i}"; done &> /dev/null
+  [ "${_mr}" = "7.32" ] && (cd ${srcdir}; mkdir LSA_Linux; cd LSA_Linux;  bsdtar -xf "${srcdir}/webgui_rel/LSA_Linux.zip")
+  for i in $(find "${srcdir}/LSA_Linux/gcc_11.2.x" -type f -name "LSIStorageAuthority-${pkgver}*.rpm"); do bsdtar -xf "${i}"; done # &> /dev/null
 
   # Remove unused stuff (include bundled openpegasus libs)
   rm -fr etc \
@@ -90,8 +100,8 @@ package() {
 
   # Install Docs
   install -Dm644 "${srcdir}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide_rev1.0.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Lightweight_Monitor_User_Guide.pdf"
-  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide_rev2.10.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
-  install -Dm644 "${srcdir}/LSA_Linux_64_readme.txt" "usr/share/doc/${pkgname}/LSA_Linux_readme.txt"
+  install -Dm644 "${srcdir}/LSI_Storage_Authority_Software_User_Guide_rev2.15.pdf" "usr/share/doc/${pkgname}/LSI_Storage_Authority_Software_User_Guide.pdf"
+  install -Dm644 "${srcdir}/LSA_Linux/LSA_Linux_64_readme.txt" "usr/share/doc/${pkgname}/LSA_Linux_readme.txt"
 
   # Configure the port server/client: 2463 for bundled nginx server & 9009 for LSA client
   # NOTE: Some programs, like youtube-mpv-git [AUR], uses the port 9000 (used by default in LSA client).
@@ -109,7 +119,7 @@ package() {
 
   # Install licenses
   install -d "usr/share/licenses/${pkgname}/"
-  cat "${srcdir}/gcc_11.2.x/install.sh" | sed -n '22,72p' | sed -e 's|echo "||g' -e 's|^"||g' -e 's| "$||g' -e 's|"$||g' > "usr/share/licenses/${pkgname}/LICENSE"
+  cat "${srcdir}/LSA_Linux/gcc_11.2.x/install.sh" | sed -n '22,72p' | sed -e 's|echo "||g' -e 's|^"||g' -e 's| "$||g' -e 's|"$||g' > "usr/share/licenses/${pkgname}/LICENSE"
 
   # Create soname links
   _create_links
