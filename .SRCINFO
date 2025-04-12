@@ -1,6 +1,6 @@
 pkgbase = jftui
 	pkgdesc = TUI client for Jellyfin based on mpv
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/Aanok/jftui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = jftui
 	depends = curl
 	provides = jftui
 	conflicts = jftui-git
-	source = https://github.com/Aanok/jftui/archive/v0.7.2.tar.gz
+	source = https://github.com/Aanok/jftui/archive/v0.7.3.tar.gz
 	sha256sums = 692c914408f3cba6e052064a55967f872dcb7387f4e6ce50edca2adf865700a3
 
 pkgname = jftui
