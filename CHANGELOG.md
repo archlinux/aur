@@ -18,6 +18,53 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.28.1] - 2025-03-13
+
+## 🐛 Fixes
+
+- **Fix telemetry reporting for release builds - @pubmodmatt PR #2445**
+
+  Telemetry was not working for release builds. This has been corrected. See the Rover [privacy policy](https://www.apollographql.com/docs/rover/privacy) for information about anonymous usage data collection in Rover.
+
+## 🛠 Maintenance
+
+- **Update CODEOWNERS to Graph Tooling - @pubmodmatt PR #2444**
+- **Remove redundant CODEOWNERS file - @pubmodmatt PR #2446**
+
+# [0.28.0] - 2025-03-12
+
+## 🚀 Features
+
+- **Default to Apollo Router 2.x for `rover dev` - @pubmodmatt PR #2433**
+
+  The default version of Apollo Router used by `rover dev` is now 2.x instead of 1.x. The default can be overridden by
+  setting `APOLLO_ROVER_DEV_ROUTER_VERSION`, for example `APOLLO_ROVER_DEV_ROUTER_VERSION=1.61.0`.
+
+- **Implement supergraph config schema command -  @jonathanrainer PR #2418**
+
+  Adds a new `rover supergraph config schema` command to output the JSONSchema for `supergraph.yaml`. This can be used
+  to configure editor support for the file.
+
+## 🐛 Fixes
+
+- **Add specific CompositionError handling - @jonathanrainer PR #2422**
+- **Pass log_level through to Router binary - @monkpow PR #2426**
+- **Fix formatting of table output by `rover config whoami` - @pubmodmatt PR #2413**
+- **Better error on missing environment variable - @pubmodmatt PR #2442**
+
+## 🛠 Maintenance
+
+- **Add Apollo Router 2.x dependency to renovate - @pubmodmatt PR #2430**
+- **Fix CI post update to Rustup 1.28 - @jonathanrainer PR #2431**
+- **Replace backoff with backon - @pubmodmatt PR #2437**
+- **Add exemption for unmaintained humantime dependency - @pubmodmatt PR #2440**
+
+## 📚 Documentation
+
+- **Add docs on using the native GitHub actions - @lleadbet PR #2419**
+- **Add changelog entry for new behaviour w.r.t subgraph_url - @jonathanrainer PR #2420**
+- **GitHub CI/CD - @shorgi PR #2427**
+
 # [0.27.2] - 2025-02-19
 
 ## 🐛 Fixes
@@ -108,6 +155,38 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
   Now that Rover supports hot-reloading from `supergraph.yaml` files we've removed the ability to start multiple
   `rover dev` sessions, in multiple terminal windows, and have them communicate with each other.
+
+- **Remove ambiguity around which URL is used for query execution when using `subgraph_url` and `--graph-ref` flag**
+
+  In previous versions of Rover, when the `--graph-ref` flag was used and a subgraph was specified in the 
+  `supergraph.yaml` to override the values from GraphOS, the `schema.subgraph_url` was used for both schema fetching via introspection **and** query execution.
+  
+  ```yaml
+  federation_version: 2.10.0
+  subgraphs:
+    subgraph_a:
+      schema:
+        subgraph_url: "http://localhost:4000/graphql"
+  ```
+
+  This was a bug in earlier versions of Rover that has only recently been identified. Now if this same situation occurs, Rover will use
+  the given `schema.subgraph_url` (`http://localhost:4000/graphql` in the example above) to fetch the schema **only**. Query
+  execution will use the `routing_url` from GraphOS.
+
+  This is consistent with the documented behaviour since this feature launched and in addition is consistent with the 
+  principle that the use of the `supergraph.yaml` will only override `--graph-ref` where you explicitly state that 
+  should happen. To obtain the original behaviour again you simply need to override the `routing_url` in the 
+  `supergraph.yaml` as well, so the example above would become:
+  
+  ```yaml
+  federation_version: 2.10.0
+  subgraphs:
+    subgraph_a:
+      routing_url: "http://localhost:4000/graphql"
+      schema:
+        subgraph_url: "http://localhost:4000/graphql"
+  ```
+  and this will use `http://localhost:4000/graphql` for query execution **and** schema fetching via introspection.
 
 ## 🚀 Features
 
