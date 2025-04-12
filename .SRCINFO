@@ -1,6 +1,6 @@
 pkgbase = hyprpanel
 	pkgdesc = An opinionated panel/shell for the Hyprland compositor.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/pdf/hyprpanel
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = hyprpanel
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = hyprland>=0.42.0
-	optdepends = systemd: logging support
+	optdepends = uwsm: wayland session support
 	optdepends = pulse-native-provider: volume control support
 	optdepends = upower: battery status support
 	options = !strip
-	source = https://github.com/pdf/hyprpanel/archive/v0.2.0/hyprpanel-0.2.0.tar.gz
-	sha256sums = 84e1926182af7d13604f2d0c92dfac14b944bcb1b7ec7c752430a09dd180a61c
+	source = https://github.com/pdf/hyprpanel/archive/v0.3.0/hyprpanel-0.3.0.tar.gz
+	sha256sums = 55a8015a136d7888baf315f8cbbc023414f2e0b8df2e5fd35f149ef3b825ac06
 
 pkgname = hyprpanel
