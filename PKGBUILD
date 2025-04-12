@@ -1,6 +1,6 @@
 pkgname=abciview
 _pkgname=ABCiview
-pkgver=1.0.0
+pkgver=1.0.2.aurpatch
 pkgrel=1
 pkgdesc="Unofficial ABC iview desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('120c1f4570e72cace4a4148dc4666a769cac9d36d50f7a3f3cfe66ef13da6f29')
+sha256sums=('24cae17fc4d705768eec362501b3361c8fa577e5d696d867a9c80a4d1190ce12')
 
 package() {
     cd "$srcdir/application-$pkgver"
