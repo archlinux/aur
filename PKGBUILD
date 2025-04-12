@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: liyp <my@liyp.cc>
 pkgname=uudeck
 pkgver=2025.4.12.0001
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified UU Accelerator for Steam Deck on Arch Linux"
 arch=('x86_64')
 license=('custom')
@@ -9,8 +9,8 @@ url='https://uu.163.com/'
 depends=('curl' 'systemd')
 source=("uuplugin_monitor.sh"
         "uuplugin.service")
-sha256sums=('SKIP'  # 替换为实际值
-            'SKIP') # 替换为实际值
+sha256sums=('eff7ffa59d9352b919355a6f7b05f7e558f74731e188479de2855dd678670432'
+            'bbddf6facbb33d5635fc72f65088830cdbe04f2a6926b2d0216bc8fccf53c02f')
 
 package() {
     # 安装监控脚本
