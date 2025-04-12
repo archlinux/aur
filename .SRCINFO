@@ -21,6 +21,7 @@ pkgbase = okpanel-git
 	depends = upower
 	depends = brightnessctl
 	depends = ttf-jetbrains-mono-nerd
+	depends = libnotify
 	source = git+https://github.com/JohnOberhauser/OkPanel.git
 	sha256sums = SKIP
 
