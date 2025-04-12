@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpv' 'curl' 'coreutils')
 optdepends=(
   'ollama: local inference with modelos like gemma2'
-  'llama-cuda: accel backend for Ollama'
+  'ollama-cuda: accel backend for Ollama'
 )
 makedepends=('git')
 source=("git+$url.git")

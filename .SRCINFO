@@ -10,7 +10,7 @@ pkgbase = mpvcovergrabber-git
 	depends = curl
 	depends = coreutils
 	optdepends = ollama: local inference with modelos like gemma2
-	optdepends = llama-cuda: accel backend for Ollama
+	optdepends = ollama-cuda: accel backend for Ollama
 	source = git+https://gitlab.com/teraflops/mpvcovergrabber.git
 	md5sums = SKIP
 
