@@ -1,7 +1,7 @@
 pkgbase = python-cclib
 	pkgdesc = A library for parsing and interpreting the results of computational chemistry packages.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://cclib.github.io
 	arch = any
 	license = BSD-3-Clause

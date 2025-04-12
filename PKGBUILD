@@ -3,7 +3,7 @@
 _name="cclib"
 pkgname="python-${_name}"
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages."
 arch=("any")
 url="http://cclib.github.io"
@@ -29,16 +29,26 @@ sha256sums=('d10aa2352479fcdaa86cc32055a8ae7f98ce26523ea928944ab2256f0875d605')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
+
+  # remove upper version restriction on versioningit
   sed -i "s/versioningit~=2.0/versioningit/" pyproject.toml
 }
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python -m build --wheel --no-isolation
+
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  /usr/bin/python -m installer --destdir="${pkgdir}" dist/*.whl
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
+
+# Requires many heavy dependencies
+# check() {
+#   cd "${srcdir}/${_name}"
+#   /usr/bin/python -m pytest
+# }
