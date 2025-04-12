@@ -2,7 +2,7 @@
 
 _pkgname=fabric
 pkgname="hyperledger-${_pkgname}"
-pkgver=2.5.0
+pkgver=3.1.0 # renovate: datasource=github-tags depName=hyperledger/fabric
 pkgrel=1
 pkgdesc="A platform for distributed ledger solutions, underpinned by a modular architecture delivering high degrees of confidentiality, resiliency, flexibility and scalability"
 arch=(armv6h armv7h arm aarch64 i686 x86_64)
@@ -59,7 +59,7 @@ package() {
     "${pkgdir}/usr/lib/environment.d/${_pkgname}-peer.conf"
 }
 
-sha256sums=('abdb98622ac6b322286b3b879f793cc679e582d64c0775d7c8b030a0968f7f1b'
+sha256sums=('e1bce2271d2484c20e6764281b6ff7f9861fe49e7da7bf97a5e94a9fba021426'
             'bfdfb0f96bea3f6c2cafb17224fd5b21ec664352ef347841803e2448ca05426f'
             'de85c5359019e44d5086d880cbcf6ab0b84e9bb456ed3e7302997f7e715eb908'
             '9b29b63afd556563de227841060a2c7653d289cc70458992ef54d0339a53de94'
