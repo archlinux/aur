@@ -3,12 +3,11 @@
 pkgname=trctl
 pkgdesc="A transmission daemon CLI"
 url="https://github.com/user827/trctl.git"
-pkgver=2.7.7
+pkgver=2.7.8
 pkgrel=1
 arch=('any')
 license=('Apache')
 source=("$pkgname::git+$url#tag=v${pkgver}?signed")
-depends=('shlib')
 optdepends=('s-nail')
 makedepends=('mold')
 sha256sums=(SKIP)
@@ -54,6 +53,7 @@ package() {
   install -D -m755 target/"$_builddir"/trmv "$pkgdir"/usr/bin/trmv
   install -D -m755 target/"$_builddir"/trctl "$pkgdir"/usr/bin/trctl
 
+  install -D -m755 scripts/logging.sh "$pkgdir"/usr/lib/"$pkgname"/logging.sh
   install -D -m755 scripts/move.sh "$pkgdir"/usr/lib/"$pkgname"/move.sh
   install -D -m755 scripts/completed.sh "$pkgdir"/usr/lib/"$pkgname"/completed.sh
   install -D -m644 scripts/completed.toml "$pkgdir"/etc/"$pkgname"/completed.toml
