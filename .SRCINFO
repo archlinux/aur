@@ -4,6 +4,7 @@ pkgbase = xcursor-samtoki-cursors
 	pkgrel = 1
 	url = https://github.com/SamToki/Sam-Toki-Mouse-Cursors/
 	arch = any
+	license = CC-BY-NC-SA-3.0
 	depends = libxcursor
 	options = !strip
 	source = https://github.com/SamToki/Sam-Toki-Mouse-Cursors//archive/refs/tags/v7.03.tar.gz
