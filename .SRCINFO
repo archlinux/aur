@@ -1,6 +1,6 @@
 pkgbase = ballerina-bin
 	pkgdesc = Ballerina, an open-source programming language for the cloud
-	pkgver = 2201.10.0
+	pkgver = 2201.12.3
 	pkgrel = 1
 	url = https://ballerina.io
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ballerina-bin
 	provides = bal
 	conflicts = ballerina
 	source = ballerina-bin.sh
-	source = https://github.com/ballerina-platform/ballerina-distribution/releases/download/v2201.10.0/ballerina-2201.10.0-swan-lake.zip
+	source = https://github.com/ballerina-platform/ballerina-distribution/releases/download/v2201.12.3/ballerina-2201.12.3-swan-lake.zip
 	sha256sums = 7089633fd3b49a6d3e5ea2c793e213907ca7fc4bd670a422f911a74bbf470c95
-	sha256sums = fa00fa7c30ade1f650ea118d80f46b174b0b87d593030d199a23758a9edbc3ea
+	sha256sums = d70ac8479809e0ad326fdc88de0670d76038d64bebcbf57fadd98bddd405fa53
 
 pkgname = ballerina-bin
