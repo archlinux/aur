@@ -4,7 +4,7 @@
 pkgname=pathetic
 pkgver=0.1
 pkgrel=1
-pkgdesc="A lightweight meme-powered programming language for DSA practice"
+pkgdesc="A lightweight meme-powered programming language."
 arch=('x86_64')
 url="https://github.com/aditya-ig10/pathetic-lang"
 license=('MIT')
