@@ -5,10 +5,10 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.39.0.r1.g6fe96f9
-pkgrel=2
+pkgver=0.40.0.r0.g5c3ece8
+pkgrel=1
 epoch=1
-pkgdesc='Feature-rich terminal-based text pager (latest commit)'
+pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -51,10 +51,14 @@ build() {
     'Zx86_64' )
       # RFC-0023: https://rfc.archlinux.page/0023-pack-relative-relocs/
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;;
+  esac
+
+  case "Z${CARCH:-unknown}" in
+    'Zaarch64' | 'Zx86_64' )
       # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
       export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
     ;;
-    * ) : pass ;;
   esac
 
   export CGO_CFLAGS="$CFLAGS"
