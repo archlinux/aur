@@ -2,12 +2,12 @@
 
 pkgname=dimland-git
 pkgver=r36.3934c32
-pkgrel=3
+pkgrel=4
 pkgdesc='Wayland screen dimmer'
 arch=('any')
 url='https://github.com/keifufu/dimland.git'
 license=('MIT')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'libxkbcommon')
 source=("${pkgname}::git+https://github.com/keifufu/dimland.git")
 sha256sums=('SKIP')
 
