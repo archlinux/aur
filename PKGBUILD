@@ -2,14 +2,14 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.5.9.r2.8cd7c26
+pkgver=1.5.9.r3.5d87266
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://developers.italia.it/it/cie"
 license=('BSD')
 depends=('crypto++' 'java-runtime>=17' 'libnotify' 'openssl' 'pcsclite' 'podofo')
-makedepends=('git' 'gradle' 'meson')
+makedepends=('git' 'gradle' 'java-environment>=17' 'meson')
 install="${pkgname%-git}.install"
 
 source=("${pkgname%-git}::git+https://github.com/M0Rf30/${pkgname%-git}-linux")
