@@ -6,8 +6,8 @@ pkgname=(rime-wanxiang-data
          rime-wanxiang-dict-cn)
 _schema_version=6.4
 _dict_version=20250411
-pkgver=${_schema_version}+${_dict_version}
-pkgrel=1
+pkgver=6.4+20250411
+pkgrel=2
 pkgdesc="万象词库"
 arch=(any)
 license=('CC-BY-4.0')
@@ -19,7 +19,7 @@ sha256sums=('88931ad92bf1de01e010c5b0aa237dc273b8e74534e9adc7e1dd5875a807b815'
             '4e816292fee1efe13ea8180bef3a2007fda126e7bb6852c8d611dbccd9dc63c2'
             'a9bfe807c04dd79c13c2ba761635ced24aa5f14fe47df0cab6ceb9f2b2437ca5')
 
-makedepends=("rime-prelude" "rime-essay" "sed")
+makedepends=("librime" "rime-prelude" "rime-essay" "sed")
 
 build() {
     cd "${srcdir}/rime_wanxiang-${_schema_version}"
