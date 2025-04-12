@@ -1,18 +1,48 @@
 
 post_install() {
-	APACHE_CONF=/etc/httpd/conf/httpd.conf
-	echo "[OK] QWD Installation complete."
-	echo "You should now perform:"
-	echo "  Comment    line 'LoadModule mpm_event'    in ${APACHE_CONF} as it conflicts with mpm-itk"
-	echo "  Un-Comment line '#LoadModule mpm_prefork' in ${APACHE_CONF}"
-	echo "  Add line 'LoadModule mpm_itk_module modules/mpm_itk.so' at the end of your ${APACHE_CONF}"
-	echo "  Add line 'Include conf/extra/qemu-web-desktop.conf'     at the end of your ${APACHE_CONF}"
-	echo "  sudo systemctl enable httpd   # restart apache"
-	echo "  sudo systemctl daemon-reload"
-	echo "  sudo systemctl restart httpd"
-	echo "  sudo qwdctl refresh           # update list of VM"
-	echo "Then connect to      http://localhost/qemu-web-desktop for immediate use."
-	echo "or launch a VM with: qwdctl start VM"
-	echo "or refer to          https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop"
-	echo "to configure the service."
+#!/bin/bash
+
+FILE=/usr/share/qemu-web-desktop/qwdctl-init
+DIR_WWW=/srv/http
+APACHE_CONF=/etc/httpd/conf/httpd.conf
+dd status=none of=${FILE} << EOF
+#!/bin/sh
+# $FILE
+# Purpose: Configure QWD for Arch
+echo "Creating user _qemu-web-desktop"
+useradd --system -m --home-dir         /var/lib/qemu-web-desktop --badname _qemu-web-desktop
+chown -R _qemu-web-desktop             /var/lib/qemu-web-desktop
+ln -sf /usr/share/qemu-web-desktop/html/desktop  $DIR_WWW/qemu-web-desktop
+ln -sf /usr/share/webapps/novnc                  /usr/share/novnc
+# MPM ITK requires prefork, that conflicts with mpm_event
+echo "Configuring Apache for QWD in $APACHE_CONF"
+sed -i 's/LoadModule mpm_event/#LoadModule mpm_event/'              $APACHE_CONF
+sed -i 's/#LoadModule mpm_prefork/LoadModule mpm_prefork/'          $APACHE_CONF
+grep -q "mpm_itk"          $APACHE_CONF || echo "LoadModule mpm_itk_module modules/mpm_itk.so" >> $APACHE_CONF
+grep -q "qemu-web-desktop" $APACHE_CONF || echo "Include conf/extra/qemu-web-desktop.conf" >> $APACHE_CONF
+echo "Starting QWD service"
+systemctl enable httpd
+systemctl daemon-reload
+systemctl restart httpd
+qwdctl refresh
+EOF
+chmod a+x $FILE
+
+echo "[OK] QWD Installation complete."
+echo " "
+echo "You should now execute actions:"
+echo " "
+echo "  cat  $FILE"
+echo "  sudo $FILE"
+echo " "
+echo "Then connect to      http://localhost/qemu-web-desktop for immediate use."
+echo "or launch a VM with: qwdctl start VM"
+echo "or refer to          https://gitlab.com/soleil-data-treatment/soleil-software-projects/qemu-web-desktop"
+echo "to configure the service (e.g. add VM, authentication, ...)."
+echo " "
+echo "Most configuration can be done with:"
+echo "- qwdctl edit config      # e.g. activate authentication and more..."
+echo "- copy your VM's to       /var/lib/qemu-web-desktop/machines"
+echo "- qwdctl edit machines    # add [VM] name and description to list"
+
 }
