@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zener
-pkgver=6.13.6.zener1
+pkgver=6.14.zener1
 pkgrel=1
 pkgdesc='Linux kernel based on zen'
 url='https://github.com/zerodegress/linux-zener'
@@ -12,10 +12,15 @@ makedepends=(
   bc
   cpio
   gettext
+  llvm
+  lld
   libelf
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 
@@ -43,14 +48,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('de0053cb413d408f20fd1d5788219951b8a4403e5dac1b1d9032090938acd199'
+sha256sums=('a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670'
             'SKIP'
-            '80e5846f1458ab0b97123d59c3b53c07e347ab453f9eb37f9285b918b50390a5'
-            '385119ca218f8218fe63cd8dd5566dc0c0f8264cf8fe4268c18de2300f3899b9')
-b2sums=('5a216c56c77efaee1a3f5c9198ade9180e4640ffcde39662ccf85c2a5945a08c5f362220fb0906369c72a3ea8bdc16fdd24d3e1dbc0f51fc831f3f724ed73300'
+            '741ed52a9f23af3b76e6d321d721407b724d461f795c0f3fda6e13157d06c635'
+            '6d637cf649ca236534ded857669a4f9c3ad9b1123209c1ea4860f66a99e93f7b')
+b2sums=('11835719804b406fe281ea1c276a84dc0cbaa808552ddcca9233d3eaeb1c001d0455c7205379b02de8e8db758c1bae6fe7ceb6697e63e3cf9ae7187dc7a9715e'
         'SKIP'
-        '1a857a688782f5bb82e60a3bfe992886a9be07ba58b438e9cc79bd318f12612151980a270810bfd6d5ff6a9f9af21976f9f09999be33fc9aa6dbff081c12c6ac'
-        '58008d615ac59a4344e6710b10f122315268413872604e99496cea8edb7895983578810a5c6585a70cab19c8cee196d85b9d8c7d6ed265784a49658445a1301b')
+        '0f2a5b0bc7589d07a5b2032b2a8aa37b32d9f800c06d4afb6c056c91ddde9656da1d36019fcd0f812bb1d82c8dc2694a1cb40c6be91d4235a3bf87e57c707bf8'
+        '7efd74cd40c8e8601bd109adfbac969f613d87810aa9f4e558a2b0fad53e1c6317d130288ea1c0ae48cf97de467fd120b52b5a52026e7b169a35d887b50a68bb')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -73,19 +78,35 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  if rustup --help >/dev/null 2>&1; then
+    echo "Installing rust-src"
+    rustup component add rust-src
+  fi
+
+  echo "Verifying that Rust support is available"
+  make LLVM=1 rustavailable
+
+  echo "Generating rust-toolchain"
+  # We can't redirect it directly to the file, since otherwise the shell would
+  # create it empty before the rustup rustc shim starts and then rustup would
+  # complain "that empty toolchain override file detected. Please remove it, or
+  # else specify the desired toolchain properties in the file"
+  rust_version=$(rustc --version | cut -d' ' -f 2)
+  echo "$rust_version" > "$srcdir/rust-toolchain"
+
   echo "Setting config..."
   cp ../config .config
-  make olddefconfig
+  make LLVM=1 olddefconfig
   diff -u ../config .config || :
 
-  make -s kernelrelease > version
+  make LLVM=1 -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make all
-  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
+  make LLVM=1 all
+  make LLVM=1 -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
   # make htmldocs
 }
 
@@ -117,13 +138,13 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make LLVM=1 -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 make LLVM=1 INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build link
