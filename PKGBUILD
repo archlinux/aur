@@ -1,7 +1,7 @@
 # Maintainer: Artem Stasyuk <stasyukartem2@gmail.com>
 pkgname=onetagger-bin
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=0
 pkgdesc="The ultimate cross-platform tagger for DJs"
 arch=('x86_64')
 url="https://onetagger.github.io/"
@@ -44,10 +44,10 @@ optdepends=(
     'gst-plugins-bad: For additional GStreamer plugins'
 )
 conflicts=('onetagger')
-source=("https://github.com/Marekkon5/onetagger/releases/download/1.7.0/OneTagger-linux.tar.gz"
+source=("https://github.com/XCroatoanX/onetagger/releases/download/1.7.1/OneTagger-linux.tar.gz"
         "onetagger.png"
         "onetagger.desktop")
-sha256sums=('dc0ddfa604c24fdceeb533adcff2a559f060d68d985236c3270408a541753bd6'
+sha256sums=('8bc400eadcdd5bcc72ce8bf9e91d1faa6e6b2f8f85deac4b87f12cfe97888726'
             '6a0ecc9b2f8d4f2ebb7f168c3158feadaa0a391837034df8856a0c0bde3219aa'
             '308891e4556f602afedfbc5bd9c0ef35b49ff56329cb53ffeb870017b52cbf3d')
 
