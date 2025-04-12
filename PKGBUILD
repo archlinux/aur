@@ -1,25 +1,24 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-sycl-f16-git
-pkgver=b5123
+pkgver=b5123.r1.bc091a4dc
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('intel-oneapi-basekit')
+depends=('ggml-sycl-f16-git')
 makedepends=(
   'cmake'
   'git'
-  'intel-oneapi-basekit'
 )
 optdepends=(
   'python-gguf: convert_hf_to_gguf python script'
   'python-numpy: convert_hf_to_gguf.py python script'
   'python-pytorch: convert_hf_to_gguf.py python script'
 )
-conflicts=("${pkgname%%-git}")
-provides=("${pkgname%%-git}")
+conflicts=("${pkgname%%-git}" 'llama.cpp')
+conflicts=("${pkgname%%-git}" 'llama.cpp')
 source=("${pkgname%%-git}::git+${url}"
   "kompute::git+https://github.com/nomic-ai/kompute.git"
   "llama.cpp.conf"
@@ -48,8 +47,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=icx \
     -DCMAKE_CXX_COMPILER=icpx \
-    -DGGML_SYCL_F16=1 \
-    -DLLAMA_BUILD_TESTS=0
+    -DLLAMA_BUILD_TESTS=0 \
+    -DLLAMA_USE_SYSTEM_GGML=1
 
   cmake --build build
 }
