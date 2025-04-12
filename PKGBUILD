@@ -7,7 +7,7 @@ pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OPENBlas CPU optimization
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('cblas' 'openblas' 'sdl2-compat')
+depends=('ggml-git' 'sdl2-compat')
 makedepends=(
   'cmake'
   'git'
@@ -21,9 +21,8 @@ build() {
     -S "${srcdir}/${pkgname}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_BLAS=1 \
-    -DGGML_BLAS_VENDOR=OpenBLAS \
-    -DWHISPER_SDL2=1
+    -DWHISPER_SDL2=1 \
+    -DWHISPER_USE_SYSTEM_GGML=1
 
   cmake --build "${srcdir}/build"
 }
