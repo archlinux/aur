@@ -1,6 +1,6 @@
 pkgbase = 9now
 	pkgdesc = Unofficial 9 Now desktop application.
-	pkgver = 1.0.1
+	pkgver = 1.0.2.aurpatch
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/9now
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = 9now
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
-	depends = libelectron
+	depends = libelectron>=2025.1
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/9now/application/-/archive/1.0.1/application-1.0.1.tar.bz2
-	sha256sums = bd442398f26f6c7c96bf32ec08d2c6a8395d3317eedfaf9e51192ddc5b3f5246
+	source = https://gitlab.com/linuxbombay/9now/application/-/archive/1.0.2.aurpatch/application-1.0.2.aurpatch.tar.bz2
+	sha256sums = a1db2cdcb7d80132cdc795314d393a19d8d9337302374563252ba58a14172460
 
 pkgname = 9now
