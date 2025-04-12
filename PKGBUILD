@@ -2,7 +2,7 @@
 
 _name="iodata"
 pkgname="python-${_name}-git"
-pkgver=1.0.0a5.r1569.f8af4e8
+pkgver=1.0.0a5.r1575.cd68593
 pkgrel=1
 pkgdesc="Python library for reading, writing, and converting computational chemistry file formats and generating input files. (git version)"
 arch=("any")
@@ -29,18 +29,21 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_name}"
-  python -m build --wheel --no-isolation
+
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  /usr/bin/python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 check() {
   cd "${srcdir}/${_name}"
+
   # these require the package to be installed
-  python -m pytest -k 'not test_scripts'
+  /usr/bin/python -m pytest -k 'not test_scripts'
 }
 
 pkgver() {

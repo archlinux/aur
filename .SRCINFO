@@ -1,6 +1,6 @@
 pkgbase = python-iodata-git
 	pkgdesc = Python library for reading, writing, and converting computational chemistry file formats and generating input files. (git version)
-	pkgver = 1.0.0a5.r1569.f8af4e8
+	pkgver = 1.0.0a5.r1575.cd68593
 	pkgrel = 1
 	url = https://iodata.readthedocs.io/en/latest/index.html
 	arch = any
