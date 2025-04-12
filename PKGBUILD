@@ -1,4 +1,4 @@
-# Maintainer: Maxim Polishchuck <mpolishchuck[at]gmail[dot]com>
+# Maintainer: Maksym Polishchuk <mpolishchuck[at]gmail[dot]com>
 
 pkgbase=eusw
 pkgname=(
@@ -7,18 +7,19 @@ pkgname=(
     "${pkgbase}-nmh-manifest"
     "${pkgbase}-pcsc-driver"
 )
-pkgver=1.3.1.76
+pkgver=1.3.1.79
 pkgrel=1
 pkgdesc="IIT End User CA-1. Sign (web)"
 url="https://iit.com.ua"
+license=('custom')
 arch=('i686' 'x86_64')
 
 if [[ $CARCH = i686 ]]; then
-    _src_md5sum='37920e12535f541d55428126e3587c40'
+    _src_md5sum='7b57d8bca9b899a46cf1e16cf101419d'
     _srcuri_filename='euswi.tar'
     _src_filename="eusw_${pkgver}_i386.tar"
 else
-    _src_md5sum='82b0154ce707501cc640067d442d78bb'
+    _src_md5sum='16274e2f8f29c49f50d9c8289db1c524'
     _srcuri_filename='euswi.64.tar'
     _src_filename="eusw_${pkgver}_amd64.tar"
 fi
@@ -27,12 +28,14 @@ source=(
     "${_src_filename}::https://iit.com.ua/download/productfiles/${_srcuri_filename}"
     'chrome.ua.com.iit.eusign.nmh.json'
     'mozilla.ua.com.iit.eusign.nmh.json'
+    'NO-LICENSE'
 )
 noextract=("${_src_filename}")
 md5sums=(
     "${_src_md5sum}"
     '64ed17e9ee22c1cbd05593131c492f33'
     '9d9c48e1078d3c58a3d82b216ff98cbc'
+    '9a35d24d8c91d1cdf8b9b4b306aa178d'
 )
 
 package_eusw() {
@@ -57,6 +60,9 @@ package_eusw() {
     # Removing install/uninstall scripts
     rm ${pkgdir}/opt/iit/eu/sw/install.sh
     rm ${pkgdir}/opt/iit/eu/sw/uninstall.sh
+
+    # Install license information file
+    install -Dm644 "${srcdir}/NO-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NO-LICENSE"
 }
 
 package_eusw-npapi-plugin() {
@@ -65,6 +71,9 @@ package_eusw-npapi-plugin() {
 
     mkdir -p ${pkgdir}/usr/lib/mozilla/plugins
     ln -s /opt/iit/eu/sw/npeuscp.so ${pkgdir}/usr/lib/mozilla/plugins/npeuscp.so
+
+    # Install license information file
+    install -Dm644 "${srcdir}/NO-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NO-LICENSE"
 }
 
 package_eusw-nmh-manifest() {
@@ -77,6 +86,9 @@ package_eusw-nmh-manifest() {
     install -Dm644 ${srcdir}/chrome.ua.com.iit.eusign.nmh.json ${pkgdir}/etc/chromium/native-messaging-hosts/ua.com.iit.eusign.nmh.json
     # Installing native messaging host manifest (Mozilla)
     install -Dm644 ${srcdir}/mozilla.ua.com.iit.eusign.nmh.json ${pkgdir}/usr/lib/mozilla/native-messaging-hosts/ua.com.iit.eusign.nmh.json
+
+    # Install license information file
+    install -Dm644 "${srcdir}/NO-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NO-LICENSE"
 }
 
 package_eusw-pcsc-driver() {
@@ -85,4 +97,7 @@ package_eusw-pcsc-driver() {
 
     mkdir -p ${pkgdir}/usr/lib
     ln -s /opt/iit/eu/sw/libav337p11d.so ${pkgdir}/usr/lib/libav337p11d.so
+
+    # Install license information file
+    install -Dm644 "${srcdir}/NO-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NO-LICENSE"
 }
