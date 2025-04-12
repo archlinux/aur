@@ -1,11 +1,10 @@
 pkgbase = rtw88-dkms-git
 	pkgdesc = Driver for Realtek 802.11ac wireless chips
-	pkgver = r600.e32c796
+	pkgver = r638.0f261f9
 	pkgrel = 1
 	url = https://github.com/lwfinger/rtw88
 	arch = any
 	license = GPL2
-	license = custom
 	makedepends = git
 	depends = dkms
 	depends = linux-firmware
