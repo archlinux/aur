@@ -1,7 +1,7 @@
 pkgname=netlify-application
 _pkgname=Netlify
 pkgrlname=netlify
-pkgver=1.1.3
+pkgver=1.1.4.aurpatch
 pkgrel=1
 pkgdesc="Unofficial Netlify desktop application"
 arch=('x86_64' 'aarch64')
@@ -10,14 +10,13 @@ url="https://gitlab.com/linuxbombay/netlify-desktop//application"
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('83c5a36fc6106a4c8bea80aa954fa599e2f83727f74987e81d9256bc3b4a3f6a')
+sha256sums=('fab686bd89b6590858ce3848946ed88737497c8988d7d56efd28450f08c8818f')
 
 
 package() {
-    for dir in application-$pkgver ; do mv "${dir}" "$_pkgname" ;done
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/application-$pkgver"
     chmod +x $pkgrlname
-    ln -sf "/opt/libelectron/node_modules" "$srcdir/$_pkgname"
+    ln -sf "/opt/libelectron/node_modules" "$srcdir/application-$pkgver"
     install -dm755 "$pkgdir/opt/$_pkgname"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/$_pkgname"
@@ -30,7 +29,7 @@ package() {
     ln -s "/opt/Netlify/$pkgrlname" "$pkgdir/usr/bin/$pkgrlname"
 
     # Desktop Entry
-    install -Dm644 "$srcdir/$_pkgname/$pkgrlname.desktop" \
+    install -Dm644 "$srcdir/application-$pkgver/$pkgrlname.desktop" \
         "$pkgdir/usr/share/applications/$pkgrlname.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$pkgrlname.desktop"
 }
