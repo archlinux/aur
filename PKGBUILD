@@ -7,7 +7,7 @@
 
 pkgname=pxview-git
 pkgver=1.3.7.r7.8c9ef49
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
 arch=(i686 x86_64)
@@ -53,7 +53,8 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev \
-    -B build
+    -B build \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # FIXME
   cmake --build build
 }
 
