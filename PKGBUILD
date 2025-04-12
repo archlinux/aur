@@ -4,19 +4,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dbix-class-schema-loader'
-pkgver='0.07052'
+pkgver='0.07053'
 pkgrel='1'
 pkgdesc="Create a DBIx::Class::Schema based on a database"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-carp-clan' 'perl-class-accessor-grouped>=0.10008' 'perl-class-c3-componentised>=1.0008' 'perl-class-inspector>=1.27' 'perl-class-unload>=0.07' 'perl-dbd-sqlite>=1.29' 'perl-dbix-class>=0.08127' 'perl-data-dump>=1.06' 'perl-hash-merge>=0.12' 'perl-lingua-en-inflect-number>=1.1' 'perl-lingua-en-inflect-phrase>=0.15' 'perl-lingua-en-tagger>=0.23' 'perl-mro-compat>=0.09' 'perl-scope-guard>=0.20' 'perl-string-camelcase>=0.04' 'perl-string-toidentifier-en>=0.05' 'perl-try-tiny' 'perl-curry>=1.000000' 'perl-namespace-clean>=0.23')
 makedepends=()
 checkdepends=('perl-test-deep>=0.107' 'perl-test-differences>=0.60' 'perl-test-exception>=0.31' 'perl-test-warn>=0.21')
 url='https://metacpan.org/release/DBIx-Class-Schema-Loader'
 source=("http://search.cpan.org/CPAN/authors/id/V/VE/VEESH/DBIx-Class-Schema-Loader-${pkgver}.tar.gz")
-md5sums=('b393e72ffab55dc6ca5d159b4252abbb')
-sha512sums=('9cf027024ebf1f2b24ffa6626c05f2237f37f640b167ee3964d74340730f9e5490936a2f4262e47ea647c4561d0cab7f4b96a07f07c81ebc14dbf642267d7ee1')
+md5sums=('a9222cdd26740228177f0e9479931efd')
+sha512sums=('a3d3c638a3fb971bb75b12900c834584d092432cdcd6d6dc0d16efd8715d5985ae142aae59dbea359af52aed6441b52f6308ef9049f85bd7756363d1d213a645')
 _distdir="DBIx-Class-Schema-Loader-${pkgver}"
 
 build() {

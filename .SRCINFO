@@ -1,11 +1,10 @@
 pkgbase = perl-dbix-class-schema-loader
 	pkgdesc = Create a DBIx::Class::Schema based on a database
-	pkgver = 0.07052
+	pkgver = 0.07053
 	pkgrel = 1
 	url = https://metacpan.org/release/DBIx-Class-Schema-Loader
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
 	checkdepends = perl-test-deep>=0.107
 	checkdepends = perl-test-differences>=0.60
 	checkdepends = perl-test-exception>=0.31
@@ -31,8 +30,8 @@ pkgbase = perl-dbix-class-schema-loader
 	depends = perl-curry>=1.000000
 	depends = perl-namespace-clean>=0.23
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/V/VE/VEESH/DBIx-Class-Schema-Loader-0.07052.tar.gz
-	md5sums = b393e72ffab55dc6ca5d159b4252abbb
-	sha512sums = 9cf027024ebf1f2b24ffa6626c05f2237f37f640b167ee3964d74340730f9e5490936a2f4262e47ea647c4561d0cab7f4b96a07f07c81ebc14dbf642267d7ee1
+	source = http://search.cpan.org/CPAN/authors/id/V/VE/VEESH/DBIx-Class-Schema-Loader-0.07053.tar.gz
+	md5sums = a9222cdd26740228177f0e9479931efd
+	sha512sums = a3d3c638a3fb971bb75b12900c834584d092432cdcd6d6dc0d16efd8715d5985ae142aae59dbea359af52aed6441b52f6308ef9049f85bd7756363d1d213a645
 
 pkgname = perl-dbix-class-schema-loader
