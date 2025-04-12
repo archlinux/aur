@@ -63,6 +63,9 @@ package() {
 	if [ -f "$pkgname.png" ]; then
 		echo "Installing icon..."
 		install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/clipse-gui.png"
+		# Create directories for necessary assets
+		install -d "$pkgdir/usr/local/share/clipse-gui"
+		install -m755 "$srcdir/$pkgname/dist/clipse-gui.bin" "$pkgdir/usr/local/share/clipse-gui/clipse-gui"
 	else
 		echo "Warning: Icon file '$pkgname.png' not found."
 	fi
