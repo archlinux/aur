@@ -48,6 +48,7 @@ check() {
 
 package() {
   install -Dm 755 $_name-$pkgver/bin/vmagent -t "$pkgdir"/usr/bin/
+  install -Dm 644 $_name-$pkgver/docs/victoriametrics/vmagent.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm 644 victoriametrics-agent.service -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 644 victoriametrics-agent.default "$pkgdir"/etc/default/victoriametrics-agent
   install -Dm 644 victoriametrics.sysusers "$pkgdir"/usr/lib/sysusers.d/victoriametrics.conf
