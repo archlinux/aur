@@ -1,6 +1,6 @@
 pkgbase = primevideo
 	pkgdesc = Unnofficial Prime Videos desktop application
-	pkgver = 1.0.4
+	pkgver = 1.0.5.aurpatch
 	pkgrel = 1
 	url = https://gitlab.com/primevideo/application
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = primevideo
 	depends = git
 	conflicts = primevideo-git
 	conflicts = primevideo-bin
-	source = https://gitlab.com/primevideo/application/-/archive/1.0.4/application-1.0.4.tar.bz2
-	sha256sums = f90bfcd4a17da021aa85506eac0610c7ee59a1063f2be5d62f04fe3691884db7
+	source = https://gitlab.com/primevideo/application/-/archive/1.0.5.aurpatch/application-1.0.5.aurpatch.tar.bz2
+	sha256sums = 3039621cfd2201cdcb353baccf455f9007ac0dd7ffd1001de2a9d661207b63dd
 
 pkgname = primevideo
