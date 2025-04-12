@@ -9,16 +9,14 @@ arch=('x86_64')
 url="https://github.com/mudler/LocalAI"
 license=('MIT')
 backup=("etc/${_pkgbase}/${_pkgbase}.conf")
-depends=('clblast' 'glibc')
+depends=('ocl-icd')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 options=('!strip')
 makedepends=(
   'c-ares'
   'ccache'
-  'clblast'
   'cmake'
-  'cuda'
   'git'
   'go'
   'grpc'
