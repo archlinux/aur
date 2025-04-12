@@ -1,6 +1,6 @@
 pkgbase = clipse-gui
 	pkgdesc = GTK3 GUI for the Clipse clipboard manager
-	pkgver = 1.0.0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/d7omdev/clipse-gui
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = clipse-gui
 	depends = wl-clipboard
 	depends = python
 	depends = python-gobject
-	source = clipse-gui-1.0.0.tar.gz::https://github.com/d7omdev/clipse-gui/archive/refs/tags/v1.0.0.tar.gz
+	source = clipse-gui-0.1.0.tar.gz::https://github.com/d7omdev/clipse-gui/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = clipse-gui
