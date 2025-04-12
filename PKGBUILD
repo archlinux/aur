@@ -1,7 +1,7 @@
 # Maintainer: John Patrick <john.patrick@gmail.com>
 pkgname=arcolinux-app-glade-git
 _pkgname=arcolinux-app-glade
-pkgver=r17.0ed65ff
+pkgver=r61.7e93aca
 pkgrel=1
 pkgdesc="ArcoLinux App Glade"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = arcolinux-app-glade-git
 	pkgdesc = ArcoLinux App Glade
-	pkgver = r17.0ed65ff
+	pkgver = r61.7e93aca
 	pkgrel = 1
 	url = https://github.com/arcolinux/arcolinux-app-glade
 	arch = any
