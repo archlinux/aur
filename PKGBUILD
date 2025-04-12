@@ -4,7 +4,7 @@ pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
 pkgver=2.1.00
-pkgrel=3
+pkgrel=4
 pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -53,6 +53,7 @@ build() {
         /p:PublishSingleFile=true \
         /p:IncludeAllContentForSelfExtract=true \
         /p:IncludeNativeLibrariesForSelfExtract=true \
+        /p:EnableCompressionInSingleFile=true \
         --self-contained true
     popd
 }
