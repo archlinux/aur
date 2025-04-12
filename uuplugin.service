@@ -1,0 +1,11 @@
+[Unit]
+Description=UU Accelerator for Steam Deck
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/uuplugin_monitor
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
