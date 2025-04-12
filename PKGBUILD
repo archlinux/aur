@@ -1,6 +1,6 @@
 pkgname=snapchat
 _pkgname=Snapchat
-pkgver=1.0.3
+pkgver=1.0.4.aurpatch
 pkgrel=1
 pkgdesc="Unofficial Snapchat desktop application."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('1f98dbc9952a02eddf12d98a2b9ba398b6a5c67020fe35363bd2b484a5936c1b')
+sha256sums=('f5bcf08c8d0984f9e01038f06963bd04ed1022fffe0adc3c248f155b9612158b')
 
 
 package() {
