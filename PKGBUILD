@@ -1,6 +1,6 @@
 pkgname=gamerworld
 _pkgname=GamerWorld
-pkgver=1.3.1
+pkgver=1.3.2.aurpatch
 pkgrel=1
 pkgdesc="Play games all in one place"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/gamerworld"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('e6b5ec200dd136b4b35fbbeeebf525860f934c454ffdb239cd2719b311f0b5c4')
+sha256sums=('bac7f3a8d7c61ab4378195f8c84b7d20872ff1819a884aab36784fdc63be9a2a')
 
 package() {
     cd "$srcdir/application-$pkgver"
