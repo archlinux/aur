@@ -21,8 +21,8 @@ conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
 source=("${pkgname%%-git}::git+${url}"
   "kompute::git+https://github.com/nomic-ai/kompute.git"
-  "${pkgname%%-git}.conf"
-  "${pkgname%%-git}.service"
+  "llama.cpp.conf"
+  "llama.cpp.service"
 )
 
 pkgver() {
