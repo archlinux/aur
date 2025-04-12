@@ -2,7 +2,7 @@
 
 _name="cclib"
 pkgname="python-${_name}-git"
-pkgver=1.8.2.r4972.ea13e497
+pkgver=1.8.2.r5198.028874a4
 pkgrel=1
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages. (git version)"
 arch=("any")
@@ -45,19 +45,21 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_name}"
-  python -m build --wheel --no-isolation
+
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  /usr/bin/python -m installer --destdir="${pkgdir}" dist/*.whl
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 # Requires many heavy dependencies
 # check() {
 #   cd "${srcdir}/${_name}"
-#   python -m pytest
+#   /usr/bin/python -m pytest
 # }
 
 pkgver() {
