@@ -3,7 +3,7 @@
 # create .SRCINFO with:     makepkg --printsrcinfo > .SRCINFO
 pkgname='qemu-web-desktop'
 pkgver=25.04.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote desktop service with virtual machines in a browser (DARTS)."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/soleil-data-treatment/soleil-software-projects/$pkgname"
