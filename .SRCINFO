@@ -16,7 +16,7 @@ pkgbase = cie-middleware-git
 	makedepends = gradle
 	makedepends = meson
 	depends = crypto++
-	depends = java-runtime
+	depends = java-runtime>=17
 	depends = libnotify
 	depends = openssl
 	depends = pcsclite
