@@ -1,0 +1,22 @@
+pkgbase = opera-ffmpeg-vivaldi-symlink
+	pkgdesc = A stupid symlink for proprietary codecs for opera
+	pkgver = 134.0.6998.178
+	pkgrel = 1
+	url = https://ffmpeg.org/
+	arch = x86_64
+	license = LGPL2.1
+	depends = vivaldi-ffmpeg-codecs
+	provides = opera-ffmpeg-codecs
+	provides = opera-ffmpeg-codecs-bin
+	provides = opera-developer-ffmpeg-codecs
+	provides = opera-developer-ffmpeg-codecs-bin
+	provides = opera-beta-ffmpeg-codecs
+	provides = opera-beta-ffmpeg-codecs-bin
+	conflicts = opera-ffmpeg-codecs
+	conflicts = opera-ffmpeg-codecs-bin
+	conflicts = opera-developer-ffmpeg-codecs
+	conflicts = opera-developer-ffmpeg-codecs-bin
+	conflicts = opera-beta-ffmpeg-codecs
+	conflicts = opera-beta-ffmpeg-codecs-bin
+
+pkgname = opera-ffmpeg-vivaldi-symlink
