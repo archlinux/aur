@@ -1,0 +1,29 @@
+[Unit]
+Description=Mailrise Service
+Documentation=https://github.com/YoRyan/mailrise
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/usr/bin/mailrise /etc/conf.d/mailrise.yaml
+DynamicUser=yes
+LockPersonality=yes
+NoNewPrivileges=yes
+PrivateMounts=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=no
+ProtectKernelTunables=no
+ProtectSystem=yes
+RemoveIPC=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target
