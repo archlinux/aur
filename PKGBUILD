@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    export MAKEFLAGS="-j(nproc)"
+    export MAKEFLAGS="-j$(nproc)"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
