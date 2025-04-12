@@ -1,16 +1,17 @@
-# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Maintainer: bitcoinlizard <bitcoinlizard at fastmail dot com>
+# Contributor: Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: Steven Malis <smmalis37@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx-git
 _pkgname=electrumx
 pkgver=1.16.0.r2029.0256e97
-pkgrel=1
+pkgrel=2
 pkgdesc="Server implementation for the Electrum wallet (git version)"
 arch=('any')
 depends=('leveldb'
          'python>=3.7'
-         'python-aiorpcx-git>=0.22.0' 'python-aiorpcx-git<0.23.0'
+         'python-aiorpcx-git>=0.23.0' 'python-aiorpcx-git<0.25.0'
          'python-attrs'
          'python-plyvel'
          'python-pylru'
