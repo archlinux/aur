@@ -20,9 +20,9 @@ source=(
 noextract=(
 	"$_pkgname-$_pkgver.jar"
 )
-md5sums=('496fc27db06ddcd85f2b934aba9a32b5'
+md5sums=('8d5965aaafc3169066fc42d599e4ba9e'
          'c3f79bbc7e80620b3cdc4f90f21f4d68'
-         '2698c787647f92532486cd16768a6351')
+         '0ed1b64e442ce50c95089a5ef4bb8fdb')
 
 package() {
   install -Dm755 Unciv.sh "$pkgdir/usr/bin/$_pkgname"
