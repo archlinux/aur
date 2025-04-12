@@ -3,7 +3,7 @@
 
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
@@ -23,11 +23,9 @@ makedepends=(
   'qt6-tools'
 )
 checkdepends=('appstream')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
-        'lrelease.patch')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('ab75e16d9dc01b41faa05bb393c031436764578481cb0524c2a1354cdf50b7de'
-            '7fb40d8ff93d6ca8ec30faf92b98301805ec5266b1190d3f9330c236c379c1a7')
+sha256sums=('311984a28213ea353bed3cb8bf74c40a5fbbfabcac49b907a2b3fe109e6505f3')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
@@ -35,8 +33,8 @@ prepare() {
 
   cd "$pkgname-$pkgver"
 
-  # use qt6-tools lrelease
-  patch -Np1 -i ../lrelease.patch
+  # fix typo
+  sed -i 's/inlcude/include/g' MANIFEST.in
 }
 
 build() {

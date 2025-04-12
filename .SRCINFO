@@ -1,6 +1,6 @@
 pkgbase = jddesktopentryedit
 	pkgdesc = A graphical program to create and edit desktop entries
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://codeberg.org/JakobDev/jdDesktopEntryEdit
 	arch = any
@@ -15,10 +15,8 @@ pkgbase = jddesktopentryedit
 	depends = python-desktop-entry-lib
 	depends = python-pyqt6
 	depends = python-requests
-	noextract = jddesktopentryedit-1.5.tar.gz
-	source = jddesktopentryedit-1.5.tar.gz::https://codeberg.org/JakobDev/jdDesktopEntryEdit/archive/1.5.tar.gz
-	source = lrelease.patch
-	sha256sums = ab75e16d9dc01b41faa05bb393c031436764578481cb0524c2a1354cdf50b7de
-	sha256sums = 7fb40d8ff93d6ca8ec30faf92b98301805ec5266b1190d3f9330c236c379c1a7
+	noextract = jddesktopentryedit-1.6.tar.gz
+	source = jddesktopentryedit-1.6.tar.gz::https://codeberg.org/JakobDev/jdDesktopEntryEdit/archive/1.6.tar.gz
+	sha256sums = 311984a28213ea353bed3cb8bf74c40a5fbbfabcac49b907a2b3fe109e6505f3
 
 pkgname = jddesktopentryedit
