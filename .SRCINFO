@@ -11,6 +11,7 @@ pkgbase = whisper.cpp-vulkan
 	makedepends = git
 	makedepends = shaderc
 	makedepends = vulkan-headers
+	depends = sdl2-compat
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
 	provides = whisper.cpp

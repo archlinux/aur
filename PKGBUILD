@@ -8,7 +8,7 @@ pkgdesc="Port of OpenAI's Whisper model in C/C++ (with Vulkan optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('vulkan-driver' 'vulkan-icd-loader')
+depends=('sdl2-compat' 'vulkan-driver' 'vulkan-icd-loader')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
@@ -21,24 +21,28 @@ makedepends=(
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-
   cmake \
-    -B build \
-    -S . \
+    -B "${srcdir}/build" \
+    -S "${srcdir}/${_pkgbase}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_VULKAN=1
+    -DGGML_VULKAN=1 \
+    -DWHISPER_SDL2=1
 
-  cmake --build build
+  cmake --build "${srcdir}/build"
 }
 
 package() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
 
-  install -Dm644 LICENSE \
-    -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
+  cd "${srcdir}/build/bin"
+  for i in whisper-*; do
+    install -Dm755 "${i}" \
+      "${pkgdir}/usr/bin/${i}"
+  done
+
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 sha256sums=('2fda42b57b7b8427d724551bd041616d85401fb9382e42b0349132a28920a34f')
