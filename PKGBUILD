@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MeSHDbi
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
-pkgrel=1
+pkgver=1.42.0
+pkgrel=2
 pkgdesc='DBI to construct MeSH-related package from sqlite file'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -19,7 +19,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc4e5d4abea6b8a0bdcb0b28d63ab9e3cfab733495b658c219a250f68689a634')
+sha256sums=('cf5e07822ca03759b63d9953941479e7f6c519ec18afada9ed573dbae5bff32f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
