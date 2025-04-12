@@ -5,7 +5,7 @@
 
 pkgname=avbroot
 pkgver=3.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for patching Android A/B-style OTA images for root access"
 arch=('x86_64')
 url="https://github.com/chenxiaolong/avbroot"
