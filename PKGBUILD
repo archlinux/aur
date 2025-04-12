@@ -1,5 +1,5 @@
 # Maintainer: karboncore
-# Maintainer: detiam <dehe_tian@outlook.com>
+# Contributor: detiam <dehe_tian@outlook.com>
 # Contributor: Nikita Tarasov <nikatar@disroot.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
