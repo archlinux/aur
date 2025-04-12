@@ -1,6 +1,6 @@
 pkgbase = trctl
 	pkgdesc = A transmission daemon CLI
-	pkgver = 2.7.8
+	pkgver = 2.7.10
 	pkgrel = 1
 	url = https://github.com/user827/trctl.git
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = trctl
 	optdepends = s-nail
 	options = strip
 	backup = etc/trctl/completed.toml
-	source = trctl::git+https://github.com/user827/trctl.git#tag=v2.7.8?signed
+	source = trctl::git+https://github.com/user827/trctl.git#tag=v2.7.10?signed
 	validpgpkeys = D47AF080A89B17BA083053B68DFE60B7327D52D6
 	sha256sums = SKIP
 

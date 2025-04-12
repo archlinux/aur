@@ -3,7 +3,7 @@
 pkgname=trctl
 pkgdesc="A transmission daemon CLI"
 url="https://github.com/user827/trctl.git"
-pkgver=2.7.8
+pkgver=2.7.10
 pkgrel=1
 arch=('any')
 license=('Apache')
