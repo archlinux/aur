@@ -7,8 +7,8 @@ pkgdesc="A simple clipboard manager with a GUI"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
-depends=('python' 'python-pip' 'gtk3' 'nuitka' 'wl-clipboard')
-makedepends=('git' 'pipx')
+depends=('python' 'python-gobject' 'gtk3' 'wl-clipboard')
+makedepends=('git' 'python-pipx')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
 
@@ -19,12 +19,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname" || exit
-
-	# Ensure pipx is available
-	if ! command -v pipx &>/dev/null; then
-		echo "pipx not found, installing pipx..."
-		python -m pip install --user pipx
-	fi
 
 	# Run nuitka with pipx
 	echo "Building the standalone binary using Nuitka..."
