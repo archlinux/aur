@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/adamperkowski/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('x')
+sha256sums=('310ca7244decad9b780d4b67d7888103bcfdb60f1997e8850fb2ca47bfe3e240')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'openssl')
 
