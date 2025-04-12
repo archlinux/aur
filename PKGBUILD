@@ -14,6 +14,7 @@ arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
 license=('custom:Broadcom')
 makedepends=('setconf')
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
 source=(
   "${pkgver}_MSM_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/${pkgver}_MSM_Linux-x64.zip"
   '12Gbs_MegaRAID_SAS_Software_User_Guide-rev2.8.pdf::https://docs.broadcom.com/wcs-public/user-guide/products/design--reference-guides/user-guide/574/208/pub-005110_db15-001199-08_2017-06-09_mr-6.14-sw-ug.pdf'
@@ -38,7 +39,6 @@ sha256sums=(
   '9b1065325731a1711d6dce3ecbf2cccc6fbe524b60e0eb5c0f1fdba315222c95'
   '84597c89f83a044a6be2f16b897fc7d27cf04516053f850504f132e44ff52c0a'
 )
-
 noextract=('javax.activation.jar')
 options=('!strip')
 
@@ -53,6 +53,7 @@ _create_links() {
 }
 
 prepare() {
+  bsdtar -xf "${pkgver}_MSM_Linux-x64.zip"
   bsdtar -xf "MSM_linux_x64_installer-${_pkgver}.tar.gz"
 }
 
