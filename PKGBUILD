@@ -1,6 +1,6 @@
-# Maintainer: Alessio Biancalana <dottorblaster@gmail.com>
+# Maintainer: Alessio Biancalana <alessio@dottorblaster.it>
 pkgname=pacnews
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Read Arch Linux News from your CLI"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 url="https://github.com/dottorblaster/pacnews"
 makedepends=('rust' 'openssl')
 source=("https://github.com/dottorblaster/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('3169293db927fcf171489f31707a6bb9')
+sha256sums=('60d874a012147a89932cdba4c92fb2716789623dae05ce30212f0747fd810295')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
