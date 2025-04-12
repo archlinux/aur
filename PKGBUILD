@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
 depends=('python' 'python-pip' 'gtk3' 'nuitka' 'wl-clipboard')
-makedepends=('git' 'pipx')
+makedepends=('git' 'python-pipx')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
 
