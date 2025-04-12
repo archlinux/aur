@@ -1,6 +1,6 @@
 pkgbase = python-aioftp
 	pkgdesc = ftp client/server for asyncio
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://aioftp.readthedocs.io
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-aioftp
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/aioftp/aioftp-0.25.0.tar.gz
-	sha256sums = 4856af3f145d424ec28e22620a6c4aeebaf0db541730903934a167a00f86fa0a
+	source = https://files.pythonhosted.org/packages/source/a/aioftp/aioftp-0.25.1.tar.gz
+	sha256sums = 4d2fb0b77d3fda4282cffcd05ba70567d8940cd9fdeedf10bdf788a001208016
 
 pkgname = python-aioftp
 	depends = python>=3.9
