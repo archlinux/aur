@@ -8,7 +8,6 @@ pkgbase = xfel-git
 	makedepends = git
 	makedepends = gcc
 	depends = libusb
-	depends = glibc
 	provides = xfel
 	conflicts = xfel
 	source = xfel::git+https://github.com/xboot/xfel.git
