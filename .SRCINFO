@@ -1,6 +1,6 @@
 pkgbase = simplelogin
 	pkgdesc = Unofficial Simple Login desktop application.
-	pkgver = 1.0.4
+	pkgver = 1.0.5.aurpatch
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/simplelogin
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = simplelogin
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/simplelogin/application/-/archive/1.0.4/application-1.0.4.tar.bz2
-	sha256sums = dd811c3e0aeb28b1a87a1004998300f2a9f47d1f1ad8381298ad861901c098a9
+	source = https://gitlab.com/linuxbombay/simplelogin/application/-/archive/1.0.5.aurpatch/application-1.0.5.aurpatch.tar.bz2
+	sha256sums = 02a3e8ad2dad4a6f92ab55ac0ed0df30e25cc8cb64e7ccb88fc0f7c9b8f6736b
 
 pkgname = simplelogin
