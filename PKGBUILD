@@ -2,7 +2,7 @@
 
 _pkgname="kddockwidgets-qt6"
 pkgname="$_pkgname-git"
-pkgver=2.2.2.r98.g98bba12
+pkgver=2.2.2.r130.g475251d
 pkgrel=1
 pkgdesc="KDAB's Dock Widget Framework for Qt 6"
 url="https://github.com/KDAB/KDDockWidgets"
@@ -21,10 +21,7 @@ makedepends=(
 )
 
 provides=("$_pkgname=${pkgver%%.g*}")
-conflicts=(
-  "$_pkgname"
-  'kddockwidgets'
-)
+conflicts=("$_pkgname")
 
 _pkgsrc="kddockwidgets"
 source=("$_pkgsrc"::"git+$url.git")

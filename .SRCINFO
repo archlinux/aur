@@ -1,6 +1,6 @@
 pkgbase = kddockwidgets-qt6-git
 	pkgdesc = KDAB's Dock Widget Framework for Qt 6
-	pkgver = 2.2.2.r98.g98bba12
+	pkgver = 2.2.2.r130.g475251d
 	pkgrel = 1
 	url = https://github.com/KDAB/KDDockWidgets
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = kddockwidgets-qt6-git
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
-	provides = kddockwidgets-qt6=2.2.2.r98
+	provides = kddockwidgets-qt6=2.2.2.r130
 	conflicts = kddockwidgets-qt6
-	conflicts = kddockwidgets
 	source = kddockwidgets::git+https://github.com/KDAB/KDDockWidgets.git
 	sha256sums = SKIP
 
