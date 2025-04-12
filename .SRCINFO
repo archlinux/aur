@@ -1,5 +1,5 @@
 pkgbase = pathetic
-	pkgdesc = A lightweight meme-powered programming language for DSA practice
+	pkgdesc = A lightweight meme-powered programming language.
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/aditya-ig10/pathetic-lang
