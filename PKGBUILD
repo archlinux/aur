@@ -9,7 +9,7 @@
 # Contributor: Alexander De Sousa <archaur.xandy21@spamgourmet.com>
 
 pkgname=ttf-google-fonts-git
-pkgver=r8380.47f307584
+pkgver=r10473.24f85398f
 pkgrel=1
 epoch=1
 pkgdesc="TrueType fonts from the Google Fonts project (git version)"
@@ -92,33 +92,36 @@ prepare() {
 
 package() {
   # NOTE: These are the font families that already exist in the [extra] repo.
-  declare -A omitted_font_families=([anonymous-pro]=1
-                                    [arimo]=1
-                                    [caladea]=1
-                                    [cantarell]=1
-                                    [cousine]=1
-                                    [fira-sans]=1
-                                    [fira-mono]=1
-                                    [inconsolata]=1
-                                    [merriweather]=1
-                                    [merriweather-sans]=1
-                                    [noto-sans]=1
-                                    [noto-serif]=1
-                                    [noto-sans-tamil]=1
-                                    [open-sans]=1
-                                    [oswald]=1
-                                    [quintessential]=1
-                                    [roboto]=1
-                                    [roboto-condensed]=1
-                                    [roboto-mono]=1
-                                    [source-sans-3]=1
-                                    [source-sans-pro]=1
-                                    [source-serif-4]=1
-                                    [source-serif-pro]=1
-                                    [tinos]=1
-                                    [ubuntu]=1
-                                    [ubuntu-mono]=1
-				    [noto-color-emoji]=1)
+  declare -A omitted_font_families=(
+    [anonymous-pro]=1
+    [arimo]=1
+    [caladea]=1
+    [cantarell]=1
+    [carlito]=1
+    [cousine]=1
+    [fira-sans]=1
+    [fira-mono]=1
+    [inconsolata]=1
+    [merriweather]=1
+    [merriweather-sans]=1
+		[noto-color-emoji]=1
+    [noto-sans]=1
+    [noto-sans-tamil]=1
+    [noto-serif]=1
+    [open-sans]=1
+    [oswald]=1
+    [quintessential]=1
+    [roboto]=1
+    [roboto-condensed]=1
+    [roboto-mono]=1
+    [source-sans-3]=1
+    [source-sans-pro]=1
+    [source-serif-4]=1
+    [source-serif-pro]=1
+    [tinos]=1
+    [ubuntu]=1
+    [ubuntu-mono]=1
+  )
 
 
   while IFS= read -rd '' file; do
