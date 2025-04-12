@@ -1,0 +1,23 @@
+pkgbase = ggml-vulkan-git
+	pkgdesc = Tensor library for machine learning (with Vulkan GPU optimizations)
+	pkgver = r1942.f71d538
+	pkgrel = 1
+	url = https://github.com/ggml-org/ggml
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	provides = ggml-vulkan
+	provides = ggml
+	provides = libggml
+	conflicts = ggml-vulkan
+	conflicts = ggml
+	conflicts = libggml
+	source = ggml-vulkan::git+https://github.com/ggml-org/ggml
+	sha256sums = SKIP
+
+pkgname = ggml-vulkan-git
