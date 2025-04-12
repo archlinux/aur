@@ -1,14 +1,20 @@
 pkgbase = lib32-libseccomp
-	pkgdesc = Seccomp for 32bit
-	pkgver = 2.5.4
+	pkgdesc = Enhanced seccomp library (32-bit)
+	pkgver = 2.5.6
 	pkgrel = 1
 	url = https://github.com/seccomp/libseccomp
 	arch = x86_64
-	license = LGPL
-	makedepends = gcc-multilib
+	license = LGPL-2.1-only
+	makedepends = gperf
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	depends = gperf
-	source = https://github.com/seccomp/libseccomp/releases/download/v2.5.4/libseccomp-2.5.4.tar.gz
-	sha256sums = d82902400405cf0068574ef3dc1fe5f5926207543ba1ae6f8e7a1576351dcbdb
+	depends = libseccomp>=2.5.6
+	provides = libseccomp.so
+	source = libseccomp-2.5.6.tar.gz::https://github.com/seccomp/libseccomp/releases/download/v2.5.6/libseccomp-2.5.6.tar.gz
+	source = libseccomp-2.5.6.tar.gz.asc::https://github.com/seccomp/libseccomp/releases/download/v2.5.6/libseccomp-2.5.6.tar.gz.asc
+	validpgpkeys = 7100AADFAE6E6E940D2E0AD655E45A5AE8CA7C8A
+	validpgpkeys = 47A68FCE37C7D7024FD65E11356CE62C2B524099
+	sha256sums = 04c37d72965dce218a0c94519b056e1775cf786b5260ee2b7992956c4ee38633
+	sha256sums = SKIP
 
 pkgname = lib32-libseccomp
