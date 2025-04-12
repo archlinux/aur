@@ -5,10 +5,10 @@
 pkgname='perl-devel-stacktrace-ashtml'
 pkgver='0.15'
 _distdir="Devel-StackTrace-AsHTML-${pkgver}"
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module Devel::StackTrace::AsHTML: Displays stack trace in HTML"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-devel-stacktrace' 'perl>=5.8.1')
 makedepends=()
