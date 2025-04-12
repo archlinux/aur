@@ -1,6 +1,6 @@
 pkgbase = paxchange
 	pkgdesc = Simple dart script to passively synchronize installed pacman packages between systems.
-	pkgver = 1.2.5
+	pkgver = 1.3.0
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/Skycoder42/paxchange
@@ -11,12 +11,12 @@ pkgbase = paxchange
 	depends = pacman
 	options = !strip
 	backup = etc/paxchange.json
-	source = paxchange-1.2.5.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.2.5.tar.gz
-	source = bin.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.2.5/binaries-linux.tar.xz
-	source = debug.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.2.5/binaries-linux-debug-symbols.tar.xz
-	b2sums = 83c4ab9488cb7a2b93849542eeb54d87984eba144b37633cdfd840ad885cdb6a389ae85c08a57c518bc4ecd5b3579e978c8baaad2fce598fae74f5bd02aeeb51
-	b2sums = 7ec13e92f59172ccf95f1cab993f20f82203fd325f2dc698c0f9f42b10e29d00badfe0f51d84d26b958737544f4fc882257a06400f6b43bb79dd080bf08158ca
-	b2sums = dd38353152a5a143171de1877e4b21e5809e9a9f10727ca3687e2e6980c90db2f34406268da6c580a268054c6513b6dcc45dd0bb366530d68babaa69c29dfdb2
+	source = sources.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.3.0.tar.gz
+	source = bin.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.3.0/binaries-linux.tar.xz
+	source = debug.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.3.0/binaries-linux-debug-symbols.tar.xz
+	b2sums = 5bb1095beb4215a0e2b3ee806d371d1a1bdade884b992ce534320834ec2354da726f454fd11d355ce9db92adc40aee3b004c350cee57ce184b38755f77994bcc
+	b2sums = c12704e2bf28764f482ac71318424498b75319a5c0af580006c452396af89b937745cf5b4ea1295c496bbcc63f30538e6c25b74e9f97394fdd8cff62ef38563b
+	b2sums = 50bd705eb399e5f5fffbcc2a2f0e5767de9efd718a374102d94f4b0fd55b1dc1d2e475c526c5781d034baab3f1d654a949c5fba509823251120ec17b8d2cb08a
 
 pkgname = paxchange
 
