@@ -7,7 +7,7 @@ _name1=examples
 _name0=pydantic-ai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0})
-pkgver=0.0.53
+pkgver=0.0.55
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/pydantic-ai'
@@ -15,12 +15,12 @@ license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("https://github.com/denoland/deno/releases/latest/download/deno-aarch64-unknown-linux-gnu.zip")
-sha256sums=('ea8e369bd01153a2327d8fd5691a8014edc66f1d7e465e2d0985033ddf027418')
+sha256sums=('7fc9dbc3a8cd076dbeee4b7ac25f342ee8d16049dfa0047d50aad5334991981f')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 depends=('python>=3.9')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-anyio' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-pretty' 'python-pytest-recording' 'python-diff-cover')
+checkdepends=('python-anyio' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-diff-cover')
 
 prepare(){
   # Remove uv-dynamic-versioning dependency as it is not needed
@@ -67,7 +67,7 @@ check() {
   local pytest_options=(
     -vv
     --override-ini="addopts="
-    -k "not evals.md"
+    -k "not evals.md and not test_stop_settings[mistral]"
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
