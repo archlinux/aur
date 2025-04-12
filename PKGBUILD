@@ -8,14 +8,12 @@ pkgdesc="Port of OpenAI's Whisper model in C/C++ (with Vulkan optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('sdl2-compat' 'vulkan-driver' 'vulkan-icd-loader')
+depends=('ggml-vulkan-git' 'sdl2-compat')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
   'cmake'
   'git'
-  'shaderc'
-  'vulkan-headers'
 )
 
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -26,8 +24,8 @@ build() {
     -S "${srcdir}/${_pkgbase}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_VULKAN=1 \
-    -DWHISPER_SDL2=1
+    -DWHISPER_SDL2=1 \
+    -DWHISPER_USE_SYSTEM_GGML=1
 
   cmake --build "${srcdir}/build"
 }
