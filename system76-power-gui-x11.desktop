@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=System76 Power GUI
+Comment=GUI for System76-Power Management
+Exec=system76-power-gui
+Icon=preferences-system-power
+Terminal=false
+Type=Application
+Categories=Settings;HardwareSettings;
+Keywords=system76;power;profile;x11;
+NoDisplay=false
+Hidden=false
+X-DBUS-ServiceName=org.system76.PowerGUI
+X-DBUS-StartupType=none
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=System76-Power-GUI
+X-GNOME-Bugzilla-Component=General
+X-GNOME-Bugzilla-Version=1.0.0
+X-GNOME-Autostart-enabled=true
+Name[en_US]=System76 Power GUI
+Comment[en_US]=GUI for System76-Power Management
+X-Ubuntu-Gettext-Domain=system76-power-gui
+X-SessionType=x11
