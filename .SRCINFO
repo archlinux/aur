@@ -10,6 +10,7 @@ pkgbase = ggml-vulkan-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = vulkan-headers
+	depends = vulkan-driver
 	depends = vulkan-icd-loader
 	provides = ggml-vulkan
 	provides = ggml

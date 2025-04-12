@@ -7,7 +7,7 @@ pkgdesc="Tensor library for machine learning (with Vulkan GPU optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggml-org/ggml"
 license=("MIT")
-depends=('vulkan-icd-loader')
+depends=('vulkan-driver' 'vulkan-icd-loader')
 makedepends=(
   'cmake'
   'git'
