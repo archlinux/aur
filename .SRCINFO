@@ -18,6 +18,8 @@ pkgbase = wayfarer
 	depends = gtk4
 	depends = libpulse
 	source = wayfarer-1.2.4.tar.gz::https://github.com/stronnag/wayfarer/archive/refs/tags/1.2.4.tar.gz
+	source = vala-compact-class.patch::https://github.com/stronnag/wayfarer/commit/412aa1a667193917694598955101b5420e4ec77b.patch
 	sha256sums = 3ce196192b0a7dd05771051c85e9aa78f2f36a21a0d905ebf9fd4b5cd6e11811
+	sha256sums = 9fe4a9bd3269eddf74214326a26385186d0992f1f8c5353822a2fa3b044ea419
 
 pkgname = wayfarer
