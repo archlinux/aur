@@ -62,8 +62,6 @@ package() {
   install -D -m644 "${srcdir}/llama.cpp.service" \
     -t "${pkgdir}/usr/lib/systemd/system"
 
-  rm "${pkgdir}/usr/include/"ggml*
-
   install -Dm644 "${srcdir}/${pkgname%%-git}/LICENSE" \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
