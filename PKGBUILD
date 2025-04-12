@@ -2,8 +2,8 @@
 
 pkgbase=limo
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='General video game mod manager with LOOT and Nexus Mods integration'
 arch=('x86_64')
 url="https://github.com/limo-app/${pkgbase}"
@@ -34,7 +34,7 @@ makedepends=(
 	'zstd'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('4a98f4632e7786fc346ff86c19ab1ef49cca640024bdbe025e3686f9b43d914d3cb730e47df8bae921a01c65981aa4bc787cb213739abae3ad42bce724b95684')
+b2sums=('68ef34d89a552d786330ceb37c5a8f4f1c4d41eb7d5d0e0861576cc3b72818f4071c8aaa944870c09d61c43de55215f17a2cb44bf45897e8909cc9d15857191f')
 
 build() {
 	cd "${pkgbase}-${pkgver}" || return
