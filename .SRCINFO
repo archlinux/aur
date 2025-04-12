@@ -1,0 +1,20 @@
+pkgbase = stable-diffusion.cpp-sycl-f32-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with Intel SYCL GPU optimizations)
+	pkgver = r211.10c6501
+	pkgrel = 1
+	url = https://github.com/leejet/stable-diffusion.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = intel-oneapi-basekit
+	conflicts = stable-diffusion.cpp-sycl-f32
+	conflicts = stable-diffusion.cpp
+	source = stable-diffusion.cpp-sycl-f32::git+https://github.com/leejet/stable-diffusion.cpp
+	source = git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = stable-diffusion.cpp-sycl-f32-git
