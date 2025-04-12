@@ -2,7 +2,7 @@
 
 pkgname=python-rodi
 _name=${pkgname#python-}
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 epoch=
 pkgdesc="Implementation of dependency injection for Python 3"
@@ -14,7 +14,6 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
-    python-isort
     python-typing_extensions
 )
 makedepends=(
@@ -22,6 +21,7 @@ makedepends=(
     mypy
     python-black
     python-flake8-black
+    python-isort
     python-build
     python-hatchling
     python-installer
@@ -36,7 +36,7 @@ checkdepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('68fc3306e37d44218602c254503ec849a54c703b7ea5bc2a70ac6f55248e6e3a')
+sha256sums=('de122527dc6c0dd2d28bf57ac425b9dd22e37535fb1d7d22eadab0a079edcbe4')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
