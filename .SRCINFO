@@ -1,0 +1,23 @@
+pkgbase = ggml-hipblas-git
+	pkgdesc = Tensor library for machine learning (with AMD ROCm optimizations)
+	pkgver = r1942.f71d538
+	pkgrel = 1
+	url = https://github.com/ggml-org/ggml
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = rocm-hip-sdk
+	depends = hipblas
+	provides = ggml-hipblas
+	provides = ggml
+	provides = libggml
+	conflicts = ggml-hipblas
+	conflicts = ggml
+	conflicts = libggml
+	source = ggml-hipblas::git+https://github.com/ggml-org/ggml
+	sha256sums = SKIP
+
+pkgname = ggml-hipblas-git
