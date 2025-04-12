@@ -1,6 +1,6 @@
 pkgbase = python-pythonqwt
 	pkgdesc = Qt plotting widgets (pure Python reimplementation of Qwt C++ library)
-	pkgver = 0.14.4
+	pkgver = 0.14.5
 	pkgrel = 1
 	url = https://github.com/PlotPyStack/PythonQwt
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-pythonqwt
 	depends = python-qtpy
 	depends = shiboken6
 	depends = python-numpy
-	optdepends = python-pytest7: tests
-	source = PythonQwt-0.14.4.tar.gz::https://github.com/PlotPyStack/PythonQwt/archive/refs/tags/v0.14.4.tar.gz
-	sha256sums = c718ed813541cf44d43fc8274c6a18165050b956732ed1e2ea87eaff442be005
+	optdepends = python-pytest: tests
+	source = PythonQwt-0.14.5.tar.gz::https://github.com/PlotPyStack/PythonQwt/archive/refs/tags/v0.14.5.tar.gz
+	sha256sums = fdd302b6644593f9c002a773612a8bd3f53e99c980a8e066b8074565535c9433
 
 pkgname = python-pythonqwt
