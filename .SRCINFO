@@ -1,6 +1,6 @@
 pkgbase = foxtelgo
 	pkgdesc = Unnofficial FoxtelGo desktop application
-	pkgver = 1.0.13
+	pkgver = 1.0.14.aurpatch
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/foxtelgo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = foxtelgo
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.0.13/application-1.0.13.tar.bz2
-	sha256sums = bdb325e1671960decbe440c8b2202a0e0fef09523b932aa75e04a01d656252c4
+	source = https://gitlab.com/linuxbombay/foxtelgo/application/-/archive/1.0.14.aurpatch/application-1.0.14.aurpatch.tar.bz2
+	sha256sums = 4d81d47ca16d819da3e4a94b123dcf5db316d3c1da07e9b9e541388c81a869e8
 
 pkgname = foxtelgo
