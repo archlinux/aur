@@ -1,0 +1,12 @@
+pkgbase = todotree-git
+	pkgdesc = Display todos with a dependency tree
+	pkgver = r19.5dd7a08
+	pkgrel = 1
+	url = https://github.com/daimh/todotree.git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/daimh/todotree.git
+	b2sums = SKIP
+
+pkgname = todotree-git
