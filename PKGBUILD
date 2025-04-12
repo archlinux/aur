@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-sycl-f16-git
-pkgver=b4730
+pkgver=b5123
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F16)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -13,47 +13,49 @@ makedepends=(
   'git'
   'intel-oneapi-basekit'
 )
-conflicts=("llama.cpp")
-provides=("llama.cpp")
-source=("llama.cpp::git+${url}"
+optdepends=(
+  'python-gguf: convert_hf_to_gguf python script'
+  'python-numpy: convert_hf_to_gguf.py python script'
+  'python-pytorch: convert_hf_to_gguf.py python script'
+)
+conflicts=("${pkgname%%-git}")
+provides=("${pkgname%%-git}")
+source=("${pkgname%%-git}::git+${url}"
   "kompute::git+https://github.com/nomic-ai/kompute.git"
   "llama.cpp.conf"
   "llama.cpp.service"
 )
 
 pkgver() {
-  cd "${srcdir}/llama.cpp"
+  cd "${srcdir}/${pkgname%%-git}"
 
   printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-  cd "${srcdir}/llama.cpp"
+  cd "${srcdir}/${pkgname%%-git}"
   git submodule init
   git config submodule.kompute.url "${srcdir}/kompute"
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  local _cmake_args=(
-    -B build
-    -S .
-    -DCMAKE_INSTALL_PREFIX=/usr
-    -DCMAKE_BUILD_TYPE=Release
-    -DCMAKE_C_COMPILER=icx
-    -DCMAKE_CXX_COMPILER=icpx
-    -DGGML_SYCL_F16=ON
-  )
-
-  cd "${srcdir}/llama.cpp"
   source /opt/intel/oneapi/setvars.sh
-  cmake "${_cmake_args[@]}"
+  cmake \
+    -B "${srcdir}/build" \
+    -S "${srcdir}/${pkgname%%-git}" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=icx \
+    -DCMAKE_CXX_COMPILER=icpx \
+    -DGGML_SYCL_F16=1 \
+    -DLLAMA_BUILD_TESTS=0
+
   cmake --build build
 }
 
 package() {
-  cd "${srcdir}/llama.cpp"
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
 
   # systemd
   install -D -m644 "${srcdir}/llama.cpp.conf" \
@@ -62,6 +64,9 @@ package() {
     -t "${pkgdir}/usr/lib/systemd/system"
 
   rm "${pkgdir}/usr/include/"ggml*
+
+  install -Dm644 "${srcdir}/${pkgname%%-git}/LICENSE" \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 sha256sums=('SKIP'
