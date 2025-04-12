@@ -1,17 +1,16 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-sycl-f32-git
-pkgver=b5123
+pkgver=b5123.r1.bc091a4dc
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Intel SYCL GPU optimizations and F32)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('intel-oneapi-basekit')
+depends=('ggml-sycl-f32-git')
 makedepends=(
   'cmake'
   'git'
-  'intel-oneapi-basekit'
 )
 optdepends=(
   'python-gguf: convert_hf_to_gguf python script'
@@ -48,8 +47,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=icx \
     -DCMAKE_CXX_COMPILER=icpx \
-    -DGGML_SYCL=1 \
-    -DLLAMA_BUILD_TESTS=0
+    -DLLAMA_BUILD_TESTS=0 \
+    -DLLAMA_USE_SYSTEM_GGML=1
 
   cmake --build build
 }
