@@ -2,15 +2,15 @@
 # Based on AUR3 PKGBUILD by Ken Tossell <ken@tossell.net>
 
 pkgname=libuvc-git
-pkgver=0.0.6.r6.g77b43d6
+pkgver=0.0.7.r2.g047920b
 pkgrel=1
 pkgdesc="a cross-platform library for USB video devices"
-arch=('i686' 'x86_64')
-url="https://int80k.com/libuvc/"
-license=('BSD')
+arch=('x86_64')
+url='https://libuvc.github.io/libuvc/'
+license=('BSD-3-Clause')
 depends=('libusb' 'libjpeg')
 makedepends=('cmake' 'git')
-source=(git+https://git@github.com/ktossell/libuvc.git)
+source=(git+https://github.com/libuvc/libuvc.git)
 sha256sums=('SKIP')
 conflicts=('libuvc')
 provides=('libuvc')
@@ -27,7 +27,8 @@ prepare() {
 
 	cmake "$srcdir/libuvc" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 }
 
 build() {
