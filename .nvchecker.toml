@@ -1,0 +1,4 @@
+[lib32-woff2]
+source = "archpkg"
+archpkg = "woff2"
+strip_release = true

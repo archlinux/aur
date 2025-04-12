@@ -1,0 +1,19 @@
+pkgbase = lib32-woff2
+	pkgdesc = Web Open Font Format 2 reference implementation (32-bit)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/google/woff2
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=2.8.6
+	depends = lib32-brotli
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = woff2>=1.0.2
+	provides = libwoff2common.so
+	provides = libwoff2dec.so
+	provides = libwoff2enc.so
+	source = woff2-1.0.2.tar.gz::https://github.com/google/woff2/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = add272bb09e6384a4833ffca4896350fdb16e0ca22df68c0384773c67a175594
+
+pkgname = lib32-woff2
