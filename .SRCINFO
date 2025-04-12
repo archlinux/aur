@@ -1,7 +1,7 @@
 pkgbase = qt5-quick1
 	pkgdesc = Deprecated Qt Quick Controls module for creating legacy Qt Quick user interfaces
 	pkgver = 5.8.0+r31+gfa02271
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.qt.io
 	arch = i686
 	arch = x86_64

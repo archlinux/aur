@@ -9,7 +9,7 @@ pkgname="qt5-${_name}"
 _commit_rel="92c847e56d94c9032f3fa83922742e455233e4f3" # 5.8.0
 _commit="fa02271a18837f20e82006de23c2af1899294aa1" # r31
 pkgver="5.8.0+r31+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Deprecated Qt Quick Controls module for creating legacy Qt Quick user interfaces"
 arch=('i686' 'x86_64')
 url="https://www.qt.io"
@@ -41,14 +41,14 @@ prepare() {
   find . -type f \( -name '*.pro' -o -name '*.pri' \) -exec \
     sed -i 's/qml1_plugin/qml_plugin/g' "{}" +
 
-  # cd "imports/folderlistmodel"
-  # sed 's/CONFIG +=/CONFIG += building-libs/g' 'folderlistmodel.pro'
+  cd "imports"
+  # owned by 'qt5-declarative' and 'qt5-webkit'
+  sed -e 's/folderlistmodel//g' \
+      -e '/webview/d' \
+      -i 'imports.pro'
 }
 
 build() {
-  # how do I apply this only to the libraries?
-  LDFLAGS+=" -shared"
-
   cd "${srcdir}/${_pkgsrc}/build"
   qmake-qt5 ..
   make
@@ -62,8 +62,8 @@ package() {
   cd "build"
   make INSTALL_ROOT="${pkgdir}" install
 
-  # Drop QMAKE_PRL_BUILD_DIR because it references the build dir
   cd "${pkgdir}/usr"
+  # Drop QMAKE_PRL_BUILD_DIR because it references the build dir
   find "lib" -type f -name '*.prl' -exec \
     sed -i '/^QMAKE_PRL_BUILD_DIR/d' "{}" +
   # -e 's/\(QMAKE_PRL_LIBS =\).*/\1/' \
@@ -71,12 +71,4 @@ package() {
   # Create some symlinks in /usr/bin/, postfixed with '-qt5'
   find "bin" -type f -execdir \
     ln -vsf "/usr/bin/{}" "{}-qt5" \;
-  
-  # owned by 'qt5-webkit'
-  cd "lib/qt/qml"
-  rm -rf "QtWebKit"
-
-  # owned by 'qt5-declarative'
-  cd "Qt/labs"
-  rm -rf "folderlistmodel"
 }
