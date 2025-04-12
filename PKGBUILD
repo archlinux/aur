@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.5.9.r1.f0a5139
+pkgver=1.5.9.r2.8cd7c26
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -16,7 +16,7 @@ source=("${pkgname%-git}::git+https://github.com/M0Rf30/${pkgname%-git}-linux")
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/podofo.//')"
+  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -36,7 +36,7 @@ package() {
   install -Dm644 data/app.m0rf30.cieid.desktop \
     "${pkgdir}/usr/share/applications/app.m0rf30.cieid.desktop"
   install -Dm755 data/app.m0rf30.cieid.svg \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/app.m0rf30.cieid.svg"
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/app.m0rf30.cieid.svg"
   install -Dm644 data/app.m0rf30.cieid.metainfo.xml \
     "${pkgdir}/usr/share/metainfo/app.m0rf30.cieid.metainfo.xml"
   install -Dm644 data/libcie-pkcs11.module \
