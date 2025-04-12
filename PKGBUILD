@@ -40,7 +40,7 @@ package() {
       "${pkgdir}/usr/bin/${i}"
   done
 
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+  install -Dm644 "${srcdir}/${_pkgbase}-${pkgver}/LICENSE" \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
