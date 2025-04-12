@@ -20,6 +20,8 @@ pkgbase = dumphfdl
 	optdepends = libsdrplay: Proprietary API service for SDRplay devices.
 	optdepends = gperftools: for profiling
 	source = dumphfdl::git+https://github.com/szpajder/dumphfdl#tag=v1.6.1
-	md5sums = SKIP
+	source = detect_liquid_dsp_version.patch
+	sha256sums = SKIP
+	sha256sums = d1c9922e68b08b922865a1cab03b81d0fcadb310f7b664618645f58c0368b93a
 
 pkgname = dumphfdl
