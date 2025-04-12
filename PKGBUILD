@@ -2,7 +2,7 @@
 
 pkgname=epsonscan2-non-free-plugin
 pkgver=1.0.0.6
-pkgrel=3
+pkgrel=4
 arch=('armv7h' 'i686' 'x86_64')
 pkgdesc="Plugins for Epson Scan 2"
 url="http://support.epson.net/linux/en/epsonscan2.php"
@@ -28,6 +28,7 @@ prepare() {
   cd "$srcdir"/usr/lib/*/epsonscan2/non-free-exec
   bbe -e "s|x86_64-linux-gnu/epsonscan2/|epsonscan2/\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00|" es2intif > es2intif.alt
   mv es2intif.alt es2intif
+  chmod +x es2intif
 }
 
 package() {
