@@ -1,17 +1,16 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-hipblas-git
-pkgver=b5123
+pkgver=b5123.r1.bc091a4dc
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('hipblas')
+depends=('ggml-hipblas-git')
 makedepends=(
   'cmake'
   'git'
-  'rocm-hip-sdk'
 )
 optdepends=(
   'python-gguf: convert_hf_to_gguf python script'
@@ -47,8 +46,8 @@ build() {
     -S "${srcdir}/${pkgname%%-git}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_HIP=1 \
-    -DLLAMA_BUILD_TESTS=0
+    -DLLAMA_BUILD_TESTS=0 \
+    -DLLAMA_USE_SYSTEM_GGML=1
 
   cmake --build build
 }
