@@ -1,0 +1,15 @@
+[Unit]
+Description = Cookie Cloud API Server
+Wants = network-online.target
+After = network-online.target
+
+[Service]
+User = cookiecloud-api
+Group = cookiecloud-api
+Restart = on-failure
+EnvironmentFile = -/etc/conf.d/cookiecloud-api.conf
+WorkingDirectory = /usr/lib/cookiecloud-api
+ExecStart = /usr/bin/cookiecloud-api
+
+[Install]
+WantedBy = multi-user.target
