@@ -1,7 +1,7 @@
 pkgbase = wayfarer
 	pkgdesc = Screen recorder for GNOME / Wayland or X11 / Pipewire / XDG Portal
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stronnag/wayfarer
 	arch = i686
 	arch = x86_64
