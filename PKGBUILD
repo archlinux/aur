@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=dbeaver-ce-bin
-pkgver=25.0.0
+pkgver=25.0.2
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64')
@@ -17,11 +17,25 @@ source=("${_pkgname}-${pkgver}.linux.gtk.${arch}-nojdk.tar.gz"::"https://github.
         "io.dbeaver.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.install")
-sha256sums=('f69c07a105b2cbfa62bf941410b6d525cf8c5dab6b63bcec8a7bb45f915599db'
+sha256sums=('5264f2e05971cffcc887770bc518bb1213437f43a373b7eecc26d128813ff824'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '603f7aa912685b69ca558ca7586585b7a314ca1b743be574db7bcd7a31c2ea2d')
 install="${pkgname}.install"
+
+prepare() {
+  cd "dbeaver/plugins/com.sun.jna_5.15.0.v20240915-2000/com/sun/jna"
+  for _dir in aix-ppc aix-ppc64 darwin-aarch64 darwin-x86-64 \
+    dragonflybsd-x86-64 freebsd-aarch64 freebsd-x86 freebsd-x86-64 \
+    linux-aarch64 linux-arm linux-armel linux-loongarch64 linux-mips64el \
+    linux-ppc linux-ppc64le linux-riscv64 linux-s390x linux-x86 \
+    openbsd-x86 openbsd-x86-64 \
+    sunos-sparc sunos-sparcv9 sunos-x86 sunos-x86-64 \
+    win32 win32-aarch64 win32-x86 win32-x86-64
+  do
+    rm -r "${_dir}"
+  done
+}
 
 package() {
   # Initially install everything into /usr/lib/dbeaver
