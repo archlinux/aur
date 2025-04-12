@@ -1,0 +1,15 @@
+pkgbase = torrentz2-git
+	pkgdesc = Torrent file creator and editor with v1/v2/hybrid support in Rust
+	pkgver = 89b20b5
+	pkgrel = 1
+	url = https://codeberg.org/liliumstar/torrentz2
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = openssl
+	provides = tz2
+	conflicts = tz2
+	source = git+https://codeberg.org/liliumstar/torrentz2.git
+	sha512sums = SKIP
+
+pkgname = torrentz2-git

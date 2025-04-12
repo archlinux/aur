@@ -1,0 +1,9 @@
+post_install() {
+    echo ""
+    echo "Generate a default config using `tz2 gen-config`. Alternatively a config will be generated on first run."
+    echo "The config file is loaded from locations in this order, where BINDIR is the location of the tz2 executable:
+          \$BINDIR/config/config.yaml
+          \$XDG_CONFIG_HOME/tz2/config.yaml
+          \$HOME/.config/tz2/config.yaml"
+    echo ""
+}
