@@ -4,14 +4,15 @@ pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
 pkgver=2.1.00
-pkgrel=2
-pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater (for Flatpak Dolphin)"
+pkgrel=3
+pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
 license=('GPL-3.0')
 _dotnet_ver=8.0
 _dotnet_configuration=Release
 _default_res=256
+options=(!strip)
 depends=('gcc-libs'
          'glibc'
          'hicolor-icon-theme'
