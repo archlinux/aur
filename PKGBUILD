@@ -3,7 +3,7 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
 pkgver=1.7.5 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
-pkgrel=3
+pkgrel=4
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -36,13 +36,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   DESTDIR="${pkgdir}" cmake --install build
-
-  for i in build/bin/*; do
-    install -Dm755 "${i}" \
-      "${pkgdir}/usr/bin/${_pkgbase}-${i//build\/bin\//}"
-  done
-  mv "${pkgdir}/usr/bin/${_pkgbase}-main" \
-    "${pkgdir}/usr/bin/${_pkgbase}"
 
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
