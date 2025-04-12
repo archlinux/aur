@@ -16,7 +16,6 @@ b2sums=('539ec44228946b9eab391ecc089d731ac292c43a5b92ac58e22b0dbf96e4b70cc56cc9e
 
 prepare() {
   cd "${_reponame}-${pkgver}"
-  cargo update -p time
   cargo fetch --locked
 }
 
