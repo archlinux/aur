@@ -2,12 +2,16 @@
 # Contributor: Anthony Wang <ta180m@proton.me>
 
 pkgname=libretro-meta
-pkgver=2024.02.06
+pkgver=2025.04.12
 pkgrel=1
 pkgdesc='Meta package for the libretro group.'
 arch=('any')
 license=('none')
-# pacman -Sg libretro | awk '{print "'\''" $2 "'\''"}'
+# pacman -Sg libretro | sed 's/libretro //' | expac -S '%r %n' - | grep -E '^(extra|core) ' | awk '{print "'\''" $2 "'\''"}' | sort | uniq
+
+pkgver() {
+	date -u +'%Y.%m.%d'
+}
 
 package() {
 	depends=(
@@ -18,9 +22,8 @@ package() {
 		'libretro-beetle-supergrafx'
 		'libretro-blastem'
 		'libretro-bsnes'
-		'libretro-bsnes-hd'
 		'libretro-bsnes2014'
-		'libretro-citra'
+		'libretro-bsnes-hd'
 		'libretro-core-info'
 		'libretro-desmume'
 		'libretro-dolphin'
@@ -38,7 +41,6 @@ package() {
 		'libretro-nestopia'
 		'libretro-overlays'
 		'libretro-parallel-n64'
-		'libretro-pcsx2'
 		'libretro-picodrive'
 		'libretro-play'
 		'libretro-ppsspp'
