@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: OpenSource Guy
 
 pkgname=atl-gui-git
 _pkgname=atl-gui
