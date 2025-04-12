@@ -1,6 +1,6 @@
 pkgbase = golangci-lint
 	pkgdesc = Fast linters runner for Go.
-	pkgver = 2.0.2
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://golangci.com
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = golangci-lint
 	conflicts = golangci-lint
 	provides = golangci-lint
 	
-	source = https://github.com/golangci/golangci-lint/releases/download/v2.0.2/golangci-lint-2.0.2-source.tar.gz
-	sha256sums = 5482cf27b93fae1765c70ee2a95d4074d038e9dee61bdd61d017ce8893d3a4a8
+	source = https://github.com/golangci/golangci-lint/releases/download/v2.1.1/golangci-lint-2.1.1-source.tar.gz
+	sha256sums = 2419370f6d53626c527a1250b82e48127599063e8c24049a77dde2764fd94b46
 	
 pkgname = golangci-lint
