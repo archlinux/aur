@@ -1,0 +1,18 @@
+pkgbase = lib32-libvoikko
+	pkgdesc = A spelling and grammar checker, hyphenator and collection of related linguistic data for Finnish language (32-bit)
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = https://voikko.puimula.org
+	arch = x86_64
+	license = MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = libvoikko>=4.3.2
+	provides = libvoikko.so
+	source = libvoikko-4.3.2.tar.gz::https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.2.tar.gz
+	source = libvoikko-4.3.2.tar.gz.asc::https://www.puimula.org/voikko-sources/libvoikko/libvoikko-4.3.2.tar.gz.asc
+	validpgpkeys = AC5D65F10C8596D7E2DAE2633D309B604AE3942E
+	sha256sums = 0156c2aaaa32d4b828addc7cefecfcea4591828a0b40f0cd8a80cd22f8590da2
+	sha256sums = SKIP
+
+pkgname = lib32-libvoikko
