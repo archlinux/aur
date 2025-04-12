@@ -1,0 +1,23 @@
+pkgbase = openfireapp-git
+	pkgdesc = Configuration utility for the OpenFIRE lightgun system.
+	pkgver = r259.68eef8a
+	pkgrel = 1
+	url = https://github.com/TeamOpenFIRE/OpenFIRE-App
+	install = openfireapp-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-serialport
+	depends = qt6-svg
+	depends = icu
+	optdepends = qt5-base: Building with Qt5
+	optdepends = qt5-serialport: Building with Qt5
+	optdepends = qt5-svg: Building with Qt5
+	provides = openfireapp
+	conflicts = openfireapp
+	source = OpenFIRE-App::git+https://github.com/TeamOpenFIRE/OpenFIRE-App.git
+	md5sums = SKIP
+
+pkgname = openfireapp-git
