@@ -8,8 +8,7 @@ pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
 license=("MIT")
-depends=('cuda'
-         'nvidia-utils')
+depends=('cuda' 'nvidia-utils' 'sdl2-compat')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
 makedepends=(
@@ -20,22 +19,26 @@ makedepends=(
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 build() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-
   cmake \
-    -B build \
-    -S . \
+    -B "${srcdir}/build" \
+    -S "${srcdir}/${_pkgbase}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DGGML_CUDA=1 \
-    -DCMAKE_CUDA_ARCHITECTURES=89-real
+    -DCMAKE_CUDA_ARCHITECTURES=89-real \
+    -DWHISPER_SDL2=1
 
-  cmake --build build
+  cmake --build "${srcdir}/build"
 }
 
 package() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
+
+  cd "${srcdir}/build/bin"
+  for i in whisper-*; do
+    install -Dm755 "${i}" \
+      "${pkgdir}/usr/bin/${i}"
+  done
 
   install -Dm644 LICENSE \
     -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
