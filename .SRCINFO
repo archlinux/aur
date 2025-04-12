@@ -1,11 +1,10 @@
 pkgbase = perl-hash-multivalue
 	pkgdesc = Perl/CPAN Module Hash::MultiValue: Store multiple values per key
 	pkgver = 0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Hash-MultiValue
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-universal-ref
 	depends = perl>=5.8.1
 	options = !emptydirs

@@ -4,10 +4,10 @@
 
 pkgname='perl-hash-multivalue'
 pkgver='0.16'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Perl/CPAN Module Hash::MultiValue: Store multiple values per key"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl>=5.8.1')
 checkdepends=('perl-universal-ref')
