@@ -2,12 +2,11 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 # Sipeed Slogic Analyzer support:
-# 1. mainline pull request: [sipeed slogic new hardware support #212](https://github.com/sigrokproject/libsigrok/pull/212)
-# 2. MartinHerren\'s branch: https://github.com/MartinHerren/libsigrok/commits/slogiclite8/
+# 1. mainline pull request: [sipeed-slogic-analyzer: Add Support for Sipeed SLogic Series, including SLogic16U3 5Gbps #262](https://github.com/sigrokproject/libsigrok/pull/262)
 
-pkgname="libsigrok-sipeed-slogic-git"
 _gitname="libsigrok"
-pkgver=0.2.1.r4311.gda175133
+pkgname="libsigrok-sipeed-slogic-git"
+pkgver=0.2.1.r4392.gf06f7881
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library with Sipeed Slogic Analyzer support patches (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -15,13 +14,12 @@ url="http://www.sigrok.org/wiki/Libsigrok"
 license=('GPL3')
 depends=('libzip' 'libftdi' 'alsa-lib' 'libserialport-git' 'glibmm' 'libieee1284')
 makedepends=('git' 'autoconf-archive' 'doxygen')
-conflicts=("${_gitname}")
-provides=("${_gitname}")
-source=("git://sigrok.org/${_gitname}"
-	0001-add-sipeed-slogic-analyzer-support.patch
-)
+conflicts=("${_gitname}-git")
+provides=("${_gitname}-git")
+source=("git+https://github.com/sigrokproject/${_gitname}/"
+	"0001-sipeed-slogic-analyzer-Add-Support-for-Sipeed-SLogic-Series-including-SLogic16U3-5Gbps.patch")
 sha512sums=('SKIP'
-            'dd05758731b34ed7dac1b7cafa635427759dcb84e0b850b34e64c3e9bd4e4bb4d9bd9b0b6d90d3efbd5b62e001e392770289858c3cbb160c972f1cbd58c4a2c9')
+            'a89276812366ce60ce6972f702c5c997711844d1cfd4d3618f946cf224451f026f35f581aba08f74ad2e88670fcccd38ebcb1c38c8256ff164973dea7e09793c')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -30,8 +28,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  patch -p 1 < ${srcdir}/0001-add-sipeed-slogic-analyzer-support.patch
+  patch -p 1 < ${srcdir}/0001-sipeed-slogic-analyzer-Add-Support-for-Sipeed-SLogic-Series-including-SLogic16U3-5Gbps.patch
 }
+
 
 build() {
   rm -rf "${srcdir}/build"
