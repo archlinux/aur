@@ -4,7 +4,7 @@
 
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
-pkgver=2.3.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder. (32-bits)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
 )
 provides=('libSvtAv1Enc.so')
 
-_tag=6e69def4ec283fe0b71195671245c3b768bebdef
+_tag=efc905a7c2ed155b3654d7968173622734eeb0c0
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=${_tag}")
 b2sums=('SKIP')
 
@@ -51,11 +51,11 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DNATIVE=OFF
 
-  ninja -C build
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
   rm -fr "${pkgdir}/usr/include"
   (
     cd "${pkgdir}/usr/bin"
