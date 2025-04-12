@@ -51,6 +51,11 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname%%-git}/LICENSE" \
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  rm -rf "${pkgdir}/usr/include/gguf.h"
+  rm -rf "${pkgdir}/usr/lib/cmake/ggml/ggml-config.cmake"
+  rm -rf "${pkgdir}/usr/lib/cmake/ggml/ggml-version.cmake"
+  rm -rf "${pkgdir}"/usr/lib/*.a
 }
 
 sha256sums=('SKIP'
