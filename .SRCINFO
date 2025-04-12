@@ -1,8 +1,8 @@
 pkgbase = qb64-git
 	pkgdesc = BASIC for the modern era
-	pkgver = 2.0.2
+	pkgver = 2.1.r52.391983b6d
 	pkgrel = 1
-	url = https://www.qb64.org/
+	url = https://www.qb64.com/
 	install = qb64.install
 	arch = x86_64
 	license = custom
@@ -12,7 +12,7 @@ pkgbase = qb64-git
 	provides = qb64
 	conflicts = qb64
 	options = !strip
-	source = git+https://github.com/QB64Team/qb64.git
+	source = git+https://github.com/QB64Official/qb64.git
 	sha256sums = SKIP
 
 pkgname = qb64-git

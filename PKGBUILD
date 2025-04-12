@@ -1,18 +1,23 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=qb64-git
-pkgver=2.0.2
+pkgver=2.1.r52.391983b6d
 pkgrel=1
 pkgdesc='BASIC for the modern era'
 arch=('x86_64')
-url='https://www.qb64.org/'
+url='https://www.qb64.com/'
 license=('custom')
 makedepends=('gcc' 'zlib' 'xorg-xmessage')
 provides=('qb64')
 conflicts=('qb64')
 options=('!strip')
 install=qb64.install
-source=("git+https://github.com/QB64Team/qb64.git")
+source=("git+https://github.com/QB64Official/qb64.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "qb64"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
+}
 
 prepare() {
 	cd "qb64"
