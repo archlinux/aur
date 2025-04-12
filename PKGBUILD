@@ -2,7 +2,7 @@
 pkgbase=system76-power-gui-x11
 pkgname=system76-power-gui-x11
 pkgver=0.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="GUI application for System76 Power Management"
 arch=('x86_64')
 url="https://gitea.dockservices.co/G34RZ/system76-power-GUI-xll.git"
