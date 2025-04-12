@@ -1,6 +1,6 @@
 # Maintainer: Achno <logiaTemp@proton.me>
 pkgname=gowall
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A tool to convert a Wallpaper's color scheme - palette"
 arch=('x86_64')
