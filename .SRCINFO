@@ -1,0 +1,24 @@
+pkgbase = ggml-clblas-git
+	pkgdesc = Tensor library for machine learning (with OpenCL optimizations)
+	pkgver = r1942.f71d538
+	pkgrel = 1
+	url = https://github.com/ggml-org/ggml
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = opencl-headers
+	makedepends = python
+	depends = ocl-icd
+	provides = ggml-clblas
+	provides = ggml
+	provides = libggml
+	conflicts = ggml-clblas
+	conflicts = ggml
+	conflicts = libggml
+	source = ggml-clblas::git+https://github.com/ggml-org/ggml
+	sha256sums = SKIP
+
+pkgname = ggml-clblas-git
