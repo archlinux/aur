@@ -1,8 +1,8 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname="qman"
-pkgver="1.4.0"
-pkgrel="2"
+pkgver="1.4.1"
+pkgrel="1"
 epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=("x86_64" "aarch64")
