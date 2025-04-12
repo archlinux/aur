@@ -1,74 +1,77 @@
-# Contributor: detiam <dehe_tian@outlook.com>
-# Contributor: Nikita Tarasov <nikatar@disroot.org>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: karboncore
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: Alexander Baldeck <alexander@archlinux.org>
+# Contributor: Dale Blount <dale@archlinux.org>
+# Contributor: Anders Bostrom <anders.bostrom@home.se>
 
-_tb_displayname=Thunderbird
-_tb_theme=thunderbird
-
-_pkgname=thunderbird
 pkgname=thunderbird-globalmenu
-pkgver=128.4.0
+pkgver=137.0
 pkgrel=1
-_tb_srcname="$_pkgname-$pkgver"
-pkgdesc="Standalone mail and news reader from mozilla.org (With appmenu patch from Ubuntu)"
-url="https://www.thunderbird.net/"
+pkgdesc='Standalone mail and news reader from mozilla.org'
+url='https://www.thunderbird.net/'
 arch=(x86_64)
-license=(MPL-2.0)
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+license=('MPL-2.0' 'GPL-2.0-only' 'LGPL-2.1-only')
 depends=(
-	dbus-glib
-	ffmpeg
-	gtk3
-	appmenu-gtk-module
-	libpulse
-	libxss
-	libxt
-	mime-types
-	nss
-	ttf-font)
+  glibc
+  gtk3 libgdk-3.so libgtk-3.so
+  mime-types
+  dbus libdbus-1.so
+  dbus-glib
+  alsa-lib
+  nss
+  hunspell
+  sqlite
+  ttf-font
+  libvpx libvpx.so
+  zlib
+  bzip2 libbz2.so
+  botan2
+  libwebp libwebp.so libwebpdemux.so
+  libevent
+  libjpeg-turbo
+  libffi libffi.so
+  nspr
+  gcc-libs
+  libx11
+  libxrender
+  libxfixes
+  libxext
+  libxcomposite
+  libxdamage
+  pango libpango-1.0.so
+  cairo
+  gdk-pixbuf2
+  freetype2 libfreetype.so
+  fontconfig libfontconfig.so
+  glib2 libglib-2.0.so
+  pixman libpixman-1.so
+  gnupg
+  json-c
+  libcanberra
+  ffmpeg
+  icu libicui18n.so libicuuc.so
+)
 makedepends=(
-	cbindgen
-	clang
-	diffutils
-	imake
-	inetutils
-	jack
-	lld
-	llvm
-	mesa
-	nasm
-	nodejs
-	python
-	rustup
-	unzip
-	wasi-compiler-rt
-	wasi-libc
-	wasi-libc++
-	wasi-libc++abi
-	yasm
-	zip)
-optdepends=(
-	'hunspell-en_US: Spell checking, American English'
-	'libnotify: Notification integration'
-	'networkmanager: Location detection via available WiFi networks'
-	'speech-dispatcher: Text-to-Speech'
-	'libotr: OTR support for active one-to-one chats'
-	'xdg-desktop-portal: Screensharing with Wayland')
-options=(
-	!emptydirs
-	!lto
-	!makeflags)
-source=(
-	"https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/source/thunderbird-${pkgver}esr.source.tar.xz"{,.asc}
-	unity-menubar{,-comm}.patch
-	org.mozilla.thunderbird.desktop)
+  unzip zip diffutils python nasm mesa libpulse libice libsm
+  rust clang llvm cbindgen nodejs lld
+  gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
+)
+options=(!emptydirs !makeflags !lto)
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/b9254f8983885b40dea920710dbc9f115f0a735a
+source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
+        $commit/vendor-prefs.js
+        $commit/distribution.ini
+        $commit/mozconfig.cfg
+        $commit/metainfo.patch
+        $commit/org.mozilla.Thunderbird.desktop
+        $commit/thunderbird-system-icu-76.patch
+)
 validpgpkeys=(
-	# Mozilla Software Releases <release@mozilla.com>
-	# https://blog.mozilla.org/security/2023/05/11/updated-gpg-key-for-signing-firefox-releases/
-	'14F26682D0916CDD81E37B6D61B7B526D98F0353')
+  14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
+  4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
+)
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -76,199 +79,109 @@ validpgpkeys=(
 # more information.
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
+# Mozilla API keys (see https://location.services.mozilla.com/api)
+# Note: These are for Arch Linux use ONLY. For your own distribution, please
+# get your own set of keys. Feel free to contact heftig@archlinux.org for
+# more information.
+_mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
+
 prepare() {
-	if ! mkdir mozbuild; then
-		error "Remove '$srcdir' before build!"
-		exit 1
-	fi
+  cd thunderbird-$pkgver
 
-	cd "$_tb_srcname"
+  echo "${noextract[@]}"
 
-	for patch in "${source[@]%%::*}"; do
-		if [[ $patch == *.patch ]]; then
-			msg2 "Applying $patch"
-			patch --no-backup-if-mismatch -Np1 -i "$srcdir/$patch"
-		fi
-	done
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+  sed -e 's|73114a5c28472e77082ad259113ffafb418ed602c1741f26da3e10278b0bf93e|a88d6cc10ec1322b53a8f4c782b5133135ace0fdfcf03d1624b768788e17be0f|' \
+    -i third_party/rust/mp4parse/.cargo-checksum.json
+  sed -e 's|880c982df0843cbdff38b9f9c3829a2d863a224e4de2260c41c3ac69e9148ad4|239b3e4d20498f69ed5f94481ed932340bd58cb485b26c35b09517f249d20d11|' \
+    -i third_party/rust/bindgen/.cargo-checksum.json
 
-	echo -n "$_google_api_key" >google-api-key
+  # Make icon transparent
+  sed -i '/^<rect/d' comm/mail/branding/thunderbird/TB-symbolic.svg
 
-	cat >../mozconfig <<-END
-		ac_add_options --enable-application=comm/mail
-		mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
-
-		ac_add_options --prefix=/usr
-		ac_add_options --enable-release
-		ac_add_options --enable-hardening
-		ac_add_options --enable-optimize
-		ac_add_options --enable-rust-simd
-		ac_add_options --enable-linker=lld
-		ac_add_options --disable-install-strip
-		ac_add_options --disable-elf-hack
-		ac_add_options --disable-bootstrap
-		ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-
-		# Branding
-		ac_add_options --with-branding=comm/mail/branding/$_tb_theme
-		ac_add_options --enable-update-channel=release
-		ac_add_options --with-distribution-id=org.archlinux
-		ac_add_options --with-app-name=$_pkgname
-		export MOZILLA_OFFICIAL=1
-		export MOZ_APP_REMOTINGNAME=$_pkgname
-		export MOZ_APP_PROFILE="mozilla/${_pkgname}"
-
-		# Keys
-		ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
-		ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
-
-		# System libraries
-		ac_add_options --with-system-nspr
-		ac_add_options --with-system-nss
-
-		# Features
-		ac_add_options --enable-alsa
-		ac_add_options --enable-jack
-		ac_add_options --enable-crashreporter
-		ac_add_options --disable-updater
-		ac_add_options --disable-tests
-
-		# System addons
-		ac_add_options --with-unsigned-addon-scopes=app,system
-		ac_add_options --allow-addon-sideload
-
-	END
-
-if [[ -n $_SCCACHE ]]; then
-	echo 'ac_add_options --with-ccache=sccache' >> ../mozconfig
-fi
-
-if [[ $_tb_theme == 'thunderbird' ]]; then
-	echo 'ac_add_options --enable-official-branding' >> ../mozconfig
-fi
+  printf "%s" "$_google_api_key" >google-api-key
+  printf "%s" "$_mozilla_api_key" >mozilla-api-key
+  cp ../mozconfig.cfg .mozconfig
+  sed "s|@PWD@|${PWD@Q}|g" -i .mozconfig
 }
 
 build() {
-	cd "$_tb_srcname"
+  cd thunderbird-$pkgver
+  if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
+    export MOZ_BUILD_DATE=$(date --date "@${SOURCE_DATE_EPOCH}" "+%Y%m%d%H%M%S")
+  fi
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
+  export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
 
-	export RUSTUP_TOOLCHAIN=1.78
-	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
-	export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-	export MOZ_NOSPAM=1
-	MOZ_BUILD_DATE="$(date -u${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH} +%Y%m%d%H%M%S)"
-	export MOZ_BUILD_DATE
+  # malloc_usable_size is used in various parts of the codebase
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
-	# malloc_usable_size is used in various parts of the codebase
-	CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-	CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
-	# Breaks compilation since https://bugzilla.mozilla.org/show_bug.cgi?id=1896066
-	CFLAGS="${CFLAGS/-fexceptions/}"
-	CXXFLAGS="${CXXFLAGS/-fexceptions/}"
-
-	# LTO needs more open files
-	ulimit -n 4096
-
-	cat >.mozconfig ../mozconfig - <<-END
-		ac_add_options --enable-lto=cross,thin
-	END
-	./mach build --priority normal
+  ./mach configure
+  ./mach build
+  ./mach buildsymbols
 }
 
 package() {
-	local desktopid=org.mozilla.$_pkgname
-	local vendordir="$pkgdir/usr/lib/$_pkgname/defaults/pref/"
-	local distdir="$pkgdir/usr/lib/$_pkgname/distribution/"
-	local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
+  optdepends=(
+    'hunspell-en_us: Spell checking, American English'
+    'libotr: OTR support for active one-to-one chats'
+    'libnotify: Notification integration'
+  )
 
-	cd "$_tb_srcname"
-	DESTDIR="$pkgdir" ./mach install
+  cd thunderbird-$pkgver
+  DESTDIR="$pkgdir" ./mach install
 
-	# Distribution
-	install -Dvm644 /dev/stdin "$vendordir/default-pref.js" <<-END
-		// Use LANG environment variable to choose locale
-		pref("intl.locale.requested", "");
+  install -Dm 644 ../vendor-prefs.js -t "$pkgdir/usr/lib/thunderbird/defaults/pref"
+  install -Dm 644 ../distribution.ini -t "$pkgdir/usr/lib/thunderbird/distribution"
+  install -Dm 644 ../org.mozilla.Thunderbird.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm 644 comm/mail/branding/thunderbird/net.thunderbird.Thunderbird.appdata.xml \
+    "$pkgdir/usr/share/metainfo/net.thunderbird.Thunderbird.appdata.xml"
 
-		// Don't disable extensions in the application directory
-		pref("extensions.autoDisableScopes", 0);
-		pref("extensions.enabledScopes", 15);
-		pref("extensions.shownSelectionUI", true);
+  for i in 16 22 24 32 48 64 128 256; do
+    install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/org.mozilla.Thunderbird.png"
+  done
+  install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
 
-		// Use system-provided dictionaries
-		pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+  # Use system-provided dictionaries
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/thunderbird/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/thunderbird/hyphenation"
 
-		// Disable telemetry
-		pref("datareporting.healthreport.uploadEnabled", false);
-		pref("datareporting.policy.dataSubmissionEnabled", false);
-		pref("toolkit.telemetry.archive.enabled", false);
+  # Install a wrapper to avoid confusion about binary path
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/thunderbird" <<END
+#!/bin/sh
+exec /usr/lib/thunderbird/thunderbird "\$@"
+END
 
-	END
-
-	install -Dvm644 /dev/stdin "$distdir/distribution.ini" <<-END
-		[Global]
-		id=archlinux
-		version=1.0
-		about=Mozilla Thunderbird for Arch Linux [Global Menu]
-
-		[Preferences]
-		app.distributor=archlinux
-		app.distributor.channel=$_pkgname
-
-	END
-
-	# Icons
-	for i in 16 22 24 32 48 64 128 256; do
-		install -dvm755 "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
-		ln -svf "/usr/lib/$_pkgname/chrome/icons/default/default$i.png" \
-			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$desktopid.png"
-	done
-
-	install -Dvm644 <(
-		sed '/^<rect/d' comm/mail/branding/$_tb_theme/content/about-logo.svg # Make svg transparent
-	) "$pkgdir/usr/share/icons/hicolor/scalable/apps/$desktopid.svg"
-	install -Dvm644 <(
-		sed '/^<rect/d' comm/mail/branding/$_tb_theme/TB-symbolic.svg # Make svg transparent
-	) "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$desktopid-symbolic.svg"
-
-	# Metainfo
-	install -Dvm644 /dev/stdin "$pkgdir/usr/share/metainfo/$desktopid.metainfo.xml" < <(\
-		RELEASE_NOTES_URL="https://www.${_pkgname}.net/en-US/${_pkgname}/${pkgver}esr/releasenotes/" \
-		MANIFEST_URL="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=$pkgname" \
-		VERSION=$pkgver DATE=$(date +%Y-%m-%d) envsubst < <(\
-			sed "s|org\.mozilla\.Thunderbird|$desktopid|g" \
-				comm/taskcluster/docker/tb-flatpak/org.mozilla.Thunderbird.appdata.xml.in)\
-	)
-
-	# Use system certificates
-	if [[ -e $nssckbi ]]; then
-		ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-	fi
-
-	# Desktop
-	install -Dvm755 /dev/stdin "$pkgdir/usr/share/applications/$desktopid.desktop" < <(\
-		sed -e "s|Exec=thunderbird|Exec=/usr/bin/$_pkgname|g" \
-			-e "s|Icon=.*\$|Icon=$desktopid|g" \
-			-e "s|StartupWMClass=thunderbird|StartupWMClass=$_pkgname|" \
-			"$srcdir/$desktopid.desktop"\
-	)
-
-	# Install a launcher for set necessary environment variable
-	install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<-END
-		#!/usr/bin/env sh
-		export MOZ_APP_LAUNCHER="\$0" # For $_pkgname can correctly set itself as the default application
-		export MOZ_DESKTOP_FILE_NAME=$desktopid # https://bugzilla.mozilla.org/show_bug.cgi?id=1438051
-		exec /usr/lib/$_pkgname/$_pkgname --name $desktopid "\$@"
-
-	END
-
-	# Replace duplicate binary with link
-	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-	ln -srfv "$pkgdir/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  # Replace duplicate binary with wrapper
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  ln -srf "$pkgdir/usr/bin/thunderbird" \
+    "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha1sums=('21a167582e10d2f63917209b87958be29ff14829'
-          'SKIP'
-          '9788a6edefd4d34d25788f2914eb3b096690d2b7'
-          '3fcb94ed04ece9c8cd511573a9db8fc2613f57bd'
-          '4f9856b9882dd0e20ad15c2162352f8a685d71ba')
+sha512sums=('252c3adef18c14e52388b11a2646df7caa7e85d1697336ebe9aeb94ad5a37f8dc48d1e61066e94fed6ddea0b27705a7a76a3215456acde5066191db72323ab88'
+            'SKIP'
+            '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
+            '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
+            '3a6957380243716065e9dff66cbbee8c5aa6b34b5b19bc6193a23407d33f6e4c23bfca55b929bee4739bdd2c47838cc0fd6667b188de066b795ab55e3bf275a6'
+            '7e43b1f25827ddae615ad43fc1e11c6ba439d6c2049477dfe60e00188a70c0a76160c59a97cc01d1fd99c476f261c7cecb57628b5be48874be7cf991c22db290'
+            'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
+            'dd8dd2ba5f2ce009c081c3fc5f1fc0e87261acd55770071e1e05bc6b273d701d9408a282b53a08304eb4b003b336e80c15c2227c5756c3f70f57c951be89d324'
+            )
 
-# vim:set sw=2 sts=-1 et:
+provides=(thunderbird)
+conflicts=(thunderbird)
+
+source+=(unity-menubar.patch)
+sha512sums+=(a83806577e8eca19969a5c5387fafa00d2c2564c8d940deeafb69f831beee0b9cc0ab5c05e6873b818ee1a06c294c29db591e6a0f02d26fc99212585f949ba2d)
