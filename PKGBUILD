@@ -1,17 +1,16 @@
 # Maintainer: robertfoster
 
 pkgname=llama.cpp-vulkan-git
-pkgver=b5123
+pkgver=b5123.r1.bc091a4dc
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/llama.cpp"
 license=("MIT")
-depends=('vulkan-icd-loader')
+depends=('ggml-vulkan-git')
 makedepends=(
   'cmake'
   'git'
-  'vulkan-headers'
 )
 optdepends=(
   'python-gguf: convert_hf_to_gguf python script'
@@ -40,14 +39,13 @@ prepare() {
 }
 
 build() {
-  source /opt/intel/oneapi/setvars.sh
   cmake \
     -B "${srcdir}/build" \
     -S "${srcdir}/${pkgname%%-git}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGGML_VULKAN=1 \
-    -DLLAMA_BUILD_TESTS=0
+    -DLLAMA_BUILD_TESTS=0 \
+    -DLLAMA_USE_SYSTEM_GGML=1
 
   cmake --build build
 }
