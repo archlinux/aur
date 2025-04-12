@@ -1,0 +1,21 @@
+pkgbase = stable-diffusion.cpp-cublas-git
+	pkgdesc = Stable Diffusion in pure C/C++ (with NVIDIA CUDA optimizations)
+	pkgver = r211.10c6501
+	pkgrel = 1
+	url = https://github.com/leejet/stable-diffusion.cpp
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc13
+	makedepends = git
+	depends = cuda
+	conflicts = stable-diffusion.cpp-cublas
+	conflicts = stable-diffusion.cpp
+	source = stable-diffusion.cpp-cublas::git+https://github.com/leejet/stable-diffusion.cpp
+	source = git+https://github.com/ggerganov/ggml.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = stable-diffusion.cpp-cublas-git
