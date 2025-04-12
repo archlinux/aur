@@ -19,10 +19,15 @@ source=("${_pkgname}::git+${url}"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
 sha256sums=('SKIP'
-            '9b717643ce5818f49b49f514e2a8dd61972dbc786b5e2c6cc498c6248ab0c85e'
+            'b922ebfa83b31cb1caf0d56a68c1c94e7150c2c87d6d8407ccfd972287134e06'
             'd85c33b92f23baeca1405ca658550ae36395f27ab1d5a7c6a3d417d1f2d8e709'
             '83e56f7df7699008aa880718fd5e14b46887cdc2eda8aeef89bbd921bc2c88a0'
             '142a39525951b0aa345bdcba1b0fd743cae11ec5ab44feded48ab711d20b0f11')
+prepare() {
+    cd "${_pkgname}/api"
+    sed -i '1i #!/usr/bin/node\n' app.js
+    sed -i "s|^const data_dir = .*|const data_dir = process\.env\.DATA_DIR \|\| '/var/lib/${_pkgname}';|" app.js
+}
 
 pkgver() {
     cd "${_pkgname}"
@@ -32,7 +37,6 @@ pkgver() {
 build() {
     cd "${_pkgname}/api"
     yarn install --production
-    sed -i '1i #!/usr/bin/node\n' app.js
 }
 
 package() {
@@ -46,7 +50,6 @@ package() {
     install -Dm644 api/*.{json,lock}   -t "${pkgdir}/usr/lib/${_pkgname}"
     install -Dm755 api/app.js             "${pkgdir}/usr/lib/${_pkgname}/app.js"
     cp -r api/node_modules                "${pkgdir}/usr/lib/${_pkgname}"
-    ln -s "/var/lib/${_pkgname}"          "${pkgdir}/usr/lib/${_pkgname}/data"
     install -dm755                        "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${_pkgname}/app.js"   "${pkgdir}/usr/bin/${_pkgname}"
 }
