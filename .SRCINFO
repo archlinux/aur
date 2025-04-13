@@ -1,0 +1,12 @@
+pkgbase = marcwel-archive
+	pkgdesc = Makes files larger
+	pkgver = 0.69.420
+	pkgrel = 1
+	url = https://github.com/ShortWare/marcwel-archive
+	arch = x86_64
+	license = Beerware
+	depends = nodejs
+	source = marcwel.js
+	sha256sums = SKIP
+
+pkgname = marcwel-archive
