@@ -8,7 +8,7 @@ url="https://github.com/binarylinuxx/pyfetch"
 license=('GPL3')
 depends=('python' 'python-psutil' 'python-colorama')
 makedepends=('git')
-source=("git+$url.git#tag=v$pkgver")  # Pin to specific version
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 package() {
