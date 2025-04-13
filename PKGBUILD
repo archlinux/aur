@@ -3,7 +3,7 @@
 _pkgname=vesktop
 pkgname=vesktop-electron-git
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided Electron. Unsupported"
-pkgver=1.5.5.r17.g391ad94
+pkgver=1.5.6.r3.gae20445
 pkgrel=1
 
 arch=("x86_64" "aarch64")
