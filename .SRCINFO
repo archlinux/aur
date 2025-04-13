@@ -10,6 +10,10 @@ pkgbase = evmone
 	depends = glibc
 	depends = gcc-libs
 	source = git+https://github.com/ethereum/evmone.git#tag=v0.15.0
-	md5sums = SKIP
+	source = git+https://github.com/ethereum/evmc.git
+	source = git+https://github.com/ipsilon/evm-benchmarks.git
+	sha256sums = 7163a095caa44022ab784a5aea9dc8500401441ef49a733b912b29d2a67b8370
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = evmone
