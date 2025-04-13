@@ -2,7 +2,7 @@
 
 pkgname=qemu-3dfx
 _pkgver=9.2.2
-pkgver=9.2.2.r461.184ac91
+pkgver=9.2.2.r466.a2d25b3
 pkgrel=1
 pkgdesc="MESA GL/3Dfx Glide pass-through for QEMU"
 arch=('x86_64')
@@ -41,7 +41,7 @@ makedepends=(
     "libcap-ng"
     "libepoxy"
     "libiscsi"
-   "libnfs"
+    "libnfs"
     "libpipewire"
     "libpng"
     "libpulse"
@@ -96,7 +96,6 @@ optdepends=(
     "qemu-docs: for documentation and learning invocation"
     "openglide-3dfx: for host openglide support"
 )
-
 provides=('qemu-3dfx')
 conflicts=('qemu-3dfx')
 source=(
@@ -134,7 +133,7 @@ prepare() {
 build() {
     # Build QEMU
     cd "$srcdir"/"$pkgname"/build
-    ../qemu-${_pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --disable-libnfs --extra-cflags="-march=native -mtune=native -O3 -flto=auto"
+    ../qemu-${_pkgver}/configure --target-list="i386-softmmu" --prefix=/usr --disable-xen --extra-cflags="-march=native -mtune=native -O3 -flto=auto"
     make clean
     make -j$(nproc) qemu-system-i386
 
@@ -144,22 +143,24 @@ build() {
     rm -rf build && mkdir build && cd build
     bash ../../../scripts/conf_wrapper
     sed -i 's/^DXEGEN=dxe3gen$/DXEGEN=i686-pc-msdosdjgpp-dxe3gen/' ../dxe/Makefile
+    sed -i '/CFLAGS=/s/-mfpmath=sse /-mfpmath=sse -msse2 /' Makefile
     make && make clean
     cd ../../mesa
     rm -rf build && mkdir build && cd build
     bash ../../../scripts/conf_wrapper
 
-    # Add wglinfo.exe to makefile
+    # Add wglinfo.exe to makefile (and fix sse2 problem)
     sed -i 's/^TOOLS=$/TOOLS=wglinfo.exe/' Makefile
+    sed -i '/CFLAGS=/s/-mfpmath=sse /-mfpmath=sse -msse2 /' Makefile
     make && make clean
 
     # Package Wrappers
     cd ../../
     rm -rf iso && mkdir iso && cd iso
     mkdir wrapfx wrapgl
-    cp -f ../3dfx/build/*.{vxd,sys,dll,dxe,ovl,exe} ./wrapfx/
-    cp -f ../mesa/build/*.{dll,exe} ./wrapgl/
-    cp -r ../../LICENSE license.txt
+    cp -rf ../3dfx/build/*.{vxd,sys,dll,dxe,ovl,exe} ./wrapfx/
+    cp -rf ../mesa/build/*.{dll,exe} ./wrapgl/
+    cp ../../LICENSE license.txt
     echo ${pkgver} > commit\ id.txt
     unix2dos commit\ id.txt license.txt
     mkisofs -JR -V "VMWRAPPER-$(git log --format="%h" -n 1)" -o ../wrappers.iso ../iso

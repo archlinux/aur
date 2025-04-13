@@ -15,3 +15,6 @@ qemu-3dfx-arch/
 
 # Text Files
 *.log
+
+#Signed Stuff?
+*.sig
