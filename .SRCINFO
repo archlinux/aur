@@ -1,7 +1,7 @@
 pkgbase = python-115
 	pkgdesc = Python wrapper for 115 webdisk.
-	pkgver = 0.0.9.8.8.5
-	pkgrel = 1
+	pkgver = 0.0.9.8.8.6
+	pkgrel = 2
 	url = https://pypi.org/project/python-115
 	arch = any
 	license = MIT
@@ -36,7 +36,7 @@ pkgbase = python-115
 	conflicts = python_115
 	conflicts = python-115
 	options = !strip
-	source = python_115-0.0.9.8.8.5.tar.gz::https://files.pythonhosted.org/packages/source/p/python_115/python_115-0.0.9.8.8.5.tar.gz
-	sha256sums = 4b279f71b0b7c074e0c971eb4302ae54821fe960748932726a76210b7543b78c
+	source = python_115-0.0.9.8.8.6.tar.gz::https://files.pythonhosted.org/packages/source/p/python_115/python_115-0.0.9.8.8.6.tar.gz
+	sha256sums = 3b6e5d0f130a628a4222f50d9c3569baccc44f89408c2d696c2200dab050330c
 
 pkgname = python-115
