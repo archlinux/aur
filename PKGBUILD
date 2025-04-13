@@ -14,7 +14,7 @@
 : ${KOBOLDCPP_NO_PORTABLE:=0}
 
 pkgname=koboldcpp-cuda
-pkgver=1.87
+pkgver=1.88
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
@@ -30,6 +30,8 @@ depends=(
 optdepends=(
     'python-customtkinter: for GUI launcher'
     'python-psutil: increasing the process CPU priority'
+    'zenity: native file picker dialogs'
+    'yad: native file picker dialogs'
 )
 provides=("koboldcpp=$pkgver")
 conflicts=('koboldcpp')
@@ -38,7 +40,7 @@ source=(
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
-sha256sums=('4717fb61fd72f5f38c8e9b7af8ba3973fb97951bd0d10516b01131965a30c0b8'
+sha256sums=('f2202bc529ee509029ff363c299520706ac6b8bed0e3f8c7f6efb7fea217a645'
             'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
             'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
 
@@ -68,6 +70,7 @@ package() {
 
     install -Dm644 ./*.so "$pkgdir/usr/share/koboldcpp/"
     install -Dm644 ./*.embd "$pkgdir/usr/share/koboldcpp/"
+    install -Dm644 ./json_to_gbnf.py "$pkgdir/usr/share/koboldcpp/"
 
     install -d "$pkgdir/usr/share/koboldcpp/kcpp_adapters"
     install -m644 "kcpp_adapters"/* "$pkgdir/usr/share/koboldcpp/kcpp_adapters/"
