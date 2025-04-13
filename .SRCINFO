@@ -1,12 +1,12 @@
 pkgbase = perl-dist-build
 	pkgdesc = A modern module builder, author tools not included!
 	pkgver = 0.019
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Dist-Build
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-cpan-requirements-dynami
+	depends = perl-cpan-requirements-dynamic
 	depends = perl-extutils-builder>=0
 	depends = perl-extutils-builder-compiler>=0.028
 	depends = perl-extutils-config>=0
