@@ -1,7 +1,7 @@
 pkgbase = python-reader
 	pkgdesc = Python feed reader library for RSS, Atom, and JSON feeds
-	pkgver = 3.14
-	pkgrel = 2
+	pkgver = 3.16
+	pkgrel = 1
 	url = https://github.com/lemon24/reader
 	arch = any
 	license = BSD-3-Clause
@@ -27,13 +27,7 @@ pkgbase = python-reader
 	optdepends = python-humanize
 	optdepends = python-mutagen
 	optdepends = python-requests-wsgi-adapter
-	source = python-reader-3.14.tar.gz::https://github.com/lemon24/reader/archive/refs/tags/3.14.tar.gz
-	source = python-reader-test_lazy_imports.patch::https://github.com/lemon24/reader/commit/63e8ec34bb6fd7c68a0e2ffa4178634947472d5c.patch
-	source = python-reader-test_disk_storage_has_attached_database.patch::https://github.com/lemon24/reader/pull/351/commits/5f8b2af3b9a319c03eae045aa0e0d6a666bf531e.patch
-	source = python-reader-test_parser_selection.patch
-	sha256sums = 341d9362d1807208306196b879fba1f686bce6cbbfde34e7796e3c049ee9bfd6
-	sha256sums = b392238a61a4c2c208d2d7c1319d329c9c0b25149f82736882467aef4466f3ef
-	sha256sums = 6226f8f32a8e8febffa53c01d727303a56ab6d366393c8bc91e7b394b22f223d
-	sha256sums = f0c61172e2fba35f92c4b3483dd1fef25227690b17009bb57f37b7bdfbccf5df
+	source = reader-3.16.tar.gz::https://github.com/lemon24/reader/archive/refs/tags/3.16.tar.gz
+	sha256sums = 16ba11ec46cdff10adbbcd04bf7b0b1c749ae6461a169a83f637d10740326a29
 
 pkgname = python-reader
