@@ -6,9 +6,9 @@ pkgrel=2
 pkgdesc="A public domain soundfont by Kenneth Rundt which has similar sound as gm.dls"
 arch=('any')
 license=('LicenseRef-SynthFont')
-url="synthfont.com/"
+url="http://www.synthfont.com"
 makedepends=('innoextract')
-source=("https://www.${url}/SynthFont2x64Setup.exe")
+source=("${url}/SynthFont2x64Setup.exe")
 sha256sums=('99209e856544af86e52c44dba6e8f6572d72cfb81453f103c204530794989dcc')
 
 prepare(){
