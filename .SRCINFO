@@ -1,7 +1,7 @@
 pkgbase = r-pkgcache
 	pkgdesc = Cache 'CRAN'-Like Metadata and R Packages
 	pkgver = 2.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=pkgcache
 	arch = x86_64
 	license = MIT
