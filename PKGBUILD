@@ -5,15 +5,15 @@ pkgname=evmone
 pkgver=0.15.0
 pkgrel=1
 pkgdesc="Fast Ethereum Virtual Machine implementation"
-arch=('any')
-url="https://github.com/ethereum/evmone/"
-license=('Apache')
-depends=()
-makedepends=('cmake' 'gcc' 'git')
+arch=(x86_64)
+url="https://github.com/ethereum/${pkgname}"
+license=(Apache-2.0)
+depends=(glibc gcc-libs)
+makedepends=(cmake git)
 md5sums=('SKIP')
 
 source=(
-	"git+https://github.com/ethereum/evmone.git#tag=v${pkgver}"
+	"git+${url}.git#tag=v${pkgver}"
 )
 
 build ()
