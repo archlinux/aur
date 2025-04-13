@@ -1,13 +1,13 @@
 # Maintainer: aquova <mail at aquova dot com>
 pkgname="cbconvert-bin"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="CBconvert is a Comic Book converter"
 url="https://github.com/gen2brain/cbconvert"
 arch=("x86_64")
 license=("GPL3")
 source=("${url}/releases/download/v${pkgver}/cbconvert-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=("4d094bafbc0ca0d3a175faf550248fce2d842f9db194d5888cabd27438e54dc4")
+sha256sums=("af901b241878cc2378d63768638f099897e4abc5d0f8a98689e99e0e15195135")
 
 package() {
     cd $srcdir/cbconvert-${pkgver}
