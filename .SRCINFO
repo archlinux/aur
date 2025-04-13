@@ -1,6 +1,6 @@
 pkgbase = digitalclock5
 	pkgdesc = A modern digital clock application
-	pkgver = 5.1.4
+	pkgver = 5.1.5
 	pkgrel = 2
 	url = https://github.com/Kolcha/DigitalClock5
 	install = digitalclock5.install
@@ -13,14 +13,14 @@ pkgbase = digitalclock5
 	depends = qt6-base
 	depends = ninja
 	depends = cmake
-	source = git+https://github.com/Kolcha/DigitalClock5.git#tag=5.1.4
+	source = git+https://github.com/Kolcha/DigitalClock5.git#tag=5.1.5
 	source = git+https://github.com/Kolcha/GradientDialog.git
 	source = git+https://github.com/Kolcha/paletteicon.git
 	source = git+https://github.com/Skycoder42/QHotkey.git
 	source = https://digitalclock4.sourceforge.io/media/skins.zip
 	source = digitalclock5.desktop
 	source = digitalclock5.install
-	sha256sums = d2c401f3337a9a807f646e3c3dd6e7a5239d5335f3e8dadc99fd8c375c1732fc
+	sha256sums = d7cc6d3d1e0ce1429f71fbc5bcbb09730cb0de4da708c865fe244f758d50f967
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
