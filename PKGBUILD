@@ -2,7 +2,7 @@
 # Maintainer: Jia Yin<lok-ation at outlook dot com>
 
 pkgname=uni-updater
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Helper program that updates everything on your system.'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 conflicts=('uni-updater')
 provides=("uni-updater=${pkgver}")
-source=("$pkgname::git+$url#tag=$pkgver")
-sha512sums=('549ddf732c5c343a8c18203574f1c60ad80e8e125248181b1101a9661cade75a83cc21ded14dd86239c3efac6fe7569e34b4cefb796243a443d92110f2facb99')
+source=("$pkgname::git+$url#tag=4f7005e82c")
+sha512sums=('e98eb54baf7d6abbdf1e9bdefea3354bc722f18b813cd646f9de95f84c770a344611fae1618c62ecd212902d9b5ef3e6040fb19c1c0db076901663c7f619c3b8')
 prepare() {
 	cd "$pkgname"
 	cargo update
