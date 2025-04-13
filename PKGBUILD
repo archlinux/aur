@@ -1,24 +1,26 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 pkgname=jd-gui-duo
-pkgver=2.0.89
-pkgrel=2
+pkgver=2.0.90
+pkgrel=1
 pkgdesc="A 2-in-1 JAVA decompiler based on JD-CORE v0 and v1"
 arch=('any')
-url="https://github.com/nbauma109/jd-gui-duo"
+url="https://github.com/nbauma109/$pkgname"
 license=('GPL3')
 depends=('java-runtime>=21')
 makedepends=('maven' 'jdk21-openjdk')
 source=(
-	"$pkgname-$pkgver.tar.gz::https://github.com/nbauma109/jd-gui-duo/archive/refs/tags/$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/nbauma109/$pkgname/archive/refs/tags/$pkgver.tar.gz"
 	"jd-gui-duo"
 	"jd-gui-duo.desktop"
+	"assembler_pom.patch"
 )
-sha256sums=('5fefc06d3b6a48366b0bf35d875e4d3ca854b8def0307fb9b4635051211f6586'
+sha256sums=('d284488492baf57a8146a1a36e580c8141629a2e8276aacfc77be6e8ccc4e7fb'
             '9d175e28662dd1ad701f76d5aa7f7752543453f156615b96787e641252ce60e4'
-            'd40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184')
-
+            'd40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184'
+            '755b30376b61883e8c4ba854cdb17d8c1a6bdd5120c5bba339f9f56e7d47c15e')
 
 build() {
+	patch "$pkgname-$pkgver/assembler/pom.xml" < "assembler_pom.patch"
 	cd "$pkgname-$pkgver"
 	JAVA_HOME="/usr/lib/jvm/java-21-openjdk" mvn clean package --no-transfer-progress
 }

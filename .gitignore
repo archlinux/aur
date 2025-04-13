@@ -4,6 +4,7 @@
 # Force-add specific files
 !.gitignore
 !.SRCINFO
+!assembler_pom.patch
 !jd-gui-duo
 !jd-gui-duo.desktop
 !LICENSE
