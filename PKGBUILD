@@ -13,6 +13,7 @@ url="https://github.com/shellinabox/shellinabox"
 license=('GPL2')
 depends=('pam' 'openssl')
 makedepends=('git' 'gcc' 'autoconf' 'automake')
+backup=('usr/lib/systemd/system/shellinabox.service')
 source=('shellinabox.service'
         'git+https://github.com/shellinabox/shellinabox')
 md5sums=('68a3c15b359151eea27432142a80207a'
