@@ -4,8 +4,8 @@
 # Contributor: Orlando Garcia Feal <rodland at gmail dot com>
 
 pkgname=gnudatalanguage
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=("i686" "x86_64")
 url="https://gnudatalanguage.github.io/"
@@ -18,7 +18,7 @@ checkdepends=("openssh")
 optdepends=("cuda")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v${pkgver}/gdl-v${pkgver}.tar.gz"
         "gdl.profile")
-sha512sums=("304aa2a8e39c3966c2ac006cbacfa5b49d9b1fc5d55446a5f645792427b7c05a67dab2b13ba9119a8d69940334ac3225dd494c23685c290844acd07b4562c141"
+sha512sums=("1bdbc0793d7bd025e120e8e44a091ad853ff524dab2bcb897146d4e59b58e81ad5c0c73ce08294ec9b41aec059b7ee0ba4d29f7d557f5635b2098027bf73bd1a"
             "b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f")
 
 build() {
@@ -39,8 +39,7 @@ build() {
 
 check() {
     cd "${srcdir}/gdl-v${pkgver}/build"
-    # setting the evn variable is a temporary fix/hack for https://github.com/gnudatalanguage/gdl/issues/1907
-    PLPLOT_LIB="${srcdir}/gdl-v${pkgver}/src/plplot/data/" ctest --output-on-failure
+    ctest --output-on-failure
 }
 
 package() {

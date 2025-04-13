@@ -1,7 +1,7 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://gnudatalanguage.github.io/
 	arch = i686
 	arch = x86_64
@@ -36,9 +36,9 @@ pkgbase = gnudatalanguage
 	depends = wxwidgets-gtk3
 	depends = zlib
 	optdepends = cuda
-	source = gnudatalanguage-1.1.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v1.1/gdl-v1.1.tar.gz
+	source = gnudatalanguage-1.1.1.tar.gz::https://github.com/gnudatalanguage/gdl/releases/download/v1.1.1/gdl-v1.1.1.tar.gz
 	source = gdl.profile
-	sha512sums = 304aa2a8e39c3966c2ac006cbacfa5b49d9b1fc5d55446a5f645792427b7c05a67dab2b13ba9119a8d69940334ac3225dd494c23685c290844acd07b4562c141
+	sha512sums = 1bdbc0793d7bd025e120e8e44a091ad853ff524dab2bcb897146d4e59b58e81ad5c0c73ce08294ec9b41aec059b7ee0ba4d29f7d557f5635b2098027bf73bd1a
 	sha512sums = b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f
 
 pkgname = gnudatalanguage
