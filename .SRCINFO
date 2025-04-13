@@ -1,7 +1,7 @@
 pkgbase = libtorrent-git
 	pkgdesc = BitTorrent library with a focus on high performance and good code
-	pkgver = 0.13.8.r20.g53596afc
-	pkgrel = 3
+	pkgver = 0.15.2.r33.gc9ee12b6
+	pkgrel = 1
 	url = https://github.com/rakshasa/libtorrent
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libtorrent-git
 	depends = gcc-libs
 	depends = openssl
 	depends = zlib
-	provides = libtorrent=0.13.8
+	provides = libtorrent=0.15.2
 	conflicts = libtorrent
 	source = libtorrent-git::git+https://github.com/rakshasa/libtorrent.git
 	b2sums = SKIP
