@@ -1,1 +1,1 @@
-d /var/lib/tunarr 0750 tunarr tunarr -
+d /var/lib/tunarr 0750 tunarr media -

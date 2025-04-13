@@ -1,1 +1,3 @@
 u tunarr - "tunarr daemon" /var/lib/tunarr
+g media  -
+m tunarr media

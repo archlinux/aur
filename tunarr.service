@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 EnvironmentFile=/etc/conf.d/tunarr
 User=tunarr
-Group=tunarr
+Group=media
 Type=simple
 WorkingDirectory=/var/lib/tunarr
 ExecStart=/usr/bin/tunarr server

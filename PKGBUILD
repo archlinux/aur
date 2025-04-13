@@ -2,7 +2,7 @@
 
 pkgname=tunarr-bin
 pkgver=0.18.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby'
 arch=('x86_64' 'aarch64')
 _pkgarch="x64"
@@ -25,9 +25,9 @@ source=("tunarr-${pkgver}-${_pkgarch}::https://github.com/chrisbenincasa/tunarr/
         'tunarr.service'
         'tunarr.conf.d')
 sha256sums=('b4d0d5c977a92ce475f041dbb36be6a45a88d8c3f9d1993ae294bb09017fd455'
-            '4d4375c6326db6d4738b86ddfc114d16b1f4804dece0f053450abce49d55e78c'
-            'b2d15cf310c96457775c428e7e6ae7a7cf1cf5c5874d95414934087613b3539d'
-            '64755e37e633ead21017f81ede2462603952906000c1987b85f02a663d70ac75'
+            '85af351451b2dc90f5f611f9be8bbda076d5e1ec42276d44b7d380b1d49767a7'
+            'd642c71dd83406fd659fdaed5f3ef5b44a29443a9303e8a3a912fea757571c19'
+            'ec4c01a686ecb715ef96038e815932765b9a42fb19261062a89a932cdb8fdf85'
             'e5ce4fc219b93fefb207b1b10b316e46fe94018cf13e25e42a5c033e9c31edb7')
 
 package()
