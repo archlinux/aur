@@ -1,0 +1,25 @@
+pkgbase = soapysddc-git
+	pkgver = r268.a71e8ec
+	pkgrel = 1
+	url = https://github.com/ik1xpv/ExtIO_sddc
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = libusb
+	depends = fftw
+	depends = soapysdr
+	source = git+https://github.com/ik1xpv/ExtIO_sddc.git
+	md5sums = SKIP
+
+pkgname = soapysddc-git
+	pkgdesc = Soapy SDR plugin for wideband SDR receivers like BBRF103, RX-666, RX888, HF103, etc
+	provides = soapysddc
+	conflicts = soapysddc
+
+pkgname = libsddc-git
+	pkgdesc = A low level library for wideband SDR receivers like BBRF103, RX-666, RX888, HF103, etc
+	provides = libsddc
+	conflicts = libsddc
