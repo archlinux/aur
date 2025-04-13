@@ -6,13 +6,10 @@ pkgbase = py-fetch
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-psutil
-	makedepends = python-colorama
-	makedepends = python
 	depends = python
 	depends = python-psutil
 	depends = python-colorama
-	source = git+https://github.com/binarylinuxx/pyfetch.git
+	source = git+https://github.com/binarylinuxx/pyfetch.git#tag=v1.2.0
 	sha256sums = SKIP
 
 pkgname = py-fetch
