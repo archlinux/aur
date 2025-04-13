@@ -5,7 +5,7 @@ pkgrel=9
 epoch=0
 pkgdesc="Emulator for j2me, CLDC, MIDP applications and games"
 arch=('x86_64')
-url="https://nnp.nnchan.ru/kem/"
+url="https://nnproject.cc/kem/"
 license=('custom')
 depends=('java-runtime-openjdk'
 	'xdg-utils'
