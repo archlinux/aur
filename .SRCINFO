@@ -1,7 +1,7 @@
 pkgbase = stacer-bin
 	pkgdesc = Linux System Optimizer and Monitoring
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://github.com/QuentiumYT/Stacer
 	install = stacer-bin.install
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = stacer-bin
 	options = !strip
 	source = stacer-bin.install
 	sha512sums = 7bed61f1ca2c53bb441f69a35d5e8a313a229bc34f114d121977379f48c3b9aa426d7a39a4c0363f1cad0cb8637b292263800d25bd317eceb517c19947bec3cd
-	source_x86_64 = https://launchpad.net/~quentiumyt/+archive/ubuntu/stacer/+files/stacer_1.3.2-2_all.deb
-	sha512sums_x86_64 = 190e23e23d9b39858dbbcdf7a770196625fa98e18dd249be52b5834e291ae50f448e377331f8cffaaadf9828d3808050506caeda1ea56ed0692c637e3ea5ca7f
+	source_x86_64 = https://launchpad.net/~quentiumyt/+archive/ubuntu/stacer/+build/30431799/+files/stacer_1.3.3-1_all.deb
+	sha512sums_x86_64 = d4bec15fa7d1b728b7875ec398512f65d28779e29cea49c1a124c299de6dac959b8ffcd0c2450b77cd8ae95e81da9fa0f81817e1f457d92fae5db1c3b686e3a7
 
 pkgname = stacer-bin
