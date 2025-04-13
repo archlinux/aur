@@ -1,7 +1,7 @@
 pkgbase = python-argtools
 	pkgdesc = Python argument tools.
-	pkgver = 0.0.1
-	pkgrel = 4
+	pkgver = 0.0.2
+	pkgrel = 1
 	url = https://pypi.org/project/python-argtools
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = python-argtools
 	conflicts = python-argtools
 	options = !strip
 	options = !debug
-	source = python_argtools-0.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_argtools/python_argtools-0.0.1.tar.gz
-	sha256sums = 3de043b9ac64b4ef92b459f0c356495b860a72b4769090adfd6115e884b9998d
+	source = python_argtools-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_argtools/python_argtools-0.0.2.tar.gz
+	sha256sums = edb8cfefe2773ffa2fa9efb9fcbdf679d8826a3a29adf2fecb36986146e83f5c
 
 pkgname = python-argtools
