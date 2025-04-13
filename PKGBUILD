@@ -21,15 +21,17 @@ sha512sums=(
 	'f6b9e7af7e1cd2cc48f530890576f03daaaf4d39137673be10eff3a3cfad68943be767727a0f224c986428b620c3362c835812db845f1fc76f17cd0a3647b303'
 )
 
-build() {
-	cd "${_name}-${pkgver}"
+prepare() {
+	cd "${_name}-${pkgver}/"
 	npm install --legacy-peer-deps --cache "${srcdir}/npm-cache/"
-	cd src
 
 	# Locale files are in a submodule. We do not have git info here so we have to insert it manually.
-	rm -rf _locales
-	ln -s "../../${_name}-l10n-${_l10n_version}" "_locales"
+	rmdir src/_locales/
+	ln --symbolic "../../${_name}-l10n-${_l10n_version}" src/_locales
+}
 
+build() {
+	cd "${_name}-${pkgver}/src/"
 	../node_modules/web-ext/bin/web-ext.js build --filename extension.zip --overwrite-dest
 
 	mkdir repack/
