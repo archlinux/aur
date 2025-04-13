@@ -4,7 +4,7 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=20250323
+pkgver=20250408
 pkgrel=1
 pkgdesc="A free, fast-paced cross-platform first person shooter"
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
 
 source=("rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh"
         "rsync://rsync.xonotic.org/autobuild/Xonotic/misc/tools/rsync-updater/mirrors.txt")
-sha512sums=('502f048166d0a474e4a9c5bd4c0e3aac420e551eea29624148a529b7d473654a7a22e3e6e7df52734a2ed4c2bb113241a385978a6291b22d1646a500050d7f16'
-            'bfb6daec9571ee0974085c8b05662aeb284e5fb28fa0a5862c8b822994f445c09d798a30d9e72822e65fc54368407b61c7b6222defaf8d343cd8be2a45df6070')
-b2sums=('f78f2d3dcecbe6cf4bc1c3cfed78a0588966718ee6851bb610fe524f594f71417f1ec66c97482f9a653c74af9324d9eaa3330a1eff696dcd3e7dec4948c2c436'
-        '410315bac2a8028c7d9f07621355365c28b7084d00051257654dde6954d8f18f31321156f11aecb5fbc632298a5904828c960d0a31a5a579ff8de96eacbee7ba')
+sha512sums=('5a66e5548fa8e78dc9dda1b1c0211b7703d129b0f00ee0e6794e8191b97a8eceb6caeb01f8f3a07e8c230d07015438dddcabe294ec97e541e8d5f20835f919f9'
+            '57e3eb4aa983e0d51b3012a651b772e04a1238e9fdeee37f11016809270cd05a1189f3c4c64621671011897a6c9e31dfc1b391452dddf30f1073cbfe56a85ef9')
+b2sums=('6daec3f7be95b68c16df7af4db18ca52090f54784413c858805b074efb40f7017b4bb3bada1c27739eb489d1aae3bc05cf95d66cb4a19524847765f3b7d86048'
+        '04f02f4b399a36cad1be1ca6b33ac212d8ad0db72e0756f52f6424473bd1968ebaeb805541633c7ea722deead9f1220272f5809065af1d24f58f46621701e183')
 
 pkgver() {
   printf $(date +%Y%m%d -r Xonotic/xonotic-linux64-sdl)
