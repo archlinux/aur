@@ -1,6 +1,6 @@
 pkgbase = kronos-git
 	pkgdesc = Sega Saturn emulator, fork of yabause
-	pkgver = r7559.1844f3c6f
+	pkgver = 2.7.0_official_release.r0.g58352d6
 	pkgrel = 1
 	url = https://github.com/FCare/Kronos
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = kronos-git
 	makedepends = cmake
 	makedepends = glu
 	makedepends = git
-	makedepends = gcc13
 	depends = openal
 	depends = qt5-base
 	depends = qt5-multimedia
