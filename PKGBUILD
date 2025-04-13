@@ -1,7 +1,7 @@
 # Maintainer: Raiku <rikunn.rikunn@proton.me>
 pkgname=sam-rewritten
-pkgver=1.1
-pkgrel=1
+pkgver=1.0
+pkgrel=2
 url="https://github.com/gitRaiku/sam"
 pkgdesc="Software automatic mouth rewritten to use dynamically allocated memory"
 arch=(any)
