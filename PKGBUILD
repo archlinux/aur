@@ -5,7 +5,7 @@
 
 _pkgname=pa-dlna
 pkgname="${_pkgname}-git"
-pkgver=0.16+1.r436.20250315.0c9f4e6
+pkgver=1.0.r438.20250413.b9c59a4
 pkgrel=1
 pkgdesc="Forwards audio streams to DLNA devices. For PulseAudio or PipeWira (via 'python-libpulse'). Latest git checkout."
 arch=(
