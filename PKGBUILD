@@ -1,7 +1,7 @@
 # Maintainer: Kamil Śliwak <cameel2/at/gmail/com>
 
 pkgname=unimatrix-git
-pkgver=r30.3692561
+pkgver=r89.5cf67aa
 pkgrel=1
 pkgdesc='Python script to simulate the display from "The Matrix" in terminal. Uses half-width katakana unicode characters by default, but can use custom character sets.'
 arch=('any')
