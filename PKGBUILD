@@ -2,13 +2,13 @@
 # Contributor: Canmi (Canmi21)
 
 pkgname=cursor-free-vip-git
-pkgver=1.9.02
+pkgver=1.9.03.2.g43a58db
 pkgrel=1
 pkgdesc="Reset Cursor AI MachineID & Auto Sign Up / In & Bypass Higher Token Limit"
 arch=('x86_64')
 url="https://github.com/yeongpin/cursor-free-vip"
 license=('MIT')
-depends=('python' 'cursor')
+depends=('python' 'cursor-bin')
 makedepends=('git' 'python' 'pyinstaller' 'uv')
 provides=('cursor-free-vip')
 source=("cursor-free-vip::git+https://github.com/yeongpin/cursor-free-vip.git")
