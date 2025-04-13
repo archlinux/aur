@@ -1,4 +1,5 @@
-# Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
+# Maintainer: Application-Maker <Application-Maker.Uinwad@erine.email>
+# Contributor: Jenya Sovetkin <e dot sovetkin at gmail dot com>
 # Contributor: @xnor
 # Contributor: @nicolasvila
 # Contributor: @xer01ne
@@ -12,41 +13,27 @@ url="https://github.com/shellinabox/shellinabox"
 license=('GPL2')
 depends=('pam' 'openssl')
 makedepends=('git' 'gcc' 'autoconf' 'automake')
-backup=('usr/lib/systemd/system/shellinabox@.service')
-source=('shellinabox@.service'
+source=('shellinabox.service'
         'git+https://github.com/shellinabox/shellinabox')
-md5sums=('9778d64973cd9dd7cf2225cd9af0cd09'
+md5sums=('68a3c15b359151eea27432142a80207a'
          'SKIP')
 
 _gitname=shellinabox
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+build() {
+  cd "${srcdir}/${_gitname}"
+  autoreconf -i
+  ./configure --prefix=/usr LDFLAGS="-lssl -lcrypto"
+  make
+}
 
 package() {
   cd "${srcdir}/${_gitname}"
-
-  autoreconf -i
-
-  export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/}"
-  ./configure  --prefix=/usr
-
-  # add SSL libs
-  sed -i -e "s|LIBS = -lz -ldl -lutil|LIBS = -lz -ldl -lutil -lssl -lcrypto|g" ${srcdir}/shellinabox/Makefile
-
-  # issue 458
-  sed -i -e 's/-oRhostsRSAAuthentication=no//' ${srcdir}/shellinabox/shellinabox/service.c
-  sed -i -e 's/-oRSAAuthentication=no//' ${srcdir}/shellinabox/shellinabox/service.c
-
-  make
-
   make DESTDIR="$pkgdir/" install
-  install -Dm644 "${srcdir}/shellinabox@.service"  "${pkgdir}/usr/lib/systemd/system/shellinabox@.service"
+  install -Dm644 "${srcdir}/shellinabox.service"  "${pkgdir}/usr/lib/systemd/system/shellinabox.service"
 }
-
-# vim:set ts=2 sw=2 et:

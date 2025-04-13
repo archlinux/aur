@@ -11,11 +11,9 @@ pkgbase = shellinabox-git
 	makedepends = automake
 	depends = pam
 	depends = openssl
-	backup = usr/lib/systemd/system/shellinabox@.service
-	source = shellinabox@.service
+	source = shellinabox.service
 	source = git+https://github.com/shellinabox/shellinabox
-	md5sums = 9778d64973cd9dd7cf2225cd9af0cd09
+	md5sums = 68a3c15b359151eea27432142a80207a
 	md5sums = SKIP
 
 pkgname = shellinabox-git
-
