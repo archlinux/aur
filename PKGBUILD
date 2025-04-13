@@ -4,7 +4,7 @@ pkgname=musoq
 _pkgname=Musoq
 _pkgauthor=Puchaczov
 pkgver=0.18.11
-pkgrel=4
+pkgrel=5
 pkgdesc="SQL Swiss Army Knife - Engine for Diverse Data Sources"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -32,7 +32,7 @@ package() {
     install -dm755 "${pkgdir}/usr/bin/"
     ln -rsf "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    install -Dm644 "${srcdir}/musoq.service" -t "${pkgdir}/etc/systemd/user/"
+    install -Dm644 "${srcdir}/musoq.service" -t "${pkgdir}/usr/lib/systemd/user/"
 
     install -Dm644 "${pkgdir}/opt/${_pkgname}/license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
