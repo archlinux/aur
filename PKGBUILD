@@ -5,7 +5,7 @@ pkgbase=rustrover-eap
 pkgname=("${pkgbase}" "${pkgbase}-jre")
 pkgver=2025.1pre+251.23774.271
 pkgrel=1
-if [[ ${pkgver} =~ (.+)pre\+(.+) ]]; then _dlver="${BASH_REMATCH[2]}"
+if [[ ${pkgver} =~ (.+)(pre|rc)\+(.+) ]]; then _dlver="${BASH_REMATCH[3]}"
 else _dlver="${pkgver}"
 fi
 pkgdesc='JetBrains IDE for Rust Developers (EAP)'

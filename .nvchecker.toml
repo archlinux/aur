@@ -5,4 +5,15 @@ encoding = 'utf8'
 source = "jq"
 # filter = '.[].releases | map(select(.type == "release")) | sort_by(...) | reverse | .[0] | .version'
 # filter = '.[].releases | map(select(.type == "eap"))     | sort_by(...) | reverse | .[0] | "\(.majorVersion)pre+\(.build)"'
-filter = '.[].releases | sort_by(.build|split(".")|map(tonumber)) | reverse | .[0] | (if .type == "release" then .version else "\(.majorVersion)pre+\(.build)" end)'
+filter = '''
+	.[].releases
+	| sort_by(.build|split(".")|map(tonumber))
+	| reverse
+	| .[0]
+	| (
+		if .type == "release" then .version
+		elif .type == "rc"    then "\(.majorVersion)rc+\(.build)"
+		else                       "\(.majorVersion)pre+\(.build)"
+		end
+	)
+'''
