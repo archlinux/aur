@@ -1,7 +1,7 @@
 # Maintainer: Ning Sun <n@sunng.info>
 
 pkgname=dssd
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Dead simple freedesktop SecretService implementation"
 url="https://github.com/ylxdzsw/dssd"
@@ -11,7 +11,7 @@ makedepends=(cargo)
 depends=(dbus)
 provides=("org.freedesktop.secrets")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('0d35a92c476dace937f3763d4ed44d90fbb7670163d1b2955997ab19716710593a1fab8bc66616d4e0234e3764cacd8739865ad3046c86377b117de365edefb7')
+sha512sums=('e8b809b1096d2a0a5fdb44d0be7fab0a8ffe65d634d4f107274bab7a8072bcdeee9cea3bd5d983c873eb87bbc81baf1bfcaf8a176dc7d2b01ab12aadb029964e')
 
 build() {
     cd "$pkgname-$pkgver"
