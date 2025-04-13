@@ -3,7 +3,7 @@
 
 pkgname=joycond-git
 _name=joycond
-pkgver=v0.1.0.r53.gcdec328
+pkgver=v0.1.0.r58.g39d5728
 pkgrel=1
 pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver'
 arch=('x86_64' 'aarch64')
@@ -32,5 +32,4 @@ build() {
 package() {
   cd "$srcdir/$_name"
   make DESTDIR="$pkgdir/" install
-  mv "$pkgdir/lib" "$pkgdir/usr/"
 }
