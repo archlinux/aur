@@ -2,7 +2,7 @@
 # Contributor: Adam Harvey <adam@adamharvey.name>
 
 pkgname=apfs-fuse-git
-pkgver=r93.04f3246
+pkgver=r101.66b86bd
 pkgrel=1
 pkgdesc="FUSE driver for APFS (Apple File System)"
 arch=('i686' 'x86_64')
@@ -13,9 +13,11 @@ makedepends=('git' 'cmake')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/sgan81/apfs-fuse'
-        'git+https://github.com/lzfse/lzfse')
+        'git+https://github.com/lzfse/lzfse'
+        'cmake-minimum-3.5.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'a8a4ac6a1e08c4ffd3ea4789c71b9270ba07c1b8c283ba34bd204bb61b095609')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -27,6 +29,7 @@ prepare() {
   git submodule init
   git config submodule.3rdparty/lzfse.url "$srcdir/lzfse"
   git -c protocol.file.allow=always submodule update
+  git apply ../cmake-minimum-3.5.patch
   mkdir -p build
 }
 
