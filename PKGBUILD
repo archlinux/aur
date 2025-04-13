@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname='Transgender.rs'
 pkgname='transgender'
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Minimalistic terminal file explorer'
 arch=('x86_64')
 url="https://github.com/Sberm/$_pkgname"
 license=('BSD-2-Clause')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('39366bb4437c43e2eb0fccf3dd32e4b080300c6bc4c016a048e75570a29e7b2c')
+sha256sums=('412ed634dda09b090dd6ebff574fb48a81c64c3215273bb8a1ec6fb0c8aa08f2')
 makedepends=('rustup')
 depends=('glibc' 'gcc-libs')
 
