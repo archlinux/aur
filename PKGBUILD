@@ -1,7 +1,7 @@
 # Maintainer: Niels Huylebroeck <arch@nightwalkers.be>
 pkgname=sway-input-config
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 license=("GPL3")
 pkgdesc="Sway Input Configurator"
 makedepends=(
