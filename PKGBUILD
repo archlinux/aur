@@ -3,7 +3,7 @@
 pkgname=opera-ffmpeg-vivaldi-symlink
 pkgver=134.0.6998.178
 pkgrel=1
-pkgdesc="A stupid symlink for proprietary codecs for opera"
+pkgdesc="Stupid symlinks for proprietary codecs for Opera"
 arch=('x86_64')
 url="https://ffmpeg.org/"
 license=('LGPL2.1')
