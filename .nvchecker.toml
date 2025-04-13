@@ -1,0 +1,4 @@
+[lib32-hidapi]
+source = "archpkg"
+archpkg = "hidapi"
+strip_release = true
