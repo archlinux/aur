@@ -4,7 +4,7 @@ _pkgname=litedown
 _pkgver=0.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lightweight Version of R Markdown"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -19,8 +19,8 @@ optdepends=(
   r-tinytex
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f3e2b2b808d833e5dc3f236f5e7cb36c')
-b2sums=('a3963f2d2a66df3ba180f5a96d83b4efa8b4cbc1cd37fea524babc8e05706a8fb2f9deee9d5339af0dd509a4c707264f4b2512885ff4562ed55e27bcd1ce1961')
+md5sums=('f236b5be57d891bd42d5dabd27a814de')
+b2sums=('da4b53442ee6aec14b37f44b0425892272aa42e88868c8a70d99ed4125937e9ee888fd17895200608b922898fa240aaabd67e9999cccb8ae6cb3e3c0456f6e37')
 
 build() {
   mkdir build
