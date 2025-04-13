@@ -1,6 +1,6 @@
 pkgbase = pdf4qt-git
 	pkgdesc = Open source PDF editor
-	pkgver = 1.4.0.0.r3.g2a93ca5
+	pkgver = 1.5.0.0.r6.g5375155
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = pdf4qt-git
 	depends = zlib
 	depends = glibc
 	depends = gcc-libs
-	depends = blend2d-git
+	depends = blend2d
 	depends = hicolor-icon-theme
 	optdepends = flite: Text-To-Speech using flite synthesizer,
 	optdepends = libspeechd: Text-To-Speech using speechd synthesizer
