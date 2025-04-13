@@ -7,7 +7,7 @@ pkgbase = perl-crypt-argon2
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
-	makedepends = cpanminus
+	makedepends = perl-dist-build>=0.010
 	depends = perl>=5.006
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Crypt-Argon2-0.029.tar.gz
