@@ -1,0 +1,23 @@
+pkgbase = perl-dist-build
+	pkgdesc = A modern module builder, author tools not included!
+	pkgver = 0.019
+	pkgrel = 1
+	url = https://metacpan.org/release/Dist-Build
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-cpan-requirements-dynami
+	depends = perl-extutils-builder>=0
+	depends = perl-extutils-builder-compiler>=0.028
+	depends = perl-extutils-config>=0
+	depends = perl-extutils-hascompiler>=0.024
+	depends = perl-extutils-helpers>=0.028
+	depends = perl-extutils-installpaths>=0
+	depends = perl-file-sharedir-tiny>=0
+	depends = perl>=5.010
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Build-0.019.tar.gz
+	md5sums = a5e5a739190e48a3a3479832beecd921
+	sha512sums = 691f51c83c121ae380e40d9da6f7a3cddc0d53eeeab15e2b72a8f43af42cb9477d43ac9e1900c329930c80430f037dbf91ac676119ef19e6dc4b3ca60419f166
+
+pkgname = perl-dist-build
