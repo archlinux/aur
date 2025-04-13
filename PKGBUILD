@@ -1,7 +1,7 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail dot com>
 
 pkgname=ugit
-pkgver=5.8
+pkgver=5.9
 pkgrel=1
 pkgdesc="ugit helps you undo your last git command with grace. Your damage control git buddy. Undo from 20+ git scenarios."
 arch=('any')
@@ -9,9 +9,9 @@ url="https://github.com/Bhupesh-V/ugit"
 license=('MIT')
 depends=('bash' 'awk' 'grep' 'ncurses' 'fzf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('1fef4fc268ab7572d3983317c04a282d30a1e0dd7c8a024cce97a138cc04adf5659bf7be30ff6916ae6d3564f91a4d4e01722522733bd42472777e38e74168b2')
+sha512sums=('4aa05d8e8afa7e52f6c268496db447506dc20383953577013b7b1e173cc98ac13d0195d5c5f7baa80ccbe140de97f63b4063898f8fcdedd72c1f047abd13d98f')
 
-package(){
+package() {
 
 	cd "$pkgname-$pkgver"
 	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
