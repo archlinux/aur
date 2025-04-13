@@ -1,0 +1,18 @@
+pkgbase = strace-libdw-git
+	pkgdesc = A diagnostic, debugging and instructional userspace tracer with libdw support for better, source-aware backtraces
+	pkgver = r0.0
+	pkgrel = 1
+	url = https://strace.io/
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	makedepends = make
+	depends = glibc
+	depends = libelf
+	optdepends = perl
+	provides = strace=r0.0
+	conflicts = strace
+	source = git+https://github.com/strace/strace.git
+	sha256sums = SKIP
+
+pkgname = strace-libdw-git
