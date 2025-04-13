@@ -1,0 +1,4 @@
+[lib32-libtpms]
+source = "archpkg"
+archpkg = "libtpms"
+strip_release = true

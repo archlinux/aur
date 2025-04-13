@@ -1,0 +1,20 @@
+pkgbase = lib32-libtpms
+	pkgdesc = Library providing a software emulation of a Trusted Platform Module (TPM 1.2 and TPM 2.0) (32-bit)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/stefanberger/libtpms
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = lib32-openssl
+	depends = libtpms>=0.10.0
+	provides = libtpms.so
+	options = !lto
+	source = libtpms-0.10.0.tar.gz::https://github.com/stefanberger/libtpms/archive/refs/tags/v0.10.0.tar.gz
+	source = libtpms-0.10.0.tar.gz.asc::https://github.com/stefanberger/libtpms/releases/download/v0.10.0/v0.10.0.tar.gz.asc
+	validpgpkeys = B818B9CADF9089C2D5CEC66B75AD65802A0B4211
+	sha256sums = 6da9a527b3afa7b1470acd4cd17157b8646c31a2c7ff3ba2dfc50c81ba413426
+	sha256sums = SKIP
+
+pkgname = lib32-libtpms
