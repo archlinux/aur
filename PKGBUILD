@@ -3,11 +3,11 @@
 
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-git"
-pkgver=0.6.6.r6.g0e1fa34
+pkgver=0.7.1.r13.g2fbe011
 pkgrel=1
 pkgdesc="Rounds the corners of your windows"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
-license=("GPL-2.0-or-later")
+license=("GPL-3.0-only")
 arch=('x86_64')
 
 provides=("$_pkgname=${pkgver%%.r*}")
@@ -15,14 +15,6 @@ conflicts=("$_pkgname")
 
 depends=(
   'kwin'
-
-  ## implicit
-  #kcmutils
-  #kconfig
-  #kcoreaddons
-  #kwidgetsaddons
-  #libepoxy
-  #qt6-base
 )
 makedepends=(
   'cmake'
@@ -34,6 +26,11 @@ makedepends=(
 _pkgsrc="kde-rounded-corners"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=("SKIP")
+
+prepare() {
+  # ensure Qt6
+  sed -E -e 's&\bQUIET\b&REQUIRED&' -i "$_pkgsrc/cmake/qtversion.cmake"
+}
 
 pkgver() {
   cd "$_pkgsrc"
