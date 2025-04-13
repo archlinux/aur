@@ -4,8 +4,8 @@
 
 _pkgname=gnss-sdr
 pkgname="${_pkgname}-git"
-pkgver=0.0.19.1+591.r9843.20250315.b0b41b194
-pkgrel=2
+pkgver=0.0.20+6.r9861.20250410.2e1f24ee7
+pkgrel=1
 pkgdesc="GNSS (Global Navigation Satellite System) software receiver"
 arch=(
   "i686"
@@ -168,6 +168,7 @@ prepare() {
   )
 
   cmake -S "${_pkgname}" -B build \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_STRIP=ON \
