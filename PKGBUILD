@@ -12,14 +12,14 @@ pkgname=mathematica-light
 pkgver=14.2.0
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
-pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing with online documentation."
+pkgdesc="Computational software for mathematics, science, and engineering, with online-only documentation."
 provides=('mathematica')
 conflicts=('mathematica')
 arch=('x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=(LicenseRef-WolframMathematicaLicenseAgreement) # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
-depends=('openmp')
 makedepends=('curl' 'inetutils')
+depends=('openmp')
 optdepends=(
     'ttf-dejavu: correct fonts for Greek characters and inline TeX'
     ## The following list of dependencies was inferred from namcap's output.  If
@@ -114,13 +114,13 @@ prepare() {
       --keep \
       --target "${srcdir}/bundle" \
       -- \
-      -help >/dev/null
+      -noexec
 
     patch -p1 -d "${srcdir}"/bundle < "${srcdir}"/remove-xdg-scripts.patch
 }
 
 package() {
-    installdir="$(realpath -m "${pkgdir}/${_installdir}")"
+    export installdir="$(realpath -m "${pkgdir}/${_installdir}")"
 
     msg2 'Running Mathematica installer'
     # https://reference.wolfram.com/language/tutorial/InstallingWolfram.html#650929293
@@ -135,60 +135,80 @@ package() {
     fi
     rm -f "${installdir}"/InstallErrors
 
-    msg2 'Fixing symbolic links'
-    rm "${pkgdir}"/usr/bin/*
-    ln -sf '../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript' "${installdir}/Executables/"
-    relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
-    ln -s "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/Executables/wolfram "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/Executables/wolframnb "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/Executables/WolframKernel "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
-    ln -s "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
-
     msg2 'Setting up WolframScript'
-    mkdir -p "${srcdir}"/WolframScript
-    mkdir -p "${pkgdir}"/usr/share
-    mkdir -p "${pkgdir}"/tmp/WolframScript
-    bsdtar -xf "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb -C "${pkgdir}"/tmp/WolframScript data.tar.xz
-    tar -xf "${pkgdir}"/tmp/WolframScript/data.tar.xz -C "${pkgdir}" ./usr/share/
-    rm -rf "${pkgdir}"/tmp
+    install -d "${srcdir}"/WolframScript "${pkgdir}"/usr/share
+    bsdtar -xf "${installdir}"/SystemFiles/Installation/wolframscript_*_amd64.deb \
+        -O data.tar.xz | tar -xJ -C "${pkgdir}" ./usr/share/
 
     msg2 'Copying menu and mimetype information'
-    mkdir -p \
-          "${pkgdir}"/usr/share/applications \
-          "${pkgdir}"/usr/share/desktop-directories \
-          "${pkgdir}"/usr/share/mime/packages
-    desktopFile="com.wolfram.Wolfram.${_pkgver}.desktop"
-    sed -Ei 's|^(\s*TryExec=).*$|\1/usr/bin/WolframNB|g' "${installdir}/SystemFiles/Installation/$desktopFile"
-    sed -Ei "s|^(\s*Exec=).*$|\1/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "${installdir}/SystemFiles/Installation/$desktopFile"
-    echo 'Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;' >> "${installdir}/SystemFiles/Installation/$desktopFile"
-    cp "${installdir}/SystemFiles/Installation/$desktopFile" "${pkgdir}"/usr/share/applications/
+
+    install -d "${pkgdir}"/usr/share/applications
+    desktop_file="com.wolfram.Wolfram.${_pkgver}.desktop"
+    _fix_dekstop_file "${installdir}/SystemFiles/Installation/$desktop_file"
+    cp "${installdir}/SystemFiles/Installation/$desktop_file" "${pkgdir}"/usr/share/applications/
+
+    install -d "${pkgdir}"/usr/share/desktop-directories
     cp "${installdir}"/SystemFiles/Installation/*.directory "${pkgdir}"/usr/share/desktop-directories/
+
+    install -d "${pkgdir}"/usr/share/mime/packages
     cp "${installdir}"/SystemFiles/Installation/*.xml "${pkgdir}"/usr/share/mime/packages/
 
     msg2 'Copying icons'
-    mkdir -p "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
-    cd "${installdir}"/SystemFiles/FrontEnd/SystemResources/X || exit 1
+    install -d "${pkgdir}"/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     for i in 32 64 128; do
-        cp App-${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png
+        cp "${installdir}/SystemFiles/FrontEnd/SystemResources/X/App-${i}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-wolfram-${_pkgver}.png"
+
         for mimetype in $(find . -name 'vnd.*' | cut -d '-' -f1 | uniq); do
             mimetype="$(basename "$mimetype")"
-            cp "${mimetype}-${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
+            cp "${installdir}/SystemFiles/FrontEnd/SystemResources/X/${mimetype}-${i}.png" \
+                "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png"
         done
     done
 
     msg2 'Copying man pages'
-    mkdir -p "${pkgdir}"/usr/share/man/man1
+    install -d "${pkgdir}"/usr/share/man/man1
     cp "${installdir}"/SystemFiles/SystemDocumentation/Unix/*.1 "${pkgdir}"/usr/share/man/man1
 
     msg2 'Copying license'
-    mkdir -p "${pkgdir}"/usr/share/licenses/Mathematica
-    cp "${installdir}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/Mathematica/LICENSE.txt
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp "${installdir}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
+    _fix_binary_symlinks # namcap rule: symlink
+    _fix_permissions # namcap rule: permissions
+}
+
+_fix_dekstop_file() {
+    # invalid version
+    sed -Ei 's|Version=2.0|Version=1.5|g' "$1"
+    # wrong path
+    sed -Ei 's|^(\s*TryExec=).*$|\1/usr/bin/WolframNB|g' "$1"
+    sed -Ei "s|^(\s*Exec=).*$|\1/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
+    # missing sections
+    cat >> "$1" <<EOF
+GenericName=Mathematical Software
+Keywords=Wolfram;Mathematica;Symbolic;Computation;Programming;Simulation;Data Analysis;Visualization;Algebra;Calculus;Graphing;
+Categories=Science;Education;Languages;ArtificialIntelligence;Astronomy;Biology;Chemistry;ComputerScience;DataVisualization;Geography;ImageProcessing;Math;NumericalAnalysis;MedicalSoftware;Physics;ParallelComputer;
+EOF
+}
+
+_fix_binary_symlinks() {
+    msg2 'Fixing symbolic links'
+    relative_installdir="$(realpath --relative-to="${pkgdir}/usr/bin" "${installdir}")"
+
+    ln -sf '../SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript' "${installdir}/Executables/"
+    ln -sf "${relative_installdir}"/Executables/math "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/Executables/MathKernel "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/Executables/mcc "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/Executables/wolfram "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/Executables/wolframnb "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/Executables/WolframKernel "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
+    ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
+}
+
+_fix_permissions() {
     msg2 'Fixing file permissions'
     chmod go-w -R "${pkgdir}"/*
 }
