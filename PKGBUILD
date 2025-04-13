@@ -16,7 +16,7 @@ pkgdesc="Computational software for mathematics, science, and engineering, with 
 arch=('x86_64')
 url="http://www.wolfram.com/mathematica/"
 license=(LicenseRef-WolframMathematicaLicenseAgreement) # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
-makedepends=('curl' 'rsync' 'inetutils')
+makedepends=('chrpath' 'curl' 'rsync' 'inetutils')
 depends=('openmp')
 optdepends=(
     'ttf-dejavu: correct fonts for Greek characters and inline TeX'
@@ -85,9 +85,11 @@ _source_url=$(
 source=(
     "Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
     "remove-xdg-scripts.patch"
+    "insecure-runpath.list"
 )
 sha256sums=('c18e9a706a1473bcb6d9e9d28bb46b71114bbef3c669e613b5ae32584c655e1a'
-            '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0')
+            '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
+            'f5550ea4ad2216b7cf52472c3c65a15fa0be1b601425a478e98e72d1ab55d6fb')
 options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
@@ -189,6 +191,7 @@ package() {
     cp "${installdir}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
     _fix_binary_symlinks # namcap rule: symlink
+    _fix_insecure_runpath # namcap rule: rpath, runpath
     _fix_permissions # namcap rule: permissions
 }
 
@@ -220,6 +223,23 @@ _fix_binary_symlinks() {
     ln -sf "${relative_installdir}"/Executables/WolframNB "${pkgdir}"/usr/bin/
     ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver "${pkgdir}"/usr/bin/
     ln -sf "${relative_installdir}"/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript "${pkgdir}"/usr/bin/
+}
+
+_fix_insecure_runpath() {
+    msg2 'Fixing insecure RPATH and RUNPATH on ELF files'
+
+    cat "${srcdir}/insecure-runpath.list" | while read elffile; do
+        # remove all RPATHs and RUNPATHs that aren't realtive to $ORIGIN
+        safe_runpath="$(chrpath -l "${installdir}/${elffile}" |\
+            sed -E 's/.*\bR(UN)?PATH=(.*)/\2/g' |\
+            tr ':' '\n' | grep -E '^\$ORIGIN' | paste -sd ':')"
+
+        if [ -z "$safe_runpath" ]; then
+            chrpath -d "${installdir}/${elffile}"
+        else
+            chrpath -r "$safe_runpath" "${installdir}/${elffile}"
+        fi
+    done
 }
 
 _fix_permissions() {
