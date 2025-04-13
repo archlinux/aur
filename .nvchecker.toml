@@ -1,0 +1,4 @@
+[lib32-libmanette]
+source = "archpkg"
+archpkg = "libmanette"
+strip_release = true
