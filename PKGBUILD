@@ -51,4 +51,8 @@ package ()
 {
 	DESTDIR="${pkgdir}/" \
 		cmake --install build/
+
+	cd "${pkgname}/"
+	install -D --mode 644 README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}/"
+	cp -r docs/ "${pkgdir}/usr/share/doc/${pkgname}/"
 }
