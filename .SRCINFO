@@ -1,0 +1,16 @@
+pkgbase = uni-updater
+	pkgdesc = Helper program that updates everything on your system.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://codeberg.org/TTsdzb/uni-updater
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = uni-updater=0.2.2
+	conflicts = uni-updater
+	source = uni-updater::git+https://codeberg.org/TTsdzb/uni-updater#tag=0.2.2
+	sha512sums = 549ddf732c5c343a8c18203574f1c60ad80e8e125248181b1101a9661cade75a83cc21ded14dd86239c3efac6fe7569e34b4cefb796243a443d92110f2facb99
+
+pkgname = uni-updater
