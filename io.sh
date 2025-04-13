@@ -1,0 +1,9 @@
+#!/bin/bash
+v=76
+for s in $(nm -D /lib/libicuio.so|grep " [TRD] "|awk {'print $3'}|grep _$v)
+	do echo "extern void* ${s};"
+	for n in {64..75}
+	do
+		echo "void* ${s//_$v/_$n}=&${s};"
+	done
+done
