@@ -6,6 +6,7 @@
 # Contributor: Christoph Brill <egore911-at-gmail-dot-com>
 # Contributor: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
+# Contributor: Marijan Smetko <msmetko@msmetko.xyz>
 
 pkgname=android-studio-canary
 pkgver=2025.1.1.6
@@ -41,7 +42,7 @@ package() {
   # Install the application.
   install -d $pkgdir/{opt/$pkgname,usr/bin}
   cp -a bin lib jbr license plugins product-info.json build.txt LICENSE.txt NOTICE.txt $pkgdir/opt/$pkgname
-  ln -s /opt/$pkgname/bin/studio.sh $pkgdir/usr/bin/$pkgname
+  ln -s /opt/$pkgname/bin/studio $pkgdir/usr/bin/$pkgname
 
   # Add the icon and desktop file.
   install -Dm644 bin/studio.png $pkgdir/usr/share/pixmaps/$pkgname.png
