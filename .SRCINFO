@@ -1,0 +1,15 @@
+pkgbase = fightplanner-git
+	pkgdesc = SSBU Mod Manager
+	pkgver = 3.3.15.r19.gef4fdc8
+	pkgrel = 1
+	url = https://github.com/FireXDF/SSBUFightPlanner
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	provides = fightplanner=3.3.15.r19.gef4fdc8
+	source = git+https://github.com/FireXDF/SSBUFightPlanner
+	sha256sums = SKIP
+
+pkgname = fightplanner-git
