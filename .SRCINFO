@@ -1,7 +1,7 @@
 pkgbase = noson-app-git
 	pkgdesc = SONOS controller for Linux platforms
-	pkgver = 5.6.8.r0.g8326e67
-	pkgrel = 1
+	pkgver = 5.6.8.r4.g1230355
+	pkgrel = 2
 	url = https://github.com/janbar/noson-app
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = noson-app-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-svg
+	makedepends = noson
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	depends = qt5-declarative
