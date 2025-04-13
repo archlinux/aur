@@ -1,13 +1,13 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 
 pkgname=apparmor.d-git
-pkgver=0.2957
+pkgver=0.3346
 pkgrel=1
 pkgdesc="Full set of apparmor profiles"
 arch=("x86_64")
 url="https://github.com/roddhjav/apparmor.d"
 license=('GPL-2.0-only')
-depends=('apparmor')
+depends=('apparmor>=4.1.0' 'apparmor<5.0.0')
 makedepends=('go' 'git')
 conflicts=('apparmor.d')
 source=("$pkgname::git+https://github.com/roddhjav/apparmor.d.git")
