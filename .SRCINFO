@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-lame
 	pkgdesc = A high quality MPEG Audio Layer III (MP3) encoder (Android x86-64)
 	pkgver = 3.100
-	pkgrel = 8
+	pkgrel = 9
 	url = http://lame.sourceforge.net/
 	arch = any
 	groups = android-lame
@@ -14,6 +14,8 @@ pkgbase = android-x86-64-lame
 	options = staticlibs
 	options = !emptydirs
 	source = http://downloads.sourceforge.net/lame/lame-3.100.tar.gz
+	source = lame.pc.in
 	md5sums = 83e260acbe4389b54fe08e0bdbf7cddb
+	md5sums = 23be318682f69026533062f470def74c
 
 pkgname = android-x86-64-lame
