@@ -1,9 +1,9 @@
 # Maintainer: gao <gao66 at sdf dot org>
-# Maintainer: Chewing_Bever
+# Contributor: Chewing_Bever
 # Contributor: Slacker
 
 pkgname=cronicle
-pkgver=0.9.68
+pkgver=0.9.77
 pkgrel=1
 pkgdesc="A simple, distributed task scheduler and runner"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('npm')
 install="$pkgname.install"
 source=("https://github.com/jhuckaby/Cronicle/archive/refs/tags/v$pkgver.tar.gz"
         "cronicle.service")
-sha256sums=('45b674c12539d66e469e0e493397f15d135a056cedd355bfba268f2601b4e523'
+sha256sums=('802afd16db4b3870467c4f3f5cd382b3af586a888232ec506b8cb196e101dd4f'
             '62a03d25afa12fd53e3cb0a81fa8b16e6a82c2be4a8a96dd79ebb976a2705315')
 backup=('opt/cronicle/conf/config.json'
         'usr/lib/systemd/system/cronicle.service')
