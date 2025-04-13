@@ -30,20 +30,20 @@ build() {
 	rm -rf _locales
 	ln -s "../../${_name}-l10n-${_l10n_version}" "_locales"
 
-	rm --force --recursive web-ext-artifacts
 	../node_modules/web-ext/bin/web-ext.js build --filename extension.zip --overwrite-dest
 
-	cd web-ext-artifacts
-	unzip extension.zip
-	rm extension.zip
+	mkdir repack/
+	cd repack/
+	unzip ../web-ext-artifacts/extension.zip
 	find -exec touch --date @0 {} \;
 
 	zip "${srcdir}/extension.zip" -X --filesync --recurse-paths -- *
+	cd ../
+	rm --recursive repack/
 }
 
 check() {
-	cd "${_name}-${pkgver}"
-	rm --force --recursive src/web-ext-artifacts
+	cd "${_name}-${pkgver}/"
 	npm run test:once
 }
 
