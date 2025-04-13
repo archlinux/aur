@@ -10,9 +10,7 @@ pkgbase = evmone
 	depends = gcc-libs
 	source = evmone-0.15.0.tar.gz::https://github.com/ethereum/evmone/archive/refs/tags/v0.15.0.tar.gz
 	source = evmc-12.1.0.tar.gz::https://github.com/ethereum/evmc/archive/refs/tags/v12.1.0.tar.gz
-	source = evm-benchmarks-d8b88f4046a87d6b902378cef752591f95427b43.tar.gz::https://github.com/ipsilon/evm-benchmarks/archive/d8b88f4046a87d6b902378cef752591f95427b43.tar.gz
 	sha256sums = 6eb2122c98bd86a083015b4e41f46b16df4d9bff608d2bf2f2d985ec18e6d640
 	sha256sums = 0d5458015bf38a5358fad04cc290d21ec40122d1eb6420e0b33ae25546984bcd
-	sha256sums = c253bd42e6613b049d014326472ed773e8032fd9e646c6774981815a04e510bd
 
 pkgname = evmone
