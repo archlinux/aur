@@ -1,5 +1,5 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
-# Maintainer: Plaunarome <plaunarome@protonmail.com>
+# Contributor: Plaunarome <plaunarome@protonmail.com>
 
 _name="multi-account-containers"
 _l10n_version=bdaa01291b7367a5e815470fd263ea36c862fe32
