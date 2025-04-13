@@ -1,0 +1,16 @@
+pkgbase = mkbrr-git
+	pkgdesc = A tool to create, modify and inspect torrent files
+	pkgver = 1.8.0.r0.g1f78ae4
+	pkgrel = 1
+	url = https://github.com/autobrr/mkbrr
+	arch = x86_64
+	arch = aarch64
+	arch = armv
+	license = GPL-2.0
+	makedepends = go
+	provides = mkbrr
+	conflicts = mkbrr
+	source = git+https://github.com/autobrr/mkbrr.git
+	sha256sums = SKIP
+
+pkgname = mkbrr-git
