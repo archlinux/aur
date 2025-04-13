@@ -1,7 +1,7 @@
 pkgbase = sticker-convert
 	pkgdesc = Convert (animated) stickers to/from WhatsApp, Telegram, Signal, Line, Kakao, Viber, Discord, iMessage. Written in Python.
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laggykiller/sticker-convert
 	arch = x86_64
 	arch = aarch64

@@ -1,7 +1,7 @@
 # Maintainer: laggykiller <chaudominic2 at gmail dot com>
 pkgname=sticker-convert
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert (animated) stickers to/from WhatsApp, Telegram, Signal, Line, Kakao, Viber, Discord, iMessage. Written in Python.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/laggykiller/sticker-convert"
@@ -32,7 +32,7 @@ package() {
     # Program
     mkdir -p "${pkgdir}/opt"
     cp -r ${srcdir}/${pkgname}-linux-${CARCH} "${pkgdir}/opt/${pkgname}"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}-LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/sticker-convert.desktop"\
