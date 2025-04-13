@@ -3,7 +3,7 @@
 _pkgname=vertd
 
 pkgname=vertd-git
-pkgver=r69.9ffeaf5
+pkgver=r70.743f69b
 pkgrel=1
 pkgdesc="VERT's solution to crappy video conversion services."
 arch=(x86_64)
@@ -25,17 +25,26 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-	cargo fetch
+	export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
-	cargo build
+	export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features 
+}
+
+check() {
+	cd "$srcdir/$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
-	install -Dm644 "target/debug/$_pkgname" -t "$pkgdir/usr/bin/"
+	install -Dm0755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$_pkgname/"
 
