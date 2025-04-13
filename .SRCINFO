@@ -10,6 +10,7 @@ pkgbase = fontpreview_sixel
 	depends = libsixel
 	depends = imagemagick
 	optdepends = feh: fallback image viewer for terminals without Sixel support
+	optdepends = xdg-utils: for xdg-open fallback image viewer for terminals without Sixel support
 	optdepends = file: for identifying file
 	source = git+https://github.com/felipefacundes/fontpreview.git
 	md5sums = SKIP

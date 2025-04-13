@@ -17,6 +17,7 @@ depends=(
 )
 optdepends=(
     'feh: fallback image viewer for terminals without Sixel support'
+    'xdg-utils: for xdg-open fallback image viewer for terminals without Sixel support'
     'file: for identifying file'
 )
 source=("git+${url}.git")
