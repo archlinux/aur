@@ -2,7 +2,7 @@
 # Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname="pa-dlna"
-pkgver=0.16
+pkgver=1.0
 pkgrel=1
 pkgdesc="Forwards audio to DLNA devices via PulseAudio or PipeWira (via 'python-libpulse')"
 arch=(
@@ -48,7 +48,7 @@ optdepends=(
 source=(
   "git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('1b9a4d10a0cdfccb2026c1c66d4e0399ebf253560812c73d18f4cb0b9d6dabea')
+sha256sums=('996f22943e03cb93fda2a1ef3ccc6731f09f0430c3e1f4ffe41e3fe3d849acc6')
 
 build() {
   cd "$pkgname"
