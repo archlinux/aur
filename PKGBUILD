@@ -9,7 +9,7 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica-light
-pkgver=14.2.0
+pkgver=14.2.1
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="Computational software for mathematics, science, and engineering, with online-only documentation."
@@ -89,9 +89,9 @@ source=(
     "remove-xdg-scripts.patch"
     "insecure-runpath.list"
 )
-sha256sums=('c08bb25ae7cab9c84f97ba610b154cf6f2089235077d1c481027c3c862658aab'
+sha256sums=('58d2eeabd46f898177323f2e3802e19af7311861d5abf4c0185313196a1805c7'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
-            'f5550ea4ad2216b7cf52472c3c65a15fa0be1b601425a478e98e72d1ab55d6fb')
+            '8f808af5ee778bad8a78b4544bbda9854a06159b65f3368d508ebcaabf4bbadd')
 options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
