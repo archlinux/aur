@@ -5,7 +5,7 @@
 
 _pkgname=upower
 pkgname="${_pkgname}-nosystemd-git"
-pkgver=1.90.8.r1785.20250331.707af75
+pkgver=1.90.9.r1790.20250410.bdbd99b
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics. Built without systemd dependencies. Latest Git checkout."
 arch=(
