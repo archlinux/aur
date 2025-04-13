@@ -15,7 +15,7 @@ EOF
 post_upgrade() {
     cat << EOF
 
-Cronicle upgraded. 
+iptv-checker-rs upgraded. 
 For full docs, please visit: https://github.com/zhimin-dev/iptv-checker-rs.
 
 EOF
