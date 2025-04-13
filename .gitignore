@@ -1,6 +1,4 @@
 /src/
 /pkg/
-/evmone/
-/evmc/
-/evm-benchmarks/
 /evmone-*.pkg.tar.*
+/*.tar.gz
