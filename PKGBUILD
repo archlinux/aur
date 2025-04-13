@@ -4,7 +4,7 @@ _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-lame
 pkgver=3.100
-pkgrel=8
+pkgrel=9
 pkgdesc="A high quality MPEG Audio Layer III (MP3) encoder (Android ${_android_arch})"
 arch=('any')
 url="http://lame.sourceforge.net/"
@@ -13,8 +13,10 @@ groups=('android-lame')
 depends=('android-ndk')
 makedepends=('android-configure' 'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("http://downloads.sourceforge.net/lame/lame-${pkgver}.tar.gz")
-md5sums=('83e260acbe4389b54fe08e0bdbf7cddb')
+source=("http://downloads.sourceforge.net/lame/lame-${pkgver}.tar.gz"
+        'lame.pc.in')
+md5sums=('83e260acbe4389b54fe08e0bdbf7cddb'
+         '23be318682f69026533062f470def74c')
 
 prepare() {
     cd "${srcdir}/lame-${pkgver}"
@@ -22,6 +24,8 @@ prepare() {
     check_ndk_version_ge_than 18.0
 
     sed -i "s/define DEPRECATED_OR_OBSOLETE_CODE_REMOVED 1/define DEPRECATED_OR_OBSOLETE_CODE_REMOVED 0/g" include/lame.h
+    sed "s/@VERSION@/${pkgver}/g" ../lame.pc.in > lame.pc
+    sed -i "s|@ANDROID_PREFIX@|${ANDROID_PREFIX}|g" lame.pc
 }
 
 build() {
@@ -42,4 +46,6 @@ package() {
     rm -r "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+
+    install -vDm 644 lame.pc -t "${pkgdir}/${ANDROID_PREFIX_LIB}/pkgconfig/"
 }
