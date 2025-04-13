@@ -7,6 +7,7 @@ pkgbase = sway-input-config
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
+	depends = qt6-wayland
 	depends = python-pyqt6
 	depends = python-i3ipc
 	depends = sway

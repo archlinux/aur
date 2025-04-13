@@ -8,7 +8,7 @@ makedepends=(
   'python-setuptools'
 )
 depends=(
-    "python-pyqt6" "python-i3ipc" "sway"
+    "qt6-wayland" "python-pyqt6" "python-i3ipc" "sway"
 )
 
 arch=("i686" "x86_64")
