@@ -1,6 +1,6 @@
 # Maintainer: maot <me@maot.dev>
 pkgname=mapwizard-git
-pkgver=20250407.ea40bd7
+pkgver=20250413.aab8e6b
 pkgrel=1
 pkgdesc="MapWizard - An open-source osu! mapping toolset (Git version)"
 arch=('x86_64')
@@ -11,7 +11,9 @@ makedepends=('dotnet-sdk>=9.0' 'git')
 source=("git+https://github.com/maotovisk/MapWizard.git"
         "mapwizard.desktop"
         "mapwizard.png")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            '00fe2d035637266874b2f986ff4ba2093ba6d287c348780026228ed5ec9c2607'
+            '47c200402dd7ba247e29b945e4367b4f126951cb0d3456e44ab2707dfc268215')
 
 pkgver() {
   cd "MapWizard"
