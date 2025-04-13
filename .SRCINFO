@@ -1,6 +1,6 @@
 pkgbase = lib32-libcap
 	pkgdesc = POSIX 1003.1e capabilities (32-bit)
-	pkgver = 2.75
+	pkgver = 2.76
 	pkgrel = 1
 	url = https://sites.google.com/site/fullycapable/
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = lib32-libcap
 	depends = lib32-pam
 	provides = libcap.so
 	provides = libpsx.so
-	source = git+https://git.kernel.org/pub/scm/libs/libcap/libcap.git?signed#tag=sig-libcap-2.75
+	source = git+https://git.kernel.org/pub/scm/libs/libcap/libcap.git?signed#tag=sig-libcap-2.76
 	validpgpkeys = 38A644698C69787344E954CE29EE848AE2CCF3F4
 	validpgpkeys = 0D23D34C577B08C4082CFD76430C5CFF993116B1
-	sha512sums = 58184111d432c1eac832de78766ae7c0d6dabf561eada2a03a5a958abaaad62f6a8232105685d6e8bdbb90815d4e30fe3ee9ba7205a76f3ca3b4361ad339c0a9
-	b2sums = 965d56b16763ac8489128c20e1679ce4fb8a62e0a1cc901de361292ed450888fa004dc4ddc7f1f60d9f90af9bde294bb47f38c29b69daf7c0166f54a5f0a3dc3
+	sha512sums = 27824e220e33eb1075e07649c50b774ad37d96f85d67f41c928c3da6b87a750b0b614767fce08300bb88449f9d15a555a38dad75a867d44b512c4c6f853ad74d
+	b2sums = baf649813cd56ca8561a2d5906d653e8c72ca4f2701c675ef14102802f08858ffe4acc4eadff80618d5dce78babce82e5854ada4bca56edca240a14dde3d7544
 
 pkgname = lib32-libcap
 	depends = lib32-glibc
 	depends = lib32-pam
-	depends = libcap=2.75
+	depends = libcap=2.76
