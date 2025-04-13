@@ -5,22 +5,22 @@
 
 _android_arch=x86-64
 pkgname=android-${_android_arch}-boost
-pkgver=1.87.0
+pkgver=1.88.0
 pkgrel=1
 _srcname=boost_${pkgver//./_}
 arch=('any')
 pkgdesc="Free peer-reviewed portable C++ source libraries (Android, ${_android_arch})"
 url="https://www.boost.org/"
-license=('custom')
+license=('BSL-1.0')
 depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-icu"
          "android-${_android_arch}-zlib"
          "android-${_android_arch}-zstd")
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/$_srcname.tar.bz2"
+source=("https://archives.boost.io/release/${pkgver}/source/${_srcname}.tar.bz2"
         "disable-version-check.patch")
-sha256sums=('af57be25cb4c4f4b413ed692fe378affb4352ea50fbe294a11ef548f4d527d89'
+sha256sums=('46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b'
             '63d12e7d703b471882608b4225c489f6a35ab425602783a4f9c4ea99a10f9c4b')
 
 prepare() {
