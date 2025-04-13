@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
-pkgver=14.0.6
+pkgver=15.0
 pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
@@ -11,7 +11,7 @@ depends=('java-environment')
 source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('74f46eaafca7ff1735cf05b25a19fb9605f813551c04503a0326555ec5907a37'
+sha256sums=('3f100705a2ffbd69873a0ac90b3403aaafc81ab70af9fd03d7b61bb59ebbe5ca'
             'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a'
             'ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36')
 
@@ -39,12 +39,12 @@ package() {
     mv "${target}/license.txt" "$licensedir"
     mv "${target}/license.html" "$licensedir"
 
-    local image_var="1u09tly"
-    cp "${target}/.install4j/i4j_extf_6_${image_var}_92xp8q@2x.png" "${hicolor}/512x512/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_6_${image_var}_92xp8q.png" "${hicolor}/256x256/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_5_${image_var}_1x4rayh@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_5_${image_var}_1x4rayh.png" "${hicolor}/32x32/apps/${pkgname}.png"
-    cp "${target}/.install4j/i4j_extf_4_${image_var}_ozp0zm.png" "${hicolor}/16x16/apps/${pkgname}.png"
+    local image_var="v3vxop"
+    cp "${target}/.install4j/i4j_extf_10_${image_var}_92xp8q@2x.png" "${hicolor}/512x512/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_10_${image_var}_92xp8q.png" "${hicolor}/256x256/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_9_${image_var}_1x4rayh@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_9_${image_var}_1x4rayh.png" "${hicolor}/32x32/apps/${pkgname}.png"
+    cp "${target}/.install4j/i4j_extf_8_${image_var}_ozp0zm.png" "${hicolor}/16x16/apps/${pkgname}.png"
 
     local appsdir="${pkgdir}/usr/share/applications"
     install -dm755 "$appsdir"
