@@ -1,6 +1,6 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=veretino
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Data Integrity Checker"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('qt6-base' 'qt6-svg' 'qmicroz')
 makedepends=('cmake')
 
 source=(https://github.com/artemvlas/veretino/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(d620a1349a8806d4a170ffd4ed8339fa8c6b9e01291b345cacbad49132be382c)
+sha256sums=(f4176db89381e731f17ee6f37bc942514c243bd0ca8e59af20801f799090dfb6)
 
 build() {
 	cd "$pkgname-$pkgver"
