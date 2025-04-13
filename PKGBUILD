@@ -1,14 +1,14 @@
 # Maintainer: Ireozar <ireo@ireo.xyz>
 pkgname="mailnaggertray-git"
-pkgver=r5.c00fb63
+pkgver=r10.3cc1e38
 pkgrel=1
 pkgdesc="Tray icon for use with mailnagger"
 arch=('x86_64')
 url="https://codeberg.org/ireozar/mailnaggertray"
 license=('MIT')
-depends=('glibc' 'mailnagger')
+depends=('glibc' 'mailnagger' 'gcc-libs')
 makedepends=('git' 'cargo')
-source=('mailnaggertray-git::git+https://codeberg.org/ireozar/mailnaggertray.git')
+source=("mailnaggertray-git::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,4 +32,6 @@ build() {
 package() {
 	cd "$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

@@ -1,6 +1,6 @@
 pkgbase = mailnaggertray-git
 	pkgdesc = Tray icon for use with mailnagger
-	pkgver = r5.c00fb63
+	pkgver = r10.3cc1e38
 	pkgrel = 1
 	url = https://codeberg.org/ireozar/mailnaggertray
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = mailnaggertray-git
 	makedepends = cargo
 	depends = glibc
 	depends = mailnagger
+	depends = gcc-libs
 	source = mailnaggertray-git::git+https://codeberg.org/ireozar/mailnaggertray.git
 	sha256sums = SKIP
 
