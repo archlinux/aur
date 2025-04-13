@@ -1,6 +1,6 @@
 pkgbase = espanso-x11-bin
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://espanso.org
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = espanso-x11-bin
 	depends = xclip
 	provides = espanso
 	conflicts = espanso
+	options = !debug
 	options = !strip
-	source = espanso::https://github.com/espanso/espanso/releases/download/v2.2.1/Espanso-X11.AppImage
-	source = espanso.service::https://raw.githubusercontent.com/espanso/espanso/v2.2.1/espanso/src/res/linux/systemd.service
-	sha256sums = 1f91e3f16af11f6a3965775cb27e5bf2875dae375f6f6f1e8dc6a83f2888219b
+	source = espanso::https://github.com/espanso/espanso/releases/download/v2.2.3/Espanso-X11.AppImage
+	source = espanso.service::https://raw.githubusercontent.com/espanso/espanso/v2.2.3/espanso/src/res/linux/systemd.service
+	sha256sums = 0dd4b3d33cb0f8b5fee9176c61257d99112426acb1f53585571e5c99e96ed78e
 	sha256sums = 0448185f394858b1f06c6458869e932da317501759c3f018a696d7789b15e8b9
 
 pkgname = espanso-x11-bin
