@@ -3,7 +3,7 @@
 _gecko_id="jid1-xUfzOsOFlzSOXg@jetpack"
 _name=Reddit-Enhancement-Suite
 pkgname=firefox-extension-reddit-enhancement-suite
-pkgver=5.22.17
+pkgver=5.24.8
 pkgrel=1
 pkgdesc="Suite of modules that enhances your Reddit browsing experience"
 arch=(any)
@@ -11,9 +11,9 @@ url="https://github.com/honestbleeps/${_name}"
 license=(GPL3)
 groups=(firefox-addons)
 depends=(firefox)
-makedepends=(yarn)
+makedepends=(yarn 'nodejs<=22')
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('419a719c95e35d610a2f68bb9bebf8925ce536e96b2e6da31a10aec9442b8bbb')
+sha256sums=('242ea904ac2993642cf225aec669f84afb0f99251950cad2bc81c7e0b9888e7d')
 
 
 build() {
@@ -24,7 +24,7 @@ build() {
     # See https://nodejs.org/en/blog/release/v17.0.0#openssl-3-0
     export NODE_OPTIONS=--openssl-legacy-provider
 
-    yarn build --env browsers=firefox
+    yarn run build --browsers=firefox
 }
 
 package() {
