@@ -15,3 +15,4 @@ pkgbase = koboldcpp-bin
        sha256sums = fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef
        sha256sums = d244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54
 
+pkgname = koboldcpp-bin
