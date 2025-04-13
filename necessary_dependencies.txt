@@ -430,6 +430,7 @@ Module: open_webui.env
     open_webui/retrieval/web/serper.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/serpstack.py
+    open_webui/retrieval/web/sougou.py
     open_webui/retrieval/web/tavily.py
     open_webui/retrieval/web/utils.py
     open_webui/routers/audio.py
@@ -469,6 +470,7 @@ Module: open_webui.env
     open_webui/utils/task.py
     open_webui/utils/telemetry/instrumentors.py
     open_webui/utils/telemetry/setup.py
+    open_webui/utils/tools.py
     open_webui/utils/webhook.py
 Module: open_webui.utils.models
   Imported in:
@@ -713,6 +715,12 @@ Module: open_webui.utils.webhook
     open_webui/routers/channels.py
     open_webui/utils/middleware.py
     open_webui/utils/oauth.py
+Module: yaml
+  Imported in:
+    open_webui/utils/tools.py
+Module: pydantic.fields
+  Imported in:
+    open_webui/utils/tools.py
 Module: langchain_core.utils.function_calling
   Imported in:
     open_webui/utils/tools.py
@@ -1146,6 +1154,7 @@ Module: open_webui.retrieval.web.main
     open_webui/retrieval/web/serper.py
     open_webui/retrieval/web/serply.py
     open_webui/retrieval/web/serpstack.py
+    open_webui/retrieval/web/sougou.py
     open_webui/retrieval/web/tavily.py
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.utils
@@ -1200,6 +1209,9 @@ Module: open_webui.retrieval.web.exa
   Imported in:
     open_webui/routers/retrieval.py
 Module: open_webui.retrieval.web.perplexity
+  Imported in:
+    open_webui/routers/retrieval.py
+Module: open_webui.retrieval.web.sougou
   Imported in:
     open_webui/routers/retrieval.py
 Module: sentence_transformers
@@ -1370,6 +1382,24 @@ Module: playwright.async_api
 Module: duckduckgo_search
   Imported in:
     open_webui/retrieval/web/duckduckgo.py
+Module: duckduckgo_search.exceptions
+  Imported in:
+    open_webui/retrieval/web/duckduckgo.py
+Module: tencentcloud.common.common_client
+  Imported in:
+    open_webui/retrieval/web/sougou.py
+Module: tencentcloud.common
+  Imported in:
+    open_webui/retrieval/web/sougou.py
+Module: tencentcloud.common.exception.tencent_cloud_sdk_exception
+  Imported in:
+    open_webui/retrieval/web/sougou.py
+Module: tencentcloud.common.profile.client_profile
+  Imported in:
+    open_webui/retrieval/web/sougou.py
+Module: tencentcloud.common.profile.http_profile
+  Imported in:
+    open_webui/retrieval/web/sougou.py
 Module: yarl
   Imported in:
     open_webui/retrieval/web/jina_search.py

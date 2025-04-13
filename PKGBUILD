@@ -2,13 +2,14 @@
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('MIT')
 depends=(python
+        python-accelerate
         python-aiocache
         python-aiofiles
         python-aiohttp
@@ -84,8 +85,10 @@ depends=(python
         python-validators
         python-websocket-client
         python-websockets
+        python-yaml
         python-yarl
         python-youtube-transcript-api
+        tencentcloud-sdk-python
         )
 makedepends=('npm' 'nvm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-hatch')
 optdepends=('ollama' 'tika-server')
@@ -94,10 +97,10 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         "build-only-backend.patch"
         "open-webui.service"
         "open-webui.conf")
-sha1sums=('06212235601f2b47357130f7fa429af242baaee9'
-          '3dc37cbf6a962fe16c3f5f740b7100e9ae87fd8e'
-          '8a1fad8ffad186f3265e173557eb160c06497435'
-          'fc563a2f3e240d76672b09c4627d654248d70186')
+b2sums=('fa1191b38ef7fa0604f5ed1d9686a61a37fc737a22f4d6448f222d5637263eb10964615966c8a0dd52ec16bfb6818045be513f76a337edfe27d075f1f1bceab4'
+        '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
+        'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
+        '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
 options=(!strip !debug)
 install="$_pkgname.install"
 
