@@ -19,11 +19,6 @@ sha256sums=('242ea904ac2993642cf225aec669f84afb0f99251950cad2bc81c7e0b9888e7d')
 build() {
     cd "${_name}-${pkgver}/"
     yarn install --cache-folder "${srcdir}/yarn-cache/"
-
-    # Workaround for ERR_OSSL_EVP_UNSUPPORTED during build.
-    # See https://nodejs.org/en/blog/release/v17.0.0#openssl-3-0
-    export NODE_OPTIONS=--openssl-legacy-provider
-
     yarn run build --browsers=firefox
 }
 
