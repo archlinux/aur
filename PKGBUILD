@@ -1,4 +1,4 @@
-# Maintainer: allddd <allddd (at) proton (dot) me>
+# Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=betterlockscreen
 pkgver=4.4.0
