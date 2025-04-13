@@ -2,7 +2,7 @@
 # Contributor: Canmi (Canmi21)
 
 pkgname=cursor-free-vip-git
-pkgver=1.9.03.2.g43a58db
+pkgver=1.9.03
 pkgrel=1
 pkgdesc="Reset Cursor AI MachineID & Auto Sign Up / In & Bypass Higher Token Limit"
 arch=('x86_64')
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/cursor-free-vip"
+  uv venv .venv
+  source .venv/bin/activate
   uv pip install -r requirements.txt
   pyinstaller --clean --noconfirm --onefile cursor.py --name cursor-free-vip
 }
