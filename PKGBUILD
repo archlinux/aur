@@ -1,8 +1,8 @@
 # Maintainer: Niels Huylebroeck <arch@nightwalkers.be>
 pkgname=sway-input-config-git
 _pkgname=sway-input-config
-pkgver=r119.b5e7a4a
-pkgrel=1
+pkgver=r125.92a98b4
+pkgrel=2
 license=("GPL3")
 pkgdesc="Sway Input Configurator"
 makedepends=(
@@ -10,7 +10,7 @@ makedepends=(
   'python-setuptools'
 )
 depends=(
-    "python-pyqt6" "python-i3ipc" "sway"
+    "qt6-wayland" "python-pyqt6" "python-i3ipc" "sway"
 )
 
 arch=("i686" "x86_64")
