@@ -3,8 +3,8 @@
 
 pkgname=bnc-bin
 _debianver=12
-pkgver=2.13.1
-pkgrel=2
+pkgver=2.13.2
+pkgrel=1
 pkgdesc="The BKG Ntrip Client(BNC) is an multi-stream client designed for real-time GNSS applications."
 arch=('x86_64')
 url="https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt"
@@ -24,20 +24,22 @@ options=()
 install=
 source=(
   "https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-${pkgver}-debian${_debianver}.zip" 
+  "https://igs.bkg.bund.de/root_ftp/NTRIP/software/BNC/bnc-${pkgver}-debian${_debianver}.zip.sha256"
   "ntrip-logo.png::https://software.rtcm-ntrip.org/ntripLogo.png"
-  "https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt"
+  "BNC_BNS_RTNET_Concept.ppt::https://igs.bkg.bund.de/root_ftp/NTRIP/documentation/BNC_BNS_RTNET_Concept.ppt"
   "bnc.desktop"
 )
 sha256sums=(
-  'd2f3cbe5aab9de0c5e6078addab18020894196176d32aaacd0d6c0c442526338'
-  '97a17bead249ff7186992ff9518ce9a30df1ecaf8a7ba075adf783b836beee10'
-  'cd3972e41c76ece121ef73c51fbab93b53da697c42e2329c289f0d36d820cba3'
-  '1fe01654d266fce5cd00b48be12cbd5712652e1b1d3830f7bb5d3493657d0605'
+  'b13ff3d5564a46dac909a2213ea9b373db76bb5b4c9be28137096a304f20132e'  # bnc-${pkgver}-debian${_debianver}.zip
+  'SKIP'                                                              # bnc-${pkgver}-debian${_debianver}.zip.sha256  # Checksums in the .sha256-file and of the downloaded .zip file do not match!!
+  '97a17bead249ff7186992ff9518ce9a30df1ecaf8a7ba075adf783b836beee10'  # ntrip-logo.png
+  'cd3972e41c76ece121ef73c51fbab93b53da697c42e2329c289f0d36d820cba3'  # BNC_BNS_RTNET_Concept.ppt
+  '1fe01654d266fce5cd00b48be12cbd5712652e1b1d3830f7bb5d3493657d0605'  # bnc.desktop
 )
 
 
 package() {
-  cd "${srcdir}/packages/bnc-${pkgver}-debian${_debianver}"
+  cd "${srcdir}"
 
   install -Dvm755 "bnc-${pkgver}" "${pkgdir}/usr/bin/bnc"
   install -Dvm644 "${srcdir}/ntrip-logo.png" "${pkgdir}/usr/share/pixmaps/bnc.png"
