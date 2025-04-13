@@ -1,5 +1,5 @@
 pkgbase = fontpreview_sixel
-	pkgdesc = Lightning-fast terminal font previewer with Sixel support. Uses fzf for interactive selection and ImageMagick for rendering. Perfect for designers and developers. Customizable text, size, and colors. Works in sixel terminals or outputs to image files.
+	pkgdesc = Lightning-fast terminal font previewer with Sixel support or feh. Uses fzf for interactive selection and ImageMagick for rendering. Perfect for designers and developers. Customizable text, size, and colors. Works in sixel terminals or outputs to image files.
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/felipefacundes/fontpreview
