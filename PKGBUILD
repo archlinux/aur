@@ -14,7 +14,7 @@ depends=(
   libdrm
   pixman
   libxkbcommon
-  wlroots0.17
+  'wlroots-git'
 )
 
 makedepends=(
@@ -44,7 +44,6 @@ prepare() {
 }
 
 build() {  
-  export PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig:$PKG_CONFIG_PATH
   arch-meson $pkgname build 
   ninja -C build
 }
