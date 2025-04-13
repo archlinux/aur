@@ -3,7 +3,7 @@
 
 pkgname=gcompris-qt-git
 _pkgname=gcompris-qt
-pkgver=r2880.bef46ac
+pkgver=r8495.9930f99f9
 pkgrel=1
 pkgdesc="High quality educational software suite comprising of numerous activities for children aged 2 to 10 - git (Qt version)"
 arch=('x86_64' 'i686')
@@ -28,12 +28,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   }
 
-prepare() {
-  cd ${_pkgname}
-  python2 tools/l10n-fetch-po-files.py
-  # patch -p1 -i ${srcdir}/134db8042f25b0446523653d9a8829916eda3006.diff
-}
-         
 build() {
   [ ! -d build ] && mkdir build
   
