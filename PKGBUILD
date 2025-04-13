@@ -1,9 +1,9 @@
 # Maintainer: Phusit Somboonyingsuk
 
 pkgname=mprisence-git
-pkgver=1.0.0.beta1
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="Discord Rich Presence for MPRIS-compatible media players (Linux only) (git version)"
+pkgdesc="Discord Rich Presence for MPRIS media players (git version)"
 arch=('x86_64')
 url="https://github.com/lazykern/mprisence"
 license=('MIT')
@@ -42,4 +42,17 @@ package() {
     cd "${srcdir}/${pkgname%-git}"
     make DESTDIR="$pkgdir" pkg-prepare
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+note() {
+    cat <<EOF
+==> Example configuration is available at /etc/mprisence/config.example.toml
+==> To configure mprisence:
+    1. Create your config directory:
+       mkdir -p ~/.config/mprisence
+    2. Copy and modify the example config:
+       cp /etc/mprisence/config.example.toml ~/.config/mprisence/config.toml
+    3. Enable and start the service:
+       systemctl --user enable --now mprisence
+EOF
 } 
