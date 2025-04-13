@@ -14,7 +14,7 @@ arch=(x86_64)
 url="https://github.com/ethereum/${pkgname}"
 license=(Apache-2.0)
 depends=(glibc gcc-libs)
-makedepends=(cmake)
+makedepends=(cmake cli11 benchmark nlohmann-json)
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/ethereum/evmone/archive/refs/tags/v${pkgver}.tar.gz"
 	"evmc-${_evmc_version}.tar.gz::https://github.com/ethereum/evmc/archive/refs/tags/v${_evmc_version}.tar.gz"
@@ -82,6 +82,9 @@ build ()
 	DESTDIR=deps/ \
 		cmake --install "${intx_dir}/build/"
 
+	# FIXME: For some reason ethash and intx get found when building the evmone target, but not evmone-unittests.
+	# The include directory does not get passed to the compiler invocation. This does not happen when they're installed globally.
+	# Putting it CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES is a hack that seems to achieve the same effect.
 	echo "Building evmone..."
 	cmake \
 		-B "build/" \
@@ -89,19 +92,37 @@ build ()
 		-W no-dev \
 		-D CMAKE_BUILD_TYPE=None \
 		-D BUILD_SHARED_LIBS=ON \
-		-D EVMONE_TESTING=OFF \
+		-D EVMONE_TESTING=ON \
 		-D EVMONE_FUZZING=OFF \
 		-D EVMC_INSTALL=OFF \
 		-D CMAKE_INSTALL_PREFIX=/usr/ \
 		-D HUNTER_ENABLED=OFF \
+		-D CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES="${srcdir}/deps/usr/include/" \
 		-D CMAKE_PREFIX_PATH="${srcdir}/deps/usr/"
 	cmake --build build/
+}
+
+check()
+{
+	# NOTE: test/evmone/bench/ contains benchmarks and depends on the evm-benchmarks submodule.
+	# A few other tests seem to be benchmarks as well, but they finish quickly enough
+	# and do not have such a dependency so they are less of a hassle.
+	ctest \
+		--output-on-failure \
+		--parallel $(nproc) \
+		--test-dir build/ \
+		--exclude-regex "evmone/bench/.*"
 }
 
 package ()
 {
 	DESTDIR="${pkgdir}/" \
 		cmake --install build/
+
+	# Building with EVMONE_TESTING=ON produces a bunch of extra binaries meant for testing the package.
+	# Some of them are even install targets, but we don't want them in the package.
+	rm "${pkgdir}/usr/bin/evmone-bench"
+	rmdir "${pkgdir}/usr/bin/"
 
 	cd "${pkgname}-${pkgver}/"
 	install -D --mode 644 README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}/"
