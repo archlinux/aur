@@ -4,12 +4,12 @@ _appauthor=ClementNerma
 _appname=ReShell
 _execname=${_appname,,}
 pkgname=${_execname}-bin
-pkgver=0.1.0
-pkgrel=1328
+pkgver=0.1.0_1328
+pkgrel=2
 pkgdesc="A modern shell for the future"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_appauthor}/${_appname}"
-_urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver}-${pkgrel}"
+_urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//_/-}"
 license=('Apache-2.0')
 
 depends=()
@@ -22,8 +22,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "fibonacci-memoized-${pkgver}.rsh::${_urlraw}/examples/fibonacci-memoized.rsh"
         "fibonacci-${pkgver}.rsh::${_urlraw}/examples/fibonacci.rsh"
         "guess-${pkgver}.rsh::${_urlraw}/examples/guess.rsh")
-source_x86_64=("${url}/releases/download/v${pkgver}-${pkgrel}/${_appname}-repl-${arch[0]}-unknown-linux-musl.tgz")
-source_aarch64=("${url}/releases/download/v${pkgver}-${pkgrel}/${_appname}-repl-${arch[1]}-unknown-linux-musl.tgz")
+source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_appname}-repl-${arch[0]}-unknown-linux-musl.tgz")
+source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_appname}-repl-${arch[1]}-unknown-linux-musl.tgz")
 sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
             '37cf555782d1c9377100e98ce74780ab2b77da1c9572cec7411cdfb11d142c32'
             '0b96690b3b6fc02a9cb26bf775f4168d7bb7404ee498fc8fb83428c2d86c31de'
