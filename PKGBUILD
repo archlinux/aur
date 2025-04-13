@@ -1,11 +1,11 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-full-git
-pkgver=r1194.e85be69
-pkgrel=4
+pkgver=r1354.06ba190
+pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
-license=("GPL-3.0-only")
+license=("GPL-3.0-or-later")
 depends=(
 	"avahi"
 	"ffmpeg"
@@ -64,6 +64,7 @@ conflicts=(
 
 source=("git+https://github.com/WiVRn/WiVRn.git")
 sha256sums=('SKIP')
+install=$pkgname.install
 
 pkgver() {
   cd "${srcdir}/WiVRn"
@@ -84,6 +85,7 @@ build() {
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
 	-DOVR_COMPAT_SEARCH_PATH=/opt/opencomposite:/opt/xrizer \
+	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
 	cmake --build build-dashboard
