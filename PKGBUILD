@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-info'
-pkgver='0.37'
+pkgver='0.39'
 pkgrel='1'
 pkgdesc="Information about Perl modules"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-b-utils>=0.27' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Module-Info'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Info-0.37.tar.gz')
-md5sums=('72dd1a99bc124a97888cbbedc37993ca')
-sha512sums=('4a9fb295c6a0b7ac701543b292804ce880129b883da7d8f27b255a198e28dc105b11753330c2861241e65898f726a1127c7daf46af09361e3713bdcd5b89227e')
-_distdir="Module-Info-0.37"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Module-Info-0.39.tar.gz')
+md5sums=('0901a22c409d7104e39954b533215399')
+sha512sums=('f433c97935d4f099b83eb191b902b34831003db2bacf07ebe4700edbbff4d8b42dce50065d7769ab01384b60728010a0c14676fceda1648c5394cd77b1228ab9')
+_distdir="Module-Info-0.39"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
