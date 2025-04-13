@@ -1,7 +1,7 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 
 pkgname=certbot-dns-dynu
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Dynu DNS Authenticator plugin for Certbot"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('certbot' 'python' 'dns-lexicon' 'python-zope-interface' 'python-dnspyt
 makedepends=('python-setuptools')
 
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cb12d210f8c3d7aa020f9c41a8c68f692d4426b51781b1fb5beb4e3d0003e286')
+sha256sums=('90cb19f67b0690f98df7958578040f482dfaa06f997461cfe18caea1ff606534')
 
 prepare() {
         cd "${pkgname}-${pkgver}"
