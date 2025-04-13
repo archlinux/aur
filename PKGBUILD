@@ -4,7 +4,7 @@
 
 pkgname="huenicorn"
 arch=('i686' 'x86_64')
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=4
 pkgdesc="Free bias lighting driver for Philips Hue™ devices"
 url='https://gitlab.com/openjowelsofts/huenicorn'
@@ -12,10 +12,8 @@ license=('GNU GPLv3')
 source=(
   "git+https://gitlab.com/openjowelsofts/huenicorn.git#tag=v${pkgver}"
   "huenicorn.desktop"
-  "huenicorn.sh"
 )
 sha512sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -31,12 +29,8 @@ build(){
 }
 
 package() {
-  optdir=${pkgdir}/opt/${pkgname}
   builddir=${srcdir}/${pkgname}/build
-  install -Dm755 "${builddir}/${pkgname}" "${optdir}/${pkgname}"
-  install -Dm755 "huenicorn.sh" "${pkgdir}/usr/bin/huenicorn"
+  install -Dm755 "${builddir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${srcdir}/${pkgname}/assets/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/huenicorn.svg"
   install -Dm755 "huenicorn.desktop" "${pkgdir}/usr/share/applications/huenicorn.desktop"
-  install -d "${builddir}/webroot" "${optdir}/webroot"
-  cp -r "${builddir}/webroot" "${optdir}/"
 }
