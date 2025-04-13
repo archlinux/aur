@@ -4,13 +4,13 @@ _pkgname='nmeasim-python'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.1.1.0.r33.20230911.ba46ca8
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python 3 GNSS/NMEA receiver simulation, with GUI.'
 arch=(
   any
 )
 url='https://gitlab.com/nmeasim/nmeasim'
-license=('custom: Public Domain')
+license=('MIT')
 depends=(
   'python>=3.8'
   'python-geographiclib'
@@ -90,7 +90,7 @@ package() {
   mv -v "${pkgdir}/usr/bin/nmeasim" "${pkgdir}/usr/bin/nmeasim-python" # Renaming it, because there is also Java-nmeasim (https://github.com/abuech2s/nmeasim) and a Windows-nmeasim (https://sourceforge.net/projects/nmeasim/), which might be worth to have as Arch Linux packages as well.
 
   install -D -v -m644 nmeasim/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for _docfile in readme.md; do
+  for _docfile in README.md; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   ln -svf "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE"

@@ -1,11 +1,11 @@
 pkgbase = nmeasim-python-git
 	pkgdesc = A Python 3 GNSS/NMEA receiver simulation, with GUI.
 	pkgver = 1.1.1.0.r33.20230911.ba46ca8
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://gitlab.com/nmeasim/nmeasim
 	arch = any
-	license = custom: Public Domain
+	license = MIT
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
