@@ -1,0 +1,15 @@
+pkgbase = river-runetile-git
+	pkgdesc = Write your own river layout generator using rune
+	pkgver = r3.481df01
+	pkgrel = 1
+	url = https://codeberg.org/ireozar/river-runetile
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = river-runetile-git::git+https://codeberg.org/ireozar/river-runetile.git
+	sha256sums = SKIP
+
+pkgname = river-runetile-git
