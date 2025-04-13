@@ -6,8 +6,6 @@
 
 _lang="uk"
 _region="UA"
-LANG_LINE='GenericLanguage   "uk" "uk_UA" "utf-8"'
-VOICE_LINE='AddVoice "uk" "female1"    "uk/uk_UA/ukrainian_tts/medium/uk_UA-ukrainian_tts-medium"'
 
 _regionSmall=${_region,,}
 _locale="${_lang}_${_region}"
@@ -51,34 +49,3 @@ package(){
  find "$pkgdir/usr/share/piper-voices" -type d -name 'samples' -exec rm -rf {} +
 }
 
-
-post_install() {
-  # Check if the piper-generic.conf file exists
-  if [ -f /etc/speech-dispatcher/modules/piper-tts-generic.conf ]; then
-    # Add the lines only if they do not already exist
-    if ! grep -Fxq "$LANG_LINE" /etc/speech-dispatcher/modules/piper-tts-generic.conf; then
-      echo "$LANG_LINE" >> /etc/speech-dispatcher/modules/piper-tts-generic.conf
-    fi
-    if ! grep -Fxq "$VOICE_LINE" /etc/speech-dispatcher/modules/piper-tts-generic.conf; then
-      echo "$VOICE_LINE" >> /etc/speech-dispatcher/modules/piper-tts-generic.conf
-    fi
-  else
-    ready -p "The file /etc/speech-dispatcher/modules/piper-tts-generic.conf does not exist. Do you want to create it? (y/N) " answer
-    if [[ $answer == [Yy] ]]; then
-      # Create the file and add the lines
-      echo "$LANG_LINE" > /etc/speech-dispatcher/modules/piper-tts-generic.conf
-      echo "$VOICE_LINE" >> /etc/speech-dispatcher/modules/piper-tts-generic.conf
-    else
-      echo "Skipping the creation of /etc/speech-dispatcher/modules/piper-tts-generic.conf."
-    fi
-  fi
-}
-
-post_remove() {
-  # Check if the piper-generic.conf file exists
-  if [ -f /etc/speech-dispatcher/modules/piper-tts-generic.conf ]; then
-    # Remove the lines if they exist
-    sed -i "/^$LANG_LINE$/d" /etc/speech-dispatcher/modules/piper-tts-generic.conf
-    sed -i "/^$VOICE_LINE$/d" /etc/speech-dispatcher/modules/piper-tts-generic.conf
-  fi
-}
