@@ -1,7 +1,7 @@
 # Maintainer: Marcel Röthke <marcel@roethke.info>
 
 pkgname=dblab
-pkgver=0.26.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Server"
 arch=(x86_64 i686 aarch64 armv7h armv7h)
@@ -12,7 +12,7 @@ makedepends=(go)
 checkdepends=()
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danvergara/dblab/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed79cd047bd1db1a0d405b08c613e3b58d2b51878c944063b810b86530955028')
+sha256sums=('7e17c863b3ff1e01bbedbbc421af84fada146648e162d129eaabf9e85485a47d')
 
 build() {
 	cd "$pkgname-$pkgver"
