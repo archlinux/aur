@@ -1,6 +1,6 @@
 pkgbase = neuralrack-git
 	pkgdesc = Neural model and impulse response file loader
-	pkgver = r168.db10baf
+	pkgver = r169.7f6869f
 	pkgrel = 1
 	url = https://github.com/brummer10/NeuralRack
 	arch = aarch64

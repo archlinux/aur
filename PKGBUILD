@@ -3,7 +3,7 @@
 
 _name=NeuralRack
 pkgname=${_name,,}-git
-pkgver=r168.db10baf
+pkgver=r169.7f6869f
 pkgrel=1
 pkgdesc="Neural model and impulse response file loader"
 url="https://github.com/brummer10/$_name"
@@ -28,9 +28,6 @@ build() {
 	cd $_name
 	git submodule update --init --recursive
 	sed -i 's/egrep/grep/' makefile
-	# https://github.com/brummer10/NeuralRack/issues/5
-	sed -i 's/$(EXEC_NAME).desktop/$(NAME).desktop/' NeuralRack/makefile
-	sed -i 's/$(EXEC_NAME).svg/$(NAME).svg/' NeuralRack/makefile
 	make CXX=g++ STRIP=:
 }
 
