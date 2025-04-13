@@ -23,7 +23,7 @@ sha512sums=(
 
 build() {
 	cd "${_name}-${pkgver}"
-	npm install --legacy-peer-deps
+	npm install --legacy-peer-deps --cache "${srcdir}/npm-cache/"
 	cd src
 
 	# Locale files are in a submodule. We do not have git info here so we have to insert it manually.
