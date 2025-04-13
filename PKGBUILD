@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=feluda
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Detect license usage restrictions in your project'
 arch=('x86_64')
 url="https://github.com/anistark/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7b79f5374bb6b1b1bdb4e8f2bd0bac5d52a66b4aed58cbd2fae7b6facf153701')
+sha256sums=('851d673150219667c5fac86b70be62d283af05d294aee0d511a65874232c8ba8')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'openssl')
 options=('!lto')
