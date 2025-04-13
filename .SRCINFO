@@ -1,0 +1,15 @@
+pkgbase = lib32-hyphen
+	pkgdesc = Library for high quality hyphenation and justification (32-bit)
+	pkgver = 2.8.8
+	pkgrel = 1
+	url = https://hunspell.sf.net
+	arch = x86_64
+	license = GPL-2.0-only OR LGPL-2.1-or-later OR MPL-1.1
+	makedepends = lib32-gcc-libs
+	depends = lib32-glibc
+	depends = hyphen>=2.8.8
+	provides = libhyphen.so
+	source = hyphen-2.8.8.tar.gz::https://downloads.sourceforge.net/hunspell/hyphen-2.8.8.tar.gz
+	sha256sums = 304636d4eccd81a14b6914d07b84c79ebb815288c76fe027b9ebff6ff24d5705
+
+pkgname = lib32-hyphen
