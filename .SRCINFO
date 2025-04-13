@@ -1,0 +1,19 @@
+pkgbase = matrix-authentication-service
+	pkgdesc = Authentication service for Matrix Synapse
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/element-hq/matrix-authentication-service
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = nodejs
+	makedepends = rust
+	makedepends = opa
+	makedepends = npm
+	makedepends = git
+	provides = mas-cli
+	options = !lto
+	backup = etc/matrix-authentication-service/config.yaml
+	source = matrix-authentication-service::git+https://github.com/element-hq/matrix-authentication-service.git#tag=v0.14.1
+	sha256sums = 4a69903668f18bd2eca590b8e70f069ba072450428ac05a07578e8b2014b2445
+
+pkgname = matrix-authentication-service
