@@ -1,6 +1,6 @@
 pkgbase = piper-voices-uk-ua
 	pkgdesc = Voices for Piper text to speech system (uk_UA)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://huggingface.co/rhasspy/piper-voices
 	arch = any
