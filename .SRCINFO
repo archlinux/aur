@@ -9,7 +9,7 @@ pkgbase = py-fetch
 	depends = python
 	depends = python-psutil
 	depends = python-colorama
-	source = git+https://github.com/binarylinuxx/pyfetch.git#tag=v1.2.0
+	source = git+https://github.com/binarylinuxx/pyfetch.git
 	sha256sums = SKIP
 
 pkgname = py-fetch
