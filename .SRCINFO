@@ -1,7 +1,7 @@
 pkgbase = python-dm-tree
 	pkgdesc = tree is a library for working with nested data structures
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google-deepmind/tree
 	arch = x86_64
 	license = Apache-2.0
