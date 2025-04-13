@@ -1,0 +1,11 @@
+# Exclude everything by default
+*
+
+# Force-add specific files
+!.gitignore
+!.SRCINFO
+!jd-gui-duo
+!jd-gui-duo.desktop
+!jd_icon_128.png
+!LICENSE
+!PKGBUILD
