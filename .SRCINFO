@@ -1,5 +1,5 @@
 pkgbase = firefox-extension-multi-account-containers
-	pkgdesc = Keep parts of your online life separated into color-coded tabs
+	pkgdesc = Firefox extension that lets you assign websites to isolated containers to help protect privacy.
 	pkgver = 8.2.0
 	pkgrel = 1
 	url = https://github.com/mozilla/multi-account-containers
