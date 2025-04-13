@@ -11,6 +11,7 @@ post_install() {
     if ! grep -Fxq "$VOICE_LINE" /etc/speech-dispatcher/modules/piper-generic.conf; then
       echo "$VOICE_LINE" >> /etc/speech-dispatcher/modules/piper-generic.conf
     fi
+    echo "Added voice to /etc/speech-dispatcher/modules/piper-generic.conf."
   else
     ready -p "The file /etc/speech-dispatcher/modules/piper-generic.conf does not exist. Do you want to create it? (y/N) " answer
     if [[ $answer == [Yy] ]]; then
