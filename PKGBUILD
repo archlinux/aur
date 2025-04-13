@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'gtksourceview5' 'poppler-glib')
 makedepends=('meson' 'cargo' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0cd5bbbab4214d9dc2dabb245bbd88e5d9bc7fb9f6cb9364520fe167cdfbb773')
+sha256sums=('e5664c7f207b59a84de81a38c8229fa256509ffc20618ca64d7e7290fbcceae9')
 
 build() {
 	arch-meson "${pkgname}-${pkgver}/" build
