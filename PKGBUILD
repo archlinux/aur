@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=connet
-pkgver=0.5.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='A P2P reverse proxy with NAT traversal'
 arch=('x86_64' 'aarch64')
 url="https://github.com/$pkgname-dev/$pkgname"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('895aa21fc5ff6cad77608e4e390a12b2f33f989e864bbb91a45833b67120bd41')
+sha256sums=('f38b5544f939fabe130b5163d5b30e60c02658e98ff0baf6266e3af6f1adf076')
 makedepends=('go')
 depends=('glibc')
 
