@@ -1,6 +1,6 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=1.4.0.0.r3.g2a93ca5
+pkgver=1.5.0.0.r6.g5375155
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('openssl'
   'zlib'
   'glibc'
   'gcc-libs'
-  'blend2d-git'
+  'blend2d'
   'hicolor-icon-theme'
 )
 makedepends=('git'
