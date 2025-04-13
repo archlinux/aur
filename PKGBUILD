@@ -2,7 +2,7 @@
 
 pkgname=apollo-neo-env-manager-dev
 pkgver=10.0.0rc1.r4
-pkgrel=1
+pkgrel=2
 pkgdesc="Apollo Environment Manager."
 arch=('x86_64')
 url="https://apollo.baidu.com/"
