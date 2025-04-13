@@ -1,0 +1,21 @@
+pkgbase = python-wa-crypt-tools-git
+	pkgdesc = WhatsApp Crypt Tools
+	pkgver = r389.0c92577
+	pkgrel = 1
+	url = https://github.com/ElDavoo/wa-crypt-tools
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-javaobj-py3
+	depends = python-pycryptodomex
+	depends = python-protobuf
+	provides = python-wa-crypt-tools
+	conflicts = python-wa-crypt-tools
+	source = wa-crypt-tools::git+https://github.com/ElDavoo/wa-crypt-tools
+	sha256sums = SKIP
+
+pkgname = python-wa-crypt-tools-git
