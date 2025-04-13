@@ -2,8 +2,8 @@
 
 pkgname=python-textualeffects
 _pkgname=textualeffects
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Visual effects for Textual, a TermincalTextEffects wrapper."
 arch=('any')
 url="https://github.com/ggozad/textualeffects"
@@ -30,4 +30,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('4b09ac720d76eafa1136c58afcb0fb6fc79fad4d2370d9d23223012a90613ae736a58ceee16b01de0edf14c9611a0806b0db1f9d94bfdde9519d52cdbd61d9d7')
+b2sums=('ace677eba2fdd9d3c6f265ff81807b5a76e6167ad4a2128ffec0ad9362e0a41d54f300aeeb4e853800a40640627724fc563038b3b5a41968fe59f6a4d0fa08f8')
