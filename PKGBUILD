@@ -1,7 +1,7 @@
-# Maintainer: alvinshotjuicebo <alvinsh0tjuiceb0x@icloud.com>
+# Maintainer: wadledee <wadledee@pm.me>
 pkgname="hyprsysteminfo"
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny qt6/qml application to display information about the running system"
 arch=(any)
 url="https://github.com/hyprwm/hyprsysteminfo"
