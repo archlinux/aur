@@ -8,9 +8,16 @@ pkgbase = evmone
 	makedepends = cmake
 	depends = glibc
 	depends = gcc-libs
+	noextract = blst-0.3.13.tar.gz
 	source = evmone-0.15.0.tar.gz::https://github.com/ethereum/evmone/archive/refs/tags/v0.15.0.tar.gz
 	source = evmc-12.1.0.tar.gz::https://github.com/ethereum/evmc/archive/refs/tags/v12.1.0.tar.gz
+	source = ethash-1.1.0.tar.gz::https://github.com/chfast/ethash/archive/v1.1.0.tar.gz
+	source = intx-0.12.1.tar.gz::https://github.com/chfast/intx/archive/v0.12.1.tar.gz
+	source = blst-0.3.13.tar.gz::https://github.com/supranational/blst/archive/refs/tags/v0.3.13.tar.gz
 	sha256sums = 6eb2122c98bd86a083015b4e41f46b16df4d9bff608d2bf2f2d985ec18e6d640
 	sha256sums = 0d5458015bf38a5358fad04cc290d21ec40122d1eb6420e0b33ae25546984bcd
+	sha256sums = 73b327f3c23f407389845d936c1138af6328c5841a331c1abe3a2add53c558aa
+	sha256sums = 279a9aa1e46e60f72eb0eb4ea92fec786e02b35069942ed161be7dcfb6700dd8
+	sha256sums = 89772cef338e93bc0348ae531462752906e8fa34738e38035308a7931dd2948f
 
 pkgname = evmone
