@@ -1,28 +1,28 @@
-# Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=gcfflasher
-pkgver=4.4.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Tool to program the firmware of dresden elektronik's Zigbee products."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/dresden-elektronik/gcfflasher"
 license=(BSD-3-Clause)
 depends=(libgpiod)
 makedepends=(git cmake)
-provides=("$pkgname")
-conflicts=("$pkgname")
-source=("$pkgname-$pkgver"::"git+https://github.com/dresden-elektronik/$pkgname.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("gcfflasher::git+https://github.com/dresden-elektronik/gcfflasher.git#tag=v${pkgver}")
+sha256sums=('73e1000c80e15cf3f661aa43425283aaa7deac000ed744352fd46bd3e1b01580')
 
 build() {
-  cmake -B "build-$pkgver" -S "$pkgname-$pkgver" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
-  cmake --build "build-$pkgver"
+  cmake -B build -S "gcfflasher" -Wno-dev\
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+
+  cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install "build-$pkgver"
-  install -Dm644 "$pkgname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "gcfflasher/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
