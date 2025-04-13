@@ -1,5 +1,5 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
-pkgname=jprofiler
+pkgname=jprofiler14
 pkgver=14.0.6
 pkgrel=1
 options=(!strip)
@@ -12,8 +12,8 @@ source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(e
         "${pkgname}.desktop"
         "${pkgname}.sh")
 sha256sums=('74f46eaafca7ff1735cf05b25a19fb9605f813551c04503a0326555ec5907a37'
-            'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a'
-            'ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36')
+            'a79b87452d5b3f0b514b5651fa6add712ff66bbaceef23f6fdcded1d0ee028b9'
+            'e60a82c65ad102ec7092c3cd8aaaa2367b568d408174cfd313d792933e3862cd')
 
 package() {
     local optdir="/opt/${pkgname}"
