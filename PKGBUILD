@@ -5,7 +5,7 @@
 _pkgname=gnss-sdr
 pkgname="${_pkgname}-git"
 pkgver=0.0.19.1+591.r9843.20250315.b0b41b194
-pkgrel=1
+pkgrel=2
 pkgdesc="GNSS (Global Navigation Satellite System) software receiver"
 arch=(
   "i686"
@@ -101,7 +101,7 @@ sha256sums=(
   # 'SKIP'
 )
 #options+=('!lto')
-if `which ccache` > /dev/null 2>&1; then
+if `which ccache > /dev/null 2>&1`; then
   options+=('ccache')
 fi
 
