@@ -1,6 +1,6 @@
 pkgname=tabracing
 _pkgname=TAB
-pkgver=1.0.1
+pkgver=1.0.2.aurpatch
 pkgrel=1
 pkgdesc="Unofficial TAB Australia desktop application."
 arch=('x86_64' 'arm7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('796bc85b9c88ad2ee03ebf5a2b690f0c6efedeb9a13425d427aecdec58b87b0a')
+sha256sums=('2cae5cd74a80c21aa60e2e6393577547b1e619791590ba40b71a6c4a44e6c134')
 
 package() {
     cd "$srcdir/application-$pkgver"
