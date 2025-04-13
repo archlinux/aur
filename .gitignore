@@ -1,5 +1,4 @@
-pkg/
-src/
-*.pkg.tar
-*.tar.gz
 node-build/
+/pkg
+/src
+*.zst

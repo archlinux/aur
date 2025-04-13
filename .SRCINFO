@@ -1,16 +1,16 @@
 pkgbase = nodenv-node-build-git
 	pkgdesc = Install NodeJS versions
-	pkgver = 2.3.1.r7.gf47f7ad
+	pkgver = 5.3.32.r0.g96f9efa0
 	pkgrel = 1
 	url = https://github.com/nodenv/node-build
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = bash
 	provides = nodenv-node-build
 	conflicts = nodenv-node-build
 	conflicts = node-build
-	source = git://github.com/nodenv/node-build
+	source = git+https://github.com/nodenv/node-build.git
 	md5sums = SKIP
 
 pkgname = nodenv-node-build-git
-
