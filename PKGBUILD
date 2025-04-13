@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver=0.24.0.r4.ga5e214d33
+pkgver=0.24.1.r7.gb25dae060
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -69,8 +69,14 @@ prepare() {
 build() {
 
 	cd "${srcdir}/${_appname}"
-
 	meson compile -C build
+
+}
+
+check() {
+
+	cd "${srcdir}/${_appname}"
+	meson test -C build
 
 }
 
