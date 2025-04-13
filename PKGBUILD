@@ -2,7 +2,7 @@
 
 _pkgname="pman"
 pkgname="${_pkgname}-helper"
-pkgver="1.2.0"
+pkgver="1.3.0"
 pkgrel="3"
 pkgdesc="A pacman helper script, because you forget all the stupid flags"
 url="https://git.bjphoster.com/source/${_pkgname}"
@@ -12,9 +12,9 @@ depends=("bash" "pacman")
 conflicts=("pman") # Another package called `pman` currently exists in the AUR
 source=("https://git.bjphoster.com/source/${_pkgname}/archive/${pkgver}.tar.gz")
 
-sha1sums=("df1f0c0d476619fa6994c72c94f0fd50e08fa74c")
-sha256sums=("400980f9d8e4d8df3f95cf8c7430922586ba389289a80d0ba18d127f095d1d84")
-md5sums=("5b424b1b6900b4f8cdcd8a5388be55aa")
+sha1sums=("458ac1ba88a6d33d634c4a8a8ad38941f6cc38a9")
+sha256sums=("75663adb5dab96497af9f312fa67c1d846d9758b4a5c23bd66ee91108e122f0c")
+md5sums=("a2cb6720b2b376165d10cb1a5482e069")
 
 package() {
   install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
