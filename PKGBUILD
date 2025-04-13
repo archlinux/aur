@@ -1,6 +1,6 @@
 pkgname=tubi
 _pkgname=Tubi
-pkgver=1.0.4
+pkgver=1.0.5.aurpatch
 pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Tubi desktop application"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('55092409b37c88445e92d9d3d193474c918bb8cdb310165b78d9ba04aaa22a4f')
+sha256sums=('24a04146ea2d7358aad2df65f7171ef82d960092479dfc76469b5e6fe3626747')
 
 package() {
     cd "$srcdir/application-$pkgver"
