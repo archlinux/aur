@@ -1,4 +1,4 @@
-# Maintainer: allddd <allddd (at) proton (dot) me>
+# Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=vim-plug-git
 pkgver=r720.d863d07
