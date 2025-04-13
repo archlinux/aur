@@ -1,8 +1,8 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=protonup-rs-bin
-pkgver=0.8.6
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="CLI program to automate the installation and update of Proton-GE"
 url="https://github.com/auyer/Protonup-rs"
 license=("Apache")
@@ -11,7 +11,7 @@ provides=('protonup-rs')
 conflicts=('protonup-rs')
 source=(https://github.com/auyer/Protonup-rs/releases/download/v$pkgver/protonup-rs-linux-amd64.tar.gz)
 
-sha256sums=('0b8a0cb0c53885f3b1b1f32b3444f1a51a24cd2101eb0265919a2eb578f14c69')
+sha256sums=('e3ea15a88400c88d7cdac964a0421c3b8cac35114dfd6b06d96adf3e0484213a')
 
 package() {
 	install -D protonup-rs	"$pkgdir"/usr/bin/protonup-rs
