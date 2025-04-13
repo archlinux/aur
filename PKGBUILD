@@ -5,7 +5,7 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.24.0'
+pkgver='0.24.1'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-user.service")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('06852f9f4833e6cb06beeddf8727ab94c43853af723a76387ad771612e163c57'
+sha256sums=('c4f8f9d25d3a00f80709583b87aa8312d01454090b73a413b43ec7ec7c07ba39'
             'SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
@@ -53,18 +53,21 @@ sha256sums=('06852f9f4833e6cb06beeddf8727ab94c43853af723a76387ad771612e163c57'
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	export GNUNET_PREFIX='/usr/lib'
-	autoreconf -i
+	meson setup -Dprefix='/usr/' build
 
 }
 
 build() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	meson compile -C build
 
-	./configure --prefix='/usr' --enable-experimental
-	make
+}
+
+check() {
+
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	meson test -C build
 
 }
 
@@ -72,7 +75,7 @@ package() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make DESTDIR="${pkgdir}" install
+	meson install -C build --destdir "${pkgdir}"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	install -Dm644 "${srcdir}/${pkgname}-system.service" \
