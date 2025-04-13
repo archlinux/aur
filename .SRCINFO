@@ -1,24 +1,24 @@
 pkgbase = r-gllvm
 	pkgdesc = Generalized Linear Latent Variable Models
-	pkgver = 1.4.3
-	pkgrel = 3
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gllvm
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = r-rcppeigen
 	depends = r-alabama
 	depends = r-fishmod
-	depends = r-mvabund
 	depends = r-nloptr
-	depends = r-statmod
 	depends = r-tmb
 	optdepends = r-corrplot
 	optdepends = r-gclus
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/gllvm_1.4.3.tar.gz
-	md5sums = e07eb19b36dcc3af0525648d6492d150
-	b2sums = b16f0446c1ddb888bc38b0a30996d3d3299651320a4129a35025a32de9d36181b2859793a6f35d9140d6ef7427af4325f705db0e96866bda7cb68feeab2587c7
+	optdepends = r-ape
+	optdepends = r-mvabund
+	source = https://cran.r-project.org/src/contrib/gllvm_2.0.2.tar.gz
+	md5sums = 34919f523d58c62100e20fc8c45fede1
+	b2sums = 02286975f6a6c8541274fcc3258d1d8ee9306e434a5323d890a4775eceb92966deb8177a71b3d630904aa456f02f6015ee4b292584445267c7790b2a0c24140d
 
 pkgname = r-gllvm
