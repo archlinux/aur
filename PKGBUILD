@@ -7,15 +7,23 @@ arch=('any')
 url="https://github.com/binarylinuxx/pyfetch"
 license=('GPL3')
 depends=('python' 'python-psutil' 'python-colorama')
-makedepends=('git' 'python-psutil' 'python-colorama' 'python')
-source=("git+$url.git")
+makedepends=('git')
+source=("git+$url.git#tag=v$pkgver")  # Pin to specific version
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/pyfetch"  # Changed from $pkgname to match actual directory
+  cd "$srcdir/pyfetch"
+  
+  # Main executable
   install -Dm755 pyfetch "$pkgdir/usr/bin/pyfetch"
-  install -Dm644 config.ini "$pkgdir/etc/pyfetch/config.ini"
+  
+  # Config files (use .pacnew to avoid conflicts)
+  install -Dm644 config.ini "$pkgdir/etc/pyfetch/config.ini.pacnew"
   install -Dm644 config.ini "$pkgdir/usr/share/doc/pyfetch/config.ini.example"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  
+  # Documentation
   echo "Place your custom config in ~/.config/pyfetch/config.ini" > "$pkgdir/usr/share/doc/pyfetch/README"
+  
+  # License
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
