@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=py-fetch
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An independent python-system-information-tool written in Python with customizable ASCII art"
 arch=('any')
