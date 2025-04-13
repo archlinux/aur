@@ -9,7 +9,7 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=14.2.0
+pkgver=14.2.1
 _pkgver=${pkgver%.[0-9]}
 pkgrel=1
 pkgdesc="Computational software for mathematics, science, and engineering, with offline documentation included."
@@ -87,9 +87,9 @@ source=(
     "remove-xdg-scripts.patch"
     "insecure-runpath.list"
 )
-sha256sums=('c18e9a706a1473bcb6d9e9d28bb46b71114bbef3c669e613b5ae32584c655e1a'
+sha256sums=('0dc65b7adaf9c0ede2fc391c860a6c5b74461df6b53ec940e1f2be6d143af018'
             '20ba959296d418c8b00381da5abd87dc935633d44134a35e7961356bfef6a5f0'
-            'f5550ea4ad2216b7cf52472c3c65a15fa0be1b601425a478e98e72d1ab55d6fb')
+            '8f808af5ee778bad8a78b4544bbda9854a06159b65f3368d508ebcaabf4bbadd')
 options=(!strip !debug)
 
 ## To build this package you might need to place the mathematica-installer into
