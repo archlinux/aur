@@ -1,0 +1,26 @@
+pkgbase = tunarr-bin
+	pkgdesc = Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby
+	pkgver = 0.18.17
+	pkgrel = 1
+	url = https://tunarr.com/
+	arch = x86_64
+	arch = aarch64
+	license = zlib
+	depends = ffmpeg
+	optdepends = plex-media-server
+	optdepends = jellyfin-server
+	optdepends = emby-server
+	options = !strip
+	backup = etc/conf.d/tunarr
+	source = tunarr-0.18.17-x64::https://github.com/chrisbenincasa/tunarr/releases/download/v0.18.17/tunarr-0.18.17-linux-x64
+	source = tunarr.sysusers
+	source = tunarr.tmpfiles
+	source = tunarr.service
+	source = tunarr.conf.d
+	sha256sums = b4d0d5c977a92ce475f041dbb36be6a45a88d8c3f9d1993ae294bb09017fd455
+	sha256sums = 4d4375c6326db6d4738b86ddfc114d16b1f4804dece0f053450abce49d55e78c
+	sha256sums = b2d15cf310c96457775c428e7e6ae7a7cf1cf5c5874d95414934087613b3539d
+	sha256sums = 64755e37e633ead21017f81ede2462603952906000c1987b85f02a663d70ac75
+	sha256sums = e5ce4fc219b93fefb207b1b10b316e46fe94018cf13e25e42a5c033e9c31edb7
+
+pkgname = tunarr-bin

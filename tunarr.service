@@ -1,0 +1,20 @@
+[Unit]
+Description=Tunarr Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/tunarr
+User=tunarr
+Group=tunarr
+Type=simple
+WorkingDirectory=/var/lib/tunarr
+ExecStart=/usr/bin/tunarr server
+KillMode=process
+Restart=always
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

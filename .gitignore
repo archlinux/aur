@@ -1,0 +1,5 @@
+pkg
+src
+*.tar*
+tunarr-*-x64
+tunarr-*-arm64
