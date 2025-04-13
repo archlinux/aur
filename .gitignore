@@ -1,0 +1,7 @@
+# Package files
+*.pkg.tar*
+
+# Sources
+pkg
+src
+

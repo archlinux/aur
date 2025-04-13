@@ -1,0 +1,16 @@
+pkgbase = noson
+	pkgdesc = C++ library for accessing SONOS devices
+	pkgver = 2.12.9
+	pkgrel = 2
+	url = https://github.com/janbar/noson
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	options = !lto
+	source = git+https://github.com/janbar/noson.git#tag=2.12.9
+	sha256sums = 5c981076e3a5cb32ff6d2eae26c42a04ad9415f9c664a3b8b789d440e41271c8
+
+pkgname = noson
