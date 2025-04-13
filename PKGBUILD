@@ -3,7 +3,7 @@
 pkgbase=python-ezpadova
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A python package that allows you to download PADOVA isochrones directly from website"
 arch=('any')
@@ -22,11 +22,13 @@ makedepends=('python-setuptools-scm>=6.2'
              'python-scipy'
              'python-pytest')  # wheel required by new setuptools
 #checkdepends=('python-pytest-xdist')   # pandas, requests <- scipy, bs4 <- pydata <- book-theme already in makedepends
-source=("https://github.com/mfouesneau/ezpadova/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('e4dfcfa48daea25a8f4723c3e87b5720')
+#source=("https://github.com/mfouesneau/ezpadova/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/mfouesneau/ezpadova/archive/refs/tags/v.${pkgver}.tar.gz")
+md5sums=('91d70192616a62da838afa203ac1d1b9')
 
 build() {
-    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-v.${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
@@ -34,7 +36,8 @@ build() {
 }
 
 check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-v.${pkgver}
 
     pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
@@ -42,7 +45,8 @@ check() {
 package_python-ezpadova() {
     depends=('python>=3.9' 'python-requests' 'python-pandas' 'python-beautifulsoup4' 'python-scipy')
     optdepends=('python-ezpadova-doc: Documentation for EzPadova')
-    cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-v.${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -51,7 +55,8 @@ package_python-ezpadova() {
 
 package_python-ezpadova-doc() {
     pkgdesc="Documentation for Python EzPadova"
-    cd ${srcdir}/${_pyname}-${pkgver}/doc/_build
+#   cd ${srcdir}/${_pyname}-${pkgver}/doc/_build
+    cd ${srcdir}/${_pyname}-v.${pkgver}/doc/_build
 
     install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
