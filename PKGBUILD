@@ -3,19 +3,18 @@
 
 pkgname=uni-updater
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper program that updates everything on your system.'
 arch=('x86_64')
 url="https://codeberg.org/TTsdzb/uni-updater"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
-conflicts=('uni-updater')
-provides=("uni-updater=${pkgver}")
-source=("$pkgname::git+$url#tag=4f7005e82c")
-sha512sums=('e98eb54baf7d6abbdf1e9bdefea3354bc722f18b813cd646f9de95f84c770a344611fae1618c62ecd212902d9b5ef3e6040fb19c1c0db076901663c7f619c3b8')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://codeberg.org/TTsdzb/uni-updater/archive/4f7005e82ca6e736ad7933798c1964dcf7398626.tar.gz"
+	)
+sha512sums=('3da976f6c89a71dce8166750a038de849804d209967ae85a13f2f7423bbe04f2f0d48b96c670cba31672a13173457db459f4513e483bfb9974fcdc23b32d37df')
 prepare() {
-	cd "$pkgname"
+	cd "$pkgbase"
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -23,12 +22,12 @@ prepare() {
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cd "$pkgname"
+	cd "$pkgbase"
 	cargo build --release --frozen --all-features
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgbase"
 	install -Dm755 -t "$pkgdir/usr/bin" target/release/uni-updater
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
