@@ -1,68 +1,16 @@
 diff --git a/src/torrent/connection_manager.cc b/src/torrent/connection_manager.cc
-index ea5efc58..976ec696 100644
+index 27de45e0..2e98054f 100644
 --- a/src/torrent/connection_manager.cc
 +++ b/src/torrent/connection_manager.cc
-@@ -1,45 +1,10 @@
--// libTorrent - BitTorrent library
--// Copyright (C) 2005-2011, Jari Sundell
--//
--// This program is free software; you can redistribute it and/or modify
--// it under the terms of the GNU General Public License as published by
--// the Free Software Foundation; either version 2 of the License, or
--// (at your option) any later version.
--// 
--// This program is distributed in the hope that it will be useful,
--// but WITHOUT ANY WARRANTY; without even the implied warranty of
--// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--// GNU General Public License for more details.
--// 
--// You should have received a copy of the GNU General Public License
--// along with this program; if not, write to the Free Software
--// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
--//
--// In addition, as a special exception, the copyright holders give
--// permission to link the code of portions of this program with the
--// OpenSSL library under certain conditions as described in each
--// individual source file, and distribute linked combinations
--// including the two.
--//
--// You must obey the GNU General Public License in all respects for
--// all of the code used other than OpenSSL.  If you modify file(s)
--// with this exception, you may extend this exception to your version
--// of the file(s), but you are not obligated to do so.  If you do not
--// wish to do so, delete this exception statement from your version.
--// If you delete this exception statement from all source files in the
--// program, then also delete it here.
--//
--// Contact:  Jari Sundell <jaris@ifi.uio.no>
--//
--//           Skomakerveien 33
--//           3185 Skoppum, NORWAY
--
- #include "config.h"
- 
- #include <sys/types.h>
- 
- #include <rak/address_info.h>
- #include <rak/socket_address.h>
-+#include <net/socket_address.h>
- 
+@@ -5,6 +5,7 @@
+ #include "manager.h"
+ #include "thread_main.h"
  #include "net/listen.h"
- 
-@@ -70,10 +35,10 @@ resolve_host(const char* host, int family, int socktype, ConnectionManager::slot
-   rak::socket_address sa;
-   sa.copy(*ai->address(), ai->length());
-   rak::address_info::free_address_info(ai);
--  
-+
-   if (manager->main_thread_main()->is_current())
-     thread_base::acquire_global_lock();
--  
-+
-   slot(sa.c_sockaddr(), 0);
-   return NULL;
- }
-@@ -174,6 +139,12 @@ ConnectionManager::set_proxy_address(const sockaddr* sa) {
++#include "net/socket_address.h"
+ #include "rak/socket_address.h"
+ #include "torrent/connection_manager.h"
+ #include "torrent/error.h"
+@@ -102,6 +103,12 @@ ConnectionManager::set_proxy_address(const sockaddr* sa) {
  
  uint32_t
  ConnectionManager::filter(const sockaddr* sa) {
@@ -76,61 +24,10 @@ index ea5efc58..976ec696 100644
      return 1;
    else
 diff --git a/src/torrent/connection_manager.h b/src/torrent/connection_manager.h
-index 09ccdd28..2c44357f 100644
+index 61962128..85a1cb5e 100644
 --- a/src/torrent/connection_manager.h
 +++ b/src/torrent/connection_manager.h
-@@ -1,41 +1,3 @@
--// libTorrent - BitTorrent library
--// Copyright (C) 2005-2011, Jari Sundell
--//
--// This program is free software; you can redistribute it and/or modify
--// it under the terms of the GNU General Public License as published by
--// the Free Software Foundation; either version 2 of the License, or
--// (at your option) any later version.
--// 
--// This program is distributed in the hope that it will be useful,
--// but WITHOUT ANY WARRANTY; without even the implied warranty of
--// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--// GNU General Public License for more details.
--// 
--// You should have received a copy of the GNU General Public License
--// along with this program; if not, write to the Free Software
--// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
--//
--// In addition, as a special exception, the copyright holders give
--// permission to link the code of portions of this program with the
--// OpenSSL library under certain conditions as described in each
--// individual source file, and distribute linked combinations
--// including the two.
--//
--// You must obey the GNU General Public License in all respects for
--// all of the code used other than OpenSSL.  If you modify file(s)
--// with this exception, you may extend this exception to your version
--// of the file(s), but you are not obligated to do so.  If you do not
--// wish to do so, delete this exception statement from your version.
--// If you delete this exception statement from all source files in the
--// program, then also delete it here.
--//
--// Contact:  Jari Sundell <jaris@ifi.uio.no>
--//
--//           Skomakerveien 33
--//           3185 Skoppum, NORWAY
--
--// Add some helpfull words here.
--
- #ifndef LIBTORRENT_CONNECTION_MANAGER_H
- #define LIBTORRENT_CONNECTION_MANAGER_H
- 
-@@ -106,7 +68,7 @@ public:
- 
-   ConnectionManager();
-   ~ConnectionManager();
--  
-+
-   // Check that we have not surpassed the max number of open sockets
-   // and that we're allowed to connect to the socket address.
-   //
-@@ -129,7 +91,7 @@ public:
+@@ -89,7 +89,7 @@ public:
    void                set_priority(priority_type p)           { m_priority = p; }
    void                set_send_buffer_size(uint32_t s);
    void                set_receive_buffer_size(uint32_t s);
@@ -139,7 +36,7 @@ index 09ccdd28..2c44357f 100644
  
    // Setting the addresses creates a copy of the address.
    const sockaddr*     bind_address() const                    { return m_bindAddress; }
-@@ -144,7 +106,7 @@ public:
+@@ -104,7 +104,7 @@ public:
    void                set_filter(const slot_filter_type& s)   { m_slot_filter = s; }
  
    bool                listen_open(port_type begin, port_type end);
@@ -148,8 +45,3 @@ index 09ccdd28..2c44357f 100644
  
    // Since trackers need our port number, it doesn't get cleared after
    // 'listen_close()'. The client may change the reported port number,
-@@ -208,4 +170,3 @@ private:
- }
- 
- #endif
--
