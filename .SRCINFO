@@ -1,0 +1,16 @@
+pkgbase = didiextract
+	pkgdesc = Extract files from Jazz Jackrabbit 2 installers without executing them.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/CYBERDEV/didiextract
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = gcc
+	makedepends = gzip
+	makedepends = zlib
+	depends = zlib
+	source = didiextract-0.1.0.tar.gz::https://codeberg.org/CYBERDEV/didiextract/archive/v0.1.0.tar.gz
+	sha512sums = 294d308aac141a75167fb934d049163c60ec46f891b2c50caff7d4c5e74fc71b66e47bdd7b9ec53bc07be7537f3c715ead2f43da1d2bf3f0317e8864150b1b7e
+
+pkgname = didiextract
