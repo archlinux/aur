@@ -1,24 +1,24 @@
 # Maintainer: caputmanus <caputmanus@outlook.com>
+
 pkgname=aware
 pkgver=0.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple process supervisor in Rust"
 arch=('x86_64')
 url="https://github.com/spice-itself/aware"
 license=('MIT')
-depends=()
-makedepends=('rust' 'cargo' 'git')
-source=("git+https://github.com/spice-itself/aware.git")
-sha256sums=('SKIP')
+makedepends=('rust' 'cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/spice-itself/aware/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('PUT_SHA256SUM_HERE')
 
 build() {
-    cd "$srcdir/aware"
-    cargo build --release
+  cd "$srcdir/$pkgname-$pkgver"
+  cargo build --release --locked
 }
 
 package() {
-    cd "$srcdir/aware"
-    install -Dm755 "target/release/aware" "$pkgdir/usr/bin/aware"
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/aware/README.md"
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-
