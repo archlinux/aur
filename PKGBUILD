@@ -1,7 +1,7 @@
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com
 pkgname=image-garden
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Tool for creating test virtual machines"
 arch=(any)
 url="https://gitlab.com/zygoon/image-garden"
@@ -17,15 +17,11 @@ options=()
 install=
 source=(
 	"$pkgname-$pkgver.tar.bz2::https://gitlab.com/zygoon/${pkgname}/-/archive/v${pkgver}/image-garden-v${pkgver}.tar.bz2"
-	"0001-Allow-overriding-default-OVMF-code-and-vars-blobs-lo.patch"
-	"0002-Arch-override-default-OVMF-blobs-location.patch"
+	"0001-Arch-override-default-OVMF-blobs-location.patch"
 )
 noextract=()
-sha256sums=(
-	'e75ce3e9491b474425029787d8b4d456f593d23c62ca593673dfdd3f6bad1595'
-	'8310ca74ad374b7197d04ed8d4e9ccbea64fd2fc8467a40f7e14c07c2d3d2ece'
-	'04a824cd0ceee56811f3c1c8b12c0ed7fd7203eefd6559d66cbebffeeff68b48'
-)
+sha256sums=('92efbfe2c7a0f9221001a043ae2a9e15a556cac548d2922517bceaab6d14a661'
+            '04a824cd0ceee56811f3c1c8b12c0ed7fd7203eefd6559d66cbebffeeff68b48')
 
 prepare() {
 	cd "$pkgname-v$pkgver"
