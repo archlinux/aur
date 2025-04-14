@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -15,13 +15,13 @@ options=(!lto)
 _date=20250329
 _commit=32bb14f
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz"
-	"qt-6.9.0.diff::$url/commit/e341dcf238193995b7e61c8353f000d49aee7f33.diff")
+	"898.diff::https://patch-diff.githubusercontent.com/raw/azahar-emu/azahar/pull/898.diff")
 sha256sums=('68fd93c2350979e19d6dd8a47722010c1540420d3e36f76a6f5b79ce3679292b'
-            '249f987d055a9ce9f14a583851c3a79d9234aad65c686e621a569ef1736275fe')
+            '07f31bbdfc245fe56717d5e02dfcd20e7a850fcf94c9d724cc291eb84267e9a4')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
-	patch -p1 < "$srcdir/qt-6.9.0.diff"
+	patch -p1 < "$srcdir/898.diff"
 	sed -i 's/VERSION 3.2.0/VERSION 3.5/' externals/discord-rpc/CMakeLists.txt
 }
 
