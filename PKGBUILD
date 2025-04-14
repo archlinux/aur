@@ -7,13 +7,13 @@
 : ${_widgets:=gtk2}
 
 [[ "${_widgets::3}" == "gtk" ]] \
-  && : ${_cksum=60ef8276710bf931634f6ce4bc843e502f9bb8f35d54a8fdfeac8c4dda733290}
+  && : ${_cksum=d0d5ca3ab00ee74e74407c5cb4087a5af6a8f2e4f4e7c78adff62fb2e83a0b1f}
 
 : ${_pkgtype:=-${_widgets}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.3.0
+pkgver=10.4.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
 url="https://github.com/peazip/PeaZip"
@@ -23,7 +23,6 @@ arch=('x86_64')
 makedepends+=(
   'patchelf'
 )
-
 optdepends=(
   'arc: Arc file archiver and compressor'
 )
@@ -40,40 +39,26 @@ source=(
 )
 sha256sums=(
   "${_cksum:-SKIP}"
-  'SKIP'
+  'd2ce07156ce170625008caf384b53bff9b087331d7e12ee711aa94a200316c84'
 )
 
 prepare() {
-  local _plugin_path="usr/lib/peazip/res/bin"
-  local _plugins=(
-    lpaq
-    paq
-    quad
-    upx
-    zpaq
-  )
+  local i _plugin_path _unwanted _plugins _symlinks
+  _plugin_path="usr/lib/peazip/res/bin"
 
-  ln -sf /usr/bin/7z "$_plugin_path"/7z/7z
-  ln -sf /usr/bin/brotli "$_plugin_path"/brotli/brotli
-  ln -sf /usr/bin/zstd "$_plugin_path"/zstd/zstd
-
-  install -dm755 "$_plugin_path"/arc
-  ln -sf /usr/bin/arc "$_plugin_path"/arc/arc
-
+  # program
   ln -sf /usr/lib/peazip/peazip "usr/bin/peazip"
   ln -sf /usr/lib/peazip/pea "usr/bin/pea"
-
-  for i in ${_plugins[@]}; do
-    cp --reflink=auto -a "$srcdir/$_pkgsrc_plugins/$i" "$_plugin_path/"
-  done
 
   patchelf --add-rpath '$ORIGIN' "usr/lib/peazip/peazip"
   patchelf --add-rpath '$ORIGIN' "usr/lib/peazip/pea"
 
-  local _unwanted=(
+  # remove extraneous
+  _unwanted=(
     "$_plugin_path"/*/note.txt
     "$_plugin_path"/7z/*
     usr/lib/.build-id
+    usr/lib/libQt6Pas.so*
     usr/share/doc
     usr/share/icons
     usr/share/peazip/*/readme*.txt
@@ -84,16 +69,33 @@ prepare() {
     usr/share/peazip/readme
   )
 
-  if [[ "${_widgets::2}" == "qt" ]]; then
-    _unwanted+=(
-      usr/lib/libQt6Pas.so*
-    )
+  for i in "${_unwanted[@]}"; do
+    [ -e "$i" ] || [ -L "$i" ] && rm -rf "$i"
+  done
 
-    local _lib=("usr/lib/peazip"/libQt6Pas.so.*)
-    ln -sf "${_lib[0]}" "${_lib[0]%.[0-9].[0-9]}"
-  fi
+  # symlink plugins
+  _symlinks=(
+    7z
+    arc
+    brotli
+    zstd
+  )
+  for i in "${_symlinks[@]}"; do
+    install -dm755 "$_plugin_path/$i"
+    ln -sf "/usr/bin/$i" "$_plugin_path/$i/$i"
+  done
 
-  rm -rf ${_unwanted[@]}
+  # binary plugins
+  _plugins=(
+    lpaq
+    paq
+    quad
+    upx
+    zpaq
+  )
+  for i in "${_plugins[@]}"; do
+    cp -a "$srcdir/$_pkgsrc_plugins/$i" "$_plugin_path/"
+  done
 }
 
 package() {
@@ -103,10 +105,15 @@ package() {
     'zstd'
   )
 
-  if [[ "${_widgets::3}" == "gtk" ]]; then
-    depends+=("${_widgets}")
-  fi
+  case "${_widgets::1}" in
+    g)
+      depends+=("${_widgets}")
+      ;;
+    q)
+      depends+=("${_widgets}-base")
+      ;;
+  esac
 
-  cp --reflink=auto -a usr "$pkgdir/"
+  cp -a usr "$pkgdir/"
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }

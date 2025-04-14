@@ -1,6 +1,6 @@
 pkgbase = peazip-gtk2-bin
 	pkgdesc = Cross-platform file and archive manager (GTK2)
-	pkgver = 10.3.0
+	pkgver = 10.4.0
 	pkgrel = 1
 	url = https://github.com/peazip/PeaZip
 	arch = x86_64
@@ -12,13 +12,14 @@ pkgbase = peazip-gtk2-bin
 	conflicts = peazip-gtk2-bin-debug
 	options = !debug
 	options = !emptydirs
-	source = https://github.com/peazip/PeaZip/releases/download/10.3.0/peazip-10.3.0.LINUX.GTK2-1.x86_64.rpm
+	source = https://github.com/peazip/PeaZip/releases/download/10.4.0/peazip-10.4.0.LINUX.GTK2-1.x86_64.rpm
 	source = https://cyfuture.dl.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip-additional-formats-plugin.6.LINUX.tar
-	sha256sums = 60ef8276710bf931634f6ce4bc843e502f9bb8f35d54a8fdfeac8c4dda733290
-	sha256sums = SKIP
+	sha256sums = d0d5ca3ab00ee74e74407c5cb4087a5af6a8f2e4f4e7c78adff62fb2e83a0b1f
+	sha256sums = d2ce07156ce170625008caf384b53bff9b087331d7e12ee711aa94a200316c84
 
 pkgname = peazip-gtk2-bin
 	depends = 7zip
 	depends = brotli
 	depends = zstd
 	depends = gtk2
+	depends = gtk2-base
