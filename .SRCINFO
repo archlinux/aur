@@ -1,7 +1,7 @@
 pkgbase = chatgtk
 	pkgdesc = A simple ChatGPT Webview based on GTK, support system tray and nothing else
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPLv3
 	depends = python-gobject
