@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=Eitaa
+Comment=New era of messaging
+TryExec=Eitaa
+Exec=Eitaa -- %u
+Icon=eitaa
+Terminal=false
+StartupWMClass=Eitaa
+Type=Application
+Categories=Chat;Network;InstantMessaging;Qt;
+Keywords=eitaa;chat;im;messaging;messenger;sms;
+Actions=quit;
+DBusActivatable=true
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true
+X-GNOME-SingleWindow=true
+
+[Desktop Action quit]
+Exec=Eitaa -quit
+Name=Quit Eitaa
+Icon=application-exit
