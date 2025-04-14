@@ -12,7 +12,7 @@ pkgdesc="A fork of Chatterino2 with built-in support for 7tv emotes"
 arch=('x86_64')
 url="https://github.com/SevenTV/chatterino7"
 license=('MIT')
-depends=('icu70' 'libxkbcommon' 'libxkbcommon-x11' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-renderutil')
+depends=('icu70' 'libxkbcommon' 'libxkbcommon-x11' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libnotify')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
@@ -23,6 +23,7 @@ source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Seventv/chatte
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"
 	install -d "${pkgdir}/opt/${_pkgname}"
-    	install -dm755 "$pkgdir/usr/bin"
+
+    install -dm755 "$pkgdir/usr/bin"
 }
 sha256sums_x86_64=('8546358cae1c725a139874fccafeba405efd0d821e774b9be72127aa58f34234')

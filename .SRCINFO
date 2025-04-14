@@ -13,6 +13,7 @@ pkgbase = chatterino2-7tv-bin
 	depends = xcb-util-cursor
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
+	depends = libnotify
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	optdepends = gst-plugins-good: For audio output
