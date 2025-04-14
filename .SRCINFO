@@ -1,8 +1,8 @@
 pkgbase = phpwebstudy-bin
-	pkgdesc = Powerful Web Server and PHP Environment.
+	pkgdesc = Powerful Web Server and PHP Environment.(Prebuilt version.Use system-wide electron)
 	pkgver = 4.0.0
-	pkgrel = 1
-	url = https://www.macphpstudy.com/
+	pkgrel = 2
+	url = https://www.flyenv.com/
 	arch = aarch64
 	arch = x86_64
 	license = BSD-3-Clause
@@ -12,10 +12,10 @@ pkgbase = phpwebstudy-bin
 	source = LICENSE-4.0.0::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v4.0.0/LICENSE
 	source = phpwebstudy.sh
 	sha256sums = c4205bc7a7ad3855f781d48a5303c4e424d7fc26207953d0ffdcae5e4c27f80a
-	sha256sums = 2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051
-	source_aarch64 = phpwebstudy-4.0.0-aarch64.deb::https://github.com/xpf0000/PhpWebStudy/releases/download/v4.0.0/PhpWebStudy_4.0.0_arm64.deb
-	sha256sums_aarch64 = 6356bf8ded09b0240786745c67a1936271eea53982bd090c64ec819a2a3f48d3
-	source_x86_64 = phpwebstudy-4.0.0-x86_64.deb::https://github.com/xpf0000/PhpWebStudy/releases/download/v4.0.0/PhpWebStudy_4.0.0_amd64.deb
-	sha256sums_x86_64 = a2fdd0082aeae7281d38c0cfb21afd0579a6c64c8f66de835557a9217ecb7d54
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_aarch64 = phpwebstudy-4.0.0-aarch64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.0.0/PhpWebStudy-4.0.0.aarch64.rpm
+	sha256sums_aarch64 = c0b2f505a3f156146e19cd4d287318350eae742cfd8c6557686742645401917a
+	source_x86_64 = phpwebstudy-4.0.0-x86_64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.0.0/PhpWebStudy-4.0.0.x86_64.rpm
+	sha256sums_x86_64 = 3dde857b59ac91b4723eaae914db622858b4e3be488c0a0e6aa812d09d0e8a2d
 
 pkgname = phpwebstudy-bin
