@@ -1,14 +1,15 @@
 pkgbase = roon-kit
-	pkgdesc = A JavaScript SDK for the Roon API
-	pkgver = 0.1.0
+	pkgdesc = Roon API Kit completo con soporte para extensiones
+	pkgver = r20250414.ga86ea7e
 	pkgrel = 1
-	url = https://github.com/Stevenic/roon-kit
+	url = https://github.com/Minterl/roon-kit
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = npm
+	makedepends = typescript
 	depends = nodejs
-	depends = npm
-	source = git+https://github.com/Stevenic/roon-kit.git
-	md5sums = SKIP
+	source = git+https://github.com/Minterl/roon-kit.git
+	sha256sums = SKIP
 
 pkgname = roon-kit
