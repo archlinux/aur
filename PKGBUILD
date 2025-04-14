@@ -16,6 +16,7 @@ license=('LGPL-3.0-only')
 depends=('jemalloc' 'grep' 'shadow' 'systemd-libs')
 # pkg-config fails to detect systemd libraries if systemd is not installed
 makedepends=('systemd' 'openssl')
+provides=('redis')
 backup=('etc/redict/redict.conf'
         'etc/redict/sentinel.conf')
 source=("${pkgname}-${pkgver//+/-}.tar.gz::https://codeberg.org/redict/redict/archive/${pkgver//+/-}.tar.gz"

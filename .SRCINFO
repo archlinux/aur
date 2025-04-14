@@ -11,6 +11,7 @@ pkgbase = redict
 	depends = grep
 	depends = shadow
 	depends = systemd-libs
+	provides = redis
 	backup = etc/redict/redict.conf
 	backup = etc/redict/sentinel.conf
 	source = redict-7.3.2.tar.gz::https://codeberg.org/redict/redict/archive/7.3.2.tar.gz
