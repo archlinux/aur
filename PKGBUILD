@@ -2,21 +2,21 @@
 
 pkgbase=qhotkey-git
 pkgname=('qhotkey-qt6-git' 'qhotkey-qt5-git')
-pkgver=1.5.0.r7.gcd72a01
+pkgver=1.5.0.r9.gbb63025
 pkgrel=1
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications (git version)'
 arch=('x86_64')
 url='https://github.com/Skycoder42/QHotkey/'
 license=('BSD-3-Clause')
-makedepends=('git' 'cmake' 'libx11' 'qt5-base' 'qt5-x11extras' 'qt6-base')
-source=('git+https://github.com/Skycoder42/QHotkey.git'
-        '010-qhotkey-fix-segfault-under-wayland.patch'::'https://github.com/Skycoder42/QHotkey/pull/96.patch')
-sha256sums=('SKIP'
-            'acac579950e7a160f396387f9fdcb8b7964a1e1ae7a38f13c636e2121536b15c')
-
-prepare() {
-    patch -d QHotkey -Np1 -i "${srcdir}/010-qhotkey-fix-segfault-under-wayland.patch"
-}
+makedepends=(
+    'cmake'
+    'git'
+    'libx11'
+    'qt5-base'
+    'qt5-x11extras'
+    'qt6-base')
+source=('git+https://github.com/Skycoder42/QHotkey.git')
+sha256sums=('SKIP')
 
 pkgver() {
     git -C QHotkey describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -27,6 +27,7 @@ build() {
         '-GUnix Makefiles' \
         '-DCMAKE_BUILD_TYPE:STRING=None'
         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
+        '-DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5.0'
         '-DBUILD_SHARED_LIBS:BOOL=ON'
         '-Wno-dev')
     
@@ -45,7 +46,11 @@ build() {
 }
 
 package_qhotkey-qt6-git() {
-    depends=('libx11' 'qt6-base')
+    depends=(
+        'gcc-libs'
+        'glibc'
+        'libx11'
+        'qt6-base')
     provides=('qhotkey-qt6')
     conflicts=('qhotkey-qt6')
     
@@ -71,7 +76,12 @@ package_qhotkey-qt6-git() {
 
 package_qhotkey-qt5-git() {
     pkgdesc="$(sed '/Qt6/s/6/5/' <<< "$pkgdesc")"
-    depends=('libx11' 'qt5-base' 'qt5-x11extras')
+    depends=(
+        'gcc-libs'
+        'glibc'
+        'libx11'
+        'qt5-base'
+        'qt5-x11extras')
     provides=('qhotkey-qt5')
     conflicts=('qhotkey-qt5')
     
