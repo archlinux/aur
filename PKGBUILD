@@ -1,6 +1,6 @@
 # Maintainer: Vladislav Grechannik <vgrechannik@gmail.com>
 pkgname=naga-cli
-pkgver=24.0.0
+pkgver=25.0.0
 pkgrel=1
 pkgdesc="Shader translation command line tool"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=('naga')
 conflicts=('naga')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('77be7350b46f25941118deb7b9c76affcb96a561799d42faef02d27c813947fafbe176002fc7e9e8aeb598ea78fa9bb870c4131b89b677f4ac27151b06291996')
+b2sums=('c4dc721b610dde9cde57fa597f5fd4a21aff24986494d0752e1e574e118b8d6260927dccccf1a4900d90f5d7ad8692df43f79193cea9e1ac97c7e35d3db89081')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
