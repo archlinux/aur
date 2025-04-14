@@ -1,6 +1,6 @@
 # Maintainer: caputmanus <caputmanus@outlook.com>
 pkgname=aware
-pkgver=0.1.4
+pkgver=1.0rc1
 pkgrel=1
 pkgdesc="Simple process supervisor in Rust"
 arch=('x86_64')
