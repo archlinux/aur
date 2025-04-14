@@ -1,0 +1,22 @@
+pkgbase = axon-applauncher-git
+	pkgdesc = Hyper-customizable app launcher made in Python (development version)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/wojtmic/axon
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = python-simpleeval
+	depends = python-json5
+	provides = axon-applauncher
+	conflicts = axon-applauncher
+	source = git+https://github.com/wojtmic/axon.git
+	sha256sums = SKIP
+
+pkgname = axon-applauncher-git
