@@ -1,7 +1,7 @@
 pkgbase = python-colbert-ai
 	pkgdesc = Efficient and Effective Passage Search via Contextualized Late Interaction over BERT
 	pkgver = 0.2.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stanford-futuredata/ColBERT
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-colbert-ai
 	depends = python-datasets
 	depends = python-dotenv
 	depends = python-flask
-	depends = python-git-python
+	depends = python-gitpython
 	depends = python-ninja
 	depends = python-scipy
 	depends = python-tqdm
