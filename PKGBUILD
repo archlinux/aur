@@ -44,11 +44,30 @@ DynamicUser=yes
 Environment=HOME=/var/lib/private/matrix-authentication-service
 LoadCredential=config.yaml:/etc/matrix-authentication-service/config.yaml
 WorkingDirectory=/usr/share/matrix-authentication-service
-ExecStart=bash -c "ln -sfr ${CREDENTIALS_DIRECTORY}/* /var/tmp/ && /usr/bin/mas-cli server --migrate --no-worker -c /var/tmp/config.yaml & && /usr/bin/mas-cli worker -c /var/tmp/config.yaml"
+ExecStart=bash -c "ln -sfr ${CREDENTIALS_DIRECTORY}/* /var/tmp/ && /usr/bin/mas-cli server -c /var/tmp/config.yaml"
 Restart=on-failure
 PrivateTmp=disconnected
 NoNewPrivileges=yes
 StateDirectory=matrix-authentication-service
+ProtectSystem=strict
+ProtectHome=tmpfs
+PrivateDevices=true
+PrivateMounts=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectProc=invisible
+ProcSubset=pid
+LockPersonality=true
+RestrictRealtime=true
+ProtectClock=true
+MemoryDenyWriteExecute=no
+
+SystemCallFilter=~@clock @debug @module @mount @reboot @swap @cpu-emulation @obsolete @timer @chown @setuid @privileged @resources
+SystemCallErrorNumber=EPERM
+PrivateTmp=disconnected
+NoNewPrivileges=yes
 
 [Install]
 WantedBy=multi-user.target''' >systemd.service
@@ -64,6 +83,7 @@ WantedBy=multi-user.target''' >systemd.service
     cd "${pkgdir}/usr/share/matrix-authentication-service"
     "${pkgdir}/usr/bin/mas-cli" config generate >${pkgdir}/etc/matrix-authentication-service/config.yaml
     chmod 700 ${pkgdir}/etc/matrix-authentication-service/config.yaml
+    chmod 755 "${pkgdir}/usr/share/matrix-authentication-service" -R
 }
 
 sha256sums=('4a69903668f18bd2eca590b8e70f069ba072450428ac05a07578e8b2014b2445')
