@@ -1,5 +1,4 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
-__pkgname=chatterino
 _pkgname='chatterino2-7tv'
 pkgname="${_pkgname}-bin"
 provides=chatterino
