@@ -1,7 +1,7 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.2
+pkgrel=1
 epoch=
 pkgdesc="Command line utility for container images"
 arch=("x86_64" "aarch64")
@@ -49,15 +49,33 @@ build() {
         -ldflags "${GO_LDFLAGS}" \
         -o ${pkgname} \
         .
+
+    install -dm755 ./dist/man1
+    go run ./docs/main.go ./dist/man1
+
+    install -dm755 ./dist/completions/{bash,zsh,fish}
+	./hangar completion bash >| ./dist/completions/bash/hangar
+	./hangar completion zsh >| ./dist/completions/zsh/_hangar
+	./hangar completion fish >| ./dist/completions/fish/hangar.fish
 }
 
 check() {
     cd "${pkgname}"
     go test ./...
+    rm -r ~/.cache/hangar/
 }
 
 package() {
     cd "${pkgname}"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Binary
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    # Docs
+    install -dm755 ${pkgdir}/usr/share/man/man1
+	install -Dm644 dist/man1/*.1 ${pkgdir}/usr/share/man/man1
+    # Completions
+	install -Dm644 dist/completions/bash/hangar ${pkgdir}/usr/share/bash-completion/completions/hangar
+	install -Dm644 dist/completions/zsh/_hangar ${pkgdir}/usr/share/zsh/site-functions/_hangar
+	install -Dm644 dist/completions/fish/hangar.fish ${pkgdir}/usr/share/fish/vendor_completions.d/hangar.fish
+    # LICENSE
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
