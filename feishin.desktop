@@ -2,7 +2,7 @@
 Type=Application
 Name=Feishin
 Comment=A modern music player
-Exec=/usr/bin/electron35 /usr/share/feishin/resources/app.asar --ozone-platform-hint=auto
+Exec=/usr/bin/feishin --ozone-platform-hint=auto
 Icon=iipython-feishin
 StartupWMClass=feishin
 Terminal=false

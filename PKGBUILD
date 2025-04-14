@@ -2,20 +2,19 @@
 
 pkgname=iipython-feishin-bin
 pkgdesc='Fork of Feishin with additional features.'
-pkgver=25.04.13
-pkgrel=2
+pkgver=25.04.14
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/iipythonx/feishin'
 license=('GPL3')
-depends=('electron35')
 optdepends=('mpv: Alternative audio backend')
 provides=("${pkgname%-bin}")
 conflicts=('feishin')
 _filename=feishin-${pkgver//_/-}-linux
 source=("feishin.desktop")
 source_x86_64=("https://github.com/iipythonx/feishin/releases/download/${pkgver//_/-}/${_filename}-x64.tar.xz")
-sha256sums=('356ae0d70814c6631bb9597e62aa11980a426c71d38493345d0a5fc2d8af145f')
-sha256sums_x86_64=('f4908e85da01997ba1a9696a61c6011b00035803949d603ca156133ec513910c')
+sha256sums=('30c140178d7eaf8f7daf100ce73757b4ee521b47465b611263123d5228b81eaf')
+sha256sums_x86_64=('aa77ce0f987340a13c25d2e770a871ace95fc218dcd2c3c4742c3dff26d8af77')
 
 package() {
     # create target file structure

@@ -1,17 +1,16 @@
 pkgbase = iipython-feishin-bin
 	pkgdesc = Fork of Feishin with additional features.
-	pkgver = 25.04.13
-	pkgrel = 2
+	pkgver = 25.04.14
+	pkgrel = 1
 	url = https://github.com/iipythonx/feishin
 	arch = x86_64
 	license = GPL3
-	depends = electron35
 	optdepends = mpv: Alternative audio backend
 	provides = iipython-feishin
 	conflicts = feishin
 	source = feishin.desktop
-	sha256sums = 30c140178d7eaf8f7daf100ce73757b4ee521b47465b611263123d5228b81eaf
-	source_x86_64 = https://github.com/iipythonx/feishin/releases/download/25.04.13/feishin-25.04.13-linux-x64.tar.xz
+	sha256sums = 356ae0d70814c6631bb9597e62aa11980a426c71d38493345d0a5fc2d8af145f
+	source_x86_64 = https://github.com/iipythonx/feishin/releases/download/25.04.14/feishin-25.04.14-linux-x64.tar.xz
 	sha256sums_x86_64 = f4908e85da01997ba1a9696a61c6011b00035803949d603ca156133ec513910c
 
 pkgname = iipython-feishin-bin
