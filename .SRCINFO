@@ -1,6 +1,6 @@
 pkgbase = roon-kit
 	pkgdesc = Roon API Kit
-	pkgver = r20250414.gca7afdc
+	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://github.com/Minterl/roon-kit
 	arch = any
