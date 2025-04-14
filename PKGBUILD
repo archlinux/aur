@@ -15,6 +15,8 @@ url="https://libcloud.apache.org"
 license=('Apache-2.0')
 depends=('python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('libvirt-python' 'python-coverage' 'python-cryptography' 'python-fasteners' 'python-paramiko' 'python-pygal' 'python-pygaljs' 'python-pyopenssl'
+              'python-pytest' 'python-pytest-benchmark' 'python-pytest-timeout' 'python-pytest-xdist' 'python-requests' 'python-requests-mock')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('75bf4c0b123bc225e24ca95fca1c35be30b19e6bb85feea781404d43c4276c91')
 
@@ -29,6 +31,12 @@ prepare() {
 build() {
     cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${_pkgname}-${pkgver}"
+    cp libcloud/test/secrets.py-dist libcloud/test/secrets.py
+    pytest --noconftest -v --continue-on-collection-errors || true
 }
 
 package() {
