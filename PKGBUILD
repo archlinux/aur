@@ -2,7 +2,7 @@
 
 pkgname=asgi-webdav
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
@@ -13,9 +13,9 @@ provides=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 replaces=("python-${pkgname}")
 depends=("python-aiofiles" "python-arrow" "python-asgi-middleware-static-file" "python-chardet" "python-click" "python-pydantic" "python-xmltodict")
-optdepends=("python-bonsai: LDAP support"
-            "python-brotli: response compress support")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=("python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-requests")
+optdepends=("python-bonsai: LDAP support")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.user.service"
@@ -34,14 +34,19 @@ build() {
     python -m build --wheel --no-isolation
 }
 
+check() {
+    cd "${pkgname}-${pkgver}"
+    pytest -v
+}
+
 package() {
     install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm644 config.json                "${pkgdir}/etc/${pkgname}/config.json"
+    install -Dm644 config.json               "${pkgdir}/etc/${pkgname}/config.json"
 
     cd "${pkgname}-${pkgver}"
-    install -Dm644 LICENSE                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir=${pkgdir}  dist/*.whl
 }
