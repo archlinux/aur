@@ -1,6 +1,6 @@
 pkgname=autocommit-bin
 pkgver=0.1.23
-pkgrel=4
+pkgrel=5
 pkgdesc="A tiny Bash script that watches your Git repo, detects changes, and commits them automatically."
 arch=('any')
 url="https://github.com/CraftyRobot/autocommit"
