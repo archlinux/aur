@@ -2,30 +2,32 @@
 
 _pkgbase=synadm
 pkgname=${_pkgbase}-git
-pkgver=0.35.r1.ga62f932
+pkgver=0.48.r5.g02a3870
 pkgrel=1
 pkgdesc="CLI frontend to Matrix-Synapse admin APIs"
-url="https://github.com/JOJ0/synadm"
+url="https://codeberg.org/synadm/synadm"
 depends=('python' 'python-click' 'python-requests' 'python-yaml' 'python-tabulate' 'python-click-option-group' 'python-dnspython')
-makedepends=('git' 'python3' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+optdepends=('python-beautifulsoup4: docs scraping')
 provides=("$_pkgbase=$pkgver")
 conflicts=("$_pkgbase")
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('any')
-source=("synadm::git+https://github.com/JOJ0/synadm.git")
+source=("git+https://codeberg.org/synadm/synadm.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/synadm"
+  cd synadm
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
 build() {
-  cd "$srcdir/synadm"
-  python setup.py build
+  cd synadm
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/synadm"
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd synadm
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
