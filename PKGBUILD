@@ -3,12 +3,12 @@ pkgname=chain-desktop-wallet-bin
 _appname="Crypto.com-DeFi-Desktop-Wallet"
 pkgver=1.5.1
 _electronversion=19
-pkgrel=1
-pkgdesc="Crypto.com DeFi Desktop Wallet"
+pkgrel=2
+pkgdesc="Crypto.com DeFi Desktop Wallet.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
 _ghurl="https://github.com/crypto-com/chain-desktop-wallet"
-license=("Apache-2.0")
+license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -23,17 +23,18 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('75724c53a69b837d59c844ca9791e1e9fc67d4677515b487189875cf447b5cf3'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun --no-sandbox|${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/app.asar.unpacked/dist"
