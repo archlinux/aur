@@ -7,7 +7,6 @@ pkgbase = aware
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = aware-0.1.0.tar.gz::https://github.com/spice-itself/aware/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = PUT_SHA256SUM_HERE
+	source = git+https://github.com/spice-itself/aware.git
 
 pkgname = aware
