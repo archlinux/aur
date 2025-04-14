@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTriangle
-_pkgver=1.6-0.14
+_pkgver=1.6-0.15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('825c3b440ab5d07c1e2b2dc91051ef24')
-b2sums=('3b1cf4de94ecd3eada7103369d734062ebd50126a3ebd8e3f16c25269f2de15400c55d4d69a26ab328f36206e1d0974272904a706677e158f4de87ea076b5c3c')
+md5sums=('a55bc700b85159d5373a06e1816024d9')
+b2sums=('57b70f2dbe79ec2111e982d34c3d0ff7c07cba151961bcefad18d8dbd4f91723f7a83d5cc5c03d0be93ba41d3735f2185226e57abef99eb4b453b998e5598576')
 
 build() {
   mkdir build
