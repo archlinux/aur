@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/hitome"
-	cargo build -r
+	cargo build -r -F nvml
 }
 
 package() {
