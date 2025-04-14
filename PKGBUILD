@@ -3,7 +3,7 @@ pkgname=o-vault-bin
 _pkgname=O-Vault
 pkgver=1.0.0_beta5
 _electronversion=30
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure Password Manager.O-Vault is fully offline, your passwords are saved locally on your device in an encrypted file called the vault."
 arch=("x86_64")
 url="https://www.o-vault.org/"
@@ -15,28 +15,29 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.amd64.linux.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.${CARCH}.linux.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/O-Vault/O-Vault/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('586a3690f85dd9fb426cdb448c84d92ff4fa9d8eeeb2eca25d95f9b0a2263997'
+sha256sums=('f2c57b58bee7d4a29a396156e56f7ebee715d3f30bbeba341e8915a1eda2d6ad'
             '2886a4d441478a70dd9b54131026729bba024e28cc82e1c19a0860a57cc89794'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|\/opt\/${_pkgname}\/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\///g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 32x32 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(32x32 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
