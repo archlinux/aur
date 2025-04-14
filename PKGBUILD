@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="paperless-ngx: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
@@ -67,13 +67,20 @@ options=("!strip")
 install="paperless.install"
 
 prepare(){
- # create venv
- mkdir -p "$srcdir/venv"
- uv venv "$srcdir/venv"
+ uv venv -q "$srcdir/venv"
  source "$srcdir/venv/bin/activate"
  uv pip install -r "$srcdir/$_pkgname/requirements.txt"
- site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
  deactivate
+
+ # roughly sorted by assumed compatibility
+ for f in redis{,-git} valkey keydb redict; do
+     fork=$(pacman -Qq $f) && break
+ done
+
+ if [[ -n "$fork" && redis != $fork ]]; then
+    echo "redis is not available. patching services to use $fork instead ..."
+    sed -i "s/redis.service/${fork%-git}.service/g" "$srcdir"/*.service
+ fi
 }
 
 package(){
