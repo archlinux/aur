@@ -1,18 +1,16 @@
 pkgbase = python-pythonnet
 	pkgdesc = pythonnet provides integration with the .NET Common Language Runtime (CLR)
-	pkgver = 2.3.0.r110.g397b0b4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://pythonnet.github.io/
 	arch = any
 	license = MIT
 	makedepends = nuget
-	makedepends = git
 	makedepends = python-wheel
-	depends = python
+	depends = python-clr_loader
 	depends = mono
 	provides = python-pythonnet
-	source = git+https://github.com/pythonnet/pythonnet.git
-	md5sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/p/pythonnet/pythonnet-3.0.5.tar.gz
+	sha256sums = 48e43ca463941b3608b32b4e236db92d8d40db4c58a75ace902985f76dac21cf
 
 pkgname = python-pythonnet
-
