@@ -8,8 +8,6 @@ url="https://github.com/meowrch/mewline"
 license=('MIT')
 depends=(
   'python'
-  'python-virtualenv'
-  'git'
   'gnome-bluetooth-3.0'
   'dart-sass'
   'gray-git'
@@ -19,8 +17,8 @@ depends=(
   'tesseract-data-rus'
   'cliphist'
 )
-makedepends=('python-uv')
-source=("git+https://github.com/meowrch/mewline.git")
+makedepends=('python-uv' 'git' 'python-virtualenv')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,7 +32,7 @@ package() {
   # Install virtual environment
   install -d -m755 "$pkgdir/opt/$pkgname"
   python -m venv "$pkgdir/opt/$pkgname/.venv"
-  uv sync
+  uv sync --no-dev --frozen --compile-bytecode
 
   # Install application files
   cp -r . "$pkgdir/opt/$pkgname/"
