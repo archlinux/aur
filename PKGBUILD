@@ -5,7 +5,7 @@
 pkgname="paperless-ngx-venv"
 _pkgname="paperless-ngx"
 pkgver=2.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="paperless-ngx: scan, index and archive all your physical documents"
 url="https://docs.paperless-ngx.com/"
 license=("GPL-3.0-or-later")
@@ -79,7 +79,7 @@ prepare(){
 
  if [[ -n "$fork" && redis != $fork ]]; then
     echo "redis is not available. patching services to use $fork instead ..."
-    sed -i "s/redis.service/${fork%-git}.service/g" "$srcdir"/*.service
+    sed -i "s/redis.service/${fork%-git}.service/g" "$srcdir"/*.service "$srcdir/paperless.target"
  fi
 }
 
