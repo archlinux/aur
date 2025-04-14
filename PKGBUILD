@@ -23,7 +23,6 @@ source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Seventv/chatte
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"
 	install -d "${pkgdir}/opt/${_pkgname}"
-
-    install -dm755 "$pkgdir/usr/bin"
+    	install -dm755 "$pkgdir/usr/bin"
 }
 sha256sums_x86_64=('8546358cae1c725a139874fccafeba405efd0d821e774b9be72127aa58f34234')
