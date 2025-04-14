@@ -1,4 +1,4 @@
-# Maintainer: redponike <proton (dot) me>
+# Maintainer: redponike
 # Contributor:: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: GI Jack <GI_Jack@hackermail.com>\
@@ -6,7 +6,7 @@
 pkgname=python-rich-click
 _pkgname=${pkgname#python-}
 pkgver=1.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module to format click help output nicely with Rich."
 arch=('any')
 url="https://github.com/ewels/rich-click"
@@ -35,8 +35,21 @@ build() {
 
 check() {
     cd "${_pkgname}-${pkgver}"
-    # test_error_to_stderr is not passing - disabling it for now
-    PYTHONPATH=src pytest --deselect tests/test_rich_click_cli.py::test_error_to_stderr
+    
+    # Create the virtual environment and install the wheel
+    python -m venv --system-site-packages test-env
+    source test-env/bin/activate
+    test-env/bin/pip install dist/*.whl
+    
+    # Copy and run the tests
+    _temp_dir=$(mktemp -d)
+    cp -r "$srcdir/${_pkgname}-${pkgver}/tests" "$_temp_dir/"
+    PYTHONPATH="$_temp_dir/tests" python -m pytest -vv --import-mode=importlib --ignore=devel/external .
+    
+    # Cleanup
+    cd ../..
+    rm -rf "$_temp_dir"
+    deactivate
 }
 
 package() {
