@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4' 'aarch64' 'riscv64')
 url='https://github.com/stronnag/mwptools'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'vala' 'meson' 'go' 'blueprint-compiler')
-depends=('gtk4' 'bluez' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte4' 'mosquitto' 'libshumate' 'libadwaita'  'libepoxy' 'libsoup3' 'libsecret')
+depends=('gtk4' 'bluez' 'libgudev' 'gstreamer' 'cairo' 'pango' 'libxml2' 'vte4' 'mosquitto' 'libshumate' 'libadwaita'  'libepoxy' 'libsoup3' 'libsecret' 'sdl2-compat' 'readline')
 optdepends=('blackbox-tools-git: Replay Blackbox files (AUR)'
  'gnuplot: Mission Elevation plots'
  'ruby: Various analysis tools'
