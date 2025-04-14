@@ -5,7 +5,7 @@ pkgver=2.0.4
 pkgrel=0
 pkgdesc='lunatask.app (unofficial and *not* supported by Lunatask developers)'
 arch=('x86_64')
-depends=('gconf' 'libindicator-gtk3' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' )
+depends=('libindicator-gtk3' 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst' )
 url='https://lunatask.app'
 license=('proprietary')
 
