@@ -1,7 +1,7 @@
 pkgbase = icu-shim
 	pkgdesc = Stupid redirector for old icu
 	pkgver = 76
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	depends = icu
 	provides = icu75

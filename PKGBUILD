@@ -2,7 +2,7 @@
 
 pkgname=icu-shim
 pkgver=76
-pkgrel=2
+pkgrel=3
 pkgdesc="Stupid redirector for old icu"
 arch=('x86_64')
 
@@ -11,12 +11,12 @@ provides=( icu{75..51} )
 conflicts=( icu{75..51} )
 source=( {data,i18n,io,test,tu,uc}.sh )
 sha512sums=( SKIP{,,,,,} )
-build() {	
+build() {
 	mkdir -p "{pkgdir}"/usr/lib
 	for i in data i18n io test tu uc
 	do
 		./${i}.sh >shim.c
-		gcc -O2 -shared -fPIC -o ${i}.so shim.c -licu${i}
+		gcc $CFLAGS -shared -fPIC -o ${i}.so shim.c -licu${i}
 	done
 }
 package () {
