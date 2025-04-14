@@ -1,12 +1,13 @@
 pkgbase = okpanel-git
 	pkgdesc = A custom AGS panel for hyprland
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/JohnOberhauser/OkPanel
 	arch = any
 	license = GPL3
 	makedepends = rsync
-	depends = aylurs-gtk-shell-git
+	depends = aylurs-gtk-shell
+	depends = hyprland
 	depends = gvfs
 	depends = sox
 	depends = wf-recorder
