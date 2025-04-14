@@ -3,16 +3,21 @@
 pkgbase=qhotkey
 pkgname=('qhotkey-qt6' 'qhotkey-qt5')
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for creating global shortcut/hotkey for desktop Qt6 applications'
 arch=('x86_64')
 url='https://github.com/Skycoder42/QHotkey/'
 license=('BSD-3-Clause')
-makedepends=('cmake' 'libx11' 'qt5-base' 'qt5-x11extras' 'qt6-base')
+makedepends=(
+    'cmake'
+    'libx11'
+    'qt5-base'
+    'qt5-x11extras'
+    'qt6-base')
 source=("https://github.com/Skycoder42/QHotkey/archive/${pkgver}/qhotkey-${pkgver}.tar.gz"
-        '010-qhotkey-fix-segfault-under-wayland.patch'::'https://github.com/Skycoder42/QHotkey/pull/96.patch')
+        '010-qhotkey-fix-segfault-under-wayland.patch'::'https://github.com/Skycoder42/QHotkey/commit/bb630252684d3556b79ac7a521616692f348fcf7.patch')
 sha256sums=('e8ca5ba77ad04662c18dce8de4b37b373bcb693a7e062fca3d832bf63473b143'
-            'acac579950e7a160f396387f9fdcb8b7964a1e1ae7a38f13c636e2121536b15c')
+            '40108fa290eb2d9b0b5f73ac6397781202cdcbd1fde64c6fb66a877abce5bbbe')
 
 prepare() {
     patch -d "QHotkey-${pkgver}" -Np1 -i "${srcdir}/010-qhotkey-fix-segfault-under-wayland.patch"
@@ -23,6 +28,7 @@ build() {
         '-GUnix Makefiles' \
         '-DCMAKE_BUILD_TYPE:STRING=None'
         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
+        '-DCMAKE_POLICY_VERSION_MINIMUM:STRING=3.5.0'
         '-DBUILD_SHARED_LIBS:BOOL=ON'
         '-Wno-dev')
     
@@ -41,7 +47,11 @@ build() {
 }
 
 package_qhotkey-qt6() {
-    depends=('libx11' 'qt6-base')
+    depends=(
+        'gcc-libs'
+        'glibc'
+        'libx11'
+        'qt6-base')
     
     DESTDIR="$pkgdir" cmake --install build-qt6
     install -D -m644 "QHotkey-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -65,7 +75,12 @@ package_qhotkey-qt6() {
 
 package_qhotkey-qt5() {
     pkgdesc="$(sed '/Qt6/s/6/5/' <<< "$pkgdesc")"
-    depends=('libx11' 'qt5-base' 'qt5-x11extras')
+    depends=(
+        'gcc-libs'
+        'glibc'
+        'libx11'
+        'qt5-base'
+        'qt5-x11extras')
     
     DESTDIR="$pkgdir" cmake --install build-qt5
     install -D -m644 "QHotkey-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
