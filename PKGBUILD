@@ -2,8 +2,8 @@
 
 _gemname='dry-inflector'
 pkgname="ruby-${_gemname}"
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='String inflections for dry-rb'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -23,8 +23,8 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('cb01f251ea7ce9ea6339f528e2eb146e81fb74ffd36ff93b6375718677e33e4c29711fa3699cdab881916b0b8caea15740aae1b3dc418da04cf74ba852e8a568')
-b2sums=('2b918590372d9ae1591e08420a5e3c926934188e96541c238a6ee6275f293a02d2148b69544e77f6935012f600f709db22cb78688dcbed49b68dd8fe37285cc6')
+sha512sums=('3345a66caf6b6dc62e6ce6ebc1704b4dc8377cbf203a54b34c4a47e7cdc40551fdcb68cbfb616dd9ed0ce635e52826f73fea83dc86b53e55618c772eafcebe0d')
+b2sums=('aa34171c2e059097da1f3e66b43a177e8a66abde488a8a1024991665ebb4fef1687382fdfd367ba71ba9fe1a44183aa58f82806a80d6fb8650008f84bac6c248')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
