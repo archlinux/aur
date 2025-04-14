@@ -1,11 +1,12 @@
 pkgbase = python-crc16
-	pkgdesc = Python library for calculating CRC16
+	pkgdesc = Library for calculating CRC16
 	pkgver = 0.1.2
-	pkgrel = 1
-	url = https://code.google.com/archive/p/pycrc16/
+	pkgrel = 2
+	url = https://pypi.org/project/pycrc16/
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-3.0-or-later
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
