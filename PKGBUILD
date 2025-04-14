@@ -13,7 +13,8 @@ sha256sums=('PUT_SHA256SUM_HERE')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo clean
+  cargo build --release
 }
 
 package() {
