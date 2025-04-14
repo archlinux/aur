@@ -1,7 +1,7 @@
 pkgbase = vgpu_unlock-rs
 	pkgdesc = Unlock vGPU functionality for consumer grade GPUs
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbilker/vgpu_unlock-rs
 	arch = x86_64
 	license = MIT
@@ -9,11 +9,13 @@ pkgbase = vgpu_unlock-rs
 	depends = gcc-libs
 	backup = etc/vgpu_unlock/config.toml
 	source = vgpu_unlock-rs-2.5.0.tar.gz::https://github.com/mbilker/vgpu_unlock-rs/archive/refs/tags/v2.5.0.tar.gz
-	source = ba66a6c.patch
+	source = 0001-lib-do-not-take-mdev-UUID-as-17.x-may-get-the-vGPU-i.patch
+	source = 0002-lib-added-params_size-of-5232-bytes-for-v18-driver-c.patch
 	source = vgpu_unlock.conf
 	source = config.toml
 	sha256sums = dc1b37fa23ad5c69e5338e9f15e51275a81fbf12251edfdf91656fcd7572f1bb
-	sha256sums = 6da02cb73cce5dfa28a6bcecb776dc705e2b9453e5d12f978d9ea5870bf06552
+	sha256sums = 25f7f51fec20a453ca6ba765be58f6a8b529c80610ff53a7d4d2b23373db854a
+	sha256sums = 26911c7585e82e8338b4d469a3da50f0a63864b7b4a8ce0c781ef26c03a2c884
 	sha256sums = SKIP
 	sha256sums = SKIP
 

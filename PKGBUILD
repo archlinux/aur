@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=vgpu_unlock-rs
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unlock vGPU functionality for consumer grade GPUs"
 arch=(x86_64)
 url="https://github.com/mbilker/vgpu_unlock-rs"
@@ -11,18 +11,22 @@ makedepends=('rust')
 backup=('etc/vgpu_unlock/config.toml')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mbilker/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-	'ba66a6c.patch'
+	'0001-lib-do-not-take-mdev-UUID-as-17.x-may-get-the-vGPU-i.patch'
+	'0002-lib-added-params_size-of-5232-bytes-for-v18-driver-c.patch'
 	'vgpu_unlock.conf'
 	'config.toml'
 )
 sha256sums=(
 	'dc1b37fa23ad5c69e5338e9f15e51275a81fbf12251edfdf91656fcd7572f1bb'
-	'6da02cb73cce5dfa28a6bcecb776dc705e2b9453e5d12f978d9ea5870bf06552'
+	'25f7f51fec20a453ca6ba765be58f6a8b529c80610ff53a7d4d2b23373db854a'
+	'26911c7585e82e8338b4d469a3da50f0a63864b7b4a8ce0c781ef26c03a2c884'
 	'SKIP' 'SKIP'
 )
 
 prepare() {
-	patch -p1 -i "${srcdir}/ba66a6c.patch" -d "${srcdir}/${pkgname}-${pkgver}"
+	for i in "${srcdir}/"*.patch; do
+		patch -p1 -i "${i}" -d "${srcdir}/${pkgname}-${pkgver}";
+	done
 }
 
 build() {

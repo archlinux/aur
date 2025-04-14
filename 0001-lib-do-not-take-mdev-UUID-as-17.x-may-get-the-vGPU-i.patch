@@ -1,3 +1,14 @@
+From ba66a6c6eeb16eb8e2d2ec368d6605b974070d4b Mon Sep 17 00:00:00 2001
+From: Matt Bilker <me@mbilker.us>
+Date: Wed, 25 Sep 2024 04:35:50 +0000
+Subject: [PATCH] lib: do not take mdev UUID as 17.x may get the vGPU info
+ multiple times
+
+- See #37
+---
+ src/lib.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/src/lib.rs b/src/lib.rs
 index eddb72d..6e1ffad 100644
 --- a/src/lib.rs
@@ -11,3 +22,6 @@ index eddb72d..6e1ffad 100644
  
      if let Some(config_override) = config_overrides.profile.get(vgpu_type.as_str()) {
          info!("Applying profile {} overrides", vgpu_type);
+-- 
+2.49.0
+

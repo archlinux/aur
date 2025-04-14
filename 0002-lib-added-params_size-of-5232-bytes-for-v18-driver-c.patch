@@ -1,0 +1,31 @@
+From ff3e6e4b81cb3ede42a320f383667a3614aa7f04 Mon Sep 17 00:00:00 2001
+From: bennaber <39690241+bennaber@users.noreply.github.com>
+Date: Tue, 1 Apr 2025 11:53:54 +0200
+Subject: [PATCH] lib: added params_size of 5232 bytes for v18 driver
+ compatibility (#43)
+
+Co-authored-by: plaguenarr <plaguenarr@MacBook-Pro-von-plaguenarr.local>
+---
+ src/lib.rs | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib.rs b/src/lib.rs
+index 6e1ffad..f1254c2 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -444,9 +444,10 @@ pub unsafe extern "C" fn ioctl(fd: RawFd, request: c_ulong, argp: *mut c_void) -
+                 *LAST_MDEV_UUID.lock() = Some(params.vgpu_name);
+             }
+             NVA081_CTRL_CMD_VGPU_CONFIG_GET_VGPU_TYPE_INFO => {
+-                // 17.0 driver sends larger struct with size 5096 bytes. Only extra members added at the end,
++                // 18.0 driver sends larger struct with size 5232 bytes, 17.0 driver sends larger struct with size 5096 bytes. Only extra members added at the end,
+                 // nothing in between or changed, so accessing the larger struct is "safe"
+-                if io_data.params_size == 5096
++                if io_data.params_size == 5232
++                    || io_data.params_size == 5096
+                     || check_size!(
+                         NVA081_CTRL_CMD_VGPU_CONFIG_GET_VGPU_TYPE_INFO,
+                         NvA081CtrlVgpuConfigGetVgpuTypeInfoParams
+-- 
+2.49.0
+
