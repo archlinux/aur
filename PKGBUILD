@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-enhanced-bin
 _pkgname='Stremio Enhanced'
-pkgver=0.9
+pkgver=0.9.1
 _electronversion=28
 pkgrel=1
 pkgdesc="An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.ico::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced-community/v${pkgver}/images/icon.ico"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('497d85d1de22b7b6898c546b5ef8cb6ff324a2bc6c15bf2022d0ba0f8c86c51b'
+sha256sums=('f9c7a853c7e550f1f98185af68b33caf7955c7b606a8955773b0577d9558da8a'
             'ed5f1a7791770773ed4aa8ba31fa28b3bb2cc1a263e0ed1997c290a6248a896a'
             'f549b47258defcef9c2864b740151c60f4510af184d346c38a6f8d081222b7a5'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
