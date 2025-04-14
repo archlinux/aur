@@ -3,6 +3,7 @@ pkgbase = roon-now-playing-git
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.com/teraflops/roon_now_playing
+	install = roon-now-playing.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -10,6 +11,8 @@ pkgbase = roon-now-playing-git
 	depends = roon-kit
 	depends = python-requests
 	source = git+https://gitlab.com/teraflops/roon_now_playing.git
+	source = roon-now-playing.install
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = roon-now-playing-git

@@ -8,14 +8,14 @@ url="https://gitlab.com/teraflops/roon_now_playing"
 license=('MIT')
 depends=('nodejs' 'roon-kit' 'python-requests')
 makedepends=('git')
-source=("git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git"
+        "roon-now-playing.install")
+md5sums=('SKIP' 'SKIP')
+install=roon-now-playing.install
 
 package() {
   cd "$srcdir/roon_now_playing"
-
   cp -r usr "$pkgdir"
-
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
