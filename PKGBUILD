@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=fermyon-spin
 _realname=spin
-pkgver=3.1.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
@@ -29,4 +29,4 @@ package() {
   install -Dm0755 $_realname-$pkgver/target/release/$_realname "$pkgdir"/usr/bin/$pkgname
 }
 
-sha256sums=('744357e68988db2a269e912460e99903a710cfaa318795824c77d42757c15704')
+sha256sums=('e890fd1dfce63d162b3660414ca54d877e723579cdb6e62ef501202f68029a02')
