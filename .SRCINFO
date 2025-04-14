@@ -1,6 +1,6 @@
 pkgbase = r-gss
 	pkgdesc = General Smoothing Splines
-	pkgver = 2.2.8
+	pkgver = 2.2.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gss
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = r-gss
 	depends = blas
 	depends = lapack
 	depends = r
-	source = https://cran.r-project.org/src/contrib/gss_2.2-8.tar.gz
-	md5sums = 298c0d24e7d33afbec61f0db9bbb7eda
-	b2sums = cea4ba65e83698bd88348893ff12c5a8caeee72dfa8c76cbc9d1e457bcee02693f4a09185318a489f5d5912d5b39937be3e8eaf25d627bc4cedabc3a2ee383db
+	source = https://cran.r-project.org/src/contrib/gss_2.2-9.tar.gz
+	md5sums = ddf4f02f04d51213371f2bd48f661971
+	b2sums = e05ffb9cd4b4c53cb9682517386e8d082a3769df979b536c5f4219efc1b122238062c9769cb9047eca9eee65570ea7ef4e2dbf80c3fc746d63f7676eb52353f7
 
 pkgname = r-gss
