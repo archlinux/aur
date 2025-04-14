@@ -2,8 +2,8 @@
 _appname=proxy-pin
 pkgname="${_appname//-/}-bin"
 _pkgname=ProxyPin
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="Open source free packet capture tool.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/wanghongenpin/network_proxy_flutter"
@@ -19,18 +19,18 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('750c4a3d66ad3cdf4831f9c4459c2735f58a66c3a03f2d012a677f14019e9eb3'
+sha256sums=('831bbf2404b6bce8104948b35cb2584d3966a8d3b1dcb7775edc7a89bc860936'
             '4b46d4c46f133f057b7859149b9e45689638ad849c4f0a8efabf2aacd6bf9142')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/${_pkgname}/${pkgname%-bin}/g
         s/\/opt\/${pkgname%-bin}\/data\/flutter_assets\/assets\/icon.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
