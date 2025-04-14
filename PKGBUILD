@@ -5,7 +5,7 @@
 
 pkgname=uim
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multilingual input method library"
 url="https://github.com/uim/uim"
 license=(BSD-3-Clause)
