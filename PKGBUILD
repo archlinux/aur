@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1247d375715d59bdc320cbbb0c26533a4f1a0ee0f90f35d96f01bebf264f3946'
+sha256sums=('185c56456a60f2687d11bdcb28633de1b595ef3697313b67fab4eb2e29a9a01d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
