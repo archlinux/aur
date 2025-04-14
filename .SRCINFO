@@ -1,0 +1,21 @@
+pkgbase = python-langserve
+	pkgdesc = A library to deploy LangChain runnables and chains as a REST API.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langserve
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python-httpx
+	depends = python-fastapi
+	depends = python-sse-starlette
+	depends = python-langchain-core
+	depends = python-orjson
+	depends = python-pydantic
+	source = langserve-0.3.1.tar.gz::https://github.com/langchain-ai/langserve/archive/refs/tags/v0.3.1.tar.gz
+	b2sums = d15f2c5386012046b17b4147a1502a1e4be239d53fb3e35d5cf08329d87404902bc314b12284cf42dc5f87ece778e012571ceac4289f0e95fbd4e3402c8d43ff
+
+pkgname = python-langserve

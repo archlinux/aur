@@ -1,0 +1,4 @@
+[python-langserve]
+source = "git"
+git = "https://github.com/langchain-ai/langserve.git"
+prefix = "v"
