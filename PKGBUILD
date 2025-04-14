@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="updatecli"
-pkgver=0.97.0
+pkgver=0.98.0
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e2b10b62c8fb69224977b2a5d3586228a34ef0830708445bd02d18fba1b727e9b45cdc0758474357b87cbcea686eb20234cf6e42e936cf3b01aad1ee5c09c211')
+b2sums=('842a1ba166d96e6a6f057c9859e8a02d5a4bfa5e32ffe717ecb54a8784811f96643e8cc12c12971ae012d71e2402bad3e247f6143a1893773576f15c261c0614')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
