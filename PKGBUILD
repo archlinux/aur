@@ -12,7 +12,7 @@
 
 pkgname='ffmpeg3.4'
 pkgver=3.4.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to record, convert and stream audio and video (legacy v3.4 branch, with libavcodec v57)'
 arch=(
   'aarch64'
@@ -105,6 +105,9 @@ prepare() {
 
 build() {
     cd "${srcdir}/ffmpeg-${pkgver}"
+
+    export CFLAGS+=" -Wno-incompatible-pointer-types"
+    export CXXFLAGS+=" -Wno-incompatible-pointer-types"
 
     [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && local arch_specific_config='--host-cflags="-fPIC"'
     [[ $CARCH == "x86_64" ]] && local arch_specific_config='--enable-libmfx'
