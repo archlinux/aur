@@ -1,22 +1,17 @@
 # Maintainer: Allen Zhong <pdev@zhoal.pw>
 pkgname=yaml2json
-pkgver=1.3.4
-pkgrel=2
+pkgver=1.3.5
+pkgrel=1
 pkgdesc="Transform yaml string to json string without the type infomation."
 url="https://github.com/bronze1man/yaml2json"
 license=('MIT')
 arch=('x86_64')
 depends=('glibc')
 makedepends=('go' 'git')
-sha256sums=('b09254eb06fee748db9251f7169e6c6ba887fb543a04b68d7a2e4d10472a2f37')
+sha256sums=('f18a8322d1d1b0e9b0ea1966c8f1108ddc37c792f8cbe61d7605d9906c51aab3')
 source=(
-    $pkgname::git+https://github.com/bronze1man/yaml2json.git#tag=v1.3.4
+    $pkgname::git+https://github.com/bronze1man/yaml2json.git#tag=v$pkgver
 )
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed -r "s/([^-]*-g)/r\1/;s/-/./g;s/^v//"
-}
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
