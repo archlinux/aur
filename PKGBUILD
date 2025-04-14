@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.3.r3399.48d0c65
-pkgrel=2
+pkgver=5.3.r3400.ec758ff
+pkgrel=1
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -11,7 +11,7 @@ depends=(qt5-declarative qt5-base libxcrypt-compat gcc-libs glibc sqlite qt5-qui
 optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=48d0c659246bc38a2201992bb1e070eb840bec2b
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=ec758ffedcf4986acbde5d15ab304d2952ba57c4
 		cellframe-node.logrotate
 		cellframe-node.service
 		cellframe-diagtool.service
