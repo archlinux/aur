@@ -15,7 +15,7 @@
 # https://salsa.debian.org/gnome-team/mutter/-/tree/ubuntu/latest/debian/patches/ubuntu
 
 pkgname=mutter-x11-scaling
-pkgver=48.1
+pkgver=48.2
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -96,11 +96,11 @@ makedepends=(
 source=(
   # Mutter tags use SSH signatures which makepkg doesn't understand
   "git+$url.git#tag=${pkgver/[a-z]/.&}"
-  "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=b54bc5da25127ef416858a3ad92e57159ff565b3"
+  "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=466fc22016cf0981424e7121557611942191992f"
   "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/421143c8da7643be33b34345b9cdea53f7f4e2df/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
-b2sums=('e3a2b13d0345b9e4d5b55ba5b62a1f9c52346ebdfdc385de78d3bafeeda653d6c704837e37f374b93d8ffcae4b50bfb78be4e98511862acaa3535bc33989fca7'
-        'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
+b2sums=('c391e383ebc19db1a2e1361eb23a52757eb1e2d18ca5349cf2ea658619cf220b4f6154c71e993c4a8f8f7bfe56e0c323da6812ab7ae7b564867f8bb97de37218'
+        'c25796ff54fee353c5fc7a0815c25255b399490148d2bad1f37932d2da66d80561d6e262a5f256c89d142419a504c23eff69f7ef4e65e349f2dea3e0ac0bac1a'
         '0674df6a5bd93ecea92499ecb5711d0cdede86a2652d42260acd4bfa075604c8114227f8773b50789cc13fbc689a05c3edd005718e7b9a05238f7810f57101ab')
 
 prepare() {
