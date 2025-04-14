@@ -1,6 +1,6 @@
 pkgbase = roon-kit
 	pkgdesc = A JavaScript SDK for the Roon API
-	pkgver = 0.1.0.r1744648785
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Stevenic/roon-kit
 	arch = any
