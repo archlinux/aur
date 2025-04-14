@@ -1,23 +1,26 @@
-# Maintainer: SClause <arch@sclause.net>
+# Maintainer: SClause <aur at sclause dot net>
+_pkgname=grandorgue
+pkgname="$_pkgname"
+pkgver=3.15.4_1
+pkgrel=1
+pkgdesc="Virtual Pipe Organ Software"
+arch=('i686' 'x86_64')
+url="https://github.com/GrandOrgue/$_pkgname"
+license=('GPL-2.0-or-later')
+depends=(wxwidgets-gtk3 wavpack fftw jack rtmidi rtaudio portaudio zita-convolver yaml-cpp)
+makedepends=(git cmake docbook-xsl imagemagick inkscape)
+conflicts=(grandorgue-git grandorgue-bin)
+source=("git+$url.git#tag=${pkgver//_/-}")
+sha256sums=('SKIP')
+options=(!debug)
 
-pkgname=grandorgue
-pkgver=3.4.1_1
-pkgrel=2
-pkgdesc='Virtual Pipe Organ Software - Binary package'
-arch=('x86_64')
-url='https://github.com/GrandOrgue/grandorgue'
-license=('GPL2')
-depends=(fftw wavpack wxgtk3 jack)
-replaces=(grandorgue-svn)
-conflicts=(grandorgue-git grandorgue-svn)
-source=("$url/releases/download/${pkgver//_/-}/grandorgue-${pkgver//_/-}.linux.$CARCH.tar.gz")
-md5sums=('9908cfc2c18b71a8f965bd7bdb4dd0c9')
-
-package() {
-  godir=$srcdir/grandorgue-${pkgver//_/-}.linux.$CARCH
-  mkdir $pkgdir/usr
-  cp -r $godir/bin $pkgdir/usr/bin
-  cp -r $godir/lib $pkgdir/usr/lib
-  cp -r $godir/share $pkgdir/usr/share
+build() {
+	cd "$_pkgname"
+	cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
+	cmake --build build
 }
 
+package() {
+	cd "$_pkgname"
+	DESTDIR="$pkgdir" cmake --install build
+}
