@@ -10,13 +10,19 @@ arch=('any')
 url="https://github.com/trim21/${_pkgname}"
 license=('MIT')
 depends=(python-requests python-typing_extensions)
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=(python-build python-installer python-setuptools)
+checkdepends=(python-coverage python-pytest python-yarl)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
 sha256sums=('5872322e60b42e368bc9c4724773aea4593113cb19bd2da589f0ffcdabe57963')
 
 build() {
     cd "${_pipname}-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${_pipname}-${pkgver}"
+    pytest -v -k "not (test_real or test_groups)"
 }
 
 package() {
