@@ -1,27 +1,31 @@
-# Maintainer: ShadowKyogre <shadowkyogre dot public at gmail dot com>
+# Maintainer: zephyrdrh <zephyrdrh at gmx dot de>
+# Contributor: ShadowKyogre <shadowkyogre dot public at gmail dot com>
 
 pkgname=slickpicker-git
-_githubuser=ShadowKyogre
-_gitname="slickpicker"
 pkgver=0.2.r0.g104a9ea
-pkgrel=1
+pkgrel=2
 pkgdesc="A small PyQt color picker widget (can be run on its own)"
 arch=('any')
-url="https://github.com/${_githubuser}/${_gitname}"
-license=('GPL')
-makedepends=('git')
+url="https://github.com/ShadowKyogre/slickpicker/"
+license=('GPL-3.0-only')
+depends=('python' 'python-pyqt5')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 conflicts=('slickpicker')
 provides=('slickpicker')
-depends=('python-pyqt5')
-source=("git://github.com/${_githubuser}/${_gitname}.git")
+source=("git+https://github.com/ShadowKyogre/slickpicker/")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+	cd slickpicker
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package(){
-	cd "$srcdir/$_gitname"
-	python setup.py install --root="$pkgdir"
+build() {
+	cd slickpicker
+    	python -m build --wheel --no-isolation
+}
+
+package() {
+	cd slickpicker
+    	python -m installer --destdir="$pkgdir" dist/*.whl
 }
