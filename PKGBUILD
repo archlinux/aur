@@ -1,5 +1,5 @@
 # Maintainer: teraflops <me@priet.us>
-pkgname=roon-now-playing
+pkgname=roon-now-playing-git
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Small utility that shows now playing info from Roon using roon-kit"

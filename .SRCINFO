@@ -1,4 +1,4 @@
-pkgbase = roon-now-playing
+pkgbase = roon-now-playing-git
 	pkgdesc = Small utility that shows now playing info from Roon using roon-kit
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = roon-now-playing
 	source = git+https://gitlab.com/teraflops/roon_now_playing.git
 	md5sums = SKIP
 
-pkgname = roon-now-playing
+pkgname = roon-now-playing-git
