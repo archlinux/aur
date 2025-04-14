@@ -1,23 +1,29 @@
+# Maintainer:Bipin Kumar <kbipinkumar@pm.me>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=cimfomfa
-pkgver=21.361
-pkgrel=1
-pkgdesc='C utility library for zoem programming language'
+pkgver=22.273
+_pkgver=${pkgver//./-}
+pkgrel=5
+pkgdesc='C utility library for zoem programming language' 
 arch=(x86_64)
-url='https://micans.org/cimfomfa/'
-license=('GPL2')
-source=("https://micans.org/$pkgname/src/$pkgname-${pkgver/./-}.tar.gz")
-sha256sums=('621dd7a689b0ef03e1891bcb05cb8d5d53e3b9b0f0cbd32303d1140ec2c70a86')
+url="http://micans.org/mcl/"
+license=('GPL-2.0-only')
+depends=('glibc')
+provides=('libtingea.a' 'libtingea.so')
+source=("${pkgname}-${_pkgver}.tar.gz::http://micans.org/mcl/src/${pkgname}-${_pkgver}.tar.gz")
+b2sums=('9b5d0d293add36485983d79c794c487f8946102b7f1ad0a316f49cd0b254182f8c38df1dc0344987f8ee3ecea827ccc9ba87cd31a6a6fe2935cc072ee88f0288')
+
 
 build() {
-  cd "$pkgname-${pkgver/./-}"
-  autoreconf -i
+  cd ${pkgname}-${_pkgver}
   ./configure --prefix=/usr
-  make
+  make 
 }
 
 package() {
-  make -C "$pkgname-${pkgver/./-}" install DESTDIR="$pkgdir"
+  cd ${pkgname}-${_pkgver}
+  install -d 755 ${pkgdir}/usr
+  make DESTDIR=${pkgdir}/ install
 }

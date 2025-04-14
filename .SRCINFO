@@ -1,11 +1,14 @@
 pkgbase = cimfomfa
 	pkgdesc = C utility library for zoem programming language
-	pkgver = 21.361
-	pkgrel = 1
-	url = https://micans.org/cimfomfa/
+	pkgver = 22.273
+	pkgrel = 5
+	url = http://micans.org/mcl/
 	arch = x86_64
-	license = GPL2
-	source = https://micans.org/cimfomfa/src/cimfomfa-21-361.tar.gz
-	sha256sums = 621dd7a689b0ef03e1891bcb05cb8d5d53e3b9b0f0cbd32303d1140ec2c70a86
+	license = GPL-2.0-only
+	depends = glibc
+	provides = libtingea.a
+	provides = libtingea.so
+	source = cimfomfa-22-273.tar.gz::http://micans.org/mcl/src/cimfomfa-22-273.tar.gz
+	b2sums = 9b5d0d293add36485983d79c794c487f8946102b7f1ad0a316f49cd0b254182f8c38df1dc0344987f8ee3ecea827ccc9ba87cd31a6a6fe2935cc072ee88f0288
 
 pkgname = cimfomfa
