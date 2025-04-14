@@ -16,9 +16,10 @@ pkgbase = trackma
 	optdepends = python-cairo: GTK frontend
 	optdepends = python-pyqt5: Qt frontend
 	optdepends = python-urwid: ncurses frontend
-	optdepends = python-pillow: thumbnail images for GUI frontends
+	optdepends = python-pillow: thumbnail images for GUI frontends (required for Qt)
 	optdepends = python-pyinotify: instant media recognition tracker
 	optdepends = python-pydbus: MPRIS media recognition tracker
+	optdepends = python-anitopy-git: anitopy title parser
 	optdepends = lsof: polling tracker/pyinotify alternative
 	conflicts = trackma-git
 	source = trackma-0.8.6::git+https://github.com/z411/trackma.git#tag=v0.8.6

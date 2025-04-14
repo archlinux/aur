@@ -20,14 +20,15 @@ makedepends=('git'
              'python-wheel'
              'desktop-file-utils')
 			 
-optdepends=('python-gobject:   GTK frontend'
-            'python-cairo:     GTK frontend'
-            'python-pyqt5:     Qt frontend'
-            'python-urwid:     ncurses frontend'
-            'python-pillow:    thumbnail images for GUI frontends'
-            'python-pyinotify: instant media recognition tracker'
-            'python-pydbus:    MPRIS media recognition tracker'
-            'lsof:             polling tracker/pyinotify alternative')
+optdepends=('python-gobject:     GTK frontend'
+            'python-cairo:       GTK frontend'
+            'python-pyqt5:       Qt frontend'
+            'python-urwid:       ncurses frontend'
+            'python-pillow:      thumbnail images for GUI frontends (required for Qt)'
+            'python-pyinotify:   instant media recognition tracker'
+            'python-pydbus:      MPRIS media recognition tracker'
+            'python-anitopy-git: anitopy title parser'
+            'lsof:               polling tracker/pyinotify alternative')
 
 source=("${pkgname}-${pkgver}::git+https://github.com/z411/${pkgname}.git#tag=v${pkgver}"
         "anime-relations::git+https://github.com/erengy/anime-relations.git"
