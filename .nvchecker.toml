@@ -1,0 +1,4 @@
+[lunatask]
+source = "git"
+git = "https://github.com/lunatask/lunatask.git"
+prefix = "v"
