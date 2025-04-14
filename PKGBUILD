@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deeplink-launcher-bin
 _pkgname='DeepLink Launcher'
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A multiplatform app designed for executing and managing deeplinks.(Prebuilt version)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f0d7bd2fe69d25ae054df25b7f36707787e70f324c34c149d3792df1a63a4b30'
+sha256sums=('622f2395bd96f95693a3cc5a2f09c2a4dd42bd1e775deae83631530526da3887'
             'b7cbffe78738d12856a1287503e32c0c22c484721fd87f33bdf091d003b320e5')
 prepare() {
     sed -i -e "
