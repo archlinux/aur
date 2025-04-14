@@ -1,10 +1,14 @@
 pkgbase = python-trubar
 	pkgdesc = Translation and localization of Python programs via modification of source files.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janezd/trubar
-	arch = x86_64
+	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python-libcst
 	depends = python-yaml
