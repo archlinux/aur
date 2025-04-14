@@ -1,3 +1,4 @@
+# Maintainer: Rafael Epplée <aur@rafa.ee>
 # Maintainer: Steffen Ridderbusch <steffen@robots.ox.ac.uk>
 # Contributor: Alastair Cooper <alastair@alastair87.me>
 pkgname='lunatask'
