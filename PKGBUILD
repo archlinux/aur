@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ffmpeg
-pkgver=1.2.2 # renovate: datasource=github-tags depName=savonet/ocaml-ffmpeg
+pkgver=1.2.3 # renovate: datasource=github-tags depName=savonet/ocaml-ffmpeg
 pkgrel=1
 pkgdesc="OCaml bindings to the FFmpeg library"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha512sums=('bbb2b6036304e631a3dc23e7c0c5d14b96e869cf078b48348b52409d5a4dcbb60505f4987ed2c8eecfcc71e1f20844ad0f3dd040a04cf2abb2146454a4dd4685')
+sha512sums=('13589b3b77dbaa2ba4bc28c49a4289cd5ac831312d33ca1c87842c5f3097b208671ee6c2ab288729d3b74de430e0c47dd5b78f485db7d71b364b795744288d27')
