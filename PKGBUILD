@@ -4,8 +4,8 @@ pkgname="${_appname}-tools-bin"
 _pkgname=He3
 pkgver=2.0.20
 _electronversion=22
-pkgrel=4
-pkgdesc="Open, Intelligent, Efficient Developer Toolbox"
+pkgrel=5
+pkgdesc="Open, Intelligent, Efficient Developer Toolbox.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -32,26 +32,30 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('7796f31ac1de01e965c2c4542338b0c16198078815689230d74a10bd30c57ade'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('f439cd9fe1b60bf407dd0e08ab506c60148f06b7c8e1292ce180c1b1bf4d0d6b')
 sha256sums_x86_64=('80788fa9c8606cb6647992e78cceb1c4e529d4a65d764be12cc46fa8977d38c3')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${_appname}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${_appname}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${_appname}|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i -e "
+        s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
