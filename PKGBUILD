@@ -2,8 +2,8 @@
 appname=kt5
 pkgname=$appname-bin
 orgname=Iztech
-pkgver=2.0.17
-pkgrel=2
+pkgver=2.0.18
+pkgrel=1
 pkgdesc="Программа для управления калибраторами температуры серии КТ-5 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
@@ -11,7 +11,7 @@ depends=("qt5-base" "qt5-multimedia" "qt5-svg" "qt5-serialport" "qwt" "sqlite")
 arch=("x86_64")
 options=("strip" "!debug")
 source=("$url/content/files/app/$pkgname-linux-x86_64.tar.gz")
-md5sums=("52464044714250655d2ce2597bf19028")
+md5sums=("660f3786fb28993fe1564206503909e0")
 
 package() {
 	install -Dm755 "$srcdir/kt5" "$pkgdir/usr/bin/$appname"
