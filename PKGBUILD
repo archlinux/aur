@@ -1,12 +1,12 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=sokol-git
-pkgver=r2649.bd7fa93
+pkgver=r3441.da9de49
 pkgrel=1
 pkgdesc='Multiple purpose header libraries for C and C++ (git version)'
 arch=('any')
 url='https://github.com/floooh/sokol/'
-license=('custom: zlib')
+license=('Zlib')
 makedepends=('git')
 provides=('sokol')
 conflicts=('sokol')
