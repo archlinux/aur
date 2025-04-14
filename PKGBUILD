@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aingdesk
 _pkgname=AingDesk
-pkgver=1.2.0
+pkgver=1.2.1
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -23,12 +23,13 @@ makedepends=(
     'nvm'
     'git'
     'curl'
+    'gendesk'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7e972454fe694d41065e0961117163edb0354ea3a2b39528b26dec50d55784d0'
+sha256sums=('e2fa8d659d69256518def47f5cd590d234f129e89095d96d403fde06d9dbf75e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
