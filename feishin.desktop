@@ -2,7 +2,7 @@
 Type=Application
 Name=Feishin
 Comment=A modern music player
-Exec=/usr/bin/feishin
+Exec=/usr/bin/feishin --ozone-platform-hint=auto
 Icon=iipython-feishin
 StartupWMClass=feishin
 Terminal=false
