@@ -1,6 +1,6 @@
 pkgbase = tockler-bin
 	pkgdesc = An application that tracks your time by monitoring your active window title and idle time.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.0.21
+	pkgver = 4.0.22
 	pkgrel = 1
 	url = https://tockler.io/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = tockler-bin
 	depends = nodejs
 	depends = python
 	depends = python-setuptools
-	provides = tockler=4.0.21
+	provides = tockler=4.0.22
 	conflicts = tockler
 	options = !strip
 	options = !emptydirs
-	source = tockler-4.0.21.AppImage::https://github.com/MayGo/tockler/releases/download/v4.0.21/Tockler-4.0.21.AppImage
+	source = tockler-4.0.22.AppImage::https://github.com/MayGo/tockler/releases/download/v4.0.22/Tockler-4.0.22.AppImage
 	source = tockler.sh
-	sha256sums = eb9872436b5def1146df644868a2cb89e57995021ee6782d36de75bf979f37be
+	sha256sums = f50c29de15db0319c8e1a89fe8f957d166d579e7cfecbebb58fe46356f2ba9a2
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = tockler-bin
