@@ -9,7 +9,7 @@
 
 pkgname=intel-npu-compiler
 pkgver=2025.12
-pkgrel=1
+pkgrel=2
 _npu_compiler_tag=npu_ud_2025_12_rc2
 _openvino_commit=8d5f583bc7e56152440192806b3acda619a997fe
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
@@ -65,8 +65,7 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         
         '010-intel-npu-compiler-llvm-disable-atomic-check.patch'
         '020-intel-npu-compiler-disable-werror.patch'
-        '030-intel-npu-compiler-build-options.patch'
-        '040-intel-npu-compiler-fix-install.patch'
+        '030-intel-npu-compiler-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-level-zero-disable-werror.patch')
 sha256sums=('f0368514eed2814b4530f4ac514659af7c3068f2455d3547a3bc8c05e4fdaf8b'
@@ -101,7 +100,6 @@ sha256sums=('f0368514eed2814b4530f4ac514659af7c3068f2455d3547a3bc8c05e4fdaf8b'
             'SKIP'
             '9123c2b05f4cc9d203c5c51df2254fc5b1bb02f55918bbf4059907185b045cec'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            '563e9c19fae5e7200281c506500df7bd4d7e305b0a23101c6a1d9306f20fef8d'
             '0ac423551d42290063d0b11ef7d23fe5debb6bc2c9e5c9ca137f98be910cc2ff'
             '61759ec17031a94222270dec03052010bf3da8bc2d53088d1bfe2ec9ef547dc5'
             'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a')
@@ -160,8 +158,7 @@ prepare() {
     
     patch -d npu_compiler/thirdparty/llvm-project -Np1 -i "${srcdir}/010-intel-npu-compiler-llvm-disable-atomic-check.patch"
     patch -d npu_compiler -Np1 -i "${srcdir}/020-intel-npu-compiler-disable-werror.patch"
-    patch -d npu_compiler -Np1 -i "${srcdir}/030-intel-npu-compiler-build-options.patch"
-    patch -d npu_compiler -Np1 -i "${srcdir}/040-intel-npu-compiler-fix-install.patch"
+    patch -d npu_compiler -Np1 -i "${srcdir}/030-intel-npu-compiler-fix-install.patch"
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-disable-werror.patch"
     patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/020-openvino-level-zero-disable-werror.patch"
@@ -181,10 +178,19 @@ build() {
     export NPU_PLUGIN_HOME="${srcdir}/npu_compiler"
     export OPENVINO_HOME="${srcdir}/openvino"
     
-    cmake -B build -S openvino --preset npuCidReleaseLinux -Wno-dev
+    cmake -B build -S openvino \
+        --preset npuCidReleaseLinux \
+        -G 'Ninja' \
+        -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
+        -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
+        -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
+        -DENABLE_SYSTEM_TBB:BOOL='true' \
+        -Wno-dev
     cmake --build build --target compilerTest profilingTest vpuxCompilerL0Test loaderTest
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build --prefix '/usr' --component CiD
+    DESTDIR="$pkgdir" cmake --install build --component CiD
 }
