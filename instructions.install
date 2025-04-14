@@ -4,24 +4,29 @@ RESET='\033[0m'
 
 post_install() {
 	echo
-	echo -e "To use ${BOLD}wayvr-dashboard${RESET}, create ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET} and add: "
+	echo -e "To use ${BOLD}wayvr-dashboard${RESET}, create ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET} and add: "
 	echo "
 dashboard:
   exec: \"/usr/bin/wayvr-dashboard\"
   args: \"\"
-  env: [\"GDK_BACKEND=wayland\"]
+  env: []
 "
 }
 
 post_upgrade() {
   echo
   echo -e "${BOLD}Attention!${RESET}"
-  echo -e "The binary at ${GREEN}/usr/bin/wayvr_dashboard${RESET} has been renamed to ${GREEN}/usr/bin/wayvr-dashboard${RESET}"
-  echo -e "You may want to edit the exec line in ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET} to point to the new binary."
+  echo -e "The config at ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET} should be removed and replaced with a new config at ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET} containing: "
+  echo "
+dashboard:  
+  exec: \"/usr/bin/wayvr-dashboard\"
+  args: \"\"
+  env: []
+"
   echo -e "This message will be removed in ${BOLD}3 days${RESET} to give users enough time to take notice."
   echo
 }
 
 post_remove() {
-  echo -e "If you no longer want to use ${BOLD}wayvr-dashboard${RESET}, you may want to remove or modify ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET}"
+  echo -e "If you no longer want to use ${BOLD}wayvr-dashboard${RESET}, you may want to remove or modify ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET}"
 }
