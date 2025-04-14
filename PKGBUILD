@@ -1,6 +1,6 @@
 # Maintainer: teraflops <me@priet.us>
 pkgname=roon-kit
-pkgver=r$(date +%Y%m%d).g$(git rev-parse --short HEAD)
+pkgver=0.0.0
 pkgrel=1
 pkgdesc="Roon API Kit"
 arch=('any')
