@@ -2,7 +2,7 @@
 
 _pkgname=crystal-dock
 pkgname=${_pkgname}-git
-pkgver=r185.g2a09a90
+pkgver=r405.gd3c6700
 pkgrel=1
 arch=(x86_64)
 pkgdesc='A cool desktop panel for Linux desktop'
