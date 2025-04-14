@@ -1,17 +1,17 @@
 # Maintainer: userbyte <contact@userbyte.xyz>
 _pkgname=ipinfo
 pkgname=python-ipinfo
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.1
+pkgrel=1
 pkgdesc="Official Python library for IPInfo"
 url="https://github.com/ipinfo/python"
 depends=('python' 'python-requests' 'python-cachetools' 'python-aiohttp')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 
-sha256sums=('17d8b9db7a72991a4d0c91a0bfbaed80ea40eb251bb97ecc452a70e73d47613d')
+sha256sums=('be5a33adac9681bc68280eb5aae16a83e4abbb5f192c87dcc5ee18bdd0ceb276')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
