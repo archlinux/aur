@@ -7,8 +7,8 @@ pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
 url="https://github.com/CluelessCatBurger/wl_shimeji"
 license=('GPL-2.0')
-depends=('python' 'wayland' 'wayland-protocols' 'python-pillow')
-makedepends=('make' 'gcc' 'git' 'libarchive')
+depends=('python>=3.10'  'python-pillow' 'wayland-compositor')
+makedepends=('make' 'gcc' 'git' 'libarchive' 'libwayland-client.so' 'wayland-protocols')
 source=("$_pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git")
 sha256sums=('SKIP')
 

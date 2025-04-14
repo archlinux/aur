@@ -9,10 +9,11 @@ pkgbase = wl_shimeji-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = libarchive
-	depends = python
-	depends = wayland
-	depends = wayland-protocols
+	makedepends = libwayland-client.so
+	makedepends = wayland-protocols
+	depends = python>=3.10
 	depends = python-pillow
+	depends = wayland-compositor
 	source = wl_shimeji::git+https://github.com/CluelessCatBurger/wl_shimeji.git
 	sha256sums = SKIP
 
