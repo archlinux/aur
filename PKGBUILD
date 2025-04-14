@@ -2,13 +2,13 @@
 
 pkgname=icu-shim
 pkgver=76
-pkgrel=1
-pkgdesc="(Dangerous) Stupid shim for old icu libraries"
+pkgrel=2
+pkgdesc="Stupid redirector for old icu"
 arch=('x86_64')
 
 depends=( icu )
-provides=( icu{75..64} )
-conflicts=( icu{75..64} )
+provides=( icu{75..51} )
+conflicts=( icu{75..51} )
 source=( {data,i18n,io,test,tu,uc}.sh )
 sha512sums=( SKIP{,,,,,} )
 build() {	
@@ -21,9 +21,9 @@ build() {
 }
 package () {
 	for i in data i18n io test tu uc
-		do install -Dm644 ${i}.so "$pkgdir/usr/lib/libicu${i}.so.64"
-		for n in {75..65}
-			do ln -sf /usr/lib/libicu${i}.so.64 "${pkgdir}"/usr/lib/libicu${i}.so.$n
+		do install -Dm644 ${i}.so "$pkgdir/usr/lib/libicu${i}.so.50"
+		for n in {75..51}
+			do ln -sf /usr/lib/libicu${i}.so.50 "${pkgdir}"/usr/lib/libicu${i}.so.$n
 		done
 	done
 }
