@@ -1,6 +1,11 @@
 # Maintainer: teraflops <me@priet.us>
 pkgname=roon-kit
-pkgver=0.1.0.r$(date +%s)
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "0.1.0.r%s.g%s" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
 pkgrel=1
 pkgdesc="A JavaScript SDK for the Roon API"
 arch=('any')
