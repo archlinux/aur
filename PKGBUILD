@@ -1,4 +1,4 @@
-# Maintainer: Tu Nombre <tu@email.com>
+# Maintainer: teraflops <me@priet.us>
 pkgname=roon-kit
 pkgver=r$(date +%Y%m%d).g$(git rev-parse --short HEAD)
 pkgrel=1

@@ -1,6 +1,6 @@
 pkgbase = roon-kit
 	pkgdesc = Roon API Kit completo con soporte para extensiones
-	pkgver = r20250414.ga86ea7e
+	pkgver = r20250414.g70557cf
 	pkgrel = 1
 	url = https://github.com/Minterl/roon-kit
 	arch = any
