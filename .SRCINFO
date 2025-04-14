@@ -1,0 +1,21 @@
+pkgbase = python-langchain-cli
+	pkgdesc = A CLI for interacting with LangChain
+	pkgver = 0.0.36
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langchain/tree/master/libs/cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	makedepends = python-wheel
+	depends = python-typer
+	depends = python-gitpython
+	depends = python-langserve
+	depends = uvicorn
+	depends = python-tomlkit
+	depends = python-gritql
+	source = langchain-cli-0.0.36.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-cli/langchain_cli-0.0.36.tar.gz
+	b2sums = 58eac4900df106c35a9928066fa6c9c2234cfbc18e86cd7963f50eb3af1fa647616606e350bf9473ede90927832ef4b09324ae6c546996ef18ebd25290524641
+
+pkgname = python-langchain-cli

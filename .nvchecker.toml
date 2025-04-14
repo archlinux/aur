@@ -1,0 +1,3 @@
+[python-langchain-cli]
+source = "pypi"
+pypi = "langchain-cli"
