@@ -16,6 +16,7 @@ install=roon-now-playing.install
 package() {
   cd "$srcdir/roon_now_playing"
   cp -r usr "$pkgdir"
+  cp -r etc "$pkgdir"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
