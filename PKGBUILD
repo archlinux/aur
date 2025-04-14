@@ -4,8 +4,8 @@
 pkgname=vesktop-bin
 _pkgname=Vesktop
 _appname=vencord-desktop
-pkgver=1.5.5
-_electronversion=34
+pkgver=1.5.6
+_electronversion=35
 pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -30,17 +30,17 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('a79b48524b3ccd2e8567b99a4b98d29b2b7a142e4d077682e18a92258c600ab5')
-sha256sums_x86_64=('378b8bad0eb09113dc1e6982b4d5249fc92d06374bb18045de3ba12bea2afe4d')
+sha256sums_aarch64=('41143a823e98acc3c4fee65d531b867ba693a2f51c1ff4e8e4a27d41a04b9426')
+sha256sums_x86_64=('f54b0cd47e6a7251f7238b07666bb677ae621bfcf57b42c29fabf11f70ca7ae2')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/--ozone-platform-hint=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+        s/@options@/--ozone-platform-hint=auto --enable-wayland-ime/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
