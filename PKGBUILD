@@ -1,6 +1,6 @@
 # Maintainer: Zhoneym <Zhoneym@outlook.com>
 pkgname=cri-dockerd-bin
-pkgver=0.3.16
+pkgver=0.3.17
 pkgrel=1
 pkgdesc="A shim for using Docker as a Kubernetes container runtime"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('docker')
 source=("https://github.com/Mirantis/cri-dockerd/releases/download/v${pkgver}/cri-dockerd-${pkgver}.amd64.tgz"
         "https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.service"
         "https://raw.githubusercontent.com/Mirantis/cri-dockerd/master/packaging/systemd/cri-docker.socket")
-sha256sums=('cc7f181ce850130dc375515c54cd8a27e1e862252abc5b7eade7b4a03ddabd8e' 'SKIP' 'SKIP')
+sha256sums=('5568d571c2cfee7a31ce0b35b7fcc65b96c85b573ee6645151c4d022ed92a626' 'SKIP' 'SKIP')
 
 package() {
     cd "$srcdir"
