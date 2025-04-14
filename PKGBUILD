@@ -1,6 +1,6 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
 pkgname=lncur
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Script to automate symlinking files when porting Windows cursors to Linux"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=('pyinstaller')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd3781193f8ee6261a70d6a30efa84f66ca84f44f4506872aad795e7ff18233d')
+sha256sums=('1ad30da4b640addbf7ab77718e4efeb7678c44769e0377e02d055a190dbbfb95')
 
 build() {
 	cd "$pkgname-$pkgver"
