@@ -1,7 +1,7 @@
 # Maintainer: Peter Justin <peter.justin@outlook.com>
 pkgname=d2rloader-git
 _pkgname=d2rloader
-pkgver=v1.3.0.r2.g09da918
+pkgver=v1.3.2.r0.gaee4c8b
 pkgrel=1
 pkgdesc="Cross-platform Diablo 2 Resurrected Loader written in Python/Qt "
 arch=('any')
@@ -17,7 +17,9 @@ depends=(
   'lutris'
   'wmctrl'
 )
-
+optdepends=(
+  'gamemode: use gamemode to run D2R instances'
+)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 
