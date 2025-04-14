@@ -1,7 +1,7 @@
 pkgbase = ruby-dry-core
 	pkgdesc = A toolset of small support modules used throughout the dry-rb ecosystem
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/dry-rb/dry-core
 	arch = any
 	license = MIT
@@ -16,11 +16,8 @@ pkgbase = ruby-dry-core
 	depends = ruby-concurrent
 	depends = ruby-zeitwerk
 	options = !emptydirs
-	source = https://github.com/dry-rb/dry-core/archive/v1.0.1/ruby-dry-core-1.0.1.tar.gz
-	source = ruby-dry-core_fix_tests.patch
-	sha512sums = d769795459a0ffc007eb66e2b9af9be4e635c620a5ca54a76113057b495e1126600a572761d8ff33a3ee6a4fca948f6fc29d3200e7ba0b56c1bb600a4749bbd4
-	sha512sums = d23c59a164eb81ff953a31ee1a03f8c0dd2720a0af4fd8dbb9cf6a131f10dbfeb28c708bded8431764bd70e1f8f9ec9652102ae9c874c4863690864f3aa709b9
-	b2sums = fb85107dd68dfb2a8d3ee2e66b4bb8b416ac325be4d28bcbbf5605e0a90992eb8aa85a8fad3cba8f228a5a7e50109cd2c1dbf920eebc3423d282055204c6b0a5
-	b2sums = b5e153845ec054e4f35a14368c28793ec2973be60718c6a67b557af20ab8ebd032720bc9e9090f50d69ce6d81893d2ae168f332e2655716d4ce9111cdbdc5cba
+	source = https://github.com/dry-rb/dry-core/archive/v1.1.0/ruby-dry-core-1.1.0.tar.gz
+	sha512sums = 2649b04c95b9e53048808c5df6a1346f6c54c862bac6d164aa8c4c4f5f333d778c555fa081cbbaedab83925e72027b6391418f6857936a4d8a0940005f8c0d52
+	b2sums = ec1cca6b3eba5d23c721993d681c1518e1f5466714dad0b6a7e77f1a5de5c5f805ff49ece775569fc257e5106f597e0cec610776aaa06a0cc298d79e3a9d1228
 
 pkgname = ruby-dry-core
