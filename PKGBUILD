@@ -9,6 +9,7 @@ url="https://github.com/spice-itself/aware"
 license=('MIT')
 makedepends=('rust' 'cargo')
 source=("git+https://github.com/spice-itself/aware.git")
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

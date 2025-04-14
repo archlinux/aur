@@ -8,5 +8,6 @@ pkgbase = aware
 	makedepends = rust
 	makedepends = cargo
 	source = git+https://github.com/spice-itself/aware.git
+	sha256sums = SKIP
 
 pkgname = aware
