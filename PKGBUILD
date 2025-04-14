@@ -1,8 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
-#
 pkgname=clipse-gui
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple clipboard manager with a GUI"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
@@ -63,16 +62,12 @@ package() {
 	if [ -f "$pkgname.png" ]; then
 		echo "Installing icon..."
 		install -Dm644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/clipse-gui.png"
-		# Create directories for necessary assets
-		install -d "$pkgdir/usr/local/share/clipse-gui"
-		install -m755 "$srcdir/$pkgname/dist/clipse-gui.bin" "$pkgdir/usr/local/share/clipse-gui/clipse-gui"
 	else
 		echo "Warning: Icon file '$pkgname.png' not found."
 	fi
 
 	# Create desktop file
 	echo "Creating .desktop file..."
-	mkdir -p "$pkgdir/usr/share/applications"
 	cat >"$pkgdir/usr/share/applications/clipse-gui.desktop" <<EOF
 [Desktop Entry]
 Version=1.0
@@ -97,5 +92,6 @@ EOF
 
 clean() {
 	cd "$srcdir/$pkgname" || exit
+	echo "Cleaning up..."
 	make clean
 }
