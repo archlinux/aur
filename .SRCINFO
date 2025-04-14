@@ -1,6 +1,6 @@
 pkgbase = adspower-global
-	pkgdesc = Protect your accounts, see the revenue growth.
-	pkgver = 6.2.29
+	pkgdesc = AdsPower - Most Secure Antidetect Browser for Multi-Accounts
+	pkgver = 7.3.26
 	pkgrel = 1
 	url = https://www.adspower.com
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = adspower-global
 	depends = glibc
 	depends = bash
 	depends = electron
-	source = https://version.adspower.net/software/linux-x64-global/AdsPower-Global-6.2.29-x64.deb
-	sha256sums = c194a1a89a8de0ddf5f56cef0aa6079d40cabc5b52d4e04ef54533be813758d1
+	depends = hicolor-icon-theme
+	source = https://version.adspower.net/software/linux-x64-global/AdsPower-Global-7.3.26-x64.deb
+	sha256sums = a1d111654bdd9ded9d1a53e0795a3bbd7d683877837dc980761b0af79b93a870
 
 pkgname = adspower-global
