@@ -3,7 +3,7 @@
 pkgname=chatgtk
 pkgver=1.0
 pkgrel=1
-pkgdesc="A simple ChatGPK Webview based on GTK, support system tray and nothing else"
+pkgdesc="A simple ChatGPT Webview based on GTK, support system tray and nothing else"
 arch=('any')
 license=('GPLv3')
 depends=(
