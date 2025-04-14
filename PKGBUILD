@@ -1,6 +1,6 @@
 # Maintainer: erdii <me at erdii dot engineering>
 pkgname=ramalama
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=0
 pkgdesc="The goal of RamaLama is to make working with AI boring."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-argcomplete')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('bd3e4913023964db99087495b058505b6f2ba3ef28e48ce6cce1f7d7eddde844')
+sha256sums=('b002b141dc06b5c8388c49ead60dc10fbae596ce5211d9d4a08aeeb82915956d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
