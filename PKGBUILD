@@ -23,7 +23,7 @@ depends=(
 )
 install="$pkgname.install"
 source=("$url/releases/download/v$pkgver/Readest_${pkgver}_amd64.deb")
-sha256sums=('105c00df8ddfb697314beb12f3ce541c53817c429f68fd7c6941ebd1594728df')
+sha256sums=('f0ea934726ddd507483adc573badab544515e684c6e1dd18b3225f0357a07ab5')
 
 package() {
 
