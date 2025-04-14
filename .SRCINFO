@@ -1,4 +1,4 @@
-pkgbase = newelle
+pkgbase = newelle-git
 	pkgdesc = Your Ultimate Virtual Assistant
 	pkgver = 0.9.0.r20.g92d1411
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = newelle
 	source = git+https://github.com/qwersyk/Newelle
 	sha256sums = SKIP
 
-pkgname = newelle
+pkgname = newelle-git

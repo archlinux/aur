@@ -1,6 +1,6 @@
 # Maintainer: Oliver Tzeng（曾嘉禾）<olivertzeg at proton dot me>
 
-pkgname=newelle
+pkgname=newelle-git
 pkgver=0.9.0.r20.g92d1411
 pkgrel=1
 pkgdesc="Your Ultimate Virtual Assistant"
