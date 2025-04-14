@@ -2,7 +2,7 @@
 pkgname=roon-now-playing-git
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Small utility that shows now playing info from Roon using roon-kit"
+pkgdesc="utility that shows now playing info from Roon using roon-kit,it also grabs lyrics and shows covers"
 arch=('any')
 url="https://gitlab.com/teraflops/roon_now_playing"
 license=('MIT')
