@@ -1,5 +1,5 @@
 pkgbase = horen-git
-	pkgdesc = A music player by Electron.Use system-wide electron.
+	pkgdesc = A music player by Electron.(Use system-wide electron)
 	pkgver = perfect.lyric.r4.g86d4052
 	pkgrel = 1
 	url = https://github.com/horenjs/horen

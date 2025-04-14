@@ -4,7 +4,7 @@ pkgver=perfect.lyric.r4.g86d4052
 _electronversion=28
 _nodeversion=18
 pkgrel=1
-pkgdesc="A music player by Electron.Use system-wide electron."
+pkgdesc="A music player by Electron.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/horenjs/horen"
 license=('MIT')
@@ -40,14 +40,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}"
@@ -62,21 +62,24 @@ build() {
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
-        echo "shell-emulator=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     magick preview/"${pkgname%-git}.ico" preview/"${pkgname%-git}.png"
     sed -i "s/${pkgname%-git}\.ico/${pkgname%-git}\.png/g" forge.config.js
     sed -i "s/process\.env\.APPDATA/\'\/home\/${USER}\'/g" app/main/src/constant.ts
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     pnpm run package
 }
 package() {
