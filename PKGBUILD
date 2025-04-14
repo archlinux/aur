@@ -1,6 +1,6 @@
 pkgname=autocommit-bin
 pkgver=0.1.23
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny Bash script that watches your Git repo, detects changes, and commits them automatically."
 arch=('any')
 url="https://github.com/CraftyRobot/autocommit"
@@ -12,5 +12,5 @@ sha256sums=('SKIP')
 
 package() {
   bsdtar -xf "${srcdir}/autocommit_${pkgver}_all.deb" -C "${srcdir}"
-  install -Dm755 "${srcdir}/usr/local/bin/autocommit" "${pkgdir}/usr/bin/autocommit"
+  install -Dm755 "${srcdir}/usr/bin/autocommit" "${pkgdir}/usr/bin/autocommit"
 }
