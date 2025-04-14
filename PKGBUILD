@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=277.250409.0
+pkgver=277.250414.1
 pkgrel=1
 _emsdk_ver=3.1.59  ## Check ci/containers/linux-build.dockerfile for version
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
@@ -27,7 +27,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/emscripten-core/emsdk.git'
         "$pkgname.desktop")
-sha256sums=('0be8cbce589617ae4b5ef7833a538d355f069e763d67974b13a1bd052fb3d66f'
+sha256sums=('3d93ff6ea5ba4713509bc1dacd737be50b3cf32e3757362a1998a218366f7cd5'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -69,7 +69,7 @@ build() {
   _ensure_local_nvm
   "$srcdir/emsdk/emsdk" activate "${_emsdk_ver}"
   source "$srcdir/emsdk/emsdk_env.sh"
-  export PATH="$PATH:$srcdir/emsdk/upstream/bin:/emsdk/upstream/emscripten"
+  export PATH="${PATH}:$srcdir/emsdk/upstream/bin:/emsdk/upstream/emscripten"
   npm run build-packages
   node desktop --custom-desktop-release --unpacked
 }
