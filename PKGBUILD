@@ -1,13 +1,13 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
 pkgver=0.1.0
-pkgrel=2
+pkgrel=2.5
 pkgdesc="A simple clipboard manager with a GUI"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
 depends=('python' 'python-gobject' 'gtk3' 'wl-clipboard')
-makedepends=('git' 'python-pip' 'python-wheel' 'python-setuptools' 'clang')
+makedepends=('git' 'python-pip' 'python-wheel' 'python-setuptools' 'clang' 'patchelf')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
 
@@ -82,10 +82,6 @@ Categories=Utility;GTK;
 StartupNotify=true
 StartupWMClass=org.d7om.ClipseGUI
 EOF
-
-	# Update desktop database
-	echo "Updating desktop database..."
-	update-desktop-database -q "$pkgdir/usr/share/applications"
 
 	echo "$pkgname installation complete."
 }
