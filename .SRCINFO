@@ -7,7 +7,7 @@ pkgbase = chatgtk
 	depends = python-gobject
 	depends = webkit2gtk
 	depends = libayatana-appindicator
-	depends = appindicator-gtk3
+	depends = libappindicator-gtk3
 	source = ChatGTK.tar.xz
 	sha256sums = a01d8cbcc0044a2a66eb319fd6a687e9bca35867bc65eae50656070c2f31fbad
 

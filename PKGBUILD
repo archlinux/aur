@@ -10,7 +10,7 @@ depends=(
     'python-gobject'
     'webkit2gtk'
     'libayatana-appindicator'
-    'appindicator-gtk3'
+    'libappindicator-gtk3'
 )
 source=(
     'ChatGTK.tar.xz'
