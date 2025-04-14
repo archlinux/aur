@@ -1,0 +1,21 @@
+pkgbase = snippai-git
+	pkgdesc = AI-Powered Snipping Tool.(Use system-wide electron)
+	pkgver = 0.1.3.r1.g322020a
+	pkgrel = 1
+	url = https://sn.lovable.app/
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = gendesk
+	depends = electron29
+	provides = snippai=0.1.3
+	conflicts = snippai
+	source = snippai.git::git+https://github.com/xyTom/snippai.git
+	source = snippai.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = snippai-git
