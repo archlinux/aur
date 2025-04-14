@@ -7,6 +7,8 @@ pkgbase = aurutils-extra-git
 	license = MIT
 	makedepends = git
 	depends = bash
+	provides = aurutils-extra
+	conflicts = aurutils-extra
 	source = git+https://github.com/carlsmedstad/aurutils-extra
 	sha256sums = SKIP
 
