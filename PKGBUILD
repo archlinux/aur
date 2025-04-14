@@ -2,7 +2,7 @@
 pkgbase='python-rnapolis'
 pkgname='python-rnapolis'
 _name='rnapolis'
-pkgver='0.8.0'
+pkgver='0.8.1'
 pkgrel=1
 pkgdesc="A Python library containing RNA-related bioinformatics functions and classes"
 url="https://github.com/tzok/rnapolis-py"
@@ -13,7 +13,7 @@ optdepends=('highs: Linear optimization software [when present, pseudoknot order
 license=(MIT)
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name/-/_}-${pkgver}.tar.gz")
-sha256sums=('e1956cabb572377fb7962233abd78c259b67f8705bdf44029ff4beebeea0c363')
+sha256sums=('8bbc2dc66242b3c4235aec1164565d6855a279ca5a07e3cb7b7313470c443636')
 
 build() {
     cd "${_name}-${pkgver}"
