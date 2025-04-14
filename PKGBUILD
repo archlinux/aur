@@ -26,4 +26,6 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/cursor-free-vip/dist/cursor-free-vip" "$pkgdir/usr/bin/cursor-free-vip"
+  install -Dm644 "$srcdir/cursor-free-vip/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/mit_license"
+  install -Dm644 "$srcdir/cursor-free-vip/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/attribution_non_commercial_no_derivatives_license"
 }
