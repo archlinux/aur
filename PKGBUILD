@@ -5,7 +5,7 @@
 #
 
 pkgname=minipro-git
-pkgver=0.7.2.r67.gb7bfb14
+pkgver=0.7.3.r0.g068500b
 pkgrel=1
 
 pkg_name_ver="${pkgname}-${pkgver}"
