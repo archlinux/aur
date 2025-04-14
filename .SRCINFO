@@ -1,0 +1,14 @@
+pkgbase = python-sshscan-git
+	pkgdesc = SSHScan is a testing tool that enumerates SSH Ciphers. Using SSHScan, weak ciphers can be easily detected.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/evict/SSHScan/tree/master
+	arch = any
+	license = MIT
+	depends = python-pyaml
+	source = git+https://github.com/evict/SSHScan.git
+	source = sshscan.sh
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-sshscan-git
