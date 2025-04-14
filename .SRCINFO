@@ -1,0 +1,17 @@
+pkgbase = python-gritql
+	pkgdesc = Python bindings for GritQL
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/getgrit/gritql
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python-typer
+	depends = python-httpx
+	source = gritql-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/g/gritql/gritql-0.2.0.tar.gz
+	b2sums = b38d21d4ad08664f466fa68c29181e37eec8fa012fc215fb521849ef121d43ea5174d4b4b48f0bfe13c750317fe153a2cb8b54098aa202dd60b7aaa6fe1e5d7a
+
+pkgname = python-gritql
