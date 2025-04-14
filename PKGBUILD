@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/spice-itself/aware"
 license=('MIT')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/spice-itself/aware/archive/refs/tags/v$pkgver.tar.gz")
+source=("git+https://github.com/spice-itself/aware.git")
 sha256sums=('PUT_SHA256SUM_HERE')
 
 build() {
