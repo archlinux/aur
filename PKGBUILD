@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiddlywiki-app-bin
 _pkgname='TiddlyWiki App '
-pkgver=4.7.1
+pkgver=4.7.5
 _electronversion=35
 pkgrel=1
 pkgdesc="A TiddlyWiki desktop application that provides a silkier desktop experience.(Prebuilt version.Use system-wide electron)一个 TiddlyWiki 桌面应用，提供更加丝滑的桌面端使用体验。"
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-x64.pacman")
 sha256sums=('801cd318b77f7cc43b71e5bf59b79476c94d4981025655f7d1c4f3ef4faaf162'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('fa517b1f2ad7d066e6da284cdff8b4273d01923dc625fc7e6433b5c2d775f5b5')
-sha256sums_x86_64=('abd7afabf2ed7db4a7efef4cfbd002f39f75fde06287f432253d0af20cfd0871')
+sha256sums_aarch64=('bb3b8b454db6fd9b30146cff0b39d7bad2d3fe39424c7b17fb0018b710ce4680')
+sha256sums_x86_64=('76662bd6efd4682f794db694bf034936cbc3b47ad802c7444dfc57ec0f42a49d')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
