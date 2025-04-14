@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=scramblery-bin
 _pkgname=Scramblery
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Desktop app for image and video scrambling with various methods including Fourier phase scramble: Entire image/video or just detected facial area.(Prebuilt version)"
 arch=('x86_64')
@@ -15,10 +15,10 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-0.1.0-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/altunenes/scramblery/v${pkgver}/LICENSE"
 )
-sha256sums=('931db29da61bfa88d093051d762e7590df72b94fd2fbce5c46cd4b0f5090e5ce'
+sha256sums=('20f40be52461573aee849a5cce0890529b14e86b3cbe23c97e42f997e26a381d'
             '68397f88fb901932ec90e365b3cb3d6b54af35fba8e3d23e5f7eaab8c6d296ed')
 prepare() {
     sed -i -e "
