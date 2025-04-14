@@ -1,7 +1,7 @@
 pkgbase = ytm-dlp-gui
-	pkgdesc = An ElectronJS app for downloading music off Youtube Music.Use system-wide electron.
+	pkgdesc = An ElectronJS app for downloading music off Youtube Music.(Use system-wide electron)
 	pkgver = 1.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/RENOMIZER/ytm-dlp-gui
 	arch = any
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = ytm-dlp-gui
 	makedepends = git
 	depends = electron26
 	conflicts = ytm-dlp-gui
-	source = ytm-dlp-gui-1.3.3.tar.gz::https://github.com/RENOMIZER/ytm-dlp-gui/archive/refs/tags/v1.3.3.tar.gz
+	source = ytm-dlp-gui-1.3.3::git+https://github.com/RENOMIZER/ytm-dlp-gui#tag=v1.3.3
 	source = ytm-dlp-gui.sh
-	sha256sums = 1029f4d8f6f395a07cda3e6de4211535694c6738403eebbe5a1fa736bb425f4f
+	sha256sums = 5b0b97a908bc3f0e73f76fbd487bffc9b8f0d9b0c72180542436075f5b2f022a
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = ytm-dlp-gui
