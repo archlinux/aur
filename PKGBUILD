@@ -2,7 +2,7 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname='Hugin Messenger'
-pkgver=0.9.2
+pkgver=0.9.4
 _electronversion=30
 _nodeversion=18
 pkgrel=1
@@ -19,15 +19,15 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'gcc'
     'curl'
     'python-setuptools'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ea57e1f9ff46c5df7b7d0b19ae0956324184bdc4eb70fca03c3d1f09fc91024d'
+sha256sums=('e7050d0c1c65999118ebdf776343b9e7c18586323691615e57be6c0037aff72a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -45,7 +45,7 @@ prepare() {
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${_appname}-desktop-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -67,15 +67,15 @@ prepare() {
     NODE_ENV=development    npm install
 }
 build() {
-    cd "${srcdir}/${_appname}-desktop-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build:svelte
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config build.config.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-desktop-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_appname}-desktop-${pkgver}/dist/linux-"*/resources/{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${_appname}-desktop-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/{app.asar.unpacked,bin} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
