@@ -1,7 +1,7 @@
 pkgbase = r-sparsevctrs
 	pkgdesc = Sparse Vectors for Use in Data Frames
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sparsevctrs
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = r-sparsevctrs
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/sparsevctrs_0.3.2.tar.gz
-	md5sums = 917c2c8741eda7e703e7a30023d9e796
-	b2sums = 8432d67d0a31de65beda54de49d6f24da7c40e990d69452705b4da5c011efa42c80e755e54bf907217f10308dd9f3aa27d96cfc96cfc7730abbf28d066350696
+	source = https://cran.r-project.org/src/contrib/sparsevctrs_0.3.3.tar.gz
+	md5sums = 325a2f12796bff6d08a6503cdffb00f0
+	b2sums = 71e5ae89c8af45aedc45bc39ad87f128c7d00840d86ba21020144e22dab34c9d830e54445b4a9b55c413f1a2c7ed521411c9878e81cf3cde13f921405b9ba165
 
 pkgname = r-sparsevctrs
