@@ -1,7 +1,7 @@
 # Maintainer: Andrew Shark <ashark @ at @ linuxcomp.ru>
 
 pkgname=bookmarksync-git
-pkgver=0.3.0.r11.gfb9ac09
+pkgver=0.3.0.r13.g3f716de
 pkgrel=1
 pkgdesc="Sync file picker bookmarks (pinned folders) for KDE and GTK"
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=(git+https://github.com/jlu5/bookmarksync.git)
 sha256sums=("SKIP")
 
 build() {
-    cmake -B build -S ${pkgname%-git}/src -D CMAKE_INSTALL_PREFIX=/usr
+    cmake -B build -S ${pkgname%-git} -D CMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 
