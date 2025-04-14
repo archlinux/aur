@@ -1,11 +1,11 @@
 # Maintainer: Sougato Chakrobortty <someonesomething800@gmail.com>
 pkgname=cysinfo-git
 _pkgname=cysinfo
-pkgver=2.0
-pkgrel=2
+pkgver=3.0
+pkgrel=3
 pkgdesc="A super simple and minimal fetch tool."
 arch=('any')
-url="https://gitlab.com/charged1/cysinfo.git"
+url="https://codeberg.org/Charged/cysinfo.git"
 license=('GPL3')
 depends=(bash gawk wmctrl)
 makedepends=(git make)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd $_pkgname
-    printf "2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
