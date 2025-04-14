@@ -1,8 +1,0 @@
-[Unit]
-Description=Update Aria2c Trackers
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/update-aria2-tracker

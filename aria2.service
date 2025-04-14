@@ -2,19 +2,14 @@
 Description=Aria2c Daemon
 After=network-online.target
 Wants=network-online.target
-ConditionPathExists=%E/aria2cd/%i.conf
 
 [Service]
 Type=simple
-# Update tracker
-ExecStartPre=-+/usr/lib/aria2cd/update-tracker %E/aria2cd/%i.conf
+ExecStartPre=-/usr/lib/aria2cd/update-tracker aria2.conf
 # Arguments here will override config file.
-ExecStart=/usr/bin/aria2c --conf-path=%E/aria2cd/%i.conf --daemon=false
+ExecStart=/usr/bin/aria2c --daemon=false
 # Paths
 ProtectProc=noaccess
-# User/Group Identity
-User=aria2cd
-DynamicUser=true
 # Capabilities
 ## Listen ports under 1024
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
@@ -22,16 +17,8 @@ CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 NoNewPrivileges=yes
 # Sandboxing
 ProtectSystem=strict
-ProtectHome=yes
-RuntimeDirectory=aria2cd
-StateDirectory=aria2cd
-LogsDirectory=aria2cd
-CacheDirectory=aria2cd
-ConfigurationDirectory=aria2cd
 PrivateTmp=yes
 PrivateDevices=yes
-MemoryKSM=yes
-PrivatePIDs=yes
 PrivateUsers=yes
 ProtectHostname=yes
 ProtectClock=yes
@@ -44,7 +31,6 @@ LockPersonality=yes
 MemoryDenyWriteExecute=yes
 RestrictRealtime=yes
 RestrictSUIDSGID=yes
-RemoveIPC=yes
 # System Call Filtering
 SystemCallFilter=@system-service
 SystemCallFilter=~@privileged
