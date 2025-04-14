@@ -1,14 +1,18 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=qoa-git
-pkgver=r49.9a3d52f
+pkgver=r79.3c5af35
 pkgrel=1
 pkgdesc='Quite OK Audio (QOA) format and codec (git version)'
 arch=('x86_64')
 url='https://qoaformat.org/'
 license=('MIT')
 depends=('alsa-lib')
-makedepends=('git' 'dr_libs-git' 'sokol-git')
+makedepends=(
+    'git'
+    'glibc'
+    'dr_libs-git'
+    'sokol-git')
 provides=('qoa')
 conflicts=('qoa')
 source=('git+https://github.com/phoboslab/qoa.git'
@@ -25,7 +29,7 @@ pkgver() {
 }
 
 build() {
-    CFLAGS+=' -I/usr/include/dr_libs' make -C qoa
+    CFLAGS+=' -isystem/usr/include/dr_libs' make -C qoa
 }
 
 package() {
