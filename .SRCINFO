@@ -1,6 +1,6 @@
 pkgbase = webos-dev-manager-bin
 	pkgdesc = Device/DevMode Manager for webOS TV.(Prebuilt version)
-	pkgver = 1.99.12
+	pkgver = 1.99.13
 	pkgrel = 1
 	url = https://github.com/webosbrew/dev-manager-desktop
 	arch = aarch64
@@ -8,11 +8,11 @@ pkgbase = webos-dev-manager-bin
 	license = Apache-2.0
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = webos-dev-manager=1.99.12
+	provides = webos-dev-manager=1.99.13
 	conflicts = webos-dev-manager
-	source_aarch64 = webos-dev-manager-1.99.12-aarch64.rpm::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.99.12/webos-dev-manager-1.99.12-1.aarch64.rpm
-	sha256sums_aarch64 = 44b1d8d57c8b665b22a0be97cda0ad159d47b20bd79fe52b68ad71ee12216cb1
-	source_x86_64 = webos-dev-manager-1.99.12-x86_64.rpm::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.99.12/webos-dev-manager-1.99.12-1.x86_64.rpm
-	sha256sums_x86_64 = 3a57efef5288421ada8782d25a1afad03735c9b24b7aba720cd4b030acef4054
+	source_aarch64 = webos-dev-manager-1.99.13-aarch64.rpm::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.99.13/webos-dev-manager-1.99.13-1.aarch64.rpm
+	sha256sums_aarch64 = 674bbc8662e7b1492dea2014f057b1499eccb03ab2bb405b9b8a16193b21006b
+	source_x86_64 = webos-dev-manager-1.99.13-x86_64.rpm::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.99.13/webos-dev-manager-1.99.13-1.x86_64.rpm
+	sha256sums_x86_64 = 5ec84af1c6ef921a1b616550c937270e4d3dd10ad81ae11d441664815c308619
 
 pkgname = webos-dev-manager-bin
