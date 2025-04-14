@@ -2,6 +2,31 @@ BOLD='\033[1m'
 GREEN='\033[32m'
 RESET='\033[0m'
 
+check_and_warn_nvidia() {
+
+if [ -d /proc/driver/nvidia/gpus ]; then
+
+  if [[ $(find /proc/driver/nvidia/gpus -mindepth 1 -maxdepth 1 | wc -l) != "0" ]]; then
+    echo -e "${BOLD}Attention!${RESET}"
+    echo "We have detected that you are using an NVIDIA GPU!"
+    echo -e "The current version of ${BOLD}wayvr-dashboard${RESET} has major compatibility issues with NVIDIA cards."
+    echo "It is recommended to use the Appimage of version 0.3.2 for the time being, which can be found here: https://github.com/olekolek1000/wayvr-dashboard/releases/download/0.3.2/wayvr-dashboard.AppImage"
+    echo -e "To do this, download the Appimage in a safe place, and modify the configuration in ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET} to point to the new appimage. If your Appimage is in your downloads folder. the configuration would look like this:"
+    echo "
+dashboard:
+  exec: \"/home/YOUR_DIR/Downloads/wayvr-dashboard.AppImage\"
+  args: \"\"
+  env: []
+"
+    echo "When the latest build becomes compatible with NVIDIA cards again, this notice will be removed."
+    echo
+
+  fi
+
+fi
+
+}
+
 post_install() {
 	echo
 	echo -e "To use ${BOLD}wayvr-dashboard${RESET}, create ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET} and add: "
@@ -11,6 +36,7 @@ dashboard:
   args: \"\"
   env: []
 "
+  check_and_warn_nvidia
 }
 
 post_upgrade() {
@@ -25,6 +51,7 @@ dashboard:
 "
   echo -e "This message will be removed in ${BOLD}3 days${RESET} to give users enough time to take notice."
   echo
+  check_and_warn_nvidia
 }
 
 post_remove() {
