@@ -1,7 +1,7 @@
 # Maintainer: caputmanus <caputmanus@outlook.com>
 pkgname=aware
-pkgver=1.0rc1
-pkgrel=1
+pkgver=0.1.0
+pkgrel=2
 pkgdesc="Simple process supervisor in Rust"
 arch=('x86_64')
 url="https://github.com/spice-itself/aware"
