@@ -1,24 +1,27 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
-_addon_name=hide_fixed_elements
-_addon_version=1.4
-_file_id=4194227
-_addon_filename="${_addon_name}-${_addon_version}.xpi"
+_addon_name=HideFixedElements
+_git_commit=77e9936d338bebf11ec78b8755043d4f18651521
 _gecko_id="hidefixedelements@commonground.systems"
 
 pkgname=firefox-extension-hide-fixed-elements
-pkgver="${_addon_version}"
-pkgrel=1
+pkgver=1.4
+pkgrel=2
 pkgdesc="Browser extension to hide position:fixed elements"
 arch=(any)
 url="https://github.com/andfarm/HideFixedElements"
 license=(MIT)
 depends=(firefox)
-source=("${_addon_filename}::https://addons.mozilla.org/firefox/downloads/file/${_file_id}")
-noextract=("${_addon_filename}")
-sha256sums=(2f7bd5c1408ef9ada8dd6a344882b6293607a937bc42c4795c63cfc6c0bfc37b)
+makedepends=(zip)
+source=("${_addon_name}-${pkgver}.tar.gz::https://github.com/andfarm/HideFixedElements/archive/${_git_commit}.tar.gz")
+sha256sums=(3d8dd98e3c85963a68f3c23bd6607b7c14926e9c14451066dd4fba8c03f64114)
+
+
+build() {
+    cd "${_addon_name}-${_git_commit}/"
+    zip "${srcdir}/extension.zip" --filesync --recurse-paths -- *
+}
 
 package() {
-    cd "${srcdir}"
-    install -Dm644 "${_addon_filename}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
+    install -D --mode 644 "${srcdir}/extension.zip" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
 }
