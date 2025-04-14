@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 
 pkgname=crun-krun
-pkgver=1.19.1
-pkgrel=2
+pkgver=1.21
+pkgrel=1
 pkgdesc="A fully featured OCI runtime and C library for running containers. Enabled krun support for secure/confidential containers in VMs."
 url="https://github.com/containers/crun"
 license=('LGPL')
@@ -13,7 +13,7 @@ depends=('yajl' 'systemd-libs' 'libcap' 'libseccomp' 'criu' 'libkrun')
 makedepends=('libtool' 'python' 'go-md2man' 'systemd' 'git')
 source=("git+https://github.com/containers/crun.git#tag=$pkgver")
 validpgpkeys=('AC404C1C0BF735C63FF4D562263D6DF2E163E1EA')
-sha256sums=('61ec3eb34cf423eb572c84d5d4144f9c26af0e1c8211139914d923747995cdb2')
+sha256sums=('c807b5ae99273adff712a2d894896d3cbae9f7ecc985763725c3b0e06d01257b')
 
 build() {
     cd crun
