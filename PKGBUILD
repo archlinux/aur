@@ -2,7 +2,7 @@
 pkgname=roon-kit
 pkgver=r$(date +%Y%m%d).g$(git rev-parse --short HEAD)
 pkgrel=1
-pkgdesc="Roon API Kit completo con soporte para extensiones"
+pkgdesc="Roon API Kit"
 arch=('any')
 url="https://github.com/Minterl/roon-kit"
 license=('MIT')
@@ -33,7 +33,7 @@ build() {
   
   for file in "${required_files[@]}"; do
     if [[ ! -f "$file" ]]; then
-      echo "ERROR: Archivo esencial faltante: $file"
+      echo "ERROR: missing essential file: $file"
       exit 1
     fi
   done
