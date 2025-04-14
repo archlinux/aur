@@ -1,7 +1,7 @@
 pkgbase = autocommit-bin
 	pkgdesc = A tiny Bash script that watches your Git repo, detects changes, and commits them automatically.
 	pkgver = 0.1.23
-	pkgrel = 4
+	pkgrel = 3
 	url = https://github.com/CraftyRobot/autocommit
 	arch = any
 	license = MIT
