@@ -5,6 +5,7 @@ pkgbase = opentrace-bin
 	url = https://github.com/Archeb/opentrace
 	arch = x86_64
 	license = GPL3
+	makedepends = curl
 	depends = nexttrace
 	depends = webkit2gtk
 	provides = opentrace
