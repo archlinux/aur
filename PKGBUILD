@@ -2,7 +2,7 @@
 
 pkgname=chatgtk
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple ChatGPT Webview based on GTK, support system tray and nothing else"
 arch=('any')
 license=('GPLv3')
@@ -10,6 +10,7 @@ depends=(
     'python-gobject'
     'webkit2gtk'
     'libayatana-appindicator'
+    'appindicator-gtk3'
 )
 source=(
     'ChatGTK.tar.xz'
