@@ -8,7 +8,7 @@ pkgdesc="Music streaming browser,retrieves audio, video and metadata from variou
 arch=('any')
 url="https://muffon.netlify.app/"
 _ghurl="https://github.com/staniel359/muffon"
-license=("AGPL-3.0-only")
+license=('AGPL-3.0-only')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
