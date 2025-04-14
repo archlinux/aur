@@ -1,0 +1,60 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,7 +9,7 @@
+ 
+ project( IKE )
+ 
+-cmake_minimum_required( VERSION 2.4 )
++cmake_minimum_required( VERSION 3.11 )
+ 
+ if( COMMAND cmake_policy )
+ 
+--- a/source/iked/CMakeLists.txt
++++ b/source/iked/CMakeLists.txt
+@@ -102,27 +102,33 @@
+ 	conf.parse.cpp GENERATED,
+ 	conf.token.cpp GENERATED )
+ 
+-# Custom target for parser
+-
+-add_custom_target( ConfParser echo "Creating Conf Parser" )
+ 
+ # Custom command for flex
+ 
++set(FLEX_INPUT conf.token.ll)
++set(FLEX_OUTPUT conf.token.cpp)
+ add_custom_command(
+-	SOURCE conf.token.ll
+-	COMMAND ${PATH_BIN_FLEX}
+-	ARGS -d -oconf.token.cpp conf.token.ll
+-	TARGET ConfParser
+-	OUTPUTS conf.token.cpp )
++	OUTPUT "${FLEX_OUTPUT}"
++	DEPENDS "${FLEX_INPUT}"
++	COMMAND "${PATH_BIN_FLEX}"
++	ARGS -d -o"${FLEX_OUTPUT}" "${FLEX_INPUT}"
++)
+ 
+ # Custom command for bison
+ 
++set(BISON_INPUT conf.parse.yy)
++set(BISON_OUTPUT conf.parse.cpp;conf.parse.hpp;location.hh;position.hh;stack.hh)
++list(GET BISON_OUTPUT 0 BISON_OUTPUT_MAIN)
++string(REPLACE ";" " " BISON_OUTPUT "${BISON_OUTPUT}")
+ add_custom_command(
+-	SOURCE conf.parse.yy
+-	COMMAND ${PATH_BIN_BISON}
+-	ARGS -oconf.parse.cpp conf.parse.yy
+-	TARGET ConfParser
+-	OUTPUTS conf.parse.cpp conf.parse.hpp location.hh position.hh stack.hh )
++	OUTPUT "${BISON_OUTPUT}"
++	DEPENDS "${BISON_INPUT}"
++	COMMAND "${PATH_BIN_BISON}"
++	ARGS -o"${BISON_OUTPUT_MAIN}" "${BISON_INPUT}"
++)
++
++add_custom_target(ConfParser DEPENDS ${BISON_OUTPUT} ${FLEX_OUTPUT})
++add_dependencies(iked ConfParser)
+ 
+ # install support
+ 

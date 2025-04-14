@@ -20,7 +20,8 @@ source=("http://www.shrew.net/download/ike/ike-$pkgver-release.tgz"
         cmake-threadlib.patch
         fix_double_free.patch
         fix_file_eof.patch
-	deprecating_udp_encap_espinudp_non_ike.patch)
+        deprecating_udp_encap_espinudp_non_ike.patch
+        cmake_4.patch)
 md5sums=('3dac18a2da5809ccb38c50cd4a455897'
          '3cb3ff3b663805f76be1efd527ae436c'
          '57348fe9112555c0204709c1716e5fff'
@@ -28,7 +29,7 @@ md5sums=('3dac18a2da5809ccb38c50cd4a455897'
          '57f7f50b68020b5df6d54288757249c1'
          '05e75984d6e8982859339fd2a42d43a1'
          '8cd9d8abf4f270186531afe6dc55c644'
-         )
+         '30de7a63d0d55cece4ea53bd6ff0471c')
 
 prepare () {
     cd "$srcdir/ike"
@@ -37,6 +38,7 @@ prepare () {
     patch -p1 -i "$srcdir/fix_double_free.patch"
     patch -p1 -i "$srcdir/fix_file_eof.patch"
     patch -p1 -i "$srcdir/deprecating_udp_encap_espinudp_non_ike.patch"
+    patch -p1 -i "$srcdir/cmake_4.patch"
     sed -i 's/define "parser_class_name"/define parser_class_name/' ./source/iked/conf.parse.yy
 }
 
