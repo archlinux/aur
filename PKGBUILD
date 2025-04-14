@@ -4,14 +4,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=kri
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='Simple, compact & very fast text editor'
 arch=('x86_64')
 url="https://github.com/ikozyris/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('94b6cd4e533bb28b7b0fd238311bf38ba183ea42dd70dbeb652caec0643fb88d')
+sha256sums=('399fc382ea385f332202c7bc7d7ea668b7ce74758806e2a2a8de94f7ee83be61')
 makedepends=('gcc' 'make')
 depends=('gcc-libs' 'glibc' 'ncurses')
 
