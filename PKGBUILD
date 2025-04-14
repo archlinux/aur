@@ -2,8 +2,8 @@
 pkgname=boostchanger-bin
 pkgver=5.0.3
 _electronversion=25
-pkgrel=10
-pkgdesc="With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux"
+pkgrel=11
+pkgdesc="With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/nbebaw/boostchanger"
 license=('MIT')
@@ -22,17 +22,18 @@ source=(
 )
 sha256sums=('4f9d2239359802b2f0e3662556114a2c48a9f232064d6356f1a1501c7dd91726'
             'af8aec94b8f5c88f4c4e4435570b94d143970c621048db7e25f27403fa4ec02e'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    sed "/openDevTools/d" -i "${srcdir}/app.asar.unpacked/src/main.js"
+    sed -i "/openDevTools/d" "${srcdir}/app.asar.unpacked/src/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
