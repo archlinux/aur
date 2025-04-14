@@ -2,16 +2,17 @@
 
 pkgname=qoa-git
 pkgver=r79.3c5af35
-pkgrel=1
+pkgrel=2
 pkgdesc='Quite OK Audio (QOA) format and codec (git version)'
 arch=('x86_64')
 url='https://qoaformat.org/'
 license=('MIT')
-depends=('alsa-lib')
+depends=(
+    'alsa-lib'
+    'glibc')
 makedepends=(
-    'git'
-    'glibc'
     'dr_libs-git'
+    'git'
     'sokol-git')
 provides=('qoa')
 conflicts=('qoa')
