@@ -1,11 +1,13 @@
 pkgbase = cbconvert-bin
 	pkgdesc = CBconvert is a Comic Book converter
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gen2brain/cbconvert
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/gen2brain/cbconvert/releases/download/v1.1.0/cbconvert-1.1.0-linux-x86_64.tar.gz
+	source = cbconvert.desktop
 	sha256sums = af901b241878cc2378d63768638f099897e4abc5d0f8a98689e99e0e15195135
+	sha256sums = 1e7bbaf6fca37f865f59d1f870386c63faab91a57a2d9ce60fa800ffcf4bea15
 
 pkgname = cbconvert-bin

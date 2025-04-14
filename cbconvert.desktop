@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=CBconvert
+GenericName=Comic Book converter
+Comment=CBconvert is a Comic Book converter
+Exec=cbconvert-gui
+Categories=Utility;
