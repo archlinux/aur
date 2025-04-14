@@ -3,16 +3,15 @@
 pkgname=ds9-bin  
 _pkgname=ds9
 pkgver=8.6
-pkgrel=2
+pkgrel=3
 pkgdesc="SAOImage DS9: Astronomical Data Visualization Application"
 url="http://hea-www.harvard.edu/RD/ds9/"
 arch=('x86_64')
 license=('GPL2')
 options=(!strip)
 provides=(${_pkgname})
-# temporary fix for arch ahead of ds9 binary...
-depends=('icu75')
-makedepends=()
+depends=()
+makedepends=('patchelf')
 conflicts=(ds9)
 replaces=()
 backup=()
@@ -25,6 +24,11 @@ md5sums=('16017e980234ab984d14f9d64e3456a8'
          'f1738e4ec665ae9afd1b65b86e6a07f1'
          '9297d5738f5f462831075c483dc785d5')
 
+
+
+
+
+
 # ds9.desktop
 #md5sums+=('195b619383718be1dffe94e39975f006')
 
@@ -34,5 +38,10 @@ package() {
   install -Dm755 ds9 ${pkgdir}/usr/bin/${_pkgname}
   install -Dm644 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
   install -Dm644 ${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+
+  # temporary fix for arch ahead of ds9 binary...
+  patchelf --replace-needed libicui18n.so.75 libicui18n.so ${pkgdir}/usr/bin/ds9
+  patchelf --replace-needed libicudata.so.75 libicudata.so ${pkgdir}/usr/bin/ds9
+  patchelf --replace-needed libicuuc.so.75 libicuuc.so ${pkgdir}/usr/bin/ds9
 }
 
