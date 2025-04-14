@@ -19,15 +19,11 @@ prepare() {
     # These are dmg images, xar and cpio archives.  Just use 7z.
     7z x -y "${pkgname}-${pkgver}.dmg" > /dev/null
     7z x -y 'SFProFonts/SF Pro Fonts.pkg' > /dev/null
+    7z x -y 'SFProFonts.pkg/Payload' > /dev/null
     7z x -y 'Payload~' > /dev/null
 
     otfinfo -i Library/Fonts/SF-Pro-Display-BoldItalic.otf | \
         awk -f license.awk > LICENSE
-}
-
-pkgver() {
-    otfinfo -i Library/Fonts/SF-Pro-Display-BoldItalic.otf | \
-        awk -f version.awk
 }
 
 package() {
