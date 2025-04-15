@@ -14,18 +14,32 @@
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
 pkgver=10.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform file and archive manager (${_widgets^^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
 
-makedepends+=(
+_depends=(
+  '7zip'
+  'brotli'
+  'zstd'
+)
+makedepends=(
   'patchelf'
 )
 optdepends=(
   'arc: Arc file archiver and compressor'
 )
+
+case "${_widgets::1}" in
+  'g')
+    _depends+=("${_widgets}")
+    ;;
+  'q')
+    _depends+=("${_widgets}-base")
+    ;;
+esac
 
 options=('!debug' '!emptydirs')
 
@@ -99,21 +113,7 @@ prepare() {
 }
 
 package() {
-  depends=(
-    '7zip'
-    'brotli'
-    'zstd'
-  )
-
-  case "${_widgets::1}" in
-    g)
-      depends+=("${_widgets}")
-      ;;
-    q)
-      depends+=("${_widgets}-base")
-      ;;
-  esac
-
+  depends=("${_depends[@]}")
   cp -a usr "$pkgdir/"
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
