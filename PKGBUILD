@@ -2,9 +2,9 @@
 pkgname=ripes-bin
 _pkgname=Ripes
 pkgver=2.2.6
-pkgrel=3
-pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA"
-arch=("x86_64")
+pkgrel=4
+pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA.(Prebuilt version)"
+arch=('x86_64')
 url="https://github.com/mortbopet/Ripes"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -27,26 +27,32 @@ source=(
 )
 sha256sums=('065cc364897f2181dd0c4d32decb6d7e38309ae12ed1319a52e6648223cd55db'
             '2af9cacb9ee73bed57c14ae509681749e1b12521878ce3a9b4f64add0b572078'
-            '25bd1e3b89a7a00446cd65b8c5595a1ecd8e39db0c02b75ce1bfa209bfcc268d')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            '2f265c4afd90993bb2c4bf412ac5e4cf8168b5bff6db82821ff259d5c14db041')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${_pkgname}|Exec=${pkgname%-bin} %U|g;s|Icon=${_pkgname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -i -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin} %U/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,translations} "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    for _icons in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
+    _icon_sizes=(16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
         "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/io.github.mortbopet.${_pkgname}.metainfo.xml" \
-        -t "${pkgdir}/usr/share/metainfo"
+        "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
 }
