@@ -1,9 +1,10 @@
+# Maintainer: Julian Houba <craftingdragon007 at outlook dot com>
 # Contributor: Grey Christoforo <first name at last name dot net>
 # Contributor: Rafael Silva <perigoso at riseup dot net>
 
 pkgname='epics-base'
-pkgver=7.0.7
-pkgrel=2
+pkgver=7.0.9
+pkgrel=1
 pkgdesc="Experimental Physics and Industrial Control System"
 arch=('any')
 url="https://epics-controls.org"
@@ -15,14 +16,12 @@ source=("https://epics-controls.org/download/base/base-${pkgver}.tar.gz"{,.asc}
         '00_install_locations.patch'
         '01_install_permissions.patch'
         '02_no_rpath.patch'
-        '03_no_debug_symbols.patch'
 )
-sha512sums=('f72e4f7b27f39a18540346184ef185b7fb3ecab4df4e4f66b86c44c39a35a1a236a580f79a089b857ec276b129760d6faedbc3a8b4c9bde8f3528c35b01aa155'
+sha512sums=('40accd1954ba750d250c88ef60289e99921d30235180824575a6b82325f10fe6d920b740e6895da9908be5465a2fa9b8004b8f004694e01f38cdc63e8c9ed430'
             'SKIP'
             'c55d53895af137706d99500b72f18ffb580ec98ab3ededb69a85fefc15539e4853fc46d7b31ea364195f3b9423066fbcd9ae4bd4b31cacb0328fa230fe5698f6'
-            '760dda09dbd9e84b96e6d5e34183e9ff383ea7403e1c751e07e4c0ca734bc1837d4d595f403f471d76845e5967bdcbe6340919c07ad3127be05e2008d2880fa4'
-            '394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3'
-            'd8337a9ee5a9c1ca2c1aa3ee8e45c0507f9386a590474e0345ff903ec7ebd56feed739c46a56c6dced56129ca4d6e783b72d01a25f6346daaf7ce34127fd9903')
+            '8d8ea744e1bd011c0a01c645a37cd29c420830389ce340820975ea798c6138ce28d7d5e066fe503025fb353a2e19c1a33169a3d5777414e60b42eb5b3874091a'
+            '394b023fe3003e61701c8c31d44c17281297a3b67f3bbe604e9191f38267986c34b06fe24eae5e778a29b466b022bdce5d4d0f4061da9c91a44467f1e0d266a3')
 validpgpkeys=('4B688BF5CAF9452CBD5BE86FD306120EEACB4576') # Andrew Johnson (Argonne)
 
 prepare() {
@@ -31,10 +30,6 @@ prepare() {
     # apply patches
     patch --forward --strip=1 --input="${srcdir}/01_install_permissions.patch"
     patch --forward --strip=1 --input="${srcdir}/02_no_rpath.patch"
-    patch --forward --strip=1 --input="${srcdir}/03_no_debug_symbols.patch"
-
-    # disabled because it causes severe breakage of EPICS build system
-    # patch --forward --strip=1 --input="${srcdir}/00_install_locations.patch"
 
     # install files to staging area
     echo "INSTALL_LOCATION=${srcdir}/staging/usr/lib/epics" >'configure/CONFIG_SITE.local'
@@ -97,10 +92,8 @@ package() {
         ln -sr "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/${bin}" "${pkgdir}/usr/bin"
     done
 
-    # move services to the system path
-    install -dm755 "${pkgdir}/usr/lib/systemd/system"
-    for service in "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}"/*.service; do
-        mv "${service}" "${pkgdir}/usr/lib/systemd/system"
+    for bin in softIoc softIocPVA; do
+        ln -sr "${EPICS_BASE}/bin/${EPICS_HOST_ARCH}/${bin}" "${pkgdir}/usr/bin"
     done
 
     # install include files and link them to the system include path
@@ -114,9 +107,6 @@ package() {
     for dir in db dbd templates; do
         ln -sr "${EPICS_BASE}/${dir}" "${pkgdir}/usr/share/epics"
     done
-
-    # exclude the local site configuration
-    rm "${EPICS_BASE}/configure/CONFIG_SITE.local"
 
     # install pkgconfig files to the system path
     install -Dm755 -t "${pkgdir}/usr/lib/pkgconfig" lib/pkgconfig/epics-base{,"-${EPICS_HOST_ARCH}"}.pc
@@ -134,8 +124,10 @@ package() {
     echo "EPICS_HOST_ARCH=\"${EPICS_HOST_ARCH}\"" >>"${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
     echo "EPICS_BASE=\"/usr/lib/epics\"" >>"${pkgdir}/usr/lib/environment.d/10-epics-base.conf"
 
+    # Patch epics config_site local install location to current folder (.)
+    sed -i "s|${srcdir}/staging/usr/lib/epics|./usr/lib/epics|g" "${pkgdir}/usr/lib/epics/configure/CONFIG_SITE.local"
+
     # TODO: makepkg complains the package contains references to $srcdir
-    # Debug flags are removed with `03_no_debug_symbols.patch`, unclear why it's still referenced
 
     # TODO: split the package into base and modules
 }
