@@ -3,20 +3,19 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.45.5
+pkgver=0.45.6
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
 url="https://github.com/Stirling-Tools/${_reponame}"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-license=("GPL-3.0-or-later")
+license=("MIT")
 backup=("etc/${_pkgname}/${_pkgname}.env")
 depends=(
     "fontconfig"
     "java-runtime-headless>=21"
     "libreoffice"
-    "pngquant"
     "poppler"
     "python-opencv"
     "python-pdf2image"
@@ -48,8 +47,8 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('c3a904badb95f23b4843b34889c8f6570692e5c6a4d1cdc643218e88270489f2'
-            'f87da5c635e856a7e1c6e2c0bf4e2fa6ad38b32d8426270ed135a2c1c0e5ff48'
+sha256sums=('aff405dac14f5deeba5c9f78db4578305f641ae2a2f7e3c8d00241eabef0d391'
+            'df7d9d84fa7bccc2dccec1bcd3122647d277689c4ab197da8b88cbb8b77fa62d'
             'd395992889fdf60de430509cd5866fc4606548aa1ba8f134b7e6bd4e29f293c9'
             '815d0d2c05daf40384a27413fba1dbd9d7db749a98b881d3ed113c164a83e833'
             '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
