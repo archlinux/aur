@@ -2,16 +2,16 @@
 
 _pkgname=kanri
 pkgname=kanri-bin
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Modern offline Kanban board app using tauri"
 arch=('x86_64')
 url="https://github.com/kanriapp/kanri"
 license=('GPL-3.0-or-later')
-depends=('webkit2gtk')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('binutils')  # 'ar' is part of the binutils package
 source=("${_pkgname}_${pkgver}.deb::https://github.com/kanriapp/kanri/releases/download/app-v${pkgver}/${_pkgname}_${pkgver}_amd64.deb" "kanri-wrapper.sh")
-sha256sums=('2167ee75c66d8ed1d7a6c8455ec2c7e86fc696c3ba3b9bfdc1f6e50092882d89'
+sha256sums=('4cef42f227f2e90161bf19737f14b29d6d344bf8a2aa3636b33c39d5aa274597'
             '02d85b8954fe86c43b1d3b5567ee7683238a5c766d0b3d59b7ba0d5812f37906')
 
 prepare() {
