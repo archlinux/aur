@@ -2,8 +2,8 @@
 pkgname=captfencoder-bin
 _pkgname=CaptfEncoder
 pkgver=3.1.2
-pkgrel=7
-pkgdesc="A rapid cross platform network security tool suite."
+pkgrel=8
+pkgdesc="A rapid cross platform network security tool suite.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
@@ -33,8 +33,13 @@ sha256sums=('3c0c7b76c0bd5964f77f48d9a44ccc00b59784c14fcd2ce511c6129e71c324a8'
             '6eaf5f24b6c27324c0e1c433b511425d93a4c0f67de1749758188511b50eefa0')
 sha256sums_aarch64=('69f2c17bbe751978a5aa740bd02dfecfd3e16c36f629d86e56a79581149beef3')
 sha256sums_x86_64=('dfed9cbb934bae883f5ae2e6b1d71908a6a8238d7bfdf7b243d9d2c272a30462')
-build() {
-    gendesk -f -n -q --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+prepare() {
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Development" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.bin" "${pkgdir}/usr/bin/${pkgname%-bin}"
