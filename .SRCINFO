@@ -1,7 +1,7 @@
 pkgbase = atostekid
 	pkgdesc = New desktop application for Finnish electronic ID cards
 	pkgver = 4.3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dvv.fi/en/linux-versions
 	install = atostekid.install
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = atostekid
 	optdepends = libappindicator-gtk3: System tray support for desktop environments
 	optdepends = qt6-wayland: Wayland support
 	source = atostekid-4.3.0.0.deb::https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_4.3.0.0.deb
+	source = atostek-id.module
 	sha256sums = fc753b03e171b39e28bd9f85a43d0986409dbad6d72801cd1d63762a6f444f73
+	sha256sums = c648677674fa2d8733474dff11175a0cd176e1c499b05fce396720a698437923
 
 pkgname = atostekid

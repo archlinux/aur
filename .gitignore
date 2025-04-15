@@ -2,5 +2,6 @@
 !.gitignore
 !.SRCINFO
 !allowed_signers
+!atostek-id.module
 !PKGBUILD
 !*.install
