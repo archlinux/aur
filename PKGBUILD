@@ -3,7 +3,7 @@
 _repo=ideapad-laptop-tb
 _module_name=ideapad-laptop-tb
 pkgname=${_module_name}-dkms
-pkgver=r20.dc534d7
+pkgver=r23.b877a6c
 pkgrel=1
 pkgdesc="The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 NoteBooks (DKMS)"
 url="https://github.com/ferstar/${_repo}"
@@ -25,6 +25,14 @@ pkgver() {
 }
 
 package() {
+  # sync and apply patch
+  KBASE=$(uname -r | cut -d. -f1-2)
+  cd "${srcdir}"/"${_repo}"
+  curl -L -o ideapad-laptop-tb.c https://github.com/torvalds/linux/raw/v${KBASE}/drivers/platform/x86/ideapad-laptop.c
+  curl -L -o ideapad-laptop-tb.h https://github.com/torvalds/linux/raw/v${KBASE}/drivers/platform/x86/ideapad-laptop.h
+  patch < ideapad-laptop.patch
+  cd -
+
   _dkms_dest="${pkgdir}"/usr/src/${_module_name}-${pkgver}
   
   # create dkms dest dir
