@@ -85,6 +85,7 @@ build() {
     -B build
     -S "$_pkgsrc"
     -G Ninja
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_DOCUMENTATION=OFF
