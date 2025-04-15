@@ -1,7 +1,7 @@
 pkgbase = coreutils-uutils-symlink
 	pkgdesc = (use at own risk) symlinks to replace coreutils with uutils
 	pkgver = 0.0.29
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	depends = uutils-coreutils
 	depends = nix-busybox
