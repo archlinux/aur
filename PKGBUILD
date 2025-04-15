@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=31.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -97,13 +97,13 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v3.tar.xz"
+  "https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64.tar.xz"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "cb7225c7a937ac4cdc9c41700061f45cccc640d696902357782e57f8250bf43a"
+  "fab66dfc9cfd2e26fb87798f855aef30c2004edc8e19570d37af555644ae1655"
 )
 
 prepare() {
@@ -120,14 +120,15 @@ prepare() {
 build() {
 
   cmake -B build -S obs-studio \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
     -DENABLE_BROWSER=ON \
-    -DENABLE_FFMPEG_NVENC=ON \
+    -DENABLE_FFMPEG=ON \
+    -DENABLE_NVENC=ON \
     -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_x86_64" \
     -DOBS_VERSION_OVERRIDE="$pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
