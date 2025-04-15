@@ -1,10 +1,10 @@
-# Maintainer: daddodev
+# Maintainer: daddodev <daddodev@gmail.com>
 pkgname=pimpmyrice
-provides=("pimpmyrice")
-conflicts=("pimpmyrice-git" "pimpmyrice")
-pkgdesc="The overkill rice manager"
+provides=("$pkgname")
+conflicts=("${pkgname}-git" "$pkgname")
+pkgdesc="The overkill theme manager"
 url="https://github.com/daddodev/pimpmyrice"
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 arch=("any")
 license=("MIT")
@@ -18,11 +18,10 @@ depends=(
     "python-rich"
     "python-jinja"
     "python-pyyaml"
-    "python-scikit-learn"
-    "python-opencv"
-    "python-typing_extensions"
+    "python-numpy"
+    "python-pillow"
     "python-pydantic"
-    "python-pydantic-extra-types"
+    "python-typing_extensions"
 )
 makedepends=(
    "python-build"
@@ -30,19 +29,17 @@ makedepends=(
    "python-wheel"
    "python-setuptools"
 )
-source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://pypi.python.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=("SKIP")
 
-
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    cd "$srcdir/$pkgname-$pkgver" || exit 1
+    python -m build --wheel --no-isolation || exit 1
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/$pkgname-$pkgver" || exit 1
+    python -m installer --destdir="$pkgdir" dist/*.whl || exit 1
 
-    # license
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE || exit 1
 }
