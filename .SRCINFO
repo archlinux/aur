@@ -1,4 +1,4 @@
-pkgbase = rethink-sans
+pkgbase = ttf-rethink-sans
 	pkgdesc = A humble open source font built on the shoulders of DM Sans and Poppins
 	pkgver = 5
 	pkgrel = 1

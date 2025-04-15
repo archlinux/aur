@@ -1,6 +1,5 @@
 # Maintainer: aartoni <aartoni@aur.archlinux.org>
 
-pkgbase=rethink-sans
 pkgname=(ttf-rethink-sans ttf-rethink-sans-variable)
 pkgver=5
 pkgrel=1
