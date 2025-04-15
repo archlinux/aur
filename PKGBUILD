@@ -1,7 +1,7 @@
 # Maintainer: Magi3r <magier dot mit dot f3erball at gmail dot com>
 pkgname=nyarchassistant
 _pkgname=NyarchAssistant
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Nyarch Linux Assistant (Newelle Fork)"
 arch=("any")
@@ -49,11 +49,11 @@ source=(
 	"$pkgname-$pkgver-live2d-lipsync-viewer.tar.xz::https://github.com/NyarchLinux/live2d-lipsync-viewer/releases/download/0.4/pack.tar.xz"
 	"$pkgname-$pkgver-arch-chan.png::https://avatars.githubusercontent.com/u/95960775?v=4"
 )
-sha256sums=('d64139522d2eb1fc195773ee758f6d2da4e768530ce55f28270fa1a43c943a8c'
+sha256sums=('663af403726b52e772ccbeeebe05656008c9ed35c0bb812c97ddfdbcd94a6906'
             '7c40ecee34ea02e4dcad2c479e5036cf417366752f85902cb76360f3303341f0'
             '79c9d3526f84143ddc9d6f7033a5f3e403c4c92937a3aa4bcaca1db5393b75ee'
             'bf467c9e0f536bda271283c6ef85eb1a943e3196b621c8a912d64953b205df83'
-            '83a8a437703ec7aaf0e395b0f3cdf506a735d5c26f33ea4fbced1c32fac83264'
+            '380910cde93ea659cab090e5f5febc8c4c9fffc0e39b7294bd3505646a2dc7cc'
             '86a403388436d421fd255c451ddf79a47b2f723a70407da81b7676962e08f1e1')
 # prepare() {
 #   	cd "$_pkgname-$pkgver"
