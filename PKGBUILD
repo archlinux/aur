@@ -6,7 +6,7 @@
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
 pkgver='3.9.3'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -23,7 +23,8 @@ sha256sums=('7081fa14e11bc2b84394c707f9c7938088f02fc8239c7ef06175df8c0a60ba2b')
 validpgpkeys=()
 
 prepare() {
-    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.9.1.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.9.1-1.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.9.3-1.patch"
     cd "${srcdir}/PlotJuggler-${pkgver}"
 }
 
@@ -32,7 +33,7 @@ build() {
         [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
         cd ${srcdir}/build
 
-	cmake ${srcdir}/${_dir}
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ${srcdir}/${_dir}
 	make
 }
 
