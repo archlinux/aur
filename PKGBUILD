@@ -5,8 +5,8 @@
 
 _pkgname=libpamac
 pkgname=$_pkgname-flatpak
-pkgver=11.7.2
-_commit=c6df0043fc8c7ee5398125b21d14819d17fbfb17
+pkgver=11.7.3
+_commit=29b31e251eb9eac3804955489c285851eb2aca97
 pkgrel=1
 epoch=1
 _srcdir="$_pkgname-$pkgver"
@@ -51,7 +51,7 @@ options=(!emptydirs !strip)
 backup=('etc/pamac.conf')
 install='pamac.install'
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('72a20065f1655768fa3acb88db97f1da4b2ef876142c22e6faf659105b1c00d9')
+sha256sums=('7a0e6abfa5f1ea1f1530301566aacb0acffaf95d93d36a6811dcd874460ca57d')
 
 _srcdir="$_pkgname"
 
