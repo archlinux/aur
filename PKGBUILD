@@ -1,6 +1,6 @@
 pkgbase='simple-thumbnailers'
 pkgname=(simple-thumbnailer-{pdf,vid})
-pkgver=r3.86b46c2
+pkgver=r4.6cbb699
 pkgrel=1
 
 arch=('any')
@@ -8,6 +8,7 @@ url='https://gitlab.com/zoli111/simple-thumbnailers'
 license=('GPL')
 source=('git+https://gitlab.com/zoli111/simple-thumbnailers')
 sha256sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
 	cd "simple-thumbnailers" || exit
