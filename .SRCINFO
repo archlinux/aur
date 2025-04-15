@@ -1,7 +1,7 @@
 pkgbase = python-condconfigparser-git
 	pkgdesc = Python library designed to help parsing configuration files. Main specificity: Allows to define conditions using boolean operators and specific sections in the configuration file that are only applied when the corresponding condition is fulfilled.
 	pkgver = 1.0.6+1.r38.20250415.77c0a62
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://frougon.net/projects/CondConfigParser/
 	arch = any
@@ -18,9 +18,7 @@ pkgbase = python-condconfigparser-git
 	conflicts = python3-condconfigparser
 	conflicts = python-condconfigparser
 	source = python-condconfigparser::git+https://github.com/frougon/CondConfigParser
-	source = workaround_license_double_specification.pyproject-toml.patch::https://github.com/user-attachments/files/19757701/workaround_license_double_specification.pyproject-toml.patch.txt
 	validpgpkeys = 125B5A0FDB788FDD0EF41A9DC785B90B5053A3A2
 	sha256sums = SKIP
-	sha256sums = 978b615bb7a5a1b5d19bc021cf6e21030a457c78aa5ca2f06f457174ed7b44da
 
 pkgname = python-condconfigparser-git

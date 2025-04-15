@@ -7,7 +7,7 @@ url="https://frougon.net/projects/CondConfigParser/"
 license=("BSD-2-Clause")
 epoch=0
 pkgver=1.0.6+1.r38.20250415.77c0a62
-pkgrel=1
+pkgrel=2
 arch=(
   'any'
 )
@@ -33,11 +33,11 @@ conflicts=(
 optdepends=()
 source=(
   "${_pkgname}::git+https://github.com/frougon/CondConfigParser"
-  "workaround_license_double_specification.pyproject-toml.patch::https://github.com/user-attachments/files/19757701/workaround_license_double_specification.pyproject-toml.patch.txt"
+  # "workaround_license_double_specification.pyproject-toml.patch::https://github.com/user-attachments/files/19757701/workaround_license_double_specification.pyproject-toml.patch.txt"
 )
 sha256sums=(
   'SKIP'
-  '978b615bb7a5a1b5d19bc021cf6e21030a457c78aa5ca2f06f457174ed7b44da'
+  # '978b615bb7a5a1b5d19bc021cf6e21030a457c78aa5ca2f06f457174ed7b44da'
 )
 
 validpgpkeys=(
@@ -47,10 +47,10 @@ validpgpkeys=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  for _patch in "${srcdir}/workaround_license_double_specification.pyproject-toml.patch"; do
-    printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
-    patch -Np1 --follow-symlinks -i "${_patch}"
-  done
+  # for _patch in "${srcdir}/workaround_license_double_specification.pyproject-toml.patch"; do
+  #   printf '%s\n' "   > Applying patch '$(basename "${_patch}")' ..."
+  #   patch -Np1 --follow-symlinks -i "${_patch}"
+  # done
 
   git log > git.log
 }
