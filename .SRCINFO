@@ -1,6 +1,6 @@
 pkgbase = v2rayn
 	pkgdesc = A GUI client supporting Xray core, sing-box core and other cores
-	pkgver = 7.11.1
+	pkgver = 7.11.2
 	pkgrel = 1
 	url = https://github.com/2dust/v2rayN
 	install = v2rayn.install
@@ -15,12 +15,12 @@ pkgbase = v2rayn
 	depends = xray
 	conflicts = v2rayn-bin
 	options = !strip
-	source = git+https://github.com/2dust/v2rayN#tag=7.11.1
-	source = extra-source-7.11.1.zip::https://github.com/2dust/v2rayN-core-bin/raw/refs/heads/master/v2rayN-linux-64.zip
+	source = git+https://github.com/2dust/v2rayN#tag=7.11.2
+	source = extra-source-7.11.2.zip::https://github.com/2dust/v2rayN-core-bin/raw/refs/heads/master/v2rayN-linux-64.zip
 	source = v2rayn.install
 	source = v2rayN.sh
 	source = v2rayN.desktop
-	sha256sums = 6a8cf12112e0eefeca3894074eb29032438e6af4d54ff8f74d8256be5adeeafa
+	sha256sums = 29a1315f522f40b1f21e171f4474219b91200799b69a6f9268237f6c11887159
 	sha256sums = 343307c1a3e457057316d3f358af07118ef5f9d2877695d1baf3cccfbfe2a0d8
 	sha256sums = a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790
 	sha256sums = 99348ffdebf72cc76c16c95fc158c21df4788cbc85fe2bee3c08f11f6eff2d97
