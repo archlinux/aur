@@ -5,10 +5,10 @@ pkgname=mail-deduplicate
 _pkgname=mail_deduplicate
 pkgver=7.6.1
 pkgrel=1
-pkgdesc='Command-line tool to deduplicate mails from a set of boxes'
+pkgdesc='An utility to deduplicate mails from a set of boxes.'
 arch=(any)
 license=(GPL2)
-url="https://mail-deduplicate.readthedocs.io/"
+url="https://kdeldycke.github.io/mail-deduplicate/"
 depends=(python python-arrow python-boltons python-click-extra
          python-tabulate)
 makedepends=(python-build python-installer python-setuptools python-wheel)
