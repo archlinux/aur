@@ -3,13 +3,13 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.39.3653
+pkgver=3.40.3718
 pkgrel=1
 pkgdesc="End-to-end encrypted messenger with file sharing, voice calls and video conferences"
 arch=(any)
 url="https://wire.com/"
 license=(GPL-3.0-or-later)
-_electronver=34
+_electronver=35
 depends=(
   "electron$_electronver"
   hicolor-icon-theme
@@ -28,7 +28,7 @@ source=(
   "$pkgname.desktop"
   "$pkgname.sh"
 )
-sha256sums=('fa6f38d6334f55f3851601543c598f7a5214c3b6bbd59f2442ee6d9953573536'
+sha256sums=('aa0b48598b8dd33b59f2c6397aaacfa939c6754d2942595b2798c776f099c07c'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787'
             'e443d426819fb647b7fb4a2db36e3f03589c990bd443a0d3d0ff05e5485ea39e')
