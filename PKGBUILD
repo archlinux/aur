@@ -4,7 +4,7 @@
 pkgname=python-logging_tree
 pkgver=1.10
 pkgrel=1
-pkgdesc='Introspect and display the logger tree inside "logging"'
+pkgdesc='Debug Python logging problems by printing out the tree of handlers you have defined.'
 url='https://github.com/brandon-rhodes/logging_tree'
 license=('BSD')
 arch=('any')
