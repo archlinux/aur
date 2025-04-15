@@ -1,7 +1,7 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=tractor
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Setup an onion routing proxy'
 arch=(any)
@@ -34,8 +34,8 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://framagit.org/tractor/tractor/-/archive/$pkgver/tractor-$pkgver.tar.gz"
         "fix-tests.patch")
 
-sha256sums=('c5bece79f9771c6a68788198c3b852b2dce311b1297709b76f78f680e5a9fdc8'
-            '784b1387805d670adf8e06327c4b172ca09241770853901745fef73066d41290')
+sha256sums=('54735797e3bc1a99499b2409beb67bfa2fa5058039a1dc3da7bfcb9999b2cc21'
+            'bf8c7b0835cf2a1cc87a5b014eec01a953d55a190e57a7383f1cd1edb40b3a73')
 
 prepare() {
   cd "$pkgname-$pkgver"
