@@ -3,7 +3,7 @@
 
 pkgname=python-pytorch-ignite
 _pkgname=${pkgname#python-pytorch-}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="High-level library to help with training and evaluating neural networks in PyTorch flexibly and transparently."
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-wheel')
 conflicts=('python-pytorch-ignite-git')
 source=("https://github.com/pytorch/ignite/archive/v${pkgver}.tar.gz")
-sha256sums=('b41e7c7bd33530b22fd1787a6d79b89c5efebd13f37c2a53cf3ac3a25d1fbe13')
+sha256sums=('f11777f5ab9f74d72c66adfb9214ae16ad1752ca0e866d6bf6f1c0738c5e99c2')
 
 
 build() {
@@ -32,6 +32,5 @@ build() {
 package() {
 	cd "${_pkgname}-${pkgver}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 "${srcdir}/$_pkgname-$pkgver/LICENSE" \
-	        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
