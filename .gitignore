@@ -1,6 +1,6 @@
 pkg/
 src/
 LICENSE
-scc_*.tar.gz
-scc-*-unknown-linux.zip
-scc-bin-*.pkg.tar.zst
+scc*.tar.gz
+scc*.zip
+scc*.zst

@@ -10,11 +10,11 @@ pkgbase = scc-bin
 	license = UNLICENSE
 	provides = scc=3.5.0
 	conflicts = scc
-	source_x86_64 = https://github.com/boyter/scc/releases/download/v3.5.0/scc_Linux_x86_64.tar.gz
+	source_x86_64 = scc-bin-v3.5.0-x86_64.tar.gz::https://github.com/boyter/scc/releases/download/v3.5.0/scc_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = 6c31f4d0cf3b7a8c5ca910fa4e451949434798f6541ec5dea4b83f4973e13772
-	source_i386 = https://github.com/boyter/scc/releases/download/v3.5.0/scc_Linux_i386.tar.gz
+	source_i386 = scc-bin-v3.5.0-i386.tar.gz::https://github.com/boyter/scc/releases/download/v3.5.0/scc_Linux_i386.tar.gz
 	sha256sums_i386 = a296012728ab727d54db59f341f300c4f226869d8b53133df0f28e0e9403b448
-	source_aarch64 = https://github.com/boyter/scc/releases/download/v3.5.0/scc_Linux_arm64.tar.gz
+	source_aarch64 = scc-bin-v3.5.0-arm64.tar.gz::https://github.com/boyter/scc/releases/download/v3.5.0/scc_Linux_arm64.tar.gz
 	sha256sums_aarch64 = 64446b1ca954aa1ac34984bbb4f098f46e6c69c84d64a7d096275ea6e50461eb
 
 pkgname = scc-bin
