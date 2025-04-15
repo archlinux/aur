@@ -6,7 +6,7 @@ pkgdesc="Python library designed to help parsing configuration files. Main speci
 url="http://frougon.net/projects/CondConfigParser/"
 license=("BSD-2-Clause")
 epoch=0
-pkgver=1.0.6.r37.20250401.497e763
+pkgver=1.0.6+1.r38.20250415.77c0a62
 pkgrel=1
 arch=(
   'any'
@@ -19,7 +19,7 @@ makedepends=(
   'gitlog-to-changelog'
   'python-build'
   'python-installer'
-  'python-setuptools>=61.0.0'
+  'python-setuptools>=77.0.3'
   'python-wheel'
 )
 provides=(
