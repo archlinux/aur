@@ -1,0 +1,17 @@
+#!/bin/bash
+SDIR=/usr/share/openscad-nopscadlib-git/scripts
+SCMD="$1"
+shift
+if test "$SCMD"; then
+	for SBIN in "$SDIR/$SCMD"{,.py}; do
+		test -r "$SBIN" && exec python3 "$SBIN" "$@"
+	done
+	echo "Unknown command: $SCMD" >&2
+fi
+exec >&2
+echo "Usage: $(basename $0) <command> <args>"
+echo
+echo "Available commands:"
+sed -ne 's/^| `\(.*\)\.py` | \(.*\) |$/\1 \2/p' "$SDIR/readme.md" |
+	while read SBIN SDSC; do printf '   %-14s%s\n' "$SBIN" "$SDSC"; done
+exit 1
