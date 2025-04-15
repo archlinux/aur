@@ -1,13 +1,13 @@
 pkgbase = jnetmap
 	pkgdesc = Graphical network monitoring and documentation tool
 	pkgver = 0.5.6
-	pkgrel = 4
+	pkgrel = 1
 	url = http://rakudave.ch/jnetmap
 	arch = any
 	license = GPL3
 	depends = java-runtime
 	conflicts = jnetmap
-	source = https://rakudave.synology.me/jnetmap/jnetmap-0.5.6-734_all.deb
-	sha256sums = bb12900f8cd8dacd7f4aa34dca838c8bf0f15a4f873c78e2019b73ef5256f9d2
+	source = https://rakudave.synology.me/jnetmap/jnetmap-0.5.6-735_all.deb
+	sha256sums = f5aa50cd7bbbe83e0d1f65131e6088a2ea8710133d617016255d6448def4a823
 
 pkgname = jnetmap
