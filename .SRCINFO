@@ -1,0 +1,10 @@
+pkgbase = unzip-bsdunzip-symlink
+	pkgdesc = A symlink to unzip from bsdunzip of libarchive
+	pkgver = 3.7.9
+	pkgrel = 1
+	arch = x86_64
+	depends = libarchive
+	provides = unzip
+	conflicts = unzip
+
+pkgname = unzip-bsdunzip-symlink
