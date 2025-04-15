@@ -2,7 +2,7 @@
 # Contributor: Canmi (Canmi21)
 
 pkgname=cursor-free-vip-git
-pkgver=1.9.04.10.g5863891
+pkgver=1.9.05
 pkgrel=1
 pkgdesc="Reset Cursor AI MachineID & Auto Sign Up / In & Bypass Higher Token Limit"
 arch=('x86_64')
