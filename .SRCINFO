@@ -1,0 +1,14 @@
+pkgbase = star-tex
+	pkgdesc = a TeX engine in Go
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://git.sr.ht/~sbinet/star-tex
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = star-tex-v0.7.1.tar.gz::https://git.sr.ht/~sbinet/star-tex/archive/v0.7.1.tar.gz
+	sha256sums = 08280c00a8d92ba556f92819c2e1a4b2412fa1535f78c96f52d6656d2a844f88
+
+pkgname = star-tex
