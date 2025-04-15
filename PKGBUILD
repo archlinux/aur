@@ -2,8 +2,8 @@
 # Contributor: Lance Roy <ldr709@gmail.com>
 _projectname='core_unix'
 pkgname="ocaml-$_projectname"
-pkgver='0.17.0'
-pkgrel='5'
+pkgver='0.17.1'
+pkgrel='1'
 epoch='1'
 pkgdesc='Unix-specific extensions to some of the modules defined in ocaml-core and ocaml-core_kernel'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'fix-ocaml-530-build.diff'
 )
-b2sums=('9afc07343427e84dc71df23b2d3a4e02780dcb75b4969d06a7d06d47b7dfe17e464223258733673265491cecfbea07f92f429167b81ead226319c452e4b895db'
+b2sums=('384bc85e12362e7ec02c9e2e1e38f6350d8c9db682e4e8a23184487a0261b45373460d3f22d7a87856d88bfc1176a1ea5d7d5fa0d88979b81c8250e546c9ea7a'
         '0e25445765d9c032fc6ab044ffa8f161433f430701e6b3027849010a1b13614e3c6f5315de0e10debd09d64f38f0b6d26b15621f4c930005d28c55664a97f83b')
 
 _sourcedirectory="$_projectname-$pkgver"
