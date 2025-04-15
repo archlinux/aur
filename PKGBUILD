@@ -32,5 +32,5 @@ package() {
     rm -rf "${pkgdir}/usr/lib/atostekid"
     install -D -m 644 "${pkgdir}/usr/share/doc/atostekid/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
     install -m 644 "${pkgdir}"/usr/share/doc/atostekid/license_{en,fi,sv}.rtf "${pkgdir}/usr/share/licenses/${pkgname}/"
-    rm "${pkgdir}"/usr/share/doc/atostekid/{copyright,license_{en,fi,sv}.rtf}
+    rm "${pkgdir}"/usr/share/doc/atostekid/{*.Debian,copyright,license_{en,fi,sv}.rtf}
 }
