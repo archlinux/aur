@@ -2,7 +2,7 @@
 
 pkgname=python-erddapy
 pkgdesc='Retrieve scientific datasets from ERDDAP servers'
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 url='https://ioos.github.io/erddapy/'
 arch=('any')
@@ -31,7 +31,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '0206dcba3954340281a9e283d9bc3925581205492531d98775c65a61cb23bb90'
+  'dbb9bcb7335a52d73e3a23e7cdd976e8ef84452f1d1ee3e9f99c974ff7dcd57b'
 )
 
 build() {
