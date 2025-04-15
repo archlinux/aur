@@ -6,7 +6,8 @@
 _pkgname=pamac
 pkgname=${_pkgname}-flatpak
 pkgver=11.7.2
-pkgrel=1
+_commit=71ced277e5931ccea2433ece291430481a2694ee
+pkgrel=2
 _srcdir="$_pkgname-$pkgver"
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -47,10 +48,15 @@ conflicts=(
     'pamac-nosnap'
 )
 options=(!emptydirs)
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c13d422bbdd9ced4c86de4a4921516b0ca69640440e18082ac29af87105e6829')
+source=("git+${url}.git#commit=${_commit}")
+sha256sums=('b7166976642b21e9ce22c9f0a0b6a2708ffe4f1c91cf9ec3b52231d2eb13d66e')
 
 _srcdir="$_pkgname-$pkgver"
+
+pkgver() {
+  cd "$_srcdir"
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
 	cd "$_srcdir"
