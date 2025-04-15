@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cpeditor-bin
 pkgver=7.0.1
-pkgrel=4
-pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit"
-arch=("x86_64")
+pkgrel=5
+pkgdesc="The IDE for competitive programming Fetch, Code, Compile, Run, Check, Submit.(Prebuilt version)"
+arch=('x86_64')
 url="https://cpeditor.org/"
 _ghurl="https://github.com/cpeditor/cpeditor"
 license=("GPL-3.0-or-later")
@@ -34,19 +34,20 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('30303f0c7bcac3ae9cc6550ed9e86e5be8c4c1d49e09542dca18f17a2561b0a6'
-            '34694e75d045d429afa55a693245d376eff2e75aacab96c20f563156d3da3207')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '187af44879585688a89874e74896e13840b3bb8defc9190a16ff6962adae01eb')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|usr/share|opt|g" -i "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh"
+    sed -i "s/share/lib/g" "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/opt"
-    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/opt"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"* -t "${pkgdir}/opt/${pkgname%-bin}/lib"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
