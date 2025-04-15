@@ -1,0 +1,6 @@
+[pack-cli]
+source = "github"
+github = "buildpacks/pack"
+prefix = "v"
+use_max_tag = true
+exclude_regex = ".*(rc|beta).*"
