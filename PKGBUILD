@@ -1,27 +1,48 @@
-# Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
-# Maintainer: Buildpacks Maintainers <cncf-buildpacks-maintainers at lists dot cncf dot io>
+# Maintainer: Prasanth Baskar (bupdprasanth@gmail.com)
+# Contributor: Buildpacks Maintainers <cncf-buildpacks-maintainers at lists dot cncf dot io>
+
+_base=pack
 pkgname=pack-cli-git
-pkgver=0.28.0+r42.gd1024e95
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="CLI for building apps using Cloud Native Buildpacks"
+depends=('glibc')
+makedepends=('go' 'git')
 arch=('x86_64')
 url="https://buildpacks.io/"
-license=('Apache')
-makedepends=(
-	'git'
-	'go-pie'
-)
-provides=('pack-cli')
-conflicts=('pack-cli')
-source=("${pkgname}::git+https://github.com/buildpacks/pack")
-sha512sums=("SKIP")
-build() {
-	export GOPATH="${srcdir}/go"
-	cd "${srcdir}/${pkgname}"
-	PACK_VERSION=0.28.0 make build
+license=('Apache-2.0')
+conflicts=('pack' 'pack-cli')
+options=(!debug !lto)
+source=("git+https://github.com/buildpacks/${_base}.git#tag=v${pkgver}")
+sha512sums=('SKIP')
+
+prepare() {
+  cd ${_base}
+  mkdir -p dist/
 }
+
+build() {
+  cd ${_base}
+  local _BUILDINFO="-X 'github.com/buildpacks/pack.Version=v${pkgver}'"
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${_BUILDINFO}" \
+    -o "dist/${_base}" \
+    -a ./cmd/pack
+}
+
+# Seems like it needs docker
+# check() {
+#   cd ${_base}
+#   local GOTESTFLAGS="-v -count=1 -parallel=1"
+#   go test ./...
+# }
+
 package() {
-	export GOPATH="${srcdir}/go"
-	go clean -modcache
-	install -D -m755 "${srcdir}/${pkgname}/out/pack" "${pkgdir}/usr/bin/pack"
+  cd ${_base}
+  install -vDm 755 "dist/${_base}" "${pkgdir}/usr/bin/${_base}"
+  install -vDm 644 LICENSE  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
