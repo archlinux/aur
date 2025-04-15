@@ -1,6 +1,6 @@
 pkgbase = python-vllm-bin
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 6
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -54,8 +54,8 @@ pkgbase = python-vllm-bin
 	optdepends = python-datasets: tools to benchmark scripts
 	provides = python-vllm
 	conflicts = python-vllm
-	noextract = vllm-0.8.3+cu121-cp38-abi3-manylinux1_x86_64.whl
-	source = https://github.com/vllm-project/vllm/releases/download/v0.8.3/vllm-0.8.3+cu121-cp38-abi3-manylinux1_x86_64.whl
-	sha256sums = 2cc0b256d24fddf769b5ab96c0f07945864eaa6a90585763742932c43a0c105f
+	noextract = vllm-0.8.4+cu121-cp38-abi3-manylinux1_x86_64.whl
+	source = https://github.com/vllm-project/vllm/releases/download/v0.8.4/vllm-0.8.4+cu121-cp38-abi3-manylinux1_x86_64.whl
+	sha256sums = 03c69cc4e5499df9f4b680441fac9c7b6656bc47220757339d2c4592dc963045
 
 pkgname = python-vllm-bin
