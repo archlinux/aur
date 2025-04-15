@@ -6,19 +6,19 @@
 
 _pkgname=zenpower3
 pkgname=zenpower3-dkms-git
-epoch=2
-pkgver=r69.c176fdb
+epoch=3
+pkgver=r68.cbb3532
 pkgrel=1
 pkgdesc="A Linux kernel driver for reading temperature, voltage(SVI2), current(SVI2) and power(SVI2) for AMD Zen family CPUs, now with Zen 3 support'"
 arch=('i686' 'x86_64')
-url="https://git.unnamed.website/zenpower3"
+url="https://github.com/AliEmreSenel/zenpower3"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
 provides=('zenpower3' 'zenpower3-dkms')
 conflicts=('zenpower3' 'zenpower3-dkms')
 install=$_pkgname.install
-source=("git+https://git.unnamed.website/zenpower3"
+source=("git+https://github.com/AliEmreSenel/zenpower3.git"
         "$_pkgname.conf")
 sha256sums=('SKIP'
             '7bff3a5ea2c8b8abf56ce1d79b9724b1aea89e2564d244e09691070113d60f6a')
