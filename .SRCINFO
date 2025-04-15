@@ -1,5 +1,5 @@
 pkgbase = ruby-unicode-blocks
-	pkgdesc = [Unicode 15.1.0] Answers the question: Which Unicode block does a code point belong to?
+	pkgdesc = Unicode Blocks of a Ruby String
 	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/janlelis/unicode-blocks
