@@ -1,6 +1,6 @@
 pkgbase = torzu-git
 	pkgdesc = Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind.
-	pkgver = r27211.2384d30c2
+	pkgver = r27236.15d00322a
 	pkgrel = 1
 	url = https://notabug.org/litucks/torzu
 	arch = x86_64
@@ -105,7 +105,6 @@ pkgbase = torzu-git
 	source = git+https://github.com/lat9nq/tzdb_to_nx.git
 	source = git+https://github.com/brofield/simpleini.git
 	source = git+https://github.com/merryhime/oaknut.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
@@ -142,8 +141,7 @@ pkgbase = torzu-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = SKIP
 	b2sums = 8b8f86b0ca5f8db93082430da0f2bbb8bfaea8c35f5b85b81a9c81e51cb68c92b95e1a3d887f0a54caea705cd695055d0967c4b709d519d86923b5e759cba031
-	b2sums = 0991a343a491b6ed79acc095c07f5a3238e0d2df28f760b1e73b4c78f3e738762442f57eb3e9b6e1d269db260d2650b5df4415b3c9e2d035a5f4eb28eddfc2a8
+	b2sums = 2c840679ff5cfb7295edf43299fe1daff4fb4179d5d72de07402f26bcd46da87e2e92242882229ac2448de917c2159ecbc313049fba61081cf13c178354c8dd0
 
 pkgname = torzu-git

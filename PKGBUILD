@@ -2,7 +2,7 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27211.2384d30c2
+pkgver=r27236.15d00322a
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
@@ -28,7 +28,6 @@ source=(
   git+https://github.com/lat9nq/tzdb_to_nx.git
   git+https://github.com/brofield/simpleini.git
   git+https://github.com/merryhime/oaknut.git
-  git+https://github.com/KhronosGroup/SPIRV-Headers.git
   git+https://github.com/KhronosGroup/SPIRV-Tools.git
   git+https://github.com/fmtlib/fmt.git
   git+https://github.com/KhronosGroup/Vulkan-Utility-Libraries.git
@@ -67,9 +66,8 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-		'8b8f86b0ca5f8db93082430da0f2bbb8bfaea8c35f5b85b81a9c81e51cb68c92b95e1a3d887f0a54caea705cd695055d0967c4b709d519d86923b5e759cba031'
-        '0991a343a491b6ed79acc095c07f5a3238e0d2df28f760b1e73b4c78f3e738762442f57eb3e9b6e1d269db260d2650b5df4415b3c9e2d035a5f4eb28eddfc2a8')
+        '8b8f86b0ca5f8db93082430da0f2bbb8bfaea8c35f5b85b81a9c81e51cb68c92b95e1a3d887f0a54caea705cd695055d0967c4b709d519d86923b5e759cba031'
+        '2c840679ff5cfb7295edf43299fe1daff4fb4179d5d72de07402f26bcd46da87e2e92242882229ac2448de917c2159ecbc313049fba61081cf13c178354c8dd0')
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -77,7 +75,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,cpp-jwt,oaknut,SPIRV-Headers,SPIRV-Tools,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
+  for submodule in {enet,cubeb,libusb,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,libadrenotools,tzdb_to_nx,simpleini,cpp-jwt,oaknut,SPIRV-Tools,fmt,Vulkan-Utility-Libraries,VulkanMemoryAllocator,Vulkan-Headers};
   do
     git config --file=.gitmodules submodule.$submodule.url "${srcdir}"/$submodule
   done
@@ -115,7 +113,7 @@ build() {
   CXXFLAGS+=" -I/usr/include/libusb-1.0"
   
   cmake -B build -G Ninja \
-    -DYUZU_USE_BUNDLED_VCPKG=ON \
+    -DYUZU_USE_BUNDLED_VCPKG=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS="-march=x86-64-v2" \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
@@ -123,7 +121,7 @@ build() {
     -DENABLE_QT6=ON \
     -DYUZU_USE_EXTERNAL_SDL2=OFF \
     -DYUZU_USE_FASTER_LD=OFF \
-    -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON \
+    -DYUZU_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=OFF \
     -DYUZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
     -DYUZU_USE_BUNDLED_FFMPEG=OFF \
     -DYUZU_ENABLE_LTO=ON \
