@@ -1,14 +1,14 @@
 # Maintainer: DCMfx <https://dcmfx.github.io>
 
 pkgname=dcmfx
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='CLI tool for working with DICOM and DICOM JSON'
 arch=('x86_64' 'aarch64')
 url="https://dcmfx.github.io"
 license=('AGPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dcmfx/dcmfx/archive/v$pkgver.tar.gz")
-sha256sums=('f07b6cd96d5a16ce9b2c1d1d9949304d3d3846f03997c2bb29ab5168169a0185')
+sha256sums=('23345b5b37c3ac77d25841069292c27e2b11cdd66feb2574e8d53b1ecf1953cb')
 makedepends=('cargo' 'clang' 'cmake' 'nasm')
 depends=('gcc-libs' 'glibc' 'x264' 'x265')
 options=('!lto')
