@@ -1,5 +1,5 @@
 pkgbase = ruby-unicode-name
-	pkgdesc = [Unicode 15.1.0] Returns the name, aliases, or label of a Unicode code point
+	pkgdesc = Unicode character names in Ruby
 	pkgver = 1.13.5
 	pkgrel = 1
 	url = https://github.com/janlelis/unicode-name
