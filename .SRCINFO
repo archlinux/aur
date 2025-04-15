@@ -1,5 +1,5 @@
 pkgbase = ruby-unicode-types
-	pkgdesc = [Unicode 15.1.0] Determines the very basic type of codepoints (one of: Graphic, Format, Control, Private-use, Surrogate, Noncharacter, Reserved)
+	pkgdesc = Basic Unicode Types of a Ruby String
 	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/janlelis/unicode-types
