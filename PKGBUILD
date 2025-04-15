@@ -16,7 +16,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/wojtmic/axon/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('d8bc2537587dba27afac59d16d7b6feaee4da228a004d11bab3c198d934a8226')
+sha256sums=('278af560701402ec5360453b4d8d96f4a2c346d04c39b11263c93839ae18b7ef')
 
 build() {
     cd "$srcdir/axon-$pkgver"
