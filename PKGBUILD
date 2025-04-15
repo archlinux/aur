@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2120.2
-pkgrel=3
+pkgver=2120.3
+pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -9,20 +9,16 @@ url="https://github.com/azahar-emu/azahar"
 license=('GPL-2.0-or-later')
 depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch' 'zstd'
 	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
+makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 options=(!lto)
-_date=20250329
-_commit=32bb14f
-source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz"
-	"898.diff::https://patch-diff.githubusercontent.com/raw/azahar-emu/azahar/pull/898.diff")
-sha256sums=('68fd93c2350979e19d6dd8a47722010c1540420d3e36f76a6f5b79ce3679292b'
-            '07f31bbdfc245fe56717d5e02dfcd20e7a850fcf94c9d724cc291eb84267e9a4')
+_date=20250414
+_commit=00e3bbb
+source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz")
+sha256sums=('3e6c35bde6fc78021e6411e42a24aad7a889f5c556947925441bedc3e9aa242d')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
-	patch -p1 < "$srcdir/898.diff"
-	sed -i 's/VERSION 3.2.0/VERSION 3.5/' externals/discord-rpc/CMakeLists.txt
 }
 
 build() {
