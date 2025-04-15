@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=mysql-connector-java
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Java library to connect to MySQL"
 depends=(java-environment)
@@ -15,7 +15,7 @@ url='https://dev.mysql.com/downloads/connector/j/'
 source=(
   https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j-${pkgver}.tar.gz
 )
-sha512sums=('31a32cbb026932c3ec08c5a6f24643db084b3bf43d28e11b94bbccb5478b66f69322819dd611daa7b2ba0b705fba00d3a7ba2ce6d96f023cf4e2b0ae4457ba6a')
+sha512sums=('a1dfdbae99dd537b31798daf61a6794c131dee11955674b09fcdeebc43e20c8ac3d730fb12f2be505e9a20d9f50aeb41b03a8fc70f5822a87ba4a8e3d3f47786')
 
 package() {
   cd "$srcdir/mysql-connector-j-${pkgver}"
