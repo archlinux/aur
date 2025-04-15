@@ -2,7 +2,7 @@
 
 pkgname=kwin-effects-burn-my-windows-git
 _pkgname=Burn-My-Windows-git
-pkgver=44.r7.g4538ff3
+pkgver=46.r6.gf662546
 pkgrel=1
 pkgdesc="Disintegrate your windows with style."
 arch=('any')
@@ -31,7 +31,6 @@ build() {
 package() {
   cd "$_pkgname"
   install -dm0755 "$pkgdir/usr/share/kwin/effects"
-  tar -xf "$srcdir/$_pkgname/kwin/burn_my_windows_kwin6.tar.gz" -C "$pkgdir/usr/share/kwin/effects"
-
+  cp -r "kwin/_build"/kwin6_* "$pkgdir/usr/share/kwin/effects/"
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
