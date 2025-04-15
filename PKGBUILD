@@ -6,7 +6,7 @@ pkgname=cmake3
 pkgver=3.31.6
 provides=(${pkgname%3}=$pkgver)
 conflicts=(${pkgname%3})
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -40,6 +40,7 @@ validpgpkeys=(CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA) # Brad King <brad.king@k
 build() {
   cd ${pkgname%3}
   ./bootstrap --prefix=/usr \
+    CXXFLAGS="-fpermissive" \
     --mandir=/share/man \
     --docdir=/share/doc/cmake \
     --datadir=/share/cmake \
