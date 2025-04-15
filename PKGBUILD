@@ -3,7 +3,7 @@
 _pkgname="python-condconfigparser"
 pkgname="${_pkgname}-git"
 pkgdesc="Python library designed to help parsing configuration files. Main specificity: Allows to define conditions using boolean operators and specific sections in the configuration file that are only applied when the corresponding condition is fulfilled."
-url="http://frougon.net/projects/CondConfigParser/"
+url="https://frougon.net/projects/CondConfigParser/"
 license=("BSD-2-Clause")
 epoch=0
 pkgver=1.0.6+1.r38.20250415.77c0a62
