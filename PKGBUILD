@@ -2,13 +2,14 @@
 
 pkgbase=sigrok-slogic-git
 pkgname=(sigrok-slogic-git)
-pkgver=r5830.fa71bbc
+pkgver=r6107.4397c41
 pkgrel=1
 pkgdesc="sigrok_slogic"
 arch=($CARCH)
 url="https://wiki.sipeed.com/hardware/zh/logic_analyzer/combo8/index.html"
 license=('GPL-3.0-or-later')
 depends=(
+  gcc-libs
   glib2
   glibc
   bluez-libs
@@ -62,10 +63,10 @@ build() {
     --prefix=/usr \
     --enable-cxx \
     --enable-shared \
-    --disable-static \
     --disable-java \
     --disable-ruby \
     --disable-python
+  #   --disable-static \
 
   make
 }
