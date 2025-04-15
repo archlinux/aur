@@ -8,10 +8,8 @@ pkgname=${_pkgname}-flatpak
 pkgver=11.7.2
 _commit=71ced277e5931ccea2433ece291430481a2694ee
 pkgrel=2
-_srcdir="$_pkgname-$pkgver"
 pkgdesc="A GUI frontend for libalpm. With Flatpak support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-#url="https://gitlab.manjaro.org/applications/$_pkgname"
 url="https://github.com/manjaro/pamac"
 license=('GPL3')
 depends=(
@@ -39,8 +37,7 @@ makedepends=(
     'vala'
     'xorgproto'
 )
-#provides=(pamac)
-provides=("${_pkgname}=${pkgver}-${pkgrel}")
+provides=("pamac=$pkgver-$pkgrel")
 conflicts=(
     'pamac'
     'pamac-aur'
@@ -51,25 +48,25 @@ options=(!emptydirs)
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('b7166976642b21e9ce22c9f0a0b6a2708ffe4f1c91cf9ec3b52231d2eb13d66e')
 
-_srcdir="$_pkgname-$pkgver"
+#_srcdir="$_pkgname-$pkgver"
 
 pkgver() {
-  cd "$_srcdir"
+  cd "$_pkgname"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-	cd "$_srcdir"
+	cd "$_pkgname"
 	# adjust version string
 	sed -i -e "s|\"$pkgver\"|\"$pkgver-$pkgrel\"|g" 'src/version.vala'
 }
 
 build() {
-	arch-meson "$_srcdir" 'build' -Denable-fake-gnome-software=false
+	arch-meson "$_pkgname" 'build' -Denable-fake-gnome-software=false
 	meson compile -C 'build'
 }
 
 package() {
 	meson install -C 'build' --destdir "$pkgdir"
-	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "$_pkgname/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
