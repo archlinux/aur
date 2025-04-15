@@ -1,7 +1,7 @@
 pkgbase = tiny-webserver-gtk4-bin
-	pkgdesc = A tiny webserver with GTK4 GUI written in C for Linux.
+	pkgdesc = A tiny webserver with GTK4 GUI written in C for Linux.(Prebuilt version)
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lennart1978/tiny-webserver-gtk4
 	arch = x86_64
 	license = LicenseRef-unknown
