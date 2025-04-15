@@ -1,7 +1,7 @@
 pkgbase = admesh
 	pkgdesc = CLI and C library for processing triangulated solid meshes
 	pkgver = 0.98.5+r27+gd775906
-	pkgrel = 1
+	pkgrel = 2
 	url = https://admesh.readthedocs.io
 	arch = i686
 	arch = x86_64

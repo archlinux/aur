@@ -5,7 +5,7 @@ pkgname="admesh"
 _commit_rel="70ca24a9b4e6d8aa05e8572e768110dad9b4d47b" # 0.98.5
 _commit="d77590614cc4da46a142207b5d9fc5cfdc937032" # r27
 pkgver="0.98.5+r27+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI and C library for processing triangulated solid meshes"
 arch=('i686' 'x86_64')
 url="https://admesh.readthedocs.io"
@@ -26,7 +26,8 @@ build() {
     -Wno-dev
     -DCMAKE_BUILD_TYPE:STRING='None'
     -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DCMAKE_SKIP_RPATH=YES
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_SKIP_RPATH:BOOL=ON
   )
 
   cd "${srcdir}"
