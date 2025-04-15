@@ -1,5 +1,5 @@
 pkgbase = python-neptune-client
-	pkgdesc = Neptune Client
+	pkgdesc = The experiment tracker for foundation model training
 	pkgver = 1.14.0rc0
 	pkgrel = 2
 	url = https://github.com/neptune-ai/neptune-client

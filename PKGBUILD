@@ -3,7 +3,7 @@
 pkgname=python-neptune-client
 pkgver=1.14.0rc0
 pkgrel=2
-pkgdesc="Neptune Client"
+pkgdesc="The experiment tracker for foundation model training"
 arch=('x86_64')
 url="https://github.com/neptune-ai/neptune-client"
 license=('APACHE')
