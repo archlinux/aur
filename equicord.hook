@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = discord
+
+[Action]
+Description = Running Equilotl after updating Discord...
+When = PostTransaction
+Exec = /usr/bin/Equilotl -install -branch stable
+
