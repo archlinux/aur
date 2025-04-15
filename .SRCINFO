@@ -1,7 +1,7 @@
 pkgbase = python-esphome-dashboard
 	pkgdesc = ESPHome dashboard and ESPHome Web
-	pkgver = 20250212.0
-	pkgrel = 2
+	pkgver = 20250415.0
+	pkgrel = 1
 	url = https://github.com/esphome/dashboard
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-esphome-dashboard
 	makedepends = git
 	makedepends = npm
 	depends = python
-	source = git+https://github.com/esphome/dashboard.git#tag=20250212.0
-	b2sums = 972b99ddd20bde5bc83b9e5983a463bf32c4ba95e2f430f10f485b5283bb34be8cdad5b38bf08b1c57a5bccdaf9d6bf9748b0bc3b9052c5c16067c8dbc23e2f6
+	source = git+https://github.com/esphome/dashboard.git#tag=20250415.0
+	b2sums = d661844c6c5e011674e8b99c0bb008770d8337baea4e8f6c43346c0f182556732444425dee7fdc7867813aa639d6f13a6d66f28510e54fce57712826b62dafd5
 
 pkgname = python-esphome-dashboard

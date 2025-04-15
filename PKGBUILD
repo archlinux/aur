@@ -2,8 +2,8 @@
 
 pkgname=python-esphome-dashboard
 _name=${pkgname#python-esphome-}
-pkgver=20250212.0
-pkgrel=2
+pkgver=20250415.0
+pkgrel=1
 pkgdesc='ESPHome dashboard and ESPHome Web'
 arch=(any)
 url="https://github.com/esphome/$_name"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-wheel python-setuptools git npm)
 source=("git+$url.git#tag=$pkgver")
-b2sums=('972b99ddd20bde5bc83b9e5983a463bf32c4ba95e2f430f10f485b5283bb34be8cdad5b38bf08b1c57a5bccdaf9d6bf9748b0bc3b9052c5c16067c8dbc23e2f6')
+b2sums=('d661844c6c5e011674e8b99c0bb008770d8337baea4e8f6c43346c0f182556732444425dee7fdc7867813aa639d6f13a6d66f28510e54fce57712826b62dafd5')
 
 build() {
   cd $_name
