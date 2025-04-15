@@ -3,12 +3,13 @@
 appname=amethyst
 pkgname=$appname-player
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform music player made with Typescript "
 arch=('x86_64')
 url="https://github.com/Geoxor/$appname"
 license=('MIT')
 makedepends=('gcc-multilib' 'git' 'gendesk' 'yarn' 'libxcrypt-compat')
+depends=('libvips')
 source=("git+https://github.com/Geoxor/$appname/#tag=v$pkgver")
 md5sums=('SKIP')
 
