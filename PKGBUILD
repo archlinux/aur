@@ -2,7 +2,7 @@
 _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-clblas"
-pkgver=2.27.0 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=2.28.0 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OpenCL optimizations)"
 arch=('x86_64')

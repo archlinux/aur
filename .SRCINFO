@@ -1,6 +1,6 @@
 pkgbase = local-ai-clblas
 	pkgdesc = Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with OpenCL optimizations)
-	pkgver = 2.27.0
+	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://github.com/mudler/LocalAI
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = local-ai-clblas
 	conflicts = local-ai
 	options = !strip
 	backup = etc/local-ai/local-ai.conf
-	source = local-ai-2.27.0.tar.gz::https://github.com/mudler/LocalAI/archive/refs/tags/v2.27.0.tar.gz
+	source = local-ai-2.28.0.tar.gz::https://github.com/mudler/LocalAI/archive/refs/tags/v2.28.0.tar.gz
 	source = local-ai.conf
 	source = local-ai.tmpfiles
 	source = local-ai.sysusers
