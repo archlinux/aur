@@ -15,7 +15,7 @@ pkgname=(
   gnome-keybindings-x11-scaling
 )
 _pkgname=gnome-control-center
-pkgver=48.0
+pkgver=48.1
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://apps.gnome.org/Settings/"
@@ -94,14 +94,14 @@ source=(
   # GNOME Control Center tags use SSH signatures which makepkg doesn't understand
   "git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#tag=${pkgver/[a-z]/.&}"
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=e68375c7aced97705953b8e3b30af9f17991153b"
-  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/80b6d7518a30fb8244a4fa1b1ea447d221337c99/display-Allow-fractional-scaling-to-be-enabled.patch"
+  "git+https://gitlab.gnome.org/GNOME/libgxdp.git#commit=e6c11f2812cad0a43e847ec97bfc1c67bf50be52"
+  "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/ed9a8bca0c803f7998eeea44481be97f08166528/display-Allow-fractional-scaling-to-be-enabled.patch"
   "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/80b6d7518a30fb8244a4fa1b1ea447d221337c99/display-Support-UI-scaled-logical-monitor-mode.patch"
 )
-b2sums=('47752f5a016cb60db862f704bd6e328f794927fcd78899bcb1a4aea0c4927826949246786eeca9e9367b8a5cc7531fe676a0550c05955233f278a35eafbd591e'
+b2sums=('de7309395cf8885906582e24a58ba8b18255d2e604a7fabdad4ed18a96010e6d44a39406746e84e7eef93598ab878336f601abc946d348454f806f63a1b50ad5'
         'SKIP'
-        '09bd02a627afffa49c11e4baec961878060d7710e852628c0e0d009d5bdc37eaa3cd1d5bbeea316f197197b9d88436ecf157ebaef41e01b66ad102e1f1c69fb2'
-        '83ea0c8460a195ae202faa782a266c52000ddff046059cf93eb22aab871c92b3f4525b6ebb87e25c0f1b6cc541bffc6980db3f1e23352c2709a4cfa6ceea6fdb'
+        '778c8c83d6a9568d1df3fc237ae2b5d1fbac1c62b51d9d228725f43321a85dc97e8dd1ca88458520001facef0ad0a99c0b2fb86817dbf62d1f9ddd31d6e753d9'
+        '878520942c000efc019fec971bc2e6764d2b42391b162cecfe8aea1054f6cd812fea6332a37ab7fd124bf737917872566262f71909e0b7a0fd54f5dff4d65c3a'
         '941d6c00d5d9d6ca0370854735f7272bbccf7aa9a272ab76c6f9a78641fde78ab1634d0764192b74772d710ec4e2c64ce0de2eceddeabc15ac7f7ce1532ef585')
 validpgpkeys=(
   9B60FE7947F0A3C58136817F2C2A218742E016BE # Felipe Borges (GNOME) <felipeborges@gnome.org>
