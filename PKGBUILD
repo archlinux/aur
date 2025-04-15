@@ -9,8 +9,8 @@
 
 _srcname=ocamlgraph
 pkgname=ocaml-$_srcname
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Graph library for OCaml"
 arch=('x86_64')
 url="https://github.com/backtracking/ocamlgraph"
@@ -21,7 +21,7 @@ checkdepends=('ocaml-graphics')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('c60fae1c38bdcae6e00dadc652c84fdec285d0ff37ff86881fa191815c0decad82f525557c43dfee0dbf88866d1001dc450563eca51ce585ba2ac2bdc52c0cb1')
+b2sums=('25062ebd7ff6bffb2dbcc003fec0e23c90ecddbc2da0235124c81cbc05391debc363855612532af55a93313d4cea0ea2a76eec64534a0cc0d4dfcc4d567f2e5a')
 
 check() {
     cd "$srcdir/$_srcname-$pkgver"
