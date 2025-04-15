@@ -12,7 +12,7 @@ _name='compiz'
 _pkgname='compiz-easy-patch'
 pkgname="${_pkgname}"
 pkgver=0.9.14.2
-pkgrel=8
+pkgrel=9
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -105,6 +105,9 @@ source=(
   # https://bugs.launchpad.net/compiz/+bug/2060620
   "1001-fix-crash-in-vertexbuffer.patch"
 
+  # https://bugs.launchpad.net/compiz/+bug/2103951
+  "1002-fix-wrapmode.patch"
+
   # compiz easy patch tweaks
   "9001-compiz-easy-defaults.patch"
   "compiz-easy.gschema.override"
@@ -127,6 +130,7 @@ sha256sums=(
   '90969b7beba107a7146b11c3a60969b62c2be7a3e891d7dee913504ec6de759c'
   '4fb18253eb1b438cfd5e8e9acb740b368cf18eace07459cb094ce7a9198e6d89'
   '859dca15821fac3b8d1e231d48932c0fad3f5d3f16cb53a8a761df2bd51b9d3a'
+  '8edae4f7b0ac67c8bf46a429a7c08cff1aae16dd2949a291fdf8ce27d39a6aa8'
 
   '4d28bc2cefbfae77b9157f39876f5296b5edb7fb00de2a391a262688d2f7590c'
   'b549d6a61115ab0cbd6bf74be79cd449477aaadb6a9968743236e3ed3d93f668'
