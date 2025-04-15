@@ -1,5 +1,5 @@
 pkgbase = python-trackpy
-	pkgdesc = Python particle tracking tool
+	pkgdesc = Python particle tracking toolkit
 	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/soft-matter/trackpy
