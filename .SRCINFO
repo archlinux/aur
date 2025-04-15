@@ -1,6 +1,6 @@
 pkgbase = duckstation-git
 	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)
-	pkgver = 0.1.r8839.gb798d8f1a
+	pkgver = 0.1.r8844.g1332f6da7
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -60,7 +60,7 @@ pkgbase = duckstation-git
 	source = stenzek.cpuinfo::git+https://github.com/stenzek/cpuinfo.git
 	source = stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
 	source = stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
-	source = stenzek.lunasvg::git+https://github.com/stenzek/lunasvg.git
+	source = stenzek.plutosvg::git+https://github.com/stenzek/plutosvg.git
 	source = duckstation-qt.desktop
 	source = duckstation-qt.sh
 	sha256sums = SKIP
