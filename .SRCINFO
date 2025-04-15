@@ -1,8 +1,8 @@
 pkgbase = naemon-livestatus
-	pkgdesc = Event broker for naemon
+	pkgdesc = Naemon - Livestatus Eventbroker Module
 	pkgver = 1.4.3
 	pkgrel = 1
-	url = http://naemon.org
+	url = https://www.naemon.io/documentation/usersguide/livestatus.html
 	arch = i686
 	arch = x86_64
 	license = GPL2

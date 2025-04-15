@@ -2,11 +2,11 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname='naemon-livestatus'
-pkgdesc="Event broker for naemon"
+pkgdesc="Naemon - Livestatus Eventbroker Module"
 pkgver=1.4.3
 pkgrel=1
 arch=('i686' 'x86_64')
-url="http://naemon.org"
+url="https://www.naemon.io/documentation/usersguide/livestatus.html"
 license=('GPL2')
 depends=('icu' 'naemon')
 makedepends=('git')
