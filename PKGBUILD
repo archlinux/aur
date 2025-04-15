@@ -18,7 +18,8 @@ sha384sums=('586ebc665c33e073be78670fd1810016a9e7ca8ae0ae8290328fc0c2f1e8f7acaa5
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
-	-DYAML_CPP_BUILD_TOOLS=OFF )
+	-DYAML_CPP_BUILD_TOOLS=OFF
+	-DCMAKE_POLICY_VERSION_MINIMUM='3.5' )
 _srcdir="${_pkgname}-$pkgver"
 
 build() {
@@ -26,7 +27,7 @@ build() {
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}"  \
 			-DYAML_CPP_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
-		
+
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DYAML_CPP_BUILD_TESTS=OFF
 		cmake --build "build-${_arch}"
 	done
@@ -46,7 +47,7 @@ package() {
 		rm -rf "$pkgdir/usr/${_arch}/static/include/yaml-cpp"
 		ln -s "../../include/yaml-cpp" "$pkgdir/usr/${_arch}/static/include/yaml-cpp"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
-		
+
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
