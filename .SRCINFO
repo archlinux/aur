@@ -1,5 +1,5 @@
 pkgbase = image-ascii-art-tauri-bin
-	pkgdesc = Image ASCII convertissor made in React converted to desktop app using Tauri
+	pkgdesc = Image ASCII convertissor made in React converted to desktop app using Tauri.(Prebuilt version)
 	pkgver = 1.1.0
 	pkgrel = 5
 	url = https://im-rises.github.io/image-ascii-art-website/

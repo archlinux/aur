@@ -2,7 +2,7 @@
 pkgname=image-ascii-art-tauri-bin
 pkgver=1.1.0
 pkgrel=5
-pkgdesc="Image ASCII convertissor made in React converted to desktop app using Tauri"
+pkgdesc="Image ASCII convertissor made in React converted to desktop app using Tauri.(Prebuilt version)"
 arch=('x86_64')
 url="https://im-rises.github.io/image-ascii-art-website/"
 _ghurl="https://github.com/Im-Rises/image-ascii-art-tauri"
@@ -19,14 +19,15 @@ source=(
 )
 sha256sums=('489279d8b9207a97a95ab03ce57ecb84e52333b74fce05dbfb5b89128aa4e6b4'
             '4676dff30e55d6b19e92e9bddb71c3cf479ca2c97db69f4080b2687a68e80835')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed "s|Categories=|Categories=Graphics;|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/Categories=/Categories=Graphics;/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    for _icons in 32x32 128x128;do
+    _icon_sizes=(32x32 128x128)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
