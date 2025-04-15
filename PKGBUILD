@@ -5,7 +5,7 @@
 
 pkgname=thinkfan
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi"
 url="https://github.com/vmatare/thinkfan"
 arch=('i686' 'x86_64')
@@ -15,12 +15,19 @@ optdepends=('lm_sensors: hwmon support')
 backup=('etc/systemd/system/thinkfan.service.d/override.conf')
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$pkgver.tar.gz"
+        'fix-cmake-warnings.patch'
         'thinkfan.service'
         'thinkpad_acpi.conf')
 sha256sums=('9466c8c82b7c4333b280fa66445ab26185ffbb4aada6bcb4a164eed742f8d78c'
+            '8ee1fbe82d29cda85be470d9d77f524f0030206d573d6d13f15d67742e6dc1a1'
             '625730e33fae251f3a1cc8259b222089fb45ada08e9cf5c816ea1cde6560e989'
             '28874576641b3cc1aa486e1bc9ed40eadfe8b13d6d3014016e31fedc5dc5195f')
 install=thinkfan.install
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -Np1 -i "$srcdir/fix-cmake-warnings.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

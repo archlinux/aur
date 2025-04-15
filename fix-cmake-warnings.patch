@@ -1,0 +1,33 @@
+From 679004c08731330adf2f8dd4c2ce7cf86408db55 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Victor=20Matar=C3=A9?= <matare@fh-aachen.de>
+Date: Tue, 15 Oct 2024 20:12:34 +0200
+Subject: [PATCH] fix cmake warnings
+
+[1] https://github.com/vmatare/thinkfan/commit/9a628fcb7f8e19e84e2bc030a66ba0ae2192731f
+
+Signed-off-by: Frederick Zhang <frederick888@tsundere.moe>
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 66bf07e..0e81354 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,11 +1,11 @@
++cmake_minimum_required(VERSION 3.5)
++
+ project(thinkfan)
+ include(GNUInstallDirs)
+ 
+ set(THINKFAN_VERSION 1.3.1)
+ 
+-cmake_minimum_required(VERSION 3.0)
+-
+ # Generate absolute paths or something
+ cmake_policy(SET CMP0015 NEW)
+ 
+ find_package(PkgConfig)
+-- 
+2.49.0
+
