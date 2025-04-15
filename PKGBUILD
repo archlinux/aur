@@ -1,4 +1,5 @@
-pkgname=python-sshscan-git
+# Maintainer: Fabian Franz BSc <aur@fabian-franz.eu>
+pkgname=sshscan-git
 pkgver=0.0.0
 pkgrel=1
 pkgdesc="SSHScan is a testing tool that enumerates SSH Ciphers. Using SSHScan, weak ciphers can be easily detected."
