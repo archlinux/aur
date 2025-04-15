@@ -2,7 +2,7 @@
 _pkgbase=local-ai
 _pkgname=LocalAI
 pkgname="${_pkgbase}-sycl-f16"
-pkgver=2.27.0 # renovate: datasource=github-tags depName=mudler/LocalAI
+pkgver=2.28.0 # renovate: datasource=github-tags depName=mudler/LocalAI
 pkgrel=1
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first (with Intel SYCL GPU optimizations and F16)"
 arch=('x86_64')
@@ -15,7 +15,6 @@ provides=("${_pkgbase}")
 options=('!strip')
 makedepends=(
   'c-ares'
-  'ccache'
   'cmake'
   'git'
   'go'
@@ -40,16 +39,23 @@ prepare() {
 }
 
 build() {
-  GO_TAGS="stablediffusion tts p2p"
-
   cd "${srcdir}/${_pkgname}-${pkgver}"
+
   source /opt/intel/oneapi/setvars.sh
-  BUILD_TYPE=sycl_f16 make build -j"$(nproc)"
+
+  make \
+    BUILD_TYPE=sycl_f16 \
+    CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    GO_TAGS="stablediffusion tts p2p" \
+    VERSION="v${pkgver}" \
+    build -j"$(nproc)"
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   install -Dm775 "${_pkgbase}" -t "${pkgdir}/usr/bin/"
+  install -Dm644 LICENSE \
+    -t "${pkgdir}/usr/share/licenses/${_pkgbase}"
 
   install -D -m644 "${srcdir}/${_pkgbase}.conf" \
     "${pkgdir}/etc/${_pkgbase}/${_pkgbase}.conf"
@@ -65,7 +71,7 @@ package() {
     "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 
-sha256sums=('595ade8031a8f7d4fd23c4e3a5c24b37f542059f3585c9f15352da4fb79c06e0'
+sha256sums=('b75f7cffb3b105c1f5e7cd4aa2d5c18cf461b6af0977d150d654d596f1dc8d79'
             '8e530e32d96d02c01192c987e8bffaf0bb67db34bf999fccdfa8d0777789233b'
             '90e042d0f5885b63a6aa4db7f87d6b931956f6c9b022407593466f61f6973312'
             '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
