@@ -4,7 +4,7 @@
 
 _pkgname=ffgo
 pkgname="${_pkgname}-git"
-pkgver=1.12.9.r615.20250402.4c28a27
+pkgver=1.12.9+1.r616.20250415.8e871a4
 pkgrel=1
 pkgdesc="A graphical launcher for FlightGear, i.e., a program whose purpose is to allow easy assembling and running of an fgfs command line. (Fork of and replacement for 'FGo!'.)"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
   "librsvg"
   "python-build"
   "python-installer"
-  "python-setuptools"
+  "python-setuptools>=77.0.3"
   "python-sphinx" # For `make doc`.
   "python-wheel"
 )
