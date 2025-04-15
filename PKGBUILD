@@ -1,26 +1,27 @@
-# Maintainer: Lorenz Steinert <lorenz@steinerts.de>
-_name=icalevents
+# Maintainer: Romain Labolle <aur@labolle.eu>
+# Contributor: Lorenz Steinert <lorenz@steinerts.de>
 pkgname=python-icalevents
-pkgver=0.1.25
-pkgrel=0
+_name=${pkgname#python-}
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Python module for iCal URL/file parsing and querying."
 arch=(any)
 url="https://github.com/irgangla/icalevents"
 license=('MIT')
 depends=('python-httplib2' 'python-icalendar' 'python-pytz')
-makedepends=()
+makedepends=(python-build python-installer python-wheel python-poetry-core)
 optdepends=()
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('41615ffd7424ac1906d2c3de1fe72d8abba3d736416813b33ef063b4404d3517')
+sha256sums=('b7f2827b581269d4315b345b54cf7d661b4453a7b190f7dbef99e5ba8f5669e1')
 
 build() {
   cd "$_name-$pkgver"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
 
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
