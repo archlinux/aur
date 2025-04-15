@@ -7,7 +7,7 @@ pkgname=(
   'aider-chat-docs'
 )
 _gitpkgname=aider
-pkgver=0.81.0
+pkgver=0.82.0
 pkgrel=1
 pkgdesc='AI pair programming in your terminal'
 arch=('any')
@@ -86,7 +86,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('2b6a4035d5ae3d64a4001557b2196bd77a7ad19407b1483e963d978653c8c5a035bf5e8f597eede052271b1933654578097e6a39d8fb645882817782c52d6ebc'
+sha512sums=('265c506e258f460e7ec8616e7f2cc491df915accc1e765a465ff4d08891f32f9b4f2e9642b0b752d217fe8f7c7a0100025cf5c1dfe723a11ce55c229f07f8d08'
             'abd72fc596f3b5f0e96dfe069f017d3cdbb8700d1734f32c6b4b2cc9d61b06a66eed4151959b013cae52cf3339d02715d6cc4d83e9e3ba473d739fcf6e0bdd2c'
             'a6fb5e00ae88ed02db00b61b36bb4b5ffef3e79ccfdc2314c9a702f50ffe4d7e5556a0b1eceb21c23b3d8ed2192af7eb47b6676bd0d9aaa568a7797b6badd174'
             '87b05d1b08007f32707fc9ed598eb6d31af1c29f5e4bcebf4a4fe08c4a6042ebb6c56dee8cb8e86e17be91af801a8852e4b39344d90da1990b44130b0b51125b')
