@@ -1,12 +1,8 @@
-# Maintainer: Danct12 <danct12@disroot.org>
-# Contributor: Bernhard Landauer <bernhard@manjaro.org>
-# Contributor: dodgejcr@gmail.com
-# Contributor: Bhushan Shah <bhush94 at gmail dot com>
+# Maintainer: Marcos_Chay <maktio@hotmail.com>
 
 pkgname=spacebar
-pkgver=6.3.3
+pkgver=6.3.4
 pkgrel=1
-epoch=1
 pkgdesc="SMS and messaging application for Mobile Devices running Plasma"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://community.kde.org/Plasma/Mobile"
@@ -35,7 +31,7 @@ makedepends=(
   'extra-cmake-modules'
 )
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('3b332bf4a31f729c3ef96887064c999c307014405781c4d7e996b722d1715db4')
+sha256sums=('fe1b7c5651baabcf580041cf1616ede4ad434ae84f0838464e9082d1e4f1e633')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \

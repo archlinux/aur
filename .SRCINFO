@@ -1,8 +1,7 @@
 pkgbase = spacebar
 	pkgdesc = SMS and messaging application for Mobile Devices running Plasma
-	pkgver = 6.3.3
+	pkgver = 6.3.4
 	pkgrel = 1
-	epoch = 1
 	url = https://community.kde.org/Plasma/Mobile
 	arch = x86_64
 	arch = armv7h
@@ -27,7 +26,7 @@ pkgbase = spacebar
 	depends = modemmanager-qt
 	depends = qcoro-qt6
 	depends = qt6-declarative
-	source = https://download.kde.org/stable/plasma/6.3.3/spacebar-6.3.3.tar.xz
-	sha256sums = 3b332bf4a31f729c3ef96887064c999c307014405781c4d7e996b722d1715db4
+	source = https://download.kde.org/stable/plasma/6.3.4/spacebar-6.3.4.tar.xz
+	sha256sums = fe1b7c5651baabcf580041cf1616ede4ad434ae84f0838464e9082d1e4f1e633
 
 pkgname = spacebar
