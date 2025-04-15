@@ -1,9 +1,9 @@
 pkgbase = python-condconfigparser
 	pkgdesc = Python library designed to help parsing configuration files. Main specificity: Allows to define conditions using boolean operators and specific sections in the configuration file that are only applied when the corresponding condition is fulfilled.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = http://frougon.net/projects/CondConfigParser/
+	url = https://frougon.net/projects/CondConfigParser/
 	arch = any
 	license = BSD-2-Clause
 	makedepends = git
@@ -14,8 +14,8 @@ pkgbase = python-condconfigparser
 	depends = python>=3.4
 	provides = python3-condconfigparser=1.0.6
 	conflicts = python3-condconfigparser
-	source = python-CondConfigParser-1.0.6.tar.gz::http://frougon.net/projects/CondConfigParser/dist/1.0.6/python3-CondConfigParser-1.0.6.tar.gz
-	source = python-CondConfigParser-1.0.6.tar.gz.sig::http://frougon.net/projects/CondConfigParser/dist/1.0.6/python3-CondConfigParser-1.0.6.tar.gz.asc
+	source = python-CondConfigParser-1.0.6.tar.gz::https://frougon.net/projects/CondConfigParser/dist/1.0.6/python3-CondConfigParser-1.0.6.tar.gz
+	source = python-CondConfigParser-1.0.6.tar.gz.sig::https://frougon.net/projects/CondConfigParser/dist/1.0.6/python3-CondConfigParser-1.0.6.tar.gz.asc
 	source = workaround_license_double_specification.pyproject-toml.patch::https://github.com/user-attachments/files/19757701/workaround_license_double_specification.pyproject-toml.patch.txt
 	validpgpkeys = 125B5A0FDB788FDD0EF41A9DC785B90B5053A3A2
 	sha256sums = ed4f2abd99e190c84d12ebb98d9180b2d97d03e78da3363d3143729aa1e1a862

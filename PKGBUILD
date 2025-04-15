@@ -3,11 +3,11 @@
 _pkgname="python-condconfigparser"
 pkgname="${_pkgname}"
 pkgdesc="Python library designed to help parsing configuration files. Main specificity: Allows to define conditions using boolean operators and specific sections in the configuration file that are only applied when the corresponding condition is fulfilled."
-url="http://frougon.net/projects/CondConfigParser/"
+url="https://frougon.net/projects/CondConfigParser/"
 license=("BSD-2-Clause")
 epoch=0
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 arch=(
   'any'
 )
@@ -29,8 +29,8 @@ conflicts=(
 )
 optdepends=()
 source=(
-  "python-CondConfigParser-${pkgver}.tar.gz::http://frougon.net/projects/CondConfigParser/dist/${pkgver}/python3-CondConfigParser-${pkgver}.tar.gz"
-  "python-CondConfigParser-${pkgver}.tar.gz.sig::http://frougon.net/projects/CondConfigParser/dist/${pkgver}/python3-CondConfigParser-${pkgver}.tar.gz.asc"
+  "python-CondConfigParser-${pkgver}.tar.gz::https://frougon.net/projects/CondConfigParser/dist/${pkgver}/python3-CondConfigParser-${pkgver}.tar.gz"
+  "python-CondConfigParser-${pkgver}.tar.gz.sig::https://frougon.net/projects/CondConfigParser/dist/${pkgver}/python3-CondConfigParser-${pkgver}.tar.gz.asc"
   "workaround_license_double_specification.pyproject-toml.patch::https://github.com/user-attachments/files/19757701/workaround_license_double_specification.pyproject-toml.patch.txt"
 )
 sha256sums=(
