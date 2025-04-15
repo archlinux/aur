@@ -1,0 +1,20 @@
+pkgbase = crypticroute
+	pkgdesc = Network steganography tool designed to transmit data covertly by embedding it within crafted TCP packets.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/Sri-dhar/CrypticRoute
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = python-psutil
+	depends = python-netifaces
+	depends = python-cryptography
+	depends = python-scapy
+	provides = crypticroute_cli
+	provides = crypticroute_gui
+	source = crypticroute-git::git+https://github.com/Sri-dhar/CrypticRoute.git
+	sha256sums = SKIP
+
+pkgname = crypticroute
