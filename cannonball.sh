@@ -1,18 +1,21 @@
-#!/bin/sh
+#!/bin/bash
+#
+# Cannonball launcher
+#
 
-echo "Cannonball launcher"
+CANNONBALL_HOME="/opt/cannonball"
 
 mkdir -p ~/.cannonball/roms
 
 # config
-if [ ! -f ~/.cannonball/config.xml ]; then
-  cp /usr/share/cannonball/config.xml ~/.cannonball
+if [[ ! -f ~/.cannonball/config.xml ]]; then
+  cp "$CANNONBALL_HOME"/config.xml ~/.cannonball
 fi
 
 # widescreen tilemaps
-if [ ! -h ~/.cannonball/res ]; then
-  ln -s /usr/share/cannonball/res ~/.cannonball
+if [[ ! -h ~/.cannonball/res ]]; then
+  ln -s "$CANNONBALL_HOME"/res ~/.cannonball
 fi
 
 # run the game
-cd ~/.cannonball && exec /usr/lib/cannonball/cannonball "$@"
+cd ~/.cannonball && exec "$CANNONBALL_HOME"/cannonball "$@"

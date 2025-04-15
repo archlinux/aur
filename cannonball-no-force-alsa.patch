@@ -1,0 +1,306 @@
+diff --git a/src/main/sdl2/audio.cpp b/src/main/sdl2/audio.cpp
+index bdf14c8..c74da4f 100644
+--- a/src/main/sdl2/audio.cpp
++++ b/src/main/sdl2/audio.cpp
+@@ -1,15 +1,15 @@
+ /***************************************************************************
+     SDL Audio Code.
+-    
++
+     This is the SDL specific audio code.
+     If porting to a non-SDL platform, you would need to replace this class.
+-    
++
+     It takes the output from the PCM and YM chips, mixes them and then
+     outputs appropriately.
+-    
++
+     In order to achieve seamless audio, when audio is enabled the framerate
+     is adjusted to essentially sync the video to the audio output.
+-    
++
+     This is based upon code from the Atari800 emulator project.
+     Copyright (c) 1998-2008 Atari800 development team
+ ***************************************************************************/
+@@ -62,32 +62,17 @@ void Audio::start_audio()
+     if (!sound_enabled)
+     {
+         // Since many GNU/Linux distros are infected with PulseAudio, SDL2 could chose PA as first
+-	    // driver option before ALSA, and PA doesn't obbey our sample number requests, resulting
+-	    // in audio gaps, if we're on a GNU/Linux we force ALSA.
+-	    // Else we accept whatever SDL2 wants to give us or what the user specifies on SDL_AUDIODRIVER
+-	    // enviroment variable.
+-	    std::string platform = SDL_GetPlatform();
++        // driver option before ALSA, and PA doesn't obbey our sample number requests, resulting
++        // in audio gaps, if we're on a GNU/Linux we force ALSA.
++        // Else we accept whatever SDL2 wants to give us or what the user specifies on SDL_AUDIODRIVER
++        // enviroment variable.
++        std::string platform = SDL_GetPlatform();
+ 
+-	    if (platform=="Linux")
++        if(SDL_Init(SDL_INIT_AUDIO) == -1)
+         {
+-            if (SDL_InitSubSystem(SDL_INIT_AUDIO)!= 0)
+-                std::cout << "Error initalizing audio subsystem: " << SDL_GetError() << std::endl;
+-
+-	        if (SDL_AudioInit("alsa") != 0) 
+-            {
+-		        std::cout << "Error initalizing audio using ALSA: " << SDL_GetError() << std::endl;
+-		        return;
+-	        }
+-
+-	    }
+-	    else 
+-        {
+-	        if(SDL_Init(SDL_INIT_AUDIO) == -1) 
+-	        {
+-		        std::cout << "Error initalizing audio: " << SDL_GetError() << std::endl;
+-		        return;
+-	        }		
+-	    }
++            std::cerr << "Error initalizing audio: " << SDL_GetError() << std::endl;
++            return;
++        }
+ 
+         // SDL Audio Properties
+         SDL_AudioSpec desired, obtained;
+@@ -98,21 +83,22 @@ void Audio::start_audio()
+         desired.samples  = SAMPLES;
+         desired.callback = fill_audio;
+         desired.userdata = NULL;
+-	
+-	    // SDL2 block
+-	    dev = SDL_OpenAudioDevice(NULL, 0, &desired, &obtained, /*SDL_AUDIO_ALLOW_FORMAT_CHANGE*/0);
+-	    if (dev == 0)
+-	    {
+-            std::cout << "Error opening audio device: " << SDL_GetError() << std::endl;
++
++        // SDL2 block
++        dev = SDL_OpenAudioDevice(NULL, 0, &desired, &obtained, /*SDL_AUDIO_ALLOW_FORMAT_CHANGE*/0);
++        if (dev == 0)
++        {
++            std::cerr << "Error opening audio device: " << SDL_GetError() << std::endl;
+             return;
+         }
+ 
+-        if (desired.samples != obtained.samples) 
++        if (desired.samples != obtained.samples)
+         {
+-            std::cout << "Error initalizing audio: number of samples not supported." << std::endl
+-                      << "Please compare desired vs obtained. Look at what audio driver SDL2 is using." << std::endl;
+-	        return;
+-	    }
++            std::cerr << "Warning: requested number of samples per buffer not supported." << std::endl
++                      << "Requested: " << desired.samples << " Obtained: " << obtained.samples << std::endl
++                      << "Look at what audio driver SDL2 is using." << std::endl;
++            SAMPLES = obtained.samples;
++        }
+ 
+         bytes_per_sample = CHANNELS * (BITS / 8);
+ 
+@@ -222,13 +208,13 @@ void Audio::tick()
+             wavfile.pos = 0;
+     }
+ 
+-    // Cast mix_buffer to a byte array, to align it with internal SDL format 
++    // Cast mix_buffer to a byte array, to align it with internal SDL format
+     uint8_t* mbuf8 = (uint8_t*) mix_buffer;
+ 
+     // produce samples from the sound emulation
+     bytes_per_ms = (bytes_per_sample) * (config.sound.rate/1000.0);
+     bytes_written = (BITS == 8 ? samples_written : samples_written*2);
+-    
++
+     SDL_LockAudio();
+ 
+     // this is the gap as of the most recent callback
+@@ -238,7 +224,7 @@ void Audio::tick()
+         gap_est = (int) (gap - (bytes_per_ms)*(SDL_GetTicks() - callbacktick));
+ 
+     // if there isn't enough room...
+-    while (gap + bytes_written > dsp_buffer_bytes) 
++    while (gap + bytes_written > dsp_buffer_bytes)
+     {
+         // then we allow the callback to run..
+         SDL_UnlockAudio();
+@@ -250,12 +236,12 @@ void Audio::tick()
+     }
+     // now we copy the data into the buffer and adjust the positions
+     newpos = dsp_write_pos + bytes_written;
+-    if (newpos/dsp_buffer_bytes == dsp_write_pos/dsp_buffer_bytes) 
++    if (newpos/dsp_buffer_bytes == dsp_write_pos/dsp_buffer_bytes)
+     {
+         // no wrap
+         memcpy(dsp_buffer+(dsp_write_pos%dsp_buffer_bytes), mbuf8, bytes_written);
+     }
+-    else 
++    else
+     {
+         // wraps
+         int first_part_size = dsp_buffer_bytes - (dsp_write_pos%dsp_buffer_bytes);
+@@ -268,7 +254,7 @@ void Audio::tick()
+     if (callbacktick == 0)
+         dsp_read_pos += bytes_written;
+ 
+-    while (dsp_read_pos > dsp_buffer_bytes) 
++    while (dsp_read_pos > dsp_buffer_bytes)
+     {
+         dsp_write_pos -= dsp_buffer_bytes;
+         dsp_read_pos -= dsp_buffer_bytes;
+@@ -277,7 +263,7 @@ void Audio::tick()
+ }
+ 
+ // Adjust the speed of the emulator, based on audio streaming performance.
+-// This ensures that we avoid pops and crackles (in theory). 
++// This ensures that we avoid pops and crackles (in theory).
+ double Audio::adjust_speed()
+ {
+     if (!sound_enabled)
+@@ -288,20 +274,20 @@ double Audio::adjust_speed()
+     int gap_too_large;
+     static bool inited = false;
+ 
+-    if (!inited) 
++    if (!inited)
+     {
+         inited = true;
+         avg_gap = gap_est;
+     }
+-    else 
++    else
+     {
+         avg_gap = avg_gap + alpha * (gap_est - avg_gap);
+     }
+ 
+     gap_too_small = (SND_DELAY * config.sound.rate * bytes_per_sample)/1000;
+     gap_too_large = ((SND_DELAY + SND_SPREAD) * config.sound.rate * bytes_per_sample)/1000;
+-    
+-    if (avg_gap < gap_too_small) 
++
++    if (avg_gap < gap_too_small)
+     {
+         double speed = 0.9;
+         return speed;
+@@ -325,7 +311,7 @@ void Audio::load_wav(const char* filename)
+ 
+         // Load Wav File
+         SDL_AudioSpec wave;
+-    
++
+         uint8_t *data;
+         uint32_t length;
+ 
+@@ -335,10 +321,10 @@ void Audio::load_wav(const char* filename)
+         {
+             wavfile.loaded = 0;
+             resume_audio();
+-            std::cout << "Could not load wav: " << filename << std::endl;
++            std::cerr << "Could not load wav: " << filename << std::endl;
+             return;
+         }
+-        
++
+         SDL_LockAudio();
+ 
+         // Halve Volume Of Wav File
+@@ -386,7 +372,7 @@ void Audio::clear_wav()
+         if (wavfile.loaded == 1)
+             free(wavfile.data);
+         else
+-            delete[] wavfile.data;        
++            delete[] wavfile.data;
+     }
+ 
+     wavfile.length = 1;
+@@ -411,7 +397,7 @@ void fill_audio(void *udata, Uint8 *stream, int len)
+     static char last_bytes[MAX_SAMPLE_SIZE];
+ 
+     gap = dsp_write_pos - dsp_read_pos;
+-    if (gap < len) 
++    if (gap < len)
+     {
+         underflow_amount = len - gap;
+         len = gap;
+@@ -419,27 +405,27 @@ void fill_audio(void *udata, Uint8 *stream, int len)
+     newpos = dsp_read_pos + len;
+ 
+     // No Wrap
+-    if (newpos/dsp_buffer_bytes == dsp_read_pos/dsp_buffer_bytes) 
++    if (newpos/dsp_buffer_bytes == dsp_read_pos/dsp_buffer_bytes)
+     {
+         memcpy(stream, dsp_buffer + (dsp_read_pos%dsp_buffer_bytes), len);
+     }
+     // Wrap
+-    else 
++    else
+     {
+         int first_part_size = dsp_buffer_bytes - (dsp_read_pos%dsp_buffer_bytes);
+         memcpy(stream,  dsp_buffer + (dsp_read_pos%dsp_buffer_bytes), first_part_size);
+         memcpy(stream + first_part_size, dsp_buffer, len - first_part_size);
+     }
+     // Save the last sample as we may need it to fill underflow
+-    if (gap >= bytes_per_sample) 
++    if (gap >= bytes_per_sample)
+     {
+         memcpy(last_bytes, stream + len - bytes_per_sample, bytes_per_sample);
+     }
+     // Just repeat the last good sample if underflow
+-    if (underflow_amount > 0 ) 
++    if (underflow_amount > 0 )
+     {
+         int i;
+-        for (i = 0; i < underflow_amount/bytes_per_sample; i++) 
++        for (i = 0; i < underflow_amount/bytes_per_sample; i++)
+         {
+             memcpy(stream + len +i*bytes_per_sample, last_bytes, bytes_per_sample);
+         }
+diff --git a/src/main/sdl2/audio.hpp b/src/main/sdl2/audio.hpp
+index 8fd6763..b5af2c2 100644
+--- a/src/main/sdl2/audio.hpp
++++ b/src/main/sdl2/audio.hpp
+@@ -1,15 +1,15 @@
+ /***************************************************************************
+     SDL Audio Code.
+-    
++
+     This is the SDL specific audio code.
+     If porting to a non-SDL platform, you would need to replace this class.
+-    
++
+     It takes the output from the PCM and YM chips, mixes them and then
+     outputs appropriately.
+-    
++
+     In order to achieve seamless audio, when audio is enabled the framerate
+     is adjusted to essentially sync the video to the audio output.
+-    
++
+     This is based upon code from the Atari800 emulator project.
+     Copyright (c) 1998-2008 Atari800 development team
+ ***************************************************************************/
+@@ -45,7 +45,7 @@ public:
+ private:
+ 	// Enable/Disable Sound
+ 	bool sound_enabled;
+-	
++
+     // Stereo. Could be changed, requires some recoding.
+     static const uint32_t CHANNELS = 2;
+ 
+@@ -54,14 +54,14 @@ private:
+ 
+     // Low value  = Responsiveness, chance of drop out.
+     // High value = Laggy, less chance of drop out.
+-    static const uint32_t SAMPLES  = 1024;
++    uint32_t SAMPLES  = 1024;
+ 
+     // Latency (in ms) and thus target buffer size
+     const static int SND_DELAY = 20;
+ 
+     // allowed "spread" between too many and too few samples in the buffer (ms)
+     const static int SND_SPREAD = 7;
+-    
++
+     // Buffer used to mix PCM and YM channels together
+     uint16_t* mix_buffer;
+ 
