@@ -4,7 +4,7 @@
 pkgname=mdbook-epub
 pkgver=0.4.44
 pkgrel=1
-pkgdesc="MDBook EPUB Backend"
+pkgdesc="An experimental mdbook backend for creating EPUB documents."
 url="https://github.com/Michael-F-Bryan/mdbook-epub"
 arch=(x86_64)
 license=(MPL-2.0)
