@@ -1,20 +1,25 @@
 pkgbase = python-condconfigparser
 	pkgdesc = Python library designed to help parsing configuration files. Main specificity: Allows to define conditions using boolean operators and specific sections in the configuration file that are only applied when the corresponding condition is fulfilled.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	epoch = 0
 	url = http://frougon.net/projects/CondConfigParser/
 	arch = any
-	license = custom
+	license = BSD-2-Clause
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=61.0.0
+	makedepends = python-wheel
 	depends = python>=3.4
-	provides = python3-condconfigparser=1.0.5
+	provides = python3-condconfigparser=1.0.6
 	conflicts = python3-condconfigparser
-	source = python-CondConfigParser-1.0.5.tar.gz::http://frougon.net/projects/CondConfigParser/dist/1.0.5/python3-CondConfigParser-1.0.5.tar.gz
-	source = python-CondConfigParser-1.0.5.tar.gz.sig::http://frougon.net/projects/CondConfigParser/dist/1.0.5/python3-CondConfigParser-1.0.5.tar.gz.asc
+	source = python-CondConfigParser-1.0.6.tar.gz::http://frougon.net/projects/CondConfigParser/dist/1.0.6/python3-CondConfigParser-1.0.6.tar.gz
+	source = python-CondConfigParser-1.0.6.tar.gz.sig::http://frougon.net/projects/CondConfigParser/dist/1.0.6/python3-CondConfigParser-1.0.6.tar.gz.asc
+	source = workaround_license_double_specification.pyproject-toml.patch::https://github.com/user-attachments/files/19757701/workaround_license_double_specification.pyproject-toml.patch.txt
 	validpgpkeys = 125B5A0FDB788FDD0EF41A9DC785B90B5053A3A2
-	sha256sums = 1616d8c387808639ac8e654fc358fe25e8f7e69df8da60cee9c03ba7abfb0d53
-	sha256sums = 21a9781c0276e8deeb39569abc1b5e2154909471050f386e135062413c051eb6
+	sha256sums = ed4f2abd99e190c84d12ebb98d9180b2d97d03e78da3363d3143729aa1e1a862
+	sha256sums = 4901bbaf6a0b0b854232732998ba619957c81a7d2e840978055d39eee5cce849
+	sha256sums = 978b615bb7a5a1b5d19bc021cf6e21030a457c78aa5ca2f06f457174ed7b44da
 
 pkgname = python-condconfigparser
