@@ -1,5 +1,5 @@
 pkgbase = ruby-libvirt
-	pkgdesc = Ruby bindings for libvirt.
+	pkgdesc = Ruby language binding for libvirt native C API
 	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://gitlab.com/libvirt/libvirt-ruby
