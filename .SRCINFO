@@ -1,6 +1,6 @@
 pkgbase = thoughts-bin
 	pkgdesc = A relatively powerful web mind map.(Prebuilt version.Use system-wide electron)一个还算强大的Web思维导图.
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://wanglin2.github.io/mind-map/#/index
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = thoughts-bin
 	arch = x86_64
 	license = MIT
 	depends = electron23
-	provides = thoughts=0.13.1
+	provides = thoughts=0.14.0
 	conflicts = thoughts
-	source = LICENSE-0.13.1::https://raw.githubusercontent.com/wanglin2/mind-map/electron-0.13.1/LICENSE
+	source = LICENSE-0.14.0::https://raw.githubusercontent.com/wanglin2/mind-map/electron-0.14.0/LICENSE
 	source = thoughts.sh
 	sha256sums = 8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = thoughts-0.13.1-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/electron-0.13.1/thoughts_0.13.1_arm64.deb
-	sha256sums_aarch64 = f3b3552f43116eeba3f33c1296daae333fb0a5bcd9670ab4a0949436f001ba55
-	source_armv7h = thoughts-0.13.1-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/electron-0.13.1/thoughts_0.13.1_armv7l.deb
-	sha256sums_armv7h = 639c4335ca6960de2616a0bd8274a27b50a245caa7e8aa28fda3af32a2ba6770
-	source_x86_64 = thoughts-0.13.1-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/electron-0.13.1/thoughts_0.13.1_amd64.deb
-	sha256sums_x86_64 = 6e4e0f072bbf5c1326408a1a26023a42660648c566ba593b06bb68d53b1360f0
+	source_aarch64 = thoughts-0.14.0-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/electron-0.14.0/thoughts_0.14.0_arm64.deb
+	sha256sums_aarch64 = 4286e91acae7052cd21e4b8d438ab117fe1674d7420595d74c572585eb435ef1
+	source_armv7h = thoughts-0.14.0-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/electron-0.14.0/thoughts_0.14.0_armv7l.deb
+	sha256sums_armv7h = 07a84f99f1744a71e397b7b36b9bb4cdc0326204d21c5daf53a4114a858da1bf
+	source_x86_64 = thoughts-0.14.0-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/electron-0.14.0/thoughts_0.14.0_amd64.deb
+	sha256sums_x86_64 = c3b8c6dfb168054c8c80d745d72a2c37dc41cb39c2b4be5a9b60ff665e42c43b
 
 pkgname = thoughts-bin
