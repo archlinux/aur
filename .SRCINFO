@@ -1,13 +1,13 @@
 pkgbase = kiln
 	pkgdesc = A simple static site generator
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://git.sr.ht/~adnano/kiln
 	arch = any
 	license = GPL3
 	makedepends = go
 	makedepends = scdoc
-	source = https://git.sr.ht/~adnano/kiln/archive/0.4.0.tar.gz
-	sha256sums = 6de055814c7f363c2b5e358dcbed4ca010ca2c11c887b7e506f1574b68f1dd88
+	source = https://git.sr.ht/~adnano/kiln/archive/0.4.1.tar.gz
+	sha256sums = eb8aa77bcd7f741ef2ec6404115fb99d97b2e0f5afb67f36fb2c83c0a2291a53
 
 pkgname = kiln
