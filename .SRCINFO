@@ -1,7 +1,7 @@
 pkgbase = linux-gaokun3
 	pkgdesc = Linux for HUAWEI MateBook E Go (sc8280xp)
 	pkgver = 6.14.y
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/steev/linux.git
 	arch = any
 	license = GPL-2.0-only

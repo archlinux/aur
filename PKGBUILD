@@ -6,7 +6,7 @@
 _variant=gaokun3
 pkgbase=linux-$_variant
 pkgver=6.14.y
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -203,7 +203,7 @@ _package-headers() {
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map localversion.* version vmlinux #tools/bpf/bpftool/vmlinux.h
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map version vmlinux #tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/arm64" -m644 arch/arm64/Makefile
   cp -t "$builddir" -a scripts
