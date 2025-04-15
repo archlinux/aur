@@ -1,5 +1,5 @@
 pkgbase = python-dukpy
-	pkgdesc = Python bindings for the duktape embeddable JavaScript engine
+	pkgdesc = Simple JavaScript interpreter for Python
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/amol-/dukpy
