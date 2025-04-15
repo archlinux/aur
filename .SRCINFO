@@ -1,7 +1,7 @@
 pkgbase = linux-gaokun3
 	pkgdesc = Linux for HUAWEI MateBook E Go (sc8280xp)
 	pkgver = 6.14.y
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steev/linux.git
 	arch = any
 	license = GPL-2.0-only
@@ -28,7 +28,7 @@ pkgbase = linux-gaokun3
 	source = 0001-Revert-clk-qcom-Park-shared-RCGs-upon-registration.patch
 	source = 0013-arm64-dts-qcom-sc8280xp-add-MDSS-registers-interconn.patch
 	source = 0014-arm64-dts-qcom-add-the-slpi-node-for-sc8280xp.patch
-	sha256sums = 9d21526a1a2b8c50bf8fae233a444207424ad3dd28c5566a15b6fd4571930324
+	sha256sums = f6ebfccba580ed254fb0441ef035f3a2a8d0ca835cf94cdbf038208c417acb32
 	sha256sums = 53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d
 	sha256sums = 739469d0083cd08f685870f5ae832546243cb97d0843b70b76867485e6502a9f
 	sha256sums = afef7e0d1e355ca6a7c403d53611d1f9b3db2ea5eac000e45c1c47613c3e8872

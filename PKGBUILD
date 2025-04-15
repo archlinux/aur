@@ -6,7 +6,7 @@
 _variant=gaokun3
 pkgbase=linux-$_variant
 pkgver=6.14.y
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://github.com/steev/linux.git'
 arch=('any')
@@ -57,7 +57,7 @@ source=(
   update-grub
 )
 sha256sums=(
-  '9d21526a1a2b8c50bf8fae233a444207424ad3dd28c5566a15b6fd4571930324'
+  'f6ebfccba580ed254fb0441ef035f3a2a8d0ca835cf94cdbf038208c417acb32'
   '53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d'
   '739469d0083cd08f685870f5ae832546243cb97d0843b70b76867485e6502a9f'
   'afef7e0d1e355ca6a7c403d53611d1f9b3db2ea5eac000e45c1c47613c3e8872'
