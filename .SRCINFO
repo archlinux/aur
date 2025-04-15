@@ -1,5 +1,5 @@
 pkgbase = shedskin
-	pkgdesc = Python to C++ compiler
+	pkgdesc = An experimental (restricted-)Python-to-C++ compiler
 	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://shedskin.github.io/

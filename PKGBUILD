@@ -4,7 +4,7 @@
 pkgname=shedskin
 pkgver=0.9.10
 pkgrel=1
-pkgdesc='Python to C++ compiler'
+pkgdesc='An experimental (restricted-)Python-to-C++ compiler'
 arch=('any')
 url='https://shedskin.github.io/'
 license=('GPL-3.0-only')
