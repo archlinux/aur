@@ -28,9 +28,8 @@ prepare() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  ls -la
-  install -D -m755 ./icsp $pkgdir/usr/bin/icsp
-  install -D -m755 ./csv-to-ics.awk $pkgdir/usr/share/icsp/csv-to-ics.awk
-  install -D -m755 ./ics-to-csv.awk $pkgdir/usr/share/icsp/ics-to-csv.awk
+  install -D -m755 "./icsp" "$pkgdir/usr/bin/icsp"
+  install -D -m755 "./csv-to-ics.awk" "$pkgdir/usr/share/icsp/csv-to-ics.awk"
+  install -D -m755 "./ics-to-csv.awk" "$pkgdir/usr/share/icsp/ics-to-csv.awk"
 }
 
