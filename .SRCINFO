@@ -1,7 +1,7 @@
 pkgbase = lpub3d-appimage
 	pkgdesc = LDraw™ editor for LEGO® style digital building instructions
 	pkgver = 2.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://trevorsandy.github.io/lpub3d
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = lpub3d-appimage
 	optdepends = leocad: A CAD program for creating virtual LEGO models
 	provides = lpub3d
 	options = !strip
-	source = LPub3D-2.4.9.0.4047_20250109-x86_64.AppImage::https://github.com/trevorsandy/lpub3d/releases/download/v2.4.9/
-	sha512sums = 60a71a47a84251208c874030d3b6fdbcadbee8f6bf13205b4949b7f44b1449d00e27dde0a272c8411b94009d368d5aaa86a53a6dfdca9f4d0424e4c336cb37b9
+	source = LPub3D-2.4.9.86.4133_20250319-x86_64.AppImage::https://github.com/trevorsandy/lpub3d/releases/download/v2.4.9/
+	sha512sums = e82e1bc4e0a19c6aea97ba8cb07c02fef47ef32bc321727e1f65a4449c566ce9248ee75971ead89f20542fac032c4f73564c7166517ce5ad688e27894cb2476f
 
 pkgname = lpub3d-appimage

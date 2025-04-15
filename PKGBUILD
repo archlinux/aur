@@ -2,7 +2,7 @@
 # Contributor: Mr.Smith1974
 _pkgname=lpub3d
 _pkgver=2.4.9
-_appimage="LPub3D-${_pkgver}.0.4047_20250109-x86_64.AppImage"
+_appimage="LPub3D-${_pkgver}.86.4133_20250319-x86_64.AppImage"
 _desktopfile="${_pkgname}"
 
 pkgname=lpub3d-appimage
@@ -19,7 +19,7 @@ optdepends=('ldraw-parts-library: LEGO parts library'
 conflicts=()
 options=(!strip)
 source=("${_appimage}::https://github.com/trevorsandy/lpub3d/releases/download/v${_pkgver}/${_appimage}")
-sha512sums=('60a71a47a84251208c874030d3b6fdbcadbee8f6bf13205b4949b7f44b1449d00e27dde0a272c8411b94009d368d5aaa86a53a6dfdca9f4d0424e4c336cb37b9')
+sha512sums=('e82e1bc4e0a19c6aea97ba8cb07c02fef47ef32bc321727e1f65a4449c566ce9248ee75971ead89f20542fac032c4f73564c7166517ce5ad688e27894cb2476f')
 
 
 prepare() {
