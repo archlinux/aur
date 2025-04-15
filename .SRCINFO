@@ -1,12 +1,12 @@
 pkgbase = iso-flag-png
 	pkgdesc = ISO country flags in PNG format
-	pkgver = 1.0.2
-	pkgrel = 2
-	url = http://packages.linuxmint.com/pool/main/f/flags
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/linuxmint/flags
 	arch = any
 	groups = cinnamon
 	license = GPL3
-	source = http://packages.linuxmint.com/pool/main/f/flags/flags_1.0.2.tar.xz
-	sha256sums = 4726333387e5795d49a2a54f7ffbbdb5b50f47b6aa20533a78b6eded347ca57c
+	source = http://packages.linuxmint.com/pool/main/f/flags/flags_1.0.3.tar.xz
+	sha256sums = 071b4a9665c1ce4f741f79c7e3ca4dea52c18864f24b05e7740c8358f34d4d67
 
 pkgname = iso-flag-png
