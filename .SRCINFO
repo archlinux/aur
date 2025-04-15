@@ -6,8 +6,6 @@ pkgbase = icsp-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = curl
-	depends = unzip
 	source = icsp::git+https://github.com/loteoo/icsp.git
 	md5sums = SKIP
 
