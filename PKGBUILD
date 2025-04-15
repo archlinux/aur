@@ -4,18 +4,23 @@
 
 pkgname=otf-exljbris
 pkgver=1.0
+_pkgver_delicious=21
+_pkgver_diavlo=37b2
+_pkgver_fontin_cyrillic=46b
+_pkgver_fontin_sans=49
+_pkgver_tallys=15b2
 pkgrel=1
 pkgdesc='A collection of free OpenType fonts by Jos Buivenga. Includes: Delicious, Diavlo, Fontin, Fontin Sans and Tallys'
 arch=('any')
 license=('custom')
 url=https://exljbris.com
 depends=('fontconfig' 'xorg-fonts-encodings')
-source=('https://exljbris.com/dl/DELICIOUS_21_OTF.zip'
-    'https://exljbris.com/dl/Diavlo_II_37b2.zip'
+source=("https://exljbris.com/dl/DELICIOUS_"$_pkgver_delicious"_OTF.zip"
+    "https://exljbris.com/dl/Diavlo_II_"$_pkgver_diavlo".zip"
     'https://exljbris.com/dl/fontin_pc.zip'
-    'https://exljbris.com/dl/FontinSans_49.zip'
-    'https://exljbris.com/dl/FontinSans_Cyrillic_46b.zip'
-    'https://exljbris.com/dl/tallys_15b2.zip'
+    "https://exljbris.com/dl/FontinSans_"$_pkgver_fontin_sans".zip"
+    "https://exljbris.com/dl/FontinSans_Cyrillic_"$_pkgver_fontin_cyrillic".zip"
+    "https://exljbris.com/dl/tallys_"$_pkgver_tallys".zip"
     'exljbris-font-licence.txt')
 b2sums=('bad3afc02687761ee3d00262f978d5644988b4359ddfd5ca874158fcba5db556ed1eabfdbd2021da25d4e31d7182e40aea3f196e93f93bc939cb415e9508ad0d'
         'e42ffe48ac23f4478f025fcccca6832b416dac391f9b9e9ebddde6de09daf115e8dbf422e6d0e3723a52abafa197c453976799f7a3c473935fd610e72aea23b4'
