@@ -6,7 +6,7 @@
 
 pkgname=masterpdfeditor
 pkgver=5.9.89
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
 arch=('x86_64')
@@ -16,14 +16,15 @@ source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5
 sha1sums_x86_64=('9701c8475d5efc7940f232f06c882e5bf9275566')
 
 package() {
-  depends=('libgl' 'nspr' 'nss' 'pkcs11-helper' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
+  depends=('libgl' 'pkcs11-helper' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
 
   install -d "$pkgdir"{/opt/,/usr/bin/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
 
   cd "$pkgdir/opt/master-pdf-editor-${pkgver%%.*}"
   ln -sr masterpdfeditor${pkgver%%.*} -t "$pkgdir/usr/bin/"
-  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 usr/share/applications/net.code-industry.masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 license_en.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
+

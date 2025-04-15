@@ -1,7 +1,7 @@
 pkgbase = masterpdfeditor
 	pkgdesc = A complete solution for viewing, creating and editing PDF files
 	pkgver = 5.9.89
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
@@ -11,8 +11,6 @@ pkgbase = masterpdfeditor
 
 pkgname = masterpdfeditor
 	depends = libgl
-	depends = nspr
-	depends = nss
 	depends = pkcs11-helper
 	depends = qt5-base
 	depends = qt5-svg
