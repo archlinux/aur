@@ -1,7 +1,7 @@
 pkgbase = padloc-bin
-	pkgdesc = A modern, open source password manager for individuals and teams.
+	pkgdesc = A modern, open source password manager for individuals and teams.(Prebuilt version)
 	pkgver = 4.3.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://padloc.app/
 	arch = x86_64
 	license = AGPL-3.0-only
