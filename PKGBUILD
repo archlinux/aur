@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('265d503d064f92334a5c7f4a90988931dee9451f4831c3751b49eeea7a016769'
-            'aacfcf10b05e9fe2c3cd6d73a12c63f6d79db5e08813a0da6f0ba7fadd05080b')
+            '97155fcff09b03405209fd5bb1f341d0d0d92e83ca9cf96c219d19214456e9b1')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
