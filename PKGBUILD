@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RNetCDF
-_pkgver=2.9-2
+_pkgver=2.10-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-bit64
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5c24b20a1ee55f5448ab06dd6a74a0d3')
-b2sums=('f2c7da14f4faad39d59b806528f4d01217dbbf8a63e450689370106882ad8c1004c39f23e57d47f587ef276f9b90d70000ab11abbf8af5304780c3c06e2cd0d6')
+md5sums=('8097178ed39326b6398e6b27c9b44759')
+b2sums=('6dc657c97e9ecab53c6b09b0addfe06ff4429ac41afe8365c3dfa2c8c43c60aa001f43be11ab921e00ef88d05d9e308d35232d20e904337ee7097df8a21a07a5')
 
 build() {
   mkdir build
