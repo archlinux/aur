@@ -1,5 +1,5 @@
 pkgbase = pyload-ng
-	pkgdesc = The free and open-source Download Manager written in pure Python
+	pkgdesc = Free and Open Source download manager written in Python
 	pkgver = 0.5.0b3.dev87
 	pkgrel = 3
 	url = https://pyload.net/
