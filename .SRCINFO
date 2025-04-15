@@ -1,6 +1,6 @@
 pkgbase = cyberark-summon
 	pkgdesc = CLI that provides on-demand secrets access for common DevOps tools
-	pkgver = 0.9.1
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/cyberark/summon
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cyberark-summon
 	license = MIT
 	optdepends = gopass: to use (go)pass as a provider
 	conflicts = summon
-	source = cyberark-summon-0.9.1.tar.gz::https://github.com/cyberark/summon/releases/download/v0.9.1/summon-linux-amd64.tar.gz
-	sha256sums = fc53167b12bea5003e3c6177ad08a0b98c3f9e12145f0b3187a440afeffa064b
+	source = cyberark-summon-0.10.4.tar.gz::https://github.com/cyberark/summon/releases/download/v0.10.4/summon-linux-amd64.tar.gz
+	sha256sums = f9756f7c17d2c2db9aa61ddf4910e0468b59bac24e0023c638b91f05f96a296a
 
 pkgname = cyberark-summon
