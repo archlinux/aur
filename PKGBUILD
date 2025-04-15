@@ -2,14 +2,14 @@
 pkgname=openterface_qt-git
 _pkgname="${pkgname%-git}"
 _reponame=Openterface_QT
-pkgver=0.0.4.r18.g68e91e2
+pkgver=0.3.1.r1.gcac5ee1
 pkgrel=1
 pkgdesc="Openterface Mini-KVM Host Application"
 arch=('x86_64')
 url="https://openterface.com/"
 license=('AGPL-3.0-only')
-depends=(qt6-base qt6-multimedia qt6-serialport qt6-svg qt6-multimedia-ffmpeg hicolor-icon-theme)
-makedepends=(git)
+depends=(qt6-base qt6-multimedia qt6-serialport qt6-svg qt6-multimedia-ffmpeg hicolor-icon-theme libusb)
+makedepends=(git qt6-tools clang)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/TechxArtisanStudio/Openterface_QT.git"
@@ -22,14 +22,13 @@ pkgver() {
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
+build() {
 	cd "${_reponame}"
+
+	/usr/lib/qt6/bin/lrelease openterfaceQT.pro
+
 	mkdir build && cd build
 	qmake6 ..	
-}
-
-build() {
-	cd "${_reponame}/build"
 	make
 }
 
