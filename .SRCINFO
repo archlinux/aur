@@ -1,5 +1,5 @@
 pkgbase = ruby-factory_bot
-	pkgdesc = Provides a framework and DSL for defining and using factories - less error-prone, more explicit, and all-around easier to work with than fixtures
+	pkgdesc = A library for setting up Ruby objects as test data.
 	pkgver = 6.5.1
 	pkgrel = 1
 	url = https://github.com/thoughtbot/factory_bot
