@@ -3,7 +3,7 @@
 pkgname=happyx
 pkgver=4.7.4
 pkgrel=1
-pkgdesc="Macro-oriented asynchronous full-stack web-framework, written in Nim"
+pkgdesc="Macro-oriented asynchronous web-framework written in Nim"
 arch=(x86_64)
 url="https://github.com/HapticX/$pkgname"
 license=(GPL3)
