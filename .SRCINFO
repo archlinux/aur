@@ -1,8 +1,8 @@
 pkgbase = accel-ppp
-	pkgdesc = High performance PPTP/L2TP/PPPoE/IPoE server
+	pkgdesc = High performance PPTP/L2TP/SSTP/PPPoE/IPoE server for Linux
 	pkgver = 1.13.0
 	pkgrel = 3
-	url = http://sourceforge.net/apps/trac/accel-ppp/
+	url = https://github.com/accel-ppp/accel-ppp
 	install = accel-ppp.install
 	arch = i686
 	arch = x86_64

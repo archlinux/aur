@@ -4,9 +4,9 @@
 pkgname=accel-ppp
 pkgver=1.13.0
 pkgrel=3
-pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
+pkgdesc="High performance PPTP/L2TP/SSTP/PPPoE/IPoE server for Linux"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/apps/trac/accel-ppp/"
+url="https://github.com/accel-ppp/accel-ppp"
 license=('GPL')
 depends=('openssl>=1.0.0' 'pcre>=8.30' 'lua51')
 makedepends=('cmake>=2.6' 'net-snmp>=5.x')
