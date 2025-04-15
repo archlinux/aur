@@ -3,7 +3,7 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=libcgroup
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=0
 pkgdesc='Library that abstracts the control group file system in Linux'
 arch=('i686' 'x86_64')
@@ -18,8 +18,9 @@ install=libcgroup.install
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
 	'cgconfig.service'
 	'cgrules.service')
-validpgpkeys=('47A68FCE37C7D7024FD65E11356CE62C2B524099') # Tom Hromatka <tom.hromatka@oracle.com>
-sha256sums=('976ec4b1e03c0498308cfd28f1b256b40858f636abc8d1f9db24f0a7ea9e1258'
+validpgpkeys=('47A68FCE37C7D7024FD65E11356CE62C2B524099' # Tom Hromatka <tom.hromatka@oracle.com>
+              'F18591503928B6296EED4882E050B79D5B290D03') # Kamalesh Babulal <kamalesh.babulal@oracle.com>
+sha256sums=('9a0fc2d6c377215c3e0d849f9189ecd91fd075f1da0a24b73f56c8892e86bdfe'
             'SKIP'
             '808fc354abf36d7b6673dad790be275309ac57a2606d1be3732b9b3aeb5885eb'
             '6b1340ff6717f55e5e57dacc72accc0bfaed7e50ef31439271b6ddc893cbf671')
