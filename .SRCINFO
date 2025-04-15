@@ -1,6 +1,6 @@
 pkgbase = wire-desktop-git
 	pkgdesc = End-to-end encrypted messenger with file sharing, voice calls and video conferences.(Use system-wide electron)
-	pkgver = 3.37.3607.r31.g4330270
+	pkgver = 3.37.3607.r140.g39ee00f
 	pkgrel = 1
 	url = https://wire.com/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = wire-desktop-git
 	makedepends = yarn
 	makedepends = gendesk
 	makedepends = curl
-	depends = electron33
+	depends = electron35
 	optdepends = emoji-font: colorful emoji
 	provides = wire-desktop
 	conflicts = wire-desktop
