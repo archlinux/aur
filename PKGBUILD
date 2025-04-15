@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Collection of IEEE 802.1 MIBs'
 url='https://1.ieee802.org/mib-modules/'
 arch=('any')
-license=('IEEE')
+license=('custom:IEEE')
 makedepends=('libsmi')
 source=('smi.conf'
         'https://www.ieee802.org/1/files/public/MIBs/IEEE8021-AS-MIB-201212120000Z.mib'
