@@ -1,5 +1,5 @@
 pkgbase = python-django-auth-ldap
-	pkgdesc = This is a Django authentication backend that authenticates against an LDAP service.
+	pkgdesc = Django LDAP authentication backend
 	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/django-auth-ldap
