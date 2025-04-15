@@ -6,7 +6,7 @@
 pkgname=('skia-git')
 pkgver=r74476.5b56d9a916
 pkgrel=1
-pkgdesc="Chromiums high-performance rendering library"
+pkgdesc="A complete 2D graphic library for drawing Text, Geometries, and Images."
 arch=('x86_64')
 url="https://github.com/google/skia"
 license=('BSD-3-Clause')
