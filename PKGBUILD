@@ -3,8 +3,8 @@
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=superset-venv
 
 pkgname="aider-chat-venv"
-pkgver=0.74.0
-pkgrel=2
+pkgver=0.82.0
+pkgrel=1
 pkgdesc="AI pair programming in your terminal"
 url="https://github.com/Aider-AI/aider"
 license=("Apache-2.0")
@@ -30,7 +30,7 @@ package() {
  python -m venv "$pkgdir/usr/share/aider-chat/venv"
  source "$pkgdir/usr/share/aider-chat/venv/bin/activate"
  # install aider-chat and dependencies using pip
- "$pkgdir/usr/share/aider-chat/venv/bin/"pip install -I aider-chat sounddevice soundfile
+ "$pkgdir/usr/share/aider-chat/venv/bin/"pip install --upgrade pip -I aider-chat sounddevice soundfile
  # remove references to pkgdir
  find "$pkgdir/usr/share/aider-chat/venv/bin" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
  find "$pkgdir/usr/share/aider-chat/venv/pyvenv.cfg" -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
