@@ -1,4 +1,6 @@
-# Maintainer: Ulf Winberg <ulfwin@gmail.com>
+# Maintainer: Pierre Ayoub <pierreay@proton.com>
+# Contributor: Ulf Winberg <ulfwin@gmail.com>
+# Contributor: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 _pkgname="inkscape-open-symbols"
 pkgname="${_pkgname}-git"
 pkgver=v1.2.1.r12.g7a991f1
