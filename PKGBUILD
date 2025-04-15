@@ -18,7 +18,7 @@ pkgname=(
 )
 pkgver=1.5.0
 _realver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
@@ -74,6 +74,8 @@ package_kanidm-clients () {
   install -Dm644 target/release/build/completions/_kanidm "${pkgdir}/usr/share/zsh/site-functions/_kanidm"
 
   install -Dm644 target/release/build/completions/kanidm.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm.sh"
+
+  install -Dm644 target/release/build/completions/kanidm.fish "${pkgdir}/usr/share/fish/completions/kanidm.fish"
 }
 
 package_kanidm-server () {
@@ -94,6 +96,8 @@ package_kanidm-server () {
   install -Dm644 target/release/build/completions/_kanidmd "${pkgdir}/usr/share/zsh/site-functions/_kanidmd"
 
   install -Dm644 target/release/build/completions/kanidmd.bash "${pkgdir}/usr/share/bash-completion/completions/kanidmd.sh"
+
+  install -Dm644 target/release/build/completions/kanidmd.fish "${pkgdir}/usr/share/fish/completions/kanidmd.fish"
 
 
   # add web-ui files
@@ -129,4 +133,8 @@ package_kanidm-unixd-clients () {
   install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys_direct.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys_direct.sh"
   install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys.sh"
   install -Dm644 target/release/build/completions/kanidm_unix.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unix.sh"
+
+  install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys_direct.fish "${pkgdir}/usr/share/fish/completions/kanidm_ssh_authorizedkeys_direct.fish"
+  install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys.fish "${pkgdir}/usr/share/fish/completions/kanidm_ssh_authorizedkeys.fish"
+  install -Dm644 target/release/build/completions/kanidm_unix.fish "${pkgdir}/usr/share/fish/completions/kanidm_unix.fish"
 }
