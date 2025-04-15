@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+
+# config
+
+CONFIG_FILE="$HOME/.config/hypr/ranpaper.conf"
+
+# Function to get a variable's value from the config file
+get_config_value() {
+  local key="$1"
+  grep -E "^${key}=" "$CONFIG_FILE" | cut -d= -f2-
+}
+
+# Function to update or add a config key
+set_config() {
+  local key="$1"
+  local value="$2"
+
+  # If the key exists, update it
+  if grep -qE "^${key}=" "$CONFIG_FILE"; then
+    sed -i "s|^${key}=.*|${key}=${value}|" "$CONFIG_FILE"
+  else
+    # Otherwise, append it to the end
+    echo "${key}=${value}" >>"$CONFIG_FILE"
+  fi
+}
+
+# setup
+
+WALLPAPER_DIR="$(get_config_value "WALLPAPER_DIR")"
+CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+
+# Check for config
+
+if [ -z "$WALLPAPER_DIR" ]; then
+  echo "Config not found. Autogenerating... "
+
+  D_DIR="$HOME/wallpapers"
+
+  D_DIR=$(realpath "$D_DIR")
+  set_config "WALLPAPER_DIR" "\"$D_DIR\""
+
+  mkdir -p "$D_DIR"
+
+  echo ""
+  echo "The new wallpaper directory is $D_DIR."
+  echo "If you want to change it either"
+  echo "A) run 'ranpaper -d <directory>' to set the directory"
+  echo "B) change the config manually at ~/.config/hypr/ranpaper.conf"
+  echo ""
+  exit 1
+
+else
+  # Remove quotes if present
+  WALLPAPER_DIR="${WALLPAPER_DIR%\"}"
+  WALLPAPER_DIR="${WALLPAPER_DIR#\"}"
+  WALLPAPER_DIR="${WALLPAPER_DIR/#\~/$HOME}"
+  WALLPAPER_DIR="$(realpath "$WALLPAPER_DIR")"
+  # echo "WALLPAPER_DIR already set to $WALLPAPER_DIR"
+fi
+
+# Get a random wallpaper that is not the current one
+WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+# Get flags
+while getopts ":lphs:d:" flag; do
+  case "${flag}" in
+  l)
+    echo ""
+    echo "-- List of files in wallpaper directory --"
+    echo ""
+    ls $WALLPAPER_DIR -1
+    ;;
+  s)
+    if [ -z "$(find ${WALLPAPER_DIR}/ -type f -name "${OPTARG}")" ]; then
+      echo "File not found. (${WALLPAPER_DIR}/${OPTARG})"
+    else
+      hyprctl hyprpaper reload ,"$(find ${WALLPAPER_DIR}/ -type f -name "${OPTARG}")"
+    fi
+    ;;
+  h)
+    echo "
+
+  Help
+--------
+Note - This script only works with hyprpaper!
+
+ranpaper -- sets a random wallpaper from the wallpaper directory
+ranpaper -h -- opens this help menu
+ranpaper -s <file> -- lets you select a wallapaper from the wallpaper directory
+ranpaper -l -- lets you list all wallpapers in the directory
+ranpaper -d <directory> -- lets you change the wallpaper directory to another EXISTING directory
+ranpaper -p -- prints the wallpaper directory
+
+config file is located at: $CONFIG_FILE
+
+"
+
+    ;;
+  d)
+    DIR="${OPTARG/#\~/$HOME}"
+    DIR="$(realpath "$DIR")"
+
+    if [ -d "$DIR" ]; then
+      set_config "WALLPAPER_DIR" "\"$DIR\""
+      echo "Wallpaper directory set to: $DIR"
+    else
+      echo "Invalid directory. Run 'ranpaper -h' for help."
+    fi
+    ;;
+  p)
+    echo "the current wallpaper directory is: $WALLPAPER_DIR"
+    ;;
+  *)
+    echo "Invalid flag"
+    exit 1
+    ;; # Fuck off i lost my mind writing these bullshit comments
+  esac
+done
+
+# If no flag provided
+if [[ $# -eq 0 ]]; then
+
+  # Apply the selected wallpaper
+  hyprctl hyprpaper reload ,"$WALLPAPER"
+
+fi

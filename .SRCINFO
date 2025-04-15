@@ -1,0 +1,11 @@
+pkgbase = ranpaper
+	pkgdesc = The best hyprpaper tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Gr3yt/ranpaper
+	arch = any
+	license = MIT
+	source = ranpaper
+	md5sums = SKIP
+
+pkgname = ranpaper
