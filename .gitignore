@@ -1,0 +1,5 @@
+*.ttf
+*.txt
+*.zst
+pkg
+src
