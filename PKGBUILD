@@ -3,7 +3,7 @@
 # Contributor: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 _pkgname="inkscape-open-symbols"
 pkgname="${_pkgname}-git"
-pkgver=v1.2.1.r12.g7a991f1
+pkgver=1.2.1.r64.g48fc83b
 pkgrel=1
 pkgdesc="Open source icon sets to use as Inkscape symbols"
 arch=('any')
@@ -18,10 +18,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
