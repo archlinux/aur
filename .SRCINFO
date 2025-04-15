@@ -1,7 +1,7 @@
 pkgbase = sub-trans-bin
-	pkgdesc = A GUI tool swap subtitle between tchinese and schinese
+	pkgdesc = A GUI tool swap subtitle between tchinese and schinese.(Prebuilt version)
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dreamfliper/subTrans
 	arch = x86_64
 	license = LicenseRef-unknown
