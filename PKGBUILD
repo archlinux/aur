@@ -2,7 +2,7 @@
 
 _pkgname=3dtk
 pkgname="$_pkgname-git"
-pkgver=r2353.0338944
+pkgver=r2357.af0e03d
 pkgrel=1
 pkgdesc='3D Toolkit with algorithms and methods to process 3D point clouds'
 url='https://slam6d.sourceforge.io'
@@ -31,12 +31,10 @@ depends=(findutils
 	 ann)
 source=("$pkgname::git+https://github.com/JMUWRobotics/3DTK.git"
 	apriltag.patch
-	cpp14.patch
 	cacheManager.patch
 	3dtk.sh)
 sha512sums=('SKIP'
             '064c980b6817aac39bfccb64315cfec07e290451c1fcedaee4492a50694d2a489296bcf7ded39d2fa877a10f83f7e19c4cd9e6ab15fca7be9afa34cc4be8056f'
-            'b55788c7fd074980a4d4814b8a29b5f70c097cd201db59248edc2c012cc4ea0bf55af1da2165dcf20865b61f86f2d8a2888ac445381bfaaa3f4f54b5cac540be'
             'a4987e473e86c77b85b6e71bfff4149c8e8fd63574dba1a66afbe70dd849cdeff27055d17025c3487ce5fc48ee7acefa1cfd7600c0d40a3d688c06daf3bc29af'
             'e352631c55938430af765948ef73a16c855f2147b5cab9ec33cbdc438ee0f28bb32cd96f4f2ff96f773de153de72d3b8ff0f51f5076227e181db9eac653b9e36')
 
