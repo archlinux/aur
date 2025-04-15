@@ -1,16 +1,15 @@
 pkgbase = inkscape-open-symbols-git
 	pkgdesc = Open source icon sets to use as Inkscape symbols
-	pkgver = v1.2.1.r12.g7a991f1
+	pkgver = 1.2.1.r64.g48fc83b
 	pkgrel = 1
-	url = https://github.com/Xaviju/inkscape-open-symbols
+	url = https://github.com/PanderMusubi/inkscape-open-symbols
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = inkscape
-	source = inkscape-open-symbols::git+https://github.com/Xaviju/inkscape-open-symbols.git
-	source = https://raw.githubusercontent.com/Xaviju/inkscape-open-symbols/master/LICENSE.txt
+	source = inkscape-open-symbols::git+https://github.com/PanderMusubi/inkscape-open-symbols.git
+	source = https://raw.githubusercontent.com/PanderMusubi/inkscape-open-symbols/master/LICENSE.txt
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = inkscape-open-symbols-git
-
