@@ -1,9 +1,9 @@
-# Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
+# Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=packemon
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="A TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces. "
-arch=('i686' 'x86_64' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64')
 license=("BSD-2-Clause")
 url="https://github.com/ddddddO/packemon"
 makedepends=('go')
@@ -11,7 +11,7 @@ options=("strip" "buildflags")
 depends=('glibc')
 checkdepends=('iproute2')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('35c3241d119dfbb29cba0996c8fa4068593ba0d056ff9854f291b2421cdfba09')
+sha256sums=('755193674a861b19887fa157e0887c77be92e4e40244f6ae8f76d8d01f532d6e')
 prepare(){
     cd "${pkgname}-${pkgver}"
     mkdir -p build
