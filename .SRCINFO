@@ -1,7 +1,7 @@
 pkgbase = sherpa-ncnn
 	pkgdesc = Real-time speech recognition and voice activity detection (VAD) using next-gen Kaldi with ncnn without Internet connection.
-	pkgver = 2.1.10
-	pkgrel = 4
+	pkgver = 2.1.11
+	pkgrel = 1
 	url = https://github.com/k2-fsa/sherpa-ncnn
 	arch = x86_64
 	license = Apache-2.0
@@ -17,7 +17,7 @@ pkgbase = sherpa-ncnn
 	provides = ncnn
 	conflicts = sherpa-ncnn
 	conflicts = ncnn
-	source = sherpa-ncnn-2.1.10.tar.gz::https://github.com/k2-fsa/sherpa-ncnn/archive/refs/tags/v2.1.10.tar.gz
-	sha256sums = 31327d2feba89e5c5796b1bccdb6513bbf059c8ae22defd7646530cc82cfee91
+	source = sherpa-ncnn-2.1.11.tar.gz::https://github.com/k2-fsa/sherpa-ncnn/archive/refs/tags/v2.1.11.tar.gz
+	sha256sums = a3af3290b4b36a9fce8699189184ccba851aab377ac0829ea2c58e81a30452a4
 
 pkgname = sherpa-ncnn
