@@ -7,7 +7,7 @@ _desktopfile="${_pkgname}"
 
 pkgname=lpub3d-appimage
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=4
 pkgdesc="LDraw™ editor for LEGO® style digital building instructions"
 arch=('x86_64')
 license=('GPL3')
@@ -18,7 +18,7 @@ optdepends=('ldraw-parts-library: LEGO parts library'
 	    'leocad: A CAD program for creating virtual LEGO models')
 conflicts=()
 options=(!strip)
-source=("${_appimage}::https://github.com/trevorsandy/lpub3d/releases/download/continous/v${_pkgver}/${_appimage}")
+source=("${_appimage}::https://github.com/trevorsandy/lpub3d/releases/download/continuous/${_appimage}")
 sha512sums=('e82e1bc4e0a19c6aea97ba8cb07c02fef47ef32bc321727e1f65a4449c566ce9248ee75971ead89f20542fac032c4f73564c7166517ce5ad688e27894cb2476f')
 
 
