@@ -2,7 +2,7 @@
 
 pkgname=python-types-markdown
 _name=types_markdown
-pkgver=3.7.0.20250322
+pkgver=3.8.0.20250415
 pkgrel=1
 pkgdesc='Typing stubs for Markdown'
 arch=(any)
@@ -11,7 +11,7 @@ license=(Apache)
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a48ed82dfcb6954592a10f104689d2d44df9125ce51b3cee20e0198a5216d55c')
+sha256sums=('98ab13587d1177769d93e55586d3dc97047df75bc6e37ce4074666f5dd4212ba')
 
 build() {
   cd "$_name-$pkgver"
