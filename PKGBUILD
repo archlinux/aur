@@ -4,7 +4,7 @@
 
 pkgname=python-torchmetrics
 _pkgname=${pkgname#python-}
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Machine learning metrics for distributed, scalable PyTorch applications'
 arch=('any')
@@ -40,7 +40,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('7d7f10dbe3747a71fc8749d3da6431f6ae1b39078988d551c33b1f5dd2be9a80165b4e5e88c1e1157e3ca04c4aac9530e106fd48fe900f768958d03862cfe060')
+sha512sums=('8c0d475f7bee8fc66ef169fdbb180f5f7f09822d8c629ae2a2ad5fd631e5fc0c6ca34307bbbb0f0d2b337a68af68be3388695fcf2b6df9f5f47206baa6b92579')
 
 build() {
   cd "${_pkgname}-${pkgver}"
