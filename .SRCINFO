@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.2
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = cherry-studio-electron-bin
 	makedepends = fuse2
 	depends = electron31
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.2.2
+	provides = cherry-studio=1.2.4
 	conflicts = cherry-studio
-	source = LICENSE-1.2.2::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.2.2/LICENSE
+	source = LICENSE-1.2.4::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.2.4/LICENSE
 	source = cherry-studio-electron.sh
-	sha256sums = 36827544014f67bfe9a950a1ebbb3faca47a71680d178afc33e8bc59bdf1186b
+	sha256sums = ca8950fcf72aef9d46e0bccc0b456c5e2e14bd37d2bbd04bb99632e09eda36b3
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = cherry-studio-electron-1.2.2-aarch64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.2/Cherry-Studio-1.2.2-arm64.AppImage
-	sha256sums_aarch64 = 1b373ee60a3a2b48c6fb3a4234f8b962c37ae4bfbe8aa5bbdfcdad310442aecd
-	source_x86_64 = cherry-studio-electron-1.2.2-x86_64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.2/Cherry-Studio-1.2.2-x86_64.AppImage
-	sha256sums_x86_64 = 5244d0c5c5e6a2663d723adf722871a8d2ff712e7e777160598f7a3798f8b92a
+	source_aarch64 = cherry-studio-electron-1.2.4-aarch64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.4/Cherry-Studio-1.2.4-arm64.AppImage
+	sha256sums_aarch64 = acadedd0fbcc9f4b8a75b94f3cac6897f5a8be55ab4d284dcbf920e4b34a72dc
+	source_x86_64 = cherry-studio-electron-1.2.4-x86_64.AppImage::https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.4/Cherry-Studio-1.2.4-x86_64.AppImage
+	sha256sums_x86_64 = 189f69fc44472b0dde1a2e1ec745c259af6777be4db2b4d4ed9e8b023766776c
 
 pkgname = cherry-studio-electron-bin
