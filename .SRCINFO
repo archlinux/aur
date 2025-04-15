@@ -1,14 +1,11 @@
 pkgbase = ohmymd-bin
-	pkgdesc = A markdown editor,support cloud sync
+	pkgdesc = A markdown editor,support cloud sync.(Prebuilt version)
 	pkgver = 0.6.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.ohmymd.app/
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = alsa-lib
-	depends = gtk3
-	depends = nspr
-	depends = nss
+	depends = electron24
 	provides = ohmymd=0.6.1
 	conflicts = ohmymd
 	source = ohmymd-0.6.1.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/ohmymd_0.6.1_amd64.deb
