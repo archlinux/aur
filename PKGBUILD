@@ -1,10 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rhyolite-bin
 _pkgname=Rhyolite
-pkgver=0.1.5
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="A simple text editor written in Rust using Tauri and svelte for frontend, inspired by Obsidian.(Prebuilt version)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://rhyolite.xyz/"
 _ghurl="https://github.com/rhyolite-org/rhyolite"
 license=('Apache-2.0')
@@ -14,12 +17,11 @@ depends=(
     'gtk3'
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
-    'libvoikko'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}_${CARCH}.rpm"
-)
-sha256sums=('8734022f88a4e2126c5ae3ee84ca90b0ed22b380ee56cd62f6c0d31f2db726d6')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
+sha256sums_aarch64=('830c901d0cee9e8da67891935a4929e96252542dcdd865dd69670759c6917a1b')
+sha256sums_x86_64=('5a8df025b4358776a7bcde5ba75f5ae5745932b5601c9747daed2763f2ae3196')
 prepare() {
     sed -i -e "
         s/Categories=/Categories=Utility;/g
