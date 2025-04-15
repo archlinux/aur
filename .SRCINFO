@@ -1,13 +1,12 @@
 pkgbase = fetch-crl3
 	pkgdesc = fetch-crl - the Certificate Revocation List retrieval tool
-	pkgver = 3.0.21
+	pkgver = 3.0.23
 	pkgrel = 1
 	url = https://dist.igtf.net/distribution/util/fetch-crl3/
 	arch = any
 	license = Apache
 	depends = perl
-	source = https://dist.eugridpma.info/distribution/util/fetch-crl3/fetch-crl-3.0.21.tar.gz
-	md5sums = 68d9f264eec6a745d6bc4b85b2900e18
+	source = https://dist.eugridpma.info/distribution/util/fetch-crl3/fetch-crl-3.0.23.tar.gz
+	md5sums = bf94e8a70b7c18617c113b50936895f6
 
 pkgname = fetch-crl3
-
