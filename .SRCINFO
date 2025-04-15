@@ -1,7 +1,7 @@
 pkgbase = no-fwl-bin
-	pkgdesc = NoFWL Desktop Application
+	pkgdesc = NoFWL Desktop Application.(Prebuilt version)
 	pkgver = 0.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://nofwl.com/
 	arch = x86_64
 	license = GPL-3.0-only
