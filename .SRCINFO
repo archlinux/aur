@@ -1,6 +1,6 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
-	pkgver = 1.32.0
+	pkgver = 1.32.1
 	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-opentelemetry
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-opentelemetry-1.32.0.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/v1.32.0.tar.gz
-	b2sums = 193f502a925b659a2696746e0f0a2d39a859d4b58260ed27946b8dc27cfd4b7aad3f9ff8c626ceea93c71b7671a67b60ca44609adf4d41fcd76d021702c12835
+	source = python-opentelemetry-1.32.1.tar.gz::https://github.com/open-telemetry/opentelemetry-python/archive/v1.32.1.tar.gz
+	b2sums = 3ae557c528be81fe68bf34349224abb8f30b7ffaacedec9730a54b14ee73fd07fef28112f59274bbcac7c491e6415214e94d91f99c5145f5d56aca220774f333
 
 pkgname = python-opentelemetry-opencensus-shim
 	pkgdesc = OpenCensus Shim for OpenTelemetry
