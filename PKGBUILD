@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=streaker-bin
 _pkgname=Streaker
-pkgver=2.6.0
+pkgver=2.6.1
 _electronversion=35
 pkgrel=1
 pkgdesc="🔥 GitHub contribution streak & stat tracking menu bar app.(Prebuilt version.Use system-wide electron)"
@@ -23,7 +23,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7d55217426d3fcd1e7e5baa50ecb997f7c0a15fc13774e4f044a6cf1bca1b68c'
+sha256sums=('d30be4cbf5182c45402a439915b6420314ae223b436de77cbc3bf3f3d87b1865'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
