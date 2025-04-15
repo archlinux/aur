@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aione
 _pkgname=AIOne
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c2dbe73b44db83e60cefb7c5feb6c551cfe6b12248f35b84a1a6914b545b653b'
+sha256sums=('042a5477d288e002d3d9e49561cd546fac239a0f6662dd9f29f8b4d3266c44bf'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
