@@ -1,5 +1,5 @@
 pkgbase = ruby-wisper
-	pkgdesc = A micro library providing objects with Publish-Subscribe capabilities
+	pkgdesc = A micro library providing Ruby objects with Publish-Subscribe capabilities
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/krisleech/wisper
