@@ -1,0 +1,32 @@
+# Maintainer: Integral <integral@member.fsf.org>
+
+pkgname=daed-avx2-bin
+_pkgname=daed
+pkgver=0.9.0
+pkgrel=1
+pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core) (with AVX2 CPU optimizations)"
+url="https://daeuniverse.github.io/daed"
+arch=('x86_64')
+license=('AGPL-3.0-or-later AND MIT')
+provides=("${_pkgname}" "dae")
+conflicts=("${_pkgname}" "${_pkgname}-git" "dae")
+replaces=('daed-bin-x64-v3')
+source=("${pkgname}-${pkgver}.zip::https://github.com/daeuniverse/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64_v3_avx2.zip"
+       "${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/daeuniverse/daed/v${pkgver}/LICENSE")
+install="${pkgname}.install"
+sha512sums=('b2ade10619c70d186595414a573ff6293f52a8e0d1a4c041fc5276571e0fcd17728d9d80f946f8a2d051ff60de75d4dfcc05e788104ba0affb90e18f506710d5'
+            '82e50adf3228132f787522c8562b8b85958ce3f33b76445c148e2517c937b62999d3b4594ee1adc9bbe473619840b181ea984a34772c9f65fd592847e621fd66')
+
+package() {
+	# Install binary
+	install -vDm755 "${_pkgname}-linux-x86_64_v3_avx2" "${pkgdir}/usr/bin/${_pkgname}"
+
+	# Install systemd service
+	install -vDm644 "${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
+
+	# Install geoip.dat & geosite.dat
+	install -vDm644 geo{ip,site}.dat -t "${pkgdir}/usr/share/${_pkgname}/"
+
+	# Install license
+	install -vDm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
