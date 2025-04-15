@@ -16,7 +16,7 @@ pkgbase = karakeep
 	depends = monolith
 	depends = nodejs>=22
 	depends = pnpm
-	optdepends = hoarder-cli: karakeep cli tool
+	optdepends = karakeep-cli: karakeep cli tool
 	optdepends = ollama: for automatic tagging
 	optdepends = yt-dlp: for download video
 	replaces = hoarder

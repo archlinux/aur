@@ -11,7 +11,7 @@ backup=("etc/${pkgname}/${pkgname}.env")
 replaces=("hoarder")
 depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs>=22" "pnpm")
 makedepends=("git" "jq" "pnpm")
-optdepends=("hoarder-cli: ${pkgname} cli tool"
+optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "ollama: for automatic tagging"
             "yt-dlp: for download video")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
