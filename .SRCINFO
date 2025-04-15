@@ -1,5 +1,5 @@
 pkgbase = electron-utils-bin
-	pkgdesc = Electron Utils for every day usage as a dev.
+	pkgdesc = Electron Utils for every day usage as a dev.(Prebuilt version)
 	pkgver = 3.3.0
 	pkgrel = 7
 	url = https://github.com/SamTV12345/DevRustPilot
