@@ -1,6 +1,6 @@
 pkgbase = python-scikit-learn-intelex
 	pkgdesc = Intel(R) Extension for Scikit-learn is a seamless way to speed up your Scikit-learn application.
-	pkgver = 2025.0.0
+	pkgver = 2025.4.0
 	pkgrel = 1
 	url = https://github.com/intel/scikit-learn-intelex
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-scikit-learn-intelex
 	depends = python
 	depends = python-scikit-learn
 	depends = python-daal
-	source = https://files.pythonhosted.org/packages/8f/3f/97bf040b7207490e858cd6451b93b6cccc504eadc04bf019cd9d37b5f24e/scikit_learn_intelex-2025.0.0-py312-none-manylinux_2_28_x86_64.whl
-	sha256sums = 339b191f735e78eac235e3d61a39c9f5706d39f7beb6cdffbecc34cd3e9fb65b
+	source = https://files.pythonhosted.org/packages/a0/e4/08b05ecdc32177052a5902bf32141e5615dc846f47191abefcd2ddb7be0e/scikit_learn_intelex-2025.4.0-py313-none-manylinux_2_28_x86_64.whl
+	sha256sums = c162db4a4f8e98b06337d836e678bd47c2b0a700fede3ace8496926aa6a424b8
 
 pkgname = python-scikit-learn-intelex
