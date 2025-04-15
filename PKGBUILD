@@ -16,8 +16,8 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -26,6 +26,6 @@ prepare() {
 }
 
 package() {
-    cd $_pkgname
+	cd $_pkgname
 	PREFIX="$pkgdir/usr" PROGNM=$pkgname make install
 }
