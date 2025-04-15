@@ -4,7 +4,7 @@ pkgver=1.0.2
 pkgrel=2
 _commit=06164e45407b8048e3101af65ddd67c5805a4c7e
 #TODO think of better pkgver
-pkgdesc="Smart voice assistants like Alexa, Siri and Google assistants"
+pkgdesc="Intelligent audio assistant like Iron Man Jarvis"
 arch=('any')
 url="https://github.com/kiahamedi/JELVIS"
 license=('GPL-3.0-only')

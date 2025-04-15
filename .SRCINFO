@@ -1,5 +1,5 @@
 pkgbase = jelvis
-	pkgdesc = Smart voice assistants like Alexa, Siri and Google assistants
+	pkgdesc = Intelligent audio assistant like Iron Man Jarvis
 	pkgver = 1.0.2
 	pkgrel = 2
 	url = https://github.com/kiahamedi/JELVIS
