@@ -3,7 +3,6 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 #TODO: clean up this shit
 _pkg=whois
-_name="py${_pkg}"
 _pkgname="python_${_pkg}"
 pkgname=(
   "python-${_pkg}")
@@ -14,7 +13,7 @@ pkgdesc="Whois querying and parsing of domain registration information"
 arch=(
   any
 )
-url="https://bitbucket.org/richardpenman/${_name}"
+url="https://pypi.org/project/python-whois"
 license=('MIT')
 depends=(
   "python"
