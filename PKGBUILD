@@ -1,4 +1,5 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
 pkgver=0.53b1
