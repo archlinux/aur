@@ -1,8 +1,8 @@
 # Maintainer: Mia Sireneva <mia_sireneva@riseup.net>
 
 pkgname=mediamtx-bin
-pkgver=1.11.3
-pkgrel=2
+pkgver=1.12.0
+pkgrel=1
 pkgdesc='Ready-to-use and zero-dependency real-time media server and media proxy that allows to publish, read, proxy, record and playback video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/bluenviron/${pkgname%-bin}"
@@ -29,9 +29,9 @@ sha256sums=(
 	'80442dadb22e57529b456c76bf33ac364cd022f134fc5290dc54a7e2f8378124'
 )
 
-sha256sums_x86_64=('b2e65c0be00434b13e01feb64e85af4bc65fa3c62d1b9aa2d4139bd28d795cba')
-sha256sums_armv7h=('fc0cae3707a2561931b92add8d9b0f1f9a7e126b063b9c9c21c6edc1b906ebc0')
-sha256sums_aarch64=('6ae3e3d78a770ed28ae26f8e8b474387e9d44ee88d419a245e48530062bdb629')
+sha256sums_x86_64=('8bbf936e70a8abc80fdb2d0d67c1b53df6a3bfcf4d819ac730a4b0fddcc793bf')
+sha256sums_armv7h=('0b96fb21da1abbf612518daf3978055cb608157cecad2d076b47f644a6aac28b')
+sha256sums_aarch64=('fdeb6e1649f82949c33c7619403147dabadf5a3fb178cf29805d3ea0fa5a2886')
 
 package() {
 	cd "$srcdir"
