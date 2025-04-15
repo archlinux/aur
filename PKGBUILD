@@ -1,3 +1,4 @@
+# Maintainer: gilbus <aur (AT) tinkershell.eu>
 pkgname=workout-tracker
 pkgver=2.2.2
 pkgrel=1
