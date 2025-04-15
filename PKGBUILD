@@ -18,6 +18,7 @@ depends=(
 optdepends=(
     "gnome-shell-extension-appindicator: System tray indicator extension for GNOME desktop"
     "libappindicator-gtk3: System tray support for desktop environments"
+    "qt6-wayland: Wayland support"
 )
 install=${pkgname}.install
 source=(${pkgname}-${pkgver}.deb::"https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_${pkgver//_/-}.deb")

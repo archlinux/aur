@@ -15,6 +15,7 @@ pkgbase = atostekid
 	depends = qt6-base
 	optdepends = gnome-shell-extension-appindicator: System tray indicator extension for GNOME desktop
 	optdepends = libappindicator-gtk3: System tray support for desktop environments
+	optdepends = qt6-wayland: Wayland support
 	source = atostekid-4.3.0.0.deb::https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_4.3.0.0.deb
 	sha256sums = fc753b03e171b39e28bd9f85a43d0986409dbad6d72801cd1d63762a6f444f73
 
