@@ -20,8 +20,10 @@ optdepends=(
     "libappindicator-gtk3: System tray support for desktop environments"
     "qt6-wayland: Wayland support"
 )
-install=${pkgname}.install
-source=(${pkgname}-${pkgver}.deb::"https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_${pkgver//_/-}.deb")
+install="${pkgname}.install"
+source=(
+    "${pkgname}-${pkgver}.deb::https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_${pkgver//_/-}.deb"
+)
 sha256sums=(
     "fc753b03e171b39e28bd9f85a43d0986409dbad6d72801cd1d63762a6f444f73"
 )
