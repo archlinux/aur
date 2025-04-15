@@ -3,7 +3,7 @@
 # Contributor: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
 
 pkgname=hydra-launcher-bin
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="A game launcher with its own embedded bittorrent client"
 arch=('x86_64')
@@ -41,7 +41,7 @@ depends=('alsa-lib'
 options=('!strip')
 source=("${url}/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb"
         "${pkgname}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('f2acdfdea6a252dce5b93535a8f4627f919f68c1e1151f0747b9cfd4f96c288f'
+sha256sums=('4af40c7bf75be2279f76a7b0296f496209a08911f8f213dc1850246e7d761df9'
             '32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9')
 
 package() {
