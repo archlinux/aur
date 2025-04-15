@@ -1,0 +1,15 @@
+pkgbase = neo-candy-icons
+	pkgdesc = Neo candy icons
+	pkgver = 25.04
+	pkgrel = 04
+	url = https://github.com/erikdubois/neo-candy-icons.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = neo-candy-icons
+	options = !strip
+	options = !emptydirs
+	source = neo-candy-icons::git+https://github.com/erikdubois/neo-candy-icons.git
+	sha256sums = SKIP
+
+pkgname = neo-candy-icons
