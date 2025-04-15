@@ -1,0 +1,27 @@
+pkgbase = krillinai-bin
+	pkgdesc = A video translation and dubbing tool powered by LLMs, offering professional-grade translations and one-click full-process deployment. It can generate content optimized for platforms like YouTube，TikTok, and Shorts.(Prebuilt version)基于AI大模型的视频翻译和配音工具，专业级翻译，一键部署全流程，可以生成适配抖音，小红书，哔哩哔哩，视频号，TikTok，Youtube Shorts等形态的内容
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/krillinai/KrillinAI
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gendesk
+	optdepends = ollama: Use you local LLMs
+	provides = krillinai=1.1.2
+	conflicts = krillinai
+	source = krillinai-1.1.2.png::https://raw.githubusercontent.com/krillinai/KrillinAI/v1.1.2/docs/images/logo.png
+	source = krillinai-1.1.2.toml::https://raw.githubusercontent.com/krillinai/KrillinAI/v1.1.2/config/config-example.toml
+	source = README-1.1.2.md::https://raw.githubusercontent.com/krillinai/KrillinAI/v1.1.2/README.md
+	sha256sums = c2f175b895e0fcb0eb74f992ad29a5f91cc99fb4b677dbbbec3b71473b15a68d
+	sha256sums = c500afc089ce0778f5e41f274262b75622b95ab81777aaf308262fc992cd2925
+	sha256sums = f002084478263763a36a01a0bac6eb7d09b64d82321b5639c97e73121e58f495
+	source_aarch64 = krillinai-1.1.2-aarch64::https://github.com/krillinai/KrillinAI/releases/download/v1.1.2/KrillinAI_1.1.2_Linux_arm64
+	sha256sums_aarch64 = 31dfd62465c8c7b2e51ea5df6a41aecc28b0e07199be1a8a7f6a99a1d32e0eb4
+	source_i686 = krillinai-1.1.2-i686::https://github.com/krillinai/KrillinAI/releases/download/v1.1.2/KrillinAI_1.1.2_Linux_i386
+	sha256sums_i686 = 6362d9286e957781879f254ed0833f69b5e9dff4d136c1a5e31eb2e5412f6f2a
+	source_x86_64 = krillinai-1.1.2-x86_64::https://github.com/krillinai/KrillinAI/releases/download/v1.1.2/KrillinAI_1.1.2_Linux_x86_64
+	sha256sums_x86_64 = a7b3971fc7f46559ed13ec6c9c3432a120dc7f746a5c25835fb6ca73ce19650a
+
+pkgname = krillinai-bin
