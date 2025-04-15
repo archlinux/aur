@@ -14,7 +14,7 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.5.w90.saa0c839
+pkgver=10.5.w176.saa0c839
 pkgrel=1
 eval pkgrel=1
 
@@ -33,12 +33,12 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
+_disabled_staging=(winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix eventfd_synchronization)
                    # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="04-10-2025-647004cd-aa0c8391"
+_patchbase_tag="04-14-2025-78fe1014-aa0c8391"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -49,7 +49,7 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=647004cd5d7ee93ad8b53abb8939da87be3e25a0
+_desired_wine_commit=78fe10140330be75c7c15c2f00add82b179a11bd
 _desired_staging_commit=aa0c8391eb7c7cf7e31d850150f6f2527eaffc28
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
@@ -369,7 +369,7 @@ _set_vars() {
 
     CPPFLAGS="-D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
     _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
-                    -mno-stack-arg-probe -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
+                    -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
 
     _GCC_FLAGS="${_common_cflags:-} ${_lto_flags:-} ${_extra_native_flags:-} ${CPPFLAGS:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
     _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
@@ -423,7 +423,7 @@ _set_vars
 
 _set_vars64() {
   _common_64_cflags='' # "-march=x86-64 -mtune=native"
-  _common_32_cflags='-fno-omit-frame-pointer' # "-m32 -march=i686 -mtune=native"
+  _common_32_cflags='' # "-m32 -march=i686 -mtune=native"
 
   _set_vars
 
@@ -438,7 +438,7 @@ _set_vars64() {
 _set_vars32() {
   export PKG_CONFIG_PATH="/usr/lib32/ffmpeg-minimal-dev/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig:${PKG_CONFIG_PATH}"
   _common_64_cflags='' # "-m32 -march=i686 -mtune=native"
-  _common_32_cflags='-fno-omit-frame-pointer' # "-m32 -march=i686 -mtune=native"
+  _common_32_cflags='' # "-m32 -march=i686 -mtune=native"
 
   _set_vars
 
