@@ -1,7 +1,7 @@
 pkgbase = privaxy-bin
-	pkgdesc = The next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic.
+	pkgdesc = The next generation tracker and advertisement blocker. It blocks ads and trackers by MITMing HTTP(s) traffic.(Prebuilt version)
 	pkgver = 0.5.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Barre/privaxy
 	arch = x86_64
 	license = AGPL-3.0-only
