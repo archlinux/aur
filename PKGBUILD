@@ -1,9 +1,10 @@
-# Maintainer: otreblan <otreblain@gmail.com>
+# Maintainer: araidameru <x>
+# Contributor: otreblan <otreblain@gmail.com>
 # Contributor: Bohdan Mart <mart.bogdan at gmail>
 # Modified PKGBUILD from vulkan-html-docs
 
 pkgname="vulkan-man-pages"
-pkgver=1.3.268
+pkgver=1.4.309
 pkgrel=5
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
@@ -21,8 +22,8 @@ makedepends=(
 	"source-highlight"
 )
 source=("$url/archive/v$pkgver.tar.gz" "manpage.patch")
-sha256sums=('c0cf01f36ca9636079e6219188542fd48fce61f45d0b5e65b7a50368431b29c0'
-            'd968e2324dca1ba429e5f5da4c7f8be64b3b7fe243f368dd1b940a2cf4de91cf')
+sha256sums=('927988494d09d3227fc6f70c86ffbfc0bbd5776ca535fd9f1e2a3d30f5c1b1e7'
+            '4e7201a5038cd88c03f48f3050702f3bcb1ca9acc974f5aa179a3b704d58b2fc')
 
 prepare() {
 	npm install escape-string-regexp@4.0.0
