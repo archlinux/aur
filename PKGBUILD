@@ -2,8 +2,8 @@
 # Maintainer: Georgios Tsotsos <geoxor123@outlook.com>
 appname=amethyst
 pkgname=$appname-player
-pkgver=2.0.0
-pkgrel=2
+pkgver=1.9.16
+pkgrel=1
 pkgdesc="A cross-platform music player made with Typescript "
 arch=('x86_64')
 url="https://github.com/Geoxor/$appname"

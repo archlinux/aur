@@ -1,7 +1,7 @@
 pkgbase = amethyst-player
 	pkgdesc = A cross-platform music player made with Typescript
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 1.9.16
+	pkgrel = 1
 	url = https://github.com/Geoxor/amethyst
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = amethyst-player
 	makedepends = yarn
 	makedepends = libxcrypt-compat
 	depends = libvips
-	source = git+https://github.com/Geoxor/amethyst/#tag=v2.0.0
+	source = git+https://github.com/Geoxor/amethyst/#tag=v1.9.16
 	md5sums = SKIP
 
 pkgname = amethyst-player
