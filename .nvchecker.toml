@@ -1,4 +1,0 @@
-[opentelemetry-python-contrib]
-source = "pypi"
-pypi = "opentelemetry-contrib-instrumentations"
-use_pre_release = true
