@@ -1,8 +1,10 @@
-# Maintainer: SClause <aur at sclause dot net>
+# Maintainer: SClause <arch at sclause dot net>
 _pkgname=grandorgue
 pkgname="$_pkgname"
-pkgver=3.15.4_1
-pkgrel=1
+_version=3.15.4
+_build=1
+pkgver="${_version}_${_build}"
+pkgrel=2
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
 url="https://github.com/GrandOrgue/$_pkgname"
@@ -10,13 +12,13 @@ license=('GPL-2.0-or-later')
 depends=(wxwidgets-gtk3 wavpack fftw jack rtmidi rtaudio portaudio zita-convolver yaml-cpp)
 makedepends=(git cmake docbook-xsl imagemagick inkscape)
 conflicts=(grandorgue-git grandorgue-bin)
-source=("git+$url.git#tag=${pkgver//_/-}")
+source=("git+$url.git#tag=${_version}-${_build}")
 sha256sums=('SKIP')
 options=(!debug)
 
 build() {
 	cd "$_pkgname"
-	cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
+	cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off -DBUILD_VERSION=${_build}
 	cmake --build build
 }
 
