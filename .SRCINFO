@@ -1,7 +1,7 @@
 pkgbase = ocat-bin
-	pkgdesc = OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager.Prebuilt version.
-	pkgver = 20240004
-	pkgrel = 2
+	pkgdesc = OpenCore Auxiliary Tools is a GUI-based Configurator for editing config.plist files for Acidanthera's OpenCore Boot Manager.(Prebuilt version)
+	pkgver = 20250001
+	pkgrel = 1
 	url = https://github.com/ic005k/OCAuxiliaryTools
 	arch = x86_64
 	license = MIT
@@ -12,14 +12,14 @@ pkgbase = ocat-bin
 	depends = libx11
 	depends = libxcb
 	depends = libglvnd
-	provides = ocat=20240004
+	provides = ocat=20250001
 	conflicts = ocat
 	options = !emptydirs
 	options = !strip
-	source = ocat-20240004.AppImage::https://github.com/ic005k/OCAuxiliaryTools/releases/download/20240004/OCAT-Linux-x86_64.AppImage
-	source = LICENSE-20240004::https://raw.githubusercontent.com/ic005k/OCAuxiliaryTools/20240004/LICENSE
+	source = ocat-20250001.AppImage::https://github.com/ic005k/OCAuxiliaryTools/releases/download/20250001/OCAT-Linux-x86_64.AppImage
+	source = LICENSE-20250001::https://raw.githubusercontent.com/ic005k/OCAuxiliaryTools/20250001/LICENSE
 	source = ocat.sh
-	sha256sums = 68fef6628ed4c50fabdb9dd1200e93e7ee63dd956a1eb5306f09e1067980e811
+	sha256sums = e4592da209423760b96c5411ed6c12115a00a3e139f3a292d6a76605c7f4c01f
 	sha256sums = 3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b
 	sha256sums = 4d24557a01f5caafbddc84655d2d7db32d26144cab8aa56247c95958dc9159e1
 
