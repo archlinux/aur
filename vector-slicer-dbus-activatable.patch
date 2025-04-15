@@ -1,0 +1,53 @@
+From 9b6e2deb310229777b71122dff442b19a4800698 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 13 Apr 2025 09:49:06 +0200
+Subject: [PATCH] Add D-Bus service file
+
+And mark the application as D-Bus activatable. This allows application
+launchers to activate it via D-Bus.
+---
+ data/meson.build                                 | 10 ++++++++++
+ data/org.gnome.design.VectorSlicer.desktop.in.in |  1 +
+ data/org.gnome.design.VectorSlicer.service.in    |  3 +++
+ 3 files changed, 14 insertions(+)
+ create mode 100644 data/org.gnome.design.VectorSlicer.service.in
+
+diff --git a/data/meson.build b/data/meson.build
+index b5b3278..6b18838 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -89,3 +89,13 @@ resources = gnome.compile_resources(
+   dependencies: ui_dependencies
+ )
+ 
++# D-Bus service file
++service_conf = configuration_data()
++service_conf.set('app-id', application_id)
++service_conf.set('bindir', bindir)
++configure_file(
++  input: 'org.gnome.design.VectorSlicer.service.in',
++  output: '@0@.service'.format(application_id),
++  configuration: service_conf,
++  install_dir: datadir / 'dbus-1' / 'services'
++)
+diff --git a/data/org.gnome.design.VectorSlicer.desktop.in.in b/data/org.gnome.design.VectorSlicer.desktop.in.in
+index 04a1068..8abcb1d 100644
+--- a/data/org.gnome.design.VectorSlicer.desktop.in.in
++++ b/data/org.gnome.design.VectorSlicer.desktop.in.in
+@@ -10,3 +10,4 @@ Keywords=Gnome;GTK;
+ # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+ Icon=@icon@
+ StartupNotify=true
++DBusActivatable=true
+diff --git a/data/org.gnome.design.VectorSlicer.service.in b/data/org.gnome.design.VectorSlicer.service.in
+new file mode 100644
+index 0000000..3af3834
+--- /dev/null
++++ b/data/org.gnome.design.VectorSlicer.service.in
+@@ -0,0 +1,3 @@
++[D-BUS Service]
++Name=@app-id@
++Exec=@bindir@/vector-slicer --gapplication-service
+-- 
+GitLab
+

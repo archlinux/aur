@@ -1,0 +1,26 @@
+From 1633a4cba61e451d1c9a1acc13c4a2c1035a381f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 25 Nov 2024 11:23:42 +0100
+Subject: [PATCH] template: Set group ID to 'pages'
+
+The program expects the group 'pages' not 'slides'.
+---
+ data/template.svg | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/template.svg b/data/template.svg
+index fedfb91..41782b1 100644
+--- a/data/template.svg
++++ b/data/template.svg
+@@ -23217,7 +23217,7 @@
+     <g
+        inkscape:export-ydpi="96"
+        inkscape:export-xdpi="96"
+-       id="slides">
++       id="pages">
+       <rect
+          y="1133.797"
+          x="-400.00055"
+-- 
+GitLab
+
