@@ -1,4 +1,5 @@
 # Maintainer: Christian Bergschneider <christian.bergschneider@gmx.de>
+# Maintainer: Georgios Tsotsos <geoxor123@outlook.com>
 appname=amethyst
 pkgname=$appname-player
 pkgver=2.0.0
