@@ -1,0 +1,16 @@
+pkgbase = karakeep-cli
+	pkgdesc = Command Line Interface (CLI) for Karakeep
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://github.com/karakeep-app/karakeep
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = npm
+	depends = nodejs
+	provides = hoarder-cli
+	replaces = hoarder-cli
+	noextract = karakeep-cli-0.23.0.tgz
+	source = karakeep-cli-0.23.0.tgz::https://registry.npmjs.org/@karakeep/cli/-/cli-0.23.0.tgz
+	sha256sums = 4712a9dfcb27aff2611f6d629e158cdf380cfd4b1eb28b9766a46e2c3b39fba4
+
+pkgname = karakeep-cli
