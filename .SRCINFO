@@ -25,6 +25,6 @@ pkgbase = python-langsmith
 	optdepends = python-rich
 	optdepends = python-vcrpy
 	source = langsmith-0.3.31.tar.gz::https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-0.3.31.tar.gz
-	sha256sums = 8d20bd08fa6c3bce54cb600ddc521cd218a1c3410f90d9266179bf83a7ff0897
+	b2sums = cf163bc356dc4f5c3b72bb5c0460b41fb222b79b66ca25eb82c6b29e9693c477be83799d53467f728fba732c9b2ed39d9950d1d471d7f6305510a4ed897bf724
 
 pkgname = python-langsmith
