@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
 pkgver=2120.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -14,11 +14,14 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' '
 options=(!lto)
 _date=20250414
 _commit=00e3bbb
-source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz")
-sha256sums=('3e6c35bde6fc78021e6411e42a24aad7a889f5c556947925441bedc3e9aa242d')
+source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz"
+	"icon.diff::$url/pull/935.diff")
+sha256sums=('3e6c35bde6fc78021e6411e42a24aad7a889f5c556947925441bedc3e9aa242d'
+            '9fc08009d04f60a4565595918a4347ac491fc96efed542f42425a9ae594f8f82')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
+	patch -p1 < "$srcdir/icon.diff"
 }
 
 build() {
