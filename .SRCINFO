@@ -1,6 +1,6 @@
 pkgbase = axon-applauncher
 	pkgdesc = Hyper-customizable app launcher made in Python
-	pkgver = 1.0.1
+	pkgver = 1.0.3.2
 	pkgrel = 1
 	url = https://github.com/wojtmic/axon
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = axon-applauncher
 	depends = python-pyqt6
 	depends = python-simpleeval
 	depends = python-json5
-	source = axon-applauncher-v1.0.1.tar.gz::https://github.com/wojtmic/axon/archive/refs/tags/v1.0.1.tar.gz
+	source = axon-applauncher-v1.0.3.2.tar.gz::https://github.com/wojtmic/axon/archive/refs/tags/v1.0.3.2.tar.gz
 	sha256sums = d8bc2537587dba27afac59d16d7b6feaee4da228a004d11bab3c198d934a8226
 
 pkgname = axon-applauncher
