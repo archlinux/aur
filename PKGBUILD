@@ -1,6 +1,6 @@
 # Maintainer: Archisman Panigrahi <apandada1@gmail.com>
 pkgname=typhoon
-pkgver=0.9.8
+pkgver=0.9.80
 pkgrel=2
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
