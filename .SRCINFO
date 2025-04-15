@@ -1,7 +1,7 @@
 pkgbase = jnetmap
 	pkgdesc = Graphical network monitoring and documentation tool
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 5
 	url = http://rakudave.ch/jnetmap
 	arch = any
 	license = GPL3
