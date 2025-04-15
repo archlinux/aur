@@ -1,7 +1,7 @@
 pkgbase = rime-wanxiang-data
 	pkgdesc = 万象词库
 	pkgver = 6.4.4+r20250414
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/amzxyz/RIME-LMDG
 	arch = any

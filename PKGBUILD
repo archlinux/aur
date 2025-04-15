@@ -7,7 +7,7 @@ pkgname=(rime-wanxiang-data
 _schema_version=6.4.4
 _dict_version=20250414
 pkgver=6.4.4+r20250414
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="万象词库"
 arch=(any)
@@ -44,7 +44,7 @@ package_rime-wanxiang-gram-zh-hans() {
     pkgdesc="万象词库——语法模型"
     replaces=(rime-lmdg)
 
-    install -Dm664 "${srcdir}/wanxiang-lts-zh-hans.${_dict_version}.gram" -t "${pkgdir}"/usr/share/rime-data
+    install -Dm664 "${srcdir}/wanxiang-lts-zh-hans.${_dict_version}.gram" "${pkgdir}"/usr/share/rime-data/wanxiang-lts-zh-hans.gram
 }
 
 package_rime-wanxiang-dict-cn() {
