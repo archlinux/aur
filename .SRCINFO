@@ -1,20 +1,22 @@
 pkgbase = godoos-bin
 	pkgdesc = An efficient intranet office platform that includes various tools such as Word, Excel, PPT, PDF, intranet chat, whiteboard, and mind mapping, and supports native file storage.
-	pkgver = 1.0.0
+	pkgver = 1.0.5
 	pkgrel = 1
-	url = http://gdoa.top/
+	url = https://godoos.com/home/os/
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = gendesk
-	depends = gtk3
-	depends = webkit2gtk
-	provides = godoos=1.0.0
+	provides = godoos=1.0.5
 	conflicts = godoos
-	source = godoos-1.0.0.zip::https://github.com/phpk/godoos/releases/download/v1.0.0/godoos-linux-amd64.zip
-	source = LICENSE-1.0.0::https://raw.githubusercontent.com/phpk/godoos/v1.0.0/LICENSE
-	source = godoos-1.0.0.png::https://raw.githubusercontent.com/phpk/godoos/v1.0.0/build/appicon.png
-	sha256sums = 07a677f050aa58c508dad4f4c1e93a7de5363b33d9cc257246a175927ad44a5d
-	sha256sums = 4c670b4fb2803c2779132e9e5b9f16d9cd2117b56c1dc5351b894c542b494260
-	sha256sums = d912088bdd9962fbb250af6c8f2aa08f9bf5a8cb8fbde34c4fb1e0505d3fb634
+	source = LICENSE-1.0.5::https://gitee.com/godoos/godoos/raw/v1.0.5/LICENSE
+	source = README-1.0.5.en.md::https://gitee.com/godoos/godoos/raw/v1.0.5/README.en.md
+	source = README-1.0.5.zhs.md::https://gitee.com/godoos/godoos/raw/v1.0.5/README.md
+	sha256sums = 13fb48a6c31a72e0e2b69650b1cebe8954f7b73449848492dcfd22b25bd91afa
+	sha256sums = 3d0df5272c4b4c94a859eaa74022934a1239ba1f9b6445bc91e53a8e7b11e361
+	sha256sums = 3f0a57e751c9352cd03afa60ecad878d3ffd2243586a0e4ad991886916dee180
+	source_aarch64 = godoos-1.0.5-aarch64::https://godoos.com/upload/godoos/1.0.5/web/godoos_web_linux_arm64
+	sha256sums_aarch64 = 01cf0a81e8f16ddeba510b0ac9465a54aa67961c3a280ee8006d56772fa5ec0c
+	source_x86_64 = godoos-1.0.5-x86_64::https://godoos.com/upload/godoos/1.0.5/web/godoos_web_linux_amd64
+	sha256sums_x86_64 = 0edb476ab2b2287c2b0b22c8922df94d11c9fd020a89f7c67a0bb11da43fc06e
 
 pkgname = godoos-bin
