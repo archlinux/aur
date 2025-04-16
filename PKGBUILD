@@ -27,10 +27,11 @@ source=("https://files.pythonhosted.org/packages/63/0b/de7b8d63cc04371f00a688445
 md5sums=('dd7fe53b128abe5779531c8738df04b2')
 
 package() {
-  cd "${srcdir}/${_origpkgname}-${pkgver}"
+  cd "${_origpkgname}-${pkgver}" || exit
   python -m build --wheel --no-isolation
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
+
