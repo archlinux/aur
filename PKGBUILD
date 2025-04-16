@@ -4,11 +4,11 @@
 pkgname=gausssum
 pkgver=3.0.2
 pkgrel=3
-pkgdesc="A Program for getting results of Gaussian and GAMESS"
+pkgdesc="Extracts and displays information from comp chem output files"
 depends=('gnuplot' 'python-numpy' 'python-matplotlib' 'python-cclib' 'tk')
 arch=('any')
 license=('GPL')
-url="http://gausssum.sourceforge.net"
+url="https://github.com/gausssum/gausssum/"
 source=(https://github.com/gausssum/gausssum/archive/9e4903654075ed536a8b9077614556def6c34564.zip)
 sha1sums=('43720330087821b17322667a3271a67cc5acc870')
 

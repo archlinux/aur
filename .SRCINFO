@@ -1,8 +1,8 @@
 pkgbase = gausssum
-	pkgdesc = A Program for getting results of Gaussian and GAMESS
+	pkgdesc = Extracts and displays information from comp chem output files
 	pkgver = 3.0.2
 	pkgrel = 3
-	url = http://gausssum.sourceforge.net
+	url = https://github.com/gausssum/gausssum/
 	arch = any
 	license = GPL
 	depends = gnuplot
