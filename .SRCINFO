@@ -1,11 +1,21 @@
 pkgbase = tlauncher
-	pkgdesc = Freeware Minecraft launcher
-	pkgver = 1.157.0
+	pkgdesc = TLauncher for Minecraft
+	pkgver = 14
 	pkgrel = 1
-	epoch = 1
-	url = https://llaun.ch
-	arch = any
+	url = https://tlauncher.org/
+	arch = x86_64
 	license = custom
-	depends = legacylauncher
+	depends = java-runtime>=8
+	depends = bash
+	source = TLauncher.v14.zip::https://dl2.tlauncher.org/f.php?f=files/TLauncher.v14.zip
+	source = tlauncher
+	source = tlauncher.svg
+	source = org.tlauncher.desktop
+	source = LICENSE
+	sha256sums = 6671e93e5013576f5258383cf333a08cc994e54d5c176a5b3be648e9ca2e51d2
+	sha256sums = 785483009008bc39470d30c534244b9bdc9d979533617c4535db9c6cae756122
+	sha256sums = e0d875777253320b2f3862d569d2663a490a80be90f549441253015f0a5057aa
+	sha256sums = 2d6f6ea8fe716cb12dce565f1d659568fa7183506e6f75a8545a1d211518e38c
+	sha256sums = 3140f4b1f18dd00c5007ec6dd90333edbc2a3671429f4879a7d851845fed1e63
 
 pkgname = tlauncher

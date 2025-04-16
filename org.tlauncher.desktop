@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=TLauncher
+Comment=Minecraft Launcher
+Exec=tlauncher
+Icon=tlauncher
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=TLauncher
