@@ -1,4 +1,6 @@
-# Maintainer: Sorah Fukumori <her@sorah.jp>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Sorah Fukumori <her@sorah.jp>
+
 pkgname=thanos
 pkgver=0.28.0
 pkgrel=1
