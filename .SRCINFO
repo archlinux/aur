@@ -1,0 +1,11 @@
+pkgbase = flux2-bin
+	pkgdesc = CLI client for Flux2, the GitOps Kubernetes operator
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/fluxcd/flux2
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_linux_amd64.tar.gz
+	sha256sums = f64c85db4b94aefcdf6e0f2825c32573fc2bd234e5489ff332fee62776973ec3
+
+pkgname = flux2-bin

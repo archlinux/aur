@@ -1,0 +1,4 @@
+[flux2-bin]
+source = "git"
+git = "https://github.com/fluxcd/flux2.git"
+prefix = "v"
