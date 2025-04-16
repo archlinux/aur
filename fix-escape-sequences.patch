@@ -1,0 +1,38 @@
+From 56ca16451fe350cd94dda79b6f45659ebbf0868b Mon Sep 17 00:00:00 2001
+From: Florian Bruhin <me@the-compiler.org>
+Date: Wed, 16 Apr 2025 23:51:12 +0200
+Subject: [PATCH] Fix invalid escape sequences
+
+Fixes SyntaxWarnings:
+
+.../site-packages/pdfrw/objects/pdfstring.py:6: SyntaxWarning: invalid escape sequence '\('
+.../site-packages/pdfrw/objects/pdfstring.py:367: SyntaxWarning: invalid escape sequence '\['
+---
+ pdfrw/objects/pdfstring.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pdfrw/objects/pdfstring.py b/pdfrw/objects/pdfstring.py
+index 906f30e..7623258 100644
+--- a/pdfrw/objects/pdfstring.py
++++ b/pdfrw/objects/pdfstring.py
+@@ -3,7 +3,7 @@
+ #                    2016 James Laird-Wah, Sydney, Australia
+ # MIT license -- See LICENSE.txt for details
+ 
+-"""
++r"""
+ 
+ ================================
+ PdfString encoding and decoding
+@@ -364,7 +364,7 @@ class PdfString(str):
+         return unescape_func
+ 
+     def decode_literal(self):
+-        """ Decode a PDF literal string, which is enclosed in parentheses ()
++        r""" Decode a PDF literal string, which is enclosed in parentheses ()
+ 
+             Many pdfrw users never decode strings, so defer creating
+             data structures to do so until the first string is decoded.
+-- 
+2.49.0
+
