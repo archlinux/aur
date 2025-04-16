@@ -1,6 +1,6 @@
 pkgbase = firmware-action
 	pkgdesc = Build system for firmware images for several open source firmware solutions
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/9elements/firmware-action
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = firmware-action
 	makedepends = go
 	depends = docker
 	optdepends = dagger
-	source = https://github.com/9elements/firmware-action/archive/v0.17.0.tar.gz
-	sha256sums = ce783e3b18e0b990f10a5fd194e284460cbc6734025780f43b98a74d108e0a82
+	source = https://github.com/9elements/firmware-action/archive/v0.17.1.tar.gz
+	sha256sums = 09fb8f2e288d8f5026194f9f6737ae2f16832d029590a7c7f1e2c4046ac94b53
 
 pkgname = firmware-action
