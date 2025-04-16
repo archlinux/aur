@@ -7,7 +7,7 @@ _pkgtype="-git"
 
 _pkgname="csxcad"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.6.3.r36.g038c99a
+pkgver=0.6.3.r37.g3314deb
 pkgrel=1
 pkgdesc="A C++ library to describe geometrical objects and their properties"
 url="https://github.com/thliebig/CSXCAD"
@@ -69,6 +69,7 @@ _build_csxcad() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DENABLE_RPATH=OFF
     -DBUILD_TESTING=OFF
     -Wno-dev
