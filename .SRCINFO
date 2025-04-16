@@ -1,13 +1,13 @@
 pkgbase = chatgtk
-	pkgdesc = A simple ChatGPT Webview based on GTK, support system tray and nothing else
-	pkgver = 1.0
+	pkgdesc = A simple ChatGPT Webview Client based on GTK, support system tray and nothing else
+	pkgver = 1.1
 	pkgrel = 2
 	arch = any
 	license = GPLv3
 	depends = python-gobject
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	source = ChatGTK.tar.xz
-	sha256sums = 7145862a2ec726ace46fefd10f2471b045afddf53ea2ff4a712667a3e8e5a609
+	sha256sums = 047bbbfa45834858c47d4a2f61658aad8dee07577d0409e40ab6741b6f34991e
 
 pkgname = chatgtk
