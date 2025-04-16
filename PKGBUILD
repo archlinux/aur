@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fylepad-bin
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="a notepad with powerful rich-text editing, built with Vue & Tauri (Rust).(Prebuilt version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/imrofayel/fylepad/app-v${pkgver}/LICENSE"
 )
-sha256sums=('9ecdfe8efbf076691231b70e790fbde1fbd88fa41ed6b3ff1678cbd4355f0856'
+sha256sums=('2a09655d6829f1c4d75d7825bd299f7f6406589bec037494b7b038d91d10d0b1'
             '9f744f8fc618bb8f55a2ba34dbcc67c2bc71d4485bcd1ae83703dc69ff9ea99d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
