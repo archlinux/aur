@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=SpaceMidi
+Comment=Tool for converting a Space Mouse into a MIDI controler.
+Exec=spacemidi
+Terminal=false
+Categories=AudioVideo;Audio;Midi
+
