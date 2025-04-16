@@ -1,32 +1,38 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Kashyap Chhatbar <first name [dot] cc [at] gmail [dot] com>
+# Previous Maintainer: Clint Valentine <valentine.clint@gmail.com>
 # Contributer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ucsc-kent-genome-tools
-pkgver=405
+pkgver=480
 pkgrel=1
 pkgdesc="UCSC Kent bioinformatics utilities: kent source utilities"
 arch=(x86_64)
-url="http://hgdownload.soe.ucsc.edu/admin/exe/"
+url="http://hgdownload.soe.ucsc.edu/admin/exe/userApps.archive"
 license=('custom:UCSC')
 install="${pkgname}".install
 depends=(libpng mariadb-clients uuid openssl)
 source=(
   .hg.conf
   "${pkgname}".sh
-  "${pkgname}"-"${pkgver}".src.tgz::http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v"${pkgver}".src.tgz
+  "${pkgname}"-"${pkgver}".src.tgz::${url}/userApps.v"${pkgver}".src.tgz
 )
 sha256sums=('359db5b022847d3d674f21821fa08a363d2183379d59a2b63129fcf90954d674'
             '5ccec9d5e4de9be22746fab1591127b61176c8c4d586c0dd1df13ee5e52a5367'
-            '7102172b4186fb6afbbb36cf8efb24a5518172b291b58d3d5182bd8a7684328a')
+            '4667a4221740c426e0d6a709eb59029d3b48f55346fea464ff5490e3ee0c7aed')
+
+# define strings to replace in sed
+streambuf="#include <streambuf>"
+cstdint="#include <cstdint>"
 
 prepare() {
   cd "${srcdir}"/userApps
   make clean
+  sed -i "/${streambuf}/a ${cstdint}" kent/src/hg/lib/straw/straw.cpp
 }
 
 build() {
   cd "${srcdir}"/userApps
-  make all
+  make utils
 }
 
 package() {
