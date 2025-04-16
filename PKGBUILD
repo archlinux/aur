@@ -1,6 +1,6 @@
 pkgname=better-control-git
 pkgver=r140.gef7182e
-pkgrel=2
+pkgrel=1
 pkgdesc="A tool to manage system settings easily (git version)"
 arch=('any')
 url="https://github.com/quantumvoid0/better-control"
