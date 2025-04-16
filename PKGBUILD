@@ -1,7 +1,7 @@
 # Contributor: snakeroot <cwa AT pipeline DOT com>
 pkgname=consolation
 pkgver=0.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Libinput-based console pointer support for copy-paste, similar to gpm"
 arch=('x86_64')
 url="https://salsa.debian.org/consolation-team/consolation"
@@ -26,7 +26,7 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 	install -D -m644 consolation.service "${pkgdir}/usr/lib/systemd/system/consolation.service"
-	install -D -m644 Changelog "${pkgdir}/usr/share/doc/consolation/Changelog"
+	install -D -m644 ChangeLog "${pkgdir}/usr/share/doc/consolation/ChangeLog"
 	install -D -m644 README "${pkgdir}/usr/share/doc/consolation/README"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/license/consolation/LICENSE"
 }
