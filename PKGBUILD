@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=BiocBaseUtils
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('23940f43a8e0ce95c6cf8780524dcaea')
-b2sums=('c360d6d9dbf5dd90cf2e6a4aaa0d4402d1555f43d4bdfa635397c8e4e6b9865ff038511149f661ab80dbecfbdbe0d964598c8fef60c33728920845d49878ac7a')
+md5sums=('90c33850813ded4ec9a5df09b81e5ae7')
+b2sums=('95cb73d63e7251950f9a6d9300460f2883319ac254aced35acd77c22f859b394cb78e100b263a29a0781241b4c8ad314304088687e4d5e2eea4e6a6a158ddd96')
 
 build() {
   mkdir build
