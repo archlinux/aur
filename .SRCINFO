@@ -1,5 +1,5 @@
 pkgbase = quicknote-git
-	pkgdesc = Helps to paste some random text or take some notes right from your taskbar!
+	pkgdesc = Helps to paste some random text or take some notes right from your taskbar!(Use system-wide electron)
 	pkgver = 2.0.3.r20.g1ad38b4
 	pkgrel = 1
 	url = https://srilakshmikanthanp.github.io/quicknote/
