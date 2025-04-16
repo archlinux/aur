@@ -1,7 +1,7 @@
 # Maintainer: 2-4601 <AUR@othermemory.org>
 pkgname=atostekid
 pkgver=4.3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="New desktop application for Finnish electronic ID cards"
 arch=("x86_64")
 url="https://dvv.fi/en/linux-versions"
@@ -24,10 +24,14 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${pkgver}.deb::https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_${pkgver//_/-}.deb"
     "atostek-id.module"
+    "com.atostek.atostekid.desktop"
+    "com.atostek.atostekid.png"
 )
 sha256sums=(
     "fc753b03e171b39e28bd9f85a43d0986409dbad6d72801cd1d63762a6f444f73"
     "42cf9a65e4913b42ea9b63ebe171050589bdf00d7a48df26d793b394c39efefa"
+    "853ef8e11e98562b8361f2c27e4de7033cfac1bcf1eb01b429d4164034349f8b"
+    "fdfad6cf56013d55d5e7516a093494091fcb9c8a27409d488e780dd2ebebe895"
 )
 
 package() {
@@ -42,4 +46,8 @@ package() {
     install -D -m 644 "${pkgdir}/usr/share/doc/atostekid/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
     install -m 644 "${pkgdir}"/usr/share/doc/atostekid/license_{en,fi,sv}.rtf "${pkgdir}/usr/share/licenses/${pkgname}/"
     rm "${pkgdir}"/usr/share/doc/atostekid/{*.Debian,copyright,license_{en,fi,sv}.rtf}
+    mkdir -m 755 -p "${pkgdir}/usr/share/applications/"
+    install -m 644 com.atostek.atostekid.desktop "${pkgdir}/usr/share/applications/"
+    mkdir -m 755 -p "${pkgdir}/usr/share/pixmaps/"
+    install -m 644 com.atostek.atostekid.png "${pkgdir}/usr/share/pixmaps/"
 }

@@ -3,5 +3,7 @@
 !.SRCINFO
 !allowed_signers
 !atostek-id.module
+!com.atostek.atostekid.desktop
+!com.atostek.atostekid.png
 !PKGBUILD
 !*.install
