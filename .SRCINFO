@@ -1,6 +1,6 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r341.d922b03
+	pkgver = r374.a034869
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = x86_64
@@ -37,6 +37,7 @@ pkgname = pat-aur-host-git
 	depends = ninja-jobserver
 	depends = git
 	depends = python
+	depends = jq
 	optdepends = seccomp-filtered-run: seccomp filters.
 	optdepends = sshfs: remote connection.
 	optdepends = socat: remote connection.
