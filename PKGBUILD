@@ -17,12 +17,12 @@ unset _pkgtype
 
 _pkgname="ares-emu"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=143.r25.gea4ad68
+pkgver=143.r72.ga247271
 pkgrel=1
 pkgdesc="Multi-system emulator focused on accuracy and preservation"
 url="https://github.com/ares-emulator/ares"
 license=("ISC")
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 depends=(
   'gtk3'
@@ -33,7 +33,7 @@ depends=(
   'libretro-shaders'
   'libudev.so' # systemd-libs
   'openal'
-  'sdl2'
+  'sdl3'
 )
 makedepends=(
   'clang'
@@ -44,20 +44,6 @@ makedepends=(
   'ninja'
 )
 
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
-
 _source_stable() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git")
@@ -66,7 +52,7 @@ _source_stable() {
   _prepare() (
     cd "$_pkgsrc"
     _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
-    git checkout -f "$_tag"
+    git -c advice.detachedHead=false checkout -f "$_tag"
 
     git cherry-pick -n -m1 --empty=drop 54c898f199694c2d5866dad45aecb68fda4ee3b7
   )
