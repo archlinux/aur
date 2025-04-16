@@ -3,7 +3,7 @@
 # Package contributors: mys_721tx, dreieck
 pkgname=doh-proxy
 reponame=doh-server
-pkgver=0.9.9
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="A DNS-over-HTTP server proxy written in Rust by jedisct1"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('4cd66672e17761076b09034c130a832c74d4129f45961f1661025ba6c3e034454bbb16a4ad951c9ef997a9d79f3a3227a56f0e5a6a0ba4e244db8b3c70802546')
+sha512sums=('c9a6e86d83aa440bf0ceace615b02cae87e6fdb77695f9b432a67fbb57f04f4ba5bf7920dbd59fff6b318b9dcda3a7056311edf048739caea9a796d0c0296bd7')
 
 prepare() {
 	cd "$reponame-$pkgver"
@@ -23,6 +23,10 @@ build() {
 	# Handle manually enabled LTO
 	RUSTFLAGS="${RUSTFLAGS/-C lto/}"
 	export RUSTFLAGS
+
+	# Handle LTO build error in mimalloc-1.46
+	CFLAGS="${CFLAGS/-flto=auto/}"
+	export CFLAGS
 
 	cd "$reponame-$pkgver"
 	cargo build --frozen --release
