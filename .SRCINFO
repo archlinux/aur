@@ -1,0 +1,24 @@
+pkgbase = jdk24-graalvm-ce-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 24 version
+	pkgver = 24.0.1
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk24-graalvm-ce-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=24
+	provides = java-environment=24
+	replaces = native-image-jdk24-bin
+	options = staticlibs
+	options = !debug
+	source = graalvm-rebuild-libpolyglot.hook
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-24.0.1/graalvm-community-jdk-24.0.1_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = d2c544de672e400476a09c8f1da79ecc6b774a9441e234948542c3b3e6a84bde
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-24.0.1/graalvm-community-jdk-24.0.1_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = a3d1be8fadfb0d3df632252301f79a9b02b47e523da66539d370c62e683d762e
+
+pkgname = jdk24-graalvm-ce-bin
