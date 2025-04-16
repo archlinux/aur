@@ -1,4 +1,4 @@
-# Be sure to use `systemctl edit radarr` to modify this service with an override.conf because
+# Be sure to use `systemctl edit sabnzbd` to modify this service with an override.conf because
 # direct changes will be overwritten by package updates.
 #
 # A user per service w/ shared group setup would have an override like:
