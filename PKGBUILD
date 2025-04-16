@@ -101,7 +101,7 @@ EOF
         --name "System Advisor Model (SAM)" \
         --genericname 'SAM' \
         --comment 'techno-economic analysis of energy technologies' \
-        --categories 'Development;Science;' \
+        --categories 'Development;Science' \
         --mimetypes '' \
         --icon 'SAM' \
         --exec '/usr/bin/SAM'
