@@ -1,0 +1,13 @@
+pkgbase = usb-dirty-pages-udev
+	pkgdesc = Use udev to specify dirty pages for USB devices (i.e. cache in RAM before writing files)
+	pkgver = 23.10.15
+	pkgrel = 1
+	url = https://github.com/biglinux/usb-dirty-pages-udev
+	install = usb-dirty-pages-udev.install
+	arch = any
+	license = GPL3
+	provides = usb-dirty-pages-udev
+	source = git+https://github.com/biglinux/usb-dirty-pages-udev.git#tag=usb-dirty-pages-udev-23.10.15-2049
+	md5sums = SKIP
+
+pkgname = usb-dirty-pages-udev

@@ -1,0 +1,12 @@
+## arg 1:  the new package version
+post_install() {
+	udevadm control --reload-rules && udevadm trigger
+}
+
+
+
+## arg 2:  the old package version
+post_upgrade() {
+		post_install
+}
+
