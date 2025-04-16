@@ -7,7 +7,7 @@ _pkgtype="-git"
 
 _pkgname="openems"
 pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.0.36.r68.ga321eb3
+pkgver=0.0.36.r75.g954723d
 pkgrel=1
 pkgdesc="A free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
@@ -57,7 +57,7 @@ if [[ "${_build_python::1}" == "t" ]]; then
 fi
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+https://github.com/thliebig/openEMS")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -73,6 +73,7 @@ _build_openems() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -Wno-dev
   )
 
