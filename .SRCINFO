@@ -1,6 +1,6 @@
 pkgbase = r-flowcybar
 	pkgdesc = Analyze flow cytometric data using gate information
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowCyBar
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-flowcybar
 	depends = r
 	depends = r-gplots
 	depends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowCyBar_1.42.0.tar.gz
-	sha256sums = 837ad4a6b9910f48c445f80e21f567d5655f25e8c19c0b7e714a1e703bfd81ed
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowCyBar_1.44.0.tar.gz
+	sha256sums = 88239d9277876325346b5e57094552351ba7a66bbf111664b4280cc37d9b8258
 
 pkgname = r-flowcybar
