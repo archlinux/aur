@@ -1,0 +1,26 @@
+pkgbase = caqtdm
+	pkgdesc = Qt Widgets for Technical Applications
+	pkgver = 4.5.0rc2
+	pkgrel = 1
+	url = http://caqtdm.github.io/
+	arch = any
+	license = GPL
+	makedepends = patch
+	makedepends = make
+	makedepends = gcc
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-tools
+	depends = qwt-qt6
+	depends = epics-base
+	depends = zeromq
+	depends = python
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/caqtdm/caqtdm.git#tag=v4.5.0-rc2
+	source = fix_qwt_static_cast.patch
+	sha512sums = SKIP
+	sha512sums = 3e5243235bcccd01429d47304a4c834d4b7ecdd7cf7fd1dc0658b4a53eb4bedabcff00364de34707fc810d5df584dcad86ebbd985b5e2be5138574064dadf0b5
+
+pkgname = caqtdm
