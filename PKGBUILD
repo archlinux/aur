@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MultiMed
-_pkgver=2.28.0
+_pkgver=2.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0b351652af73cc1dce50f98ff1bb422b')
-b2sums=('63146830553da3bada8a469975da7c6430e79822bc787be56574dd637ce6fcc9b50371090191c2051568f5ae8ede3b76b79e454d72356931e3a3361cbd9a9527')
+md5sums=('9ed20fe1494ea3fd3b6e3c2fbb12d003')
+b2sums=('54555668ba831c8ca35503dcf2e18cb8a593cc7f40e99132ea3f8dc39f6016beb251373f78c81d2e564027c0107e12ac2b9d43b2c54c03c2f107de8388492740')
 
 build() {
   mkdir build
