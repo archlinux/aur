@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COHCAPanno
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4e0bffabf3c275f5d2a17c52e478d02d')
-b2sums=('b85e638070906d45c6ed5fc66693d977b0d28d9885238da61900684ee21880f3441c3126e7ea464ba16e97c8c2e4732f605b00e471cfebdf1f02acddf9f7a069')
+md5sums=('462f43024fdfacde4ea49127cc51977d')
+b2sums=('2fbf58053ab0b4aee28b4fd5cfa51b2b758d60b24427941e822d22ae692792aee9a2190b0375c3e56517686a46f1d7c5928eada24a235bb28e7536fc33cf55af')
 
 build() {
   mkdir build
