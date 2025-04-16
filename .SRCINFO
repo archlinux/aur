@@ -1,5 +1,5 @@
 pkgbase = guile-bzip2
-	pkgdesc = Guile wrapper for the libbzip2 library.
+	pkgdesc = Guile wrapper for the libbzip2 (bzip2) library.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://ngyro.com/software/guile-bzip2.html

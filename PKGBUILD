@@ -3,7 +3,7 @@
 pkgname=guile-bzip2
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='Guile wrapper for the libbzip2 library.'
+pkgdesc='Guile wrapper for the libbzip2 (bzip2) library.'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://ngyro.com/software/guile-bzip2.html'
 license=('GPL3')
