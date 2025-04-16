@@ -6,7 +6,7 @@ _ARCHS=('ecp5' 'ice40' 'himbaechel' 'nexus' 'generic')
 
 _pkgname="nextpnr"
 pkgname="$_pkgname-git"
-pkgver=0.7.r178.gf3a5024
+pkgver=0.8.r2.g7a3a43e
 pkgrel=1
 pkgdesc='Portable FPGA place and route tool'
 url='https://github.com/YosysHQ/nextpnr'
@@ -88,6 +88,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DUSE_OPENMP=ON
     -DUSE_IPO=OFF
     -DBUILD_GUI=ON
@@ -138,8 +139,7 @@ for _arch in ${_ARCHS[@]}; do
       _CONFIG+=('-DOXIDE_INSTALL_PREFIX=/usr')
       ;;
     himbaechel)
-      makedepends=(
-        ${makedepends[@]//prjapicula/}
+      makedepends+=(
         'prjapicula' # AUR
         # 'python-crc' # AUR
       )
