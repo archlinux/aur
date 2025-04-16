@@ -36,7 +36,6 @@ build() {
 
 package() {
 	cd $pkgname
-	export PATH="$PATH:/usr/bin/core_perl"
 	DESTDIR="$pkgdir" make install
 	install -Dm0644 doc/xnc.man "$pkgdir/usr/share/man/man1/xnc.1"
 	install -Dm0644 doc/xnedit.man "$pkgdir/usr/share/man/man1/xnedit.1"
