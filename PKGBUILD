@@ -3,7 +3,7 @@
 pkgname=ollama-lab
 pkgver=0.3.6
 _version=${pkgver/+/-}
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=(!strip !lto)
 install=
 changelog=
 source=(
-    "https://github.com/chardoncs/${pkgname}/archive/refs/tags/v${_version}.tar.gz"
+    "https://github.com/ollama-lab/${pkgname}/archive/refs/tags/v${_version}.tar.gz"
     'ollama-lab.desktop'
 )
 noextract=()
