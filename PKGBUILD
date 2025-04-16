@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dir.expiry
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c34f1ba65eeb7ab02784f252fe20477b')
-b2sums=('fbebbc547ef6970c168303d21b2d2fbdc9cb9d2e991c1db469ea132c458b408768f21aaac0e8ee48d8c9fed4d95cfb8abc5e04cbb4a465859f9ec1c1e60e2d16')
+md5sums=('14e15c0c8658cd870aa4efaaf58f5dee')
+b2sums=('a7318ee6f3e36d78ab1e41f5359fba12b99094471d189e34ffdd8e7d7e557772584355a7b5b73e40a6890868e3a532a59baabd5e28176bdac77e0fd5373cdbf0')
 
 build() {
   mkdir build
