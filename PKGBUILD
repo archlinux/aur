@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=570.133.07
+pkgver=575.51.02
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('2d43e64c581be5ef554de9888b1aa90037ef6d45f54284d3d9dcedc08dc4dc26'
+sha256sums=('5d9d0df084a6a000bca76f03ac61e4fd8375ac9b089c9d9d64d2fc3be4ee69ad'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             '9c60bfe357cd1faf20f9167a6d42bfa724747805c1f12a1b603eb5ff57a523df'
             'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
@@ -154,6 +154,9 @@ package_nvidia-utils-beta() {
     install -D -m755 "libnvidia-vksc-core.so.${pkgver}" -t "${pkgdir}/usr/lib"
     install -D -m644 nvidia_icd_vksc.json -t "${pkgdir}/usr/share/vulkansc/icd.d"
     
+    # NvPresent - Vulkan layer implementing NVIDIA Smooth Motion
+    install -D -m755 "libnvidia-present.so.${pkgver}" -t "${pkgdir}/usr/lib"
+    
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/vdpau"
     
@@ -166,6 +169,7 @@ package_nvidia-utils-beta() {
     install -D -m755 "libcudadebugger.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # NVVM Compiler (JIT link-time-optimization for CUDA)
+    install -D -m755 libnvidia-nvvm70.so.4 -t "${pkgdir}/usr/lib"
     install -D -m755 "libnvidia-nvvm.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
