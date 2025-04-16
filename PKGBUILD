@@ -3,7 +3,7 @@
 pkgname=gnun
 pkgver=1.5
 pkgrel=1
-pkgdesc="GNUnited Nations, build system for www.gnu.org translations"
+pkgdesc="A build system for www.gnu.org translations."
 arch=(any)
 url="https://www.gnu.org/software/gnun/"
 license=('GPL-3.0-or-later')

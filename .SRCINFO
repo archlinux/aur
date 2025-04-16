@@ -1,5 +1,5 @@
 pkgbase = gnun
-	pkgdesc = GNUnited Nations, build system for www.gnu.org translations
+	pkgdesc = A build system for www.gnu.org translations.
 	pkgver = 1.5
 	pkgrel = 1
 	url = https://www.gnu.org/software/gnun/
