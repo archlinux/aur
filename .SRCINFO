@@ -1,5 +1,5 @@
 pkgbase = ruby-kramdown-rfc2629
-	pkgdesc = An RFCXML (RFC 799x) generating backend for Thomas Leitner's "kramdown" markdown parser. Mostly useful for RFC writers.
+	pkgdesc = An XML2RFC (RFC799x) backend for Thomas Leitner's kramdown markdown parser.
 	pkgver = 1.7.27
 	pkgrel = 1
 	url = http://github.com/cabo/kramdown-rfc2629

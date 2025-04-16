@@ -7,8 +7,7 @@ pkgname=ruby-kramdown-rfc2629
 _name="${pkgname#ruby-}"
 pkgver=1.7.27
 pkgrel=1
-pkgdesc='An RFCXML (RFC 799x) generating backend for Thomas Leitner'"'"'s
-"kramdown" markdown parser.  Mostly useful for RFC writers.'
+pkgdesc='An XML2RFC (RFC799x) backend for Thomas Leitner'"'"'s kramdown markdown parser.'
 arch=(any)
 url='http://github.com/cabo/kramdown-rfc2629'
 license=('MIT')
