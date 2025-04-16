@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MBAmethyl
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c2a206e48019dbb7e521593e2d2992e6')
-b2sums=('510cf6f2852d577f06c953ac33a87547a6965c234e8226ee6cbe5c3c84bc5adbbf4ad63eddefe321581ba6940b7b9d34bd4bc7f56f04413f7d123d98ba41baf0')
+md5sums=('58270aac207b6edba6c772e29ce88f53')
+b2sums=('172d343e0e3caf86e9d1a76b5709011dcfb7bde4593d0e948c21bc3ca8c949dbc8b7a30ce1ba8d722f9ae88aa85ff6ffcab7d866dd1de7e9349a8e82b630f2b3')
 
 build() {
   mkdir build
