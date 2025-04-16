@@ -1,5 +1,5 @@
 pkgbase = ruby-snaky_hash
-	pkgdesc = A Hashie::Mash joint to make #snakelife better
+	pkgdesc = A Hashie::Mash joint to improve #snake_life for everyone
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://gitlab.com/oauth-xx/snaky_hash
