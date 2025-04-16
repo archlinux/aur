@@ -1,11 +1,12 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget Server
 	pkgver = 25.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/actualbudget/actual
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = npm
 	depends = yarn
 	depends = nodejs
 	options = !strip

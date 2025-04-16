@@ -4,13 +4,13 @@
 # Official Documentation: https://actualbudget.org/docs/install/
 pkgname=actual-server
 pkgver=25.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual"
 license=('MIT')
 depends=('yarn' 'nodejs')
-makedepends=('git')
+makedepends=('git' 'npm')
 backup=("etc/conf.d/${pkgname}")
 options=('!strip' '!debug')
 source=(
