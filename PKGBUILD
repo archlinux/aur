@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Aerospike Client Library for Python"
 license=('Apache-2.0')
 arch=('any')
-url="https://www.aerospike.com/docs/client/python"
+url="https://aerospike.com/docs/develop/client/python/"
 depends=('python' 'python-setuptools' 'openssl' 'aerospike-client-c-libuv')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz
     $pkgbase.patch)
