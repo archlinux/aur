@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BUS
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Gene network reconstruction'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-minet
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c40cd9c28b5cc5bd8fe92b55bed803496c6270be6d43c723bfd74ba71fea3d43')
+sha256sums=('7f62009478931e171b0ddbbb1cf1cfd81c3b73a5b410e92c1cfc8715103a01f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
