@@ -1,14 +1,14 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 24
+	pkgver = 24.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
-	noextract = jdk-24_doc-all.zip
-	source = https://download.oracle.com/java/24/archive/jdk-24_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/24+36/1f9ff9062db4449d8ca828c504ffae90/jdk-24_doc-all.zip
+	noextract = jdk-24.0.1_doc-all.zip
+	source = https://download.oracle.com/java/24/archive/jdk-24.0.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/24.0.1+9/24a58e0e276943138bf3e963e6291ac2/jdk-24.0.1_doc-all.zip
 	source = jdk-24_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-24-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -16,8 +16,8 @@ pkgbase = jdk
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = f04a4421519b9719ac96078e16af1ff0bbbfdbda7481b8ad573d75b5b6cd50b1
-	sha256sums = 5560efa0b0f62e9231da82073e6b307b6397720dcf3e9ccaa129e39c4d74ff35
+	sha256sums = 07096b29c65feb393972870347f36021be421a74c1800be468b3c19f04e8e943
+	sha256sums = 8d1a811454d3764a6c2967b4dd53911630ec37a9ff6feb9bfc94b8318044d3cb
 	sha256sums = 44bea749af7428ea023df090874a6826743f387a1e2333edad48ae584989a954
 	sha256sums = a9506d9fa86f02fe86f47529a15e16e24eeb553970d93be9eec7eb1225a91f4f
 	sha256sums = 8870bed1172bd0189c67bcf0f26d36f706cd5d10eb878836be25ca2577d898ca
@@ -43,10 +43,10 @@ pkgname = jre
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=24
 	provides = java-runtime-jdk24
-	provides = jre24-jdk=24-1
+	provides = jre24-jdk=24.0.1-1
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-jdk=24
-	provides = jre24-jdk-headless=24-1
+	provides = jre24-jdk-headless=24.0.1-1
 	conflicts = jdk
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
@@ -85,14 +85,14 @@ pkgname = jdk
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=24
 	provides = java-environment-jdk=24
-	provides = jdk24-jdk=24-1
+	provides = jdk24-jdk=24.0.1-1
 	provides = jre=24
 	provides = java-runtime=24
 	provides = java-runtime-jdk24
-	provides = jre24-jdk=24-1
+	provides = jre24-jdk=24.0.1-1
 	provides = java-runtime-headless=24
 	provides = java-runtime-headless-jdk=24
-	provides = jre24-jdk-headless=24-1
+	provides = jre24-jdk-headless=24.0.1-1
 	conflicts = jre
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
