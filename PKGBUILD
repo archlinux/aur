@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HMMcopy
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-data.table
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0b3054c45fe88b26718969395126799')
-b2sums=('abdfe0e9f0b7449e425717db607ad43f8143ba820b95e786f2e9343b8608a9df9d5c97fbbee2b2981328b135af32d5681023bd11909d82f39862c2e727d2fe8c')
+md5sums=('9340386169b0560bc9e3fa9b139bc20b')
+b2sums=('7eab867090c18309d55a6e53665aa28122755c707df9308ce6620affda87db6b42d43406502749d0493cc60ce530dc4dfd974a580f25aa05f26bc22e8033c19a')
 
 build() {
   mkdir build
