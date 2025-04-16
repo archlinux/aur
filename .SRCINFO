@@ -1,7 +1,7 @@
 pkgbase = abracadabra
 	pkgdesc = Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KejPi/AbracaDABra
 	arch = x86_64
 	arch = aarch64
@@ -33,6 +33,8 @@ pkgbase = abracadabra
 	provides = abracadabra
 	conflicts = abracadabra
 	source = AbracaDABra-3.1.0.tar.gz::https://github.com/KejPi/AbracaDABra/archive/refs/tags/v3.1.0.tar.gz
+	source = qt69.patch
 	sha256sums = eaaade306707f38ef2febe081c62edc9590cf4cb31a3545383433eb789a07140
+	sha256sums = 62a9ffa21a048d1f861510bc0f8b8efdffa49ebb8ef72457dc538593dc72f364
 
 pkgname = abracadabra

@@ -3,7 +3,7 @@
 pkgname=abracadabra
 _appname=AbracaDABra
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)"
 arch=("x86_64" "aarch64")
 url="https://github.com/KejPi/${_appname}"
@@ -21,8 +21,16 @@ optdepends=("airspy: support for AirSpy devices"
 makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations" "qcustomplot")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("eaaade306707f38ef2febe081c62edc9590cf4cb31a3545383433eb789a07140")
+source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz"
+	"qt69.patch")
+sha256sums=("eaaade306707f38ef2febe081c62edc9590cf4cb31a3545383433eb789a07140"
+	    "62a9ffa21a048d1f861510bc0f8b8efdffa49ebb8ef72457dc538593dc72f364")
+
+prepare() {
+  # Building with Qt 6.9
+  patch -p1 < "$srcdir"/qt69.patch
+}
+
 
 build() {
   mkdir -p "${srcdir}/${_appname}-${pkgver}/build"

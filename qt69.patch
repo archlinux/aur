@@ -1,0 +1,10 @@
+--- a/AbracaDABra-3.1.0/gui/data/spiapp.cpp	2025-03-27 19:39:04.000000000 +0100
++++ b/AbracaDABra-3.1.0/gui/data/spiapp.cpp	2025-04-16 21:51:34.557054811 +0200
+@@ -35,6 +35,7 @@
+ #include <QNetworkRequest>
+ #include <QSaveFile>
+ #include <QStandardPaths>
++#include <QRegularExpression>
+ 
+ Q_LOGGING_CATEGORY(spiApp, "SPIApp", QtInfoMsg)
+ 
