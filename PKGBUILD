@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NTW
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-mvtnorm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b43e4f87881a4c275859cc8a2865eb8')
-b2sums=('7824293b96c31513f608db29a8a3af9af0931acd5e600284ee03cf1660806781feec65ce0689b655b41b995ecbec7cf028c7fce6ba9e35ee2328e629e7f9280c')
+md5sums=('1cb5b1ae26a2ac8003c49569a5a00a83')
+b2sums=('1c6e5312864f35290a9cc809b7f23f1bf75b071736ad09b75b36fc92fa13c2cf3312dd06872d3196e75507e53bfb2a994969467714eaf481a60a13bf666a5836')
 
 build() {
   mkdir build
