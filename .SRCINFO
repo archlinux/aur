@@ -1,6 +1,6 @@
 pkgbase = r-consensus
 	pkgdesc = Cross-platform consensus analysis of genomic measurements via interlaboratory testing method
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/consensus
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-consensus
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensus_1.24.0.tar.gz
-	sha256sums = f007cf12245555763fd25c6848d37a9287ea83247d3228a0e4ba7f1199f05c30
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/consensus_1.26.0.tar.gz
+	sha256sums = 7ed577b749072b90956537e039626bd251a526a1902206270ecb1e5a4f287006
 
 pkgname = r-consensus
