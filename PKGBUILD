@@ -1,7 +1,7 @@
 # Maintainer: Ian Lansdowne <idlansdowneatgmaildotcom>
 pkgname=nrel-sam
-pkgrel=2
-pkgver=2024.12.12.r0.ssc.298
+pkgrel=1
+pkgver=2025.4.16.r0.ssc.302
 _wxver=3.2.6
 _gtestver=1.16.0
 pkgdesc='A free desktop application for techno-economic analysis of energy technologies'
@@ -18,10 +18,10 @@ source=("git+https://github.com/NREL/SAM.git#tag=$pkgver"
         "git+https://github.com/google/googletest.git#tag=v$_gtestver"
         "https://github.com/wxWidgets/wxWidgets/releases/download/v$_wxver/wxWidgets-$_wxver.tar.bz2"
 )
-sha256sums=('37cadb747efc502f9ecfe693c0c716b77a1645df1a68c90c916fb03b804f7460'
-            '5d950f9e0e3fb61bb2081df22a5a6a54700c8464dba095804f371e59014463a5'
-            '6d1bd7037ed089a7d61d894b36d3f175fdde615127c4caafa2cbbbf629e64263'
-            'e84b9faf660fda22634fe73c823f0418ccb27efd2fff676d615409347946faac'
+sha256sums=('9f19a3c2fbad60184a79bd4a137243324bbaf6f4edfca4392151010ae30c0edf'
+            '8239f525c1034a428019ec67d39eb00960f20a8e1261d474f9ce96ea5c9833fd'
+            '3b197e6af0035e90d41583364d0c09fb71f822743d2ded47db21a4a0783d6d77'
+            'e58d83ded83ce1e673e25b70a0dbaf1dde8fbd934a747ce794bacc7aee8442c4'
             'f67edbfc438441f368fc69a83dc142b100228aac2726d9ed8f955c98216e1e81'
             '939e5b77ddc5b6092d1d7d29491fe67010a2433cf9b9c0d841ee4d04acb9dce7')
 
