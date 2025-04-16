@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=stemHypoxia
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('49bf6a9e4b05c1ae7841672ab7484457')
-b2sums=('a4caea2ac33f489e88123cc29c7298ed735e47a265d9b71e1324c345831bbdcab006157e3b8edcbcacdff8dc06b4c9a36ea1c2e2c403008095e4aa7b570e5c5e')
+md5sums=('1aaa320b1dab303cc23a8560296bb0c4')
+b2sums=('c1da7ab4c2f938d69ae0ed396cc6aa608374492deedb6e2a91d0db0c9970bd469ee3178a0841dd654c16c542d10e1426ca6de65719a090abbc8c529a9b7329e1')
 
 build() {
   mkdir build
