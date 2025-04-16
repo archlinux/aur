@@ -1,16 +1,16 @@
 pkgbase = bzflag
 	pkgdesc = Multiplayer 3D tank battle game
-	pkgver = 2.4.26
+	pkgver = 2.4.30
 	pkgrel = 1
 	url = https://bzflag.org/
 	arch = x86_64
-	license = LGPL
+	license = MPL-2.0 OR LGPL-2.1-only
 	depends = curl
 	depends = glew
 	depends = glu
 	depends = sdl2
 	depends = c-ares
-	source = https://download.bzflag.org/bzflag/source/2.4.26/bzflag-2.4.26.tar.bz2
-	sha256sums = 01830405ff26ad1dc595a7e0695c824c2786e678868d9ff822aeb14ac7481014
+	source = https://download.bzflag.org/bzflag/source/2.4.30/bzflag-2.4.30.tar.bz2
+	sha256sums = bb78b750e7bce7aa7c11bd35906bb08a49acc7c50bf29629af380eecd153894d
 
 pkgname = bzflag

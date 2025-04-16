@@ -1,17 +1,18 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Liliane Fontenot <projects@liliane.io>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
 pkgname=bzflag
-pkgver=2.4.26
+pkgver=2.4.30
 pkgrel=1
 pkgdesc='Multiplayer 3D tank battle game'
 url='https://bzflag.org/'
-license=('LGPL')
+license=('MPL-2.0 OR LGPL-2.1-only')
 arch=('x86_64')
 depends=('curl' 'glew' 'glu' 'sdl2' 'c-ares')
 source=("https://download.bzflag.org/bzflag/source/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('01830405ff26ad1dc595a7e0695c824c2786e678868d9ff822aeb14ac7481014')
+sha256sums=('bb78b750e7bce7aa7c11bd35906bb08a49acc7c50bf29629af380eecd153894d')
 
 build() {
   cd ${pkgname}-${pkgver}
