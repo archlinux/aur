@@ -2,7 +2,7 @@
 pkgname='alacritty-smooth-cursor-git'
 _pkgname="alacritty"
 pkgver=0.16.0.2435.g846e2862
-pkgrel=3
+pkgrel=4
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/GregTheMadMonk/alacritty-smooth-cursor"
