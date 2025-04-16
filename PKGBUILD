@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=seq.hotSPOT
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2a061f0311bfeaf86ed51a9cdc48b966')
-b2sums=('f306f41589e4c6447322d4fda64220ad180624ba87e272a336d5aeee3384fd41e2e689018ae5cde8e2a47381094c33be65a66e8a2b32ffd70dc4c5b548b122c4')
+md5sums=('3ec0c86b23d5a23a317f1430804b3eae')
+b2sums=('295119b353e5f25b2b57e5d25d2ac409f72902d391c1eced4718efb33f652134ff5ab10927284b74a5442704723a174375ab590193557717ae29c66bc5063191')
 
 build() {
   mkdir build
