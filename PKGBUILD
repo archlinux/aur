@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNPRelate
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Parallel Computing Toolset for Relatedness and Principal Component Analysis of SNP Data'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-seqarray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d66a98d4e938213c772f379f6bd677effc667bbc61c31de714e5f69f40bdfa03')
+sha256sums=('0a363ed91d54c25d5f93f5fbcc7b22f24d609a7a97ade12a0bf3efa052e59d06')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

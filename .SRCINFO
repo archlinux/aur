@@ -1,6 +1,6 @@
 pkgbase = r-snprelate
 	pkgdesc = Parallel Computing Toolset for Relatedness and Principal Component Analysis of SNP Data
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SNPRelate
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-snprelate
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-seqarray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SNPRelate_1.40.0.tar.gz
-	sha256sums = d66a98d4e938213c772f379f6bd677effc667bbc61c31de714e5f69f40bdfa03
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SNPRelate_1.42.0.tar.gz
+	sha256sums = 0a363ed91d54c25d5f93f5fbcc7b22f24d609a7a97ade12a0bf3efa052e59d06
 
 pkgname = r-snprelate
