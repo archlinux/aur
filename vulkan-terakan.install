@@ -1,0 +1,125 @@
+post_install() {
+  # Reload dynamic linker configuration
+  ldconfig
+  
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan Driver Installation Complete                   |"
+  echo "+---------------------------------------------------------------+"
+  echo "| Required steps:                                               |"
+  echo "| 1. Rebuild initramfs: sudo mkinitcpio -P                      |"
+  echo "| 2. Reboot your system                                         |"
+  echo "| 3. Use with: VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json |"
+  echo "| 4. Or use helper: terakan-vulkan-setup your-application       |"
+  echo "| 5. For DirectX: terakan-dx-setup your-application             |"
+  echo "+---------------------------------------------------------------+"
+  
+  # Check for compatible GPU
+  if ! lspci | grep -i vga | grep -i -E "AMD|ATI" > /dev/null; then
+    echo "WARNING: No AMD GPU detected. This driver is intended for AMD Terascale GPUs."
+    echo "Installation will continue, but driver may not work properly."
+  elif lspci | grep -i vga | grep -i -E "Radeon HD [2-7]|R[5-7] [2-3]|TeraScale" > /dev/null; then
+    echo "Compatible AMD Terascale GPU detected. Driver should work properly."
+    
+    # Show GPU info for user
+    echo ""
+    echo "Detected GPU information:"
+    lspci | grep -i vga | grep -i -E "AMD|ATI"
+    
+    # Identify specific GPU generation
+    if lspci | grep -i vga | grep -i -E "HD 2|HD 3|R600" > /dev/null; then
+      echo "R600 generation GPU detected (HD 2000/3000). Some features may be limited."
+    elif lspci | grep -i vga | grep -i -E "HD 4|R700" > /dev/null; then
+      echo "R700 generation GPU detected (HD 4000). Good feature compatibility."
+    elif lspci | grep -i vga | grep -i -E "HD 5|Evergreen" > /dev/null; then
+      echo "Evergreen generation GPU detected (HD 5000). Excellent feature compatibility."
+    elif lspci | grep -i vga | grep -i -E "HD 6|Northern" > /dev/null; then
+      echo "Northern Islands generation GPU detected (HD 6000). Excellent feature compatibility."
+    elif lspci | grep -i vga | grep -i -E "HD 7|TeraScale" > /dev/null; then
+      echo "TeraScale 3 generation GPU detected (HD 7000). Best feature compatibility."
+    fi
+  else
+    echo "WARNING: AMD GPU detected, but it may not be a Terascale model."
+    echo "This driver is specifically for Terascale GPUs and may not work with your hardware."
+  fi
+  
+  # Create a profile.d script with more options
+  cat > /etc/profile.d/vulkan-terakan.sh << 'EOF'
+# Vulkan Terakan environment setup
+# Uncomment the following line to enable Terakan by default system-wide
+# export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.x86_64.json
+
+# Uncomment to enable advanced performance optimizations
+# export R600_DEBUG=noopt
+# export MESA_GLSL_CACHE_DISABLE=false
+# export MESA_SHADER_CACHE_DIR=~/.cache/mesa_shader_cache
+
+# Uncomment to enable advanced DirectX compatibility (with Wine/Proton)
+# export PROTON_USE_WINED3D=1
+# export WINEDLLOVERRIDES="d3d10,d3d11,dxgi=n"
+EOF
+  chmod 755 /etc/profile.d/vulkan-terakan.sh
+  
+  # Create shader cache directory
+  mkdir -p /var/cache/mesa_shader_cache
+  chmod 1777 /var/cache/mesa_shader_cache
+  
+  # Check for common issues
+  if ! pacman -Q vulkan-icd-loader &>/dev/null; then
+    echo "WARNING: vulkan-icd-loader package is not installed."
+    echo "Install it with: pacman -S vulkan-icd-loader"
+  fi
+  
+  if ! pacman -Q libglvnd &>/dev/null; then
+    echo "WARNING: libglvnd package is not installed."
+    echo "Install it with: pacman -S libglvnd"
+  fi
+  
+  if [ ! -f "/usr/lib/libvulkan_terascale.so" ]; then
+    echo "ERROR: libvulkan_terascale.so not found! Installation may be incomplete."
+    echo "Check installation log for errors and reinstall if necessary."
+  fi
+  
+  # Display additional help information
+  echo ""
+  echo "For advanced usage and optimization options, see:"
+  echo "/usr/share/doc/vulkan-terakan/README.md"
+}
+
+post_upgrade() {
+  # Reload dynamic linker configuration
+  ldconfig
+  
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan Driver Update Complete                         |"
+  echo "+---------------------------------------------------------------+"
+  echo "| Recommended steps:                                            |"
+  echo "| 1. Rebuild initramfs: sudo mkinitcpio -P                      |"
+  echo "| 2. Reboot your system                                         |"
+  echo "+---------------------------------------------------------------+"
+  
+  # Check for common issues after upgrade
+  if [ ! -f "/usr/lib/libvulkan_terascale.so" ]; then
+    echo "ERROR: libvulkan_terascale.so not found! Upgrade may be incomplete."
+    echo "Check installation log for errors and reinstall if necessary."
+  fi
+}
+
+post_remove() {
+  # Remove the environment file
+  rm -f /etc/profile.d/vulkan-terakan.sh
+  
+  # Reload dynamic linker configuration
+  ldconfig
+  
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan Driver Removal Complete                        |"
+  echo "+---------------------------------------------------------------+"
+  echo "| To restore default GPU configuration:                         |"
+  echo "| 1. Remove configuration: sudo rm /etc/modprobe.d/terakan.conf |"
+  echo "| 2. Rebuild initramfs: sudo mkinitcpio -P                      |"
+  echo "| 3. Reboot your system                                         |"
+  echo "+---------------------------------------------------------------+"
+}
