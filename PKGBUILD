@@ -1,6 +1,6 @@
 # Maintainer: Daniel Kuehn <daniel@kuehn.foo>
 pkgname=runeprice
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CLI tool for querying the OSRS Wiki Prices API, written in Bash."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('bash'
          'curl'
          'jq')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('e4df5e7a7a1d6c374be5a7505153d3d3de6b7099cd3f220158e9ee0bb2265ee1')
+sha256sums=('976bf5607e9dffd1ab33ad309972ce2d49b70ed01cd4f94a246a5e6add95954c')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

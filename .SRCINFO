@@ -1,6 +1,6 @@
 pkgbase = runeprice
 	pkgdesc = CLI tool for querying the OSRS Wiki Prices API, written in Bash.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/danny-kuehn/runeprice
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = runeprice
 	depends = coreutils
 	depends = curl
 	depends = jq
-	source = https://github.com/danny-kuehn/runeprice/archive/1.0.0.tar.gz
-	sha256sums = e4df5e7a7a1d6c374be5a7505153d3d3de6b7099cd3f220158e9ee0bb2265ee1
+	source = https://github.com/danny-kuehn/runeprice/archive/1.0.1.tar.gz
+	sha256sums = 976bf5607e9dffd1ab33ad309972ce2d49b70ed01cd4f94a246a5e6add95954c
 
 pkgname = runeprice
