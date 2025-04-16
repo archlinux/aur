@@ -1,6 +1,6 @@
 pkgbase = pica-comic-bin
 	pkgdesc = A comic app built with Flutter, supporting multiple comic sources
-	pkgver = 4.2.1
+	pkgver = 4.2.4
 	pkgrel = 2
 	url = https://github.com/Pacalini/PicaComic
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pica-comic-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	conflicts = pica-comic
-	source = https://github.com/Pacalini/PicaComic/releases/download/v4.2.1/PicaComic-4.2.1-amd64.deb
-	sha256sums = aea065856ad1e6a32871f4b92e886e7bdc112546730fb93c8fac8ca84d3c2d95
+	source = https://github.com/Pacalini/PicaComic/releases/download/v4.2.4/PicaComic-4.2.4-amd64.deb
+	sha256sums = a6fe36fd452fc4d6926028c5f93ccfa62fe396185ff2dd0a1cf123738c3477e1
 
 pkgname = pica-comic-bin
