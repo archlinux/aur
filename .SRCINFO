@@ -1,7 +1,7 @@
 pkgbase = deber
 	pkgdesc = Debian packaging with Docker
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpvpro/deber
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,6 @@ pkgbase = deber
 	provides = deber
 	conflicts = deber
 	source = deber-1.4.5.tar.gz::https://github.com/dpvpro/deber/archive/v1.4.5.tar.gz
-	sha256sums = 7f75d423bdf2427dac452af05a83ce5739a68c346606477fb4a4f43e841b1da8
+	sha256sums = d311fcf3967473e5477e1f185c4f6051240f6d291d9b103ab621b37233b32b07
 
 pkgname = deber
