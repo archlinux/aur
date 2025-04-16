@@ -3,7 +3,7 @@
 
 pkgname=cursor-free-vip-git
 pkgver=1.9.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Reset Cursor AI MachineID & Auto Sign Up / In & Bypass Higher Token Limit"
 arch=('x86_64')
 url="https://github.com/canmi21/cursor"

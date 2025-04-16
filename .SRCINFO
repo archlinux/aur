@@ -1,11 +1,10 @@
 pkgbase = cursor-free-vip-git
 	pkgdesc = Reset Cursor AI MachineID & Auto Sign Up / In & Bypass Higher Token Limit
 	pkgver = 1.9.05
-	pkgrel = 1
-	url = https://github.com/yeongpin/cursor-free-vip
+	pkgrel = 2
+	url = https://github.com/canmi21/cursor
 	arch = x86_64
 	license = MIT
-	license = Attribution-NonCommercial-NoDerivatives 4.0 International
 	makedepends = git
 	makedepends = python
 	makedepends = pyinstaller
@@ -13,8 +12,8 @@ pkgbase = cursor-free-vip-git
 	depends = python
 	depends = cursor-bin
 	provides = cursor-free-vip
-	source = cursor-free-vip::git+https://github.com/yeongpin/cursor-free-vip.git
-	source = https://raw.githubusercontent.com/canmi21/openjlc/refs/heads/main/LICENSE
+	source = cursor-free-vip::git+https://github.com/canmi21/cursor.git
+	source = https://raw.githubusercontent.com/canmi21/cursor/refs/heads/main/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
