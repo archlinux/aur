@@ -2,7 +2,7 @@
 pkgname='caqtdm'
 pkgver=4.5.0rc2
 pkgrel=1
-pkgdesc="Qt Widgets for Technical Applications"
+pkgdesc="caQtDM is a popular Epics framework for developing panels"
 arch=('any')
 url="http://caqtdm.github.io/"
 license=('GPL')
