@@ -8,7 +8,7 @@
 pkgname=psychopy
 pkgver=2024.2.5
 pkgrel=1
-pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
+pkgdesc="Free software for creating psychology, economics, neuroscience, psycholinguistics, behavioural experiments."
 arch=('any')
 url="http://www.psychopy.org"
 license=('GPL3')

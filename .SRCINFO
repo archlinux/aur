@@ -1,5 +1,5 @@
 pkgbase = psychopy
-	pkgdesc = An experiment builder for neuroscience, psychology and psychophysics
+	pkgdesc = Free software for creating psychology, economics, neuroscience, psycholinguistics, behavioural experiments.
 	pkgver = 2024.2.5
 	pkgrel = 1
 	url = http://www.psychopy.org
