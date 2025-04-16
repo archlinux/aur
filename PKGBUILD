@@ -3,8 +3,8 @@ pkgname=quicknote
 pkgver=2.0.3
 _electronversion=22
 _nodeversion=18
-pkgrel=2
-pkgdesc="Helps to paste some random text or take some notes right from your taskbar!Use system-wide electron."
+pkgrel=3
+pkgdesc="Helps to paste some random text or take some notes right from your taskbar!(Use system-wide electron)"
 arch=('any')
 url="https://srilakshmikanthanp.github.io/quicknote/"
 _ghurl="https://github.com/srilakshmikanthanp/quicknote"
@@ -19,16 +19,17 @@ makedepends=(
     'yarn'
     'curl'
     'nvm'
+    'git'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f0b7b871ab023633842a3277061fef1cbf169ae810896743c2fe24a65525922c'
+sha256sums=('333c060ca17ceb21e6a00a523ac749323fcf56c214c4b9e924ab1d3d013db4b0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,8 +37,8 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
@@ -55,7 +56,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -67,12 +67,15 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g;s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     rm -rf package-lock.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     yarn run package
 }
 package() {
