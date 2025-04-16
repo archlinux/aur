@@ -4,7 +4,7 @@ _Name="Premake"
 _name="${_Name,,}"
 pkgver=4.4beta5
 pkgname="${_name}${pkgver%%.*}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple build configuration and project generation tool"
 arch=('i686' 'x86_64')
 url="https://premake.github.io"
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "bin/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -vDm644 "CHANGES.txt"  "${pkgdir}/usr/share/doc/${pkgname}/README.txt"
+  install -vDm644 "CHANGES.txt"  "${pkgdir}/usr/share/doc/${pkgname}/CHANGES.txt"
   install -vDm644 "README.txt"   "${pkgdir}/usr/share/doc/${pkgname}/README.txt"
   install -vDm644 "LICENSE.txt"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -vDm644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
