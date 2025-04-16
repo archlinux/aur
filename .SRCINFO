@@ -1,6 +1,6 @@
 pkgbase = bambustudio-nvidia-bin
 	pkgdesc = PC Software for BambuLab's 3D printers with a fix for nVidia cards
-	pkgver = 02.00.01.50
+	pkgver = 02.00.02.57
 	pkgrel = 1
 	url = https://github.com/bambulab/BambuStudio
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = bambustudio-nvidia-bin
 	conflicts = bambustudio
 	conflicts = bambustudio-git
 	conflicts = bambustudio-bin
-	source = bambustudio-02.00.01.50.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.00.01.50/Bambu_Studio_linux_fedora-v02.00.01.50.AppImage
+	source = bambustudio-02.00.02.57.AppImage::https://github.com/bambulab/BambuStudio/releases/download/v02.00.02.57/Bambu_Studio_linux_v02.00.02.57_ubuntu_24.04.AppImage
 	source = BambuStudio.desktop
 	source = bambu-studio
-	md5sums = 6c84b6e7189434ac7460729254d05432
+	md5sums = abed38a0e9860398393e97d933925326
 	md5sums = c2729c29cbd01844507e1f0562762191
 	md5sums = bc6d70b49ba93e5ec94aa092872f1c62
 
