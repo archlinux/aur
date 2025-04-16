@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ModCon
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('14c390fdeaf314a5bccb90fa0b8a13a1')
-b2sums=('107f77da13e1525d0d4a58caf8bf3529d654a488111566d1cec3fabc9590405c015e911ca199e519e51fa1ae44b409e1e4a13bab3cdf5841ec9ba98cac43e863')
+md5sums=('6c697c7ca3008b68ba61df88011e2c3a')
+b2sums=('78d0390810a9297e195481e692b8dcd2c24a2d10048f8a87970f005ba18414313b5c83689c23d71d893e142d9be95d81bba837e2bb7e4c416febe16d16fc134d')
 
 build() {
   mkdir build
