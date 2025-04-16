@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=29.0rc3.r44374
+pkgver=29.0.r44472
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
@@ -58,6 +58,12 @@ package() {
 	# install bitcoin-tx
 	msg2 'Installing bitcoin-tx...'
 	install -Dm755 "$srcdir/$_gitname/build/bin/bitcoin-tx" "$pkgdir/usr/bin/bitcoin-tx"
+
+	# install bash-completion scripts
+	msg2 'Installing bash-completion scripts...'
+	install -D -m644 "$srcdir/$_gitname/contrib/completions/bash/bitcoin-tx.bash" "$pkgdir/usr/share/bash-completion/completions/bitcoin-tx"
+	install -D -m644 "$srcdir/$_gitname/contrib/completions/bash/bitcoin-cli.bash" "$pkgdir/usr/share/bash-completion/completions/bitcoin-cli"
+	install -D -m644 "$srcdir/$_gitname/contrib/completions/bash/bitcoind.bash" "$pkgdir/usr/share/bash-completion/completions/bitcoind"
 
 	# install license
 	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
