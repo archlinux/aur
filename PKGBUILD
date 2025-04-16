@@ -5,7 +5,7 @@ pkgver=3.15
 pkgrel=1
 pkgdesc="Video annotation and hypervideo authoring"
 arch=('any')
-url="https://github.com/oaubert/advene"
+url="https://www.advene.org"
 license=('GPL2')
 depends=('frei0r-plugins'
     'gst-editing-services'
