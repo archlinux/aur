@@ -1,5 +1,5 @@
 pkgbase = python-git-sim
-	pkgdesc = Simulate Git commands on your own repos by generating an image (default) or video visualization depicting the command's behavior.
+	pkgdesc = Visually simulate Git operations in your own repos.
 	pkgver = 0.3.5
 	pkgrel = 2
 	url = https://initialcommit.com/tools/git-sim
