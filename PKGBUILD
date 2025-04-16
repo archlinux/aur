@@ -2,7 +2,7 @@
 
 _name=streamlit-aggrid
 pkgname=python-$_name
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A Streamlit component for the AG Grid JavaScript library"
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(
 )
 # No releases or tags on GitHub :-(
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
-b2sums=('e20d84e8e1c14223fae47f8c99f90d295ab27de96ed4b053876960c4ae6b55036cc791dd83a68a26357fb3d66004153dc54b059050f62973771615dc5bdd5bb2')
+b2sums=('f9b647af4e2e44c342b5229b3554c85b39fc3397a15a50733739f9dd217da2ff3b35685d0da90bf9ec92ce787b9a68889171d5610a3966ef68d4f95b8ef49d92')
 
 build() {
   cd ${_name//-/_}-$pkgver
