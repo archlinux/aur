@@ -10,6 +10,7 @@ pkgbase = requestly-git
 	makedepends = gendesk
 	makedepends = git
 	makedepends = asar
+	makedepends = python-setuptools
 	makedepends = curl
 	depends = electron27
 	depends = java-runtime

@@ -24,6 +24,7 @@ makedepends=(
     'gendesk'
     'git'
     'asar'
+    'python-setuptools'
     'curl'
 )
 source=(
