@@ -1,6 +1,6 @@
 pkgbase = rubymine-eap
 	pkgdesc = Ruby and Rails IDE with the full stack of essential developer tools (EAP).
-	pkgver = 251.23774.306
+	pkgver = 251.23774.429
 	pkgrel = 1
 	url = http://www.jetbrains.com/ruby/
 	install = rubymine.install
@@ -11,10 +11,10 @@ pkgbase = rubymine-eap
 	depends = gtk-update-icon-cache
 	optdepends = ruby: Ruby run/debug support
 	options = !strip
-	source = https://download.jetbrains.com/ruby/RubyMine-251.23774.306.tar.gz
+	source = https://download.jetbrains.com/ruby/RubyMine-2025.1.tar.gz
 	source = rubymine-eap.desktop
 	source = rubymine.install
-	sha256sums = 4ce0812eede55baf3c9c1e74e3321cb72e32afbd2e02afabbba2f9a2c41fd068
+	sha256sums = 6ad3960cf6a0fa88f3cfb6c166c1080ad7c3fb0f72f50379f9cafbe523813437
 	sha256sums = 02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660
 	sha256sums = fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd
 
