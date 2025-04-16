@@ -1,5 +1,5 @@
 pkgbase = vkvg
-	pkgdesc = Vulkan 2D graphics library following the Cairo API
+	pkgdesc = Vulkan 2D graphics library
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jpbruyere/vkvg
