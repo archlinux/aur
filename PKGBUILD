@@ -54,22 +54,53 @@ sha512sums=('93609dbe9aeac52a17d7223c2c7d05ea9a4ecbf1fff362cff960965eddab68be22f
             'd9b6da366d8eca19062471ed4b0c96b7762069e5235953d71aa796ef8fe184ad82acf235fd9bfeaaf62a3f47ba1ef412958d91b5975e18416e3d0127a5338db9'
             '7921e4320877e4783ba40a29869618d53d2a1a8403527b174ad1e5f0115e610e3882d812ba5ae427d5a84dc8c559ff81ce787e3cf38c9004e242f9b8e6347325')
 
+prepare() {
+  cd "thanos-$pkgver"
+
+  go mod tidy
+}
+
 build() {
   cd "thanos-$pkgver"
-  mkdir bin
-  PREFIX=${PWD}/bin make build
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
+  # extracted from promu configuration, adjusted similar to extra/prometheus
+  local _goflags=(
+    -tags netgo
+  )
+  local _ldflags=(
+    -X github.com/prometheus/common/version.Version="${pkgver}"
+    -X github.com/prometheus/common/version.Revision="${pkgver}"
+    -X github.com/prometheus/common/version.Branch=tarball
+    -X github.com/prometheus/common/version.BuildUser="${pkgbase}@archlinux"
+    -X github.com/prometheus/common/version.BuildDate="$(date -u '+%Y%m%d-%H:%M:%S' --date="@${SOURCE_DATE_EPOCH}")"
+  )
+
+  # promu does not let us pass -ldflags or -extldflags, sunrise by hand
+  go build -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags="-compressdwarf=false -linkmode=external -extldflags '${LDFLAGS}' ${_ldflags[*]@Q}" \
+    "${_goflags[@]}" \
+    -o ./thanos \
+    ./cmd/thanos
 }
 
 package() {
   cd "thanos-$pkgver"
 
-  install -Dm0755 bin/thanos "${pkgdir}/usr/bin/thanos"
-  install -D -m0644 "${srcdir}/thanos.sysuser" "${pkgdir}/usr/lib/sysusers.d/thanos.conf"
+  install -Dm755 thanos "${pkgdir}/usr/bin/thanos"
+  install -Dm644 "${srcdir}/thanos.sysuser" "${pkgdir}/usr/lib/sysusers.d/thanos.conf"
 
-  install -d -m0755 "${pkgdir}/etc/thanos/"
   for componentname in compact downsample query query-frontend rule sidecar store; do
-    install -Dm0644 "${srcdir}/thanos-${componentname}.service" "${pkgdir}/usr/lib/systemd/system/thanos-${componentname}.service"
-    install -Dm0644 "${srcdir}/thanos-${componentname}.conf" "${pkgdir}/etc/thanos/${componentname}.conf"
+    install -Dm644 "${srcdir}/thanos-${componentname}.service" "${pkgdir}/usr/lib/systemd/system/thanos-${componentname}.service"
+    install -Dm644 "${srcdir}/thanos-${componentname}.conf" "${pkgdir}/etc/thanos/${componentname}.conf"
   done
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
