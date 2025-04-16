@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=deepchat
 pkgver=0.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="DeepChat - 连接强大AI与个人世界的智能助手 | DeepChat - A smart assistant that connects powerful AI to your personal world"
 arch=('x86_64')
 url="https://github.com/ThinkInAIXYZ/deepchat"
@@ -12,7 +12,7 @@ source_x86_64=(${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/ThinkInAIX
 _install_path="/opt/DeepChat"
 
 package() {
-  install -dm644 "${pkgdir}/opt"
+  install -dm755 "${pkgdir}/opt"
 
   mv -f "${srcdir}/DeepChat-${pkgver}-linux-x64" "${pkgdir}/${_install_path}"
 
