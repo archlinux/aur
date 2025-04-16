@@ -4,7 +4,7 @@
 pkgname=vaping
 pkgver=1.5.4
 pkgrel=1
-pkgdesc='python-smokeping alternative'
+pkgdesc='A healthy alternative to SmokePing!'
 arch=('any')
 url="https://github.com/20c/vaping"
 license=('Apache')
