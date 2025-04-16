@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAdecay
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('234bd79f217035934dc16605bca37397')
-b2sums=('abf2652aaa88c1605c424d7a3dca909a04f1858e7ede980ab47478701edb8e2feb75c53e8426269e2c400aa60fd92f0c77449d13e0739d363360db652151cddf')
+md5sums=('32dac9e11506b95b403a79b02107145f')
+b2sums=('7f64f57ed29a2e8880fb73b962d400c6dc382f9219bf996f040d13742d8178604d712528320edf3ebd30cdc1e0e26870ea8e261a50aec7f66392a956508c5f89')
 
 build() {
   mkdir build
