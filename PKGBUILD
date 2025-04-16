@@ -1,7 +1,7 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 pkgname=mixbus11
 pkgver=11.0.260
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mixbus"
@@ -32,11 +32,16 @@ prepare() {
     cd "$srcdir"
     chmod +x "Mixbus-${pkgver}-x86_64.run"
 
-    # Extract the installer
-    ./Mixbus-${pkgver}-x86_64.run --target extract --noexec
+    # Use a completely clean environment for extraction
+    # This prevents any system libraries from being overridden by Mixbus libraries
+    env -i HOME="$HOME" USER="$USER" PATH="/usr/bin:/bin" \
+        LD_LIBRARY_PATH="" \
+        ./Mixbus-${pkgver}-x86_64.run --target extract --noexec
 
-    # Extract the Mixbus tarball
-    tar xf extract/Mixbus_x86_64-${pkgver}.tar
+    # Similarly for the tarball extraction
+    env -i HOME="$HOME" USER="$USER" PATH="/usr/bin:/bin" \
+        LD_LIBRARY_PATH="" \
+        tar xf extract/Mixbus_x86_64-${pkgver}.tar
 }
 
 package() {
@@ -68,14 +73,24 @@ package() {
     install -Dm644 "$pkgdir/opt/Mixbus-${pkgver}/share/resources/Mixbus-icon_256px.png" \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/mixbus11.png"
 
-    # Install desktop file
-    cat > "$pkgdir/usr/share/applications/Harrison Mixbus Version 11.desktop" << EOF
+    # Create wrapper script to handle library paths
+    cat > "$pkgdir/usr/bin/mixbus11-wrapper" << EOF
+#!/bin/bash
+# Set Mixbus-specific library path
+export LD_LIBRARY_PATH="/opt/Mixbus-${pkgver}/lib"
+# Run Mixbus with appropriate environment
+exec env GDK_BACKEND=x11 /opt/Mixbus-${pkgver}/bin/mixbus11 "\$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/mixbus11-wrapper"
+
+    # Install desktop file with the wrapper
+    cat > "$pkgdir/usr/share/applications/mixbus11.desktop" << EOF
 [Desktop Entry]
 Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=env GDK_BACKEND=x11 /opt/Mixbus-${pkgver}/bin/mixbus11
+Exec=/usr/bin/mixbus11-wrapper
 Name=Harrison Mixbus Version 11
 Icon=mixbus11
 Comment=Digital Audio Workstation
@@ -84,21 +99,14 @@ StartupWMClass=Mixbus-${pkgver}
 StartupNotify=true
 EOF
 
-    # Create symlinks - check if the mixbus binary exists and create the appropriate symlink
-    if [ -f "$pkgdir/opt/Mixbus-${pkgver}/bin/mixbus11" ]; then
-        ln -s "/opt/Mixbus-${pkgver}/bin/mixbus11" "$pkgdir/usr/bin/mixbus11"
-        ln -s "/opt/Mixbus-${pkgver}/bin/mixbus11" "$pkgdir/usr/local/bin/Mixbus11"
-    elif [ -f "$pkgdir/opt/Mixbus-${pkgver}/bin/mixbus" ]; then
-        ln -s "/opt/Mixbus-${pkgver}/bin/mixbus" "$pkgdir/usr/bin/mixbus11"
-        ln -s "/opt/Mixbus-${pkgver}/bin/mixbus" "$pkgdir/usr/local/bin/Mixbus11"
-    else
-        echo "Warning: Could not find the mixbus executable."
-        echo "Here are the files in the bin directory:"
-        ls -la "$pkgdir/opt/Mixbus-${pkgver}/bin/"
-    fi
+    # Create symlinks to the wrapper
+    ln -s "/usr/bin/mixbus11-wrapper" "$pkgdir/usr/bin/mixbus11"
+    ln -s "/usr/bin/mixbus11-wrapper" "$pkgdir/usr/local/bin/Mixbus11"
 
     # Fix permissions
     chmod -R 755 "$pkgdir/opt/Mixbus-${pkgver}"
     find "$pkgdir/opt/Mixbus-${pkgver}" -type f -exec chmod 644 {} \;
     find "$pkgdir/opt/Mixbus-${pkgver}/bin" -type f -exec chmod 755 {} \; || true
+    find "$pkgdir/opt/Mixbus-${pkgver}/lib" -name "*.so*" -exec chmod 755 {} \; || true
+    find "$pkgdir/opt/Mixbus-${pkgver}/lib" -name "ardour-*" -exec chmod 755 {} \; || true
 }

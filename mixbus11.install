@@ -6,7 +6,9 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+    echo "==> Mixbus has been upgraded"
+    echo "==> Make sure you're in the 'audio' group:"
+    echo "==> sudo usermod -a -G audio \$USER"
 }
 
 post_remove() {
