@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rhdf5
-_pkgver=2.50.2
+_pkgver=2.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1725e83fe395625f56751151a7bcd4d3')
-b2sums=('757496e43c0cf56d18797d6713e5b9226ef38bc072b153c5d3ef1ad68757da6ea2465676d3468857e9a2e0ad57814c69286237bfc7ade88c3b94baa65996b87b')
+md5sums=('7d1e55116678ecdb8af0e93c2ebb0259')
+b2sums=('706b08e317906a8bd666e91f9c847e16256c1fbacd54fd3e22f6c761ea173550a744485f6a66f2a64494fb3d732bdf170efe40ecad2bba9d162772afaf3bc2c0')
 
 build() {
   mkdir build
