@@ -1,6 +1,6 @@
 pkgbase = freenginx-libressl
 	pkgdesc = webserver in an effort to preserve free and open development of nginx (build with OpenBSD libressl)
-	pkgver = 1.27.5_4.0.0
+	pkgver = 1.27.6_4.0.0
 	pkgrel = 1
 	url = https://freenginx.org
 	install = nginx.install
@@ -32,20 +32,20 @@ pkgbase = freenginx-libressl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://freenginx.org/download/freenginx-1.27.5.tar.gz
-	source = https://freenginx.org/download/freenginx-1.27.5.tar.gz.asc
+	source = https://freenginx.org/download/freenginx-1.27.6.tar.gz
+	source = https://freenginx.org/download/freenginx-1.27.6.tar.gz.asc
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.0.0.tar.gz
 	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.0.0.tar.gz.asc
-	source = hg+https://freenginx.org/hg/nginx-tests#revision=a23ab99972ae
+	source = hg+https://freenginx.org/hg/nginx-tests#revision=0a913a10945b
 	source = service
 	source = logrotate
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
-	sha256sums = b7ce8dfc439aefb222f24e8dba4333f0f0c91b02b82c77aeac225b879b64d64d
+	sha256sums = 1cba1326f9c02130bfd77b04eda6d186d0be89fb21572bc9ec1fc4962c8412a4
 	sha256sums = SKIP
 	sha256sums = 4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4
 	sha256sums = SKIP
-	sha256sums = af969848647e24de49f59ae0c1de043f2eaebaa59df2e26c0f45e5409167e251
+	sha256sums = bb1c79f5c2835d47065474b4b3b5aa1971966bdde5713dc9de5507c53be989e2
 	sha256sums = adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
 
@@ -54,7 +54,7 @@ pkgname = freenginx-libressl
 	conflicts = nginx
 
 pkgname = freenginx-libressl-src
-	pkgdesc = Source code of freenginx 1.27.5, useful for building modules
+	pkgdesc = Source code of freenginx 1.27.6, useful for building modules
 	arch = any
 	depends = sh
 	depends = bash
