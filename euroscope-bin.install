@@ -12,7 +12,7 @@ post_install() {
   echo "However, automatic installation may fail without any notification in certain cases"
   echo "Proper error handling will be added in the future, but for now in such case"
   echo "you should run the following command to install the necessary dependencies:"
-  echo "WINEPREFIX=\$ES_PREFIX WINEARCH=win32 winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet"
+  echo "WINEPREFIX=\$ES_PREFIX WINEARCH=win32 winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2022 wininet"
 }
 
 post_upgrade() {
