@@ -8,11 +8,12 @@ pkgname=(
     "${pkgbase}-pcsc-driver"
 )
 pkgver=1.3.1.80
-pkgrel=1
+pkgrel=2
 pkgdesc="IIT End User CA-1. Sign (web)"
 url="https://iit.com.ua"
 license=('custom')
 arch=('i686' 'x86_64')
+makedepends=('execstack')
 
 if [[ $CARCH = i686 ]]; then
     _src_md5sum='2adb6fbd40d295a0d53e160a89124ba9'
@@ -56,6 +57,12 @@ package_eusw() {
     rmdir ${pkgdir}/etc
     # Fixing permissions of udev rules file
     chmod a-x ${pkgdir}/usr/lib/udev/rules.d/60-iit-e-keys.rules
+
+    # Removing 'execstack' flag from the lib.
+    # Since GLIBC 2.41 that lib cannot be loaded because it has 'execstack' flag.
+    # However, it seems like that lib actually does not do code excution from stack.
+    # At least it works when we remove the flag.
+    execstack -c ${pkgdir}/opt/iit/eu/sw/libav337p11d.so
 
     # Removing install/uninstall scripts
     rm ${pkgdir}/opt/iit/eu/sw/install.sh
