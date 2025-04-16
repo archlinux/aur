@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 0.0.55
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = python-pydantic-ai
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.9
-	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.0.55.tar.gz
-	sha256sums = 7fc9dbc3a8cd076dbeee4b7ac25f342ee8d16049dfa0047d50aad5334991981f
+	source = https://github.com/pydantic/pydantic-ai/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 6db21423d8fe115f5100b94dd00daff491e63690137c550e97bd589b25a1f1fc
 	source_x86_64 = https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip
 	sha256sums_x86_64 = SKIP
 	source_aarch64 = https://github.com/denoland/deno/releases/latest/download/deno-aarch64-unknown-linux-gnu.zip

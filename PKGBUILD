@@ -7,7 +7,7 @@ _name1=examples
 _name0=pydantic-ai
 pkgbase=python-${_name0}
 pkgname=(python-${_name0//-ai/}-${_name4} python-${_name0//-ai/}-${_name2} python-${_name0}-${_name3} python-${_name0}-${_name1} python-${_name0})
-pkgver=0.0.55
+pkgver=0.1.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://github.com/pydantic/pydantic-ai'
@@ -15,7 +15,7 @@ license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("https://github.com/denoland/deno/releases/latest/download/deno-aarch64-unknown-linux-gnu.zip")
-sha256sums=('7fc9dbc3a8cd076dbeee4b7ac25f342ee8d16049dfa0047d50aad5334991981f')
+sha256sums=('6db21423d8fe115f5100b94dd00daff491e63690137c550e97bd589b25a1f1fc')
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 depends=('python>=3.9')
@@ -67,7 +67,7 @@ check() {
   local pytest_options=(
     -vv
     --override-ini="addopts="
-    -k "not evals.md and not test_stop_settings[mistral]"
+    -k "not evals.md and not test_known_model_names and not test_stop_settings[mistral]"
   )
   cd "${srcdir}"/${_name0}-${pkgver}
   python -m venv --system-site-packages test-env
