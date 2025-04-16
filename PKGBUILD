@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=py-nvfan
 _origpkgname=py_nvfan
-pkgver=0.1.14
-pkgrel=4
+pkgver=0.1.16
+pkgrel=1
 pkgdesc="Automatic Fan Control for NVIDIA Graphics Cards Based on Temperature."
 arch=("x86_64")
 url="https://github.com/antrax2024/py-nvfan/"
@@ -25,8 +25,8 @@ makedepends=(
   "python-hatchling"
 )
 
-source=("https://files.pythonhosted.org/packages/63/0b/de7b8d63cc04371f00a6884450f23937819105fd9f59522745f1c1aea4af/py_nvfan-0.1.14.tar.gz")
-md5sums=('dd7fe53b128abe5779531c8738df04b2')
+source=("https://files.pythonhosted.org/packages/a0/a6/d832ee057c2c5992ad0bbad981227b70b4871cc5e972e7203db8ff7c128c/py_nvfan-0.1.16.tar.gz")
+md5sums=('1d421cf7aea0c492e7b891e844d52ff5')
 
 package() {
   cd "${_origpkgname}-${pkgver}" || exit
