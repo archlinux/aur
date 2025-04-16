@@ -1,6 +1,6 @@
 pkgbase = python-pysdl3
 	pkgdesc = Python ctypes wrapper around SDL3
-	pkgver = 0.9.7b5
+	pkgver = 0.9.7b9
 	pkgrel = 1
 	url = https://github.com/Aermoss/PySDL3
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-pysdl3
 	depends = python-requests
 	depends = sdl3
 	optdepends = sdl3_image
-	source = python-pysdl3-0.9.7b5::git+https://github.com/Aermoss/PySDL3.git#tag=v0.9.7b5
-	sha256sums = 995617f400cd87387d1fbd07b6a2f14616e0fcf09b3983ef2460dbe3d8893f13
+	source = python-pysdl3-0.9.7b9::git+https://github.com/Aermoss/PySDL3.git#tag=v0.9.7b9
+	sha256sums = 9c04792d4bb77132742c2a2a2d1e48b528f56b9a49ba06dbd30e9c174bccb3d7
 
 pkgname = python-pysdl3
