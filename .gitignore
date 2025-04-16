@@ -3,3 +3,4 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
+!rpcs3_qt690_atomic.patch

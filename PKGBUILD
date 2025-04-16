@@ -5,7 +5,7 @@
 
 pkgname="rpcs3"
 pkgver=0.0.36
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source PlayStation 3 emulator/debugger written in C++"
 arch=('aarch64' 'x86_64')
 url="https://rpcs3.net"
@@ -17,13 +17,17 @@ depends=('alsa-lib' 'curl' 'faudio' 'ffmpeg' 'flatbuffers>=2' 'gcc-libs' 'glew'
          'openal' 'opencv' 'pugixml>=1.15' 'qt6-base' 'qt6-declarative'
          'qt6-multimedia' 'qt6-svg' 'sdl3' 'systemd-libs' 'vulkan-icd-loader'
          'zlib') # 'wolfssl>=4.7'
-makedepends=('clang' 'cmake>=3.28' 'lld' 'llvm')
+makedepends=('clang' 'cmake>=3.28' 'lld' 'llvm' 'vulkan-headers')
 optdepends=('vulkan-validation-layers'
             'rpcs3-udev: support DualShock 3, 4 and DualSense controllers')
 options=('!lto' '!strip')
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}_qt690_atomic.patch" # ::${_url}/commit/600e4604169464c64cbf548e7629e483ad2aad1e.patch?full_index=1"
+        "${pkgname}_qt690_setDefaultSectionSize.patch::${_url}/commit/9c5b3a2300b3ac44b897813ebc1cb0949c3b3e6d.patch?full_index=1")
 b2sums=('7b1cfb7ee71ccdf54a60a440d2fa7e8966af4e9d39623423021c3d6b8ea9b2b0a406028e35bb45147df90c3ed5bbdadae4fef234246384640d9c391a69efb0d4'
+        '68f9e3283f5194e56449441d45b83b47863db4eaea3586aaa73f37a1c8328495a1e4e64398698cbf3059ecc4d17295a192c79596eca7b595f7f1bc5921dc568c'
+        '8f837d3ca400c2de1667cc639b450a91ee42c6efb88d4036926d7ef06b30031451c220d1f43680b002c480bfb0c5e726ad2db14f98517060c8b74fad556dacc3'
         '923bfada8484a3bb91dd92a242d7096017b77fd399a90052af121658221069215e277d51fb4b9b95821b9272e44618f91883c2dc49bfb671c52a941d54aec182'
         '0e60f4230975ccf83f1cd82e4effdac4e4e7a8eaa718f6244a132f727d15df3f0d264812b741fa770ff1c1e12e49bf017c126035cb234d66cec0bc9a2bae67e5'
         '17b054083ce178255f19026d175986225f6f803a21e0cef4ce9a557ac50057578d3ae76d3b179fe25d0febd5e05d5d5feb28f9761045a8e41497b92a966196ec'
@@ -72,6 +76,7 @@ declare -rAg _modules_name_map=(
   [3rdparty/yaml-cpp/yaml-cpp]=https://github.com/RPCS3/yaml-cpp/archive/456c68f452da09d8ca84b375faa2b1397713eaba.tar.gz
   # [3rdparty/zlib/zlib]=https://github.com/madler/zlib/archive/51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf.tar.gz
   [3rdparty/zstd/zstd]=https://github.com/facebook/zstd/archive/f8745da6ff1ad1e7bab384bd1f9d742439278e99.tar.gz
+
   # cubeb
   [3rdparty/cubeb/cubeb/cmake/sanitizers-cmake]=https://github.com/arsenm/sanitizers-cmake/archive/aab6948fa863bc1cbe5d0850bc46b9ef02ed4c1a.tar.gz
   [3rdparty/cubeb/cubeb/googletest]=https://github.com/google/googletest/archive/800f5422ac9d9e0ad59cd860a2ef3a679588acb4.tar.gz
@@ -155,8 +160,7 @@ _fill_gitmodules_recursively() {
 }
 
 declare _source_str _uri
-for _uri in "${_modules_name_map[@]}"
-do
+for _uri in "${_modules_name_map[@]}"; do
   _source_str="$(_get_source_name_string "$_uri").tar.gz::$_uri"
   if [[ "${source[*]/$_source_str/}" == "${source[*]}" ]]
   then
@@ -168,6 +172,9 @@ unset _source_str _uri
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   _fill_gitmodules_recursively
+
+  patch -Np1 -i "${srcdir}/${pkgname}_qt690_atomic.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_qt690_setDefaultSectionSize.patch"
 
   cd "${pkgname}"
   sed -e "s/set(RPCS3_GIT_VERSION \"local_build\")/set(RPCS3_GIT_VERSION \"${pkgver}+AUR-${pkgrel}\")/g" \
