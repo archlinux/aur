@@ -4,7 +4,7 @@
 pkgname=lucidor
 pkgver=0.9.15
 pkgrel=2
-pkgdesc="A program for reading and handling EPUB e-books and OPDS catalogs"
+pkgdesc="A computer program for reading and handling e-books."
 arch=('i686' 'x86_64')
 url="https://lucidor.org/lucidor/"
 license=('GPL3')

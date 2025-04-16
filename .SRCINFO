@@ -1,5 +1,5 @@
 pkgbase = lucidor
-	pkgdesc = A program for reading and handling EPUB e-books and OPDS catalogs
+	pkgdesc = A computer program for reading and handling e-books.
 	pkgver = 0.9.15
 	pkgrel = 2
 	url = https://lucidor.org/lucidor/
