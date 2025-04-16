@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cqn
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Conditional quantile normalization'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-scales
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('496dc8d424e54fff5edcd12ce1b823ce5f79039d0183efcd0e515f91b67217c7')
+sha256sums=('25fe5a0753f00f2f09f8665b33aa97fdcb47a20c790ceb55b0bbb2d498d03017')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
