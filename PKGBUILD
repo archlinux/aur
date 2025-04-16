@@ -1,5 +1,5 @@
 pkgname=fdroidserver
-pkgver=2.3.5
+pkgver=2.4.0
 epoch=1
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
@@ -28,7 +28,7 @@ optdepends=(
 arch=('any')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/fdroid/fdroidserver/-/archive/${pkgver}/fdroidserver-${pkgver}.tar.gz")
-sha256sums=('a9ed3b0218f733e646cccd55db84bf40740f243de692471afa4de1566fe6c924')
+sha256sums=('a1b154c47d4233ab0abb4c4fd8d60da4aaa3142448c55901e5d924113085f0ad')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
