@@ -1,4 +1,42 @@
 
+# v0.14.1
+
+Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
+
+## Use the installer to install or update!
+Use the installer to install or update SlimeVR if you're on Windows. You can find it here:
+* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+### Flatpak distribution for Linux
+Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
+
+## What's Changed
+
+## Important Fixes
+* Limit prediction amount to fix trackers jumping randomly during times of wifi or server lags by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1388
+* Battery level check before update by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1387
+* Make Firmware update more reliable, prevent deadlocks of ui by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1389
+* Simplify mounting reset status checking by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1382
+
+## Other Changes
+* Use roaming folder for windows logs when trying to open it by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1380
+* Fix uncatched errors from not having Tauri by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1379
+* Change fw tool reboot wording by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1386
+* Remove unsupported boards from fw tool by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1384
+* Allow unset password by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1385
+* Scale arms on proportions reset by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1383
+* Increase default log limits and refactor FileLogHandler by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1381
+
+## Translation Changes
+TODO
+* New Pontoon translations by @SlimeVR-bot in https://github.com/SlimeVR/SlimeVR-Server/pull/1374
+
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.14.0...v0.14.1
+
+__________
+
 # v0.14.0 - It's Finally Out Update
 
 Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
@@ -1340,28 +1378,5 @@ Please report all bugs in our [Discord server](https://slimevr.dev/discord), in 
 
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.9.1-rc.3...v0.9.1-rc.4
-
-__________
-
-# v0.9.1-rc.3
-
-This is a release candidate. Back up your vrconfig.yml at `%AppData%\dev.slimevr.SlimeVR` before running.
-Please report all bugs in our [Discord server](https://slimevr.dev/discord), in the appropriate forum post in `#beta-testing-forum`!
-
-## Installation
-* Download the new release below and extract it.
-* Replace `slimevr.jar` and `slimevr.exe` in the install folder (`C:\Program Files (x86)\SlimeVR Server`)
-* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
-
-## What's Changed
-* Fix tauri 2 again by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/827
-* Fix receiving OSC by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/825
-* Fix the offsets of arms from controllers by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/826
-* Add FT232 Serial Chipset to the known list by @unlogisch04 in https://github.com/SlimeVR/SlimeVR-Server/pull/823
-* Small fixes pt. 3 by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/822
-* Small GUI fixes, pt. 2 by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/815
-
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.9.1-rc.2...v0.9.1-rc.3
 
 __________
