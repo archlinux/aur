@@ -1,0 +1,4 @@
+[tfupdate-bin]
+source = "git"
+git = "https://github.com/minamijoyo/tfupdate.git"
+prefix = "v"
