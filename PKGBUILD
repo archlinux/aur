@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=weaver
-_pkgver=1.72.0
+_pkgver=1.74.0
 pkgname=r-${_pkgname,,}
-pkgver=1.72.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc='Tools and extensions for processing Sweave documents'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-codetools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0b8e55557003968a90b7124221399950fcf9159417117ddfdbaa122036cf166f')
+sha256sums=('a597710695949d9de7fec13f33eec54f612f4b98a92f75b0d8734e43ed2b61b9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
