@@ -1,0 +1,14 @@
+post_install() {
+    echo "==> To use Mixbus, you need to be in the 'audio' group:"
+    echo "==> sudo usermod -a -G audio \$USER"
+    echo "==> You may need to log out and back in for the group changes to take effect"
+    echo "==> Launch Mixbus from the applications menu or by typing 'mixbus11' in terminal"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> Mixbus has been removed from your system"
+}
