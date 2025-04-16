@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affxparser
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,9 +20,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-makevars.patch")
-md5sums=('594e4fd69853dece7646c5356fabc31a'
+md5sums=('eba5541bda99ed2bbc5883ba092a03b2'
          '3003f5b61fc426c2f977e4cd277e9f44')
-b2sums=('c9012e45c6ef475fca9f8cb4fa42e4c0b17b634a7028e5b2cffcd2c209aaf73166544aa110adf8c9d98316340fe0e908db48152e36f73e90f3a2469e218d3842'
+b2sums=('7775e780ad8cc5d142e7a9f4fc6eb7f8df523e941df3fa6de0823e24091ec64925e4d202a266549f393febebff6114458a4bca378d642b01065a01f7edf0d283'
         '263668f9ca395d380a7a2a2ed048cc33fd63418546fde998271504ab04fa2a8589d31a07de3f9470919455631fa77cb68bfdfa553164508bcf9c293a87d233e2')
 
 prepare() {
