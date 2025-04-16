@@ -11,7 +11,6 @@ url="https://github.com/antrax2024/py-nvfan/"
 license=("MIT")
 depends=(
   "python"
-  "python-nvidia-ml-python"
   "python-pynvml"
   "python-rich"
   "confz"
