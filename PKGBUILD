@@ -151,15 +151,6 @@
 # Set to anything but null to activate.
 : "${_debug:=""}"
 
-# Show full compilation output
-# Enabling this will cause 'make' to display
-# all targets currently compiling instead of
-# the 'pv' magic we're doing.
-#
-# Active by default.
-# Set to 'n' or 'false' to show the 'pv' output.
-: "${_show_compile:="y"}"
-
 ### BUILD OPTIONS END
 
 ### DEPRECATED BUILD OPTIONS START
@@ -169,6 +160,12 @@
 
 # See '_optimize_defconfig'
 : "${_update_kconfig_on_reuse:=""}"
+
+# Show full compilation output
+# This used to control whether normal build
+# or some magic pv output should be
+# displayed while the kernel is compiling.
+: "${_show_compile:=""}"
 
 ### DEPRECATED BUILD OPTIONS END
 
@@ -193,7 +190,6 @@ url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 [[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
-[[ -z "${_show_compile}" ]] && makedepends+=("pv")
 options=("!strip" "!debug")
 [[ "${_debug}" == "y" ]] && options=("!strip")
 source=(
@@ -220,6 +216,7 @@ _check_deprecated_settings() {
         warning "Please switch to using '_use_current' flag instead of '_reuse_current'"
         _use_current="y"
     fi
+    [ -n "${_show_compile}" ] && warning "'_show_compile' is no longer supported"
 }
 
 _get_patches() {
@@ -489,11 +486,7 @@ prepare() {
 # Build kernel
 build() {
     cd "${_src_linux}" || exit 1
-    if [[ "${_show_compile}" == "n" ]] || [[ "${_show_compile}" == "false" ]]; then
-        make ${BUILD_FLAGS[*]} all | pv -l -F "Elapsed time: %t, targets per sec: %a" > /dev/null
-    else
-        make ${BUILD_FLAGS[*]} all
-    fi
+    make ${BUILD_FLAGS[*]} all
 }
 
 # Packages the kernel package
