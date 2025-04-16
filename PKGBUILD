@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DiffLogo
-_pkgver=2.30.0
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='DiffLogo: A comparative visualisation of biooligomer motifs'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a18841be8ee7d0a05d9a5b20499ebd0e0fe80c127fe90d4c8edb16da7a181a63')
+sha256sums=('b6795f7e4a77494a26caf4bd2b8538708f010691ac045204ffa20586b1a67c66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
