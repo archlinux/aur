@@ -2,7 +2,7 @@
 
 _pkgname=gfn-electron
 pkgname=$_pkgname-bin
-pkgver=2.1.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Linux Desktop client for Nvidia's GeForce NOW game streaming service (binary release)"
 url="https://github.com/hmlendea/gfn-electron"
