@@ -1,7 +1,7 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt
 pkgver=1.5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
@@ -51,6 +51,11 @@ build() {
 		s/setMatrix/setTransform/g
 		s/userMatrix/userTransform/g
 	" "${srcdir}/${pkgname}.git/Pdf4QtLibCore/sources/pdfblpainter.cpp"
+	find "${srcdir}/${pkgname}.git/Pdf4QtLibCore/sources" -type f -name "*.cpp" -exec \
+		sed -i -e "
+			s/arg(counter)/arg(counter.load())/g
+			s/arg(bytesSaved)/arg(bytesSaved.load())/g
+		" {} +
 	cmake -B build \
 		-S "${srcdir}/${pkgname}.git" \
 		-DCMAKE_BUILD_TYPE='Release' \
@@ -59,7 +64,7 @@ build() {
 		-DCMAKE_MODULE_PATH="${srcdir}" \
 		-DPDF4QT_INSTALL_DEPENDENCIES=0 \
 		-DPDF4QT_LINUX=1
-  	cmake --build build
+	cmake --build build
 }
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
