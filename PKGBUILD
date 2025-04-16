@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LungCancerACvsSCCGEO
-_pkgver=1.42.0
+_pkgver=1.43.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e6408dab179c36800a5a9f501c20b6f5')
-b2sums=('b59f4f9f9536eecbe89a8b9b25d1812635573e6871a83d5dff9bf362d5aa72861bacdd64ad1a2a47f507503a3186099c185c44a90d12d57c95fb60c3ffad9e22')
+md5sums=('a315826ee55830249ce90b6688c25579')
+b2sums=('c94ee202ee8e8fc8dca4db43e4c5edd86f78e117554a9c899fcce0420f59cfd9d012f17e3dec5e02af7f0cd47690756f0b2f5abf379f59b343f2d51d167cc665')
 
 build() {
   mkdir build
