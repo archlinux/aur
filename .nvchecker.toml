@@ -1,0 +1,3 @@
+[openai-codex]
+source = "npm"
+npm = "@openai/codex"
