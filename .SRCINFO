@@ -1,5 +1,5 @@
 pkgbase = python-texttable-git
-	pkgdesc = For easy printing of ascii tables within Python
+	pkgdesc = Python module to create simple ASCII tables
 	pkgver = r105.1696325441.b4c00a6
 	pkgrel = 1
 	url = https://github.com/foutaise/texttable
