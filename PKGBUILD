@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrayQuality
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
-pkgver=1.84.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc='Assessing array quality on spotted arrays'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-meebodata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('547d0800defe63f56ac432c713f10dcb4e1d5fdaaa70e32b535e92e1fb0b4b67')
+sha256sums=('f3a9081cdb2e9cb14987bfa477c9407502f0ac0fbbc8176b954d4b0f3c4c1b27')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
