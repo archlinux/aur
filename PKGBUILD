@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aroma.light
-_pkgver=3.36.0
+_pkgver=3.38.0
 pkgname=r-${_pkgname,,}
-pkgver=3.36.0
+pkgver=3.38.0
 pkgrel=1
 pkgdesc='Light-Weight Methods for Normalization and Visualization of Microarray Data using Only Basic R Data Types'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-princurve
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cdb1de1e5b5cf551369102cbc832c7df1efd286982cd79a9d87f9e54655d2259')
+sha256sums=('8a1f6d2fec45f6a647e03f38d56f5289ba619412ab62a601f02d987a6e2dcb44')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
