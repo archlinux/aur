@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=Rvisdiff
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4ba986d27d98c2d83005b9e6d69c0f32')
-b2sums=('d639607c1d76fb529f4788876577dfbb396bc3d12402079a4341a986e6ba9edd611c9655fe8bcd4d23ad87a0f7d3446eae8270b7907fcd0850a7110d9c4991d1')
+md5sums=('619f3fdcc6bbbbba93688a2215b190b4')
+b2sums=('d681230d3e5b9130f831a2dc3f9e11cb8efa8300a66d1e4562e9b6f4a5b779c6085d2dd52833711607c40ce9a65059d47bae7bce022a1cef2a08da989836d504')
 
 build() {
   mkdir build
