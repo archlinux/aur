@@ -20,6 +20,7 @@ makedepends=(
     'nvm'
     'git'
     'curl'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -53,7 +54,7 @@ prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc

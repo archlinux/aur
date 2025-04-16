@@ -9,6 +9,7 @@ pkgbase = caprine-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron29
 	provides = caprine=2.60.3
 	conflicts = caprine
