@@ -1,14 +1,14 @@
 pkgbase = cmake-extras
 	pkgdesc = A collection of add-ons for the CMake build tool
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://gitlab.com/ubports/development/core/cmake-extras
 	arch = any
 	license = LGPL-3.0-or-later
-	depends = cmake
+	makedepends = cmake
 	depends = python
 	depends = bash
-	source = cmake-extras-1.7.tar.gz::https://gitlab.com/ubports/development/core/cmake-extras/-/archive/1.7/cmake-extras-1.7.tar.gz
-	md5sums = 936fa4a322990eb72aed856bfc793d33
+	source = cmake-extras-1.8.tar.gz::https://gitlab.com/ubports/development/core/cmake-extras/-/archive/1.8/cmake-extras-1.8.tar.gz
+	md5sums = 7d4527a7ec0cd478d29f19ecee916974
 
 pkgname = cmake-extras
