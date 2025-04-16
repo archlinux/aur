@@ -1,5 +1,5 @@
 pkgbase = caqtdm
-	pkgdesc = Qt Widgets for Technical Applications
+	pkgdesc = caQtDM is a popular Epics framework for developing panels
 	pkgver = 4.5.0rc2
 	pkgrel = 1
 	url = http://caqtdm.github.io/
