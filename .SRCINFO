@@ -31,65 +31,42 @@ pkgbase = lib32-gst-plugins-rs
 	validpgpkeys = 7F4BC7CC3CA06F97336BBFEB0668CC1486C2D7B5
 	b2sums = 19cec72c581f2e2484c110cc429b0775e7036e33bf37033cf27e807c45e799699cf7bbbcdec82b93e6ed5ea17e456b1fbc32e8619f46f82e2067197037f7691e
 
-pkgname = lib32-gst-plugin-aws
-	pkgdesc = Multimedia graph framework - aws plugin (32-bit)
+pkgname = lib32-gst-plugin-togglerecord
+	pkgdesc = Multimedia graph framework - togglerecord plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugin-hlssink3=0.13.5-1
-	depends = lib32-gst-plugins-bad
 	depends = lib32-gst-plugins-base-libs
-	depends = lib32-openssl>=1.1
 
-pkgname = lib32-gst-plugin-cdg
-	pkgdesc = Multimedia graph framework - cdg plugin (32-bit)
+pkgname = lib32-gst-plugin-rsrtp
+	pkgdesc = Multimedia graph framework - rsrtp plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-rsvideofx
+	pkgdesc = Multimedia graph framework - rsvideofx plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-cairo
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-hlssink3
+	pkgdesc = Multimedia graph framework - hlssink3 plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-rsflv
+	pkgdesc = Multimedia graph framework - rsflv plugin (32-bit)
 	license = MIT OR Apache-2.0
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-claxon
-	pkgdesc = Multimedia graph framework - claxon plugin (32-bit)
-	license = MIT OR Apache-2.0
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-dav1d
-	pkgdesc = Multimedia graph framework - dav1d plugin (32-bit)
-	license = MIT OR Apache-2.0
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-dav1d>=1.3
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-fallbackswitch
-	pkgdesc = Multimedia graph framework - fallbackswitch plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-	depends = lib32-gst-plugins-good
-
-pkgname = lib32-gst-plugin-ffv1
-	pkgdesc = Multimedia graph framework - ffv1 plugin (32-bit)
-	license = MIT OR Apache-2.0
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-fmp4
-	pkgdesc = Multimedia graph framework - fmp4 plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
@@ -105,34 +82,11 @@ pkgname = lib32-gst-plugin-gif
 	depends = lib32-gstreamer>=1.23.90
 	depends = lib32-gst-plugins-base-libs
 
-pkgname = lib32-gst-plugin-gopbuffer
-	pkgdesc = Multimedia graph framework - gopbuffer plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
+pkgname = lib32-gst-plugin-textwrap
+	pkgdesc = Multimedia graph framework - textwrap plugin (32-bit)
 
-pkgname = lib32-gst-plugin-gtk4
-	pkgdesc = Multimedia graph framework - gtk4 plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-graphene
-	depends = lib32-gst-plugins-base-libs
-	depends = lib32-gtk4>=4.6
-
-pkgname = lib32-gst-plugin-hlssink3
-	pkgdesc = Multimedia graph framework - hlssink3 plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-hsv
-	pkgdesc = Multimedia graph framework - hsv plugin (32-bit)
+pkgname = lib32-gst-plugin-rspng
+	pkgdesc = Multimedia graph framework - rspng plugin (32-bit)
 	license = MIT OR Apache-2.0
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
@@ -143,8 +97,21 @@ pkgname = lib32-gst-plugin-hsv
 pkgname = lib32-gst-plugin-json
 	pkgdesc = Multimedia graph framework - json plugin (32-bit)
 
-pkgname = lib32-gst-plugin-lewton
-	pkgdesc = Multimedia graph framework - lewton plugin (32-bit)
+pkgname = lib32-gst-plugin-mpegtslive
+	pkgdesc = Multimedia graph framework - mpegtslive plugin (32-bit)
+
+pkgname = lib32-gst-plugin-dav1d
+	pkgdesc = Multimedia graph framework - dav1d plugin (32-bit)
+	license = MIT OR Apache-2.0
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-dav1d>=1.3
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-ffv1
+	pkgdesc = Multimedia graph framework - ffv1 plugin (32-bit)
 	license = MIT OR Apache-2.0
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
@@ -152,43 +119,16 @@ pkgname = lib32-gst-plugin-lewton
 	depends = lib32-gstreamer>=1.23.90
 	depends = lib32-gst-plugins-base-libs
 
-pkgname = lib32-gst-plugin-livesync
-	pkgdesc = Multimedia graph framework - livesync plugin (32-bit)
+pkgname = lib32-gst-plugin-webrtchttp
+	pkgdesc = Multimedia graph framework - webrtchttp plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-bad
+	depends = lib32-gst-plugins-bad-libs
 	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-mp4
-	pkgdesc = Multimedia graph framework - mp4 plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-mpegtslive
-	pkgdesc = Multimedia graph framework - mpegtslive plugin (32-bit)
-
-pkgname = lib32-gst-plugin-originalbuffer
-	pkgdesc = Multimedia graph framework - originalbuffer plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-quinn
-	pkgdesc = Multimedia graph framework - quinn plugin (32-bit)
-
-pkgname = lib32-gst-plugin-raptorq
-	pkgdesc = Multimedia graph framework - raptorq plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
+	depends = lib32-openssl>=1.1
 
 pkgname = lib32-gst-plugin-rav1e
 	pkgdesc = Multimedia graph framework - rav1e plugin (32-bit)
@@ -199,20 +139,54 @@ pkgname = lib32-gst-plugin-rav1e
 	depends = lib32-gstreamer>=1.23.90
 	depends = lib32-gst-plugins-base-libs
 
-pkgname = lib32-gst-plugin-regex
-	pkgdesc = Multimedia graph framework - regex plugin (32-bit)
-
-pkgname = lib32-gst-plugin-reqwest
-	pkgdesc = Multimedia graph framework - reqwest plugin (32-bit)
-	license = MIT OR Apache-2.0
+pkgname = lib32-gst-plugin-rswebp
+	pkgdesc = Multimedia graph framework - rswebp plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+	depends = lib32-libwebp
+
+pkgname = lib32-gst-plugin-rsonvif
+	pkgdesc = Multimedia graph framework - rsonvif plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-cairo
+	depends = lib32-gst-plugins-base-libs
+	depends = lib32-pango
+
+pkgname = lib32-gst-plugin-fmp4
+	pkgdesc = Multimedia graph framework - fmp4 plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-hsv
+	pkgdesc = Multimedia graph framework - hsv plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-aws
+	pkgdesc = Multimedia graph framework - aws plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugin-hlssink3=0.13.5-1
+	depends = lib32-gst-plugins-bad
+	depends = lib32-gst-plugins-base-libs
 	depends = lib32-openssl>=1.1
 
-pkgname = lib32-gst-plugin-rsaudiofx
-	pkgdesc = Multimedia graph framework - rsaudiofx plugin (32-bit)
+pkgname = lib32-gst-plugin-gopbuffer
+	pkgdesc = Multimedia graph framework - gopbuffer plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
@@ -232,53 +206,21 @@ pkgname = lib32-gst-plugin-rsclosedcaption
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-pango
 
+pkgname = lib32-gst-plugin-regex
+	pkgdesc = Multimedia graph framework - regex plugin (32-bit)
+
 pkgname = lib32-gst-plugin-rsfile
 	pkgdesc = Multimedia graph framework - rsfile plugin (32-bit)
 	license = MIT OR Apache-2.0
 
-pkgname = lib32-gst-plugin-rsflv
-	pkgdesc = Multimedia graph framework - rsflv plugin (32-bit)
-	license = MIT OR Apache-2.0
+pkgname = lib32-gst-plugin-sodium
+	pkgdesc = Multimedia graph framework - sodium plugin (32-bit)
+	license = MIT
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-rsinter
-	pkgdesc = Multimedia graph framework - rsinter plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-rsonvif
-	pkgdesc = Multimedia graph framework - rsonvif plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-cairo
-	depends = lib32-gst-plugins-base-libs
-	depends = lib32-pango
-
-pkgname = lib32-gst-plugin-rspng
-	pkgdesc = Multimedia graph framework - rspng plugin (32-bit)
-	license = MIT OR Apache-2.0
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-rsrtp
-	pkgdesc = Multimedia graph framework - rsrtp plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-base-libs
+	depends = lib32-libsodium
 
 pkgname = lib32-gst-plugin-rsrtsp
 	pkgdesc = Multimedia graph framework - rsrtsp plugin (32-bit)
@@ -289,26 +231,50 @@ pkgname = lib32-gst-plugin-rsrtsp
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-gst-plugins-good
 
-pkgname = lib32-gst-plugin-rstracers
-	pkgdesc = Multimedia graph framework - rstracers plugin (32-bit)
-
-pkgname = lib32-gst-plugin-rsvideofx
-	pkgdesc = Multimedia graph framework - rsvideofx plugin (32-bit)
-	depends = lib32-gcc-libs
-	depends = lib32-glib2>=2.62
-	depends = lib32-glibc
-	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-cairo
-	depends = lib32-gst-plugins-base-libs
-
-pkgname = lib32-gst-plugin-rswebp
-	pkgdesc = Multimedia graph framework - rswebp plugin (32-bit)
+pkgname = lib32-gst-plugin-claxon
+	pkgdesc = Multimedia graph framework - claxon plugin (32-bit)
+	license = MIT OR Apache-2.0
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
 	depends = lib32-gst-plugins-base-libs
-	depends = lib32-libwebp
+
+pkgname = lib32-gst-plugin-raptorq
+	pkgdesc = Multimedia graph framework - raptorq plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-originalbuffer
+	pkgdesc = Multimedia graph framework - originalbuffer plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-textahead
+	pkgdesc = Multimedia graph framework - textahead plugin (32-bit)
+
+pkgname = lib32-gst-plugin-fallbackswitch
+	pkgdesc = Multimedia graph framework - fallbackswitch plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+	depends = lib32-gst-plugins-good
+
+pkgname = lib32-gst-plugin-rsinter
+	pkgdesc = Multimedia graph framework - rsinter plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
 
 pkgname = lib32-gst-plugin-rswebrtc
 	pkgdesc = Multimedia graph framework - rswebrtc plugin (32-bit)
@@ -322,23 +288,56 @@ pkgname = lib32-gst-plugin-rswebrtc
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-openssl>=1.1
 
-pkgname = lib32-gst-plugin-sodium
-	pkgdesc = Multimedia graph framework - sodium plugin (32-bit)
-	license = MIT
+pkgname = lib32-gst-plugin-lewton
+	pkgdesc = Multimedia graph framework - lewton plugin (32-bit)
+	license = MIT OR Apache-2.0
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-libsodium
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-mp4
+	pkgdesc = Multimedia graph framework - mp4 plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-gtk4
+	pkgdesc = Multimedia graph framework - gtk4 plugin (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-graphene
+	depends = lib32-gst-plugins-base-libs
+	depends = lib32-gtk4>=4.6
+
+pkgname = lib32-gst-plugin-cdg
+	pkgdesc = Multimedia graph framework - cdg plugin (32-bit)
+	license = MIT OR Apache-2.0
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-gst-plugins-base-libs
+
+pkgname = lib32-gst-plugin-reqwest
+	pkgdesc = Multimedia graph framework - reqwest plugin (32-bit)
+	license = MIT OR Apache-2.0
+	depends = lib32-gcc-libs
+	depends = lib32-glib2>=2.62
+	depends = lib32-glibc
+	depends = lib32-gstreamer>=1.23.90
+	depends = lib32-openssl>=1.1
 
 pkgname = lib32-gst-plugin-spotify
 	pkgdesc = Multimedia graph framework - spotify plugin (32-bit)
 
-pkgname = lib32-gst-plugin-textahead
-	pkgdesc = Multimedia graph framework - textahead plugin (32-bit)
-
-pkgname = lib32-gst-plugin-textwrap
-	pkgdesc = Multimedia graph framework - textwrap plugin (32-bit)
+pkgname = lib32-gst-plugin-rstracers
+	pkgdesc = Multimedia graph framework - rstracers plugin (32-bit)
 
 pkgname = lib32-gst-plugin-threadshare
 	pkgdesc = Multimedia graph framework - threadshare plugin (32-bit)
@@ -349,21 +348,21 @@ pkgname = lib32-gst-plugin-threadshare
 	depends = lib32-gstreamer>=1.23.90
 	depends = lib32-gst-plugins-base-libs
 
-pkgname = lib32-gst-plugin-togglerecord
-	pkgdesc = Multimedia graph framework - togglerecord plugin (32-bit)
+pkgname = lib32-gst-plugin-rsaudiofx
+	pkgdesc = Multimedia graph framework - rsaudiofx plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
 	depends = lib32-gst-plugins-base-libs
 
-pkgname = lib32-gst-plugin-webrtchttp
-	pkgdesc = Multimedia graph framework - webrtchttp plugin (32-bit)
+pkgname = lib32-gst-plugin-quinn
+	pkgdesc = Multimedia graph framework - quinn plugin (32-bit)
+
+pkgname = lib32-gst-plugin-livesync
+	pkgdesc = Multimedia graph framework - livesync plugin (32-bit)
 	depends = lib32-gcc-libs
 	depends = lib32-glib2>=2.62
 	depends = lib32-glibc
 	depends = lib32-gstreamer>=1.23.90
-	depends = lib32-gst-plugins-bad
-	depends = lib32-gst-plugins-bad-libs
 	depends = lib32-gst-plugins-base-libs
-	depends = lib32-openssl>=1.1
