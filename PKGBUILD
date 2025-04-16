@@ -19,5 +19,5 @@ package() {
     cd "${pkgdir}"
 
     # this extracts all into the pkgdir
-    tar -zxvf "${srcdir}/data.tar.xz"
+    tar -xf "${srcdir}/data.tar.xz"
 } 
