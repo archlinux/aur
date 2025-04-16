@@ -171,10 +171,10 @@
 
 
 # Kernel version
-_kernel_major=6.13
-_kernel_minor=9
+_kernel_major=6.14
+_kernel_minor=2
 # Clear Linux patches version
-_clr=6.13.8-1555
+_clr=6.14.2-1563
 # kernel_compiler_patch version
 _kernelcompilerpatch="20241018"
 # Source directory names
@@ -612,8 +612,8 @@ validpgpkeys=(
   "E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin (sashal@kernel.org)
   "AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings (benh@debian.org)
 )
-sha256sums=("e79dcc6eb86695c6babfb07c2861912b635d5075c6cd1cd0567d1ea155f80d6e"
+sha256sums=("a294b683e7b161bb0517bb32ec7ed1d2ea7603dfbabad135170ed12d00c47670"
             "SKIP"
-            "4afa764c62d855d077fe04af829ec385d4743c6e74dc267f72406bc70bb41ad2"
+            "61e2ed6cc19c94316189d237e722e69d6ef9f47d288e420e4cb7db0ff0aaf73b"
             "SKIP"
             "b3fd8b1c5bbd39a577afcccf6f1119fdf83f6d72119f4c0811801bdd51d1bc61")
