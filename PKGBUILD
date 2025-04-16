@@ -1,15 +1,17 @@
-# Maintainer: 
-# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+#!/bin/hint/bash
+# Maintainer  : bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: Yuan Zhou <xyyqzy@hotmail.com>
 
-pkgname=optix
+pkgname=optix8
 pkgver=8.1.0
 pkgrel=1
 pkgdesc="An application framework for achieving optimal ray tracing performance on the GPU."
 arch=(x86_64)
 url="https://developer.nvidia.com/optix"
-license=(LicenseRef-NvidiaProprietary)
-depends=(cuda)
+license=('custom:NVIDIA')
+depends=('cuda')
+provides=("${pkgname%8}=${pkgver%.0}")
+conflicts=('optix')
 options=(!strip)
 _script="NVIDIA-OptiX-SDK-8.1.0-linux64-x86_64-35015278.sh"
 source=("cmake.patch")
