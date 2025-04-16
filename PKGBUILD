@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRtestData
-_pkgver=1.4.1
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('95bdecf8469b67b730e7149471d3df2d')
-b2sums=('542d3de3b423e159cfd73153966794cffba3a1be291d887bf27b78b76ddfea38b1cd571044d362640f3ea6c3c5eb53b3bb85296470f9cf5efe7692839bc79ab3')
+md5sums=('1a0e6d7562dfe0d0a26643514de7c94d')
+b2sums=('dca300cdf8e8a47373b079d9c6b1493c7abfbfdf53bef72b90710b6ae0b84c64337e7249297dd5286a23da9540dc6795967af0bdab96a12538bf59712201316e')
 
 build() {
   mkdir build
