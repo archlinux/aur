@@ -9,7 +9,7 @@ pkgdesc="A modern redis desktop manager. A better redis GUI client."
 
 arch=("x86_64")
 
-url="https://redis.tinycraft.cc/"
+url="https://github.com/tiny-craft/tiny-rdm"
 
 license=("GPL-3.0-or-later")
 
