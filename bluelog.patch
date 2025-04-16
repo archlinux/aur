@@ -1,0 +1,21 @@
+diff --color -Naru Bluelog/scripts/gen_oui.sh Bluelog.new/scripts/gen_oui.sh
+--- Bluelog/scripts/gen_oui.sh	2025-04-15 15:10:38.352782387 -1000
++++ Bluelog.new/scripts/gen_oui.sh	2025-04-15 15:16:52.411544756 -1000
+@@ -3,7 +3,7 @@
+ VER="1.4"
+
+ # File to download
+-DLFILE="http://linuxnet.ca/ieee/oui.txt.gz"
++DLFILE="https://standards-oui.ieee.org/oui/oui.txt"
+
+ # Location of tmp file
+ TMPDIR="/tmp"
+@@ -35,8 +35,6 @@
+
+ expand_file ()
+ {
+-	echo -n "Decompressing..."
+-	gunzip $TMPDIR/oui.txt.gz
+ 	cp $TMPDIR/oui.txt $TMPFILE
+ 	echo "OK"
+ }

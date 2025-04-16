@@ -1,0 +1,17 @@
+pkgbase = bluelog-git
+	pkgdesc = A highly configurable Linux Bluetooth scanner with optional web interface
+	pkgver = r102.42c9154
+	pkgrel = 1
+	url = https://github.com/MS3FGX/Bluelog
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = wget
+	depends = bluez
+	depends = bluez-libs
+	source = git+https://github.com/MS3FGX/Bluelog
+	source = bluelog.patch
+	sha256sums = SKIP
+	sha256sums = 6d6e245edabad7df78414d0b0d3c17cd7ec959d3a3b8d869a40b01936284cf83
+
+pkgname = bluelog-git
