@@ -1,0 +1,40 @@
+--- a/rpcs3/rpcs3qt/game_list_frame.cpp
++++ b/rpcs3/rpcs3qt/game_list_frame.cpp
+@@ -2363,7 +2363,7 @@
+ 
+ 		connect(future_watcher, &QFutureWatcher<void>::finished, this, [=, this]()
+ 		{
+-			pdlg->setLabelText(progressLabel.arg(*index).arg(serials_size));
++			pdlg->setLabelText(progressLabel.arg(index->load()).arg(serials_size));
+ 			pdlg->setCancelButtonText(tr("OK"));
+ 			QApplication::beep();
+ 
+@@ -2396,7 +2396,7 @@
+ 			return;
+ 		}
+ 
+-		pdlg->setLabelText(progressLabel.arg(*index).arg(serials_size));
++		pdlg->setLabelText(progressLabel.arg(index->load()).arg(serials_size));
+ 		pdlg->setCancelButtonText(tr("OK"));
+ 		connect(pdlg, &progress_dialog::canceled, this, [pdlg](){ pdlg->deleteLater(); });
+ 		QApplication::beep();
+--- a/rpcs3/rpcs3qt/ps_move_tracker_dialog.cpp
++++ b/rpcs3/rpcs3qt/ps_move_tracker_dialog.cpp
+@@ -362,7 +362,7 @@
+ }
+ void ps_move_tracker_dialog::update_min_radius(bool update_slider)
+ {
+-	ui->minRadiusGb->setTitle(tr("Min Radius: %0 %").arg(g_cfg_move.min_radius));
++	ui->minRadiusGb->setTitle(tr("Min Radius: %0 %").arg(g_cfg_move.min_radius.get()));
+ 
+ 	if (update_slider)
+ 	{
+@@ -372,7 +373,7 @@
+ 
+ void ps_move_tracker_dialog::update_max_radius(bool update_slider)
+ {
+-	ui->maxRadiusGb->setTitle(tr("Max Radius: %0 %").arg(g_cfg_move.max_radius));
++	ui->maxRadiusGb->setTitle(tr("Max Radius: %0 %").arg(g_cfg_move.max_radius.get()));
+ 
+ 	if (update_slider)
+ 	{
