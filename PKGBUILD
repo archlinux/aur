@@ -2,7 +2,7 @@
 # Contributor: Anton <deripas@yandex.ru>
 
 pkgname=pachca-bin
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Corporate messenger for modern teams"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 optdepends=('libappindicator-gtk3: Systray indicator support')
 options=('!debug' '!strip')
 source=("Pachca-${pkgver}-amd64.deb::https://desktop.pachca.com/linux/deb/x64")
-b2sums=('43c94a3d9aa2b606c3d2c696c41d197b396e2d77e1c3ed540433b86a713a31d1bbb4d72b850393fdbf0bc4763ed9306b1b59e87c6ba84d927f8ab0e6bd9bada9')
+b2sums=('23a9713e75a87156fc303f5ab447440d449e67fc76ccdcffd47fdf9a767b1b77986e3eae9a6953dde50eebacc3268e8a0bcc1ac252e97bd692b946c65720192d')
 
 package() {
     cd "${srcdir}"
