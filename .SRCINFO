@@ -1,5 +1,5 @@
 pkgbase = diakonos
-	pkgdesc = A Linux editor for the masses.
+	pkgdesc = A Linux console text editor for the masses.
 	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://git.sr.ht/~pistos/diakonos

@@ -6,7 +6,7 @@
 pkgname=diakonos
 pkgver=0.9.12
 pkgrel=1
-pkgdesc="A Linux editor for the masses."
+pkgdesc="A Linux console text editor for the masses."
 arch=('any')
 depends=('ruby-curses')
 makedepends=('git')
