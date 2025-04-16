@@ -189,9 +189,9 @@ arch=("x86_64")
 url="https://git.staropensource.de/JeremyStarTM/aur-linux-clear"
 license=(GPL-2.0-only)
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
-[[ -n "${_use_llvm_to}" ]] && makedepends+=("clang" "llvm" "lld")
+[ -n "${_use_llvm_to}" ] && makedepends+=("clang" "llvm" "lld")
 options=("!strip" "!debug")
-[[ "${_debug}" == "y" ]] && options=("!strip")
+[ "${_debug}" == "y" ] && options=("!strip")
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
@@ -200,7 +200,7 @@ source=(
   "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
 )
 
-[[ -n "${_use_llvm_lto}" ]] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
+[ -n "${_use_llvm_lto}" ] && BUILD_FLAGS=("LLVM=1" "LLVM_IAS=1")
 
 export "KBUILD_BUILD_HOST=archlinux"
 export "KBUILD_BUILD_USER=${pkgbase}"
@@ -231,7 +231,7 @@ _get_patches() {
     local applied_patch_numbers=$(grep -E '^%patch[0-9]+' $spec_file | sed -E 's/^%patch([0-9]+).*/\1/')
 
     # Check if any patch numbers were found
-    if [[ -z "$applied_patch_numbers" ]]; then
+    if [ -z "$applied_patch_numbers" ]; then
         error "No applied '%patchXXXX' directives found in the %prep section."
         exit 0
     fi
@@ -243,7 +243,7 @@ _get_patches() {
         patch_line=$(grep -E "^Patch${num}:[[:space:]]*" "$spec_file")
 
         # 6. Check if a corresponding PatchXXXX line was found
-        if [[ -n "$patch_line" ]]; then
+        if [ -n "$patch_line" ]; then
             # 7. Extract the filename part after the first ': ' delimiter.
             #    Remove the "Patch0XXX: " prefix using bash substr removal
             echo "${patch_line#Patch[0-9]*:[[:space:]]}"
@@ -283,9 +283,9 @@ _apply_patches() {
 
 # Allows user to modify the kernel config
 _modify_defconfig() {
-    [[ -n "$_makemenuconfig" ]] && make ${BUILD_FLAGS[*]} menuconfig
-    [[ -n "$_makexconfig" ]] && make ${BUILD_FLAGS[*]} xconfig
-    [[ -n "$_makenconfig" ]] && make ${BUILD_FLAGS[*]} nconfig
+    [ -n "$_makemenuconfig" ] && make ${BUILD_FLAGS[*]} menuconfig
+    [ -n "$_makexconfig" ] && make ${BUILD_FLAGS[*]} xconfig
+    [ -n "$_makenconfig" ] && make ${BUILD_FLAGS[*]} nconfig
 
     # Don't crash if all three are false
     true
@@ -294,10 +294,10 @@ _modify_defconfig() {
 # Copies the kernel config
 _copy_defconfig() {
     local _cur_major_ver="$(uname -r | grep -o '[0-9]*[0-9]\.[0-9]*[0-9]')"
-    [[ "${_cur_major_ver}" != "${_kernel_major}" ]] &&
+    [ "${_cur_major_ver}" != "${_kernel_major}" ] &&
         warning "Major version was updated, you should regen the defconfig"
 
-    if [[ -s /proc/config.gz ]]; then
+    if [ -s /proc/config.gz ]; then
         # modprobe configs
         zcat /proc/config.gz > ./.config
         make ${BUILD_FLAGS[*]} olddefconfig
@@ -376,7 +376,7 @@ _update_defconfig() {
                 -e EDAC_IGEN6
 
     # Enable LLVM compilation
-    [[ -n "${_use_llvm_lto}" ]] && scripts/config -d LTO_NONE \
+    [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
                                                 -e LTO \
                                                 -e LTO_CLANG \
                                                 -e ARCH_SUPPORTS_LTO_CLANG \
@@ -386,12 +386,12 @@ _update_defconfig() {
                                                 -e HAVE_GCC_PLUGINS
 
     # Enable or disable debug settings
-    [[ "${_debug}" == "y" ]] && scripts/config -e DEBUG_INFO \
+    [ "${_debug}" == "y" ] && scripts/config -e DEBUG_INFO \
                                             -e DEBUG_INFO_BTF \
                                             -e DEBUG_INFO_DWARF4 \
                                             -e PAHOLE_HAS_SPLIT_BTF \
                                             -e DEBUG_INFO_BTF_MODULES
-    [[ "${_debug}" == "n" ]] && scripts/config -d DEBUG_INFO \
+    [ "${_debug}" == "n" ] && scripts/config -d DEBUG_INFO \
                                             -d DEBUG_INFO_BTF \
                                             -d DEBUG_INFO_DWARF4 \
                                             -d PAHOLE_HAS_SPLIT_BTF \
@@ -434,7 +434,7 @@ _update_defconfig() {
 
             # Invoke echo to sanitize the __ERROR, it can contain a newline or a \r
             # symbol, thus breaking the script
-            if [[ -n "$(echo $__ERROR)" ]]; then
+            if [ -n "$(echo $__ERROR)" ]; then
                 warning "Selected subarch: ${_subarch} is not supported"
                 exit
             fi
@@ -460,12 +460,12 @@ prepare() {
     _check_deprecated_settings
     _apply_patches
 
-    [[ -n "${_use_current}" ]] && _copy_defconfig
-    [[ -n "${_optimize_defconfig}" ]] || [[ -z "${_use_current}" ]] && _update_defconfig
+    [ -n "${_use_current}" ] && _copy_defconfig
+    [ -n "${_optimize_defconfig}" ] || [ -z "${_use_current}" ] && _update_defconfig
 
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
-    [[ -n "${_localmodcfg}" ]] &&
+    [ -n "${_localmodcfg}" ] &&
         if [ -e "${HOME}/.config/modprobed.db" ]; then
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
@@ -477,7 +477,7 @@ prepare() {
 
     # Save configuration
     # shellcheck disable=SC2015
-    [[ -n "${_copyfinalconfig}" ]] && cp -Tf ./.config "${startdir}/kconfig-new" || true
+    [ -n "${_copyfinalconfig}" ] && cp -Tf ./.config "${startdir}/kconfig-new" || true
 
     # Write kernel version
     make -s kernelrelease > version
@@ -535,7 +535,7 @@ _package-headers() {
     install -Dt "${builddir}/tools/objtool" tools/objtool/objtool
 
     # Required when DEBUG_INFO_BTF_MODULES is enabled
-    [[ -f tools/bpf/resolve_btfids/resolve_btfids ]] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    [ -f tools/bpf/resolve_btfids/resolve_btfids ] && install -Dt "${builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
     cp -t "${builddir}" -a include
     cp -t "${builddir}/arch/x86" -a arch/x86/include
