@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=semisup
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6c4a3b77b2d1403bf24cc9954c7f7148')
-b2sums=('eef9bb6c1d3c72a6cbec449a38265962765fdf1cdd23eefb736b32f78b366f8a67294d17fc682c7453c635368a5925cd6aa6a2fe08800b3d02a90cec4c56a947')
+md5sums=('b18ced64c62c001cce34fad0932c76f8')
+b2sums=('c5bb70a33312ae28fd4517ff61055b88956c2ef451ef1d9c5dc48f7bc737ccb726f7982f4aabd53c5909e739a6b37918ef6f964bd0ebec410311c1aa65c22a35')
 
 build() {
   mkdir build
