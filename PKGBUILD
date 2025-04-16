@@ -1,6 +1,6 @@
 # Maintainer: William Faircloth <willuhmjs@gmail.com>
 pkgname=trs-git
-pkgver=r0.c000000
+pkgver=r$(git rev-list --count HEAD).c$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="A CLI program to manage a trash folder"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -12,13 +12,6 @@ makedepends=('rust' 'cargo' 'git')
 # Automatically fetch the latest version from the git repository
 source=("git+https://github.com/willuhmjs/trs.git")
 sha256sums=('SKIP')
-
-# Ensure pkgver uses the latest commit hash
-pkgver() {
-  cd "$srcdir/trs"
-  # Create a version string based on the commit count and hash
-  printf "r%s.c%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$srcdir/trs"
