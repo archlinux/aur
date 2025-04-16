@@ -7,8 +7,8 @@
 
 pkgname="keypunch-git"
 _appname="keypunch"
-pkgver=6.1.r4.g0100b4b
-pkgrel=2
+pkgver=6.2.r4.g4c26ab3
+pkgrel=1
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch'
 _app_website='https://apps.gnome.org/Keypunch'
@@ -27,13 +27,13 @@ pkgver() {
 }
 
 build() {
-    cd ${srcdir}/${_appname}
+    cd "${srcdir}/${_appname}"
     export RUSTUP_TOOLCHAIN=stable
     meson setup -Dprefix=/usr build
     meson compile -C build
 }
 
 package() {
-    cd ${srcdir}/${_appname}
+    cd "${srcdir}/${_appname}"
     meson install -C build --destdir "$pkgdir"
 }
