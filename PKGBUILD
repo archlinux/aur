@@ -1,4 +1,4 @@
-# Maintainer: decrypted.epsilon@gmail.com
+# Maintainer: Kashyap Chhatbar <first name [dot] cc [at] gmail [dot] com> 
 
 _cranname=xaringanExtra
 _cranver=0.8.0

@@ -1,6 +1,6 @@
 pkgbase = r-xaringanextra
 	pkgdesc = Extras and Extensions for 'xaringan' Slides
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=xaringanExtra
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-xaringanextra
 	optdepends = r-callr
 	optdepends = r-rmarkdown
 	optdepends = r-xaringan
-	source = https://cran.r-project.org/src/contrib/xaringanExtra_0.7.0.tar.gz
-	sha256sums = 04591fcd8a236799e392bbeb3182ab70bf237bbca22e3c5a0ac4f65a9c27d2ea
+	source = https://cran.r-project.org/src/contrib/xaringanExtra_0.8.0.tar.gz
+	sha256sums = 45cb83bb5eccc8be6e2c942b8b5d6fd01fee67c1c477212fe993ed73212db2f0
 
 pkgname = r-xaringanextra
