@@ -1,5 +1,5 @@
 pkgbase = ruby-version_gem
-	pkgdesc = Versions are good. Versions are cool. Versions will win.
+	pkgdesc = Enhance that VERSION! Sugar for boring Version modules.
 	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/pboling/version_gem
