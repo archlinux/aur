@@ -1,6 +1,6 @@
 pkgbase = r-constand
 	pkgdesc = Data normalization by matrix raking
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CONSTANd
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = r-constand
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CONSTANd_1.14.0.tar.gz
-	md5sums = 86711e287452f21bc57def13d529a624
-	b2sums = 1573937ff34cd14b0b0672e326d0f314111e92e4172b2ad368d26abc714a0d6ae2754a309994aa58e29178196af58b05d157dfec47adb9b6ef3ca0178b885abc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CONSTANd_1.16.0.tar.gz
+	md5sums = 00ffc09fef66b1d54ab139a5a4862388
+	b2sums = 9a21059265af47025183bed157f5046926c34a907a9308ab91f1146bd85220e9b348b4d38c3a5bc5eb4ec7a0b5b232ef389bd5f5030aa1510711808d6440cf58
 
 pkgname = r-constand
