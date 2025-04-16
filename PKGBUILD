@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rbowtie
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ec35e70cc07cf7e6756c4598af50f07d')
-b2sums=('06cd3b7c16318ead1a84e28a884ec261aea126a536f5b90763c8cab1b7bfe2cb671717d8f9df60d0e4f61cb0913f38ea1c7bb2bbff4abd78bf673aee9034065e')
+md5sums=('b17ba8e5d6dd7b319a0130466716d3bf')
+b2sums=('05d1d6fa2a38d491a25570794de845414feae0ac38931cf5c04a34a80c3f012c7c55201ed8608bf01d9bdd069f37e8cf5f5c3290e906eeb5bfc9c261d8510e60')
 
 build() {
   mkdir build
