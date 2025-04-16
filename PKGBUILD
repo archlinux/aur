@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa
 
 pkgname=improve-imgsli
-pkgver=2.6.3
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
@@ -18,8 +18,8 @@ depends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('e592abf7868ab5cc9d2ab580357c741a832f4a43b92a50f449a46807523f24a586236963b5bcb1ec5070389498a4aa47e845ab0b1329eb8ff0d90b33a2a8f068')
-b2sums=('6274bcfef01423cbe036756757cac1d23f9b3bb3541db441f0ade5c46f1d5798ac4bbb9f6924bd34a5b098136256cd40b27191664829bb11d5914fed60364d14')
+sha512sums=('b41a6a99797ad2b2b67742db5d57e38976145e0c22e8ad33afa936cfcbfc23ccd5e0fa6f98a3eb84a8f384aaf22887ec6e0248d862dfff18430fe579dcec1a0b')
+b2sums=('61d8e8f6a7f8ba31d29ef242b27d4a1bcaec99586b2a17ffe95bc1cae41f4a3159db546f27dd88a479781db893af69e2578abddb8a1e194794c397ce0f23e3a8')
 
 prepare() {
   #Making launching app more secure
@@ -33,8 +33,9 @@ package() {
   install -vDm 644 clickable_label.py                     -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 image_comparison_app.py                -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 image_processing.py                    -t "$pkgdir"/usr/lib/$pkgname/
-  install -vDm 644 flag_icons.py                          -t "$pkgdir"/usr/lib/$pkgname/
+  install -vDm 644 icons.py                               -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 translations.py                        -t "$pkgdir"/usr/lib/$pkgname/
+  install -vDm 644 settings_dialog.py                     -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 font/SourceSans3-Regular.ttf           -t "$pkgdir"/usr/lib/$pkgname/
   install -vDm 644 ../build/AUR-template/$pkgname.desktop -t "$pkgdir"/usr/share/applications/
   install -vDm 644 icons/icon.png                            "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
