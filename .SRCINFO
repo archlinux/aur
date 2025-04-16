@@ -1,0 +1,12 @@
+pkgbase = otf-kermit
+	pkgdesc = Typeface to empower children by making reading easier, improving comprehension, and helping dyslexics
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://kermit-font.com
+	arch = any
+	source = KermitRoman-VF.otf::https://kermit-font.com/_css/KermitRoman-VF.otf
+	source = KermitItalic-VF.otf::https://kermit-font.com/_css/KermitItalic-VF.otf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = otf-kermit
