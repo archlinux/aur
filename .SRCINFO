@@ -1,0 +1,22 @@
+pkgbase = antares-sql-beta-bin
+	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.(Prebuilt Beta version.Use system-wide electron)
+	pkgver = 0.7.35_beta.0
+	pkgrel = 1
+	url = https://antares-sql.app/
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	depends = electron30
+	provides = antares-sql
+	conflicts = antares-sql-beta
+	conflicts = antares-sql
+	source = LICENSE-0.7.35_beta.0::https://raw.githubusercontent.com/antares-sql/antares/v0.7.35-beta.0/LICENSE
+	source = antares-sql-beta.sh
+	sha256sums = 7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	source_armv7h = antares-sql-beta-0.7.35_beta.0-armv7h.deb::https://github.com/antares-sql/antares/releases/download/v0.7.35-beta.0/Antares-0.7.35-beta.0-linux_armv7l.deb
+	sha256sums_armv7h = d90df2f3fd480879b267a3ab440fe450d71fc8394862ebaf2a13f824e4466d5a
+	source_x86_64 = antares-sql-beta-0.7.35_beta.0-x86_64.deb::https://github.com/antares-sql/antares/releases/download/v0.7.35-beta.0/Antares-0.7.35-beta.0-linux_amd64.deb
+	sha256sums_x86_64 = 048c6c342dd0f6d82d1d8a33ab9f7a09cd7ace08749dfb63086658c231b6b2b5
+
+pkgname = antares-sql-beta-bin
