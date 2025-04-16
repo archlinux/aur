@@ -1,13 +1,13 @@
 pkgbase = tfupdate-bin
 	pkgdesc = Update version constraints in your Terraform configurations
-	pkgver = 0.8.1
-	pkgrel = 1
+	pkgver = 0.8.5
+	pkgrel = 2
 	url = https://github.com/minamijoyo/tfupdate
 	arch = x86_64
 	license = MIT
 	provides = tfupdate
 	conflicts = tfupdate
-	source_x86_64 = https://github.com/minamijoyo/tfupdate/releases/download/v0.8.1/tfupdate_0.8.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5eccc4ed61303edb80eb26fa76edf3535114bc18b7a5eaafa581aee5e98c91ce
+	source_x86_64 = https://github.com/minamijoyo/tfupdate/releases/download/v0.8.5/tfupdate_0.8.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 467bb4faadef3b51f6b6dbf4afe27632378124e7f32dcc6280eb47033ea029bd
 
 pkgname = tfupdate-bin
