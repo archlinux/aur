@@ -1,0 +1,11 @@
+pkgbase = f42-backgrounds
+	pkgdesc = Desktop backgrounds of the Fedora 42 default theme for GNOME, KDE, Mate and Xfce desktops
+	pkgver = 42.0.0
+	pkgrel = 1
+	url = https://github.com/fedoradesign/backgrounds
+	arch = any
+	license = CC-BY-SA-4.0
+	source = https://github.com/fedoradesign/backgrounds/releases/download/v42.0.0/f42-backgrounds-42.0.0.tar.xz
+	b2sums = ddce1299489f8fc6e22364a4444ea2b38d38ab8794c14f488393bfde947e8b463ba790204aef4fb164acda818e656c8df451c8bd5fc6287758e10f0eb73a484e
+
+pkgname = f42-backgrounds
