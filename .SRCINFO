@@ -1,5 +1,5 @@
 pkgbase = ruby-excon
-	pkgdesc = EXtended http(s) CONnections
+	pkgdesc = Usable, fast, simple HTTP 1.1 for Ruby
 	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/excon/excon
