@@ -9,8 +9,8 @@ pkgname=notesnook
 _pkgname=Notesnook
 pkgver=3.0.32
 _electronversion=31
-_nodeversion=20
-pkgrel=2
+_nodeversion=23
+pkgrel=3
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -74,6 +74,7 @@ prepare() {
         echo apps/{desktop,web} packages/{crypto,editor,logger,streamable-fs,theme,ui,sodium,clipper} servers/theme | xargs -n 1 cp .npmrc
     fi
     sed -i "s/npm \${/NODE_ENV=development npm \${/g" scripts/bootstrap.mjs
+    #find apps -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     NODE_ENV=development    npm install --ignore-scripts --prefer-offline --no-audit
     NODE_ENV=development    npm run bootstrap -- --scope=web
     NODE_ENV=development    npm run bootstrap -- --scope=desktop
@@ -85,9 +86,9 @@ build() {
     NODE_ENV=production     npx nx build:desktop @notesnook/web
     cd "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
     local electronDist="/usr/lib/electron${_electronversion}"
-    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     npm run bundle
+    cp -r "${srcdir}/${pkgname}-${pkgver}/apps/web/build" "${srcdir}/${pkgname}-${pkgver}/apps/desktop"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.config.js"
 }
 package() {
