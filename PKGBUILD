@@ -3,10 +3,10 @@
 pkgname='perl-catalyst-plugin-authentication'
 _pkgname='Catalyst-Plugin-Authentication'
 pkgver='0.10024'
-pkgrel='1'
-pkgdesc="Infrastructure plugin for the Catalyst"
+pkgrel='2'
+pkgdesc="Infrastructure plugin for the Catalyst authentication framework."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl' 'perl-catalyst-runtime' 'perl-mro-compat' 'perl-moose'
 'perl-moosex-emulate-class-accessor-fast' 'perl-namespace-autoclean'
