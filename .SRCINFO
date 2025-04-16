@@ -1,5 +1,5 @@
 pkgbase = remakepkg
-	pkgdesc = Apply changes to pacman packages
+	pkgdesc = wrapper around fetchpkg and repkg to modify packages (REPKGBUILD)
 	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://gitlab.com/ayekat/pacman-hacks

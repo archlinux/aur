@@ -5,7 +5,7 @@ pkgver=0.14.0
 pkgrel=1
 arch=(any)
 
-pkgdesc='Apply changes to pacman packages'
+pkgdesc='wrapper around fetchpkg and repkg to modify packages (REPKGBUILD)'
 url='https://gitlab.com/ayekat/pacman-hacks'
 license=(GPL3)
 
