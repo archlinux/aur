@@ -1,6 +1,6 @@
 pkgbase = python-pyln-bolt7
 	pkgdesc = BOLT7
-	pkgver = 25.02
+	pkgver = 25.02.1
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning/blob/master/contrib/pyln-spec/bolt7
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pyln-bolt7
 	makedepends = python-wheel
 	depends = python
 	depends = python-pyln-proto
-	source = https://github.com/ElementsProject/lightning/releases/download/v25.02/clightning-v25.02.zip
-	sha256sums = d34706fc391103047f7ccbae2979a5d90022134c82e9395052a5c42db6c33d11
+	source = https://github.com/ElementsProject/lightning/releases/download/v25.02.1/clightning-v25.02.1.zip
+	sha256sums = d1e44b73f6d1e2c8e73482b38645fdc95080a32a5fd53561a5af3ce269950b9e
 
 pkgname = python-pyln-bolt7
