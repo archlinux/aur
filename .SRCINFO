@@ -1,6 +1,6 @@
 pkgbase = opera-extras-bin
 	pkgdesc = Full-featured DRM playback support of pre-built BINARY FFmpeg (NW.JS) for Opera One web browser
-	pkgver = 0.95.0
+	pkgver = 0.96.0
 	pkgrel = 1
 	url = https://nwjs.io/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = opera-extras-bin
 	makedepends = npm
 	depends = opera
 	optdepends = chromium-widevine: Complementary codec enabling a premium web video content on Chromium based web browsers
-	source = opera-extras-bin-0.95.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.95.0/0.95.0-linux-x64.zip
+	source = opera-extras-bin-0.96.0.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.96.0/0.96.0-linux-x64.zip
 	source = COPYING
-	md5sums = 74b7ca413faf42d735a9673bba1eb020
+	md5sums = 2cb4dee43b704b63a8300a1223453184
 	md5sums = c408a301e3407c3803499ce9290515d6
 
 pkgname = opera-extras-bin
