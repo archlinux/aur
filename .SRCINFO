@@ -1,6 +1,6 @@
 pkgbase = peazip
 	pkgdesc = Cross-platform file and archive manager (Qt6)
-	pkgver = 10.3.0
+	pkgver = 10.4.0
 	pkgrel = 1
 	url = https://github.com/peazip/PeaZip
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = peazip
 	optdepends = unace
 	optdepends = upx
 	options = !debug
-	source = peazip-10.3.0-17ecdd1.tar.gz::https://github.com/peazip/PeaZip/archive/17ecdd1cc0951a81823f26cc4c44d310464ae319.tar.gz
+	source = peazip-10.4.0-e58cd31.tar.gz::https://github.com/peazip/PeaZip/archive/e58cd31139ea0fa8344762c40284b0039609a85a.tar.gz
 	sha256sums = SKIP
 
 pkgname = peazip
