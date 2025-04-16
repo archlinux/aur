@@ -1,0 +1,13 @@
+pkgbase = python-tariff
+	pkgdesc = Make importing great again! A parody package that imposes tariffs on Python imports.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hxu296/tariff
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	source = https://files.pythonhosted.org/packages/py3/t/tariff/tariff-1.0.0-py3-none-any.whl
+	sha256sums = 20d738a789f96146ae49de4fffc000ea9942bd4335f0cdc336d2c824e6aa063b
+
+pkgname = python-tariff
