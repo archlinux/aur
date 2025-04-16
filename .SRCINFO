@@ -1,6 +1,6 @@
 pkgbase = rime-frost-git
 	pkgdesc = Rime 配置：白霜词库 | 蒹葭苍苍，白露为霜。基于雾凇拼音重制的，更纯净、词频准确、智能的词库。
-	pkgver = r239.f85dbca
+	pkgver = r242.f17ab9f
 	pkgrel = 1
 	url = https://github.com/gaboolic/rime-frost
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = rime-frost-git
 	depends = lua
 	depends = librime
 	provides = rime-luna-pinyin
-	conflicts = rime-luna-pinyin
 	conflicts = rime-emoji
 	conflicts = rime-ice-git
 	conflicts = rime-ice-pinyin-git
