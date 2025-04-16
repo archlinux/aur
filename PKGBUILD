@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='lego-bin'
-pkgver=4.23.0
+pkgver=4.23.1
 pkgrel=1
 pkgdesc='Let s Encrypt client and ACME library written in Go'
 url='https://go-acme.github.io/lego/'
@@ -11,17 +11,17 @@ license=('APACHE')
 provides=('lego')
 conflicts=('lego')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.0/lego_v4.23.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('ddfe8efe5da6f6f4cce13bd45aabe11f637f359734b065756c338fea100b4d59')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.1/lego_v4.23.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('1114745108343286d4bff189b4bdee3cba9d07ebcacc673860d91ab951d31e0d')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.0/lego_v4.23.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('34ed8d356ce3133f414ce0c8fbb817681a3f5239bccdb095788ad90e041e22b1')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.1/lego_v4.23.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('56d3c2e3f85467203d359bbc0d15ff3431a205012bd827ace238e2b541311ed5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.0/lego_v4.23.0_linux_386.tar.gz")
-sha256sums_i686=('4656ded140e8de6709652b7c6c73d6d514900adddc261a8e218ca39497496a4b')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.1/lego_v4.23.1_linux_386.tar.gz")
+sha256sums_i686=('6c99379a93008adc85c4531af84d43dc5fff2bc124cdbbaf21b805fb9e4ed0a3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.0/lego_v4.23.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('fa4bff9b708c08d2726a55d691acd935c7c9eae0790dd614a412337aa68c6140')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/go-acme/lego/releases/download/v4.23.1/lego_v4.23.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('1fd60b1fd59c239bed22719a5de402cb745d1f933540cb1ec196e2c03e6e8882')
 
 package() {
   # Bin
