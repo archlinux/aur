@@ -1,5 +1,5 @@
 pkgbase = seamonkey
-	pkgdesc = SeaMonkey internet suite
+	pkgdesc = Web-browser, advanced e-mail, newsgroup and feed client, IRC chat, and HTML editing made simple
 	pkgver = 2.53.20
 	pkgrel = 1
 	url = https://www.seamonkey-project.org

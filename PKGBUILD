@@ -5,7 +5,7 @@
 pkgname=seamonkey
 pkgver=2.53.20
 pkgrel=1
-pkgdesc="SeaMonkey internet suite"
+pkgdesc="Web-browser, advanced e-mail, newsgroup and feed client, IRC chat, and HTML editing made simple"
 arch=(x86_64)
 url="https://www.seamonkey-project.org"
 license=(MPL-2.0)
