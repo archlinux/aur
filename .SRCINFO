@@ -1,0 +1,20 @@
+pkgbase = spacemidi
+	pkgdesc = GUI tool for translating space mouse devices into midi controllers
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/IGBC/spacemidi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = spacenavd
+	depends = libspnav
+	depends = libgtkmm-4.0.so
+	depends = libjack.so
+	depends = libsigc-3.0.so
+	depends = glibc
+	depends = gcc-libs
+	depends = glibmm-2.68
+	source = spacemidi-v1.0.tar.gz::https://gitlab.com/IGBC/spacemidi/-/archive/v1.0/spacemidi-v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = spacemidi
