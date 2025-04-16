@@ -1,0 +1,3 @@
+d /etc/mollysocket 0755 mollysocket mollysocket
+d /var/lib/mollysocket 0750 mollysocket mollysocket
+
