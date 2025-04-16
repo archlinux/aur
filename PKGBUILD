@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DeMAND
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('95e46f54af4ce19f9d6c81ad31d13aed')
-b2sums=('73054a8b14972b72135cbb166d72e2d2253fe0b641101126ec0963d2cc57d5f4eb22153ad9317e9264e87158b9c073153bc96a05318f0ceec86e3681feea1188')
+md5sums=('3beebda7d692f50a7131cf55dec8339f')
+b2sums=('05845fc0da7bbaa402a4b326bbbb465b979f7afc6a825e0fa30e2cb5e98e8a220ceb0d126154f3131735b55634f33391d359d01645a067e5a88609a619b165ac')
 
 build() {
   mkdir build
