@@ -4,7 +4,7 @@
 pkgname=ded
 pkgver=20250117
 _td_pkgver=20250117
-pkgrel=3
+pkgrel=4
 pkgdesc="directory editor, file manager similar to Emacs dired"
 arch=(i686 x86_64)
 url="https://invisible-island.net/ded/ded.html"
@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make -j1 DESTDIR="$pkgdir/" install
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

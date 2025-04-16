@@ -1,7 +1,7 @@
 pkgbase = ded
 	pkgdesc = directory editor, file manager similar to Emacs dired
 	pkgver = 20250117
-	pkgrel = 3
+	pkgrel = 4
 	url = https://invisible-island.net/ded/ded.html
 	arch = i686
 	arch = x86_64
