@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudlet-bin
 _pkgname=Mudlet
-pkgver=4.18.5
+pkgver=4.19.1
 pkgrel=1
 pkgdesc="⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua.(Prebuilt version)"
 arch=('x86_64')
@@ -42,14 +42,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar::${url}/wp-content/files/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('95dbe667f4c2c52e9a9f0c98f45a8726f1ae1d2806709750fb70cc30caa500e6'
+sha256sums=('f2946b2b03c9d4ad3b0943313c211160909f8723216d33927efadb89aa18463f'
             'e002b010a25f31d5659799cbcbcecfc25a23e8b16dedf184726d3a7aa812bd79')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${_pkgname}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${_pkgname}.AppImage" ]; then
+        chmod +x "${srcdir}/${_pkgname}.AppImage"
+    fi
     "${srcdir}/${_pkgname%-bin}.AppImage" --appimage-extract > /dev/null
 }
 package() {
