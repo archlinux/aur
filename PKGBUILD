@@ -1,11 +1,11 @@
 # Author: Martin Stibor <martin.von.reichenberg@proton.me>
 
 pkgname='opera-extras'
-#opera_ver: 117.0.5408.197 (Stable)
-#opera_chromium_ver: 132.0.6834.210 (Extented Release - Windows)
-#ffmpeg_chromium_ver: 132.0.6834.84 (Old-old-stable/Old-stable/Stable)
+#opera_ver: 118.0.5461.41 (Stable)
+#opera_chromium_ver: 133.0.6943.143 (Extented Release - Windows)
+#ffmpeg_chromium_ver: 133.0.6943.60 (Old-old-stable/Old-stable/Stable)
 _pkgname='nwjs-ffmpeg-prebuilt'
-pkgver=0.95.0
+pkgver=0.96.0
 pkgrel=1
 pkgdesc="Full-featured DRM playback support of FFmpeg (NW.JS) for Opera web browser"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('opera')
 makedepends=('git' 'libarchive' 'lsb-release' 'ninja' 'nodejs' 'nodejs-nopt' 'npm')
 optdepends=('chromium-widevine: Complementary codec enabling a premium web video content on Chromium based web browsers')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz" 'COPYING')
-md5sums=('f4dcd82c44bd57928faea933013bbec1' 'c408a301e3407c3803499ce9290515d6')
+md5sums=('9b5a9653569ff91055fab19d75fd9688' 'c408a301e3407c3803499ce9290515d6')
 
 build() {
        npm i ${srcdir}/${_pkgname}-${pkgver}/
