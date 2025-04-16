@@ -13,7 +13,7 @@ optdepends=(
 	'ripgrep: accelerated large-repo search'
 )
 source=("https://registry.npmjs.org/@openai/codex/-/codex-$pkgver.tgz")
-b2sums=('SKIP')
+b2sums=('966aed8382772496bebeee3a09d11ae0c922d64a11d787442833657716d2ca4eb34f30c890a8c5bd84e73a62a17612a7d7ae8eca4f3560467e53ed5e280192e5')
 noextract=("codex-${pkgver}.tgz")
 
 package() {
