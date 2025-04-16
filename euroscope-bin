@@ -4,12 +4,13 @@ unset WINEPREFIX
 progName="euroscope"
 export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
 export WINEARCH="win32"
+currentVersion="2"
 
 install_deps() {
   notify-send --app-name=EuroScope --icon=euroscope "Installing Dependencies" "It may take a few minutes."
-  winetricks --unattended iertutil msls31 msxml6 urlmon vcrun2019 wininet
+  winetricks --unattended --force iertutil msls31 msxml6 urlmon vcrun2022 wininet
   cp "/usr/share/$progName/EuroScope.ttf" "$WINEPREFIX/drive_c/windows/Fonts/"
-  touch "$WINEPREFIX/.installed"
+  echo "$currentVersion" > "$WINEPREFIX/.installed"
 }
 
 if [ ! -d $WINEPREFIX ] ; then
@@ -18,7 +19,7 @@ if [ ! -d $WINEPREFIX ] ; then
   install_deps
 fi
 
-if [ ! -f "$WINEPREFIX/.installed" ] ; then
+if ! grep -q $currentVersion "$WINEPREFIX/.installed"; then
   wine wineboot -u
   install_deps
 fi
