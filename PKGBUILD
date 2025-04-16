@@ -4,7 +4,7 @@
 pkgname=('germinate' 'python-germinate')
 pkgver=2.46
 pkgrel=1
-pkgdesc='Expands dependencies in a list of seed packages'
+pkgdesc='Expand dependencies in a list of seed packages'
 arch=('any')
 url="https://tracker.debian.org/pkg/germinate"
 license=('GPL')
@@ -32,6 +32,7 @@ package_germinate() {
 }
 
 package_python-germinate() {
+	pkgdesc+='(Python 3 interface)'
 	depends+=('germinate' 'python-apt' 'python-six')
 
 	export PYTHONHASHSEED=0

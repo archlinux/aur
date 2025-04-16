@@ -1,5 +1,5 @@
 pkgbase = germinate
-	pkgdesc = Expands dependencies in a list of seed packages
+	pkgdesc = Expand dependencies in a list of seed packages
 	pkgver = 2.46
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/germinate
@@ -14,6 +14,7 @@ pkgname = germinate
 	depends = perl
 
 pkgname = python-germinate
+	pkgdesc = Expand dependencies in a list of seed packages(Python 3 interface)
 	depends = germinate
 	depends = python-apt
 	depends = python-six
