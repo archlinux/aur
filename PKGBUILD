@@ -3,7 +3,7 @@
 pkgname=python-prometheus-flask-exporter
 pkgver=0.23.2
 pkgrel=1
-pkgdesc='Prometheus metrics exporter for Flask'
+pkgdesc='Prometheus exporter for Flask applications'
 arch=('x86_64')
 url='https://github.com/rycus86/prometheus_flask_exporter'
 license=('MIT')
