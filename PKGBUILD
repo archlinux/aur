@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=mfem
-pkgver=4.7
+pkgver=4.8
 pkgrel=1
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(gcc-libs blitz metis hypre openmpi)
 makedepends=(cmake)
 provides=("libmfem.so=${pkgver}-64")
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c74f63f8256a8a0f7278b61120236bbab740e489b1c857bf35894c659e86b61cdce17e5ee42f763a516176e33e4bb93071d03d7dbb65637ec31b0de17ce1fc66')
+sha512sums=('df865bddac2c3bd950150c5beb49717363b256fde472efe7500bc170fafb7ecfe16edae93a562c81c5dd54c8d20986382db5f4756409e47e47f74862b1c87dfd')
 
 build() {
   cmake \
