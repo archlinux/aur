@@ -1,7 +1,7 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
-pkgver=0.1.0
-pkgrel=2.5
+pkgver=0.1.1
+pkgrel=2.6
 pkgdesc="A simple clipboard manager with a GUI"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
