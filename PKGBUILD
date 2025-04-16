@@ -1,8 +1,8 @@
 # Credit: PKGBUILD from https://aur.archlinux.org/packages/alacritty-git
 pkgname='alacritty-smooth-cursor-git'
 _pkgname="alacritty"
-pkgver=0.16.0.2431.ge050a46c
-pkgrel=2
+pkgver=0.16.0.2435.g846e2862
+pkgrel=3
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/GregTheMadMonk/alacritty-smooth-cursor"
@@ -13,7 +13,7 @@ makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=('alacritty')
-source=("$_pkgname::git+https://github.com/gregthemadmonk/alacritty.git#branch=smooth-cursor")
+source=("$_pkgname::git+https://github.com/gregthemadmonk/alacritty.git#branch=all-patches")
 sha256sums=('SKIP')
 install=smooth-cursor.install
 

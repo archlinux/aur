@@ -1,7 +1,7 @@
 pkgbase = alacritty-smooth-cursor-git
 	pkgdesc = A cross-platform, GPU-accelerated terminal emulator with a smooth cursor motion patch
-	pkgver = 0.16.0.2431.ge050a46c
-	pkgrel = 2
+	pkgver = 0.16.0.2435.g846e2862
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/GregTheMadMonk/alacritty-smooth-cursor
 	install = smooth-cursor.install
@@ -29,7 +29,7 @@ pkgbase = alacritty-smooth-cursor-git
 	depends = libxrandr
 	provides = alacritty
 	conflicts = alacritty
-	source = alacritty::git+https://github.com/gregthemadmonk/alacritty.git#branch=smooth-cursor
+	source = alacritty::git+https://github.com/gregthemadmonk/alacritty.git#branch=all-patches
 	sha256sums = SKIP
 
 pkgname = alacritty-smooth-cursor-git

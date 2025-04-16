@@ -1,3 +1,10 @@
+2025-04-16 GregTheMadMonk <yagreg7@gmail.com>
+    * Add seltools patch: interactive preview of current selection as JSON data
+2025-04-11 GregTheMadMonk <yagreg7@gmail.com>
+    * Rebase to upstream a0c4dfe962fdb0ee00b85de1cd2af16a0e8e2e9e (0.16.0-dev)
+    * Fix Wayland support
+    * Animation speed no longer depends on FPS
+    * Idle resource consumption greatly reduced
 2024-11-02 GregTheMadMonk <yagreg7@gmail.com>
     * Rebase to upstream 0542d9f (0.15.0-dev)
     * Disable Wayland when building
