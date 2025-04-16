@@ -25,7 +25,7 @@ Signed-off-by: Til Kaiser <mail@tk154.de>
  2 files changed, 4 insertions(+)
 
 diff --git a/mtcr_ul/fwctrl.c b/mtcr_ul/fwctrl.c
-index f000e9e1..90da0b54 100644
+index f000e9e17..90da0b540 100644
 --- a/mtcr_ul/fwctrl.c
 +++ b/mtcr_ul/fwctrl.c
 @@ -40,7 +40,9 @@
@@ -39,7 +39,7 @@ index f000e9e1..90da0b54 100644
  #include "fwctrl_ioctl.h"
  
 diff --git a/mtcr_ul/mtcr_ul_com.h b/mtcr_ul/mtcr_ul_com.h
-index 6d502d0d..8e298bd8 100644
+index 6d502d0dd..8e298bd8b 100644
 --- a/mtcr_ul/mtcr_ul_com.h
 +++ b/mtcr_ul/mtcr_ul_com.h
 @@ -165,6 +165,8 @@ int mclear_pci_semaphore_ul(const char* name);
@@ -82,7 +82,7 @@ Signed-off-by: Til Kaiser <mail@tk154.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mtcr_ul/fwctrl.c b/mtcr_ul/fwctrl.c
-index 90da0b54..a49e6c80 100644
+index 90da0b540..a49e6c809 100644
 --- a/mtcr_ul/fwctrl.c
 +++ b/mtcr_ul/fwctrl.c
 @@ -194,7 +194,7 @@ int fwctl_control_access_register(int    fd,
@@ -117,7 +117,7 @@ Signed-off-by: Til Kaiser <mail@tk154.de>
  1 file changed, 1 insertion(+)
 
 diff --git a/dev_mgt/tools_dev_types.c b/dev_mgt/tools_dev_types.c
-index 9bef50b3..ed18c910 100644
+index 9bef50b3f..ed18c910a 100644
 --- a/dev_mgt/tools_dev_types.c
 +++ b/dev_mgt/tools_dev_types.c
 @@ -48,6 +48,7 @@
