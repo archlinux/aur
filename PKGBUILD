@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
@@ -51,7 +51,7 @@ makedepends=(
     'wayland-protocols')
 source=("git+https://github.com/gopher64/gopher64.git#tag=v${pkgver}"
         'git+https://github.com/Themaister/parallel-rdp-standalone.git')
-sha256sums=('88040d04bb2be6cf5bfabe94b7ff98f82d25ce477809eb53a54b8bfeef05a022'
+sha256sums=('1cca26ffb769ce28c3522b4bd960b42b75c5e99b90ad13726a8d4d103e5ae0bd'
             'SKIP')
 
 prepare() {
