@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RAREsim
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6a90455bf846efb071d61507b0f76c83')
-b2sums=('0fd6c533a9ed7b8d7282b9cd5ec361b115c0e8f4e5b9c4703a3466d6d4b571cd376e9a92bd1c6f10225df878e3bc42c8fc3afce666eb3d040424c44609c35dca')
+md5sums=('71fa9e8eb741883f40932c2c9a6d0888')
+b2sums=('d9a7a49325d15b124d2be537fa15012ae60191a9bd3d69d616d681ef1ae29b06b60256744d55ba8f34a76bb448807548890bf6c5bc8ca9e396519f2086424188')
 
 build() {
   mkdir build
