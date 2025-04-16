@@ -3,12 +3,15 @@
 _pkgname="fparser"
 pkgname="$_pkgname-git"
 pkgver=r12.a952179
-pkgrel=2
+pkgrel=3
 pkgdesc="Function Parser for C++, Fork from http://warp.povusers.org/FunctionParser/"
 url="https://github.com/thliebig/fparser"
 arch=('i686' 'x86_64')
 license=('LGPL-3.0-only')
 
+depends=(
+  'gcc-libs'
+)
 makedepends=(
   'cmake'
   'git'
@@ -34,6 +37,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -Wno-dev
   )
 
