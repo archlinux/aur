@@ -4,7 +4,7 @@
 pkgname=py-nvfan
 _origpkgname=py_nvfan
 pkgver=0.1.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic Fan Control for NVIDIA Graphics Cards Based on Temperature."
 arch=("x86_64")
 url="https://github.com/antrax2024/py-nvfan/"
