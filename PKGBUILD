@@ -26,8 +26,8 @@ check() {
 package() {
   cd "$srcdir/trs"
   
-  # Install the binary (using the correct name)
-  install -Dm755 target/release/trs "$pkgdir/usr/bin/$pkgname"
+  # Install the binary 
+  install -Dm755 target/release/trs "$pkgdir/usr/bin/trs"
   
   # Create documentation directory
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
