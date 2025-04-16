@@ -20,8 +20,16 @@ optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Gr
 makedepends=('boost' 'pkgconf' 'bison' 'patch')
 provides=('armagetronad')
 conflicts=('armagetronad')
-source=("git+https://gitlab.com/armagetronad/armagetronad.git")
-sha1sums=('SKIP')
+source=(
+    "git+https://gitlab.com/armagetronad/armagetronad.git"
+    "protobuf30.patch"
+    "python3.patch"
+)
+sha1sums=(
+    'SKIP'
+    'f1a2f3d69347f20b0d76a4b658c87f579cf47358'
+    '6bb173affe2d60305ea3841ee9719a20d8b74782'
+)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
