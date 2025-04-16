@@ -1,5 +1,5 @@
 pkgbase = ruby-travis-gh
-	pkgdesc = multi-layer client for the github api v3
+	pkgdesc = Layered GitHub API client
 	pkgver = 0.21.0
 	pkgrel = 2
 	url = https://github.com/travis-ci/gh
