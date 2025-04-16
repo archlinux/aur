@@ -1,0 +1,18 @@
+diff --git a/language/update.py b/language/update.py
+index 0111c8c4..1afcf80d 100755
+--- a/language/update.py
++++ b/language/update.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2
++#!/usr/bin/python3
+ # usage: call here to bring all translations up to date
+ # usage forms:
+ # update.py [--complete] <list of language files>
+@@ -15,7 +15,6 @@
+ # update.py --dist
+ #           compactifies translations: strips comments and whitespace
+ 
+-from __future__ import print_function
+ 
+ import sys
+ import os

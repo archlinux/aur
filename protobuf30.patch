@@ -1,0 +1,29 @@
+diff --git a/src/network/nProtoBuf.cpp b/src/network/nProtoBuf.cpp
+index 067714d1..55a63cec 100644
+--- a/src/network/nProtoBuf.cpp
++++ b/src/network/nProtoBuf.cpp
+@@ -517,9 +517,9 @@ nMessageStreamer & nProtoBufDescriptorBase::GetDefaultStreamer()
+     return streamer;
+ }
+ 
+-std::string const & nProtoBufDescriptorBase::DetermineName( nProtoBuf const & prototype )
++std::string const nProtoBufDescriptorBase::DetermineName( nProtoBuf const & prototype )
+ {
+-    return GetDescriptor(prototype)->full_name();
++    return std::string( GetDescriptor(prototype)->full_name() );
+ }
+ 
+ nProtoBufDescriptorBase::DescriptorMap const & nProtoBufDescriptorBase::GetDescriptorsByName()
+diff --git a/src/network/nProtoBuf.h b/src/network/nProtoBuf.h
+index 7751bb3a..298a9e54 100644
+--- a/src/network/nProtoBuf.h
++++ b/src/network/nProtoBuf.h
+@@ -355,7 +355,7 @@ public:
+ 
+     nMessageStreamer & GetDefaultStreamer();
+ 
+-    static std::string const & DetermineName( nProtoBuf const & prototype );
++    static std::string const DetermineName( nProtoBuf const & prototype );
+ 
+     //! dumb streaming to message
+     inline void StreamTo( nProtoBuf const & in, nStreamMessage & out, StreamSections sections ) const

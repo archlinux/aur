@@ -1,5 +1,6 @@
 # $Id$
-# Maintainer: notvidya <transient.sepia // at // gmail dot com>
+# Maintainer: Armanelgtron <armanelgtron@gmail.com>
+# Contributor: notvidya <transient.sepia // at // gmail dot com>
 # Contributor: physkets <physkets // at // tutanota dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
@@ -7,16 +8,16 @@
 
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
-pkgver=r5817.c67aeca0
+pkgver=r5868.1830e098
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='https://www.armagetronad.org'
 license=('GPL')
 options=('!buildflags')
-depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf' 'hicolor-icon-theme')
+depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf' 'curl' 'hicolor-icon-theme')
 optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Graphics on Wayland')
-makedepends=('boost')
+makedepends=('boost' 'pkgconf' 'bison' 'patch')
 provides=('armagetronad')
 conflicts=('armagetronad')
 source=("git+https://gitlab.com/armagetronad/armagetronad.git")
@@ -29,7 +30,8 @@ pkgver() {
 
 prepare(){
     cd "${srcdir}/${_pkgname}"
-    2to3 -w language/update.py
+    patch -Np1 -i ../../protobuf30.patch
+    patch -Np1 -i ../../python3.patch
 }
 
 build() {
