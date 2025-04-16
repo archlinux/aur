@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RRHO
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Inference on agreement between ordered lists'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-lattice
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c68fd1b4f10f87de81d9b873d3975978d83647e0f1e92d2004d4f5b0802e3442')
+sha256sums=('305d42dafdd429f1f66d9738f60c6e53b3174d59f955bed61a12a690d0fadd9b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
