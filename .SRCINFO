@@ -1,5 +1,5 @@
 pkgbase = python-cmap
-	pkgdesc = Scientific colormaps for python, without dependencies
+	pkgdesc = Scientific colormaps for python, with only numpy dependency
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/pyapp-kit/cmap
