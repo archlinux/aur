@@ -1,5 +1,5 @@
 pkgbase = aurbs
-	pkgdesc = AUR package build system
+	pkgdesc = AUR Build System
 	pkgver = 2.2.1
 	pkgrel = 2
 	url = http://github.com/asdil12/aurbs

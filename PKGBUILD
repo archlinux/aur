@@ -3,7 +3,7 @@
 pkgname=aurbs
 pkgver=2.2.1
 pkgrel=2
-pkgdesc="AUR package build system"
+pkgdesc="AUR Build System"
 arch=('any')
 url="http://github.com/asdil12/aurbs"
 license=('GPL')
