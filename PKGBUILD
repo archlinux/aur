@@ -20,9 +20,9 @@ pkgver() {
 package() {
     set -e  # Exit on error if any command fails
     cd "$srcdir/better-control"
-    sudo cp betterctl.sh /usr/bin/betterctl 
 
-    # Create installation directories
+    # Install stuff
+    install -Dm755 betterctl.sh "$pkgdir/usr/bin/betterctl"
     install -dm755 "$pkgdir/usr/share/better-control"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
