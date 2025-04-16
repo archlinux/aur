@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MantelCorr
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d323b5d644189314130a7481019e198e')
-b2sums=('b955e2b699e7aa2387070eba3decff8ebeff3127fca5859bdd75411ade0c9ba18a2db10bca2eea914a5e15948492b2fa08f3325ace87b703f27b8de16d5cd549')
+md5sums=('d98e70d0b50358a396b9421cfb86b68e')
+b2sums=('901f63063600c93f26abaf88cc3b4f6fd8f1972813aca63296bfa09d4c07fb750b6a5b5440c89092f2085836a8cff26f7293dad8a5598ebd59b0426175810cfe')
 
 build() {
   mkdir build
