@@ -1,0 +1,3 @@
+[python-langchain-chroma]
+source = "pypi"
+pypi = "langchain-chroma"
