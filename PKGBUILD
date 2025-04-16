@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=occugene
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8b0b5ae61b8723d7e7df5ab057874281')
-b2sums=('4de651ebce7ec3a6d75cd64c7cf7c7c889a36125d05e2be9ae4f2222e6e8ba104597aebc0a102e6a860aa52e6b389d305725838cbc98d0fc4d882e229a49c851')
+md5sums=('d79ec8ab66807023cb1b446d5b3357b6')
+b2sums=('2b5f881f57bfeceabd6bde0e655c7a1c6cac0c1a09a3904763b2839c4db11c3a0e9dda452481327122f1ebf3e339b9afab10e57c0f83dad7aee16af1d176a069')
 
 build() {
   mkdir build
