@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=LBE
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-qvalue
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('407869685d2147e5aba11fb883f1e7a9')
-b2sums=('acd0bb146a0e323e7932fb05f6390d2466c918b0400d00528688b739fd84a0f6b37fe92214453d5aa18edfdf4b4e1f21c29e180e94fffc1170a1ad9a689f4e17')
+md5sums=('d3e3bfa07096672963b6dc4e69d1de35')
+b2sums=('df2dba2b04551dc8efe2d8afb590dcd3d67761d30509039e1e17a211e1b3f39604bc6cb60a9047f39b3a6789e3460911f258356d4a80135bef21c1a39e13c2bb')
 
 build() {
   mkdir build
