@@ -2,7 +2,7 @@
 
 pkgname=axon-applauncher
 _pkgpyname=axon_applauncher
-pkgver=1.0.3.2
+pkgver=1.0.3.3
 pkgrel=1
 
 pkgdesc="Hyper-customizable app launcher made in Python"
@@ -16,16 +16,16 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/wojtmic/axon/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('278af560701402ec5360453b4d8d96f4a2c346d04c39b11263c93839ae18b7ef')
+sha256sums=('972cd3f2efd888885a157c8080ad75b7ea0e4013d8073b65529c2563867cc27e')
 
 build() {
-    cd "$srcdir/axon-$pkgver"
-    python -m build --wheel --sdist --no-isolation --skip-dependency-check
+  cd "$srcdir/axon-$pkgver"
+  python -m build --wheel --sdist --no-isolation --skip-dependency-check
 }
 
 package() {
-    cd "$srcdir/axon-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir/axon-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
