@@ -4,9 +4,9 @@
 
 _gitname="ec"
 _gitroot="https://chromium.googlesource.com/chromiumos/platform/${_gitname}"
-_gitbranch="cr50_stab"
+_gitbranch="gsc_utils"
 pkgname=chromeos-gsctool-git
-pkgver=r20220616235852.f35ac20
+pkgver=r20250411095938.16b81b7
 pkgrel=1
 pkgdesc='Chromium OS gsctool'
 url='https://chromium.googlesource.com/chromiumos/platform/ec'
