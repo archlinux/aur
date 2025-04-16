@@ -3,7 +3,7 @@
 pkgname=lpcnetfreedv
 _pkgname=LPCNet
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Neural Net speech coding for FreeDV"
 arch=('x86_64' 'aarch64')
 license=('BSD')
@@ -17,7 +17,7 @@ build() {
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_INTERNAL_CODEC2=FALSE
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 	
