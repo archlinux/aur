@@ -1,4 +1,5 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
+# Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contrubutor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 # Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
@@ -7,7 +8,7 @@
 _gemname='railties'
 pkgname="ruby-${_gemname}"
 pkgver=8.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools for creating, working with, and running Rails applications'
 arch=('any')
 url='https://rubyonrails.org'
@@ -47,5 +48,5 @@ package() {
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 
   install -Dm 644 MIT-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 CHANGELOG.md RDOC_MAIN.rdoc README.rdoc --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 CHANGELOG.md RDOC_MAIN.md README.rdoc --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
