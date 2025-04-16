@@ -1,11 +1,10 @@
 post_upgrade() {
 	if [ $(vercmp $2 141.r46.g8433666dc-5) -lt 0 ]; then cat << EOF
 ********************************************************************************
-* With v142 release, Ares has changed its build system from GNU Make to CMake. *
-* For the occasion, the PKGBUILD has been updated to support CFLAGS, CXXFLAGS, *
-* LDFLAGS, and MAKEFLAGS variables that are defined in makepkg.conf.           *
-* Furthermore the Retro shaders, which were recently included in Ares upstream,*
-* are now bundled off to 'libretro-shaders' package, making it a dependency.   *
+* With v142 release, Ares has changed its build system from GNU Make to CMake  *
+* making the build process more flexible.                                      *
+* Furthermore, Retro shaders, which were recently included in Ares upstream,   *
+* are bundled off to 'libretro-shaders' package, which is now a dependency.    *
 * This allows 70%-75% reduction of Ares package's size compared to v141.       *
 ********************************************************************************
 EOF

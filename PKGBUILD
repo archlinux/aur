@@ -1,14 +1,14 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=141.r67.gb4b026db2
+pkgver=143.r72.ga247271e3
 pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=("x86_64" "i686" "aarch64")
 url="https://ares-emu.net/"
 license=("ISC")
 depends=("alsa-lib" "gcc-libs" "libao" "libgl" "libpulse" "librashader>=0.5.1-1"
-  "libretro-shaders" "libudev.so=1-64" "libx11" "libxrandr" "openal" "sdl2"
+  "libretro-shaders" "libudev.so=1-64" "libx11" "libxrandr" "openal" "sdl3"
   "vulkan-driver" "vulkan-icd-loader" "zlib" "cairo" "gdk-pixbuf2" "glib2"
   "glibc" "gtk3" "hicolor-icon-theme" "pango")
 makedepends=("cmake" "git" "mesa" "ninja" "pkgconf")
@@ -20,7 +20,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "ares"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude=nightly | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
