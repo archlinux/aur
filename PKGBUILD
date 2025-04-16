@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Use udev to specify dirty pages for USB devices (i.e. cache in RAM before writing files)"
 arch=('any')
 url="https://github.com/biglinux/$pkgname"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=("$pkgname")
 source=("git+${url}.git#tag=usb-dirty-pages-udev-23.10.15-2049")
 md5sums=('SKIP')
