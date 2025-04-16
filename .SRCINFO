@@ -1,5 +1,5 @@
 pkgbase = python-pyrsistent
-	pkgdesc = Persistent/Functional/Immutable data structures
+	pkgdesc = Persistent/Immutable/Functional data structures
 	pkgver = 0.20.0
 	pkgrel = 7
 	url = https://github.com/tobgu/pyrsistent
