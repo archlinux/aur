@@ -4,7 +4,7 @@
 pkgname=gsplus-git
 _name=gsplus
 pkgver=r556.4805720
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern cross-platform Apple IIgs emulator"
 arch=('x86_64')
 url="http://apple2.gs/plus/"
@@ -53,7 +53,7 @@ EOF
 #   make clean ; make
     git apply "$srcdir"/../rawnetsupp.patch
     mkdir -p "$srcdir"/$_name/build ; cd "$srcdir"/$_name/build
-    cmake ..
+    cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
     make
 }
 

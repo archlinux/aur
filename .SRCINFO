@@ -1,7 +1,7 @@
 pkgbase = gsplus-git
 	pkgdesc = Modern cross-platform Apple IIgs emulator
 	pkgver = r556.4805720
-	pkgrel = 3
+	pkgrel = 4
 	url = http://apple2.gs/plus/
 	install = gsplus.install
 	arch = x86_64
