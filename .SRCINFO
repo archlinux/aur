@@ -1,13 +1,13 @@
 pkgbase = r-nnnorm
 	pkgdesc = Spatial and intensity based normalization of cDNA microarray data based on robust neural nets
-	pkgver = 2.70.0
+	pkgver = 2.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nnNorm
 	arch = any
 	license = LGPL
 	depends = r
 	depends = r-marray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nnNorm_2.70.0.tar.gz
-	sha256sums = b65838b641d006c942eb73ce20854cfd77c46bad760e5265c7144a97576b23b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nnNorm_2.72.0.tar.gz
+	sha256sums = f7eafcc9701e64b97572e959154a470f85bf857b81e5524e36f3d712b3a7833c
 
 pkgname = r-nnnorm
