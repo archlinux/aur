@@ -1,0 +1,79 @@
+post_install() {
+  # Reload dynamic linker configuration
+  ldconfig
+  
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan 32-bit Driver Installation Complete            |"
+  echo "+---------------------------------------------------------------+"
+  echo "| Required steps:                                               |"
+  echo "| 1. Make sure you have the main vulkan-terakan package         |"
+  echo "| 2. Use with: VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/terascale_icd.i686.json |"
+  echo "| 3. Or use helper: terakan-vulkan32-setup your-application     |"
+  echo "+---------------------------------------------------------------+"
+  
+  # Check for compatible GPU - use the same check as the main package
+  if ! lspci | grep -i vga | grep -i -E "AMD|ATI" > /dev/null; then
+    echo "WARNING: No AMD GPU detected. This driver is intended for AMD Terascale GPUs."
+    echo "Installation will continue, but driver may not work properly."
+  elif lspci | grep -i vga | grep -i -E "Radeon HD [2-7]|R[5-7] [2-3]|TeraScale" > /dev/null; then
+    echo "Compatible AMD Terascale GPU detected. Driver should work properly."
+  else
+    echo "WARNING: AMD GPU detected, but it may not be a Terascale model."
+    echo "This driver is specifically for Terascale GPUs and may not work with your hardware."
+  fi
+  
+  # Check for common issues
+  if ! pacman -Q lib32-vulkan-icd-loader &>/dev/null; then
+    echo "WARNING: lib32-vulkan-icd-loader package is not installed."
+    echo "Install it with: pacman -S lib32-vulkan-icd-loader"
+  fi
+  
+  if ! pacman -Q vulkan-terakan &>/dev/null; then
+    echo "WARNING: vulkan-terakan package is not installed."
+    echo "The 32-bit driver depends on the main package. Install it with: pacman -S vulkan-terakan"
+  fi
+  
+  if [ ! -f "/usr/lib32/libvulkan_terascale.so" ]; then
+    echo "ERROR: libvulkan_terascale.so not found! Installation may be incomplete."
+    echo "Check installation log for errors and reinstall if necessary."
+  fi
+  
+  # Display additional help information
+  echo ""
+  echo "For 32-bit applications, use:"
+  echo "terakan-vulkan32-setup application_name"
+}
+
+post_upgrade() {
+  # Reload dynamic linker configuration
+  ldconfig
+  
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan 32-bit Driver Update Complete                  |"
+  echo "+---------------------------------------------------------------+"
+  echo "| Recommended steps:                                            |"
+  echo "| 1. Make sure you've updated the main vulkan-terakan package   |"
+  echo "| 2. Reboot your system                                         |"
+  echo "+---------------------------------------------------------------+"
+  
+  # Check for common issues after upgrade
+  if [ ! -f "/usr/lib32/libvulkan_terascale.so" ]; then
+    echo "ERROR: 32-bit libvulkan_terascale.so not found! Upgrade may be incomplete."
+    echo "Check installation log for errors and reinstall if necessary."
+  fi
+}
+
+post_remove() {
+  # Reload dynamic linker configuration
+  ldconfig
+  
+  echo ""
+  echo "+---------------------------------------------------------------+"
+  echo "| Terakan Vulkan 32-bit Driver Removal Complete                 |"
+  echo "+---------------------------------------------------------------+"
+  echo "| Note: The main vulkan-terakan package may still be installed. |"
+  echo "| To fully remove, also uninstall the vulkan-terakan package.   |"
+  echo "+---------------------------------------------------------------+"
+}
