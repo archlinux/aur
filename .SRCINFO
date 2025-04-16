@@ -1,5 +1,5 @@
 pkgbase = disarchive
-	pkgdesc = Disassembler of software archives for long-term preservation
+	pkgdesc = Disassemble software archives into data and metadata
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://ngyro.com/software/disarchive.html

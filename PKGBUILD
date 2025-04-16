@@ -3,7 +3,7 @@
 pkgname=disarchive
 pkgver=0.6.0
 pkgrel=1
-pkgdesc='Disassembler of software archives for long-term preservation'
+pkgdesc='Disassemble software archives into data and metadata'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://ngyro.com/software/disarchive.html'
 license=('GPL3')
