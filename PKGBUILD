@@ -3,8 +3,8 @@
 pkgname=kgdb-agent-proxy
 pkgver=1.97
 pkgrel=1
-pkgdesc='A simple, small proxy which was intended for use with kgdb, or gdbserver type connections where you want to share a text console and a debug session.'
-url='https://kgdb.wiki.kernel.org/index.php/Main_Page'
+pkgdesc='agent-proxy for kgdb'
+url='https://archive.kernel.org/oldwiki/kgdb.wiki.kernel.org/'
 arch=(i686 x86_64)
 depends=(glibc)
 makedepends=(git)
