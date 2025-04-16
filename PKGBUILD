@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqTools
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ae732af0b68234893f0cb7852dbe64c7')
-b2sums=('82d05b22acfbbe8218e2822ee9d92070cea46046a3c0f25d666f666c40d5fc67f506f8be3bf85eee71e0d4746fc63e8ac86fc35bb3077528a2cb76e357ea46ea')
+md5sums=('06219744fc94b56f72825fa5f438e1c8')
+b2sums=('6df7bd2a363400b333c514b19e02f9840e8d64229101a8d42d92be08752ee3708c783a19cef89a74ad83b33645bad05d8b6e356b53411bb11751479475738c98')
 
 build() {
   mkdir build
