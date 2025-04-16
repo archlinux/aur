@@ -3,7 +3,7 @@
 pkgname=explo
 pkgver=0.2.2
 pkgrel=2
-pkgdesc="Simple tool to describe web security issues in a human and machine readable format"
+pkgdesc="Human and machine readable web vulnerability testing format"
 url="https://github.com/telekom-security/explo"
 license=('GPL3')
 arch=('any')
