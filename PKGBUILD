@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=XINA
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Multiplexes Isobaric Mass Tagged-based Kinetics Data for Network Analysis'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('608a029f1041ff2a09ebc766cc19862cc02b8aeefc24d6465eef9915439fef74')
+sha256sums=('14e6a2ff1a97887b42d6fef385b50987d75f1b36022e18bdea131fbbccd7ca5b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
