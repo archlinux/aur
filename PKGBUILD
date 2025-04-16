@@ -1,7 +1,7 @@
 # Maintainer: Craig McLure <craig@mclure.net>
 pkgname=goxlr-utility
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini."
 arch=('x86_64')
 url="https://github.com/GoXLR-on-Linux/goxlr-utility"
@@ -10,7 +10,7 @@ depends=('libusb' 'bzip2' 'libpulse' 'speech-dispatcher')
 makedepends=('cargo' 'pkgconf' 'clang')
 install=goxlr-utility.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoXLR-on-Linux/goxlr-utility/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('880f3fe7ab65ca4c8bd68de056a528a977b378ea3c4c3b131b787a48d0c6772abb19b0512214342788c52bc79a4b988cc7c8a69f048e883151901babc69424fd')
+sha512sums=('eb1c7a0b061e9eb52b44bfdf40285f9d2afcb277c690374a36c061b984f110fa7fc31ee28a5de387049efe488e73c2faece64f71aae71ca225eb5d181c1c744d')
 
 prepare() {
     cd "$pkgname-$pkgver"
