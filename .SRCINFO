@@ -1,6 +1,6 @@
 pkgbase = r-verso
 	pkgdesc = Viral Evolution ReconStructiOn (VERSO)
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VERSO
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-verso
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VERSO_1.16.0.tar.gz
-	sha256sums = 7f0a533c4251b3d919fb4bc3d0fbd1740509562a92e718d0c44e7fb9dfa8088b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VERSO_1.18.0.tar.gz
+	sha256sums = f454afd475a916307f1ea7ac7a60c5dfce37379b5b782a45d79407ffa142b651
 
 pkgname = r-verso
