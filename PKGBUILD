@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCBN
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('091087bd3f6adc46eb6cd1ee2ab425c2')
-b2sums=('7697b87f58ee37e0dfa068017139aad11e91d5b29dc7343f588796add73cc442544fa1a23b4ed9e7548edb8e58e57826f611a7ae197459dc75fd3108fe897e28')
+md5sums=('7c8b2bb6840e8dfcb198f5279d17c3de')
+b2sums=('e7c7a41662dc644aa4a20685a2af7ec2a5433c7267601923d8d39ce81b95b308ba7f1f8b7f31b09d08db11561e8fbc4b9c068171ead953a961158ed46f4c54e4')
 
 build() {
   mkdir build
