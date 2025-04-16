@@ -1,12 +1,11 @@
 pkgbase = dnglab-bin
-	pkgdesc = Camera RAW to DNG file format converter
+	pkgdesc = Camera RAW to DNG file format converter.(Prebuilt version)
 	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/dnglab/dnglab
 	arch = aarch64
 	arch = x86_64
 	license = LGPL-2.1-only
-	depends = glibc
 	optdepends = bash-completion
 	provides = dnglab=0.6.3
 	conflicts = dnglab
