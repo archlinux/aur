@@ -1,5 +1,5 @@
 pkgbase = python-eliot
-	pkgdesc = Logging that tells you why it happened
+	pkgdesc = The logging system that tells you *why* it happened
 	pkgver = 1.17.5
 	pkgrel = 1
 	url = https://github.com/itamarst/eliot

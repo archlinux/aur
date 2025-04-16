@@ -5,7 +5,7 @@
 pkgname=python-eliot
 pkgver=1.17.5
 pkgrel=1
-pkgdesc='Logging that tells you why it happened'
+pkgdesc='The logging system that tells you *why* it happened'
 arch=('any')
 url='https://github.com/itamarst/eliot'
 license=('Apache-2.0')
