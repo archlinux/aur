@@ -1,5 +1,5 @@
 pkgbase = otf-kermit
-	pkgdesc = Empower children by making reading easier, improving comprehension, and helping dyslexics
+	pkgdesc = Using typeface design to empower children by making reading easier, improving comprehension, and helping dyslexics
 	pkgver = 0.0.0
 	pkgrel = 1
 	url = https://kermit-font.com

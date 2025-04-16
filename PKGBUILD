@@ -4,7 +4,7 @@ pkgname=otf-kermit
 pkgver=0.0.0
 pkgrel=1
 # should maybe find a better description
-pkgdesc="Empower children by making reading easier, improving comprehension, and helping dyslexics"
+pkgdesc="Using typeface design to empower children by making reading easier, improving comprehension, and helping dyslexics"
 arch=("any")
 url="https://kermit-font.com"
 # license=("OFL")
