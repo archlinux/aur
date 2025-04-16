@@ -1,8 +1,8 @@
 pkgbase = python-click-extra
-	pkgdesc = Extra colorization and configuration loading for Click.
+	pkgdesc = Drop-in replacement for Click to make user-friendly and colorful CLI.
 	pkgver = 4.15.0
 	pkgrel = 1
-	url = https://kdeldycke.github.io/click-extra/
+	url = https://github.com/kdeldycke/click-extra
 	arch = any
 	license = GPL2
 	makedepends = uv

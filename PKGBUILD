@@ -5,8 +5,8 @@ pkgname=python-click-extra
 _name=${pkgname#python-}
 pkgver=4.15.0
 pkgrel=1
-pkgdesc='Extra colorization and configuration loading for Click.'
-url='https://kdeldycke.github.io/click-extra/'
+pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
+url='https://github.com/kdeldycke/click-extra'
 makedepends=(uv)
 depends=(python python-boltons python-click 'python-cloup>=3.0.5' python-commentjson python-extra-platforms python-mergedeep python-yaml python-requests python-tabulate python-xmltodict python-wcmatch)
 #checkdepends=(python-pytest python-pytest-cov python-pytest-httpserver python-pytest-randomly python-pytest-cases)
