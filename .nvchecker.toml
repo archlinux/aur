@@ -1,3 +1,5 @@
-[python-treestampsa]
-source = "pypi"
-pypi = "treestamps"
+[python-treestamps]
+source = "github"
+github = "ajslater/treestamps"
+use_latest_release = "true"
+prefix = "v"
