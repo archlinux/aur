@@ -1,4 +1,4 @@
-# Maintainer: Michael J. Pento <mjpento@verizon.net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 pkgname=gtk-engine-aurora
 pkgver=1.5.1
