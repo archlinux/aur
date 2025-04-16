@@ -1,6 +1,6 @@
 pkgbase = qt-dab
 	pkgdesc = Software DAB decoder for use with various SDR devices (formerly dab-maxi)
-	pkgver = 6.9
+	pkgver = 6.9.2
 	pkgrel = 1
 	url = https://www.sdr-j.tk/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = qt-dab
 	optdepends = libad9361: Support for Pluto
 	optdepends = rtl-sdr: Support for RTL-SDR
 	optdepends = libsdrplay: Support for SDRplay
-	source = qt-dab-6.9.tar.gz::https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/Qt-DAB-6.9.tar.gz
+	source = qt-dab-6.9.2.tar.gz::https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/6.9.2-new.tar.gz
 	source = 0001-Allow-building-against-QWT-6.3.0.patch
-	sha256sums = 7639b73bbe50499108f0d0334c4ed0a07c7928de88ca04bb21f8d7520b417df6
+	sha256sums = 5c1ac7128883cfc64c00dc0d69062509eb900196a882052d9716730eac21da6b
 	sha256sums = 1d014837d8ca16a45dcf6d5d40ed36c40fb3081218eaaaceaaad0d51a7b7f16d
 
 pkgname = qt-dab
