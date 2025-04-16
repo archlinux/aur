@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MVCClass
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a8ce7fca6f05d4da5d4025891e82c51c')
-b2sums=('411d6784c90f96fb7b37c4c4a4b58bd2a100ad060f52b78cfa22fb5a67bc516f887a831d1280eb7cf72112703d85435a918f4bb357062e35ac50aedacf6b58c7')
+md5sums=('23b166db6ea26cebad092bacd082ee2f')
+b2sums=('2a57160f10f38f48df4ec041abad0b143baaba160ca188f7779c6a60090f9bdaaea21273248e45e27cc3a2c0ae44379dbc31f7b9d688f28c44d3fef33203308e')
 
 build() {
   mkdir build
