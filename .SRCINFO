@@ -1,5 +1,5 @@
 pkgbase = 0ad-git
-	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game - built from git development version.
+	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game (git version)
 	pkgver = a26.r1273.g03ceb27e90
 	pkgrel = 1
 	epoch = 1
@@ -60,6 +60,6 @@ pkgname = 0ad-git
 	conflicts = 0ad
 
 pkgname = 0ad-data-git
-	pkgdesc = Data package for 0ad built from git development version.
+	pkgdesc = Cross-platform, 3D and historically-based real-time strategy game (git version) (data files)
 	provides = 0ad-data
 	conflicts = 0ad-data

@@ -9,7 +9,7 @@ _pkgname=0ad
 epoch=1
 pkgver=a26.r1273.g03ceb27e90
 pkgrel=1
-pkgdesc="Cross-platform, 3D and historically-based real-time strategy game - built from git development version."
+pkgdesc="Cross-platform, 3D and historically-based real-time strategy game (git version)"
 arch=('i686' 'x86_64')
 url="https://play0ad.com"
 license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
@@ -35,6 +35,7 @@ build() {
   ./build-source-libs.sh
   cd "$srcdir/${_pkgname}/build/workspaces"
   ./update-workspaces.sh \
+      --with-lto \
       --without-pch \
       --with-system-premake5 \
       --bindir=/usr/bin \
@@ -82,7 +83,7 @@ package_0ad-git() {
 }
 
 package_0ad-data-git() {
-  pkgdesc="Data package for 0ad built from git development version."
+  pkgdesc+=" (data files)"
   conflicts=('0ad-data')
   provides=('0ad-data')
   mkdir -p ${pkgdir}/usr/share/${_pkgname}-git
