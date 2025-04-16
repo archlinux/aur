@@ -4,7 +4,7 @@ _pkgbase=ollama-lab
 pkgname=$_pkgbase-bin
 pkgver=0.3.6
 _version=${pkgver/+/-}
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI (binary)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=()
 install=
 changelog=
 source=(
-    "https://github.com/chardoncs/ollama-lab/releases/download/v${_version}/${_pkgbase}_${_version}_amd64.deb"
+    "https://github.com/ollama-lab/${_pkgbase}/releases/download/v${_version}/${_pkgbase}_${_version}_amd64.deb"
 )
 noextract=()
 sha256sums=(
