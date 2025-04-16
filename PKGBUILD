@@ -2,7 +2,7 @@
 # Contributor: Matthew Hague <matthewhague@zoho.com>
 
 pkgname=ruby-icalendar
-pkgver=2.10.3
+pkgver=2.11.0
 pkgrel=5
 pkgdesc='Internet calendaring, Ruby style'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('ruby')
 options=('!emptydirs')
 source=("http://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem" "https://raw.githubusercontent.com/icalendar/icalendar/refs/heads/main/LICENSE")
 noextract=("${pkgname#*-}-${pkgver}.gem")
-sha256sums=('0ebfc2672f9fa77b86b4d8c0e25e9b2319aad45a33319fed06d0be8ddd0cd485' '0e86bd0716d1463c834a241a1b42e7400a7b2b94cddd146edc1069dff4441903')
+sha256sums=('899ddd506bb48beea250a1afd674ff0644a3dd2f8c49e02b1a91795b03b7541c' '0e86bd0716d1463c834a241a1b42e7400a7b2b94cddd146edc1069dff4441903')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
