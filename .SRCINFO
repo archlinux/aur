@@ -1,7 +1,7 @@
 pkgbase = zoom-citrix-plugin
 	pkgdesc = Zoom VDI Citrix plugin
 	pkgver = 6.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.zoom.us/hc/en-us/articles/4415057249549-VDI-releases-and-downloads
 	install = zoom-citrix-plugin.install
 	arch = x86_64

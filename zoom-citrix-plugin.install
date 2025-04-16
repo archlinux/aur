@@ -8,6 +8,20 @@ _bold="${_all_off}$(tput bold)"
 _blue="${_bold}$(tput setaf 4)"
 _yellow="${_bold}$(tput setaf 3)"
 
+pre_install() {
+    # Check for existing plugins
+    if pacman -Qs zoomcitrixplugin >/dev/null; then
+        echo "Error: zoomcitrixplugin is installed. Please remove it first."
+        exit 1
+    fi
+    
+    # Remove existing symbolic links
+    citrix_default_link="/opt/Citrix/ICAClient/ZoomMedia.so"
+    if [ -L "$citrix_default_link" ]; then
+        sudo rm -f "$citrix_default_link"
+    fi
+}
+
 post_install() {
     # Check if Citrix is installed
     RESULT_CITRIX_EXIST=$(pacman -Qs icaclient)
@@ -20,6 +34,9 @@ post_install() {
             sudo mkdir -p "$citrix_default_directory"
             echo "auto created directory '$citrix_default_directory'"
         fi
+
+        # Create symbolic link for the plugin
+        sudo ln -sf /usr/lib/zoomvdi-universal-plugin/libZoomPlugin.so "$citrix_default_directory/ZoomMedia.so"
 
         # Locate the module.ini configuration file
         CONFIG_LINK_FILE=/opt/Citrix/ICAClient/config/module.ini
@@ -79,5 +96,22 @@ post_install() {
     fi
 
     note "Config write completed to $CONFIG_LINK_FILE"
-    note "Please reboot are Killall citrix instances Ex: killall wfica"
+    note "Please reboot or kill all citrix instances: killall wfica"
+}
+
+pre_remove() {
+    # Remove configuration entries
+    CONFIG_LINK_FILE="/opt/Citrix/ICAClient/config/module.ini"
+    if [ -f "$CONFIG_LINK_FILE" ]; then
+        sudo sed -i 's/, ZoomMedia//g' "$CONFIG_LINK_FILE"
+        sudo sed -i '/ZoomMedia=On/d' "$CONFIG_LINK_FILE"
+        sudo sed -i '/\[ZoomMedia\]/d' "$CONFIG_LINK_FILE"
+        sudo sed -i '/ZoomMedia.so/d' "$CONFIG_LINK_FILE"
+    fi
+    
+    # Remove symbolic link
+    citrix_default_link="/opt/Citrix/ICAClient/ZoomMedia.so"
+    if [ -L "$citrix_default_link" ]; then
+        sudo rm -f "$citrix_default_link"
+    fi
 }

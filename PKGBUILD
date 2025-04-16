@@ -3,7 +3,7 @@
 pkgname=zoom-citrix-plugin
 pkgver=6.2.11
 _subver=25670
-pkgrel=1
+pkgrel=2
 pkgdesc="Zoom VDI Citrix plugin "
 arch=('x86_64')
 license=('custom')
