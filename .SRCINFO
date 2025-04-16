@@ -1,14 +1,14 @@
 pkgbase = phive
 	pkgdesc = The Phar Installation and Verification Environment (PHIVE)
-	pkgver = 0.15.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://phar.io/
 	arch = any
 	license = BSD
 	depends = php
-	source = https://github.com/phar-io/phive/releases/download/0.15.3/phive-0.15.3.phar
-	source = https://raw.githubusercontent.com/phar-io/phive/0.15.3/LICENSE
-	sha256sums = 3f4ab8130e83bb62c2a51359e7004df95b60ad07bbd319f4b39d35a48a051e27
+	source = https://github.com/phar-io/phive/releases/download/0.16.0/phive-0.16.0.phar
+	source = https://raw.githubusercontent.com/phar-io/phive/0.16.0/LICENSE
+	sha256sums = 1525f25afec4bcdc0aa8db7bb4b0063851332e916698daf90c747461642a42ed
 	sha256sums = 0f82a7f0e108b2619484f62ef2e4d4d198edbee328be61c0def642c4b42be9a6
 
 pkgname = phive
