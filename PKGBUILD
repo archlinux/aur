@@ -3,7 +3,7 @@
 pkgname=catppuccin-gtk-theme-latte
 pkgver=1.0.3 # renovate: datasource=github-tags depName=catppuccin/gtk
 pkgrel=2
-pkgdesc='Soothing pastel theme for GTK - Latte'
+pkgdesc='Soothing pastel theme for GTK3/4 - Latte'
 arch=('any')
 license=('GPL-3.0-only')
 url='https://github.com/catppuccin/gtk'
