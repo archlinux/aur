@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HilbertVis
-_pkgver=1.64.0
+_pkgver=1.65.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,9 +18,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('627ad4e5725a9044727aa1ef90e3da09'
+md5sums=('344126afb55ca55662be7c7d40c14ab7'
          '0aaecc29f52ba18887ffd658a3dacd35')
-b2sums=('1372ca7caaa39c44321997fc23848d389868b272696ebebe9e6b51056320dab7570110d8a926b1913df28a8eaa8be53c3a063a7e830ad89de2cf758f58c7c20f'
+b2sums=('7ffec9ab139a4392085ebae873e4fa6c73a60468d4a17f2fe78dc27b66347b249e0f511c7df59c4b58abfbbfffd4cc2d6cd8355e222340fc2ae157033374e52e'
         '69e912f57f4319974fd5d5161bff4d66930da2ecada4aaaab78dabfc70feb9bdf2aa56b1936e9533b728e37e09eae6cc9e4ef0f061a45688d988833a76c5c066')
 
 prepare() {
