@@ -1,5 +1,5 @@
 pkgbase = lzfse
-	pkgdesc = The LZFSE compression library and command line tool
+	pkgdesc = LZFSE compression library and command line tool
 	pkgver = 1.0
 	pkgrel = 3
 	url = https://github.com/lzfse/lzfse
