@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MassArray
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ef8f67686045bc38410b3a22386a4993')
-b2sums=('84d2001f0c1d7c4252898db9bb96753b5b151d37ef2512b280782c7d3438530071036beccd6a426bbaa72ca6d6acf41b07abd3049ff2e6767137b9aef907a7e1')
+md5sums=('6992a0dee14e7c6742c9a7a1a0cd01f4')
+b2sums=('18337486a19ce5ee0c23e89b5fc202a077af8fd68ca7cb51d3293686ca6f2b1449c1bb02cbb7ac8605e4024988589c73a8c2c1f29fdc3c1b6eab137050fcae8e')
 
 build() {
   mkdir build
