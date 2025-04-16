@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=MatrixGenerics
-_pkgver=1.18.1
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6b7ad7b1cb868b6d1d4926a064f92dba')
-b2sums=('06dcd4082bb83fa3c2e0bd3559d11441fc93e38232384681fbce71cb3abafc70147e5ae2a98d7fcc8a67d5f4c38bcd25e92afa82dc9f737499ce37099ce29085')
+md5sums=('672de0a5afc1554e230eaf2a230fcdd1')
+b2sums=('b9ac44150344cf68c3d96cc39c5d15d2a072909a54138fbc5e2e1e3aed6513798f6148ade675912eb96b9366bd400c8dde297ff4ef38bb5935549be8a975c088')
 
 build() {
   mkdir build
