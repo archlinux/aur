@@ -1,7 +1,7 @@
 pkgbase = star-tex
 	pkgdesc = a TeX engine in Go
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~sbinet/star-tex
 	arch = x86_64
 	license = MIT

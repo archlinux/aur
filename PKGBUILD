@@ -2,13 +2,14 @@
 
 pkgname=star-tex
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='a TeX engine in Go'
 arch=(x86_64)
 url="https://git.sr.ht/~sbinet/$pkgname"
 license=(MIT)
 depends=(glibc)
 makedepends=(go)
+confilcts=(texlive-bin)
 options=(!lto)
 _archive="$pkgname-v$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
