@@ -465,12 +465,13 @@ prepare() {
 
     # Read and apply modprobed database
     # See https://aur.archlinux.org/packages/modprobed-db
-    [ -n "${_localmodcfg}" ] &&
+    if [ -n "${_localmodcfg}" ]; then
         if [ -e "${HOME}/.config/modprobed.db" ]; then
             make ${BUILD_FLAGS[*]} LSMOD=${HOME}/.config/modprobed.db localmodconfig
         else
             echo ":: No modprobed.db file was found at ${HOME}/.config, skipping"
         fi
+    fi
 
     # Open configuration editors
     _modify_defconfig
