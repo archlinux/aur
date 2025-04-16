@@ -1,0 +1,15 @@
+pkgbase = openai-codex
+	pkgdesc = Lightweight coding agent that runs in your terminal
+	pkgver = 0.1.4161210
+	pkgrel = 1
+	url = https://github.com/openai/codex
+	arch = any
+	license = Apache-2.0
+	makedepends = npm
+	optdepends = git
+	optdepends = ripgrep: accelerated large-repo search
+	noextract = codex-0.1.4161210.tgz
+	source = https://registry.npmjs.org/@openai/codex/-/codex-0.1.4161210.tgz
+	b2sums = SKIP
+
+pkgname = openai-codex
