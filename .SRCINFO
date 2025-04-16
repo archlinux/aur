@@ -1,7 +1,7 @@
 pkgbase = py-nvfan
 	pkgdesc = Automatic Fan Control for NVIDIA Graphics Cards Based on Temperature.
 	pkgver = 0.1.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/antrax2024/py-nvfan/
 	arch = x86_64
 	license = MIT
