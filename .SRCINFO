@@ -11,7 +11,6 @@ pkgbase = py-nvfan
 	makedepends = python-setuptools
 	makedepends = python-hatchling
 	depends = python
-	depends = python-nvidia-ml-python
 	depends = python-pynvml
 	depends = python-rich
 	depends = confz
