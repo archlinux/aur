@@ -217,6 +217,9 @@ _check_deprecated_settings() {
         _use_current="y"
     fi
     [ -n "${_show_compile}" ] && warning "'_show_compile' is no longer supported"
+
+    # To avoid an error
+    true
 }
 
 _get_patches() {
