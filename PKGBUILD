@@ -4,11 +4,10 @@
 # Contributor: Johannes Dewender    arch at JonnyJD dot net
 # Contributor: Jacob Alexander      haata at kiibohd dot com
 
-_pkg="apt"
-pkgname="python-${_pkg}"
+pkgname="python-apt"
 pkgver=2.9.9
 pkgrel=2
-pkgdesc="Python binding of lib${_pkg}-pkg"
+pkgdesc="Python interface to libapt-pkg"
 arch=('x86_64')
 _url="https://salsa.debian.org/apt-team/${pkgname}/-/archive"
 url="https://tracker.debian.org/pkg/${pkgname}"

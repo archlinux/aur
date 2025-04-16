@@ -1,5 +1,5 @@
 pkgbase = python-apt
-	pkgdesc = Python binding of libapt-pkg
+	pkgdesc = Python interface to libapt-pkg
 	pkgver = 2.9.9
 	pkgrel = 2
 	url = https://tracker.debian.org/pkg/python-apt
