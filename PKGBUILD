@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneGA
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Design gene based on both mRNA secondary structure and codon usage bias using Genetic algorithm'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-seqinr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bc8d10a91f4be179d7b0891f3db9ab527e8c4d2ffdf9c215f0c8ed278cdf266e')
+sha256sums=('e00c74818989c36444713dcd35b3260ccb204a31a57665d8aa31d273fb7ed232')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
