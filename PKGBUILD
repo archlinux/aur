@@ -1,11 +1,14 @@
+# Maintainer: Mahdi Mirzadeh <mahdi@mirzadeh.pro>
+
 pkgname=tlauncher
 pkgver=14
-pkgrel=1
+pkgrel=2
 pkgdesc="TLauncher for Minecraft"
 arch=('x86_64')
 url="https://tlauncher.org/"
 license=('custom')
-depends=('java-runtime>=8' 'bash')
+depends=('java-runtime>=8')
+provides=('tlauncher')
 source=(
   "TLauncher.v${pkgver}.zip::https://dl2.tlauncher.org/f.php?f=files/TLauncher.v${pkgver}.zip"
   "tlauncher"
