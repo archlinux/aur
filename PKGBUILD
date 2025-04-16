@@ -2,7 +2,7 @@
 pkgname=ringer-client-desktop
 _pkgname=Ringer
 _appname="${_pkgname}-Client-Desktop"
-pkgver=5.1.2
+pkgver=5.2.0
 _electronversion=29
 _nodeversion=20
 pkgrel=1
@@ -19,8 +19,8 @@ makedepends=(
     'npm'
     'curl'
     'nvm'
-    'gcc'
-    'cmake'
+    'gendesk'
+    'git'
 )
 options=(
     '!strip'
@@ -31,7 +31,7 @@ source=(
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('450c96b2f5bc69dceb26402baed2fb436663f855712c9d08a6342f97f1fbd4e0'
+sha256sums=('0cb41995cf13b91214d739f05392be26e2810c4f5d395767c8e754b3ca2d3cd8'
             '5ae75de25c7204dba7bfbbbe3c9f58cf6f565963359735a471e1f61ee8692181'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -41,13 +41,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1

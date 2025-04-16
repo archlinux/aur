@@ -1,6 +1,6 @@
 pkgbase = ringer-client-desktop
 	pkgdesc = A new cross platform messaging app.(Use system-wide electron)
-	pkgver = 5.1.2
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://lifplatforms.com/ringer.html
 	arch = any
@@ -8,16 +8,16 @@ pkgbase = ringer-client-desktop
 	makedepends = npm
 	makedepends = curl
 	makedepends = nvm
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = gendesk
+	makedepends = git
 	depends = electron29
 	conflicts = ringer-client-desktop
 	options = !strip
 	options = !emptydirs
-	source = ringer-client-desktop-5.1.2::git+https://github.com/Lif-Platforms/Ringer-Client-Desktop#tag=5.1.2
+	source = ringer-client-desktop-5.2.0::git+https://github.com/Lif-Platforms/Ringer-Client-Desktop#tag=5.2.0
 	source = ringer-client-desktop.desktop
 	source = ringer-client-desktop.sh
-	sha256sums = 450c96b2f5bc69dceb26402baed2fb436663f855712c9d08a6342f97f1fbd4e0
+	sha256sums = 0cb41995cf13b91214d739f05392be26e2810c4f5d395767c8e754b3ca2d3cd8
 	sha256sums = 5ae75de25c7204dba7bfbbbe3c9f58cf6f565963359735a471e1f61ee8692181
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
