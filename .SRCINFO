@@ -1,6 +1,6 @@
 pkgbase = trs-git
 	pkgdesc = A CLI program to manage a trash folder
-	pkgver = r5.c0ae000f
+	pkgver = r6.c586ca89
 	pkgrel = 1
 	url = https://github.com/willuhmjs/trs
 	arch = x86_64
