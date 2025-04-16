@@ -3,8 +3,8 @@
 # Maintainer: Eden Rose(endlesseden) <eenov1988 "at"  gmail.com >
 _pkgname=stratagus
 pkgname=stratagus-git
-pkgver=3.3.2.90b3e1595.20241014
-pkgrel=2
+pkgver=3.3.2.0ba48ff23.20250416
+pkgrel=1
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
 url="https://github.com/Wargus/stratagus"
@@ -37,7 +37,6 @@ build() {
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DGAMEDIR=/usr/bin \
   -DSBINDIr=/usr/bin \
-  -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
   -Bbuild
 
   make -C build
