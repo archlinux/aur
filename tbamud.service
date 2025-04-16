@@ -1,0 +1,71 @@
+[Unit]
+Description=tbaMUD Server
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/tbamud
+ExecStartPre=/usr/bin/chown -R tbamud:tbamud /var/lib/tbamud
+ExecStart=/usr/bin/tbamud -q 4000
+Restart=always
+RestartSec=5
+
+User=tbamud
+Group=tbamud
+PermissionsStartOnly=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+StandardInput=null
+
+# Networking
+RestrictAddressFamilies=AF_INET AF_INET6
+IPAccounting=yes
+
+# Filesystem sandbox
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProcSubset=pid
+ProtectProc=ptraceable
+ReadWritePaths=/var/lib/tbamud
+
+# User separation
+DynamicUser=no
+PrivateUsers=no
+
+# Devices and kernel
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+
+# Capabilities
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=yes
+
+# Misc hardening
+ProtectHostname=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+
+# System call filtering
+SystemCallFilter=@system-service
+SystemCallFilter=~@resources @privileged
+SystemCallArchitectures=native
+
+# Crash handling via journald/coredumpctl
+LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target
+

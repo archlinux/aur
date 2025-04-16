@@ -1,0 +1,17 @@
+post_install() {
+  echo "=> Ensuring /var/lib/tbamud contains game data..."
+  if [ ! -e /var/lib/tbamud/lib ]; then
+    cp -r /usr/share/tbamud/lib /var/lib/tbamud
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo "=> Stopping tbamud.service..."
+  systemctl stop tbamud.service >/dev/null 2>&1 || true
+  systemctl disable tbamud.service >/dev/null 2>&1 || true
+}
+
