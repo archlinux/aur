@@ -1,13 +1,12 @@
 pkgbase = sglauncher-git
 	pkgdesc = A simple GTK3 application launcher
-	pkgver = r66.17fe002
+	pkgver = r71.aaf1709
 	pkgrel = 1
 	url = https://codeberg.org/ItsZariep/sglauncher
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = gtk3
-	makedepends = gtksourceview4
 	depends = gtk3
 	source = git+https://codeberg.org/ItsZariep/sglauncher.git
 	sha256sums = SKIP

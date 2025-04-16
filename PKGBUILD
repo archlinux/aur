@@ -1,6 +1,6 @@
 # Maintainer: ItsZariep <itszariep@disroot.org>
 pkgname=sglauncher-git
-pkgver=r66.17fe002
+pkgver=r71.aaf1709
 pkgrel=1
 pkgdesc="A simple GTK3 application launcher"
 arch=('any')
