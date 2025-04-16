@@ -1,5 +1,5 @@
 pkgbase = python-publicsuffixlist
-	pkgdesc = Public Suffix List parser implementation
+	pkgdesc = publicsuffixlist for python
 	pkgver = 1.0.2.20250319
 	pkgrel = 1
 	url = https://github.com/ko-zu/psl

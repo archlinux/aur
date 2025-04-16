@@ -3,7 +3,7 @@
 pkgname=python-publicsuffixlist
 pkgver=1.0.2.20250319
 pkgrel=1
-pkgdesc='Public Suffix List parser implementation'
+pkgdesc='publicsuffixlist for python'
 arch=('any')
 url='https://github.com/ko-zu/psl'
 license=('MPL-2.0')
