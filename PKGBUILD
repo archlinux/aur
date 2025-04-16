@@ -24,7 +24,7 @@ source=("${pkgbase}-${pkgver}-${_build1}-${_build2}.tar.gz::https://download3.om
         'Horizon_8_Logo.png'
         'horizon-usb.service')
 sha256sums=('b6098f7d9a876ef51f4683a6a94359f94355e4b867cd0b8a5f2117b020993c11'
-            '100b71b82194c8d50e3101d8ac37f47bbf5706a0e49f14607e4a2fc90e2ed9b5'
+            '7b50a24cb893bb5887e0e2099029ec2957fd94a2b55b8718f0777fb0b66f440f'
             '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2')
 
 prepare() {
