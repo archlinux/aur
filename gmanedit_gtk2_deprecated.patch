@@ -1,0 +1,101 @@
+Description: Update for deprecated symbols in current GTK+
+ gtk_set_locale is already called by gtk_init and so unnecessary.  The other
+ symbols have straightforward replacements.
+Author: Colin Watson <cjwatson@ubuntu.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/771093
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=641416
+Forwarded: no
+Last-Update: 2009-09-13
+
+Index: b/src/callbacks.c
+===================================================================
+--- a/src/callbacks.c
++++ b/src/callbacks.c
+@@ -830,7 +830,11 @@
+ 	entry=lookup_widget(prefs,"entry_command");
+ 	entry_text=gtk_entry_get_text(GTK_ENTRY(entry));
+ 	ch = lookup_widget(prefs, "combo2");
++#if !GTK_CHECK_VERSION(2,24,0)
+ 	browser = gtk_combo_box_get_active_text (GTK_COMBO_BOX (ch));
++#else
++	browser = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (ch));
++#endif
+ 	snprintf(buf, sizeof buf, "# File created by gmanedit preferences option\n\nCOMMAND=%s\nINTERNET_BROWSER=%s", entry_text, browser);
+ 	g_free(browser);
+ 	
+Index: b/src/interface.c
+===================================================================
+--- a/src/interface.c
++++ b/src/interface.c
+@@ -507,14 +507,26 @@
+   label17 = gtk_label_new (_("Internet browser"));
+   gtk_widget_show (label17);
+   gtk_box_pack_start (GTK_BOX (hbox4), label17, FALSE, FALSE, 0);
++#if !GTK_CHECK_VERSION(2,24,0)
+   combo2 = gtk_combo_box_entry_new_text ();
++#else
++  combo2 = gtk_combo_box_text_new_with_entry ();
++#endif
+   gtk_widget_show (combo2);
+   gtk_box_pack_start (GTK_BOX (hbox4), combo2, TRUE, TRUE, 0);
++#if !GTK_CHECK_VERSION(2,24,0)
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo2), "mozilla");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo2), "firefox");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo2), "galeon");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo2), "epiphany");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo2), "konqueror");
++#else
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo2), "mozilla");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo2), "firefox");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo2), "galeon");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo2), "epiphany");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo2), "konqueror");
++#endif
+   HOOKUP_OBJECT (wpreferences, combo2, "combo2");
+ 
+ //  gtk_tooltips_set_tip (tooltips, cbinet, _("Select your internet browser from this list"), NULL);
+@@ -721,10 +733,15 @@
+   gtk_widget_show (label2);
+   gtk_fixed_put (GTK_FIXED (fixed2), label2, 56, 168);
+ 
++#if !GTK_CHECK_VERSION(2,24,0)
+   combo1 = gtk_combo_box_new_text ();
++#else
++  combo1 = gtk_combo_box_text_new ();
++#endif
+   gtk_widget_show (combo1);
+   gtk_fixed_put (GTK_FIXED (fixed2), combo1, 240, 168);
+   gtk_widget_set_size_request (combo1, 175, 26);
++#if !GTK_CHECK_VERSION(2,24,0)
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo1), "1");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo1), "2");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo1), "3");
+@@ -733,6 +750,16 @@
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo1), "6");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo1), "7");
+   gtk_combo_box_append_text (GTK_COMBO_BOX(combo1), "8");
++#else
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "1");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "2");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "3");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "4");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "5");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "6");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "7");
++  gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo1), "8");
++#endif
+   gtk_combo_box_set_active (GTK_COMBO_BOX(combo1), 0);
+   HOOKUP_OBJECT (wizard, combo1, "combo1");
+ 
+Index: b/src/main.c
+===================================================================
+--- a/src/main.c
++++ b/src/main.c
+@@ -53,7 +53,6 @@
+ 
+   add_pixmap_directory (DATADIR G_DIR_SEPARATOR_S "pixmaps");
+ 
+-  gtk_set_locale ();
+   gtk_init (&argc, &argv);
+ 
+   /*

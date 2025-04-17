@@ -1,0 +1,49 @@
+Author:  <pietro@sidousci.vousci>
+Description: Fix buffer overflow.
+
+--- gmanedit-0.4.2~/src/callbacks.c	2008-11-11 16:06:24.000000000 +0100
++++ gmanedit-0.4.2/src/callbacks.c	2009-11-09 23:21:14.000000000 +0100
+@@ -940,7 +940,7 @@
+ {
+    GtkWidget *ch,*text,*druid;
+    gchar *nombre,*snumber,*date,*title;
+-   gchar cadena[500];
++   gchar cadena[5000];
+    gint number;
+ 
+ /* Init for main_window */
+
+--- gmanedit-0.4.2~/src/interface.c	2008-03-12 19:20:00.000000000 +0100
++++ gmanedit-0.4.2/src/interface.c	2009-11-09 23:20:51.000000000 +0100
+@@ -496,6 +496,7 @@
+ 
+   entry_command = gtk_entry_new ();
+   gtk_widget_show (entry_command);
++  gtk_entry_set_max_length (entry_command, 100);
+   HOOKUP_OBJECT (wpreferences, entry_command, "entry_command");
+ 
+   gtk_box_pack_start (GTK_BOX (hbox3), entry_command, FALSE, TRUE, 0);
+@@ -607,6 +608,7 @@
+   gtk_box_pack_start (GTK_BOX (druid_vbox2), fixed1, TRUE, TRUE, 0);
+ 
+   mname = gtk_entry_new ();
++  gtk_entry_set_max_length (mname, 100);
+   HOOKUP_OBJECT (wizard, mname, "mname");
+   gtk_widget_show (mname);
+   gtk_fixed_put (GTK_FIXED (fixed1), mname, 248, 24);
+@@ -614,6 +616,7 @@
+ //  gtk_tooltips_set_tip (tooltips, mname, _("Short name to the man page (example: gmanedit)"), NULL);
+   
+   mdate = gtk_entry_new ();
++  gtk_entry_set_max_length (mdate, 100);
+   HOOKUP_OBJECT (wizard, mdate, "mdate");
+   gtk_widget_show (mdate);
+   gtk_fixed_put (GTK_FIXED (fixed1), mdate, 248, 80);
+@@ -629,6 +632,7 @@
+ 	}
+ 
+   mtitle = gtk_entry_new ();
++  gtk_entry_set_max_length (mtitle, 100);
+   HOOKUP_OBJECT (wizard, mtitle, "mtitle");
+   gtk_widget_show (mtitle);
+   gtk_fixed_put (GTK_FIXED (fixed1), mtitle, 248, 136);

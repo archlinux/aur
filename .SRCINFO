@@ -1,0 +1,32 @@
+pkgbase = gmanedit
+	pkgdesc = Gnome Manual Pages Editor is an editor for man pages that runs on X using the GTK+ libraries
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gmanedit2
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2>=2.10
+	depends = zlib
+	source = gmanedit-0.4.2.tar.gz::https://downloads.sourceforge.net/sourceforge/gmanedit2/gmanedit-0.4.2.tar.gz
+	source = gmanedit_translate_german.patch
+	source = gmanedit_gtk2_link_zlib.patch
+	source = gmanedit_menu_typo.patch
+	source = gmanedit_wizard_buffer_overflow.patch
+	source = gmanedit_translate_spanish.patch
+	source = gmanedit_desktop_utf8.patch
+	source = gmanedit_gtk2_file_save_dialog.patch
+	source = gmanedit_gtk2_deprecated.patch
+	sha256sums = fbfaa424653b9287ca2994293bab03d51fa4957cdb7e974360f50c4ab2c76170
+	sha256sums = 356701200771afc72fab4c020bf9816590cd24853ae9078883d1a2bd58a24fb2
+	sha256sums = b3ee61f55b757ff23d503c3d9e3f13e1a8f7b822e41aa16a42d10af52bd53628
+	sha256sums = 35a7f785746c35d1cf892c9fa4d79b07bcf318efb5c752d19d2b3ced4f2b4b08
+	sha256sums = 1ce17c8dc191995f479bd1966509a9ae22542c2bfd1ec7d3ad7c220fa3f00bcb
+	sha256sums = 6400aea925e471a123eab948f383df2489ca0ebccdfdeb13ebcfe8dd3f492f97
+	sha256sums = f9799446a6b6c5e70e66e6fd11b295fadb2db65336c638a60a24c7b744753c27
+	sha256sums = 7e252654604d6f43018da7ad278dd7858864981e351c1e709d378bf65a591daf
+	sha256sums = ac34ca8286db9dba271046c341634adb635b4a59f58693029fb95479d2e4f127
+
+pkgname = gmanedit

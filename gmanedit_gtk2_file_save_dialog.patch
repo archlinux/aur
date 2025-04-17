@@ -1,0 +1,21 @@
+From: Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>
+Description: Correctly initialize the file choose with a SAVE action.
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=571681
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gmanedit/+bug/688827
+Forwarded: yes
+Approved: Ralf Treinen <treinen@debian.org>
+
+--- gmanedit~/src/interface.c	2010-12-10 19:57:44.000000000 -0500
++++ gmanedit/src/interface.c	2010-12-10 20:05:53.093455001 -0500
+@@ -288,9 +288,9 @@
+ 
+   save_file = gtk_file_chooser_dialog_new (_("Gmanedit - Saving file"),
+ 				      GTK_WINDOW (parent),
+-				      GTK_FILE_CHOOSER_ACTION_OPEN,
++				      GTK_FILE_CHOOSER_ACTION_SAVE,
+ 				      GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+-				      GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
++				      GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+ 				      NULL);
+   GdkPixbuf *icon_pixbuf = create_image ("gmanedit_icon.png");
+   gtk_window_set_icon (GTK_WINDOW (save_file), icon_pixbuf);

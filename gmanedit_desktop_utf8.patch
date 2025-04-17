@@ -1,0 +1,17 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: Convert desktop file to utf8 encoding
+Debian-Bug: #614141
+
+--- gmanedit-0.4.2.orig/gmanedit.desktop	2011-02-21 22:20:17.000000000 +0100
++++ gmanedit-0.4.2/gmanedit.desktop	2011-02-21 22:20:40.000000000 +0100
+@@ -2,8 +2,8 @@
+ Version=1.0
+ Name=gmanedit
+ Comment=GNOME Manpages Editor
+-Comment[es]=Editor de p·ginas man de GNOME
+-Comment[gl]=Editor de p·xinas man de GNOME
++Comment[es]=Editor de p√°ginas man de GNOME
++Comment[gl]=Editor de p√°xinas man de GNOME
+ Exec=gmanedit
+ Terminal=false
+ Type=Application

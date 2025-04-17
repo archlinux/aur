@@ -1,0 +1,1125 @@
+Author: Ralf Treinen <treinen@debian.org>
+Description: add german translation provided by Mechtilde Stehmann.
+Debian-bug: #730291
+
+Index: gmanedit/po/de.po
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ gmanedit/po/de.po	2013-11-30 18:06:41.633909005 +0100
+@@ -0,0 +1,1116 @@
++# German translation for Gmanedit
++# Copyright (C) 2013 Mechtilde Stehmann.
++# This file is distributed under the same license as the Gmanedit package.
++# Mechtilde Stehmann <ooo@mechtilde.de>, 2013.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: gmanedit 0.3\n"
++"Report-Msgid-Bugs-To: pg4i@amsat.org\n"
++"POT-Creation-Date: 2008-11-03 19:16+0100\n"
++"PO-Revision-Date: 20-06-2000 00:00+0200\n"
++"Last-Translator: Mechtilde Stehmann <ooo@mechtilde.de>\n"
++"Language-Team: German\n"
++"Language: de\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=iso-8859-1\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#: src/interface.c:37
++msgid "_New"
++msgstr "_Neu"
++
++#: src/interface.c:38
++msgid "New _Wizard page"
++msgstr "Neu mit _Assistenten..."
++
++#: src/interface.c:39
++msgid "_Open..."
++msgstr "�_ffnen..."
++
++#: src/interface.c:40
++msgid "_Save"
++msgstr "_Speichern"
++
++#: src/interface.c:41
++msgid "Save _As..."
++msgstr "Speichern _unter..."
++
++#: src/interface.c:42
++msgid "_Quit"
++msgstr "_Beenden"
++
++#: src/interface.c:44
++msgid "Cu_t"
++msgstr "Aus_schneiden"
++
++#: src/interface.c:45
++msgid "_Copy"
++msgstr "_Kopieren"
++
++#: src/interface.c:46
++msgid "_Paste"
++msgstr "_Einf�gen"
++
++#: src/interface.c:47
++msgid "_Select All"
++msgstr "_Alle Ausw�hlen"
++
++#: src/interface.c:49
++msgid "Basic Page"
++msgstr "Standardseite"
++
++#: src/interface.c:50
++msgid "Titel"
++msgstr "T�tel"
++
++#: src/interface.c:51
++msgid "Date"
++msgstr "Datum"
++
++#: src/interface.c:53
++msgid "Name"
++msgstr "Name"
++
++#: src/interface.c:54
++msgid "Synopsis"
++msgstr "Syntax"
++
++#: src/interface.c:55
++msgid "Configuration"
++msgstr "Konfiguration"
++
++#: src/interface.c:56
++msgid "Description"
++msgstr "Beschreibung"
++
++#: src/interface.c:57
++msgid "Options"
++msgstr "Optionen"
++
++#: src/interface.c:58
++msgid "Return value"
++msgstr "R�ckgabewert"
++
++#: src/interface.c:59
++msgid "Exit status"
++msgstr "Exit status"
++
++#: src/interface.c:60
++msgid "Errors"
++msgstr "Fehler"
++
++#: src/interface.c:61
++msgid "Environment"
++msgstr "Umgebung"
++
++#: src/interface.c:62
++#, fuzzy
++msgid "Files"
++msgstr "Dateien
++
++#: src/interface.c:63
++msgid "Versions"
++msgstr "Versionen"
++
++#: src/interface.c:64
++msgid "Conforming to"
++msgstr "Normgerecht"
++
++#: src/interface.c:65
++msgid "Notes"
++msgstr "Anmerkungen"
++
++#: src/interface.c:66
++msgid "Bugs"
++msgstr "Fehler"
++
++#: src/interface.c:67
++msgid "Example"
++msgstr "Beispiel"
++
++#: src/interface.c:68
++msgid "See also"
++msgstr "Siehe auch"
++
++#: src/interface.c:70
++msgid "Left"
++msgstr "Links"
++
++#: src/interface.c:71
++msgid "Both"
++msgstr "Blocksatz"
++
++#: src/interface.c:73
++msgid "Enable"
++msgstr "Activiert"
++
++#: src/interface.c:74
++msgid "Disable"
++msgstr "Deaktiviert"
++
++#: src/interface.c:76
++msgid "Bold"
++msgstr "Fett"
++
++#: src/interface.c:77
++msgid "Bold - Roman"
++msgstr "Fett - Roman"
++
++#: src/interface.c:78
++msgid "Italic"
++msgstr "Kursiv"
++
++#: src/interface.c:79
++msgid "Italic - Bold"
++msgstr "Kursiv - Fett"
++
++#: src/interface.c:80
++msgid "Italic - Roman"
++msgstr "Kursiv - Roman"
++
++#: src/interface.c:81
++msgid "Roman - Bold"
++msgstr "Roman - Fett"
++
++#: src/interface.c:82
++msgid "Roman - Italic"
++msgstr "Roman - Kursiv"
++
++#: src/interface.c:83
++msgid "Small - Bold"
++msgstr "Schmal - Fett"
++
++#: src/interface.c:84
++msgid "Small"
++msgstr "Schmal"
++
++#: src/interface.c:86
++msgid "New Paragraph"
++msgstr "Neuer Absatz"
++
++#: src/interface.c:87
++#, fuzzy
++msgid "Paragraph Start"
++msgstr "Absatz Beginn"
++
++#: src/interface.c:89
++msgid "Margin start"
++msgstr "Einr�ckung Beginn"
++
++#: src/interface.c:90
++msgid "Margin end"
++msgstr "Einr�ckung Ende"
++
++#: src/interface.c:92
++msgid "Default tabs"
++msgstr "Standardtabulator"
++
++#: src/interface.c:93
++msgid "Subheader"
++msgstr "Untertitel"
++
++#: src/interface.c:94
++msgid "Comments"
++msgstr "Kommentare"
++
++#: src/interface.c:96
++msgid "View created page"
++msgstr "Seitenansicht"
++
++#: src/interface.c:97
++msgid "_Preferences"
++msgstr "Voreinstellungen"
++
++#: src/interface.c:99
++msgid "H_elp"
++msgstr "_Hilfe
++
++#: src/interface.c:100
++#, fuzzy
++msgid "_Home page"
++msgstr "_Webseite"
++
++#: src/interface.c:101
++msgid "_About"
++msgstr "�_ber..."
++
++#: src/interface.c:213
++msgid "Gmanedit - Gnome manpages editor"
++msgstr "Gmanedit - Gnome Manpage Editor"
++
++#: src/interface.c:272
++msgid "Gmanedit - Select file"
++msgstr "Gmanedit - Datei ausw�hlen"
++
++#: src/interface.c:289
++msgid "Gmanedit - Saving file"
++msgstr "Gmanedit - Datei speichern"
++
++#: src/interface.c:319
++msgid "Gmanedit - Search and replace"
++msgstr "Gmanedit - Suchen und ersetzen"
++
++#: src/interface.c:332
++msgid "Search:         "
++msgstr "Suchen:        "
++
++#: src/interface.c:340 src/interface.c:354
++msgid "Option not yet available"
++msgstr "Option nicht verf�gbar"
++
++#: src/interface.c:346
++msgid "Replace with: "
++msgstr "Ersetzen mit: "
++
++#: src/interface.c:422
++msgid "Man Pages Editor"
++msgstr "Manpage Editor"
++
++#: src/interface.c:439
++msgid "Gmanedit - Exit"
++msgstr "Gmanedit - Beenden"
++
++#: src/interface.c:442
++msgid "Exit from gmanedit?"
++msgstr "gmanedit beenden?"
++
++#: src/interface.c:480
++msgid "Gmanedit - Preferences"
++msgstr "Gmanedit - Voreinstellungen"
++
++#: src/interface.c:493
++msgid "Command to test created man pages: "
++msgstr "Kommando, um Manpages zu testen: "
++
++#: src/interface.c:502
++msgid "xterm -e man "
++msgstr "xterm -e man "
++
++#: src/interface.c:506
++msgid "Internet browser"
++msgstr "Internet Browser"
++
++#: src/interface.c:583 src/callbacks.c:762
++msgid "January"
++msgstr "Januar"
++
++#: src/interface.c:583 src/callbacks.c:762
++msgid "February"
++msgstr "Februar"
++
++#: src/interface.c:583 src/callbacks.c:762
++msgid "March"
++msgstr "_M�rz"
++
++#: src/interface.c:583 src/callbacks.c:762
++msgid "April"
++msgstr "April"
++
++#: src/interface.c:584 src/callbacks.c:763
++msgid "May"
++msgstr "Mai"
++
++#: src/interface.c:584 src/callbacks.c:763
++msgid "June"
++msgstr "Juni"
++
++#: src/interface.c:584 src/callbacks.c:763
++msgid "July"
++msgstr "Juli"
++
++#: src/interface.c:584 src/callbacks.c:763
++msgid "August"
++msgstr "August"
++
++#: src/interface.c:585 src/callbacks.c:764
++msgid "September"
++msgstr "September"
++
++#: src/interface.c:585 src/callbacks.c:764
++msgid "October"
++msgstr "Oktober"
++
++#: src/interface.c:585 src/callbacks.c:764
++msgid "November"
++msgstr "November"
++
++#: src/interface.c:585 src/callbacks.c:764
++msgid "December"
++msgstr "Dezember"
++
++#: src/interface.c:590
++msgid "Gmanedit - Wizard"
++msgstr "Gmanedit - Assistent"
++
++#: src/interface.c:594
++msgid ""
++"Welcome to the Gmanedit Man Pages Wizard. Follow the next steps to build a "
++"Basic Man Page"
++msgstr ""
++"Willkommen beim Gmanedit Manpages Assistenten\n"
++"Folgen Sie den n�chsten Schritten, \n"
++"um eine Standardseite zu erstellen."
++
++#: src/interface.c:598
++msgid "Welcome"
++msgstr "Willkommen"
++
++#: src/interface.c:638
++msgid "Creation Date:"
++msgstr "Erstellungsdatum"
++
++#: src/interface.c:644
++msgid "Man page Title:"
++msgstr "Manpage Titel:"
++
++#: src/interface.c:650
++msgid "Man page Name:"
++msgstr "Manpage Name:"
++
++#: src/interface.c:657
++msgid "Step 1: Basic Information"
++msgstr "Schritt 1: Basisinformation"
++
++#: src/interface.c:668
++msgid "There are 8 sections for man pages. Select one:"
++msgstr "Es gibt 8 Abschnitte. W�hlen Sie eine aus:"
++
++#: src/interface.c:674
++msgid "Section 1: Commands"
++msgstr "Abschnitt 1: Kommandos"
++
++#: src/interface.c:679
++msgid "Section 2: System calls"
++msgstr "Abschnitt 2: Systemaufrufe"
++
++#: src/interface.c:684
++msgid "Section 3: Library calls"
++msgstr "Abschnitt 3: Bibliotheksaufrufe"
++
++#: src/interface.c:689
++msgid "Section 4: Special files (devices)"
++msgstr "Abschnitt 4: Spezielle Dateien (Devices)"
++
++#: src/interface.c:695
++msgid "Section 5: File formats and conventions"
++msgstr "Abschnitt 5: Dateiformate und Konventionen"
++
++#: src/interface.c:700
++msgid "Section 6: Games"
++msgstr "Abschnitt 6: Spiele"
++
++#: src/interface.c:705
++msgid "Section 7: Conventions and miscellaneous"
++msgstr "Abschnitt 7:Verschiedenes"
++
++#: src/interface.c:710
++msgid "Section 8: System management commands"
++msgstr "Abschnitt 8: Befehle f�r die Systemverwaltung"
++
++#: src/interface.c:716
++msgid "Section number"
++msgstr "Nummer des Abschnittes"
++
++#: src/interface.c:736
++msgid "Step 2: Section number"
++msgstr "Schritt 2: Nummer des Abschnittes"
++
++#: src/interface.c:747
++msgid "What sections would you like include?"
++msgstr "Welche Abschnitte werden eingef�gt"
++
++#: src/interface.c:751
++msgid "NAME"
++msgstr "NAME"
++
++#: src/interface.c:757
++msgid "SYNOPSIS"
++msgstr "SYNTAX"
++
++#: src/interface.c:763
++msgid ""
++"CONFIGURATION\n"
++"(Section 4)"
++msgstr ""
++"Konfiguration\n"
++"(Abschnitt 4)"
++
++#: src/interface.c:768
++msgid "DESCRIPTION"
++msgstr "Beschreibung"
++
++#: src/interface.c:774
++msgid ""
++"OPTIONS\n"
++"(Section 1/8)"
++msgstr ""
++"OPTIONEN\n"
++"(Abschnitt 1/8)"
++
++#: src/interface.c:780
++msgid ""
++"EXIT STATUS\n"
++"(Section 1/8)"
++msgstr ""
++"EXIT STATUS\n"
++"(Abschnitt 1/8)"
++
++#: src/interface.c:786
++msgid ""
++"RETURN VALUE\n"
++"(Section 2/3)"
++msgstr ""
++"R�ckgabewert\n"
++"(Abschnitt 2/3)"
++
++#: src/interface.c:791
++msgid ""
++"ERRORS\n"
++"(Section 2/3)"
++msgstr ""
++"Fehler\n"
++"(Abschnitt 2/3)"
++
++#: src/interface.c:796
++msgid "ENVIRONMENT"
++msgstr "UMGEBUNG"
++
++#: src/interface.c:801
++msgid "FILES"
++msgstr "DATEIEN"
++
++#: src/interface.c:806
++msgid ""
++"VERSIONS\n"
++"(Section 2/3)"
++msgstr ""
++"VERSIONEN\n"
++"(Abschnitt 2/3)"
++
++#: src/interface.c:812
++msgid "CONFORMING TO"
++msgstr "NORMGERECHT"
++
++#: src/interface.c:817
++msgid "NOTES"
++msgstr "ANMERKUNGEN"
++
++#: src/interface.c:822
++msgid "BUGS"
++msgstr "FEHLER"
++
++#: src/interface.c:827
++msgid "EXAMPLE"
++msgstr "BEISPIEL"
++
++#: src/interface.c:832
++msgid "SEE ALSO"
++msgstr "SIEHE AUCH"
++
++#: src/interface.c:839
++msgid "Step 3: Man Sections"
++msgstr "Schritt 3: Abschnitt der Manpage"
++
++#: src/interface.c:844
++msgid ""
++"Thank you for using me! You can now edit the man page with gmanedit to "
++"change and complete the text"
++msgstr ""
++"Danke f�r Ihre Nutzung\n"
++"Nun k�nnen Sie die Manpage mit Gmanedit bearbeiten\n"
++"um den Text zu �ndern und zu vervollst�ndigen."
++
++#: src/interface.c:848
++msgid "The End"
++msgstr "Ende"
++
++#: src/callbacks.c:85
++msgid "Text cut."
++msgstr "Text ausschneiden."
++
++#: src/callbacks.c:100
++msgid "Text copied."
++msgstr "Text kopieren."
++
++#: src/callbacks.c:117
++msgid "Text pasted."
++msgstr "Text einf�gen."
++
++#: src/callbacks.c:126
++msgid ""
++".\\\"Created with GNOME Manpages Editor\n"
++".\\\"http://sourceforge.net/projects/gmanedit2\n"
++"\n"
++".\\\"Replace <program> with the program name, x with the Section Number\n"
++".TH <program> x \"<date>\" \"\" \"Linux User's Manual\"\n"
++"\n"
++".SH NAME\n"
++"<program> \\- program for...\n"
++"\n"
++"..SH SYNOPSIS\n"
++".B <program>\n"
++".RI [ options ]\n"
++".br\n"
++"\n"
++".SH DESCRIPTION\n"
++"This manual page explains the \\fB<program>\\fP program. The \\fB<program>"
++"\\fP program is for...\n"
++"\n"
++".SH OPTIONS\n"
++".IP \\fB\\-OPTION\\fP\n"
++"This option...\n"
++"\n"
++".SH NOTES\n"
++"\n"
++".SH \"SEE ALSO\"\n"
++msgstr ""
++".\\\"Erstellt mit dem GNOME Manpages Editor (gmanedit)\n"
++".\\\"http://gmanedit.sourceforge.net\n"
++".\\\"Ersetze <Programm> durch den Programmname, X durch die Nummer des Abschnittes\n"
++".TH <Programm> X \"<Datum>\" \"\" \"Linux User's Manual\"\n"
++"\n"
++".SH NAME\n"
++"<Programm> \\-Programm f�r...\n"
++"\n"
++".SH Syntax\n"
++".B <Programm>\n"
++".RI [ Optionen ]\n"
++".br\n"
++"\n"
++".SH BESCHREIBUNG\n"
++"Diese Manpage beschreibt das \\fB<Programm>\\fP Programm\n"
++"Das \\fB<Programm>\\fP Programm ist f�r...\n "
++"\n"
++".SH Optionen\n"
++".IP \\fB\\-Option\\fP\n"
++"Diese Option...\n"
++"\n"
++".SH Anmerkungen\n"
++"\n"
++".SH Siehe auch\"\n"
++
++#: src/callbacks.c:153
++msgid "New file."
++msgstr "Neue Datei."
++
++#: src/callbacks.c:272
++msgid "File saved."
++msgstr "Datei gespeichert."
++
++#: src/callbacks.c:276
++msgid "File NOT saved."
++msgstr "Datei nicht gespeichert."
++
++#: src/callbacks.c:289
++msgid ""
++".TH <program> <section number> \"<date>\" \"\" \"Linux User's Manual\"\n"
++"\n"
++msgstr ""
++".TH <Programm> <Abschnittnummer> \"<Datum>\" \"\" \"Linux User's Manual\"\n"
++"\n"
++
++#: src/callbacks.c:299
++msgid ""
++".SH NAME\n"
++"<program> \\- program for... \n"
++msgstr ""
++".SH NAME\n"
++"<Programm> \\- Programm f�r... \n"
++
++#: src/callbacks.c:309
++msgid ".SH SYNOPSIS\n"
++msgstr ".SH Syntax\n"
++
++#: src/callbacks.c:319
++msgid ".SH CONFIGURATION\n"
++msgstr ""
++".SH Konfiguration\n"
++
++#: src/callbacks.c:328
++msgid ".SH DESCRIPTION\n"
++msgstr ".SH BESCHREIBUNG\n"
++
++#: src/callbacks.c:338
++msgid ".SH OPTIONS\n"
++msgstr ".SH OPTIONEN\n"
++
++#: src/callbacks.c:348
++msgid ".SH \"RETURN VALUE\"\n"
++msgstr ".SH \"R�ckgabewert\"\n"
++
++#: src/callbacks.c:358
++msgid ".SH \"EXIT STATUS\"\n"
++msgstr ".SH \"EXIT STATUS\"\n"
++
++#: src/callbacks.c:367
++msgid ".SH ERRORS\n"
++msgstr ""
++".SH FEHLER\n"
++"\n"
++
++#: src/callbacks.c:377
++msgid ".SH FILES\n"
++msgstr ".SH DATEIEN\n"
++
++#: src/callbacks.c:386
++msgid ".SH ENVIRONMENT\n"
++msgstr ".SH UMGEBUNG\n"
++
++#: src/callbacks.c:395
++msgid ".SH VERSIONS\n"
++msgstr ""
++".SH VERSIONEN\n"
++"\n"
++
++#: src/callbacks.c:404
++msgid ".SH NOTES\n"
++msgstr ".SH Anmerkungen\n"
++
++#: src/callbacks.c:413
++msgid ".SH BUGS\n"
++msgstr ".SH FEHLER\n"
++
++#: src/callbacks.c:422
++msgid ".SH EXAMPLE\n"
++msgstr ".SH BEISPIEL\n"
++
++#: src/callbacks.c:432
++msgid ".SH \"SEE ALSO\"\n"
++msgstr ".SH \"SIEHE AUCH\"\n"
++
++#: src/callbacks.c:441
++
++msgid ".SH \"CONFORMING TO\"\n"
++msgstr ".SH \"NORMGERECHT\"\n"
++
++#: src/callbacks.c:458
++msgid ".SH \"<SECTION NAME>\"\n"
++msgstr ".SH <Abschnittsname>\n"
++
++#: src/callbacks.c:593
++msgid ".RS <margin position>\n"
++msgstr ".RS <Positon der Einr�ckung>\n"
++
++#: src/callbacks.c:620
++msgid ".SS \"<NAME>\"\n"
++msgstr ".SS \"<NAME>\"\n"
++
++#: src/callbacks.c:660
++msgid "Page preview."
++msgstr "Seitenvorschau."
++
++#: src/callbacks.c:780
++msgid "Date inserted."
++msgstr "Eingegebenes Datum."
++
++#: src/callbacks.c:783
++msgid "Cannot get system date!"
++msgstr "Es gibt kein Systemdatum!"
++
++#: src/callbacks.c:914
++msgid "Text selected."
++msgstr "Text ausgew�hlt."
++
++#: src/callbacks.c:986
++msgid ".SH NAME\n"
++msgstr ".SH NAME\n"
++
++#: src/callbacks.c:988
++msgid ""
++" \\- program for...\n"
++"\n"
++msgstr ""
++"\\Programm f�r...\n"
++"\n"
++
++#: src/callbacks.c:994
++msgid ""
++".SH SYNOPSIS\n"
++".B "
++msgstr ""
++".SH SYNTAX\n"
++".B "
++
++#: src/callbacks.c:996
++msgid ""
++"\n"
++".RI [ options ]\n"
++".br\n"
++"\n"
++msgstr ""
++"\n"
++".RI [ OPTIONEN ]\n"
++".br\n"
++"\n"
++
++#: src/callbacks.c:1001
++msgid ""
++".SH CONFIGURATION\n"
++"\n"
++msgstr ""
++".SH KONFIGURATION\n"
++"\n"
++
++#: src/callbacks.c:1006
++msgid ""
++".SH DESCRIPTION\n"
++"This manual page explains the\n"
++".B "
++msgstr ""
++".SH BESCHREIBUNG\n"
++"Diese Manpage beschreibt das\n"
++".B "
++
++#: src/callbacks.c:1008
++msgid ""
++"\n"
++"program. This program...\n"
++".PP\n"
++"\\fB"
++msgstr ""
++"\n"
++"Programm. Dieses Programm...\n"
++".PP\n"
++"\\fB"
++
++#: src/callbacks.c:1010
++msgid ""
++"\\fP is for...\n"
++"\n"
++msgstr ""
++"\\fP ist f�r...\n"
++"\n"
++
++#: src/callbacks.c:1015
++msgid ""
++".SH OPTIONS\n"
++".B\n"
++".IP -OPTION\n"
++"This option...\n"
++"\n"
++msgstr ""
++".SH OPTIONEN\n"
++".B\n"
++".IP -OPTION\n"
++"Diese Option...\n"
++"\n"
++
++#: src/callbacks.c:1019
++msgid ""
++".SH \"EXIT STATUS\"\n"
++"\n"
++msgstr ""
++".SH \"EXIT STATUS\"\n"
++"\n"
++
++#: src/callbacks.c:1029
++msgid ""
++".SH ERRORS\n"
++"\n"
++msgstr ""
++".SH FEHLER\n"
++"\n"
++
++#: src/callbacks.c:1033
++msgid ""
++".SH ENVIRONMENT\n"
++"\n"
++msgstr ""
++".SH UMGEBUNG\n"
++"\n"
++
++#: src/callbacks.c:1037
++msgid ""
++".SH FILES\n"
++"\n"
++msgstr ""
++".SH DATEIEN\n"
++"\n"
++
++#: src/callbacks.c:1041
++msgid ""
++".SH VERSIONS\n"
++"\n"
++msgstr ""
++".SH VERSIONEN\n"
++"\n"
++
++#: src/callbacks.c:1046
++msgid ""
++".SH \"CONFORMING TO\"\n"
++"\n"
++msgstr ""
++".SH NORMGERECHT\n"
++"\n"
++
++#: src/callbacks.c:1050
++msgid ""
++".SH NOTES\n"
++"\n"
++msgstr ""
++".SH ANMERKUNGEN\n"
++"\n"
++
++#: src/callbacks.c:1054
++msgid ""
++".SH BUGS\n"
++"\n"
++msgstr ""
++".SH FFEHLER\n"
++"\n"
++
++#: src/callbacks.c:1058
++msgid ""
++".SH EXAMPLE\n"
++"\n"
++msgstr ""
++".SH BEISPIEL\n"
++"\n"
++
++#: src/callbacks.c:1062
++msgid ""
++".SH \"SEE ALSO\"\n"
++"\n"
++msgstr ""
++".SH V\"SIEHE AUCH\"\n"
++"\n"
++
++#: src/callbacks.c:1068
++msgid "Wizard page created."
++msgstr "Neue Seite mit Assistenten erstellt."
++
++#: src/callbacks.c:1126
++msgid "Man help."
++msgstr "Man Hilfe"
++
++#: src/callbacks.c:1148
++#, fuzzy
++msgid "File opened."
++msgstr "Datei ge�ffnet."
++
++#: src/support.c:93
++#, c-format
++msgid "Couldn't find pixmap file: %s"
++msgstr "Kann pixmap Datei: %s nicht finden."
++
++#: src/support.c:100
++#, c-format
++msgid "Failed to load pixbuf file: %s: %s\n"
++msgstr "Failed to load pixbuf file: %s: %s\n"
++
++#~ msgid "Usage"
++#~ msgstr "Uso"
++
++#~ msgid "Diagnostics"
++#~ msgstr "Diagn�sticos"
++
++#~ msgid "Security"
++#~ msgstr "Seguridad"
++
++#~ msgid "Author"
++#~ msgstr "Autor"
++
++#~ msgid "Other"
++#~ msgstr "Otro"
++
++#~ msgid "Empty lines"
++#~ msgstr "L�neas en blanco"
++
++#~ msgid "Author:"
++#~ msgstr "Autor:"
++
++#~ msgid ".SH USAGE\n"
++#~ msgstr ".SH USO\n"
++
++#~ msgid ".SH DIAGNOSTICS\n"
++#~ msgstr ".SH DIAGN�STICOS\n"
++
++#~ msgid ".SH SECURITY\n"
++#~ msgstr ".SH SEGURIDAD\n"
++
++#~ msgid ".SH AUTHOR\n"
++#~ msgstr ".SH AUTOR\n"
++
++#~ msgid ""
++#~ ".UR <address>\n"
++#~ ".UE\n"
++#~ msgstr ""
++#~ ".UR <direcci�n url>\n"
++#~ ".UE\n"
++
++#~ msgid ".UN <address>\n"
++#~ msgstr ".UN <direcci�n>\n"
++
++#, fuzzy
++#~ msgid "Can not open Internet Browser"
++#~ msgstr "No pudo abrirse el Navegador de Internet"
++
++#~ msgid "_Search"
++#~ msgstr "_Buscar"
++
++#, fuzzy
++#~ msgid "_Replace"
++#~ msgstr "_Reemplazar"
++
++#~ msgid "_Close"
++#~ msgstr "_Cerrar"
++
++#, fuzzy
++#~ msgid "yelp"
++#~ msgstr "A_yuda"
++
++#~ msgid "Select your internet browser from this list"
++#~ msgstr "Selecione su navegador de internet de la lista"
++
++#~ msgid "Mars"
++#~ msgstr "Marzo"
++
++#~ msgid "Jule"
++#~ msgstr "Julio"
++
++#~ msgid "Short name to the man page (example: gmanedit)"
++#~ msgstr "Nombre corto para la p�gina del manual (ejemplo: gmanedit)"
++
++#~ msgid "Creation date (default today)"
++#~ msgstr "Fecha de creaci�n (por defecto hoy)"
++
++#~ msgid "Long man page name or title"
++#~ msgstr "Nombre largo o t�tulo para la p�gina"
++
++#~ msgid "First_Name Last_Name <my@email.com>"
++#~ msgstr "Nombre Apellidos <yo@dominio.com>"
++
++#~ msgid "Section 7: Macro packages and Coventions"
++#~ msgstr "Secci�n 7: Macro paquetes y Conveciones"
++
++#~ msgid "Section 9: Kernel routines"
++#~ msgstr "Secci�n 9: Rutinas del kernel"
++
++#~ msgid "Select section number"
++#~ msgstr "Selecione el n�mero de secci�n"
++
++#~ msgid "ERROR HANDLING"
++#~ msgstr "GESTI�N DE ERRORES"
++
++#~ msgid "USAGE"
++#~ msgstr "USO"
++
++#~ msgid "ERRORS"
++#~ msgstr "ERRORES"
++
++#~ msgid "OPTIONS"
++#~ msgstr "OPCI�NES"
++
++#~ msgid "AUTHOR"
++#~ msgstr "AUTOR"
++
++#~ msgid "DIAGNOSTICS"
++#~ msgstr "DIAGN�STICOS"
++
++#~ msgid "SECURITY"
++#~ msgstr "SEGURIDAD"
++
++#~ msgid "New File."
++#~ msgstr "Nuevo fichero."
++
++#~ msgid ""
++#~ ".SH USAGE\n"
++#~ "\n"
++#~ msgstr ""
++#~ ".SH USO\n"
++#~ "\n"
++
++#~ msgid ""
++#~ ".SH DIAGNOSTICS\n"
++#~ "\n"
++#~ msgstr ""
++#~ ".SH DIAGN�STICOS\n"
++#~ "\n"
++
++#~ msgid ""
++#~ ".SH SECURITY\n"
++#~ "\n"
++#~ msgstr ""
++#~ ".SH SEGURIDAD\n"
++#~ "\n"
++
++#~ msgid ""
++#~ ".SH ERROR HANDLING\n"
++#~ "\n"
++#~ msgstr ""
++#~ ".SH GESTI�N DE ERRORES\n"
++#~ "\n"
++
++#~ msgid "Start a margin"
++#~ msgstr "Inicio de un margen"
++
++#~ msgid "Like .SH"
++#~ msgstr "Como .SH"
++
++#~ msgid "Section"
++#~ msgstr "Secci�n"
++
++#, fuzzy
++#~ msgid "Justify"
++#~ msgstr "Justificaci�n"
++
++#~ msgid "Filling"
++#~ msgstr "Relleno"
++
++#~ msgid "Font"
++#~ msgstr "Fuente"
++
++#~ msgid "Paragraphs"
++#~ msgstr "P�rrafos"
++
++#~ msgid "Margin"
++#~ msgstr "Marjen"
++
++#~ msgid "Hypertext"
++#~ msgstr "Hipertexto"
++
++#~ msgid "Not available"
++#~ msgstr "No disponible"
++
++#~ msgid "Others"
++#~ msgstr "Otros"
++
++#~ msgid "_Insert"
++#~ msgstr "_Insertar"
++
++#~ msgid "New"
++#~ msgstr "Nuevo"
++
++#~ msgid "Open page"
++#~ msgstr "Abrir p�gina"
++
++#~ msgid "Save current page"
++#~ msgstr "Guardar p�gina actual"
++
++#~ msgid "Cut selected text"
++#~ msgstr "Cortar el texto seleccionado"
++
++#~ msgid "Copy selected text"
++#~ msgstr "Copiar el texto seleccionado"
++
++#~ msgid "Paste from clipboard"
++#~ msgstr "Pegar desde el portapapeles"
++
++#~ msgid "Exit"
++#~ msgstr "Salir"
++
++#~ msgid "Exit from gmanedit"
++#~ msgstr "�Salir del gmanedit?"
++
++#~ msgid "Wizard"
++#~ msgstr "Asistente"
++
++#~ msgid "Use gnome-help-browser"
++#~ msgstr "Usar gnome-help-browser"
++
++#~ msgid "Couldn't create pixmap from file: %s"
++#~ msgstr "No se pudo crear el pixmap desde el fichero: %s"
++
++#~ msgid "Option not yet implemented"
++#~ msgstr "Opci�n no implementada"

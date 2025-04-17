@@ -1,0 +1,21 @@
+Author: Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>
+Description: Correctly build/link against zlib.
+  This is required to satisfy GCC 4.5 (building on Ubuntu Natty) as well as
+  for building with binutils-gold, both of which appear to have stricter
+  requirements for linking.
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=554557
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gmanedit/+bug/688831
+Approved: Ralf Treinen <treinen@debian.org>
+
+diff -urNad '--exclude=CVS' '--exclude=.svn' '--exclude=.git' '--exclude=.arch' '--exclude=.hg' '--exclude=_darcs' '--exclude=.bzr' gmanedit~/configure.in gmanedit/configure.in
+--- gmanedit~/configure.in	2010-12-10 19:57:44.000000000 -0500
++++ gmanedit/configure.in	2010-12-10 20:08:47.283455000 -0500
+@@ -13,7 +13,7 @@
+   CFLAGS="${CFLAGS} -Wall"
+ fi
+ 
+-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.10.0)
++PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.10.0 zlib)
+ AC_SUBST(GTK_CFLAGS)
+ AC_SUBST(GTK_LIBS)
+ 
