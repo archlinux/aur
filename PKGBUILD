@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Wang <me at nicho1as dot wang>
 pkgname=vatsim-crc
-pkgver=2.3.13
-pkgrel=4
+pkgver=2.3.15
+pkgrel=1
 pkgdesc="Consolidated Radar Client (CRC), a controller application connects to the VATSIM network through vNAS."
 arch=("x86_64")
 url="https://vnas.vatsim.net/crc"
@@ -11,11 +11,11 @@ depends=('wine' 'wine-mono' 'winetricks')
 optdepends=('trackaudio: Audio For VATSIM support')
 install=$pkgname.install
 options=(!debug)
-source=(setup.exe::"https://crc.virtualnas.net/Files/Installers/CRC-Setup-${pkgver}.exe"
+source=(crc-setup-${pkgver}.exe::"https://crc.virtualnas.net/Files/Installers/CRC-Setup-${pkgver}.exe"
         "vatsim-crc" "$pkgname.install"
         "vatsim-crc.desktop" "segmdl2.verb")
 
-sha256sums=('c562d151d6ce779878e53d0ab7bdbbcd8d6974209769688e1366fe8bf97e52e1'
+sha256sums=('9d4e8722b79c76e2d0924a7576fae3ac72f5fc881e2c162486b967b74ed58fd0'
             'fe1368c249bd83296dc352442c309656674329cca196de52d07c3d55f85386ff'
             '3cf58dcb82541202679f2b07f4ac15ebb22076411ee8e5533970f2e7756815db'
             '1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926'
@@ -25,7 +25,7 @@ sha256sums=('c562d151d6ce779878e53d0ab7bdbbcd8d6974209769688e1366fe8bf97e52e1'
 build() {
     mkdir -p $srcdir/build
     cd $srcdir/build
-    7z x ../setup.exe
+    7z x ../crc-setup-${pkgver}.exe
     rm Uninstall.exe
     rm -r '$PLUGINSDIR'
     cd $srcdir
@@ -53,7 +53,7 @@ bak_build() {
     export WINEPREFIX="$srcdir"/tmp/env
     export XDG_DATA_HOME="$srcdir"/tmp/local
     wine wineboot -u
-    wine $srcdir/setup.exe /S /D="C:\vatsim-crc"
+    wine $srcdir/crc-setup-${pkgver}.exe /S /D="C:\vatsim-crc"
 }
 
 bak_package() {
