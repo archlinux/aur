@@ -1,10 +1,10 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=rbiom
-_pkgver=2.1.2
+_pkgver=2.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Read/Write, Analyze, and Visualize 'BIOM' Data"
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -50,8 +50,8 @@ optdepends=(
   r-uwot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c0a94c1fab4967ba1b414ca54b37bb8f')
-b2sums=('135745feaa8c8d414ea0d6acf5d0da357848918c9b3b0b23d9d024053086e4a2c71bc307530c158833438334e757d0162fa37ae2b3e5cdac776b567cc0eb93ac')
+md5sums=('cb7fbb3835196aba1f8675d0e1be7479')
+b2sums=('2eefb6f04b2c98583264abfadb37ce23fd3f4535b902657740ddd7e2e0099657d4e2e00f7167be2813ba5723190d9345a100892d24259ef4f59c78531627be28')
 
 build() {
   mkdir build
