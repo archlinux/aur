@@ -2,7 +2,7 @@
 
 pkgname="azahar-appimage"
 
-pkgver=2120.2
+pkgver=2120.3
 
 pkgrel=1
 epoch=1
@@ -18,7 +18,7 @@ depends=("ffmpeg"
          "sdl2")
 source=("https://github.com/azahar-emu/azahar/releases/download/$pkgver/azahar-$pkgver-linux-appimage.tar.gz"
         "azahar.desktop")
-sha256sums=('5b273e302b56fa4ffadfdf37cc883e3619e359f557c7040656c87c01324f3af4'
+sha256sums=('f463f0ff3f44c20ce5af620935cd47a8b490298a9202feb3bc9734919dd6cfa1'
             '2550dd1eac11f3d0cd8465f65b6a948b0633e97cc58f27c2847fcd9efc73e650')
 options=("!strip")
 
