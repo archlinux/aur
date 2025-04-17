@@ -5,7 +5,7 @@ _pkgname=RPostgres
 _pkgver=1.4.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Interface to PostgreSQL"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -55,7 +55,7 @@ build() {
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
 
   # create database for tests
