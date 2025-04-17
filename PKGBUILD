@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=plgem
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('235a48662a4348b2cf87f14e593f06da')
-b2sums=('65478ff39338a4dce7af2b762ef6cde67582a11771ab6eed86d35070ea1eaebf4c285908e669d8aeecb6c54e0788786cb421b6e9eb4e53af7c3efcc0a66a3a45')
+md5sums=('0c3a748c974b7d0f10f77f288662167a')
+b2sums=('e3a4a782bd1c15c57cb384cd2456a9cb1cd45c1267ba75ae4b5c795112589567254c8399ed2089f3b051510f7fb3b84600adffe05dce129820f107e3f3f94b58')
 
 build() {
   mkdir build
