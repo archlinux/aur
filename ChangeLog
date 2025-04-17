@@ -1196,3 +1196,15 @@ Improvements:
 Fixes:
 - An issue showing the label "No attendees" on some events with attendees has been fixed.
 - A bug that could cause events and tasks not to be saved when moved by only a few minutes in the calendar has been rectified.
+
+=== Morgen 3.6.12
+Improvements:
+- The Calendar Propagation workflow is now more resilient to temporary sues with third-party services. If an error occurs that's outside of our control, the workflow will attempt to run again for up to 3 days. If the problem persists, the workflow will be disabled and you will be notified by email.
+- The number of tasks that can be imported from Microsoft ToDo has been increased from 200 to 2,000 per list.
+- The URL property of calendar events is now displayed in Morgen as a read-only field. Please resync your calendar if you need this field.
+
+Fixes:
+- An issue preventing the bulk selection of tasks and events with Shift + drag has been rectified.
+- A bug causing the app to crash when all filters were deselected from a filtered view has been fixed.
+- We fixed some edge cases with View options in the All Tasks sidebar view.
+- A problem that could cause the Notes field of tasks and events to reset while editing has been rectified.
