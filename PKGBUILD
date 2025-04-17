@@ -5,11 +5,12 @@
 pkgname=python-symbolica
 _pkgname=${pkgname#python-}
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast computer algebra system for Python and Rust"
 arch=('x86_64')
 url="https://github.com/benruijl/symbolica"
 license=('LicenseRef:Symbolica')
+conflicts=('python-symbolica-bin')
 depends=('gmp' 'mpfr' 'python')
 makedepends=('maturin' 'git' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
