@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=plasmut
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9708eb46f23bff31c138161f8d609237')
-b2sums=('3b1a9dbb1f445994d60a27557b25cffd31fc6acaec4fb8ed9d30c349369c09bc8245e38a296f447f3c35c485db7a44b35d0403452e90afade4f8335d1dc43b50')
+md5sums=('15f60aa1d4cf0d6745111ff1b1be4ee9')
+b2sums=('96ba287764b833c30789415283ce3b7b4226690c51563c22bbb4422daeba62d0e9a4151649ce8466cf6d5317611457182672996ef08a4f1bcb0f075d81fd197f')
 
 build() {
   mkdir build
