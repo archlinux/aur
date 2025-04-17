@@ -2,8 +2,8 @@
 pkgname=tfiletransfer-bin
 _pkgname=tFileTransfer
 pkgver=2.2.1
-pkgrel=7
-pkgdesc="File transfer tools built with Compose for Desktop. It could send/receive files to/from other devices via LocalNetwork."
+pkgrel=8
+pkgdesc="File transfer tools built with Compose for Desktop. It could send/receive files to/from other devices via LocalNetwork.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Tans5/tFileTransfer_desktop"
 license=('Apache-2.0')
@@ -20,20 +20,23 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('949d4f774f79f03ed44bdca7cf3d6a8bee3d8c1a096e367f2dfc4161dca8d3cd'
-            '8412755a233bf7404a723fd6458c6a5c32a4456addfeb5c9a96600e6556aeda8')
+            'bca1e51e3866688b7e458a7781fa03036c61a35559f6c40f4ab4c02a507c7b9e')
 build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "s|/opt/${pkgname%-bin}/bin/${_pkgname}|${pkgname%-bin} %U|g" \
-        -e "s|/opt/${pkgname%-bin}/lib/${_pkgname}.png|${pkgname%-bin}|g;s|未知|Utility;|g" \
-        -i "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
+    sed -i -e "
+        s/\/opt\/${pkgname%-bin}\/bin\/${_pkgname}/${pkgname%-bin} %U/g
+        s/\/opt\/${pkgname%-bin}\/lib\/${_pkgname}.png/${pkgname%-bin}/g
+        s/未知/Utility;/g
+    " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
