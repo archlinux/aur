@@ -1,7 +1,7 @@
 # Maintainer: zty012 <me@zty012.de>
 # Maintainer: Littlefean <2385190373@qq.com>
 pkgname=project-graph-nightly-bin
-pkgver=r300
+pkgver=r301
 pkgrel=1
 pkgdesc="A simple tool to create topology diagrams."
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('project-graph')
 conflicts=('project-graph-bin' 'project-graph-git')
 install=${pkgname}.install
 source_x86_64=('https://github.com/LiRenTech/project-graph/releases/download/nightly/')
-sha256sums_x86_64=('d4770288f34ef4841cbcb4ab45a29d7d33becf7f28f8c6be9453a5123dc9ad8c')
+sha256sums_x86_64=('2c13323bed1253c61f64284eeef26dfa0dfee0691b738c09ebe80c4759f3bd80')
 package() {
   # Extract package data
   tar -xz -f data.tar.gz -C "${pkgdir}"
