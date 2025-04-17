@@ -1,7 +1,7 @@
 pkgbase = python-thefuzz
 	pkgdesc = Fuzzy string matching in Python
 	pkgver = 0.22.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seatgeek/thefuzz
 	arch = any
 	license = MIT

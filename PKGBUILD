@@ -2,14 +2,14 @@
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
-## useful links
+## links
 # https://pypi.python.org/pypi/thefuzz
 
 _module="thefuzz"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Fuzzy string matching in Python'
 url="https://github.com/seatgeek/thefuzz"
 license=('MIT')
@@ -36,12 +36,12 @@ provides=("python-fuzzywuzzy=0.18.0")
 conflicts=("python-fuzzywuzzy")
 
 _pkgsrc="$_module"
-source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
-sha256sums+=('SKIP')
+source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
   cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
@@ -53,9 +53,8 @@ package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  local _sitepackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
-
   # provide fuzzywuzzy for backward compatibility
+  local _sitepackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
   ln -vsf "$_pkgsrc" "${pkgdir}${_sitepackages}/fuzzywuzzy"
 
   # license
