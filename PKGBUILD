@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CCPlotR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('568a1409688bbdcbd8041e911f45147e')
-b2sums=('7f924a651dd5d866cae8afb5ab136b5829cd48f70eaa7aae5b0759975d998cb2c401ed005a3aa43a3f320cc04b858e466efe264764a12687f6816ee738853494')
+md5sums=('9e8cf15d599c25a97e1e84abfeec0858')
+b2sums=('54663de86c79d8ef08d52fad6e0c3ec984e7378741a5c5594df0f748bd1751ef225fa1efc2f0c42760749c0399ce8b5b4d0c6d7e9382c196955cef1620ffbb34')
 
 build() {
   mkdir build
