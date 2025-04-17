@@ -1,28 +1,42 @@
-# Mantainer: Snaporaz
+# Maintainer: redponike <proton (dot) me>
+# Contributor: Snaporaz
 # Contributor: Andrea Pelloni <apelloni@ethz.ch>
 
-pkgbase="python-symbolica"
-pkgname=("python-symbolica")
-pkgver=0.15.0
+pkgname=python-symbolica
+_pkgname=${pkgname#python-}
+pkgver=0.16.0
 pkgrel=1
-pkgdesc="Python library for woring with Symbolica, a fast and modern computer algebra system"
+pkgdesc="A blazing fast computer algebra system for Python and Rust"
 arch=('x86_64')
-makedepends=()
-license=('Custome')
-url=https://github.com/benruijl/symbolica
+url="https://github.com/benruijl/symbolica"
+license=('LicenseRef:Symbolica')
+depends=('gmp' 'mpfr' 'python')
+makedepends=('maturin' 'git' 'python-installer' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('3deb5f77b39a1ce4fd2a81c8716e845fd3c66bf4f56e590bec48d147ac7be839')
 
-_name=${pkgname#python-}
-_cpy=cp37
-_glibc=2_17
-_wheel="${_name//-/_}-$pkgver-$_cpy-abi3-manylinux_${_glibc}_${arch}.manylinux2014_${arch}.whl"
-source=("https://files.pythonhosted.org/packages/$_cpy/${_name::1}/$_name/$_wheel")
-
-package() {
-    cd $srcdir
-    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    local _folder=$pkgdir/${site_packages%site-packages}
-	wheel unpack --dest=$_folder $_wheel
-    mv $_folder/$_name-$pkgver $_folder/site-packages
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+    
+    # Patch Cargo.toml to force a rebuild of rug against the host's GMP/MPFR/MPC
+    # Else there will be runtime errors for GMP symbols not found as GLIBC is newer on Arch
+    # Symbolica, for now,  does not use rug::rand and rug::Complex so I didn't add them to features
+    # Use gmp-mpfr-sys crate's experimental feature to force dynamic linking against the system's GMP/MPFR
+    sed -i '/rug = "=1.25.0"/c\
+rug = { version = "1.25.0", features = ["integer", "rational", "float", "std"], default-features = false }\
+gmp-mpfr-sys = { version = "~1.6", features = ["use-system-libs"] }\
+' Cargo.toml
 }
 
-sha256sums=('1ba6c68eb500e26d56962fe1ea5602285ab2602e1526e954c90c4e564854110c')
+build() {
+    cd "${_pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+
+    RUST_BACKTRACE=1 maturin build --release --manylinux off --strip
+}
+
+package() {
+    cd "${_pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" target/wheels/*.whl
+    install -Dm644 License.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

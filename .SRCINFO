@@ -1,11 +1,18 @@
 pkgbase = python-symbolica
-	pkgdesc = Python library for woring with Symbolica, a fast and modern computer algebra system
-	pkgver = 0.15.0
+	pkgdesc = A blazing fast computer algebra system for Python and Rust
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/benruijl/symbolica
 	arch = x86_64
-	license = Custome
-	source = https://files.pythonhosted.org/packages/cp37/s/symbolica/symbolica-0.15.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = 1ba6c68eb500e26d56962fe1ea5602285ab2602e1526e954c90c4e564854110c
+	license = LicenseRef:Symbolica
+	makedepends = maturin
+	makedepends = git
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gmp
+	depends = mpfr
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/symbolica/symbolica-0.16.0.tar.gz
+	sha256sums = 3deb5f77b39a1ce4fd2a81c8716e845fd3c66bf4f56e590bec48d147ac7be839
 
 pkgname = python-symbolica
