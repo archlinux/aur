@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spkTools
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a1a83ff154c3c0c08103ed53c801919e')
-b2sums=('3cdd54a0f9e98d911f69f134ae887e990130c977f4c0f9bf81cc11811594bcfb92b035dc76bbdb05284aaaa2e3880ae19feec648ef3125903221becc0a2af87e')
+md5sums=('6dd0ebdab2915c8dc2a44305814ea577')
+b2sums=('c1a75d606d8801c4ec68c09274051bb83a61cd87cf38f284f1ce209acd97b1dc8c9fb129b19d0ad7927db98010fdae86dd132a1a6e840c8913d825482104d478')
 
 build() {
   mkdir build
