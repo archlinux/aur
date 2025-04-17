@@ -1,22 +1,21 @@
-# Maintainer:  Narinas <eatrujillo@protonmail.com>
+# Contributor:  Narinas <eatrujillo@protonmail.com>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=mindomo-bin
 _pkgname=mindomo
-pkgver=10.1.7
-pkgrel=3
+pkgver=11.0.1
+pkgrel=1
 pkgdesc="Mindomo is an online collaborative mind mapping, concept mapping and outlining software for visualizing and organizing information."
 arch=('x86_64')
-url="https://www.mindomo.com"
+url="https://mindomo.com"
 license=('custom:mindomo')
 provides=('mindomo')
 conflicts=('mindomo')
-_basever=10.1
+depends=('fuse')
 _app_image="Mindomo_v.${pkgver}_x64.AppImage"
-noextract=("${_app_image}")
-
-source_x86_64=("https://www.mindomo.com/download/${_basever}/${_app_image}")
-
-sha256sums_x86_64=('d0a3f12ce9e28f449751a4e964a3b84e2e008bebcc8037e1ab3309f1aa44a357')
+source_x86_64=("$url/download/${pkgver%.*}/${_app_image}")
+sha256sums_x86_64=('d425b0521136607e267c2768bb5a189e0b7a0fa96916762a45f782c2fd0d3a05')
+options=(!strip)
 
 prepare() {
    chmod +x "$_app_image"
@@ -30,7 +29,7 @@ build() {
 }
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}/"
-    cp -r "${srcdir}/${_app_image}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}/${_app_image}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
@@ -45,3 +44,4 @@ package() {
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
