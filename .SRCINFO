@@ -1,7 +1,7 @@
 pkgbase = r-ggh4x
 	pkgdesc = Hacks for 'ggplot2'
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=ggh4x
 	arch = any
 	license = MIT

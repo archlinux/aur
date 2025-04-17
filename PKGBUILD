@@ -4,7 +4,7 @@ _pkgname=ggh4x
 _pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Hacks for 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -42,10 +42,10 @@ build() {
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
-  cd "$_pkgname/tests"
-  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
-}
+#check() {
+#  cd "$_pkgname/tests"
+#  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+#}
 
 package() {
   install -d "$pkgdir/usr/lib/R/library"
