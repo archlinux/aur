@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timecourse
-_pkgver=1.78.0
+_pkgver=1.80.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
+pkgver=1.80.0
 pkgrel=1
 pkgdesc='Statistical Analysis for Developmental Microarray Time Course Data'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6bf5bc183b84134ef71d12c0906f6c13c4f00472f28b8c3d0dd5ca509ff83781')
+sha256sums=('c34e02fa35bb94bb93645a34972715ddfe62c54c4ff0c8c95b33f1cfeb80859b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
