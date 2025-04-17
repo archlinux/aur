@@ -3,7 +3,7 @@
 
 _name=NeuralRack
 pkgname=${_name,,}-git
-pkgver=r169.7f6869f
+pkgver=r174.14894da
 pkgrel=1
 pkgdesc="Neural model and impulse response file loader"
 url="https://github.com/brummer10/$_name"
@@ -39,7 +39,7 @@ check() {
 package() {
 	depends+=(libcairo.so libsndfile.so)
 	cd $_name
-	make DESTDIR=${pkgdir} install
-	install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
-	install -vDm 644 README.md NeuralRack.png -t "$pkgdir"/usr
+	make DESTDIR="${pkgdir}" install
+	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname"
+	install -vDm 644 README.md NeuralRack.png -t "${pkgdir}/usr/share/doc/$pkgname"
 }
