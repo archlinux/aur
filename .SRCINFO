@@ -23,6 +23,6 @@ pkgbase = brave-beta-bin
 	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.78.84/brave-browser-beta_1.78.84_amd64.deb
 	sha512sums_x86_64 = 6bea66c977c463b3d7d2698e07d6418cd73b7d9acc0fe6c58e693427d88fe7279d1c6b00957e2f4694aa818dadd87fdcdecf2e5d5578103cbe75996c939698da
 	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.78.84/brave-browser-beta_1.78.84_arm64.deb
-	sha512sums_aarch64 = SKIP
+	sha512sums_aarch64 = e48cc4dd66ec24ce7b64a2cadc42b9d28278d320198b79ead08084211c06b4b681fd52222ebedfdc270b5356038d62c86ef5d579bc274670ddfb21a5861e2847
 
 pkgname = brave-beta-bin
