@@ -1,0 +1,14 @@
+pkgbase = gst-vosk
+	pkgdesc = Gstreamer plugin for VOSK voice recognition engine
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/PhilippeRo/gst-vosk
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = meson
+	depends = glib2
+	depends = gstreamer
+	source = https://github.com/PhilippeRo/gst-vosk/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = d73ae325f921c0e868c727a40e5c846b44b5d1c8002df30df2c5469295798937
+
+pkgname = gst-vosk
