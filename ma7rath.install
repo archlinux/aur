@@ -1,0 +1,15 @@
+post_install() {
+  echo "ma7rath has been installed!"
+  echo "Run 'ma7rath <minutes>' to start a timer."
+  echo "Press 'q' to exit the timer at any time."
+}
+
+post_upgrade() {
+  echo "ma7rath has been upgraded!"
+  echo "Run 'ma7rath <minutes>' to start a timer."
+  echo "Press 'q' to exit the timer at any time."
+}
+
+post_remove() {
+  echo "ma7rath has been removed."
+}
