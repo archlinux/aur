@@ -2,7 +2,7 @@
 pkgname=thinkboxai
 pkgver=1.0.0
 pkgrel=1
-pkgdesc"Thinkbox AI – A modern desktop interface for the Open AI API.  Repackaged from the deb file."
+pkgdesc="Thinkbox AI – A modern desktop interface for the Open AI API.  Repackaged from the deb file."
 arch=('x86_64')
 url="https://thinkbox.ai"
 license=('unknown')
