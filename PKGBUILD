@@ -3,16 +3,16 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
-makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'clang')
-depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
-	 'hicolor-icon-theme' 'abseil-cpp')
+makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'clang')
+depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-svg' 'libzip' 'protobuf' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt5-webchannel' 'gcc-libs' 'openssl'
+	 'hicolor-icon-theme' 'libxinerama')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
-_commit=5bb980e580c0ea0c617d65fb6b2536805bd85110 # qt6 branch
+_commit=ec6abda1b10ffba8eaa6f4813d7564ad46521e7b # qt5 branch until qt6 is fixed
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#commit=$_commit"
   'git+https://github.com/MCMrARM/axml-parser.git'
@@ -24,7 +24,7 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
 )
-sha256sums=('23582c5c64a457bd0a29a063c8de94ee64ff116344f5890ef86d5aba2c8bf2c1'
+sha256sums=('9ea27cf8dd82167d17d956b034dd7e9e3ade0cada585d014f14587b106691748'
             'SKIP'
             'SKIP'
             'SKIP'
