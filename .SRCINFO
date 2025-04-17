@@ -1,0 +1,19 @@
+pkgbase = hyprtiler
+	pkgdesc = A utility tool for managing windows in the Hyprland compositor environment.
+	pkgver = 0.1.17
+	pkgrel = 1
+	url = https://github.com/antrax2024/hyprtiler
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python
+	depends = python-rich
+	depends = confz
+	source = https://files.pythonhosted.org/packages/47/3e/5c106095f03a8cabd5545e9cb51210205a478466fe500a8e310c861c309d/hyprtiler-0.1.2.tar.gz
+	md5sums = a56d6718b73f8c9cdea077a4d87265ba
+
+pkgname = hyprtiler
