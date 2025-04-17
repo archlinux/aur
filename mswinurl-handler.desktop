@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=MSWinURL Handler
+Exec=/usr/bin/mswinurl-handler %f
+Type=Application
+MimeType=application/x-mswinurl;
+NoDisplay=true

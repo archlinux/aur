@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!mswinurl-handler.desktop
+!mswinurl-handler.sh
+!mswinurl.xml

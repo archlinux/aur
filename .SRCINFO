@@ -1,0 +1,15 @@
+pkgbase = mswinurl-handler
+	pkgdesc = Opens .url shortcut files in the default browser
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = xdg-utils
+	source = mswinurl-handler.sh
+	source = mswinurl-handler.desktop
+	source = mswinurl.xml
+	sha256sums = 16665ebe896c7fd0306407ac00dadc8a61a17863ca3fd5c0420452346d2dc908
+	sha256sums = 08794bcf82640b06e1c652d574b6fe76fcfff75b71b5dc944ce34bfb407ab93b
+	sha256sums = bc0141fb561a3204cb5b65dafc0e2cc15b308b91def876f2b9aea8dfdbf489e7
+
+pkgname = mswinurl-handler
