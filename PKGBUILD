@@ -10,16 +10,16 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
-declare -r _tag="4963406c41c3402e1b58797cd6787446cf8e7eb8"
+declare -r _tag="e337a092d49641f2ba29ccaa7eb79023d0819641"
 
 pkgname="soci-git"
-pkgver="v4.0.1_854_g4963406c"
+pkgver="v4.0.1_866_ge337a092"
 pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
 url="https://github.com/SOCI/${_pkgname}"
 license=("BSL-1.0")
-depends=("gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite" "unixodbc")
+depends=("boost" "gcc-libs" "glibc" "mariadb-libs" "postgresql-libs" "sqlite" "unixodbc")
 makedepends=("cmake" "git")
 optdepends=("libfbclient: Firebird"
     "mariadb: MariaDB"
@@ -27,10 +27,11 @@ optdepends=("libfbclient: Firebird"
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("c0208367aec04380d79d2cd39c1853afaddf74a88bfb0721d52b22237638f2eb614164063630cd45e44eccedacc7cfdf4b240fafe09531ac230f79bdc24c8550")
+sha512sums=("e775d4e9d5a3f950fbe544de34a914d69c362e060b4a550820a494a5a04e33c7767eb38c5d042fba7eaff9fe92539da91d6b57cdfe3e62eb13771fdd4aea9e26")
 
 _compile()
 {
+    # Database-specific variables are only set if needed.
     cmake -B "${srcdir}"/"${_pkgname}"/build/ \
         -D CMAKE_BUILD_TYPE=None \
         -D CMAKE_INSTALL_PREFIX=/usr/ \
@@ -44,7 +45,8 @@ _compile()
         -D SOCI_POSTGRESQL_SKIP_TESTS=ON \
         -D SOCI_SHARED=ON \
         -D SOCI_TESTS="$1" \
-        -D SOCI_UBSAN=OFF \
+        -D SOCI_UBSAN=ON \
+        -D WITH_BOOST=ON \
         -S "${srcdir}"/"${_pkgname}"/ \
         -Wno-dev
     cmake --build "${srcdir}"/"${_pkgname}"/build/

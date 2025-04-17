@@ -1,12 +1,13 @@
 pkgbase = soci-git
 	pkgdesc = C++ database access library.
-	pkgver = v4.0.1_854_g4963406c
+	pkgver = v4.0.1_866_ge337a092
 	pkgrel = 1
 	url = https://github.com/SOCI/soci
 	arch = x86_64
 	license = BSL-1.0
 	makedepends = cmake
 	makedepends = git
+	depends = boost
 	depends = gcc-libs
 	depends = glibc
 	depends = mariadb-libs
@@ -18,7 +19,7 @@ pkgbase = soci-git
 	optdepends = postgresql: PostgreSQL
 	provides = soci
 	conflicts = soci
-	source = soci::git+https://github.com/SOCI/soci.git#tag=4963406c41c3402e1b58797cd6787446cf8e7eb8
-	sha512sums = c0208367aec04380d79d2cd39c1853afaddf74a88bfb0721d52b22237638f2eb614164063630cd45e44eccedacc7cfdf4b240fafe09531ac230f79bdc24c8550
+	source = soci::git+https://github.com/SOCI/soci.git#tag=e337a092d49641f2ba29ccaa7eb79023d0819641
+	sha512sums = e775d4e9d5a3f950fbe544de34a914d69c362e060b4a550820a494a5a04e33c7767eb38c5d042fba7eaff9fe92539da91d6b57cdfe3e62eb13771fdd4aea9e26
 
 pkgname = soci-git
