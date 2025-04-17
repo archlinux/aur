@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=sticky-notes
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A simple sticky notes app"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 )
 source=("git+https://github.com/vixalien/sticky.git#tag=v$pkgver"
         'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
-sha256sums=('59b83ce854580cedda5b2ac9e7ed52a3904dca713329fb0c10abc2ba95b3031d'
+sha256sums=('66d206745c40c2ecc18928a8ba5f43c1e967c0f7a33cbb868f5d7fb5fcd826ac'
             'SKIP')
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
