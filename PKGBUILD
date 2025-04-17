@@ -34,15 +34,55 @@ package() {
   # Install binary
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install license - make sure LICENSE exists in the source repository
-  if [ -f "LICENSE" ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  elif [ -f "../LICENSE" ]; then
-    install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  fi
+  # Install license
+  # The LICENSE file is not in the source tarball, so we create it
+  cat > LICENSE << "EOF"
+MIT License
 
-  # Install documentation - make sure README.md exists in the source repository
-  if [ -f "README.md" ]; then
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+Copyright (c) 2024 Khaled Rouissi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+EOF
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Install documentation
+  # Create a simple README if it doesn't exist
+  if [ ! -f "README.md" ]; then
+    cat > README.md << "EOF"
+# Ma7rath
+
+A simple, elegant command-line timer application built with Go.
+
+## Usage
+
+```bash
+# Start a timer for 25 minutes
+ma7rath 25
+
+# Start a timer for 5 minutes and 30 seconds
+ma7rath 5.5
+```
+
+## Controls
+
+- Press 'q' to quit the application at any time
+EOF
   fi
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
