@@ -1,53 +1,52 @@
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Andre Klitzing <andre () incubo () de>
 
-pkgname=epson-inkjet-printer-201202w
-_pkgname_filter=epson-inkjet-printer-filter
-_suffix=1lsb3.2.src.rpm
-pkgver=1.0.0
-pkgrel=11
-pkgdesc="Epson printer driver (XP-102, XP-103, XP-202, XP-203, XP-206, XP-205, XP-207, XP-30, XP-33)"
-arch=('i686' 'x86_64')
-url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
-license=('LGPL' 'custom:Epson Licence Agreement')
-depends=('cups' 'ghostscript')
-#makedepends=('libtool' 'make' 'automake' 'autoconf')
-source=(http://download.ebz.epson.net/dsc/op/stable/SRPMS/${pkgname}-${pkgver}-${_suffix} fixbuild.patch)
+_model="201202w"
+pkgname="epson-inkjet-printer-${_model}"
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Epson inkjet printer driver (XP-30, XP-33, XP-102, XP-103, XP-202, XP-203, XP-205, XP-207)" # XP-206
+arch=('x86_64')
+url="https://download.ebz.epson.net/man/linux/escp.html"
+license=('custom:Epson End User Software License Agreement')
+depends=('epson-inkjet-printer-filter' 'gcc-libs' 'glibc')
+provides=("libEpson_${_model}"{,'.MT'}'.so')
+_pkgsrc="${pkgname}-${pkgver}"
+source=("https://download3.ebz.epson.net/dsc/f/03/00/15/69/64/c9ab4b12ed9e8a3049771f2df053fda2c9a5ee36/${_pkgsrc}-1.src.rpm")
+sha256sums=('0e0d1484ab3f70d62e03db0c7f0ad40c64b4f2ae50b82d27fa88596abc1785c4')
+
+prepare() {
+  cd "${srcdir}"
+  bsdtar -xzf "${_pkgsrc}.tar.gz"
+}
 
 build() {
-  cd "$srcdir" || exit
-  tar xzf $pkgname-$pkgver.tar.gz
-  FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
-  tar xzf $FILTER_FILE
-
-  cd "${FILTER_FILE%.tar.gz}" || exit
-  patch -p1 -i "$srcdir"/fixbuild.patch
-  autoreconf -f -i
-  # if you have runtime problems: add "--enable-debug" and look into /tmp/epson-inkjet-printer-filter.txt
-  ./configure LDFLAGS="$LDFLAGS -Wl,--no-as-needed" --prefix=/opt/$pkgname
-  make
+  cd "${srcdir}/${_pkgsrc}"
+  find "ppds" -type f -name '*.ppd' -exec \
+    sed -e "s|/home/epson/projects/PrinterDriver/P2/_rpmbuild/SOURCES/${_pkgsrc}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/watermark|/usr/share/epson-inkjet-printer-filter/watermark|g" \
+        -e "s|/opt/${pkgname}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -e "s|/opt/epson-${_model}/cups/lib/filter/epson_inkjet_printer_filter|/usr/lib/cups/filter/epson_inkjet_printer_filter|g" \
+        -i "{}" +
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver" || exit
-  install -d "$pkgdir/opt/$pkgname/"
-  if [ "$CARCH" = "x86_64" ]; then
-    cp -a --no-preserve=mode lib64 "$pkgdir/opt/$pkgname/"
-  else
-    cp -a --no-preserve=mode lib "$pkgdir/opt/$pkgname/"
-  fi
-  cp -a --no-preserve=mode resource "$pkgdir/opt/$pkgname/"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "AUTHORS"       "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
+  install -vDm644 "Manual.txt"    "${pkgdir}/usr/share/doc/${pkgname}/MANUAL"
+  install -vDm644 "README"        "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -vDm644 "COPYING.EPSON" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  if [ -e "watermark" ]; then
-    cp -a --no-preserve=mode watermark "$pkgdir/opt/$pkgname/"
-  fi
-  install -d "$pkgdir/usr/share/cups/model/$pkgname"
-  install -m 644 ppds/* "$pkgdir/usr/share/cups/model/$pkgname"
+  find "lib64"    -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
+  find "ppds"     -type f -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
+  find "resource" -type f -exec    \
+    install -vDm644 "{}" "${pkgdir}/usr/share/epson-inkjet-printer-filter/{}" \;
 
-  cd "$srcdir" || exit
-  FILTER_FILE=$(ls $_pkgname_filter*.tar.gz)
-  cd "${FILTER_FILE%.tar.gz}" || exit
-  install -d "$pkgdir/opt/$pkgname/cups/lib/filter/"
-  install -m 755 src/epson_inkjet_printer_filter "$pkgdir/opt/$pkgname/cups/lib/filter/epson_inkjet_printer_filter"
+  cd "${pkgdir}/usr/lib"
+  for lib in *.so.*; do
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*.[0-9]*}"
+    ln -vsf "${lib}" "${lib%.[0-9]*.[0-9]*}"
+  done
 }
-sha256sums=('cd7815690c241d02fe4a6941932d5127d39f9c2f2f493267188bc9a0d517f18c'
-            '4a74f4cb2ec59d3b280b99ca1ae4ab8135c009b53162e76f570488e8eacb860b')
