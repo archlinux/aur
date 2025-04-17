@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linglong-tools
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A command line helper for linglong.'
 arch=($CARCH)
@@ -32,7 +32,7 @@ source=(
   "${pkgname}.conf"
   "${pkgname}.sh"
 )
-sha256sums=('20ccd4f411ff9a796f5574547f5c9917ff8a4aea39550a9ac75155f0c8d2433b'
+sha256sums=('33d21d8c7657b5fe59881b836a50a1d840afc9f298310db4097ff764bae7a7f0'
             'ca5310a6046c27fde5d5ef3751bcfd62b13c6ac0fcce929fc852dd0533aa8786'
             'a8c629db431fad5da26cca63fb511d965f153a409b541520352eac8f283dc6de')
 
@@ -60,7 +60,7 @@ package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   install -Dm755 build/${pkgname} -t "${pkgdir}/usr/bin/"
   install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  #   install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -Dm644 "${srcdir}/${pkgname}.conf" -t "${pkgdir}/etc/"
   install -Dm755 "${srcdir}/${pkgname}.sh" -t "${pkgdir}/etc/profile.d/"
 }
