@@ -1,33 +1,20 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Treadful <mail at treadful dot dev>
 _base_pkgname="mollysocket"
 pkgname="${_base_pkgname}-bin"
 pkgver=1.6.0
 pkgrel=1
-epoch=
 pkgdesc="Service linking Signal notifications and UnifiedPush."
 arch=('x86_64' 'armv7h' 'arm64')
 url="https://github.com/mollyim/mollysocket"
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'openssl' 'sqlite')
-makedepends=()
-checkdepends=()
-optdepends=()
 provides=("${_base_pkgname}=${pkgver}")
 conflicts=("${_base_pkgname}=${pkgver}")
-replaces=()
 backup=(
 	"etc/${_base_pkgname}/conf.toml"
 	"usr/lib/systemd/system/${_base_pkgname}.service"
 	"usr/lib/systemd/system/${_base_pkgname}-vapid.service"
 )
-options=()
-install=
-changelog=
 source=(
 	"conf.toml"
 	"${_base_pkgname}.sysusers"
@@ -57,28 +44,7 @@ sha256sums_arm64=(
 	'dfccec9802baaa80059018a7e90ff07f6e086c1ad45e05c54f718e428eb47d42')
 validpgpkeys=()
 
-prepare() {
-	#cd "$pkgname-$pkgver"
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-	echo "prepare()"
-
-}
-
-build() {
-	echo "build()"
-	#cd "$pkgname-$pkgver"
-	#./configure --prefix=/usr
-	#make
-}
-
-check() {
-	echo "check()"
-	#cd "$pkgname-$pkgver"
-	#make -k check
-}
-
 package() {
-	echo "package()"
 	# Systemd files
 	install -dm755 \
 		"${pkgdir}/usr/lib/systemd/system" \
@@ -88,12 +54,14 @@ package() {
 		"${pkgdir}/usr/lib/sysusers.d/${_base_pkgname}.conf"
 	install -Dm644 "${srcdir}/${_base_pkgname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${_base_pkgname}.conf"
-
-	install -Dm744 conf.toml "$pkgdir/etc/${_base_pkgname}/conf.toml"
 	install -Dm744 mollysocket.service \
 		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}.service"
 	install -Dm744 mollysocket-vapid.service \
 		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}-vapid.service"
+
+
+	# Mollysocket config and bin
+	install -Dm744 conf.toml "$pkgdir/etc/${_base_pkgname}/conf.toml"
 	install -Dm755 "${pkgname}-${pkgver}" \
 		"$pkgdir/usr/bin/ms"
 }
