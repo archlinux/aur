@@ -6,17 +6,17 @@ _date=20240927
 _pkgname=unified-source-$_date-$_pkgver
 pkgname=citra
 pkgver=r10114.864414f
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('x86_64')
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
-url='https://github.com/PabloMK7/citra'
+url='https://github.com/username227/citra'
 license=('GPL-2.0-or-later')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'zstd' 'soundtouch' 'fmt' 'libinih' 'openal' 'enet' 'boost-libs' 'zydis')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'gcc' 'glslang' 'vulkan-headers' 'nlohmann-json' 'catch2' 'clang' 'ninja' 'boost')
 conflicts=('citra-appimage')
 options=('!lto')
-source=("https://github.com/PabloMK7/citra/releases/download/r$_pkgver/citra-unified-source-$_date-$_pkgver.tar.xz")
+source=("https://github.com/username227/citra/releases/download/r608383e/citra-unified-source-${_date}-${_pkgver}.tar.xz")
 sha256sums=('ef7e726ba77535ebe7ea2b9bb75b16fed9148b70c5b94fb0a7939f6802c1d076')
 
 build() {
@@ -46,7 +46,8 @@ build() {
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=OFF \
-	-DUSE_SYSTEM_ZSTD=ON
+	-DUSE_SYSTEM_ZSTD=ON \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
