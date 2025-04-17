@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstats
-_pkgver=4.14.2
+_pkgver=4.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-kableextra
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f6eacc4ec087edae8c13a00325f840b1')
-b2sums=('faa2c816700ec60f4e9c2495baea35b3d83c7a94bea3f1ba14483abdaa6c8be990a8aa2b9e58a5df7cfe5e87a31edc86956a61ec764f71f0ddc2efd25d59ab11')
+md5sums=('bed1dfeee020fde2e90c642749db77e6')
+b2sums=('35053c93dfdcbcb7273931960abb61456c98c078bd8f959e76ec160ad84a072bb2665b2d1de7a1d8701cd77dbd72ac3817fda508a8a39be4e5b4cc16c79e22a4')
 
 build() {
   mkdir build

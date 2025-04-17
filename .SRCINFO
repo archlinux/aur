@@ -1,6 +1,6 @@
 pkgbase = r-msstats
 	pkgdesc = Protein Significance Analysis in DDA, SRM and DIA for Label-free or Label-based Proteomics Experiments
-	pkgver = 4.14.2
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstats
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = r-msstats
 	optdepends = r-tinytest
 	optdepends = r-mockery
 	optdepends = r-kableextra
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstats_4.14.2.tar.gz
-	md5sums = f6eacc4ec087edae8c13a00325f840b1
-	b2sums = faa2c816700ec60f4e9c2495baea35b3d83c7a94bea3f1ba14483abdaa6c8be990a8aa2b9e58a5df7cfe5e87a31edc86956a61ec764f71f0ddc2efd25d59ab11
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstats_4.16.0.tar.gz
+	md5sums = bed1dfeee020fde2e90c642749db77e6
+	b2sums = 35053c93dfdcbcb7273931960abb61456c98c078bd8f959e76ec160ad84a072bb2665b2d1de7a1d8701cd77dbd72ac3817fda508a8a39be4e5b4cc16c79e22a4
 
 pkgname = r-msstats
