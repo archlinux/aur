@@ -1,10 +1,12 @@
 pkgbase = sudo-rs-symlink
 	pkgdesc = Symlinks to sudo from sudo-rs
 	pkgver = 0.2.5
-	pkgrel = 1
-	arch = x86_64
+	pkgrel = 2
+	arch = any
 	depends = sudo-rs
 	provides = sudo
 	conflicts = sudo
+	source = sudo-pam
+	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
 pkgname = sudo-rs-symlink
