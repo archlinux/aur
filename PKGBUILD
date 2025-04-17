@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-constraint
-pkgver=2.2.0
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Module to solve Constraint Solving Problems (CSP) over finite domain"
 arch=(x86_64)
@@ -24,7 +24,7 @@ checkdepends=(
     python-tomli
 )
 source=($pkgname::git+https://github.com/python-constraint/python-constraint#tag=$pkgver)
-b2sums=('251ca05850c40d84866f2fc16718c5676630ea26824b5b636e43185651eb9ede6928c25d907ae6231c75a4756b1de1acc4900416cc35b8f11cbaa24af8e53ec4')
+b2sums=('15fb3c13b154a836eacfdee42a59e9c9e9b788bc533ba305ffac0a11fb567e274db65419c345c04353197ed54b60bed65cb0e81b9614beebab7ad86af4eb27d4')
 
 build() {
     cd $pkgname
