@@ -1,0 +1,17 @@
+pkgbase = netconsole
+	pkgdesc = Service for initializing of network console logging
+	pkgver = 10.26
+	pkgrel = 1
+	url = https://github.com/fedora-sysv/initscripts
+	arch = any
+	license = GPL2
+	depends = sed
+	depends = iproute2
+	depends = iputils
+	depends = util-linux
+	conflicts = systemd-netconsole
+	backup = etc/sysconfig/netconsole
+	source = https://github.com/fedora-sysv/initscripts/archive/refs/tags/10.26.tar.gz
+	sha256sums = cac382a2cc7644243db00e848d2334646520b88c10e841727dee42c726da21c4
+
+pkgname = netconsole
