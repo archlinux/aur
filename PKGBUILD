@@ -6,7 +6,8 @@ pkgdesc="Thinkbox AI – A modern desktop interface for the Open AI API.  Repack
 arch=('x86_64')
 url="https://thinkboxai.com"
 license=('unknown')
-depends=('glibc')
+depends=('glibc' 'hicolor-icon-theme')
+makedepends=('dpkg')
 source=("https://prod-thinkboxai-setups.s3-accelerate.amazonaws.com/${pkgver}/thinkboxai_${pkgver}-1_amd64.deb")
 noextract=("thinkboxai_${pkgver}-1_amd64.deb")
 
