@@ -2,16 +2,18 @@
 # Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 # Contributor: oldNo.7 <oldNo.7@archlinux.org>
 
+## links
+# https://pypi.python.org/pypi/thefuzz
+
 _module="thefuzz"
 _pkgname="python-$_module"
 pkgname="$_pkgname-git"
-pkgver=0.22.1.r0.ga1a8cde
+pkgver=0.22.1.r9.g1ba86f3
 pkgrel=1
 pkgdesc='Fuzzy string matching in Python'
-arch=(any)
-# https://pypi.python.org/pypi/thefuzz
 url="https://github.com/seatgeek/thefuzz"
 license=('MIT')
+arch=('any')
 
 depends=(
   'python'
@@ -30,36 +32,28 @@ checkdepends=(
   'python-pytest'
 )
 
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
-  _pkgsrc="$_module"
-  source+=("$_pkgsrc"::"git+$url.git#tag=${pkgver%%.r*}")
-  sha256sums+=('SKIP')
+provides=(
+  "$_pkgname=${pkgver%%.r*}"
+  "python-fuzzywuzzy=0.18.0"
+)
+conflicts=(
+  "$_pkgname"
+  "python-fuzzywuzzy"
+)
 
-  pkgver() {
-    echo "${pkgver%%.r*}"
-  }
-else
-  # git package
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
+_pkgsrc="$_module"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
-  _pkgsrc="$_module"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --exclude='*[a-zA-Z][a-zA-Z]*' | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
-
-provides+=('python-fuzzywuzzy')
-conflicts+=('python-fuzzywuzzy')
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$_pkgsrc"
-  python -m build --no-isolation --wheel
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
@@ -69,13 +63,12 @@ check() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="${pkgdir:?}" dist/*.whl
-
-  local _sitepackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # provide fuzzywuzzy for backward compatibility
-  ln -vsf "$_pkgsrc" "${pkgdir:?}${_sitepackages:?}/fuzzywuzzy"
+  local _sitepackages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  ln -vsf "$_pkgsrc" "${pkgdir}${_sitepackages}/fuzzywuzzy"
 
   # license
-  install -Dm644 "LICENSE.txt" "${pkgdir:?}/usr/share/licenses/${pkgname:?}/LICENSE"
+  install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
