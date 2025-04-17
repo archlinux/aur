@@ -1,7 +1,7 @@
 pkgbase = kvantum-theme-gruvbox-git
 	pkgdesc = Gruvbox theme for Kvantum
 	pkgver = r11.29ba1f0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheGlitchh/Gruvbox-Kvantum
 	arch = any
 	makedepends = git

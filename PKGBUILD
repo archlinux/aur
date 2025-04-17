@@ -3,7 +3,7 @@
 pkgname=kvantum-theme-gruvbox-git
 _gitname=Gruvbox-Kvantum
 pkgver=r11.29ba1f0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gruvbox theme for Kvantum"
 arch=(any)
 url="https://github.com/TheGlitchh/${_gitname}"
@@ -27,6 +27,6 @@ pkgver() {
 package() {
   cd "$srcdir/$_gitname"
   install -d "$pkgdir/usr/share/Kvantum/Gruvbox"
-  install -m644 gruvbox-kvantum/* "$pkgdir/usr/share/Kvantum/Gruvbox"
+  install -m644 gruvbox-kvantum/gruvbox-kvantum.kvconfig "$pkgdir/usr/share/Kvantum/Gruvbox/Gruvbox.kvconfig"
+  install -m644 gruvbox-kvantum/gruvbox-kvantum.svg "$pkgdir/usr/share/Kvantum/Gruvbox/Gruvbox.svg"
 }
-
