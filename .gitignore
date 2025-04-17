@@ -8,3 +8,4 @@
 !.nvchecker.toml
 !LICENSE
 !gcc14.patch
+!qt-6.9.patch
