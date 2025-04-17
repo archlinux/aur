@@ -3,7 +3,7 @@
 
 pkgname=anki-sync-server
 _name="anki"
-pkgver="25.02rc1"
+pkgver="25.02.1"
 pkgrel=1
 pkgdesc='Sync server for anki (official version)'
 url="https://github.com/ankitects/anki"
@@ -46,7 +46,7 @@ source=(
     "sysusers-anki-sync-server.conf"
 )
 
-sha512sums=('7ece83ae5102e25f2e4e5197a2125054ce63c54c95d037f3c13e796006576b0210272127f1e68809aae27d22ea3643559b1175354d44b4bcfa96e2be64c6c63a'
+sha512sums=('8ddc8384509263f5eadfea4c155b957119eec902930ee26498b7d5b9dc0605e48ff0deb9f3c527f2e7a790b233bc7d450a87d7307693d8fd94ea93b2ebde3e16'
             'SKIP'
             'SKIP'
             'SKIP'
