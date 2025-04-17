@@ -1,13 +1,13 @@
 pkgbase = writedoc
 	pkgdesc = A fast way of creating and editing notes using neovim without defining a file path
-	pkgver = 2.0
-	pkgrel = 5
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/Chiron8/writedoc
 	arch = any
 	license = MIT
 	depends = nvim
 	depends = sh
-	source = writedoc-2.0.tar.gz::https://github.com/Chiron8/writedoc/archive/refs/tags/v2.0.tar.gz
+	source = writedoc-2.1.tar.gz::https://github.com/Chiron8/writedoc/archive/refs/tags/v2.1.tar.gz
 	sha256sums = 306a2a0298a8c36c990403f9db73057c1202d7fea5ef08248e24b9b9e13a028b
 
 pkgname = writedoc
