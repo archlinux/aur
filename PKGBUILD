@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-nl-bin
 _pkgname=betterbird
-pkgver=128.9.0esr
-_build=bb24
+pkgver=128.9.2esr
+_build=bb25
 pkgrel=1
 pkgdesc="DUTCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -38,6 +38,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('dac9343c625df977e6a87824782bbf0d0eb45b315fb1569567b28b4e9912ee20'
+sha256sums=('836d400e4504fc9973e7cfa4d2ec884330a1e5d700e739a3d642c6122062d940'
             'dde5f71088162b89c7ea56508c06441e6e1e717206f781c00657cb71d96d44cd')
 
