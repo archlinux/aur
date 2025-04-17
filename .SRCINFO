@@ -1,0 +1,16 @@
+pkgbase = python-condense-json
+	pkgdesc = Python function for condensing JSON using replacement strings
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/condense-json/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/ca/c7/fb14dfac23e6e27170f8a94bf13355987d15f8db62df99146f81bf6b2508/condense_json-0.1.2.tar.gz
+	sha256sums = a161e1984122ad35801cc14ecfe2b38d9d638c8c089e04cb545d26300fdc485e
+
+pkgname = python-condense-json
