@@ -1,6 +1,6 @@
 # Maintainer: Prasanth Bupd <bupdprasanth@gmail.com>
 pkgname=oras-git
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=2
 pkgdesc='OCI registry client - managing content like artifacts, images, packages'
 arch=(x86_64)
