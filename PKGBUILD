@@ -1,5 +1,5 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Maintainer: Luke Horwell <code (at) horwell (dot) me>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=polychromatic
 pkgver=0.9.4
