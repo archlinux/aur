@@ -1,0 +1,14 @@
+pkgbase = websitino-bin
+	pkgdesc = A lightweight static file server for local development
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = https://github.com/trikko/websitino
+	arch = x86_64
+	license = MIT
+	provides = websitino
+	conflicts = websitino
+	options = !strip
+	source = websitino-0.2.8::https://trikko.github.io/websitino/linux/websitino
+	sha256sums = SKIP
+
+pkgname = websitino-bin
