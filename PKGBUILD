@@ -13,11 +13,20 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  # Create LICENSE file if it doesn't exist
-  if [ ! -f LICENSE ]; then
-    cat > LICENSE << "EOF"
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  go build -o "${pkgname}" .
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  
+  # Install binary
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  
+  # Create license file directly in the package
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << EOF
 MIT License
 
 Copyright (c) 2024 Khaled Rouissi
@@ -40,56 +49,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 EOF
-  fi
-
-  # Create README.md file if it doesn't exist
-  if [ ! -f README.md ]; then
-    cat > README.md << "EOF"
-# Ma7rath
-
-A simple, elegant command-line timer application built with Go.
-
-## Usage
-
-```bash
-# Start a timer for 25 minutes
-ma7rath 25
-
-# Start a timer for 5 minutes and 30 seconds
-ma7rath 5.5
-```
-
-## Controls
-
-- Press 'q' to quit the application at any time
-EOF
-  fi
-}
-
-build() {
-  cd "${pkgname}-${pkgver}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "${pkgname}" -ldflags "-s -w" .
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  go test ./...
-}
-
-package() {
-  cd "${pkgname}-${pkgver}"
-
-  # Install binary
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  # Install license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install documentation
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
