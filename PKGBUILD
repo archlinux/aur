@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChemmineOB
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4e3f20d57c46d1ff27d1ed273ef4d4c4')
-b2sums=('6f523ab5cda5aaebd3c0119d150940b473e9cc3610b62aae16ccc217aa35c2b6d32f9baf74d7b26e7cb17ec4dba6e3f81a4c369907d5608dc9bd573cbad323be')
+md5sums=('d0e5a71758858529851020ed746841ce')
+b2sums=('58f492fce5af68de887e78070a8c94f375a6981f268de4d7735b7f5f612b0d4f7f060dc3e088f1966d6974c74f651de0efdaf3f4d0a61af7439d000d570d95d5')
 
 build() {
   mkdir build
