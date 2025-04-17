@@ -54,14 +54,14 @@ package() {
 		"${pkgdir}/usr/lib/sysusers.d/${_base_pkgname}.conf"
 	install -Dm644 "${srcdir}/${_base_pkgname}.tmpfiles" \
 		"${pkgdir}/usr/lib/tmpfiles.d/${_base_pkgname}.conf"
-	install -Dm744 mollysocket.service \
+	install -Dm644 mollysocket.service \
 		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}.service"
-	install -Dm744 mollysocket-vapid.service \
+	install -Dm644 mollysocket-vapid.service \
 		"$pkgdir/usr/lib/systemd/system/${_base_pkgname}-vapid.service"
 
 
 	# Mollysocket config and bin
-	install -Dm744 conf.toml "$pkgdir/etc/${_base_pkgname}/conf.toml"
+	install -Dm644 conf.toml "$pkgdir/etc/${_base_pkgname}/conf.toml"
 	install -Dm755 "${pkgname}-${pkgver}" \
 		"$pkgdir/usr/bin/ms"
 }
