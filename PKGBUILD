@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affycomp
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-affycompdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9dd57ca955c7b4b9bf7e5787e060de4a')
-b2sums=('71c2b3b3cf474e1d5d0ca15affb3eb46c93bda75175dd951b960d8841346d9dc61b49f1100c46b15a817a3a00f298f894d7ad24e7ad5897062cf1da2a2e1dd76')
+md5sums=('ad80dbe6794a7e94e5c605f1ed54e617')
+b2sums=('4c88681893a636ab162a9e6e523a2f29c2e975487a3811c4c1ecb336f71915b8a93658e040bbc53237575966311151b4c691ab90bfa5c0e61488cd15d3e71237')
 
 build() {
   mkdir build
