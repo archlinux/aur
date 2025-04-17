@@ -1,6 +1,6 @@
 pkgbase = r-cancerclass
 	pkgdesc = Development and validation of diagnostic tests from high-dimensional molecular data
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cancerclass
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-cancerclass
 	depends = r-binom
 	depends = r-biobase
 	optdepends = r-cancerdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cancerclass_1.50.0.tar.gz
-	md5sums = 116324a4bf732430c8280593e5eec0ab
-	b2sums = faff29ec5314a7090f347f8b808b73e58d824705a84525440e050e6a3946b0abe21376f4bf8c9f815d5d2e66f434bd909c2e3b04c8251e67355c637cd53e1b44
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cancerclass_1.52.0.tar.gz
+	md5sums = d7adda5d152e6adb54611289ab4f0fe5
+	b2sums = 5020e569dee74e81c7e06c870a18f9f45e34a9d377d808e30a3439a14a3fe20e32df829d11e05afb98d8e29195ccf916e17d0a7b7163a077184ffc19357c735c
 
 pkgname = r-cancerclass

@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cancerclass
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-cancerdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('116324a4bf732430c8280593e5eec0ab')
-b2sums=('faff29ec5314a7090f347f8b808b73e58d824705a84525440e050e6a3946b0abe21376f4bf8c9f815d5d2e66f434bd909c2e3b04c8251e67355c637cd53e1b44')
+md5sums=('d7adda5d152e6adb54611289ab4f0fe5')
+b2sums=('5020e569dee74e81c7e06c870a18f9f45e34a9d377d808e30a3439a14a3fe20e32df829d11e05afb98d8e29195ccf916e17d0a7b7163a077184ffc19357c735c')
 
 build() {
   mkdir build
