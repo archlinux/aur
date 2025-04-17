@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 pkgname="limine-snapper-sync"
-pkgver=1.8.6
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="The tool syncs Snapper snapshots with Limine bootloader"
 arch=("any")
 url="https://gitlab.com/Zesko/limine-snapper-sync"
@@ -17,7 +17,8 @@ depends=(
     'inotify-tools'
     'libnotify')
 optdepends=(
-    'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
+    'limine-dracut-support: It automates kernel installation/removal and Limine boot entry management.'
+    'limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.'
     'snap-pac: triggers Snapper to create snapshots during system updates.'
     'rsync: Alternative method for restoring snapshots.'
     'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
@@ -26,7 +27,7 @@ optdepends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-snapper-sync.conf)
 conflicts=('limine-snapper-sync-git')
-sha256sums=('a2b866804fb5dd8e419f1a1b07c986bb24573b7c52e22adff77a1cf9353c94fa')
+sha256sums=('1b994b310a9353df77aff942d2a359dc08dbdb5f0c9ffebba4b21e6451e3c24b')
 
 check_java_version() {
     local java_version
@@ -40,7 +41,7 @@ check_java_version() {
     fi
 
     if [[ "$java_version" -lt ${_java_version} ]]; then
-        echo "Error: Java version $java_version is older than the required ${_java_version}."
+        echo "Error: Java version $java_version is older than the required ${_java_version}." >&2
         echo "Please check with: 'archlinux-java status'"
         echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
         return 1
@@ -48,10 +49,7 @@ check_java_version() {
 }
 
 build() {
-    unset JAVA_HOME
-    unset JAVA_OPTS
-    unset JDK_JAVA_OPTIONS
-    unset JAVA_TOOL_OPTIONS
+    unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
     if check_java_version; then
         cd "$srcdir/${pkgname}-${pkgver}"
         mvn clean package
