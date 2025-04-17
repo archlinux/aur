@@ -34,9 +34,9 @@ package() {
   # Install binary
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install license
-  # The LICENSE file is not in the source tarball, so we create it
-  cat > LICENSE << "EOF"
+  # Create a LICENSE file directly in the package
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << "EOF"
 MIT License
 
 Copyright (c) 2024 Khaled Rouissi
@@ -59,12 +59,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 EOF
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Install documentation
-  # Create a simple README if it doesn't exist
-  if [ ! -f "README.md" ]; then
-    cat > README.md << "EOF"
+  # Create a README file directly in the package
+  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+  cat > "${pkgdir}/usr/share/doc/${pkgname}/README.md" << "EOF"
 # Ma7rath
 
 A simple, elegant command-line timer application built with Go.
@@ -83,6 +81,4 @@ ma7rath 5.5
 
 - Press 'q' to quit the application at any time
 EOF
-  fi
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
