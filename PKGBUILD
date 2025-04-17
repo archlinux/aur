@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggtreeDendro
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-yulab.utils
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('defc1f45bc699d6ef9d433146de0c62d')
-b2sums=('cc3d6fd9abef25d42201743405030a98c0fe7dd41df9d35c8a6c2cf227205033ca4fcd3522748f822a513b55df441dca06341c28801dad3fe3cef977fefd3c77')
+md5sums=('2b1c2e8601c6b87253174de4a9316d8c')
+b2sums=('a15b0bf855a879c91b6216ef2fc00fdd6551b2b78465f046adc35aec99e17c8f70e8d9a109e419c368cb1da54566f8985810f05e5485f24e50c1f6f4d455550d')
 
 build() {
   mkdir build
