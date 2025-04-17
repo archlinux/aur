@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=570.86.16.r0.g81fe4fb41
+pkgver=575.51.02.r0.g415957988
 pkgrel=1
 pkgdesc='NVIDIA open kernel modules (git version)'
 arch=('x86_64')
@@ -15,15 +15,13 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch'
-        '150-nvidia-open-make-modeset-fbdev-default.patch'
-        '160-nvidia-open-fix-hdmi-names.patch')
+        '150-nvidia-open-make-modeset-fbdev-default.patch')
 sha256sums=('SKIP'
-            '20198683cf52f60bb9dfe4ad202bf5a1f5a0b47fab5f5cf78e5f48861adda9fa'
+            '009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            '73b9cd6b048b0c75cbb6e03b76562f93107d5466fff3127938523a1412cf3d41'
+            '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             '4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba'
-            'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca'
-            '33083d089400ed33a6567f4f1174cb49bed5bfaef57a2ae2915a5582418d58a2')
+            'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -31,9 +29,8 @@ prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
-    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/160-nvidia-open-fix-hdmi-names.patch"
     
-    sed -i "s/__VERSION_STRING/${pkgver}/" open-gpu-kernel-modules/kernel-open/dkms.conf
+    sed -i "s/__VERSION_STRING/${pkgver%%.r*}/" open-gpu-kernel-modules/kernel-open/dkms.conf
     
     [ -d dkms-src ] && rm -rf dkms-src
     cp -af open-gpu-kernel-modules/kernel-open dkms-src
