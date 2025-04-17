@@ -1,13 +1,14 @@
+# Contributor: Brandon Mittman <brandonmittman@gmail.com>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.11.0.r27207.d1ed659
+pkgver=10.11.0.r27254.86b81c9
 pkgrel=1
 pkgdesc='The Free Software Media System'
-arch=('i686' 'x86_64' 'armv6h')
+arch=('any')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
 makedepends=('dotnet-sdk>=9' 'npm' 'git')
