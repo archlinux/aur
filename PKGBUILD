@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cellscape
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9dc56beae183f99fae4f3da0c4f63e3e')
-b2sums=('9477f5d7a493b1d9991a5d8c0f36d252986a0277dd31862955eb2e23d037217e89779b886ed94271fde167bc4679015278ba49de65489249e18c19a3af67fb42')
+md5sums=('d64fa20725f314c69694f5dbb3fa29c2')
+b2sums=('99454b044553beaf69b4763a0abfb641779c5c6fcf6bc05ef2246dc117e5ca4e478fbd2b5d8d4a69e3dcca21849214b7042e59d951623a5b785956f80911f59d')
 
 build() {
   mkdir build
