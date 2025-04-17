@@ -33,12 +33,12 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pip wheel --no-deps . -w dist
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_plug}"
-  python -m build --wheel --no-isolation
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
