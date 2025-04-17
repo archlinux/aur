@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cytoMEM
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('81a1fd3e6e1a8cb0e08ef0868dff5820')
-b2sums=('d0296d64ccd8f6ee61a786170123ada43f0903696f58824a273d9400137a2575fac1338e91255f5fb06c60fe87583cfacdaaf58dad1c81848c567d3283cf7222')
+md5sums=('6e3ed9db93f1c726b9ee7b4e25c94e5c')
+b2sums=('aab225fc696a5eaee5b3866980406a84b198b74649cd547343118c8235629b179e5c0391e52fb738093062855409a9c9ff187093580b6799428fee6227614255')
 
 build() {
   mkdir build
