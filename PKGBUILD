@@ -4,7 +4,7 @@ _pkgname=ggsurvfit
 _pkgver=1.1.0
 pkgname=r-${_pkgname,,}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Flexible Time-to-Event Figures'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,6 @@ depends=(
   r-glue
   r-gtable
   r-patchwork
-  r-survival
   r-tidyr
 )
 optdepends=(
