@@ -1,6 +1,6 @@
 # Maintainer: Wrxn <arch@rnny.xyz>
 pkgname=ampinstmgr
-pkgver=2.6.1.4
+pkgver=2.6.1.6
 pkgrel=1
 epoch=
 pkgdesc="AMP (Application Management Panel) is a simple to use and easy to install control panel and management system for hosting game servers."
@@ -23,7 +23,7 @@ source=("http://repo.cubecoders.com/$pkgname-$pkgver.x86_64.tgz"
         sysusers.conf
         tmpfiles.conf
        )
-sha256sums=('a2f45ed1fa7babbc63b6ca79b9b81bdbc8a76e355581a0cd55bdb295821eb733'
+sha256sums=('006907d054552cebc53a77278c88f5e17b1d4b7f3e71d3e91eedf0810fcbe296'
             '54478340926d4f49dd784c7cffe8e191a0b5b1dc29b72694f02b40a9672d9237'
             '5c6a673550c8243556e2c770c8e85f5892cdee334d063e49aa398175b00fce11')
 noextract=()
