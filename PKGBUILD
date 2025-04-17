@@ -3,13 +3,14 @@
 
 pkgname=qcm
 pkgver=1.2.0_qsql
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
 license=('GPL-2.0-or-later')
 depends=(
 	'qt6-base'
+	'qt6-declarative'
 	'qt6-quick3d'
 	'hicolor-icon-theme'
 	'curl'
@@ -26,7 +27,9 @@ makedepends=(
 	'pegtl'
 	'nlohmann-json'
 	'ctre'
-	'tl-expected')
+	'tl-expected'
+	'vulkan-headers'
+)
 source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"git+https://github.com/effolkronium/random.git"
