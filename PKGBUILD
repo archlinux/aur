@@ -13,41 +13,40 @@ source=("git+https://github.com/caqtdm/caqtdm.git#tag=v4.5.0-rc2"
 sha512sums=('SKIP' '3e5243235bcccd01429d47304a4c834d4b7ecdd7cf7fd1dc0658b4a53eb4bedabcff00364de34707fc810d5df584dcad86ebbd985b5e2be5138574064dadf0b5')
 
 prepare() {
-    # Arch linux specific
-    export QWTLIBNAME=qwt-qt6
-    export QWTINCLUDE=/usr/include/qwt-qt6
-    export EPICS_BASE=/usr/lib/epics
-    export PYTHONVERSION=$(python --version 2>&1 | cut -d ' ' -f 2 | cut -d '.' -f 1-2)
-    export ZMQ=/usr
-    export ZMQINC=$ZMQ/include
-    export ZMQLIB=$ZMQ/lib
-    export QTDM_RPATH=/opt/caqtdm/lib/qt6
+    # Write environment variables to env_config.sh
+    cat > "${srcdir}/env_config.sh" << 'EOF'
+export QWTLIBNAME=qwt-qt6
+export QWTINCLUDE=/usr/include/qwt-qt6
+export EPICS_BASE=/usr/lib/epics
+export PYTHONVERSION=$(python --version 2>&1 | cut -d ' ' -f 2 | cut -d '.' -f 1-2)
+export ZMQ=/usr
+export ZMQINC=$ZMQ/include
+export ZMQLIB=$ZMQ/lib
+export QTDM_RPATH=/opt/caqtdm/lib/qt6
 
+if [ -z "$CARCH" ]; then
+    export CARCH=$(uname -m)
+fi
 
-    if [ -z {$CARCH} ]; then
-        CARCH=$(uname -m)
-    fi
+export EPICS_HOST_ARCH=linux-${CARCH}
 
-    export EPICS_HOST_ARCH=linux-${CARCH}
-
-
-    # Usual configuration
-    export QTHOME=/usr
-    export QWTHOME=/usr
-    export QWTLIB=${QWTHOME}/lib
-    export QWTVERSION=6.1
-    export EPICSINCLUDE=${EPICS_BASE}/include
-    export EPICSLIB=${EPICS_BASE}/lib/$EPICS_HOST_ARCH
-    export EPICSEXTENSIONS=${EPICS_BASE}/extensions
-    export QTCONTROLS_LIBS=${srcdir}/binaries
-    export CAQTDM_COLLECT=${srcdir}/binaries
-    export QTBASE=${QTCONTROLS_LIBS}
-    export CAQTDM_CA_ARCHIVELIBS=${srcdir}/binaries/;
-    export CAQTDM_LOGGING_ARCHIVELIBS=${srcdir}/binaries
-    export QTDM_LIBINSTALL=$EPICSEXTENSIONS/lib/$EPICS_HOST_ARCH
-    export QTDM_BININSTALL=$EPICSEXTENSIONS/bin/$EPICS_HOST_ARCH
-    export PYTHONINCLUDE=/usr/include/python$PYTHONVERSION
-    export PYTHONLIB=/usr/lib/
+export QTHOME=/usr
+export QWTHOME=/usr
+export QWTLIB=${QWTHOME}/lib
+export QWTVERSION=6.1
+export EPICSINCLUDE=${EPICS_BASE}/include
+export EPICSLIB=${EPICS_BASE}/lib/$EPICS_HOST_ARCH
+export EPICSEXTENSIONS=${EPICS_BASE}/extensions
+export QTCONTROLS_LIBS=${srcdir}/binaries
+export CAQTDM_COLLECT=${srcdir}/binaries
+export QTBASE=${QTCONTROLS_LIBS}
+export CAQTDM_CA_ARCHIVELIBS=${srcdir}/binaries/
+export CAQTDM_LOGGING_ARCHIVELIBS=${srcdir}/binaries
+export QTDM_LIBINSTALL=$EPICSEXTENSIONS/lib/$EPICS_HOST_ARCH
+export QTDM_BININSTALL=$EPICSEXTENSIONS/bin/$EPICS_HOST_ARCH
+export PYTHONINCLUDE=/usr/include/python$PYTHONVERSION
+export PYTHONLIB=/usr/lib/
+EOF
 
     # Patch broken files
     patch --forward --strip=1 --input="${srcdir}/fix_qwt_static_cast.patch"
@@ -55,8 +54,11 @@ prepare() {
 
 build() {
     cd "$srcdir/caqtdm"
-    # Build
+    # Source the environment variables
+    source "${srcdir}/env_config.sh"
+    # Create make files
     qmake6 ./all.pro
+    # Build the project
     make
 }
 
