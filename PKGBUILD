@@ -38,8 +38,8 @@ package() {
     #only 2 files require special patches for arch: wazuh-passwords-tool.sh and wazuh-certs-tool.sh, so we replace them
     #Setup
     cd $pkgdir
-    mv -f $srcdir/wazuh-passwords-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
-    mv -f $srcdir/wazuh-certs-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
+    #mv -f $srcdir/wazuh-passwords-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
+    #mv -f $srcdir/wazuh-certs-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
     mv $srcdir/etc .
     mv $srcdir/usr .
     mv $srcdir/var .
