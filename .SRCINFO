@@ -1,6 +1,6 @@
 pkgbase = r-metagenomeseq
 	pkgdesc = Statistical analysis for sparse high-throughput sequencing
-	pkgver = 1.48.1
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metagenomeSeq
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-metagenomeseq
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-vegan
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metagenomeSeq_1.48.1.tar.gz
-	sha256sums = 1ad25af9f2afba17341c09fafd3233d8c27b38b8972718d57d9cd00b7367def4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metagenomeSeq_1.50.0.tar.gz
+	sha256sums = 92291645c8d78f756b80647d613e8aa23d77472c1174839cc9d7e0d3ae617ef5
 
 pkgname = r-metagenomeseq
