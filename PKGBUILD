@@ -2,13 +2,13 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=picoscope7
 pkgver=7.1.50_1r5594
-pkgrel=1
+pkgrel=2
 pkgdesc="PicoScope 7 Test and Measurment Stable"
 arch=('x86_64')
 url="https://www.picotech.com/downloads/linux"
 license=('custom')
 groups=()
-depends=(ttf-roboto mono gtk-sharp-3 ps7_libpicoipp ps7_libpicocv desktop-file-utils which fuse2)
+depends=(ttf-roboto ps7_libpicoipp ps7_libpicocv desktop-file-utils which fuse2)
 optdepends=('ps7_libps2000: Support for PicoScope 2000 series'
 		'ps7_libps2000a: Support for PicoScope 2000a series'
         'ps7_libps3000: Support for PicoScope 3000 series'
@@ -20,7 +20,7 @@ optdepends=('ps7_libps2000: Support for PicoScope 2000 series'
         'ps7_libps6000: Support for PicoScope 6000 series'
         'ps7_libps6000a: Support for PicoScope 6000a series'
         )
-provides=()
+provides=(picoscope7)
 conflicts=(picoscope7beta)
 replaces=()
 backup=()
