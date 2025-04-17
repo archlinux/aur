@@ -1,0 +1,31 @@
+From ac89d7b0213feacf7a43b2a12238c489f5248446 Mon Sep 17 00:00:00 2001
+From: rewine <luhongxu@deepin.org>
+Date: Thu, 17 Apr 2025 21:48:08 +0800
+Subject: [PATCH] fix: build on qt 6.9
+
+---
+ src/subprojects/AutoEqIntegration/AeqPackageManager.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/subprojects/AutoEqIntegration/AeqPackageManager.cpp b/src/subprojects/AutoEqIntegration/AeqPackageManager.cpp
+index 01940a1b..2ec9c5b4 100644
+--- a/src/subprojects/AutoEqIntegration/AeqPackageManager.cpp
++++ b/src/subprojects/AutoEqIntegration/AeqPackageManager.cpp
+@@ -133,7 +133,7 @@ QtPromise::QPromise<AeqVersion> AeqPackageManager::getLocalVersion()
+     return QtPromise::QPromise<AeqVersion>{[&](
+         const QtPromise::QPromiseResolve<AeqVersion>& resolve,
+                 const QtPromise::QPromiseReject<AeqVersion>& reject) {
+-            QFile versionJson = (databaseDirectory() + "/version.json");
++            QFile versionJson(databaseDirectory() + "/version.json");
+             if(!versionJson.exists())
+             {
+                 reject();
+@@ -159,7 +159,7 @@ QtPromise::QPromise<QVector<AeqMeasurement>> AeqPackageManager::getLocalIndex()
+     return QtPromise::QPromise<QVector<AeqMeasurement>>{[&](
+         const QtPromise::QPromiseResolve<QVector<AeqMeasurement>>& resolve,
+                 const QtPromise::QPromiseReject<QVector<AeqMeasurement>>& reject) {
+-            QFile indexJson = (databaseDirectory() + "/index.json");
++            QFile indexJson(databaseDirectory() + "/index.json");
+             if(!indexJson.exists())
+             {
+                 reject();
