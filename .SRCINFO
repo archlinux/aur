@@ -1,0 +1,25 @@
+pkgbase = bspsrc-git
+	pkgdesc = map decompiler for source engine maps, written in java. git branch
+	pkgver = 1.4.7.r8.g95dbdb8
+	pkgrel = 1
+	url = https://github.com/ata4/bspsrc
+	arch = x86_64
+	license = Unlicense
+	makedepends = maven
+	makedepends = java-environment>=22
+	makedepends = git
+	depends = java-runtime>=22
+	provides = bspsrc
+	provides = bspinfo
+	source = git+https://github.com/ata4/bspsrc
+	source = bspinfo.sh
+	source = bspsrc.sh
+	source = bspinfo.desktop
+	source = bspsrc.desktop
+	sha256sums = SKIP
+	sha256sums = 2949c9560421b1e144ecb6100dd260512f034481890ba9edb262612f2d28f7bd
+	sha256sums = 3823c483bfe98d3f69ab2000cba21cf84359b330d95b2d7f7077ac0ca22dfc90
+	sha256sums = cf154d0eacccff31ec1adec423764cd659bdf5adb3233c18418b537d8ca4aa60
+	sha256sums = 08fee4250d05734038cc263e11d1168db30c7a26a76ff3195b94701e3fae7810
+
+pkgname = bspsrc-git
