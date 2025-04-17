@@ -1,6 +1,6 @@
 pkgbase = trezor-suite-appimage
 	pkgdesc = desktop app for Trezor hardware wallets
-	pkgver = 25.3.3
+	pkgver = 25.4.2
 	pkgrel = 1
 	url = https://suite.trezor.io/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = trezor-suite-appimage
 	depends = trezor-udev
 	depends = gtk3
 	depends = nss
-	noextract = Trezor-Suite-25.3.3.AppImage
+	noextract = Trezor-Suite-25.4.2.AppImage
 	options = !strip
-	source = https://data.trezor.io/suite/releases/desktop/latest/Trezor-Suite-25.3.3-linux-x86_64.AppImage
+	source = https://data.trezor.io/suite/releases/desktop/latest/Trezor-Suite-25.4.2-linux-x86_64.AppImage
 	source = satoshilabs-2021-signing-key::https://trezor.io/security/satoshilabs-2021-signing-key.asc
 	validpgpkeys = EB483B26B078A4AA1B6F425EE21B6950A2ECB65C
-	sha256sums = 3f0489d271b80cf73bfe8f61b16af5691931f9ed383a5990e60b89e48ff80542
+	sha256sums = 2406a24f12249c0abf7c003478b4be4cc3db9d463193f9887e8b267d707db216
 	sha256sums = 19e34555c5f1e1eca31d841682c104c3b5a94ae2001d830cd26dddcc01775bc6
 
 pkgname = trezor-suite-appimage
