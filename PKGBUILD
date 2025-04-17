@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=derfinderHelper
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='derfinder helper package'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1061707063a42ef9b22ec79ed0a16980f171c5ce28d6df34162355f36ca94033')
+sha256sums=('a0e59868e55aaf020cd6019eb2f56b8f12a31ce75575861411d1cc4903219ceb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
