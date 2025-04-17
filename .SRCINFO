@@ -7,7 +7,7 @@ pkgbase = opkssh-bin
 	license = Apache-2.0
 	provides = opkssh
 	conflicts = opkssh
-	source = opkssh-linux-x86_64::https://github.com/openpubkey/opkssh/releases/download/v0.5.1/opkssh-linux-amd64
+	source = opkssh-0.5.1-linux-x86_64::https://github.com/openpubkey/opkssh/releases/download/v0.5.1/opkssh-linux-amd64
 	sha256sums = b82f5a19682abac79dce1db2e2e3038a2ada2ecba09a241e233a044d8ceaa938
 
 pkgname = opkssh-bin

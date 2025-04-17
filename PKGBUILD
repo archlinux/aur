@@ -11,11 +11,11 @@ license=('Apache-2.0')
 conflicts=('opkssh')
 provides=('opkssh')
 
-source=("${_pkgname}-linux-x86_64::$url/releases/download/v$pkgver/${_pkgname}-linux-amd64")
+source=("${_pkgname}-${pkgver}-linux-x86_64::$url/releases/download/v$pkgver/${_pkgname}-linux-amd64")
 
 sha256sums=('b82f5a19682abac79dce1db2e2e3038a2ada2ecba09a241e233a044d8ceaa938')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    install ${srcdir}/${_pkgname}-linux-x86_64 ${pkgdir}/usr/bin/${_pkgname}
+    install ${srcdir}/${_pkgname}-${pkgver}-linux-x86_64 ${pkgdir}/usr/bin/${_pkgname}
 }
