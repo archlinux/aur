@@ -1,6 +1,6 @@
 pkgbase = floc-git
 	pkgdesc = Flo Compiler
-	pkgver = r144.8e6e9b6
+	pkgver = r155.d2c0a9c
 	pkgrel = 1
 	url = https://github.com/romch007/floc
 	arch = any
