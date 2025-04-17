@@ -1,6 +1,6 @@
 pkgbase = r-bluster
 	pkgdesc = Clustering Algorithms for Bioconductor
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/bluster
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-bluster
 	optdepends = r-testthat
 	optdepends = r-vegan
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/bluster_1.16.0.tar.gz
-	sha256sums = dad5469a8b4360293ee42e9eaed2c93db3a6d2547db8129c2ff424217f910acd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/bluster_1.18.0.tar.gz
+	sha256sums = 1182ea99c9f7b25a7802f3162abb1cce881ed56257a4604557c15421e5cda160
 
 pkgname = r-bluster
