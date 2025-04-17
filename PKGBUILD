@@ -17,7 +17,8 @@ depends=(
     'inotify-tools'
     'libnotify')
 optdepends=(
-    'limine-dracut-support: Automates kernel installation/removal and Limine boot entry management.'
+    'limine-dracut-support: It automates kernel installation/removal and Limine boot entry management.'
+    'limine-mkinitcpio-hook: It automates kernel installation/removal and Limine boot entry management.'
     'snap-pac: triggers Snapper to create snapshots during system updates.'
     'rsync: Alternative method for restoring snapshots.'
     'journalctl-desktop-notification: Sends desktop notifications for errors, including detected hardware issues.'
@@ -45,7 +46,7 @@ check_java_version() {
     fi
 
     if [[ "$java_version" -lt ${_java_version} ]]; then
-        echo "Error: Java version $java_version is older than the required ${_java_version}."
+        echo "Error: Java version $java_version is older than the required ${_java_version}." >&2
         echo "Please check with: 'archlinux-java status'"
         echo "If java ${_java_version} or a newer version is installed, run 'archlinux-java set java-${_java_version}-openjdk' or a newer version."
         return 1
