@@ -1,70 +1,67 @@
-# Maintainer: Kimiblock Moe
-# Contributor: Integral
-# Contributor: ZhangHua
+# Maintainer: Integral <integral@member.fsf.org>
+# Contributor: Kimiblock Zhou <pn3535 at icloud dot com>
 
 pkgname=qcm
-pkgver=1.1.2
-pkgrel=1
+pkgver=1.2.0_qsql
+pkgrel=2
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
 license=('GPL-2.0-or-later')
 depends=(
 	'qt6-base'
-	'qt6-shadertools'
+	'qt6-quick3d'
 	'hicolor-icon-theme'
 	'curl'
 	'openssl'
-	'qt6-tools'
-	'qt6-declarative'
-	'gcc-libs'
-	'glibc'
 	'dbus'
-	'libnghttp2'
-	'libidn2'
-	'krb5'
-	'zstd'
-	'zlib'
-	'qt6-wayland'
-	'libx11'
-	'libxkbcommon'
-	'libpng'
-	'freetype2'
-	'icu'
-	'pcre2'
-	'gnutls'
-	'graphite'
-	'lz4'
-	'libgpg-error'
 	'ffmpeg'
-	"fmt")
+	'fmt'
+	'cubeb-git')
 makedepends=(
 	'git'
 	'cmake'
-	'extra-cmake-modules'
-	'ninja')
-provides=("qcm")
-source=("git+https://github.com/hypengw/Qcm.git#tag=v${pkgver}")
-sha256sums=('6d753b055606830d90063c30b684ebd63722f590e62de196b3a31e067e785a02')
-conflicts=("qcm")
+	'ninja'
+	'asio'
+	'pegtl'
+	'nlohmann-json'
+	'ctre'
+	'tl-expected')
+source=(
+	"git+${url}.git#tag=v${pkgver}"
+	"git+https://github.com/effolkronium/random.git"
+	"git+https://github.com/hypengw/QmlMaterial.git"
+	"git+https://github.com/hypengw/qcm-jellyfin-plugin.git"
+	"git+https://github.com/KDAB/KDSingleApplication.git"
+)
+sha256sums=('4478227be25e33b5dbfdae0704e039dd75d402ff882b830655aa56baa1d2f421'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
-function prepare() {
-	cd "${srcdir}/Qcm"
-	git submodule update --init --recursive
+prepare() {
+	cd Qcm
+	git rm third_party/expected
+
+	git submodule init
+	git config submodule.third_party/random.url "${srcdir}/random"
+	git config submodule.qml_material.url "${srcdir}/QmlMaterial"
+	git config submodule.service/jellyfin.url "${srcdir}/qcm-jellyfin-plugin"
+	git config submodule.third_party/KDSingleApplication.url "${srcdir}/KDSingleApplication"
+	git -c protocol.file.allow=always submodule update
 }
 
-function build(){
-	cd "${srcdir}/Qcm"
-	cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Release
+build() {
+	cmake -B build \
+		-S Qcm \
+		-G Ninja \
+		-D CMAKE_BUILD_TYPE=None \
+		-D CMAKE_INSTALL_PREFIX=/usr
+
 	cmake --build build
 }
 
-function package(){
-	cd "${srcdir}/Qcm"
+package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	mv "${pkgdir}/usr/local"/* "${pkgdir}/usr"
-# 	mkdir -p "${pkgdir}/usr/share/Qcm/"
-# 	cp -r "${srcdir}/Qcm/build/qml_modules" "${pkgdir}/usr/share/Qcm/"
-# 	sed -i 's|Exec=Qcm|Exec=env QML_IMPORT_PATH=/usr/share/Qcm/qml_modules Qcm|g' \
-# 		"${pkgdir}/usr/share/applications"/*.desktop
 }
