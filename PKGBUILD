@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HTqPCR
-_pkgver=1.60.1
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
-pkgver=1.60.1
+pkgver=1.62.0
 pkgrel=1
 pkgdesc='Automated analysis of high-throughput qPCR data'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ba5fe4f41d18bdfdd82dda2b0dda11273afb9256f57cd99a22c69490ed98bbef')
+sha256sums=('cfbc8e3829fd4998a644df9a1bd26078fd8858ac6dd1391c4e1e48a9974f7eae')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
