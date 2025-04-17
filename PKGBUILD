@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=decoupleR
-_pkgver=2.12.0
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -49,8 +49,8 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d5e3f97892978162549b29bdd78b9f65')
-b2sums=('70b1df0ae399b187002c65789c69be386d67992d66f858f54d1bea0efa6c94be5f8a79394adb74feaa4b79cbfe6257bef544db638a4a68c7e52b0213a7096487')
+md5sums=('3c01e61e7d61fc7a068bb64e8fe70462')
+b2sums=('c6fd63c2e7681b2afd2c90b5031a629025fb38223eca36538262ee7ba966d315d80b3e5f6b3a197fb95a32cbcd22320ac1cb5bdc54ee7ea90d85a0c9b9768ec6')
 
 build() {
   mkdir build
