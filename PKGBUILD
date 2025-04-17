@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qpcrNorm
-_pkgver=1.64.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.64.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Data-driven normalization strategies for high-throughput qPCR data.'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('858e002158c7121a2d9b62cea52474c00d12517eea0b0a9ad4129bf19945a5d4')
+sha256sums=('04ef8e5cb745313a20f1fac9fc0ea73e4dfedd6463bcefa76bb5f33f3fd78e66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
