@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=v1.20.0.r1.g67c9b37
+pkgver=v1.25.1.r18.g642bc34
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities (Git)"
 arch=('x86_64')
@@ -66,7 +66,7 @@ package() {
     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
-    BCACHEFS_FUSE=1 make \
+    BCACHEFS_FUSE=0 make \
         PREFIX="/usr" \
         LIBEXECDIR=/usr/lib \
         DESTDIR="${pkgdir}" \
