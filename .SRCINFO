@@ -1,11 +1,12 @@
 pkgbase = python-custom_inherit
 	pkgdesc = convenient, light-weight tools for inheriting docstrings
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsokl/custom_inherit
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-versioneer
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/custom_inherit/custom_inherit-2.4.1.tar.gz
 	sha256sums = 7052eb337bcce83551815264391cc4efc2bf70b295a3c52aba64f1ab57c3a8a2
