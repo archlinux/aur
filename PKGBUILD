@@ -25,7 +25,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'rust-bindgen' 'qt5-base' "qt6-base" 'java-runtime-headless'
+             'rust' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
              'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
@@ -237,7 +237,7 @@ build() {
     'use_system_libffi=true'
     'enable_widevine=true'
     'enable_nacl=false'
-    'use_qt5=true'
+    'use_qt5=false'
     'use_qt6=true'
     'moc_qt6_path="/usr/lib/qt6"'
     'enable_platform_hevc=true'
@@ -349,7 +349,6 @@ package() {
     chrome_100_percent.pak
     chrome_200_percent.pak
     chrome_crashpad_handler
-    libqt5_shim.so
     libqt6_shim.so
     resources.pak
     v8_context_snapshot.bin
