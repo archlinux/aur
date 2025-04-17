@@ -3,7 +3,7 @@
 _repo=ideapad-laptop-tb
 _module_name=ideapad-laptop-tb
 pkgname=${_module_name}-dkms
-pkgver=r23.b877a6c
+pkgver=r25.42d1e68
 pkgrel=1
 pkgdesc="The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 NoteBooks (DKMS)"
 url="https://github.com/ferstar/${_repo}"
