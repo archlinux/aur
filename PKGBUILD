@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=galois
 pkgname=python-$_name
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
     python-pytest-benchmark
 )
 source=($_name::git+https://github.com/mhostetter/$_name#tag=v$pkgver)
-b2sums=('1dc8a0686604e7758eca28415cb9a1553b0e4e4ddd3b53041f0dd307019cc7e3a63f6b657cb1ab1650c5d875992d3b2e00ff93619035af8f5b4fec4f9b7226f0')
+b2sums=('9b7e979ba8110ff1d689a49090fc1d906a7c3a67e7352f202b38fd1155ef7cdefafdd9f9e337d3b610166b065fada222e3ad08cc8cd070b60ee8c9b701ed2aff')
 
 build() {
     cd $_name
