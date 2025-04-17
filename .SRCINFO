@@ -1,6 +1,6 @@
 pkgbase = r-genproseq
 	pkgdesc = Generating Protein Sequences with Deep Generative Models
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenProSeq
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = r-genproseq
 	optdepends = r-stringdist
 	optdepends = r-testthat
 	optdepends = r-vaexprs
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenProSeq_1.10.0.tar.gz
-	md5sums = a32d030b971c3014f578dd24c9ca4858
-	b2sums = fc0a2c8b495802a8f9085d1ddb184bb316dd611843534a7bc79012a240982654d8ab1f346ebf0aba753b714d49481d6a38fcd31e28e11721405fd79166347f31
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenProSeq_1.12.0.tar.gz
+	md5sums = 5df09c8b112e70cc6926e8045cc52190
+	b2sums = f87c4b09d3eb3aeaf346c20156d5c413fe161b6c106f4db6f7a957d08a5fa9424005b79b09b7d58b9928e826c1a0a24ecc2e3ae5e79e1579c7ef98a397d00b47
 
 pkgname = r-genproseq
