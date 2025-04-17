@@ -26,6 +26,7 @@ depends=(
 makedepends=(
   meson
   ninja
+  git
 )
 provides=('polychromatic')
 conflicts=('polychromatic')
