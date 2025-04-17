@@ -1,15 +1,15 @@
 # Maintainer: Harrison <contact@htv04.com>
 
-pkgname=facetimehd-data
+_pkgname="facetimehd-data"
+pkgname="$_pkgname"
 pkgver=5.1.5769
-pkgrel=1
+pkgrel=2
 pkgdesc='Sensor calibration data for the FacetimeHD (Broadcom 1570) PCIe webcam'
-arch=('any')
 url='https://github.com/patjak/facetimehd'
-license=('custom')
-makedepends=('unrar')
-provides=('facetimehd-data')
-replaces=('facetimehd-data')
+license=('LicenseRef-Apple')
+arch=('any')
+
+makedepends=('7z')
 
 source=('https://download.info.apple.com/Mac_OS_X/031-30890-20150812-ea191174-4130-11e5-a125-930911ba098f/bootcamp5.1.5769.zip')
 sha256sums=('4ede2c8ef240708c850237a3e5911094ed6adae1734258e4639bc9069a814b1e')
@@ -17,11 +17,8 @@ sha256sums=('4ede2c8ef240708c850237a3e5911094ed6adae1734258e4639bc9069a814b1e')
 # Based on instructions from https://github.com/patjak/facetimehd/wiki/Extracting-the-sensor-calibration-files
 build() {
   # Extract AppleCamera64 data
-  cd "$srcdir"
-  rm -rf 'AppleCamera64'
-  mkdir 'AppleCamera64'
-  cd 'AppleCamera64'
-  unrar x "$srcdir/BootCamp/Drivers/Apple/AppleCamera64.exe"
+  cd "BootCamp/Drivers/Apple"
+  7z x "AppleCamera64.exe"
 
   # Extract sensor calibration data
   mkdir -p "$srcdir/$pkgname"
@@ -32,17 +29,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  
   # Install facetimehd-data
-  for FILE in '9112' '1771' '1871' '1874'
-  do
-    install -Dm644 "${FILE}_01XX.dat" "$pkgdir/usr/lib/firmware/facetimehd/${FILE}_01XX.dat"
+  for FILE in '9112' '1771' '1871' '1874'; do
+    install -Dm644 "$pkgname/${FILE}_01XX.dat" "$pkgdir/usr/lib/firmware/facetimehd/${FILE}_01XX.dat"
   done
-  
+
   # Install licenses
-  for FILE in 'Arabic' 'BrazilianPortuguese' 'Czech' 'Danish' 'Dutch' 'English' 'Finnish' 'French' 'German' 'Hungarian' 'Italian' 'Japanese' 'Korean' 'Norwegian' 'Polish' 'Portuguese' 'Russian' 'SimplifiedChinese' 'Spanish' 'Swedish' 'TraditionalChinese' 'Turkish'
-  do
-    install -Dm644 "$srcdir/AppleCamera64/${FILE}License.txt" "$pkgdir/usr/share/licenses/$pkgname/${FILE}License.txt"
+  for FILE in 'Arabic' 'BrazilianPortuguese' 'Czech' 'Danish' 'Dutch' 'English' 'Finnish' 'French' 'German' 'Hungarian' 'Italian' 'Japanese' 'Korean' 'Norwegian' 'Polish' 'Portuguese' 'Russian' 'SimplifiedChinese' 'Spanish' 'Swedish' 'TraditionalChinese' 'Turkish'; do
+    install -Dm644 "BootCamp/Drivers/Apple/${FILE}License.txt" "$pkgdir/usr/share/licenses/$pkgname/${FILE}License.txt"
   done
 }
