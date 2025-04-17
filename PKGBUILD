@@ -1,10 +1,11 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Charlie Wolf <charlie@wolf.is>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: Stewart Starbuck <stewart@stewartstarbuck.co.uk>
 
 pkgname=sthttpd
 pkgver=2.27.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Supported fork of the thttpd web server'
 url='https://github.com/blueness/sthttpd'
 license=('custom:BSD')
@@ -14,10 +15,12 @@ backup=('etc/thttpd.conf')
 validpgpkeys=('1FEDFAD9D82C52A53BABDC799384FA6EF52D4BBA')
 source=("$pkgname-$pkgver.tgz::https://github.com/blueness/sthttpd/archive/v2.27.1.tar.gz"
         'discreet.patch'
+        'sigset.patch'
         'service'
         'config')
 sha256sums=('a1ee2806432eaf5b5dd267a0523701f9f1fa00fefd499d5bec42165a41e05846'
             'be953777f2b5b860f1c5a8c96d8478535fe517d76bd4b76597d743a96c2659cf'
+            'cc0d44a6148d33bb41a4c16d8ab16f17e5b8fb1408add3104f8d87b87a20140d'
             '6fea42a6876e2a44eff4f76ed64befabe400e5c844b11b782b1507299e5eb986'
             '1f42c7625422944bd035731d264a711f50b47f4e4f58b6c67693f09fabb76350')
 
@@ -28,6 +31,7 @@ replaces=('thttpd')
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -p1 -i ../discreet.patch
+	patch -p1 -i ../sigset.patch
 	./autogen.sh
 }
 

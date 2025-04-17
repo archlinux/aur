@@ -1,7 +1,7 @@
 pkgbase = sthttpd
 	pkgdesc = Supported fork of the thttpd web server
 	pkgver = 2.27.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/blueness/sthttpd
 	arch = x86_64
 	license = custom:BSD
@@ -12,11 +12,13 @@ pkgbase = sthttpd
 	backup = etc/thttpd.conf
 	source = sthttpd-2.27.1.tgz::https://github.com/blueness/sthttpd/archive/v2.27.1.tar.gz
 	source = discreet.patch
+	source = sigset.patch
 	source = service
 	source = config
 	validpgpkeys = 1FEDFAD9D82C52A53BABDC799384FA6EF52D4BBA
 	sha256sums = a1ee2806432eaf5b5dd267a0523701f9f1fa00fefd499d5bec42165a41e05846
 	sha256sums = be953777f2b5b860f1c5a8c96d8478535fe517d76bd4b76597d743a96c2659cf
+	sha256sums = cc0d44a6148d33bb41a4c16d8ab16f17e5b8fb1408add3104f8d87b87a20140d
 	sha256sums = 6fea42a6876e2a44eff4f76ed64befabe400e5c844b11b782b1507299e5eb986
 	sha256sums = 1f42c7625422944bd035731d264a711f50b47f4e4f58b6c67693f09fabb76350
 
