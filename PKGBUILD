@@ -20,8 +20,8 @@ validpgpkeys=(
 
 source=(
     "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
-    "wazuh-passwords-tool.sh"
-    "wazuh-certs-tool.sh"
+    "https://arashi.solutions/wazuh-passwords-tool.sh"
+    "https://arashi.solutions/wazuh-certs-tool.sh"
 )
 
 backup=(
