@@ -1,0 +1,3 @@
+[python-chromadb]
+source = "pypi"
+pypi = "chromadb"
