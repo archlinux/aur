@@ -2,7 +2,7 @@
 # Contributor: piojo, jediofthecode, megahertz
 
 pkgname=astrill
-pkgver=3.9.0.2180
+pkgver=3.10.0.3073
 pkgrel=0
 pkgdesc="VPN configuration tool for Astrill's servers"
 arch=('x86_64' 'i686')
@@ -16,8 +16,8 @@ install=astrill.install
 source_i686=('https://www.astrilldownloads.com/astrill-setup-linux.rpm')
 source_x86_64=('https://www.astrilldownloads.com/astrill-setup-linux64.rpm')
 
-sha256sums_x86_64=('f21488ca0ca9e38ab95b95e5ba0c58bc348c33aab56a246dcb06d0ed35a4dbb1')
-sha256sums_i686=('9eadf4d62e12df3448760f912c4175414524b9293afba9d6eeb7636a5efcd5fc')
+sha256sums_x86_64=('2211073ef66a4389d96f500e74169d8db3cb4ca1955d020104496b372581402a')
+sha256sums_i686=('cf5d376220988a6847684da1af525587dedf3cd1f0fb945d97972bdb1b477c42')
 
 # Use this path instead of /usr/local/Astrill
 _install_path=/opt/astrill
