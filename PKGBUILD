@@ -9,7 +9,7 @@
 
 _pkgname=Flexget
 pkgname=${_pkgname,,}
-pkgver=3.15.33
+pkgver=3.15.34
 pkgrel=1
 pkgdesc="FlexGet is a program aimed to automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 arch=(any)
@@ -105,7 +105,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('486bd1acba8caedd3b01e1c06ec999b64976d91e0c6e2d48e153a061d8aa3d04'
+sha256sums=('ae71bc6313aeedd1056a036bf0c0c3c8863cbe33f9a6e6b243f02a64176d6cc2'
             'b7578417ab5f671def7021133ae68900d82aaa81b5e80a2fec4d85e46eb1f8e9'
             'b9d354f6095aafe7a29cb8e90239b662a2584903a85fe3770f2b99bb8bdfff4a'
             '799921777b3714f074deaafbdd241ea7b99a0eccd65931708fd81457286f4f49'
