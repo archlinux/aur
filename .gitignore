@@ -1,4 +1,3 @@
-bcachefs
-kernel_gcc_patch
+linux-bcachefs
 pkg
 src

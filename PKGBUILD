@@ -14,61 +14,6 @@ _bcachefs_branch=
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Optionally select a sub architecture by number if building in a clean chroot
-# Leaving this entry blank will require user interaction during the build
-# which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 40.
-#
-# Note - the march=native option is unavailable by this method, use the nconfig
-# and manually select it.
-#
-#   Processor family
-#   1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#   2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#   3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#   4. AMD Barcelona (MBARCELONA)
-#   5. AMD Bobcat (MBOBCAT)
-#   6. AMD Jaguar (MJAGUAR)
-#   7. AMD Bulldozer (MBULLDOZER)
-#   8. AMD Piledriver (MPILEDRIVER)
-#   9. AMD Steamroller (MSTEAMROLLER)
-#   10. AMD Excavator (MEXCAVATOR)
-#   11. AMD Zen (MZEN)
-#   12. AMD Zen 2 (MZEN2)
-#   13. AMD Zen 3 (MZEN3)
-#   14. AMD Zen 4 (MZEN4)
-#   15. AMD Zen 5 (MZEN5)
-#   16. Intel P4 / older Netburst based Xeon (MPSC)
-#   17. Intel Atom (MATOM)
-#   18. Intel Core 2 (MCORE2)
-#   19. Intel Nehalem (MNEHALEM)
-#   20. Intel Westmere (MWESTMERE)
-#   21. Intel Silvermont (MSILVERMONT)
-#   22. Intel Goldmont (MGOLDMONT)
-#   23. Intel Goldmont Plus (MGOLDMONTPLUS)
-#   24. Intel Sandy Bridge (MSANDYBRIDGE)
-#   25. Intel Ivy Bridge (MIVYBRIDGE)
-#   26. Intel Haswell (MHASWELL)
-#   27. Intel Broadwell (MBROADWELL)
-#   28. Intel Skylake (MSKYLAKE)
-#   29. Intel Skylake X (MSKYLAKEX)
-#   30. Intel Cannon Lake (MCANNONLAKE)
-#   31. Intel Ice Lake (MICELAKE_CLIENT)
-#   32. Intel Ice Lake Server (MICELAKE_SERVER)
-#   33. Intel Cascade Lake (MCASCADELAKE)
-#   34. Intel Cooper Lake (MCOOPERLAKE)
-#   35. Intel Tiger Lake (MTIGERLAKE)
-#   36. Intel Sapphire Rapids (MSAPPHIRERAPIDS)
-#   37. Intel Rocket Lake (MROCKETLAKE)
-#   38. Intel Alder Lake (MALDERLAKE)
-#   39. Intel Raptor Lake (MRAPTORLAKE)
-#   40. Intel Meteor Lake (MMETEORLAKE)
-#   41. Intel Emerald Rapids (MEMERALDRAPIDS)
-#   42. Generic-x86-64 (GENERIC_CPU)
-#   43. Intel-Native optimizations autodetected by the compiler (MNATIVE_INTEL)
-#   44. AMD-Native optimizations autodetected by the compiler (MNATIVE_AMD)
-_subarch=
-
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -80,7 +25,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.14.0.rc1.1.bcachefs.git.00042.g63bbe0ca4167.dirty
+pkgver=6.15.0.rc1.1.bcachefs.git.00096.g689d501b3201
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/koverstreet/bcachefs'
@@ -112,9 +57,6 @@ options=(
 
 _srcname="linux-bcachefs"
 _src_url="https://github.com/koverstreet/bcachefs.git"
-_srcname_kernel_patch="kernel_compiler_patch"
-_src_url_kernel_patch="https://github.com/graysky2/${_srcname_kernel_patch}.git"
-_kernel_patch_name="more-ISA-levels-and-uarches-for-kernel-6.1.79+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -130,7 +72,6 @@ fi
 source=(
   ${kernel_source_string}
   #"${_srcname_upstream}::git+${_src_url_upstream}"
-  "git+${_src_url_kernel_patch}"
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -140,11 +81,9 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('SKIP'
-            'SKIP'
-            '3c33ec31f12ce78e261daa1d46d024dab62c9edf0a057f4b98d64fb02a531315')
+            '6b6630b44cec558e5fd20b539d22ae54e9a69f5bf8c9a46bdf2601dad6473e1e')
 b2sums=('SKIP'
-        'SKIP'
-        '4e8db3a4410787736c3c426665f6c1d9770fe3f34c98ae57dfd85da0e41519caaee5b0225b4dc6aebc720b6922482cecb6f1709e3b8455998a24bf27759243bb')
+        '673858fd083b560c8bf865a39744bac04433a0f7e48136cb0775d3289ede16495d135e59e752295f32435cbc52022f513a4484e5f91a2acd0d26320484d94989')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -157,23 +96,19 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  FullPatchesArray=(
-    $_srcname_kernel_patch/$_kernel_patch_name
-  )
-  for MyPatch in "${FullPatchesArray[@]}"
-  do
-    echo "Applying patch $MyPatch..."
-    patch -Np1 -i "$srcdir/$MyPatch"
-  done
+  #FullPatchesArray=(
+  #  
+  #)
+  #for MyPatch in "${FullPatchesArray[@]}"
+  #do
+  #  echo "Applying patch $MyPatch..."
+  #  patch -Np1 -i "$srcdir/$MyPatch"
+  #done
 
   echo "Setting config..."
   cp ../config .config
 
-  if [ -n "$_subarch" ]; then
-    yes "$_subarch" | make oldconfig
-  else
-    make prepare
-  fi
+  make prepare
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
@@ -212,7 +147,6 @@ build() {
   cd $_srcname
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  make htmldocs
 }
 
 _package() {
@@ -340,29 +274,9 @@ _package-headers() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
-
-  cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  echo "Installing documentation..."
-  local src dst
-  while read -rd '' src; do
-    dst="${src#Documentation/}"
-    dst="$builddir/Documentation/${dst#output/}"
-    install -Dm644 "$src" "$dst"
-  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-}
-
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
-  "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
