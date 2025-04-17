@@ -3,12 +3,12 @@
 pkgname='python-pairinteraction'
 _name='pairinteraction'
 _py="py3"
-pkgver=1.4.3
-commit="0fb667a7c7373594f55fbd0ccdcf5a6abffa5532"
+pkgver=2.0.0
+commit="2faf2d01f95311ef29b67f46ae8eb918d2ba7643"
 pkgrel=2
 pkgdesc="A Rydberg Interaction Calculator"
 url="https://github.com/pairinteraction/pairinteraction"
-depends=('python-typing_extensions' 'python-numpy' 'python-scipy' 'python-pint' 'python-colorama' 'pyside6' 'python-matplotlib' 'python-mplcursors' 'python' 'intel-oneapi-mkl' 'python-mkl' 'nlohmann-json' 'doctest' 'eigen' 'fmt' 'openssl' 'spdlog' 'cpptrace')
+depends=('python-typing_extensions' 'python-numpy' 'python-scipy' 'python-pint' 'python-colorama' 'pyside6' 'python-matplotlib' 'python-mplcursors' 'python' 'intel-oneapi-mkl' 'python-mkl' 'nlohmann-json' 'doctest' 'eigen' 'fmt' 'openssl' 'spdlog' 'cpptrace' 'jupyter-nbformat' 'jupyter-nbconvert')
 makedepends=('cmake' 'python-scikit-build-core' 'nanobind' 'python-pip')
 license=('GPL-3.0-only' 'LGPL-3.0-only')
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!buildflags' 'staticlibs' '!strip' 'libtool')
 # for now we just use the zip of whatever commit I updated this last
 source=("https://github.com/pairinteraction/pairinteraction/archive/$commit.zip")
 
-sha256sums=("06a6f0a97eb3d0eff70b32a639c4ba600d0fbc7cea36afa9fbad78828fc096ff")
+sha256sums=("7d95c6587e2b3f2673163badfbaa50fac104388c46f4b4208c78e15a5417bb39")
 
 build() {
 #  cd $srcdir/pairinteraction-$pkgver
