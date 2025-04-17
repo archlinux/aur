@@ -1,0 +1,19 @@
+pkgbase = goawk-bin
+	pkgdesc = AWK interpreter written in go
+	pkgver = 1.29.1
+	pkgrel = 1
+	url = https://github.com/benhoyt/goawk
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = goawk
+	conflicts = goawk
+	source_x86_64 = https://github.com/benhoyt/goawk/releases/download/v1.29.1/goawk_v1.29.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ac8dd2b2d9d52c9c163e22d718d75d4d10f500405d6e71ce2cee3007b6b5d7cc
+	source_i686 = https://github.com/benhoyt/goawk/releases/download/v1.29.1/goawk_v1.29.1_linux_386.tar.gz
+	sha256sums_i686 = 5210b83e9fc9ea4fd7aa37cc4b066742158f0699993468165df8ca07adfe9e54
+	source_aarch64 = https://github.com/benhoyt/goawk/releases/download/v1.29.1/goawk_v1.29.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f3cc9566319ae4dea403a0667f5ad8fd2851f51f9030b4ac817d1b40ca24181a
+
+pkgname = goawk-bin
