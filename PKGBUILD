@@ -6,13 +6,13 @@ pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
 pkgver=6.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
 url='https://simplex.chat/'
-_rawurl='https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable'
 _relurl="https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver"
+_rawurl="https://raw.githubusercontent.com/$_pkgname/$_pkgname/stable"
 source=(
   "$_pkgname-$pkgver::$_relurl/$_pkgname-$_platform"
   "_sha256sums-$pkgver::$_relurl/_sha256sums"
@@ -25,9 +25,7 @@ source=(
   'logo-symbol-light.svg'
   'simplex-chat.desktop'
 )
-validpgpkeys=(
-  'FB44AF81A45BDE327319797C85107E357D4A17FC'
-)
+validpgpkeys=('FB44AF81A45BDE327319797C85107E357D4A17FC')
 _skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 sha256sums=(
   '0677adaac345e3a0f7f0eee978856de23f963e5778c935b16b5069a658971728'
@@ -76,8 +74,8 @@ package() {
     install -vDm0644 "$_doc-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
   done
 
-  install -vDm0644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -vDm0644 "$_pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+  install -vDm0644 -t "$pkgdir/usr/share/applications" "$_pkgname.desktop"
+  install -vDm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/app" "$_pkgname.svg"
 }
 
 # eof
