@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BSPInfo
+Comment=a source engine map analyzer
+Exec=/usr/bin/bspinfo
+Icon=/usr/share/bspsrc/BSPInfoIcon.png
+Terminal=false
+Type=Application
+Categories=Development
+

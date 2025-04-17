@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BSPSource
+Comment=a source engine map decompiler
+Exec=/usr/bin/bspsrc
+Icon=/usr/share/bspsrc/BSPSourceIcon.png
+Terminal=false
+Type=Application
+Categories=Development
+
