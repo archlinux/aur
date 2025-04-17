@@ -7,35 +7,62 @@
 
 pkgname=unknown-horizons-git
 _pkgname=${pkgname%-git}
-pkgver=2019.1.r109.gac387940c
+pkgver=r201.300b9c3
 pkgrel=1
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
-arch=('any')
+arch=('x86_64')
 url="https://unknown-horizons.org/"
 license=('GPL' 'CCPL')
-depends=('fife' 'python-distro' 'python-future' 'python-pillow' 'python-yaml')
-makedepends=('git' 'intltool' 'python-setuptools')
+makedepends=(git godot libfontconfig.so=1 godot-export-templates-git)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("$pkgname::git+https://github.com/$_pkgname/$_pkgname.git")
-sha512sums=('SKIP')
+source=("$pkgname::git+https://github.com/$_pkgname/godot-port.git"
+        "$pkgname.sh"
+)
+sha512sums=('SKIP'
+            'dbeda401b4f0ad92376b062359ef5d359d8050407425f2a8bd0c402525cb704ae74eca063a0a713871ae3781eaa6e66be663d8454460dd61b247a9bf9f55bb5c'
+)
 
 pkgver() {
-    cd "$pkgname" || exit
-    printf "%s.%s" \
-        "$(grep -E -o 'RELEASE_VERSION=[0-9]+\.[0-9]+' <development/create_release_tarball.sh | sed -r 's/RELEASE_VERSION=//g')" \
-        "$(git describe --long --tags | awk -F '-' '{print "r" $(NF-1) "." $(NF)}')"
+    cd "$pkgname" || exit 1
+    ( set -o pipefail
+        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
+
+prepare() {
+    sed --in-place --expression 's@custom_template/release=""@custom_template/release="/usr/share/godot/templates/godot.linuxbsd.template_release.x86_64"@g' "$pkgname/export_presets.cfg"
 }
 
 build() {
-    cd "$pkgname" || exit
-    # unknown-horizons build system misses a few files if the build step is seperated from the install step
-    # -> Do not build here for now
-    # UH_USER_DIR="UH_USER_DIR" python setup.py build
-    UH_USER_DIR="UH_USER_DIR" python horizons/engine/generate_atlases.py 2048
+    cd "$pkgname" || exit 1
+
+    # Ensure folder structure exists.
+    mkdir -p "Builds/Desktop"
+
+    # Builds.
+    godot --path . --export-release linux "Builds/Desktop/UnknownHorizons.x86_64" --headless
 }
 
 package() {
-    cd "$pkgname" || exit
-    UH_USER_DIR="UH_USER_DIR" python setup.py install --root="$pkgdir/" --optimize=1 #--skip-build
+    install \
+        -D \
+        --mode=755 \
+        "$pkgname.sh" \
+        "$pkgdir/usr/bin/$_pkgname"
+
+    # install data package
+    install \
+        -D \
+        --mode=644 \
+        --target-directory="$pkgdir/opt/$_pkgname" \
+        "$pkgname/Builds/Desktop/UnknownHorizons.pck"
+
+    # install binary
+    install \
+        -D \
+        --mode=755 \
+        --target-directory="$pkgdir/opt/$_pkgname" \
+        "$pkgname/Builds/Desktop/UnknownHorizons.x86_64"
 }
