@@ -2,7 +2,7 @@
 
 _pkgname=opkssh
 pkgname=opkssh-bin
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="opkssh (OpenPubkey SSH)"
 arch=('x86_64')
