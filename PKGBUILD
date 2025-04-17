@@ -1,7 +1,7 @@
 # Maintainer: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=topiary
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='The universal code formatter'
 arch=('x86_64')
@@ -9,32 +9,30 @@ url='https://topiary.tweag.io/'
 license=(MIT)
 depends=(glibc gcc-libs)
 makedepends=(cargo)
-provides=(topiary)
-conflicts=(topiary)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tweag/topiary/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3baa3fdd4fbc167bbd9c6eb87650d14ba0f6717806cb4b7f254dee8d0c77fb07')
+sha256sums=('d0cc71693a1d889e6031eb9b0ad453f50bfde4a9bbe58a2294b9d2c88449a06c')
 
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
-export TOPIARY_LANGUAGE_DIR="/usr/share/$pkgname/queries"
+export CARGO_BUILD_TARGET="$CARCH-unknown-linux-gnu"
 
 prepare() {
     cd "$pkgname-$pkgver"
 
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --locked
 }
 
 build() {
     cd "$pkgname-$pkgver"
 
-    cargo build --frozen --release --all-features --bin topiary
+    cargo build --frozen --release --bin topiary
 }
 
 check() {
     cd "$pkgname-$pkgver"
 
-    cargo test --frozen --all-features
+    cargo test --frozen
 }
 
 package() {
@@ -42,5 +40,5 @@ package() {
     
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-    install -Dm0755 -t "$pkgdir$TOPIARY_LANGUAGE_DIR/" queries/*.scm
 }
+
