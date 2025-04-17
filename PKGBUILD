@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pcaMethods
-_pkgver=1.98.0
+_pkgver=2.0.0
 pkgname=r-${_pkgname,,}
-pkgver=1.98.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A collection of PCA methods'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-matrixstats
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2a8c70372683d7ea979132764149c2c24bc7b492e5798fe7499546e4e57e90a')
+sha256sums=('0475d7ecf7a3003884e37d8f8a94fe6aef1678a4bae870f6511f316555703f83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
