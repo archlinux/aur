@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ScreenR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c2a515eaadacbe1c59c36a40814e5ab7')
-b2sums=('60a28655e72f79cd5d47fd6cd58dc61c4fd769b4c3c5bd440c65e092bd436bb34601e25a19b2b0bb223dc913fe70c54c3c330971b115db15b3f17adc96cb463e')
+md5sums=('1d44c8d17e87f922870f4aa6b7538226')
+b2sums=('3ce4262667ed064e5c9dc09879d98c5b21b8ef0d7cd9f63c1b60758ab1b141694dddc5632901d23595f2424143c6d57ec8c0abb365e6011ddf40d68fa7de309d')
 
 build() {
   mkdir build
