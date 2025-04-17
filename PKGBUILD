@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa
 
 pkgname=improve-imgsli
-pkgver=3.1.5
+pkgver=3.1.9
 pkgrel=1
 pkgdesc="Image comparison tool with magnifying glass feature"
 arch=(any)
@@ -18,8 +18,8 @@ depends=(
 )
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('b41a6a99797ad2b2b67742db5d57e38976145e0c22e8ad33afa936cfcbfc23ccd5e0fa6f98a3eb84a8f384aaf22887ec6e0248d862dfff18430fe579dcec1a0b')
-b2sums=('61d8e8f6a7f8ba31d29ef242b27d4a1bcaec99586b2a17ffe95bc1cae41f4a3159db546f27dd88a479781db893af69e2578abddb8a1e194794c397ce0f23e3a8')
+sha512sums=('5caf410c1f7d8b269628e70c58aa38c305177e583494c2e32da988ed62c902af74cb9b079fdab478dc590e2a44c530cf8d6b8d3897bd1c8bc2ab052528f35101')
+b2sums=('35e57ba1d760e7d0ca1d7e270e7b1e0964d9df2a994f7a65167abe7f831f9c8fcc598cf66df3e5e25c9bfa5d8c461df95c5db875d6755a70034a445b92c81429')
 
 prepare() {
   #Making launching app more secure
