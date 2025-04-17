@@ -1,7 +1,7 @@
 pkgbase = euporie
 	pkgdesc = Jupyter notebooks in the terminal
 	pkgver = 2.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://euporie.readthedocs.io
 	arch = any
 	license = MIT
@@ -38,7 +38,6 @@ pkgbase = euporie
 	depends = python-mtable
 	depends = python-sympy
 	depends = python-numpy
-	depends = python-img2unicode
 	depends = python-html2text
 	depends = python-magic
 	depends = python-matplotlib

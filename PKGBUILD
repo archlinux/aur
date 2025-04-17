@@ -3,7 +3,7 @@
 
 pkgname="euporie"
 pkgver=2.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Jupyter notebooks in the terminal"
 arch=('any')
 url="https://${pkgname}.readthedocs.io"
@@ -22,7 +22,7 @@ depends=(
   'python-fsspec' 'python-jupytext>=1.14.0'
   # from namcap
   'python-jupyter-core' 'python-ipykernel' 'python-rich' 'python-mtable'
-  'python-sympy' 'python-numpy' 'python-img2unicode' 'python-html2text'
+  'python-sympy' 'python-numpy' 'python-html2text'
   'python-magic' 'python-matplotlib' 'python-cairosvg' 'python-aiohttp'
   'python-ziamath' 'python-chafapy' 'python-teimpy' 'python-pylatexenc')
 optdepends=('python-asyncssh: for Euporie hub support')
