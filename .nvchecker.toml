@@ -2,3 +2,5 @@
 source = "git"
 git = "https://github.com/oras-project/oras.git"
 prefix = "v"
+use_max_tag = true
+exclude_regex = ".*(rc|beta).*"
