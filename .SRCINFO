@@ -1,6 +1,6 @@
 pkgbase = r-msigdbr
 	pkgdesc = MSigDB Gene Sets for Multiple Organisms in a Tidy Data Format
-	pkgver = 10.0.1
+	pkgver = 10.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=msigdbr
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-msigdbr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/msigdbr_10.0.1.tar.gz
-	sha256sums = ce4f74195ad2bf6a8be6fb1f9137887b9b11667a45dc8f1300028f19afb0214a
+	source = https://cran.r-project.org/src/contrib/msigdbr_10.0.2.tar.gz
+	sha256sums = 926dfef535da964cc58aef58bfdedc137fa42d10a5b51619cf537f848c36ee02
 
 pkgname = r-msigdbr
