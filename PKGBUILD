@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSEAlm
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2c7b3b95a50d2fcc962e5693be5142cb')
-b2sums=('83cdf1856685c58c0c7f57ff18c7fdb361f9030b67dd6955edd1a0216eb0a4974fa411af72260f891e03769174572b56c6c86af06845146401f504fb27cc608f')
+md5sums=('68ce74a9601205d899e11fc1d0d19181')
+b2sums=('058141c727720c1c767ac784ae9323b9878823b86ec1741ea9150b58e852e7735812a2b5731569fab367791277ec23b284176aaa912c6228d15dc4b4d5f9d654')
 
 build() {
   mkdir build
