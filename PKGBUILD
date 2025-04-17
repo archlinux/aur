@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname='snac'
-pkgver='2.74'
+pkgver='2.75'
 pkgrel='1'
 pkgdesc="A simple, minimalistic ActivityPub instance"
 url="https://codeberg.org/grunfink/${pkgname}2"
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/grunfink/${pkgname}2/
         "${pkgname}.install"
         "${pkgname}-system.service"
         "${pkgname}-user.service")
-b2sums=('50d117080fdfc446e251270960c327a9f06de4d3e6fd74d80c6c43a94c763fea647ab1b9bfc79cefd63dbc950edb193761ad944d3605f36fba7aff1a4488b548'
+b2sums=('ab3c05d1419121b374cb631fdd48f38790802e54c8eb66ca27e8fe73ea7fa505da82e083c99d3fec0a180dace2a3bf1a90610d6c80853f7ef0848863fe6fdffb'
         'f2ca53f40c9ea2e82a63c0437272dfbb9636a27b23752253832ed67b2cc7f806a289851339f6505eb265a4b84a02b5fe16c031d40e0aa62446dafe183a61f20d'
         '5378f76bd65ca03b7edc9d3e61156ef027dbf9e1ce7612bed129d37d63fd0a95203db96e246714512a4ed0c363cc60f3d29302c8ef4a7970fd88e05039858da8'
         '7a34944bb8f001a194123a0fee5ce3077c29e15059e1e558465641dad57dcbf685c6a1a8c913d372b2af2fbddd7d6dbc48cbafdfac3b24aa038ecbbf1e513465')
@@ -32,6 +32,8 @@ package() {
   # package
   cd "${pkgname}2"
   make PREFIX="${pkgdir}/usr" PREFIX_MAN="${pkgdir}/usr/share/man" install
+  # tools
+  install -m755 examples/snac-admin "${pkgdir}/usr/bin/snac-admin"
   # license
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # docs and translations
