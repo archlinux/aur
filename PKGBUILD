@@ -1,0 +1,39 @@
+# Maintainer: Integral <integral@member.fsf.org>
+
+pkgname=qcmbackend-git
+_pkgname=${pkgname%-git}
+pkgver=r79.bc0beac
+pkgrel=1
+pkgdesc="Qcm backend with Rust"
+url="https://github.com/hypengw/QcmBackend"
+arch=('x86_64' 'aarch64' 'riscv64')
+license=('MPL-2.0')
+depends=('protobuf' 'openssl' 'gcc-libs')
+makedepends=('git' 'cargo')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd QcmBackend
+	(
+		set -o pipefail
+		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	)
+}
+
+prepare() {
+	cd QcmBackend
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+	cd QcmBackend
+	CFLAGS+=" -ffat-lto-objects" cargo build --frozen --release --all-features
+}
+
+package() {
+	install -Dm755 QcmBackend/target/release/QcmBackend -t "${pkgdir}/usr/bin/"
+}

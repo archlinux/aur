@@ -1,0 +1,20 @@
+pkgbase = qcmbackend-git
+	pkgdesc = Qcm backend with Rust
+	pkgver = r79.bc0beac
+	pkgrel = 1
+	url = https://github.com/hypengw/QcmBackend
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cargo
+	depends = protobuf
+	depends = openssl
+	depends = gcc-libs
+	provides = qcmbackend
+	conflicts = qcmbackend
+	source = git+https://github.com/hypengw/QcmBackend.git
+	sha256sums = SKIP
+
+pkgname = qcmbackend-git
