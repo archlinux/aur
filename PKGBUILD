@@ -4,7 +4,7 @@
 _pkgauthor=aquaproj
 _pkgname=aqua
 pkgname=${_pkgname}-bin
-pkgver=2.48.1
+pkgver=2.48.2
 pkgrel=1
 pkgdesc="Declarative CLI version manager"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,8 +21,8 @@ install=aqua-bin.install
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('0e5eba436c0f55fbfda3becb679117731b30177bfed9e9bfe3d93cb9e6684b0b')
-sha256sums_aarch64=('b0a47a4f71fccf6eaa9e54e4a335a866baf94b766e7975f720e8a548706de77d')
+sha256sums_x86_64=('7146bfa0b8e9a5aaa555a5de41cf8496cb8139974839ecfe54be48701fa156fa')
+sha256sums_aarch64=('e1c77d406533807bb1e6edc02400ab4f71fdc5bd6525bff7b1f4a62fc949274f')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
