@@ -23,5 +23,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   meson install -C builddir --destdir "$pkgdir"
   mkdir -p "$pkgdir/usr/share/licenses"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/LICENSE"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
