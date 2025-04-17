@@ -1,0 +1,7 @@
+[python-awscrt]
+source = "pypi"
+pypi = "awscrt"
+
+# Custom attributes used by https://gitlab.com/yan12125/aur/
+__custom_attributes__.group = "aws"
+__custom_attributes__.non_nvchecker = true

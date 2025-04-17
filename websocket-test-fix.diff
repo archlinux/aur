@@ -1,0 +1,11 @@
+--- test/test_websocket.py.orig	2025-04-16 19:05:10.738031282 -0700
++++ test/test_websocket.py	2025-04-16 19:05:07.688023491 -0700
+@@ -19,7 +19,7 @@
+ from typing import Optional
+ 
+ # using a 3rdparty websocket library for the server
+-import websockets.asyncio.server as websockets_server_3rdparty
++import websockets.server as websockets_server_3rdparty
+ 
+ TIMEOUT = 10.0  # seconds
+ 

@@ -1,0 +1,11 @@
+--- test/test_http_client.py.orig	2024-10-10 11:05:36.316838564 +0800
++++ test/test_http_client.py	2024-10-10 11:05:44.913421538 +0800
+@@ -359,7 +359,7 @@
+         stream.activate()
+ 
+         # wait for stream to complete (use long timeout, it's a big file)
+-        stream_completion_result = stream.completion_future.result(80)
++        stream_completion_result = stream.completion_future.result(200)
+ 
+         # check result
+         self.assertEqual(200, response.status_code)
