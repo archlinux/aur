@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KinSwingR
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='KinSwingR: network-based kinase activity prediction'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ac97269111fa49d9f379f735fdc6fb618bb0b8b27103b994e898dd46ee2114f0')
+sha256sums=('a42c33c51806b6ce084e9782b41db3bb477f4e025b580a30a61f5aea0120fa47')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
