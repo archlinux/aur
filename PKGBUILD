@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ldblock
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='data structures for linkage disequilibrium measures in populations'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ec5de3d7c4f87c975ce725a29125d8f9d732d38a2ee221dd44209f2a3f0d404')
+sha256sums=('f5ce810b1e22fcace6a85281eeb02fc9619eaedf13f8f05070a72f9efda1d903')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
