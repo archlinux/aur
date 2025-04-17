@@ -13,7 +13,7 @@ provides=('opkssh')
 
 source=("${_pkgname}-linux-x86_64::$url/releases/download/v$pkgver/${_pkgname}-linux-amd64")
 
-sha256sums=('00e3aecbd4c067ed1b9124ea9ad42ee53f2a615765ff0e923be1e795c5dadb12')
+sha256sums=('b82f5a19682abac79dce1db2e2e3038a2ada2ecba09a241e233a044d8ceaa938')
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
