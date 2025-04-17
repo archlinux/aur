@@ -1,18 +1,19 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Felix von Perger <frekkvb@gmail.com>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=libthreadar
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='C++ library manage threads and any type to exception between them'
 arch=('x86_64')
-url='http://libthreadar.sourceforge.net/'
+url='http://libthreadar.sourceforge.net'
 license=('LGPL3')
 depends=('gcc-libs')
 #makedepends=('doxygen' 'man-db' 'groff')
 provides=('libthreadar.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Edrusb/libthreadar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6405ed53f2d48237fc63d1a9f85b6cbb344ef9c49bd2090579ea045fbe9deaf9')
+sha256sums=('6b7c12034d0459d064f59acc416083b2c6c6e77b2c7307a918f93dac20c34226')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,3 +39,4 @@ package() {
 	install -Dm644 AUTHORS README THANKS -t "$pkgdir/usr/share/doc/$pkgname/"
 	#rm -rf "${pkgdir}/usr/share/doc/dar/html/man"
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
