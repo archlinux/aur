@@ -19,7 +19,9 @@ validpgpkeys=(
 )
 
 source=(
-  "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
+    "https://packages.wazuh.com/4.x/yum/${pkgname}-${_prodver}.x86_64.rpm"
+    "wazuh-passwords-tool.sh"
+    "wazuh-certs-tool.sh"
 )
 
 backup=(
@@ -28,7 +30,7 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('63866ab19f49f53297488a1fc18b2bf730f0ecfb97532fef4d125447a3749de476a9bfc925eab65c0ef15604611493b542dada4c6a00e28e9cb9f0c8e512f7d8')
+sha512sums=('63866ab19f49f53297488a1fc18b2bf730f0ecfb97532fef4d125447a3749de476a9bfc925eab65c0ef15604611493b542dada4c6a00e28e9cb9f0c8e512f7d8' '4d27986872d3f85562fe8cef322f49e6d0b9eff99378c4b11fa382b32a56bde55634a3e73f1a589114c2773edd9b7f57231313aba0098bded634cc61c26206fa' '7353b4b2c0779f443652d9b2217969af49a83f1b71f30e7ad2c6aa4d4c575a877826a7a64735f8663170eda7f7f8c7eaef91bd5ac2e6e62697f7635ecea96bf8')
 
 install=$pkgname.install
 
