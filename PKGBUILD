@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChemmineR
-_pkgver=3.58.0
+_pkgver=3.60.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,8 +52,8 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('292f291e6708988f5f104a88e50d5260')
-b2sums=('a6cffb6b6cc1980fa2aa3ff762b024b70ee18184c32c4511099b70fd490a6b04532ce567e0330cd7637a443d359047d403e8302365b83740dfdf57d8c8ec1c0f')
+md5sums=('7f809d1bc600faa86d9e11965efea058')
+b2sums=('5ed5481355a73b124b785f31a79436e99d8c046957c5fa7ac26c39873b1d8d8c8f706d7bd6b496d1ead937faedcf930bf85f645cb84b892981c0794bf062d10e')
 
 build() {
   # generate R bindings
