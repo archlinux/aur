@@ -1,0 +1,15 @@
+pkgbase = taskman-git
+	pkgdesc = An extremely minimalist to-do list for the CLI.
+	pkgver = r3.g180effc
+	pkgrel = 1
+	url = https://github.com/tanay1337/taskman
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gum
+	provides = taskman
+	conflicts = taskman
+	source = git+https://github.com/tanay1337/taskman.git
+	sha256sums = SKIP
+
+pkgname = taskman-git
