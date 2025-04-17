@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rmagpie
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='MicroArray Gene-expression-based Program In Error rate estimation'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2952a9f24e57e434288a652b6c4a92fcef7737f3eb3568a58349d9c2916a1587')
+sha256sums=('5b40d16939015aa863f1e6993ac178c45a1186ee2f701260901d522daec3f288')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
