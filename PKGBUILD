@@ -13,6 +13,7 @@ depends=(
 	"stratagus=$pkgver"
 	'cdparanoia'
 	'timidity++'
+	'stormlib'
 )
 optdepends=(
 	'zenity: graphical UI for data extractor'

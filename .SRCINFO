@@ -10,6 +10,7 @@ pkgbase = wargus
 	depends = stratagus=3.3.2
 	depends = cdparanoia
 	depends = timidity++
+	depends = stormlib
 	optdepends = zenity: graphical UI for data extractor
 	optdepends = xdialog: graphical UI for data extractor
 	optdepends = dialog: console UI for data extractor
