@@ -1,0 +1,29 @@
+pkgbase = shllm
+	pkgdesc = CLI utility and Python library for interacting with Large Language Models from organizations like OpenAI, Anthropic and Gemini plus local models installed on your own machine.
+	pkgver = 0.24.2
+	pkgrel = 1
+	url = https://pypi.org/project/llm/
+	arch = x86_64
+	license = Apache License, Version 2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python>=3.8
+	depends = python-click
+	depends = python-httpx
+	depends = python-openai
+	depends = python-click-default-group
+	depends = sqlite-utils
+	depends = python-sqlite-migrate
+	depends = python-pydantic
+	depends = python-pyyaml
+	depends = python-pluggy
+	depends = python-ulid
+	depends = python-puremagic
+	depends = python-condense-json
+	source = https://files.pythonhosted.org/packages/79/ec/fac39709b653c799c92f8f8b5ab5aba3f2e326ca6b8e118239e3f413130d/llm-0.24.2.tar.gz
+	sha256sums = e14f2722183884ce09692201b54cdd961942492f0d93ca749a62d02b3b8bf43a
+
+pkgname = shllm
