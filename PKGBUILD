@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GeneExpressionSignature
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4a1d31a2fe3f57f4429534a22317aee1')
-b2sums=('de28478b0a3fc470ba9c0724876cd9f43134fa5a29d556bac024b75fde16ee951817923408fbded15afceb4f1e9f7f11b461c6db9cc5715b958355e351eb53da')
+md5sums=('31fb198b5f45021b4a52afe3b136efd9')
+b2sums=('6bf5e93689643de97691c50e2185534f726c200423d662e6779dfe237917b953ff76ee18dc193ffa0e28731fe289644d0035bc7b10c27419984eadc5448d944e')
 
 build() {
   mkdir build
