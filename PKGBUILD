@@ -1,27 +1,33 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fluent-gtk-theme-git
-pkgver=2024.06.12.r12.g14254d9
+pkgver=2025.04.17.r0.g76f8112
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
 url="https://github.com/vinceliuice/Fluent-gtk-theme"
 license=('GPL-3.0-or-later')
-makedepends=('git' 'sassc' 'setconf')
-optdepends=('gtk-engine-murrine: GTK2 theme support'
-            'fluent-icon-theme: Matching icon theme'
-            'fluent-cursor-theme: Matching cursor theme')
+makedepends=(
+  'git'
+  'sassc'
+  'setconf'
+)
+optdepends=(
+  'fluent-cursor-theme: Matching cursor theme'
+  'fluent-icon-theme: Matching icon theme'
+  'gtk-engine-murrine: GTK2 theme support'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
 install="${pkgname%-git}.install"
-source=("${pkgname%-git}::git+https://github.com/vinceliuice/Fluent-gtk-theme.git"
+source=('git+https://github.com/vinceliuice/Fluent-gtk-theme.git'
         'wallpaper::git+https://github.com/vinceliuice/Fluent-gtk-theme.git#branch=Wallpaper')
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd Fluent-gtk-theme
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -32,7 +38,7 @@ prepare() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd Fluent-gtk-theme
   install -d "$pkgdir/usr/share/themes"
   ./install.sh -t all -d "$pkgdir/usr/share/themes"
 

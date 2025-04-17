@@ -1,6 +1,6 @@
 pkgbase = fluent-gtk-theme-git
 	pkgdesc = Fluent design gtk theme for linux desktops
-	pkgver = 2024.06.12.r12.g14254d9
+	pkgver = 2025.04.17.r0.g76f8112
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Fluent-gtk-theme
 	install = fluent-gtk-theme.install
@@ -9,13 +9,13 @@ pkgbase = fluent-gtk-theme-git
 	makedepends = git
 	makedepends = sassc
 	makedepends = setconf
-	optdepends = gtk-engine-murrine: GTK2 theme support
-	optdepends = fluent-icon-theme: Matching icon theme
 	optdepends = fluent-cursor-theme: Matching cursor theme
+	optdepends = fluent-icon-theme: Matching icon theme
+	optdepends = gtk-engine-murrine: GTK2 theme support
 	provides = fluent-gtk-theme
 	conflicts = fluent-gtk-theme
 	options = !strip
-	source = fluent-gtk-theme::git+https://github.com/vinceliuice/Fluent-gtk-theme.git
+	source = git+https://github.com/vinceliuice/Fluent-gtk-theme.git
 	source = wallpaper::git+https://github.com/vinceliuice/Fluent-gtk-theme.git#branch=Wallpaper
 	sha256sums = SKIP
 	sha256sums = SKIP
