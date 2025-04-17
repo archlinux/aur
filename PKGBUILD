@@ -4,8 +4,8 @@
 _pkgname=dsp-guitar
 pkgname="go-${_pkgname}-bin"
 pkgver=1.8.0
-pkgrel=5
-pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
+pkgrel=6
+pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments.(Prebuilt version)"
 arch=(
 	'aarch64'
 	'x86_64'
@@ -28,11 +28,12 @@ source=(
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('a39993ba8ad40ce74234e908db276841df1fd517c19385d01436d160986c77b1'
-            'ca6ed049825cbab7462d34716d8f70d39aa151728b83bbe2af8ea8e149dcab58')
-build() {
-	sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            '4d4d6d7600ec9260a0deae188b97774dc30771b26028d1a4127d7a58250e5b50')
+prepare() {
+	sed -i -e "
+		s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
 	cd "${srcdir}/${pkgname%-bin}"
 	case "${CARCH}" in
         x86_64)
@@ -46,11 +47,11 @@ build() {
 			mv dsp-linux-aarch64-debug "${pkgname%-bin}-debug"
         ;;
     esac
-	find ./ -type f -name "*.exe" -exec rm -rf {} \;
+	find "${srcdir}/${pkgname%-bin}" -type f -name "*.exe" -exec rm -rf {} +
 	chmod a+r keys/*
 }
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 	install -Dm755 -d "${pkgdir}/usr/lib"
-	cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
+	cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
 }
