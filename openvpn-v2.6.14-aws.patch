@@ -1,5 +1,5 @@
 diff --git a/src/openvpn/buffer.h b/src/openvpn/buffer.h
-index cea4af6b..519cfffc 100644
+index d988ef25..37601756 100644
 --- a/src/openvpn/buffer.h
 +++ b/src/openvpn/buffer.h
 @@ -27,7 +27,7 @@
@@ -77,10 +77,10 @@ index 18965108..50c3493b 100644
   * Management-interface-based deferred authentication
   */
 diff --git a/src/openvpn/misc.h b/src/openvpn/misc.h
-index 24a1ca56..5157b75c 100644
+index 022498c9..3e7cd3ec 100644
 --- a/src/openvpn/misc.h
 +++ b/src/openvpn/misc.h
-@@ -65,7 +65,10 @@ struct user_pass
+@@ -66,7 +66,10 @@ struct user_pass
  #ifdef ENABLE_PKCS11
  #define USER_PASS_LEN 4096
  #else
@@ -108,10 +108,10 @@ index e85d8062..f53149f1 100644
  extern const char title_string[];
  
 diff --git a/src/openvpn/ssl.c b/src/openvpn/ssl.c
-index 6aa10515..c3335fca 100644
+index 5a0bf95a..e53ce081 100644
 --- a/src/openvpn/ssl.c
 +++ b/src/openvpn/ssl.c
-@@ -1936,7 +1936,7 @@ tls_session_soft_reset(struct tls_multi *tls_multi)
+@@ -1951,7 +1951,7 @@ tls_session_soft_reset(struct tls_multi *tls_multi)
  static bool
  write_empty_string(struct buffer *buf)
  {
@@ -120,7 +120,7 @@ index 6aa10515..c3335fca 100644
      {
          return false;
      }
-@@ -1951,7 +1951,7 @@ write_string(struct buffer *buf, const char *str, const int maxlen)
+@@ -1966,7 +1966,7 @@ write_string(struct buffer *buf, const char *str, const int maxlen)
      {
          return false;
      }
@@ -129,7 +129,7 @@ index 6aa10515..c3335fca 100644
      {
          return false;
      }
-@@ -2291,6 +2291,10 @@ key_method_2_write(struct buffer *buf, struct tls_multi *multi, struct tls_sessi
+@@ -2327,6 +2327,10 @@ key_method_2_write(struct buffer *buf, struct tls_multi *multi, struct tls_sessi
          p2p_mode_ncp(multi, session);
      }
  

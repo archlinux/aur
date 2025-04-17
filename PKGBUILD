@@ -1,10 +1,9 @@
 # Maintainer: Charlie Wolf <charlie@wolf.is>
 # Contributor: Christian Hesse <mail@eworm.de>
 
-
 _basename=openvpn
 pkgname=openvpn-aws
-pkgver=2.6.10
+pkgver=2.6.14
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) with patches to support AWS Client VPN'
 arch=('x86_64')
@@ -24,10 +23,10 @@ validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security M
               'B62E6A2B4E56570B7BDC6BE01D829EFECA562812') # Gert Doering <gert@v6.de>
 source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
         '0001-unprivileged.patch'
-        'openvpn-v2.6.10-aws.patch')
-sha256sums=('9192c40cdd787a5327a4cb9cd869c06f4fb61e30fade9a534cdcf724672fb9a6'
-            '77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c'
-            '3a2daf32fd68a05fb0395d56792393f54c36f910b2d4a92cec4611414c417adf')
+        'openvpn-v2.6.14-aws.patch')
+sha256sums=('d8d156ddde53a011740a1fc23929b5caca3db42cd6b94e43e8ddaeb8608bc212'
+            'bb47b298b59300a4282fc4d0b69dcdd8dcfb72d2ff2f702f96ea369a8381456a'
+            '2ccc958430a26e06b4324465fbe7fc00dff8ef7eea0f5958915e5080463ed8f3')
 
 prepare() {
   cd "${srcdir}"/${_basename}
@@ -39,7 +38,7 @@ prepare() {
   patch -Np1 < ../0001-unprivileged.patch
 
   # patches needed for aws
-  patch -Np1 < ../openvpn-v2.6.10-aws.patch
+  patch -Np1 < ../openvpn-v2.6.14-aws.patch
 
   autoreconf --force --install
 }
