@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Typeface that uses typeface shapes & features to help offset some visual symptoms of Dyslexia"
 arch=(any)
 url="https://github.com/antijingoist/opendyslexic"
-license=(SIL-OFL)
+license=('OFL-1.1-RFN')
 source=($pkgname-v$pkgver.tar.gz::https://github.com/antijingoist/opendyslexic/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=('d20d182fb7069023b8dbdf131bbe232093b4147dd4900e27c95b86d3ddfca34b')
 
