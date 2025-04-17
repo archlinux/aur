@@ -2,13 +2,13 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=ps7_libpicoipp
 pkgver=1.4.0_4r161
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for Pico Technology PicoScope 7 Oscilloscope Software"
 arch=('x86_64')
 url="https://labs.picotech.com/picoscope7/debian/pool/main/libp/libpicoipp/"
 license=('custom')
 groups=()
-depends=(gcc-libs)
+depends=(gcc-libs execstack)
 optdepends=()
 provides=()
 conflicts=(ps7b_libpicoipp)
