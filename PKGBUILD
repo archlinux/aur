@@ -11,8 +11,10 @@ source=("https://prod-thinkboxai-setups.s3-accelerate.amazonaws.com/${pkgver}/th
 noextract=("thinkboxai_${pkgver}-1_amd64.deb")
 
 package() {
-  bsdtar -xf "${srcdir}/thinkboxai_${pkgver}-1_amd64.deb" -C "$srcdir"
-  bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
+  mkdir -p "$srcdir/extract"
+  dpkg-deb -x "${srcdir}/thinkboxai_${pkgver}-1_amd64.deb" "$srcdir/extract"
+  cp -r "$srcdir/extract/"* "$pkgdir/"
 }
+
 
 sha256sums=('SKIP')
