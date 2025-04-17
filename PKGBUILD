@@ -16,6 +16,4 @@ package() {
   cp -r "$srcdir/extract/"* "$pkgdir/"
 }
 
-
-
 sha256sums=('SKIP')
