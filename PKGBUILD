@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RVS
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('01c75a05d91e9ae8d3058976f52671e2')
-b2sums=('9ed2f88805c2b5cafc48e4e4c5473c41d4272bd2a6d93776ccd5d3e8a31bf969397973903fb8dd291fc2069da269b5cad3f6096f48606d34061c2f9f04c1ca4c')
+md5sums=('164cbc063f98623e54d07e09d42f1b73')
+b2sums=('dabf689c917dfff9db67b172fd65712b1255d06d5116ed5dc60d25f340cdd72559415b8fbfb083becb13596acbab16128df87bd6ef16c2e4727efcbac89e9e82')
 
 build() {
   mkdir build
