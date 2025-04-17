@@ -1,0 +1,10 @@
+pkgbase = sudo-rs-symlink
+	pkgdesc = Symlinks to sudo from sudo-rs
+	pkgver = 0.2.5
+	pkgrel = 1
+	arch = x86_64
+	depends = sudo-rs
+	provides = sudo
+	conflicts = sudo
+
+pkgname = sudo-rs-symlink
