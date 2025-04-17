@@ -1,6 +1,6 @@
 pkgbase = python-caio
 	pkgdesc = Linux AIO c python bindings
-	pkgver = 0.9.21
+	pkgver = 0.9.22
 	pkgrel = 1
 	url = https://github.com/mosquito/caio
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-caio
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = caio-0.9.21.tar.gz::https://github.com/mosquito/caio/archive/refs/tags/0.9.21.tar.gz
-	sha256sums = f16390dd70d2432351aee783eb2d7be796e2879ac4cd1cf8e75bd1901b148060
+	source = caio-0.9.22.tar.gz::https://github.com/mosquito/caio/archive/refs/tags/0.9.22.tar.gz
+	sha256sums = 429458b292a44366bc84bd96d93acc505b86a7270e6f7ff1810724c9bbb2b51d
 
 pkgname = python-caio
