@@ -1,4 +1,5 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname="gmanedit"
 pkgver=0.4.2
