@@ -3,12 +3,13 @@
 # Contributor: Chad "crossroads1112" Sharp <crossroads1112@riseup.net>
 
 pkgname=open-dyslexic-fonts-git
-pkgver=0.91.12+74.g58c74d642d
+pkgver=0.91.12+109.g77bda89f3f
 pkgrel=1
 pkgdesc="Typeface that uses typeface shapes & features to help offset some visual symptoms of Dyslexia"
 arch=(any)
 url="https://github.com/antijingoist/opendyslexic"
-license=(SIL-OFL)
+license=('OFL-1.1-RFN')
+replaces=('ttf-opendyslexic' 'otf-opendyslexic-git')
 makedepends=(git)
 source=(git+https://github.com/antijingoist/opendyslexic.git)
 sha256sums=(SKIP)

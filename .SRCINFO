@@ -4,10 +4,12 @@ pkgbase = open-dyslexic-fonts-git
 	pkgrel = 1
 	url = https://github.com/antijingoist/opendyslexic
 	arch = any
-	license = SIL-OFL
+	license = OFL-1.1-RFN
 	makedepends = git
 	provides = open-dyslexic-fonts
 	conflicts = open-dyslexic-fonts
+	replaces = ttf-opendyslexic
+	replaces = otf-opendyslexic-git
 	source = git+https://github.com/antijingoist/opendyslexic.git
 	sha256sums = SKIP
 
