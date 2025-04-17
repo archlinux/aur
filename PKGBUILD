@@ -35,14 +35,11 @@ sha512sums=('63866ab19f49f53297488a1fc18b2bf730f0ecfb97532fef4d125447a3749de476a
 install=$pkgname.install
 
 package() {
-    #presetup
     #only 2 files require special patches for arch: wazuh-passwords-tool.sh and wazuh-certs-tool.sh, so we replace them
-    rm $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh
-    rm $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh
-    mv $srcdir/wazuh-passwords-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
-    mv $srcdir/wazuh-certs-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
     #Setup
     cd $pkgdir
+    mv -f $srcdir/wazuh-passwords-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
+    mv -f $srcdir/wazuh-certs-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
     mv $srcdir/etc .
     mv $srcdir/usr .
     mv $srcdir/var .
