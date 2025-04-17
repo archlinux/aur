@@ -5,7 +5,7 @@
 # Maintainer: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
-declare -r _tag="65aa8a669dfa1d7aae4aed457cbf8834f33ad419"
+declare -r _tag="2d1f0d09e62afb957abe54627846e64b0c8610f2"
 
 pkgname="inja"
 pkgver="3.4.0"
@@ -18,7 +18,7 @@ depends=("nlohmann-json")
 makedepends=("cmake" "doxygen" "git")
 checkdepends=("doctest")
 source=("${pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("23ebe9979460297fcda8f2ac24e61d65c570356c492031012ba2c389bc69108f86a75f090aada18c694920440b1a81618c75e6b209230b5573bf5372f146e9ff")
+sha512sums=("8cbd41cf9e5356dc04e591ef7edde2f395a59287666686a215cf89068f612d446cf62404bc81ae1d769849eac26372b5b23a31e9627d9b4b54c0349cb5405b74")
 
 _compile()
 {
