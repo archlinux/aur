@@ -4,7 +4,7 @@
 _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron32'
-pkgver=2.107.0
+pkgver=2.109.0
 pkgrel=1
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('ledger-udev' "${_electron}")
 makedepends=('node-gyp' 'pnpm' 'nvm')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('5c5d26f0bf6ee84433c0dc90f94afb82ded52e7986a77fc2c2d905c225521dff618b3c7069de1769738b031ddf06f36a997fb0d866a74328abd5ad039f743a3d'
+sha512sums=('a1a154cee5deef48895091d87e4b2d7496eafc8c31e9cd524a81de678d40e9efeae8976f10e69e2d9fc2a6c22a256f39531374a45c6a28cc4bab71c680849214'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
