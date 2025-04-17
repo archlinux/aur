@@ -1,6 +1,6 @@
 pkgbase = r-pcan
 	pkgdesc = Phenotype Consensus ANalysis (PCAN)
-	pkgver = 1.34.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PCAN
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-pcan
 	optdepends = r-reactome.db
 	optdepends = r-rmarkdown
 	optdepends = r-stringdb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PCAN_1.34.0.tar.gz
-	sha256sums = 196d4179bd36eb75123ce89db160b5bd9930afd00acdbcb681da78e6d28122bd
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PCAN_1.36.0.tar.gz
+	sha256sums = d183de5eb84078c6564f17da346e3901c18e0f95a97a54c8403271bc595612e0
 
 pkgname = r-pcan
