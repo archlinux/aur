@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affyio
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,12 +10,12 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('LGPL-2.0-or-later')
 depends=(
-  r-zlibbioc
+  r
   zlib
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c1504546527ab09831f56b7d34ba4a34')
-b2sums=('4e6161febf3b172ee37d30f6e6d2fce4bc00d6eb12be272162cf84469ada3d53979db088b923495229a209793e14f60c02143fbda0b122a637294b2d66890015')
+md5sums=('5c70b37531f367547d9ccd70a8ea68df')
+b2sums=('954c9e31f02549f0e4a46beb382cc1acb40ac3eabf8d80f50e3eebf9e0941a727eef630ae5afc3cbc1028b2a6457c9309577de1386d68edc1a31ae1f0e2845d9')
 
 build() {
   mkdir build
