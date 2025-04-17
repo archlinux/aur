@@ -2,3 +2,5 @@
 source = "git"
 git = "https://github.com/bupd/git-donkey.git"
 prefix = "v"
+use_max_tag = true
+exclude_regex = ".*(rc|beta).*"
