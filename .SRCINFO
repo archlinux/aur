@@ -1,12 +1,12 @@
 pkgbase = minefetch
 	pkgdesc = Download Minecraft mods (In Rust)
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/KirillkoTankisto/minefetch
 	arch = x86_64
 	license = GPL
 	noextract = minefetch
-	source = https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.4.3/minefetch
-	sha256sums = c1d2ef7ae30f04abdae5c57daae879a88665b5df16491ec6658a6e9c22951429
+	source = https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.5.0/minefetch
+	sha256sums = 56f5ebe512394920e1ef18e3408a1ef4065ca5b0cc7ead1f52074cbf4fdd17ed
 
 pkgname = minefetch
