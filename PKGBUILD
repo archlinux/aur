@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RBioinf
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-rgraphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('303fc235421e997fcfcaa5f4615bc90e')
-b2sums=('f7d4b7eaa00dbd58e12e8bcef543fca33cb7ef1d78599bea7acbdfadc6cabbcddbf88c2dd0977ff0d6d13a9ca5d2bd962104508d76072d6344d38bcc805df416')
+md5sums=('1d10312d0029c46d0e9db78eebc17a89')
+b2sums=('a44fb198270b017d5df946194a6fef4c6fe2fc8c00b1e73a1fa850daccea6572f829fca90b5b454e18e97fbf6dae21e7578766ad4d288b9185fb663a255816cb')
 
 build() {
   mkdir build
