@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RGSEA
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('08b1d6a2df3449e12fe7d0358fb62404')
-b2sums=('cf11987701f908908b646db601419c097bb9b168bd5f9e3a3e7d09ecf6b263442423940c96ddb0e603731f340666e71b0a4504e69501b14ddc46dc0b45a079ff')
+md5sums=('d30534249c122fa72b4f17a7e2ca1513')
+b2sums=('3ddd50b20c81848dd7b91e2a667796af23f48b7390c2399b3b4796cb4c172766550326b6a5471b32e54cf3389f802ea704086bb868502a4ed80dd81c03a13509')
 
 build() {
   mkdir build
