@@ -2,7 +2,7 @@
 
 pkgname=animeko-appimage
 _pkgname=animeko
-pkgver="4.8.1"
+pkgver="4.8.2"
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('vlc')
 makedepends=('7zip')
 conflicts=('animeko')
 replaces=('animeko')
-#options=('!strip' )
+options=('!strip' )
 
 prepare() {
 	chmod +x "${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage"
