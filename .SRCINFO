@@ -1,6 +1,6 @@
 pkgbase = python-primp-bin
 	pkgdesc = HTTP client that can impersonate web browsers, mimicking their headers and `TLS/JA3/JA4/HTTP2` fingerprints
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/deedy5/primp
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = python-primp-bin
 	depends = python
 	provides = python-primp
 	conflicts = python-primp
-	source = https://files.pythonhosted.org/packages/cp38/p/primp/primp-0.14.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	source = https://raw.githubusercontent.com/deedy5/primp/refs/tags/v0.14.0/LICENSE
-	sha256sums = 11229e65aa5755fdfb535cc03fd64259a06764ad7c22e650fb3bea51400f1d09
-	sha256sums = 64f0fdb426abd21f75b48e2ff93b9976b8c374bab3538af33d3c6d3f7c7efae7
+	source = https://files.pythonhosted.org/packages/cp38/p/primp/primp-0.15.0-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	source = https://raw.githubusercontent.com/deedy5/primp/refs/tags/v0.15.0/LICENSE
+	b2sums = 903c7f4e0faaeecdeba999caa27800552b8eb830b35d0cd0a45a9e07225594201dc95a6318715fd33d4e992dc1b69a791af739c15ade95a0891596542c1a84e0
+	b2sums = a1800e74b6305e799d483a97b81a71c744fb94f344536aa16414dff2f96a9d9469d0adbc9e1cad69d76aca30a4390c81c825ab088f7d87dcfa3e73e437a7efcb
 
 pkgname = python-primp-bin
