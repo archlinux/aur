@@ -487,13 +487,13 @@ irm https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/script
 Shell using curl:
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/powershell/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/shell/install.sh | sudo bash
 ```
 
 Shell using wget:
 
 ```shell
-wget -qO- https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/powershell/install.sh | sh
+wget -qO- https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/shell/install.sh | sudo bash
 ```
 
 Bash:
@@ -509,13 +509,13 @@ irm https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/script
 Shell using curl:
 
 ```shell
-curl -fsSL https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/shell/remove.sh | sh
+curl -fsSL https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/shell/remove.sh | sudo bash
 ```
 
 Shell using wget:
 
 ```shell
-wget -qO- https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/shell/remove.sh | sh
+wget -qO- https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/shell/remove.sh | sudo sh
 ```
 
 ### With Server In Background
@@ -800,3 +800,4 @@ Automating the installation process. Soon, you'll be able to install Musoq.CLI t
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
