@@ -2,7 +2,7 @@
 # Contributor: Brendan Van Hook <brendan (at) vastactive (dot) com>
 _pkgname=metakernel
 pkgname=jupyter-$_pkgname
-pkgver=0.30.2
+pkgver=0.30.3
 pkgrel=2
 pkgdesc="A Jupyter/IPython kernel template."
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
     python-installer
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/Calysto/metakernel/archive/v$pkgver.tar.gz)
-b2sums=('0826f6bc8244350e94be9a04f5fa5f944f2251ec5c469d02517623902e783be2ede1e32c00e6f8b175a1fc6a6646024cf3d399cd27814f3a9b0a8f00aa4fc01d')
+b2sums=('72b46fb8c816919ec6e83461870fe2974c595874d45c4edde1f2eb5212f626685eb7919d3e5fa5061f4474587852fa0858aabc919e7b71415d30db915804cd52')
 
 build() {
     cd $_pkgname-$pkgver
