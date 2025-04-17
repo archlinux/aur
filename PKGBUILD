@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=eiR
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Accelerated similarity searching of small molecules'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
   r-rsqlite
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b925376ae19712916fcdd770f3dd335166bbf6e02178551f64437cde1529b8dc')
+sha256sums=('53435c8d8005b1b2175d6f03c19ee319f6d9498ff5ca52f47cec43c662092049')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
