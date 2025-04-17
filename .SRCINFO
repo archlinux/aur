@@ -1,0 +1,16 @@
+pkgbase = ma7rath
+	pkgdesc = A simple, elegant command-line timer application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/khalidrouissi1/ma7rath
+	install = ma7rath.install
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go>=1.16
+	source = ma7rath-1.0.0.tar.gz::https://github.com/khalidrouissi1/ma7rath/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ma7rath
