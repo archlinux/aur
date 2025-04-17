@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FlowSOM
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Using self-organizing maps for visualization and interpretation of cytometry data'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b3b50c784af7fb4ad849250c9b006e3e62e7a570903ff39e8dad4707b13be05')
+sha256sums=('8dfa3791c2e731e9bf72d49ddcd9d3b8065c45ffbd124a1698de76ef13d0a5a7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
