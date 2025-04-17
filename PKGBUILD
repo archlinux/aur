@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mina
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,9 +36,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-libs.patch")
-md5sums=('7dc755ac67f493187d858b9e27f43882'
+md5sums=('5564174f2e9a8edbe0c52ee49c197aa0'
          '752b530f9cac80b22d5672b7f2201186')
-b2sums=('022c4a19d38fea8c612d89bb61d86f29f0fb63887bd76cfcddf056bff252a663c39410475f3b09fe35bb7bfed7b13c140e65c74422ec24ed1207336d2cc19953'
+b2sums=('0187705e253120a10964b37efe6869b3b24fbefa4ea426caea76caf4e5fdfc371059a223fc76ef4548e2169f6c716304803ffbcae32aff4d7160c3dc99545c3e'
         'e37e913552183c29e76c3167a23779d5894366f66a415861f2d41381bacfbe07fb277002f9d893e0aba77c2ecb913305a035020a2c792073853160e7b2a33b0d')
 
 prepare() {
