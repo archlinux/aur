@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=storr
-_pkgver=1.2.5
+_pkgver=1.2.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Simple Key Value Stores"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -33,8 +33,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0bec8b9e53ad575bd9a20b68a798f853')
-b2sums=('ea904e834ecf5a4d075b81262ccbea74103f780d03f79ef8e8b8755ad65edf9e51bf4107d1be45a03256d95540d4c8df72a30dcdd268c2bbb2675852ca971757')
+md5sums=('63e12d87ce5965780333c1657048490b')
+b2sums=('7c03815f3c7b6cc93204a6ee19018e50790198cc54cb6c2d4c9d9265c568501e284c6cc1953ac929ddd7d164daaa81164dd30c50b1e87ec01ff070c558e56cd3')
 
 build() {
   mkdir build
