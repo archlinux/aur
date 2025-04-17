@@ -8,7 +8,7 @@ Subject: [PATCH] meson: Build fixes
  1 file changed, 21 insertions(+), 3 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 448c329bb664..70556b7c7004 100644
+index 50fdd4ee4d69..e9e6ac93e52a 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -316,6 +316,7 @@ xml_check_functions = [

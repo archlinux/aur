@@ -13,7 +13,7 @@ compatible with the script installed by autotools.
  create mode 100755 xml2-config-meson
 
 diff --git a/meson.build b/meson.build
-index ee373feb638d..448c329bb664 100644
+index de29cf310752..50fdd4ee4d69 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -271,7 +271,7 @@ endforeach
