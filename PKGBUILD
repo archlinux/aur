@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=roastgsa
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('082654cdda86a6de591abc1c71353c1c')
-b2sums=('a15d6fe06dd683218ca7c4a4da1bc906caf43fedbaf7434a63351fae9a1da1525eab7ebe0776f054ab4540b7e7ce89a655319d51450b752dfec7adf697677f55')
+md5sums=('7858932475872098f416d274267446f6')
+b2sums=('6182a69192d7606aabb851cae6b6c57ce38a26d173c6ea4f1c83036b2c75348b9f8178ef10adaf2de1908d2b1fe32c49bfe54a9f1f05bbcae0b7c530dee2f54f')
 
 build() {
   mkdir build
