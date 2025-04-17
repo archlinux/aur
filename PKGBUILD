@@ -37,5 +37,5 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/$pkgname/firmware.bin" "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
+  install -Dm644 "$_pkgsrc/firmware.bin" "$pkgdir/usr/lib/firmware/facetimehd/firmware.bin"
 }
