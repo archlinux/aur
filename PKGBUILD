@@ -1,7 +1,7 @@
 # Maintainer: Jesus Martin Ortega Martinez (madara125) <martin.ortega.arashi@gmail.com><jortega@condorbs.net>
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><david.munozm@proton.me>
 pkgname=wazuh-indexer
-pkgver=4.10.0
+pkgver=4.11.2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
@@ -28,12 +28,17 @@ backup=(
   'etc/wazuh-indexer/opensearch.keystore'
   )
 
-sha512sums=('adb0159ed7add022e49dcd108b5bc080da643c6919f6a80ac3b4302261489fe95c69dacbc9791090237a8b8c0dd53b02b785a5e1b2e1685ccb432c281b46efb5')
+sha512sums=('63866ab19f49f53297488a1fc18b2bf730f0ecfb97532fef4d125447a3749de476a9bfc925eab65c0ef15604611493b542dada4c6a00e28e9cb9f0c8e512f7d8')
 
 install=$pkgname.install
 
 package() {
-
+    #presetup
+    #only 2 files require special patches for arch: wazuh-passwords-tool.sh and wazuh-certs-tool.sh, so we replace them
+    rm $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-passwords-tool.sh
+    rm $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/wazuh-certs-tool.sh
+    mv $srcdir/wazuh-passwords-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
+    mv $srcdir/wazuh-certs-tool.sh $srcdir/usr/share/wazuh-indexer/plugins/opensearch-security/tools/
     #Setup
     cd $pkgdir
     mv $srcdir/etc .
