@@ -1,5 +1,5 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Maintainer: Luke Horwell <code (at) horwell (dot) me>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 _pkgname=polychromatic
 pkgname=$_pkgname-git
