@@ -1,0 +1,27 @@
+pkgbase = python-nanotron
+	pkgdesc = Minimalistic large language model 3D-parallelism training
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/huggingface/nanotron
+	arch = any
+	groups = huggingface
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-dacite
+	depends = python-datasets
+	depends = python-numpy<2
+	depends = python-packaging
+	depends = python-pytorch
+	depends = python-safetensors
+	depends = python-tqdm
+	depends = python-yaml
+	optdepends = python-boto3: for S3 support
+	optdepends = python-transformers: for extra models
+	optdepends = python-flash-attn: for faster attention module
+	source = python-nanotron-0.5.0.tar.gz::https://github.com/huggingface/nanotron/archive/refs/tags/v0.5.tar.gz
+	sha256sums = 73f7127c6f7af6a5f031843575f0621b392f8a7c91462b78d1460c8a586f04f0
+
+pkgname = python-nanotron
