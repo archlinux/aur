@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RedisParam
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2afb7949c088cc8c661b205072bfc951')
-b2sums=('b5ca3641c145d990de5cd802e54ec5c340cc7816f48a4566f25133fee388aaf8ff6ef2503ce83ee30d6b9147b3265f91cab82746947c8914a57c8fbed33b7fbe')
+md5sums=('8ba19d6ef0437a763a045b7619d943cb')
+b2sums=('4a469bf6ecd33bf0af4aa8f658af88077552a230b5ac8bbeb7c448cdba029fee84ac531bff783324c805e2d756941fc89acda8f127022216f90ba40e836c2c26')
 
 build() {
   mkdir build
