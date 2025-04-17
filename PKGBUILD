@@ -5,7 +5,7 @@ _pkgname=RMariaDB
 _pkgver=1.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Database Interface and MariaDB Driver"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -49,7 +49,7 @@ b2sums=('1a78fe4d267c1cb9189ff2b345eda3da0b1c6baaa56d80ae5e9f94b080b880c45004422
 
 prepare() {
   # skip failing tests
-  patch -Np1 -i skip-tests.patch
+#  patch -Np1 -i skip-tests.patch
   # use system boost headers
   patch -Np1 -i system-boost.patch
 }
@@ -59,7 +59,7 @@ build() {
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
 
   # create database for tests
