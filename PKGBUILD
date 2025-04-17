@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DeconRNASeq
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Deconvolution of Heterogeneous Tissue Samples for mRNA-Seq data'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-pcamethods
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fb50e569fa617f6f1104f0b04639696eac14e64963ae0223d2086e36769b676c')
+sha256sums=('ceb00d746d0984c96d1a9405625e5e6d7bb5d0ac13dcf4c5f12a3e3763ebb319')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
