@@ -1,9 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=mydict-bin
+_appname=my_dict
+pkgname="${_appname//_/}-bin"
 _pkgname=MyDict
 pkgver=0.6.14
-pkgrel=6
-pkgdesc='A Chinese and English dictionary.一款中英文词典'
+pkgrel=7
+pkgdesc='A Chinese and English dictionary.(Prebuilt version)一款中英文词典'
 arch=(x86_64)
 url="https://github.com/xxNull-lsk/my_dict"
 license=('BSD-3-Clause')
@@ -25,26 +26,28 @@ depends=(
     'openssl-1.1'
     'libbsd'
 )
-makedepends=('gendesk')
 source=(
-    "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_arch_linux_x64_${pkgver}.tar.gz"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/xxNull-lsk/my_dict/v${pkgver}/LICENSE"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x64_${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('505769645eed49ed19d6fd39dd5a1c8fd5b9bef8f262b34a45fbb03d7265e66d'
-            '7514140772df5ff1a5cff21685af45c7b50f320fee680e134553d053e40e6ccb'
-            'f31faceaca7820e34aa0a349fe19c18b135ce3b93be39555fe884527edc7759a')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --exec="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}"
+sha256sums=('9594f46ba84aa260abb4d775a2dbcef0ce12d688380686b2b7bdb06a2d08ddab'
+            '04c2f1edf0c04742143b3c67d47e1bfff80569240726752bcf0d689842e94f30')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    sed -i -e "
+        s/\/opt\/${_appname}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/\/opt\/${_appname}\/res\/dict.png/${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/lib"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-bin}/res/dict.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${_appname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/opt/${_appname}/res/dict.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/opt/${_appname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
