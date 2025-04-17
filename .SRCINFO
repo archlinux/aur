@@ -1,6 +1,6 @@
 pkgbase = micropython
 	pkgdesc = Python3 for microcontrollers, with stdlib. (UNIX version)
-	pkgver = 1.24.1
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = http://micropython.org/
 	changelog = ChangeLog
@@ -15,7 +15,7 @@ pkgbase = micropython
 	depends = mbedtls
 	options = !emptydirs
 	options = !debug
-	source = https://micropython.org/resources/source/micropython-1.24.1.tar.xz
-	md5sums = 1086e0af7127fc5021ca91f882c985f7
+	source = https://micropython.org/resources/source/micropython-1.25.0.tar.xz
+	md5sums = 54b2304d6147f47da1e2de2b32468c62
 
 pkgname = micropython
