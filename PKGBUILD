@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=orbitiny-desktop-bin
-pkgver=1.0p3b
+pkgver=1.0p3db
 pkgrel=1
 pkgdesc="New, 100% portable, innovative and traditional but modern looking desktop environment for Linux"
 arch=(x86_64)
@@ -60,7 +60,7 @@ conflicts=(${pkgname%-bin})
 options=(!debug)
 source=("${pkgname%-desktop-bin}-$pkgver.tar.gz::$url/files/${pkgname/-desktop/}-release.tar.gz/download")
 noextract=("${pkgname%-desktop-bin}-$pkgver.tar.gz")
-b2sums=('302cd16a27599df119156241b3b472ed8062409e3f0dbe3eb2cfe6c5e8a3af83a1d5cc5ab82ad4f903f6549b0dda39007718918b6c0111621c728718e5f6e84e')
+b2sums=('3def020e6f81cfc868d6cd4f2304b39a64cdcc7ce9a3d3f35a2f877a878d667f72ec7a97acad3e4e9d39e3fc0133c870d7c9971556a49fbe5216039cc1ab4086')
 
 package() {
   install -vd "$pkgdir"/opt/${pkgname%-desktop-bin}
@@ -74,7 +74,7 @@ package() {
   # Fix permissions
   chmod -R go-w "$pkgdir"
   chmod -R go+r "$pkgdir"
-  find "$pkgdir"/opt/${pkgname%-desktop-bin}/usr/bin/.config -type d -exec chmod go+x {} \;
+  find "$pkgdir"/opt/${pkgname%-desktop-bin} -type d -exec chmod go+x {} \;
 
   # Running in non-portable mode - Method 1
   sed -i '/export ORBITINY_GLOBAL_SHARED_DIR=$DIR\/shared/d'            "$pkgdir"/opt/${pkgname%-desktop-bin}/${pkgname%-bin}
@@ -86,7 +86,7 @@ package() {
   sed -i 's|^# export|export|g' "$pkgdir"/opt/${pkgname%-desktop-bin}/${pkgname%-desktop-bin}-panel
 
   # Running standalone
-  install -vDm 777 "$pkgdir"/opt/${pkgname%-desktop-bin}/standalone-run/usr/bin/${pkgname%-desktop-bin}-session             -t "$pkgdir"/usr/bin/
-  install -vDm 777 "$pkgdir"/opt/${pkgname%-desktop-bin}/standalone-run/usr/share/xsessions/${pkgname%-desktop-bin}.desktop -t "$pkgdir"/usr/share/xsessions
+  install -vDm 755 "$pkgdir"/opt/${pkgname%-desktop-bin}/standalone-run/usr/bin/${pkgname%-desktop-bin}-session             -t "$pkgdir"/usr/bin/
+  install -vDm 755 "$pkgdir"/opt/${pkgname%-desktop-bin}/standalone-run/usr/share/xsessions/${pkgname%-desktop-bin}.desktop -t "$pkgdir"/usr/share/xsessions
   sed -i 's|LIGHTBAR_PORTABLE_MODE=0|STANDALONE_MODE=1|' "$pkgdir"/opt/${pkgname%-desktop-bin}/${pkgname%-bin}
 }
