@@ -1,12 +1,12 @@
 pkgbase = deepseek-free-api-git
 	pkgdesc = DeepSeek V3 Free Service API
 	pkgver = 0.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LLM-Red-Team/deepseek-free-api
-	install = deepseek-free-api.install
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = yarn
+	makedepends = npm
 	depends = nodejs
 	provides = deepseek-free-api
 	conflicts = deepseek-free-api
@@ -18,9 +18,9 @@ pkgbase = deepseek-free-api-git
 	source = config.env
 	source = system.yml
 	sha256sums = SKIP
-	sha256sums = 3727d2e895c683c85b654a5370210983a6d822289a994725f5bbe470fc356277
-	sha256sums = 8bcaa4a2111835e65b1172f0642a03e934b06eec64485fa0934ab5b75dd59306
+	sha256sums = 4806233295ce40630f0bdd9226ef27eab8083594d8faf5f01ceb5900f636acd6
+	sha256sums = 8d1115e202ec9f2be8d163c6fc149dac56d1c5d3a522ec9df2140822d6b51d02
 	sha256sums = c91381085b14292783c04b178f8c457f13b249b5ee4039e32a07cc398a2d8576
-	sha256sums = 1625d8a79fb0963c1769c8d9a82690e79ad67f3cd16c229f52ee47921a691578
+	sha256sums = b4025f93844adbb98df9d877e6ce092f63ddf8fb50cf53167e1f9192164eedb0
 
 pkgname = deepseek-free-api-git

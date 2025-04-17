@@ -6,8 +6,15 @@ After=network.target
 Type=simple
 User=deepseek-free-api
 Group=deepseek-free-api
+
 EnvironmentFile=/etc/deepseek-free-api/config.env
 WorkingDirectory=/usr/lib/deepseek-free-api
+
+RuntimeDirectory=deepseek-free-api
+RuntimeDirectoryMode=0755
+LogsDirectory=deepseek-free-api
+LogsDirectoryMode=0755
+
 ExecStart=/usr/bin/node index.js
 Restart=always
 RestartSec=5

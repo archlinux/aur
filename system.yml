@@ -1,7 +1,7 @@
 # 是否开启请求日志
 requestLog: true
 # 临时目录路径
-tmpDir: /var/tmp/deepseek-free-api
+tmpDir: /run/deepseek-free-api
 # 日志目录路径
 logDir: /var/log/deepseek-free-api
 # 日志写入间隔（毫秒）
