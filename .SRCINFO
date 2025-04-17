@@ -1,0 +1,17 @@
+pkgbase = kvantum-theme-gruvbox-git
+	pkgdesc = Gruvbox theme for Kvantum
+	pkgver = r11.29ba1f0
+	pkgrel = 1
+	url = https://github.com/TheGlitchh/Gruvbox-Kvantum
+	arch = any
+	makedepends = git
+	depends = kvantum
+	provides = kvantum-theme-gruvbox
+	conflicts = kvantum-theme-gruvbox
+	conflicts = gruvbox-kvantum-theme
+	conflicts = plasma5-themes-gruvbox
+	conflicts = gruvbox-kde-theme
+	source = git+https://github.com/TheGlitchh/Gruvbox-Kvantum.git
+	b2sums = SKIP
+
+pkgname = kvantum-theme-gruvbox-git
