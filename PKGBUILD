@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=philr
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Phylogenetic partitioning based ILR transform for metagenomics data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-treesummarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('185d1bf5f9db37795d74cbf253d62af901a7ea2957572452ece5d9643c1a56c5')
+sha256sums=('aaf2242a8021d50c4323afe62030c601fb07536e605707906e6cbeed20e21fbf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
