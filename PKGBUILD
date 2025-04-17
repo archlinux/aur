@@ -1,6 +1,6 @@
-# Maintainer: Tom Krizek <tkrizek@isc.org>
+# Maintainer: Nicki Krizek <nicki@isc.org>
 pkgname=dnsjit
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
     'autoconf'
 )
 source=("https://github.com/DNS-OARC/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b12d2ea95cd7bf3f6f9d832033f3c68280d379f7f4af1f7716414459b37b653a')
+sha256sums=('24666ba4b6147a59c01add990185e455c4568697e869fe8dff5cded5ebeef032')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
