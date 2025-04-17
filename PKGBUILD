@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rsbml
-_pkgver=2.64.0
+_pkgver=2.66.0
 pkgname=r-${_pkgname,,}
-pkgver=2.64.0
+pkgver=2.66.0
 pkgrel=1
 pkgdesc='R support for SBML, using libsbml'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
   libsbml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('703c5e7dff3304556259eb34307c6f902c81a9decaad72b9960a6af0cf63f279')
+sha256sums=('e0ad4d628869342aacae5b5b9dc3d64fe8f7cd4822472a74b386d3aa786c0e0b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
