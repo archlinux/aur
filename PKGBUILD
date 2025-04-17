@@ -34,9 +34,15 @@ package() {
   # Install binary
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install license - make sure LICENSE exists in the source repository
+  if [ -f "LICENSE" ]; then
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  elif [ -f "../LICENSE" ]; then
+    install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 
-  # Install documentation
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  # Install documentation - make sure README.md exists in the source repository
+  if [ -f "README.md" ]; then
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  fi
 }
