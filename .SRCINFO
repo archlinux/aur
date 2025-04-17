@@ -1,10 +1,11 @@
 pkgbase = qcm-ncm-plugin-git
 	pkgdesc = Netease Cloud Music plugin for Qcm
 	pkgver = r7.677d339
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hypengw/qcm-ncm-plugin
 	arch = any
 	license = MIT
+	makedepends = git
 	provides = qcm-ncm-plugin
 	conflicts = qcm-ncm-plugin
 	source = git+https://github.com/hypengw/qcm-ncm-plugin.git
