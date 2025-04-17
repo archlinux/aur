@@ -31,7 +31,6 @@ ConfigurationDirectory=aria2cd
 PrivateTmp=yes
 PrivateDevices=yes
 MemoryKSM=yes
-PrivatePIDs=yes
 PrivateUsers=yes
 ProtectHostname=yes
 ProtectClock=yes

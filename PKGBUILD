@@ -1,7 +1,7 @@
 # Maintainer: ZhangHua<zhanghua.00 at qq dot com>
 
 pkgname=aria2cd
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A script and systemd serice to start aria2 automatically."
 arch=("any")
@@ -12,7 +12,7 @@ source=(aria2.service
         update-tracker
         LICENSE::http://www.wtfpl.net/txt/copying)
 sha256sums=('507c144047d2fdd983b621feb0d2ab3b399ff99a4b2881244b49563f667028eb'
-            '51737e6620aa554e0a51b4c5743dc3514c21fae3eb06badf66ed1ee628eb5ef6'
+            '70dec90a4b2f038992117e7314e99e2ddbc2e22a0ec3ef9fd05fce8aaad4fee8'
             '5172b212283fc2111cb47160c2a6894baba4c63e8c4d4ebcf30fa97413c94239'
             '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5')
 package() {
