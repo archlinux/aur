@@ -1,0 +1,36 @@
+pkgbase = mollysocket-bin
+	pkgdesc = Service linking Signal notifications and UnifiedPush.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/mollyim/mollysocket
+	arch = x86_64
+	arch = armv7h
+	arch = arm64
+	license = AGPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = sqlite
+	provides = mollysocket=1.6.0
+	conflicts = mollysocket=1.6.0
+	backup = etc/mollysocket/conf.toml
+	backup = usr/lib/systemd/system/mollysocket.service
+	backup = usr/lib/systemd/system/mollysocket-vapid.service
+	source = conf.toml
+	source = mollysocket.sysusers
+	source = mollysocket.tmpfiles
+	source = https://raw.githubusercontent.com/mollyim/mollysocket/aaedd5b8afc2c08233d7a768694bd72eba4480b4/mollysocket.service
+	source = https://raw.githubusercontent.com/mollyim/mollysocket/aaedd5b8afc2c08233d7a768694bd72eba4480b4/mollysocket-vapid.service
+	sha256sums = 75dc63e3072d89e1d3ba41926a7d0a686dcf81ac80c76eeb5451239ed058fb38
+	sha256sums = 7d1d8a3102c6264c136cb22dbc5cafaaf5fc8db3757a5b3edef57c5a1b96149a
+	sha256sums = 3e4d6157af3fa36253cd4a7df3614f8b785cc87a93416b2c1172598d30af2c1d
+	sha256sums = 5579dab8879a856dc02450502ac9b246d869142e200c613688163a3d8888d5ce
+	sha256sums = 4405930c9827de0806bf0c652c3413bc6457de50cd7b6870c1f44b587d5480ae
+	source_x86_64 = mollysocket-bin-1.6.0::https://github.com/mollyim/mollysocket/releases/download/1.6.0/mollysocket-linux_amd64
+	sha256sums_x86_64 = 9045f76729db5defee0652d9be4a474526d8fae47e5b1785b44cb84cdc5b57a6
+	source_armv7h = mollysocket-bin-1.6.0::https://github.com/mollyim/mollysocket/releases/download/1.6.0/mollysocket-linux_arm_v7
+	sha256sums_armv7h = e724c0a30c1de2bd74f5e065f88e87973c0c40a683a596e24da83ca3d067dc5c
+	source_arm64 = mollysocket-bin-1.6.0::https://github.com/mollyim/mollysocket/releases/download/1.6.0/mollysocket-linux_arm64
+	sha256sums_arm64 = dfccec9802baaa80059018a7e90ff07f6e086c1ad45e05c54f718e428eb47d42
+
+pkgname = mollysocket-bin
