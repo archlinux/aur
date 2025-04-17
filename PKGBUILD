@@ -18,7 +18,7 @@ depends=("at-spi2-core" "cairo" "fontconfig" "gcc-libs" "gdk-pixbuf2" "glib2" "g
 source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux.tar.xz"
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("6dbd0982f2a8b3394e5d7a882b00c120763263a1bf243a273891f3f47f3005a432da12e742bdf56805dda9f2310181f4a1a52e02ffd7a72462b12ae310148d4d"
+sha512sums=("9c9f2d5d838343101477a81e2f6567a48cccae8601228ee94d50c7846abb69882a0ee05c8f50048f542cd9d664b6b4f508c0b0c4351112e266432e43fbebd0ae"
     "6f0e1b6b006dfd108c4f79ffb07eb6f1cca9d9dfdd2fe80abbafa85a946de0ded5be1951b59f859acd838022e015c46a95901192dab8abdbc4799d86e5db2dc8"
     "5c023a15f0e6b6df6ca50192642c07b16697921bfe55fc657b0388123fb8cfc6dd90c6302fc417a2907d9c063084557b94df31617dc416bdc10041ad42359437")
 
