@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ILoReg
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61adff20a5da2b5904280b6fca673407')
-b2sums=('8544e401286bc86d12d78d384c3afcec28ad2fe31384c3d0aec9dceb8667e6a5cf5bfe0ce941ddb73bdbd154f856e971c5ee2f18c3ebc3e17e78de80d87e9e3c')
+md5sums=('06eb150130f25ef9e6becfc9e33f833f')
+b2sums=('0bc7e8ba72addb674f050f66e9e1180bbe50b787f07c6cfa0576c7f3027f167eb709767c7dc9be3e584021ac22fdf30ce0388516c0957b0b0abc380cf7ce3c67')
 
 build() {
   mkdir build
