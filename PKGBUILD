@@ -3,9 +3,9 @@ pkgname=melodify-bin
 _pkgname=Melodify
 pkgver=1.0.0
 _electronversion=32
-pkgrel=1
-pkgdesc="A simple webview cross-platform music player desktop app for https://melodify.app/."
-arch=("x86_64")
+pkgrel=2
+pkgdesc="A simple webview cross-platform music player desktop app for https://melodify.app/.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://github.com/abedio/melodify-webview-app"
 license=("MIT")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -14,19 +14,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a8390ebb1adc4db629bdee03c750ac599ffd54f188b628d9b233663500028528'
+sha256sums=('cbce945b131c79817efa8b5d707c8d47c7e20d682807008d25d82539fd8cf861'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
