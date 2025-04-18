@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aingdesk
 _pkgname=AingDesk
-pkgver=1.2.2
+pkgver=1.2.3
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('fdc9922531063de623f0bb6ef6f294d852bf778067c775774e296b5ce4c4fc0c'
+sha256sums=('6805b245ba85cedb6438bf55f2e1be6f9303a9f83f2cd02718c3a48e607439da'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
