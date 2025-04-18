@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowStats
-_pkgver=4.18.0
+_pkgver=4.20.0
 pkgname=r-${_pkgname,,}
-pkgver=4.18.0
+pkgver=4.20.0
 pkgrel=1
 pkgdesc='Statistical methods for the analysis of flow cytometry data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2a98d64050808eb0372472c346d0d69e5f5df6f430a987e961876cf55ce5e852')
+sha256sums=('0c8bdcb613930328d8bb81f7b448f7f4ea0f6170fcee7e051e7ca9c63c56a5b6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
