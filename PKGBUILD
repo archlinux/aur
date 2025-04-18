@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MEDME
-_pkgver=1.66.0
+_pkgver=1.68.0
 pkgname=r-${_pkgname,,}
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc='Modelling Experimental Data from MeDIP Enrichment'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-bsgenome.mmusculus.ucsc.mm9
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9dfae969de9b4ece63f94d47735c36fb6c0bf8b5f40ac9599a6f5284c64d9b2b')
+sha256sums=('4e857212d37f1b0686d8770f8140548dff1f1e24e6c4bea12a3b256d7413e993')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
