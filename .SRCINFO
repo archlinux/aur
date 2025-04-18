@@ -1,7 +1,7 @@
 pkgbase = dolphin-emu-primehack-git
 	pkgdesc = A Gamecube and Wii emulator with mouselook controls
-	pkgver = 2503.r8.gb6ec608
-	pkgrel = 1
+	pkgver = 2503.r9.g997ae46
+	pkgrel = 2
 	url = https://github.com/xiota/dolphin-primehack
 	arch = x86_64
 	arch = x86_64_v2

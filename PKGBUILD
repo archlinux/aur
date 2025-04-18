@@ -9,6 +9,8 @@
 : ${_build_level:=1}
 : ${_build_git:=true}
 
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 unset _pkgtype
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
 [[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
@@ -17,8 +19,8 @@ unset _pkgtype
 
 _pkgname="dolphin-emu-primehack"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2503.r8.gb6ec608
-pkgrel=1
+pkgver=2503.r9.g997ae46
+pkgrel=2
 pkgdesc='A Gamecube and Wii emulator with mouselook controls'
 url="https://github.com/xiota/dolphin-primehack"
 license=('GPL-2.0-or-later')
@@ -66,20 +68,6 @@ if [[ "${_build_clang::1}" == "t" ]]; then
 else
   options+=(!lto)
 fi
-
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
 
 _source_main() {
   provides=("$_pkgname")
@@ -236,13 +224,13 @@ END
 
   if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
     _cflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
     )
     CFLAGS="${_cflags[@]}"
 
     _cxxflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
     )
     CXXFLAGS="${_cxxflags[@]}"
