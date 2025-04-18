@@ -658,7 +658,7 @@ class GenerateConfigure:
             self.handle_existing_config()
 
     def config_here(self):
-        default_config = """[
+        default_config = """
   //  ▓█████▄ ▓█████  ▄████▄   ██▓███   ██ ▄█▀  ▄████
   //  ▒██▀ ██▌▓█   ▀ ▒██▀ ▀█  ▓██░  ██▒ ██▄█▒  ██▒ ▀█▒
   //  ░██   █▌▒███   ▒▓█    ▄ ▓██░ ██▓▒▓███▄░ ▒██░▄▄▄░
@@ -697,21 +697,20 @@ class GenerateConfigure:
 
   // other
   "notify"    : true    // If you want to be notified.
-  },
-  {
-    "pacman": [
-      // "git",          // Popular utelita for version control.
-      // "neovim"        // Best text editor.
-    ]
-  },
-  {
-    "aur": [
-      //  "peaclock",    // Utelita for look clock.
-      //  "unimatrix"    // Huckers background.
-    ]
-  }
-]
-        """
+},
+{
+"pacman": [
+  // "git",          // Popular utelita for version control.
+  // "neovim"        // Best text editor.
+  ]
+},
+{
+"aur": [
+  //  "peaclock",    // Utelita for look clock.
+  //  "unimatrix"    // Huckers background.
+  ]
+}
+"""
         return default_config
 
     def write_config(self):
