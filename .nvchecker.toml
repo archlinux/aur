@@ -1,0 +1,5 @@
+[python-ngshare-exchange-git]
+source = "git"
+git = "https://github.com/lahwaacz/ngshare_exchange.git"
+prefix = "v"
+exclude_regex = ".*(pre|rc|alpha|beta).*"
