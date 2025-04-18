@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ccImpute
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f2214b009e55a529068e1618e30b81f')
-b2sums=('47cab6238e174fc21c9ed2270cfba9b1c9b4afc3e7f9ceffa64318f7d9aa445906b3e07e04c3680df30f2a51238559935df7042cc60a5dd3a6d42cc116c26da7')
+md5sums=('f2d40048e83fc284b5b2f93fee976508')
+b2sums=('64fddab28519eb0fc51f8936c5ae354d77b8e61119acc42e8c853c136dee3abeb5e09fb065668880dfdbfaac0b3edfb1bf89806f42e391ee6189e5b903eafdc7')
 
 build() {
   mkdir build
