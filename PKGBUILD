@@ -7,7 +7,9 @@ pkgdesc="simple wrapper for your editor"
 arch=("x86_64")
 url="https://github.com/egnrse/v-editor"
 license=("GPL3")
+depends=("bash")
 makedepends=("git")
+optdepends=("vi: fallback text editor")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${pkgname}::git+${url}#branch=main")
