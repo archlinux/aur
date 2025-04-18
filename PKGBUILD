@@ -2,8 +2,8 @@
 
 pkgbase=deepin-unioncode-git
 pkgname=deepin-unioncode-git
-pkgver=1.4.6.r0.g3e97e94
-pkgrel=1
+pkgver=1.4.8.r1.g2024cce
+pkgrel=2
 pkgdesc="IDE authored by deepin"
 arch=($CARCH)
 url="https://github.com/linuxdeepin/deepin-unioncode"
@@ -101,6 +101,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev \
         -B build \
         -G Ninja \
