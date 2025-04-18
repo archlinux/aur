@@ -1,0 +1,4 @@
+[jupyterlab-pytutor]
+source = "git"
+git = "https://github.com/jupyterlab-contrib/jupyterlab-pytutor.git"
+prefix = "v"
