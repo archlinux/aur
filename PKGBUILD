@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 _name=xylose
 pkgname=('python-scielo-xylose')
-pkgver=1.35.9
+pkgver=1.35.11
 pkgrel=1
 pkgdesc="SciELO's library to abstract a JSON from ISIS2JSON type 3 results"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-scielo-legendarium')
 options=(!emptydirs)
-sha256sums=('b8581f317ef8b11d5f964a7cc1f1d245f717433e9910211aeafef3b3f707af15')
+sha256sums=('c399b3751db586851b52dc28635e8ccdfb98917a926777418a280cef49312dfd')
 source=("$_name-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 
 package() {
