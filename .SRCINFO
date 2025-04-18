@@ -1,0 +1,13 @@
+pkgbase = krep
+	pkgdesc = fast text search tool with advanced algorithms, SIMD acceleration, multi-threading, and regex support
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/davidesantangelo/krep
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = glibc
+	source = krep-1.1.2.tar.gz::https://github.com/davidesantangelo/krep/archive/v1.1.2.tar.gz
+	sha256sums = 99f17d33577861cb2d445345b159652f7f32bbb7d070314ca685d4ced74f2a81
+
+pkgname = krep
