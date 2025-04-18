@@ -1,0 +1,3 @@
+[python-dask-jobqueue]
+source = "git"
+git = "https://github.com/dask/dask-jobqueue.git"
