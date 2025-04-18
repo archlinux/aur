@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Scale4C
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Scale4C: an R/Bioconductor package for scale-space transformation of 4C-seq data'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   r-summarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eae007559bcdb468c310a8b1fd26f3fef509ccc0d74503184c024a5c07676b66')
+sha256sums=('2f6e8bba49ed6edd2a3e28c1c7922720abf69bae9627357b59db3fa7e990b5bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
