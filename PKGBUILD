@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=beachmat
-_pkgver=2.22.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3e11f4224ff4e9cfa1ebffae6f9bfee4')
-b2sums=('b10fefbb5da6b05a940d87a869b08a2073d4a81ea37fa44a0b57425e81cedb344048494e7f77860da24ba1efd1b0e93700a2ca0bd2b9d18eee70c219a5099eb3')
+md5sums=('98b3072a971c483aae544702f84b45a3')
+b2sums=('a0045fac674bbadae020323ea7493d91cf67fec480fe9790fe1004fc255d11bf68b7b9a359eed878f92b351cb8e1d51af53aa54229b717c3b9f35a80fe90ab48')
 
 build() {
   mkdir build

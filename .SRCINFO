@@ -1,6 +1,6 @@
 pkgbase = r-beachmat
 	pkgdesc = Compiling Bioconductor to Handle Each Matrix Type
-	pkgver = 2.22.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/beachmat
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = r-beachmat
 	optdepends = r-rcmdcheck
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/beachmat_2.22.0.tar.gz
-	md5sums = 3e11f4224ff4e9cfa1ebffae6f9bfee4
-	b2sums = b10fefbb5da6b05a940d87a869b08a2073d4a81ea37fa44a0b57425e81cedb344048494e7f77860da24ba1efd1b0e93700a2ca0bd2b9d18eee70c219a5099eb3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/beachmat_2.24.0.tar.gz
+	md5sums = 98b3072a971c483aae544702f84b45a3
+	b2sums = a0045fac674bbadae020323ea7493d91cf67fec480fe9790fe1004fc255d11bf68b7b9a359eed878f92b351cb8e1d51af53aa54229b717c3b9f35a80fe90ab48
 
 pkgname = r-beachmat
