@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=supersigs
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Supervised mutational signatures'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4b76a013601d705e320a6ac4240232249d420f6bfb6b15158acf9a4f7c2056f9')
+sha256sums=('89f76c3671cbf4a794f2ee694a5d2d11b9275cef0b3e95efcceae2b1e5c53550')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
