@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jmcomic-downloader-bin
 _pkgname='禁漫天堂下载器'
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
-pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器,带图形界面,已打包exe,带收藏夹,免费下载收费的漫画,下载速度飞快.(Prebuilt version)"
+pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器,带图形界面,带收藏夹,免费下载收费的漫画,下载速度飞快.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/lanyeeee/jmcomic-downloader"
 license=('MIT')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/lanyeeee/jmcomic-downloader/v${pkgver}/LICENSE"
 )
-sha256sums=('a3ecf4775532e3786b0755cbac500763a2d1b5454195ec8ce38b66e5f418f5b2'
+sha256sums=('6ad6ba5ce7816d392cc54e47de11616e96296b3131a5605f048f462194b4d052'
             '541954d98234bfc993f9cfcd1cf0d8d6b6e06a9375208a6b2a83a6663aa65ee8')
 prepare() {
     sed -i -e "
