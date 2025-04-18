@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HERON
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d41b40db5c26c69733c46f4396dfcf4c')
-b2sums=('bc060345fa901528093df814188ade198b19ca2248e7e1dc9a205a1ff4634260bf4c5f3c7392982842e1d8270c3ef5d9f852553d21cd2bf6075106139638f8b5')
+md5sums=('7ddd7f5f8f5ab0feeb88a3c966746e11')
+b2sums=('098a524bbcae1809d7374eb987626b0e2e59d8030357c9b0e2c516c1c1aa8b880aed208bc96738b6aa907d087bc7e15b96f7dc613f68a57df75e927168e8b347')
 
 build() {
   mkdir build
