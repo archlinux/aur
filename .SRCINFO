@@ -11,8 +11,7 @@ pkgbase = scansion-hg
 	depends = lua52-sec
 	depends = lua52-socket
 	depends = lua52-filesystem
-	source = hg+https://code.matthewwild.co.uk/scansion/
+	source = hg+https://hg.prosody.im/scansion/
 	md5sums = SKIP
 
 pkgname = scansion-hg
-

@@ -16,7 +16,7 @@ depends=("lua${_lua_version_nodot}"
          "lua${_lua_version_nodot}-sec"
          "lua${_lua_version_nodot}-socket"
          "lua${_lua_version_nodot}-filesystem")
-source=('hg+https://code.matthewwild.co.uk/scansion/')
+source=('hg+https://hg.prosody.im/scansion/')
 md5sums=('SKIP')
 
 pkgver() {
