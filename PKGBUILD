@@ -4,7 +4,7 @@
 
 _pkgname=webargs
 pkgname=python-$_pkgname
-pkgver=8.6.0
+pkgver=8.7.0
 pkgrel=3
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   'python-aiohttp'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('adaa90803b7f6f3cfeedf7c02b217030b5cc9d52cf7385dcb698808a565c664abe28b1bd087c1c9337669770348ba72abbb45cbb12da92edc89abdc0788efb5b')
+sha512sums=('b833a4c37ad1fdf78e9142c7fef0998ff4f91ff1a4255117cfe21d91631aa04ad9811d0a752647e49bcc87216fc2f49475dc056ce23d68c57541bafe78b10db5')
 
 prepare() {
   cd $_pkgname-$pkgver
