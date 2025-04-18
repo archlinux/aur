@@ -1,0 +1,4 @@
+[jupyterlab-quarto]
+source = "git"
+git = "https://github.com/quarto-dev/jupyterlab-quarto.git"
+prefix = "v"
