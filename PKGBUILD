@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=JASPAR2016
-_pkgver=1.35.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('73faf7ffe379ad6547e5050e2381ba54')
-b2sums=('60525bbb7e5ef70da4700b86fe8a90ccda84afbe4f713e6eca43efa23055f5a49ed3cca75d5d509657e3369bb2fbfaf18384867427ec7444a9e5faa4bc005803')
+md5sums=('88a0ec591686c681719a9a4c62d1a18e')
+b2sums=('ddb7715d39a08b18677a06a7a96c932ea9a5b0f8d3abc46e160722400a5c57bd8b0d7d82b0ee413c15516c0556ecf14eea8e7420fd5c51271ae64d75476c8e3d')
 
 build() {
   mkdir build
