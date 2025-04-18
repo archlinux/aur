@@ -1,21 +1,34 @@
 pkgname=papis-zotero
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='Zotero remote server for papis'
 arch=('any')
 url='https://github.com/papis/papis-zotero'
 license=('GPL')
 depends=('python' 'papis')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/papis/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('49e16cfded75658a4b656ab9d283362de3eb3765afd2b5018ac81bf5e40da22f')
+sha256sums=('9da67265180c320950ddf662500316e2e6de178876a30a93fc2dc8a5b7335015')
+
+_dirname="${pkgname}-${pkgver}"
+_basename="${pkgname}"
+
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	python setup.py build
+	cd "${srcdir}/${_dirname}"
+	export PYTHONHASHSEED=0
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	python setup.py install --skip-build --root="${pkgdir}/" --prefix="/usr"
+	cd "${srcdir}/${_dirname}"
+	find dist -name '*.whl' \
+		-exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
+	# not necessary for every package, but for those who it is, it'd generate conflict with others otherwise
+	rm -rf "${pkgdir}/$(python -c 'import site; print(site.getsitepackages()[0])')/tests/"
+
+  find . -maxdepth 1 -iname 'README*' \
+		-exec install -Dvm 644 -t "${pkgdir}/usr/share/doc/${_basename}" {} +
+  find . -maxdepth 1 -iname 'LICENSE*' \
+		-exec install -Dvm 644 -t "${pkgdir}/usr/share/licenses/${_basename}" {} +
 }

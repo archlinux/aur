@@ -1,14 +1,16 @@
 pkgbase = papis-zotero
 	pkgdesc = Zotero remote server for papis
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/papis/papis-zotero
 	arch = any
 	license = GPL
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = papis
-	source = https://github.com/papis/papis-zotero/archive/v0.1.2.tar.gz
-	sha256sums = 49e16cfded75658a4b656ab9d283362de3eb3765afd2b5018ac81bf5e40da22f
+	source = https://github.com/papis/papis-zotero/archive/v0.2.tar.gz
+	sha256sums = 9da67265180c320950ddf662500316e2e6de178876a30a93fc2dc8a5b7335015
 
 pkgname = papis-zotero
