@@ -2,7 +2,7 @@
 # Maintainer: XenHat <aur@xenh.at>
 pkgname=powertop-auto-tune
 pkgver=2021.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A systemd service for powertop that sets all tunable options to their GOOD setting.'
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Powertop"
