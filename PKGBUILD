@@ -14,5 +14,5 @@ sha256sums=('6c8f5d252c5924e3fb589b787423be693e0c5cb8c99f2da1aedd29c0ab8ce976')
 install="${pkgname}.install"
 
 package() {
-	install -Dpm 0644 $_unit "$pkgdir/usr/lib/systemd/system/$_unit"
+  install -Dpm 0644 $_unit "$pkgdir/usr/lib/systemd/system/$_unit"
 }
