@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FIs
-_pkgver=1.35.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1e3bfb92bd574ee6c9b042c0dce24880')
-b2sums=('1a5f8484374f91502e0240556810c0f4e6b02c2298fa1cfa055f4f84bd296b8eb7eb29e9e4623062074f798f8abe8e05347c8f72cae8605ef4756eddc8dc3266')
+md5sums=('65e8641d6921fd57bd7fb8cca9db1d71')
+b2sums=('ed46bceeb6469ef54489a274c3e2c7dcf6a4f51f58caa99bfdd320ceaae68a09215747845fb85c6f41c0d70db56e39bb07f125ec2e409749107f8dffafbc1e24')
 
 build() {
   mkdir build
