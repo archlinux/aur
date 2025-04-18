@@ -1,7 +1,7 @@
 pkgbase = cosmonium-bin
-	pkgdesc = 3D astronomy and space exploration program.
+	pkgdesc = 3D astronomy and space exploration program.(Prebuilt version)
 	pkgver = 0.3.0.dev876
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cosmonium/cosmonium
 	arch = x86_64
 	license = GPL-3.0-only
