@@ -1,6 +1,6 @@
 pkgbase = r-agdex
 	pkgdesc = Agreement of Differential Expression Analysis
-	pkgver = 1.54.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AGDEX
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-agdex
 	depends = r
 	depends = r-biobase
 	depends = r-gseabase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AGDEX_1.54.0.tar.gz
-	sha256sums = a2e7766a3ecb90ddb4da57b64e2e37469e1155b3bb10fb4beea5fb47f56b740a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AGDEX_1.56.0.tar.gz
+	sha256sums = f3af0b42a19d8f1d7a9b558e8c14e1605431f5f54cf592d5330cb99791ded393
 
 pkgname = r-agdex
