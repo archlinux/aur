@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
-pkgver=4.22.2
+pkgver=4.23.0
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
@@ -10,12 +10,21 @@ makedepends=("go>=1.24.1")
 conflicts=("qp-bin" "qp-git")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
-sha256sums=("bea7e80fd61d6aa203df3b7435ccb39f2cb38c4666ca59683d4a1745eb9f7860")
+sha256sums=("eab6b6781f183748d94bf3b819774624306907c8db6d6be6992bbed53e8c4a34")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   export CGO_ENABLED=0
-  go build -trimpath -o "${pkgname}" ./cmd/${pkgname}
+
+  if [[ -f .ldflags ]]; then
+    ldflags=$(<.ldflags)
+  else
+    # interim until commit fix is released
+    ldflags="-s -w -X qp/internal/about.Version=${pkgver} \
+      -X qp/internal/about.Date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  fi
+
+  go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" ./cmd/${pkgname}
 }
 
 package() {
