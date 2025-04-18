@@ -1,0 +1,1 @@
+FRR_EXPORTER_ARGS="--frr.socket.dir-path='/var/run/frr'"

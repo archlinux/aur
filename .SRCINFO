@@ -1,0 +1,21 @@
+pkgbase = frr-exporter
+	pkgdesc = Prometheus exporter for Free Range Routing
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/tynany/frr_exporter
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	depends = frr
+	backup = etc/conf.d/prometheus-frr-exporter
+	source = https://github.com/tynany/frr_exporter/archive/refs/tags/v1.4.0.tar.gz
+	source = prometheus-frr-exporter
+	source = prometheus-frr-exporter.service
+	source = prometheus-frr-exporter.sysusers
+	sha256sums = b41682d2d94c057690a20b2b3c154fd3aac835e5280c29a3c06f8600d92d0876
+	sha256sums = 4f1e7484d3ffe14e39edce43b8183c96da3dda69ff580dc232cc39f6bad5c2bd
+	sha256sums = 241ae6fd3be0ea4cdec1f455195ef1b5a96edc48c2bce9f9c0a2a95347d4e712
+	sha256sums = b27dc51dab9d09e0caafeaeb6866174313f50f86724147c653b87ed7d431c814
+
+pkgname = prometheus-frr-exporter
