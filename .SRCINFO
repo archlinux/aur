@@ -1,6 +1,6 @@
 pkgbase = zasper-git
-	pkgdesc = Fastest and Most Efficient IDE to run Jupyter Notebooks.(Use system-wide electron)
-	pkgver = r225.404d3e7
+	pkgdesc = An IDE designed from the ground up to support massive concurrency. It provides a minimal memory footprint, exceptional speed, 和 the ability to handle numerous concurrent connections.(Use system-wide electron)
+	pkgver = 0.1.0.alpha.r2.g0d7bbd6
 	pkgrel = 1
 	url = https://zasper.io/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = zasper-git
 	makedepends = go
 	makedepends = icoutils
 	depends = electron30
-	provides = zasper=r225.404d3e7
+	provides = zasper=0.1.0.alpha
 	conflicts = zasper
 	source = zasper.git::git+https://github.com/zasper-io/zasper.git
 	source = zasper.sh

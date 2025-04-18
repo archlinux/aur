@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zasper-git
 _pkgname=Zasper
-pkgver=r225.404d3e7
+pkgver=0.1.0.alpha.r2.g0d7bbd6
 _electronversion=30
 _nodeversion=22
 pkgrel=1
-pkgdesc="Fastest and Most Efficient IDE to run Jupyter Notebooks.(Use system-wide electron)"
+pkgdesc="An IDE designed from the ground up to support massive concurrency. It provides a minimal memory footprint, exceptional speed, 和 the ability to handle numerous concurrent connections.(Use system-wide electron)"
 arch=('any')
 url="https://zasper.io/"
 _ghurl="https://github.com/zasper-io/zasper"
@@ -43,22 +43,21 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}/ui"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
@@ -88,6 +87,7 @@ build() {
     fi
     go build -o ui/build
     cd "${srcdir}/${pkgname//-/.}/ui"
+    electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
