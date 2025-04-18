@@ -2,7 +2,7 @@
 
 _pkgname="kyanos"
 pkgname="${_pkgname}-git"
-pkgver=1.4.0.r34.g24b3b35
+pkgver=1.5.0.r16.g921f701
 pkgrel=1
 pkgdesc="Visualize the time packets spend in the kernel, watch & analyze in command line."
 arch=('i686' 'x86_64')
