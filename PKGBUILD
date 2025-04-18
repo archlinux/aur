@@ -2,7 +2,7 @@
 
 pkgname=python-obd
 _name=${pkgname#python-}
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 epoch=
 pkgdesc="Serial module for handling live sensor data from a vehicle's OBD-II port."
@@ -28,7 +28,7 @@ options=('!strip' '!debug')
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('20d38c9ded3daad1e8affab3ff367a70788d4f29ac77ab7aacddc6a6d2a43d61')
+sha256sums=('27b8f043376ca700edb98bf5216e2912295ecde0e735b260999f2d9ddf342522')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
