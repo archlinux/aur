@@ -2,12 +2,12 @@
 
 ## options
 : ${_widgets=qt6}
-: ${_commit=e58cd31139ea0fa8344762c40284b0039609a85a}
+: ${_commit=e9bf73b38ee3ba542d4ed9943194e09339c9de91} # 10.4.0.r39
 
 _pkgname="peazip"
 pkgname="$_pkgname"
 pkgver=10.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform file and archive manager (${_widgets^})"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
@@ -54,6 +54,44 @@ prepare() {
     -e 's&(\bHBINPATH\b\s*)=\s*'\'\'';&\1= '\''/usr/bin/'\'';&' \
     -e 's&(\bHSHAREPATH\b\s*)=\s*'\'\'';&\1= '\'"/usr/share/$_pkgname/"\'';&' \
     -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+
+  # check for version mismatch
+  local PEAZIPVERSION PEAZIPREVISION
+  PEAZIPVERSION=$(grep -Po1 "(?<=PEAZIPVERSION\s?=\s?')([0-9.]+)(?=';)" "$_pkgsrc/peazip-sources/dev/peach.pas")
+  PEAZIPREVISION=$(grep -Po1 "(?<=PEAZIPREVISION\s?=\s?')([0-9.]+)(?=';)" "$_pkgsrc/peazip-sources/dev/peach.pas")
+  if [ $(vercmp "$pkgver" "${PEAZIPVERSION:-0.0}${PEAZIPREVISION:=.0}") -ne "0" ]; then
+    printf "%s    warning: %sversion mismatch.%s %s != %s\n" \
+      "$(
+        tput setaf 3
+        tput bold
+      )" \
+      "$(tput setaf 7)" \
+      "$(tput sgr0)" \
+      "$pkgver" \
+      "${PEAZIPVERSION:-0.0}${PEAZIPREVISION:=.0}"
+  fi
+
+  # remove buttons from about dialog
+  local _buttons=(
+    Form_peach.baboutbin
+    Form_peach.baboutchangelog
+    Form_peach.baboutfaq
+    Form_peach.baboutlocalhelp
+    Form_peach.baboutplugindir
+    Form_peach.baboutplugins
+    Form_peach.baboutremoveunace
+    Form_peach.baboutremoveunrar
+    Form_peach.baboutsupport
+    Form_peach.baboutthemes
+    Form_peach.babouttos
+    Form_peach.babouttracker
+    Form_peach.babouttranslations
+    Form_peach.baboutup
+    Form_peach.baboutweb
+  )
+  for i in ${_buttons[@]}; do
+    sed -E -e "/^${i//./\\.}.Caption:=/s&^.*\$&${i}.Visible:=False;&" -i "$_pkgsrc/peazip-sources/dev/peach.pas"
+  done
 
   # compiler/linker options
   for i in ${_packets[@]}; do
