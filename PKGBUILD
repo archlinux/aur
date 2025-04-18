@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PFAM.db
-_pkgver=3.20.0
+_pkgver=3.21.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-dbi
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b5fd5c9c43685f2b45a3102b98673d36')
-b2sums=('d76c54d672136a0a8a5bf28691abf5c9bb972e208a20f41e1ae964c9a8e2084a90c1c994ef86499185f6819bea0577f5fd95d023e8a15ab52d324e8197bb6886')
+md5sums=('3462c746ab532c27c7b89b765004d284')
+b2sums=('d5a7bc9e159d05241b1faf2daa305e07425fc30ed26ddfdd81571a7d5f2d7a29ec896cde3276176eaab0a8b51fc92f4e3ae3a11d59496bca9f2109700ed97fd4')
 
 build() {
   mkdir build
