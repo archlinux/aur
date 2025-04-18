@@ -4,7 +4,7 @@
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 pkgname=python2-pbr
 _name="${pkgname#python2-}"
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='Python Build Reasonableness (for Python 2)'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
   'python2-importlib-metadata: Collect semantic version avoiding pkg_resources'
 )
 source=("$_pypi/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d1377122a5a00e2f940ee482999518efe16d745d423a670c27773dfbc3c9a7d9')
+sha256sums=('788183e382e3d1d7707db08978239965e8b9e4e5ed42669bf4758186734d5f24')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
