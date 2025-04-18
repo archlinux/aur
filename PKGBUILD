@@ -1,4 +1,5 @@
 # Maintainer: claymorwan <claymorwan@fembois.dev>
+# ty to mqs for the service file :3
 
 _pkgname=vertd
 
