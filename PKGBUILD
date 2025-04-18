@@ -1,17 +1,17 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=2.5.4.r47.g44118b4fb
-_llvmmaj=14
-_llvmver="${_llvmmaj}.0.5"
+pkgver=2.10.9.r173.g19bd4293f
+_llvmmaj=15
+_llvmver="${_llvmmaj}.0.7"
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
-license=('MIT' 'custom')
-depends=('gcc-libs' 'zlib')
-makedepends=('git' 'cmake' 'python' 'python-mako' 'python-yaml')
+license=('MIT' 'Apache-2.0 WITH LLVM-exception')
+depends=('gcc-libs' 'glibc' 'zlib' 'zstd')
+makedepends=('cmake' 'git' 'python' 'python-mako' 'python-yaml')
 provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}.0.0")
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!emptydirs' '!lto')
@@ -51,9 +51,9 @@ pkgver() {
 
 build() {
     # Prevent IGC to load LLVM 15+ symbols
-    CFLAGS+=" -fno-semantic-interposition"
-    CXXFLAGS+=" -fno-semantic-interposition"
-    LDFLAGS+=" -Wl,-Bsymbolic"
+    CFLAGS+=' -fno-semantic-interposition'
+    CXXFLAGS+=' -fno-semantic-interposition'
+    LDFLAGS+=' -Wl,-Bsymbolic'
     
     # fix error: "_FORTIFY_SOURCE" redefined [-Werror]
     # note: upstream forces _FORTIFY_SOURCE=2
@@ -63,20 +63,21 @@ build() {
     EMAIL='someone@archlinux.org' \
     cmake -B build -S intel-graphics-compiler \
         -G 'Unix Makefiles' \
+        -DCCLANG_FROM_SYSTEM:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DIGC_OPTION__ARCHITECTURE_TARGET:STRING='Linux64' \
         -DIGC_OPTION__CLANG_MODE:STRING='Source' \
         -DIGC_OPTION__LLD_MODE:STRING='Source' \
-        -DIGC_OPTION__LLVM_PREFERRED_VERSION:STRING="${_llvmver}" \
         -DIGC_OPTION__LLVM_MODE:STRING='Source' \
+        -DIGC_OPTION__LLVM_PREFERRED_VERSION:STRING="${_llvmver}" \
         -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR:BOOL='ON' \
         -DIGC_OPTION__SPIRV_TOOLS_MODE:STRING='Source' \
         -DIGC_OPTION__USE_KHRONOS_SPIRV_TRANSLATOR_IN_SC:BOOL='ON' \
         -DIGC_OPTION__USE_PREINSTALLED_SPIRV_HEADERS:BOOL='OFF' \
         -DIGC_OPTION__VC_INTRINSICS_MODE:STRING='Source' \
-        -DCCLANG_FROM_SYSTEM:BOOL='OFF' \
         -Wno-dev
     cmake --build build
 }
