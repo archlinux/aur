@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedRandomArray
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f0a54dc7043aa1fb5ae32e44d1b5249')
-b2sums=('6e5234670b2fc25af40e0812e122107631636b67ae85f916a6d17ab120734cd5a5021ed631e4213b7a627a7f6593e6a12d5f0c5cd2eaa632e1e4ea9001271a37')
+md5sums=('35a58b38c0bc2a89ce1aa2d680494ad7')
+b2sums=('b8503eb3f6ec5e17cc0900e088b5b34ddcc5ec3e161903dc892a0b846ef9e942798fcf464d0ea8e4a82fa8d5be9d78967720c641482b1765daeb6c7c56d420b7')
 
 prepare() {
   # fix test
