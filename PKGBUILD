@@ -4,7 +4,7 @@
 pkgname=hyprtiler
 _origpkgname=hyprtiler
 pkgver=0.1.19
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility tool for managing windows in the Hyprland compositor environment."
 arch=("x86_64")
 url="https://github.com/antrax2024/hyprtiler"
