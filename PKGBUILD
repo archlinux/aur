@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.0.7
+pkgver=4.0.8
 _nvmdver="${pkgver}"
 _nodeversion=20
 pkgrel=1
@@ -17,7 +17,6 @@ conflicts=("${pkgname}")
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
-    'libappindicator-gtk3'
 )
 makedepends=(
     'gendesk'
@@ -28,15 +27,16 @@ makedepends=(
     'rust'
     'librsvg'
     'patchelf'
+    'git'
 )
 source_aarch64=("nvmd-${_nvmdver}-aarch64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-arm64")
 source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdver}/nvmd_linux-x64")
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('668c6cffe2625834b5485955700f4f9369ca1c23f53c221b1cefa67a51f5df9f')
-sha256sums_aarch64=('e637d318457e6807e6137dc543ca22fdb7585eb46ba64e662acef410260dc841')
-sha256sums_x86_64=('a7dacab02fa2b92cc5de69cef52b73eaf1f0b2789e70a3db5c42e4b7ae6500d5')
+sha256sums=('8914d77965b8f098415109f554874cfa1c83f51e6694ed3ff4da3ba0fda13165')
+sha256sums_aarch64=('84b8fd74d6656ab16f6575a570432c860ba8f6dd70827db4371630b918f49300')
+sha256sums_x86_64=('2aca6a012178035198f4bfc80fb853d673387866782f78f743f53101c0ba692d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -59,7 +59,7 @@ prepare() {
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
             echo 'registry=https://registry.npmmirror.com'
         } >> .npmrc
@@ -68,7 +68,17 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    NODE_ENV=production     pnpm tauri build -b deb
+    sed -i "/plugin-updater/d" package.json
+    sed -i "/updater/d" src-tauri/capabilities/default.json
+    sed -i "/tauri_plugin_updater/d" src-tauri/src/main.rs
+    sed -i "/tauri-plugin-updater/d" src-tauri/Cargo.toml
+    sed -i -e "
+        53,60d
+        /createUpdaterArtifacts/d
+        s/versions\.\",/versions\.\"/g
+    " src-tauri/tauri.conf.json
+    sed -i "s/\"deb\", \"rpm\"/\"deb\"/g" src-tauri/tauri.linux.conf.json
+    NODE_ENV=production     pnpm run build
 }
 package() {
     _sourcedir="${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb"
