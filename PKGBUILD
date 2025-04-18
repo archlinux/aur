@@ -2,7 +2,7 @@
 # Contributor: Patrik Plihal <patrik.plihal at gmail dot com>
 
 pkgname=ckan
-pkgver=1.35.2
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='All you need to find, install, and manage mods for Kerbal Space Program (ksp)'
 arch=('any')
@@ -11,11 +11,11 @@ license=('MIT')
 depends=('mono')
 makedepends=('msbuild' 'dotnet-host' 'dotnet-sdk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KSP-CKAN/CKAN/archive/v${pkgver}.tar.gz")
-sha256sums=('7ae9359a97f06f315c74948ee1e9ee9e6b05469c0879839f60b4d2fff075d9e1')
+sha256sums=('791f5c9c192c6c3a931c8723157dad8bb75afed97491d53accf466509ddd2a82')
 
 build(){
     cd "${pkgname^^}-$pkgver"
-    ./build --configuration=Release
+    ./build.sh --configuration=Release
 }
 
 package() {
