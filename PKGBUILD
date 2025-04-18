@@ -4,7 +4,7 @@
 _slug=PitchGrid
 _name=PitchGridRack
 pkgname=vcvrack-pitchgrid
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='PitchGrid VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/peterjungx/$_name#tag=v$pkgver")
-sha256sums=('d32c18077d6e8bffc980ef9e378ea6a3d2266541fbc326164cee4e13aa3bc508')
+sha256sums=('7f8f23fc2e67dad57c275bda60c965c70aa3aee4517e1bb8b8ebb840ba008482')
 
 prepare() {
   cd $_name

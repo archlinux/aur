@@ -1,6 +1,6 @@
 pkgbase = vcvrack-pitchgrid
 	pkgdesc = PitchGrid VCV Rack modules
-	pkgver = 2.1.2
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/peterjungx/PitchGridRack
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = vcvrack-pitchgrid
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/peterjungx/PitchGridRack#tag=v2.1.2
-	sha256sums = d32c18077d6e8bffc980ef9e378ea6a3d2266541fbc326164cee4e13aa3bc508
+	source = git+https://github.com/peterjungx/PitchGridRack#tag=v2.2.0
+	sha256sums = 7f8f23fc2e67dad57c275bda60c965c70aa3aee4517e1bb8b8ebb840ba008482
 
 pkgname = vcvrack-pitchgrid
