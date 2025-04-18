@@ -16,7 +16,7 @@ depends=()
 provides=("${_appname}")
 conflicts=("${_appname}")
 
-source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
+source=("LICENSE-${pkgver}::${_urlraw//v${pkgver}/master}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_execname}-${arch[0]}-unknown-linux-musl.tgz")
 source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_execname}-${arch[0]}-unknown-linux-musl.tgz")
