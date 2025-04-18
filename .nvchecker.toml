@@ -1,0 +1,4 @@
+[cutlass-headers]
+source = "git"
+git = "https://github.com/NVIDIA/cutlass.git"
+prefix = "v"
