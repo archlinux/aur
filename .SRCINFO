@@ -1,6 +1,6 @@
 pkgbase = electron34-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 34.5.1
+	pkgver = 34.5.2
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,21 +17,21 @@ pkgbase = electron34-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron34=34.5.1
+	provides = electron34=34.5.2
 	conflicts = electron34
-	noextract = electron34-chromedriver-34.5.1-x86_64.zip
-	noextract = electron34-34.5.1-x86_64.zip
-	source_aarch64 = electron34-chromedriver-34.5.1-aarch64.zip::https://github.com/electron/electron/releases/download/v34.5.1/chromedriver-v34.5.1-linux-arm64.zip
-	source_aarch64 = electron34-34.5.1-aarch64.zip::https://github.com/electron/electron/releases/download/v34.5.1/electron-v34.5.1-linux-arm64.zip
-	sha256sums_aarch64 = 749f692603527e8743c81d05eb2de2e281e2b03b148ec00379f13e8da17ca7a4
-	sha256sums_aarch64 = 4c0d5833faa01cc3a586087b82f719c2fe331515d26bb3fa098dc79bd3ea153f
-	source_armv7h = electron34-chromedriver-34.5.1-armv7h.zip::https://github.com/electron/electron/releases/download/v34.5.1/chromedriver-v34.5.1-linux-armv7l.zip
-	source_armv7h = electron34-34.5.1-armv7h.zip::https://github.com/electron/electron/releases/download/v34.5.1/electron-v34.5.1-linux-armv7l.zip
-	sha256sums_armv7h = 14bcc062457cf31d606451aa7fae1baae720a944dead06231fe2a55f17d39966
-	sha256sums_armv7h = 7ed517eeaff56960a01fe53fc445e4118135eeb8267d61c37ef9df943dcc35fb
-	source_x86_64 = electron34-chromedriver-34.5.1-x86_64.zip::https://github.com/electron/electron/releases/download/v34.5.1/chromedriver-v34.5.1-linux-x64.zip
-	source_x86_64 = electron34-34.5.1-x86_64.zip::https://github.com/electron/electron/releases/download/v34.5.1/electron-v34.5.1-linux-x64.zip
-	sha256sums_x86_64 = 57cf85eb9dafe28ccdd8ba4a095cb1fd5b8c71f0743bf532b132bc45e56630ef
-	sha256sums_x86_64 = 3ae6f75fa08f5c1bdb7bbcec4dc9cf7d7f53ffcf6a4292e4a482b2ce515505e7
+	noextract = electron34-chromedriver-34.5.2-x86_64.zip
+	noextract = electron34-34.5.2-x86_64.zip
+	source_aarch64 = electron34-chromedriver-34.5.2-aarch64.zip::https://github.com/electron/electron/releases/download/v34.5.2/chromedriver-v34.5.2-linux-arm64.zip
+	source_aarch64 = electron34-34.5.2-aarch64.zip::https://github.com/electron/electron/releases/download/v34.5.2/electron-v34.5.2-linux-arm64.zip
+	sha256sums_aarch64 = fdfe6945ed870a8eb96f6d5119ed8f5b1704391fe9acfd8c3fa110ab6f74844d
+	sha256sums_aarch64 = 6d511e55631bf73d56729dd0798bc23d44aa16a78bc94e912cae465d54b749f7
+	source_armv7h = electron34-chromedriver-34.5.2-armv7h.zip::https://github.com/electron/electron/releases/download/v34.5.2/chromedriver-v34.5.2-linux-armv7l.zip
+	source_armv7h = electron34-34.5.2-armv7h.zip::https://github.com/electron/electron/releases/download/v34.5.2/electron-v34.5.2-linux-armv7l.zip
+	sha256sums_armv7h = f0f567ffdb31f57124ceda3e81545b1525f69ef8b722c3493f55effce7a3266e
+	sha256sums_armv7h = f119dbe8d4a3c0dac2683b82713bd8a3e65ab111bff6c2cf75ced2d52b1e00de
+	source_x86_64 = electron34-chromedriver-34.5.2-x86_64.zip::https://github.com/electron/electron/releases/download/v34.5.2/chromedriver-v34.5.2-linux-x64.zip
+	source_x86_64 = electron34-34.5.2-x86_64.zip::https://github.com/electron/electron/releases/download/v34.5.2/electron-v34.5.2-linux-x64.zip
+	sha256sums_x86_64 = 18d685523669b6704d5af58515b91a39cd97e04e897806048178901241cc96e5
+	sha256sums_x86_64 = 878c958cda5e2e48de1e5a89203bd2e3031f2dbbb25453fb75a305446eb282d0
 
 pkgname = electron34-bin
