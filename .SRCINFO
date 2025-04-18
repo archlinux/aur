@@ -1,7 +1,7 @@
 pkgbase = saturn-desktop-bin
-	pkgdesc = Electron-based Deezer Client with FLAC & more!
+	pkgdesc = Electron-based Deezer Client with FLAC & more!(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://saturn.kim/
 	arch = x86_64
 	license = GPL-3.0-or-later
