@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=M3Drop
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-singlecellexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65a23be10bdfae99a3245ad2f1c10ba8')
-b2sums=('e6f72999f3024e2f3aa2b569a7558e5b69b60e853b14cf5dcd804b1222e64f1f280cb52ceb0ec98c96c38af8338435324e10be925c96ea46a5078b2c424fc6b1')
+md5sums=('2eb3595426495eeddb5fdd1461ad9450')
+b2sums=('f98989819f739f9fec82c05992aab3a4e222c105e301b6bff4acf50093cd90f53e155929051addc6d17b01378a6f81308928c388915d20a9f61c937cb00aa65a')
 
 build() {
   mkdir build

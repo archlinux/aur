@@ -1,6 +1,6 @@
 pkgbase = r-m3drop
 	pkgdesc = Michaelis-Menten Modelling of Dropouts in single-cell RNASeq
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/M3Drop
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = r-m3drop
 	optdepends = r-rocr
 	optdepends = r-seurat
 	optdepends = r-singlecellexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/M3Drop_1.32.0.tar.gz
-	md5sums = 65a23be10bdfae99a3245ad2f1c10ba8
-	b2sums = e6f72999f3024e2f3aa2b569a7558e5b69b60e853b14cf5dcd804b1222e64f1f280cb52ceb0ec98c96c38af8338435324e10be925c96ea46a5078b2c424fc6b1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/M3Drop_1.34.0.tar.gz
+	md5sums = 2eb3595426495eeddb5fdd1461ad9450
+	b2sums = f98989819f739f9fec82c05992aab3a4e222c105e301b6bff4acf50093cd90f53e155929051addc6d17b01378a6f81308928c388915d20a9f61c937cb00aa65a
 
 pkgname = r-m3drop
