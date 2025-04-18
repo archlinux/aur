@@ -1,0 +1,24 @@
+[Unit]
+Description=vertd - media conversion services
+Requires=network.target
+After=network.target
+
+[Service]
+User=vertd
+Group=vertd
+DynamicUser=true
+Restart=on-failure
+EnvironmentFile=-/etc/conf.d/vertd
+ExecStart=/usr/bin/vertd
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+
+CacheDirectory=vertd
+CacheDirectoryMode=0700
+WorkingDirectory=/var/cache/vertd
+ReadWritePaths=/var/cache/vertd
+NoExecPaths=/var/cache/vertd
+
+[Install]
+WantedBy=multi-user.target

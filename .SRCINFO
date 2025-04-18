@@ -1,15 +1,19 @@
 pkgbase = vertd-git
 	pkgdesc = VERT's solution to crappy video conversion services.
 	pkgver = r70.743f69b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VERT-sh/vertd
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cargo
+	depends = ffmpeg
+	optdepends = libva-intel-driver
 	provides = vertd-git
 	conflicts = vertd-git
 	source = vertd::git+https://github.com/VERT-sh/vertd
+	source = systemd.service
 	sha256sums = SKIP
+	sha256sums = a1ec3e72000c476d6f10f09041b4c67ad2d823da2598731682e012d615a036cf
 
 pkgname = vertd-git

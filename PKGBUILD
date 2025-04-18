@@ -4,16 +4,22 @@ _pkgname=vertd
 
 pkgname=vertd-git
 pkgver=r70.743f69b
-pkgrel=1
+pkgrel=2
 pkgdesc="VERT's solution to crappy video conversion services."
 arch=(x86_64)
 url="https://github.com/VERT-sh/vertd"
 license=('GPL-3.0-only')
+depends=('ffmpeg')
 makedepends=('git' 'cargo')
+optdepends=('libva-intel-driver')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$_pkgname::git+$url")
-sha256sums=('SKIP')
+source=(
+	"$_pkgname::git+$url"
+	systemd.service
+)
+sha256sums=('SKIP'
+            'a1ec3e72000c476d6f10f09041b4c67ad2d823da2598731682e012d615a036cf')
 
 
 pkgver() {
@@ -43,9 +49,11 @@ check() {
 }
 
 package() {
+	install -vDm644 systemd.service \
+		"$pkgdir"/usr/lib/systemd/system/$_pkgname.service
+
 	cd "$srcdir/$_pkgname"
 	install -Dm0755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$_pkgname/"
-
 }
