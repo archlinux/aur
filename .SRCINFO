@@ -1,6 +1,6 @@
 pkgbase = r-dune
 	pkgdesc = Improving replicability in single-cell RNA-Seq cell type discovery
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Dune
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-dune
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Dune_1.18.0.tar.gz
-	sha256sums = 1411126c87d12241746aeed3a82e79e23ec1b69defd68eb048de148611779832
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Dune_1.20.0.tar.gz
+	sha256sums = 885c1d872e2c8b724f24e5f371c78205e0f9f9ca9c06f8d75af8a026b93f62f6
 
 pkgname = r-dune
