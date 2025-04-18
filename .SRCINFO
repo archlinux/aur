@@ -1,7 +1,7 @@
 pkgbase = protobuf-21
 	pkgdesc = Protocol Buffers (legacy)
 	pkgver = 21.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://developers.google.com/protocol-buffers/
 	arch = aarch64
 	arch = x86_64
@@ -31,4 +31,5 @@ pkgname = python-protobuf-21
 	pkgdesc = Python bindings for Google Protocol Buffers (legacy)
 	arch = any
 	depends = protobuf-21=21.12
+	provides = python-protobuf
 	conflicts = python-protobuf
