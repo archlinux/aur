@@ -3,41 +3,40 @@ pkgname=joystick-bin
 _pkgname=Joystick
 pkgver=1.0.0
 _electronversion=32
-pkgrel=1
-pkgdesc="Turning your phone into a virtual-joystick; play multiplayer games on your computer"
-arch=("x86_64")
+pkgrel=2
+pkgdesc="Turning your phone into a virtual-joystick; play multiplayer games on your computer.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://github.com/zenineasa/joystick"
 license=("AGPL-3.0-only")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'java-runtime'
-    'nodejs'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('96d5391e0f58c4c139b866b4d7115cc960064cd1c3d16e34277ea261b58aed8a'
+sha256sums=('3c47695afc22e679dd819d2f9865514230c195a88fcfe3e67f7c2591c9d8bc5a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/node_modules/@meadowsjared/robotjs/prebuilds/darwin-x64+arm64"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/${pkgname%-bin}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
