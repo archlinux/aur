@@ -9,10 +9,10 @@
 
 _pkgname=ModusToolboxSetup
 pkgname=modustoolbox-setup
-_pkgver=1.2
-pkgver=${_pkgver}.0.787
+_pkgver=1.3
+pkgver=${_pkgver}.0.1017
 pkgrel=1
-pkgdesc="ModusToolbox Setup is the fastest and easiest way to install and update your ModusToolbox environment. Choose the tools, packs and patches you \
+pkgdesc="The fastest and easiest way to install and update your ModusToolbox environment. Choose the tools, packs and patches you \
     need and add associated packages such as ModusToolbox Machine Learning and ModusToolbox Programming Tools."
 arch=('x86_64')
 license=("LicenseRef-${pkgname}")
@@ -21,7 +21,7 @@ depends=('fontconfig' 'libwebp' 'libglvnd' 'dbus' 'libxkbcommon' 'libxkbcommon-x
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup"
 _source="${_pkgname}Installer_${pkgver}_linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('d3e20be112b55287ea31f91323733767d853ab2a40160f51c5141297f6b07f4f')
+sha256sums=('e6f9f7ddb7d140ed31fc89c304deaab1f3baad89721f128928409ddf2b84f197')
 options=('!strip')
 
 
