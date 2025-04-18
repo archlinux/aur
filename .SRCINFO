@@ -1,6 +1,6 @@
 pkgbase = r-rcsl
 	pkgdesc = Rank Constrained Similarity Learning for single cell RNA sequencing data
-	pkgver = 1.14.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RCSL
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-rcsl
 	optdepends = r-testthat
 	optdepends = r-tidyverse
 	optdepends = r-tinytex
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCSL_1.14.0.tar.gz
-	md5sums = 2624ecbd83fdbb8adbd2478ca9c59f40
-	b2sums = c72c0a3b6340ae5dda2b7ee14318ce8ef84b59cd5f1ffaef380ba81497eb97ee9d30423be5a3b80ca77652cfce02a80f1dd7e1b309825117a49c958a85be0618
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RCSL_1.16.0.tar.gz
+	md5sums = c00309d093059836af62df61e6bb4fe6
+	b2sums = 634a31b1ecdfbbd8ad5268c29f6a0cc7a8a72e031dc783c99af9530b9aeb849c3b44de8b15da3b6806700d13fb61e6d3a76121d51e2557340ac22fc8ddb83406
 
 pkgname = r-rcsl
