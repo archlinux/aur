@@ -1,6 +1,6 @@
 pkgbase = r-metaneighbor
 	pkgdesc = Single cell replicability analysis
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MetaNeighbor
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-metaneighbor
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-upsetr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaNeighbor_1.26.0.tar.gz
-	sha256sums = 48be7439027d6093d128b25781b620c7a3605d0781c1e87ddff08f84dcecb6de
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MetaNeighbor_1.28.0.tar.gz
+	sha256sums = af6043e348097cb6f6d69e8ef168c9603227ff4183ef4b9dd6fc36c625fd6339
 
 pkgname = r-metaneighbor
