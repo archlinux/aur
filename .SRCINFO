@@ -6,6 +6,8 @@ pkgbase = v-editor-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = bash
+	optdepends = vi: fallback text editor
 	provides = v-editor
 	conflicts = v-editor
 	source = v-editor-git::git+https://github.com/egnrse/v-editor#branch=main
