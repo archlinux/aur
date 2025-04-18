@@ -4,6 +4,7 @@
 pkgname=wakeup-git
 pkgver=r54.49db7f6
 pkgrel=1
+epoch=1
 pkgdesc='A timer that will wake your system from suspend to RAM.'
 arch=('i686' 'x86_64')
 url="https://github.com/fogobogo/wakeup"
