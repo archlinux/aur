@@ -10,7 +10,7 @@
 _target=arm-linux-gnueabihf
 pkgname=${_target}-glibc-headers
 pkgver=2.41
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library headers"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -21,7 +21,7 @@ conflicts=("${_target}-glibc" "${_target}-eglibc")
 options=(!buildflags !strip !lto staticlibs)
 source=(https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz{,.sig}
         sdt.h sdt-config.h)
-validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
+validpgpkeys=(35B17DF5752577CA0C541CEB94BFDF4484AD142F # Andreas K. Huettel
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
 sha256sums=('a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
             'SKIP'
