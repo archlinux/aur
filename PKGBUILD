@@ -2,7 +2,7 @@
 pkgname=python-pinecil
 _name=${pkgname##python-}_lib
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A python interface for Pinecil V2 controls and settings."
 arch=('any')
 url="https://github.com/builder555/pinecil_lib"
