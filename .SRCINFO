@@ -1,11 +1,10 @@
 pkgbase = perl-getopt-long-descriptive
 	pkgdesc = Getopt::Long, but simpler and more powerful
 	pkgver = 0.116
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Getopt-Long-Descriptive
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-cpan-meta-check
 	checkdepends = perl-test-fatal
 	checkdepends = perl-test-warnings

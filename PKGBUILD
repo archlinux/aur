@@ -5,11 +5,11 @@
 
 pkgname=perl-getopt-long-descriptive
 pkgver=0.116
-pkgrel=2
+pkgrel=3
 pkgdesc="Getopt::Long, but simpler and more powerful"
 arch=('any')
 url="https://metacpan.org/dist/Getopt-Long-Descriptive"
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl' 'perl-params-validate' 'perl-sub-exporter' 'perl-getopt-long>=2.55')
 checkdepends=('perl-cpan-meta-check' 'perl-test-fatal' 'perl-test-warnings')
 source=("https://backpan.cpan.org/modules/by-authors/id/R/RJ/RJBS/Getopt-Long-Descriptive-${pkgver}.tar.gz")
