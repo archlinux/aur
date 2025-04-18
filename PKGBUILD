@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=masayloblockly-bin
 _pkgname=MasayloBlockly
-pkgver=1.2.0
+pkgver=2.0.0
 _electronversion=33
-pkgrel=2
+pkgrel=1
 pkgdesc="A humble Blockly based app to control an Arduino based robot as the Masaylo robot using jpfontaine's work with the marvelous Blocklino.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/agomezgar/masayloBlockly"
@@ -32,23 +32,23 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v2.1.0/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/agomezgar/masayloblockly/v2.1.0/LICENSE"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/agomezgar/masayloblockly/v2.1.0/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('06cdded5268887353ab5fd25145caad43be70830d16679d14f2767d41543ec17'
+sha256sums=('dbbe6016b0c23e8dd651c274d1a8125c389fb35e918e70ca734be0d6cd650a0f'
             '20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331'
             '33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
