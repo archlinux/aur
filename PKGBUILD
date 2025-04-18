@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop-git
-_pkgname="NVM Desktop"
-pkgver=4.0.4.r0.g67f735a
+_pkgname='NVM Desktop'
+pkgver=alpha.r1.g6c671d1
 _nodeversion=20
 pkgrel=1
 pkgdesc="A version management desktop client for the Nodejs."
@@ -14,7 +14,6 @@ provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
-    'libappindicator-gtk3'
 )
 makedepends=(
     'gendesk'
@@ -28,8 +27,8 @@ makedepends=(
     'patchelf'
 )
 source=(
-    "${pkgname%-git}.git::git+${url}.git"
-    "nvmd.git::git+${_nvmdurl}.git"
+    "${pkgname%-git}.git::git+${url}"
+    "nvmd.git::git+${_nvmdurl}"
 )
 sha256sums=('SKIP'
             'SKIP')
@@ -45,7 +44,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     # build nvmd
     cd "${srcdir}/nvmd.git"
@@ -71,13 +70,26 @@ build() {
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
             echo 'registry=https://registry.npmmirror.com'
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm tauri build -b deb
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    sed -i "/plugin-updater/d" package.json
+    sed -i "/updater/d" src-tauri/capabilities/default.json
+    sed -i "/tauri_plugin_updater/d" src-tauri/src/main.rs
+    sed -i "/tauri-plugin-updater/d" src-tauri/Cargo.toml
+    sed -i -e "
+        53,60d
+        /createUpdaterArtifacts/d
+        s/versions\.\",/versions\.\"/g
+    " src-tauri/tauri.conf.json
+    sed -i "s/\"deb\", \"rpm\"/\"deb\"/g" src-tauri/tauri.linux.conf.json
+    NODE_ENV=production     pnpm run build
 }
 package() {
     _sourcedir="${srcdir}/${pkgname%-git}.git/src-tauri/target/release/bundle/deb"
