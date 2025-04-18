@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ngsReports
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-truncnorm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3229a9d9554cc366b1095c3ba2118f84')
-b2sums=('3eaa04a5bb7c7cdc73698025f1b03f9298be211e474b2d3b1965067196e94c7fa8e8f6ac525d545d64c2d4d797cd3e6c300b640c7cf3a81f3a526c44f538ad52')
+md5sums=('f35d97b1f156d63f54709796fcd5c19a')
+b2sums=('0afd94bdd04b888730b2086ec90266ca32bf2902d441aff2e0a301a45cd90fd6479496dda83192c1e95da34fb0141f7203073476891a79db455310ce6e0d4d5a')
 
 build() {
   mkdir build
