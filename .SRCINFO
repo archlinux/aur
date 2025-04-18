@@ -1,6 +1,6 @@
 pkgbase = r-seqpattern
 	pkgdesc = Visualising oligonucleotide patterns and motif occurrences across a set of sorted sequences
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/seqPattern
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-seqpattern
 	optdepends = r-cager
 	optdepends = r-parallel
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqPattern_1.38.0.tar.gz
-	sha256sums = f5ab6b839ce9ae65b0239890e742fafe7e81712f8588453918f14c4f1da6ba05
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/seqPattern_1.40.0.tar.gz
+	sha256sums = fd78b403eb93064193573a8625f8c332e80aae766bf023e49f89827bd0dd52ea
 
 pkgname = r-seqpattern
