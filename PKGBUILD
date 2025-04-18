@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QSutils
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3aa765bb40d4a7eb359417b658873ab1')
-b2sums=('7ddcddefce83b132ec2f57581c91f9e9298f87fc92a58fafc23930583677869280e51e1e37d5e9e32bb4457f1e7d3b82669530a50a8b9b450eb96953b77b2871')
+md5sums=('7eb83fb76fe6d384d40cc4e72d79d01a')
+b2sums=('4a793bfd1f72a62d7333cf3ef9461fe142639aec0c752776c96eb5158672d918f9ca52c3dea580eb7c687306aa99944dafae048a34873882aca1388506385aeb')
 
 build() {
   mkdir build
