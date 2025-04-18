@@ -2,7 +2,7 @@
 
 pkgname=rook
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, stand-alone, headless secret service tool backed by a Keepass v2 database."
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://hg.sr.ht/~ser/rook"
@@ -49,6 +49,7 @@ package() {
   install      -Dm644 LICENSE           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install      -Dm644 README.md         "${pkgdir}/usr/share/doc/rook/README.md"
   install      -Dm644 CHANGELOG.md         "${pkgdir}/usr/share/doc/rook/CHANGELOG.md"
+  install      -Dm644 SECURITY.md         "${pkgdir}/usr/share/doc/rook/SECURITY.md"
   install      -Dm644 man1/*         -t "${pkgdir}"/usr/share/man/man1/
   # Install utility apps IFF the dependencies exist. Always return true.
 	(type rg && type xdotool && type xprop && type yad && type zsh && type rofi) > /dev/null \
