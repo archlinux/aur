@@ -1,13 +1,13 @@
 pkgbase = wurl
-	pkgdesc = Utility for fetching URIs with libcurl and a drop-in replacement for wget
-	pkgver = 0.0.1
+	pkgdesc = Utility for fetching URIs with libcurl and a drop-in replacement for wget (for the most common flags)
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/xyproto/wurl
 	arch = x86_64
 	license = MIT
 	provides = wget
 	conflicts = wget
-	source = https://github.com/xyproto/wurl/releases/download/v0.0.1/wurl-0.0.1.tar.gz
-	sha256sums = cfaa06a83e1de7cd7fdd54f907297bd378ac5ec42d632498ee5a98c855efe6f2
+	source = https://github.com/xyproto/wurl/releases/download/v0.0.2/wurl-0.0.2.tar.gz
+	b2sums = 24567413dbd32d6515aace3ddbd6d8a7410b5f27900d76a277d1607ec82e9b555e100e5e3b5f079bb268d133d1516eb9c64d7ce5decc0c67bf5990aded31fde1
 
 pkgname = wurl
