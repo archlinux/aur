@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OnassisJavaLibs
-_pkgver=1.29.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fe60eb8a03c2082b5e914ffe30d0b929')
-b2sums=('2e1bda515edec86193d5da41f7202fffa0ca0b706a8136d8368bc96eb938bf9f9f42e0d3bc16de17f1a4e85cbf9635a5b49a672c2b4fb93e73133d80df050aa6')
+md5sums=('c5fe7e6092d5a04464616e0bba56ac61')
+b2sums=('1c22454a2773ab07a5167adc8bbf9897ac82e0c7d74b3b9f865c6856cef12c2d41d93c6a0eb3168e43519c7656937bfb20dc4d46f9b03d7f53a7c18ea7e7f143')
 
 build() {
   mkdir build
