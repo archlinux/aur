@@ -1,12 +1,12 @@
-# Maintainer: xeruf <27jf at pm dot me>
+# Contributor: melonion <aur at melonion dot me>
 
 _pkgname='batstat'
 pkgname="${_pkgname}-git"
-pkgver=r14.c04f124
+pkgver=r33.12b1cf4
 pkgrel=1
 pkgdesc='CLI Battery Status'
 arch=('any')
-url="https://github.com/xeruf/${_pkgname}"
+url="https://github.com/Juve45/${_pkgname}"
 license=('unknown')
 depends=()
 provides=("${_pkgname}")

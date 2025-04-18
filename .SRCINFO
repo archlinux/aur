@@ -1,13 +1,13 @@
 pkgbase = batstat-git
 	pkgdesc = CLI Battery Status
-	pkgver = r14.c04f124
+	pkgver = r33.12b1cf4
 	pkgrel = 1
-	url = https://github.com/xeruf/batstat
+	url = https://github.com/Juve45/batstat
 	arch = any
 	license = unknown
 	provides = batstat
 	conflicts = batstat
-	source = git+https://github.com/xeruf/batstat
+	source = git+https://github.com/Juve45/batstat
 	sha512sums = SKIP
 
 pkgname = batstat-git
