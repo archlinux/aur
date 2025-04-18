@@ -1,0 +1,18 @@
+pkgbase = trasher-bin
+	pkgdesc = A small command-line utility to replace 'rm' with a portable trash directory system
+	pkgver = 4.4.1
+	pkgrel = 1
+	url = https://github.com/ClementNerma/Trasher
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = Trasher
+	conflicts = Trasher
+	source = README-4.4.1.md::https://raw.githubusercontent.com/ClementNerma/Trasher/v4.4.1/README.md
+	sha256sums = 212b77d4230f46c59c30453b714045274d85ee91c313161ee72dad2617d46c79
+	source_x86_64 = trasher-bin-x86_64-4.4.1.tgz::https://github.com/ClementNerma/Trasher/releases/download/v4.4.1/trasher-x86_64-unknown-linux-musl.tgz
+	sha256sums_x86_64 = 09248aa9fb1ca593b6773baa9b9aa52c2e02495226f18c630e3eb88cded5c5b5
+	source_aarch64 = trasher-bin-aarch64-4.4.1.tgz::https://github.com/ClementNerma/Trasher/releases/download/v4.4.1/trasher-x86_64-unknown-linux-musl.tgz
+	sha256sums_aarch64 = 09248aa9fb1ca593b6773baa9b9aa52c2e02495226f18c630e3eb88cded5c5b5
+
+pkgname = trasher-bin
