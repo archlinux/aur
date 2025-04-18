@@ -2,7 +2,7 @@
 pkgname=less-reader-git
 _pkgname='Less Reader'
 _zhsname='简阅'
-pkgver=0.0.3.r2.gd3e7545
+pkgver=0.0.5.r0.gdbdfe9c
 _electronversion=35
 _nodeversion=20
 pkgrel=1
