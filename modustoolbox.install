@@ -1,9 +1,9 @@
 post_install() {
-    echo "Running post-install script..."
+    echo "Running post-install/upgrade script..."
 
     # Define ModusToolbox location as the parent to resources_x.y.z folder
     PRODUCT_HOME="/opt/ModusToolbox"
-    SHORT_VERSION="3.4"
+    SHORT_VERSION="3.5"
     cd ${PRODUCT_HOME}/resources_${SHORT_VERSION}.0
     # Path to resources_x.y.z folder
     SCRIPTS_DIR="."
@@ -21,4 +21,8 @@ post_install() {
         echo "export CY_TOOLS_PATHS=${PRODUCT_HOME}/tools_${SHORT_VERSION}" > "${SCRIPTS_DIR}/set_env_var.sh"
         install -Dm644 "${SCRIPTS_DIR}/set_env_var.sh" "/etc/profile.d/modustoolbox_${SHORT_VERSION}.sh"
     fi
+}
+
+post_upgrade() {
+    post_install
 }

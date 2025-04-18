@@ -3,11 +3,18 @@
 # Contributor: Henri van de Munt <(firstname) @ gmail.com>
 # Contributor: KafCoppelia <k740677208@gmail.com>
 
+# BUILD INSTRUCTIONS:
+#
+# 1. Go to https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolbox and login with your Infineon account.
+# 2. Click on "Download" and download the current version
+# 3. Download the .deb package and place it in the same directory as the PKGBUILD
+# 4. Build
+
 _pkgname=ModusToolbox
 pkgname=modustoolbox
-_pkgver=3.4
-pkgver=${_pkgver}.0.17114
-pkgrel=2
+_pkgver=3.5
+pkgver=${_pkgver}.0.17527
+pkgrel=1
 pkgdesc="A set of multi-platform development tools and a comprehensive suite of GitHub-hosted firmware libraries. \
     Together, they enable an immersive development experience for customers creating converged MCU and Wireless systems."
 arch=('x86_64')
@@ -21,7 +28,7 @@ provides=("modustoolbox")
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolbox"
 _source="${pkgname}_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('e07bfcfba414632171ca5757a83d9ff1e3aca906a045560cc625458944affc4d')
+sha256sums=('8d1f66cb644efd7c4989c782d5cd538cb21a7c021b7d8af50749343a3dae1ecf')
 options=('!strip')
 install="${pkgname}.install"
 
