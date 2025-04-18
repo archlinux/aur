@@ -9,7 +9,7 @@ pkgbase = calibre-bin
 	conflicts = calibre
 	conflicts = calibre-git
 	source = share.tar.xz
-	source = https://github.com/kovidgoyal/calibre/releases/download/8.3.0/calibre-8.3.0-x86_64.txz
+	source = https://github.com/kovidgoyal/calibre/releases/download/v8.3.0/calibre-8.3.0-x86_64.txz
 	sha256sums = c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a
 	sha256sums = e97170bb842b2aab9fc117fe5b23f5bf95bacfdd803d869f664a66cc3132fce2
 

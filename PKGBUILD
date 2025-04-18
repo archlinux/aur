@@ -19,7 +19,7 @@ provides=(calibre)
 #   we'll provide them here
 source=(
 	share.tar.xz
-	$url/releases/download/${pkgver}/calibre-${pkgver}-x86_64.txz
+	$url/releases/download/v${pkgver}/calibre-${pkgver}-x86_64.txz
 )
 
 # Checksums
