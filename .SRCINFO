@@ -1,14 +1,13 @@
 pkgbase = palgen
 	pkgdesc = Extract palettes and convert PNG files from True color to indexed
-	pkgver = 1.0.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/xyproto/palgen
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = go
-	makedepends = upx
-	source = git+https://github.com/xyproto/palgen#commit=0c51a212e6619ceb6a59a4511c3f772538cdcaf4
-	b2sums = SKIP
+	source = git+https://github.com/xyproto/palgen#tag=v1.6.0
+	b2sums = 27b01e63f721f3107d0408b364bb91018cbbffe7cf8dd05e3f03dd866f3b294317df78838f1554fc7cb1d7432373bb1ea570f9402ddc1bb27f2f077ca8481827
 
 pkgname = palgen
