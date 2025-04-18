@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNORdt
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Add-on to CellNOptR: Discretized time treatments'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   r-cellnoptr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a9fd5c220b0dd43ff2e3cce716cd4d0ec35952b559472e3b535c568605de6937')
+sha256sums=('bbd6dbeb0a8f160eae2bf097e3920ee1ffd022e74b5b1887e0de14b3fc7aac05')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
