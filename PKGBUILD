@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pwalign
-_pkgver=1.2.0
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('02e773c9593e0e9c8ce0b9b7bde3bdae')
-b2sums=('2b847d741a2a70732b9adc947073ad0f970c2d56430f92becc0d006ded77fe0bac025d2b0047e0967e4cbd7ff513918e18065de5c8fdef47e82d3436de91c3e3')
+md5sums=('d2d93512406dd4f34b29639020af6c7b')
+b2sums=('b4dde0498e92f310998099f0207d338f64ade6ac14045bae369c454f8718d38f42b2046c6e5aaf0e89ec15701e485f7a60c2ab04f69fed616d07f1a8de1dfbc1')
 
 build() {
   mkdir build
