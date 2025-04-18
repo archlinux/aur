@@ -1,0 +1,4 @@
+[python-ydata-profiling]
+source = "git"
+git = "https://github.com/ydataai/ydata-profiling.git"
+prefix = "v"
