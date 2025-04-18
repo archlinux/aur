@@ -1,7 +1,7 @@
 pkgbase = polymc
 	pkgdesc = Minecraft launcher with the ability to manage multiple instances
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PolyMC/PolyMC
 	arch = x86_64
 	license = GPL3
@@ -24,6 +24,8 @@ pkgbase = polymc
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	source = https://github.com/PolyMC/PolyMC/releases/download/7.0/PolyMC-7.0.tar.gz
+	source = fix-qt-debug.patch
 	sha256sums = e08e9a25f87db7da422351d044b330e4b1a568f3adabc04c388dc9e4f60c4701
+	sha256sums = 002ad2ec901c2eae3a7fca6e4257ef3e545beaf93ffb0baffb2d72a86423a7f2
 
 pkgname = polymc

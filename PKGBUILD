@@ -9,7 +9,7 @@
 
 pkgname=polymc
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with the ability to manage multiple instances"
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -22,8 +22,14 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
-sha256sums=('e08e9a25f87db7da422351d044b330e4b1a568f3adabc04c388dc9e4f60c4701')
+source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz" 'fix-qt-debug.patch')
+sha256sums=('e08e9a25f87db7da422351d044b330e4b1a568f3adabc04c388dc9e4f60c4701'
+            '002ad2ec901c2eae3a7fca6e4257ef3e545beaf93ffb0baffb2d72a86423a7f2')
+
+prepare() {
+  cd "$srcdir/PolyMC-$pkgver"
+  patch -p1 < "$srcdir/fix-qt-debug.patch"
+}
 
 build() {
   cmake -B build -S PolyMC-$pkgver \

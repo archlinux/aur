@@ -1,0 +1,38 @@
+From 0dc124d636d76692b1e2c01050743dd87dc78a05 Mon Sep 17 00:00:00 2001
+From: Kaydax <kaydax@kaydax.xyz>
+Date: Sat, 15 Feb 2025 10:49:10 -0500
+Subject: [PATCH] Fix compiling for Qt 6.9.0 (Nice)
+
+---
+ launcher/meta/JsonFormat.h                             | 6 ++++++
+ launcher/minecraft/launch/ConfigureAuthlibInjector.cpp | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/launcher/meta/JsonFormat.h b/launcher/meta/JsonFormat.h
+index 93217b7e06..56766eadb3 100644
+--- a/launcher/meta/JsonFormat.h
++++ b/launcher/meta/JsonFormat.h
+@@ -80,4 +80,10 @@ void serializeRequires(QJsonObject & objOut, RequireSet* ptr, const char * keyNa
+ MetadataVersion currentFormatVersion();
+ }
+ 
++// HACK: Qt needs the items of container metatypes to be QDebug-able so just implement it to do nothing since we dont actually use it
++inline QDebug operator<<(QDebug debug, const Meta::Require &set)
++{
++    return debug;
++}
++
+ Q_DECLARE_METATYPE(std::set<Meta::Require>)
+diff --git a/launcher/minecraft/launch/ConfigureAuthlibInjector.cpp b/launcher/minecraft/launch/ConfigureAuthlibInjector.cpp
+index ceb3d72f34..ae86acfdee 100644
+--- a/launcher/minecraft/launch/ConfigureAuthlibInjector.cpp
++++ b/launcher/minecraft/launch/ConfigureAuthlibInjector.cpp
+@@ -31,7 +31,7 @@ void ConfigureAuthlibInjector::executeTask()
+         Net::Download::makeCached(QUrl("https://authlib-injector.yushi.moe/artifact/latest.json"), entry, Net::Download::Option::NoOptions);
+     m_job->addNetAction(latestJsonDl);
+     connect(m_job.get(), &NetJob::succeeded, this, [this, entry, downloadFailed] {
+-        QFile authlibInjectorLatestJson = entry->getFullPath();
++        QFile authlibInjectorLatestJson{entry->getFullPath()};
+         authlibInjectorLatestJson.open(QIODevice::ReadOnly);
+         if (!authlibInjectorLatestJson.isOpen())
+             return emitFailed(QString("Failed to open authlib-injector info json: %1").arg(authlibInjectorLatestJson.errorString()));
