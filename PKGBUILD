@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GeoTcgaData
-_pkgver=2.6.0
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e666c601fc82d083681c9a74e6f43bd6')
-b2sums=('4b95046bc60e96d4c0310d3b8d635701df8c8d5b01e8ee3d863dbcbf4219607a139c01c1cc10781aadcef2df0f1b9deab4e3c3e58172c62ab5f6cb813b0e6e55')
+md5sums=('378109372ff0e30f980d42dbd16b83bc')
+b2sums=('9a56aef5ca0a10b7913e177ceaf2e445ae92d7101b1cd15eec61be8f511a6dfbb7151df8617473ad001d6c581f5b62abccf2d78f0de7f42cc923178b25f604dd')
 
 build() {
   mkdir build
