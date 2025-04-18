@@ -1,6 +1,6 @@
 pkgbase = python-ipfsspec
 	pkgdesc = readonly implementation of fsspec for IPFS
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/fsspec/ipfsspec
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = python-ipfsspec
 	makedepends = python-setuptools-scm>=8
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/i/ipfsspec/ipfsspec-0.5.3.tar.gz
-	md5sums = 0ac662c4beb17c68190b54112431e924
+	source = https://files.pythonhosted.org/packages/source/i/ipfsspec/ipfsspec-0.6.0.tar.gz
+	md5sums = e2d15216b1e572b0ea41e53d6b115b3b
 
 pkgname = python-ipfsspec
-	depends = python>=3.8
-	depends = python-fsspec>=0.9.0
+	depends = python>=3.9
+	depends = python-fsspec>=2024.12.0
 	depends = python-requests
 	depends = python-aiohttp
 	depends = python-aiohttp-retry

@@ -4,7 +4,7 @@ pkgbase=python-ipfsspec
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="readonly implementation of fsspec for IPFS"
 arch=('any')
@@ -18,11 +18,12 @@ makedepends=('python-setuptools-scm>=8'
 ##             'python-pytest-xdist'
 #              'python-fsspec'
 #              'python-aiohttp-retry'
+#              'python-dag-cbor'
 #              'python-multiformats'
 #              'python-pure-protobuf2'
 #              )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0ac662c4beb17c68190b54112431e924')
+md5sums=('e2d15216b1e572b0ea41e53d6b115b3b')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -39,8 +40,8 @@ build() {
 #}
 
 package_python-ipfsspec() {
-    depends=('python>=3.8'
-             'python-fsspec>=0.9.0'
+    depends=('python>=3.9'
+             'python-fsspec>=2024.12.0'
              'python-requests'
              'python-aiohttp'
              'python-aiohttp-retry'
