@@ -1,0 +1,3 @@
+[python-hstspreload]
+source = "pypi"
+pypi = "hstspreload"
