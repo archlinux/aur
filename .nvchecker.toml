@@ -1,0 +1,4 @@
+[python-mwparserfromhell-git]
+source = "git"
+git = "https://github.com/earwig/mwparserfromhell.git"
+prefix = "v"
