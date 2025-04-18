@@ -1,7 +1,7 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r513.fe5c7d7
+pkgver=1.0.r520.5127179
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
@@ -12,7 +12,6 @@ groups=()
 makedepends=(pandoc git)
 checkdepends=()
 optdepends=(
-  'emacs: editor for dm-confedit'
   'didyoumean: used by dm-dictionary'
   'translate-shell: used by dm-dictionary'
   'libnotify: used by dm-logout'
@@ -23,7 +22,6 @@ optdepends=(
   'timidity++: used by dm-music'
   'wildmidi: used by dm-music'
   'qutebrowser: used by dm-bookman'
-  'reddio: used by dm-reddit'
   'yad: used by dm-reddit and dm-weather'
   'slock: used by dm-logout'
   'imv: the default image viewer used by dm-setbg, supports wayland'
