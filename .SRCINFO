@@ -12,6 +12,6 @@ pkgbase = drg_mod_integration-notag-bin
 	source = https://github.com/Strappazzon/drg-mint-notag/releases/download/v0.2.13/mint-notag-linux-x86_64.tar.xz
 	source = drg_mod_integration.desktop
 	sha256sums = 1279c8cfa18562869d465abbef3bda5e0f0a83330e7f66b1b3958d6430faf52f
-	sha256sums = SKIP
+	sha256sums = 1d5630a17ac4c362a398b1a71b16a2a5cff451b4095861f735805ae08f3ac328
 
 pkgname = drg_mod_integration-notag-bin

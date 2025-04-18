@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
     '1279c8cfa18562869d465abbef3bda5e0f0a83330e7f66b1b3958d6430faf52f'
-    'SKIP'  
+    '1d5630a17ac4c362a398b1a71b16a2a5cff451b4095861f735805ae08f3ac328'
 )
 package() {
     cd "$srcdir/drg_mod_integration-x86_64-unknown-linux-gnu"
