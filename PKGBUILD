@@ -1,3 +1,5 @@
+# Maintainer: Alex Potapenko <opotapenko@gmail.com>
+
 pkgname=calibre-bin
 pkgver=8.3.0
 pkgrel=1
