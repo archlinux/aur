@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mslp
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d1daaf0f5a6170eed32cc5462d94ee47')
-b2sums=('c0d0bd0dac33da70ec91c571e8394d1b9c8de73ee73cf44c297fde51dc47a833a5bf5c638befbbe794365e731b00f9552352a278abbbe180ca5fa21c115593e9')
+md5sums=('b313735242049c36379346eae3f6b17d')
+b2sums=('30c291548850a7f3c70375655bcf0516ac4b311fe044a55e3358a797b7262b8c24c7fcf2a7e7caf3befa9cc421833e8e2531e66e91c1d6a306d5977709a2359f')
 
 build() {
   mkdir build
