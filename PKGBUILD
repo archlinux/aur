@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BRAIN
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Baffling Recursive Algorithm for Isotope distributioN calculations'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-polynomf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('057d1db490c806afa5c37d2f2daa8a04cb1807192a4e6c02b13143a1fa747dc3')
+sha256sums=('f03f51271cac3ab151b816c4c508072794101f1ff453033123a6a4d6d32fed87')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
