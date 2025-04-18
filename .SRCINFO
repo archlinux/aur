@@ -1,6 +1,6 @@
 pkgbase = python-gguf
 	pkgdesc = for writing binary files in the GGUF (GGML Universal File) format.
-	pkgver = 0.14.0
+	pkgver = 0.16.0
 	pkgrel = 3
 	url = https://ggml.ai/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-gguf
 	makedepends = python-poetry
 	depends = python
 	depends = python-sentencepiece
-	source = https://files.pythonhosted.org/packages/source/g/gguf/gguf-0.14.0.tar.gz
-	sha256sums = d9996f197a777831cf9e01efac24cbfa817787375305b8c4ee16074778e2bce8
+	source = https://files.pythonhosted.org/packages/source/g/gguf/gguf-0.16.0.tar.gz
+	sha256sums = c003a93bd0db0fedcd61054186016133c591d89f32aa78185067c17b674e137a
 
 pkgname = python-gguf
