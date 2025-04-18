@@ -1,20 +1,21 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=aget
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='Minimalistic AUR helper'
 arch=(x86_64)
 url='https://github.com/xyproto/aget'
 license=(BSD)
 depends=(git)
 makedepends=(go)
-source=("git+$url#commit=b98582af99200e1de6db010a9aa49e0cd6d9f027") # tag: 1.3.3
-b2sums=(SKIP)
+source=("git+$url#tag=v$pkgver")
+b2sums=('8446c06ad85ee7e98c1475799b15d79dc8ed57640c47c71174f864730b9ce18496635550105e6223b33772c84328dfd065fce2dd52a643b1a0b108ce58294667')
 
 build() {
   cd $pkgname
-  go build -v -mod=vendor -trimpath -buildmode=pie -ldflags "-s -w -linkmode=external -extldflags=$LDFLAGS"
+  export LDFLAGS="$(echo $LDFLAGS | sed 's/ -Wl//g;s/,--sort-common//')"
+  go build -buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags="-s -w -linkmode=external -extldflags '$LDFLAGS'"
 }
 
 package() {
