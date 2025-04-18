@@ -3,7 +3,7 @@
 
 pkgname=plank-reloaded-git
 pkgver=0.11.119
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of the original Plank project, providing a simple dock for X11 desktop environments'
 arch=('x86_64')
 url='https://github.com/zquestz/plank-reloaded'
@@ -13,7 +13,7 @@ depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus'
 makedepends=('gnome-common' 'git' 'intltool' 'vala' 'meson' 'ninja')
 provides=('plank')
 conflicts=('plank')
-source=('git+https://github.com/zquestz/plank-reloaded.git#branch=max-zoom')
+source=('git+https://github.com/zquestz/plank-reloaded.git')
 sha256sums=('SKIP')
 
 pkgver() {
