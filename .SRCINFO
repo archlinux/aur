@@ -1,6 +1,6 @@
 pkgbase = r-mbpcr
 	pkgdesc = Bayesian Piecewise Constant Regression for DNA copy number estimation
-	pkgver = 1.60.0
+	pkgver = 1.62.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mBPCR
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-mbpcr
 	depends = r-gwastools
 	depends = r-oligoclasses
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mBPCR_1.60.0.tar.gz
-	sha256sums = 92ec26d505cca72bbd9e70bcaa49ac9afbde44f29dfdaccc33cc8a08e1563bfb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mBPCR_1.62.0.tar.gz
+	sha256sums = ade3ca919b893248a9b5493efebb0d65d1c8548fff01cbeb30df605ffad0996b
 
 pkgname = r-mbpcr
