@@ -1,16 +1,16 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-bin
-pkgver=2.8.3
-_build=18762
-_oclcommit=470cf0018e1ef6fc92eda1356f5f31f7da452abc
+pkgver=2.10.8
+_build=18926
+_oclcommit=58242977b4092cf5eb94a10dd144691c12c87001
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
 arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'Apache-2.0 WITH LLVM-exception')
-depends=('gcc-libs' 'zlib')
+depends=('gcc-libs' 'glibc' 'zlib' 'zstd')
 makedepends=('git')
 provides=('intel-graphics-compiler' 'intel-opencl-clang')
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
@@ -23,10 +23,10 @@ source=("https://github.com/intel/intel-graphics-compiler/releases/download/v${p
 noextract=("intel-igc-core-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
            "intel-igc-opencl-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}+${_build}_amd64.deb")
-sha256sums=('ea74557a16f0f4d5e6de6facf01924f83dbb84405ec1c4238c49e35e62a731ae'
-            '679e3fe1e101237dbdff76c6a99563922dd9d27ccf5440d2290944c21c85351a'
-            'c8d8e1a4ba569b4fa87e4f858081cee422edec5f2650c75128ea3af8dc14fb33'
-            '19214ef9956892960ebd10c91f13cde103ccd270aa4681bdeeb048eb500cd165'
+sha256sums=('85bb185f5c9f0700321c6ce9362a4aa85b6cdf02f74a7b8685424d0be024fb0e'
+            '21e5ee9f0b5798335d82a88f98e80bccd9539380782e60893d6d050eb801d322'
+            '99c68e77aa2e9f27b98173abd88df3fbe6cb68138c8af55eae43b417dea791cb'
+            'cc4961a1701dc241d9a3c8c7f0d9a1ab8302f6f70b3df036e73313c32bf551f2'
             '72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716')
 
 prepare() {
