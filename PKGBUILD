@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IgGeneUsage
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0432bed8882294ef0ac0747430bbd02a')
-b2sums=('7e0570c66b9c5f270715a066c40d518bf2d72c5668659abf77aaa183098ff333a638a207f32acf1d0924a97bf1186f2dec7e7128ba0f99cb153dc3eec6d49571')
+md5sums=('45fd335257bb1b7c2382d1883392b952')
+b2sums=('e44ad58452f861eb710336ef76109f5beeccd301c327d49ed8f97c49b6d0040ffa6b714fd0c9832e1c8daeace1f9eaca1b247853dc32a4ae1144ad4a98c8d667')
 
 build() {
   mkdir build
