@@ -3,8 +3,8 @@
 
 pkgname=vutronmusic-bin
 _pkgname=VutronMusic
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.6
+pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示"
 arch=('x86_64')
 url="https://github.com/stark81/VutronMusic"
@@ -26,10 +26,10 @@ makedepends=(
   'gendesk'
 )
 source=(
-  "${pkgname}_${pkgver}.deb::${url}/releases/download/v${pkgver}/VutronMusic.${pkgver}_amd64.deb"
+  "${pkgname}_${pkgver}.deb::${url}/releases/download/v${pkgver}/VutronMusic-${pkgver}_linux_amd64.deb"
 )
 sha256sums=(
-  '9dd16e042fe54fcd45b2ee9442cdcd94028e2caa00ff4e553ca60286ac3e8faa'
+  '6274951a2b26ba344626dc46f150f4453bc8418b81b3461f95f49b29adf47068'
 )
 
 package(){
