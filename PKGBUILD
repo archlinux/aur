@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cleaver
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Cleavage of Polypeptide Sequences'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-uniprot.ws
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('be432251f50f186118e676d2cfa1db12d011eede5108f4f36659b57fba2cea03')
+sha256sums=('fb64a53b347aa8daec99b5f74d14b52a6fb81cae24af6c48a2dcbb807bd22d2f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
