@@ -1,6 +1,6 @@
 pkgbase = r-idiogram
 	pkgdesc = idiogram
-	pkgver = 1.82.0
+	pkgver = 1.84.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/idiogram
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-idiogram
 	optdepends = r-golubesets
 	optdepends = r-hgu95av2.db
 	optdepends = r-hu6800.db
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/idiogram_1.82.0.tar.gz
-	sha256sums = 5c14dd925de3123cb578ec5a81a1a085f1cb31b0db7188b10c902f61468b9ac6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/idiogram_1.84.0.tar.gz
+	sha256sums = 80062448838f94f5121f2d740c621bd66683ec06f9b985255863679f6a744dfd
 
 pkgname = r-idiogram
