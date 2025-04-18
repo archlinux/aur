@@ -1,7 +1,7 @@
 # Maintainer: baboon
 
 pkgname="xenia-canary-bin"
-pkgver=7298536
+pkgver=5d5eb03
 pkgrel=1
 pkgdesc="Xenia Canary is an experimental fork of the Xenia emulator. "
 arch=('x86_64')
