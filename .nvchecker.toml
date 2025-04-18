@@ -1,0 +1,3 @@
+[python-streamlit-aggrid]
+source = "pypi"
+pypi = "streamlit_aggrid"
