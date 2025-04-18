@@ -1,7 +1,7 @@
 pkgbase = arm-linux-gnueabihf-glibc
 	pkgdesc = GNU C Library
 	pkgver = 2.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = arm-linux-gnueabihf-glibc
 	source = sdt.h
 	source = sdt-config.h
 	source = xldd
-	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
+	validpgpkeys = 35B17DF5752577CA0C541CEB94BFDF4484AD142F
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
 	sha256sums = a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901
 	sha256sums = SKIP
