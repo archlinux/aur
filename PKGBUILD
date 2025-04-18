@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=1.29.3
+pkgver=1.29.5
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="📱 Graphical Scrcpy to display and control Android, devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
+pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/viarotel-org/escrcpy"
+url="https://escrcpy.viarotel.eu.org/"
+_ghurl="https://github.com/viarotel-org/escrcpy"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
@@ -25,10 +26,10 @@ makedepends=(
     'git'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9f1f08cd0136410958f3a5bd2ec9f60591e9ce04dc2ad4ce16f027ca8a1d01f4'
+sha256sums=('9c38cd3542f89fa9f8e2d28f9affc3106706d7aecb022e2ce6a30afc0ed7b95d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
