@@ -1,11 +1,11 @@
 # Maintainer: Martin Kröner <aur@kroner.dev>
 
-qbittorrent_version=5.0.3
+qbittorrent_version=5.0.5
 libtorrent_version=2.0.11
 
 pkgname=qbittorrent-nox-static-bin
 pkgver="${qbittorrent_version}_v${libtorrent_version}"
-pkgrel=2
+pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++. Without GUI. Static binary."
 url="https://github.com/userdocs/qbittorrent-nox-static"
 license=("GPL3")
@@ -17,9 +17,9 @@ source=(
 	"qbittorrent-nox::https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-${pkgver}/x86_64-qbittorrent-nox"
 	"qbittorrent-nox@.service::https://raw.githubusercontent.com/qbittorrent/qBittorrent/refs/tags/release-${qbittorrent_version}/dist/unix/systemd/qbittorrent-nox%40.service.in"
 )
-sha256sums=('21272b1a13f63fbc82611a3bbfcc5067e2e1f20530f59aa354cdeb9c4edcfe2a'
+sha256sums=('22b167e8414d46c3d72d54807959e85957a7178effed3add0c7880f2fceb3964'
 	'cad6f76111bfbcfbb7ed46ae2bc46557636905418e9c055c106fdc61bfd0c7a3')
-sha512sums=('3214209f1d5e2ffabbae8085dfbdf9e45fb88af415b270bfd820c9c82f6ac9635c6278b75f6d8f83e6255a5a69ed5866bd025b6dcd6f8d0483e292ccfc053405'
+sha512sums=('adccd205256ad10e8b2c5d56f98ab750a10b2a4c05e97ef28e941d565b1f463157cc4163dfe783d339205931b99f8c083f3d098c23cb970d6397814ac32b9b56'
 	'e4c5c99fff4f48ab82a8790d2c5f73a80b099f368b541530dcd740f72a0870087d98031947e585296b7d0494fcd67394473929be2b5deca952bdc7d92fb8b091')
 
 package() {
