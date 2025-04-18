@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sigFeature
-_pkgver=1.24.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='sigFeature: Significant feature selection using SVM-RFE & t-statistic'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('19a5b2e154d8b498ab91baabb4007f27528183e1b3edb29d32c1802887d8eee2')
+sha256sums=('1b19cea229485bdc9dea65fa8946db4091f62f24f4d3a52893a2b4ffb2259807')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
