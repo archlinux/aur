@@ -2,14 +2,12 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Sam L. Yes <samlukeyes123@gmail.com>
 
-: ${_commit:=c3f386aa279b130b37a4a4e91e758c7f02ec898c} # 0.9.3.r5
-
 _pkgname="python-retry"
 pkgname="$_pkgname"
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 pkgdesc="Easy to use retry decorator"
-url="https://github.com/invl/retry"
+url="https://github.com/eSAMTrade/retry"
 license=('Apache-2.0')
 arch=('any')
 
@@ -25,9 +23,10 @@ optdepends=(
   'python-decorator: preserves function signatures'
 )
 
-_pkgsrc="retry-$_commit"
-source=("$pkgname-$pkgver-${_commit::7}.tar.gz"::"$url/archive/$_commit.tar.gz")
-sha256sums=('855a6bb05942ff94eb5f0240ff7ad2aef7db5bd0749c352d1dcbc9f5c0c8675e')
+_pkgsrc="retry-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
+sha256sums=('1538899bb054de81782622f041aedc928c87f253db8167574d70406d913ecac9')
 
 prepare() {
   install -Dm644 /dev/stdin "$_pkgsrc/setup.py" << END
