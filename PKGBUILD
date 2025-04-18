@@ -1,22 +1,23 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=letmein
-pkgver=10.0.1
+pkgver=10.1.0
 pkgrel=1
 pkgdesc='Authenticating port knocker'
 arch=(i686 x86_64 armv7h aarch64)
 url='https://github.com/mbuesch/letmein'
 license=(Apache-2.0 MIT)
-makedepends=(cargo)
+makedepends=(cargo mold)
 depends=(glibc gcc-libs nftables)
 install=$pkgname.install
 backup=(etc/letmein.conf etc/letmeind.conf)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('7423a5b900508031034f3ed800685c7b0fa667ccbacf5df9c578d36b10e35036')
+sha256sums=('96416961c30e0a15fd6d6205618a926fef267bf555ab12ca06bbcae2795840b1')
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=mold"
 
   cd $pkgname-$pkgname-$pkgver
   cargo build --release --locked
@@ -25,6 +26,7 @@ build() {
 check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export RUSTFLAGS="${RUSTFLAGS:-} -C link-arg=-fuse-ld=mold"
 
   cd $pkgname-$pkgname-$pkgver
   cargo test --locked
