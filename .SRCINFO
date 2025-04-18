@@ -1,10 +1,10 @@
 pkgbase = cxx
 	pkgdesc = Compile C++ code by detecting flags and includes automatically
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/xyproto/cxx
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = git
 	depends = scons
 	optdepends = ccache: For faster builds
@@ -16,7 +16,7 @@ pkgbase = cxx
 	optdepends = mingw-w64-gcc: For compiling 64-bit Windows executables
 	optdepends = valgrind: For tracing calls and profiling
 	optdepends = wine: For running 64-bit Windows exectuables
-	source = git+https://github.com/xyproto/cxx#commit=04089a3162e1aa184970dea1336c4f73ba9fe738
-	b2sums = SKIP
+	source = git+https://github.com/xyproto/cxx#tag=3.3.3
+	b2sums = 6a69a4ceccd2ec4c8d0cb00288398ec6243c803f9b40bedf16fa5b00a5bf3ef386d2e7cc6c7a3c7ce18ed95a49ec80301f90f90ac2b05b4589d0bc0c56189bd8
 
 pkgname = cxx
