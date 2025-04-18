@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xresconv-gui-bin
-pkgver=2.4.1
-_electronversion=25
-pkgrel=7
-pkgdesc="批量转表工具的GUI版本,依赖electron"
+pkgver=2.5.2
+_electronversion=32
+pkgrel=1
+pkgdesc="批量转表工具的GUI版本,依赖electron.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'armv7h'
@@ -28,19 +28,25 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898'
-            '7e00e3bdc3fa297143a39b09ad56a7be6b60ca29591156dc4eaf55e8c76f8e07'
-            '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
-sha256sums_aarch64=('6faa1b3ffdd26df957ff6b88a44031dff85a41609918c753e5f7461673490643')
-sha256sums_armv7h=('764344ac701ef894e19c1598b15c83a7b54c799022b2a6fd4f45526bce54586d')
-sha256sums_x86_64=('cab293d47e071684823f8567246cf8423439ca7908c35b95e4611961aa0062eb')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|${pkgname%-bin}|g" \
-        -e "s|@options@||g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+            '67c0ebf08bd9e9577c8c204a347d937cae064f2c80268a9abcb1afc96b1209c4'
+            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums_aarch64=('913c8a74aa52e24d0e2f4ea0d429fea7a3f4a5ed77b8018f3d44e3f6f148dc2f')
+sha256sums_armv7h=('10a37797b48cbae48cabad952aaedf34253a83eecc48e3f9a81928b4bc003c04')
+sha256sums_x86_64=('fe9219f0920b1b621e09aef3d2fd29ee1711791bbc911fb320b6fc590385f716')
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname%-bin}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
