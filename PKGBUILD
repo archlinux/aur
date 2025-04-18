@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
 arch=('x86_64')
 url="https://vieb.dev"
-license=('GPL3')
+license=('GPL-3.0')
 depends=('c-ares'
   'ffmpeg'
   'gtk3'
