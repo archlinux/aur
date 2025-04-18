@@ -1,0 +1,10 @@
+[Unit]
+Description=Arch Update Notifier
+
+[Service]
+ExecStart=/usr/bin/arch-update-notifier
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=default.target
