@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=triplex
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Search and visualize intramolecular triplex-forming sequences in DNA'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f842e3b7fde5517e31265529ca3075698b37d4da80f5f62ec5ad7322ffbadcb')
+sha256sums=('5b8fefd420c05821d36f89752eaf0d9411c848ae06c6fb03a638c28c8d6accc7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
