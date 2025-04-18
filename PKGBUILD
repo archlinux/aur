@@ -2,7 +2,7 @@
 
 pkgname=ruby-bake-modernize
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically modernize parts of your project/gem'
 arch=(any)
 url='https://github.com/ioquatix/bake-modernize'
