@@ -1,6 +1,6 @@
 # template start; name=systemd-git; version=1.0;
 # template start; name=base; version=1.0;
-# Maintainer: Xenhat Hex (aur@xenh.at)
+# Maintainer: XenHat <aur@xenh.at>
 # Contributor: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Rye Mutt
 #
