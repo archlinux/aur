@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GenomAutomorphism
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8974d9a99cb8fb48a5433026fca4334b')
-b2sums=('56325fec1bbdf3b5ad55ec09cc6e3be1e10fc34002019e4abe23e8c848ef9546798372ea8b5c95bb3d7d4a16ddf2964f2469aa574823db58550dd18c261ec8d5')
+md5sums=('52ceb7627ca1d85ba0fc37a3461b393f')
+b2sums=('967576aea4735f0cf1d50b089db17bacc75f6950f97b142c8a03b37040226c6b79ebad3cd4d967208609968a98504d4a7fe821ff93450dec9bcd27c6ac6c8290')
 
 build() {
   mkdir build
