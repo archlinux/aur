@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pguirestore
 _pkgname=PgUiRestore
-pkgver=2.3.0
+pkgver=2.3.1
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}.git::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('03cd93b07620bf78c30e1a4a6bcb38e4153b7afcda84117584e7a85880ab4c17'
+sha256sums=('4e223c374622bd2ecf5c5980aced383d971dc5315fbd18458ba47d66094024a2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
