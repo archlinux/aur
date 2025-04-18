@@ -5,7 +5,7 @@
 _watch=('https://hiawatha.leisink.net/changelog' '\"version\">(\d[\d.]*\d+)<')
 
 pkgname=hiawatha
-pkgver=11.6
+pkgver=11.7
 pkgrel=1
 pkgdesc="Secure and advanced webserver"
 url="https://hiawatha.leisink.net/"
@@ -23,7 +23,7 @@ source=("https://hiawatha.leisink.net/files/$pkgname-$pkgver.tar.gz"
         'hiawatha.service'
         'lefh-renew.service'
         'lefh-renew.timer')
-sha256sums=('b3c5eb7be007509b7e1f3d88cc03a99904d3b6e5e05d980f9d5bdaa424864dd6'
+sha256sums=('8bc180ae3b986d02466f081efeefdb1595d96783f581fded2a9b198752ab7ae1'
             '4671d2586cbe3cd6497b16ff422c6143cdab40641ef3c9c4988c478351a8f5e7'
             'b5a2671703b52eec376cfc4697b86aafa4f7fdd9b2b9203798e2117770bafa53'
             '2598480f8b249aaf7028ea66bac0195e1c017fb17c2c169b69e0b66413728457'
@@ -65,7 +65,8 @@ build() {
             -DUSE_SYSTEM_MBEDTLS=ON \
             -DENABLE_MONITOR=ON \
             -DWEBROOT_DIR="/srv/http/hiawatha" \
-            -DWORK_DIR="/var/lib/hiawatha"
+            -DWORK_DIR="/var/lib/hiawatha" \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   make
 
