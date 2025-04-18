@@ -2,13 +2,13 @@
 
 pkgbase=level-zero-git
 pkgname=('level-zero-headers-git' 'level-zero-loader-git')
-pkgver=1.9.4.r0.g4ed13f3
-pkgrel=2
+pkgver=1.21.9.r0.g74997ed
+pkgrel=1
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices (git version)'
 arch=('x86_64')
 url='https://spec.oneapi.com/versions/latest/elements/l0/source/index.html'
 license=('MIT')
-makedepends=('git' 'cmake' 'opencl-headers')
+makedepends=('cmake' 'git' 'opencl-headers')
 source=('git+https://github.com/oneapi-src/level-zero.git')
 sha256sums=('SKIP')
 
@@ -42,7 +42,7 @@ package_level-zero-headers-git() {
 
 package_level-zero-loader-git() {
     pkgdesc='oneAPI Level Zero loader (git version)'
-    depends=('gcc-libs')
+    depends=('gcc-libs' 'glibc')
     optdepends=('level-zero-driver: for packaged Level Zero driver')
     provides=('level-zero-loader')
     conflicts=('level-zero-loader')
