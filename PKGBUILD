@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=enrichplot
-_pkgver=1.26.6
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.6
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Visualization of Functional Enrichment Result'
 arch=('any')
@@ -55,7 +55,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8e03a9349fd1858bb63293b06215068d2d4c53eb721ede687b366efab9a67b96')
+sha256sums=('fb269daf138112315afdbcef5ed1edfbe1d4a7d2b8ca99c02a3998d146425236')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
