@@ -9,8 +9,8 @@ pkgdesc="A simple graphical tool to test websocket connections "
 arch=('any')
 url="https://github.com/0xFEEDC0DE64/${_pkgname}"
 license=('GPL-3.0-or-later')
-depends=('qt5-base' 'qt5-websockets')
-makedepends=('git' 'qt5-base' 'qt5-websockets')
+depends=('qt6-base' 'qt6-websockets')
+makedepends=('git' 'qt6-base' 'qt6-websockets')
 
 source=(
   "git+${url}.git"

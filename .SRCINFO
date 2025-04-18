@@ -6,10 +6,10 @@ pkgbase = qtwebsockettester-git
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = qt5-base
-	makedepends = qt5-websockets
-	depends = qt5-base
-	depends = qt5-websockets
+	makedepends = qt6-base
+	makedepends = qt6-websockets
+	depends = qt6-base
+	depends = qt6-websockets
 	source = git+https://github.com/0xFEEDC0DE64/qtwebsockettester.git
 	sha256sums = SKIP
 
