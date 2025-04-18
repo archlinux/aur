@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicDataCommons
-_pkgver=1.30.1
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('40258c8a1f527031e60ed2fbd8874bbd')
-b2sums=('ca1a4532f8208302f5784d51c616edc7f27a17776d3314f4672f6fb1d61b7b921d1e6f36055d0959ecb8d99e4c8bc92fcac7e969b62f92ea3b33f1032d65aa68')
+md5sums=('3480676378673b38ed73380619d42aac')
+b2sums=('bccb8817fc50072fd81823aa14d9caad127239172b83da30e6149f5ee803bf919aaabd3a40431b79a1b0b08b40bdd5bd9f8466aa014c1b277b0de32949c80a8a')
 
 build() {
   mkdir build
