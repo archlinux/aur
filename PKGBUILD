@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KOdata
-_pkgver=1.33.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('55e0d89d745072f7cb3f1df235d0a7b9')
-b2sums=('3c2d4bd13de6fc80ad5e8e3c5cce2db480f9cd84de81e354fba6b7b8cd341e308d0fb47fa39153b172585ef506337a0ef2735363ac715273118398d6da9dbcca')
+md5sums=('26cd461cc628ade643b0c28ab2362d85')
+b2sums=('df5461523604abed44855cc59b4bf149643b08596766717a4e3cadd36b88c78f268853d6925ea4b4baf6cadb27daad33cf12b569ce93e5ce98ecf69c4d692cc5')
 
 build() {
   mkdir build
