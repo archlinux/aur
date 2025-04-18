@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=microSTASIS
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aa143ed7e2e787173f15f326de7bdbb8')
-b2sums=('49a6c0511d7bf5222ee4029ae6dd1292cbf5598dc50d2060dbe03cf52dbd3e5d4c9f365d20f1665e6731c8cc2bf5148ae537af4ce1807cd7a1d1f2b456cedcde')
+md5sums=('16d2fb80ef76cc219a87d14ba767561d')
+b2sums=('6cf1ba5bbc1753a9a6cd8c6c4e5f0beeb1fbd24c1efca01716d0d8956875d27d0d88abb4a5d966434c74b45eaf4662724809ef81547e78b1450e014dadf6c8df')
 
 build() {
   mkdir build
