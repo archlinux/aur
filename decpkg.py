@@ -659,26 +659,26 @@ class GenerateConfigure:
 
     def config_here(self):
         default_config = """
-  //  ▓█████▄ ▓█████  ▄████▄   ██▓███   ██ ▄█▀  ▄████
-  //  ▒██▀ ██▌▓█   ▀ ▒██▀ ▀█  ▓██░  ██▒ ██▄█▒  ██▒ ▀█▒
-  //  ░██   █▌▒███   ▒▓█    ▄ ▓██░ ██▓▒▓███▄░ ▒██░▄▄▄░
-  //  ░▓█▄   ▌▒▓█  ▄ ▒▓▓▄ ▄██▒▒██▄█▓▒ ▒▓██ █▄ ░▓█  ██▓
-  //  ░▒████▓ ░▒████▒▒ ▓███▀ ░▒██▒ ░  ░▒██▒ █▄░▒▓███▀▒
-  //   ▒▒▓  ▒ ░░ ▒░ ░░ ░▒ ▒  ░▒▓▒░ ░  ░▒ ▒▒ ▓▒ ░▒   ▒
-  //   ░ ▒  ▒  ░ ░  ░  ░  ▒   ░▒ ░     ░ ░▒ ▒░  ░   ░
-  //   ░ ░  ░    ░   ░        ░░       ░ ░░ ░ ░ ░   ░
-  //     ░       ░  ░░ ░               ░  ░         ░
-  //   ░             ░
-  //
-  //  (Copyright (c) 2025 maaru.tan \\ Marat Arzymatov. All Rights Reserved.)
-  //  https://github.com/maarutan/decpkg 
-  //
-  //  ------------------------------------------------
+//  ▓█████▄ ▓█████  ▄████▄   ██▓███   ██ ▄█▀  ▄████
+//  ▒██▀ ██▌▓█   ▀ ▒██▀ ▀█  ▓██░  ██▒ ██▄█▒  ██▒ ▀█▒
+//  ░██   █▌▒███   ▒▓█    ▄ ▓██░ ██▓▒▓███▄░ ▒██░▄▄▄░
+//  ░▓█▄   ▌▒▓█  ▄ ▒▓▓▄ ▄██▒▒██▄█▓▒ ▒▓██ █▄ ░▓█  ██▓
+//  ░▒████▓ ░▒████▒▒ ▓███▀ ░▒██▒ ░  ░▒██▒ █▄░▒▓███▀▒
+//   ▒▒▓  ▒ ░░ ▒░ ░░ ░▒ ▒  ░▒▓▒░ ░  ░▒ ▒▒ ▓▒ ░▒   ▒
+//   ░ ▒  ▒  ░ ░  ░  ░  ▒   ░▒ ░     ░ ░▒ ▒░  ░   ░
+//   ░ ░  ░    ░   ░        ░░       ░ ░░ ░ ░ ░   ░
+//     ░       ░  ░░ ░               ░  ░         ░
+//   ░             ░
+//
+//  (Copyright (c) 2025 maaru.tan \\ Marat Arzymatov. All Rights Reserved.)
+//  https://github.com/maarutan/decpkg 
+//
+//  ------------------------------------------------
 {
   // Startup
   "logo_ascii"   : true , // there will be a logo at the beginning. 
-  "absolute_sync": false, // absolute installation where you clearly specify what to remove and what to install if a package is not in the list, then it will be removed. 
-  "relative_sync": true , // Relative package installation it you can determine which packages to install but not remove, If you installed through the carrier option you will have to uninstall manually. 
+  "absolute_sync": true , // absolute installation where you clearly specify what to remove and what to install if a package is not in the list, then it will be removed. 
+  "relative_sync": false, // Relative package installation it you can determine which packages to install but not remove, If you installed through the carrier option you will have to uninstall manually. 
   "noconfirm"    : true , // If that's true, then the packets will settle without confirmation.  
 
   // Updates package
@@ -696,18 +696,20 @@ class GenerateConfigure:
   "aur_helper": "paru",  // Better aur helper utils.
 
   // other
-  "notify"    : true    // If you want to be notified.
-},
-{
-"pacman": [
-  // "git",          // Popular utelita for version control.
-  // "neovim"        // Best text editor.
-  ]
-},
-{
-"aur": [
-  //  "peaclock",    // Utelita for look clock.
-  //  "unimatrix"    // Huckers background.
+  "notify"    : true,   // If you want to be notified.
+  "packages": [
+    {
+      "pacman": [
+        // "git",          // Popular utelita for version control.
+        // "neovim"        // Best text editor.
+        ]
+    },
+    {
+      "aur": [
+        //  "peaclock",    // Utelita for look clock.
+        //  "unimatrix"    // Huckers background.
+      ]
+    }
   ]
 }
 """
