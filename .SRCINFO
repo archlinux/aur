@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
-	pkgver = 2025.2.0
+	pkgver = 2025.4.0
 	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet-electron
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = jitsi-meet-desktop
 	makedepends = jq
 	makedepends = npm
 	depends = electron
-	source = jitsi-meet-desktop-2025.2.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2025.2.0.tar.gz
-	sha256sums = c70a13d4cda3a3d720ec92aec81aa581e2b0aff616ba0f1a86256a4cc09c8351
+	source = jitsi-meet-desktop-2025.4.0.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v2025.4.0.tar.gz
+	sha256sums = 44e6b635c037882b1f8160d45f3213fe12eb6f1c36cc60ec80fc8994eb9af6ac
 
 pkgname = jitsi-meet-desktop
+	depends = electron

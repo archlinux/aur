@@ -10,13 +10,9 @@
 ## options
 : ${_install_path:=usr/share}
 
-: ${_electron_dist:=/usr/lib/electron}
-
-: ${_cksum:=c70a13d4cda3a3d720ec92aec81aa581e2b0aff616ba0f1a86256a4cc09c8351}
-
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
-pkgver=2025.2.0
+pkgver=2025.4.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
@@ -34,14 +30,11 @@ makedepends=(
 _pkgsrc="jitsi-meet-electron-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=("${_cksum:?}")
+sha256sums=('44e6b635c037882b1f8160d45f3213fe12eb6f1c36cc60ec80fc8994eb9af6ac')
 
 prepare() (
   cd "$_pkgsrc"
-  local _electron_version="$(cat $_electron_dist/version)"
-
-  sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
-    -e 's#git+ssh://git@github.com#git+https://github.com#g' \
+  sed -E -e 's#git+ssh://git@github.com#git+https://github.com#g' \
     -i package-lock.json
 
   # remove targets
@@ -53,6 +46,7 @@ prepare() (
 )
 
 build() (
+  # avoid cluttering user home
   export HOME="$srcdir/tmp_home"
   export XDG_CACHE_HOME="$srcdir/tmp_cache"
   export XDG_CONFIG_HOME="$srcdir/tmp_config"
@@ -60,17 +54,33 @@ build() (
   export XDG_STATE_HOME="$srcdir/tmp_state"
 
   export npm_config_cache="$srcdir/npm_cache"
-  export NODE_ENV=production
+
+  local _electron_version=$(cat /usr/lib/electron/version)
+
+  local _electron_builder_options=(
+    --linux dir
+    --publish never
+    -c.electronDist="/usr/lib/electron${_electron_version%%.*}"
+    -c.electronVersion="$_electron_version"
+  )
 
   cd "$_pkgsrc"
+
+  sed -E \
+    -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
+    -i package.json package-lock.json
+
   NODE_ENV=development npm install --no-audit --no-fund --ignore-scripts
 
-  npm exec -c 'webpack --config ./webpack.main.js'
-  npm exec -c 'webpack --config ./webpack.renderer.js'
-  npm exec -c "electron-builder --linux --dir -c.electronDist=$_electron_dist -c.electronVersion=$(cat $_electron_dist/version)"
+  NODE_ENV=production npm exec -c 'webpack --config ./webpack.main.js'
+  NODE_ENV=production npm exec -c 'webpack --config ./webpack.renderer.js'
+  NODE_ENV=production npm exec -c "electron-builder ${_electron_builder_options[*]}"
 )
 
 package() (
+  local _electron_version=$(cat /usr/lib/electron/version)
+  depends=("electron${_electron_version%%.*}")
+
   install -Dm644 "$_pkgsrc/dist/linux-unpacked/resources/app.asar" -t "$pkgdir/$_install_path/$_pkgname/"
   install -Dm644 "$_pkgsrc/resources/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
@@ -110,6 +120,6 @@ export ELECTRON_IS_DEV
 : \${ELECTRON_FORCE_IS_PACKAGED:=true}
 export ELECTRON_FORCE_IS_PACKAGED
 
-exec electron "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
+exec electron${_electron_version%%.*} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
 )
