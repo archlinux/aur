@@ -1,7 +1,7 @@
 pkgbase = qtwebsockettester-git
 	pkgdesc = A simple graphical tool to test websocket connections
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xFEEDC0DE64/qtwebsockettester
 	arch = any
 	license = GPL-3.0-or-later

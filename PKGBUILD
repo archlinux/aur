@@ -3,7 +3,7 @@ _pkgname=qtwebsockettester
 pkgname=${_pkgname}-git
 
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple graphical tool to test websocket connections "
 
 arch=('any')
