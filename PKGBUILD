@@ -3,8 +3,8 @@ _appname=xnsketch
 pkgname="xnview-${_appname}-bin"
 _pkgname=XnSketch
 pkgver=1.20
-pkgrel=9
-pkgdesc="Allows you to turn your photos into cartoon or sketch images."
+pkgrel=10
+pkgdesc="Allows you to turn your photos into cartoon or sketch images.(Prebuilt version)"
 arch=(
     'i686'
     'x86_64'
@@ -20,22 +20,24 @@ depends=(
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tgz::https://download.xnview.com/XnSketch-linux.tgz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tgz::https://download.xnview.com/XnSketch-linux-x64.tgz")
 source=("${pkgname%-bin}.sh")
-sha256sums=('590eec41dae81c3a4298b768c791117c438b7455b9bf000c51a3bbcc17e483a6')
+sha256sums=('907a66c7af4892ae3ce408c5e4d30763d543e1f7164b2862ed5c9b303db74a95')
 sha256sums_i686=('bfc35afc4e333db3cc298bffda1f35beca45e8b1b693bc9a45c5bceb161ceae2')
 sha256sums_x86_64=('15273b7e38bcac2b4a34034e383547243b3d086ac57259629e49afabe4adace5')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${_pkgname}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "s|/home/pierre/Desktop/${_pkgname}/${_appname}.sh|${pkgname%-bin} %U|g" \
-        -e "s|/home/pierre/Desktop/${_pkgname}/${_appname}.png|${pkgname%-bin}|g" \
-        -i "${srcdir}/${_pkgname}/${_pkgname}.desktop"
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_pkgname}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\/home\/pierre\/Desktop\/${_pkgname}\/${_appname}.sh/${pkgname%-bin} %U/g
+        s/\/home\/pierre\/Desktop\/${_pkgname}\/${_appname}.png/${pkgname%-bin}/g
+    " "${srcdir}/${_pkgname}/${_pkgname}.desktop"
     chmod 644 "${srcdir}/${_pkgname}/${_appname}.png"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/libicui18n.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libicui18n.so.54"
     ln -sf "/usr/lib/libicuuc.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libicuuc.so.54"
     ln -sf "/usr/lib/libicudata.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libicudata.so.54"
