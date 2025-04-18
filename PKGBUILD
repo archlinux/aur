@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=regionalpcs
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5bd633cf37f4f1e6510e072d95229143')
-b2sums=('78b53c84ec2a6cd37d02f58c346a7f78b13c0b38f70c9872be7126eaf414b701058a7f91d067bba93c4d4744c00249241992f29b999c6b7a74dd484c9cecc8ba')
+md5sums=('f3bba8b76b5cdbcce8882b0452c1d294')
+b2sums=('4586290f6356b1d3212d1bfac06f9eb09bbf2517022c3831421e6a62885abfd6e4f8325f0447e635c464ffd22b23b1a35dffdb12658ff7bd07a9efbbbd291e3e')
 
 build() {
   mkdir build
