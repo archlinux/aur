@@ -1,7 +1,7 @@
 # Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 # Co-Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=v2.4.3
+pkgver=v2.4.4
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 	"${pkgname}::git+https://github.com/ninjadev64/OpenDeck#tag=${pkgver//_/-}"
 )
 
-sha256sums=('2a68a8d5773f58659f65ab4a23b79637ef6134a47596fb4abab80cbdfa11ba9d')
+sha256sums=('0a4ac7698adce39f935a99964cd172176781fc9e0a2e997837addbadfd38dbdc')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
@@ -33,7 +33,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export DENO_DIR="${srcdir}/deno-cache"
-	deno task tauri build --ci -b deb -- --frozen
+	OPENDECK_DISABLE_UPDATE_CHECK=1 deno task tauri build --ci -b deb -- --frozen
 }
 
 package() {
