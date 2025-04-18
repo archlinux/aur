@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TRONCO
-_pkgver=2.38.0
+_pkgver=2.40.0
 pkgname=r-${_pkgname,,}
-pkgver=2.38.0
+pkgver=2.40.0
 pkgrel=1
 pkgdesc='TRONCO, an R package for TRanslational ONCOlogy'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b10d602333d4f161ad33e28998f359fb13ab551cb4b28ff93887cbc6de3b0e2')
+sha256sums=('05da4a8de3754df7484ed9e1caac32e84d1a060cd0646d528d90be24844b8146')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
