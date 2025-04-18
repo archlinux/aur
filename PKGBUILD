@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=oncoscanR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('41a3ad0c018823770001a20a8a1625ac')
-b2sums=('391cb89f72d68aea4f4162efcb9e9570fc24471dc4880e5c2d5c7558c1a05708d1ae4cbcd2995df79750af52d88051e909163dccacb6b4a7ea7f07a8a7d0cf19')
+md5sums=('052581a13383556ad901cac871807c3c')
+b2sums=('005b657ddefb6fadf2543f64d7d2a6c54404790d1f70be8ca88fa2edd16a85013f5872e08b9c75543d0ba5b4fbd04a8b645b841ab0b2e044a7968e7e7423ffc0')
 
 build() {
   mkdir build
