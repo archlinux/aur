@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BCRANK
-_pkgver=1.68.0
+_pkgver=1.70.0
 pkgname=r-${_pkgname,,}
-pkgver=1.68.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='Predicting binding site consensus from ranked DNA sequences'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-seqlogo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('02997ed2ed366818532d6209884057c86a47e0bddcb0405fa1235614c7ee56ba')
+sha256sums=('86b11b77b887819fd667cec34af6284fb838d78cb661e88bcc3b7a0742f6f949')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
