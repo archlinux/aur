@@ -1,12 +1,13 @@
 pkgbase = aqua-bin
 	pkgdesc = Declarative CLI version manager
 	pkgver = 2.48.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aquaproj/aqua
 	install = aqua-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = help2man
 	provides = aqua
 	conflicts = aqua
 	source_x86_64 = https://github.com/aquaproj/aqua/releases/download/v2.48.3/aqua_linux_amd64.tar.gz
