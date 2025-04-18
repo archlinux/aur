@@ -6,7 +6,7 @@ pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
 pkgver=6.3.2
-pkgrel=7
+pkgrel=8
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -24,14 +24,10 @@ source=(
   'logo-symbol-dark.svg'
   'logo-symbol-light.svg'
   'simplex-chat.desktop'
-  'FB44AF81A45BDE327319797C85107E357D4A17FC.txt'
 )
-_skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+_skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 # SimpleX Chat team <chat@simplex.chat>
 # https://keys.openpgp.org/search?q=chat%40simplex.chat
-# or use
-#     gpg --import < FB44AF81A45BDE327319797C85107E357D4A17FC.asc
-# in this directory.
 validpgpkeys=('FB44AF81A45BDE327319797C85107E357D4A17FC')
 sha256sums=(
   '0677adaac345e3a0f7f0eee978856de23f963e5778c935b16b5069a658971728'
@@ -61,11 +57,11 @@ build() {
 
   # shellcheck disable=SC1111
   cat <<EOF
-Will package an icon suitable for a $_shade theme. If this is
-not what you want, set the environment variable \$SIMPLEX_ICON
-to “$_other”. E.g.:
-
-  env SIMPLEX_ICON=$_other makepkg [options …]
+»  Will package an icon suitable for a $_shade theme. If this is
+»  not what you want, set the environment variable \$SIMPLEX_ICON
+»  to “$_other”. E.g.:
+»
+»    env SIMPLEX_ICON=$_other makepkg [options …]
 EOF
 
   cp "logo-symbol-$_shade.svg" "$_pkgname.svg"
