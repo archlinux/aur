@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=elfinfo
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Detect which compiler version was used for compiling an ELF file'
 arch=(x86_64)
 url='https://elfinfo.roboticoverlords.org/'
 license=(BSD)
 makedepends=(go git)
-source=("git+https://github.com/xyproto/elfinfo#commit=c222ef706cd6216e5f3d2aca297f2369895beed7") # tag: 1.2.2
-b2sums=('SKIP')
+source=("git+https://github.com/xyproto/elfinfo#tag=v$pkgver")
+b2sums=('5005a91efaf74dd85efafa11c3816ba8a590ceb5d2704e87d6f0382481158b57609d75b9180733210c1e6dc5caf8f3b13b9778f53a4e8442f3767c8e35a044a0')
 
 build() {
   cd $pkgname
