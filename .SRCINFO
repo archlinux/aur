@@ -1,13 +1,14 @@
 pkgbase = durdraw
 	pkgdesc = Frame based ASCII and ANSI drawing and playback program
 	pkgver = 0.29.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cmang.org/durdraw/
 	arch = any
 	license = BSD-3-Clause
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = python-pillow
 	depends = python-importlib-metadata
