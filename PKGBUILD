@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=3.8.0
+pkgver=3.9.1
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -19,7 +19,10 @@ depends=("python"
         "python-gobject"
         "slop")
 makedepends=("fakeroot"
-        "gettext")
+        "gettext"
+        "python-build"
+        "python-installer"
+        "python-wheel")
 checkdepends=()
 optdepends=('xclip: command line clipboard support'
             'xdg-utils: for opening screenshot files from gscreenshot'
@@ -36,7 +39,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('55a4c6e28fc5be703350056d7868550b79537023a3c4cc348a34a8e3d9581c6c')
+sha256sums=('492ba8091495b08a3a66c5a9bbdf4c3285750a335bf6ed503beae7d097353733')
 validpgpkeys=()
 
 prepare() {
@@ -44,7 +47,8 @@ prepare() {
 }
 
 build() {
-        echo "Nothing to build"
+        cd "$srcdir/$pkgname-$pkgver"
+        python -m build --wheel --no-isolation
 }
 
 check() {
@@ -52,8 +56,8 @@ check() {
 }
 
 package() {
-        echo $pkgdir
         cd $srcdir/gscreenshot-$pkgver
-        python setup.py install --root="$pkgdir/" --optimize=1 --force --single-version-externally-managed
+        python -m installer --destdir="$pkgdir" dist/*.whl
         chmod +x "$pkgdir/usr/bin/gscreenshot"
+        chmod +x "$pkgdir/usr/bin/gscreenshot-cli"
 }
