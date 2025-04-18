@@ -1,0 +1,14 @@
+pkgbase = val
+	pkgdesc = an arbitrary precision calculator language
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/terror/val
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/terror/val/archive/0.3.4/val-0.3.4.tar.gz
+	sha256sums = 9dd17e8ebaf0f3d440467480bec11b39f2c1c5660c51b20afd91127051180952
+
+pkgname = val
