@@ -1,9 +1,10 @@
-# Maintainer: Jat <chat@jat.email>
+# Maintainer:
+# Contributor: Jat <chat@jat.email>
 
 _pkgname="pulseaudio-module-xrdp"
 pkgname="$_pkgname-git"
-pkgver=0.7.r19.g1910e49
-pkgrel=2
+pkgver=0.8.r2.g2d62018
+pkgrel=1
 pkgdesc="xrdp pulseaudio module"
 url="https://github.com/neutrinolabs/pulseaudio-module-xrdp"
 license=('LGPL-2.1-only')
@@ -23,10 +24,10 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
-_pkgsrc_pulse="pulseaudio"
+_pkgsrc_pulse="pulseaudio.gitlab"
 source=(
   "$_pkgsrc"::"git+$url.git#branch=devel"
-  "$_pkgsrc_pulse"::"git+https://anongit.freedesktop.org/git/pulseaudio/pulseaudio.git"
+  "$_pkgsrc_pulse"::"git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git"
 )
 sha256sums=(
   'SKIP'
