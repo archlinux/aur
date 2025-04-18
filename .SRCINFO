@@ -1,7 +1,7 @@
 pkgbase = qtcreator-patches
 	pkgdesc = Lightweight, cross-platform integrated development environment
-	pkgver = 16.0.1
-	pkgrel = 4
+	pkgver = 16.0.2
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	license = Apache-2.0

@@ -1,8 +1,8 @@
 pkgbase=qtcreator-patches
 pkgname=(qtcreator-patches qtcreator-devel-patches)
-pkgver=16.0.1
+pkgver=16.0.2
 _commit=16.0
-pkgrel=4
+pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=(x86_64)
 url='https://www.qt.io'
