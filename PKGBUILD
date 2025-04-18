@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hyperdraw
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Visualizing Hypergaphs'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   graphviz
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('296b35fe6419b5c19220dfeacc72aabb13f083625280b160a55446a6597c285d')
+sha256sums=('63403a69099e9f3dec1c2f71ba3922098f9e0b1c3e673be09b0dbbc8682b03b7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
