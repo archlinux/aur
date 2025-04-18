@@ -1,11 +1,12 @@
 pkgbase = my-ocr-bin
-	pkgdesc = Offline ocr, support high camera shooting.离线ocr,支持高拍仪拍摄.Use system-wide electron.
+	pkgdesc = Offline ocr, support high camera shooting.(Prebuilt version.Use system-wide electron)离线ocr,支持高拍仪拍摄
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liumingye/my-ocr
 	arch = aarch64
 	arch = x86_64
 	license = MIT
+	makedepends = asar
 	depends = electron32
 	provides = my-ocr=1.0.3
 	conflicts = my-ocr
