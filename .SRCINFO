@@ -1,6 +1,6 @@
 pkgbase = r-marr
 	pkgdesc = Maximum rank reproducibility
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/marr
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-marr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/marr_1.16.0.tar.gz
-	sha256sums = debd461588081703f49681b345b7170e32c953a1a580f56b3505d2c2c9804d8c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/marr_1.18.0.tar.gz
+	sha256sums = 0b773402e90f9e850134c75811d9a0f90d8cc6d3fa6acd3cd02e86b7b59e41b0
 
 pkgname = r-marr
