@@ -1,6 +1,6 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=('jellyfin-rpc-git')
-pkgver=1.3.1.r0.g64f52cf
+pkgver=1.3.2.r0.gbe7317d
 pkgrel=1
 pkgdesc="Displays the content you're currently watching on Discord"
 arch=('any')
