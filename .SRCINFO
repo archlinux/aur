@@ -1,11 +1,10 @@
 pkgbase = python2-pytest
 	pkgdesc = Simple powerful testing with Python
 	pkgver = 4.6.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pytest.org/
 	arch = any
 	license = MIT
-	makedepends = python2-setuptools-scm
 	depends = python2-py
 	depends = python2-setuptools
 	depends = python2-pluggy
