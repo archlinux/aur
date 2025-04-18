@@ -27,8 +27,8 @@ sha256sums=('9b1675cb7f13d3bfa2ade85fd0821c42d106d23b7e7b66e8682dc256a5a0b61d'
             'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
 prepare() {
     sed -i -e "
-        s|@appname@|${pkgname%-bin}|g" \
-        s|@runname@|${pkgname%-bin}|g" \
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
