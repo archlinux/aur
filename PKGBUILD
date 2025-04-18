@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mirbase.db
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='miRBase: the microRNA database'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -14,7 +14,7 @@ depends=(
   r-annotationdbi
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b335df59433f2ad0e61938d3563e0106e48b6d52386cb1950930e0a36280ea50')
+sha256sums=('a91d4ef110df4054c90731d9450f9e93f08489077d5bb0c411eb3d2a0592af19')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
