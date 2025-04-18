@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=velociraptor
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fd40fd69025725daf863b9c0bcfe46b6')
-b2sums=('bf0d7da38d3860163f39d10fa43503799fc1a75f840bcd70ca11f8daebae907387be8ea77b9547a413e641db3b33e0149d851604be50b25eb2606086c36a620b')
+md5sums=('990fd8378b89ad5f7ea72265adea8887')
+b2sums=('8da696e1d4ccab7515743597c096288d4f7f382491c6b2cf83c1be3c0b74be7cdbb02e934aeb510410a9391de3728ff66e7391f5ec1573517fc7f56a041a5699')
 
 build() {
   mkdir build
