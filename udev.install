@@ -1,0 +1,7 @@
+# arg 1:  the new package version
+post_install() {
+	echo "Reloading udev rules..."
+	udevadm control --reload-rules
+	udevadm trigger
+	echo "Please, ensure current user is part of uucp group!"
+}

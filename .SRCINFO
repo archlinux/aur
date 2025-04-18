@@ -1,0 +1,12 @@
+pkgbase = gqrx-udev
+	pkgdesc = GQRX's udev rules matching popular Software-Defined Radios (SDRs).
+	pkgver = 2.10
+	pkgrel = 1
+	url = https://www.gqrx.dk/
+	install = udev.install
+	arch = any
+	license = GPL-3.0-or-later
+	source = https://github.com/gqrx-sdr/gqrx/releases/download/v2.10/gqrx-sdr-2.10-linux-x64.tar.xz
+	sha256sums = b32c2eebfa6ecda9631910599e6d0a01c7a30ecd636c4f4499e9a1d2de3e6389
+
+pkgname = gqrx-udev
