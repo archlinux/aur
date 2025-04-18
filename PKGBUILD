@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CSAR
-_pkgver=1.58.0
+_pkgver=1.60.0
 pkgname=r-${_pkgname,,}
-pkgver=1.58.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc='Statistical tools for the analysis of ChIP-seq data'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-shortread
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('54cc6df293398bb4da6721f6957a7d2ddd0889bf5649b64555f6a82b2e9d58ad')
+sha256sums=('c54132be02fdba07d0210d05eb1b360ad0a2043a41e4052e973f84d7bdc2dc61')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
