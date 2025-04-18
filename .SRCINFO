@@ -1,6 +1,6 @@
 pkgbase = mutemplate
 	pkgdesc = Compile template files into a standalone python file
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/bulletmark/mutemplate
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mutemplate
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = python>=3.7
-	source = mutemplate-1.4.tar.gz::https://github.com/bulletmark/mutemplate/archive/1.4.tar.gz
-	sha1sums = 976aaa374b5e48bb0741bd35a0bfa52fdd04563e
+	source = mutemplate-1.5.tar.gz::https://github.com/bulletmark/mutemplate/archive/1.5.tar.gz
+	sha1sums = 907bfd1f13101dfccdd04f2f14d30460dcde8722
 
 pkgname = mutemplate
