@@ -24,7 +24,6 @@ build() {
         chmod +x decpkg
         mkdir -p dist
         mv decpkg dist/
-        decpkg -g
     fi
 }
 
