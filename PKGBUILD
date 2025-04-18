@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=genomicInstability
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Genomic Instability estimation for scRNA-Seq'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-singlecellexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41627bee56a9d346f3310c77fdb70ec93a6a890b5b10b53f8624f256fcdbb5e7')
+sha256sums=('344894423dab404c574b3aff3a6fffb21cb07ecadbd0e6e08d388c21f107c315')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
