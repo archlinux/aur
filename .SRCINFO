@@ -1,0 +1,13 @@
+pkgbase = decpkg
+	pkgdesc = Declarative package installer for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maarutan/decpkg
+	arch = any
+	license = MIT
+	makedepends = pyinstaller
+	makedepends = python
+	source = decpkg.py
+	sha256sums = SKIP
+
+pkgname = decpkg
