@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HarmonizR
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c9b05bca57f63d6620a24fd199ab5425')
-b2sums=('10bf37c00a1c39330d6c5bf2d3ac3ef34571f781717841da0897497a6ab0477b224d6e34201e7c5b0e37de873b601491986e0d9187e2fc881d4eb7c8f0271626')
+md5sums=('34b5ce1ee0781ace9de55a2a0aeb02a8')
+b2sums=('69ff43f754bc24c85ceb8688e762c9a55a12176d7d2832e7e716407c68931b2a11ec85a917375f9554a9558e3cedcaaf2049b2da5a75904779877a2c312ba57b')
 
 build() {
   mkdir build
