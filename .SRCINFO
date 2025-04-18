@@ -1,6 +1,6 @@
 pkgbase = r-pqsfinder
 	pkgdesc = Identification of potential quadruplex forming sequences
-	pkgver = 2.22.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pqsfinder
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-pqsfinder
 	optdepends = r-stringi
 	optdepends = r-stringr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pqsfinder_2.22.0.tar.gz
-	sha256sums = 44b973cbd1bf971b9bc0cb2684c6a30538c293e30286d86bc2c9567ade27bf67
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pqsfinder_2.24.0.tar.gz
+	sha256sums = 59574086ed60bb89226b065956db9d0003a33e14f697a5199c800b40b430e32b
 
 pkgname = r-pqsfinder
