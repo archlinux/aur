@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
-pkgver=4.22.2.r1.g1ff234a
+pkgver=4.23.0.r8.g1aacce6
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
@@ -26,7 +26,15 @@ pkgver() {
 build() {
   cd "$srcdir/qp"
   export CGO_ENABLED=0
-  go build -trimpath -ldflags="-s -w" -o ${_binaryname} ./cmd/${_binaryname}
+
+  _commit=$(git rev-parse HEAD)
+  _date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+  go build -trimpath -ldflags="-s -w \
+  -X qp/internal/about.Version=${pkgver} \
+  -X qp/internal/about.Commit=${_commit} \
+  -X qp/internal/about.Date=${_date}" \
+    -o ${_binaryname} ./cmd/${_binaryname}
 }
 
 package() {
