@@ -25,3 +25,36 @@
  
    if (!IsSystemPluginPath(file_name.ToStdString()) && safe_mode::get_mode()) {
      DEBUG_LOG << "Skipping plugin " << file_name << " in safe mode";
+--- a/gui/src/OCPNPlatform.cpp
++++ b/gui/src/OCPNPlatform.cpp
+@@ -1317,6 +1317,30 @@ void OCPNPlatform::SetDefaultOptions(void) {
+     pConfig->SetPath(_T ( "/Settings/WMM" ));
+     pConfig->Write(_T ( "ShowIcon" ), true);
+     pConfig->Write(_T ( "ShowLiveIcon" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libcelestial_navigation_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libclimatology_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libocpn_draw_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libo-charts_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libpolar_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libroute_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libweatherfax_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
++
++    pConfig->SetPath(_T ( "/PlugIns/libweather_routing_pi.so" ));
++    pConfig->Write(_T ( "bEnabled" ), true);
+   }
+ #endif
+ 
