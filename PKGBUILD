@@ -6,7 +6,7 @@ pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 epoch=1
 pkgver=6.3.2
-pkgrel=6
+pkgrel=7
 pkgdesc='A 100% private-by-design chat platform for the command-line (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-22_04-x86-64'
@@ -24,7 +24,7 @@ source=(
   'logo-symbol-dark.svg'
   'logo-symbol-light.svg'
   'simplex-chat.desktop'
-  'FB44AF81A45BDE327319797C85107E357D4A17FC.asc'
+  'FB44AF81A45BDE327319797C85107E357D4A17FC.txt'
 )
 _skip=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 # SimpleX Chat team <chat@simplex.chat>
