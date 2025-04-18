@@ -1,0 +1,46 @@
+--- zdoom-orig/CreateLaunchers.cmake	2025-04-18 18:46:48.497597139 -0400
++++ zdoom/CreateLaunchers.cmake	2025-04-18 18:57:26.721097928 -0400
+@@ -44,10 +44,6 @@
+ endif()
+ set(__create_launchers YES)
+ 
+-if( POLICY CMP0026 )
+-	cmake_policy( SET CMP0026 OLD )
+-endif( POLICY CMP0026 )
+-
+ include(CleanDirectoryList)
+ 
+ # We must run the following at "include" time, not at function call time,
+@@ -205,9 +201,7 @@
+ 			_perconfig)
+ 		set(USERFILE_CONFIGSECTIONS)
+ 		foreach(USERFILE_CONFIGNAME ${CMAKE_CONFIGURATION_TYPES})
+-			get_target_property(USERFILE_${USERFILE_CONFIGNAME}_COMMAND
+-				${_targetname}
+-				LOCATION_${USERFILE_CONFIGNAME})
++			set(USERFILE_${USERFILE_CONFIGNAME}_COMMAND "$<TARGET_FILE:${_targetname}>")
+ 			file(TO_NATIVE_PATH
+ 				"${USERFILE_${USERFILE_CONFIGNAME}_COMMAND}"
+ 				USERFILE_${USERFILE_CONFIGNAME}_COMMAND)
+@@ -241,9 +235,7 @@
+ 	if(CMAKE_CONFIGURATION_TYPES)
+ 		# Multi-config generator - multiple launchers
+ 		foreach(_config ${CMAKE_CONFIGURATION_TYPES})
+-			get_target_property(USERFILE_${_config}_COMMAND
+-				${_targetname}
+-				LOCATION_${_config})
++			set(USERFILE_${_config}_COMMAND "$<TARGET_FILE:${_targetname}>")
+ 			file(TO_NATIVE_PATH
+ 				"${USERFILE_${_config}_COMMAND}"
+ 				USERFILE_COMMAND)
+@@ -254,9 +246,7 @@
+ 		endforeach()
+ 	else()
+ 		# Single-config generator - single launcher
+-		get_target_property(USERFILE_COMMAND
+-			${_targetname}
+-			LOCATION)
++		set(USERFILE_COMMAND "$<TARGET_FILE:${_targetname}>")
+ 		file(TO_NATIVE_PATH
+ 			"${USERFILE_COMMAND}"
+ 			USERFILE_COMMAND)
