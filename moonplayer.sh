@@ -12,5 +12,5 @@ case "${XDG_CURRENT_DESKTOP}" in
         export QT_QPA_PLATFORMTHEME=gtk2
         ;;
 esac
-cd "${_APPDIR}"
+cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
 exec "${_RUNNAME}" "$@" || exit $?
