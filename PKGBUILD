@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=yeastCC
-_pkgver=1.47.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('077fa47da9c0b4fcafd2560bc0486803')
-b2sums=('6d67d496c45435545262917ba468caf71d0ae08aaeda9e47b9f3688d417e50706a6fdbabbee2932d5e1660457e391c3a4a1534e8db1f174697c848568898b4d1')
+md5sums=('fb9396dbcff7442cb6fc4b047b57ccc8')
+b2sums=('e502adbfe120f3a078a48dc9e3df40a6448e5e3f82e60ab6ef235e3c363b4deb7f03720b8864fac2b4cbc629a7113fc4ad8227f3182296c02a1eaed192e5a94a')
 
 build() {
   mkdir build
