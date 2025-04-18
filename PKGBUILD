@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CopyhelpeR
-_pkgver=1.39.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f37e152e9cb4f74241015c2765960497')
-b2sums=('5e13cea0d824bc774280c1fdd9542d20f630dc0afbd6ad2bd7554d4c85efcf965def1aeead8b66272424f190656b21a6b74968c302b6ed35636eeaad2b151efc')
+md5sums=('abf295e3a61d73b7b508a905fca96d59')
+b2sums=('3b7309c142e09f4f3154a0cc63539b4cb642610b94669ad3be0abb76301475bae807ffc5111d23f7e963edc9d037dd79c2c4a0fc2d2f5c96cd8978901bb63834')
 
 build() {
   mkdir build
