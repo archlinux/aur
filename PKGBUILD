@@ -4,13 +4,14 @@ pkgname=python-sigmf
 _name=${pkgname#python-}
 pkgver=1.2.9
 _commit=d4031c0aef65bb08abf55fe0714f41f5e80c55a5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package for Signal Metadata Format (SigMF)'
 url='https://github.com/sigmf/sigmf-python'
 license=('LGPL3')
 arch=('any')
 depends=('python' 'python-jsonschema' 'python-numpy')
 makedepends=('git' 'python-build' 'python-installer' 'python-pytest' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+checkdepends=('python-hypothesis')
 source=("$pkgname::git+$url.git#commit=$_commit"
         0001-packages-sigmf.apps.patch)
 sha512sums=('4d19a70eff9e2c18b0f86fabd626eb4785ff5fe5ec8bbcfe72a1568b81fd1d8a20b98e448ecdf6713feb7234c44a3d332b63aa364ba10a01d60404e710a3d3f0'

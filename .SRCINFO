@@ -1,10 +1,11 @@
 pkgbase = python-sigmf
 	pkgdesc = Python package for Signal Metadata Format (SigMF)
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sigmf/sigmf-python
 	arch = any
 	license = LGPL3
+	checkdepends = python-hypothesis
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
