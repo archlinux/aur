@@ -1,6 +1,6 @@
 pkgbase = r-phyloseq
 	pkgdesc = Handling and analysis of high-throughput microbiome census data
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/phyloseq
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-phyloseq
 	optdepends = r-metagenomeseq
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/phyloseq_1.50.0.tar.gz
-	sha256sums = b6ac4086a97888a9090b6218eccd1bca98bd69f4c34d5be2f52de3adc5efc468
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/phyloseq_1.52.0.tar.gz
+	sha256sums = 396a1bd8e4d379d278a370528324fa82f51f1d99bddf6c3d1050edb2f9d42e7b
 
 pkgname = r-phyloseq
