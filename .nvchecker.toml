@@ -1,0 +1,3 @@
+[python-wikeddiff-git]
+source = "git"
+git = "https://github.com/lahwaacz/python-wikeddiff.git"
