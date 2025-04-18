@@ -1,6 +1,6 @@
 pkgbase = r-structstrings
 	pkgdesc = Implementation of the dot bracket annotations with Biostrings
-	pkgver = 1.22.1
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Structstrings
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-structstrings
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-trnascanimport
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Structstrings_1.22.1.tar.gz
-	sha256sums = 96c3b49f9a6e86b0ed7f05003bff85469ead7bfbcaf92d92ec11631e8b9ddf0a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Structstrings_1.24.0.tar.gz
+	sha256sums = 020351e356042143f5c9deaf1a2fce7a4f1427c4991ef98cf6ab3c51c43937c3
 
 pkgname = r-structstrings

@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Structstrings
-_pkgver=1.22.1
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Implementation of the dot bracket annotations with Biostrings'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-trnascanimport
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('96c3b49f9a6e86b0ed7f05003bff85469ead7bfbcaf92d92ec11631e8b9ddf0a')
+sha256sums=('020351e356042143f5c9deaf1a2fce7a4f1427c4991ef98cf6ab3c51c43937c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
