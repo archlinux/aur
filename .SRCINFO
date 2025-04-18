@@ -1,6 +1,6 @@
 pkgbase = wborder-git
 	pkgdesc = Add a colored border to Wayland clients run under this program
-	pkgver = 0.1.0.r0.g084da9f
+	pkgver = 0.2.0.r0.g5a5cdf2
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/wborder
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = wborder-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	makedepends = python
 	provides = wborder
 	conflicts = wborder
 	source = git+https://gitlab.freedesktop.org/mstoeckl/wborder.git

@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: 0BSD
 # Maintainer: M Stoeckl <com dоt mstoeckl аt wppkgb>
 pkgname=wborder-git
-pkgver=0.1.0.r0.g084da9f
+pkgver=0.2.0.r0.g5a5cdf2
 pkgrel=1
 pkgdesc='Add a colored border to Wayland clients run under this program'
 license=('GPL-3.0-or-later')
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'rust' 'cargo' 'python')
 url='https://gitlab.freedesktop.org/mstoeckl/wborder'
 source=('git+https://gitlab.freedesktop.org/mstoeckl/wborder.git')
 sha512sums=('SKIP')
