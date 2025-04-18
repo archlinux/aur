@@ -2,25 +2,26 @@
 # Contributor: Atterratio <atterratio@gmail.com>
 
 pkgname=q4wine-git
-pkgver=1.3.13.4.g82ced8e
+pkgver=1.4.0.2.g01e08d4
 pkgrel=1
 pkgdesc="A Qt GUI for Wine. (GIT Version)"
 arch=('x86_64')
 url='https://github.com/brezerk/q4wine'
 license=('GPL3')
 depends=(
-  'qt-solutions-git'
+  'gcc-libs' # libgcc_s.so libstdc++.so
+  'glibc' # libc.so
+  'qt6-base' # libQt6Core.so libQt6DBus.so libQt6Gui.so libQt6Network.so libQt6Sql.so libQt6Widgets.so libQt6Xml.so
   'icoutils'
   'wine'
   'which'
-  'desktop-file-utils'
   'hicolor-icon-theme'
 )
 makedepends=(
   'cmake'
   'git'
-  'qt5-tools'
-  'qt5-svg'
+  'qt6-tools'
+  'qt6-svg'
   'fuseiso'
 )
 optdepends=(
@@ -28,9 +29,12 @@ optdepends=(
   'fuseiso: Mount ISO files'
 )
 conflicts=('q4wine')
-provides=('q4wine')
+provides=(
+  'q4wine'
+  'libq4wine-core.so'
+  )
 source=('git+https://github.com/brezerk/q4wine.git')
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd q4wine
@@ -42,7 +46,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBS_ENTRY_PATH=/usr/lib \
-    -DWITH_SYSTEM_SINGLEAPP=ON
+    -DQT6=ON
 
   cmake --build build
 }
