@@ -2,8 +2,8 @@
 pkgname=quaternion-bin
 _appname="com.github.${pkgname%-bin}"
 pkgver=0.0.95.1
-pkgrel=5
-pkgdesc="A Qt5-based IM client for Matrix"
+pkgrel=6
+pkgdesc="A Qt5-based IM client for Matrix.(Prebuilt version)"
 arch=('x86_64')
 url="https://matrix.org/docs/projects/client/quaternion.html"
 _ghurl="https://github.com/quotient-im/Quaternion"
@@ -24,20 +24,24 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('43936b9bf37539051e438ef28b111261410ab5ae59d2a2fb84f130a76ef6336b'
-            '9976e64889638ec6e7888deb0598298c465e697c0f370a83abd0e4da976fb931')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+            'af5f3727c731a6b93f61338837afacedbe7308cccd003339498f90ddd3701df6')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=${pkgname%-bin}|Exec=${pkgname%-bin} %U|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed -i "s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin} %U/g" "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/squashfs-root/usr/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    for _icons in 16x16 22x22 32x32 48x48 64x64 128x128 scalable;do
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    _icon_sizes=(16x16 22x22 32x32 48x48 64x64 128x128 scalable)
+    for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}."* \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
