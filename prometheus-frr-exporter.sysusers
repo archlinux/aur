@@ -1,1 +1,3 @@
-u prometheus-frr-exporter - "Prometheus FRR exporter user"
+#Type Name                    ID  GECOS                         Home directory  Shell
+u     prometheus-frr-exporter - "Prometheus FRR exporter user" /var/run/frr /sbin/nologin
+m     prometheus-frr-exporter frrvty

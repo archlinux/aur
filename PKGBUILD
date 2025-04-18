@@ -4,7 +4,7 @@
 pkgbase='frr-exporter'
 _pkgname='frr_exporter'
 pkgname="prometheus-${pkgbase}"
-pkgver='1.4.0'
+pkgver='1.5.0'
 pkgrel='1'
 pkgdesc='Prometheus exporter for Free Range Routing'
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,10 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('b41682d2d94c057690a20b2b3c154fd3aac835e5280c29a3c06f8600d92d0876'
+sha256sums=('cbd3ce469b15ecfeecf7a8fc5c6bc5f0b2fa45756084288fc1093afd1f286b73'
             '4f1e7484d3ffe14e39edce43b8183c96da3dda69ff580dc232cc39f6bad5c2bd'
-            '241ae6fd3be0ea4cdec1f455195ef1b5a96edc48c2bce9f9c0a2a95347d4e712'
-            'b27dc51dab9d09e0caafeaeb6866174313f50f86724147c653b87ed7d431c814')
+            '0a039f6ad74bfcb1048cd3f4f0214c45667db672db25399e66217eb588282a4f'
+            '60acd9b1494312718b0744a44c2ea99a8349e992c3b6d39be3e7ebc60ef28e73')
 backup=("etc/conf.d/${pkgname}")
 
 prepare() {

@@ -7,7 +7,7 @@ Wants=network-online.target nss-lookup.target frr.service
 
 [Service]
 User=prometheus-frr-exporter
-Group=prometheus-frr-exporter
+Group=frrvty
 EnvironmentFile=-/etc/conf.d/prometheus-frr-exporter
 ExecStart=/usr/bin/prometheus-frr-exporter $FRR_EXPORTER_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID
