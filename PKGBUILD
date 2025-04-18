@@ -4,7 +4,7 @@ _appauthor=ClementNerma
 _appname=Jumpy
 _execname=${_appname,,}
 pkgname=${_execname}-bin
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="A faster, lightweight alternative to Zoxide"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v$
 source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_execname}-${arch[0]}-unknown-linux-musl.tgz")
 sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
             '81f585720c5c9e7717789d720d2b87f381eeb5705b1de3ec893aa377330ed4b1')
-sha256sums_x86_64=('1c0bec78280f57eefa7c905e1fa64e9663a9e01e2563bf60396edb235c93948d')
-sha256sums_aarch64=('1c0bec78280f57eefa7c905e1fa64e9663a9e01e2563bf60396edb235c93948d')
+sha256sums_x86_64=('3ff576e5b6de707724bbc73c9d149a60f951339e29b3052cafde11a0927fe865')
+sha256sums_aarch64=('3ff576e5b6de707724bbc73c9d149a60f951339e29b3052cafde11a0927fe865')
 
 package() {
 	cd "${srcdir}/" || exit
