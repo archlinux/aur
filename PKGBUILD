@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=org.Ce.eg.db
-_pkgver=3.20.0
+_pkgver=3.21.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b3cbc21c9f362b436ba4a80d9824da4')
-b2sums=('0443fe5b2568d2ae42aec09ebfc24dddbf7b7264733b81ee82446ce4a8a3190e2fab5c4b6302e95f27e310f8a2d186405ee03abd969114924715ec615b7ecb47')
+md5sums=('1ce14a0da8aa93b0a49c53253e3e0aa7')
+b2sums=('a1f9d6e171593c96fffb5c1fb730cc6e1d056e3d5c07da88326e74df543fd28f473e3b3dab4604c90cfaa6f10b136a59989813731a9d8b6b5727101dcc4a3978')
 
 build() {
   mkdir build
