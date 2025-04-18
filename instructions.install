@@ -13,20 +13,6 @@ dashboard:
 "
 }
 
-post_upgrade() {
-  echo
-  echo -e "${BOLD}Attention!${RESET}"
-  echo -e "The config at ${GREEN}~/.config/wlxoverlay/wayvr.yaml${RESET} should be removed and replaced with a new config at ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET} containing: "
-  echo "
-dashboard:  
-  exec: \"/usr/bin/wayvr-dashboard\"
-  args: \"\"
-  env: []
-"
-  echo -e "This message will be removed in ${BOLD}3 days${RESET} to give users enough time to take notice."
-  echo
-}
-
 post_remove() {
   echo -e "If you no longer want to use ${BOLD}wayvr-dashboard${RESET}, you may want to remove or modify ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET}"
 }
