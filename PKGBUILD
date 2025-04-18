@@ -3,12 +3,13 @@
 pkgname=pioneer-station
 pkgver=0.1
 pkgrel=1
-pkgdesc='Software to work with Geoscan Pioneer products'
+pkgdesc='Software for working with Geoscan Pioneer products'
 arch=('x86_64')
 source=("https://storage.yandexcloud.net/pioneer-doc.geoscan.ru-static/dwnlds/software/PioneerStation/PioneerStationLinux.zip")
 sha256sums=("b678c12868d51537f1ab4e71c143fd88807bb53764906070c8bdb1eb3b4b551f")
 url="https://docs.geoscan.ru/pioneer/instructions/applications/pioneer_station/pioneer_station_main.html"
 makedepends=('gendesk')
+depends=('libcanberra')
 
 PKG_PATH="/opt/$pkgname"
 WORK_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/$pkgname"
@@ -27,5 +28,6 @@ package() {
 
 post_install() {
     echo "==> If you want to access Pioneer products over USB, add your user to the 'uucp' group:"
-    echo "    sudo usermod -aG uucp \$USER"
+    echo "      \$ sudo usermod -aG uucp \$USER"
+    echo "    and then relogin"
 }

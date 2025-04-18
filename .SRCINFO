@@ -1,10 +1,11 @@
 pkgbase = pioneer-station
-	pkgdesc = Software to work with Geoscan Pioneer products
+	pkgdesc = Software for working with Geoscan Pioneer products
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://docs.geoscan.ru/pioneer/instructions/applications/pioneer_station/pioneer_station_main.html
 	arch = x86_64
 	makedepends = gendesk
+	depends = libcanberra
 	source = https://storage.yandexcloud.net/pioneer-doc.geoscan.ru-static/dwnlds/software/PioneerStation/PioneerStationLinux.zip
 	sha256sums = b678c12868d51537f1ab4e71c143fd88807bb53764906070c8bdb1eb3b4b551f
 
