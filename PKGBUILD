@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=words-picker-bin
 pkgver=53.8.1
-pkgrel=9
-pkgdesc="Hope to become a good word retrieval application.希望成为一款好的取词应用"
-arch=("x86_64")
+pkgrel=10
+pkgdesc="Hope to become a good word retrieval application.(Prebuilt version)希望成为一款好的取词应用"
+arch=('x86_64')
 url="https://github.com/ziqiangxu/words-picker"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -22,18 +22,22 @@ source=(
 )
 sha256sums=('be666577f86f12afde1ec40a4283ca6e0b5d724e813faa9769261f9b05870596'
             '15c866670d9927e3c1dfe818f42be61b5e479ce7d63edb75471bf4a464be17e0'
-            '094ca959b338028cd133d08bd43f416f1e0f8a11e1f86c89e7664cbdbd9c3f91')
-build() {
-    sed -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|${pkgname%-bin}|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+            'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
+prepare() {
+    sed -i -e "
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${pkgname%-bin}/${pkgname%-bin}|${pkgname%-bin}|g;s|.png||g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i -e "
+        s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g
+        s/.png//g
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/opt" "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
