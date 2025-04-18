@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=zano-appimage
-pkgver=2.1.0.382
+pkgver=2.1.5.397
 pkgrel=1
 pkgdesc="Zano desktop wallet"
 provides=('zano')
@@ -11,11 +11,11 @@ depends=('fuse2')
 url="https://zano.org/"
 options=(!strip)
 _desktop_name=Zano.desktop
-_filename=zano-linux-x64-release-v${pkgver}[571897a].AppImage
+_filename=zano-linux-x64-release-v${pkgver}[3917d95].AppImage
 source=(
   https://build.zano.org/builds/${_filename}
 )
-sha256sums=('029018b130e3bd8581b2af6561700c8a99410fbb1f8806ec62022c3178354259')
+sha256sums=('3f14a69d096ebd6fe0fb385bf7532b0d51f41fe7837193917dc1d51d69c68536')
 
 prepare() {
   cd "${srcdir}"
