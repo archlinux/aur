@@ -1,219 +1,101 @@
-# SPDX-License-Identifier: AGPL-3.0
-#
-# Maintainer:  Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer:  Truocolo <truocolo@aol.com>
 # Contributor: David Runge <dvzrv@archlinux.org>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
-_os="$( \
-  uname \
-    -o)"
-_pkg=maturin
-_py="python"
-_pkgbase="${_pkg}"
-pkgbase="${_pkg}-git"
+pkgbase=maturin-git
+_pkgbase=maturin
 pkgname=(
-  "${pkgbase}"
-  "${_py}-${_pkg}-git"
+  maturin-git
+  python-maturin-git
 )
-pkgver="1.4.0.r31.g6030857e"
+pkgver=1.8.3.r37.g773026c2
 pkgrel=1
-_pkgdesc=(
-  "Build and publish crates with pyo3,"
-  "rust-c${_py} and cffi bindings"
-)
-pkgdesc="${_pkgdesc[*]}"
-url="https://github.com/PyO3/${_pkg}"
-arch=(
-  x86_64
-  arm
-)
-license=(
-  'Apache-2.0 OR MIT'
-)
+pkgdesc="Build and publish crates with pyo3, rust-cpython and cffi bindings"
+url="https://github.com/PyO3/maturin"
+arch=(x86_64)
+license=('Apache-2.0 OR MIT')
 makedepends=(
   bzip2
   gcc-libs
   git
   glibc
-  "${_py}-build"
-  "${_py}-installer"
-  "${_py}-setuptools"
-  "${_py}-setuptools-rust"
-  "${_py}-wheel"
+  python-build
+  python-installer
+  python-setuptools
+  python-setuptools-rust
+  python-wheel
   rust
 )
-# disable LTO until ring can be built with it:
+## checkdepends=(
+##  python-cffi
+##  python-pycparser
+##  python-virtualenv
+## )
+# Disable LTO until ring can be built with it:
 # https://github.com/briansmith/ring/issues/1444
-options=(
-  !lto
-)
-source=(
-  "${_pkgbase}::git+${url}.git"
-)
-sha512sums=(
-  'SKIP'
-)
-b2sums=(
-  'SKIP'
-)
-
-_parse_ver() {
-  local \
-    _pkgver="${1}" \
-    _out="" \
-    _ver \
-    _rev \
-    _commit
-  _ver="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $1}')"
-  _rev="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $2}')"
-  _commit="$( \
-    echo \
-      "${_pkgver}" | \
-      awk \
-        -F '+' \
-        '{print $3}')"
-  _out=${_ver}
-  if [[ "${_rev}" != "" ]]; then
-    _out+=".r${_rev}"
-  fi
-  if [[ "${_commit}" != "" ]]; then
-    _out+=".${_commit}"
-  fi
-  echo \
-    "${_out}"
-}
+options=(!lto)
+source=("${_pkgbase}::git+$url.git")
+sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-  local \
-    _pkgver
-  cd \
-    "${_pkg}" || \
-    exit
-  _pkgver="$( \
-    git \
-      describe \
-      --tags | \
-        sed \
-          's/_/./g;s/-/+/g')"
-  _parse_ver \
-    "${_pkgver}"
-}
-
-_pick() {
-  local \
-    p="${1}" \
-    f \
-    d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir \
-      -p \
-        "$(dirname "$d")"
-    mv \
-      "$f" \
-      "$d"
-    rmdir \
-    -p \
-    --ignore-fail-on-non-empty \
-    "$( \
-      dirname \
-        "$f")"
-  done
+  cd $_pkgbase
+  git describe --long --tags | sed -r 's/^v//;s/-([^-]+)-g(.+)/.r\1.g\2/;s/-/./g'
 }
 
 prepare() {
-  local \
-    _target
-  _target="${CARCH}-unknown-linux-gnu"
-  [[ "${_os}" == "Android" ]] && \
-    _target="${CARCH}-linux-androideabi"
-  cd \
-    "${_pkg}"
-  cargo \
-    fetch \
-    --locked \
-    --target \
-      "${_target}"
+  cd $_pkgbase
+  sed -ri 's/^license = .*"([^"]+)"}/license = "\1"/' pyproject.toml
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd \
-    "${_pkg}"
-  "${_py}" \
-    -m \
-      build \
-      --wheel \
-      --no-isolation
+  cd $_pkgbase
+  MATURIN_SETUP_ARGS="--frozen --all-features" \
+    python -m build --wheel --no-isolation
 }
+
+## check() {
+##   cd $_pkgbase
+##   mkdir -p test-crates/venvs
+##   local cargo_skip_args=(
+##     # Requires wasm32-wasip1 target
+##     --skip=integration_wasm_hello_world
+##     # Fails with the following error, not sure why:
+##     # AttributeError: module 'uniffi_pure_proc_macro' has no attribute 'add'
+##     --skip=integration_uniffi_pure_proc_macro
+##   )
+##   cargo test --frozen --all-features -- "${cargo_skip_args[@]}"
+## }
 
 package_maturin-git() {
   depends=(
     bzip2
     gcc-libs
     glibc
+    openssl
     rust
   )
-  provides+=(
-    "${_pkgbase}=${pkgver}"
-  )
-  conflicts+=(
-    "${_pkgbase}"
-  )
- cd \
-    "${_pkg}"
-  "${_py}" \
-    -m installer \
-    --destdir="${pkgdir}" \
-    dist/*.whl
-  install \
-    -vDm 644 \
-    {Changelog,README}.md \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  install \
-    -vDm 644 \
-    license-mit \
-    -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
-  (
-    cd \
-      "${pkgdir}"
-    _pick \
-      "${_py}-${_pkg}" \
-      usr/lib
-  )
+  cd $_pkgbase
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  rm -vr "$pkgdir/usr/lib"
+  install -vDm 644 {Changelog,README}.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm 644 license-mit -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 package_python-maturin-git() {
   pkgdesc+=" - Python bindings"
   depends=(
-    "${_pkg}=${pkgver}"
-    "${_py}"
+    "maturin-git=$pkgver"
+    python
   )
-  provides+=(
-    "${_py}-${_pkg}=${pkgver}"
-  )
-  conflicts+=(
-    "${_py}-${_pkg}"
-  )
-  mv \
-    -v \
-    "${_py}-${pkg}/"* \
-    "${pkgdir}"
-  install \
-    -vDm 644 \
-    "${pkgdir}/license-mit" \
-    -t \
-    "${pkgdir}/usr/share/licenses/${_pkg}/"
-}
+  provides=("${pkgname%-git}")
+  conflicts=("${pkgname%-git}")
 
-# vim:set sw=2 sts=-1 et:
+  cd $_pkgbase
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  rm -vr "$pkgdir/usr/bin"
+  install -vDm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" license-mit
+}
