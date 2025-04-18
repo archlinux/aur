@@ -7,7 +7,7 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.3.230
+pkgver=2.3.281
 pkgrel=1
 pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
