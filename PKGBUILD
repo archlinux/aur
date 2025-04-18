@@ -1,13 +1,13 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r510.b134b06
+pkgver=1.0.r513.fe5c7d7
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
 url="https://gitlab.com/dwt1/dmscripts.git"
 license=('GPL3')
-depends=(dmenu ffmpeg findutils xclip xdotool xorg-xrandr bind jq youtube-dl)
+depends=(dmenu ffmpeg findutils xclip xdotool xorg-xrandr bind jq yt-dlp)
 groups=()
 makedepends=(pandoc git)
 checkdepends=()

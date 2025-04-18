@@ -1,6 +1,6 @@
 pkgbase = dmscripts-git
 	pkgdesc = A collection of dmenu scripts
-	pkgver = 1.0.r510.b134b06
+	pkgver = 1.0.r513.fe5c7d7
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dmscripts.git
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = dmscripts-git
 	depends = xorg-xrandr
 	depends = bind
 	depends = jq
-	depends = youtube-dl
+	depends = yt-dlp
 	optdepends = emacs: editor for dm-confedit
 	optdepends = didyoumean: used by dm-dictionary
 	optdepends = translate-shell: used by dm-dictionary
