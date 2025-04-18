@@ -1,6 +1,6 @@
 pkgbase = devbox-bin
 	pkgdesc = A command-line tool that lets you easily create isolated shells for development.(Written in Go.Prebuilt version)
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://www.jetpack.io/devbox/
 	arch = aarch64
@@ -10,15 +10,15 @@ pkgbase = devbox-bin
 	license = Apache-2.0
 	depends = docker
 	depends = nix
-	provides = devbox=0.14.1
+	provides = devbox=0.14.2
 	conflicts = devbox
-	source_aarch64 = devbox-0.14.1-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.1/devbox_0.14.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 20a0359c2bb65427c189850271ae11c993a22b14ed417e706c2c360c0ec200e3
-	source_armv7h = devbox-0.14.1-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.1/devbox_0.14.1_linux_arm64.tar.gz
-	sha256sums_armv7h = 20a0359c2bb65427c189850271ae11c993a22b14ed417e706c2c360c0ec200e3
-	source_i686 = devbox-0.14.1-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.1/devbox_0.14.1_linux_386.tar.gz
-	sha256sums_i686 = 20d3eb25625429f5b7e30f8804532bd7660c462c2d2f77c5bc13154d73501c1a
-	source_x86_64 = devbox-0.14.1-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.1/devbox_0.14.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2cdbdd411af0af61d1f1741e82f00ee0adbaaa527c41517fcf6e4afd6ce252da
+	source_aarch64 = devbox-0.14.2-aarch64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.2/devbox_0.14.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = a39c78d707cd1520417e6d0f0eec49d13845b363dee6945b65ce5a0045aed444
+	source_armv7h = devbox-0.14.2-armv7h.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.2/devbox_0.14.2_linux_arm64.tar.gz
+	sha256sums_armv7h = a39c78d707cd1520417e6d0f0eec49d13845b363dee6945b65ce5a0045aed444
+	source_i686 = devbox-0.14.2-i686.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.2/devbox_0.14.2_linux_386.tar.gz
+	sha256sums_i686 = 9821d6165d595f5f86bf63f3c39b9b813e9735813c759b970c624876f4a5d7ab
+	source_x86_64 = devbox-0.14.2-x86_64.tar.gz::https://github.com/jetpack-io/devbox/releases/download/0.14.2/devbox_0.14.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1702a327dc27712f408b99c90df0414ddf15ec3f15472ec006e95947f2a5dde7
 
 pkgname = devbox-bin
