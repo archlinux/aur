@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=xcore
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-xcoredata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f25b26360120ca184ece31f704c8daa')
-b2sums=('ed092a287cad773a43cb6c068933b9f01c929bda0dccba9e99778e91dcfa6e694416488e246737b4b0ddd0e8cf53222fd2c77798cd6d056fcb6d8707e8ed96a4')
+md5sums=('fdfd87f55e14a0fcab12feffff44a28f')
+b2sums=('ec7cad956a5e36d155323041fd45751b7251d66c2e6d1893855f23d1d4d9e787f69e2b4fa7e65eba887d120141be6ceed9d7368c9b42fedeac2014d410197a7d')
 
 build() {
   mkdir build
