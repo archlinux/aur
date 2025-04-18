@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-performance
-pkgver=48.0
+pkgver=48.1
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -77,7 +77,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=5f9768a2eac29c1ed56f1fbb449a77a3523683b6"
   "git+https://github.com/ptomato/jasmine-gjs.git#commit=856465dddbd92e82e574891e1ebc79e17d7b708a"
 )
-b2sums=('8c399191765672c682a4288a8a6450871938588870fa177ffbadf26369221af49a85ec3e45ad1ffd00d3d4ee4b93e4076bb16ff40b7fcd98531f8365d3f9ee2b'
+b2sums=('9f43af880a8f80bc405c704061b2ff8734ce3e806c75ee658359078d8a48d6a1522e26ddd060e0c57ca41e8f53bd82c47d6457cbda7df571a46ee43100426da7'
         'e31ae379039dfc345e8032f7b9803a59ded075fc52457ba1553276d3031e7025d9304a7f2167a01be2d54c5e121bae00a2824a9c5ccbf926865d0b24520bb053'
         'ecbbb9ce5895cc1caed2ddef39c70b4768d78ea0a929ea932d4149f923f92650973cdaefc2aacc9063f2ccf4ec965b57a9698a286f9a6561e39ce2e579ae4522')
 
