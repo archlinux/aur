@@ -1,8 +1,8 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=ffmpeg-dektec
-pkgver=2024.05.0
-pkgrel=6
+pkgver=2025.04.0
+pkgrel=1
 _sdkver=2025.01.0
 pkgdesc="FFmpeg Integration for DekTec Devices"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
   'dektec-drivers-dkms'
   'gcc-libs'
   'glibc'
+  'libdrm'
   'libva'
   'libvdpau'
   'libx11'
@@ -33,7 +34,7 @@ source=(
   "LinuxSDK_v${_sdkver}.tar.gz::https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
 )
 noextract=("FFmpeg_v${pkgver}.tar.gz")
-sha256sums=('c07d952c210967896bb3ab87753e15191936a87b68840034a876b850f423cbf6'
+sha256sums=('b1f83ddcbf602a2a4b7b29864a54e21cfa4ff86c4707c9c945629359027afd69'
             '47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15')
 
 prepare() {
