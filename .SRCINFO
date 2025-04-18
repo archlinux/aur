@@ -1,6 +1,6 @@
 pkgbase = r-setools
 	pkgdesc = SEtools: tools for working with SummarizedExperiment
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SEtools
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-setools
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SEtools_1.20.0.tar.gz
-	sha256sums = 24c7fb00be1bf5a280f4c4ef8ff435f968f847a5389e79d20243e2128d2a7898
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SEtools_1.22.0.tar.gz
+	sha256sums = d1edc2a22986536ea97104945220f2f4d1ff4926735d1364ad4c56fb8fa9f915
 
 pkgname = r-setools
