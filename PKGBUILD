@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A faster, lightweight alternative to Zoxide"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_appauthor}/${_appname}"
-_urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//_/-}"
+_urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver}"
 license=('Apache-2.0')
 
 depends=()
