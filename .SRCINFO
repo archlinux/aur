@@ -1,0 +1,20 @@
+pkgbase = dockmate
+	pkgdesc = Monitors a list of specified Docker containers and automatically upgrades them when new images are released.
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://pypi.org/project/dockmate/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = python-click
+	depends = confz
+	depends = python-docker
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/38/e3/a22b98e86fc2db144e235c3ae714ae657cd7b3f2a423d4aa9f225e8b60cf/dockmate-0.1.7.tar.gz
+	sha256sums = fe60b415bd1ef143b009b101a74240f326366aadec810343c3b0892e95bf77d3
+
+pkgname = dockmate
