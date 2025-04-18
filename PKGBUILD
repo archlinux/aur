@@ -3,15 +3,15 @@
 
 pkgname='perl-aliased'
 pkgver='0.34'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Use shorter versions of class names."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl')
-makedepends=()
+makedepends=('perl-module-build-tiny')
 url='http://search.mcpan.org/dist/aliased'
-source=('http://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/aliased-0.34.tar.gz')
+source=('https://search.mcpan.org/CPAN/authors/id/E/ET/ETHER/aliased-0.34.tar.gz')
 md5sums=('f7f659f689699a87115da1262eb6edc6')
 sha512sums=('65bc3f6401a0c2119105261112a3d9612abb98c874cd3409c6a1a9a0974aae902f30b6041121be6a74ee28584cf0c7ef506fe8318ab35ac550f70b4b387744f6')
 _distdir="aliased-0.34"
