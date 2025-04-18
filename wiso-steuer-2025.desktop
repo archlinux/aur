@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=WISO Steuer 2025
+Comment=File your German tax return for the tax year 2024
+Exec=/usr/bin/wiso-steuer-2025
+Icon=/usr/share/pixmaps/wiso-steuer-2025.png
+Terminal=false
+StartupWMClass=wmain25.dll
+Categories=Office;Finance;
+SingleMainWindow=true

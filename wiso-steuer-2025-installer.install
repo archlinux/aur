@@ -1,0 +1,51 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Wine will be used to run this Windows app;       ##
+    ## therefore, not everything may work properly.     ##
+    ##                                                  ##
+    ## Please see:                                      ##
+
+> https://appdb.winehq.org/objectManager.php?sClass=application&iId=21302
+
+    ## and:
+
+> https://appdb.winehq.org/objectManager.php?sClass=application&iId=4750
+
+    ## for details and known limitations.               ##
+    ##                                                  ##
+
+    ## To install the app, use the following            ##
+    ## command lines:                                   ##
+
+      WINEARCH=win64 WINEPREFIX=~/.local/share/wiso/wine \
+        WINETRICKS_DOWNLOADER_TIMEOUT=300 bash -c '
+          mkdir -p "${WINEPREFIX}" \
+          && winetricks -f -q --optout corefonts vcrun2022'
+
+      WINEARCH=win64 WINEPREFIX=~/.local/share/wiso/wine bash -c \
+        'mkdir -p "${WINEPREFIX}" \
+        && wine /opt/wiso-steuer-2025-installer/WISOSteuer2025.exe'
+
+      cp /opt/wiso-steuer-2025-installer/d2d1.dll \
+        ~/.local/share/wiso/wine/drive_c/Program\ Files/WISO/Steuersoftware\ 2025/
+
+    ## You may delete the installer package once        ##
+    ## installation has completed.                      ##
+
+EOF
+}
+
+post_remove() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Before completely removing your user data from   ##
+    ## the ~/.local/share/wiso prefix, make a backup of ##
+    ## that directory hierarchy to preserve your active ##
+    ## licenses.                                        ##
+    ##                                                  ##
+
+EOF
+}

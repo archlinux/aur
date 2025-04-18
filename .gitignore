@@ -1,0 +1,9 @@
+/.vscode/
+/src/
+/pkg/
+*.dll
+*.exe
+*.log
+*.pkg.*
+*.tar.*
+*.zip
