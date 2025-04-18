@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MetaPhOR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1f0bda4f5f0a9ee2b6aa60ee4cd6ffab')
-b2sums=('d00d5ec26352a087ef0bab3565cf1404fc977a354ad008991def06c51f478355a1b58c1ba60383c6c789e0d104e4bdf248661dba951fa904c7ad05a5dd8b0133')
+md5sums=('0490cd26762bc9c50cd36c9525d327e5')
+b2sums=('a6620d8403939bdb657cb54c4b7d99feea58a4c67b593e342f5301eb92837a669f9dcbe1c0045c913ac6bb0586c05eb7254de1e3748fd8796b47705868f7606d')
 
 build() {
   mkdir build
