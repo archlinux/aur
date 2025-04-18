@@ -2,7 +2,7 @@
 
 _hackage_name=weeder
 pkgname="haskell-${_hackage_name}"
-pkgver=2.4.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Detect dead exports or package imports"
 arch=('x86_64')
@@ -10,14 +10,14 @@ url="https://github.com/ocharles/weeder"
 license=('BSD')
 makedepends=('git' 'cabal-install')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4c2adbd741b0193a860defa51492e706e74672cdee62bb5db4663dd5cb634efe')
+sha256sums=('02d905109dfa1aaae009b03e4e6db7ff612aebd84debc305d3c48769e1eb9a9f')
 
 prepare() {
     cd "${srcdir}/${_hackage_name}-${pkgver}"
 }
 
 build() {
-    echo "trying to use $(ghc --version)"
+    echo -e "###\n###     trying to use $(ghc --version)\n###"
     cd "${srcdir}/${_hackage_name}-${pkgver}"
 
     cabal build -O2 -j
