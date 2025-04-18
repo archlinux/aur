@@ -22,8 +22,6 @@ makedepends=(
     'git'
     'go>=1.22'
     'gendesk'
-    'gcc'
-    'cmake'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -31,23 +29,27 @@ source=(
 sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
-    #git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g'
+    set -o pipefail
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
-    gendesk -q -f -n --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %F"
     cd "${srcdir}/${pkgname//-/.}"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
     export GOCACHE="${srcdir}/.go-build"
     export GOMODCACHE="${srcdir}/.go/pkg/mod"
-    if [ `curl -s ipinfo.io/country | grep CN | wc -l ` -ge 1 ];then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export GOPROXY=https://goproxy.cn
         echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> .gitconfig
         echo '    insteadof = https://github.com/' >> .gitconfig
-    else
-        echo "Your network is OK."
     fi
     go build -o "${pkgname%-git}"
 }
