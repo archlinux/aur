@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DRG Mod Integration
+Comment=Deep Rock Galactic mod loader and integration
+Exec=drg_mod_integration
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Game;
