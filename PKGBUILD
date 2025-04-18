@@ -2,7 +2,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 
 pkgname=python-doubleratchet
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A python implementation of the Double Ratchet algorithm"
 url='https://github.com/Syndace/python-doubleratchet'
@@ -15,7 +15,7 @@ makedepends=(
 	'python-wheel'
 )
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/Syndace/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7a74ad789e053ac1259a53b16868a54aafbcefda984a383f88525b767536a941')
+sha256sums=('64052f440aaeb2053e4e72d8de5c99d3d3d699189f6213b21a2fddbf4045aa50')
 depends=('python-cryptography')
 
 build() {
