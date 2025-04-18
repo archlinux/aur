@@ -1,6 +1,6 @@
 pkgbase = r-sdams
 	pkgdesc = Differential Abundant/Expression Analysis for Metabolomics, Proteomics and single-cell RNA sequencing Data
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SDAMS
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-sdams
 	depends = r-summarizedexperiment
 	depends = r-trust
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SDAMS_1.26.0.tar.gz
-	sha256sums = 3773481ec2b2cb73d88ce71f704340d7240c6d713013b810013a6cba39235813
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SDAMS_1.28.0.tar.gz
+	sha256sums = 61405c9b06610034252597b85d169b16afd87dad2fdd8c421b80c132e3e5b2d5
 
 pkgname = r-sdams
