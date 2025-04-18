@@ -1,0 +1,4 @@
+[python-xdoctest]
+source = "git"
+git = "https://github.com/Erotemic/xdoctest.git"
+prefix = "v"
