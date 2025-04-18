@@ -45,22 +45,14 @@ package() {
   tar xvf $srcdir/xenia_canary_linux.tar.gz
   rm LICENSE
   cd $pkgdir
-  mkdir -p usr/share/icons/hicolor/16x16/apps
-  mkdir -p usr/share/icons/hicolor/32x32/apps
-  mkdir -p usr/share/icons/hicolor/48x48/apps
-  mkdir -p usr/share/icons/hicolor/64x64/apps
-  mkdir -p usr/share/icons/hicolor/128x128/apps
-  mkdir -p usr/share/icons/hicolor/256x256/apps
-  mkdir -p usr/share/icons/hicolor/512x512/apps
-  mkdir -p usr/share/icons/hicolor/1024x1024/apps
-  cp $srcdir/16.png usr/share/icons/hicolor/16x16/apps/xenia-canary.png
-  cp $srcdir/32.png usr/share/icons/hicolor/32x32/apps/xenia-canary.png
-  cp $srcdir/48.png usr/share/icons/hicolor/48x48/apps/xenia-canary.png
-  cp $srcdir/64.png usr/share/icons/hicolor/64x64/apps/xenia-canary.png
-  cp $srcdir/128.png usr/share/icons/hicolor/128x128/apps/xenia-canary.png
-  cp $srcdir/256.png usr/share/icons/hicolor/256x256/apps/xenia-canary.png
-  cp $srcdir/512.png usr/share/icons/hicolor/512x512/apps/xenia-canary.png
-  cp $srcdir/1024.png usr/share/icons/hicolor/1024x1024/apps/xenia-canary.png
+  install -D $srcdir/16.png usr/share/icons/hicolor/16x16/apps/xenia-canary.png
+  install -D $srcdir/32.png usr/share/icons/hicolor/32x32/apps/xenia-canary.png
+  install -D $srcdir/48.png usr/share/icons/hicolor/48x48/apps/xenia-canary.png
+  install -D $srcdir/64.png usr/share/icons/hicolor/64x64/apps/xenia-canary.png
+  install -D  $srcdir/128.png usr/share/icons/hicolor/128x128/apps/xenia-canary.png
+  install -D $srcdir/256.png usr/share/icons/hicolor/256x256/apps/xenia-canary.png
+  install -D $srcdir/512.png usr/share/icons/hicolor/512x512/apps/xenia-canary.png
+  install -D $srcdir/1024.png usr/share/icons/hicolor/1024x1024/apps/xenia-canary.png
   mkdir -p usr/share/applications
   echo "#!/bin/bash
 
@@ -75,18 +67,18 @@ cd \$HOME/.xenia-canary
 
 if [ -f \$HOME/.xenia-canary/xenia_canary ]; then
   if command -v sha512sum &> /dev/null; then 
-    if [ $(sha512sum /usr/bin/xenia_canary | cut -d ' ' -f 1) != $(sha512sum \$HOME/.xenia-canary/xenia_canary | cut -d ' ' -f 1 ) ]; then 
-      echo "hash different between binary from /usr/bin and \$HOME/.xenia-canary"
+    if [ \$(sha512sum /usr/bin/xenia_canary | cut -d ' ' -f 1\) != \$(sha512sum \$HOME/.xenia-canary/xenia_canary | cut -d ' ' -f 1 ) ]; then 
+      echo 'hash different between binary from /usr/bin and \$HOME/.xenia-canary'
       copybinary
     else
       cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary/
     fi
   else
-    echo "no sha512sum command" 
+    echo 'no sha512sum command' 
     cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary/
   fi
 else
-  echo "\$HOME/.xenia-canary/xenia_canary does not exist"
+  echo '\$HOME/.xenia-canary/xenia_canary does not exist'
   copybinary
 fi
 
