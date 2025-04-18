@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MSA2dist
-_pkgver=1.10.1
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c63fc410efbb47ba6056d30a8ead7160')
-b2sums=('d640b3e3cc419ba7488a9c07106b6acdeea146c5272547d49c7551426e96f9c7bf5dc34b08950c0da0c2102a23ddbea272f75b244a26f7d89089b1fb039cb66b')
+md5sums=('81bff32406ab7a7e31705f758aa17589')
+b2sums=('8aa77dcca6264a987fe9da6ec60f614dc9ff299201aa3f04c713512389cd3f6da398a52bceee273f2c920d3e77c5586d2603a7bcab175173292700c2e579ebff')
 
 build() {
   mkdir build
