@@ -1,31 +1,16 @@
 # Maintainer: Dee.H.Y <dongfengweixiao AT hotmail DOT com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flclash-bin
-_pkgname=flclash
-pkgver=0.8.81
+_pkgname=FlClash
+pkgver=0.8.82
 pkgrel=1
 pkgdesc="A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free."
 arch=('x86_64')
 url="https://github.com/chen08209/FlClash"
 license=('GPL-3.0-only')
-conflicts=("flclash-git" "flclash")
-install="flclash.install"
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-  'cairo'
-  'at-spi2-core'
-  'hicolor-icon-theme'
-  'libdbusmenu-glib'
-  'gtk3'
-  'libepoxy'
-  'pango'
-  'gdk-pixbuf2'
-  'harfbuzz'
-  'fontconfig'
-  'libayatana-indicator'
-  'ayatana-ido'
-  'glib2'
-  'glibc'
-  'gcc-libs'
-  'zlib'
   'libayatana-appindicator'
   'libkeybinder3'
 )
@@ -33,23 +18,20 @@ makedepends=(
   'patchelf'
 )
 source=(
-	"${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
+	"${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.rpm"
 )
-sha256sums=('fb066d500a343c28e824f533ca5e6d5aacd1eedaaf3cbadfaaaaea4c03630a0f')
-
+sha256sums=('5259d993b8bcb9bb3ff83e5764c055452cc67f494d8e39a3c07dec95681fe18e')
+prepare() {
+  sed -i -e "
+    s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+    s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    5i\Categories=Network;
+  " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+}
 package() {
-    msg "Converting debian package..."
-    cd "$srcdir"
-    tar -I zstd -xvf data.tar.zst -C "$pkgdir"
-
-    # runpath
-    patchelf --set-rpath '$ORIGIN/lib' "$pkgdir"/usr/share/FlClash/FlClash
-    for i in "$pkgdir"/usr/share/FlClash/lib/*.so; do
-      echo "find so $i"
-      [ -z "$(patchelf --print-rpath "$i")" ] && continue
-      patchelf --set-rpath '$ORIGIN' "$i"
-    done
-
-    # permissions
-    chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    ln -sf "/usr/lib/${pkgname%-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
