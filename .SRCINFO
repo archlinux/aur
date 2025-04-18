@@ -1,6 +1,6 @@
 pkgbase = python-mouser
 	pkgdesc = Mouser Python API
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/sparkmicro/mouser-api/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-mouser
 	depends = python
 	depends = python-click
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/m/mouser/mouser-0.1.5.tar.gz
-	sha256sums = 1628574eceae806e0e3d9d94c1b1d241d5b4520565b26365dc8f2f11570a0b3c
+	source = https://files.pythonhosted.org/packages/source/m/mouser/mouser-0.1.6.tar.gz
+	sha256sums = 164c6ff6145f519fc60963724a23e8fb10741322b8934a0fea72d2e25a119328
 
 pkgname = python-mouser
