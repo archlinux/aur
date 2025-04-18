@@ -1,7 +1,7 @@
 pkgbase = qcm
 	pkgdesc = Qt client for netease cloud music
 	pkgver = 1.2.0_qsql
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hypengw/Qcm
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -23,7 +23,7 @@ pkgbase = qcm
 	depends = dbus
 	depends = ffmpeg
 	depends = fmt
-	depends = cubeb-git
+	depends = cubeb
 	source = git+https://github.com/hypengw/Qcm.git#tag=v1.2.0_qsql
 	source = git+https://github.com/effolkronium/random.git
 	source = git+https://github.com/hypengw/QmlMaterial.git
