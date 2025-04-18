@@ -1,0 +1,4 @@
+[fart]
+source = "git"
+git = "https://github.com/lionello/fart-it.git"
+prefix = "v"

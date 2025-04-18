@@ -1,0 +1,13 @@
+pkgbase = fart
+	pkgdesc = Find And Replace Text command line utility. New & improved version of the well-known grep command.
+	pkgver = 1.99d
+	pkgrel = 1
+	url = https://github.com/lionello/fart-it
+	arch = x86_64
+	license = custom:None
+	depends = glibc
+	provides = libfart.so
+	source = fart-it-1.99d.tar.gz::https://github.com/lionello/fart-it/archive/refs/tags/v1.99d.tar.gz
+	b2sums = 7841aeba26d09a902bf1bf36b65e1baa4b1fd48d1199843b7ad3a2a02ca05e90e0bf8efc7c00dfa23a2343c392adbd200f362da071a0413f339b0ebcbea277db
+
+pkgname = fart
