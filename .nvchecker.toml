@@ -1,0 +1,4 @@
+[pastix]
+source = "git"
+git = "https://gitlab.inria.fr/solverstack/pastix.git"
+prefix = "v"
