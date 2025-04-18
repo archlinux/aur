@@ -1,6 +1,6 @@
 pkgbase = r-coseq
 	pkgdesc = Co-Expression Analysis of Sequencing Data
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/coseq
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-coseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/coseq_1.30.0.tar.gz
-	sha256sums = e3f789e08b9ca24a1d912e625d9e95a280fc59c9a2a814206209e913d9277f74
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/coseq_1.32.0.tar.gz
+	sha256sums = c01c33bc26bf0ba65a365d3180026c5f1278203d9bf6ce6f3bd4ebc84d1ba5a7
 
 pkgname = r-coseq
