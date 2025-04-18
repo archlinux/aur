@@ -1,6 +1,6 @@
 pkgbase = r-snapcount
 	pkgdesc = R/Bioconductor Package for interfacing with Snaptron for rapid querying of expression counts
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/snapcount
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-snapcount
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/snapcount_1.18.0.tar.gz
-	sha256sums = 8f6f9269ad47b90e18db502eaf537be2fc96a16f89eb9f4c707f1363e7cbd3d9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/snapcount_1.20.0.tar.gz
+	sha256sums = 98986b41738350be56272ec8f7f326ffde578bf04e4b32e02aebd8e633ffefe4
 
 pkgname = r-snapcount
