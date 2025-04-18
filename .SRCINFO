@@ -1,7 +1,7 @@
 pkgbase = filkoll
 	pkgdesc = Fast command-not-found handler for Arch Linux
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://github.com/VorpalBlade/filkoll
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = filkoll
 	license = GPL-3.0-only
 	makedepends = cargo
 	options = !lto
-	source = filkoll-0.2.3.tar.gz::https://github.com/VorpalBlade/filkoll/archive/refs/tags/v0.2.3.tar.gz
-	sha256sums = ddffc2a5c7de7a2c6e20a988c77f51acd62b0cd20c6a50880432bcee110b2afe
+	source = filkoll-0.2.4.tar.gz::https://github.com/VorpalBlade/filkoll/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = c711f3514b4ab54c7675e9d15bc6c70d91dffe44b01e48a44e7f230b916f39c9
 
 pkgname = filkoll
