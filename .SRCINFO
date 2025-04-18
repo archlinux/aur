@@ -1,6 +1,6 @@
 pkgbase = r-made4
 	pkgdesc = Multivariate analysis of microarray data using ADE4
-	pkgver = 1.80.0
+	pkgver = 1.82.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/made4
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-made4
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/made4_1.80.0.tar.gz
-	sha256sums = 58e518de156fe4c03ba1d4d9c37a6c60a01aca744188de07a6772adb9770807c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/made4_1.82.0.tar.gz
+	sha256sums = 2efbb878a2720e33d4f0bbcb16ae6b8f7b6220b376c3a88a26e05f1bf847eb3f
 
 pkgname = r-made4
