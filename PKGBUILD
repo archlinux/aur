@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=in
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='Create a directory if needed, then run the given command there'
 arch=(x86_64)
 url='https://github.com/xyproto/in'
 license=(BSD)
 makedepends=(git rust)
-source=("git+$url#commit=268db1b992c4b4153aa1899646f3e6edb1bedfcd") # tag: 1.7.2
-b2sums=(SKIP)
+source=("git+$url#tag=v$pkgver")
+b2sums=('a53dd50cd1f85bf911a9153294066538ce2045b648435b4a8ca0af89e1fdd45d0917409f6a097adeb5dd0b13c6f8133e10c7db4965aabd164d942cb64bc4ee02')
 
 build() {
   export CFLAGS+=' -ffat-lto-objects -w'
