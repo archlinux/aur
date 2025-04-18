@@ -1,21 +1,27 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-git
-pkgver=22.43.24558.r6587.g14a7072d07
+pkgver=22.43.24558.r7611.g05c6612386
 pkgrel=1
 pkgdesc='Intel(R) Graphics Compute Runtime for oneAPI Level Zero and OpenCL(TM) Driver (git version)'
 arch=('x86_64')
 url='https://01.org/compute-runtime/'
 license=('MIT')
-depends=('intel-gmmlib' 'intel-graphics-compiler-git')
-makedepends=('git' 'cmake' 'igsc' 'libva' 'level-zero-headers-git')
+depends=('gcc-libs' 'glibc' 'intel-gmmlib' 'intel-graphics-compiler-git')
+makedepends=('cmake' 'git' 'igsc' 'libva' 'level-zero-headers-git')
 optdepends=('libva: for cl_intel_va_api_media_sharing'
             'libdrm: for cl_intel_va_api_media_sharing')
 provides=('intel-compute-runtime' 'opencl-driver' 'level-zero-driver')
 conflicts=('intel-compute-runtime')
 options=('!lto')
-source=('git+https://github.com/intel/compute-runtime.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/intel/compute-runtime.git'
+        '010-intel-compute-runtime-disable-werror.patch')
+sha256sums=('SKIP'
+            '84c340119a77571a7779a8c21245db62255b0ec28f325a6f250526bd47dd367f')
+
+prepare() {
+    patch -d compute-runtime -Np1 -i "${srcdir}/010-intel-compute-runtime-disable-werror.patch"
+}
 
 pkgver() {
     git -C compute-runtime describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
