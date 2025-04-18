@@ -1,7 +1,7 @@
 pkgbase = mksh
 	pkgdesc = MirBSD Korn Shell
-	pkgver = 59c
-	pkgrel = 1
+	pkgver = 59.c
+	pkgrel = 9
 	url = https://www.mirbsd.org/mksh.htm
 	install = mksh.install
 	arch = x86_64
