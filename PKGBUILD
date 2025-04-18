@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CNORfeeder
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Integration of CellNOptR to add missing links'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4046f1d1c7d20617f2123ead83fc98a48c432499fd778ed4a3db95a811398750')
+sha256sums=('9ac9d76641348610c291a49c03b736bb341e4313c1a11a7c7196f421c18b3052')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
