@@ -1,4 +1,4 @@
-pkgname="cuppa"
+pkgname="cuppajoe"
 pkgver="0.9.0"
 pkgrel="1"
 pkgdesc="A hot cuppa joe"
