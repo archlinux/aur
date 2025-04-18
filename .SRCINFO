@@ -1,6 +1,6 @@
 pkgbase = pguirestore
 	pkgdesc = Utility to restore postgreSQL backup.(Use system-wide electron)
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/RolandoHidalgo/pg-restore-electron
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = pguirestore
 	makedepends = icoutils
 	depends = electron34
 	depends = python
-	source = pguirestore.git::git+https://github.com/RolandoHidalgo/pg-restore-electron#tag=v2.2.2
+	source = pguirestore.git::git+https://github.com/RolandoHidalgo/pg-restore-electron#tag=v2.3.0
 	source = pguirestore.sh
-	sha256sums = 16aa1eeaa4cc76d2aa91584f340b4d1786ec7919d6a37738a6feb494f1117e4c
+	sha256sums = 03cd93b07620bf78c30e1a4a6bcb38e4153b7afcda84117584e7a85880ab4c17
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = pguirestore
