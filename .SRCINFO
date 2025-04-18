@@ -1,6 +1,6 @@
 pkgbase = r-assessorf
 	pkgdesc = Assess Gene Predictions Using Proteomics and Evolutionary Conservation
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AssessORF
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-assessorf
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AssessORF_1.24.0.tar.gz
-	sha256sums = 0da7d71aecabc158237ff4affe18bb468df10ad2d8e35951adc162cc932a15e0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AssessORF_1.26.0.tar.gz
+	sha256sums = 37c3e2819479174cca884351f270281dd9b4b7e4ede44d270a8416e144eea1f1
 
 pkgname = r-assessorf
