@@ -1,19 +1,20 @@
 pkgbase = m8mouse-git
 	pkgdesc = A RGB and DPI controller for m8mouse
-	pkgver = 1.0
+	pkgver = 1.0.r3.g3b5d0d4
 	pkgrel = 1
-	url = https://github.com/thekhalifa/m8mouse
+	url = https://github.com/nikopoto/m8mouse
 	install = m8mouse-git.install
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
 	makedepends = git
-	makedepends = make
+	makedepends = cmake
+	makedepends = pkgconf
 	makedepends = gcc
+	makedepends = make
 	depends = hidapi
 	provides = m8mouse
 	conflicts = m8mouse
-	source = git+https://github.com/thekhalifa/m8mouse.git
-	sha256sums = SKIP
+	source = git+https://github.com/nikopoto/m8mouse.git
+	md5sums = SKIP
 
 pkgname = m8mouse-git
