@@ -1,5 +1,5 @@
 pkgname=decpkg
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Declarative package installer for Arch Linux"
 arch=('any')

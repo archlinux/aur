@@ -41,7 +41,7 @@ CONFIG_JSON = f"{CONFIG_DIR}/config.jsonc"
 HISTORY_JSON = f"{CONFIG_DIR}/.history.json"
 
 NAME = "decpkg"
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 REQUIRES = "> 3.13.2"
 
 RESET = "\033[0m"
