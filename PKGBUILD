@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TCC
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='TCC: Differential expression analysis for tag count data with robust normalization strategies'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c3294699e14581974079bc6735e0a2a5a190de807cf04d2c0a44f44c7268133c')
+sha256sums=('bcb8ab220495fc726d56f01b1b7247e2e9cd9b376ae9889c81f9901bc03cc2b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
