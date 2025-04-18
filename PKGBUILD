@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flow-browser-bin
 _pkgname=Flow
-pkgver=0.3.2
+pkgver=0.4.0
 _electronversion=35
 pkgrel=1
 pkgdesc="A modern, tabbed web browser with Chrome extension support—built on Electron.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ad7feaf369d155727c405ab3c37be5ced7a1101bb0420c976117647c8d728e61'
+sha256sums=('9510d25f0518b983e0d09d4b690c92b7b6996215cf115d5fed88c8238f173026'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
