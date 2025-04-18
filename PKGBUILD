@@ -67,7 +67,7 @@ cd \$HOME/.xenia-canary
 
 if [ -f \$HOME/.xenia-canary/xenia_canary ]; then
   if command -v sha512sum &> /dev/null; then 
-    if [ \$(sha512sum /usr/bin/xenia_canary | cut -d ' ' -f 1\) != \$(sha512sum \$HOME/.xenia-canary/xenia_canary | cut -d ' ' -f 1 ) ]; then 
+    if [ \$(sha512sum /usr/bin/xenia_canary | cut -d ' ' -f 1) != \$(sha512sum \$HOME/.xenia-canary/xenia_canary | cut -d ' ' -f 1 ) ]; then 
       echo 'hash different between binary from /usr/bin and \$HOME/.xenia-canary'
       copybinary
     else
@@ -75,7 +75,7 @@ if [ -f \$HOME/.xenia-canary/xenia_canary ]; then
     fi
   else
     echo 'no sha512sum command' 
-    cp -vn /usr/bin/xenia_canary \$HOME/.xenia-canary/
+    cp -vi /usr/bin/xenia_canary \$HOME/.xenia-canary/
   fi
 else
   echo '\$HOME/.xenia-canary/xenia_canary does not exist'
