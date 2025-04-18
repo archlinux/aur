@@ -9,8 +9,8 @@
 
 _pkgname=ModusToolboxProgtools
 pkgname=modustoolbox-progtools
-_pkgver=1.3.1
-pkgver=${_pkgver}.1292
+_pkgver=1.4.0
+pkgver=${_pkgver}.1399
 pkgrel=1
 pkgdesc="Provides a cross-platform installation of several utilities that allow you to program flash on Infineon MCU and Kit devices."
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('fontconfig' 'libwebp' 'libglvnd' 'dbus' 'libxkbcommon' 'libxkbcommon-x
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxprogtools"
 _source="${_pkgname}_${pkgver}.deb"
 source=("file://${_source}")
-sha256sums=('b764c67923f94a59820674ac2647d9c0d2cde953e9ab7058bbc8de1896ba724d')
+sha256sums=('355a387701600a0af35edbfa9ab6e93e47bf69226f97e3a4bcb2d7b6b6147d2f')
 options=('!strip')
 install="${pkgname}.install"
 
@@ -29,7 +29,7 @@ prepare() {
     cd ${srcdir}
     bsdtar -xf data.tar.gz -C ./
     rm data.tar.gz
-    mv ./opt/Tools/${_pkgname}-${_pkgver} ./opt/
+    mv ./opt/Tools/${_pkgname}-1.4 ./opt/
     # Remove the empty directory
     rm -r ./opt/Tools
     # Update link in desktop file
