@@ -1,7 +1,7 @@
 pkgbase = nndownload
 	pkgdesc = Download and process links from Niconico (nicovideo.jp)
-	pkgver = 1.18
-	pkgrel = 2
+	pkgver = 1.19
+	pkgrel = 1
 	url = https://github.com/AlexAplin/nndownload
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = nndownload
 	depends = python-setuptools
 	depends = python-tqdm
 	depends = python-urllib3
-	source = https://files.pythonhosted.org/packages/py3/n/nndownload/nndownload-1.18-py3-none-any.whl
-	sha256sums = f4cd35fa44c61ffbce6fa654d9711ec27b90d9d81acc74d4d642775365a9bbad
+	source = https://files.pythonhosted.org/packages/py3/n/nndownload/nndownload-1.19-py3-none-any.whl
+	sha256sums = 6830d465c5e26d48e213554d9dc16f15f5972ba121b11a2f73de3f35a2cbd904
 
 pkgname = nndownload
