@@ -1,6 +1,6 @@
 pkgbase = r-lipidr
 	pkgdesc = Data Mining and Analysis of Lipidomics Datasets
-	pkgver = 2.20.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lipidr
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-lipidr
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lipidr_2.20.0.tar.gz
-	sha256sums = 3202ac2dba9c7fa8af9e383a09735c218aeed26d348a0b0e58b6338da616620e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lipidr_2.22.0.tar.gz
+	sha256sums = a98edfe00cea910d7dfd2cad780a09ca58538662581b90a7ec7f639e688f32e3
 
 pkgname = r-lipidr
