@@ -1,9 +1,11 @@
 # Maintainer:
 # Contributor: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 
+: ${_java_ver:=17}
+
 _pkgname="mindustry"
 pkgbase="$_pkgname"
-pkgver="146"
+pkgver="147.1"
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
@@ -11,9 +13,8 @@ license=('GPL-3.0-only')
 arch=('any')
 
 makedepends=(
+  "java-environment=${_java_ver:?}"
   'alsa-lib'
-  'archlinux-java-run' # AUR
-  'java-environment=17'
   'libicns'
 )
 
@@ -26,8 +27,8 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=(
-  'aa1684d87d9f3e1d1a2da415b5e055ea6493fe31398748447927bd903019adbd'
-  '30cc1b00968aaec8dbb76a2dad6439c7d7418970fafe24c350b2be4e68c3e5d6'
+  '79ec2f5c9b66a3036b1832267cf9326fdb7a85f0e9a78034f22f2c790a6d2768'
+  '33717873f0062e0141075b158a531c9b5cc7f1f10dab328317624d0c18235253'
 )
 
 prepare() {
@@ -43,8 +44,8 @@ build() {
   # skip android subproject; see settings.gradle
   unset ANDROID_HOME JITPACK
 
-  JAVA_HOME=$(archlinux-java-run --min 17 --max 17 --feature jdk --java-home) \
-    ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
+  JAVA_HOME="/usr/lib/jvm/java-${_java_ver}-openjdk" \
+    ./gradlew --warning-mode=all --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
 
   cd core/assets/icons
   icns2png --extract icon.icns
