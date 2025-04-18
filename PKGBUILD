@@ -2,21 +2,22 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=tidgi-bin
 _pkgname=tidgi
-pkgver=0.11.3
+pkgver=0.12.1
 provides=('tidgi')
 conflicts=('tidgi')
 pkgrel=1
 pkgdesc="Customizable personal knowledge-base with Github as unlimited storage and blogging platform."
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/tiddly-gittly/TidGi-Desktop"
+url='https://tidgi.fun'
+_src="https://github.com/tiddly-gittly/TidGi-Desktop"
 license=('MPL2')
 depends=('nodejs' 'alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'desktop-file-utils' 'expat' 'gdk-pixbuf2' 'glib2' 'gtk3' 'gvfs' 'hicolor-icon-theme' 'libcups' 'libdrm' 'libnotify' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'nspr' 'nss' 'openssl' 'pango' 'trash-cli' 'xdg-utils' 'zlib')
-source_i686=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-source_x86_64=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-source_aarch64=("https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-sha512sums_i686=('45ce8844c63a5004c794246b8f89faee4635bc8a0cb418dcc641cb1aeb803151132b831c9ca52e0acf51c6916070f522de8e24e2e63e76db294de2f5c9eb1b4c')
-sha512sums_x86_64=('45ce8844c63a5004c794246b8f89faee4635bc8a0cb418dcc641cb1aeb803151132b831c9ca52e0acf51c6916070f522de8e24e2e63e76db294de2f5c9eb1b4c')
-sha512sums_aarch64=('4df77b77c308c8d78a327dcde6d98aef989b8da88e3f4d6b708355e69cf443559bd769a432f86b3ac14f0bb2d025d9645539ee802f43b33caaa243a359ac40f7')
+source_i686=("$_src/releases/download/v${pkgver}-update/${_pkgname}_${pkgver}_amd64.deb")
+source_x86_64=("$_src/releases/download/v${pkgver}-update/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("$_src/releases/download/v${pkgver}-update/${_pkgname}_${pkgver}_arm64.deb")
+sha512sums_i686=('aa4f441dcf6fd55d62a9de8b59792397e85d0de61fb4886aecef301873c0f1b6dd2236062e4fe577bfbaeac7d9eb63a27d1a127d7b4cb7dc7d648579c11f7c70')
+sha512sums_x86_64=('aa4f441dcf6fd55d62a9de8b59792397e85d0de61fb4886aecef301873c0f1b6dd2236062e4fe577bfbaeac7d9eb63a27d1a127d7b4cb7dc7d648579c11f7c70')
+sha512sums_aarch64=('8a27b6069608896ccc2dddf87389b8accdcfc8136521f2ac2cf618c81532d82fbe7e84db490fd29cec68ef2a2d99a2c2584338eb1dac63208af05352614652a0')
 
 package(){
 	# Extract package data
