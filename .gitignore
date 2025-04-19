@@ -3,3 +3,5 @@
 !.SRCINFO
 !.gitignore
 !caddy.hook
+!caddy.sysusers
+!caddy.tmpfiles
