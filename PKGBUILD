@@ -59,5 +59,5 @@ package() {
   install -Dm644 512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/xenia-canary.png"
   install -Dm644 1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/xenia-canary.png"
   install -Dm644 xenia-canary-bin.desktop "${pkgdir}/usr/share/applications/xenia-canary-bin.desktop"
-  install -Dm755 xenia-canary-bin "${pkgdir}/usr/bin/xenica-canary-bin"
+  install -Dm755 xenia-canary-bin "${pkgdir}/usr/bin/xenia-canary-bin"
 }
