@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=0.2.2.r0.gd392e9a
-pkgrel=4
+pkgver=0.2.2.r3.g5f59b93
+pkgrel=1
 pkgdesc="crm (Cargo registry manager)"
 arch=($CARCH)
 url="https://github.com/wtklbm/crm"
@@ -12,12 +12,14 @@ conflicts=(${pkgname%-git})
 replaces=()
 depends=(
     gcc-libs
-    glibc)
+    glibc
+)
 makedepends=(
     git
-    cargo)
+    cargo
+)
 backup=()
-options=('!lto')
+options=('!lto' '!debug')
 install=
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
@@ -29,6 +31,9 @@ pkgver() {
 
 prepare() {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
+    cd "${srcdir}/${pkgname%-git}/"
+    #     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -36,6 +41,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+
     cargo build --release --all-features
 }
 
@@ -50,5 +56,8 @@ package() {
     cd "${srcdir}/${pkgname%-git}/"
 
     export RUSTUP_TOOLCHAIN=stable
+
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    install -Dm0644 "LICENSE-MIT" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 "LICENSE-Apache-2.0" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
