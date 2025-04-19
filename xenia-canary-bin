@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# bash wrapper that runs xenia_canary after copying it to $HOME/.xenia-canary
+
+copybinary () {
+  cp -vf /usr/bin/xenia_canary $HOME/.xenia-canary/
+}
+
+mkdir -p $HOME/.xenia-canary
+cd $HOME/.xenia-canary
+
+if [ -f $HOME/.xenia-canary/xenia_canary ]; then
+  if command -v sha512sum &> /dev/null; then 
+    if [ $(sha512sum /usr/bin/xenia_canary | cut -d ' ' -f 1 ) != $(sha512sum $HOME/.xenia-canary/xenia_canary | cut -d ' ' -f 1 ) ]; then 
+      echo 'hash different between binary from /usr/bin and\$HOME/.xenia-canary'
+      copybinary
+    else
+      cp -vn /usr/bin/xenia_canary $HOME/.xenia-canary/
+    fi
+  else
+    echo 'no sha512sum command' 
+    cp -vi /usr/bin/xenia_canary $HOME/.xenia-canary/
+  fi
+else
+  echo '$HOME/.xenia-canary/xenia_canary does not exist'
+  copybinary
+fi
+
+exec $HOME/.xenia-canary/xenia_canary
