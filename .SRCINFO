@@ -1,0 +1,27 @@
+pkgbase = VocalShaper-git
+	pkgdesc = A JUCE-based Open Source DAW
+	pkgver = r1219.4d138f5
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/Do-sth-sharp/VocalShaper
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = clang
+	makedepends = git
+	makedepends = curl
+	makedepends = zip
+	makedepends = unzip
+	makedepends = tar
+	makedepends = cmake
+	makedepends = ninja
+	depends = freetype2
+	depends = curl
+	depends = webkit2gtk
+	depends = gtk3
+	depends = patchelf
+	provides = vocalshaper=r1219.4d138f5
+	conflicts = vocalshaper
+	source = git+https://github.com/Do-sth-sharp/VocalShaper
+	sha256sums = SKIP
+
+pkgname = VocalShaper-git
