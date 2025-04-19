@@ -1,0 +1,12 @@
+pkgbase = nothing-font-git
+	pkgdesc = Nothing typefaces (designed for NothingOS)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/xeji01/nothingfont
+	arch = any
+	source = git+https://github.com/xeji01/nothingfont
+	sha512sums = SKIP
+
+pkgname = ttf-nothing-font-git
+
+pkgname = otf-nothing-font-git
