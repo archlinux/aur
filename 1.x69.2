@@ -1,0 +1,45 @@
+diff '--exclude=.git' -ura --new-file edor/.github/workflows/pkgarm.yml edornew/.github/workflows/pkgarm.yml
+--- edor/.github/workflows/pkgarm.yml	2025-04-18 14:16:52.396043450 +0000
++++ edornew/.github/workflows/pkgarm.yml	2025-04-18 14:57:49.615716936 +0000
+@@ -16,6 +16,14 @@
+     - name: build
+       run: |
+         name=`cat debian/changelog | head -1 | grep -o ^[^\ ]*`
++        repo_at_gh=`cat debian/control | grep "^Homepage" | grep -o [^/]*$`
++        version=`cat debian/changelog | head -1 | grep -Poe "[^\(]*(?=\))"`
++        text=`curl https://api.github.com/graphql -X POST -H "Authorization: bearer ${{ secrets.PAT }}" -d '
++        {
++         "query": "query { repository ( owner: \"colin-i\", name: \"'"${repo_at_gh}"'\" ) { release ( tagName: \"'"${version}"'\" ) { databaseId }} }"
++        }'`
++        id=`echo ${text} | grep -Poe "(?<=databaseId\":)[^}]*"`
++        up_url=https://uploads.github.com/repos/colin-i/edor/releases/${id}/assets{?name,label}
+         here=`pwd`
+         cd /home/alarm
+ 
+@@ -29,10 +37,9 @@
+         nm=`ls | grep ".*\.xz$" | grep -v debug`
+         nm2=`echo ${nm} | sed s/-any/-arch-aarch64/`
+         mv ${nm} ${here}/${nm2}
+-        echo "file=${nm2}" >> $GITHUB_ENV
+ 
+-        wget https://github.com/colin-i/test/releases/download/1.5/${name} -O 1.txt
+-        echo "up_url=`cat 1.txt`" >> $GITHUB_ENV
++        echo "file=${nm2}" >> $GITHUB_ENV
++        echo "up_url=${up_url}" >> $GITHUB_ENV
+     - name: Upload Release Asset
+       uses: actions/upload-release-asset@v1
+       with:
+diff '--exclude=.git' -ura --new-file edor/s/main.c edornew/s/main.c
+--- edor/s/main.c	2025-04-18 14:16:52.006043628 +0000
++++ edornew/s/main.c	2025-04-18 14:57:50.755719227 +0000
+@@ -2094,7 +2094,10 @@
+ 			}
+ 			writeprefs(f,mask);
+ 			unsigned short nowsize=lseek(f,0,SEEK_CUR);//now is 7 bar_bytes and a mask, not 256
++			#pragma GCC diagnostic push
++			#pragma GCC diagnostic ignored "-Wunused-result"
+ 			ftruncate(f,nowsize);
++			#pragma GCC diagnostic pop
+ 			close(f);
+ 		}
+ 	}
