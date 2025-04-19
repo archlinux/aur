@@ -1,17 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vulkan-caps-viewer-x11-bin
-pkgver=4.00
+pkgver=4.01
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64')
-url="https://vulkan.gpuinfo.org/"
+url="https://vulkan.gpuinfo.org"
 license=('LGPL-3.0-or-later')
-depends=('qt5-x11extras' 'vulkan-icd-loader')
+depends=(
+  'hicolor-icon-theme'
+  'qt5-x11extras'
+  'vulkan-icd-loader'
+)
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64.AppImage")
-sha256sums=('bfeb4349115eca2d1314e2abbe81969ab61e2f49e1458057c7e3e6a87fba32d6')
+sha256sums=('995e7d9d1913968e8007bd76ab5533fac98fd0c2e9e3c91968be41be2e0f5f3c')
 
 prepare() {
   chmod +x "vulkancapsviewer_${pkgver}_linux64.AppImage"
