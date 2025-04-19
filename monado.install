@@ -1,4 +1,5 @@
 post_install() {
     printf '%s\n' 'To make Monado the default OpenXR runtime, create a symlink to'
     printf '%s\n' '/usr/share/openxr/1/openxr_monado.json at /etc/xdg/openxr/1/active_runtime.json'
+    printf '%s\n' 'note: this can be locally overriden with ~/.config/openxr/1/active_runtime.json'
 }
