@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Icon=cs2d.png
-Exec=cs2d
+Exec=LD_LIBRARY_PATH=/opt/cs2d /opt/cs2d/CS2D
 Name=Counter-Strike 2D
 Name[zh_CN]=反恐精英 2D
 Comment=Multiplayer 2D FPS shooter
