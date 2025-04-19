@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bookget
-pkgver=25.0213
+pkgver=25.0417
 pkgrel=1
 pkgdesc="bookget 数字图书馆下载工具，目前支持约 50+ 个数字图书馆。"
 arch=($CARCH)
@@ -20,7 +20,7 @@ backup=(etc/bookget/config.ini)
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2e2c11c946bef6d48a809890485b9bb9b31766bfcd3aad69e5ec35b33c2a2f04')
+sha256sums=('4e894e1aab17769cfb5a6a3f7601ed942e8e4e9440286f8ac576a39097ca9874')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
