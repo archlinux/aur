@@ -1,0 +1,16 @@
+pkgbase = stc-syncthing-git
+	pkgdesc = Command line tool for syncthing
+	pkgver = 1.5.4.r2.gb6f1822
+	pkgrel = 1
+	url = https://github.com/tenox7/stc
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	provides = stc=1.5.4.r2
+	conflicts = stc-git
+	conflicts = stc
+	source = stc::git+https://github.com/tenox7/stc.git
+	sha256sums = SKIP
+
+pkgname = stc-syncthing-git
