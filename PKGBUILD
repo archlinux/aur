@@ -3,7 +3,7 @@
 _pkgname=OpenBoardView
 pkgname=${_pkgname,,}
 pkgver=9.95.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux SDL/ImGui edition software for viewing .brd files'
 arch=('i686' 'x86_64')
 url='https://openboardview.org/'
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}
-  cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 
