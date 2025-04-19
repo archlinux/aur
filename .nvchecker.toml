@@ -1,0 +1,3 @@
+[vulkan-caps-viewer-wayland-bin]
+source = "git"
+git = "https://github.com/SaschaWillems/VulkanCapsViewer.git"
