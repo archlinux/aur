@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=tplay-git
-pkgver=v0.5.0.r11.g44745fb
+pkgver=v0.6.2.r0.g77205a6
 pkgrel=1
 epoch=
 pkgdesc="A terminal ASCII media player. View images, gifs, videos, webcam, YouTube, etc.. directly in the terminal as ASCII art."
@@ -33,10 +33,6 @@ build() {
 	cd tplay
 	# Improve the app performance by building it against the current cpu architecture.
 	export RUSTFLAGS="-C target-cpu=native"
-
-	# temporary fixes to resolve build failure until the PR https://github.com/maxcurzi/tplay/pull/46 gets resolved.
-	sed -i "s/opencv = { version = \"0\.84\.4\"/opencv = { version = \"0\.93\.1\"/g" Cargo.toml
-	sed -i "s/ffmpeg-next = \"6\.0\"/ffmpeg-next = \"7\.1\.0\"/g" Cargo.toml
 
 	if [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.35' ]]; then
 		mold -run cargo build -r --features="mpv_0_35" --no-default-features
