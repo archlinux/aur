@@ -3,9 +3,9 @@
 _packagename=readest
 _Packagename=Readest
 pkgname=$_packagename-git
-pkgver=0.9.35
+pkgver=r636.759779a
 pkgrel=1
-pkgdesc="Description of your app"
+pkgdesc="Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface"
 arch=('x86_64' 'aarch64' 'i686')
 url='https://github.com/readest/readest'
 license=('AGPL-3.0-or-later')
