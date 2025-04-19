@@ -7,7 +7,7 @@ pkgver=r374.a034869
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=()
 makedepends=('git' 'libxslt' 'docbook-xsl' 'rsync' 'cmake' 'boost' 'flatpak')
 arch=('x86_64')
@@ -48,7 +48,8 @@ package_pat-aur-host-git() {
 	arch=('any')
 	depends+=(
 		'pat-aur-client-git'
-		'parallel' 'dumb-init'
+		'parallel'
+		'dumb-init'
 		'pacutils'
 		'aurutils'
 		'bubblewrap'
