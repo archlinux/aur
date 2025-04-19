@@ -1,0 +1,17 @@
+pkgbase = iso2dsd
+	pkgdesc = GUI for ISO to DSD conversion using iso2dsd, sacd_extract and fix2064-byte.c patch
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://dsd.sonore.us/iso2dsd
+	arch = x86_64
+	license = GPL
+	depends = java-runtime
+	depends = gcc
+	source = iso2dsd_gui.jar.zip::http://dsd.sonore.us/iso2dsd_gui.jar.zip
+	source = sacd_extract-0.3.9.3-117-linux.zip::https://github.com/EuFlo/sacd-ripper/releases/download/0.3.9.3/sacd_extract-0.3.9.3-117-linux.zip
+	source = 2064-byte.c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = iso2dsd
