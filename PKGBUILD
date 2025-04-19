@@ -1,7 +1,7 @@
 # Maintainer: Phusit Somboonyingsuk
 
 pkgname=mprisence
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Discord Rich Presence for MPRIS media players"
 arch=("x86_64")
