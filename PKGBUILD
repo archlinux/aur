@@ -1,13 +1,13 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Co-Maintainer: AliReza AmirSamimi <alireza.amirsamimi at gmail dot com>
 pkgname='persepolis-git'
-pkgver=5.0.1.r0.g1e46168
+pkgver=5.1.0.r0.g6ff4211
 pkgrel=1
 pkgdesc="Persepolis is a download manager written in Python. (Github version)."
 arch=('any')
 url="https://github.com/persepolisdm/persepolis"
 license=('GPL3')
-depends=('ffmpeg' 'libnotify' 'libpulse' 'pyside6' 'python-psutil' 'python-pysocks' 'python-requests' 'python-setproctitle' 'python-urllib3' 'qt6-svg' 'sound-theme-freedesktop' 'yt-dlp')
+depends=('ffmpeg' 'pyside6' 'python-dasbus' 'python-psutil' 'python-pysocks' 'python-requests' 'python-setproctitle' 'python-urllib3' 'qt6-svg' 'sound-theme-freedesktop' 'yt-dlp')
 makedepends=('git' 'meson')
 optdepends=('qadwaitadecorations-qt6: for using adwaita style in GTK based Desktops.'
             'adwaita-qt6: for using adwaita style in GTK based Desktops. (alternative)')
