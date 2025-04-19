@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vlc-protocol
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 epoch=
 pkgdesc="VLC Protocol Handler - - Support vlc:// protocol links"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.install"
     "${pkgname}-linux-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname}-linux.zip")
 sha256sums=('879e060df1bcb21837ba452f90f75c49f2952a64a4ea66b1d8444b4029ad10f2'
-            '5f0d8377eb7b318eadaa322ac31d49102b9ee6911433ef1b9e21531c3c2cca26')
+            'c3dde17f6e27ef6f725f4c20d3ba8707c526a49e369c4d2c5f2331b94d02daa1')
 noextract=(
     ${pkgname}-linux-${pkgver}.zip)
 
