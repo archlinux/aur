@@ -1,49 +1,5 @@
-diff -ur yaze-ag-2.40.3_with_keytrans-orig/Makefile_linux_32_i586 yaze-ag-2.40.3_with_keytrans/Makefile_linux_32_i586
---- yaze-ag-2.40.3_with_keytrans-orig/Makefile_linux_32_i586	2017-02-06 18:45:40.186909802 +0100
-+++ yaze-ag-2.40.3_with_keytrans/Makefile_linux_32_i586	2017-02-06 19:01:49.772906822 +0100
-@@ -6,9 +6,9 @@
- CC            =	gcc
- 
- #where you want the binaries and manual page
--BINDIR	      = /usr/local/bin
--MANDIR	      = /usr/local/man/man1
--LIBDIR	      = /usr/local/lib/yaze
-+BINDIR	      = $(PREFIX)/bin
-+MANDIR	      = $(PREFIX)/share/man/man1
-+LIBDIR	      = $(PREFIX)/lib/yaze
- DSKDIR        = $(LIBDIR)/disks
- DOCDIR        = $(LIBDIR)/doc
- DOCHTMLDIR    = $(LIBDIR)/doc_html
-@@ -205,11 +205,12 @@
- 		rm -rf $(LIBDIR)
- 		mkdir -p $(LIBDIR)
- 		mkdir -p $(MANDIR)
-+		mkdir -p $(BINDIR)
- 		$(INSTALL) -s -c -m 755 yaze_bin $(BINDIR)
- 		$(INSTALL) -s -c -m 755 cdm $(BINDIR)
- 		$(INSTALL) -c -m 755 yaze $(BINDIR)
--		ln -f -s $(BINDIR)/yaze $(BINDIR)/cpm
--		ln -f -s $(BINDIR)/yaze $(BINDIR)/z80
-+		ln -f -s /usr/bin/yaze $(BINDIR)/cpm
-+		ln -f -s /usr/bin/yaze $(BINDIR)/z80
- 		$(INSTALL) -c -m 644 yaze-cpm3.boot $(LIBDIR)
- 		$(INSTALL) -c -m 644 yaze.boot $(LIBDIR)
- 		$(INSTALL) -c -m 644 m2.ktt $(LIBDIR)
-diff -ur yaze-ag-2.40.3_with_keytrans-orig/yaze.1 yaze-ag-2.40.3_with_keytrans/yaze.1
---- yaze-ag-2.40.3_with_keytrans-orig/yaze.1	2017-02-06 18:45:40.196909589 +0100
-+++ yaze-ag-2.40.3_with_keytrans/yaze.1	2017-02-06 19:01:49.776240084 +0100
-@@ -91,7 +91,7 @@
- address given by the \fB-l\fR option, if one is present, or else at
- the basepage (see \fB-p\fR).  If a bootfile is not specified with the
- \fB-b\fR option, yaze-ag looks for the file yaze-cpm3.boot in the current
--directory first, then in /usr/local/lib/yaze to boot CP/M 3.1.
-+directory first, then in /usr/lib/yaze to boot CP/M 3.1.
- If yaze-ag is compiled without the flag -DBOOTSYS yaze-ag looks for the
- file yaze.boot (instead of yaze-cpm3.boot) to boot the CP/M 2.2 replacement
- SuperDos.
-diff -ur yaze-ag-2.40.3_with_keytrans-orig/yaze.sh yaze-ag-2.40.3_with_keytrans/yaze.sh
---- yaze-ag-2.40.3_with_keytrans-orig/yaze.sh	2017-02-06 18:45:40.216909162 +0100
-+++ yaze-ag-2.40.3_with_keytrans/yaze.sh	2017-02-06 19:01:49.776240084 +0100
+--- yaze.sh	2015-04-26 15:15:29.000000000 +0100
++++ yaze.sh.new	2022-05-28 20:33:43.386759212 +0100
 @@ -1,9 +1,9 @@
  #!/bin/sh
  
@@ -51,10 +7,10 @@ diff -ur yaze-ag-2.40.3_with_keytrans-orig/yaze.sh yaze-ag-2.40.3_with_keytrans/
 -S_CPMDSKS=/usr/local/lib/yaze/disks
 -S_DOCFILES=/usr/local/lib/yaze/doc
 -S_DOCFILES_html=/usr/local/lib/yaze/doc_html
-+S_YAZEFILES=/usr/lib/yaze
-+S_CPMDSKS=/usr/lib/yaze/disks
-+S_DOCFILES=/usr/lib/yaze/doc
-+S_DOCFILES_html=/usr/lib/yaze/doc_html
++S_YAZEFILES=/usr/lib/yaze-ag
++S_CPMDSKS=/usr/share/yaze-ag/disks
++S_DOCFILES=/usr/doc/yaze-ag-2.51.3/doc
++S_DOCFILES_html=/usr/doc/yaze-ag-2.51.3/doc_html
  
  if [ ! -f .yazerc ]
  then
