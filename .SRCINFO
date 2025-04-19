@@ -1,6 +1,6 @@
 pkgbase = razer-cli
 	pkgdesc = CLI for configuring Razer devices.
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/lolei/razer-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = razer-cli
 	makedepends = python-setuptools
 	depends = openrazer-daemon
 	depends = xorg-xrdb
-	source = razer-cli-2.2.1.tar.gz::https://github.com/lolei/razer-cli/archive/refs/tags/v2.2.1.tar.gz
-	sha256sums = 2855c078cc39dca727b4e94291f509a2a702a341283d6fe4953860ee9767db1c
+	source = razer-cli-2.3.0.tar.gz::https://github.com/lolei/razer-cli/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 0f2a0d1f5b187209e33f4476807de226fe8c3215ca9a4f43021fb49d70adbbbe
 
 pkgname = razer-cli
