@@ -1,7 +1,7 @@
 pkgbase = picocrypt-bin
 	pkgdesc = A very small, very simple, yet very secure encryption tool.
 	pkgver = 1.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Picocrypt/Picocrypt
 	arch = x86_64
 	license = GPL3

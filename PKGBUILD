@@ -3,7 +3,7 @@
 pkgname=picocrypt-bin
 basename=Picocrypt
 pkgver=1.48
-pkgrel=1
+pkgrel=2
 pkgdesc="A very small, very simple, yet very secure encryption tool."
 arch=('x86_64')
 url="https://github.com/Picocrypt/Picocrypt"
@@ -25,15 +25,16 @@ sha256sums=('654e14930cf853be0d4c4a4beb3c51eebb18f046aad04f58a2fa5476256f26fa'
             'f5a65b52a7d49952ea1ee4c8a2c00a1b8aa8d94b2c0e58febced99d83ca9872c')
 
 package() {
-    cd "${pkgdir}"
+    cd "${pkgdir}" || return 1
 
     # this extracts all into the pkgdir
     tar xf "${srcdir}/data.tar.xz"
 
     mv "${pkgdir}/usr/bin/picocrypt-gui" "${pkgdir}/usr/bin/picocrypt"
-    ln -sf "${pkgdir}/usr/bin/picocrypt" "${pkgdir}/usr/bin/picocrypt-gui"
+    ln -rsf "${pkgdir}/usr/bin/picocrypt" "${pkgdir}/usr/bin/picocrypt-gui"
 
     install -Dm644 "${srcdir}/LICENSE_${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
     install -Dm644 "${srcdir}/README_${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${srcdir}/INTERNALS_${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}/INTERNALS.md"
     install -Dm644 "${srcdir}/CHANGELOG_${pkgver}" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
