@@ -1,0 +1,5 @@
+pkg
+src
+necesse-server-*
+*.tar.gz
+*.tar.zst
