@@ -5,10 +5,10 @@
 # Contributor: Limao Luo <luolimao@gmail.com>
 
 pkgname=spideroak-one
-_pkgname=SpiderOakONE
-pkgver=7.5.0_1
-pkgrel=2
-pkgdesc="Secure file backup, sync and sharing client. SpiderOakONE client."
+_pkgname='SpiderOak One'
+pkgver=7.5.2
+pkgrel=1
+pkgdesc="Secure file backup, sync and sharing client. SpiderOak One client."
 arch=('x86_64')
 url="https://crossclave.com/"
 license=('LicenseRef-SpiderOakONE')
@@ -17,10 +17,10 @@ makedepends=()
 provides=('spideroak')
 options=('!strip')
 install="${pkgname}".install
-source=("https://spideroak-releases.s3.us-east-2.amazonaws.com/SpiderOakONE_${pkgver}_amd64.deb"
+source=("https://spideroak-releases.s3.us-east-2.amazonaws.com/spideroakone_${pkgver}_amd64.deb"
 	'LICENSE')
-sha256sums=('5d526e4c27124a8b37285e7ee7ca4feec61439ffcfe291d9bd14509a0d784ca2'
-	    'ee0d1c8c41e95ba2a11de4fe5cf0d89e2b237afc86dc411f58f3b388db8198e9')
+sha256sums=('2c012c296b23d6281c215a7dedc6702d858507793d44a047afc5907853aacc35'
+	    '62271420e251febb88cec99de1559002237ab980c2912e091d2f0d1b8bec7141')
 
 package() {
 tar -Jxf "${srcdir}"/data.tar.xz -C "$pkgdir"/
