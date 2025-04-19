@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dreamerr
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Error Handling Made Easy"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('df2e0c5e9378f06e81f48a71389bb692')
-b2sums=('80a031156c03db98cb76cdab2d962f6a3da0268a86bf0887519299c31c509fa33612e2ed06516b340f3279305063a3e460e416432a9122be6f3587dcf81cbc80')
+md5sums=('297cb8febc725d008680837200f2af41')
+b2sums=('063a52385ddade2709a4cf93433ca5fba7d0582b8a8c62636311b6cc33b27f56908ae0a8931e06f45113a7190f94cd00ee330b3a84d82dd945acc8f5bc7fa420')
 
 build() {
   mkdir build
