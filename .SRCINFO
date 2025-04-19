@@ -1,0 +1,13 @@
+pkgbase = hyprproxlock
+	pkgdesc = A proximity-based daemon for Hyprland that triggers screen locking and unlocking through hyprlock based on Bluetooth device proximity.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Da4ndo/hyprproxlock
+	arch = x86_64
+	license = BSD
+	depends = bluez-deprecated-tools
+	depends = hyprlock>=0
+	source = https://github.com/Da4ndo/hyprproxlock/releases/download/0.1.0/hyprproxlock-0.1.0-linux-x86_64.tar.gz
+	sha256sums = bfc5a5d512137bfb9d58788689793de456cdd74ae40ca98c0af88dfa96bebf59
+
+pkgname = hyprproxlock
