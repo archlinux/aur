@@ -3,7 +3,7 @@
 _Name="touchHLE"
 pkgname="${_Name,,}"
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High-level emulator for iPhone OS apps"
 arch=('aarch64' 'x86_64')
 url="https://touchhle.org"
@@ -137,8 +137,10 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgsrc}"
   export CFLAGS+=" -Wno-error=incompatible-pointer-types"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
   # disable static link to sdl2 and openal
   # cargo build --frozen --release --all-features
   cargo build --frozen --release --no-default-features
@@ -154,6 +156,7 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "target/release/${_Name}" "${pkgdir}/usr/bin/${_Name}"
   install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -vDm644 "OPTIONS_HELP.txt" "${pkgdir}/usr/share/doc/${pkgname}/OPTIONS_HELP.txt"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
@@ -170,6 +173,8 @@ package() {
   for font in "${!_font_symlinks[@]}"; do
     ln -vsf "${_font_symlinks[$font]}" "${pkgdir}/usr/share/${pkgname}/fonts/${font}"
   done
+  find "${_Name}_fonts" -type f \( -name '*Noto*' -o -name '*noto*' \) -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/share/${pkgname}/fonts/{}" \;
 
   cp -arP "${_Name}_dylibs" "${pkgdir}/usr/share/${pkgname}/dylibs"
 }
