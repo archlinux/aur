@@ -1,4 +1,4 @@
-pkgbase = VocalShaper-git
+pkgbase = vocalshaper-git
 	pkgdesc = A JUCE-based Open Source DAW
 	pkgver = r1219.4d138f5
 	pkgrel = 1
@@ -24,4 +24,4 @@ pkgbase = VocalShaper-git
 	source = git+https://github.com/Do-sth-sharp/VocalShaper
 	sha256sums = SKIP
 
-pkgname = VocalShaper-git
+pkgname = vocalshaper-git
