@@ -1,5 +1,5 @@
 pkgname=ruffle-bin
-pkgver=2025.03.18
+pkgver=2025.04.18
 pkgrel=1
 pkgdesc="Unnofficial Ruffle bin package that supplies binaries for Linux x64, i368 and Arm64"
 arch=('x86_64' 'aarch64' 'i386' 'pentium4' 'i686')
@@ -10,11 +10,11 @@ makedepends=('unzip')
 conflicts=(ruffle-git)
 sha256sums=('7670a14a3a9ffd2a231abd9232f09c817b6312b60049175324ec4d374dffc6b8'
             'f5c8c21286d89f26c4f101e317641df02bf1af0529b6ca0897f9cebc3d654d7a')
-sha256sums_x86_64=('7f2616553d5292fe09782bb9df9baa40098fecaacc1be20367ba4da1fdd825b5')
-sha256sums_aarch64=('6b1099fb23dc2ae1d18c3dfa3eaf7c696b34ff80e04867e626989bf21a81a442')
-sha256sums_i386=('90f256f4f87a90ea90b9ff7271486a96cadade18c63469d0429894d98b8a105e')
-sha256sums_pentium4=('90f256f4f87a90ea90b9ff7271486a96cadade18c63469d0429894d98b8a105e')
-sha256sums_i686=('90f256f4f87a90ea90b9ff7271486a96cadade18c63469d0429894d98b8a105e')
+sha256sums_x86_64=('0fc1aec87d3956640453c7adc2c0a68b6a477f10c8ebe24d8d93061c1aa1e3b4')
+sha256sums_aarch64=('62fe3c49b8550f9183e029125ff48c0c8b5a16623373332feca9bf2b2f41064c')
+sha256sums_i386=('7df0187e855e2d30776b35a5d885fcf8fbb1b8699a2b1486196e0fed8989c07f')
+sha256sums_pentium4=('7df0187e855e2d30776b35a5d885fcf8fbb1b8699a2b1486196e0fed8989c07f')
+sha256sums_i686=('7df0187e855e2d30776b35a5d885fcf8fbb1b8699a2b1486196e0fed8989c07f')
 source=("ruffle.desktop" "ruffle.svg")
 source_x86_64=("ruffle-$pkgver-x64.tar.xz::https://gitlab.com/linuxbombay/ruffle-linux/binaries/ruffle-$pkgver/-/raw/main/ruffle-x64.tar.xz")
 
