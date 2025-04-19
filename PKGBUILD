@@ -1,6 +1,6 @@
 # Maintainer: Electria
 pkgname=btwrap-git
-pkgver=r107.0646382
+pkgver=r109.5830b33
 pkgrel=1
 pkgdesc="Shell wrapper for managing BTRFS snapshots"
 arch=(any)
