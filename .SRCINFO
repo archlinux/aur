@@ -1,6 +1,6 @@
 pkgbase = basedpyright
 	pkgdesc = pyright fork with various improvements and pylance features
-	pkgver = 1.28.5
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://docs.basedpyright.com/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = basedpyright
 	makedepends = python
 	makedepends = tk
 	depends = nodejs
-	source = basedpyright-1.28.5.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v1.28.5.tar.gz
-	sha256sums = a407f40094e005ed61ccc4440a498d70a6e09b049d39a3b79bb47b3a29264f5b
+	source = basedpyright-1.29.0.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v1.29.0.tar.gz
+	sha256sums = 1af1260687c0edb36d17bb0767cbfc16fdd7aca4c5d452fd3aa2a49a74a70abc
 
 pkgname = basedpyright
