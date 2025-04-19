@@ -1,17 +1,16 @@
 pkgbase = karlyriceditor
 	pkgdesc = A program which lets you edit and synchronize lyrics with karaoke songs in various formats.
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gyunaev/karlyriceditor
 	install = karlyriceditor.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = qt5-multimedia
 	depends = desktop-file-utils
 	source = karlyriceditor-3.2.tar.gz::https://github.com/gyunaev/karlyriceditor/archive/3.2.tar.gz
 	sha256sums = 67aa863f7e34b8fd76dfc74615da3ff8b761a138be651bcb55d03d54626bddae
 
 pkgname = karlyriceditor
-
