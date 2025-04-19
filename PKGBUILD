@@ -1,21 +1,22 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r6552.31ea226e9
+pkgver=r6872.8d9bca282
 pkgrel=1
 pkgdesc="MMORPG server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
 license=('GPL-2.0-or-later')
 depends=(
-    'ace'
     'gcc-libs'
     'glibc'
+    'libdwarf'
     'mariadb'
     'mariadb-libs'
     'onetbb'
     'openssl'
     'zlib'
+    'zstd'
 )
 makedepends=(
     'cmake'
@@ -31,14 +32,13 @@ install="$pkgname.install"
 provides=('vmangos')
 conflicts=('vmangos')
 source=(
-    "$pkgname::git+https://github.com/vmangos/core.git"
+    "$pkgname::git+https://github.com/vmangos/core.git#branch=native"
     "worlddb::git+https://github.com/brotalnia/database.git"
     "user.conf"
     "tmpfile.conf"
     "vmangos-realmd.service"
     "vmangos-mangosd.service"
     "vmangos-mangosd.socket"
-    "cpp17.patch"
     "vmangos-extract-data.sh"
 )
 sha256sums=('SKIP'
@@ -48,7 +48,6 @@ sha256sums=('SKIP'
             'cf30a0c18c6596235f3f95868a1d19bd2a07fd6accd946b619e3d1c3de8d3514'
             '9d99c70255ec8749a8d59010c53d76c41251783acfccf6c335c5dffa63b5d037'
             'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783'
-            '9d07a24259d37a91ea18c15050c5e351331c0c8ca9b5f997569244016768b0ba'
             '6735f90d85c6470333d6d30ec19c47c3a3aa0d8c5ff2ac949a201c67d95a797a')
 
 pkgver() {
@@ -57,9 +56,6 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    patch -p1 < "$srcdir/cpp17.patch"
-
     cd "$srcdir/worlddb"
     bsdtar -xvf world_full_14_june_2021.7z
 
@@ -77,7 +73,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DSUPPORTED_CLIENT_BUILD=5875 \
         -DUSE_EXTRACTORS=1 \
-        -DCONF_DIR='/etc/vmangos'
+        -DCONF_DIR='/etc/vmangos' \
+        -DCPPTRACE_USE_EXTERNAL_LIBDWARF=1 \
+        -DCPPTRACE_USE_EXTERNAL_ZSTD=1 \
+        -DCPPTRACE_USE_EXTERNAL_GTEST=1 \
+        -DCPPTRACE_FIND_LIBDWARF_WITH_PKGCONFIG=1
     cmake --build build
 }
 
@@ -118,4 +118,8 @@ package() {
     install -Dm644 migrations/world_db_updates.sql "$pkgdir/usr/share/vmangos/sql/migrations/mangos_db_updates.sql"
     install -Dm644 migrations/characters_db_updates.sql "$pkgdir/usr/share/vmangos/sql/migrations/characters_db_updates.sql"
     install -Dm644 migrations/logs_db_updates.sql "$pkgdir/usr/share/vmangos/sql/migrations/logs_db_updates.sql"
+
+    # Remove extra cpptrace files
+    rm -rf "$pkgdir/usr/include"
+    rm -rf "$pkgdir/usr/lib/cmake"
 }
