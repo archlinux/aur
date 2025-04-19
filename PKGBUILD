@@ -7,7 +7,7 @@ _electron=electron34
 _nodejs="20.18.3"
 
 pkgname=${_pkgname}-electron
-pkgver=1.98.2.25072
+pkgver=1.99.32562
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing. - System-wide Electron edition"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,7 +19,7 @@ optdepends=(
 	'gvfs: For move to trash functionality'
 	'libdbusmenu-glib: For KDE global menu'
 )
-makedepends=('git' 'python' 'nvm' 'jq')
+makedepends=('git' 'python' 'nvm' 'jq' 'rustup')
 provides=(
 	'codium'
 	'vscodium'
@@ -40,7 +40,7 @@ source=(
 )
 sha256sums=(
 	SKIP
-	'6004b91a1717daef3aea9884ada41df9fe0dace4458f7b5c9efa451f73bd0bf4'
+	'338d678e199b53f06d10ac9c82567c4baceb7ff3bd3c0017d4b2ef4a801ae99a'
 	'da8fbd6dcafa667e2b3368ae87ed216e7e76f56ce4a3e4ede426dc129e8f8349'
 	'28a271ba5b2e50b11259abd794ad2ab083612c78bee2d617bb5a8702932c8f44'
 	'3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
@@ -107,12 +107,10 @@ build() {
 	_ensure_local_nvm
 	nvm install "${_nodejs}"
 	nvm use "${_nodejs}"
-	npm install --global yarn node-gyp
+	npm install --global node-gyp
 
-	# Contain yarn, electron and node
+	# Contain electron and node
 	export HOME=$srcdir
-	# Use non-hidden yarn cache folder
-	yarn config set cache-folder "$srcdir/yarn-cache"
 
 	cd "$srcdir/vscodium"
 
@@ -121,6 +119,9 @@ build() {
 
 	# https://github.com/nodejs/node/issues/51555
 	export DISABLE_V8_COMPILE_CACHE=1
+
+	rustup default stable
+	export CARGO_TARGET_DIR=${srcdir}/${_pkgname}/vscode/cli/target
 
 	. dev/build.sh
 }
