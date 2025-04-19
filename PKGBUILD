@@ -28,12 +28,15 @@ build() {
   export CGO_ENABLED=0
 
   _commit=$(git rev-parse HEAD)
-  _date=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+  _fulldate=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+  _monthYearDate=$(date -u +'%B %Y')
+
+  sed -i -e "s/@VERSION@/${pkgver}/g" -e "s/@DATE@/$(_monthYearDate)/g" "${_binaryname}.1"
 
   go build -trimpath -ldflags="-s -w \
   -X qp/internal/about.Version=${pkgver} \
   -X qp/internal/about.Commit=${_commit} \
-  -X qp/internal/about.Date=${_date}" \
+  -X qp/internal/about.Date=${_fulldate}" \
     -o ${_binaryname} ./cmd/${_binaryname}
 }
 
