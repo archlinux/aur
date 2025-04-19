@@ -1,8 +1,4 @@
-pkg
-src
-*.pkg.tar.*
-Caddyfile
-index.html
-*.service
-*.log
-*.tar.gz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
