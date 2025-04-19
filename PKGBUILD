@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=oxker
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="A simple TUI to view & control Docker containers"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6967c065b32345db89b5e07e638d84276ef887f17d3d1a1c930df9a6e81e93ac')
+sha256sums=('b410039c1cbbada80cf010ccfd9450ea6761b0ed5ae9e7fc171b0958bef25089')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -25,8 +25,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  # https://github.com/mrjackwills/oxker/issues/57
-  cargo test --frozen -- --skip "ui"
+  cargo test --frozen
 }
 
 package() {
