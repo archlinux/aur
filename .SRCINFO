@@ -1,14 +1,14 @@
 pkgbase = 0ad-boongui
 	pkgdesc = User interface mod for the RTS game 0 A.D.
-	pkgver = 2.4.1
+	pkgver = 2.6.11
 	pkgrel = 1
 	url = https://github.com/LangLangBart/boonGUI
 	arch = any
 	license = MIT,
 	license = CCPL
-	makedepends = unzip
+	makedepends = libarchive
 	noextract = boongui.pyromod
 	source = https://github.com/LangLangBart/boonGUI/releases/latest/download/boongui.pyromod
-	sha256sums = SKIP
+	sha256sums = 8a368d90a222013c04ef7b9e0264ceb1d1c33bf3ced0d18b04f522e88251fa68
 
 pkgname = 0ad-boongui
