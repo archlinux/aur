@@ -1,0 +1,28 @@
+diff --git a/xtask/src/main.rs b/xtask/src/main.rs
+index 9c3d90f..286e603 100644
+--- a/xtask/src/main.rs
++++ b/xtask/src/main.rs
+@@ -76,7 +76,13 @@ fn build_lua_libs(release: bool) -> Result<(), DynError> {
+         ("lua53", "5.3"),
+         ("lua54", "5.4"),
+     ] {
+-        let mut args = vec!["build", "--features", lua_feature_flag];
++        let mut args = vec![
++            "build",
++            "--frozen",
++            "--no-default-features",
++            "--features",
++            lua_feature_flag,
++        ];
+
+         if release {
+             args.push("--release");
+@@ -115,7 +121,7 @@ fn build(release: bool) -> Result<(), DynError> {
+     let cargo = env::var("CARGO").unwrap_or_else(|_| "cargo".to_string());
+     let dest_dir = project_root().join(format!("target/{profile}"));
+
+-    let mut args = vec!["build", "--features", "luajit"];
++    let mut args = vec!["build", "--frozen", "--features", "luajit"];
+
+     if release {
+         args.push("--release");
