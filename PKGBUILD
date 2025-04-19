@@ -9,7 +9,7 @@
 
 pkgbase=nvidia-sdk
 pkgname=('nvidia-sdk' 'nvidia-sdk-doc')
-pkgver=12.2.72
+pkgver=13.0.19
 pkgrel=1
 pkgdesc='NVIDIA Video Codec SDK (NVDECODE and NVENCODE APIs)'
 arch=('any')
@@ -17,7 +17,7 @@ url='https://developer.nvidia.com/nvidia-video-codec-sdk/'
 license=('LicenseRef-Custom')
 makedepends=('poppler')
 source=("local://Video_Codec_SDK_${pkgver}.zip")
-sha256sums=('fc3e05cd2a194fb93e2e9f11f8844f678401f4df5c9d017632d68c992e818a6e')
+sha256sums=('8ce8047af64dfb6b76f4671cedc895a550ba30fc31c1530e37a252ef86352209')
 
 prepare() {
     pdftotext -layout "Video_Codec_SDK_${pkgver}/LicenseAgreement.pdf"
