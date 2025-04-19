@@ -2,7 +2,7 @@
 
 pkgname=atl-gui-git
 _pkgname=atl-gui
-pkgver=0.1.0.r34.15f6c0f
+pkgver=0.1.0.r36.193e85e
 pkgrel=1
 pkgdesc="A sleek, modern GTK4 graphical user interface for Android Translation Layer (Git Version)"
 arch=('any')
@@ -11,7 +11,8 @@ license=('GPL')
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'python-distro')
 makedepends=('git')
 optdepends=('appimagetool: For AppImage building'
-            'android-translation-layer: Required to actually run Android applications')
+            'android_translation_layer: Required to actually run Android applications'
+            'android_translation_layer-git: Required to actually run Android applications - Latest Git Release')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${url}.git")
