@@ -3,7 +3,7 @@
 _pkgbasename=nvidia-utils
 pkgbase=lib32-nvidia-535xx-utils
 pkgname=('lib32-nvidia-535xx-utils' 'lib32-opencl-nvidia-535xx')
-pkgver=535.230.02
+pkgver=535.247.01
 pkgrel=1
 pkgdesc="NVIDIA x32 libs for Linux, 535 branch"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
-sha512sums=('2154e28682fe1663dc64b18569c67839995d496a6c1b353fcdc17fc4520420c8d629d441312a6cedc054d6322a267d6f275d1daef210d2f24a179d931a4c99b8')
+sha512sums=('f8e04e5f7cf8b7fdae9135cb5f0f2740d5eae0ef9a44a41dbf78996d3c2d4139bdbec99be14f73aa2d275d78658b4a91a274f20545e4325cef787548e3d073a6')
 
 create_links() {
     # create soname links
