@@ -1,0 +1,21 @@
+--- Makefile	2021-12-20 20:33:32.000000000 +0000
++++ Makefile.new	2022-05-28 19:10:55.440386452 +0100
+@@ -6,12 +6,12 @@
+ CC            =	gcc
+ 
+ #where you want the binaries and manual page
+-BINDIR	      = /usr/local/bin
+-MANDIR	      = /usr/local/man/man1
+-LIBDIR	      = /usr/local/lib/yaze
+-DSKDIR        = $(LIBDIR)/disks
+-DOCDIR        = $(LIBDIR)/doc
+-DOCHTMLDIR    = $(LIBDIR)/doc_html
++BINDIR	      = /usr/bin
++MANDIR	      = /usr/man/man1
++LIBDIR	      = /usr/lib/yaze-ag
++DSKDIR        = /usr/share/yaze-ag/disks
++DOCDIR        = /usr/doc/yaze-ag-2.51.3/doc
++DOCHTMLDIR    = /usr/doc/yaze-ag-2.51.3/doc_html
+ 
+ #OPTIMIZE	= -g -m486
+ #OPTIMIZE	= -g -save-temps -m486

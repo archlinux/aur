@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Yaze-AG
+Comment=Z80 Emulator with CPM
+Exec=/usr/bin/yaze
+Icon=/usr/share/pixmaps/yaze-ag.png
+Terminal=true
+Type=Application
+Categories=System;Emulator;
+
