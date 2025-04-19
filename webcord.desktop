@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=WebCord
-Comment=A Discord and SpaceBar Electron-based client implemented without Discord API
+Comment=A Discord client made with the Electron API
 GenericName=Internet Messenger
 Exec=webcord %U
 Icon=webcord
