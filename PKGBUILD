@@ -1,6 +1,6 @@
 # Maintainer: Wai <waicool20@gmail.com>
 pkgname=fw-fanctrl-ui-git
-pkgver=r9.bc12125
+pkgver=r10.41a8751
 pkgrel=1
 pkgdesc="Framework Fan Control UI"
 arch=('any')
