@@ -1,7 +1,7 @@
 # Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=texel
-pkgver=1.10
+pkgver=1.12
 pkgrel=1
 pkgdesc='Free UCI compliant open source chess engine developed by Peter Österlund'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gcc-libs')
 makedepends=(cmake)
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/peterosterlund2/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('28e7fdc64dfdb320d86844f73f2ac7a55ce8ce1e260c492ecfd854666cbdbfbc7b5d43c379b98fe693c47ee85f9b48953070a1f76dc4193f4250788876e95a10')
+b2sums=('8421732332fca4315e854ed9e01fda3980f4517c3783d48231bede5e0403ca3b0b79fdb1edf1123a8730eadd845aa2c6ebee2d628b407c4d52ed5295b8e846a0')
 
 
 build() {
