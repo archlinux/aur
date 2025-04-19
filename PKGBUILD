@@ -2,12 +2,12 @@
 
 pkgname=tlauncher
 pkgver=14
-pkgrel=2
+pkgrel=3
 pkgdesc="TLauncher for Minecraft"
 arch=('x86_64')
 url="https://tlauncher.org/"
 license=('custom')
-depends=('java-runtime>=8')
+depends=('jre-openjdk')
 provides=('tlauncher')
 source=(
   "TLauncher.v${pkgver}.zip::https://dl2.tlauncher.org/f.php?f=files/TLauncher.v${pkgver}.zip"

@@ -1,11 +1,11 @@
 pkgbase = tlauncher
 	pkgdesc = TLauncher for Minecraft
 	pkgver = 14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tlauncher.org/
 	arch = x86_64
 	license = custom
-	depends = java-runtime>=8
+	depends = jre-openjdk
 	provides = tlauncher
 	source = TLauncher.v14.zip::https://dl2.tlauncher.org/f.php?f=files/TLauncher.v14.zip
 	source = tlauncher
