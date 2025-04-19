@@ -10,8 +10,11 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 conflicts=("mprisence-git")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+install=mprisence.install
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"
+        "mprisence.install")
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
     cd "$srcdir/$pkgname-${pkgver}"
@@ -35,17 +38,5 @@ package() {
     cd "$srcdir/$pkgname-${pkgver}"
     make DESTDIR="$pkgdir" pkg-prepare
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-note() {
-    cat <<EOF
-==> Example configuration is available at /etc/mprisence/config.example.toml
-==> To configure mprisence:
-    1. Create your config directory:
-       mkdir -p ~/.config/mprisence
-    2. Copy and modify the example config:
-       cp /etc/mprisence/config.example.toml ~/.config/mprisence/config.toml
-    3. Enable and start the service:
-       systemctl --user enable --now mprisence
-EOF
+    install -Dm644 "$srcdir/mprisence.install" "$pkgdir/usr/share/pacman/hooks/mprisence.hook"
 } 

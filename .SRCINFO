@@ -3,12 +3,15 @@ pkgbase = mprisence
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/lazykern/mprisence
+	install = mprisence.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	conflicts = mprisence-git
 	source = mprisence-1.2.1.tar.gz::https://github.com/lazykern/mprisence/archive/v1.2.1.tar.gz
+	source = mprisence.install
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mprisence
