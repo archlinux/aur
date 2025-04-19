@@ -1,6 +1,6 @@
 pkgbase = solana
 	pkgdesc = A fast, secure, and censorship resistant blockchain.
-	pkgver = 2.1.20
+	pkgver = 2.1.21
 	pkgrel = 1
 	epoch = 1
 	url = https://www.solana.com
@@ -19,12 +19,12 @@ pkgbase = solana
 	depends = systemd-libs
 	provides = spl-token
 	options = !lto
-	source = git+https://github.com/anza-xyz/agave.git#tag=v2.1.20
+	source = git+https://github.com/anza-xyz/agave.git#tag=v2.1.21
 	source = git+https://github.com/solana-labs/solana-program-library.git#tag=token-cli-v4.1.1
 	source = solana.sysusers
 	source = solana.tmpfiles
 	source = solana-sbf_sdk-path.patch
-	sha256sums = 69b452af63ddb891795e9e441beacbe03e144a539315df0258614d68ae7db597
+	sha256sums = d66c843c59534e9ee1267bdb9d7462c1f521eb4506e47efe2af898f250d35398
 	sha256sums = d0d7c7e98b42a6613d4ba1ddc8ec7650434793bab5925bf565de6cf3ba6093a1
 	sha256sums = bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0
 	sha256sums = a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b
