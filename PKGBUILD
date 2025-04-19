@@ -2,14 +2,15 @@
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 pkgname=gsview
 pkgver=4.9
-pkgrel=12
+pkgrel=13
 pkgdesc="A nice looking GUI for ghostscript with some extraction features"
 arch=('i686' 'x86_64')
 options=('!makeflags')
 url="http://pages.cs.wisc.edu/~ghost/gsview/get49.htm"
 license=('LicenseRef-Aladdin Free Public License')
 depends=('gtk' 'ghostscript')
-source=(http://fossies.org/unix/misc/old/ghost/ghostgum/${pkgname}-${pkgver}.tar.gz ${pkgname}.desktop)
+source=(https://ftp.gwdg.de/pub/misc/ghostscript/ghostgum/${pkgname}-${pkgver}.tar.gz ${pkgname}.desktop)
+#http://fossies.org/unix/misc/old/ghost/ghostgum/${pkgname}-${pkgver}.tar.gz
 #http://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/${pkgname}-${pkgver}.tar.gz
 
 build() {
