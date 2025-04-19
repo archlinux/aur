@@ -1,8 +1,8 @@
 # Maintainer: Schrottfresse <schrottfresse@gmx.de>
 
 pkgname="necesse-server"
-_build=13035760
-pkgver="0.23.1"
+_build=18110069
+pkgver="0.32.1"
 _pkgver_minus="$(echo ${pkgver} | sed 's/\./-/g')"
 _zipname="${pkgname}-linux64-${_pkgver_minus}-${_build}.zip"
 _dirname="${pkgname}-${_pkgver_minus}-${_build}"
@@ -11,9 +11,9 @@ arch=('x86_64')
 url="https://necessegame.com/server/"
 license=('proprietary')
 depends=("java-runtime=17")
-source=("https://necessegame.com/wp-content/uploads/2023/12/${_zipname}"
+source=("https://necessegame.com/content/server/${_pkgver_minus}-${_build}/${_zipname}"
         "${pkgname}.service")
-sha256sums=('7054d3848c4bd564b3d85eebaa95c8249dc849f041cc51c9bf7be64b9001c228'
+sha256sums=('1cb7622a3d4d6af7ee4e4b87130310793a1124c4a0eee9cf25a538e59c5ae593'
             '3d32c112c80584c55eccfdafe5510f6fe57b0ce57ce03ca30b4d3e2674f2c7ce')
 
 build() {
