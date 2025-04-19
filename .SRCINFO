@@ -7,6 +7,7 @@ pkgbase = cuppajoe
 	arch = arm
 	depends = cmake
 	depends = ncurses
+	depends = tbb
 	source = cuppajoe::git+https://github.com/Miroaja/cuppa.git
 	sha512sums = SKIP
 
