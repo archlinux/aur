@@ -1,10 +1,11 @@
 pkgbase = iso2dsd
-	pkgdesc = GUI for ISO to DSD conversion using iso2dsd, sacd_extract and fix2064-byte.c patch
+	pkgdesc = GUI to convert SACD ISO to DSD using iso2dsd, sacd_extract and 2064-byte.c patch for non compliant ISOS
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = http://dsd.sonore.us/iso2dsd
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	license = Custom: SimpleDesignLLC
 	depends = java-runtime
 	depends = gcc
 	source = iso2dsd_gui.jar.zip::http://dsd.sonore.us/iso2dsd_gui.jar.zip

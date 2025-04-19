@@ -1,0 +1,5 @@
+=== SimpleDesignLLC.txt ===
+Java based interface  
+Copyright © Simple Design, LLC  
+All rights reserved.
+
