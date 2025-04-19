@@ -1,8 +1,8 @@
 # Maintainer: BryanLiang <liangrui.ch at gmail dot com>
 
 pkgname=caddy-custom
-pkgver=2.9.1
-pkgrel=3
+pkgver=2.10.0
+pkgrel=1
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source=("plugin-list"
 sha256sums=('SKIP'
             '1dbef6bd4a096fcbab353a6bec0f6e34f8b6d2470e422c380642c2bd8ff83c20'
             'c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70'
-            'beb52478dfb34ad29407003520d94ee0baccbf210d1af72cebf430d6d7dd7b63'
-            'b3763e0397ef71bba7e389144b3de79ba61378a60fbcec2f564966f1851299dc')
+            'e07e2747c394a6549751950ec8f7457ed346496f131ee38538ae39cf89ebcc68'
+            'ea08effd19405a195c01c0acf4f1aef753cfc3031584d3649ef3562b530bfe12')
 
 prepare() {
     PLUGIN_LIST_PATH="${PLUGIN_LIST_PATH:-${srcdir}/plugin-list}"
