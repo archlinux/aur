@@ -2,18 +2,17 @@
 
 _pkgname='wsrx'
 pkgname="wsrx-git"
-pkgver=0.2.0.r9.gc6e2eb4
-pkgrel=2
+pkgver=0.4.5.r0.ga5442ac
+pkgrel=1
 pkgdesc="Controlled TCP-over-WebSocket forwarding tunnel."
 arch=('x86_64')
 url='https://github.com/XDSEC/WebSocketReflectorX'
 license=('MIT')
-makedepends=('git' 'rust' 'clang' 'ninja' 'bash' 'sed' 'cmake' 'extra-cmake-modules')
-depends=('qt6-base' 'qt6-svg' 'qt6-translations' 'qt6-wayland' 'qt6-declarative' 'qt6-remoteobjects')
-provides=("${_pkgname}" "${_pkgname}-desktop")
+makedepends=('git' 'rust' 'bash' 'sed')
+depends=("gcc-libs" "pcre2" "graphite" "glib2" "brotli" "harfbuzz" "libpng" "bzip2" "zlib" "expat" "glibc" "freetype2" "fontconfig")
+provides=("${_pkgname}")
 source=("git+https://github.com/XDSEC/WebSocketReflectorX.git")
 sha256sums=('SKIP')
-options=('!lto')
 
 pkgver() {
     cd "${srcdir}/WebSocketReflectorX"
@@ -22,14 +21,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/WebSocketReflectorX"
-  cmake -B build -DCMAKE_BUILD_TYPE=Release -G Ninja
-  cmake --build build --config Release --target all
+  cargo build --release --bins
 }
 
 package() {
   cd "${srcdir}/WebSocketReflectorX"
-  install -D ./build/bin/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
-  install -D ./build/bin/${_pkgname}-desktop "${pkgdir}/usr/bin/${_pkgname}-desktop"
-  install -Dm644 "./freedesktop/tech.woooo.${_pkgname}.desktop" "$pkgdir"/usr/share/applications/tech.woooo.${_pkgname}.desktop
-  install -Dm644 "./freedesktop/tech.woooo.${_pkgname}.svg" "$pkgdir"/usr/share/icons/hicolor/scalable/apps/tech.woooo.${_pkgname}.svg
+  install -D ./target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+  install -D ./target/release/${_pkgname}-desktop "${pkgdir}/usr/bin/${_pkgname}-desktop"
+  install -Dm644 "./freedesktop/${_pkgname}-desktop.desktop" "$pkgdir"/usr/share/applications/${_pkgname}-desktop.desktop
+  install -Dm644 "./freedesktop/${_pkgname}-desktop.svg" "$pkgdir"/usr/share/icons/hicolor/scalable/apps/${_pkgname}-desktop.svg
 }
