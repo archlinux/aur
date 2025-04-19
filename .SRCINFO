@@ -1,7 +1,7 @@
 pkgbase = otel-tui-bin
 	pkgdesc = A terminal OpenTelemetry viewer inspired by otel-desktop-viewer
 	pkgver = 0.4.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ymtdzzz/otel-tui
 	arch = aarch64
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = otel-tui-bin
 	provides = otel-tui
 	conflicts = otel-tui
 	source_aarch64 = otel-tui-0.4.10-aarch64.tar.gz::https://github.com/ymtdzzz/otel-tui/releases/download/v0.4.10/otel-tui_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 922a7d89c8a50ee086dc1cef215224095b86f81796602bad57038c025e2acdac
+	sha256sums_aarch64 = b2fb7a90052f8d1273d083ae0a2bcbb1ef2eae4a5c215584c363bf0c1c54593b
 	source_i686 = otel-tui-0.4.10-i686.tar.gz::https://github.com/ymtdzzz/otel-tui/releases/download/v0.4.10/otel-tui_Linux_i386.tar.gz
-	sha256sums_i686 = 3704ae31e82adb8105ef57a0a2b6033d941d93bdfc26d4ff021a7d755da85eaa
+	sha256sums_i686 = b7b501a001ca508eca0d5ca922e462a3db4d69ec6ba9a3c0ecbaa692f1277cd7
 	source_x86_64 = otel-tui-0.4.10-x86_64.tar.gz::https://github.com/ymtdzzz/otel-tui/releases/download/v0.4.10/otel-tui_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5856f7421e351e21e278ac91f91befc0a5c83688db8f06e57b25dce5550d7130
+	sha256sums_x86_64 = 08d7b9b15a37a79a5aa7038a789724b19207acc9de3b713059f373e52daf17a1
 
 pkgname = otel-tui-bin
