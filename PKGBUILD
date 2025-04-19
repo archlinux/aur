@@ -1,6 +1,6 @@
 # Maintainer: Electria
 pkgname=btwrap-git
-pkgver=r76.ff6ca54
+pkgver=r107.0646382
 pkgrel=1
 pkgdesc="Shell wrapper for managing BTRFS snapshots"
 arch=(any)
@@ -11,7 +11,6 @@ makedepends=('git')
 conflicts=('btwrap')
 provides=('btwrap')
 optdepends=(
-    'cracklib: to pick random words for snapshot names'
     'grub-btrfs: to add root snapshots into your grub bootmenu'
 )
 
@@ -24,11 +23,14 @@ pkgver() {
 }
 
 package() {
-    cd $srcdir
-    install -d ${pkgdir}/usr/bin
-    cp btwrap/btwrap $pkgdir/usr/bin/
+    cd "$srcdir"
+    install -d "$pkgdir/usr/bin/"
+    cp btwrap/btwrap "$pkgdir/usr/bin/"
 
-    install -d ${pkgdir}/etc/systemd/system/
-    cp btwrap/btwrap.timer $pkgdir/etc/systemd/system/
-    cp btwrap/btwrap.service $pkgdir/etc/systemd/system/
+    install -d "$pkgdir/etc/systemd/system/"
+    cp btwrap/btwrap.timer "$pkgdir/etc/systemd/system/"
+    cp btwrap/btwrap.service "$pkgdir/etc/systemd/system/"
+
+    install -d "$pkgdir/usr/share/libalpm/hooks"
+    cp btwrap/btwrap-snapshot-cycle.hook "$pkgdir/usr/share/libalpm/hooks/"
 }
