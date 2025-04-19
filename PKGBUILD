@@ -2,7 +2,7 @@
 
 _name=django-js-asset
 pkgname=python-django-js-asset
-pkgver=3.0.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="script tag with additional attributes for django.forms.Media"
 url="https://github.com/matthiask/django-js-asset/"
@@ -12,7 +12,7 @@ depends=("python-django")
 makedepends=(python-build python-installer python-wheel python-hatchling)
 checkdepends=("python-pytz")
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz")
-b2sums=('af37c677032098e6639663bdad41012d7fc775cb1206f3326df53f3b0f528af7d0b17c05f4940215568cb72c1e77edd62c91ab511115191227d85b1df0a21e54')
+b2sums=('f2e0435790bd6f506f946ee7b50e1245d08afa6915a9d6ba07d87087b548b03c34a0e9bc17e9b12aa7be2daafd462e82c53ad3c69862a9ddaa8819eb66a2bebf')
 
 
 build() {
