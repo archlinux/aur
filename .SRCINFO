@@ -1,13 +1,13 @@
 pkgbase = prosody-mod-mam-archive
 	pkgdesc = XEP-0136: Message Archiving for Prosody
-	pkgver = 2017.04.22
+	pkgver = 2024.10.22
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_mam_archive.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=3e97dae28215
-	sha1sums = SKIP
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=fe081789f7b5
+	sha1sums = 6022ab2c88326a5c8d1828d873a11a89bf769b27
 
 pkgname = prosody-mod-mam-archive
