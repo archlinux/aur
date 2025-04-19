@@ -6,5 +6,5 @@ Comment[zh_CN]=第三方网易云音乐客户端
 Exec=xc-music
 Terminal=false
 Icon=xc-music
-StartupWMClass=xc-music-desktop
+StartupWMClass=xc-music
 Categories=AudioVideo;Utility;Music
