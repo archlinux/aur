@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
 pkgver=575.51.02
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -94,10 +94,11 @@ package_opencl-nvidia-beta() {
 }
 
 package_nvidia-utils-beta() {
-    depends=('xorg-server' 'libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
+    depends=('libglvnd' 'egl-wayland' 'egl-gbm' 'egl-x11')
     optdepends=('nvidia-settings-beta: for the configuration tool'
-                'xorg-server-devel: for nvidia-xconfig'
-                'opencl-nvidia-beta: for OpenCL support')
+                'opencl-nvidia-beta: for OpenCL support'
+                'xorg-server: for Xorg support'
+                'xorg-server-devel: for nvidia-xconfig')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
               "nvidia-libgl-beta=${pkgver}")
     conflicts=('nvidia-utils' 'nvidia-libgl')

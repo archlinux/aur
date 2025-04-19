@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-beta
 	pkgdesc = NVIDIA drivers utilities (beta version)
 	pkgver = 575.51.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -25,14 +25,14 @@ pkgbase = nvidia-utils-beta
 
 pkgname = nvidia-utils-beta
 	install = nvidia-utils.install
-	depends = xorg-server
 	depends = libglvnd
 	depends = egl-wayland
 	depends = egl-gbm
 	depends = egl-x11
 	optdepends = nvidia-settings-beta: for the configuration tool
-	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = opencl-nvidia-beta: for OpenCL support
+	optdepends = xorg-server: for Xorg support
+	optdepends = xorg-server-devel: for nvidia-xconfig
 	provides = nvidia-utils=575.51.02
 	provides = vulkan-driver
 	provides = opengl-driver
