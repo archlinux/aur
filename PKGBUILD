@@ -2,7 +2,7 @@
 
 _pyname=crds
 pkgname=python-${_pyname}-doc
-pkgver=12.1.4
+pkgver=12.1.5
 pkgrel=1
 pkgdesc="Documentation for STScI CRDS"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-sphinx_rtd_theme'
              'python-sphinx-tabs')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('fceeb2f02413d0571c89bd588e1e50f5')
+md5sums=('d66d8c141a28cf07e01a8dae5d8acb58')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/documentation/crds_users_guide
