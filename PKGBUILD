@@ -11,8 +11,11 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('mprisence')
 conflicts=('mprisence')
-source=("git+$url.git")
-sha256sums=('SKIP')
+install=mprisence-git.install
+source=("git+$url.git"
+        "mprisence-git.install")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -42,17 +45,4 @@ package() {
     cd "${srcdir}/${pkgname%-git}"
     make DESTDIR="$pkgdir" pkg-prepare
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-note() {
-    cat <<EOF
-==> Example configuration is available at /etc/mprisence/config.example.toml
-==> To configure mprisence:
-    1. Create your config directory:
-       mkdir -p ~/.config/mprisence
-    2. Copy and modify the example config:
-       cp /etc/mprisence/config.example.toml ~/.config/mprisence/config.toml
-    3. Enable and start the service:
-       systemctl --user enable --now mprisence
-EOF
 } 
