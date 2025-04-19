@@ -2,7 +2,7 @@
 
 pkgname=lite-xl-git
 _pkgname=${pkgname%-git}
-pkgver=v2.1.3.r2313.2e8d59b8
+pkgver=v2.1.7.r2445.4c747244
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua (master branch)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
   'pcre2'
   'hicolor-icon-theme'
 )
-makedepends=('meson>=0.58' 'jq')
+makedepends=('meson>=0.58' 'jq' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://github.com/lite-xl/lite-xl")
