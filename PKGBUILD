@@ -2,30 +2,31 @@
 # Please note that this is my first AUR package ever, let me know if I made any mistakes or you have any improvements.
 
 pkgname=stabilitymatrix
-pkgver=2.13.0
+pkgver=2.13.4
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')
 url='https://github.com/LykosAI/StabilityMatrix'
 license=('AGPL3')
+
 depends=('dotnet-runtime' 'libxcrypt-compat')
-makedepends=('dotnet-sdk' 'git')
+makedepends=(
+    'dotnet-sdk'
+    'dotnet-sdk-8.0' # Needed for Husky to work
+)
+
 options=('!strip')
+
 source=(
     'zone.lykos.stabilitymatrix.png'
     'zone.lykos.stabilitymatrix.desktop'
+    "git+https://github.com/LykosAI/StabilityMatrix#tag=v${pkgver}"
 )
 sha256sums=(
     '0c32dcd560dfadae6c8cc1486fba1227e9cf93a55e3ba262571e83052e1bf22e'
-    '6907f3fc4dbf9140af924977c18460b24d220dab6c7871cdd3e8f4cd5a1e1635'
+    'd849617e6ade85b61f955d05d176f3ce07af0abb0532f554c4f73c19011ba0af'
+    'SKIP'
 )
-
-prepare() {
-    # dotnet apparently needs explicitly git cloning to build, it doesn't work with downloading the source code tarball from the release.
-    # Please contribute if you know a better way to do this.
-    [ -e "$srcdir/StabilityMatrix" ] && rm -rf "$srcdir/StabilityMatrix"
-    git clone https://github.com/LykosAI/StabilityMatrix --branch "v$pkgver"
-}
 
 build() {
     cd "$srcdir/StabilityMatrix"
