@@ -1,4 +1,5 @@
-# Maintainer: Frederic Bezies < fredbezies at gmail dot com>
+# Maintainer: Antonio Leal <antonioleal@yahoo.com>
+# Contributer: Frederic Bezies < fredbezies at gmail dot com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=yaze
 pkgver=2.51.3
