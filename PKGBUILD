@@ -2,16 +2,16 @@
 # Maintainer: Elias Elwyn <a@jthv.ai>
 
 pkgname=helm-ls
-pkgver=0.2.0
-pkgrel=2
-_commit=0c3d346843e36e106ff263c071e638f956966c91
+pkgver=0.2.1
+pkgrel=1
+_commit=f5160050c3fc5aed233e689db5f16de49b33f862
 pkgdesc='Language server for Helm'
 license=(MIT)
 
 url='https://github.com/mrjosh/helm-ls'
 # NOTE: submodules are required for check()
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 arch=(x86_64)
 depends=(glibc)
@@ -43,6 +43,7 @@ check() {
   cd "$srcdir/$pkgname"
   # NOTE: cannot run `make test` as -buildmode=pie is not supported with -race
   make integration-test-deps
+  # FIX: TestYamllsDiagnosticsIntegrationWithSchema failing with yamlls v1.17.0
   go test ./... -tags=integration
 }
 
