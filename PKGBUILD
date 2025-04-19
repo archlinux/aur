@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r24918.82bc52c
+pkgver=2.3.1.r24980.7d2a12a
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -15,7 +15,8 @@ optdepends=('mesa: Enables Zink fallback workaround for NVIDIA on Wayland'
             'mesa-utils: for detecting renderer'
             'nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
-provides=("orca-slicer")
+provides=('orca-slicer')
+conflicts=('orca-slicer')
 source=($pkgname::git+https://github.com/SoftFever/OrcaSlicer.git
         orca-slicer-wrapper.sh
         https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch)
@@ -34,6 +35,8 @@ pkgver() {
 prepare() {
   # C++20 disallows the use of the Point<T> syntax in the constructor
   sed -i 's/explicit Point<T>(/explicit Point(/' $pkgname/src/clipper2/Clipper2Lib/include/clipper2/clipper.core.h
+  # Remove upper cmake version check
+  sed -i 's| OR ${CMAKE_VERSION} VERSION_GREATER_EQUAL "4.0"| |' $pkgname/CMakeLists.txt
   # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
   # cherry pick an OCCT commit to make it build with system freetype
