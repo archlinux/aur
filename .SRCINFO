@@ -1,7 +1,7 @@
 pkgbase = kanidm
 	pkgdesc = A identity management service and clients.
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = kanidm
 	makedepends = cargo
 	makedepends = systemd
 	makedepends = clang
+	makedepends = tpm2-tss
 	options = !buildflags
 	source = kanidm-1.5.0.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.5.0.tar.gz
 	source = remove-shadow-from-supplementarygroups.patch
@@ -37,6 +38,7 @@ pkgname = kanidm-server
 
 pkgname = kanidm-unixd-clients
 	pkgdesc = kanidm localhost resolver to resolve posix identities to a kanidm instance.
+	depends = tpm2-tss
 	provides = kanidm-unixd-clients
 	conflicts = kanidm-unixd-clients-git
 	backup = etc/kanidm/unixd

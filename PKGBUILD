@@ -18,7 +18,7 @@ pkgname=(
 )
 pkgver=1.5.0
 _realver=${pkgver/_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
@@ -27,7 +27,7 @@ source=(
 )
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-makedepends=(cargo systemd clang)
+makedepends=(cargo systemd clang tpm2-tss)
 options=(!buildflags)
 sha256sums=(
   '5bf00fcf5add4c92ad6f2f84d2b09135ca321c01120dd6b852b0d35972fe5fdf'
@@ -109,6 +109,7 @@ package_kanidm-server () {
 package_kanidm-unixd-clients () {
   conflicts=("$_basename-unixd-clients-git")
   provides=("$_basename-unixd-clients")
+  depends=("tpm2-tss")
   pkgdesc='kanidm localhost resolver to resolve posix identities to a kanidm instance.'
   backup=("etc/kanidm/unixd")
 
