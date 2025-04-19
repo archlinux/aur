@@ -2,7 +2,7 @@
 pkgname=luxmark
 pkgver=4.0alpha1
 _pkgver=543b6780171fc58bf7204b312d94ae8bb5bbef56
-pkgrel=8
+pkgrel=9
 pkgdesc="OpenCL benchmark tool"
 arch=('x86_64') # because of embree only x86_64 is supported
 url="https://github.com/LuxCoreRender/LuxMark"
@@ -36,6 +36,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     .
   make
 }
