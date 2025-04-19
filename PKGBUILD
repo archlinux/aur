@@ -1,24 +1,33 @@
-# Maintainer: dilipvamsi <m.dilipvamsi at gmail dot com>
-# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Maintainer: redponike <proton (dot) me>
+# Contributor: dilipvamsi <m.dilipvamsi at gmail dot com>
+# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 _pkgname=LightGBM
 pkgbase='lightgbm-cuda'
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=2.2.3
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Distributed gradient boosting framework based on decision tree algorithms."
 arch=('x86_64')
 url="https://github.com/Microsoft/LightGBM"
 license=('MIT')
-depends=('boost-libs' 'ocl-icd' 'openmpi')
-makedepends=('boost' 'cuda' 'cmake' 'opencl-headers' 'python-setuptools')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4a6414e808b343a784f0ee805ac723c094488f9e9a951dd3f709dc31ffb4ea4c')
-
+depends=('cuda' 'gcc13' 'boost-libs' 'openmpi')
+makedepends=('boost' 'cmake' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 
+             'git' 'python-scikit-build-core')
+source=("${_pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('1e2c2e8ebe9acb8b730e7ca56efddee3ee6bf11d2674efccf4bb27673e1529c0')
 conflicts=('lightgbm')
 
+prepare() {
+    cd ${_pkgname}-${pkgver}
+    git submodule update --init --recursive
+}
+
 build() {
+    # We need GCC < 14 to build for now
+    export CC="gcc-13" CXX="g++-13"
     cd "${_pkgname}-${pkgver}"
+
     cmake -H. -Bbuild \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
         -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
@@ -26,11 +35,10 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_OPENMP=ON \
-        -DUSE_GPU=ON \
+        -DUSE_CUDA=ON \
         -DUSE_MPI=ON \
-        -DOpenCL_LIBRARY=/opt/cuda/lib64/libOpenCL.so \
-        -DOpenCL_INCLUDE_DIR=/opt/cuda/include/
-
+        -DBUILD_CLI=ON \
+        
     cmake --build build
 }
 
@@ -41,13 +49,29 @@ package_lightgbm-cuda() {
 }
 
 package_python-lightgbm-cuda() {
-    depends=('lightgbm-cuda' 'python-numpy' 'python-scipy' 'python-scikit-learn')
+    depends=('lightgbm-cuda' 'python-numpy' 'python-scipy')
+    optdepends=('python-dask' 'python-matplotlib' 'python-pandas' 'python-pyarrow' 'python-scikit-learn')
     arch=('x86_64')
+    
+    mkdir -p "${srcdir}/lightgbm-python"
+    cp -r "${_pkgname}-${pkgver}/python-package" "${srcdir}/lightgbm-python/"
+    cp -r "${_pkgname}-${pkgver}/CMakeLists.txt" "${srcdir}/lightgbm-python/"
+    cp -r "${_pkgname}-${pkgver}/include" "${srcdir}/lightgbm-python/"
+    cp -r "${_pkgname}-${pkgver}/src" "${srcdir}/lightgbm-python/"
+    cp -r "${_pkgname}-${pkgver}/swig" "${srcdir}/lightgbm-python/"
+    cp -r "${_pkgname}-${pkgver}/cmake" "${srcdir}/lightgbm-python/"
+    cp -r "${_pkgname}-${pkgver}/external_libs" "${srcdir}/lightgbm-python/"
+    
+    cp "${_pkgname}-${pkgver}/LICENSE" "${srcdir}/lightgbm-python/python-package/"
 
-    cd "${_pkgname}-${pkgver}/python-package"
-    # use library from /usr/lib instead of making a copy
-    sed -i 's/..\/..\/lib\//\/usr\/lib\//' lightgbm/libpath.py
-    python setup.py install --root="$pkgdir/" --optimize=1 --gpu --mpi --precompile --opencl-include-dir=/opt/cuda/include/ --opencl-library=/opt/cuda/lib64/libOpenCL.so
-    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    rm "$pkgdir/usr/lib/python3.7/site-packages/lightgbm/lib_lightgbm.so"
+    cd "${srcdir}/lightgbm-python/python-package"
+    python -m build --wheel --no-isolation \
+            --config-setting=cmake.define.USE_CUDA=ON \
+            --config-setting=cmake.define.USE_MPI=ON \
+            --config-setting=cmake.define.__BUILD_FOR_PYTHON=ON \
+            --config-setting=cmake.source-dir=..
+    
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -rf "${srcdir}/lightgbm-python"
 }

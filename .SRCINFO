@@ -1,21 +1,25 @@
 pkgbase = lightgbm-cuda
 	pkgdesc = Distributed gradient boosting framework based on decision tree algorithms.
-	pkgver = 2.2.3
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://github.com/Microsoft/LightGBM
 	arch = x86_64
 	license = MIT
 	makedepends = boost
-	makedepends = cuda
 	makedepends = cmake
-	makedepends = opencl-headers
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = git
+	makedepends = python-scikit-build-core
+	depends = cuda
+	depends = gcc13
 	depends = boost-libs
-	depends = ocl-icd
 	depends = openmpi
 	conflicts = lightgbm
-	source = https://github.com/Microsoft/LightGBM/archive/v2.2.3.tar.gz
-	sha256sums = 4a6414e808b343a784f0ee805ac723c094488f9e9a951dd3f709dc31ffb4ea4c
+	source = LightGBM-4.6.0::git+https://github.com/Microsoft/LightGBM.git#tag=v4.6.0
+	sha256sums = 1e2c2e8ebe9acb8b730e7ca56efddee3ee6bf11d2674efccf4bb27673e1529c0
 
 pkgname = lightgbm-cuda
 
@@ -24,5 +28,8 @@ pkgname = python-lightgbm-cuda
 	depends = lightgbm-cuda
 	depends = python-numpy
 	depends = python-scipy
-	depends = python-scikit-learn
-
+	optdepends = python-dask
+	optdepends = python-matplotlib
+	optdepends = python-pandas
+	optdepends = python-pyarrow
+	optdepends = python-scikit-learn
