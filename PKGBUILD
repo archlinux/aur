@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 makedepends=(
   'git'
   'python-build'
-  'python-setuptools'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
   'python-tox'
