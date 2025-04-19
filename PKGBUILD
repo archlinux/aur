@@ -4,15 +4,16 @@ pkgbase=hslinkupper
 pkgname=hslinknexus
 _name=HSLinkNexus
 pkgver=1.2.1
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="HSLinkUpper is a simple tool that allows you to config HSLink."
 arch=($CARCH)
 url="https://github.com/HSLink/HSLinkNexus"
 license=(MIT)
 groups=()
-provides=(${pkgname} hslinkupper hslink-upper)
-conflicts=(${pkgname} hslinkupper hslink-upper)
+provides=(${pkgname} hslinkupper hslink-nexus hslink-upper)
+conflicts=(${pkgname} hslinkupper hslink-nexus hslink-upper)
+replaces=(hslinkupper)
 depends=(
     cairo
     gdk-pixbuf2
