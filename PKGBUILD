@@ -6,7 +6,7 @@ pkgname='python-valkey-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=6.1.0.r8.g994ed74
-pkgrel=1
+pkgrel=2
 pkgdesc='Valkey Python client based on a fork of redis-py (built from latest git commit)'
 arch=('any')
 url='https://github.com/valkey-io/valkey-py'
@@ -20,8 +20,7 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  'python'
-  'python-async-timeout'
+  'python>=3.11.3'
   'python-cryptography'
   'python-pyopenssl'
   'python-redis'
