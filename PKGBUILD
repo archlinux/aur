@@ -1,18 +1,17 @@
 pkgbase=aeolus-next
-pkgname=("${pkgbase}-clap-bin" "${pkgbase}-lv2-bin" "${pkgbase}-standalone-bin" "${pkgbase}-vst3-bin")
+pkgname=( ${pkgbase}-{clap,lv2,standalone,vst3}-bin )
 pkgver=0.2.1
 pkgrel=1
 url="https://github.com/Archie3d/aeolus_plugin"
 license=('GPL')
 arch=('x86_64')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'libpng' 'pcre2')
-makedepends=('unzip')
 provides=("aeolus-vst3")
 options=(!strip)
-source=("https://github.com/Archie3d/aeolus_plugin/releases/download/v${pkgver}/Aeolus-clap-linux-${pkgver}.zip"
-		"https://github.com/Archie3d/aeolus_plugin/releases/download/v${pkgver}/Aeolus-lv2-linux-${pkgver}.zip"
-		"https://github.com/Archie3d/aeolus_plugin/releases/download/v${pkgver}/Aeolus-standalone-linux-${pkgver}.zip"
-		"https://github.com/Archie3d/aeolus_plugin/releases/download/v${pkgver}/Aeolus-vst3-linux-${pkgver}.zip"
+source=("${url}/releases/download/v${pkgver}/Aeolus-clap-linux-${pkgver}.zip"
+		"${url}/releases/download/v${pkgver}/Aeolus-lv2-linux-${pkgver}.zip"
+		"${url}/releases/download/v${pkgver}/Aeolus-standalone-linux-${pkgver}.zip"
+		"${url}/releases/download/v${pkgver}/Aeolus-vst3-linux-${pkgver}.zip"
 		"aeolus-next.png"
 		"Aeolus Next.desktop")
 sha256sums=('b3e98c3a1a4e874ab984b74827921a6d4dd3612db30e4bd636640afd01d43552'
