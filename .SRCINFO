@@ -1,6 +1,6 @@
 pkgbase = lib32-tinysparql
 	pkgdesc = Low-footprint RDF triple store with SPARQL 1.1 interface (32-bit)
-	pkgver = 3.9.1
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://tinysparql.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lib32-tinysparql
 	makedepends = lib32-gcc-libs
 	makedepends = meson>=0.62
 	makedepends = python-tappy
-	depends = tinysparql>=3.9.1
+	depends = tinysparql>=3.9.2
 	depends = lib32-avahi
 	depends = lib32-glib2>=2.52
 	depends = lib32-glibc
@@ -19,11 +19,11 @@ pkgbase = lib32-tinysparql
 	depends = lib32-libstemmer
 	depends = lib32-libxml2>=2.6
 	depends = lib32-sqlite>=3.20
-	provides = lib32-tracker3=3.9.1
+	provides = lib32-tracker3=3.9.2
 	provides = libtinysparql-3.0.so
 	conflicts = lib32-tracker3<=3.7.3-2
 	replaces = lib32-tracker3<=3.7.3-2
-	source = tinysparql-3.9.1.tar.xz::https://download.gnome.org/sources/tinysparql/3.9/tinysparql-3.9.1.tar.xz
-	sha256sums = 98e8933b946d8c54a77eadabd7f1d14cddd88fa43eef0d0ace3c0fcce646722b
+	source = tinysparql-3.9.2.tar.xz::https://download.gnome.org/sources/tinysparql/3.9/tinysparql-3.9.2.tar.xz
+	sha256sums = 14ce039024135e181022bcce4b1aad2e00377dd9c7d812b98391ccfc756dad8e
 
 pkgname = lib32-tinysparql
