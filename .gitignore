@@ -4,6 +4,7 @@
 *.dll
 *.exe
 *.log
+*.pdf
 *.pkg.*
 *.tar.*
 *.zip
