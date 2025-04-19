@@ -1,20 +1,20 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=karlyriceditor
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program which lets you edit and synchronize lyrics with karaoke songs in various formats."
 arch=('i686' 'x86_64')
 url="https://github.com/gyunaev/karlyriceditor"
 license=('GPL')
-depends=('ffmpeg' 'qt5-multimedia' 'desktop-file-utils')
+depends=('ffmpeg4.4' 'qt5-multimedia' 'desktop-file-utils')
 source=("karlyriceditor-$pkgver.tar.gz::https://github.com/gyunaev/karlyriceditor/archive/$pkgver.tar.gz")
 sha256sums=('67aa863f7e34b8fd76dfc74615da3ff8b761a138be651bcb55d03d54626bddae')
 install=$pkgname.install
 
 build() {
   cd karlyriceditor-$pkgver
-  qmake
-  make
+  PKG_CONFIG_LIBDIR=/usr/lib/ffmpeg4.4/pkgconfig/:/usr/lib/pkgconfig qmake
+  PKG_CONFIG_LIBDIR=/usr/lib/ffmpeg4.4/pkgconfig/:/usr/lib/pkgconfig make
 }
 
 package() {
