@@ -1,6 +1,6 @@
 pkgbase = picocrypt
 	pkgdesc = A very small, very simple, yet very secure encryption tool.
-	pkgver = 1.47
+	pkgver = 1.48
 	pkgrel = 1
 	url = https://github.com/Picocrypt/Picocrypt
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = picocrypt
 	license = GPL-3-only
 	makedepends = go
 	depends = gtk3
-	source = picocrypt-1.47.tar.gz::https://github.com/Picocrypt/Picocrypt/archive/refs/tags/1.47.tar.gz
+	source = picocrypt-1.48.tar.gz::https://github.com/Picocrypt/Picocrypt/archive/refs/tags/1.48.tar.gz
 	source = picocrypt.desktop
-	sha512sums = 1f894fe9cce41d3900e0a8af01ebed84c08e626249c686ffb87cfc2982f383e6d233a75145e46dd276438b09e3dc5709f6dee1cc19c778e0d3aa0f1d3aad4c89
+	sha512sums = 0876317f9bede3eb611730495b09d63177d0428683c74d1ab7a2796a42c9b856a3f5da327c639627efa0126f17cbc040e1a195d5e6a08d290244cf0a67f7657d
 	sha512sums = 1c499ed01d8550a0be97084903776e1b3c8922401e6a73270457ffdcfe879449d3d718ed4c3ae9dc2cf90a98952b76c9bf455871fbace77a563a8681dddf1d81
 
 pkgname = picocrypt
