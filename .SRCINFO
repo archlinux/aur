@@ -1,0 +1,14 @@
+pkgbase = velo
+	pkgdesc = A script to manage AUR packages and perform various package-related tasks
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sparksistaken/velo
+	arch = x86_64
+	license = GPL3
+	depends = git
+	depends = curl
+	depends = pacman
+	source = https://github.com/sparksistaken/velo/raw/main/velo.sh
+	sha256sums = SKIP
+
+pkgname = velo
