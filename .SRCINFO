@@ -23,7 +23,7 @@ pkgbase = arsse
 	backup = etc/webapps/arsse/apache/arsse.conf
 	backup = etc/webapps/arsse/apache/arsse-fcgi.conf
 	backup = etc/webapps/arsse/apache/arsse-loc.conf
-	source = arsse-0.12.0.tar.gz::https://thearsse.com/releases/0.12.0.tar.gz
+	source = arsse-0.12.0.tar.gz::https://code.mensbeam.com/MensBeam/Arsse/releases/download/0.12.0/arsse-0.12.0.tar.gz
 	md5sums = dca0392c3f7b21e14e2e784936754349
 
 pkgname = arsse
