@@ -1,9 +1,10 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='atto'
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
@@ -28,14 +29,15 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
   esac
 
   # https://wiki.archlinux.org/title/Go_package_guidelines
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
