@@ -3,7 +3,7 @@
 
 pkgname='gonano'
 pkgver=0.1.17
-pkgrel=5
+pkgrel=6
 _pkgdate=1644501572
 pkgdesc='Go language support for NANO — a digital currency'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -42,14 +42,15 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
   esac
 
   # https://wiki.archlinux.org/title/Go_package_guidelines
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -72,9 +73,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 gonano    "$pkgdir/usr/bin/gonano"
-  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 gonano    -t "$pkgdir/usr/bin/"
+  install -vDm0644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm0644 LICENSE   -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 sha256sums=(
