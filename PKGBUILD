@@ -1,34 +1,39 @@
-# Maintainer: Daniel Bermond <dbermond@archlinux.org>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=srt-git
-pkgver=1.4.3rc0.r19.g1d4338a0
+pkgver=1.5.4.r31.g952f9495
 pkgrel=1
-pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
+pkgdesc='Secure Reliable Transport - transport protocol for ultra low latency live video and audio streaming (git version)'
 arch=('x86_64')
 url='https://www.srtalliance.org/'
-license=('MPL2')
-depends=('openssl')
-makedepends=('git' 'cmake')
+license=('MPL-2.0')
+depends=(
+    'bash'
+    'gcc-libs'
+    'glibc'
+    'openssl')
+makedepends=(
+    'cmake'
+    'git')
 provides=('srt')
 conflicts=('srt')
 source=('git+https://github.com/Haivision/srt.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd srt
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.\(RC\|rc\)\./rc/'
+    git -C srt describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.\(RC\|rc\)\./rc/'
 }
 
 build() {
     cmake -B build -S srt \
-        -DCMAKE_INSTALL_BINDIR:PATH='bin' \
-        -DCMAKE_INSTALL_INCLUDEDIR:PATH='include' \
-        -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DENABLE_TESTING='True' \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
+        -DENABLE_STATIC:BOOL='OFF' \
+        -DENABLE_TESTING:BOOL='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 check() {
@@ -37,6 +42,5 @@ check() {
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
-    rm "$pkgdir"/usr/bin/*-test{,-*}
+    DESTDIR="$pkgdir" cmake --install build
 }
