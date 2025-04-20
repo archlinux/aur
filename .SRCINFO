@@ -7,6 +7,7 @@ pkgbase = animeko-appimage
 	license = AGPL-3.0-or-later
 	makedepends = 7zip
 	depends = vlc
+	depends = gvfs
 	conflicts = animeko
 	replaces = animeko
 	options = !strip
