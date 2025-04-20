@@ -3,7 +3,7 @@
 
 pkgname=gapless
 _name=g4music
-pkgver=4.3.1
+pkgver=4.4
 pkgrel=1
 pkgdesc="Play your music elegantly (AKA: G4Music)"
 arch=('aarch64' 'x86_64')
@@ -28,7 +28,7 @@ optdepends=('gst-plugins-bad: "bad" plugin libraries'
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${url}/-/archive/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-b2sums=('dc4ca8e57ea3c391d6f54c248b1b8192e368e2fef64b69d83ebd8f873311716a6d6adc9df670426bab66e4394d45955cad8415a0f2b9f23f0cebcd4d5fffb1e5')
+b2sums=('d590aa773ad2dffbdb9a276c44ed4b00cbaa5a41571cc89d734d724fb29dc05c18af4508e84e41f8a5fd84249353cfd0a8acd68826cd9195b8272a420886d459')
 
 build() {
   arch-meson "${_name}-v${pkgver}" build
