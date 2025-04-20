@@ -4,13 +4,13 @@
  
 pkgname=rmlint
 pkgver=2.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to remove duplicates and other lint, being much faster than fdupes"
 arch=('i686' 'x86_64')
 url="https://github.com/sahib/rmlint"
 license=('GPL3')
 depends=('libutil-linux' 'elfutils')
-makedepends=('scons' 'python-sphinx')
+makedepends=('scons' 'python-sphinx' 'python-setuptools')
 conflicts=("${pkgname}-git" "rmlint-shredder")
 source=("$url/archive/v${pkgver}.tar.gz")
 sha256sums=('8ffdbd5d09d15c8717ae55497e90d6fa46f085b45ac1056f2727076da180c33e')
