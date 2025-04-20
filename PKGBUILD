@@ -13,6 +13,7 @@ depends=(
   'python-rich'
   'python-jetpytools'
   'python-typing_extensions'
+  'python-scipy'
 )
 makedepends=('python-pip')
 optdepends=(

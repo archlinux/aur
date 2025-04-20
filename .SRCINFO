@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-vsjetpack
 	depends = python-rich
 	depends = python-jetpytools
 	depends = python-typing_extensions
+	depends = python-scipy
 	optdepends = vapoursynth-plugin-eedi2
 	optdepends = vapoursynth-plugin-eedi3m
 	optdepends = vapoursynth-plugin-znedi3
