@@ -6,7 +6,7 @@
 
 pkgname=gtetrinet
 pkgver=0.7.11
-pkgrel=6
+pkgrel=7
 pkgdesc="a fork of gtetrinet ported to gtk3"
 url="https://github.com/tatankat/gtetrinet"
 arch=('i686' 'x86_64')
@@ -30,6 +30,7 @@ build() {
   autoreconf -fvi
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
+  sed -i 's/^Exec=.*/Exec=gtetrinet/' gtetrinet.desktop
 }
 
 package () {
