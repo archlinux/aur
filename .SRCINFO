@@ -1,12 +1,15 @@
-pkgbase = prometheus-nvidia-gpu-exporter
+pkgbase = prometheus-nvidia-gpu-exporter-git
 	pkgdesc = Prometheus exporter for Nvidia GPU metrics
 	pkgver = r31.e7d86ca
 	pkgrel = 4
 	url = https://github.com/cfsmp3/nvidia_gpu_prometheus_exporter
 	arch = x86_64
-	license = Apache
-	makedepends = go
+	license = Apache-2.0
 	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = prometheus-nvidia-gpu-exporter
+	conflicts = prometheus-nvidia-gpu-exporter
 	backup = etc/conf.d/prometheus-nvidia-gpu-exporter
 	source = git+https://github.com/cfsmp3/nvidia_gpu_prometheus_exporter.git
 	source = prometheus-nvidia-gpu-exporter.conf
@@ -17,4 +20,4 @@ pkgbase = prometheus-nvidia-gpu-exporter
 	b2sums = 9ded6ab52caaada85d5dedf681b74a581c75e0c9acb04cc39347c0610882d0a9eb0219a923256413085768a8c58a6ba540fd0ab91b0e2d25ccf37991d01801a0
 	b2sums = b275bf80f0dfaa8a89bb97ea28a0c5afd3e900fd82ded97c628f47cebd5442f402c62f0f814099968b31f821248d9661815deae6517917ce8eec6400d96967a6
 
-pkgname = prometheus-nvidia-gpu-exporter
+pkgname = prometheus-nvidia-gpu-exporter-git
