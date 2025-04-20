@@ -1,10 +1,10 @@
 pkgbase = fastgron-git
-	pkgdesc = High-performance JSON to GRON (greppable, flattened JSON) converter (development version)
+	pkgdesc = High-performance JSON to GRON (greppable, flattened JSON) converter (built from latest git commit)
 	pkgver = 0.7.7.r6.g5d5998f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/adamritter/fastgron
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
