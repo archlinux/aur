@@ -5,8 +5,8 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.4.4.r0.g5d39bc0
-pkgrel=3
+pkgver=1.5.0.r0.g4859b8f
+pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -40,6 +40,8 @@ pkgver() {
 build() {
   cd "$_srcname"
 
+  git clean -dfx
+
   # RFC-0023
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
@@ -47,12 +49,13 @@ build() {
   case "Z${CARCH:-unknown}" in
     'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
+    ;&  # fall through
+    * )
+      export RUSTFLAGS="$RUSTFLAGS -C link-args=-Wl,-z,shstk"
+      export CMAKE_POLICY_VERSION_MINIMUM=3.5
     ;;
-    * ) : pass ;;
   esac
 
-  export RUSTFLAGS="$RUSTFLAGS -C link-args=-Wl,-z,shstk"
-  export CMAKE_POLICY_VERSION_MINIMUM=3.5  # or else won't build
   python -m build --wheel --no-isolation
 }
 
