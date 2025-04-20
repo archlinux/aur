@@ -2,7 +2,7 @@
 
 pkgname=prometheus-slurm-exporter
 pkgver=0.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Prometheus exporter for slurm metrics"
 arch=(x86_64)
 url="https://github.com/vpenso/prometheus-slurm-exporter"
@@ -40,9 +40,9 @@ build() {
 
 package() {
   # systemd files
-  install -vDm 644 $pkgname.service -t "$pkgdir"/usr/lib/systemd/system/$pkgname.service
-  install -vDm 644 $pkgname.sysusers -t "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
-  install -vDm 644 $pkgname.conf -t "$pkgdir"/etc/conf.d/$pkgname
+  install -vDm 644 $pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm 644 $pkgname.sysusers -t "$pkgdir"/usr/lib/sysusers.d/
+  install -vDm 644 $pkgname.conf "$pkgdir"/etc/conf.d/$pkgname
 
   cd "$pkgname-$pkgver"
 
