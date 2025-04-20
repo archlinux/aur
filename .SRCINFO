@@ -1,7 +1,7 @@
 pkgbase = sortdir
 	pkgdesc = Have [almost] any application sort its directory listings
 	pkgver = 0.6
-	pkgrel = 8
+	pkgrel = 9
 	url = http://ftp.uhulinux.hu/sources/sortdir
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = sortdir
 	license = GPL-2.0-or-later
 	depends = glibc
 	depends = sh
+	options = lto
 	source = http://ftp.uhulinux.hu/sources/sortdir/sortdir-0.6.tar.gz
 	source = sortdir.sh
 	sha256sums = 62acb494d995e868d721d01e2d00e525f2ead23670ba23272d529a7606eebd2e

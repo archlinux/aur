@@ -1,18 +1,20 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=sortdir
 pkgver=0.6
-pkgrel=8
+pkgrel=9
 pkgdesc='Have [almost] any application sort its directory listings'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url='http://ftp.uhulinux.hu/sources/sortdir'
-license=('GPL-2.0-or-later')
+url='http://ftp.uhulinux.hu/sources/sortdir'  # ← Seems to be gone
+license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 source=(
   "$url/$pkgname-$pkgver.tar.gz"
   "$pkgname.sh"
 )
 depends=('glibc' 'sh')
+options=('lto')
 
 _libname="lib$pkgname"
 _soname="$_libname.so"
@@ -24,8 +26,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
@@ -33,7 +35,8 @@ build() {
 
   export CFLAGS="$CFLAGS $LTOFLAGS -shared -ldl -fPIC"
 
-  gcc $CFLAGS $LDFLAGS -o "$_soname" "${_libname}.c"
+  # shellcheck disable=SC2086
+  gcc $CFLAGS $LDFLAGS -o "$_soname" "$_libname.c"
 }
 
 package() {
