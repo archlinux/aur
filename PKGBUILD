@@ -4,8 +4,8 @@
 
 pkgname='jed-git'
 _pkgname="${pkgname/-git/}"
-pkgver=0.99.20.r188.g159d327
-pkgrel=2
+pkgver=0.99.20.r189.ged7dc6d
+pkgrel=1
 pkgdesc='Powerful scriptable editor designed for use by programmers (latest git commit)'
 arch=("$CARCH")
 url='https://www.jedsoft.org/jed/'
@@ -23,11 +23,13 @@ depends=(
   'libx11'
   'libxft'
 )
-makedepends=('git' 'libxext' 'libxt')
+makedepends=('awk' 'git' 'libxext' 'libxt')
 install="$pkgname.install"
 
 prepare() {
   cd "$srcdir/$_pkgname"
+
+  git clean -dfx
 
   sed \
     -e "s|\(^all.*\)|\1 xjed rgrep getmail|" \
