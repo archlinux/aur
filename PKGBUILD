@@ -1,4 +1,5 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer: Alex Henrie <alexhenrie24@gmail.com>
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: GordonGR <ntheo1979@gmail.com>
@@ -7,17 +8,15 @@
 
 _basename=libcdio
 pkgname=lib32-libcdio
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="GNU Compact Disc Input and Control Library (32-bit)"
 url="https://www.gnu.org/software/libcdio/"
 arch=(x86_64)
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(lib32-gcc-libs lib32-ncurses libcdio)
-source=(https://ftp.gnu.org/gnu/libcdio/${_basename}-${pkgver}.tar.bz2{,.sig})
-sha256sums=("8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b"
-            "SKIP")
-validpgpkeys=("DAA63BC2582034A02B923D521A8DE5008275EC21") # R. Bernstein
+source=(https://github.com/libcdio/libcdio/releases/download/2.2.0/libcdio-${pkgver}.tar.bz2)
+sha256sums=(6f8fbdf4d189cf63f2a7a1549c516cd720c7b222c7aaadbc924a26e745a48539)
 
 prepare() {
     cd "${_basename}-${pkgver}"
@@ -26,7 +25,7 @@ prepare() {
 }
 
 build() {
-    export CC="gcc -m32"
+    export CC="gcc -m32 -D_LARGEFILE64_SOURCE"
     export CXX="g++ -m32"
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
