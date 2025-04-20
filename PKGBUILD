@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ggml-clblas-git
-pkgver=r1942.f71d538
+pkgver=r1952.13bcf9c
 pkgrel=1
 pkgdesc="Tensor library for machine learning (with OpenCL optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
