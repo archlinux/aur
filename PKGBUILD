@@ -1,46 +1,61 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
+_name=visions
 pkgname=python-visions
-_pkgname=visions
-pkgver=0.7.6
-pkgrel=2
-pkgdesc='Type System for Data Analysis in Python'
-arch=('any')
+pkgver=0.8.1
+pkgrel=1
+pkgdesc='Type system for data analysis in Python'
+arch=(any)
 url='https://github.com/dylan-profiler/visions'
-license=('BSD-4-Clause')
+license=(BSD-4-Clause)
 depends=(
+  python
   python-attrs
-  python-matplotlib
   python-multimethod
   python-networkx
   python-numpy
+  python-packaging
   python-pandas
+  python-puremagic
+  # subset of upstream optional dependencies (only those that are actually used)
+  python-imagehash
+  python-matplotlib
   python-pillow
-  python-tangled-up-in-unicode
+  python-shapely
 )
 makedepends=(
-  mypy
-  python-black
   python-build
   python-installer
-  python-isort
-  python-recommonmark
   python-setuptools
-  python-sphinx-autodoc-typehints
-  python-sphinx_rtd_theme
   python-wheel
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('0ae1b6dd9778c1fcfb16dd6f88d49b59df05655eea21472026ddb749d4febdadc35990a514d6eaccd3a2f7a118381f66437a0bbb0069cafc1e1251e6169ce224')
+checkdepends=(
+  python-pytest
+)
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+b2sums=('7c1d63060b830394ef13d293c97e5e5caf5a227301a0e6307cb451a0e56f1af367faac25b909f7ea34a59d0168b40e384fe6caa3e2325e5d01e42b656e5f46b9')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd $_name-$pkgver
   python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+check() {
+  local pytest_options=(
+    -vv
+    -W ignore::DeprecationWarning
+    -m "not spark_test"
+  )
+
+  cd $_name-$pkgver
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
-# vim:set ts=2 sw=2 et:
+
+package() {
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+}
