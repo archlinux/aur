@@ -1,0 +1,11 @@
+pkgbase = blackhole-sim
+	pkgdesc = A terminal-based black hole orbital simulator with dynamic star orbits
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bactaholic/blackhole-sim
+	arch = any
+	depends = python
+	source = src/blackhole.py
+	md5sums = SKIP
+
+pkgname = blackhole-sim
