@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VplotR
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Set of tools to make V-plots and compute footprint profiles'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-txdb.scerevisiae.ucsc.saccer3.sgdgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0f0b7111c996cc66fc322039016844705fadce27c5fe89efd0544527ebed7c2d')
+sha256sums=('7621bba69fe0abe5a524ab7ae2b77963f6f1287d390aaaca1f6b93b52c331a07')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
