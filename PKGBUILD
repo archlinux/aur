@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=gotify-desktop
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Small Gotify daemon to send messages as desktop notifications '
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'librsvg' 'oxipng' 'scour')
 _logo_commit='25c1d2c08894fcb0ed39c36a2816316a161c0e57'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/gotify/logo/archive/${_logo_commit}.tar.gz")
-sha512sums=('85c8e43e6d7ac8633300d501da72c6e8d64574e6ab14f63f50119275e7193b10f4f96feaadb9f473cfeccf9320780fa6fecfc72884032ed69b44f63b2fa1c3c0'
+sha512sums=('cf257e0923b89c42dc3661156e89745349e18f2729dee270502aa25f479363676c884580eff80b90365adf6fd8ebc1fbc7b68e922b0b76c63918a8b9a7133138'
             'c7d8a581446688f70231841acea2905e5a0c3b0c912e2864d502cbf9fbddbdd83655d0cc67dff7fcbcb8e7a2f175e76e96be1ecdec18f3ccf1769787dc82393b')
 
 prepare() {
@@ -42,6 +42,8 @@ package() {
 
     install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}
 
+    install -Dm 644 -t "${pkgdir}/usr/lib/systemd/user/" ./${pkgname}.service
+
     install -Dm 644 -t "${pkgdir}/usr/share/applications" ./desktop/${pkgname}.desktop
 
     install -Dm 644 "${srcdir}/logo-${_logo_commit}/gotify-logo-small-minified.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
@@ -49,6 +51,7 @@ package() {
     do
         dest="${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
         mkdir -p "${dest}"
-        rsvg-convert -w "${size}" -h "${size}" -f png "${srcdir}/logo-${_logo_commit}/gotify-logo-small.svg" | oxipng -o2 -a -Z --out "${dest}/${pkgname}.png" -
+        rsvg-convert -w "${size}" -h "${size}" -f png "${srcdir}/logo-${_logo_commit}/gotify-logo-small.svg" |
+            oxipng -o2 -a -Z --out "${dest}/${pkgname}.png" -
     done
 }
