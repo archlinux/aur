@@ -3,30 +3,34 @@
 _name=dask-jobqueue
 pkgname=python-$_name
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Deploy Dask on job schedulers like PBS, SLURM, and SGE"
+arch=(any)
 url="https://github.com/dask/dask-jobqueue"
+license=(BSD-3-Clause)
 depends=(
-    python-dask
-    python-distributed
+  python
+  python-dask
+  python-distributed
+  python-tornado
+  python-yaml
 )
 makedepends=(
-    python-build
-    python-installer
-    python-setuptools
-    python-wheel
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
-license=(BSD-3-Clause)
-arch=(any)
-source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('02de8048c05d97bc0f2f3f73dce345eacf9c8cab60183b4f0f9e0647ca5af363')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+b2sums=('1318a406600d85581f28793cdfef5fc22fdaf89ef008b82b56abecc3b9e313262ad3111512b9126581594d2cde1ca1c9e798f7ac819e7cea304d6b4e6df0e47d')
 
 build() {
-    cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
