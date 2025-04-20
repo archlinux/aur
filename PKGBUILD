@@ -6,7 +6,7 @@
 # Contributor: Jesse Juhani Jaara <jesse.jaara@gmail.com>
 
 pkgname=lib32-libmikmod
-pkgver=3.3.12
+pkgver=3.3.13
 pkgrel=1
 pkgdesc="Module player library supporting many formats, including MOD, S3M, IT and XM (32-bit)"
 url="https://mikmod.sourceforge.net"
@@ -27,7 +27,7 @@ provides=(libmikmod.so)
 source=(
   "git+https://git.code.sf.net/p/mikmod/mikmod#tag=libmikmod-$pkgver"
 )
-b2sums=('5bbade5a17ea7fdb79c27936575cc5ccc70a0581a1a3a88479cc60ca7640dfe6f83d84687024a60a1e79f20fd9d0acab9fef82ee6d9d089017f7dafab6ef27e0')
+b2sums=('4a5001249655eae7b6a93c4d3a79de93ae58b702bc3fa7ebc5fa16d8006b749f4eeb365fdcf0ea8fa0d47affa1932f99a31e9bfdaab516b0e1d5ee873cc3c5c6')
 
 prepare() {
   cd mikmod
