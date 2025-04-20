@@ -5,7 +5,7 @@
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=16.0.0
+pkgver=16.1.0
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="algorithms for the solution of large-scale scientific problems"
@@ -17,7 +17,7 @@ makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'bc' 'python-numpy')
 provides=('trilinos-sacado' 'trilinos-ml' 'zoltan' 'kokkos')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/refs/tags/trilinos-release-$_pkgver.tar.gz")
-sha512sums=('ed8b9f6ec8d35879f28f066685f70c492ee83ffdc42cfed75750216c0c689c81b00355520a7db441e56d83a6a153b0dbe4f8422d163a942cdcc6786235f64688')
+sha512sums=('8a8e565e6ecbfc6a16c3a2e071bd7a0c89b0b31a02fe0acc51734c90de1fbdce9758b129b0455ddaa131654f7ea643d87d96ae2fe22bf3f35b332415a3a62c14')
 
 
 build() {
