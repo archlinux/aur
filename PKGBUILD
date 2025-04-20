@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=wmbusmeters
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Read the wired or wireless mbus protocol to acquire utility meter readings'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc gcc-libs libxml2 rtl-sdr)
 optdepends=('rtl-wmbus: read wmbusmeters from rtl-sdr recievers')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         $pkgname.{service,sysusers,tmpfiles})
-b2sums=('9cb9510c0efa3be333af4bd5bd8d76bdfd6a8641d8d4cb1d44c4682ca68929d5970cb02db99a6d944ec5c99a56ed6021ca744df6644a49dd250bd498c391c185'
+b2sums=('bf9d004efc6393f7fc1ad605750a1bb71608a5b19525e07937d5a1c890753a20a1e65ec3471d7cfcb0a8241be2f919c8e06dead7c8dd533749f083be81928a38'
         'e5abb7690ab1095987542b5542b6e4d6b651899b56933165679343c5b19e6a8ec653007b83f0e08a71a2cffff6fb9c34c7be77480ab3a09ba758ce97a6a13fee'
         'c4e13af08548da1563f5a15d56d979876ba5367b60ac5b3b76ab6c984ee7c34b022345d929ef0566301a3ed289d9965c7223e1658826f610d184a1414ce369ab'
         '236107124e3b198cd2bed49651f4af24609f399b4e6420eb16828d6c9ca97e3e2d129acfd15aaacae91c150c54d158f0f3aa091c6ddef128880e3d0dd018a5aa')
