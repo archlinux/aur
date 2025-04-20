@@ -1,0 +1,14 @@
+pkgbase = toimer-git
+	pkgdesc = An extremely minimalist timer for the CLI.
+	pkgver = r1.g99f324a
+	pkgrel = 1
+	url = https://github.com/tanay1337/taskman
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = toimer
+	conflicts = toimer
+	source = git+https://github.com/tanay1337/toimer.git
+	sha256sums = SKIP
+
+pkgname = toimer-git
