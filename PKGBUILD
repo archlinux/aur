@@ -7,7 +7,7 @@
 
 pkgname=lib32-x265
 pkgver=4.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
@@ -17,13 +17,13 @@ depends=('x265' 'lib32-gcc-libs'  'lib32-libnuma')
 makedepends=('cmake' 'nasm' 'git')
 provides=('libx265.so')
 _tag=f0c1022b6be121a753ff02853fbe33da71988656
-source=("${pkgname#lib32-*}::git+$url.git#tag=$pkgver"
-        "x265_cmake4.patch::$url/commits/b354c009a60bcd6d7fc04014e200a1ee9c45c167/raw")
-sha256sums=('633998b9f17d335c24b3ac34eb446ac376971ce7323ef9befb86d134ee3e6453'
-            'cc24fae87d3af05af3a5ab57041cabc4fb4dc93a6d575d69dd23831fe0856204')
+source=("${pkgname#lib32-*}::git+${url}.git#tag=${pkgver}")
+sha256sums=('633998b9f17d335c24b3ac34eb446ac376971ce7323ef9befb86d134ee3e6453')
 
 prepare() {
-    patch -d x265 -Np1 -i ../x265_cmake4.patch
+  cd "${pkgname#lib32-*}"
+  # Fix CMake build error with latest CMake 4.0 release
+  git cherry-pick b354c009a60bcd6d7fc04014e200a1ee9c45c167
 }
 
 build() {
