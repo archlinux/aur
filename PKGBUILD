@@ -1,7 +1,7 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r520.5127179
+pkgver=1.0.r523.3ef107c
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   'wildmidi: used by dm-music'
   'qutebrowser: used by dm-bookman'
   'yad: used by dm-reddit and dm-weather'
-  'slock: used by dm-logout'
+  'betterlockscreen: used by dm-logout'
   'imv: the default image viewer used by dm-setbg, supports wayland'
   'sxiv: an alternative image viewer used by dm-setbg, X11 only'
   'xwallpaper: used by dm-setbg in x11'
