@@ -1,0 +1,19 @@
+pkgbase = god-build-git
+	pkgdesc = Build system which is capable of building different stuff using C
+	pkgver = r23.5cfe849
+	pkgrel = 1
+	url = https://github.com/KoT3isGood/god
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glibc
+	depends = clang
+	depends = binutils
+	depends = gcc
+	optdepends = mingw-w64-gcc
+	optdepends = mingw-w64-binutils
+	provides = god
+	source = git+https://github.com/KoT3isGood/god.git
+	md5sums = SKIP
+
+pkgname = god-build-git
