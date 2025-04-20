@@ -12,7 +12,7 @@ depends=("python-psutil"
          "python-daemon"
          "python-yaml"
          "python-six")
-makedepends=('python-setuptools' 'python-pbr' 'git' 'python-wheel')
+makedepends=('python-setuptools' 'python-pbr' 'git' 'python-wheel' 'python-pip')
 source=("https://files.pythonhosted.org/packages/e0/b4/842698d5c17b3cae7948df4c812e01f4199dfb9f35b1c0bb51cf2fe5c246/ansible-runner-${pkgver}.tar.gz")
 sha256sums=('82d02b2548830f37a53517b65c823c4af371069406c7d213b5c9041d45e0c5b6')
 
