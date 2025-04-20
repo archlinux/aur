@@ -16,10 +16,10 @@ pkgdesc="CPython bindings generator for C++ libraries - Debian rel ${pkgver#*+}"
 arch=(x86_64)
 url="https://wiki.qt.io/Qt_for_Python"
 license=('LGPL-3.0-or-later')
-depends=(cmake python-setuptools python-wheel python-numpy llvm clang
-  qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
+depends=(qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
   qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
   qt5-quickcontrols2 qt5-serialport qt5-remoteobjects qt5-xmlpatterns)
+makedepends=(cmake python-setuptools python-wheel llvm clang)
 
 _debver="${pkgver/+/-}"
 _pkgver="${pkgver%%+*}"
@@ -67,7 +67,7 @@ build() {
       -DPYTHON_CONFIG_SUFFIX='python-config' \
       -DCMAKE_POLICY_VERSION_MINIMUM=3.30
 
-    cmake --build build --parallel 4
+    cmake --build build
   else
     msg2 'Pyside2 build cache found, skipping configuration and compilation.  Remove ${pkgdir}/.build-complete to build again'
   fi
