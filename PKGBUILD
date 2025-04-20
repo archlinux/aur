@@ -28,7 +28,7 @@ backup=("etc/webapps/arsse/config.php"
         "etc/webapps/arsse/apache/arsse.conf"
         "etc/webapps/arsse/apache/arsse-fcgi.conf"
         "etc/webapps/arsse/apache/arsse-loc.conf")
-source=("$pkgname-$pkgver.tar.gz::https://thearsse.com/releases/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://code.mensbeam.com/MensBeam/Arsse/releases/download/$pkgver/arsse-$pkgver.tar.gz")
 md5sums=('dca0392c3f7b21e14e2e784936754349')
 
 package() {
