@@ -1,0 +1,14 @@
+[Unit]
+Description=Foundry VTT Server
+After=network.target
+
+[Service]
+Type=simple
+User=foundryvtt
+Group=foundryvtt
+WorkingDirectory=/usr/lib/foundryvtt
+ExecStart=/usr/bin/node resources/app/main.js --dataPath=/var/lib/foundryvtt
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
