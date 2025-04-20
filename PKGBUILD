@@ -2,37 +2,39 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
-pkgname=python-hstspreload
-_pkg="${pkgname#python-}"
+_name=hstspreload
+pkgname=python-$_name
 pkgver=2025.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium HSTS Preload list as a Python package"
 arch=(any)
 url="https://github.com/sethmlarson/hstspreload"
 license=(BSD-3-Clause)
 depends=(python)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+)
 #checkdepends=(python-pytest python-urllib3)
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('346552a807b3a1762376de8ecce097544e7fcd64fb64231b4652da52f86fa6f1')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+b2sums=('73c2170f96e7223148c914c06a3c19bdb12d73376b15787338a39fe9a4439bf82408056afdeb167c00f9ad0676e40e5be5f3f6ed685ab6b2c00d388aeba6c653')
 
 build() {
-    cd $_pkg-$pkgver
-    python -m build --wheel --no-isolation
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 # This runs around 230k tests, checking to see if the online list matches the current one.
 # It can take 5 minutes just to collect the tests. They're not distributed in the PyPI tarball.
 #check() {
-#    cd "${srcdir}"/${_pkg}-${pkgver}
+#  cd "${srcdir}"/${_pkg}-${pkgver}
 #
-#    python -m pytest
+#  python -m pytest
 #}
 
 package() {
-    cd $_pkg-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-    install -vdm 755 "$pkgdir/usr/share/licenses/$pkgname/"
-    ln -sv "$_site/$_pkg-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
