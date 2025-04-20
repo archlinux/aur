@@ -2,7 +2,7 @@ _reponame=Zelda64Recomp
 _pkgname=${_reponame,,}
 pkgname=${_pkgname}-mod-ui-bin
 pkgver=1.2.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Static recompilation of Majora's Mask for PC. Mod UI support draft."
 url='https://github.com/Zelda64Recomp/Zelda64Recomp/pull/535'
 arch=("x86_64" "aarch64")
@@ -10,12 +10,12 @@ license=("GPL3")
 depends=(freetype2 gtk3 libx11 libxrandr sdl2 vulkan-driver)
 provides=("${_pkgname}" "${pkgname}-debug")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-git" "${_pkgname}-modding-bin" "${_pkgname}-modding-bin-debug")
-artifact_x86_64=2716356216
-artifact_aarch64=2716356148
+artifact_x86_64=2974298915
+artifact_aarch64=2974305312
 source_x86_64=("https://nightly.link/Zelda64Recomp/Zelda64Recomp/actions/artifacts/${artifact_x86_64}.zip")
 source_aarch64=("https://nightly.link/Zelda64Recomp/Zelda64Recomp/actions/artifacts/${artifact_aarch64}.zip")
-sha256sums_x86_64=('9cc7b1d610a4cdd2f9db961df46e121ac794a9c7e0cb913e4c2644616a7e4417')
-sha256sums_aarch64=('1624aaf8f39e4b4f74f34f0d0d9ac6a817ead67da0dde71e918c1cee51c90cdb')
+sha256sums_x86_64=('1866f387931c67100a1187490845411b92c0c68936d47187631a73759b3a8b58')
+sha256sums_aarch64=('719445bd779b84eae494b8b97f36c182efb734bd656157982a1bdfa428c83a32')
 
 prepare() {
     local tempdir
