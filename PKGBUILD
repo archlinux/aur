@@ -1,3 +1,15 @@
-pkgname=blackhole-sim pkgver=1.0 pkgrel=1 pkgdesc="A terminal-based black hole orbital simulator with dynamic star orbits" arch=('any') url="https://github.com/bactaholic/blackhole-sim" depends=('python') source=('./blackhole.py') md5sums=('SKIP')
+pkgbase=blackhole-sim
+pkgdesc="A terminal-based black hole orbital simulator with dynamic star orbits"
+pkgver=1.0
+pkgrel=1
+url="https://github.com/bactaholic/blackhole-sim"
+arch=('any')
+depends=('python')
+source=('blackhole.py')
+md5sums=('bd1460388e79211246306a689f37f0cc')
 
-package() { install -Dm755 "./blackhole.py" "$pkgdir/usr/bin/blackhole" }
+pkgname=blackhole-sim
+
+package() {
+    install -Dm755 blackhole.py "$pkgdir/usr/bin/blackhole-sim"
+}
