@@ -1,0 +1,16 @@
+pkgbase = hyprpwmenu
+	pkgdesc = A modern powermenu for Hyprland.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://pypi.org/project/hyprpwmenu/
+	arch = x86_64
+	license = None
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/c4/e0/1f8017ffc5bfd683fa1ad74c0d019e3634e53de86def0d92dbcd9750b961/hyprpwmenu-0.1.8.tar.gz
+	sha256sums = 5b297db9537284007b7326f2546c879422f77434e7da2461fbb92de697c1ae48
+
+pkgname = hyprpwmenu
