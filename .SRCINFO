@@ -5,7 +5,6 @@ pkgbase = 5db5-compressor
 	arch = x86_64
 	license = EULA
 	makedepends = xdg-user-dirs
-	makedepends = unzip
 	depends = alsa-lib
 	depends = bzip2
 	depends = brotli
