@@ -21,11 +21,6 @@ _pkgsrc="fdk-aac"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
 b2sums=('c0256c9bb0b94451bf0a1a6699defc1fb51ea8a3c77f8dcb81bdcbb3d375bdb3a7a4eeb6965af3237e191a1ad78121198299d2974ac9f6ef7c76a2e0daf3d5cb')
 
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  #sed -i '/set (CMAKE_BUILD_TYPE/d' 'CMakeLists.txt'
-}
-
 build() {
   export CFLAGS+=" -m32"
   export CXXFLAGS+=" -m32"
