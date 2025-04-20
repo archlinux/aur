@@ -1,6 +1,6 @@
 # Maintainer: ricardocorreaandrade@proton.me
 pkgname=kbrowser-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Keyboard Browser for Linux built with Electron"
 arch=('x86_64')
