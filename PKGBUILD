@@ -1,11 +1,7 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-<<<<<<< HEAD
 pkgver=1.0.r521.6e64de2
-=======
-pkgver=1.0.r520.5127179
->>>>>>> 9c8c17605e6bf267c123a48b79f6b8e947bc77d9
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
