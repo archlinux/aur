@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=B-em
+Comment=BBC Microcomputer Emulator
+Exec=b-em
+Icon=/usr/share/pixmaps/b-em.png
+Terminal=false
+Type=Application
+Categories=System;Emulator;
+
