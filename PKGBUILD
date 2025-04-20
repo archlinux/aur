@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cfdnakit
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-roxygen2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5c2b321346a514f4aa3043afc450fd63')
-b2sums=('396553337a234d5ce04765e3632f7d9b81723bf3543ba80fc81111c527574ed343eca233be6dfbfe9ec8588acd30a705fedec47304f5a1fccf8fc1bfc69ec4ec')
+md5sums=('4c99e84a52eb8c2e6c4fa21882f2d009')
+b2sums=('8e67dbdabdec19f542d2928befbbfa63c39d6fb0f262bf21880a155cac682480c450b62fffadfa0a6e2800dc93bbff3a2fb4633091ec82833e644613583ab40c')
 
 build() {
   mkdir build
