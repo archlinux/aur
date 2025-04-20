@@ -1,20 +1,21 @@
 pkgbase = nekoray-mahdi-zarei-bin
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: sing-box) - Mahdi-zarei fork
-	pkgver = 4.3.2
+	pkgver = 4.3.3
 	pkgrel = 1
 	url = https://github.com/Mahdi-zarei/nekoray
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = qt6-base
+	depends = qt6-wayland
 	depends = qt6-charts
 	conflicts = nekoray
 	conflicts = nekoray-git
 	conflicts = nekoray-bin
-	source = nekoray-4.3.2.zip::https://github.com/Mahdi-zarei/nekoray/releases/download/4.3.2/nekoray-4.3.2-2025-04-03-linux64.zip
+	source = nekoray-4.3.3.zip::https://github.com/Mahdi-zarei/nekoray/releases/download/4.3.3/nekoray-4.3.3-2025-04-20-linux64.zip
 	source = nekoray.desktop
 	source = nekoray.sh
-	sha256sums = 9bdc7ab3be998a805af79ddcec9400203203024dc7902f2776d64d06ce9cb758
-	sha256sums = 1d2fb122bc4a2ce526b923e25731071e6e3c5016f0796ea08fc2ac13cd0c1356
+	sha256sums = b79b52cdb8759719ac5e37cbc35ef1751c26497073380881f4549b1f1123166c
+	sha256sums = fcc65aa60bd743aac9601edb0f2f6da1e9a84612dd8fd9e17cb16995746ef96a
 	sha256sums = 5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377
 
 pkgname = nekoray-mahdi-zarei-bin
