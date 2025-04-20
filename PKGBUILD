@@ -1,4 +1,4 @@
-# Maintainer: Robin H. <robin at blckct dot io>
+# Maintainer: cafreo
 
 pkgname=sonixd-bin
 pkgver=0.15.5
