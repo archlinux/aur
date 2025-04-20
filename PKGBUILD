@@ -3,14 +3,14 @@
 
 _pkgname='xmpp-dns'
 pkgname="${_pkgname}-git"
-pkgver=0.3.10.r2.g6d91558
+pkgver=0.4.5.r9.g458fb74
 pkgrel=1
-pkgdesc='Command-line tool to check XMPP SRV records (built from latest commit)'
+pkgdesc='Command-line tool to check XMPP SRV records (development version)'
 arch=('aarch64' 'x86_64')
 url='https://salsa.debian.org/mdosch/xmpp-dns'
 license=('BSD-2-Clause')  # SPDX-License-Identifier: BSD-2-Clause
 provides=('xmpp-dns')
-conflicts=('xmpp-dns')
+conflicts=("${provides[@]}")
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
@@ -26,6 +26,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  git clean -dfx
+
   mkdir -p build
   go mod tidy
 }
@@ -37,13 +39,14 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
   esac
 
+  export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -60,15 +63,16 @@ build() {
 check() {
   cd "$_pkgname"
 
-  go test
+  go test ./...
 }
 
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -vDm0755 "build/$_pkgname" -t "$pkgdir/usr/bin/"
   install -vDm0644 "$srcdir/$_pkgname/man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
-  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
+  install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # eof
