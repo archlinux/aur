@@ -1,6 +1,6 @@
 pkgname=unzip-bsdunzip-symlink
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A cheap drop-in for unzip by bsdunzip'
 url='http://infozip.sourceforge.net/UnZip.html'
 arch=('x86_64')
@@ -17,5 +17,7 @@ options=(!strip !debug)
 package() {
 	install -Dm 755 funzip.sh "$pkgdir"/usr/bin/funzip
 	ln -sf /usr/bin/bsdunzip "${pkgdir}"/usr/bin/unzip
+	mkdir -p "${pkgdir}"/usr/share/man/man1
+	ln -sf /usr/share/man/man1/bsdunzip.1.gz "${pkgdir}"/usr/share/man/man1/unzip.1.gz
 	install unzip60/unix/zipgrep "${pkgdir}"/usr/bin/zipgrep
 }

@@ -1,7 +1,7 @@
 pkgbase = unzip-bsdunzip-symlink
 	pkgdesc = A cheap drop-in for unzip by bsdunzip
 	pkgver = 6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://infozip.sourceforge.net/UnZip.html
 	arch = x86_64
 	license = custom
