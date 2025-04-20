@@ -6,21 +6,21 @@ pre_install() {
   set -o noglob
 
   cat <<EOF >&2
-NB: If you come from another packaging of jed you may have to
-    remove existing *.slc and *.dfa files in \$JED_ROOT prior
-    to installing the present package, e.g.:
-
-      \$ cd /usr/share/jed/lib
-      \$ sudo rm *.slc *.dfa
-
-    Alternatively, pacman can overwrite conflicting *.slc and
-    *.dfa files with e.g.:
-
-      \$ sudo pacman \\
-          --overwrite '*.slc' --overwrite '*.dfa' \\
-	    jed-git-${_pkgver}-*.pkg.tar.zst
-
-Please see pacman(8) for details.
+»  NB: If you come from another packaging of jed you may have to
+»      remove existing *.slc and *.dfa files in \$JED_ROOT prior
+»      to installing the present package, e.g.:
+»
+»        \$ cd /usr/share/jed/lib
+»        \$ sudo rm *.slc *.dfa
+»
+»      Alternatively, pacman can overwrite conflicting *.slc and
+»      *.dfa files with e.g.:
+»
+»        \$ sudo pacman \\
+»            --overwrite '*.slc' --overwrite '*.dfa' \\
+» 	     jed-git-${_pkgver}-*.pkg.tar.zst
+»
+»  Please see pacman(8) for details.
 EOF
 }
 

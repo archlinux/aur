@@ -5,7 +5,7 @@
 pkgname='jed-git'
 _pkgname="${pkgname/-git/}"
 pkgver=0.99.20.r189.ged7dc6d
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful scriptable editor designed for use by programmers (latest git commit)'
 arch=("$CARCH")
 url='https://www.jedsoft.org/jed/'
