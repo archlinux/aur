@@ -2,7 +2,7 @@
 
 pkgname=python-pyssim
 _name=${pkgname#python-}
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Module for computing Structured Similarity Image Metric (SSIM) in Python'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python python-pillow python-scipy python-numpy)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a506a363521a6f0d5651c9f02d26538b99fdb3791a881488f23f4d65f704d5bc985129a80db1e3ec4eeca6059cfa621bc39a95fd1eabe57719b9f24279c6448d')
+b2sums=('06b07a0bb10fd4e0c556b3f0f2d3eda9fdbcc49b9a0e519b1acbddee01f1e670c4233c4a6b8766eeff3d0682a52d4518174f749ef965ce32fbe434ab5b0c32f8')
 
 build() {
   cd $_name-$pkgver
