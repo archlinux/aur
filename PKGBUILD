@@ -5,12 +5,12 @@
 pkgname=python-pptx
 _pypiname=${pkgname}
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python library for creating and updating PowerPoint (.pptx) files"
 url="https://github.com/scanny/python-pptx"
 arch=('any')
 license=('MIT')
-depends=('python' 'python-behave>=1.2.5' 'flake8>=2.0' 'python-lxml>=3.1.0' 'python-mock>=1.0.1' 'python-typing_extensions'
+depends=('python' 'python-behave>=1.2.5' 'python-flake8' 'python-lxml>=3.1.0' 'python-mock>=1.0.1' 'python-typing_extensions'
   'python-pyparsing>=2.0.1' 'python-pillow>=3.3.2' 'python-pytest>=2.5' 'python-xlsxwriter>=0.5.7')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/scanny/python-pptx/archive/refs/tags/v${pkgver}.tar.gz")
