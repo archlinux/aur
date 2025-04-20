@@ -1,12 +1,14 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='most-snapshot'
 _pkgname="${pkgname/-snapshot/}"
 pkgver=5.2.0
 _prever=5.2.0
-pkgrel=9
+pkgrel=10
 epoch=1
+# shellcheck disable=SC1112
 pkgdesc='A terminal pager similar to ‘more’ and ‘less’ (latest development snapshot)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 depends=('glibc' 'slang')
@@ -27,8 +29,8 @@ build() {
   # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
   #
   # ld(1) says: “Supported for i386 and x86-64.”
-  case "${CARCH:-unknown}" in
-    'x86_64' | 'i386' )
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zi386' )
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;;
     * ) : pass ;;
