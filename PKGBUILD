@@ -6,18 +6,24 @@
 # Contributor: Lorenzo Ferrillo <lorenzofer at live dot it>
 
 pkgname=lib32-x265
-pkgver=4.1
+pkgver=4.0
 pkgrel=2
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265_git'
 license=('GPL')
 depends=('x265' 'lib32-gcc-libs'  'lib32-libnuma')
-makedepends=('cmake3-bin' 'nasm' 'git')
+makedepends=('cmake' 'nasm' 'git')
 provides=('libx265.so')
 _tag=f0c1022b6be121a753ff02853fbe33da71988656
 source=("${pkgname#lib32-*}::git+https://bitbucket.org/multicoreware/x265_git.git#tag=$pkgver")
-sha256sums=('a6a10ca581c13d8f43713f198ac2164d02d44b6c70ca31ec54e6bdb59410cdf5')
+source+=("x265_cmake4.patch::https://bitbucket.org/multicoreware/x265_git/commits/b354c009a60bcd6d7fc04014e200a1ee9c45c167/raw")
+sha256sums=('633998b9f17d335c24b3ac34eb446ac376971ce7323ef9befb86d134ee3e6453'
+            'cc24fae87d3af05af3a5ab57041cabc4fb4dc93a6d575d69dd23831fe0856204')
+
+prepare() {
+    patch -d x265 -Np1 -i ../x265_cmake4.patch
+}
 
 build() {
   export CC="gcc -m32"
