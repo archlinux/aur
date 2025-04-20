@@ -3,7 +3,7 @@
 # Contributor: Martin Imobersteg <imm [at] gmx [dot] ch> 
 pkgname=smbldap-tools 
 pkgver=0.9.11
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of perl scripts designed to manage user and group accounts stored in an LDAP directory." 
 arch=(any) 
 url="https://github.com/fumiyas/smbldap-tools"
