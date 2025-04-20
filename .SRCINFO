@@ -1,0 +1,24 @@
+pkgbase = spicy-git
+	pkgdesc = A parser generator and runtime for network protocol parsers (from Zeek Project) - Git version
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/zeek/spicy
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = swig
+	depends = cmake
+	depends = gcc
+	depends = make
+	depends = bison
+	depends = flex
+	depends = python
+	depends = libpcap
+	depends = zlib
+	provides = spicy
+	conflicts = spicy
+	source = spicy-git::git+https://github.com/zeek/spicy.git
+	md5sums = SKIP
+
+pkgname = spicy-git
