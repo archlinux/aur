@@ -5,12 +5,12 @@
 
 pkgname=howl-git
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose, light-weight customizable editor'
 arch=(i686 x86_64)
 url='https://howl.io/'
 license=(MIT)
-depends=(gtk3 desktop-file-utils)
+depends=(gtk4 desktop-file-utils)
 makedepends=(git wget)
 optdepends=('ruby: for running some scripts' 'coffee-script: for running some scripts')
 provides=(howl)
