@@ -1,0 +1,18 @@
+pkgbase = canace
+	pkgdesc = A Jupiter Ace emulator for Linux
+	pkgver = 20130224_c135151
+	pkgrel = 1
+	url = https://github.com/LawrenceWoodman/CanAce
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = tcl
+	depends = tk
+	depends = sdl12-compat
+	depends = glibc
+	options = !debug
+	source = https://github.com/LawrenceWoodman/CanAce/archive/c13515135345daf50bc8f6e4c3ddc4d6bcd01443/CanAce-c13515135345daf50bc8f6e4c3ddc4d6bcd01443.tar.gz
+	source = https://github.com/lawrencewoodman/xdgbasedir_tcl/archive/v0.3/xdgbasedir_tcl-0.3.tar.gz
+	sha256sums = ad665d5698841f0bfbe316cba76e5f76e238d245e7ec13bf06f756005297c7e0
+	sha256sums = 1e8c80bcece4a24862893c4da3f365b8f8d60b11366477fbea28cb3925535178
+
+pkgname = canace

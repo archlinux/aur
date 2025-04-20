@@ -1,0 +1,42 @@
+--- CanAce-c13515135345daf50bc8f6e4c3ddc4d6bcd01443-vanilla/src/tkwin.c	2013-02-24 06:53:19.000000000 +0000
++++ CanAce-c13515135345daf50bc8f6e4c3ddc4d6bcd01443/src/tkwin.c	2024-08-21 15:27:06.051458589 +0100
+@@ -34,6 +34,8 @@
+ static int TkWin_displayWindow(void);
+ static void TkWin_createCommands(void);
+ 
++extern int warpMode;
++
+ int
+ TkWin_init(unsigned char *_mem)
+ {
+@@ -126,6 +128,19 @@
+   return TCL_OK;
+ }
+ 
++static int
++ToggleWarpModeCmd(ClientData clientData, Tcl_Interp *_interp,
++            int objc, Tcl_Obj *CONST objv[])
++{
++  if (warpMode == 0) {
++    warpMode = 1;
++  }
++  else
++  {
++    warpMode = 0;
++  }
++  return TCL_OK;
++}
+ 
+ static int
+ GetScaleCmd(ClientData clientData, Tcl_Interp *_interp,
+@@ -195,6 +210,10 @@
+                        (ClientData) NULL,
+                        (Tcl_CmdDeleteProc *) NULL);
+ 
++  Tcl_CreateObjCommand(interp, "ToggleWarpMode", ToggleWarpModeCmd,
++                       (ClientData) NULL,
++                       (Tcl_CmdDeleteProc *) NULL);
++
+   Tcl_CreateObjCommand(interp, "GetScale", GetScaleCmd,
+                        (ClientData) NULL,
+                        (Tcl_CmdDeleteProc *) NULL);

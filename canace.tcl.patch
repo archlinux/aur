@@ -1,0 +1,21 @@
+--- CanAce-c13515135345daf50bc8f6e4c3ddc4d6bcd01443-vanilla/src/canace.tcl	2013-02-24 06:53:19.000000000 +0000
++++ CanAce-c13515135345daf50bc8f6e4c3ddc4d6bcd01443/src/canace.tcl	2024-08-21 15:47:25.177576017 +0100
+@@ -20,6 +20,9 @@
+ 
+ proc HandleEmuKey {key} {
+   switch -- $key {
++    F2 {
++      ToggleWarpMode
++    }
+     F12 {
+       ResetAce
+       ClearStatusBar
+@@ -99,7 +102,7 @@
+ }
+ 
+ proc DisplayAbout {} {
+-  tk_messageBox -message "CanAce v[GetCanAceVersion]" -type ok
++  tk_messageBox -message "CanAce [GetCanAceVersion]\n(on Slackware steroids...)" -type ok
+ }
+ 
+ proc CreateMenu {} {

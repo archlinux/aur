@@ -1,0 +1,27 @@
+--- CanAce-new/src/z80.h	2025-04-19 23:51:14.879654639 +0100
++++ CanAce-c13515135345daf50bc8f6e4c3ddc4d6bcd01443/src/z80.h	2013-02-24 06:53:19.000000000 +0000
+@@ -85,24 +85,18 @@
+ #define store2(x,y) store2b(x,(y)>>8,(y)&255)
+ 
+ #ifdef __GNUC__
+-#ifndef HEADER_FILE_NAME_H1
+-#define HEADER_FILE_NAME_H1
+ static void inline
+ storefunc(unsigned short ad,unsigned char b)
+ {
+   store(ad,b);
+ }
+-#endif // HEADER_FILE_NAME_H2
+ #undef store
+ #define store(x,y) storefunc(x,y)
+ 
+-#ifndef HEADER_FILE_NAME_H2
+-#define HEADER_FILE_NAME_H2
+ static void inline
+ store2func(unsigned short ad,unsigned char b1,unsigned char b2){
+   store2b(ad,b1,b2);
+ }
+-#endif // HEADER_FILE_NAME_H1
+ #undef store2b
+ #define store2b(x,hi,lo) store2func(x,hi,lo)
+ #endif

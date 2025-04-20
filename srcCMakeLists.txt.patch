@@ -1,0 +1,8 @@
+--- CMakeLists.txt	2024-08-21 12:36:04.388332687 +0100
++++ CMakeLists.txt.new	2024-08-21 12:38:10.621338009 +0100
+@@ -1,4 +1,4 @@
+-add_definitions(-DSCALE=2 -DCANACE_VERSION=\"0.1\")
++add_definitions(-DSCALE=4 -DCANACE_VERSION=\"20130224_c135151\")
+ add_executable(canace canace.c tkkeys.c tkspooler.c tktape.c acescreen.c z80.c tape.c keyboard.c spooler.c)
+ 
+ add_custom_command(
