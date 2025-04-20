@@ -49,7 +49,6 @@ makedepends=(
   python-setuptools-scm
   python-wheel
 )
-
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
 b2sums=('a4dce447c17e3318ff0371e43e20f38b5d8c7a5c81d774075d70710ae5e1f9d7598b1133bd4f97b80c3ea451bf15a033346bb89bafb66a1ac63366e8934ea6da')
 
@@ -66,5 +65,5 @@ build() {
 package() {
   cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
