@@ -3,8 +3,8 @@
 
 pkgname=qcm-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.0_qsql.r99.g78114d6
-pkgrel=1
+pkgver=1.2.0_qsql.r104.ga885863
+pkgrel=2
 pkgdesc="Qt client for netease cloud music"
 arch=('x86_64')
 url="https://github.com/hypengw/Qcm"
@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=(
 	'git'
+	'git-lfs'
 	'clang'
 	'cmake'
 	'ninja'
@@ -41,6 +42,10 @@ sha256sums=('SKIP')
 
 pkgver() {
 	git -C Qcm describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
+}
+
+prepare() {
+	git lfs install
 }
 
 build() {
