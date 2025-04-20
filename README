@@ -1,0 +1,13 @@
+CanAce is a fork by Lawrence Woodman of xAce featuring a
+tcl frontend and some fixes to the original source.
+
+It is an emulator for the Jupiter Ace that runs under most
+flavours of Unix. It was originally written by Edward Patel and
+based on a ZX81 emulator called xz81 written by Russell Marks,
+which was in turn based on Ian Collier's xz80, a ZX Spectrum
+emulator for X.
+
+This CanAce Arch version implements some modifications
+to the original release including one to change between
+"slow" and "fast" emulation speed by pressing the "F2" key,
+very useful while spooling text sources.
