@@ -8,11 +8,11 @@
 pkgbase=gforth
 pkgname=('gforth' 'gforth-docs')
 pkgver=0.7.3
-pkgrel=4
+pkgrel=5
 url="http://www.gnu.org/software/gforth/"
 arch=('i686' 'x86_64' 'armv6h')
 license=('GPL-3.0-or-later')
-makedepends=('libtool' 'texinfo')
+makedepends=('libtool' 'texinfo' 'texlive-meta')
 options=(!lto)
 #source=("https://git.savannah.gnu.org/cgit/gforth.git/snapshot/${pkgbase}-${pkgver}.tar.gz" #official source
 source=("https://ftp.gnu.org/gnu/gforth/gforth-${pkgver}.tar.gz"
@@ -100,10 +100,9 @@ package_gforth() {
 }
 
 package_gforth-docs() {
-  #split package as texlive-meta is quite a large set of packages - we also can't use makedepends here
   pkgdesc="Documentation for gforth"
   arch=('any')
-  depends+=('gforth' 'texlive-meta')
+  depends+=('gforth')
 
   # Build the documentation
   cd "$pkgbase-$pkgver"
