@@ -1,12 +1,12 @@
 pkgbase=amp-locker
-pkgname=('amp-locker-data-bin' 'amp-locker-standalone-bin' 'amp-locker-lv2-bin' 'amp-locker-vst3-bin')
+pkgname=( ${pkgbase}-{data,standalone,lv2,vst3}-bin )
 pkgver=1.2.6
 pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/amplocker"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
-makedepends=('xdg-user-dirs' 'unzip')
+makedepends=('xdg-user-dirs')
 provides=('amp-locker')
 source=('Amp Locker.desktop'
         'Amp Locker Linker'
@@ -15,7 +15,7 @@ source=('Amp Locker.desktop'
 sha256sums=('bbeb596d62ed9943294ee5025ba690def02e263b5c9b3b88304ee84607c52f53'
             '7784d4c4cf7bd953b52c34268cfd92dae1e23028e15c77b8e9e3ebd4970d0e80'
             '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5'
-            '69d1e57b8039f43c49151dca88bcae669efdbd42b44241839c746ee8f58c5494')
+            'b0aa7be36d164b3001e8527abc23c93f7d6e68e2884ab2353a28c74f2610e248')
 
 package_amp-locker-data-bin() {
     ## Install Asset Data
