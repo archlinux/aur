@@ -1,13 +1,13 @@
 pkgbase = harsh-bin
 	pkgdesc = CLI habit tracking for geeks
-	pkgver = 0.10.19
+	pkgver = 0.10.20
 	pkgrel = 1
 	url = https://github.com/wakatara/harsh
 	arch = any
 	license = MIT
 	provides = harsh
 	conflicts = harsh
-	source = harsh-bin-0.10.19.tgz::https://github.com/wakatara/harsh/releases/download/v0.10.19/harsh_Linux_x86_64.tar.gz
-	sha256sums = e15d0ea8256bef93224c297df07f3f50e8b39f9c387da90103c0b3f456a52682
+	source = harsh-bin-0.10.20.tgz::https://github.com/wakatara/harsh/releases/download/v0.10.20/harsh_Linux_x86_64.tar.gz
+	sha256sums = dd22d65dcf7271f8e0fbee932993f84e35448769dd58f925e05236a10c1b87e6
 
 pkgname = harsh-bin
