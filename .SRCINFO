@@ -1,6 +1,6 @@
 pkgbase = postgrestools-bin
 	pkgdesc = A collection of language tools and a Language Server Protocol (LSP) implementation for Postgres, focusing on developer experience and reliable SQL tooling
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://pgtools.dev
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = postgrestools-bin
 	license = MIT
 	provides = postgrestools
 	conflicts = postgrestools
-	source = postgrestools-bin-0.4.0-1-LICENSE::https://github.com/supabase-community/postgres_lsp/raw/refs/tags/0.4.0/LICENSE
+	source = postgrestools-bin-0.5.0-1-LICENSE::https://github.com/supabase-community/postgres_lsp/raw/refs/tags/0.5.0/LICENSE
 	b2sums = 7ae0aa37903c2bb0ebba4dbf11292947a42c522bdc4fa762f2407a2546091047dbe1b3057007c35769ab3ff414c8ca3896ff6b178f94df3e1cff4e616466edc0
-	source_x86_64 = postgrestools-bin-0.4.0-1-x86_64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/0.4.0/postgrestools_x86_64-unknown-linux-gnu
-	b2sums_x86_64 = 7a057c7d72c58129723eaf91eb14502613aea6213167a7e5dac885a09d90fe26beda9dbb3b2b0b4bb3f3b7a98fb4c250cb5722606e891a190e5dfcfde0d47b1b
-	source_aarch64 = postgrestools-bin-0.4.0-1-aarch64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/0.4.0/postgrestools_aarch64-unknown-linux-gnu
-	b2sums_aarch64 = f8ca9b63f838d5ee4b7b0fb6863886076f3f070088fe583dec265ad873942014b21fdc5b50d5a3ad16ad977e1729b53461c0c96939a78c0ea31323d0be220089
+	source_x86_64 = postgrestools-bin-0.5.0-1-x86_64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/0.5.0/postgrestools_x86_64-unknown-linux-gnu
+	b2sums_x86_64 = f36faf337bf0cfa80d869b9b7fb5bfc12701cfdc43c366c2940cc5758bb7c97b1009dacdf6025d5c886f11776cd70cb3c308e9f93208d524e91833af69b8626c
+	source_aarch64 = postgrestools-bin-0.5.0-1-aarch64.bin::https://github.com/supabase-community/postgres_lsp/releases/download/0.5.0/postgrestools_aarch64-unknown-linux-gnu
+	b2sums_aarch64 = f77c394b5005e7d307870c2557570f4e53f4c90b9f00de2c1619350bfab6e67428c0ece4d85602c9ca41ad11611bd179eee03d32fc1a0b53d0611e781d83aeba
 
 pkgname = postgrestools-bin
