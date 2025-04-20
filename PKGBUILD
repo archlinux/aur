@@ -6,7 +6,7 @@ _CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;10.0;10.0+PTX"
 pkgname=python-ktransformers
 _pkgname=ktransformers
 pkgver=0.2.1.post1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations"
 arch=('x86_64')
 url="https://github.com/kvcache-ai/ktransformers"
@@ -17,7 +17,7 @@ depends=(
 	python-colorlog
 	python-fastapi
 	python-fire
-	python-flash-attn
+	python-flash-attention
 	python-langchain
 	python-protobuf
 	python-pytorch-opt-cuda
