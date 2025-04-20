@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Digital Logic Sim
+Comment=The logic simulation developed by Sebastian Lague
+Exec=/usr/bin/dls
+Icon=dls-icon
+Terminal=false
+Type=Application
+Categories=Education;Science;Electronics;
