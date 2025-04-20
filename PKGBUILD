@@ -2,7 +2,7 @@
 
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.2.2.158.gac644d40
+pkgver=0.3.0.86.g59d64b46
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
     'vapoursynth'
     'python-rich'
     'python-jetpytools-git'
+    'python-scipy'
 )
 makedepends=('git'
     'python-pip'
@@ -84,6 +85,7 @@ pkgver() {
 
 build() {
     cd "${_plug}"
+    rm -f dist/*.whl
     pip wheel --no-deps . -w dist
 }
 
