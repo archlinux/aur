@@ -2,11 +2,11 @@
 
 pkgname=prometheus-slurm-exporter
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for slurm metrics"
 arch=(x86_64)
 url="https://github.com/vpenso/prometheus-slurm-exporter"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 makedepends=(go)
 backup=("etc/conf.d/$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
@@ -25,7 +25,7 @@ prepare() {
   mkdir -p build
 
   # patch for https://github.com/vpenso/prometheus-slurm-exporter/issues/38
-  patch -Np 1 < "$srcdir/gpus.patch"
+  patch -Np 1 < ../gpus.patch
 }
 
 build() {
@@ -40,15 +40,15 @@ build() {
 
 package() {
   # systemd files
-  install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "$pkgname.conf" "$pkgdir/etc/conf.d/$pkgname"
+  install -vDm 644 $pkgname.service -t "$pkgdir"/usr/lib/systemd/system/$pkgname.service
+  install -vDm 644 $pkgname.sysusers -t "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
+  install -vDm 644 $pkgname.conf -t "$pkgdir"/etc/conf.d/$pkgname
 
   cd "$pkgname-$pkgver"
 
   # binary
-  install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -vDm 755 "build/$pkgname" "$pkgdir"/usr/bin/$pkgname
 
   # license
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/$pkgname-$pkgver/LICENSE"
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }

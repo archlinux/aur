@@ -1,10 +1,10 @@
 pkgbase = prometheus-slurm-exporter
 	pkgdesc = Prometheus exporter for slurm metrics
 	pkgver = 0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vpenso/prometheus-slurm-exporter
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = go
 	backup = etc/conf.d/prometheus-slurm-exporter
 	source = prometheus-slurm-exporter-0.20.tar.gz::https://github.com/vpenso/prometheus-slurm-exporter/archive/0.20.tar.gz
