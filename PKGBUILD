@@ -5,12 +5,17 @@
 pkgname=hyprpwmenu
 _origpkgname=hyprpwmenu
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern powermenu for Hyprland."
 arch=("x86_64")
 url='https://pypi.org/project/hyprpwmenu/'
 license=("None")
-depends=()
+depends=(
+	"python"
+	"python-click"
+	"confz"
+	"python-pyqt6"
+)
 makedepends=(
 	"python-build"
 	"python-installer"
