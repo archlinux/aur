@@ -1,12 +1,10 @@
 # Maintainer: kj_sh604 <406hs_jk@proton.me>
 
 pkgname=coreutils-uutils
-pkgver=0.0.30
-pkgrel=3
-gnu_coreutils=coreutils
-rust_uutils=uutils-coreutils
-gnu_coreutils_version=9.7
-rust_uutils_version=0.0.30
+_gnuver=9.7
+_uuver=0.0.30
+pkgver=${_uuver}
+pkgrel=4
 pkgdesc='(warning: use at own risk) Cross-platform Rust rewrite of the GNU coreutils being used as actual system coreutils'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -16,13 +14,13 @@ depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl' 'gcc-libs' 'libkeccak' 'o
 conflicts=('coreutils' 'b3sum' 'sha3sum')
 provides=('coreutils' 'b3sum' 'sha3sum')
 makedepends=('rust' 'cargo' 'python-sphinx')
-source=("https://ftp.gnu.org/gnu/$gnu_coreutils/$gnu_coreutils-$gnu_coreutils_version.tar.xz"
-        "$rust_uutils-$rust_uutils_version.tar.gz::$url/archive/$rust_uutils_version.tar.gz")
+source=("https://ftp.gnu.org/gnu/coreutils/coreutils-$_gnuver.tar.xz"
+        "uutils-coreutils-$_uuver.tar.gz::$url/archive/$_uuver.tar.gz")
 sha256sums=('e8bb26ad0293f9b5a1fc43fb42ba970e312c66ce92c1b0b16713d7500db251bf'
             '732c0ac646be7cc59a51cdfdb2d0ff1a4d2501c28f900a2d447c77729fdfca22')
 
 prepare() {
-  cd $gnu_coreutils-$gnu_coreutils_version
+  cd coreutils-$_gnuver
   # apply patch from the source array (should be a pacman feature)
   local filename
   for filename in "${source[@]}"; do
@@ -36,7 +34,7 @@ prepare() {
 
 build() {
   # build gnu coreutils that are not implemented in the MULTICALL rust uutils 
-  cd $gnu_coreutils-$gnu_coreutils_version
+  cd coreutils-$_gnuver
   ./configure \
       --prefix=/usr \
       --libexecdir=/usr/lib \
@@ -46,7 +44,7 @@ build() {
 
 package() {
   export RUSTONIG_DYNAMIC_LIBONIG=1
-  cd $gnu_coreutils-$rust_uutils_version
+  cd coreutils-$_uuver
   make \
       DESTDIR="$pkgdir" \
       PREFIX=/usr \
@@ -56,11 +54,11 @@ package() {
       MULTICALL=y \
       install
   # merge specified gnu coreutils with the rust uutils
-  cd $srcdir && cd $gnu_coreutils-$gnu_coreutils_version
+  cd $srcdir && cd coreutils-$_gnuver
   make DESTDIR="$pkgdir" install
   # add libstdbuf.so
   mkdir -p $pkgdir/usr/lib/coreutils
-  cd $srcdir && cd $gnu_coreutils-$rust_uutils_version/target/release/deps
+  cd $srcdir && cd coreutils-$_uuver/target/release/deps
   mv liblibstdbuf.so $pkgdir/usr/lib/coreutils/libstdbuf.so
   # clean conflicts, arch ships these in other apps
   cd $pkgdir/usr/bin
