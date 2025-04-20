@@ -2,7 +2,7 @@
 _base=mystic
 pkgname=python-${_base}
 pkgdesc="highly-constrained non-convex optimization and uncertainty quantification"
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 url="https://github.com/uqfoundation/${_base}"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('python-scipy: for SciPy optimization'
   'python-pyina: for for parallel computing'
   'python-matplotlib: for Matplotlib rendering')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('156d0bb1d08d9008b0b6ac30e00aba4b4588a895188b5143de4ff742675628de41f887afda4bd793cc5b281046a9ab245b21076ff944db29ee10a144e0e41eb9')
+sha512sums=('9977c87980002c17a021dbaffffd5a95377e2534223926a62445ea01a89a9c82e8a5848483c3b1a93b4f4ab8b082ec5706207dafd8a6f2ce6d3ed9a5c0dd4d62')
 
 build() {
   cd ${_base}-${pkgver}
