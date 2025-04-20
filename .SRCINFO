@@ -1,0 +1,13 @@
+pkgbase = stunner
+	pkgdesc = Detect your NAT quickly and easily
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/jaxxstorm/stunner
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git::git+https://github.com/jaxxstorm/stunner#commit=0015faf432141451c071330d02356f5d776242d9
+	sha256sums = SKIP
+
+pkgname = stunner
