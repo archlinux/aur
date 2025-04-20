@@ -1,14 +1,15 @@
 pkgbase = python-dendropy
 	pkgdesc = A Python library for phylogenetics and phylogenetic computing: reading, writing, simulation, processing and manipulation of phylogenetic trees (phylogenies) and characters.
-	pkgver = 4.6.1
+	pkgver = 5.0.1
 	pkgrel = 1
-	url = http://packages.python.org/DendroPy/
+	url = https://github.com/jeetsukumaran/DendroPy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/D/DendroPy/DendroPy-4.6.1.tar.gz
-	sha256sums = 26fcbe1cb5831301e8f1f2e15a0563620f0b8e29e6d409dd6a2a7c957dd64c16
+	source = python-dendropy-5.0.1.tar.gz::https://github.com/jeetsukumaran/DendroPy/archive/refs/tags/v5.0.1.tar.gz
+	sha256sums = d50fc9e26092f4201f38c8a0701418e4b99482887dfb3442ad02b6abd3471cf0
 
 pkgname = python-dendropy
 	depends = python
