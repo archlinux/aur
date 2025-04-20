@@ -1,3 +1,7 @@
+# Submitter: Dallin B
+# Maintainer: Dallin B
+# Last Packager: Dallin B
+
 pkgbase=blackhole-sim
 pkgdesc="A terminal-based black hole orbital simulator with dynamic star orbits"
 pkgver=1.0
