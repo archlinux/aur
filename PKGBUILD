@@ -1,14 +1,13 @@
 # Maintainer: Sławomir Śpiewak <slawekwaga@gmail.com>
 # Contributors: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B'
-'7FDB657970703F784830708E55242301DDCE0A32')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 # Since this is a development build and people may want to have both the latest stable AND development,
 # it installs alongside rather than as a conflict of zandronum2.
 # Adapted from https://wiki.zandronum.com/Compiling_Zandronum_on_Linux#Arch_Linux
 pkgname=zandronum-hg
-pkgver=r10948+.83b6cd3bc9e6+
+pkgver=r11849.59da3b6b928c
 pkgrel=1
 _fmod_ver_true="4.44.64"
 _fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
@@ -28,7 +27,7 @@ conflicts=("zandronum-dev")
 install=zandronum-hg.install
 changelog=
 noextract=()
-source=("zandronum::hg+https://hg.osdn.net/view/zandronum/zandronum-stable"
+source=("zandronum::hg+https://foss.heptapod.net/zandronum/zandronum-stable"
 	"LICENSE"
         "${pkgname}.launcher"
         "${pkgname}-server.launcher"
@@ -39,10 +38,7 @@ source=("zandronum::hg+https://hg.osdn.net/view/zandronum/zandronum-stable"
         "LICENSE.sig"
 	"${pkgname}.png.sig"
 	"${pkgname}.desktop.sig"
-
-	"fix_unsafe_printf.patch"
-
-	"fix_unsafe_printf.patch.sig")
+)
 #source_x86_64=("http://zandronum.com/essentials/fmod/fmodapi${_fmod_ver}linux64.tar.gz"
 #	       "fmodapi${_fmod_ver}linux64.tar.gz.sig")
 #source_i686=("http://zandronum.com/essentials/fmod/fmodapi${_fmod_ver}linux.tar.gz"
@@ -59,8 +55,7 @@ sha512sums=('SKIP'
             'SKIP'
 	    'SKIP'
 	    'SKIP'
-	    '8b1d525532d0c341529d1afa24e579dbb512f53baefa6ae7b2620e65eda8fb441c1c1afe515dd716027325f7e730998351c0fa4f8d10de08beaeba8850263cec'
-	    'SKIP')
+	   )
 #sha512sums_x86_64=('edc851730c81da4423bd0f10a433c46b4a8bdad901b32f628087b40cec088760a441228ee47a75e17844c195e7abf79e02439c39b5fdeeb9689572dcd9104ade'
 #		   'SKIP')
 #sha512sums_i686=('5d4350de3683a8f990447cd8d870ef5b10787ae06e0533f4376ee3c8113fffa8723fcc7a8703bb556c8e9600915087ea078a77049aee34e7f79adf9ae32ebdc4'
@@ -77,7 +72,6 @@ prepare() {
      export fmod_dir_suffix=''
 	fi
 	cd "${srcdir}/${_pkgname}"
-	hg patch --no-commit  ../../fix_unsafe_printf.patch
 }
 build() {
 	#export FMODFOLDER="${srcdir}/fmodapi${_fmod_ver}linux${fmod_dir_suffix}"
