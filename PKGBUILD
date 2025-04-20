@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
 pkgver=4.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
 url="https://github.com/Zweih/qp"
@@ -18,10 +18,6 @@ build() {
 
   if [[ -f .ldflags ]]; then
     ldflags=$(<.ldflags)
-  else
-    # interim until commit fix is released
-    ldflags="-s -w -X qp/internal/about.Version=${pkgver} \
-      -X qp/internal/about.Date=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   fi
 
   go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" ./cmd/${pkgname}
