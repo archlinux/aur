@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=h5vc
-_pkgver=2.40.1
+_pkgver=2.42.0
 pkgname=r-${_pkgname,,}
-pkgver=2.40.1
+pkgver=2.42.0
 pkgrel=1
 pkgdesc='Managing alignment tallies using a hdf5 backend'
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7918d0e5b992442bb166ae9d814cb103a89972b207978655d70a9339cd4cb61b')
+sha256sums=('bc1e325a5234f490f68cdf4a8582f3eea5f12f87d344a1fa1c3b94cdea1aa7a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
