@@ -1,51 +1,65 @@
 # Maintainer: Chi_Tang <me@chitang.dev>
-# Contributor: Nekoray_CI <noreply@chitang.dev>
-pkgname='nekoray-git'
-pkgver=4.0.beta4.r5.gadef6cd
-pkgrel=1
-pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
-arch=('x86_64')
-url='https://matsuridayo.github.io'
-license=('GPL')
-makedepends=('cmake' 'git' 'ninja' 'go' 'zxing-cpp')
-depends=('qt5-base' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'protobuf' 'yaml-cpp' 'sing-geoip' 'sing-geosite')
+# Maintainer: Integral <integral@member.fsf.org>
 
-source=(
-	'git+https://github.com/MatsuriDayo/nekoray.git'
-	'nekoray.desktop'
+pkgname=nekoray-git
+_pkgname=${pkgname%-git}
+pkgver=4.3.2.r30.gf2987f3
+pkgrel=2
+pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: sing-box)"
+arch=('x86_64' 'aarch64' 'riscv64')
+url="https://github.com/Mahdi-zarei/${_pkgname}"
+license=('GPL-3.0-or-later')
+makedepends=('cmake' 'git' 'go' 'qt6-tools')
+depends=('qt6-base' 'qt6-charts' 'protobuf' 'yaml-cpp' 'zxing-cpp' 'abseil-cpp' 'cpr')
+optdepends=(
+	'sing-geoip-db: geoip database for NekoBox'
+	'sing-geosite-db: geosite database for NekoBox'
 )
-sha512sums=('SKIP' 'SKIP')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=(
+	"git+${url}.git"
+	${_pkgname}.{sh,desktop}
+)
+install="${pkgname}.install"
+sha512sums=('SKIP'
+            'b377f7e8c859ee0b5bc05f89e2dc6c0b8535e740e089e9afe5e5f145c38a05fccbbddfcb6eb8ced9a7478e4d9ccc3cbd3ffb6843c128189c75599c40c87737e8'
+            'b0cfd99d7fd038d660af275a5f2fc7f9ebfe63d6751edd6eea66a8c5350f314b6dbc9eddaa5aaed134e97087290630d369b1bdf4ad59d12868c780103b33dbed')
 
 pkgver() {
-	cd "${srcdir}/nekoray"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "${_pkgname}/" describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/nekoray"
-	git submodule init
-	git submodule update
-	bash libs/get_source.sh
-	mkdir -p build
-	cd build
-	cmake -GNinja -DQT_VERSION_MAJOR=5 -DNKR_PACKAGE=ON ..
-	ninja
-	cd "${srcdir}/nekoray"
-	GOOS=linux GOARCH=amd64 ./libs/build_go.sh
+	cd "${_pkgname}/"
+
+	cmake -B build \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr
+
+	cmake --build build
+
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+
+	cd core/server
+	VERSION_SINGBOX=$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box)
+	go build -o ../../build/ \
+		-buildmode=pie \
+		-trimpath \
+		-ldflags "-linkmode=external -w -s -X 'github.com/sagernet/sing-box/constant.Version=${VERSION_SINGBOX}'" \
+		-mod=readonly \
+		-modcacherw \
+		-tags "with_clash_api,with_gvisor,with_quic,with_wireguard,with_utls,with_ech,with_dhcp"
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/lib/nekobox"
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/pixmaps"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	# assets
-	cp "${srcdir}/nekoray.desktop" "${pkgdir}/usr/share/applications/nekoray.desktop"
-	cp -a "${srcdir}/nekoray/res/public/nekobox.png" "${pkgdir}/usr/lib/nekobox/"
-	ln -s "/usr/lib/nekobox/nekobox.png" "${pkgdir}/usr/share/pixmaps/nekobox.png"
-	# core	
-	cp -a "${srcdir}/nekoray/deployment/linux64/nekobox_core" "${pkgdir}/usr/lib/nekobox/"
-	# app
-	cp -a "${srcdir}/nekoray/build/nekobox" "${pkgdir}/usr/lib/nekobox/"
-	ln -s  "/usr/lib/nekobox/nekobox" "${pkgdir}/usr/bin/nekobox"
+	install -Dm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+	cd "${_pkgname}/"
+	install -Dm644 "res/public/nekobox.png" -t "${pkgdir}/usr/share/pixmaps/"
+	install -Dm755 build/{${_pkgname},nekobox_core} -t "${pkgdir}/usr/lib/${_pkgname}/"
 }
