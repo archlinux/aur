@@ -3,7 +3,7 @@ _appname="coolvlviewer"
 pkgname="${_appname}"
 provides=("${_appname}")
 conflicts=("${_appname}")
-pkgver=1.32.2.37
+pkgver=1.32.2.44
 pkgrel=1
 pkgdesc="A third-party viewer for Second Life and OpenSim grids (built from source)"
 url="http://sldev.free.fr"
@@ -66,7 +66,7 @@ source=(
   "${_appname}.desktop"
 )
 sha1sums=(
-  "1506f08d562db77a13b6088fff3f335f9fe0d81b"
+  "392cfbef689c3a65ebe374ad6cfa03456942abb4"
   "314763ee16ca2e2224c402ec18bf5b24157ce8b8"
 )
 
