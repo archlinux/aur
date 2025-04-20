@@ -1,18 +1,18 @@
 # Maintainer: Drew Metzger <aur at unexceptional dot net>
 
 pkgname=greatfet-git
-pkgver=2024.0.1
+pkgver=2024.0.4
 pkgrel=1
 pkgdesc="GreatFET firmware and host software"
 arch=('any')
 url="https://github.com/greatscottgadgets/greatfet"
 license=(BSD)
 depends=(
-  'ipython' 
-  'python-pyusb' 
-  'python-future' 
-  'python-pygreat' 
-  'python-cmsis-svd-git' 
+  'ipython'
+  'python-pyusb'
+  'python-future'
+  'python-pygreat'
+  'python-cmsis-svd-git'
   'python-pyfwup'
 )
 makedepends=(
