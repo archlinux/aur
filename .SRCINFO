@@ -9,7 +9,7 @@ pkgbase = digital-logic-sim-bin
 	source = dls.zip::https://cdn.matix-media.net/dd/f0ca84b6
 	source = dls.desktop
 	source = dls-icon.jpg
-	sha256sums = ee224a526447200da55113d35b0bc58d96f7ab15d51d59bea7bed728b71b542e
+	sha256sums = SKIP
 	sha256sums = a347d30340f3b38cafa156745efef18e768794f73252c8585b2021b4b47b8535
 	sha256sums = be3af17e3a63ab19f9526da768e7cdb22242199ea5983593de300e88ba5d202d
 
