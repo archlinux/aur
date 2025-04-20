@@ -1,6 +1,6 @@
 pkgbase = konaste-linux
 	pkgdesc = Run KONAMI Amusement Game Station (Konaste) games using Wine
-	pkgver = 0.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/mizztgc/konaste-linux
 	install = konaste-linux.install
@@ -18,7 +18,9 @@ pkgbase = konaste-linux
 	optdepends = gamemode: run with better performance (--gamemode)
 	optdepends = gamescope: run games through a gamescope (--gamescope)
 	optdepends = mangohud: enable performance overlay (--mangohud)
-	source = https://github.com/mizztgc/konaste-linux/releases/download/v0.2/konaste-linux-v0.2.tar.gz
-	sha256sums = 8f49b50575da11f9636008dfa69bb894b37751b368584c871c4500078f7e0681
+	optdepends = kdialog: dialog handling (Qt-based distros)
+	optdepends = zenity: dialog handling (GTK-based distros)
+	source = https://github.com/mizztgc/konaste-linux/releases/download/v0.2.1/konaste-linux-v0.2.1.tar.gz
+	sha256sums = 3445e8f5b9c56ea0d86f6a5aa25399878ebc3e0f1cf41b5a27d9bb4e98274371
 
 pkgname = konaste-linux
