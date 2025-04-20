@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r24980.7d2a12a
+pkgver=2.3.1.r24990.2349ea0
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -41,8 +41,6 @@ prepare() {
   sed -i 's/if(FLATPAK)/if(true)/' $pkgname/deps/CMakeLists.txt
   # cherry pick an OCCT commit to make it build with system freetype
   cat 7236e83dcc1e7284e66dc61e612154617ef715d6.patch >> $pkgname/deps/OCCT/0001-OCCT-fix.patch
-  # Fix xgettext: case-sensitive mismatches
-  sed -i 's|src/slic3r/GUI/AMSMappingPopup.cpp|src/slic3r/GUI/AmsMappingPopup.cpp|g' $pkgname/localization/i18n/list.txt
 }
 
 build() {
