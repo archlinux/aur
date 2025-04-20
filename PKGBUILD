@@ -26,7 +26,7 @@ build() {
 	mv usr/local/* usr
 	#Drop Qt5 symbol version
 	patchelf --remove-rpath usr/bin/activmgr $(nm -D usr/bin/activmgr|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
-	
+	#todo: drop insecure RPATH (use namcap)
 	rm -r usr/bin/{imageformats,platforms,xcbglintegrations,qtwebengine*,QtWebEngineProcess,icudtl.dat} usr/share/promethean/lib
 	ln -sf /usr/lib/libactivsystem.so usr/lib/libactivsystem.so.2.4
 	ln -sf /usr/lib/libactivsystem.so usr/lib/libactivsystem.so.2.4.0
