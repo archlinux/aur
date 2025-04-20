@@ -10,6 +10,14 @@ md5sums=('bd1460388e79211246306a689f37f0cc')
 
 pkgname=blackhole-sim
 
+prepare() {
+    # Check if the shebang already exists to avoid duplicating it
+    if ! grep -q '^#!/usr/bin/env python3' blackhole.py; then
+        echo '#!/usr/bin/env python3' | cat - blackhole.py > blackhole.py.tmp
+        mv blackhole.py.tmp blackhole.py
+    fi
+}
+
 package() {
-    install -Dm755 blackhole.py "$pkgdir/usr/bin/blackhole-sim"
+    install -Dm755 blackhole.py "$pkgdir/usr/bin/blackhole"
 }
