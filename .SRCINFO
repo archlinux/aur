@@ -1,22 +1,16 @@
 pkgbase = kbrowser-bin
-	pkgdesc = Keyboard Browser for Linux built with Python, WebKit2Gtk3 and GTK 3
-	pkgver = 1.0.0
+	pkgdesc = Keyboard Browser for Linux built with Electron
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://gitlab.com/ricardoca/kbrowser
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = python
-	depends = gtk3
-	depends = python-gobject
-	depends = python-requests
-	depends = webkit2gtk
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gst-plugins-ugly
 	depends = gst-libav
-	depends = python-cairosvg
-	source = git+https://gitlab.com/ricardoca/kbrowser.git
+	source = git+https://gitlab.com/ricardoca/kbrowser-electron.git
 	sha256sums = SKIP
 
 pkgname = kbrowser-bin
