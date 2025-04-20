@@ -1,0 +1,18 @@
+pkgbase = eask-cli-git
+	pkgdesc = CLI for building, running, testing, and managing your Emacs Lisp dependencies
+	pkgver = r0.11.2.f2ea3b25
+	pkgrel = 1
+	url = https://github.com/emacs-eask/cli
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = npm
+	depends = emacs
+	provides = eask-cli=r0.11.2.f2ea3b25
+	conflicts = eask-cli
+	options = !strip
+	options = !debug
+	source = eask-cli::git+https://github.com/emacs-eask/cli.git
+	sha256sums = SKIP
+
+pkgname = eask-cli-git
