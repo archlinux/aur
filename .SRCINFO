@@ -1,0 +1,16 @@
+pkgbase = xace
+	pkgdesc = A Jupiter Ace emulator for Linux
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://lawrencewoodman.github.io/xAce/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = bash
+	depends = libx11
+	depends = libxext
+	options = !debug
+	source = https://github.com/LawrenceWoodman/xAce/archive/v0.5/xAce-0.5.tar.gz
+	sha256sums = 88cd59ce646d8bd2ef3be156bb013896558e90877442fc9cdca837ffdf5fbd40
+
+pkgname = xace
