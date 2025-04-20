@@ -1,6 +1,6 @@
 pkgbase = readarr-develop-bin
 	pkgdesc = Ebook and audiobook collection manager for newsgroup and torrent users (develop branch)
-	pkgver = 0.4.14.2782
+	pkgver = 0.4.15.2787
 	pkgrel = 1
 	url = https://readarr.com
 	install = readarr.install
@@ -40,11 +40,11 @@ pkgbase = readarr-develop-bin
 	sha256sums = d8111e48780aa7417f43b3d6d1a447be2b3c574542f615fad2bf39b57b4ec871
 	sha256sums = fcfa28c1be4f67cfa641dc6076780ee07ab973e55bf676174315e417f73003ad
 	sha256sums = a4cfdf882ab62dea54d85dfae4a633cf21bce597a19c3287d90c024e3ff399ce
-	source_x86_64 = Readarr.develop.0.4.14.2782.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.14.2782&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = 40767aa5d782225779a6480ae99061c4a868ea433f2010b1d01971335c624d79
-	source_aarch64 = Readarr.develop.0.4.14.2782.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.14.2782&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = 16844a4ecb820934bd639e8647ac5fbcbae62e6a95228124f0fed11b3137354d
-	source_armv7h = Readarr.develop.0.4.14.2782.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.14.2782&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = 4f90ca6cf9f5a9a5d0c842a2fc07986f72bcc2919ce87daac69db0a59a2306f5
+	source_x86_64 = Readarr.develop.0.4.15.2787.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.15.2787&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = a641726a5daeff661e2aebfc43064dbced47053e25a4d4b0f8cdaeea2b032b9b
+	source_aarch64 = Readarr.develop.0.4.15.2787.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.15.2787&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 34f05499e02285b4bca8c30bdc4ffd40498e7e0747d9fcda5ad038bd5d5320af
+	source_armv7h = Readarr.develop.0.4.15.2787.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/develop/updatefile?version=0.4.15.2787&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = e9e7fb1e7551ce724adba66ecf362803d703e17a053f3f75c7321af5c9ea67d0
 
 pkgname = readarr-develop-bin
