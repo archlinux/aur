@@ -2,9 +2,9 @@
 
 _pkgname=python-wikeddiff
 pkgname=python-wikeddiff-git
-pkgdesc="Visual inline-style difference engine with block move support"
 pkgver=1.2.4.r10.g035db40
 pkgrel=4
+pkgdesc="Visual inline-style difference engine with block move support"
 arch=(any)
 url="https://github.com/lahwaacz/python-wikeddiff"
 license=(GPL-3.0-or-later)
@@ -28,5 +28,3 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
