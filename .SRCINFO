@@ -1,7 +1,7 @@
 pkgbase = thumbor
 	pkgdesc = open-source photo thumbnail service
-	pkgver = 7.7.4
-	pkgrel = 2
+	pkgver = 7.7.5
+	pkgrel = 1
 	url = https://github.com/thumbor/thumbor
 	arch = x86_64
 	license = MIT
@@ -28,10 +28,10 @@ pkgbase = thumbor
 	depends = python-pillow
 	depends = python-numpy
 	backup = etc/thumbor.conf
-	source = thumbor-7.7.4.tar.gz::https://github.com/thumbor/thumbor/archive/7.7.4.tar.gz
+	source = thumbor-7.7.5.tar.gz::https://github.com/thumbor/thumbor/archive/7.7.5.tar.gz
 	source = thumbor.service
 	source = arch-config.patch
-	b2sums = 5c663f37888bdd9d9002eb3f6b8f7fffb8593b138058174887fef0bd1883a14fa1455ba28b9c4e2814171e7aeb0f946c14fb01283fc1fdcbe174d48ba7a37279
+	b2sums = c503f83c2ef5ab37def30e8bf9d7f338149d190b282b349da6ad1364ca94897ec90527921eef55d56b37ae00a8c9d8fbc922ee4d6d98d4d2b960000dd3c43511
 	b2sums = 9f5b837710e47654d522c5791cb5c6e01d6452093837a0c57b7158cbc8be6a7a3b5380efe2e975d6396bc1fd23a5f922f6ede9aa921142fd004ff48381f58db3
 	b2sums = 7f84c5e210b21af45b1162fdc80e7016dca8b3c92a4d3ac303f3e35aa6405a476dab26af3840e6cd20e492e814c23380a9838035934adb352c91fcab2fb992ba
 
