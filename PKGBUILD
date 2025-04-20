@@ -1,12 +1,12 @@
 pkgbase=bass-locker
-pkgname=('bass-locker-data-bin' 'bass-locker-standalone-bin' 'bass-locker-lv2-bin' 'bass-locker-vst3-bin')
+pkgname=( ${pkgbase}-{data,standalone,lv2,vst3}-bin )
 pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/amplocker"
 license=('EULA')
 depends=('alsa-lib' 'bzip2' 'brotli' 'freetype2' 'glibc' 'graphite' 'harfbuzz' 'keyutils' 'krb5' 'libcurl-gnutls' 'libffi' 'libnghttp2' 'libidn2' 'libp11-kit' 'libpng' 'libpsl' 'libssh2' 'libtasn1' 'libunistring' 'libxau' 'libxcb' 'libx11' 'nettle' 'openssl' 'pcre2' 'zlib' 'zstd')
-makedepends=('xdg-user-dirs' 'unzip')
+makedepends=('xdg-user-dirs')
 provides=('amp-locker')
 source=('Bass Locker.desktop'
         'Bass Locker Linker'
@@ -15,7 +15,7 @@ source=('Bass Locker.desktop'
 sha256sums=('72bb06f4b13a7c7e57cabb175972d788fee3940d60fe67507ee15366e4e0dc0f'
             'e6d6fced8469f9a1738824af3528eb9dc46af67b269d166d16a27fb4a2f6f120'
             '2ccb54d693ba09c2f86750891f2d1ea090f74fe282c3268617d1519b58f79ad5'
-            'b9941dfc3d9c0915422f3bfe18a72aeb673d880bfbf3aea99c59b856d8ce413a')
+            '518ffa1da40b9f8c658d16cf8ab244f9fb31b55c10f64503286c517f7bb0319b')
 
 package_bass-locker-data-bin() {
     ## Install Asset Data
