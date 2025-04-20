@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trio
-_pkgver=3.44.0
+_pkgver=3.46.0
 pkgname=r-${_pkgname,,}
-pkgver=3.44.0
+pkgver=3.46.0
 pkgrel=1
 pkgdesc='Testing of SNPs and SNP Interactions in Case-Parent Trio Studies'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://bioconductor.org/packages/${_pkgname}"
 license=('LGPL')
 depends=(
   r
+  r-data.table
   r-logicreg
   r-siggenes
 )
@@ -23,7 +24,7 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7be2c358c2962491be659e25e1427e54d2ce1c5f210e9f835ccf308918f9949d')
+sha256sums=('6d31ef42309e3a37b4524bc29e8d81f81bab47a23ba177fa6adc9e96c8988416')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
