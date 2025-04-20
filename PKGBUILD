@@ -2,7 +2,7 @@
 # Contributor: Julian <juliannfairfax@protonmail.com>
 
 pkgname=pipeline-gtk
-pkgver=2.1.1
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=("x86_64" "aarch64" "riscv64")
@@ -12,12 +12,12 @@ depends=("libadwaita" "libclapper" "libclapper-gtk" "gst-plugins-gtuber")
 makedepends=("blueprint-compiler" "rust" "meson")
 conflicts=("tubefeeder")
 replaces=("tubefeeder")
-source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/v$pkgver/pipeline-v$pkgver.tar.gz")
-sha256sums=('70b72f20d92691477fcc2ea0c6907fb501990db73aed653e5201116fceee10c9')
+source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
+sha256sums=('61788e2ce87557c28c5227685487500a7a572edec8b59d00a922dad36777869d')
 options=(!lto)
 
 build() {
-	arch-meson pipeline-v$pkgver build
+	arch-meson pipeline-$pkgver build
 	meson compile -C build
 }
 
