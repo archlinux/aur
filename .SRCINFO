@@ -5,7 +5,7 @@ pkgbase = blackhole-sim
 	url = https://github.com/bactaholic/blackhole-sim
 	arch = any
 	depends = python
-	source = src/blackhole.py
+	source = ./blackhole.py
 	md5sums = SKIP
 
 pkgname = blackhole-sim
