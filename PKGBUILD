@@ -1,48 +1,46 @@
-# Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: tleydxdy <shironeko(at)waifu(dot)club>
 pkgname=system76-power
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="System76 Power Management"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/system76-power"
-license=('GPL')
-install="${pkgname}.install"
+license=('GPL-3.0-or-later')
 depends=(
-'dbus'
-'libusb'
-'polkit'
+  'dbus'
+  'libusb'
+  'polkit'
+)
+makedepends=('cargo')
+optdepends=(
+  'system76-acpi-dkms: only needed for systems using open firmware with kernels <5.16'
+  'system76-dkms: needed for systems using proprietary firmware'
 )
 provides=('power-profiles-daemon')
-optdepends=(
-'system76-acpi-dkms: some systems might need this driver'
-'system76-dkms: some systems might need this driver'
-'system76-io-dkms: some systems might need this driver'
-)
-makedepends=('rust')
-source=(
-"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
-'use-mkinitcpio.patch'
-)
-sha256sums=('bf1e31a9cb77661dd9bd594bd469327b65aab96c4e07b66da1e5cc77fc7219b3'
+install="$pkgname.install"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        'use-mkinitcpio.patch')
+sha256sums=('ab27688b22256006b2ca12cbaf41c99abd17213fe33f4e7c1ed41e1ac05613b7'
             'bae03d96faea0f7ea80cb1cc5d4f2f97804509db378aaacb3e1d08cd38e05765')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  # use mkinitcpio -P inplace of update-initramfs -u
-  patch --no-backup-if-mismatch -Np1 -i "${srcdir}"/use-mkinitcpio.patch
+  # use 'mkinitcpio -P' in place of 'update-initramfs -u'
+  patch -Np1 -i "$srcdir/use-mkinitcpio.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
+  cd "$pkgname-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
-  make
+  export RUSTUP_TOOLCHAIN=stable
+  ARGS+=" --frozen" make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  make sysconfdir="/usr/lib" DESTDIR="${pkgdir}" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="${pkgdir}" install
 }
