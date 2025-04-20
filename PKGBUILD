@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=124.0fc49d3
+pkgver=132.dd6208a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,12 +10,7 @@ url='https://github.com/shssoichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
   'vapoursynth-plugin-znedi3'
-  'vapoursynth-plugin-vstools'
-  'vapoursynth-plugin-vsscale'
-  'vapoursynth-plugin-vsdeband'
-  'vapoursynth-plugin-vsdenoise'
-  'vapoursynth-plugin-vsmasktools'
-  'vapoursynth-plugin-vskernels'
+  'vapoursynth-plugin-vsjetpack'
 )
 optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
   'vapoursynth-plugin-bm3dcuda-cpu: BM3D support, CPU version'
