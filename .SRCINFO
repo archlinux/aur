@@ -1,12 +1,13 @@
 pkgbase = xtensor-io
 	pkgdesc = xtensor plugin to read and write images, audio files, numpy (compressed) npz and HDF5
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtensor-stack/xtensor-io
 	arch = any
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = gtest
+	makedepends = fmt
 	depends = blosc
 	depends = gdal
 	depends = gulrak-filesystem

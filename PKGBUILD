@@ -3,7 +3,7 @@
 
 pkgname=xtensor-io
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="xtensor plugin to read and write images, audio files, numpy (compressed) npz and HDF5"
 arch=(any)
 url="https://github.com/xtensor-stack/xtensor-io"
@@ -22,6 +22,7 @@ depends=(
 makedepends=(
   cmake
   gtest
+  fmt
 )
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/xtensor-stack/xtensor-io/archive/$pkgver.tar.gz"
@@ -41,6 +42,7 @@ prepare() {
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr \
     -DBUILD_TESTS=ON \
     -DDOWNLOAD_GTEST=OFF \
