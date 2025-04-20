@@ -1,0 +1,4 @@
+[lib32-libfdk-aac]
+source = "archpkg"
+archpkg = "libfdk-aac"
+strip_release = true
