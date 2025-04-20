@@ -1,0 +1,14 @@
+pkgbase = kdlfmt
+	pkgdesc = A formatter for kdl documents.
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/hougesen/kdlfmt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !lto
+	source = kdlfmt-0.0.15.tar.gz::https://github.com/hougesen/kdlfmt/archive/refs/tags/v0.0.15.tar.gz
+	b2sums = 8acc751295eeb92f4a036d6f3975ec401f81033c420c8d8276a7424f05c8918b029f39fc480395e00b05e6b7a3f557e9d2f8524f13a75272c03f7a6a2e899486
+
+pkgname = kdlfmt
