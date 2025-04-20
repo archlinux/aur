@@ -9,14 +9,21 @@ arch=("x86_64" "aarch64" "riscv64")
 url="https://gitlab.com/schmiddi-on-mobile/pipeline"
 license=("GPL-3.0-or-later")
 depends=("libadwaita" "libclapper" "libclapper-gtk" "gst-plugins-gtuber")
-makedepends=("blueprint-compiler" "rust" "meson")
+makedepends=("blueprint-compiler" "cargo" "meson")
 conflicts=("tubefeeder")
 replaces=("tubefeeder")
 source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
 sha256sums=('61788e2ce87557c28c5227685487500a7a572edec8b59d00a922dad36777869d')
 options=(!lto)
 
+prepare() {
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	arch-meson pipeline-$pkgver build
 	meson compile -C build
 }
