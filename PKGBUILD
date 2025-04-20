@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chipseq
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='chipseq: A package for analyzing chipseq data'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm9.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('61588f9a20ba90787b94b374a8deac6d6463c58d6423fbcdea8de3f55b88a068')
+sha256sums=('9c99993a11d82ddb3d49ad39eccfefc1d9407eb7a154065fb8ec2b024a005bf1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
