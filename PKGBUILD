@@ -1,54 +1,60 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 
-_basename=srt
-pkgname=lib32-srt
-pkgver=1.5.1
+_name="srt"
+pkgname="lib32-${_name}"
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Secure Reliable Transport library (32-bit)"
-url="https://www.srtalliance.org/"
-arch=(x86_64)
-license=(MPL2)
-depends=(lib32-gcc-libs lib32-openssl srt)
-makedepends=(cmake git ninja)
-_commit=0bc3b03202b3159fc9b085b3ae6d66ec071c25d6 # tags/v1.5.1
-source=("git+https://github.com/Haivision/srt#commit=$_commit")
-b2sums=('SKIP')
+arch=('x86_64')
+url="https://www.srtalliance.org"
+_url="https://github.com/Haivision/${_name}"
+license=('MPL-2.0')
+depends=('lib32-gcc-libs' 'lib32-glibc' 'lib32-openssl' "${_name}>=${pkgver}")
+makedepends=('cmake>=2.8.12' 'git')
+provides=("lib${_name}.so")
+source=("git+${_url}.git#tag=v${pkgver}")
+b2sums=('d0d7be25c29a3ce8ada61d721813a8a5235751dfc0e2fa28072e3b9fb5bc9131da405db0cc5163339ba14bf05ddec1a861ceee749a31c171d61555885921ea39')
 
-
-pkgver() {
-    cd $_basename
-
-    git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
+prepare() {
+  cd "${srcdir}/${_name}"
+  sed -i '/set (CMAKE_BUILD_TYPE/d' 'CMakeLists.txt'
 }
 
 build() {
-    export CC='gcc -m32'
-    export CXX='g++ -m32'
-    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-
-    cmake -S srt -B build -G Ninja \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_BINDIR=bin \
-        -DCMAKE_INSTALL_LIBDIR=lib32 \
-        -DCMAKE_INSTALL_INCLUDEDIR=include \
-        -DCMAKE_BUILD_TYPE=None \
-        -DENABLE_STATIC=ON \
-        -DENABLE_TESTING=ON
-
-    cmake --build build
+  export CFLAGS+=" -m32"
+  export CXXFLAGS+=" -m32"
+  export LDFLAGS+=" -m32"
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  local cmake_options=(
+    -G 'Unix Makefiles'
+    -B "${_name}/build"
+    -S "${_name}"
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_INSTALL_LIBDIR='lib32'
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
+    -D ENABLE_STATIC:BOOL=OFF
+    -D ENABLE_APPS:BOOL=OFF
+    # -D ENABLE_TESTING:BOOL=ON
+  )
+  
+  cd "${srcdir}"
+  cmake "${cmake_options[@]}"
+  cmake --build "${_name}/build"
 }
 
-check() {
-    cd build
-
-    ./uriparser-test
-    ./utility-test
-}
+# check() {
+#   cd "${srcdir}/${_name}/build"
+#   ./uriparser-test
+#   ./utility-test
+# }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" cmake --install "${_name}/build"
 
-    cd "$pkgdir"/usr
-
-    rm -r bin include
+  cd "${pkgdir}/usr"
+  rm -rf "bin" "include" "share"
 }

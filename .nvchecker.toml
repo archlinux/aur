@@ -1,0 +1,4 @@
+[lib32-srt]
+source = "archpkg"
+archpkg = "srt"
+strip_release = true
