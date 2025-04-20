@@ -2,7 +2,7 @@
 
 pkgname=coreutils-uutils-symlink
 pkgver=0.0.29
-pkgrel=6
+pkgrel=7
 pkgdesc="(use at own risk) symlinks to replace coreutils with uutils"
 arch=('any')
 
@@ -11,13 +11,12 @@ conflicts=(coreutils b3sum sha3sum coreutils-uutils coreutils-arch)
 provides=(coreutils b3sum coreutils-arch)
 
 package() {
-	mkdir -p "$pkgdir"/usr/bin
+	mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share/man/man1
 	for f in $(uu-coreutils --list)
-		do ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
+	do
+		ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
+		ln -sf /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz
 	done
-	rm "$pkgdir"/usr/bin/{kill,more,uptime,hostname}
 	ln -sf /usr/lib/nix/busybox "$pkgdir"/usr/bin/stty
-	#for f in find xargs #error in makepkg.
-	#do ln -sf /usr/bin/uutils-"$f" "$pkgdir"/usr/bin/"$f"
-	#done
+	rm "$pkgdir"/usr/{bin,share/man/man1}/{kill,more,uptime,hostname}*
 }
