@@ -1,7 +1,7 @@
 # Maintainer: mia <mia@mia.jetzt>
 
 pkgname='gleam-bin'
-pkgver='1.9.1'
+pkgver='1.10.0'
 pkgrel='1'
 pkgdesc='A friendly language for building type-safe, scalable systems!'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 provides=('gleam')
 conflicts=('gleam')
 source=("https://github.com/gleam-lang/gleam/releases/download/v$pkgver/gleam-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('e8757a6585b0d6dcd0718c3ddd4a847a4c906ef6cea7071a4e9abd2242ebbc75')
+sha256sums=('6ea95309e39e3abf56fe9a361dd079d502b5a944f8612d909d7f56c2fdc10a71')
 # the default gleam project template depends on gleeunit, which depends on
 # erlang-eunit, so we make it a dependency to prevent confusing errors
 depends=('erlang-core' 'erlang-eunit')
