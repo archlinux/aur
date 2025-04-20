@@ -5,8 +5,8 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.40.1.r7.g3c1a121
-pkgrel=2
+pkgver=0.40.1.r15.g99b6d52
+pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (built from latest git commit)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -51,13 +51,14 @@ build() {
     'Zx86_64' )
       # RFC-0023: https://rfc.archlinux.page/0023-pack-relative-relocs/
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;&
+    ;&  # fall through
     'Zaarch64' )
       # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
       export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
     ;;
   esac
 
+  export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -72,7 +73,7 @@ build() {
       .
 
   for _shell in bash fish zsh; do
-    build/ov --completion "$_shell" > "build/completion.$_shell"
+    build/ov --completion "$_shell" > "build/_completion.$_shell"
   done
 }
 
@@ -94,11 +95,11 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
-  install -vDm0644 build/completion.bash \
+  install -vDm0644 build/_completion.bash \
     "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -vDm0644 build/completion.fish \
+  install -vDm0644 build/_completion.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  install -vDm0644 build/completion.zsh \
+  install -vDm0644 build/_completion.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
 
