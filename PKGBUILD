@@ -2,8 +2,8 @@
 
 _pkgbase=howdy
 pkgname="$_pkgbase-git"
-pkgver=r564.aa75c76
-pkgrel=2
+pkgver=r586.c4521c1
+pkgrel=1
 pkgdesc="Windows Hello style facial authentication for Linux"
 arch=('x86_64')
 url="https://github.com/boltgolt/howdy"
