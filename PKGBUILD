@@ -1,14 +1,15 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
+_name=multimethod
 pkgname=python-multimethod
-_pkgname=multimethod
-pkgver=1.12
+pkgver=2.0
+pkgrel=1
 epoch=1
-pkgrel=2
 pkgdesc='Multiple argument dispatching'
-arch=('any')
+arch=(any)
 url='https://github.com/coady/multimethod'
-license=('Apache-2.0')
+license=(Apache-2.0)
 depends=(
   python
 )
@@ -20,23 +21,21 @@ makedepends=(
 )
 checkdepends=(
   python-pytest
-  python-pytest-cov
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/coady/multimethod/archive/v${pkgver}.tar.gz")
-sha512sums=('9ea992760ab97a67cbbe1b7236c22df9b7fb8a48f3842007005005cfba735dcf91d64c3691ccbfdd9998afd7462b9063ec10342cdf0708de18195156db43e93c')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
+b2sums=('c9c732dab1e7fdf9c9da5d3049babbeac4b64f3b2b8a8587838d01769656bafb89852251fda3d7f4b4b6c588130b3c96efab156b5059ca7a740618273ee66318')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd $_name-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${_pkgname}-${pkgver}"
-  pytest -v --cov
+  cd $_name-$pkgver
+  pytest -vv
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-# vim:set ts=2 sw=2 et:
