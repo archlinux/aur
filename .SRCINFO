@@ -1,5 +1,5 @@
 pkgbase = amp-locker
-	pkgver = 1.2.6
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://audioassault.mx/amplocker
 	arch = x86_64

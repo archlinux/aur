@@ -1,6 +1,6 @@
 pkgbase=amp-locker
 pkgname=( ${pkgbase}-{data,standalone,lv2,vst3}-bin )
-pkgver=1.2.6
+pkgver=1.3.2
 pkgrel=1
 arch=('x86_64')
 url="https://audioassault.mx/amplocker"
