@@ -27,6 +27,7 @@ package() {
     # Install the app to /opt
     install -d "$pkgdir/opt/dls"
     cp -r Digital-Logic-Sim/* "$pkgdir/opt/dls/"
+    chmod +x "$pkgdir/opt/dls/Digital-Logic-Sim.x86_64"
 
     # Create a launcher script in /usr/bin
     install -d "$pkgdir/usr/bin"
