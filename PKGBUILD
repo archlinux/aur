@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Harshlight
-_pkgver=1.78.0
+_pkgver=1.79.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
-pkgrel=1
+pkgver=1.79.0
+pkgrel=2
 pkgdesc='A "corrective make-up" program for microarray chips'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -16,14 +16,19 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e40337253e3ef08cdea9a0ab08914a8ee23cc90c9b1db29bb6aeb133f35ed691')
+sha256sums=('679e4069eb33c8454631a61bc7e0c78b9788919930dcbf743b35686a808aa0ca')
 
+prepare() {
+  sed -i "$_pkgname"/src/Harshlight.c \
+    -e '/chip_overall_header/ s/()/(int *chip_number, char **chip_name)/'
+}
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
 # vim:set ts=2 sw=2 et:
