@@ -9,7 +9,7 @@ url="https://github.com/firefly-cpp/${_base}"
 license=(MIT)
 depends=(python-sport-activities-features python-openant python-pyqt6-webengine python-pyqt-feedback-flow qt6-svg)
 makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest-qt)
 optdepends=('python-openant: for ANT sensor support'
   'python-adafruit-circuitpython-gps: for GPS sensor support'
   'python-serial: for serial communication support')
