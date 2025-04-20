@@ -1,7 +1,7 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 pkgname=fzf-tab-completion-git
 _pkgname=${pkgname%-git}
-pkgver=r343.0874776
+pkgver=r436.4850357
 pkgrel=1
 pkgdesc="Tab completion using fzf in zsh, bash, GNU readline apps (e.g. python, php -a etc.)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/lincheney/fzf-tab-completion"
 license=('GPL3')
 depends=('fzf')
 optdepends=('rl_custom_function: readline support')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=("$_pkgname")
 install=$pkgname.install
 source=("$_pkgname::git+https://github.com/lincheney/$_pkgname.git")
