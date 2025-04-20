@@ -1,41 +1,41 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: envolution
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: dale <dale@archlinux.org>
 # Contributor: MCMic <come.bernigaud@laposte.net>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=gtetrinet
 pkgver=0.7.11
-pkgrel=5
-pkgdesc="A clone of the game Tetrinet for the gnome environment"
-url="http://gtetrinet.sourceforge.net/"
+pkgrel=6
+pkgdesc="a fork of gtetrinet ported to gtk3"
+url="https://github.com/tatankat/gtetrinet"
 arch=('i686' 'x86_64')
-license=('GPL2')
-depends=('libgnomeui>=2.18.1-2' 'desktop-file-utils' 'gtk-update-icon-cache' 'gconf')
-makedepends=('libxml-perl' 'pkgconfig' 'intltool')
+license=('GPL-2.0-only')
+depends=(gtk3 glibc gdk-pixbuf2 glib2 cairo dconf libcanberra)
+makedepends=(git)
 options=('!emptydirs')
-source=(${pkgname}-${pkgver}.tar.bz2::https://ftp.gnome.org/pub/GNOME/sources/gtetrinet/0.7/${pkgname}-${pkgver}.tar.bz2
-        format-security.patch)
-sha512sums=('5de7df7647ed9f7c0b6aba4eac976c625b7632eb5ab8034b11ef09aeb4582f90b4f9fc1791dc5371e1067d59c90b792a70276c69b75ebd6dc8c74c96c47c7130'
-            '1f3236da7320249c6d8969a73d2d9f50c4dce68525e563958b52c3cfae5bd2c4fa0fda44960acce6bb9326a4b75560c60ab605aadce3b28d770c44c971209406')
+_tag='6d816eeeb7a9dcc0011ef1892c6467455f196e0e'
+source=(${pkgname}-${pkgver}::git+https://github.com/tatankat/gtetrinet.git#tag=${_tag}
+  dialog-patch.patch)
+sha512sums=('aa1410a6397aee412a86b5be978746b7aaf35d843a0cda2eab3664140dd8c9e7b812de27c9f0cf0705782a5fe6a53b9c1f462d5ec0e7752852958084d8969011'
+            'e8f4dd824576f4af4e5820d82ed6bd2f715db85a30e01441863549c1f78db5e0a624503bfb678040852b6dda5d662a6f714ef95a5a33e65d62ed5a3f4593bf13')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -p1 < "${srcdir}/format-security.patch"
-  sed -e '/^gamesdir/s:=.*:=@bindir@:' -i src/Makefile.am
+  patch -Np2 -i ../dialog-patch.patch
 }
 
 build() {
   cd ${pkgname}-${pkgver}
-  autoreconf -vi
+  autoreconf -fvi
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package () {
   cd ${pkgname}-${pkgver}
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
-  install -d "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" "${pkgdir}"/etc/gconf/schemas/*.schemas
-  rm "${pkgdir}"/etc/gconf/schemas/*.schemas
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set ts=2 sw=2 et:
