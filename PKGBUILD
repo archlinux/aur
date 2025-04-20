@@ -3,7 +3,7 @@
 pkgname=mongodb50
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=5.0.27
+pkgver=5.0.31
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -28,8 +28,12 @@ source=(#https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-5.0.2-skip-reqs-check.patch
         mongodb-5.0.2-boost-1.79.patch
         mongodb-5.0.5-no-force-lld.patch
-        mongodb-4.4.10-boost-1.81.patch)
-sha256sums=('62a51dee664b6d2722edc8443c2a8d2e1e7400bf48d44ae25b1ad799d3bee5da'
+        mongodb-4.4.10-boost-1.81.patch
+        mongodb-5.0.26-boost-1.85.patch
+        mongodb-5.0.26-boost-1.85-extra.patch
+        mongodb-5.0.31-python12.patch
+      )
+sha256sums=('aea590b164e2b59e00e803c44fc4a596f54924957c8802165dff4bdfc53aba6a'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25'
@@ -40,13 +44,17 @@ sha256sums=('62a51dee664b6d2722edc8443c2a8d2e1e7400bf48d44ae25b1ad799d3bee5da'
             '4ff40320e04bf8c3e05cbc662f8ea549a6b8494d1fda64b1de190c88587bfafd'
             'a04aec4f8bd99ad213e31eb45a9e1658695442082e7c4f8c4044f6326eaa1acd'
             'f79f65824f81753d41d2274a6904930db11b06fe08f1442a24c30060cab27e32'
-            '7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7')
+            '7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7'
+            '7b09f30fe024ad1e2d8d9e196807aebb09a99452fa387c2fee13eee63f0f81f5'
+            '317d0a0bdf7e29a7e185725a2fa3e5e65462e29829acece0bc7b1d6d51b7fdfa'
+            '76877751dfb5f5f3a52a921863e9f4ff207bb020ef41df7546773381d99eb6c8')
 
 _scons_args=(
   CC="${CC:-gcc}"
   CXX="${CXX:-g++}"
   AR="${AR:-ar}"
   MONGO_DISTMOD=arch
+  MONGO_VERSION="${pkgver}"
 
   --use-system-pcre
   --use-system-snappy
@@ -117,11 +125,22 @@ prepare() {
     _scons_args+=(--lto=on)
   fi
 
-  # apply gentoo patches
+  # apply patches
   for file in $srcdir/*.patch; do
     echo "Applying patch $file..."
     patch -Np1 -i $file
   done
+
+  # disable AVX requirement if neccessary
+  if ! lscpu | grep -q " avx "; then
+    echo "+++WARNING+++"
+    echo "MongoDB >=5 requires a CPU with AVX instructions. Your"
+    echo "system doesn't meet this requirement. This build will"
+    echo "use experimental flags to build without AVX instructions."
+    echo "This is NOT supported by upstream. Use at your own risk."
+    echo "+++ +++"
+    _scons_args+=(--experimental-optimization=-sandybridge)
+  fi
 }
 
 build() {

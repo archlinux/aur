@@ -1,6 +1,6 @@
 pkgbase = mongodb50
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 5.0.27
+	pkgver = 5.0.31
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = mongodb50
 	depends = curl
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	optdepends = mongosh-bin: interactive shell to connect with MongoDB
-	provides = mongodb=5.0.27
+	provides = mongodb=5.0.31
 	conflicts = mongodb
 	backup = etc/mongodb.conf
-	source = mongodb-5.0.27.tar.gz::https://github.com/mongodb/mongo/archive/refs/tags/r5.0.27.tar.gz
+	source = mongodb-5.0.31.tar.gz::https://github.com/mongodb/mongo/archive/refs/tags/r5.0.31.tar.gz
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = mongodb-4.4.1-boost.patch
@@ -36,7 +36,10 @@ pkgbase = mongodb50
 	source = mongodb-5.0.2-boost-1.79.patch
 	source = mongodb-5.0.5-no-force-lld.patch
 	source = mongodb-4.4.10-boost-1.81.patch
-	sha256sums = 62a51dee664b6d2722edc8443c2a8d2e1e7400bf48d44ae25b1ad799d3bee5da
+	source = mongodb-5.0.26-boost-1.85.patch
+	source = mongodb-5.0.26-boost-1.85-extra.patch
+	source = mongodb-5.0.31-python12.patch
+	sha256sums = aea590b164e2b59e00e803c44fc4a596f54924957c8802165dff4bdfc53aba6a
 	sha256sums = 3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795
 	sha256sums = b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39
 	sha256sums = d3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25
@@ -48,5 +51,8 @@ pkgbase = mongodb50
 	sha256sums = a04aec4f8bd99ad213e31eb45a9e1658695442082e7c4f8c4044f6326eaa1acd
 	sha256sums = f79f65824f81753d41d2274a6904930db11b06fe08f1442a24c30060cab27e32
 	sha256sums = 7bfeadf2fb7e13bd93c4515faada070410ddd8e276cc947b5b2b2292539051b7
+	sha256sums = 7b09f30fe024ad1e2d8d9e196807aebb09a99452fa387c2fee13eee63f0f81f5
+	sha256sums = 317d0a0bdf7e29a7e185725a2fa3e5e65462e29829acece0bc7b1d6d51b7fdfa
+	sha256sums = 76877751dfb5f5f3a52a921863e9f4ff207bb020ef41df7546773381d99eb6c8
 
 pkgname = mongodb50
