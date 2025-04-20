@@ -2,8 +2,8 @@
 
 pkgname=libkrunfw
 _pkgname=libkrunfw
-_kver=6.12.3
-pkgver=4.7.1
+_kver=6.12.20
+pkgver=4.9.0
 pkgrel=1
 pkgdesc="A dynamic library bundling the guest payload consumed by libkrun"
 url="https://github.com/containers/libkrunfw"
@@ -30,5 +30,5 @@ package() {
     make DESTDIR="$pkgdir" PREFIX=/usr LIBDIR_Linux=lib install
 }
 
-sha256sums=('e137f6bc7a78f2448bb06058284574cbdda55063f3d75fae501ae753e8ee0a87'
-            'c89809cc777d50f1ea484a118630281a26383707a0e752c96fd834f6e765deae')
+sha256sums=('c1781a0da17174751705ef857c9ecd3aa18c61ca8d3f1e4aacddf55761fd2400'
+            '230e89b07b0ab82e74f07ecc1bee3105dca81d0ef4a97f900929c407249b6ac7')
