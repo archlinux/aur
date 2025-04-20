@@ -1,0 +1,3 @@
+[system76-power]
+source = "git"
+git = "https://github.com/pop-os/system76-power.git"
