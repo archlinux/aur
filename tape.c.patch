@@ -1,0 +1,12 @@
+--- src/tape.c	2012-12-22 07:53:19.000000000 +0000
++++ src/tape.c	2022-09-06 20:58:23.694178693 +0100
+@@ -23,6 +23,9 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <ctype.h>
++#include <unistd.h>
++#include <sys/types.h>
+ 
+ #include "z80.h"
+ #include "tape.h"

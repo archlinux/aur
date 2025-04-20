@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=xAce
+Comment=Jupiter Ace Emulation
+Exec=xace-launcher
+Icon=xAce
+StartupNotify=false
+Terminal=true
+Type=Application
+Categories=System;Emulator;

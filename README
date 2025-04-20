@@ -1,0 +1,8 @@
+xAce is an emulator for the Jupiter Ace that runs under most
+flavours of Unix. It was written by Edward Patel and based
+on a ZX81 emulator called xz81 written by Russell Marks, which was
+in turn based on Ian Collier's xz80, a ZX Spectrum emulator for X.
+
+This xAce Archlinux version implements a mod to allow the user
+to change between "slow" and "fast" speed emulation speed,
+very useful for spooling text sources.

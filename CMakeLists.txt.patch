@@ -1,0 +1,8 @@
+--- xAce-0.5/CMakeLists.txt	2012-12-22 07:53:19.000000000 +0000
++++ xAce-0.5-007/CMakeLists.txt	2022-09-06 21:03:10.482198551 +0100
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6) 
++cmake_minimum_required(VERSION 3.6)
+ project(xAce) 
+ 
+ enable_testing()

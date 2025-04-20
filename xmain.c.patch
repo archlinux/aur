@@ -1,0 +1,79 @@
+--- src/xmain.c	2012-12-22 07:53:19.000000000 +0000
++++ src/xmain.c	2022-09-07 22:11:24.405433694 +0100
+@@ -57,6 +57,8 @@
+   mem+0xe000
+ };
+ 
++int is_fast_speed = 0;
++
+ unsigned long tstates=0,tsmax=62500;
+ 
+ int memattr[8]={0,1,1,1,1,1,1,1}; /* 8K RAM Banks */
+@@ -252,13 +254,28 @@
+       tape_attach(tape_filename);
+       break;
+ 
++    case XK_F10:
++      if (is_fast_speed == 1) {
++        normal_speed();
++	is_fast_speed = 0;
++      } else {
++	fast_speed();
++	is_fast_speed = 1;
++      }
++      break;
++
+     case XK_F11:
+-      printf("Enter spool file:");
+-      scanf("%256s", spool_filename);
+-      spooler_open(spool_filename);
++      if (!spooler_active()) {
++	 printf("Enter spool file:");
++	 scanf("%256s", spool_filename);
++	 spooler_open(spool_filename);
++      } else {
++        spooler_close();
++      }
+       break;
+ 
+     case XK_F12:
++      spooler_close();
+       reset_ace = 1; /* will cause a reset */
+       memset(mem+8192, 0xff, 57344);
+       refresh_screen = 1;
+@@ -270,13 +287,14 @@
+ void
+ main(int argc, char **argv)
+ {
+-  printf("xace: Jupiter ACE emulator v%s (by Edward Patel)\n", XACE_VERSION);
++  printf("xace: Jupiter ACE emulator v%s (by Edward Patel, with Slackware mods)\n", XACE_VERSION);
+   printf("Keys:\n");
+   printf("\tF1     - Delete Line\n");
+   printf("\tF3     - Attach a tape image\n");
+   printf("\tF4     - Inverse Video\n");
+   printf("\tF9     - Graphics\n");
+-  printf("\tF11    - Spool from a file\n");
++  printf("\tF10    - Toggle Normal/Fast Speed\n");
++  printf("\tF11    - Start/Stop Spool from a file\n");
+   printf("\tF12    - Reset\n");
+   printf("\tEsc    - Break\n");
+   printf("\tCtrl-Q - Quit xAce\n");
+@@ -568,16 +586,16 @@
+           XAutoRepeatOn(display),XFlush(display);
+         break;
+       case KeyPress:
+-        if (!spooler_active()) {
+           kev = (XKeyEvent *)&xev;
+           XLookupString(kev, key_buf, 20, &ks, NULL);
++        if (!spooler_active() || ks == XK_F10 || ks == XK_F11 || ks == XK_F12 ) {
+           keyboard_keypress(ks, kev->state);
+         }
+         break;
+       case KeyRelease:
+-        if (!spooler_active()) {
+           kev = (XKeyEvent *)&xev;
+           XLookupString(kev, key_buf, 20, &ks, NULL);
++        if (!spooler_active() || ks == XK_F10 || ks == XK_F11 || ks == XK_F12 ) {
+           keyboard_keyrelease(ks, kev->state);
+         }
+         break;

@@ -1,0 +1,8 @@
+--- src/CMakeLists.txt	2012-12-22 07:53:19.000000000 +0000
++++ src/CMakeLists.txt	2022-09-07 22:12:39.974438927 +0100
+@@ -1,4 +1,4 @@
+-add_definitions(-DSCALE=2 -DWHITE_ON_BLACK -DXACE_VERSION=\"0.5\")
++add_definitions(-DSCALE=4 -DWHITE_ON_BLACK -DXACE_VERSION=\"0.5\")
+ add_executable(xace xmain.c z80.c tape.c keyboard.c spooler.c)
+ target_link_libraries(xace X11 Xext)
+ install(TARGETS xace DESTINATION bin)
