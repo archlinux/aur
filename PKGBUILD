@@ -1,10 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 
+_branch=develop
+
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='a modern typesetting engine inspired by LaTeX, fully customizable in Lua'
-pkgver=0.15.9.r0.g4ff5c60
+pkgver=0.15.12.r55.g8cf80aa
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -51,7 +53,7 @@ provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 replaces=("$_pkgname-luajit-git")
-source=("git+$_url.git"
+source=("git+$_url.git#branch=$_branch"
         "git+${_url%/$_pkgname}/libtexpdf.git")
 sha256sums=('SKIP'
             'SKIP')
@@ -69,7 +71,7 @@ pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags --abbrev=7 --match="v*" HEAD |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+	}
 
 _srcenv() {
 	cd "$_pkgname"
