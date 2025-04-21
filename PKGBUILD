@@ -1,4 +1,4 @@
-# Maintainer: Blake
+# Maintainer: strayblackcat
 
 _pkgname="fchat-horizon"
 pkgname="fchat-horizon-bin"
@@ -27,7 +27,7 @@ source=(
 )
 sha256sums=('df2af775adf8eb74a374ac3adea25fa8dabf520baa55d11958d9c943316d95dd'
             '6853b8e9d7ce674b063fe277c98fc9dcec4be4949731e6134a5f134d48892be5'
-            '4b4b0cee797f2878e0541dbea64e5b97fbb3d0789619fe75ed1120aee3999220'
+            '0f72b54ea25738958366465dd4ddc359a9d4105897f8a8b35bfe64b1a406b44f'
             'dec49091c629a2e5956e14b32a823f2a63cd1549f4b1d650d3ad32948d95e822'
             'b13bdf6682ae4d90990ebbd3b1472b91001b20c49c87d4366cc3cadb4dc084b4')
 

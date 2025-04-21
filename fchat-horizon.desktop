@@ -4,7 +4,7 @@ Name=F-Chat Horizon
 StartupWMClass=horizon-electron
 Comment=A continuation of the heavily modified F-Chat Rising client.
 Exec=fchat-horizon %U
-Icon=fchat-horizon.png
+Icon=fchat-horizon
 Categories=Internet;Network;InstantMessaging;
 Path=/usr/bin
 
