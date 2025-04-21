@@ -8,7 +8,7 @@
 
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
-pkgver=r5868.1830e098
+pkgver=r5871.813b684a
 pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
@@ -22,12 +22,10 @@ provides=('armagetronad')
 conflicts=('armagetronad')
 source=(
     "git+https://gitlab.com/armagetronad/armagetronad.git"
-    "protobuf30.patch"
     "python3.patch"
 )
 sha1sums=(
     'SKIP'
-    'f1a2f3d69347f20b0d76a4b658c87f579cf47358'
     '6bb173affe2d60305ea3841ee9719a20d8b74782'
 )
 
@@ -38,7 +36,6 @@ pkgver() {
 
 prepare(){
     cd "${srcdir}/${_pkgname}"
-    patch -Np1 -i ../../protobuf30.patch
     patch -Np1 -i ../../python3.patch
 }
 
