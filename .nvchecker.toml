@@ -1,0 +1,5 @@
+[html2markdown-bin]
+source = "github"
+github = "JohannesKaufmann/html-to-markdown"
+use_latest_release = true
+prefix = "v"

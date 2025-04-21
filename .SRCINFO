@@ -1,0 +1,19 @@
+pkgbase = html2markdown-bin
+	pkgdesc = Convert HTML to Markdown. Even works with entire websites and can be extended through rules.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://html-to-markdown.com
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = html2markdown
+	conflicts = html2markdown
+	source_aarch64 = html2markdown-2.3.1-aarch64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.1/html-to-markdown_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 70bc2ba32699c4bfab81f18a77a8ab7ea60e2c66f5382136bdaced60622f9a62
+	source_i686 = html2markdown-2.3.1-i686.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.1/html-to-markdown_Linux_i386.tar.gz
+	sha256sums_i686 = 47a389ced435772abab9d23f44bc7f75611d407f4d087c1af441e3784cc33c1d
+	source_x86_64 = html2markdown-2.3.1-x86_64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.1/html-to-markdown_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = cf18f959179c8e4ecbd93ec3027976fa21b93d88c5d88ca25acb90d6d556fdbb
+
+pkgname = html2markdown-bin
