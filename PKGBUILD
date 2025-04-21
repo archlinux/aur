@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-bin
-_pkgname="Altair GraphQL Client"
-pkgver=8.2.1
+_pkgname='Altair GraphQL Client'
+pkgver=8.2.2
 _electronversion=33
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_x86_64_linux.AppImage")
 sha256sums=('a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('0e5111440f7872b0648c4231b106c6e86ce24ed02e1b9b05416cbc5832ef8cb9')
-sha256sums_x86_64=('0cee13fcd80b4b1648c552b8a04cfa40db1025169c17c29173002f593a31232f')
+sha256sums_aarch64=('339a27cf09025c582fd9dc388c10f29d1ce1cac7f8c298ad3f5710a4704c0a43')
+sha256sums_x86_64=('ded2c164dba2aa149183f6b68363c2e777ac9cd6f58d516908ed98882ed1c3a9')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -38,7 +38,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
