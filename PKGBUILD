@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=omicplotR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Visual Exploration of Omic Datasets Using a Shiny App'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
   r-zcompositions
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('912d659ffa44abff23d14ad76fa98b5b6d2e9e136676bcc8155febb6ca3c6523')
+sha256sums=('277284ee5ab0e7944f8cbed26dcdbd6451b1bbe14db56d72abc28a0b6ccf6aed')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
