@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ToxicoGx
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Analysis of Large-Scale Toxico-Genomic Data'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bb668c200ce12bc94c701ba2eb57c7916e9359d7225512749fff11361acb338f')
+sha256sums=('a11ef9995909c37fa579c1bb619d5cdbf0e457e0417a4c2c7d8b4392878d5d1c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
