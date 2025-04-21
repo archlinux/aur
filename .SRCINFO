@@ -1,7 +1,7 @@
 pkgbase = cinematic-bin
-	pkgdesc = Gorgeous desktop movie collections
+	pkgdesc = Gorgeous desktop movie collections.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gh.lacymorrow.com/cinematic/
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
