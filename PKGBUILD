@@ -2,7 +2,7 @@
 # Maintainer: Adrian Insaurralde <adrianinsaval at gmail dot com>
 
 pkgname=freecad-git
-pkgver=1.1.0.41354.gfd390acd53
+pkgver=1.1.0.41361.g774ec2cc93
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
@@ -18,7 +18,6 @@ med
 netcdf
 opencascade
 openmpi
-pcl
 pybind11
 pyside6
 pyside6-tools
@@ -89,6 +88,7 @@ build() {
     -D CMAKE_INSTALL_DATAROOTDIR=/usr/share \
     -D CMAKE_INSTALL_DOCDIR=/usr/share/freecad/doc \
     -D CMAKE_INSTALL_PREFIX=/usr/lib/freecad \
+    -D FREECAD_USE_PCL=OFF \
     -D FREECAD_USE_EXTERNAL_PIVY=ON \
     -D FREECAD_USE_QT_FILEDIALOG=ON \
     -D INSTALL_TO_SITEPACKAGES=ON \
