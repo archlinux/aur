@@ -133,38 +133,16 @@ def main():
     print_success(f"Successfully updated files to version {latest_version}")
 
     try:
-        # Use input() which prints to stdout, no color needed for the prompt itself
         response = input("Do you want to build the package? (y/N) ")
         if response.strip().lower() == 'y':
             print_action("Running makepkg -s ...")
-            # Run makepkg, check=True raises CalledProcessError if it fails
-            # Capture output to prevent mixing with our colored output, unless verbose needed
-            process = subprocess.run(
-                ['makepkg', '-s'],
-                check=True,
-                stdout=subprocess.PIPE, # Capture stdout
-                stderr=subprocess.PIPE, # Capture stderr
-                text=True # Decode output as text
-            )
-            # Optional: print makepkg output if needed, perhaps only on error?
-            # print(process.stdout)
-            # if process.stderr:
-            #     print(process.stderr, file=sys.stderr)
-            print_success("makepkg completed successfully.")
+            try:
+                subprocess.run(['makepkg', '-s'], check=True)
+            except subprocess.CalledProcessError as e:
+                print_error(f"makepkg failed with return code {e.returncode}")
+                sys.exit(e.returncode)
         else:
             print_info("Skipping package build.")
-    except subprocess.CalledProcessError as e:
-        print_error(f"makepkg failed with return code {e.returncode}")
-        # Print the captured output from makepkg on error
-        if e.stdout:
-            print("--- makepkg stdout ---")
-            print(e.stdout)
-            print("----------------------")
-        if e.stderr:
-            print(f"{COLOR_RED}--- makepkg stderr ---{COLOR_RESET}", file=sys.stderr)
-            print(e.stderr, file=sys.stderr)
-            print(f"{COLOR_RED}----------------------{COLOR_RESET}", file=sys.stderr)
-        sys.exit(e.returncode)
     except KeyboardInterrupt:
         # Add newline for cleaner exit after Ctrl+C during input()
         print()
