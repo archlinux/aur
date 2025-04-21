@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MSstatsShiny
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52472c09aef97ce67a722b513913f3f6')
-b2sums=('1159321019e8fa1f2f6e020bf0a90893103ec1113036cb8fb5f0a9586960d731c1572198d970605c8f9a2116d803fe8468c2512af2a583bcd911d03118cf46f5')
+md5sums=('4070e69fdb418c8e5abddb08f96c25ab')
+b2sums=('5659f0e2273a1a971312ec81595601230262893b5eafd3b49d5918b580db5c11998d6de9962a9866525675c62a7ba1619846c13abea7939937f986bb73633ab4')
 
 build() {
   mkdir build
