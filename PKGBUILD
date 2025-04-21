@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=decontX
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -49,8 +49,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dec488033f306592ef98199639abf1c8')
-b2sums=('698eac5f3938d5557889e0f9bb355a4ecbea54d067d954b0c585ed5ea4293888cf2394026ef6cf976189532cbdc8580c1ecc2ec68619089da56382df8d3c1aa9')
+md5sums=('3e8bb59b59d977702d9acdcbee2c522a')
+b2sums=('7ea57919917777c334ae6eab818254fd96dcd774f51ef70c3886873032ccc65e2c218c1f40d8ef51a9f35e684bc7c56c8ce98b72f8cc222fb8137de576446a39')
 
 build() {
   mkdir build
