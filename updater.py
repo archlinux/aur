@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys
 import os
 import requests
@@ -95,7 +93,7 @@ def create_srcinfo(version_tag):
 	optdepends = jre8-openjdk: Minimum requirement for launching older game versions
 	optdepends = jre11-openjdk: Recommended Java version for launching versions 1.12-1.17
 	optdepends = jre17-openjdk: Recommended Java version for launching version 1.17 and above
-	optdepends = jre22-openjdk: Recommended Java version for launching version 1.20.5+ and above
+	optdepends = jre21-openjdk: Recommended Java version for launching version 1.20.5+ and above
 	provides = xmcl
 	conflicts = xmcl-launcher-bin
 	source = {RELEASE_URL}/{version_tag}
