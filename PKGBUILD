@@ -16,7 +16,7 @@ package() {
 		ln -sf /usr/bin/uu-coreutils "$pkgdir"/usr/bin/"$f"
 		ln -sf /usr/share/man/man1/uu-"$f".1.gz "$pkgdir"/usr/share/man/man1/"$f".1.gz
 	done
-	echo '#!/usr/bin/uu-coreutils false' |tee > "$pkgdir"/usr/bin/{ch,run}con
+	echo '#!/usr/bin/uu-coreutils false' |tee "$pkgdir"/usr/bin/{ch,run}con
 	chmod 755 "$pkgdir"/usr/bin/{ch,run}con
 	ln -sf /usr/lib/nix/busybox "$pkgdir"/usr/bin/stty
 	rm "$pkgdir"/usr/{bin,share/man/man1}/{kill,more,uptime,hostname}*
