@@ -17,8 +17,8 @@ makedepends=('binutils' 'patchelf')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(chatterino)
+conflicts=(chatterino)
 #source=(${_pkgname}.desktop)
 source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Chatterino/chatterino2/releases/download/v$pkgver/Chatterino-Ubuntu-24.04.deb")
 package() {
