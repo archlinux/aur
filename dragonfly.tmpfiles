@@ -1,3 +1,2 @@
-d /var/log/dragonfly 0755 dragonfly dragonfly
 d /var/lib/dragonfly 0755 dragonfly dragonfly
-d /run/dragonfly 0755 dragonfly dragonfly
+d /var/log/dragonfly 0755 dragonfly dragonfly

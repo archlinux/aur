@@ -7,7 +7,6 @@ Documentation=
 Type=simple
 EnvironmentFile=-/etc/dragonfly/environment
 ExecStart=/usr/bin/dragonfly --flagfile=/etc/dragonfly/dragonfly.conf
-PIDFile=/run/dragonfly/dragonfly.pid
 TimeoutStopSec=infinity
 Restart=always
 User=dragonfly
