@@ -3,14 +3,14 @@
 
 pkgname=pje-office
 pkgver=2.5.16u
-pkgrel=1
+pkgrel=2
 pkgdesc="PJeOffice is a software made available by CNJ for electronic signing PJe system's documents"
 arch=('any')
 url='https://pjeoffice.trf3.jus.br'
 license=('custom')
 options=(!debug)
 depends=('jre11-openjdk' 'bash')
-makedepends=('wget')
+makedepends=('unzip')
 source=(https://pje-office.pje.jus.br/pro/pjeoffice-pro-v${pkgver}-linux_x64.zip)
 install=${pkgname}.install
 md5sums=('363f11dccfaf875634d19af0e6720be0')
@@ -59,7 +59,7 @@ prepare() {
         mkdir -p usr/share/icons
         rm pjeoffice-pro/.gitignore
         mv pjeoffice-pro usr/share
-        wget https://www.pje.jus.br/wiki/skins/common/images/pje.png -O usr/share/icons/pjeoffice.png
+        unzip -p usr/share/pjeoffice-pro/pjeoffice-pro.jar images/pje-icon-pje-feather.png > usr/share/icons/pjeoffice.png
 	_fix
 	_clinks
 }
