@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-widgets-bin
-pkgver=2.1.4
-_electronversion=31
-pkgrel=2
+pkgver=2.1.5
+_electronversion=35
+pkgrel=1
 pkgdesc="A desktop application developed using Electron.js and Node.js. The application allows users to create and manage widgets on their desktops."
-arch=('any')
+arch=('x86_64')
 url="https://electron-widgets.sametcc.me/"
 _ghurl="https://github.com/sametcn99/electron-widgets"
 license=("GPL-3.0-only")
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('15e4b75ebd9c5b2f10365096c8b02d64bd460bfe7551d8644209e52d1849d11c'
+sha256sums=('1f3a2c51aef56bc33a7a8c7ce761ab20fa7f71142016d103f403cba7f53b5549'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
