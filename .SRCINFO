@@ -1,6 +1,6 @@
 pkgbase = rhyolite-bin
 	pkgdesc = A simple text editor written in Rust using Tauri and svelte for frontend, inspired by Obsidian.(Prebuilt version)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://rhyolite.xyz/
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = rhyolite-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = rhyolite=0.1.9
+	provides = rhyolite=0.1.10
 	conflicts = rhyolite
-	source_aarch64 = rhyolite-0.1.9-aarch64.rpm::https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.9/Rhyolite-0.1.9-1.aarch64.rpm
-	sha256sums_aarch64 = 830c901d0cee9e8da67891935a4929e96252542dcdd865dd69670759c6917a1b
-	source_x86_64 = rhyolite-0.1.9-x86_64.rpm::https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.9/Rhyolite-0.1.9-1.x86_64.rpm
-	sha256sums_x86_64 = 5a8df025b4358776a7bcde5ba75f5ae5745932b5601c9747daed2763f2ae3196
+	source_aarch64 = rhyolite-0.1.10-aarch64.rpm::https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.10/Rhyolite-0.1.10-1.aarch64.rpm
+	sha256sums_aarch64 = 12248164d355577c1881a107e2d11781e3fd26a9ca462820148e8108f1b801cd
+	source_x86_64 = rhyolite-0.1.10-x86_64.rpm::https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.10/Rhyolite-0.1.10-1.x86_64.rpm
+	sha256sums_x86_64 = b4ce9279d4f562827c58de5373cac265f18d3518749b56f808e8f7c75442ba26
 
 pkgname = rhyolite-bin

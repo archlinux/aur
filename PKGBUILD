@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rhyolite-bin
 _pkgname=Rhyolite
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="A simple text editor written in Rust using Tauri and svelte for frontend, inspired by Obsidian.(Prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('830c901d0cee9e8da67891935a4929e96252542dcdd865dd69670759c6917a1b')
-sha256sums_x86_64=('5a8df025b4358776a7bcde5ba75f5ae5745932b5601c9747daed2763f2ae3196')
+sha256sums_aarch64=('12248164d355577c1881a107e2d11781e3fd26a9ca462820148e8108f1b801cd')
+sha256sums_x86_64=('b4ce9279d4f562827c58de5373cac265f18d3518749b56f808e8f7c75442ba26')
 prepare() {
     sed -i -e "
         s/Categories=/Categories=Utility;/g
