@@ -1,6 +1,6 @@
 pkgbase = r-mlinterfaces
 	pkgdesc = Uniform interfaces to R machine learning procedures for data in Bioconductor containers
-	pkgver = 1.86.0
+	pkgver = 1.88.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MLInterfaces
 	arch = any
@@ -48,7 +48,7 @@ pkgbase = r-mlinterfaces
 	optdepends = r-randomforest
 	optdepends = r-som
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLInterfaces_1.86.0.tar.gz
-	sha256sums = bed0b12ea7583aa9b8eb30c1c4e33a6fe83acab933a738edc12292ab238300e4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLInterfaces_1.88.0.tar.gz
+	sha256sums = a7a2b625dc8e777138fdafcde6b4f0ef565e94e88a9236ea818896d3dc4d626f
 
 pkgname = r-mlinterfaces
