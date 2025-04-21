@@ -1,6 +1,6 @@
 pkgbase = r-geometadb
 	pkgdesc = A compilation of metadata from NCBI GEO
-	pkgver = 1.68.1
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GEOmetadb
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-geometadb
 	optdepends = r-rmarkdown
 	optdepends = r-tm
 	optdepends = r-wordcloud
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOmetadb_1.68.1.tar.gz
-	sha256sums = 88426fce62d7c09f9eb97e1a4be63a09e46ea4a8cb34190106af782ac352099f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOmetadb_1.70.0.tar.gz
+	sha256sums = a05bf9937d83c654bc7b2b02891ede27ea01b996c1080743b957eb21eb783d6f
 
 pkgname = r-geometadb
