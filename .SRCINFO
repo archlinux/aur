@@ -1,19 +1,16 @@
 pkgbase = gnome-colors-icon-theme
 	pkgdesc = GNOME-Colors icon theme
-	pkgver = 5.5.1
-	pkgrel = 3
-	url = https://github.com/gnome-colors/gnome-colors
+	pkgver = 5.5.6
+	pkgrel = 1
+	url = https://github.com/themix-project/gnome-colors-icon-theme
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = inkscape
+	makedepends = librsvg
 	makedepends = imagemagick
-	makedepends = gnome-icon-theme
-	makedepends = gnome-icon-theme-symbolic
-	makedepends = poppler-glib
 	conflicts = gnome-colors-icon-theme-extras
 	replaces = gnome-colors-icon-theme-extras
-	source = git+https://github.com/gnome-colors/gnome-colors.git
-	sha256sums = SKIP
+	source = gnome-colors-icon-theme-5.5.6.tar.gz::https://github.com/themix-project/gnome-colors-icon-theme/archive/5.5.6.tar.gz
+	sha256sums = 0c7d90e84146fdccea3b895926345121ebd5ebba659b21770ea88c506766e6ce
 
 pkgname = gnome-colors-icon-theme
