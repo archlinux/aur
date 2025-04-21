@@ -1,13 +1,13 @@
 pkgname=safelinks
-pkgver=0.5.13
+pkgver=0.5.14
 pkgrel=1
 pkgdesc='Decoder for Microsoft Office 365 "Safe Links" URLs'
 arch=('x86_64')
-url="https://github.com/atc0005/${pkgname}"
+url="https://github.com/atc0005/safelinks"
 license=('GPL')
 makedepends=('go')
 source=($pkgname-$pkgver.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fe84af4ee48bd2783479942f9bf160cba04dd6345884a0dc83d0b0075b59d923')
+sha256sums=('060c727c0ff01720ad1934ecf6e462a54b2e073b437defa7f5164caef29fb5f9')
 
 prepare(){
   cd "$pkgname-$pkgver"
