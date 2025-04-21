@@ -10,8 +10,8 @@ arch=(
     'aarch64'
     'x86_64'
 )
-url="https://www.phpwebstudy.com/"
-_ghurl="https://github.com/xpf0000/PhpWebStudy"
+url="https://www.flyenv.com/"
+_ghurl="https://github.com/xpf0000/FlyEnv"
 license=('BSD-3-Clause')
 depends=(
     "electron${_electronversion}"
@@ -34,14 +34,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -69,6 +69,9 @@ build() {
     sed -i "s/'deb'/'dir'/;s/'rpm'/'dir'/" configs/electron-builder.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/;s/git pull \&\& //" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache" --no-lockfile
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     yarn run build
 }
 package() {
