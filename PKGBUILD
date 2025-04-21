@@ -3,16 +3,16 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-nightly"
-_electron='electron34'
-_electronpackage='electron34'
-pkgver=6.7.8.nightly.15
+_electron='electron35'
+_electronpackage='electron35'
+pkgver=7.1.0.nightly.3
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
-apptag='v6.7.8-nightly.15'
+apptag='v7.1.0-nightly.3'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 options=(!strip !debug)
 provides=(
