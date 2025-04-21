@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=LinTInd
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('92c6b3c5b5aa628fbc0e66ebe3bee94e')
-b2sums=('0f7bdd8845833297767e9e54fa21ffb0082b0098c5b53ce54a97e2cf0f20d58b7d69f02764cb1068b7ab0156c55e2753f44cf6be0c7cbcf2e74393083bf8d1d7')
+md5sums=('0dbcfccdd4c2b27967f34fd5f79406a5')
+b2sums=('6ce2adf02471f2424a6ae5b3b952038b01490bbbe26938346b270866d5d06a678635a32d54e9c964265be2f8b796fc2c1da98a0a5a78a5f1b4ef426d872c70ca')
 
 build() {
   mkdir build
