@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flux-editor-bin
 _pkgname='Flux Editor'
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A minimalist and lightweight code editor made with Tauri.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('e27b300676a150babedcb0a19490109265cc5541ff02326740f8f58625958169')
+sha256sums=('0ecc15b8619f55c2b09674614b9548954d51056d291d41e0518406fedf05ba6b')
 prepare() {
     sed -i -e "
         s/Categories=/Categories=Development;/g

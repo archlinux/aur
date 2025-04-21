@@ -1,6 +1,6 @@
 pkgbase = flux-editor-bin
 	pkgdesc = A minimalist and lightweight code editor made with Tauri.(Prebuilt version)
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://fluxeditor.github.io/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = flux-editor-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = flux-editor=0.7.0
+	provides = flux-editor=0.8.0
 	conflicts = flux-editor
-	source = flux-editor-0.7.0.rpm::https://github.com/kyteidev/Flux-Editor/releases/download/v0.7.0/Flux.Editor-0.7.0-1.x86_64.rpm
-	sha256sums = e27b300676a150babedcb0a19490109265cc5541ff02326740f8f58625958169
+	source = flux-editor-0.8.0.rpm::https://github.com/kyteidev/Flux-Editor/releases/download/v0.8.0/Flux.Editor-0.8.0-1.x86_64.rpm
+	sha256sums = 0ecc15b8619f55c2b09674614b9548954d51056d291d41e0518406fedf05ba6b
 
 pkgname = flux-editor-bin
