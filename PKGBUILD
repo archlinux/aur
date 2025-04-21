@@ -2,8 +2,8 @@
 
 _pkgname="appimagetool"
 pkgname="${_pkgname}-git"
-pkgver=r61.c247c92
-pkgrel=3
+pkgver=r66.0483b6b
+pkgrel=1
 pkgdesc="Low-level tool to generate an AppImage from an existing AppDir"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/AppImage/${_pkgname}"
@@ -15,10 +15,8 @@ optdepends=('zsync: for binary delta updates')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git"
-        "${_pkgname}_printf.patch::${url}/pull/87.patch?full_index=1")
-sha256sums=('SKIP'
-            'e374e3640dce92428f02940f98064ad87add29b45046a92a2a5e40270fe6a17e')
+source=("${_pkgsrc}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
@@ -27,7 +25,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${_pkgname}_printf.patch" || true
+  git cherry-pick --empty=drop 3a05efc9de4685b834447f5ad74536b9eb61cc92
+  git cherry-pick --empty=drop d120a8c5f5bb5260aab15b2bc5c9707b49b7af2a
 }
 
 build() {
@@ -36,9 +35,9 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
-    -Wno-dev
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
   )
 
   cd "${srcdir}"
