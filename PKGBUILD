@@ -2,11 +2,11 @@
 pkgname=python-flash-attention
 _pkgname=${pkgname#python-}
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and memory-efficient exact attention'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/Dao-AILab/flash-attention'
-license=('Apache')
+license=('Apache-2.0')
 groups=()
 depends=('python-einops' 'python-pytorch-cuda')
 makedepends=('ninja' 'python-build' 'python-installer' 'python-packaging'
@@ -47,8 +47,8 @@ build() {
 }
 
 package() {
-    python -m installer \
-        --compile-bytecode 1 \
-        --destdir $pkgdir \
-        $_pkgname-$pkgver/dist/flash_attn-$pkgver-*.whl
+  cd $_pkgname-$pkgver
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --compile-bytecode=1 --destdir=$pkgdir \
+    dist/flash_attn-$pkgver-*.whl
 }
