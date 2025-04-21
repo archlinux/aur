@@ -1,14 +1,14 @@
 pkgbase = fixit-bin
 	pkgdesc = A utility to fix mistakes in your commands.
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/eugene-babichenko/fixit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = fixit-x86_64-0.9.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.9.0/fixit-v0.9.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 11114d43dba617728c08ece12fcab7d88ec1bfbd47175c4e54887e455e4c0183
-	source_aarch64 = fixit-aarch64-0.9.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.9.0/fixit-v0.9.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 8aad364ef870a37cec02b0cdd3e2439b5c6f97d1a9263bfaee843f25cefe9e50
+	source_x86_64 = fixit-x86_64-0.10.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.10.0/fixit-v0.10.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 39f9338847d9c28e26e224c2e7cbe336e257d902d73ee8cc8e640c7a2326f3e1
+	source_aarch64 = fixit-aarch64-0.10.0.tar.gz::https://github.com/eugene-babichenko/fixit/releases/download/v0.10.0/fixit-v0.10.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 27517958319dc89334b0e1cd0701bd7740b29a14589fb68382f1f5744a949f90
 
 pkgname = fixit-bin
