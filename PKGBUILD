@@ -2,39 +2,32 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.195.13
+pkgver=3.195.29
 pkgrel=1
-_nodeversion=16
-_electronversion=31
+_electronversion=35
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.com"
 license=('GPL-3.0-or-later')
-depends=("electron${_electronversion}" 'libsecret')
-makedepends=('git' 'libxcrypt-compat' 'nvm' 'python' 'yarn')
+depends=(
+  "electron${_electronversion}"
+  'libsecret'
+)
+makedepends=(
+  'git'
+  'libxcrypt-compat'
+  'python'
+  'yarn'
+)
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('8c384d5e919ecc7fd03996f1c5da63d48f4af4a96f20785ffa537ad1b61ba0f9'
+sha256sums=('ced111fa785bffdf8e68b8cec55687363538f10b2187f7ef10f609935344dc5a'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '3ef9a5d2b4f2ba2e5b210a492c7398073f3cdd472d989e5ce2d4c6105d905666')
 
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="${srcdir}/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
   cd "app--$pkgname-$pkgver"
-  _ensure_local_nvm
-  nvm install "${_nodeversion}"
-
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/standard-notes.sh"
 }
 
@@ -44,14 +37,12 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-
-  _ensure_local_nvm
+  yarn config set --home enableTelemetry 0
   yarn install --immutable
+  yarn workspace @standardnotes/desktop rebuild:home-server
   yarn build:desktop
-
-  cd packages/desktop
-  yarn run webpack --config desktop.webpack.prod.js --env deb
-  yarn run electron-builder --linux -c.linux.target=deb \
+  yarn workspace @standardnotes/desktop webpack --config desktop.webpack.prod.js --env deb
+  yarn workspace @standardnotes/desktop electron-builder --linux -c.linux.target=deb \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer} \
     --publish=never --c.extraMetadata.version=${pkgver}
 }

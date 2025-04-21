@@ -1,0 +1,6 @@
+[standardnotes-desktop]
+source = "git"
+git = "https://github.com/standardnotes/app.git"
+prefix = "@standardnotes/desktop@"
+include_regex = ".*standardnotes/desktop.*"
+
