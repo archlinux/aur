@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altus
 _pkgname=Altus
-pkgver=5.7.0
+pkgver=5.7.1
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('63d699e06b72692f70ff68398c30744c3cb9bc38ab6723990da586933fa2b962'
+sha256sums=('0d9c45617f9036d60518b26df0fb725f3bc3c8931f31f9c2a3d624dd7a3de4c2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
