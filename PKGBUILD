@@ -18,7 +18,7 @@ depends=('brotli' 'gettext' 'gmp' 'gnutls' 'iptables' 'jansson'
          'libcurl-gnutls' 'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd'
          'libsodium' 'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl'
          'sqlite' 'which' 'zlib')
-makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'opus'
+makedepends=('bluez-libs' 'gettext' 'git' 'libpulse' 'libtool' 'meson' 'opus'
              'pkgconfig' 'postgresql' 'python' 'python-sphinx'
              'python-sphinx-multiversion' 'python-sphinx_rtd_theme' 'recutils'
              'texinfo')

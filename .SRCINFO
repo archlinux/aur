@@ -12,6 +12,7 @@ pkgbase = gnunet-git
 	makedepends = git
 	makedepends = libpulse
 	makedepends = libtool
+	makedepends = meson
 	makedepends = opus
 	makedepends = pkgconfig
 	makedepends = postgresql
