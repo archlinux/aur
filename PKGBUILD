@@ -1,31 +1,31 @@
-# Maintainer: Nathan Isom <nathanisom27[at]gmail[dot]com>
+# Contributor: Nathan Isom <nathanisom27[at]gmail[dot]com>
 
-_pkgname=bevelbar
-pkgname=${_pkgname}-git
-pkgver=2
+pkgname=bevelbar-git
+pkgver=24.07.r0.gf9d3380
 pkgrel=1
 pkgdesc='X11 status bar with beveled borders'
-arch=('i686' 'x86_64')
-url="https://github.com/vain/${_pkgname}"
-license=('custom:Unlicense')
-depends=()
+arch=('x86_64')
+url="https://www.uninformativ.de/git/bevelbar/file/README.html"
+license=('MIT')
+depends=('libx11' 'libxft' 'libxrandr')
 makedepends=('git')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git://github.com/vain/${_pkgname}.git")
-md5sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://www.uninformativ.de/git/bevelbar.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+    cd "$pkgname"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
+    cd "$pkgname"
     make
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make PREFIX=/usr DESTDIR="$pkgdir" install
+    cd "$pkgname"
+    make prefix=/usr DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
