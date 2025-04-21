@@ -1,4 +1,4 @@
-pkgbase = notmuch-tools-git
+pkgbase = notmuch-tools
 	pkgver = r87.84c38f0
 	pkgrel = 1
 	url = https://framagit.org/manu/notmuch-tools

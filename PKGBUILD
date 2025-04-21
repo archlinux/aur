@@ -1,5 +1,6 @@
 # Maintainer: Pierre Ayoub (Drack) <pierreay@proton.me>
 
+pkgbase=notmuch-tools
 pkgname=notmuch-tools-git
 pkgver=r87.84c38f0
 pkgrel=1
