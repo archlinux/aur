@@ -119,9 +119,9 @@ install_mozc-common() {
   cd ${srcdir}/mozc/src || exit
 
   # Extract license part of mozc
-  head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
-  head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
-  head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
+  [ -e data/unicode/JIS0201.TXT ] && head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
+  [ -e data/unicode/JIS0208.TXT ] && head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
+  #[ -e data/unicode/jisx0213-2004-std.txt ] && head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
 
   # BSD-3-Clause
   sed -n 67,94p data/installer/credits_en.html > Mozc

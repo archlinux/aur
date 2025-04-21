@@ -179,9 +179,9 @@ install_mozc-with-jp-dict-common() {
 
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   # Unicode-3.0
-  head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
-  head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
-  head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
+  [ -e data/unicode/JIS0201.TXT ] && head -n 50 data/unicode/JIS0201.TXT > LICENSE.JIS0201
+  [ -e data/unicode/JIS0208.TXT ] && head -n 73 data/unicode/JIS0208.TXT > LICENSE.JIS0208
+  #[ -e data/unicode/jisx0213-2004-std.txt ] && head -n 22 data/unicode/jisx0213-2004-std.txt > LICENSE.jisx0213-2004-std
 
   # BSD-3-Clause
   sed -n 1,29p unix/fcitx5/fcitx_key_translator.h > Fcitx5
