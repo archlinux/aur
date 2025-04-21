@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggsc
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -60,8 +60,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1caafa93bcd57a5ba6fbf0725f899fa4')
-b2sums=('f13c081ec61d5433e399948d2d47a81cab1afb5792da3d6b654a5a1ad58f546520df9c80020e5dc583b031eb723a4baaf5402a26b0808cd8e723d902215d5c41')
+md5sums=('053b591e4d99612354032dedd229a2da')
+b2sums=('657019394bfbdcf0e17d9b4c9a2a85a29c5f91a038385e902d38347ec56bc60c4ecffcf883200a9e90d16e59b36ef76e975b9292b8478fe25ef33a3fc87cca8f')
 
 build() {
   mkdir build
