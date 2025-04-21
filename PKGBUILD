@@ -2,8 +2,8 @@
 pkgname=cloudflarespeedtest-bin
 _appname=CloudflareST
 pkgver=2.2.5
-pkgrel=3
-pkgdesc="XIU2/CloudflareSpeedTest 🌩 “Choose Your Own Preferred IP” Test Cloudflare CDN latency and speed, get the fastest IP! Written in go."
+pkgrel=4
+pkgdesc="XIU2/CloudflareSpeedTest 🌩 'Choose Your Own Preferred IP' Test Cloudflare CDN latency and speed, get the fastest IP! Written in go.(Prebuilt version)"
 arch=(
     'aarch64'
     'armv7h'
@@ -11,7 +11,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/XIU2/CloudflareSpeedTest"
-license=("GPL-3.0-only")
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=()
@@ -23,7 +23,7 @@ sha256sums_aarch64=('8e00483443159c40885b6d204291ab7c1b7a2df85987ef94030072213af
 sha256sums_armv7h=('d2e642bc38a4d24c9dbd4599cfda6ffe0115d4290a6fc1d0ece2b5a037c433bc')
 sha256sums_i686=('9ffd4743cc458ead4ab58e48e1a4c5ee63b03d7ed9e917b9008169a0b84270ed')
 sha256sums_x86_64=('ee6d4bd493ce50f3335c85d711963695acf354ac24f020baa1f194e932a6528b')
-build() {
+prepare() {
     mv "${srcdir}/使用+错误+反馈说明.txt" "${srcdir}/ReadMe.txt"
 }
 package() {
