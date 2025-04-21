@@ -6,7 +6,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
 pkgver=0.5.10
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
@@ -65,7 +65,7 @@ rm *.png *.zip *.sh
 echo "[Desktop Entry]
 	Name=Kingdom Hearts: Melon Mix
 	GenericName=KH Melon Mix (DS Emulator)
-	Exec=QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix'
+	Exec= env QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix'
 	Terminal=false
 	Path=/opt/Kingdom Hearts Melon Mix/
 	Type=Application
@@ -78,7 +78,7 @@ echo "[Desktop Entry]
 echo "[Desktop Entry]
 	Name=Kingdom Hearts: 358/2 Days Melon Mix
 	GenericName=KH Melon Mix (DS Emulator)
-	Exec=QT_QPA_PLATFORM=xcb  '/opt/Kingdom Hearts Melon Mix/MelonMix' -f '/opt/Kingdom Hearts Melon Mix/roms/days.nds'
+	Exec=env QT_QPA_PLATFORM=xcb  '/opt/Kingdom Hearts Melon Mix/MelonMix' -f '/opt/Kingdom Hearts Melon Mix/roms/days.nds'
 	Terminal=false
 	Path=/opt/Kingdom Hearts Melon Mix/
 	Type=Application
@@ -88,7 +88,7 @@ echo "[Desktop Entry]
 echo "[Desktop Entry]
 	Name=Kingdom Hearts: Re:Coded Melon Mix
 	GenericName=KH Melon Mix (DS Emulator)
-	Exec=QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix' -f '/opt/Kingdom Hearts Melon Mix/roms/recoded.nds'
+	Exec=env QT_QPA_PLATFORM=xcb '/opt/Kingdom Hearts Melon Mix/MelonMix' -f '/opt/Kingdom Hearts Melon Mix/roms/recoded.nds'
 	Terminal=false
 	Path=/opt/Kingdom Hearts Melon Mix
 	Type=Application
