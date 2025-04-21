@@ -1,7 +1,7 @@
 # Maintainer: walldmtd <walldmtd at proton dot me>
 
 pkgname=vimix-kanagawa-cursors
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="XCursor theme using Kanagawa colours, based on Vimix cursors"
 arch=(any)
@@ -9,8 +9,8 @@ url="https://github.com/walldmtd/vimix-kanagawa-cursors"
 license=("GPL-3.0-or-later")
 source=("${pkgname}-wave-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-wave.tar.gz"
         "${pkgname}-lotus-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-lotus.tar.gz")
-b2sums=('1dce79cc1e0135fb7572786d4d15491df6da25235ad233cc7a764d580b29aaec3bf3af28511ec81640c07828066399935b524fce57d2b5e68fc58c5e744ca5a4'
-        'fecf5d812b5b55c35524293951987695332d69aef60cd9e984002b938aa4c7e65a3e40e6b7472f405673dd22f55af23766134d7208120043af0c8c3d54ea4699')
+b2sums=('39ab2c47aa305d3540095fe07e15686cf5eac248320a7e0f90113976dbd797c2a4cef31b9704e0089a0cfba8b03d9130aa2493f4158b5f5c8579bc146cba405e'
+        'f3e1cfb67ab739360e9a281e46062110ed6b7390490df7b0971358699fa79602319cb414c7d31893fb58510b6bab4a569bff0a7e85df747d67d3aa3a37b40e39')
 
 package() {
     install -d "${pkgdir}"/usr/share/icons/{"${pkgname}-wave","${pkgname}-lotus"}
