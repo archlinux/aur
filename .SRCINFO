@@ -1,0 +1,21 @@
+pkgbase = ttf-zen-maru-gothic
+	pkgdesc = Zen Maru Gothis is a rounded san serif family that gives a soft and natural impression due to the deep rounds in the corners.
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Zen+Maru+Gothic
+	arch = any
+	license = OFL
+	source = https://github.com/googlefonts/zen-marugothic/raw/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Light.ttf
+	source = https://github.com/googlefonts/zen-marugothic/raw/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Regular.ttf
+	source = https://github.com/googlefonts/zen-marugothic/raw/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Medium.ttf
+	source = https://github.com/googlefonts/zen-marugothic/raw/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Bold.ttf
+	source = https://github.com/googlefonts/zen-marugothic/raw/553c872b216d1290e2902a466edcdc9682f0df6a/fonts/ttf/ZenMaruGothic-Black.ttf
+	source = https://github.com/googlefonts/zen-marugothic/raw/553c872b216d1290e2902a466edcdc9682f0df6a/OFL.txt
+	sha256sums = c4e6fa10ff517df37cb0c13038fe2813f3c47afe6577fa4a5573200e4508b2c1
+	sha256sums = a0c0b53543e0993ae2225e629c833f3d51495ad31720694ff112ce4ce11111ef
+	sha256sums = 3cfdb98a13571ede17fcc769f5093a97c38b80a7b9b2ab754a26b4d822092b3b
+	sha256sums = fe24426b9c8b5523a0146a8235c8674eccf0493af354a53ec895c3596d9eb745
+	sha256sums = 6bd74fe76cd39ee0ec18775c3661d845343fb3f6f8fa09a3076638417baf741f
+	sha256sums = 2a20cf7ce1909d8ee1e949095d340f7d7656705f7c810a2d6faf56800ad0cb3d
+
+pkgname = ttf-zen-maru-gothic
