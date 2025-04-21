@@ -1,6 +1,6 @@
 pkgbase = hfstospell-git
 	pkgdesc = Helsinki Finite-State Transducer Technology (HFST) tools
-	pkgver = 0.4.5.r0.gd791a41
+	pkgver = 0.5.4.r0.g85edd77
 	pkgrel = 1
 	url = https://hfst.github.io/
 	arch = i686
@@ -10,11 +10,10 @@ pkgbase = hfstospell-git
 	depends = libxml++2.6
 	depends = libarchive
 	depends = icu
-	provides = hfstospell=0.4.5.r0.gd791a41
+	provides = hfstospell=0.5.4.r0.g85edd77
 	conflicts = hfstospell
 	options = !libtool
-	source = hfstospell-git::git+https://github.com/hfst/hfst-ospell.git
+	source = git+https://github.com/hfst/hfst-ospell.git
 	md5sums = SKIP
 
 pkgname = hfstospell-git
-
