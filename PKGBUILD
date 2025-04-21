@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="$_pkgname-git"
-pkgver=1.2.4.r0.g98b3d540b
+pkgver=1.2.4.r47.g822d60785
 pkgrel=1
 pkgdesc='An advanced drum machine (git version)'
 arch=(x86_64)
@@ -45,6 +45,9 @@ prepare() {
 
   # update docbook dtd version
   patch -Np1 -r - -i "$srcdir"/fix_dtd_version.patch || true
+  # fix mininimum CMAke version
+  sed -i -e 's/VERSION 2.6/VERSION 3.10/' cmake/sscanf/CMakeLists.txt
+  sed -i -e 's/VERSION 2.6/VERSION 3.10/' cmake/rtclock/CMakeLists.txt
 }
 
 build() {
