@@ -1,0 +1,18 @@
+pkgbase = vic-diary-bin
+	pkgdesc = Support markdown syntax input, WYSIWYG cross-platform diary software(Prebuilt version)
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://vic-diary.netlify.app/
+	arch = x86_64
+	license = MIT
+	depends = electron22
+	provides = vic-diary=0.6.5
+	conflicts = vic-diary
+	source = vic-diary-0.6.5.rpm::https://gitee.com/vo-soft/vic-diary-release/releases/download/latest/vic-diary-0.6.5.x86_64.rpm
+	source = LICENSE-0.6.5::https://raw.githubusercontent.com/vo-soft/vic-diary-releases/v0.6.5/LICENSE
+	source = vic-diary.sh
+	sha256sums = eaddcf6ccee9909ea12f11646ec99b27d3c0d5c90b01625ed9234f65b045f6bb
+	sha256sums = 9c2cde6ad2685c66d9fb8d476cff8646f499028c866b8c61c436a69f72e21ee1
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = vic-diary-bin
