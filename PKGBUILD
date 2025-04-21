@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=stapxs-qq-lite-bin
 _pkgname='Stapxs QQ Lite'
-pkgver=3.1.3
+pkgver=3.1.4
 _electronversion=31
 pkgrel=1
 epoch=
@@ -24,8 +24,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('d08b59e175ecaf07583fe1bbc298d7b828a22ffb3ec1803adcddbf6cac23c4bf')
-sha256sums_x86_64=('01a0955af58d560edbbf7ac11a3cc1bbb050b3bd217c49c2e1b29105c4d12ee7')
+sha256sums_aarch64=('156c140418f3255326cdeda457ed6a91081bf3913da518694e5e76d6ed1d8a66')
+sha256sums_x86_64=('4ef706f3fc7962746eeed3d36f0d783bf843faa5d8714ebd5898362d72acfe1f')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
