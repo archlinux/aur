@@ -1,11 +1,13 @@
 pkgbase = chatterino2-7tv-bin
 	pkgdesc = A fork of Chatterino2 with built-in support for 7tv emotes
 	pkgver = 7.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SevenTV/chatterino7
 	arch = x86_64
 	license = MIT
-	depends = icu70
+	makedepends = binutils
+	makedepends = patchelf
+	depends = icu
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	depends = xcb-util-image
