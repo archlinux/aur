@@ -5,7 +5,7 @@
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
 pkgver=2025.5
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -87,6 +87,9 @@ prepare() {
   nvm install "${_nodeversion}"
   npm ci --no-audit --no-fund
   popd
+
+  # Fix syntax error in Apparmor profile
+  git cherry-pick -n 2b20472a37831b8e43118bc8c5f0c3dc3de08a37
 }
 
 build() {
