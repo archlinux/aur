@@ -1,11 +1,12 @@
 pkgbase = helmify-bin
 	pkgdesc = Creates Helm chart from Kubernetes yaml
 	pkgver = 0.4.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arttor/helmify
 	arch = x86_64
 	license = MIT
 	provides = helmify
+	conflicts = helmify
 	source = helmify-bin-0.4.18.tar.gz::https://github.com/arttor/helmify/releases/download/v0.4.18/helmify_Linux_x86_64.tar.gz
 	source = helmify-bin-0.4.18-source.tar.gz::https://github.com/arttor/helmify/archive/refs/tags/v0.4.18.tar.gz
 	sha512sums = e788c631634eef60d6c6a3c901f4cb7de7708597556469c611c41df96f6fcb00919b076ee0742ce51d289ac6efcf3a65e7f4b1455986ba4319f3e4996b9d7565

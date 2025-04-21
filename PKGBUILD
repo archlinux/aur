@@ -2,9 +2,10 @@
 # Contributor: mickaelca <contact@mickael-caudrelier.fr>
 pkgname=helmify-bin
 pkgver=0.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates Helm chart from Kubernetes yaml"
 provides=('helmify')
+conflicts=("helmify")
 arch=('x86_64')
 url="https://github.com/arttor/helmify"
 license=("MIT")
