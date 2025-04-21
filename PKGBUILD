@@ -4,7 +4,7 @@
 _name=NBT
 pkgname=python-${_name,,}
 pkgver=1.5.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Named Binary Tag Reader/Writer"
 url="https://github.com/twoolie/$_name"
 depends=('python')
@@ -55,7 +55,7 @@ package() {
   local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  local _license_path="$_site_packages/$_name-$pkgver.dist-info/LICENSE.txt"
+  local _license_path="$_site_packages/${_name,,}-$pkgver.dist-info/licenses/LICENSE.txt"
   [ -f "$pkgdir/$_license_path" ] || { echo "License file not found"; exit 1; }
   ln -s "$_license_path" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

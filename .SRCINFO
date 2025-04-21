@@ -1,7 +1,7 @@
 pkgbase = python-nbt
 	pkgdesc = Named Binary Tag Reader/Writer
 	pkgver = 1.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/twoolie/NBT
 	arch = any
 	license = MIT
