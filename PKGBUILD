@@ -1,16 +1,17 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-dtapiservice-bin
-pkgver=5.2.3.131
+pkgver=5.2.4.132
 pkgrel=1
-_sdkver=2025.01.0
+_sdkver=2025.04.0
 pkgdesc="DTAPI daemon that manages a range of DekTec demodulator boards"
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
 license=('LicenseRef-custom')
 depends=('gcc-libs' 'glibc' 'dektec-drivers-dkms')
+options=('!strip')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz")
-sha256sums=('47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15')
+sha256sums=('37fe7622b6b609adda95f21c4eed6fca6e25cb156e34cace71191b35749ded94')
 
 prepare() {
   cd "${srcdir}/LinuxSDK/DtapiService"
