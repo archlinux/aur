@@ -2,13 +2,14 @@
 
 pkgname=wrkflw
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='validate and execute GitHub Actions workflows locally'
 url="https://github.com/bahdotsh/$pkgname"
 arch=(x86_64)
 license=(MIT)
 depends=(gcc-libs
-         glibc)
+         glibc
+         openssl libcrypto.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
@@ -23,6 +24,7 @@ _srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export OPENSSL_NO_VENDOR=true
 }
 
 build() {
