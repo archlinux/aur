@@ -10,10 +10,10 @@ _pkgname=regina
 _pkgsuff=rexx
 
 pkgname=(regina-rexx{,-doc})
-pkgdesc='An implementation of the ANSI Standard REXX Programming Language'
+pkgdesc='ANSI compliant REXX interpreter for multiple platforms'
 epoch=1
 pkgver=3.9.6
-pkgrel=6
+pkgrel=7
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -23,17 +23,6 @@ arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgsuff-$pkgver"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   # If the user wants to compile regina with another compiler, let them.
   # Use CC=gcc per default.
@@ -48,7 +37,7 @@ build() {
 }
 
 package_regina-rexx() {
-  changelog="$pkgname.changelog"
+  changelog="${pkgname[0]}.changelog"
   depends=(
     'bash'
     'glibc'
@@ -57,12 +46,12 @@ package_regina-rexx() {
     'readline'
   )
   case "Z$CC" in
-    Z | Zgcc ) depends+=('gcc-libs')
+    'Z' | 'Zgcc' ) depends+=('gcc-libs')
   esac
   optdepends=(
     'regina-rexx-doc: Demo scripts and PDF documentation for Regina REXX and regutil'
   )
-  options=('lto' '!makeflags')
+  options=('!makeflags')
   provides=('libregina.so' 'regina' 'rexx')
   replaces=('regina-rexx-das')
 
@@ -76,16 +65,16 @@ package_regina-rexx() {
 
 package_regina-rexx-doc() {
   arch=('any')
-  changelog="${pkgname/-doc}.changelog"
-  optdepends=('regina: required to run demo scripts')
-  pkgdesc='Demo scripts and documentation for Regina REXX and regutil (PDF)'
+  changelog="${pkgname[0]/-doc}.changelog"
+  optdepends=('regina: Required to run demo scripts')
+  pkgdesc='Documentation for Regina REXX and RegUtil (both in PDF), and some demo scripts'
   replaces=('regina-rexx-das-doc')
 
   cd "$srcdir/$_pkgname-$_pkgsuff-$pkgver"
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/${pkgname[0]}" \
     doc/*.pdf
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/examples/" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/${pkgname[0]}/examples" \
     demo/*.rexx
 }
 
