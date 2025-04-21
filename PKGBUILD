@@ -1,34 +1,30 @@
-# Maintainer:  Mike Polvere <mic.tjs@gmail.com>
+# Contributor: Mike Polvere <mic.tjs@gmail.com>
 # Contributor: Tomasz Paś <kierek93@gmail.com>
 
 pkgname=libretro-xrick-git
-
-_gitname=xrick-libretro
-_libname=xrick_libretro
-
-pkgver=112.5d5baab
+pkgver=r203.476a9a6
 pkgrel=1
 pkgdesc="libretro port of xrick"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/libretro/xrick-libretro"
-license=('GPL')
-groups=('libretro')
+license=('custom')
 depends=('glibc')
 makedepends=('git')
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
-md5sums=('SKIP')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${pkgname}"
+  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "${_gitname}"
+  cd "${pkgname}"
   make
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  cd "${pkgname}"
+  install -Dm644 "xrick_libretro.so" -t "${pkgdir}/usr/lib/libretro/"
+  install -Dm644 README "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-

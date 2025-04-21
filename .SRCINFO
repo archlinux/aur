@@ -1,16 +1,13 @@
 pkgbase = libretro-xrick-git
 	pkgdesc = libretro port of xrick
-	pkgver = 112.5d5baab
+	pkgver = r203.476a9a6
 	pkgrel = 1
 	url = https://github.com/libretro/xrick-libretro
-	arch = i686
 	arch = x86_64
-	groups = libretro
-	license = GPL
+	license = custom
 	makedepends = git
 	depends = glibc
-	source = xrick-libretro::git://github.com/libretro/xrick-libretro.git
-	md5sums = SKIP
+	source = libretro-xrick-git::git+https://github.com/libretro/xrick-libretro.git
+	sha256sums = SKIP
 
 pkgname = libretro-xrick-git
-
