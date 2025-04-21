@@ -1,0 +1,15 @@
+
+
+post_install() {
+echo ">> Hello!"
+echo ">> you'll have to run the kh-melonmix-owndir as root/sudo to gain ownership of the /opt/Kingdom Hearts Melon Mix/ directory"
+echo ">> to run one of the games, please place your roms inside of the /opt/Kingdom Hearts Melon Mix/roms"
+echo ">> If you also want the HD cutscenes, please place them at /opt/Kingdom Hearts Melon Mix/assets/"
+
+ln -s "/opt/Kingdom Hearts Melon Mix/MelonMix" /usr/bin/kh-melonmix
+}
+
+## arg 1:  the old package version
+post_remove() {
+	su -c "rm -rf /usr/bin/kh-melonmix"
+}
