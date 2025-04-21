@@ -3,7 +3,7 @@
 #              (https://tango-controls.org) <info@tango-controls.org>
 
 pkgname=itango
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="An interactive Tango client."
 groups=('tango-controls')
