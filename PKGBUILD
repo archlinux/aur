@@ -32,7 +32,7 @@ optdepends=('perl-uri: Dynamic playlist'
 provides=(cantata)
 conflicts=(cantata)
 source=("cantata-nullobsi::git+https://github.com/nullobsi/cantata.git#tag=v${pkgver}"
-        "cantata-QRegularExpression.patch::https://github.com/nullobsi/cantata/pull/54/commits/aed0b8cdb60bb100e15c0195dbd84a4a18edc35d.patch")
+        "https://github.com/FabioLolix/AUR-artifacts/raw/master/cantata-QRegularExpression.patch")
 sha256sums=('43bd3de862b73e80e8258c27c263dd92b90bfa7f97bc8ce846a91a965fdf0690'
             '553c27ca42e7bbd09ce7f63dfa747df06826c5ef8c3ddab4ac3f925f00e5f2fb')
 
