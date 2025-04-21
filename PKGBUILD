@@ -4,8 +4,8 @@ pkgname="${_pkgname}-desktop-bin"
 _appname=Pause
 pkgver=0.9.2
 _electronversion=27
-pkgrel=2
-pkgdesc="Reminds you to take a break ☕"
+pkgrel=3
+pkgdesc="Reminds you to take a break ☕(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/Thomsch/pause"
 license=('GPL-3.0-only')
@@ -23,18 +23,22 @@ source=(
 )
 sha256sums=('337bd36d3253f4b1c4e25dcc520e638ee0e105680340d60fae722f595243f45e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${_appname}/
         s/@options@//
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+    	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/;s/Icon=${_pkgname}/Icon=${pkgname%-bin}/" \
-        "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    sed -i -e "
+        s/AppRun --no-sandbox/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

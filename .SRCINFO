@@ -1,7 +1,7 @@
 pkgbase = pause-desktop-bin
-	pkgdesc = Reminds you to take a break ☕
+	pkgdesc = Reminds you to take a break ☕(Prebuilt version.Use system-wide electron)
 	pkgver = 0.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Thomsch/pause
 	arch = x86_64
 	license = GPL-3.0-only
