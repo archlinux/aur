@@ -2,7 +2,7 @@
 # Contributor: witt <1989161762 at qq dot com>
 pkgname=drawio-desktop-appimage
 _pkgname=drawio
-pkgver=26.1.1
+pkgver=26.2.2
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ depends=('zlib' 'hicolor-icon-theme' 'glibc' 'fuse2')
 _install_path=/opt/${pkgname}
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-x86_64-${pkgver}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_pkgname}-arm64-${pkgver}.AppImage")
-sha1sums_x86_64=('d8aa2fc2a0b2ce91b757b7d06edf78d0e55d3163')
-sha1sums_aarch64=('c06c677893262839ce1b07aee75860d059256205')
+sha1sums_x86_64=('cd32a9818868d931904462afc6eb8e16f1f05be2')
+sha1sums_aarch64=('9fa0655dc651ee79c6f85737457a7766810b3ead')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
