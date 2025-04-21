@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=lib32-libnewt
-pkgver=0.52.24
+pkgver=0.52.25
 pkgrel=1
 pkgdesc="Not Erik's Windowing Toolkit - text mode windowing with slang"
 arch=(x86_64)
@@ -25,9 +25,9 @@ makedepends=(
 )
 optdepends=('lib32-tcl: whiptcl support')
 options=(!makeflags)
-_tag=5f2762040505edd7a25878fe27a00a2d34485663
+_tag=9b9e7e8936f51f83a7259c5f0a9b4ff909cbd39a
 source=(git+https://pagure.io/newt.git#tag=${_tag})
-b2sums=('SKIP')
+b2sums=('38a370495838e694b5920097dc52fcd2085930c11e1930e8121b9aaf348b8ed289bba20955402cd7fd929d3b9d1273ffc74d1662f2345e880dca11f4f9c9b392')
 
 prepare() {
   cd newt
