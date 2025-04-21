@@ -1,7 +1,7 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp-git
 pkgver=4.29.0.r5.geb195b0
-pkgrel=1
+pkgrel=2
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
 url="https://github.com/Zweih/qp"
@@ -31,7 +31,7 @@ build() {
   _fulldate=$(date -u +%Y-%m-%dT%H:%M:%SZ)
   _monthYearDate=$(date -u +'%B %Y')
 
-  sed -i -e "s/@VERSION@/${pkgver}/g" -e "s/@DATE@/$(_monthYearDate)/g" "${_binaryname}.1"
+  sed -i -e "s/@VERSION@/${pkgver}/g" -e "s/@DATE@/${_monthYearDate}/g" "${_binaryname}.1"
 
   go build -trimpath -ldflags="-s -w \
   -X qp/internal/about.Version=${pkgver} \
