@@ -2,8 +2,8 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20250413
-_pkgver=15-20250413
+pkgver=15.1.0.snapshot20250420
+_pkgver=15-20250420
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -225,9 +225,9 @@ package_gcc-snapshot() {
   make -C ${CHOST}/libsanitizer/lsan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}.1
-  rm ${pkgdir}/usr/share/man/man3/gcobol.3
-  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gdc,m2}.info
+  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
+  rm ${pkgdir}/usr/share/man/man3/gcobol*
+  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gdc,m2}*
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po

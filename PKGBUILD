@@ -2,9 +2,10 @@
 
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-libs,lib32-gcc-libs,gcc-ada,gcc-cobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,lto-dump,libgccjit}-snapshot)
-pkgver=15.1.0.snapshot20250413
-_pkgver=15-20250413
+pkgver=15.1.0.snapshot20250420
+_pkgver=15-20250420
 _majorver=${_pkgver//-*}
+_adamajor=16
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
 _gmpver=6.3.0
@@ -34,7 +35,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('f066fb74ce533d167fccb6429dc0819bdcc8eb43a992c8ad49020f8616ae2986'
+sha256sums=('fc39b4d54bc441bfa82da31e65e370c5f9c0dc45f4f1e2d3455a9dcfcb457319'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -235,9 +236,9 @@ package_gcc-snapshot() {
   make -C ${CHOST}/32/libsanitizer/asan DESTDIR=${pkgdir} install-nodist_toolexeclibHEADERS
   make -C gcc DESTDIR=${pkgdir} install-man install-info
 
-  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}.1
-  rm ${pkgdir}/usr/share/man/man3/gcobol.3
-  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}.info
+  rm ${pkgdir}/usr/share/man/man1/{gcobol,gccgo,gfortran,lto-dump,gdc,gm2}*
+  rm ${pkgdir}/usr/share/man/man3/gcobol*
+  rm ${pkgdir}/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc,m2}*
 
   make -C libcpp DESTDIR=${pkgdir} install
   make -C gcc DESTDIR=${pkgdir} install-po
@@ -328,16 +329,16 @@ package_gcc-ada-snapshot() {
 
   ln -s gcc ${pkgdir}/usr/bin/gnatgcc
 
-  mv ${pkgdir}/${_libdir}/adalib/libgna{rl,t}-${_majorver}.so ${pkgdir}/usr/lib
-  ln -s libgnarl-${_majorver}.so ${pkgdir}/usr/lib/libgnarl.so
-  ln -s libgnat-${_majorver}.so ${pkgdir}/usr/lib/libgnat.so
+  mv ${pkgdir}/${_libdir}/adalib/libgna{rl,t}-${_adamajor}.so ${pkgdir}/usr/lib
+  ln -s libgnarl-${_adamajor}.so ${pkgdir}/usr/lib/libgnarl.so
+  ln -s libgnat-${_adamajor}.so ${pkgdir}/usr/lib/libgnat.so
 
   rm -f ${pkgdir}/${_libdir}/adalib/libgna{rl,t}.so
 
   install -d ${pkgdir}/usr/lib32/
-  mv ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}-${_majorver}.so ${pkgdir}/usr/lib32
-  ln -s libgnarl-${_majorver}.so ${pkgdir}/usr/lib32/libgnarl.so
-  ln -s libgnat-${_majorver}.so ${pkgdir}/usr/lib32/libgnat.so
+  mv ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}-${_adamajor}.so ${pkgdir}/usr/lib32
+  ln -s libgnarl-${_adamajorr}.so ${pkgdir}/usr/lib32/libgnarl.so
+  ln -s libgnat-${_adamajor}.so ${pkgdir}/usr/lib32/libgnat.so
 
   rm -f ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}.so
 
