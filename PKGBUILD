@@ -3,7 +3,6 @@ pkgname=helmify
 pkgver=0.4.18
 pkgrel=1
 pkgdesc="Creates Helm chart from Kubernetes yaml"
-replaces=("helmify-bin")
 arch=("x86_64")
 url="https://github.com/arttor/helmify"
 license=("MIT")
@@ -26,7 +25,7 @@ build() {
   go build -o "${pkgname}" ./cmd/...
 }
 
-test() {
+check() {
   cd "${pkgname}-${pkgver}"
   go test ./...
 }

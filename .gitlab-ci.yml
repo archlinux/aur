@@ -1,0 +1,27 @@
+include:
+- project: "common/gitlab-helper"
+  ref: master
+  file: "ci-helper.yml"
+
+workflow: !reference [ .common, workflow ]
+
+variables:
+  PKG_NAME: "helmify"
+
+stages:
+- build
+- test
+- deploy
+
+build-helmify:
+  extends: .arch-build
+  image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
+  needs: [ ]
+
+test-helmify:
+  extends: .arch-test
+  image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
+  needs: [ "build-helmify" ]
+
+deploy-helmify:
+  extends: .arch-deploy
