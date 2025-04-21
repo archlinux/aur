@@ -1,7 +1,7 @@
-# Maintainer : Jenrikku (JkKU)
+# Maintainer: Jenrikku (JkKU)
 pkgname="openutau"
 pkgver=0.1.549
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source UTAU successor"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/stakira/OpenUtau"
@@ -13,7 +13,7 @@ source=("https://github.com/stakira/OpenUtau/archive/refs/tags/$pkgver.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.svg")
 sha256sums=('440a1be2cffb78ae0a2c4721129dfb8f421cd8abb1f5ba4254bd6137b16482b9'
-            '104e3f21f46958623fca959694f424036653e85a6b0cf7815d6a2251504db632'
+            '46cdff454ee6ea172ccdd912d64480a2ce7ffc123a89b183ffc74e314fc3c854'
             '490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b')
 
 build() {
@@ -31,8 +31,8 @@ package() {
 	cp -r publish/* "${pkgdir}/opt/openutau/"
 
 	# Desktop file and icon
-	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 ${pkgname}.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.desktop"
+	install -Dm755 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 ${pkgname}.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
 	# Add link in /bin
 	ln -s "/opt/openutau/OpenUtau" "$pkgdir/usr/bin/openutau"
