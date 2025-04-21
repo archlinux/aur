@@ -1,6 +1,6 @@
 pkgbase = r-coregx
 	pkgdesc = Classes and Functions to Serve as the Basis for Other 'Gx' Packages
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CoreGx
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-coregx
 	optdepends = r-pander
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoreGx_2.10.0.tar.gz
-	sha256sums = 8a24f49f5e14978945d63415af564113808b14f6e8d3bdd8327f7669fc728153
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoreGx_2.12.0.tar.gz
+	sha256sums = bd7388c95450c141f1e3beb6476d2c6a6148d52f99c7f0321663a0b8539818d3
 
 pkgname = r-coregx
