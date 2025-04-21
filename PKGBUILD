@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GEOexplorer
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,8 +51,8 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c551b3a32be33591646d06feae085b9')
-b2sums=('b6f8b5eac8faeccacf67080d4956f09e72fe4b0c7c6ecf928aabd4047b3da9b3542b321aa42f54bfb73654f35f676c7914fb240353f7e17f71e38f59814f0f5b')
+md5sums=('6c99a9f75a8504d708ecba390366179b')
+b2sums=('85a303652f04f383d9c5b6fef03f95a8ce10b8f9084fbe04b0880556d5f19ed921f921d43bc5d3ced0ca49623149e47cb8b06a2fb5ce43c1fd31bb72249698f1')
 
 build() {
   mkdir build
