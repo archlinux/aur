@@ -2,7 +2,7 @@
 # Contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=iredis-bin
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="A Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('iredis')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/laixintao/iredis/releases/download/v${pkgver}/iredis.tar.gz"
         'LICENSE::https://raw.githubusercontent.com/laixintao/iredis/master/LICENSE')
-sha256sums=('774c2163bf22b94540049d2524cc9e5f7fb9c3335eabede66cb13f314fb70911'
+sha256sums=('5dba61ed66c85e68f71549cfc5a5b0e7d7a02a8faad8efd24f31fb5eb8b8d07b'
             '9ac86d6afe88fc3a333a642b97b5e7219eaca704157cc4ab82de2f4f9eddfa7f')
 
 package() {
