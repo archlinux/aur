@@ -1,6 +1,6 @@
 pkgbase = r-sradb
 	pkgdesc = A compilation of metadata from NCBI SRA and tools
-	pkgver = 1.68.1
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SRAdb
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-sradb
 	depends = r-rcurl
 	depends = r-rsqlite
 	optdepends = r-rgraphviz
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SRAdb_1.68.1.tar.gz
-	sha256sums = 0120b724f34f101374a1bdd2541a3e402e36f8b9017cd90649feb802f7dae809
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SRAdb_1.70.0.tar.gz
+	sha256sums = befbc64f330ec6b75b35f61711791607a76071247c30cca828dae8ffe735d842
 
 pkgname = r-sradb
