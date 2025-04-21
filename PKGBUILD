@@ -1,7 +1,7 @@
 # Maintainer: Mizzt <mizztgc@gmail.com>
 pkgname=konaste-linux
 pkgver='0.2.1'
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Run KONAMI Amusement Game Station (Konaste) games using Wine"
 arch=('x86_64')
@@ -17,8 +17,8 @@ optdepends=(
 	"gamemode: run with better performance (--gamemode)"
 	"gamescope: run games through a gamescope (--gamescope)"
 	"mangohud: enable performance overlay (--mangohud)"
-	"kdialog: dialog handling (Qt-based distros)"
-	"zenity: dialog handling (GTK-based distros)"
+	"kdialog: dialog handling (Qt-based DEs)"
+	"zenity: dialog handling (GTK-based DEs)"
 	)
 provides=()
 conflicts=()
