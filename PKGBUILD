@@ -2,8 +2,8 @@
 # Contributor: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
 pkgname=boatswain
-pkgver=0.4.0
-pkgrel=2
+pkgver=5.0
+pkgrel=1
 pkgdesc='Control Elgato Stream Deck devices'
 arch=(x86_64)
 url='https://gitlab.gnome.org/World/boatswain'
@@ -22,7 +22,7 @@ makedepends=(
   glib2-devel
   gobject-introspection
 )
-_commit=c7049d3d # tags/0.4.0
+_commit=d05c7332 # tags/5.0
 source=("git+${url}.git#commit=$_commit")
 sha1sums=('SKIP')
 
