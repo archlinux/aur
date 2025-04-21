@@ -3,8 +3,8 @@
 pkgname=('rom-properties' 'rom-properties-gtk' 'rom-properties-kde')
 pkgbase=rom-properties
 pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers"
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.5
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
 license=('GPL-2.0-or-later')
@@ -12,6 +12,7 @@ makedepends=(
     'cairo'
     'cmake'
     'extra-cmake-modules'
+    'fmt'
     'gdk-pixbuf2'
     'gettext'
     'glib2-devel'
@@ -25,14 +26,27 @@ makedepends=(
     'libnautilus-extension'
     'pkgconf'
     'python'
+    'qt5-base'
     'qt6-base'
     'qt6-tools'
     'tinyxml2'
 )
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz")
-sha256sums=('a8db64378484560ebc935608d6ef0db78a0c81586a6967c1433d2043f2f24e34')
+source=(
+    "$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz"
+    "0001-cmake-gcc.cmake-Move-Wno-error-stringop-overread-her.patch"
+)
+sha256sums=(
+    'b501d5b0a3a8685471f77aee3cbbb3f092117a2195f12aa2fb964c00a09e1980'
+    '7b9b947d8176db252fd2f2f6bf27b21b0c9750622302401f8bea747fd063d289'
+)
 options=(!debug)
 
+
+prepare() {
+    cd "$pkgbase-$pkgver"
+    patch -p1 < "${srcdir}/0001-cmake-gcc.cmake-Move-Wno-error-stringop-overread-her.patch"
+
+}
 
 build() {
     cd "$pkgbase-$pkgver"
@@ -58,6 +72,7 @@ build() {
 package_rom-properties() {
     depends=(
         'curl'
+        'fmt'
         'gcc-libs'
         'glibc'
         'libjpeg-turbo'
