@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colour-contrast-analyser-bin
-_pkgname="Colour Contrast Analyser"
+_pkgname='Colour Contrast Analyser'
 _appname=cca
 pkgver=3.5.4
 _electronversion=31
-pkgrel=1
-pkgdesc="Helps you determine the legibility of text and the contrast of visual elements, such as graphical controls and visual indicators."
+pkgrel=2
+pkgdesc="Helps you determine the legibility of text and the contrast of visual elements, such as graphical controls and visual indicators.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="http://www.paciellogroup.com/resources/contrastanalyser/"
 _ghurl="https://github.com/ThePacielloGroup/CCAe"
@@ -24,16 +24,19 @@ source=(
 )
 sha256sums=('3d84896abbec26c914a2aae6a92f3f61ce5e444fb8e008e65a5bb7771fb12a83'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "s|@electronversion@|${_electronversion}|g" \
-        -e "s|@appname@|${pkgname%-bin}|g" \
-        -e "s|@runname@|app.asar|g" \
-        -e "s|@cfgdirname@|CCA|g" \
-        -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
-        -i "${srcdir}/${pkgname%-bin}.sh"
+prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/CCA/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|\"\/opt\/${_pkgname}\/${_appname}\"|${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
-        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    sed -i -e "
+        s/\"\/opt\/${_pkgname}\/${_appname}\"/${pkgname%-bin}/g
+        s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
