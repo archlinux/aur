@@ -3,7 +3,7 @@
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
 pkgver=2025.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -20,10 +20,12 @@ optdepends=('libappindicator-gtk3: tray icon')
 provides=('mullvad-vpn')
 conflicts=('mullvad-vpn')
 install='mullvad-vpn.install'
-source=('mullvad-vpn.sh')
+source=('mullvad-vpn.sh'
+        'apparmor_mullvad')
 source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
 source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_arm64.deb"{,.asc})
-sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
+sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
+            'a7b99f7acbb7f99c6ab8ecf5bb674310294c29a561d9bd7c531508841942cab3')
 sha256sums_x86_64=('9fa08d6e21637aa3a04fbd97d88282382a7186fef27d56f5e5d8fccb5f7f5e5d'
                    'SKIP')
 sha256sums_aarch64=('fa0dd44e22b23497bc8bccc6c920a8483de5d4aae5ddf4af8f9a248f6745db35'
@@ -36,6 +38,9 @@ package() {
 
   # Link to the GUI binary
   install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
+
+  # Fix syntax error in Apparmor profile
+  install -Dm644 "$srcdir/apparmor_mullvad" -t "$pkgdir/opt/Mullvad VPN/"
 
   # Symlink apparmor profile to allow Electron sandbox to work
   install -d "$pkgdir/etc/apparmor.d"
