@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=omicsViewer
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -49,8 +49,8 @@ optdepends=(
   r-unittest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('239148f41b6a545addcf27cf6489fe14')
-b2sums=('55141ad7fdbbec1bbb4d4987c97673803b796a74524cb749c58e2f565d72b8c7ab489628536b09f4980b1f30fcf860fefe3a05d1d374647af4f5c0625b2a809e')
+md5sums=('12f1ac1893426b899e6b4c57e3ad51be')
+b2sums=('90d3b495705fdc006b062764818e1ed2e3e2ede67a480be49711032dd49f0814f8ae59b08c05386dec0974831f79ef4f5afb9260527dce473734de7a2ce9ad5f')
 
 build() {
   mkdir build
