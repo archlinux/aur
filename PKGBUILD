@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 options=('!strip')
 depends=()
 source=("LICENSE.txt")
-source_x86_64=("${_pkgname}-_amd64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_v${pkgver}_amd64.deb")
-source_aarch64=("${_pkgname}-_arm64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_v${pkgver}_arm64.deb")
+source_x86_64=("${_pkgname}-_amd64.deb::https://releases.warp.dev/stable/"v${_pkgver}"/warp-terminal_v${pkgver}_amd64.deb")
+source_aarch64=("${_pkgname}-_arm64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_v"${pkgver}"_arm64.deb")
 
 
 
