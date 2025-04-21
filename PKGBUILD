@@ -1,8 +1,6 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2-7tv'
 pkgname="${_pkgname}-bin"
-provides=chatterino
-conflicts=chatterino
 pkgver=7.5.3
 pkgrel=2
 scdir=$_pkgname
@@ -17,8 +15,8 @@ makedepends=('binutils' 'patchelf')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(chatterino)
+conflicts=(chatterino)
 source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/Seventv/chatterino7/releases/download/v$pkgver/Chatterino-Ubuntu-22.04-Qt6.deb")
 
 package() {
