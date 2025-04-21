@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rprimer
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('644134f1fa3fa1f38156cbbae27ef3f4')
-b2sums=('6c647b5343ada02523f99a07242af19f0c441998f3924dd3230b31745ae98471b53de96a4bcfc0494d35d3908f332b940071f3e3435695167e8a89bb16cbe2f5')
+md5sums=('4b79cc86ddef201b9899d3016cec3ec2')
+b2sums=('80b67d20b851d9c704ff58216d021a0be4b4892df11b31bb28ff179d3048bef33afc8b45f5ddc14f585cef0d2ebde240e36299f4301433191a7e1b027e3b9173')
 
 build() {
   mkdir build
