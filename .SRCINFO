@@ -1,0 +1,16 @@
+pkgbase = python-snakemake-interface-logger-plugins
+	pkgdesc = Snakemake Logger Plugin Interface
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/snakemake/snakemake-interface-logger-plugins
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-snakemake-interface-common
+	source = snakemake-interface-logger-plugins-1.2.3.tar.gz::https://github.com/snakemake/snakemake-interface-logger-plugins/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = b2cf926f06bc73f97a82cf7713f4f607f8735f128be3465ad1badfa8b9a04bb4
+
+pkgname = python-snakemake-interface-logger-plugins
