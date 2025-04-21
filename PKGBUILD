@@ -16,8 +16,8 @@ depends=('brotli' 'gettext' 'gmp' 'gnutls' 'iptables' 'jansson'
          'libcurl-gnutls' 'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd'
          'libsodium' 'libtool' 'libunistring' 'miniupnpc' 'nss' 'openssl'
          'sqlite' 'which' 'zlib')
-makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'postgresql'
-             'python' 'python-sphinx' 'python-sphinx-multiversion'
+makedepends=('bluez-libs' 'libpulse' 'libtool' 'meson' 'opus' 'pkgconfig'
+             'postgresql' 'python' 'python-sphinx' 'python-sphinx-multiversion'
              'python-sphinx_rtd_theme')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'

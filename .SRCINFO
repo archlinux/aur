@@ -10,6 +10,7 @@ pkgbase = gnunet
 	makedepends = bluez-libs
 	makedepends = libpulse
 	makedepends = libtool
+	makedepends = meson
 	makedepends = opus
 	makedepends = pkgconfig
 	makedepends = postgresql
