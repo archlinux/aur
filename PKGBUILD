@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-_pkgver=1.16.3
-_subver=3
+_pkgver=1.16.4
+_subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=33
 _nodeversion=22
@@ -32,12 +32,13 @@ makedepends=(
     'npm'
     'nvm'
     'pnpm'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}-${_subver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('47eec0a7d4b829bdb7943d92d1de897e84fe899087330b8221ae153c3a785377'
+sha256sums=('66a1bd898827c972a0d91cb8070f1abd8ccd985819e47ca19e2788391b188e43'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -54,8 +55,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
-    cd "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}"
-    electronDist="/usr/lib/electron${_electronversion}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -81,7 +81,8 @@ prepare() {
     NODE_ENV=development    pnpm install
 }
 build() {
-    cd "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     sh tools/update-bilibili
     sh tools/fix-other.sh
     sh tools/area-unlimit.sh
@@ -89,13 +90,13 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/app/"{app.asar.unpacked,extensions} "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/app/"{app.asar.unpacked,extensions} "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/res/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/res/icons/${_icons}.png" \
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/res/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644  "${srcdir}/${pkgname}-linux-${_pkgver}-${_subver}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644  "${srcdir}/${pkgname}-${pkgver}/license" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
