@@ -10,7 +10,7 @@ pkgname=(
   ppsspp-assets
 )
 pkgver=1.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -50,8 +50,8 @@ source=(
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/RetroAchievements/rcheevos.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
-  ppsspp-sdl.desktop
-  ppsspp-qt.desktop
+  PPSSPPSDL.desktop
+  PPSSPPQt.desktop
 )
 b2sums=('2cb74ec040e68c84701d48c2cdad7926d0a6660be3e8a7e9cc265788bdcc050375ad04d13c7750fa06a4e2f201c58fcb4886f849780f4b194c494afe3e5821e3'
         'SKIP'
@@ -103,6 +103,7 @@ build() {
   cmake -S ppsspp -B build-sdl -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DHEADLESS=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
@@ -115,6 +116,7 @@ build() {
   cmake -S ppsspp -B build-qt -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DHEADLESS=OFF \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DUSE_SYSTEM_LIBZIP=ON \
@@ -153,8 +155,8 @@ package_ppsspp() {
   install -dm 755 "${pkgdir}"/usr/share/icons
   cp -dr --no-preserve=ownership ppsspp/icons/hicolor "${pkgdir}"/usr/share/icons/
   install -Dm 644 ppsspp/icons/icon-512.svg "${pkgdir}"/usr/share/pixmaps/ppsspp.svg
-  install -Dm 644 ppsspp-sdl.desktop -t "${pkgdir}"/usr/share/applications/
-  install -Dm 644 ppsspp-qt.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm 644 PPSSPPSDL.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm 644 PPSSPPQt.desktop -t "${pkgdir}"/usr/share/applications/
 }
 
 package_ppsspp-assets() {
