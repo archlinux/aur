@@ -26,9 +26,9 @@ pkgbase = readest
 	depends = pango
 	depends = webkit2gtk-4.1
 	depends = gst-plugins-good
-	provides = readest
-	conflicts = readest
 	conflicts = readest-bin
+	conflicts = readest-deb
+	conflicts = readest-git
 	options = !lto
 	source = git+https://github.com/readest/readest.git#tag=v0.9.36
 	sha256sums = SKIP

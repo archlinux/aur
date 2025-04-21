@@ -25,8 +25,7 @@ depends=(
   'gst-plugins-good'
 )
 makedepends=('git' 'openssl' 'librsvg' 'pnpm' 'nodejs' 'rust')
-provides=('readest')
-conflicts=('readest' 'readest-bin')
+conflicts=('readest-bin' 'readest-deb' 'readest-git')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 options=(!lto)  # Disable Link Time Optimization. Otherwise build fails with some 'cc' linking error.
