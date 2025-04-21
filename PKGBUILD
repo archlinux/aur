@@ -2,12 +2,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=13.3.1016.4
+pkgver=13.4.1000.42
 pkgrel=1
 pkgdesc="360 Browser stable version"
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://browser.360.net/gc/index.html"
 license=('LicenseRef-custom')
@@ -16,26 +16,23 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
     'alsa-lib'
-    'openssl-1.1'
     'gtk2'
     'gtk3'
     'nss'
-    'libpulse'
-    'libusb'
     'dmidecode'
 )
 install="${pkgname%-bin}.install"
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_amd64.deb")
-sha256sums_aarch64=('2bb1bb26d7836af73a857f8823d74b520c130b73f4d7928276c1af1b1de07968')
-sha256sums_x86_64=('5b82d586a7cf0deae943620bf8cb296a417db815cf6db92622f9d719815570b8')
-build() {
+sha256sums_aarch64=('2eb81bd07d431370abfdd63a72990623f873da0f8c082a63c23e59ff687201da')
+sha256sums_x86_64=('6e3390991cfce80238c45583681119bec0145699a8b59577d027347b8dc53186')
+prepare() {
     bsdtar -xf "${srcdir}/data."*
     rm -rf "${srcdir}/opt/apps/${_pkgname}/info" \
            "${srcdir}/opt/apps/${_pkgname}/entries/autostart"
 }
 package() {
-    cp -r "${srcdir}/opt" "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt" "${pkgdir}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/files/components/professional.qcert" -t "${pkgdir}/var/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/files/components/professional.qcert" -t "${pkgdir}/apps-data/private/${_pkgname}"
     for _icons in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
