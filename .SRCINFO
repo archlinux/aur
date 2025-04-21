@@ -1,6 +1,6 @@
 pkgbase = r-anvilbilling
 	pkgdesc = Provide functions to retrieve and report on usage expenses in NHGRI AnVIL (anvilproject.org).
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/AnVILBilling
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-anvilbilling
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVILBilling_1.16.0.tar.gz
-	sha256sums = 26b42f0835b690a75acc4b6806f5751c321bb7ba9923f3a7f4d68660034ef2bc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/AnVILBilling_1.18.0.tar.gz
+	sha256sums = 00efa403b0def81319c79c689a97b78e75db77ac566e6221c20fcdbe45aab377
 
 pkgname = r-anvilbilling
