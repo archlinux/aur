@@ -3,8 +3,8 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-dbus-glib
-pkgver=0.112
-pkgrel=3
+pkgver=0.114
+pkgrel=1
 pkgdesc='GLib bindings for DBUS'
 arch=(x86_64)
 license=(GPL)
@@ -22,10 +22,10 @@ makedepends=(
   lib32-expat
   python
 )
-_tag=f16a4ec9a37d067aea4772ce35ae5b88d9416cab
+_tag=623a4f3386a675060335e20afd810c6e10ae2cc8
 source=(git+https://gitlab.freedesktop.org/dbus/dbus-glib.git#tag=${_tag})
 validpgpkeys=(DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90) # Simon McVittie <smcv@collabora.com>
-b2sums=(SKIP)
+b2sums=('54a1ac02b863520fbda6d23d30fcce19c1adb9b55ea46afc399c6d4ef8660766fd39e804be56e5010b5d1fa7a24131a247ef3bbcd8d49cf3a8373c28b9d77e7c')
 
 prepare() {
   cd dbus-glib
