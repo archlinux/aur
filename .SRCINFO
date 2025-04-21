@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-termfilechooser-boydaihungst-git
 	pkgdesc = xdg-desktop-portal backend for your favorite terminal file chooser (boydaihungst fork)
-	pkgver = r99.2f56b57
+	pkgver = r65.7e8de01
 	pkgrel = 1
 	url = https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser
 	arch = x86_64

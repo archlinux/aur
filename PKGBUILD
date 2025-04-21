@@ -10,7 +10,7 @@
 # Keywords: portal xdg-desktop-portal terminal
 
 pkgname=xdg-desktop-portal-termfilechooser-boydaihungst-git
-pkgver=r99.2f56b57
+pkgver=r65.7e8de01
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for your favorite terminal file chooser (boydaihungst fork)'
 url="https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser"

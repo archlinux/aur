@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+src/
+xdg-desktop-portal-termfilechooser-boydaihungst-git/
 # C extensions
 *.so
 *.zst
