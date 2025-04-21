@@ -1,0 +1,12 @@
+diff -upr streamripper_orig/lib/http.c streamripper/lib/http.c
+--- streamripper_orig/lib/http.c	2025-03-30 22:37:23.251411000 +0200
++++ streamripper/lib/http.c	2025-03-30 22:55:21.959745796 +0200
+@@ -60,7 +60,7 @@ http_sc_connect(
+     SR_HTTP_HEADER *info,
+     char *useragent,
+     char *if_name) {
+-	char headbuf[MAX_HEADER_LEN];
++	char headbuf[MAX_HEADER_LEN + MAX_HOST_LEN + SR_MAX_PATH];
+ 	URLINFO url_info;
+ 	int ret;
+ 

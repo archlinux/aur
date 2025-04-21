@@ -1,7 +1,7 @@
 pkgbase = streamripper
 	pkgdesc = Records and splits streaming mp3 into tracks
 	pkgver = 1.64.6+56+a5597af
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://streamripper.sourceforge.net
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = streamripper
 	depends = faad2
 	depends = libvorbis
 	source = git+https://github.com/Magentron/streamripper#commit=a5597af77b942b97cacb207929043c9aac0b756e
+	source = fixheaderbufsize.patch
 	sha256sums = be6711fa28351a8f2165cff41b7afd253ccbf910cf342d253c53511a37966e60
+	sha256sums = 8f11597db7c59bea23c0f648483b5af4af3d652962290e63a24ce6e0e6712cba
 
 pkgname = streamripper
