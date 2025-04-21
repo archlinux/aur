@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=realm-studio-bin
-_pkgname="Realm Studio"
+_pkgname='Realm Studio'
 pkgver=20.0.0
 _electronversion=27
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool, any developer or system administrator would use when building and maintaining their app built on the Realm Mobile Platform.'
 arch=('x86_64')
 url="https://realm.io/products/realm-studio/"
@@ -24,17 +24,19 @@ source=(
 )
 sha256sums=('74043465b63c5f5f2f4609b9d876e3790d5028201207200991c0a7152cbfbb14'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${_pkgname}/
         s/@options@//
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+    	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s/AppRun --no-sandbox/${pkgname%-bin}/" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
