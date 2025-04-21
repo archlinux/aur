@@ -1,6 +1,6 @@
 pkgbase = r-breakpointr
 	pkgdesc = Find breakpoints in Strand-seq data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/breakpointR
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-breakpointr
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/breakpointR_1.24.0.tar.gz
-	sha256sums = 40ddef289854245b4a4561445698a488b04a5e0772a367d5d277ceddc0c82575
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/breakpointR_1.26.0.tar.gz
+	sha256sums = c51aa970645b932a739d782a464c3e4aec73768ac0a5ecc99589970aa0d0568b
 
 pkgname = r-breakpointr
