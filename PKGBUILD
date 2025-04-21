@@ -3,7 +3,7 @@
 pkgname=sxwm
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Tiling window managers dont have to be difficult"
+pkgdesc="Tiling window managers don't have to be difficult"
 arch=('i686' 'x86_64')
 url="https://github.com/uint23/sxwm"
 license=('MIT')
