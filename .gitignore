@@ -2,4 +2,5 @@
 /src/
 /*.zst
 /*.rpm
+/ifcx64.cfg
 
