@@ -5,14 +5,13 @@
 # Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=codelite-bin
-pkgver=17.0
+pkgver=18.1.0
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=(x86_64)
 url="https://codelite.org/"
 license=(GPL2)
 depends=(webkit2gtk gtk3 gcc-libs
-        libtiff5
         )
 optdepends=( 'graphviz: callgraph visualization'
              'gcc: compiler'
@@ -23,10 +22,9 @@ optdepends=( 'graphviz: callgraph visualization'
             )
 provides=(codelite)
 conflicts=(codelite)
-source_x86_64=("https://repos.codelite.org/ubuntu/pool/universe/c/codelite/codelite_${pkgver}-1unofficial.jammy_amd64.deb")
-sha256sums_x86_64=('245b7e9be74f56e43ce04add4db72c9af253a396d7c14a0996cf468741e50fd0')
+source_x86_64=("https://repos.codelite.org/ubuntu-18.1/pool/universe/c/codelite/codelite_${pkgver}-1unofficial.noble_amd64.deb")
+sha256sums_x86_64=('175b7143857f465909a99310e0273b20d9f78c9b2af7506d2ebd911cb5d10736')
 
 package() {
   bsdtar -xf ${srcdir}/data.tar.zst -C ${pkgdir}/
-
 }
