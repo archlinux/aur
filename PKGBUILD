@@ -16,40 +16,25 @@ source=("$pkgname::git+$url" fix-tests.patch)
 sha256sums=('SKIP'
             '33a28897eda38828c197a6f31e0415a8804209c40f698ca5b5201b7660b65985')
 
-# Necessary since upstream, seemingly abandoned, has forgotten to tag the 1.0.2
-# release it cut
-_bumpTag() {
-    cd "${srcdir}/$pkgname"
-    local version oldVer verCmd _verCmd
-
-    verCmd=(python -c 'import setuptools; setuptools.setup()' --version)
-
-    git stash &> /dev/null
-    version="$("${verCmd[@]}")"
-    oldVer="$(git describe --abbrev=0)"
-    if test "$version" != "$oldVer"; then
-        printf -v _verCmd '%q ' "${verCmd[@]}"
-        printf 'test "$(%s)" != %s\n' "$_verCmd" "$version" > bisector.sh
-        chmod 755 bisector.sh
-        git bisect start
-        git bisect new
-        git bisect old "$oldVer"
-        git bisect run ./bisector.sh
-        git tag -f "$version"
-        git bisect reset
-    fi &> /dev/null
-
-    git describe --long --tags --abbrev=7
-    git stash pop &> /dev/null
-}
-
 pkgver() {
-    _bumpTag | sed -E 's/^[^0-9]*//;s/-([^-]*-g)/.r\1/;s/-/./g'
+    cd "${srcdir}/$pkgname"
+
+    git describe --long --tags --abbrev=7 \
+        | sed -E 's/^[^0-9]*//;s/-([^-]*-g)/.r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${srcdir}/$pkgname"
-    patch -p1 -i ../fix-tests.patch
+
+    # Necessary since upstream, seemingly abandoned, has forgotten to tag the
+    # 1.0.2 release it cut
+    declare -A untagged_releases
+    untagged_releases['1.0.2']='8664f8e3186ecb0dfdfa057787dc9a6f426ed32c'
+    for v in "${!untagged_releases[@]}"; do
+        git tag -f "$v" "${untagged_releases[$v]}"
+    done
+
+    patch -p1 < ../fix-tests.patch
 }
 
 build() {
