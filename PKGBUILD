@@ -1,11 +1,12 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='slrn-snapshot'
 _pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=7
+pkgrel=8
 pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
@@ -14,17 +15,14 @@ makedepends=('uudeview>=20230502')
 depends=('glibc' 'openssl' 'sh' 'slang')
 provides=('slrn')
 conflicts=('slrn')
-backup=(etc/slrnrc)
-options=('!makeflags' 'docs' 'zipman' 'lto')
-source=("https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz")
+backup=('etc/slrn/slrn.rc' 'etc/slrn/slrnpull.conf')
+options=('!makeflags' 'docs' 'zipman')
+source=("$url${_pkgname}-${_prever}.tar.gz")
 sha256sums=(
   '827d01c529c658492e45a376b99495a932d0d6be1e8e207df6f0062a25f1cff8'
 )
 sha512sums=(
   '05c05f523565d7af3936f98665a85a1cb0589f4b25dd4a957bcd309293a50c9d624104cca86dae28e37d56243af6296e237214cb767ba2418c21265d91381a5a'
-)
-b2sums=(
-  '667654876dfb087da62288d646a78454a3387e65555e56d34835b9bd6dfe3cf47d5e61ef52e3b11b2df377660db271d1a74e4e986fa826f475cf2bd51ddf6a5d'
 )
 
 prepare() {
@@ -42,17 +40,6 @@ prepare() {
 #   env SLRN_NO_UU=true makepkg
 build() {
   cd "$_pkgname-$_prever"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   case "$SLRN_NO_UU" in
     [Tt][Rr][Uu][Ee] | [Yy][Ee][Ss] | [Tt] | [Yy] | 1 )
@@ -89,8 +76,10 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 COPYRIGHT   "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
-  install -Dm0644 doc/slrn.rc "$pkgdir/etc/slrnrc"
+  install -vDm0644 -t "$pkgdir/etc/slrn/" \
+    doc/slrn.rc doc/slrnpull/slrnpull.conf
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    COPYRIGHT
 }
 
 # eof
