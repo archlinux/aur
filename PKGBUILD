@@ -37,7 +37,7 @@ package() {
   touch "$pkgdir/opt/$pkgname/disable_update"
 
   # Use configs in home dir
-  touch "$pkgdir/opt/opt/occt/app_folder_in_home"
+  touch "$pkgdir/opt/occt/app_folder_in_home"
 
   # Add symlink for easier execution and detection
   install -d "$pkgdir/usr/bin"
