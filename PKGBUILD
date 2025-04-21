@@ -17,7 +17,7 @@ url='https://github.com/themix-project/gnome-colors-icon-theme'
 license=('GPL2')
 conflicts=('gnome-colors-icon-theme-extras')
 replaces=('gnome-colors-icon-theme-extras')
-makedepends=('git' 'librsvg' 'imagemagick')
+makedepends=('git' 'librsvg' 'imagemagick' 'python-numpy')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('0c7d90e84146fdccea3b895926345121ebd5ebba659b21770ea88c506766e6ce')
 

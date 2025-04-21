@@ -8,6 +8,7 @@ pkgbase = gnome-colors-icon-theme
 	makedepends = git
 	makedepends = librsvg
 	makedepends = imagemagick
+	makedepends = python-numpy
 	conflicts = gnome-colors-icon-theme-extras
 	replaces = gnome-colors-icon-theme-extras
 	source = gnome-colors-icon-theme-5.5.6.tar.gz::https://github.com/themix-project/gnome-colors-icon-theme/archive/5.5.6.tar.gz
