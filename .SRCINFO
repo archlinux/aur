@@ -1,7 +1,7 @@
 pkgbase = quazip-legacy
 	pkgdesc = Symlinks for legacy quazip layout by quazip-qt5
-	pkgver = 0.9.1
-	pkgrel = 3
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://stachenov.github.io/quazip/
 	arch = x86_64
 	license = LGPL
