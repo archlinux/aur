@@ -1,4 +1,4 @@
-# Maintainer: Nikhil Iyer <iyer.h.nikhil@gmail.com>
+# Maintainer: Nikhil Iyer <iyer.h.nikhil at gmail dot com>
 
 _pkgname="nhost"
 pkgname=$_pkgname-git # '-bzr', '-git', '-hg' or '-svn'
