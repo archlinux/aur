@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=shinymeta
-_pkgver=0.2.0.3
+_pkgver=0.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Export Domain Logic from Shiny using Meta-Programming"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -40,8 +40,8 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5452325a791296ba7fb6725d937f9fb0')
-b2sums=('47de2bc551ac73dae79ce8c297f1741216049f502f88ea3e1f1e170e8352f79bc36805947f7de533e09cc6bee4850ef7484b867193bdca02f7a781fdf98f8441')
+md5sums=('e037bae6ddfd43052402e2fc50a2faf4')
+b2sums=('d2448f521d3301da5248758921ef4bde75e1459b073e3498ebeb673a3c73702ed8431574070723c10f026a8988ed9f17d9ae5944f4d311a6c2b3c3dbe3625fbe')
 
 build() {
   mkdir build
