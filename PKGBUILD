@@ -108,10 +108,11 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   # tools
-  install -Dm755 FreeCAD/src/Tools/{freecad-thumbnailer,fcinfo} -t "$pkgdir/usr/bin/"
+  install -Dm755 FreeCAD/src/Tools/fcinfo -t "$pkgdir/usr/bin/"
 
   # symlinks
   install -d "$pkgdir/usr/bin"
+  ln -sf /usr/lib/freecad/bin/freecad-thumbnailer "$pkgdir/usr/bin/freecad-thumbnailer"
   ln -sf /usr/lib/freecad/bin/FreeCAD "$pkgdir/usr/bin/freecad"
   ln -sf /usr/lib/freecad/bin/FreeCAD "$pkgdir/usr/bin/FreeCAD"
   ln -sf /usr/lib/freecad/bin/FreeCADCmd "$pkgdir/usr/bin/freecadcmd"
