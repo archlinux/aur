@@ -2,11 +2,11 @@
 pkgname=buttercup-desktop-git
 _appname=Buttercup
 _pkgname="${_appname} Password Manager"
-pkgver=2.28.1.r2.g48f9e20
+pkgver=2.28.1.r3.gcb98fe7
 _electronversion=22
 _nodeversion=18
 pkgrel=1
-pkgdesc="🔑 Cross-Platform Passwords & Secrets Vault.Use system-wide electron."
+pkgdesc="🔑 Cross-Platform Passwords & Secrets Vault.(Use system-wide electron)"
 arch=(
     'aarch64'
     'armv7h'
@@ -24,8 +24,6 @@ makedepends=(
     'npm'
     'git'
     'nvm'
-    'gcc'
-    'cmake'
     'gendesk'
     'curl'
 )
@@ -47,18 +45,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -78,6 +75,10 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build --openssl_fips=''
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }

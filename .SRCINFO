@@ -1,6 +1,6 @@
 pkgbase = buttercup-desktop-git
-	pkgdesc = 🔑 Cross-Platform Passwords & Secrets Vault.Use system-wide electron.
-	pkgver = 2.28.1.r2.g48f9e20
+	pkgdesc = 🔑 Cross-Platform Passwords & Secrets Vault.(Use system-wide electron)
+	pkgver = 2.28.1.r3.gcb98fe7
 	pkgrel = 1
 	url = https://buttercup.pw/
 	arch = aarch64
@@ -10,8 +10,6 @@ pkgbase = buttercup-desktop-git
 	makedepends = npm
 	makedepends = git
 	makedepends = nvm
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron22
