@@ -1,7 +1,7 @@
 pkgbase = r-shiny
 	pkgdesc = Web Application Framework for R
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=shiny
 	arch = any
 	license = GPL-3.0-only AND MIT AND BSD-3-Clause AND Apache-2.0 AND GPL-2.0-or-later
