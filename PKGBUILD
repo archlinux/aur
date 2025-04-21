@@ -6,8 +6,8 @@ pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=1.5.0.r0.g4859b8f
-pkgrel=2
-pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
+pkgrel=3
+pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
 license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
@@ -24,6 +24,14 @@ makedepends=(
   'python-maturin'
   'python-setuptools'
   'python-wheel'
+)
+optdepends=(
+  'httpbin: needed to run the examples in the doc directory'
+  'python-asgiref: needed to run the examples in the doc directory'
+  'python-dnslib: needed to run the examples in the doc directory'
+  'python-starlette: needed to run the examples in the doc directory'
+  'python-uvloop: needed to run the examples in the doc directory'
+  'python-wsproto: needed to run the examples in the doc directory'
 )
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
@@ -54,8 +62,8 @@ build() {
       export CC=/usr/bin/gcc
       export CXX="$CC"
       export CMAKE_POLICY_VERSION_MINIMUM=3.5
-      export CFLAGS=$(sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g' <<< "$CFLAGS")
-      export CXXFLAGS=$(sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g' <<< "$CXXFLAGS")
+      export CFLAGS="${CFLAGS//-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2}"
+      export CXXFLAGS="${CXXFLAGS//-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2}"
     ;;
   esac
 
