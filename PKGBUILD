@@ -8,28 +8,23 @@ pkgname=lib32-libshout
 _pkgname=libshout
 pkgver=2.4.6
 pkgrel=4
+epoch=1
 pkgdesc="Library for accessing a shoutcast/icecast server (32 bit)"
 arch=('x86_64')
 depends=('lib32-libvorbis' 'lib32-libtheora' 'lib32-speex' 'lib32-openssl' 'libshout')
-url="http://www.icecast.org/"
+url="https://www.icecast.org/"
 options=('!emptydirs')
 license=('LGPL')
 source=("https://downloads.xiph.org/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('4a66a369a01ce790e578221fa2c8ea60')
-sha256sums=('39cbd4f0efdfddc9755d88217e47f8f2d7108fa767f9d58a2ba26a16d8f7c910')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-  sed -e 's/SSLeay_add_all_algorithms/OpenSSL_add_all_algorithms/g' -i src/tls.c
-}
+sha512sums=('e8478cdbf9a27674c16a7b620d1576f2e31a47262b8e29b314d0f46d4e5be24b9a29790b7b226f48939bc34cacf5734fae0aa5686c7ed5879cdbd827ff8e0339')
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
   cd ${_pkgname}-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib32 --libexecdir=/usr/lib32
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib32
   make
 }
 
