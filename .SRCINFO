@@ -1,7 +1,7 @@
 pkgbase = nxshell-bin
-	pkgdesc = An easy to use new terminal.
+	pkgdesc = An easy to use new terminal.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.9.3
-	pkgrel = 8
+	pkgrel = 9
 	url = https://nxshell.github.io/
 	arch = x86_64
 	license = MIT
