@@ -7,7 +7,7 @@ url="https://neoforged.net"
 
 # See https://projects.neoforged.net/neoforged/neoforge to select a version
 
-pkgver=21.1.139 # Minecraft version 1.21.1
+pkgver=21.1.160 # Minecraft version 1.21.1
 pkgrel=1
 _licensever=1.21.x
 _srvpath="/opt"
@@ -35,8 +35,8 @@ source=("https://github.com/neoforged/NeoForge/blob/${_licensever}/LICENSE.txt"
         "neoforge-server.service"
         "eula.txt")
 noextract=("neoforge-${pkgver}-installer.jar")
-sha512sums=('d58816a4b2e52152fb1623d5827721860c996abc1ceae3170e2d36afe06886c74baec2fb5c78d0ed348048608b0c8575cfcfc6f62759a75a8fa40413cc362824'
-            '1ef14690f3c2f54e549f896b487a5149e011db7a05bfeb3b292c62321ff662d00f0c5fb0c281a61e8f8500b5b7d6012f43b6a54fd0723794ff6fbaed9b7500aa'
+sha512sums=('341d8fa6ba452d529943731e9559ae0ebb573ccb574a46ab1d59d31b83e6af87ccd5237be9935a9022f100bfe88808ff8c6be3bf8147b21d4a7064ec31f31a28'
+            '2e2291b727605b9362acddb09026264939f01222fdc244cd0a49ad7843d26ba69418d6d484265bae7ea535a6e4515dde429ca7fa2a693e98087320ba1087039e'
             '51dd56ffa9d6f21f829cdee7f75602f14769ad5ffdd89e4c1700ad0bfd393224a179fcd6cb58a8f94015860d1113047f8058883ee8479a9147666da64576cf39'
             '68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb')
 
