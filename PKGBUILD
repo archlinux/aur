@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=krillinai-bin
 _pkgname=KrillinAI
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A video translation and dubbing tool powered by LLMs, offering professional-grade translations and one-click full-process deployment.It can generate content optimized for platforms like YouTube，TikTok, and Shorts.(Prebuilt version)"
 arch=(
@@ -25,13 +25,18 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64::${url}/releases/download/v${
 source_i686=("${pkgname%-bin}-${pkgver}-i686::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64")
 sha256sums=('c2f175b895e0fcb0eb74f992ad29a5f91cc99fb4b677dbbbec3b71473b15a68d'
-            'c500afc089ce0778f5e41f274262b75622b95ab81777aaf308262fc992cd2925'
-            'f002084478263763a36a01a0bac6eb7d09b64d82321b5639c97e73121e58f495')
-sha256sums_aarch64=('31dfd62465c8c7b2e51ea5df6a41aecc28b0e07199be1a8a7f6a99a1d32e0eb4')
-sha256sums_i686=('6362d9286e957781879f254ed0833f69b5e9dff4d136c1a5e31eb2e5412f6f2a')
-sha256sums_x86_64=('a7b3971fc7f46559ed13ec6c9c3432a120dc7f746a5c25835fb6ca73ce19650a')
+            'f359c7dac24eda3abadb0998af3b3bbf5223b8b43f6b0d9c3b0411ca9fd8d2db'
+            '6d2ba1f4c62d540a1c486c0e4ecd5b4c02c64902538a481e57abd1d7cac5524e')
+sha256sums_aarch64=('ad11e0b8a00e37a053cd32e29fe1f5a5e66b751b9960dd2ce12c2f6c7dcbdb84')
+sha256sums_i686=('122269589012d36286cedd7a0d924d27c33401ec6d7beece72efccf3c1f136f5')
+sha256sums_x86_64=('80ad6132af85b108ff1f0a6f006797a3eaca98b4b6cf1177cc1381a3dea89ba9')
 prepare() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}"
