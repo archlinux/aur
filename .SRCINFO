@@ -1,6 +1,6 @@
 pkgbase = emulationstation-git
 	pkgdesc = Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes. Active fork by the RetroPie project.
-	pkgver = 2.4.1.r503.gc9b3f5b6
+	pkgver = 2.4.1.r856.g3f96d34e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/RetroPie/EmulationStation
@@ -13,11 +13,10 @@ pkgbase = emulationstation-git
 	makedepends = cmake
 	makedepends = rapidjson
 	depends = freeimage
-	depends = vlc
+	depends = libvlc
 	depends = curl
 	provides = emulationstation
-	source = git://github.com/RetroPie/EmulationStation.git
+	source = git+https://github.com/RetroPie/EmulationStation.git
 	md5sums = SKIP
 
 pkgname = emulationstation-git
-

@@ -7,14 +7,14 @@ pkgname=emulationstation-git
 _gitname=EmulationStation
 pkgrel=1
 epoch=1
-pkgver=2.4.1.r503.gc9b3f5b6
+pkgver=2.4.1.r856.g3f96d34e
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes. Active fork by the RetroPie project."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
 makedepends=('git' 'cmake' 'rapidjson')
-depends=('freeimage' 'vlc' 'curl')
-source=('git://github.com/RetroPie/EmulationStation.git')
+depends=('freeimage' libvlc 'curl')
+source=('git+https://github.com/RetroPie/EmulationStation.git')
 md5sums=('SKIP')
 provides=('emulationstation')
 
@@ -34,6 +34,7 @@ build() {
     cd "$srcdir/$_gitname/build"
     cmake ..\
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_BUILD_TYPE=RELEASE
     make
 }
