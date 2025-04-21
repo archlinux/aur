@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=animalcules
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -51,8 +51,8 @@ optdepends=(
   r-usethis
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b83ed641e1cda8184dcd9d7616199043')
-b2sums=('d87772b62ddafb63539f2f91acfef1120f3ff1f6bf8f4bacf948b35afb8cf4606a9ab1ed88184c9950f626f4276e0782b03455dffeb3150715e162f6f2258b20')
+md5sums=('e000498fb927187c87a43d19f5c3e422')
+b2sums=('128dd5d3f88b6cf5fc29759067e43ddc754cfa4d1d30d6c5ef8c915bf010d7962f8d8425aca3951257fd50d3f4baddb9f2967d7adfbb47755e2de7de80da28f8')
 
 build() {
   mkdir build
