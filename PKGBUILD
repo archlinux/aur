@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli
 _pkgname=Ueli
-pkgver=9.21.1
+pkgver=9.22.0
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('a6787dee5853fd5845cc9955c94de0c37dfdb6adfd22e903de8d24f4ec474a1c'
+sha256sums=('3fd3437090963896ef2484fc05d880bc9d301f6e9466a11df8c25f555344f1b6'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
