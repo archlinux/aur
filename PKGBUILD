@@ -9,7 +9,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/surfzoid/QtVsPlayer"
-license=("GPL-3.0-only")
+license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
