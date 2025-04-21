@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson "${pkgname%-git}" build -Dlinters=disabled -Dtests=disabled
+    arch-meson "${pkgname%-git}" build -Dtests=disabled
 
     # gtk-builder-tool needs X or Wayland
     LIBGL_ALWAYS_SOFTWARE=1 xvfb-run --auto-display --server-args=-noreset --wait=0 -- meson compile -C build
