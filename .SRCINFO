@@ -1,7 +1,7 @@
 pkgbase = bc-gh
 	pkgdesc = Implementation of dc and POSIX bc with GNU extensions
 	pkgver = 7.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gavinhoward/bc
 	changelog = bc-gh.changelog
 	arch = aarch64
@@ -16,7 +16,6 @@ pkgbase = bc-gh
 	provides = bc
 	provides = dc
 	conflicts = bc
-	options = lto
 	options = !makeflags
 	source = bc-gh-7.0.3.tar.xz::https://github.com/gavinhoward/bc/releases/download/7.0.3/bc-7.0.3.tar.xz
 	source = bc-gh-7.0.3.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/7.0.3/bc-7.0.3.tar.xz.sig
