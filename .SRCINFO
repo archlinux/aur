@@ -1,6 +1,6 @@
 pkgbase = r-structtoolbox
 	pkgdesc = Data processing & analysis tools for Metabolomics and other omics
-	pkgver = 1.18.2
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/structToolbox
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-structtoolbox
 	optdepends = r-ropls
 	optdepends = r-rtsne
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/structToolbox_1.18.2.tar.gz
-	sha256sums = a961b30bc15599e9b8a76f0a778846c3bebb85d5384225aea4c2f2e253beade1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/structToolbox_1.20.0.tar.gz
+	sha256sums = b751dc2cde21615733b43fd4988b418962e9b89e2744125de02160a3065fc0f3
 
 pkgname = r-structtoolbox
