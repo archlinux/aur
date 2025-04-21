@@ -1,5 +1,5 @@
 pkgname=hostman-git
-pkgver=1.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
+pkgver=1.0.0.r3.gaa3bacf
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services (latest commit)"
 arch=('x86_64')
@@ -14,7 +14,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/hostman"
-  printf "%s.r%s.g%s" "$(grep -Po '(?<=VERSION )[0-9.]+' CMakeLists.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.g%s" \
+    "$(grep -Po 'project\(hostman VERSION \K[0-9.]+' CMakeLists.txt)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
