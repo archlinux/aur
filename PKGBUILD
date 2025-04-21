@@ -6,7 +6,7 @@ pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 pkgver=1.5.0.r0.g4859b8f
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (built from latest git commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
@@ -14,7 +14,7 @@ license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
 depends=(
   'gcc-libs'
   'glibc'
-  'python>3.7'
+  'python'
 )
 makedepends=(
   'cmake'
@@ -51,8 +51,11 @@ build() {
       export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
     ;&  # fall through
     * )
-      export RUSTFLAGS="$RUSTFLAGS -C link-args=-Wl,-z,shstk"
+      export CC=/usr/bin/gcc
+      export CXX="$CC"
       export CMAKE_POLICY_VERSION_MINIMUM=3.5
+      export CFLAGS=$(sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g' <<< "$CFLAGS")
+      export CXXFLAGS=$(sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/g' <<< "$CXXFLAGS")
     ;;
   esac
 
