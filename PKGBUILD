@@ -1,7 +1,7 @@
 # Maintainer: David Campbell <dcampbell24@gmail.com>
 
 pkgname=hnefatafl-copenhagen
-pkgver=0.13.1
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
@@ -11,11 +11,11 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "pandoc" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v0.13.1.tar.gz")
-sha256sums=("b6d88368cba2d1882075a888ac30ca3d4de332be67465fa06a24fca5c78ec919")
+source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v0.13.4.tar.gz")
+sha256sums=("f9b7a979d2d14c91d11a5c06ef91cfba5701c060be098cd8eb694f215f88bd7f")
 
 build() {
-    tar -xvzf v0.13.1.tar.gz
+    tar -xvzf v0.13.4.tar.gz
     cd "$pkgname-$pkgver"
     cargo build --release --bin hnefatafl-client --features client
 
@@ -45,9 +45,6 @@ package() {
     install -Dm644 "packages/README.txt" "$pkgdir/usr/share/doc/hnefatafl-copenhagen/README.txt"
     install -Dm644 "packages/hnefatafl-client.1.gz" "$pkgdir/usr/share/man/man1/hnefatafl-client.1.gz"
     install -Dm644 "packages/hnefatafl-client.desktop" "$pkgdir/usr/share/applications/hnefatafl-client.desktop"
-    install -Dm644 "sound/capture.ogg" "$pkgdir/usr/share/hnefatafl-copenhagen/capture.ogg"
-    install -Dm644 "sound/game_over.ogg" "$pkgdir/usr/share/hnefatafl-copenhagen/game_over.ogg"
-    install -Dm644 "sound/move.ogg" "$pkgdir/usr/share/hnefatafl-copenhagen/move.ogg"
 }
 
 check() {
