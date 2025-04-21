@@ -7,7 +7,7 @@ _channel=beta
 _rel=1
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=1
+pkgrel=2
 _nodeversion=20
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
@@ -94,6 +94,9 @@ prepare() {
   nvm install "${_nodeversion}"
   npm ci --no-audit --no-fund
   popd
+
+  # Fix syntax error in Apparmor profile
+  git cherry-pick -n 2b20472a37831b8e43118bc8c5f0c3dc3de08a37
 }
 
 build() {
