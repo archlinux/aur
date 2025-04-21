@@ -1,6 +1,6 @@
-# Maintainer: Nicolas Hafner <shinmera@tymoon.eu>
+# Maintainer: Yukari Hafner <shinmera@tymoon.eu>
 pkgname=libmixed
-pkgver=2.0
+pkgver=2.3
 pkgrel=1
 epoch=0
 pkgdesc="A real-time audio processing library"
@@ -10,7 +10,7 @@ license=('zlib' 'BSD')
 groups=('pro-audio')
 options=(staticlibs)
 source=("https://github.com/Shirakumo/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('2022187c64b831c38f0841a3822803eae204eaf8')
+sha1sums=('d205cbd6783332a212c5ae92d73c77178c2d2f28')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver/build"
-  cmake ".." -DBUILD_EXAMPLES=OFF
+  cmake ".." -DBUILD_EXAMPLES=OFF -DBUILD_DOCS=OFF
   make
 }
 
