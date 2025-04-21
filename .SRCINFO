@@ -1,6 +1,6 @@
 pkgbase = swaystatus
 	pkgdesc = Generate a status line for swaybar
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://git.sr.ht/~jmcantrell/swaystatus
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = swaystatus
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/swaystatus/swaystatus-0.8.0.tar.gz
-	md5sums = e14a6c88f5062f3fe9d9f581491f7b30
+	source = https://files.pythonhosted.org/packages/source/s/swaystatus/swaystatus-0.9.0.tar.gz
+	md5sums = 142c5b1d78d444bcba34d9ee918d6484
 
 pkgname = swaystatus
