@@ -1,7 +1,7 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 pkgname=qdocumentview
-pkgver=0.3.0
+pkgver=0.3.0.1
 pkgrel=1
 pkgdesc="Simple widget to display paged documents, like PDF and DjVu"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ optdepends=(
            "libspectre: Postscript support"
 )
 source=("https://gitlab.com/extraqt/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('3781426dbc1a02b4b7ee014f5f09b58961fcc704da1ce3bdc3957ff038f1442d')
+sha256sums=('7c36332a03efbce9e581c3c46f3a487a6bf055c59ebc040472a42eaa0b147c73')
 
 build() {
   cd "${pkgname}-v${pkgver}"
