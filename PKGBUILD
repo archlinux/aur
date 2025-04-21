@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-bin
 _pkgname=Ueli
-pkgver=9.21.1
+pkgver=9.22.0
 _electronversion=34
 pkgrel=1
 pkgdesc="Cross-Platform Keystroke Launcher(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4e383f8b2a3f62e89fa9b3fce7b5dbb1b46f51c0dc439e2ea12b4136e2ab2781')
-sha256sums_x86_64=('08a2068971ed851eb2e572939b79dffcbbfdc046b8f8595b6bccb602edf617ca')
+sha256sums_aarch64=('e626b7d2fdcd44891866fcd8d622d46d20ef11d107383b956aff6d005b8d00bd')
+sha256sums_x86_64=('b6987bad1cfb748e80b61b6460c6a06dc0870acb2dddf109befe1c6c3bc3b2a1')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
