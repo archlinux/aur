@@ -10,6 +10,7 @@ arch=("x86_64" "aarch64")
 url="https://dragonflydb.io/"
 license=('custom:BSL1.1')
 depends=('zlib' 'glibc')
+backup=('etc/dragonfly/dragonfly.conf')
 source=("https://github.com/dragonflydb/${_appname}/releases/download/v${pkgver}/${_appname}-${arch}.tar.gz"
         "${_appname}.conf"
         "${_appname}.logrotate"

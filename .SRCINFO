@@ -8,6 +8,7 @@ pkgbase = dragonfly-bin
 	license = custom:BSL1.1
 	depends = zlib
 	depends = glibc
+	backup = etc/dragonfly/dragonfly.conf
 	source = https://github.com/dragonflydb/dragonfly/releases/download/v1.29.0/dragonfly-x86_64.tar.gz
 	source = dragonfly.conf
 	source = dragonfly.logrotate
