@@ -1,0 +1,23 @@
+pkgbase = html2md-bin
+	pkgdesc = HTML to Markdown converter
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/suntong/html2md
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	provides = html2md
+	conflicts = html2md
+	source = html2md-1.6.0-README.md::https://github.com/suntong/html2md/raw/refs/tags/v1.6.0/README.md
+	source = html2md-1.6.0-LICENSE::https://github.com/suntong/html2md/raw/refs/tags/v1.6.0/LICENSE
+	sha256sums = 54f4728d9e0588471b7d137f68377638829d6ce1c6f6bb914e1ea2ac178493c4
+	sha256sums = 011a54200f504dde82ae133dc5d9bab66f52566d34ac372faee08162f1d97007
+	source_aarch64 = html2md-1.6.0-aarch64.tar.gz::https://github.com/suntong/html2md/releases/download/v1.6.0/html2md_1.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f06dae61a4e19e8c5cd0445415ec5ab0bb9b14b0cf84db8e245804d5d53ceaff
+	source_armv7h = html2md-1.6.0-armv6h.tar.gz::https://github.com/suntong/html2md/releases/download/v1.6.0/html2md_1.6.0_linux_armv6.tar.gz
+	sha256sums_armv7h = 9f567d7177ef3adc66324ee79943f6634c232eaffa4a8042023b989b790902e1
+	source_x86_64 = html2md-1.6.0-x86_64.tar.gz::https://github.com/suntong/html2md/releases/download/v1.6.0/html2md_1.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9680174289932a8426974701b9f2437071ffea559682658161865a44e3b1e323
+
+pkgname = html2md-bin
