@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hula-bin
 _pkgname=HuLa
-pkgver=2.6.8
+pkgver=2.6.9
 pkgrel=1
-pkgdesc="🍀 A desktop instant messaging app built on Tauri+Vue3 (not just instant messaging)(Prebuilt version)一个基于 Tauri、Vite 5、Vue 3 和 TypeScript 构建的即时通讯系统"
+pkgdesc="🍀A desktop instant messaging app built on Tauri+Vue3 (not just instant messaging)(Prebuilt version)一个基于 Tauri、Vite 5、Vue 3 和 TypeScript 构建的即时通讯系统"
 arch=('x86_64')
 url="https://hulaspark.com/"
 _ghurl="https://github.com/HuLaSpark/HuLa"
@@ -17,7 +17,7 @@ depends=(
     'alsa-lib'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('28cb230d00bed2176f7541927748f428312a33e8db321ec611d09575d795a4bf')
+sha256sums=('bac90c24bfc55546c53d3aa88494e886496d811b5399157af0ffa697b4595a20')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/lib/${_pkgname}/tray/icon.png" -t "${pkgdir}/usr/lib/${_pkgname}/tray"
