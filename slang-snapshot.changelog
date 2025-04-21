@@ -31,8 +31,8 @@ Changes since 2.3.3
     not set by %P. (Miroslav Lichvar)
 14. modules/fcntl-module.c: Added fcntl_getpipe_sz and
     fcntl_setpipe_sz functions to get and set the buffer size for pipes
-15. src/sltoken.c, modules/json-module.c: Added UTF-16 surrogate handling to the
-    expand_escaped_string function and json module
+15. src/sltoken.c, modules/json-module.c: Added UTF-16 surrogate handling
+    to the expand_escaped_string function and json module
 16. src/{keymap.c,sltoken.c}: Removed unnecessary chack for a NULL
     string, and corrected a potential memory leak (Miroslav Lichvar)
 17. autoconf/scripts/getsyslibs.sh: Handle files with relative path
