@@ -1,4 +1,5 @@
 # Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
+# Thanks to: MareDevi <maredevi at foxmail dot com>
 
 pkgname=readest
 _Packagename=Readest
