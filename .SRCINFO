@@ -1,0 +1,12 @@
+pkgbase = addlicense
+	pkgdesc = Add license information to source code files
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/google/addlicense
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go>=1.16
+	source = addlicense-1.1.1.tar.gz::https://github.com/google/addlicense/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = db7990c110d2c38d2463425bc5be3617b43dbb64bea6fdd169a77800d755665e
+
+pkgname = addlicense
