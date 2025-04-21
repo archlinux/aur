@@ -1,7 +1,7 @@
 pkgbase = mouse-automator-bin
-	pkgdesc = A lightweight, user-friendly desktop application designed to automate mouse clicks with ease.
+	pkgdesc = A lightweight, user-friendly desktop application designed to automate mouse clicks with ease.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cch01/mouse-automator
 	arch = x86_64
 	license = MIT
