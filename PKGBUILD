@@ -7,10 +7,10 @@ _projectname=electron
 _major=30
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}-bin"
-_subver="5.1"
+_subver='5.1'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -40,6 +40,10 @@ optdepends=(
     'trash-cli: file deletion support (trash-put)'
     'xdg-utils: open URLs with desktop`s default'
 )
+noextract=(
+    "${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
+    "${_pkgname}-${pkgver}-${CARCH}.zip"
+)
 source_aarch64=(
 	"${pkgname%-bin}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/electron-v${_pkgver}-linux-arm64.zip"
@@ -58,17 +62,16 @@ sha256sums_armv7h=('a786d51f834c24b768bd415bf9a2fc5c1d9abdf9dc0b1a091bf9a8ff101b
                    '224bd46983e503101c756c72d10b195f14712a7a56438718acb126017dd04edf')
 sha256sums_x86_64=('688e4da8dbcb7dbfacab6f29341d96736e6d06e4c8029835b83ef30b69885b01'
                    'ec4707783d39e86005f42899e30ae59e50dd5d9c7f28531ed494eb43f2361403')
+prepare() {
+    install -Dm755 -d "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    rm -rf "${srcdir}/${_pkgname}/"{gen,chromedriver.debug}
+    chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
+}
 package() {
-	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
-	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
-	for _folder in 'locales' 'resources'; do
-		cp -r --no-preserve=ownership --preserve=mode "${_folder}/" "${pkgdir}/usr/lib/${_pkgname}/${_folder}/"
-	done
-	chmod u+s "${pkgdir}/usr/lib/${_pkgname}/chrome-sandbox"
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
-		install -Dm644 "${_license}" "${pkgdir}/usr/share/licenses/${pkgname}/${_license}"
-	done
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
+    ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

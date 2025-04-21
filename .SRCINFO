@@ -1,7 +1,7 @@
 pkgbase = electron30-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 30.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -19,6 +19,8 @@ pkgbase = electron30-bin
 	optdepends = xdg-utils: open URLs with desktop`s default
 	provides = electron30=30.5.1
 	conflicts = electron30
+	noextract = electron30-chromedriver-30.5.1-x86_64.zip
+	noextract = electron30-30.5.1-x86_64.zip
 	source_aarch64 = electron30-chromedriver-30.5.1-aarch64.zip::https://github.com/electron/electron/releases/download/v30.5.1/chromedriver-v30.5.1-linux-arm64.zip
 	source_aarch64 = electron30-30.5.1-aarch64.zip::https://github.com/electron/electron/releases/download/v30.5.1/electron-v30.5.1-linux-arm64.zip
 	sha256sums_aarch64 = 3722d46929fd2c7b33c17d37464a08150e60d9269053eb67195795254fb5e947
