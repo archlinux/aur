@@ -1,7 +1,7 @@
 pkgbase = vnote-bin
 	pkgdesc = A Qt-based, free and open source note-taking application, focusing on Markdown now.(Prebuilt version)
 	pkgver = 3.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://app.vnote.fun/
 	arch = x86_64
 	license = LGPL-3.0-only
@@ -21,6 +21,6 @@ pkgbase = vnote-bin
 	source = vnote-3.19.1.zip::https://github.com/vnotex/vnote/releases/download/v3.19.1/VNote-3.19.1-linux-x64.AppImage.zip
 	source = vnote.sh
 	sha256sums = 57be22dc62af4839e07ca07a222a8a712147bab864672337ddc18ef295dd6cf0
-	sha256sums = 649f9f47eb08df7f8fed7362685e3fc43bc6b97751e6c95258b6dbc53dda1830
+	sha256sums = abc52a1b56df67c469d3ffffc50cc7055c0f8865618457519ce7ad4d88463abf
 
 pkgname = vnote-bin

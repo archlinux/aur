@@ -4,7 +4,7 @@
 pkgname=vnote-bin
 _pkgname=VNote
 pkgver=3.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now.(Prebuilt version)"
 arch=('x86_64')
 url="https://app.vnote.fun/"
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('57be22dc62af4839e07ca07a222a8a712147bab864672337ddc18ef295dd6cf0'
-            '649f9f47eb08df7f8fed7362685e3fc43bc6b97751e6c95258b6dbc53dda1830')
+            'abc52a1b56df67c469d3ffffc50cc7055c0f8865618457519ce7ad4d88463abf')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
