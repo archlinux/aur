@@ -1,33 +1,21 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='timestampit'
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://codeberg.org/kas/timestampit'
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 depends=('glibc')
-optdepends=('scdoc: for recompiling manual pages')
 provides=('stampit' 'timestamp')
 conflicts=('stampit' 'timestamp')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-options=('lto')
 
 build() {
   cd "$pkgname"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "X${CARCH:-unknown}" in
-    'Xx86_64' | 'Xi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   make -C src
 }
