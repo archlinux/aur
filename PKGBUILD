@@ -5,7 +5,7 @@
 _pkgname=siyuan
 pkgname="${_pkgname}-note-bin"
 _appname=SiYuan
-pkgver=3.1.27
+pkgver=3.1.28
 _electronversion=34
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('4ff739750cd846c0a8cebe090b0c9d03283b7c5c80e163665775d494df83a8bd')
-sha256sums_x86_64=('6f96408749ccd4b7043189dba6e513d443526e8fad586e18835f8cd9cdc15448')
+sha256sums_aarch64=('0498415e1941b674285bc19bf3a4bc11bc37cae748b78baf9173e53c0b18f094')
+sha256sums_x86_64=('d952c9b4e5b8abe2016b0244a2bf2133910470a252ccd973ce7b6d05b5501281')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g

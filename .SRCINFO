@@ -1,20 +1,20 @@
 pkgbase = siyuan-note-bin
 	pkgdesc = A local-first personal knowledge management system.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.1.27
+	pkgver = 3.1.28
 	pkgrel = 1
 	url = https://b3log.org/siyuan/
 	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = electron34
-	provides = siyuan=3.1.27
+	provides = siyuan=3.1.28
 	conflicts = siyuan-note
 	conflicts = siyuan
 	source = siyuan-note.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = siyuan-note-3.1.27-aarch64.deb::https://github.com/siyuan-note/siyuan/releases/download/v3.1.27/siyuan-3.1.27-linux-arm64.deb
-	sha256sums_aarch64 = 4ff739750cd846c0a8cebe090b0c9d03283b7c5c80e163665775d494df83a8bd
-	source_x86_64 = siyuan-note-3.1.27-x86_64.deb::https://github.com/siyuan-note/siyuan/releases/download/v3.1.27/siyuan-3.1.27-linux.deb
-	sha256sums_x86_64 = 6f96408749ccd4b7043189dba6e513d443526e8fad586e18835f8cd9cdc15448
+	source_aarch64 = siyuan-note-3.1.28-aarch64.deb::https://github.com/siyuan-note/siyuan/releases/download/v3.1.28/siyuan-3.1.28-linux-arm64.deb
+	sha256sums_aarch64 = 0498415e1941b674285bc19bf3a4bc11bc37cae748b78baf9173e53c0b18f094
+	source_x86_64 = siyuan-note-3.1.28-x86_64.deb::https://github.com/siyuan-note/siyuan/releases/download/v3.1.28/siyuan-3.1.28-linux.deb
+	sha256sums_x86_64 = d952c9b4e5b8abe2016b0244a2bf2133910470a252ccd973ce7b6d05b5501281
 
 pkgname = siyuan-note-bin
