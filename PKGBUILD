@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=xgboost
-_pkgver=1.7.8.1
+_pkgver=1.7.9.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,10 +26,13 @@ optdepends=(
   r-testthat
   r-titanic
   r-vcd
+  r-cplm
+  r-e1071
+  r-caret
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dc402b64a631deba6398bfc5633bebce')
-b2sums=('b9bfd416d216c13d240705bc45af02bbf5b63b43ef8e5f5c798f4a66c9c5c50065946a6a6c896f3c85abe83315a6a275677dce8719bf3d932984575fe9fd0023')
+md5sums=('ee98b77c0d75f1d41f5e39439839b7b4')
+b2sums=('eb54f728f92b65a25b4a3aa5a6f5cb60e03687b49bcac3cf89ac00cf5c2779c499fe39d8695831d2ac43d3865b6afa743fb791a1a8567c7d5dc703110521bc8e')
 
 build() {
   mkdir build
