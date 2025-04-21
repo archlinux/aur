@@ -1,12 +1,13 @@
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='slrn-snapshot-canlock'
 _pkgname='slrn'
 pkgver=1.0.4.9
 _prever='pre1.0.4-9'
-pkgrel=8
-pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader (development snapshot with modern cancel-lock)'
+pkgrel=9
+pkgdesc='An easy-to-use, text-mode, threaded Usenet/NNTP client/newsreader with modern cancel-lock (development snapshot)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
@@ -18,10 +19,10 @@ depends=(
   'sh'
   'slang'
 )
-provides=('slrn')
-conflicts=('slrn')
-backup=(etc/slrnrc)
-options=('!makeflags' 'docs' 'zipman' 'lto')
+provides=('slrn' 'slrnpull')
+conflicts=("${provides[@]}")
+backup=('etc/slrn/slrn.rc' 'etc/slrn/slrnpull.conf')
+options=('!makeflags' 'docs' 'zipman')
 # <canlock>
 _canlock_ver=1.0.4-6
 _canlock_url='https://micha.freeshell.org/libcanlock/patches'
@@ -29,7 +30,7 @@ _canlock_src="$_canlock_url/slrn-${_canlock_ver}_libcanlock3_patches.tar.gz"
 _canlock_dir="slrn-${_canlock_ver}_libcanlock3_patches"
 # </canlock>
 source=(
-  "https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz"
+  "$url${_pkgname}-${_prever}.tar.gz"
   "$_canlock_src"
 )
 # Taken from https://jedsoft.org/snapshots/
@@ -64,17 +65,6 @@ prepare() {
 #   env SLRN_NO_UU=true makepkg
 build() {
   cd "$_pkgname-$_prever"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   case "$SLRN_NO_UU" in
     [Tt][Rr][Uu][Ee] | [Yy][Ee][Ss] | [Tt] | [Yy] | 1 )
@@ -117,8 +107,10 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 COPYRIGHT   "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
-  install -Dm0644 doc/slrn.rc "$pkgdir/etc/slrnrc"
+  install -vDm0644 -t "$pkgdir/etc/slrn/" \
+    doc/slrn.rc doc/slrnpull/slrnpull.conf
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    COPYRIGHT
 }
 
 sha256sums=(
