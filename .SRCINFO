@@ -1,7 +1,7 @@
 pkgbase = qtvsplayer-bin
-	pkgdesc = Read local video files of Hikvision devices and display blue, green and red vectors.
+	pkgdesc = Read local video files of Hikvision devices and display blue, green and red vectors.(Prebuilt version)
 	pkgver = 1.0.52_6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/surfzoid/QtVsPlayer
 	arch = aarch64
 	arch = x86_64
