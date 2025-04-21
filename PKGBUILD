@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SVMDO
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,9 +40,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('82f1c21363960db074b2a7d67410b4f3'
+md5sums=('be26fd3d3056b70bd70a8b6f2f1d3651'
          'ace8dbf4ccc927c5fee18f3403240bd2')
-b2sums=('9099d9dcd64c3e39c5604122c85e9c28a70dee1fee13293d67681ca24cebee9bafaa9398ebe3afffdebefbdd31722d8e2be97481b9076d8136c5359c803ef2df'
+b2sums=('a9f728bcc8a50613ac82f9e1c8856c2c67b8c751ed8b118eeb12e037ccc86f198b3542db29c461441ad93a67ca81c7d5f099b588f296d4cf3b12ac5d4a2d37f6'
         'f2a0015c8d43679b7e388b8183c4f1b67422f62fe2b1b58371bf65f341c8fcea91fddaf6f91bb8811997bedb0045590c5f97e6e1f9d2c373a5fffab3b31a430c')
 
 prepare() {
