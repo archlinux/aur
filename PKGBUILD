@@ -1,35 +1,39 @@
-# Maintainer: Xiangpeng Hao <me@haoxp.xyz>
+# Contributor: Xiangpeng Hao <me@haoxp.xyz>
 
 pkgname=pmdk-git
-_gitname="pmdk"
-pkgver=1.8.r910.g6c7e703d2
+pkgver=2.1.1.r13.gd4da1b173
 pkgrel=1
 pkgdesc="Persistent Memory Development Kit."
 arch=("x86_64")
-url="http://pmem.io"
-license=(BSD)
-depends=("python" "ndctl")
-makedepends=("git" "pandoc" "autoconf" "pkgconf" "man-db")
-source=("git://github.com/pmem/pmdk.git")
-noextract=()
+url="https://pmem.io"
+license=('BSD-3-Clause')
+depends=("ndctl")
+makedepends=("git" "pandoc-bin")
+checkdepends=("bc" "gdb" "man-db" "python" "strace")
+source=("git+https://github.com/pmem/pmdk.git")
 md5sums=('SKIP')
 
-prepare() {
-    echo "prepare()"
-}
-
 pkgver() {
-	cd "$srcdir/$_gitname"
-	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    cd pmdk
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_gitname"
-    make -j
+    cd pmdk
+    make EXTRA_CFLAGS="-Wno-error"
+}
+
+check() {
+    cd pmdk
+    cp -vf src/test/testconfig.sh{.example,}
+    make check RUNTEST_OPTIONS="short" EXTRA_CFLAGS="-Wno-error"
 }
 
 package() {
-    cd "$srcdir/$_gitname"
-    make install DESTDIR="$pkgdir" 
-    echo $pkgdir
+    cd pmdk
+    make DESTDIR="$pkgdir" prefix=/usr LIB_PREFIX=lib install
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+    install -Dm644 -t "$pkgdir"/usr/share/bash-completion/completions \
+                      "$pkgdir"/usr/etc/bash_completion.d/*
+    rm -rf "$pkgdir/usr/etc/"
 }
