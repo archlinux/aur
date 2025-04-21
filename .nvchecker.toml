@@ -1,0 +1,5 @@
+[wrkflw-bin]
+source = "github"
+github = "bahdotsh/wrkflw"
+use_latest_release = true
+prefix = "v"
