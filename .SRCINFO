@@ -1,0 +1,24 @@
+pkgbase = hjson-cli-bin
+	pkgdesc = Hjson in Go
+	pkgver = 4.5.0
+	pkgrel = 1
+	url = https://github.com/hjson/hjson-go
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = hjson-go
+	conflicts = hjson-go
+	source = LICENSE-4.5.0::https://raw.githubusercontent.com/hjson/hjson-go/v4.5.0/LICENSE
+	source = README-4.5.0.md::https://raw.githubusercontent.com/hjson/hjson-go/v4.5.0/README.md
+	sha256sums = a3b3d309b774913dafd47225c1c6bbed1b23aa1780ca1cc89ea1bad0d82cf7b1
+	sha256sums = 1efa3b9ddaa20f92cc14028302b104bf90962656bd17b23cfe06cb5813433789
+	source_x86_64 = https://github.com/hjson/hjson-go/releases/download/v4.5.0/hjson_v4.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 09d85951df7fc040883e581cbb7f266dc1bab893d112c60e82687eabddd56607
+	source_i686 = https://github.com/hjson/hjson-go/releases/download/v4.5.0/hjson_v4.5.0_linux_386.tar.gz
+	sha256sums_i686 = 54408158ad37e2fc0792cac8a0cdb9b6d91f1c7ca7dff3e7b86a75245cf5f5f0
+	source_aarch64 = https://github.com/hjson/hjson-go/releases/download/v4.5.0/hjson_v4.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e725f4e319c6649a750e0876f701c291bf1bb95a976b1c72c9fb79f0863d6dce
+
+pkgname = hjson-cli-bin
