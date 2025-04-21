@@ -1,6 +1,6 @@
 pkgbase = python-mozjpeg-lossless-optimization
 	pkgdesc = Optimize JPEGs losslessly using MozJPEG
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/wanadev/mozjpeg-lossless-optimization
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = python-mozjpeg-lossless-optimization
 	makedepends = python-pip
 	makedepends = gcc
 	depends = python>=3
-	source = https://files.pythonhosted.org/packages/source/m/mozjpeg-lossless-optimization/mozjpeg_lossless_optimization-1.1.5.tar.gz
-	sha256sums = a78cb0fd361b01c26bb5f1d986ef4fa4026877b1a95925facaeec997ff250288
+	source = https://files.pythonhosted.org/packages/source/m/mozjpeg-lossless-optimization/mozjpeg_lossless_optimization-1.2.0.tar.gz
+	sha256sums = f58a7bb522df2996e08650b1b5e9fdea4e9cb68ab56710f71bea21be87d60aa9
 
 pkgname = python-mozjpeg-lossless-optimization
 	depends = python>=3
