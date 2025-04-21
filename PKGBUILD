@@ -2,7 +2,7 @@
 _appname=ui-tars
 pkgname="${_appname}-desktop-git"
 _pkgname='UI TARS'
-pkgver=1.0.0.alpha.6.r2.g648e270
+pkgver=0.1.0.r0.gf79cfd7
 _electronversion=34
 _nodeversion=20
 pkgrel=1
