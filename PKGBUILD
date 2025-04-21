@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=infinityFlow
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Augmenting Massively Parallel Cytometry Experiments Using Multivariate Non-Linear Regressions'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-tensorflow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3bee2718eb4717450eab3ae3156c118dc94dd38aa58e42e628c4e70b53e2d7e5')
+sha256sums=('009c8edef3d857ec60090acc1e28d2f63fc5823a6d781036ab4a7084cd3c7d0f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
