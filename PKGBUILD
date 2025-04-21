@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsQuality
-_pkgver=1.6.2
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e982d92d827b64813208f559d78fe7cb')
-b2sums=('f8854a0ec2217b7a491faedcd7799fd8daf1ffd59cf8e8a38f991da9758b08592e59b14a4bda817658c4d58c112d1631be666126a7098ba3529cfbc7a20d7a36')
+md5sums=('09cdb2fc545dad7f755ec9d09f6635ca')
+b2sums=('7eca920718db2b2921d9938472ddd356c7534dc37faa5a7fa8f539595a71a851683cc94e29ab37d154a39499c4e29e7b1de8cb9c841a214dba451450cfde4bae')
 
 build() {
   mkdir build
