@@ -76,7 +76,7 @@ prepare() {
 
 build() {
   cmake \
-    -B build \
+    -B build-makepkg \
     -D BUILD_FLAT_MESH=ON \
     -D BUILD_DESIGNER_PLUGIN=ON \
     -D FREECAD_QT_VERSION=6 \
@@ -96,16 +96,16 @@ build() {
     -G Ninja \
     -S FreeCAD \
     -W no-dev
-  ninja -C build
+  ninja -C build-makepkg
 }
 
 check() {
-  cd build
+  cd build-makepkg
   LD_LIBRARY_PATH=lib bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build-makepkg install
 
   # tools
   install -Dm755 FreeCAD/src/Tools/fcinfo -t "$pkgdir/usr/bin/"
