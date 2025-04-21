@@ -1,5 +1,5 @@
 pkgbase = minif-browser-bin
-	pkgdesc = Mini Fluent Browser
+	pkgdesc = Mini Fluent Browser.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Klubuntu/minif-browser
