@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=go-blueprint-bin
-pkgver=0.10.5
+pkgver=0.10.7
 pkgrel=1
 pkgdesc="Go-blueprint allows users to spin up a quick Go project using a popular framework.(Prebuilt version)"
 arch=(
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Melkeydev/go-bluep
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_Linux_x86_64.tar.gz")
 sha256sums=('8dbc61ccb9df6583bf6cd0ad23ca0a38e1eb0655f38eb85ec2b71b71392d5060')
-sha256sums_aarch64=('b23ea56a2fe5ec305d773f44004281d5811990106036f55e439f0caba75aa0bf')
-sha256sums_x86_64=('bcc7631c76c627167e3a68e495f9745a9a0d72bb3b8a3844f287b95465d1bfbf')
+sha256sums_aarch64=('89f2c6f8fb8f0fca66f1c8ee1cefb9189d95e77973c6e628196a95433776cadd')
+sha256sums_x86_64=('fea7913fb8c0ec9adcda12fb3c62ecff02fa425f174ad3c54319b2953d054bea')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/completions/${pkgname%-bin}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
