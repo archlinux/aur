@@ -1,7 +1,7 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-drivers-dkms
-pkgver=2025.01.0
+pkgver=2025.04.0
 pkgrel=1
 pkgdesc='Linux DKMS for Dektec device drivers'
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('dektec-drivers-dkms' 'dektec-dkms')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${pkgver}.tar.gz"
         'dkms.conf'
         'Makefile')
-sha256sums=('47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15'
-            '3ab98092aad33786c1766b8d0b29636c5bb1ccdb116cbfe32608c972b99d4d47'
+sha256sums=('37fe7622b6b609adda95f21c4eed6fca6e25cb156e34cace71191b35749ded94'
+            '0d70f1668ae0dbb608f865333eba8e188f2b97488d5f52c5fd65891ea6ab13be'
             '3ee9f2b8836d3e68451c3c29f343295f6ceaca52e84e18d040205b245473d314')
 
 prepare() {
