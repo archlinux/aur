@@ -2,11 +2,11 @@
 _pkgname=sshuttle_gui
 pkgname="${_pkgname//_/-}-bin"
 pkgver=0.3
-pkgrel=1
-pkgdesc="GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh."
+pkgrel=2
+pkgdesc="GUI for SShuttle - Transparent proxy server that works as a poor man's VPN. Forwards over ssh.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/AKotov-dev/SShuttle-GUI"
-license=("GPL-3.0-only")
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -16,22 +16,21 @@ depends=(
     'gtk2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-0.mrx9_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c6ab0de12eca7b2f307a774c89866548e4f9cc0363531e93b4a4744c5df9d646'
-            'd4b8aa180a4fadebb52de6343ef56501affba634eadff0ed9a493aab20da442d')
-build() {
-    sed -e "
+sha256sums=('66515c4867c998aceb54339c3be68da6ea9f8b53733a565f6fc54c103b57446d'
+            'f17d69f73b4368b9f95510801b1aa2fb1f47e056ad78075dfa14ef15b97939fc')
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${_pkgname}/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/polkit-1/actions/${pkgname%-bin}.policy" -t "${pkgdir}/usr/share/polkit-1/actions"
