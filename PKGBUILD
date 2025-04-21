@@ -10,7 +10,7 @@ license=('zlib' 'BSD')
 groups=('pro-audio')
 options=(staticlibs)
 source=("https://github.com/Shirakumo/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('d205cbd6783332a212c5ae92d73c77178c2d2f28')
+sha1sums=('2e415cb70323c88a90428764866ea17dcda4aca5')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver/build"
-  make test
+  make run_tests
 }
 
 package() {
