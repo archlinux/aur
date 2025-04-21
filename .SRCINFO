@@ -1,6 +1,6 @@
 pkgbase = r-flowploidy
 	pkgdesc = Analyze flow cytometer data to determine sample ploidy
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowPloidy
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-flowploidy
 	depends = r-shiny
 	optdepends = r-flowploidydata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowPloidy_1.32.0.tar.gz
-	sha256sums = 7f14217306731dbb0ffdcf6554bacce949d469f1de57a7166f4ada09debcb7b3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowPloidy_1.34.0.tar.gz
+	sha256sums = 9defe2a7fd07661bdeee295c214f3bf64cc02fb593882f7c9b38f8353c6584d9
 
 pkgname = r-flowploidy
