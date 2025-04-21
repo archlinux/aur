@@ -6,7 +6,7 @@ pkgname="bizhawk-bin"
 pkgdesc="A multi-platform emulator with full re-recording support and Lua scripting"
 
 pkgver=2.10
-pkgrel=3
+pkgrel=4
 
 arch=(x86_64)
 
@@ -46,7 +46,7 @@ package() {
 		-regextype egrep -not -regex "./(EmuHawkMono.sh|BizHawk.desktop|logo.png|LICENSE)" \
 		-exec install -Dm664 -ggames "{}" "${pkgdir}/opt/bizhawk/{}" \;
 
-	install -Dm774 -ggames EmuHawkMono.sh "${pkgdir}/opt/bizhawk/EmuHawkMono.sh"
+	install -Dm775 -ggames EmuHawkMono.sh "${pkgdir}/opt/bizhawk/EmuHawkMono.sh"
 
 	# copy the icon and the .desktop file
 	install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/bizhawk.png"
