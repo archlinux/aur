@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OCCT
+GenericName=System Stability Tester
+Comment=PC Stability Test, Benchmark & Monitoring Tool (OCBASE)
+Exec=occt
+Icon=occt
+Terminal=false
+Type=Application
+Categories=System;Monitor;Utility;Performance;
+Keywords=Stress;Test;Benchmark;CPU;GPU;Memory;Power;Temperature;Voltage;Stability;Overclock;
+StartupWMClass=OCCT

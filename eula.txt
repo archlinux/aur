@@ -1,0 +1,301 @@
+End User License Agreement
+
+Please read this End User License Agreement (“Agreement”) carefully before downloading or using the OCCT software (“OCCT” or the “Software”).
+This End User License Agreement (this “Agreement”) is a legal and binding contract between you, either individually or on behalf of the legal entity that accepts this Agreement (“You” or the “Licensee”) and OCBASE, a French limited liability company (société à responsabilité limitée), registered under number 892 745 209 at the RCS of Douai whose registered office is located at Hôtel d’Entreprises de Douai Dorignies, 709 rue Jean Perrin, 59500 Douai, France (“OCBASE”).
+
+In case You are entering into this Agreement on behalf of a legal entity, You hereby represent that You have the authority to bind such legal entity and its affiliates to this Agreement.
+
+By paying the license fee, subscribing an Order Form, downloading or using OCCT, You indicate your acceptance and understanding of this Agreement which becomes effective as soon as You subscribe an Order Form, You download or use OCCT (the “Effective Date”).
+
+In case You do not agree to all of the terms and conditions of this Agreement, You may not access, download, install or use the Software, and, to the extent applicable, You must cease all use of the Software and destroy all copies of the Software and Documentation in your possession.
+
+I. DEFINITIONS
+Documentation : Means the official user documentation provided by OCBASE and available on its Website regarding the use or updates of the Software.
+
+Licenses : Means the Free License and the Premium Licenses as further defined under Section 2.1.
+
+Order Form : Means the applicable document entered into between the Licensee and OCBASE for the Premium Licenses versions of the Software as mentioned on OCBASE Website.
+
+Patreon : Means the American company membership platform located at 600 Townsend Street, Suite 500, San Francisco, CA 94103 through which the Licensee (when the Licensee is a natural person) subscribes to a Premium License.
+
+Personal Data : Means any information relating to an identified or identifiable natural person.
+
+SaaS Services : means the OCBASE online platform service that utilizes the Software on a hosted basis.
+
+Software : means the compiled versions of OCCT software edited and provided by OCBASE under this Agreement, and any updates, upgrades, or enhancements thereto provided to You by OCBASE. For the avoidance of doubt, all references in this Agreement to Software include the SaaS Service.
+
+Term : means the period of time beginning on the Effective Date and ending on the later of the expiration or termination of the subscription set forth in the Order Form (as renewed in accordance with the terms of the Order Form or otherwise by written agreement of the parties), or the last date on which You access and/or use the Software or SaaS Service.
+
+Third-Party Products : means the open source or third-party software licensed by OCBASE and incorporated into and/or distributed as part of the Software.
+
+User(s) : Means an individual authorized by You to use the Software and Documentation in accordance with the terms of the license. If You are a legal entity, Users may only include your employees and contractors.
+
+Website : Means the OCBASE site web located at www.ocbase.com, and all associated sites linked to www.ocbase.com by OCBASE. The Website is the property of OCBASE.
+
+II. LICENSE
+2.1. Scope of the License.
+
+This Agreement is intended to govern the dual license that may be granted to the Licensee:
+
+- a free license to use the Software for your personal use only to the exclusion of any commercial purposes in any form whatsoever, strictly in accordance with the terms of this Agreement (hereinafter: the “Free License”).
+
+In the event that the Licensee wishes to use the Software for commercial purposes, the Licensee undertakes to comply with the provisions applicable to the Premium License. The Licensee hereby acknowledges that any unauthorized commercial use can be subject to legal prosecution.
+
+- a paid license to use the Software for the purposes of using the Software in the context of the Licensee’s commercial activity (hereinafter: the “Premium License”). This license is subscribed through PATREON or directly with OCBASE.
+
+2.2. License grants.
+
+Subject to the terms defined below and the License subscribed as further defined in the Order Form, OCBASE hereby grants You, during the Term, a worldwide revocable, non-exclusive, personal, non-sublicensable, non-transferable, limited right to:
+
+- (i) download, install and use OCCT,
+
+- (ii) access and use the Software through the SaaS Service;
+
+- (iii) copy OCCT to make a backup copy.
+
+2.3. Proprietary rights.
+
+The Software is licensed to You, You do not acquire any rights of ownership in the Software nor the Documentation. All worldwide ownership of, and all right, title, and interest in and to the Software and the Documentation, and all copies and portions thereof, including, but not limited to, all copyrights, patent rights, trademark rights, trade secret rights, inventions, and other proprietary rights therein and thereto, are and shall remain exclusively in OCBASE or its licensors. The only rights You acquire under this Agreement are those which are expressly stated in this Agreement.
+
+2.4. Database.
+
+You recognize that:
+
+- OCBASE’s databases constitute intellectual creations which are protected by copyright under article L.112-3 of the French Intellectual Property Code, regarding the choice and arrangement of their contents, and over which OCBASE holds all intellectual property rights.
+
+- OCBASE is a "database producer" within the meaning of Article L.341-1 of the French Intellectual Property Code and is protected by sui generis protection prohibiting the extraction and/or re-use of all or part of its database.
+
+2.5. Usage limits.
+
+Once acquired, the Software may be used - (i) for the “free” and “personal” versions, by the Licensee, or anyone whose residence is within the Licensee’s household; - (ii) for the “Pro” and “Enterprise” versions, by Users on an unlimited number of computers, as long as the latter are used by an employee or a contractor of the Licensee.
+2.6. Restrictions.
+
+Except as expressly permitted in Sections 2.1 and 2.2, You agree not to, and You will not permit Users to:
+
+(i) modify, translate, reverse engineer, decompile, disassemble, make derivative works of, attempt to reconstruct, identify or otherwise derive any source code underlying ideas, underlying user interface techniques or algorithms of the Software or Documentation, in whole or in part, by any means whatever, or disclose any of the foregoing, except as specifically authorized in this Agreement;
+
+(ii) create, develop, license, install, use, or deploy any software or services to circumvent, enable, modify, or provide access, permissions, or rights which violate the technical restrictions of the Software;
+
+(iii) extract all or part of OCBASE’s database;
+
+(iv) use the Software for development or any other non-intended purpose;
+
+(v) license, sell, resell, rent, lease, or otherwise distribute the Software or Documentation as well as OCBASE’s database, in whole or in part;
+
+(vi) assign, sublicense, rent, or otherwise transfer your access and use rights to the Software under this Agreement without the prior written approval of OCBASE;
+
+(vii) copy, reproduce, republish, upload, post, or transmit the Software or its Documentation as well as OCBASE’s database;
+
+(viii) Hack into the computer system or SaaS Services of OCBASE, of a third-party using SaaS Services or any activity aimed to harm, control, interfere or intercept all or part of OCBASE or of a third party’s computer system, violating its integrity or its security;
+
+(ix) Assisting or encouraging, in any manner or form whatsoever, the carrying out of one or several of the actions or activities described above;
+
+(x) use the Software if You are a competitor of OCBASE or for purposes of monitoring the Software’s performance, functionality, or availability or for any other benchmarking or competitive purposes.
+
+III. LICENSEES’ OBLIGATIONS
+3.1. Compliance.
+
+You are solely responsible for your and the Users’ compliance with this Agreement and all laws and regulations applicable to the use of the Software. If You become aware of any non-compliance with the foregoing by yourself or any Users, You shall immediately report the non-compliance to OCBASE and cure and remedy the non-compliance to the extent feasible.
+
+3.2. Equipment and security.
+
+You are solely responsible for the safekeeping and confidentiality of your and the Users’ usernames and passwords. You are solely responsible for acquiring and maintaining any equipment needed to connect to, access, or otherwise use the Software and SaaS Services, including, but not limited to, hardware, software, and internet service, and for ensuring that such equipment and ancillary services are compatible with the Software.
+
+3.3. Activities.
+
+You are solely responsible for your and the Users’ activities in or as a result of using the Software, including, but not limited to: (i) any misuse of the Software; (ii) the information, data, and content entered into the Software or otherwise made available to OCBASE ; (iii) the information, data, and content accessed through the Software or otherwise made available to OCBASE, its effects, any actions taken in response thereto, and any interpretations thereof; and (iv) the accuracy, quality, integrity, legality, reliability, appropriateness, and copyright of all information, data, and content that You or the Users allow the Software to access or otherwise make available to OCBASE. You will provide any notices and obtain any consents that may be legally required for OCBASE to engage in the activities contemplated by this Agreement.
+
+3.4. Export control laws.
+
+The Licensee acknowledges that the Software and Documentation may be subject to export control laws and regulations of France and possibly those of the jurisdictions in which they are accessed, used, or obtained. You or the Users shall abide by all applicable export control laws, rules, and regulations applicable to the Software and Documentation. You represent that You and the Users are not located in, under the control of, nor a resident of any country, person, or entity prohibited to receive the Software or Documentation due to export restrictions, and that You and the Users will not export, re-export, transfer, or permit the use of the Software or Documentation, in whole or in part, to or in any such countries.
+
+3.5. Third-Party Products.
+
+If any Third-Party Products are embedded or incorporated in the Software, You acknowledge and understand that these products may be governed by their own license terms. A list of the Third-Party Products may be found in the Documentation.
+
+3.6. Fees and payment.
+
+Fees shall be due and payable as set forth on the Order Form or on the Website for the Premium License and as otherwise required under this Agreement. Failure to pay fees on time may result in the termination of this Agreement and/or the suspension of your or the Users’ access to and use of the Software as described in Section « Term and Termination ». In addition, for any past due amount, OCBASE may charge interest per month equal to three times the French legal interest rate and a flat-rate indemnity of €40 for recovery costs. Except as expressly set forth herein or in the Order Form, all Fees paid or payable are non-cancellable and non-refundable to the maximum extent permitted by law.
+
+3.7. Disputed fees.
+
+If You believe that any invoice for fees is in error, You must notify OCBASE in writing of such error within 25 days of your receipt of such invoice. Failure to provide such notice shall constitute your waiver of your right to dispute the invoice. If appropriate, OCBASE shall rectify the error by reducing the amount of the next invoice following the parties’ resolution of such error, or by any other means agreed between the parties.
+
+3.8. Taxes.
+
+All fees are exclusive of taxes. You are responsible for paying all taxes. As used in this section, “taxes” include any sales, use, or other similar taxes (other than taxes on OCBASE’s income), as well as any export and import fees, customs duties, or similar charges applicable to the transactions contemplated by this Agreement that are imposed by a government or other authority.
+
+IV. MAINTENANCE
+You are hereby informed that OCBASE may carry out any type of maintenance that renders the Software unusable. You are aware that some new content may be reserved for “Pro” and “Enterprise” versions and may incur additional costs.
+
+V. WARRANTIES AND DISCLAIMERS
+5.1. OCBASE does not warrant that the Software is error-free, that the Software and SaaS Services will operate without interruption, that the Software will be compatible with the Licensee’s products, equipment and software configuration or that it will meet the Licensee’s requirements.
+
+5.2. OCBASE (including its directors, officers, employees, contractors, agents, affiliates, and successors) shall not be liable in any manner for any damages resulting from your failure to fulfil your responsibilities under this Agreement, including, but not limited to, damages resulting from any misuse of the Software or any deletion, destruction, loss, or unauthorized access to the data stored therein.
+
+5.3. OCBASE shall not be held liable for all defects for which it is not directly responsible and more generally where the Software and/or SaaS Services have been altered, changed or improperly used by the Licensee.
+
+5.4. Further, the warranties set forth in this Section do not apply if (i) the Software has not been used in accordance with the terms and conditions of this Agreement, the Documentation, or applicable laws; (ii) the Software has been used for a purpose or application for which it was not intended; (iii) the breach is a result of any act or omission by You or any third party (including, but not limited to, alteration, abuse, or damage) or by the use of any materials supplied by You or any third party; (iv) the breach has been caused by your failure to apply updates or upgrades, or to comply with any recommendation or instruction of OCBASE; or (v) the breach results from any cause outside of OCBASE’s reasonable control.
+
+5.5. OCBASE shall not be held responsible for any damage which is not incurred by a malfunction of the Technology, in particular all difficulties arising from the Licensee’s infrastructure, products, personnel, materials or software.
+
+5.6. OCBASE warrants that the Software operates substantially in accordance with the specifications set forth in the Documentation. Except for the Free License pursuant to which OCBASE shall have no obligation to correct any errors, if You notify OCBASE in writing of a malfunction of the Software, then (i) OCBASE shall make its best efforts to correct any error in the Software within a reasonable time ; or (ii) if OCBASE determines that such correction is not feasible, You may terminate this Agreement on written notice to OCBASE, and You will be entitled to a refund of any pre-paid fees pro rata temporis. The foregoing options constitute OCBASE’s entire liability and your sole remedy in the event of a breach of the foregoing warranties.
+
+5.7. Warranty disclaimer. EXCEPT FOR THE EXPRESS WARRANTIES SET FORTH ABOVE, AND TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE AND DOCUMENTATION ARE PROVIDED AND LICENSED “AS IS” AND “AS AVAILABLE,” WITHOUT WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, AND OCBASE HEREBY EXPRESSLY DISCLAIMS ANY AND ALL IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THOSE OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, AND TITLE. YOU EXPRESSLY ACKNOWLEDGE THAT THE SOFTWARE AND DOCUMENTATION MAY CONTAIN TECHNICAL INACCURACIES OR TYPOGRAPHICAL ERRORS. NO EMPLOYEE, CONTRACTOR, AGENT, AFFILIATE, REPRESENTATIVE, RESELLER, DEALER, OR DISTRIBUTOR OF OCBASE IS AUTHORIZED TO MODIFY THESE WARRANTY TERMS OR TO MAKE ANY ADDITIONAL WARRANTIES. BECAUSE SOME STATES OR COUNTRY DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
+
+VI. LIMITATION OF LIABILITY
+No special damages.
+
+NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS AGREEMENT, AND TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL OCBASE (INCLUDING ITS DIRECTORS, OFFICERS, EMPLOYEES, CONTRACTORS, AGENTS, AFFILIATES, AND SUCCESSORS) BE LIABLE TO YOU OR THE USERS FOR ANY SPECIAL, INDIRECT, NON-COMPENSATORY, CONSEQUENTIAL, INCIDENTAL, STATUTORY, OR PUNITIVE DAMAGES OF ANY KIND, INCLUDING, BUT NOT LIMITED TO, THOSE RELATED TO LOSS OR PRIVACY OF DATA OR PROGRAMS, BUSINESS INTERRUPTIONS, OR LOST PROFITS OR REVENUE, REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, STATUTE, OR OTHERWISE, EVEN IF OCBASE IS AWARE OF THE POSSIBILITY OF SUCH DAMAGES IN ADVANCE. BECAUSE SOME STATES OR COUNTRY DO NOT ALLOW THE EXCLUSION OF THE FOREGOING DAMAGES, THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
+
+Damages cap.
+
+NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS AGREEMENT, EXCEPT FOR THE OBLIGATIONS IN SECTION « INDEMNIFICATION », IN NO EVENT SHALL OCBASE (INCLUDING ITS DIRECTORS, OFFICERS, EMPLOYEES, CONTRACTORS, AGENTS, AFFILIATES, AND SUCCESSORS) BE LIABLE TO YOU OR THE USERS IN RELATION TO THE SOFTWARE, DOCUMENTATION, OR THIS AGREEMENT IN AN AGGREGATE AMOUNT EQUAL TO THE AMOUNT OF FEES PAID OR PAYABLE BY YOU DURING THE 12 MONTHS PRIOR TO THE EVENT GIVING RISE TO THE LIABILITY. THE PARTIES ACKNOWLEDGE AND AGREE THAT THEY HAVE FULLY CONSIDERED THE FOREGOING ALLOCATION OF RISK AND FIND IT REASONABLE, AND THAT THE FOREGOING LIMITATIONS ARE AN ESSENTIAL BASIS OF THE BARGAIN BETWEEN THE PARTIES.
+
+VII. INDEMNIFICATION
+Indemnification by OCBASE.
+
+OCBASE shall indemnify, defend, and hold You harmless from and against any and all claims, demands, losses, liabilities and costs (including, but not limited to, reasonable attorney’s fees and costs) arising from OCBASE’s willful misconduct or fraud. The foregoing obligations do not apply (i) with respect to Software or components thereof which have been (a) supplied other than by OCBASE (including third-party Products), (b) modified in whole or in part in accordance to your specifications, (c) modified by You or the Users after delivery by OCBASE, or (d) combined with other products, processes, or materials where the alleged infringement relates to such combination; (ii) where You continue the allegedly infringing activity after being notified thereof or after being informed of modifications that would have avoided the alleged infringement; or (iii) where the use of the Software by You or the Users is not strictly in accordance with this Agreement or the Documentation.
+
+Indemnification by Licensee.
+
+You shall indemnify, defend (through use of counsel acceptable to OCBASE), and hold harmless OCBASE (including its directors, officers, employees, contractors, agents, affiliates and successors) from and against any and all claims, demands, losses, liabilities, and costs (including, but not limited to, reasonable attorney’s fees and costs) arising from your or the User’s (i) breach of this Agreement or violation of applicable law ; (ii) installation, use, or misuse of, or failure to prevent unauthorized access to, the Software or the data stored therein ; (iii) infringement of third-party intellectual property rights (except to the extent directly resulting from the use of the Software by You, the Users or Clients) or violation of third-party privacy rights; and (iv) willful misconduct or fraud.
+
+Indemnification procedure.
+
+The obligations in this section are subject to the indemnifying party being promptly notified of any and all threats, claims, and proceedings related thereto and given reasonable assistance and the opportunity to assume sole control over the defense and all negotiations for a settlement or compromise.
+
+VIII. DATA PROTECTION
+Compliance.
+
+OCBASE and the Licensee each undertakes, as far as they are concerned, to comply with the regulations applicable to Personal Data and in particular with law no. 78-17 of January 6, 1978 “Loi Informatique et Libertés” as amended, and the provisions of EU Regulation no. 2016/679 of April 27, 2016 (“GDPR”), together “Applicable Regulations”.
+
+OCBASE acting as Data controller. OCBASE carries out Personal Data processing operations as follows:
+
+- Personal data
+
+OCBASE collects Personal Data in relation to the Licensee: last name, first name, address, phone number, e-mail, IP address.
+
+- Purpose of the processing
+
+OCBASE collects Personal Data in relation to the Licensee for the purposes of tracking, managing, and monitoring subscriptions and access to its Software and SaaS Services, in particular but also to ensure the management, support, invoicing, and monitoring of services in general.
+
+- Duration of the storage
+
+Personal Data will be kept for as long as is necessary to achieve the purpose for which it was collected.
+
+- Processing of Personal Data
+
+In the course of performing its obligations under this Agreement, OCBASE shall process personal data under the Agreement in full compliance with the instructions provided by the License and with any Applicable Regulations.
+
+In that context, OCBASE shall:
+
+(i) process Personal Data exclusively for the purpose of this Agreement;
+
+(ii) have in place appropriate technical and organizational measures to protect the Personal Data against accidental or unlawful destruction or accidental loss, alteration, unauthorized disclosure or access, and which provide a level of security appropriate to the risk represented by the processing and the nature of the data to be protected;
+
+(iii) in the event of transfer of Personal Data to any sub-contractor, OCBASE will execute a contract with such subcontractor to agree and establish all technical and organisational measures to be taken to protect Personal Data;
+
+(iv) not cause any cross-border transfer of Personal Data from a country situated in the European Economic Area to any country situated outside the European Economic Area which is not deemed to have an adequate level of protection of Personal Data according to the European Commission.
+
+Should this be the case, OCBASE shall put in place all safeguards as required under all Applicable Regulations and in particular shall enter into the standard contractual clauses as adopted by EC on 4 June 2021;
+
+(v) report to Licensee all incidents without undue delay that may imply a data security breach or the Applicable Regulations have been infringed;
+
+(vi) return or destroy all Personal Data upon request from Licensee;
+
+(vii) keep a record of any data processing of Licensee’s Personal Data.
+
+- Rights of the Licensee
+
+In accordance with the Applicable Regulations, You have a right to access, query, modify and delete information which concerns You, as well as the right to give instructions on the fate of your data after your death. You may exercise these rights at any time with OCBASE by addressing a request:
+
+- by post to the following address: Hôtel d’Entreprises de Douai Dorignies, 709 rue Jean Perrin, 59500 Douai, France;
+
+- or by e-mail to the following address: support@ocbase.com
+
+For security reasons and in order to avoid fraudulent requests, You may be required to provide a proof of identity and/or entitlement to represent an employee or subcontractor. Once the request has been processed, these documents will be destroyed.
+
+If, after contacting us, You consider that your rights under the Applicable Regulations have not been respected, you may lodge a complaint before the French data protection authority CNIL (www.cnil.fr).
+
+OCBASE acting as Data processor. By subscribing Premium Licenses through PATREON, You have agreed to share personal data with OCBASE.
+
+When using SaaS Services or subscribing Premium Licenses through PATREON, OCBASE (the “Processor”) processes Personal Data on behalf of the Licensee (the “Controller” or the Licensee) as defined by Applicable Regulations.
+
+The Processor is authorized to process, on behalf of the Controller, Personal Data reasonably necessary for providing SaaS Services in full compliance with the instructions provided by the Licensee, with any Applicable Regulations and with the Data processing agreement entered into between OCBASE and PATREON.
+
+The Processor undertakes to:
+
+- process the Personal Data only on documented instructions from the Controller, including with regard to transfers of the Personal Data to a third country or an international organisation, unless required to do so by Union or Member State law to which the Processor is subject; in such a case, the Processor shall inform the Controller of that legal requirement before processing, unless that law prohibits such information on important grounds of public interest;
+
+- take all necessary security measures to ensure the integrity and confidentiality of the Personal Data;
+
+- take all necessary measures to prevent any unauthorized third-party access, intrusion or fraudulent maintenance of its systems and the Licensee’s systems and to provide appropriate technical and organisational measures to ensure a level of security appropriate to the risk;
+
+- not to make copies of any kind of Personal Data, with the exception of those made necessary for the performance of the Software;
+
+- not to use the Personal Data it processes on behalf of the Licensee's for any purpose other than those expressly provided for in connection with the performance of the Software;
+
+- host the Personal Data within the European Union or the European Economic Area;
+
+- inform the Licensee promptly of any event of which it is aware that may constitute a risk to the security of the Personal Data;
+
+- not subcontract these obligations without prior notice to the Controller. The Controller is aware and authorises that the hosting of Personal Data are subcontracted to HETZNER whose servers are located within the European Union (Germany and Finland).
+
+- at the choice of the Controller, delete or return all the Personal Data to the Controller after the Term, and delete existing copies unless Union or Member State law requires storage of the Personal Data.
+
+IX. TERM AND TERMINATION
+Term.
+
+The term of this Agreement shall begin on the Effective Date:
+
+- Until the Software is uninstalled for the Free License;
+
+- for a fixed term of 1 (one) year period for the Premium License, tacitly renewable for the same period unless terminated by You , OCBASE or PATREON before the first day of the license renewal.
+
+Termination by You.
+
+You may terminate this Agreement in its Free License version by uninstalling the Software. You may terminate Premium Licenses by notifying so OCBASE on your user account or by cancelling your PATREON subscription, in case You are a client of PATREON.
+
+Termination or suspension by OCBASE.
+
+OCBASE may suspend access to the Software and/or SaaS Services or terminate this Agreement at any time with 10 (ten) days’ written notice to You if You or the Users breach this Agreement, including by falling to pay any fees due and payable according to your licence, unless the breach is cured within these 10 (ten) days.
+
+OCBASE’s decision to suspend access to the Software is without prejudice to its right to terminate this Agreement for the same reasons underlying the suspension.
+
+Effect of termination.
+
+Upon termination, You and the Users shall immediately (i) cease using the Software and (ii) destroy all copies of the Software and Documentation. Any provision of this Agreement that by its nature is intended to survive the expiration or termination of this Agreement shall so survive (including but not limited to “License”, “Warranties and disclaimers”, “Limitation of liability”, “Indemnification”, “Miscellaneous”, “Governing law and attribution of jurisdiction”).
+
+X. FORCE MAJEURE
+Neither the Licensee nor OCBASE shall be liable in the failure to comply with any provision of this Agreement due to an act, event, or circumstance beyond their reasonable control, including but not limited to, fire, floods, storms, earthquake or other natural disasters, epidemics or pandemics, acts of terrorism or war, labor trouble, government action etc.
+
+XI. MISCELLANEOUS
+Amendment.
+
+OCBASE may, at its sole discretion, modify, replace, or update this Agreement at any time. OCBASE will post the updated versions on its Website and provide You notice thereof on the first use of the Software following updated version of this Agreement. In case You entered into a Premium License and do not agree to the updated terms, You shall have the opportunity to terminate the Agreement by notifying OCBASE in writing within 30 (thirty) days following the update. You will receive a refund of any pre-paid fees for the unused portion of the subscription. Your failure to provide such notice, and/or your continued use of the Software for more than 30 (thirty) days following the update, shall constitute your acceptance of any updated terms.
+
+Assignment.
+
+This Agreement is personal to You and You may not assign this Agreement in whole or in part in any case without OCBASE’s prior written consent and conditions.
+
+Entire Agreement.
+
+This Agreement constitutes the entire agreement between OCBASE and the Licensee and supersedes all prior written or verbal agreements concerning its subject matter.
+
+Severability.
+
+If any provision of this Agreement is found void and unenforceable, it will not affect the validity of the Agreement, which shall remain valid and enforceable according to its terms. In such situation, this provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law.
+
+Waiver.
+
+The delay or failure of either the Licensee or OCBASE to exercise any of its rights pursuant to this Agreement shall not be deemed a waiver of that right. No waiver shall be effective unless made in writing and signed by an authorized representative of the waiving party.
+
+XII. GOVERNING LAW AND ATTRIBUTION OF JURISDICTION
+Applicable law.
+
+This Agreement shall be construed and governed in accordance with the laws of France, without regard to the choice or conflicts of law provisions of any jurisdiction.
+
+Jurisdiction.
+
+Any dispute, action, claim, or cause of action arising out of or in connection with this Agreement, including its validity, interpretation or application shall be subject to the exclusive relevant jurisdiction of Lille.
