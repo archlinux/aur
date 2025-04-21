@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=0.4.2
-_electronversion=34
+pkgver=0.4.3
+_electronversion=35
 _nodeversion=22
 pkgrel=1
-pkgdesc="organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Prebuilt version.Use system-wide electron)"
 arch=('any')
 url="https://folo.is/"
 _ghurl="https://github.com/RSSNext/folo"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('e6b9fc80837ed89f290ac30e929e9d1ae4ddce5be3d9e717bd9a99e1314d9837'
+sha256sums=('d87692a22bcefc3c9ddb27e4da322e610f12c423dbaead95afdcee7447e2e9f0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
