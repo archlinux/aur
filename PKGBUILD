@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FEAST
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='FEAture SelcTion (FEAST) for Single-cell clustering'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0316c7e0f42f091d7d7b163e7face1357fed0b7b814e180649e8a5b95ac6157c')
+sha256sums=('f577ea43d4bc65f57eb3964b1adfa58bc4b2c34259180ad465b7a3d56a068904')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
