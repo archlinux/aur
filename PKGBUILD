@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=cosmic-settings-git
-pkgver=1.0.0.alpha.6.r67.gd27ee21
+pkgver=1.0.0.alpha.6.r97.gbb41b49
 pkgrel=1
 pkgdesc="The settings application for the COSMIC desktop environment."
 arch=('x86_64' 'aarch64')
@@ -20,6 +20,7 @@ depends=(
   'libxkbcommon'
   'networkmanager'
   'nm-connection-editor'
+  'pipewire-pulse'
   'systemd-libs'
   'ttf-opensans'
   'wayland'

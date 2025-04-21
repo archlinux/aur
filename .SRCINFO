@@ -1,6 +1,6 @@
 pkgbase = cosmic-settings-git
 	pkgdesc = The settings application for the COSMIC desktop environment.
-	pkgver = 1.0.0.alpha.6.r67.gd27ee21
+	pkgver = 1.0.0.alpha.6.r97.gbb41b49
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = cosmic-settings-git
 	depends = libxkbcommon
 	depends = networkmanager
 	depends = nm-connection-editor
+	depends = pipewire-pulse
 	depends = systemd-libs
 	depends = ttf-opensans
 	depends = wayland
