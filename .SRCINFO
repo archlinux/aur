@@ -1,6 +1,6 @@
 pkgbase = r-iseehex
 	pkgdesc = iSEE extension for summarising data points in hexagonal bins
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iSEEhex
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-iseehex
 	optdepends = r-scrnaseq
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEhex_1.8.0.tar.gz
-	sha256sums = acf0caf10049b39269551646f8e36b614e6020a5b74b2a28f67848b10a1c8087
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iSEEhex_1.10.0.tar.gz
+	sha256sums = 2030cf55cebe9da286cd44f4ac1d1aca0c730eccf41e9f75181b1b881c309499
 
 pkgname = r-iseehex
