@@ -1,7 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=gnome-shell-extension-soft-brightness-git
-pkgver=2019.12.r857.g7abc3c1
+pkgver=41.r3.g1b3264f
 pkgrel=1
+epoch=1
 pkgdesc='Manage your display brightness via an alpha overlay (instead of the backlight).'
 url='https://github.com/jkitching/soft-brightness-plus'
 license=(GPL-3.0-or-later)
@@ -15,12 +16,13 @@ _uuid="soft-brightness-plus@joelkitching.com"
 _schema="org.gnome.shell.extensions.soft-brightness-plus.gschema.xml"
 
 prepare() {
-  cd $pkgname
+  cd "$srcdir/$pkgname"
   patch -Np1 -i ../build.patch
   meson-gse/meson-gse
 }
 
 pkgver() {
+  cd "$srcdir/$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
