@@ -1,0 +1,17 @@
+pkgbase = notmuch-tools-git
+	pkgver = r87.84c38f0
+	pkgrel = 1
+	url = https://framagit.org/manu/notmuch-tools
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = notmuch-runtime
+	makedepends = glib2-devel
+	makedepends = gmime3
+	makedepends = sqlite
+	provides = notmuch-tools
+	conflicts = notmuch-tools
+	source = notmuch-tools::git+https://framagit.org/manu/notmuch-tools
+	sha256sums = SKIP
+
+pkgname = notmuch-tools-git
