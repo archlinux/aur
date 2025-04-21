@@ -1,7 +1,7 @@
 pkgbase = buttercup-desktop-bin
-	pkgdesc = Cross-Platform Passwords & Secrets Vault
+	pkgdesc = Cross-Platform Passwords & Secrets Vault.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.28.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://buttercup.pw/
 	arch = aarch64
 	arch = armv7h
