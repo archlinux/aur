@@ -3,7 +3,7 @@
 
 _pkgname=data-importer
 pkgname=firefly-iii-$_pkgname
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='The Firefly III Data Importer can import data into Firefly III'
 arch=('any')
@@ -12,7 +12,7 @@ license=('custom')
 depends=('php>=8.4.0')
 makedepends=('composer')
 source=("$_pkgname-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/DataImporter-v${pkgver}.tar.gz")
-sha256sums=('bb9f7ace4158b2644041216507137476fb224096fabd5e458de024ad585de0b6')
+sha256sums=('0434d99384b6a4dc749054d3948f2f5ab29c6c9dd649199119fcf0e8b4d9677a')
 
 backup=("etc/webapps/$pkgname/config.env")
 
