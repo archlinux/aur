@@ -1,0 +1,4 @@
+[html2markdown]
+source = "git"
+git = "https://github.com/JohannesKaufmann/html-to-markdown.git"
+prefix = "v"
