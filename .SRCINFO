@@ -19,8 +19,8 @@ pkgbase = chatterino2-7tv-nightly-bin
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pulseaudio: For audio output
 	optdepends = gst-plugins-good: For audio output
-	provides = chatterino2-7tv-nightly
-	conflicts = chatterino2-7tv-nightly
+	provides = chatterino
+	conflicts = chatterino
 	source_x86_64 = chatterino2-7tv-nightly-7.5.3_x64.deb::https://github.com/SevenTV/chatterino7/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb
 	sha256sums_x86_64 = c216a16490c942978edc1bf3cc49e56df75fab371bc9b35f4afd70f374b37ba1
 
