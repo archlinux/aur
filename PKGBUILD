@@ -8,8 +8,7 @@
 
 _pkgname=haveno-reto
 pkgname=retoswap
-pkgver=1.0.19
-_pkgver=$pkgver-3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Decentralised P2P exchange built on Monero and Tor - unofficial Reto network'
 arch=('any')
@@ -19,14 +18,14 @@ depends=('bash' 'java-runtime>=21')
 makedepends=('jdk21-openjdk')
 conflicts=('haveno' "$_pkgname")
 replaces=("$_pkgname")
-source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$_pkgver.tar.gz"
+source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 	"$pkgname.desktop")
-sha512sums=('d2a7ee3060c80cdb0d137a72ef4821cd8e37d8f3983814104b816f6af5fbbd501d86aa2c5e0633884089c7fcc0b1feaf4bfd470b88bf2a6dfcb0a5983f09a063'
+sha512sums=('071982e3f9c7c1b11ee93bed95739ec54e948a0bc0609ca14b051cb55e1c566a63891cf19561d5a72501ee61f4897975ecee2e401ad2e390942b11ab6d1d837e'
             '37148505c9801c21d5e410f6a54934e290c1e009f6eaf7ecc87447c599253b1865887243c88585ea3ebee2402a26abefe918945285ac2649166ea71f35fbb117')
 install="$pkgname.install"
 
 build() {
-	cd "$srcdir"/"$_pkgname"-"$_pkgver"/ || exit 1
+	cd "$srcdir"/"$_pkgname"-"$pkgver"/ || exit 1
 	JAVA_HOME=/usr/lib/jvm/java-21-openjdk ./gradlew -F lenient -x test build
 }
 
@@ -39,20 +38,20 @@ package() {
 	mkdir -p "$pkgdir"/usr/share/pixmaps/
 
 	# Install the software.
-	cp -r "$srcdir"/"$_pkgname"-"$_pkgver"/lib/ "$pkgdir"/usr/share/java/"$_pkgname"/
+	cp -r "$srcdir"/"$_pkgname"-"$pkgver"/lib/ "$pkgdir"/usr/share/java/"$_pkgname"/
 
 	declare -ar _binaries=("haveno-apitest" "haveno-cli" "haveno-daemon" "haveno-desktop" "haveno-inventory" "haveno-monitor" "haveno-relay" "haveno-seednode" "haveno-statsnode")
 
 	for _binary in "${_binaries[@]}"; do
-		install -Dm755 "$srcdir"/"$_pkgname"-"$_pkgver"/"$_binary" "$pkgdir"/usr/share/java/"$_pkgname"/
+		install -Dm755 "$srcdir"/"$_pkgname"-"$pkgver"/"$_binary" "$pkgdir"/usr/share/java/"$_pkgname"/
 		ln -s /usr/share/java/"$_pkgname"/"$_binary" "$pkgdir"/usr/bin/
 	done
 
-	install -Dm644 "$srcdir"/"$_pkgname"-"$_pkgver"/desktop/package/linux/icon.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
+	install -Dm644 "$srcdir"/"$_pkgname"-"$pkgver"/desktop/package/linux/icon.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
 	install -Dm644 "$srcdir"/"$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 
 	# Install the documentation.
-	cp -r "$srcdir"/"$_pkgname"-"$_pkgver"/docs/* "$pkgdir"/usr/share/doc/"$_pkgname"/
+	cp -r "$srcdir"/"$_pkgname"-"$pkgver"/docs/* "$pkgdir"/usr/share/doc/"$_pkgname"/
 	find "$pkgdir"/usr/share/doc/"$_pkgname"/ -type d -exec chmod 755 {} +
 	find "$pkgdir"/usr/share/doc/"$_pkgname"/ -type f -exec chmod 644 {} +
 }
