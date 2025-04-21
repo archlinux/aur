@@ -18,6 +18,8 @@ med
 netcdf
 opencascade
 openmpi
+pcl
+pybind11
 pyside6
 pyside6-tools
 python-yaml
@@ -80,6 +82,7 @@ build() {
     -D BUILD_DESIGNER_PLUGIN=ON \
     -D FREECAD_QT_VERSION=6 \
     -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -D CMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects -fPIC -w" \
     -D CMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects -fPIC -w" \
     -D CMAKE_INSTALL_DATADIR=/usr/share/freecad \
@@ -103,7 +106,7 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  
+
   # tools
   install -Dm755 FreeCAD/src/Tools/{freecad-thumbnailer,fcinfo} -t "$pkgdir/usr/bin/"
 
