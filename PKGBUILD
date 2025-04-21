@@ -4,7 +4,7 @@
 
 _gemname="sup"
 pkgname="${_gemname}"
-pkgver=1.2
+pkgver=1.3
 pkgrel=3
 pkgdesc='Console-based email client for people with a lot of email. Great mutt alternative.'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
-b2sums=('2ec78cfd84973671759479a9197355903e881ef5f1324c9946b785711eeff1fce3a2dbea993dedf90d0b37dad95fa07051d627e587515e9c54193206eabcb14e')
+b2sums=('800736dd3939640ac0931926ac6759e658df21bb0b14886e97715d5a93aa6c89a66de992ff6e408d9d8de5dde810887089ffb8cffd28f4bc6fcc1f0ecb7aab1b')
 
 package() {
   cd "$srcdir"
