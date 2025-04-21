@@ -1,10 +1,11 @@
-# Maintainer: MareDevi <maredevi at foxmail dot com>
+# Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 
 pkgname=readest
-pkgver=0.9.35
-pkgrel=2
-pkgdesc='Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface'
-arch=('x86_64')
+_Packagename=Readest
+pkgver=0.9.36
+pkgrel=1
+pkgdesc="Modern, feature-rich ebook reader designed for avid readers offering seamless cross-platform access, powerful tools, and an intuitive interface"
+arch=('x86_64' 'aarch64' 'i686')
 url='https://github.com/readest/readest'
 license=('AGPL-3.0-or-later')
 depends=(
@@ -22,13 +23,32 @@ depends=(
   'webkit2gtk-4.1'
   'gst-plugins-good'
 )
-install="$pkgname.install"
-source=("$url/releases/download/v$pkgver/Readest_${pkgver}_amd64.deb")
-sha256sums=('cfeadc7d1dfb61990052003a523e95f281520355c7578b8635a427e6d47bbec3')
+makedepends=('git' 'openssl' 'librsvg' 'pnpm' 'nodejs' 'rust')
+provides=('readest')
+conflicts=('readest' 'readest-bin')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
+options=(!lto)  # Disable Link Time Optimization. Otherwise build fails with some 'cc' linking error.
+
+prepare() {
+  cd $pkgname
+  git submodule update --init --recursive
+  pnpm install
+  pnpm --filter @readest/readest-app setup-pdfjs
+  # Disable updater artifacts in tauri.conf.json 
+  # Otherwise it will try to sign the built package with developer's GPG key which is unnecessary, 
+  # and then it causes build failure because the GPG key is not available in the build environment.
+  # Also the updater artifacts are not needed for the AUR package.
+  # For more details, see https://github.com/tauri-apps/tauri/issues/13259
+  sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' \
+    apps/$pkgname-app/src-tauri/tauri.conf.json
+}
+
+build() {
+  cd $pkgname
+  pnpm tauri build -b deb
+}
 
 package() {
-
-  # Extract package data
-  tar -xz -f data.tar.gz -C "$pkgdir"
-
+  cp -a $pkgname/target/release/bundle/deb/$_Packagename_*/data/* "${pkgdir}"
 }
