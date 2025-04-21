@@ -1,6 +1,6 @@
 pkgbase = gj-git
 	pkgdesc = gj is a dead simple journaling CLI. Type your thoughts into the terminal — they get logged to Notion, one page per day. No clutter, no fuss.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/efekrskl/gj
 	arch = x86_64
