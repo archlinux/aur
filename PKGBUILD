@@ -4,7 +4,7 @@
 _id=pjmbgaakjkbhpopmakjoedenlfdmcdgm
 _name=browserpass-extension
 pkgname=browserpass-chrome
-pkgver=3.9.0
+pkgver=3.10.2
 pkgrel=1
 pkgdesc="Chrome extension for Browserpass, browser extension for zx2c4's pass (password manager)"
 arch=('any')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.crx::${url}/releases/download/${pkgver}/browserpas
         "${pkgname}-${pkgver}.crx.asc::${url}/releases/download/${pkgver}/browserpass-github-${pkgver}.crx.asc"
         "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/browserpass/browserpass-extension/master/LICENSE")
 noextract=("${pkgname}-${pkgver}.crx")
-b2sums=('e05c978ef32f735ab4ac62ed245dd32d6ed3c76c3712f62c32a9580a859fe5fc9102b9e700949c18cbe7a842b6b51fd9c7c2b3c6b1141b42881f1c21ecbe9d25'
+b2sums=('ba38d8dfdb90a700cb0116f2343e59506834c8f0008e37863f671b2271c125d9b68897ed30ce1a25f86e02d6d01e3aa2eba33735f40656159d22c369b3f57844'
         'SKIP'
         '9e54d91167393d3f3159c3598aa729434c1e7d8ef39083aa40ba6241c9b4b560c64bac1af43efa7be2dac72d8c35413b057b9f67eb41934e10bd8c733437e407')
 validpgpkeys=('56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601')
