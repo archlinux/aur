@@ -1,0 +1,4 @@
+[vcvrack-sonusmodular]
+source = "gitlab"
+gitlab = "sonusdept/sonusmodular"
+use_max_tag = true
