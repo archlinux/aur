@@ -25,5 +25,7 @@ package() {
 	tar xf data.tar.zst -C "${pkgdir}"
 	install -d "${pkgdir}/opt/${_pkgname}"
     	install -dm755 "$pkgdir/usr/bin"
+        nm -D "$pkgdir/usr/bin/chatterino"|grep _70|awk '{print $2 " " $2 | "sed s/70$/76/"}' > map.txt
+        patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.70,} --replace-needed libicui18n.so{.70,}
 }
 sha256sums_x86_64=('8a68cf764716a7c68941c6288335a81888d2bd9df44fa4d1d866cc0ca681aba7')
