@@ -5,7 +5,7 @@ _channel=beta
 _rel=1
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -22,7 +22,8 @@ optdepends=('libappindicator-gtk3: tray icon')
 provides=('mullvad-vpn')
 conflicts=('mullvad-vpn')
 install='mullvad-vpn.install'
-source=('mullvad-vpn.sh')
+source=('mullvad-vpn.sh'
+        'apparmor_mullvad')
 source_x86_64=(
   "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
 #  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
@@ -31,7 +32,8 @@ source_aarch64=(
   "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
 #  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
   )
-sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
+sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
+            'a7b99f7acbb7f99c6ab8ecf5bb674310294c29a561d9bd7c531508841942cab3')
 sha256sums_x86_64=('07236e9db87c5b58b21682df1594a24a7ea30a0570753503dbbb934e0b244af9'
                    'SKIP')
 sha256sums_aarch64=('43f7497f176fb7f5a503c2c4bc290165c854902b095e63520092a4233832cc07'
@@ -44,6 +46,9 @@ package() {
 
   # Link to the GUI binary
   install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
+
+  # Fix syntax error in Apparmor profile
+  install -Dm644 "$srcdir/apparmor_mullvad" -t "$pkgdir/opt/Mullvad VPN/"
 
   # Symlink apparmor profile to allow Electron sandbox to work
   install -d "$pkgdir/etc/apparmor.d"
