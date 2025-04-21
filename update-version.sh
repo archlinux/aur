@@ -8,12 +8,13 @@ version=$(curl -sL \
 	jq "map(select(.prerelease))[0].name" -r |\
 	tr -d "v")
 echo $version
-sha256sum=$(curl -sL https://github.com/quarto-dev/quarto-cli/releases/download/v$version/quarto-$version-checksums.txt | grep "amd.*deb" | cut -f1 -d" ")
-echo $sha256sum
+sha256sumamd64=$(curl -sL https://github.com/quarto-dev/quarto-cli/releases/download/v$version/quarto-$version-checksums.txt | grep "amd.*deb" | cut -f1 -d" ")
+sha256sumarm64=$(curl -sL https://github.com/quarto-dev/quarto-cli/releases/download/v$version/quarto-$version-checksums.txt | grep "arm.*deb" | cut -f1 -d" ")
 
-sed "s/:version:/$version/;s/:shasum:/$sha256sum/" PKGBUILD.template > PKGBUILD
+sed "s/:version:/$version/;s/:shasum_amd64:/$sha256sumamd64/;s/:shasum_arm64:/$sha256sumarm64/" PKGBUILD.template > PKGBUILD
 
 makepkg --printsrcinfo > .SRCINFO
+
 git add -A
 git commit -am "Autorelease version $version"
 git push

@@ -2,9 +2,9 @@
 
 pkgname=quarto-cli-bin-pre-release
 pkgver=":version:"
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source scientific and technical publishing system built on Pandoc  (pre-release binary from official repo)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL')
 url="http://quarto.org/"
 depends=('bash')
@@ -12,7 +12,8 @@ makedepends=()
 conflicts=("quarto-cli" "quarto-cli-bin" "quarto-cli-git")
 provides=("quarto")
 options=(!strip)
-source=(https://github.com/quarto-dev/quarto-cli/releases/download/v${pkgver}/quarto-${pkgver}-linux-amd64.deb)
+source_x86_64=(https://github.com/quarto-dev/quarto-cli/releases/download/v${pkgver}/quarto-${pkgver}-linux-amd64.deb)
+source_aarch64=(https://github.com/quarto-dev/quarto-cli/releases/download/v${pkgver}/quarto-${pkgver}-linux-arm64.deb)
 
 package() {
     tar xf data.tar.gz -C "${pkgdir}"
@@ -24,5 +25,6 @@ package() {
     ln -s "/opt/quarto/bin/tools/${CARCH}/pandoc" "${pkgdir}/opt/quarto/bin/tools/pandoc" 
 }
 
-sha256sums=(':shasum:')
+sha256sums_x86_64=(':shasum_amd64:')
+sha256sums_aarch64=(':shasum_arm64:')
 
