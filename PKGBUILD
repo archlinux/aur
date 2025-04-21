@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 options=('!strip')
 depends=()
 source=("LICENSE.txt")
-source_x86_64=("${_pkgname}-{$pkgver}-_amd64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_v${pkgver}_amd64.deb")
-source_aarch64=("${_pkgname}-_arm64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_v${pkgver}_arm64.deb")
+source_x86_64=("${_pkgname}-${pkgver}-_amd64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_${pkgver}_amd64.deb")
+source_aarch64=("${_pkgname}-${pkgver}-_arm64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_${pkgver}_arm64.deb")
 
 
 
@@ -24,8 +24,8 @@ source_aarch64=("${_pkgname}-_arm64.deb::https://releases.warp.dev/stable/v${_pk
 
 
 sha256sums=('1057b326e587edf2f81dc35c6c9cdd2e63d9af1c68e331d7ac8a4bc22ff9de49')
-sha256sums_x86_64=('d3610e2616dcc5bb0d125f01beba2ed74963b074347a5ca6a1f1524bdbc39c73')
-sha256sums_aarch64=('655dd7ff95f32948857ae8378614a5b3022c03fec91ef260a0b392bd39e1d291')
+sha256sums_x86_64=('e54858c6f6b51846667550b3d466082aa45d1fb5b409a85bffe794e89e7c72d0')
+sha256sums_aarch64=('ec969c6f303ac27630cc0df05cac4fb5b55ff6ffb9e5e114a966eda7d177972e')
 
         package() {
 	tar xf data.tar.xz -C "${pkgdir}"
