@@ -1,6 +1,6 @@
 pkgbase = cantata-qt6-git
 	pkgdesc = Qt6 graphical client for Music Player Daemon (MPD), nullobsi fork
-	pkgver = 3.3.0.r2.g7097547
+	pkgver = 3.3.0.r3.gd44b606
 	pkgrel = 1
 	url = https://github.com/nullobsi/cantata
 	arch = x86_64
@@ -33,8 +33,6 @@ pkgbase = cantata-qt6-git
 	provides = cantata
 	conflicts = cantata
 	source = cantata-nullobsi::git+https://github.com/nullobsi/cantata.git
-	source = cantata-QRegularExpression.patch::https://github.com/nullobsi/cantata/pull/54/commits/aed0b8cdb60bb100e15c0195dbd84a4a18edc35d.patch
 	sha256sums = SKIP
-	sha256sums = 553c27ca42e7bbd09ce7f63dfa747df06826c5ef8c3ddab4ac3f925f00e5f2fb
 
 pkgname = cantata-qt6-git
