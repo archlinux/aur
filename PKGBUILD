@@ -3,8 +3,8 @@
 
 pkgname=vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (Git version)"
-pkgver=25.0.branchpoint.r1199.gc64b8c8
-pkgrel=2
+pkgver=25.1.branchpoint.r205.g5ccf28c
+pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 depends=('libdrm' 'libxcb' 'libxshmfence' 'libx11' 'spirv-tools' 'systemd-libs' 'vulkan-icd-loader'
          'wayland' 'zlib' 'zstd')
@@ -64,11 +64,8 @@ build() {
     -D vulkan-layers= \
     -D egl=disabled \
     -D gallium-extra-hud=false \
-    -D gallium-nine=false \
-    -D gallium-opencl=disabled \
     -D gallium-va=disabled \
     -D gallium-vdpau=disabled \
-    -D gallium-xa=disabled \
     -D gbm=disabled \
     -D gles1=disabled \
     -D gles2=disabled \
@@ -77,8 +74,6 @@ build() {
     -D libunwind=enabled \
     -D llvm=enabled \
     -D lmsensors=disabled \
-    -D osmesa=false \
-    -D shared-glapi=disabled \
     -D microsoft-clc=disabled \
     -D valgrind=enabled \
     -D android-libbacktrace=disabled \
