@@ -1,7 +1,7 @@
 # Maintainer: Antonio Prates <hello@aprates.dev>
 
 pkgname=fatscript-fry
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="fry - FatScript Interpreter"
 arch=('any')
