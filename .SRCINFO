@@ -1,0 +1,14 @@
+pkgbase = bencher-cli
+	pkgdesc = Detect and prevent performance regressions before they make it to production with continuous benchmarking
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://bencher.dev
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = rust
+	options = !lto
+	source = git+https://github.com/bencherdev/bencher.git#commit=1f44a33e704dcd66db75aa2d1a555301e7af1724
+	md5sums = SKIP
+
+pkgname = bencher-cli
