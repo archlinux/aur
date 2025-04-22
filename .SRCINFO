@@ -1,7 +1,7 @@
 pkgbase = winamax-bin
 	pkgdesc = Winamax Poker
 	pkgver = 2.21.0
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://www.winamax.fr
 	arch = x86_64
 	license = unknown
