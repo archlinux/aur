@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PICS
-_pkgver=2.50.0
+_pkgver=2.51.0
 pkgname=r-${_pkgname,,}
-pkgver=2.50.0
+pkgver=2.51.0
 pkgrel=1
 pkgdesc='Probabilistic inference of ChIP-seq'
 arch=('x86_64')
@@ -23,10 +23,22 @@ optdepends=(
   r-rtracklayer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a66c88950db8a3dfaf002d7f628db252664a7b343824602e10d753c9ab60905')
+sha256sums=('67375d83201f039629ea567c18a53e0e71a60aaa4ce74b9800491435458a90b9')
+prepare() {
+  cd $srcdir/${_pkgname}
+  # For  R 4.5.0+
+  sed -i src/segment.c \
+    -e 's|Calloc|R_Calloc|g' \
+    -e 's|Realloc|R_Realloc|g' \
+    -e 's|Free|R_Free|g'
+  # sed -i src/Rgshhs.c -e 's|error(msg)|error("%s",msg)|g'
+
+  cd $srcdir
+  tar -czf $_pkgname-$_pkgver.tar.gz ${_pkgname}
+}
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  R CMD INSTALL ${_pkgname}-${_pkgver}.tar.gz -l "${srcdir}"
 }
 
 package() {
