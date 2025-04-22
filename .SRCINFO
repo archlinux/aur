@@ -1,7 +1,7 @@
 pkgbase = mycorrhiza-git
-	pkgdesc = Filesystem and git-based wiki engine written in Go using mycomarkup (latest commit)
+	pkgdesc = Filesystem and git-based wiki engine written in Go using mycomarkup (development version)
 	pkgver = 1.15.1.r4.gda84a76
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bouncepaw/mycorrhiza
 	arch = aarch64
 	arch = armv7h

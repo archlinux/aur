@@ -5,8 +5,8 @@
 _pkgname='mycorrhiza'
 pkgname="$_pkgname-git"
 pkgver=1.15.1.r4.gda84a76
-pkgrel=2
-pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (latest commit)'
+pkgrel=3
+pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (development version)'
 arch=('aarch64' 'armv7h' 'x86_64')
 url='https://github.com/bouncepaw/mycorrhiza'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
