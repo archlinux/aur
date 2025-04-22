@@ -1,6 +1,6 @@
 pkgbase = cisco-secure-client
 	pkgdesc = Cisco AnyConnect Secure Mobility Client
-	pkgver = 5.1.6.103
+	pkgver = 5.1.9.113
 	pkgrel = 1
 	url = https://www.cisco.com/site/us/en/products/security/secure-client/index.html
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cisco-secure-client
 	optdepends = webkit2gtk: required by acwebhelper
 	conflicts = cisco-anyconnect
 	options = !strip
-	source = cisco-secure-client-linux64-5.1.6.103-predeploy-k9.tar.gz::https://www.aim.aoyama.ac.jp/files/vpn/cisco-secure-client-linux64-5.1.6.103-predeploy-k9.tar.gz
-	sha256sums = 3e0b433f704c697709da92b032408e26a63da012f318f75a6cd9ad45fa2ae346
+	source = cisco-secure-client-linux64-5.1.9.113-predeploy-k9.tar.gz::https://serv65.f2h.co.il/files/oaxdnpjr5ne7|bb7c733e45ae6293a957698026c9ac77
+	sha256sums = 76982a8d23743610e00e9a4790d6a5acc6605f26fb7866faff4b6f1e00096551
 
 pkgname = cisco-secure-client

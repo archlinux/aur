@@ -2,7 +2,7 @@
 
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
-pkgver=5.1.6.103
+pkgver=5.1.9.113
 pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
@@ -21,10 +21,10 @@ license=('custom')
 options=('!strip')
 
 source=(
-    "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::https://www.aim.aoyama.ac.jp/files/vpn/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz"
+    "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::https://serv65.f2h.co.il/files/oaxdnpjr5ne7|bb7c733e45ae6293a957698026c9ac77"
 )
 
-sha256sums=('3e0b433f704c697709da92b032408e26a63da012f318f75a6cd9ad45fa2ae346')
+sha256sums=('76982a8d23743610e00e9a4790d6a5acc6605f26fb7866faff4b6f1e00096551')
 
 package() {
     mkdir -p "${pkgdir}/opt/cisco/anyconnect"
@@ -114,32 +114,8 @@ package() {
     touch "${pkgdir}/opt/cisco/secureclient/AnyConnectLocalPolicy.xml"
     cat <<EOF >"${pkgdir}/opt/cisco/secureclient/AnyConnectLocalPolicy.xml"
 <?xml version="1.0" encoding="UTF-8"?>
-<AnyConnectLocalPolicy acversion="5.1.2.42" xmlns="http://schemas.xmlsoap.org/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.xmlsoap.org/encoding/ AnyConnectLocalPolicy.xsd">
+<AnyConnectLocalPolicy acversion="5.1.9.113" xmlns="http://schemas.xmlsoap.org/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.xmlsoap.org/encoding/ AnyConnectLocalPolicy.xsd">
     <BypassDownloader>true</BypassDownloader>
-    <ExcludeFirefoxNSSCertStore>false</ExcludeFirefoxNSSCertStore>
-    <FipsMode>false</FipsMode>
-    <OCSPRevocation>false</OCSPRevocation>
-    <RestrictHelpWebDeploy>false</RestrictHelpWebDeploy>
-    <RestrictLocalizationWebDeploy>false</RestrictLocalizationWebDeploy>
-    <RestrictPreferenceCaching>false</RestrictPreferenceCaching>
-    <RestrictResourceWebDeploy>false</RestrictResourceWebDeploy>
-    <RestrictScriptWebDeploy>false</RestrictScriptWebDeploy>
-    <RestrictServerCertStore>false</RestrictServerCertStore>
-    <RestrictTunnelProtocols>false</RestrictTunnelProtocols>
-    <RestrictWebLaunch>false</RestrictWebLaunch>
-    <StrictCertificateTrust>false</StrictCertificateTrust>
-    <UpdatePolicy>
-        <AllowComplianceModuleUpdatesFromAnyServer>true</AllowComplianceModuleUpdatesFromAnyServer>
-        <AllowHelpUpdatesFromAnyServer>true</AllowHelpUpdatesFromAnyServer>
-        <AllowISEProfileUpdatesFromAnyServer>true</AllowISEProfileUpdatesFromAnyServer>
-        <AllowLocalizationUpdatesFromAnyServer>true</AllowLocalizationUpdatesFromAnyServer>
-        <AllowManagementVPNProfileUpdatesFromAnyServer>true</AllowManagementVPNProfileUpdatesFromAnyServer>
-        <AllowResourceUpdatesFromAnyServer>true</AllowResourceUpdatesFromAnyServer>
-        <AllowScriptUpdatesFromAnyServer>true</AllowScriptUpdatesFromAnyServer>
-        <AllowServiceProfileUpdatesFromAnyServer>true</AllowServiceProfileUpdatesFromAnyServer>
-        <AllowSoftwareUpdatesFromAnyServer>true</AllowSoftwareUpdatesFromAnyServer>
-        <AllowVPNProfileUpdatesFromAnyServer>true</AllowVPNProfileUpdatesFromAnyServer>
-    </UpdatePolicy>
 </AnyConnectLocalPolicy>
 EOF
 }
