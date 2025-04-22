@@ -3,7 +3,7 @@
 pkgname=curseforge-bin
 _pkgname=${pkgname%-bin}
 _app="CurseForge"
-pkgver=1.275.1.24561
+pkgver=1.276.2.25131
 pkgrel=1
 pkgdesc="Download and manage your addons, custom content, and mods with the CurseForge app"
 arch=('x86_64')
@@ -40,7 +40,7 @@ depends=(
 optdepends=('libappindicator-gtk3: To show a system tray icon')
 source=("${pkgname}-${pkgver}.deb::https://curseforge.overwolf.com/downloads/${_pkgname}-latest-linux.deb"
         "LICENSE")
-sha256sums=('da92ace33c1494ea8dc8e3304b80e72354aff61ba9e09ba02672dbd2e0bcbee6'
+sha256sums=('8dd4f8a204dc05e07e1d7f54145226b67c097f335a7187442539b4a17f0a8956'
             '2ea1195615627a883e777f846f4fb356ad361d8edc7988055e2e8e51c3fddcc1')
 options=(!strip !debug)
 conflicts=('curseforge')
