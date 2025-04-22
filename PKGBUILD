@@ -18,7 +18,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/velo.sh" "$pkgdir/usr/local/bin/velo"
+  install -Dm755 "$srcdir/velo.sh" "$pkgdir/usr/bin/tea"
   install -Dm644 "$srcdir/velo.sh" "$pkgdir/usr/share/doc/velo/velo.sh"
 }
-
