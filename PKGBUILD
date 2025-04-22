@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=PSMatch
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,6 +17,8 @@ depends=(
   r-protgenerics
   r-qfeatures
   r-s4vectors
+  r-spectra
+  r-iranges
 )
 checkdepends=(
   r-msdata
@@ -34,20 +36,20 @@ optdepends=(
   r-mzr
   r-rmarkdown
   r-rpx
-  r-spectra
+  r-vdiffr
   r-summarizedexperiment
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cf954495b58b7d4bb5af2b1f09f7f572')
-b2sums=('567505922597d28f624a25a6d4af5e74e0928e526e0bcac605253eca7db8cb9f28b70a2b55bb4ceb67b0beefd08e3ef39effb899c865829036f66d2aa27f2962')
+md5sums=('5fc6c85bbcf8e253a156b84c168c96b7')
+b2sums=('26b1275c7da6c26aee5e22046b88ea8cb9ab36a45567dfc6bfdc84db67ad75acc98fff41ac08d519c6821fed1cae252e2cb8ef5e8318b7b63dbe42c95f2aac19')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
