@@ -10,12 +10,14 @@ pkgbase = scopy-appimage
 	depends = hicolor-icon-theme
 	depends = glibc
 	conflicts = scopy-git
-	noextract = Scopy-v2.0.0-Linux-AppImage.zip
+	noextract = Scopy-v2.0.0-Linux-x86_64-AppImage.zip
 	options = !strip
-	source_x86_64 = Scopy-v2.0.0-Linux-AppImage.zip::https://github.com/analogdevicesinc/scopy/releases/download/v2.0.0/Scopy-v2.0.0-Linux-x86_64-AppImage.zip
+	source_x86_64 = https://github.com/analogdevicesinc/scopy/releases/download/v2.0.0/Scopy-v2.0.0-Linux-x86_64-AppImage.zip
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
 	sha256sums_x86_64 = 8d5d4e26c3a98ef0f417d867e4c8c8911cafbc8a59e4983fb0bcf41e7083314e
 	sha256sums_x86_64 = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
+	source_aarch64 = https://github.com/analogdevicesinc/scopy/releases/download/v2.0.0/Scopy-v2.0.0-Linux-x86_64-AppImage.zip
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
 	sha256sums_aarch64 = 8d5d4e26c3a98ef0f417d867e4c8c8911cafbc8a59e4983fb0bcf41e7083314e
 	sha256sums_aarch64 = 589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2
 
