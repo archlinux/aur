@@ -1,9 +1,9 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=dektec-avfifo-examples
 pkgver=2023.2
-pkgrel=9
-_sdkver=2025.01.0
+pkgrel=10
+_sdkver=2025.04.0
 pkgdesc='Code examples demonstrating the AvFifo API for receiving and transmitting SMPTE 2110 streams'
 arch=('x86_64')
 url="https://www.dektec.com/downloads/SDK/#linux"
@@ -16,9 +16,9 @@ depends=(
 )
 makedepends=('make')
 source=("https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdkver}.tar.gz"
-        "https://www.dektec.com/products/SDK/AvFifoExamples/downloads/avfifo_examples.tar.gz")
-sha256sums=('47ee7d8ef0bea6c6e57723608af22b499eb9d2f790b45609015c853c7b9f7e15'
-            '378109bd8548ff6d210f78efd24057022c5fb1e96e74a570b62fab7941c1c8bb')
+        "https://www.dektec.com/products/SDK/AvFifoExamples/downloads/avfifoexamples.tar.gz")
+sha256sums=('37fe7622b6b609adda95f21c4eed6fca6e25cb156e34cace71191b35749ded94'
+            '309a760220350f5733b31ca3406289be7ce729f2dc0df813a28c90181148922f')
 
 prepare() {
   # Define common paths
