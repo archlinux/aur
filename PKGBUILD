@@ -2,8 +2,8 @@
 # Contributor: KafCoppelia <k740677208@gmail.com>
 
 pkgname=catppuccin-fcitx5-git
-pkgver=r18.3471b91
-pkgrel=2
+pkgver=r19.383c27a
+pkgrel=1
 pkgdesc="Soothing pastel theme for Fcitx5"
 arch=('any')
 url="https://github.com/catppuccin/fcitx5"
