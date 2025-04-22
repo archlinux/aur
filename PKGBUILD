@@ -5,7 +5,7 @@
 _pkgname='payme'
 pkgname="${_pkgname}-git"
 pkgver=1.2.3.r2.g4406134
-pkgrel=1
+pkgrel=2
 pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/jovandeginste/payme'
