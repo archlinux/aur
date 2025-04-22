@@ -3,7 +3,7 @@ pkgbase=python-moteus
 pkgname=(python-moteus python-moteus-gui)
 _name0=${pkgname[0]#python-}
 _name1=${pkgname[1]#python-}
-pkgver=0.3.79
+pkgver=0.3.80
 pkgrel=1
 pkgdesc="moteus brushless controller library and tools"
 url="https://pypi.org/project/moteus/"
@@ -15,8 +15,8 @@ source=("https://files.pythonhosted.org/packages/py3/${_name0::1}/$_name0/${_nam
         "https://files.pythonhosted.org/packages/py3/${_name1::1}/$_name1/${_name1//-/_}-$pkgver-py3-none-any.whl"
         "https://raw.githubusercontent.com/mjbots/fdcanusb/master/70-fdcanusb.rules")
 
-sha256sums=('9bfb2ec30aecb765a88e3aca419e6de6e4d9770cdae252eab920549ff6c7cf2f'
-            '44076ad17f106bcfea2229b41b16ce245e1d64302240985c541f3a8316094856'
+sha256sums=('5aed279d3ba0a4fccbcfe55a5388d23416daf3ed8ffe34883a0832c1685e9d23'
+            '89fe942dfce43f11c3fc95605a060ee0e62fdf91aed1570ebd2a25a0de744d02'
             '6008f3b20baca0e4a077bc45c8e541717d6e3fc63ba7621dc3b1bcb14d86cb23')
 
 package_python-moteus() {
