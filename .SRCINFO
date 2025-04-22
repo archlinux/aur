@@ -1,0 +1,11 @@
+pkgbase = unarchiver-bsdtar-shim
+	pkgdesc = Do not use
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	depends = libarchive
+	depends = dash
+	provides = unarchiver
+	conflicts = unarchiver
+
+pkgname = unarchiver-bsdtar-shim
