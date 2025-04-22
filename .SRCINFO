@@ -1,6 +1,6 @@
 pkgbase = wsrx-git
 	pkgdesc = Controlled TCP-over-WebSocket forwarding tunnel.
-	pkgver = 0.4.5.r0.ga5442ac
+	pkgver = 0.4.9.r0.g91fbc3a
 	pkgrel = 1
 	url = https://github.com/XDSEC/WebSocketReflectorX
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = wsrx-git
 	depends = freetype2
 	depends = fontconfig
 	provides = wsrx
+	options = !lto
 	source = git+https://github.com/XDSEC/WebSocketReflectorX.git
 	sha256sums = SKIP
 

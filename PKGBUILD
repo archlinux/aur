@@ -2,7 +2,7 @@
 
 _pkgname='wsrx'
 pkgname="wsrx-git"
-pkgver=0.4.5.r0.ga5442ac
+pkgver=0.4.9.r0.g91fbc3a
 pkgrel=1
 pkgdesc="Controlled TCP-over-WebSocket forwarding tunnel."
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=("gcc-libs" "pcre2" "graphite" "glib2" "brotli" "harfbuzz" "libpng" "bzi
 provides=("${_pkgname}")
 source=("git+https://github.com/XDSEC/WebSocketReflectorX.git")
 sha256sums=('SKIP')
+options=(!lto)
 
 pkgver() {
     cd "${srcdir}/WebSocketReflectorX"
