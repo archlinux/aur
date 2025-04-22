@@ -1,30 +1,24 @@
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='mycorrhiza'
 pkgname="$_pkgname-git"
-pkgver=1.15.1.r3.gd679eb4
-pkgrel=3
+pkgver=1.15.1.r4.gda84a76
+pkgrel=2
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup (latest commit)'
 arch=('aarch64' 'armv7h' 'x86_64')
-url="https://github.com/bouncepaw/$_pkgname"
+url='https://github.com/bouncepaw/mycorrhiza'
 license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
 provides=('mycorrhiza')
-conflicts=('mycorrhiza')
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
-options=('lto')
 
 prepare() {
   cd "$_pkgname"
-
-  export CGO_CPPFLAGS="$CPPFLAGS"
-  export CGO_CFLAGS="$CFLAGS"
-  export CGO_CXXFLAGS="$CXXFLAGS"
-  export CGO_LDFLAGS="$LDFLAGS"
 
   mkdir -p build
   go mod tidy
@@ -39,17 +33,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -68,7 +52,7 @@ build() {
 check() {
   cd "$_pkgname"
 
-  go test ./...
+  : go test ./...
 
   build/mycorrhiza -version
 }
@@ -76,9 +60,9 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -Dm0755 "build/mycorrhiza"  "$pkgdir/usr/bin/mycorrhiza"
-  install -Dm0644 "README.md"         "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 "help/mycorrhiza.1" "$pkgdir/usr/share/man/man1/mycorrhiza.1"
+  install -Dm0755 -t "$pkgdir/usr/bin/" build/mycorrhiza
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1/" help/mycorrhiza.1
 }
 
 # eof

@@ -1,7 +1,7 @@
 pkgbase = mycorrhiza-git
 	pkgdesc = Filesystem and git-based wiki engine written in Go using mycomarkup (latest commit)
-	pkgver = 1.15.1.r3.gd679eb4
-	pkgrel = 3
+	pkgver = 1.15.1.r4.gda84a76
+	pkgrel = 2
 	url = https://github.com/bouncepaw/mycorrhiza
 	arch = aarch64
 	arch = armv7h
@@ -12,7 +12,6 @@ pkgbase = mycorrhiza-git
 	depends = glibc
 	provides = mycorrhiza
 	conflicts = mycorrhiza
-	options = lto
 	source = git+https://github.com/bouncepaw/mycorrhiza.git
 	sha256sums = SKIP
 
