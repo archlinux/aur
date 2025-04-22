@@ -9,7 +9,7 @@
 
 _proj=curl
 pkgname=curl-c-ares
-pkgver=8.12.1
+pkgver=8.13.0
 _git_tag="curl-${pkgver//./_}"
 pkgrel=1
 pkgdesc='command line tool and library for transferring data with URLs (built with c-ares)'
@@ -34,7 +34,7 @@ provides=('curl' 'libcurl.so')
 conflicts=('curl')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 source=("git+https://github.com/curl/${_proj}.git#tag=${_git_tag}?signed")
-sha512sums=('SKIP')
+sha512sums=('e7b52e5e534e786d2af4630809a3a02980b321e41e5ad26ec4c8c1bf840a9898ae8e67bda504437a30439584e5d668d57c7772ea5b2cfe093510d6bf34113f2e')
 
 prepare() {
   cd $_proj
@@ -94,8 +94,3 @@ package() {
   # license
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 COPYING
 }
-sha512sums=('d438f215b2e6023104af52961a8a8de9082bd8ceaf9a557f353b3b754b18510cccf37f33476eb896744559ccf26eadf6e1411c5f8f04fa9526af04df6439a7d8')
-sha512sums=('3ed91b678e318a62bbde32b986ebddb8c3ec2e5932462c9c368437414eaed85b4ecd5ae2d8d35c31c90a3a435d4cd9d26e1b91265e1b4396b6868641c629bd81')
-sha512sums=('40862a8065fa6dba931eb0adbd737934da402f9d906f1933edc143fb472867b1391fc3b044d22e08d7e5f175b305f67215ab977fec0df5c2f0a9442c2bf1dbfd')
-sha512sums=('40862a8065fa6dba931eb0adbd737934da402f9d906f1933edc143fb472867b1391fc3b044d22e08d7e5f175b305f67215ab977fec0df5c2f0a9442c2bf1dbfd')
-sha512sums=('2c19680c2f9f21f0474ae3513d86c2bbd1d8e8f393116190a449c4d4512b3f833f67d1248b8bd96fd088bb30203575952d9c6b1052ee5c6ebb3e76c32cd7018a')
