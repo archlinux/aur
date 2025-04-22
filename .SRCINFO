@@ -5,9 +5,9 @@ pkgbase = faircamp-git
 	url = https://simonrepp.com/faircamp
 	arch = x86_64
 	license = AGPL3
+	makedepends = cargo
 	makedepends = cmake
 	makedepends = git
-	makedepends = rust
 	depends = ffmpeg
 	depends = libvips>=8.13.3
 	depends = openslide
