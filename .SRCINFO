@@ -1,7 +1,7 @@
 pkgbase = python-acme
 	pkgdesc = ACME protocol implementation in Python
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/certbot/certbot
 	arch = any
 	license = Apache-2.0
