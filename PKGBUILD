@@ -2,17 +2,17 @@
 
 pkgname=blahaj-git
 _pkgname="${pkgname%-git}"
-pkgver=2.0.1.r16.8a35b5c
-pkgrel=2
+pkgver=2.2.0.r33.2f08a51
+pkgrel=1
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool (git version)"
+url="https://blahaj.geopjr.dev"
 arch=('x86_64')
-url="https://blahaj.queer.software"
-license=('BSD')
+license=('BSD-2-Clause')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('crystal' 'libyaml')
 makedepends=('git' 'shards')
-source=("${_pkgname}::git+https://github.com/GeopJr/BLAHAJ.git")
+source=("${_pkgname}::git+https://codeberg.org/GeopJr/BLAHAJ.git")
 sha256sums=('SKIP')
 
 pkgver() {
