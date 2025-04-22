@@ -1,0 +1,38 @@
+pkgbase = wine-tkg-staging-ntsync-bin
+	pkgdesc = A compatibility layer for running Windows programs (WOW64 with TkG-Staging and NTSYNC patches)
+	pkgver = 10.6
+	pkgrel = 1
+	url = https://github.com/Kron4ek/Wine-Builds
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = alsa-lib
+	depends = fontconfig
+	depends = freetype2
+	depends = gettext
+	depends = gnutls
+	depends = gst-plugins-base-libs
+	depends = libpcap
+	depends = libpulse
+	depends = libxcomposite
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = opencl-icd-loader
+	depends = pcsclite
+	depends = sdl2
+	depends = unixodbc
+	depends = v4l-utils
+	depends = wayland
+	depends = desktop-file-utils
+	depends = libgphoto2
+	depends = glibc
+	provides = wine=10.6
+	provides = wine-staging=10.6
+	provides = wine-wow64=10.6
+	conflicts = wine
+	source = https://github.com/Kron4ek/Wine-Builds/releases/download/10.6/wine-10.6-staging-tkg-ntsync-amd64-wow64.tar.xz
+	sha256sums = 0e0bb213885bb5abb858deb3a179d3b209bb3e80f91d12033504e9c170168463
+
+pkgname = wine-tkg-staging-ntsync-bin
