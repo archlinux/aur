@@ -1,0 +1,5 @@
+[iwasm]
+source = "git"
+git = "https://github.com/bytecodealliance/wasm-micro-runtime.git"
+prefix = "WAMR-"
+include_regex = "WAMR-\\d+\\.\\d+\\.\\d+"

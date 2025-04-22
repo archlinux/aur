@@ -1,0 +1,12 @@
+pkgbase = iwasm
+	pkgdesc = Executable binary built with WAMR VMCore, supporting WASI and CLI
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/bytecodealliance/wasm-micro-runtime
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	source = https://github.com/bytecodealliance/wasm-micro-runtime/archive/refs/tags/WAMR-2.2.0.tar.gz
+	b2sums = 5040c5961b0c421f6eb8f4fa8da74774da4d76eb2f26f8b67f71b4648a02945e66246837c348276ab8375d864ea2b19ee544f96e505cf850394d7f898edce060
+
+pkgname = iwasm
