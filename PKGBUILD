@@ -5,7 +5,7 @@ _pkgname=h5mread
 _pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast HDF5 reader"
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -15,13 +15,13 @@ depends=(
   r-iranges
   r-rhdf5
   r-rhdf5filters
-  r-rhdf5lib
   r-s4arrays
   r-s4vectors
   r-sparsearray
 )
 makedepends=(
   make
+  r-rhdf5lib
 )
 optdepends=(
   r-biocparallel
