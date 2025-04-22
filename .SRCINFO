@@ -1,7 +1,8 @@
 pkgbase = appimagetool-git
 	pkgdesc = Low-level tool to generate an AppImage from an existing AppDir
-	pkgver = r66.0483b6b
+	pkgver = r65.cb01153
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/AppImage/appimagetool
 	arch = aarch64
 	arch = armv7h

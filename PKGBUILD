@@ -2,8 +2,9 @@
 
 _pkgname="appimagetool"
 pkgname="${_pkgname}-git"
-pkgver=r66.0483b6b
+pkgver=r65.cb01153
 pkgrel=1
+epoch=1
 pkgdesc="Low-level tool to generate an AppImage from an existing AppDir"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/AppImage/${_pkgname}"
@@ -25,8 +26,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  git cherry-pick --empty=drop 3a05efc9de4685b834447f5ad74536b9eb61cc92
-  git cherry-pick --empty=drop d120a8c5f5bb5260aab15b2bc5c9707b49b7af2a
+  git cherry-pick -n --empty=drop d120a8c5f5bb5260aab15b2bc5c9707b49b7af2a
 }
 
 build() {
