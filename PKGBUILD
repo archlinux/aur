@@ -3,7 +3,7 @@
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
 pkgver=3.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-format archive and compression library - 32bit"
 arch=(x86_64)
 url="https://libarchive.org"
