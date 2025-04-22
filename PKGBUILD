@@ -2,7 +2,7 @@
 # Contributor: Julian <juliannfairfax@protonmail.com>
 
 pkgname=pipeline-gtk
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Watch YouTube and PeerTube videos in one place"
 arch=("x86_64" "aarch64" "riscv64")
@@ -13,10 +13,11 @@ makedepends=("blueprint-compiler" "cargo" "meson")
 conflicts=("tubefeeder")
 replaces=("tubefeeder")
 source=("https://gitlab.com/schmiddi-on-mobile/pipeline/-/archive/$pkgver/pipeline-$pkgver.tar.gz")
-sha256sums=('61788e2ce87557c28c5227685487500a7a572edec8b59d00a922dad36777869d')
+sha256sums=('44d2411f71a25e8d6f81e522c59643dd4ca744ff06dcf40113fda10428a33dfe')
 options=(!lto)
 
 prepare() {
+	cd pipeline-$pkgver
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
