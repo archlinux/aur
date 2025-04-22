@@ -1,16 +1,15 @@
-# Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
+# Maintainer: Petr Spacek <pspacek@isc.org>
 
 pkgname=dnsviz-git
-pkgver=v0.6.5.r162.82aa568
+pkgver=v0.11.1.r0.07631b3
 pkgrel=1
 pkgdesc="Tool suite for analysis and visualization of DNS and DNSSEC"
 arch=('any')
 url="https://github.com/dnsviz/dnsviz"
 license=('GPL2')
-depends=('python' 'python-dnspython' 'python-pygraphviz' 'python-m2crypto')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-optdepends=('python-libnacl: verify ed25519 signatures'
-            'bind: needed for some options involving zone files')
+depends=('python' 'python-cryptography' 'python-dnspython' 'python-pygraphviz' 'python-m2crypto')
+makedepends=('git' 'python-setuptools') # 'bzr', 'git', 'mercurial' or 'subversion'
+optdepends=('bind: needed for some options involving zone files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=(!emptydirs)
