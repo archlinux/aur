@@ -1,5 +1,5 @@
 pkgbase = freecord-git
-	pkgdesc = A Discord clone but more secure + proxy feature | under construction
+	pkgdesc = A Discord clone but more secure + proxy feature | under construction.(Use system-wide electron)
 	pkgver = 1.0.0.beta.r0.gd86a52e
 	pkgrel = 1
 	url = https://github.com/MR-MKZ/Freecord
@@ -9,8 +9,6 @@ pkgbase = freecord-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = asar
 	depends = electron30
