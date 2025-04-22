@@ -2,7 +2,7 @@
 
 _name="FlyingCarpet"
 pkgname="flying-carpet"
-pkgver=9.0.3
+pkgver=9.0.4
 pkgrel=1
 pkgdesc="File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'cargo-tauri')
 replaces=('flyingcarpet-cli')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('193d3302cdc59a96ec7a6201befbbb6dd96f614ea19e2afaeb449fd0cb7361366743c122196010b953bdd91a731c7f615f723b7cfff873e78bc834e04231f177')
+b2sums=('dee8b6ecede23d832b454a8a075df9a3d279b486a2129aa13ae2c23ad6e682fe56768818afcfbc77ff5b85d020149fe6110ce1f024af9d3994e3c0a5fb54c781')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
