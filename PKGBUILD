@@ -8,8 +8,8 @@
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 
 pkgname=ocaml-sqlite3
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.3.1
+pkgrel=1
 arch=('x86_64')
 license=('MIT')
 pkgdesc='SQLite3 bindings for OCaml'
@@ -21,7 +21,7 @@ replaces=('sqlite3-ocaml')
 conflicts=('sqlite3-ocaml')
 options=('!strip' 'staticlibs')
 source=("https://github.com/mmottl/sqlite3-ocaml/releases/download/${pkgver}/sqlite3-${pkgver}.tbz")
-sha256sums=('bb0db711691a8dfa24fe29ec4ecb6912444ad90e0f4c447af89831e6d1dffea5')
+sha256sums=('3b1f1e652e2be8f6c987c9de8b9d9fb54c9fdb948ac0850c8b9504bf82feea61')
 
 build() {
     cd "${srcdir}/sqlite3-${pkgver}"
