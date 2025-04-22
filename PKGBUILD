@@ -2,7 +2,7 @@
 
 _pkgname=nrf_regtool
 pkgname=python-${_pkgname}
-pkgver=9.0.1
+pkgver=9.1.0
 pkgrel=1
 pkgdesc='Generate memory-mapped binary files of peripheral register content, based on System View Description (SVD) files and configuration files.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://pypi.org/project/${_pkgname}/"
 license=(Apache-2.0)
 depends=('python' 'python-click' 'python-intelhex' 'python-tomli' 'python-svada' 'python-devicetree')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/n/nrf-regtool/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0c4b3e18251b81706739506a64f857011259bdd6d396ff56c5cd5ce3799e64ce')
+sha256sums=('8a7d659a1ccd06db72eed9af7351b2a097a2d0e911deeec4bdd8ae9d8e954b62')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
