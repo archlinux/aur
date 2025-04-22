@@ -1,18 +1,26 @@
 pkgbase = v2mixer-bin
 	pkgdesc = v2mixer, the movie editor, video mixer
 	pkgver = 1.20250419
-	pkgrel = 1
+	pkgrel = 2
 	url = http://v2mixer.livev2.com/
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = jre8-openjdk
 	source_x86_64 = http://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64.tgz
+	source_x86_64 = http://v2mixer.livev2.com/f/cms/10/sha256.txt
+	source_x86_64 = http://v2mixer.livev2.com/f/cms/10/md5.txt
 	source_x86_64 = v2mixer.desktop
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = 7e441f0cb26feddebad5622bfafd8271bd6db00ca64035339cbc40cdbde2de78
 	source_aarch64 = http://v2mixer.livev2.com/f/cms/10/v2mixer-linux-arm64.tgz
+	source_aarch64 = http://v2mixer.livev2.com/f/cms/10/sha256.txt
+	source_aarch64 = http://v2mixer.livev2.com/f/cms/10/md5.txt
 	source_aarch64 = v2mixer.desktop
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = 7e441f0cb26feddebad5622bfafd8271bd6db00ca64035339cbc40cdbde2de78
 

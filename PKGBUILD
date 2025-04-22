@@ -3,7 +3,7 @@
 
 pkgname=v2mixer-bin
 pkgver=1.20250419
-pkgrel=1
+pkgrel=2
 pkgdesc='v2mixer, the movie editor, video mixer'
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -12,19 +12,33 @@ depends=('jre8-openjdk')
 #makedepends=('zip')
 #depends=('jre8-openjdk' 'ffmpeg')
 
-source_x86_64=("http://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64.tgz"
+source_x86_64=('http://v2mixer.livev2.com/f/cms/10/v2mixer-linux-x86_64.tgz'
+	'http://v2mixer.livev2.com/f/cms/10/sha256.txt'
+	'http://v2mixer.livev2.com/f/cms/10/md5.txt'
 	'v2mixer.desktop')
-sha256sums_x86_64=('SKIP'
+sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP'
 	'7e441f0cb26feddebad5622bfafd8271bd6db00ca64035339cbc40cdbde2de78')
 
-source_aarch64=("http://v2mixer.livev2.com/f/cms/10/v2mixer-linux-arm64.tgz"
+source_aarch64=('http://v2mixer.livev2.com/f/cms/10/v2mixer-linux-arm64.tgz'
+	'http://v2mixer.livev2.com/f/cms/10/sha256.txt'
+	'http://v2mixer.livev2.com/f/cms/10/md5.txt'
 	'v2mixer.desktop')
-sha256sums_aarch64=('SKIP'
+sha256sums_aarch64=('SKIP' 'SKIP' 'SKIP'
 	'7e441f0cb26feddebad5622bfafd8271bd6db00ca64035339cbc40cdbde2de78')
+
+prepare() {
+	if [ $CARCH == 'aarch64' ]; then
+		grep v2mixer-linux-arm64.tgz sha256.txt | sha256sum -c || exit 1
+		grep v2mixer-linux-arm64.tgz md5.txt | md5sum -c || exit 1
+	else
+		grep v2mixer-linux-${CARCH}.tgz sha256.txt | sha256sum -c || exit 1
+		grep v2mixer-linux-${CARCH}.tgz md5.txt | md5sum -c || exit 1
+	fi
+}
 
 build() {
 	rm -fr v2mixer/bin/jre
-# comment for ffmpeg 5 only, native 6 unsupported
+# uncomment for FFmpeg native, including GPL license, but only same version of v2mixer
 #	zip -d v2mixer/bin/com.livev2.v2mixer_lib/ffmpeg-linux-*.jar \
 #		/org/bytedeco/ffmpeg/*/libav* \
 #		/org/bytedeco/ffmpeg/*/libsw*
