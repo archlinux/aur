@@ -1,11 +1,11 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='tget'
 pkgname="${_pkgname}-git"
-pkgver=0.1.1.r1.g77add45
-pkgrel=1
+pkgver=0.1.1.r6.g97ffbe2
+pkgrel=2
 pkgdesc='Like wget but for torrents (latest commit)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/sweetbbak/tget'
@@ -15,7 +15,6 @@ conflicts=('nodejs-tget' "$_pkgname")
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,24 +28,13 @@ prepare() {
   cd "$_pkgname"
 
   mkdir -p build
-
   go mod tidy
 }
 
 build() {
   cd "$_pkgname"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -56,8 +44,9 @@ build() {
     -buildmode=pie \
     -trimpath \
     -ldflags="-linkmode=external" \
-    -mod=readonly -modcacherw \
-    ./cmd/tget
+    -mod=readonly \
+    -modcacherw \
+      ./cmd/tget
 }
 
 check() {
@@ -71,10 +60,14 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 "$_pkgname"         "$pkgdir/usr/bin/$_pkgname"
-  install -vDm0644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -vDm0644 "README.md"         "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -vDm0644 "LICENSE"           "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0755 -t "$pkgdir/usr/bin/" \
+    tget
+  install -vDm0644 -t "$pkgdir/usr/share/applications/" \
+    "$_pkgname.desktop"
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    README.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+    LICENSE
 }
 
 # eof
