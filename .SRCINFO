@@ -1,7 +1,7 @@
 pkgbase = mycorrhiza
 	pkgdesc = Filesystem and git-based wiki engine written in Go using mycomarkup
 	pkgver = 1.15.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://codeberg.org/bouncepaw/mycorrhiza
 	arch = aarch64
 	arch = armv7h
@@ -10,7 +10,6 @@ pkgbase = mycorrhiza
 	makedepends = go
 	depends = git
 	depends = glibc
-	options = lto
 	source = mycorrhiza-1.15.1.tar.gz::https://codeberg.org/bouncepaw/mycorrhiza/archive/v1.15.1.tar.gz
 	sha256sums = a4f01e5f06421b285d1d9041fc5503cc71383931e337dd9ae8b2b6de166f2364
 	b2sums = edba1f275295a39a807532a553dfe6eb8ad3d2e9222561c93dc8b0e530ea2dc7253c6956fde4b3cfdd031a4ea477ac253e46dcfadf72b08b1ac5f9be117c549f

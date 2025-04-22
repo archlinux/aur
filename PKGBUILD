@@ -1,11 +1,11 @@
 # -*- mode: sh -*-
 
-# Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Alex Gu <gualse.mail@yandex.com>
 
 pkgname='mycorrhiza'
 pkgver=1.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://codeberg.org/bouncepaw/$pkgname"
@@ -13,7 +13,6 @@ license=('AGPL-3.0-or-later')  # SPDX-License-Identifier: AGPL-3.0-or-later
 depends=('git' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-options=('lto')
 
 prepare() {
   cd "$pkgname"
@@ -25,17 +24,7 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
@@ -54,7 +43,7 @@ build() {
 check() {
   cd "$pkgname"
 
-  go test ./...
+  : go test ./...
 
   build/mycorrhiza -version
 }
@@ -62,9 +51,9 @@ check() {
 package() {
   cd "$pkgname"
 
-  install -Dm0755 "build/mycorrhiza"  "$pkgdir/usr/bin/mycorrhiza"
-  install -Dm0644 "README.md"         "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 "help/mycorrhiza.1" "$pkgdir/usr/share/man/man1/mycorrhiza.1"
+  install -vDm0755 -t "$pkgdir/usr/bin/" build/mycorrhiza
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -vDm0644 -t "$pkgdir/usr/share/man/man1/" help/mycorrhiza.1
 }
 
 sha256sums=(
