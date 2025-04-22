@@ -1,11 +1,11 @@
 pkgbase = exploit-education-phoenix-bin
 	pkgdesc = Phoenix is a set of exploitable binaries.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ExploitEducation/Phoenix
 	arch = x86_64
 	license = none
-	makedepends = unarchiver
+	makedepends = libarchive
 	noextract = phoenix-amd64.deb
 	options = !strip
 	source = phoenix-amd64.deb::https://github.com/ExploitEducation/Phoenix/releases/download/v1.0.0-alpha-3/exploit-education-phoenix_1.0.0-_amd64.deb
