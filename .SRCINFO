@@ -1,7 +1,7 @@
 pkgbase = tiny_httpd
 	pkgdesc = Minimal HTTP server
-	pkgver = 0.16
-	pkgrel = 2
+	pkgver = 0.19
+	pkgrel = 1
 	url = https://c-cube.github.io/tiny_httpd
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = tiny_httpd
 	depends = ocaml>=4.08.0
 	options = !strip
 	options = staticlibs
-	source = tiny_httpd-0.16.tar.gz::https://github.com/c-cube/tiny_httpd/archive/v0.16.tar.gz
-	sha256sums = 4077eb1e964671d51fb939687bd28320bff73198078e9ad497f0670240fd19bf
+	source = tiny_httpd-0.19.tar.gz::https://github.com/c-cube/tiny_httpd/archive/v0.19.tar.gz
+	sha256sums = d567e17a181ab667d760906a9a33b9c59c95506e95c4e60710b31355bcacbbf2
 
 pkgname = tiny_httpd
