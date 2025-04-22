@@ -4,11 +4,11 @@
 _distname=Dist-Zilla
 pkgname=perl-dist-zilla
 pkgver=6.032
-pkgrel=1
+pkgrel=2
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
 url="https://metacpan.org/dist/$_distname"
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl'
          'perl-app-cmd'
          'perl-cpan-meta-check'

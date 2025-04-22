@@ -1,11 +1,10 @@
 pkgbase = perl-dist-zilla
 	pkgdesc = distribution builder; installer not included!
 	pkgver = 6.032
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Dist-Zilla
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-deep
 	checkdepends = perl-test-failwarnings
 	checkdepends = perl-test-fatal
