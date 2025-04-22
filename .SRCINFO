@@ -1,7 +1,7 @@
 pkgbase = y2mp3-bin
-	pkgdesc = An Electron app to download youtube playlist
+	pkgdesc = An Electron app to download youtube playlist.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moshfeu/y2mp3
 	arch = x86_64
 	license = MIT
