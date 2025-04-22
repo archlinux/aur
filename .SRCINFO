@@ -1,7 +1,7 @@
 pkgbase = passwordsecure-bin
-	pkgdesc = A cross-platform password manager that uses strong AES-256 encryption.
+	pkgdesc = A cross-platform password manager that uses strong AES-256 encryption.(Prebuilt version)
 	pkgver = 1.2024.10.08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mihnea-radulescu/passwordsecure
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = passwordsecure-bin
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = fontconfig
-	depends = dotnet-runtime>=8
+	depends = dotnet-runtime
 	provides = passwordsecure=1.2024.10.08
 	conflicts = passwordsecure
 	options = !strip
