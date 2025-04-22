@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pakeplus-bin
 _pkgname=PakePlus
-pkgver=0.5.23
+pkgver=0.5.24
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app and mobile app with Rust.(Prebuilt version)利用 Rust 轻松构建轻量级(仅5M)多端桌面应用和多端手机应用"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('1ffd77575b1f3c24299c8940ee071259b72f4f221abb36075833252263632565')
+sha256sums=('9bbd58297c1a4e05468d129a342bccbe4a17c5bb2ade2870796b8eb683746f63')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
