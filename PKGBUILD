@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Ruziczka <aur@sebastianruziczka.de>
 pkgname=budgetbutlerweb-desktop
 _pkgnameshort=budgetbutlerweb
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Simple and fast household book with offline and online functionality in German."
 arch=("x86_64")
