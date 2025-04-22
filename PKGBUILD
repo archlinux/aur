@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=keep-audio-alive-git
-_pkgname="Keep Audio Alive"
+_pkgname='Keep Audio Alive'
 pkgver=1.0.1.r1.g2ec4a80
 _electronversion=31
 _nodeversion=20
@@ -39,14 +39,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${pkgname%-git}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
@@ -71,13 +71,18 @@ build() {
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
-    NODE_ENV=production     yarn run build:unpack
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    NODE_ENV=production     yarn run build-force
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
