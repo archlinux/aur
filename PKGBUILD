@@ -6,7 +6,7 @@ pkgname='miniscript-cli'
 _pkgname="${pkgname/-cli}"
 pkgdesc='Simple, elegant language for embedding or learning to program'
 pkgver=1.6.2
-pkgrel=5
+pkgrel=6
 url='https://miniscript.org/'
 _url='https://github.com/JoeStrout/miniscript'
 changelog="$pkgname.changelog"
@@ -36,6 +36,7 @@ build() {
   test -n "$LTOFLAGS" && {
     export LTOFLAGS="$LTOFLAGS -ffat-lto-objects"
     export CFLAGS="$CFLAGS $LTOFLAGS"
+    export CXXFLAGS="$CXXFLAGS $LTOFLAGS"
   }
   cmake ../.. && \
   cmake --build . --config Release

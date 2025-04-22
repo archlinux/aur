@@ -1,7 +1,7 @@
 pkgbase = miniscript-cli
 	pkgdesc = Simple, elegant language for embedding or learning to program
 	pkgver = 1.6.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://miniscript.org/
 	changelog = miniscript-cli.changelog
 	arch = aarch64
