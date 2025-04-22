@@ -1,6 +1,6 @@
 pkgbase = wxc
 	pkgdesc = A C wrapper around the wxWidgets C++ library
-	pkgver = 1.0.0.1
+	pkgver = 1.0.0.2
 	pkgrel = 1
 	url = https://codeberg.org/wxHaskell/wxHaskell
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wxc
 	depends = gcc
 	depends = jsoncpp
 	depends = wxwidgets
-	source = git+https://codeberg.org/wxHaskell/wxHaskell#commit=d4f373020f11b00e96c78c27d4af9d45d8552a15
+	source = git+https://codeberg.org/wxHaskell/wxHaskell#commit=25688550f6e13615740ffb771b00eb93efbbb485
 	sha512sums = SKIP
 
 pkgname = wxc
