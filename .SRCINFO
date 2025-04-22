@@ -1,6 +1,6 @@
 pkgbase = r-pillar
 	pkgdesc = Coloured Formatting for Columns
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pillar
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-pillar
 	optdepends = r-units>=0.7.2
 	optdepends = r-vdiffr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/pillar_1.10.1.tar.gz
-	b2sums = ba8bfa8dcc1f6ada84323fdf2bc48962129ca8795201600ec0b2d1d1295bb088812e98bd74965b380765c05e2a1e1bd9db9606e0e280752178780c75b8a9ea36
+	source = https://cran.r-project.org/src/contrib/pillar_1.10.2.tar.gz
+	b2sums = 194ecbca35699c3bfe7e1e1a4d98a081ab8a168b0ae5f53b7cf93c3826b2cde7ac13535c2f22302d441ad9dc9b1d5c041c45728340187cf8ff0276bb40bd073a
 
 pkgname = r-pillar
