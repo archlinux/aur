@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder
 	pkgdesc = A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux
-	pkgver = r1072.1fd3018
+	pkgver = r1074.8bd17b0
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder
 	install = gpu-screen-recorder.install
@@ -29,7 +29,7 @@ pkgbase = gpu-screen-recorder
 	optdepends = libva-intel-driver: Required to record your screen on Intel G45 and HD Graphics family
 	optdepends = intel-media-driver: Required to record your screen on Intel Broadwell or later iGPUs or Intel Arc
 	optdepends = linux-firmware: Required to record your screen on Intel Skylake or later iGPUs
-	source = gpu-screen-recorder-r1072.1fd3018.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r1072.1fd3018.tar.gz
-	sha512sums = e369cfe55b8650ee7829801d071840d0010afed82d5e64bd9103b0e00abc657bc0a0adb2864b439053ac95ec74ee0fe4ea1702f3cb7ef243f205412f9cb432da
+	source = gpu-screen-recorder-r1074.8bd17b0.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r1074.8bd17b0.tar.gz
+	sha512sums = ddd63f948c6c2b46e8afa97ffc66d1482b32fc4275ffbe53b6f62bedee76c8de94a44b3a2106dcc4aa4b682f42db659ed37b297272a3685964c0314999e2d863
 
 pkgname = gpu-screen-recorder
