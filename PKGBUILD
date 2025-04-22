@@ -2,7 +2,7 @@
 # Contributor: libele <libele@disroot.org>
 pkgname=dust3d-git
 _pkgname=Dust3D
-pkgver=1.0.0.rc.9.r23.g6195093
+pkgver=1.0.0.rc.9.r26.g844cb9a
 pkgrel=1
 pkgdesc="3D watertight modeling software (git version)"
 arch=('any')
@@ -18,9 +18,6 @@ depends=(
 makedepends=(
     'git'
     'gendesk'
-    'gcc'
-    'cmake'
-    'make'
     'libicns'
 )
 source=(
