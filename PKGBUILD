@@ -1,12 +1,12 @@
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='payme'
 pkgname="${_pkgname}-git"
-pkgver=1.2.2.r0.gffd6285
-pkgrel=2
-pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (latest git commit)'
+pkgver=1.2.3.r2.g4406134
+pkgrel=1
+pkgdesc='QR code generator (ASCII and PNG) for SEPA payments (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/jovandeginste/payme'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -15,7 +15,6 @@ conflicts=("$_pkgname")
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,17 +36,7 @@ build() {
   _pkgver=$(git describe --tags --abbrev=0 --always | sed 's/^v//g')
   _pkgrev=$(git rev-parse --verify --short HEAD)
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -79,14 +68,11 @@ package() {
   install -vDm0644 README.md   "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -vDm0644 LICENSE     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Bash
-  install "-${_v}Dm0644" _completion.bash \
+  install -vDm0644 _completion.bash \
     "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  # Fish
-  install "-${_v}Dm0644" _completion.fish \
+  install -vDm0644 _completion.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  # Zsh
-  install "-${_v}Dm0644" _completion.zsh \
+  install -vDm0644 _completion.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
 
