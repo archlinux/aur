@@ -14,7 +14,7 @@
 
 pkgname=zsa-keymapp-bin
 _pkgname=keymapp
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A live visual reference for your ZSA keyboard"
 arch=(x86_64)
@@ -26,7 +26,7 @@ depends=(zsa-udev libusb gtk3 webkit2gtk-4.1)
 # If the checksum fails we know there's a new version.
 source=("${pkgname}-${pkgver}.tar.gz::https://oryx.nyc3.cdn.digitaloceanspaces.com/keymapp/keymapp-latest.tar.gz"
         'keymapp.desktop')
-sha256sums=('1979a642cb2bb04a6ca9f11149af19146a34afbdaab1db1b16d9a273cf9209f4'
+sha256sums=('2d63b869e3661a067e4f8d696fa1f00b7b67c1a886be20c8abadd032cae59047'
             '798667e23dfc74f6a4c65f7ecb9838dec4987a2c4224fe9bb38e85cb2d2ad861')
 
 package() {
