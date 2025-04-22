@@ -2,7 +2,7 @@
 # Maintainer: Hajos Attila <linux[dot]alucard[at]gmail[dot]com>
 
 pkgname=tidal-hifi-appimage
-pkgver=5.19
+pkgver=5.19.0
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine"
 arch=(x86_64)
@@ -25,6 +25,6 @@ package() {
     install -Dm644 "${srcdir}/tidal-hifi.desktop" "${pkgdir}/usr/share/applications/tidal-hifi.desktop"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
     install -Dm755 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
-    install -Dm755 "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/bin"
     ln -s "/opt/tidal/${_appimage}" "${pkgdir}/usr/bin/tidal-hifi"
 }
