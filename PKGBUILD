@@ -1,34 +1,32 @@
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: Gustavo Castro < gustawho [at] gmail [dot] com >
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: boromil@gmail.com
 
 pkgname=raw-thumbnailer
-pkgver=0.2.1
-pkgrel=7
+pkgver=47.0.1
+pkgrel=1
 pkgdesc="A lightweight and fast raw image thumbnailer that can be used by file managers."
-url="https://code.google.com/archive/p/raw-thumbnailer/"
-license=('GPL2')
+url="https://gitlab.gnome.org/World/gnome-raw-thumbnailer/"
+license=('GPL-2.0-or-later')
 arch=('x86_64')
 depends=('libopenraw')
-source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz)
-sha1sums=('f34012062c0b1eaa10525722c36bd027b11ade2e')
+makedepends=('meson' 'python' 'ninja' 'cargo')
+source=("$url/-/archive/$pkgver/gnome-$pkgname-$pkgver.tar.gz")
+sha256sums=('56b76fa25febf8a5795a63a8c6c85428d2c326924adfebd63192e2b208f1b4fc')
 
 prepare() {
-	cd $pkgname-$pkgver
-
-	# Fix build with libopenraw 0.2
-	sed -ri 's/(libopenraw(-gnome)?)-1\.0/\1-0.3/' configure.ac
-	autoreconf -vi
+  meson subprojects download --sourcedir=gnome-$pkgname-$pkgver
 }
 
 build() {
-	cd $pkgname-$pkgver
+  arch-meson gnome-$pkgname-$pkgver build
+  meson compile -C build
+}
 
-	./configure --prefix=/usr
-	make
+check() {
+  meson test -C build
 }
 
 package() {
-	cd $pkgname-$pkgver
-
-	make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
