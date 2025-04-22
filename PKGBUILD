@@ -1,9 +1,10 @@
-# Maintainer: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 # -*- mode: sh -*-
+
+# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='gonano'
 pkgver=0.1.17
-pkgrel=6
+pkgrel=7
 _pkgdate=1644501572
 pkgdesc='Go language support for NANO — a digital currency'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -11,10 +12,7 @@ url='https://github.com/hectorchu/gonano'
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('gcc-libs' 'glibc' 'ocl-icd')
 makedepends=('go')
-options=('lto')
-source=(
-  "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-)
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -37,17 +35,6 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   # https://wiki.archlinux.org/title/Go_package_guidelines
   export CGO_ENABLED=1
