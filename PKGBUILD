@@ -59,7 +59,6 @@ build() {
     --enable-ipv6
     --with-gssapi
     --with-libssh2
-    --with-random='/dev/urandom'
     --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
   )
 
