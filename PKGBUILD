@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=giada-bin
 _pkgname=Giada
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.Prebuilt version."
+pkgdesc="An open source, minimalistic and hardcore music production tool. Designed for DJs, live performers and electronic musicians.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.giadamusic.com"
 _ghurl="https://github.com/monocasual/giada"
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'pipewire-jack'
+    'jack2'
     'libx11'
     'freetype2'
     'fontconfig'
@@ -23,14 +23,16 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/data/${_pkgname}-${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e32630cce2dbba317c5864ed1474077d5fe2c73183e81f8d6b5129d17e4fd896'
+sha256sums=('aaad81bb395d71ef863770785248166eebecf4d050935f1b1f44f467fae133d5'
             '574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
