@@ -1,13 +1,15 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 pkgname=tiny_httpd
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal HTTP server'
 arch=('x86_64')
 url='https://c-cube.github.io/tiny_httpd'
 license=('MIT')
 depends=(
 'ocaml>=4.08.0'
+'ocaml-iostream'
+'ocaml-hmap'
 )
 makedepends=(
 'dune'
