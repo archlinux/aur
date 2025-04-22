@@ -1,0 +1,11 @@
+post_install() {
+	echo "============================================================="
+	echo "If you wish not to compile, install the -bin suffixed package"
+	echo "============================================================="
+}
+
+post_upgrade() {
+	echo "============================================================="
+	echo "If you wish not to compile, install the -bin suffixed package"
+	echo "============================================================="
+}
