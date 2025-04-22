@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=weron
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Overlay networks based on WebRTC'
 url='https://github.com/pojntfx/weron'
@@ -22,7 +22,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         weron-ethernet@.service
         weron-ip@.service
         weron-signaler.service)
-sha256sums=('ead33632606f3141392b54f817dabca4c23b7886f8b55845b4f2dba9572a97f7'
+sha256sums=('8d5a7b51b81d80cd1035de8db6490e9f2297d354a1b8799968170c1680e7c2b2'
             '967fd86292086ea7270addd614893a99220b8604f54d58015f7ba2718eb032ed'
             'fc7d39d2d277a8448d3bede8bbb5195c62f92149dfd7ef897a582ece627c4851'
             'e0f95aeb604cdaca71611c218e1a8eddbe6951b783b498e8cab3e2152eefc9c6'
