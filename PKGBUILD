@@ -14,7 +14,7 @@ depends=(
 source=(
     'ChatGTK.tar.xz'
 )
-sha256sums=('c93f86f37a633429bbd8e8c62f7ea05efd9e58a15b28854a67200cb65767fc02')
+sha256sums=('8391bd33fc087efb2265a119cc6c22fb870fc4205abe7741961f631c0594a199')
 
 package() {
     chmod +x "${srcdir}/usr/bin/chatgtk"
