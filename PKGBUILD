@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=advanced-passgen-bin
 pkgver=2.5.2
-pkgrel=1
-pkgdesc="Advanced Password Generator"
+pkgrel=2
+pkgdesc="Advanced Password Generator.(Prebuilt version)"
 arch=('x86_64')
 url="https://codedead.com/software/advanced-passgen"
 _ghurl="https://github.com/CodeDead/Advanced-PassGen"
@@ -13,13 +13,8 @@ depends=(
     'webkit2gtk'
     'gtk3'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-)
-sha256sums=('3957e773990e17c4cc1ce887dc059906b648025dc7c65ed87898e8a58fb353ec')
-build() {
-    bsdtar -xf "${srcdir}/data."*
-}
+source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm")
+sha256sums=('82c160287d8f01a644d63bcc005e93013b536c75d2a8da821d0b8845507a998f')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
