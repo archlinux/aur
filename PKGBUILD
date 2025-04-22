@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="starkli"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
 arch=('aarch64' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc' 'libusb')
 makedepends=('cargo')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('5b2ef30c547ff10033addc09dd15395a039a7e1dda7d749a352626bb7cb7385a661ee76ff3f4ab063a0ae45afb8531258304fb9833a8cbf6636ea5b839aabd78')
+b2sums=('3764bbe2b41101097f5f9bc6e54c5200a9fa2a9f0fc64e46a6f3bedaa8bc506158708903e0d732946ede983b3a2c123bb9034365701fc15e40f01424b6cf68ea')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
