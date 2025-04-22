@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pakeplus-bin
 _pkgname=PakePlus
-pkgver=0.5.24
+pkgver=0.5.25
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app and mobile app with Rust.(Prebuilt version)利用 Rust 轻松构建轻量级(仅5M)多端桌面应用和多端手机应用"
 arch=('x86_64')
-url="https://sjj1024.github.io/PakePlus/"
+url="https://pakeplus.com/"
 _ghurl="https://github.com/Sjj1024/PakePlus"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -17,8 +17,10 @@ depends=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${_pkgname}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sjj1024/PakePlus/${_pkgname}-v${pkgver}/LICENSE"
 )
-sha256sums=('9bbd58297c1a4e05468d129a342bccbe4a17c5bb2ade2870796b8eb683746f63')
+sha256sums=('c9496cfbb7d2e10ceb56b5ebd8255cc57d92f75ca3255b390f93d9d127f96ddf'
+            '2476bac4e033612ada3dfc61bae1166c1f5b90b58194f89c594eba3d8a408abf')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
@@ -36,4 +38,5 @@ package() {
             "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
