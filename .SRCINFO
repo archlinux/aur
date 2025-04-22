@@ -1,11 +1,11 @@
 pkgbase = python-archspec
 	pkgdesc = A library for detecting, labeling, and reasoning about microarchitectures
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archspec/archspec
 	arch = any
 	license = MIT
-	makedepends = python-poetry
+	makedepends = python-poetry-core
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/a/archspec/archspec-0.2.5.tar.gz
 	sha256sums = 5bec8dfc5366ff299071200466dc9572d56db4e43abca3c66bdd62bc2b731a2a
