@@ -1,6 +1,6 @@
 pkgbase = alistral
 	pkgdesc = Power tools for Listenbrainz
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/RustyNova016/Alistral
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = alistral
 	depends = openssl
 	depends = bzip2
 	depends = xz
-	source = alistral-0.5.6.tar.gz::https://github.com/RustyNova016/Alistral/archive/refs/tags/v0.5.6.tar.gz
-	b2sums = eedc13704cc001325d27f2c41af805afcf27ca1eae279a39ba0de813e7a7246425d4542d249f0bbb8b846f9154a705cdb431e89fdfe47728230da127d5fed28d
+	source = alistral-0.5.7.tar.gz::https://github.com/RustyNova016/Alistral/archive/refs/tags/v0.5.7.tar.gz
+	b2sums = c6dd170f28cb8fa3599cb9e9e06387363306a6e231ca7b6e2630cb8f998fd081d837a8c4efc8863dcd68d6e73486d0248b51cf5c52ce24190bfdb4179949845d
 
 pkgname = alistral
