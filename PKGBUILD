@@ -2,7 +2,7 @@
 
 _pkgname="starkli"
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A blazing fast CLI tool for Starknet powered by starknet-rs"
 arch=('aarch64' 'x86_64')
@@ -21,8 +21,8 @@ source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/$
 b2sums=('dc2a6d314688b9836c021ffcab1d449c62d0e346ca964900a991914b5c29fdee6aa323e41a90e75d4cc71471e21b36518daaa533c0154edabe38845bd058703b'
         'bb6c98c86c05f7f782bed93821edbd8d51501780fd5279904a7f69392841fe91ffcc7632834ecac81701b85db0779efa40ff6053f7336a1074130099ca2d310f'
         'a6150ce3c1f2e9823f944cb92016eb6c0fa35d9c80a3c1d04092b25e05a970929ed49154dcbe1707bf7d4946ee0f25fb501f9b192a23775c8e186a9619dd4b7b')
-b2sums_aarch64=('71800da5b56e1493ab406ed879e8a0f0e2a6cfc4aa833cf30b5a495bf289a85827ce85eda30b97a33de2f65b5510308bdc49645d4e3676c56f2526c0a3a50295')
-b2sums_x86_64=('94b0cf4618bed7c5c808f3c60663efeac9ecc251a3d74ce57e8e7f2d2c66fc74b575c9735c4e6762453d8b974ade6a36e2433b30dcf16b88a25ca1ecfc3faebf')
+b2sums_aarch64=('e515f7f78fe6aa30a5db92e3020340e74c062cc0a72fd3b1865cdf896f00c5aff10e23e0c24900bd5755aec88625faddad8cdd869991e9ccfa2f36321b1d60ae')
+b2sums_x86_64=('37998193a3f0718c71d380beca88b2d93228d96babb5255347386552b5c71e817290a3b4f4ef7ebe5cde589424845a3266a56da0628b0dd1bdb92ced8c328fc7')
 
 prepare() {
   cd "${srcdir}"
