@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinydashboard
-_pkgver=0.7.2
+_pkgver=0.7.3
 pkgname=r-${_pkgname,,}
-pkgver=0.7.2
-pkgrel=4
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Create Dashboards with 'Shiny'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a56ee48572649830cd8d82f1caa2099411461e19e19223cbad36a375299f3843')
+sha256sums=('641ce851846a58ecfe3b126b401f8e59d80f578451dd33f6cf1868bffea5144c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
