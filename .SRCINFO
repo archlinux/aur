@@ -1,7 +1,7 @@
 pkgbase = w3m-rkta-git
-	pkgdesc = Rene Kita's fork of the text-based web browser/pager w3m with gemini support (latest commit)
+	pkgdesc = Rene Kita's fork of the text-based web browser/pager w3m with gemini support (development version)
 	pkgver = v0.5.3+git20230121.r142.ge4f734f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~rkta/w3m
 	arch = aarch64
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = w3m-rkta-git
 	depends = zlib
 	provides = w3m
 	conflicts = w3m
-	options = lto
 	source = w3m-rkta-git::git+https://git.sr.ht/~rkta/w3m#branch=gemini
 	sha256sums = SKIP
 

@@ -8,8 +8,8 @@ _pkgname=w3m-rkta
 _gitbranch='gemini'
 pkgname="$_pkgname-git"
 pkgver=v0.5.3+git20230121.r142.ge4f734f
-pkgrel=1
-pkgdesc="Rene Kita's fork of the text-based web browser/pager w3m with gemini support (latest commit)"
+pkgrel=2
+pkgdesc="Rene Kita's fork of the text-based web browser/pager w3m with gemini support (development version)"
 url='https://git.sr.ht/~rkta/w3m'
 license=('LicenseRef-W3M')  # SPDX-License-Identifier: LicenseRef-W3M
 arch=('aarch64' 'x86_64')
@@ -28,9 +28,8 @@ depends=(
 )
 source=("$pkgname::git+$url#branch=$_gitbranch")
 sha256sums=('SKIP')
-options=('lto')
 provides=('w3m')
-conflicts=('w3m')
+conflicts=("${provides[@]}")
 
 pkgver() {
   cd "$pkgname"
@@ -47,17 +46,6 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   ./configure \
     --prefix=/usr \
