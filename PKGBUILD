@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rotore-git
 _pkgname=ROTORE
-pkgver=Beta.r8.g2df018a
+pkgver=1.0.2.r0.g02b5588
 _electronversion=35
 _nodeversion=22
 pkgrel=1

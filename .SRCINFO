@@ -1,6 +1,6 @@
 pkgbase = rotore-git
 	pkgdesc = Magnetic download tool based on Electron + VUE3 + WEBTORRENT (with tracking function).(Use system-wide electron)
-	pkgver = Beta.r8.g2df018a
+	pkgver = 1.0.2.r0.g02b5588
 	pkgrel = 1
 	url = https://github.com/LinneRELLa/ROTORE
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = rotore-git
 	depends = electron35
 	depends = nodejs
 	depends = python
-	provides = rotore=Beta
+	provides = rotore=1.0.2
 	conflicts = rotore
 	source = rotore.git::git+https://github.com/LinneRELLa/ROTORE.git
 	source = rotore.sh
