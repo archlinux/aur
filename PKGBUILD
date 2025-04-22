@@ -2,7 +2,7 @@
 pkgname=ocompiler
 pkgname_atsource=o
 pkgver=1.5+226
-pkgrel=1
+pkgrel=2
 pkgdesc="O language compiler"
 arch=('x86_64')
 url="https://github.com/colin-i/${pkgname_atsource}"
@@ -26,6 +26,7 @@ prepare() {
 		patch --strip=1 --input=../../${var}
 	done
 	ln ../obj.txt src
+	touch include_dev
 }
 
 build() {
