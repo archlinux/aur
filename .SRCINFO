@@ -1,6 +1,6 @@
 pkgbase = spicetify-cli
 	pkgdesc = Command-line tool to customize Spotify client
-	pkgver = 2.40.0
+	pkgver = 2.40.1
 	pkgrel = 1
 	url = https://github.com/spicetify/cli
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = spicetify-cli
         depends = bash
         depends = glibc
 	optdepends = xdg-utils: Allows for opening directories in default file manager
-	source = cli-2.40.0.tar.gz::https://github.com/spicetify/cli/archive/v2.40.0.tar.gz
-	sha256sums = 8b167789fb64cf87e1b74f49b28a4e500f0cbcb1228a7bcaec0253cdaf86a34a
+	source = cli-2.40.1.tar.gz::https://github.com/spicetify/cli/archive/v2.40.1.tar.gz
+	sha256sums = ef8d5c45c55083eaeb0734594148c59d741c1f61646fa4198c5550a1e90ed9f9
 
 pkgname = spicetify-cli
