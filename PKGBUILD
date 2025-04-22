@@ -2,26 +2,39 @@
 
 pkgname=scopy-appimage
 _disname=${pkgname%-appimage}
-pkgver=2.0.0.beta.rc1
-_ver=v2.0.0-beta-rc1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A software oscilloscope and signal analysis toolset."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/analogdevicesinc/scopy"
 license=('GPL-3.0-only')
 conflicts=('scopy-git')
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 
-_zip=Scopy-${_ver}-Linux-${arch}-AppImage.zip
-source=(
-    ${_zip}::${url}/releases/download/${_ver}/${_zip}
+if [ ${CARCH} = "aarch64" ]; then
+    _arch="arm64"
+else
+    _arch=${CARCH}
+fi
+
+_ver=v${pkgver}
+_zip=Scopy-${_ver}-Linux-${_arch}-AppImage.zip
+source_x86_64=(
+    ${url}/releases/download/${_ver}/${_zip}
     LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
 )
-sha256sums=('e0cdad07d778885fbceb86e9ebce700e30bdc8d8240fd931cc18ccf750435d12'
-            '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
+source_aarch64=(
+    ${url}/releases/download/${_ver}/${_zip}
+    LICENSE::https://raw.githubusercontent.com/analogdevicesinc/scopy/main/LICENSE
+)
+sha256sums_x86_64=('8d5d4e26c3a98ef0f417d867e4c8c8911cafbc8a59e4983fb0bcf41e7083314e'
+                   '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
+sha256sums_aarch64=('8d5d4e26c3a98ef0f417d867e4c8c8911cafbc8a59e4983fb0bcf41e7083314e'
+                    '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
+
 options=('!strip')
 noextract=(${_zip})
-_appimage=Scopy-${_ver}-Linux-${arch}.AppImage
+_appimage=Scopy-${_ver}-Linux-${_arch}.AppImage
 
 
 prepare() {
