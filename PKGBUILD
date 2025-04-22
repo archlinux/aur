@@ -5,15 +5,14 @@
 pkgname='gpp-git'
 _pkgname="${pkgname/-git/}"
 pkgver=2.28.r0.gfc9cc00
-pkgrel=1
-pkgdesc='General-purpose preprocessor with customizable syntax (latest commit)'
+pkgrel=2
+pkgdesc='General-purpose preprocessor with customizable syntax (development version)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/logological/gpp'
 source=("git+$url.git")
 license=('LGPL-3.0-or-later')  # SPDX-License-Identifier: LGPL-3.0-or-later
 provides=("$_pkgname")
-conflicts=("$_pkgname")
-options=('lto')
+conflicts=("${provides[@]}")
 depends=('glibc')
 makedepends=('git')
 sha256sums=('SKIP')
@@ -26,17 +25,6 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   aclocal \
   && autoheader \

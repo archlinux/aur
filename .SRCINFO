@@ -1,7 +1,7 @@
 pkgbase = gpp-git
-	pkgdesc = General-purpose preprocessor with customizable syntax (latest commit)
+	pkgdesc = General-purpose preprocessor with customizable syntax (development version)
 	pkgver = 2.28.r0.gfc9cc00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/logological/gpp
 	arch = aarch64
 	arch = armv7h
@@ -12,7 +12,6 @@ pkgbase = gpp-git
 	depends = glibc
 	provides = gpp
 	conflicts = gpp
-	options = lto
 	source = git+https://github.com/logological/gpp.git
 	sha256sums = SKIP
 
