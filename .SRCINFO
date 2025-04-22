@@ -1,7 +1,7 @@
 pkgbase = local-llama-bin
-	pkgdesc = Local Llama also known as L³ is designed to be easy to use, with a user-friendly interface and advanced settings.
+	pkgdesc = Local Llama also known as L³ is designed to be easy to use, with a user-friendly interface and advanced settings.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://folio.tib0.com/
 	arch = x86_64
 	license = CC-BY-NC-ND-4.0
