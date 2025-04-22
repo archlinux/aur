@@ -13,7 +13,7 @@ _android_arch=x86-64
 pkgname=android-x86-64-qt6-base
 _qtver=6.9.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -23,7 +23,7 @@ depends=('java-runtime-headless-openjdk=17' 'ant' 'android-ndk' 'android-sdk' 'a
          "android-${_android_arch}-libpng" "android-${_android_arch}-openssl" "android-${_android_arch}-zlib"
          "android-${_android_arch}-sqlite")
 makedepends=('android-cmake' 'android-pkg-config'
-             'java-environment-openjdk=17' 'qt6-base' 'ninja')
+             'java-environment-openjdk=17' 'qt6-base' 'ninja' 'patchelf')
 optdepends=('qt6-base: development tools')
 # note: Using the java-environment-openjdk and android-platform-X versions that match what is documented
 # on https://doc.qt.io/qt-6/supported-platforms.html#android because using unsupported versions is not a
@@ -113,6 +113,11 @@ build() {
 package() {
   source android-env ${_android_arch}
   DESTDIR="$pkgdir" cmake --install build-$_android_arch
+
+  # fix linking against SQLite
+  patchelf \
+    --replace-needed "${ANDROID_PREFIX_LIB}"/libsqlite3.so libsqlite3.so \
+    "$pkgdir/${ANDROID_PREFIX}"/plugins/sqldrivers/libplugins_sqldrivers_qsqlite*.so
 
   install -Dm644 $_pkgfqn/LICENSES/* -t "$pkgdir"/usr/share/licenses/$pkgname
 
