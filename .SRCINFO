@@ -1,7 +1,7 @@
 pkgbase = quickpdfjoin-bin
-	pkgdesc = Quick PDF Join is a cross-platform application that joins multiple PDF files together.
+	pkgdesc = Quick PDF Join is a cross-platform application that joins multiple PDF files together.(Prebuilt version)
 	pkgver = 1.2024.10.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mihnea-radulescu/quickpdfjoin
 	arch = aarch64
 	arch = x86_64
