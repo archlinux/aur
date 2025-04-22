@@ -3,7 +3,7 @@ pkgname=tiny-rdm
 _pkgname="Tiny RDM"
 pkgver=1.2.3
 _nodeversion=18
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
 url="https://redis.tinycraft.cc/"
@@ -16,11 +16,9 @@ depends=(
 )
 makedepends=(
     'nvm'
-    'npm>=9'
+    'npm'
     'git'
-    'go>=1.22'
-    'gcc'
-    'cmake'
+    'go'
     'wails'
     'curl'
 )
@@ -47,7 +45,7 @@ build() {
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     {
-        echo -e '\n'  
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> frontend/.npmrc
@@ -56,15 +54,15 @@ build() {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> frontend/.npmrc
-        go env -w GOPROXY=https://goproxy.cn,direct
+        export GOPROXY=https://goproxy.cn,direct
     fi
     export NODE_ENV=development
     wails build -platform linux -o "${pkgname%-git}"
-    sed -e "
+    sed -i -e "
         s/{{.Info.ProductName}}/${_pkgname}/g
         s/\/usr\/local\/bin\/${pkgname%-git}/${pkgname%-git}/g
         s/{{.Info.Comments}}/${pkgdesc}/g
-    " -i "build/linux/${pkgname%-git}_"*/usr/share/applications/"${pkgname%-git}.desktop"
+    " "build/linux/${pkgname%-git}_"*/usr/share/applications/"${pkgname%-git}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.git/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
