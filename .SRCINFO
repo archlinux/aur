@@ -1,6 +1,6 @@
 pkgbase = ladybird-git
 	pkgdesc = Truly independent web browser
-	pkgver = r68341.6b883c5ccb0
+	pkgver = r68685.981e465a04c
 	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = ladybird-git
 	options = !debug
 	options = !buildflags
 	source = git+https://github.com/LadybirdBrowser/ladybird
-	source = git+https://github.com/microsoft/vcpkg.git#commit=533a5fda5c0646d1771345fb572e759283444d5f
+	source = git+https://github.com/microsoft/vcpkg.git#commit=d6995a0cf3cafda5e9e52749fad075dd62bfd90c
 	source = ladybird.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
