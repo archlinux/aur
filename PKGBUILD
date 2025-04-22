@@ -5,7 +5,7 @@
 _slug=Befaco
 _name=Befaco
 pkgname=vcvrack-befaco
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='VCV Rack plugin collection'
 arch=(aarch64 x86_64)
@@ -15,7 +15,7 @@ groups=(proaudio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git simde zstd)
 source=("git+https://github.com/VCVRack/$_name#tag=v$pkgver")
-sha256sums=('5c093d863973077c3c660730e7021ddee6db04abc46a819f142715fa477c22cf')
+sha256sums=('c4351e5fef5ba3dab4fd445089c79a3d9750c02110a6e42100a2a31335c0b10b')
 
 build() {
   cd $_name

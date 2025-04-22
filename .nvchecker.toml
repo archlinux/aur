@@ -1,0 +1,5 @@
+[vcvrack-befaco]
+source = "github"
+github = "vcvrack/befaco"
+use_max_tag = true
+prefix = "v"

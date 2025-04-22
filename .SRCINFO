@@ -1,6 +1,6 @@
 pkgbase = vcvrack-befaco
 	pkgdesc = VCV Rack plugin collection
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/VCVRack/Befaco
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = vcvrack-befaco
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = git+https://github.com/VCVRack/Befaco#tag=v2.9.0
-	sha256sums = 5c093d863973077c3c660730e7021ddee6db04abc46a819f142715fa477c22cf
+	source = git+https://github.com/VCVRack/Befaco#tag=v2.9.1
+	sha256sums = c4351e5fef5ba3dab4fd445089c79a3d9750c02110a6e42100a2a31335c0b10b
 
 pkgname = vcvrack-befaco
