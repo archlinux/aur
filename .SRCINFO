@@ -1,6 +1,6 @@
 pkgbase = res-downloader-bin
 	pkgdesc = Download common network resources such as video accounts, mini programs, Douyin, Kuaishou, Xiaohongshu, live streams, m3u8, Kugou, QQ Music, etc.(Prebuilt version)视频号、小程序、抖音、快手、小红书、直播流、m3u8、酷狗、QQ音乐等常见网络资源下载!
-	pkgver = 3.0.2
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/putyy/res-downloader
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = res-downloader-bin
 	optdepends = motrix: A full-featured download manager.
 	optdepends = gopeed: High speed downloader that supports all platforms.
 	optdepends = imfile: A full-featured download manager.Forked from motrix.
-	provides = res-downloader=3.0.2
+	provides = res-downloader=3.0.4
 	conflicts = res-downloader
-	source_aarch64 = res-downloader-3.0.2-aarch64.deb::https://github.com/putyy/res-downloader/releases/download/3.0.2/res-downloader_3.0.2_linux_arm.deb
-	sha256sums_aarch64 = 0a04f95fc0fbcea9dcee4408a662e73215575508b5223b657859746fda3b7a5b
-	source_x86_64 = res-downloader-3.0.2-x86_64.deb::https://github.com/putyy/res-downloader/releases/download/3.0.2/res-downloader_3.0.2_linux_x64.deb
-	sha256sums_x86_64 = a2866fe74a96f557a8f9ca3e2847334a3c0fafb9cfd049cd60b4252de20d50c5
+	source_aarch64 = res-downloader-3.0.4-aarch64.deb::https://github.com/putyy/res-downloader/releases/download/3.0.4/res-downloader_3.0.4_linux_arm64.deb
+	sha256sums_aarch64 = 46fe681a1d196766cf3e83cc29e9b1429b24f8d12589cf44be63764456d1fed1
+	source_x86_64 = res-downloader-3.0.4-x86_64.deb::https://github.com/putyy/res-downloader/releases/download/3.0.4/res-downloader_3.0.4_linux_amd64.deb
+	sha256sums_x86_64 = 7c6ad354186c6d1712f262533162b523d70d0b20a126ccbfa177cd70b63ccbdf
 
 pkgname = res-downloader-bin
