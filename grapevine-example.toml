@@ -4,7 +4,6 @@ server_name = "your-hostname-here.example"
 max_request_size = 100_000_000
 #allow_registration = false
 #registration_token = ""
-#serve_media_unauthenticated = false
 
 #[tls]
 #certs = "/path/to/fullchain.pem"
@@ -26,6 +25,12 @@ base_url = "https://your-hostname-here.example:99999"
 enable = true
 trusted_servers = ["matrix.org"]
 
+[media]
+#allow_unauthenticated_access = false
+[media.backend]
+type = "filesystem"
+path = "/var/lib/grapevine/media/"
+
 [database]
 backend = "rocksdb"
-path = "/var/lib/grapevine/"
+path = "/var/lib/grapevine/database/"

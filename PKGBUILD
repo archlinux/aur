@@ -23,7 +23,7 @@ backup=(
 )
 sha256sums=('SKIP'
             '07bcf3b52875c2fad1dcbe58dd77d95cf5a5ce98274afe293bb1fadc182157db'
-            '478302f2c5ae380614eac601a8e26cd9de7f1aa443b7f6b095b9e9e98049d8d8')
+            '5077a130242acd8328e1f61f7da0260a14dfdbfc964e6472248f9b6f8f28741c')
 options=(!lto) # lto breaks linking with vendored dependencies (ring, zstd, rocksdb) due to unresolved symbols
 
 prepare() {
