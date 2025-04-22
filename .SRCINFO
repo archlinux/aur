@@ -2,12 +2,12 @@ pkgbase = comifetch-git
 	pkgdesc = Revolutionäres CLI-Tool zum Anzeigen von Systeminfos mit Hammer-und-Sichel-Logo
 	pkgver = 1.0.r1.gabcdef
 	pkgrel = 1
-	url = https://gitlab.com/dein-username/comifetch
+	url = https://gitlab.com/arch1380517/comifetch
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = gcc
-	source = git+https://gitlab.com/dein-username/comifetch.git
+	source = git+https://gitlab.com/arch1380517/comifetch.git
 	md5sums = SKIP
 
 pkgname = comifetch-git
