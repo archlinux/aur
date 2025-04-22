@@ -1,0 +1,19 @@
+pkgbase = mwecocapture-dkms
+	pkgdesc = Driver for Eco Capture
+	pkgver = 1.4.256
+	pkgrel = 1
+	url = https://www.magewell.com/downloads/eco-capture#/driver/linux-x86
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = dkms
+	depends = linux-firmware
+	provides = mwecocapture
+	conflicts = mwecocapture
+	source = https://www.magewell.com/files/drivers/EcoCaptureForLinuxX86_1.4.256.tar.gz
+	source = dkms.conf
+	sha256sums = 1b067d94bfa6f53edf1a8d635fd2bd41eda757e38b7f474bf75d8dabb223b312
+	sha256sums = 57345bdcdc03c6baee00a463344881ad9eed45ebe329432413933f0fd9f82d0d
+
+pkgname = mwecocapture-dkms
