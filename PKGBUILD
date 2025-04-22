@@ -1,13 +1,15 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 pkgname=ocaml-iostream
+_pkgname=iostream
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='generic I/O streams of bytes'
 arch=('x86_64')
 url='https://c-cube.github.io/ocaml-iostream/'
 license=('MIT')
 depends=(
 'ocaml>=4.08.0'
+'ocaml-findlib'
 )
 makedepends=(
 'dune'
@@ -21,13 +23,13 @@ build() {
 
     export OCAMLPATH="$(ocamlfind printconf destdir)"
 
-    dune build -p "$pkgname"
+    dune build -p "$_pkgname"
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    dune install "$pkgname" --destdir="${pkgdir}" --prefix="/usr" --libdir="$(ocamlfind printconf destdir)"
+    dune install "$_pkgname" --destdir="${pkgdir}" --prefix="/usr" --libdir="$(ocamlfind printconf destdir)"
 
     install -dm755 "${pkgdir}/usr/share/"
 
