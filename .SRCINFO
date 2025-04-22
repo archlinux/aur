@@ -1,0 +1,13 @@
+pkgbase = mindcode-bin
+	pkgdesc = Mindcode/Schemacode command-line compiler
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = https://github.com/cardillan/mindcode
+	arch = any
+	license = MIT
+	depends = jre24-openjdk
+	provides = mindcode
+	source = https://github.com/cardillan/mindcode/releases/latest/download/mindcode.jar
+	sha512sums = cf59ccdf547a8258f72ecc7fd8957f5fa6b5c134b3e3fb1ab73204b5f8b79709f67faed09bcfb45c9e599004de7b03dcb234b4205c5f360e599090c398bb294d
+
+pkgname = mindcode-bin
