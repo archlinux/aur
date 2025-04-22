@@ -1,12 +1,12 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=openai-codex
 pkgver=0.1.2504211509
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight coding agent that runs in your terminal"
 arch=('any')
 url="https://github.com/openai/codex"
 license=('Apache-2.0')
-depends=()
+depends=('nodejs')
 makedepends=('npm')
 optdepends=(
 	'git'
