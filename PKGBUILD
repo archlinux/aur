@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wora-git
 _pkgname=Wora
-pkgver=0.4.0.beta0.r0.g87fbc9e
+pkgver=0.4.0.beta1.r2.gd319e97
 _electronversion=32
 _nodeversion=22
 pkgrel=1
-pkgdesc="🎧 A beautiful player for audiophiles."
+pkgdesc="🎧 A beautiful player for audiophiles.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/hiaaryan/wora"
 license=('MIT')
@@ -18,15 +18,13 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
     'curl'
     'bun'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
     "${pkgname%-git}.sh"
-) 
+)
 sha256sums=('SKIP'
             '2b2e8aeed33fd71c521e49fd54fb2fa81218d16aef8bccb88d77909055ab8051')
 pkgver() {
@@ -41,14 +39,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -58,11 +56,10 @@ build() {
     if [ -f bunfig.toml ]; then
         rm -rf bunfig.toml
     fi
-    if [ -f bun.lockb ];then
+        if [ -f bun.lockb ];then
         rm -rf bun.lockb
     fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export npm_config_disturl="https://registry.npmmirror.com/-/binary/node/"
         export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
         export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
         export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
@@ -75,6 +72,9 @@ build() {
     sed -i "s/icon\.icns/icon\.png/g" main/background.ts
     sed -i "s/- AppImage/- dir/g" electron-builder.yml
     bun install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     bun run build:linux
 }
 package() {
