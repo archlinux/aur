@@ -1,0 +1,4 @@
+[mooshika]
+source = "git"
+git = "https://github.com/martinetd/mooshika.git"
+prefix = "v"

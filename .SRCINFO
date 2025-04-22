@@ -1,0 +1,15 @@
+pkgbase = mooshika
+	pkgdesc = RDMA abstraction layer
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/martinetd/mooshika
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = libpcap
+	depends = rdma-core
+	provides = libmooshika.so
+	source = mooshika-1.1.tar.gz::https://github.com/martinetd/mooshika/archive/refs/tags/1.1.tar.gz
+	b2sums = e58a9811a67d030df15cadd9da8c916c54b0eddef305f195c992f85e5bed28d4833559432e5203933c51c743e979d247a6dcc99fc9da190dab00b1d9a47d57a9
+
+pkgname = mooshika
