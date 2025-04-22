@@ -1,62 +1,47 @@
-# Maintainer: Ruben Kharel <aur-at-rubenk-dot-dev>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Ruben Kharel <aur-at-rubenk-dot-dev>
+
 pkgname=talecast-git
-_pkgname=TaleCast
-pkgver=r102.885ea21
-pkgrel=2
+pkgver=0.1.20.r124.gebe6e7f
+pkgrel=1
 pkgdesc="Simple CLI podcatcher"
-
-arch=(
-"x86_64"
-"i686"
-"armv7h"
-"aarch64"
-)
+arch=(x86_64)
 url="https://github.com/TBS1996/TaleCast"
-license=("MIT")
-
+license=(MIT)
+depends=('gcc-libs' 'openssl')
 makedepends=("cargo" "git")
-depends=()
 provides=("talecast")
-conflict=("talecast")
-sha256sums=("SKIP")
-source=("git+${url}.git")
+conflicts=("talecast")
+source=("$pkgname::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-	# https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function
-	# check which method to use from above docs
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-	# Set CARGO_HOME to "${srcdir}/cargo"
-  export CARGO_HOME="${srcdir}/cargo"
-  if [ ! -d "${_pkgname}/dist" ]; then
-        mkdir "${_pkgname}/dist"
-  fi
-
-  # Download Rust dependencies
-  cd "${_pkgname}"
-  cargo fetch --locked	
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$pkgname"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "${_pkgname}"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --release --all-features 
-	# --frozen removed forzen for now
+	cd "$pkgname"
+	cargo build --release --frozen --all-features
 }
+
+# check() {
+# 	export RUSTUP_TOOLCHAIN=stable
+# 	cd "$pkgname"
+# 	cargo test --frozen --all-features
+# }
 
 package() {
-	# Set CARGO_HOME to "${srcdir}/cargo"
-	export CARGO_HOME="${srcdir}/cargo"
-	
-	# Install binary
-	install -Dm755 "${srcdir}/${_pkgname}/target/release/talecast" \
-		"${pkgdir}/usr/bin/talecast"
+	cd "$pkgname"
+	install -Dm755 target/release/talecast -t "$pkgdir/usr/bin/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-pkgpostrm() {
-	echo "To run talecast, execute 'talecast' in your terminal."
-}
