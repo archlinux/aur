@@ -1,6 +1,6 @@
 pkgbase = kde-applications-meta-slim
-	pkgver = 24.12
-	pkgrel = 3
+	pkgver = 25.04
+	pkgrel = 1
 	url = https://apps.kde.org/
 	arch = any
 	license = None

@@ -9,8 +9,8 @@ pkgname=(kde-applications-meta-slim
          kde-pim-meta-slim
          kde-system-meta-slim
          kde-utilities-meta-slim)
-pkgver=24.12
-pkgrel=3
+pkgver=25.04
+pkgrel=1
 arch=(any)
 license=(None)
 url='https://apps.kde.org/'
