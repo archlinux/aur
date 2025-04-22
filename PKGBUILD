@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tiny-rdm-git
-_pkgname="Tiny RDM"
-pkgver=1.2.1.r0.gab3560f
-_nodeversion=18
+_pkgname='Tiny RDM'
+pkgver=1.2.3.r13.g2fb7e06
+_nodeversion=20
 pkgrel=1
 pkgdesc="A modern lightweight cross-platform Redis desktop manager"
 arch=('any')
@@ -19,9 +19,8 @@ makedepends=(
     'npm'
     'git'
     'go'
-    'gcc'
-    'cmake'
     'wails'
+    'curl'
 )
 options=(
     '!strip'
@@ -52,7 +51,7 @@ build() {
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> frontend/.npmrc
@@ -61,7 +60,7 @@ build() {
             echo 'registry=https://registry.npmmirror.com'
             echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> frontend/.npmrc
-        go env -w GOPROXY=https://goproxy.cn,direct
+        export GOPROXY=https://goproxy.cn,direct
     fi
     export NODE_ENV=development
     wails build -platform linux -o "${pkgname%-git}"
