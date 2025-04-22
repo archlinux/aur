@@ -1,7 +1,7 @@
 # Maintainer: Brice Vissière <dev at pystash dot me>
 pkgname=mdatp-bin
 _actual_pkgname=mdatp
-pkgver=101.25022.0001
+pkgver=101.25022.0002
 pkgrel=0
 pkgdesc='Microsoft Defender Advanced Threat Protection for Endpoints'
 arch=('x86_64')
@@ -10,9 +10,7 @@ provides=("$_actual_pkgname=$pkgver")
 install=mdatp.install
 url=https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/linux-install-manually
 
-# libselinux was apparently the sole missing dependency on my system
-# btw, libselinux is from AUR
-depends=(systemd libselinux)
+depends=(systemd)
 
 source=(
     "https://packages.microsoft.com/debian/12/prod/pool/main/m/${_actual_pkgname}/${_actual_pkgname}_${pkgver}_amd64.deb"
@@ -20,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-    '9dbf49d5ed9a416b280b399fb107cb5bdaa3cce32e230ec5a62f8a4ccfd50b9b'
+    'c6447493a5cbc9e12ab7573853c216a12c7150d8feb3c302bbc64668deda5a0b'
     'd516a208a443dd35716250f9a9ef9b12f7e752ba91a213c70cb4592ab8c0435c')
 
 prepare() {

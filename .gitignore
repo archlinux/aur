@@ -2,3 +2,6 @@ src
 pkg
 *deb
 *tar.xz
+*tar.zst
+Packages
+
