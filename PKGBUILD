@@ -1,7 +1,7 @@
 # Maintainer: Albert Sebastian <albertsebe2 at gmail dot com> 
 
 pkgname=wstunnel
-pkgver=10.1.10
+pkgver=10.1.11
 pkgrel=1
 pkgdesc="Tunnel all your traffic over websocket protocol - Bypass firewalls/DPI"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ conflicts=('wstunnel-bin' 'nodejs-wstunnel' 'haskell-wstunnel-bin')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'git')
 source=("https://github.com/erebe/wstunnel/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('803bbc3274617ec67a141ae41488054d7edb103da8570a58b0134a5c68645ffe')
+sha256sums=('a560268d5aa1f8dac9c158798828c495c4d266ce5953891494868d4647e36cac')
 
 prepare() {
   cd $pkgname-$pkgver
