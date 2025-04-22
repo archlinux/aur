@@ -1,7 +1,7 @@
 pkgbase = xbyyunpan-bin
-	pkgdesc = 小白羊网盘 - Powered by 阿里云盘Open
+	pkgdesc = 小白羊网盘 - Powered by 阿里云盘Open.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xbysite.pages.dev/
 	arch = aarch64
 	arch = armv7h
