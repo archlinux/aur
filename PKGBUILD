@@ -1,17 +1,15 @@
 pkgname=sundials-seq
 _pkgname=sundials
-pkgver=7.1.1
+pkgver=7.3.0
 pkgrel=1
 pkgdesc='Suite of nonlinear differential/algebraic equation solvers (sequential version)'
 arch=(x86_64)
 url='https://computing.llnl.gov/projects/sundials'
 license=(BSD)
 depends=(suitesparse)
-makedepends=(cmake
-             gcc-fortran
-             python)
+makedepends=(cmake gcc-fortran python)
 source=(https://github.com/LLNL/sundials/archive/v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('cb86c5723e5b06129050ac3721c3080a5cf60b97f3d4e1cda0cf03d1a3fed177')
+sha256sums=('697b7b0dbc229f149e39b293d1ab03d321d61adb6733ffb78c0ddbffaf73d839')
 provides=(sundials)
 conflicts=(sundials)
 
