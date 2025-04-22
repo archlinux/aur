@@ -1,7 +1,7 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects-git"
 _pkgname="pay-respects"
-pkgver=0.7.3.r0.g0289192
+pkgver=0.7.6.r0.g60a168e
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -34,6 +34,7 @@ build() {
 	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
 	export _DEF_PR_LIB=/usr/lib/pay-respects
+	export _DEF_PR_PACKAGE_MANAGER=pacman
 	cargo build --frozen --release --workspace
 }
 
