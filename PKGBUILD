@@ -5,12 +5,15 @@
 pkgname='gpp-git'
 _pkgname="${pkgname/-git/}"
 pkgver=2.28.r0.gfc9cc00
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose preprocessor with customizable syntax (development version)'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/logological/gpp'
 source=("git+$url.git")
-license=('LGPL-3.0-or-later')  # SPDX-License-Identifier: LGPL-3.0-or-later
+license=(
+  'GPL-3.0-or-later'   # SPDX-License-Identifier: GPL-3.0-or-later
+  'LGPL-3.0-or-later'  # SPDX-License-Identifier: LGPL-3.0-or-later
+)
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
 depends=('glibc')
