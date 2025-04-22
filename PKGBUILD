@@ -10,18 +10,18 @@ pkgrel=1
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
 	'gtk3'
 	'gstreamer'
 	'gst-plugins-base-libs'
 	'libsecret')
-makedepends=('fvm' 'git' 'patchelf')
+makedepends=('fvm' 'git' 'patchelf' 'cmake' 'ninja' 'clang')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('eb0f5c3f7fce5cb981d0f87a1023e0e6d27b4314bd7166e4e65977efeb90f3b9')
 
 _srcdir="${_pkgreponame}"
-_engine_version=3.24.5
+_engine_version=3.27.0
 
 build() {
 	export FVM_CACHE_PATH="$SRCDEST/fvm-cache"
