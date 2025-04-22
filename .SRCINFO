@@ -1,9 +1,9 @@
 pkgbase = typhoon-bin
 	pkgdesc = A stylish weather app based on Stormcloud
 	pkgver = 0.9.85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archisman-panigrahi/typhoon
-	arch = x86_64
+	arch = any
 	license = GPL-3.0-or-later
 	makedepends = tar
 	depends = gtk3
@@ -17,7 +17,7 @@ pkgbase = typhoon-bin
 	depends = imagemagick
 	provides = typhoon
 	conflicts = typhoon
-	source_x86_64 = https://github.com/archisman-panigrahi/typhoon/releases/download/v0.9.85/typhoon_0.9.85_all.deb
-	sha256sums_x86_64 = a2a589aa75b16f734278790458b7c778b8537d5bd89cc4b706e2deb7b0ea0613
+	source = https://github.com/archisman-panigrahi/typhoon/releases/download/v0.9.85/typhoon_0.9.85_all.deb
+	sha256sums = a2a589aa75b16f734278790458b7c778b8537d5bd89cc4b706e2deb7b0ea0613
 
 pkgname = typhoon-bin
