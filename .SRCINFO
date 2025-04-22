@@ -1,6 +1,6 @@
 pkgbase = timestamp
 	pkgdesc = Configurable tool to rename files with dates from existing EXIF, XMP, or inode metadata
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/amot-dev/timestamp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = timestamp
 	depends = gcc-libs
 	depends = exiv2
 	depends = yaml-cpp
-	source = timestamp-1.2.0.tar.gz::https://github.com/amot-dev/timestamp/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = d9769e9b8f3b281a2a83bc511692e4ed30067baa3e3819daddf19165dca96c4f
+	source = timestamp-1.3.0.tar.gz::https://github.com/amot-dev/timestamp/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 70a0e68a5c6449f8017b9c541ab5634c92b6f5b85fcf8054a54ff829de41c805
 
 pkgname = timestamp
