@@ -1,7 +1,7 @@
 # Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=bed
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="binary editor written in Go"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/itchyny/bed/archive/v${pkgver}.tar.gz")
-sha256sums=('dea9265b5a78e91851059c1c726ac40490825f107f8db6ae7db67965b92599c3')
+sha256sums=('2515fd65c718f7aaa549bf9a98cf514102d2ea5f3b1c0437bbcf8bd26fae4d0a')
 _goname="github.com/itchyny/bed"
 
 
