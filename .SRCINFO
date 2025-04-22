@@ -1,6 +1,6 @@
 pkgbase = vscodium
 	pkgdesc = Free/Libre Open Source Software Binaries of VSCode (git build from latest release).
-	pkgver = 1.99.32562
+	pkgver = 1.99.32704
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium.git
 	arch = x86_64
@@ -42,10 +42,10 @@ pkgbase = vscodium
 	source = vscodium.desktop
 	source = vscodium-wayland.desktop
 	source = vscodium-uri-handler.desktop
-	source = https://github.com/VSCodium/vscodium/releases/download/1.99.32562/VSCodium-1.99.32562-src.tar.gz
+	source = https://github.com/VSCodium/vscodium/releases/download/1.99.32704/VSCodium-1.99.32704-src.tar.gz
 	sha256sums = 3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e
 	sha256sums = ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6
 	sha256sums = 6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b
-	sha256sums = f8299c6512df03c617406e5f35bf084e0a240f2c1d17c040639bf0912ddb2d67
+	sha256sums = 3d31f572cf4a79675aff4e42a9f9376d0abdc6dfb9890078e9d33f44785fb749
 
 pkgname = vscodium
