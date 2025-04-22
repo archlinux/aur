@@ -1,7 +1,7 @@
 pkgbase = qwt-qt6
 	pkgdesc = Qt Widgets for Technical Applications (qt6)
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qwt.sourceforge.io/
 	arch = any
 	license = custom:qwt

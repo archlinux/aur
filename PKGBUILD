@@ -1,6 +1,6 @@
 pkgname=qwt-qt6
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Widgets for Technical Applications (qt6)"
 arch=('any')
 license=('custom:qwt')
@@ -20,6 +20,7 @@ prepare() {
       -i qwtconfig.pri
   sed -e '/^TARGET/ s|(qwt)|(qwt-qt$${QT_MAJOR_VERSION})|' \
       -e '/^\s*QWT_SONAME/ s|libqwt|&-qt$${QT_MAJOR_VERSION}|' \
+      -e 's|Qt5|Qt6|' -e 's|Qt5|Qt6|' -e 's|Qt5|Qt6|' \
       -i src/src.pro
   sed -e "/QwtExamples/d" -e "/QwtTests/d" -e "/QwtPlayground/d" -i qwtconfig.pri
 }
