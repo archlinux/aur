@@ -1,7 +1,7 @@
 pkgbase = nfs-ganesha-git
 	pkgdesc = NFS and 9P protocols in user mode.
-	pkgver = 6.1.r0.ge13bc5dae
-	pkgrel = 1
+	pkgver = 7.dev.12.r0.gfc1daa6a6
+	pkgrel = 2
 	url = http://nfs-ganesha.github.io/
 	arch = x86_64
 	arch = i686
@@ -27,14 +27,15 @@ pkgbase = nfs-ganesha-git
 	depends = liburcu
 	depends = acl
 	depends = btrfs-progs
+	depends = rdma-core
+	depends = xfsprogs
+	depends = libunwind
 	provides = nfs-ganesha
 	conflicts = nfs-ganesha
 	backup = etc/ganesha/ganesha.conf
 	source = git+https://github.com/nfs-ganesha/nfs-ganesha.git
 	source = git+https://github.com/nfs-ganesha/ntirpc.git
-	source = nfs-ganesha-libntirpc-assert.h-fix.patch::https://github.com/nfs-ganesha/ntirpc/pull/279/commits/1f9bb775d02b8b894f12d8408e35275e329b2da6.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 309bd1726a8e9545896d8bc766311fa87e6348d369b1a9fb75fd014e344166e5
 
 pkgname = nfs-ganesha-git

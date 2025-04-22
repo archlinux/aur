@@ -2,22 +2,22 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha-git
-pkgver=6.1.r0.ge13bc5dae
-pkgrel=1
+pkgver=7.dev.12.r0.gfc1daa6a6
+pkgrel=2
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
 url="http://nfs-ganesha.github.io/"
 license=(LGPL-3.0-only)
-depends=(glibc gcc-libs nfsidmap libcap krb5 util-linux-libs e2fsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs)
+depends=(glibc gcc-libs nfsidmap libcap krb5 util-linux-libs e2fsprogs dbus libwbclient jemalloc liburcu acl btrfs-progs
+         rdma-core xfsprogs libunwind)
 makedepends=(cmake git lsb-release doxygen python-sphinx graphviz)
 provides=(nfs-ganesha)
 conflicts=(nfs-ganesha)
 source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git"
         "git+https://github.com/nfs-ganesha/ntirpc.git"
-        "nfs-ganesha-libntirpc-assert.h-fix.patch::https://github.com/nfs-ganesha/ntirpc/pull/279/commits/1f9bb775d02b8b894f12d8408e35275e329b2da6.patch")
+        )
 sha256sums=('SKIP'
-            'SKIP'
-            '309bd1726a8e9545896d8bc766311fa87e6348d369b1a9fb75fd014e344166e5')
+            'SKIP')
 backup=(etc/ganesha/ganesha.conf) #etc/sysconfig/ganesha
 
 pkgver() {
@@ -34,6 +34,7 @@ prepare() {
 
 build() {
   cmake -B build -S "nfs-ganesha/src" -Wno-dev \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_MAN_PAGE=ON \
@@ -43,6 +44,7 @@ build() {
     -DUSE_FSAL_LIZARDFS=OFF \
     -DUSE_FSAL_CEPH=OFF \
     -DUSE_FSAL_GLUSTER=OFF \
+    -DUSE_FSAL_KVSFS=OFF \
     -DUSE_FSAL_RGW=OFF
 
   cmake --build build
