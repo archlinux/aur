@@ -2,10 +2,10 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=superslicer-prerelease-bin
-pkgver=2.7.61.1
+pkgver=2.7.61.2
 _pkgtag=$pkgver
 _appimage=SuperSlicer-ubuntu_20.04-$_pkgtag.AppImage
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (Prusa, Voron, Creality, etc.) (binary AppImage)"
 arch=("$CARCH")
@@ -18,7 +18,7 @@ provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git' 'superslicer-prerelease')
 source=("https://github.com/supermerill/SuperSlicer/releases/download/$_pkgtag/$_appimage"
 )
-sha256sums=('a517ba53fa1289b66515f012f36522c3b79c48d2929c3f32a9c3330cde355aba')
+sha256sums=('e4167886cd7d59f51659c58e68324772a67d9731ad97fa1108d20c1ecd5306cc')
 noextract=("${_appimage}")
 
 
