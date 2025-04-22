@@ -3,7 +3,7 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 pkgname="ocaml-cryptokit"
 pkgver='1.20.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Cryptographic primitives for OCaml'
 arch=('x86_64')
 url="http://pauillac.inria.fr/~xleroy/software.html#cryptokit"
