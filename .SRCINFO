@@ -12,7 +12,7 @@ pkgbase = ntirpc
 	depends = liburcu
 	depends = rdma-core
 	provides = libntirpc.so
-	source = ntirpc-d2b7209f82fac44fe95731ce98740f793e9e98a0.tar.gz::https://github.com/nfs-ganesha/ntirpc/archive/d2b7209f82fac44fe95731ce98740f793e9e98a0.tar.gz
-	b2sums = 13f91eb0536a4782e3aa3a793667adf173c8d42afcd19d998117dd9b849a6866c90de67f968e6d26e59757538c54e6da89022e0f166db055fa5113330f1af6bc
+	source = ntirpc-6.3.tar.gz::https://github.com/nfs-ganesha/ntirpc/archive/refs/tags/v6.3.tar.gz
+	b2sums = f6c204ad125b79165a3fd643c5bbd0b99dc6f75c835392e013768c1b276bfae3944f5ed22fc7950749f046e0b22bc610f0722bc8b8e84dee567d62b690e04fcd
 
 pkgname = ntirpc
