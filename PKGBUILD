@@ -3,7 +3,7 @@
 # Contributor: JeremyStarTM <jeremystartm@staropensource.de>
 
 pkgname=amethyst-player-git
-pkgver=v2.0.5.r346.gfa63eeb
+pkgver=v2.0.5.r347.g87a0437
 pkgrel=1
 pkgdesc="Amethyst is an Electron-based cross-platform audio player with a node-based audio routing system."
 arch=('x86_64' 'aarch64')
