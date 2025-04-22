@@ -16,10 +16,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 build() {
   cd ${srcdir}/glew-${pkgver}
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DBUILD_UTILS=OFF ../build/cmake/
-    make
-    popd
+    ${_arch}-cmake -DBUILD_UTILS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build-${_arch} build/cmake/
+    make -C build-${_arch}
   done
 }
 
