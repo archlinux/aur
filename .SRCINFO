@@ -1,7 +1,7 @@
 pkgbase = r-networkbma
 	pkgdesc = Regression-based network inference using Bayesian Model Averaging
 	pkgver = 2.35.0
-	pkgrel = 4
+	pkgrel = 7
 	url = https://bioconductor.org/packages/3.15/networkBMA
 	arch = x86_64
 	license = GPL

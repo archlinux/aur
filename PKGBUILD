@@ -6,7 +6,7 @@ _pkgname=networkBMA
 _pkgver=2.35.0
 pkgname=r-${_pkgname,,}
 pkgver=2.35.0
-pkgrel=4
+pkgrel=7
 pkgdesc='Regression-based network inference using Bayesian Model Averaging'
 arch=('x86_64')
 url="https://bioconductor.org/packages/3.15/${_pkgname}"
@@ -25,12 +25,14 @@ makedepends=(
   patch
 )
 source=("https://bioconductor.org/packages/3.15/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "fix_boostinc.patch")
+  "fix_boostinc.patch")
 sha256sums=('a29156b5bcc82d61f512436a96d29d6518a7042a684c3cd335795d754e5a4075'
             'fe3b4f88661542b0053dc01af9755514e1f889166a68dd1735df29d7e459cfbf')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  sed -i src/Makevars \
+    -e "s|CXX11|CXX14|"
 
   # fix issue with missing Boost header inclusion
   patch -Np0 -i "${srcdir}/fix_boostinc.patch"
