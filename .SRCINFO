@@ -1,7 +1,7 @@
 pkgbase = lode-bin
-	pkgdesc = A universal GUI for unit testing built with Electron and Vue.js
+	pkgdesc = A universal GUI for unit testing built with Electron and Vue.js.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lode.run/
 	arch = x86_64
 	license = MIT
