@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = netatop
+
+[Action]
+Description = Load netatop kernel module
+When = PostTransaction
+Exec = /usr/bin/modprobe netatop
+

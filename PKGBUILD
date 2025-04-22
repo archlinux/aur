@@ -1,37 +1,81 @@
-# Maintainer: Spider.007 <archPackage@spider007.net>
+# Maintainer: batot <archpackager@algrim.pl>
 # Contributor: Spider.007 <archPackage@spider007.net>
-packager="Spider.007 <archPackage@spider007.net>"
+packager="batot <archpackager@algrim.pl>"
 pkgname=netatop
-pkgver=3.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
 groups=('modules')
 license=('GPL')
-install='depmod.install'
-depends=('atop')
-makedepends=('linux-headers')
+#install='depmod.install'
+install='netatop.install'
+depends=('atop' 'dkms')
+makedepends=('linux-headers' 'base-devel')
 source=("http://atoptool.nl/download/netatop-$pkgver.tar.gz")
-sha256sums=('736f43572c31a90748f023f0a5a814bff58d44c0c3f060d776cfd6e6e8435c62')
+sha256sums=('508a8977cd3d1cdd67587a13c25e3a414647b48f92d1ce38fc138b5914aea3f6')
 arch=('x86_64' 'i386')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-
 	make all
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd "$srcdir/$pkgname-$pkgver"
 
-	install -Dm 0744 module/netatop.ko $pkgdir/usr/lib/modules/$(uname -r)/extramodules/netatop.ko
+	# 1) Copy sources to /usr/src
+	install -dm755 "$pkgdir/usr/src/$pkgname-$pkgver"
+	cp -a ./* "$pkgdir/usr/src/$pkgname-$pkgver/"
 
-	install -D daemon/netatopd $pkgdir/usr/bin/netatopd
+	# 2) Install daemon and manpage
+	#install -Dm0755 netatopd "$pkgdir/usr/bin/netatopd"
+	install -Dm0644 man/netatop.4  "$pkgdir/usr/share/man/man4/netatop.4"
+	install -Dm0644 man/netatopd.8 "$pkgdir/usr/share/man/man8/netatopd.8"
 
-	install -D man/netatop.4 $pkgdir/usr/share/man/man4/netatop.4
-	install -D man/netatopd.8 $pkgdir/usr/share/man/man8/netatopd.8
+	# 3) Installation without DKMS
+	#mkdir -p $pkgdir/etc/modules-load.d
+	#install -dm755 "$pkgdir/usr/lib/modules-load.d"
+	#echo "netatop" > "$pkgdir/usr/lib/modules-load.d/netatop.conf"
+	#install -Dm0744 netatop.ko "$pkgdir/usr/lib/modules/$(uname -r)/extramodules/netatop.ko"
+	#install -D /$srcdir/$pkgname-$pkgver/netatopd $pkgdir/usr/bin/netatopd
+	#echo "add_module netatop/$pkgver" > "$pkgdir/usr/lib/modules-load.d/netatop.conf"	#I'm not sure if it's required.
 
-	mkdir -p $pkgdir/etc/modules-load.d
+	# 4) Installation DKMS
+	install -Dm0644 dkms.conf "$pkgdir/usr/src/$pkgname-$pkgver/dkms.conf"
+	install -Dm0644 netatop.c "$pkgdir/usr/src/$pkgname-$pkgver/netatop.c"
+ 	install -Dm0644 netatop.h "$pkgdir/usr/src/$pkgname-$pkgver/netatop.h"
+	install -Dm0644 netatopversion.h "$pkgdir/usr/src/$pkgname-$pkgver/netatopversion.h"
+	install -Dm644 Makefile "$pkgdir/usr/src/$pkgname-$pkgver/Makefile"
+	#echo 'obj-m += netatop.o' > "$pkgdir/usr/src/netatop-$pkgver/Makefile"
 
-	echo "netatop" > $pkgdir/etc/modules-load.d/netatop.conf
+
+	# 5) Autoload modules at boot
+	install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/netatop.conf"
+	echo "netatop" > "$pkgdir/usr/lib/modules-load.d/netatop.conf"
+	# HOOK Pacman
+	install -Dm644 "$srcdir/../netatop-load.hook" "$pkgdir/usr/share/libalpm/hooks/99-netatop-load.hook"
+	
+	# 6) Dodatkowo do /etc/ jeśli ktoś woli tę lokalizację
+	#install -dm755 "$pkgdir/etc/modules-load.d"
+	#echo "netatop" > "$pkgdir/etc/modules-load.d/netatop.conf"
 }
+
+post_install() {
+	#dkms install -m netatop -v "$pkgver" --no-depmod
+	dkms autoinstall --no-depmod
+	depmod -a
+	modprobe netatop
+}
+
+pre_remove() {
+	rmmod netatop || true
+	dkms remove -m netatop -v "$pkgver" --all || true
+	depmod -a
+}
+
+post_upgrade() {
+    	dkms install -m netatop -v "$pkgver" --no-depmod
+	depmod -a
+}
+
