@@ -2,11 +2,11 @@
 pkgname=imagenormalizer-bin
 _pkgname=ImageNormalizer
 pkgver=1.2024.10.01
-pkgrel=1
-pkgdesc="A cross-platform command-line batch-processing tool that resizes and compresses images."
+pkgrel=2
+pkgdesc="A cross-platform command-line batch-processing tool that resizes and compresses images.(Prebuilt version)"
 arch=(
-    "aarch64"
-    "x86_64"
+    'aarch64'
+    'x86_64'
 )
 url="https://github.com/mihnea-radulescu/imagenormalizer"
 license=(

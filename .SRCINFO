@@ -1,7 +1,7 @@
 pkgbase = imagenormalizer-bin
-	pkgdesc = A cross-platform command-line batch-processing tool that resizes and compresses images.
+	pkgdesc = A cross-platform command-line batch-processing tool that resizes and compresses images.(Prebuilt version)
 	pkgver = 1.2024.10.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mihnea-radulescu/imagenormalizer
 	arch = aarch64
 	arch = x86_64
