@@ -6,8 +6,7 @@ pkgname='miniscript-cli'
 _pkgname="${pkgname/-cli}"
 pkgdesc='Simple, elegant language for embedding or learning to program'
 pkgver=1.6.2
-pkgrel=4
-epoch=
+pkgrel=5
 url='https://miniscript.org/'
 _url='https://github.com/JoeStrout/miniscript'
 changelog="$pkgname.changelog"
@@ -16,12 +15,11 @@ license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'patch')
 provides=('libminiscript-cpp' 'miniscript')
-options=('lto' 'staticlibs')
+options=('staticlibs')
 source=(
   "$pkgname-$pkgver.tar.gz::$_url/archive/refs/tags/v$pkgver.tar.gz"
   'miniscript-cli-mktime.diff'
 )
-LTOFLAGS='-flto -ffat-lto-objects'
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -35,17 +33,10 @@ build() {
   mkdir -p "build"
   cd "build"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  test -n "$LTOFLAGS" && {
+    export LTOFLAGS="$LTOFLAGS -ffat-lto-objects"
+    export CFLAGS="$CFLAGS $LTOFLAGS"
+  }
   cmake ../.. && \
   cmake --build . --config Release
 }
@@ -59,20 +50,20 @@ check() {
 package() {
   cd "$_pkgname-$pkgver/MiniScript-cpp"
 
-  install -vDm0755 -t "$pkgdir/opt/miniscript" \
+  install -vDm0755 -t "$pkgdir/opt/miniscript/" \
     build/miniscript
-  install -vDm0644 -t "$pkgdir/usr/lib" \
+  install -vDm0644 -t "$pkgdir/usr/lib/" \
     build/libminiscript-cpp.a
-  install -vDm0644 -t "$pkgdir/opt/miniscript/lib" \
+  install -vDm0644 -t "$pkgdir/opt/miniscript/lib/" \
     lib/*.ms
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/demo" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/demo/" \
     demo/*.ms
 
   cd ..
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    *.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    ./*.md
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     LICENSE
 
   install -vdm0755 "$pkgdir/usr/bin"
