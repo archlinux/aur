@@ -9,11 +9,11 @@ pkgname=(
   'omnissa-horizon-scanner-client'
   'omnissa-horizon-serialport-client'
   'omnissa-horizon-usb')
-pkgver=2412
-_build1=8.14.0
-_build2=12437214089
-_cart="CART25FQ4_LIN_${pkgver}_TARBALL"
-pkgrel=6
+pkgver=2503
+_build1=8.15.0
+_build2=14256322247
+_cart="CART26FQ1_LIN_${pkgver}_TARBALL"
+pkgrel=1
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('imagemagick')
@@ -23,7 +23,7 @@ license=('custom')
 source=("${pkgbase}-${pkgver}-${_build1}-${_build2}.tar.gz::https://download3.omnissa.com/software/${_cart}/Omnissa-Horizon-Client-Linux-${pkgver}-${_build1}-${_build2}.tar.gz"
         'Horizon_8_Logo.png'
         'horizon-usb.service')
-sha256sums=('b6098f7d9a876ef51f4683a6a94359f94355e4b867cd0b8a5f2117b020993c11'
+sha256sums=('c7df084d717dc70ce53eadfbe5a9d0daa06931b640702a8355705fbd93e16bb4'
             '7b50a24cb893bb5887e0e2099029ec2957fd94a2b55b8718f0777fb0b66f440f'
             '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2')
 
