@@ -1,5 +1,5 @@
 pkgname=velo
-pkgver=1.2.0 
+pkgver=1.2.1 
 pkgrel=1
 pkgdesc="A script to manage AUR packages and perform various package-related tasks"
 arch=('x86_64')
