@@ -2,7 +2,7 @@
 # Contributor: oliver < a t >  first . in-berlin . de
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 pkgname="ocaml-cryptokit"
-pkgver='1.19'
+pkgver='1.20'
 pkgrel=1
 pkgdesc='Cryptographic primitives for OCaml'
 arch=('x86_64')
@@ -12,11 +12,10 @@ depends=('ocaml' 'zlib' 'ocaml-zarith')
 makedepends=('ocaml' 'ocaml-findlib' 'dune')
 _srcname="release${pkgver//./}"
 source=("https://github.com/xavierleroy/cryptokit/archive/${_srcname}.tar.gz")
-sha256sums=('a7e203aac7fb86fa26fbcc5e7243c8e0f46f0d084bfaf06767d0b816fc12ccb1')
+sha256sums=('3a4205703c6819a2c338ffebb2c025af3ef3d24ad716cc9138b5099c5b346873')
 options=('staticlibs')
 
 build() {
-    #tar -xzvf release1161.tar.gz
     cd cryptokit-"${_srcname}"
     ./configure
 
