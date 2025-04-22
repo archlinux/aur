@@ -1,33 +1,45 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Mark Carter <alt.mcarter@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=neoleo-git
-pkgver=12.1.r2.g76082a9
+pkgver=15.0.r208.gbe10a3b
 pkgrel=1
 pkgdesc="Lightweight curses spreadsheet based on GNU oleo"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/blippy/neoleo"
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('ncurses')
-makedepends=('git')
-source=("git+$url.git")
+makedepends=('cmake' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags | sed 's+-+.r+' |tr - . | cut -c2-
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname"
+	sed -i '/install/d' CMakeLists.txt
 }
 
 build() {
-  cd ${pkgname%-git}
-  autoreconf -iv
-  LIBS+=" -lstdc++fs" ./configure --prefix=/usr
-  make
+	local cmake_options=(
+		-B build
+		-S "$pkgname"
+		-Wno-dev
+		-DCMAKE_BUILD_TYPE=None
+		-DCMAKE_INSTALL_PREFIX=/usr
+	)
+
+	cmake "${cmake_options[@]}"
+	cmake --build build
 }
 
 package() {
-  cd ${pkgname%-git}
-  make DESTDIR="$pkgdir/" install
+	# cmake script does not install the binary
+	install -Dm755 build/neoleo -t "$pkgdir/usr/bin"
 }
