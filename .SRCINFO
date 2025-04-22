@@ -1,6 +1,6 @@
 pkgbase = res-downloader
 	pkgdesc = This is a high-value and high-performance and diverse resource downloader called res-downloader
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/putyy/res-downloader
 	install = res-downloader.install
@@ -23,9 +23,9 @@ pkgbase = res-downloader
 	options = !debug
 	options = !strip
 	options = !lto
-	source = res-downloader-3.0.3.tar.gz::https://github.com/putyy/res-downloader/archive/refs/tags/3.0.3.tar.gz
+	source = res-downloader-3.0.4.tar.gz::https://github.com/putyy/res-downloader/archive/refs/tags/3.0.4.tar.gz
 	source = res-downloader.install
-	sha256sums = a7d997cdc912733da98d114d5cbeb9f8e84cf34e2a3f145ce01853a57603c636
+	sha256sums = 4c522cb16802893de99112e438b0c7a7d60dc16e5c4af6a72371abe8a5ebbd13
 	sha256sums = 23a4cbb1eb388d0a847bbc9918a103769b15ad22d462840fe5d9d6bd6a720cbe
 
 pkgname = res-downloader
