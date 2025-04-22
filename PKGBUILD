@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miuzcpc-git
-_pkgname="Miuzc PC"
+_pkgname='Miuzc PC'
 pkgver=1.0.1.r0.g763fc19
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="一个私人音乐播放器，可以播放本地以及云端音乐，并且支持歌词展示。"
+pkgdesc="A private music player that can play local and cloud music, and supports lyric display.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/miboqiang130/miuzcPC"
 license=("MIT")
@@ -19,8 +19,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
     'curl'
     'icoutils'
 )
@@ -42,14 +40,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -57,20 +55,25 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        fi
-    } >> .npmrc
+        } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
     icotool -x src/renderer/assets/icon/icon.ico -o src/renderer/assets/icon/icon.png
-    find src -type f -exec sed -i "s/icon\.ico/icon\.png/g" src/main.js {} \;
+    find src -type f -exec sed -i "s/icon\.ico/icon\.png/g" src/main.js {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     npm run package
 }
 package() {

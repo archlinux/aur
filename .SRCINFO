@@ -1,5 +1,5 @@
 pkgbase = miuzcpc-git
-	pkgdesc = 一个私人音乐播放器，可以播放本地以及云端音乐，并且支持歌词展示。
+	pkgdesc = A private music player that can play local and cloud music, and supports lyric display.(Use system-wide electron)
 	pkgver = 1.0.1.r0.g763fc19
 	pkgrel = 1
 	url = https://github.com/miboqiang130/miuzcPC
@@ -9,8 +9,6 @@ pkgbase = miuzcpc-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = icoutils
 	depends = electron30
