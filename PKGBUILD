@@ -1,9 +1,10 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Maintainer: FieldOfClay <me at michaelclayfield dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="olivetin-bin"
 pkgver=2025.4.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
 url="https://www.olivetin.app/"
 license=("AGPL3")
@@ -45,6 +46,10 @@ listenAddressWebUI: localhost:1340
 
 # see https://docs.olivetin.app/update-tracking.html
 showNewVersions: true
+
+# Location og the web interface
+webUIDir: "/usr/share/webapps/olivetin/webui/"
+
 CONTENT
 }
 

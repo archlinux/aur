@@ -1,7 +1,7 @@
 pkgbase = olivetin-bin
 	pkgdesc = Safe and simple access to predefined shell commands from a web interface
 	pkgver = 2025.4.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.olivetin.app/
 	arch = x86_64
 	arch = aarch64
