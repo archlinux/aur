@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="gcs-bin"
-pkgver=5.33.0
+pkgver=5.34.0
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
@@ -9,11 +9,11 @@ license=("MPL2")
 arch=("x86_64")
 provides=("gcs")
 conflicts=("gcs")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/richardwilkes/gcs/releases/download/v$pkgver/gcs-$pkgver-linux.tgz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/richardwilkes/gcs/releases/download/v$pkgver/gcs-$pkgver-linux-amd64.tgz"
         "gcs.desktop"
         "gcs.png"
         "LICENSE")
-b2sums=('9212fab48075a0e7ad2ddfda014f20363b5872de155a8f8fd60326dc6ec738eb5b07d07b168887511e9b667367b1a24e4b8676db284b8baa9ceac9b94958f5a4'
+b2sums=('35ba24345df8cc66aafd3ab5a61c8dd8253aa417ab5dcc7a87eed295d5f80c455e3ac686b53e8a28ba5e5b78df1536ee1403510917026f6dc5c6f49a47473d3a'
         'e60d8367f2e88e753e3206d169f0d446c0a422ea97ef7a06bb244e83851d0a83885826782f0bb9172328f1c7d5c942fb77623aedced05f04204b1f9e45be80ba'
         '9eebe411dda83637958bccdda876824941406a86c6e0384a2eef460cad678640457a10e0ffeb447e1923a52066b3b151eff77d1814d10a046a7f1333aac200ed'
         'b82bb30ed70c0464e93eae9c9cfc68995a192d2675fdbdcb2fc5459b4ac9a404f1cb41eb693817caa73b46ec6e8023641e08673f684f6b7dae979548ade0402c')
