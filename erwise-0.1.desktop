@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Erwise
+Comment=An early discontinued web-browser built with Motif
+GenericName=Browser
+Exec=/usr/local/bin/erwise
+Icon=erwise
+Type=Network;WebBrowser;
