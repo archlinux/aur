@@ -3,16 +3,16 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
 license=('GPL-3.0-only' 'MIT')
-makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'clang')
-depends=('qt5-base' 'qt5-webengine' 'qt5-declarative' 'qt5-svg' 'libzip' 'protobuf' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt5-webchannel' 'gcc-libs' 'openssl'
-	 'hicolor-icon-theme' 'libxinerama')
+makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'clang')
+depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
+	 'hicolor-icon-theme' 'abseil-cpp')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
-_commit=ec6abda1b10ffba8eaa6f4813d7564ad46521e7b # qt5 branch until qt6 is fixed
+_commit=5bb980e580c0ea0c617d65fb6b2536805bd85110 # qt6 branch
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#commit=$_commit"
   'git+https://github.com/MCMrARM/axml-parser.git'
@@ -23,8 +23,9 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-common.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
+  'qt6-6.9.0.patch::https://github.com/minecraft-linux/mcpelauncher-ui-qt/commit/d0af5088d42c5c9e04fe7f5b32fcd2896558eb69.diff'
 )
-sha256sums=('9ea27cf8dd82167d17d956b034dd7e9e3ade0cada585d014f14587b106691748'
+sha256sums=('23582c5c64a457bd0a29a063c8de94ee64ff116344f5890ef86d5aba2c8bf2c1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -32,7 +33,8 @@ sha256sums=('9ea27cf8dd82167d17d956b034dd7e9e3ade0cada585d014f14587b106691748'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '2c647785043c9fc238fccda2ea3266766797676428f32d3888d8fcc48633fa1c')
 
 prepare() {
   cd "$srcdir/$pkgname-manifest"
@@ -42,7 +44,8 @@ prepare() {
 	git config submodule.$submodule.url "$srcdir/$submodule"
   done
   git -c protocol.file.allow=always submodule update
-  cd "$srcdir/$pkgname-manifest/google-play-api"
+  cd "$srcdir/$pkgname-manifest/mcpelauncher-ui-qt"
+  patch -p1 < "$srcdir/qt6-6.9.0.patch"
 }
 build() {
   cd "$srcdir"
