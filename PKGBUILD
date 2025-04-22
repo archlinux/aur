@@ -2,7 +2,7 @@
 # Maintainer: chengxuncc <chengxuncc@gmail.com>
 
 pkgname=prysm
-pkgver=5.3.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Prysm is an Ethereum proof-of-stake client written in Go."
 arch=('x86_64' 'aarch64')
@@ -25,12 +25,12 @@ source_aarch64=("prysm-beacon-chain-$pkgver-$arch::https://prysmaticlabs.com/rel
 sha256sums=('fc52438b1319fb1e61c85c6d96abce83009c3898e517051f140093944b45f2e3'
             'cc19fe37cd80972e3a214f5de577b315996e428c8e93cb362c5beb8204d8a173'
             '143147f19424a17147d342d1ac4006d8a154dbbb9e4b5a2f8e594d43e90bd305')
-sha256sums_x86_64=('5218357057a88758ca3ff2359bd44956d010b56bc4852a66ddfe9560f1505110'
-                   'd88d65021c4330b83ea1c02f682ae60a78265517e7d7a90178f58b7e91da41f4'
-                   '28406404b7664f3dde7bfc33882817e5a1506304f16a511b0677f041e1a59e67')
-sha256sums_aarch64=('5218357057a88758ca3ff2359bd44956d010b56bc4852a66ddfe9560f1505110'
-                    'd88d65021c4330b83ea1c02f682ae60a78265517e7d7a90178f58b7e91da41f4'
-                    '28406404b7664f3dde7bfc33882817e5a1506304f16a511b0677f041e1a59e67')
+sha256sums_x86_64=('7d1129c23bccdc9dcd901d4a98d1b4cfac50e129a25908032af1ec3c6521fada'
+                   'dedbf866f649e0044294b4c8087aa1b6599efd4e226ab804a9e4bda854cbc471'
+                   'da01771781c25fbecfa3b30b5e8981f33c16c68e8278830b26ca3b33e735d34f')
+sha256sums_aarch64=('7d1129c23bccdc9dcd901d4a98d1b4cfac50e129a25908032af1ec3c6521fada'
+                    'dedbf866f649e0044294b4c8087aa1b6599efd4e226ab804a9e4bda854cbc471'
+                    'da01771781c25fbecfa3b30b5e8981f33c16c68e8278830b26ca3b33e735d34f')
 
 package() {
     cd "$srcdir"
