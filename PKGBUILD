@@ -1,6 +1,6 @@
 # Maintainer: iff <iff@ik.me>
 pkgname="pay-respects"
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Command suggestions, command-not-found and thefuck replacement written in Rust (All modules)"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 optdepends=()
 source=($pkgname::git+https://github.com/iffse/pay-respects#tag=v$pkgver)
 
-sha1sums=('659f1482bd5e552a9dea1fc38e8ed615f4aefa02')
+sha1sums=('8bca02b2476b8ca435bec06f7547e0e142295821')
 
 prepare() {
 	cd "$pkgname"
@@ -26,7 +26,8 @@ build() {
 	export CARGO_TARGET_DIR=target
 	export CFLAGS+=" -ffat-lto-objects"
 	export _DEF_PR_LIB=/usr/lib/pay-respects
-	cargo build --release --workspace
+	export _DEF_PR_PACKAGE_MANAGER=pacman
+	cargo build --frozen --release --workspace
 }
 
 package() {
