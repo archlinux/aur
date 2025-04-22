@@ -1,7 +1,7 @@
 pkgbase = jorge-git
 	pkgdesc = Personal site generator with org-mode support (latest commit)
-	pkgver = 0.9.1.r0.g2e9a364
-	pkgrel = 1
+	pkgver = 0.9.1.r8.g9cf08c4
+	pkgrel = 2
 	url = https://github.com/facundoolano/jorge
 	arch = aarch64
 	arch = arm
@@ -15,7 +15,6 @@ pkgbase = jorge-git
 	depends = glibc
 	provides = jorge
 	conflicts = jorge
-	options = lto
 	source = git+https://github.com/facundoolano/jorge.git
 	sha256sums = SKIP
 
