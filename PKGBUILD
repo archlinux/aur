@@ -1,7 +1,7 @@
 # Maintainer: waveplate <dissahc@pm.me>
 pkgname=img2irc-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="a highly versatile image to IRC/ANSI art converter (universal linux binary for x86_64)"
 arch=('x86_64')
 url="https://github.com/waveplate/img2irc"
@@ -9,7 +9,7 @@ license=('GPL3')
 provides=('img2irc')
 conflicts=('img2irc')
 source=("https://github.com/waveplate/img2irc/releases/download/v$pkgver/img2irc-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('1644128d670019b3094f5604ff925802899305ce8708f8b364e0aefaf9f8468c')
+sha256sums=('25450ead1a18aa1558760443eb3ea7f368ac2f1a0a84018e00f98fd8612303a5')
 
 package() {
     cd "$srcdir"
