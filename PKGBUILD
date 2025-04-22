@@ -18,7 +18,7 @@ depends=(
 	'gtk3'
 	'gstreamer'
 	'gst-plugins-base-libs')
-makedepends=('fvm' 'git' 'patchelf')
+makedepends=('fvm' 'git' 'patchelf' 'cmake' 'ninja' 'clang')
 source=("git+${url}.git#tag=${_tag}")
 sha256sums=('22cd74809e42e20b4fd9c3cacced9024a80ad1235553e9b18b81b5f44ef1f6c3')
 
@@ -31,9 +31,6 @@ build() {
 	cd "${_srcdir}"
 	fvm install "$_engine_version"
 	fvm use -f "$_engine_version"
-
-	local dartpkg="$(yq -er .name 'pubspec.yaml')"
-	fvm flutter create --project-name="${dartpkg}" --platforms=linux --no-pub --no-overwrite .
 
 	fvm flutter clean
 	fvm flutter --no-version-check pub get
