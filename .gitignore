@@ -1,0 +1,6 @@
+.history/
+LICENSE
+src/
+pkg/
+*.pkg.tar.zst
+*.deb
