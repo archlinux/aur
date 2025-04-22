@@ -4,20 +4,19 @@
 # Contributor: éclairevoyant
 
 _pkgname='nimdow'
-pkgname="${_pkgname}-git"
-pkgver=0.7.40.r1.g29a0cd2
+pkgname="$_pkgname-git"
+pkgver=0.7.41.r0.g19c90e7
 pkgrel=2
-pkgdesc='Tiling window manager written in Nim (latest commit)'
+pkgdesc='Tiling window manager written in Nim (development version)'
 arch=('x86_64')
-url="https://github.com/avahe-kellenberger/$_pkgname"
+url='https://github.com/avahe-kellenberger/nimdow'
 license=('GPL-2.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'nim>=1.2.0')
 source=("git+$url.git")
 sha256sums=('SKIP')
-options=('lto')
 provides=('nimdow')
-conflicts=('nimdow')
+conflicts=("${provides[@]}")
 
 _setup() {
   _nimble_dir="$srcdir/nimbleDir"
@@ -36,17 +35,6 @@ pkgver() {
 prepare() {
   _setup
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
   export CHOOSENIM_NO_ANALYTICS=1
 
   PATH="$_path" nimble refresh -l
@@ -64,15 +52,15 @@ build() {
 package() {
   _setup
 
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -vDm0755 -t "$pkgdir/usr/bin/" \
     nimdow
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
+  install -vDm0644 -t "$pkgdir/usr/share/man/man1/" \
     doc/nimdow.1
-  install -vDm0644 -t "$pkgdir/usr/share/$_pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/nimdow" \
     config.default.toml
   install -vDm0644 -t "$pkgdir/usr/share/xsessions" \
     nimdow.desktop
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     README.md
 }
 
