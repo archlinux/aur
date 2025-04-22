@@ -2,29 +2,18 @@
 # Contributer: Alpin <alpin 'at' alpindale 'dot' dev>
 # Author: LostRuins (concedo)
 
-# Build configuration could be change with environment variables.
-# Or via `${XDG_CONFIG_HOME}/koboldcpp_build.conf` (default is `~/.config/koboldcpp_build.conf`).
-#
-# Disabling portable build
-# KOBOLDCPP_NO_PORTABLE:
-#   '0' - Keep portable build enabled (default)
-#   '1' or any other value that isn't '0' - Disable portable build.
-
-: ${KOBOLDCPP_BUILD_CONF:=${XDG_CONFIG_HOME:-~/.config}/koboldcpp_build.conf}
-: ${KOBOLDCPP_NO_PORTABLE:=0}
-
 pkgname=koboldcpp
-pkgver=1.88
+pkgver=1.89
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
 license=('AGPL-3.0-only')
 depends=(
-    'python'
-    'cblas'
-    'clblast'
-    'vulkan-icd-loader'
+    "python"
+    "cblas"
+    "clblast"
+    "vulkan-icd-loader"
 )
 optdepends=(
     'python-customtkinter: for GUI launcher'
@@ -37,26 +26,16 @@ source=(
     'koboldcpp.desktop'
     'koboldcpp.png'
 )
-sha256sums=('f2202bc529ee509029ff363c299520706ac6b8bed0e3f8c7f6efb7fea217a645'
-            'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
-            'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54')
+sha256sums=(
+    '5bf0a3b1559330aa4780ff9670ae9dbf3bad2268076853ccb82754068cf7b743'
+    'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
+    'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
+)
 
 build() {
-    if [ -f "${KOBOLDCPP_BUILD_CONF}" ]; then
-        echo "Using config from ${KOBOLDCPP_BUILD_CONF}"
-        source "${KOBOLDCPP_BUILD_CONF}"
-    fi
-
-    if [ "${KOBOLDCPP_NO_PORTABLE}" == "0" ]; then
-        export LLAMA_PORTABLE=1
-    fi
-
-    export LLAMA_VULKAN=1
-    export LLAMA_CLBLAST=1
-
     cd "$srcdir/koboldcpp-$pkgver"
 
-    make clean && make
+    make LLAMA_VULKAN=1 LLAMA_CLBLAST=1 
 }
 
 package() {
