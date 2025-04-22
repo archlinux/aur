@@ -1,6 +1,6 @@
 pkgbase = windsurf
 	pkgdesc = The new purpose-built IDE to harness magic
-	pkgver = 1.6.5
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://windsurf.com/
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = windsurf
 	optdepends = vulkan-icd-loader: Vulkan support
 	provides = windsurf
 	options = !strip
-	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.6.5.deb
+	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.7.0.deb
 	sha256sums = 0474c981ec77999c3f7c16964bce09ebac985eb3b60185d1205ba814177f9d6e
 
 pkgname = windsurf
