@@ -1,8 +1,8 @@
 # Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=cbftp-svn
-pkgver=r1244
-pkgrel=2
+pkgver=r1277
+pkgrel=3
 pkgdesc='an advanced multi-purpose FTP/FXP client that focuses on efficient large-scale data spreading, while also supporting most regular FTP/FXP use cases in a modern way. It runs in a terminal and provides a semi-graphical user interface through ncurses.'
 arch=('x86_64')
 url='https://cbftp.glftpd.io'
@@ -13,18 +13,17 @@ provides=('cbftp' 'cbftp-svn')
 conflicts=('cbftp')
 replaces=('cbftp')
 license=('MIT')
-_srcname=cbftp
-source=("svn+https://cbftp.glftpd.io/svn/cbftp/")
+source=("$pkgname::svn+https://cbftp.glftpd.io/svn/cbftp/")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_srcname"
+  cd "$pkgname"
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
-  cd "$_srcname"
+  cd "$pkgname"
   unset OPTFLAGS
   unset CXXFLAGS
   unset CFLAGS
@@ -33,10 +32,10 @@ build() {
 }
 
 prepare() {
-  cd "$_srcname"
+  cd "$pkgname"
 }
 
 package() {
-  cd "$_srcname"
+  cd "$pkgname"
   install -D -m775 bin/* -t "${pkgdir}/usr/bin"
 }
