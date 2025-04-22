@@ -1,0 +1,15 @@
+pkgbase = ocaml-iostream
+	pkgdesc = generic I/O streams of bytes
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://c-cube.github.io/ocaml-iostream/
+	arch = x86_64
+	license = MIT
+	makedepends = dune
+	depends = ocaml>=4.08.0
+	options = !strip
+	options = staticlibs
+	source = ocaml-iostream-0.3.tar.gz::https://github.com/c-cube/ocaml-iostream/archive/v0.3.tar.gz
+	sha256sums = 142370fb3a43010f940edf96e460086e54611aeb67a0fdcff39a307897c33a8c
+
+pkgname = ocaml-iostream
