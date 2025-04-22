@@ -4,7 +4,7 @@
 _pkgname='grapevine'
 pkgname="$_pkgname-git"
 epoch=1
-pkgver=r2774.4cc3903
+pkgver=r2814.d1370f9
 pkgrel=1
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitlab.computer.surgery/matrix/grapevine'
@@ -55,10 +55,10 @@ build(){
 
 package() {
   install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 "$_pkgname-example.toml" "$pkgdir/etc/$_pkgname/$_pkgname-example.toml"
 
   cd "$_pkgname"
   install -D -m755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -D -m0644 "$_pkgname-example.toml" "$pkgdir/etc/$_pkgname/$_pkgname-example.toml"
 }
 
 # vim: set et ts=2:
