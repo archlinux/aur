@@ -1,7 +1,7 @@
 pkgbase = miteiru-bin
-	pkgdesc = An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab
+	pkgdesc = An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab.(Prebuilt version.Use system-wide electron)
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hockyy/miteiru
 	arch = x86_64
 	license = CC-BY-NC-4.0
