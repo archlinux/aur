@@ -43,6 +43,6 @@ pkgbase = windsurf
 	provides = windsurf
 	options = !strip
 	source = https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-1.7.0.deb
-	sha256sums = 0474c981ec77999c3f7c16964bce09ebac985eb3b60185d1205ba814177f9d6e
+	sha256sums = 8538aa9c24bebade52e08a3f348b143712fac34851ffa29fac544f3b874c37dd
 
 pkgname = windsurf
