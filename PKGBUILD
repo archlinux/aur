@@ -31,7 +31,10 @@ makedepends=(
 	'go'
 	'fvm'
 	'git'
-	'patchelf')
+	'patchelf'
+	'cmake'
+	'ninja'
+	'clang')
 arch=('x86_64')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
