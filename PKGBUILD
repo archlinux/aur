@@ -1,8 +1,8 @@
 # Maintainer: NekoLOvO <nekolyin@qq.com>
 
 pkgname=chatgtk
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A simple ChatGPT Webview Client based on GTK, support system tray and nothing else"
 arch=('any')
 license=('GPLv3')
@@ -14,7 +14,7 @@ depends=(
 source=(
     'ChatGTK.tar.xz'
 )
-sha256sums=('047bbbfa45834858c47d4a2f61658aad8dee07577d0409e40ab6741b6f34991e')
+sha256sums=('1c1a63fb451f7d9e4fb06955eac5d095e2e49a4486f72bfad70d5de94238ee01')
 
 package() {
     chmod +x "${srcdir}/usr/share/ChatGTK/main.py"
