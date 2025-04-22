@@ -1,0 +1,4 @@
+[python-plexapi]
+source = "github"
+github = "pkkid/python-plexapi"
+use_latest_release = true
