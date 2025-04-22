@@ -1,0 +1,16 @@
+pkgbase = python-colormath2
+	pkgdesc = Python module that abstracts common color math operations
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/bkmgit/python-colormath2
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-networkx
+	depends = python-numpy
+	source = colormath-3.0.3.tar.gz::https://github.com/gtaylor/python-colormath/archive/3.0.0.tar.gz
+	sha256sums = fffc8e0fc35055d45fb7e2e4bd87d42f9ef80b927bc66f8e812c1fc250996e7b
+
+pkgname = python-colormath2
