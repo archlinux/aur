@@ -5,7 +5,7 @@
 
 pkgname=nncp
 pkgver=8.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
 url='http://www.nncpgo.org/'
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,6 @@ optdepends=(
   'pinfo: for reading the package documentation'
   'texinfo: for reading the package documentation'
 )
-options=('lto')
 source=(
   "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
   "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.asc"
@@ -43,21 +42,7 @@ backup=('etc/nncp/nncp.hjson')
 build() {
   cd "$pkgname-$pkgver"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-      # Fixes the
-      #  “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
-      # error message.
-      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
-    ;;
-    * ) : pass ;;
-  esac
-
+  export CGO_ENABLED=1
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
