@@ -25,6 +25,5 @@ build() {
 package() {
   cd "$srcdir/comifetch"   # <--- FIXED!
   install -Dm755 comifetch "$pkgdir/usr/bin/comifetch"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
