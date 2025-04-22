@@ -1,7 +1,7 @@
 pkgbase = bonbon-browser-bin
-	pkgdesc = A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy.Prebuilt version.Use system-wide electron.
+	pkgdesc = A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bonbon.exchange/
 	arch = aarch64
 	arch = x86_64
