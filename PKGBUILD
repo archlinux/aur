@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bonbon-browser-git
-_pkgname="BonBon"
+_pkgname=BonBon
 pkgver=1.0.7.r0.g42936ad
 _electronversion=32
 _nodeversion=20
 pkgrel=1
-pkgdesc="A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy.Use system-wide electron."
+pkgdesc="A lightweight and innovative browser.It makes you appreciate your browsing experience, and offers privacy.(Use system-wide electron)"
 arch=('any')
 url="https://bonbon.exchange/"
 _ghurl="https://github.com/BonBon-exchange/bonbon-browser"
@@ -21,8 +21,6 @@ makedepends=(
     'nvm'
     'curl'
     'git'
-    'gcc'
-    'cmake'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -42,43 +40,44 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-git}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${pkgname%-git}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} \;
-    sed -e "
+    sed -i -e "
         s/npm install/NODE_ENV=development npm install/g
-        s/AppImage/dir/g
         s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
-    " -i package.json
+    " package.json
     NODE_ENV=development    npm add -D ts-node husky rimraf
     NODE_ENV=development    npm install --legacy-peer-deps
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
