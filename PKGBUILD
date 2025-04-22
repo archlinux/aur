@@ -7,7 +7,7 @@ pkgname=(
   lib32-libxslt
 )
 pkgver=1.1.43
-pkgrel=1
+pkgrel=2
 pkgdesc="XML stylesheet transformation library (32-bit)"
 url="https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home"
 arch=(x86_64)
