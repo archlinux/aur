@@ -1,4 +1,4 @@
 [blahaj]
 source = "git"
-git = "https://github.com/GeopJr/BLAHAJ.git"
+git = "https://codeberg.org/GeopJr/BLAHAJ"
 prefix = "v"
