@@ -1,0 +1,12 @@
+pkgbase = ttf-dionicio3-2tile
+	pkgdesc = This is my big font project with well over 9000 characters.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://dionicio3.com/fonts/2tile/
+	arch = any
+	license = custom:unspecified
+	depends = xorg-fonts-encodings
+	source = https://dionicio3.com/fonts/2tile/Dionicio3_2_Tile.ttf
+	sha256sums = 475d98f0686e16f4f7a1ea428e349996a4611471b4a4af727533b471ff109eb3
+
+pkgname = ttf-dionicio3-2tile
