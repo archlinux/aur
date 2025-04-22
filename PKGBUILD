@@ -10,8 +10,8 @@ url="https://github.com/bkmgit/python-colormath2"
 license=('GPL3')
 depends=(python-networkx python-numpy)
 makedepends=(python-build python-installer python-wheel)
-source=(colormath-$pkgver.tar.gz::https://github.com/gtaylor/python-colormath/archive/3.0.0.tar.gz)
-sha256sums=('fffc8e0fc35055d45fb7e2e4bd87d42f9ef80b927bc66f8e812c1fc250996e7b')
+source=(colormath-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=('b63e187113f161ce0bac86372f0cc6c5ef9e851adcdd515b1cfbede51cf90a22')
 
 build() {
   cd $pkgname-$pkgver
