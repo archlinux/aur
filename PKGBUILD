@@ -6,16 +6,15 @@
 # Contributor: mnabid
 
 pkgname=zoom-system-qt
-pkgver=6.4.5.1259
+pkgver=6.4.6.1370
 pkgrel=1
 pkgdesc="Zoom Workspace client with system libraries"
 arch=('x86_64')
 license=('LicenseRef-zoom')
 url="https://zoom.us/"
-
 depends=(ocl-icd ffmpeg mpg123
 	quazip-qt5 qt5-{base,graphicaleffects,quickcontrols,quickcontrols2,svg,declarative}
-) #wireless_tools for getbssid.sh?
+)
 makedepends=(patchelf binutils)
 optdepends=('qt5-wayland: Wayland support'
 	'qt5-webengine: SSO login'
@@ -23,18 +22,19 @@ optdepends=('qt5-wayland: Wayland support'
 	{chromium,sqlite}': Webview'
 	'qt5-'{3d,x11extras,multimedia,imageformats,remoteobjects}': Unknown. Bundled in original.'
 	)
+options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)
 source=("${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('f11a8d87ead4ef59c90db543f47bb0e5a3a7d0ba518e246a49b033b94283100a40d143575b9c43d15f193bbff26eb0cd47ca511320b4925795ee30b2da128e56')
-options=(!strip emptydirs)
+sha512sums=('d3e555e85a87d63b4c1c0990bf543b7cadb2106defc195c37a4b08df7db3e968fb2d1e09f533fce267695ffcbf104eb83ad8d7f7c4ec890caa845af643e79de4')
+
 build() {	
 	cd opt/zoom
-	echo Removing Qt5 symbol version and RPATH
+	#Remove Qt5 symbol ver and insecure RPATH
 	for b in zoom zopen ZoomLauncher ZoomWebviewHost aomhost libaomagent.so
 		do patchelf --remove-rpath $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
 	done
-	echo Replacing bundled libs
+	#Replace bundled libs
 	rm -r {libOpenCL.so.1,libav*,libmpg123.so,libswresample.so.4,translations,Qt,qt.conf,version.txt}
 	mkdir -p Qt/lib #for ZoomWebviewHost
 	ln -sf /usr/lib/libquazip1-qt5.so libquazip.so
