@@ -1,16 +1,19 @@
 pkgbase = vampy-host
 	pkgdesc = Wrapper plugin that enables you to use Python Vamp in any Vamp host.
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://code.soundsoftware.ac.uk/projects/pyin
+	url = https://github.com/vamp-plugins/vampy-host
 	arch = x86_64
 	arch = i686
 	arch = pentium4
-	license = GPL
-	depends = vamp-plugin-sdk
-	depends = python
-	depends = python2
-	source = https://github.com/c4dm/vampy-host/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = b316c16ece76f5abf0f5c992849e42e800c03a16b5f0648a0bd79f8e2bfea54f
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-numpy
+	source = vampy-host-1.1.0.tar.gz::https://github.com/vamp-plugins/vampy-host/archive/1a158318bd95d02dc2b60a383f882a128394d991.tar.gz
+	source = vamp-plugin-sdk-2.10.tar.gz::https://github.com/vamp-plugins/vamp-plugin-sdk/archive/vamp-plugin-sdk-v2.10.tar.gz
+	sha256sums = 1eb7dd3f4a88ce7469f9cc99cfb84d176d98fac3f6a0c9a5e3ecc9f3422d3f93
+	sha256sums = b552bc91817294c7f90ea07d70938642ebf15d5e3bafc81cf7d55efab9995399
 
 pkgname = vampy-host
