@@ -1,0 +1,39 @@
+pkgname=fmilib2
+pkgver=2.4.1
+pkgrel=1
+pkgdesc="open-source implementation of the FMI open standard"
+arch=('x86_64')
+url="http://www.jmodelica.org/FMILibrary"
+license=('BSD')
+makedepends=('cmake')
+depends=('glibc')
+options=(!lto)
+source=("https://github.com/modelon-community/fmi-library/archive/${pkgver}.tar.gz")
+sha256sums=('8199d3e9423494b714b9c4e42f055248457a7c9162df3d4652000aa9a10b8316')
+
+prepare() {
+  cd "$srcdir"/fmi-library-${pkgver}
+
+  # do not override CMAKE_INSTALL_PREFIX
+  sed -i "/CMAKE_INSTALL_PREFIX/d" CMakeLists.txt
+
+  # install doc in /usr/share
+  sed -i "s|DESTINATION doc)|DESTINATION share/doc/fmilib)|g" CMakeLists.txt
+
+  # miniunz.c:141:11: error: implicit declaration of function mkdir
+  sed -i "50i#include <sys/stat.h>" ThirdParty/Minizip/minizip/miniunz.c
+
+  # build with cmake 3.x
+  curl -fSsL https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz | tar xz
+}
+
+build() {
+  cd "$srcdir"/fmi-library-${pkgver}
+  ./cmake-3.31.6-linux-x86_64/bin/cmake -DCMAKE_INSTALL_PREFIX=/usr -DFMILIB_BUILD_TESTS=OFF -B build .
+  make -C build
+}
+
+package() {
+  cd "$srcdir"/fmi-library-${pkgver}/build
+  make DESTDIR="$pkgdir" install
+}
