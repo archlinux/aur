@@ -1,5 +1,5 @@
 pkgbase = headermaker-git
-	pkgdesc = A desktop application designed to create custom header comments for your code files within a selected directory.
+	pkgdesc = A desktop application designed to create custom header comments for your code files within a selected directory.(Use system-wide electron)
 	pkgver = 1.0.3.r2.g831d46b
 	pkgrel = 1
 	url = https://github.com/NewBumpEr/HeaderMaker
@@ -9,8 +9,6 @@ pkgbase = headermaker-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron31
 	provides = headermaker=1.0.3
