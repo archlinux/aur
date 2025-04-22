@@ -1,8 +1,8 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=zig-git
-pkgver=0.14.0.git+a5f4107d3e
-pkgrel=2
+pkgver=0.14.0.git+fd7aafdbd5
+pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('x86_64')
 url='https://ziglang.org/'
@@ -10,6 +10,7 @@ license=('MIT')
 options=('!lto')
 conflicts=(zig)
 replaces=(zig)
+provides=(zig)
 depends=("clang>=19.1" icu libffi libxml2 "lld>=19.1" "llvm-libs>=19.1" ncurses xz zlib zstd)
 makedepends=(cmake "llvm>=19.1")
 checkdepends=(lib32-glibc)
