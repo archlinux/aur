@@ -1,7 +1,7 @@
 pkgbase = botframework-emulator-bin
-	pkgdesc = A desktop application that allows users to locally test and debug chat bots built with the Bot Framework SDK.
+	pkgdesc = A desktop application that allows users to locally test and debug chat bots built with the Bot Framework SDK.(Prebuilt version.Use system-wide electron)
 	pkgver = 4.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aka.ms/botemulator
 	arch = x86_64
 	license = MIT
