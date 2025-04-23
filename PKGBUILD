@@ -1,7 +1,7 @@
 # Maintainer: Roam <linux-packages at ro dot am>
 
 pkgname=roam
-pkgver=157.0.0.beta001
+pkgver=158.0.0.beta001
 pkgrel=1
 pkgdesc="Roam: Your Cloud HQ"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ url="https://ro.am"
 license=('custom')
 depends=('gtk3' 'libsecret' 'libxss' 'nss' 'xdg-utils' 'libappindicator-gtk3' 'org.freedesktop.secrets' 'libpulse')
 options=(!debug)
-source_x86_64=("https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/157.0.0-beta001-roam_157.0.0-beta001_amd64.deb")
-source_aarch64=("https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/157.0.0-beta001-roam_157.0.0-beta001_arm64.deb")
-sha256sums_x86_64=("a189a777a64d613f8ecd9a3f3f9ec136df2e1ab8472570860a77e19769c9fd9d")
-sha256sums_aarch64=("c0d1d1e76ea3a2e156d78f2d4eb733641ae3fd10224e8d38dd932f53d3523a2e")
+source_x86_64=("https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/158.0.0-beta001-roam_158.0.0-beta001_amd64.deb")
+source_aarch64=("https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/158.0.0-beta001-roam_158.0.0-beta001_arm64.deb")
+sha256sums_x86_64=("6b3ed3576a8a857b51d09097893bde0bddc10d6a2974dbc3c52df78f8688854a")
+sha256sums_aarch64=("7b9b65ab0309ec7c7f0cc1ec79e00ca2a252e90b9590504de88ed69c6a93ec26")
 
 prepare() {
     tar -xJf data.tar.xz
