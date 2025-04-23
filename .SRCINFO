@@ -1,7 +1,7 @@
 pkgbase = fcitx
 	pkgdesc = Flexible Context-aware Input Tool with eXtension
 	pkgver = 4.2.9.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fcitx-im.org
 	arch = x86_64
 	groups = fcitx-im
