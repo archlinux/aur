@@ -1,45 +1,29 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=inotify
-pkgbase=dfl-inotify
-pkgname=(
-        'dfl-inotify'
-        'dfl-inotify-qt6'
-)
-pkgver=0.2.0
-pkgrel=2
+pkgname=('dfl-inotify')
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A Qt wrapper around inotify"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL-3.0-only')
+depends=('qt6-base')
 makedepends=(
             'meson'
             'ninja'
-            'qt5-base'
-            'qt6-base'
 )
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('2344f211254f3af08d699910e3e8c5475187bed85a048cd399b7c922f6240cb5')
+sha256sums=('c24afa0ca695c169818e7a3f0d168c3a2cc75d1708257c64039bc9a7db76ce69')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  echo "Building QT5 version..."
-  meson .build --prefix=/usr --buildtype=release
-  ninja -C .build
-  
   echo "Building QT6 version..."
-  meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
-  ninja -C .build-qt6
+  meson setup .build --prefix=/usr --buildtype=release
+  ninja -C .build
 }
 
-package_dfl-inotify() {
-  depends=('qt5-base')
+package() {
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
-}
-
-package_dfl-inotify-qt6() {
-  depends=('qt6-base')
-  cd "${_pkgname}-v${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
