@@ -15,17 +15,23 @@ source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
 b2sums=('9217607bdd69ad74320656f66346eee4237ec433243e80dafc5c190a745a5dc1898610ebe62d1e7f7d992a7250b1633b9af46a4652c8afbc78ace49dac370c38')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build"
+
+  go mod download
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X main.version=${pkgver}-${pkgrel} \
     -X main.commit=$(git rev-parse HEAD) \
