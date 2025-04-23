@@ -1,17 +1,18 @@
 pkgbase = desq-apps-archiver
 	pkgdesc = A simple file archiver for DesQ
-	pkgver = 0.0.7
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://gitlab.com/DesQ/DesQApps/DesQArchiver
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
-	depends = qt5-base
-	depends = libarchive-qt
+	depends = qt6-base
+	depends = libarchive-qt-qt6
 	depends = libdesqui
-	source = https://gitlab.com/DesQ/DesQApps/DesQArchiver/-/archive/v0.0.7/DesQArchiver-v0.0.7.tar.gz
-	md5sums = d5f91021f376660405f5655e20d8ce37
+	depends = dfl-applications
+	source = https://gitlab.com/DesQ/DesQApps/DesQArchiver/-/archive/v0.0.9/DesQArchiver-v0.0.9.tar.gz
+	sha256sums = 0a0e081a53d61ce951495fd9d98923184feadc8acecd6e185e876c660ee5d662
 
 pkgname = desq-apps-archiver
