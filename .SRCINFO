@@ -1,7 +1,7 @@
 pkgbase = xunscore-bin
-	pkgdesc = A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music
+	pkgdesc = A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music(Prebuilt version)
 	pkgver = 1.3.13.03
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.xunscore.cn
 	arch = x86_64
 	license = LicenseRef-custom

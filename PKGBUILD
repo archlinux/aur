@@ -2,8 +2,8 @@
 pkgname=xunscore-bin
 _pkgname=Xunscore
 pkgver=1.3.13.03
-pkgrel=3
-pkgdesc='A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music'
+pkgrel=4
+pkgdesc='A music notation software, let you easily create and share sheet music. The editor is called "xūn", is hoping it will be a better balance between the Chinese national music(Prebuilt version)'
 arch=('x86_64')
 url="https://www.xunscore.cn"
 _giteeurl="https://gitee.com/xunscore/xunapp"
@@ -45,11 +45,11 @@ sha256sums=('54adaace209ec36dcdf739a6e5710c002df47c3bab180aa2025721c72d2c1803'
             'e6f9d163300a261baeb5e4865c2d5877ebe16c06127a799c1b3f33c6441023bb'
             '93c773a0b8e2e2926f4178d4626c23a78fe2ce2473198eb0a9bf6f1ae52d928d'
             '20acff6b7caae22bc23e515772f7da6802c9fac0313c0ca272282b89c770046f')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     install -Dm755 -d "${srcdir}/usr/lib"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib"
@@ -58,7 +58,7 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -r "${srcdir}/usr" "${pkgdir}"
+    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
