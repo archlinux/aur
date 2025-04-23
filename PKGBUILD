@@ -8,7 +8,7 @@ arch=('x86_64')
 #       reported runtime errors related to libvips without them (for faircamp-git).
 depends=('ffmpeg' 'libvips>=8.13.3' 'openslide' 'opus' 'poppler-glib')
 license=('AGPL3')
-makedepends=('cargo' 'cmake' 'git')
+makedepends=('cmake' 'git' 'rust')
 options=('!lto')
 pkgdesc='A static site generator for audio producers'
 pkgname=faircamp
@@ -20,18 +20,11 @@ url='https://simonrepp.com/faircamp'
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/simonrepp/faircamp/archive/${pkgver}.tar.gz")
 
 build() {
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 	cd "$srcdir/$pkgname"
-	cargo build --features libvips --locked --offline --release
+	cargo build --features libvips --locked --release
 }
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
 	install -Dm755 "$srcdir/$pkgname/target/release/faircamp" "$pkgdir/usr/bin/faircamp"
-}
-
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
