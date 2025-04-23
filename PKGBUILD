@@ -2,7 +2,7 @@
 # Maintainer: opencode <noreply@opencode.ai>
 
 pkgname='opencode-bin'
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Deploy anything'
 url='https://github.com/opencode-ai/opencode'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('opencode')
 conflicts=('opencode')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.13/opencode-linux-arm64.tar.gz")
-sha256sums_aarch64=('fc1e9cbba56d7a8252bfa9454f33b6d0e5fd80f344fb83c55815fe8852fd4312')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.14/opencode-linux-arm64.tar.gz")
+sha256sums_aarch64=('118f9df4baf2af0a931bb33e095fe976ab7e7847a318a0d14da2510266f4fcf4')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.13/opencode-linux-386.tar.gz")
-sha256sums_i686=('cd0698efc8e2d3a2958369a6293564a86744ac5e058109f44be4c49bdf6a49b3')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.14/opencode-linux-386.tar.gz")
+sha256sums_i686=('e5eb9f870996a1129fb2ea1111655f7b68d7385305b69210aa2d609de24bdb54')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.13/opencode-linux-x86_64.tar.gz")
-sha256sums_x86_64=('56d057e7a4d5c1576229af552b4a2912800311fb9e91fb77698fd0785bc7ae53')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/opencode-ai/opencode/releases/download/v0.0.14/opencode-linux-x86_64.tar.gz")
+sha256sums_x86_64=('631e8fe995eb8348ef38071da676985064479a605fd30234e92cab97aa5f5283')
 
 package() {
   install -Dm755 ./opencode "${pkgdir}/usr/bin/opencode"
