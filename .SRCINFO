@@ -1,7 +1,7 @@
 pkgbase = gridplayer-appimage
 	pkgdesc = Simple VLC-based media player that can play multiple videos at the same time.
 	pkgver = 0.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vzhd1701/gridplayer
 	arch = x86_64
 	license = GPL-3.0-or-later

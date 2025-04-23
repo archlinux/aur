@@ -3,7 +3,7 @@ pkgname=gridplayer-appimage
 _pkgname=GridPlayer
 _appname="com.vzhd1701.${pkgname%-appimage}"
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple VLC-based media player that can play multiple videos at the same time."
 arch=('x86_64')
 url="https://github.com/vzhd1701/gridplayer"
@@ -15,13 +15,15 @@ makedepends=(
     'fuse2'
 )
 options=('!strip')
-_install_path="/opt/appimages"
+_install_path="/usr/lib/appimages"
 source=(
     "${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
 )
 sha256sums=('7372b6905683039f902dbff830b200f9049278dc78a020dca0e4837395da3189')
-build() {
-    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+prepare() {
+    if [ ! -x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/${_appname}/${pkgname%-appimage}/g" "${srcdir}/squashfs-root/${_appname}.desktop"
     sed -i "s/${_appname}/${pkgname%-appimage}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.appdata.xml"
