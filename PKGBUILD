@@ -3,15 +3,15 @@ _pkgname=antares
 pkgname="${_pkgname}-sql-git"
 _appname=AntaresSQL
 _flatpakname="it.fabiodistasio.${_appname}"
-pkgver=0.7.29.r0.gd2da8c2
+pkgver=0.7.35.beta.0.r1.g8f84892
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.Use system-wide electron."
+pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX.(Use system-wide electron)"
 arch=('any')
 url="https://antares-sql.app/"
 _ghurl="https://github.com/antares-sql/antares"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -22,8 +22,7 @@ makedepends=(
     'nvm'
     'curl'
     'git'
-    'gcc'
-    'cmake'
+    'curl'
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
@@ -43,40 +42,43 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    sed -e "
+    sed -i -e "
         s/Exec=start${_pkgname}/Exec=${pkgname%-git} %U/g
         s/${_flatpakname}/${pkgname%-git}/g
-    " -i assets/flatpak/"${_flatpakname}".desktop
+    " assets/flatpak/"${_flatpakname}".desktop
     sed -i "s/${_flatpakname}/${pkgname%-git}/g" assets/flatpak/"${_flatpakname}".metainfo.xml
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run compile
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }

@@ -1,6 +1,6 @@
 pkgbase = antares-sql-git
-	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.Use system-wide electron.
-	pkgver = 0.7.29.r0.gd2da8c2
+	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.(Use system-wide electron)
+	pkgver = 0.7.35.beta.0.r1.g8f84892
 	pkgrel = 1
 	url = https://antares-sql.app/
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = antares-sql-git
 	makedepends = nvm
 	makedepends = curl
 	makedepends = git
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = curl
 	depends = electron30
-	provides = antares-sql=0.7.29
+	provides = antares-sql=0.7.35.beta.0
 	conflicts = antares-sql
 	source = antares-sql.git::git+https://github.com/antares-sql/antares.git
 	source = antares-sql.sh
