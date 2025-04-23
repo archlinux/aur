@@ -5,15 +5,14 @@
 
 _pkgname='dstask'
 pkgname="$_pkgname-git"
-pkgver=0.27.r2.g5d60af9
-pkgrel=2
+pkgver=0.27.r4.gbd08b11
+pkgrel=1
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (latest commit)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('glibc')
 makedepends=('git' 'go')
-options=('lto')
 source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
@@ -28,6 +27,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  git clean -dfx
   go mod tidy
 }
 
@@ -39,21 +39,11 @@ build() {
   _commit=$(git describe --always)
   _utcnow=$(date -u '+%FT%TZ')
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_ENABLED=1
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
 
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     _GOLDFLAGS="-linkmode=external \
@@ -61,8 +51,8 @@ build() {
       -X \"github.com/naggie/dstask.VERSION=$pkgver\"
       -X \"github.com/naggie/dstask.BUILD_DATE=$_utcnow\""
 
-  go build -ldflags="${_GOLDFLAGS}" -o dstask        ./cmd/dstask/main.go
-  go build -ldflags="${_GOLDFLAGS}" -o dstask-import ./cmd/dstask-import/main.go
+  go build -ldflags="$_GOLDFLAGS" -o dstask        ./cmd/dstask/main.go
+  go build -ldflags="$_GOLDFLAGS" -o dstask-import ./cmd/dstask-import/main.go
 }
 
 package() {

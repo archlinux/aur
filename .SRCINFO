@@ -1,7 +1,7 @@
 pkgbase = dstask-git
 	pkgdesc = Git-powered terminal-based todo/note manager with full markdown note for each task (latest commit)
-	pkgver = 0.27.r2.g5d60af9
-	pkgrel = 2
+	pkgver = 0.27.r4.gbd08b11
+	pkgrel = 1
 	url = https://github.com/naggie/dstask
 	arch = aarch64
 	arch = armv6h
@@ -14,7 +14,6 @@ pkgbase = dstask-git
 	depends = glibc
 	provides = dstask
 	conflicts = dstask
-	options = lto
 	source = git+https://github.com/naggie/dstask.git
 	sha256sums = SKIP
 
