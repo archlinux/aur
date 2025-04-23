@@ -1,0 +1,4 @@
+[talm-bin]
+source = "git"
+git = "https://github.com/aenix-io/talm.git"
+prefix = "v"
