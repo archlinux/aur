@@ -23,10 +23,10 @@ source=("${url}/releases/download/v$pkgver/Chatterino-Ubuntu-24.04.deb")
 package() {
 	bsdtar -xf data.tar.zst -C "${pkgdir}"
 	install -d "${pkgdir}/opt/${_pkgname}"
-    install -dm755 "$pkgdir/usr/bin"
-    #Replace icu
-    _icuorig=74 #should be taken from ldd
-    _icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
+	install -dm755 "$pkgdir/usr/bin"
+	#Replace icu
+	_icuorig=$(ldd "$pkgdir"/usr/bin/chatterino|grep libicui18n.so.|awk '{print $1}' |sed s/libicui18n.so.//) #incomplete
+	_icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
 	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
 	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
 }
