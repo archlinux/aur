@@ -15,7 +15,7 @@ You can toggle the batch mode in the top left corner.
 The terminal integration comes with many new features, so make sure to check out the settings menu:
 - There is now built-in support for the terminal multiplexers tmux, zellij, and screen. This is especially useful for terminals without tabbing support.
 - There is also now built-in support for custom prompts with starship, oh-my-posh, and oh-my-zsh.
-- On Windows, you now have the ability to use a WSL distribution as the terminal environment, allowing you to use the new terminal multiplexer integration seamlessly on Windows as well.
+- On Windows, you now have the ability to use a WSL distribution as the terminal environment, allowing you to use the new terminal multiplexer integration seamlessly on Windows systems as well.
 
 ## Password managers
 
@@ -72,6 +72,7 @@ The application window will now hide any unnecessary sidebars when being resized
 - The predefined sample script selection has been updated
 - Add setting to disable HTTPs TLS verification for license activation API calls for cases where TLS traffic is decrypted in your organization
 - Upgrade to GraalVM 24
+- Add Korean translations
 
 ## Fixes
 
@@ -90,4 +91,5 @@ The application window will now hide any unnecessary sidebars when being resized
 - Fix some launched applications exiting on Windows if XPipe is closed
 - Fix powershell profile modules potentially breaking powershell shell environments
 - Fix terminal launch failing on Windows when connection name contained some special characters
+- Fix selfhst icons not reliably working for chinese users
 - Fix application restart after update not applying current workspace directory
