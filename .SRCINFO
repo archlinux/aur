@@ -1,6 +1,6 @@
 pkgbase = hetzner-k3s
 	pkgdesc = The easiest and fastest way to create and manage Kubernetes clusters in Hetzner Cloud using the lightweight distribution k3s by Rancher.
-	pkgver = 2.2.8
+	pkgver = 2.2.9
 	pkgrel = 1
 	url = https://github.com/vitobotta/hetzner-k3s
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = hetzner-k3s
 	depends = libyaml
 	depends = pcre
 	depends = gmp
-	provides = hetzner-k3s=2.2.8
-	source = hetzner-k3s-2.2.8::https://github.com/vitobotta/hetzner-k3s/archive/refs/tags/v2.2.8.tar.gz
-	sha256sums = 855ee1781c483d94b789d52549fd0ffeef3ecbd5990e1ca32d8cd983877cbbc9
+	provides = hetzner-k3s=2.2.9
+	source = hetzner-k3s-2.2.9::https://github.com/vitobotta/hetzner-k3s/archive/refs/tags/v2.2.9.tar.gz
+	sha256sums = 3855e009b2ca36947a5a91b96d63a26d97c8cc50d706ff161e747971238fa5f4
 
 pkgname = hetzner-k3s
