@@ -1,0 +1,14 @@
+pkgbase = kvmfr-dkms-git
+	pkgdesc = KVM FrameRelay kernel module for Looking Glass (DKMS, Git version)
+	pkgver = r3481.54d811e0
+	pkgrel = 1
+	url = https://github.com/gnif/LookingGlass
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = kvmfr
+	source = git+https://github.com/gnif/LookingGlass.git
+	sha256sums = SKIP
+
+pkgname = kvmfr-dkms-git
