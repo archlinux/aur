@@ -1,5 +1,5 @@
 pkgbase = geratron-git
-	pkgdesc = Secure password generator desktop application, built using Electron.
+	pkgdesc = Secure password generator desktop application, built using Electron.(Use system-wide electron)
 	pkgver = 1.0.1.r2.g6af7823
 	pkgrel = 1
 	url = https://github.com/thiagowaib/geratron
