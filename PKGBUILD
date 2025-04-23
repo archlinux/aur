@@ -2,7 +2,7 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
@@ -16,20 +16,26 @@ conflicts=('golang-mockery')
 replaces=('golang-mockery')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1f1388f04ccb21dfe25406662e8398d8416870a04ca92528ac931fc1822901a9')
+sha256sums=('2215833562260b00e2a6ee9b2a610ced74e6be8fc9bad737a9581f4f22fa50be')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
+
+  go mod download
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X ${_url#https://}/v2/pkg/logging.SemVer=${pkgver}" \
     .
@@ -40,10 +46,10 @@ build() {
   done
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   go test ./...
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  go test ./...
+}
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
