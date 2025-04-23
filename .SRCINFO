@@ -1,7 +1,7 @@
 pkgbase = libakonadi5
 	pkgdesc = Libraries used by applications based on Akonadi
 	pkgver = 23.08.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kontact.kde.org
 	arch = x86_64
 	license = LGPL
