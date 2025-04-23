@@ -13,7 +13,7 @@ pkgbase = cisco-secure-client
 	optdepends = webkit2gtk: required by acwebhelper
 	conflicts = cisco-anyconnect
 	options = !strip
-	source = cisco-secure-client-linux64-5.1.9.113-predeploy-k9.tar.gz::https://serv65.f2h.co.il/files/oaxdnpjr5ne7|bb7c733e45ae6293a957698026c9ac77
+	source = cisco-secure-client-linux64-5.1.9.113-predeploy-k9.tar.gz::https://archive.org/download/cisco-secure-client-linux64-5.1.9.113-predeploy-k9.tar/cisco-secure-client-linux64-5.1.9.113-predeploy-k9.tar.gz
 	sha256sums = 76982a8d23743610e00e9a4790d6a5acc6605f26fb7866faff4b6f1e00096551
 
 pkgname = cisco-secure-client
