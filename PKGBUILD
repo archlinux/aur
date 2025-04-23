@@ -6,7 +6,7 @@
 _pkgname=vlang
 pkgname=vlang-bin
 pkgver=0.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple compiled language for developing maintainable software (binary release)'
 arch=('x86_64')
 url='https://vlang.io'
@@ -23,10 +23,10 @@ optdepends=('glfw: Needed for graphics support'
 source=("${_pkgname}-${pkgver}.zip::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
 sha256sums=('53d7e1a4e3d1a23602d6205c9288967229c1782183bf27dbee41870e5b3071b6')
 
-#build() {
-#  cd v
-#  PATH="$PWD:$PATH" exec v build-tools #(included in precompiled release)
-#}
+build() {
+  cd v
+  PATH="$PWD:$PATH" exec v build-tools
+}
 
 package() {
   cd v
