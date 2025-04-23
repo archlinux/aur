@@ -1,28 +1,40 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=Integration
 pkgname=desq-integration
-pkgver=0.0.8
-pkgrel=2
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="Qt Platform and Style Integration Plugins for DesQ"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
+        'qt6-wayland'
         'libdesqui'
         'dfl-settings'
         'dfl-utils'
+        'dfl-wayqt'
         'dfl-applications'
         'dfl-xdg'
         'dfl-colorschemeparser'
+        'dfl-hjsonparser'
+        'dfl-status-notifier'
+        'libpipewire'
+        'libinih'
+        'libdrm'
+        'sdbus-cpp'
+        'wayland'
+        'wayland-protocols'
+        'gdm'
 )
+optdepends=('systemd')
 makedepends=(
             'meson'
             'ninja'
 )
 source=("https://gitlab.com/DesQ/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('c3185555c3d67ba211405a9f7f20cf6ef83b3b7799947acf919a36aadfaa6bfd')
+sha256sums=('3f4dbe3b4d963ec14401952377ef98f18778fbdeaf110f8f83beadd3371a7c3b')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
