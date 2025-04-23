@@ -21,7 +21,7 @@ makedepends=(git cmake fontconfig gdal gst-plugins-base-libs jasper librsvg libv
 # automagick deps: gtk2 gtkglext dcmtk coin (INVENTOR) sdl12-compat
 
 optdepends=(gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
-provides=(flightgear-openscenegraph flightgear-openthreads)
+provides=(openscenegraph openthreads)
 conflicts=(openscenegraph openthreads)
 source=("flightgear-openscenegraph::git+https://gitlab.com/flightgear/openscenegraph.git#branch=next"
         "openscenegraph-ffmpeg4.4.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/openscenegraph/-/raw/main/ffmpeg4.4.patch"
