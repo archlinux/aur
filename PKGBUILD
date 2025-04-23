@@ -9,18 +9,18 @@ arch=('i686' 'x86_64')
 url="https://simdutf.github.io/simdutf/"
 license=('Apache-2.0' 'MIT')
 depends=('gcc-libs')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ninja')
 provides=("simdutf=$pkgver")
 conflicts=('simdutf')
-source=("git+https://github.com/simdutf/simdutf.git?tag=${pkgver}")
-sha256sums=('SKIP')
+source=("https://github.com/simdutf/simdutf/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('26348c9b60bcf64b98dc598e0b8ccb3f0928cb991110ae82730e563ae85f2c05')
 
 build() {
-  cd "simdutf"
+  cd "${pkgname}-${pkgver}"
 
   CFLAGS="$CFLAGS -ffat-lto-objects" \
   CXXFLAGS="$CXXFLAGS -ffat-lto-objects" \
-  cmake \
+  cmake -G Ninja\
     -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
@@ -32,13 +32,13 @@ build() {
 }
 
 check() {
-  cd "simdutf"
+  cd "${pkgname}-${pkgver}"
 
   cmake --build "_build" --target test
 }
 
 package() {
-  cd "simdutf"
+  cd "${pkgname}-${pkgver}"
 
   DESTDIR="$pkgdir" cmake --install "_build"
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/simdutf"

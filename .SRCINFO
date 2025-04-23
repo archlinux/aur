@@ -9,10 +9,11 @@ pkgbase = simdutf
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	depends = gcc-libs
 	provides = simdutf=6.5.0
 	conflicts = simdutf
-	source = git+https://github.com/simdutf/simdutf.git?tag=6.5.0
-	sha256sums = SKIP
+	source = https://github.com/simdutf/simdutf/archive/refs/tags/v6.5.0.tar.gz
+	sha256sums = 26348c9b60bcf64b98dc598e0b8ccb3f0928cb991110ae82730e563ae85f2c05
 
 pkgname = simdutf
