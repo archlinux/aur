@@ -2,8 +2,8 @@
 _appname=himirage
 pkgname="photosir-${_appname}-bin"
 _pkgname="cn.photosir.${_appname}"
-_x86ver=2.0.4.40407
 _armver=2.0.6.40406
+_x86ver=2.0.4.40407
 case "${CARCH}" in
     aarch64)
         pkgver="${_armver}"
@@ -13,7 +13,7 @@ case "${CARCH}" in
         ;;
 esac
 pkgrel=2
-pkgdesc="A multifunctional image processing software.Prebuilt version.悟空图像是一款多功能图像处理软件."
+pkgdesc="A multifunctional image processing software.(Prebuilt version).悟空图像是一款多功能图像处理软件."
 arch=(
     'aarch64'
     'x86_64'
@@ -58,23 +58,23 @@ depends=(
     'qt5-x11extras'
 )
 options=('!strip')
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${_armver}-aarch64.deb::https://cdn.photosir.cn/package/uos/40408/${_pkgname}_${_armver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${_x86ver}-x86_64.deb::https://cdn.photosir.cn/package/uos/40408/${_pkgname}_${_x86ver}-amd64.deb")
-source=("${pkgname%-bin}.sh")
 sha256sums=('7d749594f8e9bea1f10fd4be5e95a09ebdbb23bc19754ab22d3bb626d5deae64')
 sha256sums_aarch64=('73c4f21148d0231fdbadb8444f5373ea696e2e5201897aa915923e6b7ee91a80')
 sha256sums_x86_64=('c22b81b16da893fe67a2b8d366956f61604c3e7bd16b06bad974492a72626eb8')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_appname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/apps\/${_pkgname}\/files\/himirage.sh/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Name=${_pkgname}/Name=${pkgname%-bin}/g
-    " -i "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
+    " "${srcdir}/opt/apps/${_pkgname}/entries/applications/${_pkgname}.desktop"
 }
 package(){
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
