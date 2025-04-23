@@ -1,6 +1,6 @@
 pkgbase = python-qdrant-client
 	pkgdesc = Client library for the Qdrant vector search engine
-	pkgver = 1.13.3
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://github.com/qdrant/qdrant-client
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-qdrant-client
 	depends = python-urllib3
 	optdepends = python-fastembed
 	optdepends = python-fastembed-gpu
-	source = qdrant-client-1.13.3.tar.gz::https://files.pythonhosted.org/packages/source/q/qdrant-client/qdrant_client-1.13.3.tar.gz
-	sha256sums = 61ca09e07c6d7ac0dfbdeb13dca4fe5f3e08fa430cb0d74d66ef5d023a70adfc
+	source = qdrant-client-1.14.1.tar.gz::https://files.pythonhosted.org/packages/source/q/qdrant-client/qdrant_client-1.14.1.tar.gz
+	b2sums = 6e0eb2583aaebca926f901631f939f5a49c91872f8d9cf8723271a6b656abda027cd089ac31e62136abf551ace9c6d2b1d20d2d80e479b571a6e2817bef28764
 
 pkgname = python-qdrant-client

@@ -1,0 +1,3 @@
+[python-qdrant-client]
+source = "pypi"
+pypi = "qdrant-client"
