@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ppcseq
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('61ba747d87e8faa669273b348c31a957')
-b2sums=('b64b71bb56dd1397bf94b3e11e5b15c0dfc4209c92e74a70f4460a8e65d2eff4684d3dc2c94b338d3c8e68448379dd9513c4d7885065073b456fbf250c0464b7')
+md5sums=('5468f12a17171d83eebf57c63f69a293')
+b2sums=('802e2c1ff719ae3dd67d46752116fae0484cb5605da23d879c19ebbd2b23d8622652304eced38dde095058f3f156a63cfcd1e9beb13089d549cc61e5292a9e11')
 
 build() {
   mkdir build
