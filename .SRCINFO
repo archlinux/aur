@@ -1,0 +1,18 @@
+pkgbase = ask-mai
+	pkgdesc = A little, scriptable and powerful UI-Chat-Application for asking Gen-AI
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/rainu/ask-mai
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk
+	provides = ask-mai
+	conflicts = ask-mai
+	options = !strip
+	source = ask-mai-0.19.0.tar.gz::https://github.com/rainu/ask-mai/archive/v0.19.0.tar.gz
+	source = ask-mai-binary-0.19.0::https://github.com/rainu/ask-mai/releases/download/v0.19.0/ask-mai-linux-amd64
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ask-mai
