@@ -1,17 +1,17 @@
 pkgbase = 38c3-styles
 	pkgdesc = Fonts and styles for the 38th Chaos Communication Congress.
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://events.ccc.de/congress/2024/infos/styleguide.html
 	arch = any
 	license = CC0-1.0
 	license = OFL-1.1
 	makedepends = fontforge
-	makedepends = html2md
+	makedepends = html2markdown
 	makedepends = python-html2text
-	source = 38c3-styles::https://events.ccc.de/congress/2024/infos/styleguide/38c3-styleguide-full-v2.zip
-	source = website.html::https://events.ccc.de/congress/2024/infos/styleguide.html
-	sha256sums = SKIP
+	source = https://events.ccc.de/congress/2024/infos/styleguide/38c3-styleguide-full-v2.zip
+	source = 38c3-styles-website.html::https://events.ccc.de/congress/2024/infos/styleguide.html
+	sha256sums = 9ae65abcfc85c97a95bf64e70e9f5a0aba7948eea1d56a5a99a5feed727f5216
 	sha256sums = SKIP
 
 pkgname = otf-pilowlava

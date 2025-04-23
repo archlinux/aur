@@ -21,7 +21,7 @@ pkgname=(
 )
 _spacegroteskver="1.1.4"
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fonts and styles for the 38th Chaos Communication Congress.'
 arch=('any')
 url='https://events.ccc.de/congress/2024/infos/styleguide.html'
@@ -29,22 +29,27 @@ license=('CC0-1.0' 'OFL-1.1')
 depends=()
 makedepends=(
   'fontforge'
-  'html2md'
+  'html2markdown'
+  # 'html2md'
   'python-html2text'
 )
 optdepends=()
 source=(
-  "${_pkgbase}::https://events.ccc.de/congress/2024/infos/styleguide/38c3-styleguide-full-v${pkgver}.zip"
-  "website.html::${url}"
+  "https://events.ccc.de/congress/2024/infos/styleguide/38c3-styleguide-full-v${pkgver}.zip"
+  "38c3-styles-website.html::${url}"
 )
 sha256sums=(
-  'SKIP'
+  '9ae65abcfc85c97a95bf64e70e9f5a0aba7948eea1d56a5a99a5feed727f5216'
   'SKIP'
 )
 
 prepare() {
+  cd "${srcdir}"
+
   printf '%s\n' "  > Generating 'website.url' information file ..."
   printf '%s\n' "${url}" > "${srcdir}/website.url"
+
+  cp "38c3-styles-website.html" "website.html"
 }
 
 build() {
@@ -53,7 +58,8 @@ build() {
   printf '%s\n' "  > Converting 'website.html' to text/plain format ..."
   html2text --no-wrap-links --body-width 0 --mark-code --reference-links --links-after-para --unicode-snob website.html > website.txt
   printf '%s\n' "  > Converting 'website.html' to Markdown format ..."
-  html2md -i website.html > website.md
+  html2markdown --input website.html --output website.md --output-overwrite
+  # html2md -i website.html > website.md
 }
 
 package_otf-pilowlava() {
