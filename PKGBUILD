@@ -12,7 +12,21 @@ pkgdesc="Second installment of the Twitch chat client series "Chatterino""
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
 license=('MIT')
-depends=('icu' 'libxkbcommon' 'libxkbcommon-x11' 'xcb-util-'{image,wm,cursor,keysyms,renderutil} 'libnotify')
+depends=(
+	brotli
+	fontconfig
+	freetype2
+	glib2
+	harfbuzz
+	icu
+	libx11
+	libglvnd
+	libjpeg-turbo
+	libnotify
+	libxkbcommon{,-x11}
+	openssl
+	xcb-util-{image,wm,cursor,keysyms,renderutil}
+	)
 makedepends=('binutils' 'grep' 'patchelf')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
@@ -22,7 +36,7 @@ conflicts=(chatterino)
 source=("${url}/releases/download/v$pkgver/Chatterino-Ubuntu-24.04.deb")
 package() {
 	bsdtar -xf data.tar.zst -C "${pkgdir}"
-	install -d "${pkgdir}/opt/${_pkgname}"
+	install -d "${pkgdir}/opt/${_pkgname}" #why?
 	install -dm755 "$pkgdir/usr/bin"
 	#Replace icu
 	_icuorig=$(ldd "$pkgdir"/usr/bin/chatterino|grep libicui18n.so.|awk '{print $1}' |sed s/libicui18n.so.//) #incomplete
