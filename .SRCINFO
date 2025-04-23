@@ -1,12 +1,13 @@
 pkgbase = libgnt
 	pkgdesc = GLib Ncurses Toolkit
 	pkgver = 2.14.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keep.imfreedom.org/libgnt/libgnt
 	arch = x86_64
 	license = GPL
 	makedepends = meson
 	makedepends = gtk-doc
+	makedepends = glib2-devel
 	depends = glib2
 	depends = libxml2
 	depends = ncurses

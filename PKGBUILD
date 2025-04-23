@@ -2,13 +2,13 @@
 
 pkgname=libgnt
 pkgver=2.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib Ncurses Toolkit"
 arch=('x86_64')
 url="https://keep.imfreedom.org/libgnt/libgnt"
 license=('GPL')
 depends=('glib2' 'libxml2' 'ncurses')
-makedepends=('meson' 'gtk-doc')
+makedepends=('meson' 'gtk-doc' 'glib2-devel')
 source=(https://downloads.sourceforge.net/project/pidgin/libgnt/$pkgver/$pkgname-$pkgver-dev.tar.xz{,.asc})
 sha256sums=('195933a9a731d3575791b881ba5cc0ad2a715e1e9c4c23ccaaa2a17e164c96ec'
             'SKIP')
