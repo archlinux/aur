@@ -1,6 +1,6 @@
 # Maintainer: David Gro <gro.david.d@gmail.com>
 pkgname=digital-logic-sim-bin
-pkgrel=0
+pkgrel=1
 pkgver="v2.1.3"
 pkgdesc="The logic simulation used and developed by Sebastian Lague."
 arch=('x86_64')
