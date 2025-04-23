@@ -4,7 +4,7 @@
 pkgbase=libsoup
 pkgname=(libsoup libsoup-docs)
 pkgver=2.74.3
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP client/server library for GNOME"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   gobject-introspection
   gtk-doc
   meson

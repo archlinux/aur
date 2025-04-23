@@ -1,13 +1,14 @@
 pkgbase = libsoup
 	pkgdesc = HTTP client/server library for GNOME
 	pkgver = 2.74.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/libsoup
 	arch = x86_64
 	license = LGPL
 	checkdepends = apache
 	checkdepends = php-apache
 	makedepends = git
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = meson
@@ -47,3 +48,4 @@ pkgname = libsoup
 
 pkgname = libsoup-docs
 	pkgdesc = HTTP client/server library for GNOME (documentation)
+	depends = 
