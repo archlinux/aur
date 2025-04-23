@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 pkgname=tbls-bin
-pkgver=1.85.0
+pkgver=1.85.1
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database.Written in Go.(Prebuilt version)"
 arch=(
@@ -19,14 +19,14 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.rpm")
 sha256sums=('6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c')
-sha256sums_aarch64=('a179d837f71377ddde0ad3ce8d01ccc4ce27b490e3b4ca4271e1db32038c6573')
-sha256sums_x86_64=('7ee201c5337b3262fe7cb42fb4794191f791aab0938de970bcbc00bc5439ecca')
+sha256sums_aarch64=('bc9b5c497d4364f73e0cb94d435aa3a272e6dafe8e77f8718c40ea38d2187e96')
+sha256sums_x86_64=('5b8fedffd23cb3452ae95600a579b067535a0366f9cba33b4fde995e3f659844')
 prepare() {
     "${srcdir}/usr/bin/${pkgname%-bin}" completion bash > "${srcdir}/${pkgname%-bin}.bash"
-    if [ -x /usr/bin/fish ];then
+    if [ -x "/usr/bin/fish" ];then
         "${srcdir}/usr/bin/${pkgname%-bin}" completion fish > "${srcdir}/${pkgname%-bin}.fish"
     fi
-    if [ -x /usr/bin/zsh ];then
+    if [ -x "/usr/bin/zsh" ];then
         "${srcdir}/usr/bin/${pkgname%-bin}" completion zsh  > "${srcdir}/${pkgname%-bin}.zsh"
     fi
 }

@@ -1,18 +1,18 @@
 pkgbase = tbls-bin
 	pkgdesc = CI-Friendly tool for documenting a database.Written in Go.(Prebuilt version)
-	pkgver = 1.85.0
+	pkgver = 1.85.1
 	pkgrel = 1
 	url = https://github.com/k1LoW/tbls
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	provides = tbls=1.85.0
+	provides = tbls=1.85.1
 	conflicts = tbls
-	source = LICENSE-1.85.0::https://raw.githubusercontent.com/k1LoW/tbls/v1.85.0/LICENSE
+	source = LICENSE-1.85.1::https://raw.githubusercontent.com/k1LoW/tbls/v1.85.1/LICENSE
 	sha256sums = 6eefa0bec6e7c3654bdc29cb8f8c4adbc1327d2e912b532aacc68f6e2fa9d63c
-	source_aarch64 = tbls-1.85.0-aarch64.rpm::https://github.com/k1LoW/tbls/releases/download/v1.85.0/tbls_1.85.0-1_arm64.rpm
-	sha256sums_aarch64 = a179d837f71377ddde0ad3ce8d01ccc4ce27b490e3b4ca4271e1db32038c6573
-	source_x86_64 = tbls-1.85.0-x86_64.rpm::https://github.com/k1LoW/tbls/releases/download/v1.85.0/tbls_1.85.0-1_amd64.rpm
-	sha256sums_x86_64 = 7ee201c5337b3262fe7cb42fb4794191f791aab0938de970bcbc00bc5439ecca
+	source_aarch64 = tbls-1.85.1-aarch64.rpm::https://github.com/k1LoW/tbls/releases/download/v1.85.1/tbls_1.85.1-1_arm64.rpm
+	sha256sums_aarch64 = bc9b5c497d4364f73e0cb94d435aa3a272e6dafe8e77f8718c40ea38d2187e96
+	source_x86_64 = tbls-1.85.1-x86_64.rpm::https://github.com/k1LoW/tbls/releases/download/v1.85.1/tbls_1.85.1-1_amd64.rpm
+	sha256sums_x86_64 = 5b8fedffd23cb3452ae95600a579b067535a0366f9cba33b4fde995e3f659844
 
 pkgname = tbls-bin
