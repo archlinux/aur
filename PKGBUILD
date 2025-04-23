@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trigger
-_pkgver=1.52.0
+_pkgver=1.53.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.53.0
 pkgrel=1
 pkgdesc='Transcriptional Regulatory Inference from Genetics of Gene ExpRession'
 arch=('x86_64')
@@ -17,14 +17,21 @@ depends=(
   r-sva
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('36b7cde713d19aa450db3413dc670fc1da5d3aa27739b138345055744f3c2372')
+sha256sums=('68c2041d3f02ae358a2ef38df5ba47fba638be14d703fabc66e22cf425e62fd4')
 
+prepare() {
+  sed -i $_pkgname/src/*.c \
+    -e 's|Calloc|R_Calloc|g' \
+    -e 's|Realloc|R_Realloc|g' \
+    -e 's|Free|R_Free|g'
+}
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
 # vim:set ts=2 sw=2 et:
