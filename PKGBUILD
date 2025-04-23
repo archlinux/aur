@@ -1,7 +1,7 @@
 # Maintainer: cmulk <cjmulk2@gmail.com>
 pkgname=sirikali-bin
 _name=SiriKali
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64')
@@ -19,10 +19,10 @@ optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
     'securefs: for securefs backend'
     'sshfs: for SSHFS backend')
 conflicts=("sirikali-git" "sirikali")
-source_x86_64=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_1.8.1-1_amd64.deb")
-sha256sums_x86_64=("1fcbaca9f05fcbc50e396a31ce711ae077be3c9933e807743bc12433f80be18a")
-source_i686=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_1.8.1-1_i386.deb")
-sha256sums_i686=("ba6013217f7a638001db8ce4088aca06e6d8b254a5c6e2127cf9bd5deddfb73e")
+source_x86_64=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/amd64/sirikali_1.8.2-1_amd64.deb")
+sha256sums_x86_64=("a72e20636d22657d7a55c8fed4a248269254a5c70ee66e56b766b4b862ed05bc")
+source_i686=("https://download.opensuse.org/repositories/home:/obs_mhogomchungu/Debian_12/i386/sirikali_1.8.2-1_i386.deb")
+sha256sums_i686=("0d9f9dbee20fe597d29c1ded53c908e2aaab235d2037923f21df6134f56da9c5")
 
 package() {
     cd "$srcdir/"
