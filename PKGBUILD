@@ -1,6 +1,6 @@
 # Maintainer: Voislav Vasiljevski <voyo@thelazysre.com>
 pkgname=observer
-pkgver=main
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Dynamic CPU core manager for power saving"
 arch=('x86_64' 'aarch64' 'armv7h')
