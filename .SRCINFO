@@ -1,7 +1,7 @@
 pkgbase = libical
 	pkgdesc = An open source reference implementation of the icalendar data type and serialization format
 	pkgver = 3.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libical/libical
 	arch = x86_64
 	license = LGPL-2.1-only
