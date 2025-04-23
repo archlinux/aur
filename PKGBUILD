@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gpt-anywhere-bin
 pkgver=0.0.2
-pkgrel=2
-pkgdesc="Use GPT anywhere with just one shortcut."
+pkgrel=3
+pkgdesc="Use GPT anywhere with just one shortcut.(Prebuilt version)"
 arch=('x86_64')
 url="http://jinay.dev/gpt-anywhere/"
 _ghurl="https://github.com/JinayJain/gpt-anywhere"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/app-v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 )
 sha256sums=('d6df9920a7c30c89486300ca3b52d6c34f60cffd39a2745564f70035abb4016d')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=Utility;/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
