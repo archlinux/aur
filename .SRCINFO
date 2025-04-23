@@ -1,11 +1,11 @@
 pkgbase = ocm-cli
 	pkgdesc = Open Component Model (OCM) Command Line Client
-	pkgver = 0.22.1
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/open-component-model/ocm
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/open-component-model/ocm/releases/download/v0.22.1/ocm-0.22.1-linux-amd64.tar.gz
-	b2sums = fbcae0344400508da7a1eeb26e9cc759bfd37a85f72278ef511ce9a9332b61fe1da6ae97aca30d4212d867278599bd108ed2a001d64f959b08b92d8b199cf5e1
+	source = https://github.com/open-component-model/ocm/releases/download/v0.23.0/ocm-0.23.0-linux-amd64.tar.gz
+	b2sums = c2b78cb70c650a41b1c536c34d15db9ec63ddf1b6ee765f48fe32f0ffd3b923d92ab215ebde4eaeebfd811c38cad44736399e2b047e00716910a2ea454b41d85
 
 pkgname = ocm-cli
