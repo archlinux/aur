@@ -1,15 +1,15 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=Disks
 pkgname=desq-utils-disks
-pkgver=0.0.8
-pkgrel=2
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="Disks Auto Mounter for DesQ"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/DesQUtils/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'hicolor-icon-theme'
         'libdesqui'
         'dfl-settings'
@@ -23,7 +23,7 @@ makedepends=(
             'ninja'
 )
 source=("https://gitlab.com/DesQ/DesQUtils/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('e80e1a748b3c88383e1693f069826c923970b23120f4b288bf46a019b763963e')
+sha256sums=('b7bd290a1927f6b8ac8f9c5a6eb345623aa9579af02e1c2881fda197d3eed7f0')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
