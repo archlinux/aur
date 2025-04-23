@@ -3,7 +3,7 @@
 
 pkgname=libgdata
 pkgver=0.18.1
-pkgrel=3
+pkgrel=4
 pkgdesc="GLib-based library for accessing online service APIs using the GData protocol"
 url="https://wiki.gnome.org/Projects/libgdata"
 arch=(x86_64)
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
   git
+  glib2-devel
   gobject-introspection
   gtk-doc
   meson
