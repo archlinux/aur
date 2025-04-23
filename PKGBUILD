@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdesk-git
-_pkgname="YT Desk"
+_pkgname='YT Desk'
 pkgver=1.2.5.r2.g448eed1
 _electronversion=31
 _nodeversion=20
