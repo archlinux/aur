@@ -5,7 +5,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=mirrormagic
-pkgver=3.1.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Arcade style game like Deflektor (C64) or Mindbender (Amiga)."
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ depends=('sdl2_image' 'sdl2_mixer' 'sdl2_net' 'smpeg')
 source=("https://www.artsoft.org/RELEASES/linux/mirrormagic/mirrormagic-${pkgver}-linux.tar.gz"
         "mirrormagic.desktop" "mirrormagic.sh")
 
-md5sums=('406ddba5be346563a2265f211caf64ea'
-         '62a7183f61086072e05893e11d5ea898'
+md5sums=('7e8d22bac6054dffda1350f69c0ed409'
+         '5d5c26554f5434a099e3c1b17d621c2b'
          'e6c52ffc78c5e591cb643e9c575f550e')
 
 build() {
