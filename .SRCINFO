@@ -1,8 +1,8 @@
 pkgbase = simgear-git
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
-	pkgver = 2020.4.0r6266.a5af7601
+	pkgver = 2024.1.0r6266.a5af7601
 	pkgrel = 1
-	url = http://home.flightgear.org/
+	url = https://www.flightgear.org/
 	arch = x86_64
 	license = GPL
 	makedepends = boost
@@ -13,10 +13,10 @@ pkgbase = simgear-git
 	depends = glut
 	depends = freealut
 	depends = plib
-	depends = openscenegraph
-	provides = simgear=2020.4.0r6266.a5af7601
+	depends = flightgear-openscenegraph
+	provides = simgear=2024.1.0r6266.a5af7601
 	conflicts = simgear
-	source = simgear::git+https://git.code.sf.net/p/flightgear/simgear#branch=next
+	source = simgear::git@gitlab.com:flightgear/simgear.git
 	sha256sums = SKIP
 
 pkgname = simgear-git
