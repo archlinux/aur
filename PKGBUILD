@@ -4,17 +4,17 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-data-git
-pkgver=2020.4.0r9837.d145a52ac
+pkgver=2024.2.0r10906.18d397f01
 pkgrel=1
 pkgdesc="Base data for the flightgear flight simulator."
 arch=('any')
-url="https://home.flightgear.org"
+url="https://www.flightgear.org/"
 options=(!strip)
 license=('GPL')
 makedepends=('git')
 provides=("flightgear-data=${pkgver}")
 conflicts=('flightgear-data')
-source=("flightgear-data::git+git://git.code.sf.net/p/flightgear/fgdata#branch=next")
+source=("flightgear-data::git+https://gitlab.com/flightgear/fgdata.git")
 md5sums=('SKIP')
 
 pkgver() {
