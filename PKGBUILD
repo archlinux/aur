@@ -7,13 +7,13 @@
 pkgname=libquicktime
 _commit='27295919b3a1036ba8bc06cec414dcc501f72d89'
 pkgver=1.2.4
-pkgrel=31
+pkgrel=32
 pkgdesc="A library for reading and writing quicktime files"
 arch=(x86_64)
 license=(LGPL2.1)
 url="http://libquicktime.sourceforge.net/"
 depends=(glib2 glibc zlib)
-# NOTE: applied experimental ffmpeg5 patch. Please provide feedback if this works for you
+# NOTE: applied experimental ffmpeg7 patch. Please provide feedback if this works for you
 makedepends=(alsa-lib doxygen faac faad2 ffmpeg gtk2 lame libdv libglvnd
              libjpeg-turbo libvorbis libx11 libxaw libxext libxt libxv
              schroedinger sndio x264)
@@ -48,6 +48,8 @@ source=(
   "${pkgname}-1.2.4-ffmpeg-codecs.patch"
   "${pkgname}-1.2.4-libavutil.patch"
   "${pkgname}-1.2.4-ffmpeg5.patch"
+  "${pkgname}-1.2.4-qtpng.patch"
+  "${pkgname}-1.2.4-ffmpeg7.patch"
 )
 sha512sums=('6ab6cd62ae2361bb3ad73725e9e8baa2b03361bc23e9e34b24f90c0e2bec4337de950ed7f30a6a1d2e67ab33e8f0c43538369fd07e417f54b84583a3c331f8dd'
             '759fee13bc96db036063efcd8288c0e467ce811b597cf6c0ceed1c8927593963174f4f3324512db0e773e936a4b9fe5c8d8fc9e0f00b2ce59110661175986f9c'
@@ -58,7 +60,10 @@ sha512sums=('6ab6cd62ae2361bb3ad73725e9e8baa2b03361bc23e9e34b24f90c0e2bec4337de9
             '1b11a82d694654976a5f79cd8feb27eec3810e09a66dc58ca576eaf1f96e4948abd4dae7955a7da6cf99ae6ffef9e183b39090d96cc6b5fe216b4c4f4faff7a8'
             '20c535444de1f3e9a68c35ee4eb409f150e6340fd43dda4544791454f42c031b24c08f651e0351f5a22dcb59459ac372aa70d82a1d20482b2d997589e19087fd'
             '691110dc18f6646e2e17f40c6a42911a6b8eaa8cea20b5595f20d218d51da11d11923a3001b7ad7c3ad6bd0d90e712b95ccee5526fa1bec176cd27813e4a775e'
-            'bfaa78504b93402a07e6e92db92322cf178ab67db3c61d1c67db5644796b07330885f857fdcac09271a6bbfd5dee29e9d567294fb0357f29b18072b06a4b762e')
+            'bfaa78504b93402a07e6e92db92322cf178ab67db3c61d1c67db5644796b07330885f857fdcac09271a6bbfd5dee29e9d567294fb0357f29b18072b06a4b762e'
+            '39e3f534a8b87216c81faf7b755262ef0186ead4b1a94ca8b69224d364af81087e099406b88609e1262b85a2f093f4beeb84584a6c84a1ab75d34d1e16e892a4'
+            '62d83f9b917082d755487c41a4f7485d9754c9de02931ca0ec7823726e602ab6f541e09679454e40679510c37ed93681211f7055530ab6dcb0dcbcaf07c4e8a4'
+)
 b2sums=('6c50965be5d19fb4c57ea6b36f2581ebd575d78a34f2df7029ce2c6ee560e8135a953a2e85d91d189e2c01b97c99804d0eab602866b88a5f07c36351174680f0'
         '2794d13a0afa8a948f8f1335d7ee0a3d75691bbb9c619716707f533f52e8a8826c4a883b25db2ad8fb6544ce8b7c0fa883158b110c10b896e124b6ade9d18945'
         '8d5be1d1a297d89da1256035042a9760227815b8e73cb994b04b3ac4a2d7b83f79625bb62dc89266ac2f3eebd4cb033c8eb66388aca6097f4dbcc86d919dbd72'
@@ -68,7 +73,10 @@ b2sums=('6c50965be5d19fb4c57ea6b36f2581ebd575d78a34f2df7029ce2c6ee560e8135a953a2
         'bd1299c24b738b3752e4d8d50ed1b2fa2f208c83e577876118d115fca22293e102614ae0cdc168060115f7145d951d290bccf21154fda4aabf55329d310b6aca'
         'e770000ea0c39f77bc36e7e5252e281b9f9d06a136c655cd702332cc8581f128263e172e41eab3b7ce2543da7065d8efc28c048588e577db5ee6ec4bfeb1019b'
         '0a29c9a3d1eae31731b76536a22aa23a4888b8ac55c3176c60a152330fce37e8031a4269fa28026133c7061cd769b1428bf24fe59fed574e39d52ea00b6e00a0'
-        'e67d8b0ac52a37594c1499270b04a74963b01567567d7469579238ba177ea7259215378d03484474bdc7caef309585c53263b4e87a68a5f8ed0b332e0118b675')
+        'e67d8b0ac52a37594c1499270b04a74963b01567567d7469579238ba177ea7259215378d03484474bdc7caef309585c53263b4e87a68a5f8ed0b332e0118b675'
+        'bc591a3f4f7a8f78256d74dcf43d7beabaa05cc746dc63a8c0826ce469cb142d8cfdf55245573fc61e34b3c21f2ce1f01906cf46d8af7f67fe4ff207bfcb43eb'
+        '3aa05d6b6b3ed5c1035b6be47b820eb775115b6ac3455bc0ab985f3b6ab32bebd083609908a2d0bbb805078373c40685e19706d036d31301d7785541504abe10'
+)
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -84,6 +92,8 @@ prepare() {
   patch -Np1 -i "../${pkgname}-1.2.4-libavutil.patch"
   patch -Np1 -i "../${pkgname}-1.2.4-ffmpeg-codecs.patch"
   patch -Np1 -i "../${pkgname}-1.2.4-ffmpeg5.patch"
+  patch -Np1 -i "../${pkgname}-1.2.4-qtpng.patch"
+  patch -Np1 -i "../${pkgname}-1.2.4-ffmpeg7.patch"
 
   autoreconf -fiv
 }
