@@ -1,45 +1,25 @@
 pkgbase = dfl-config-parser
 	pkgdesc = A Collection of Config Parsers for DFL
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/config-parser
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
-	makedepends = qt5-base
-	makedepends = qt6-base
 	makedepends = dfl-color-utils
-	makedepends = dfl-color-utils-qt6
-	makedepends = wayfire>=0.9.0
-	makedepends = glm
 	makedepends = wlroots
-	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.2.0/config-parser-v0.2.0.tar.gz
-	sha256sums = 9732b2aad84b1f7a7d47e5e1549ce427d7f3fbbd0be4d581bb5ccb946321dc7f
+	depends = qt6-base
+	source = https://gitlab.com/desktop-frameworks/config-parser/-/archive/v0.3.0/config-parser-v0.3.0.tar.gz
+	sha256sums = e7ea505139fe8db077d934d78b14d24b7ca788f058ae0f586c43872c89f1b970
 
 pkgname = dfl-colorschemeparser
-	depends = qt5-base
+	depends = qt6-base
 	depends = dfl-color-utils
 
-pkgname = dfl-colorschemeparser-qt6
-	depends = qt6-base
-	depends = dfl-color-utils-qt6
-
 pkgname = dfl-hjsonparser
-	depends = qt5-base
-
-pkgname = dfl-hjsonparser-qt6
-	depends = qt6-base
 
 pkgname = dfl-wayfireparser
-	depends = qt5-base
-	depends = wayfire>=0.8.0
-	depends = glm
-	depends = wlroots
-
-pkgname = dfl-wayfireparser-qt6
 	depends = qt6-base
-	depends = wayfire>=0.8.0
-	depends = glm
 	depends = wlroots
