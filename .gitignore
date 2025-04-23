@@ -1,0 +1,4 @@
+pkg
+src
+pybind11-stubgen-*
+python-pybind11-stubgen-*
