@@ -2,8 +2,8 @@
 _reponame=universal-pidff
 pkgname=$_reponame-dkms-git
 provides=($_reponame-dkms)
-pkgver=0.1.0.r19.gbac70bd
-pkgrel=1
+pkgver=1.0.0
+pkgrel=2
 pkgdesc="Development package for hid-pidff and hid-universal-pidff"
 arch=('x86_64')
 url="https://github.com/JacKeTUs/$_reponame"
@@ -56,12 +56,6 @@ package() {
 
   install -dm755 "${pkgdir}/usr/src/universal-pidff-${pkgver}"
   cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/universal-pidff-${pkgver}"
-}
 
-post_install() {
-  _warning
-}
-
-post_upgrade() {
   _warning
 }

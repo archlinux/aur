@@ -1,7 +1,7 @@
 pkgbase = universal-pidff-dkms-git
 	pkgdesc = Development package for hid-pidff and hid-universal-pidff
-	pkgver = 0.1.0.r19.gbac70bd
-	pkgrel = 1
+	pkgver = 1.0.0
+	pkgrel = 2
 	url = https://github.com/JacKeTUs/universal-pidff
 	arch = x86_64
 	license = GPL2
