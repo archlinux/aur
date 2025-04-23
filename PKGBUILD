@@ -3,7 +3,7 @@ _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
 pkgver=1.7.11
 _electronversion=34
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -14,15 +14,10 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'at-spi2-core'
-    'gtk3'
-    'nodejs'
-    'nspr'
-    'alsa-lib'
-    'nss'
     "electron${_electronversion}"
+    'nodejs'
+    'ffmpeg'
 )
-options=('!strip')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
 sha256sums_aarch64=('24c4060af4a0e1852d347439c8b49614dea18bb18b3d9e1f00c23b80c5bac212')
@@ -33,12 +28,22 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Photography/Graphics/g
     " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i "s/io.${_pkgname}.photos/${pkgname%-bin}/g" "${srcdir}/opt/${_pkgname}/resources/io.${_pkgname}.photos.appdata.xml"
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome_crashpad_handler chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
         libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
     for _files in "${_file_list[@]}";do
-        rm -rf "${srcdir}/opt/${_pkgname}/${_files}"
         ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/opt/${_pkgname}/${_files}"
     done
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/"{darwin,win32}
+    case "$CARCH" in
+        aarch64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64"
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/arm64"
+            ;;
+    esac
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
@@ -50,4 +55,5 @@ package() {
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/io.${_pkgname}.photos.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
 }
