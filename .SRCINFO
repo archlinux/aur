@@ -1,20 +1,15 @@
 pkgbase = dfl-layouts
 	pkgdesc = Special layouts, ex, Dynamic Layout, Circular Layout etc
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/layouts
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
-	makedepends = qt5-base
-	makedepends = qt6-base
-	source = https://gitlab.com/desktop-frameworks/layouts/-/archive/v0.2.0/layouts-v0.2.0.tar.gz
-	sha256sums = 5825cec23adbd05629e6e0f80014ee8d40c2b79b42d91fad6871788b1e9e184b
+	depends = qt6-base
+	source = https://gitlab.com/desktop-frameworks/layouts/-/archive/v0.3.0/layouts-v0.3.0.tar.gz
+	sha256sums = 1f8f56b83667394e151022ae359c2641e2e22d39bd8385611a92c9b17106dba3
 
 pkgname = dfl-layouts
-	depends = qt5-base
-
-pkgname = dfl-layouts-qt6
-	depends = qt6-base
