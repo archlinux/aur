@@ -1,27 +1,29 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 ## Build order:
 ## libdesq -> libdesqui -> desq-session -> desq-shell
 
 _pkgname=Shell
 pkgname=desq-shell
-pkgver=0.0.8
-pkgrel=7
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="The Desktop Shell for Desq"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
-        'qt5-x11extras'
-        'libdbusmenu-qt5'
+        'qt6-base'
+        'libdbusmenu-lxqt'
+        'bluez-qt'
         'libxcomposite'
         'libdesqui'
         'curl'
         'libcanberra'
         'lm_sensors'
+        'nlohmann-json'
         'pam'
-        'qt5-svg'
+        'qt6-svg'
+        'qt6-connectivity'
         'wayland-protocols'
         'hicolor-icon-theme'
         'dfl-utils'
@@ -41,20 +43,16 @@ depends=(
         'wayfire'
         'wayfire-plugins-extra'
         'wayfire-plugins-wfconfig-hjson'
-        'wayfire-plugins-dbusqt'
-        'wayfire-plugins-desq-shell'
-        'wayfire-plugins-toplevel-manager'
 )
 makedepends=(
             'meson'
             'ninja'
 )
 source=("https://gitlab.com/DesQ/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('bcbf647c870446b68d5fd191e401ad32831ddfef5824956a038484525c1cfe1a')
+sha256sums=('0dfdd345db8704e805be7136f883c2335c47338375a02f08b9f0f1cebfef4dc3')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  PKG_CONFIG_PATH=/usr/lib/wlroots0.17/pkgconfig \
   meson setup .build --prefix=/usr --buildtype=release
   ninja -C .build
 }
