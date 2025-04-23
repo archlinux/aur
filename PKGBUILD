@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=salvage-git
 _pkgname=Salvage
-pkgver=r212.b236382
+pkgver=2.3.0.r0.g832fd01
 _nodeversion=20
 pkgrel=1
 pkgdesc="Copy files comfortably and automate your backups."
@@ -13,7 +13,7 @@ provides=("${pkgname%-git}=${pkgver%-r*}")
 depends=(
     'gtk3'
     'gdk-pixbuf2'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 makedepends=(
     'gendesk'
@@ -40,14 +40,12 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
     {
         echo -e '\n'
         #echo 'build_from_source=true'
@@ -55,26 +53,35 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
         } >> .npmrc
     fi
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm tauri build -b deb
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    sed -i "s/all/deb/g" src-tauri/tauri.conf.json
+    NODE_ENV=production     pnpm -c tauri build
+    sed -i -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-git}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-git}/g
+        3i\Comment=${pkgdesc}
+    " "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr/share/applications/"${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/bin/"${pkgname%-git}" \
-        -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/share/applications/"${pkgname%-git}.desktop" \
-        -t "${pkgdir}/usr/share/applications"
+    cd "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${_pkgname}_"*/data/usr
+    install -Dm755 ./bin/"${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm644 ./share/applications/"${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     for _icons in 32x32 128x128 256x256@2;do
-        install -Dm644 "${srcdir}/${pkgname//-/.}/src-tauri/target/release/bundle/deb/${pkgname%-git}_"*/data/usr/share/icons/hicolor/"${_icons}/apps/${pkgname%-git}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+        install -Dm644 ./share/icons/hicolor/"${_icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
     install -Dm644 "${srcdir}/${pkgname//-/.}/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
