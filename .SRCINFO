@@ -1,7 +1,7 @@
 pkgbase = caesium-image-compressor-bin
-	pkgdesc = An image compression software that helps you store, send and share digital pictures, supporting JPG, PNG, WebP and TIFF formats. You can quickly reduce the file size (and resolution, if you want) by preserving the overall quality of the image.
+	pkgdesc = An image compression software that helps you store, send and share digital pictures, supporting JPG, PNG, WebP and TIFF formats. You can quickly reduce the file size (and resolution, if you want) by preserving the overall quality of the image.(Prebuilt version)
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://saerasoft.com/caesium#downloads
 	arch = x86_64
 	license = GPL-3.0-only
