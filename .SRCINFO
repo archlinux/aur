@@ -1,6 +1,6 @@
 pkgbase = zerochess-git
-	pkgdesc = Chess game precision analysis app.Use system-wide electron.
-	pkgver = 1.0.3.r0.g34be170
+	pkgdesc = Chess game precision analysis app.(Use system-wide electron)
+	pkgver = 1.0.3.r2.g5f1f467
 	pkgrel = 1
 	url = https://github.com/OscarDavilaSampedro/zerochess
 	arch = any
@@ -9,8 +9,6 @@ pkgbase = zerochess-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron27
 	provides = zerochess=1.0.3
