@@ -3,7 +3,7 @@ pkgname=algermusicplayer-bin
 _pkgname=AlgerMusicPlayer
 pkgver=4.4.0
 _electronversion=35
-pkgrel=1
+pkgrel=2
 pkgdesc="An music player based on Electron, TypeScript, and Vue 3.(Prebuilt version.Use system-wide electron)支持网易云音乐"
 arch=('x86_64')
 url="http://mc.alger.fun/"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('31934619080c413a434aa91190cf4658ede202c0b1ee091bd0546662249d6941'
+sha256sums=('868de57f3e268673ff7d0f11e106e1ecc32ded67200b9f7a634b234766a0d2a8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
