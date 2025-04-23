@@ -25,9 +25,9 @@ package() {
 	install -d "${pkgdir}/opt/${_pkgname}"
     install -dm755 "$pkgdir/usr/bin"
     #Replace icu
-    #_icuorig=74 #cannot use
-    #_icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'}) #cannot use
-	nm -D "$pkgdir/usr/bin/chatterino"|grep 74|awk '{print $2 " " $2 | "sed s/_74$/_76/"}' > map.txt
-	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.74,} --replace-needed libicui18n.so{.74,}
+    _icuorig=74 #should be taken from ldd
+    _icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
+	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
+	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
 }
 sha256sums=('8a68cf764716a7c68941c6288335a81888d2bd9df44fa4d1d866cc0ca681aba7')
