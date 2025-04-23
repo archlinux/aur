@@ -1,13 +1,11 @@
 pkgbase = noi-desktop-bin
-	pkgdesc = Power Your World with AI - Explore, Extend, Empower. Prebuilt version.
+	pkgdesc = Power Your World with AI - Explore, Extend, Empower.(Prebuilt version)
 	pkgver = 0.4.0
 	pkgrel = 4
 	url = https://noi.nofwl.com/
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = gtk3
-	depends = nss
-	depends = alsa-lib
+	depends = electron29
 	provides = noi-desktop=0.4.0
 	conflicts = noi-desktop
 	source = noi-desktop-0.4.0.deb::https://github.com/lencx/Noi/releases/download/v0.4.0/noi_linux_amd64_0.4.0.deb
