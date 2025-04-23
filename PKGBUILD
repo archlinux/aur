@@ -2,7 +2,7 @@
 pkgname=promethium-bin
 _pkgname=Promethium
 pkgver=6.1.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Extensible, fast, and innovative Electron based web browser with Material UI design elements and built-in AdBlock.Prebuilt version."
 arch=('x86_64')
 url="https://github.com/Alex313031/promethium"
@@ -18,10 +18,9 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
 sha256sums=('74da657f5b07c32f91ca7fdac99af9f53f1f89b6b429364918f618f81bc26b27')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" \
-        "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
