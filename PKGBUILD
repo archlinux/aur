@@ -31,12 +31,12 @@ sha256sums=('SKIP'
             '680ea7cd1b1681fb42137dd1510c64862507b889286d8788d3f017d9d307792d')
 
 pkgver() {
-  cd "${srcdir}/openscenegraph"
+  cd "${srcdir}/flightgear-openscenegraph"
   git describe --long --tags | sed 's/^OpenSceneGraph.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd openscenegraph
+  cd flightgear-openscenegraph
   patch -p1 < ../../openscenegraph-suffix.patch # Fix library suffix
   patch -p1 < ../openscenegraph-openexr3.patch # Fix build with openEXR 3
   patch -p1 < ../openscenegraph-ffmpeg4.4.patch # Find ffmpeg 4.4 headers
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-  cmake -B build -S "openscenegraph" -Wno-dev \
+  cmake -B build -S "flightgear-openscenegraph" -Wno-dev \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -55,5 +55,5 @@ build() {
 
 package(){
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm 644 "openscenegraph/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 "flightgear-openscenegraph/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
