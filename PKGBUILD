@@ -2,9 +2,9 @@
 pkgname=medict-bin
 _pkgname=Medict
 pkgver=3.0.1_alpha_dba43c
-pkgrel=4
-pkgdesc="A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format"
-arch=("x86_64")
+pkgrel=5
+pkgdesc="A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format.(Prebuilt version)"
+arch=('x86_64')
 url="https://github.com/terasum/medict"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -22,8 +22,13 @@ source=(
 )
 sha256sums=('db7fdc0cc6ced987636c829ac41fafc8573e8ec6d2e4bfdf419797c0dffe9e4d'
             'feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c')
-build() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+prepare() {
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
