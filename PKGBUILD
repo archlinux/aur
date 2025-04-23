@@ -1,14 +1,14 @@
 # Maintainer: David Gro <gro.david.d@gmail.com>
 pkgname=digital-logic-sim-bin
-pkgrel=2
-pkgver="latest"
+pkgrel=0
+pkgver="v2.1.3"
 pkgdesc="The logic simulation used and developed by Sebastian Lague."
 arch=('x86_64')
 url="https://github.com/SebLague/Digital-Logic-Sim"
 license=("MIT")
 makedepends=("unzip")
-source=("dls.zip::https://cdn.matix-media.net/dd/f0ca84b6" "dls.desktop" "dls-icon.jpg")
-sha256sums=('SKIP'
+source=("dls.zip::https://cdn.matix-media.net/dd/1201fb64" "dls.desktop" "dls-icon.jpg")
+sha256sums=('ad5c795601843fa8b3bb08ba6cc96e182e151da84fe5854bb2b8103c55805c37'
             'a347d30340f3b38cafa156745efef18e768794f73252c8585b2021b4b47b8535'
             'be3af17e3a63ab19f9526da768e7cdb22242199ea5983593de300e88ba5d202d')
 
