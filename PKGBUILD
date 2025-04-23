@@ -1,45 +1,29 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=notification
-pkgbase=dfl-notification
-pkgname=(
-        'dfl-notification'
-        'dfl-notification-qt6'
-)
-pkgver=0.2.0
-pkgrel=2
+pkgname=('dfl-notification')
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Implementation of the XDG Desktop Notification Spec"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL-3.0-only')
+depends=('qt6-base')
 makedepends=(
             'meson'
             'ninja'
-            'qt5-base'
-            'qt6-base'
 )
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b8336c719dad5be75493f8cd00efc0e390db4b72eb7be7ad59a8daf217e29169')
+sha256sums=('91ccc97234d63e7c3e4343e13e2bc17f4881e4359d5a7bca405861199753c295')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  echo "Building QT5 version..."
-  meson .build --prefix=/usr --buildtype=release
-  ninja -C .build
-  
   echo "Building QT6 version..."
-  meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
-  ninja -C .build-qt6
+  meson setup .build --prefix=/usr --buildtype=release
+  ninja -C .build
 }
 
-package_dfl-notification() {
-  depends=('qt5-base')
+package() {
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
-}
-
-package_dfl-notification-qt6() {
-  depends=('qt6-base')
-  cd "${_pkgname}-v${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
