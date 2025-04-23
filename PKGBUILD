@@ -2,8 +2,8 @@
 # Contributor: Andreas Kling <arch@akling.org>
 # Contributor: Johan Förberg <johan@forberg.se>
 pkgname=magicq
-pkgver=1.9.6.4
-pkgrel=2
+pkgver=1.9.6.5
+pkgrel=1
 pkgdesc='Lighting control software from ChamSys'
 arch=(x86_64)
 url='https://chamsyslighting.com/products/magicq'
@@ -14,7 +14,7 @@ options=('!strip') # Binaries are already stripped.
 
 _pkgver="${pkgver//[^[:alnum:]]/_}"
 source=("http://files.magicq.co.uk/v${_pkgver}/magicq_ubuntu_v${_pkgver}.deb")
-sha256sums=('25912d996bcd48a68327a768eb90f3c5dd93503ef1833b1f5c5a7f5fadaf5766')
+sha256sums=('80e1ac85ab2f93da124d9e273e46f418aec57e0c9cdd2064e02a25a0ed56b43e')
 
 package() {
     depends=(alsa-lib jack gst-plugins-base gst-plugins-good libarchive libcups
