@@ -9,6 +9,7 @@ pkgbase = tio
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
+	arch = riscv64
 	license = GPL-2.0-or-later
 	makedepends = meson
 	depends = glibc
