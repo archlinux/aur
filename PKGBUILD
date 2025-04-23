@@ -23,7 +23,7 @@ makedepends=(git cmake fontconfig gdal gst-plugins-base-libs jasper librsvg libv
 optdepends=(gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
 provides=(flightgear-openscenegraph flightgear-openthreads)
 conflicts=(openscenegraph openthreads)
-source=("openscenegraph::git+https://gitlab.com/flightgear/openscenegraph.git#branch=next"
+source=("flightgear-openscenegraph::git+https://gitlab.com/flightgear/openscenegraph.git#branch=next"
         "openscenegraph-ffmpeg4.4.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/openscenegraph/-/raw/main/ffmpeg4.4.patch"
         "https://gitlab.archlinux.org/archlinux/packaging/packages/openscenegraph/-/raw/main/openscenegraph-openexr3.patch")
 sha256sums=('SKIP'
@@ -36,7 +36,6 @@ pkgver() {
 }
 
 prepare() {
-    ls
   cd openscenegraph
   patch -p1 < ../../openscenegraph-suffix.patch # Fix library suffix
   patch -p1 < ../openscenegraph-openexr3.patch # Fix build with openEXR 3
