@@ -26,7 +26,7 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-warning() {
+_warning() {
   _GREEN="\e[32m"
   _YELLOW="\e[33m"
   _BOLDRED="\e[1;31m"
@@ -50,12 +50,18 @@ warning() {
 }
 
 package() {
-  warning
-
   cd "$srcdir/$_reponame" || exit
 
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
 
   install -dm755 "${pkgdir}/usr/src/universal-pidff-${pkgver}"
   cp -r ${srcdir}/$_reponame/* "${pkgdir}/usr/src/universal-pidff-${pkgver}"
+}
+
+post_install() {
+  _warning
+}
+
+post_upgrade() {
+  _warning
 }
