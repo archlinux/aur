@@ -1,0 +1,3 @@
+[python-langchain-community]
+source = "pypi"
+pypi = "langchain-community"
