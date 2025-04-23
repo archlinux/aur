@@ -2,13 +2,12 @@
 # Contributor: Achmad Fathoni<fathoni.id(at)gmail.com>
 
 pkgname=python-pytest-recording
+_pkgname=${pkgname#python-}
 pkgver=0.13.2
-pkgrel=6
-_name=${pkgname#python-}
-_name="${_name//-/_}"
+pkgrel=7
 pkgdesc='Pytest plugin to record network interactions with VCR.py'
 arch=('any')
-url="https://pypi.org/project/$_name"
+url="https://pypi.org/project/${_pkgname//-/_}"
 _url='https://github.com/kiwicom/pytest-recording'
 license=('MIT')
 depends=(python 'python-vcrpy>=7.0.0' python-pytest)
@@ -28,14 +27,14 @@ source=("$pkgname-$pkgver::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('979a7849e758ed1d6ba17056533c75ac901f30a420d8229342bf4c5043cb86fb')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     python -m build --wheel --no-isolation
 
     python -m installer --destdir=tmp_install dist/*.whl
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
 
     local _site_packages
     _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
@@ -47,7 +46,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
