@@ -4,7 +4,7 @@
 pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
 
-_vfreenginx=1.27.6
+_vfreenginx=1.28.0
 _vlibressl=4.0.0
 _tests_commit=0a913a10945b
 
@@ -33,7 +33,7 @@ source=("$url/download/freenginx-$_vfreenginx.tar.gz"{,.asc}
 	"hg+https://freenginx.org/hg/nginx-tests#revision=${_tests_commit}"
 	"service"
 	"logrotate")
-sha256sums=('1cba1326f9c02130bfd77b04eda6d186d0be89fb21572bc9ec1fc4962c8412a4'
+sha256sums=('28651bf51ff95de027262d7af23000e5862fb3d1b2252ac83d97ce4c9a4a18a2'
             'SKIP'
             '4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4'
             'SKIP'
