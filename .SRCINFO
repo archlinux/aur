@@ -1,7 +1,7 @@
 pkgbase = vlang-bin
 	pkgdesc = Simple compiled language for developing maintainable software (binary release)
 	pkgver = 0.4.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vlang.io
 	arch = x86_64
 	license = MIT
