@@ -12,7 +12,7 @@ license=('AGPL3')
 #       related operations with libvips), but at least two people have
 #       reported runtime errors related to libvips without them.
 depends=('ffmpeg' 'libvips>=8.13.3' 'openslide' 'opus' 'poppler-glib')
-makedepends=('cargo' 'cmake' 'git')
+makedepends=('cmake' 'git' 'rust')
 url='https://simonrepp.com/faircamp'
 conflicts=('faircamp')
 provides=('faircamp')
@@ -21,10 +21,8 @@ source=('faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git')
 md5sums=('SKIP')
 
 build() {
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 	cd "$srcdir/$pkgname"
-	cargo build --features libvips --locked --offline --release
+	cargo build --features libvips --release
 }
 
 package() {
@@ -35,9 +33,4 @@ package() {
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
-
-prepare() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
