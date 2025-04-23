@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=manga-you-know-desktop-bin
 _pkgname=MangaYouKnow
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A manga reader that allows you to read manga from multiple sources in one app.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/manga-you-know/desktop/v${pkgver}/LICENSE"
 )
-sha256sums=('47396f8f587819691d642eb7c7570dbd52716ce4808b6e3e814dc5067d9cf846'
+sha256sums=('1bd0969d02e16be70ed53b0379bf093dc387437c0ae995aca3502388bf0a7d69'
             'aaecf4b84ef2c23ac6d770f6a233b44a89d9db4195934402c71680a4d0d07c4b')
 prepare() {
     sed -i -e "
