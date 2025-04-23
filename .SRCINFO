@@ -1,20 +1,15 @@
 pkgbase = dfl-color-utils
 	pkgdesc = A simple pure Qt/C++ implementation of the cylindrical color space model characterized by Hue-Chroma-Luma
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.com/desktop-frameworks/color-utils
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
-	makedepends = qt5-base
-	makedepends = qt6-base
-	source = https://gitlab.com/desktop-frameworks/color-utils/-/archive/v0.2.0/color-utils-v0.2.0.tar.gz
-	sha256sums = c49792cc956d4df975201ae60b68d9378dd52bbb4fdad205dd3f264b5aab107f
+	depends = qt6-base
+	source = https://gitlab.com/desktop-frameworks/color-utils/-/archive/v0.3.0/color-utils-v0.3.0.tar.gz
+	sha256sums = 3700cdc9c2c08e9d1a045a09230da281670fcc4547b32c32a3a2628914fffc4c
 
 pkgname = dfl-color-utils
-	depends = qt5-base
-
-pkgname = dfl-color-utils-qt6
-	depends = qt6-base
