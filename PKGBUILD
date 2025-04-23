@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.4.0
+pkgver=3.4.1
 _electronversion=33
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('122321a5daa795e93fcd00dcaf4cffe545a5e3ee70a07a8d7ef3e56ee6c4da37'
+sha256sums=('a9244420b1f823d811a286a009c7228be424f254c1da29a2168dc5194256dae4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
