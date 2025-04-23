@@ -10,8 +10,8 @@ url="https://github.com/nhost/cli"
 license=("MIT")
 depends=("docker" "curl")
 makedepends=('go' 'git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("nhost")
+conflicts=("nhost")
 replaces=()
 options=()
 source=("${_pkgname}::git+${url}.git")
@@ -23,18 +23,16 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/$_pkgname"
-}
-
 build() {
   cd "$srcdir/$_pkgname"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
-  go build -o build/nhost .
+  export OS=linux
+  export VERSION=$(echo $pkgver | sed -E -e 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+  echo $VERSION
+
+  export LDFLAGS="-s -w -X main.Version=v${VERSION}"
+
+  export CGO_ENABLED="0"
+  go build -buildmode=pie -trimpath -ldflags="${LDFLAGS}" -mod=vendor -modcacherw -o build/nhost .
 }
 
 package() {
