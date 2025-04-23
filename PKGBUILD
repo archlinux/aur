@@ -1,6 +1,6 @@
 pkgname=iortcw-bin
 pkgver=1.51c
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_i686=1
 _pkgrel_aarch64=1
@@ -22,9 +22,23 @@ package() {
     install -dm755 "$pkgdir/usr/share/games/iortcw"
     
     rm -rf  $srcdir/iortcw-*
-    cp -R $srcdir/* $pkgdir/usr/share/games/iortcw/
+    cp -r "$srcdir"/* "$pkgdir/usr/share/games/iortcw/"
    #Binaries
-    find /usr/share/games/iortcw/ -name 'iowolfsp.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfsp" \;
-    find /usr/share/games/iortcw/ -name 'iowolfmp.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfmp" \;
-    find /usr/share/games/iortcw/ -name 'iowolfded.*' -exec ln -sf {} "$pkgdir/usr/bin/iowolfded" \;
+#iowolf Single Player Binary
+for file in "$pkgdir/usr/share/games/iortcw"/iowolfsp.*; do
+  filename=$(basename "$file")
+  ln -sf "/usr/share/games/iortcw/$filename" "$pkgdir/usr/bin/iowolfsp"
+done
+
+#iowolf Multiplayer Binary
+for file in "$pkgdir/usr/share/games/iortcw"/iowolfmp.*; do
+  filename=$(basename "$file")
+  ln -sf "/usr/share/games/iortcw/$filename" "$pkgdir/usr/bin/iowolfmp"
+done
+
+#iowolf dedicated Binary 
+for file in "$pkgdir/usr/share/games/iortcw"/iowolfded.*; do
+  filename=$(basename "$file")
+  ln -sf "/usr/share/games/iortcw/$filename" "$pkgdir/usr/bin/iowolfded"
+done
 }

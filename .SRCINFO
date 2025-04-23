@@ -1,7 +1,7 @@
 pkgbase = iortcw-bin
 	pkgdesc = Open source engine for Return to Castle Wolfenstein
 	pkgver = 1.51c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/iortcw
 	arch = x86_64
 	arch = i686
