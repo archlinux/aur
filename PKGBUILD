@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ACME
-_pkgver=2.60.0
+_pkgver=2.64.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,9 +14,13 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3853ec1daaa6758f91cfd227d785e752')
-b2sums=('05d484cedc61464b619fd065c66d412603709fad402919bf35135b8087a1f2e267ab2a5ba7704036934c6d77b5a515009b4ae73847891f25b13d101967f02264')
+md5sums=('20a96ce1d2b153d4b2f669a868e78aa3')
+b2sums=('8603290b8aeff0a6a6afceb4e26eff9a00714e9a80be5324a25097e65144219600e8135588c872b3c6caa44821d5a2af49c23154bc50f4ba9e792d964a0a2ca3')
 
+prepare() {
+  sed -i ${srcdir}/${_pkgname}/src/*.c \
+    -e 's|&windowChisq|(DL_FUNC)&|g'
+}
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
