@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=alevinQC
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Generate QC Reports For Alevin Output'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('023e21637956667bd1d15d3330112cec9593acfc100f72742b3df9324bacdc07')
+sha256sums=('4ef71289c1bbb803db940fc482212a4ff21b54e601c9d6abc4732d08472660aa')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
