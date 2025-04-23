@@ -17,7 +17,7 @@ pkgbase = nerolauncher
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	sha256sums = SKIP
 	source_x86_64 = https://github.com/nsydykovich/nerolauncher/releases/download/v0.1.0/Nero.Launcher_0.1.0_amd64.deb
+	sha256sums_x86_64 = 0da431c5d1024675f3a0accefc5827779a1c537f50f72a92874c75bd885aeb09
 
 pkgname = nerolauncher
