@@ -1,45 +1,29 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=xdg
-pkgbase=dfl-xdg
-pkgname=(
-        'dfl-xdg'
-        'dfl-xdg-qt6'
-)
-pkgver=0.2.0
-pkgrel=2
+pkgname=('dfl-xdg')
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="XDG Specifications implementation for Qt"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL-3.0-only')
+depends=('qt6-base')
 makedepends=(
             'meson'
             'ninja'
-            'qt5-base'
-            'qt6-base'
 )
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('5c180a4f4e7c344159cbd4dae7844ac84342119ee499703b28746760f016acf8')
+sha256sums=('4f0200254f7ef8d6c6050ba6921ca1742d73c47e12f1e2891f69500aa4faae89')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  echo "Building QT5 version..."
-  meson .build --prefix=/usr --buildtype=release
-  ninja -C .build
-  
   echo "Building QT6 version..."
-  meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
-  ninja -C .build-qt6
+  meson setup .build --prefix=/usr --buildtype=release
+  ninja -C .build
 }
 
-package_dfl-xdg() {
-  depends=('qt5-base')
+package() {
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
-}
-
-package_dfl-xdg-qt6() {
-  depends=('qt6-base')
-  cd "${_pkgname}-v${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
