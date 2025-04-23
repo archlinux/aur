@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=docspedia-git
-pkgver=r32.f348a53
+pkgver=r41.23420bb
 _electronversion=31
 _nodeversion=20
 pkgrel=1
-pkgdesc="OLLAMA client, Chat with your documents with your local LLM.Use system-wide electron."
+pkgdesc="Chat with your pdf using your local LLM, OLLAMA client.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/docspedia/docspedia"
 license=('MIT')
@@ -12,14 +12,13 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
+    'ollama'
 )
 makedepends=(
     'npm'
     'git'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
     'curl'
     'pnpm'
 )
@@ -41,14 +40,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -62,19 +61,25 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i "/- AppImage/d;/- snap/d;s/- deb/- dir/g" electron-builder.yml
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run build:linux
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     pnpm -c electron-vite build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}" --config electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

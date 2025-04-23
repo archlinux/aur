@@ -1,6 +1,6 @@
 pkgbase = docspedia-git
-	pkgdesc = OLLAMA client, Chat with your documents with your local LLM.Use system-wide electron.
-	pkgver = r32.f348a53
+	pkgdesc = Chat with your pdf using your local LLM, OLLAMA client.(Use system-wide electron)
+	pkgver = r41.23420bb
 	pkgrel = 1
 	url = https://github.com/docspedia/docspedia
 	arch = any
@@ -9,12 +9,11 @@ pkgbase = docspedia-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = pnpm
 	depends = electron31
-	provides = docspedia=r32.f348a53
+	depends = ollama
+	provides = docspedia=r41.23420bb
 	conflicts = docspedia
 	source = docspedia.git::git+https://github.com/docspedia/docspedia.git
 	source = docspedia.sh
