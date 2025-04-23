@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=amphitheatre-desktop-bin
-pkgver=0.8.4
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Open source GUI application that enables you to interact with Amphitheatre.(Prebuilt version)"
 arch=(
@@ -18,9 +18,9 @@ depends=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64.rpm")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-i386.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.rpm")
-sha256sums_aarch64=('e81c8ec6b9ad6567ebc7202bcbb446997d27d0bd3de435d506aea04d7c670343')
-sha256sums_i686=('41d0a22f6e68d2c141f689ab2348c9edeab9d18e50aef8d51731b5e936b08e81')
-sha256sums_x86_64=('c56d1f164e7fc3530a15bb0cb4cf0c5fa507b8da5e9150992fad6df900449276')
+sha256sums_aarch64=('a7cc6781086d1117535ff8c4a8ba956c983bf05907fe74f1259f0215718cf09b')
+sha256sums_i686=('e44a6fde36231ac480f8f10cd342eb613375e3793cc3ddbac1f84f696f018c64')
+sha256sums_x86_64=('b530d722f175a52494501e7e79da8a9ea79ae18ef493178de08b64d8d61e7aaf')
 prepare() {
     sed -i "s/\/usr\/local\/bin\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
