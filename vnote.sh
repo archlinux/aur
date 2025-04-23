@@ -3,7 +3,7 @@ set -o pipefail
 _APPDIR="/usr/lib/@appname@"
 _RUNNAME="${_APPDIR}/bin/@runname@"
 export PATH="${_APPDIR}/bin:${PATH}"
-if [ -x /usr/bin/fcitx ];then
+if [ -x "/usr/bin/fcitx" ];then
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
 fi
@@ -15,4 +15,4 @@ case "${XDG_CURRENT_DESKTOP}" in
         ;;
 esac
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
-exec "${_OPTIONS}" "${_RUNNAME}" "$@" || exit $?
+exec "${_RUNNAME}" "$@" || exit $?
