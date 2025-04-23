@@ -3,8 +3,8 @@ pkgname=interactive-data-editor-bin
 _pkgname="Interactive Data Editor"
 pkgver=2.13.1
 _electronversion=17
-pkgrel=7
-pkgdesc="A Software to interactively edit data in a graphical manner"
+pkgrel=8
+pkgdesc="A Software to interactively edit data in a graphical manner.(Prebuilt version)"
 arch=('x86_64')
 url="https://koushikphy.github.io/Interactive_Data_Editor/"
 _ghurl="https://github.com/Koushikphy/Interactive_Data_Editor"
@@ -12,10 +12,7 @@ license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'nspr'
-    'nss'
-    'alsa-lib'
+    "electron${_electronversion}"
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
@@ -23,9 +20,14 @@ source=(
 )
 sha256sums=('b1cb88d8eb558d906c6a136991988e6f730a2791dcc2dd9f952b018827710ab7'
             'd728fec9e20c7c6b1528b62e2525c7f98d2f99061e5b8e3bbd33d27f27271265')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
+		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
+	for _files in "${_file_list[@]}";do
+		ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/opt/${_pkgname}/${_files}"
+	done
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
