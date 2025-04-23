@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e24f354c..2a2fb0b11 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -916,7 +916,6 @@ ENDIF()
+ 
+ SET(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "add a postfix, usually d on windows")
+ SET(CMAKE_RELEASE_POSTFIX "" CACHE STRING "add a postfix, usually empty on windows")
+-SET(CMAKE_RELWITHDEBINFO_POSTFIX "rd" CACHE STRING "add a postfix, usually empty on windows")
+ SET(CMAKE_MINSIZEREL_POSTFIX "s" CACHE STRING "add a postfix, usually empty on windows")
+ 
+ # Correct any incorrect case usage in CMAKE_BUILD_TYPE

@@ -1,0 +1,82 @@
+diff --git a/CMakeModules/FindOpenEXR.cmake b/CMakeModules/FindOpenEXR.cmake
+index 233be972b..d1b022881 100644
+--- a/CMakeModules/FindOpenEXR.cmake
++++ b/CMakeModules/FindOpenEXR.cmake
+@@ -51,11 +51,11 @@ MACRO(OPENEXR_FIND libname)
+     OPENEXR_FIND_VAR(OPENEXR_${libname}_LIBRARY_DEBUG ${libname}d)
+ ENDMACRO(OPENEXR_FIND)
+ 
+-OPENEXR_FIND(IlmImf)
++OPENEXR_FIND(OpenEXR)
+ 
+ SET(OPENEXR_FOUND "NO")
+-IF(OPENEXR_INCLUDE_DIR AND OPENEXR_IlmImf_LIBRARY)
+-    SET(OPENEXR_LIBRARIES ${OPENEXR_IlmImf_LIBRARY} )
+-    SET(OPENEXR_LIBRARIES_VARS OPENEXR_IlmImf_LIBRARY )
++IF(OPENEXR_INCLUDE_DIR AND OPENEXR_OpenEXR_LIBRARY)
++    SET(OPENEXR_LIBRARIES ${OPENEXR_OpenEXR_LIBRARY} )
++    SET(OPENEXR_LIBRARIES_VARS OPENEXR_OpenEXR_LIBRARY )
+     SET(OPENEXR_FOUND "YES")
+-ENDIF(OPENEXR_INCLUDE_DIR AND OPENEXR_IlmImf_LIBRARY)
++ENDIF(OPENEXR_INCLUDE_DIR AND OPENEXR_OpenEXR_LIBRARY)
+diff --git a/CMakeModules/Findilmbase.cmake b/CMakeModules/Findilmbase.cmake
+index 4b076c7c9..4610497fa 100644
+--- a/CMakeModules/Findilmbase.cmake
++++ b/CMakeModules/Findilmbase.cmake
+@@ -10,7 +10,7 @@
+ # Created by Robert Osfield. 
+ 
+ 
+-FIND_PATH(ILMBASE_INCLUDE_DIR OpenEXR/ImathVec.h
++FIND_PATH(ILMBASE_INCLUDE_DIR Imath/ImathVec.h
+     $ENV{ILMBASE_DIR}/include
+     $ENV{ILMBASE_DIR}
+     ~/Library/Frameworks
+@@ -28,7 +28,7 @@ FIND_PATH(ILMBASE_INCLUDE_DIR OpenEXR/ImathVec.h
+ # example: ILMBASE_FIND_VAR(OPENEXR_IlmThread_LIBRARY IlmThread)
+ MACRO(ILMBASE_FIND_VAR varname libname)
+     FIND_LIBRARY( ${varname}
+-        NAMES ${libname} ${libname}-2_1 ${libname}-2_2
++        NAMES ${libname} ${libname}-2_1 ${libname}-2_2 ${libname}-3_0
+         PATHS
+         $ENV{ILMBASE_DIR}/lib
+         $ENV{ILMBASE_DIR}
+@@ -53,11 +53,11 @@ ENDMACRO(ILMBASE_FIND)
+ 
+ ILMBASE_FIND(IlmThread)
+ ILMBASE_FIND(Iex)
+-ILMBASE_FIND(Half)
++ILMBASE_FIND(Imath)
+ 
+ SET(ILMBASE_FOUND "NO")
+-IF(ILMBASE_INCLUDE_DIR AND ILMBASE_IlmThread_LIBRARY AND ILMBASE_Iex_LIBRARY AND ILMBASE_Half_LIBRARY)
+-    SET(ILMBASE_LIBRARIES ${ILMBASE_IlmThread_LIBRARY} ${ILMBASE_Half_LIBRARY} ${ILMBASE_Iex_LIBRARY} )
+-    SET(ILMBASE_LIBRARIES_VARS ILMBASE_IlmThread_LIBRARY ILMBASE_Half_LIBRARY ILMBASE_Iex_LIBRARY )
++IF(ILMBASE_INCLUDE_DIR AND ILMBASE_IlmThread_LIBRARY AND ILMBASE_Iex_LIBRARY AND ILMBASE_Imath_LIBRARY)
++    SET(ILMBASE_LIBRARIES ${ILMBASE_IlmThread_LIBRARY} ${ILMBASE_Imath_LIBRARY} ${ILMBASE_Iex_LIBRARY} )
++    SET(ILMBASE_LIBRARIES_VARS ILMBASE_IlmThread_LIBRARY ILMBASE_Imath_LIBRARY ILMBASE_Iex_LIBRARY )
+     SET(ILMBASE_FOUND "YES")
+-ENDIF(ILMBASE_INCLUDE_DIR AND ILMBASE_IlmThread_LIBRARY AND ILMBASE_Iex_LIBRARY AND ILMBASE_Half_LIBRARY)
++ENDIF(ILMBASE_INCLUDE_DIR AND ILMBASE_IlmThread_LIBRARY AND ILMBASE_Iex_LIBRARY AND ILMBASE_Imath_LIBRARY)
+diff --git a/src/osgPlugins/exr/CMakeLists.txt b/src/osgPlugins/exr/CMakeLists.txt
+index 6191ed18f..9a368b2c2 100644
+--- a/src/osgPlugins/exr/CMakeLists.txt
++++ b/src/osgPlugins/exr/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-INCLUDE_DIRECTORIES( ${ILMBASE_INCLUDE_DIR}/OpenEXR )
++INCLUDE_DIRECTORIES( ${ILMBASE_INCLUDE_DIR}/Imath )
+ INCLUDE_DIRECTORIES( ${OPENEXR_INCLUDE_DIR}/OpenEXR )
+ 
+ SET(TARGET_SRC ReaderWriterEXR.cpp )
+diff --git a/src/osgPlugins/exr/ReaderWriterEXR.cpp b/src/osgPlugins/exr/ReaderWriterEXR.cpp
+index 7132e97f8..96c5507ef 100644
+--- a/src/osgPlugins/exr/ReaderWriterEXR.cpp
++++ b/src/osgPlugins/exr/ReaderWriterEXR.cpp
+@@ -13,6 +13,7 @@
+ #include <osgDB/FileNameUtils>
+ #include <osgDB/FileUtils>
+ 
++#include <ImfInt64.h>
+ #include <ImfRgbaFile.h>
+ #include <ImfIO.h>
+ #include <ImfArray.h>
