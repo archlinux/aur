@@ -1,5 +1,5 @@
 pkgbase = yaste-git
-	pkgdesc = Yet another super ₛᵢₘₚₗₑ text editor.Use system-wide electron.
+	pkgdesc = Yet another super ₛᵢₘₚₗₑ text editor.(Use system-wide electron)
 	pkgver = 1.1.0.r0.g613ea8c
 	pkgrel = 1
 	url = https://github.com/LuanRoger/yaste
@@ -9,8 +9,6 @@ pkgbase = yaste-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron31
 	provides = yaste=1.1.0
