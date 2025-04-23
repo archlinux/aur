@@ -1,0 +1,38 @@
+--- libquicktime-1.2.4.orig/plugins/ffmpeg/audio.c  2024-07-09 12:18:11.919376601 +0200
++++ libquicktime-1.2.4/plugins/ffmpeg/audio.c   2024-07-09 12:10:53.297276614 +0200
+@@ -971,7 +971,11 @@
+   if(!codec->initialized)
+     {
+     /* Set some mandatory variables */
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(61, 0, 0)
++    codec->avctx->ch_layout.nb_channels = quicktime_track_channels(file, track);
++#else
+     codec->avctx->channels        = quicktime_track_channels(file, track);
++#endif
+     codec->avctx->sample_rate     = quicktime_sample_rate(file, track);
+
+     if(track_map->track->mdia.minf.stbl.stsd.table[0].version == 1)
+@@ -1202,7 +1206,11 @@
+   if(!codec->initialized)
+     {
+     codec->avctx->sample_rate = track_map->samplerate;
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(61, 0, 0)
++    codec->avctx->ch_layout.nb_channels = channels;
++#else
+     codec->avctx->channels = channels;
++#endif
+
+     codec->avctx->codec_id = codec->encoder->id;
+     codec->avctx->codec_type = codec->encoder->type;
+@@ -1229,7 +1237,11 @@
+     /* One frame is: bitrate * frame_samples / (samplerate * 8) + 1024 */
+     codec->chunk_buffer_alloc = ( codec->avctx->frame_size
+                                   * sizeof( int16_t )
++#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(61, 0, 0)
++                                  * codec->avctx->ch_layout.nb_channels);
++#else
+                                   * codec->avctx->channels);
++#endif
+     codec->chunk_buffer = malloc(codec->chunk_buffer_alloc);
+
+     if(trak->strl)

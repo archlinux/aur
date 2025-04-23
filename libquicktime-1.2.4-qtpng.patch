@@ -1,0 +1,11 @@
+
+--- libquicktime-1.2.4.orig/plugins/png/qtpng.c 2011-01-07 15:40:46.000000000 +0100
++++ libquicktime-1.2.4/plugins/png/qtpng.c  2024-06-19 11:04:51.460483842 +0200
+@@ -26,6 +26,7 @@
+ #include <quicktime/colormodels.h>
+ #include <png.h>
+ #include <stdlib.h>
++#include <string.h>
+ #include "qtpng.h"
+
+ typedef struct
