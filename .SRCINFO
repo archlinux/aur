@@ -1,7 +1,7 @@
 pkgbase = r-travel
 	pkgdesc = An utility to create an ALTREP object with a virtual pointer
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://bioconductor.org/packages/Travel
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,7 +13,10 @@ pkgbase = r-travel
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://bioconductor.org/packages/3.16/bioc/src/contrib/Travel_1.6.0.tar.gz
+	source = fix-format.patch::https://github.com/sukanka/Travel/commit/03e77b8.patch
 	md5sums = da652100a57515f0dbaf7084fb35525e
+	md5sums = 7c78a4e891b2049c875259760d73e8f3
 	b2sums = 45b1cbadbfeee068cfca241237900b937555a4dfdec7bb68635ca1168e83215b6b4da781388bafd0859399985677ea16811e3cf80939ff5f84367a85e488a648
+	b2sums = d64453a943ac542c88cfb83bd55747bd0b39f7ea5831098dbb38fe17aa298f764bf25ffce2169e1515feb1ee32dfa993729a14934f8f9ae332c599aa77b60ec2
 
 pkgname = r-travel
