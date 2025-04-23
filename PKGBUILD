@@ -2,8 +2,8 @@
 pkgname=url-collector-bin
 _pkgname=urlcollector
 pkgver=2.1
-pkgrel=4
-pkgdesc="Desktop application for collect web-links.Prebuilt version."
+pkgrel=5
+pkgdesc="Desktop application for collect web-links.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/TechnoMag82/UrlCollector"
 license=('GPL-1.0-only')
@@ -16,12 +16,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v.${pkgver}/${pkgname%-bin}_${pkgver}-2_amd64.deb"
 )
 sha256sums=('5cdb7886c937558fd6c083c0b17cf9453b80b4d3e4e9f9523080092414464ce5')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/Exec=urlcol/Exec=${pkgname%-bin}/g
         s/${_pkgname}.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/urlcol" "${pkgdir}/usr/bin/${pkgname%-bin}"
