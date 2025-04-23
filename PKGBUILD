@@ -6,8 +6,8 @@
 _pkgname='dstask'
 pkgname="$_pkgname-git"
 pkgver=0.27.r4.gbd08b11
-pkgrel=2
-pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (latest commit)'
+pkgrel=3
+pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
 license=('MIT')  # SPDX-License-Identifier: MIT
