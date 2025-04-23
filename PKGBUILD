@@ -15,7 +15,7 @@ pkgname=(
   "woff2-jena1330${_vcssuffix}"
 )
 pkgver=r105.20160920.75d5b9e
-pkgrel=10
+pkgrel=11
 pkgdesc='A medieval textura as used by the main writer of the "Jenaer Liederhandschrift". LaTeX, OTF, TTF, Postscript Type 1, WOFF and WOFF2 fonts, latest Git checkout.'
 arch=(
   'any'
@@ -26,7 +26,8 @@ depends=()
 makedepends=(
   'git'
   'fontforge'
-  'html2md'
+  'html2markdown'
+  # 'html2md'
   'perl'
   'python'
   'python-html2text'
@@ -36,7 +37,7 @@ makedepends=(
 optdepends=()
 source=(
   "${_pkgbase}::git+https://github.com/Anaphory/Jena1330.git"
-  "website.html::${url}"
+  "jena1330-fonts-website.html::${url}"
   'LICENSE.OFL1.1.txt'
 )
 sha256sums=(
@@ -47,8 +48,12 @@ sha256sums=(
 
 
 prepare() {
+  cd "${srcdir}"
+
   msg2 "Generating 'website.url' information file ..."
   printf '%s\n' "${url}" > "${srcdir}/website.url"
+
+  cp jena1330-fonts-website.html website.html
 
   cd "${srcdir}/${_pkgbase}"
 
@@ -77,7 +82,8 @@ build() {
   msg2 "Converting 'website.html' to text/plain format ..."
   html2text --no-wrap-links --body-width 0 --mark-code --reference-links --links-after-para --unicode-snob website.html > website.txt
   msg2 "Converting 'website.html' to Markdown format ..."
-  html2md -i website.html > website.md
+  html2markdown --input website.html --output website.md --output-overwrite
+  # html2md -i website.html > website.md
 
   cd "${srcdir}/${_pkgbase}"
 
