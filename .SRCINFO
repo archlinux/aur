@@ -1,7 +1,7 @@
 pkgbase = traitor
 	pkgdesc = Automatic Linux privesc via exploitation of low-hanging fruit
 	pkgver = 0.0.14+r4+g0d221ba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liamg/traitor
 	arch = aarch64
 	arch = i686
