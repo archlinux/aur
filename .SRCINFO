@@ -16,7 +16,7 @@ pkgbase = simgear-git
 	depends = flightgear-openscenegraph
 	provides = simgear=2024.1.0r6266.a5af7601
 	conflicts = simgear
-	source = simgear::git@gitlab.com:flightgear/simgear.git
+	source = simgear::git+https://gitlab.com/flightgear/simgear.git
 	sha256sums = SKIP
 
 pkgname = simgear-git
