@@ -3,8 +3,8 @@ pkgname=rats-search-bin
 _pkgname="Rats on The Boat"
 pkgver=1.11.0
 _electronversion=24
-pkgrel=8
-pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
+pkgrel=9
+pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/DEgITx/rats-search"
 license=('MIT')
@@ -17,22 +17,21 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/DEgITx/rats-search/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('012c03571f9083d13bedf925bdf4e478e2f6d102caac981d90a455a57da3922d'
+sha256sums=('ed0b2f2a13335a851c2fa728a4b218b5f28dd59881c4934b56c5124f2860058e'
             'fa6a25af037d88ee811669579da9674e5694611599600b11e691115054f6fe2f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/app" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
