@@ -1,6 +1,6 @@
 pkgbase = mullvad-browser
 	pkgdesc = Privacy-focused web browser developed by Mullvad VPN and the Tor Project
-	pkgver = 14.0.9
+	pkgver = 14.5
 	pkgrel = 1
 	url = https://mullvad.net/browser
 	arch = x86_64
@@ -63,12 +63,12 @@ pkgbase = mullvad-browser
 	optdepends = speech-dispatcher: Text-to-speech
 	optdepends = xdg-desktop-portal: Screensharing with wayland
 	source = git+https://gitlab.torproject.org/tpo/applications/tor-browser-build.git
-	source = https://cdn.mullvad.net/browser/14.0.9/sha256sums-unsigned-build.txt
-	source = https://cdn.mullvad.net/browser/14.0.9/sha256sums-unsigned-build.txt.asc
+	source = https://cdn.mullvad.net/browser/14.5/sha256sums-unsigned-build.txt
+	source = https://cdn.mullvad.net/browser/14.5/sha256sums-unsigned-build.txt.asc
 	source = mullvad-browser.desktop
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
 	sha256sums = SKIP
-	sha256sums = d61c345e829e285b6abc8d5906f607f123ec8721719183169cd436feb339a81f
+	sha256sums = 5552681cd263ceb36f44ca8189f7b836d099912bb39890beba5bc5b30eebca52
 	sha256sums = SKIP
 	sha256sums = a7f82f8d89b00bc0ea368299e979b900c87710b86b89eafb7122a502e5b47eaf
 
