@@ -1,5 +1,0 @@
-[sui-bin]
-source = "git"
-git = "https://github.com/MystenLabs/sui.git"
-include_regex = "^mainnet-v[\\d.]+$"
-prefix = "mainnet-v"
