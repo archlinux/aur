@@ -3,11 +3,11 @@ pkgname=streamdock-bin
 _pkgname=StreamDock
 pkgver=2.0.1
 _electronversion=27
-pkgrel=5
-pkgdesc="Streaming service viewer."
+pkgrel=6
+pkgdesc="Streaming service viewer.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/jtvberg/StreamDock"
-license=("MIT")
+license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -22,12 +22,12 @@ source=(
 )
 sha256sums=('0c9ba367771a5e7ad1147d30821ded2ea00eeb90e26470f58985e79c08f26609'
             'b6e6ffdf656d1070c5cbaa10491eb4ae4977c8312c7da38d2ed5f118006ce776')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
-        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+    sed -i -e "
+        s/\/opt\/${_pkgname}\///g
         s/Video;/AudioVideo;/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
