@@ -1,11 +1,10 @@
 pkgbase = perl-moosex-getopt
 	pkgdesc = A Moose role for processing command line options
 	pkgver = 0.78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/MooseX-Getopt
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl>=5.10.1
 	checkdepends = perl-cpan-meta-check>=0.007
 	checkdepends = perl-module-runtime

@@ -1,14 +1,13 @@
-# CPAN Name  : MooseX::Getopt
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-moosex-getopt
 pkgver=0.78
-pkgrel=1
+pkgrel=2
 pkgdesc='A Moose role for processing command line options'
 arch=('any')
 url='https://metacpan.org/release/MooseX-Getopt'
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 makedepends=('perl-module-build-tiny>=0.039')
 depends=(
 	'perl>=5.8.9'
