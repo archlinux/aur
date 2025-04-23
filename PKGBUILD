@@ -1,8 +1,8 @@
 # Maintainer: Rainu <ask-mai@raysha.de>
 
 pkgname=ask-mai
-pkgver=${VERSION:-0.0.1}
-pkgrel=${REV:-1}
+pkgver=0.0.1
+pkgrel=1
 pkgdesc="A little, scriptable and powerful UI-Chat-Application for asking Gen-AI"
 arch=('x86_64')
 url="https://github.com/rainu/ask-mai"
