@@ -10,8 +10,8 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.15.9.r21.g7dd1bcd9
-pkgrel=2
+pkgver=3.16.4.r0.g1ab8009d
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
 url=https://github.com/ValveSoftware/gamescope
@@ -130,6 +130,8 @@ pkgver() {
 }
 
 build() {
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
     cd "$_pkgname"
     arch-meson . build \
         -Dforce_fallback_for=stb,wlroots,vkroots,libliftoff,glm,libdisplay-info \
