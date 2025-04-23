@@ -1,7 +1,7 @@
 pkgbase = lxpanel-gtk3
 	pkgdesc = Lightweight X11 desktop panel for LXDE (GTK+ 3 version)
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lxde.org/
 	arch = x86_64
 	groups = lxde-gtk3
