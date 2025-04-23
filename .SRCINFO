@@ -1,7 +1,7 @@
 pkgbase = digital-logic-sim-bin
 	pkgdesc = The logic simulation used and developed by Sebastian Lague.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 0
 	url = https://github.com/SebLague/Digital-Logic-Sim
 	arch = x86_64
 	license = MIT
