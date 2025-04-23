@@ -34,7 +34,9 @@ build() {
 
 check() {
     cd "$srcdir/$_pkgname"
-    python -m pytest
+
+    export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+    python -m pytest -p pytest_cov
 }
 
 package() {
