@@ -1,6 +1,6 @@
 pkgbase = smpl-git
 	pkgdesc = Beautiful ultra-minimalist, flexibly resizable, efficient and easy-to-use note app.
-	pkgver = simple.r3.g3a9ce2c
+	pkgver = simple.r5.g5c33335
 	pkgrel = 1
 	url = https://github.com/ElianGroff/smpl
 	arch = any
