@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mobirise
+Comment=Create awesome mobile-friendly websites with drag & drop
+Exec=/usr/bin/mobirise
+Icon=mobirise
+Terminal=false
+Type=Application
+Categories=Development;WebDevelopment;Utility;
+StartupNotify=true
