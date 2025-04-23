@@ -4,20 +4,20 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=2020.4.0r16085.1757b1d5b
+pkgver=2024.2.0r16435.1851728cf
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
-url="https://home.flightgear.org"
+url="https://www.flightgear.org/"
 license=('GPL')
-depends=('libxmu' 'libxi' 'zlib' 'openscenegraph' 'libxrandr' 'glu' 'openal' 'osgxr')
+depends=('libxmu' 'libxi' 'zlib' 'flightgear-openscenegraph' 'libxrandr' 'glu' 'openal' 'osgxr')
 makedepends=('boost' 'cmake' 'git' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data')
 provides=("flightgear=${pkgver}")
 conflicts=('flightgear')
-source=("flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next")
+source=("flightgear::git+https://gitlab.com/flightgear/flightgear.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/flightgear
-  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop
+  sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop.in
 }
 
 build() {
