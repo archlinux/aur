@@ -3,7 +3,7 @@
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
 pkgver=5.1.9.113
-pkgrel=1
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
 arch=('x86_64')
@@ -21,7 +21,7 @@ license=('custom')
 options=('!strip')
 
 source=(
-    "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::https://serv65.f2h.co.il/files/oaxdnpjr5ne7|bb7c733e45ae6293a957698026c9ac77"
+    "cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz::https://archive.org/download/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar/cisco-secure-client-linux64-${pkgver}-predeploy-k9.tar.gz"
 )
 
 sha256sums=('76982a8d23743610e00e9a4790d6a5acc6605f26fb7866faff4b6f1e00096551')
@@ -66,7 +66,7 @@ package() {
 
     # install other files
     install -Dm444 AnyConnectProfile.xsd "${pkgdir}/opt/cisco/secureclient/vpn/profile/AnyConnectProfile.xsd"
-    for file in "ACManifestVPN.xml" "AnyConnectLocalPolicy.xsd" "OpenSource.html" "update.txt"; do
+    for file in "ACManifestVPN.xml" "OpenSource.html" "update.txt"; do
         install -Dm444 ${file} "${pkgdir}/opt/cisco/secureclient/${file}"
     done
 
@@ -109,13 +109,4 @@ package() {
 
     # install VeriSign public certificate
     install -Dm644 VeriSignClass3PublicPrimaryCertificationAuthority-G5.pem "${pkgdir}/opt/.cisco/certificates/ca/VeriSignClass3PublicPrimaryCertificationAuthority-G5.pem"
-
-    # install custom policy to disable self updates "<BypassDownloader>true</BypassDownloader>"
-    touch "${pkgdir}/opt/cisco/secureclient/AnyConnectLocalPolicy.xml"
-    cat <<EOF >"${pkgdir}/opt/cisco/secureclient/AnyConnectLocalPolicy.xml"
-<?xml version="1.0" encoding="UTF-8"?>
-<AnyConnectLocalPolicy acversion="5.1.9.113" xmlns="http://schemas.xmlsoap.org/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.xmlsoap.org/encoding/ AnyConnectLocalPolicy.xsd">
-    <BypassDownloader>true</BypassDownloader>
-</AnyConnectLocalPolicy>
-EOF
 }
