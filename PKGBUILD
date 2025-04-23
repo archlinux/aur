@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at users dot sourceforge dot net>
 pkgname=stratagus
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
 url="https://github.com/Wargus/stratagus"
@@ -22,7 +22,8 @@ build() {
   -DSBINDIR=/usr/bin \
   -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
   -DWITH_STACKTRACE=OFF \
-  -Bbuild
+  -Bbuild \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   make -C build
 }

@@ -1,7 +1,7 @@
 pkgbase = stratagus
 	pkgdesc = A free cross-platform real-time strategy gaming engine
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wargus/stratagus
 	changelog = stratagus.changelog
 	arch = i686
