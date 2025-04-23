@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="An application for creating Narrations and Translations of Audio Bibles, Books, Resources, Commentaries, etc.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Bible-Translation-Tools/Orature"
-license=("GPL-3.0-only")
+license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
