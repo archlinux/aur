@@ -74,7 +74,7 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
