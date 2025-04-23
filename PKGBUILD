@@ -10,7 +10,7 @@ pkgdesc="A set of open-source libraries designed to be used as building blocks f
 arch=('x86_64')
 url="https://www.flightgear.org/"
 license=('GPL')
-depends=('glu' 'glut' 'freealut' 'plib' 'flightgear-openscenegraph')
+depends=('glu' 'glut' 'freealut' 'plib' 'flightgear-openscenegraph-git')
 makedepends=('boost' 'cmake' 'git' 'mesa')
 provides=("simgear=${pkgver}")
 conflicts=('simgear')
