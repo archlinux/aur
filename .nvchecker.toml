@@ -1,0 +1,5 @@
+[vlang-bin]
+source='github'
+github='vlang/v'
+use_max_release=true
+exclude_regex='/weekly.*/'
