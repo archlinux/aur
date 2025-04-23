@@ -3,7 +3,7 @@
 
 pkgname=uni-updater
 pkgver=0.2.4
-pkgrel=3
+pkgrel=1
 pkgdesc='Helper program that updates everything on your system.'
 arch=('x86_64')
 url="https://codeberg.org/TTsdzb/uni-updater"
