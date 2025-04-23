@@ -1,49 +1,33 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=keyring
-pkgbase=dfl-keyring
-pkgname=(
-        'dfl-keyring'
-        'dfl-keyring-qt6'
-)
-pkgver=0.2.0
-pkgrel=2
+pkgname=('dfl-keyring')
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A simple and easy to use implementation of Keyring"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL-3.0-only')
+depends=('qt6-base')
 makedepends=(
             'meson'
             'ninja'
-            'qt5-base'
-            'qt6-base'
+)
+optdepends=(
+            'gnome-keyring: For Gnome integration'
+            'kwallet6: For Plasma integration'
 )
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('c872b84724c13ea056fb8a54d95da170f7fe0d0bea525947feb24009c21e69ed')
+sha256sums=('a3b483c268a96e1bd4a6e91c8e538cf94ed4ad2a38de027e866b8095339aa172')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  echo "Building QT5 version..."
-  meson .build --prefix=/usr --buildtype=release
-  ninja -C .build
-  
   echo "Building QT6 version..."
-  meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
-  ninja -C .build-qt6
+  meson setup .build --prefix=/usr --buildtype=release
+  ninja -C .build
 }
 
-package_dfl-keyring() {
-  depends=('qt5-base')
-  optdepends=('gnome-keyring: For Gnome integration'
-              'kwallet5: For Plasma integration')
+package() {
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
-}
-
-package_dfl-keyring-qt6() {
-  depends=('qt6-base')
-  optdepends=('gnome-keyring: For Gnome integration'
-              'kwallet: For Plasma integration')
-  cd "${_pkgname}-v${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
