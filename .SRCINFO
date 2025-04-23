@@ -8,8 +8,7 @@ pkgbase = sui-bin
 	license = Apache-2.0
 	provides = sui
 	conflicts = sui
-	noextract = sui-1.47.1-x86_64.tar.gz
-	source_x86_64 = sui-1.47.1-x86_64.tar.gz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.47.1/sui-mainnet-v1.47.1-ubuntu-x86_64.tgz
-	source_aarch64 = sui-1.47.1-aarch64.tar.gz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.47.1/sui-mainnet-v1.47.1-ubuntu-aarch64.tgz
+	source_x86_64 = sui-1.47.1-x86_64.tgz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.47.1/sui-mainnet-v1.47.1-ubuntu-x86_64.tgz
+	source_aarch64 = sui-1.47.1-aarch64.tgz::https://github.com/MystenLabs/sui/releases/download/mainnet-v1.47.1/sui-mainnet-v1.47.1-ubuntu-aarch64.tgz
 
 pkgname = sui-bin
