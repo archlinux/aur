@@ -4,28 +4,41 @@ pkgname="${_pkgname}-bin"
 provides=chatterino
 conflicts=chatterino
 pkgver=7.5.3
-pkgrel=2
-scdir=$_pkgname
-_pkgver="${pkgver//_/-}"
-_gitname="release-${_pkgver}"
+pkgrel=3
 pkgdesc="Second installment of the Twitch chat client series "Chatterino""
 arch=('x86_64')
 url="https://github.com/SevenTV/chatterino7"
 license=('MIT')
-depends=('icu' 'libxkbcommon' 'libxkbcommon-x11' 'xcb-util-image' 'xcb-util-wm' 'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libnotify')
-makedepends=('binutils' 'patchelf')
+depends=(
+	brotli
+	fontconfig
+	freetype2
+	glib2
+	harfbuzz
+	icu
+	libx11
+	libglvnd
+	libjpeg-turbo
+	libnotify
+	libxkbcommon{,-x11}
+	openssl
+	xcb-util-{image,wm,cursor,keysyms,renderutil}
+	)
+makedepends=('binutils' 'grep' 'patchelf')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output'
             'gst-plugins-good: For audio output')
 provides=(chatterino)
 conflicts=(chatterino)
-#source=(${_pkgname}.desktop)
-source_x86_64=("${_pkgname}-${pkgver}_x64.deb::https://github.com/SevenTV/chatterino7/releases/download/nightly-build/Chatterino-Ubuntu-22.04-x86_64.deb")
+source=("${url}/releases/download/nightly-build/Chatterino-Ubuntu-24.04-x86_64.deb")
+sha256sums=('ca07c6fb629158adbe198143ede4f018eca0841934de2fd248b26abb8c68e6bb')
 package() {
-	tar xf data.tar.zst -C "${pkgdir}"
-	install -d "${pkgdir}/opt/${_pkgname}"
-        install -dm755 "$pkgdir/usr/bin"
-        nm -D "$pkgdir/usr/bin/chatterino"|grep _70|awk '{print $2 " " $2 | "sed s/70$/76/"}' > map.txt
-        patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.70,} --replace-needed libicui18n.so{.70,}
+	bsdtar -xf data.tar.zst -C "${pkgdir}"
+	install -d "${pkgdir}/opt/${_pkgname}" #why?
+	install -d "$pkgdir/usr/bin"
+	#Replace icu
+	_icuorig=$(ldd "$pkgdir"/usr/bin/chatterino|grep libicui18n.so.|awk '{print $1}' |sed s/libicui18n.so.//) #incomplete
+	_icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
+	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
+	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
 }
-sha256sums_x86_64=('c216a16490c942978edc1bf3cc49e56df75fab371bc9b35f4afd70f374b37ba1')
