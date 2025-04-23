@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.72.48
+pkgver=1.80.2
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -25,12 +25,14 @@ makedepends=(
     'gendesk'
     'python-setuptools'
     'curl'
+    'git'
+    'yarn'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2454fbb98f693d198c405baf7a29ac7d7810adb57eed8eda7d31f96805936ac8'
+sha256sums=('6c1a9c082d48e06dd5d0803f8a0fb4e882c4b5b3677586210ddb5b93d567876d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -74,7 +76,9 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm run prepare-build
+    NODE_ENV=production     npm run clean
+    NODE_ENV=production     npm run compile
+    NODE_ENV=production     npm run prepare-file
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
 }
 package() {
