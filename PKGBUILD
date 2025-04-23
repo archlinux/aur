@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=krillinai-bin
 _pkgname=KrillinAI
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A video translation and dubbing tool powered by LLMs, offering professional-grade translations and one-click full-process deployment.It can generate content optimized for platforms like YouTube，TikTok, and Shorts.(Prebuilt version)"
 arch=(
@@ -26,10 +26,10 @@ source_i686=("${pkgname%-bin}-${pkgver}-i686::${url}/releases/download/v${pkgver
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64")
 sha256sums=('c2f175b895e0fcb0eb74f992ad29a5f91cc99fb4b677dbbbec3b71473b15a68d'
             'f359c7dac24eda3abadb0998af3b3bbf5223b8b43f6b0d9c3b0411ca9fd8d2db'
-            '6d2ba1f4c62d540a1c486c0e4ecd5b4c02c64902538a481e57abd1d7cac5524e')
-sha256sums_aarch64=('ad11e0b8a00e37a053cd32e29fe1f5a5e66b751b9960dd2ce12c2f6c7dcbdb84')
-sha256sums_i686=('122269589012d36286cedd7a0d924d27c33401ec6d7beece72efccf3c1f136f5')
-sha256sums_x86_64=('80ad6132af85b108ff1f0a6f006797a3eaca98b4b6cf1177cc1381a3dea89ba9')
+            '9367ff942145096931dfe9de61813bd16530bbf87037f18e2701adb212248086')
+sha256sums_aarch64=('ec3e361c78552a3479cc638338741c5bf269d1e5da5564a84694ec5066b37aa0')
+sha256sums_i686=('1b2d41c96c5c8584f7640dddff05cd477d458bec11ea3da737b114469271b069')
+sha256sums_x86_64=('526352074ea7de8adbf73c12e265268ecd8916bab94fe0ae46e661de978fe62b')
 prepare() {
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
