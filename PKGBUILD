@@ -2,7 +2,7 @@
 
 _pkgname="codebook"
 pkgname="${_pkgname}-bin"
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="An unholy spellchecker for code."
 arch=('x86_64' 'aarch64')
