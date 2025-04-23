@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-enhanced-nox
 	pkgdesc = A bittorrent client powered by C++, Qt and libtorrent (Enhanced Edition), w/o GUI
 	pkgver = 5.0.5.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -14,7 +14,7 @@ pkgbase = qbittorrent-enhanced-nox
 	depends = libtorrent-rasterbar
 	depends = openssl>=3.0.2
 	depends = qt6-base>=6.5.0
-	depends = zlib>=1.2.11
+	depends = zlib
 	optdepends = python: needed for torrent search tab
 	provides = qbittorrent-nox
 	conflicts = qbittorrent-nox
