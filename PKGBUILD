@@ -3,10 +3,11 @@ pkgname=fooyin-bin
 _pkgname=Fooyin
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A customisable music player.Binary version."
 arch=('x86_64')
-url="https://github.com/ludouzi/fooyin"
+url="https://www.fooyin.org/"
+_ghurl="https://github.com/ludouzi/fooyin"
 license=('GPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -33,10 +34,10 @@ optdepends=(
     'libebur128: For the ReplayGain scanner plugin'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-noble_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-noble_amd64.deb"
 )
 sha256sums=('ac887c33283d3d127c008d512695937b7fb42b5797274b8d7a47b8ee9089552a')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
 }

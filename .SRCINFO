@@ -1,8 +1,8 @@
 pkgbase = fooyin-bin
 	pkgdesc = A customisable music player.Binary version.
 	pkgver = 0.8.1
-	pkgrel = 1
-	url = https://github.com/ludouzi/fooyin
+	pkgrel = 2
+	url = https://www.fooyin.org/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = qt6-base
