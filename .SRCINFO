@@ -1,8 +1,8 @@
-pkgbase = openscenegraph-git
+pkgbase = flightgear-openscenegraph-git
 	pkgdesc = An open source, high performance real-time graphics toolkit
 	pkgver = 3.6.5.r108.g925270d90
 	pkgrel = 2
-	url = https://www.openscenegraph.com/
+	url = https://gitlab.com/flightgear/openscenegraph
 	arch = x86_64
 	license = custom:OSGPL
 	makedepends = git
