@@ -1,0 +1,22 @@
+pkgbase = desq-utils-viewinfo
+	pkgdesc = A simple interface to get information about various views for DesQ
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://gitlab.com/DesQ/DesQUtils/ViewInfo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	depends = libdesq
+	depends = libdesqui
+	depends = dfl-applications
+	depends = dfl-utils
+	depends = dfl-wayqt
+	depends = dfl-xdg
+	source = https://gitlab.com/DesQ/DesQUtils/ViewInfo/-/archive/v0.0.9/ViewInfo-v0.0.9.tar.gz
+	sha256sums = f54f71edd8f0ec897dc660c1a03ca58a3d4b5c3eeadfe0b6c4d5a13cf5c94e4c
+
+pkgname = desq-utils-viewinfo
