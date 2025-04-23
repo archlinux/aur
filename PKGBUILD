@@ -2,7 +2,7 @@
 # Maintainer: Jia Yin<lok-ation at outlook dot com>
 
 pkgname=uni-updater-git
-pkgver=0.2.2.r10.g27a3f5f
+pkgver=0.2.4.r0.gcd48fb1
 pkgrel=1
 pkgdesc='Helper program that updates everything on your system.'
 arch=('x86_64')
