@@ -4,7 +4,7 @@
 
 pkgname=openspades-git
 _pkgname=openspades
-pkgver=0.1.3.rc.510.g9c5ba847b045
+pkgver=0.1.3.rc.518.gff9b3e71
 pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75 (git version)"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ build() {
   cmake -B build -S "${pkgname}" \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D CMAKE_BUILD_TYPE=RelWithDebInfo \
+        -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -D OPENSPADES_RESDIR=/usr/share/$_pkgname/Resources \
         -D OPENSPADES_INSTALL_RESOURCES=share/$_pkgname/Resources \
         -D OPENSPADES_INSTALL_BINARY=bin
