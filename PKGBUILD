@@ -4,26 +4,27 @@
 # Updates by maintainer: Chris Fordham <chris [at] fordham [hyphon] nagy [dot] id [dot] au>
 # Original maintainer: Marcin
 
-pkgname=spring-tool-suite
-pkgver=4.29.1
+pkgname=spring-tools-for-eclipse
+pkgver=4.30.0
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.35.0
 _eclipse_pkgver_short=e4.35
 pkgrel=1
-pkgdesc="The Spring Tool Suite (STS) from SpringSource."
+pkgdesc="Spring Tools, aka Spring Tool Suite (STS), is the next generation of Spring tooling for Eclipse IDE."
 arch=('x86_64')
 url="https://spring.io/tools"
 depends=('unzip' 'webkit2gtk' 'java-runtime>=21')
-conflicts=('springsource-tool-suite')
+provides=('spring-tool-suite')
+conflicts=('spring-tool-suite')
 install=${pkgname}.install
 license=("EPL/1.1")
 
-source_x86_64=(
-    "https://cdn.spring.io/spring-tools/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-4-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.x86_64.tar.gz"
+source=(
+    "https://cdn.spring.io/spring-tools/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.${arch}.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums_x86_64=('3d093292f30eef08b903d264f6675c4fe8ea1f0e7f474e5894155dd23776c27f'
-                   '11c51ae27864a5c529f832506cb740c0681ad9d51c4b5f69212f61890d6aafac')
+sha256sums=('cf94535d6c322ecddc6a477ad8058a42615f264f87a45ba0fdc78d91f56c9d46'
+            'b7f7c92446da5d82a1a1982d8d1af3b98c2b29854579f4b04247001080e162f0')
 
 package() {
     # Install eclipse to version-agnostic sts4 dirirectory
