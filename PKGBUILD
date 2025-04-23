@@ -1,24 +1,24 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 pkgname=paperde
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="An awesome Desktop Environment built on top of Qt/Wayland and Wayfire."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/paper/${pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
-        'qt5-wayland'
-        'qt5-svg'
-        'qt5-tools'
-        'qt5ct'
+        'qt6-base'
+        'qt6-wayland'
+        'qt6-svg'
+        'qt6-tools'
+        'qt6ct'
         'wayland'
         'wayland-protocols'
         'libcsys'
         'libcprime'
         'wayfire'
-        'libdbusmenu-qt5'
+        'libdbusmenu-lxqt'
         'xdg-desktop-portal'
         'dfl-wayqt'
         'dfl-applications'
@@ -42,15 +42,8 @@ optdepends=(
            'playerctl: for keyboard media controls'
            'clipman: a clipboard manager for wayland'
 )
-source=("$url/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
-        "DFL-v0.2.0.patch")
-sha256sums=('40a1ca455869f6e55592579359530f5ce0031694d6f87b28c2956fb00d6bd8e5'
-            'fc3f215e296230424eda8bf23c41d455e550412e72fb77c1524d4acf017c3b63')
-
-prepare() {
-  cd "${pkgname}-v${pkgver}"
-  patch -Np1 -i "${srcdir}/DFL-v0.2.0.patch"
-}
+source=("$url/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha256sums=('aa3fd1eaea300a8cb68554003aae3db0309791dfe8d913f99c57751d68dff417')
 
 build() {
   cd "${pkgname}-v${pkgver}"
