@@ -1,6 +1,6 @@
 pkgbase = screengrab-git
 	pkgdesc = Crossplatform tool for grabbing screenshots of your desktop.
-	pkgver = 2.8.0.r1.g400be37
+	pkgver = 2.10.0.r4.g0910c3d
 	pkgrel = 1
 	url = https://github.com/lxqt/screengrab
 	arch = i686
@@ -9,10 +9,12 @@ pkgbase = screengrab-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt6-tools
+	makedepends = lxqt-build-tools-git
 	depends = kwindowsystem
 	depends = libqtxdg-git
 	depends = hicolor-icon-theme
-	provides = screengrab=2.8.0.r1.g400be37
+	depends = layer-shell-qt
+	provides = screengrab=2.10.0.r4.g0910c3d
 	conflicts = screengrab
 	source = git+https://github.com/lxqt/screengrab
 	sha256sums = SKIP
