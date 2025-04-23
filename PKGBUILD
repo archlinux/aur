@@ -1,11 +1,12 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-catalyst-action-renderview'
 pkgver='0.17'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Sensible default end action."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-catalyst-runtime' 'perl-data-visitor')
 makedepends=('perl-module-install')

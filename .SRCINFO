@@ -1,11 +1,10 @@
 pkgbase = perl-catalyst-action-renderview
 	pkgdesc = Sensible default end action.
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Catalyst-Action-RenderView
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	makedepends = perl-module-install
 	depends = perl-catalyst-runtime
 	depends = perl-data-visitor
