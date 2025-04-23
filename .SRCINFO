@@ -1,0 +1,11 @@
+pkgbase = togo
+	pkgdesc = A fast, simple and beautifull termianl-based to-do manager with zero dependencies
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/prime-run/togo
+	arch = x86_64
+	license = MIT
+	source = togo-1.0.2.tar.gz::https://github.com/prime-run/togo/releases/download/v1.0.2/togo_1.0.2_linux_amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = togo
