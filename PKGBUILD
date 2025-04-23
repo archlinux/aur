@@ -10,7 +10,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/Nero.Launcher_${pkgver}_amd64.deb")
-sha256sums_x86_64=('0da431c5d1024675f3a0accefc5827779a1c537f50f72a92874c75bd885aeb09')
+sha256sums_x86_64=('8e5063f37b53fd1712d707928418f652cba5a597c5e78cb00b338d132e1129b8')
 
 package() {
   # Extract package data

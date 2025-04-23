@@ -18,6 +18,6 @@ pkgbase = nerolauncher
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/nsydykovich/nerolauncher/releases/download/v0.1.0/Nero.Launcher_0.1.0_amd64.deb
-	sha256sums_x86_64 = 0da431c5d1024675f3a0accefc5827779a1c537f50f72a92874c75bd885aeb09
+	sha256sums_x86_64 = 8e5063f37b53fd1712d707928418f652cba5a597c5e78cb00b338d132e1129b8
 
 pkgname = nerolauncher
