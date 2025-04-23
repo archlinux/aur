@@ -23,7 +23,6 @@ build() {
 }
 
 package() {
-
     cd "${srcdir}/${_src_folder}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
