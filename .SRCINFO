@@ -1,10 +1,25 @@
 pkgbase = python-vcrpy-git
 	pkgdesc = Simplify and speed up tests that make HTTP requests
-	pkgver = 7.0.0.r24.g8217a4c
-	pkgrel = 2
+	pkgver = 8.3.0.r0.gc599974
+	pkgrel = 1
 	url = https://github.com/kevin1024/vcrpy
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = httpbin
+	checkdepends = python-aiohttp
+	checkdepends = python-boto3
+	checkdepends = python-cryptography
+	checkdepends = python-httplib2
+	checkdepends = python-httpx
+	checkdepends = python-httpx2
+	checkdepends = python-pycurl
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-httpbin
+	checkdepends = python-requests
+	checkdepends = python-tornado
+	checkdepends = python-urllib3
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -12,8 +27,7 @@ pkgbase = python-vcrpy-git
 	depends = python
 	depends = python-pyyaml
 	depends = python-wrapt
-	depends = python-yarl
-	provides = python-vcrpy=7.0.0.r24.g8217a4c
+	provides = python-vcrpy=8.3.0.r0.gc599974
 	conflicts = python-vcrpy
 	source = git+https://github.com/kevin1024/vcrpy.git
 	sha256sums = SKIP
