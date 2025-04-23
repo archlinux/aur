@@ -1,6 +1,6 @@
 # Maintainer: Antony Kellermann <antony@aokellermann.dev>
 pkgname=nitro-beta-bin
-pkgver=28.0.0_insider.8
+pkgver=28.0.0_insider.9
 _pkgver=$(echo $pkgver | tr '_' '-')
 pkgrel=1
 pkgdesc="An incredible, beautiful, and feature-rich GraphQL IDE"
@@ -9,7 +9,7 @@ arch=("x86_64")
 license=("custom:ChilliCreamLicense1.0")
 source=("https://cdn.chillicream.com/app/Nitro-$_pkgver-linux-$CARCH.AppImage"
         "LICENSE")
-b2sums=("402c2c99535f2eab5726c2a658a3d6ca6ea92bdc94cdad43edce83809cd25b7f980ed565d9d6990b0307cd4ba1f2b1f2a1bf3f2836a682286bc276a0cd880768"
+b2sums=("439e3dfc8023a00623ab81efb29900419307024e06e3f0de5c1ed3d6cafe139b0797f56ce4e090bd9ed82ad78e80758a7ac112c030f544018422f1bed0ecb740"
         "2de3f8321794c97dd62ba6b4ccae367fa101d90578675e89104f80dd74188eaf2f5fe2c70979e0d2717fe4599b74f32275c3d501272a80f0b47e8eeacc7fa8b9")
 options+=('!strip')
 
