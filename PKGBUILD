@@ -1,14 +1,14 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=icdiff-git
-pkgver=20141214
+pkgver=20230821
 pkgrel=1
 pkgdesc="Improved colored diff"
 arch=('any')
 depends=('python')
 makedepends=('git')
 url="https://github.com/jeffkaufman/icdiff"
-license=('PSFL')
+license=('PSF-2.0')
 source=(git+https://github.com/jeffkaufman/icdiff)
 sha256sums=('SKIP')
 provides=('icdiff')
