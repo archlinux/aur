@@ -1,7 +1,7 @@
 pkgbase = shared-mime-info
 	pkgdesc = Freedesktop.org Shared MIME Info
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/
 	install = shared-mime-info.install
 	arch = x86_64

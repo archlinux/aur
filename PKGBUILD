@@ -4,7 +4,7 @@
 pkgname=shared-mime-info
 _commit=9a6d6b8e963935f145f3a1ef446552de6996dada # = master 2023-11-12 = v2.4
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
