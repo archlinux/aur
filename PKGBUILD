@@ -4,18 +4,17 @@
 
 _pkgname='tootik'
 pkgname="${_pkgname}-git"
-pkgver=0.15.1.r1.g6ec6cac
-pkgrel=3
-pkgdesc='A federated nanoblogging service with a gemini/gopher/finger/guppy frontend (latest commit)'
+pkgver=0.15.6.r7.gc4520ff
+pkgrel=2
+pkgdesc='A federated nanoblogging service with a finger/gemini/gopher/guppy frontend (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/dimkr/tootik'
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("${provides[@]}")
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+$url.git")
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -36,17 +35,7 @@ prepare() {
 build() {
   cd "$_pkgname"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
+  export CGO_ENABLED=1
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
@@ -74,9 +63,9 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -vDm0755 -t "$pkgdir/usr/bin/" \
     ./tootik
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     ./*.md
 }
 
