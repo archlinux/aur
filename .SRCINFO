@@ -1,19 +1,19 @@
 pkgbase = opencode-bin
 	pkgdesc = Deploy anything
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/opencode-ai/opencode
 	license = MIT
 	conflicts = opencode
 	provides = opencode
 	arch = aarch64
-	source_aarch64 = https://github.com/opencode-ai/opencode/releases/download/v0.0.12/opencode-linux-arm64.tar.gz
-	sha256sums_aarch64 = 85eec24fa56ee4cb23aae13ca12174147f47786007feb40fa7026aa148785efd
+	source_aarch64 = https://github.com/opencode-ai/opencode/releases/download/v0.0.13/opencode-linux-arm64.tar.gz
+	sha256sums_aarch64 = fc1e9cbba56d7a8252bfa9454f33b6d0e5fd80f344fb83c55815fe8852fd4312
 	arch = i686
-	source_i686 = https://github.com/opencode-ai/opencode/releases/download/v0.0.12/opencode-linux-386.tar.gz
-	sha256sums_i686 = bd8f5640a035f6baa89e3491d9a630b021dd0c9e647f37268b3dbcff43aa169d
+	source_i686 = https://github.com/opencode-ai/opencode/releases/download/v0.0.13/opencode-linux-386.tar.gz
+	sha256sums_i686 = cd0698efc8e2d3a2958369a6293564a86744ac5e058109f44be4c49bdf6a49b3
 	arch = x86_64
-	source_x86_64 = https://github.com/opencode-ai/opencode/releases/download/v0.0.12/opencode-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 895f491a37fe83fd1fc2bb05042df00af0f9f1b42f96571c9b621ec02fe22c03
+	source_x86_64 = https://github.com/opencode-ai/opencode/releases/download/v0.0.13/opencode-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 56d057e7a4d5c1576229af552b4a2912800311fb9e91fb77698fd0785bc7ae53
 	
 pkgname = opencode-bin
