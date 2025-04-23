@@ -13,6 +13,7 @@ pkgbase = autocut-git
 	depends = opencc
 	depends = python-tqdm
 	depends = python-numpy
+	depends = python-openai
 	provides = autocut
 	conflicts = autocut
 	source = autocut.git::git+https://github.com/mli/autocut.git

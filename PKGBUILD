@@ -19,6 +19,7 @@ depends=(
     'opencc'
     'python-tqdm'
     'python-numpy'
+    'python-openai'
 )
 makedepends=(
     'git'
