@@ -16,6 +16,10 @@ _pkgsrc="${_pkgname}-${pkgver}"
 # noextract=("${_pkgsrc}-x86_64.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tgz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-x86_64.tgz")
 source_aarch64=("${_pkgsrc}-aarch64.tgz::${_url}/releases/download/mainnet-v${pkgver}/${_pkgname}-mainnet-v${pkgver}-ubuntu-aarch64.tgz")
+
+sha256sums_x86_64=('82747bdcaa68eb6123f389cf5b70832c17498831f1f5921c3b5da7e36999a320')
+sha256sums_aarch64=('bd27250bf63d1ce45f6a0b2fd3eac46dce4c82dfa496140efd0518ea11bca320')
+
 prepare() {
   cd "${srcdir}"
   mkdir -p "${srcdir}/${_pkgsrc}-${CARCH}/bin"
@@ -25,5 +29,5 @@ prepare() {
 package() {
   cd "${srcdir}"
   cd "${_pkgsrc}-${CARCH}"
-  find "bin" -type f -exec install -vDm755 "{}" "${pkgdir}/local/usr/{}" \;
+  find "bin" -type f -exec install -vDm755 "{}" "${pkgdir}/usr/local/{}" \;
 }
