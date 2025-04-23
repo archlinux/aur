@@ -4,7 +4,7 @@
 pkgname=lxappearance-obconf-gtk3
 _pkgname=lxappearance-obconf
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Plugin for LXAppearance to configure Openbox (GTK+ 3 version)'
 arch=('x86_64')
 license=('GPL2')
@@ -26,6 +26,7 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
+  CFLAGS+=' -Wno-implicit-function-declaration -Wno-int-conversion'
   ./configure --prefix=/usr --enable-gtk3
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=656231
