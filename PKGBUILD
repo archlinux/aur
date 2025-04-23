@@ -2,7 +2,7 @@
 
 pkgname=icy_view-bin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 provides=("icy_view")
 pkgdesc="Icyview is a full features ansi viewing tool doing things a bit different than other tools."
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('Apache-2.0')
 makedepends=()
 optdepends=()
 source=("$url/releases/download/IcyView$pkgver/icy_view_linux_$pkgver.zip")
-sha256sums=('808be2ff17767ee42613eca1b8fb587c01a16df9d414824d4f42bbc31b707b7d')
-sha512sums=('d426202c31549901d7840e0d73c741d5b383e526227d7144a75955ed6070c6442b4cf8e5a87e1d78b3d94328879e4d41a3319cc1848e2785fb19719f9c613b6e')
+sha256sums=('44a2ea4c908092e1e6b7c42587c6b0ab3c0352b5fcfb8284535dc76157777c9c')
+sha512sums=('bad797215564ac88abbbe60677da93c3999735b6b00c70a0b0f6a4d0f85a27f56c31f7d927cfd6515bd0fa62701ce2d418722923385e22a37b86b44c5b948c79')
 
 prepare() {
 	cd "${srcdir}/"
