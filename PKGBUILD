@@ -12,31 +12,31 @@ source=("${pkgname}-`echo ${pkgver} | sed 's/\./\-/'`.tar.gz::https://github.com
 sha256sums=('c27d28fa67d41fe144803dcd9e836d559ef4fb65e287f7cf044f0c421c1b52f3')
 
 prepare() {
-	ver=`echo ${pkgver} | sed 's/\./\-/'`
-	patches="`cat ../list`"
-	cd "$pkgname-$ver"
-	for var in ${patches[@]}; do
-		echo ${var}
-		patch --strip=1 --input=../../${var}
+	_ver=`echo ${pkgver} | sed 's/\./\-/'`
+	_patches="`cat ../list`"
+	cd "$pkgname-$_ver"
+	for _var in ${_patches[@]}; do
+		echo ${_var}
+		patch --strip=1 --input=../../${_var}
 	done
 }
 
 build() {
-	ver=`echo ${pkgver} | sed 's/\./\-/'`
-	cd "$pkgname-$ver"
+	_ver=`echo ${pkgver} | sed 's/\./\-/'`
+	cd "$pkgname-$_ver"
 	autoreconf -i
 	./configure --prefix=/usr
 	make
 }
 
 check() {
-	ver=`echo ${pkgver} | sed 's/\./\-/'`
-	cd "$pkgname-$ver"
+	_ver=`echo ${pkgver} | sed 's/\./\-/'`
+	cd "$pkgname-$_ver"
 	make test
 }
 
 package() {
-	ver=`echo ${pkgver} | sed 's/\./\-/'`
-	cd "$pkgname-$ver"
+	_ver=`echo ${pkgver} | sed 's/\./\-/'`
+	cd "$pkgname-$_ver"
 	make DESTDIR="$pkgdir/" install
 }
