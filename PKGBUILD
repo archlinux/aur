@@ -2,7 +2,7 @@
 
 _pkgname="faircamp"
 pkgname="${_pkgname}-bin"
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A static site generator for audio producers"
 arch=('x86_64')
@@ -23,10 +23,10 @@ source=("${_pkgsrc}-ALTERNATIVES.md::${_url}/raw/tag/${pkgver}/ALTERNATIVES.md"
 source_x86_64=("${_pkgsrc}-x86_64.deb::${url}/packages/${_pkgsrc//-/_}-1+deb12_amd64.deb")
 sha256sums=('6228260876ad0e3a96a573ad5cc1eef5ed9614241c593289e4042247a3bb3887'
             'fe2940e7e351f99600dd9640d5b4273a2027598092e627a1799c7c26dd2f96ac'
-            'a59c9f23d41f005d9ff4699d225174b7e19e34f048306a3b6507b21f68efcf1b'
+            '8d14cb5adf6689dbd3c9eb2415014e42b923d3f93f214a52fbff7929e7f11594'
             '4e31d93f62851f71b53a2be259f5b63509937e35887a97298908ebb359ceff7e'
-            '644956aece12d055c1664cd72ec9e24deb09c77730fb953bd956bc601d0abdb7')
-sha256sums_x86_64=('5434bf77236a3392b44c2bc1d73865ef44f5a3cfddf2a316aeed4702ca0eb2e0')
+            '9294376e49663738c0a6e691a36d6428d91f8448f92cf55f52aaf2ef383372f6')
+sha256sums_x86_64=('f7fc2e0ebe3dbd3bdabd226ea713763448fb9a7da2f3c62bc3030cee113a3449')
 
 prepare() {
   cd "${srcdir}"
