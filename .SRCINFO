@@ -1,7 +1,7 @@
 pkgbase = togo
 	pkgdesc = A fast, simple and beautifull termianl-based to-do manager with zero dependencies
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/prime-run/togo
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=togo
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, simple and beautifull termianl-based to-do manager with zero dependencies"
 arch=('x86_64')
 url="https://github.com/prime-run/togo"
@@ -12,10 +12,6 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgn
 sha256sums=('SKIP')
 
 
-prepare() {
-  cd "$srcdir"
-  find . -type f -name "togo" -o -name "$pkgname" -o -name "*" | sort
-}
 package() {
   cd "$srcdir"
   
