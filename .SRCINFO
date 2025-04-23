@@ -1,6 +1,6 @@
 pkgbase = r-genenetworkbuilder
 	pkgdesc = GeneNetworkBuilder: a bioconductor package for building regulatory network using ChIP-chip/ChIP-seq data and Gene Expression Data
-	pkgver = 1.46.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneNetworkBuilder
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = r-genenetworkbuilder
 	depends = r-htmlwidgets
 	depends = r-plyr
 	depends = r-rcpp
+	depends = r-rcy3
 	depends = r-rgraphviz
 	depends = r-rjson
 	depends = r-xml
@@ -24,7 +25,7 @@ pkgbase = r-genenetworkbuilder
 	optdepends = r-shiny
 	optdepends = r-simpintlists
 	optdepends = r-stringdb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneNetworkBuilder_1.46.0.tar.gz
-	sha256sums = 8cefa2b99ba9898576d8c87837a59e0b54d02a92074ce207db812580a4cc51be
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneNetworkBuilder_1.50.0.tar.gz
+	sha256sums = aaa95e4f1afa0ad8217b14ba3368c2c2019aed8236983528dbb4fac3cb62c491
 
 pkgname = r-genenetworkbuilder
