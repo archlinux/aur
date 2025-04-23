@@ -1,7 +1,7 @@
 pkgbase = salvage-bin
-	pkgdesc = Copy files comfortably and automate your backups.Prebuilt version
+	pkgdesc = Copy files comfortably and automate your backups.(Prebuilt version)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RenanSui/salvage
 	arch = x86_64
 	license = MIT
