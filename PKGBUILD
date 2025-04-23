@@ -7,10 +7,10 @@ _projectname=electron
 _major=2
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver="0.18"
+_subver='0.18'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=5
+pkgrel=6
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -32,13 +32,19 @@ depends=(
     'alsa-lib'
     'gtk3'
     'nss'
+    'libxss'
+    'gconf'
 )
 optdepends=(
     'kde-cli-tools: file deletion support (kioclient5)'
     'pipewire: WebRTC desktop sharing under Wayland'
-    'qt6-base: enable Qt6 with --enable-features=AllowQt'
+    'qt5-base: enable Qt5 with --enable-features=AllowQt'
     'trash-cli: file deletion support (trash-put)'
     "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
+)
+noextract=(
+    "${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip"
+    "${_pkgname}-${pkgver}-${CARCH}.zip"
 )
 source_aarch64=(
     "${_pkgname}-chromedriver-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${_pkgver}/chromedriver-v${_pkgver}-linux-arm64.zip"
@@ -64,10 +70,15 @@ sha256sums_i686=('6750ebb6f48e2ba104d33f8f407818d8316bcc438590bb04a2dfb03cd069f2
                  '05bbd3e73776143ac357b0c25a631bf2e503a922b9506b23d636bd0b06a3f2f6')
 sha256sums_x86_64=('37140f6ec7d333dcd559c85815d547ef7a0046272f37fce0f78c308032779edc'
                    'f196e06b6ecfa33bffb02b3d6c4a64bd5a076014e2f21c4a67356474ee014000')
+prepare() {
+    install -Dm755 -d "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
+    rm -rf "${srcdir}/${_pkgname}/"{gen,chromedriver.debug}
+}
 package() {
-    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${_pkgname}"}
-    find "${srcdir}" -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "${pkgdir}/usr/lib/${_pkgname}/." {} +
-    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/"{locales,resources} "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
+    cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${srcdir}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

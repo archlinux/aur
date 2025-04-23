@@ -1,7 +1,7 @@
 pkgbase = electron2-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
 	pkgver = 2.0.18
-	pkgrel = 5
+	pkgrel = 6
 	url = https://electronjs.org
 	arch = aarch64
 	arch = armv7h
@@ -12,13 +12,17 @@ pkgbase = electron2-bin
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
+	depends = libxss
+	depends = gconf
 	optdepends = kde-cli-tools: file deletion support (kioclient5)
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
-	optdepends = qt6-base: enable Qt6 with --enable-features=AllowQt
+	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron2=2.0.18
 	conflicts = electron2
+	noextract = electron2-chromedriver-2.0.18-x86_64.zip
+	noextract = electron2-2.0.18-x86_64.zip
 	source_aarch64 = electron2-chromedriver-2.0.18-aarch64.zip::https://github.com/electron/electron/releases/download/v2.0.18/chromedriver-v2.0.18-linux-arm64.zip
 	source_aarch64 = electron2-2.0.18-aarch64.zip::https://github.com/electron/electron/releases/download/v2.0.18/electron-v2.0.18-linux-arm64.zip
 	sha256sums_aarch64 = 516981ca6f7465dba55228df9ba30b7e0566a3eec694e5a2cc2fbe58a41ff006
