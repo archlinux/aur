@@ -1,10 +1,11 @@
 pkgbase = python-slip10
 	pkgdesc = A reference implementation of the SLIP-0010 specification, which generalizes the BIP-0032 derivation scheme for private and public key pairs in hierarchical deterministic wallets for the curves secp256k1, NIST P-256, ed25519 and curve25519.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trezor/python-slip10
 	arch = any
 	license = BSD-3-Clause
+	makedepends = python-pip
 	depends = python
 	options = !emptydirs
 	source = python-slip10-1.0.1.tar.gz::https://files.pythonhosted.org/packages/py3/s/slip10/slip10-1.0.1-py3-none-any.whl
