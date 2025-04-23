@@ -1,8 +1,9 @@
-# Maintainer: BrainDamage
+# Maintainer: kompetenzbolzen
+# former Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
 pkgdesc="collection of tools in Python for reading, visualizing and performing calculations with weather data."
@@ -21,13 +22,14 @@ optdepends=(
 #makedepends+=('python-sphinx' 'python-sphinx-gallery' 'python-myst-parser' 'python-netcdf4')
 makedepends+=(python-build python-installer python-wheel python-setuptools-scm)
 checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4' 'python-packaging')
-source=("${pkgname}-${pkgver}::https://files.pythonhosted.org/packages/source/${_basename::1}/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha256sums=('eb065bac0d7818587fa38fa6c96dfe720d9d15b59af4e4866541894e267476bb')
+source=("${pkgname}-${pkgver}::https://github.com/Unidata/${_basename}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4348bbb24f8181a89d6d67657717ea15cb8d06f22d78062378c345bdee4aa7b1')
 
 
 build() {
 	cd "${srcdir}/${_dirname}"
 	export PYTHONHASHSEED=0
+	export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
