@@ -1,17 +1,17 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.org>
 
 _pkgname=Keyring
 pkgname=desq-utils-keyring
-pkgver=0.0.8
-pkgrel=3
+pkgver=0.0.9
+pkgrel=1
 pkgdesc="SSH Ask Pass and Polkit Daemon for DesQ"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/DesQ/DesQUtils/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=(
-        'qt5-base'
+        'qt6-base'
         'libdesqui'
-        'polkit-qt5'
+        'polkit-qt6'
         'dfl-wayqt'
         'dfl-settings'
         'dfl-keyring'
@@ -22,7 +22,7 @@ makedepends=(
             'ninja'
 )
 source=("https://gitlab.com/DesQ/DesQUtils/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('d42a8197700ed0c0ce7cd7a8d7ae4b3c8d99c6faf1e0216a8a050a18879d3ed7')
+sha256sums=('214b952d8ddacc460e259df701a45f950e66ba0232a128baec61319af5afe6cd')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
