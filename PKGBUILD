@@ -3,9 +3,9 @@ pkgname=commas-bin
 _pkgname=Commas
 pkgver=0.35.0
 _electronversion=32
-pkgrel=1
-pkgdesc="A hackable, pluggable terminal, and also a command runner.Prebuilt version.Use system-wide electron."
-arch=("x86_64")
+pkgrel=2
+pkgdesc="A hackable, pluggable terminal, and also a command runner.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://github.com/CyanSalt/commas"
 license=('ISC')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -26,14 +26,14 @@ source=(
 sha256sums=('abfe2397bef1163cade987055255a72f5333e9df6bc10523d088ecfb768cf315'
             '8817203c377967a333a8822b4595368dd3b9506143ccb41567dc07fa5ea9107d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${_pkgname}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     asar e "${srcdir}/${_pkgname}-linux-x64/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/" {} \;

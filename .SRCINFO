@@ -1,7 +1,7 @@
 pkgbase = commas-bin
-	pkgdesc = A hackable, pluggable terminal, and also a command runner.Prebuilt version.Use system-wide electron.
+	pkgdesc = A hackable, pluggable terminal, and also a command runner.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.35.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyanSalt/commas
 	arch = x86_64
 	license = ISC
