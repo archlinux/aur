@@ -1,13 +1,13 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
-	pkgver = 14.2.0
+	pkgver = 14.3.0
 	pkgrel = 1
 	url = https://pyav.basswood-io.com
 	arch = x86_64
 	arch = i686
 	license = BSD-3-Clause
 	checkdepends = python-pytest
-	makedepends = cython
+	makedepends = cython-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -15,7 +15,7 @@ pkgbase = python-av
 	depends = python
 	depends = python-numpy
 	depends = python-pillow
-	source = av-14.2.0.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v14.2.0.tar.gz
-	b2sums = 1905ce65621a7f68bb403a767f1c9e6cc382cf47dd5d31d770bfbc531798ce22df4bad7d93301938991611a00ba9391d04f6147c316ade5e109e3b9aafc6a3d0
+	source = av-14.3.0.tar.gz::https://github.com/PyAV-Org/PyAV/archive/refs/tags/v14.3.0.tar.gz
+	b2sums = b59dc7976bc3964086740c81769f5e917be40a505b92100681e13ea5ce8008b616bf3d2dd7cf7a45dcd8efccf98338cfb4eb7ca7c5c120342aacf6a513260b96
 
 pkgname = python-av
