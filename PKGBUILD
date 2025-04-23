@@ -27,6 +27,7 @@ build() {
                  --enable-lto \
                  --disable-source-highlight \
                  --disable-tui \
+                 --disable-nls \
                  --with-system-readline \
                  --with-expat ..
     make
@@ -38,7 +39,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/gdb-${pkgver}/build-${_arch}
     make install DESTDIR="$pkgdir"
-    rm -r "$pkgdir"/usr/${_arch}/share/{man,info,locale}
+    rm -r "$pkgdir"/usr/${_arch}/share/{man,info}
     rm -r "$pkgdir"/usr/${_arch}/{lib,include}
     ${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
   done
