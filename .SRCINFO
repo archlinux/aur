@@ -1,6 +1,6 @@
 pkgbase = amalthea-gdc
 	pkgdesc = Small general library for the D programming language
-	pkgver = 1.9.1
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://gitlab.com/os-18/amalthea
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = amalthea-gdc
 	depends = dialog
 	depends = glib2
 	depends = gcc-d
-	source = amalthea-gdc-1.9.1.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.9.1/amalthea-v1.9.1.tar.gz
-	sha256sums = 2da29c393d88b663bee373c81c0ae1985732c9c2c5e52e594bb67ddc85decc29
+	source = amalthea-gdc-1.10.1.tar.gz::https://gitlab.com/os-18/amalthea/-/archive/v1.10.1/amalthea-v1.10.1.tar.gz
+	sha256sums = 280aa210e1d8c5ca9f92b7eeb53d0a31d5e82e68b13de99317da5643ccd4ce21
 
 pkgname = amalthea-gdc
