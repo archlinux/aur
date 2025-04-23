@@ -1,7 +1,7 @@
 pkgbase = davix
 	pkgdesc = A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols.
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cern-fts/davix
 	arch = x86_64
 	license = LGPL-2.1-or-later

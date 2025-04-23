@@ -5,7 +5,7 @@
 pkgname=davix
 pkgver=0.8.5
 _pkgver="R_${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols."
 arch=('x86_64')
 url="https://github.com/cern-fts/davix"
@@ -44,6 +44,7 @@ build() {
   cmake -DLIB_SUFFIX="" \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     "${srcdir}/${pkgname}"
 
   make
