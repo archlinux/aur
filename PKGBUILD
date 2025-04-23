@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=res-downloader
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="This is a high-value and high-performance and diverse resource downloader called res-downloader"
 arch=($CARCH)
@@ -33,7 +33,7 @@ options=(!debug !strip !lto)
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     ${pkgname}.install)
-sha256sums=('4c522cb16802893de99112e438b0c7a7d60dc16e5c4af6a72371abe8a5ebbd13'
+sha256sums=('90293eb99e56f7c709333f246d2b545f00b8be6757b05d17985d246f4e8565c8'
             '23a4cbb1eb388d0a847bbc9918a103769b15ad22d462840fe5d9d6bd6a720cbe')
 
 build() {
