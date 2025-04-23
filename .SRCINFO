@@ -1,10 +1,10 @@
 pkgbase = libsoup
 	pkgdesc = HTTP client/server library for GNOME
 	pkgver = 2.74.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/libsoup
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
 	checkdepends = apache
 	checkdepends = php-apache
 	makedepends = git
@@ -17,25 +17,29 @@ pkgbase = libsoup
 	depends = brotli
 	depends = glib-networking
 	depends = glib2
+	depends = glibc
 	depends = krb5
 	depends = libpsl
 	depends = libsysprof-capture
 	depends = libxml2
 	depends = sqlite
-	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=4a6b9178ded85e269872ffedfb2b18f2754a75d9
-	source = disable-flaky-test.diff
-	b2sums = SKIP
-	b2sums = 4d71171b26ed107884a22696f9df1609c45c377e27baaaeb4ec5d890f9fbd62f09607ba3da0acdb42b4f86b9e828014471e6731437ec80de3b6ad98d7f0a2f60
+	depends = zlib
+	source = git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=2.74.3
+	source = 0001-Disable-flaky-test.patch
+	b2sums = 9f2a278482af7ab851aa08b69f59bdd9de8187cac8cb2ac0d904ff087155afaadab253842d7c48fd8e162b3cba742565226e3ec390e671dc7921075fc089949d
+	b2sums = b468451f6e411c3a4e0b03b593ea8498f74d73bca6ee679baa6c81c45de0773ddc5d627000dcc3738c9ae4ba59cad36c63ca074c6f4bfb7c3574cda3452a670e
 
 pkgname = libsoup
 	depends = brotli
 	depends = glib-networking
 	depends = glib2
+	depends = glibc
 	depends = krb5
 	depends = libpsl
 	depends = libsysprof-capture
 	depends = libxml2
 	depends = sqlite
+	depends = zlib
 	depends = libbrotlidec.so
 	depends = libgssapi_krb5.so
 	depends = libglib-2.0.so

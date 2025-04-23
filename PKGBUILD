@@ -2,22 +2,27 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=libsoup
-pkgname=(libsoup libsoup-docs)
+pkgname=(
+  libsoup
+  libsoup-docs
+)
 pkgver=2.74.3
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP client/server library for GNOME"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.0-or-later)
 depends=(
   brotli
   glib-networking
   glib2
+  glibc
   krb5
   libpsl
   libsysprof-capture
   libxml2
   sqlite
+  zlib
 )
 makedepends=(
   git
@@ -32,28 +37,25 @@ checkdepends=(
   apache
   php-apache
 )
-_commit=4a6b9178ded85e269872ffedfb2b18f2754a75d9  # tags/2.74.3^0
-source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#commit=$_commit"
-        disable-flaky-test.diff)
-b2sums=('SKIP'
-        '4d71171b26ed107884a22696f9df1609c45c377e27baaaeb4ec5d890f9fbd62f09607ba3da0acdb42b4f86b9e828014471e6731437ec80de3b6ad98d7f0a2f60')
-
-pkgver() {
-  cd libsoup
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+source=(
+  "git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=$pkgver"
+  0001-Disable-flaky-test.patch
+)
+b2sums=('9f2a278482af7ab851aa08b69f59bdd9de8187cac8cb2ac0d904ff087155afaadab253842d7c48fd8e162b3cba742565226e3ec390e671dc7921075fc089949d'
+        'b468451f6e411c3a4e0b03b593ea8498f74d73bca6ee679baa6c81c45de0773ddc5d627000dcc3738c9ae4ba59cad36c63ca074c6f4bfb7c3574cda3452a670e')
 
 prepare() {
   cd libsoup
 
   # https://gitlab.gnome.org/GNOME/libsoup/-/issues/120
-  git apply -3 ../disable-flaky-test.diff
+  git apply -3 ../0001-Disable-flaky-test.patch
 }
 
 build() {
   local meson_options=(
     -D gtk_doc=true
   )
+
   arch-meson libsoup build "${meson_options[@]}"
   meson compile -C build
 }
