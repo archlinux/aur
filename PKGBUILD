@@ -2,9 +2,9 @@
 
 pkgbase=moderncore
 pkgname=(vv iv)
-pkgver=20250323
-pkgrel=2
-_tracy_commit=2d9169e
+pkgver=20250421
+pkgrel=1
+_tracy_commit=753305a
 pkgdesc="parts of an abandoned Wayland compositor repurposed for image viewers"
 arch=('x86_64')
 url="https://github.com/wolfpld/moderncore"
@@ -48,8 +48,8 @@ source=(
 	"stb::git+https://github.com/nothings/stb.git#tag=2e2bef463a5b53ddf8bb788e25da6b8506314c08"
 	"base64::git+https://github.com/aklomp/base64.git#tag=v0.5.2"
 )
-sha256sums=('1c34b8a23229c04bbb04095d6808764fc22b07405ddd600f9cd3ebc75a303e8a'
-            'cb38d8eb30597fe9b347fb8d1e3aabe56f58cc255e61fd6b59b6ee393d7fc91e'
+sha256sums=('510adcb5de0e5cef113bde595a33d14a8e486bed479462822f930f278de68f42'
+            '5038c4bd3219d6be946285ae867e233c5285015f4c40f7272f6028fae07e0604'
             '3ba3a3b0e349e7731e862e9826ac9ba0f1122fa3eda2ada3eb22c3930108d768'
             'e2e76a8585a9b52cd0d774a4637a55f0ab9edb3ba10f852f69e1243134c17b90'
             'c2139ed6cc36779410ebf291df9f231145ed1c8ee0f16b6046331daa686058b7')
