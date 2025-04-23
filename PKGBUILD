@@ -1,6 +1,6 @@
 # Maintainer: Emil Bay <archlinux@tixz.dk>
 pkgname=mev-boost-bin
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="MEV-Boost allows Ethereum validators to source high-MEV blocks from a competitive builder marketplace. Binary distribution."
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ source_aarch64=(
   "https://github.com/flashbots/mev-boost/releases/download/v${pkgver}/mev-boost_${pkgver}_linux_arm64.tar.gz"
 )
 
-sha256sums_x86_64=('18b8af03787a0a57557ab8f8c483fe5143d81208b28f813fd93ad256ad52e5db')
-sha256sums_aarch64=('f5b70d59d4a3e9ee0e0947f49ca7ac5f282dd8e060affc8ce57529191977cbce')
-b2sums_x86_64=('8cb57f77d2f38e4b48cbaa67c52b0ed39ac97d237c0fc8d64c0d52acae9e06ffab997ab1199243a36b24a471200817a7c8a36f797187c10f3dfe87e3ba2e8b58')
-b2sums_aarch64=('6333609c7814bdb6bc158ce871f2a7d2052bf8671d5b4e06a802c54c083767198cb98c0db5e11d63aa39deb24bb02cb1811862343e31852153f775616f4ec9a9')
+sha256sums_x86_64=('2056f87e1b0f100c8d6ef9c85abe0e2d5dfb520cb1819237861b0cfa4394736f')
+sha256sums_aarch64=('384acb7c84770f05d6dd93ba69c8fa7c8e054f1360f09a35195f7e1871adec29')
+b2sums_x86_64=('e5ea40ece369b7a138fcc7e6929b65ed235a2e251d3fa1bf83ea66b0d09576f60881553c7e19fd003bd602662a408869cd7af49c8781ae43c9e4f2c3c2ee8f27')
+b2sums_aarch64=('2f067df549ea6ba215a6bf2ab7cc7017b85d03f297f402e311a07e8b2255191bf34a49497cb2e876dc1f6f8e4002f5e01b573016997c8eac2e78b48bf811254d')
 
 package() {
   install -Dm755 "${srcdir}/mev-boost" "${pkgdir}/usr/bin/mev-boost"
