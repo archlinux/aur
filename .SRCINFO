@@ -1,7 +1,7 @@
 pkgbase = r-ggally
 	pkgdesc = Extension to 'ggplot2'
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=GGally
 	arch = any
 	license = GPL-2.0-or-later
