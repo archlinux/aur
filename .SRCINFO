@@ -1,7 +1,7 @@
 pkgbase = telepathy-logger
 	pkgdesc = Telepathy framework logging daemon
 	pkgver = 0.8.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://telepathy.freedesktop.org/
 	arch = x86_64
 	license = LGPL-2.1-or-later
