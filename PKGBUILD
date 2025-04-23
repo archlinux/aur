@@ -5,7 +5,7 @@ pkgver=1.1.1.r6.g91e80dc
 _electronversion=21
 _nodeversion=20
 pkgrel=1
-pkgdesc="A music player.Use system-wide electron."
+pkgdesc="A music player.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/ndungtse/oneplay_desktop_app"
 license=("LicenseRef-Oneplay")
@@ -19,8 +19,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
     'curl'
     'icoutils'
     'yarn'
@@ -43,18 +41,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -63,7 +60,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -75,14 +71,18 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" yarn.lock
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     icotool -x main/icon.ico -o main/icon.png
     sed -i "s/icon.ico/icon.png/g" {package.json,main/index.js,electron-src/index.ts}
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

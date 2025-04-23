@@ -1,5 +1,5 @@
 pkgbase = oneplay-git
-	pkgdesc = A music player.Use system-wide electron.
+	pkgdesc = A music player.(Use system-wide electron)
 	pkgver = 1.1.1.r6.g91e80dc
 	pkgrel = 1
 	url = https://github.com/ndungtse/oneplay_desktop_app
@@ -9,8 +9,6 @@ pkgbase = oneplay-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = icoutils
 	makedepends = yarn
