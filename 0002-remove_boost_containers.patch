@@ -1,0 +1,48 @@
+From cbc7a6943c05cf1ca703490b376bfcdaa28830fc Mon Sep 17 00:00:00 2001
+From: Stefan Hamminga <s@stefanhamminga.com>
+Date: Fri, 14 Feb 2025 19:48:03 +0200
+Subject: [PATCH 2/2] Remove dependency on Boost maps and fixing associated
+ build errors
+
+---
+ simgear/canvas/events/KeyboardEvent.cxx | 16 ++--------------
+ 1 file changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/simgear/canvas/events/KeyboardEvent.cxx b/simgear/canvas/events/KeyboardEvent.cxx
+index 9b6cf3ed..600377ab 100644
+--- a/simgear/canvas/events/KeyboardEvent.cxx
++++ b/simgear/canvas/events/KeyboardEvent.cxx
+@@ -12,14 +12,8 @@
+ 
+ #include <osgGA/GUIEventAdapter>
+ 
+-#include <boost/version.hpp>
+-#if BOOST_VERSION >= 104800
+-# include <boost/container/flat_map.hpp>
+-# include <boost/container/flat_set.hpp>
+-#else
+-# include <map>
+-# include <set>
+-#endif
++#include <map>
++#include <set>
+ 
+ #include <iterator>
+ 
+@@ -99,14 +93,8 @@ namespace canvas
+     // system.
+     typedef std::pair<const char*, uint8_t> InternalKeyInfo;
+ 
+-#if BOOST_VERSION >= 104800
+-    typedef boost::container::flat_map<int, InternalKeyInfo> InternalKeyMap;
+-    typedef boost::container::flat_set<int> KeyList;
+-#else
+-#   warning "Use Boost >= 1.48 for faster and more memory efficient key lookup"
+     typedef std::map<int, InternalKeyInfo> InternalKeyMap;
+     typedef std::set<int> KeyList;
+-#endif
+ 
+     static InternalKeyMap key_map;
+     static KeyList num_pad_keys;
+-- 
+2.48.1

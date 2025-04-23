@@ -1,0 +1,54 @@
+From 2bae287625bc7a41e1051304940afdd04a2cfe9c Mon Sep 17 00:00:00 2001
+From: Stefan Hamminga <s@stefanhamminga.com>
+Date: Fri, 14 Feb 2025 19:45:43 +0200
+Subject: [PATCH 1/2] Remove dependency on Boost lexical_cast and fix
+ associated build errors
+
+---
+ simgear/scene/tgdb/obj.cxx | 4 ++--
+ simgear/scene/tgdb/obj.hxx | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/simgear/scene/tgdb/obj.cxx b/simgear/scene/tgdb/obj.cxx
+index 436e43d6..e653a075 100644
+--- a/simgear/scene/tgdb/obj.cxx
++++ b/simgear/scene/tgdb/obj.cxx
+@@ -81,9 +81,9 @@ SGLoadBTG(const std::string& path, const simgear::SGReaderWriterOptions* options
+ 
+     if (usePhotoscenery) {
+       try {
+-        const long index = lexical_cast<long>(osgDB::getSimpleFileName(osgDB::getNameLessExtension(path)));
++        const long index = std::stol(osgDB::getSimpleFileName(osgDB::getNameLessExtension(path)));
+         orthophoto = OrthophotoManager::instance()->getOrthophoto(index);
+-      } catch (bad_lexical_cast&) {
++      } catch (std::exception&) {
+         orthophoto = OrthophotoManager::instance()->getOrthophoto(nodes, center);
+       }
+     }
+diff --git a/simgear/scene/tgdb/obj.hxx b/simgear/scene/tgdb/obj.hxx
+index 22ea92bd..db028895 100644
+--- a/simgear/scene/tgdb/obj.hxx
++++ b/simgear/scene/tgdb/obj.hxx
+@@ -29,7 +29,7 @@
+ # error This library requires C++
+ #endif
+ 
+-#include <boost/lexical_cast.hpp>
++// #include <boost/lexical_cast.hpp>
+ 
+ #include <simgear/compiler.h>
+ 
+@@ -40,8 +40,8 @@
+ 
+ using std::string;
+ 
+-using boost::lexical_cast;
+-using boost::bad_lexical_cast;
++//using boost::lexical_cast;
++//using boost::bad_lexical_cast;
+ 
+ class SGMaterialLib;
+ namespace simgear {
+-- 
+2.48.1
+
