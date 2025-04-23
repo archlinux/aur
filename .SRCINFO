@@ -1,5 +1,5 @@
 pkgbase = node-toolkit-git
-	pkgdesc = Common toolbox function collection code.常用工具箱函数合集代码
+	pkgdesc = Common toolbox function collection code.(Use system-wide electron)常用工具箱函数合集代码
 	pkgver = 2.1.2.r45.g20ef3ed
 	pkgrel = 1
 	url = https://github.com/FelixZC/node-toolkit
