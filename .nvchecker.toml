@@ -1,4 +1,4 @@
-[siera-bin]
+[argocd-autopilot-bin]
 source = "git"
-git = "https://github.com/animo/siera.git"
+git = "https://github.com/argoproj-labs/argocd-autopilot.git"
 prefix = "v"
