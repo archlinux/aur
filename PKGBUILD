@@ -16,11 +16,6 @@ prepare() {
   cd "$srcdir"
   find . -type f -name "togo" -o -name "$pkgname" -o -name "*" | sort
 }
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
-
 package() {
   cd "$srcdir"
   
