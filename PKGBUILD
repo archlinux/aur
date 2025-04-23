@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rats-search-bin
-_pkgname="Rats on The Boat"
+_pkgname='Rats on The Boat'
 pkgver=1.11.0
 _electronversion=24
 pkgrel=9
