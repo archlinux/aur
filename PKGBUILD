@@ -2,7 +2,7 @@
 pkgname='python-pyamlboot-git'
 _pkgname="${pkgname/-git/}"
 pkgver=r91.d7806ac
-pkgrel=1
+pkgrel=2
 pkgdesc="Amlogic USB Boot Protocol Library "
 url="https://github.com/superna9999/pyamlboot"
 depends=('python')
@@ -23,6 +23,7 @@ depends=(
   'python-dateparser'
   'python-dateutil'
   'python-lxml'
+  'python-pyusb'
 )
 source=("git+$url.git")
 provides=("$_pkgname")
