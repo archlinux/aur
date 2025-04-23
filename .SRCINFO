@@ -1,5 +1,5 @@
 pkgbase = ytdesk-git
-	pkgdesc = Youtube & YT Music Supercharged
+	pkgdesc = Youtube & YT Music Supercharged.(Use system-wide electron)
 	pkgver = 1.2.5.r2.g448eed1
 	pkgrel = 1
 	url = https://ytdesk.isaxk.com/
@@ -10,8 +10,6 @@ pkgbase = ytdesk-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron31
 	provides = ytdesk=1.2.5
