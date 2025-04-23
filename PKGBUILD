@@ -1,56 +1,35 @@
-# Maintainer: Dan Johansen <strit@strits.dk>
+# Maintainer: Dan Johansen <strit@archlinux.orgk>
 
 ## Build order:
 ## dfl-ipc -> dfl-applications
 
 _pkgname=applications
-pkgbase=dfl-applications
-pkgname=(
-        'dfl-applications'
-        'dfl-applications-qt6'
-)
-pkgver=0.2.0
-pkgrel=2
+pkgname=('dfl-applications')
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A class that extends QApplications"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/desktop-frameworks/$_pkgname"
 license=('GPL-3.0-only')
+depends=(
+        'qt6-base'
+        'dfl-ipc'
+)
 makedepends=(
             'meson'
             'ninja'
-            'qt5-base'
-            'qt6-base'
-            'dfl-ipc'
-            'dfl-ipc-qt6'
 )
 source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('617fcff64e1e726f7c1c52795eb985774528a55a028a432099a8736fef705e7e')
+sha256sums=('125c9ea260f013cb03e512f91ebf0ed87b41e87c5dfda1aba41724244b4564c1')
 
 build() {
   cd "${_pkgname}-v${pkgver}"
-  echo "Building QT5 version..."
-  meson .build --prefix=/usr --buildtype=release
-  ninja -C .build
-  
   echo "Building QT6 version..."
-  meson .build-qt6 --prefix=/usr -Duse_qt_version=qt6 --buildtype=release
-  ninja -C .build-qt6
+  meson setup .build --prefix=/usr --buildtype=release
+  ninja -C .build
 }
 
-package_dfl-applications() {
-  depends=(
-          'qt5-base'
-          'dfl-ipc'
-  )
+package() {
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
-}
-
-package_dfl-applications-qt6() {
-  depends=(
-          'qt6-base'
-          'dfl-ipc-qt6'
-  )
-  cd "${_pkgname}-v${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C .build-qt6 install
 }
