@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## run './geninfo.sh' after run 'updpkgsums', need install: jq yq python-packaging
+## run './geninfo.sh' after run 'updpkgsums', need install: jq go-yq python-packaging
 
 _pkgname=$(awk -F= '/_pkgname=/{print $2}' PKGBUILD)
 _pipname="${_pkgname//-/_}"
@@ -10,6 +10,7 @@ pyreq="src/${_pipname}-${pkgver}/requirements.txt"
 
 trap "rm depends.txt" EXIT
 makepkg -do
+sudo pacman -Sy --noconfirm --noprogressbar --needed jq go-yq python-packaging
 pkgdesc=$(yq eval -o=json "$pytoml" | jq -r '.project.description')
 depends=$(./geninfo.py "$pyreq" |
     tr 'A-Z' 'a-z' |
