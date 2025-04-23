@@ -1,9 +1,10 @@
 # Maintainer: envolution
 # Contributor: Carl Smedstad <carsme@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-anthropic
 _pkgname=anthropic-sdk-python
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=2
 pkgdesc="Python library that provides convenient access to the Anthropic REST API"
 arch=(any)
@@ -42,9 +43,12 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('6fc30f5b8237cc1c5b3762a4b72dfe5d14298e554fb0a6242df3e5cd962c6e3e')
+sha256sums=('18214331a4e679428015ce0af7fee157b112b81d4f6be105c70674c03796738b')
 
-
+prepare() {
+  cd $_pkgname-$pkgver
+  sed -i 's/hatchling==/hatchling>=/' pyproject.toml
+}
 build() {
   cd $_pkgname-$pkgver
 
@@ -62,9 +66,9 @@ check() {
   # Deselect tests/api_resources as it requires access to the API.
   # Also, deselect failing tests - not sure why they fail.
   pytest \
-     --deselect tests/api_resources/ \
-     --deselect tests/lib/test_bedrock.py \
-     --deselect tests/test_client.py  
+    --deselect tests/api_resources/ \
+    --deselect tests/lib/test_bedrock.py \
+    --deselect tests/test_client.py
 
 }
 
@@ -74,3 +78,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set ts=2 sw=2 et:
