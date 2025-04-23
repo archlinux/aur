@@ -1,13 +1,13 @@
 pkgbase = uni-updater
 	pkgdesc = Helper program that updates everything on your system.
 	pkgver = 0.2.4
-	pkgrel = 3
+	pkgrel = 1
 	url = https://codeberg.org/TTsdzb/uni-updater
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = uni-updater-0.2.4-3.tar.gz::https://codeberg.org/TTsdzb/uni-updater/archive/0.2.4.tar.gz
+	source = uni-updater-0.2.4-1.tar.gz::https://codeberg.org/TTsdzb/uni-updater/archive/0.2.4.tar.gz
 	sha512sums = 33a35ac7617257cde78bf574c5896593a2a2f70efb74690d6403ba6ce282cd4362a5089adef1b3ccea83ae7530c4643803e697b1ece898b82da33ec7c239bc7b
 
 pkgname = uni-updater
