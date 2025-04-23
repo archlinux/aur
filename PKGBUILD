@@ -3,7 +3,7 @@
 
 pkgname=togo
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, simple and beautifull termianl-based to-do manager with zero dependencies"
 arch=('x86_64')
 url="https://github.com/prime-run/togo"
