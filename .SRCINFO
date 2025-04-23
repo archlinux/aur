@@ -1,7 +1,7 @@
 pkgbase = kdoctools5
 	pkgdesc = Documentation generation from docbook
 	pkgver = 5.116.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
