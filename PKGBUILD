@@ -5,8 +5,8 @@ pkgver=2.15.1.r1.gb88929b
 _electronversion=28
 _nodeversion=20
 pkgrel=1
-pkgdesc="An open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files."
-arch=("x86_64")
+pkgdesc="An open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files.(Use system-wide electron)"
+arch=('any')
 url="https://github.com/XilinJia/Xilinota"
 license=('AGPL-3.0-or-later')
 conflicts=("${pkgname%-git}")
@@ -20,8 +20,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'cmake'
-    'gcc'
     'curl'
 )
 source=(
@@ -42,37 +40,31 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
             echo "globalFolder: "${srcdir}"/.yarn/global"
         } >> .yarnrc.yml
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
-    corepack enable yarn
-    echo y | yarn version "${_yarnver}"
-    NODE_ENV=development    yarn install
     cd "${srcdir}/${pkgname//-/.}/packages/app-desktop"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -81,14 +73,32 @@ build() {
             echo "globalFolder: "${srcdir}"/.yarn/global"
         } >> .yarnrc.yml
     fi
-    sed -i "/afterSign/d" package.json
-    NODE_ENV=production     yarn run electronRebuild
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    sed -i -e "
+        /afterSign/d
+        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+    " package.json
+    cd "${srcdir}/${pkgname//-/.}/packages/app-clipper/popup"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+	{
+		echo 'registry=https://registry.npmmirror.com'
+		echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+		echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+	} >> .npmrc
+	find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
+    cd "${srcdir}/${pkgname//-/.}"
+    NODE_ENV=development    yarn install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/packages/app-desktop"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     yarn run postinstall
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/packages/app-desktop/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/packages/app-desktop/dist/linux-"*/resources/{app.asar.unpacked,build} "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/packages/app-desktop/dist/linux-"*/resources/{app.asar.unpacked,build} "${pkgdir}/usr/lib/${pkgname%-git}"
     _icon_sizes=(16x16 24x24 32x32 48x48 72x72 96x96 128x128 144x144 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/Assets/LinuxIcons/${_icons}.png" \

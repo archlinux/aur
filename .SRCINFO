@@ -1,17 +1,15 @@
 pkgbase = xilinota-git
-	pkgdesc = An open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files.
+	pkgdesc = An open-source multi-platform note-taking application boasting instant syncing among devices and direct keeping of markdown files.(Use system-wide electron)
 	pkgver = 2.15.1.r1.gb88929b
 	pkgrel = 1
 	url = https://github.com/XilinJia/Xilinota
-	arch = x86_64
+	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = npm
 	makedepends = yarn
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
-	makedepends = gcc
 	makedepends = curl
 	depends = electron28
 	provides = xilinota=2.15.1
