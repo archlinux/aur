@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
-pkgver=1.0.19
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('da1ea0cccd482a6eb11b49587d9b526401c9974eaff8a16176264f7c77c1b7ab3d3cb55a93a66d5b0e7c6087f814c6b5056d9d8698e0bf55bf1f964a4f6e8a0a')
+b2sums=('604a257024a9f04d9b416b8ce2e57673e6e1eb314223c5e4305a9777c98f52ef76f38577f5f2f0a9586ff2a7a4dfc348a46ae43576572b10d7b7cab8172a55bb')
 
 prepare() {
 	cd "goose-$pkgver"
