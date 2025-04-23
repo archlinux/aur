@@ -1,0 +1,4 @@
+[traefik]
+source = "git"
+git = "https://github.com/traefik/traefik.git"
+prefix = "v"
