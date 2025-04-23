@@ -1,6 +1,6 @@
 pkgbase = zxinfo-file-browser-git
-	pkgdesc = Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web.Use system-wide electron.
-	pkgver = 1.2.5.final.r0.g18c1e30
+	pkgdesc = Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web.(Use system-wide electron)
+	pkgver = 1.2.5.final.r1.gd29fa90
 	pkgrel = 1
 	url = https://github.com/thomasheckmann/zxinfo-file-browser
 	arch = any
