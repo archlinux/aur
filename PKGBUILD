@@ -1,14 +1,14 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="spin"
 pkgname="python-${_name}"
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="A developer tool for scientific Python libraries"
 arch=('any')
 url="https://github.com/scientific-python/spin"
 license=('BSD-3-Clause')
 depends=(
-  "python>=3.8"
+  "python>=3.9"
   "python-click"
   "python-tomli"
 )
@@ -20,8 +20,7 @@ makedepends=(
   "python-wheel"
 )
 source=("${_name}-${pkgver}::git+${url}#tag=v${pkgver}")
-b2sums=('ab39744adf93a2f4caa5cecfda1ccc197a14823bc24c0d155d0087318161fd710413c3aaea26ad1f2e3a471342fcbb05ee5591e107c7a3680ec5e3213a66c92b')
-
+b2sums=('94979a5c796047dfe33eccabc557e2632178c8d6ef571bc3f3f04900688bd3e7a209e52ed2a4d7f86240d155cab9c29f49ed0879efe6cafbf54ab68866016584')
 
 _archive="${_name}-${pkgver}"
 build() {
