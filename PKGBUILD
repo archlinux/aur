@@ -7,7 +7,6 @@ pkgdesc='An open source desktop YouTube player built with privacy in mind, with 
 arch=('any')
 url='https://github.com/FreeTubeApp/FreeTube'
 license=('AGPL-3.0-or-later')
-depends=('electron' 'ttf-liberation')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('freetube.sh' "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/refs/tags/v$pkgver-beta/LICENSE"
@@ -22,6 +21,7 @@ prepare() {
 }
 
 package() {
+    depends=('electron' 'ttf-liberation')
     install -Dm644 "$srcdir/opt/FreeTube/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
     install -Dm644 "$srcdir/usr/share/applications/freetube.desktop" "$pkgdir/usr/share/applications/freetube.desktop"
     install -Dm644 "$srcdir/usr/share/icons/hicolor/scalable/apps/freetube.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/freetube.svg"

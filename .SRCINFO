@@ -5,8 +5,6 @@ pkgbase = freetube-electron-bin
 	url = https://github.com/FreeTubeApp/FreeTube
 	arch = any
 	license = AGPL-3.0-or-later
-	depends = electron
-	depends = ttf-liberation
 	provides = freetube
 	conflicts = freetube
 	source = freetube.sh
@@ -17,3 +15,5 @@ pkgbase = freetube-electron-bin
 	b2sums = fcbff98f0649f6ea82e1635dd446b270866ffdd56dfd0b18cd167c598ef3af80fbc7cf6cc13af3f101f4017279789291c7328a2b0c0cef4fba8360d822a63b6d
 
 pkgname = freetube-electron-bin
+	depends = electron
+	depends = ttf-liberation
