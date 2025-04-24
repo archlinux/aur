@@ -1,0 +1,14 @@
+# -*- mode: sh -*-
+
+post_install() {
+  cat <<__EOT__
+»  Soupault plugins can be found in /usr/share/doc/soupault/plugins/.
+»  Please see https://soupault.app/plugins/ for their documentation.
+__EOT__
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
