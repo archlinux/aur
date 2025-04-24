@@ -1,17 +1,22 @@
 pkgbase = gdl
 	pkgdesc = GNOME Docking Library
 	pkgver = 3.40.0
-	pkgrel = 1
-	url = https://gitlab.gnome.org/GNOME/gdl
+	pkgrel = 2
+	url = https://gitlab.gnome.org/Archive/gdl
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.0-or-later
+	makedepends = git
 	makedepends = glib2-devel
+	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = intltool
-	makedepends = gobject-introspection
-	makedepends = git
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = gtk3
-	source = git+https://gitlab.gnome.org/GNOME/gdl.git#commit=bc1f6e9deba012fd81c6c378cd67942a955b0bee
-	sha256sums = af014f5d2a4422b740c599bbf0cc0b8d739b18a7519e2b991018bb5f885ffad9
+	depends = libxml2
+	source = git+https://gitlab.gnome.org/Archive/gdl.git#tag=GDL_3_40_0
+	b2sums = 714e94bbda6144621d5146d4c99d38c267188bb6ffa8afc99cc95b82b0d039c3584acb54edd5377d16b20546a183cf9acf39bf1968aeaeca3b95affac1cf63ef
 
 pkgname = gdl
