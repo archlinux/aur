@@ -1,6 +1,6 @@
 pkgbase = pocketyoutube-git
-	pkgdesc = A minimalist Youtube Navigator
-	pkgver = 1.2.0.r3.g9a7c552
+	pkgdesc = A minimalist Youtube Navigator.(Use system-wide electron)
+	pkgver = 1.2.0.r7.g7e819ed
 	pkgrel = 1
 	url = https://github.com/0adri3n/PocketYoutube
 	arch = any
@@ -9,12 +9,12 @@ pkgbase = pocketyoutube-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron31
 	depends = nodejs
 	depends = python
+	depends = ffmpeg
+	depends = yt-dlp
 	provides = pocketyoutube=1.2.0
 	conflicts = pocketyoutube
 	source = pocketyoutube.git::git+https://github.com/0adri3n/PocketYoutube.git
