@@ -1,6 +1,6 @@
 pkgbase = simple-live-app-bin
 	pkgdesc = 简简单单的看直播
-	pkgver = 1.7.7.10707
+	pkgver = 1.8.1.10801
 	pkgrel = 1
 	url = https://github.com/xiaoyaocz/dart_simple_live
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = simple-live-app-bin
 	depends = xdg-user-dirs
 	provides = simple-live-app
 	options = !debug
-	source_x86_64 = simple-live-app-bin-1.7.7.10707.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v1.7.7/simple_live_app-1.7.7+10707-linux.deb
-	sha256sums_x86_64 = 78376473ab6f8e12facad0d679dc44e6df79b682c6d1541daecf8e7c9849b910
+	source_x86_64 = simple-live-app-bin-1.8.1.10801.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v1.8.1/simple_live_app-1.8.1+10801-linux.deb
+	sha256sums_x86_64 = b00ec8f262de14f4ded30d2d2d4cd9e47bc1b58df72167c7c0a79bc6ae23b3e2
 
 pkgname = simple-live-app-bin
