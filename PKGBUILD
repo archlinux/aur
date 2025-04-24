@@ -4,9 +4,9 @@
 pkgbase=iortcw-git
 pkgname=iortcw-git
 pkgver=1.51c.r129.g438e7d41
-pkgrel=1
+pkgrel=2
 pkgdesc="Merge of ioquake3 features and fixes into Return to Castle Wolfenstein"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'powerpc64le')
 url="https://github.com/iortcw/iortcw"
 license=('GPL3')
 depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2-compat' 'zlib')
@@ -93,14 +93,13 @@ package() {
     "${pkgdir}/opt/iortcw/openurl.sh"
 
   # Modify Launcher Scripts
-  if [ "$CARCH" = "x86_64" ]; then
-
-    # x86_64 Systems
-    TARGET=x86_64
-  else
-    # i686 Systems
-    TARGET=x86
-  fi
+  case "${CARCH}" in
+    "x86_64") TARGET=x86_64 ;;
+    "i686") TARGET=x86 ;;
+    "powerpc") TARGET=ppc ;;
+    "powerpc64") TARGET=ppc64 ;;
+    "powerpc64le") TARGET=ppc64le ;;
+  esac
 
   sed -i "s:ARCH:$TARGET:" \
     "${srcdir}"/iortcw-sp.*
