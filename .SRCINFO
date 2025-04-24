@@ -1,6 +1,6 @@
 pkgbase = jre21-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
-	pkgver = 21.0.6
+	pkgver = 21.0.7
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = jre21-zulu-bin.install
@@ -23,10 +23,10 @@ pkgbase = jre21-zulu-bin
 	provides = java-runtime-headless-openjdk=21
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.6-1
-	provides = jre21-openjdk-headless=21.0.6-1
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.40.17-ca-jre21.0.6-linux_aarch64.tar.gz
-	sha256sums_aarch64 = e1dfd74dc649e6432cc8898c67217abb8227f709325d24a2cf30470b217ba14b
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.40.17-ca-jre21.0.6-linux_x64.tar.gz
-	sha256sums_x86_64 = 8524ef3c76ae1e00bb020044557c5ae1a59d985eee0394d71fc9b2414d083d33
+	provides = jre21-openjdk=21.0.7-1
+	provides = jre21-openjdk-headless=21.0.7-1
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu21.42.19-ca-jre21.0.7-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 9551425e5283f97edea08062c617d56aea850c62f005e4d9b17b500065f5a1a6
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu21.42.19-ca-jre21.0.7-linux_x64.tar.gz
+	sha256sums_x86_64 = 9efbda608fd3d1b2af293cad07c307b48b8aa148161ba6b6932d9cd5cc264e82
 pkgname = jre21-zulu-bin
