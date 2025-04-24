@@ -1,5 +1,5 @@
 pkgbase = tyrogit-client-git
-	pkgdesc = Git client created by and for Tyrolium.Use system-wide electron.
+	pkgdesc = Git client created by and for Tyrolium.(Use system-wide electron)
 	pkgver = Release.r2.g0e61c6d
 	pkgrel = 1
 	url = https://github.com/TheMaxium69/TyroGit
