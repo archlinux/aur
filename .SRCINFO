@@ -1,0 +1,13 @@
+pkgbase = plasma6-applets-plasma-drawer-git
+	pkgdesc = A full-screen customizable launcher with application directories and krunner-like search for KDE Plasma.
+	pkgver = r136.2edae31
+	pkgrel = 1
+	url = https://github.com/P-Connor/plasma-drawer
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plasma-workspace
+	source = plasma6-applets-plasma-drawer::git+https://github.com/P-Connor/plasma-drawer.git
+	sha512sums = SKIP
+
+pkgname = plasma6-applets-plasma-drawer-git
