@@ -1,12 +1,12 @@
 # Maintainer: D7OMDEV <hello@d7om.dev>
 pkgname=clipse-gui
-pkgver=0.1.1
-pkgrel=2.6
+pkgver=0.1.2
+pkgrel=2.7
 pkgdesc="A simple clipboard manager with a GUI"
 arch=('x86_64')
 url="https://github.com/d7omdev/clipse-gui"
 license=('MIT')
-depends=('python' 'python-gobject' 'gtk3' 'wl-clipboard')
+depends=('python' 'python-gobject' 'gtk3' 'wl-clipboard' 'wtype' 'xdotool')
 makedepends=('git' 'python-pip' 'python-wheel' 'python-setuptools' 'clang' 'patchelf')
 source=("git+https://github.com/d7omdev/clipse-gui.git")
 sha256sums=('SKIP')
