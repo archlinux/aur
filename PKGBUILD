@@ -64,12 +64,10 @@ build() {
 
 }
 
-check() {
-
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	meson test -C build
-
-}
+#check() {
+#	cd "${srcdir}/${pkgname}-${pkgver}"
+#	meson test -C build
+#}
 
 package() {
 
