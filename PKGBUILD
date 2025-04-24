@@ -14,17 +14,17 @@ sha512sums=('f7d893847b78189b4755b3b7604dee3bbadde273beb9ee946675315c40d5b2038c8
 makedepends=(python-build python-installer python-wheel)
 
 build() {
-    cd $_name-$pkgver
+    cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 check(){
-    cd $_name-$pkgver
+    cd $pkgname-$pkgver
     python -m unittest discover -vs .
 }
 
 package() {
-    cd $_name-$pkgver
+    cd $pkgxname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
