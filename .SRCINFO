@@ -1,0 +1,20 @@
+pkgbase = pyconcurrent
+	pkgdesc = Python module to simplify asyncio/multiprocessing
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/gene-git/pyconcurrent
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-hatch
+	makedepends = rsync
+	makedepends = python-pytest
+	makedepends = python-pytest-asyncio
+	depends = python>3.13
+	source = git+https://github.com/gene-git/pyconcurrent#tag=1.1.2
+	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
+	sha512sums = SKIP
+
+pkgname = pyconcurrent
