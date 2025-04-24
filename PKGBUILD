@@ -1,7 +1,7 @@
 pkgname=jakana
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='learn Japanese kana on cli'
+pkgdesc='Learn Japanese kana on cli'
 arch=('any')
 url='https://github.com/Catalina-sys456/jakana'
 license=('MIT')
