@@ -5,7 +5,6 @@ pkgbase = jakana
 	url = https://github.com/Catalina-sys456/jakana
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

@@ -6,7 +6,6 @@ arch=('any')
 url='https://github.com/Catalina-sys456/jakana'
 license=('MIT')
 depends=('python')
-checkdepends=('python-pytest')
 makedepends=(python-{build,installer,wheel})
 source=(        
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
