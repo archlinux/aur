@@ -1,10 +1,10 @@
 pkgbase = hid-fanatecff-dkms
 	pkgdesc = Driver to support force feedback and load cells for the FANATEC controller ecosystem
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gotzl/hid-fanatecff
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = m4
 	makedepends = git
 	makedepends = awk
