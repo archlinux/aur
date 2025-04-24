@@ -1,7 +1,7 @@
 pkgbase = raw-thumbnailer
 	pkgdesc = A lightweight and fast raw image thumbnailer that can be used by file managers.
 	pkgver = 47.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/gnome-raw-thumbnailer/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,6 +9,7 @@ pkgbase = raw-thumbnailer
 	makedepends = python
 	makedepends = ninja
 	makedepends = cargo
+	makedepends = git
 	depends = libopenraw
 	source = https://gitlab.gnome.org/World/gnome-raw-thumbnailer//-/archive/47.0.1/gnome-raw-thumbnailer-47.0.1.tar.gz
 	sha256sums = 56b76fa25febf8a5795a63a8c6c85428d2c326924adfebd63192e2b208f1b4fc
