@@ -1,0 +1,13 @@
+pkgbase = jjj
+	pkgdesc = A modal interface for Jujutsu
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/icorbrey/jjj
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = jjj-0.2.1.tar.gz::https://github.com/icorbrey/jjj/archive/v0.2.1.tar.gz
+	sha256sums = 012d111279821ca9c34bdb5d2562f3241cd9cac83f1239e33fd59ded3f2daff3
+
+pkgname = jjj
