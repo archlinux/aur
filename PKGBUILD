@@ -3,7 +3,7 @@
 
 pkgname=libcprime
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for bookmarking, saving recent activites, managing settings of C-Suite"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
@@ -24,6 +24,7 @@ build() {
   cd build
   cmake ../${pkgname}-v${pkgver} \
     -GNinja \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
   ninja
