@@ -1,6 +1,6 @@
 pkgbase = kitget
 	pkgdesc = Display and customize cat images in your terminal
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/adamperkowski/kitget
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kitget
 	depends = glibc
 	depends = gcc-libs
 	depends = openssl
-	source = kitget-0.0.1.tar.gz::https://github.com/adamperkowski/kitget/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = 310ca7244decad9b780d4b67d7888103bcfdb60f1997e8850fb2ca47bfe3e240
+	source = kitget-0.0.2.tar.gz::https://github.com/adamperkowski/kitget/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 0023208c3a4fcb3c272016e59bb000ad26bc6339b0161f6b728a684cd6b3c505
 
 pkgname = kitget

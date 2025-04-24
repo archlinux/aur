@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=kitget
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Display and customize cat images in your terminal'
 arch=('x86_64')
 url="https://github.com/adamperkowski/$pkgname"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('310ca7244decad9b780d4b67d7888103bcfdb60f1997e8850fb2ca47bfe3e240')
+sha256sums=('0023208c3a4fcb3c272016e59bb000ad26bc6339b0161f6b728a684cd6b3c505')
 makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'openssl')
 
