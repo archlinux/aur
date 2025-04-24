@@ -1,11 +1,9 @@
-#!/bin/bash
-
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot com>
-# Contributor: crl <crl18039102576 at 126 dot com>
+# Maintainer: crl <crl18039102576 at 126 dot com>
 
 pkgname=python-taichi
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs'
 url='https://github.com/taichi-dev/taichi'
 arch=('x86_64')
@@ -24,6 +22,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
+  'python-scikit-build'
   'clang'
   'ninja'
   'cmake'
@@ -49,6 +48,7 @@ build() {
     # Add CUDA include path
     export TAICHI_CMAKE_ARGS="$TAICHI_CMAKE_ARGS -DCMAKE_CXX_FLAGS=\"-I/opt/cuda/targets/x86_64-linux/include\""
     export TAICHI_CMAKE_ARGS="$TAICHI_CMAKE_ARGS -DCMAKE_C_FLAGS=\"-I/opt/cuda/targets/x86_64-linux/include\""
+    export TAICHI_CMAKE_ARGS="$TAICHI_CMAKE_ARGS -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
     python -m build --wheel --no-isolation --skip-dependency-check
 }
 

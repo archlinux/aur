@@ -1,7 +1,7 @@
 pkgbase = python-taichi
 	pkgdesc = Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs
 	pkgver = 1.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taichi-dev/taichi
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = python-taichi
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-scikit-build
 	makedepends = clang
 	makedepends = ninja
 	makedepends = cmake
