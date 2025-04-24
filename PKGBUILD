@@ -9,7 +9,7 @@ _mpc_pkgver="1.2.1"
 _mpfr_pkgver="4.1.0"
 _pkgname="gcc"
 pkgname="ps3-${_target_alias}-${_pkgname}"
-pkgver="13.2.0"
+pkgver="15.1.0"
 pkgrel=1
 pkgdesc="GCC for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
@@ -20,7 +20,8 @@ checkdepends=(dejagnu expect inetutils python-pytest tcl)
 depends=(ps3-env "ps3-ppu-binutils>=2.42")
 options=(!emptydirs !strip staticlibs !lto)
 source=(
-	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
+	#"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
+	"https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz"
 	"${_pkgname}-${pkgver}-ps3-${_target_alias}.patch"
 	"http://sourceware.org/pub/newlib/newlib-${_newlib_pkgver}.tar.gz"
 	"newlib-${_newlib_pkgver}-ps3-${_target_alias}.patch"
@@ -47,7 +48,7 @@ _prefix="${PS3DEV}/${_target_alias}"
 prepare() {
 	patch -p1 -d "newlib-${_newlib_pkgver}" < "${srcdir}/newlib-${_newlib_pkgver}-ps3-${_target_alias}.patch"
 
-	cd "${_pkgname}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"*/
 
 	patch -p1 < "${srcdir}/${_pkgname}-${pkgver}-ps3-${_target_alias}.patch"
 
@@ -61,7 +62,7 @@ prepare() {
 }
 
 build() {
-	cd "${_pkgname}-${pkgver}"
+	cd "${_pkgname}-${pkgver}"*/
 
 	# symlinked in prepare(), just unpack
 	./contrib/download_prerequisites
@@ -70,8 +71,8 @@ build() {
 	cd "build-${_target_alias}"
 
 	# Avoid breakage
-	CFLAGS="${CFLAGS/-Werror=format-security/}"
-	CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+	export CFLAGS="${CFLAGS/-Werror=format-security/}"
+	export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
 	local _configure_flags=(
 		--prefix="${PS3DEV}/ppu"
@@ -101,13 +102,13 @@ build() {
 }
 
 check() {
-	cd "${_pkgname}-${pkgver}/build-${_target_alias}"
+	cd "${_pkgname}-${pkgver}"*"/build-${_target_alias}"
 
 	LDFLAGS="" make --keep-going check |& tee -a "ps3-${_target_alias}-${_pkgname}-check.log" || true
 }
 
 package() {
-	cd "${_pkgname}-${pkgver}/build-${_target_alias}"
+	cd "${_pkgname}-${pkgver}"*"/build-${_target_alias}"
 
 	make DESTDIR="${pkgdir}" install
 
