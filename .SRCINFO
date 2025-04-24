@@ -1,7 +1,7 @@
 pkgbase = container-desktop-bin
-	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!Prebuilt version.Use system-wide electron.
+	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version.Use system-wide electron)
 	pkgver = 5.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iongion.github.io/container-desktop/
 	arch = aarch64
 	arch = x86_64
