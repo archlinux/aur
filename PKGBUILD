@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=mutemplate
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Compile template files into a standalone python file"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.7")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('907bfd1f13101dfccdd04f2f14d30460dcde8722')
+sha1sums=('e8c98182d9f54f0dd40af59f70285ab071ec9972')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
