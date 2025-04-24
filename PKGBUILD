@@ -3,11 +3,13 @@ pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
 pkgver=2.0_beta50
 _pkgver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/threema-ch/threema-desktop"
 license=('AGPL-3.0-only')
 depends=(
+  # Fonts
+  ttf-opensans
   # Electron deps as reported by namcap
   alsa-lib
   at-spi2-core
@@ -40,7 +42,7 @@ makedepends=(
   # node-gyp
   python python-setuptools
   # For building Rust code in general
-  rust cargo
+  rustup
   # For building libthreema
   wasm-bindgen binaryen protobuf
 )
@@ -65,6 +67,11 @@ prepare() {
 
   # Patch version to indicate this is an AUR package
   sed -i -s 's/"version": "'${_pkgver}'"/"version": "'${_pkgver}-aur'"/' package.json
+
+  # Patch fonts, add OpenSans as primary fallback
+  for f in src/sass/app.scss src/index.html src/app/ui/components/partials/settings/internal/profile-settings/internal/public-key-modal/PublicKeyModal.svelte; do
+    sed -i "s/'Lab Grotesque'/'Lab Grotesque', 'Open Sans'/" "$f"
+  done
 }
 
 build() {
@@ -81,6 +88,10 @@ build() {
 
   # Install dependencies
   npm install --cache "${srcdir}/npm-cache" --no-audit --no-fund
+
+  # Install Rust WASM toolchain
+  cd libs/libthreema/
+  rustup target add wasm32-unknown-unknown
 
   # Build libthreema
   npm run libthreema:build
