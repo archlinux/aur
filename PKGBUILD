@@ -5,13 +5,14 @@
 pkgname=('greetd-qtgreet')
 _pkgname=QtGreet
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt based greeter for greetd'
 arch=('aarch64' 'x86_64')
 url="https://gitlab.com/marcusbritanicus/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
         'python'
+        'greetd'
         'dfl-applications'
         'dfl-login1'
         'dfl-wayqt'
@@ -24,7 +25,11 @@ depends=(
         'qt6-base'
         'wlroots'
 )
-optdepends=('wayfire')
+optdepends=(
+            'wayfire: for wayfire support'
+            'sway: for sway support'
+            'labwc: for labwc support'
+)
 makedepends=(
             'meson'
             'ninja'
@@ -35,6 +40,7 @@ backup=(
        "etc/qtgreet/users.conf"
        "etc/qtgreet/wayfire.ini"
 )
+install=${pkgname}.install
 source=("$_pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
 sha256sums=('be7ead0355f9f3ee367c70bac659569c024679f1e1306535f6b0970ff0c438fc')
 
@@ -48,4 +54,5 @@ build() {
 package_greetd-qtgreet() {
   cd "${_pkgname}-v${pkgver}"
   DESTDIR="${pkgdir}" ninja -C .build install
+  echo "At least one of wayfire, sway or labwc is required"
 }

@@ -1,0 +1,3 @@
+post_install() {
+    echo "Either Wayfire, Sway or LabWC is required for QtGreet to function. Make sure at least of of them is installed!"
+}
