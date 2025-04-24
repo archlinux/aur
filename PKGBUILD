@@ -12,7 +12,7 @@ pkgname='pyconcurrent'
 pkgdesc='Python module to simplify asyncio/multiprocessing'
 _gitname='pyconcurrent'
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 url="https://github.com/gene-git/pyconcurrent"
 
