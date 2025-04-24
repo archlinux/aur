@@ -1,5 +1,5 @@
 pkgbase = bdash-git
-	pkgdesc = Simple SQL Client for lightweight data analysis.Use system-wide electron.
+	pkgdesc = Simple SQL Client for lightweight data analysis.(Use system-wide electron)
 	pkgver = 1.16.3.r10.gf0d3411
 	pkgrel = 1
 	url = https://github.com/bdash-app/bdash
@@ -10,7 +10,6 @@ pkgbase = bdash-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
 	makedepends = curl
 	makedepends = python
 	depends = electron14
