@@ -2,10 +2,10 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
 pkgname=nginx-mod-upload-progress
-pkgver=0.9.2
-pkgrel=12
+pkgver=0.9.4
+pkgrel=1
 _dirname="nginx-upload-progress-module-$pkgver"
-_nginxver=1.26.3 # FIXME: fix build against NGINX 1.24.0
+_nginxver=1.28.0
 
 pkgdesc='NGINX module implementing an upload progress system, that monitors RFC1867 POST uploads'
 arch=('x86_64')
@@ -14,14 +14,11 @@ makedepends=("nginx-src")
 url='https://github.com/masterzen/nginx-upload-progress-module'
 license=('CUSTOM')
 
-source=("$pkgname-$pkgver::https://github.com/masterzen/nginx-upload-progress-module/archive/v${pkgver}.tar.gz"
-        '0001-Fix-ngx_module_type.patch::https://github.com/masterzen/nginx-upload-progress-module/commit/dd138546b16a01e9c09613d02211373baf1cac02.patch')
-sha256sums=('b286689355442657650421d8e8398bd4abf9dbbaade65947bb0cb74a349cc497'
-            '4fdf5269aadce50cc8ab6f2ffed19df40db681b25c6a37fa660686aa07ff3a27')
+source=("$pkgname-$pkgver::https://github.com/masterzen/nginx-upload-progress-module/archive/v${pkgver}.tar.gz")
+sha256sums=('6793c006bf57b06155eb50f35356d30a357c4b1727435c3578f08a820a7d13f7')
 
 prepare() {
   cd "$srcdir/$_dirname"
-  patch -p1 -i '../0001-Fix-ngx_module_type.patch'
 }
 
 build() {
