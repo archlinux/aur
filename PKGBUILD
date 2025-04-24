@@ -3,8 +3,8 @@ pkgname=bdash-bin
 _pkgname=Bdash
 pkgver=1.17.1
 _electronversion=14
-pkgrel=4
-pkgdesc="Simple SQL Client for lightweight data analysis.Prebuilt version.Use system-wide electron."
+pkgrel=5
+pkgdesc="Simple SQL Client for lightweight data analysis.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/bdash-app/bdash"
 license=('MIT')
@@ -24,15 +24,17 @@ source=(
 sha256sums=('dfa9852595e0c27cbec316dfd69a3851af19f74a7359767eae8139bf487f443b'
             '44e997a14d296ed01f24a68d2071280936534e98f4613fa8b875c9922e6b22d8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
