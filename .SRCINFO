@@ -1,7 +1,7 @@
 pkgbase = powerpc64-linux-gnu-glibc-headers
 	pkgdesc = GNU C Library headers (powerpc64-linux-gnu)
-	pkgver = 2.40
-	pkgrel = 2
+	pkgver = 2.41
+	pkgrel = 1
 	url = http://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
@@ -13,11 +13,12 @@ pkgbase = powerpc64-linux-gnu-glibc-headers
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/libc/glibc-2.40.tar.xz
-	source = https://ftp.gnu.org/gnu/libc/glibc-2.40.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.41.tar.xz
+	source = https://ftp.gnu.org/gnu/libc/glibc-2.41.tar.xz.sig
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
+	validpgpkeys = 35B17DF5752577CA0C541CEB94BFDF4484AD142F
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = 19a890175e9263d748f627993de6f4b1af9cd21e03f080e4bfb3a1fac10205a2
+	sha256sums = a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901
 	sha256sums = SKIP
 
 pkgname = powerpc64-linux-gnu-glibc-headers
