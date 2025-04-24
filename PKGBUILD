@@ -5,7 +5,7 @@ pkgver=r3.3b0316a
 _electronversion=28
 _nodeversion=20
 pkgrel=1
-pkgdesc="Multi-dialect database management system.Use system-wide electron."
+pkgdesc="Multi-dialect database management system.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/Jgrtowy/PolyBase"
 license=('BSD-2-Clause')
@@ -15,7 +15,7 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'npm'
+    'bun'
     'git'
     'nvm'
     'gendesk'
@@ -39,44 +39,51 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    SYSTEM_ELECTRON_VERSION=$(electron${_electronversion} -v | sed 's/v//g')
-    SYSTEM_ELECTRON_VERSION=$(electron${_electronversion} -v | sed 's/v//g')
-    export SYSTEM_ELECTRON_VERSION
     HOME="${srcdir}/.electron-gyp"
-    {
-        echo -e '\n'	
-        #echo 'build_from_source=true'
-        echo "cache=${srcdir}/.npm_cache"
-    } >> .npmrc
+    if [ -f bunfig.toml ]; then
+        rm -rf bunfig.toml
+    fi
+        if [ -f bun.lockb ];then
+        rm -rf bun.lockb
+    fi
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
+        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
-        } >> .npmrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
+            echo '[install]'
+            echo 'registry = "https://registry.npmmirror.com"'
+        } >> bunfig.toml
+        #find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/icon\.ico/icon\.png/g" main/background.ts
-    rm -rf node_modules dist
+    rm -rf package-lock.json
     icotool -x resources/icon.ico -o resources/icon.png
+    sed -i "/data.connectionString.split/d" renderer/components/AddDatabase.tsx
+    sed -i "51i\        const dialect = data.connectionString.split(\/[:\+]\/)[0];" renderer/components/AddDatabase.tsx
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    NODE_ENV=development    bun install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    sed -i -e "
+        7i\linux:
+        7i\  target: dir
+    " "${srcdir}/${pkgname//-/.}/electron-builder.yml"
+    NODE_ENV=production     bun run build
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

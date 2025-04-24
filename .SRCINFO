@@ -1,11 +1,11 @@
 pkgbase = polybase-git
-	pkgdesc = Multi-dialect database management system.Use system-wide electron.
+	pkgdesc = Multi-dialect database management system.(Use system-wide electron)
 	pkgver = r3.3b0316a
 	pkgrel = 1
 	url = https://github.com/Jgrtowy/PolyBase
 	arch = any
 	license = BSD-2-Clause
-	makedepends = npm
+	makedepends = bun
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
