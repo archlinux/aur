@@ -1,7 +1,7 @@
 # Maintainer: Peter Jung <ptr1337@cachyos.org>
 
 pkgname=occt
-pkgver=14.0.6
+pkgver=14.0.8
 pkgrel=1
 pkgdesc="OverClock Checking Tool - CPU/GPU stress testing and monitoring (binary)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "occt.png"
   "eula.txt"
 )
-b2sums=('8034fed322ccc715c4aa86db869aab110779d2f4d78fb1676a85dc5281f8860a08e019c14daa1a401087e6074c6e31c6bf8f75ca6d44003cf3c2c1c9b497bee0'
+b2sums=('d6331cf2bd186f0a3a3d77148e1015cb87d37c5012875df12f6b7ae78ac44e6066b68816b15b27f611ca3f2eb7ee471a48d83b0e416d02ff9a5cb2598d2bac2b'
         '20027853572302a9c4ac95b81c52364ffdbe925515d69caa8d08063e7872dc54449e6ca2938b68a41a6047475637ea0a2b1cb6743d03738b97b38d4caa617b37'
         'ffef968846e3e4b3a585c2a1e85438cfe2c885d618bcb6c1f18e687b747637458d8faaee10debbb7401e1880fd56d6f8835eeced1d393ee8443abe8664f09afc'
         'c27bfa10944aa8f945f890a351de0e0bd2ceb17f84494ddcb99be94ed173bd48388c537c8908b3b5ea8606a2778aab6c075b7575ab4ef389cf68cb1a7c74f3b0')
