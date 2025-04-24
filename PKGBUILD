@@ -2,7 +2,7 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.23.3.beta.r8309.bca1cbf
+pkgver=0.23.4.beta.r8585.9a52c4c
 pkgrel=1
 pkgdesc='A private YouTube client - built from latest git, with the default electron.'
 arch=('x86_64')
