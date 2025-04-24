@@ -43,7 +43,7 @@ package() {
 	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
 }
 
-_rpm="""Fedore binary works on pure Wayland. 2.5.3 is unreleased.
+_rpm="""Fedora binary works on pure Wayland. 2.5.3 is unreleased.
 _pkgname='chatterino2'
 pkgname=${_pkgname}-bin
 provides=chatterino
@@ -57,7 +57,6 @@ url='https://github.com/chatterino/${_pkgname}'
 license=('MIT')
 depends=(hicolor-icon-theme openssl
 	qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
-makedepends=('binutils' 'grep' 'patchelf')
 optdepends=('streamlink: For piping streams to video players'
 			'qt6-wayland: Wayland support')
 provides=(chatterino)
