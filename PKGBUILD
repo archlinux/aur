@@ -3,8 +3,8 @@
 pkgbase=xguipro-git
 # pkgname=(xguipro-gtk{3,4}-git)
 pkgname=(xguipro-git)
-pkgver=0.9.0.r5.g342affe
-pkgrel=28
+pkgver=0.9.0.r30.gfaeb686
+pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=($CARCH)
 url="https://github.com/HVML/xGUI-Pro"
@@ -29,7 +29,7 @@ depends=(
     harfbuzz
     openssl
     pango
-    purc
+    purc-git
     zlib
 )
 makedepends=(
@@ -107,6 +107,9 @@ EOF
 }
 
 package() {
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
+    export LDFLAGS+=" ${LDFLAGS}"
     #     pkgdesc+=" (gtk3)"
     #     conflicts+=(${pkgname%-git})
     #     depends+=(
@@ -179,7 +182,9 @@ package() {
 #         gtk4
 #         libsoup3)
 #     options=('!strip')
-#
+#     export CFLAGS+=" ${CPPFLAGS}"
+#     export CXXFLAGS+=" ${CPPFLAGS}"
+#     export LDFLAGS+=" ${LDFLAGS}"
 #     export LDFLAGS="-L/lib64"
 #     if test -n "$LD_LIBRARY_PATH"; then
 #         export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64"
