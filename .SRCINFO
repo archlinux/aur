@@ -1,7 +1,7 @@
 pkgbase = gpx-viewer
 	pkgdesc = Simple tool to visualize tracks and waypoints stored in a gpx file
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blog.sarine.nl/tag/gpxviewer/
 	arch = x86_64
 	license = GPL
