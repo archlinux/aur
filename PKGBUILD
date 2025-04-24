@@ -2,7 +2,7 @@
 
 _pkgname="flytectl"
 pkgname=flytectl-bin
-pkgver=0.8.14
+pkgver=0.8.18
 pkgrel=1
 pkgdesc='Flyte official command-line interface'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ license=('Apache')
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 noextract=("${_pkgname}")
-sha256sums_x86_64=('bba5c08806a9044b75b0ddcb1132ecb773a579d8ebbf4dce34d924b60a5987e2')
-sha256sums_aarch64=('026cfe6230c416d110d61871fb9db5e40ce53673017489f9818233c3173245d8')
+sha256sums_x86_64=('431828790af05f227b3970ec1315873582daa56b217cdfb88c7079b4ba1838d9')
+sha256sums_aarch64=('dcc837661faed6932e77ffb160f06e439f95cf910ba6c6da27f702c18193b363')
 provides=('flytectl')
 conflicts=('flytectl')
 
