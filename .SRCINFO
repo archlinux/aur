@@ -1,6 +1,6 @@
 pkgbase = fabric-ai
 	pkgdesc = open-source framework for augmenting humans using AI
-	pkgver = 1.4.170
+	pkgver = 1.4.183
 	pkgrel = 1
 	url = https://github.com/danielmiessler/fabric
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fabric-ai
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = fabric-ai-1.4.170.tar.gz::https://github.com/danielmiessler/fabric/archive/v1.4.170.tar.gz
-	sha256sums = df8d5cb4217cd3589a14f05075d01327113b302e1f5b3b36de463beb8570dabe
+	source = fabric-ai-1.4.183.tar.gz::https://github.com/danielmiessler/fabric/archive/v1.4.183.tar.gz
+	sha256sums = 7c293716cb615a2ba7c26638c7dd16c335b2e145d3acbae72145f224fe8d6fb9
 
 pkgname = fabric-ai
