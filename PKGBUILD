@@ -1,8 +1,9 @@
 # Maintainer: Yuzu <g311571057 at gmail dot com>
 
+_pkgname=karousel
 pkgname=kwin-karousel-git
 pkgver=0.12.r28.gcaf2b5a
-pkgrel=1
+pkgrel=3
 pkgdesc='KWin tiling script with scrolling '
 arch=('any')
 url='https://github.com/peterfajdiga/karousel/'
@@ -12,7 +13,7 @@ makedepends=('git' 'nodejs' 'kpackage' 'typescript')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/peterfajdiga/karousel")
-sha1sums=(SKIP)
+sha1sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
