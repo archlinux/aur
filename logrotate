@@ -5,6 +5,6 @@
   sharedscripts
   compress
   postrotate
-    [[ -f /run/freenginx.pid ]] && kill -USR1 $(cat /run/freenginx.pid)
+    [[ -f /run/freenginx.pid ]] && kill -USR1 $(< /run/freenginx.pid)
   endscript
 }
