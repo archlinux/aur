@@ -9,7 +9,7 @@
 _pkgname=links
 pkgname=links-g-directfb
 pkgver=2.30
-pkgrel=3
+pkgrel=4
 pkgdesc="A text WWW browser, similar to Lynx (with directfb, X, and fb graphics. This version also supports SVGALIB)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://links.twibright.com/"
@@ -22,8 +22,8 @@ depends=('bzip2' 'directfb' 'xz' 'openssl' 'gpm' 'libx11' 'libavif' 'libtiff' 'l
 makedepends=('libxt')
 optdepends=('svgalib: svgalib support')
 provides=('links' 'links-g')
-# conflicts=('links' 'links-g')
-# replaces=('links-g')
+conflicts=('links')
+replaces=('links')
 source=(http://links.twibright.com/download/${_pkgname}-${pkgver}.tar.bz2 links.desktop)
 sha256sums=('c4631c6b5a11527cdc3cb7872fc23b7f2b25c2b021d596be410dadb40315f166'
             'e3aed7cda8ccb14295aa28508f528140541e5cc52659186d1f2c1122b0703bcc')
