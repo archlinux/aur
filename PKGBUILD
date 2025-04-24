@@ -31,7 +31,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.7.beta1.r3.g64279aff7
+pkgver=2.7.beta1.r8.ga342e1e68
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -114,7 +114,7 @@ prepare() {
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info.major,version_info.minor))")
   CMAKE_FLAGS+=("-DPYTHON_V=${_pyver}")
-  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja
+  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 # shellcheck disable=SC2046
   ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
