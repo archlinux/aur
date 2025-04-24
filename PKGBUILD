@@ -5,7 +5,7 @@
 
 pkgname=vinagre
 pkgver=3.22.0+r160+gc86e114
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A VNC Client for the GNOME desktop"
 url="https://wiki.gnome.org/Apps/Vinagre"
