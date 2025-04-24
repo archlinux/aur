@@ -3,7 +3,7 @@
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.37
+pkgver=1.38
 pkgrel=1
 pkgdesc="QuantLib wrappers to Python"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=("quantlib>=$pkgver" python openmp)
 makedepends=(clang boost python-installer python-build python-setuptools)
 checkdepends=(python-tox python-pytest)
 source=(https://github.com/lballabio/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=("90b9623d1165ad3f6ae6bfc431ea215d9b8075c3174bcbb628b1dffde40473eb")
+sha256sums=("405a4f9c6ef730589fe1c017a1fb7e24fa4a53f6815d9c6d0f071c9ef591bcf5")
 options=(!libtool)
 
 prepare() {
