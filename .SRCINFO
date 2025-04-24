@@ -1,11 +1,11 @@
 pkgbase = trivalent-bin
 	pkgdesc = A hardened chromium for desktop Linux inspired by Vanadium.
-	pkgver = 135.0.7049.84
+	pkgver = 135.0.7049.95
 	pkgrel = 1
 	url = https://github.com/secureblue/Trivalent
 	arch = x86_64
 	license = (GPL-2.0-only WITH (Apache-2.0-note AND FTL-note AND WebView-note)) AND BSD-3-Clause AND LGPL-2.1-or-later AND Apache-2.0 AND IJG AND MIT AND GPL-2.0-or-later AND ISC AND OpenSSL AND (MPL-1.1 OR GPL-2.0-only OR LGPL-2.0-only)
-	depends = gtk3
+	depends = gtk4
 	depends = nss
 	depends = alsa-lib
 	depends = xdg-utils
@@ -37,16 +37,16 @@ pkgbase = trivalent-bin
 	depends = bubblewrap
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
-	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
+	optdepends = gtk3: legacy
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
 	optdepends = qt6-base: QT UI support
-	source = https://repo.secureblue.dev/Packages/trivalent-135.0.7049.84-436037.x86_64.rpm
-	source = https://repo.secureblue.dev/Packages/trivalent-common-135.0.7049.84-436037.x86_64.rpm
-	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-135.0.7049.84-436037.x86_64.rpm
-	sha256sums = 360ab9ed3a21473ac368e9eb03c00866476df66bb61543d44d6f5251046bf882
-	sha256sums = 8d58b84fcdde1fe82be2b0e0412785400e2b512733a8539316f8be05c07dd5aa
-	sha256sums = c2669708a55a53dbaa03488208ac65147c78829fcda8f737ace56f2482acadd4
+	source = https://repo.secureblue.dev/Packages/trivalent-135.0.7049.95-436191.x86_64.rpm
+	source = https://repo.secureblue.dev/Packages/trivalent-common-135.0.7049.95-436191.x86_64.rpm
+	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-135.0.7049.95-436191.x86_64.rpm
+	sha256sums = 145e5dc4410f9a80c4f418efb77ff095fa7ea5fd38610eec889460f25b7ee3fd
+	sha256sums = 045bd13dba7408ee05c16501edfed3bd2b42696773b4bdadcf6b0ff24b2ce98c
+	sha256sums = 8dc3c873b986f157e1ee59224325f9990d5d0416a97e36049cb3ecd74360fa0a
 
 pkgname = trivalent-bin
