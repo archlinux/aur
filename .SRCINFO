@@ -1,0 +1,13 @@
+pkgbase = commiefetch-git
+	pkgdesc = Revolutionäres CLI-Tool zum Anzeigen von Systeminfos mit Hammer-und-Sichel-Logo und automatischer Bashrc-Integration
+	pkgver = 1.0.r1.unknown
+	pkgrel = 1
+	url = https://gitlab.com/arch1380517/commiefetch
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	source = git+https://gitlab.com/arch1380517/commiefetch.git
+	md5sums = SKIP
+
+pkgname = commiefetch-git
