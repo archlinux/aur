@@ -4,7 +4,7 @@
 #
 pkgname=pypi2aur
 _origpkgname=pypi2aur
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="PyPi to AUR PKGBUILD generator and helper."
 arch=("x86_64")
@@ -22,8 +22,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/9b/0e/a82643ecc91b3147fac0eac63facee9754b3bbb79031d5082ccdd1500c4b/pypi2aur-0.1.6.tar.gz")
-sha256sums=("f7ece7d0eea3ab6923c4a5dd728b5309b6b1b4764f0a0034bc1d64fac09383b0")
+source=("https://files.pythonhosted.org/packages/e8/11/1c07fb9107a33f05e3448370ca19b71b0737745a9200335fc5138e14c525/pypi2aur-0.1.7.tar.gz")
+sha256sums=("c137bf5d471d429bd599b87f9cb0ab74f2db508b9d02992571fbcb69897b1b68")
 
 
 package() {
