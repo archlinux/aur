@@ -1,6 +1,6 @@
 pkgbase = soupault-bin
 	pkgdesc = Static website generator based on HTML element tree rewriting (pre-compiled)
-	pkgver = 4.11.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/PataphysicalSociety/soupault
 	arch = aarch64
@@ -9,8 +9,8 @@ pkgbase = soupault-bin
 	makedepends = minisign
 	provides = soupault
 	conflicts = soupault
-	source = https://github.com/PataphysicalSociety/soupault/releases/download/4.11.0/soupault-4.11.0-linux-x86_64.tar.gz
-	source = https://github.com/PataphysicalSociety/soupault/releases/download/4.11.0/soupault-4.11.0-linux-x86_64.tar.gz.minisig
+	source = https://github.com/PataphysicalSociety/soupault/releases/download/5.0.0/soupault-5.0.0-linux-x86_64.tar.gz
+	source = https://github.com/PataphysicalSociety/soupault/releases/download/5.0.0/soupault-5.0.0-linux-x86_64.tar.gz.minisig
 	sha256sums = SKIP
 	sha256sums = SKIP
 
