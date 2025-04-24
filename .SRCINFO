@@ -1,5 +1,5 @@
 pkgbase = dilidili-git
-	pkgdesc = A bilibili BV downloader.bilibli + download = dilidili.Use system-wide electron.
+	pkgdesc = A bilibili BV downloader.bilibli + download = dilidili.(Use system-wide electron)
 	pkgver = 1.0.10.r0.g0009c60
 	pkgrel = 1
 	url = https://github.com/Darcrandex/dilidili
