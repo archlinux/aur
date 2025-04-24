@@ -34,5 +34,6 @@ build() {
 
 package() {
   cd qwt-${pkgver}
-  make install INSTALL_ROOT="${pkgdir}" 
+  make install INSTALL_ROOT="${pkgdir}"
+  rm -r "${pkgdir}"/usr/share/doc
 }
