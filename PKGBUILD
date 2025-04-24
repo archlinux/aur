@@ -1,0 +1,82 @@
+# Maintainer: dawsers <dawser at gmx dot com>
+pkgname=sway-scroll-git
+pkgver=.r7546.c33803e
+pkgrel=1
+pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)'
+arch=('x86_64')
+url="https://github.com/dawsers/scroll"
+license=("MIT")
+depends=(
+	"cairo"
+	"gdk-pixbuf2"
+	"json-c"
+	"libdrm"
+	"libevdev"
+	"libinput"
+	"libxcb"
+	"libxkbcommon"
+	"pango"
+	"pcre2"
+	"pixman"
+	"wayland"
+	"wlroots-git"
+	"xcb-util-wm"
+)
+makedepends=(
+	"git"
+	"libcap"
+	"meson"
+	"scdoc"
+	"wayland-protocols"
+)
+optdepends=(
+	'wmenu: Application launcher used in default configuration'
+	'foot: Terminal emulator used in default configuration'
+	'polkit: System privilege control. Required if not using seatd service'
+	'swaybg: Wallpaper tool for sway'
+	'swayidle: Idle management daemon'
+	'swaylock: Screen locker'
+	'xdg-desktop-portal-gtk: Portal used for default file picking'
+	'xdg-desktop-portal-wlr: Portal used for screen sharing'
+)
+provides=("${pkgname%-git}" "wayland-compositor")
+conflicts=("${pkgname%-git}")
+install="${pkgname}.install"
+source=("${pkgname}::git+${url}.git"
+	"50-systemd-user.conf"
+	"scroll-portals.conf")
+b2sums=('SKIP'
+        '3b7d7cd9b3de3944e910c7903edc49b1f85ab5c8e40de4b930148456cd000dfb81c79fead29c71feacaf006bbccd5180ce01e922516e6aa41c2964422b942605'
+        'cdba5fd2988b7ead8b264d5b41f1c7adb47a6487be1e3a4ce98c0af2094d9964f4bc364237c4437014be18061f067aa741b0382f21365be497e06b189c5c7728')
+
+_meson_setup() {
+	arch-meson "$pkgname" "$1" -D sd-bus-provider=libsystemd
+}
+
+prepare() {
+	_meson_setup build-pkgver
+}
+
+pkgver() {
+	(
+		set -o pipefail
+		meson introspect --projectinfo build-pkgver | sed -n 's/.*"version": "\([^"]*\)".*/\1/;s/-dev//p' | tr -d '\n'
+	)
+	cd "$pkgname"
+	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+	_meson_setup build
+	meson compile -C build
+}
+
+package() {
+	meson install -C build --destdir "$pkgdir"
+
+	install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/scroll/config.d/"
+	install -Dm644 scroll-portals.conf -t "$pkgdir/usr/share/xdg-desktop-portal/"
+}
