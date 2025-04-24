@@ -2,8 +2,8 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.19.r26.g1e47c60c2
-pkgrel=4
+pkgver=0.9.19.r649.g77b2f5721
+pkgrel=3
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=($CARCH)
 url="https://github.com/HVML/PurC"
@@ -85,6 +85,10 @@ prepare() {
 }
 
 build() {
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
+    export LDFLAGS+=" ${LDFLAGS}"
+
     export LDFLAGS="-L/lib64"
     if test -n "$LD_LIBRARY_PATH"; then
         export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64"
