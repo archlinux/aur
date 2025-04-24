@@ -1,12 +1,12 @@
 pkgname=qwt-qt6
 pkgver=6.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt Widgets for Technical Applications (qt6)"
 arch=('any')
 license=('custom:qwt')
 url="https://qwt.sourceforge.io/"
 depends=('qt6-svg')
-makedepends=('qt6-base')
+makedepends=('qt6-base' 'qt6-tools')
 source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2")
 sha256sums=('dcb085896c28aaec5518cbc08c0ee2b4e60ada7ac929d82639f6189851a6129a')
 
@@ -23,6 +23,7 @@ prepare() {
       -e 's|Qt5|Qt6|' -e 's|Qt5|Qt6|' -e 's|Qt5|Qt6|' \
       -i src/src.pro
   sed -e "/QwtExamples/d" -e "/QwtTests/d" -e "/QwtPlayground/d" -i qwtconfig.pri
+  sed -i 's|qwtAddLibrary($${QWT_OUT_ROOT}/lib, qwt)|qwtAddLibrary(\$\${QWT_OUT_ROOT}/lib, qwt-qt6)|g' designer/designer.pro
 }
 
 build() {
