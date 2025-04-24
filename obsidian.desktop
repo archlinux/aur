@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Obsidian Level Maker
+Comment=Generate random levels for classic FPS games (DOOM etc)
+Exec=/usr/share/obsidian/obsidian --install /usr/share/obsidian
+Icon=obsidian
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+StartupNotify=false

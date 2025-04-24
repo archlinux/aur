@@ -1,0 +1,20 @@
+pkgbase = obsidian-level-maker-unstable
+	pkgdesc = Random level generator for classic FPS titles, unstable version.
+	pkgver = 21.20250407
+	pkgrel = 1
+	url = https://obsidian-level-maker.github.io
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = libx11
+	depends = fltk
+	provides = oblige-obsidian
+	conflicts = oblige-obsidian
+	noextract = obsidian-level-maker-unstable-21.20250407.tar.gz
+	source = obsidian-level-maker-unstable-21.20250407.tar.gz::https://github.com/obsidian-level-maker/Obsidian/archive/refs/tags/Obsidian-v21-20250407.tar.gz,
+	source = obsidian.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = obsidian-level-maker-unstable
