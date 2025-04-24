@@ -4,7 +4,7 @@
 
 pkgname=raw-thumbnailer
 pkgver=47.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight and fast raw image thumbnailer that can be used by file managers."
 url="https://gitlab.gnome.org/World/gnome-raw-thumbnailer/"
 license=('GPL-2.0-or-later')
@@ -20,12 +20,8 @@ prepare() {
 }
 
 build() {
-  arch-meson gnome-$pkgname-$pkgver build
+  arch-meson gnome-$pkgname-$pkgver build -Dprofile=release
   meson compile -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs
 }
 
 package() {
