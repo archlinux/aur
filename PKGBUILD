@@ -6,7 +6,7 @@
 pkgname='soupault-bin'
 _pkgname="${pkgname/-bin}"
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Static website generator based on HTML element tree rewriting (pre-compiled)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/PataphysicalSociety/soupault'
@@ -20,7 +20,8 @@ provides=("$_pkgname")
 conflicts=("${provides[@]}")
 _relpath="$url/releases/download/$pkgver"
 _tarball="$_pkgname-$pkgver-linux-$CARCH.tar.gz"
-_plugins_url='https://soupault.app/files/plugins'
+#_plugins_url='https://soupault.app/files/plugins'
+_plugins_url='https://raw.githubusercontent.com/PataphysicalSociety/soupault.app/refs/heads/main/assets/files/plugins/'
 _plugins=(
   "$_plugins_url/collapsible-list.lua"
   "$_plugins_url/escape-html.lua"
