@@ -4,7 +4,7 @@
 #
 pkgname=hyprnav
 _origpkgname=hyprnav
-pkgver=0.0.14
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="A modern and customizable workspace navigation effect for Hyprland."
 arch=("x86_64")
@@ -24,8 +24,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/e4/ff/81e0166ba6d69418aa299231fb143c8052900d3127a0666af58d83c48171/hyprnav-0.0.14.tar.gz")
-sha256sums=("07d4252d24c8d90295045b870ddf6302bd49ead64467335af9bf0643b8d2c328")
+source=("https://files.pythonhosted.org/packages/fe/a3/34fd862141a0822804723b1e1f53618b3a4678db894d953658b352ec7648/hyprnav-0.0.16.tar.gz")
+sha256sums=("ca00a7b5780c9004da1647ead0543038d0e3646b98d7bc2c3ce99dbaadf12b1c")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
