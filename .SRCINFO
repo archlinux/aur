@@ -1,5 +1,5 @@
 pkgbase = leser-git
-	pkgdesc = A modern style RSS cross-platform desktop client.Use system-wide electron.一个现代风格的 RSS 跨平台桌面客户端.
+	pkgdesc = A modern style RSS cross-platform desktop client.(Use system-wide electron)一个现代风格的 RSS 跨平台桌面客户端.
 	pkgver = 1.0.0.r4.gb654a12
 	pkgrel = 1
 	url = https://github.com/KangodYan/leser
@@ -9,8 +9,6 @@ pkgbase = leser-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	depends = electron28
 	provides = leser=1.0.0
