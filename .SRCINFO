@@ -1,5 +1,5 @@
 pkgbase = snowflake-cli-bin
-	pkgdesc = snowflake-cli (snow) command
+	pkgdesc = snowflake-cli (snow)
 	pkgver = 3.7.0
 	pkgrel = 1
 	epoch = 1
