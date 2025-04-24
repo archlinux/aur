@@ -1,0 +1,18 @@
+pkgbase = treecat
+	pkgdesc = Cat files or directory trees recursively wrapped in Markdown code blocks
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/amitpalsbadhan/treecat
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	source = treecat::https://raw.githubusercontent.com/amitpalsbadhan/treecat/v1.0.1/treecat
+	source = LICENSE
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = treecat
