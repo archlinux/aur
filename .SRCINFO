@@ -1,6 +1,6 @@
 pkgbase = select-launcher-git
-	pkgdesc = Official launcher for all games made by select.Use system-wide electron.
-	pkgver = 3.0.0.beta.13.r3.g5fb693d
+	pkgdesc = Official launcher for all games made by select.(Use system-wide electron)
+	pkgver = 3.0.0.beta.13.r11.g189092d
 	pkgrel = 1
 	url = https://select-launcher.onrender.com/
 	arch = any
