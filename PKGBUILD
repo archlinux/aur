@@ -2,13 +2,17 @@
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 pkgname=adw-gtk-theme-git
 _pkgname=adw-gtk3
-pkgver=5.5.r2.g9d111f9
+pkgver=5.10.r2.g5962743
 pkgrel=1
 pkgdesc="The theme from libadwaita ported to GTK-3"
 arch=('any')
 url="https://github.com/lassekongo83/adw-gtk3"
 license=('LGPL-2.1-or-later')
-makedepends=('git' 'meson' 'sassc')
+makedepends=(
+  'dart-sass'
+  'git'
+  'meson'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${_pkgname}")
 source=('git+https://github.com/lassekongo83/adw-gtk3.git')
@@ -25,5 +29,5 @@ build() {
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }

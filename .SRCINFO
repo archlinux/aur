@@ -1,13 +1,13 @@
 pkgbase = adw-gtk-theme-git
 	pkgdesc = The theme from libadwaita ported to GTK-3
-	pkgver = 5.5.r2.g9d111f9
+	pkgver = 5.10.r2.g5962743
 	pkgrel = 1
 	url = https://github.com/lassekongo83/adw-gtk3
 	arch = any
 	license = LGPL-2.1-or-later
+	makedepends = dart-sass
 	makedepends = git
 	makedepends = meson
-	makedepends = sassc
 	provides = adw-gtk-theme
 	conflicts = adw-gtk-theme
 	conflicts = adw-gtk3
