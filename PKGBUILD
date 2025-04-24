@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-bin
 _pkgname=Fladder
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A Simple Jellyfin Frontend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/main/LICENSE"
     "fladder.desktop"
 )
-sha256sums=('470a2f0d814df6486050599a985086732309c5c37f13f8d52d613310ed0690c7'
+sha256sums=('3da0fc6a51b8ee7f1eafe7d2403d9e8d649a7ad2a550ab1c9ea13a7333fe40d9'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1')
 
