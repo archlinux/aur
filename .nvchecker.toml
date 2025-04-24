@@ -1,0 +1,4 @@
+[gftl]
+source = "git"
+git = "https://github.com/Goddard-Fortran-Ecosystem/gFTL.git"
+prefix = "v"

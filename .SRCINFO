@@ -1,0 +1,13 @@
+pkgbase = gftl
+	pkgdesc = Software containers for Fortran
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://github.com/Goddard-Fortran-Ecosystem/gFTL
+	arch = any
+	license = Apache-2.0
+	makedepends = cmake>=3.12
+	makedepends = gcc-fortran
+	source = gFTL-1.15.2.tar.gz::https://github.com/Goddard-Fortran-Ecosystem/gFTL/archive/refs/tags/v1.15.2.tar.gz
+	b2sums = 768771d64ad6e30251b4e7d1d35894006170980fa37c180d72823ff4c65a887a53137c2ae53a9fe9dde437847e43666f0aece6839fbf20306df3a04330aa6918
+
+pkgname = gftl
