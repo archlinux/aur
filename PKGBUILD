@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at tutanota dot de>
 
 pkgname=peergos
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A p2p, secure file storage, social network and application protocol"
 url="https://github.com/Peergos/web-ui"
@@ -14,10 +14,10 @@ source=("$pkgname-$pkgver.jar::$url/releases/download/v$pkgver/Peergos.jar"
         "$pkgname.sh"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/Peergos/Peergos/master/Licence.txt"
         "$pkgname-webui-LICENSE::https://raw.githubusercontent.com/Peergos/web-ui/master/LICENSE")
-sha256sums=('58942cbd447b07f27bec0d7768400db87b229132b0663a4b51bc50c5c8a86925'
-            '37c237b578c5a1828cae720daaf6059e0451c0f9ab618089b9e8b3d972d327a6'
-            '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
-            '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
+sha512sums=('c852b65757413aef2a2045b0c1cf94bb675089ad0ae5e6d743d24155091a4d6ca03349ef6353715e27ac7102c35ac921401efebee37f961a5ce50e4ead25db10'
+            'cc143f55631eb372d622c058f97a084d7f374df28ce316b16c1ee9c95cb9cfcd763e929cd51ceb1e29fbf7e646c46b1627c13fc284513d665840da648917c247'
+            'a0a86214ea153fb07ff35ceec0848dd1703eae22de036a825efc8394e50f65e3044832f3b49cf7e45a39edc470bdf738abc36a3a78ca7df3a6e73c14eaef94a8'
+            '552aec8d120c9d931769f6a6b794716fce978d0055715de21746dc0f064f4a0f72b6be42d4828b98a56715b23fa427c1f66fd20aca0ef1751cc384c420db1605')
 
 # followed guidelines here
 # https://wiki.archlinux.org/title/Java_package_guidelines
