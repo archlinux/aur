@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at tutanota dot de>
 
 pkgname=peergos
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A p2p, secure file storage, social network and application protocol"
 url="https://github.com/Peergos/web-ui"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.jar::$url/releases/download/v$pkgver/Peergos.jar"
         "$pkgname.sh"
         "$pkgname-LICENSE::https://raw.githubusercontent.com/Peergos/Peergos/master/Licence.txt"
         "$pkgname-webui-LICENSE::https://raw.githubusercontent.com/Peergos/web-ui/master/LICENSE")
-sha256sums=('7b491ff54e270c37fe7fe0aff691c59ad4d5f458c8bc849196ad8ec77c4e0d5b'
+sha256sums=('58942cbd447b07f27bec0d7768400db87b229132b0663a4b51bc50c5c8a86925'
             '37c237b578c5a1828cae720daaf6059e0451c0f9ab618089b9e8b3d972d327a6'
             '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
             '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
