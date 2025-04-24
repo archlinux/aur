@@ -3,10 +3,8 @@ _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-pkgver=2.5.3
-pkgrel=3
-scdir=$_pkgname
-_pkgver="${pkgver//_/-}"
+pkgver=2025.04.23
+pkgrel=1
 pkgdesc="Second installment of the Twitch chat client series "Chatterino""
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
@@ -32,13 +30,10 @@ optdepends=('streamlink: For piping streams to video players'
             'gst-plugins-good: For audio output')
 provides=chatterino
 conflicts=chatterino
-#source=(${_pkgname}.desktop)
 source=("${url}/releases/download/nightly-build/Chatterino-Ubuntu-24.04-x86_64.deb")
-sha256sums=('32f569b5b89309d6a581305e1f273a908f5ac0d29475f2c52c479d51fee6e066')
+sha256sums=('SKIP')
 package() {
 	bsdtar -xf data.tar.zst -C "${pkgdir}"
-	install -d "${pkgdir}/opt/${_pkgname}" #why?
-	install -d "$pkgdir/usr/bin"
 	#Replace icu
 	_icuorig=$(ldd "$pkgdir"/usr/bin/chatterino|grep libicui18n.so.|awk '{print $1}' |sed s/libicui18n.so.//) #incomplete
 	_icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
