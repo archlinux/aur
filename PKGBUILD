@@ -5,7 +5,7 @@ pkgname=nginx-mod-accesskey
 pkgver=2.0.5
 pkgrel=16
 _dirname="nginx-accesskey-$pkgver"
-_nginxver=1.26.3
+_nginxver=1.28.0
 
 pkgdesc='Accesskey module for NGINX'
 arch=('x86_64')

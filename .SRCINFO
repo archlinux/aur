@@ -6,7 +6,7 @@ pkgbase = nginx-mod-accesskey
 	arch = x86_64
 	license = unknown
 	makedepends = nginx-src
-	depends = nginx=1.26.3
+	depends = nginx=1.28.0
 	source = nginx-mod-accesskey-2.0.5::https://github.com/Martchus/nginx-accesskey/archive/v2.0.5.tar.gz
 	sha256sums = f7cb363fb527dfda202009942ed3b1bb98e5ef9723893aa0beba22adf9b1a246
 
