@@ -1,7 +1,7 @@
 pkgbase = moebits-music-player-bin
-	pkgdesc = A music player with real-time pitch shifting, time stretching, and reversing effects.Prebuilt version.Use system-wide electron.
+	pkgdesc = A music player with real-time pitch shifting, time stretching, and reversing effects.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://musicplayer.moe/
 	arch = x86_64
 	license = CC-BY-NC-4.0
