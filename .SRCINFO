@@ -1,5 +1,5 @@
 pkgbase = out-of-mind-git
-	pkgdesc = A tiny timer to keep you focused. Write down what you want to work on, then start the timer!Use system-wide electron.
+	pkgdesc = A tiny timer to keep you focused. Write down what you want to work on, then start the timer!(Use system-wide electron)
 	pkgver = 2.0.0.r0.g6befc61
 	pkgrel = 1
 	url = https://github.com/0916dhkim/out-of-mind

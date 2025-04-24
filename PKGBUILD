@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=out-of-mind-git
-_pkgname="Out of Mind"
+_pkgname='Out of Mind'
 pkgver=2.0.0.r0.g6befc61
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="A tiny timer to keep you focused. Write down what you want to work on, then start the timer!Use system-wide electron."
+pkgdesc="A tiny timer to keep you focused. Write down what you want to work on, then start the timer!(Use system-wide electron)"
 arch=('any')
 url="https://github.com/0916dhkim/out-of-mind"
-license=("MIT")
+license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
@@ -40,18 +40,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -69,10 +68,15 @@ build() {
         } >> .npmrc
         sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" package-lock.json
     fi
-    sed "s|\/\${version}||g;s|AppImage|dir|g" -i electron-builder.json5
+    sed -i "s/\/\${version}//g" electron-builder.json5
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx vite build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
