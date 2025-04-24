@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <https://rys.rs/contact> | Toss a coin on https://rys.rs/donate
 
 pkgname=python-pysdl3
-pkgver=0.9.7b9
+pkgver=0.9.8b0
 pkgrel=1
 pkgdesc="Python ctypes wrapper around SDL3"
 arch=("x86_64")
@@ -26,7 +26,7 @@ optdepends=(
 	)
 #source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aermoss/PySDL3/archive/refs/tags/v${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}::git+https://github.com/Aermoss/PySDL3.git#tag=v${pkgver}")
-sha256sums=('9c04792d4bb77132742c2a2a2d1e48b528f56b9a49ba06dbd30e9c174bccb3d7')
+sha256sums=('defeab5650e7b83fadcb8c788f8c7e447cb4ca3c21074ce778701c0160ca9396')
 
 
 build() {
