@@ -1,7 +1,7 @@
 pkgbase = confz
 	pkgdesc = Pydantic Config Management
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zuehlke/ConfZ.git
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = confz
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-poetry
 	depends = python
 	depends = python-pydantic
 	depends = python-pyaml
