@@ -3,7 +3,7 @@
 pkgname=ll-killer-go-bin
 # _tagname=1.4.26
 # pkgver="${_tagname//-/_}"
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="玲珑杀手 Go: 玲珑应用快速构建系统"
 arch=(aarch64 x86_64 loong64)
@@ -34,9 +34,9 @@ source=(
     "LICENSE::https://github.com/System233/ll-killer-go/raw/refs/heads/main/LICENSE"
 
 )
-sha256sums=('76a8ec4d85f1f84707bd5c9c0ccda44fb7e28790023753df77f785438d27533d'
-            'a716e8c6d7f544e0b621b4a59778679e0d48c447aaacb85114435a52b7feb97f'
-            '5ca49b930adc0d1e668d650b848feae61facefd2aa59c250762357648569b0e0'
+sha256sums=('c80033a54a5bb0e15102eadeaaebda59daa3d84d19979721cdf4b1866595dfe0'
+            '0dffc9eeb5e4ef48a75f642f796c013ffa1e22f78c14ae6b4738b1dfa4960af9'
+            'c71a498c784817a22a4602a46751197f01dabce88dd4cff4d818bff1b3d1a48e'
             '687bf17b3dea772247820724ddbcb1a6dcb8ac48f9a85612d836b7ebfe11db36')
 
 package() {
