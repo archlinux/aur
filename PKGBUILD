@@ -184,7 +184,7 @@ package_nginx-quic-libressl() {
 }
 
 package_nginx-quic-libressl-src() {
-  pkgdesc="Source code of nginx-quic $pkgver, useful for building modules"
+  pkgdesc="Source code of nginx-quic, useful for building modules"
   arch=('any')
   provides=('nginx-src' 'nginx-mainline-src')
   conflicts=($_pkgbase-src)
