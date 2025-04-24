@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-1_amd64.deb")
 
-sha256sums_x86_64=("35d99a0e31153c9b60f57f5b1d00741d2f8e5dc6876f799d28b1afeff2c3ee8e792aeeeb0c5183ebb95bcd21f66a983308142c9e2a71da1338284bc7082156f8")
+sha256sums_x86_64=("07acf12676ce2bbf16b0fd4b5403b8dee3356f005d45f2510cac0894851e42d6")
 
 prepare() {
     mkdir data

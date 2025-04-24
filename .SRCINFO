@@ -14,6 +14,6 @@ pkgbase = crystal-dock-bin
 	options = !strip
 	options = staticlibs
 	source_x86_64 = crystal-dock-bin-2.12-amd64.deb::https://github.com/dangvd/crystal-dock/releases/download/v2.12/crystal-dock_2.12-1_amd64.deb
-	sha256sums_x86_64 = 35d99a0e31153c9b60f57f5b1d00741d2f8e5dc6876f799d28b1afeff2c3ee8e792aeeeb0c5183ebb95bcd21f66a983308142c9e2a71da1338284bc7082156f8
+	sha256sums_x86_64 = 07acf12676ce2bbf16b0fd4b5403b8dee3356f005d45f2510cac0894851e42d6
 
 pkgname = crystal-dock-bin
