@@ -1,0 +1,3 @@
+[lalrpop]
+source = "git"
+git = "https://github.com/lalrpop/lalrpop"
