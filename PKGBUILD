@@ -11,6 +11,7 @@ depends=('vulkan-driver' 'vulkan-icd-loader')
 makedepends=(
   'cmake'
   'git'
+  'shaderc'
   'vulkan-headers'
 )
 conflicts=("${pkgname%%-git}" 'ggml' 'libggml')

@@ -9,6 +9,7 @@ pkgbase = ggml-vulkan-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = shaderc
 	makedepends = vulkan-headers
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
