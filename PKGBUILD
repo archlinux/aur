@@ -5,7 +5,7 @@
 pkgname=pypi2aur
 _origpkgname=pypi2aur
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="PyPi to AUR PKGBUILD generator and helper."
 arch=("x86_64")
 url='https://pypi.org/project/pypi2aur/'
@@ -14,6 +14,7 @@ depends=(
 	"python-requests"
 	"python-click"
 	"python-slugify"
+	"python-rich"
 )
 makedepends=(
 	"python-build"
