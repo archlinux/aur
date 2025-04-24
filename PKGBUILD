@@ -1,24 +1,39 @@
-# Maintainer: mcp <mcp@praeger.org>
+# Contributor: mcp <mcp@praeger.org>
+
 pkgname=tztail-git
-pkgver=r16.ceea0a6
+pkgver=1.2.0.r4.g6c94e13
 pkgrel=1
-pkgdesc='tztail (TimeZoneTAIL) allows you to view logs in the timezone you want'
-arch=('any')
+pkgdesc='Allows you to view logs in the timezone you want'
+arch=('x86_64')
 url='https://github.com/thecasualcoder/tztail'
 license=('MIT')
-makedepends=('git' 'rust')
+depends=('gcc-libs')
+makedepends=('git' 'cargo')
 provides=('tztail')
-source=('tztail::git+git://github.com/thecasualcoder/tztail#branch=master')
+conflicts=('tztail')
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    git describe --long --tags | sed 's/-/.r/;s/-/./g';
+}
+
+prepare() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-	cargo build --release
-	strip ./target/release/tztail
-	install -Dm755 ./target/release/tztail $pkgdir/usr/bin/tztail
+    cd "$pkgname"
+    install -Dm755 -t "$pkgdir/usr/bin/" "target/release/tztail"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-MIT
 }
