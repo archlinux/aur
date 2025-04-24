@@ -1,0 +1,4 @@
+[solang-bin]
+source = "git"
+git = "https://github.com/hyperledger-labs/solang"
+prefix = "v"

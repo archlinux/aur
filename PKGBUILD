@@ -1,7 +1,8 @@
-# Maintainer: sin
+# Maintainer: iamawacko <iamawacko@protonmail.com>
+# contributor: sin
 pkgname=solang-bin
 _pkgname=solang
-pkgver=0.1.8
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A Solidity to wasm compiler written in rust'
 url='https://github.com/hyperledger-labs/solang'
