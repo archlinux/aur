@@ -44,7 +44,8 @@ build() {
 				  -DBUILD_SHARED_LIBS=ON \
 				  -DENABLE_PYMOAB=ON \
 				  -DBUILD_SHARED_LIBS=ON \
-				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB
+				  -DCMAKE_INSTALL_PREFIX=/opt/MOAB \
+				  -DHDF5_INCLUDE_DIR=/usr/include
 
 	_ccores=$(nproc)
 	# check if _ccores is a positive integer, if not, serial build
