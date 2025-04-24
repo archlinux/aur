@@ -31,6 +31,7 @@ build() {
     powerpc) EXTRAOPTS='COMPILE_ARCH=ppc' ;;
     *) EXTRAOPTS='' ;;
   esac
+
   cd "${srcdir}/iortcw"
 
   # Build Single Player
@@ -43,6 +44,11 @@ build() {
 }
 
 package() {
+  case "${CARCH}" in
+    powerpc) EXTRAOPTS='COMPILE_ARCH=ppc' ;;
+    *) EXTRAOPTS='' ;;
+  esac
+
   cd "${srcdir}/iortcw"
 
   cd SP
