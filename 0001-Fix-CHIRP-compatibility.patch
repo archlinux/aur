@@ -1,0 +1,29 @@
+From 20a0cc6073710074a9d1d35dabf397c5abbf7beb Mon Sep 17 00:00:00 2001
+From: Pierre Ayoub <pierre.ayoub.pro@tutanota.com>
+Date: Thu, 25 Jul 2024 20:22:04 +0200
+Subject: [PATCH] Fix CHIRP compatibility
+
+Egzumer CHIRP driver recognize a firmware by using the AUTHOR_STRING which is
+appended to first message. See:
+https://github.com/egzumer/uvk5-chirp-driver/blob/main/uvk5_egzumer.py#L466
+---
+ Makefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8cc2d0d..af2eff9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -206,7 +206,8 @@ endif
+ OBJCOPY = arm-none-eabi-objcopy
+ SIZE = arm-none-eabi-size
+ 
+-AUTHOR_STRING := NUNU
++# NOTE: Needs to be "EGZUMER" to be recognized by "uvk5-chirp-driver".
++AUTHOR_STRING := EGZUMER
+ # the user might not have/want git installed
+ # can set own version string here (max 7 chars)
+ ifneq (, $(shell $(WHERE) git))
+-- 
+2.45.2
+

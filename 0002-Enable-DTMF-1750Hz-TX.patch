@@ -1,0 +1,25 @@
+From c8a98da7da964bca620e865eacba04648f7f9994 Mon Sep 17 00:00:00 2001
+From: Pierre Ayoub <pierre.ayoub.pro@tutanota.com>
+Date: Thu, 25 Jul 2024 21:41:00 +0200
+Subject: [PATCH] Enable DTMF 1750Hz TX
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index af2eff9..6e9c686 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,7 +17,7 @@ ENABLE_NOAA                   := 0
+ ENABLE_VOICE                  := 0
+ ENABLE_VOX                    := 1
+ ENABLE_ALARM                  := 0
+-ENABLE_TX1750                 := 0
++ENABLE_TX1750                 := 1
+ ENABLE_PWRON_PASSWORD         := 1
+ ENABLE_DTMF_CALLING           := 0
+ 
+-- 
+2.45.2
+

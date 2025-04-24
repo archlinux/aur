@@ -1,0 +1,22 @@
+pkgbase = kamilsss655-uv-k5-firmware-custom-git
+	pkgdesc = Kamilsss655 (aka Nunu) firmware for UV-K5 handheld radio.
+	pkgver = 20.5.r40.g9aa505e
+	pkgrel = 1
+	url = https://github.com/kamilsss655/uv-k5-firmware-custom
+	arch = any
+	license = GPL
+	depends = make
+	depends = arm-none-eabi-gcc
+	depends = arm-none-eabi-binutils
+	depends = arm-none-eabi-newlib
+	depends = python-crcmod
+	source = kamilsss655-uv-k5-firmware-custom-git::git+https://github.com/kamilsss655/uv-k5-firmware-custom
+	source = 0001-Fix-CHIRP-compatibility.patch
+	source = 0002-Enable-DTMF-1750Hz-TX.patch
+	source = 0003-Enable-BYPASS-and-RAW-demods.patch
+	sha256sums = SKIP
+	sha256sums = ef8c23df75c303dc4e83d9e0a5f5d289c80737bd8daccc37bc208c8e30cbb271
+	sha256sums = 7f97b6631700a0b589a7ea364a7a788d607f216fb989dd9470b1f572565419e6
+	sha256sums = 8ae5961c1696ef21ca8cb882ee27276e05ddd3937b9bd01bf2b39ad1aa11f89f
+
+pkgname = kamilsss655-uv-k5-firmware-custom-git

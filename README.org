@@ -1,0 +1,128 @@
+* UV-K5 Firmware Custom
+:PROPERTIES:
+:ID:       cef175b1-62f3-4e70-8fb7-a9d5d1ed8b6c
+:END:
+
+Helper and custom configuration of the Nunu UV-K5 firmware.
+
+** About
+
+Its a custom firmware for the [[http://en.qsfj.com/products/3002][Quansheng UV-K5]] walkie-talkie. My firmware of
+choice is the Kamil (/a.k.a./ Nunu) firmware, optimized for fast scan, containing
+the AM demodulation fix, and new spectrum analyzer features. It is a fork of
+the Egzumer firmware.
+
+*References*
+
+- [[https://github.com/kamilsss655/uv-k5-firmware-custom/][GitHub]]
+- [[https://github.com/kamilsss655/uv-k5-firmware-custom/releases][Releases]]
+- [[https://github.com/kamilsss655/uv-k5-firmware-custom/wiki/][Wiki]]
+- [[https://kamilsss655.github.io/uvtools/][Flashing web-interface]]
+
+*History*
+
+The [[https://github.com/ludwich66/Quansheng_UV-K5_Wiki][Ludwich66]] repository contains a list of all the people participating to
+reverse engineering the K5 (hardware, firmware encryption, flashing, custom
+firmware). The [[https://github.com/amnemonic/Quansheng_UV-K5_Firmware][Amnemonic]] repository contains reverse-engineering effort
+progress.
+
+Alternative firmware are:
+- [[https://github.com/egzumer/uv-k5-firmware-custom][Egzumer]] [[[https://github.com/egzumer/uv-k5-firmware-custom/wiki][Wiki]]] [[[https://egzumer.github.io/uvtools/][Flash interface]]] :: Merge between [[https://github.com/OneOfEleven/uv-k5-firmware-custom][OneOfEleven]] and [[https://github.com/fagci/uv-k5-firmware-fagci-mod][Fagci
+  (OSFW)]] (shipped with the radio) firmware, both based on a re-implementation
+  of the original firmware by [[https://github.com/DualTachyon/uv-k5-firmware][DualTachyon]]. First very popular firmware.
+
+** Installation
+
+*Using the ArchLinux PKGBUILD helper*
+
+Clone this repository and enable or disable patches directly inside the
+=PKGBUILD=:
+
+#+begin_src tmux :eval never
+git clone https://github.com/pierreay/uv-k5-firmware-custom-pkg.git
+cd uv-k5-firmware-custom-pkg
+# You may wnt to edit the PKGBUILD
+#+end_src
+
+Then, compile:
+
+#+begin_src bash :eval never
+makepkg
+#+end_src
+
+Finally, follow flashing instructions.
+
+--------------------------------------------------------------------------------
+
+*Using original releases*
+
+A firmware release can be directly flashed through the web interface, by
+clicking on a parameterized HTTP links from the GitHub release page.
+
+--------------------------------------------------------------------------------
+
+*Using original source code*
+
+The other option is to locally clone the source code, configure the firmware
+and use the web-interface uploading our local binary. I tried =k5prog= as in the
+repository =Makefile= to flash the firmware locally, but it always gives errors.
+
+First, install the needed dependencies:
+
+#+begin_src tmux
+sudo pacman -S python-crcmod # Check CRC of compiled firmware.
+#+end_src
+
+Then, clone the repository and parameterized the =Makefile= with desired options:
+
+#+begin_src tmux
+git clone https://github.com/kamilsss655/uv-k5-firmware-custom
+cd uv-k5-firmware-custom
+# You may wnt to edit the Makefile
+#+end_src
+
+Finally, compile the firmware:
+
+#+begin_src bash :eval never
+make
+#+end_src
+
+Flash the firmware using the web interface by uploading the resulting
+=firmware.packed.bin= binary.
+
+** Documentation
+
+The rich documentation can be downloaded offline:
+
+#+begin_src tmux
+mkdir -p "$HOME/.local/share/doc/uv-k5-firmware-custom-wiki"
+git clone "https://github.com/kamilsss655/uv-k5-firmware-custom.wiki.git" "$HOME/.local/share/doc/uv-k5-firmware-custom-wiki"
+#+end_src
+
+** Flashing
+
+Firmware flashing is supported by an official Windows application called
+"Programming Software-Neutral". Jacek "SQ5BPF" Lipkowski developed [[https://github.com/sq5bpf/k5prog][K5Prog]], an
+EEPROM reader/writer and firmware patcher for the UV-K5 in C under Linux.
+WhosMatt developed [[https://github.com/whosmatt/uvmod][UVMod]], a firmware patcher with a [[https://whosmatt.github.io/uvmod/][web interface]] to customize
+the selected features. Egzumer's forked it to keep the web-based patcher
+without the customization feature, called [[https://egzumer.github.io/uvtools/][UVTools]].
+
+[[https://github.com/kamilsss655/uv-k5-firmware-custom/wiki/60-%E2%80%90-Flashing-the-firmware][Flashing procedure]] is:
+1. Power the K5 while maintaining the PTT button pressed, the LED should be ON.
+2. Only now, first plug the Jack programming cable into the radio and then,
+   plug the USB adapter into the computer -- in this order.
+3. Check that a Serial-to-USB converter is detected as =ttyUSB0= under =dmesg=,
+   /e.g./, a =pl2303= for Chinese-cloned cable.
+4. Proceed to firmware flashing from software, the LED should blink.
+5. If the flasher does not detect the radio in flashing mode, try executing the
+   flash command several time, disconnect/reconnect the USB adapter, or restart
+   the application / refresh the web page.
+
+** Programming
+
+Memory programming is supported by [[https://chirp.danplanet.com/projects/chirp/wiki/Home][CHIRP]]. The procedure is to simply connect
+the powered ON radio to the computer using the programmatic cable. If using an
+custom firmware, a new "CHIRP driver" may be needed to support it. For example,
+the custom [[https://github.com/egzumer/uvk5-chirp-driver][uvk5-chirp-driver]] driver has been officially added to CHIRP to
+support Egzumer firmware.
