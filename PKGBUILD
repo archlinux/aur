@@ -4,9 +4,9 @@
 
 
 pkgname=processing
-pkgver=4.3
-_build=1293
-pkgrel=5
+pkgver=4.4.1
+_build=1301
+pkgrel=4
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -19,7 +19,7 @@ source=("https://github.com/processing/processing4/archive/processing-$_build-$p
         disable_update_check.patch
         no_ffmpeg_download.patch
         no_jdk_download.patch)
-sha256sums=('8d9f305bb204375a2c76d336b5e368c44ef77d297aaf80b8165f424cdef323a0'
+sha256sums=('e35f9db78ad81b41a21a63ddac6b7b7d7174d957561203d2d57738117e9c21f8'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
             'f8bde916aa0c3c816ba6cc8c22d180001109982f1640f3bff140a57e5100fc64')
