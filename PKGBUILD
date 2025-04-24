@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader-bin
-pkgver=3.0.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,10 +14,10 @@ source=("$url/archive/refs/tags/DepotDownloader_${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-$pkgver-linux-x64.zip::$url/releases/download/${_pkgname}_${pkgver}/${_pkgname}-linux-x64.zip")
 source_armv7h=("${_pkgname}-$pkgver-linux-arm.zip::$url/releases/download/${_pkgname}_${pkgver}/${_pkgname}-linux-arm.zip")
 source_aarch64=("${_pkgname}-$pkgver-linux-arm64.zip::$url/releases/download/${_pkgname}_${pkgver}/${_pkgname}-linux-arm64.zip")
-sha256sums=('d1ce46d53ba4a61e59a2f589945e898aa3f96e7d666fb78d665b13398d94ae1b')
-sha256sums_x86_64=('39b2ab9389d5b1774cc03df3a7e009a110ec0254e056fb86cea4a523f219e573')
-sha256sums_armv7h=('9454834125de9df36bb5d446e11aa0ab03342e54ef25c732707262d7e1348808')
-sha256sums_aarch64=('d452cfbe9cfae770936d4cd98b1da7b5b363f753c36b4dc7358e74561cecdf17')
+sha256sums=('1164322265eace41cf1b2fec2d1127f750a9281b35d0337b7708f53cdd244451')
+sha256sums_x86_64=('2f55e4c13440e699549b211cfc64ed938da4759f997f04ac5c84e0ba9b6d808b')
+sha256sums_armv7h=('4a1fcdec1410ea7475453bd6bd0f7f8e8da329406d7b68a1af7721c231b226df')
+sha256sums_aarch64=('c93a74087cb0b82f95216820debf0cacedd79a6aa260d8bf6ad20662a4bf337b')
 options=('!strip')
 
 package() {
