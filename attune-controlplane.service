@@ -1,0 +1,15 @@
+[Unit]
+Description=Control plane for publishing and hosting Linux packages
+Documentation=file:///usr/share/doc/attune-controlplane/user-guide/README.md
+After=postgresql.service
+BindsTo=postgresql.service
+
+[Service]
+Type=exec
+EnvironmentFile=-/etc/default/attune-controlplane
+EnvironmentFile=-/etc/attune-controlplane.d/*.conf
+ExecStart=/usr/bin/attune-controlplane
+
+[Install]
+Also=%N.socket
+WantedBy=multi-user.target

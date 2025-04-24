@@ -1,0 +1,40 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Before using Attune, you need to set up a        ##
+    ## database.                                        ##
+    ##                                                  ##
+
+    ##                                                  ##
+    ## Please run the following command lines before    ##
+    ## you first use `attune-controlplane`:             ##
+    ##                                                  ##
+
+sudo -u postgres sh -c '[ -e /var/lib/postgres/data ] || initdb -D /var/lib/postgres/data'
+sudo systemctl start postgresql
+sudo -u postgres createuser attune
+sudo -u postgres createdb -O attune attune
+EOF
+
+  find /usr/share/attune-controlplane/migrations -name '*_init.sql' \
+    -printf 'psql -U attune -d attune -v ON_ERROR_STOP=1 -f %p\n'
+
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Place your configuration drop-in file(s) into    ##
+    ## the `/etc/attune-controlplane.d` directory.      ##
+    ## See `/etc/default/attune-controlplane` for a     ##
+    ## list of supported environment variables.         ##
+    ##                                                  ##
+
+    ##                                                  ##
+    ## Then run:                                        ##
+
+sudo systemctl start attune-controlplane
+
+    ## to activate the control plane service.           ##
+    ##                                                  ##
+EOF
+}

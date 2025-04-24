@@ -1,0 +1,5 @@
+[attune]
+source = "github"
+github = "attunehq/attune"
+prefix = "v"
+use_latest_release = true
