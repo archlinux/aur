@@ -1,0 +1,4 @@
+[rustywind-bin]
+source = "git"
+git = "https://github.com/avencera/rustywind.git"
+prefix = "v"
