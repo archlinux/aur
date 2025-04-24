@@ -1,7 +1,7 @@
 pkgbase = chatterino2-7tv-nightly-bin
 	pkgdesc = Second installment of the Twitch chat client series Chatterino
-	pkgver = 7.5.3
-	pkgrel = 3
+	pkgver = 2025.04.20
+	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	arch = x86_64
 	license = MIT
@@ -32,6 +32,6 @@ pkgbase = chatterino2-7tv-nightly-bin
 	provides = chatterino
 	conflicts = chatterino
 	source = https://github.com/SevenTV/chatterino7/releases/download/nightly-build/Chatterino-Ubuntu-24.04-x86_64.deb
-	sha256sums = ca07c6fb629158adbe198143ede4f018eca0841934de2fd248b26abb8c68e6bb
+	sha256sums = SKIP
 
 pkgname = chatterino2-7tv-nightly-bin
