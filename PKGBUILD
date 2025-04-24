@@ -28,7 +28,7 @@ prepare() {
   cd "${srcdir}/${pkgname%%-git}"
   git submodule init
   git config submodule.ggml.url "${srcdir}/ggml"
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.file.allow=always submodule update --remote
 }
 
 build() {
