@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Victor Perevozchikov <victor3d@yandex.ru>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Thore Bödecker <me [at] foxxx0 [dot] de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: megadriver <megadriver at gmx dot com>
@@ -17,9 +18,9 @@ license=('GPL')
 depends=('db' 'gd' 'geoip' 'bzip2')
 install="${pkgname}.install"
 source=(
-  "https://dev.victor3d.com.br/webalizer/${pkgname}-${_pkgver}-src.tgz"
-  "https://dev.victor3d.com.br/webalizer/${pkgname}-geodb-${_geodbver}.tgz"
-  "https://dev.victor3d.com.br/webalizer/${pkgname}-flags.tgz"
+  "http://dev.victor3d.com.br/webalizer/${pkgname}-${_pkgver}-src.tgz"
+  "http://dev.victor3d.com.br/webalizer/${pkgname}-geodb-${_geodbver}.tgz"
+  "http://dev.victor3d.com.br/webalizer/${pkgname}-flags.tgz"
   "webalizer-2.23-08-memmove.patch"
 )
 sha512sums=('219cae51d2e938e2d9327ce52c9c814e7436c821b05cb528dc88f548bdfbd7a6ad69c235b078d6af194c3a1d38029fde7dde9e8b81ad6fd93c236ca76a49811b'
