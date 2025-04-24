@@ -1,7 +1,7 @@
 pkgbase = jre17-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
 	pkgver = 17.0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/downloads/
 	install = jre17-zulu-bin.install
 	arch = aarch64
