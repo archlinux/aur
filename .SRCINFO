@@ -1,11 +1,11 @@
 pkgbase = wayfreeze-git
 	pkgdesc = Tool to freeze the screen of a Wayland compositor
-	pkgver = r63.dcbe269
+	pkgver = r65.8277f98
 	pkgrel = 1
 	url = https://github.com/Jappie3/wayfreeze
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = AGPL-3.0
 	makedepends = cargo
 	makedepends = git
 	depends = wayland
