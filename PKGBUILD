@@ -4,7 +4,7 @@
 
 pkgname=k6
 pkgver=0.58.0
-grel=1
+pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
 url="https://github.com/grafana/k6"
