@@ -1,7 +1,7 @@
 # Maintainer: Alleop <aur dot contest432 at passinbox dot com>
 _pkgname=freetube
 pkgname=$_pkgname-electron-bin
-pkgver=0.23.3
+pkgver=0.23.4
 pkgrel=1
 pkgdesc='An open source desktop YouTube player built with privacy in mind, with the system electron (unsupported).'
 arch=('any')
@@ -13,7 +13,7 @@ source=('freetube.sh' "https://raw.githubusercontent.com/FreeTubeApp/FreeTube/re
         "$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_armv7l.deb")
 b2sums=('0b68a408d057c048d87ecd8ff3941734fa520f36dd4e84a740228e860a073e15c6bff7ec30070367651b765642a71c88fec18d2cfd68c4d123d4aa90b842fa60'
         '6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237'
-        'fcbff98f0649f6ea82e1635dd446b270866ffdd56dfd0b18cd167c598ef3af80fbc7cf6cc13af3f101f4017279789291c7328a2b0c0cef4fba8360d822a63b6d')
+        'bcbb7b636a5e49eaef648462d35e9072be3934953aa28e55011cd8746a0f0fca9a461bd4987e0bf5ef9aa33288223d683c4e83653cf2e5afb2be11438c3e2537')
 
 prepare() {
     tar xf data.tar.xz
