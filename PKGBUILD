@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mbest
-_pkgver=0.6
+_pkgver=0.6.1
 pkgname=r-${_pkgname,,}
-pkgver=0.6
-pkgrel=4
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='Moment-Based Estimation for Hierarchical Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7da32aa465f95d9ff1018e72a87cfe84252bbd3ccfd81e302f4319098b3f0ef4')
+sha256sums=('b0f408c57ef7671657f745373db7de1338eec4501cba7a66c5d9c13c3d9ed20f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
