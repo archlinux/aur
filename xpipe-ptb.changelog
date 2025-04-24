@@ -36,7 +36,7 @@ Various improvements were made to the SSH implementation:
 - When the SSH password is set to none, XPipe will no longer prompt for it anyway if the preferred auth failed
 - The VSCode SSH remote integration has been reworked to allow more connections it to be opened in vscode. It now supports essentially all simple SSH connections, custom SSH connections, SSH config connections, and VM SSH connections. This support includes gateways
 - There is now the option to enable verbose ssh output to diagnose connection issues better
-- For VMs, you can now choose to not use hypervisor host as SSH gateway and instead directly connect to the VM IP
+- For VMs, you can now choose to not use the hypervisor host as SSH gateway and instead directly connect to the VM IP
 
 ## Category configuration
 
@@ -45,10 +45,6 @@ There is now a new category configuration dialog available. You can find it by c
 The main reason this was added is to give finer-grained control over how and when to enable scripts on systems within the category, especially now that there is now support for terminal prompts to be automatically installed on a system. If you have production systems in a category, you can now exclude those from any kind of custom scripting functionality to not touch them at all. 
 
 The available configuration options will also be expanded in future updates.
-
-## Mini mode
-
-The application window will now hide any unnecessary sidebars when being resized to a small width. This makes it much easier to use XPipe next to a terminal (maybe also with the new multiplexer integration) in a tiling window arrangement.
 
 ## Other
 
@@ -65,6 +61,8 @@ The application window will now hide any unnecessary sidebars when being resized
 - Key files synced via git are now synced as pairs if a public key is available
 - The script context menus will now use the respective icons of the script entries
 - The k8s integration will now automatically add all namespaces for the current context when searching for connections
+- The application window will now hide any unnecessary sidebars when being resized to a small width. This makes it much easier to use XPipe in a tiling window arrangement
+- The webtop has been updated to have terminal multiplexers, proper konsole tab support, disabled kwallet, and more
 - Various error messages now contain a help link to the documentation
 - The Windows application will now block the shutdown until save/sync has finished, preventing vault corruption caused by a sudden shutdown
 - RDP tunnel connections can now be configured with custom authentication and additional RDP options
@@ -83,7 +81,6 @@ The application window will now hide any unnecessary sidebars when being resized
 - Fix custom service commands not launching properly with PowerShell as the local shell
 - Fix update check being influenced by the local GitHub rate limiting
 - Fix some file browser terminal dock window ordering issues
-- Fix repeated file browser errors when remote system did not have the stat command
 - Fix Windows terminal launch failing if default profile was set to launch as admin
 - Fix tailscale login check not opening website on Linux
 - Fix terminal connections failing to launch for some systems with a read-only file system
@@ -91,5 +88,5 @@ The application window will now hide any unnecessary sidebars when being resized
 - Fix some launched applications exiting on Windows if XPipe is closed
 - Fix powershell profile modules potentially breaking powershell shell environments
 - Fix terminal launch failing on Windows when connection name contained some special characters
-- Fix selfhst icons not reliably working for chinese users
+- Fix selfhst icons git clone not reliably working for chinese users
 - Fix application restart after update not applying current workspace directory
