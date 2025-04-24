@@ -1,0 +1,22 @@
+pkgbase = jdsystemmonitor
+	pkgdesc = Monitor your system
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/jdSystemMonitor
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = go
+	makedepends = qt6-tools
+	makedepends = python
+	depends = qt6-base
+	depends = qt6-charts
+	depends = xdg-desktop-portal
+	depends = polkit
+	depends = xdg-dbus-proxy
+	depends = hicolor-icon-theme
+	optdepends = packagekit: See installed pacman packages
+	source = jdsystemmonitor-1.0.tar.gz::https://codeberg.org/JakobDev/jdSystemMonitor/archive/1.0.tar.gz
+	sha256sums = 418c4fc6baee80081398c175da436b8d5361d66ca360464244478b48b35f299c
+
+pkgname = jdsystemmonitor
