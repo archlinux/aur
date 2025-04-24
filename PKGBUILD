@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spdep
-_pkgver=1.3-10
+_pkgver=1.3-11
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,8 +38,8 @@ optdepends=(
   r-rgeoda
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ac4fed4f241b5f6b44782615120207f3')
-b2sums=('0f37b742aa5f62cfc56d50f3943e3b98180fac44c90039c0f055a8fbcdc11b3ddd304d7c1129a190498ad3a213576650c2b97df6f97804a45dcf7ada35d79302')
+md5sums=('1b66718a71e81fd54260cbad899378ee')
+b2sums=('334b2fe9411575f434ad6a06a39f06b74eeb34e51a67a04ebef6e773bbebd9f332b0d973ffaf5b33054a6dbfbd84a19a4678ce58a1238907b065d5d6c241b0a5')
 
 build() {
   mkdir build
