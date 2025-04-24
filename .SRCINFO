@@ -1,6 +1,6 @@
 pkgbase = aniparser
 	pkgdesc = AniParser Electron application
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/yourusername/aniparser
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = aniparser
 	makedepends = git
 	depends = electron>=35.1.0
 	depends = nodejs>=20.0.0
-	source = aniparser-1.2.1.tar.gz
+	source = aniparser-1.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = aniparser
