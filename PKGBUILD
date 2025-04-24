@@ -42,3 +42,32 @@ package() {
 	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
 	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
 }
+
+_rpm="""Fedore binary works on pure Wayland. 2.5.3 is unreleased.
+_pkgname='chatterino2'
+pkgname=${_pkgname}-bin
+provides=chatterino
+conflicts=chatterino
+pkgver=2.5.2
+_rpmrel=2.fc42
+pkgrel=3
+pkgdesc='A chat client for Twitch.tv.'
+arch=('x86_64')
+url='https://github.com/chatterino/${_pkgname}'
+license=('MIT')
+depends=(hicolor-icon-theme openssl
+	qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
+makedepends=('binutils' 'grep' 'patchelf')
+optdepends=('streamlink: For piping streams to video players'
+			'qt6-wayland: Wayland support')
+provides=(chatterino)
+conflicts=(chatterino)
+source=(https://kojipkgs.fedoraproject.org//packages/${_pkgname}/${pkgver}/${_rpmrel}/${arch}/${_pkgname}-${pkgver}-${_rpmrel}.${arch}.rpm)
+sha256sums=('950c12406b84ea2c994a89aaf9d02b38157ecfb625fe0574b1e4f066a101f0db')
+build() {
+	rm -r usr/{lib,share/metainfo} #gabadge
+	mv usr/share/licenses/${_pkgname}{,-bin}
+}
+package() {
+	mv usr ${pkgdir}
+}"""
