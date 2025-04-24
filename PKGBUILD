@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "bevy_audioviz.desktop"
         "bevy_audioviz.sh") # Wrapper script
 sha256sums=('44f3d226780752b930099714b6491668bef1004ecbbae0119c01a2518f687f12'
-            'aaf9e11e1c90388eae3cbbacac37a987407d29f1585d8726fe1fa0989a9a8383'
+            'e0bd54269236010266a0df40e91c6eca2caf5467bbdbbcb381ace68d365f8c0d'
             '710eb70e1b209482f8ebb79cee84b5835160b848977140628c53ac1939350cd8'
             '4ba4c52c4de822c3cf38bb5a87cfd3c5ef2c34c94a80273aaca8083bcb38ea5e')
 

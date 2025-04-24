@@ -1,5 +1,5 @@
 .git
 bevy_audioviz-0*
 bevy_audioviz-debug*
-./pkg
-./src
+pkg/*
+src/*
