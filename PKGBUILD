@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your email> # TODO: Replace with your actual name and email
+# Maintainer: Grayson Hieb <graysonhieb21@gmail.com> 
 
 pkgname=bevy_audioviz
 _pkgname_crate=bevy_audioviz # Crate name matches package name
