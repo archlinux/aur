@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2024.04.15.00
+pkgver=2025.04.14.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(
   gcc-libs
   glibc
-  openssl-1.1
+  openssl
 )
 makedepends=(
   patchelf
@@ -26,7 +26,7 @@ source=(
   "https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
   "watchman-LICENSE::https://github.com/facebook/watchman/raw/v$pkgver/LICENSE"
 )
-b2sums=('8f7bc0cfac7901dcda2cae68f0835a9a8244b8cfe8850f0d0613edb7243783a04a2264a41af71984f318be71a9eb9348c10c7655b7123a826600071325d4825b'
+b2sums=('678e2eef6651a45c46f0ca60ff66d795262a2823dffef3864a62b881102b055f213868bc5c082f7811a67bd37237fad80a6afb413370f7003df874412ea35b60'
         'b9c1c046dc0cd3c6bbf977f3e6d3f448a5fa26ac4d27aa3e2bf1c1a2f6bf97484a79f76c19bf5d5b3cf92400f951015a5036dfd8e183a2fdb0634ce992b12469')
 
 prepare() {
@@ -37,6 +37,7 @@ from pathlib import Path
 
 data = Path("bin/watchman").read_bytes()
 
+# Bad and good path must have same length
 badpath  = b"/usr/local/var/run/watchman\\x00"
 goodpath = b"/run/./././././././watchman\\x00"
 
@@ -50,7 +51,10 @@ END
     --replace-needed {/usr/local/lib/,}libevent-2.1.so.7 \
     --replace-needed {/usr/local/lib/,}libgflags.so.2.2 \
     --replace-needed {/usr/local/lib/,}libglog.so.0 \
+    --replace-needed {/usr/local/lib/,}liblzma.so.5 \
     --replace-needed {/usr/local/lib/,}libsnappy.so.1 \
+    --replace-needed {/usr/local/lib/,}libunwind.so.8 \
+    --replace-needed {/usr/local/lib/,}libxxhash.so.0 \
     bin/* lib/*
 
   patchelf --set-rpath /usr/lib/watchman bin/* lib/*
