@@ -4,7 +4,7 @@ _java_ver=21
 _zulu_build="${_java_ver}.42.19-ca"
 pkgname=jre${_java_ver}-zulu-bin
 pkgver="${_java_ver}.0.7"
-pkgrel=2
+pkgrel=3
 pkgdesc='Azul Zulu OpenJDK full runtime environment, bin version.'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/downloads/'
@@ -57,21 +57,14 @@ package() {
 
   # Conf
   install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/zulu-${_java_ver}"
-  ln -s "/etc/zulu-${_java_ver}" "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/java${_java_ver}-zulu"
+  ln -s "/etc/java${_java_ver}-zulu" "${pkgdir}/${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
-  cp -r legal "${pkgdir}/usr/share/licenses/zulu-${_java_ver}"
-  ln -s "/usr/share/licenses/zulu-${_java_ver}" "${pkgdir}/${_jvmdir}/legal"
-
-  # Man pages
-  for f in bin/*; do
-    f=$(basename "${f}")
-    _man=../jdk/man/man1/"${f}.1"
-    test -f "${_man}" && install -Dm 644 "${_man}" "${pkgdir}/usr/share/man/man1/${f}-zulu-${_java_ver}.1"
-  done
-  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+  cp -r legal "${pkgdir}/usr/share/licenses/java${_java_ver}-zulu"
+  cp DISCLAIMER "${pkgdir}/usr/share/licenses/java${_java_ver}-zulu/"
+  ln -s "/usr/share/licenses/java${_java_ver}-zulu" "${pkgdir}/${_jvmdir}/legal"
 
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"

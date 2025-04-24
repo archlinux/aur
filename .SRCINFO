@@ -1,7 +1,7 @@
 pkgbase = jre21-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
 	pkgver = 21.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.azul.com/downloads/
 	install = jre21-zulu-bin.install
 	arch = aarch64
