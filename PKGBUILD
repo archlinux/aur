@@ -6,7 +6,7 @@ pkgdesc="AniParser Electron application"
 arch=('x86_64')
 url="https://github.com/yourusername/aniparser"
 license=('MIT')
-depends=('electron' 'nodejs')
+depends=('electron>=35.1.0' 'nodejs>=20.0.0')
 makedepends=('npm' 'git')
 source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -48,7 +48,7 @@ Type=Application
 Categories=Utility;
 EOF
   
-  # Create launcher script
+  # Create launcher script with debugging
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
 exec electron /usr/lib/$pkgname/dist-electron/main.js

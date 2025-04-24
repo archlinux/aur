@@ -7,8 +7,8 @@ pkgbase = aniparser
 	license = MIT
 	makedepends = npm
 	makedepends = git
-	depends = electron
-	depends = nodejs
+	depends = electron>=35.1.0
+	depends = nodejs>=20.0.0
 	source = aniparser-1.2.1.tar.gz
 	sha256sums = SKIP
 
