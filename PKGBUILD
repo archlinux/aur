@@ -1,7 +1,7 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
-pkgver=1.10.r7507.61cc08c
+pkgver=1.11.r7536.0e19d85
 pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (git development version)'
 arch=('x86_64')
@@ -61,7 +61,7 @@ prepare() {
 pkgver() {
 	(
 		set -o pipefail
-		meson introspect --projectinfo build-pkgver | sed -n 's/.*"version": "\([^"]*\)".*/\1/;s/-dev//p' | tr -d '\n'
+		meson introspect --projectinfo build-pkgver | sed -n 's/.*"version": "\([^"]*\)".*/\1/;s/-\(dev\|rc[0-9]\+\)//p' | tr -d '\n'
 	)
 	cd "$pkgname"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
