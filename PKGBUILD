@@ -3,7 +3,7 @@
 pkgname=reaction
 pkgver=2.0.0rc2
 _pkgver="v${pkgver/rc/-rc}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A daemon that scans program outputs for repeated patterns, and takes action. A lightweight alternative to fail2ban."
 arch=('x86_64' 'aarch64')
 url="https://framagit.org/ppom/reaction"
@@ -12,6 +12,7 @@ optdepends=('nftables' 'firewalld')
 makedepends=('cargo')
 provides=('reaction' 'ip46tables' 'nft46')
 conflicts=('reaction-git')
+backup=('etc/reaction.jsonnet')
 source=("https://framagit.org/ppom/reaction/-/archive/${_pkgver}/reaction-${_pkgver}.tar.gz")
 sha256sums=('2fcda6024dff34b5b0206e0926f04ac66d983d26a01890eb2c17ef7dd136165d')
 
