@@ -27,26 +27,30 @@ pkgver() {
 }
 
 build() {
+  case "${CARCH}" in
+    powerpc) EXTRAOPTS='COMPILE_ARCH=ppc' ;;
+    *) EXTRAOPTS='' ;;
+  esac
   cd "${srcdir}/iortcw"
 
   # Build Single Player
   cd SP
-  make USE_INTERNAL_LIBS=0
+  make USE_INTERNAL_LIBS=0 $EXTRAOPTS
 
   # Build Multi Player
   cd ../MP
-  make USE_INTERNAL_LIBS=0
+  make USE_INTERNAL_LIBS=0 $EXTRAOPTS
 }
 
 package() {
   cd "${srcdir}/iortcw"
 
   cd SP
-  make USE_INTERNAL_LIBS=0 \
+  make USE_INTERNAL_LIBS=0 $EXTRAOPTS \
     COPYDIR="${pkgdir}/opt/iortcw" copyfiles
 
   cd ../MP
-  make USE_INTERNAL_LIBS=0 \
+  make USE_INTERNAL_LIBS=0 $EXTRAOPTS \
     COPYDIR="${pkgdir}/opt/iortcw" copyfiles
 
   ln -s /opt/iortcw-data/pak0.pk3 \
