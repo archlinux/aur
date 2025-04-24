@@ -1,6 +1,6 @@
 pkgbase = pidgin
 	pkgver = 2.14.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pidgin.im/
 	arch = x86_64
 	license = GPL
