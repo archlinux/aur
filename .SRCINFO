@@ -1,7 +1,7 @@
 pkgbase = gamescope-legacy-bin
 	pkgdesc = Legacy version of SteamOS session compositing window manager
 	pkgver = 3.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ValveSoftware/gamescope
 	arch = x86_64
 	license = BSD-2-Clause
@@ -43,6 +43,8 @@ pkgbase = gamescope-legacy-bin
 	depends = xorg-server-xwayland
 	depends = wlroots0.17
 	depends = libliftoff
+	provides = gamescope-legacy
+	conflicts = gamescope-legacy
 	source_x86_64 = https://repos.fyralabs.com/terra40/gamescope-legacy-0:3.14.2-1.fc40.x86_64.rpm
 	sha256sums_x86_64 = 610725988259168bd7b21218a4e7c30f1d4e552aee8e5d65b383668f449779e5
 

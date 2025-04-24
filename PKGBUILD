@@ -1,8 +1,9 @@
 # Maintainer: omarhanykasban <omarhanykasban706@gmail.com>
-
+provides=(gamescope-legacy)
+conflicts=(gamescope-legacy)
 pkgname=gamescope-legacy-bin
 pkgver=3.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Legacy version of SteamOS session compositing window manager"
 arch=('x86_64')
 url=https://github.com/ValveSoftware/gamescope
