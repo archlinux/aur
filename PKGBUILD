@@ -17,10 +17,10 @@ md5sums=('8057b53cd9b39073b707ebce2ddf4b79')
 package() {
     install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/enc/dvips/${_pkgname} ${_pkgname}/enc/*
     install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/fonts/map/dvips/${_pkgname} ${_pkgname}/map/plex.map
-    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/enc/opentype/${_pkgname} ${_pkgname}/opentype/*
-    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/enc/tfm/ibm/${_pkgname} ${_pkgname}/tfm/*
-    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/enc/type1/ibm/${_pkgname} ${_pkgname}/type1/*
-    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/enc/vf/ibm/${_pkgname} ${_pkgname}/vf/*
+    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/fonts/opentype/${_pkgname} ${_pkgname}/opentype/*
+    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/fonts/tfm/ibm/${_pkgname} ${_pkgname}/tfm/*
+    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/fonts/type1/ibm/${_pkgname} ${_pkgname}/type1/*
+    install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/fonts/vf/ibm/${_pkgname} ${_pkgname}/vf/*
     install -Dm644 -t ${pkgdir}/usr/share/texmf-dist/tex/latex/ibm/${_pkgname} ${_pkgname}/latex/*
     install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname} $_pkgname/doc/LICENSE.txt
 }
