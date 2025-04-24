@@ -14,7 +14,7 @@ makedepends=(
   'git'
 )
 conflicts=("${pkgname%%-git}" 'stable-diffusion.cpp')
-conflicts=("${pkgname%%-git}" 'stable-diffusion.cpp')
+provides=("${pkgname%%-git}" 'stable-diffusion.cpp')
 source=("${pkgname%%-git}::git+${url}"
   "git+https://github.com/ggerganov/ggml.git")
 
@@ -28,7 +28,7 @@ prepare() {
   cd "${srcdir}/${pkgname%%-git}"
   git submodule init
   git config submodule.ggml.url "${srcdir}/ggml"
-  git -c protocol.file.allow=always submodule update
+  git -c protocol.file.allow=always submodule update --remote
 }
 
 build() {
