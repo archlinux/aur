@@ -1,22 +1,22 @@
 # Maintainer: Ivo Maceira <ivomaceira at gmail dot com>
 pkgname=python-deepgram-sdk
 pkgver=3.11.0  # https://pypi.org/project/deepgram-sdk/
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Deepgram SDK for Python"
 arch=("any")
 url="https://github.com/deepgram/deepgram-python-sdk"
 license=("MIT")
 depends=(
   "python"
+  "python-aiofiles"
   "python-aiohttp"
-  "python-httpx"
-  "python-websockets"
   "python-deprecation"
+  "python-httpx"
   "python-typing_extensions"
+  "python-websockets"
 )
 optdepends=(
   "python-aenum: required for deepgram-sdk"
-  "python-aiofiles: required for deepgram-sdk"
   "python-dataclasses-json: required for deepgram-sdk"
 )
 makedepends=("python-setuptools" "python-build" "python-installer" "python-wheel")
