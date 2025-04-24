@@ -1,0 +1,24 @@
+pkgbase = python-deepgram-sdk
+	pkgdesc = Official Deepgram SDK for Python
+	pkgver = 3.11.0
+	pkgrel = 1
+	url = https://github.com/deepgram/deepgram-python-sdk
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp
+	depends = python-httpx
+	depends = python-websockets
+	depends = python-deprecation
+	depends = python-typing_extensions
+	optdepends = python-aenum: required for deepgram-sdk
+	optdepends = python-aiofiles: required for deepgram-sdk
+	optdepends = python-dataclasses-json: required for deepgram-sdk
+	source = https://files.pythonhosted.org/packages/45/e8/7eb68bfd1b18ec9141d13cf448c257d601a12139f4afe11e4e24553ade49/deepgram_sdk-3.11.0.tar.gz
+	sha256sums = d929149ae7ded113e5736e87a5102523bae6e88203d5bfc308ebb01e78a2a032
+
+pkgname = python-deepgram-sdk
