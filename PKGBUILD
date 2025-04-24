@@ -1,18 +1,34 @@
-# Maintainer: Heddxh <g311571057 at gmail dot com>
+# Maintainer: Yuzu <g311571057 at gmail dot com>
 
-_pkgname=karousel
-pkgname=kwin-karousel
-pkgver=0.12
+pkgname=kwin-karousel-git
+pkgver=0.12.r28.gcaf2b5a
 pkgrel=1
 pkgdesc='KWin tiling script with scrolling '
 arch=('any')
 url='https://github.com/peterfajdiga/karousel/'
 license=('GPL-3.0-or-later')
 depends=('qt6-declarative' 'knotifications')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/peterfajdiga/karousel/releases/download/v$pkgver/karousel_${pkgver//./_}.tar.gz")
-sha1sums=('fc678beae7de728b82228bf87304dd16206915a1')
+makedepends=('git' 'nodejs' 'kpackage' 'typescript')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/peterfajdiga/karousel")
+sha1sums=(SKIP)
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+    git describe --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+    tsc -p ./src/main --outFile ./package/contents/code/main.js
+    tsc -p ./src/generators/config --outFile ./run-ts-tmp.js
+    mkdir -p ./package/contents/config/
+    node ./run-ts-tmp.js > ./package/contents/config/main.xml
+}
 
 package() {
     install -D -o root -m 755 -d "$pkgdir/usr/share/kwin/scripts/karousel"
-    cp -r ${_pkgname}/* "$pkgdir/usr/share/kwin/scripts/karousel/"
+    cd $srcdir/${pkgname%-git}
+    cp -r package/* "$pkgdir/usr/share/kwin/scripts/karousel/"
 }
