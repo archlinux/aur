@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=23.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -39,6 +39,7 @@ build() {
     -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DSBINDIR=/usr/bin \
     -DLIBDIR=/usr/lib \
     -DSYSCONFDIR=/etc \
