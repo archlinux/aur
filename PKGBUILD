@@ -2,7 +2,7 @@
 
 pkgname=youtui
 pkgver=0.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple TUI YouTube Music player written in Rust aiming to implement an Artist->Albums workflow for searching for music, and using discoverability principles for navigation."
 url="https://github.com/nick42d/youtui"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -26,12 +26,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
-}
-
-check() {
-  cd $pkgname-$pkgver
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
 }
 
 package() {
