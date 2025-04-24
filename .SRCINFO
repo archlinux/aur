@@ -1,5 +1,5 @@
 pkgbase = mu-epub-viewer-git
-	pkgdesc = Epub viewer on Electron that support text translation.Use system-wide electron.
+	pkgdesc = Epub viewer on Electron that support text translation.(Use system-wide electron)
 	pkgver = 1.1.4.r3.ge158afd
 	pkgrel = 1
 	url = https://github.com/azu/mu-epub-reader
@@ -9,6 +9,7 @@ pkgbase = mu-epub-viewer-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
+	makedepends = yarn
 	depends = electron26
 	provides = mu-epub-viewer=1.1.4
 	conflicts = mu-epub-viewer
