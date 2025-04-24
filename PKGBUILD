@@ -1,19 +1,19 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moox-returnmodifiers'
-pkgver='1.000001'
+pkgver='1.000002'
 pkgrel='1'
 pkgdesc="Returns Moo Modifiers as a Hash"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
 depends=('perl-moo>=1.001001' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/MooX-ReturnModifiers'
-source=("https://cpan.metacpan.org/authors/id/L/LN/LNATION/MooX-ReturnModifiers-$pkgver.tar.gz")
-md5sums=('f65d203c73549c915f6fbbb73170fd4d')
-sha512sums=('850a4b5e85390478f0a1a3ac6712d044ec0a73343cd18ba13a9e0d5b19ff7a9367543489a6468d28ae4fd3daae3c1f658db533982c5bf1b0419dd54cc0431e65')
+source=("http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/MooX-ReturnModifiers-$pkgver.tar.gz")
+md5sums=('99e994e20a47bf3ace6494b3730fbeae')
+sha512sums=('5d95f976f24632f73dabbfda67868db52d9ff7587e5af6a4f19f0e08954197e31e86896409ca6e814df6411dee90811f0c781e126023e5c2f11e85e8ce1c1434')
 _distdir="MooX-ReturnModifiers-$pkgver"
 
 build() {
