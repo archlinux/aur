@@ -1,7 +1,7 @@
 pkgbase = shef
-	pkgdesc = directory and filename linter
+	pkgdesc = CLI framework for cooking up dynamic shell recipes
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eduardoagarcia/shef
 	arch = x86_64
 	license = MIT
