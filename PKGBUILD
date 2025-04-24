@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=frog-ocr
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Intuitive text extraction tool (OCR) for GNOME."
 arch=('any')
@@ -31,7 +31,7 @@ checkdepends=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TenderOwl/Frog/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cd4aabbf2f065661d664734e00d572844951bef69c756a5352860f5a9b36e5fc')
+sha256sums=('b9bc8fb77b7ebcc3816fe75a5bb6d5c39207c19e1ac9805e958e2dbcdbe0c0f8')
 
 prepare() {
   cd Frog-$pkgver
@@ -46,11 +46,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 
   cd Frog-$pkgver
   install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
