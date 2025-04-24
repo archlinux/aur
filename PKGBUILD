@@ -1,8 +1,8 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=flexo
-pkgrel=8
-pkgver=1.6.9
+pkgver=1.6.10
+pkgrel=1
 pkgdesc='A central pacman cache'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/nroi/${pkgname}"
@@ -16,15 +16,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nroi/${pkgname}/archive
         'flexo.service'
         'sysuser.conf'
         'tmpfiles.conf')
-sha256sums=('c51484fa8935e520bbfbcf74a76f6a09b77e4e14a4206a6446490c445e0eb1e7'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('bbceefe6b83668a19f73377557099e6b8fdaf06f17aba4a9025b3985f1a0ae4d'
+            '3b38503a554cc179e33f5c337cbbd0186d03069d059d534e220882407d550f48'
+            '481efe7fe3a0ac094807441718ea2793e848a5a3a3aedc5b896ff60fdce14606'
+            '6fadc9b5507ed3dc1b87cecafbdd479adedd067ccb2fb1971917b6310e3adf41')
 
 prepare() {
     cd "${pkgname}-${pkgver}/flexo"
     export RUSTUP_TOOLCHAIN=stable
-    cargo update rustc-serialize  # see https://github.com/nroi/flexo/commit/22695323b84f72565e6ba289f150733eee228bd6
     cargo fetch --locked
 }
 
