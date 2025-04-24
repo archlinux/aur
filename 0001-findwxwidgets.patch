@@ -19,16 +19,3 @@ index e1f93a6a26..88c5f2487d 100644
  endmacro()
  
  # Clear return values in case the module is loaded more than once.
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index aee1aaf100..e6db66b00d 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -57,7 +57,7 @@ if (SLIC3R_GUI)
-     if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-         set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK}")
-             endif ()
--    find_package(wxWidgets 3.2 MODULE REQUIRED COMPONENTS base core adv html gl stc scintilla)
-+    find_package(wxWidgets 3.2 MODULE REQUIRED COMPONENTS base core adv html gl stc)
- 
-     include(${wxWidgets_USE_FILE})
- 
