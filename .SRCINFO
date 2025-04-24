@@ -1,6 +1,6 @@
 pkgbase = vrc-photo-viewer-git
-	pkgdesc = This photo viewer displays photos based on a database created by VRChatActivityTools.Use system-wide electron.
-	pkgver = 2.1.0.r0.g4ca4b0e
+	pkgdesc = This photo viewer displays photos based on a database created by VRChatActivityTools.(Use system-wide electron)
+	pkgver = 2.2.0.r0.g7aa1a8b
 	pkgrel = 1
 	url = https://github.com/vayacico/vrc-photo-viewer
 	arch = any
@@ -8,12 +8,10 @@ pkgbase = vrc-photo-viewer-git
 	makedepends = npm
 	makedepends = git
 	makedepends = nvm
-	makedepends = gendesk
 	makedepends = curl
-	makedepends = gcc
 	makedepends = cmake
-	depends = electron27
-	provides = vrc-photo-viewer=2.1.0
+	depends = electron34
+	provides = vrc-photo-viewer=2.2.0
 	conflicts = vrc-photo-viewer
 	source = vrc-photo-viewer.git::git+https://github.com/vayacico/vrc-photo-viewer.git
 	source = vrc-photo-viewer.sh
