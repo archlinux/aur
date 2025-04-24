@@ -1,0 +1,18 @@
+pkgbase = chromium-extension-arch-search
+	pkgdesc = A Chromium-based browser extension that adds ArchLinux as a search engine with an Omnibox keyword.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/noraj/chromium-extension-arch-search
+	arch = any
+	license = MIT
+	makedepends = chromium
+	makedepends = openssl
+	makedepends = jq
+	makedepends = 7zip
+	noextract = archlinux_search_0.0.1.zip
+	source = https://github.com/noraj/chromium-extension-arch-search/releases/download/0.0.1/archlinux_search_0.0.1.zip
+	source = chromium-extension-arch-search.priv.pem
+	sha256sums = 2c695e04746199ea120dbb8f43365bd74a33b8f037a9169015661237b4d2c6ed
+	sha256sums = 1ecd317637d90c60351cb72f0ef0b4ad1f81a6f35dc7fb1e579a83c55b26ccca
+
+pkgname = chromium-extension-arch-search

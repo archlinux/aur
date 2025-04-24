@@ -1,0 +1,4 @@
+*.tar.zst
+*.zip
+arch-search-unpack
+*.log
