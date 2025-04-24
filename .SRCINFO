@@ -1,7 +1,7 @@
 pkgbase = polyglot-ai-bin
-	pkgdesc = 🤖️ Cross-platform AI language practice app(跨平台AI语言练习应用).Prebuilt version.Use system-wide electron.
+	pkgdesc = 🤖️AI language practice app(Prebuilt version.Use system-wide electron)跨平台AI语言练习应用
 	pkgver = 0.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://polyglotai.xyz/
 	arch = x86_64
 	license = GPL-3.0-only

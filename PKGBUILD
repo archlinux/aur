@@ -3,8 +3,8 @@ _pkgname=polyglot
 pkgname="${_pkgname}-ai-bin"
 pkgver=0.3.7
 _electronversion=23
-pkgrel=1
-pkgdesc="🤖️ Cross-platform AI language practice app(跨平台AI语言练习应用).Prebuilt version.Use system-wide electron."
+pkgrel=2
+pkgdesc="🤖️AI language practice app(Prebuilt version.Use system-wide electron)跨平台AI语言练习应用"
 arch=('x86_64')
 url="https://polyglotai.xyz/"
 _ghurl="https://github.com/liou666/polyglot"
@@ -23,20 +23,22 @@ source=(
 )
 sha256sums=('cadebfabd6018b43206db04bf321b53807f4f3fb2509405d278bdaffea495479'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
