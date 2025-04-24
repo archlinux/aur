@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Legacy Launcher
+Exec=/usr/bin/legacy-launcher
+Icon=legacy-launcher
+Type=Application
+Categories=Games;
