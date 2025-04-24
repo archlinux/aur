@@ -6,6 +6,7 @@ pkgbase = yumenikki-jp
 	arch = any
 	license = custom
 	makedepends = unarchiver
+	makedepends = rpg2003-rtp
 	depends = easyrpg-player
 	options = !strip
 	source = http://ftp.vector.co.jp/43/88/3084/yumenikki0.10.lzh

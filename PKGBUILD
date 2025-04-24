@@ -8,7 +8,7 @@ url='http://www3.nns.ne.jp/pri/tk-mto/'
 arch=('any')
 license=('custom')
 depends=('easyrpg-player') #fluidsynth,soundfont-gmgsx?
-makedepends=('unarchiver')
+makedepends=('unarchiver' 'rpg2003-rtp')
 source=("http://ftp.vector.co.jp/43/88/3084/${_pkgname}${pkgver}.lzh"
         ${pkgname}.{desktop,png,sh} )
 md5sums=('f3a16c395078dcec4950200732bc5194'
