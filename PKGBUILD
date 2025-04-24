@@ -6,7 +6,7 @@
 pkgname=processing
 pkgver=4.3
 _build=1293
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -59,18 +59,21 @@ build() {
 package() {
   cd "$pkgname"
 
-  install -d "$pkgdir/usr/"{bin/,share/processing/}
+  install -d "$pkgdir/usr/share/processing/"
   cp -r build/linux/work/* "$pkgdir/usr/share/processing/"
 
   # MIME type, icon and desktop shortcut
-  install -Dm644 "build/linux/processing-pde.xml" \
-    "$pkgdir/usr/share/mime/packages/processing-pde.xml"
-  install -Dm644 "build/shared/lib/icons/app-512.png" \
-    "$pkgdir/usr/share/pixmaps/processing.png"
-  install -Dm644 "$srcdir/processing.desktop" \
-    "$pkgdir/usr/share/applications/processing.desktop"
+  install -d "$pkgdir/usr/share/"{applications,desktop-directories,mime/packages/,icons/hicolor/}
+  env XDG_UTILS_INSTALL_MODE=system XDG_DATA_DIRS="$pkgdir/usr/share/" XDG_CONFIG_DIRS="$pkgdir/etc/" "$pkgdir/usr/share/processing/install.sh"
+  # clean up unwanted files
+  rm "$pkgdir/usr/share/applications/mimeinfo.cache"
+  rm -r "$pkgdir/usr/share/desktop-directories"
+  find "$pkgdir/usr/share/mime/" -maxdepth 1 -type f -exec rm {} \;
+  # strip $pkgdir from paths
+  sed -i "s|$pkgdir||g" "$pkgdir/usr/share/applications/processing-pde.desktop"
 
   # Symbolic links in /usr/bin
+  install -d "$pkgdir/usr/bin/"
   ln -s "/usr/share/processing/processing" "$pkgdir/usr/bin/processing"
   ln -s "/usr/share/processing/processing-java" "$pkgdir/usr/bin/processing-java"
 
