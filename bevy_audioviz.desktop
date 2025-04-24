@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Bevy Audioviz
+GenericName=Audio Visualizer
+Comment=High-performance, configurable, shader-based audio visualizer using Bevy.
+Exec=bevy_audioviz
+Icon=bevy_audioviz
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Visualization;
+StartupNotify=true
+Keywords=Audio;Visualization;Music;Bevy;Rust;Shader;
