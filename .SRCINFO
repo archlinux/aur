@@ -1,0 +1,24 @@
+pkgbase = bevy_audioviz
+	pkgdesc = High-performance, configurable, shader-based audio visualizer using Bevy.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Lowband21/bevy_audioviz
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	provides = bevy_audioviz
+	conflicts = bevy_audioviz-git
+	source = bevy_audioviz-0.1.1.tar.gz::https://github.com/Lowband21/bevy_audioviz/archive/refs/tags/v0.1.1.tar.gz
+	source = AppIcon.png
+	source = bevy_audioviz.desktop
+	source = bevy_audioviz.sh
+	sha256sums = 44f3d226780752b930099714b6491668bef1004ecbbae0119c01a2518f687f12
+	sha256sums = aaf9e11e1c90388eae3cbbacac37a987407d29f1585d8726fe1fa0989a9a8383
+	sha256sums = 710eb70e1b209482f8ebb79cee84b5835160b848977140628c53ac1939350cd8
+	sha256sums = 4ba4c52c4de822c3cf38bb5a87cfd3c5ef2c34c94a80273aaca8083bcb38ea5e
+
+pkgname = bevy_audioviz
