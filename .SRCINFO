@@ -1,0 +1,15 @@
+pkgbase = python-kicad-skip
+	pkgdesc = S-expression KiCad file Python parser
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/psychogenic/kicad-skip
+	arch = any
+	license = LGPL-2.1
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-sexpdata
+	source = https://github.com/psychogenic/kicad-skip/releases/download/v0.2.5/kicad-skip-0.2.5.tar.gz
+	sha512sums = 93086c568e4c0bb8b639bcdede0f29f6912d0c725ad6a25d890221ebb2c3945400b302c6b639d6af4ea840779b832771c9129bfedc3772212ed94244740059d3
+
+pkgname = python-kicad-skip
