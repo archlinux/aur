@@ -1,0 +1,12 @@
+diff -ura gtsam-git.orig/cmake/GtsamBuildTypes.cmake gtsam-git/cmake/GtsamBuildTypes.cmake
+--- gtsam-git.orig/cmake/GtsamBuildTypes.cmake	2025-04-23 14:31:20.827880676 +0200
++++ gtsam-git/cmake/GtsamBuildTypes.cmake	2025-04-23 14:31:45.074601733 +0200
+@@ -131,7 +131,7 @@
+   endif()
+ 
+   set(GTSAM_COMPILE_OPTIONS_PRIVATE_COMMON
+-    -Werror                                        # Enable warnings as errors
++    -Wno-array-bounds
+     -Wall                                          # Enable common warnings
+     -Wpedantic                                     # Enable pedantic warnings
+     $<$<COMPILE_LANGUAGE:CXX>:-Wextra -Wno-unused-parameter> # Enable extra warnings, but ignore no-unused-parameter (as we ifdef out chunks of code)

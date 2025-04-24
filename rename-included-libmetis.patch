@@ -1,11 +1,12 @@
---- a/gtsam/3rdparty/metis/libmetis/CMakeLists.txt	2019-05-19 18:35:20.000000000 -0700
-+++ b/gtsam/3rdparty/metis/libmetis/CMakeLists.txt	2019-07-06 13:51:47.634206733 -0700
-@@ -9,6 +9,8 @@
-   target_link_libraries(metis m)
+diff -ura gtsam-git.orig/gtsam/3rdparty/metis/libmetis/CMakeLists.txt gtsam-git/gtsam/3rdparty/metis/libmetis/CMakeLists.txt
+--- gtsam-git.orig/gtsam/3rdparty/metis/libmetis/CMakeLists.txt	2025-04-23 12:25:30.958473651 +0200
++++ gtsam-git/gtsam/3rdparty/metis/libmetis/CMakeLists.txt	2025-04-23 12:24:25.975618561 +0200
+@@ -8,6 +8,8 @@
+   target_link_libraries(metis-gtsam m)
  endif()
  
-+set_target_properties(metis PROPERTIES OUTPUT_NAME "gtsam_metis")
++set_target_properties(metis-gtsam PROPERTIES OUTPUT_NAME "gtsam_metis")
 +
  if(WIN32)
- 		set_target_properties(metis PROPERTIES
- 			PREFIX ""
+ 		set_target_properties(metis-gtsam PROPERTIES
+ 			COMPILE_FLAGS /w
