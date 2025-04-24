@@ -1,7 +1,7 @@
 # Maintainer: Finn <finn-ja@gmx.de>
 
 pkgname=commiefetch-git
-pkgver=1.0.r$(git rev-list --count HEAD 2>/dev/null || echo 1).$(git rev-parse --short HEAD 2>/dev/null || echo unknown)
+pkgver=1.0  # <- Platzhalter, echte Version kommt aus pkgver()
 pkgrel=1
 pkgdesc="Revolutionäres CLI-Tool zum Anzeigen von Systeminfos mit Hammer-und-Sichel-Logo und automatischer Bashrc-Integration"
 arch=('x86_64')
