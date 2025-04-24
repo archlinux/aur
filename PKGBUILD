@@ -3,7 +3,7 @@ pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
 pkgver=2.0_beta50
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/threema-ch/threema-desktop"
 license=('AGPL-3.0-only')
@@ -133,6 +133,10 @@ package() {
   install -D "packaging/metadata/${rdn}.desktop" "${pkgdir}/usr/share/applications/${rdn}.desktop"
   sed -i -s "s/=Threema/=Threema Beta/" "${pkgdir}/usr/share/applications/${rdn}.desktop"
   sed -i -s "s/Exec=/Exec=\/opt\/${pkgname}\/ThreemaDesktopLauncher/" "${pkgdir}/usr/share/applications/${rdn}.desktop"
+
+  # Symlink launcher binary
+  mkdir -p "${pkgdir}/usr/bin/"
+  ln -s "/opt/${pkgname}/ThreemaDesktopLauncher" "${pkgdir}/usr/bin/threema-beta"
 }
 
 # vim:set ts=2 sw=2 et:
