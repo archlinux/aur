@@ -1,2 +1,5 @@
 .git
-bevy_audioviz-0.1.1.tar.gz
+bevy_audioviz-0*
+bevy_audioviz-debug*
+./pkg
+./src
