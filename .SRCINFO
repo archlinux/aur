@@ -10,7 +10,7 @@ pkgbase = note-mark-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
-	makedepends = pnpm
+	makedepends = yarn
 	depends = electron28
 	provides = note-mark=r10.2d1d925
 	conflicts = note-mark
