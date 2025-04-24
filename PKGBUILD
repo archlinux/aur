@@ -1,6 +1,6 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=2.0.0.alpha9.r6.gea1e4696
+pkgver=2.0.0.alpha9.r7.gd9c06b5e
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
@@ -13,12 +13,10 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::git+${_giturl}.git"
     "fmt::git+https://github.com/fmtlib/fmt.git"
-    "json::git+https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent.git"
     "nanobench::git+https://github.com/martinus/nanobench"
     "pareto::git+https://github.com/alandefreitas/pareto.git"
 )
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -31,7 +29,6 @@ pkgver() {
 prepare() {
     cd $_pkgname
     git config submodule.lib/fmt.url ../fmt
-    git config submodule.3rdparty/json.url ../json
     git config submodule.3rdparty/nanobench.url ../nanobench
     git config submodule.3rdparty/pareto.url ../pareto
     git submodule update
