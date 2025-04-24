@@ -12,7 +12,7 @@ pkgname='pyconcurrent'
 pkgdesc='Python module to simplify asyncio/multiprocessing'
 _gitname='pyconcurrent'
 
-pkgver=1.1.3
+pkgver=1.3.0
 pkgrel=1
 url="https://github.com/gene-git/pyconcurrent"
 
@@ -56,8 +56,7 @@ build() {
 }
 
 check() {
-    cd "${_gitname}"
-    cd src/pyconcurrent/tests
+    cd "${_gitname}/tests"
     /usr/bin/pytest
 }
 
