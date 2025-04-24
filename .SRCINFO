@@ -1,0 +1,15 @@
+pkgbase = simplewaita-git
+	pkgdesc = Skeueomorphic GTK 2, GTK 3, GTK 4, Kvantum, qtCurve, Plasma, qt5ct, qt6ct, XFWM4, Kwin, Metacity, and Openbox theme.
+	pkgver = r60.a00f41d
+	pkgrel = 1
+	url = https://github.com/khongten001/Simplewaita
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	optdepends = obsidian-icon-theme: skeueomorphic icon theme
+	optdepends = kvantum: theming qt6 apps
+	optdepends = kvantum-qt5: theming qt5 apps
+	source = git+https://github.com/khongten001/Simplewaita.git
+	sha256sums = SKIP
+
+pkgname = simplewaita-git
