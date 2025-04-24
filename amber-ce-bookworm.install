@@ -28,10 +28,6 @@ systemctl reload apparmor
 
 post_remove(){
 
-rm -f /usr/bin/bookworm-run
-rm -f /usr/bin/ace-uninstall-helper
-rm -f /usr/bin/ace-uninstall-helper-gui
-
 rm -rf /opt/apps/amber-ce-bookworm
 
 }

@@ -1,6 +1,6 @@
 # Maintainer: Anysets<anysets@qq.com>
 pkgname=amber-ce-bookworm
-pkgver=12.6.5
+pkgver=12.7.5
 pkgrel=1
 pkgdesc="a container app packaging and distributing solution."
 arch=('aarch64' 'x86_64' 'loong64')
@@ -19,24 +19,16 @@ makedepends=('dpkg')
 install=amber-ce-bookworm.install
 
 source=("$pkgname-$pkgver.tar.gz::https://gitee.com/amber-ce/amber-ce-bookworm/repository/archive/${pkgver}.tar.gz")
-sha256sums=('b1e8b47be2b5b2d2c174a7ddee371781afa8dc23b6c8eed7b6eaf271ea9df334')
+sha256sums=('7eeb558f6c8d5a2129a83721a2fc9a5b297c3a08e626b53617c8bbfd3db8b00f')
+
+build() {
+	cd ${srcdir}/amber-ce-bookworm-${pkgver}
+	mkdir -p pkg
+	# build amber-ce-bookworm
+	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/* ${srcdir}/amber-ce-bookworm-${pkgver}/pkg
+	bash ${srcdir}/amber-ce-bookworm-${pkgver}/build-pkg.sh pkg
+}
 
 package() {
-	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/opt ${pkgdir}/
-	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/etc ${pkgdir}/
-	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/src/usr ${pkgdir}/
-    
-	cd "${pkgdir}/opt/apps/amber-ce-bookworm/files"
-	if [ "$CARCH" = "aarch64" ]
-	then
-		bash build-container.sh arm64
-	elif [ "$CARCH" = "x86_64" ]
-	then
-		bash build-container.sh amd64
-	elif [ "$CARCH" = "loong64" ]
-	then
-		bash build-container.sh loong64
-	else
-		echo "Unsupported arch!"
-	fi
+	cp -rf ${srcdir}/amber-ce-bookworm-${pkgver}/pkg/* ${pkgdir}/
 }
