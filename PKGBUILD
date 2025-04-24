@@ -9,7 +9,7 @@ _giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
 conflicts=(openmodelica)
 depends=('lapack' 'java-environment')
-makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
+makedepends=('gcc-fortran' 'cmake3-bin' 'git' 'boost')
 options=('!lto')
 source=("git+${_giturl}#tag=v${pkgver}")
 sha1sums=('SKIP')
@@ -21,14 +21,11 @@ prepare() {
 
   # link with shared blas/lapack libs: https://github.com/OpenModelica/OpenModelica/issues/10304
   sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
-
-  # build with cmake 3.x
-  curl -fSsL https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz | tar xz
 }
 
 build() {
   cd "$srcdir/OpenModelica"
-  ./cmake-3.31.6-linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
+  PATH=/opt/cmake3/bin:$PATH cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_ENABLE_GUI_CLIENTS=OFF -B build .
   make -C build
 }
 
