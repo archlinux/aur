@@ -1,5 +1,5 @@
 pkgbase = notely-git
-	pkgdesc = Help students use a smart keynote tool that allows them to stay focused, take notes, and draw diagrams.Use system-wide electron.
+	pkgdesc = Help students use a smart keynote tool that allows them to stay focused, take notes, and draw diagrams.(Use system-wide electron)
 	pkgver = 1.0.1.r3.g8717876
 	pkgrel = 1
 	url = https://github.com/Bilal-Belli/Notely
