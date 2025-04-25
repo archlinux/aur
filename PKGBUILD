@@ -3,7 +3,7 @@
 
 _target=powerpc64-linux-gnu
 pkgname=$_target-gcc
-pkgver=14.2.0
+pkgver=15.1.0
 pkgrel=1
 #_snapshot=8-20190111
 pkgdesc='The GNU Compiler Collection - cross compiler for PPC64 target'
@@ -16,7 +16,7 @@ makedepends=(gmp mpfr)
 options=(!emptydirs !strip staticlibs !lto)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
         #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
             'SKIP')
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
