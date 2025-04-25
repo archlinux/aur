@@ -1,6 +1,6 @@
 pkgbase = orchis-theme-git
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
-	pkgver = 2024.11.03.r46.g452fdf0
+	pkgver = 2025.04.25.r0.g5b73376
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Orchis-theme
 	install = orchis-theme.install
@@ -12,6 +12,7 @@ pkgbase = orchis-theme-git
 	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = kvantum-theme-orchis: Matching Kvantum theme
 	optdepends = tela-circle-icon-theme: Recommended icon theme
+	optdepends = vimix-cursors: recommended cursor theme
 	options = !strip
 	source = git+https://github.com/vinceliuice/Orchis-theme.git
 	sha256sums = SKIP

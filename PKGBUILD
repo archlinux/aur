@@ -5,7 +5,7 @@ pkgname=(
   'orchis-nord-theme-git'
 )
 pkgbase=orchis-theme-git
-pkgver=2024.11.03.r46.g452fdf0
+pkgver=2025.04.25.r0.g5b73376
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=(
   'gtk-engine-murrine: GTK2 theme support'
   'kvantum-theme-orchis: Matching Kvantum theme'
   'tela-circle-icon-theme: Recommended icon theme'
+  'vimix-cursors: recommended cursor theme'
 )
 options=('!strip')
 install="${pkgbase%-git}.install"
@@ -37,7 +38,7 @@ package_orchis-theme-git() {
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks primary -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks primary submenu -d "$pkgdir/usr/share/themes"
 
   # Wallpapers
   install -Dm644 wallpaper/*.jpg -t \
@@ -55,7 +56,7 @@ package_orchis-dracula-theme-git() {
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks primary dracula -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks primary submenu dracula -d "$pkgdir/usr/share/themes"
 }
 
 package_orchis-nord-theme-git() {
@@ -65,5 +66,5 @@ package_orchis-nord-theme-git() {
 
   cd Orchis-theme
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks primary nord -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks primary submenu nord -d "$pkgdir/usr/share/themes"
 }
