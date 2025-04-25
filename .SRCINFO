@@ -1,6 +1,6 @@
 pkgbase = mxiv-git
-	pkgdesc = Media explorer and interactive viewer.Use system-wide electron.
-	pkgver = r165.9c8f3ae
+	pkgdesc = Media explorer and interactive viewer.(Use system-wide electron)
+	pkgver = 0.5.0.r0.g719fccb
 	pkgrel = 1
 	url = https://github.com/rvcalisto/mxiv
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mxiv-git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = curl
-	depends = electron32
+	depends = electron34
 	depends = imagemagick
 	depends = p7zip
 	provides = mxiv
