@@ -1,12 +1,12 @@
 pkgbase = flowtestai-git
-	pkgdesc = GenAI powered OpenSource IDE for API first workflows.Use system-wide electron.
+	pkgdesc = GenAI powered OpenSource IDE for API first workflows.(Use system-wide electron)
 	pkgver = 1.2.0.r25.g3b9ca3a
 	pkgrel = 1
 	url = https://flowtestai.gitbook.io/flowtestai
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = pnpm>=9.0.6
+	makedepends = pnpm
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk

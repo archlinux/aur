@@ -6,7 +6,7 @@ pkgver=1.2.0.r25.g3b9ca3a
 _electronversion=29
 _nodeversion=20
 pkgrel=1
-pkgdesc="GenAI powered OpenSource IDE for API first workflows.Use system-wide electron."
+pkgdesc="GenAI powered OpenSource IDE for API first workflows.(Use system-wide electron)"
 arch=('any')
 url="https://flowtestai.gitbook.io/flowtestai"
 _ghurl="https://github.com/FlowTestAI/FlowTest"
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(
     'npm'
-    'pnpm>=9.0.6'
+    'pnpm'
     'git'
     'nvm'
     'gendesk'
@@ -42,18 +42,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -64,21 +63,27 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
+        cp .npmrc "${srcdir}/${pkgname//-/.}/packages/${_appname}-electron"
     fi
-    cp .npmrc "${srcdir}/${pkgname//-/.}/packages/${_appname}-electron"
     NODE_ENV=development    pnpm install
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname//-/.}/packages/${_appname}-electron"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/packages/${_appname}-electron"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
