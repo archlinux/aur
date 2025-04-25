@@ -3,8 +3,8 @@
 # Contributor: Sandy Carter <bwrsandman@gmail.com>
 
 pkgname=vcmi
-pkgver=1.6.7
-pkgrel=4
+pkgver=1.6.8
+pkgrel=1
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/vcmi/vcmi"
@@ -18,7 +18,7 @@ makedepends=('boost' 'cmake' 'git' 'qt6-tools' 'minizip' 'ninja')
 optdepends=('innoextract: required by vcmibuilder' 'unshield: required by vcmibuilder' 'unzip: required by vcmibuilder')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/VCMI-Sources.tar.gz")
-sha256sums=('a8a4c0a63b22284823744a7b2d6995fa00b87d0dcc9240c86c1d05c310192e00')
+sha256sums=('64ca97737123b3270dfbd0a4a94bddc87223d3f4a9cfb0ca20e27f7a9d46fa33')
 _pkgsrc="$pkgname-$pkgver"
 noextract=("$_pkgsrc.tar.gz")
 
