@@ -8,7 +8,7 @@ url="https://github.com/TomB16/VideoKit-KDE"
 license=('MIT')
 depends=('ffmpeg' 'mediainfo' 'bash' 'crudini')  # Add any runtime deps here
 makedepends=('git')
-source=("git+https://github.com/TomB16/VideoKit-KDE.git#commit=master")  # Fetch from GitHub repo
+source=("git+https://github.com/TomB16/VideoKit-KDE.git#branch=main")  # Fetch from GitHub repo
 sha256sums=('SKIP')  # Don't need this when using Git as source
 
 
