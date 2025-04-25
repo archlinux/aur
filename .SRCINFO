@@ -1,7 +1,7 @@
 pkgbase = cloud-sql-proxy
 	pkgdesc = Cloud SQL Auth Proxy
 	pkgver = 2.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoogleCloudPlatform/cloudsql-proxy
 	arch = x86_64
 	license = Apache-2.0

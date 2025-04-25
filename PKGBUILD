@@ -5,7 +5,7 @@
 
 pkgname=cloud-sql-proxy
 pkgver=2.15.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
 url=https://github.com/GoogleCloudPlatform/cloudsql-proxy
@@ -24,6 +24,7 @@ prepare() {
   cd ${pkgname}-${pkgver}
 
   rm -rf out
+  go clean -modcache
   go mod download
 }
 
