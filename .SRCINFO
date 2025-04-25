@@ -1,0 +1,14 @@
+pkgbase = scream_cypher
+	pkgdesc = Encrypt and decrypt messages using the scream cypher
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/icorbrey/scream_cypher
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	source = scream_cypher-1.0.2.tar.gz::https://github.com/icorbrey/scream_cypher/archive/v1.0.2.tar.gz
+	sha256sums = 672644e96d61754f869712474f0f42ee44eee1c67d6003dfa6ed67c7a7df17f5
+
+pkgname = scream_cypher
