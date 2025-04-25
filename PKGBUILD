@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-glibc"
-pkgver=2.40
+pkgver=2.41
 pkgrel=1
 pkgdesc='GNU C library for the MIPS64EL target with multilib ABI'
 arch=('any')
@@ -14,12 +14,13 @@ options=('!emptydirs' '!strip' 'staticlibs' '!lto' '!debug')
 source=("https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz"{,.sig}
         'sdt-config.h'
         'sdt.h')
-sha256sums=('19a890175e9263d748f627993de6f4b1af9cd21e03f080e4bfb3a1fac10205a2'
+sha256sums=('a5a26b22f545d6b7d7b3dd828e11e428f24f4fac43c934fb071b6a7d0828e901'
             'SKIP'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
             '774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70')
 validpgpkeys=('7273542B39962DF7B299931416792B4EA25340F8'  # Carlos O'Donell
-              'BC7C7372637EC10C57D7AA6579C43DFBF1CF2187') # Siddhesh Poyarekar
+              'BC7C7372637EC10C57D7AA6579C43DFBF1CF2187'  # Siddhesh Poyarekar
+              '35B17DF5752577CA0C541CEB94BFDF4484AD142F') # Andreas K. Huettel
 
 _ABIS=('64' 'n32' '32')
 
