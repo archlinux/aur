@@ -1,14 +1,14 @@
 pkgname=netflix
 _pkgname=Netflix
-pkgver=1.0.14.aurpatch
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Unnofficial Netflix desktop application"
 arch=('x86_64')
 url="https://gitlab.com/linuxbombay/netflix-desktop"
 license=('GPL')
-depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
+depends=('electron-castlab-bin' 'libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('4d8daf01ad77faaf3c70e22794c5525a92db6ceffe79af698b229ba73e02edea')
+sha256sums=('4219cfda4a9e72f2c2ff0481cbf9046a08c564d6f865f1218e2fe113dce0cd76')
 
 
 package() {
