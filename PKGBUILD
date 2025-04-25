@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: soloturn <soloturn@gmail.com>
 pkgname=cosmic-notifications-git
-pkgver=1.0.0.alpha.6.r1.g8220d59
+pkgver=1.0.0.alpha.7.r0.g8eae7e0
 pkgrel=1
 pkgdesc="Layer Shell notifications daemon which integrates with COSMIC."
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,8 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/pop-os/cosmic-notifications.git'
-        'lto.patch')
-sha256sums=('SKIP'
-            '4cacb38bd2c25710dc67ba298acb0b6b1cf37e10dee0ea6e34ea72bd9e59b832')
+source=('git+https://github.com/pop-os/cosmic-notifications.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
