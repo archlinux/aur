@@ -3,7 +3,7 @@
 
 _pyname=kafka
 pkgname=python-$_pyname
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=1
 pkgdesc='Python client for Apache Kafka'
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=(python-snappy python-lz4 python-crc32c python-zstandard python-xxhash)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 checkdepends=(python-mock python-pytest-mock)
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('14052c9148b991065dce0ccc073593a31c63829763914e3ba573465e459f7e07')
+sha256sums=('0ec1e9de4e51442ff087081f4797e0a7ae4f4d7995212330410cbb6aa4290b2d')
 
 build() {
   cd "$srcdir/$_pyname-python-$pkgver"
@@ -30,8 +30,9 @@ check() {
   test-env/bin/python -m installer dist/*.whl
 
   mv $_pyname $_pyname-orig
+  sed -i 's/--timeout=300//' pytest.ini
 
-  test-env/bin/python -m pytest -v
+  test-env/bin/python -m pytest -v test
 }
 
 package() {
