@@ -1,5 +1,5 @@
 pkgbase = random-browser-git
-	pkgdesc = A little experiment of an internet browser.Use system-wide electron.
+	pkgdesc = A little experiment of an internet browser.(Use system-wide electron)
 	pkgver = 2.0.0.r0.g81835b1
 	pkgrel = 1
 	url = https://github.com/YisusGaming/random-browser
@@ -11,6 +11,7 @@ pkgbase = random-browser-git
 	makedepends = nvm
 	makedepends = yarn
 	makedepends = icoutils
+	makedepends = curl
 	depends = electron22
 	depends = nodejs
 	provides = random-browser

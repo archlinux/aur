@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=random-browser-git
-_pkgname="Random Browser"
+_pkgname='Random Browser'
 pkgver=2.0.0.r0.g81835b1
 _electronversion=22
 _nodeversion=16
 pkgrel=1
-pkgdesc="A little experiment of an internet browser.Use system-wide electron."
+pkgdesc="A little experiment of an internet browser.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/YisusGaming/random-browser"
 license=('CC-BY-NC-ND-4.0')
@@ -22,6 +22,7 @@ makedepends=(
     'nvm'
     'yarn'
     'icoutils'
+    'curl'
 )
 options=(
     '!strip'
@@ -45,8 +46,8 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
@@ -64,7 +65,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -82,6 +82,10 @@ build() {
     cp assets/icons/icon.png src/public/assets/icon
     sed -i "s/icon\/icon\.ico/icon\/icon\.png/g" src/public/loader.html
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     cp -r src/public build
     NODE_ENV=production     yarn electron-packager . "${pkgname%-git}" --overwrite --asar=false --platform=linux --icon="${pkgname%-git}".png --prune=true --out=dist
