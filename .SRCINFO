@@ -1,5 +1,5 @@
 pkgbase = finance-manager-git
-	pkgdesc = Simple application to manager revenue and expenses.Use system-wide electron.
+	pkgdesc = Simple application to manager revenue and expenses.(Use system-wide electron)
 	pkgver = 1.0.1.r0.gdd8f453
 	pkgrel = 1
 	url = https://github.com/programmingKyle/finance-manager
@@ -9,8 +9,6 @@ pkgbase = finance-manager-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
-	makedepends = gcc
 	makedepends = curl
 	depends = electron29
 	provides = finance-manager=1.0.1
