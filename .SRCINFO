@@ -1,0 +1,17 @@
+pkgbase = hobuild-gui
+	pkgdesc = Simple GUI for creating build.hob files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/wholos/hobuild-gui
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	depends = nana
+	depends = libx11
+	depends = libxft
+	depends = libxcursor
+	source = hobuild-gui-1.0.tar.gz::https://github.com/wholos/hobuild-gui/archive/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hobuild-gui
