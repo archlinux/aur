@@ -3,7 +3,7 @@
 _pkgauthor=gianndev
 pkgname=mussel
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" The Mussel Programming Language"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -32,4 +32,10 @@ package() {
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 	install -Dm644 "CONTRIBUTING.md" "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
+
+	install -Dm644 "doc/Standard_Library.md" "${pkgdir}/usr/share/doc/${pkgname}/STANDARD_LIBRARY.md"
+	install -Dm644 "doc/Tutorial.md" "${pkgdir}/usr/share/doc/${pkgname}/TUTORIAL.md"
+
+	mkdir -p "${pkgdir}/usr/share/${pkgname}/examples"
+	cp -a "examples/"* "${pkgdir}/usr/share/${pkgname}/examples/"
 }
