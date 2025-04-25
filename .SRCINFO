@@ -1,8 +1,8 @@
 pkgbase = 98fmplayer-git
 	pkgdesc = PC-98 FM driver emulation
 	pkgver = v0.1.14.r11.g4fa914e
-	pkgrel = 1
-	url = https://github.com/dgrfactory/spcplay
+	pkgrel = 2
+	url = https://github.com/myon98/98fmplayer
 	arch = i686
 	arch = x86_64
 	license = BSD-2-Clause

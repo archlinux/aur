@@ -3,10 +3,10 @@
 pkgname=98fmplayer-git
 _pkgname=98fmplayer
 pkgver=v0.1.14.r11.g4fa914e
-pkgrel=1
+pkgrel=2
 pkgdesc="PC-98 FM driver emulation"
 arch=('i686' 'x86_64')
-url="https://github.com/dgrfactory/spcplay"
+url="https://github.com/myon98/98fmplayer"
 license=('BSD-2-Clause')
 makedepends=('make' 'autoconf')
 source=(
