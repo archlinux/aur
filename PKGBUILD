@@ -5,7 +5,7 @@
 pkgname=dockmate
 _origpkgname=dockmate
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitors a list of specified Docker containers and automatically upgrades them when new images are released."
 arch=("x86_64")
 url='https://pypi.org/project/dockmate/'
@@ -15,6 +15,7 @@ depends=(
 	"confz"
 	"python-docker"
 	"python-rich"
+	"python-pushover-complete"
 )
 makedepends=(
 	"python-build"
