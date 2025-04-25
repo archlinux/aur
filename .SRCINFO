@@ -15,11 +15,10 @@ pkgbase = vocalshaper-git
 	makedepends = cmake
 	makedepends = ninja
 	depends = freetype2
-	depends = curl
 	depends = webkit2gtk
 	depends = gtk3
 	depends = patchelf
-	provides = vocalshaper=r1219.4d138f5
+	provides = vocalshaper
 	conflicts = vocalshaper
 	source = git+https://github.com/Do-sth-sharp/VocalShaper
 	sha256sums = SKIP

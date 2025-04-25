@@ -5,13 +5,13 @@ pkgver=r1219.4d138f5
 pkgrel=1
 epoch=0
 conflicts=('vocalshaper')
-provides=("vocalshaper=${pkgver}")
+provides=("vocalshaper")
 pkgdesc='A JUCE-based Open Source DAW'
 arch=('x86_64')
 url='https://github.com/Do-sth-sharp/VocalShaper'
 license=('GPL-3.0')
 
-depends=('freetype2' 'curl' 'webkit2gtk' 'gtk3' 'patchelf')
+depends=('freetype2' 'webkit2gtk' 'gtk3' 'patchelf')
 makedepends=('clang' 'git' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja')
 source=('git+https://github.com/Do-sth-sharp/VocalShaper')
 sha256sums=('SKIP')
