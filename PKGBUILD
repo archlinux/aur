@@ -13,7 +13,7 @@ url='https://www.processing.org/'
 license=(GPL LGPL)
 depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 optdepends=('processing-examples: Examples for Processing')
-makedepends=(ant gendesk rsync unzip)
+makedepends=(ant rsync unzip)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
         disable_update_check.patch
@@ -38,9 +38,6 @@ prepare() {
 
   # Symbolic link for not having to repeat the revision number
   ln -sf "${pkgname}4-processing-$_build-$pkgver" $pkgname
-
-  # Create .desktop file
-  gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing" --exec="processing %f" --mimetypes="text/x-processing"
 
   # Don't download JDK and JFX files during Ant's build process
   patch $pkgname/build/build.xml < no_jdk_download.patch
