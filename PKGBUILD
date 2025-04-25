@@ -1,23 +1,24 @@
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 
 _pkgname="psl1ght"
+_commit="eca3f990a6691c896129439b95ca1f7bdd6abaf0"
 pkgname="ps3-${_pkgname}"
-pkgver="20230214"
-pkgrel=3
+pkgver="20241020"
+pkgrel=1
 pkgdesc="PSL1GHT lightweight PS3 GameOS SDK"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://github.com/ps3dev'
 license=(MIT)
 depends=(
-	ps3-env
-	ps3-ppu-binutils
-	ps3-ppu-gcc
-	ps3-spu-binutils
-	ps3-spu-gcc
+	"ps3-env"
+	"ps3-ppu-binutils>=2.44"
+	"ps3-ppu-gcc>=15.1.0"
+	"ps3-spu-binutils>=2.22"
+	"ps3-spu-gcc>=9.5.0"
 )
 options=(!emptydirs !strip staticlibs)
 source=(
-	"git+https://github.com/ps3dev/PSL1GHT.git#commit=0f7ab5e4967ef0df877dd10f080b0ca771eac023"
+	"git+https://github.com/ps3dev/PSL1GHT.git#commit=${_commit}"
 )
 sha256sums=(
 	'SKIP'
@@ -30,6 +31,9 @@ prepare() {
 
 	# Weird different internal compiler errors with Os/O2/O3, only O1 works
 	sed -e "s/-O2/-O1/g" -i ppu/librsx/Makefile
+
+	# GCC 15 fix
+	sed -e "s/gcmGetControlRegister()/gcmGetControlRegister(gcmContextData *context)/g" -i ppu/include/rsx/gcm_sys.h
 }
 
 build() {

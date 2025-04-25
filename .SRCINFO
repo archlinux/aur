@@ -1,7 +1,7 @@
 pkgbase = ps3-psl1ght
 	pkgdesc = PSL1GHT lightweight PS3 GameOS SDK
-	pkgver = 20230214
-	pkgrel = 3
+	pkgver = 20241020
+	pkgrel = 1
 	url = https://github.com/ps3dev
 	arch = x86_64
 	arch = aarch64
@@ -11,14 +11,14 @@ pkgbase = ps3-psl1ght
 	arch = riscv64
 	license = MIT
 	depends = ps3-env
-	depends = ps3-ppu-binutils
-	depends = ps3-ppu-gcc
-	depends = ps3-spu-binutils
-	depends = ps3-spu-gcc
+	depends = ps3-ppu-binutils>=2.44
+	depends = ps3-ppu-gcc>=15.1.0
+	depends = ps3-spu-binutils>=2.22
+	depends = ps3-spu-gcc>=9.5.0
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = git+https://github.com/ps3dev/PSL1GHT.git#commit=0f7ab5e4967ef0df877dd10f080b0ca771eac023
+	source = git+https://github.com/ps3dev/PSL1GHT.git#commit=eca3f990a6691c896129439b95ca1f7bdd6abaf0
 	sha256sums = SKIP
 
 pkgname = ps3-psl1ght
