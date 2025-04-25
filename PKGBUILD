@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
-pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
-pkgver=4.3.2
+pkgver=4.3.5
 pkgrel=1
+pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
 url="https://ente.io/auth"
 license=('AGPL-3.0-or-later')
@@ -18,6 +18,7 @@ makedepends=(
   'clang'
   'cmake'
   'git'
+  'jdk17-openjdk'
   'ninja'
   'unzip'
 )
@@ -26,9 +27,9 @@ source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/flutter/flutter.git'
         'git+https://github.com/simple-icons/simple-icons.git'
         'git+https://github.com/ente-io/PhotoSwipe.git'
-        'git+https://github.com/prateekmedia/flutter_distributor.git#branch=develop'
+        'git+https://github.com/ente-io/flutter_distributor_fork.git#branch=develop'
         'enteauth.desktop')
-sha256sums=('a1b9a1c02fb52e730b6c7f0a57fa26c81c05b98bf3bb66f473c3e99707cbe33b'
+sha256sums=('4d7fff29be8b722bf9b60389e3268cc4420488f5ba31ee2f234fea9874571962'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,11 +43,10 @@ prepare() {
   git config submodule.auth/thirdparty/sentry-dart.url "$srcdir/sentry-dart"
   git config submodule.auth/flutter.url "$srcdir/flutter"
   git config submodule.auth/assets/simple-icons.url "$srcdir/simple-icons"
-  git config submodule.web/apps/photos/thirdparty/photoswipe.url "$srcdir/PhotoSwipe"
   git -c protocol.file.allow=always submodule update
 
   cd auth
-  ln -sf "$srcdir/flutter_distributor" flutter/packages
+  ln -sf "$srcdir/flutter_distributor_fork" flutter/packages/flutter_distributor
 
   export FLUTTER_HOME="$srcdir/ente/auth/flutter"
   export PATH="${FLUTTER_HOME}/bin:${PATH}"
@@ -70,10 +70,14 @@ build() {
   export LIBSODIUM_USE_PKGCONFIG=1
   export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/lib/sodium-1.0.18/pkgconfig/"
   export LIBRARY_PATH="${LIBRARY_PATH}:/usr/lib/sodium-1.0.18/"
+
+  # Treat app_indicator_new deprecation error as a warning
+  export CXXFLAGS+=' -Wno-error=deprecated-declarations'
+
   flutter config --no-analytics
   dart --disable-analytics
   dart pub global activate \
-    --source git https://github.com/prateekmedia/flutter_distributor \
+    --source git https://github.com/ente-io/flutter_distributor_fork \
     --git-ref develop \
     --git-path packages/flutter_distributor
   flutter_distributor package --platform=linux --targets=zip --skip-clean
