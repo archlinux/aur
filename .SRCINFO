@@ -1,5 +1,5 @@
 pkgbase = videokit-kde
-	pkgdesc = User-level KDE video utility suite for transcoding, metadata, etc.
+	pkgdesc = KDE video utility suite that extends Dolphin context menus for transcoding, metadata, etc.
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/TomB16/VideoKit-KDE
