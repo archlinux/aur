@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gpuMagic
-_pkgver=1.18.0
+_pkgver=1.23.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc='An openCL compiler with the capacity to compile R functions and run the code on GPU'
 arch=('x86_64')
@@ -27,18 +27,22 @@ optdepends=(
   r-rmarkdown
   r-testthat
 )
-makdepends=(
-  make
-)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('14e7ba94590e9d08e99da73a3960c5c4b2dee3ebb4420f79a9e475562349ad74')
+sha256sums=('0a0683afffeabc42eb9127cbbe847b65cbe044a013daa857882990110de16f6a')
 
+prepare() {
+  sed -i $_pkgname/src/Tools.cpp \
+    -e 's|error(|&"%s",|g' \
+    -e 's|warning(|&"%s",|g' \
+    -e 's|Rprintf(|&"%s",|g'
+}
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
 # vim:set ts=2 sw=2 et:
