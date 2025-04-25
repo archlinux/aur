@@ -72,8 +72,10 @@ build() {
   # Treat app_indicator_new deprecation error as a warning
   export CXXFLAGS+=' -Wno-error=deprecated-declarations'
 
+  # Disable analytics
   flutter config --no-analytics
   dart --disable-analytics
+
   dart pub global activate \
     --source git https://github.com/ente-io/flutter_distributor_fork \
     --git-ref develop \
