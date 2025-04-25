@@ -10,7 +10,7 @@ _mpfr_pkgver="4.1.0"
 _pkgname="gcc"
 pkgname="ps3-${_target_alias}-${_pkgname}"
 pkgver="15.1.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="GCC for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://gcc.gnu.org/'
@@ -20,8 +20,7 @@ checkdepends=(dejagnu expect inetutils python-pytest tcl)
 depends=(ps3-env "ps3-ppu-binutils>=2.44")
 options=(!emptydirs !strip staticlibs !lto)
 source=(
-	#"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-	"https://gcc.gnu.org/pub/gcc/snapshots/15.1.0-RC-20250418/gcc-15.1.0-RC-20250418.tar.xz"
+	"https://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.xz"
 	"${_pkgname}-${pkgver}-ps3-${_target_alias}.patch"
 	"http://sourceware.org/pub/newlib/newlib-${_newlib_pkgver}.tar.gz"
 	"newlib-${_newlib_pkgver}-ps3-${_target_alias}.patch"
@@ -31,7 +30,7 @@ source=(
 	"http://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfr_pkgver}.tar.bz2"
 )
 sha256sums=(
-	'fe18624317c6c662977eea8b5a506ec6c132fc11c7a8d53e2f6d21b139b0af3c'
+	'e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
 	'a19523a965bc412598df0d0b41e8dbb83ad6e28ea229150125622df55ddc4057'
 	'c644b2847244278c57bec2ddda69d8fab5a7c767f3b9af69aa7aa3da823ff692'
 	'b2a61e2afa6b09c5b2ad63cc02d7d79ccd11f4c839b35d5bad1d0e22dea0c701'
