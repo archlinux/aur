@@ -3,7 +3,7 @@
 pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
-pkgver=35.16.0
+pkgver=35.17.0
 pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
@@ -31,7 +31,7 @@ source_x86_64=(
     "https://115.com/copyright.html"
     "${pkgname}.install"
 )
-sha256sums_x86_64=('4359b8d44cced641d027cdd347c9d9f59cd6f2946f55736737b2ba41a52d3b5b'
+sha256sums_x86_64=('1ad15f38604ee4eadddfd3bcf97629e8a61f3245f50a7b2ad118bd8bf2c1fb46'
                    'e65199037614ec40eae799f013d007a9252d1b870ec9406fffd7f0aaee3951f1'
                    'cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245'
                    'ce0e3cdf98637003986feb9abb198cf04135333116f44e1642ba438d344a6a2e')
