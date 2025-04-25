@@ -1,5 +1,5 @@
 pkgbase = bilive-danmaku-git
-	pkgdesc = Bilibili live danmaku client.Use system-wide electron.一个开源的 bilibili 直播弹幕姬.
+	pkgdesc = Bilibili live danmaku client.(Use system-wide electron)一个开源的 bilibili 直播弹幕姬.
 	pkgver = 1.0.9.r0.g590e9f1
 	pkgrel = 1
 	url = https://github.com/Beats0/bilive-danmaku
