@@ -1,0 +1,27 @@
+pkgbase = zeal-i3-shortcuts
+	pkgdesc = Offline API documentation browser, with X11/i3 shortcut patches
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://zealdocs.org
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = qt6-webengine
+	depends = qt6-base
+	depends = qt6-webchannel
+	depends = sqlite
+	depends = libarchive
+	depends = libxcb
+	depends = libx11
+	depends = xcb-util-keysyms
+	conflicts = zeal
+	source = zeal-i3-shortcuts::git+https://github.com/Jack12816/zeal#branch=main
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = zeal-i3-shortcuts
