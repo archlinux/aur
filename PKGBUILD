@@ -2,14 +2,14 @@
 
 pkgname=nvibrant-bin
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Nvidia Digital Vibrance on Wayland (binary release)"
 arch=(x86_64)
 url="https://github.com/Tremeschin/nVibrant"
 license=('GPL-3.0')
 provides=("nvibrant")
 conflicts=("nvibrant")
-depends=("python>=3.9")
+depends=("python>=3.9" "python-packaging")
 makedepends=("python-installer")
 _name=${pkgname%-bin}
 

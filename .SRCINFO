@@ -1,12 +1,13 @@
 pkgbase = nvibrant-bin
 	pkgdesc = Nvidia Digital Vibrance on Wayland (binary release)
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tremeschin/nVibrant
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = python-installer
 	depends = python>=3.9
+	depends = python-packaging
 	provides = nvibrant
 	conflicts = nvibrant
 	source = https://files.pythonhosted.org/packages/py3/n/nvibrant/nvibrant-1.0.5-py3-none-any.whl
