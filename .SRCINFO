@@ -1,19 +1,19 @@
 pkgbase = pynetdicom-git
 	pkgdesc = A Python implementation of the DICOM networking protocol
 	pkgver = v2.1.1.r9.gdcd8f3c16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pydicom/pynetdicom
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = git
+	makedepends = python-flit-core
 	depends = python-pydicom
 	depends = python
-	depends = python-flit-core
 	provides = pynetdicom
 	conflicts = pynetdicom
 	source = pynetdicom::git+https://github.com/pydicom/pynetdicom.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = pynetdicom-git
