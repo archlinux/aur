@@ -2,15 +2,15 @@
 
 _pkgname=resolvconf-override
 pkgname=${_pkgname}-git
-pkgver=r9.798ca21
+pkgver=r15.06a91f9
 pkgrel=1
 pkgdesc="Override resolv.conf using LD_PRELOAD"
-url="https://github.com/hadess/${_pkgname}"
+url="https://gitlab.freedesktop.org/hadess/${_pkgname}"
 arch=("i686" "x86_64")
-source=("git+https://github.com/hadess/${_pkgname}.git")
+source=("git+https://gitlab.freedesktop.org/hadess/${_pkgname}.git")
 sha256sums=('SKIP')
 depends=("glibc")
-makedepends=("autoconf")
+makedepends=("meson" "ninja")
 
 pkgver() {
   cd "$_pkgname"
@@ -19,13 +19,13 @@ pkgver() {
 
 build() {
   cd $srcdir/${_pkgname}/
-  autoreconf -f -i
-  ./configure --prefix=/usr
-  make
+  mkdir -p build && cd build
+  meson ..
+  ninja
 }
 
 package() {
-  cd $srcdir/${_pkgname}/
-  make DESTDIR="$pkgdir/" install
+  cd $srcdir/${_pkgname}/build
+  DESTDIR="$pkgdir/" ninja install
 }
 
