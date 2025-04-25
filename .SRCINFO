@@ -1,7 +1,7 @@
 pkgbase = jdsystemmonitor
 	pkgdesc = Monitor your system
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/JakobDev/jdSystemMonitor
 	arch = x86_64
 	license = GPL3
@@ -17,6 +17,8 @@ pkgbase = jdsystemmonitor
 	depends = hicolor-icon-theme
 	optdepends = packagekit: See installed pacman packages
 	source = jdsystemmonitor-1.0.tar.gz::https://codeberg.org/JakobDev/jdSystemMonitor/archive/1.0.tar.gz
+	source = default-settings.patch
 	sha256sums = 418c4fc6baee80081398c175da436b8d5361d66ca360464244478b48b35f299c
+	sha256sums = f39bdf91aa99e68c7270a8a0e0bc1afb55ec5246550a31f5f756646e21a64019
 
 pkgname = jdsystemmonitor
