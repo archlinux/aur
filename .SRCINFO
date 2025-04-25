@@ -1,6 +1,6 @@
 pkgbase = keeweb-git
-	pkgdesc = Desktop password manager compatible with KeePass databases.Use system-wide electron.
-	pkgver = 1.18.7.r44.g44432eb
+	pkgdesc = Desktop password manager compatible with KeePass databases.(Use system-wide electron)
+	pkgver = 1.18.7.r85.gb4bb8e2
 	pkgrel = 1
 	url = https://keeweb.info/
 	arch = any
