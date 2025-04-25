@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dplR
-_pkgver=1.7.7
+_pkgver=1.7.8
 pkgname=r-${_pkgname,,}
-pkgver=1.7.7
-pkgrel=1
+pkgver=1.7.8
+pkgrel=2
 pkgdesc='Dendrochronology Program Library in R'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,6 +13,7 @@ depends=(
   r
   r-digest
   r-matrixstats
+  r-lme4
   r-plyr
   r-png
   r-r.utils
@@ -39,7 +40,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0e35a4d2a22773499f9e4592d1a198a08c9842388ce1e5a35394990ed4cdb2bd')
+sha256sums=('f78c33c1749110d3a3cef6bc6e1f02546b38d21735552e22a965370630672b4b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
