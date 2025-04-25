@@ -2,9 +2,9 @@
 # Maintainer: Zach Jacobson <jacobsonzacharym@gmail.com>
 
 pkgname=ttf-noto-emoji-monochrome
-pkgrel=6
+pkgrel=1
 _commit='24d8485dc7eeda9ec8d08788dfacad75127aebc7'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgdesc='Google Noto Emoji Monochrome font'
 arch=(any)
 provides=(emoji-font)
