@@ -10,7 +10,7 @@
 
 pkgver=31.7.7
 _gcc_patches=126
-pkgrel=3
+pkgrel=4
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -511,6 +511,9 @@ prepare() {
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
+
+  # Rust replaced libadler with libadler2
+  sed -i 's/"adler"/"adler2"/' build/rust/std/BUILD.gn
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
