@@ -9,8 +9,6 @@ pkgbase = overvue-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
-	makedepends = gcc
 	makedepends = curl
 	depends = electron29
 	provides = overvue=11.0.0
