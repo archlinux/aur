@@ -4,7 +4,7 @@
 #
 pkgname=dockmate
 _origpkgname=dockmate
-pkgver=0.1.8
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Monitors a list of specified Docker containers and automatically upgrades them when new images are released."
 arch=("x86_64")
@@ -23,8 +23,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/34/b6/ec93676dcc40b18674f80e0eeccef3093520f689679c2eeeee7d13152418/dockmate-0.1.8.tar.gz")
-sha256sums=("e0cf6fcccc1e1cda7817ed75689822acae8f27098199972a88534ca5c7dd17aa")
+source=("https://files.pythonhosted.org/packages/ef/3d/0d1faf981832ed7cb1d38ecff93fc3dcb670a4662bcff4f80d882287161a/dockmate-0.1.10.tar.gz")
+sha256sums=("b6a7d40cc22b04afea553592a5aec0bbb0b497b48a48a9f4205ddce926b5a46c")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
