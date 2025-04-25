@@ -10,6 +10,7 @@ url="https://github.com/MystenLabs/sui"
 _url="https://github.com/MystenLabs/${_pkgname}"
 license=('Apache-2.0')
 depends=()
+makedepends=('debugedit' 'fakeroot')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
