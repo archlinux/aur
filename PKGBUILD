@@ -20,6 +20,7 @@ sha256sums=('SKIP')  # Don't need this when using Git as source
 
 package() {
   cd "$srcdir" || return 1
+  echo "$srcdir" > output
 
   # Install scripts
   install -Dm755 "$srcdir/VideoKit-KDE/videokit-config"            "$pkgdir/usr/bin/videokit-config"
