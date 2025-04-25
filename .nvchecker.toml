@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/dynobo/normcap.git"
 prefix = "v"
+exclude_regex = ".*beta.*"
