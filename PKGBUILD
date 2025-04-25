@@ -1,6 +1,6 @@
 # Maintainer: Electria
 pkgname=btwrap-git
-pkgver=r109.5830b33
+pkgver=r110.1011925
 pkgrel=1
 pkgdesc="Shell wrapper for managing BTRFS snapshots"
 arch=(any)
@@ -33,4 +33,5 @@ package() {
 
     install -d "$pkgdir/usr/share/libalpm/hooks"
     cp btwrap/btwrap-snapshot-cycle.hook "$pkgdir/usr/share/libalpm/hooks/"
+    cp btwrap/btwrap-grub-update.hook "$pkgdir/usr/share/libalpm/hooks/"
 }
