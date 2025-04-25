@@ -1,6 +1,6 @@
 # Maintainer: Tom Brown <tom@CarlsonSpeed.com>
 pkgname='videokit-kde'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="User-level KDE video utility suite for transcoding, metadata, etc."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/TomB16/VideoKit-KDE"
 license=('MIT')
 depends=('ffmpeg' 'mediainfo' 'bash' 'crudini')  # Add any runtime deps here
 makedepends=('git')
-source=("git+https://github.com/TomB16/VideoKit-KDE.git#branch=main")  # Fetch from GitHub repo
+source=("git+https://github.com/TomB16/VideoKit-KDE.git#branch=master")  # Fetch from GitHub repo
 sha256sums=('SKIP')  # Don't need this when using Git as source
 
 

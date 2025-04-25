@@ -1,6 +1,6 @@
 pkgbase = videokit-kde
 	pkgdesc = User-level KDE video utility suite for transcoding, metadata, etc.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/TomB16/VideoKit-KDE
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = videokit-kde
 	depends = mediainfo
 	depends = bash
 	depends = crudini
-	source = git+https://github.com/TomB16/VideoKit-KDE.git#branch=main
+	source = git+https://github.com/TomB16/VideoKit-KDE.git#branch=master
 	sha256sums = SKIP
 
 pkgname = videokit-kde
