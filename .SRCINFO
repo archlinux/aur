@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-leechblock
 	pkgdesc = LeechBlock is a simple free productivity tool designed to block those time-wasting sites that can suck the life out of your working day.
-	pkgver = 0.9.10.1
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/leechblock-ng/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = firefox-extension-leechblock
 	makedepends = raptor
 	depends = firefox
 	noextract = firefox-extension-leechblock.xpi
-	source = firefox-extension-leechblock.xpi::https://addons.mozilla.org/firefox/downloads/latest/leechblock-ng/addon-1728895-latest.xpi
-	sha512sums = dcdb61483fb173dc41fc50636d42dc29986c2023d09d6663acd61ac2eca33484c31976471de285e748c4b1eb51402c0342470c0b59de9df25dafb04fdc225c0f
+	source = firefox-extension-leechblock.xpi::https://addons.mozilla.org/firefox/downloads/file/4466262/leechblock_ng-1.6.9.xpi
+	sha512sums = 713ad742928dd1efb4f4289cb1288679cefc2243e156cf9a504b66ed626874075b9868e56f061fcfb80ce98a8515d78ee9c10e174f96e92758b0a7044cd9e551
 
 pkgname = firefox-extension-leechblock
-
