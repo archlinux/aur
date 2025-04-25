@@ -2,7 +2,7 @@
 
 _pkgname="drand"
 pkgname="${_pkgname}-bin"
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A Distributed Randomness Beacon Daemon"
 arch=('aarch64' 'i686' 'x86_64')
@@ -15,9 +15,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz")
 source_i686=("${_pkgsrc}-i686.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums_aarch64=('0f18dfd805e490dda16076273631c4ae42f5c9693685834354e14b4cbde74f54')
-sha256sums_i686=('95bf9ec3e987bf03a047fe906476076061cf73c6e5237592bd2f4b739ba88649')
-sha256sums_x86_64=('f1670d3e7951c38a201451cc7d52dfa67f84d019d7da466d0f45ca4c4a962981')
+sha256sums_aarch64=('cdcf68e08f654eebbcb62bf257c29e18e0825bc4d2a926858be566950644dbd0')
+sha256sums_i686=('cc974d6ac2bd576015a7f9a5682e5bf778784e954283cfe90703e04cf58ac101')
+sha256sums_x86_64=('6ea7712703fd0e8a420a3d4fc092dbd8959280569cb4ae4c43e13b54a425b8aa')
 
 package() {
   cd "${srcdir}"
