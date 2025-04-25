@@ -15,6 +15,7 @@ depends=(
     "libxt"
     "libxaw"
     "libxi" # <- unsure?
+    "xorg-fonts-misc"
 )
 makedepends=(
     "make"
