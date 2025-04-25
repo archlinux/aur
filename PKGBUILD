@@ -1,30 +1,23 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ttf-adwaita-mono-nerd
-pkgver=3.3.0
-pkgrel=2
-pkgdesc="Adwaita Mono patched with Nerd Fonts iconics"
+pkgver=3.4.0
+pkgrel=1
+pkgdesc="Patched font Adwaita Mono from nerd fonts library"
 arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
-license=('GPL-3.0-or-later')
-makedepends=(
-  'adwaita-fonts'
-  'fontforge'
-  'parallel'
-  'python'
-)
-source=("FontPatcher-$pkgver.zip::$url/releases/download/v$pkgver/FontPatcher.zip")
-sha256sums=('ce4284e7d1a8816d29bb3a358e33a44e55804792e7925ed0022ba1b3ab1a9d34')
+license=('OFL-1.1')
+provides=('ttf-font-nerd')
+source=("AdwaitaMono-$pkgver.tar.xz::$url/releases/download/v$pkgver/AdwaitaMono.tar.xz")
+noextract=("AdwaitaMono-$pkgver.tar.xz")
+sha256sums=('39b7598b2ec30111d1ace82b274809e5d0930e241683c1c91f5b4c7e64a975cf')
 
 prepare() {
-  mkdir -p "$srcdir/patched"
-  mkdir -p "$srcdir/AdwaitaMono"
-  cp -f /usr/share/fonts/Adwaita/AdwaitaMono-*.ttf "$srcdir/AdwaitaMono"
-}
-
-build() {
-  parallel -j$(nproc) python "$srcdir/font-patcher" -c {} -out "$srcdir/patched" ::: "$srcdir/AdwaitaMono"/*.ttf 
+  mkdir -p "AdwaitaMono-$pkgver"
+  bsdtar xf "AdwaitaMono-$pkgver.tar.xz" -C "AdwaitaMono-$pkgver"
 }
 
 package() {
-  install -Dm644 "$srcdir"/patched/*.ttf -t "$pkgdir/usr/share/fonts/Adwaita/"
+  cd "AdwaitaMono-$pkgver"
+  install -Dm644 *.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licences/$pkgname/"
 }
