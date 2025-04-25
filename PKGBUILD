@@ -33,13 +33,13 @@ package() {
   install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodequeue"    "$pkgdir/usr/bin/videokit-transcodequeue"
 
   # Install .desktop file
-  install -Dm644 videokit.desktop "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
+  install -Dm644 "$srcdir/VideoKit-KDE/videokit.desktop" "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
 
   # Install config file
-  install -Dm644 videokit.conf "$pkgdir/usr/share/videokit/videokit.conf"
+  install -Dm644 "$srcdir/VideoKit-KDE/videokit.conf" "$pkgdir/usr/share/videokit/videokit.conf"
 
   # License
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/VideoKit-KDE/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Rebuild KDE service cache
   if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
