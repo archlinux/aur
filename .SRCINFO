@@ -1,18 +1,20 @@
 pkgbase = ffqueue-git
-	pkgdesc = FFQueue is (yet another) graphical user interface for FFMpeg with comprehensive support for both the basic features but also the more advanced features like filtergraphs.(git version)
-	pkgver = r3.3e4c8ab
+	pkgdesc = Graphical user interface for FFMpeg with comprehensive support for basic and advances features
+	pkgver = 1.7.67.r0.g15db4f2
 	pkgrel = 1
-	url = http://ffqueue.bruchhaus.dk/
+	url = https://ffqueue.bruchhaus.dk/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = git
 	depends = ffmpeg
-	depends = wxgtk2
-	depends = xterm
+	depends = wxwidgets-gtk3
+	depends = zlib
 	provides = ffqueue
 	conflicts = ffqueue
-	source = ffqueue-git::git://github.com/bswebdk/FFQueue.git
+	source = ffqueue-git::git+https://github.com/bswebdk/FFQueue.git
+	source = ffqueue.desktop
 	sha256sums = SKIP
+	sha256sums = 3cb05b6a57027a6c663b3d358b7163b1733e8ea64e339a4ac7955947160188a3
 
 pkgname = ffqueue-git
-

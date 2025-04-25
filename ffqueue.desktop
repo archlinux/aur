@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=AudioVideo;AudioVideoEditing;
+Comment=Graphical user interface for FFMpeg with comprehensive support for both the basic features but also the more advanced features like filtergraphs.
+Name=ffqueue
+GenericName=Graphical user interface for FFMpeg
+Exec=ffqueue
+Icon=ffqueue
+Type=Application
+Terminal=false
