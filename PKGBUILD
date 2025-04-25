@@ -16,7 +16,7 @@ sha256sums=('SKIP')  # Replace with real sha256sum for strict integrity
 
 build() {
   cd "telecord-${pkgver}"
-  npm install --omit=dev
+  npm ci --omit=dev
 }
 
 package() {
@@ -31,5 +31,9 @@ package() {
 
   # docs
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
+
+post_install() {
+  chmod +x "$pkgdir/usr/bin/telecord"
 }
 
