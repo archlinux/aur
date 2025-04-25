@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Electron Castlab
+Icon=electron
+Exec=electroncastlab %u
+Categories=Development;GTK;
+StartupNotify=true
