@@ -8,7 +8,7 @@ _pkgname=ninja
 pkgname=$_pkgname-jobserver
 provides=(ninja)
 conflicts=(ninja)
-pkgver=r3227.f657817
+pkgver=r3239.d4a4f36
 pkgrel=1
 pkgdesc='Small build system with a focus on speed (with job server client patch)'
 arch=(x86_64)
@@ -18,9 +18,9 @@ depends=(gcc-libs)
 makedepends=(cmake python re2c git)
 checkdepends=(gtest)
 _srcdir='ninja-digit-google'
-_commit='f65781746a394ab538e4f28251f829786d3c135c'
+_commit='d4a4f3694c983306584b26c8e45bf3efcd53d108'
 source=("${_srcdir}::git+https://github.com/digit-google/ninja.git#commit=$_commit")
-sha256sums=('9605d9c6003c5da2e6e5ee0278ac23ee301f2314f3dff6ef5c6b7b4751fc60fd')
+sha256sums=('29f1c50569ca217ed80992f7daf23f349b25d9f714987c9e60d16f356a5f17c7')
 
 pkgver() {
 	cd "${_srcdir}"
