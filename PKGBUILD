@@ -10,10 +10,10 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
-declare -r _tag="93ddffb05f380a731f0a196f1afef2eebf8a1e66"
+declare -r _tag="eb61a4e5bc04d6f731aa22f667c0807806e10202"
 
 pkgname="soci-git"
-pkgver="v4.0.1_907_g93ddffb0"
+pkgver="v4.0.1_914_geb61a4e5"
 pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
@@ -27,7 +27,7 @@ optdepends=("libfbclient: Firebird"
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("60007efcc521b6943c9deafb5b0ad40b62e95d5d32319122f69cce711d387aed7751d1cf5d521f0758c694b50f01d4253958f5d89bfcd4c7928eb9b32beed7b0")
+sha512sums=("728e3fce25d1570e9f4bdf9073cc7800c615e6db14eb17b3145ab6e76514d10b33045465f7443915fd95fc2fe446f83fb425d92202d9b4da37ec8f52539e6010")
 
 _compile()
 {
