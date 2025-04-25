@@ -4,7 +4,7 @@ _pkgname=SteamDepotDownloaderGUI
 pkgver=2.4.3
 _electronversion=32
 pkgrel=1
-pkgdesc="Easily download older versions of games from Steam using DepotDownloader.Prebuilt version.Use system-wide electron."
+pkgdesc="Easily download older versions of games from Steam using DepotDownloader.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -25,18 +25,20 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/downl
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('f841cddb481a10e5938282cb8e8092dc620f686b4ac17357d3e91063cb183dbe')
 sha256sums_x86_64=('bd2be5e3c7431cc81cb22a888fd3cfe9d19a2c2f1d0ecb3438a29934363cd366')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
-} 
+}
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
