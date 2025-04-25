@@ -1,7 +1,7 @@
 # Maintainer: zhullyb <zhullyb [at] outlook [dot] com>
 pkgname=wechat-devtools-bin
 pkgver=1.06.2412050_2
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="WeChat Devtools For Linux."
 license=("MIT")
@@ -23,7 +23,7 @@ md5sums=('21801283de48c6d050c5e81b2d24c26c'
 package() {
     mkdir -p ${pkgdir}/opt/wechat-devtools ${pkgdir}/usr/bin
     cp -r ${srcdir}/WeChat_Dev_Tools_v${pkgver//_/-}_x86_64_linux/* ${pkgdir}/opt/wechat-devtools
-    ln -s /opt/wechat-devtools/bin/* ${pkgdir}/usr/bin/
+    ln -s /opt/wechat-devtools/bin/{wechat-devtools,wechat-devtools-cli} ${pkgdir}/usr/bin/
 
     install -Dm644 ${srcdir}/wechat-devtools.desktop ${pkgdir}/usr/share/applications/wechat-devtools.desktop
     install -Dm644 ${srcdir}/wechat-devtools.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-devtools.svg
