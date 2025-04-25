@@ -1,0 +1,134 @@
+#!/bin/bash
+#
+# VideoKit-KDE - A set of video utilities for KDE, extending Dolphin.
+#       - VideoKit-KDE-Title2File
+#
+# Author:  Tom Brown (https://github.com/TomB16)
+# License: MIT License
+# Contact: tom@CarlsonSpeed.com
+#
+# Copyright (c) 2025 Tom Brown
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+
+# transcode queue params
+
+echo $( basename "$0" )
+
+DIRECTORY=$( videokit-config TRANSCODE DIRECTORY );       DIRECTORY="${DIRECTORY//\~/$HOME}";     DIRECTORY="${DIRECTORY%\"}";    DIRECTORY="${DIRECTORY#\"}"
+
+LOCK=$(      videokit-config TRANSCODE LOCK );            LOCK="${LOCK%\"}";                      LOCK="${LOCK#\"}";              LOCK=$XDG_RUNTIME_DIR"/"$LOCK;
+
+DEBUG=$(     videokit-config TRANSCODE DEBUG );
+
+
+if [ "$DEBUG" ]; then
+
+        echo "Debug:  Debugging =" $DEBUG
+        echo "Debug:  Lock file =" $LOCK
+
+fi
+
+
+# decision tree
+
+RUN=true
+
+
+# check for file exists
+
+if [ -z "$1" ]; then
+    echo
+    echo "Error: No file specified."
+    echo
+    echo "Usage: $0 <video_file.mkv>"
+    RUN=false
+fi
+
+
+# strip default and forced subtitle flags from video 
+
+if "$RUN"; then
+
+	# serialize this script to prevent massive parallel launch
+
+	MAX_WAIT=300
+	WAIT_INTERVAL=5
+	ELAPSED=0
+
+
+	# loop until process lock aquired
+
+	while true; do
+
+		eval "exec 203>\"$LOCK\""
+		if flock -n 203; then
+		       	if [ "$DEBUG" ]; then  echo "Debug:  Lock aquired.";  fi
+			break
+		else
+			if [ "$ELAPSED" -ge "$MAX_WAIT" ]; then
+				echo "Lock timeout."
+				rm $LOCKFILE
+				exit 1
+			fi
+			echo "Waiting for seralized execution"
+			sleep $WAIT_INTERVAL
+			((ELAPSED+=WAIT_INTERVAL))
+		fi
+
+	done
+
+
+	# parse the filename
+
+	INPUT_FILE="$1"
+	FPATH=$( dirname "$1" )
+	FILENAME="${INPUT_FILE%.*}"
+	EXTENSION="${INPUT_FILE##*.}"
+        TITLE=$( mediainfo --Inform="General;%Title%" "$INPUT_FILE" )
+
+	if [ "$DEBUG" ]; then
+
+		echo "Debug:  source    = $INPUT_FILE"
+		echo "Debug:  path      = $FPATH"
+		echo "Debug:  filename  = $FILENAME"
+		echo "Debug:  extension = $EXTENSION"
+		echo "Debug:  title     = $TITLE"
+
+	fi
+
+	TARGET_FILE=$FPATH"/"$TITLE"."$EXTENSION
+
+	if [ "$DEBUG" ]; then
+
+		echo "Debug:  target     = $TARGET"
+
+	fi
+
+	if [ "$INPUT_FILE" != "$TARGET_FILE" ]; then mv "$INPUT_FILE" "$TARGET_FILE";	fi
+
+fi
+
+
+# remove lock file on the way out
+
+if [ "$DEBUG" ]; then		echo "Debug:  Process lock withdrawn";  fi
+if [ -f "$LOCK" ]; then		rm "$LOCK";  fi
+

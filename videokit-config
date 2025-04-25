@@ -1,0 +1,26 @@
+#!/bin/bash
+
+
+
+
+# configure 
+
+GLOBAL="/usr/share/videokit/videokit.conf"
+LOCAL="~/.config/videokit.conf"
+LOCAL="${LOCAL//\~/$HOME}"
+
+
+if [ -f $LOCAL ]; then
+
+	crudini --get $LOCAL $1 $2
+
+else
+
+	# create the user config
+
+	if [ -f $GLOBAL ]; then	cp $GLOBAL $LOCAL
+	else		   echo Error: Global config not found;		exit 1;		fi
+
+fi
+
+

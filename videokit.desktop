@@ -1,0 +1,37 @@
+#
+# VideoKit-servicemenu.desktop
+#
+#
+
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,video/*
+MimeType=video/*;
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=VideoKit
+Actions=VideoKit-KDE-TranscodeQueuePush;VideoKit-KDE-NoForcedSubs;VideoKit-KDE-File2Title;VideoKit-KDE-Title2File
+
+[Desktop Action VideoKit-KDE-TranscodeQueuePush]
+Name=1 Queue for x265 transcode
+TryExec=videokit-transcodequeue
+Exec=videokit-transcodequeue push "%f"
+Icon=circular-arrow-shape
+Terminal=true
+
+[Desktop Action VideoKit-KDE-NoForcedSubs]
+Name=2 Strip forced and default subtitles
+TryExec=videokit-noforcedsubs
+Exec=videokit-noforcedsubs "%f"
+Icon=subtitlecomposer
+
+[Desktop Action VideoKit-KDE-File2Title]
+Name=3 Filename to title metadata
+TryExec=videokit-file2title
+Exec=videokit-file2title "%f"
+Icon=khangman
+
+[Desktop Action VideoKit-KDE-Title2File]
+Name=4 Title metadata to filename
+TryExec=videokit-title2file
+Exec=videokit-title2file "%f"
+Icon=kmenuedit

@@ -1,0 +1,153 @@
+#!/bin/bash
+#
+# VideoKit-KDE - A set of video utilities for KDE, extending Dolphin.
+#       - VideoKit-KDE-NoForcedSubs
+#
+# Author:  Tom Brown (https://github.com/TomB16)
+# License: MIT License
+# Contact: tom@CarlsonSpeed.com
+#
+# Copyright (c) 2025 Tom Brown
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+
+# transcode queue params
+
+echo $( basename "$0" )
+
+DIRECTORY=$( videokit-config TRANSCODE DIRECTORY );       DIRECTORY="${DIRECTORY//\~/$HOME}";     DIRECTORY="${DIRECTORY%\"}";    DIRECTORY="${DIRECTORY#\"}"
+TOLERANCE=$( videokit-config FILE2TITLE TOLERANCE )
+
+LOCK=$(      videokit-config TRANSCODE LOCK );            LOCK="${LOCK%\"}";                      LOCK="${LOCK#\"}";              LOCK=$XDG_RUNTIME_DIR"/"$LOCK;
+
+DEBUG=$(     videokit-config TRANSCODE DEBUG );
+
+
+if [ "$DEBUG" ]; then
+
+        echo "Debug:  Debugging =" $DEBUG
+        echo "Debug:  Lock file =" $LOCK
+        echo "Debug:  Tolerance =" $TOLERANCE
+
+fi
+
+
+# decision tree
+
+RUN=true
+
+
+# check for file exists
+
+if [ -z "$1" ]; then
+    echo
+    echo "Error: No file specified."
+    echo
+    echo "Usage: $0 <video_file.mkv>"
+    RUN=false
+fi
+
+
+# check if file has forced subtitles
+
+if "$RUN"; then
+
+	SUBS=$(ffprobe -v error -select_streams s -show_entries stream=index:stream_tags=language:stream_disposition=default,forced -of json "$1" | jq '.streams[] | select(.disposition.default == 1 or .disposition.forced == 1) | {index, language: .tags.language, default: .disposition.default, forced: .disposition.forced}')
+
+	if [[ -z "$SUBS" ]]; then
+		RUN=false;
+		echo "Info:  No forced or default subtitles in: " $1
+	fi
+
+fi
+
+
+# strip default and forced subtitle flags from video 
+
+if "$RUN"; then
+
+
+# check for other running instances
+
+	# serialize this script to prevent massive parallel launch
+
+	MAX_WAIT=300
+	WAIT_INTERVAL=5
+	ELAPSED=0
+
+
+	# loop until process lock aquired
+
+	while true; do
+
+		eval "exec 201>\"$LOCK\""
+		if flock -n 201; then
+		       	if [ "$DEBUG" ]; then  echo "Debug:  Lock aquired.";  fi
+			break
+		else
+			if [ "$ELAPSED" -ge "$MAX_WAIT" ]; then
+				echo "Lock timeout."
+				rm $LOCKFILE
+				exit 1
+			fi
+			echo "Waiting for seralized execution"
+			sleep $WAIT_INTERVAL
+			((ELAPSED+=WAIT_INTERVAL))
+		fi
+
+	done
+
+
+	# parse the filename
+
+	INPUT_FILE="$1"
+	FILENAME="${INPUT_FILE%.*}"
+	EXTENSION="${INPUT_FILE##*.}"
+	TARGET_FILE=$FILENAME"_no_forced_subs_."$EXTENSION
+
+
+	# strip the forced and default sub flags
+
+	ffmpeg -i "$INPUT_FILE" -map 0 -c copy -disposition:s forced -disposition:s none -y "$TARGET_FILE"
+
+
+	# action on result
+
+	if [ $? -eq 0 ]; then
+
+		INPUT_SIZE=$( stat -c %s "$INPUT_FILE")
+		TARGET_SIZE=$(stat -c %s "$TARGET_FILE")
+
+		DIFF=$(( $TARGET_SIZE - $INPUT_SIZE ))
+
+		if [ "${DIFF#-}" -le "$TOLERANCE" ]; then  mv "$TARGET_FILE" "$INPUT_FILE";	
+		else					   echo "Error:  Difference $DIFF between input and target is greater than tolerance $TOLERANCE."
+		fi
+
+	fi
+
+fi
+
+
+# remove lock file on the way out
+
+if [ "$DEBUG" ];                then echo "Debug:  Process lock withdrawn";     fi
+if [ -f "$LOCK" ];              then rm "$LOCK";                                fi
+
