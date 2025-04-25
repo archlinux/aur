@@ -1,5 +1,5 @@
 pkgbase = vizex
-	pkgdesc = Visualize disk space and disk usage in your UNIX\Linux terminal
+	pkgdesc = Visualize disk space and disk usage in your terminal
 	pkgver = 2.1.1c
 	pkgrel = 4
 	url = https://github.com/bexxmodd/vizex

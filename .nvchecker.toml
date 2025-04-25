@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/bexxmodd/vizex.git"
 prefix = "v"
+ignored = "v2.1.1"
