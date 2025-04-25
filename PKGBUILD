@@ -11,7 +11,7 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=fjordlauncherunlocked
-pkgver=9.2.4
+pkgver=9.4.0
 pkgrel=1
 pkgdesc="Prism Launcher fork with support for alternative auth servers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -43,7 +43,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'flite: minecraft voice narration')
 source=("https://github.com/hero-persson/FjordLauncherUnlocked/releases/download/${pkgver}/FjordLauncher-${pkgver}.tar.gz"
         {lionshead,batch,mdi}.license)
-b2sums=('c43d77bc2d4828fb9238e9115c3c7a00b36d7c72493f3962e18880c85214b353044f89473dd5db223df90c766f8ccb7dbe5a73ae3feb41406b370b5f7d69d6d3'
+b2sums=('dfea5682808c55e86082a383542079e6fa66a2f59aa587613b9e671c829475568d05283b6d833b695fd4cb5c925ae9e915ad6ebe3a7943cf941e9f830d0c6870'
         'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
         '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
         'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6')
