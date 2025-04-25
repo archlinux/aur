@@ -2,7 +2,7 @@
 
 pkgname=frzr-sk
 _pkgname=frzr
-pkgver=0.16.9.sk1
+pkgver=0.16.10.sk1
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -13,17 +13,17 @@ license=('MIT')
 depends=('btrfs-progs' 'parted' 'libnewt' 'dosfstools' 'jq' 'util-linux' 'dmidecode' 'zstd' 'xz' 'aria2')
 makedepends=('fakeroot')
 
-_tag=0.16.9.sk1
+_tag=$pkgver
 source=("git+$url#tag=${_tag}")
 md5sums=('SKIP')
 
 backup=('etc/frzr-sk.conf')
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
-    # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+#     cd "$srcdir/$_pkgname"
+#     # printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
