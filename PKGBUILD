@@ -1,26 +1,29 @@
 # Maintainer: Gregory Land <landjgregory at gmail dot com>
 pkgname=python-google-earthengine-api
 _name=${pkgname#python-}
-pkgver=0.1.326
-pkgrel=3
+pkgver=1.5.12
+pkgrel=1
 pkgdesc="Python client libraries for calling the Google Earth Engine API."
 arch=('any')
 url="https://github.com/google/earthengine-api"
 license=('APACHE')
 depends=(
-         'google-cloud-sdk'
+#       'google-cloud-sdk'
          'python-google-api-python-client'
          'python-google-cloud-storage'
          'python-google-auth'
          'python-google-auth-httplib2'
          'python-httplib2'
-         'python-six'
+         'python-requests'
+         'python-absl'
+         'python-geopandas'
+         'python-numpy'
         )
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-tensorflow')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("$_name-$pkgver.tar.gz::https://github.com/google/earthengine-api/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('222135ea9b73d30a42bd1c2963fb6a60e5c7633cbb50c3cbc9eb5b80dce1ab9bb22fd7e7dda7590604a16aa362cd3ceb6b1c6936fece87b669621f7a455ad4cd')
+sha512sums=('7cd63c1b6119500c818525f371f7a3ba83d6bde9bf409fb055342c463ba2fdafbe5fe4280a046cbe54a5f59aba9c49f7c6253754981ff26c136428b14368046e')
 
 build() {
   cd "earthengine-api-$pkgver/python"
