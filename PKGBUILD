@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.11
-_electronversion=34
-pkgrel=3
+pkgver=1.7.12
+_electronversion=35
+pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums_aarch64=('24c4060af4a0e1852d347439c8b49614dea18bb18b3d9e1f00c23b80c5bac212')
-sha256sums_x86_64=('f6e6255c505a3b9c54ec2654d7cf6ffa5a8180f5985b27051bf713d46aaf4447')
+sha256sums_aarch64=('ba78d31b7745ca329f3a1925fdea1d3a540614dc6c2b9d95e455d0ca380b1f71')
+sha256sums_x86_64=('c80e3aee3207735120251c659081c6a514d0127f911dbf65c0c757514b5706b4')
 prepare() {
     sed -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
@@ -36,7 +36,7 @@ prepare() {
     done
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
     rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/"{darwin,win32}
-    case "$CARCH" in
+    case "${CARCH}" in
         aarch64)
             rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64"
             ;;
