@@ -19,11 +19,9 @@ sha256sums=('SKIP')  # Don't need this when using Git as source
 
 
 package() {
+  cd "$srcdir/VideoKit-KDE" || return 1
 
-  cd "$srcdir" || return 1
-  echo "$srcdir" > output
-
-  # Install all the Bash scripts into /usr/bin/
+  # Install scripts
   install -Dm755 videokit-config            "$pkgdir/usr/bin/videokit-config"
   install -Dm755 videokit-file2title        "$pkgdir/usr/bin/videokit-file2title"
   install -Dm755 videokit-noforcedsubs      "$pkgdir/usr/bin/videokit-noforcedsubs"
@@ -34,14 +32,14 @@ package() {
   install -Dm755 videokit-transcodeprocess  "$pkgdir/usr/bin/videokit-transcodeprocess"
   install -Dm755 videokit-transcodequeue    "$pkgdir/usr/bin/videokit-transcodequeue"
 
-  # Install .desktop file (for KDE integration)
-  install -Dm644 videokit.desktop                   "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
+  # Install .desktop file
+  install -Dm644 videokit.desktop "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
 
-  # Install configuration file (if it's part of the app)
-  install -Dm644 videokit.conf                      "$pkgdir/usr/share/videokit/videokit.conf"
+  # Install config file
+  install -Dm644 videokit.conf "$pkgdir/usr/share/videokit/videokit.conf"
 
-  # Install LICENSE file
-  install -Dm644 LICENSE                            "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # License
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Rebuild KDE service cache
   if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
