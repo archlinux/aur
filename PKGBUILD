@@ -1,5 +1,6 @@
 # Maintainer: Real_Roller<931591847@qq.com>
 
+pkgbase=launcherx
 pkgname=launcherx
 pkgver=2.603.2040.0
 pkgrel=1

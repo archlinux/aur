@@ -1,4 +1,4 @@
-pkgbase = launcherx-bin
+pkgbase = launcherx
 	pkgdesc = LauncherX is a cross-platform minecraft launcher for next generation
 	pkgver = 2.603.2040.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = launcherx-bin
 	sha256sums = a181426a16fb04c37d008e8373385443542e616e22cdbf0368588ea874bda244
 	sha256sums = 12603307fe2c60cbbab83fc761e465b2900c0593022340f1973b5adf59f88360
 
-pkgname = launcherx-bin
+pkgname = launcherx
