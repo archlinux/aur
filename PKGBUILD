@@ -2,9 +2,9 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='smartctl_exporter'
-pkgver='0.13.0'
+pkgver='0.14.0'
 pkgrel='1'
-pkgdesc='Export smartctl statistics to prometheus'
+pkgdesc='Prometheus exporter for S.M.A.R.T. metrics using smartctl'
 arch=('x86_64' 'aarch64')
 _uri="github.com/prometheus-community"
 url="https://${_uri}/${pkgname}"
@@ -14,9 +14,9 @@ depends=('smartmontools')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service")
-sha256sums=('1a645d5e0af43f126e4c18af5a02cf31712d4c29ffc50757b83ae75d97865609'
+sha256sums=('0c3a658b1a16117e31e808f6f8852ddc7df5be6edea1b17c08263069b72d88d8'
             '5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367'
-            '91fa22825b6f5be3678ee394b7d60b908a989b5885079335313ab22f6ecb4b73')
+            '089ce0787b99c05d59b3f00447b50543851bd190f02679dd41a5ea094caea1cf')
 backup=("etc/conf.d/${pkgname}")
 
 prepare() {
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="netgo static_build" \
+  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
   go build -x \
     -buildmode="pie" \
     -trimpath \
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-  install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm0644 "${pkgname}" "${pkgdir}/etc/conf.d/${pkgname}"
-  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm0644 "${pkgname}" -t "${pkgdir}/etc/conf.d"
+  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 }
