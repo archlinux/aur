@@ -582,9 +582,9 @@ index 4c13503..8d0363e 100644
      logo_pixmap =
  	XCreatePixmapFromBitmapData(dpy, XtWindow(wdg), logo_bits,
  				    logo_height, logo_width,
--				    BlackPixel(dpy, DefaultScreen(dpy)),
+				    BlackPixel(dpy, DefaultScreen(dpy)),
+-				    uiGetArg(wdg, XmNbackground),
 +				    WhitePixel(dpy, DefaultScreen(dpy)),
- 				    uiGetArg(wdg, XmNbackground),
  				  DefaultDepth(dpy, DefaultScreen(dpy)));
  
 diff --git a/Ui/UiMisc.c b/Ui/UiMisc.c

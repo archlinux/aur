@@ -1,7 +1,7 @@
 pkgbase = erwise
 	pkgdesc = An early discontinued web-browser built with Motif. Doesn't seem to successfully connect to the web, however opens local HTML files really well.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ftp.funet.fi/pub/networking/services/www/erwisE/
 	arch = x86_64
 	license = unknown
@@ -30,6 +30,6 @@ pkgbase = erwise
 	sha256sums = 30d9dd36585610bb8be95895f7ca4874c6f15f3e064844607f31fac913686291
 	sha256sums = 07e108bef809bcb6c6edeb408c92e8de13c976c545cd3086b0e7c0930948f500
 	sha256sums = 18b3f0ee3fa2beb8bb764a37d3dae98c876f61ad145740132951de49233fb4e7
-	sha256sums = 1b6c5f5afe9c9506d99e6c10553a67d7bf210d1d7b55ac175a743f96ed5e92de
+	sha256sums = 30db5656bf458f93d65b5d2e32e5fe75cbce68f4d05adb7c34da7847c9cf3ed5
 
 pkgname = erwise
