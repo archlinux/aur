@@ -1,5 +1,5 @@
 pkgbase = own3d-desktop-git
-	pkgdesc = Public Development Preview of the OWN3D Desktop App.Use system-wide electron.
+	pkgdesc = Public Development Preview of the OWN3D Desktop App.(Use system-wide electron)
 	pkgver = 2.4.0.r0.g61113ea
 	pkgrel = 1
 	url = https://www.own3d.pro/
