@@ -1,6 +1,6 @@
 pkgbase = python-msal
 	pkgdesc = Authenticate with Microsoft Entra (Azure Active Directory) accounts using OAuth2 and OpenID Connect
-	pkgver = 1.32.2
+	pkgver = 1.32.3
 	pkgrel = 1
 	url = https://github.com/AzureAD/microsoft-authentication-library-for-python
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-msal
 	depends = python-requests
 	depends = python-pyjwt
 	depends = python-cryptography
-	source = python-msal-1.32.2.tar.gz::https://github.com/AzureAD/microsoft-authentication-library-for-python/archive/refs/tags/1.32.2.tar.gz
-	sha256sums = ad5b989176ab97d4f29821c2260b601f06dec24b515e6a5085e57baf5e84a292
+	source = python-msal-1.32.3.tar.gz::https://github.com/AzureAD/microsoft-authentication-library-for-python/archive/refs/tags/1.32.3.tar.gz
+	sha256sums = 1c4aa31882daed19451a3dd5a76c2e68e5f02edd04a3030e672e22e7f7cd4ad8
 
 pkgname = python-msal
