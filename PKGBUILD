@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="talm"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Manage Talos Linux the GitOps Way!"
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,20 +11,26 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49d00b79a9fc078b3032c317bdf9bd3bdf241e1f0836c074f371e7a491f03628')
+sha256sums=('3f0956228c907f06b6159fbca647b53e9f116d7b96598c62f03a165750649784')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
+
+  go mod download
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X main.Version=${pkgver}" \
     .
