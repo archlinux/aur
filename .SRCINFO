@@ -1,7 +1,7 @@
 pkgbase = pass_python_keyring-git
 	pkgdesc = A pass-powered backend for Python Keyring Lib
-	pkgver = r12.cbaae67
-	pkgrel = 2
+	pkgver = r15.83653be
+	pkgrel = 1
 	url = https://github.com/notandy/pass_python_keyring
 	arch = any
 	makedepends = python-setuptools
@@ -11,4 +11,3 @@ pkgbase = pass_python_keyring-git
 	sha256sums = SKIP
 
 pkgname = pass_python_keyring-git
-
