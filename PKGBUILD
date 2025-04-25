@@ -11,6 +11,8 @@ pkgdesc='Easily manage wine and proton prefix. Sandboxed by portable.'
 arch=(any)
 url="https://github.com/bottlesdevs/Bottles"
 license=(GPL-3.0-only)
+provides+=(bottles)
+conflicts+=(bottles)
 depends=(
 	cabextract
 	dconf

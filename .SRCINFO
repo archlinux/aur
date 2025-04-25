@@ -45,6 +45,8 @@ pkgbase = bottles-bwrap
 	optdepends = vkd3d
 	optdepends = vulkan-icd-loader
 	optdepends = wine
+	provides = bottles
+	conflicts = bottles
 	source = Bottles::git+https://github.com/bottlesdevs/Bottles.git#tag=51.21
 	source = disable-flatpak-check.patch
 	source = portable-config
