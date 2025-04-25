@@ -1,3 +1,5 @@
+// *Hobuild* //
+// by Nikita Shyshatskyi (holos) //
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
