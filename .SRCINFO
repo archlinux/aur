@@ -1,0 +1,25 @@
+pkgbase = python-cartogram
+	pkgdesc = A Python library to compute continuous cartograms
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://python-cartogram.readthedocs.io/
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-lazy-fixtures
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-geopandas
+	depends = python-joblib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-shapely
+	source = https://files.pythonhosted.org/packages/source/c/cartogram/cartogram-1.0.0.tar.gz
+	b2sums = f3af4c6bb00c7a63c079d2caa128e20ab9c0d8beacc23513dd502208cb58ec431fcc59cd17e41f5be14a5332d88eb4dde1e69e31a1edbcbc0fa9bd71979576cb
+
+pkgname = python-cartogram
