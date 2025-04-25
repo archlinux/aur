@@ -7,9 +7,9 @@
 
 _target="powerpc64-linux-gnu"
 pkgname=${_target}-gcc-stage2
-pkgver=14.2.0
+pkgver=15.1.0
 _majorver=${pkgver}
-_islver=0.26
+_islver=0.27
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 2 for toolchain building (${_target})"
 arch=(i686 x86_64)
@@ -23,9 +23,9 @@ replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1=${pkgver}" $_target-gcc)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         https://libisl.sourceforge.io/isl-$_islver.tar.xz)
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
             'SKIP'
-            'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504')
+            '6d8babb59e7b672e8cb7870e874f3f7b813b6e00e6af3f8b04f7579965643d5c')
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
