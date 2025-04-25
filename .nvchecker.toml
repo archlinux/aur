@@ -1,4 +1,6 @@
 [python-buildlog-consultant]
-source = "git"
-git = "https://github.com/jelmer/buildlog-consultant.git"
-prefix = "v"
+source = "pypi"
+pypi = "buildlog-consultant"
+#source = "git"
+#git = "https://github.com/jelmer/buildlog-consultant.git"
+#prefix = "v"
