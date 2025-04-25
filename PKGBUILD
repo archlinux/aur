@@ -8,7 +8,7 @@ _pkgname=zenpower3
 pkgname=zenpower3-dkms-git
 epoch=3
 pkgver=r68.cbb3532
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux kernel driver for reading temperature, voltage(SVI2), current(SVI2) and power(SVI2) for AMD Zen family CPUs, now with Zen 3 support'"
 arch=('i686' 'x86_64')
 url="https://github.com/AliEmreSenel/zenpower3"
@@ -31,6 +31,7 @@ pkgver() {
 prepare() {
 	sed -e "s/@CFLGS@//" \
 		-e "s/@VERSION@/$pkgver/" \
+		-e "/CLEAN=/d" \
 		-i "$srcdir/$_pkgname/dkms.conf"
 }
 
