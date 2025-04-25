@@ -1,5 +1,5 @@
 pkgbase = media-player-electron-git
-	pkgdesc = An open source player that has support for all media suported by chrome.Use system-wide electron.
+	pkgdesc = An open source player that has support for all media suported by chrome.(Use system-wide electron)
 	pkgver = 0.0.2.alpha.r4.g37d6847
 	pkgrel = 1
 	url = https://github.com/cesar-al-dev/media-player-electron
@@ -9,8 +9,6 @@ pkgbase = media-player-electron-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
-	makedepends = gcc
 	makedepends = curl
 	depends = electron26
 	provides = media-player-electron=0.0.2.alpha
