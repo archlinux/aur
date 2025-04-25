@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=responsively-git
 _pkgname=Responsively
-pkgver=1.15.0.r23.g080b2e2
+pkgver=1.16.0.r0.g5323ae7
 _electronversion=27
 _nodeversion=16
 pkgrel=1
@@ -21,8 +21,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'cmake'
-    'gcc'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -42,18 +40,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}/desktop-app"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -62,7 +59,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -74,14 +70,18 @@ build() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" yarn.lock
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn run postinstall
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/desktop-app"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
