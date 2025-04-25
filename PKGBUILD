@@ -1,6 +1,6 @@
 # Maintainer: Real_Roller<931591847@qq.com>
 
-pkgname=launcherx-bin
+pkgname=launcherx
 pkgver=2.603.2040.0
 pkgrel=1
 pkgdesc='LauncherX is a cross-platform minecraft launcher for next generation'
