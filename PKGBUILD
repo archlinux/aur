@@ -1,6 +1,6 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite
-_pkgver=19.02.2025
+_pkgver=18.03.2025
 pkgver=$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')+alpha
 pkgrel=3
 pkgdesc='Free pixelart editor made in SDL2 C++'
