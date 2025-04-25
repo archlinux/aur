@@ -2,7 +2,7 @@
 pkgname=mubu-bin
 _pkgname=Mubu
 _zhsname='幕布'
-pkgver=4.1.5
+pkgver=5.0.0
 _electronversion=9
 pkgrel=1
 pkgdesc="A mind management tool that combines outline notes and mind maps.(Prebuilt version.Use system-wide electron)一款结合了大纲笔记和思维导图的头脑管理工具(packed from origin exe)"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}.html::${url}/agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3413f89c2ae583c104dd6096839607accf5a2730e7c5653d76a05cd5c34c306b'
+sha256sums=('962a3db835f117e7295887ca1791eae5c797ea018d75bcb1ee6a7d27601fa097'
             'dbc572392757c2abbb6d6d7ca62337561b46b8f3b403963a3624fa5a4884c4ec'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
