@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OpenIDE
+Comment=Russian Open Source IDE
+Exec=/usr/bin/openide %f
+Icon=openide
+Terminal=false
+StartupNotify=true
+StartupWMClass=openide
+Categories=Development;IDE;Python;Java
