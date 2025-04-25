@@ -7,7 +7,7 @@ url="https://github.com/wholos/hobuild-gui"
 license=('GPL3')
 depends=('nana' 'libx11' 'libxft' 'libxcursor')
 makedepends=('gcc' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/wholos/hobuild-gui/archive/v$pkgver.tar.gz")
+source=("https://github.com/wholos/hobuild-gui/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
 
 prepare() {
