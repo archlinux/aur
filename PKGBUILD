@@ -10,24 +10,25 @@ depends=('nodejs')
 makedepends=('npm')
 
 source=("https://github.com/vinayydv3695/telecord/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')  # ideally replace with the real checksum
+sha256sums=('SKIP')  # Replace with actual sha256sum later for better security
 
 build() {
-  cd "telecord-${pkgver}"
-  npm ci --omit=dev
+  cd "${pkgname}-${pkgver}"
+  npm install --omit=dev
 }
 
 package() {
-  cd "telecord-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-  # install the app (with dependencies) into /usr/lib/telecord
+  # install the app and production dependencies into /usr/lib/telecord
   npm install --production --prefix "$pkgdir/usr/lib/$pkgname"
 
-  # install the CLI entrypoint, which has a #!/usr/bin/env node shebang
-  install -Dm755 "$pkgdir/usr/lib/$pkgname/bin/telecord.js" \
-                   "$pkgdir/usr/bin/telecord"
+  # install the CLI executable
+  install -Dm755 \
+    "$pkgdir/usr/lib/$pkgname/bin/telecord.mjs" \
+    "$pkgdir/usr/bin/telecord"
 
-  # docs
+  # install documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
