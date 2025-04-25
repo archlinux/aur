@@ -40,10 +40,10 @@ depends=(
 	xorg-xdpyinfo
 	vkbasalt-cli
 	portable
+	gamemode
 )
 
 optdepends=(
-	gamemode
 	gvfs
 	lib32-gamemode
 	lib32-gnutls
