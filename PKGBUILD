@@ -5,13 +5,13 @@
 pkgname=photoprism
 pkgver=250425_21ddba459
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('AGPL-3.0-or-later')
-depends=("libvips" "openjpeg2" "photoprism-facenet" "photoprism-nasnet" "photoprism-nsfw" "photoprism-tensorflow")
-makedepends=("go" "npm")
+depends=("libvips" "openjpeg2" "tensorflow")
+makedepends=("go" "npm" "findutils")
 optdepends=("darktable: for RAW to JPEG conversion"
             "ffmpeg: for video transcoding and thumbnail extraction"
             "imagemagick: for image conversion"
@@ -20,6 +20,9 @@ optdepends=("darktable: for RAW to JPEG conversion"
             "perl-image-exiftool: for extracting metadata"
             "rawtherapee: for RAW to JPEG conversion")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
+        "https://dl.${pkgname}.app/tensorflow/facenet.zip"
+        "https://dl.${pkgname}.app/tensorflow/nasnet.zip"
+        "https://dl.${pkgname}.app/tensorflow/nsfw.zip"
         "${pkgname}-import.service"
         "${pkgname}-import.timer"
         "${pkgname}.service"
@@ -27,7 +30,12 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service"
         "defaults.yml")
+conflicts=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
+replaces=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 sha256sums=('65d9b653238da035a334e69a83598335133c753766182e9f2bed3be8286aa9cb'
+            'bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af'
+            'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
+            'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
             '01fd07b7e467d23b2b43e8a61076f6668df2fc5f3a6bc42682c390d5134d281b'
             'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
@@ -37,7 +45,7 @@ sha256sums=('65d9b653238da035a334e69a83598335133c753766182e9f2bed3be8286aa9cb'
             '183071393262906f6416e27c14d2519fe537614e62866c2a93270b47355d97ae')
 
 build() {
-    export CGO_CFLAGS="${CFLAGS} -I/usr/include/${pkgname}-tensorflow"
+    export CGO_CFLAGS="${CFLAGS} -I/usr/include/tensorflow"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export NODE_ENV=production
@@ -46,7 +54,7 @@ build() {
     local buildid="${_pkgver}-$(uname -s)-$(uname -m)"
     local ldflags="
         -s -w \
-        -extldflags '-L/usr/lib/${pkgname}-tensorflow -Wl,-rpath,/usr/lib/${pkgname}-tensorflow ${LDFLAGS}' \
+        -extldflags '${LDFLAGS}' \
         -X main.version=${buildid}
     "
     go build \
@@ -60,6 +68,8 @@ build() {
 }
 
 package() {
+    find {facenet,nasnet,nsfw} -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/"{} \;
+
     install -Dm644 "${pkgname}-import".*  -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${pkgname}.service"      "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
@@ -69,6 +79,7 @@ package() {
 
     cd "${pkgname}-${_pkgver}"
     install -Dm755 "${pkgname}"              "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 LICENSE		  -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     cd assets
     find {locales,profiles,static,templates} -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/"{} \;
