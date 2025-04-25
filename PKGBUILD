@@ -1,7 +1,7 @@
 # Maintaner: blob42 <contact@blob42.xyz>
 
 pkgname=aichat-ng
-pkgver=0.28.0
+pkgver=0.29.1
 pkgrel=1
 pkgdesc="OpenAI, ChatGPT, ollama and more in your terminal. Fork with advanced features."
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'mold')
 conflicts=('aichat-bin' 'aichat-git' 'aichat')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8e97a79ef1f135861355cb01ed5079044c25937fa80820fa5ff376c50f1f3c97')
+sha256sums=('18d74d59dca762404a5eb36a8b5b647fe3cf0cbb3530460f08fdca2968e3e737')
 
 prepare() {
   cd "$pkgname-$pkgver"
