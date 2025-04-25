@@ -1,5 +1,5 @@
 pkgbase = proxy-manager-git
-	pkgdesc = A Proxy Manager build with Electronjs.Use system-wide electron.
+	pkgdesc = A Proxy Manager build with Electronjs.(Use system-wide electron)
 	pkgver = 2.7.0.r0.g519f016
 	pkgrel = 1
 	url = https://proxy-manager-pc.vercel.app/
@@ -9,8 +9,6 @@ pkgbase = proxy-manager-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
-	makedepends = gcc
 	makedepends = curl
 	depends = electron28
 	provides = proxy-manager=2.7.0
