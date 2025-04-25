@@ -3,8 +3,8 @@
 
 _pkgname=pygobject-stubs
 pkgname="python-${_pkgname}"
-pkgver=2.12.0
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="PEP 561 Typing Stubs for PyGObject."
 arch=('any')
 url='https://github.com/pygobject/pygobject-stubs'
@@ -19,7 +19,7 @@ makedepends=(
 	'python-setuptools'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4751c2f2d2841b0c04021cf48e3a685e83f54d616ce00f2c0e940bbc221a62df429240b4395149043bdc14e9a06c6866f6d9d54d4bd08b047b28d7093bcef2a0')
+sha512sums=('b669c63f4c1eeb10aa110009f714ae36f579eeb01e80f6df4518c5f105493397cd8e9764c5e11301d457e127df120a1a2c135a16c8add1fb2f4a5ce47efe7234')
 
 build() {
   cd ${_pkgname}-$pkgver
