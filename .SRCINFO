@@ -1,6 +1,6 @@
 pkgbase = feather-wallet
 	pkgdesc = A free Monero desktop wallet
-	pkgver = 2.7.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://featherwallet.org
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = feather-wallet
 	conflicts = monero-feather-git
 	conflicts = featherwallet-bin
 	conflicts = featherwallet-appimage
-	source = https://featherwallet.org/files/releases/source/feather-2.7.0.tar.gz
-	sha256sums = 290812dfc7a0e876abb96ad34d4125eb9b465b9bb3f8a5122d70f0dd3e2b43c5
+	source = https://featherwallet.org/files/releases/source/feather-2.8.1.tar.gz
+	sha256sums = 1db8cbc5123abc8de63c96e6aedc08a8cda669b032b75c18f955e71ce8c4291e
 
 pkgname = feather-wallet
