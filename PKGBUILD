@@ -28,11 +28,9 @@ makedepends=(
 )
 source=(
     "${pkgname%-git}.git::git+${_ghurl}.git"
-    "electron-builder.yml"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'efddfaee4fefb109047397992ff4ee45fc7887927ee1a5c25f413f503dea6eaf'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
