@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PhiML
 pkgname=python-${_base,,}
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Unified API for machine learning"
 arch=(any)
@@ -10,16 +10,16 @@ license=(MIT)
 depends=(python-scipy python-packaging)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-pytorch python-tensorflow python-jax)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('ac1abcf19b2a3a8412170bc088cca75d4f88fc10be0ac0e840b9fca57111a8f281382a1a77760ea174486f9bbea8de726b400381618ff6d1fe86c606541fac60')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base,,}-${pkgver}.tar.gz)
+sha512sums=('a3023e1440f50e0200de91743bae00eb86e2601d2e52b6b23b1a2b193659658ecad8d4b8f914972220fa63710039310f598de9bfc76475bcf06d04a3f91b30f0')
 
 build() {
-  cd ${_base}-${pkgver}
+  cd ${_base,,}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 # check() {
-#   cd ${_base}-${pkgver}
+#   cd ${_base,,}-${pkgver}
 #   python -m venv --system-site-packages test-env
 #   test-env/bin/python -m installer dist/*.whl
 #   test-env/bin/python -m pytest \
@@ -33,7 +33,7 @@ build() {
 # }
 
 package() {
-  cd ${_base}-${pkgver}
+  cd ${_base,,}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
