@@ -1,5 +1,5 @@
 pkgbase = image2pattern-git
-	pkgdesc = A simple electron app to convert an image to a cross-stitch pattern.Use system-wide electron.
+	pkgdesc = A simple electron app to convert an image to a cross-stitch pattern.(Use system-wide electron)
 	pkgver = r205.e301418
 	pkgrel = 1
 	url = https://github.com/acrosman/image2pattern
