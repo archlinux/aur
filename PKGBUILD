@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
-_appname="Backend.AI Desktop"
-pkgver=25.6.2
+_appname='Backend.AI Desktop'
+pkgver=25.7.0
 _electronversion=30
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('2c453cf12dc54baf98efb66ea2c3bc838b027c7047964b7077c2dd5fee0bd931')
-sha256sums_x86_64=('3865fdcf77c8822bf3997206f789c667423f92fb2151e65bf2eb0ded7a1762a2')
+sha256sums_aarch64=('0ea99ceb1dd75c8530d27213008b5fa52b6122b5e7e8180054384b3f611d135f')
+sha256sums_x86_64=('affe5125b03751f2e913631765d37e4025f347cec3704e95c17699702f9e3a68')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
