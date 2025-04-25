@@ -1,5 +1,5 @@
 pkgbase = hawkpass-git
-	pkgdesc = Secure diceware passphrase generator.Use system-wide electron.
+	pkgdesc = Secure diceware passphrase generator.(Use system-wide electron)
 	pkgver = 1.2.0.r19.g632adad
 	pkgrel = 1
 	url = https://kalpetros.github.io/hawkpass
