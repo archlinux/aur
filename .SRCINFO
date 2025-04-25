@@ -1,12 +1,12 @@
 pkgbase = vnt-git
 	pkgdesc = A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具
-	pkgver = 1.2.15.r0.g501a9e8
-	pkgrel = 2
+	pkgver = 1.2.15.r16.g1cba257
+	pkgrel = 1
 	url = https://github.com/lbl8603/vnt
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
 	optdepends = iptables: Linux kernel packet control tool (using legacy interface)

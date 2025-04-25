@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnt-git
-pkgver=1.2.15.r0.g501a9e8
-pkgrel=2
+pkgver=1.2.15.r16.g1cba257
+pkgrel=1
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
 arch=($CARCH)
 url="https://github.com/lbl8603/vnt"
@@ -13,8 +13,10 @@ replaces=()
 depends=(
     gcc-libs
     glibc)
-makedepends=(git
-    cargo)
+makedepends=(
+    git
+    rust
+)
 optdepends=('iptables: Linux kernel packet control tool (using legacy interface)')
 backup=()
 options=('!lto')
@@ -25,7 +27,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "${srcdir}/${pkgname}/"
 
-    git describe --exclude=nightly --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --exclude=nightly --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -34,6 +36,8 @@ prepare() {
     cd "${srcdir}/${pkgbase}/"
 
     git submodule update --init --recursive
+    #     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
