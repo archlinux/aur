@@ -1,6 +1,6 @@
 pkgbase = python-moulti
 	pkgdesc = CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/xavierog/moulti
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-moulti
 	depends = python-unidiff
 	depends = ansible-core
 	provides = moulti
-	source = moulti-1.33.0.tar.gz::https://github.com/xavierog/moulti/archive/refs/tags/v1.33.0.tar.gz
-	sha256sums = a889c50ec031ca2937e1a462d85361c43ecc2c0b618d8dae19613d34b41ad71b
+	source = moulti-1.34.0.tar.gz::https://github.com/xavierog/moulti/archive/refs/tags/v1.34.0.tar.gz
+	sha256sums = 7137818726bb9918449ca136460e2bc3a6dc8205863f8101b1ef4c8c85afd47d
 
 pkgname = python-moulti
