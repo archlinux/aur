@@ -1,12 +1,13 @@
-# Maintainer: Evine Deng <evinedeng@hotmail.com>
-# Contributer: Thomas Eizinger <thomas@eizinger.io>
+# Maintainer:  shtrophic <aur@shtrophic.net>
+# Contributor: Evine Deng <evinedeng@hotmail.com>
+# Contributor: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=250321_57590c48b
+pkgver=250425_21ddba459
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('AGPL-3.0-or-later')
 depends=("libvips" "openjpeg2" "photoprism-facenet" "photoprism-nasnet" "photoprism-nsfw" "photoprism-tensorflow")
@@ -26,7 +27,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "${pkgname}.tmpfiles"
         "${pkgname}.user.service"
         "defaults.yml")
-sha256sums=('0c983ff06e6c1f2ed65341993197bb797836783c84c3eff7abade07dd65a4ff3'
+sha256sums=('65d9b653238da035a334e69a83598335133c753766182e9f2bed3be8286aa9cb'
             '01fd07b7e467d23b2b43e8a61076f6668df2fc5f3a6bc42682c390d5134d281b'
             'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8'
             '5a7e0f788b1df05f13abb167385063a60c9c5b21486d24c12d6676ac580623bd'
@@ -36,7 +37,7 @@ sha256sums=('0c983ff06e6c1f2ed65341993197bb797836783c84c3eff7abade07dd65a4ff3'
             '183071393262906f6416e27c14d2519fe537614e62866c2a93270b47355d97ae')
 
 build() {
-    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CFLAGS="${CFLAGS} -I/usr/include/${pkgname}-tensorflow"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export NODE_ENV=production
