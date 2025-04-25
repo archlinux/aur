@@ -1,5 +1,5 @@
 pkgbase = r3playx-git
-	pkgdesc = A music player forked from YesPlayMusic.Use system-wide electron.高颜值的第三方网易云播放器.
+	pkgdesc = A music player forked from YesPlayMusic.(Use system-wide electron)高颜值的第三方网易云播放器.
 	pkgver = 2.7.4.r31.gdc20e3b
 	pkgrel = 1
 	url = https://github.com/Sherlockouo/music
@@ -11,8 +11,6 @@ pkgbase = r3playx-git
 	makedepends = nvm
 	makedepends = npm
 	makedepends = pnpm
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = curl
 	makedepends = jq
 	depends = electron28

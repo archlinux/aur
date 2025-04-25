@@ -5,7 +5,7 @@ pkgver=2.7.4.r31.gdc20e3b
 _electronversion=28
 _nodeversion=18
 pkgrel=1
-pkgdesc="A music player forked from YesPlayMusic.Use system-wide electron.高颜值的第三方网易云播放器."
+pkgdesc="A music player forked from YesPlayMusic.(Use system-wide electron)高颜值的第三方网易云播放器."
 arch=(
     'aarch64'
     'x86_64'
@@ -28,8 +28,6 @@ makedepends=(
     'nvm'
     'npm'
     'pnpm'
-    'gcc'
-    'cmake'
     'curl'
     'jq'
 )
@@ -51,18 +49,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -74,25 +71,28 @@ build() {
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
-        echo "shell-emulator=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     cp .env.example .env
     sed -i "s/'deb'/'dir'/g;s/'AppImage'/'dir'/g" packages/desktop/.electron-builder.config.js
     sed -i "s/\.\.\/resources\/bin\/better_sqlite3.node/\/usr\/lib\/${pkgname%-git}\/bin\/better_sqlite3.node/g" \
         packages/desktop/main/db.ts
-    jq '.scripts.package += " --linux dir -c.electronDist='"$electronDist"'"' package.json > temp.json 
+    local electronDist="/usr/lib/electron${_electronversion}"
+    jq '.scripts.package += " --linux dir -c.electronDist='"$electronDist"'"' package.json > temp.json
     cp temp.json packages/desktop/package.json
     NODE_ENV=development    pnpm install
     NODE_ENV=development    pnpm add -w -D @types/better-sqlite3
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     pnpm run package
 }
 package() {
