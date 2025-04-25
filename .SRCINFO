@@ -1,0 +1,13 @@
+pkgbase = open-vmdk-git
+	pkgdesc = Open VMDK is an assistant tool for creating Open Virtual Appliance (OVA).
+	pkgver = r191.aa8e764
+	pkgrel = 1
+	url = https://github.com/vmware/open-vmdk
+	arch = x86_64
+	license = Apache-2
+	provides = open-vmdk
+	conflicts = open-vmdk
+	source = git+https://github.com/vmware/open-vmdk
+	sha256sums = SKIP
+
+pkgname = open-vmdk-git
