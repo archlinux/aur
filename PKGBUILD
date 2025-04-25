@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=youtube-music
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 _electronversion=35
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -11,15 +11,12 @@ depends=(
   "electron${_electronversion}"
   'libsecret'
 )
-makedepends=(
-  'git'
-  'pnpm'
-)
+makedepends=('pnpm')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('caf19bf419192ffb6d0759b6e6ce664766a0898a5442fb1e393b0c0a8155e924'
+sha256sums=('315509b39be17bab3b55df4371c25484f40bf8cd8e1997c8aa89f0922f881705'
             'e00aee0592b3b759fc055815c75326063348bcdf6e05b7632396592b05614637'
             '534337968b3443ff2911a951f8ec6a777cad22a270826dfbe61b0caf2741c654')
 
@@ -33,7 +30,7 @@ build() {
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install
+  pnpm install --frozen-lockfile
   pnpm clean
   pnpm build
   pnpm electron-builder --linux dir \
@@ -47,7 +44,7 @@ package() {
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 license -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 license -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   for i in 16 24 32 48 64 128 256 512 1024; do
     install -Dm644 "assets/generated/icons/png/${i}x${i}.png" \
