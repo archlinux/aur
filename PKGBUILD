@@ -4,7 +4,7 @@
 _pkgname=Freelens
 pkgname=freelens-bin
 pkgver=1.2.0 # datasource=github-releases depName=freelensapp/freelens
-pkgrel=1
+pkgrel=2
 pkgdesc='Free Open Source Kubernetes IDE'
 arch=('x86_64' 'aarch64')
 license=('MIT')
