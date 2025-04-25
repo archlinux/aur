@@ -1,5 +1,5 @@
 pkgbase = grinplusplus-bin
-	pkgdesc = A C++ Grin Node & Wallet For Linux.Prebuilt version.Use system-wide electron.
+	pkgdesc = A C++ Grin Node & Wallet For Linux.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.9
 	pkgrel = 2
 	url = https://grinplusplus.github.io

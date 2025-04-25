@@ -6,7 +6,7 @@ _appname="Grin++"
 pkgver=1.2.9
 _electronversion=11
 pkgrel=2
-pkgdesc='A C++ Grin Node & Wallet For Linux.Prebuilt version.Use system-wide electron.'
+pkgdesc="A C++ Grin Node & Wallet For Linux.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://grinplusplus.github.io"
 _ghurl="https://github.com/GrinPlusPlus/GrinPlusPlus"
@@ -32,8 +32,8 @@ options=(
 sha256sums=('300440ca4965175a35c30899cac7e105c93957c7d19fe608c24fb99c48e910f9'
             'a5e9383c3cb97aa3034e5e4bf1c94a71db0c59b3a7ec1fbf198232fb9dcc5e53'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
@@ -41,10 +41,10 @@ build() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\"\/opt\/${_appname}\/${pkgname%-bin}\"/${pkgname%-bin}/g
         s/Finance/Utility/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_appname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed "s/if (isDevMode)/if (!isDevMode)/g" -i "${srcdir}/app.asar.unpacked/build/electron-starter.js"
     find "${srcdir}/app.asar.unpacked/build" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
