@@ -1,14 +1,16 @@
-# Maintainer: MYT1 <myt1 @ QQ DOC com>
-# Maintainer: lilydjwg <lilydjwg@gmail.com>
+# Maintainer: Scott Cheng <aur@chengscott.io>
+# Contributor: MYT1 <myt1 @ QQ DOC com>
+# Contributor: lilydjwg <lilydjwg@gmail.com>
 pkgname=you-get-git
-pkgdesc="A YouTube/Youku/Sohu/Tudou/QQ/Sina/PPTV/Xiami/Vimeo/ifeng/AcFun/bilibili/CNTV/... video downloader written in Python 3."
-pkgver=0.4.1730.20241211.2592
+pkgver=0.4.1743.20250104.2595
 pkgrel=1
+pkgdesc="A YouTube/Youku/Niconico video downloader written in Python 3."
+url="https://www.soimort.org/you-get/"
 arch=('any')
-url="http://www.soimort.org/you-get/"
 license=('MIT')
-depends=('python' 'python-setuptools')
-makedepends=('git')
+depends=('python' 'python-dukpy')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=('python-pysocks: for socks proxy support')
 conflicts=(you-get)
 provides=(you-get)
 source=("git+https://github.com/soimort/you-get.git")
@@ -26,17 +28,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_repo_name"
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
-
-  python3 setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_repo_name"
-  python3 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 contrib/completion/_you-get "$pkgdir/usr/share/zsh/site-functions/_you-get"
-  install -Dm644 contrib/completion/you-get-completion.bash "$pkgdir/usr/share/bash-completion/completions/you-get"
-  install -Dm644 contrib/completion/you-get.fish "$pkgdir/usr/share/fish/completions/you-get.fish"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  install -Dm644 contrib/completion/_you-get "$pkgdir"/usr/share/zsh/site-functions/_you-get
+  install -Dm644 contrib/completion/you-get-completion.bash "$pkgdir"/usr/share/bash-completion/completions/you-get
+  install -Dm644 contrib/completion/you-get.fish "$pkgdir"/usr/share/fish/vendor_completions.d/you-get.fish
 }
