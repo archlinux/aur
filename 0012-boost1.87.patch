@@ -1,0 +1,190 @@
+diff --git a/src/libslic3r/GCodeSender.cpp b/src/libslic3r/GCodeSender.cpp
+index 275dd61a79..076cd1fee2 100644
+--- a/src/libslic3r/GCodeSender.cpp
++++ b/src/libslic3r/GCodeSender.cpp
+@@ -102,12 +102,12 @@ GCodeSender::connect(std::string devname, unsigned int baud_rate)
+     fs.open("serial.txt", std::fstream::out | std::fstream::trunc);
+ #endif
+     
+-    // this gives some work to the io_service before it is started
++    // this gives some work to the io_context before it is started
+     // (post() runs the supplied function in its thread)
+     this->io.post(boost::bind(&GCodeSender::do_read, this));
+     
+     // start reading in the background thread
+-    boost::thread t(boost::bind(&boost::asio::io_service::run, &this->io));
++    boost::thread t(boost::bind(&boost::asio::io_context::run, &this->io));
+     this->background_thread.swap(t);
+     
+     // always send a M105 to check for connection because firmware might be silent on connect
+diff --git a/src/libslic3r/GCodeSender.hpp b/src/libslic3r/GCodeSender.hpp
+index 3a2055e54f..5c8eec4371 100644
+--- a/src/libslic3r/GCodeSender.hpp
++++ b/src/libslic3r/GCodeSender.hpp
+@@ -35,7 +35,7 @@ class GCodeSender : private boost::noncopyable {
+     void reset();
+     
+     private:
+-    asio::io_service io;
++    asio::io_context io;
+     asio::serial_port serial;
+     boost::thread background_thread;
+     boost::asio::streambuf read_buffer, write_buffer;
+diff --git a/src/slic3r/GUI/FirmwareDialog.cpp b/src/slic3r/GUI/FirmwareDialog.cpp
+index 7600ef4fa6..9e8dc561c1 100644
+--- a/src/slic3r/GUI/FirmwareDialog.cpp
++++ b/src/slic3r/GUI/FirmwareDialog.cpp
+@@ -361,7 +361,7 @@ bool FirmwareDialog::priv::check_model_id()
+ 	// 	return true;
+ 	// }
+ 
+-	// asio::io_service io;
++	// asio::io_context io;
+ 	// Serial serial(io, port->port, 115200);
+ 	// serial.printer_setup();
+ 
+@@ -425,7 +425,7 @@ void FirmwareDialog::priv::avr109_wait_for_bootloader(Avr109Pid usb_pid, unsigne
+ 
+ void FirmwareDialog::priv::avr109_reboot(const SerialPortInfo &port)
+ {
+-	asio::io_service io;
++	asio::io_context io;
+ 	Serial serial(io, port.port, 1200);
+ 	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+ }
+diff --git a/src/slic3r/GUI/FreeCADDialog.cpp b/src/slic3r/GUI/FreeCADDialog.cpp
+index d51962667e..93c78f027b 100644
+--- a/src/slic3r/GUI/FreeCADDialog.cpp
++++ b/src/slic3r/GUI/FreeCADDialog.cpp
+@@ -63,7 +63,7 @@ namespace GUI {
+     class ExecVar {
+     public:
+         boost::process::opstream pyin;
+-        boost::asio::io_service ios;
++        boost::asio::io_context ios;
+         std::future<std::string> data_out;
+         std::future<std::string> data_err;
+         std::unique_ptr<boost::process::child> process;
+diff --git a/src/slic3r/Utils/Bonjour.cpp b/src/slic3r/Utils/Bonjour.cpp
+index f121e6e87a..fecede552c 100644
+--- a/src/slic3r/Utils/Bonjour.cpp
++++ b/src/slic3r/Utils/Bonjour.cpp
+@@ -629,8 +629,8 @@ void Bonjour::priv::lookup_perform()
+ 	auto self = this;
+ 
+ 	try {
+-		boost::asio::io_service io_service;
+-		udp::socket socket(io_service);
++		boost::asio::io_context io_context;
++		udp::socket socket(io_context);
+ 		socket.open(udp::v4());
+ 		socket.set_option(udp::socket::reuse_address(true));
+ 		udp::endpoint mcast(BonjourRequest::MCAST_IP4, BonjourRequest::MCAST_PORT);
+@@ -638,7 +638,7 @@ void Bonjour::priv::lookup_perform()
+ 
+ 		bool expired = false;
+ 		bool retry = false;
+-		asio::deadline_timer timer(io_service);
++		asio::deadline_timer timer(io_context);
+ 		retries--;
+ 		std::function<void(const error_code &)> timer_handler = [&](const error_code &error) {
+ 			if (retries == 0 || error) {
+@@ -663,7 +663,7 @@ void Bonjour::priv::lookup_perform()
+ 		};
+ 		socket.async_receive_from(asio::buffer(buffer, buffer.size()), recv_from, recv_handler);
+ 
+-		while (io_service.run_one()) {
++		while (io_context.run_one()) {
+ 			if (expired) {
+ 				socket.cancel();
+ 			} else if (retry) {
+diff --git a/src/slic3r/Utils/Serial.cpp b/src/slic3r/Utils/Serial.cpp
+index 4db1acc6b6..555f907a10 100644
+--- a/src/slic3r/Utils/Serial.cpp
++++ b/src/slic3r/Utils/Serial.cpp
+@@ -278,12 +278,12 @@ std::vector<std::string> scan_serial_ports()
+ namespace asio = boost::asio;
+ using boost::system::error_code;
+ 
+-Serial::Serial(asio::io_service& io_service) :
+-	asio::serial_port(io_service)
++Serial::Serial(asio::io_context& io_context) :
++	asio::serial_port(io_context)
+ {}
+ 
+-Serial::Serial(asio::io_service& io_service, const std::string &name, unsigned baud_rate) :
+-	asio::serial_port(io_service, name)
++Serial::Serial(asio::io_context& io_context, const std::string &name, unsigned baud_rate) :
++	asio::serial_port(io_context, name)
+ {
+ 	set_baud_rate(baud_rate);
+ }
+@@ -386,19 +386,19 @@ void Serial::reset_line_num()
+ 
+ bool Serial::read_line(unsigned timeout, std::string &line, error_code &ec)
+ {
+-	auto& io_service =
++	auto& io_context =
+ #if BOOST_VERSION >= 107000
+ 		//FIXME this is most certainly wrong!
+ 		(boost::asio::io_context&)this->get_executor().context();
+  #else
+-		this->get_io_service();
++		this->get_io_context();
+ #endif
+-	asio::deadline_timer timer(io_service);
++	asio::deadline_timer timer(io_context);
+ 	char c = 0;
+ 	bool fail = false;
+ 
+ 	while (true) {
+-		io_service.reset();
++		io_context.reset();
+ 
+ 		asio::async_read(*this, boost::asio::buffer(&c, 1), [&](const error_code &read_ec, size_t size) {
+ 			if (ec || size == 0) {
+@@ -419,7 +419,7 @@ bool Serial::read_line(unsigned timeout, std::string &line, error_code &ec)
+ 			});
+ 		}
+ 
+-		io_service.run();
++		io_context.run();
+ 
+ 		if (fail) {
+ 			return false;
+diff --git a/src/slic3r/Utils/Serial.hpp b/src/slic3r/Utils/Serial.hpp
+index 8bad75b315..138c238a49 100644
+--- a/src/slic3r/Utils/Serial.hpp
++++ b/src/slic3r/Utils/Serial.hpp
+@@ -39,8 +39,8 @@ extern std::vector<SerialPortInfo> 	scan_serial_ports_extended();
+ class Serial : public boost::asio::serial_port
+ {
+ public:
+-	Serial(boost::asio::io_service &io_service);
+-	Serial(boost::asio::io_service &io_service, const std::string &name, unsigned baud_rate);
++	Serial(boost::asio::io_context &io_context);
++	Serial(boost::asio::io_context &io_context, const std::string &name, unsigned baud_rate);
+ 	Serial(const Serial &) = delete;
+ 	Serial &operator=(const Serial &) = delete;
+ 	~Serial();
+diff --git a/src/slic3r/Utils/TCPConsole.cpp b/src/slic3r/Utils/TCPConsole.cpp
+index 3c943cc632..0aca13dd0e 100644
+--- a/src/slic3r/Utils/TCPConsole.cpp
++++ b/src/slic3r/Utils/TCPConsole.cpp
+@@ -4,6 +4,7 @@
+ #include <boost/asio/read_until.hpp>
+ #include <boost/asio/steady_timer.hpp>
+ #include <boost/asio/write.hpp>
++#include <boost/asio/connect.hpp>
+ #include <boost/bind.hpp>
+ #include <boost/format.hpp>
+ #include <boost/log/trivial.hpp>
+@@ -156,7 +157,7 @@ bool TCPConsole::run_queue()
+ 
+         auto endpoints = m_resolver.resolve(m_host_name, m_port_name);
+ 
+-        m_socket.async_connect(endpoints->endpoint(),
++        boost::asio::async_connect(m_socket, endpoints,
+             boost::bind(&TCPConsole::handle_connect, this, _1)
+         );
+ 
