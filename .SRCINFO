@@ -1,0 +1,12 @@
+pkgbase = hobuild
+	pkgdesc = A simple build system for Unix
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/wholos/hobuild
+	arch = x86_64
+	license = GPL3
+	depends = gcc
+	source = https://github.com/wholos/hobuild/archive/refs/heads/main.zip
+	sha256sums = SKIP
+
+pkgname = hobuild
