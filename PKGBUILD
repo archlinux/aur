@@ -2,7 +2,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-pkgver=v1.4.1.r61.gdbd9c2b
+pkgver=v1.10.0.r5.g84637d1
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
@@ -43,7 +43,11 @@ prepare() {
 
 build() {
     cd "$_pkgname"
-    arch-meson -Dzsh-completions=true -Dsd-bus-provider=libsystemd build
+    arch-meson -Dzsh-completions=true \
+        -Dbash-completions=true \
+        -Dfish-completions=true \
+        -Dsd-bus-provider=libsystemd \
+        build
     ninja -C build
 }
 

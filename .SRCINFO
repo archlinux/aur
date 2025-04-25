@@ -1,6 +1,6 @@
 pkgbase = mako-git
 	pkgdesc = Lightweight notification daemon for Wayland
-	pkgver = v1.4.1.r61.gdbd9c2b
+	pkgver = v1.10.0.r5.g84637d1
 	pkgrel = 1
 	url = http://mako-project.org
 	arch = x86_64
@@ -26,4 +26,3 @@ pkgbase = mako-git
 	sha1sums = 64b8a3446fa1ddc3d876629a0c4a3d1d6bb0b20f
 
 pkgname = mako-git
-
