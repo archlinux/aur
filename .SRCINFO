@@ -1,5 +1,5 @@
 pkgbase = fotoluks-manager-git
-	pkgdesc = Application for managing orders, setting tasks and mini-applications for working with MoySklad.Use system-wide electron.
+	pkgdesc = Application for managing orders, setting tasks and mini-applications for working with MoySklad.(Use system-wide electron)
 	pkgver = 2.2.0.r0.g7fb2005
 	pkgrel = 1
 	url = https://github.com/Evernayt/fotoluks-manager
@@ -9,7 +9,6 @@ pkgbase = fotoluks-manager-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
-	makedepends = gcc
 	makedepends = curl
 	depends = electron22
 	provides = fotoluks-manager=2.2.0
