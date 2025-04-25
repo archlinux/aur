@@ -52,9 +52,7 @@ source=(
     "https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
 )
 
-sha256sums=(
-    '8538aa9c24bebade52e08a3f348b143712fac34851ffa29fac544f3b874c37dd'
-)
+sha256sums=('4cf3c79d802eda606ce155339775bec06d1bfe5e1d7d92eed44a7e317c1611a4')
 
 prepare() {
     mkdir -p "${srcdir}/deb_file/data"
