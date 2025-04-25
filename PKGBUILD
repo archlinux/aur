@@ -1,6 +1,6 @@
 # Maintainer: KyvYang kyvyang@foxmail.com
 
-pkgname='VocalShaper-git'
+pkgname='vocalshaper-git'
 pkgver=r1219.4d138f5
 pkgrel=1
 epoch=0
