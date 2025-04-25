@@ -2,7 +2,7 @@
 
 pkgname=python-google-cloud-testutils
 _pkg=python-test-utils
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Collection of testing tools used in Python client libraries for Google APIs"
 arch=('any')
@@ -11,12 +11,7 @@ license=('Apache-2.0')
 depends=('python-google-auth' 'python-click' 'python-packaging')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aca046cdebc4cd5ea1e4a3b8641562c6d59fd94c29b201ab52d0bba1c4a6c4b8')
-
-prepare() {
-	# bdist_wheel is deprecated
-	rm -fv "$_pkg-$pkgver/setup.cfg"
-}
+sha256sums=('8d9d51e532ba178c4e6d69224bd55adf85ba301611a372f6c007a073908259c3')
 
 build() {
 	cd "$_pkg-$pkgver"
