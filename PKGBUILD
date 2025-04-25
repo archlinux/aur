@@ -2,7 +2,7 @@
 
 pkgname=python-llm-openrouter
 _gitpkgname=llm-openrouter
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='LLM plugin for models hosted by OpenRouter'
 arch=('any')
@@ -28,7 +28,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/simonw/llm-openrouter/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('56ac78e1a8b85e2cf3b0c9d115a9bd12550c54a93790c09e52c742913c57e51fbeecb09b80c2dabe1b8d46495a46d7e1fe025d8b59fb072d32f959177ede4470')
+sha512sums=('2ddb4c8a939286d57d1278b7dde7507a0eeaf9185d18b050f8a9b5accb31e0bcd6d8160eb39ec0cc01acda5335641aae20fa911716894ad93f3fa4484585f7df')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
