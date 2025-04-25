@@ -1,6 +1,6 @@
 # Maintainer: Nai Erchou <naierchou@mail.ru>
 pkgname=webappview-git
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=0
 epoch=
 provides=("${pkgname%-git}")
@@ -21,11 +21,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
+  ./prepare
   make build
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  ./prepare
   make install BASEDIR="$pkgdir"
 }
