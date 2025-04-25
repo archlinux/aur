@@ -89,4 +89,5 @@ package() {
 	DESTDIR="${pkgdir}" ninja -C build install
 	install -d "${pkgdir}/usr/lib/bottles-bwrap"
 	mv ${pkgdir}/usr/bin/bottles{,-cli} "${pkgdir}/usr/lib/bottles-bwrap"
+	ln -srf "${pkgdir}/usr/bin/bottles-bwrap" "${pkgdir}/usr/bin/bottles"
 }
