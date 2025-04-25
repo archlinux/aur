@@ -1,5 +1,5 @@
 pkgbase = melt-mdeditor-git
-	pkgdesc = A Markdown Editor.Based on the GitHub Flavored Markdown Spec.Use system-wide electron.
+	pkgdesc = A Markdown Editor.Based on the GitHub Flavored Markdown Spec.(Use system-wide electron)
 	pkgver = 2.12.1.r0.gec6da7b
 	pkgrel = 1
 	url = https://github.com/qazsato/melt
