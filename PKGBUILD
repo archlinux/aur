@@ -4,7 +4,7 @@ _target="powerpc64-ps3-elf"
 _target_alias="ppu"
 _pkgname="binutils"
 pkgname="ps3-${_target_alias}-${_pkgname}"
-pkgver="2.42"
+pkgver="2.44"
 pkgrel=1
 pkgdesc="GNU Binutils for cross-compiling to ${_target_alias} (PS3 GameOS)"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
@@ -21,7 +21,7 @@ source=(
 	"https://git.savannah.gnu.org/cgit/config.git/plain/config.sub"
 )
 sha256sums=(
-	'aa54850ebda5064c72cd4ec2d9b056c294252991486350d9a97ab2a6dfdfaf12'
+	'f66390a661faa117d00fab2e79cf2dc9d097b42cc296bf3f8677d1e7b452dc3a'
 	'add06582020e8c497074a3c45fc7e8033fdea2be0f32a361ac183ba99684d788'
 	'SKIP'
 	'SKIP'
