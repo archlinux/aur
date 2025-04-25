@@ -1,13 +1,35 @@
 
-## 10.1.3
+## 10.2.0
 
-- Minor fixes
+- Added `--open-with` to allow customising the command used to open a file based on file extension
 
-    - "Reload document" now removes the document if the document is no longer accessible
+    - Example: `--open-with pdf:detached='okular {path}'`
 
-    - Docfd now only checks the existence of directly specified files
-      at launch, e.g. `file.txt` in `docfd file.txt`. This means
-      "reload all documents" now does not error out due to files becoming
-      no longer accessible.
+    - Can be specified multiple times
+
+- Added non-interactive use of `--commands-from`
+
+    - Non-interactive use can be triggered by pairing `--commands-from` with `-l`/`--files-with-match`
+
+    - Useful for advanced document management workflow
+
+- Adjustments to search scope narrowing
+
+    - Added `narrow level: 0` for resetting the search scopes of
+      all documents back to full
+
+    - Narrowing now no longer drops unlisted document, so the
+      previous set of documents remain accessible for later
+      searches after resetting the search scopes
+
+- Reworked search into multi-stage pipeline
+
+    - This improves the search speed by around 30%
+
+    - The core search procedure was reworked into an API that
+      generates grouped search jobs which can be easily distributed
+      to threads.
+      This gives a better workload distribution than the current
+      multithreading approach.
 
 See /usr/share/doc/docfd-bin/CHANGELOG.md for previous changes.

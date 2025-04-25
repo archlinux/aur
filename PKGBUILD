@@ -4,7 +4,7 @@
 
 pkgname='docfd-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=10.1.3
+pkgver=10.2.0
 pkgrel=1
 pkgdesc='TUI multiline fuzzy document finder (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -19,6 +19,7 @@ _docs=(
   "README-$pkgver.md::$_rawurl/README.md"
   "$_rawurl/LICENSE"
 )
+_skip=('SKIP' 'SKIP' 'SKIP')  # to my Lou!
 source_aarch64=(
   "$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-$_flavour-arm.tar.gz"
   "${_docs[@]}"
@@ -46,12 +47,12 @@ package() {
 }
 
 sha256sums_aarch64=(
-  '2cfa89697703526f93abe17928dd3ee1845697482d19fc03ad7692ffd2abc749'
-  'SKIP' 'SKIP' 'SKIP'
+  'a5f44f517a14dc57837549cd6a4328ffbe6880a01936f272fe6fc278f882e393'
+  "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  '1053e2f2fe992dfca0ec56e505fbb73a1f3486efc6b347c42a1a4bd10451b151'
-  'SKIP' 'SKIP' 'SKIP'
+  'c09e040418085df8eeb8ad61c5db72ff73763ca5434a7a58b4a8573be357aa19'
+  "${_skip[@]}"
 )
 
 # eof
