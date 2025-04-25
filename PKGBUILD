@@ -1,7 +1,5 @@
-# Maintainer:  George Rawlinson <george@rawlinson.net.nz>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Oleg Shparber <trollixx+aur@gmail.com>
-# Contributor: Thomas Weißschuh <thomas t-8ch de>
+# Maintainer: Hermann Mayer <hermann.mayer92@gmail.com>
+# Based on: https://archlinux.org/packages/extra/x86_64/zeal/
 
 pkgname=zeal-i3-shortcuts
 pkgver=0.7.2
