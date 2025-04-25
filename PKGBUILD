@@ -1,7 +1,7 @@
 # Maintainer: dhruvasambrani <dhruvasambrani19 at gmail>
 
 pkgname=juliaup-bin
-pkgver="1.17.13"
+pkgver="1.17.19"
 pkgrel=1
 pkgdesc="Julia installer and version multiplexer"
 arch=('x86_64' 'aarch64' 'i686')
@@ -29,6 +29,6 @@ package() {
 }
 
 
-sha256sums_x86_64=('c82e6a4df10554ad98f38558bea883d79b59b88f75889ce173cb2c75881fccc4')
-sha256sums_aarch64=('3f1e5de4d8533faa65ff5f96918d21dbdda66a06c119875bbad2264ed1fde916')
-sha256sums_i686=('45b589cb0a3a54a302129e9c9cf7abc0d7190f4b3f878398d82c4b905296b28c')
+sha256sums_x86_64=('7b73c2c2b8693ff0bbb2e57be2af2cdc8de56827a60ebf7c289ca40338184bb0')
+sha256sums_aarch64=('fb5c2b6e5ab38c816acb5ddd7251625cf157fd8b40ff993da9d9c769f6bf7cbd')
+sha256sums_i686=('ee3f71955548a1ef65082b18f1aabfad8ecdc4bf2e4c987ab67d2bf1597548d3')
