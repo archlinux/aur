@@ -20,18 +20,17 @@ sha256sums=('SKIP')  # Don't need this when using Git as source
 
 package() {
   cd "$srcdir" || return 1
-  echo "$srcdir" > output
 
   # Install scripts
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-config"            "$pkgdir/usr/bin/videokit-config"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-file2title"        "$pkgdir/usr/bin/videokit-file2title"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-noforcedsubs"      "$pkgdir/usr/bin/videokit-noforcedsubs"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-queue"             "$pkgdir/usr/bin/videokit-queue"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-s2hms"             "$pkgdir/usr/bin/videokit-s2hms"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-title2file"        "$pkgdir/usr/bin/videokit-title2file"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodefile"     "$pkgdir/usr/bin/videokit-transcodefile"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodeprocess"  "$pkgdir/usr/bin/videokit-transcodeprocess"
-  install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodequeue"    "$pkgdir/usr/bin/videokit-transcodequeue"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-config"            "$pkgdir/usr/bin/videokit-config"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-file2title"        "$pkgdir/usr/bin/videokit-file2title"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-noforcedsubs"      "$pkgdir/usr/bin/videokit-noforcedsubs"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-queue"             "$pkgdir/usr/bin/videokit-queue"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-s2hms"             "$pkgdir/usr/bin/videokit-s2hms"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-title2file"        "$pkgdir/usr/bin/videokit-title2file"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-transcodefile"     "$pkgdir/usr/bin/videokit-transcodefile"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-transcodeprocess"  "$pkgdir/usr/bin/videokit-transcodeprocess"
+  install -Dm755 "$srcdir/VideoKit-KDE/src/videokit-transcodequeue"    "$pkgdir/usr/bin/videokit-transcodequeue"
 
   # Install .desktop file
   install -Dm644 "$srcdir/VideoKit-KDE/videokit.desktop" "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
