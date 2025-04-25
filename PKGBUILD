@@ -4,14 +4,14 @@ pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
 pkgver=3.1.0
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
 #    'armv7h'
     'x86_64'
 )
-url="https://runjs.app/"
+url="https://runjs.app"
 _ghurl="https://github.com/lukehaas/RunJS"
 license=('LicenseRef-custom')
 conflicts=(
@@ -34,13 +34,13 @@ options=(
     '!strip'
 )
 source=(
-    "LICENSE.html::${url}/eula"
+    "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
 #source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('5bb935f4f496f3de25fbc18613329a39ab212a58e950c708cb44b1a6061c4dbd'
+sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('478022e53fc3cfbcf84cbbe710de45378cb0174b91b82a77b94801035c4669f0')
 sha256sums_x86_64=('fd69cda6e2e76e289d606cb824e70250e78a39c996b9d8cc60839614f3bbffff')
