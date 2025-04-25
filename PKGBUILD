@@ -3,7 +3,7 @@
 _pkgauthor=marwanhawari
 _pkgname=stew
 pkgname=${_pkgname}-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='An independent package manager for compiled binaries'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,13 +23,13 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
 sha256sums=('d44d4dce68dced2e5385e05328403afb276b0319e6d3a4e551b044592bc7034d'
-            '31b9eed2b93b7d203d2ccabd2f880a5aec28c3fcb513c6c33e949dee0635d8b4'
+            '8728b70b138c0cd880fc595638fed9f53cfdabe1cd51e07551abe533bbac881b'
             'ea52dc3587929a33aba07df0734ec73998fe395d38ed0ec959dfcdca9bb01a86'
             'ff8206f40f41ace0c11bdf512949945f970c8dbcd42374f45ddfa4182e3966f0'
             'a14821ad68cb49bfed88976e3a152b54c0c2641a6c649067b42ac45e2a3e333a')
-sha256sums_x86_64=('a6ef482719dc0354ee20e02e682ddb2e45a4aaf9fccc2dd023e2abed1cb21b95')
-sha256sums_i686=('f5ca69464545d75365f8dba7ca1576a84bff9bdce5a2e89158dc90c0e57c94cc')
-sha256sums_aarch64=('7b43742838bb7a4ce89cd08234733abc5a370cd4660ca1619a562916bebaa772')
+sha256sums_x86_64=('0a01b8a57ab219a3a1730d3d0a16f4cdda2e5c83626d57ab0455e995460eeb4f')
+sha256sums_i686=('1254fa2a068463249a3dfb59af9cb4ee0d293e70dda85807c9472fd23a61e85c')
+sha256sums_aarch64=('00392c503f08d8dfac38d0f35672337db032ea8e0500ba46c4884f3fde4bcf92')
 
 build() {
   cd "${srcdir}/" || exit
