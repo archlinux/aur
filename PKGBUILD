@@ -8,7 +8,7 @@
 # for more details # on package signing.
 pkgname=librepcb
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free EDA software to develop printed circuit boards"
 arch=('x86_64' 'i686')
 url="https://librepcb.org/"
@@ -70,6 +70,7 @@ build() {
     -DUNBUNDLE_MUPARSER=1 \
     -DUNBUNDLE_POLYCLIPPING=1 \
     -DUNBUNDLE_GTEST=1 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
   cmake --build build
 }
