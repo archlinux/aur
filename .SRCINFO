@@ -1,5 +1,5 @@
 pkgbase = sigma-file-manager-git
-	pkgdesc = A free, open-source, quickly evolving, modern file manager (explorer / browser) app.
+	pkgdesc = A free, open-source, quickly evolving, modern file manager (explorer / browser) app.(Use system-wide electron)
 	pkgver = 2.0.0.alpha.1.r39.gf0768f5
 	pkgrel = 1
 	url = https://sigma-file-manager.vercel.app
@@ -9,11 +9,8 @@ pkgbase = sigma-file-manager-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = npm
-	makedepends = python>=3
-	makedepends = gcc
-	depends = alsa-lib
-	depends = nss
-	depends = gtk3
+	makedepends = python
+	depends = electron20
 	provides = sigma-file-manager
 	conflicts = sigma-file-manager
 	source = sigma-file-manager.git::git+https://github.com/aleksey-hoffman/sigma-file-manager.git
