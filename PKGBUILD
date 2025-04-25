@@ -19,18 +19,18 @@ sha256sums=('SKIP')  # Don't need this when using Git as source
 
 
 package() {
-  cd "$srcdir/VideoKit-KDE" || return 1
+  cd "$srcdir" || return 1
 
   # Install scripts
-  install -Dm755 videokit-config            "$pkgdir/usr/bin/videokit-config"
-  install -Dm755 videokit-file2title        "$pkgdir/usr/bin/videokit-file2title"
-  install -Dm755 videokit-noforcedsubs      "$pkgdir/usr/bin/videokit-noforcedsubs"
-  install -Dm755 videokit-queue             "$pkgdir/usr/bin/videokit-queue"
-  install -Dm755 videokit-s2hms             "$pkgdir/usr/bin/videokit-s2hms"
-  install -Dm755 videokit-title2file        "$pkgdir/usr/bin/videokit-title2file"
-  install -Dm755 videokit-transcodefile     "$pkgdir/usr/bin/videokit-transcodefile"
-  install -Dm755 videokit-transcodeprocess  "$pkgdir/usr/bin/videokit-transcodeprocess"
-  install -Dm755 videokit-transcodequeue    "$pkgdir/usr/bin/videokit-transcodequeue"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-config"            "$pkgdir/usr/bin/videokit-config"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-file2title"        "$pkgdir/usr/bin/videokit-file2title"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-noforcedsubs"      "$pkgdir/usr/bin/videokit-noforcedsubs"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-queue"             "$pkgdir/usr/bin/videokit-queue"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-s2hms"             "$pkgdir/usr/bin/videokit-s2hms"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-title2file"        "$pkgdir/usr/bin/videokit-title2file"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodefile"     "$pkgdir/usr/bin/videokit-transcodefile"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodeprocess"  "$pkgdir/usr/bin/videokit-transcodeprocess"
+  install -Dm755 "$srcdir/VideoKit-KDE/videokit-transcodequeue"    "$pkgdir/usr/bin/videokit-transcodequeue"
 
   # Install .desktop file
   install -Dm644 videokit.desktop "$pkgdir/usr/share/kio/servicemenus/videokit.desktop"
@@ -39,7 +39,7 @@ package() {
   install -Dm644 videokit.conf "$pkgdir/usr/share/videokit/videokit.conf"
 
   # License
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Rebuild KDE service cache
   if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
