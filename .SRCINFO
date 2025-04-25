@@ -1,19 +1,25 @@
 pkgbase = warp-terminal-bin
 	pkgdesc = Warp is the intelligent terminal with AI and your dev team's knowledge built-in.
-	pkgver = 0.2025.04.16.08.11.stable.02
+	pkgver = 0.2025.04.23.08.11.stable_01
 	pkgrel = 1
 	url = https://warp.dev
 	arch = x86_64
 	arch = aarch64
 	license = custom:WARP
-	provides = warp-terminal=0.2025.04.16.08.11.stable.02
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = alsa-lib
+	depends = libxcb
+	depends = libxkbcommon-x11
+	provides = warp-terminal=0.2025.04.23.08.11.stable_01
 	conflicts = warp-terminal
 	options = !strip
 	source = LICENSE.txt
-	sha256sums = 1057b326e587edf2f81dc35c6c9cdd2e63d9af1c68e331d7ac8a4bc22ff9de49
-	source_x86_64 = warp-terminal-0.2025.04.16.08.11.stable.02-_amd64.deb::https://releases.warp.dev/stable/v0.2025.04.16.08.11.stable_02/warp-terminal_0.2025.04.16.08.11.stable.02_amd64.deb
-	sha256sums_x86_64 = e54858c6f6b51846667550b3d466082aa45d1fb5b409a85bffe794e89e7c72d0
-	source_aarch64 = warp-terminal-0.2025.04.16.08.11.stable.02-_arm64.deb::https://releases.warp.dev/stable/v0.2025.04.16.08.11.stable_02/warp-terminal_0.2025.04.16.08.11.stable.02_arm64.deb
-	sha256sums_aarch64 = ec969c6f303ac27630cc0df05cac4fb5b55ff6ffb9e5e114a966eda7d177972e
+	sha256sums = e63485e6dff24dd507ff0caa59eace7cf899f4986d8ddd0c8a53389d6ecd3280
+	source_x86_64 = warp-terminal-v0.2025.04.23.08.11.stable_01-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2025.04.23.08.11.stable_01/warp-terminal-v0.2025.04.23.08.11.stable_01-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 470296094ddb95d3254b833eb667f1184ff577e94cc4c3db8dd6f3a69b649afe
+	source_aarch64 = warp-terminal-v0.2025.04.23.08.11.stable_01-1-aarch64.pkg.tar.zst::https://releases.warp.dev/stable/v0.2025.04.23.08.11.stable_01/warp-terminal-v0.2025.04.23.08.11.stable_01-1-aarch64.pkg.tar.zst
+	sha256sums_aarch64 = 1d604f081c32b6c37db13b6fa70a0c558269c243b9fcec056ab8f5bd92985e5f
 
 pkgname = warp-terminal-bin

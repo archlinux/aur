@@ -2,8 +2,7 @@
 # Contributor: ihipop <ihipop at gmail dot com>
 _pkgname=warp-terminal
 pkgname="${_pkgname}-bin"
-pkgver=0.2025.04.16.08.11.stable.02
-_pkgver=0.2025.04.16.08.11.stable_02
+pkgver=0.2025.04.23.08.11.stable_01
 pkgrel=1
 pkgdesc="Warp is the intelligent terminal with AI and your dev team's knowledge built-in."
 arch=('x86_64' 'aarch64')
@@ -12,27 +11,27 @@ license=('custom:WARP')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!strip')
-depends=()
+depends=('gtk3' 'libxss' 'nss' 'alsa-lib' 'libxcb' 'libxkbcommon-x11')
 source=("LICENSE.txt")
-source_x86_64=("${_pkgname}-${pkgver}-_amd64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_${pkgver}_amd64.deb")
-source_aarch64=("${_pkgname}-${pkgver}-_arm64.deb::https://releases.warp.dev/stable/v${_pkgver}/warp-terminal_${pkgver}_arm64.deb")
+source_x86_64=("${_pkgname}-v${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/${_pkgname}-v${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source_aarch64=("${_pkgname}-v${pkgver}-${pkgrel}-aarch64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/${_pkgname}-v${pkgver}-${pkgrel}-aarch64.pkg.tar.zst")
 
+sha256sums=('e63485e6dff24dd507ff0caa59eace7cf899f4986d8ddd0c8a53389d6ecd3280')
+sha256sums_x86_64=('470296094ddb95d3254b833eb667f1184ff577e94cc4c3db8dd6f3a69b649afe')
+sha256sums_aarch64=('1d604f081c32b6c37db13b6fa70a0c558269c243b9fcec056ab8f5bd92985e5f')
 
+package() {
+  mkdir -p "$srcdir/extracted"
+  bsdtar -xf "${srcdir}/${_pkgname}-v${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst" -C "$srcdir/extracted"
 
+  cp -a "$srcdir/extracted/"* "$pkgdir/"
 
+  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-
-
-sha256sums=('1057b326e587edf2f81dc35c6c9cdd2e63d9af1c68e331d7ac8a4bc22ff9de49')
-sha256sums_x86_64=('e54858c6f6b51846667550b3d466082aa45d1fb5b409a85bffe794e89e7c72d0')
-sha256sums_aarch64=('ec969c6f303ac27630cc0df05cac4fb5b55ff6ffb9e5e114a966eda7d177972e')
-
-        package() {
-	tar xf data.tar.xz -C "${pkgdir}"
-	#install -d "${pkgdir}/opt/warpdotdev/${_pkgname}"
-	cd $pkgdir
-	install -d "$pkgdir/usr/bin/"
-	install -d "$pkgdir/opt/$_pkgname"
-  ln -s "/opt/warpdotdev/$_pkgname/warp" "$pkgdir/usr/bin/$_pkgname"
-
+  if [ -f "${pkgdir}/usr/bin/warp" ] && [ ! -f "${pkgdir}/usr/bin/warp-terminal" ]; then
+    ln -sf "/usr/bin/warp" "${pkgdir}/usr/bin/warp-terminal"
+  elif [ -f "${pkgdir}/opt/warp/warp" ] && [ ! -f "${pkgdir}/usr/bin/warp-terminal" ]; then
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf "/opt/warp/warp" "${pkgdir}/usr/bin/warp-terminal"
+  fi
 }
