@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fluent-reader-git
-_pkgname="Fluent Reader"
+_pkgname='Fluent Reader'
 pkgver=1.1.4.r3.g759d60b
 _electronversion=34
 _nodeversion=22
