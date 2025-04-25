@@ -4,12 +4,12 @@
 #: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
-: ${_commit=7664f8cde9f8fe7ed0347e098086e1227aef8bdc}
+: ${_commit=4c9e8f8e5ce5868ca50af215dd293eb8c48d2b71}
 
 _pkgname="ryujinx"
 pkgname="$_pkgname"
-pkgver=1.2.86
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/ryubing/ryujinx"
 license=('MIT')
@@ -39,9 +39,10 @@ build() (
   export HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+  local _runtime="linux-x64"
   local _args=(
     -c Release
-    -r linux-x64
+    -r "$_runtime"
     --disable-build-servers
     --nologo
     --self-contained true
@@ -49,6 +50,7 @@ build() (
     -p:ExtraDefineConstants=DISABLE_UPDATER
     -p:PublishSingleFile=true
     -p:Version="${pkgver%%.[A-Za-z]*}"
+    -p:RuntimeIdentifiers="$_runtime"
   )
 
   echo "Building AVA Interface..."
@@ -63,12 +65,16 @@ package() {
   install -dm755 "$pkgdir/$_install_path/ryujinx"
   cp -a --update=none --reflink=auto publish_ava/* "$pkgdir/$_install_path/ryujinx/"
 
-  # symlinks
+  # symlink
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/$_install_path/ryujinx/Ryujinx" "$pkgdir/usr/bin/ryujinx"
 
-  # .desktop
-  install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$pkgdir/usr/share/applications/ryujinx.desktop"
+  # launcher
+  local _launcher="$pkgdir/usr/share/applications/ryujinx.desktop"
+  install -Dm644 "$_pkgsrc"/distribution/linux/Ryujinx.desktop "$_launcher"
+
+  desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$_launcher"
+  desktop-file-edit --set-icon="ryujinx" "$_launcher"
 
   # icon
   install -Dm644 "$_pkgsrc"/distribution/misc/Logo.svg "$pkgdir/usr/share/pixmaps/ryujinx.svg"
@@ -79,13 +85,9 @@ package() {
   # license
   install -Dm644 "$_pkgsrc"/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # fix permissions
+  # permissions
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
   chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx"
   chmod 755 "$pkgdir/$_install_path/ryujinx/Ryujinx.sh"
-
-  # fix desktop file
-  desktop-file-edit --set-key="Exec" --set-value="ryujinx %f" "$pkgdir/usr/share/applications/ryujinx.desktop"
-  desktop-file-edit --set-icon="ryujinx" "$pkgdir/usr/share/applications/ryujinx.desktop"
 }
