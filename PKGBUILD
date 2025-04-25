@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wj-markdown-editor-git
-pkgver=2.0.1.r0.g646eebb
+pkgver=2.0.3.r0.ga9f274c
 _electronversion=35
 _nodeversion=23
 pkgrel=1
