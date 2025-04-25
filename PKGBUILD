@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proxyC
-_pkgver=0.5.1
+_pkgver=0.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a86efb64490157a845b902900a724bea')
-b2sums=('956bde1daac704b1a62edf86b4eb25b0014beacbf1a25f7ade06b92a465d345be06809577117ed7d169e609162fa2ace863cc282f5fb0bded2a1f738b7535414')
+md5sums=('c14453641ed056c375ef88e0146d6708')
+b2sums=('634bb467d715215993146542096bd7c2e8eb922667c9da66aa879cbdf80ec23d82d049f2bf79dcabd1de2355b2e343886a654520e14142652a5b308ae8d7ce9e')
 
 build() {
   mkdir build
