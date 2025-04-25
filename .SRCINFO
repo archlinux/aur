@@ -1,6 +1,6 @@
 pkgbase = gomoon-git
-	pkgdesc = An ai tools for everyone.基于大模型的桌面端效率工具.
-	pkgver = 1.0.5.r265.g87a6f3a
+	pkgdesc = An ai tools for everyone.(Use system-wide electron)基于大模型的桌面端效率工具.
+	pkgver = 1.0.5.r288.g99d4e11
 	pkgrel = 1
 	url = https://gomoon.top/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = gomoon-git
 	makedepends = icoutils
 	makedepends = curl
 	depends = electron29
+	depends = nodejs
 	provides = gomoon=1.0.5
 	conflicts = gomoon
 	noextract = resources.zip
