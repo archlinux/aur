@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=readstata13
-_pkgver=0.10.1
+_pkgver=0.11.0
 pkgname=r-${_pkgname,,}
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Import 'Stata' Data Files"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('117b78be07c897b9efb7709ac9957cb11950ce4426fad774efba01f4b53dd9a3')
+sha256sums=('9e6df4bebc775f34262f676d1374060056809e9478bbd8455e3a6d7fc4272d21')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
