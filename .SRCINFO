@@ -1,0 +1,14 @@
+pkgbase = brother-hll2400dwe-bin
+	pkgdesc = Brother HL-2400DWE CUPS Driver
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=hll2400dwe_eu
+	arch = i686
+	arch = x86_64
+	license = custom:Brother
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf105950/hll2400dwepdrv-4.1.0-1.i386.rpm
+	sha256sums = 32a39889921e16a6ced555cd6b67b6abb91f8bb1da5a4b92d9db2c079a70f2ac
+
+pkgname = brother-hll2400dwe-bin
