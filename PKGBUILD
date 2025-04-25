@@ -1,15 +1,13 @@
 pkgname=minefetch
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Download Minecraft mods (In Rust)"
 arch=("x86_64")
 license=('GPL')
 url="https://github.com/KirillkoTankisto/minefetch"
-source=("https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.5.1/minefetch")
+source=("https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.5.2/minefetch")
 noextract=("${source[@]##*/}")
-sha256sums=("60eb1ca4dcdc367319303459dad6476ad630928ae2d5a8cceb69894a321781c4")
+sha256sums=("d3202115eed7cdea6fd92631399d47bb7c8ba6deebdbb23da94cbb69ce1b8862")
 package () {
-  cd "$srcdir"
   install -Dm 755 "minefetch" "${pkgdir}/usr/bin/minefetch"
-  chmod +x minefetch
 }
