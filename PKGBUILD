@@ -1,5 +1,5 @@
-# Maintainer: Matthias Eberlein
 # Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
+# Maintainer: Matthias Eberlein
 
 pkgname=youtube-to-mp3
 pkgver=3.9.10
