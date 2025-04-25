@@ -1,6 +1,6 @@
 pkgbase = cosmic-settings-daemon-git
 	pkgdesc = Cosmic settings daemon
-	pkgver = 1.0.0.alpha.6.r2.ga666c99
+	pkgver = 1.0.0.alpha.7.r0.gbb9eb90
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-settings-daemon
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = cosmic-settings-daemon-git
 	depends = alsa-utils
 	depends = geoclue
 	depends = libinput
+	depends = libpulse
 	depends = playerctl
 	depends = pop-sound-theme-git
 	depends = systemd-libs
