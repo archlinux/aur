@@ -1,0 +1,17 @@
+pkgbase = openide-bin
+	pkgdesc = OpenID is an open source software development tool for Java, Python, and other programming languages. It was created by the Astra Group, Haulmont, and Axiom JDK companies, and is a Russian fork of JetBrains Pycharm CE with custom plugins from the enterprise world.
+	pkgver = 243.26053.27.8
+	pkgrel = 1
+	url = https://openide.ru
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	conflicts = openide
+	options = !strip
+	source = openide.desktop
+	source = openide.sh
+	sha256sums = aa3e4f48f311c7b9368c878c05ff6b93672ab6da56bd60aba1109c118e7cbed5
+	sha256sums = 5df2ba94996f8e7bdcde97c9b60aef128c65f5308775b02ea7df41395523c88f
+	source_x86_64 = https://download.openide.ru/243.26053.27.8/openIDE-243.26053.27.8.tar.gz
+	sha256sums_x86_64 = 74c296c46f09769c5607dec00eeba185229b41943b136b421a5bc19397e1415d
+
+pkgname = openide-bin
