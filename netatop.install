@@ -2,13 +2,13 @@ post_install() {
   #dkms install -m netatop -v "$2" --no-depmod
   dkms autoinstall --no-depmod
   depmod -a
-  modprobe netatop
+  #modprobe netatop - testing before push 3.2.2-2
 }
 post_upgrade() {
   post_install "$@"
 }
 pre_remove() {
   rmmod netatop   || true
-  dkms remove -m netatop -v "$2" --all || true
+  dkms remove -m netatop -v "$pkgver" --all || true
   depmod -a
 }
