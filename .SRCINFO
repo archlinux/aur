@@ -1,6 +1,6 @@
 pkgbase = claude-code
 	pkgdesc = An agentic coding tool that lives in your terminal
-	pkgver = 0.2.81
+	pkgver = 0.2.83
 	pkgrel = 1
 	url = https://github.com/anthropics/claude-code
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = claude-code
 	optdepends = github-cli: interact with GitHub
 	optdepends = glab: interact with GitLab
 	optdepends = ripgrep: enhanced file search
-	noextract = claude-code-0.2.81.tgz
-	source = https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-0.2.81.tgz
-	b2sums = 2f0fca7309d785d39af5d4a354a6e8eef21127d59eec9acad72ce4d6bf13c0792897c5f38ca01bd208c0fc9a5d1bd2ef1e73c7ea468031046e63c324de13d38a
+	noextract = claude-code-0.2.83.tgz
+	source = https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-0.2.83.tgz
+	b2sums = ec490c4dc30813b632dd06a4c4eb7517186f34a641975f7faf0d3aac91a6d0add4a5b8394637b0e693d001564711186d0fa95906122bed9ee2c1af2c5089e1f9
 
 pkgname = claude-code
