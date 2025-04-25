@@ -1,5 +1,5 @@
 pkgbase = openide-bin
-	pkgdesc = OpenID is an open source software development tool for Java, Python, and other programming languages. It was created by the Astra Group, Haulmont, and Axiom JDK companies, and is a Russian fork of JetBrains Pycharm CE with custom plugins from the enterprise world.
+	pkgdesc = OpenID is an open source software development tool for Java, Python, and other programming languages. It was created by the Astra Group, Haulmont, and Axiom JDK companies. It is fork of pycharm
 	pkgver = 243.26053.27.8
 	pkgrel = 1
 	url = https://openide.ru
