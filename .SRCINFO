@@ -1,6 +1,6 @@
 pkgbase = palletone-git
-	pkgdesc = Desktop color pallete builder and manager for developers and designers.Use system-wide electron.
-	pkgver = r97.58b1b65
+	pkgdesc = Desktop color pallete builder and manager for developers and designers.(Use system-wide electron)
+	pkgver = r101.a852af5
 	pkgrel = 1
 	url = https://palletone-demo.vercel.app/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = palletone-git
 	makedepends = gendesk
 	makedepends = curl
 	depends = electron28
-	provides = palletone=r97.58b1b65
+	provides = palletone=r101.a852af5
 	conflicts = palletone
 	source = palletone.git::git+https://github.com/KainNhantumbo/palletone-app.git
 	source = palletone.sh
