@@ -12,12 +12,12 @@ conflicts=("launcherx-git")
 options=(!strip)
 
 source=(
-    "${pkgname}-${pkgver}.zip::https://api.corona.studio/Build/get/0e42ea3c-62df-44e4-b7a3-a04bf67c9d63/download:LauncherX-linux-x64@linux-x64.zip"
+    "${pkgname}-${pkgver}.zip::https://api.corona.studio/Build/get/49c32b5f-012c-46ac-85b1-ae6008080af8/net9.0-linux.linux-x64.zip"
     "LauncherX.desktop"
     "LauncherX.png"
 )
 sha256sums=(
-    '8e358b554bcf6c65e9c7666494a0f0a37c86d7e8a7acca1ea30c0f5f1ab3653d'
+    '2f75d6f6372e1144d3be637dc966dcb74f0650a39d712eb3b8b0cbc0e135a005'
     'a181426a16fb04c37d008e8373385443542e616e22cdbf0368588ea874bda244'
     '12603307fe2c60cbbab83fc761e465b2900c0593022340f1973b5adf59f88360'
 )
