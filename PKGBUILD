@@ -9,13 +9,14 @@ pkgdesc='Free Open Source Kubernetes IDE'
 arch=('x86_64' 'aarch64')
 license=('MIT')
 url='https://freelens.app/'
-depends=('gtk3' 'libxss' 'nss')
-source=("${_pkgname}.desktop")
+depends=('gtk3' 'nss')
+options=('!debug' '!strip' '!emptydirs')
+source=("freelens.desktop")
 source_x86_64=(${_pkgname}-${pkgver}-x86_64.AppImage::"https://github.com/freelensapp/freelens/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.AppImage")
 source_aarch64=(${_pkgname}-${pkgver}-aarch64.AppImage::"https://github.com/freelensapp/freelens/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
-sha256sums=('329ed69bc9604424410557ee5f4b8c846672a2bdf26cbe1e70f75bc3c13adb26')
-sha256sums_x86_64=('d17d95d03c84cf52782403591da926a116b57d0935d7860e46e6b08286313ee1')
-sha256sums_aarch64=('ebea8fc1abb6259be4e165685bb55d1c30a6b4e387616d77b520ed0fb104925b')
+b2sums=('e2fe3e0c27ab531419ebaf2b233dd25ef09e9c5d8da607295ce5438c5277461bfa653fba07f94021788b758bb05af4c2295e815a7c3254385ec1829650260154')
+b2sums_x86_64=('76e87528f127a3460e62b9fac03e4a75a958127b45a9feb61a9300a9e7149f8a62987bb2024f0f9cff3956b392873a787742ddd922c89460071045563e0faaf5')
+b2sums_aarch64=('614168deba6da725a5cad73703e2e8e4bbf6242cacdff0bf33e9c8295912e29284d2c00669918526d949fc13a96e90875bc9c572858c3490890d1bdf4060c270')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
@@ -24,28 +25,28 @@ prepare() {
 
 package() {
   # move the entire distribution to /usr/share
-  mkdir -p "${pkgdir}"/usr/share/${_pkgname}
+  mkdir -p "${pkgdir}"/usr/share/freelens
   mv "${srcdir}"/squashfs-root/* \
-    "${pkgdir}"/usr/share/${_pkgname}
+    "${pkgdir}"/usr/share/freelens
 
   # icon
-  install -Dm 644 "${pkgdir}"/usr/share/${_pkgname}/usr/share/icons/hicolor/512x512/apps/freelens.png \
+  install -Dm 644 "${pkgdir}"/usr/share/freelens/usr/share/icons/hicolor/512x512/apps/freelens.png \
     "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/freelens.png
 
   # desktop file
-  install -Dm 644 "${srcdir}"/${_pkgname}.desktop \
-    "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
+  install -Dm 644 "${srcdir}"/freelens.desktop \
+    "${pkgdir}"/usr/share/applications/freelens.desktop
 
   # symlink binary
   mkdir -p "${pkgdir}"/usr/bin
-  ln -sf /usr/share/${_pkgname}/freelens \
+  ln -sf /usr/share/freelens/freelens \
     "${pkgdir}"/usr/bin/freelens
 
   # clean and fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} \;
-  chmod -x "${pkgdir}"/usr/share/${_pkgname}/*.so
-  rm -rf "${pkgdir}"/usr/share/${_pkgname}/AppRun
-  rm -rf "${pkgdir}"/usr/share/${_pkgname}/lens.{desktop,png}
-  rm -rf "${pkgdir}"/usr/share/${_pkgname}/usr
-  rm -rf "${pkgdir}"/usr/share/${_pkgname}/resources/extensions/*/dist/*-arm64
+  chmod -x "${pkgdir}"/usr/share/freelens/*.so
+  rm -rf "${pkgdir}"/usr/share/freelens/AppRun
+  rm -rf "${pkgdir}"/usr/share/freelens/freelens.desktop
+  rm -rf "${pkgdir}"/usr/share/freelens/usr
+  rm -rf "${pkgdir}"/usr/share/freelens/resources/extensions/*/dist/*-arm64
 }
