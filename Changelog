@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 1.2.0 ➙ 1.3.3
+ Tags         : 1.3.0 ➙ 1.4.0
               : 2025-04-24 ➙ 2025-04-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-04-25   : 1.4.0
+                asyncio : missing decode() for stdout/err
+                pytest : ensure python path uses dev source for tests
+                Add missing SPDX identifiers
+                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-04-25   : 1.3.3
                 Fix readme typo and small tweak for clarity
@@ -19,8 +25,4 @@
 
  2025-04-24   : 1.3.0
                 Add missing tests dir after it was moved
-                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-24   : 1.2.0
-                Move tests dir to top level
                 update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
