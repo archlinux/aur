@@ -3,7 +3,7 @@
 _target_alias="ppu"
 _pkgname="zstd"
 pkgname="ps3-${_pkgname}"
-pkgver="1.5.6"
+pkgver="1.5.7"
 pkgrel=1
 pkgdesc="Zstandard - Fast real-time compression algorithm"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/facebook/zstd/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.zst"
 )
 sha256sums=(
-	'4aa8dd1c1115c0fd6b6b66c35c7f6ce7bd58cc1dfd3e4f175b45b39e84b14352'
+	'5b331d961d6989dc21bb03397fc7a2a4d86bc65a14adc5ffbbce050354e30fd2'
 )
 
 source /opt/ps3dev/ps3toolchain.sh
