@@ -1,0 +1,71 @@
+From 4f9e461e62073467b0df14235c3861f40adbb4c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
+Date: Fri, 25 Apr 2025 19:37:05 +0200
+Subject: [PATCH 4/4] Work around build issues with Qt 6.9
+
+---
+ src/items/paletteitembase.cpp | 4 ++--
+ src/items/resistor.cpp        | 2 +-
+ src/utils/textutils.cpp       | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/items/paletteitembase.cpp b/src/items/paletteitembase.cpp
+index 49db343e..4866a984 100644
+--- a/src/items/paletteitembase.cpp
++++ b/src/items/paletteitembase.cpp
+@@ -626,7 +626,7 @@ QString PaletteItemBase::retrieveSvg(ViewLayer::ViewLayerID viewLayerID, QHash<Q
+ 
+ 	//DebugDialog::debug(QString("path: %1").arg(path));
+ 
+-	QString svg = svgHash.value(path + xmlName + QString(QChar(m_viewLayerPlacement)), "");
++	QString svg = svgHash.value(path + xmlName + QString(QChar((int)m_viewLayerPlacement)), "");
+ 	if (!svg.isEmpty()) return svg;
+ 
+ 	SvgFileSplitter splitter;
+@@ -657,7 +657,7 @@ QString PaletteItemBase::retrieveSvg(ViewLayer::ViewLayerID viewLayerID, QHash<Q
+ 		return "";
+ 	}
+ 	svg = splitter.elementString(xmlName);
+-	svgHash.insert(path + xmlName + QString(QChar(m_viewLayerPlacement)), svg);
++	svgHash.insert(path + xmlName + QString(QChar((int)m_viewLayerPlacement)), svg);
+ 	return svg;
+ }
+ 
+diff --git a/src/items/resistor.cpp b/src/items/resistor.cpp
+index e2a23fd8..0eac98fa 100644
+--- a/src/items/resistor.cpp
++++ b/src/items/resistor.cpp
+@@ -260,7 +260,7 @@ bool Resistor::collectExtraInfo(QWidget * parent, const QString & family, const
+ 		validator->setSymbol(OhmSymbol);
+ 		validator->setConverter(TextUtils::convertFromPowerPrefix);
+ 		validator->setBounds(MIN_RESISTANCE, MAX_RESISTANCE);
+-		validator->setRegularExpression(QRegularExpression(QString("((\\d{1,10})|(\\d{1,10}\\.)|(\\d{1,10}\\.\\d{1,5}))[\\x%1umkMG]{0,1}[\\x03A9]{0,1}").arg(TextUtils::MicroSymbolCode, 4, 16, QChar('0'))));
++		validator->setRegularExpression(QRegularExpression(QString("((\\d{1,10})|(\\d{1,10}\\.)|(\\d{1,10}\\.\\d{1,5}))[\\x%1umkMG]{0,1}[\\x03A9]{0,1}").arg((int)TextUtils::MicroSymbolCode, 4, 16, QChar('0'))));
+ 		focusOutComboBox->setValidator(validator);
+ 		connect(focusOutComboBox->validator(), SIGNAL(sendState(QValidator::State)), this, SLOT(textModified(QValidator::State)));
+ 		connect(focusOutComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(resistanceEntry(int)));
+diff --git a/src/utils/textutils.cpp b/src/utils/textutils.cpp
+index febf56fb..17afcb27 100644
+--- a/src/utils/textutils.cpp
++++ b/src/utils/textutils.cpp
+@@ -77,7 +77,7 @@ const QString TextUtils::AdobeIllustratorIdentifier = "Generator: Adobe Illustra
+ 
+ QList<QString> PowerPrefixes;
+ QList<double> PowerPrefixValues;
+-const QString TextUtils::PowerPrefixesString = QString("pnmkMGTu\\x%1").arg(MicroSymbolCode, 4, 16, QChar('0'));
++const QString TextUtils::PowerPrefixesString = QString("pnmkMGTu\\x%1").arg((int)MicroSymbolCode, 4, 16, QChar('0'));
+ 
+ typedef QHash<QString /*brokenFont*/, QString /*replacementFont*/> FixedFontsHash;
+ 
+@@ -761,7 +761,7 @@ QString TextUtils::convertExtendedChars(const QString & str)
+ 			result.append(c);
+ 		}
+ 		else {
+-			result.append(QString("&#x%1;").arg(c.unicode(), 0, 16));
++			result.append(QString("&#x%1;").arg(int(c.unicode()), 0, 16));
+ 		}
+ 	}
+ 
+-- 
+2.49.0
+

@@ -10,8 +10,8 @@ pkgname=fritzing
 # We drop the "b" at the end of the version number. It probably means beta
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 
 # Tag version can be obtained from github release page. Sometimes this is the
 # version number itself, sometimes some CD-magicnumber thing. There can be
@@ -20,7 +20,7 @@ pkgrel=2
 #_tagver=0.9.8
 
 # This is probably close to what has been released
-_gitrev=a8c6ef7cf66f7a42b9b233d6137f1b70a9573a25
+_gitrev=b9add9eaa7c426963de20c8514a69d3f15e83bdf
 
 # Parts come from a different respository and are not versioned anymore since
 # 2016. Sometimes we can get the revision by downloading the release build,
@@ -28,7 +28,7 @@ _gitrev=a8c6ef7cf66f7a42b9b233d6137f1b70a9573a25
 # release build seems to be hidden behind a paywall. Then we need to guess
 # based on the master branch of the fritzing-parts repository and the date when
 # the release archive was created.
-_partsrev=76235099ed556e52003de63522fdd74e61d53a36
+_partsrev=4f7d39b22a6c307e6cca62c7f78eae96696e8b2c
 
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
@@ -42,13 +42,15 @@ source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz
         0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
         0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
-        0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch)
-sha256sums=('dd76c7c9c4e24663b01ba240757bbce07b5b2733b8255449929444ec7da80074'
-            '0078203d4ce7d6d94270a5e4f23451a175ad0e05782a036c6b1e5799dab7d8f4'
+        0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch
+        0004-Work-around-build-issues-with-Qt-6.9.patch)
+sha256sums=('78828ce61a3869a81c9bb7b8855108d07cce178a19d555ef4edd92b22e422181'
+            'fb97fdce786c5efdafc7319e4e6a215611dd7b93019ffda9cfc9b429bbca1d36'
             'be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76'
-            'd783b463f84bb0efad20070ccc189fd70c89d027bf9aeea5ec28d802057c4a85'
-            '845111a3e46e78b5410c2129f00b219fdcab8b5df27906541b8225fc7374e2b7'
-            '852d32cce399cd00896455701c51b7f4373e5a26ec664d7e3c299714f8038e6c')
+            'df4cf47c0888e3a718de511080db3844a4664fd316f44bbc6e3f96b2550047c5'
+            'b01fe8785cc59545626ec87279fab8b248e0faae8ce2ce0d0b67892cc63f9639'
+            '889b90766bcf293b3e351157eecb79ceb57bfb749499140a78b10250eccf21b1'
+            'f74de1096e0bc8ed9841e98c83767a811cef29d7ea5215cc8b7209d6ee562230')
 
 prepare() {
   cd "${srcdir}"/fritzing-app
@@ -66,6 +68,9 @@ prepare() {
 
   # Allow finding Clipper1 on Arch Linux
   patch -p1 < "${srcdir}/0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch"
+
+  # Fix build issues with Qt 6.9
+  patch -p1 < "${srcdir}/0004-Work-around-build-issues-with-Qt-6.9.patch"
 
   # Dynamically link against system libgit2
   sed -i 's/LIBGIT_STATIC = true/LIBGIT_STATIC = false/' phoenix.pro

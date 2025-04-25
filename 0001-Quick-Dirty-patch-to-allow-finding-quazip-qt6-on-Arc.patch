@@ -1,32 +1,37 @@
-From 13b9c9d691566eb50009b5e4bdac79a999fa576d Mon Sep 17 00:00:00 2001
+From 69458713de372d1e988ac1f9d095c5d6f50510bd Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Michael=20La=C3=9F?= <bevan@bi-co.net>
 Date: Thu, 26 Jan 2023 19:18:56 +0100
-Subject: [PATCH 1/3] Quick & Dirty patch to allow finding quazip-qt6 on Arch
+Subject: [PATCH 1/4] Quick & Dirty patch to allow finding quazip-qt6 on Arch
  Linux
 
 ---
- pri/quazipdetect.pri | 31 ++++++-------------------------
- 1 file changed, 6 insertions(+), 25 deletions(-)
+ pri/quazipdetect.pri | 26 ++++----------------------
+ 1 file changed, 4 insertions(+), 22 deletions(-)
 
 diff --git a/pri/quazipdetect.pri b/pri/quazipdetect.pri
-index 07bd5621..1fe88bb5 100644
+index f8d6c525..f13c5dff 100644
 --- a/pri/quazipdetect.pri
 +++ b/pri/quazipdetect.pri
-@@ -1,29 +1,10 @@
--# Copyright (c) 2021,2023 Fritzing GmbH
-+# Copyright (c) 2021 Fritzing GmbH
+@@ -1,6 +1,6 @@
+ # Copyright (c) 2021,2024 Fritzing GmbH
  
 -message("Using Fritzing quazip detect script.")
--
--QUAZIP_VERSION=1.4
--QUAZIP_PATH=$$absolute_path($$PWD/../../quazip-$$QT_VERSION-$$QUAZIP_VERSION)
--QUAZIP_INCLUDE_PATH=$$QUAZIP_PATH/include/QuaZip-Qt6-$$QUAZIP_VERSION
--QUAZIP_LIB_PATH=$$QUAZIP_PATH/lib
 +message("Using custom quazip detect script.")
  
+ # We are currently using a quazip version from this PR:
+ # https://github.com/stachenov/quazip/pull/199
+@@ -10,28 +10,10 @@ message("Using Fritzing quazip detect script.")
+ # issues that need # work. Code review is welcome for all pull requests.
+ # If you are well versed in # Qt and C/C++ please start helping around
+ # and check https://github.com/stachenov/quazip/issues/185
+-QUAZIP_VERSION=1.4
+-QUAZIP_PATH=$$absolute_path($$PWD/../../quazip-$$QT_VERSION-$$QUAZIP_VERSION)intuisphere
+-QUAZIP_INCLUDE_PATH=$$QUAZIP_PATH/include/QuaZip-Qt6-$$QUAZIP_VERSION
+-QUAZIP_LIB_PATH=$$QUAZIP_PATH/lib
+ 
  SOURCES += \
--	src/zlibdummy.c \
--
+ 	src/zlibdummy.c \
+ 
 -exists($$QUAZIP_PATH) {
 -		message("found quazip in $${QUAZIP_PATH}")
 -	} else {
@@ -40,14 +45,13 @@ index 07bd5621..1fe88bb5 100644
 -	message("set rpath for quazip")
 -	QMAKE_RPATHDIR += $$QUAZIP_LIB_PATH
 -}
-+    src/zlibdummy.c \
- 
+-
 -macx {
 -	LIBS += -lz
 -}
-+message("including quazip library on linux")
-+INCLUDEPATH += /usr/include/QuaZip-Qt6-1.4/ /usr/include/QuaZip-Qt6-1.5/
++message("including Arch's quazip library")
++INCLUDEPATH += /usr/include/QuaZip-Qt6-1.5/
 +LIBS += -lquazip1-qt6
 -- 
-2.43.0
+2.49.0
 
