@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=publii-bin
 _pkgname=Publii
-pkgver=0.46.4
+pkgver=0.46.5
 _electronversion=31
 pkgrel=1
 pkgdesc="The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.(Prebuilt version.Use system-wide electron)"
@@ -17,10 +17,10 @@ depends=(
     'nodejs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/download/${_pkgname}-${pkgver}.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/download/${_pkgname}-${pkgver}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d3a6cf56c7d61c0490173b17af940e359ab6ed469e5db31fab2bae2a64dc8cd1'
+sha256sums=('5008fae2978753e8b8028e89ff287b39afbcbe231a9bf6a0287c208239b7db1a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -30,7 +30,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
