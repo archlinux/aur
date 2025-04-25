@@ -1,7 +1,7 @@
 pkgbase = falkon-plugin-pdfreader
 	pkgdesc = PDF reader extension for falkon
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gustawho/PDFReader/
 	arch = x86_64
 	license = GPL-3.0-or-later
