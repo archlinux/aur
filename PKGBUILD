@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onlook-bin
 _pkgname=Onlook
-pkgver=0.2.28
+pkgver=0.2.29
 _electronversion=35
 pkgrel=1
 pkgdesc="The open source, local-first Webflow alternative. Design directly in your live React site and publish your changes to code.(Prebuilt version.Use system-wide electron)"
@@ -18,6 +18,7 @@ depends=(
     "electron${_electronversion}"
     'nodejs'
     'python'
+    'bun'
 )
 makedepends=(
     'asar'
@@ -26,8 +27,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-amd64.deb")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('600073fa4b1bcbe0b797d62be65f1d7df360e017428272fcfdff139bbbb37dad')
-sha256sums_x86_64=('ff33eeb03dfc1c28d01735cbcee3d7eed5f27cf7402daaa5711b03b66a110eb0')
+sha256sums_aarch64=('427b909fa5ef57983a33d72f07c23a5f38d2ca38545f1dad266824fee7578b24')
+sha256sums_x86_64=('2944c7fafa063c5e6c0fece6bcd1bbdf60de5864797c2266e7d71df41148d6b4')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -44,6 +45,7 @@ prepare() {
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    ln -sf "/usr/bin/bun" "${srcdir}/opt/${_pkgname}/resources/bun/bun-x64"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
