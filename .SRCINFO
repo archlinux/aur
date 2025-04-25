@@ -1,5 +1,5 @@
 pkgbase = boson-git
-	pkgdesc = SDSS observer graphical interface.Use system-wide electron.
+	pkgdesc = SDSS observer graphical interface.(Use system-wide electron)
 	pkgver = 0.4.9.r1.g9498362
 	pkgrel = 1
 	url = https://albireox.github.io/boson/
@@ -10,7 +10,7 @@ pkgbase = boson-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
+	makedepends = curl
 	depends = electron30
 	provides = boson=0.4.9
 	conflicts = boson

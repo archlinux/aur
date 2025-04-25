@@ -4,7 +4,7 @@ pkgver=0.4.9.r1.g9498362
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="SDSS observer graphical interface.Use system-wide electron."
+pkgdesc="SDSS observer graphical interface.(Use system-wide electron)"
 arch=('any')
 url="https://albireox.github.io/boson/"
 _ghurl="https://github.com/albireox/boson"
@@ -20,7 +20,7 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'gcc'
+    'curl'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -40,8 +40,8 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
@@ -56,20 +56,16 @@ build() {
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     touch "${srcdir}/.electron-gyp/.yarnrc"
-        if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
             echo "globalFolder: "${srcdir}"/.yarn/global"
         } >> .yarnrc.yml
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
-    corepack enable yarn
-    echo y | yarn version "${_yarnver}"
     NODE_ENV=development    yarn install
     NODE_ENV=production     yarn run package
 }
