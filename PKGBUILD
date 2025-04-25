@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="supabase"
-pkgver=2.22.4
+pkgver=2.22.6
 pkgrel=1
 pkgdesc="CLI for Supabase, an open source Firebase alternative"
 arch=('aarch64' 'x86_64')
@@ -13,11 +13,15 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 source=("${pkgname}-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('42d5b4dcb4480bb3ae40333a415ad2b73514aec4a2af1eda34cdc40779bc34c2d276f64812b68e7c9e57948bb68adde28114f2da2fb7695a75b90fc79469045a')
+b2sums=('ba4f84170ca350b5bf98fe93f389692798a2bce3430383082a518a0e44adbdc312c68d6d3a44bb0f851774594a5c199a7bdf99acdc4569b56359e30cc92fad0e')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
   mkdir -p "build" "completions"
+
+  go mod download
 }
 
 build() {
@@ -26,8 +30,11 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+  go build -v -o "build/${pkgname}" -ldflags "\
+    -X ${_url#https://}/internal/utils.Version=${pkgver}" \
+    .
 
   for _sh in bash fish zsh powershell; do
     ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
