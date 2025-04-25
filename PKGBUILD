@@ -3,9 +3,9 @@
 
 _target=mips64-linux-gnu
 pkgname="${_target}-gcc"
-pkgver=14.2.0
+pkgver=15.1.0
 _majorver="${pkgver%%.*}"
-pkgrel=2
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for the MIPS64 target (for the toolchain with GNU C library and with multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
@@ -20,9 +20,9 @@ options=('!emptydirs' '!strip' 'staticlibs' '!lto' '!debug')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         '010-gcc-Wno-format-security.patch'
         '020-gcc-config-mips-multilib.patch')
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
             'SKIP'
-            'ae8f9bc913cef8d538003242d4661fddaf7cf261da17e978c7e7db995c7a1a97'
+            '85a03b80c6dad57e6ea97e5a7f225a2aaed6911f6fdcee3a800b8decd9044b43'
             '55f8733c6c8683b4c75aea9d2d55c061cdfbff1f87e066a144dc542576dc6a99')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
               'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62') # Jakub Jelinek <jakub@redhat.com>
