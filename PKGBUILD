@@ -1,9 +1,9 @@
-# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=poser
 _zimk_pkgname=zimk
-_zimk_commit=348bfe8
-pkgver=1.1
+_zimk_commit=7c5c4f2
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="C framework for POsix SERvices"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/Zirias/poser"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_zimk_pkgname}::git+https://github.com/Zirias/${_zimk_pkgname}#commit=${_zimk_commit}")
-sha256sums=('e8c35772401481a335e0227616220e57f4aa63ae2b9ca33a870be1d5d3f3d33c'
+sha256sums=('d08a3637e1967b04a4e770f381ba0f693c9529e1a4f8c6ff85d803b4482ab25f'
             'SKIP')
 
 prepare() {
