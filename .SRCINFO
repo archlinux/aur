@@ -1,5 +1,5 @@
 pkgbase = mobsh
-	pkgdesc = Tool for smooth git handover
+	pkgdesc = Tool for fast git handover
 	pkgver = 5.4.0
 	pkgrel = 1
 	url = https://github.com/remotemobprogramming/mob
@@ -7,7 +7,6 @@ pkgbase = mobsh
 	arch = i686
 	license = MIT
 	makedepends = go
-	depends = glibc
 	depends = git
 	optdepends = espeak-ng-espeak: Multi-lingual software speech synthesizer
 	optdepends = mbrola-voices-us1: An American English female voice for the MBROLA synthesizer

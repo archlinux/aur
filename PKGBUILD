@@ -1,13 +1,14 @@
-# Maintainer: Jeff Henson <jeff@henson.io>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Jeff Henson <jeff@henson.io>
 
 pkgname=mobsh
 pkgver=5.4.0
 pkgrel=1
-pkgdesc="Tool for smooth git handover"
+pkgdesc="Tool for fast git handover"
 arch=('x86_64' 'i686')
 url="https://github.com/remotemobprogramming/mob"
 license=('MIT')
-depends=('glibc' 'git')
+depends=('git')
 optdepends=('espeak-ng-espeak: Multi-lingual software speech synthesizer'
             'mbrola-voices-us1: An American English female voice for the MBROLA synthesizer')
 makedepends=('go')
@@ -31,3 +32,4 @@ package() {
 	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
+
