@@ -1,58 +1,45 @@
-# Maintainer: Mohamed Tarek <Mokhamed_tarek At mail Dot ru>
-# COntributer: knedl1k <knedl1k At tuta Dot io>
+# Contributor: Mohamed Tarek <Mokhamed_tarek At mail Dot ru>
+# Contributer: knedl1k <knedl1k At tuta Dot io>
 
-pkgname=coppeliasim-bin
 _name=coppeliasim
-pkgver=4.7.0.rev4
+pkgname=${_name}-bin
+pkgver=4.9.0.rev6
 _pkgver=${pkgver//./_}
 pkgrel=1
-pkgdesc="Robotic Simulation software from Coppelia Robotics. Formally known as VReP."
+pkgdesc="Robotic Simulation software from Coppelia Robotics"
 arch=("x86_64")
 url="http://www.coppeliarobotics.com/"
 license=("GPL" "LGPL")
-optdepends=('icu60: BlueZero api dependency')
-depends=('ffmpeg')
-conflicts=('coppeliasim')
+depends=(qt5-base ffmpeg4.4 openssl)
+makedepends=(binutils patchelf)
+optdepends=( #install everything
+qt5-{3d,connectivity,declarative,graphicaleffects,imageformats,location,multimedia,remoteobjects,scxml,sensors,serialport,svg}
+qt5-{quick3d,quickcontrols,quickcontrols2,webchannel,webengine,websockets,xmlpatterns}
+'qt5-wayland: Wayland' libQt5Gamepad.so libdeclarative_gamepad.so libdeclarative_webview.so
+)
+conflicts=($_name)
 options=(!strip)
-provides=('vrep' 'coppeliasim')
-source=("${_name}-${pkgver}.tar.xz::https://www.coppeliarobotics.com/files/V4_7_0_rev4/CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04.tar.xz")
-noextract=("${source[0]%%::*}")
-sha256sums=('6665135f41c79e5a2b038c26f033341eabf90d022affb9ffbf0de3fa2f35ae36')
-
+provides=($_name)
+_srctop=CoppeliaSim_Edu_V${_pkgver}_Ubuntu24_04
+source=("${url}/files/V${_pkgver}/${_srctop}.tar.xz")
+sha256sums=('52b82d45f971c30960c4de2e4a5ff2da86b0ab31fc6b0267e5df0e7eef826442')
+#sha256sums=('SKIP')
+#noextract=(*.tar.xz)
+prepare() {
+# tar --no-same-owner --no-same-permissions -xf *.tar.xz #fix permission?
+	rm *.tar.xz #for build on RAM
+}
 package() {
-    install -d "${pkgdir}/usr/"{bin,share/doc}
-    install -d "${pkgdir}/opt/${_name}" "${pkgdir}/usr/share/doc/${_name}"
-
-    ln -s "/opt/${_name}/coppeliaSim.sh" "${pkgdir}/usr/bin/${_name}"
-
-    # Extract everything but documentation into /opt, and docs into
-    # /usr/share/doc, and ensure they're owned by root in the fakeroot env
-    helpFiles="CoppeliaSim_Edu_V${_pkgver}_Ubuntu22_04/manual"
-    bsdtar -C "${pkgdir}/opt/${_name}/" --strip-components=1 \
-        --exclude="${helpFiles}" --uid 0 --gid 0 \
-        -xvJf "${srcdir}/${noextract[0]}"
-    bsdtar -C "${pkgdir}/usr/share/doc/${_name}/" --strip-components=2 \
-        --uid 0 --gid 0 \
-        -xvJf "${srcdir}/${noextract[0]}" "${helpFiles}"
-
-    cd "${pkgdir}/opt/${_name}"
-    # Create an empty placeholder for this file so that pacman is aware of it.
-    touch updtChck.dat
-
-    # Executable application code should *not* be writeable by non-root,
-    # but this is a silly application so I have no good way of "fixing" this.
-    find ./ -type d -print0 | xargs -0 chmod go-w
-    grep -ILZ '' * | xargs -0 chmod go-w
-    grep -rIlZ '' */ | xargs -0 chmod -x
-    find ./ -maxdepth 1 -type f -print0 | xargs -0 chmod go-w
-    find ./ -iname "*.lua" -print0 | xargs -0 chmod 644
-    find ./ -mindepth 2 -type f -print0 | xargs -0 chmod -x
-
-    cd "${pkgdir}/usr/share/doc/${_name}"
-    # Remove broken symlinks (they symlink to files under /home/marc...)
-    rm en/simROS2.htm index/simROS2.json
-
-    # Documentation shouldn't be executable at all or writable by non-root.
-    find ./ -print0 | xargs -0 chmod go-w
-    find ./ -type f -print0 | xargs -0 chmod -x
+	install -d "${pkgdir}"/{opt,usr/{bin,share/doc}}
+	mv "${_srctop}" "${pkgdir}"/opt/$_name
+	ln -s "/opt/${_name}/coppeliaSim.sh" "${pkgdir}/usr/bin/${_name}"
+	cd "${pkgdir}"/opt/$_name
+	mv manual "${pkgdir}"/usr/share/doc/$_name
+	#Drop bundled libs
+	rm -r libQt5* imageformats platform* xcbglintegrations sensors qml/Qt* \
+		libssl.so* libcrypto.so* libicu*.so* libav*.so* libsw*.so*
+	#Remove Qt5 symbol ver
+	for b in coppeliaSim libcoppeliaSim.so libsim*.so
+		do patchelf $b $(nm -D "$b"|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
+	done
 }
