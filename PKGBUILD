@@ -1,5 +1,5 @@
 pkgname=hostman
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services"
 arch=('x86_64')
