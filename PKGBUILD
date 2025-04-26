@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-ibm-runtime
 pkgname=python-${_pkgname}
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="IBM Client for Qiskit Runtime"
 arch=(any)
@@ -18,7 +18,6 @@ depends=(
     python-requests
     python-requests-ntlm
     python-urllib3
-    python-websocket-client
 )
 optdepends=('python-plotly: interactive plots')
 makedepends=(
@@ -32,10 +31,9 @@ checkdepends=(
     python-ddt
     python-plotly
     python-pytest
-    python-websockets
 )
 source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('7462ff37fe4353fdda5ea7752d8586079923845c6aaabe75f837be9b5ff3e72c0bf06f52de7a93e1540abc2d38ad0f31b57fdda41b40da600c415004fdff81d0')
+b2sums=('b926bc49843d9513577fed255bca88738bd9b23a0797e8e03c67fe9f2f818a621688ff8257387238de4a3c7590a8b12d2006e735a907e94ad708fa403cb69716')
 
 build() {
     cd $_pkgname-$pkgver

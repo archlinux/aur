@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-ibm-runtime
 	pkgdesc = IBM Client for Qiskit Runtime
-	pkgver = 0.37.0
+	pkgver = 0.38.0
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ibm-runtime
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = python-qiskit-ibm-runtime
 	checkdepends = python-ddt
 	checkdepends = python-plotly
 	checkdepends = python-pytest
-	checkdepends = python-websockets
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -24,9 +23,8 @@ pkgbase = python-qiskit-ibm-runtime
 	depends = python-requests
 	depends = python-requests-ntlm
 	depends = python-urllib3
-	depends = python-websocket-client
 	optdepends = python-plotly: interactive plots
-	source = qiskit-ibm-runtime-0.37.0.tar.gz::https://github.com/Qiskit/qiskit-ibm-runtime/archive/0.37.0.tar.gz
-	b2sums = 7462ff37fe4353fdda5ea7752d8586079923845c6aaabe75f837be9b5ff3e72c0bf06f52de7a93e1540abc2d38ad0f31b57fdda41b40da600c415004fdff81d0
+	source = qiskit-ibm-runtime-0.38.0.tar.gz::https://github.com/Qiskit/qiskit-ibm-runtime/archive/0.38.0.tar.gz
+	b2sums = b926bc49843d9513577fed255bca88738bd9b23a0797e8e03c67fe9f2f818a621688ff8257387238de4a3c7590a8b12d2006e735a907e94ad708fa403cb69716
 
 pkgname = python-qiskit-ibm-runtime
