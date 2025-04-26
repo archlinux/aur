@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 1.3.1 ➙ 1.4.1
+ Tags         : 1.3.2 ➙ 1.5.0
               : 2025-04-24 ➙ 2025-04-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-04-26   : 1.5.0
+                Style per PEP-8, PEP-257 and PEP-484.
+                Bug fix with stdout/stderr returned for asyncio using subprocesses
+                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-04-26   : 1.4.1
                 More consistent with PEP-8 & PEP-257.
@@ -23,8 +28,4 @@
 
  2025-04-24   : 1.3.2
                 Change examples in README to include everything to actually run
-                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-24   : 1.3.1
-                Add note about git signing key in readme
                 update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
