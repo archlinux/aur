@@ -17,5 +17,7 @@ if ! [ "$latest_version" = "$current_version" ]; then
   fi
   rm -f *.bak
 else
-  echo Nothing to update.
+  if which makepkg &> /dev/null; then
+    makepkg --printsrcinfo > .SRCINFO
+  fi
 fi
