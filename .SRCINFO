@@ -1,0 +1,18 @@
+pkgbase = harlequin-postgres
+	pkgdesc = The Postgres adapter for Harlequin
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://harlequin.sh/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = harlequin
+	depends = python-psycopg-pool
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/h/harlequin_postgres/harlequin_postgres-1.2.0.tar.gz
+	b2sums = c9481fb12ab8d41d4c565c8179ed937640b82565ade8fa2a7656c2b8bb60fe6c35527785812521cdc0b1aaab685bef80b743c31dfa067c3c0bdb0c08c1def51a
+
+pkgname = harlequin-postgres
