@@ -1,7 +1,7 @@
 pkgbase = python-first
 	pkgdesc = Return the first true value of an iterable
 	pkgver = 2.0.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/hynek/first
 	arch = any
 	license = MIT

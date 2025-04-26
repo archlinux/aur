@@ -1,8 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Bet4 <0xbet4@gmail.com>
+
+# Contributer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-first
 pkgver=2.0.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Return the first true value of an iterable"
 url="https://github.com/hynek/first"
 license=('MIT')
@@ -20,7 +22,7 @@ build() {
 
 check() {
   cd first-$pkgver
-  python setup.py pytest
+  python -m pytest
 }
 
 package() {
