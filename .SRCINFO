@@ -1,7 +1,7 @@
 pkgbase = coppeliasim-bin
 	pkgdesc = Robotic Simulation software from Coppelia Robotics
 	pkgver = 4.9.0.rev6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.coppeliarobotics.com/
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = coppeliasim-bin
 	depends = qt5-base
 	depends = ffmpeg4.4
 	depends = openssl
+	depends = zeromq
 	optdepends = qt5-3d
 	optdepends = qt5-connectivity
 	optdepends = qt5-declarative
