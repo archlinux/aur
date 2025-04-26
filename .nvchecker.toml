@@ -1,0 +1,5 @@
+[moon]
+source = "github"
+github = "moonrepo/moon"
+use_latest_release = true
+prefix = "v"
