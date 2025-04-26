@@ -1,0 +1,5 @@
+[ever-surf-bin]
+source = "httpheader"
+url = "https://distribution.services.ever.surf/download/channel/release/linux_64/ever-surf.deb"
+regex = "([0-9]+\\.[0-9]+\\.[0-9]+)"
+header = "Content-Disposition"
