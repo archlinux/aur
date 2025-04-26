@@ -1,7 +1,7 @@
 # Maintainer: Balakrishnan Balasubramanian <aur@balki.me>
 #Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=phanpy-bin
-_pkgver=2025.03.22.85d964f
+_pkgver=2025.04.26.0d0fa92
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A minimalistic opinionated Mastodon web client"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('phanpy')
 conflicts=('phanpy')
 source=("https://github.com/cheeaun/phanpy/releases/download/${_pkgver}/phanpy-dist.tar.gz")
-sha256sums=('17c052e523c48ed7077a602da78135688ec9d32bd2bad33f685b6e0fce1c39e1')
+sha256sums=('eb72aa75a6505291ccda911c36f10101dfe43128e58c276fea17cad813e75bd8')
 
 package() {
   cd ${srcdir}
