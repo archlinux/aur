@@ -1,5 +1,5 @@
 pkgbase = telecord
-	pkgdesc = Export Discord chats (JSON + media) to Telegram — including interactive mode
+	pkgdesc = Export Discord chat from JSON to Telegram including media, via CLI
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/vinayydv3695/telecord
@@ -7,7 +7,7 @@ pkgbase = telecord
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/vinayydv3695/telecord/archive/refs/tags/v1.0.0.tar.gz
+	source = telecord-1.0.0.tar.gz::https://github.com/vinayydv3695/telecord/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = telecord
