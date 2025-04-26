@@ -1,0 +1,14 @@
+diff '--color=auto' -ura zokumbsp-git/src/zokumbsp/makefile zokumbsp-git.new/src/zokumbsp/makefile
+--- zokumbsp-git/src/zokumbsp/makefile	2025-04-26 03:25:43.435258928 -0300
++++ zokumbsp-git.new/src/zokumbsp/makefile	2025-04-26 03:26:09.391273788 -0300
+@@ -16,8 +16,8 @@
+ INCLUDES = -I../doom -I../common
+ #TARGETS  = ZokumBSP bspdiff bspinfo compare
+ TARGETS = zokumbsp
+-LINKFLAGS = -static
+-LINKFLAGS =
++LINKFLAGS ?= $(LDFLAGS)
++LINKFLAGS += -static
+ 
+ CFLAGS  += -D__LINUX__
+ 

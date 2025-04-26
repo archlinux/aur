@@ -1,0 +1,22 @@
+diff '--color=auto' -ura zokumbsp-git/src/zokumbsp/makefile zokumbsp-git.new/src/zokumbsp/makefile
+--- zokumbsp-git/src/zokumbsp/makefile	2025-04-26 02:49:13.939353414 -0300
++++ zokumbsp-git.new/src/zokumbsp/makefile	2025-04-26 02:54:40.446639291 -0300
+@@ -1,7 +1,8 @@
+ # zennode makefile for Linux
+ 
+-CC       = g++
+-CFLAGS  += -g -O -fstrength-reduce -fno-rtti
++CC       ?= g++
++CFLAGS   ?= -O2 -pipe -fomit-frame-pointer -foptimize-sibling-calls -fbranch-probabilities
++CFLAGS  += -fstrength-reduce -fno-rtti
+ #CFLAGS  += -fomit-frame-pointer -foptimize-sibling-calls
+ #CFLAGS  += -fbranch-probabilities
+ #CFLAGS  += -fprofile-arcs
+@@ -11,7 +12,6 @@
+ #CFLAGS   = -fpermissive -O3 -pipe -march=k8
+ #CFLAGS	  = -O0 -g -pipe 
+ #CFLAGS   = -O2 -pipe -static
+-CFLAGS   = -O2 -pipe -fomit-frame-pointer -foptimize-sibling-calls -fbranch-probabilities
+ #CFLAGS    = -O2 -pipe -m32 -fomit-frame-pointer
+ INCLUDES = -I../doom -I../common
+ #TARGETS  = ZokumBSP bspdiff bspinfo compare

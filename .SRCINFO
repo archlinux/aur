@@ -1,0 +1,23 @@
+pkgbase = zokumbsp-git
+	pkgdesc = Advanced blockmap, reject and node builder for Doom, Heretic and Hexen (ZenNode fork)
+	pkgver = v1.0.7.rc1.r191.22af6de
+	pkgrel = 1
+	url = https://github.com/zokum-no/zokumbsp
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	provides = zokumbsp-git
+	conflicts = zokumbsp-git
+	source = zokumbsp-git::git+https://github.com/zokum-no/zokumbsp
+	source = 01-makefile-no-enforce-gcc.patch
+	source = 02-makefile-use-ldflags.patch
+	source = 03-makefile-use-cxxflags.patch
+	source = 04-makefile-use-ld.patch
+	sha256sums = SKIP
+	sha256sums = 5e76afc840610b0272e9ae5609d2de6803339e01668c0961d4fb13dd8c86a972
+	sha256sums = 45f7c86c7d25048d3910dfa3dc2d5996d71c9ff997d76efff31c21acac73ca79
+	sha256sums = 9e4181086e4dbb555b7f380e27b4f64268d4012b3ca6ce02b9f2971e5c62e327
+	sha256sums = 90ca1e943a196488b5fdae83a883cfa0a92cd23a8b6446fca6a8c969f05c5527
+
+pkgname = zokumbsp-git
