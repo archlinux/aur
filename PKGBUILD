@@ -18,6 +18,7 @@ pkgver() {
 }
 
 package() {
-    cd ..
+    pw
+    cd ./src/crunched_icon_theme/
     sudo ./install.sh
 }
