@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 1.3.0 ➙ 1.4.0
-              : 2025-04-24 ➙ 2025-04-25
+ Tags         : 1.3.1 ➙ 1.4.1
+              : 2025-04-24 ➙ 2025-04-26
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-04-26   : 1.4.1
+                More consistent with PEP-8 & PEP-257.
+                  Primarily double quotes for docstrings instead of single and ensure ends
+                  with period.
+ 2025-04-25     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-04-25   : 1.4.0
                 asyncio : missing decode() for stdout/err
@@ -21,8 +27,4 @@
 
  2025-04-24   : 1.3.1
                 Add note about git signing key in readme
-                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-24   : 1.3.0
-                Add missing tests dir after it was moved
                 update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
