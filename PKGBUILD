@@ -1,7 +1,7 @@
 _basepgkname=cosmopolitan
 pkgname="${_basepgkname}-bin"
-pkgver=3.9.7
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="Build-once run-anywhere c library."
 arch=('x86_64' 'aarch64')
 url="https://github.com/jart/cosmopolitan"
@@ -13,7 +13,7 @@ source=(
         )
 
 sha256sums=(
-            '3f559555d08ece35bab1a66293a2101f359ac9841d563419756efa9c79f7a150'
+            '85b8c37a406d862e656ad4ec14be9f6ce474c1b436b9615e91a55208aced3f44'
             '0a5d918ef46aaf764293fb18794eac021cb93637fe6abed7c9d3f06b7b2f4cad'
             '9351247b53d34dc584170c435512954b8eb1a69c7b3ff0bee43ce21264b8d467'
           )
