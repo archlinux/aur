@@ -3,9 +3,10 @@
 # Contributor: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=250425_21ddba459
-_pkgver="${pkgver//_/-}"
-pkgrel=2
+pkgver=250426
+_commit=27ec7a128
+_pkgver="${pkgver}-${_commit}"
+pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
 arch=('x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -14,6 +15,7 @@ depends=("libvips" "openjpeg2" "tensorflow")
 makedepends=("go" "npm" "findutils")
 optdepends=("darktable: for RAW to JPEG conversion"
             "ffmpeg: for video transcoding and thumbnail extraction"
+            "libva: for video transcoding"
             "imagemagick: for image conversion"
             "libheif: for HEIC/HEIF image conversion"
             "mariadb: for MySQL database driver"
@@ -32,7 +34,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
         "defaults.yml")
 conflicts=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 replaces=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
-sha256sums=('65d9b653238da035a334e69a83598335133c753766182e9f2bed3be8286aa9cb'
+sha256sums=('8b3ab98d6449ff268102c149d805c20ad0b7e11f1487911fce52297e66836d50'
             'bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af'
             'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
             'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
