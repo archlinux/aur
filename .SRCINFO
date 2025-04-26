@@ -1,6 +1,6 @@
 pkgbase = python-fx
 	pkgdesc = A python-native JSON Viewer TUI
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/cielong/pyfx
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-fx
 	depends = python-urwid
 	depends = python-wcwidth
 	depends = python3-yamale
-	source = https://files.pythonhosted.org/packages/source/p/python-fx/python-fx-0.3.1.tar.gz
-	sha256sums = 76044ba32195b8e0ce444aa714981cb1481f9df44c3381c5ed4b43a4f6812c73
+	source = https://files.pythonhosted.org/packages/source/p/python-fx/python_fx-0.3.2.tar.gz
+	sha256sums = 9646f58c716e2db6698bff3dfa55fa721b8b0cb741506287a87bc08055a96ceb
 
 pkgname = python-fx
