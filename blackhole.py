@@ -123,48 +123,25 @@ def create_grid(width, height, background_grid, shift_offset, shining_stars, fra
 
 def place_black_hole(grid, center_x, center_y, width):
     if width < 65:
+        # Small black hole: 'x'
+        if center_y >= 0 and center_y < len(grid) and center_x >= 0 and center_x < len(grid[0]):
+            grid[center_y][center_x] = '\033[0mx'
+    elif width > 95:
+        # Large black hole: '-(O)-'
+        if (center_y >= 0 and center_y < len(grid) and
+            center_x - 2 >= 0 and center_x + 2 < len(grid[0])):
+            grid[center_y][center_x - 2] = '\033[0m-'
+            grid[center_y][center_x - 1] = '\033[0m('
+            grid[center_y][center_x] = '\033[0mO'
+            grid[center_y][center_x + 1] = '\033[0m)'
+            grid[center_y][center_x + 2] = '\033[0m-'
+    else:
+        # Medium black hole: '(O)'
         if (center_y >= 0 and center_y < len(grid) and
             center_x - 1 >= 0 and center_x + 1 < len(grid[0])):
             grid[center_y][center_x - 1] = '\033[0m('
-            grid[center_y][center_x] = '\033[0mX'
+            grid[center_y][center_x] = '\033[0mO'
             grid[center_y][center_x + 1] = '\033[0m)'
-    elif width > 95:
-        if (center_y - 3 >= 0 and center_y + 2 < len(grid) and
-            center_x - 10 >= 0 and center_x + 10 < len(grid[0])):
-            for i in range(-3, 3):
-                grid[center_y - 3][center_x + i] = '\033[0m+'
-            for i in [-4, -3, -2, 2, 3, 4]:
-                grid[center_y - 2][center_x + i] = '\033[0m+'
-            for i in [-5, -4, -3, 3, 4, 5]:
-                grid[center_y - 1][center_x + i] = '\033[0m+'
-            grid[center_y][center_x - 10] = '\033[0m/'
-            for i in [-9, -8, -7, -6, -2, -1, 0, 1, 2, 6, 7, 8, 9]:
-                grid[center_y][center_x + i] = '\033[0m-'
-            for i in [-5, -4, -3, 3, 4, 5]:
-                grid[center_y][center_x + i] = '\033[0m+'
-            grid[center_y][center_x + 10] = '\033[0m/'
-            for i in [-5, -4, -3, 3, 4, 5]:
-                grid[center_y + 1][center_x + i] = '\033[0m+'
-            for i in range(-3, 3):
-                grid[center_y + 2][center_x + i] = '\033[0m+'
-    else:
-        if (center_y - 1 >= 0 and center_y + 1 < len(grid) and
-            center_x - 4 >= 0 and center_x + 4 < len(grid[0])):
-            grid[center_y - 1][center_x - 1] = '\033[0m@'
-            grid[center_y - 1][center_x] = '\033[0m@'
-            grid[center_y - 1][center_x + 1] = '\033[0m@'
-            grid[center_y][center_x - 4] = '\033[0m-'
-            grid[center_y][center_x - 3] = '\033[0m-'
-            grid[center_y][center_x - 2] = '\033[0m@'
-            grid[center_y][center_x - 1] = '\033[0m-'
-            grid[center_y][center_x] = '\033[0mx'
-            grid[center_y][center_x + 1] = '\033[0m-'
-            grid[center_y][center_x + 2] = '\033[0m@'
-            grid[center_y][center_x + 3] = '\033[0m-'
-            grid[center_y][center_x + 4] = '\033[0m-'
-            grid[center_y + 1][center_x - 1] = '\033[0m@'
-            grid[center_y + 1][center_x] = '\033[0m@'
-            grid[center_y + 1][center_x + 1] = '\033[0m@'
 
 def place_star(grid, x, y, width):
     x, y = int(x), int(y)
