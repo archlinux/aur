@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit
 pkgname=python-${_pkgname}
-pkgver=1.4.2
+pkgver=2.0.0
 pkgrel=1
 epoch=1
 pkgdesc="An open-source SDK for working with (IBM) quantum computers"
@@ -50,8 +50,17 @@ checkdepends=(
     python-ddt
     python-stestr
 )
-source=($_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz)
-b2sums=('99afd2b678d9aa7cc81c36adb10c54f51340a40a5bbf996905473fdae61adcdc9c110b511c96435ab4695b8198030fee4b79eaddfd8aff793e1f8801902cdc07')
+source=(
+    $_pkgname-$pkgver.tar.gz::https://github.com/Qiskit/$_pkgname/archive/$pkgver.tar.gz
+    14174.patch::$url/pull/14174.patch
+)
+b2sums=('da36cfbaaef52fe3f8e03916de0fc12ffd7ef8c1ce264e3b4558563909ee44ee5a85a3a61b7def07ba38e2061e9e154a98dddf5d7f280bf6b70b793176a53a65'
+        'a963945c2bdace5c32c6dea4387b4567e6dd543174cc1d20539accdec3997edee47eb1149107e3f73e66745e371ddc62d9293881a3b5da8a0ab3d3d1410059c3')
+
+prepare() {
+    # Fix https://github.com/Qiskit/qiskit/issues/14169
+    patch -Np1 -d $_pkgname-$pkgver < 14174.patch
+}
 
 build() {
     cd $_pkgname-$pkgver
@@ -65,7 +74,6 @@ check() {
     python -m installer --destdir=../test_dir dist/*.whl
     rm -rf qiskit
     PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" \
-    PYTHONWARNINGS="ignore::DeprecationWarning,ignore::PendingDeprecationWarning,ignore::RuntimeWarning" \
     stestr run -d test/python -E "test_equivalence_draw"
 }
 
