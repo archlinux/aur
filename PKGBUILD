@@ -1,31 +1,31 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 # Co-Maintainer: Robert Zhou <meep (dot) aur (at) meepzh (dot) com>
 
-_mayaver=2024
+_mayaver=2026
 
 pkgname=maya-substance
-pkgver=2.4.1
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Autodesk Maya Substance Plugin'
 arch=('x86_64')
-url='https://substance3d.adobe.com/plugins/substance-in-maya/'
+url='https://www.adobe.com/products/substance3d/plugins/substance-in-maya.html'
 license=('custom')
-depends=('maya>=2024.0' 'maya<2025.0')
+depends=('maya>=2026' 'maya<2027')
 optdepends=('maya-arnold: Arnold renderer support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("https://download.substance3d.com/adobe-substance-3d-for-maya/2.x/Adobe_Substance_3D_for_Maya-$pkgver%2B$_mayaver-102-x86_64-linux.rpm")
-b2sums=('0ee5eb0fdaac6b8b37b8ef9589bdd74496fe3acd76d412aba258068b202940833ce7150f69b2e331935ac6576f0c0005c30f61974af23899c8783149b055650c')
+source=("manual://AdobeSubstance3DforMaya-${pkgver}-${_mayaver}-linux-x86_64.rpm")
+b2sums=('486e675d0f2db59424186ab793cc6beb1936fd59edd59e089a6560a96c5a01398bef6e264656c2c83c687e231c7f06f033334166c027843975a3287ac95fc8fe')
 
 options=(!strip)
 
 prepare() {
-    echo "+ PLATFORM:linux substance2 $pkgver /usr/autodesk/maya$_mayaver/plug-ins/substance2" > opt/Allegorithmic/Substance_in_Maya/$_mayaver/substance2.mod
-    echo 'PATH+:=lib' >> opt/Allegorithmic/Substance_in_Maya/$_mayaver/substance2.mod
+    echo "+ PLATFORM:linux substance3 $pkgver /usr/autodesk/maya$_mayaver/plug-ins/substance3" > opt/Allegorithmic/Substance_in_Maya/$_mayaver/substance3.mod
+    echo 'PATH+:=lib' >> opt/Allegorithmic/Substance_in_Maya/$_mayaver/substance3.mod
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/autodesk/maya$_mayaver/"{modules,plug-ins/substance2}
-    mv opt/Allegorithmic/Substance_in_Maya/$_mayaver/substance2.mod "$pkgdir/usr/autodesk/maya$_mayaver/modules/"
-    mv opt/Allegorithmic/Substance_in_Maya/$_mayaver/* "$pkgdir/usr/autodesk/maya$_mayaver/plug-ins/substance2/"
+    mkdir -p "$pkgdir/usr/autodesk/maya$_mayaver/"{modules,plug-ins/substance3}
+    mv opt/Allegorithmic/Substance_in_Maya/$_mayaver/substance3.mod "$pkgdir/usr/autodesk/maya$_mayaver/modules/"
+    mv opt/Allegorithmic/Substance_in_Maya/$_mayaver/* "$pkgdir/usr/autodesk/maya$_mayaver/plug-ins/substance3/"
 }
