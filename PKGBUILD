@@ -12,18 +12,18 @@ source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/aniparser/$pkgname-$pkgver"
   npm install
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/aniparser/$pkgname-$pkgver"
   npm run transpile:electron
   npm run build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/aniparser/$pkgname-$pkgver"
   
   # Create directories
   install -dm755 "$pkgdir/usr/lib/$pkgname"
