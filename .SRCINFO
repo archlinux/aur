@@ -1,7 +1,7 @@
 pkgbase = python-trezor
 	pkgdesc = Python 3 library for communicating with the TREZOR Bitcoin hardware wallet
 	pkgver = 0.13.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trezor/trezor-firmware/tree/master/python
 	arch = any
 	license = LGPL3
@@ -20,6 +20,7 @@ pkgbase = python-trezor
 	depends = python-protobuf
 	depends = python-attrs
 	depends = python-slip10
+	depends = python-base58
 	optdepends = python-hidapi: Firmware-less Trezor One setup
 	provides = python-trezor
 	provides = trezorctl
