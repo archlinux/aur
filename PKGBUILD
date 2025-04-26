@@ -12,7 +12,7 @@ pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Softwar
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
 license=('custom')
-depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing>=15.1.0.12339' 'adskidentitymanager' 'libxp' 'gtk2' 'libxcrypt-compat'
+depends=('audiofile' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'adsklicensing>=15.1.0.12339' 'libxp' 'gtk2' 'libxcrypt-compat'
          'libjpeg6-turbo' 'libffi6' 'nss' 'libxaw' 'libpng15' 'libtool' 'ncurses5-compat-libs' 'libpulse'
          'glu' 'gst-plugins-base-libs' 'libxtst' 'libtiff5')
 optdepends=('opencl-driver: OpenCL support')

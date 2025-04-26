@@ -10,7 +10,6 @@ pkgbase = maya
 	depends = xorg-fonts-75dpi
 	depends = xorg-fonts-100dpi
 	depends = adsklicensing>=15.1.0.12339
-	depends = adskidentitymanager
 	depends = libxp
 	depends = gtk2
 	depends = libxcrypt-compat
