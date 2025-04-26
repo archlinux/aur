@@ -3,7 +3,7 @@
 _pkgauthor=hanshuaikang
 _pkgname=nping
 pkgname=${_pkgname}-bin
-pkgver=0.2.6
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,9 +19,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('1c199714e88b5705a123cbfd82ea01ebb9278a97187e4cc038e8885489f14a79'
-            '3f5cea01da0443973272f99453f042c692007dcbf3136a1fc1336d1372cd3b17')
-sha256sums_x86_64=('dfafc0fce466234575c2d36f6777048a87fd129134b2dd8fdc462aef589a8888')
-sha256sums_aarch64=('9f46a13a8b4447b8aa2455dab77751942a6954935d69e04981fc5b4a00e86747')
+            'd483bdc3f72d6d8e1555fe5a116b7f06f65400d2ff6dd35987adfc523b236dce')
+sha256sums_x86_64=('32fa31ba5e378341b065348ca8dc8dc6074d8af5a3bc64ec1b8d712b38a7a6fe')
+sha256sums_aarch64=('23ef443353c2ef335a81d6ed6c4313e2a643a1c418462d654116bde986143a5d')
 
 package() {
   cd "${srcdir}/" || exit
