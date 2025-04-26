@@ -1,7 +1,7 @@
 # Maintainer: KevinLiu <kevin[at]atunemic.cn>
 pkgname='sakura-frp-launcher-bin'
 provides=('sakura-frpc' 'natfrp' 'sakura-frp-launcher')
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="A daemon for a fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
