@@ -2,7 +2,7 @@
 
 pkgname=m3u8down-git
 binname=m3u8down
-pkgver=r15.c03efb7
+pkgver=r14.de4d0bc
 pkgrel=1
 pkgdesc="m3u8 down load to mp4 in cli"
 url="https://github.com/DreamMaoMao/m3u8down"
@@ -35,6 +35,9 @@ prepare() {
 
 build() {  
   cd $pkgname
+  go mod download github.com/http-live-streaming/m3u8-downloader/dl
+  go get github.com/http-live-streaming/m3u8-downloader/dl
+  go get github.com/u2takey/ffmpeg-go
   go build -o $binname
 }
 

@@ -1,6 +1,6 @@
 pkgbase = m3u8down-git
 	pkgdesc = m3u8 down load to mp4 in cli
-	pkgver = r15.c03efb7
+	pkgver = r14.de4d0bc
 	pkgrel = 1
 	url = https://github.com/DreamMaoMao/m3u8down
 	arch = x86_64
