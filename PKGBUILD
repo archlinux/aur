@@ -22,9 +22,11 @@ prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build" "completions"
-
   go mod download
+  find "${srcdir}/go-mod-cache" -type d -exec chmod 755 {} +
+  find "${srcdir}/go-mod-cache" -type f -exec chmod 644 {} +
+
+  mkdir -p "build" "completions"
 }
 
 build() {
