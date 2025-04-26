@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=lune-git
-pkgver=0.8.9.r0.g010cd36
+pkgver=0.9.0.r1.ge234eab
 pkgrel=1
 pkgdesc="[Latest Git Commit] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ makedepends=(cargo cmake git)
 provides=(lune)
 conflicts=(lune)
 options=(!lto)
-source=("git+https://github.com/filiptibell/lune.git")
+source=("git+https://github.com/lune-org/lune.git")
 sha256sums=('SKIP')
 
 pkgver() {
