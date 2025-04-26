@@ -2,7 +2,7 @@
 
 pkgname=pla-util
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A power line adapter utility for Linux'
 arch=(x86_64)
 url='https://github.com/serock/pla-util'
@@ -19,7 +19,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  install -Dm644 bin/pla-util "$pkgdir"/usr/bin/pla-util
+  install -Dm755 bin/pla-util "$pkgdir"/usr/bin/pla-util
   install -Dm644 completions/pla-util "$pkgdir"/usr/share/bash-completion/completions/pla-util
 }
 
