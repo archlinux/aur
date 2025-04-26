@@ -3,13 +3,13 @@ pkgname=betterbird-ru-bin
 _pkgname=betterbird
 pkgver=128.9.2esr
 _build=bb25
-pkgrel=1
+pkgrel=2
 pkgdesc="RUSSIAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
 license=('MPL2')
 depends=('dbus-glib' 'hunspell')
-optdepends=('hunspell-ru')
+optdepends=('hunspell-ru-aot')
 provides=("betterbird=${pkgver}")
 conflicts=('betterbird')
 source=(

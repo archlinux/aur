@@ -1,13 +1,13 @@
 pkgbase = betterbird-ru-bin
 	pkgdesc = RUSSIAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
 	pkgver = 128.9.2esr
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
 	depends = dbus-glib
 	depends = hunspell
-	optdepends = hunspell-ru
+	optdepends = hunspell-ru-aot
 	provides = betterbird=128.9.2esr
 	conflicts = betterbird
 	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-128.9.2esr-bb25.ru.linux-x86_64.tar.bz2
