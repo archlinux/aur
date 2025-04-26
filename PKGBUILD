@@ -1,24 +1,32 @@
-# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
+# Contributor: pumpkincheshire <sollyonzou@gmail.com>
 
-_name=anyconfig-cbor2-backend
-pkgname=python-$_name
-pkgver=0.1.2
-pkgrel=2
-pkgdesc='A backend module for python-anyconfig to support CBOR files w/ using cbor2'
+pkgname=python-anyconfig-cbor2-backend
+_name=${pkgname#python-}
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Backend module for python-anyconfig to load and dump CBOR data'
 url='https://github.com/ssato/python-anyconfig-cbor2-backend'
 arch=('any')
 license=('MIT')
 depends=('python-anyconfig' 'python-cbor2')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f0d72d0d367062f78dfdbef6f07fd6541cc305f41f1220ed59ad289dc7f0476e')
+sha256sums=('58dfcceae2df3bd5c3c9a97d88b6eb603bfe1aeb3b7b8ad8490a8dce75130d72')
+
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -e '1,3d' -e '/License ::/d' setup.cfg
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: set ts=4 sw=4 et:

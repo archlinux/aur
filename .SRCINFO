@@ -1,14 +1,17 @@
 pkgbase = python-anyconfig-cbor2-backend
-	pkgdesc = A backend module for python-anyconfig to support CBOR files w/ using cbor2
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgdesc = Backend module for python-anyconfig to load and dump CBOR data
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/ssato/python-anyconfig-cbor2-backend
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-anyconfig
 	depends = python-cbor2
-	source = https://files.pythonhosted.org/packages/source/a/anyconfig-cbor2-backend/anyconfig-cbor2-backend-0.1.2.tar.gz
-	sha256sums = f0d72d0d367062f78dfdbef6f07fd6541cc305f41f1220ed59ad289dc7f0476e
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig-cbor2-backend/anyconfig-cbor2-backend-0.2.0.tar.gz
+	sha256sums = 58dfcceae2df3bd5c3c9a97d88b6eb603bfe1aeb3b7b8ad8490a8dce75130d72
 
 pkgname = python-anyconfig-cbor2-backend
-
