@@ -35,12 +35,12 @@ prepare() {
 	mkdir -p usr/local/share/fonts
 	mv opt/Autodesk/AdskLicensing/${pkgver}/AdskLicensingService/res/fonts usr/local/share/fonts/ArtifaktElement
 
-  # Link the expected cert location
-  mkdir -p etc/pki/tls/certs
-  ln -s /etc/ssl/certs/ca-certificates.crt etc/pki/tls/certs/ca-bundle.crt
+	# Link the expected cert location
+	mkdir -p etc/pki/tls/certs
+	ln -s /etc/ssl/certs/ca-certificates.crt etc/pki/tls/certs/ca-bundle.crt
 
-  # Create the CER directory
-  mkdir -p var/lib/Autodesk/CER
+	# Create the CER directory
+	mkdir -p var/lib/Autodesk/CER
 }
 
 package() {
