@@ -1,12 +1,11 @@
 pkgbase = sound-theme-smooth
-	pkgdesc = Complete system sound theme with 58 event sounds.
+	pkgdesc = Complete system sound theme with 58 event sounds
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pling.com/p/1187979/
 	arch = any
-	license = combined free
-	source = sound-theme-smooth-1.2.tar.gz::http://my.opendesktop.org/s/QrcjmXiTpqQsciE/download
+	license = custom:combined
+	source = sound-theme-smooth-1.2.tar.gz::https://my.opendesktop.org/s/QrcjmXiTpqQsciE/download/Smooth_v1.2.tar.gz
 	md5sums = 604fad389740b481d16a40d74c3b49fd
 
 pkgname = sound-theme-smooth
-
