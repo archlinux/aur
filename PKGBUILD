@@ -2,8 +2,8 @@
 
 _pkgname=glslang
 pkgname=mingw-w64-${_pkgname}
-pkgver=15.2.0
-pkgrel=2
+pkgver=15.3.0
+pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
 url='https://github.com/KhronosGroup/glslang'
@@ -12,8 +12,12 @@ depends=('mingw-w64-crt' 'mingw-w64-spirv-tools')
 makedepends=('mingw-w64-cmake' 'python' 'ninja')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
-source=(${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('45e3920d264d5c2cc3bfaec0e5dbb66cffd549255e0aaaf38cd283918e35c8ba')
+source=(
+	"${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+	"$pkgname-fix-wrong-export.patch"
+)
+sha256sums=('c6c21fe1873c37e639a6a9ac72d857ab63a5be6893a589f34e09a6c757174201'
+            '773ced2829456e38dfc92e9b813005e1487c1c96ecd6d150d6edbfd02626876e')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -23,6 +27,7 @@ _flags=(
 
 prepare() {
 	cd "$_srcdir"
+	patch -p1 -i "${srcdir}/$pkgname-fix-wrong-export.patch"
 	sed -i 's/if (NOT BUILD_SHARED_LIBS)/if (1)/' 'SPIRV/CMakeLists.txt'
 }
 
