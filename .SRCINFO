@@ -1,6 +1,6 @@
 pkgbase = miru-go-bin
 	pkgdesc = A command-line tool for viewing package documentation with a man-like interface
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/ka2n/miru
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = miru-go-bin
 	conflicts = miru
 	provides = miru
 	arch = aarch64
-	source_aarch64 = https://github.com/ka2n/miru/releases/download/v0.0.16/miru_v0.0.16_linux_arm64.tar.gz
-	sha256sums_aarch64 = 16bbaf955cb0375f89ba47e3e98c47c3599efb160c8492a10e81b3543e4aa2d0
+	source_aarch64 = https://github.com/ka2n/miru/releases/download/v0.0.17/miru_v0.0.17_linux_arm64.tar.gz
+	sha256sums_aarch64 = 327a63b96f2e549bf46d97a76719bfa95e91cffbeaf93a9fda251658d22a7339
 	arch = x86_64
-	source_x86_64 = https://github.com/ka2n/miru/releases/download/v0.0.16/miru_v0.0.16_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7b60ea38cddba57384fd75734f798949252a485f53d7d8c1606e9a093421e1d8
+	source_x86_64 = https://github.com/ka2n/miru/releases/download/v0.0.17/miru_v0.0.17_linux_amd64.tar.gz
+	sha256sums_x86_64 = b39876d722c747ed313fc7715b39dc4d4ddbb8b913d0eb71f499718a4a4e9a81
 	
 pkgname = miru-go-bin
