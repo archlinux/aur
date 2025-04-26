@@ -1,0 +1,17 @@
+pkgbase = ptags-bin
+	pkgdesc = A parallel universal-ctags wrapper for git repository.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/dalance/ptags
+	arch = x86_64
+	license = MIT
+	provides = ptags
+	conflicts = ptags
+	source = LICENSE-0.3.5::https://raw.githubusercontent.com/dalance/ptags/v0.3.5/LICENSE
+	source = README-0.3.5.md::https://raw.githubusercontent.com/dalance/ptags/v0.3.5/README.md
+	sha256sums = ee1385b842d5354a2403ddc622e9f29671a5283b5e7af914a1b082f9f0bfbc56
+	sha256sums = 972de376d8063bc561e51f899386ee6b3574689693c6307e826f579a569663b3
+	source_x86_64 = https://github.com/dalance/ptags/releases/download/v0.3.5/ptags-v0.3.5-x86_64-lnx.zip
+	sha256sums_x86_64 = 49ef2941734e9cb78d3ee5e90d204f56fb93b990591b71231d7e4e49e4d668e6
+
+pkgname = ptags-bin
