@@ -2,7 +2,7 @@
 
 _name=solara
 pkgname=python-${_name,,}
-pkgver=1.44.1
+pkgver=1.46.0
 pkgrel=1
 pkgdesc="A pure Python, React-style web framework"
 arch=('any')
@@ -45,18 +45,18 @@ depends=(
 )
 makedepends=('python-installer' 'python-wheel')
 
-_whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
+_whl="${_name//-/_}-$pkgver-py3-none-any.whl"
 _ui_name=solara_ui
-_ui_whl="${_ui_name//-/_}-$pkgver-py2.py3-none-any.whl"
+_ui_whl="${_ui_name//-/_}-$pkgver-py3-none-any.whl"
 _server_name=solara-server
-_server_whl="${_server_name//-/_}-$pkgver-py2.py3-none-any.whl"
+_server_whl="${_server_name//-/_}-$pkgver-py3-none-any.whl"
 
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_whl}"
-        "https://files.pythonhosted.org/packages/py2.py3/${_ui_name::1}/$_ui_name/${_ui_whl}"
-        "https://files.pythonhosted.org/packages/py2.py3/${_server_name::1}/$_server_name/${_server_whl}")
-sha256sums=(63b43c7ac0bc9086ab91cf842381677976048717ab2d8b7bd90414890fc6591f
-60ff31955bcfdbe535b3c6309a2bfcfd5e459ecdf3c190899c96e94f5ab51da3
-229383e63b1c428a8b4a937accdb9f504224cfd3ba6a382c4008e728ed3df637)
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_whl}"
+        "https://files.pythonhosted.org/packages/py3/${_ui_name::1}/$_ui_name/${_ui_whl}"
+        "https://files.pythonhosted.org/packages/py3/${_server_name::1}/$_server_name/${_server_whl}")
+sha256sums=(ef05ba988bb7acf84543b3cd0fe3b8da3684457b5125bd67f8a826470cc3208e
+6eb27627754285e5288a8a4c8907a0a703abd6100b123a98a0f34fc70529648e
+a924b6026a90fbb11a790646cf8a8faaa82d7ddad9f7ae12e08ca314aa732904)
 
 
 noextract=("$_whl"
