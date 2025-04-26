@@ -1,23 +1,25 @@
 pkgbase = cellframe-wallet
-	pkgdesc = Cellframe wallet
-	pkgver = 1.1.6
-	pkgrel = 3
+	pkgdesc = Official Cellframe Wallet
+	pkgver = 4.0.12
+	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-wallet.install
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = qt5-base
-	makedepends = qt5-declarative
-	makedepends = qt5-svg
-	depends = cellframe-node
-	depends = qt5-graphicaleffects
-	depends = qt5-base
-	depends = qt5-quickcontrols2
-	depends = qt5-quickcontrols
-	depends = qt5-svg
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-wallet.git#commit=3477bbec4de917455e4fa1629eb7b2427835d5df
+	makedepends = cmake
+	makedepends = libxslt
+	depends = qt6-declarative
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-5compat
+	optdepends = cellframe-node: Support for local node management
+	provides = cellframe-wallet
+	options = !debug
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-wallet.git#commit=95903a07310edc5e61bbc46ef09b2309f0d63731
+	source = cellframe-wallet-tmpfiles.conf
 	md5sums = SKIP
+	md5sums = 2a08e90f5b06867e61f9c864b95a2c50
 
 pkgname = cellframe-wallet

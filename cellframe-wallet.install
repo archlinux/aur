@@ -1,25 +1,17 @@
 post_install() {
+    if [ -d /opt/cellframe-node/var/lib/wallet/ ]; then
+        chmod -R a+rw /opt/cellframe-node/var/lib/wallet/
+    fi
 
-    cat << EOF
+    if [ -d /opt/cellframe-node/var/lib/ca/ ]; then
+        chmod -R a+rw /opt/cellframe-node/var/lib/ca/
+    fi
 
-    ########################################################################
-    ########################################################################
-    ##                                                                    ##
-    ##  Cellframe Wallet                                                  ##
-    ##  ______________________________________________________________    ##
-    ##                                                                    ##
-    ##  To start:                                                         ##
-    ##                                                                    ##
-    ##   1. systemctl enable --now cellframe-node.service                 ##
-    ##                                                                    ##
-    ##   2. Launch Cellframe Wallet from your applications                ##
-    ##                                                                    ##
-    ##                                                                    ##
-    ##                                                                    ##
-    ########################################################################
-    ########################################################################
-
-EOF
-
+    if [ -d /opt/cellframe-node/etc/ ]; then
+        chmod -R a+rw /opt/cellframe-node/etc/
+    fi
 }
 
+post_upgrade() {
+    post_install
+}
