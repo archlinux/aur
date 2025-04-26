@@ -13,7 +13,7 @@ options=(!debug)
 source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=95903a07310edc5e61bbc46ef09b2309f0d63731"
         "$pkgname-tmpfiles.conf")
 md5sums=('SKIP'
-         '2a08e90f5b06867e61f9c864b95a2c50')
+         '8744d1d0af5e1456bfce710a4c36af64')
 provides=("cellframe-wallet")
 install=$pkgname.install
 
