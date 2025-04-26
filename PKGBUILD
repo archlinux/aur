@@ -1,6 +1,6 @@
 # Maintainer: Aanok <aanok.aur@gmail.com>
 pkgname='jftui'
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=3
 pkgdesc="TUI client for Jellyfin based on mpv"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mpv' 'yajl' 'curl')
 provides=("${pkgname}")
 conflicts=('jftui-git')
 source=("https://github.com/Aanok/jftui/archive/v${pkgver}.tar.gz")
-sha256sums=('ef07db3fde5d8114c49d6b3e7712df9db31660b589e1627bdf84a05b69f5b49f')
+sha256sums=('c24dd3b25a69015d9652c0cceda4d94088af8e818f6f6e9b8d4b86ef82b8097a')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
