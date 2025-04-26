@@ -2,7 +2,7 @@
 # Contributor: Vladimir Cerny <blackvladimir@gmail.com>
 
 pkgname=free42
-pkgver=3.2.8
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL-2.0-only')
 depends=('gtk3')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "free42.desktop")
-md5sums=('91f048c05bf39d63b1f6f9f0ba271676'
+md5sums=('f570a38b957b4e83d1f04e5e9c06b6cc'
          '9e1af9bfd8ce5eb2ad107f63ea446a55')
 
 build() {
