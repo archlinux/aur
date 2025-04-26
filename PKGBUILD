@@ -2,7 +2,7 @@
 
 pkgbase=soapysddc-git
 pkgname=(soapysddc-git libsddc-git)
-pkgver=r268.a71e8ec
+pkgver=r271.7e2c0e2
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/ik1xpv/ExtIO_sddc"
@@ -15,12 +15,6 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/ExtIO_sddc"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    # unittest not working
-	cd "$srcdir/ExtIO_sddc"
-    sed -i '/unittest/d' CMakeLists.txt
 }
 
 build() {
