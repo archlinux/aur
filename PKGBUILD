@@ -1,10 +1,10 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
-url="https://github.com/yourusername/aniparser"
+url="https://github.com/Sinedka/aniparser"
 license=('MIT')
 depends=('electron>=35.1.0' 'nodejs>=20.0.0')
 makedepends=('npm' 'git')
