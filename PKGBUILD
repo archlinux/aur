@@ -5,10 +5,9 @@
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=1.1.1_r1689
+pkgver=2.0.1727
 pkgrel=1
 _pkgver="${pkgver%_*}"
-_revnum="${pkgver#*_r}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
 url="https://github.com/Suwayomi/Suwayomi-Server-preview"
@@ -17,11 +16,11 @@ depends=("java-runtime>=8" "libc++")
 optdepends=("electron: running in Electron")
 provides=("suwayomi" "$_pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk")
-_jar="$_PkgName-v$_pkgver-r$_revnum.jar"
-_assets="$_PkgName-v$_pkgver-r$_revnum-linux-assets"
+_jar="$_PkgName-v$_pkgver.jar"
+_assets="$_PkgName-v$_pkgver-linux-assets"
 backup=("etc/suwayomi/server.conf")
-source=("$url/releases/download/v$_pkgver-r$_revnum/$_jar"
-  "$url/releases/download/v$_pkgver-r$_revnum/$_assets.tar.gz")
+source=("$url/releases/download/v$_pkgver/$_jar"
+  "$url/releases/download/v$_pkgver/$_assets.tar.gz")
 noextract=("$_jar")
 sha256sums=('SKIP'
             'SKIP')
