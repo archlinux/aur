@@ -1,0 +1,15 @@
+pkgbase = verinice
+	pkgdesc = Die moderne Open-Source GRC-Software
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://github.com/SerNet/verinice
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = java-runtime>=17
+	source = verinice::git+https://github.com/SerNet/verinice.git#tag=1.28.0
+	source = verinice.desktop
+	sha256sums = 3ceffa78d248d393590cf18bbb557d0d82e1f23f68503d3749a3da09d6e82d60
+	sha256sums = 95a1ea6e9eebb12d34705c8ad2f60023d0b4b1e7f34be02b13052c78659e54c3
+
+pkgname = verinice
