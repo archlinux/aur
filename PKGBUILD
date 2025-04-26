@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
@@ -30,9 +30,10 @@ pkgver() {
 build() {
   cd "$_pkgname"
   CFLAGS+=' -ffat-lto-objects' # fix for mimalloc linking
+  CFLAGS+=' -std=gnu17' # fix build mimalloc on gcc15
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --verbose --release
+  cargo build --locked --verbose --release
 }
 
 package_easytier-git() {
