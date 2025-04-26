@@ -1,7 +1,7 @@
 # Maintainer: Luis Aranguren <pizzaman@hotmail.com>
 
 pkgname=perl-net-mqtt-simple
-pkgver=1.31
+pkgver=1.32
 pkgrel=1
 pkgdesc="Net::MQTT::Simple - Very simple MQTT implementation"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://search.cpan.org/dist/Net-MQTT-Simple/"
 depends=('perl')
 options=(!emptydirs)
 source=(https://search.cpan.org/CPAN/authors/id/J/JU/JUERD/Net-MQTT-Simple-${pkgver}.tar.gz)
-sha256sums=('3d2f83659c9061b523669b067511ef79c9cff4cf0127b136d0b40ab2617cb40d')
+sha256sums=('e6d91945b43fe472171bec2fb0f737ee3f55770fc478068bee0f6a990faf8d7d')
 
 build() {
   cd "$srcdir"/Net-MQTT-Simple-${pkgver}
