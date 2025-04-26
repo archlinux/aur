@@ -1,16 +1,16 @@
 # Maintainer: sigurd4 <sigurd dot spangelo at gmail dot com>
 
 pkgname=poengsum
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="Quickly generate a leaderboard for a quiz in the terminal."
+pkgdesc="Quickly generate a leaderboard for a quiz from your terminal."
 url="https://github.com/sigurd4/poengsum"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=()
 makedepends=('cargo' 'base-devel')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('78461346367de222a56b2dece6906609b3d891a88b4e2a2bdc8503dda00d5659')
+sha256sums=('a91ee288142491eb0716c84e5ab010d715660b066a2222172efc7b15d6a2fe93')
 options=(!lto)
 
 prepare() {
