@@ -1,8 +1,8 @@
 # Maintainer: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
 pkgname="qman"
-pkgver="1.4.1"
-pkgrel="2"
+pkgver="1.4.2"
+pkgrel="1"
 epoch="1"
 pkgdesc="A more modern manual page viewer for our terminals"
 arch=("x86_64" "aarch64")
@@ -15,7 +15,7 @@ provides=("qman")
 conflicts=("qman-git")
 replaces=("qman-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plp13/qman/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("644f9cfc19adcb3e630eb7dc86b1928f1a162d7a2171e91c2465751486796671")
+sha256sums=("c624a52ae2611b8b7402ebab945feaea8768363fcdfe5f6390f93688cc263a48")
 
 prepare() {
   cd "${pkgname}-${pkgver}"
