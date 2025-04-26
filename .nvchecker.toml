@@ -1,0 +1,5 @@
+[proto-bin]
+source = "github"
+github = "moonrepo/proto"
+use_latest_release = true
+prefix = "v"
