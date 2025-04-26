@@ -6,21 +6,24 @@
 
 pkgname=sc
 pkgver=7.16
-pkgrel=8
+pkgrel=9
 pkgdesc="Ncurses-based spreadsheet program"
 arch=('x86_64')
 url="https://ibiblio.org/pub/linux/apps/financial/spreadsheet/!INDEX.html"
 license=('Public Domain')
 depends=('ncurses')
 source=(https://ibiblio.org/pub/linux/apps/financial/spreadsheet/$pkgname-$pkgver.tar.gz
-        https://launchpadlibrarian.net/1281150/${pkgname}_$pkgver-2.diff.gz)
+        https://launchpadlibrarian.net/1281150/${pkgname}_$pkgver-2.diff.gz
+        sc-7.16-compilation.patch)
 sha256sums=('1997a00b6d82d189b65f6fd2a856a34992abc99e50d9ec463bbf1afb750d1765'
-            '37116b9619790564650c4090b4a6264c08aa59fa1e24c63ca073011cd70507cb')
+            '37116b9619790564650c4090b4a6264c08aa59fa1e24c63ca073011cd70507cb'
+            '1bea20b0a90a1ea8597a37fcdfe72ea3e416824323606f8f7065dacecf1453e8')
 
 build() {
   cd $pkgname-$pkgver
 
   patch -p1 -i "$srcdir"/${pkgname}_$pkgver-2.diff
+  patch -Np1 -i "$srcdir"/sc-7.16-compilation.patch
 
   make
   make sc.1 psc.1
