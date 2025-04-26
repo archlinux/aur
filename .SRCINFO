@@ -1,6 +1,6 @@
 pkgbase = phantom-player-git
 	pkgdesc = Smart video player and playlist manager
-	pkgver = v2.0.r0.g1f6ca79
+	pkgver = v2.0.r9.gcf9e6cb
 	pkgrel = 1
 	url = https://www.phantom-player.com
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = phantom-player-git
 	depends = python-send2trash
 	depends = python-vlc
 	provides = phantom-player
-	source = https://github.com/rsm-gh/phantom-player/archive/1f6ca792b733613e0fbe4f9904e68edfd97ea5f0.zip
-	sha256sums = baa58a75df40cb6a87752ac6eeb5bb78265bec98afaa6d203ff1bf586a99ba87
+	source = https://github.com/rsm-gh/phantom-player/archive/cf9e6cb8e7a65bd4b14c0bb0fb700f759709b32b.zip
+	sha256sums = 2645572aeb3fedc0f3d9c640d1843bf4c71b2c4a92cb4ef4101269d217f847af
 
 pkgname = phantom-player-git
