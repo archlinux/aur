@@ -10,10 +10,10 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 readonly _pkgname="soci"
-declare -r _tag="eb61a4e5bc04d6f731aa22f667c0807806e10202"
+declare -r _tag="0befeabdc5aa8a5f25b8afdec1bba9542a57e7d3"
 
 pkgname="soci-git"
-pkgver="v4.0.1_914_geb61a4e5"
+pkgver="v4.0.1_927_g0befeabd"
 pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
@@ -27,7 +27,7 @@ optdepends=("libfbclient: Firebird"
 provides=("${_pkgname}")
 conflicts=("soci")
 source=("${_pkgname}::git+${url}.git#tag=${_tag}")
-sha512sums=("728e3fce25d1570e9f4bdf9073cc7800c615e6db14eb17b3145ab6e76514d10b33045465f7443915fd95fc2fe446f83fb425d92202d9b4da37ec8f52539e6010")
+sha512sums=("c1a54b82fb7980b752c7957ad968c0b553352d8e946293adce26f0b20724353c7d976a2879fb53ad98617490416a06dd00324d4763bd9ddacc1d3682946e02d0")
 
 _compile()
 {
@@ -44,6 +44,7 @@ _compile()
         -D SOCI_ORACLE_SKIP_TESTS=ON \
         -D SOCI_POSTGRESQL_SKIP_TESTS=ON \
         -D SOCI_SHARED=ON \
+        -D SOCI_SQLITE3_BUILTIN=OFF \
         -D SOCI_TESTS="$1" \
         -D SOCI_UBSAN=ON \
         -D WITH_BOOST=ON \
