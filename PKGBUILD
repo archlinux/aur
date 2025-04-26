@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=libsubprocess
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="C++ header-only subprocessing library"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cmake')
 provides=('cpp-subprocess')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('886df0a814a7bb7a3fdeead22f75400abd8d3235b81d05817bc8c1125eeebb8f')
+sha256sums=('5d006e36fb23f7549f878b993831e01525c255b9f0bcbb3d81ad4c007029ecd2')
 
 build() {
 	cmake \

@@ -1,0 +1,5 @@
+[libsubprocess]
+source = "github"
+github = "arun11299/cpp-subprocess"
+use_latest_release = "true"
+prefix = "v"
