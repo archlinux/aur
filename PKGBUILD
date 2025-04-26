@@ -6,7 +6,7 @@ pkgname=(munt munt-qt munt-daemon munt-smf2wav)
 pkgdesc='Software synthesizer emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I'
 pkgver=2.7.2
 _tag="libmt32emu_${pkgver//./_}"
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64 aarch64)
 url=http://munt.sourceforge.net
 license=('GPL-2.0 OR LGPL-2.1')
@@ -17,30 +17,30 @@ b2sums=('af97564a099c8d38d31f1725dfcd7807a3e3fd64d0fe82dc45d783589ac11c694e6d45a
         '40a006d8138ff0492e3fef89a5b7d74a5d255259da08f575e989ac569ff5a181351b06e175fcf846d68aeca97cd5a1dec2c128037f760db2046850f5ca3641d8')
 
 build () {
-	cd "$pkgname-$_tag"
-	cmake \
+	rm -rf _build
+	cmake -S "$pkgname-$_tag" -B _build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Dmunt_WITH_MT32EMU_QT=ON \
 		-Dmunt_WITH_MT32EMU_SMF2WAV=ON
-	make
+	make -C _build
 
-	make -C mt32emu_alsadrv \
-		INCLUDES="-I$(pwd)/mt32emu/include" \
-		CXXFLAGS="-L$(pwd)/mt32emu $CXXFLAGS -Wno-write-strings -Wno-unused-result" \
+	make -C "$pkgname-$_tag/mt32emu_alsadrv" \
+		INCLUDES="-I$(pwd)/_build/mt32emu/include" \
+		CXXFLAGS="-L$(pwd)/_build/mt32emu $CXXFLAGS -Wno-write-strings -Wno-unused-result" \
 		mt32d
 }
 
 package_munt () {
 	install -dm755 "$pkgdir/usr/share/mt32-rom-data"
-	make -C "$pkgbase-$_tag/mt32emu" DESTDIR="$pkgdir" install
+	make -C _build/mt32emu DESTDIR="$pkgdir" install
 
 	pkgdesc+=" (library)"
 	install=$pkgname.install
 }
 
 package_munt-qt () {
-	make -C "$pkgbase-$_tag/mt32emu_qt" DESTDIR="$pkgdir" install
+	make -C _build/mt32emu_qt DESTDIR="$pkgdir" install
 
 	pkgdesc+=" (Qt GUI application)"
 	depends+=("munt=$pkgver" qt6-multimedia hicolor-icon-theme portaudio)
@@ -62,7 +62,7 @@ package_munt-daemon () {
 }
 
 package_munt-smf2wav () {
-	make -C "$pkgbase-$_tag/mt32emu_smf2wav" DESTDIR="$pkgdir" install
+	make -C _build/mt32emu_smf2wav DESTDIR="$pkgdir" install
 
 	pkgdesc+=" (smf2wav tool)"
 	depends+=("munt=$pkgver" glib2)
