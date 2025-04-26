@@ -1,28 +1,32 @@
-#!/bin/bash
+# Contributor: PumpkinCheshire <me at pumpkincheshire dot top>
 
-# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
-
-_name=anyconfig-fortios-backend
-pkgname=python-$_name
-pkgver=0.2.0
+pkgname=python-anyconfig-fortios-backend
+_name=${pkgname#python-}
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="A backend module for python-anyconfig to support to load and parse fortios' 'show \*configuration' outputs"
+pkgdesc="Backend module for python-anyconfig to load fortios' show configuration outputs"
 url='https://github.com/ssato/python-anyconfig-fortios-backend'
 arch=('any')
 license=('MIT')
 depends=('python-anyconfig')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('492ddfee08e36e98b2fe507f97b9f53a6dae0d8762fa9250d68eea3a18ec993658a8261981b03d97d945f5a1582a06fa3a40a81a27e775d2e5dbc77343e9e441')
+b2sums=('ab24a3171aed53037c58d034806e6d7244293a35088072a1c8ac435dc8af8bd5f9f262a9b76f3a2b6ff232be4ce506565c5efe4a7b9b47a0d9b97f684d9f01e5')
+
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -e '1,3d' -e '/License ::/d' setup.cfg
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver" || exit
-    export PYTHONHASHSEED=0
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver" || exit
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: set ts=4 sw=4 et:

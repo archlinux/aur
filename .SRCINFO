@@ -1,13 +1,16 @@
 pkgbase = python-anyconfig-fortios-backend
-	pkgdesc = A backend module for python-anyconfig to support to load and parse fortios' 'show \*configuration' outputs
-	pkgver = 0.2.0
+	pkgdesc = Backend module for python-anyconfig to load fortios' show configuration outputs
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ssato/python-anyconfig-fortios-backend
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-anyconfig
-	source = https://files.pythonhosted.org/packages/source/a/anyconfig-fortios-backend/anyconfig-fortios-backend-0.2.0.tar.gz
-	b2sums = 492ddfee08e36e98b2fe507f97b9f53a6dae0d8762fa9250d68eea3a18ec993658a8261981b03d97d945f5a1582a06fa3a40a81a27e775d2e5dbc77343e9e441
+	source = https://files.pythonhosted.org/packages/source/a/anyconfig-fortios-backend/anyconfig-fortios-backend-0.3.0.tar.gz
+	b2sums = ab24a3171aed53037c58d034806e6d7244293a35088072a1c8ac435dc8af8bd5f9f262a9b76f3a2b6ff232be4ce506565c5efe4a7b9b47a0d9b97f684d9f01e5
 
 pkgname = python-anyconfig-fortios-backend
