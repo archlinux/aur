@@ -2,7 +2,7 @@
 
 pkgname=emu80-base
 _pkgname=emu80
-pkgver=4.0.501
+pkgver=4.0.520
 pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs. Assets package"
 arch=('x86_64')
@@ -10,8 +10,7 @@ url="https://emu80.org/"
 license=("GPL3")
 conflicts=("emu80-qt<4.0.498")
 source=("https://github.com/vpyk/emu80v4/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("e6c2f7477ba0a407a4f8fa1e63c8975a70634f0ac3b2bfe5aa6808ea1da197d8")
-
+sha256sums=("6cf40bf6c72c1477bb632beb4781b6a64d3f9027c2f2c90d1e98a786b05089e9")
 package() {
 	cd "emu80v4-${pkgver}"
 	destination=${pkgdir}/opt/${_pkgname}
