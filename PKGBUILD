@@ -1,6 +1,6 @@
 # Maintainer: Your Name <dennnn8888@gmail.com>
 pkgname=aniparser
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="AniParser Electron application"
 arch=('x86_64')
@@ -30,8 +30,8 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   
   # Copy application files
-  cp -r dist-react/ "$pkgdir/usr/lib/$pkgname/"
   cp -r dist-electron/ "$pkgdir/usr/lib/$pkgname/"
+  cp -r dist-react/ "$pkgdir/usr/lib/$pkgname/dist-electron/"
   
   # Install desktop file and icon
   install -Dm644 "public/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
