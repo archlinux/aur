@@ -1,0 +1,6 @@
+[cro-chain-desktop-bin]
+source = "github"
+github = "crypto-com/chain-desktop-wallet"
+use_latest_release = true
+prefix = "v"
+
