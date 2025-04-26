@@ -1,6 +1,6 @@
 # Maintainer: Fernando Nunez <me@fernandonunez.io>
 pkgname=qp
-pkgver=5.9.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="qp - Query Packages. A CLI utility for querying installed packages, written in Go. Replaces yaylog."
 arch=("any")
@@ -10,7 +10,7 @@ makedepends=("go>=1.24.1")
 conflicts=("qp-bin" "qp-git")
 replaces=("yaylog" "yaylog-bin" "yaylog-git")
 source=("${url}/releases/download/v${pkgver}/qp-v${pkgver}.tar.gz")
-sha256sums=("fb6c3b5810fb69ca072b572bd77d58929d91b8fb6b5d1079e55e8ee65f8a39ab")
+sha256sums=("b7dd96039b2472f906233e537bd5b89ec761855644ba265cd517a11548f2e111")
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
