@@ -1,0 +1,4 @@
+[python-aiortc]
+source='github'
+github='aiortc/aiortc'
+use_max_tag=true
