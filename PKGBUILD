@@ -1,11 +1,8 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
-# URL: https://github.com/lightningnetwork/lnd
-# Upstream: https://github.com/lightningnetwork/lnd
-
-#shellcheck disable=SC2034
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: David Parrish <daveparrish@tutanota.com>
 
 pkgname='lnd'
-pkgver=0.18.2_beta
+pkgver=0.18.5_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
@@ -17,7 +14,7 @@ makedepends=('go')
 provides=('lnd' 'lncli')
 conflicts=('lnd-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lightningnetwork/lnd/archive/v${_pkgver}.tar.gz")
-sha512sums=('e7a92f2fa5cd7ea9ba6fda61e10e5c2a447fe7884069858d2185180620436b673b3b9138cfa05a0c0c4b9e40d1c0bfd547e8042e9c3b5a69804bb0f3bd04d0de')
+sha512sums=('19d6c5b4b5afa507e9e2139d8f5e249e65feda96f8627ffcc7c3828c136ff8af33425a30b06bb1456df0a5d68670aa29c5866b53ce3eb8f4ec94ba0712bb047d')
 
 # create a fake go path directory and pushd into it
 # $1 real directory
