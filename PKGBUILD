@@ -1,8 +1,8 @@
 # Maintainer: Florian Hülsmann <fh@cbix.de>
 
 pkgname=cadet-python
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Modeling and simulation framework for biotech processes – low-level python frontend'
 arch=(any)
 url='https://cadet.github.io/master/developer_guide/cadet_python.html'
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(python)
 makedepends=(git python-build python-installer python-setuptools python-wheel)
 source=("git+https://github.com/cadet/$pkgname#tag=v$pkgver")
-sha256sums=('45965880d86cf54f7bfa42719fbe2d27bd66103a96ea9b24254b4ce9e79abe5b')
+sha256sums=('3ef3ad4e7eb2d1123c706546f432e3b77a564dd5bcbf5e0b8327e9b27cb5feab')
 
 build() {
   cd $pkgname
