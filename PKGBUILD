@@ -70,11 +70,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Increase minimal limit for BlockEnd inlay-hints to 10 lines (default is 2)
-# CLANGD_INLAYHINTSBLOCKEND:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Resolve includes in incomplete headers
 # Limitations: AST for source must be loaded before open incomplete header
 # CLANGD_RESOLVEINCHEADERS:
@@ -125,7 +120,6 @@
 : ${CLANGD_HOVERVIRTOFF:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERLAYOUTEVERYHERE:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERNODEFS:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_INLAYHINTSBLOCKEND:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEINCHEADERS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_LSPREMOVEFROMCDB:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERRECORDPAD:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -135,7 +129,7 @@
 : ${CLANGD_PREPROCESSOR_FOLDING:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt-git
-pkgver=20.r19078.g1f26ac10ca1b
+pkgver=21.r9912.g2f08927fd5f4
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -162,7 +156,6 @@ source=("git+https://github.com/llvm/llvm-project.git#branch=main"
     'hover-virt-offset.patch'
     'hover-layout-everyhere.patch'
     'hover-no-defs.patch'
-    'inlay-hints-blockend-linelimit10.patch'
     'resolve-incomplete-header-includes.patch'
     'lsp-remove-files-from-cdb.patch'
     'hover-record-paddings.patch'
@@ -184,7 +177,6 @@ sha256sums=('SKIP'
     '1b1ad88faa83b36dd68f63851a0fd6e07eed16595fcbffdc8a57b5c884f8a98c'  # hover-virt-offset
     '62e38f3074f39d51524b3d43aabb3991df97e43ea4a8c20e8073c479a41d1057'  # hover-layout-everyhere
     '94b328ea81eb615a90acf18a9a78733d77093deb12203683510fe4881bad95c6'  # hover-no-defs
-    '3365392bf7d95a02e2fb22dffbba011a3fa1179543426a2558b9ac61a300a7a7'  # inlay-hints-blockend-linelimit10
     '03ea8cac2b932c6657973cf11989a4e34a13958fc3957dfa3e62d44f5daa2a90'  # resolve-incomplete-header-includes
     '63e951edbafca684984c6878a7650570dc20021198622e627d374692b1b6e8eb'  # lsp-remove-files-from-cdb
     'd3e8d88d6bcc5c24cc28ce67bda144227d19fb740b50aec2ebdb7216de84fd47'  # hover-record-paddings
@@ -266,9 +258,6 @@ prepare() {
     # Inlay hints patches
     if [ "$CLANGD_INLAYHINTSPADS" != "n" ]; then
         apply_patch inlay-hints-paddings
-    fi
-    if [ "$CLANGD_INLAYHINTSBLOCKEND" != "n" ]; then
-        apply_patch inlay-hints-blockend-linelimit10
     fi
     if [ "$CLANGD_INLAYHINTSIGNOREEVIDENT" != "n" ]; then
         apply_patch inlay-hints-hide-deduced-types-ignore-evident
