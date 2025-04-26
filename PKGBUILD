@@ -1,19 +1,20 @@
 # Maintainer: Alex Ganin <alex at ganin dot tech>
 
 pkgname=bitrix24
-pkgver=15.4.11.80
+pkgver=16.0.38.83
 pkgrel=1
 pkgdesc="Official Bitrix24 client for Linux."
 arch=("x86_64")
 url="https://www.bitrix24.com/applications.php"
 source=("https://dl.bitrix24.com/b24/bitrix24_desktop.rpm")
-md5sums=('a560ca6b30360fe59e8687bb7b68985c')
+md5sums=('0448d9e0354b4ff17576620c5eb8650e')
 depends=(
    'gtk3'
    'libnotify'
    'nss'
    'libxss'
    'alsa-lib'
+   'libappindicator-gtk3'
    )
 
 
