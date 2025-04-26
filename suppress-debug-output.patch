@@ -1,0 +1,19 @@
+--- a/motu.c
++++ b/motu.c
+@@ -102,16 +102,7 @@ static DEFINE_MUTEX(devices_mutex);
+ static DECLARE_BITMAP(devices_used, SNDRV_CARDS);
+ static struct usb_driver motu_driver;
+ 
+-#ifdef CONFIG_SND_DEBUG
+-static void motu_dump_buffer(const char *prefix, const char *buf, int len) {
+-	print_hex_dump(KERN_DEBUG, prefix,
+-			DUMP_PREFIX_NONE, 16, 1,
+-			buf, len, false);
+-}
+-#else
+ static void motu_dump_buffer(const char *prefix, const char *buf, int len) {}
+-#endif
+-
+ 
+ static int motu_midi_input_open(struct snd_rawmidi_substream *substream)
+ {
