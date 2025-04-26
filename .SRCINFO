@@ -1,0 +1,17 @@
+pkgbase = env-exec-bin
+	pkgdesc =
+	pkgver = 0.9.0
+	pkgrel = 1
+	conflicts = env-exec
+	provides = env-exec
+	arch = aarch64
+	source_aarch64 = https://github.com/polarn/env-exec/releases/download/0.9.0/env-exec_Linux_arm64.tar.gz
+	sha256sums_aarch64 = fa76df95ccd9eb996acfe2502ca95fbb89e5d1e9c93b2217c49217e3a85d3621
+	arch = i686
+	source_i686 = https://github.com/polarn/env-exec/releases/download/0.9.0/env-exec_Linux_i386.tar.gz
+	sha256sums_i686 = 391a3aee8c935c931c9a64d7c61ab951ee4504858ae73836b155de8aa3bea9ad
+	arch = x86_64
+	source_x86_64 = https://github.com/polarn/env-exec/releases/download/0.9.0/env-exec_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0e7839fe796eb08a3e944aee1a0b27b5868e62e47cc02a42aa55f5d0bdeb04cd
+	
+pkgname = env-exec-bin
