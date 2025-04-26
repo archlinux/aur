@@ -1,16 +1,17 @@
-#Maintainer: allencch <allencch at hotmail dot com>
+#Maintainer: Yishen Miao <mys721tx at gmail dot com>
 #Contributor: Charles E. Vejnar
+#Contributor: allencch <allencch at hotmail dot com>
 pkgname=meme
-pkgver=5.5.1
+pkgver=5.5.7
 pkgrel=1
 _minor=
 pkgdesc="The MEME suite provides tools for discovering and using protein and DNA sequence motifs"
 arch=("i686" "x86_64")
 url="http://meme-suite.org/"
 license=("custom")
-depends=(perl-html-template tcsh python2 perl-xml-parser openmpi imagemagick perl-xml-simple)
+depends=(perl-html-template tcsh python perl-xml-parser openmpi imagemagick perl-xml-simple)
 source=("http://meme-suite.org/meme-software/${pkgver}/meme-${pkgver}${_minor}.tar.gz")
-sha1sums=('2afef37fdf184f1c9e68077e53910506e7d59d5b')
+sha256sums=('1dca8d0e6d1d36570c1a88ab8dbe7e4b177733fbbeacaa2e8c4674febf57aaf4')
 
 build() {
     cd $srcdir/${pkgname}-${pkgver%_*}
