@@ -1,9 +1,7 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2'
 pkgname=${_pkgname}-bin
-provides=chatterino
-conflicts=chatterino
-pkgver=2.5.3 #unused var. but needed to update
+pkgver=2.5.3 #unused at build, but needed 
 pkgrel=4
 pkgdesc='A chat client for Twitch.tv.'
 arch=('x86_64')
