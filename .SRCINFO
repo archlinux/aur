@@ -1,12 +1,12 @@
 pkgbase = steampipe-bin
 	pkgdesc = Steampipe CLI
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/turbot/steampipe
 	arch = x86_64
 	license = AGPL-3.0
 	provides = steampipe
-	source = steampipe-1.1.0-1.tgz::https://github.com/turbot/steampipe/releases/download/v1.1.0/steampipe_linux_amd64.tar.gz
-	sha256sums = 4986e2495643a6ecea78dabd906e3d8106d0366d73cab69a9b6720a10efdaecf
+	source = steampipe-1.1.1-1.tgz::https://github.com/turbot/steampipe/releases/download/v1.1.1/steampipe_linux_amd64.tar.gz
+	sha256sums = 0526dc47266fd7b57d7045c86448c046624ec87da519a3afe5b170f7d12d3ed9
 
 pkgname = steampipe-bin
