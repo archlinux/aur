@@ -1,0 +1,16 @@
+pkgbase = qterm
+	pkgdesc = QTerm is a BBS (Bulletin Board System) client program. It runs on GNU/Linux, OS X and Windows thanks to the cross-platform framework Qt.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/qterm/qterm
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-5compat
+	depends = qt6-wayland
+	provides = qterm
+	source = https://github.com/qterm/qterm/archive/refs/tags/0.8.2.tar.gz
+	md5sums = 4bcaa017ad1b26fb870949ec5140c253
+
+pkgname = qterm
