@@ -1,5 +1,5 @@
 pkgname=hostman-git
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services (latest commit)"
 arch=('x86_64')
