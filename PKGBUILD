@@ -23,7 +23,7 @@ package() {
   # Create a simple launcher
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/telecord" <<EOF
 #!/bin/bash
-node /usr/lib/telecord/bin/telecord.js "\$@"
+node /usr/lib/telecord/bin/telecord.mjs "\$@"
 EOF
 
   # Install the actual project files
