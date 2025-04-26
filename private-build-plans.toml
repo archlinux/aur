@@ -1,0 +1,24 @@
+# Normal
+[buildPlans.IosevkaLow]
+  family = "Iosevka Low"
+  spacing = "fixed"
+  noCvSs = true
+  exportGlyphNames = false
+  noLigation = true
+
+[buildPlans.IosevkaLow.metricOverride]
+  leading = 1100
+
+
+# Slab
+[buildPlans.IosevkaLowSlab]
+  family = "Iosevka Low Slab"
+  spacing = "fixed"
+  serifs = "slab"
+  noCvSs = true
+  exportGlyphNames = false
+  noLigation = true
+
+[buildPlans.IosevkaLowSlab.metricOverride]
+  leading = 1100
+
