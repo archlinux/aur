@@ -23,11 +23,18 @@ build() {
 
 package() {
 	cd "$_dir_name"
+	# Executable
 	install -dm755 "$pkgdir/usr/bin"
 	install -Dm755 "linux-release/SGDBoop" "$pkgdir/usr/bin/SGDBoop"
-
+	
+	# Desktop file
 	install -Dm644 "linux-release/com.steamgriddb.SGDBoop.desktop" -t "$pkgdir/usr/share/applications"
-
+	
+	# Mime or sumthing idk
 	install -dm755 "$pkgdir/usr/share/mime/packages"
   install -m644 "com.steamgriddb.SGDBoop.appdata.xml" "$pkgdir/usr/share/mime/packages/x-$_pkgname.xml"
+
+	# License
+	install -dm644 "$pkgdir/usr/share/licenses/$pkgname"
+	install -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
