@@ -1,6 +1,6 @@
 pkgbase = python-dspy
 	pkgdesc = The framework for programming (not prompting) language models
-	pkgver = 2.6.17
+	pkgver = 2.6.19
 	pkgrel = 1
 	url = https://github.com/stanfordnlp/dspy
 	arch = any
@@ -47,7 +47,7 @@ pkgbase = python-dspy
 	optdepends = python-weaviate-client: support for Weaviate
 	optdepends = python-pymilvus: support for Milvus
 	optdepends = python-boto3: support for AWS
-	source = dspy::git+https://github.com/stanfordnlp/dspy.git#tag=2.6.17
-	b2sums = 6acdb0162c4eecd0f11be3c1c4430bb323648092eff4afb14a13b4161ddbccb81652c326da8782164605b0c5ed602cba41affd8f41d6c0d50663a2d0c06b0644
+	source = dspy::git+https://github.com/stanfordnlp/dspy.git#tag=2.6.19
+	b2sums = 723b66721b0e607dafeea3e819e23031abafa4f0ec7068ecd4bc6ea51842a7822401d50cc615247e5e11193cc7a81900241763b2862fa8caa5c3330d8be9e2dd
 
 pkgname = python-dspy
