@@ -7,7 +7,7 @@
 # Contributor: maus25 <mirko378@gmail.com>
 
 pkgname=gnome-shell-pomodoro
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('gobject-introspection' 'glib2' 'gom' 'gtk3' 'cairo' 'glibc' 'libpeas' 'sqlite' 'gstreamer' 'libcanberra')
 makedepends=('meson' 'vala')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gnome-pomodoro/gnome-pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('152022fb6a687f4f0c895d7673d398ffbc5467b0bcc90d638250337927a45312')
+sha256sums=('266c773dd591ae373440805fd6885d3052155e63c4c3671322e621ad1a42f7f8')
 
 prepare() {
   cd "$srcdir/gnome-pomodoro-$pkgver"
