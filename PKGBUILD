@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BASiCStan
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a4186cc4e1dc5ff03d112a63c06acc09')
-b2sums=('b3b865d3919351252c690627f39d04cea64bc04005955bac41c854e2f212df3a6b0f742716f6c69699bd079c3cbf1280155a0b3100a6e128809dec8e51cf7e4e')
+md5sums=('2ffa79df4fb515b8329d51a8c172cb96')
+b2sums=('a037d950916804f31d0387a99d9f2daf1fd84a2fccef9c5da93a08e5bf8a94e5c4b9f1cb88a2a33e09f3fed454cf7758223f8c69cd1631bf01b6dd64b952743f')
 
 build() {
   mkdir build
