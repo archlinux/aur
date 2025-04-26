@@ -1,0 +1,19 @@
+pkgbase = harlequin-odbc
+	pkgdesc = An ODBC adapter for Harlequin
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://harlequin.sh/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = harlequin
+	depends = python-pyodbc
+	depends = unixodbc
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/h/harlequin_odbc/harlequin_odbc-0.3.1.tar.gz
+	b2sums = a3fb93d2fdf2641e2cd8f6cc4109def249ee196df7bb6f3de9e38e9b52ce22453db263673ac367e1d9cf78563c3ca44c2e6763593f7d44f7d1c042b361c77e7d
+
+pkgname = harlequin-odbc
