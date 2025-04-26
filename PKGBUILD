@@ -1,4 +1,5 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 pkgname="harlequin"
 pkgver=2.1.2
