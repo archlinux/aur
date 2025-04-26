@@ -1,4 +1,5 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Maintainer: Zentino <Zylsjsp@gmail.com>
 # Contributor: Mingi Sung <fiestalake@disroot.org>
 # Contributor: okhsunrog <me@gornushko.com>
 # Contributor: tinywrkb <tinywrkb@gmail.com>
