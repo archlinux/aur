@@ -1,24 +1,32 @@
-# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
+# Contributor: pumpkincheshire <sollyonzou@gmail.com>
 
-_name=anyconfig-json5-backend
-pkgname=python-$_name
-pkgver=0.2.0
+pkgname=python-anyconfig-json5-backend
+_name=${pkgname#python-}
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="AA backend module for python-anyconfig to support to load and dump JSON5 (JSON for humans) data"
+pkgdesc="Backend module for python-anyconfig to load and dump JSON5 files"
 url='https://github.com/ssato/python-anyconfig-json5-backend'
 arch=('any')
 license=('MIT')
 depends=('python-anyconfig')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('418f767a3151a9311cd538446bf4f67590fe3b2164fe67f1bee0794532c54481')
+sha256sums=('0183135e937843acde2d8bacf764c49e025505f545921bd6f63ffe7968d95bc4')
+
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -e '1,3d' -e '/License ::/d' setup.cfg
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: set ts=4 sw=4 et:
