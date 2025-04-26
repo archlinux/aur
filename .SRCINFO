@@ -1,0 +1,17 @@
+pkgbase = aidl-format-git
+	pkgdesc = A tool to formatting Android Interface Definition Language (AIDL) code
+	pkgver = 20221125.r9.9b8238a
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/build/soong
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = bash
+	depends = clang
+	provides = aidl-format
+	source = git+https://android.googlesource.com/platform/system/tools/aidl
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+pkgname = aidl-format-git
