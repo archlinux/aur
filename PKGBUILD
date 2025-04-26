@@ -35,7 +35,6 @@ prepare() {
 
 build() {  
   cd $pkgname
-  go mod download github.com/http-live-streaming/m3u8-downloader/dl
   go get github.com/http-live-streaming/m3u8-downloader/dl
   go get github.com/u2takey/ffmpeg-go
   go build -o $binname
