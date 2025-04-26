@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.6.1.canary.refresh.r10.gebfc9d8
+pkgver=v0.6.1.canary.refresh.r34.g48eed78
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -135,7 +135,8 @@ build() {
     -DUSE_DISCORD_PRESENCE=OFF \
     -DBUNDLE_SPEEX=ON \
     -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     
   ninja -C build
 } 
