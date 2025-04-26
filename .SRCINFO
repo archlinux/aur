@@ -1,6 +1,6 @@
 pkgbase = cross-mingw-w64-gdb
 	pkgdesc = The GNU Debugger (compiled to debug target mingw-w64)
-	pkgver = 16.2
+	pkgver = 16.3
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = cross-mingw-w64-gdb
 	depends = source-highlight
 	options = staticlibs
 	options = !buildflags
-	source = http://ftp.gnu.org/gnu/gdb/gdb-16.2.tar.xz
-	sha256sums = 4002cb7f23f45c37c790536a13a720942ce4be0402d929c9085e92f10d480119
+	source = http://ftp.gnu.org/gnu/gdb/gdb-16.3.tar.xz
+	sha256sums = bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5
 
 pkgname = cross-mingw-w64-gdb
