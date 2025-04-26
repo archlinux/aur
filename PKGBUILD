@@ -1,24 +1,32 @@
-# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
+# Contributor: pumpkincheshire <sollyonzou@gmail.com>
 
-_name=anyconfig-msgpack-backend
-pkgname=python-$_name
-pkgver=0.1.1
-pkgrel=2
-pkgdesc='a backend module for python-anyconfig to support to load and dump MessagePack data files.'
+pkgname=python-anyconfig-msgpack-backend
+_name=${pkgname#python-}
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Backend module for python-anyconfig to load and dump MessagePack data'
 url='https://github.com/ssato/python-anyconfig-msgpack-backend'
 arch=('any')
 license=('MIT')
 depends=('python-anyconfig' 'python-msgpack')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('223c3619dbb4eb433360494b0560f3694e5fa0dd69032db65e8c5318597bb348')
+sha256sums=('c6a443f1ad62ecb8fcabd28094e5c7c9228fc4bd933514d88397ed207d38deb7')
+
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -e '1,3d' -e '/License ::/d' setup.cfg
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: set ts=4 sw=4 et:
