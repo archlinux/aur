@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-wallet"
 pkgver=4.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Cellframe Wallet"
 arch=(x86_64 aarch64)
 url="https://cellframe.net"
