@@ -1,6 +1,6 @@
 # Maintainer: Daniel Goß <developer@flashsystems.de>
 pkgname=checkunits
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Checks the systemd configuration and makes suggestions to optimize and repair it."
 arch=(any)
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FlashSystems/CheckUnits/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('fd83b78fdaff9809c11c138c3c60b7c5')
+md5sums=('5457800772e2ba1c1344342d6262f198')
 
 package() {
   cd "CheckUnits-$pkgver"

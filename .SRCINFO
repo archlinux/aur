@@ -1,15 +1,14 @@
 pkgbase = checkunits
 	pkgdesc = Checks the systemd configuration and makes suggestions to optimize and repair it.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/FlashSystems/CheckUnits
 	arch = any
 	license = MIT
-	source = checkunits-1.1.tar.gz::https://github.com/FlashSystems/CheckUnits/archive/v1.1.tar.gz
-	md5sums = fd83b78fdaff9809c11c138c3c60b7c5
+	source = checkunits-1.2.tar.gz::https://github.com/FlashSystems/CheckUnits/archive/v1.2.tar.gz
+	md5sums = 5457800772e2ba1c1344342d6262f198
 
 pkgname = checkunits
 	depends = systemd>=239
 	depends = bash>=4.4
 	depends = coreutils
-
