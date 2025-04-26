@@ -1,6 +1,6 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}-bin"
-pkgver=0.8.17
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
@@ -16,19 +16,21 @@ source=(    "${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/down
        )
 
 sha256sums=(
-            '8567e1c50aa509c4e63844ddbb934b096fa7cb71e52b75a38392d7caa01cae2b'
+            '108a6052e803520e437960d199f79f7a9871278b2e93ebc2faf59a7155073154'
            )
 
 provides=(  
             'llamafile'
             'llamafile-bench'
-            'llamafile-imatrix'
             'llamafile-convert'
+            'llamafile-imatrix'
             'llamafile-perplexity'
             'llamafile-quantize'
             'llamafile-tokenize'
-            'llava-quantize'
             'llamafile-upgrade-engine'
+            'llamafiler'
+            'llava-quantize'
+            'localscore'
             'sdfile'
             'whisperfile'
             'zipalign'
