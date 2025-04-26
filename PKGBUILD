@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=cursor-bin-patched
-pkgver=0.49.4
+pkgver=0.49.6
 pkgrel=1
 pkgdesc="Cursor App - AI-first coding environment, patched for custom flag support"
 arch=('x86_64')
@@ -11,9 +11,9 @@ conflicts=('cursor-bin')
 provides=('cursor-bin')
 options=(!strip)
 install='cursor.install'
-source_x86_64=("https://downloads.cursor.com/production/ec408037b24566b11e6132c58bbe6ad27046eb91/linux/x64/Cursor-0.49.4-x86_64.AppImage")
+source_x86_64=("https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/linux/x64/Cursor-0.49.6-x86_64.AppImage")
 noextract=("$(basename ${source_x86_64[0]})")
-sha512sums_x86_64=('edfa25508cfbf3fa0686c4a339058b1640794e74b4f0c375b43c80142b7a40d3e6a4810bd374779d1d3f7b8eea7fc914df55ec55c488b154210f8e2a3fe51c39')
+sha512sums_x86_64=('08092e03523888adc19eab334f5528af32fc94588acf978c564bf8030fd48e1a5b32b03bd15687a66905aa58da10286a2d5eaf971749efe36c03ce1a87376075')
 package() {
     mkdir -p "${pkgdir}/opt/"
     mv "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
