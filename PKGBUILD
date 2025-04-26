@@ -1,24 +1,31 @@
-# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
+# Contributor: pumpkincheshire <sollyonzou@gmail.com>
 
-_name=anyconfig-configobj-backend
-pkgname=python-$_name
-pkgver=0.1.4
-pkgrel=2
-pkgdesc='A backend module for python-anyconfig to load and dump ConfigObj data'
+pkgname=python-anyconfig-configobj-backend
+_name=${pkgname#python-}
+pkgver=0.3.0
+pkgrel=1
+pkgdesc='Backend module for python-anyconfig to load and dump ConfigObj data'
 url='https://github.com/ssato/python-anyconfig-configobj-backend'
 arch=('any')
 license=('MIT')
 depends=('python-anyconfig' 'python-configobj')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('28216d5a5714491e1155df26743ae75741e87fb00b5f54f07301dfa56bfe7e5a')
+sha256sums=('15bbad830cee6cacfe8236aba21bc39fbe96a140f410d4d8d5b06d65e2c0f8ae')
+
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -e '1,3d' -e '/License ::/d' setup.cfg
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: set ts=4 sw=4 et:
