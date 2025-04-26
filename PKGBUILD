@@ -36,6 +36,7 @@ build() {
 		-S $pkgname
 		-W no-dev
 		-D CMAKE_BUILD_TYPE=None
+		-D BUILD_SHARED_LIBS=ON
 		-D CMAKE_INSTALL_PREFIX=/usr
 	)
 	cmake "${cmake_options[@]}"
