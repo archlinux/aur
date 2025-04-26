@@ -10,12 +10,12 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(aarch64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 url='https://gcc.gnu.org'
-makedepends=(binutils cargo doxygen gcc-d git python zstd)
+makedepends=(binutils doxygen gcc-d git python rust zstd)
 checkdepends=(dejagnu expect inetutils python-pytest tcl)
 options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/${CHOST}/${_realver}
@@ -33,7 +33,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # nisse@lysator.liu.se
               A534BE3F83E241D918280AEB5831D11A0D4DB02A) # vincent@vinc17.net
-sha256sums=('68bd1c2ad24202f669b257df0842a32c44279263ad6f51be954d4899243a8c5a'
+sha256sums=('fc39b4d54bc441bfa82da31e65e370c5f9c0dc45f4f1e2d3455a9dcfcb457319'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -141,7 +141,7 @@ check() {
 
 package_gcc-libs-snapshot() {
   pkgdesc='Runtime libraries shipped by GCC (snapshot)'
-  depends=("glibc>=2.36")
+  depends=("glibc>=2.40")
   options=(!emptydirs lto strip)
   provides=(${pkgname} "gcc-libs=${pkgver}-${pkgrel}" libgcobol.so
             libgfortran.so libgo.so libgphobos.so libubsan.so libasan.so libtsan.so liblsan.so)

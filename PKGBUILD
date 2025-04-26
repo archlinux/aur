@@ -11,7 +11,7 @@ _realver=${pkgver//.s*}
 _gmpver=6.3.0
 _mpcver=1.3.1
 _mpfrver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (snapshot)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -108,6 +108,7 @@ build() {
 
   ${srcdir}/gcc/configure \
     --enable-languages=ada,c,c++,cobol,d,fortran,go,lto,m2,rust,objc,obj-c++ \
+    --enable-offload-targets=amdgcn-amdhsa,nvptx-none \
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
@@ -143,7 +144,7 @@ check() {
 
 package_gcc-libs-snapshot() {
   pkgdesc='Runtime libraries shipped by GCC (snapshot)'
-  depends=("glibc>=2.36")
+  depends=("glibc>=2.40")
   options=(!emptydirs lto strip)
   provides=(${pkgname}-multilib gcc-libs-multilib "gcc-libs=${pkgver}-${pkgrel}" libgcobol.so
             libgfortran.so libgo.so libgphobos.so libubsan.so libasan.so libtsan.so liblsan.so)
@@ -337,7 +338,7 @@ package_gcc-ada-snapshot() {
 
   install -d ${pkgdir}/usr/lib32/
   mv ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}-${_adamajor}.so ${pkgdir}/usr/lib32
-  ln -s libgnarl-${_adamajorr}.so ${pkgdir}/usr/lib32/libgnarl.so
+  ln -s libgnarl-${_adamajor}.so ${pkgdir}/usr/lib32/libgnarl.so
   ln -s libgnat-${_adamajor}.so ${pkgdir}/usr/lib32/libgnat.so
 
   rm -f ${pkgdir}/${_libdir}/32/adalib/libgna{rl,t}.so
@@ -393,7 +394,7 @@ package_gcc-go-snapshot() {
 
 package_lib32-gcc-libs-snapshot() {
   pkgdesc='32-bit runtime libraries shipped by GCC (snapshot)'
-  depends=("lib32-glibc>=2.36")
+  depends=("lib32-glibc>=2.40")
   provides=(lib32-gcc-libs libgcobol.so libgfortran.so libgo.so libubsan.so libasan.so)
   replaces=(lib32-gcc-libs)
   conflicts=(lib32-gcc-libs)
