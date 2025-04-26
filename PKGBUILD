@@ -1,7 +1,7 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=nvitop
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Interactive NVIDIA-GPU process viewer and GPU process management"
 arch=(any)
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://github.com/XuehaiPan/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fbb31d768439f6563d04b12ef208ca4a6030c51e84a7620580b3694abb6a36f1')
+sha256sums=('981bea0ed3f395bc02d106e02e607aa9e1b9d2d4182c84871682eb118a16dfa3')
 
 package() {
     cd "$pkgname-$pkgver"
