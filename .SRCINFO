@@ -1,0 +1,17 @@
+pkgbase = amber-search-bin
+	pkgdesc = A code search and replace tool written in Rust. Inspired by ack, ag, and grep.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/dalance/amber
+	arch = x86_64
+	license = MIT
+	provides = amber-search
+	conflicts = amber-search
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/dalance/amber/v0.6.0/LICENSE
+	source = README-0.6.0.md::https://raw.githubusercontent.com/dalance/amber/v0.6.0/README.md
+	sha256sums = ff1d92e0d4a51bdd353d8f436dad6d6afe85b684eb9365301cbb76e9c564362f
+	sha256sums = 3820df22c23449eb199267c17cdf7cc4928ca9d8277205aa5ca376d0061ee942
+	source_x86_64 = https://github.com/dalance/amber/releases/download/v0.6.0/amber-v0.6.0-x86_64-lnx.zip
+	sha256sums_x86_64 = 139630ebdbd1170efc92892b64bf2e48d18f1cd38e48c501c045af1e5852ad66
+
+pkgname = amber-search-bin
