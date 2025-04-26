@@ -4,7 +4,7 @@
 # Contributor: jskier <jay @jskier.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=keeper-commander
-pkgver=17.0.16
+pkgver=17.0.17
 pkgrel=1
 epoch=1
 pkgdesc="CLI, SDK and interactive shell for Keeper® Password Manager."
@@ -25,6 +25,7 @@ depends=('python'
   'python-requests'
   'keeper-secrets-manager-core>=16.6.0'
   'python-aiortc'
+  'google-crc32c-git' #aur/google-crc32 is currently broken - it's a dependancy of aur/python-aiortc - this line can be removed when aur/google-crc32 is updated
   'python-protobuf'
   'python-cryptography'
   'python-pykeepass'
@@ -51,7 +52,7 @@ makedepends=(
 )
 checkdepends=('python-ifaddr' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d3abc4d96f5a257da83d3d598184624155fef1a8689ffe8bd4bc45655d86bcfb25190c0bac365bdb79395076363e884ea32fe4d3460d0723193ee41ae041d8c6')
+sha512sums=('be71b447c945c6278c03875928acd5d170853729335bed164eb7dd2bbbcdabe2d614961fde69f9ef3df672f48c6bfe96a5c6cc2743bf9a6edba86ba7c0b66c66')
 
 build() {
   cd "Commander-$pkgver"
