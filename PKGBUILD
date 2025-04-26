@@ -1,42 +1,25 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-pkgver=2025.04.23
+_id=20250426T120229
+_ver=2.5.3
+pkgver=${_id}.${_ver}
 pkgrel=1
-pkgdesc="Second installment of the Twitch chat client series "Chatterino""
+pkgdesc='A chat client for Twitch.tv. (Nightly build)'
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
 license=('MIT')
-depends=(
-	brotli
-	fontconfig
-	freetype2
-	glib2
-	harfbuzz
-	icu
-	libx11
-	libglvnd
-	libjpeg-turbo
-	libnotify
-	libxkbcommon{,-x11}
-	openssl
-	xcb-util-{image,wm,cursor,keysyms,renderutil}
-	)
-makedepends=('binutils' 'grep' 'patchelf')
-optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output'
-            'gst-plugins-good: For audio output')
-provides=chatterino
-conflicts=chatterino
-source=("${url}/releases/download/nightly-build/Chatterino-Ubuntu-24.04-x86_64.deb")
-sha256sums=('SKIP')
+depends=(gdk-pixbuf2 glib2 hicolor-icon-theme libglvnd libnotify openssl
+		qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
+
+optdepends=('streamlink: For piping streams to video players')
+provides=(chatterino)
+conflicts=(chatterino)
+source=("https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.gz")
+#source=("https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/"{chatterino-arch-linux-$arch,com.chatterino.chatterino.desktop,icon.png})
+sha256sums=('9cee3bd9dfdc97775733d33b2459b36bbb61781850eca20a62f8ca356ecce2bc')
 package() {
-	bsdtar -xf data.tar.zst -C "${pkgdir}"
-	#Replace icu
-	_icuorig=$(ldd "$pkgdir"/usr/bin/chatterino|grep libicui18n.so.|awk '{print $1}' |sed s/libicui18n.so.//) #incomplete
-	_icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
-	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
-	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
+	install -Dm755 chatterino "${pkgdir}"/usr/bin/chatterino
+	install -Dm644 {,"${pkgdir}"/usr/share/applications/}com.chatterino.chatterino.desktop
+	install -Dm644 icon.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/com.chatterino.chatterino.png
 }
