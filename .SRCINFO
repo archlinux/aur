@@ -1,0 +1,16 @@
+pkgbase = m3u8down-git
+	pkgdesc = m3u8 down load to mp4 in cli
+	pkgver = r15.c03efb7
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/m3u8down
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = ffmpeg
+	provides = m3u8down
+	conflicts = m3u8down
+	source = m3u8down-git::git+https://github.com/DreamMaoMao/m3u8down.git
+	md5sums = SKIP
+
+pkgname = m3u8down-git
