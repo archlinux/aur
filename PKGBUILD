@@ -1,9 +1,9 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool"
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Install kernel for Limine bootloader."
-arch=('x86_64')
+arch=('any')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 license=("GPL3")
@@ -18,7 +18,7 @@ depends=(
 makedepends=('git' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-dracut-support' 'limine-dracut-support-git' 'limine-entry-tool-git')
-sha256sums=('56abf3d4b2459ae44accbaf1ffa55fb4f5fa57930cc11291b6b18a5bb90a01bc')
+sha256sums=('64df191efcb3ff1fe1536fb2ec87f961de297d6815d21626008e1bfe3131f35e')
 
 check_java_version() {
     local java_version
@@ -40,10 +40,7 @@ check_java_version() {
 }
 
 build() {
-    unset JAVA_HOME
-    unset JAVA_OPTS
-    unset JDK_JAVA_OPTIONS
-    unset JAVA_TOOL_OPTIONS
+    unset JAVA_HOME JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
     if check_java_version; then
         cd "$srcdir/${pkgname}-${pkgver}"
         mvn clean package
@@ -61,4 +58,3 @@ package() {
     cp -r README.md CHANGELOG.md $src_path/usr/share/doc/${pkgname}/
     cp -r $src_path/usr $src_path/etc "$pkgdir"
 }
-
