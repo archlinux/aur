@@ -20,5 +20,5 @@ build()
 package()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  install -D target/release/kalc "$pkgdir/usr/bin/kalc"
+  install -D target/release/kalc-plot "$pkgdir/usr/bin/kalc-plot"
 }
