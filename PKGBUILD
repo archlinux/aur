@@ -2,12 +2,12 @@
 
 pkgname=gmv-rs
 _name=${pkgname%-rs}
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="This is a video surveillance implementation based on GB28181: compatible with 2016 and 2022 versions."
 arch=($CARCH)
 url="https://github.com/epimore/gmv"
-license=('Apache-2.0')
+license=('MIT')
 provides=(
     ${_name}
     gmv-session
@@ -22,22 +22,23 @@ replaces=()
 depends=(
     gcc-libs
     glibc
+    openssl
     systemd-libs)
 makedepends=(
     cargo
     cmake
-    openssl
     pkgconf)
 backup=()
 options=(!lto !debug)
 install=
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b5d08b615c17b87a6d3c9aea2ff9c0359d20def61867bcc6ab2fac3531bd2ef5')
+sha256sums=('f4be07a2f31e23a043f7da677017f2499d2ce2654e158476740cc7cdac4d7812')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -47,13 +48,13 @@ build() {
     sed -i 's|/home/ubuntu20/code/rs/mv/github/epimore/gmv/session/config.yml|/etc/gmv/session/config.yml|g' session/src/storage/mapper.rs
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    #     cargo build --release --all-features
+    cargo build --release --all-features
     #     CFLAGS+=" -ffat-lto-objects"
     #    --features 'cli,ftdi' \
-    cargo build \
-        --offline \
-        --locked \
-        --release
+    #     cargo build \
+    #         --offline \
+    #         --locked \
+    #         --release
 }
 
 # check() {
@@ -67,13 +68,14 @@ package() {
     cd "${srcdir}/${_name}-${pkgver}/"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
     install -Dm0644 session/config.yml "${pkgdir}/etc/gmv/session/config.yml"
     install -Dm0644 stream/readme "${pkgdir}/usr/share/doc/gmv/stream/readme"
+    install -Dm0644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 
-    #     find target/release \
-    #         -maxdepth 1 \
-    #         -executable \
-    #         -type f \
-    #         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+    find target/release \
+        -maxdepth 1 \
+        -executable \
+        -type f \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
