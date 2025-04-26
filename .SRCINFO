@@ -1,0 +1,13 @@
+pkgbase = mkfromtree
+	pkgdesc = Easily create folder and file structure from tree text input
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/codewithmoss/mkfromtree
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	source = https://raw.githubusercontent.com/codewithmoss/mkfromtree/main/mkfromtree.sh
+	sha256sums = SKIP
+
+pkgname = mkfromtree
