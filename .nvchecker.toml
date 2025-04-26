@@ -1,0 +1,5 @@
+[solidity-bin]
+source = "github"
+github = "ethereum/solidity"
+use_latest_release = true
+prefix = "v"
