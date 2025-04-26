@@ -1,0 +1,5 @@
+[oxen-electron-wallet-bin]
+source = "github"
+github = "oxen-io/oxen-electron-gui-wallet"
+use_latest_release = true
+prefix = "v"
