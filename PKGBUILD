@@ -8,7 +8,7 @@ pkgdesc='Autodesk License Checking Software'
 arch=('x86_64')
 url="https://www.autodesk.com/"
 license=('custom')
-depends=('adlmapps>=29' 'rpm-tools')
+depends=('adlmapps>=29' 'rpm-tools' 'adskidentitymanager>=1.15')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://adsklicensing${pkgver}-0-0.x86_64.rpm")
