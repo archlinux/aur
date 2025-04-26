@@ -7,8 +7,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.6.0
-pkgrel=14
+pkgver=2.7.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -41,6 +41,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
         "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
         "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
+        "${pkgname}-flash-attention::git+https://github.com/Dao-AILab/flash-attention.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
         "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
@@ -50,8 +51,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-ittapi::git+https://github.com/intel/ittapi.git"
         "${pkgname}-json::git+https://github.com/nlohmann/json.git"
         "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
+        "${pkgname}-kleidiai::git+https://github.com/ARM-software/kleidiai.git"
         "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
-        "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
         "${pkgname}-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
@@ -68,7 +69,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         pytorch-rocm-jit.patch
         pytorch-missing-iostream.patch
         fix_cmake_prefix_path.patch)
-b2sums=('087a803a0d16f069129d63e9c6dbfdce29a2912f7c96f08a9d9d1148fa3ae9d5bcb3ddc315e6be67c320c2f556fd16af01b7e28ed286e0fde1a4501f8ff93c06'
+b2sums=('d47a97cc608c6ebbbeb59cfe6ace71430c815fd6287cd6497d0594de71f46fddeab0de1d6b01b5989d9c327431d763440f1e31b9ef4da85ebc4b0b3c68b48ec4'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -141,6 +143,7 @@ prepare() {
   git config submodule."third_party/cutlass".url "${srcdir}/${pkgname}"-cutlass
   git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen
   git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
+  git config submodule."third_party/flash-attention".url "${srcdir}/${pkgname}"-flash-attention
   git config submodule."third_party/flatbuffers".url "${srcdir}/${pkgname}"-flatbuffers
   git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
   git config submodule."third_party/gemmlowp/gemmlowp".url "${srcdir}/${pkgname}"-gemmlowp
@@ -149,8 +152,8 @@ prepare() {
   git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
   git config submodule."third_party/ittapi".url "${srcdir}/${pkgname}"-ittapi
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
+  git config submodule."third_party/kleidiai".url "${srcdir}/${pkgname}"-kleidiai
   git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
-  git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
   git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
   git config submodule."third_party/opentelemetry-cpp".url "${srcdir}/${pkgname}"-opentelemetry-cpp
