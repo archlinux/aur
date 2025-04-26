@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}.tmpfiles"
         "${pkgname}@.service")
-sha256sums=('c6db56058a4cb09152e121ed9bf0c859faae78bb820d1260e51e7bb40bb71b4a'
+sha256sums=('7b97cf790a43aa58ce470487102fb5a317bc64772f5de4e14055dd17bbffd716'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
             '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
 
@@ -30,7 +30,7 @@ prepare() {
     sed -i 's|,`||' ../master.env
 
     for element in client server; do
-        grep -C1 -P "#APP_SECRET=|#MASTER_RPC_HOST=|#MASTER_RPC_PORT=|#MASTER_API_PORT=|#CLIENT_ID=|#CLIENT_SECRET=" ../master.env > "../${element}.env"
+        grep -C1 -P "#APP_SECRET=|#CLIENT_" ../master.env > "../${element}.env"
         sed -i '/--/d' "../${element}.env"
     done
 }
