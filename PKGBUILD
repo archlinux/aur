@@ -34,7 +34,7 @@ optdepends=(
   'python-yaml: for YAML support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jcrist/msgspec/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1412dd9e1f1fbd12420a4dd25419a2e8772bf35416bbc6d43c5fd7dde3b74fdd')
+sha256sums=('33961077a37830c54fa3108bd226a9d7a09b91ff82ef7b976a371039b54b6bc7')
 
 build() {
   cd "$_pkgname-$pkgver"
