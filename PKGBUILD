@@ -12,8 +12,8 @@ depends=(gdk-pixbuf2 glib2 hicolor-icon-theme libnotify openssl
 	qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
 optdepends=('streamlink: For piping streams to video players'
 'qt6-wayland: Wayland support')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(chatterino)
+conflicts=(chatterino)
 source=("https://github.com/chatterino/pkg/releases/download/stable-${_id}/"{chatterino-arch-linux-$arch,com.chatterino.chatterino.desktop,icon.png})
 sha256sums=('4e5b750afc51e551eeda437cabc52829944284cbfefd4471834983df99b52f8d'
             'ef9f358f1d8c89b10c32e8621e9fac7b5aca89c9f5e439243ada92ecd537b7c7'
