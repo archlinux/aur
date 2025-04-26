@@ -1,6 +1,6 @@
 pkgbase = openai-codex
 	pkgdesc = Lightweight coding agent that runs in your terminal
-	pkgver = 0.1.2504221401
+	pkgver = 0.1.2504251709
 	pkgrel = 1
 	url = https://github.com/openai/codex
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = openai-codex
 	depends = nodejs
 	optdepends = git
 	optdepends = ripgrep: accelerated large-repo search
-	noextract = codex-0.1.2504221401.tgz
-	source = https://registry.npmjs.org/@openai/codex/-/codex-0.1.2504221401.tgz
-	b2sums = 8f64bef45197017d7e360b20e564decf54cfcadfea1fcd983f3046dee008d2231041aaee0eacc559b500e23c70c5391c5ac0a2d041e3df05b64080ba2754fcb2
+	noextract = codex-0.1.2504251709.tgz
+	source = https://registry.npmjs.org/@openai/codex/-/codex-0.1.2504251709.tgz
+	b2sums = 41bdbfffe9d3f80bcc49459797f4a5ba77eb257e5e35aec1b2233915846cd81a86c08a408d166cb5725edeb9c64d0717f9828a9b38cd59768f3e67293e81c108
 
 pkgname = openai-codex
