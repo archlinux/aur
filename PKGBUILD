@@ -5,7 +5,7 @@ _pkgname=EasyTier
 pkgbase=easytier
 pkgname=($pkgbase $pkgbase-core $pkgbase-cli $pkgbase-web)
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
@@ -27,7 +27,7 @@ prepare() {
   cd "$_pkgname-$pkgver"
   patch -Np1 -i ../718.patch
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
   pnpm -r install
 }
 
@@ -35,6 +35,7 @@ build() {
   cd "$_pkgname-$pkgver"
   pnpm -r --filter "./easytier-web/*" build
   CFLAGS+=' -ffat-lto-objects' # fix for mimalloc linking
+  CFLAGS+=' -std=gnu17' # fix build mimalloc on gcc15
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --locked --verbose --release --features=embed
