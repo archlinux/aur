@@ -5,7 +5,7 @@ _pkgname=EasyTier
 pkgbase=easytier
 pkgname=($pkgbase $pkgbase-core $pkgbase-cli $pkgbase-web)
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, decentralized mesh VPN with WireGuard support."
 arch=("x86_64" "aarch64")
 url="https://github.com/EasyTier/EasyTier"
@@ -20,7 +20,7 @@ source=(
   "config.toml")
 sha256sums=('2c2d0af6db48d62d57ae26486c2f3a69b98f7a6bc5097c073266e7d09fb1ccb4'
             '57a198f62d08e96415650226ae4e48598bcec86b434ae77fe06f3f5a3e1cd9fb'
-            '8bf506d141f3a7a716a9b483c8d469ad4e727f85c9664a35dbf467ae2c27513f'
+            'c3a88a02c96ccbed58908d91da89338c2d093ec3e571f3861c36a5cd0a92bb21'
             '05518beea8b047d5e9b9adb14f26f85a91e4eea81ead7eeb4743f8978e1fd842')
 
 prepare() {
