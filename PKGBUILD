@@ -1,72 +1,32 @@
 # Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 _pkgname='chatterino2'
-pkgname="${_pkgname}-bin"
-provides=chatterino
-conflicts=chatterino
-pkgver=2.5.3
-pkgrel=3
-pkgdesc="Second installment of the Twitch chat client series "Chatterino""
-arch=('x86_64')
-url="https://github.com/chatterino/chatterino2"
-license=('MIT')
-depends=(
-	brotli
-	fontconfig
-	freetype2
-	glib2
-	harfbuzz
-	icu
-	libx11
-	libglvnd
-	libjpeg-turbo
-	libnotify
-	libxkbcommon{,-x11}
-	openssl
-	xcb-util-{image,wm,cursor,keysyms,renderutil}
-	)
-makedepends=('binutils' 'grep' 'patchelf')
-optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output'
-            'gst-plugins-good: For audio output')
-provides=(chatterino)
-conflicts=(chatterino)
-source=("${url}/releases/download/v$pkgver/Chatterino-Ubuntu-24.04.deb")
-sha256sums=('8a68cf764716a7c68941c6288335a81888d2bd9df44fa4d1d866cc0ca681aba7')
-package() {
-	bsdtar -xf data.tar.zst -C "${pkgdir}"
-	install -d "${pkgdir}/opt/${_pkgname}" #why?
-	install -d "$pkgdir/usr/bin"
-	#Replace icu
-	_icuorig=$(ldd "$pkgdir"/usr/bin/chatterino|grep libicui18n.so.|awk '{print $1}' |sed s/libicui18n.so.//) #incomplete
-	_icumaj=$(grep LIB_VERSION_MAJOR /usr/lib/icu/current/Makefile.inc|awk {'print $3'})
-	nm -D "$pkgdir/usr/bin/chatterino"|grep $_icuorig|awk '{print $2 " " $2 | " sed s/'$_icuorig'$/'$_icumaj'/ "}' |tee  map.txt
-	patchelf "$pkgdir/usr/bin/chatterino" --rename-dynamic-symbols map.txt --replace-needed libicuuc.so{.$_icuorig,} --replace-needed libicui18n.so{.$_icuorig,}
-}
-
-_rpm="""Fedora binary works on pure Wayland. 2.5.3 is unreleased.
-_pkgname='chatterino2'
 pkgname=${_pkgname}-bin
 provides=chatterino
 conflicts=chatterino
-pkgver=2.5.2
-_rpmrel=2.fc42
-pkgrel=3
+pkgver=2.5.3 #unused var. but needed to update
+pkgrel=4
 pkgdesc='A chat client for Twitch.tv.'
 arch=('x86_64')
 url='https://github.com/chatterino/${_pkgname}'
 license=('MIT')
-depends=(hicolor-icon-theme openssl
+depends=(glib2 gdk-pixbuf2 hicolor-icon-theme libnotify openssl
 	qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
 optdepends=('streamlink: For piping streams to video players'
 			'qt6-wayland: Wayland support')
+makedepends=('flatpak')
 provides=(chatterino)
 conflicts=(chatterino)
-source=(https://kojipkgs.fedoraproject.org//packages/${_pkgname}/${pkgver}/${_rpmrel}/${arch}/${_pkgname}-${pkgver}-${_rpmrel}.${arch}.rpm)
-sha256sums=('950c12406b84ea2c994a89aaf9d02b38157ecfb625fe0574b1e4f066a101f0db')
-build() {
-	rm -r usr/{lib,share/metainfo} #gabadge
-	mv usr/share/licenses/${_pkgname}{,-bin}
+prepare() {
+	export FLATPAK_USER_DIR=${srcdir}
+	flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+	flatpak --user install -y --reinstall --no-deps flathub com.chatterino.chatterino
+}
+pkgver() {
+	flatpak info com.chatterino.chatterino|grep Version|awk '{print $2}'
 }
 package() {
-	mv usr ${pkgdir}
-}"""
+	install -d "${pkgdir}"/usr/share
+	cd app/com.chatterino.chatterino/current/active/files
+	mv bin "${pkgdir}"/usr
+	mv share/{applications,icons} "${pkgdir}"/usr/share
+}
