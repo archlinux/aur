@@ -2,7 +2,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=plank-reloaded-docklet-picky-git
-pkgver=0.1.1.r0.g1982375
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Color Picker docklet for Plank Reloaded'
 arch=('x86_64')
