@@ -1,7 +1,7 @@
 # Maintainer: User0 <user0thenyancat@proton-me>
 pkgname=erwise
 pkgver="0.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="An early discontinued web-browser built with Motif. Doesn't seem to successfully connect to the web, however opens local HTML files really well."
 arch=('x86_64')
 url="https://ftp.funet.fi/pub/networking/services/www/erwisE/"
@@ -15,7 +15,6 @@ depends=(
     "libxt"
     "libxaw"
     "libxi" # <- unsure?
-    "xorg-fonts-misc"
 )
 makedepends=(
     "make"
