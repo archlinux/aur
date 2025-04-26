@@ -4,14 +4,14 @@ _pkgauthor=hanshuaikang
 _pkgname=nping
 pkgname=${_pkgname}-bin
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('glibc')
-conflicts=("${_pkgname}" "nmap")
+conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 options=(!strip !lto)
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
@@ -26,7 +26,7 @@ sha256sums_aarch64=('23ef443353c2ef335a81d6ed6c4313e2a643a1c418462d654116bde9861
 package() {
   cd "${srcdir}/" || exit
 
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-rs"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
