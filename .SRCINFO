@@ -1,6 +1,6 @@
 pkgbase = chatterino2-nightly-bin
 	pkgdesc = A chat client for Twitch.tv. (Nightly build)
-	pkgver = 20250426T120229.2.5.3
+	pkgver = 2.5.3.20250426T120229
 	pkgrel = 1
 	url = https://github.com/chatterino/chatterino2
 	arch = x86_64
