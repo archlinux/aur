@@ -13,7 +13,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('git' 'cargo' 'protobuf' 'rust-bindgen')
 source=("git+https://github.com/EasyTier/EasyTier.git" "easytier.service" "config.toml")
 sha256sums=('SKIP'
-            '8bf506d141f3a7a716a9b483c8d469ad4e727f85c9664a35dbf467ae2c27513f'
+            'df7e33920d5b126aecfa40b5aa38b407fcd6f3762f0fdd87ae0823737940c4d0'
             '05518beea8b047d5e9b9adb14f26f85a91e4eea81ead7eeb4743f8978e1fd842')
 
 prepare() {
