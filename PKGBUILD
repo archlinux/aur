@@ -1,12 +1,16 @@
-# Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
+# Maintainer: erdii <me@erdii.engineering>
+# Maintainer of non git version this was adapter from: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
-pkgname=wlr-which-key
-pkgver=1.1.0
+pkgname=wlr-which-key-git
+_pkgname=${pkgname%"-git"}
+pkgver=1.1.0.r8.gd201a57
 pkgrel=1
 pkgdesc="Keymap manager for wlroots-based compositors"
 arch=(x86_64)
-url="https://github.com/MaxVerevkin/$pkgname"
+url="https://github.com/MaxVerevkin/${_pkgname}"
 license=(GPL-3.0-only)
+conflicts=('wlr-which-key')
+provides=("wlr-which-key=${pkgver}")
 depends=(
   cairo
   gcc-libs
@@ -15,26 +19,33 @@ depends=(
   libxkbcommon
   pango
 )
-makedepends=(rust)
+makedepends=(
+  rust
+  git
+)
 options=(!debug)
-source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('7587df96f040b817120179baefdc07cd3ebe2ba7b6718ec7268c1ea7a83c9f662d8e99b61cc7cc007b8dfa9d24f46a7b81ea8cbdb7cf4c1db09ee5d76bcd6642')
+source=(wlr-which-key::git+$url)
+sha256sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 prepare() {
-  cd $pkgname-$pkgver
-  export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
+  cd $_pkgname
+  export CARGO_HOME="$srcdir"/$_pkgname/.cargo
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $pkgname-$pkgver
-  export CARGO_HOME="$srcdir"/$pkgname-$pkgver/.cargo
+  cd $_pkgname
+  export CARGO_HOME="$srcdir"/$_pkgname/.cargo
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -vDm755 target/release/$pkgname -t "$pkgdir"/usr/bin/
+  cd $_pkgname
+  install -vDm755 target/release/$_pkgname -t "$pkgdir"/usr/bin/
 }

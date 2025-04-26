@@ -1,19 +1,22 @@
-pkgbase = wlr-which-key
+pkgbase = wlr-which-key-git
 	pkgdesc = Keymap manager for wlroots-based compositors
-	pkgver = 1.1.0
+	pkgver = 1.1.0.r8.gd201a57
 	pkgrel = 1
 	url = https://github.com/MaxVerevkin/wlr-which-key
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = rust
+	makedepends = git
 	depends = cairo
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
 	depends = libxkbcommon
 	depends = pango
+	provides = wlr-which-key=1.1.0.r8.gd201a57
+	conflicts = wlr-which-key
 	options = !debug
-	source = https://github.com/MaxVerevkin/wlr-which-key/archive/v1.1.0/wlr-which-key-1.1.0.tar.gz
-	b2sums = 7587df96f040b817120179baefdc07cd3ebe2ba7b6718ec7268c1ea7a83c9f662d8e99b61cc7cc007b8dfa9d24f46a7b81ea8cbdb7cf4c1db09ee5d76bcd6642
+	source = wlr-which-key::git+https://github.com/MaxVerevkin/wlr-which-key
+	sha256sums = SKIP
 
-pkgname = wlr-which-key
+pkgname = wlr-which-key-git
