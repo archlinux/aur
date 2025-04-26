@@ -2,7 +2,7 @@
 
 pkgname=nping
 _name=Nping
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="🏎 Nping mean NB Ping, A Ping Tool in Rust with Real-Time Data and Visualizations"
 arch=($CARCH)
@@ -16,16 +16,17 @@ depends=(
     glibc
 )
 makedepends=(
-    cargo
+    rust
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d445cb65d0f048df39cb18a8cec94168940c98a59cea5673d15a26f0de87201')
+sha256sums=('2332facafc52ab150cc1e7932af2cae5c524c6aaa10c192193e0277b53a41030')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}/"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
