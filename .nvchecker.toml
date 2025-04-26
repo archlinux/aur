@@ -1,0 +1,5 @@
+[cro-chain-maind-bin]
+source = "github"
+github = "crypto-org-chain/chain-main"
+use_latest_release = true
+prefix = "v"
