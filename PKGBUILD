@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgname="${_name}-git"
 pkgbase="${_name}"
-pkgver=bcd4d3a
+pkgver=d1534b9
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -27,13 +27,13 @@ pkgver() {
 build() {
     cd "${srcdir}/${_name}"
     gcc -std=c99 -Dversion_string=\""Git#${pkgver}"\" $(pkg-config --cflags gtk+-3.0) -o ${_name} ${_name}.c $(pkg-config --libs gtk+-3.0)
-    sed -i s/'\$DATE\$'/"$(date +%Y-%m-%d)"/g invo.1
-    sed -i s/'\$VERSION\$'/"Git#${pkgver}"/g invo.1
+    sed -i s/'\$DATE\$'/"$(date +%Y-%m-%d)"/g man/invo.1
+    sed -i s/'\$VERSION\$'/"Git#${pkgver}"/g man/invo.1
 }
 
 package() {
     cd "$srcdir/${_name}"
     install -Dm 755 "${_name}" "${pkgdir}/usr/bin/${_name}"
-    install -Dm 644 "${_name}.1" "${pkgdir}/usr/share/man/man1/${_name}.1"
+    install -Dm 644 "man/${_name}.1" "${pkgdir}/usr/share/man/man1/${_name}.1"
     install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
