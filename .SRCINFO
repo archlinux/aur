@@ -1,7 +1,7 @@
 pkgbase = handbrake-git
 	pkgdesc = Multithreaded video transcoder. Enabled: x265, nvenc, nvdec, qsv, vce, numa, hardened, libdovi. Last stable branch
 	pkgver = 1.9.2.r0.ge117cfe7f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HandBrake/HandBrake
 	arch = i686
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = handbrake-git
 	optdepends = cuda: for Nvidia users, enable Nvidia nvdec
 	optdepends = amf-amdgpu-pro: for enabling AMD AMF
 	options = !lto
-	source = handbrake::git+https://github.com/HandBrake/HandBrake.git#branch=1.9.x
+	source = git+https://github.com/HandBrake/HandBrake.git#branch=1.9.x
 	sha256sums = SKIP
 
 pkgname = handbrake-git
