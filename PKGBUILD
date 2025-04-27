@@ -2,7 +2,7 @@
 
 _binname=xenia_canary
 pkgname=xenia-canary-git
-pkgver=r7820.b8296a9bc
+pkgver=r7821.b4524f646
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
