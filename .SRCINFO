@@ -1,6 +1,6 @@
 pkgbase = r-ribocrypt
 	pkgdesc = Interactive visualization in genomics
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RiboCrypt
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-ribocrypt
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RiboCrypt_1.12.0.tar.gz
-	sha256sums = 79b2a864c5439f985582dc7fa6447272a5e2ddb820252ebd801140b00606c846
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RiboCrypt_1.13.0.tar.gz
+	sha256sums = d75a35df135ddb1818b6cd06427ea02654d5bbaea34c135cc37b1077f311b26b
 
 pkgname = r-ribocrypt
