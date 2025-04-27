@@ -1,7 +1,7 @@
 pkgbase = lm_sensors-it87-git
 	pkgdesc = Expands list of supported devices not yet mainlined
 	pkgver = 3.6.0.r41.g31d1f125
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://hwmon.wiki.kernel.org/lm_sensors
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = lm_sensors-it87-git
 	optdepends = rrdtool: for logging with sensord
 	optdepends = perl: for sensor detection and configuration convert
 	provides = libsensors.so
+	provides = lm_sensors
+	conflicts = lm_sensors
 	backup = etc/sensors3.conf
 	backup = etc/healthd.conf
 	backup = etc/conf.d/sensord
