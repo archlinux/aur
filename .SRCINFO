@@ -1,7 +1,7 @@
 pkgbase = beamerpresenter
 	pkgdesc = Modular multi-screen pdf presenter
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
 	license = AGPL3
@@ -10,9 +10,6 @@ pkgbase = beamerpresenter
 	makedepends = qt6-tools
 	depends = qt6-multimedia
 	depends = qt6-svg
-	depends = jbig2dec
-	depends = openjpeg2
-	depends = gumbo-parser
 	depends = libmupdf
 	provides = beamerpresenter=0.2.6
 	conflicts = beamerpresenter
