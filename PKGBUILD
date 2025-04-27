@@ -3,7 +3,7 @@
 _pkgauthor=jcaromiq
 _pkgname=goku
 pkgname=${_pkgname}-bin
-pkgver=1.1.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="HTTP load testing application"
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-musl-${arch[0]}.tar.gz")
 
 sha256sums=('b5f125293d8f7ed90ee6af4e4675e0b6722ba979aa7ac8c77b26cdc5c25b34f6'
-            '1fc70daf65c5a4171fe82e3258749afd818e2136d9addaef1ef444b7d62b1ace')
-sha256sums_x86_64=('66f63db52a3a0ede3b681faf2796eabd1e835d11f8c2ecde77b04f5ef890b43e')
+            '026d02759d9949024f3f2eee6a0e53890a365e825e43b2217ecf20b0c57d50bc')
+sha256sums_x86_64=('e8b601af9a28ebd12d956568d91fde823622411ef74a0e1a6bff3af7ac9d357e')
 
 package() {
 	cd "${srcdir}"
