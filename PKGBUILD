@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDNAx
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('274f1f9cbd1e5ade86dd097682a3892c')
-b2sums=('b3661b41c32803bb172e5bf42797a9c463d089c5e49023c9115d13b5fe81ce280cfa89ad77f7de012f9f0276f59538d3492e72abbf4143186e9e56cb75136c88')
+md5sums=('58b6b0e0ba49680b78ad87aa07856cc2')
+b2sums=('0b090996be7aabf4f0bbfc659aa1368009d9b17a7ae7257d094be00d7d0c2b6cc6fbc912a28ec976c0f51e20416c3485fa06607078e029e16bfea896e684264d')
 
 build() {
   mkdir build
