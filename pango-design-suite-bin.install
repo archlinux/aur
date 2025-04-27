@@ -4,4 +4,6 @@ post_install() {
     # https://wiki.archlinux.org/index.php/udev#Loading_new_rules
     udevadm control --reload
     udevadm trigger
+    echo "> Apply for License"
+    echo "  https://www.pangomicro.com/resources/software/pds/#sq"
 }
