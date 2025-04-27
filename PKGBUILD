@@ -17,8 +17,9 @@ b2sums=('0b68a408d057c048d87ecd8ff3941734fa520f36dd4e84a740228e860a073e15c6bff7e
 
 prepare() {
 	sed -i 's/{num}/34/' freetube.sh
-	tar xfC data data.tar.xz
-	sed -i 's/\/opt\/FreeTube\/freetube/\/usr\/bin\/freetube/' "$srcdir/usr/share/applications/freetube.desktop"
+	mkdir -p data; tar xfC data.tar.xz data
+	sed -i 's/\/opt\/FreeTube\/freetube/\/usr\/bin\/freetube/' \
+           "$srcdir/data/usr/share/applications/freetube.desktop"
 }
 
 package() {
