@@ -3,8 +3,8 @@
 _pkgauthor=netheril96
 _pkgname=securefs
 pkgname=${_pkgname}-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A filesystem in userspace (FUSE) with transparent encryption and decryption"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,11 +21,11 @@ source=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-release.zip
         "DESIGN-${pkgver}::${_urlraw}/docs/design.md"
         "USAGE-${pkgver}::${_urlraw}/docs/usage.md")
 
-sha256sums=('a3456b7c5bf9e6eeeca48d938a2aa3f765b11115987c3ba0d246c842f72a5d6d'
+sha256sums=('68bcad8312f0ee82a8fb314eec5aca4dff3db50cf64e621ef7e4e3a10c305ae2'
             '4b4e85715ed4e80f60c002775c13c69386faffc84c60f59b5a2fc85ae3f432d1'
-            '5d8ecbaf44c7193fe1dc6391f21722dd508b5166141cafba2a85b48e5685438e'
+            '38dec83cd881018b69e0bb515c61a65c726bf6e9df199b95436b442c7927a7e0'
             'c8abf21a65d072f3493ef9ef19c2fbfb29ca43be386f7438d1fe72b7a7f5e31d'
-            '265df775dccfa32fa27240f188ddf6ca97e8752d8dd27fdd7c59471234209567')
+            '79c5725a1bcf4e4febcbfbf1f1d77751ab12d4def4306fc6a9c30e0a44a14d63')
 
 
 package() {
