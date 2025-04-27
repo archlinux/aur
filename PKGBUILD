@@ -1,7 +1,7 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp-pre
-pkgver=v2023.12.13
+pkgver=v2023.12.14
 pkgrel=1
 pkgdesc="YAMF (Yet another Misskey fork) bringing you no-nonsense fixes, features & improvements you actually want since 2023"
 arch=(x86_64 aarch64)
