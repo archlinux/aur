@@ -1,0 +1,11 @@
+% layout 'android-qt6-module';
+\
+_qtver=6.9.0
+pkgver=${_qtver/-/}
+pkgrel=1
+arch=(any)
+url='https://www.qt.io'
+license=(GPL-3.0-only LGPL-3.0-only LicenseRef-Qt-Commercial Qt-GPL-exception-1.0)
+pkgdesc='Qt Graphs for data visualization (android)'
+depends=(<%== qt6deps qw(declarative quick3d) %>)
+makedepends=('android-cmake<%== $static_suffix %>' <%== qt6deps qw(shadertools) %> 'qt6-declarative' 'qt6-shadertools'  'qt6-quick3d' 'ninja')
