@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sitadela
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,8 +33,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('707012bd9511f0c66885f57ee1c177e7')
-b2sums=('69c2d5b3f1e8ccbcd386bc7f84a262ea7f01b42168cdbd55b6a71d38fbcdbb5420982de8f41b59abe8dfa74df1f19d99a35498b029437a22685b5d53cc1a7d8b')
+md5sums=('7e02529ff9cfe0158cbf22d922e94809')
+b2sums=('4c12a79cf9901d32033787cef4d2fb2a2dd76b58646ced7b3886c777f31e2f1b5ffcb8b6fa80e02a2625f3d9177abb3e17f9ea3ca3b4e71a28078c38f9629160')
 
 build() {
   mkdir build
