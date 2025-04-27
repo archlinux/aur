@@ -1,0 +1,23 @@
+pkgbase = python-pyzotero-git
+	pkgdesc = A Python wrapper for the Zotero API
+	pkgver = 1.6.11.r6.gbaa510b
+	pkgrel = 1
+	url = https://github.com/urschrei/pyzotero
+	arch = any
+	license = BlueOak-1.0.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	depends = python-requests
+	depends = python-feedparser
+	depends = python-bibtexparser
+	depends = python-pytz
+	provides = python-pyzotero
+	conflicts = python-pyzotero
+	source = python-pyzotero::git+https://github.com/urschrei/pyzotero.git
+	sha512sums = SKIP
+
+pkgname = python-pyzotero-git
