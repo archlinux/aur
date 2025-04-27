@@ -1,6 +1,6 @@
 pkgbase = r-sarc
 	pkgdesc = Statistical Analysis of Regions with CNVs
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SARC
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = r-sarc
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SARC_1.4.0.tar.gz
-	md5sums = e9da6decb3dcdfca23fcb7cef3cfe455
-	b2sums = 5a55214038dab78628bddb8aa2679f897858343bcf864d9e181b439c7ac46e2545c6ddd8ee14a2b245e76bd0cbcba02dcc3313c3cfa1548c01e32a9ce3390e56
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SARC_1.6.0.tar.gz
+	md5sums = ab25e05af52b105482358ff4d61462bb
+	b2sums = 8239f17b43adbd9ece9121282482b566d2c9ed73c8e99c2da2d66585b8e4c3864491eb9dc8af52631a02b2e81fa5174f481b4ffb349a7e6513e77a17449f071b
 
 pkgname = r-sarc
