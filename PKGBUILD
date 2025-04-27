@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EpiMix
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -65,8 +65,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57f538e07e645b5c7599f157ef2716ad')
-b2sums=('8f149d53a7285c1552258d43a1877d46a3bbfb3d317444171137405a3bed757b933c572b7c7d5a8d0e3c610d7a78e5440737e8959a4f3310bcfa7c4d3c63b35f')
+md5sums=('d0681128378b5066107a293e0202d38a')
+b2sums=('9ef9b222ff3d427a120e76b2a9b13eab197d340c45489d9762c7d6d2116e1fe41a9b8fc8049fe1a692c76d439aae2cbfae6ca5878e4761cfe6315d44e97410dd')
 
 build() {
   mkdir build
