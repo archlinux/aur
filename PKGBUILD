@@ -2,7 +2,7 @@
 
 pkgname=sonicradio
 pkgver=0.6.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A TUI radio player making use of Radio Browser API and Bubbletea."
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dancnb/sonicradio"
