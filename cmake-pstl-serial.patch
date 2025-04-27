@@ -1,0 +1,9 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,0 +29,6 @@
++# Force libstdc++ Parallel STL to use the serial backend (disable oneTBB)
++add_compile_definitions(
++  _GLIBCXX_USE_TBB_PAR_BACKEND=0
++  _PSTL_PAR_BACKEND_SERIAL
++)
++

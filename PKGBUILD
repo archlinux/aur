@@ -3,7 +3,7 @@
 
 pkgname=openspace-git
 _pkgname=OpenSpace
-pkgver=v0.20.0.280.ge93ad7910f
+pkgver=v0.20.0.330.ge0df6d6c2e
 pkgrel=1
 pkgdesc="OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos"
 arch=('x86_64')
@@ -14,10 +14,13 @@ depends=('gdal' 'mpv' 'vulkan-headers' 'libxinerama' 'libxi' 'qt6-base' 'nss' 'a
 conflicts=('openspace')
 source=("git+https://github.com/OpenSpace/OpenSpace.git#branch=master"
 	"open-space"
-	"update-cfg.patch")
+	"update-cfg.patch"
+	"cmake-pstl-serial.patch")
 sha256sums=('SKIP'
 		    56c958c21b0dc0cd2dc822f24788cd5889a222acd82407e6800b167e6c277681
-		    b9d6d8084f07a0a47c3cb4e39a2e9063f7b03b30ae35ef0348ff5d1c173e7d36)
+		    b9d6d8084f07a0a47c3cb4e39a2e9063f7b03b30ae35ef0348ff5d1c173e7d36
+		    eabbbf1c7bba8d6ad8673a71b7d47347f4f5318b6a0cb2ea305c1d18ab9c130f
+		    )
 
 options=(!debug)
 
@@ -31,6 +34,7 @@ prepare() {
 		git submodule update --init --recursive
 		# patch main configuration file to enable local user execution.
 		patch < "${srcdir}/update-cfg.patch"
+		patch < "${srcdir}/cmake-pstl-serial.patch"
 }
 
 
