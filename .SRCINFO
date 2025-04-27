@@ -1,6 +1,6 @@
 pkgbase = r-gmapr
 	pkgdesc = An R interface to the GMAP/GSNAP/GSTRUCT suite
-	pkgver = 1.46.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gmapR
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-gmapr
 	optdepends = r-org.hs.eg.db
 	optdepends = r-runit
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gmapR_1.46.0.tar.gz
-	sha256sums = 036c6fc83af76150625a22923c1dfa201e2aac68ae0475419fb92a55e41bb67e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gmapR_1.50.0.tar.gz
+	sha256sums = bb15c240b888058d529dc1b21fe70e4e93fe38c6cab2a9b62807daba47e04b78
 
 pkgname = r-gmapr
