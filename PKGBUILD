@@ -6,7 +6,7 @@ _pkgname=Vesktop
 _appname=vencord-desktop
 pkgver=1.5.6
 _electronversion=35
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,6 +25,7 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'debugedit'
+    'vencord'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
@@ -38,7 +39,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/--ozone-platform-hint=auto --enable-wayland-ime/g
+        s/@options@/-enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform-hint=auto --enable-wayland-ime/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
