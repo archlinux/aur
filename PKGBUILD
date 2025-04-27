@@ -1,9 +1,10 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: devome <evinedeng@hotmail.com>
 
 _pkgname=pgvector
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="pgvector support for Python"
 arch=('any')
@@ -12,7 +13,7 @@ license=('MIT')
 depends=(python-numpy)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('f909f8e8081b57fb8a2442c36c3a1e521228d0d4ad66100c28c674806ff62688')
+b2sums=('3a852b6d09227919288fed97fc2c72389ff5bf006ae5a9ca01f55b5fa5022336f82fd3764725da1f99c630db87a6dafc46777872133685fabfe8da302d295751')
 
 build() {
     cd "${_pipname}-${pkgver}"

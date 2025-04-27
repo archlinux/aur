@@ -1,0 +1,3 @@
+[python-pgvector]
+source = "pypi"
+pypi = "pgvector"
