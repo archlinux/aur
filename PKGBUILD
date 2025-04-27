@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=REDseq
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Analysis of high-throughput sequencing data processed by restriction enzyme digestion'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
   r-multtest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bef5ed84334475b81ff1d44092849129a527e5a0b7a6335129335dd6c898867c')
+sha256sums=('bcefc548d07b080b9dea297f55328ceac7e9ab7787ebfc87c728ab709f201fd8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
