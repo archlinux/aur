@@ -2,7 +2,7 @@
 
 _binname=xenia_canary
 pkgname=xenia-canary-git
-pkgver=r7796.4b24f128f
+pkgver=r7820.b8296a9bc
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -44,6 +44,7 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'fmt::git+https://github.com/fmtlib/fmt.git'
         'glslang::git+https://github.com/KhronosGroup/glslang.git'
         'imgui::git+https://github.com/ocornut/imgui.git'
+        'libusb::git+https://github.com/libusb/libusb.git'
         'premake-androidndk::git+https://github.com/Triang3l/premake-androidndk.git'
         'premake-cmake::git+https://github.com/JoelLinn/premake-cmake.git'
         'premake-core::git+https://github.com/premake/premake-core.git'
@@ -62,9 +63,9 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'zstd::git+https://github.com/facebook/zstd.git'
         "${pkgname}.desktop"
         '0001-use-system-premake5.patch'
-        '0002-use-cmake-build-instead.patch'
-        '0003-disable-portable-mode.patch::https://github.com/xenia-canary/xenia-canary/pull/535/commits/38058a15d5670e14ab1b6b11f78f78ed6e7b6a6c.patch')
+	'0002-use-cmake-build-instead.patch')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -102,8 +103,7 @@ sha256sums=('SKIP'
             'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
             'd8df7c6d7047fdc4278315b733a470843eab608f8bba5b8ea4355e8c4f44c88f'
-            'd6027c91a57272211a6b49adb2a8af6a740716ed9cfa4f95bd74ce4df3491fc2'
-            'fd314745ca74654afcd047028d2000ac359e106b2bf75b0fa3ff24ec6b08aa8b')
+	    'd6027c91a57272211a6b49adb2a8af6a740716ed9cfa4f95bd74ce4df3491fc2')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"
@@ -112,7 +112,6 @@ pkgver() {
 prepare() {
   patch -d "${pkgname}" -Np1 < 0001-use-system-premake5.patch
   patch -d "${pkgname}" -Np1 < 0002-use-cmake-build-instead.patch
-  patch -d "${pkgname}" -Np1 < 0003-disable-portable-mode.patch
   sed --in-place '/fatalwarnings("All")/d' "${pkgname}"/premake5.lua
 
   for submodule in $(git -C "${pkgname}" submodule | awk '{print $2}')

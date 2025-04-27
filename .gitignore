@@ -22,6 +22,7 @@
 /fmt
 /glslang
 /imgui
+/libusb
 /premake-androidndk
 /premake-cmake
 /premake-core
