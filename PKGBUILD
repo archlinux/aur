@@ -23,9 +23,12 @@ prepare() {
 
 package() {
 	depends=('electron' 'ttf-liberation')
-	install -Dm644 data/opt/FreeTube/resources/app.asar "$pkgdir/usr/lib/$pkgname/app.asar"
-	install -Dm644 data/usr/share/applications/freetube.desktop "$pkgdir/usr/share/applications/freetube.desktop"
-	install -Dm644 data/usr/share/icons/hicolor/scalable/apps/freetube.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/freetube.svg"
+	install -Dm644 data/opt/FreeTube/resources/app.asar \
+                   "$pkgdir/usr/lib/$pkgname/app.asar"
+	install -Dm644 data/usr/share/applications/freetube.desktop \
+                   "$pkgdir/usr/share/applications/freetube.desktop"
+	install -Dm644 data/usr/share/icons/hicolor/scalable/apps/freetube.svg \
+                   "$pkgdir/usr/share/icons/hicolor/scalable/apps/freetube.svg"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -Dm755 freetube.sh "$pkgdir/usr/bin/freetube"
 }
