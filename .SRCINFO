@@ -1,0 +1,14 @@
+pkgbase = mingw-w64-gdb-target
+	pkgdesc = Cross-debugger server for Win32 and Win64 using MinGW-w64 extracted from Debian package
+	pkgver = 16.1.1
+	pkgrel = 1
+	url = https://packages.debian.org/sid/all/gdb-mingw-w64-target
+	arch = i686
+	arch = x86_64
+	license = GPL-3+
+	conflicts = mingw-w64-gdb-target
+	options = !docs
+	source = http://ftp.debian.org/debian/pool/main/g/gdb-mingw-w64/gdb-mingw-w64-target_16.1-1+13.2_all.deb
+	sha256sums = 83e57f98a78ecd42cf9d418132d42482bcdfbcc571b95c0ff04c1df8716af0bc
+
+pkgname = mingw-w64-gdb-target
