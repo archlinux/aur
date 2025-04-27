@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ORFik
-_pkgver=1.26.2
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -50,8 +50,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1a2c8f6a3d88637642f4cd5ade2214e6')
-b2sums=('012f762fa66287eaa182e9dfe67333de2081401992b34e68b2c8ee2f7c1a7a5cc333650b30f55cb72cdf6c70ec514fc1e3ea1ea5f847348c9905f5ea4fb51afb')
+md5sums=('a6d84a239a77233f88eff4608cb55b02')
+b2sums=('2c6ac1b6b6b93143e39efeb7d93fb94e1e94a810c00ed6fc632e6fbea72937afda591db9bd14198922c83f11c9c2f61941ad200976a8ac1b8bb9932338eb1f77')
 
 build() {
   mkdir build
