@@ -42,5 +42,5 @@ package() {
 	install -Dm644 "completions/getquotes.elv" "${pkgdir}/usr/share/elvish/completions/getquotes.elv"
 
 	# Install PowerShell completions
-	install -Dm644 "completions/getquotes.ps1" "${pkgdir}/usr/share/powershell/Modules/GetQuotes/getquotes.ps1"
+	install -Dm644 "completions/_getquotes.ps1" "${pkgdir}/usr/share/powershell/Modules/GetQuotes/_getquotes.ps1"
 }
