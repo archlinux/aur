@@ -1,5 +1,5 @@
 pkgbase = netdata-v1
-	pkgdesc = Real-time performance monitoring, in the greatest possible detail, over the web
+	pkgdesc = Real-time performance monitoring. Freeze the version on 2.2.6 since version 2.3.0 has deprecated UI v1
 	pkgver = 2.2.6
 	pkgrel = 3
 	url = https://github.com/netdata/netdata
