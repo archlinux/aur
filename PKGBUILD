@@ -1,7 +1,7 @@
 # Maintainer: Ashe Sterling <ashe.sterling@outlook.com>
 pkgname=clrblk
-pkgver=1.0.3
-pkgrel=1
+pkgver=1.0.4
+pkgrel=2
 pkgdesc="A simple utility to show and test pretty (and not so pretty) colors in the terminal."
 arch=('x86_64')
 url="https://gitlab.com/ashe.sterling/clrblk"
