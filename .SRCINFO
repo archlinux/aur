@@ -1,7 +1,7 @@
 pkgbase = asset-ripper-bin
 	pkgdesc = GUI Application to work with engine assets, asset bundles, and serialized files
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AssetRipper/AssetRipper
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = asset-ripper-bin
 	depends = gcc-libs
 	depends = dbus
 	depends = glibc
+	depends = qt-sudo
+	depends = webkit2gtk-4.1
 	options = !debug
 	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.2.1/LICENSE.md
 	source = https://raw.githubusercontent.com/AssetRipper/AssetRipper/refs/tags/1.2.1/Media/Images/LogoReimagined/LogoReimaginedTransparent.png
