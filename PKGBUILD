@@ -1,49 +1,38 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: chimeracoder <dev@chimeracoder.net
-pkgname='perl-moosex-types'
-pkgver='0.50'
-pkgrel=3
+
+pkgname=perl-moosex-types
+pkgver=0.51
+pkgrel=1
 pkgdesc="Organise your Moose types in libraries"
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-carp-clan' 'perl-moose' 'perl-namespace-clean' 'perl-sub-install' 'perl-sub-name' 'perl-sub-exporter-formethods')
-makedepends=('perl-test-fatal' 'perl-test-requires' 'perl-module-build-tiny')
-url='http://search.cpan.org/dist/MooseX-Types'
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-${pkgver}.tar.gz")
-md5sums=('99b0999ce024c5f27ac00a42a7244ec4')
-sha512sums=('42606b1caeb6423acaaa9288239c63512f398a2fba45492443d3e003c6ae3e93cbd8ea2631d487e428ea7d25b63744e4c2096a1e53012e262c99ff4b0c29484b')
-_distdir="MooseX-Types-${pkgver}"
+license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
+depends=('perl' 'perl-carp-clan' 'perl-module-runtime' 'perl-moose'
+         'perl-sub-exporter' 'perl-sub-exporter-formethods' 'perl-sub-install'
+         'perl-namespace-autoclean')
+makedepends=('perl-module-build-tiny')
+checkdepends=('perl-test-fatal' 'perl-test-needs')
+url="https://metacpan.org/dist/MooseX-Types"
+source=("https://www.cpan.org/modules/by-module/MooseX/MooseX-Types-${pkgver}.tar.gz")
+sha512sums=('0030a5b770349635605e08b93c90c4442b954b76d096c6fe845ee724a13b4d23dc68c963b5b7d7017b7e310011d87159ee27eabac1a524f8becece66ce97a464')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/MooseX-Types-${pkgver}"
 
-    cd "$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  perl Build.PL --create_packlist=0
+  ./Build
 }
 
 check() {
-  cd "$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "${srcdir}/MooseX-Types-${pkgver}"
+
+  ./Build test
 }
 
 package() {
-  cd "$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+  cd "${srcdir}/MooseX-Types-${pkgver}"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+  ./Build install --installdirs=vendor --destdir="${pkgdir}"
+}
