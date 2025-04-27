@@ -1,6 +1,6 @@
 # Maintainer: Glitt3ring
 pkgname=blockdodger
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 epoch=
 pkgdesc="Block Dodging game Made by Glitt3ring."
@@ -29,4 +29,5 @@ package() {
 	chmod +x install.sh
 	sh install.sh
 	sudo chmod +x /usr/bin/blockdodger
+	sudo chmod +x /usr/bin/blockdodgerreadme
 }
