@@ -1,8 +1,9 @@
-# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Maintainer: Christian Heusel <gromit@archlinux.org>
+# Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
-# Contributor:  Timofey Titovets <nefelim4ag@gmail.com>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -47,7 +48,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20250403.r0.gf0a16f536332
+pkgver=20250424.r0.g393d0c54cae3
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -314,7 +315,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'e6f3fe9d250ba1c893983653e75988145ac0db189ffcb3c060b5a83c6bd40f475d6a216692b0f6f5803082bf08837e8faa1b007edca80b38b1fc05cff97b4229'
+            '7da6449710f23cbc2da2fdfcda45886dd1236bf29328f9e5ff7bb17dbe4213e5ae1d3d9f0df7ef64eeb8321e38f71da23d80bdde865359ea01e40e950ef5dfba'
             'a6bfcb3e9a0ece10aefc22094cb6ce892cbb1bd8be4bd0c3b154605b8d76ed8da754031c07d33d46bdc7afe7f57fe863d61ab501f245c778271281e56ac38cf8'
             'c80c012db7dc8cc0cbd14bb6c08da9da28c5c72c5cd2835b936be300e1e73aeb02b7618ef1276f54ff6547c53ac9599e11fc8a48b0a51c2f7e2ee35bfa3ea49b'
             '3ec45a0d7820126eeb31212aeadbc1d7e672082c9a7c9084ba0a088f85e63d45021d92b403ced7ec156776d830d06427711a81de7cdf3c129a07c2a357519909')
