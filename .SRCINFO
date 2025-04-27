@@ -1,0 +1,22 @@
+pkgbase = blockdodger
+	pkgdesc = Block Dodging game Made by Glitt3ring.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.github.com/glitt3ring/blockdodger.git
+	arch = x86_64
+	arch = i386
+	license = GPL
+	depends = alsa-lib
+	depends = alsa-utils
+	depends = pipewire
+	depends = pipewire-alsa
+	depends = pipewire-audio
+	depends = pipewire-pulse
+	depends = python
+	depends = python-pygame
+	depends = sudo
+	depends = wireplumber
+	source = git+https://www.github.com/glitt3ring/blockdodger.git
+	sha256sums = SKIP
+
+pkgname = blockdodger
