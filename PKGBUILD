@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=python-py-slvs-git
-pkgver=r20.c94979b
-pkgrel=2
+pkgver=1.0.6.r31.ab95814
+pkgrel=1
 pkgdesc="Python binding of SOLVESPACE geometry constraint solver"
 arch=('x86_64')
 url="https://github.com/realthunder/slvs_py"
@@ -25,10 +25,7 @@ sha256sums=("SKIP" "SKIP")
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	( set -o pipefail
-	git describe --tags 2>/dev/null | sed 's/^v-\?//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	printf "%s.r%s.%s" "$(git describe --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -36,6 +33,8 @@ prepare() {
 	git submodule init
 	git config submodule.mysubmodule.url "$srcdir/solvespace"
 	git submodule update
+
+	sed -i "s|'-DENABLE_GUI:BOOL=OFF','-DBUILD_PYTHON:BOOL=ON'|&,'-DCMAKE_POLICY_VERSION_MINIMUM=3.5'|g" "$srcdir/$pkgname/setup.py"
 }
 
 build() {
