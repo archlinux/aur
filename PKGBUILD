@@ -1,36 +1,49 @@
-#!/bin/bash
-
-# Maintainer: pumpkincheshire <me at pumpkincheshire dot com>
+# Contributor: pumpkincheshire <me at pumpkincheshire dot com>
 
 pkgname="python-amazon.ion"
-_name="amazon.ion"
-pkgver=0.9.2
+pkgver=0.13.0
 pkgrel=1
-pkgdesc='A Python implementation of Amazon Ion.'
+pkgdesc='A Python implementation of Amazon Ion'
 url='https://amzn.github.io/ion-docs/'
-arch=('any')
-license=('Apache')
-depends=(
-    'python-py'
-    'python-six'
-)
+arch=('x86_64')
+license=('Apache-2.0')
+depends=('python')
 makedepends=(
-    'python-wheel'
+    'cmake'
+    'git'
     'python-build'
     'python-installer'
+    'python-setuptools'
+    'python-wheel'
+    'python-pytest-runner' # AUR
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('a7ca5d4d81f16c7951679249850c57def9d315a4b904fc248d55823d993c6141b58e963e12f7f3a2f6d35caba58618baf48e243dc3c922c05926763a4c36a7d4')
+source=("git+https://github.com/amazon-ion/ion-python.git#tag=v$pkgver"
+        "git+https://github.com/amazon-ion/ion-c.git")
+b2sums=('6053229fe5edf0f15aeca93632eb20cfa3c40d7466bfcfd214a8292c2bbd9af56a9ccf94ed7b3fd79e46dc017b524a81a2eb9352ae92e1ba05ccb1deea45d92e'
+        'SKIP')
+
+prepare() {
+    cd ion-python
+    git submodule init
+    git config submodule.ion-c.url "$srcdir/ion-c"
+    git -c protocol.file.allow=always submodule update ion-c
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver" || exit
+    # build ion-c (see build-release.sh)
+    cd ion-python/ion-c
+    export CFLAGS+=" -fpermissive"
+    cmake -B build/release -DCMAKE_BUILD_TYPE=Release -DIONC_BUILD_TESTS=OFF .
+    make -C build/release
+    cd ..
 
+    # build module
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver" || exit
+    cd ion-python
     python -m installer --destdir="$pkgdir" dist/*.whl
-
-    # install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
 }
+
+# vim: set ts=4 sw=4 et:
