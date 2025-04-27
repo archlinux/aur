@@ -1,6 +1,6 @@
 pkgbase = r-yarn
 	pkgdesc = YARN: Robust Multi-Condition RNA-Seq Preprocessing and Normalization
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/yarn
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-yarn
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/yarn_1.32.0.tar.gz
-	sha256sums = 4cd0d656024aec2fd3ae3ca394b3a1a9557478afef9f38939589943e1718c147
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/yarn_1.34.0.tar.gz
+	sha256sums = 5f87ebc7ea208c6cde860d4e9a4add4b2bf263599c185dc69cc1a4f0bd95e3a8
 
 pkgname = r-yarn
