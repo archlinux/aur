@@ -1,5 +1,5 @@
 pkgbase = lm_sensors-it87-git
-	pkgdesc = Collection of user space tools for general SMBus access and hardware monitoring
+	pkgdesc = Expands list of supported devices not yet mainlined
 	pkgver = 3.6.0.r41.g31d1f125
 	pkgrel = 3
 	epoch = 1
