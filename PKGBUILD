@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cdncheck"
-pkgver=1.1.15
+pkgver=1.1.16
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,21 +11,30 @@ depends=('glibc')
 makedepends=('go>=1.19')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e416a7b37e0c40877c9052c00fe8a7215296cb4d59be696fd0909bfb4ef72724')
+sha256sums=('7d56993b074d86764624028769a8e41fa1d25040971d1c3fd64c54f47528280a')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${srcdir}/go-mod-cache" -type d -exec chmod 755 {} +
+  find "${srcdir}/go-mod-cache" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" ./"cmd/${pkgname}"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" ./"cmd/${pkgname}"
 }
 
 check() {
