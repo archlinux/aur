@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneLenDataBase
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,8 +15,8 @@ depends=(
   r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('383f08d23aa5b28f812f4d353bc5dd6f')
-b2sums=('8c2a0dae7e745e9dab53c12a8072d3b9a955bf8d5edfdefdaba34152985349420063a6ff8b1f33148506b5a5fe290eea122eacd2b9bd96b95c39d12b68819bc1')
+md5sums=('e1460da5a597ce80521505e1e8087b8c')
+b2sums=('a0d1ec5f98d2e6fc272821a3b4c82389811700cff33d0cdb5bd8c1bf14acd789c43efa303c53596f116f4fb7a6e627bb512cdc9b3e5686f97a78ff9e2696bec2')
 
 build() {
   mkdir build
