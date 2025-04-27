@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gettext
 	pkgdesc = GNU internationalization library (mingw-w64)
-	pkgver = 0.22.5
+	pkgver = 0.24
 	pkgrel = 1
 	url = http://www.gnu.org/software/gettext/
 	arch = any
@@ -15,13 +15,14 @@ pkgbase = mingw-w64-gettext
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.22.5.tar.gz
-	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.22.5.tar.gz.sig
+	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.24.tar.gz
+	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.24.tar.gz.sig
 	source = intl.pc
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
 	validpgpkeys = 68D94D8AAEEAD48AE7DC5B904F494A942E4616C2
 	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
-	sha256sums = ec1705b1e969b83a9f073144ec806151db88127f5e40fe5a94cb6c8fa48996a0
+	validpgpkeys = E0FFBD975397F77A32AB76ECB6301D9E1BBEAC08
+	sha256sums = c918503d593d70daf4844d175a13d816afacb667c06fba1ec9dcd5002c1518b7
 	sha256sums = SKIP
 	sha256sums = 0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c
 
