@@ -1,6 +1,6 @@
 pkgbase = r-guideseq
 	pkgdesc = GUIDE-seq analysis pipeline
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GUIDEseq
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-guideseq
 	optdepends = r-runit
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GUIDEseq_1.36.0.tar.gz
-	sha256sums = 739d3fc4d487b0a85348a35d29b5eeba88783ddc2c58b8fc8c9f5af44679f11c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GUIDEseq_1.38.0.tar.gz
+	sha256sums = b1bfcfe0d278aaefde8d6c1f2c68c32aee636169b20b550ce061aa779a8922a3
 
 pkgname = r-guideseq
