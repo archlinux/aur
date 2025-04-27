@@ -1,7 +1,7 @@
 pkgbase = tv-lite
 	pkgdesc = IPTV player with Sopcast and Acestream handling capabilities. It wants to be a replacement for the older TV-Maxe
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tv-lite.com
 	arch = i686
 	arch = x86_64

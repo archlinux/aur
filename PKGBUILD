@@ -2,7 +2,7 @@
 
 pkgname=tv-lite
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with Sopcast and Acestream handling capabilities.  It wants to be a replacement for the older TV-Maxe"
 arch=('i686' 'x86_64')
 url="https://www.tv-lite.com"
@@ -33,7 +33,7 @@ build() {
   else
     wxcfg="wx-config"
   fi    
-  cmake -DWX_CONFIG=$wxcfg ..
+  cmake -DWX_CONFIG=$wxcfg -DCMAKE_POLICY_VERSION_MINIMUM=3.12 ..
   make
 }
 
