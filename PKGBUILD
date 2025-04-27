@@ -2,7 +2,7 @@
 
 pkgname=python-aws-lambda-powertools
 upstream_name=powertools-lambda-python
-pkgver=3.8.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc='A developer toolkit to implement Serverless best practices and increase velocity'
 arch=(any)
@@ -23,4 +23,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('04772b25263f2f77d953f5d9864ec36453b844fcfeae7a2941611f983ebd9761')
+sha256sums=('c0929569b3a8dd1b49ecfce3c2eafbfbefa2775dae882b46061bd4609ca8893f')
