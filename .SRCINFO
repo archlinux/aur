@@ -1,4 +1,4 @@
-pkgbase = ayugram-desktop-bin
+pkgbase = ayugram-desktop-bin-fix
 	pkgdesc = Desktop Telegram client with good customization and Ghost mode built by RSG245 AUR
 	pkgver = 5.12.3
 	pkgrel = 6
@@ -39,4 +39,4 @@ pkgbase = ayugram-desktop-bin
 	source = https://aur.andontie.net/x86_64/ayugram-desktop-5.12.3-6-x86_64.pkg.tar.zst
 	sha256sums = 6a91ce83397581094592cad26b73af8177da83fb671dced3c7d0f2813fbeff6b
 
-pkgname = ayugram-desktop-bin
+pkgname = ayugram-desktop-bin-fix
