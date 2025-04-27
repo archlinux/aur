@@ -1,0 +1,16 @@
+pkgbase = python-gdb-types
+	pkgdesc = Typing stubs for gdb
+	pkgver = 15.0.0.20250321
+	pkgrel = 1
+	url = https://pypi.org/project/types-gdb
+	arch = any
+	license = Apache-2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = gdb
+	depends = python
+	noextract = types_gdb-15.0.0.20250321-py3-none-any.whl
+	source = types_gdb-15.0.0.20250321-py3-none-any.whl::https://files.pythonhosted.org/packages/ed/fa/5d822acbecfa20b393af21f1a9e5168733b137f3f32bb24247b0ea9c7fb9/types_gdb-15.0.0.20250321-py3-none-any.whl
+	sha256sums = adccc7085b4a4a010273206b5d3e866166018f98fee30adcb8bf47bc9aae837d
+
+pkgname = python-gdb-types
