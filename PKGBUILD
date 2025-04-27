@@ -19,6 +19,7 @@ sha512sums=('3c1d8113cb8cbc5eb28e43466ee9d003a27e4f561fadffcc85774c936e1aa0fd2a1
 ENABLE_NEON_ON_ARMv7=0
 
 prepare() {
+    export RUSTUP_TOOLCHAIN=stable
     if [[ -n "$VIRTUAL_ENV" ]]; then
         echo 'ERROR: $VIRTUAL_ENV is set, which means the build is running in a virtual Python environment.'
         echo 'ERROR: Rerun the build in a fresh terminal, using the default/system Python environment.'
