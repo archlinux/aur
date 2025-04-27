@@ -1,0 +1,90 @@
+From 8655e6e7da293a131a613f3261daa218d7bc0de9 Mon Sep 17 00:00:00 2001
+From: Ilya Guterman <amfernusus@gmail.com>
+Date: Mon, 3 Feb 2025 01:47:12 +0900
+Subject: [PATCH] Add support for ITE IT8625E Super IO Sensors
+
+This assumes that the driver it87 supports ITE IT8625E
+
+https://github.com/frankcrawford/it87
+---
+ prog/detect/sensors-detect | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/prog/detect/sensors-detect b/prog/detect/sensors-detect
+index 4a73e1f9..b943bba0 100755
+--- a/prog/detect/sensors-detect
++++ b/prog/detect/sensors-detect
+@@ -2504,19 +2504,19 @@ use constant FEAT_SMBUS	=> (1 << 7);
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8606E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8606,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8607E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8607,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8613E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8613,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+@@ -2534,13 +2534,13 @@ use constant FEAT_SMBUS	=> (1 << 7);
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8623E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87", # TODO: this is already mainlined... we can open PR to the official repo
+ 		devid => 0x8623,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8625E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8625,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+@@ -2552,19 +2552,19 @@ use constant FEAT_SMBUS	=> (1 << 7);
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8655E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8655,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8665E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8665,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8686E Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87",
+ 		devid => 0x8686,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+@@ -2630,7 +2630,7 @@ use constant FEAT_SMBUS	=> (1 << 7);
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+ 	}, {
+ 		name => "ITE IT8732F Super IO Sensors",
+-		driver => "to-be-written",	# it87
++		driver => "it87", # TODO: already supported
+ 		devid => 0x8732,
+ 		logdev => 0x04,
+ 		features => FEAT_IN | FEAT_FAN | FEAT_TEMP,
+-- 
+2.49.0
+
