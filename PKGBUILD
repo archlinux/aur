@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SPLINTER
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('16b64c57fa376c2bd1fe45c4c30fc810')
-b2sums=('8cd58faea6592d2210e7b5bcc2b27d903c2102d6a0be33fec8d7cfa63a5fb37b2880752f88d0612cc7c1a228a6ba39f2c17599482b9fc989c71cdea767051e97')
+md5sums=('e6912939c7cacb7ebb69facd462b0379')
+b2sums=('75f3d5fe7a780f78ab52009b1de1677913365e510bf6aa9aa9b00058c23cc4aa0e1fae8bd22218d9c84d763389fe9cf0951e7e9a8cfb26a26d44419d29d84ad0')
 
 build() {
   mkdir build

@@ -1,6 +1,6 @@
 pkgbase = r-splinter
 	pkgdesc = Splice Interpreter of Transcripts
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SPLINTER
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = r-splinter
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-txdbmaker
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPLINTER_1.32.0.tar.gz
-	md5sums = 16b64c57fa376c2bd1fe45c4c30fc810
-	b2sums = 8cd58faea6592d2210e7b5bcc2b27d903c2102d6a0be33fec8d7cfa63a5fb37b2880752f88d0612cc7c1a228a6ba39f2c17599482b9fc989c71cdea767051e97
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPLINTER_1.34.0.tar.gz
+	md5sums = e6912939c7cacb7ebb69facd462b0379
+	b2sums = 75f3d5fe7a780f78ab52009b1de1677913365e510bf6aa9aa9b00058c23cc4aa0e1fae8bd22218d9c84d763389fe9cf0951e7e9a8cfb26a26d44419d29d84ad0
 
 pkgname = r-splinter
