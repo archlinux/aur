@@ -2,22 +2,23 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=knyttstories
 pkgver=1.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="In Knytt Stories, each level is its own little adventure. One level is included with the game, where you have to stop a machine that draws the life out of the planet. An official expansion pack is also featured at the website with four original levels."
-url="http://nifflas.ni2.se/"
+# url="http://nifflas.ni2.se/" # it's down as of 2025-04-27
+url="http://egomassive.com/ks/" # not the actual original site but the closest right now...
 arch=('i686' 'x86_64')
 depends=(wine)
 makedepends=('unzip')
 source=(knyttstories
         msvcp60.zip
-        "http://nifflas.ni2.se/games/Knytt%20Stories%20121.zip"
-        knyttstories.desktop \
+        "http://egomassive.com/ks+/KS121.zip"
+        knyttstories.desktop
         knyttstories.png)
 license=('freeware')
 install=knyttstories.install
 md5sums=('b34bc8c1f391c9a5efb9e984606a6c16'
          'e27d1c3b981aff789500e0ba2cd05616'
-         '05458d098a8c65edff607f2bbb9c93e1'
+         '6d5c344fcd9b7c20df003abf03e44777'
          'f41b9e383744e08ac5de5fe7330a3735'
          'd997338aae63d77ce4bedcd218dcb5d2')
 
