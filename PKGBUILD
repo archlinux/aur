@@ -1,8 +1,8 @@
 # Maintainer: ⭐️NINIKA⭐️ <nikita6@bk.ru>
-_build_rev=3b3cf7b97706fc264fa4b0aaf6425bfd104619ad
-_build_num=1
+_build_rev=8cc34f323d01f473be0ee6098ab992d1db1af5f7
+_build_num=2
 pkgname=revng-bin
-pkgver=0.0.0.r1.g3b3cf7b9
+pkgver=0.0.0.r2.g8cc34f32
 pkgrel=1
 pkgdesc="An open source binary analysis framework based on LLVM and QEMU"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://rev.ng/downloads/revng-distributable/none_${_build_rev}.tar.xz"
     "launcher.sh"
 )
-sha256sums=('b891c84b791c9e48c0175e10ea49ad7b8d27dac614066d49af180d384019dbfe'
+sha256sums=('e42962ab4c629e0432ed1870f705793af0e667d91cba175be3c4341caba4eb35'
             '4605f93ff27ba081036acebb204af5e81614394357d941ae917e8e97e58d7252')
 options=("!strip")
 
