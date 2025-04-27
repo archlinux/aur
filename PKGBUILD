@@ -44,6 +44,7 @@ b2sums=('SKIP')
 
 prepare() {
   cd libfprint-CS9711
+  sed -i 's|import shutil|import shutil\n    import traceback|g' tests/virtual-image.py
 }
 
 build() {
