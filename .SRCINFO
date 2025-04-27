@@ -1,6 +1,6 @@
 pkgbase = kuro-git
-	pkgdesc = An elegant Microsoft ToDo desktop client for Linux (a fork of Ao).Use system-wide electron.
-	pkgver = 9.0.0.r11.g29c84ee
+	pkgdesc = An elegant Microsoft ToDo desktop client for Linux (a fork of Ao).(Use system-wide electron)
+	pkgver = 9.0.0.r12.g1ec1793
 	pkgrel = 1
 	url = https://github.com/davidsmorais/kuro
 	arch = x86_64
