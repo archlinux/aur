@@ -43,7 +43,7 @@ pkgbase = project-plus-netplay
 	source = Launcher.tar.gz::https://github.com/jlambert360/FPM-AppImage/releases/download/v3.1.0/Launcher.tar.gz
 	source = sd.tar.gz::https://github.com/jlambert360/FPM-AppImage/releases/download/v3.1.0/sd.tar.gz
 	sha256sums = 51ebf90cdc466f4b91dc9b6273ed6436d8d6ccbc46ca186f242fe61efc0a2515
-	sha256sums = d52fe72fc7ff9fe9b3c961e845bb30d83d146a5e42b19949a2a3583a3d10d195
+	sha256sums = 1b9dce2fb0eac3ad8cc809826b3b6bfd4ce30dbfc394eaa586e35dcd356fd189
 	sha256sums = 67e7c1598215fd8abae7911d246a0853c620a23055c13e20dc32b26d62bf0d50
 
 pkgname = project-plus-netplay
