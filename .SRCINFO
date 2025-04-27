@@ -1,6 +1,6 @@
 pkgbase = r-epitxdb
 	pkgdesc = Storing and accessing epitranscriptomic information using the AnnotationDbi interface
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EpiTxDb
 	arch = any
@@ -35,8 +35,8 @@ pkgbase = r-epitxdb
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-txdb.hsapiens.ucsc.hg38.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EpiTxDb_1.18.0.tar.gz
-	md5sums = 9eaa3d39c3126909d669fd4e98b76ac7
-	b2sums = 5d3c367e70bf1c060bcd1d88788a400c970afdeb0677c49a238235567bb5b21347c5c69ca7b58ab06fdf8089968675042cf5b9a4eee2987631ea852c7e016e74
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EpiTxDb_1.20.0.tar.gz
+	md5sums = 9827c37736f6802342731d6489de00b5
+	b2sums = a9d9bf360d30bc20f983fa0ec46f0b01cfdc177453fc4e17e1074b3f16a4a5ec3e5fa65307b5d7dab556a41e1667dca018380d3376cad16545c453ca32fda7ca
 
 pkgname = r-epitxdb
