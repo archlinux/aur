@@ -1,7 +1,7 @@
 pkgbase = r-reprex
 	pkgdesc = Prepare Reproducible Example Code via the Clipboard
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=reprex
 	arch = any
 	license = MIT
