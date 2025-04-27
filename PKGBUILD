@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AMARETTO
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Regulatory Network Inference and Driver Gene Evaluation using Integrative Multi-Omics Analysis and Penalized Regression'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('78e61f007e9e48e179eb291102d04d04a5f62c613379ce7f15fdf11b49cb6752')
+sha256sums=('63b46b3ba86486d3ee69574f6ea2287b7f48788acb7fb4bd7f49934f6a474e5a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
