@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.6_1010.550b5c6
+pkgver=0.2.6_1016.3b6fd5a
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 if [ "${_use_mupdf}" == 'ON' ]
 then
-    depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser' 'libmupdf')
+    depends+=('libmupdf')
 elif [ "${_use_mupdf}" == 'OFF' ]
 then
     license=('GPL3')
@@ -59,11 +59,11 @@ build() {
         -DUSE_QTPDF=OFF \
         -DUSE_EXTERNAL_RENDERER=OFF \
         -DLINK_MUPDF_THIRD=OFF \
-        -DLINK_GUMBO=ON \
+        -DLINK_GUMBO=OFF \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=OFF \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \
-        -DMUPDF_USE_SYSTEM_LIBS=ON \
+        -DMUPDF_USE_SYSTEM_LIBS=OFF \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR='/etc'
     cmake --build "${pkgname}-${pkgver}/build"
