@@ -3,7 +3,7 @@
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=2.6.0
+pkgver=2.7.0
 _sox_ver=14.4.2
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
@@ -16,7 +16,7 @@ makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
 conflicts=('python-torchaudio-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://downloads.sourceforge.net/project/sox/sox/$_sox_ver/sox-$_sox_ver.tar.bz2")
-sha256sums=('3335d8fcf58c26acf3c628d751103b59226e01c91847ce56efb2a4e7ae8351ef'
+sha256sums=('31de856d3daa5c1db983eb5b964ed33d54be6e5038d6504181fe51e2d6cc6448'
 	'81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c')
 
 prepare() {
