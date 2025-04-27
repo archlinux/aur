@@ -1,6 +1,6 @@
 pkgbase = cvbasic
 	pkgdesc = BASIC language cross-compiler for ColecoVision/SG1000/MSX and other 8 bit computers
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://nanochess.org/cvbasic.html
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cvbasic
 	makedepends = git
 	depends = glibc
 	optdepends = gasm80: Assembler needed to build Z80/6502 binaries
-	source = cvbasic-0.7.1::git+https://github.com/nanochess/CVBasic.git#commit=9b56f5a00b0e0fbc51f7b5ac2db86f873d64c3d7
-	b2sums = e47ce2e0b94b3eea25459bc1a3a7ca9756d68f114ae202f198e883df34d63b3158e0e7f9b64e75c4645eb35e4a088b8b2d2917a7eab3a5e56680f3e70168d615
+	source = cvbasic-0.8.0::git+https://github.com/nanochess/CVBasic.git#commit=6f05ca6bcc944dbb391af47f6c4ce080a6c7aa9c
+	b2sums = d2a67805bb447b1a4d50fd0019effdd32607c9203f9c84f9309d4ee6ad1bd47d3b7ba1bb3fabdc1ba9762e004218814f722b4ea1e3000226f05517054332587d
 
 pkgname = cvbasic
