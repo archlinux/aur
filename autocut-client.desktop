@@ -1,16 +1,6 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=PKGBUILD
-Comment=PKGBUILD
-Exec=PKGBUILD
-Icon=PKGBUILD
-Terminal=false
-StartupNotify=false
-Categories=Application;
-[Desktop Entry]
-Version=1.0
-Type=Application
 Name=autocut-client
 Comment=Quickly generate video subtitles and edit the video by selecting subtitle clips
 Exec=autocut-client %U
