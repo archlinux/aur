@@ -1,6 +1,6 @@
 pkgbase = r-comethdmr
 	pkgdesc = Accurate identification of co-methylated and differentially methylated regions in epigenome-wide association studies
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/coMethDMR
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = r-comethdmr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/coMethDMR_1.10.0.tar.gz
-	md5sums = 10576754f41e3ca13eb173a258fb380c
-	b2sums = 7f172ff918684f9e9294868a3f1c546aaddfd401c8171785eb08de1306a78999bedb45b165ecedf3a144236aab2e64981b98df5ce79f8972acc4c913deef8015
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/coMethDMR_1.12.0.tar.gz
+	md5sums = c08307614445a17358860549a9666daf
+	b2sums = 20272d76ade0c8618df519b63b21fa10063ccbc852c038a19a093bd7aaaac2fb0f87971c47b4279a88d0daab95a164981befa92e6c375ae46fb295a4fde441c4
 
 pkgname = r-comethdmr
