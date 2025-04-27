@@ -1,13 +1,13 @@
 # Maintainer: IroAlexis <iroalexis@outlook.com>
 
 pkgname=lunion-git
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 epoch=0
 pkgdesc="Wine wrapper for running Windows games on Linux"
 arch=(x86_64)
 url="https://framagit.org/IroAlexis/lunion"
-license=(GPL-3.0-or-later)
+license=(GPL-2.0-or-later)
 groups=()
 depends=(glib2)
 makedepends=(
