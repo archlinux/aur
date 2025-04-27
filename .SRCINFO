@@ -1,7 +1,7 @@
 pkgbase = securefs-bin
 	pkgdesc = A filesystem in userspace (FUSE) with transparent encryption and decryption
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netheril96/securefs
 	arch = x86_64
 	license = MIT
@@ -18,11 +18,13 @@ pkgbase = securefs-bin
 	source = https://github.com/netheril96/securefs/releases/download/v1.1.0/securefs-linux-amd64-release.zip
 	source = LICENSE-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/LICENSE.md
 	source = README-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/README.md
+	source = LONG-NAME-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/docs/long_name.md
 	source = DESIGN-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/docs/design.md
 	source = USAGE-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/docs/usage.md
 	sha256sums = 68bcad8312f0ee82a8fb314eec5aca4dff3db50cf64e621ef7e4e3a10c305ae2
 	sha256sums = 4b4e85715ed4e80f60c002775c13c69386faffc84c60f59b5a2fc85ae3f432d1
 	sha256sums = 38dec83cd881018b69e0bb515c61a65c726bf6e9df199b95436b442c7927a7e0
+	sha256sums = 63a5b191613a3e341c9181e12c9655f791916e4189eddc2cf036e05212c66919
 	sha256sums = c8abf21a65d072f3493ef9ef19c2fbfb29ca43be386f7438d1fe72b7a7f5e31d
 	sha256sums = 79c5725a1bcf4e4febcbfbf1f1d77751ab12d4def4306fc6a9c30e0a44a14d63
 
