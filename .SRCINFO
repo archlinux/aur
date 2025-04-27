@@ -1,10 +1,10 @@
 pkgbase = python-pyzotero
 	pkgdesc = A Python wrapper for the Zotero API
-	pkgver = 1.5.25
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/urschrei/pyzotero
 	arch = any
-	license = MIT
+	license = BlueOak-1.0.0
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
@@ -14,7 +14,7 @@ pkgbase = python-pyzotero
 	depends = python-feedparser
 	depends = python-bibtexparser
 	depends = python-pytz
-	source = pyzotero-1.5.25.tar.gz::https://files.pythonhosted.org/packages/source/p/pyzotero/pyzotero-1.5.25.tar.gz
-	sha512sums = 7a5e897d54a2b9a87155a0dc47aa4414a746184deae6931ee3d277c5913fe813c87bf2c658b2567cfe526aac98e0d9d8e964c4a9de507f5be4becda539aacecd
+	source = https://github.com/urschrei/pyzotero/releases/download/v1.6.5/pyzotero-1.6.5.tar.gz
+	sha512sums = b6678ec47757c73241093afc9cb7556d90cd7566c0c877169ba3dac9466293d931294f08f6843a11f45584b3f9b20ff12b08d9359c9341cf3fad02ea2573d998
 
 pkgname = python-pyzotero
