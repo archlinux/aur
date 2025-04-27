@@ -1,6 +1,6 @@
 pkgbase = datafusion-cli
 	pkgdesc = The DataFusion CLI is a command-line interactive SQL utility for executing queries against any supported data files.
-	pkgver = 46.0.1
+	pkgver = 47.0.0
 	pkgrel = 1
 	url = https://github.com/apache/datafusion
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = datafusion-cli
 	makedepends = rustup
 	makedepends = cargo
 	options = !lto
-	source = datafusion-cli-46.0.1.tar.gz::https://github.com/apache/arrow-datafusion/archive/tags/46.0.1.tar.gz
-	b2sums = 852b2c677fc2534b5264404fbe9f1b4732dac54656cc29f95a08758b8d792587097fe501556335f67fb40c5b8ff1f6145bdd90724b41d212d7fdf6111195bc7f
+	source = datafusion-cli-47.0.0.tar.gz::https://github.com/apache/arrow-datafusion/archive/tags/47.0.0.tar.gz
+	b2sums = 90fd282f142bbc1d1736bc5d78e3d0becc4a5c7c3773bef07fb4d816a686247cea135278aa7228aa16742fbb2772d184eb953b62d8b77caff5f3094c70ccb02f
 
 pkgname = datafusion-cli
