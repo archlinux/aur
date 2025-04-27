@@ -1,17 +1,17 @@
 pkgbase = flow-browser-bin
 	pkgdesc = A modern, tabbed web browser with Chrome extension support—built on Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/MultiboxLabs/flow-browser
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = asar
 	depends = electron35
-	provides = flow-browser=0.4.2
+	provides = flow-browser=0.5.0
 	conflicts = flow-browser
-	source = flow-browser-0.4.2.deb::https://github.com/MultiboxLabs/flow-browser/releases/download/v0.4.2/flow-browser_0.4.2_amd64.deb
+	source = flow-browser-0.5.0.deb::https://github.com/MultiboxLabs/flow-browser/releases/download/v0.5.0/flow-browser_0.5.0_amd64.deb
 	source = flow-browser.sh
-	sha256sums = 592b5ede95088b03d2b6720181ce63b1d9a08944afede138ca72ea282fdc5a3e
+	sha256sums = 70db2f8a4420b897126fecc79667df7f52769880269ebebb6cc288f5d1e822d3
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = flow-browser-bin
