@@ -1,6 +1,6 @@
 pkgbase = plank-reloaded-git
 	pkgdesc = Fork of the original Plank project, providing a simple dock for X11 desktop environments
-	pkgver = 0.11.121
+	pkgver = 0.11.122
 	pkgrel = 1
 	url = https://github.com/zquestz/plank-reloaded
 	arch = x86_64
