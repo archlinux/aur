@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 6.14.3.arch1
+	pkgver = 6.14.4.arch1
 	pkgrel = 1
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL2
-	noextract = linux-6.14.3.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-6.14.3.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-6.14.3.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-6.14.4.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-6.14.4.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-6.14.4.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-6.14.3.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-6.14.3.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-6.14.3.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 50bd512bb9700dc9ec41cee7e6922a6ca8b20d7795303738976659337079e5e5
-	sha256sums = 9b50a944d7375ddd1e67e4e79cf5db14eaf66817ee362b1a04b25118023e1375
-	sha256sums = c6490af318206622a990947462f4e88ffc3a35492977a15b8a1c2132abe8bab7
+	source = https://archive.archlinux.org/packages/.all/linux-6.14.4.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-headers-6.14.4.arch1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-docs-6.14.4.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = bb6a8a451f1c93e0772ee89cf3d5eb0a673e87b0fad0ca1561a0616cf7751ce1
+	sha256sums = e3f1a7fcaeb408a146fea0692d869bf0279aa3c33841ddb7e3e63631688f01f7
+	sha256sums = 256674ffde3ae9803e904c8eea7556d5f33cc3e185da83fef9f1b6136159c86a
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux6.14.3.arch1-1-bin
-	depends = linux6.14.3.arch1-1-bin
+	pkgdesc = Metapackage depending on linux6.14.4.arch1-1-bin
+	depends = linux6.14.4.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux6.14.3.arch1-1-headers-bin
-	depends = linux6.14.3.arch1-1-headers-bin
+	pkgdesc = Metapackage depending on linux6.14.4.arch1-1-headers-bin
+	depends = linux6.14.4.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux6.14.3.arch1-1-docs-bin
-	depends = linux6.14.3.arch1-1-docs-bin
+	pkgdesc = Metapackage depending on linux6.14.4.arch1-1-docs-bin
+	depends = linux6.14.4.arch1-1-docs-bin
 
-pkgname = linux6.14.3.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 6.14.3-arch1-1
+pkgname = linux6.14.4.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 6.14.4-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -45,11 +45,11 @@ pkgname = linux6.14.3.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux6.14.3.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 6.14.3-arch1-1
+pkgname = linux6.14.4.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 6.14.4-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux6.14.3.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 6.14.3-arch1-1
+pkgname = linux6.14.4.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 6.14.4-arch1-1
 	conflicts = linux-docs
