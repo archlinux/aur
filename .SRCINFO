@@ -1,6 +1,6 @@
 pkgbase = r-decomptumor2sig
 	pkgdesc = Decomposition of individual tumors into mutational signatures by signature refitting
-	pkgver = 2.22.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/decompTumor2Sig
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-decomptumor2sig
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/decompTumor2Sig_2.22.0.tar.gz
-	sha256sums = 0e78423faca604cd5bd11af6328aaf729cd724a89989a6473ab27a9478d7aac7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/decompTumor2Sig_2.24.0.tar.gz
+	sha256sums = 17bf5d6fa88c50a4533604d4624fa7fc8cf98b54b520e97d9b38aacc207a308f
 
 pkgname = r-decomptumor2sig
