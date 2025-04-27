@@ -6,3 +6,4 @@ Exec="/opt/BadlionClient/AppRun" --no-sandbox %U
 Icon=BadlionClient
 Terminal=false
 Categories=Game;
+StartupWMClass=Badlion Client

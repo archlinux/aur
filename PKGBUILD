@@ -2,7 +2,7 @@
 # Submitter Wings-Fantasy <1056947073@qq.com>
 
 pkgname=badlion-client
-pkgver=4.5.2
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="A Minecraft client with anti-cheat protection"
 url="https://client.badlion.net"
@@ -12,7 +12,7 @@ provides=('BadlionClient')
 source=('BadlionClient::https://client-updates-cdn77.badlion.net/BadlionClient'
 'AppRun'
 'BadlionClient.desktop')
-b2sums=('50384af58c890a9906207746717aacd1db040804ef0fafe1c7a71ea0a31c7468b6dc0100bc3a05754d5c4eb39829a59b9f7dbeaa4275a10630601821772631b3'
+b2sums=('efdae91ee731df35eb3bb88cc2317c02f62544ca29ff529df5be0deaa659a4274be460a791b732b5c4070adfcb553c008c5fc58656a7270162edbd5c41d9d743'
         '42865a8a9ee9c71a1472fe82554e5b12df59a89a81cb28d2e0e942c59529781724f70c58802dbbb8905f62e0b413665322fcdb2095e8ebb681250456fda2645d'
         '5b177661a6381059f34c46fb65d27f39d041f2e21c4977ea58da425df2b5f34517e8445d009ed01c9645683d5cc67a8b98bde1ed5318fb548236d5690b6db7b0')
 
