@@ -1,7 +1,7 @@
 pkgbase = securefs-bin
 	pkgdesc = A filesystem in userspace (FUSE) with transparent encryption and decryption
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/netheril96/securefs
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = securefs-bin
 	depends = sqlite
 	provides = securefs
 	conflicts = securefs
-	source = {_pkgname}-1.1.0.zip::https://github.com/netheril96/securefs/releases/download/v1.1.0/securefs-linux-amd64-release.zip
+	source = securefs-1.1.0.zip::https://github.com/netheril96/securefs/releases/download/v1.1.0/securefs-linux-amd64-release.zip
 	source = LICENSE-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/LICENSE.md
 	source = README-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/README.md
 	source = LONG-NAME-1.1.0::https://raw.githubusercontent.com/netheril96/securefs/v1.1.0/docs/long_name.md
