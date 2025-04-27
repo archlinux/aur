@@ -1,0 +1,18 @@
+pkgbase = rx888-stream-git
+	pkgdesc = command line utility to stream samples from RX888
+	pkgver = r16.b699542
+	pkgrel = 1
+	url = https://github.com/rhgndf/rx888_stream
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = libusb
+	provides = rx888-stream
+	conflicts = rx888-stream
+	source = git+https://github.com/rhgndf/rx888_stream.git
+	sha512sums = SKIP
+
+pkgname = rx888-stream-git
