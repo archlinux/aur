@@ -10,7 +10,7 @@
 
 pkgname=apt-cacher-ng
 pkgver=3.7.4
-pkgrel=11
+pkgrel=12
 pkgdesc="A caching proxy specialized for package files"
 url="http://www.unix-ag.uni-kl.de/~bloch/acng/"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -62,7 +62,8 @@ build() {
     -DRUNDIR=/run \
     -DACNG_CACHE_DIR=/var/cache/apt-cacher-ng \
     -DACNG_LOG_DIR=/var/log/apt-cacher-ng \
-    -DEXTRA_LIBS_ACNG=pthread || return 1
+    -DEXTRA_LIBS_ACNG=pthread \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 || return 1
 
   make all || return 1
 
