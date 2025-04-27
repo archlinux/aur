@@ -3,7 +3,7 @@
 
 _pkgname=xf86-input-libinput
 pkgname=xf86-input-libinput-hires-scroll
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Generic input driver for the X.Org server based on libinput - patched for hi-res wheel scroll"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("$_pkgname=$pkgver-$pkgrel")
 groups=('xorg-drivers')
 source=(https://xorg.freedesktop.org/releases/individual/driver/$_pkgname-$pkgver.tar.xz
         mr2.patch)
-sha512sums=('b286b5425aeda5cfecd1de7f59663d169b95ffc55474dfbf28c2e13e5221cbeecd472d40b6094c0a937f83db67bf58a7fe0e07d25b6a6945d3fd669e717fc0bf'
+sha512sums=('03090beb7c162fdf55e9bb9da41ffb8601b20047e4a53895bad27de47b3197fc920e710f26fa23e7322b367ab65fa56ba5f9a195ec69801529af3958632c2d6e'
             'ac03cdea3a8affd8911054d92aaf1582ee3a8bad8e5fa26358fe714cf42a45be638a15ac47306bad290b44534a1434d2f1da19b6e57b04bce4759212a338bade')
 
 prepare() {
