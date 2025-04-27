@@ -3,7 +3,7 @@
 
 pkgname='python-habanero'
 pkgver='2.2.0'
-pkgrel=3
+pkgrel=4
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -44,7 +44,9 @@ build() {
 
 check() {
     cd "${srcdir}/${_src_folder}"
-    python -m pytest
+
+    export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+    python -m pytest -p pytest_cov -p pytest_recording
 }
 
 package() {
