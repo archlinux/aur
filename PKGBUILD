@@ -3,7 +3,7 @@
 # Contributor: SingYan <singyan@tuta.io>
 
 pkgname=mydumper
-pkgver=0.19.1_2
+pkgver=0.19.1_3
 pkgrel=1
 pkgdesc="A high performance MySQL backup tool."
 arch=("i686" "x86_64")
@@ -14,7 +14,7 @@ makedepends=("cmake")
 
 source=("https://github.com/mydumper/mydumper/archive/v${pkgver//_/-}/$pkgname-${pkgver//_/-}.tar.gz")
 
-sha256sums=('16a64481d4379a4692ff2de44ebb251e5fcbceaf726d534a1f123b64f7eb6884')
+sha256sums=('e7feab21b8073a5a7809cf7cc56a08ae0f93313dfe3f6f1fe5c96eec12f09f9d')
 
 build() {
 	# NOTE! As of 0.16.7-5 There is a maybe-uninitialized warning that is treated as an error
