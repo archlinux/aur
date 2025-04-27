@@ -1,6 +1,6 @@
 pkgbase = r-atsnp
 	pkgdesc = Affinity test for identifying regulatory SNPs
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/atSNP
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-atsnp
 	optdepends = r-biocstyle
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/atSNP_1.22.0.tar.gz
-	sha256sums = 21c394bd005793bc201c9bf336b30868dd035e72b2a1b476fe4bbe2f19e3ea11
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/atSNP_1.24.0.tar.gz
+	sha256sums = 593ffdd57c3204001aa681875f1b4cc2529a46c7c52dd6c7501cc290dc05fc30
 
 pkgname = r-atsnp
