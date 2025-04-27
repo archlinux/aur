@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=consensusOV
-_pkgver=1.24.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Gene expression-based subtype classification for high-grade serous ovarian cancer'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('83faf25d57fd7418b2b22a43c14c3abd11c67c07b2b9f74ca76abc8862ef5d37')
+sha256sums=('babaed1367abf3ad37b655d1d9835c7f13d6d81042a9403cdb75d7a6c4c9ed83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
