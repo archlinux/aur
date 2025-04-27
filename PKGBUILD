@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ELMER
-_pkgver=2.30.0
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.0
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='Inferring Regulatory Element Landscapes and Transcription Factor Networks Using Cancer Methylomes'
 arch=('any')
@@ -64,7 +64,7 @@ optdepends=(
   r-webshot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('18b0f782ea9fb3cd35d37144ccebec2b000fa0b4539cd83eb7c6bcc45ed8fb8a')
+sha256sums=('a715b148b1b43f1b3b4a64377658cb24991847137d917fe4667e5285c155de1a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
