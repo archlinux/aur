@@ -1,6 +1,6 @@
 pkgbase = r-mineica
 	pkgdesc = Analysis of an ICA decomposition obtained on genomics data
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MineICA
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = r-mineica
 	optdepends = r-hgu133a.db
 	optdepends = r-igraph
 	optdepends = r-mclust
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MineICA_1.46.0.tar.gz
-	sha256sums = c76a4176146228f368f7ed3f70530f861f814a0a87747f36c6bcdcd6309d3e5e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MineICA_1.48.0.tar.gz
+	sha256sums = ab6f74b6ba9501d0609ab53735e0d5c9318d75033366c34b65a49e5a9f908acd
 
 pkgname = r-mineica
