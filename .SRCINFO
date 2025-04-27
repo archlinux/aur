@@ -1,6 +1,6 @@
 pkgbase = r-ruvseq
 	pkgdesc = Remove Unwanted Variation from RNA-Seq Data
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RUVSeq
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-ruvseq
 	optdepends = r-knitr
 	optdepends = r-rcolorbrewer
 	optdepends = r-zebrafishrnaseq
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RUVSeq_1.40.0.tar.gz
-	sha256sums = 27ac46ec5f83260897e677d23270bb445d022fd677a2d4de85141186def92808
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RUVSeq_1.42.0.tar.gz
+	sha256sums = 22e9800d5bbff0b0a3846c0bd23ca97e5802adb7cf4b85724cb07c35ef47eeac
 
 pkgname = r-ruvseq
