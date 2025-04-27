@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mygene
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f53f04381d0b954109c518d4d4876f96')
-b2sums=('6ebb210477852b0fae0764144fe9716e059a0a719824c77fb2ebe596d2f5258e164360eee85b633f923b8618f4ca18c849e28fe103472f04cb3ed957ab321063')
+md5sums=('c9759e4864a1cabda263352751f6a7b9')
+b2sums=('1d6ff119736e2f71629fc32ad3462432fb3f13d382d95006e7f75a1fefb6e942c97466dc9a4b436f048f33fd95fde57cac6c73d37d57209cda79d7c44b7fa982')
 
 build() {
   mkdir build
