@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
-pkgver=1.9.0
+pkgver=1.9.1
 _electronversion=12
 pkgrel=1
 pkgdesc="A fast, feature-rich krunker client written in typescript.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-x86_64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fb8eb2ec868f5a25ccbdc88022b568ff5bee074ff5bc82639e128b99e2fb4139'
+sha256sums=('57a01d243392799e189fada736ec0710d380059885718a287d9bca6748324c46'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -32,7 +32,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
@@ -41,7 +43,7 @@ prepare() {
     " "${srcdir}/squashfs-root/${_pkgname}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
-package() {    
+package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
