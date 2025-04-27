@@ -45,7 +45,6 @@ prepare() {
 build() {
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   cmake -B build -S "flightgear-openscenegraph" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
