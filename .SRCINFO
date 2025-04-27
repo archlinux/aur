@@ -1,6 +1,6 @@
 pkgbase = copyparty
 	pkgdesc = File server with accelerated resumable uploads, dedup, WebDAV, FTP, TFTP, zeroconf, media indexer, thumbnails++
-	pkgver = 1.16.21
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://github.com/9001/copyparty
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = copyparty
 	optdepends = python-argon2-cffi: hashed passwords in config
 	optdepends = python-impacket-git: smb support (bad idea)
 	backup = etc/copyparty.d/init
-	source = https://github.com/9001/copyparty/releases/download/v1.16.21/copyparty-1.16.21.tar.gz
-	sha256sums = 2e416e18dc854c65643b8aaedca56e0a5c5a03b0c3d45b7ff3f68daa38d8e9c6
+	source = https://github.com/9001/copyparty/releases/download/v1.17.0/copyparty-1.17.0.tar.gz
+	sha256sums = d8a49b3398f4cdb0754dd8b9e3ab32544e44e2fee94c88903f65ffc003b6eeec
 
 pkgname = copyparty
