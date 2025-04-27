@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PureCN
-_pkgver=2.12.0
+_pkgver=2.14.0
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Copy number calling and SNV classification using targeted short read sequencing'
 arch=('any')
@@ -50,7 +50,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1ef89da087a265b5119e30cf8aa93c411f2d09eb555f5e4d3244bff330654478')
+sha256sums=('077700e2f3e2bb5a89c1a2b48dadc0dcc5b17e30be828d2406b45519907836bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
