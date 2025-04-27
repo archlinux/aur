@@ -18,7 +18,7 @@ source=("https://github.com/${_pkgname}/${_pkgname}/archive/${_pkgname}-${pkgver
         "dkms.conf")
 sha256sums=('67223d5bee4749028e78e87372cee3bca79d9a20f7b6cb915aa080c59d2a2d98'
             '6cab9c5c813c06f462c485e37c52c84c5283b197e205424fdc0a7a31ed50e62a'
-            '4c762bbea27edeb283d44af37be2faf2df21312853b200e6b93319d563f51d86')
+            '4f48bef024e592b6fc0c44e2eda8231ce61750a293d1ef1bba99765ab3383b75')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
