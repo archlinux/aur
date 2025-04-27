@@ -1,7 +1,7 @@
 pkgbase = moekey-bin
 	pkgdesc = MoeKey is a cross-platform misskey client made by Flutter.
 	pkgver = 0.9.0+59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MoeKeyDev/MoeKey
 	arch = x86_64
 	license = GPL3
