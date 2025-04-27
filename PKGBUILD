@@ -2,8 +2,8 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.36.r17723.2f8ed1a6bd
-pkgrel=2
+pkgver=0.0.36.r17839.2afd7707fe
+pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64 aarch64)
 url=https://github.com/RPCS3/rpcs3
@@ -50,6 +50,7 @@ makedepends=(
   # clang+lld is required because audio is broken with latest gcc
   clang
   lld
+  vulkan-headers
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
