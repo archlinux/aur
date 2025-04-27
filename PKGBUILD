@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=octad
-_pkgver=1.8.0
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -39,8 +39,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f1bd72460f38e4ef66241fa979e2a6cc')
-b2sums=('6c220aee55a9598a6b8a238f17a10c6ce31029f311c0a97e9f90c12842e6a3ad6e6cece1379a3a76e2cedac4c3d1d170ebf0a7200b52c96e34654025892c034c')
+md5sums=('ef7599273b99997b87f05720915b9b4b')
+b2sums=('fc20c7cfe1079122f57a9227bf61cf5588916ee3f6db2547d889a39328e094b1e63efc7ccdd9af8ed57381a0b51b82e22da1974263941c5b244063b91f5e687f')
 
 build() {
   mkdir build
