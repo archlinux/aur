@@ -1,6 +1,6 @@
 pkgbase = figma-linux-git
-	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux
-	pkgver = 0.11.4.r7.g7a68714
+	pkgdesc = The collaborative interface design tool. Unofficial Figma desktop client for Linux.(Use system-wide electron)
+	pkgver = 0.11.4.r10.gd9a7a03
 	pkgrel = 1
 	url = https://github.com/Figma-Linux/figma-linux
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = figma-linux-git
 	depends = electron30
 	depends = libdbusmenu-gtk3
 	depends = libdbusmenu-glib
+	depends = libindicator-gtk3
 	provides = figma-linux
 	conflicts = figma-linux
 	source = figma-linux.git::git+https://github.com/Figma-Linux/figma-linux.git

@@ -2,12 +2,12 @@
 # Contributor: iFlygo
 pkgname=figma-linux-git
 _pkgname=Figma-linux
-pkgver=0.11.4.r7.g7a68714
+pkgver=0.11.4.r10.gd9a7a03
 _electronversion=30
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 arch=("any")
-pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
+pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux.(Use system-wide electron)"
 url="https://github.com/Figma-Linux/figma-linux"
 license=("GPL-2.0-only")
 provides=("${pkgname%-git}")
@@ -16,6 +16,7 @@ depends=(
     "electron${_electronversion}"
     'libdbusmenu-gtk3'
     'libdbusmenu-glib'
+    'libindicator-gtk3'
 )
 makedepends=(
     'git'
@@ -41,7 +42,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -51,19 +52,17 @@ build() {
     " -i "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
@@ -71,11 +70,15 @@ build() {
     fi
     sed -i "s/\"output\"\: \"build\/installers\"/\"output\"\: \"build\"/g" config/builder.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i "s/\/opt\/${pkgname%-git}\/${pkgname%-git}/${pkgname%-git}/g" resources/"${pkgname%-git}".desktop
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     rm -rf build/installers
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config=config/builder.json"
-    sed -i "s/\/opt\/${pkgname%-git}\/${pkgname%-git}/${pkgname%-git}/g" resources/"${pkgname%-git}".desktop
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
