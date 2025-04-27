@@ -1,6 +1,6 @@
 pkgbase = r-damefinder
 	pkgdesc = Finds DAMEs - Differential Allelicly MEthylated regions
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DAMEfinder
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-damefinder
 	optdepends = r-rmarkdown
 	optdepends = r-rtracklayer
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DAMEfinder_1.18.0.tar.gz
-	sha256sums = 7852a0aa62884b15a72f1fa51176da167783a8fc73c18909ff4e02a6432c930e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DAMEfinder_1.20.0.tar.gz
+	sha256sums = ac1d3aa53ab3d0f7f7005807d43e868ed61ccd36baa45a4c8c4484a45f10cb9f
 
 pkgname = r-damefinder
