@@ -3,7 +3,7 @@ _pkgname=filecxx
 pkgname=filecentipede-bin
 _zhsname='文件蜈蚣'
 pkgver=2.82
-pkgrel=10
+pkgrel=11
 pkgdesc="Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client.(Prebuilt version)"
 arch=('x86_64')
 url="http://www.filecxx.com/"
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=('41932ebba913ed1de840ac32653d69fac67e44cf366b0fe7c58a4b50c1d9804d'
             '3d681f308f0c2eee560aa31e2687b5285ecd78c79eef5b3aa5f0e4bf0009e6db'
-            'c4261a3811fbb274217ea821204682a9763d7edbcfd38db36787dd243072ef76')
+            '95cba996902780ade1d4155b7a16dcb2a414a3138ab92fff57a88216350ac6a7')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -41,7 +41,7 @@ prepare() {
         --pkgdesc="${pkgdesc}" \
         --categories="Network" \
         --name="FileCentipede" \
-        --exec="${pkgname%-bin} %U"
+        --exec="${pkgname%-bin} %F"
     sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-bin}.desktop"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
