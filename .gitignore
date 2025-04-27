@@ -1,0 +1,9 @@
+/*.zip
+/*.tar.zst
+/*.tar.gz
+/pkg/
+/src/
+
+# These files are fetched from the project
+/mercury-mapper.png
+/mercury-mapper-LICENCE.md

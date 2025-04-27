@@ -1,0 +1,53 @@
+#!/bin/bash
+
+C="\x1b[0m"
+GRN="\x1b[32m"
+YEL="\x1b[33m"
+BLU="\x1b[34m"
+col2="$BLU::$C"
+
+if [ "$1" != "--skip-dl" ]; then
+    current=$(grep '^pkgver' PKGBUILD | sed 's/"//g' | sed 's/pkgver=//g')
+
+    echo -e "$col2 Getting latest version..." >/dev/stderr
+    url=https://github.com/Yasu3D/MercuryMapper
+    vlatest="$(basename "$(curl -Ls -o /dev/null -w "%{url_effective}" "$url/releases/latest")")"
+    latest="${vlatest:1}"
+
+    if [ "$current" = "" ]; then
+        current="(nothing)"
+    fi
+
+    if [ "$current" = "$latest" ] && [ "$1" != "-f" ]; then
+        echo -e "$col2 Current $GRN$current$C is latest, no update required" >/dev/stderr
+        exit
+    else
+        echo -e "$col2 Changing current version from $YEL$current$C to $GRN$latest$C"
+        sed -i -e 's/^pkgver=".*"/pkgver="'"$latest"'"/g' PKGBUILD
+    fi
+fi
+
+echo -e "$col2 Updating checksums..."
+updpkgsums
+
+echo -e "$col2 Writing .SRCINFO file..."
+makepkg --printsrcinfo > .SRCINFO
+
+echo -e "$col2 Making and installing new package..."
+makepkg -si
+
+if [ "$(git config user.email)" == "spey.aur@speykious.dev" ]; then
+    echo -e "$col2 Bump version in git history..."
+
+    if [ "$1" != "--skip-dl" ]; then
+        git commit -am "Bump to version $latest"
+    else
+        # we write the commit message ourselves
+        git commit -a
+    fi
+
+    echo -e "$col2 Pushing new commit..."
+    git push
+fi
+
+echo -e "$col2 Done"

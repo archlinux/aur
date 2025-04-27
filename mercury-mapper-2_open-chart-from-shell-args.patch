@@ -1,0 +1,54 @@
+diff --git a/Views/MainView.axaml.cs b/Views/MainView.axaml.cs
+index 72af626..d415ca3 100644
+--- a/Views/MainView.axaml.cs
++++ b/Views/MainView.axaml.cs
+@@ -76,7 +76,18 @@ public partial class MainView : UserControl
+         SetSelectionInfo();
+         SetQuickSettings();
+ 
+-        Dispatcher.UIThread.Post(async () => await CheckAutosaves(), DispatcherPriority.Background);
++        Dispatcher.UIThread.Post(async () =>
++        {
++            bool autosavedChartOpened = await CheckAutosaves();
++            if (autosavedChartOpened)
++                return;
++
++            if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
++            {
++                if (desktop.Args?.Length > 0)
++                    OpenChart(desktop.Args[0]);
++            }
++        }, DispatcherPriority.Background);
+     }
+ 
+     public bool CanShutdown;
+@@ -402,13 +413,17 @@ public partial class MainView : UserControl
+         }
+     }
+     
+-    private async Task CheckAutosaves()
++    /// <summary>
++    /// Checks autosaves.
++    /// </summary>
++    /// <returns>Whether an autosaved chart was opened.</returns>
++    private async Task<bool> CheckAutosaves()
+     {
+         string[] autosaves = Directory.GetFiles(Path.GetTempPath(), "*.autosave.mer").OrderByDescending(File.GetCreationTime).ToArray();
+-        if (autosaves.Length == 0) return;
++        if (autosaves.Length == 0) return false;
+ 
+         ContentDialogResult result = await showSelectAudioPrompt(File.GetCreationTime(autosaves[0]).ToString("yyyy-MM-dd HH:mm:ss"));
+-        if (result != ContentDialogResult.Primary) return;
++        if (result != ContentDialogResult.Primary) return false;
+ 
+         OpenChart(autosaves[0]);
+         ChartEditor.Chart.IsSaved = false; // Force saved prompt
+@@ -416,7 +431,7 @@ public partial class MainView : UserControl
+         ChartEditor.Chart.Filepath = ""; // Clear path to not overwrite temp file.
+ 
+         ClearAutosaves();
+-        return;
++        return true;
+ 
+         Task<ContentDialogResult> showSelectAudioPrompt(string timestamp)
+         {

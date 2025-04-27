@@ -1,0 +1,57 @@
+diff --git a/MercuryMapper.csproj b/MercuryMapper.csproj
+index c179a9e..608774a 100644
+--- a/MercuryMapper.csproj
++++ b/MercuryMapper.csproj
+@@ -29,6 +29,7 @@
+         <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+         <PackageReference Include="Tomlyn" Version="0.17.0" />
+         <PackageReference Include="Websocket.Client" Version="5.1.2" />
++        <PackageReference Include="Xdg.Directories" Version="0.1.2" />
+     </ItemGroup>
+ 
+     <ItemGroup>
+diff --git a/Views/MainView.axaml.cs b/Views/MainView.axaml.cs
+index 0ca88c6..72af626 100644
+--- a/Views/MainView.axaml.cs
++++ b/Views/MainView.axaml.cs
+@@ -1,4 +1,4 @@
+- using System;
++using System;
+ using System.Collections.Generic;
+ using System.Globalization;
+ using System.IO;
+@@ -32,6 +32,7 @@ using MercuryMapper.Views.Select;
+ using MercuryMapper.Views.Tools;
+ using SkiaSharp;
+ using Tomlyn;
++using Xdg.Directories;
+ 
+ namespace MercuryMapper.Views;
+ 
+@@ -41,6 +42,11 @@ public partial class MainView : UserControl
+     {
+         ChartEditor = new(this);
+ 
++        Directory.CreateDirectory(ConfigDir);
++        Directory.CreateDirectory(StateDir);
++        ConfigPath = $"{ConfigDir}/UserConfig.toml";
++        TimeTrackerPath = $"{StateDir}/TimeTracker";
++
+         InitializeComponent();
+         LoadUserConfig();
+         LoadUsageTime();
+@@ -74,10 +80,12 @@ public partial class MainView : UserControl
+     }
+ 
+     public bool CanShutdown;
++    private readonly string ConfigDir = $"{BaseDirectory.ConfigHome}/MercuryMapper";
++    private readonly string StateDir = $"{BaseDirectory.StateHome}/MercuryMapper";
++    private readonly string ConfigPath;
++    private readonly string TimeTrackerPath;
+     public const string AppVersion = "v4.0.8";
+     public const string ServerVersion = "1.0.1";
+-    private const string ConfigPath = "UserConfig.toml";
+-    private const string TimeTrackerPath = "TimeTracker";
+ 
+     public UserConfig UserConfig = new();
+     public readonly KeybindEditor KeybindEditor;

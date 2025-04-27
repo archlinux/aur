@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-mercury-mapper-map">
+		<comment>MercuryMapper Editor Chart</comment>
+		<icon name="mercury-mapper"/>
+		<glob pattern="*.map"/>
+	</mime-type>
+	<mime-type type="application/x-mercury-mapper-mer">
+		<comment>Mercury Chart</comment>
+		<icon name="mercury-mapper"/>
+		<glob pattern="*.mer"/>
+	</mime-type>
+	<mime-type type="application/x-mercury-mapper-sat">
+		<comment>Saturn Chart</comment>
+		<icon name="mercury-mapper"/>
+		<glob pattern="*.sat"/>
+	</mime-type>
+</mime-info>

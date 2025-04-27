@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=Game;Music;
+Comment[en_US]=A chart editor for Mercury
+Comment=A chart editor for Mercury
+Exec=mercury-mapper %F
+GenericName[en_US]=Rhythm Game Chart Editor
+GenericName=Rhythm Game Chart Editor
+Icon=mercury-mapper
+MimeType=application/x-mercury-map;
+Name[en_US]=Mercury Mapper
+Name=Mercury Mapper
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
