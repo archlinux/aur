@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=recoup
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e706ef9dc0be3a41f2ebf9c6ef0cde4b')
-b2sums=('14f9058a84c22ba8036c9a362cea3d2b6526b55a2e1bc00d2ccbf18144dd83312875371197a70588cc0a9c90c8ac0a5aab49bacc6385a91127b9e166ca6af551')
+md5sums=('df4105d40be95411e71577daa9c0a7e8')
+b2sums=('51df306468ace612be42c9eceaf0b9246f99d60f2af2346bebfab07cf094618fcebdc0a1474acf32e3dfb253841aefdb2bd47ca93cd4c54912b6632d1a5a3c09')
 
 build() {
   mkdir build
