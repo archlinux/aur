@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=lineagespot
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('16869e44569c6f2e5fa2780ccbb0dfc2')
-b2sums=('538d57e6ace1ad67644bc0eba7bddf981056eb9334761f65037bd1e655879fdcc92c3bbcb56f203eaa64a5a1b047a66c4ea58628085e42492c734f9d7da5fdc3')
+md5sums=('db94e06752b3f9b0c90e578d762ff64f')
+b2sums=('75f6ebe26c341f3286acf3edf90233e111923ee69f221554cd972e0271fefa1339f55e6f2b2ad52db49049c70336cecafe8885e6ed333fee25b3cca724997fcd')
 
 build() {
   mkdir build
