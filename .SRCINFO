@@ -1,6 +1,6 @@
 pkgbase = xpipe-bin
 	pkgdesc = Your entire server infrastructure at your fingertips.(Prebuilt version)
-	pkgver = 15.8
+	pkgver = 16.0
 	pkgrel = 1
 	url = https://xpipe.io/
 	arch = aarch64
@@ -10,13 +10,14 @@ pkgbase = xpipe-bin
 	depends = libx11
 	depends = alsa-lib
 	depends = ffmpeg4.4
-	provides = xpipe=15.8
+	depends = ffmpeg
+	provides = xpipe=16.0
 	conflicts = xpipe
 	source = xpipe.sh
 	sha256sums = 235061e14a5ba0983364e506bdf824ea11f6c987d9b116af7ce6ce8967ef5603
-	source_aarch64 = xpipe-15.8-aarch64.rpm::https://github.com/xpipe-io/xpipe/releases/download/15.8/xpipe-installer-linux-arm64.rpm
-	sha256sums_aarch64 = d4f5edade68ea449b7920f64271f340b79425478d065b65173f21dc873add69e
-	source_x86_64 = xpipe-15.8-x86_64.rpm::https://github.com/xpipe-io/xpipe/releases/download/15.8/xpipe-installer-linux-x86_64.rpm
-	sha256sums_x86_64 = 95b74d24de8bd72e7402bdb0b49d4f85fd9b6504a1d08dc005a1623187dd5574
+	source_aarch64 = xpipe-16.0-aarch64.rpm::https://github.com/xpipe-io/xpipe/releases/download/16.0/xpipe-installer-linux-arm64.rpm
+	sha256sums_aarch64 = abdc4b2dfe4cfdcd8e0435ebaa3d91983332010fadfac8ba26603ca0db8f41e4
+	source_x86_64 = xpipe-16.0-x86_64.rpm::https://github.com/xpipe-io/xpipe/releases/download/16.0/xpipe-installer-linux-x86_64.rpm
+	sha256sums_x86_64 = 28529ae69b2fca60498cfd83e61c4ca17355fe29611569466266eace55a6a963
 
 pkgname = xpipe-bin
