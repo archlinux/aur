@@ -1,6 +1,6 @@
 # Maintainer: RSG245 <rsg245@ya.ru>
 # PKGBUILD version: v2.1
-pkgname=ayugram-desktop-bin
+pkgname=ayugram-desktop-bin-fix
 pkgver=5.12.3
 pkgrel=6
 pkgdesc="Desktop Telegram client with good customization and Ghost mode built by RSG245 AUR"
