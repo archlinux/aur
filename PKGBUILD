@@ -2,7 +2,7 @@
 _pkgname=amethyst
 pkgname="${_pkgname}-player-bin"
 _appname=Amethyst
-pkgver=2.0.5
+pkgver=2.0.6
 _electronversion=24
 pkgrel=1
 pkgdesc="A cross-platform music player made with Typescript.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
 )
 sha256sums=('2f892795f62b8f7bef478575fae01c686a673766689d3b50958f8acfddacb510'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('da36837f8450c48252daa62c871416d1d3b37f286e82e60f08c859f53229d72e')
-sha256sums_x86_64=('80566a7edde157d1330d8d9079ae2714dfc99b82c4f41d4b88e31116daec4ec1')
+sha256sums_aarch64=('5dbcbf0b6abb1b9cf7dfae9ab955e8c7de409ff31f6d9a0a54aca4b5747e022a')
+sha256sums_x86_64=('4b9d7fcede1ed43fd24304144d88412021a6ee61058c23cb4abbd5cdc8d0acc7')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
