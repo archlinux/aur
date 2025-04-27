@@ -3,10 +3,10 @@
 
 pkgname=('llvm10' 'llvm10-libs')
 pkgver=10.0.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
+license=('custom:Apache-2.0 with LLVM-exception')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'python-sphinx' 'python-recommonmark' 'python-setuptools')
 options=('staticlibs')
@@ -32,9 +32,13 @@ prepare() {
 build() {
   cd "$srcdir/llvm-$pkgver.src/build"
 
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
+
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/llvm10 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DLLVM_HOST_TRIPLE=$CHOST \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \
@@ -105,5 +109,3 @@ package_llvm10-libs() {
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
