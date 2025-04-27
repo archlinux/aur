@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lisaClust
-_pkgver=1.14.4
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.4
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='lisaClust: Clustering of Local Indicators of Spatial Association'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f00bd6c81484ec7c55063e6015016ce818e05f605f1f9a4aa3f78c8e6975885')
+sha256sums=('60297add75b1eae61b8da515a969d2ff70c4fa537a447d6585ab9cbd63d9eddf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
