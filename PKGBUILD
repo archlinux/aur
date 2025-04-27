@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mixOmics
-_pkgver=6.30.0
+_pkgver=6.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -33,10 +33,14 @@ optdepends=(
   r-microbenchmark
   r-rmarkdown
   r-testthat
+  r-mime
+  r-vdiffr
+  r-kableextra
+  r-devtools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bc07fef3c1ce86dbad92753050c4742e')
-b2sums=('187e14ba6b0e15b47d5d1b51166ef8a0f519718f42a8f1bf0ada5b54a005f18d273d0027a2e07378b04eb34c093bc18c97fa3ee08094cd76e3b0a8e0606114f9')
+md5sums=('f2e3e8336ac86af54e7ea0c3b3b7f47a')
+b2sums=('47526ae081796f33b83ed01de10f4b1757496ccfde4b4ff92b4792076482067a67aacaecc9efe7f10133c70f2d85fc36b87a8e590124d79d56617b58c53f6e5f')
 
 build() {
   mkdir build
