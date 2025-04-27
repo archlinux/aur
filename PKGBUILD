@@ -2,7 +2,7 @@
 # Maintainer: Tyr Heimdal <tyr.heimdal@warning.no>
 
 pkgname=jeveassets
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
 )
 
 sha256sums=(
-  '3e91d7179c88612fb859f624a0a2dc32d8cb1f138d581173e058d3ab8ddf0357'
+  '18cde31797f3abfe1a94ac0f513bf91787b6724fa385ad2973985e1847bc2daa'
   'SKIP'
   '0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e'
   '99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b'
@@ -54,3 +54,4 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
+# vim: set ts=2 sw=2 et:
