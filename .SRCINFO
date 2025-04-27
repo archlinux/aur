@@ -1,7 +1,7 @@
 pkgbase = badlion-client
 	pkgdesc = A Minecraft client with anti-cheat protection
 	pkgver = 4.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://client.badlion.net
 	arch = x86_64
 	license = custom
@@ -11,6 +11,6 @@ pkgbase = badlion-client
 	source = BadlionClient.desktop
 	b2sums = efdae91ee731df35eb3bb88cc2317c02f62544ca29ff529df5be0deaa659a4274be460a791b732b5c4070adfcb553c008c5fc58656a7270162edbd5c41d9d743
 	b2sums = 42865a8a9ee9c71a1472fe82554e5b12df59a89a81cb28d2e0e942c59529781724f70c58802dbbb8905f62e0b413665322fcdb2095e8ebb681250456fda2645d
-	b2sums = 5b177661a6381059f34c46fb65d27f39d041f2e21c4977ea58da425df2b5f34517e8445d009ed01c9645683d5cc67a8b98bde1ed5318fb548236d5690b6db7b0
+	b2sums = 31f87ca073b6b587adc6d6e09846c7d8c143c6140198e7b8fb93fb1d5525b75cd1fd945f138b8b40a4d830a881d34f8d31829f89e8c6ac3de49ee115986e0097
 
 pkgname = badlion-client
