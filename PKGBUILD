@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.28.5.r36.g841bc9f
+pkgver=1.29.5.r0.g87f02ac
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
@@ -47,4 +47,6 @@ check() {
 package() {
     cd "${pkgname%-git}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" docs/{configuration.rst,formatting.md,gallery-dl-example.conf}
 }
