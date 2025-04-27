@@ -1,6 +1,6 @@
 pkgbase = ashpd-demo
 	pkgdesc = asph-demo
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1.0
 	url = https://github.com/bilelmoussaoui/ashpd
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ashpd-demo
 	depends = gtk4
 	depends = libadwaita
 	depends = libshumate
-	source = ashpd-demo-0.10.0.tar.gz::https://github.com/bilelmoussaoui/ashpd/archive/refs/tags/0.10.0.tar.gz
-	sha256sums = 18cc98084f98e101af8b15dc792bd29f296c4601b547925530aa5a14545e16bf
+	source = ashpd-demo-0.11.0.tar.gz::https://github.com/bilelmoussaoui/ashpd/releases/download/0.5.0-demo/ashpd-demo-0.5.0.tar.xz
+	sha256sums = 1387915d6bb238aa5d2c658a735f5ee96f99704210e01d96b56ad96024c51215
 
 pkgname = ashpd-demo
