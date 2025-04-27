@@ -1,0 +1,25 @@
+pkgbase = realvnc-rvnc-connect
+	pkgdesc = VNC remote desktop software by RealVNC
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://www.realvnc.com/en/connect/
+	arch = x86_64
+	license = unknown
+	depends = atkmm>=1.32.0
+	depends = glibc>=2.27
+	depends = cairo>=1.2.4
+	depends = libepoxy>=1.0
+	depends = fontconfig>=2.12
+	depends = gcc-libs>=3.0
+	depends = glib2>=2.39.90
+	depends = gtk3>=3.21.4
+	depends = pango>=1.29.4
+	depends = libx11
+	depends = libxext
+	depends = libxtst
+	optdepends = cups
+	optdepends = avahi
+	source_x86_64 = https://downloads.realvnc.com/download/file/realvnc-connect/RealVNC-Connect-8.0.0-Linux-x64.deb
+	sha256sums_x86_64 = 8720cb42f0a3a8f070d933fcbc02048cce9e1ff1c0bcd1203d20fa111686b9d9
+
+pkgname = realvnc-rvnc-connect
