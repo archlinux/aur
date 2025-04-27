@@ -1,24 +1,32 @@
-# Maintainer: pumpkincheshire <sollyonzou@gmail.com>
+# Contributor: pumpkincheshire <sollyonzou@gmail.com>
 
-_name=anyconfig-ion-backend
-pkgname=python-$_name
-pkgver=0.1.1
-pkgrel=2
-pkgdesc='A backend module for python-anyconfig to support to load and dump Amazon Ion data files.'
+pkgname=python-anyconfig-ion-backend
+_name=${pkgname#python-}
+pkgver=0.2.0
+pkgrel=1
+pkgdesc='Backend module for python-anyconfig to load and dump Amazon Ion data'
 url='https://github.com/ssato/python-anyconfig-ion-backend'
 arch=('any')
 license=('MIT')
 depends=('python-anyconfig' 'python-amazon.ion')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('632995d8e599ab47f63f316690cd91280eb5c4a8e91841e3bc6214ae5cec2ff4')
+sha256sums=('e3cc5280602d8b4d43021d096560d30612fc0ab46898e79298395dcc7e6ee7c0')
+
+prepare() {
+    cd "$_name-$pkgver"
+    sed -i -e '1,3d' -e '/License ::/d' setup.cfg
+}
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+# vim: set ts=4 sw=4 et:
