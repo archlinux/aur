@@ -16,13 +16,14 @@ depends=(
   sdl2
 )
 makedepends=(
-  git
   clang
   cmake
-  glu
-  vulkan-headers
-  ninja
   directx-shader-compiler
+  git
+  glu
+  ispc
+  ninja
+  vulkan-headers
 )
 optdepends=(
   'doom3bfg-data: packaged game data files'
