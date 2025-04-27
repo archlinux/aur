@@ -1,6 +1,6 @@
 pkgbase = thisweek-bin
 	pkgdesc = Weekly task-management desktop app designed to help you organize, track, and achieve your goals and objectives with an intuitive weekly/yearly calendar interface.(Prebuilt version)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jeot/thisweek
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = thisweek-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = thisweek=0.1.0
+	provides = thisweek=0.2.0
 	conflicts = thisweek
-	source = thisweek-0.1.0.rpm::https://github.com/jeot/thisweek/releases/download/thisweek-v0.1.0/ThisWeek-0.1.0-1.x86_64.rpm
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/jeot/thisweek/thisweek-v0.1.0/LICENSE
-	sha256sums = a0e2b3f2f15d08bfa960c75c96d4264d65de93389089088437aeea554254320e
+	source = thisweek-0.2.0.rpm::https://github.com/jeot/thisweek/releases/download/thisweek-v0.2.0/ThisWeek-0.2.0-1.x86_64.rpm
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/jeot/thisweek/thisweek-v0.2.0/LICENSE
+	sha256sums = a4095f195f69342a6d1d9ac6fe6c55eb9cd35ed1cac03fb198984e6ef069c476
 	sha256sums = 326a66d4f47b8a692ae544d0b7fd66ddb38f3c1ddd73d690ed3ae8e8b6a144c3
 
 pkgname = thisweek-bin

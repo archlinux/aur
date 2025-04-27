@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=thisweek-bin
 _pkgname=ThisWeek
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Weekly task-management desktop app designed to help you organize, track, and achieve your goals and objectives with an intuitive weekly/yearly calendar interface.(Prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jeot/thisweek/thisweek-v${pkgver}/LICENSE"
 )
-sha256sums=('a0e2b3f2f15d08bfa960c75c96d4264d65de93389089088437aeea554254320e'
+sha256sums=('a4095f195f69342a6d1d9ac6fe6c55eb9cd35ed1cac03fb198984e6ef069c476'
             '326a66d4f47b8a692ae544d0b7fd66ddb38f3c1ddd73d690ed3ae8e8b6a144c3')
 prepare() {
     sed -i -e "
