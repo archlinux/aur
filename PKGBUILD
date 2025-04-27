@@ -5,7 +5,7 @@ pkgbase=cryptodev-linux
 pkgname=cryptodev-linux
 pkgdesc="Kernel module providing access to Linux kernel cryptographic drivers from userspace"
 pkgver=1.14
-pkgrel=1
+pkgrel=2
 url='http://cryptodev-linux.org/'
 license=("GPL")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,8 +14,15 @@ makedepends=('linux-headers')
 conflicts=('cryptodev_friendly')
 provides=('cryptodev_friendly')
 optdepends=('openssl-cryptodev: OpenSSL with cryptodev support')
-source=("https://github.com/${pkgbase}/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('67223d5bee4749028e78e87372cee3bca79d9a20f7b6cb915aa080c59d2a2d98')
+source=("https://github.com/${pkgbase}/${pkgbase}/archive/${pkgbase}-${pkgver}.tar.gz"
+        "0001-Fix-cryptodev_verbosity-sysctl-for-Linux-6.11-rc1.patch")
+sha256sums=('67223d5bee4749028e78e87372cee3bca79d9a20f7b6cb915aa080c59d2a2d98'
+            '6cab9c5c813c06f462c485e37c52c84c5283b197e205424fdc0a7a31ed50e62a')
+
+prepare() {
+  cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
+  patch -Np1 -i "${srcdir}/0001-Fix-cryptodev_verbosity-sysctl-for-Linux-6.11-rc1.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
