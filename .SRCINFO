@@ -1,6 +1,6 @@
 pkgbase = r-epimutacions
 	pkgdesc = Robust outlier identification for DNA methylation data
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epimutacions
 	arch = x86_64
@@ -47,8 +47,8 @@ pkgbase = r-epimutacions
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epimutacions_1.10.0.tar.gz
-	md5sums = 30df10a44d353e8f963c72c0822682e3
-	b2sums = b6bdb467e04f9db2731ef035c25c817c05fe20ff5a8eb21f97bc4cd2a98f9ffaf34f8c0f7fd196e08673d68ae0b1280d7eaff4dc3c2454cf3a251e1d8745e530
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epimutacions_1.12.0.tar.gz
+	md5sums = a3bc74f67edb7941aeeeb260ec0f4a5a
+	b2sums = b2f31bd36e930550a12bb8b64f2b45c7dcbbd82f2259975c40ef6ba1924c6eb9a144b7d20fb69c4f24e6ef5a478a03fe050c67876c4cb3cfa45def79624484e2
 
 pkgname = r-epimutacions
