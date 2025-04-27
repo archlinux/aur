@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TitanCNA
-_pkgver=1.44.0
+_pkgver=1.45.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.45.0
 pkgrel=1
 pkgdesc='Subclonal copy number and LOH prediction from whole genome sequencing of tumours'
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c1c022549895d6f3cf66ff628a592440b27604d97e197cab963c39a597b49e30')
+sha256sums=('832283d946048fb25b9eb7ac8c9024c7a113609ba6ff50c7660e90f69287f6a7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
