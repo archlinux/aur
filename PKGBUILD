@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=comapr
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('066b98a23a1f2031231e2b58f5cd3f18')
-b2sums=('3f0dafc8431e76ea39fd667a08a7e8d0ece542ec0750444f8f05a150155fc85dd3d671ca9bea0eb465179f6b9962406cee0ca006a28da3173c550c12ec99c261')
+md5sums=('027e81fa1d8b4782270312c39c3b64c6')
+b2sums=('5ccc6930ef10ac5ae379abfb8f91397e65e83ad7a7f5c9edd9d353bd3d4f28db60d1698a3a170712d6bf8a26f4cfa9e91ee140f5ef7410144da76e4f44ff9f1a')
 
 build() {
   mkdir build
