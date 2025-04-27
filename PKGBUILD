@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cogito
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Compare genomic intervals tool - Automated, complete, reproducible and clear report about genomic and epigenomic data sets'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7aa6bc71d99bcd9c10a7bb4c270fc4b891f6005c2dc4db3451f5061f95380560')
+sha256sums=('e3be45090d69292e51bad09497f3d50ceeb4d108f134708cb9bdf99927a361d3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
