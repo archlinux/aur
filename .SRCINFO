@@ -1,6 +1,6 @@
 pkgbase = r-genomicozone
 	pkgdesc = Delineate outstanding genomic zones of differential gene activity
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicOZone
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-genomicozone
 	optdepends = r-knitr
 	optdepends = r-readxl
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicOZone_1.20.0.tar.gz
-	sha256sums = ed93729ff283819dc02677925f352eed4b151490426d401bd5a53ada125636c5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicOZone_1.22.0.tar.gz
+	sha256sums = cdd2422c6a0e2e8b6aa8d06de014c00da1a4848eb7ee51ce0f89d06298b85d48
 
 pkgname = r-genomicozone
