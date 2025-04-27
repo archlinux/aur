@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HelloRanges
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Introduce *Ranges to bedtools users'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bbeb1b5c6d20d6a83c03dd8059b0aa0c5d9d40781c88ca5ab1f9345837b61586')
+sha256sums=('674c90930ef12873c4ee1233ef82e192a7f8f50e623697b606cd2ddd336712c6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
