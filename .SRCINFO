@@ -1,0 +1,16 @@
+pkgbase = openapv-git
+	pkgdesc = The reference implementation of the APV codec (git version)
+	pkgver = 0.1.13.1.r0.g938691c
+	pkgrel = 1
+	url = https://github.com/AcademySoftwareFoundation/openapv/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	provides = openapv
+	conflicts = openapv
+	source = git+https://github.com/AcademySoftwareFoundation/openapv.git
+	sha256sums = SKIP
+
+pkgname = openapv-git
