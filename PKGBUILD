@@ -2,15 +2,16 @@
 
 pkgname='hyphen-pt_pt'
 pkgver=20040415
-pkgrel=3
+pkgrel=4
 pkgdesc="Portuguese hyphenation rules"
 arch=('any')
-url="http://download.services.openoffice.org/contrib/dictionaries/"
+url="https://wiki.documentfoundation.org/Development/Dictionaries"
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
-#source=('http://download.services.openoffice.org/contrib/dictionaries/hyph_pt_PT.zip')
-source=('http://openoffice.cs.utah.edu/contrib/dictionaries/hyph_pt_PT.zip')
-sha256sums=('2846f6079d8965447b22c1637696be71b69bdca91f5558c0c2a2b9b3b8de8dd2')
+source=('https://cgit.freedesktop.org/libreoffice/dictionaries/plain/pt_PT/hyph_pt_PT.dic'
+        'https://cgit.freedesktop.org/libreoffice/dictionaries/plain/pt_PT/README_hyph_pt_PT.txt')
+sha256sums=('6f18ee89de6db21d9b06120a5527ec41d8132514fc112ccfe7d289ba91649840'
+            '62f19b9d8b42f2b0ff165ab434f40cfb4210a464f0662c31f6f99d77d0306e06')
 
 package() {
   cd "$srcdir"
