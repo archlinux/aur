@@ -1,0 +1,18 @@
+pkgbase = strobealign
+	pkgdesc = Aligns short reads using dynamic seed size with strobemers. https://doi.org/10.1186/s13059-022-02831-7
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/ksahlin/strobealign
+	arch = x86_64
+	arch = aarch64
+	arch = ppc64le
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	depends = openmp
+	depends = zlib
+	depends = isa-l
+	source = strobealign-0.16.0.tar.gz::https://github.com/ksahlin/strobealign/archive/v0.16.0.tar.gz
+	sha256sums = 3fd4c95991a149b7edcafc91949a827d74f65e031ea08a73a878bef4ed123afa
+
+pkgname = strobealign
