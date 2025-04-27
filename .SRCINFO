@@ -1,7 +1,7 @@
 pkgbase = flightgear-git
 	pkgdesc = An open-source, multi-platform flight simulator
 	pkgver = 2024.1.0r16085.1757b1d5b
-	pkgrel = 3
+	pkgrel = 2
 	url = https://home.flightgear.org
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,6 @@ pkgbase = flightgear-git
 	depends = libxi
 	depends = zlib
 	depends = flightgear-openscenegraph-git
-	depends = flightgear-data-git
 	depends = libxrandr
 	depends = glu
 	depends = openal
