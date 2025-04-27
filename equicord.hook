@@ -1,10 +1,13 @@
 [Trigger]
-Operation = Upgrade
-Type = Package
-Target = discord
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=discord
+Target=discord-ptb
+Target=discord-canary
 
 [Action]
-Description = Running Equilotl after updating Discord...
-When = PostTransaction
-Exec = /usr/bin/Equilotl -install -branch stable
+When=PostTransaction
+Exec=/etc/pacman.d/hookbin/equicord.sh
+NeedsTargets
 
