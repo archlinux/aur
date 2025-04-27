@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=demuxSNP
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-viridislite
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3b31e85995d4a7c5a2f43a26bc515cfe')
-b2sums=('ed1e28739f08c4ef17e83dee59439141c23c9ea00b47c417e50250a6de9c24a1d48c149b8b229b87d583abec74d65904dfde9bb91fc89c7f3924a32e3b3458e3')
+md5sums=('d2d97bd74bbce29c9fd2366ec5cb764b')
+b2sums=('216b6761c6aa0e27c20c25f8c789ef05b413167d4de9d01f3939f1601599567a0611791334776aa4d7ff4dfdaf38a8f5a4c060f1dff3509859fd45fe5dc54825')
 
 build() {
   mkdir build
