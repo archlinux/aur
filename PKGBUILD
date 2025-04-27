@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -54,14 +54,13 @@ checkdepends=()
 
 source=(portable-source::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('c1215a47c596b6fed545c244c2683390')
+md5sums=('ce1e38508704dab33c2ae61c069813aa')
 
 
 function package() {
 	cd "${srcdir}/portable-source"
 	install -Dm755 portable.sh ${pkgdir}/usr/bin/portable
 	install -Dm755 open.sh ${pkgdir}/usr/lib/portable/open
-	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
 	install -Dm755 portable-helper.sh ${pkgdir}/usr/lib/portable/helper
