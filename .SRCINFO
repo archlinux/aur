@@ -1,0 +1,24 @@
+pkgbase = qspectrumanalyzerg-git
+	pkgdesc = Community fixed version of qspectrumanalyzer.
+	pkgver = 2.2.0.r9.b8f93f5
+	pkgrel = 1
+	url = https://gabriex.xyz/archives/wares/qspectrumanalyzerg.tar.zst
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-pyqtgraph
+	depends = soapy_power
+	depends = python-qt.py
+	depends = python-setuptools
+	optdepends = rtl_power_fftw: alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.
+	optdepends = rtl-sdr-keenerd: better version of rtl_power backend
+	optdepends = rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.
+	optdepends = rx_tools: rx_power backend. Wniversal SoapySDR based backend, but seems slow and buggy.
+	optdepends = hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.
+	provides = qspectrumanalyzerg
+	conflicts = qspectrumanalyzer
+	source = https://gabriex.xyz/archives/wares/qspectrumanalyzerg.tar.zst
+	sha256sums = 682dd6d65c07509004197a8ab54d97916f3d3215fc4a9a60c04ad477a1d551fd
+
+pkgname = qspectrumanalyzerg-git
