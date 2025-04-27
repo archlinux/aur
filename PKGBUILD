@@ -1,6 +1,6 @@
 # Maintainer: Glitt3ring
 pkgname=blockdodger
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Block Dodging game Made by Glitt3ring."
