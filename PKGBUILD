@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="html2markdown"
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Convert HTML to Markdown. Even works with entire websites and can be extended through rules."
 arch=('aarch64' 'i686' 'x86_64')
@@ -12,15 +12,17 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="html-to-markdown"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('9217607bdd69ad74320656f66346eee4237ec433243e80dafc5c190a745a5dc1898610ebe62d1e7f7d992a7250b1633b9af46a4652c8afbc78ace49dac370c38')
+b2sums=('0278df0b6d04a28fe8a261f8676041babbf67f89c37b11ead1927bb1c4352559a41142829d92c95e2f2c86139caef472361748b46b3ce58d2a1019e9db41ee6b')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build"
+  go mod download -x
+  find "${srcdir}/go-mod-cache" -type d -exec chmod 755 {} +
+  find "${srcdir}/go-mod-cache" -type f -exec chmod 644 {} +
 
-  go mod download
+  mkdir -p "build"
 }
 
 build() {
@@ -28,6 +30,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
