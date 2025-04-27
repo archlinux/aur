@@ -1,7 +1,7 @@
 pkgbase = phoneinfoga-bin
 	pkgdesc = Information gathering & OSINT framework for phone numbers
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sundowndev.github.io/phoneinfoga/
 	arch = x86_64
 	license = GPL-3.0-only
