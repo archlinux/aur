@@ -67,7 +67,6 @@ function package() {
 	cd portable
 	install -Dm755 portable.sh ${pkgdir}/usr/bin/portable
 	install -Dm755 open.sh ${pkgdir}/usr/lib/portable/open
-	install -Dm755 mimeapps.list ${pkgdir}/usr/lib/portable/mimeapps.list
 	install -Dm755 flatpak-info ${pkgdir}/usr/lib/portable/flatpak-info
 	install -Dm755 bwrapinfo.json ${pkgdir}/usr/lib/portable/bwrapinfo.json
 	install -Dm755 portable-helper.sh ${pkgdir}/usr/lib/portable/helper
