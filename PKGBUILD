@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=heplots
-_pkgver=1.7.3
+_pkgver=1.7.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,10 +45,12 @@ optdepends=(
   r-markdown
   r-vcdextra
   r-r.rsp
+  r-litedown
+  r-aplpack
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8b0c9db6ab03e7725fd261deefe5e1bc')
-b2sums=('adc627a81806d2c7a8149449e2bfd20e3f693e644372a9c0c2dcb4933279feac0579078134d28fe16241839e96db3015a65ce4f247dae5f1700e5b32eae265a7')
+md5sums=('ac3f8b1dae7302e7778194707ecd6680')
+b2sums=('e574447732cc139b26f63558dbef393169ec5c84864c1d964aae0a1f1800e91d0a07e9af3d2b03f229ba8d2264af55b2b06389b34d8a1d97b25d76fdabd984c7')
 
 build() {
   mkdir build
