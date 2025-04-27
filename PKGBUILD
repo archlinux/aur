@@ -5,7 +5,7 @@
 pkgname=rbdoom-3-bfg
 _srctag=1.5.1
 pkgver=${_srctag//-/.}
-pkgrel=11
+pkgrel=12
 pkgdesc="Doom 3 BFG Edition with modern engine features like PBR, Baked Global Illumination, Soft Shadows"
 arch=('x86_64')
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -53,6 +53,7 @@ build() {
   cmake \
     -S RBDOOM-3-BFG/neo \
     -B build \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBINKDEC=OFF \
