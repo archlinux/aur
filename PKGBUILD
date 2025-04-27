@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RnBeads
-_pkgver=2.24.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.24.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='RnBeads'
 arch=('any')
@@ -70,7 +70,7 @@ optdepends=(
   r-xml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('497ea1e1c4ebdc5f0c0f64f69ea9be2ac04e0a3da0b0c5d24f4a7b1a9eabd300')
+sha256sums=('3d298e01ddc8ca09e6ed67c875152b2aa78ae3fb89edc8d7c6b48707082b7797')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
