@@ -1,7 +1,7 @@
 # Maintainer: PaloMiku <palomiku@outlook.com>
 pkgname=moekey-bin
 pkgver=0.9.0+59
-pkgrel=1
+pkgrel=2
 pkgdesc="MoeKey is a cross-platform misskey client made by Flutter."
 arch=('x86_64')
 url='https://github.com/MoeKeyDev/MoeKey'
@@ -29,7 +29,7 @@ Exec=MoeKey
 Icon=io.github.Predidit.MoeKey
 Terminal=false
 Type=Application
-Categories=AudioVideo;Audio;Video;
+Categories=Network;InstantMessaging;
 EOF
 
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.Predidit.MoeKey.png"
