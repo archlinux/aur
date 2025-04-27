@@ -1,6 +1,6 @@
 pkgbase = supersonic-desktop-bin
 	pkgdesc = A lightweight cross-platform desktop client for Subsonic music servers.(Prebuilt version)
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/dweymouth/supersonic
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = supersonic-desktop-bin
 	depends = libglvnd
 	depends = libx11
 	depends = mpv
-	provides = supersonic-desktop=0.15.1
+	provides = supersonic-desktop=0.15.2
 	conflicts = supersonic-desktop
-	source = supersonic-desktop-0.15.1.tar.xz::https://github.com/dweymouth/supersonic/releases/download/v0.15.1/Supersonic-0.15.1-linux-x64-libmpv2.tar.xz
-	sha256sums = 9ca2658a4dd17f7b6868b16af798036f844b55d22bb9fa0e640c053f97164c7b
+	source = supersonic-desktop-0.15.2.tar.xz::https://github.com/dweymouth/supersonic/releases/download/v0.15.2/Supersonic-0.15.2-linux-x64-libmpv2.tar.xz
+	sha256sums = ee3b2a0db8d43b0091635bb01144e704b990e87ac92a196ecd6637f6ef946a60
 
 pkgname = supersonic-desktop-bin
