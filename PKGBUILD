@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=RNAmodR.Data
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8e591fc2ea8ec1ae80d07ba521b3db26')
-b2sums=('3d3670caaf963835815809ed303bf0ae1df19e59e848eb78fce2cd9ca61cf1d5e3fc114aa5c122a7a6f88d5d703aa28e32ffab5f4abe20769c50b2a9838f6ae1')
+md5sums=('8d43a49cc4995884667b7ac9e6f344da')
+b2sums=('8840e6532578d38dc70ecc1c49f5b4bbd7f58ba780aa19759ab26436b48f7147d84f6c85d4ae96e2c20c7348a6d3e98c2d42cda1bdc9fa3c23239b26baf82916')
 
 build() {
   mkdir build
