@@ -3,7 +3,7 @@
 pkgbase=motu
 pkgname=('motu' 'motu-dkms')
 pkgver=r23.g655c39e
-pkgrel=1
+pkgrel=2
 pkgdesc='Kernel module for MOTU MIDI devices'
 arch=('x86_64')
 url='https://github.com/vampirefrog/motu'
@@ -28,6 +28,9 @@ pkgver() {
 }
 
 prepare() {
+  # overwrite upstream config
+  cp -vr Makefile dkms.conf "$pkgbase"
+
   # debug output is a tad excessive
   cd "$pkgbase"
   patch -p1 -i "$srcdir/suppress-debug-output.patch"
@@ -55,11 +58,14 @@ package_motu-dkms(){
   conflicts=('motu')
   provides=('motu')
 
+  cd "$pkgbase"
+
+  # required files for dkms rebuild
   install -vDm644 \
     -t "$pkgdir/usr/src/$pkgbase-$pkgver" \
-    "$pkgbase/motu.c" Makefile dkms.conf
+    motu.c Makefile dkms.conf
 
-  # Set name and version for DKMS template
+  # set name and version for dkms template
   sed -e "s/@PKGBASE@/$pkgbase/" \
       -e "s/@PKGVER@/$pkgver/" \
       -i "$pkgdir/usr/src/$pkgbase-$pkgver/dkms.conf"
