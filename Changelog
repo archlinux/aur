@@ -1,9 +1,23 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 1.3.2 ➙ 1.5.0
-              : 2025-04-24 ➙ 2025-04-26
+ Tags         : 1.4.0 ➙ 2.0.2
+              : 2025-04-25 ➙ 2025-04-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-04-27   : 2.0.2
+                API ref rst format
+                Fix typo in api reference
+
+ 2025-04-27   : 2.0.0
+                Asyncio now uses the recommended TaskGroup class together with
+                   the timeout() context manager. These were introduced in python 3.11.
+                   This newer approach is cleaner, more robust and ensures all tasks
+                   are appropriately cancelled in the event one task fails. It also offers
+                   superior timeout capabilities.
+                Timeout now works when using a caller provided function in addition to
+                subprocesses.
+ 2025-04-26     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-04-26   : 1.5.0
                 Style per PEP-8, PEP-257 and PEP-484.
@@ -20,12 +34,4 @@
                 asyncio : missing decode() for stdout/err
                 pytest : ensure python path uses dev source for tests
                 Add missing SPDX identifiers
-                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-25   : 1.3.3
-                Fix readme typo and small tweak for clarity
- 2025-04-24     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-24   : 1.3.2
-                Change examples in README to include everything to actually run
                 update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
