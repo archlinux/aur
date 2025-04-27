@@ -1,12 +1,12 @@
-# Maintainer: Jonas Bögle <aur@iwr.sh>
-# Contributor: Jonathan Duck <duckbrain30@gmail.com>
+# Maintainer: wyf9661 <wyf9661@hotmail.com>
+# Contributor: Jonas Bögle <aur@iwr.sh>
 
-# Consider using https://aur.archlinux.org/packages/typora instead
+# Consider https://github.com/hazukieq/Yporaject , which supports only <= 1.9.3
 
 _pkgname=typora
 pkgname="$_pkgname-free-bin"
-pkgver=0.11.18
-pkgrel=4
+pkgver=1.9.3
+pkgrel=1
 pkgdesc="A minimal markdown editor and reader(free version)."
 arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -17,11 +17,11 @@ optdepends=(
 	'pandoc: Import/export for extra file formats')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-# The original URL is not available anymore
-source_x86_64=("https://github.com/wyf9661/typora-free/releases/download/v0.11.18/typora_0.11.18_amd64.deb")
-source_aarch64=("https://github.com/wyf9661/typora-free/releases/download/v0.11.18/typora_0.11.18_arm64.deb")
-sha512sums_x86_64=('8933cb4eab13a37719a3771d14a7a3f5951f6bbce06381ffe37ad5bc3029efed3878723427a4e97b83dbc1d7ccc43b31551b0c336663c843f0e685f8a4e2390e')
-sha512sums_aarch64=('046b683d8a6039fe8c08d2f462b6caf9a3bf07b4204e001ac2be438a64ba1ac8ed05a02e6032f0d2b2bd702b24fc0678a41da2c229cfb8297c0e7f8cf07b9c07')
+download_url=("https://download2.typoraio.cn/linux")
+source_x86_64=("${download_url}/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${download_url}/${_pkgname}_${pkgver}_arm64.deb")
+sha1sums_x86_64=('f4780590cf073c14f20e34393d52035a1c3b0da9')
+sha1sums_aarch64=('3130eab4cc27cb0c0ab68ba757789b8a9bf4d271')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
