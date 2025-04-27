@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://www.flightgear.org/"
 license=('GPL')
 depends=('libxmu' 'libxi' 'zlib' 'flightgear-openscenegraph-git' 'libxrandr' 'glu' 'openal' 'osgxr')
-makedepends=('boost' 'cmake' 'git' 'mesa' 'sharutils' 'simgear' 'qt5-base' 'qt5-declarative' 'qt5-svg')
+makedepends=('boost' 'cmake' 'git' 'mesa' 'sharutils' 'simgear-git' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data')
