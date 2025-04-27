@@ -2,7 +2,7 @@
 # Maintainer: Georgios Tsotsos <geoxor123@outlook.com>
 appname=amethyst
 pkgname=$appname-player
-pkgver=2.0.2
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A cross-platform music player made with Typescript "
 arch=('x86_64')
