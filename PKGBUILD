@@ -12,7 +12,7 @@ depends=("openhab4")
 conflicts=("openhab4-snapshot-addons")
 
 source=("openhab-addons-${pkgver}.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/${pkgver}/openhab-addons-${pkgver}.kar")
-sha256sums=('6582dfa1eae6691d81c310d5c50768c772af12c6905b103a9e811aac2bcfaed2')
+sha256sums=('965b8e64fca915c603b37a96d5fd89875a26d413f478cd7a705270542040e4bb')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${_pkgbase}/addons"

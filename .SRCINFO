@@ -8,6 +8,6 @@ pkgbase = openhab4-addons
 	depends = openhab4
 	conflicts = openhab4-snapshot-addons
 	source = openhab-addons-4.3.5.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/4.3.5/openhab-addons-4.3.5.kar
-	sha256sums = 6582dfa1eae6691d81c310d5c50768c772af12c6905b103a9e811aac2bcfaed2
+	sha256sums = 965b8e64fca915c603b37a96d5fd89875a26d413f478cd7a705270542040e4bb
 
 pkgname = openhab4-addons
