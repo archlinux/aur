@@ -3,8 +3,8 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.4.0
-_subver=1300
+pkgver=4.4.3
+_subver=1303
 pkgrel=1
 arch=(
     'aarch64'
@@ -31,8 +31,8 @@ makedepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-portable.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64-portable.zip")
-sha256sums_aarch64=('7fafa233d85370ac87117bdd28dd80ceb403872c1e7d97ee1b77fe662a70b335')
-sha256sums_x86_64=('287988b554d25e9f7c30e3e1425543672d3b06b489197954904e95d7b3e2a036')
+sha256sums_aarch64=('e9ce8ba78fef0b511d4dd5ca732aa0f3c5ec03886dcb66ca48c4866a10a23db7')
+sha256sums_x86_64=('f6e26c25400ca327e5ab655e500d28ed8d1af26cdaba49b10c123fc03eba26ef')
 prepare() {
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
     find "${srcdir}/${_pkgname}/lib/app/resources/modes/java/application/launch4j/w32api" -type f -exec chmod 644 {} +
