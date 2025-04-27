@@ -1,6 +1,6 @@
 pkgbase = r-watermelon
 	pkgdesc = Illumina 450 and EPIC methylation array normalization and metrics
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/wateRmelon
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-watermelon
 	optdepends = r-preprocesscore
 	optdepends = r-rmarkdown
 	optdepends = r-rpmm
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/wateRmelon_2.12.0.tar.gz
-	sha256sums = f12c59da69fad3eb58d0c98652f5be6ce3f7263e2b960e5087befe3eedc20620
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/wateRmelon_2.14.0.tar.gz
+	sha256sums = d503f137dd9f4c58e819a5926ede8e1569a1731e6531be7b152409b51952fe61
 
 pkgname = r-watermelon
