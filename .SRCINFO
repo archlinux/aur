@@ -1,6 +1,6 @@
 pkgbase = r-genomicfiles
 	pkgdesc = Distributed computing by file or by range
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GenomicFiles
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-genomicfiles
 	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
 	optdepends = r-runit
 	optdepends = r-snpstats
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicFiles_1.42.0.tar.gz
-	sha256sums = 2f8792fb0c604b5d324e5c116c188a639f48194ae826c7b83e05eed7ba25d36d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicFiles_1.44.0.tar.gz
+	sha256sums = b8ecdacfff7c0cfbe1d0c1fda47c776c41e2ad37f966b953d18c0616cd53907a
 
 pkgname = r-genomicfiles
