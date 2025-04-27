@@ -2,7 +2,7 @@
 
 pkgname=sonicradio
 pkgver=0.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI radio player making use of Radio Browser API and Bubbletea."
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/dancnb/sonicradio"
@@ -25,7 +25,7 @@ build() {
 
    cd "${pkgname}-${pkgver}"
    # Uncomment line below if you want to change default(30) visible radio stations to 100.
-   sed -i 's|const DefLimit = 30|const DefLimit = 100|' browser/search.go
+   #sed -i 's|const DefLimit = 30|const DefLimit = 100|' browser/search.go
 
    go build -o ${pkgname}
 }
