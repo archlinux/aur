@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.23.0
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
@@ -36,6 +36,12 @@ sha512sums=('e5cd7649451277ff5c9dedac4948be12cd1465261f872319a8f1c42842a51a817cb
 
 PETSC_ARCH=linux-c-opt
 _install_dir=/opt/petsc/${PETSC_ARCH}
+
+prepare() {
+  # https://gitlab.com/petsc/petsc/-/commit/3060d0773fa8a9dad8e8e40a6d589c49368f0c56#0fb063256c7e540baeec4d4d747b8f1d7a752442
+  cd ${pkgname}-${pkgver}
+  sed -i '464i \        if i == j: continue' config/utils/generatefortranbindings.py
+}
 
 build() {
   cd ${pkgname}-${pkgver}
