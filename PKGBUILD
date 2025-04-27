@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=katdetectr
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,8 +44,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b82e34bb3c3d447ca1899d32dd214f1d')
-b2sums=('465184cf790a851c77d4f87f4eaa539c2c24e7adcd537e669e33ed5131217d64e34c02fd339ce3fdbf9aab79b04a106b38d066bb70e4935036a9b99a74c7c6a3')
+md5sums=('338c2b7abaf09d505238105406337eac')
+b2sums=('0e6391f39a19bc518d038f56d3b0eb716b14900984da3b5baf49185c20bae194c9537d5827468737dcf4826ec901c89745c468c4e4cd1e3b0d9bacbf19d23eda')
 
 build() {
   mkdir build
