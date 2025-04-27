@@ -1,17 +1,10 @@
 # Maintainer:
 # Contributor: Fedor Suchkov <f.suchkov@gmail.com>
 
-# options
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname="fanficfare"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=4.40.0.r0.g9005f9d
-pkgrel=2
+pkgname="$_pkgname-git"
+pkgver=4.44.0.r20.ga9c725d
+pkgrel=1
 pkgdesc="Tool to make eBooks from stories on fanfiction and other websites"
 url="https://github.com/JimmXinu/FanFicFare"
 license=(
@@ -55,48 +48,24 @@ sha256sums=(
   '6d172dcc98a8f6dcef2048272bfabd810ceeb5740969fbe406ebcd7b638e072c'
 )
 
-if [ "${_build_git::1}" != "t" ]; then
-  # stable
-  _prepare() {
-    cd "$_pkgsrc"
-    local _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
-    git -c advice.detachedHead=false checkout -f "${_tag:?}"
-    git describe --tags --long
-  }
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --tags --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//'
-  }
-else
-  # git
-  provides=("$_pkgname=${pkgver%%.r*}")
-  conflicts=("$_pkgname")
+pkgver() {
+  cd "$_pkgsrc"
+  local _pkgver=$(
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/-([^-]*-g)/.r\1/;s/-/./g'
+  )
+  echo "${_pkgver:?}"
 
-  _prepare() {
-    cd "$_pkgsrc"
-    git describe --tags --long
-  }
-
-  pkgver() {
-    cd "$_pkgsrc"
-    local _pkgver=$(
-      git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-        | sed -E 's/^[^0-9]*//;s/-([^-]*-g)/+r\1/;s/-/./g'
-    )
-    echo "${_pkgver//+/.}"
-
-    # update version string
-    sed -E -e 's&^(\s*version)="([0-9\.]+)"$&\1="'"${_pkgver//+/.}"'"&' -i "fanficfare/cli.py"
-  }
-fi
+  # update version string
+  sed -E -e 's&^(\s*version)="(\S+)"$&\1="'"$_pkgver"'"&' -i "fanficfare/cli.py"
+}
 
 prepare() {
-  (_prepare)
-
   cd "$_pkgsrc"
-  patch -p1 -i ../0001-makeplugin-do-not-bundle-system-dependencies.patch
+  patch -Np1 -F100 -i ../0001-makeplugin-do-not-bundle-system-dependencies.patch
 }
 
 build() {
@@ -111,6 +80,6 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/FanFicFare-*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 FanFicFare.zip "$pkgdir"/usr/share/calibre/system-plugins/FanFicFare.zip
 }

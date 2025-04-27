@@ -1,7 +1,7 @@
 pkgbase = fanficfare-git
 	pkgdesc = Tool to make eBooks from stories on fanfiction and other websites
-	pkgver = 4.40.0.r0.g9005f9d
-	pkgrel = 2
+	pkgver = 4.44.0.r20.ga9c725d
+	pkgrel = 1
 	url = https://github.com/JimmXinu/FanFicFare
 	arch = any
 	license = Apache-2.0
@@ -24,7 +24,7 @@ pkgbase = fanficfare-git
 	depends = python-urllib3
 	optdepends = calibre: use as a plugin for calibre
 	optdepends = python-pillow: convert and resize covers and images
-	provides = fanficfare=4.40.0
+	provides = fanficfare
 	conflicts = fanficfare
 	source = fanficfare::git+https://github.com/JimmXinu/FanFicFare.git
 	source = 0001-makeplugin-do-not-bundle-system-dependencies.patch
