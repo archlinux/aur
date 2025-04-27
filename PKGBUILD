@@ -5,7 +5,7 @@
 
 pkgname=flightgear-git
 pkgver=2024.2.0r16435.1851728cf
-pkgrel=4
+pkgrel=3
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
 url="https://www.flightgear.org/"
@@ -13,7 +13,8 @@ license=('GPL')
 depends=('libxmu' 'libxi' 'zlib' 'flightgear-openscenegraph-git' 'flightgear-data-git' 'libxrandr' 'glu' 'openal' 'osgxr')
 makedepends=('boost' 'cmake' 'git' 'mesa' 'sharutils' 'simgear-git' 'qt5-base' 'qt5-declarative' 'qt5-svg')
 optdepends=('qt5-base: fgfs --launcher'
-            'qt5-declarative: fgfs --launcher')
+            'qt5-declarative: fgfs --launcher'
+            'flightgear-data')
 provides=("flightgear=${pkgver}")
 conflicts=('flightgear')
 source=("flightgear::git+https://gitlab.com/flightgear/flightgear.git")
