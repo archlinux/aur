@@ -4,13 +4,13 @@
 _pkgname=clang
 pkgname=clang10
 pkgver=10.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="C language family frontend for LLVM"
 arch=('x86_64')
 url="https://clang.llvm.org/"
-license=('custom:Apache 2.0 with LLVM Exception')
+license=('custom:Apache-2.0 with LLVM-exception')
 depends=('llvm10-libs' 'gcc' 'compiler-rt')
-makedepends=('llvm10' 'cmake' 'ninja' 'python-sphinx' 'python2')
+makedepends=('llvm10' 'cmake' 'ninja' 'python-sphinx') # 'python2'
 optdepends=('openmp: OpenMP support in clang with -fopenmp'
             'python: for scan-view and git-clang-format'
             'llvm: referenced by some clang headers')
@@ -63,12 +63,16 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname-$pkgver.src/build"
 
+  CFLAGS=${CFLAGS/-g /-g1 }
+  CXXFLAGS=${CXXFLAGS/-g /-g1 }
+
   export PATH=/opt/llvm10/bin:$PATH
 
   local cmake_args=(
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/opt/llvm10
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DPYTHON_EXECUTABLE=/usr/bin/python
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DCLANG_LINK_CLANG_DYLIB=ON
@@ -78,6 +82,7 @@ build() {
     -DLLVM_BUILD_DOCS=OFF
     -DLLVM_ENABLE_SPHINX=ON
     -DSPHINX_WARNINGS_AS_ERRORS=OFF
+    -DLLVM_CMAKE_DIR=/opt/llvm10
     -DLLVM_EXTERNAL_LIT=/opt/llvm10/bin/lit
     -DLLVM_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
   )
@@ -91,10 +96,10 @@ build() {
   ninja
 }
 
-_python2_optimize() {
-  python2 -m compileall "$@"
-  python2 -O -m compileall "$@"
-}
+# _python2_optimize() {
+#   python2 -m compileall "$@"
+#   python2 -O -m compileall "$@"
+# }
 
 _python3_optimize() {
   python3 -m compileall "$@"
@@ -117,20 +122,19 @@ package() {
   sed -i 's|libexec|lib/clang|' "$pkgdir/opt/llvm10/bin/scan-build"
 
   # Install Python bindings
-  for _py in 2.7 3.8; do
+#   for _py in 2.7 3.8; do
+  for _py in 3.13; do
     install -d "$pkgdir/opt/llvm10/lib/python$_py/site-packages"
     cp -a ../bindings/python/clang "$pkgdir/opt/llvm10/lib/python$_py/site-packages/"
     _python${_py%%.*}_optimize "$pkgdir/opt/llvm10/lib/python$_py"
   done
 
   # Fix shebang in Python 2 script
-  sed -i '1s|/opt/llvm10/bin/env python$|&2|' \
-    "$pkgdir"/opt/llvm10/share/$_pkgname/run-find-all-symbols.py
-  touch -d @$SOURCE_DATE_EPOCH "$pkgdir"/opt/llvm10/share/$_pkgname/run-find-all-symbols.py
+#   sed -i '1s|/opt/llvm10/bin/env python$|&2|' \
+#     "$pkgdir"/opt/llvm10/share/$_pkgname/run-find-all-symbols.py
+#   touch -d @$SOURCE_DATE_EPOCH "$pkgdir"/opt/llvm10/share/$_pkgname/run-find-all-symbols.py
 
   # Compile Python scripts
-  _python2_optimize "$pkgdir/opt/llvm10/share/clang"
+#   _python2_optimize "$pkgdir/opt/llvm10/share/clang"
   _python3_optimize "$pkgdir/opt/llvm10/share" -x 'clang-include-fixer|run-find-all-symbols'
 }
-
-# vim:set ts=2 sw=2 et:
