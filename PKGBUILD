@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenomicInteractions
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Utilities for handling genomic interaction data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('888145bfc93deff6ec99211aff547acb7b3bf66e6888fe71ecfdbd85ea656ddc')
+sha256sums=('da7fb5292e0142f74129b55a521876b644a4b8204d513ae766fab2996c5f9c0b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
