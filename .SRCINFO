@@ -1,0 +1,15 @@
+pkgbase = system76-power-gui
+	pkgdesc = GUI application for System76 Power Management
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitea.dockservices.co/G34RZ/system76-power-GUI.git
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = gcc
+	makedepends = git
+	depends = system76-power
+	depends = polkit
+	depends = gtk3
+
+pkgname = system76-power-gui
