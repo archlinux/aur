@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=standR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -48,8 +48,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db56e912a06aba49932192a6206fcc55')
-b2sums=('0e12591d4df4a9e99ae909076597d06fbb78c91980408c632bb212fd8fd68661209a06c2887c548f251c1d9f854d71885ffa64573d8f6ac6058810a0135a36b6')
+md5sums=('730c76dec4835c7cbdd58a59c3179677')
+b2sums=('79650bbcdb2a624540605552baab488dcf94488a62f7598bf4d8b4cdca7533e1bc57f87507ae2e2bcac53e57bb813ba4c6fc650061dcf5738d359bf4e8506a60')
 
 build() {
   mkdir build
