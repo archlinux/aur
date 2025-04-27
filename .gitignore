@@ -2,3 +2,4 @@ pkg
 src
 usbguard-notifier
 *.pkg.tar.*
+*.log
