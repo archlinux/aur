@@ -1,17 +1,23 @@
-# Maintainer: Guillermo Pérez García <gperezgar@tutanota.com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
+# Contributor: Guillermo Pérez García <gperezgar@tutanota.com>
 
 pkgname=ttf-manrope
-pkgver=4.505
+pkgver=5.2.5
 pkgrel=1
-pkgdesc="A modern sans-serif font family designed by Sharanda Mikhail in 2018-2021"
-url="https://github.com/sharanda/manrope"
-arch=("any")
-license=("OFL")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/master.tar.gz")
-sha256sums=('679043417b0ea58d1311d40f157d3e2167bc3aacc62791851f81144256b3e5ae')
+pkgdesc="An open-source modern sans-serif font family with comprehensive language support"
+arch=('any')
+url="https://fontsource.org/fonts/manrope"
+license=('OFL-1.1')
+source=("${pkgname}-${pkgver}.zip::https://r2.fontsource.org/fonts/manrope@latest/download.zip")
+sha256sums=('6862c5e65c085e9f918f0b91e4698f9657703174efe05e6faf5b957eac244f2b')
 
 package() {
-  cd manrope-master
-  install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" fonts/ttf/*.ttf
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
+  # Create font directory
+  install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
+  
+  # Install all TTF files
+  install -m 644 "${srcdir}/ttf/"*.ttf "${pkgdir}/usr/share/fonts/TTF/"
+  
+  # Install license
+  install -Dm 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
