@@ -1,0 +1,26 @@
+From d6ff5a695ae5a8a10f2a74263940c7523e5a4f44 Mon Sep 17 00:00:00 2001
+From: SeongJae Park <sj@kernel.org>
+Date: Tue, 22 Apr 2025 10:41:25 -0700
+Subject: [PATCH] packaging/pyproject: revert mistakenly committed setuptools
+ version change
+
+The change was made by the release automation script by a mistake.
+Revert it.
+
+Signed-off-by: SeongJae Park <sj@kernel.org>
+---
+ packaging/pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packaging/pyproject.toml b/packaging/pyproject.toml
+index 4619d19e..374b58cb 100644
+--- a/packaging/pyproject.toml
++++ b/packaging/pyproject.toml
+@@ -1,6 +1,6 @@
+ [build-system]
+ requires = [
+-    "setuptools==75.6.0",
++    "setuptools>=42",
+     "wheel"
+ ]
+ build-backend = "setuptools.build_meta"
