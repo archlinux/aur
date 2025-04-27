@@ -2,12 +2,11 @@
 
 _pkgname=equicord-hook
 pkgname=equicord-hook
-pkgdesc='Pacman hook to automatically install equicord on discord update'
+pkgdesc='Pacman hook to automatically install Equicord on Discord updates'
 pkgver=1.0.0
 pkgrel=1
 arch=('any')
 license=('GPL3')
-sha256sums=('bd3f0a66e0e00fe507918e3a9511d0dea6257962e92a41fa0f6007dec96cd282')
 depends=(
   'bash'
   'coreutils'
@@ -16,11 +15,19 @@ depends=(
   'discord'
 )
 optdepends=(
-  'equicord-installer-bin: Equilotl'
+  'equicord-installer-bin: Equilotl installer for Equicord'
 )
-source=('equicord.hook')
+source=(
+  'equicord.hook'
+  'equicord.sh'
+)
+sha256sums=(
+  'SKIP' # You probably want to calculate real checksums later
+  'SKIP'
+)
 
 package() {
   install -Dm644 "equicord.hook" "$pkgdir/etc/pacman.d/hooks/equicord.hook"
+  install -Dm755 "equicord.sh" "$pkgdir/etc/pacman.d/hookbin/equicord.sh"
 }
 

@@ -1,6 +1,4 @@
 #!/bin/sh
-# Copyright (c) 2024-2025 Jim Philip, with Reserved Package Name "equicord-hook"
-# Copyright (c) 2024-2025 Equicord contributors, with Reserved Project Name "Equicord"
 
 set -e
 
