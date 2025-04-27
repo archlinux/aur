@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=msgbsR
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='msgbsR: methylation sensitive genotyping by sequencing (MS-GBS) R functions'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-roxygen2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17dfa57c5083ec66b64f6f1dcd55b67166d65e96bae59773ec102843c7eee821')
+sha256sums=('d767471d2bc3581fbe9e3a46d124dc2d98f977aa9e9a57b9fd0f525d005be7c8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
