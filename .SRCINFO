@@ -1,6 +1,6 @@
 pkgbase = r-isoformswitchanalyzer
 	pkgdesc = Identify, Annotate and Visualize Isoform Switches with Functional Consequences from both short- and long-read RNA-seq data
-	pkgver = 2.6.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IsoformSwitchAnalyzeR
 	arch = x86_64
@@ -44,8 +44,8 @@ pkgbase = r-isoformswitchanalyzer
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IsoformSwitchAnalyzeR_2.6.0.tar.gz
-	md5sums = 7818e5233168673220445e38a823ce51
-	b2sums = 2c74eec3ff54c4e4517a4098d10727495540d1e76f8b36034cdb29224a014d8be014c7d29ea6fa153a77a5d98c08b94e4405d26c9d79fccef70abf9be4de61f9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IsoformSwitchAnalyzeR_2.8.0.tar.gz
+	md5sums = 38363ce3a91427e534ea9b1c06ff3fd7
+	b2sums = cc6f0b7bf43f9387d16a4caca7503999301f5c7872d09e0f9539f46aa27567622c9a11c388a0b46e9dc2bc8bd13a2e4ee7ebb8822161b8661df160e87b6e9710
 
 pkgname = r-isoformswitchanalyzer
