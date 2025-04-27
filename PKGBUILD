@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nearBynding
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Discern RNA structure proximal to protein binding'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5c47a6629d94c2fed89108307c1fb8a8e00c646e1b7ec3389d1ba395b7bbab60')
+sha256sums=('2ac53a8b05809762dcc6ce7d02eb4ebf2342873657dce4e50c256f1209920472')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
