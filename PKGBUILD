@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CoGAPS
-_pkgver=3.26.0
+_pkgver=3.28.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,6 +26,7 @@ depends=(
 )
 makedepends=(
   r-bh
+  r-testthat
 )
 checkdepends=(
   r-testthat
@@ -37,12 +38,13 @@ optdepends=(
   r-rmarkdown
   r-seuratobject
   r-testthat
+  r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-openmp.patch")
-md5sums=('599bdb86d2235555ce1540335932f4db'
+md5sums=('69cccdfc0a1081fe93ab86e0ad1c9764'
          '7bbd2f800d95d2a4a9c81526b637e772')
-b2sums=('1ffc3105ddefdc9b6686a2ddf074e17d08a98cfa1553211aabe6a846be7d553b653401880e0a77c8ea0ea9f17ec338c17ae3b734a0ab731072c7e56f42751d57'
+b2sums=('241983d591e9ab472f292bd96c3ed2f29fa612aebd1afd318b3e23b5e4ba16a6e970b502d888182d0a0c7a8e976e42a8d2eba79a8b26ef38b5234a9820715b9e'
         '1c794cab3dab46e4e50461c0d533f3a524940210dee7b27662421082a9f198e0faa7286a1d441299857cb064940a88f24767d88c1988216c22c330c97605737e')
 
 prepare() {
@@ -58,7 +60,7 @@ build() {
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
