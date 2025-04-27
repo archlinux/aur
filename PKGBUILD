@@ -4,8 +4,8 @@
 pkgbase=python-pyalsaaudio-git
 pkgname=(python-pyalsaaudio-git)
 _pkgname=pyalsaaudio
-pkgver=0.9.2.r17.g67adbf0
-pkgrel=2
+pkgver=0.11.0.r0.g0b3f1f4
+pkgrel=1
 pkgdesc="ALSA wrappers for Python (development version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://larsimmisch.github.io/pyalsaaudio/"

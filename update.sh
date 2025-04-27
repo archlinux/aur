@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
-#taken from https://bbs.archlinux.org/viewtopic.php?id=131666 by falconindy
-awk -v newsums="$(makepkg -g)" '
-BEGIN {
-  if (!newsums) exit 1
-}
+latest_version=$1
+current_version=$(cat PKGBUILD | grep pkgver= | awk -F'=' '{print $2}')
 
-/^[[:blank:]]*(md|sha)[[:digit:]]+sums=/,/\)[[:blank:]]*$/ {
-  if (!i) print newsums; i++
-  next
-}
-
-1
-' PKGBUILD > PKGBUILD.new && mv PKGBUILD{.new,}
-if which makepkg &> /dev/null; then
-  makepkg --printsrcinfo > .SRCINFO
+if ! [ "$latest_version" = "$current_version" ]; then
+  echo Updating the package with the latest version
+  echo latest: $latest_version
+  echo current: $current_version
+  sed -i.bak "s/$current_version/$latest_version/g" PKGBUILD
+  sed -i.bak "s/pkgrel=[^d.]/pkgrel=1/g" PKGBUILD
+  ./pkgsum.sh
+  if which makepkg &> /dev/null; then
+    makepkg --printsrcinfo > .SRCINFO
+  else
+    mksrcinfo
+  fi
+  rm -f *.bak
 else
-  mksrcinfo
+  if which makepkg &> /dev/null; then
+    makepkg --printsrcinfo > .SRCINFO
+  fi
 fi
