@@ -1,6 +1,6 @@
 pkgbase = r-profileplyr
 	pkgdesc = Visualization and annotation of read signal over genomic ranges with profileplyr
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/profileplyr
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = r-profileplyr
 	optdepends = r-png
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/profileplyr_1.22.0.tar.gz
-	sha256sums = acd4215076edb73c4b92d8f3f9e3409698f791b70aba9f00d369acc3a2ef1c2a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/profileplyr_1.24.0.tar.gz
+	sha256sums = 09f8ea6693f1c1325beaf55fc53c26b5f4dbf0f2ca2be97851c0eac964826128
 
 pkgname = r-profileplyr
