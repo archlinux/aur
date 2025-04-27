@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=spotify-electron-bin
-_pkgname='SpotifyElectron'
-pkgver=2.10
+_pkgname=SpotifyElectron
+pkgver=2.20
 _electronversion=31
 pkgrel=1
 pkgdesc="A cross-platform music streaming desktop app.The main goal is to reproduce the original Spotify functionality while adding new ones like uploading songs.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('36381a78a6c7e0fb2573e315f6bf27ef488500f14e0e894121a0ae706f37997e'
+sha256sums=('d6fbf3b59d04d7c54adf51f162a633325d048b37884e0216150b02f7485da61d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -32,7 +32,9 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g

@@ -1,6 +1,6 @@
 pkgbase = spotify-electron-bin
 	pkgdesc = A cross-platform music streaming desktop app.The main goal is to reproduce the original Spotify functionality while adding new ones like uploading songs.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.10
+	pkgver = 2.20
 	pkgrel = 1
 	url = https://antoniomrtz.github.io/SpotifyElectron_Web/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = spotify-electron-bin
 	makedepends = fuse2
 	makedepends = asar
 	depends = electron31
-	provides = spotify-electron=2.10
+	provides = spotify-electron=2.20
 	conflicts = spotify-electron
-	source = spotify-electron-2.10.AppImage::https://github.com/AntonioMrtz/SpotifyElectron/releases/download/v2.10/SpotifyElectron.AppImage
+	source = spotify-electron-2.20.AppImage::https://github.com/AntonioMrtz/SpotifyElectron/releases/download/v2.20/SpotifyElectron.AppImage
 	source = spotify-electron.sh
-	sha256sums = 36381a78a6c7e0fb2573e315f6bf27ef488500f14e0e894121a0ae706f37997e
+	sha256sums = d6fbf3b59d04d7c54adf51f162a633325d048b37884e0216150b02f7485da61d
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = spotify-electron-bin
