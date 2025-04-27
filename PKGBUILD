@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=OutSplice
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6a74e00206c137f0e08703cc06a114fc')
-b2sums=('9512df5e3e8d7abbbb0e4ba377f55dcb757c2942b03cf4df7a5574a43cd13068533417dd1ef49770d1d5d9b647016efda16908427193cd19300144ebb1789be9')
+md5sums=('f1671a55f8d60afee151928d66ade60d')
+b2sums=('49dc3a45bc6fd9f7dcfc30f2d17db61da9ddcc0970cf617092cd63b7494efd4a2b3bd3fd48b1106875f77233644ae23304fcfb670f7854cb41e139a50de2b842')
 
 build() {
   mkdir build
