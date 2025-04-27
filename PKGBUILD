@@ -18,6 +18,6 @@ source=("https://github.com/Chatterino/pkg/releases/download/stable-${_id}/chatt
 sha256sums=('55f557ee73796fbf3dc432b03302362d3c943bf39fd71993555908d9b991e9f2')
 package() {
 	install -Dm755 chatterino "${pkgdir}"/usr/bin/chatterino
-	install -Dm644 {,"${pkgdir}"/usr/share/applications/}com.chatterino.chatterino.desktop
+	install -Dm644 com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
 	install -Dm644 icon.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/com.chatterino.chatterino.png
 }
