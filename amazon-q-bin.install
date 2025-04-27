@@ -1,0 +1,13 @@
+post_install() {
+  /usr/bin/q integrations install dotfiles
+  /usr/bin/q setup --global
+}
+
+post_upgrade() {
+  /usr/bin/q integrations reinstall dotfiles
+  /usr/bin/q setup --global
+}
+
+pre_remove() {
+  /usr/bin/q integrations uninstall dotfiles
+}
