@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DegNorm
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a748f1e380b01592e3ae7b67dab5db2')
-b2sums=('57c2e8a9b43ceb02880ce717b618741b326d4806884eceec9ced1e29ce8e3802c3ea637e20e9d3ec6b95276630f2621d84cc9ec7f2ee7a861a656a6164a42957')
+md5sums=('853c426db7b1747300d0c1db4a751b3c')
+b2sums=('f1f84608250216de6e8d8fc0ae487c10e529ce79b6a7fe9315903df7e2e5e782ebcd1d809d2243764c35f8061c22487c44b0ccb1b8735b6c62b88c1ea13a02f5')
 
 build() {
   mkdir build
