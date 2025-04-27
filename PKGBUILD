@@ -1,4 +1,5 @@
-# Maintainer: Ariel Abreu <facekapow@outlook.com>
+# Maintainer: Lazerbeak12345 <contact me on github or mastodon>
+# Contributor: Ariel Abreu <facekapow@outlook.com>
 # Contributor: James Brink <brink.james@gmail.com>
 # Contributor: X0rg
 
@@ -11,7 +12,7 @@ pkgname=(
     'darling-jsc-webkit-common-git' 'darling-jsc-git' 'darling-iosurface-git' 'darling-cli-devenv-gui-stubs-common-git'
     'darling-gui-stubs-git'
 )
-pkgver=r4178.fe0da1407
+pkgver=r4259.83c14ddd5
 pkgrel=1
 arch=('x86_64')
 url="https://www.darlinghq.org"
