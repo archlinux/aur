@@ -1,6 +1,6 @@
 pkgbase = r-pviz
 	pkgdesc = Peptide Annotation and Data Visualization using Gviz
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Pviz
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-pviz
 	depends = r-iranges
 	optdepends = r-knitr
 	optdepends = r-pepdat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Pviz_1.40.0.tar.gz
-	sha256sums = 0bd3fd77a983263db31981a44ecbce60440823ce5ecbe0244fccbcef7deb3f71
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Pviz_1.42.0.tar.gz
+	sha256sums = dc6093a67efd37c8f1b641ef4ee926d0522182cb8a79ea66e6c8c3f3b90f46d8
 
 pkgname = r-pviz
