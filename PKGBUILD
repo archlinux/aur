@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 _pkgbase=openhab4
 pkgname=${_pkgbase}-addons
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="addons for openhab4 open source home automation software"
 arch=("any")
