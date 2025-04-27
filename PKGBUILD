@@ -1,7 +1,7 @@
 # Maintainer: Antonio Arias Orzanco <antonio dot arias99999 at gmail dot com>
 
 pkgname=sonicradio
-pkgver=0.6.12
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="A TUI radio player making use of Radio Browser API and Bubbletea."
 arch=('aarch64' 'i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('mpv: Use mpv for audio playback.'
             'ffmpeg: Use ffplay for audio playback.'
             'vlc: Use vlc for audio playback.')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dancnb/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('4e63be54108634448c9e9475a2ac066d')
+md5sums=('184ee8fcbc8d4eb891b299f70472fae0')
 
 build() {
    export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -25,7 +25,7 @@ build() {
 
    cd "${pkgname}-${pkgver}"
    # Uncomment line below if you want to change default(30) visible radio stations to 100.
-   #sed -i 's|const DefLimit = 30|const DefLimit = 100|' browser/search.go
+   sed -i 's|const DefLimit = 30|const DefLimit = 100|' browser/search.go
 
    go build -o ${pkgname}
 }
