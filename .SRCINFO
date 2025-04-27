@@ -1,6 +1,6 @@
 pkgbase = r-lumi
 	pkgdesc = BeadArray Specific Methods for Illumina Methylation and Expression Microarrays
-	pkgver = 2.58.0
+	pkgver = 2.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lumi
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-lumi
 	optdepends = r-lumihumanidmapping
 	optdepends = r-rcolorbrewer
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lumi_2.58.0.tar.gz
-	sha256sums = 2b7237ed13f9b6c76b69f1214c96adcc7281430de0150428e6f7feb4d7e47591
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lumi_2.60.0.tar.gz
+	sha256sums = 20e90bc80d78a3361b89204f8b37b25b484ee6166f4161a525e9c6d5b4964586
 
 pkgname = r-lumi
