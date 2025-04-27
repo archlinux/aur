@@ -1,4 +1,4 @@
-# Contributor: gesh <gesh@gesh.uni.cx>
+# Maintainer: gesh <gesh@gesh.uni.cx>
 # Contributor: sasvari
 
 pkgname=python-bibtexparser-git
