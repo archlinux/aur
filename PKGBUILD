@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RiboDiPA
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a3bd7b10e416c2f5cdb84fb5e1ba51d8')
-b2sums=('24e655933abb06b1c8ebe0416f5e65067c9673ce9157c11e15343f81f7076007dd102fb146528735bb36c6cbc413a6d60673ac8a0e3597f46e54c2a229457468')
+md5sums=('8d4f447cb5646697ebefa102a1815bbe')
+b2sums=('9064448e27e7889e1ad2cbd7f24358b8b695229490983850e7b72ef2df075156f9571de330b683204d16c4f0bacb10efe1ebd308cd919c57e87b1e1d14889823')
 
 build() {
   mkdir build
