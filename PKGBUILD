@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ZygosityPredictor
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea68947d05bf3b8ba399155f1fbf4c08')
-b2sums=('df777214ec6cb6ed8fcf08463cd84b97cd8c761976ff92240cb1066b1e32289b5592030014bd9a3817cdb20dd0bda33e43957e0bf3689ad028bb953025bada95')
+md5sums=('e7d53cf494892f43f599b07ce5495c2c')
+b2sums=('3b7a2dccc8d9ae119f1dcc5367663bc0640ddb280d99e462a165c6137ff68d6a6128051e352f61e9005d1055535cdf0b7812461c1d17732373a7ec6da416c1b0')
 
 build() {
   mkdir build
