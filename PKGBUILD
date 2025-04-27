@@ -1,12 +1,12 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r92516.8c16777191e
+pkgver=r94074.ea8be1be94f
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
 url='http://www.vtk.org/'
 license=('BSD')
 depends=('mingw-w64-crt' 'mingw-w64-qt5-base' 'mingw-w64-jsoncpp' 'mingw-w64-expat' 'mingw-w64-netcdf' 'mingw-w64-libtiff' 'mingw-w64-libjpeg-turbo' 'mingw-w64-freetype2' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-hdf5' 'mingw-w64-freeglut' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-double-conversion' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-cgns' 'mingw-w64-libharu' 'mingw-w64-verdict')
-makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-nlohmann-json')
+makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-wine')
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
@@ -30,14 +30,16 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DVTK_DATA_EXCLUDE_FROM_ALL=ON -DVTK_DATA_EXCLUDE_FROM_ALL_NO_WARNING=ON \
       -DVTK_USE_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_eigen=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -DVTK_BUILD_TESTING=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
