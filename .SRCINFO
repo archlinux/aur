@@ -1,6 +1,6 @@
 pkgbase = rash
 	pkgdesc = Declarative shell scripting using Rust native bindings
-	pkgver = 2.9.9
+	pkgver = 2.9.10
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rash
 	depends = gcc-libs
 	provides = rash
 	conflicts = rash
-	source = git+https://github.com/rash-sh/rash.git#tag=v2.9.9?signed
+	source = git+https://github.com/rash-sh/rash.git#tag=v2.9.10?signed
 	validpgpkeys = CD1DB60B2C8465FD50028EF6D381D73787B45B3E
 	sha512sums = SKIP
 
