@@ -2,7 +2,7 @@
 # Contributor: Juliette Monsel <j_4321 at protonmail dot com>
 
 pkgname=python-pyzotero
-pkgver=1.6.5
+pkgver=1.6.11
 pkgrel=1
 pkgdesc="A Python wrapper for the Zotero API"
 arch=(any)
@@ -11,7 +11,7 @@ license=(BlueOak-1.0.0)
 depends=(python-requests python-feedparser python-bibtexparser python-pytz)
 makedepends=(python-build python-wheel python-installer python-setuptools-scm python-toml)
 source=("https://github.com/urschrei/pyzotero/releases/download/v${pkgver}/pyzotero-${pkgver}.tar.gz")
-sha512sums=('b6678ec47757c73241093afc9cb7556d90cd7566c0c877169ba3dac9466293d931294f08f6843a11f45584b3f9b20ff12b08d9359c9341cf3fad02ea2573d998')
+sha512sums=('b90b67467ea80a6825857fd5ce159e6de495b554b4fe83800c2c5814e91b85803e107647da36fcd70660e0b6b409c348e3958a45890d127b53d90146826b5755')
 
 build() {
   cd "pyzotero-${pkgver}"
