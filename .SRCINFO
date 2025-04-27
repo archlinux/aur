@@ -1,11 +1,10 @@
 pkgbase = perl-test-name-fromline
 	pkgdesc = Auto fill test names from caller line
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Test-Name-FromLine
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	makedepends = perl-module-build
 	depends = perl
 	depends = perl-file-slurp
@@ -16,4 +15,3 @@ pkgbase = perl-test-name-fromline
 	sha256sums = cee6cc18f6f46f37fe4437130bad4e740df79818683f13f922763c0e9c5c6378
 
 pkgname = perl-test-name-fromline
-
