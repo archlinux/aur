@@ -1,6 +1,6 @@
 pkgbase = r-chipseeker
 	pkgdesc = ChIPseeker for ChIP peak Annotation, Comparison, and Visualization
-	pkgver = 1.42.1
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPseeker
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = r-chipseeker
 	optdepends = r-reactomepa
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPseeker_1.42.1.tar.gz
-	sha256sums = 679dece79427d4f2d0b1ddb1502bf8fe91b77a70970dd986ef3aa69f4a954ba1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPseeker_1.44.0.tar.gz
+	sha256sums = 95ebeff0e1bfeeef449c1f40742235130585dbc35f8df9768e7a7374ea7efda9
 
 pkgname = r-chipseeker
