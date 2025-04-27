@@ -23,14 +23,12 @@ prepare() {
   cp ../private-build-plans.toml .
 }
 
-build() {
-  cd "$srcdir/Iosevka-$pkgver"
-  npm run build -- ttf::IosevkaLow{,Slab}
-}
-
+# skip build(), avoid wasting time on unused variants
 _package() {
+  local _var="IosevkaLow$1"
   cd "$srcdir/Iosevka-$pkgver"
-  install -Dvm644 "dist/IosevkaLow$1/TTF"/*.ttf -t "$pkgdir/usr/share/fonts/IosevkaLow$1/"
+  npm run build -- ttf::"$_var"
+  install -Dvm644 "dist/$_var/TTF"/*.ttf -t "$pkgdir/usr/share/fonts/$_var/"
   install -Dvm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
