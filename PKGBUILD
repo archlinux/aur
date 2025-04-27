@@ -1,6 +1,6 @@
 pkgname=electron-castlab-bin
 pkgver=v34.4.1+wvcus
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/castlabs/electron-releases"
 license=('GPL')
@@ -23,5 +23,5 @@ package() {
     
     cd "$srcdir"
     cp -r "$srcdir"/* "$pkgdir/usr/lib/electron-castlab"
-    ln -s /usr/lib/electron-castlab/electron "$pkgdir/usr/bin/electron-castlab"
+    ln -s /usr/lib/electron-castlab/electron "$pkgdir/usr/bin/electroncastlab"
 }
