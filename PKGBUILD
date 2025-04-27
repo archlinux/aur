@@ -16,15 +16,16 @@ b2sums=('0b68a408d057c048d87ecd8ff3941734fa520f36dd4e84a740228e860a073e15c6bff7e
         'bcbb7b636a5e49eaef648462d35e9072be3934953aa28e55011cd8746a0f0fca9a461bd4987e0bf5ef9aa33288223d683c4e83653cf2e5afb2be11438c3e2537')
 
 prepare() {
-    tar xf data.tar.xz
-    sed -i 's/\/opt\/FreeTube\/freetube/\/usr\/bin\/freetube/' "$srcdir/usr/share/applications/freetube.desktop"
+	sed -i 's/{num}/34/' freetube.sh
+	tar xf data.tar.xz
+	sed -i 's/\/opt\/FreeTube\/freetube/\/usr\/bin\/freetube/' "$srcdir/usr/share/applications/freetube.desktop"
 }
 
 package() {
-    depends=('electron' 'ttf-liberation')
-    install -Dm644 "$srcdir/opt/FreeTube/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
-    install -Dm644 "$srcdir/usr/share/applications/freetube.desktop" "$pkgdir/usr/share/applications/freetube.desktop"
-    install -Dm644 "$srcdir/usr/share/icons/hicolor/scalable/apps/freetube.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/freetube.svg"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-    install -Dm755 './freetube.sh' "$pkgdir/usr/bin/freetube"
+	depends=('electron' 'ttf-liberation')
+	install -Dm644 "$srcdir/opt/FreeTube/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
+	install -Dm644 "$srcdir/usr/share/applications/freetube.desktop" "$pkgdir/usr/share/applications/freetube.desktop"
+	install -Dm644 "$srcdir/usr/share/icons/hicolor/scalable/apps/freetube.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/freetube.svg"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm755 './freetube.sh' "$pkgdir/usr/bin/freetube"
 }
