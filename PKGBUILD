@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=whatwg-html
-pkgver=2023.1
+pkgver=2025.4
 pkgrel=1
 pkgdesc="Clone the WHATWG HTML specification with local resources"
 arch=('any')
@@ -52,7 +52,7 @@ build() {
   msg "Downloading Resources and Patching source"
   perl ../../../download-resources.pl source.orig source
   cd ..
-  ./build.sh -f
+  ./build.sh --remote
   mv html/resources output/
 }
 
