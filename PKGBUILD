@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=projectR
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,6 +27,7 @@ depends=(
   r-tsne
   r-umap
   r-viridis
+  r-singlecellexperiment
 )
 optdepends=(
   r-biocstyle
@@ -42,8 +43,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('31626fd24bbeeaaf849ed5487f363a39')
-b2sums=('7df15f28ef490b51570cf8ec2ebdbecd015cc9024827b7ca89cff0d546658e3c832fb6e4c2b39d393f6c1f7ed37a29a8b11532f08189e52fd8c43e52146fac91')
+md5sums=('336921f5276bc71b97100b7d2caa6320')
+b2sums=('0597fb1926c6fb81f3bb3bcf160d00f0f6a29c15666e72ae25e2a9999fba3d3c8898d837ab2fa6f612a6ffa4b6f42e25b61a712b7a6a44253ed0036a697f9acf')
 
 build() {
   mkdir build
