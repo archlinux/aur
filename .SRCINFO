@@ -1,6 +1,6 @@
 pkgbase = html2markdown-bin
 	pkgdesc = Convert HTML to Markdown. Even works with entire websites and can be extended through rules.
-	pkgver = 2.3.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://html-to-markdown.com
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = html2markdown-bin
 	license = MIT
 	provides = html2markdown
 	conflicts = html2markdown
-	source_aarch64 = html2markdown-2.3.1-aarch64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.1/html-to-markdown_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 70bc2ba32699c4bfab81f18a77a8ab7ea60e2c66f5382136bdaced60622f9a62
-	source_i686 = html2markdown-2.3.1-i686.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.1/html-to-markdown_Linux_i386.tar.gz
-	sha256sums_i686 = 47a389ced435772abab9d23f44bc7f75611d407f4d087c1af441e3784cc33c1d
-	source_x86_64 = html2markdown-2.3.1-x86_64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.1/html-to-markdown_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = cf18f959179c8e4ecbd93ec3027976fa21b93d88c5d88ca25acb90d6d556fdbb
+	source_aarch64 = html2markdown-2.3.2-aarch64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.2/html-to-markdown_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 338566c354506ce274650395fd456afb68ad3844d1edd1e2903c5e2f1e12a00c
+	source_i686 = html2markdown-2.3.2-i686.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.2/html-to-markdown_Linux_i386.tar.gz
+	sha256sums_i686 = 25d5e0eeb52dc52aaf352ae713cde51ca3d844030c61b1c34af41c965a70fcc6
+	source_x86_64 = html2markdown-2.3.2-x86_64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.3.2/html-to-markdown_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5f5f1b1e44ea8167abd3763077ed17fa784be89d774e08dc4349794c1b75fcc2
 
 pkgname = html2markdown-bin
