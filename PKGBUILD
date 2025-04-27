@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MinimumDistance
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='A Package for De Novo CNV Detection in Case-Parent Trios'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5bc86a16d5c5340fbb093dff4a9abee7f84dedfa0c6650aaf351d0f070f60031')
+sha256sums=('0ebc238334d96b26125448164639e25219bb580d20267debd4214aa9dc0491ea')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
