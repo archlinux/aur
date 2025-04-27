@@ -6,7 +6,7 @@ pkgbase = guile-ssh
 	arch = x86_64
 	arch = i686
 	arch = armv7h
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = guile>=2.0.9
 	depends = libssh>=0.7.3
 	source = guile-ssh-0.18.0.tar.gz::https://github.com/artyom-poptsov/guile-ssh/archive/v0.18.0.tar.gz
