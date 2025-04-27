@@ -1,0 +1,4 @@
+[prometheus-apcupsd-exporter]
+source = "git"
+git = "https://github.com/mdlayher/apcupsd_exporter.git"
+prefix = "v"
