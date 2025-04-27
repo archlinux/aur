@@ -2,4 +2,4 @@
 
 cd /var/lib/forgejo
 
-HOME=/var/lib/forgejo exec chpst -u /usr/bin/forgejo web -c /etc/forgejo/app.ini
+HOME=/var/lib/forgejo exec chpst -u forgejo /usr/bin/forgejo web -c /etc/forgejo/app.ini

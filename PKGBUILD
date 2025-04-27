@@ -9,7 +9,7 @@ url="https://forgejo.org"
 license=("MIT")
 depends=("forgejo" "runit")
 source=("forgejo.run")
-sha256sums=('d7231545e10dde2db5a6ac1a34a341ef16782bfe9036729a05e5510b23e70aba')
+sha256sums=('553ea3a5377b9a78b98d580527238fd89a5587328597ae738a5f05675475c8c4')
 
 package() {
 	cd "$srcdir"
