@@ -1,11 +1,11 @@
 pkgbase = python-torchaudio
 	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/audio
 	arch = x86_64
 	arch = i686
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = cmake
