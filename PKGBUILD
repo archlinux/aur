@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.10.r37.gb4b6c3e
+pkgver=2.2.10.r75.g05c2f2c
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'riscv64')
 url="https://www.hardinfo2.org"
 license=('GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only')
 depends=(

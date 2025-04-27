@@ -1,10 +1,12 @@
 pkgbase = hardinfo2-git
 	pkgdesc = System Information and Benchmark for Linux Systems.
-	pkgver = 2.2.10.r37.gb4b6c3e
+	pkgver = 2.2.10.r75.g05c2f2c
 	pkgrel = 1
 	url = https://www.hardinfo2.org
 	install = hardinfo2.install
 	arch = x86_64
+	arch = aarch64
+	arch = riscv64
 	license = GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only
 	checkdepends = appstream
 	makedepends = cmake
