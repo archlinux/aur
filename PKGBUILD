@@ -1,19 +1,20 @@
-# Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@archlinux.org>
 
 pkgname=autopsy
-pkgver=4.22.0
+pkgver=4.22.1
 pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
-_skver=4.13.0
+_skver=4.14.0
 depends=(java-runtime=17 testdisk sleuthkit "sleuthkit-java=$_skver" java-openjfx=17)
 makedepends=()
 optdepends=('opencv: media files (64-bit)'
 			'perl-parse-registry: regripper')
-source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip Autopsy.desktop)
-sha256sums=('3f9aded0b8b094fabe557b4b8718e9bbbdbfbea5bf17bab335846f132d1fc97a'
+# WARNING: "_v2.zip" in source file temporary fix for 4.22.1 (see upstream release) 
+source=(https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}_v2.zip Autopsy.desktop)
+sha256sums=('31e9c6df3111feeef1a734dad4c140eec81abb8788b5e3c988c0bf36b04f20a2'
             'be382bc92f5e98dfebbbf31dc927fc44af0fecee6911f7122ba8e7c55d281262')
 
 package() {
