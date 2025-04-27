@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=igvR
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='igvR: integrative genomics viewer'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-seqlogo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e3df3ad594e87f57573e3d391e008918c0caed4528227f73946b1f8d6b354a9c')
+sha256sums=('ba1451a9ad7f99ebb4d9b746bd064a3f1df81e887d09dc9a21605b55eb1add2c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
