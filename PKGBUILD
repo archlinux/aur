@@ -2,7 +2,7 @@
 
 pkgname=mozillavpn-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.25.0
+pkgver=2.27.0
 _ubuntuver=oracular
 pkgrel=1
 _origpkgrel=1
@@ -22,7 +22,7 @@ depends=('glib2'
          'qt6-websockets')
 provides=("$_pkgname")
 source=("https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+files/mozillavpn_${pkgver}-${_ubuntuver}${_origpkgrel}_amd64.deb")
-sha256sums=('31d10f7ad475dafe06b222970d549e1aa2beb3a3631daacb5dd802621305c8d9')
+sha256sums=('71ca1d2bd5600b657750999051cce12a01429eff36a3f183a01449e9734005c8')
 
 package() {
 	cd "$srcdir"
