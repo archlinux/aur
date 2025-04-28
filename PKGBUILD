@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -9,11 +9,11 @@ url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
 replaces=("hoarder")
-depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs>=22" "pnpm")
-makedepends=("git" "jq" "pnpm")
+depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs-lts-jod" "pnpm")
+makedepends=("git" "jq" "nodejs-lts-jod" "pnpm" "python")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "ollama: for automatic tagging"
-            "yt-dlp: for download video")
+            "yt-dlp: for downloading video")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.env"
         "${pkgname}.sysusers"
@@ -22,7 +22,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('f5230989171e3c26dc6c6a13b80810b4ca2af14844dadf605c65ae968288c1a2'
+sha256sums=('941a99ae97aa912140eafe4b8542c4511d03b3073e13952ecb92f916a6221700'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
@@ -33,10 +33,6 @@ sha256sums=('f5230989171e3c26dc6c6a13b80810b4ca2af14844dadf605c65ae968288c1a2'
 
 prepare() {
     echo "After upgrading 'nodejs', you need to recompile '${pkgname}'..."
-    if type yarn &>/dev/null; then
-        echo "Please uninstall 'yarn' first..."
-        exit 1
-    fi
 }
 
 build() {
@@ -59,7 +55,7 @@ build() {
     # build workers
     cd ../..
     rm -rf workers &>/dev/null
-    pnpm deploy --node-linker=isolated --filter @hoarder/workers --prod workers
+    pnpm deploy --node-linker=isolated --filter "@${pkgname}/workers" --prod workers
 
     # delete musl files, macos/win/android files, map file
     find {apps/web/.next,workers} -type d -name "*musl*" | xargs rm -rf
