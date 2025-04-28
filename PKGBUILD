@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redis-viewer-bin
 _pkgname=redisviewer
-_appname="Redis Viewer"
+_appname='Redis Viewer'
 pkgver=2.4.9
 _electronversion=28
-pkgrel=1
-pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version.Use system-wide electron."
+pkgrel=2
+pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/redisviewer/RedisViewer"
 license=('LicenseRef-unknown')
@@ -15,20 +15,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux.deb"
+    "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_appname// /.}-${pkgver}-linux.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('55431ea67066b5f32c5dcda0743060907e751876a8242189463bf81e8945ae9b'
+sha256sums=('b90e9d5ba3927006e836c4c1d275286eb3fb61ca5f68a821e740fa3a7453efbb'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -e "
         s/\"\/opt\/${_appname}\/${_pkgname}\"/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
