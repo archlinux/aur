@@ -1,7 +1,7 @@
 pkgbase = koi
 	pkgdesc = Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop
-	pkgver = 0.5
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/baduhai/Koi
 	arch = x86_64
 	arch = aarch64
@@ -21,7 +21,7 @@ pkgbase = koi
 	depends = hicolor-icon-theme
 	optdepends = xsettingsd: Apply settings to GTK applications on the fly
 	optdepends = kvantum: Powerful extra customisable themes
-	source = koi-0.5.tar.gz::https://github.com/baduhai/Koi/archive/refs/tags/0.5.tar.gz
-	md5sums = 0dec287d7754c94923b9e4007a26219d
+	source = koi-0.5.1.tar.gz::https://github.com/baduhai/Koi/archive/refs/tags/0.5.1.tar.gz
+	md5sums = 94e3a755f23e6af9a0cc14ec1c3a0522
 
 pkgname = koi

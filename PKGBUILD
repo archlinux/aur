@@ -4,8 +4,8 @@
 
 pkgname='koi'
 _pkgname='Koi'
-pkgver=0.5
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
@@ -15,11 +15,12 @@ makedepends=('gcc' 'qt6-base' 'qt6-tools' 'cmake' 'extra-cmake-modules' 'desktop
 optdepends=('xsettingsd: Apply settings to GTK applications on the fly'
             'kvantum: Powerful extra customisable themes')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('0dec287d7754c94923b9e4007a26219d')
+md5sums=('94e3a755f23e6af9a0cc14ec1c3a0522')
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
-          -S "${srcdir}/${_pkgname}-${pkgver}/src/" \
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
+          -S "${srcdir}/${_pkgname}-${pkgver}/" \
           -B "${srcdir}/${_pkgname}-${pkgver}/build/"
 
     cmake --build "${srcdir}/${_pkgname}-${pkgver}/build/" --parallel
@@ -28,7 +29,7 @@ build() {
 package() {
     cmake --install "${srcdir}/${_pkgname}-${pkgver}/build/"
 
-# Checking `pkgdir` ...
+# Check the Application .DESKTOP file & Look for Duplicates within `pkgdir` ...
     desktop-file-validate "${pkgdir}/usr/share/applications/local.${_pkgname}DbusInterface.desktop"
     fdupes -r -s          "${pkgdir}/"
 }
