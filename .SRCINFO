@@ -1,16 +1,17 @@
 pkgbase = sfxr-qt-bin
 	pkgdesc = Qt port of SFXR, a sound effect generator, to generate retro-gaming like sound effects
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agateau/sfxr-qt
 	arch = x86_64
 	license = MIT
-	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
 	depends = sdl
 	depends = hicolor-icon-theme
+	optdepends = plasma5-integration: plasma qt5 theme support
 	provides = sfxr-qt
 	conflicts = sfxr-qt
-	conflicts = sfxr-qt-git
 	source = https://github.com/agateau/sfxr-qt/releases/download/1.5.1/sfxr-qt-1.5.1.tar.bz2
 	sha256sums = a3f91312dc38b226b133c3778141232e3e10b374d2e844006f6c8494da1ac878
 
