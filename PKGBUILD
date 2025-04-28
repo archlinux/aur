@@ -7,7 +7,7 @@
 # https://github.com/ppy/osu is only for lazer, use the osu-lazer AUR package instead
 
 pkgname='osu'
-pkgver='20250316'
+pkgver='20250420'
 pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b8a98fb740ed8251958f16d719138e96afa6e299'
@@ -22,7 +22,7 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('be4b9d25e3e5a193f6cefc180b906c68abbc00a3d39af377d462e19c588419d0'
+sha256sums=('aef7bb541d1c2dccd7d49d32eeaabf035bf503a6f4c24f5f0a5edc0f52cdc162'
             '0fc6b18923db85b82fa5da1cb40ccc8c0ffcaf65ee7e325af8969baa150a9fd2'
             'e02f43b256575f2f1ae54ce3383246350a6a60acc966f02a3c896521b6632822'
             '3d98f5811539d652bf6378c2c76bff7b6d5ac82e6322942bb287ff9082f1715b'
