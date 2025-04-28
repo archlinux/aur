@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=easyRNASeq
-_pkgver=2.42.0
+_pkgver=2.44.0
 pkgname=r-${_pkgname,,}
-pkgver=2.42.0
+pkgver=2.44.0
 pkgrel=1
 pkgdesc='Count summarization and normalization for RNA-Seq data'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6d34bd24b8ca87ca77448eb39f59fb34caa57fa9933c341095661c5985824cfa')
+sha256sums=('8afec30ed94a6f6df928502ae200d99ea811efd067c9626bbbbec4dc9c1adc26')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
