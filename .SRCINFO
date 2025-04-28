@@ -1,6 +1,6 @@
 pkgbase = beyond-identity-bin
 	pkgdesc = Beyond Identity Linux authenticator (official binary)
-	pkgver = 2.100.2_0
+	pkgver = 2.103.0_17
 	pkgrel = 1
 	url = https://app.byndid.com/downloads
 	install = beyond-identity-bin.install
@@ -16,7 +16,7 @@ pkgbase = beyond-identity-bin
 	conflicts = beyond-identity
 	backup = etc/xdg/autostart/com.beyondidentity.endpoint.pgpauth.autostart.BeyondIdentity.desktop
 	backup = etc/xdg/autostart/com.beyondidentity.endpoint.webserver.autostart.BeyondIdentity.desktop
-	source = https://packages.beyondidentity.com/public/linux-authenticator/raw/versions/2.100.2-0/beyond-identity-2.100.2-0.x86_64.tar.gz
-	sha512sums = 9a72a97669065dcf2f691ceaef643ce0581c60f6cc44fa5d528d5bcf88392d44068bc64d91f2ae2568b2cdb432bff9475f04a219fe74d172d4f34ba5c07cde39
+	source = https://packages.beyondidentity.com/public/linux-authenticator/raw/versions/2.103.0-17/beyond-identity-2.103.0-17.x86_64.tar.gz
+	sha512sums = e31e636acf05f978c5d13da79285808f2e9fda1df8c428810ac5d74d73121c45f390465bb0fd12d1cfe840f20c2d8e78bd57fa3f26b872c7b827afe77713c2c6
 
 pkgname = beyond-identity-bin
