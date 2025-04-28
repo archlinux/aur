@@ -1,5 +1,5 @@
 pkgbase = seven-waves-git
-	pkgdesc = A dodging game with 7 levels of increasing difficulty
+	pkgdesc = A dodging game with 7 levels of increasing difficulty.(Use system-wide electron)
 	pkgver = 1.2.0.r30.g06d62e0
 	pkgrel = 1
 	url = https://github.com/Togohogo1/7-Waves
