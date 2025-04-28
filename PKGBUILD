@@ -1,7 +1,7 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 pkgname=mixbus11
-pkgver=11.0.260
-pkgrel=2
+pkgver=11.0.289
+pkgrel=1
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mixbus"
