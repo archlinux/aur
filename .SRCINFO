@@ -1,0 +1,21 @@
+pkgbase = usenet_reborn-bin
+	pkgdesc = A terminal‑based (TUI) NNTP (Usenet) client written in Rust.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~rek2/usenet_reborn
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = usenet_reborn
+	conflicts = usenet_reborn
+	conflicts = usenet_reborn-git
+	options = !debug
+	source = https://git.sr.ht/~rek2/usenet_reborn/refs/download/0.2.0/usenet_reborn-v0.2.0-x86_64-linux.tar.bz2
+	source = https://git.sr.ht/~rek2/usenet_reborn/blob/main/LICENSE
+	source = https://git.sr.ht/~rek2/usenet_reborn/blob/main/configs/config.toml
+	source = https://git.sr.ht/~rek2/usenet_reborn/blob/main/configs/subscriptions
+	sha512sums = 5a9e77d0ad36af13566cf176719d50ac1b8b9493b950726346497a20acfc254a8cf9bde00557c95b62555352957cb5d29e212ff6cbb675280bc24505f52ee6b4
+	sha512sums = 8aecac6cdb63946c456162c1f2cc8074b00045bab44f6bffb9ab01ce305554e92ee6396a282fb69ebcb04caa98b1c279cfff8a6ee1cd7c51df308eedfa1098c4
+	sha512sums = 51120626043782ff26784df0d204bea46151745d82c23a56f14808b2a9c874a995a6fb0ae507fca63c4dbd570b029ce87462bea64f5ff5e3e649eee4054304ce
+	sha512sums = 07e71002af8ee1624bffe1b53b7986220424f55415fb3aba674a5ee194e4acf20dcf1d218f51ccba542f07626b6dedd93ed6ca847b0000f1e7c5a4daa03faffd
+
+pkgname = usenet_reborn-bin
