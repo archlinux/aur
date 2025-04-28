@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gettext
 	pkgdesc = GNU internationalization library (mingw-w64)
 	pkgver = 0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gettext/
 	arch = any
 	license = GPL-2.0-only
@@ -18,6 +18,8 @@ pkgbase = mingw-w64-gettext
 	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.24.tar.gz
 	source = http://ftp.gnu.org/pub/gnu/gettext/gettext-0.24.tar.gz.sig
 	source = intl.pc
+	source = 0001-restore-DllMain-symbol.patch
+	source = 0024-disable-gnu-format.patch
 	validpgpkeys = 462225C3B46F34879FC8496CD605848ED7E69871
 	validpgpkeys = 68D94D8AAEEAD48AE7DC5B904F494A942E4616C2
 	validpgpkeys = 9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D
@@ -25,5 +27,7 @@ pkgbase = mingw-w64-gettext
 	sha256sums = c918503d593d70daf4844d175a13d816afacb667c06fba1ec9dcd5002c1518b7
 	sha256sums = SKIP
 	sha256sums = 0dc8a3e2c95d79aacaeaacd3c90e41c0f5d6ba9cfbc949a0ca55f4b0fd389d9c
+	sha256sums = bfd38442d899bee75dc5d919f2bfe4a8fd827eff3fdcf45966f9de5bb5d6f283
+	sha256sums = ce7ccf6dd3a492cab322253cd67310899b546eccc25821c25cbc047a1a984633
 
 pkgname = mingw-w64-gettext
