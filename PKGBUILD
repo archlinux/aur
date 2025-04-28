@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AlpsNMR
-_pkgver=4.8.0
+_pkgver=4.10.0
 pkgname=r-${_pkgname,,}
-pkgver=4.8.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc='Automated spectraL Processing System for NMR'
 arch=('any')
@@ -58,7 +58,7 @@ optdepends=(
   r-zip
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d9166fb30d8142c75d0df70195cf91da819a79906a93bf994eb3993e2410e2b')
+sha256sums=('1b58d2e366032f87fd929aebb42d2f4345c8763ae8699a49b7db655688c0a781')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
