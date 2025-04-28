@@ -21,7 +21,7 @@ pkgbase = amd-debug-tools-git
 	optdepends = glib2: For device firmware checks ('amd_s2idle').
 	optdepends = python-gobject: For device firmware checks ('amd_s2idle').
 	optdepends = python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle').
-	optdepends = python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios' and 'amd_pstate'.
+	optdepends = python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios'.
 	optdepends = util-linux: To access the kernel log via 'dmesg' ('amd_s2idle').
 	provides = amd-debug-tools=0.1.0+3.r314.20250425.5bad9d8
 	provides = amd-bios-logging-control-script=0.1.0+3.r314.20250425.5bad9d8

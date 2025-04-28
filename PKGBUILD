@@ -32,7 +32,7 @@ optdepends=(
   "glib2:            For device firmware checks ('amd_s2idle')."
   "python-gobject:   For device firmware checks ('amd_s2idle')."
   "python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle')."
-  "python-systemd:   To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios' and 'amd_pstate'."
+  "python-systemd:   To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios'."
   "util-linux:       To access the kernel log via 'dmesg' ('amd_s2idle')."
 )
 makedepends=(
