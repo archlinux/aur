@@ -2,7 +2,7 @@
 
 pkgname=lmath-bin
 _pkgname=${pkgname%-bin}
-pkgver=r1.10.11
+pkgver=r1.10.12
 pkgrel=1
 pkgdesc="A notebook software for writing and saving mathematical text and formulas with the Digabi rich text editor"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=($_pkgname-$pkgver.AppImage::https://github.com/lehtoroni/lmath-issues/re
         $_pkgname-file.xml
         $_pkgname.desktop
         $_pkgname-bin.sh)
-sha256sums=('c36ff4594676033a45b7096f9f7cd704d43128ddc963f397a2666d5a44a57f82'
+sha256sums=('684c660dbb9bea5c8b25812eb31b827aeaf8d8a207b7e0358bb7025b841817d5'
             'fd3208d97f89ac14b5c10769014ceab10f157fd360a10ad520d714574c41472a'
             '18ba669032a20c7d1b074e5dcc70f48cfcaecd0ef170b0261fae7a15f87e5a26'
             'dd098047ce9decadca2271d8f2491a2576e3dac5533f045e3eab1ceb7344601c')
