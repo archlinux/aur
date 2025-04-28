@@ -7,7 +7,7 @@ arch=("x86_64" "aarch64")
 url="https://github.com/eaglesemanation/${pkgname}"
 license=("MIT")
 makedepends=("rust" "cargo")
-source=("git+https://github.com/eaglesemanation/${pkgname}.git#tag=${pkgver}")
+source=("git+https://github.com/eaglesemanation/${pkgname}.git#tag=v${pkgver}")
 sha256sums=("df084dabe391a14f42438db15945a7a185ad07eaf9bca3d29400d8197c93e15e")
 
 build() {
