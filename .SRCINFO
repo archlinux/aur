@@ -1,6 +1,6 @@
 pkgbase = r-ballgown
 	pkgdesc = Flexible, isoform-level differential expression analysis
-	pkgver = 2.38.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ballgown
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-ballgown
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ballgown_2.38.0.tar.gz
-	sha256sums = a8fd0f7db68c83f3610e807a0e69531ecf649913664e3f3cbbbfd357728789ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ballgown_2.40.0.tar.gz
+	sha256sums = 715beec2c50d109236a6ae9ae71e58a18ab2fee1112df2bd54be2ea87ca8917d
 
 pkgname = r-ballgown
