@@ -1,9 +1,9 @@
 post_install() {
-    chmod a+x @CLIENT_PATH@/trueconf
-    chmod a+x @CLIENT_PATH@/trueconf-autostart
-    chmod a+x @CLIENT_PATH@/qt5/libexec/QtWebEngineProcess
+    chmod a+x /opt/trueconf/client/trueconf
+    chmod a+x /opt/trueconf/client/trueconf-autostart
+    chmod a+x /opt/trueconf/client/qt5/libexec/QtWebEngineProcess
 
-    ln -f -s @CLIENT_PATH@/trueconf /usr/bin/trueconf
+    ln -f -s /opt/trueconf/client/trueconf /usr/bin/trueconf
 
     if command -v "xdg-desktop-menu" >/dev/null 2>&1; then
         xdg-desktop-menu install --novendor --mode system /usr/share/applications/trueconf.desktop > /dev/null 2>&1 || true
