@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSnbase
-_pkgver=2.32.0
+_pkgver=2.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -57,10 +57,11 @@ optdepends=(
   r-xml
   r-zoo
   r-magick
+  r-spectra
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c9ddc0c7d42dbfa22cff5683a41a27de')
-b2sums=('f48e9031b7c23566e1b147e285e88fd7a78e512989020a95e01ab0458c632f0c2f989bf4c0ed339db56d06e7b679da814826eabdb8e0a2db54996bfd6c18d31f')
+md5sums=('112d4ea14b40e4ef3c56c8961f92f4c1')
+b2sums=('702aa09bc50d4b1ff07cfc01d3118d3548db393e5f91494aa1042ae2f55a70438612a7da27373cecdf55a043aaeba03980452371978d58d23ed464b2b2b27353')
 
 build() {
   mkdir build
