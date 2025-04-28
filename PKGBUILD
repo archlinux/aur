@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AnVIL
-_pkgver=1.16.2
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
   r-biocbaseutils
-  r-biocmanager
   r-dplyr
   r-dt
   r-futile.logger
@@ -26,6 +25,7 @@ depends=(
   r-tidyr
   r-tidyselect
   r-yaml
+  r-anvilbase
 )
 optdepends=(
   r-biocstyle
@@ -35,10 +35,13 @@ optdepends=(
   r-rmarkdown
   r-testthat
   r-withr
+  r-anvilaz
+  r-anvilgcp
+  r-lifecycle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f11ff7172e354bf05e4f3650493ec41e')
-b2sums=('76fc9dd9f2809478a92d5299ac22e39aa6e58f5beca4a4af6455afc30fed400a787e4274f5f02134528c84965a9711841381c2fccfbda159d3ecc0cebb51634a')
+md5sums=('1db155608bdecbe033cfeb35ae1444ad')
+b2sums=('13d8c0f5855ce05853c028bc6bf341d231420e2b1716cf382814a9e7f349791535ba5364cce5e2ec6c243f8698e142503ebee80500aee5b832192e9a4a44ac10')
 
 build() {
   mkdir build
