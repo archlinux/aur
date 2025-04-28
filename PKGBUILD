@@ -3,7 +3,7 @@
 # Contributor: axiom <hello@axiom.co>
 
 pkgname='axiom-bin'
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc='Powerful log analytics from the comfort of your command-line'
 url='https://axiom.co'
@@ -12,18 +12,18 @@ license=('MIT')
 provides=('axiom-bin')
 conflicts=('axiom-bin' 'axiom-git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.0/axiom_0.14.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('74732443ab005bc4b7bdee07d6c1436f068605deb67c23887cdb9eb79796296e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.1/axiom_0.14.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('ddb478d6aac9da2ae8fe32b84529fd01ef5ee92a43fbb4fb8122202dd4c83ea4')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.0/axiom_0.14.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('46907728942cf31307233905c55e147ed36319bff2f2e4b02dac4ba6fce95e81')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.1/axiom_0.14.1_linux_armv7.tar.gz")
+sha256sums_armv7h=('e920da95889122b22b9725607309d26424d4caaf69c693dd2611cb99f0183e4e')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.0/axiom_0.14.0_linux_386.tar.gz")
-sha256sums_i686=('fd958fb5d5a35ef4b4fa5ab9a7c34586c46b7dd0cebfa646afb2d023091d90f1')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.1/axiom_0.14.1_linux_386.tar.gz")
+sha256sums_i686=('44c3e09d03d74721a827b66309f2fc4aac2431d11b385644f57db66faeb74296')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.0/axiom_0.14.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('89ccb3f026cabbdab6e1347b232443ff62e9a78097cf4030ee3fa745c256d41b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.14.1/axiom_0.14.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('c8d7011fb932438e56a197b905feed1ac1101d9a4429bd44a3b23d63a0387a4c')
 
 package() {
-  install -Dm755 "./axiom_0.14.0_linux_armv7/axiom" "${pkgdir}/usr/bin/axiom"
+  install -Dm755 "./axiom_0.14.1_linux_arm64/axiom" "${pkgdir}/usr/bin/axiom"
 }
