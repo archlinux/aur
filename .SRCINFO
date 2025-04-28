@@ -1,6 +1,6 @@
 pkgbase = xenia-canary-git
 	pkgdesc = An experimental emulator for the Xbox 360.
-	pkgver = r7821.b4524f646
+	pkgver = r7823.900a02eff
 	pkgrel = 1
 	url = http://xenia.jp
 	arch = x86_64
