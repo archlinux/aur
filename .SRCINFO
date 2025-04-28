@@ -1,6 +1,6 @@
 pkgbase = r-vasp
 	pkgdesc = Quantification and Visualization of Variations of Splicing in Population
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/VaSP
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-vasp
 	depends = r-s4vectors
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/VaSP_1.18.0.tar.gz
-	sha256sums = fca34407dd3ee790b9458706db4e1727cac66ab44692af8b261f46857f5a9b8f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/VaSP_1.20.0.tar.gz
+	sha256sums = f6a5002d798b08ffb1fa49dd0fc4394ae1911c4885ef38c00947150e36b0f934
 
 pkgname = r-vasp
