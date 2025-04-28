@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SFEData
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c588c28b7044354f75733556f46ef4a2')
-b2sums=('a50f1295dde36a56219adc8db1bf47ac025112879597c8250800cea02a610925baccc6df9f7b3e83c9c9d8800ca64602c02f243091640ee7d7fefaf69fcb1218')
+md5sums=('119748229825579a8f05ce7391cc428d')
+b2sums=('93382980f29e910dcdee8b8438d55d02cc0cbab07276d500414b1a7ec06981fa57e9b5573564d438da1efeaa610f266d36e325d4dc09eb311f8ae02577ea34f1')
 
 build() {
   mkdir build
