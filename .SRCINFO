@@ -1,6 +1,6 @@
 pkgbase = gopher64-git
 	pkgdesc = A Nintendo64 emulator (git version)
-	pkgver = 1.0.14.r2.gf3586919
+	pkgver = 1.0.16.r1.gdef89329
 	pkgrel = 1
 	url = https://github.com/gopher64/gopher64/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gopher64-git
 	makedepends = git
 	makedepends = hidapi
 	makedepends = icoutils
-	makedepends = jack2
+	makedepends = jack
 	makedepends = libdecor
 	makedepends = libdrm
 	makedepends = libgl

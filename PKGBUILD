@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gopher64-git
-pkgver=1.0.14.r2.gf3586919
+pkgver=1.0.16.r1.gdef89329
 pkgrel=1
 pkgdesc='A Nintendo64 emulator (git version)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
     'git'
     'hidapi'
     'icoutils'
-    'jack2'
+    'jack'
     'libdecor'
     'libdrm'
     'libgl'
@@ -85,7 +85,6 @@ check() {
 
 package() {
     find gopher64/target/release -maxdepth 1 -type f -executable -exec install -D -m755 -t "${pkgdir}/usr/bin" {} +
-    
     
     local _icon
     local _res
