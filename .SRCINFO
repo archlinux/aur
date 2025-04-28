@@ -1,0 +1,14 @@
+pkgbase = hyde
+	pkgdesc = project - hy reserverd de
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HyDE-Project/HyDE
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	source = git+https://github.com/HyDE-Project/HyDE.git
+	sha256sums = SKIP
+
+pkgname = hyde
