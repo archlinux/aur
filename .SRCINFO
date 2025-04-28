@@ -1,7 +1,7 @@
 pkgbase = super-controller
-	pkgdesc = Give your MIDI devices super powers: take control of the lights, messages, and communication between controllers.Use system-wide electron.
+	pkgdesc = Give your MIDI devices super powers: take control of the lights, messages, and communication between controllers.(Use system-wide electron)
 	pkgver = 1.3.5
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/aolsenjazz/super-controller
 	arch = any
 	license = MIT
@@ -9,16 +9,15 @@ pkgbase = super-controller
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = git
 	depends = electron19
 	depends = python
 	conflicts = super-controller
 	options = !strip
 	options = !emptydirs
-	source = super-controller-1.3.5.tar.gz::https://github.com/aolsenjazz/super-controller/archive/refs/tags/v1.3.5.tar.gz
+	source = super-controller-1.3.5::git+https://github.com/aolsenjazz/super-controller#tag=v1.3.5
 	source = super-controller.sh
-	sha256sums = 73ea7ef6c4c96b8d15c7bde4185a4cfcb4f4e3b33138b0a6df90ef73c0a91276
+	sha256sums = cb6b39f51e7545ed6e0efcadae6614192cf8ef79edbd8db8a22bbe92db84a180
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = super-controller
