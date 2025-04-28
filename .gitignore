@@ -1,0 +1,5 @@
+pkg
+src
+plank-reloaded
+*.zst
+*.tar.gz
