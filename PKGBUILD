@@ -3,8 +3,8 @@ pkgname=bot.dev
 pkgver=0.2.0
 _electronversion=23
 _nodeversion=18
-pkgrel=7
-pkgdesc="Desktop app to manage Discord.js bots built with React, Electron and DaisyUI.Use system-wide electron."
+pkgrel=8
+pkgdesc="Desktop app to manage Discord.js bots built with React, Electron and DaisyUI.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/juaneth/bot.dev"
 license=('GPL-3.0-only')
@@ -16,19 +16,20 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'npm'    
+    'npm'
     'curl'
     'nvm'
+    'git'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1da612ddcae428ba31bd6b6575368e786a8f2964bf0a127d5bf6cf3c83a299b2'
+sha256sums=('7364b7dee529984a57f9ea0bc842ffda8af971b72c52550a3ae75493b3f45920'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -36,14 +37,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -51,9 +52,10 @@ build() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -65,6 +67,9 @@ build() {
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npx vite build
     NODE_ENV=production     npm run electron:package
 }
