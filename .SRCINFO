@@ -1,7 +1,7 @@
 pkgbase = opencpn-plugin-o_charts
 	pkgdesc = use charts from o-charts.org in opencpn
-	pkgver = 2.0.13.0
-	pkgrel = 2
+	pkgver = 2.0.30.0
+	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/ocharts.html
 	arch = x86_64
 	arch = aarch64
@@ -10,10 +10,10 @@ pkgbase = opencpn-plugin-o_charts
 	makedepends = cmake
 	depends = opencpn
 	depends = libusb-compat
-	source = opencpn-plugin-o_charts-2.0.13.0.tar.gz::https://github.com/bdbcat/o-charts_pi/archive/refs/tags/2.0.13.0.tar.gz
-	source = opencpn-plugin-o_charts-2.0.13.0-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz
+	source = opencpn-plugin-o_charts-2.0.30.0.tar.gz::https://github.com/bdbcat/o-charts_pi/archive/refs/tags/2.0.30.0.tar.gz
+	source = opencpn-plugin-o_charts-2.0.30.0-opencpnlibs.tar.gz::https://github.com/OpenCPN/opencpn-libs/archive/a001083af21de2e3faa970b245877a5ee5899aba.tar.gz
 	source = LICENSE
-	b2sums = c49a20f1e6a6bad7b2392f688504c5ac7f06077614a34f9e895754ecf037c52253869072fd10ac3c213adb42387c84f5638f81ae1390e1a4e82ecb95aa7535ed
+	b2sums = f2420c9343792177b8f03d4077da177e2cbc8a5cb485ef206034b54fa1cd20421f1c6d9ed1b6845955a6052f77e91f1e62d504bf6890b53d725bdc81bf25b037
 	b2sums = 24215376af8780b00e3611f2f9c2f3a408afcddfffc25c408117e0219eb0c70ca7805af349acb7616b900498d7b8e821db6ec2e18109247e81969f08b98a74aa
 	b2sums = 2d09f9bc4f793b03977d05607f065fbd85e8c257edb70d27b8846f620f920d23803e320045ae3e6cc23e862d0c52336b8e334580d946518f86f4260c0a886deb
 
