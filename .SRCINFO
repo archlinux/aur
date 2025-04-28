@@ -1,6 +1,6 @@
 pkgbase = r-gmoviz
 	pkgdesc = Seamless visualization of complex genomic variations in GMOs and edited cell lines
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gmoviz
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-gmoviz
 	optdepends = r-pasillabamsubset
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gmoviz_1.18.0.tar.gz
-	sha256sums = 38b1cddea29bfd395f89ee3add565f612d77c7fb1141d279434d2e80354db108
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gmoviz_1.20.0.tar.gz
+	sha256sums = 72fad00a212d6b137d7c4f484e20e367772388090b866ac220cf0417f5407c4d
 
 pkgname = r-gmoviz
