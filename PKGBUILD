@@ -1,6 +1,6 @@
 pkgname=foxtelgo
 _pkgname=FoxtelGo
-pkgver=1.0.14.aurpatch
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/foxtelgo"
 license=('GPL')
 depends=('libelectron' 'nss' 'gtk3' 'libxss' 'git')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('4d81d47ca16d819da3e4a94b123dcf5db316d3c1da07e9b9e541388c81a869e8')
+sha256sums=('1e9f12e1854d038a3d8a9681d9e26922ab3735bf11afda9191e0883068f808a4')
 
 
 package() {
