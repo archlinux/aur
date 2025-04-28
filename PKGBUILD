@@ -5,7 +5,7 @@
 # llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
 
 ## options
-: ${_commit:=fbc95f2c86f79eca440f5c33a9676bedeca0ae86}
+: ${_commit:=b2587e676de968965e7d67ecf38e1eafe18f42b4}
 
 : ${_build_instrumented:=false}
 : ${_build_pgo:=try}
@@ -22,7 +22,7 @@ unset _pkgtype
 
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.212
+pkgver=2.3.303
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -30,6 +30,7 @@ license=('GPL-3.0-or-later')
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
 
 depends=(
+  kddockwidgets-qt6 # AUR
   libpcap
   libpng
   libpulse
@@ -62,20 +63,6 @@ optdepends=(
   'alsa-utils: Sound player for RetroAchievements'
   'gstreamer: Backup sound player for RetroAchievements'
 )
-
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
 
 if [ "${_build_git::1}" == "t" ]; then
   provides=("$_pkgname")
@@ -191,13 +178,13 @@ build() (
   if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
     local _cflags _cxxflags
     _cflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
     )
     CFLAGS="${_cflags[@]}"
 
     _cxxflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
     )
     CXXFLAGS="${_cxxflags[@]}"

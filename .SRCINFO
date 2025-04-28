@@ -1,6 +1,6 @@
 pkgbase = pcsx2
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.3.212
+	pkgver = 2.3.303
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
@@ -19,6 +19,7 @@ pkgbase = pcsx2
 	makedepends = shaderc
 	makedepends = qt6-tools
 	makedepends = 7zip
+	depends = kddockwidgets-qt6
 	depends = libpcap
 	depends = libpng
 	depends = libpulse
@@ -31,7 +32,7 @@ pkgbase = pcsx2
 	optdepends = gstreamer: Backup sound player for RetroAchievements
 	options = !debug
 	options = lto
-	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=fbc95f2c86f79eca440f5c33a9676bedeca0ae86
+	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=b2587e676de968965e7d67ecf38e1eafe18f42b4
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
 	sha256sums = SKIP
 	sha256sums = SKIP
