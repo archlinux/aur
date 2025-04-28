@@ -1,6 +1,6 @@
 pkgbase = electron-gpt-git
-	pkgdesc = Simplified chat using OpenAI's GPT.Use system-wide electron.
-	pkgver = r1279.cacbc31
+	pkgdesc = Simplified chat using OpenAI's GPT.(Use system-wide electron)
+	pkgver = r1417.09f2c72
 	pkgrel = 1
 	url = https://github.com/Bubuclem/electron-gpt
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = electron-gpt-git
 	makedepends = npm
 	makedepends = git
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = nvm
+	makedepends = curl
 	depends = electron33
 	depends = python>=3.9
 	depends = python-setuptools
