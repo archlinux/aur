@@ -1,0 +1,23 @@
+pkgbase = amber-ce-trixie
+	pkgdesc = a container app packaging and distributing solution, based on Debian 13.
+	pkgver = 13.8.1
+	pkgrel = 1
+	url = https://gitee.com/amber-ce/amber-ce-trixie
+	install = amber-ce-trixie.install
+	arch = aarch64
+	arch = x86_64
+	arch = loong64
+	license = unknown
+	makedepends = dpkg
+	depends = bubblewrap
+	depends = xdg-desktop-portal
+	depends = flatpak
+	depends = zenity
+	depends = gcc
+	depends = debootstrap
+	depends = procps-ng
+	depends = rsync
+	source = amber-ce-trixie-13.8.1.tar.gz::https://gitee.com/amber-ce/amber-ce-trixie/repository/archive/13.8.1.tar.gz
+	sha256sums = 9c0c692cf7f8d1e93b0f744ff43c9a42b43f37ba87edae92ef492776cababe15
+
+pkgname = amber-ce-trixie

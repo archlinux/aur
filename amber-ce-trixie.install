@@ -1,0 +1,25 @@
+post_install(){
+
+bash /opt/apps/amber-ce-trixie/files/bin/ace-init
+
+systemctl daemon-reload
+systemctl enable --now ace-bookworm-auto-upgrade.service
+systemctl reload apparmor
+
+}
+
+post_upgrade(){
+
+bash /opt/apps/amber-ce-trixie/files/bin/ace-init
+
+systemctl daemon-reload
+systemctl enable --now ace-trixie-auto-upgrade.service
+systemctl reload apparmor
+
+}
+
+post_remove(){
+
+rm -rf /opt/apps/amber-ce-trixie
+
+}
