@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethylSeekR
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Segmentation of Bis-seq data'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-bsgenome.hsapiens.ucsc.hg18
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('59e8bd04e6bea759c6d57a69c902e995c8db7e6ed49f052a6deb825758445553')
+sha256sums=('a5e912affeb3b558c2bf1be2ab437ee59d0929e832737044c3d0956ad6793f7b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
