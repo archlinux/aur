@@ -1,8 +1,8 @@
 # Maintainer: prime-run <prime-run@github.com>
 
-pkgname=hyde
+pkgname=hyde-cli
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="project - hy reserverd de"
 arch=('x86_64')
 url="https://github.com/HyDE-Project/HyDE"
