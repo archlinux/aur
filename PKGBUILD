@@ -2,9 +2,9 @@
 pkgname=passbox
 pkgver=1.0.0
 _electronversion=24
-_nodeversion=18
-pkgrel=8
-pkgdesc="A versatile toolbox primarily designed for password management and note-taking.Use system-wide electron."
+_nodeversion=20
+pkgrel=9
+pkgdesc="A versatile toolbox primarily designed for password management and note-taking.(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/zzk13180/passbox"
 license=('MIT')
@@ -18,12 +18,13 @@ makedepends=(
     'pnpm'
     'nvm'
     'curl'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6b0b177b75be068f7e628f107989a761741e7dc860937074f3efe351c27eb4db'
+sha256sums=('80c9134d7a466460053eca58adbb8c00e4654c509ebe624775bf777d86e30786'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -31,8 +32,8 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
@@ -42,7 +43,6 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -55,12 +55,12 @@ build() {
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
         echo 'registry=https://registry.npmmirror.com'
-        echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-        echo 'node-mirror=https://registry.npmmirror.com/-/binary/node/'
         echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
@@ -68,6 +68,10 @@ build() {
     cp src/app/services/userState.service.ts src/app/services/userstate.service.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm tsc-main
     NODE_ENV=production     pnpm ng build -c production
     NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
