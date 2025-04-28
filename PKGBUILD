@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CAMERA
-_pkgver=1.62.0
+_pkgver=1.64.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.64.0
 pkgrel=1
 pkgdesc='Collection of annotation related methods for mass spectrometry data'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
   r-snow
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a9c62f1f0cfa6bf4590de532a562018a5c75608ff4b89d909f72a85cd0cd32c')
+sha256sums=('f7abfb2dcc21812c475d8ad3df3305142d21577cbc3195acdd4ffbe7a71d8820')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

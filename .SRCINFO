@@ -1,6 +1,6 @@
 pkgbase = r-camera
 	pkgdesc = Collection of annotation related methods for mass spectrometry data
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CAMERA
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-camera
 	optdepends = r-rmpi
 	optdepends = r-runit
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAMERA_1.62.0.tar.gz
-	sha256sums = 0a9c62f1f0cfa6bf4590de532a562018a5c75608ff4b89d909f72a85cd0cd32c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAMERA_1.64.0.tar.gz
+	sha256sums = f7abfb2dcc21812c475d8ad3df3305142d21577cbc3195acdd4ffbe7a71d8820
 
 pkgname = r-camera
