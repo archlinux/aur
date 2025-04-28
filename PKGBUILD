@@ -2,7 +2,11 @@
 
 pkgname=hyde-cli
 pkgver=1.0.0
+<<<<<<< HEAD
 pkgrel=1
+=======
+pkgrel=2
+>>>>>>> 4079460 (init)
 pkgdesc="project - hy reserverd de"
 arch=('x86_64')
 url="https://github.com/HyDE-Project/HyDE"
