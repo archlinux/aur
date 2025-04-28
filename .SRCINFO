@@ -1,6 +1,6 @@
 pkgbase = r-mbqn
 	pkgdesc = Mean/Median-balanced quantile normalization
-	pkgver = 2.18.0
+	pkgver = 2.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MBQN
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-mbqn
 	depends = r-summarizedexperiment
 	depends = r-xml2
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBQN_2.18.0.tar.gz
-	sha256sums = 53a6171ccbed496d90939bd65d4c0bd8b61c2fcbf150c8789264cc5a84139d9f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MBQN_2.20.0.tar.gz
+	sha256sums = 7a274dbfc5d78f65a2d3ae0688459ceb74619dd2925fbc53fb0a7fdda122cacd
 
 pkgname = r-mbqn
