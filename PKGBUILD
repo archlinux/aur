@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PDATK
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Pancreatic Ductal Adenocarcinoma Tool-Kit'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('db8e024f2e8380df0b4de1eba14d96b53d2d84d8f86b70c12a19a49a206f2f1d')
+sha256sums=('0bf28b2d2e296aaad8c850b828d19c14ac10a9689fa0cfb5b054f8b74ce3557f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
