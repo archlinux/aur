@@ -1,7 +1,7 @@
 pkgbase = cycode
-	pkgdesc = A web-based HTML Editor, Markdown Editor, and WYSIWYG Editor,a code editor with a primary focus on web development.
+	pkgdesc = A web-based HTML Editor, Markdown Editor, and WYSIWYG Editor,a code editor with a primary focus on web development.(Use system-wide electron)
 	pkgver = 2.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/magayagalabs/CyCode
 	arch = any
 	license = MIT
@@ -9,13 +9,12 @@ pkgbase = cycode
 	makedepends = npm
 	makedepends = curl
 	makedepends = gendesk
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = git
 	depends = electron30
 	conflicts = cycode
-	source = cycode-2.0.6.tar.gz::https://github.com/magayagalabs/CyCode/archive/refs/tags/v2.0.6.tar.gz
+	source = cycode-2.0.6::git+https://github.com/magayagalabs/CyCode#tag=v2.0.6
 	source = cycode.sh
-	sha256sums = f3360f5735cba336a62f966d4fa0585297995d1e5b6855697da0bf27cfe336b4
+	sha256sums = da05ec66506d5f2d6f1da781fd56ce2ec15afa81ed26e068bc6160b11cbc62df
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = cycode
