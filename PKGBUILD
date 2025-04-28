@@ -2,8 +2,8 @@
 
 _basename=typhoon
 pkgname=${_basename}-bin
-pkgver=0.9.85
-pkgrel=2
+pkgver=0.9.86
+pkgrel=1
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
 url="https://github.com/archisman-panigrahi/typhoon"
@@ -13,7 +13,7 @@ provides=("${_basename}")
 depends=('gtk3' 'webkit2gtk' 'python' 'python-dbus' 'python-gobject' 'bash' 'gdk-pixbuf2' 'webkit2gtk' 'imagemagick')
 makedepends=('tar')
 source=("https://github.com/archisman-panigrahi/typhoon/releases/download/v${pkgver}/${_basename}_${pkgver}_all.deb")
-sha256sums=('a2a589aa75b16f734278790458b7c778b8537d5bd89cc4b706e2deb7b0ea0613')
+sha256sums=('b0de72dbb94e76bdf1d5ae84a424e02290269ea84616828a9fbf603610aaadeb')
 
 package() {
     cd "${pkgdir}"
