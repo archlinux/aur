@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=hiReadsProcessor
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('209c5291932b6ef2978cb534f008d458')
-b2sums=('a1cf12213c45906df2ca38df885a05af94dcdd0fde9f9532797d557c878bb22567c0b62366c90b3f66aab1240345558d4b894f5416448c3a3b86cdd281919e68')
+md5sums=('22b33caeea7327e179b405755d2ca50a')
+b2sums=('4a164a7fb4e693cceac9b267ea9d771fafcb02f22a0c93f12a937e69de2bf9a8548ce318852410487c34ce036467d49d9875225ff9a11181688e86eabd04423d')
 
 build() {
   mkdir build
