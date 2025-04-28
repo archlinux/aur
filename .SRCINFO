@@ -1,0 +1,45 @@
+pkgbase = amd-debug-tools-git
+	pkgdesc = Debug tools for AMD zen systems.
+	pkgver = 0.1.0+3.r314.20250425.5bad9d8
+	pkgrel = 1
+	epoch = 0
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python>=3
+	depends = acpica
+	depends = dbus-python
+	depends = python>=3
+	depends = python-distro
+	depends = python-packaging
+	depends = python-pandas
+	depends = python-pyudev
+	depends = python-tabulate
+	optdepends = fwupd>=2: For device firmware checks ('amd_s2idle').
+	optdepends = python-common: For optional model checks ('amd_s2idle').
+	optdepends = glib2: For device firmware checks ('amd_s2idle').
+	optdepends = python-gobject: For device firmware checks ('amd_s2idle').
+	optdepends = python-cysystemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle').
+	optdepends = python-systemd: To access the kernel log via the systemd journal (fallback is 'dmesg') ('amd_s2idle') | Needed to run 'amd_bios' and 'amd_pstate'.
+	optdepends = util-linux: To access the kernel log via 'dmesg' ('amd_s2idle').
+	provides = amd-debug-tools=0.1.0+3.r314.20250425.5bad9d8
+	provides = amd-bios-logging-control-script=0.1.0+3.r314.20250425.5bad9d8
+	provides = amd-psr-identification-script=0.1.0+3.r314.20250425.5bad9d8
+	provides = amd-pstate-analysis-script=0.1.0+3.r314.20250425.5bad9d8
+	provides = amd-s2idle-analysis-script=0.1.0+3.r314.20250425.5bad9d8
+	provides = amdgpu-test-scripts-common
+	conflicts = amd-debug-tools
+	conflicts = amd-bios-logging-control-script
+	conflicts = amd-psr-identification-script
+	conflicts = amd-pstate-analysis-script
+	conflicts = amd-s2idle-analysis-script
+	conflicts = amdgpu-test-scripts-common
+	conflicts = amdgpu-test-scripts-common
+	replaces = amd-psr-identification-script<=r286
+	replaces = amd-s2idle-analysis-script<=r286
+	replaces = amdgpu-test-scripts-common<=r286
+	source = amd-debug-tools::git+https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git
+	sha256sums = SKIP
+
+pkgname = amd-debug-tools-git
