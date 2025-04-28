@@ -1,11 +1,11 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.base
-_pkgver=1.6.1
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc="Save Bioconductor Objects To File"
+pkgdesc="Save Bioconductor Objects to File"
 arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
@@ -20,8 +20,9 @@ depends=(
 )
 makedepends=(
   r-rhdf5lib
+  r-assorthead
 )
-checkdepends=(
+_checkdepends=(
   r-testthat
 )
 optdepends=(
@@ -33,15 +34,15 @@ optdepends=(
   r-alabaster.matrix
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a18440b482d01c02b755ef4077f85b25')
-b2sums=('851dd115a2dd619a2fcd823a2ce0124ecad18ece1983f1293dc1c8509b55fab0d7b4f0a1b8f4fe8caf00d34655d57b2a64a442ade6525c39c0dfced8f034d690')
+md5sums=('9a62e4a2f2e7291bf9dd77d14d231ffb')
+b2sums=('2dbb32580515b65fefee9242cadea6682e43621f4ca6092f8935d27837fe28e2464704fba3ad8bc0c4fc9b06355a8ba11d38417a96b68691f9c884122b738a45')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
