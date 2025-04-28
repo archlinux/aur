@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rGADEM
-_pkgver=2.54.0
+_pkgver=2.55.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,9 +22,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('241489c941f013446526da273d7d6584'
+md5sums=('559bc8c7899d2ab42685c6463135ac05'
          '70cfeaf0a408374fb80a184522865ff6')
-b2sums=('709105d37497294be7c59215c5653ce6ec3edd302dcc38d1fa601ca33ede381fe3fc6afc410a03d7663a888258bb57c451fa40d5e2bd0b1af02a067952191c03'
+b2sums=('224ea975f87116870784b0d96aa2635c19ddf3ce58fb530073cbcaca428e9e28c3610815a4273a71fbf826ecf6a25c74a3eca2822fdd15cc895de8f166376e0e'
         '7ddd59889027df17d55b6948170539ba7b62f1780e0e3da65cf96cc4a2337c2796d7c9d5b883c4000ab2e090f92b4fc766e9cc85ccd376ee0b8bef252d24d0b8')
 
 prepare() {
