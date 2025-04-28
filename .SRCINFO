@@ -1,6 +1,6 @@
 pkgbase = r-pram
 	pkgdesc = Pooling RNA-seq datasets for assembling transcript models
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pram
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-pram
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pram_1.22.0.tar.gz
-	sha256sums = 274c2347d600f22193e75cd8e33150e880092e463b7550b0646a592b7ee1e448
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pram_1.24.0.tar.gz
+	sha256sums = 18d61a19d3cdb2433e6fb4a81ffabfc10d8c1fbc71121c969e15e0f83948f837
 
 pkgname = r-pram
