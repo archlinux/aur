@@ -1,6 +1,6 @@
 pkgbase = r-coverageview
 	pkgdesc = Coverage visualization package for R
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CoverageView
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-coverageview
 	depends = r-rsamtools
 	depends = r-rtracklayer
 	depends = r-s4vectors
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoverageView_1.44.0.tar.gz
-	sha256sums = 6b7ae9dc8ce60f3f940b5ddeefda71a75cb9c488ff31034c742db8b778342f65
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CoverageView_1.46.0.tar.gz
+	sha256sums = 68e4543e2caa0849c6ae6128ae022609e2ff9f736bb18b6e394bb9ada9d6cff4
 
 pkgname = r-coverageview
