@@ -2,7 +2,7 @@
 
 pkgname=mangojuice
 pkgver=0.8.3
-pkgrel=1
+pkgrel=3
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
 arch=(any)
 url="https://github.com/radiolamp/${pkgname}"
@@ -12,13 +12,13 @@ depends=(
   gtk4
   libadwaita
   libgee
+  mangohud
+  fontconfig
 )
 makedepends=(
   git
   meson
   vala
-  mangohud
-  fontconfig
 )
 
 optdepends=(
