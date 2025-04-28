@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rifiComparative
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5f76b5f9e57e55da53a99a5360140c62')
-b2sums=('28ddb06abdce47d05d8a1e6b0f74f7c26c78c65be0c6eb008abb5097c160126ceb78cf4623306a47158c5113250d6392959497b0d96fbd6f2696fc5ce7d6e7cf')
+md5sums=('a8d407f1ad0d4ee7ddd4869da46364f4')
+b2sums=('39af03acc03c8938fc7268a5c304f8831a6562ecb583f33e16f76f5c1dc71aacc7f60f427e125ada6e6a79aadf357a791fd4a2ea115d2703cf6e1de130707f91')
 
 build() {
   mkdir build
