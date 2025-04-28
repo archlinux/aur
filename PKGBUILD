@@ -41,8 +41,6 @@ package() {
 	rm -f 	${pkgdir}/usr/*-manifest.txt
 	rm -f 	${pkgdir}/usr/bin/runtest
 	rm -f 	${pkgdir}/usr/lib/lib*
-	rm -f   ${pkgdir}/usr/lib/bfd-plugins/libdep.a
-	rm -rf  ${pkgdir}/usr/libexec
 	rm -rf 	${pkgdir}/usr/include
 	rm -rf 	${pkgdir}/usr/share/{dejagnu,doc,gcc-*,gdb,info,locale}
 	rm -rf 	${pkgdir}/usr/share/man/{man1/runtest.1,man5,man7}
