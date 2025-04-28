@@ -6,7 +6,7 @@
 # Contributor: Matthew <pyther@pyther.net>
 pkgname=bacula-client
 pkgver=15.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Enterprise ready, network based backup program"
 url=https://www.bacula.org
 arch=(x86_64)
@@ -33,6 +33,7 @@ backup=(
     etc/bacula/bacula-fd.conf
 )
 # Bacula 4096 Distribution Verification Key (www.bacula.org) <kern@bacula.org>
+# https://www.bacula.org/bacula-distribution-verification-public-keys/
 validpgpkeys=('5235F5B668D81DB61704A82DC0BE2A5FE9DF3643')
 source=(
     https://downloads.sourceforge.net/project/bacula/bacula/$pkgver/bacula-$pkgver.tar.gz{,.sig}
@@ -60,4 +61,8 @@ package() {
     # we do not take the service file provided by bacula package
     # as it needs too much customization
     install -D -m0644 ../bacula-fd.service "$pkgdir"/usr/lib/systemd/system/bacula-fd.service
+    # Remove man page provided by extra/bat
+    rm "$pkgdir"/usr/share/man/man1/bat.1.gz
+    # Remove empty dir
+    rmdir "$pkgdir"/tmp
 }

@@ -1,7 +1,7 @@
 pkgbase = bacula-client
 	pkgdesc = Enterprise ready, network based backup program
 	pkgver = 15.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bacula.org
 	arch = x86_64
 	license = AGPL-3.0-only
