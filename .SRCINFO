@@ -1,6 +1,6 @@
 pkgbase = miktex
 	pkgdesc = a distribution of the TeX/LaTeX typesetting system
-	pkgver = 25.3
+	pkgver = 25.4
 	pkgrel = 1
 	url = https://miktex.org
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = miktex
 	depends = qt6-5compat
 	depends = mpfi
 	options = !buildflags
-	source = https://github.com/MiKTeX/miktex/archive/25.3.tar.gz
-	md5sums = d78fe5aefafae349267fcab6957cf738
+	source = https://github.com/MiKTeX/miktex/archive/25.4.tar.gz
+	md5sums = 413621d8fd709f32867d0989b8a6feb0
 
 pkgname = miktex
