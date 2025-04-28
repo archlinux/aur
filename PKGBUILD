@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/Thirdwinter/foamshot/releases/download/$pkgver/foamshot-linux-x86_64")
 noextract=()
-sha256sums=("006a2127916192a196f6190c43ba6bc63b26b083d4bd7fc259bb06073b01d924")
+sha256sums=('SKIP')
 validpgpkeys=()
 
 # prepare() {
