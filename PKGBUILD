@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TFEA.ChIP
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Analyze Transcription Factor Enrichment'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d5285fe82151bcc19dbff49b4f0a4334833e563fb6084b219a2c66fa654f48a3')
+sha256sums=('024f7e5652b954f21536d505b8e81d54aa1b008736b353fffa3569dafb238edf')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
