@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BPRMeth
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Model higher-order methylation profiles'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('adc7baf60fab7534ad40ebccf3290268308059d68320af569f6cbf5dd905e356')
+sha256sums=('507072b6a14989d5df6f36ff07274d8ddb3c287c407216beb7033b58bbe4065c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
