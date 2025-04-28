@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TENxVisiumData
-_pkgver=1.14.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('51c4de649c20eb710f34c5e6803f98ed')
-b2sums=('3b9b590ef5e44bd1cfce24adc4c8fd0545be4cf5e0d0a42adbf214f23563e2fd930532cb25e4229c5414ca96fa9b02ac39ede88942405319e496b0fe9a9837d6')
+md5sums=('bff3737ceba780fd57a0c96d9a5dd1a7')
+b2sums=('d18599c8dedfe58190df899b26466716a918b122e1d6e30d012bed56e3e4796b8d99f310c4a3b1d54082919c19ca21b851fd066ead14d9ab138366a4ae7f5726')
 
 build() {
   mkdir build
