@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronize tmpfs and on-disk Librewolf profiles (oneshot service)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/librewolf-sync
+
+[Install]
+WantedBy=default.target

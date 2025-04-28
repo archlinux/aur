@@ -1,0 +1,11 @@
+[Unit]
+Description=Synchronize tmpfs and on-disk Librewolf profiles
+
+[Service]
+Type=idle
+RemainAfterExit=true
+ExecStart=/usr/bin/librewolf-sync
+ExecStop=/usr/bin/librewolf-sync
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,19 @@
+pkgbase = librewolf-sync
+	pkgdesc = Speed up Librewolf using tmpfs.
+	pkgver = 20220831
+	pkgrel = 1
+	url = http://wiki.archlinux.org/index.php/Speed-up_Firefox_using_tmpfs
+	arch = any
+	license = GPL
+	source = librewolf-sync.sh
+	source = librewolf-sync.service
+	source = librewolf-sync-cron.service
+	source = librewolf-sync-cron.timer
+	sha256sums = 49c887a1434b657abe423d5e6e5947afad2d014a0fb1a4d8cc7427fe48a4d482
+	sha256sums = 94fee311c891809be121e8e4bcc09cadbfc98e36183dde363fe5af7990f910b8
+	sha256sums = d09f98b3bfe4c9bd5fe171e2975789fce032e0504f9fd59269351379a690675c
+	sha256sums = 290ec34a4d27a1681e49da3bd7ed2cb499c57acfb1a7044583000afbb0dd97d5
+
+pkgname = librewolf-sync
+	depends = rsync
+	depends = librewolf-bin
