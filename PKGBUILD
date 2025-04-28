@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=cytofQC
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3884c0b74e8168170174b23717c1f6fe')
-b2sums=('e7165719cb253f34a2270bad88e381786271637ac0bbc6ee9a0059a8f0b04d3922b1fa70b1d887bd72df4d02a5f24c06f989a633cac84dbbf428086c20c75228')
+md5sums=('550d38d16388b37eb673a524357de799')
+b2sums=('24136fe0b872383d9611cd48238434da55e7a97c1aab093bd606c4f90f262465dac1bab063bc786278ce7ffbad62ca2f8a49c99d6e75ff1ae1267cf67fc38c60')
 
 build() {
   mkdir build
