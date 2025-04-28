@@ -1,5 +1,5 @@
 pkgbase = image-stitching-git
-	pkgdesc = This Image Stitcher was specifically built to stitch images in a horizontal layout one after the other from left to right. Primarily used for stitching multiple seperate images of a single scratch together.Use system-wide electron.
+	pkgdesc = This Image Stitcher was specifically built to stitch images in a horizontal layout one after the other from left to right. Primarily used for stitching multiple seperate images of a single scratch together.(Use system-wide electron)
 	pkgver = 1.4.r1.gf07e2cd
 	pkgrel = 1
 	url = https://github.com/DevanshuSawant/image-stitching-electron-app
