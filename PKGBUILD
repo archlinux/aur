@@ -2,7 +2,7 @@
 
 pkgname=gopher64
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A Nintendo64 emulator'
 arch=('x86_64')
 url='https://github.com/gopher64/gopher64/'
@@ -23,7 +23,7 @@ makedepends=(
     'git'
     'hidapi'
     'icoutils'
-    'jack2'
+    'jack'
     'libdecor'
     'libdrm'
     'libgl'
