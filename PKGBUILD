@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=JASPAR2024
-_pkgver=0.99.6
+_pkgver=0.99.7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-rsqlite
 )
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c8144547873a36473a5f9cad793f578')
-b2sums=('5004a5b32dea164588389586376b0dd52303c989dfe1f72a2784490c7f328b697ef7adc2968601542f8ba80f860c87ad571693a2ae955c3fa361022493f39eb2')
+md5sums=('997e71780374651c850909f338a3bcc2')
+b2sums=('7af5ae3d86c3f84834aa03078205d5c637c74da1c954b5374caa8d6437275ca18b55b0563f1ff68da09958bbfd65a81c71dbfc2e416cb0ec0ece4703c0b37fc5')
 
 build() {
   mkdir build
