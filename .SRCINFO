@@ -1,6 +1,6 @@
 pkgbase = r-past
 	pkgdesc = Pathway Association Study Tool (PAST)
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PAST
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-past
 	depends = r-s4vectors
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PAST_1.22.0.tar.gz
-	sha256sums = 5ea0861fa6b0690424da76b2a353d4f4fd9cb1b7b5cce73edb1bd6def86d6df3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PAST_1.24.0.tar.gz
+	sha256sums = 6717c9fb245565558d2c8069a7beb8243d1398d802a7643768dfd4891ed1bc62
 
 pkgname = r-past
