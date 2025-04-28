@@ -6,16 +6,16 @@
 # Contributor: tocer.deng <tocer.deng@gmail.com>
 
 pkgname=apvlv
-pkgver=0.7.0_alpha
+pkgver=0.7.0_final
 pkgrel=1
 pkgdesc="A PDF/EPUB/TXT/FB2/MOBI/CBZ/HTML viewer which behaves like Vim"
 arch=('x86_64')
 url="https://github.com/naihe2010/apvlv"
 license=('GPL-2.0-or-later')
-depends=('djvulibre' 'gcc-libs' 'glibc' 'libmupdf' 'qt6-base' 'qt6-webengine' 'quazip-qt6' 'tesseract')
-makedepends=('clang' 'cmake' 'ghostscript' 'libreoffice-sdk' 'man-db' 'qt6-tools')
+depends=('cmark' 'djvulibre' 'gcc-libs' 'glibc' 'libmupdf' 'qt6-base' 'qt6-webengine' 'quazip-qt6' 'tesseract')
+makedepends=('clang' 'cmake' 'ghostscript' 'libreoffice-sdk' 'man-db' 'mujs' 'qt6-tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('c763ff61eb4f907ce66747045e242a06d8ff36083d0ff5805277ce26a707e0fa')
+sha256sums=('83359ec4d23d359acdab78f280d14e349d52f0deb5164ff60a2bed4180c22097')
 
 build() {
     mkdir -p "${pkgname}-${pkgver//_/-}/share/doc/apvlv/translations"

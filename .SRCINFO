@@ -1,6 +1,6 @@
 pkgbase = apvlv
 	pkgdesc = A PDF/EPUB/TXT/FB2/MOBI/CBZ/HTML viewer which behaves like Vim
-	pkgver = 0.7.0_alpha
+	pkgver = 0.7.0_final
 	pkgrel = 1
 	url = https://github.com/naihe2010/apvlv
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = apvlv
 	makedepends = ghostscript
 	makedepends = libreoffice-sdk
 	makedepends = man-db
+	makedepends = mujs
 	makedepends = qt6-tools
+	depends = cmark
 	depends = djvulibre
 	depends = gcc-libs
 	depends = glibc
@@ -19,7 +21,7 @@ pkgbase = apvlv
 	depends = qt6-webengine
 	depends = quazip-qt6
 	depends = tesseract
-	source = apvlv-0.7.0_alpha.tar.gz::https://github.com/naihe2010/apvlv/archive/v0.7.0-alpha.tar.gz
-	sha256sums = c763ff61eb4f907ce66747045e242a06d8ff36083d0ff5805277ce26a707e0fa
+	source = apvlv-0.7.0_final.tar.gz::https://github.com/naihe2010/apvlv/archive/v0.7.0-final.tar.gz
+	sha256sums = 83359ec4d23d359acdab78f280d14e349d52f0deb5164ff60a2bed4180c22097
 
 pkgname = apvlv

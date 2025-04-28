@@ -1,6 +1,7 @@
 [apvlv]
-source = "git"
-git = "https://github.com/naihe2010/apvlv.git"
+source = "github"
+github = "naihe2010/apvlv"
+use_max_tag = true
 prefix = "v"
 from_pattern = "-"
 to_pattern = "_"
