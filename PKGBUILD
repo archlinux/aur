@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scDblFinder
-_pkgver=1.20.2
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.2
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='scDblFinder'
 arch=('any')
@@ -45,7 +45,7 @@ optdepends=(
   r-viridislite
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cb0c0d76f7ab5cd067f9cf181030f1b1f69e8e354a978426a270ab3405a71c90')
+sha256sums=('1af9f77ab7257a021c94fafa82a63982cbcf279707a76a56a146d9388732d622')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
