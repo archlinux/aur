@@ -2,16 +2,16 @@
 
 pkgname=gamja-git
 _pkgname=gamja
-pkgver=v1.0.0.beta.1.r85.g3e309e9
+pkgver=v1.0.0.beta.11.r0.gcaf6e99
 pkgrel=1
 pkgdesc='Simple IRC web client'
 arch=('any')
-url="https://sr.ht/~emersion/gamja/"
+url="https://codeberg.org/emersion/gamja"
 license=('AGPL3')
 makedepends=('npm' 'git')
 provides=('gamja')
 conflicts=('gamja')
-source=("$_pkgname::git+https://git.sr.ht/~emersion/${_pkgname}")
+source=("$_pkgname::git+https://codeberg.org/emersion/${_pkgname}")
 sha256sums=('SKIP')
 backup=('usr/share/webapps/gamja/config.json')
 
