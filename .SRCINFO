@@ -1,7 +1,7 @@
 pkgbase = proton-mail-viewer
-	pkgdesc = Unofficial Proton Mail™ viewer.Use system-wide electron.
+	pkgdesc = Unofficial Proton Mail™ viewer.(Use system-wide electron)
 	pkgver = 0.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/moba1/proton-mail-viewer
 	arch = any
 	license = MIT
@@ -10,11 +10,12 @@ pkgbase = proton-mail-viewer
 	makedepends = nvm
 	makedepends = curl
 	makedepends = nvm
+	makedepends = git
 	depends = electron26
 	conflicts = proton-mail-viewer
-	source = proton-mail-viewer-0.0.1.tar.gz::https://github.com/moba1/proton-mail-viewer/archive/refs/tags/v0.0.1.tar.gz
+	source = proton-mail-viewer-0.0.1::git+https://github.com/moba1/proton-mail-viewer#tag=v0.0.1
 	source = proton-mail-viewer.sh
-	sha256sums = be363cd7f2b099970ce074f5fc3b62a4027f5312f18df52744e85f28d0296b86
+	sha256sums = 9354c98989d42a807178f1b0dcc89e47713d45af40e247b74b1a47652fc3e6b8
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = proton-mail-viewer
