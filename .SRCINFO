@@ -1,6 +1,6 @@
 pkgbase = flashpoint-launcher
 	pkgdesc = A desktop application used to browse, manage and play games from Flashpoint Archive
-	pkgver = 14.0.1
+	pkgver = 14.0.2
 	pkgrel = 1
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
@@ -10,16 +10,11 @@ pkgbase = flashpoint-launcher
 	makedepends = nvm
 	makedepends = rust
 	makedepends = git
-	makedepends = gcc
-	makedepends = base-devel
 	makedepends = libnss_nis
-	depends = python>3
-	depends = alsa-lib
-	depends = gtk3
-	depends = nspr
-	depends = nss
+	depends = python
+	depends = electron19
 	conflicts = flashpoint-launcher
-	source = flashpoint-launcher-14.0.1.tar.gz::https://github.com/FlashpointProject/launcher/archive/refs/tags/14.0.1.tar.gz
-	sha256sums = ab6de26ccedd731ac5ede452f7c9ef3f6b1543caf9278842f8f7c53dac252ece
+	source = flashpoint-launcher-14.0.2::git+https://github.com/FlashpointProject/launcher#tag=14.0.2
+	sha256sums = fa9b95543a67e1cc3c2cdddcec1f4307bce506b0219ae86a2ed1e947532a886d
 
 pkgname = flashpoint-launcher

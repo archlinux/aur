@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
-_pkgname="Flashpoint Launcher"
-pkgver=14.0.1
+_pkgname='Flashpoint Launcher'
+pkgver=14.0.2
 _electronversion=19
 _nodeversion=20
 pkgrel=1
@@ -12,11 +12,8 @@ _ghurl="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 conflicts=("${pkgname}")
 depends=(
-    'python>3'
-    'alsa-lib'
-    'gtk3'
-    'nspr'
-    'nss'
+    'python'
+    "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
@@ -24,14 +21,12 @@ makedepends=(
     'nvm'
     'rust'
     'git'
-    'gcc'
-    'base-devel'
     'libnss_nis'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('ab6de26ccedd731ac5ede452f7c9ef3f6b1543caf9278842f8f7c53dac252ece')
+sha256sums=('fa9b95543a67e1cc3c2cdddcec1f4307bce506b0219ae86a2ed1e947532a886d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh // [[ $? != 1 ]]
@@ -40,40 +35,44 @@ _ensure_local_nvm() {
 }
 prepare() {
     _ensure_local_nvm
-    gendesk -q -f -n --categories="Game" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
-    cd "${srcdir}/launcher-${pkgver}"
-    export npm_config_build_from_source=true
-    export npm_config_cache="${srcdir}/.npm_cache"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v / sed 's/v//g')"
-    export npm_config_target="${SYSTEM_ELECTRON_VERSION}"
-    export ELECTRONVERSION="${_electronversion}"
-    export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
-    if [ `curl -s ipinfo.io/country / grep CN / wc -l ` -ge 1 ];then
-        export npm_config_registry=https://registry.npmmirror.com
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
+    } >> .npmrc
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            echo 'registry=https://registry.npmmirror.com'
+            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
+        } >> .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-    else
-        echo "Your network is OK."
     fi
-    export CARGO_HOME="${srcdir}/.cargo"
-    rm -rf dist
-    sed -i "s/PUBLISH=true/PUBLISH=false/g" package.json
+    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i 's/"deb", "7z"/"dir"/g' gulpfile.js
-    npm install --force
+    NODE_ENV=development    npm install --leagcy-peer-deps
 }
 build() {
-    cd "${srcdir}/launcher-${pkgver}"
-    npm run release
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm run pack
+    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
+		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
+	for _files in "${_file_list[@]}";do
+		ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/${_files}"
+	done
 }
 package() {
-    install -Dm755 -d "${pkgdir}/"{opt/"${pkgname}",usr/bin}
-    cp -Pr --no-preserve=ownership "${srcdir}/launcher-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-    ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/launcher-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname}"}
+    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${pkgname}"
+    ln -sf "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/launcher-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
