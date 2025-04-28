@@ -1,6 +1,6 @@
 pkgbase = r-easycelltype
 	pkgdesc = Annotate cell types for scRNA-seq data
-	pkgver = 1.8.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EasyCellType
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = r-easycelltype
 	optdepends = r-rmarkdown
 	optdepends = r-seurat
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EasyCellType_1.8.0.tar.gz
-	md5sums = 0f729cb62a1682ad1e0d282612989734
-	b2sums = 0bdfcde3caffe61802d57ce0d7c0b81866020c6dd95ed8af611ef6f18f29cf81cbc8c5d5a6a82c747b80f8e6b34784f13b2271dd7d7232363a328ae9e60d5a9c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EasyCellType_1.10.0.tar.gz
+	md5sums = a814048a892261691480b2c3f6d5a095
+	b2sums = 8b79bac790611f7a73fa94004c6a43e6306f6d9f20286cf6d692824e1b53c2217f79038360a50b176e1219a2225c2ae3d7a6f762334c7fe988f0b38131d015b3
 
 pkgname = r-easycelltype
