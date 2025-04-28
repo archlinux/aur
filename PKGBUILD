@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=raer
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -58,8 +58,8 @@ optdepends=(
   r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('62a848362e80523d0a265dea6475555b')
-b2sums=('ed37c01df27d2e1d130a7420fb4867cb087ac3c3416e6fb2b1fdf87f71d2204bab365f87d87f1291b0bc3932e10ac540731756efb178cf9d720958747c8ddd9f')
+md5sums=('21a412efc0f2119b08dfa4218cb21652')
+b2sums=('1081aef7cf2cc5f0204c8c68c15bfd16572e6a94f1d0a52ab7b3011fa7ad436bf7114f9771d3ed9f5274f4142207d3b6cd62ad7fc17e0bf6ee02957cb29eafc9')
 
 build() {
   mkdir build
