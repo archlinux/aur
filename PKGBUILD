@@ -14,7 +14,7 @@ sha256sums=(SKIP)
 build() {
 	mkdir "zddccpl/build"
 	cd "zddccpl/build"
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+	cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir"/usr
 	make
 }
 
