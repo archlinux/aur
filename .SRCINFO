@@ -1,6 +1,6 @@
 pkgbase = r-pbkrtest
 	pkgdesc = Parametric Bootstrap, Kenward-Roger and Satterthwaite Based Methods for Test in Mixed Models
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pbkrtest
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = r-pbkrtest
 	depends = r-numderiv
 	optdepends = r-knitr
 	optdepends = r-markdown
-	source = https://cran.r-project.org/src/contrib/pbkrtest_0.5.3.tar.gz
-	md5sums = d4501121ded98c6ced803b89c7abe4d9
-	b2sums = 1d88cd24b7e28cb06de11b7d74d36cd46aa3b474c19ce1e960e18eaa5bbe304fa5f89e2df95971faef797f60ff571878dfbf546f088cd032577cb84e0a8c50d5
+	source = https://cran.r-project.org/src/contrib/pbkrtest_0.5.4.tar.gz
+	md5sums = db9c2cb28d888f5d6bf4c969dee705a6
+	b2sums = 145c5dd9d9673a3aaec13842ebbcb6cbc9539ee215843f63cd63123c711f176f1c6d8090a5ea86635a9e33448e31261f50458f6b0fddbb811e0d893f65076ac5
 
 pkgname = r-pbkrtest
