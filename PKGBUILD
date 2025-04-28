@@ -1,7 +1,7 @@
 # Maintainer: Serhii Starovoitov <drommer.94@gmail.com>
 
 pkgname=beignet
-pkgver=4.0.0+g419c041
+pkgver=1.4.0+g419c041
 pkgrel=1
 pkgdesc="An open source OpenCL implementation for Intel IvyBridge & Haswell iGPUs"
 arch=('x86_64')
