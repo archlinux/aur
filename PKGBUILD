@@ -4,7 +4,7 @@ _pkgname=dce
 _pkgver=1.13.0
 pkgname=r-${_pkgname,,}
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pathway Enrichment Based on Differential Causal Effects'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -60,7 +60,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0075e1bf00d463f52202f9704219915934766f3417b25a1c7368d8e7a6a6f609')
+sha256sums=('1a397534c897b489985b0804e70b09168740bec3804feab19a55fcb403c5735d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
