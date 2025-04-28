@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ufomerge
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='A CLI utility and Python library to merge UFO source fonts'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('9243641ad51ad6c0ada23dbf6c2c702c5f61c392fa719b07e17e6d937c59e0f7')
+sha256sums=('cc5d51fcd5be489ea2567f22e42c9faf522158f90968878328239acc76a6fbcc')
 
 build() {
 	cd "$_archive"
