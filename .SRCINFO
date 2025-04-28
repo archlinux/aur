@@ -1,15 +1,15 @@
 pkgbase = playdate-mirror
 	pkgdesc = Screen viewer and controller for the Playdate console
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://play.date/mirror/
 	arch = x86_64
 	license = custom:proprietary
 	depends = gtk3
 	depends = webkit2gtk
-	source = https://download-cdn.panic.com/mirror/Linux/Mirror-1.2.0.x86_64.deb
+	source = https://download-cdn.panic.com/mirror/Linux/mirror-1.3.0.x86_64.deb
 	source = 50-playdate-mirror.rules
-	sha512sums = a299092fd1c03cc9ee6ce843ff5a4614a1b35968c57976451aeccc567d3d59a8bea8a58dfc51939043946df449f70561b0e9e8782315315bb70000849a98a76c
+	sha512sums = e3d5d91a411fcb8b90072a99f202ce8d7af32831bf2f958fe4b27bf1a1389237530bf05d0859840d55aecbf5df5b6af02c73f832e7f15e32254ed84601bceff4
 	sha512sums = 84d348266722753a81bdf95e17917f4c4665c484fdb3ac258b0f46d5e3e92c62aff0df91b78c0e1d43ace9f2e15f3a9a6a24726a37302ddbf40499f5ca60864c
 
 pkgname = playdate-mirror

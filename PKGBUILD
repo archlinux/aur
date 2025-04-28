@@ -17,7 +17,7 @@
 # if so, can you make the binary named PlaydateMirror from the beginning pretty please? thanks <3
 
 pkgname=playdate-mirror
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Screen viewer and controller for the Playdate console'
 arch=('x86_64')
@@ -32,14 +32,12 @@ optdepends=()
 options=()
 
 source=(
-  "https://download-cdn.panic.com/mirror/Linux/Mirror-${pkgver}.x86_64.deb"
+  "https://download-cdn.panic.com/mirror/Linux/mirror-${pkgver}.x86_64.deb"
   "50-playdate-mirror.rules"
 )
 
-sha512sums=(
-  'a299092fd1c03cc9ee6ce843ff5a4614a1b35968c57976451aeccc567d3d59a8bea8a58dfc51939043946df449f70561b0e9e8782315315bb70000849a98a76c'
-  '84d348266722753a81bdf95e17917f4c4665c484fdb3ac258b0f46d5e3e92c62aff0df91b78c0e1d43ace9f2e15f3a9a6a24726a37302ddbf40499f5ca60864c'
-)
+sha512sums=('e3d5d91a411fcb8b90072a99f202ce8d7af32831bf2f958fe4b27bf1a1389237530bf05d0859840d55aecbf5df5b6af02c73f832e7f15e32254ed84601bceff4'
+            '84d348266722753a81bdf95e17917f4c4665c484fdb3ac258b0f46d5e3e92c62aff0df91b78c0e1d43ace9f2e15f3a9a6a24726a37302ddbf40499f5ca60864c')
 
 build() {
   echo >&2 "Extracting the deb"
