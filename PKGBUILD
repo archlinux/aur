@@ -3,20 +3,19 @@
 
 _gitname='fenrir'
 pkgname="${_gitname}-git"
-pkgver=r3231.1649f18a
+pkgver=r3322.4672592d
 pkgrel=1
 epoch=1
 pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
-depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte' 'python-rapidfuzz')
+depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte')
 optdepends=('brltty: For Braille support'
 'gstreamer: for soundicons via gstreamer'
 'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
   'python-pythondialog: For TUI configuration tool'
-  'python-pyttsx: TTS support'
   'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
@@ -26,6 +25,7 @@ conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
 source=("git+https://git.stormux.org/storm/${_gitname}.git"
   'fenrirscreenreader.service')
+install=fenrir-git.install
 sha512sums=('SKIP'
             'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
 
