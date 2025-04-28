@@ -1,5 +1,5 @@
 pkgname=fmilib
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('x86_64')
@@ -9,16 +9,10 @@ makedepends=('cmake3-bin')
 depends=('glibc')
 options=(!lto)
 source=("https://github.com/modelon-community/fmi-library/archive/${pkgver}.tar.gz")
-sha256sums=('527bd40f4927b6e42c461ef1088dc1df5b1be107ee11200a73ad1a4ab66fe2df')
+sha256sums=('c7a76f486281e4f086b9da5a4137e56c9553bea7fd12461b40e74b046deecccc')
 
 prepare() {
   cd "$srcdir"/fmi-library-${pkgver}
-
-  # miniunz.c:141:11: error: implicit declaration of function mkdir
-  sed -i "50i#include <sys/stat.h>" ThirdParty/Minizip/minizip/miniunz.c
-
-  # https://github.com/modelon-community/fmi-library/issues/147
-  curl -L https://github.com/madler/zlib/commit/63ba7582b80eb81b126c2931e485481c35596aab.patch | patch -p2 -d ThirdParty/Minizip/
 
   # error: implicit declaration of function 'fileno'
   sed -i "18i#define _GNU_SOURCE" src/XML/src-gen/FMI1/lex.yyfmi1.c src/XML/src-gen/FMI2/lex.yyfmi2.c
