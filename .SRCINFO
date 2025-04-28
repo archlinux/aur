@@ -1,6 +1,6 @@
 pkgbase = r-msstatslip
 	pkgdesc = LiP Significance Analysis in shotgun mass spectrometry-based proteomic experiments
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSstatsLiP
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-msstatslip
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-tinytest
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsLiP_1.12.0.tar.gz
-	sha256sums = ea383205608fad8cab28adae560675e26f2031ff131fbbdd07acc127a4a5e2e8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSstatsLiP_1.13.0.tar.gz
+	sha256sums = 19884221fb13caec7fcc95bd4e22c581efc431ba32fbd925ae68ce89ab2892ac
 
 pkgname = r-msstatslip
