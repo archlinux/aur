@@ -4,7 +4,7 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 # Contributor: martin <martin pipegrep.co.uk>
 pkgname=afni
-pkgver=24.3.03
+pkgver=25.0.08
 pkgrel=1
 pkgdesc="An open-source environment for processing and displaying functional MRI data"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/afni/afni/archive/AFNI_$pkg
         "Makefile.patch"
         "afni.csh"
         "afni.sh")
-sha256sums=('8ff159565591cbd2e46c7ef9b9f65f821e562317740a39263e6ff7f07b0af803'
+sha256sums=('3981709b3077332da903dadc9213a0937e9da71d000d7b938e0d30c18deaffb8'
             '70f525c0637581b332ae15f4076ac6626599296c99e33c133b0dd929a00b7f72'
             'b43c09b3ccc20c5c56ce837d7cd6baee3b880f9eeffaab51bfd086bdc5248c8b'
             '0322cef3fa43a0a63f6614d26a76b2f54bde70c12c7867952984c6db1935b87c')
