@@ -1,0 +1,91 @@
+--- a/config/utils/generatefortranbindings.py
++++ a/config/utils/generatefortranbindings.py
+@@ -36,6 +36,7 @@
+ 
+ Letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','w','x','y']
+ verbose = False
++skipinc = ['petscversion.h']
+ 
+ def verbosePrint(text):
+   '''Prints the text if run with verbose option'''
+@@ -79,7 +80,7 @@
+ def generateFortranInterface(petscarch, classes, enums, structs, senums, funname, fun):
+   '''Generates the interface definition for a function'''
+   '''This is used both by class functions and standalone functions'''
+-  # check for functions for which we cannot build intefaces
++  # check for functions for which we cannot build interfaces
+   if fun.opaque:
+     return
+   if fun.name.find('_') > -1: return
+@@ -198,7 +199,7 @@
+   #      self.stringlen    - True indicates the argument is the length of the previous character string
+   #      self.const        - indicates the string argument is an input, not an output
+   #      self.stars        - indicates the string is (in C) returned by a pointer to a string array
+-  if fun.opaque: return
++  if fun.opaque: return
+   # temporary
+   for k in fun.arguments:
+     # no C stub if function returns an array, except if it is a string
+@@ -452,7 +453,7 @@
+   os.makedirs(dir)
+ 
+   for i in files.keys():
+-    if i.endswith('types.h'): continue
++    if i.endswith('types.h') or i in skipinc: continue
+     with open(os.path.join(dir, i),'w') as fd:
+       dname = 'PETSC' + i.upper()[0:-2] + 'DEF_H'
+       fd.write('#if !defined(' + dname + ')\n#define ' + dname + '\n\n')
+@@ -460,7 +461,9 @@
+       if os.path.isfile(fb):
+         fd.write('#include "' + os.path.join('petsc','finclude',i.replace('.h','base.h')) + '"\n')
+       for j in files[i].included:
++        if j in skipinc: continue
+         j = j.replace('types.h','.h')
++        if i == j: continue
+         fd.write('#include "' + os.path.join('petsc','finclude',j) + '"\n')
+       fd.write('\n')
+ 
+@@ -487,7 +490,7 @@
+         fd.write('#define ' + i + ' PetscFortranAddr\n')
+ 
+   for i in files.keys():
+-    if i.endswith('types.h'): continue
++    if i.endswith('types.h') or i in skipinc: continue
+     with open(os.path.join(dir, i),'a') as fd:
+       fd.write('\n')
+ 
+@@ -496,7 +499,7 @@
+       fd.write('#define ' + i + ' CHARACTER(80)\n')
+ 
+   for i in files.keys():
+-    if i.endswith('types.h'): continue
++    if i.endswith('types.h') or i in skipinc: continue
+     with open(os.path.join(dir, i),'a') as fd:
+       fd.write('\n')
+ 
+@@ -511,7 +514,7 @@
+     fd.write('#define PetscObjectQuery(a,b,c,z) PetscObjectQueryRaw(a%v,b,c%v,z)\n')
+ 
+   for i in files.keys():
+-    if i.endswith('types.h'): continue
++    if i.endswith('types.h') or i in skipinc: continue
+     with open(os.path.join(dir, i),'a') as fd:
+       fd.write('\n#endif\n')
+ 
+@@ -765,7 +768,7 @@
+   for i in []: #classes.keys():
+     if i in ['PetscIntStack']: continue
+     for j in classes[i].functions: # loop over functions in class
+-      # check for functions for which we cannot build intefaces
++      # check for functions for which we cannot build interfaces
+       if classes[i].functions[j].opaque: continue
+       opts = crossCreate(classes[i].functions[j])
+       if len(opts) == 1: continue
+@@ -843,6 +846,7 @@
+       else: f = i + '.h'
+       includes = set()
+       for j in files[f].included:
++        if j in skipinc: continue
+         j = j.replace('types.h','.h')
+         includes.add(j)
+         fd.write('#include <' + os.path.join('petsc','finclude',j) + '>\n')

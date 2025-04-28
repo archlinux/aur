@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
 	pkgver = 3.23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://petsc.org
 	install = petsc.install
 	arch = i686
@@ -40,7 +40,9 @@ pkgbase = petsc
 	options = staticlibs
 	source = http://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-3.23.0.tar.gz
 	source = test_optdepends.sh
+	source = fortran-include.patch
 	sha512sums = e5cd7649451277ff5c9dedac4948be12cd1465261f872319a8f1c42842a51a817cb36f4a36f02ccb1d8c13e4cfb6fd4bb36c297f74b22129d288001769a6d66b
 	sha512sums = 809e956a60be3604db08d523faba0de26f97d63e9ceb174e06202ca6f742df917670821246349974662d8e98f7a166c107d2f1627a6aa256a4b69efd1576b891
+	sha512sums = 26b3eb8baf0e3f0b2dfd21e53ae656a036a82ebe22589603679281a627cc30738143e6e29ac85c40f623eb817cce12586cf8e0fa9d5c47c05a984ad1c964e985
 
 pkgname = petsc
