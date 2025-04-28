@@ -1,7 +1,7 @@
-pkgbase = hyde
+pkgbase = hyde-cli
 	pkgdesc = project - hy reserverd de
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/HyDE-Project/HyDE
 	arch = x86_64
 	license = MIT
@@ -11,4 +11,4 @@ pkgbase = hyde
 	source = git+https://github.com/HyDE-Project/HyDE.git
 	sha256sums = SKIP
 
-pkgname = hyde
+pkgname = hyde-cli
