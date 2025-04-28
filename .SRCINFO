@@ -1,7 +1,7 @@
 pkgbase = lanzouyun-pan
-	pkgdesc = Lznyou cloud network disk, client, realized most of the functions of Bluestar cloud and added many enhanced functions, which can be used as a daily management tool for network disk. 蓝奏云网盘、客户端,实现了蓝奏云大部分功能并添加了许多增强型功能,可作为网盘的日常管理工具使用.
+	pkgdesc = Lanzou cloud network disk, client, realized most of the functions.(Use system-wide electron)蓝奏云网盘、客户端,实现了蓝奏云大部分功能并添加了许多增强型功能,可作为网盘的日常管理工具使用.
 	pkgver = 3.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chenhb23/lanzouyun-disk
 	arch = any
 	license = MIT
@@ -10,14 +10,14 @@ pkgbase = lanzouyun-pan
 	makedepends = npm
 	makedepends = yarn
 	makedepends = curl
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = git
+	makedepends = rust
 	depends = electron18
 	conflicts = lanzouyun-pan
 	options = !strip
-	source = lanzouyun-pan-3.5.3.tar.gz::https://github.com/chenhb23/lanzouyun-disk/archive/refs/tags/v3.5.3.tar.gz
+	source = lanzouyun-pan-3.5.3::git+https://github.com/chenhb23/lanzouyun-disk#tag=v3.5.3
 	source = lanzouyun-pan.sh
-	sha256sums = 03004f429e1d93e8860af97c7c5470b506bba9e1ff16703cf400cefa57ba3147
+	sha256sums = 05c3df37826f71b11d919a23f82ebe1a2e07521205e6e2a9ad53b7587eef4703
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = lanzouyun-pan
