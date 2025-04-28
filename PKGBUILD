@@ -4,7 +4,7 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 pkgname=openjk-git
-pkgver=r3732.26b871955
+pkgver=r4630.5878f620f
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=("x86_64")
@@ -56,7 +56,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX="/opt/${pkgname/-git}" \
         -DBuildJK2SPEngine=on \
         -DBuildJK2SPGame=on \
-        -DBuildJK2SPRdVanilla=on
+        -DBuildJK2SPRdVanilla=on \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     cmake --build build
 }
 
