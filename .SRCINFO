@@ -1,7 +1,7 @@
 pkgbase = wpspaster
-	pkgdesc = 🚀 Free rich text editor image and text pasting.Use system-wide electron.富文本图文粘贴
+	pkgdesc = 🚀 Free rich text editor image and text pasting.(Use system-wide electron)富文本图文粘贴
 	pkgver = 2.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://xoobom.com/#/wpspaster
 	arch = aarch64
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = wpspaster
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = git
 	depends = electron25
 	conflicts = wpspaster
-	source = wpspaster-2.0.1.tar.gz::https://github.com/xoobom/wpspaster/archive/refs/tags/v2.0.1.tar.gz
+	source = wpspaster-2.0.1::git+https://github.com/xoobom/wpspaster#tag=v2.0.1
 	source = wpspaster.sh
-	sha256sums = 03b0aa91e49ce29680a60c3f655878689ba4c2a6334d6f45299614892825e802
+	sha256sums = c52271eb5944b97a0b9a96ee10be220d264f3faf8606f9c5b00099b7a84628df
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = wpspaster
