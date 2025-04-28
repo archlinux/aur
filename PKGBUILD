@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=5.2.1
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -30,6 +30,7 @@ depends=(
   'python-traitlets'
 )
 makedepends=(
+  'git'
   'npm'
   'python-build'
   'python-installer'
@@ -62,23 +63,23 @@ backup=(
 )
 
 source=(
-  "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+  "git+https://github.com/jupyterhub/jupyterhub.git#tag=$pkgver"
   'jupyterhub.service'
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '5b35444c2c254e60563887d1d59c2376813d16a166ec6e0a410c773cdbd37ebd'
+  '5e5f34cbf6f318d39aa334a785051f0ab95bbcaaed33fc3d0764a263262630d5'
   'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
   'f5efb4d2e64fa9e98121b8ae0473a7366f8e727176addb0b92f568e3c6d5c66b'
 )
 
 prepare() {
-  cd "${srcdir}/jupyterhub-$pkgver"
+  cd "${srcdir}/jupyterhub"
   patch -p0 -i "${srcdir}/tests_use_random_ports.patch"
 }
 
 build() {
-  cd "${srcdir}/jupyterhub-$pkgver"
+  cd "${srcdir}/jupyterhub"
   python -m build --wheel --no-isolation
 
   # Generate the default configuration. The value of data_files_path is set
@@ -89,12 +90,12 @@ build() {
   python -m jupyterhub --generate-config -f "$srcdir/default_config.py" -y True
   local _srcdir_escaped="${srcdir////\\/}"
   sed -i "$srcdir/default_config.py" \
-    -e "s/${_srcdir_escaped}\/jupyterhub-$pkgver/\/usr/" \
+    -e "s/${_srcdir_escaped}\/jupyterhub/\/usr/" \
     -e 's/#  Currently installed:/#  Included with the jupyterhub package:/'
 }
 
 check() {
-  cd "${srcdir}/jupyterhub-$pkgver"
+  cd "${srcdir}/jupyterhub"
 
   local skip_files=(
     # DB upgrade tests always seem to fail (virtual environment appears incorrect).
@@ -151,11 +152,11 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/jupyterhub-$pkgver"
+  cd "${srcdir}/jupyterhub"
 
   # Install the package.
   python -m installer --destdir="$pkgdir" "dist/jupyterhub-$pkgver"-*.whl
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 
   # Previously we removed unit tests from the final package. However, some plugins,
   # e.g., jupyterhub-nativeauthenticator, reuse some fixtures etc so now we keep them.
