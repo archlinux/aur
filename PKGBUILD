@@ -2,7 +2,7 @@
 
 _npmname=gitmoji-cli
 pkgname=nodejs-${_npmname}
-pkgver=9.5.0
+pkgver=9.6.0
 pkgrel=1
 pkgdesc='A gitmoji interactive client for using gitmojis on commit messages'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('noto-fonts-emoji: emojis'
             'ttf-joypixels: emojis'
             'ttf-twemoji-color: emojis')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('b9c89644fac844f521afcdc2b31e57da7ac7e123df92d16c4fdf79190622a5b4')
+sha256sums=('210e637d9b5d8313542682515e160f05a2b38ec75b60daa051faa3fdf2a7b23d')
 noextract=("${source[@]##*/}")
 
 prepare() {
@@ -32,7 +32,7 @@ package() {
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
     find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-    
+
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "${pkgdir}"
