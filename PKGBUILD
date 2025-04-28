@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SeqSQC
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d3038a849a70cc2625cf2931230e0a2a')
-b2sums=('93f7fa78d4f0a4a023fdda2642a62c180826af4a8a4017dfcb3cf98cd50cf951f3ad75412b58cccf8d1b6d2df092ddd40eaabe8f0336c3517b135e108d84b69e')
+md5sums=('45bab7bbc1cb999df25a98bf8baa3d98')
+b2sums=('f5703d38af02ed630e305805b78e37eda1018d96e582607ef7d1f328d0c5ac7fb062e016ea4a8d997d5e629137eda99a5b8934310ec1901ad726efb9c1d9cabe')
 
 build() {
   mkdir build
