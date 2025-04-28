@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.bumpy
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('57b7d691a5513b65c5b6867154af3d3b')
-b2sums=('674a74acf37d334f5d0d1f2afa8cf466ea7f383cc0a85f83afaaf4ce9ebeb7f1f302d649d74668b415d131b3f1ee490e3a2126b48fc5360840a44e4060e2c026')
+md5sums=('15521d81dbd1540cc12c1b6070b847b5')
+b2sums=('c73fd04e7fdb4132f5216d5b4a6f297bbf69094d787a149657ca4ee0ae0f47b29752bdcd0a47be22a2f319d8a6b4697198d838e6ff69e356a7bbb77d53b70839')
 
 build() {
   mkdir build
