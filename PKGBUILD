@@ -1,25 +1,29 @@
-# Maintainer: lectrode (electrodexsnet@gmail.com)
+# Maintainer: lectrode <electrodexsnet at gmail dot com>
 # Contributor: Edgar Vincent <e-v@posteo.net>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 _pkgname=gnome-clocks
 pkgname=${_pkgname}-waked
-pkgver=45.0
-pkgrel=1.1
+pkgver=48.0
+pkgrel=1
 pkgdesc="Clocks applications for GNOME (version with waked support)"
-url="https://wiki.gnome.org/Apps/Clocks"
+url="https://apps.gnome.org/Clocks"
 arch=(x86_64 aarch64)
-license=(GPL)
-provides=($_pkgname)
+license=(GPL-2.0-or-later)
+provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 depends=(
+  dconf
   geoclue
   geocode-glib-2
+  glib2
+  glibc
   gnome-desktop-4
+  gsettings-desktop-schemas
   gtk4
+  hicolor-icon-theme
   libadwaita
   libgweather-4
-  xdg-desktop-portal
   waked
 )
 makedepends=(
@@ -30,20 +34,17 @@ makedepends=(
   yelp-tools
 )
 groups=(gnome)
-_commit=b1c6ff122488fea47833108f7f661481b9b9574a  # tags/45.0^0
-source=("git+https://gitlab.gnome.org/GNOME/gnome-clocks.git#commit=$_commit"
+source=("git+https://gitlab.gnome.org/GNOME/gnome-clocks.git?tag=${pkgver/[a-z]/.&}"
         'https://github.com/lectrode/gnome-clocks-waked/raw/main/alarm-clock-elapsed.oga'
         'https://github.com/lectrode/gnome-clocks-waked/raw/main/complete.oga'
-        '0001-invoke-waked-when-an-alarm-changes.patch'
+        '0001-waked-support.patch'
         '0002-Add-argument-to-start-initial-instance-in-the-backgr.patch'
-        '0003-add-lock-screen-actions.patch'
         'gnome-clocks.desktop')
 b2sums=('SKIP'
             '29a248193023ab57bc011dd78eae7aa6b2c4cc4845e4bc92d4a2ba098958cc5d9f1a6454d0c081c4cfe0653b10a22ae52072f4fc0073fd607ab893a19ff4a1c1'
             'cd53b6d52a3ae4a147d5964015e07ca4d5c2e061aa70f3f2c5ba5af0ea664ff8be505926f366e4e8edbbc14a076f956b76cea57e68e45d2013d28c7de78354e6'
-            'f63bd443f2a95b0acfc40989cdaf5b02a857fda14949731e5cdda341e8a26dcd2740bc885bf93087f25224820f1abfdc581919f16f4c47c5591e3348d6917a47'
+            'db272efc9d9cb9d0bef1ee98078b68ec0dcdaf28ea2b4fee1e1ac217af71c481974716e1ef53568155194498dfee05dbeb10533ea2d8baa674a9dadd084dc9db'
             '940e1bc2d1756bf8c9f7ad26c5b58a6aeb9eb2110f2ab483e6789c32336d54af2679271f5823b5ad8aabf4643cdbb97624440696606f606a64b69379eee31708'
-            'fcb286f9e4ed9381aa0c6ae46c4f4b27126d1e1236e59dec4f8fd564a5fe9f9c7041764e2ce3dc38af7393a0235aa41753167ad99434ba2ddbaf4e47fe12f8d5'
             '1c3891a84f28bf8e8cbf7d0ad8f5d17a6993f91c686986193d5cf71c46368d7d6645de718f09cd4c6b69e4ed118333d02e22b4fb507c21ca55a54135a5c594fc')
 
 pkgver() {
@@ -52,6 +53,8 @@ pkgver() {
 }
 
 prepare() {
+
+  #custom patches from https://gitlab.alpinelinux.org/alpine/aports/-/tree/master/community/gnome-clocks
 
   echo Replacing alarm-clock-elapsed.oga...
   cp -f alarm-clock-elapsed.oga "${srcdir}/gnome-clocks/data/sounds/"
