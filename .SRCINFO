@@ -1,17 +1,18 @@
 pkgbase = disneyplus
 	pkgdesc = Unnofficial Disney+ desktop application
-	pkgver = 1.0.8.aurpatch
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://gitlab.com/disneyplusdesktop/application
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
+	depends = electron-catlab-bin
 	depends = libelectron
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.8.aurpatch/application-1.0.8.aurpatch.tar.bz2
-	sha256sums = 26a70eb515f69e426b96b2afb72f2aede726e32eaed994de48aca411f88bbcb7
+	source = https://gitlab.com/disneyplusdesktop/application/-/archive/1.0.9/application-1.0.9.tar.bz2
+	sha256sums = 3e8007ff5e692ac75db753b8562a35157a699ecea16d750da98e0afce5b7053e
 
 pkgname = disneyplus
