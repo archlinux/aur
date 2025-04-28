@@ -1,6 +1,6 @@
 # Maintainer: Radiolin <anton.osi2011@gmail.com>
 
-pkgname=mangojuice
+pkgname=mangojuice-git
 pkgver=0.8.3.r35.g970baad
 pkgrel=1
 pkgdesc="A convenient alternative to GOverlay for configuring MangoHud"
@@ -25,6 +25,7 @@ optdepends=(
   mesa-utils
   vulkan-tools
 )
+conflicts=(mangojuice)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=(!debug)

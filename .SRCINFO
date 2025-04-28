@@ -1,4 +1,4 @@
-pkgbase = mangojuice
+pkgbase = mangojuice-git
 	pkgdesc = A convenient alternative to GOverlay for configuring MangoHud
 	pkgver = 0.8.3.r35.g970baad
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = mangojuice
 	source = mangojuice::git+https://github.com/radiolamp/mangojuice.git
 	b2sums = SKIP
 
-pkgname = mangojuice
+pkgname = mangojuice-git
