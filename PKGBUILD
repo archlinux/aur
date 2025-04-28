@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
 
 pkgname=av1an-git
-pkgver=r2240.c44f779
+pkgver=r2396.1c4878e
 pkgrel=1
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('x86_64')
@@ -28,13 +28,12 @@ pkgver() {
 
 prepare() {
   cd "Av1an"
-  cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+  cargo fetch --locked
 }
 
 build() {
   cd "Av1an"
-  export CFLAGS+=" -ffat-lto-objects"
-  RUSTUP_TOOLCHAIN=stable cargo build --release --target-dir=target --frozen --no-default-features
+  RUSTUP_TOOLCHAIN=stable cargo build --release --frozen --no-default-features
 }
 
 package() {
