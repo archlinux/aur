@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=(x86_64 aarch64)
 url='https://github.com/GNS3/gns3-server'
@@ -28,7 +28,6 @@ depends=(
     python-pydantic
     python-python-multipart
     python-psutil
-    python-sentry_sdk
     python-sqlalchemy
     python-truststore
     python-watchdog
@@ -46,6 +45,7 @@ optdepends=(
     'gns3-gui: graphical user interface for GNS3 server'
     'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS'
     'libvirt: needed for the NAT cloud'
+    'python-sentry_sdk: Python SDK for Sentry.io'
     'vpcs: Simple PC emulation for basic network operations'
     'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
 )
