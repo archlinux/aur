@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sampleClassifier
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Sample Classifier'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-sampleclassifierdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('03efe0b10f1417877d80a96f3fa2644757aedcf25ad6f2a6bb0deb0f970be271')
+sha256sums=('549888b8db06c70e6bd22c961bfe0297863397fd928ff0ee9c9594c6f97d95a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
