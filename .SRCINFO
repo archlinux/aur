@@ -1,6 +1,6 @@
 pkgbase = r-guitar
 	pkgdesc = Guitar
-	pkgver = 2.22.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Guitar
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-guitar
 	depends = r-knitr
 	depends = r-magrittr
 	depends = r-rtracklayer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Guitar_2.22.0.tar.gz
-	sha256sums = 8968ec23893e07afbb281b483b7445e99b6260d9ba7b9d4ddf2bf0cca53ac1c3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Guitar_2.24.0.tar.gz
+	sha256sums = 986342647104108323661f3054b56e07a36b74e8630a628ecd0507ee7874bd5a
 
 pkgname = r-guitar
