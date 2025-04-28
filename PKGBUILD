@@ -5,14 +5,14 @@
 # https://fluffychat.im/
 # https://github.com/krille-chan/fluffychat
 
-: ${_fvm_version:=3.27.3}
+: ${_fvm_version:=3.29.3}
 
 : ${FVM_CACHE_PATH:=$SRCDEST/fvm-cache}
 export FVM_CACHE_PATH
 
 _pkgname="fluffychat"
 pkgname="$_pkgname"
-pkgver=1.25.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="The cutest instant messenger in the [matrix]"
 url="https://github.com/krille-chan/fluffychat"
@@ -21,12 +21,8 @@ arch=('x86_64' 'aarch64')
 
 depends=(
   'gtk3'
-  'jsoncpp'
-  'libolm'
   'libsecret'
   'openssl'
-  'xdg-user-dirs'
-  'zenity'
 )
 makedepends=(
   'clang'
@@ -36,6 +32,7 @@ makedepends=(
   'lld'
   'llvm'
   'ninja'
+  'patchelf'
 )
 
 options=('!strip' '!debug')
@@ -43,7 +40,7 @@ options=('!strip' '!debug')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('37f7b1bb74513643456c52f970e3de5bc9283d39b3c34192304ea29a9d5e4dd4')
+sha256sums=('a59737d12282799439e7764c6792ee6b0df0d8575c7a93b334a8302b84849111')
 
 build() {
   # fix incompatible C(XX)FLAGS on Arch Linux on ARM
@@ -77,19 +74,23 @@ build() {
 }
 
 package() {
-  cd "$_pkgsrc"/build/linux/*/release
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/lib/$_pkgname" .
-  cmake -P cmake_install.cmake
+  pushd "$_pkgsrc"/build/linux/*/release
+  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/$_pkgname" .
+  DESTDIR="$pkgdir" cmake -P cmake_install.cmake
+  popd
+
+  # reset rpath
+  patchelf --set-rpath '$ORIGIN' "$pkgdir/usr/lib/$_pkgname/lib"/*.so
 
   # symlink
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
   # license
-  install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   # icon
-  install -Dm644 "$srcdir/$_pkgname-$pkgver/assets/favicon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "$_pkgsrc/assets/favicon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
   # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
