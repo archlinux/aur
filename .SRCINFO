@@ -1,0 +1,14 @@
+pkgbase = usenet_reborn
+	pkgdesc = A terminal‑based (TUI) NNTP (Usenet) client written in Rust.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~rek2/usenet_reborn
+	arch = any
+	license = GPL-3.0-only
+	makedepends = cargo
+	options = !debug
+	options = !lto
+	source = https://git.sr.ht/~rek2/usenet_reborn/archive/0.2.0.tar.gz
+	sha512sums = 2b7f0b376815048c2244a2a61b5492c7eeefe98ee782db58cabdd4424208eeb49eca6bce71029d60a8268ff25ceabded69d82964b197e3a7d690624834df156d
+
+pkgname = usenet_reborn
