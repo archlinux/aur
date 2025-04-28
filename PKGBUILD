@@ -1,6 +1,6 @@
 # Maintainer: thirdwinter thirdwinters@gmail.com
 pkgname=foamshot-bin
-pkgver=v0.2.3
+pkgver=v0.2.4
 pkgrel=1
 epoch=
 pkgdesc="foamshot is wayland screenshot utility build by rust"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/Thirdwinter/foamshot/releases/download/$pkgver/foamshot-linux-x86_64")
 noextract=()
-sha256sums=("923d7a1b4e7f2f4ce28bcc0d4ac92a2cebf07440b8e7cb34b82054331bff39a1")
+sha256sums=("006a2127916192a196f6190c43ba6bc63b26b083d4bd7fc259bb06073b01d924")
 validpgpkeys=()
 
 # prepare() {
