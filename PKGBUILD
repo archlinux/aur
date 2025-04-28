@@ -2,9 +2,9 @@
 _appname='khiops covisualization'
 pkgname="${_appname// /-}-bin"
 _pkgname='khiops Covisualization'
-pkgver=11.1.2
-_electronversion=33
-pkgrel=2
+pkgver=11.2.0
+_electronversion=35
+pkgrel=1
 pkgdesc="The Electron application that encapsulates Khiops Covisualization.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/KhiopsML/kc-electron"
@@ -18,11 +18,11 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/KhiopsML/kc-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dd05f831092ee06e883b21617201454be97abb8cf98a088d39b11e1d9f408403'
+sha256sums=('e915db5cfae40a45030549bac3caddb0407ede377d4bce350add04dab72afc4e'
             '21c50cd52b1dc529cad93ad16720ab453012c21f01d85d3761da9e709e57dc00'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -33,7 +33,6 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\"\/opt\/${_appname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
