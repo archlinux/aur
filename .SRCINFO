@@ -1,7 +1,7 @@
 pkgbase = shibuya-bin
-	pkgdesc = A project built Electron + React.js, to dig out the potential of cross platform AI completion.Prebuilt version.Use system-wide electron.
+	pkgdesc = A project built Electron + React.js, to dig out the potential of cross platform AI completion.Prebuilt version.(Use system-wide electron)
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SkywardAI/shibuya
 	arch = x86_64
 	license = Apache-2.0
