@@ -1,21 +1,29 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-raccoon
-pkgver=3.1.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Python DataFrame with fast insert and appends"
 url="https://raccoon.readthedocs.io"
 arch=('any')
 license=('MIT')
-depends=('python-tabulate')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+
+depends=(
+  'python-tabulate'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 
 _pypi='raccoon'
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'a8d16fdc8671a35c9652046cb5122aa6b1b21954ccf00a654afa7d159287b7ab'
+  '4a3be5ebb371eda031eeb26680b09ef59fa5c310f568aa2aadea2a3c2d4faf6e'
 )
 
 build() {
