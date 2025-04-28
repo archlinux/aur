@@ -1,5 +1,6 @@
 pkgname="atostekid"
-certificate_path="/etc/${pkgname}/scsca.cer"
+certificate_path_legacy="/etc/${pkgname}/scsca.cer"
+certificate_path="/usr/share/${pkgname}/certs/scsca.cer"
 certificate_label="Atostek ID Local SCS CA"
 
 # colors
@@ -35,6 +36,12 @@ post_install() {
 }
 
 post_upgrade() {
+    if [ -f "${certificate_path_legacy}" ]; then
+        note "Removing trust for current ${certificate_label}"
+        trust anchor --remove "${certificate_path_legacy}"
+        rm "${certificate_path_legacy}"
+        rmdir "/etc/${pkgname:-atostekid}"
+    fi
     if [ -f "${certificate_path}" ]; then
         note "Removing trust for current ${certificate_label}"
         trust anchor --remove "${certificate_path}"
@@ -44,10 +51,16 @@ post_upgrade() {
 }
 
 post_remove() {
+    if [ -f "${certificate_path_legacy}" ]; then
+        note "Removing trust for ${certificate_label}"
+        trust anchor --remove "${certificate_path_legacy}"
+        rm "${certificate_path_legacy}"
+        rmdir "/etc/${pkgname:-atostekid}"
+    fi
     if [ -f "${certificate_path}" ]; then
         note "Removing trust for ${certificate_label}"
         trust anchor --remove "${certificate_path}"
         rm "${certificate_path}"
-        rmdir "/etc/${pkgname:-atostekid}"
+        rmdir "/usr/share/${pkgname:-atostekid}/certs"
     fi
 }
