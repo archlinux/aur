@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=EpiMix.data
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('64dd6bc27966ef5920f06823dcc4af94')
-b2sums=('e6fbc628574b6e1c64fddd359ff36bcfce6f6dcb081c64495d66943b671223e9af2b046ac0ade85f68fc6ad0b8bcc33ccd131c1379fabb1c4db837a756316952')
+md5sums=('ad0cc9a17b60729d4e737e539fe364e5')
+b2sums=('557ed238229c4f5dca4867f98a8c1be3efce9622089720dcdccb94033e8ad6757440fa5bfdbc940a40b1de78a5ae3cce73ee75e1e5a07900f6f9e3252e9851bc')
 
 build() {
   mkdir build
