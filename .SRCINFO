@@ -1,6 +1,6 @@
 pkgbase = r-sevenc
 	pkgdesc = Computational Chromosome Conformation Capture by Correlation of ChIP-seq at CTCF motifs
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sevenC
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-sevenc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sevenC_1.26.0.tar.gz
-	sha256sums = b713e528b52d416816be254db2c5522655655bd2385bff63f2b43f56593d91d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sevenC_1.28.0.tar.gz
+	sha256sums = b281eac2759a598cf9dcc8fd2a9bd071b631977d077f2d3ff899b624945a11e4
 
 pkgname = r-sevenc
