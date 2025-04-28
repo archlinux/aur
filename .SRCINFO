@@ -1,6 +1,6 @@
 pkgbase = picgo-git
 	pkgdesc = A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder.Use system-wide electron.
-	pkgver = 2.4.0.beta.8.r2.gc8ba547
+	pkgver = 2.4.0.beta.9.r3.ga928b4c
 	pkgrel = 1
 	url = https://molunerfinn.com/PicGo/
 	arch = any
