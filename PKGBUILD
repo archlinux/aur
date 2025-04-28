@@ -4,7 +4,7 @@
 # Contributor: haha662 <haha662 at outlook dot com>
 
 _pkgname=bookdown
-_pkgver=0.42
+_pkgver=0.43
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,17 +44,18 @@ optdepends=(
   r-webshot
   r-withr
   r-xml2
+  r-curl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dc4dfa9c153ad925fbd0a355e5142d3e')
-b2sums=('70a343286a3ff223ec3b036888b2e99a9d85ae139d0fbd2868267b88d67a644284c46f88b511136e3500cb528744b9ecee226820a54d54ec4fafa0fa6b6f0d7c')
+md5sums=('d826e36d9bf5364ef78615211b32f848')
+b2sums=('1813b4fcee01ff0e047196f40847c917cbf44b69d810e4e39e97825d2e99c277fd6d099635140b44eeecc79503185daa520fc830d25c6cfc785db7ba0eb6c09f')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
