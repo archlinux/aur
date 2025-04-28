@@ -92,7 +92,7 @@ build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info.major,version_info.minor))")
   CMAKE_FLAGS+=("-DPYTHON_V=${_pyver}")
   CMAKE_FLAGS+=("-DCMAKE_BUILD_TYPE=Release")
-  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja
+  cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}"/${_name} -B build -G Ninja -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 # shellcheck disable=SC2086
   ninja $(grep -oP -- '-+[A-z]+ ?[0-9]*'<<<"${MAKEFLAGS:--j1}") -C "${srcdir}/build"
 }
