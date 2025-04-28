@@ -1,11 +1,11 @@
 # Maintainer: Eldred Habert <me@eldred.fr>
 pkgname=python-click-params
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A bunch of useful click parameter types"
 arch=('any')
 url="https://click-params.readthedocs.io/en/stable"
-license=(Apache)
+license=(Apache-2.0)
 groups=()
 # Normally validators 0.22 is required, but Arch only provides 0.20.2 (flagged a few months ago)
 depends=('python>=3.8' 'python-click>=7.0' 'python-click<9.0' 'python-validators>=0.20' 'python-validators<0.23' 'python-deprecated>=1.2.14' 'python-deprecated<2')
