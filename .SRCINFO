@@ -1,6 +1,6 @@
 pkgbase = folio
 	pkgdesc = Beautiful markdown note-taking app for GNOME (forked from Paper)
-	pkgver = 25.01
+	pkgver = 25.02
 	pkgrel = 1
 	url = https://github.com/toolstack/folio
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = folio
 	depends = libadwaita
 	depends = pango
 	options = !debug
-	source = https://github.com/toolstack/folio/archive/25.01/folio-25.01.tar.gz
+	source = https://github.com/toolstack/folio/archive/25.02/folio-25.02.tar.gz
 	b2sums = SKIP
 
 pkgname = folio

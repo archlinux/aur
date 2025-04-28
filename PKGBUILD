@@ -1,7 +1,7 @@
 # Maintainer: 'Radiolin' <anton.osi2011@gmail.com>
 
 pkgname=folio
-pkgver=25.01
+pkgver=25.02
 pkgrel=1
 pkgdesc="Beautiful markdown note-taking app for GNOME (forked from Paper)"
 arch=(x86_64)
