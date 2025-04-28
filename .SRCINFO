@@ -1,0 +1,25 @@
+pkgbase = mangojuice
+	pkgdesc = A convenient alternative to GOverlay for configuring MangoHud
+	pkgver = 0.8.3.r35.g970baad
+	pkgrel = 1
+	url = https://github.com/radiolamp/mangojuice
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = gtk4
+	depends = fontconfig
+	depends = libadwaita
+	depends = libgee
+	depends = mangohud
+	optdepends = mesa-utils
+	optdepends = vulkan-tools
+	provides = mangojuice
+	conflicts = mangojuice
+	options = !debug
+	source = mangojuice::git+https://github.com/radiolamp/mangojuice.git
+	b2sums = SKIP
+
+pkgname = mangojuice
