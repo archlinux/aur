@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DEXSeq
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='Inference of differential exon usage in RNA-Seq'
 arch=('any')
@@ -43,7 +43,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a8fab3990cec4b8944de6b83b31a46b838f3db19e0430b530435255176ef5217')
+sha256sums=('e17ca088129e3a786eb50eb7f563b08100123f7cec48166f1342ff9e344028a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
