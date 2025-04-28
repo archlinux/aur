@@ -4,10 +4,11 @@
 # Contributor: Sebastian Lindqvist <dunpin@gmail.com>
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
+# Based on https://gitlab.archlinux.org/archlinux/packaging/packages/electrum/-/blob/6d9acc129748edcd352f41f33e98c0cee8637fc5/PKGBUILD by Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=electrum-git
-pkgver=4.5.8.r730.g61c5df840
-pkgrel=2
+pkgver=4.5.8.r946.ga511ab8e7
+pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 url="https://github.com/spesmilo/electrum"
@@ -32,35 +33,65 @@ depends=('hicolor-icon-theme'
          'python-requests'
          'python-six'
          'python-pyqt6'
-         'qt5-base'
+         'protobuf'
+         'python-protobuf'
+         'python-pyaes'
+         'qt6-base'
          'python-electrum_ecc>=0.0.4'
          'python-electrum_aionostr>=0.0.7'
          'python-websockets')
-checkdepends=('python-tox')
+checkdepends=('python-pycryptodomex'
+              'python-pytest')
 makedepends=('gettext'
              'git'
-             'protobuf>=3.20' 'protobuf<4'
              'python-pycurl'
+             'python-wheel'
              'python-setuptools')
 optdepends=('desktop-file-utils: update desktop icon'
             'gtk-update-icon-cache: update desktop icon'
-            'python-hidapi: Digital Bitbox hardware wallet support'
+
+             #Trezor hardware wallet
+            'trezor-udev: Trezor harware wallet support'
             'python-trezor: Trezor hardware wallet support'
-            'python-safet: Archos Safe-T hardware wallet support'
-            'python-keepkey: KeepKey hardware wallet support'
-            'python-btchip: Ledger hardware wallet support'
+
+             #Keepkey hardware wallet
+            'keepkey-udev: Keepkey hardware wallet support'
+            'python-mnemonic: Keepkey hardware wallet support'
+            'python-hidapi: Keepkey hardware wallet support'
+            'python-libusb1: Keepkey hardware wallet support'
+
+             #Ledger hardware wallet
+            'ledger-udev: Ledger hardware wallet support'
+            'python-hidapi: Ledger hardware wallet support'
+            'python-ledger-bitcoin: Ledger hardware wallet support'
+
+             #Coldcard hardware wallet
             'python-ckcc-protocol: Coldcard wallet hardware support'
-            'python-bitbox02: BitBox wallet hardware support'
+
+             #Bitbox01/Digital Bitbox hardware wallet
+            'bitbox-udev: Bitbox01/Digital Bitbox hardware wallet support'
+            'python-hidapi: Bitbox01/Digital Bitbox hardware wallet support'
+
+             #Bitbox02 Hardware wallet
+            'bitbox-udev: Bitbox02 hardware wallet support'
+            'python-bitbox02: BitBox02 hardware wallet support'
+            'python-hidapi: Bitbox02 hardware wallet support'
+
+             #Jade Hardware wallet
             'python-cbor2: Blockstream Jade hardware wallet communication'
-            'python-pyserial: Blockstream Jade hardware wallet serial port extension' 
+            'python-pyserial: Blockstream Jade hardware wallet serial port extension'
+
             'python-matplotlib: plot transaction history in graphical mode'
             'python-rpyc: send commands to Electrum Python console from an external script'
             'xdg-utils: update desktop icon'
-            'python-amodem: air-gapped transaction signing over audio modem'
             'zbar: QR code reading support')
-source=(git+https://github.com/spesmilo/electrum
-        git+https://github.com/spesmilo/electrum-locale)
+source=(git+https://github.com/spesmilo/electrum.git
+        git+https://github.com/spesmilo/electrum-locale.git
+        git+https://github.com/spesmilo/electrum-http.git
+        git+https://github.com/spesmilo/electrum-keepkeylib.git)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 provides=('electrum')
 conflicts=('electrum')
@@ -75,44 +106,30 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-
-  echo 'Initializing git submodule...'
   git submodule init
-  git config submodule.contrib/deterministic-build/electrum-locale.url "$srcdir/electrum-locale"
+  git config submodule.electrum/locale.url "$srcdir/electrum-locale"
+  git config submodule.electrum/plugins/payserver/www.url "$srcdir/electrum-http"
+  git config submodule.electrum/plugins/keepkey/keepkeylib.url "$srcdir/electrum-keepkeylib"
   git -c protocol.file.allow=always submodule update
-
-  echo 'Compiling protobuf description file...'
-  protoc \
-    --proto_path=electrum \
-    --python_out=electrum \
-    electrum/paymentrequest.proto
-
-  echo 'Creating translations...'
-#  python contrib/pull_locale
 }
 
 build() {
   cd ${pkgname%-git}
-  echo 'Building...'
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd ${pkgname%-git}
-
-  #_pyver="$(pacman -Q python | awk '{print $2}' | awk -F. '{print $1 $2}')"
-  _pyver="$(python -c \
-    'import platform; print("%s%s" % platform.python_version_tuple()[0:2])')"
-
-  echo 'Testing...'
-  tox -e "py$_pyver"
+  pytest
 }
 
 package() {
   cd ${pkgname%-git}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  echo 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -vdm755 "$pkgdir/$site_packages/electrum"
+  ./contrib/locale/build_locale.sh "$srcdir/electrum/electrum/locale/locale" "$pkgdir/$site_packages/electrum/locale/locale"
 
   install -Dm644 AUTHORS README.md RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 LICENCE -t "$pkgdir"/usr/share/licenses/$pkgname
