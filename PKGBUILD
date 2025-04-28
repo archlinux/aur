@@ -27,12 +27,10 @@ source=(
     "com.atostek.atostekid.desktop"
     "com.atostek.atostekid.png"
 )
-sha256sums=(
-    "fc753b03e171b39e28bd9f85a43d0986409dbad6d72801cd1d63762a6f444f73"
-    "42cf9a65e4913b42ea9b63ebe171050589bdf00d7a48df26d793b394c39efefa"
-    "f43a15ecf14e2ae8b71df506738aa6a122270e46d52c7b66c1b239b669d4c7b0"
-    "fdfad6cf56013d55d5e7516a093494091fcb9c8a27409d488e780dd2ebebe895"
-)
+sha256sums=('fc753b03e171b39e28bd9f85a43d0986409dbad6d72801cd1d63762a6f444f73'
+            '42cf9a65e4913b42ea9b63ebe171050589bdf00d7a48df26d793b394c39efefa'
+            'f43a15ecf14e2ae8b71df506738aa6a122270e46d52c7b66c1b239b669d4c7b0'
+            'fdfad6cf56013d55d5e7516a093494091fcb9c8a27409d488e780dd2ebebe895')
 
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
