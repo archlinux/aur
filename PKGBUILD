@@ -1,7 +1,7 @@
 
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.50.2
+pkgver=0.50.4
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern Minecraft launcher"
 arch=('x86_64')
