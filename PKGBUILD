@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=rifi
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -35,8 +35,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c1fda271448f428b30150b5c48f8607')
-b2sums=('6080ed0761b9a81b20c8e431afa3d087d1253e8bca1c7d9f1f48031ceb1d013d67babac004bc94a4f4f0c0af8fc947d3cf5059302d652f1be98dd5f80dd825b4')
+md5sums=('4ceb7a95e70a403db1ff4508b2f92d22')
+b2sums=('c7463e063e92058f44493bea4be6a89fc70965c09e1fa2723b88b6354adb0456cd749915f691adad3d02cc42e91606edd610145014423524ff6479ee20c8c1f8')
 
 build() {
   mkdir build

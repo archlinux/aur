@@ -1,6 +1,6 @@
 pkgbase = r-rifi
 	pkgdesc = 'rifi' analyses data from rifampicin time series created by microarray or RNAseq
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rifi
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = r-rifi
 	optdepends = r-devtools
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rifi_1.10.0.tar.gz
-	md5sums = 9c1fda271448f428b30150b5c48f8607
-	b2sums = 6080ed0761b9a81b20c8e431afa3d087d1253e8bca1c7d9f1f48031ceb1d013d67babac004bc94a4f4f0c0af8fc947d3cf5059302d652f1be98dd5f80dd825b4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rifi_1.12.0.tar.gz
+	md5sums = 4ceb7a95e70a403db1ff4508b2f92d22
+	b2sums = c7463e063e92058f44493bea4be6a89fc70965c09e1fa2723b88b6354adb0456cd749915f691adad3d02cc42e91606edd610145014423524ff6479ee20c8c1f8
 
 pkgname = r-rifi
