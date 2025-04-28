@@ -1,6 +1,7 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 # Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher
+_binname=OpenGOAL-Launcher
 pkgver="2.7.1"
 pkgrel=1
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
@@ -34,7 +35,7 @@ build() {
 	echo "Version=${pkgver}" >> "${pkgname}.desktop"
 
     cd "launcher-${pkgver}"
-    yarn tauri build -b none
+    yarn tauri build --no-bundle
 }
 
 package() {
@@ -50,5 +51,5 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 	cp "${_src}/icons/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
-	install -Dm755 "${_src}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${_src}/target/release/${_binname}" "${pkgdir}/usr/bin/${_binname}"
 }
