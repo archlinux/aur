@@ -1,12 +1,12 @@
 # Maintainer: Elia Nitsche <nitscheelia at gmail.com>
 pkgname="v-editor-git"
 _pkgname=${pkgname%-git}
-pkgver=v1.0.r0.gcdd1997
+pkgver=v1.1.r0.g9d2ed26
 pkgrel=1
 pkgdesc="simple wrapper for your editor"
 arch=("any")
 url="https://github.com/egnrse/v-editor"
-license=("GPL3")
+license=("MIT")
 depends=("bash")
 makedepends=("git")
 optdepends=("vi: fallback text editor")
