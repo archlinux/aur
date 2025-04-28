@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=refine
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc='Tweak advanced settings in GNOME'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('libadwaita' 'python' 'python-gobject')
 makedepends=('blueprint-compiler' 'git' 'meson')
 source=("${pkgname}::git+https://gitlab.gnome.org/TheEvilSkeleton/Refine.git#tag=${pkgver}")
-b2sums=('efc78968f4f9a9d6f3247a2a8bb9ec68341557e112faa6759f31e059f4d30eca85849d69995c5d84618b3d432a3a109eb65aa338cce74fbcf2817d586387d92c')
+b2sums=('090a2186b4dc713ec88fb07f466c05c7ba055afb9c26ec44fbb27e6322bc6388c7e3d758a80f245e8135c6de0b2aa47f49f454fe1b7ea45fd2e9f88e2937e036')
 
 build() {
   arch-meson "${pkgname}" build -Dexec_name_as_base_id=true
