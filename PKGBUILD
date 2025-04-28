@@ -6,9 +6,8 @@
 # Contributor: Marc Boocha <marcboocha@gmail.com>
 
 _target=x86_64-elf
-_commit=1cd744a6828f6ab9179906d16434ea40b6404737
 pkgname=$_target-gcc
-pkgver=14.2.1
+pkgver=15.1.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -17,11 +16,13 @@ license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 depends=("$_target-binutils" 'zlib' 'libmpc')
 makedepends=('gmp' 'mpfr')
 options=(!emptydirs)
-source=("git://gcc.gnu.org/git/gcc.git#commit=$_commit")
+source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
+        "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('SKIP')
+sha256sums=('e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
+            'SKIP')
 
-_basedir=gcc
+_basedir=gcc-$pkgver
 
 validpgpkeys=(
     '13975A70E63C361C73AE69EF6EEB81F8981C74C7' # Richard Guenther <richard.guenther@gmail.com>
