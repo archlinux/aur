@@ -1,0 +1,13 @@
+pkgbase = mkdev
+	pkgdesc = Save your boilerplate instead of writing it.
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/4jamesccraven/mkdev
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = mkdev-3.2.1.tar.gz::https://github.com/4jamesccraven/mkdev/archive/refs/tags/v3.2.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = mkdev
