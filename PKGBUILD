@@ -2,8 +2,7 @@
 # Contributor: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-copier
-_name=${pkgname#python-}
-pkgver=9.6.0
+pkgver=9.7.1
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -27,24 +26,29 @@ depends=(
   'python-yaml'
 )
 makedepends=(
-  'git' 'python-build' 'python-installer' 'python-wheel'
-  'python-poetry-dynamic-versioning'
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-hatch-vcs'
+  'python-installer'
 )
 checkdepends=(
-  'python-poethepoet' 'python-pytest' 'python-pytest-cov'
-  'python-pytest-gitconfig' 'python-pytest-xdist'
+  'python-pexpect'
+  'python-poethepoet'
+  'python-pytest'
+  'python-pytest-cov'
+  'python-pytest-gitconfig'
+  'python-pytest-xdist'
 )
 optdepends=(
   'git: VCS support'
 )
 
-# PyPI tarball does not include tests; GitHub tarball fails to build
-# as poetry-dynamic-versioning fails to find metadata.
 source=(
   "git+https://github.com/copier-org/copier.git#tag=v$pkgver"
 )
 sha256sums=(
-  '5ad17afcdd43be769fbeaac9366433316e84aa295476840bc9b44499268dcc79'
+  '21561d186a09e1345141d0e56a29e952b95cab7b37b3446d2afc1d86ecc57d41'
 )
 
 build() {
@@ -56,13 +60,13 @@ check() {
   cd copier
   rm -rf test-env
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer "dist/$_name-$pkgver-"*.whl
+  test-env/bin/python -m installer "dist/copier-$pkgver-"*.whl
   LC_ALL=C test-env/bin/python -m pytest -k 'not test_types and not test_commit_hooks_respected'
 }
 
 package() {
   cd copier
-  python -m installer --destdir="$pkgdir" "dist/$_name-$pkgver-"*.whl
+  python -m installer --destdir="$pkgdir" "dist/copier-$pkgver-"*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
