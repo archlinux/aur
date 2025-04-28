@@ -1,6 +1,6 @@
 pkgbase = r-gdcrnatools
 	pkgdesc = GDCRNATools: an R/Bioconductor package for integrative analysis of lncRNA, mRNA, and miRNA data in GDC
-	pkgver = 1.26.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GDCRNATools
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-gdcrnatools
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GDCRNATools_1.26.0.tar.gz
-	sha256sums = 2577c55095b48e0cd35d5366a5ab97a350db6bd45c6789470a22c39a0de47355
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GDCRNATools_1.28.0.tar.gz
+	sha256sums = 4779c0858f955709a59aa1d6d625579e76b4541c70b93e115ef8bf7f60608d2a
 
 pkgname = r-gdcrnatools
