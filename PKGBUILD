@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MoonlightR
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Identify oncogenes and tumor suppressor genes from omics data'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c98b2818659673acbe58f4a4f2c465b2cb8e4952e3cfc4e800c38a85df3b6ae7')
+sha256sums=('b16a548792070a0c5b5c10036358a25e685f6d3345448c13d1b33c1604227842')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
