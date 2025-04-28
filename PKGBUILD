@@ -5,7 +5,7 @@
 # Contributor: Tomasz Żok <tomasz.zok [at] gmail.com>
 
 pkgname=vim-go
-pkgver=1.28
+pkgver=1.29
 pkgrel=1
 pkgdesc="Go development plugin for Vim"
 arch=(any)
@@ -29,7 +29,7 @@ optdepends=(
     'revive'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('ebd4fbeabb3ebea0c63c1b70dd8bbf7de6ba20b33e40159bcc88d8d52a10975ab4b0ad849a4d8dd1edc2d073ca7c7ae17843cd70d415f159f07d2a212005825b')
+sha512sums=('0dc89d660c5987b685e0314b79064f888a8b423c4cdd20fef86538d75bc55f64dbbee7e26751050018f7cd92877c5a6a6b9eb14c5e0b9e4c408b565decc1c13e')
 
 package() {
     cd $pkgname-$pkgver
