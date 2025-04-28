@@ -1,16 +1,15 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MatrixQCvis
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Shiny-based interactive data-quality exploration for omics data'
 arch=('any')
 url="https://bioconductor.org/packages/${_pkgname}"
 license=('GPL')
 depends=(
-  r
   r-complexheatmap
   r-dplyr
   r-experimenthub
@@ -36,6 +35,7 @@ depends=(
   r-umap
   r-upsetr
   r-vsn
+  r-sva
 )
 optdepends=(
   r-biocgenerics
@@ -47,7 +47,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f24b14f5a7b4501c58bce117705c70b62d3bcf3ab77b1432f3d08788b4adf041')
+sha256sums=('8fbbca235aefc1a849247b7bdc8b8a59e3f5b2fc351246857a65fab9c00743b0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
