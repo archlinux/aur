@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BindingSiteFinder
-_pkgver=2.4.0
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
-pkgver=2.4.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Binding site defintion based on iCLIP data'
 arch=('any')
@@ -52,7 +52,7 @@ optdepends=(
   r-xlsx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('98051c788a2cfae0c5cf1af352d5e293273f35c4fc36bbde94fcc9799a07ee14')
+sha256sums=('1b412c77139b5432e7a0c835552029030b6c403b6d5d245c540ccb2b49a46bd4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
