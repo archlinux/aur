@@ -1,0 +1,18 @@
+pkgbase = zddccpl-git
+	pkgdesc = Qt gui to adjust display settings through DDC/CI
+	pkgver = r1
+	pkgrel = 1
+	url = https://codeberg.org/zynskeyfolf/zddccpl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = qt5-base
+	makedepends = ddcutil
+	depends = qt5-base
+	depends = ddcutil
+	source = git+https://codeberg.org/zynskeyfolf/zddccpl
+	sha256sums = SKIP
+
+pkgname = zddccpl-git
