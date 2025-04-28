@@ -1,6 +1,6 @@
 pkgbase = r-ipddb
 	pkgdesc = IPD IMGT/HLA and IPD KIR database for Homo sapiens
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ipdDb
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-ipddb
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ipdDb_1.24.0.tar.gz
-	sha256sums = 5fa8d024e16d58e8df7c1131a4ff45412b0fbb5d5596b6232a16a74b5058fff5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ipdDb_1.26.0.tar.gz
+	sha256sums = 0f920c840fbcac0ee8fde3eb13102bc6ae9eff4c7a5162bea010c98fc8795fb6
 
 pkgname = r-ipddb
