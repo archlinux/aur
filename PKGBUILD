@@ -17,7 +17,7 @@ b2sums=('d3d3e9a0e3f6bce5127cb54886214f8f1b364c8b004be670e4564df61b215e07dcb4548
         '6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237')
 
 prepare() {
-	sed -i 's/{ver}/$_electronver/' freetube.sh
+	sed -i "s/{ver}/$_electronver/" freetube.sh
 	mkdir -p data; tar xfC data.tar.xz data
 	sed -i 's/\/opt\/FreeTube\/freetube/\/usr\/bin\/freetube/' \
            "$srcdir/data/usr/share/applications/freetube.desktop"
