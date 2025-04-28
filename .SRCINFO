@@ -1,6 +1,6 @@
 pkgbase = r-mait
 	pkgdesc = Statistical Analysis of Metabolomic Data
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MAIT
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-mait
 	depends = r-xcms
 	optdepends = r-faahko
 	optdepends = r-rgl
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAIT_1.40.0.tar.gz
-	sha256sums = cf75c45a03ec5326d804a6274086410b13c3d2dfb8b077e2bb250428c2e702bb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MAIT_1.42.0.tar.gz
+	sha256sums = a268aa74075939e2a33cef7de637be4646249a67a9c20009d72fde830052e767
 
 pkgname = r-mait
