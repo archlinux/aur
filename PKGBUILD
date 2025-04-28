@@ -22,7 +22,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=(
-    "${pkgname}-${pkgver}.deb::https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_${pkgver//_/-}.deb"
+    "${pkgname}-${pkgver}.deb::https://dvv.fi/documents/16079645/237937167/AtostekID_DEB_${pkgver}.deb"
     "atostek-id.module"
     "com.atostek.atostekid.desktop"
     "com.atostek.atostekid.png"
