@@ -8,15 +8,14 @@ pkgbase = snippet-notes
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = npm
-	makedepends = cmake
-	makedepends = gcc
+	makedepends = git
 	makedepends = curl
 	depends = electron22
 	depends = python>=3
 	conflicts = snippet-notes
-	source = snippet-notes-0.4.4.tar.gz::https://github.com/xunxun10/snippet-notes/archive/refs/tags/0.4.4.tar.gz
+	source = snippet-notes-0.4.4::git+https://github.com/xunxun10/snippet-notes#tag=0.4.4
 	source = snippet-notes.sh
-	sha256sums = 069784dbe330fbb5f8df44726173fdbe127ad86d45f4de0180120fbbe2167a13
+	sha256sums = c92993c2bf2d098f254912352693c893f0e494518bf0d3476603b98621f5faa8
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = snippet-notes
