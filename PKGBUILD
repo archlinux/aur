@@ -2,7 +2,7 @@
 
 pkgname=carta-appimage
 _pkgname="carta"
-pkgver=4.1.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Cube Analysis and Rendering Tool for Astronomy"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url="https://cartavis.org"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'libidn11' 'rtmpdump')
 options=(!strip)
-_appimage="carta-v4.1.0-x86_64.AppImage"
-source_x86_64=("${pkgname}-v${pkgver}.tgz::https://github.com/CARTAvis/carta/releases/latest/download/carta.AppImage.x86_64.tgz"
-               "LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v${pkgver}/COPYING.md"
+_appimage="carta-v${pkgver}-beta.${pkgrel}-x86_64.AppImage"
+source_x86_64=("${pkgname}-v${pkgver}-beta.${pkgrel}.tgz::https://github.com/CARTAvis/carta/releases/download/v${pkgver}-beta.${pkgrel}/carta.AppImage.v${pkgver}-beta.${pkgrel}.x86-64.tgz"
+               "LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v${pkgver}-beta.${pkgrel}/COPYING.md"
               )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
- 'd1267891b295977148e182bb8d7162fdc4be3b35b733473af77508efe73313a6'
+ '92c1b00288cd311ffef24302854e2f2c22eb61737e5a95eff0ee279b2fe5e744'
  '26c03bc049c15fc5b9e52d791a06f1a6bc32f89edc8f8c701ab0aadf66e85b82')
                    
 
