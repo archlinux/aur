@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TEKRABber
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('06eae4ec275e8f28223fa119009b3dc6')
-b2sums=('68870c7a749ae298d254177172fcd82a8db511879d3de252cbccb033543e8330379c4fbf25b456186b4a98cbccb1c97409bb36ac09ddc353388faea70229bdbe')
+md5sums=('dd4cbed61611d47a14359019eb5fda18')
+b2sums=('1e8095ee3ec26ccf179c63f1e4e49ac171fe348bec3ac0ed369c832acc56d5cee4bfbc14a258f218c8cdf5192c88ca47399f8caa5460dd13654fd17141b3cae8')
 
 build() {
   mkdir build
