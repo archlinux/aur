@@ -1,6 +1,6 @@
 pkgbase = r-lobstahs
 	pkgdesc = Lipid and Oxylipin Biomarker Screening through Adduct Hierarchy Sequences
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/LOBSTAHS
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-lobstahs
 	optdepends = r-knitr
 	optdepends = r-pth2o2lipids
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/LOBSTAHS_1.32.0.tar.gz
-	sha256sums = b394474f4783a16c8268193e64aa30459588806b2ab3a68d0aae286b29739fdf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/LOBSTAHS_1.33.0.tar.gz
+	sha256sums = 063235f3e5bf7c9499330c6cff7852e03e39f00f36bc87a0e308c1c9e7540272
 
 pkgname = r-lobstahs
