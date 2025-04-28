@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=syntenet
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-networkd3
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('056edddd87df6d53f0277cb1f6902cd8')
-b2sums=('94bdb017fe9e1df4074757efc15f2fa9f155157f44df1c7c2515a2a52f661bc7091bca3f4cd24eeca28a3caf9243b2c02d072882a6316b2f2b259ed4e999efc2')
+md5sums=('f09df9c4c0dcf3091a2294f9f5668108')
+b2sums=('076b4420ed8971ac7ad0d75e37574f1998ecddc160b8c2d43f33b22176a5be20a233f0dbf105afb5c6a75acec3bf30313b950920f4a8f3f04f38cc9af4640432')
 
 #prepare() {
   # skip tests that cause a coredump
