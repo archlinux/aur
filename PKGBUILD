@@ -2,19 +2,19 @@
 # Contributor: agomonos <eugenio89 at gmail dot com>
 
 pkgname=booktab
-pkgver=4.24
-pkgrel=2
+pkgver=4.26
+pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
 url="https://booktab.it/"
 license=('unknown')
 conflicts=('booktab-wine')
-depends=("pcre" "openssl-1.1" "libxss" "qt5-multimedia" "qt5-svg" "qt5-webengine" "qt5-networkauth")
+depends=("pcre" "openssl" "qt5-svg" "qt5-multimedia" "qt5-webchannel" "qt5-webengine" "qt5-networkauth")
 
 _debname=BooktabSetup.deb
 
 source=(https://booktab.it/setup-z/$pkgver/${_debname})
-md5sums=('e544cf5f6236f20c3326fabfe8556a9f')
+md5sums=('12af6a2e4b0d77fd7032c6df4c239578')
 
 noextract=(${_debname})
 
@@ -24,7 +24,7 @@ prepare() {
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
   ar xv "${_debname}" > /dev/null
-  tar -xf data.tar.xz > /dev/null
+  tar -xf data.tar.gz > /dev/null
 }
 
 package() {
