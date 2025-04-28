@@ -4,8 +4,8 @@ _pkgname=PomodoroTimer
 pkgver=1.1.0
 _electronversion=26
 _nodeversion=20
-pkgrel=5
-pkgdesc="A pomodoro timer built with react and electron.Use system-wide electron."
+pkgrel=6
+pkgdesc="A pomodoro timer built with react and electron.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/pauchiner/pomodoro-timer"
 license=('MIT')
@@ -15,22 +15,21 @@ depends=(
 )
 makedepends=(
     'gendesk'
-    'nodejs'
+    'nvm'
     'npm'
     'yarn'
     'curl'
-    'cmake'
-    'gcc'
+    'git'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('f85cdd32f396d7aabbb8e4a0ea1a09f9ff5ce281f70ebd87744dc6d9fffa0a2d'
+sha256sums=('3858fb1fbbcebcde9dfba139cc55b4e56bab2a5ffba3ee1b344c0a3b961b707b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -38,8 +37,8 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
@@ -49,7 +48,6 @@ build() {
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -58,7 +56,6 @@ build() {
         {
             echo -e '\n'
             echo 'registry "https://registry.npmmirror.com"'
-            echo 'disturl "https://registry.npmmirror.com/-/binary/node/"'
             echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
             echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
             echo "cacheFolder "${srcdir}"/.yarn/cache"
@@ -69,12 +66,17 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
+            echo 'networkConcurrency 10'
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     yarn build
     NODE_ENV=production     yarn electron-builder build --linux dir -c.electronDist="${electronDist}"
