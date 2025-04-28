@@ -9,8 +9,9 @@ Environment="DNSDOCK_DOCKER=unix://var/run/docker.sock"
 Environment="DNSDOCK_DOMAIN=test"
 Environment="DNSDOCK_ENVIRONMENT="
 Environment="DNSDOCK_HTTP=127.0.0.3:80"
+Environment="DNSDOCK_NAMESERVER="
 EnvironmentFile=-/etc/dnsdock.envronment
-ExecStart=/usr/bin/dnsdock --dns=${DNSDOCK_DNS} --docker=${DNSDOCK_DOCKER} --domain=${DNSDOCK_DOMAIN} --environment=${DNSDOCK_ENVIRONMENT} --http=${DNSDOCK_HTTP}
+ExecStart=/usr/bin/dnsdock --dns=${DNSDOCK_DNS} --docker=${DNSDOCK_DOCKER} --domain=${DNSDOCK_DOMAIN} --environment=${DNSDOCK_ENVIRONMENT} --http=${DNSDOCK_HTTP} --nameserver=${DNSDOCK_NAMESERVER}
 
 [Install]
 WantedBy=docker.service
