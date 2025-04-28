@@ -6,7 +6,7 @@
 pkgname=processing
 pkgver=4.4.1
 _build=1301
-pkgrel=6
+pkgrel=7
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -115,5 +115,7 @@ package() {
   ln -s /usr/share/processing/bin/Processing "$pkgdir/usr/bin/processing"
 
   # Link processing's internal JDK to the system's one
+  rm -rf "$pkgdir/usr/share/processing/lib/runtime" # TODO prevent that the runtime is added at all
+  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/runtime"
   ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/app/resources/jdk-17.0.14+7"
 }
