@@ -1,8 +1,9 @@
+# Maintainer: Sasha Abbott <sashaa AT disroot DOT org>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mo'
-pkgver='0.39'
+pkgver='0.40'
 pkgrel='1'
 pkgdesc=""
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Mo'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Mo-0.39.tar.gz')
-md5sums=('ca78065005a2a06a20fc3c580a3f7abf')
-sha512sums=('23f570272b91f6d09361afa35bebf355ca3db64899e52be84beb84ceda7e2daff1b0dc9700c96c365fa6a398409caf1ce9b067879a4601427553d1da14cfc54b')
-_distdir="Mo-0.39"
+source=('http://search.cpan.org/CPAN/authors/id/T/TI/TINITA/Mo-0.40.tar.gz')
+md5sums=('000809a72a8c5d36fcd4bb9631fe5624')
+sha512sums=('084756b11ebb9d9e01cc27484b14429cf1de5640fa0675f6ae1d665886de301321665e53af9144606ed46225d56bd18750c21d9eac8dea0161596599d65219b3')
+_distdir="Mo-0.40"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
