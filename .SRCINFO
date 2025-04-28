@@ -1,6 +1,6 @@
 pkgbase = python-treestamps
 	pkgdesc = Create timestamp records for recursive operations on directory trees
-	pkgver = 2.0.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/ajslater/treestamps
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-treestamps
 	makedepends = python-hatchling
 	depends = python-ruamel-yaml
 	depends = python-termcolor
-	source = treestamps-2.0.0.tar.gz::https://github.com/ajslater/treestamps/archive/treestamps-2.0.0.tar.gz
+	source = treestamps-2.2.0.tar.gz::https://github.com/ajslater/treestamps/archive/treestamps-2.2.0.tar.gz
 	sha512sums = 35555f6277d0c1d8d17f244f8f253f4fbf41311f2554328c5da39a8f1d786a3d4d9c216ac309cb0ba508c53d6e1e12b09e679ebef8a1ad2e4a11f451ff7d9b4d
 
 pkgname = python-treestamps
