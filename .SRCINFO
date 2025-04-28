@@ -1,5 +1,5 @@
 pkgbase = cgdi
-	pkgdesc = Application to calculate duration between 2 dates (Electron app).Use system-wide electron.
+	pkgdesc = Application to calculate duration between 2 dates (Electron app).(Use system-wide electron)
 	pkgver = 0.0.8
 	pkgrel = 8
 	url = https://github.com/nullfuzz-pentest/CGDI
@@ -9,14 +9,15 @@ pkgbase = cgdi
 	makedepends = npm
 	makedepends = curl
 	makedepends = nvm
+	makedepends = git
 	depends = electron23
 	depends = nodejs
 	conflicts = cgdi
 	options = !strip
 	options = !emptydirs
-	source = cgdi-0.0.8.tar.gz::https://github.com/nullfuzz-pentest/CGDI/archive/refs/tags/0.0.8.tar.gz
+	source = cgdi-0.0.8::git+https://github.com/nullfuzz-pentest/CGDI#tag=0.0.8
 	source = cgdi.sh
-	sha256sums = 02115102012acdec1bbe2aed9df1d5a6da6bd91302422d78c6f29251f6b8edef
+	sha256sums = a0d5db820cc3f37b90268670e06bfa4c1ee572ba73378e5df2527cc68ead5600
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = cgdi
