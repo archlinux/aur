@@ -1,6 +1,6 @@
 pkgbase = r-sctensor
 	pkgdesc = Detection of cell-cell interaction from single-cell RNA-seq dataset by tensor decomposition
-	pkgver = 2.16.0
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scTensor
 	arch = any
@@ -43,7 +43,7 @@ pkgbase = r-sctensor
 	optdepends = r-sctgif
 	optdepends = r-seurat
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTensor_2.16.0.tar.gz
-	sha256sums = 4c812cd62a77a96293a965c4766e39c59af9eda1532b0cf67a9a1aaa6b6f2141
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTensor_2.17.0.tar.gz
+	sha256sums = f086e9a2ab7c83b67b5bba27a1266cdab7a41234d60f751c350a483e41c2528f
 
 pkgname = r-sctensor
