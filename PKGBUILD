@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=seekr
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="System search util for linux"
 arch=('any')
@@ -16,9 +16,9 @@ makedepends=(
     'gendesk'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
 )
-sha256sums=('8319f6f1f97f8960e6b56ceac7997096e4da5e00bfee0f6fe637249096096ec7')
+sha256sums=('044df00b2204ad3b40f0a59a7de0f7c091136fe69f37517d9ce2677df064cd39')
 prepare() {
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname}"
 }
