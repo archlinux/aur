@@ -1,6 +1,6 @@
 pkgbase = simracing-essentials
 	pkgdesc = A collection of sim racing-focused utilities and drivers
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/Lawstorant
 	arch = any
@@ -14,6 +14,5 @@ pkgbase = simracing-essentials
 	depends = hid-tmff2-dkms
 	depends = jstest-gtk-git
 	depends = boxflat
-	depends = universal-pidff-dkms
 
 pkgname = simracing-essentials
