@@ -1,7 +1,7 @@
 pkgbase = easy-player
-	pkgdesc = Music Player-With Lyrics & Desktop Lyrics & Online Download Songs.简易的音乐播放器 - 附带歌词功能 & 桌面歌词 & 网络下载歌曲.
+	pkgdesc = Music Player-With Lyrics & Desktop Lyrics & Online Download Songs.(Use system-wide electron)简易的音乐播放器 - 附带歌词功能 & 桌面歌词 & 网络下载歌曲.
 	pkgver = 0.1.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/CmarThaa/music_player
 	arch = any
 	license = MIT
@@ -10,11 +10,12 @@ pkgbase = easy-player
 	makedepends = gendesk
 	makedepends = curl
 	makedepends = icoutils
+	makedepends = git
 	depends = electron25
 	conflicts = easy-player
-	source = easy-player-0.1.4.tar.gz::https://github.com/CmarThaa/music_player/archive/refs/tags/v0.1.4.tar.gz
+	source = easy-player-0.1.4::git+https://github.com/CmarThaa/music_player#tag=v0.1.4
 	source = easy-player.sh
-	sha256sums = d4cb1f21f8ece4e70610e6766b40de3feb835d45b01d11ecfd3ca295d473b19d
+	sha256sums = a30ebc995037da58426a740e678d489a36aa004bed6ac6555a996653b6349b0e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = easy-player
