@@ -1,6 +1,6 @@
 pkgbase = r-seqgsea
 	pkgdesc = Gene Set Enrichment Analysis (GSEA) of RNA-Seq Data: integrating differential expression and splicing
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SeqGSEA
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-seqgsea
 	depends = r-deseq2
 	depends = r-doparallel
 	optdepends = r-genomicranges
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqGSEA_1.46.0.tar.gz
-	sha256sums = bd5073cc179b1f38cb530e4a280e58e61cdcc1ee9b2c35b0730dc6a3c9ac158e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SeqGSEA_1.48.0.tar.gz
+	sha256sums = cd0d3b647747ffdb02f30a2b20bc4ab0c0f75095e50f0d9ae75b5f26e10218c1
 
 pkgname = r-seqgsea
