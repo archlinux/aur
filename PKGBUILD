@@ -1,6 +1,6 @@
 # Maintainer: h-a <ha1029.dev at aol dot com>
 pkgname=ttf-ricty-nerd
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Japanese TrueType font for developers by mixing Inconsolata Nerd Font and Migu 1M."
 arch=("any")
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
 	"86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d"
-	"f210b692c45eb1f70b0f5cca2229afe322529435a3c43202b45b410b1226e73b"
+	"0eb3b33e453932b0c0e434ef62e365da5fe2f86f514e255ccb75a9cf23154d95"
 	"29bd0cfd0fb2a45f9b057c834a057724bae1f63b525a8ac83d3e7525706d9f80"
 	"4c84dd528ec3044638ec346fc1ee27cd1eb95dfc04cbc6a881b3ca7a7f517e54"
 	"e4806d297e59a7f9c235b0079b2819f44b8620d4365a8955cb612c9ff5809321"
