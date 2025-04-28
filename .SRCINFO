@@ -1,6 +1,6 @@
 pkgbase = r-medips
 	pkgdesc = DNA IP-seq data analysis
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MEDIPS
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-medips
 	optdepends = r-biocstyle
 	optdepends = r-bsgenome.hsapiens.ucsc.hg19
 	optdepends = r-medipsdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEDIPS_1.58.0.tar.gz
-	sha256sums = f751f1deca6af63d86d2e133d9964fa220c0b3112dde25bd9ed7ca1bb338c549
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MEDIPS_1.60.0.tar.gz
+	sha256sums = bf3aec6d2ad4079c387e146fe625507cfbc0e12de09b77f03f8348d6b2b67ce7
 
 pkgname = r-medips
