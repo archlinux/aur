@@ -8,7 +8,7 @@ _L53X_VER=3.5.5.1
 
 pkgname=librealsense
 pkgver=2.55.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 & L500 series and the SR300)."
 arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
@@ -47,6 +47,7 @@ build() {
   CXXFLAGS="${CXXFLAGS} -Wformat -pthread" \
   unset HOME
   cmake .. \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_SBINDIR=bin \
