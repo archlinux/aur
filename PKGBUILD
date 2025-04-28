@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dbptk-desktop-bin
 _pkgname='DBPTK Desktop'
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=34
 pkgrel=1
 pkgdesc="A cross-platform app built on Electron that uses DBPTK UI as a viewer for relational databases.(Prebuilt version.Use system-wide electron)"
@@ -14,6 +14,7 @@ depends=(
     "electron${_electronversion}"
     'python'
     'python-lxml'
+    'python-numpy'
 )
 makedepends=(
     'asar'
@@ -23,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a475eb61a2109c50d1c5b6220190b4ddbe20fd7e7a1ede652ac29753bb38927c'
+sha256sums=('46af41378043658faf86b11c4d6c9497607abd81434414b25ba8701622635617'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -33,7 +34,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
