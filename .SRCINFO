@@ -1,6 +1,6 @@
 pkgbase = r-gothic
 	pkgdesc = Binomial test for Hi-C data analysis
-	pkgver = 1.42.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GOTHiC
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-gothic
 	depends = r-shortread
 	optdepends = r-hicdatalymphoblast
 	optdepends = r-parallel
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOTHiC_1.42.0.tar.gz
-	sha256sums = 3ced6d57aba7c97e956c3110b0f26fb305a7088464f8abbc3182e66eb3775f31
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GOTHiC_1.44.0.tar.gz
+	sha256sums = 03f906a80a8f7b77f30ebf6b27380c88da1d8bbba20940a6f34b090ff2d940df
 
 pkgname = r-gothic
