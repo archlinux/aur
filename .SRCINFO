@@ -1,6 +1,6 @@
 pkgbase = r-regioner
 	pkgdesc = Association analysis of genomic regions based on permutation tests
-	pkgver = 1.38.0
+	pkgver = 1.39.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/regioneR
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-regioner
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/regioneR_1.38.0.tar.gz
-	sha256sums = 5ef53ebc2c26bcd4214d1cc5ff25e55f1a533358e9a8606e081a37eb24e54688
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/regioneR_1.39.0.tar.gz
+	sha256sums = 0bdf5be88702540faf668f30c68b7cb71e82083fa65cc059dc0756bd22cb083b
 
 pkgname = r-regioner
