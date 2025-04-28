@@ -1,6 +1,6 @@
 pkgbase = starknet-foundry-bin
 	pkgdesc = Blazing fast toolkit for developing Starknet contracts
-	pkgver = 0.41.0
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://github.com/foundry-rs/starknet-foundry
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = starknet-foundry-bin
 	depends = universal-sierra-compiler
 	provides = starknet-foundry
 	conflicts = starknet-foundry
-	source_x86_64 = https://github.com/foundry-rs/starknet-foundry/releases/download/v0.41.0/starknet-foundry-v0.41.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 61c9b53cc8b8cd23b45cc95c7bedded345597dc1c918fc1d4018586c0e8a87b2
-	source_aarch64 = https://github.com/foundry-rs/starknet-foundry/releases/download/v0.41.0/starknet-foundry-v0.41.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c61a4b59ee4364afa41e99726b0852e971cda85c891a7b15b2567051f1787bcf
+	source_x86_64 = https://github.com/foundry-rs/starknet-foundry/releases/download/v0.42.0/starknet-foundry-v0.42.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 03ac0c3c3e06f1f450534c0188a51b2de47c4e5a11565bf121468e90ec89919c
+	source_aarch64 = https://github.com/foundry-rs/starknet-foundry/releases/download/v0.42.0/starknet-foundry-v0.42.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ae40744fd257b8c52326ae1fb6061205db4a8877646eba0ab7e3d378d046e6d3
 
 pkgname = starknet-foundry-bin
