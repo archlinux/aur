@@ -1,6 +1,6 @@
 pkgbase = r-scanvis
 	pkgdesc = SCANVIS - a tool for SCoring, ANnotating and VISualizing splice junctions
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SCANVIS
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-scanvis
 	depends = r-rtracklayer
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCANVIS_1.20.0.tar.gz
-	sha256sums = 37ac5bb1ee11934fc7860610f1ac327ba098f66981d5db41d5321c8333dbbc38
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SCANVIS_1.22.0.tar.gz
+	sha256sums = a0419df7197c82fc77b06a6ca8c2a5bc79c0d97e581b40b1c73d1eded8475098
 
 pkgname = r-scanvis
