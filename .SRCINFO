@@ -1,6 +1,6 @@
 pkgbase = r-signaturesearch
 	pkgdesc = Environment for Gene Expression Searching Combined with Functional Enrichment Analysis
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/signatureSearch
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = r-signaturesearch
 	optdepends = r-rmarkdown
 	optdepends = r-signaturesearchdata
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/signatureSearch_1.20.0.tar.gz
-	sha256sums = 3006b0944d29101eca849cf2cc51b08688778901b634f2079a8bf1a394617086
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/signatureSearch_1.22.0.tar.gz
+	sha256sums = f1e1c4f7ccd3e42bf4b2f4610bd35a659e42596dcfab4a6df018d08bbef91e71
 
 pkgname = r-signaturesearch
