@@ -1,0 +1,18 @@
+pkgbase = pacpak-git
+	pkgdesc = manage your flatpaks with this pacman wrapper
+	pkgver = v0.0.1.r0.gb821dab
+	pkgrel = 1
+	url = https://github.com/egnrse/pacpak
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = flatpak
+	depends = bash
+	depends = awk
+	depends = perl
+	provides = pacpak
+	conflicts = pacpak
+	source = pacpak-git::git+https://github.com/egnrse/pacpak#branch=main
+	sha512sums = SKIP
+
+pkgname = pacpak-git
