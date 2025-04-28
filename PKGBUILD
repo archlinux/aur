@@ -3,8 +3,8 @@
 
 _pkgname="appcsxcad"
 pkgname="$_pkgname-git"
-pkgver=0.2.3.r5.g6356e7d
-pkgrel=2
+pkgver=0.2.3.r6.g688c07c
+pkgrel=1
 pkgdesc="Minimal GUI Application using the QCSXCAD library"
 url="https://github.com/thliebig/AppCSXCAD"
 license=('GPL-3.0-or-later')
@@ -48,6 +48,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -Wno-dev
   )
 
