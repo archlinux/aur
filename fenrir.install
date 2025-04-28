@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo "==> IMPORTANT: Fenrir configuration update needed"
+  echo "    A setting name has changed. Please check /etc/fenrirscreenreader/settings/settings.conf"
+  echo "    and replace all occurrences of 'suspendingscreen' with 'ignorescreen'."
+}
