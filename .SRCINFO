@@ -1,6 +1,6 @@
 pkgbase = krita-ai-diffusion
 	pkgdesc = A plugin to use generative AI in image painting and editing workflows from within Krita
-	pkgver = 1.33.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/Acly/krita-ai-diffusion
 	install = krita-ai-diffusion.install
@@ -14,9 +14,9 @@ pkgbase = krita-ai-diffusion
 	depends = python312
 	depends = qt5-imageformats
 	optdepends = python311: server.py will use python3.11 to create a virtual environment if python3.12 is not available
-	source = krita-ai-diffusion::git+https://github.com/Acly/krita-ai-diffusion.git#tag=v1.33.0
+	source = krita-ai-diffusion::git+https://github.com/Acly/krita-ai-diffusion.git#tag=v1.34.0
 	source = add-regex-to-requirements.patch
-	sha256sums = c7ff82a651cd7d170c6c7370ea8780e11dd8734c37d5561c0100f3addbdcaaa4
+	sha256sums = 647e9df8ffb387203b8886ffd28339b80e608d3e59ca2c6511528a7b76da62e9
 	sha256sums = 3cdb6f448e78ae8bcfe4427d6a7b44a732b375366aa52dd4aaceb11f328edaf0
 
 pkgname = krita-ai-diffusion
