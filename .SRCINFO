@@ -1,6 +1,6 @@
 pkgbase = r-grohmm
 	pkgdesc = GRO-seq Analysis Pipeline
-	pkgver = 1.40.3
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/groHMM
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-grohmm
 	optdepends = r-genomicfeatures
 	optdepends = r-org.hs.eg.db
 	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/groHMM_1.40.3.tar.gz
-	sha256sums = 2c5c187f42b084f304eeeb9fae11678de0d526780cb2cc9c5d21608533eda97f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/groHMM_1.42.0.tar.gz
+	sha256sums = ff6fbd55f4f1a6e49276d5ddebf2d48ac0c493e28c69b79fae2d51a519056589
 
 pkgname = r-grohmm
