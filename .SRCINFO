@@ -1,7 +1,7 @@
 pkgbase = screen-recorder-app
-	pkgdesc = A small video recorder application, built with Electron and tailwindcss.Use system-wide electron.
+	pkgdesc = A small video recorder application, built with Electron and tailwindcss.(Use system-wide electron)
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/petya0927/screen-recorder-app
 	arch = any
 	license = MIT
@@ -9,11 +9,12 @@ pkgbase = screen-recorder-app
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
+	makedepends = git
 	depends = electron25
 	conflicts = screen-recorder-app
-	source = screen-recorder-app-1.0.0.tar.gz::https://github.com/petya0927/screen-recorder-app/archive/refs/tags/v1.0.0.tar.gz
+	source = screen-recorder-app-1.0.0::git+https://github.com/petya0927/screen-recorder-app#tag=v1.0.0
 	source = screen-recorder-app.sh
-	sha256sums = 38791afdcc7a735b40ce92f98239faac10608fcfea56153f10c0dbe00317c0f2
+	sha256sums = 49f2640f731a5e1ed9349286382e3db6e29fa06faed394a41699dc0ab9e7428c
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = screen-recorder-app
