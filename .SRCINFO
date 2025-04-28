@@ -1,6 +1,6 @@
 pkgbase = r-inetgrate
 	pkgdesc = Integrates DNA methylation data with gene expression in a single gene network
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iNETgrate
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = r-inetgrate
 	optdepends = r-org.mm.eg.db
 	optdepends = r-sesamedata
 	optdepends = r-tcgabiolinks
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iNETgrate_1.4.0.tar.gz
-	md5sums = cb056d979ec3c5bea91f047f40cdd502
-	b2sums = 5c091608c0b0fb86cdb57514e17b7b71d15a89996a3996252d75ae3ccb29db8625a0012ec727a4532a60022efa8065f384025b68568912daca12c54d4f6e72ac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iNETgrate_1.6.0.tar.gz
+	md5sums = 46c2b19e59001967c7b1bab15441c88a
+	b2sums = b7f422d5827626f18c0bde19696563f25f917d1dada93a04404ddd47e12bd0a633ddddfe376193a067ea71734abcbd86bed3260abbb0ff7701bccb3868c7a1e8
 
 pkgname = r-inetgrate
