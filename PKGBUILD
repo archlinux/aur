@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.5.r123.g813f921a357
+pkgver=10.6.r71.gf7503d0a996
 pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
@@ -193,6 +193,9 @@ package() {
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
     dlldir="$pkgdir/usr/lib/wine" install
+
+  # Symlink for comptability with older scripts such as winetricks/setup_dxvk
+  ln -sf /usr/bin/wine "$pkgdir"/usr/bin/wine64
 
   # Strip Windows binaries
   i686-w64-mingw32-strip --strip-debug "$pkgdir"/usr/lib/wine/i386-windows/*.dll
