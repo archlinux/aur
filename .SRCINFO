@@ -1,6 +1,6 @@
 pkgbase = r-sctgif
 	pkgdesc = Cell type annotation for unannotated single-cell RNA-Seq data
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/scTGIF
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-sctgif
 	depends = r-tagcloud
 	depends = r-tibble
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTGIF_1.20.0.tar.gz
-	sha256sums = e7ccdcce146b3c92cbf21bb3e9c535318109fd0d5ba2e8bca47d34b8de18798a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/scTGIF_1.22.0.tar.gz
+	sha256sums = 5b87249bfc4f4c44c6e5a2edeb8d39057e8cc4365744d51f537473f576f99660
 
 pkgname = r-sctgif
