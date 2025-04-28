@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=daily_diary
 pkgname="${_appname//_/-}-bin"
-_pkgname="Daily-Diary"
-pkgver=1.4.3
-pkgrel=4
+_pkgname=Daily-Diary
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="An app to create a diary entry every day.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/Voklen/Daily-Diary"
@@ -21,13 +21,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Voklen/Daily-Diary/v${pkgver}/metadata/en-GB/images/icon.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d34fff1b1796c94403fb65ee30c507cf4348ef4d51d3caff1eda5acce809f538'
+sha256sums=('f84a5504748ed2257cb290bf69d17a8d9f5fbe3526c035fbc12614edcee60bef'
             'dc10c98253ebd96235ef66b2343a1f3a73a83d90ce7222fb81b8d5e79e6c341d'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 prepare() {
     sed -i -e "
-        s|@appname@|${pkgname%-bin}|g" \
-        s|@runname@|${_appname}|g" \
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/${_appname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
