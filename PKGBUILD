@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=plyinteractions
-_pkgver=1.4.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1dd6aab852245e89ebc7e2b1df6fff25')
-b2sums=('dc529b089ae778db2c117ea3a18cd86e75991f462c47aa4fdf4d1fc83edc0873667f7ec1a48a2c6a8cdbaa6d9b09980cf6727a0b076f53496d5280eedb1fc552')
+md5sums=('2b717f95be19fe69ba157a7030c94729')
+b2sums=('2796ede79888f3081d437602afc7417d65e8527f7ae6c24a052529f072ed59c738086d0d94831e66347512166fd5529410edff75ce84a1cc52a53bcd5372d02d')
 
 build() {
   mkdir build
