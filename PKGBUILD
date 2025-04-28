@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=sqlbox
 pkgdesc='Privilege-separated multiprocess secure database access library'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 url=https://kristaps.bsd.lv/sqlbox/
 license=(0BSD)
@@ -9,7 +9,7 @@ makedepends=(bmake sqlite3)
 depends=(glibc)
 arch=(x86_64)
 source=("${url}/snapshots/${pkgname}-${pkgver}.tar.gz")
-b2sums=('503ef014b3c55049bc9b41cbe729c0888a28e9c1821d6fc181b868cd4c8435bb09abb9741eebfcc6b07f4edcb8c237a30970c4b4858dc922b9704138ca32d266')
+b2sums=('33b163893319e549b7cc313ed74167f8f6251fea4a6925a5df488665785af9544a21ab3e02cab9fb70b2745e242854087b489daa7f4b4a6b70773a57ecf6ed5d')
 
 build () {
 	cd "${pkgname}-${pkgver}"
