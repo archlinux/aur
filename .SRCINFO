@@ -1,6 +1,6 @@
 pkgbase = python-proteus
 	pkgdesc = Library to access Tryton server as a client
-	pkgver = 7.4.1
+	pkgver = 7.6.0
 	pkgrel = 1
 	url = https://www.tryton.org
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-proteus
 	depends = python-defusedxml
 	depends = python-dateutil
 	optdepends = python-trytond: Trytond server
-	source = https://pypi.org/packages/source/p/proteus/proteus-7.4.1.tar.gz
-	sha512sums = 3f27678e9a765fb892502e013d0d53ed1c591ce20112ea79f02812cab669aa63b5f6d3a924da4925144c5e3b3bf6fc9903153a3840975be3af8298ee9fc21153
+	source = https://pypi.org/packages/source/p/proteus/proteus-7.6.0.tar.gz
+	sha512sums = 4b7e7aaf7df592eaf39db900d92956cee881823aa5f005eb7dd92db93cab320b611a7c1e027867d136f2f9b4b93b590068713c2627357dd52af223bace0eab39
 
 pkgname = python-proteus
