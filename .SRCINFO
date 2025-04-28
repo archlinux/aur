@@ -1,6 +1,6 @@
 pkgbase = chromium-dearrow-bin
 	pkgdesc = Crowdsourcing better titles and thumbnails on YouTube
-	pkgver = 2.0.8
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = https://github.com/ajayyy/DeArrow
 	install = chromium-dearrow.install
@@ -14,7 +14,7 @@ pkgbase = chromium-dearrow-bin
 	optdepends = brave
 	optdepends = ungoogled-chromium
 	provides = chromium-dearrow
-	source = chromium-dearrow-bin-2.0.8.zip::https://github.com/ajayyy/DeArrow/releases/download/2.0.8/ChromeExtension.zip
-	sha256sums = e34b33f385c4df75931c48e9a748e78fd2f04f861b1ba411b0c3a96a7195a28c
+	source = chromium-dearrow-bin-2.0.9.zip::https://github.com/ajayyy/DeArrow/releases/download/2.0.9/ChromeExtension.zip
+	sha256sums = 63523b03d27f434118374afc33a69e9441c3a31d1afeb54e3d9a508a66dfe566
 
 pkgname = chromium-dearrow-bin
