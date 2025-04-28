@@ -1,12 +1,12 @@
 pkgbase = disneyplus
 	pkgdesc = Unnofficial Disney+ desktop application
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/disneyplusdesktop/application
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
-	depends = electron-catlab-bin
+	depends = electron-castlab-bin
 	depends = libelectron
 	depends = nss
 	depends = gtk3
