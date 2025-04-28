@@ -10,7 +10,7 @@ pkgname=(
 )
 epoch=0
 pkgver=r285.20250218.a77250a
-pkgrel=1
+pkgrel=2
 pkgdesc="Test scripts for open source AMD graphics driver."
 arch=(
   'any'
@@ -62,7 +62,7 @@ _package_amdgpu-test-scripts-common() {
     "amd-psr-identification-script: The software this common files are for."
   )
   provides=()
-  conflicts=()
+  conflicts=("amd-debug-tools")
   replaces=()
   if [ -n "${_vcssuffix}" ]; then
     provides+=("amdgpu-test-scripts-common")
@@ -96,7 +96,7 @@ _package_amd-s2idle-analysis-script() {
     "util-linux:     To access the kernel log via 'dmesg'."
   )
   provides=()
-  conflicts=()
+  conflicts=("amd-debug-tools")
   replaces=()
   if [ -n "${_vcssuffix}" ]; then
     provides+=("amd-s2idle-analysis-script")
@@ -118,7 +118,7 @@ _package_amd-psr-identification-script() {
     'python-pyudev'
   )
   provides=()
-  conflicts=()
+  conflicts=("amd-debug-tools")
   replaces=()
   if [ -n "${_vcssuffix}" ]; then
     provides+=("amd-psr-identification-script")
