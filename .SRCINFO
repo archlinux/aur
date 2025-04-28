@@ -1,0 +1,23 @@
+pkgbase = bzmenu-git
+	pkgdesc = Launcher-driven Bluetooth manager for Linux
+	pkgver = 0.2.0.r0.g5ea334f
+	pkgrel = 1
+	url = https://github.com/e-tho/bzmenu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = dbus
+	depends = bluez
+	provides = bzmenu=0.2.0.r0.g5ea334f
+	conflicts = bzmenu-bin
+	conflicts = bzmenu
+	options = !debug
+	options = !strip
+	source = bzmenu::git+https://github.com/e-tho/bzmenu.git
+	sha256sums = SKIP
+
+pkgname = bzmenu-git
