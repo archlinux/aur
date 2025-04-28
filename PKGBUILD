@@ -2,16 +2,16 @@
 # Contributor: Rax Garfield <admin at dvizho.ks.ua>
 
 pkgname=hunspell-uk
-pkgver=6.5.4
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="Ukrainian spelling dictionary"
 arch=(any)
 url=https://github.com/brown-uk/dict_uk
 license=(GPL-3.0-or-later CC-BY-NC-SA-4.0)
 optdepends=('hunspell: the spell checking libraries and apps')
-makedepends=(java-environment gradle qt5-webengine)
+makedepends=('java-environment<24' gradle qt5-webengine)
 source=($pkgname-$pkgver.tar.gz::https://github.com/brown-uk/dict_uk/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('a22e3d6bc19f089f5c574e4f5497ca6667c1d4495ee7d33daef864e98d3d168a')
+sha256sums=('75b2bf919b1f78251a7cdb32052a88efebab6d197e87b9b476ff7fad7ef02ae7')
 
 build() {
   cd "$srcdir/dict_uk-$pkgver"

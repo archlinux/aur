@@ -1,16 +1,16 @@
 pkgbase = hunspell-uk
 	pkgdesc = Ukrainian spelling dictionary
-	pkgver = 6.5.4
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://github.com/brown-uk/dict_uk
 	arch = any
 	license = GPL-3.0-or-later
 	license = CC-BY-NC-SA-4.0
-	makedepends = java-environment
+	makedepends = java-environment<24
 	makedepends = gradle
 	makedepends = qt5-webengine
 	optdepends = hunspell: the spell checking libraries and apps
-	source = hunspell-uk-6.5.4.tar.gz::https://github.com/brown-uk/dict_uk/archive/refs/tags/v6.5.4.tar.gz
-	sha256sums = a22e3d6bc19f089f5c574e4f5497ca6667c1d4495ee7d33daef864e98d3d168a
+	source = hunspell-uk-6.6.1.tar.gz::https://github.com/brown-uk/dict_uk/archive/refs/tags/v6.6.1.tar.gz
+	sha256sums = 75b2bf919b1f78251a7cdb32052a88efebab6d197e87b9b476ff7fad7ef02ae7
 
 pkgname = hunspell-uk
