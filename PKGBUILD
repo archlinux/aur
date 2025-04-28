@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=recipes
-_pkgver=1.1.0
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,6 +32,7 @@ depends=(
   r-timedate
   r-vctrs
   r-withr
+  r-sparsevctrs
 )
 checkdepends=(
   r-ddalpha
@@ -49,7 +50,6 @@ checkdepends=(
   r-rspectra
   r-splines2
   r-testthat
-  r-workflows
 )
 optdepends=(
   r-covr
@@ -72,8 +72,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ee911057a93ba41dd3054d9ff2cb671c')
-b2sums=('8bb1d62416a810a0d04f77f73483abc1d0e04a257cfbf2886f431e8f170d2b27d9f0a4a59336bc5c8c5928853274a405189522ec8344dd9eb8481f3051d1c49e')
+md5sums=('8e123dd18f9f27b51c3f4af13bcdb6e9')
+b2sums=('0e46f706e427d00b19e6148bdef30e7ff9e2a7df4597723a8dc31a8c2e5b9cbd8339f8bfee99365ff6f0e03ac2d62163762d24335db6f9345abd602d6b2e91a7')
 
 build() {
   mkdir build
