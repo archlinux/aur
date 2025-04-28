@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Hammond <benjaminphammond@gmail.com>
 pkgname=org
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Suckless second brain"
 arch=('any')
