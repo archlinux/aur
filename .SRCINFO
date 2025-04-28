@@ -1,6 +1,6 @@
 pkgbase = r-methrix
 	pkgdesc = Fast and efficient summarization of generic bedGraph files from Bisufite sequencing
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methrix
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-methrix
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methrix_1.20.0.tar.gz
-	sha256sums = ee612ef6232d87fd94919151bc2b8b9c90cf82c430f62274639009a4ed383923
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methrix_1.22.0.tar.gz
+	sha256sums = c9d41b04798c84022298b3fc219c58201da52038721da68e637e47a1a2848b0d
 
 pkgname = r-methrix
