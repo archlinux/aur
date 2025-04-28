@@ -1,6 +1,6 @@
 pkgbase = r-hpar
 	pkgdesc = Human Protein Atlas in R
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hpar
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-hpar
 	optdepends = r-org.hs.eg.db
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hpar_1.48.0.tar.gz
-	sha256sums = cacb57b67eb886fe6a3c97057dff8fb094d8787fc51b071667d2ed4af314752c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hpar_1.50.0.tar.gz
+	sha256sums = f297ba0eba8be504eccb1360454bbff315fe9b98363a4a3bbb32245a0aea22e4
 
 pkgname = r-hpar
