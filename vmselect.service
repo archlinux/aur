@@ -9,8 +9,9 @@ Wants=network-online.target nss-lookup.target
 [Service]
 User=victoriametrics
 Group=victoriametrics
+WorkingDirectory=/var/lib/victoriametrics
 EnvironmentFile=-/etc/conf.d/vmselect
-ExecStart=/usr/bin/vmselect --loggerDisableTimestamps --loggerOutput="stdout" $VMSELECT_ARGS
+ExecStart=/usr/bin/vmselect --cacheDataPath="/var/lib/victoriametrics" --loggerDisableTimestamps --loggerOutput="stdout" $VMSELECT_ARGS
 ExecStop=/bin/kill -s SIGTERM $MAINPID
 ExecReload=/bin/kill -HUP $MAINPID
 LimitNOFILE=1048576
