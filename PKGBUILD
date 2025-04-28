@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=GNOSIS
-_pkgver=1.2.0
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -42,8 +42,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('36df6ab9836ea74234d54fba619a0e63')
-b2sums=('559e13ad1c9fec582e86ceeb6f67711309f7afc58ae1de35005c3cc3380046c7d4b659ec2d036967992f8cf4464fef0d12b512e21d61233e4c175ccc0c932bb9')
+md5sums=('4be76b3bc8c342411ef7f8758540b5e2')
+b2sums=('7f743302ce0cdde6b84401f12f77b6570d96fc2a348ec2986204896dab29b3b152dca5ee9ec18fc9eb3da6085c3a8b4bd59d7ce30743b0e658e3d9a58c95bb04')
 
 build() {
   mkdir build
