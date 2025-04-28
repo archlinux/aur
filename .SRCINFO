@@ -1,6 +1,6 @@
 pkgbase = walrs
 	pkgdesc = A fast color scheme generator
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Pixel2175/walrs
 	arch = x86_64
