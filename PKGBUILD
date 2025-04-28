@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=topdownr
-_pkgver=1.28.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Investigation of Fragmentation Conditions in Top-Down Proteomics'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-xml2
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0bba2c2ef1277e7d0b05b7806f4d4db364afae36676c61807edb24fe3d497a14')
+sha256sums=('5e88e513d78d43da4353cd90842d8396e711d59370c1c3395e048649314dd8c0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
