@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=masscode-git
 _pkgname=massCode
-pkgver=3.11.0.r1.ge884d70
+pkgver=3.12.0.r0.g18e44e1
 _electronversion=16
 _nodeversion=18
 pkgrel=1
-pkgdesc="A free and open source code snippets manager for developers.Use system-wide electron."
+pkgdesc="A free and open source code snippets manager for developers.(Use system-wide electron)"
 arch=('any')
 url="https://masscode.io/"
 _ghurl="https://github.com/massCodeIO/massCode"
@@ -16,6 +16,7 @@ makedepends=(
     'git'
     'nvm'
     'curl'
+    'gendesk'
 )
 depends=(
     "electron${_electronversion}"
@@ -38,14 +39,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -60,21 +61,28 @@ build() {
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
-        echo "shell-emulator=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
     sed -i "s/snap/dir/g" config/electron-builder.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
-    NODE_ENV=production     pnpm run build
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     pnpm run ts-check:vue
+    NODE_ENV=production     pnpm run copy:plist
+    NODE_ENV=production     pnpm run build:ts
+    NODE_ENV=production     pnpm -c node build/scripts/build.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
