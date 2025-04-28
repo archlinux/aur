@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elevate-git
-pkgver=7.2.0.r1.g3316006
+pkgver=7.2.1.r1.g9ddddb4
 _electronversion=27
 _nodeversion=18
 pkgrel=1
@@ -8,7 +8,7 @@ pkgdesc="A sport app to 'Elevate' your training experience and goals! Track your
 arch=('any')
 url="https://thomaschampagne.github.io/elevate-docs/"
 _ghurl="https://github.com/thomaschampagne/elevate"
-license=('MIT')
+license=('MPL-2.0')
 depends=(
     "electron${_electronversion}"
 )
@@ -37,8 +37,8 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
@@ -48,30 +48,51 @@ build() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         echo appcore desktop webextension | xargs -n 1 cp .npmrc
     fi
+    sed -i -e "
+        s/npm install/NODE_ENV=development npm install/g
+        s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
+    " package.json
     NODE_ENV=development    npm add -D husky
     NODE_ENV=development    npm install
+}
+build() {
     cd "${srcdir}/${pkgname//-/.}/desktop"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build:prod
     NODE_ENV=production     npm exec -c "electron-builder build --linux dir -c.electronDist=${electronDist}"
+    rm -rf "${srcdir}/${pkgname//-/.}/desktop/package/linux-"*/resources/app.asar.unpacked/node_modules/7zip-bin/mac
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/${pkgname//-/.}/desktop/package/linux-"*/resources/app.asar.unpacked/node_modules/7zip-bin/linux/{arm,ia32,x64}
+            ;;
+        armv7h)
+            rm -rf "${srcdir}/${pkgname//-/.}/desktop/package/linux-"*/resources/app.asar.unpacked/node_modules/7zip-bin/linux/{arm64,ia32,x64}
+            ;;
+        i686)
+            rm -rf "${srcdir}/${pkgname//-/.}/desktop/package/linux-"*/resources/app.asar.unpacked/node_modules/7zip-bin/linux/{arm,arm64,x64}
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/${pkgname//-/.}/desktop/package/linux-"*/resources/app.asar.unpacked/node_modules/7zip-bin/linux/{arm,arm64,ia32}
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
