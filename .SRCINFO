@@ -1,0 +1,53 @@
+pkgbase = jdk23-temurin
+	pkgdesc = Temurin 23 (OpenJDK 23 Java binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 23.0.2.u7
+	pkgrel = 1
+	url = https://adoptium.net/
+	install = install_jdk23-temurin.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime-headless=23
+	provides = java-runtime-headless-openjdk=23
+	provides = java-runtime=23
+	provides = java-runtime-openjdk=23
+	provides = java-environment=23
+	provides = java-environment-openjdk=23
+	provides = jdk23-openjdk=23.0.2.u7
+	provides = jdk-openjdk=23.0.2.u7
+	provides = openjdk23-src=23.0.2.u7
+	provides = openjdk-src=23.0.2.u7
+	options = !strip
+	backup = etc/java-23-temurin/logging.properties
+	backup = etc/java-23-temurin/management/jmxremote.access
+	backup = etc/java-23-temurin/management/jmxremote.password.template
+	backup = etc/java-23-temurin/management/management.properties
+	backup = etc/java-23-temurin/net.properties
+	backup = etc/java-23-temurin/sdp/sdp.conf.template
+	backup = etc/java-23-temurin/security/java.policy
+	backup = etc/java-23-temurin/security/java.security
+	backup = etc/java-23-temurin/security/policy/limited/default_local.policy
+	backup = etc/java-23-temurin/security/policy/limited/default_US_export.policy
+	backup = etc/java-23-temurin/security/policy/limited/exempt_local.policy
+	backup = etc/java-23-temurin/security/policy/README.txt
+	backup = etc/java-23-temurin/security/policy/unlimited/default_local.policy
+	backup = etc/java-23-temurin/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-23-temurin/sound.properties
+	source = https://github.com/adoptium/temurin23-binaries/releases/download/jdk-23.0.2%2B7/OpenJDK23U-jdk_x64_linux_hotspot_23.0.2_7.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 870ac8c05c6fe563e7a3878a47d0234b83c050e83651d2c47e8b822ec74512dd
+	sha256sums = 858f1e7700a3c5658ea2b3874f3ad32b1ffffd1e93c21f7d16b57095c307183d
+	sha256sums = 41af2cbeed31a4f463f22fb409de9efe16b38904cdb5b104ae9414d9a7845a03
+	sha256sums = 177e31fa4be661c04b6294e6611ee8630dbd303d896ccaa10454511bf72bf63f
+
+pkgname = jdk23-temurin
