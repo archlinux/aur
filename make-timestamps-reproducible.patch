@@ -1,0 +1,44 @@
+Description: Make .h timestamps in .pch file reproducible
+
+Full reproducibility also requires a fixed build path
+and the LLVM/Clang patch in the referenced bug.
+
+Author: Rebecca N. Palmer <rebecca_palmer@zoho.com>
+Bug-Debian: https://bugs.debian.org/877359
+Forwarded: https://lists.freedesktop.org/archives/beignet/2019-January/009223.html
+
+--- a/backend/src/libocl/CMakeLists.txt
++++ b/backend/src/libocl/CMakeLists.txt
+@@ -229,6 +229,8 @@ ADD_CUSTOM_COMMAND(OUTPUT ${OCL_OBJECT_D
+ 
+ ADD_CUSTOM_COMMAND(OUTPUT ${OCL_OBJECT_DIR}/beignet.local.pch
+     COMMAND mkdir -p ${OCL_OBJECT_DIR}
++    # the tests are this way round to return success whether or not SOURCE_DATE_EPOCH is set
++    COMMAND test -z $ENV{SOURCE_DATE_EPOCH} || touch -d '@$ENV{SOURCE_DATE_EPOCH}' ${OCL_OBJECT_DIR}/include/*.h
+     COMMAND ${CLANG_EXECUTABLE} -cc1 ${CLANG_OCL_FLAGS} -I ${OCL_OBJECT_DIR}/include/ -emit-pch -x cl ${OCL_OBJECT_DIR}/include/ocl.h -o ${OCL_OBJECT_DIR}/beignet.local.pch
+     DEPENDS ${OCL_HEADER_FILES}
+     COMMENT "Generate the pch file: ${OCL_OBJECT_DIR}/beignet.local.pch"
+@@ -236,6 +238,7 @@ ADD_CUSTOM_COMMAND(OUTPUT ${OCL_OBJECT_D
+ 
+ ADD_CUSTOM_COMMAND(OUTPUT ${OCL_OBJECT_DIR}/beignet.pch
+     COMMAND mkdir -p ${OCL_OBJECT_DIR}
++    COMMAND test -z $ENV{SOURCE_DATE_EPOCH} || touch -d '@$ENV{SOURCE_DATE_EPOCH}' ${OCL_OBJECT_DIR}/include/*.h
+     COMMAND ${CLANG_EXECUTABLE} -cc1 ${CLANG_OCL_FLAGS} -I ${OCL_OBJECT_DIR}/include/ --relocatable-pch -emit-pch -isysroot ${LIBOCL_BINARY_DIR} -x cl ${OCL_OBJECT_DIR}/include/ocl.h -o ${OCL_OBJECT_DIR}/beignet.pch
+     DEPENDS ${OCL_HEADER_FILES}
+     COMMENT "Generate the pch file: ${OCL_OBJECT_DIR}/beignet.pch"
+@@ -273,6 +276,7 @@ if (ENABLE_OPENCL_20)
+ 
+   ADD_CUSTOM_COMMAND(OUTPUT ${OCL_OBJECT_DIR}/beignet_20.local.pch
+     COMMAND mkdir -p ${OCL_OBJECT_DIR}
++    COMMAND test -z $ENV{SOURCE_DATE_EPOCH} || touch -d '@$ENV{SOURCE_DATE_EPOCH}' ${OCL_OBJECT_DIR}/include/*.h
+     COMMAND ${CLANG_EXECUTABLE} -cc1 ${CLANG_OCL_FLAGS_20} -I ${OCL_OBJECT_DIR}/include/ -emit-pch -x cl ${OCL_OBJECT_DIR}/include/ocl.h -o ${OCL_OBJECT_DIR}/beignet_20.local.pch
+     DEPENDS ${OCL_HEADER_FILES}
+     COMMENT "Generate the pch file: ${OCL_OBJECT_DIR}/beignet_20.local.pch"
+@@ -280,6 +284,7 @@ if (ENABLE_OPENCL_20)
+ 
+   ADD_CUSTOM_COMMAND(OUTPUT ${OCL_OBJECT_DIR}/beignet_20.pch
+     COMMAND mkdir -p ${OCL_OBJECT_DIR}
++    COMMAND test -z $ENV{SOURCE_DATE_EPOCH} || touch -d '@$ENV{SOURCE_DATE_EPOCH}' ${OCL_OBJECT_DIR}/include/*.h
+     COMMAND ${CLANG_EXECUTABLE} -cc1 ${CLANG_OCL_FLAGS_20} -I ${OCL_OBJECT_DIR}/include/ --relocatable-pch -emit-pch -isysroot ${LIBOCL_BINARY_DIR} -x cl ${OCL_OBJECT_DIR}/include/ocl.h -o ${OCL_OBJECT_DIR}/beignet_20.pch
+     DEPENDS ${OCL_HEADER_FILES}
+     COMMENT "Generate the pch file: ${OCL_OBJECT_DIR}/beignet_20.pch"
