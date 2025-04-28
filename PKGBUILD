@@ -3,7 +3,7 @@ pkgname=pdf4qt-bin
 _pkgname=PDF4QT
 _appname=Pdf4qt
 _runname=Pdf4Qt
-pkgver=1.5.0.0
+pkgver=1.5.1.0
 pkgrel=1
 pkgdesc="Open source PDF editor(Prebuilt version)"
 arch=('x86_64')
@@ -13,19 +13,18 @@ license=('LGPL-3.0-only')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}=${pkgver}")
 depends=(
-	'libjpeg-turbo'
-	'qt6-speech'
-	'qt6-svg'
-	'qt6-base'
-	'openjpeg2'
-	'onetbb'
-	'lcms2'
-	'freetype2'
-	'gstreamer'
-	'gst-plugins-base-libs'
+    'openssl'
+    'libjpeg-turbo'
+    'qt6-speech'
+    'qt6-svg'
+    'qt6-base'
+    'openjpeg2'
+    'onetbb'
+    'lcms2'
+    'blend2d'
 )
 makedepends=(
-    'asar'
+    'fuse'
 )
 optdepends=(
 	'flite: Text-To-Speech using flite synthesizer',
@@ -34,9 +33,11 @@ optdepends=(
 source=(
 	"${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
 )
-sha256sums=('708fa1c7baf98a8f5ee2f6780828ceccd7d02e5dab0392b242d11597ead02ce7')
+sha256sums=('74fb5be1e17555e3a5f5c4584c95273a737dc104bd227cd18a7d4fde624e36f1')
 prepare() {
-	chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+	if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
