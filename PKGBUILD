@@ -9,7 +9,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r54368.802e95f5808
+pkgver=r54896.aab732cb826
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -29,13 +29,18 @@ optdepends=('sshpass: for ssh connections with password'
             'python-pip: for module to manage Python libarary dependencies'
             'python-setuptools: for module to manage Python libarary dependencies')
 makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
-source=($pkgname::git+https://github.com/ansible/ansible.git)
-sha512sums=('SKIP')
+source=($pkgname::git+https://github.com/ansible/ansible.git
+        'relax_setuptools_version_requirements.patch')
+sha512sums=('SKIP'
+            '32373b7d57590033ab3c0a0a14b7d73189f6e9688ad5934e69a3a4332f027f8edd59a71d7559f786b0089121e5a99e289646607b4f08f02223a9c445590c7c28')
 
 prepare() {
   cd "$pkgname"
-  # remove the resolvelib upper boundary (at least for < 0.9.0): https://github.com/ansible/ansible/pull/79399
-  sed -e 's/resolvelib.*/resolvelib/' -i requirements.txt
+
+  # Temporary patch to allow building with latest setuptools
+  # Currently, upstream has set the upper version version bound for it at `< 72.1.0`
+  # See https://github.com/ansible/ansible/blob/devel/pyproject.toml#L2
+  patch -Np1 < "${srcdir}/relax_setuptools_version_requirements.patch"
 }
 
 pkgver() {
