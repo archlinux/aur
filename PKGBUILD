@@ -18,11 +18,12 @@ _opt_bits=64 # 32 or 64
 set -u
 pkgname='comcom32'
 #pkgname+='-git'
-_pkgver='alpha-3'
-_opt_commit='#commit=c10e1c9ed2d133fa1e50eaacc4b0a38d361e1762' # only applies to non git
+_pkgver='0.2'
+#_opt_commit="#tag=${_pkgver}" # only applies to non git
+_opt_commit='#commit=1ce86cee50940875dc7f6b74915faa01f6967097' # only applies to non git
 # pkgver="0.0.${_pkgver//-/_}" # copy this line and set _opt_commit
 pkgver="0.0.${_pkgver//-/_}"
-pkgrel=3
+pkgrel=1
 pkgdesc="${_opt_bits} bit command interpreter for fdpp and dosemu2"
 arch=('any')
 url='https://github.com/dosemu2/comcom64'
@@ -39,14 +40,14 @@ _srcdir="comcom64-${_pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-md5sums=('e88107a6cefb8cd4565c4a747e840c8f')
-sha256sums=('35f60a46b97c106a24c43920dc2c23e4f127d5b0e89f03157edefd1714c7a44b')
-b2sums=('7dff12078ef8d59ed53f3d674f835478111ead5ac61a568ce3c936efc1bcce34c36b4ff26cf3c39146888ea50033efcd150f3ad19d4bc171350a3d2d52133842')
+md5sums=('27cf34e6a38669fc53c5bfba9e81951a')
+sha256sums=('d57e81be2c901d3d69f1584b8db8a0482b776fe5b05ff56d69d46ffa5080a442')
+b2sums=('f820d1705a3cb728e2a32f1da35d388729244b1e82ca65edbf3724171a5f63c85d6a7d85c4cac686254587dfa5fc4c5e7ec6452f0f9abb78c80a898b6aa428ed')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   _opt_commit=''
 fi
-if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_opt_commit}" ]; then
+if [ "${pkgname%-git}" != "${pkgname}" ] || [ ! -z "${_opt_commit}" -a "${_opt_commit/#tag/}" = "${_opt_commit}" ]; then
   source[0]="git+${url}.git${_opt_commit}"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
