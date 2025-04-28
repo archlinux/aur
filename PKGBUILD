@@ -6,7 +6,7 @@ pkgver=1.19.8
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (mingw-w64)'
 url='https://github.com/strukturag/libheif'
-license=('LGPL-3.0-only')
+license=('LGPL-3.0-or-later')
 depends=(
 	'mingw-w64-crt'
 	'mingw-w64-libpng'
