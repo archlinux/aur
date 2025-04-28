@@ -1,63 +1,24 @@
 # Maintainer: TrueConf LLC <packager@trueconf.com>
+
 pkgbase='trueconf-client'
 pkgname='trueconf'
-pkgver='8.5.0.2021'
+pkgver=$BUILD_VERSION
 pkgrel='1'
 pkgdesc='TrueConf for Linux is a video conferencing app with advanced collaboration tools and user-friendly UI. All you need to get started is any PC or laptop with an Internet connection.'
 arch=('x86_64')
 url='https://trueconf.com'
-mirror='https://mirror.trueconf.com/archlinux'
+mirror='https://packages.trueconf.ru/archlinux'
 license=('custom:trueconf')
-depends=('alsa-utils'
-         'bzip2'
-         'curl'
-         'dbus'
-         'openssl'
-         'glib2'
-         'icu'
-         'lame'
-         'libglvnd'
-         'libidn'
-         'libsystemd'
-         'libx11'
-         'ghostscript'
-         'libxcb'
-         'libxext'
-         'libxrandr'
-         'c-ares'
-         'libxss'
-         'speex'
-         'speexdsp'
-         'sqlite'
-         'v4l-utils'
-         'zlib'
-         'systemd'
-         'intel-media-sdk'
-         'gsl'
-         'krb5'
-         'double-conversion'
-         'libxcomposite'
-         'libxdamage'
-         'libxfixes'
-         'avahi'
-         'mesa-utils'
-         'hunspell'
-         'opencv'
-         'libxtst'
-         'nss'
-         'libxslt'
-         'minizip'
-         'md4c'
-         'xcb-util-cursor'
-         'xcb-util-keysyms'
-         'xcb-util-wm'
-         'xcb-util-renderutil'
-         'xcb-util-image'
+depends=('freetype2' 'lame' 'libidn' 'speex' 'v4l-utils' 'libxext' 'libx11' 'libxcb'
+         'libxrandr' 'libxdamage' 'libxcomposite' 'libxtst' 'libxss' 'libxcursor'
+         'libxkbcommon' 'libxkbcommon-x11' 'alsa-lib' 'hunspell' 'gsl' 'libmfx'
+         'libva' 'opencv' 'c-ares' 'avahi' 'nss' 'xcb-util-wm' 'xcb-util-keysyms'
+         'xcb-util-image' 'xcb-util-renderutil' 'double-conversion' 'gtk3' 'lshw'
         )
 install="${pkgname}.install"
 _channel=stable
-source=("https://mirror.trueconf.com/archlinux/trueconf-${pkgver}-1-x86_64.pkg.tar.zst")
-sha512sums=('a3331bc1927062bab8366f9639ca7e297aa35510db904fbb5207cd0f73aec47fb206affe80524b10005214f804dae27e7b40dfa881697512fda8c4e0db552ed4')
+source=("$mirror/$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst")
+sha512sums=('2b36a7eac09ae54d3cd5ac3f59f8d63169c0f6b72c5841081e399497b499585b09bebd7e0ebb86cbec6e1a9c34b97e1e1440f3aac341732fe8019793f485e158')
 
 package() {
   cd "${srcdir}"
