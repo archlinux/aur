@@ -4,7 +4,7 @@
 
 pkgname=gns3-gui
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=(any)
 url='https://github.com/GNS3/gns3-gui'
@@ -17,7 +17,6 @@ depends=(
     python-psutil
     python-pyqt5
     python-pyqt5-sip
-    python-sentry_sdk
     python-truststore
     qt5-svg
     qt5-websockets
@@ -29,6 +28,7 @@ makedepends=(
 )
 optdepends=(
     'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM'
+    'python-sentry_sdk: Python SDK for Sentry.io'
     'xterm: Default terminal emulator for CLI management of virtual instances'
     'wireshark-qt: Live packet capture')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
