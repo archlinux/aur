@@ -17,6 +17,7 @@ optdepends=('streamlink: For piping streams to video players'
 'qt6-wayland: Wayland support')
 provides=(chatterino)
 conflicts=(chatterino)
+options=(!strip) #done
 source=("https://github.com/Chatterino/pkg/releases/download/stable-${_id}/chatterino-arch-linux-${arch}.tar.zst")
 sha256sums=('8ad79b256a9ca488451eb807b73b634175fa8f1c279dac664036f8a46d4bca9d')
 package() {
