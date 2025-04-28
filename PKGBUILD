@@ -5,8 +5,8 @@
 pkgname='koi-git'
 _pkgname='koi'
 __pkgname='Koi'
-pkgver=0.5.r0.g7f4b314
-pkgrel=2
+pkgver=0.5.1.r0.ge90b850
+pkgrel=1
 pkgdesc="Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/baduhai/Koi"
@@ -27,8 +27,9 @@ pkgver() {
 }
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
-          -S "${srcdir}/${_pkgname}/src/" \
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/" \
+          -S "${srcdir}/${_pkgname}/" \
           -B "${srcdir}/${_pkgname}/build/"
 
     cmake --build "${srcdir}/${_pkgname}/build/" --parallel
@@ -37,7 +38,7 @@ build() {
 package() {
     cmake --install "${srcdir}/${_pkgname}/build/"
 
-# Checking `pkgdir` ...
+# Check the Application .DESKTOP file & Look for Duplicates within `pkgdir` ...
     desktop-file-validate "${pkgdir}/usr/share/applications/local.${__pkgname}DbusInterface.desktop"
     fdupes -r -s          "${pkgdir}/"
 }

@@ -1,7 +1,7 @@
 pkgbase = koi-git
 	pkgdesc = Scheduled LIGHT/DARK Theme Switching for the KDE Plasma Desktop
-	pkgver = 0.5.r0.g7f4b314
-	pkgrel = 2
+	pkgver = 0.5.1.r0.ge90b850
+	pkgrel = 1
 	url = https://github.com/baduhai/Koi
 	arch = x86_64
 	arch = aarch64
