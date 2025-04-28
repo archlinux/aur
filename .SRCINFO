@@ -1,6 +1,6 @@
 pkgbase = jiwu-mall-chat-bin
 	pkgdesc = A lightweight multi-platform chat application that can be used anytime, anywhere.(Prebuilt version)一个轻量的多端随时随地的聊天应用 ✨
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://chat.jiwu.kiwi233.top
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = jiwu-mall-chat-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = jiwu-mall-chat=1.6.6
+	provides = jiwu-mall-chat=1.6.7
 	conflicts = jiwu-mall-chat
-	source = jiwu-mall-chat-1.6.6.rpm::https://github.com/KiWi233333/jiwu-mall-chat-tauri/releases/download/v1.6.6/JiwuChat-1.6.6-1.x86_64.rpm
-	sha256sums = 9363b53b67290981f455b34bb0d454bae1751077168ddd9a649adc8faa595e55
+	source = jiwu-mall-chat-1.6.7.rpm::https://github.com/KiWi233333/jiwu-mall-chat-tauri/releases/download/v1.6.7/JiwuChat-1.6.7-1.x86_64.rpm
+	sha256sums = eb9f4b891ffaa8c3b03ca30bcdbcd6eafee8d6613dfa801768eaa73cf2d8e668
 
 pkgname = jiwu-mall-chat-bin
