@@ -2,7 +2,7 @@
 
 _pkgname=3dtk
 pkgname="$_pkgname-git"
-pkgver=r2357.af0e03d
+pkgver=r2369.cf1a8bc
 pkgrel=1
 pkgdesc='3D Toolkit with algorithms and methods to process 3D point clouds'
 url='https://slam6d.sourceforge.io'
@@ -30,12 +30,10 @@ depends=(findutils
 	 apriltag
 	 ann)
 source=("$pkgname::git+https://github.com/JMUWRobotics/3DTK.git"
-	apriltag.patch
-	cacheManager.patch
+	"git+https://github.com/JMUWRobotics/CCTag.git"
 	3dtk.sh)
 sha512sums=('SKIP'
-            '064c980b6817aac39bfccb64315cfec07e290451c1fcedaee4492a50694d2a489296bcf7ded39d2fa877a10f83f7e19c4cd9e6ab15fca7be9afa34cc4be8056f'
-            'a4987e473e86c77b85b6e71bfff4149c8e8fd63574dba1a66afbe70dd849cdeff27055d17025c3487ce5fc48ee7acefa1cfd7600c0d40a3d688c06daf3bc29af'
+            'SKIP'
             'e352631c55938430af765948ef73a16c855f2147b5cab9ec33cbdc438ee0f28bb32cd96f4f2ff96f773de153de72d3b8ff0f51f5076227e181db9eac653b9e36')
 
 pkgver() {
@@ -48,11 +46,10 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+	git submodule init
+	git config submodule.libs/cctag.url "$srcdir/CCTag"
+	git -c protocol.file.allow=always submodule update
 	
-	for f in "$srcdir"/*.patch; do
-		git apply < "$f"
-	done
-
 	# set package binary paths to /opt/3dtk in every included script
 	sed -i 's,\([^/]\)bin/,\1/opt/3dtk/,g' bin/*.sh
 }
@@ -66,6 +63,11 @@ build() {
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 		-DWITH_COMPACT_OCTREE=ON \
 		-DWITH_OPENMP=ON \
+		-DWITH_CALIB=ON \
+		-DWITH_CGAL=ON \
+		-DWITH_EIGEN3=ON \
+		-DWITH_GLFW=ON \
+		-DWITH_GMP=ON \
 		-Wno-dev \
 		"$srcdir/$pkgname"
 

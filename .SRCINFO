@@ -1,6 +1,6 @@
 pkgbase = 3dtk-git
 	pkgdesc = 3D Toolkit with algorithms and methods to process 3D point clouds
-	pkgver = r2357.af0e03d
+	pkgver = r2369.cf1a8bc
 	pkgrel = 1
 	url = https://slam6d.sourceforge.io
 	arch = x86_64
@@ -29,12 +29,10 @@ pkgbase = 3dtk-git
 	conflicts = 3dtk-svn
 	replaces = 3dtk-svn
 	source = 3dtk-git::git+https://github.com/JMUWRobotics/3DTK.git
-	source = apriltag.patch
-	source = cacheManager.patch
+	source = git+https://github.com/JMUWRobotics/CCTag.git
 	source = 3dtk.sh
 	sha512sums = SKIP
-	sha512sums = 064c980b6817aac39bfccb64315cfec07e290451c1fcedaee4492a50694d2a489296bcf7ded39d2fa877a10f83f7e19c4cd9e6ab15fca7be9afa34cc4be8056f
-	sha512sums = a4987e473e86c77b85b6e71bfff4149c8e8fd63574dba1a66afbe70dd849cdeff27055d17025c3487ce5fc48ee7acefa1cfd7600c0d40a3d688c06daf3bc29af
+	sha512sums = SKIP
 	sha512sums = e352631c55938430af765948ef73a16c855f2147b5cab9ec33cbdc438ee0f28bb32cd96f4f2ff96f773de153de72d3b8ff0f51f5076227e181db9eac653b9e36
 
 pkgname = 3dtk-git
