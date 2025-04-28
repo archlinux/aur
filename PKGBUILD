@@ -1,21 +1,25 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=physfs-git
-pkgver=3.2.0.r1.gbfa7997
+pkgver=3.3.0.r1600.gadfdec6
 pkgrel=1
 pkgdesc="A portable, flexible file i/o abstraction (development version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://icculus.org/physfs/"
-license=('zlib')
+license=('Zlib')
+depends=('glibc')
 makedepends=('git' 'cmake' 'ninja' 'doxygen')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git+https://github.com/icculus/physfs.git#branch=stable-3.2")
+source=("git+https://github.com/icculus/physfs.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
-  git describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
+
+  printf "%s.r%s.g%s" \
+    "$(grep -m1 PHYSFS_VERSION CMakeLists.txt | tr -cd '0-9.')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -34,7 +38,7 @@ package() {
     install -d "$pkgdir"/usr/share/{doc/physfs,man/man3}
     install -m644 html/* "$pkgdir"/usr/share/doc/physfs
     install -m644 man/man3/PHYSFS_* "$pkgdir"/usr/share/man/man3
-    # prefix manual pages with PHYSFS_
+    # prefix other manual pages with PHYSFS_
     find man/man3/ -type f -not \( -name "PHYSFS_*.3" -o -name "_*" \) -printf "%f\0" | \
       xargs -0 -I{} install -m644 man/man3/{} "$pkgdir"/usr/share/man/man3/PHYSFS_{}
   )
