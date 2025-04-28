@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=stJoincount
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('94c4eeaaa629a3a0f2ddf84ed2f602bb')
-b2sums=('a5376c0293b848ad5d429d2c08d883d5e9cd09ecb18f079ee1d71b0f8aaf06928c7fa93410989ac660f420d170d1034d6f8ef05a335e24b5a2f7bbaa53e464dc')
+md5sums=('3c12b7ae52caed7a795a08312ee76156')
+b2sums=('12702ae37817b7894451b5ef625022e33987338fa0ca298659494964530cb7b9cc7856de7944fa4d0bd5969faec28dfe15941c1cf2a3b659e72afb4bcdc70841')
 
 build() {
   mkdir build
