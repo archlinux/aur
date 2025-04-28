@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spiky
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='Spike-in calibration for cell-free MeDIP'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9805932ac71b4682483d54210e411ae4732cbf37e4c305675457b804fdb4b2cd')
+sha256sums=('9203c2afeb999716c8e49a4f0defaed4c31ff5617149ddeab0a94cf49cae4db4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
