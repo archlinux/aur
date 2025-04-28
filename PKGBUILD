@@ -2,7 +2,7 @@
 # Contributor: Jan Heczko <jan dot heczko at gmail dot com>
 _base=ipyopt
 pkgname=python-${_base}
-pkgver=0.12.9
+pkgver=0.12.10
 pkgrel=1
 pkgdesc="Python interface to Ipopt"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(coin-or-ipopt python-numpy)
 makedepends=(python-build python-installer python-setuptools python-wheel cython) # mumps
 checkdepends=(python-scipy)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('318e1af30cc04a028bacd0ba787a66e5f17ef10ad57633c32f5b45b44dbd27161184e69e1a43481afcfc4e66c5957a631c253c6379a4e3d4d85cdabcb2b5bcb6')
+sha512sums=('dd6da44495ecf4a1a8d4a3f2af947f3c80fd77a03d1b96ce605f35eda387fddf65486c9abcba8f012db081f07bd6c519d8b338d9c28e80351e9b3db41cb78684')
 
 build() {
   cd ${_base}-${pkgver}
