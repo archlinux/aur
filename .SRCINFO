@@ -1,0 +1,10 @@
+pkgbase = python-canon
+	pkgdesc = Canon is a tool for emulating the compression found in two of the Club Penguin mini-games.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/ketnipz/Canon
+	arch = any
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-canon
