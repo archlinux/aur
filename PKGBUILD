@@ -1,11 +1,12 @@
 # Maintainer: meanlint <meanlint@outlook.com>
+# Maintainer: shaka042 <chefmayonaisse.observant341 at slmails dot com>
 # Contributor: Aria Moradi <aria.moradi007 at gmail dot com>
 # Contributor: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=suwayomi-server-preview-bin
 _pkgname=suwayomi-server
 _PkgName=Suwayomi-Server
-pkgver=2.0.1727
+pkgver=2.0.1743
 pkgrel=1
 _pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
