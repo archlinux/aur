@@ -1,6 +1,6 @@
 pkgbase = r-ipo
 	pkgdesc = Automated Optimization of XCMS Data Processing parameters
-	pkgver = 1.32.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/IPO
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-ipo
 	optdepends = r-mtbls2
 	optdepends = r-parallel
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IPO_1.32.0.tar.gz
-	sha256sums = 0f036d36697e04078cc18769d3429c887a728c9155fe86bc4d90dbea8b214990
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IPO_1.34.0.tar.gz
+	sha256sums = b0b0e4b32f84f0ee136cc3fe5174a5f4eb4a17142c026e24b6fb5598e198e4d1
 
 pkgname = r-ipo
