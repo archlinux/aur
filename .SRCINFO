@@ -8,12 +8,12 @@ pkgbase = freetube-electron-bin
 	provides = freetube
 	conflicts = freetube
 	source = freetube.sh
-	source = https://raw.githubusercontent.com/FreeTubeApp/FreeTube/refs/tags/v0.23.4-beta/LICENSE
 	source = https://github.com/FreeTubeApp/FreeTube/releases/download/v0.23.4-beta/freetube_0.23.4_armv7l.deb
-	b2sums = 0b68a408d057c048d87ecd8ff3941734fa520f36dd4e84a740228e860a073e15c6bff7ec30070367651b765642a71c88fec18d2cfd68c4d123d4aa90b842fa60
-	b2sums = 6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237
+	source = https://raw.githubusercontent.com/FreeTubeApp/FreeTube/refs/tags/v0.23.4-beta/LICENSE
+	b2sums = d3d3e9a0e3f6bce5127cb54886214f8f1b364c8b004be670e4564df61b215e07dcb4548834c8dc1c13db4e64e534e2340e33931af599e508cd1c9e8b7f736335
 	b2sums = bcbb7b636a5e49eaef648462d35e9072be3934953aa28e55011cd8746a0f0fca9a461bd4987e0bf5ef9aa33288223d683c4e83653cf2e5afb2be11438c3e2537
+	b2sums = 6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237
 
 pkgname = freetube-electron-bin
-	depends = electron
+	depends = electron34
 	depends = ttf-liberation

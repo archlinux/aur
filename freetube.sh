@@ -1,2 +1,2 @@
 #!/bin/sh
-electron /usr/lib/freetube-electron-bin/app.asar "$@"
+electron{ver} /usr/lib/freetube-electron-bin/app.asar "$@"
