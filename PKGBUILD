@@ -1,8 +1,8 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Creator: Michal Krenek (Mikos) <m.krenek@gmail.com>
-# Poor fork: Qtra Gabriex <qtra@gabriex.xyz>
+# Fork?: Qtra Gabriex <qtra@gabriex.xyz>
 
-# Extra Credits:
+# Patch credits:
 # https://github.com/ianmorti
 # https://github.com/arobertson404
 # (from issues page https://github.com/xmikos/qspectrumanalyzer/issues)
@@ -18,8 +18,7 @@ license=('GPL3')
 depends=('python-pyqt5' 'python-pyqtgraph' 'soapy_power' 'python-qt.py' 'python-setuptools')
 makedepends=('git')
 optdepends=('rtl_power_fftw: alternative RTL-SDR backend using FFTW library. Much faster than rtl_power.'
-	    'rtl-sdr-keenerd: better version of rtl_power backend'
-	    'rtl-sdr: original rtl_power backend. Slightly broken, use rtl-sdr-keenerd-git instead.'
+	    'rtl-sdr: original rtl_power backend.'
 	    'rx_tools: rx_power backend. Wniversal SoapySDR based backend, but seems slow and buggy.'
 	    'hackrf: hackrf_sweep backend. Wideband spectrum monitoring with sweep rate of 8 GHz/s.')
 conflicts=('qspectrumanalyzer')
