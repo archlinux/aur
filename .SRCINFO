@@ -1,6 +1,6 @@
 pkgbase = r-ctrap
 	pkgdesc = Identification of candidate causal perturbations from differential gene expression data
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cTRAP
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-ctrap
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cTRAP_1.24.0.tar.gz
-	sha256sums = e42fe92b0636b78851e4c04a312bf0cfb86aa81bb637146b0c24d44dc087d566
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cTRAP_1.26.0.tar.gz
+	sha256sums = ab93acde34ebcbf7f934dd4dc50faf046191418bcd6ff2780a8e225b4f9d2450
 
 pkgname = r-ctrap
