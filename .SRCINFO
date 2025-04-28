@@ -1,6 +1,6 @@
 pkgbase = newelle
 	pkgdesc = Your Ultimate Virtual Assistant
-	pkgver = 0.9.0
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/qwersyk/Newelle
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = newelle
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-pylatexenc
-	source = https://github.com/qwersyk/Newelle/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = fbd10cbca69120a4bd29cfcc9d7688a107e9354e3e410748e5b5870c08400f54
+	source = https://github.com/qwersyk/Newelle/archive/refs/tags/0.9.5.tar.gz
+	sha256sums = ced87ee61802464009ae5fa92a3f66d20ac255aa1de08c49cc38792a3956b9ac
 
 pkgname = newelle
