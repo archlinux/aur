@@ -1,6 +1,6 @@
 pkgbase = r-cssq
 	pkgdesc = Chip-seq Signal Quantifier Pipeline
-	pkgver = 1.18.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CSSQ
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-cssq
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CSSQ_1.18.0.tar.gz
-	sha256sums = d704f75a8eefa7455cdd5599535d40cc3bf8626b75fba0c07fecd9ebf1803411
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CSSQ_1.20.0.tar.gz
+	sha256sums = fb8e149b0f305921b9ea83a7e2c28ef1f60c94d82d0060f488e591218df085e9
 
 pkgname = r-cssq
