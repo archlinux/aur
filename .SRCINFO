@@ -1,7 +1,7 @@
 pkgbase = r-snplocs.hsapiens.dbsnp150.grch38
 	pkgdesc = SNP locations for Homo sapiens (dbSNP Build 150)
-	pkgver = 0.99.20
-	pkgrel = 3
+	pkgver = 0.99.21
+	pkgrel = 1
 	url = https://bioconductor.org/packages/SNPlocs.Hsapiens.dbSNP150.GRCh38
 	arch = any
 	license = Artistic2.0
@@ -14,7 +14,7 @@ pkgbase = r-snplocs.hsapiens.dbsnp150.grch38
 	depends = r-s4vectors
 	optdepends = r-biostrings
 	optdepends = r-bsgenome.hsapiens.ucsc.hg38
-	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/SNPlocs.Hsapiens.dbSNP150.GRCh38_0.99.20.tar.gz
-	sha256sums = 72328aef923e248c55f1803c15f4bc81f8a9c1d110e11f27f239d5dbfbe37c4a
+	source = https://bioconductor.org/packages/release/data/annotation/src/contrib/SNPlocs.Hsapiens.dbSNP150.GRCh38_0.99.21.tar.gz
+	sha256sums = 8e40a24c14d76d204cf4309ce690f61bd20287dc0f270ee91f6f7d1ac65d4e7f
 
 pkgname = r-snplocs.hsapiens.dbsnp150.grch38
