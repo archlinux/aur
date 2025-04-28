@@ -1,7 +1,7 @@
 pkgbase = autorecord-manager
-	pkgdesc = Electron-based Automatic Recording Software for Multi-platform Live Broadcast.Use system-wide electron.基于 Electron 的多平台直播自动录制软件
+	pkgdesc = Electron-based Automatic Recording Software for Multi-platform Live Broadcast.(Use system-wide electron)基于 Electron 的多平台直播自动录制软件
 	pkgver = 4.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/WhiteMinds/LiveAutoRecord
 	arch = any
 	license = LGPL-3.0-only
@@ -9,16 +9,15 @@ pkgbase = autorecord-manager
 	makedepends = nvm
 	makedepends = npm
 	makedepends = yarn
-	makedepends = cmake
-	makedepends = gcc
+	makedepends = git
 	makedepends = curl
 	depends = electron20
 	depends = nodejs
 	conflicts = autorecord-manager
 	options = !strip
-	source = autorecord-manager-4.7.1.tar.gz::https://github.com/WhiteMinds/LiveAutoRecord/archive/refs/tags/v4.7.1.tar.gz
+	source = autorecord-manager-4.7.1::git+https://github.com/WhiteMinds/LiveAutoRecord#tag=v4.7.1
 	source = autorecord-manager.sh
-	sha256sums = 90ca9b5cf083cfbf59b590a1d3585f7583547804cc85bf7bf6c5741adaf6e244
+	sha256sums = f45375bd8bb2ff461749f644a7daad0f0136a22d2906ff162ba4c4c9859dd105
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = autorecord-manager
