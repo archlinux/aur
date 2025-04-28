@@ -1,6 +1,6 @@
 pkgbase = r-hipathia
 	pkgdesc = HiPathia: High-throughput Pathway Analysis
-	pkgver = 3.6.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hipathia
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = r-hipathia
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hipathia_3.6.0.tar.gz
-	sha256sums = 2a11a4119ffbbf23719068f59d08838c8fc2f5350a51c8b3ecf4f5edb60cec40
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hipathia_3.8.0.tar.gz
+	sha256sums = e05bbe3bfab5a6d1ab49515c23603fcf1535e89222779c8b2f3dacd7d95ff452
 
 pkgname = r-hipathia
