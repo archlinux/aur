@@ -1,7 +1,7 @@
 pkgbase = ms-365-electron
-	pkgdesc = Unofficial Microsoft 365 Web Desktop Wrapper made with Electron.Use system-wide electron.
+	pkgdesc = Unofficial Microsoft 365 Web Desktop Wrapper made with Electron.(Use system-wide electron)
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://agam778.github.io/MS-365-Electron
 	arch = any
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = ms-365-electron
 	makedepends = yarn
 	depends = electron30
 	conflicts = ms-365-electron
-	source = ms-365-electron-2.0.0.tar.gz::https://github.com/agam778/MS-365-Electron/archive/refs/tags/v2.0.0.tar.gz
+	source = ms-365-electron-2.0.0::git+https://github.com/agam778/MS-365-Electron#tag=v2.0.0
 	source = ms-365-electron.sh
-	sha256sums = 2ae46826b31f51a4f8d81be9fa3542d70cb1f53e28c594c0ba1afbf942505d2d
+	sha256sums = f8eabc4e731d688b4f654866373e09ef4a4a8079df664ecb12ac905636a16bce
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = ms-365-electron
