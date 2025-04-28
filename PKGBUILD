@@ -1,14 +1,14 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=143
-pkgrel=2
+pkgver=144
+pkgrel=1
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=("x86_64" "i686" "aarch64")
 url="https://ares-emu.net/"
 license=("ISC")
 depends=("alsa-lib" "gcc-libs" "libao" "libgl" "libpulse" "librashader>=0.5.1-1"
-  "libretro-shaders" "libudev.so=1-64" "libx11" "libxrandr" "openal" "sdl2"
+  "libretro-shaders" "libudev.so=1-64" "libx11" "libxrandr" "openal" "sdl3"
   "vulkan-driver" "vulkan-icd-loader" "zlib" "cairo" "gdk-pixbuf2" "glib2"
   "glibc" "gtk3" "hicolor-icon-theme" "pango")
 makedepends=("cmake" "mesa" "ninja" "pkgconf")
@@ -16,12 +16,7 @@ provides=("ares-emu")
 conflicts=("ares-emu")
 install="ares.install"
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("3d231ee98b657190445ea2ae822f427a371e42ce0fcc7e2c886f01cc29c80b384761400375944b9b44a57383517353eb60e3dd96afdef4a9b29e3eb42877dde2")
-
-prepare() {
-  # Keep this until v144 release! This fixes a serious issue with v143
-  sed -i "s/virtual auto saveName() -> string { return pak->attribute(\"name\"); }/virtual auto saveName() -> string { return name(); }/g" "${srcdir}/ares-143/mia/pak/pak.hpp"
-}
+sha512sums=("2258bfa61a64d847b7d59f868a8b4cc948b35e71b4c27c66867d1622c1ffca9a7f3c079a2e0050467f60ff1eb3a20e9e4eb0a9f00ae0b7871ccbabd4c3ec31a2")
 
 build() {
   local cmake_options=(
