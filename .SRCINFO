@@ -1,6 +1,6 @@
 pkgbase = r-methylkit
 	pkgdesc = DNA methylation analysis from high-throughput bisulfite sequencing results
-	pkgver = 1.32.1
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylKit
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-methylkit
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylKit_1.32.1.tar.gz
-	sha256sums = 338b7dce982bc27b00da30a39daae51c59c6d19e0a14ae245875d18b82c9d290
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylKit_1.34.0.tar.gz
+	sha256sums = 8d632eceb1fbd32d658f05fc180dc97ee09836456608d41cbc5376c30544ac25
 
 pkgname = r-methylkit
