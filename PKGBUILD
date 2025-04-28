@@ -3,7 +3,7 @@
 _name=dymo-bluetooth
 pkgname=$_name-git
 pkgver=0.1.0.r9.06b61ab
-pkgrel=1
+pkgrel=2
 pkgdesc="Use DYMO LetraTag LT-200B thermal label printer over Bluetooth in Python, without depending on its app"
 arch=('any')
 url="https://github.com/ysfchn/dymo-bluetooth"
@@ -52,4 +52,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm644 assets/example_image.png -t "$pkgdir/usr/share/doc/$pkgname/examples/"
 }
