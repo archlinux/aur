@@ -20,31 +20,36 @@ makedepends=(
   "python-installer"
   "python-wheel"
 )
-provides=($_name)
+provides=("$_name")
 source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver()
 {
-    cd $srcdir/$_name
-    local _version=$(grep version pyproject.toml | cut -f 2 -d '"')
-    local _rev_num="$(git rev-list --count HEAD)"
-    local _last_commit="$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_name"
+    local _version
+    local _rev_num
+    local _last_commit
+
+    _version=$(grep version pyproject.toml | cut -f 2 -d '"')
+    _rev_num="$(git rev-list --count HEAD)"
+    _last_commit="$(git rev-parse --short HEAD)"
 
     echo "${_version}.r${_rev_num}.${_last_commit}"
 }
 
 prepare() {
-    git -C $srcdir/$_name clean -dfx
+    git -C "$srcdir/$_name" clean -dfx
 }
 
 build() {
-    cd $srcdir/$_name
+    cd "$srcdir/$_name"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $srcdir/$_name
+    cd "$srcdir/$_name"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
