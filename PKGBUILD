@@ -6,7 +6,7 @@
 pkgname=processing
 pkgver=4.4.1
 _build=1301
-pkgrel=5
+pkgrel=6
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -35,13 +35,16 @@ prepare() {
   fi
 
   # Symbolic link for not having to repeat the revision number
-  ln -sf "${pkgname}4-processing-$_build-$pkgver" $pkgname
+  ln -sf "${pkgname}4-processing-$_build-$pkgver" "$pkgname"
 
   # Don't download JDK and JFX files during build process
-  patch $pkgname/app/build.gradle.kts < no_jdk_download.patch
+  patch "$pkgname/app/build.gradle.kts" < no_jdk_download.patch
 
   # Disable update check in default preferences
-  patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
+  patch "$pkgname/build/shared/lib/defaults.txt" < disable_update_check.patch
+
+  # Pass version number to build process
+  echo "version=$pkgver" > "$pkgname/gradle.properties"
 }
 
 build() {
@@ -49,7 +52,7 @@ build() {
 
   # Create *.desktop file using the existing template file
   sed -e "s,<BINARY_LOCATION>,/usr/share/processing/bin/Processing,g" \
-      -e "s,<ICON_NAME>,processing-pde,g" "build/linux/desktop.template" > "processing-pde.desktop"
+      -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
   JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle createDistributable
@@ -109,8 +112,8 @@ package() {
 
   # Symbolic links in /usr/bin
   install -d "$pkgdir/usr/bin/"
-  ln -s "/usr/share/processing/bin/Processing" "$pkgdir/usr/bin/processing"
+  ln -s /usr/share/processing/bin/Processing "$pkgdir/usr/bin/processing"
 
   # Link processing's internal JDK to the system's one
-  ln -s "/usr/lib/jvm/java-17-openjdk" "$pkgdir/usr/share/processing/lib/app/resources/jdk-17.0.14+7"
+  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/app/resources/jdk-17.0.14+7"
 }
