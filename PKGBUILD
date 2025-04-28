@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cliqueMS
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4161bbb24c1fa3fdf7bc9b558f8c435f')
-b2sums=('f29760ecfe507e5c4401ad56c7bcdfa37ca535261e20c17cbc4889fd739278aa0b4d333c97d5578b075005f26a30f2be0c56ad15e6dddc4af58bce53e631c124')
+md5sums=('01f79354495482e905124a3ce5f60e98')
+b2sums=('42d8431bd50a717881ff8c036665082c361efa7e8fc2321e179f3478e58be942ce10d1b7bd7ded4f3d8836ddca0c73124ae799835ddc08c6f6467495acf6a1db')
 
 build() {
   mkdir build
