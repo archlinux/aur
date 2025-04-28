@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=workflows
-_pkgver=1.1.4
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,6 +20,9 @@ depends=(
   r-rlang
   r-tidyselect
   r-vctrs
+  r-withr
+  r-sparsevctrs
+  r-recipes
 )
 optdepends=(
   r-butcher
@@ -28,13 +31,15 @@ optdepends=(
   r-knitr
   r-magrittr
   r-modeldata
-  r-recipes
   r-rmarkdown
   r-testthat
+  r-glmnet
+  r-probably
+  r-rsample
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6e78b96d1969bfd9f87c841a8a36464d')
-b2sums=('2da077bdf6b6e3f66eccc7e43b62b6e4ef3f164a5a5bccf3726b4d9d254aeb37ef3af6217b076baa20944ce689fd6e83951685d07485fb4876615daa8c65c6e0')
+md5sums=('c41e3bd73dde289ba7aae98fdf95aac8')
+b2sums=('eccb8bf321de5238ceff258af37d056dfa32e0f3264d3ecddd66019a2dfd28631b0c8216db15bea5ca4df613ae1b41df6a8f7bd5389095c21de81b0fd2023784')
 
 build() {
   mkdir build
