@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tomoseqr
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('103b5393aaa6ab1dc037f20f36ae9d5f')
-b2sums=('905951aca786b3717243c45e2212e3c5c0db9ab2a4f4d0afdb74bcc248912aa3924def73f32774dfb7b48c104e0fff4d76e7cb92269fca92b51e7c9fbb4591a6')
+md5sums=('9b74d846ca2832374ab9567717255cfc')
+b2sums=('d1bb6166e8b93b6c2dbddf27bda5365af0156b713a256820cc81cbe3c74e190a16f375b25fdaaf805efcee8579703afd929de34eebf282bddc2010c607b3c90f')
 
 build() {
   mkdir build
