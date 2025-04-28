@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bugsigdbr
-_pkgver=1.12.3
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
-pkgver=1.12.3
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='R-side access to published microbial signatures from BugSigDB'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('91acbc488d88aeae1745275eb3aa83763456cc4b88c875dee98ce1267fbd0afc')
+sha256sums=('f9df68eb4037462e9ff11855c2ba2c1f027b8990668513164759159e35d9e3af')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
