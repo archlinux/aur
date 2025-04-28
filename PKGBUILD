@@ -5,8 +5,8 @@
 
 pkgname=directpv
 pkgdesc='MinIO DirectPV'
-pkgver=4.1.4
-pkgrel=2
+pkgver=4.1.5
+pkgrel=1
 arch=(x86_64)
 url=https://min.io/docs/directpv/
 license=(AGPL-3.0-only)
@@ -16,7 +16,7 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/minio/directpv/tar.gz/refs/tags/v${pkgver})
-sha256sums=('1285f3766857bd170426f73e63aa76641630580108c52e3391f29f609815bdde')
+sha256sums=('c839ad53f97beeb9d1d521c9d0252aadf35f6138c2650453989b6c34a6294fd9')
 
 prepare() {
   export GOPATH="${srcdir}"
@@ -30,8 +30,8 @@ prepare() {
 
 
 build() {
-  local _flags _binary
-  _flags=(
+  local _ldflags _binary
+  _ldflags=(
     -X=main.version=v${pkgver}
     -linkmode=external
   )
@@ -59,8 +59,9 @@ build() {
 
   for _binary in {,kubectl-}${pkgname}; do
     go build \
+      -v \
+      -ldflags="${_ldflags[*]}" \
       -o out/${_binary} \
-      -ldflags="${_flags[*]}" \
       ./cmd/${_binary}
   done
 }

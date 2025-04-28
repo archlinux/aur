@@ -1,14 +1,14 @@
 pkgbase = directpv
 	pkgdesc = MinIO DirectPV
-	pkgver = 4.1.4
-	pkgrel = 2
+	pkgver = 4.1.5
+	pkgrel = 1
 	url = https://min.io/docs/directpv/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = directpv-4.1.4.tar.gz::https://codeload.github.com/minio/directpv/tar.gz/refs/tags/v4.1.4
-	sha256sums = 1285f3766857bd170426f73e63aa76641630580108c52e3391f29f609815bdde
+	source = directpv-4.1.5.tar.gz::https://codeload.github.com/minio/directpv/tar.gz/refs/tags/v4.1.5
+	sha256sums = c839ad53f97beeb9d1d521c9d0252aadf35f6138c2650453989b6c34a6294fd9
 
 pkgname = directpv
