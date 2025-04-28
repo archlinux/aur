@@ -4,7 +4,7 @@
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 url='https://codeberg.org/Flowee/fulcrum'
 arch=('x86_64')
 license=('GPL3')
@@ -12,6 +12,7 @@ depends=(
   'qt5-base'
   'rocksdb'
   'python'
+  'miniupnpc'
 )
 optdepends=('jemalloc: reduce memory fragmentation')
 backup=('etc/fulcrum.conf')
