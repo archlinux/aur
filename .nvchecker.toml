@@ -1,0 +1,5 @@
+[ruby-dry-types]
+source = "github"
+github = "dry-rb/dry-types"
+prefix = "v"
+use_latest_release = true

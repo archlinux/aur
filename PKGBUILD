@@ -3,7 +3,7 @@
 _gemname='dry-types'
 pkgname="ruby-${_gemname}"
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc'
 arch=('any')
 url="https://github.com/dry-rb/${_gemname}"
@@ -22,8 +22,6 @@ makedepends=(
 )
 checkdepends=(
   ruby-bundler
-  ruby-dry-monads
-  ruby-dry-struct
   ruby-rake
   ruby-rspec
   ruby-warning
@@ -89,7 +87,11 @@ check() {
 
   local _gemdir="$(gem env gemdir)"
 
-  GEM_HOME="tmp_install${_gemdir}" rake run_specs
+  # Exclude `module_spec`, which requires a circular
+  # checkdepends to `ruby-dry-monads`
+  GEM_HOME="tmp_install${_gemdir}" \
+    find spec/dry -name 'module_spec.rb' -prune -o \
+      -name '*_spec.rb' -exec rspec '{}' +
 }
 
 package() {

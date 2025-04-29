@@ -1,13 +1,11 @@
 pkgbase = ruby-dry-types
 	pkgdesc = Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc
 	pkgver = 1.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dry-rb/dry-types
 	arch = any
 	license = MIT
 	checkdepends = ruby-bundler
-	checkdepends = ruby-dry-monads
-	checkdepends = ruby-dry-struct
 	checkdepends = ruby-rake
 	checkdepends = ruby-rspec
 	checkdepends = ruby-warning
