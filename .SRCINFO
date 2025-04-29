@@ -1,57 +1,23 @@
 pkgbase = sensible-utils-git
 	pkgdesc = Utilities for sensible alternative selection
-	pkgver = 0.0.21.r3.b555a8d
+	pkgver = 0.0.24.r7.gc81fe21
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/sensible-utils
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	checkdepends = ed
-	checkdepends = dash
+	checkdepends = shellcheck
+	makedepends = git
 	makedepends = po4a
-	makedepends = findutils
 	depends = bash
-	depends = coreutils
-	source = sensible-utils-git::git+https://salsa.debian.org/debian/sensible-utils.git
-	source = sensible-utils.install
-	source = sensible-envvars
-	validpgpkeys = 5D0187B940A245BAD7B0F56A003A1A2DAA41085F
-	b2sums = SKIP
-	b2sums = c39a760655833d374dc606894452c997bd86a1645c0b5496c5546364cac07ad4205c8dae05f457bd31a210bfd4d290fbcb71cdcf584df857e93c851b384bba81
-	b2sums = 8a213b98cc6d432af30ecf58d91ae88f151f2824274702f7e1bde6119b45effc4a0b15907459c9f8f1ee5af94de862e6dec579b4f07d168aaa658443764a1f19
+	provides = sensible-utils=0.0.24
+	conflicts = sensible-utils
+	conflicts = sensible-browser-git
+	conflicts = sensible-editor-git
+	conflicts = sensible-pager-git
+	conflicts = sensible-terminal-git
+	conflicts = sensible-utils-data-git
+	source = sensible-utils::git+https://salsa.debian.org/debian/sensible-utils.git
+	sha256sums = SKIP
 
 pkgname = sensible-utils-git
-	pkgdesc = Utilities for sensible alternative selection (metapackage)
-	install = sensible-utils.install
-	depends = bash
-	depends = coreutils
-	depends = sensible-browser-git
-	depends = sensible-editor-git
-	depends = sensible-pager-git
-	depends = sensible-terminal-git
-	depends = sensible-utils-data-git
-	provides = sensible-utils
-	conflicts = sensible-utils
-
-pkgname = sensible-browser-git
-	depends = bash
-	depends = coreutils
-	depends = sensible-utils-data
-
-pkgname = sensible-editor-git
-	depends = bash
-	depends = coreutils
-	depends = sensible-utils-data
-	optdepends = update-alternatives: For using the `select-editor` script
-
-pkgname = sensible-pager-git
-	depends = bash
-	depends = coreutils
-	depends = sensible-utils-data
-
-pkgname = sensible-terminal-git
-	depends = bash
-	depends = coreutils
-	depends = sensible-utils-data
-
-pkgname = sensible-utils-data-git
-	depends = bash
