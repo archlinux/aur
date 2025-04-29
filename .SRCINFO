@@ -1,6 +1,6 @@
 pkgbase = jriver-media-center
 	pkgdesc = The Most Comprehensive Media Software
-	pkgver = 33.0.71
+	pkgver = 34.0.20
 	pkgrel = 1
 	url = http://www.jriver.com/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = jriver-media-center
 	conflicts = jriver-media-center26
 	conflicts = jriver-media-center25
 	conflicts = jriver-media-center24
-	source = http://files.jriver.com/mediacenter/channels/v33/latest/MediaCenter-33.0.71-amd64.deb
+	source = http://files.jriver.com/mediacenter/channels/v34/latest/MediaCenter-34.0.20-amd64.deb
 	source = License.txt
-	sha256sums = e4ff258392c831d8125323ac8130c9933ca60eba1fa6a67799353990cb2db9be
+	sha256sums = 13d478b4903ada684d76c9f7f4da282a6f9fcbb1c5392173d4e94629505b0836
 	sha256sums = ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd
 
 pkgname = jriver-media-center
