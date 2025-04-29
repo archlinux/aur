@@ -21,11 +21,12 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Install telecord binary
-  install -Dm755 bin/telecord.mjs "$pkgdir/usr/bin/telecord"
+  install -Dm755 bin/telecord.js "$pkgdir/usr/bin/telecord"
+
 
   # Install the rest of the project
   mkdir -p "$pkgdir/usr/lib/$pkgname"
-  cp -r assets lib node_modules package.json package-lock.json telecord.mjs "$pkgdir/usr/lib/$pkgname"
+  cp -r assets lib node_modules package.json package-lock.json telecord.js "$pkgdir/usr/lib/$pkgname"
 
   # Optional: Install README and LICENSE if you have one
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
