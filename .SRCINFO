@@ -48,6 +48,7 @@ pkgbase = vapoursynth-plugin-vsjetpack
 	optdepends = vapoursynth-plugin-bestsource
 	optdepends = vapoursynth-plugin-dgdecodenv-bin
 	optdepends = vapoursynth-plugin-d2vsource
+	optdepends = vapoursynth-plugin-hysteresis
 	optdepends = ffms2
 	optdepends = vapoursynth-plugin-lsmashsource
 	provides = vapoursynth-plugin-vsaa

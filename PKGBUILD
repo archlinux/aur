@@ -54,6 +54,7 @@ optdepends=(
   'vapoursynth-plugin-bestsource'
   'vapoursynth-plugin-dgdecodenv-bin'
   'vapoursynth-plugin-d2vsource'
+  'vapoursynth-plugin-hysteresis'
   'ffms2'
   'vapoursynth-plugin-lsmashsource'
 )
