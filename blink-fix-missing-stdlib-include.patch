@@ -1,0 +1,10 @@
+--- third_party/blink/renderer/core/xml/xslt_extensions.cc.orig	2024-06-12 07:09:56.356664503 +0200
++++ third_party/blink/renderer/core/xml/xslt_extensions.cc	2024-06-12 07:10:18.547019608 +0200
+@@ -30,6 +30,7 @@
+ #include <libxslt/extensions.h>
+ #include <libxslt/extra.h>
+ #include <libxslt/xsltutils.h>
++#include <stdlib.h>
+ 
+ #include "base/check.h"
+ 
