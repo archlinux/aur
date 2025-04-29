@@ -1,0 +1,12 @@
+pkgbase = flatpak-go-mod
+	pkgdesc = CLI tool to generate Flatpak sources directives for Go modules
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dennwc/flatpak-go-mod
+	arch = x86_64
+	license = MIT
+	depends = go
+	source = flatpak-go-mod-0.1.0.tar.gz::https://github.com/dennwc/flatpak-go-mod/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = fb5ee240b5d89d09f237cbd5cbc5f63f7dbdb332d75116a868378b62dd3984e1
+
+pkgname = flatpak-go-mod
