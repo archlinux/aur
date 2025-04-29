@@ -1,12 +1,13 @@
 pkgbase = gpib-utils-git
 	pkgdesc = GPIB instrument support utilities. Latest git checkout from master branch.
 	pkgver = 1.5+62.r254.20160626.720b17d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/garlick/gpib-utils
 	arch = x86_64
 	arch = i686
 	arch = aarcxh64
 	license = GPL-2.0-only
+	makedepends = git
 	makedepends = rpcsvc-proto
 	depends = glibc
 	depends = libtirpc

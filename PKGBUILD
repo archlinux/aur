@@ -6,7 +6,7 @@ _gitname=gpib-utils
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=1.5+62.r254.20160626.720b17d
-pkgrel=1
+pkgrel=2
 pkgdesc="GPIB instrument support utilities. Latest git checkout from master branch."
 url="https://github.com/garlick/gpib-utils"
 arch=('x86_64' 'i686' 'aarcxh64')
@@ -16,6 +16,7 @@ depends=(
   'libtirpc'
 )
 makedepends=(
+  'git'
   'rpcsvc-proto'
 )
 optdepends=(
