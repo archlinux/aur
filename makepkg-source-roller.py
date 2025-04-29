@@ -211,7 +211,8 @@ def parse_deps(path, prefix="", is_src=False, vars=None, reverse_map=None):
 
 repos_with_changed_url = {
     "https://chromium.googlesource.com/chromium/llvm-project/compiler-rt/lib/fuzzer.git",
-    "https://chromium.googlesource.com/external/github.com/google/pthreadpool.git"
+    "https://chromium.googlesource.com/external/github.com/google/pthreadpool.git",
+    "https://chromium.googlesource.com/external/github.com/google/perfetto.git"
 }
 
 
