@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wai-chat-desktop
-_pkgname="Wai Chat"
+_pkgname='Wai Chat'
 pkgver=1.1.2
 _electronversion=24
-_nodeversion=16
-pkgrel=9
-pkgdesc="An electron project for chatgpt wai chat bot.Use system-wide electron."
+_nodeversion=18
+pkgrel=10
+pkgdesc="An electron project for chatgpt wai chat bot.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/ptp-build/wai-chat-desktop"
 license=('GPL-3.0-only')
@@ -18,13 +18,16 @@ makedepends=(
     'gendesk'
     'nvm'
     'curl'
-    'gcc'
+    'git'
+)
+options=(
+    'emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7f69542f9d0fccf9e2cd26ed495580731fbc9a45658576ab8c65a9c0537c89ab'
+sha256sums=('df5d501a594b216472c5dd9130bceb6474370af339db54443a0a1c4524e40d65'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -32,25 +35,25 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -61,7 +64,10 @@ build() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     npm run package
 }
 package() {
