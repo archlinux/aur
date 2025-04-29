@@ -2,7 +2,7 @@
 
 pkgname=windsurf
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The new purpose-built IDE to harness magic"
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -66,7 +66,17 @@ package() {
     # Install application metadata (AppStream metainfo)
     install -Dm644 "usr/share/appdata/${pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/com.codeium.${pkgname}.metainfo.xml"
     install -Dm644 "usr/share/mime/packages/${pkgname}-workspace.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}-workspace.xml"
-    install -Dm644 "usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+    # KDE/GTK never look in 1024-px dirs; install smaller aliases too
+    local _icon="usr/share/pixmaps/${pkgname}.png"
+
+    # install the real file once (1024 px)
+    install -Dm644 "${_icon}" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+
+    # create 256 px & 128 px entries as symlinks to save space
+    for _sz in 256 128; do
+        install -d "${pkgdir}/usr/share/icons/hicolor/${_sz}x${_sz}/apps"
+        ln -s "/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_sz}x${_sz}/apps/${pkgname}.png"
+    done
 	# Shell completions
     mv "usr/share/bash-completion" "${pkgdir}/usr/share/bash-completion"
     install -Dm644 "usr/share/zsh/vendor-completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"

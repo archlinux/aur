@@ -1,7 +1,7 @@
 pkgbase = windsurf
 	pkgdesc = The new purpose-built IDE to harness magic
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://windsurf.com/
 	arch = x86_64
 	license = custom
