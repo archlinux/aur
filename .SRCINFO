@@ -1,6 +1,6 @@
 pkgbase = python-web3
 	pkgdesc = A python interface for interacting with the Ethereum blockchain and ecosystem.
-	pkgver = 7.10.0
+	pkgver = 7.11.0
 	pkgrel = 1
 	url = https://github.com/ethereum/web3.py
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-web3
 	depends = python-toolz
 	depends = python-rlp
 	depends = python-idna
-	source = web3.py-7.10.0.tar.gz::https://github.com/ethereum/web3.py/archive/v7.10.0.tar.gz
-	sha512sums = 07c367ea314dc5b88fa354c125de8c976a238444cc397aebc6f463dcca6930443953bd1806c0e52b82d542f5c71d62d23e08072abb3ecb70f42b625a110605e9
+	source = web3.py-7.11.0.tar.gz::https://github.com/ethereum/web3.py/archive/v7.11.0.tar.gz
+	sha512sums = 59b1581dab4af099db7019a11c5ffe8f66f61622660665ca75c4a1e539eb06b6086258f3a0ddaaf82db92ff3fe1a3f61852ca940263fa6896226616f962051c0
 
 pkgname = python-web3
