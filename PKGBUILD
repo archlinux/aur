@@ -2,7 +2,7 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
-pkgver=100.r6891.136079d
+pkgver=106.r7906.e2f19b6
 pkgrel=1
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
@@ -135,7 +135,8 @@ build() {
     --prefix=${prefix} \
     --libdir=${prefix}/lib \
     --systemdsystemunitdir=${prefix}/lib/systemd/system \
-    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion)
+    --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
+    --configprofile=hostonly
   make
 }
 
