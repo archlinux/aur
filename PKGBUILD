@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=(python-arrow-adbc python-adbc-driver-postgresql python-adbc-driver-flightsql)
 _module='arrow-adbc-apache-arrow-adbc'
-pkgver='16'
+pkgver='17'
 pkgrel=1
 pkgdesc="Database connectivity API standard for Arrow"
 url="https://arrow.apache.org/adbc/current/index.html"
@@ -10,7 +10,7 @@ makedepends=(cython go python-build python-installer python-setuptools python-se
 license=('Apache-2.0')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/arrow-adbc/archive/refs/tags/apache-arrow-adbc-$pkgver.tar.gz")
-sha256sums=('7b5bcf21d0581982964853793a3937062221b7fb042997d8707448b3a819e30f')
+sha256sums=('5b07f68e6a86a2211d75eaa6b38b9c438c26320315ba4eef7767b807e06037e3')
 build() {
     cmake -S "${_module}-${pkgver}/c" -B build \
         -DCMAKE_INSTALL_PREFIX='/usr' \
