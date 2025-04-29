@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.6.1.canary.refresh.r34.g48eed78
+pkgver=v0.6.1.canary.refresh.r40.g65dfe32
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-wayland' 'qt6-tools' '
 makedepends=('curl' 'git' 'cmake' 'clang' 'llvm' 'doxygen' 'python-pip' 'glslang' 'ninja' 'zip' 'unzip' 'libzip' 'fmt' 'nlohmann-json' 'zlib' 'zstd')
 conflicts=('citron')
 options=(!debug)
-source=(citron::git+https://git.citron-emu.org/Citron/Citron.git
+source=(citron::git+https://git.citron-emu.org/citron/emu.git
         cubeb::git+https://github.com/mozilla/cubeb.git
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
         Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
