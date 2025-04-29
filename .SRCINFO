@@ -1,7 +1,7 @@
 pkgbase = adafruit-ampy
 	pkgdesc = Utility to interact with a CircuitPython or MicroPython board over a serial connection
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scientifichackers/ampy
 	arch = any
 	license = MIT
@@ -15,6 +15,10 @@ pkgbase = adafruit-ampy
 	provides = python-ampy
 	provides = ampy
 	source = https://files.pythonhosted.org/packages/source/a/adafruit-ampy/adafruit-ampy-1.1.0.tar.gz
+	source = adafruit-ampy-regex.patch
+	source = adafruit-ampy-setup.patch
 	sha256sums = f4cba36f564096f2aafd173f7fbabb845365cc3bb3f41c37541edf98b58d3976
+	sha256sums = 2020be0e4514442a2f79aca5e294f887cd283d0b4398124a87406146b47abb47
+	sha256sums = 9353674a6685230c59d3333a21336a04dfd9c6c495a38da8453cd38aad9f7214
 
 pkgname = adafruit-ampy
