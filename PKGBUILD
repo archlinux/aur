@@ -3,7 +3,7 @@
 _pkgname=gfn-electron
 pkgname=$_pkgname-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Desktop client for Nvidia's GeForce NOW game streaming service (binary release)"
 url="https://github.com/hmlendea/gfn-electron"
 license=('GPL-3.0-only')
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2" "gt
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/geforcenow-electron_${pkgver}_linux.zip")
-sha256sums=('fd932e3267781a39f5f9a827ace3ae5c6bec09daa611a0e69fd302d17e676dfe')
+sha256sums=('ec62644e6f94eb4919c0895f73736b2074686c829144506162be38074ef1da2a')
 
 prepare() {
 # Edit the shortcut
