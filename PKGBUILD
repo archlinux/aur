@@ -1,7 +1,7 @@
 pkgname=bi
 pkgver=3.4.1.4
 pkgrel=1
-pkgdesc="Vinary editor like vI"
+pkgdesc="Binary editor like vI"
 arch=('x86_64')
 url="https://github.com/fygar256/bi"
 license=('MIT')
