@@ -4,7 +4,7 @@
 _pkgname=nifskope
 pkgname=${_pkgname}-git
 pkgver=1.1.3.864.g30954e7f
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility for opening and editing the NetImmerse (NIF) file format."
 arch=('i686' 'x86_64')
 url="http://niftools.org"
@@ -27,18 +27,8 @@ source=(
 	# icon
 	"${_pkgname}.png::https://www.niftools.org/assets/images/NifTools-Logo-128.png"
 )
-md5sums=(
-	'SKIP'
-
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-
-	'SKIP'
-	'SKIP'
-
-	'53e5203a116423d3436401395fa12a35'
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+	'e88acec3b6adc8a05e04287af680be5d28a8e7a296fc7e07081f88b2d8ae7ade'
 )
 
 prepare() {
