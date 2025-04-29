@@ -6,7 +6,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=amarok
-pkgver=3.2.2
+pkgver=3.2.81
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
@@ -26,7 +26,7 @@ optdepends=("libmtp: support for portable media devices"
             #"taglib-extras: taglib plugins for Audible and RealMedia files"
             )
 source=("https://invent.kde.org/multimedia/amarok/-/archive/v${pkgver}/amarok-v${pkgver}.tar.gz")
-sha256sums=('67fcf583e28aa6ca01ad2e589daab066e7bb7a8e846e521b28a3b8f19e738f33')
+sha256sums=('aadb2a7fc120952a4219c70a4789396e3a86cf08d4c5131fb8abe1a0f18cfda5')
 
 build() {
   cmake -B build -S "amarok-v${pkgver}" -Wno-dev \
