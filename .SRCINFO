@@ -1,6 +1,6 @@
 pkgbase = poengsum
 	pkgdesc = Quickly generate a leaderboard for a quiz from your terminal.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/sigurd4/poengsum
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = poengsum
 	makedepends = cargo
 	makedepends = base-devel
 	options = !lto
-	source = poengsum-0.2.1.tar.gz::https://static.crates.io/crates/poengsum/poengsum-0.2.1.crate
-	sha256sums = 5c221fa17eee6f3a34e4f9707091ea495bd408c4c6d0f5ac1f51f136368998e9
+	source = poengsum-0.2.2.tar.gz::https://static.crates.io/crates/poengsum/poengsum-0.2.2.crate
+	sha256sums = 9a88a02f6dfec3bec2853011589ab5f95593b2970c96a7a8df3a70fc39499f0d
 
 pkgname = poengsum
