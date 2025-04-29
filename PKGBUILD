@@ -3,9 +3,10 @@ _officalname=suwell-reader
 pkgname="${_officalname}-bin"
 _pkgname=SuwellReader
 _appname="cn.${_officalname//-/.}"
+_zhsname='数科OFD阅读器'
 pkgver=3.0.22.0916
-pkgrel=9
-pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD. Prebuilt version."
+pkgrel=10
+pkgdesc="OFD Reader Professional 3.0 From Suwell .LTD.(Prebuilt version)"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 arch=('x86_64')
@@ -17,7 +18,6 @@ depends=(
     'libpng12'
     'glu'
     'libjpeg6-turbo'
-    'gstreamer'
     'libice'
     'libxt'
     'libsm'
@@ -32,18 +32,18 @@ source=(
 )
 sha256sums=('69e56165f999ca8a168d64d0e22180755c67091b700fca1e339910580b127d1f'
             '2144461f37fe70f8ba576fbcf33ba7cc8179d133295a58519aa51c0ff5a48d2b')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/usr\/bin\/${_officalname//-/}/${pkgname%-bin}/g
         /serverice/d
         /^#/d
         s/\/opt\/apps\/${_appname}\/entries\/icons\/hicolor\/256x256\/mimetypes\/${_appname}.app-x-${_officalname//-/}.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

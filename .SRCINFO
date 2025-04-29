@@ -1,7 +1,7 @@
 pkgbase = suwell-reader-bin
-	pkgdesc = OFD Reader Professional 3.0 From Suwell .LTD. Prebuilt version.
+	pkgdesc = OFD Reader Professional 3.0 From Suwell .LTD.(Prebuilt version)
 	pkgver = 3.0.22.0916
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.suwell.cn/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -9,7 +9,6 @@ pkgbase = suwell-reader-bin
 	depends = libpng12
 	depends = glu
 	depends = libjpeg6-turbo
-	depends = gstreamer
 	depends = libice
 	depends = libxt
 	depends = libsm
