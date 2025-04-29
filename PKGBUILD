@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2503.r176.g1b85da9b85'
+pkgver='2503a.r344.g23a5ea3504'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(
 	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse'
-	'libudev.so' 'ninja' 'python' 'qt6-base' 'qt6-svg'
+	'libudev.so' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'vulkan-headers'
 )
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -168,6 +168,9 @@ package_dolphin-emu-nogui-git() {
 
 package_dolphin-emu-tool-git() {
 	pkgdesc="$pkgdesc - CLI-based utility for functions such as managing disc images$_pkgdescappend"
+	depends+=(
+		'alsa-lib' 'libevdev' 'libpulse' 'libudev.so' 'qt6-base'
+	)
 	provides=("$_toolpkgname")
 	conflicts=("$_toolpkgname")
 
