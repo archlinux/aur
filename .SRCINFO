@@ -1,7 +1,7 @@
 pkgbase = manyi-transformer
-	pkgdesc = A tool for gltf/glb models compression.Use system-wide electron.
+	pkgdesc = A tool for gltf/glb models compression.(Use system-wide electron)
 	pkgver = 1.2.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/MarshallChang/Manyi-transformer
 	arch = any
 	license = MIT
@@ -9,15 +9,15 @@ pkgbase = manyi-transformer
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
+	makedepends = git
 	depends = electron23
-	depends = python>=3
+	depends = python
 	depends = libvips
-	depends = openslide
 	provides = manyi-transformer
 	conflicts = manyi-transformer
-	source = manyi-transformer-1.2.0.tar.gz::https://github.com/MarshallChang/Manyi-transformer/archive/refs/tags/v1.2.0.tar.gz
+	source = manyi-transformer-1.2.0::git+https://github.com/MarshallChang/Manyi-transformer#tag=v1.2.0
 	source = manyi-transformer.sh
-	sha256sums = f53b8273fee63a233e9a9895b5480eba382e2cae2f85270d80cbae43b33b04bb
+	sha256sums = 52471d696e3abac4dd2a1dab391d6b768f7e1dcb6e97d04bc3f4ff2b6bc683b7
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = manyi-transformer
