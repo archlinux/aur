@@ -1,0 +1,4 @@
+[alterx]
+source = "git"
+git = "https://github.com/projectdiscovery/alterx.git"
+prefix = "v"
