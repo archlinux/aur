@@ -1,17 +1,17 @@
 pkgbase = minify-bin
 	pkgdesc = Go minifiers for web formats.(Prebuilt version)
-	pkgver = 2.23.1
+	pkgver = 2.23.2
 	pkgrel = 1
 	url = https://github.com/tdewolff/minify
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	optdepends = bash: For auto-completions
-	provides = minify=2.23.1
+	provides = minify=2.23.2
 	conflicts = minify
-	source_x86_64 = minify-2.23.1-x86_64.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.23.1/minify_linux_amd64.tar.gz
-	sha256sums_x86_64 = f22af559b0da6bd42115e097bea05038fb633a2d6727a175e27713c8a5654bbb
-	source_aarch64 = minify-2.23.1-aarch64.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.23.1/minify_linux_arm64.tar.gz
-	sha256sums_aarch64 = 32c3032a1cf46c84b90fa683088924e1be6c5b79c91bddc13c76f4b1c15e38f2
+	source_x86_64 = minify-2.23.2-x86_64.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.23.2/minify_linux_amd64.tar.gz
+	sha256sums_x86_64 = c7041ede9cfcab9dee6e17704a1f901f9960de61e35b6ff1def24fec331ba3f8
+	source_aarch64 = minify-2.23.2-aarch64.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.23.2/minify_linux_arm64.tar.gz
+	sha256sums_aarch64 = 15a9762c37f6e8cf8bfb77a5aeefafe24d367370f6bf561e4448420b1ec4a889
 
 pkgname = minify-bin
