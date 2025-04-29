@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19056.df5cc7cb8
+pkgver=r19062.6cc162de2
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
@@ -71,14 +71,17 @@ prepare() {
 }
 
 build() {
-	# -DDISABLE_ADVANCE_SIMD=ON \
-	cmake -B build -S $_pkgname \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DLTO_PCSX2_CORE=ON \
-		-DUSE_SYSTEM_LIBS=ON \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
+		# -D DISABLE_ADVANCE_SIMD=ON
+		-D LTO_PCSX2_CORE=ON
+		-D USE_SYSTEM_LIBS=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
