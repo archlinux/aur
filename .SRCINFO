@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-hysteresis
+	pkgdesc = Plugin for Vapoursynth: hysteresis
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/sgt0/vapoursynth-hysteresis
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = vapoursynth
+	source = hysteresis-1.0.5.tar.gz::https://github.com/sgt0/vapoursynth-hysteresis/archive/refs/tags/v1.0.5.tar.gz
+	sha256sums = 525c3ace0e3ff6a1091fdaf5fbbaff58ef12576cb39b41cb6deecfd5582a2977
+
+pkgname = vapoursynth-plugin-hysteresis
