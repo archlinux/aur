@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/hk3wxy/fonts"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hk3wxy/fonts/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0685762bdfe38bf64aa0d2b9ba295cb42f79c7d8') # Replace 'SKIP' with the actual checksum for security
+sha256sums=('0685762bdfe38bf64aa0d2b9ba295cb42f79c7d8') 
 depends=()
 
 package() {
