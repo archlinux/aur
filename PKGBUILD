@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/fygar256/bi"
 license=('MIT')
 depends=('python')
-source=("https://github.com/fygar256/bi/archive/refs/heads/v3.4.1.4.zip")
+source=("https://github.com/fygar256/bi/archive/refs/heads/v3.4.1.5.zip")
 sha256sums=('SKIP')
 
 build() {
