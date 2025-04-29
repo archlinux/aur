@@ -1,21 +1,26 @@
-# Maintainer: Roza <adveniscooll@gmail.com>
+# Contributor: Roza <adveniscooll@gmail.com>
 
 pkgname=transphrase
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered web novel translation & phrasing tool"
 arch=('any')
 url="https://github.com/shinyPy/TransPhrase"
 license=('MIT')
 depends=('python' 'python-rich' 'python-tenacity' 'python-openai' 'python-readchar'
          'python-sqlalchemy' 'python-yaml' 'python-langdetect')
-makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shinyPy/TransPhrase/archive/$pkgver.tar.gz")
 sha256sums=('6b13296209409ae72a266d105574da0c7522d9a22370e63ea521bd7b983195b1')
 
+build() {
+  cd "TransPhrase-$pkgver"
+  python setup.py build
+}
+
 package() {
   cd "TransPhrase-$pkgver"
-  python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location .
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
