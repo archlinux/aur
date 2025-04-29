@@ -6,7 +6,7 @@
 
 pkgname=gamescope-nvidia
 _pkgname=gamescope
-pkgver=3.16.3
+pkgver=3.16.4
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager (NVIDIA patch)'
 arch=(x86_64)
@@ -40,7 +40,6 @@ optdepends=(
   'mangohud: for option "--mangoapp"')
 makedepends=(
   'git'
-  'glm' # tested work version v1.0.1
   'glslang'
   'meson'
   'cmake'
@@ -50,11 +49,12 @@ makedepends=(
   'wayland-protocols')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-commit=f1f105b3a95b4fec5c92e8a10e6927cbb76fe804
+commit=5ab0954026934e81fcccf6b4e10ea62dc6c86ae4
 source=(
   "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#commit=$commit"
+  "0.9.9.8.tar.gz::https://github.com/g-truc/glm/archive/0.9.9.8.tar.gz"
+  "glm-0.9.9.8-2-wrap.zip::https://wrapdb.mesonbuild.com/v2/glm_0.9.9.8-2/get_patch"
   "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9"
-  "cmake-4.0-fix.diff::https://github.com/ValveSoftware/openvr/pull/1890.diff"
   "reverts-bd722f7.patch") # https://github.com/sharkautarch/gamescope/tree/nvidia-fix
 
 prepare() {
@@ -77,11 +77,12 @@ prepare() {
   done; unset outmsg
 
   msg2 'Retrieving meson build dependencies...'
+  # stb
   sed -i "s#^url =.*#url = file://$srcdir/subprojects|stb#" subprojects/stb.wrap
-  meson subprojects download stb
-
-  msg2 "Applying cmake 4.0 fix"
-  patch --no-backup-if-mismatch -d subprojects/openvr -Np1 -i "$srcdir/cmake-4.0-fix.diff"
+  # glm
+  sed -i "s#^source_url =.*#source_url = file://$srcdir/0.9.9.8.tar.gz#" subprojects/glm.wrap
+  sed -i "s#^patch_url =.*#patch_url = file://$srcdir/glm-0.9.9.8-2-wrap.zip#" subprojects/glm.wrap
+  meson subprojects download stb glm
 }
 
 #pkgver() {
@@ -111,9 +112,10 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://github.com/Joshua-Ashton/wlroots.git#commit=4bc5333a2cbba0b0b88559f281dbde04b849e6ef') # End
 
-sha512sums=('0a3f77c84839446dfc995d5d9371734973809b1434b0b75a01c4b3184b3020258bcd9d256db2e8c4f63e8b3c006dcd1ed4740e2f1cb7a2e2500f78d61bc2b4fb'
+sha512sums=('1d3ae89e145cb0644756f6baa0382d354fff8a1f6829650a08f834a53234f6a98346ef59269aacdaf36a77c5d0f91b27edc95ccd71e70b4b6e4a34206cdb7fc0'
+            '9484b0c12175414237c5b9486a2990099b1cb727e442f25ecda18b081aa661f7e92a44481f642989553cd3da7992a773441ee5688991bd539ce19fb66a5ce9e8'
+            'f1eff68bb3137bf4ebe01b789e0bb05a2c78afc9f22948a44c3d34d3034392bad51c8c0f174421e118b9590405ef9b545b22ddb28f44c9322d91af88e65a23e5'
             '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
-            '0e6f1fc123e5e35e0155e63c1b976fd920d2b64e396138fc3f914cc59b45b3e6553533f193aec8c88f17bfa5b5a1da0eb300cc472fd30791ad422633e0eb141e'
             '52a7c6670c2ceb2110b1a374db152abf8697e731665ceed9b651f94f95300579d6488c931a29c11d08bf2dc11af5859b0189757a6ebcc4ec494d10c65a088b27'
             '65490f89498b351e737eb79fe498dd428af84ad85e28f41fdf1f62d31dc90f29836be5f3eb754f58353dca63a9ffa858073a97fea0a69cf0e07185fb62b6adc0'
             '0a6fc80fd713c86117fab40e1b92ba8953bb8e68c4ac933fa8f6c04a4b10edba6ebb19cfc74d560c6007d5bcb3ca9d4de63d6cae800f1d426a97ff25f0b7f0fc'
