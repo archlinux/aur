@@ -14,7 +14,7 @@ makedepends=(
   'git'
 )
 optdepends=(
-  'linux-gpib:   For GPIB kernel drivers this firmware is for.'
+  'linux-gpib:   For GPIB kernel drivers and udev rules this firmware is for.'
   'hsplus_load:  For (one-time) load of firmware to NI GPIB-USB-HS+.'
   "perl:         For '/usr/share/doc/linux-gpib-firmware/ni_gpib_usb_b/firmware_extract.pl'."
 )
