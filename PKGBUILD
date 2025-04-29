@@ -5,8 +5,8 @@ pkgname=(
   'attune-cli'
   'attune-controlplane'
 )
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Tool for publishing and hosting Linux packages'
 arch=('x86_64')
 url='https://github.com/attunehq/attune'
@@ -18,16 +18,10 @@ options=('!lto')
 source=(
   "${pkgbase}-${pkgver}.tar.gz::https://github.com/attunehq/attune/archive/v${pkgver}.tar.gz"
   'attune-controlplane.service'
-  'github-pr-5.patch'
-  'github-pr-6.patch'
 )
 
-sha512sums=(
-  '6645c465cea68620dd6bdf3a224b03c268e7e3a99ce9892b566d69c0430473b072e540994e6913949e0fcc99a638d855dfdbc6d0d730adebf8d235b576b04c25'
-  '47babf31ba8cb3fbd15d04d8494a62596aad4ac7ebd17bab66f4af7eaf70af7f07e37bc345fa2d45693d81780f6d0bd37187feb85c042ebe6404ca40d8e2e3fd'
-  'fcdcbc6717aaaeb612f984f905ecd33c43aeeb0b40faa5bbc01c793060ddfe84e3c15840d982bcb52784c8e13c28603d9b62d2b7983dbd417e28c2aeb67ad33e'
-  '7c644ba6eaa76c9bcf9d689b62bc5294737a156fe220a9933a932d45b6e0eb356bcf05f5f06129fb25ba4d76d0e9996a497ae0e32ee5ec836c5e3b650510b0ba'
-)
+sha512sums=('6661e50a18f9bd71c0fc5e92e3c4d8551c9e088d5068748fd82ea3bdf153634914015de62e42234421a0b40776a8fcf1017450cd9b37cd808eb22c53c3c3f260'
+            '47babf31ba8cb3fbd15d04d8494a62596aad4ac7ebd17bab66f4af7eaf70af7f07e37bc345fa2d45693d81780f6d0bd37187feb85c042ebe6404ca40d8e2e3fd')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
@@ -43,18 +37,6 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   env -C controlplane cargo fetch \
     --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
-  # Remove this patch once the upstream author has merged PR #5 and
-  # included it in a stable release.
-  # See also: https://github.com/attunehq/attune/pull/5
-  echo >&2 'Applying patch to fix index file processing'
-  patch -p1 < ../github-pr-5.patch
-
-  # Remove this patch once the upstream author has merged PR #6 and
-  # included it in a stable release.
-  # See also: https://github.com/attunehq/attune/pull/6
-  echo >&2 'Applying patch to add support for local GPG installations'
-  patch -p1 < ../github-pr-6.patch
 }
 
 build() {
