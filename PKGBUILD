@@ -19,7 +19,8 @@ depends=(
 )
 optdepends=( 
   'cuda: cuda optimizations'
-  'pytorch-cuda: cuda optimizations'
+  'python-pytorch-opt-cuda: cuda with AVX2 optimizations'
+  'python-pytorch-cuda: cuda optimizations WITHOUT AVX2'
   'python-torchvision: torchvision usage'
   'python-transformers: transformers usage'
 )
