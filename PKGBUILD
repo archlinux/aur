@@ -4,7 +4,7 @@
 pkgname=vnote-bin
 _pkgname=VNote
 pkgver=3.19.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now.(Prebuilt version)"
 arch=('x86_64')
 url="https://app.vnote.fun/"
@@ -46,16 +46,8 @@ prepare() {
         chmod +x "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     fi
     "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage" --appimage-extract > /dev/null
-    install -Dm644 "${srcdir}/squashfs-root/usr/local/lib/libVTextEdit.so" -t "${srcdir}/squashfs-root/usr/lib"
-    rm -rf "${srcdir}/squashfs-root/usr/local"
-#    _file_list=(libQt6Core5Compat.so.6 libQt6Core.so.6 libQt6DBus.so.6 libQt6Gui.so.6 libQt6Network.so.6 libQt6OpenGL.so.6 \
-#        libQt6Pdf.so.6 libQt6Positioning.so.6 libQt6PrintSupport.so.6 libQt6QmlMeta.so.6 libQt6QmlModels.so.6 libQt6Qml.so.6 \
-#        libQt6QmlWorkerScript.so.6 libQt6Quick.so.6 libQt6QuickWidgets.so.6 libQt6SerialPort.so.6 libQt6Sql.so.6 libQt6Svg.so.6 \
-#        libQt6WebChannel.so.6 libQt6WebEngineCore.so.6 libQt6WebEngineWidgets.so.6 libQt6Widgets.so.6 libQt6XcbQpa.so.6 \
-#        libssl.so.3 libcrypto.so.3 libjpeg.so.8 libxslt.so.1)
-#	for _files in "${_file_list[@]}";do
-#		ln -sf "/usr/lib/${_files}" "${srcdir}/squashfs-root/usr/lib/${_files}"
-#	done
+    #install -Dm644 "${srcdir}/squashfs-root/usr/local/lib/libVTextEdit.so" -t "${srcdir}/squashfs-root/usr/lib"
+    #rm -rf "${srcdir}/squashfs-root/usr/local"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
