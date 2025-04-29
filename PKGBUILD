@@ -3,37 +3,52 @@
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
 pkgrel=1
-pkgver=r8959.0065aae6
+pkgver=1.1.2.r753.g9a4419c
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
-provides=('ghostty')
-conflicts=('ghostty')
+provides=('ghostty' 'ghostty-shell-integration' 'ghostty-terminfo')
+conflicts=('ghostty' 'ghostty-shell-integration' 'ghostty-terminfo')
 license=('MIT')
 depends=(
     'bzip2'
-    'fontconfig'
-    'freetype2'
-    'gtk4'
-    'harfbuzz'
-    'libadwaita'
+    'fontconfig' 'libfontconfig.so'
+    'freetype2' 'libfreetype.so'
+    'gcc-libs'
+    'glibc'
+    'glib2' 'libglib-2.0.so' 'libgio-2.0.so' 'libgobject-2.0.so'
+    'gtk4' 'libgtk-4.so'
+    'gtk4-layer-shell'
+    'libx11'
+    'harfbuzz' 'libharfbuzz.so'
+    'libadwaita' 'libadwaita-1.so'
     'libpng'
     'oniguruma'
     'pixman'
+    'wayland' 'libwayland-client.so'
     'zlib'
 )
-makedepends=('git' 'zig>=0.13.0' 'zig<0.14.0' 'pandoc-cli' 'wayland-protocols')
+makedepends=('git' 'blueprint-compiler' 'pandoc-cli' 'zig' 'wayland-protocols')
 source=("git+https://git@github.com/ghostty-org/${_pkgbasename}")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgbasename}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 --match="v*" HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${srcdir}/${_pkgbasename}"
-    
+
+    # Fix zigimg repository reference in build.zig.zon to use the new organization repo
+    if [ -f build.zig.zon ]; then
+        sed -i 's|github.com/TUSF/zigimg|github.com/zigimg/zigimg|g' build.zig.zon
+    fi
+
+    # Fetch zig cache
+    ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache/" ./nix/build-support/fetch-zig-cache.sh
+
     # Modify build.zig to include Zen 3 optimizations
     sed -i '/const target = b\.standardTargetOptions(.{}/a \
         if (target.cpu.arch == .x86_64) {\
@@ -50,11 +65,20 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgbasename}"
-    ZIG_GLOBAL_CACHE_DIR="${srcdir}/tmp" ./nix/build-support/fetch-zig-cache.sh
-    zig build --system "${srcdir}/tmp/p" -Doptimize=ReleaseFast -Demit-docs
+    DESTDIR=build zig build \
+        --summary all \
+        --prefix "/usr" \
+        --system "${srcdir}/zig-global-cache/p" \
+        -Doptimize=ReleaseFast \
+        -Dgtk-wayland=true \
+        -Dgtk-x11=true \
+        -Dpie=true \
+        -Demit-docs \
+        -Dversion-string="${pkgver%.r*}-r${pkgver#*.r}-$pkgrel-zen3-arch"
 }
 
 package() {
     cd "${srcdir}/${_pkgbasename}"
-    zig build -p "${pkgdir}"/usr --system "${srcdir}/tmp/p" -Doptimize=ReleaseFast -Demit-docs
+    cp -a build/* "${pkgdir}/"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 }
