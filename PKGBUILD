@@ -2,17 +2,18 @@
 # Created: 12/12/2016
 pkgname=gopro-vr-player
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GoPro VR Player is a 360-degree video & photo player for desktop computers: watch 360° videos locally and enjoy professional playback features."
 arch=('x86_64')
 url='http://www.kolor.com/gopro-vr-player/'
 license=('custom: "commercial"')
 depends=('libidn11')
 install="$pkgname.install"
-_archiveversion=400
-_archivename=GoProVRPlayer_Linux64_${pkgver}.tar.xz
+_archivever=231
+_archivedate=2017-05-19
+_archivename=GoProVRPlayer_Linux64_${_archivever}_${_archivedate}.tar.xz
 
-source=("$_archivename::http://download.kolor.com/ked/stable/linux64tarxz/${pkgver}.${_archiveversion}"
+source=("$_archivename::https://emeric.io/CI/kolor/${_archivename}"
         "$pkgname"
         "$pkgname.desktop")
 
