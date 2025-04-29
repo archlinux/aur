@@ -1,38 +1,40 @@
-# Maintainer: 0xMRTT < 0xMRTT at proton dot me >
-
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: 0xMRTT <0xMRTT at proton dot me>
 pkgname=gnome-shell-extension-valent-git
-pkgver=r41.dcfebec
+pkgver=1.0.0.alpha.46.r17.gc1a9b70
 pkgrel=1
-pkgdesc=" GNOME Shell integration for Valent "
+pkgdesc="GNOME Shell integration for Valent"
 arch=('any')
-url="https://github.com/andyholmes/gnome-shell-extension-valent"
-license=('GPL3')
-makedepends=('git' 'meson' 'gnome-common')
-optdepends=('valent')
+url="https://valent.andyholmes.ca"
+license=('GPL-3.0-or-later')
+depends=(
+  'gnome-shell'
+  'valent'
+)
+makedepends=(
+  'git'
+  'meson'
+)
+checkdepends=('eslint')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(git+$url.git)
-b2sums=('SKIP')
+conflicts=("${pkgname%-git}" 'gnome-shell-extension-gsconnect')
+source=('git+https://github.com/andyholmes/gnome-shell-extension-valent.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build
+  arch-meson "${pkgname%-git}" build -Dtests=true
   meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
-
