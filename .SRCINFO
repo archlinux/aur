@@ -1,0 +1,16 @@
+pkgbase = nava
+	pkgdesc = A Python library for playing sound everywhere natively and securely.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://pypi.org/project/nava/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/99/ac/43e77dedad00a84a33bb6ae1f88eb73a56723a66204d49389ff722bb3426/nava-0.7.tar.gz
+	sha256sums = 45266e70646c68d80f14a636d93ea81038b67513a858d2d7875c821cfb74c2d6
+
+pkgname = nava
