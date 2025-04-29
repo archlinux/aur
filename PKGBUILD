@@ -1,7 +1,7 @@
 # Maintainer: Charlie Menke <charliemenke[at]me[dot]com>
 
 pkgname=snowflake-cli-bin
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 epoch=1
 pkgdesc='snowflake-cli (snow)'
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('gcc-libs'
     'xz')
 source=("https://sfc-repo.snowflakecomputing.com/snowflake-cli/linux_${CARCH}/${pkgver}/snowflake-cli-${pkgver}.x86_64.deb")
-sha256sums=('9f6880fcb8e65007a2fad0a05eeee6986b81e39a243efdf89c43361aac9ccad4')
+sha256sums=('ddaa434f8d28cacc3147b474be73401e73657a66cca2490b502884331fdf24db')
 
 package() {
   mkdir -p $pkgdir/snow
