@@ -31,4 +31,3 @@ package() {
   # Optional: Install README and LICENSE if you have one
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-
