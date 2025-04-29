@@ -1,6 +1,6 @@
 pkgbase = sqlmap-git
 	pkgdesc = Automatic SQL injection and database takeover tool
-	pkgver = 1.8.7
+	pkgver = 1.9.4.r2.g663ab4a54
 	pkgrel = 1
 	url = https://sqlmap.org
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = sqlmap-git
 	depends = python
 	depends = sh
 	optdepends = perl: icmpsh extra tool
+	optdepends = python-sqlalchemy: MySQL/MariaDB connection
 	provides = sqlmap
 	conflicts = sqlmap
 	backup = etc/sqlmap.conf

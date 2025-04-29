@@ -4,7 +4,7 @@
 # Contributor: fxbru <frxbru[at]gmail>
 
 pkgname=sqlmap-git
-pkgver=1.8.7
+pkgver=1.9.4.r2.g663ab4a54
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='https://sqlmap.org'
@@ -12,7 +12,10 @@ arch=('any')
 license=('GPL-2.0-only')
 depends=('python' 'sh')
 makedepends=('git')
-optdepends=('perl: icmpsh extra tool')
+optdepends=(
+  'perl: icmpsh extra tool'
+  'python-sqlalchemy: MySQL/MariaDB connection'
+)
 provides=('sqlmap')
 conflicts=('sqlmap')
 backup=('etc/sqlmap.conf')
