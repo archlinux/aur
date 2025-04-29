@@ -1,11 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=catcat-dm-react
-_pkgname="CatCatDM"
+_pkgname=CatCatDM
+_zhsname='猫猫弹幕姬'
 pkgver=2.0.1
 _electronversion=23
 _nodeversion=18
-pkgrel=3
-pkgdesc="Cat Cat DanMu.猫猫弹幕姬.哔哩哔哩直播弹幕姬:查看直播间弹幕。"
+pkgrel=4
+pkgdesc="Cat Cat DanMu.(Use system-wide electron)哔哩哔哩直播弹幕姬:查看直播间弹幕。"
 arch=('any')
 url="https://github.com/kokolokksk/catcat-dm-react"
 license=('MIT')
@@ -17,15 +18,14 @@ makedepends=(
     'npm'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
+    'git'
     'curl'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7f8b604c1c32dd5f7b2aeb235e070ebed9a47c9cfc26d620f5be4a2ed0b65845'
+sha256sums=('c6a22d620f20456e6ff3555e49be08be48ab2a83e4122627ee292a1821d93f3e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,25 +33,26 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
+    sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname}.desktop"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -66,6 +67,10 @@ build() {
     NODE_ENV=development    npm install --force
     NODE_ENV=development    npm add -D "@chakra-ui/toast"
     NODE_ENV=production     npx patch-package
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx ts-node ./.erb/scripts/clean.js dist
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
