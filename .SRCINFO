@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang-data
 	pkgdesc = 万象词库
-	pkgver = 6.6+r20250428
+	pkgver = 6.6.1+r20250428
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/amzxyz/RIME-LMDG
@@ -12,10 +12,10 @@ pkgbase = rime-wanxiang-data
 	makedepends = sed
 	source = wanxiang-lts-zh-hans.20250428.gram::https://github.com/amzxyz/RIME-LMDG/releases/download/LTS/wanxiang-lts-zh-hans.gram
 	source = cn_dicts.20250428.zip::https://github.com/amzxyz/RIME-LMDG/releases/download/dict-nightly/cn_dicts.zip
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.6.tar.gz
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.6.1.tar.gz
 	sha256sums = 0de368de2a399fb307b62c11f0bc8887d4063e9392b9d3eb3b9e3477c37a4bab
 	sha256sums = f067b217a80bd5acc0ceb556366cd2f8ea2267166ed6d0ba82b2e388903a5f7a
-	sha256sums = 34c549fcfd2ee8ee10a5ec88cfa1a1cc8ce9a98d2bb8b573c201a85b0169e07e
+	sha256sums = 9d7fbc5a87fcfb06bfe80fef58b6b847d564e43395294f47fcfce5d5d8cc2328
 
 pkgname = rime-wanxiang-data
 	pkgdesc = 万象词库 Meta 包
