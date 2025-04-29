@@ -5,17 +5,15 @@
 # Created: 18/03/2011
 pkgname=autopanogiga
 pkgver=4.4.2
-pkgrel=4
-pkgdesc='Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga (trial version).'
+pkgrel=5
+pkgdesc='Create beautiful panoramas by stitching multiple photos automatically with Autopano Giga.'
 arch=('x86_64')
 url='https://web.archive.org/web/20180822070241/http://kolor.com/autopano/'
 license=('custom: "commercial"')
 install="$pkgname.install"
 changelog=ChangeLog
-_archiveversion=400
-_archivename=AutopanoGiga_Linux64_${pkgver}.tar.xz
 
-source=("https://web.archive.org/web/20230306215932if_/https://cdn-download.kolor.com/apg/4.4.2.400_2018-09-10/AutopanoGiga_Linux64_442_2018-09-10.tar.xz"
+source=("https://emeric.io/CI/kolor/AutopanoGiga_Linux64_442_2018-09-10.tar.xz"
         "$pkgname"
         "$pkgname.png"
         "$pkgname.desktop")
