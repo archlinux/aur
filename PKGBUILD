@@ -1,12 +1,13 @@
 # Maintainer: Frogprog frogprog09@gmail.com
 pkgname=frogprog-hyprland-dark-git
 pkgbase=frogprog-hyprland-dark-git
-pkgver=1.1.0.0.6dda4cf
+pkgver=1.0.5.4.61743e3
 pkgrel=1
 epoch=
 pkgdesc="productive dark hyprland setup for laptop (14 inch)"
 arch=('x86_64')
 url="https://github.com/FrogProg09/my-linux"
+_branch='gruvbox-dark'
 license=('BSD')
 #groups=()
 depends=(
@@ -34,7 +35,7 @@ optdepends=(
 # options=()
 # install=
 # changelog=
-source=("git+https://github.com/FrogProg09/my-linux.git")
+source=("git+${url}#branch=${_branch}") # specifying branch from repo
 # noextract=()
 sha256sums=('SKIP')
 # validpgpkeys=()
@@ -44,7 +45,7 @@ pkgver() {
 
   # Get the last tagged version, number of commits since that tag, and abbreviated commit hash
   local version
-  version="$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.1.0")"  # Fallback to "0.0.0" if no tags
+  version="$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.1.2")"  # Fallback to "0.0.0" if no tags
   local commits
   commits="$(git rev-list --count HEAD ^"$version")"  # Count commits since last tag
   local hash

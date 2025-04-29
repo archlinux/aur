@@ -1,6 +1,6 @@
 pkgbase = frogprog-hyprland-dark-git
 	pkgdesc = productive dark hyprland setup for laptop (14 inch)
-	pkgver = 1.1.0.0.6dda4cf
+	pkgver = 1.0.5.4.61743e3
 	pkgrel = 1
 	url = https://github.com/FrogProg09/my-linux
 	arch = x86_64
@@ -18,8 +18,7 @@ pkgbase = frogprog-hyprland-dark-git
 	optdepends = nautilus
 	optdepends = hyprpolkitagent
 	optdepends = starship
-	conflicts = rofi
-	source = git+https://github.com/FrogProg09/my-linux.git
+	source = git+https://github.com/FrogProg09/my-linux#branch=gruvbox-dark
 	sha256sums = SKIP
 
 pkgname = frogprog-hyprland-dark-git
