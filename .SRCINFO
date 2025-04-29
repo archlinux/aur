@@ -1,0 +1,16 @@
+pkgbase = unsure
+	pkgdesc = Calculate with numbers you’re not sure about
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/filiph/unsure
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = dart
+	depends = glibc
+	options = !strip
+	source = unsure-0.4.0.tar.gz::https://github.com/filiph/unsure/archive/4f36e11175d172c1969a0256b7204bb1377f6ead.tar.gz
+	b2sums = c8c4d026ddfb11ce0dbca25adc1f84a60c446d90cdc85b233d5272ab5735e239378e11d0a4713a924839b5906da5d95902bfce3974450b0780d5272280444dcf
+
+pkgname = unsure
