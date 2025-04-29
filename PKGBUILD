@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.4.3
-_electronversion=35
-_nodeversion=20
+pkgver=3.5.0
+_electronversion=36
+_nodeversion=23
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files.(Use system-wide electron)"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('2fd9318693e3dac4ac014874c35720105c1a5f01102c68fd8b617352d42bcdd2'
+sha256sums=('3753946a6030f2fe026c7846640d4c2a204286fa9513c81d8cccef3a6bba8252'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
@@ -51,6 +51,7 @@ prepare() {
         echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -61,7 +62,11 @@ prepare() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    sed -i -e "
+        2i\import { fileURLToPath } from \"node:url\";
+        10i\const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    " rspack.config.ts
+    NODE_ENV=development    npm install --leagcy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = elephicon
 	pkgdesc = A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files.(Use system-wide electron)
-	pkgver = 3.4.3
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/sprout2000/elephicon
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = elephicon
 	makedepends = nvm
 	makedepends = curl
 	makedepends = git
-	depends = electron35
+	depends = electron36
 	conflicts = elephicon
-	source = elephicon-3.4.3::git+https://github.com/sprout2000/elephicon#tag=v3.4.3
+	source = elephicon-3.5.0::git+https://github.com/sprout2000/elephicon#tag=v3.5.0
 	source = electron-builder.yml
 	source = elephicon.sh
-	sha256sums = 2fd9318693e3dac4ac014874c35720105c1a5f01102c68fd8b617352d42bcdd2
+	sha256sums = 3753946a6030f2fe026c7846640d4c2a204286fa9513c81d8cccef3a6bba8252
 	sha256sums = be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
