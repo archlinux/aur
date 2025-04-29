@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 
-export launchTarget="/usr/bin/prismlauncher $@"
-
 export _portableConfig="org.prismlauncher.PrismLauncher"
 
 if [[ "$@" = "--actions opendir" ]]; then
@@ -11,6 +9,6 @@ elif [[ "$@" = "--actions share-files" ]]; then
 elif [[ "$@" = "--actions quit" ]]; then
 	portable --actions quit
 else
-	portable
+	portable -- $@
 fi
 
