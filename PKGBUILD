@@ -2,8 +2,8 @@
 # Maintainer: v9pzm7 <751000925#qq.com>
 _pkgbase=simple-live-app
 pkgname=simple-live-app-bin
-_build_id=10801
-_version=1.8.1
+_build_id=10803
+_version=1.8.3
 pkgver=${_version}.${_build_id}
 pkgrel=1
 
@@ -16,7 +16,7 @@ provides=("$_pkgbase")
 # conflicts=("$pkgname-git" "$pkgname-beta")
 
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/xiaoyaocz/dart_simple_live/releases/download/v${_version}/simple_live_app-${_version}+${_build_id}-linux.deb")
-sha256sums_x86_64=('b00ec8f262de14f4ded30d2d2d4cd9e47bc1b58df72167c7c0a79bc6ae23b3e2')
+sha256sums_x86_64=('e4adb252adaf2114745d2603c0683b5fcbb0c233c5a41fe69edffe94e0a779d1')
 depends=('libmpv.so' 'xdg-user-dirs')
 makedepends=('patchelf')
 options=(!debug)
