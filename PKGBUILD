@@ -28,6 +28,6 @@ package() {
 	cd "${pkgname}-${pkgver}"
 	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
 
-	sed -i '|ExecStart=|s|/local||' "install/${pkgname}.service"
+	sed -i '/ExecStart=/s|/local||' "install/${pkgname}.service"
 	install -Dm644 "install/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 }
