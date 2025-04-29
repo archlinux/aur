@@ -1,6 +1,6 @@
 pkgbase = fmilib
 	pkgdesc = open-source implementation of the FMI open standard
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://www.jmodelica.org/FMILibrary
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fmilib
 	makedepends = cmake3-bin
 	depends = glibc
 	options = !lto
-	source = https://github.com/modelon-community/fmi-library/archive/3.0.1.tar.gz
-	sha256sums = c7a76f486281e4f086b9da5a4137e56c9553bea7fd12461b40e74b046deecccc
+	source = https://github.com/modelon-community/fmi-library/archive/3.0.2.tar.gz
+	sha256sums = 4b6d2514c79f7e5875b12022a6455dfc999fb5905d973ab875c949362e0c9225
 
 pkgname = fmilib

@@ -1,5 +1,5 @@
 pkgname=fmilib
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="open-source implementation of the FMI open standard"
 arch=('x86_64')
@@ -9,14 +9,10 @@ makedepends=('cmake3-bin')
 depends=('glibc')
 options=(!lto)
 source=("https://github.com/modelon-community/fmi-library/archive/${pkgver}.tar.gz")
-sha256sums=('c7a76f486281e4f086b9da5a4137e56c9553bea7fd12461b40e74b046deecccc')
+sha256sums=('4b6d2514c79f7e5875b12022a6455dfc999fb5905d973ab875c949362e0c9225')
 
 prepare() {
   cd "$srcdir"/fmi-library-${pkgver}
-
-  # error: implicit declaration of function 'fileno'
-  sed -i "18i#define _GNU_SOURCE" src/XML/src-gen/FMI1/lex.yyfmi1.c src/XML/src-gen/FMI2/lex.yyfmi2.c
-  sed -i "90i#define _GNU_SOURCE" src/XML/src-gen/FMI3/lex.yyfmi3.c
 }
 
 build() {
