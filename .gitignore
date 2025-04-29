@@ -1,5 +1,4 @@
-/src
-/pkg
-/hyprland-hidpi-xprop-git*
-*pkg.tar.zst
-hyprland/
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
