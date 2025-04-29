@@ -1,7 +1,7 @@
 pkgbase = altitude-metrix-wallet-bin
-	pkgdesc = The Metrix wallet https://metrixcoin.com.Prebuilt version.Use system-wide electron.
+	pkgdesc = The Metrix wallet https://metrixcoin.com. (Prebuilt version.Use system-wide electron)
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheLindaProjectInc/Altitude
 	arch = x86_64
 	license = GPL-3.0-only
