@@ -3,7 +3,7 @@
 # Contributor: mickael9 <mickael9@gmail.com>
 
 pkgname=factorio-experimental
-pkgver=2.0.45
+pkgver=2.0.46
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (experimental branch)."
 arch=('x86_64')
