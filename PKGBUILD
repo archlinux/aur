@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=Cherry-Studio
 pkgver=1.2.9
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'

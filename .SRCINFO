@@ -1,7 +1,7 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cherry-ai.com/
 	arch = aarch64
 	arch = x86_64
