@@ -1,5 +1,5 @@
 pkgname=piv-agent
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc='An SSH and GPG agent which you can use with your PIV hardware security device (e.g. a Yubikey).'
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/smlx/${pkgname}"
 license=('Apache-2.0')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c536ebcc50d5e112de4b06e510ffc1377f7b8b3dcd8119c5f25d775b7b5da64f')
+sha256sums=('bd1ff08e759757343e79cfcdbff479518659d6146999595741eec26e9662bfc7')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
