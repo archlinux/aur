@@ -5,17 +5,17 @@
 # and uses xfce patches from:
 # https://github.com/simplejack-src/gtk3-classic-xfce (repository no longer available)
 
-__arch_pkg_commit="8546d3057e3037ffdd3526a329742951b35892b3"
-_gtkver=3.24.48
+__arch_pkg_commit="8f2788260973cbce3821ba4a4bacd265ef468425"
+_gtkver=3.24.49
 
-_gtk3_classic_commit="bc3adeb62c575c96c80cab1613c5eb83e2bcd522"
+_gtk3_classic_commit="d20969e08403d4df124ef44138977b9cff6e4c44"
 
 _gtk3_classic=gtk3-classic
 
 pkgbase=gtk3-classic-xfce
 pkgname=($pkgbase)
 pkgver=${_gtkver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Patched GTK+3 that provides a more classic experience, with patches for xfce"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(
@@ -68,35 +68,18 @@ optdepends=(
 )
 
 makedepends=(
-	cairo
 	cantarell-fonts
-	desktop-file-utils
-	fribidi
-	gdk-pixbuf2
 	git
 	glib2-devel
 	gobject-introspection
-	gtk-update-icon-cache
 	hicolor-icon-theme
 	libcups
 	libegl
-	libepoxy
 	libgl
-	librsvg
-	libxcomposite
-	libxcursor
-	libxdamage
-	libxi
-	libxinerama
-	libxkbcommon
-	libxrandr
 	meson
-	pango
 	python-packaging
 	quilt
 	sassc
-	shared-mime-info
-	wayland
 	wayland-protocols
 )
 install=gtk3.install
@@ -106,8 +89,8 @@ source=(git+$url.git#commit=$_gtk3_classic_commit
 	    settings.ini
         appearance__file-chooser-xfce.patch
 )
-sha256sums=('62720cd099d373afbbd8926c550b91cb8d47bf88690aed78c0c63cf0d3d1435e'
-            'fa02692d8cc717bdadbba15f5b5ba0849f2135ee7ed71edd1da27013152500da'
+sha256sums=('6fbfbe5eee1d8dff978a3d2c9fb2ac0e0ad3f0fe78b227225d18ed144de8d0d9'
+            'a2958d82986c81794e953a3762335fa7c78948706d23cced421f7245ca544cbc'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'c443bfa1f70ac5ce2102c83b38b193e78f614b606cb0dae807ecd25d591f1e99')
