@@ -12,7 +12,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.0.2.r138.g3e84469
+pkgver=31.0.3.r202.g6bb9019
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
@@ -38,6 +38,7 @@ depends=(
 makedepends=(
   #'asio'
   'cmake'
+  'extra-cmake-modules'
   'ffnvcodec-headers'
   'git'
   'libdatachannel'

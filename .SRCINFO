@@ -1,12 +1,13 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming
-	pkgver = 31.0.2.r138.g3e84469
+	pkgver = 31.0.3.r202.g6bb9019
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = libdatachannel
@@ -66,7 +67,7 @@ pkgbase = obs-studio-git
 	optdepends = sndio: sndio input client
 	optdepends = v4l2loopback-dkms: virtual camera support
 	optdepends = vlc: VLC Media Source
-	provides = obs-studio=31.0.2.r138.g3e84469
+	provides = obs-studio=31.0.3.r202.g6bb9019
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/obsproject/obs-browser.git
