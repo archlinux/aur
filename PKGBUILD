@@ -3,7 +3,7 @@
 pkgname=telecord
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Export Discord chat from JSON to Telegram including media, via CLI"
+pkgdesc="Export Discord chat from JSON, or CSV , TXT to Telegram including media, via CLI"
 arch=('any')
 url="https://github.com/vinayydv3695/telecord"
 license=('MIT')
