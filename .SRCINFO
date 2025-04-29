@@ -1,6 +1,6 @@
 pkgbase = cpptools-debug-bin
 	pkgdesc = Debug adapter extraced from vscode-cpptools
-	pkgver = 1.24.5
+	pkgver = 1.25.3
 	pkgrel = 1
 	url = https://github.com/Microsoft/vscode-cpptools
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cpptools-debug-bin
 	license = LicenseRef-custom
 	provides = cpptools-debug
 	conflicts = cpptools-debug
-	source_x86_64 = extension_x86_64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.24.5/cpptools-linux-x64.vsix
-	b2sums_x86_64 = 91756bdb2f3ad2a87818cd00ccfa4f79cbdba3db7cef3f0e3fa06fc21f3e639c242a2ce7243f4c06fed19a44c2a160b8dd231d41a0b2f5dfcf4b784c8b6b96ef
-	source_armv7h = extension_armv7h.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.24.5/cpptools-linux-arm32.vsix
-	b2sums_armv7h = fa1507d58ed6f4eb1454a76ff2c02c1b8675dc42c223fed1b934355bffa0a906adddb6d107bbd598c34f804aa2cf41089fccdb0d9d56311e7816f9510e289474
-	source_aarch64 = extension_aarch64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.24.5/cpptools-linux-arm64.vsix
-	b2sums_aarch64 = 4849df257a7d4ba92c74694963f042b0be16801b2b0a4149edb0a8e1eece9a15b932236952bd60349251321334dfb8e0a3dce8e91163e54ef81177c401d00b97
+	source_x86_64 = extension_x86_64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.25.3/cpptools-linux-x64.vsix
+	b2sums_x86_64 = 21a438b753946fc9f00f12c2ead5aca02d7541e3e1d989a2655707801d8c3a603f5574b802fc060919ebe1b98be9badefa391a06f2f566c6e746948d903610fa
+	source_armv7h = extension_armv7h.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.25.3/cpptools-linux-arm32.vsix
+	b2sums_armv7h = 64e6c35e69fdc8b00cfac19309a0ef368f0d01995b5108d6f428f390ccf599f61f39d07a6ca1c79d9a28a1de957c7ec265ad537987a229fa66eeb4234cfa093a
+	source_aarch64 = extension_aarch64.zip::https://github.com/microsoft/vscode-cpptools/releases/download/v1.25.3/cpptools-linux-arm64.vsix
+	b2sums_aarch64 = 9375d433f9f69559d1642f6749659b9705dd0da76f8eecb908f162ff12e5120d6e33825861ae40779c71bda1f0c203cd334aef10a2df4a0ae66d17198b7f3208
 
 pkgname = cpptools-debug-bin
