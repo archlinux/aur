@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -37,12 +37,13 @@ depends=(
 makedepends=(
   git
   gcc13
+  cmake
   python-installer
   python-setuptools
   python-setuptools-scm
   python-build)
 
-optdeps=(
+optdepends=(
   'python-openai: required for openai protocols'
   'python-prometheus_client: Prometheus instrumentation library for Python applications'
   'prometheus-fastapi-instrumentator: Prometheus fastapi implementation'
@@ -63,7 +64,7 @@ optdeps=(
   'python-datasets: tools to benchmark scripts')
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('79733d1098c6ed8a327110414a760e9d1d66adfd51377bb4b1266ba73ef7fd42')
+sha256sums=('407a0f6d3c15e4c73c94efbbb816a390cdde4905951c876a74d059e28f5459d9')
 _jobs=$(($(nproc) / 2))
 prepare() {
   #not much luck setting CC env flags, so manually linking and pathing - this only exists for building
