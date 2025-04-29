@@ -52,11 +52,8 @@ source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/
 
 sha256sums=('4742fe6a4591572faf75ec0668d0fedf22b3eeff6a9f344372d9edeede3057f5')
 
-prepare() {
-    bsdtar -xf "data.tar.xz"
-}
-
 package() {
+    bsdtar -xf "data.tar.xz"
     # Install main binaries
     install -d "${pkgdir}/usr/share/${pkgname}"
     mv "usr/share/${pkgname}" "${pkgdir}/usr/share/"
@@ -72,5 +69,5 @@ package() {
     install -Dm644 "usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
 	# Shell completions
     mv "usr/share/bash-completion" "${pkgdir}/usr/share/bash-completion"
-    install -Dm 644 "usr/share/zsh/vendor-completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+    install -Dm644 "usr/share/zsh/vendor-completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
