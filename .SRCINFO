@@ -1,6 +1,6 @@
 pkgbase = anythingllm-appimage
 	pkgdesc = AnythingLLM: The all-in-one AI app you were looking for. Any LLM, unlimited documents, and fully private. All on your desktop.
-	pkgver = 1.7.7
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://anythingllm.com/
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = anythingllm-appimage
 	options = !strip
 	options = !debug
 	source_x86_64 = AnythingLLMDesktop.AppImage::https://cdn.anythingllm.com/latest/AnythingLLMDesktop.AppImage
-	sha256sums_x86_64 = c25610438aa77861f46f595eecde7e4b815bcd67dba8508d0ee1d00eaf347f6b
+	b2sums_x86_64 = 4b52fa923dd6ab96dc668285407119f6c088070d11dc0f9385dd4fba425f9426d89ba086d74e1c92c6b2decc08e0c001cd6d1945285cfc2443a3cd75b3b99865
 
 pkgname = anythingllm-appimage

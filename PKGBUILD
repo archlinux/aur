@@ -1,9 +1,10 @@
-# Maintainer: pika02 <pikakolendo02 at gmail dot com>
+# Maintainer: David Birks <david@birks.dev>
+# Contributor: pika02 <pikakolendo02 at gmail dot com>
 
 _pkgname=anythingllm
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.7.7
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="AnythingLLM: The all-in-one AI app you were looking for. Any LLM, unlimited documents, and fully private. All on your desktop."
 arch=('x86_64')
@@ -14,7 +15,7 @@ options=(!strip !debug)
 _appimage="AnythingLLMDesktop.AppImage"
 source_x86_64=("${_appimage}::https://cdn.anythingllm.com/latest/AnythingLLMDesktop.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('c25610438aa77861f46f595eecde7e4b815bcd67dba8508d0ee1d00eaf347f6b')
+b2sums_x86_64=('4b52fa923dd6ab96dc668285407119f6c088070d11dc0f9385dd4fba425f9426d89ba086d74e1c92c6b2decc08e0c001cd6d1945285cfc2443a3cd75b3b99865')
 appname="anythingllm-desktop"
 
 prepare() {
