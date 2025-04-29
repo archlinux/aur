@@ -1,7 +1,7 @@
 pkgbase = gchat
-	pkgdesc = Unofficial Google Chat app.Use system-wide electron.
+	pkgdesc = Unofficial Google Chat app.(Use system-wide electron)
 	pkgver = 1.0.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/dcrousso/GChat
 	arch = any
 	license = MIT
@@ -9,11 +9,12 @@ pkgbase = gchat
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = git
 	depends = electron23
 	conflicts = gchat
-	source = gchat-1.0.1.tar.gz::https://github.com/dcrousso/GChat/archive/refs/tags/v1.0.1.tar.gz
+	source = gchat-1.0.1::git+https://github.com/dcrousso/GChat#tag=v1.0.1
 	source = gchat.sh
-	sha256sums = 6ac16d881642d156d9e3c01367edba538cde61efef2c46d07be0e504a42199bf
+	sha256sums = c5580e43f8aa627ecd8b574bba475d00ff86d5910d42137e3663e16b8a68849e
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = gchat
