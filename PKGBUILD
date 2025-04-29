@@ -2,14 +2,14 @@
 # Contributor: 0xMRTT <0xMRTT at proton dot me>
 pkgname=gnome-shell-extension-valent-git
 pkgver=1.0.0.alpha.46.r17.gc1a9b70
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell integration for Valent"
 arch=('any')
 url="https://valent.andyholmes.ca"
 license=('GPL-3.0-or-later')
 depends=(
   'gnome-shell'
-  'valent'
+  'valent-git'
 )
 makedepends=(
   'git'

@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-valent-git
 	pkgdesc = GNOME Shell integration for Valent
 	pkgver = 1.0.0.alpha.46.r17.gc1a9b70
-	pkgrel = 1
+	pkgrel = 2
 	url = https://valent.andyholmes.ca
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-valent-git
 	makedepends = git
 	makedepends = meson
 	depends = gnome-shell
-	depends = valent
+	depends = valent-git
 	provides = gnome-shell-extension-valent
 	conflicts = gnome-shell-extension-valent
 	conflicts = gnome-shell-extension-gsconnect
