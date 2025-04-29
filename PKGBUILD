@@ -1,8 +1,9 @@
-# Maintainer: éclairevoyant
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: éclairevoyant
 # Contributor: xiretza <xiretza+aur at gmail dot com>
 
 pkgname=python-discord
-pkgver=2.3.2
+pkgver=2.5.2
 _tarname=discord.py-$pkgver
 pkgrel=1
 pkgdesc="Discord API wrapper written in Python"
@@ -21,7 +22,7 @@ optdepends=(
 	'python<3.10: speed support'
 )
 source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('53f88fef4bce2eaab9422331150af9696c2cb7f01f329193618fdf5b69276cebebef2b74921d5b76fa3288154704cc7ddc682a5dd70ab74cdc50f951e577c2c9')
+b2sums=('3b761a88d4205651cafb889c2f2c618bbf6792d297952e068d1c515a7c6bead8fc874020ae8235187159a899dc4ff960d48ba3e6d34b98c299ec381e7e63477d')
 
 build() {
 	cd $_tarname
