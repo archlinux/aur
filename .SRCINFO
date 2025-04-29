@@ -1,0 +1,24 @@
+pkgbase = conan-bin
+	pkgdesc = A distributed, open source, C/C++ package manager.
+	pkgver = 2.16.0
+	pkgrel = 1
+	url = https://conan.io
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = tar
+	depends = zlib
+	depends = glibc
+	depends = libxcrypt-compat
+	provides = conan
+	conflicts = conan
+	source = LICENSE-2.16.0::https://raw.githubusercontent.com/conan-io/conan/2.16.0/LICENSE.md
+	source = README-2.16.0.md::https://raw.githubusercontent.com/conan-io/conan/2.16.0/README.md
+	sha256sums = cb0cfe10fad4eeb3ec0c1482474ddae67dcf2b2715cfd58655f6d18e5ce92aac
+	sha256sums = 366ea37eea2441b885aa01304bd30a90b5c93680c58f91e7cf3a2a238f6370b5
+	source_x86_64 = https://github.com/conan-io/conan/releases/download/2.16.0/conan-2.16.0-amd64.deb
+	sha256sums_x86_64 = 8a94610101a9720d7babec44b4692c2f69ea970a50548e4bba02520c44d466a6
+	source_aarch64 = https://github.com/conan-io/conan/releases/download/2.16.0/conan-2.16.0-arm64.deb
+	sha256sums_aarch64 = 9eb57393dab2a15a888b9afad1c76b8993d05828fc1299773c36d3d834c9a6b7
+
+pkgname = conan-bin
