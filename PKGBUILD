@@ -3,10 +3,10 @@
 # Date 2025-04-29 13:58:32
 #
 #
-pkgname=nava
+pkgname=python-nava
 _origpkgname=nava
 pkgver=0.7
-pkgrel=2
+pkgrel=1
 pkgdesc="A Python library for playing sound everywhere natively and securely."
 arch=("x86_64")
 url='https://pypi.org/project/nava/'
