@@ -55,7 +55,6 @@ prepare() {
     nvm install
 
     export HUSKY=0
-
     npm install --cache "${srcdir}/npm-cache" --include dev
     npm install node-addon-api --save-dev --cache "${srcdir}/npm-cache"
 }
