@@ -6,7 +6,7 @@ _gitname=gpib-utils
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=1.5+62.r254.20160626.720b17d
-pkgrel=2
+pkgrel=3
 pkgdesc="GPIB instrument support utilities. Latest git checkout from master branch."
 url="https://github.com/garlick/gpib-utils"
 arch=('x86_64' 'i686' 'aarcxh64')
@@ -21,6 +21,7 @@ makedepends=(
 )
 optdepends=(
   'linux-gpib:  For kernel drivers and userspace utilities.'
+  "sh:          For 'test/thello' (in documentation directory)."
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -85,6 +86,12 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/${_gitname}"
+
+  make -j1 check
+}
+
 package() {
   cd "${srcdir}/${_gitname}"
 
@@ -92,6 +99,8 @@ package() {
   mv -v "${pkgdir}/usr"/etc "${pkgdir}"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      'git.log' README README.md NEWS INSTALL AUTHORS
+  install -Dvm755 -t "${pkgdir}/usr/share/doc/${_pkgname}/test" test/thello
+  cp -rv test/.libs  "${pkgdir}/usr/share/doc/${_pkgname}/test"/
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  'COPYING'
 }
 

@@ -1,7 +1,7 @@
 pkgbase = gpib-utils-git
 	pkgdesc = GPIB instrument support utilities. Latest git checkout from master branch.
 	pkgver = 1.5+62.r254.20160626.720b17d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/garlick/gpib-utils
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = gpib-utils-git
 	depends = glibc
 	depends = libtirpc
 	optdepends = linux-gpib: For kernel drivers and userspace utilities.
+	optdepends = sh: For 'test/thello' (in documentation directory).
 	provides = gpib-utils=1.5+62.r254.20160626.720b17d
 	provides = libvxi11=1.5+62.r254.20160626.720b17d
 	provides = libvxi11.so
