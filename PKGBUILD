@@ -10,11 +10,11 @@ source=("https://github.com/fygar256/bi/archive/refs/heads/v3.4.1.4.zip")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make  # makeが必要な場合
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 bi.py "$pkgdir/usr/bin/bi"
+  install -Dm644 "${srcdir}/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  
 }
