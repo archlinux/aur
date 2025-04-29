@@ -1,7 +1,7 @@
 pkgbase = tts-vue
-	pkgdesc = Microsoft speech synthesis tool, built using Electron+Vue+ElementPlus+Vite.微软语音合成工具,使用Electron+Vue+ElementPlus+Vite构建。
+	pkgdesc = Microsoft speech synthesis tool, built using Electron+Vue+ElementPlus+Vite.(Use system-wide electron)微软语音合成工具,使用Electron+Vue+ElementPlus+Vite构建。
 	pkgver = 1.9.15
-	pkgrel = 9
+	pkgrel = 10
 	url = https://tts-doc.loker.vip/home.html
 	arch = x86_64
 	license = MIT
@@ -9,11 +9,12 @@ pkgbase = tts-vue
 	makedepends = nvm
 	makedepends = npm
 	makedepends = curl
+	makedepends = git
 	depends = electron19
 	conflicts = tts-vue
-	source = tts-vue-1.9.15.tar.gz::https://github.com/LokerL/tts-vue/archive/refs/tags/1.9.15.tar.gz
+	source = tts-vue-1.9.15::git+https://github.com/LokerL/tts-vue#tag=1.9.15
 	source = tts-vue.sh
-	sha256sums = 24b790413084a232302bcb0c37edf5216b47d56851b80efbfa9ce3d7c54ebd23
+	sha256sums = a070c7728fb24a093a86a38c1e4e2bfe6261dcab1bfc0072fbacfb5ceb0e6fa2
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = tts-vue
