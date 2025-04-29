@@ -10,6 +10,7 @@ source=("https://github.com/fygar256/bi/archive/refs/heads/v3.4.1.4.zip")
 sha256sums=('SKIP')
 
 build() {
+  cd "$srcdir/$pkgname-$pkgver"
 }
 
 package() {
