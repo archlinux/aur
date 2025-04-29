@@ -1,16 +1,16 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Luca Weiss <aur (at) lucaweiss (dot) eu>
 
 _upstream=RazerGenie
 _pkgname=razergenie
 pkgname=razergenie-git
-pkgver=0.7.r167.g776e653
+pkgver=1.3.0.r0.g160e0e8
 pkgrel=1
 pkgdesc="Qt application for configuring your Razer devices under GNU/Linux."
 arch=('x86_64')
 url="https://github.com/z3ntu/RazerGenie"
-license=('GPL3')
-depends=('libopenrazer' 'qt5-base' 'hicolor-icon-theme' 'openrazer-daemon')
-makedepends=('git' 'meson' 'qt5-tools')
+license=('GPL-3.0-or-later')
+depends=('libopenrazer' 'qt6-base' 'hicolor-icon-theme' 'openrazer-daemon')
+makedepends=('git' 'meson' 'qt6-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/z3ntu/RazerGenie.git')
