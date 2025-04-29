@@ -3,7 +3,7 @@
 pkgname=bruno-git
 _pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=1.39.0.r0.gdfb0b1b96
+pkgver=2.2.0.r0.g526fcabff
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -54,12 +54,9 @@ prepare() {
 
     nvm install
 
-    # disabling husky however I can since I'm not in a git repository
-    sed -i -e 's/"husky":.*//g' -e 's/"husky install"/"true"/g' package.json
+    export HUSKY=0
 
-    npm install --cache "${srcdir}/npm-cache"
-
-    npm install electron-builder --save-dev --cache "${srcdir}/npm-cache"
+    npm install --cache "${srcdir}/npm-cache" --include dev
     npm install node-addon-api --save-dev --cache "${srcdir}/npm-cache"
 }
 
@@ -70,17 +67,34 @@ build() {
 
     cd "${_pkgname}"
 
-    npm run build:graphql-docs
-    npm run build:bruno-query
-    npm run build:bruno-common
     npm run sandbox:bundle-libraries --workspace=packages/bruno-js
-    npm run build:web
+
+    npm run build --workspace=packages/bruno-common
+    npm run build --workspace=packages/bruno-requests
+    npm run build --workspace=packages/bruno-converters
+    npm run build --workspace=packages/bruno-query
+    npm run build --workspace=packages/bruno-graphql-docs
+
+    npm run build --workspace=packages/bruno-app
+
+    rm -rf packages/bruno-electron/{out,web}
+    mkdir -p packages/bruno-electron/web
+    cp -r packages/bruno-app/dist/* packages/bruno-electron/web
+
+    sed -i -e 's@/static/@static/@g' packages/bruno-electron/web/**.html
+    sed -i -e 's@/static/font@../../static/font@g' packages/bruno-electron/web/static/css/**.**.css
+
+    find packages/bruno-electron/web -name '*.map' -type f -delete
 
     electronDist="/usr/lib/${_electron}"
     electronVer="$(cat ${electronDist}/version)"
-    sed -i -e "s~\"dist:linux\":.*~\"dist:linux\": \"electron-builder --linux --x64 --dir --config electron-builder-config.js -c.electronDist=${electronDist} -c.electronVersion=${electronVer}\",~g" packages/bruno-electron/package.json
 
-    npm run build:electron:linux
+    npm run pack --workspace=packages/bruno-electron -- \
+        --linux \
+        --x64 \
+        --config electron-builder-config.js \
+        -c.electronDist=${electronDist} \
+        -c.electronVersion=${electronVer}
 }
 
 package() {
