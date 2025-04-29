@@ -9,7 +9,7 @@
 
 # Maintainer: Gliim LLC <team@golf-lang.com>
 pkgname=golf
-pkgver=492
+pkgver=494
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
@@ -52,4 +52,9 @@ check() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir/" install
+}
+
+post_install() {
+   echo "Setting up man pages..."
+   mandb >/dev/null 2>&1 || true
 }
