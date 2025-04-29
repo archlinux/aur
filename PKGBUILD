@@ -1,7 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-photos-git
-pkgver=8.0.0.r21.g742f6d1b
+pkgver=8.0.1.r51.g8b0b21da
 pkgrel=1
 pkgdesc='The Pantheon Photos Manager'
 arch=('x86_64')
@@ -10,8 +12,8 @@ license=('LGPL2.1')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'geocode-glib' 'glib2' 'gst-plugins-base-libs'
          'gstreamer' 'gtk3' 'json-glib' 'libexif' 'libgee' 'libgexiv2'
-         'libgphoto2' 'libraw' 'libsoup' 'libxml2' 'pango' 'rest' 'sqlite'
-         'webkit2gtk'
+         'libgphoto2' 'libraw' 'libsoup' 'libxml2' 'pango' 'librest' 'sqlite'
+         'webkit2gtk' libhandy libportal libportal-gtk3
          'libgranite.so' 'libgudev-1.0.so')
 makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
 provides=('pantheon-photos')
@@ -26,13 +28,11 @@ pkgver() {
 }
 
 build() {
-  arch-meson pantheon-photos build \
-    -Dlibunity='false'
+  arch-meson pantheon-photos build
+
   ninja -C build
 }
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
 }
-
-# vim: ts=2 sw=2 et:
