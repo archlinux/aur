@@ -1,15 +1,15 @@
 pkgbase = foobar2000-encoders
 	pkgdesc = Encoder binaries for the Converter component
-	pkgver = 20250224
+	pkgver = 20250404
 	pkgrel = 1
 	url = https://www.foobar2000.org/encoderpack
 	arch = any
 	groups = foobar2000
 	license = Apache-2.0 AND BSD-3-Clause AND GPL-2.0-only AND LGPL-2.0-only
-	makedepends = 7zip
+	makedepends = p7zip
 	optdepends = foobar2000>=1.1.14
-	source = https://www.foobar2000.org/files/Free_Encoder_Pack-2025-02-24.exe
-	b2sums = 63440fd86b5531395977e95e31f69052e5ea2865b0205f25cca7729bc83b7da56343dfb1d342779d22353e6b5f7471ffefda5a859e9c5d3c6cb74e1fa953a16d
+	source = https://www.foobar2000.org/files/Free_Encoder_Pack-2025-04-04.exe
+	b2sums = 366b284d5497753113005175fd80b7edf40c300af722d8992c78c20159a1ce2272a7e7847ae1fdb798f729dc0f34d7765880ef5ffda8699e1d4bf129835eabf7
 
 pkgname = foobar2000-encoders
 
