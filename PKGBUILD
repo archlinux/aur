@@ -1,7 +1,7 @@
 # Maintainer: 6543 <6543@obermui.de>
 # Contributor: 6543 <6543@obermui.de>
 pkgname=nodeinfo
-pkgver=0.3.2
+pkgver=1.0.0
 pkgrel=0
 pkgdesc="return nodeinfo as json based on a given domain"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("$url/archive/v$pkgver.tar.gz")
 sha512sums=(
-  '03875cc116ed6918387f026bcc60ef6ed1c20b144f60badc937d6b6eaec599a9644997aef160797254b6d06c4820d8d2029e1d3b4eeec52df98022e950016d6b'
+  '9906cdfd5e91deaa62e776e5a1b2ba9154ec35b82f20330122042c4acd3ae23a01b09bdf6da8441af0876f38559e58a31304dba8939f23c9e8829dd454c55ff2'
 )
 
 build() {
