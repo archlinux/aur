@@ -1,21 +1,13 @@
 # Maintainer:
 
 ## options
-: ${_build_avx:=false}
-: ${_build_git:=false}
-
 : ${_commit:=aa955b8ae28314ae061613f0ddf13183a98aca03} # 0.1.r7465
 : ${_scripts:=scripts/deps}
 
-unset _pkgtype
-[[ "${_build_avx::1}" == "t" ]] && _pkgtype+="-avx"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-# basic info
 _pkgname="duckstation"
-pkgname="$_pkgname${_pkgtype:-}"
+pkgname="$_pkgname"
 pkgver=0.1.7465
-pkgrel=1
+pkgrel=2
 pkgdesc="Playstation emulator"
 url="https://github.com/stenzek/duckstation"
 arch=('x86_64')
@@ -57,27 +49,6 @@ _source_duckstation() {
 
   pkgver() {
     echo "${pkgver:?}"
-  }
-}
-
-_source_duckstation_git() {
-  license=('LicenseRef-Duckstation')
-
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-    local _tag=$(git tag | sed -E '/^.*[A-Za-z]{2}.*$/d' | sort -rV | head -1)
-    local _pkgver=$(sed -E 's/^[^0-9]*//;s/-/./g' <<< "$_tag")
-    local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
-    local _commit=$(git rev-parse --short=7 HEAD)
-
-    printf "%s.r%s.g%s" "${_pkgver:?}" "${_revision:?}" "${_commit:?}"
   }
 }
 
@@ -166,28 +137,39 @@ _prepare_backtrace() (
 _prepare_cpuinfo() (
   local _version_cpuinfo=$(grep -E -m1 'CPUINFO=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*CPUINFO=(\S+)$&\1&')
   echo "cpuinfo = $_version_cpuinfo"
-  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_cpuinfo" checkout -f "$_version_cpuinfo"
+  cd "$srcdir/$_pkgsrc_cpuinfo"
+  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+  fi
 )
 
 _prepare_discord_rpc() (
   local _version_discord_rpc=$(grep -E -m1 'DISCORD_RPC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*DISCORD_RPC=(\S+)$&\1&')
   echo "discord-rpc = $_version_discord_rpc"
-  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_discord_rpc" checkout -f "$_version_discord_rpc"
+  cd "$srcdir/$_pkgsrc_discord_rpc"
+  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+  fi
 )
 
 _prepare_lunasvg() (
   local _version_lunasvg=$(grep -E -m1 'LUNASVG=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*LUNASVG=(\S+)$&\1&')
   echo "lunasvg = $_version_lunasvg"
-  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_lunasvg" checkout -f "$_version_lunasvg"
+  cd "$srcdir/$_pkgsrc_lunasvg"
+  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+  fi
 )
 
 _prepare_shaderc() (
   local _version_shaderc=$(grep -E -m1 'SHADERC=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SHADERC=(\S+)$&\1&')
   echo "shaderc = $_version_shaderc"
 
-  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_shaderc" checkout -f "$_version_shaderc"
-
   cd "$srcdir/$_pkgsrc_shaderc"
+  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+  fi
+
   sed -E -e '/\(glslc\)/d;/examples/d;/third_party/d' \
     -i CMakeLists.txt
 )
@@ -196,7 +178,10 @@ _prepare_soundtouch() (
   local _version_soundtouch=$(grep -E -m1 'SOUNDTOUCH=' "$_pkgsrc/$_scripts/build-dependencies-linux.sh" | sed -E -e 's&^\s*SOUNDTOUCH=(\S+)$&\1&')
   echo "soundtouch = $_version_soundtouch"
 
-  git -c advice.detachedHead=false -C "$srcdir/$_pkgsrc_soundtouch" checkout -f "$_version_soundtouch"
+  cd "$srcdir/$_pkgsrc_soundtouch"
+  if ! git -c advice.detachedHead=false checkout -f "$_version_cpuinfo"; then
+    echo "upstream deleted commit, using $(git rev-parse HEAD)"
+  fi
 )
 
 _prepare_spirv_cross() (
@@ -218,10 +203,12 @@ _prepare_duckstation() {
   local _pkgver=$(pkgver)
   _commit=$(git -C "$_pkgsrc" rev-parse HEAD)
 
+  # disable autoupdate
   sed -E -e 's@#define AUTO_UPDATER_SUPPORTED@@' \
     -e 's@#if !__has_include\("scmversion/tag.h"\) && !defined\(_DEBUG\)@#if 0@' \
     -i "$_pkgsrc/src/duckstation-qt/autoupdaterdialog.cpp"
 
+  # update links
   sed -E \
     -e 's&^(\s*).*g_scm_tag_str.*g_scm_branch_str.*$&\1tr("%1").arg(QLatin1StringView(g_scm_tag_str)));&' \
     -e 's! &lt;stenzek@gmail.com&gt;!!' \
@@ -252,6 +239,7 @@ END
 
   patch -Np1 -F100 -d "$_pkgsrc" -i "../0000-help-menu.patch"
 
+  # fix header
   cat >> "$_pkgsrc/src/scmversion/tag.h" << EOF
 #pragma once
 #define SCM_RELEASE_ASSET "$pkgname"
@@ -259,6 +247,7 @@ END
 #define SCM_RELEASE_TAG "latest"
 EOF
 
+  # fix script
   install -Dm755 /dev/stdin "$_pkgsrc/src/scmversion/gen_scmversion.sh" << END
 #!/bin/sh
 HASH="$(git -C "$_pkgsrc" rev-parse HEAD)"
@@ -441,19 +430,6 @@ _build_duckstation() {
   cmake --build build
 }
 
-_build_env() {
-  export AR CC CXX CFLAGS CXXFLAGS LDFLAGS
-  AR="llvm-ar"
-  CC="clang"
-  CXX="clang++"
-  LDFLAGS+=" -fuse-ld=lld"
-
-  if [[ "${_build_avx::1}" == "t" ]]; then
-    export CFLAGS="$(echo "$CFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-    export CXXFLAGS="$(echo "$CXXFLAGS" | sed -E 's@(\s*-(march|mtune)=\S+\s*)@ @g;s@\s*-O[0-9]\s*@ @g;s@\s+@ @g') -march=x86-64-v3 -mtune=generic -O3"
-  fi
-}
-
 prepare() {
   _prepare_backtrace
   _prepare_cpuinfo
@@ -467,7 +443,12 @@ prepare() {
 }
 
 build() {
-  _build_env
+  export CC CXX LDFLAGS
+  CC="clang"
+  CXX="clang++"
+  LDFLAGS+=" -fuse-ld=lld"
+
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   _build_backtrace
   _build_cpuinfo
@@ -481,14 +462,24 @@ build() {
 }
 
 package() {
+  # rpath
+  patchelf --force-rpath --set-rpath '$ORIGIN' "build/bin/$_pkgname-qt"
+  patchelf --force-rpath --set-rpath '$ORIGIN' "deps/usr/lib"/*.so
+
+  # main files
   install -dm755 "$pkgdir/opt/$_pkgname/"
   cp --reflink=auto -r build/bin/{resources,translations,duckstation-qt} "$pkgdir/opt/$_pkgname/"
 
-  # rpath
-  patchelf --force-rpath --set-rpath "/opt/$_pkgname" "$pkgdir/opt/$_pkgname/$_pkgname-qt"
-
   # libraries
-  install -Dm644 "$srcdir/deps/usr/lib"/*.so* -t "$pkgdir/opt/$_pkgname/"
+  install -Dm644 "deps/usr/lib"/*.so* -t "$pkgdir/opt/$_pkgname/"
+
+  if [ -f "$pkgdir/opt/$_pkgname/libshaderc_ds.so" ]; then
+    ln -sf libshaderc_ds.so "$pkgdir/opt/$_pkgname/libshaderc_shared.so"
+  elif [ -f "$pkgdir/opt/$_pkgname/libshaderc_shared.so" ]; then
+    ln -sf libshaderc_shared.so "$pkgdir/opt/$_pkgname/libshaderc_ds.so"
+  else
+    echo "warning: shaderc library not found."
+  fi
 
   # icon
   install -Dm644 "$pkgdir/opt/$_pkgname/resources/images/duck.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
@@ -518,12 +509,7 @@ END
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
 
-if [[ "${_build_git::1}" == "t" ]]; then
-  _source_duckstation_git
-else
-  _source_duckstation
-fi
-
+_source_duckstation
 _source_backtrace
 _source_cpuinfo
 _source_discord_rpc
