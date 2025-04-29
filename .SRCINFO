@@ -1,0 +1,24 @@
+pkgbase = frogprog-hyprland-light-git
+	pkgdesc = productive dark hyprland setup for laptop (14 inch)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/FrogProg09/my-linux
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = hyprland
+	depends = hyprlang
+	depends = hyprlock
+	depends = hyprpaper
+	depends = hypridle
+	depends = waybar
+	depends = rofi-wayland
+	depends = kitty
+	depends = mako
+	optdepends = nautilus
+	optdepends = hyprpolkitagent
+	optdepends = starship
+	source = git+https://github.com/FrogProg09/my-linux#branch=gruvbox-light
+	sha256sums = SKIP
+
+pkgname = frogprog-hyprland-light-git
