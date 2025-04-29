@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=106.r7906.e2f19b6
-pkgrel=2
+pkgrel=3
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut-ng'
@@ -100,10 +100,11 @@ backup=('etc/dracut.conf')
 
 source=(
   git+${url}.git
-  1291.patch::${url}/commit/1281eb767a86c7037303f83b10cfd91859d26a28.patch    # fix: load more kernel modules in sloppy hostonly mode
+  1291.patch::${url}/commit/1281eb7.patch # fix: load more kernel modules in sloppy hostonly mode
+  1268.patch::${url}/commit/cb30ed5.patch # fix(systemd-sysusers): remove (g)shadow created by systemd-sysusers
 )
 
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"-ng
