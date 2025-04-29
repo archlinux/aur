@@ -1,6 +1,6 @@
 pkgbase = python-openslide
 	pkgdesc = Python bindings to OpenSlide
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/openslide/openslide-python
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-openslide
 	makedepends = python-wheel
 	depends = openslide
 	depends = python-pillow
-	source = openslide-python-1.4.1.tar.gz::https://github.com/openslide/openslide-python/archive/v1.4.1.tar.gz
-	sha256sums = c7fe6ae42a5afa6457f8418c7c860b2dc94a0cba0f3290f361cb0f4377838576
+	source = openslide-python-1.4.2.tar.gz::https://github.com/openslide/openslide-python/archive/v1.4.2.tar.gz
+	sha256sums = 9a15d4f0ace96a3486582741f4a6b7d7e555406f07097506abe75e900e0f3b63
 
 pkgname = python-openslide
