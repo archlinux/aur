@@ -1,0 +1,16 @@
+appId: com.patternsdigital.pharmaspot
+productName: PharmaSpot
+directories:
+  output: dist
+  buildResources: assets
+files:
+  - "**/*"
+  - "!gulpfile.js"
+  - "!.git.*"
+  - "!TODO"
+  - "!notes.txt"
+  - "!forge.config.js"
+  - "!tests"
+  - "!jest.config.js"
+  - "assets/**/**/**/*"
+asar: true
