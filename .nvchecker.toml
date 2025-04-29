@@ -1,4 +1,5 @@
 [tex-fmt-bin]
-source = "git"
-git = "https://github.com/WGUNDERWOOD/tex-fmt.git"
+source = "github"
+github = "WGUNDERWOOD/tex-fmt"
+use_latest_release = true
 prefix = "v"
