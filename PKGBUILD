@@ -3,29 +3,30 @@
 # Contributor: giantdwarf <17hoehbr@gmail.com>
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 
-pkgname=dxvk-gplasync-bin-git
-pkgver=6389635175
+_pkgname=dxvk-gplasync
+pkgname=$_pkgname-bin-git
+pkgver=9849414907
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 (with gplasync patch) (CI BUILD)"
 arch=('x86_64')
-url="https://gitlab.com/Ph42oN/dxvk-gplasync"
+url="https://gitlab.com/Ph42oN/$_pkgname"
 license=('zlib-acknowledgement')
 depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'bash')
 optdepends=('wine' 'proton')
-provides=("dxvk=$pkgver" 'd9vk')
-conflicts=('dxvk' 'd9vk')
+provides=("dxvk=$pkgver" 'd8vk' 'd9vk')
+conflicts=('dxvk' 'd8vk' 'd9vk')
 options=(!strip)
-source=("$pkgname.zip::https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts/test/download?job=build"
-        'dxvk-gplasync-env.conf'
+source=("$_pkgname.zip::https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts/test/download?job=build"
+        "$_pkgname-env.conf"
         'setup_dxvk_proton.sh'
-        'https://raw.githubusercontent.com/doitsujin/dxvk/4f90d7bf5f9ad785660507e0cb459a14dab5ac75/setup_dxvk.sh')
+        'setup_dxvk.sh::https://aur.archlinux.org/cgit/aur.git/plain/setup_dxvk.sh?h=dxvk-mingw&id=15fc8ab6b1bb285df589359c50540b9c14c1f063')
 sha256sums=('SKIP'
             '2bce3bf5dc5a3c7312bbaae96daf82e0fe6c370e96017ce5a0c49f40901866e3'
-            '64fbbf9f30f2f4e8d1d82b088ade92f1bf8817a4bf6e21d7dd978f4276abe1a6'
-            '0f688815530ab5e8cc89b9b45d9b1d66cd8cd5a7770fb8249339af555a30dfe7')
+            'ce5712e2287b1ab52a9160dd7bacf0694ee3e7a5888bd71a06f27ca67af051d6'
+            'b562e8dc9539ef3cd1554c6679eef10aacf21103403d7390a141a41ae146b7a6')
 
 pkgver() {
-  curl -f "https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts/test/download?job=build" | grep -oP '(?<=jobs\/)\d+'
+  curl -fI "https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts/test/download?job=build" | grep -oP '(?<=jobs\/)\d+'
 }
 
 package() {
@@ -41,5 +42,5 @@ package() {
   ln -s /usr/share/dxvk/setup_dxvk_proton.sh "$pkgdir/usr/bin/setup_dxvk_proton"
 
   install -dm755 "$pkgdir/etc/environment.d"
-  install -Dm644 "$srcdir/dxvk-gplasync-env.conf" "$pkgdir/etc/environment.d/dxvk-gplasync-env.conf"
+  install -Dm644 "$srcdir/$_pkgname-env.conf" "$pkgdir/etc/environment.d/$_pkgname-env.conf"
 }
