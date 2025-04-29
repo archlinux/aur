@@ -1,16 +1,16 @@
 pkgbase = orca-writer
-	pkgdesc = React Electron App for Writing and Publishing Novels.Use system-wide electron.
+	pkgdesc = React Electron App for Writing and Publishing Novels.(Use system-wide electron)
 	pkgver = 0.7.0_pre_alpha
-	pkgrel = 9
+	pkgrel = 10
 	url = https://orcawriter.app/
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = npm
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = cmake
-	makedepends = gcc
+	makedepends = git
 	makedepends = curl
+	makedepends = yarn
 	depends = electron18
 	depends = libvips
 	depends = giflib
@@ -19,9 +19,9 @@ pkgbase = orca-writer
 	depends = libexif
 	depends = libgsf
 	conflicts = orca-writer
-	source = orca-writer-0.7.0_pre_alpha.tar.gz::https://github.com/zachhannum/orca/archive/refs/tags/v0.7.0-pre-alpha.tar.gz
+	source = orca-writer-0.7.0_pre_alpha::git+https://github.com/zachhannum/orca#tag=v0.7.0-pre-alpha
 	source = orca-writer.sh
-	sha256sums = e0f2857dc98cbe9d83d7633d950a281bdfd0cbe2ce18971a73593c1112778668
+	sha256sums = 362c60e7284bb9d26da1c1fb6d47e2b99e65b1f1371a82495e6cf64615cb4130
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = orca-writer
