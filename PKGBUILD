@@ -1,7 +1,7 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=uamp
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Advanced Music Player written in rust."
 arch=(x86_64)
 url="https://bonnyad9.github.io/uamp/"
@@ -12,6 +12,7 @@ optdepends=()
 provides=(uamp)
 source=("https://github.com/BonnyAD9/uamp/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
+options=('!debug')
 
 build() {
     cd "uamp-$pkgver"
