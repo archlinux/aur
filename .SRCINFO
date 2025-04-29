@@ -1,6 +1,6 @@
 pkgbase = sayonara-player-git
 	pkgdesc = Small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend.
-	pkgver = 1.10.0.stable1.r1.g555e238d3
+	pkgver = 1.11.0.stable2.r0.gb39e7fabe
 	pkgrel = 1
 	url = https://sayonara-player.com/
 	arch = x86_64
