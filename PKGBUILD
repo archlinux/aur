@@ -1,16 +1,16 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Luca Weiss <aur (at) lucaweiss (dot) eu>
 
 pkgname=razergenie
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Configure and control your Razer devices"
 arch=('x86_64')
 url="https://github.com/z3ntu/RazerGenie"
 license=('GPL-3.0-or-later')
-depends=('libopenrazer' 'qt5-base' 'openrazer-daemon')
-makedepends=('meson' 'qt5-tools')
+depends=('libopenrazer' 'qt6-base' 'openrazer-daemon')
+makedepends=('meson' 'qt6-tools')
 source=("https://github.com/z3ntu/RazerGenie/releases/download/v$pkgver/RazerGenie-$pkgver.tar.xz"{,.asc})
-sha512sums=('a026780c06c48b4bf91d7f59651a9b22a03079f112875aa6da5474d1bd348988612014906f498addc91912cbed9b070da981e3d58d925f5dbef185841542ae44'
+sha512sums=('c3b095d83b80387717cfbc02d060d563a0785bb44869fd328f0bcaf278f68e05eb7eeb12c506d3cac6a83a6edd2cdeca0b74669a23140e7ac7c787e5cac75c40'
             'SKIP')
 validpgpkeys=('BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD') # Luca Weiss
 
