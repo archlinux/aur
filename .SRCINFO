@@ -1,6 +1,6 @@
 pkgbase = msquic-git
 	pkgdesc = Microsoft implementation of the IETF QUIC protocol
-	pkgver = 2.3.0.r105.g6abfbec41
+	pkgver = 2.3.0.r609.g39b99c307
 	pkgrel = 2
 	url = https://github.com/microsoft/msquic
 	arch = x86_64

@@ -3,7 +3,7 @@
 # Contributor: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=msquic-git
-pkgver=2.3.0.r105.g6abfbec41
+pkgver=2.3.0.r609.g39b99c307
 pkgrel=2
 pkgdesc="Microsoft implementation of the IETF QUIC protocol"
 arch=(x86_64 armv7h aarch64)
@@ -26,10 +26,7 @@ prepare() {
   cd "msquic"
   git submodule init
   git config submodule.submodules/googletest.url "${srcdir}/googletest"
-  #git config submodule.submodules/openssl.url "${srcdir}/quictls-openssl"
-  git config submodule.submodules/openssl.update none
-  git config submodule.submodules/openssl3.url "${srcdir}/quictls-openssl"
-  #git config submodule.submodules/openssl3.update none
+  git config submodule.submodules/quictls.url "${srcdir}/quictls-openssl"
   git config submodule.submodules/clog.url "${srcdir}/CLOG"
   git config submodule.submodules/xdp-for-windows.update none
   git -c protocol.file.allow=always submodule update
@@ -41,20 +38,17 @@ pkgver() {
 }
 
 build() {
+  local _flags=(
+    -DCMAKE_SKIP_INSTALL_RPATH=YES
+    -DQUIC_BUILD_TEST=NO
+  )
+
   cmake -B build -S "msquic" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQUIC_TLS=openssl3 \
-    -DCMAKE_SKIP_INSTALL_RPATH=YES \
-    -DQUIC_BUILD_TEST=NO
+    "${_flags[@]}"
 
   cmake --build build
-
-#    -DQUIC_USE_SYSTEM_LIBCRYPTO=ON \
-# -- Configuring for OpenSSL 3.x
-# [  1%] OpenSSL configure
-# /bin/sh: line 1: /home/fabio/Dev/Github/PKGBUILD-AUR_fix/m/msquic-git/src/msquic/submodules/openssl3/config: No such file or directory
-
 }
 
 package() {
