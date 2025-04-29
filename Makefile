@@ -7,7 +7,7 @@ clean:
 
 test:
 	@rm -rf *.pkg.tar.zst
-	@makepkg -si
+	@makepkg -s
 
 publish:
 	@git add .
