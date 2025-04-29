@@ -5,7 +5,7 @@
 _pkgname=gnss-sdr
 pkgname="${_pkgname}-git"
 pkgver=0.0.20+12.r9867.20250424.4a2f6bc56
-pkgrel=1
+pkgrel=2
 pkgdesc="GNSS (Global Navigation Satellite System) software receiver"
 arch=(
   "i686"
@@ -119,7 +119,8 @@ prepare() {
 
   cd "${srcdir}"
 
-  _CFLAGSADDITIONS="-Wno-maybe-uninitialized" # Silence some compiler warnings.
+  _CFLAGSADDITIONS="-Wno-error=maybe-uninitialized -Wno-error=format-security" # Switch off treating compiler warnings as errors.
+  _CFLAGSADDITIONS+=" -Wno-maybe-uninitialized -Wno-format-security" # Silence some compiler warnings.
   CFLAGS+=" ${_CFLAGSADDITIONS}"
   CXXFLAGS+=" ${_CFLAGSADDITIONS}"
   export CFLAGS

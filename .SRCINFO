@@ -1,7 +1,7 @@
 pkgbase = gnss-sdr-git
 	pkgdesc = GNSS (Global Navigation Satellite System) software receiver
 	pkgver = 0.0.20+12.r9867.20250424.4a2f6bc56
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnss-sdr.org
 	arch = i686
 	arch = x86_64
