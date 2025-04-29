@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=lightlyshaders-git
-pkgver=2.0.0.r49.g42ba6df
+pkgver=3.0.0.r1.g42ba6df
 pkgrel=1
 pkgdesc="Round corners and outline effect for KWin"
 arch=(x86_64)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd LightlyShaders
-  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
