@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mqtt5-explorer-bin
-_pkgname="MQTT5 Explorer"
-pkgver=1.18.0
+_pkgname='MQTT5 Explorer'
+pkgver=1.19.1
 _electronversion=28
 pkgrel=1
 pkgdesc="A simple yet feature-rich client to visualize data of any MQTT broker.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f82c5262ae8804dfa20f37f0a2af4d1fa1755316b2fe49650059a9f5d541421a'
+sha256sums=('f34d28ef6e37b49ef7316a4f9e6b8f6ccb0ff44d45be68f42e6278d71fa4558f'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -e "
@@ -30,7 +30,9 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g;s/Video;/Video;AudioVideo;/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
