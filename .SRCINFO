@@ -1,7 +1,7 @@
 pkgbase = tex-fmt-bin
 	pkgdesc = An extremely fast LaTeX formatter written in Rust
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WGUNDERWOOD/tex-fmt
 	arch = aarch64
 	arch = armv7h
