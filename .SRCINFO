@@ -1,20 +1,19 @@
 pkgbase = leavepad
 	pkgdesc = A multi-platform notepad. focuses on writing memos. File editing is not supported.(Use system-wide electron)
-	pkgver = 1.2.9
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/kaishuu0123/leavepad
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = npm
 	makedepends = yarn
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = git
 	makedepends = nvm
 	makedepends = curl
-	depends = electron31
-	source = leavepad-1.2.9.tar.gz::https://github.com/kaishuu0123/leavepad/archive/refs/tags/v1.2.9.tar.gz
+	depends = electron35
+	source = leavepad-1.3.2::git+https://github.com/kaishuu0123/leavepad#tag=v1.3.2
 	source = leavepad.sh
-	sha256sums = 549fe44ef834540e32d491978636e73fe39f4f67ba7e51b2708e3e2a95d2c4ee
+	sha256sums = ca426a9aaa276b84af2eebef96b382c0672f216dece5e856732a62a539aafe2d
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = leavepad
