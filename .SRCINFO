@@ -1,0 +1,12 @@
+pkgbase = fonts
+    pkgdesc = A personal collection of fonts for use in any projects
+    pkgver = 1.0
+    pkgrel = 1
+    url = https://github.com/hk3wxy/fonts
+    arch = any
+    license = MIT
+    source = fonts-1.0.tar.gz::https://github.com/hk3wxy/fonts/archive/refs/tags/v1.0.tar.gz
+    sha256sums = 0685762bdfe38bf64aa0d2b9ba295cb42f79c7d8
+    depends = 
+
+pkgname = fonts
