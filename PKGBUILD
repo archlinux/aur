@@ -6,11 +6,11 @@ pkgname="perl-${_cpanname,,}"
 pkgver=0.208
 pkgrel=3
 pkgdesc="Perl/CPAN Module Crypt::Simple - simple file locking scheme"
-url="http://search.cpan.org/dist/LockFile-Simple"
+url="https://metacpan.org/dist/LockFile-Simple"
 license=("GPL-2.0-or-later or PerlArtistic")
 arch=("any")
 depends=("perl")
-source=("http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/${pkgname#perl-}/${_cpanname}-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/S/SC/SCHWIGON/${pkgname#perl-}/${_cpanname}-${pkgver}.tar.gz")
 sha256sums=('45c77896b2a5a0a45f6202a6f813f437ff8b283f84a1c60d0c4f3730802af3a2')
 
 build() {
