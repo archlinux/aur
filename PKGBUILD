@@ -37,7 +37,7 @@ source=("git+https://github.com/FrogProg09/my-linux.git")
 # noextract=()
 sha256sums=('SKIP')
 # validpgpkeys=()
-pkgbase=frogprog-hyprland-dark-git
+# pkgbase=frogprog-hyprland-dark-git
 
 pkgver() {
   cd "$srcdir/my-linux" || return 1 
