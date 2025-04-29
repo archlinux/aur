@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Stompbox Remote
+Comment='Guitar amplification and effects (remote UI)'
+Exec=/usr/bin/StompboxRemoteGL
+Icon=audio-speakers
+Terminal=false
+StartupNotify=false
+Categories=AudioVideo;Audio;
+Keywords=Guitar;Audio;Amplifier;Effect
