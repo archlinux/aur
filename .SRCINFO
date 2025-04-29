@@ -1,5 +1,5 @@
 pkgbase = telecord
-	pkgdesc = Export Discord chat from JSON to Telegram including media, via CLI
+	pkgdesc = Export Discord chat from JSON, or CSV , TXT to Telegram including media, via CLI
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/vinayydv3695/telecord
