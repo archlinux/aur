@@ -1,20 +1,22 @@
 pkgbase = pad-md
-	pkgdesc = A notepad app for desktop, developed in Electron, with TS/JS, HTML and CSS.Use system-wide electron.
+	pkgdesc = A notepad app for desktop, developed in Electron, with TS/JS, HTML and CSS.(Use system-wide electron)
 	pkgver = 0.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://pad-md-landing-page.vercel.app/
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = curl
+	makedepends = git
+	makedepends = nvm
 	depends = electron24
 	depends = nodejs
 	conflicts = pad-md
 	options = !emptydirs
-	source = pad-md-0.6.tar.gz::https://github.com/Coffee-for-Cats/pad-md/archive/refs/tags/stable6.tar.gz
+	source = pad-md-0.6::git+https://github.com/Coffee-for-Cats/pad-md#tag=stable6
 	source = pad-md.sh
-	sha256sums = 6cada9b66b9aa33f702239f38cd7e0b96631c860592e68427a759dc8f04b8fb5
+	sha256sums = 5a87f23955482ae586a49f3713f8b7de64733bdb2fbf3ddb28158f876fffcf96
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = pad-md
