@@ -1,6 +1,6 @@
 pkgbase = giopic-git
-	pkgdesc = Simple picture upload program, support blue sky picture bed and other picture bed programs and S3 storage bucket.Use system-wide electron.🚧 简约的图片上传程序，支持 兰空图床 等多种图床程序 和 S3存储桶
-	pkgver = r146.3d97d74
+	pkgdesc = Simple picture upload program, support blue sky picture bed and other picture bed programs and S3 storage bucket.(Use system-wide electron)🚧 简约的图片上传程序，支持 兰空图床 等多种图床程序 和 S3存储桶
+	pkgver = r202.10a4b34
 	pkgrel = 1
 	url = https://github.com/isYangs/GioPic
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = giopic-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron31
 	depends = python
 	source = giopic.git::git+https://github.com/isYangs/GioPic.git
