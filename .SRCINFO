@@ -1,4 +1,4 @@
-pkgbase = yourprogram
+pkgbase = bi
 	pkgdesc = Vinary editor like vI
 	pkgver = 3.4.1.4
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = yourprogram
 	source = https://github.com/fygar256/bi/archive/refs/heads/bi_v3.4.1.4.zip
 	sha256sums = SKIP
 
-pkgname = yourprogram
+pkgname = bi
