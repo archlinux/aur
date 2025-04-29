@@ -2,7 +2,7 @@
 pkgname=printnotes-bin
 _pkgname=printnotes
 pkgver=0.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform markdown notes app inspired by Google Keep and Obsidian.(Prebuilt version)"
 arch=('x86_64')
 url="https://github.com/RoBoT095/printnotes"
@@ -11,6 +11,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
+)
+options=(
+    '!strip'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${CARCH}.AppImage"
@@ -21,9 +24,11 @@ sha256sums=('c0132619018988c3230d046ba0b8889eba7fcdc43ea489dfc59aa11b730657b3'
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/${pkgname%-bin}/g
+        s/@runname@/AppRun/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/application-vnd.appimage/${pkgname%-bin}/g" "${srcdir}/squashfs-root/com.${pkgname%-bin}.${pkgname%-bin}.desktop"
 }
