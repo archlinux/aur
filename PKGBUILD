@@ -6,7 +6,7 @@
 pkgname=python-nava
 _origpkgname=nava
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for playing sound everywhere natively and securely."
 arch=("x86_64")
 url='https://pypi.org/project/nava/'
