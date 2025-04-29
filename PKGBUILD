@@ -4,8 +4,8 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.15.3
-pkgrel=2
+pkgver=2.16.0
+pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
 url=https://github.com/GoogleCloudPlatform/cloudsql-proxy
@@ -16,7 +16,7 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('3fbb12f34485d1bb9d72b8009f889c2eee36fd90e750d72846120fffc97bea9ae199f9a7226d2e4c5cdd407b0aa43f2d62e791bf9acb36cbbc52baa6a223b7f4')
+b2sums=('374bd5a1b0ca96effb6942e81868ab464bbc0116b0b095a3dc28f0ce146aaa339eb42d40fcac0b2f00fc79e195a8ddf84942b07d256c3a7a15d027f1c2b637a4')
 
 prepare() {
   export GOPATH="${srcdir}"
