@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 pkgname=citron
 pkgver=0.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -12,7 +12,7 @@ makedepends=('curl' 'git' 'cmake' 'clang' 'boost' 'python-pip' 'glslang' 'ninja'
 conflicts=('citron')
 options=(!debug)
 _tag="v${pkgver}-canary-refresh"
-source=(${pkgname}::git+https://git.citron-emu.org/Citron/Citron.git#tag=${_tag}
+source=(${pkgname}::git+https://git.citron-emu.org/citron/emu.git#tag=${_tag}
         cubeb::git+https://github.com/mozilla/cubeb.git#commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
         discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git#commit=20cc99aeffa08a4834f156b6ab49ed68618cf94a
         dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git#commit=ba8192d89078af51ae6f97c9352e3683612cdff1

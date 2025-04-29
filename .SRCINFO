@@ -1,7 +1,7 @@
 pkgbase = citron
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.6.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://citron-emu.org
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -38,7 +38,7 @@ pkgbase = citron
 	provides = citron
 	conflicts = citron
 	options = !debug
-	source = citron::git+https://git.citron-emu.org/Citron/Citron.git#tag=v0.6.1-canary-refresh
+	source = citron::git+https://git.citron-emu.org/citron/emu.git#tag=v0.6.1-canary-refresh
 	source = cubeb::git+https://github.com/mozilla/cubeb.git#commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
 	source = discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git#commit=20cc99aeffa08a4834f156b6ab49ed68618cf94a
 	source = dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git#commit=ba8192d89078af51ae6f97c9352e3683612cdff1
