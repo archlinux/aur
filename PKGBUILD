@@ -3,7 +3,7 @@
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
 _debname="com.${_pkgname}_app.${_pkgname}"
-pkgver=3.0.6.r0.ge78c963
+pkgver=3.0.6.r11.ge158a05
 _nodeversion=21
 pkgrel=1
 pkgdesc="A cross-platform software for text translation.一个跨平台的划词翻译软件"
@@ -57,7 +57,7 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
+prepare() {
     sed -i "s/@runname@/${_pkgname}/" "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
@@ -72,18 +72,24 @@ build() {
         echo "store-dir="${srcdir}"/.pnpm_store"
         echo "shamefully-hoist=true"
         echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
         {
         echo 'registry=https://registry.npmmirror.com'
         } >> .npmrc
+        export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     fi
     find src-tauri -type f -name "*.json" -exec sed -i "s/icon\.ico/icon\.png/g" {} \;
     sed -i "s/#openssl/openssl={version=\"0.10\",features=[\"vendored\"]}/g" src-tauri/Cargo.toml
+    sed -i "s/targets\"\: \"all/targets\"\: \"deb/g" src-tauri/tauri.conf.json
     NODE_ENV=development    pnpm install --force
-    NODE_ENV=production     pnpm tauri build -b deb
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    NODE_ENV=production     pnpm tauri build
     sed -i "s/${_debname}/${pkgname%-git}/" "${_debname}.metainfo.xml"
     sed -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-git}/g
