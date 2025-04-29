@@ -4,7 +4,7 @@
 _pkgname=nifskope
 pkgname=${_pkgname}-git
 pkgver=1.1.3.864.g30954e7f
-pkgrel=3
+pkgrel=4
 pkgdesc="Utility for opening and editing the NetImmerse (NIF) file format."
 arch=('i686' 'x86_64')
 url="http://niftools.org"
@@ -13,25 +13,57 @@ depends=('qt5-base')
 makedepends=('git' 'gendesk')
 source=(
 	'git+https://github.com/niftools/nifskope.git'
+
+	# nifskope submodules
 	'git+https://github.com/niftools/nifdocsys.git'
 	'git+https://github.com/qhull/qhull.git'
 	'git+https://github.com/madler/zlib.git'
+	'git+https://github.com/g-truc/gli.git'
+
+	# docsys submodules
+	'git+https://github.com/niftools/kfmxml.git'
+	'git+https://github.com/niftools/nifxml.git'
+
+	# icon
 	"${_pkgname}.png::https://www.niftools.org/assets/images/NifTools-Logo-128.png"
 )
 md5sums=(
 	'SKIP'
+
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'SKIP'
+
+	'SKIP'
+	'SKIP'
+
 	'53e5203a116423d3436401395fa12a35'
 )
 
 prepare() {
 	gendesk -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec NifSkope # generate desktop entry
 
+	cd "${srcdir}/nifdocsys"
+
+	# docsys submodules
+	git submodule init
+	git config submodule.nifxml.url "${srcdir}/nifxml"
+	git config submodule.kfmxml.url "${srcdir}/kfmxml"
+	git -c protocol.file.allow=always submodule update
+
 	cd "${srcdir}/${_pkgname}"
 
+	# nifskope submodules
+	git submodule init
+	git config submodule.docsys.url "${srcdir}/nifdocsys"
+	git config submodule.qhull.url "${srcdir}/qhull"
+	git config submodule.lib/zlib.url "${srcdir}/zlib"
+	git config submodule.lib/gli.url "${srcdir}/gli"
+	git -c protocol.file.allow=always submodule update
+
 	git submodule update --init --recursive
+
 	git pull origin pull/147/head
 
 	sed -i -e "\$atarget.path = /usr/bin\nINSTALLS += target" NifSkope.pro
