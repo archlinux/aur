@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Mezin <mezin.alexander@gmail.com>
 # Contributor: Amiel Kyamko <junkfactory@gmail.com>
 pkgname=gnome-shell-extension-ddterm
-pkgver=59
+pkgver=60
 pkgrel=1
 pkgdesc='Another Drop Down Terminal Extension for GNOME Shell'
 arch=('any')
@@ -15,10 +15,10 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ddterm/gnome-shell-extension-ddterm/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('43653f7cb26b1d5d824cbf4958b510cc2543cb0fd2adca3e80f9d0542ada1404')
+sha256sums=('e4985319ce4f54f7c08040ca69447e5021ac72fa0f9dfb7727ba9ff7ff3b88f6')
 
 build() {
-    arch-meson "${pkgname}-${pkgver}" build -Dlinters=disabled -Dtests=disabled
+    arch-meson "${pkgname}-${pkgver}" build -Dtests=disabled
 
     # gtk-builder-tool needs X or Wayland
     LIBGL_ALWAYS_SOFTWARE=1 xvfb-run --auto-display --server-args=-noreset --wait=0 -- meson compile -C build
