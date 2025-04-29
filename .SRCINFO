@@ -1,7 +1,7 @@
 pkgbase = pharmaspot-bin
-	pkgdesc = A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service.Prebuilt version.Use system-wide electron.
+	pkgdesc = A cross-platform Point of Sale system designed for pharmacies and built to streamline operations and enhance customer service.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.patternsdigital.com/pharmaspot
 	arch = x86_64
 	license = MIT
