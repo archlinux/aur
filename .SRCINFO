@@ -1,5 +1,5 @@
 pkgbase = salesforce2sql-git
-	pkgdesc = Electron app to convert a Salesforce org's schema into a similarly shaped database.Use system-wide electron.
+	pkgdesc = Electron app to convert a Salesforce org's schema into a similarly shaped database.(Use system-wide electron)
 	pkgver = 0.11.0.r0.ge0f227a
 	pkgrel = 1
 	url = https://github.com/acrosman/Salesforce2Sql
@@ -9,6 +9,7 @@ pkgbase = salesforce2sql-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron32
 	depends = python
 	depends = python-setuptools
