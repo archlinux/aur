@@ -1,7 +1,7 @@
 pkgbase = electron-music-player
-	pkgdesc = A functional music player for FLAC, mp3, and m4a audio.Use system-wide electron.
+	pkgdesc = A functional music player for FLAC, mp3, and m4a audio.(Use system-wide electron)
 	pkgver = 0.8.8
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/kevinfrei/EMP
 	arch = any
 	license = CC0-1.0
@@ -10,13 +10,12 @@ pkgbase = electron-music-player
 	makedepends = gendesk
 	makedepends = nvm
 	makedepends = curl
-	makedepends = cmake
-	makedepends = gcc
+	makedepends = git
 	depends = electron25
 	conflicts = electron-music-player
-	source = electron-music-player-0.8.8.tar.gz::https://github.com/kevinfrei/EMP/archive/refs/tags/v0.8.8.tar.gz
+	source = electron-music-player-0.8.8::git+https://github.com/kevinfrei/EMP#tag=v0.8.8
 	source = electron-music-player.sh
-	sha256sums = f720b3a2d18a83b33462201ac545d60d736b62dbeabd1c6273ec6189bb3d6e5e
+	sha256sums = 03c9c6d8fa31e67ce9c860caebea486b4e857ee89cf51e803b02df92549cef88
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = electron-music-player
