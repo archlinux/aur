@@ -1,0 +1,46 @@
+pkgbase = linux-gpib-firmware-git
+	pkgdesc = Firmware for some GPIB instruments: NI GPIB-USB-B, NI GPIB-USB-HS+, Agilent 82357A and 82357B, Agilent (HP) 82341C and 82341D, Agilent (HP) 82350A.
+	pkgver = r7.20200609.8a5c6c2
+	pkgrel = 2
+	url = https://github.com/fmhess/linux_gpib_firmware
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = git
+	optdepends = linux-gpib: For GPIB kernel drivers this firmware is for.
+	optdepends = hsplus_load: For (one-time) load of firmware to NI GPIB-USB-HS+.
+	optdepends = perl: For '/usr/share/doc/linux-gpib-firmware/ni_gpib_usb_b/firmware_extract.pl'.
+	provides = linux-gpib-firmware
+	provides = agilent_82357-gpib-firmware
+	provides = agilent_82357-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = agilent_82357a-gpib-firmware
+	provides = agilent_82357a-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = agilent_82357b-gpib-firmware
+	provides = agilent_82357b-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = hp_82341-gpib-firmware
+	provides = hp_82341-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = hp_82341c-gpib-firmware
+	provides = hp_82341c-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = hp_82341d-gpib-firmware
+	provides = hp_82341d-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = hp_82350a-gpib-firmware
+	provides = hp_82350a-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = ni_gpib_usb_b-gpib-firmware
+	provides = ni_gpib_usb_b-gpib-firmware-git=r7.20200609.8a5c6c2
+	provides = ni_gpib_usb_hsp-gpib-firmware
+	provides = ni_gpib_usb_hsp-gpib-firmware-git=r7.20200609.8a5c6c2
+	conflicts = linux-gpib-firmware
+	conflicts = agilent_82357-gpib-firmware
+	conflicts = agilent_82357a-gpib-firmware
+	conflicts = agilent_82357b-gpib-firmware
+	conflicts = hp_82341-gpib-firmware
+	conflicts = hp_82341c-gpib-firmware
+	conflicts = hp_82341d-gpib-firmware
+	conflicts = hp_82350a-gpib-firmware
+	conflicts = ni_gpib_usb_b-gpib-firmware
+	conflicts = ni_gpib_usb_hsp-gpib-firmware
+	source = linux-gpib-firmware::git+https://github.com/fmhess/linux_gpib_firmware.git
+	source = license-unknown.md
+	sha256sums = SKIP
+	sha256sums = 4af7b0cfa541aaa79a97af9e7c3d086fce9bdf969da37acac40343b0302709b0
+
+pkgname = linux-gpib-firmware-git
