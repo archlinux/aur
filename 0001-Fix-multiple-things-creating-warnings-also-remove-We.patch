@@ -1,0 +1,187 @@
+From 47b945a58ba16ebfdc6ee94f1ccf6e63a1101ad7 Mon Sep 17 00:00:00 2001
+From: Christian Vogel <vogelchr@vogel.cx>
+Date: Mon, 18 Nov 2024 10:52:09 +0100
+Subject: [PATCH] Fix multiple things creating warnings, also remove -Werror to
+ allow compile.
+
+- assert(a=b); --> adding parentheses, problematic as assert could be
+  an macro, removing the intended side-effect!
+- strstr() == '\0' --> should be == NULL
+- configure.ac: -Werror removed
+---
+ configure.ac      |  2 +-
+ liblsd/hash.c     |  4 ++--
+ liblsd/hostlist.c | 19 ++++++++++---------
+ liblsd/list.c     | 10 +++++-----
+ 4 files changed, 18 insertions(+), 17 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 898524b..7387a0a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,7 +21,7 @@ AM_MAINTAINER_MODE
+ ##
+ AC_PROG_CC
+ if test "$GCC" = yes; then
+-  GCCWARN="-Wall -Werror"
++  GCCWARN="-Wall"
+   GCCWARNRPC="-Wall -Wno-unused"
+   AC_SUBST([GCCWARN])
+   AC_SUBST([GCCWARNRPC])
+diff --git a/liblsd/hash.c b/liblsd/hash.c
+index 352551f..357f3fa 100644
+--- a/liblsd/hash.c
++++ b/liblsd/hash.c
+@@ -145,7 +145,7 @@ hash_create (int size, hash_key_f key_f, hash_cmp_f cmp_f, hash_del_f del_f)
+     h->del_f = del_f;
+     h->key_f = key_f;
+     lsd_mutex_init (&h->mutex);
+-    assert (h->magic = HASH_MAGIC);     /* set magic via assert abuse */
++    assert((h->magic = HASH_MAGIC));     /* set magic via assert abuse */
+     return (h);
+ }
+ 
+@@ -170,7 +170,7 @@ hash_destroy (hash_t h)
+             hash_node_free (p);
+         }
+     }
+-    assert (h->magic = ~HASH_MAGIC);    /* clear magic via assert abuse */
++    assert((h->magic = ~HASH_MAGIC));    /* clear magic via assert abuse */
+     lsd_mutex_unlock (&h->mutex);
+     lsd_mutex_destroy (&h->mutex);
+     free (h->table);
+diff --git a/liblsd/hostlist.c b/liblsd/hostlist.c
+index 918567d..8c6b18b 100644
+--- a/liblsd/hostlist.c
++++ b/liblsd/hostlist.c
+@@ -381,7 +381,7 @@ static char * _next_tok(char *sep, char **str)
+     char *tok;
+ 
+     /* push str past any leading separators */
+-    while (**str != '\0' && strchr(sep, **str) != '\0')
++    while (**str != '\0' && strchr(sep, **str) != NULL)
+         (*str)++;
+ 
+     if (**str == '\0')
+@@ -397,12 +397,12 @@ static char * _next_tok(char *sep, char **str)
+      */
+     do {
+         /* push str past token and leave pointing to first separator */
+-        while (**str != '\0' && strchr(sep, **str) == '\0')
++        while (**str != '\0' && strchr(sep, **str) == NULL)
+             (*str)++;
+     } while (_advance_past_brackets (tok, str));
+ 
+    /* nullify consecutive separators and push str beyond them */
+-    while (**str != '\0' && strchr(sep, **str) != '\0')
++    while (**str != '\0' && strchr(sep, **str) != NULL)
+         *(*str)++ = '\0';
+ 
+     return tok;
+@@ -1003,7 +1003,7 @@ static hostlist_t hostlist_new(void)
+     if (!new)
+         goto fail1;
+ 
+-    assert(new->magic = HOSTLIST_MAGIC);
++    assert((new->magic = HOSTLIST_MAGIC));
+     mutex_init(&new->mutex);
+ 
+     new->hr = (hostrange_t *) malloc(HOSTLIST_CHUNK * sizeof(hostrange_t));
+@@ -1219,7 +1219,7 @@ hostlist_t _hostlist_create(const char *hostlist, char *sep, char *r_op)
+         /* find end of alpha part 
+          *   do this by finding last occurence of range_op in str */
+         pos = strlen(tok) - 1;
+-        if (strstr(tok, r_op) != '\0') {
++        if (strstr(tok, r_op) != NULL) {
+             while (pos >= 0 && (char) tok[pos] != range_op) 
+                 pos--;
+         }
+@@ -1452,7 +1452,8 @@ _hostlist_create_bracketed(const char *hostlist, char *sep, char *r_op)
+     }
+ 
+     while ((tok = _next_tok(sep, &str)) != NULL) {
+-        strncpy(cur_tok, tok, 1024);
++        strncpy(cur_tok, tok, 1023);
++        cur_tok[sizeof(cur_tok)-1] = '\0';
+ 
+         if ((p = strchr(tok, '[')) != NULL) {
+             char *q, *prefix = tok;
+@@ -1535,7 +1536,7 @@ void hostlist_destroy(hostlist_t hl)
+     for (i = 0; i < hl->nranges; i++)
+         hostrange_destroy(hl->hr[i]);
+     free(hl->hr);
+-    assert(hl->magic = 0x1);
++    assert((hl->magic = 0x1));
+     UNLOCK_HOSTLIST(hl);
+     mutex_destroy(&hl->mutex);
+     free(hl);
+@@ -2157,7 +2158,7 @@ static hostlist_iterator_t hostlist_iterator_new(void)
+     i->idx = 0;
+     i->depth = -1;
+     i->next = i;
+-    assert(i->magic = HOSTLIST_MAGIC);
++    assert((i->magic = HOSTLIST_MAGIC));
+     return i;
+ }
+ 
+@@ -2208,7 +2209,7 @@ void hostlist_iterator_destroy(hostlist_iterator_t i)
+         }
+     }
+     UNLOCK_HOSTLIST(i->hl);
+-    assert(i->magic = 0x1);
++    assert((i->magic = 0x1));
+     free(i);
+ }
+ 
+diff --git a/liblsd/list.c b/liblsd/list.c
+index 0c44a25..167c5bc 100644
+--- a/liblsd/list.c
++++ b/liblsd/list.c
+@@ -226,7 +226,7 @@ list_create (ListDelF f)
+     l->fDel = f;
+     l->count = 0;
+     list_mutex_init(&l->mutex);
+-    assert(l->magic = LIST_MAGIC);      /* set magic via assert abuse */
++    assert((l->magic = LIST_MAGIC));      /* set magic via assert abuse */
+     return(l);
+ }
+ 
+@@ -244,7 +244,7 @@ list_destroy (List l)
+     while (i) {
+         assert(i->magic == LIST_MAGIC);
+         iTmp = i->iNext;
+-        assert(i->magic = ~LIST_MAGIC); /* clear magic via assert abuse */
++        assert((i->magic = ~LIST_MAGIC)); /* clear magic via assert abuse */
+         list_iterator_free(i);
+         i = iTmp;
+     }
+@@ -256,7 +256,7 @@ list_destroy (List l)
+         list_node_free(p);
+         p = pTmp;
+     }
+-    assert(l->magic = ~LIST_MAGIC);     /* clear magic via assert abuse */
++    assert((l->magic = ~LIST_MAGIC));     /* clear magic via assert abuse */
+     list_mutex_unlock(&l->mutex);
+     list_mutex_destroy(&l->mutex);
+     list_free(l);
+@@ -526,7 +526,7 @@ list_iterator_create (List l)
+     i->prev = &l->head;
+     i->iNext = l->iNext;
+     l->iNext = i;
+-    assert(i->magic = LIST_MAGIC);      /* set magic via assert abuse */
++    assert((i->magic = LIST_MAGIC));      /* set magic via assert abuse */
+     list_mutex_unlock(&l->mutex);
+     return(i);
+ }
+@@ -563,7 +563,7 @@ list_iterator_destroy (ListIterator i)
+         }
+     }
+     list_mutex_unlock(&i->list->mutex);
+-    assert(i->magic = ~LIST_MAGIC);     /* clear magic via assert abuse */
++    assert((i->magic = ~LIST_MAGIC));     /* clear magic via assert abuse */
+     list_iterator_free(i);
+     return;
+ }
+-- 
+2.47.0
+
