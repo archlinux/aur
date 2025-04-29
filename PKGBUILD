@@ -2,7 +2,7 @@
 # Contributor: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=msquic
-pkgver=2.4.8
+pkgver=2.4.10
 pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol"
@@ -17,7 +17,7 @@ source=("git+https://github.com/microsoft/msquic.git#tag=v${pkgver}"
         "git+https://github.com/google/googletest.git"
         "quictls-openssl::git+https://github.com/quictls/openssl.git"
         "git+https://github.com/microsoft/CLOG.git")
-sha512sums=('9ee33977d1ce20ed918caa214fc8b5b65e224a9fe037bb0ef1d8c9c16ea3592635d6d9d3cb543a527c3a834b047d2b67f337bb0aba0c83f3d78ddc92766b36d4'
+sha512sums=('225ba6682b960b22b9dc05df913ac78612bc48deed954a691f3a6f031e3c3faddcd7de3cdb186612714e45cb27ce6024f2caf2b0c2f3df13ac3f8f4a4d697544'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -26,33 +26,33 @@ prepare() {
   cd "msquic"
   git submodule init
   git config submodule.submodules/googletest.url "${srcdir}/googletest"
-  #git config submodule.submodules/openssl.url "${srcdir}/quictls-openssl"
-  git config submodule.submodules/openssl.update none
-  git config submodule.submodules/openssl3.url "${srcdir}/quictls-openssl"
+  git config submodule.submodules/openssl.url "${srcdir}/quictls-openssl"
+  #git config submodule.submodules/openssl3.url "${srcdir}/quictls-openssl"
+  git config submodule.submodules/openssl3.update none
   git config submodule.submodules/clog.url "${srcdir}/CLOG"
   git config submodule.submodules/xdp-for-windows.update none
   git -c protocol.file.allow=always submodule update
 }
 
 build() {
+  local _flags=(
+    -DQUIC_TLS:STRING=openssl
+    -DCMAKE_SKIP_INSTALL_RPATH=YES
+    -DQUIC_BUILD_TEST=NO
+  )
+
   cmake -B build -S "msquic" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQUIC_TLS=openssl3 \
-    -DCMAKE_SKIP_INSTALL_RPATH=YES \
-    -DQUIC_BUILD_TEST=NO
+    "${_flags[@]}"
 
   cmake --build build
-
-#    -DQUIC_USE_SYSTEM_LIBCRYPTO=ON \
-#CMake Error at submodules/CMakeLists.txt:349 (message):
-#  OpenSSL 3.0 not found, found 3.2.0
 }
 
-check() {
-  #ctest --test-dir build --output-on-failure || true
-  true
-}
+# forever stuck at first test
+#check() {
+#  ctest --test-dir build --output-on-failure || true
+#}
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
