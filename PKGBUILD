@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Jan Claussen <jan dot claussen10 at web dot de>
 pkgname=webos-dev-manager-bin
-pkgver=1.99.13
+pkgver=1.99.14
 pkgrel=1
 pkgdesc="Device/DevMode Manager for webOS TV.(Prebuilt version)"
 arch=(
@@ -18,8 +18,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('674bbc8662e7b1492dea2014f057b1499eccb03ab2bb405b9b8a16193b21006b')
-sha256sums_x86_64=('5ec84af1c6ef921a1b616550c937270e4d3dd10ad81ae11d441664815c308619')
+sha256sums_aarch64=('ebeb5c8786a58ea960b7da1d88f280c80fc94d30f243c315837790c5538d567d')
+sha256sums_x86_64=('2e505d077176e4ab8103867615e204ded93bcc429201e15aa5dc9cbfc80c925d')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
