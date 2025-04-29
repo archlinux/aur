@@ -13,7 +13,7 @@ url="https://github.com/nomacs/nomacs"
 license=(GPL-3.0-only)
 depends=(exiv2 gcc-libs glibc libraw libtiff opencv qt6-base qt6-svg quazip-qt6)
 #depends+=(libopencv_imgproc.so)
-makedepends=(cmake git qt6-tools python)
+makedepends=(cmake git git-lfs qt6-tools python)
 optdepends=('qt6-imageformats: support additional image formats'
             'kimageformats: support QOI (Quite OK Image Format)')
 source=("git+https://github.com/nomacs/nomacs.git#tag=${pkgver}"

@@ -8,6 +8,7 @@ pkgbase = nomacs
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
+	makedepends = git-lfs
 	makedepends = qt6-tools
 	makedepends = python
 	depends = exiv2
