@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vinayydv3695/telecord/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # Ideally use real checksum for production
+sha256sums=('e0ddcdb64bf04b441acd0285e842742aa58359586965ccb6382cdb1900159dd5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
