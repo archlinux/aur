@@ -1,7 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts-git
-pkgver=8.0.0.r61.gd17e3678
+pkgver=8.0.1.r14.g89ce5944
 pkgrel=1
 pkgdesc='Switchboard Online Accounts Plug'
 arch=(x86_64)
@@ -12,18 +14,17 @@ depends=(
   glib2
   glibc
   gtk3
+  granite
   json-glib
   libaccounts-glib
   evolution-data-server
   libgee
-  libgranite-7.so
   libswitchboard-3.so
-  rest
+  librest
   webkit2gtk
 )
 makedepends=(
   git
-  granite
   meson
   switchboard
   vala
