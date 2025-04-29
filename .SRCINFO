@@ -1,13 +1,13 @@
 pkgbase = linux-gpib-dkms
 	pkgdesc = A support package for GPIB (IEEE 488) hardware (DKMS version).
 	pkgver = 4.3.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://linux-gpib.sourceforge.net/
 	install = linux-gpib.install
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = GPL-2.0-only
 	depends = bash
 	depends = dkms
 	depends = bison

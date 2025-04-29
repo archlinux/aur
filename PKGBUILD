@@ -4,11 +4,11 @@
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
 pkgver=4.3.6
-pkgrel=4
+pkgrel=5
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://linux-gpib.sourceforge.net/'
-license=('GPL')
+license=('GPL-2.0-only')
 provides=('linux-gpib')
 conflicts=('linux-gpib')
 depends=('bash' 'dkms' 'bison' 'perl' 'which')
