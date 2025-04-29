@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=106.r7906.e2f19b6
-pkgrel=1
+pkgrel=2
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut-ng'
@@ -100,9 +100,10 @@ backup=('etc/dracut.conf')
 
 source=(
   git+${url}.git
+  1291.patch::${url}/commit/1281eb767a86c7037303f83b10cfd91859d26a28.patch    # fix: load more kernel modules in sloppy hostonly mode
 )
 
-sha512sums=('SKIP')
+sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"-ng
@@ -116,6 +117,13 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"-ng
+
+  # apply all patches
+  for p in ../*.patch ; do
+    patch -Np1 < $p
+    P=$(echo $p | sed 's/^\.\.\///g' | sed 's/\.patch$//g')
+    S=$(cat ../$p | grep 'Subject:' | sed 's/^Subject:\ \[PATCH\]\ //g')
+  done
 
   # remove dracut modules not meant for arch x86_64
   for f in 45ifcfg 80cms 81cio_ignore 90ppcmac 91zipl \
