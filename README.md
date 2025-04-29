@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://pypi.org/project/ngpt/"><img src="https://img.shields.io/pypi/v/ngpt.svg" alt="PyPI version"></a>
-  <a href="https://aur.archlinux.org/packages/ngpt"><img src="https://img.shields.io/badge/AUR-ngpt-blue" alt="AUR package"></a>
+  <a href="https://aur.archlinux.org/packages/ngpt"><img alt="AUR Version" src="https://img.shields.io/aur/version/ngpt"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://nazdridoy.github.io/ngpt/"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Documentation"></a>
 </p>
