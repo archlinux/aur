@@ -4,7 +4,7 @@
 _slug=4msCompany
 _name=4ms-vcv
 pkgname=vcvrack-4ms
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc='4ms VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -20,10 +20,10 @@ source=("git+https://github.com/4ms/$_name#tag=vcv-v$pkgver"
         'git+https://github.com/4ms/metamodule-core-modules'
         'git+https://github.com/google/flatbuffers'
         'git+https://github.com/danngreen/rapidyaml'
-        'git+https://github.com/biojppm/c4core'
-        'git+https://github.com/biojppm/cmake'
+        'git+https://github.com/danngreen/c4core'
+        'git+https://github.com/danngreen/cmake'
         'sdk-fixes.patch')
-sha256sums=('3dd6725716dc718b61c8fb3687b36e0d6bfe4aab3eaf08163ef64198b8fc1f98'
+sha256sums=('2d52b2855078bd2ba3f731fada51cb047fefc54d41280188712dae1903c72374'
             'SKIP'
             'SKIP'
             'SKIP'
