@@ -67,7 +67,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-  make
+  make -j1
 }
 
 package() {
