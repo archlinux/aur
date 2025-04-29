@@ -1,0 +1,27 @@
+pkgbase = olived-git
+	pkgdesc = Free non-linear video editor
+	pkgver = c90e82755
+	pkgrel = 1
+	url = https://github.com/jazztickets/olived.git
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	depends = ffmpeg
+	depends = openimageio
+	depends = opentimelineio
+	depends = portaudio
+	depends = qt5-x11extras
+	provides = olive
+	conflicts = olive
+	source = git+https://github.com/jazztickets/olived.git
+	source = git+https://github.com/jazztickets/olived-core.git
+	source = git+https://github.com/olive-editor/KDDockWidgets.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = olived-git
