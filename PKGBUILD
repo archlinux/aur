@@ -2,18 +2,16 @@
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
 pkgver=r17006.5112943bb
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
 url="https://github.com/libretro/pcsx2"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=('libretro')
 depends=(
 	'gcc-libs'
 	'glibc'
-	'libpng'
 	'libretro-core-info'
-	'zlib'
 )
 makedepends=(
 	'cmake'
@@ -24,10 +22,12 @@ makedepends=(
 	'libchdr'
 	'libglvnd'
 	'libpcap'
+	'libpng'
 	'libzip'
 	'rapidyaml'
 	'systemd-libs'
 	'xz'
+	'zlib'
 	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}")
@@ -61,16 +61,19 @@ prepare() {
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_DISABLE_PRECOMPILE_HEADERS=ON \
-		-DDISABLE_ADVANCE_SIMD=ON \
-		-DLIBRETRO=ON \
-		-DLTO_PCSX2_CORE=ON \
-		-DUSE_SYSTEM_LIBS=ON \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_DISABLE_PRECOMPILE_HEADERS=ON
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
+		-D DISABLE_ADVANCE_SIMD=ON
+		-D LIBRETRO=ON
+		-D LTO_PCSX2_CORE=ON
+		-D USE_SYSTEM_LIBS=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
@@ -80,8 +83,10 @@ package() {
 		'libchdr.so'
 		'libfmt.so'
 		'liblzma.so'
+		'libpng16.so'
 		'libryml.so'
 		'libudev.so'
+		'libz.so'
 		'libzip.so'
 		'libzstd.so'
 	)
