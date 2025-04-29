@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webp-converter-git
-_zhsname="WebP 图像转换工具"
+_zhsname='WebP 图像转换工具'
 pkgver=1.0.0.r2.gce5d96c
 _electronversion=33
 _nodeversion=20
 pkgrel=1
-pkgdesc="A batch of jpg, png format images converted to webp format tool.一款批量将 jpg、png 格式图像转换为 webp 格式的工具"
+pkgdesc="A batch of jpg, png format images converted to webp format tool.(Use system-wide electron)一款批量将 jpg、png 格式图像转换为 webp 格式的工具"
 arch=('any')
 url="https://github.com/HarrisonWang/webp-converter"
 license=('MIT')
@@ -21,7 +21,6 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -41,26 +40,26 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Graphics" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-git}.desktop"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -71,7 +70,11 @@ build() {
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --legacy-peer-deps --no-audit
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
