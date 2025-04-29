@@ -1,8 +1,8 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=lightlyshaders-git
 pkgver=3.0.0.r1.g42ba6df
-pkgrel=1
+pkgrel=2
 pkgdesc="Round corners and outline effect for KWin"
 arch=(x86_64)
 url="https://github.com/a-parhom/LightlyShaders"
