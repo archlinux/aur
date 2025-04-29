@@ -1,7 +1,8 @@
-# Maintainer: Matthew Shaw <mtthwjhnshw at gmail dot com>
+# Maintainer: djsigmann <djsigmann@protonmail.com>
+# Contributer: Matthew Shaw <mtthwjhnshw at gmail dot com>
 
 pkgname=nifskope-git
-pkgver=1.1.3.699.g7261b0a
+pkgver=1.1.3.864.g30954e7f
 pkgrel=1
 pkgdesc="Utility for opening and editing the NetImmerse (NIF) file format."
 arch=('i686' 'x86_64')
@@ -9,10 +10,10 @@ url="http://niftools.org"
 license=('custom')
 depends=('qt5-base')
 makedepends=('git')
-source=('git://github.com/niftools/nifskope.git'
-	'git://github.com/niftools/nifdocsys.git'
-	'git://github.com/qhull/qhull.git'
-	'git://github.com/madler/zlib.git')
+source=('git+https://github.com/niftools/nifskope.git'
+	'git+https://github.com/niftools/nifdocsys.git'
+	'git+https://github.com/qhull/qhull.git'
+	'git+https://github.com/madler/zlib.git')
 md5sums=('SKIP'
 	'SKIP'
 	'SKIP'

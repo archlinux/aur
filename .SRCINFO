@@ -1,6 +1,6 @@
 pkgbase = nifskope-git
 	pkgdesc = Utility for opening and editing the NetImmerse (NIF) file format.
-	pkgver = 1.1.3.699.g7261b0a
+	pkgver = 1.1.3.864.g30954e7f
 	pkgrel = 1
 	url = http://niftools.org
 	arch = i686
@@ -8,14 +8,13 @@ pkgbase = nifskope-git
 	license = custom
 	makedepends = git
 	depends = qt5-base
-	source = git://github.com/niftools/nifskope.git
-	source = git://github.com/niftools/nifdocsys.git
-	source = git://github.com/qhull/qhull.git
-	source = git://github.com/madler/zlib.git
+	source = git+https://github.com/niftools/nifskope.git
+	source = git+https://github.com/niftools/nifdocsys.git
+	source = git+https://github.com/qhull/qhull.git
+	source = git+https://github.com/madler/zlib.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = nifskope-git
-
