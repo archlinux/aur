@@ -1,0 +1,24 @@
+pkgbase = swayosd-gtk3
+	pkgdesc = A GTK based on screen display for keyboard shortcuts like caps-lock and volume
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ErikReider/SwayOSD
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	makedepends = meson
+	makedepends = ninja
+	makedepends = sassc
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = pulse-native-provider
+	depends = libinput
+	provides = swayosd
+	conflicts = swayosd
+	source = git+https://github.com/ErikReider/SwayOSD.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = swayosd-gtk3
