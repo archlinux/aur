@@ -14,7 +14,7 @@ pkgname=(
   "maplemono-variable"
   "maplemono-woff2"
 )
-pkgver="7.1"
+pkgver="7.2"
 pkgrel="1"
 pkgdesc="Open source monospace font with round corner, ligatures and Nerd-Font for IDE and command line"
 url="https://github.com/subframe7536/maple-font"
@@ -34,17 +34,17 @@ source=(
   "MapleMono-Variable.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMono-Variable.zip"
   "MapleMono-Woff2.zip::https://github.com/subframe7536/maple-font/releases/download/v$pkgver/MapleMono-Woff2.zip"
 )
-sha256sums=('0f807e2809326ef7d54be1f3b68613085f90b3d971ae1d5d7b66c13d405d3baf'
-            'eb7a9f7afba9bad79ec045da57909b8d29ce43ab6a5cd3f037ae419e44d771fd'
-            'a8ba9c7422f7b820d6e900f1f96dfd1dc2f7af7d3744d8c4b84862037f184585'
-            'f60c63b21f63ed395cd59e6768aecf4a9a5b56223a719b65aa4ebfe4986fb791'
-            '86710b1b3f33a50fe7d8f8f7496a9dbae7e59880614fef0c77a73940c5e1cdde'
-            '67353e3e0adacc4ce24f1f28a0d9248ea00fc0570cd443d00514a4926dc2eb42'
-            '371a6fef8f34eb89a9e4bcf896f742533f63598efc75530e4a50b51410cebf0b'
-            '47564da333511d8b4d5daafdeb0dd5d6a9306c039609d31932684aec3b72aace'
-            'eda14c302c6b7830f62a7a6022dfe0718032a7ea4d12d75f4a04ffe1a38cfcff'
-            '172688018a5d0ce8fa2032c9514df7620ed5a842b454dfe7f766f62382eb75c0'
-            '9717018e09a780567552105e8f7944f88a8ac6f4280c4e6b1f7fbe87808dd1a7')
+sha256sums=('f8e0699316e80efbe33f9461f31a05507efa6b6dfb9e2946d0aa3531efd8830e'
+            '3d59ad24b57db72a2368ce4221b43d33680e40f871e138ef6a6e2f54ed7f52a3'
+            'a93efb7947aaf547a9b75009bb3e0abdb2657eabd4b68a0949e915a09529843d'
+            'c3b8f5508f0e13809b373798e27d20dd62ad560909d3bb8ca519d1095448a3c3'
+            '8365c7732d73a99fcce45c3a2500f689f5a63628d667372f4392ddb004094160'
+            '13a858c554a1b0ff90ae0335c3a8630a2880aef41f7081c012f1bb58639ca5db'
+            '2e73718862eda8ed87d353b6e4ddfa30bf4ac31a29f5f1fee08bd793554916fb'
+            '2b7a23fe293ff5d9291fbb29d44817d764ecff3b1358538eba51b013693e7a7a'
+            'd7043ded39b604df9b6b63b1a27c9ea2f9795252e8a18ad87e4ac0f390906663'
+            'aafa61eb41335e49200cdfabbf1f2a1f720f007f6cfc8225dd6f256fa712379d'
+            '7941e3d8d3a3b15bf0167876fdc85ab861067c15dee5fef178dd832e6f63e64a')
 noextract=(
   "MapleMono-CN-unhinted.zip"
   "MapleMono-CN.zip"
