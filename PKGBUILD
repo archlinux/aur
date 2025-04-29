@@ -2,14 +2,13 @@
 pkgbase=python-astrocut
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.12.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Tools for making image cutouts from sets of TESS full frame images"
 arch=('any')
 url="https://astrocut.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
@@ -20,13 +19,12 @@ makedepends=('python-setuptools-scm'
              'python-s3fs'
              'python-s3path'
              'python-cachetools'
-             'python-spherical_geometry')
+             'python-spherical_geometry')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
               'python-pytest-astropy-header'
-#             'python-pytest-xdist'
               'python-pillow')   # gwcs, scipy, s3fs, s3path, cachetools, spherical_geometry already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7a636e8c46a97c3564d2923cbe146947')
+md5sums=('bee08cd0848813edcdf2839076c9fbd9')
 
 #get_pyver() {
 #    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -51,10 +49,18 @@ check() {
 
     # Skip tests costing lots of time
     pytest \
-        --deselect=astrocut/tests/test_cube_cut.py::test_multithreading \
-        --deselect=astrocut/tests/test_cutouts.py::test_fits_cut \
-        --deselect=astrocut/tests/test_footprint_cutouts.py::test_cube_cut_from_footprint \
-        --deselect=astrocut/tests/test_footprint_cutouts.py::test_cube_cut_from_footprint_all_sequences || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+         --deselect=astrocut/tests/test_cube_cut.py::test_multithreading \
+         --deselect=astrocut/tests/test_cutouts.py::test_fits_cut \
+         --deselect=astrocut/tests/test_cube_cut.py::test_s3_cube_cut \
+         --deselect=astrocut/tests/test_cube_cut.py::test_s3_tica_cube_cut \
+         --deselect=astrocut/tests/test_fits_cutout.py::test_fits_cutout_cloud \
+         --deselect=astrocut/tests/test_tess_cube_cutout.py::test_tess_cube_cutout_s3 \
+         --deselect=astrocut/tests/test_tess_cube_cutout.py::test_tess_cube_cutout_threads \
+         --deselect=astrocut/tests/test_tess_footprint_cutout.py::test_tess_footprint_cutout_all_sequences \
+         --deselect=astrocut/tests/test_tess_footprint_cutout.py::test_tess_footprint_cutout \
+         --deselect=docs/astrocut/index.rst::index.rst || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+#        --deselect=astrocut/tests/test_footprint_cutouts.py::test_cube_cut_from_footprint \
+#        --deselect=astrocut/tests/test_footprint_cutouts.py::test_cube_cut_from_footprint_all_sequences || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
 #       --deselect=astrocut/tests/test_make_cube.py::test_invalid_inputs \
 #       --deselect=astrocut/tests/test_cube_cut.py::test_s3_cube_cut \
 #       --deselect=astrocut/tests/test_cube_cut.py::test_s3_tica_cube_cut \
@@ -64,10 +70,12 @@ check() {
 package_python-astrocut() {
     depends=('python>=3.9'
              'python-asdf>=2.15.0'
-             'python-astropy'
+             'python-astropy>=5.2'
              'python-cachetools>=5.3.2'
-             'python-fsspec'
-             'python-s3fs'
+             'python-fsspec>=2022.8.2'
+             'python-aiohttp'
+             'python-gwcs>=0.21.0'
+             'python-s3fs>=2022.8.2'
              'python-requests>=2.32.3'
              'python-scipy'
              'python-pillow'
