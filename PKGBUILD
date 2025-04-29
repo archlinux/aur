@@ -2,9 +2,9 @@
 pkgname=unyo-bin
 _pkgname=Unyo
 pkgver=0.6.7
-pkgrel=1
-pkgdesc="🐙 Anime streaming and Manga reader desktop app without ads.Prebuilt version."
-arch=("x86_64")
+pkgrel=2
+pkgdesc="🐙 Anime streaming and Manga reader desktop app without ads.(Prebuilt version)"
+arch=('x86_64')
 url="https://github.com/K3vinb5/Unyo"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -24,12 +24,16 @@ source=(
 )
 sha256sums=('8f258c9f88bc17f1093134eb3dbce07d5621b83a079e2d3c5e7db9a2c3722f32'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %F"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

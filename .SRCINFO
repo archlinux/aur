@@ -1,7 +1,7 @@
 pkgbase = unyo-bin
-	pkgdesc = 🐙 Anime streaming and Manga reader desktop app without ads.Prebuilt version.
+	pkgdesc = 🐙 Anime streaming and Manga reader desktop app without ads.(Prebuilt version)
 	pkgver = 0.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/K3vinb5/Unyo
 	arch = x86_64
 	license = GPL-3.0-only
