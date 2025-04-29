@@ -1,5 +1,5 @@
 pkgname=bi
-pkgver=3.4.1.4
+pkgver=3.4.1.5
 pkgrel=1
 pkgdesc="Binary editor like vI"
 arch=('x86_64')
