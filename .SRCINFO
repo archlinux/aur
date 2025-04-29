@@ -1,0 +1,20 @@
+pkgbase = hsplus_load-git
+	pkgdesc = Utility for initializing NI GPIB-USB-HS+ adapters under Linux (or actually, any platform where libusb is available).
+	pkgver = r15.20220718.215c2a1
+	pkgrel = 1
+	url = https://github.com/fmhess/hsplus_load
+	arch = x86_64
+	arch = i686
+	arch = aarcxh64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	optdepends = ni_gpib_usb_hsp-gpib-firmware: For firmware images needed to load to the device.
+	provides = hsplus_load
+	conflicts = hsplus_load
+	source = hsplus_load::git+https://github.com/fmhess/hsplus_load.git
+	sha256sums = SKIP
+
+pkgname = hsplus_load-git
