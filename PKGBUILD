@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wubi-dict-editor
-_zhname="五笔码表助手"
-pkgver=1.28
+_zhname='五笔码表助手'
+pkgver=1.30
 _electronversion=24
 _nodeversion=18
-pkgrel=2
-pkgdesc="Five-stroke code assistant for Rime based on electron development.五笔码表助手 for Rime,基于 electron 开发."
-arch=("x86_64")
+pkgrel=1
+pkgdesc="Five-stroke code assistant for Rime based on electron development.(Use syetem-wide electron)五笔码表助手 for Rime,基于 electron 开发."
+arch=('x86_64')
 url="https://github.com/KyleBing/wubi-dict-editor"
 license=('GPL-3.0-only')
 conflicts=("${pkgname}")
 depends=(
-    #'ibus-rime'
+    'ibus-rime'
     "electron${_electronversion}"
     'nodejs'
 )
@@ -22,15 +22,16 @@ makedepends=(
     'gendesk'
     'libicns'
     'curl'
+    'git'
 )
 options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2112e865f6093fae701c5973f18ded3b3e7a17642d69bad62744358e56488eca'
+sha256sums=('c2c61a3432c0fcac6e56b35b050fc37b9851f49645a0ef3392792ae0bc8a7403'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -38,17 +39,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname}" --genericname="${_zhname} for Rime" --exec="${pkgname} %U"
-    sed "3i\Name[zh_CN]=${_zhname}" -i "${srcdir}/${pkgname}.desktop"
+    sed -i "3i\Name[zh_CN]=${_zhname}" "${srcdir}/${pkgname}.desktop"
     cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
@@ -68,13 +69,17 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
+            echo 'networkConcurrency 10'
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     icns2png  -d 32 -x assets/img/appIcon/appIcon.icns -o assets/img/appIcon/
     cp assets/img/appIcon/appIcon_16x16x32.png assets/img/appIcon/appicon.png
-    sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" -i main.js
+    sed -i "s/appIcon\/appicon\ico/img\/appIcon\/appicon\.png/g" main.js
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     NODE_ENV=production     yarn run package
 }
 package() {
