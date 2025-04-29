@@ -4,6 +4,7 @@
 #
 #
 pkgname=python-nava
+pkgbase=python-nava
 _origpkgname=nava
 pkgver=0.7
 pkgrel=2
