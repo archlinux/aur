@@ -1,0 +1,12 @@
+pkgbase = daisy-appimage
+	pkgdesc = 美观易用且无广告的漫画和轻小说客户端, 同时支持MacOS, Windows, Android, iOS。类似动漫之家。
+	pkgver = 0.1.27
+	pkgrel = 1
+	url = https://github.com/niuhuan/daisy
+	arch = x86_64
+	license = MIT
+	options = !strip
+	source = https://github.com/niuhuan/daisy/releases/download/v0.1.27/linux.AppImage
+	sha256sums = SKIP
+
+pkgname = daisy-appimage
