@@ -1,0 +1,19 @@
+pkgbase = lavalauncher-mao-git
+	pkgdesc = A simple launcher panel for Wayland
+	pkgver = 20250429.07717e7
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/lavalauncher
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = wayland
+	provides = lavalauncher-mao
+	conflicts = lavalauncher-mao
+	source = lavalauncher-mao::git+https://github.com/DreamMaoMao/lavalauncher
+	sha256sums = SKIP
+
+pkgname = lavalauncher-mao-git
