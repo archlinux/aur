@@ -1,6 +1,6 @@
 pkgbase = moonbit-bin
 	pkgdesc = Intelligent developer platform for Cloud and Edge using WASM
-	pkgver = 0.1.202504282
+	pkgver = 0.1.202504292
 	pkgrel = 1
 	url = https://www.moonbitlang.com/
 	arch = x86_64
