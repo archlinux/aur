@@ -1,13 +1,13 @@
 pkgbase = longhorn-backup-repacker
 	pkgdesc = A tool to repack Longhorn backup files
-	pkgver = v1.2.4
-	pkgrel = 9
+	pkgver = v1.2.5
+	pkgrel = 10
 	url = https://github.com/thearyadev/longhorn-backup-repacker
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = longhorn-backup-repacker-v1.2.4.tar.gz::https://github.com/thearyadev/longhorn-backup-repacker/archive/v1.2.4.tar.gz
+	source = longhorn-backup-repacker-v1.2.5.tar.gz::https://github.com/thearyadev/longhorn-backup-repacker/archive/v1.2.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = longhorn-backup-repacker
