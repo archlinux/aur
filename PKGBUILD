@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="aws-nuke"
-pkgver=3.51.1
+pkgver=3.52.0
 pkgrel=1
 pkgdesc="Remove all the resources from an AWS account"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -9,24 +9,39 @@ url="https://aws-nuke.ekristen.dev"
 _url="https://github.com/ekristen/${pkgname}"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('70daa690b702c9e4034ef54c50ecaeb66895bb9f2f58f139615652dd4aaa3cdbab380b5df19a7b8275a51de2bbb40d851575ac4b3cd95a03c68ba7438414cc7a')
+makedepends=('git' 'go')
+_pkgsrc="${_url##*/}"
+source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
+b2sums=('585fdfb5082f124acaf679e96940e3a6d1fe71812096cc149ec74af43c77a111810651bb9dc465416995a3875090ce12f46674a42a743cd283aa6adad1d90437')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+
+  cd "${srcdir}/${_pkgsrc}"
+  # $(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+  go build -v -o "build/${pkgname}" -ldflags "\
+    -X ${_url#https://}/pkg/common.SUMMARY=v${pkgver} \
+    -X ${_url#https://}/pkg/common.BRANCH=main \
+    -X ${_url#https://}/pkg/common.VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v${pkgver}") \
+    -X ${_url#https://}/pkg/common.COMMIT=$(git rev-parse HEAD 2>/dev/null || echo "unknown")" \
+    .
 }
 
 check() {
