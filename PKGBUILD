@@ -3,8 +3,8 @@
 pkgname=wolai-bin
 pkgver=1.2.10
 _electronversion=22
-pkgrel=3
-pkgdesc="Wolai collaboration space is a new form of one-stop collaboration platform, it is different from all the traditional documents you used to use, online documents.wolai是一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。"
+pkgrel=4
+pkgdesc="A new form of one-stop collaboration platform, it is different from all the traditional documents you used to use, online documents.(Use system-wide electron)一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。"
 arch=(
     'aarch64'
     'x86_64'
@@ -29,19 +29,19 @@ sha256sums=('04b7a1e4cecbadd2e1bc903b3ad518834f93b9b76542bf53fcb18f24faac099c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('18e7f956b85e0396320ee938455c80e16446d267a5c7b35268f9d046d8cd86b7')
 sha256sums_x86_64=('512b11d5f9a743e59bb188eb2179bcfdd2313c81c0ac1f6a60cf1936cb7c0636')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
-        s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g
+    sed -i -e "
+        s/\/opt\/${pkgname%-bin}\///g
         3i\Name[zh_CN]=我来
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/packages" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
