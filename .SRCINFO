@@ -1,6 +1,6 @@
 pkgbase = vocallia-git
-	pkgdesc = A simple vocabulary card app.Use system-wide electron.
-	pkgver = 1.0.0.r2.g5e34697
+	pkgdesc = A simple vocabulary card app.(Use system-wide electron)
+	pkgver = 1.0.0.r7.g4501098
 	pkgrel = 1
 	url = https://github.com/mohwildan/vocallia
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = vocallia-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron31
 	source = vocallia.git::git+https://github.com/mohwildan/vocallia.git
 	source = vocallia.sh
