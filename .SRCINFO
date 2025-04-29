@@ -1,0 +1,12 @@
+pkgbase = yourprogram
+	pkgdesc = Vinary editor like vI
+	pkgver = 3.4.1.4
+	pkgrel = 1
+	url = https://github.com/fygar256/bi
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://github.com/fygar256/bi/archive/refs/heads/bi_v3.4.1.4.zip
+	sha256sums = SKIP
+
+pkgname = yourprogram
