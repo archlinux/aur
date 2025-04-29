@@ -3,18 +3,18 @@
 
 _pkgname=injector
 pkgname=python-${_pkgname}
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Python dependency injection framework, inspired by Guice."
 arch=('any')
-url="http://github.com/alecthomas/injector"
+url="https://github.com/python-injector/injector"
 license=('BSD')
 depends=('python' 'python-typing_extensions')
 makedepends=('python-setuptools')
 provides=()
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/alecthomas/injector/${pkgver}/COPYING")
-sha256sums=('919eb6b9f96f40bf98fda34c79762b217bd1544d9adc35805ff2948e92356c9c'
+        "https://raw.githubusercontent.com/python-injector/injector/refs/heads/master/COPYING")
+sha256sums=('79b2d4a0874c75d3aa735f11c5b32b89d9542711ca07071161882c5e9cc15ed6'
             '567278bc23fa55244f132af7164aa684940c75fa35b19c395899422cb92613ba')
 
 build() {
