@@ -1,0 +1,155 @@
+pkgbase = linux-gpib-git
+	pkgdesc = A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.
+	pkgver = 4.3.6.r2091.20250410.05615dee
+	pkgrel = 2
+	url = http://linux-gpib.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = bison
+	makedepends = gcc-libs
+	makedepends = git
+	makedepends = glibc
+	makedepends = guile
+	makedepends = libtool
+	makedepends = make
+	makedepends = perl
+	makedepends = php
+	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = readline
+	makedepends = tcl
+	makedepends = which
+	options = emptydirs
+	source = linux-gpib::git+https://git.code.sf.net/p/linux-gpib/git
+	source = dkms.conf.in
+	source = linux-gpib-kernel.install
+	sha256sums = SKIP
+	sha256sums = 9b7e01d13be0b15bc5c5a4d1d3a0c8e6cdb488c2eff5fb835c8672047ca9de77
+	sha256sums = e745f2a6acc4f1bdf06e0ae15763e07f6a75b4112f7738d8c4fd2f5140e4327e
+
+pkgname = linux-gpib-git
+	pkgdesc = Metapackage installing 'linux-gpib-kernel' and 'linux-gpib-user', and providing 'linux-gpib' dependency.
+	arch = any
+	depends = linux-gpib-dkms-git=4.3.6.r2091.20250410.05615dee
+	depends = linux-gpib-user-git=4.3.6.r2091.20250410.05615dee
+	optdepends = python-linux-gpib: Python bindings.
+	optdepends = python2-linux-gpib: Python2 bindings.
+	provides = linux-gpib=4.3.6.r2091.20250410.05615dee
+	conflicts = 
+	replaces = linux-gpib-svn<=r2106
+
+pkgname = linux-gpib-docs-git
+	pkgdesc = Documentation for 'linux-gpib-*' packages.
+	arch = any
+	license = GFDL-1.2-no-invariants-or-later
+	depends = 
+	optdepends = linux-gpib-modules: For the kernel modules this documentation is for.
+	optdepends = linux-gpib-user: For the user space utilities this documentation is for.
+	optdepends = php: For PHP examples.
+	optdepends = perl: For Perl examples.
+	optdepends = tk: For tcl examples.
+	provides = linux-gpib-docs=4.3.6.r2091.20250410.05615dee
+	conflicts = linux-gpib-docs
+	replaces = 
+
+pkgname = linux-gpib-dkms-git
+	pkgdesc = Kernel drivers (DKMS) for some GPIB (IEEE 488) hardware.
+	install = linux-gpib-kernel.install
+	depends = dkms
+	depends = linux>=2.6.8
+	optdepends = fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357.
+	optdepends = linux-gpib-firmware: Firmware for some devices.
+	optdepends = linux-gpib-libs: User space libraries.
+	optdepends = linux-gpib-tools: User space utilities.
+	optdepends = linux-gpib-docs: Documentation.
+	optdepends = gpib-utils: More user space utilities.
+	provides = linux-gpib-dkms=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-kernel=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-kernel-git=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-modules=4.3.6.r2091.20250410.05615dee
+	conflicts = linux-gpib-dkms
+	conflicts = linux-gpib-kernel
+	conflicts = linux-gpib-modules
+	replaces = 
+
+pkgname = linux-gpib-user-git
+	pkgdesc = Userspace libraries and tools for GPIB (IEEE 488) hardware, as well as udev rules.
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = libreadline.so
+	optdepends = linux-gpib-docs: Documentation.
+	optdepends = udev: For the provided udev rules.
+	provides = linux-gpib-user=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-libs=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-libs-git=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-tools=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-tools-git=4.3.6.r2091.20250410.05615dee
+	provides = libgpib.so
+	conflicts = linux-gpib-user
+	conflicts = linux-gpib-libs
+	conflicts = linux-gpib-tools
+	conflicts = libgpib.so
+	replaces = 
+	backup = etc/gpib.conf
+	backup = etc/udev/rules.d/98-gpib-generic.rules
+	backup = etc/udev/rules.d/99-agilent_82357a.rules
+	backup = etc/udev/rules.d/99-lpvo_usb_gpib.rules
+	backup = etc/udev/rules.d/99-ni_usb_gpib.rules
+
+pkgname = guile-linux-gpib-git
+	pkgdesc = Guile bindings for 'linux-gpib' (libraries for GPIB (IEEE 488) hardware).
+	depends = libgpib.so
+	depends = glibc
+	depends = guile
+	optdepends = linux-gpib-docs: Documentation
+	provides = guile-linux-gpib=4.3.6.r2091.20250410.05615dee
+	conflicts = guile-linux-gpib
+	replaces = 
+
+pkgname = perl-linux-gpib-git
+	pkgdesc = Perl bindings for 'linux-gpib' (libraries for GPIB (IEEE 488) hardware).
+	depends = libgpib.so
+	depends = glibc
+	depends = perl
+	optdepends = linux-gpib-docs: Documentation
+	provides = perl-linux-gpib=4.3.6.r2091.20250410.05615dee
+	conflicts = perl-linux-gpib
+	replaces = 
+
+pkgname = php-linux-gpib-git
+	pkgdesc = PHP bindings for 'linux-gpib' (libraries for GPIB (IEEE 488) hardware).
+	depends = libgpib.so
+	depends = glibc
+	depends = php
+	optdepends = linux-gpib-docs: Documentation
+	provides = php-linux-gpib=4.3.6.r2091.20250410.05615dee
+	conflicts = php-linux-gpib
+	replaces = 
+
+pkgname = python-linux-gpib-git
+	pkgdesc = Python 3 bindings for 'linux-gpib' (libraries for GPIB (IEEE 488) hardware).
+	depends = libgpib.so
+	depends = glibc
+	depends = python>=3
+	optdepends = linux-gpib-docs: Documentation
+	provides = python-linux-gpib=4.3.6.r2091.20250410.05615dee
+	conflicts = python-linux-gpib
+	replaces = 
+
+pkgname = tcl-linux-gpib-git
+	pkgdesc = Tcl bindings for 'linux-gpib' (libraries for GPIB (IEEE 488) hardware).
+	depends = libgpib.so
+	depends = glibc
+	depends = tcl
+	optdepends = linux-gpib-docs: Documentation
+	provides = tcl-linux-gpib=4.3.6.r2091.20250410.05615dee
+	conflicts = tcl-linux-gpib
+	replaces = 
