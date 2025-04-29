@@ -3,7 +3,7 @@
 
 pkgname=nifskope-git
 pkgver=1.1.3.864.g30954e7f
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for opening and editing the NetImmerse (NIF) file format."
 arch=('i686' 'x86_64')
 url="http://niftools.org"
@@ -24,6 +24,7 @@ prepare() {
 	git submodule update --init --recursive
 	git pull origin pull/147/head
 	sed -i -e "\$atarget.path = /usr/bin\nINSTALLS += target" NifSkope.pro
+	sed -i '6i#include <unistd.h>' lib/zlib/{gzlib.c,gzread.c,gzwrite.c} # patch zlib to fix compile errors
 }
 
 
