@@ -1,6 +1,6 @@
 # Maintainer: nazdridoy <nazdridoy399@gmail.com>
 pkgname=ngpt
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="Swiss army knife for LLMs: powerful CLI, interactive chatbot, and flexible Python library. Works with OpenAI, Ollama, Groq, Claude, Gemini, and any OpenAI-compatible API."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-requests>=2.31.0' 'python-rich>=10.0.0' 'python-prompt_toolkit>=3.0.0' 'python-pyperclip>=1.8.0')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nazdridoy/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fa7d641688f26d95f029ff58a03595230c3dd2e3718baa684a7b3b24d6b7299c')
+sha256sums=('f2cf151283a287a9b1f3a71088ed44a138d3daff62ae613cff5f29b476722017')
 
 build() {
   cd "$pkgname-$pkgver"
