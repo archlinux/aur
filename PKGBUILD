@@ -14,20 +14,26 @@ sha256sums=('e0ddcdb64bf04b441acd0285e842742aa58359586965ccb6382cdb1900159dd5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  npm install --production
+  npm ci --production
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Install telecord binary
-  install -Dm755 bin/telecord.js "$pkgdir/usr/bin/telecord"
-
-
-  # Install the rest of the project
-  mkdir -p "$pkgdir/usr/lib/$pkgname"
+  # Install main project files into /usr/lib/telecord
+  install -d "$pkgdir/usr/lib/$pkgname"
   cp -r assets lib node_modules package.json package-lock.json telecord.js "$pkgdir/usr/lib/$pkgname"
 
-  # Optional: Install README and LICENSE if you have one
+  # Create a small launcher script in /usr/bin
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/bash
+exec node /usr/lib/$pkgname/telecord.js "\$@"
+EOF
+
+  # Install documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  # Install license properly
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
