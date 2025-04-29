@@ -2,7 +2,7 @@
 pkgname=ludusavi-bin
 _app_id="com.mtkennerly.${pkgname%-bin}"
 pkgver=0.29.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -35,9 +35,9 @@ package() {
   install -Dm644 "${_app_id}.metainfo-$pkgver.xml" \
     "$pkgdir/usr/share/metainfo/${_app_id}.metainfo.xml"
   install -Dm644 "icon-$pkgver.png" \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/${pkgname%-bin}.png"
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/${_app_id}.png"
   install -Dm644 "icon-$pkgver.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "${_app_id}-$pkgver.desktop" \
     "$pkgdir/usr/share/applications/${_app_id}.desktop"
   install -Dm644 "LICENSE-$pkgver" \
