@@ -1,0 +1,16 @@
+pkgbase = bixolon-label-cups
+	pkgdesc = CUPS drivers for Bixolon label printers
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://bixolon.com/support.php?kind=download#product-lilstlabel
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	depends = glibc
+	depends = libcups
+	source = bixolon-label-cups-1.2.7.zip::https://www.bixolon.com/_lib/download_single.php?FILE_INFO=driver|driver_file|driver_idx|113|driver
+	sha256sums = a140190a3ad5ea966f0dc2353dd835a34e634c3d5e4a27677afd35b4690c6fa4
+
+pkgname = bixolon-label-cups
