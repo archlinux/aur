@@ -2,7 +2,7 @@
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
 pkgver=r19062.6cc162de2
-pkgrel=1
+pkgrel=2
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/ps2"
@@ -26,6 +26,7 @@ makedepends=(
 )
 provides=("$_pkgname=${pkgver#r}" 'libretro-pcsx2')
 conflicts=("$_pkgname" 'libretro-pcsx2')
+replaces=('libretro-pcsx2')
 options=('!lto')
 source=(
 	"$_pkgname::git+$url.git"
