@@ -1,4 +1,4 @@
-pkgbase = my-linux
+pkgbase = frogprog-hyprland-dark-git
 	pkgdesc = productive dark hyprland setup for laptop (14 inch)
 	pkgver = 1.1.0.0.6dda4cf
 	pkgrel = 1

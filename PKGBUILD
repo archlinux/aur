@@ -1,5 +1,6 @@
 # Maintainer: Frogprog frogprog09@gmail.com
 pkgname=frogprog-hyprland-dark-git
+pkgbase=frogprog-hyprland-dark-git
 pkgver=1.1.0.0.6dda4cf
 pkgrel=1
 epoch=
@@ -37,7 +38,6 @@ source=("git+https://github.com/FrogProg09/my-linux.git")
 # noextract=()
 sha256sums=('SKIP')
 # validpgpkeys=()
-# pkgbase=frogprog-hyprland-dark-git
 
 pkgver() {
   cd "$srcdir/my-linux" || return 1 
