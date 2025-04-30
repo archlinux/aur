@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-ffmpeg-minimal
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android aarch64)
 	pkgver = 7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg-minimal
@@ -19,8 +19,6 @@ pkgbase = android-aarch64-ffmpeg-minimal
 	depends = android-aarch64-libvpx
 	depends = android-aarch64-opus
 	depends = android-aarch64-svt-av1
-	depends = android-aarch64-x264
-	depends = android-aarch64-x265
 	depends = android-aarch64-rav1e
 	provides = android-aarch64-ffmpeg
 	conflicts = android-aarch64-ffmpeg
