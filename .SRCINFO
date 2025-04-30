@@ -1,7 +1,7 @@
 pkgbase = dwex
 	pkgdesc = GUI viewer for DWARF debug information
 	pkgver = 4.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sevaa/dwex
 	arch = x86_64
 	license = BSD-3-Clause
