@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woterm-bin
 _pkgname=WoTerm
-pkgver=10.1.3
-_releasedate=202502241547
+pkgver=10.2.1
+_releasedate=202504120736
 pkgrel=1
 pkgdesc="Easy to Use / Practical / Powerful / Modern (Prebuilt version)一款易用、实用、强大、现代的跨平台终端"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::https://down.woterm.com/linux/${pkgname%-bin}-linux-${CARCH}-v${pkgver}-${_releasedate}.tar.gz"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('eef2dc3a4acb38f8b092769585edc3e2029877d913a52fb7961b017aeed500b0'
+sha256sums=('21ec93b4725e2b874e8110287367a9d040a50a525cd504ad0f16eb85a7be4ca7'
             '2c72a969289598f9c407cb36a9720ad3b6a85173551252369515a0422cc53077')
 prepare() {
     sed -i -e "
