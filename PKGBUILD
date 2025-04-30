@@ -44,6 +44,11 @@ prepare() {
   patch -Np1 -i "${srcdir}"/fixes_nanosvg.patch
   patch -Np1 -i "${srcdir}"/integrate_occtwrapper.patch
   patch -Np1 -i "${srcdir}"/boost-1.88.patch
+  # Do some minimal branding to indicate that user is running the official
+  # Arch Linux package version and to direct them to the proper bug reporting
+  # guidelines.
+  sed -i -e 's;https://github.com/prusa3d/slic3r/issues/new;https://wiki.archlinux.org/title/PrusaSlicer#Issue_Reporting;' src/slic3r/GUI/MainFrame.cpp
+  sed -i -e "s;UNKNOWN;arch${pkgrel};" version.inc
 }
 
 build() {
