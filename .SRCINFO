@@ -1,7 +1,7 @@
 pkgbase = linux-gpib-git
 	pkgdesc = A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.
 	pkgver = 4.3.6.r2091.20250410.05615dee
-	pkgrel = 3
+	pkgrel = 4
 	url = http://linux-gpib.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -68,6 +68,7 @@ pkgname = linux-gpib-dkms-git
 	optdepends = linux-gpib-firmware: Firmware for some devices.
 	optdepends = linux-gpib-libs: User space libraries.
 	optdepends = linux-gpib-tools: User space utilities.
+	optdepends = linux-gpib-udev: udev rules.
 	optdepends = linux-gpib-docs: Documentation.
 	optdepends = gpib-utils: More user space utilities.
 	provides = linux-gpib-dkms=4.3.6.r2091.20250410.05615dee
