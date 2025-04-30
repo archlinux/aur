@@ -8,6 +8,13 @@ url="https://github.com/e-tho/${pkgname%-git}"
 license=('GPL-3.0-or-later')
 depends=('iwd' 'dbus')
 makedepends=('git' 'cargo')
+optdepends=(
+  'dmenu: launcher for options navigation via stdin'
+  'rofi: launcher for options navigation via stdin'
+  'fuzzel: launcher for options navigation via stdin'
+  'walker: launcher for options navigation via stdin'
+  'nerd-fonts: for font-based icons (default mode)'
+)
 provides=(${pkgname%-git}=${pkgver})
 conflicts=(${pkgname%-git}-bin ${pkgname%-git})
 options=('!debug' '!strip')
