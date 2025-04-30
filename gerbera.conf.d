@@ -1,4 +1,4 @@
-### Configuration for the minissdpd-Daemon -- overrides the defaults set in /etc/init.d/minissdpd.
+### Configuration for the gerbera-Daemon -- overrides the defaults set in /etc/init.d/gerbera.
 
 # Optional: Override the exeecutable to run:
 #_DAEMON="/usr/bin/gerbera"
