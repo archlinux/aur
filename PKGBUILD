@@ -1,3 +1,4 @@
+# Maintainer: Storm Dragon <storm_dragon@stormux.org>
 # Contributor: Andrew Antle <andrew dot antle at gmail dot com>
 # Contributor: Tim Yang <tdy@gmx.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
@@ -7,7 +8,7 @@ pkgname=tinywm
 pkgver=1.3
 pkgrel=10
 pkgdesc="A tiny window manager written in only ~50 lines of code"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="http://incise.org/tinywm.html"
 license=('custom')
 depends=('libx11')
