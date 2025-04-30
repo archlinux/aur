@@ -10,7 +10,7 @@ source=("https://aur.archlinux.org/bi.git/$pkgname-$pkgver.zip")
 sha256sums=('4c4995c407c2ab5b591254d8e547801c861de65f1bad5d65426ee1c4298d3cff')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  echo "bi"
 }
 
 package() {
