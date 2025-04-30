@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=proton-mail-export
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Allows to export emails as eml files'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake' 'clang' 'go' 'zip' 'unzip')
 options=('!debug')
 source=("git+https://github.com/ProtonMail/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('b87a4d3c92a05f5099c0e4623243585af9e720fc79dfd9485f27b7116e80c841')
+sha256sums=('253e4ec4e037d824074200a101ffef6bd76b1ac8dcfcb30e9d7b2171772dda84')
 
 prepare() {
     cd "$pkgname"
