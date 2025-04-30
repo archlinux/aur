@@ -1,6 +1,6 @@
 pkgbase = emu80-git
 	pkgdesc = Emulator for bunch of Soviet PCs. Git version
-	pkgver = 4.0.520.4ccd6d6
+	pkgver = 4.0.521.21b02f5
 	pkgrel = 1
 	url = https://emu80.org/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = emu80-git
 	depends = emu80-base
 	depends = qt6-base
 	depends = qt6-multimedia
-	source = emu80-git::git+https://github.com/vpyk/emu80v4.git#commit=4ccd6d6
+	source = emu80-git::git+https://github.com/vpyk/emu80v4.git#commit=21b02f5
 	source = shortcut.desktop
 	sha256sums = SKIP
 	sha256sums = 7206828b1279e8387454da6f31bf74ff7319c89f79a6abc396508a6f263db59b
