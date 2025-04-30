@@ -1,5 +1,5 @@
 pkgbase = wavy-git
-	pkgdesc = A simple protocol testing tool that supports various connection types(now serial port only).Use system-wide electron.
+	pkgdesc = A simple protocol testing tool that supports various connection types(now serial port only).(Use system-wide electron)
 	pkgver = 1.1.3.r0.ga69c717
 	pkgrel = 1
 	url = https://github.com/novrain/wavy
@@ -10,6 +10,7 @@ pkgbase = wavy-git
 	makedepends = git
 	makedepends = curl
 	makedepends = yarn
+	makedepends = gendesk
 	depends = electron28
 	provides = wavy=1.1.3
 	conflicts = wavy

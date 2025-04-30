@@ -5,7 +5,7 @@ pkgver=1.1.3.r0.ga69c717
 _electronversion=28
 _nodeversion=20
 pkgrel=1
-pkgdesc="A simple protocol testing tool that supports various connection types(now serial port only).Use system-wide electron."
+pkgdesc="A simple protocol testing tool that supports various connection types(now serial port only).(Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/novrain/wavy"
 license=('MIT')
@@ -20,6 +20,7 @@ makedepends=(
     'git'
     'curl'
     'yarn'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -39,14 +40,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -68,14 +69,19 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
+            echo 'networkConcurrency 10'
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/47.122.4.61:4873/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
     NODE_ENV=production     yarn run electron:build
     NODE_ENV=production     yarn run vite:build
     NODE_ENV=production     yarn run forge:package
+    rm -rf "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{android-*,darwin-*,linux-arm*,win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
