@@ -1,6 +1,6 @@
 pkgname=bi
 pkgver=3.4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vinary editor like vI"
 arch=('x86_64')
 url="https://github.com/fygar256/bi"
@@ -11,7 +11,6 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make  # makeが必要な場合
 }
 
 package() {
