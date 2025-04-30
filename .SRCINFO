@@ -1,0 +1,17 @@
+pkgbase = tunnelx
+	pkgdesc = Lightweight ingress tunneling tool designed to create a secure SOCKS5 proxy server for routing network traffic
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/tunnelx
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = tunnelx::git+https://github.com/projectdiscovery/tunnelx.git#tag=v0.0.1
+	b2sums = c1e2ec884fe7520e3aacbc3722ab5bf3068a141da5575f62a01f9459d89b09fd3d2796db2959396fc5887e5f1ddc3a788c69a9b2caf2e7a05d129fd38bc85277
+
+pkgname = tunnelx

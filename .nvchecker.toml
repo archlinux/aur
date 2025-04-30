@@ -1,0 +1,4 @@
+[tunnelx]
+source = "git"
+git = "https://github.com/projectdiscovery/tunnelx.git"
+prefix = "v"
