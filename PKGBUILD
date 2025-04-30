@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=insight
-_pkgver=1.1.0
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -56,7 +56,6 @@ optdepends=(
   r-gee
   r-geepack
   r-geor
-  r-ggeffects
   r-glmmadaptive
   r-glmmtmb
   r-glmtoolbox
@@ -130,10 +129,11 @@ optdepends=(
   r-weightit
   r-withr
   r-tune
+  r-rwiener
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b2be66d0d69a4e285f4911d98fd12043')
-b2sums=('d16abe6b205289541f7b6730b193e9abb2c90cb7e78b60610b88d7cdd22430d44391b0175a87d67b24077eb7b54d2444e77b70b2c3ae53180c26bcc62809cbea')
+md5sums=('d6f7689701c97670538c53aa0f443b3d')
+b2sums=('9034047377c97379691e0c9f2590950085d43ef4bea1432afae26c5a6b76956acaee97c9d1b31efdcfa22f27295eeafd9461313c52f353e0c7f72c59d9326397')
 
 build() {
   mkdir build
