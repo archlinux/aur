@@ -7,7 +7,7 @@ _projectname=electron
 _major=36
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='0.0'
+_subver='0.1'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-}"
 pkgrel=1
@@ -56,12 +56,12 @@ source_x86_64=(
     "${_pkgname}-chromedriver-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/chromedriver-v${_pkgver//_/-}-linux-x64.zip"
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
-sha256sums_aarch64=('706cf5e628d14c3efffceaf65106294af28ecaddd6166d890d620aefa1cb60ed'
-                    'f4d576b6f459e44ba5da662fcbb4a7b3dbc9307637caffefcc9c545a1429f855')
-sha256sums_armv7h=('af224ecc1c8580d8821bd0597630f291131803125336c27c5ec6653192bcba30'
-                   '1e133552a9d7e5ea1da63aa73cc6e8e25693ac1a9f3a91d0740db642e8e56a62')
-sha256sums_x86_64=('6da3d015703ebc8769558cb69883e09fd8d04e0ea20ed683c1c46959aaf6ada3'
-                   '50a869007264ced70c8d75f794438f7a789d9862e1cbeb4323cdeaac12051a03')
+sha256sums_aarch64=('c83262215fffe65fbdd65d6861562eb7de00550a899e03b0804cbd034439f8cf'
+                    '0f52b0b63502f149ac7368c2fe193d3e4ad36f8bca3ba03391e7b76f773ba213')
+sha256sums_armv7h=('9aebaa475bb5d7e74525b6c4fbf28ddcd26ab60a41f441d323072db194685b8d'
+                   '09d5a2349ac61a30d5f6b78cd903d0710dee21fff6228a9830d883a33ba7c76e')
+sha256sums_x86_64=('5c3acd7fad8e637acb7b92756f54715d60f04d77df35b043c02c4be8aa88e7a4'
+                   '9dd968c8e0c0a9e0e31b675a79253345f848d0ded8f9194a771caf954788b48d')
 prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
@@ -73,5 +73,6 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib}
     cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
+    rm -rf "${pkgdir}/usr/lib/${_pkgname}/LICENSE"*
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
