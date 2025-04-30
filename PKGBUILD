@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zhiximind-desktop-bin
 _debname=com.zhixi.desktop
-pkgver=3.3.6
+pkgver=3.3.7
 _electronversion=22
 pkgrel=1
-pkgdesc="知犀思维导图官方版"
+pkgdesc="A mind mapping and mind mapping software present on all major platforms.(Prebuilt version.Use system-wide electron)知犀思维导图官方版"
 arch=('x86_64')
 url="https://www.zhixi.com"
-license=('ISC')
+license=('LicenseRef-Custom')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
@@ -18,8 +18,8 @@ source=(
     "LICENSE-${pkgver}.html::${url}/user-agreement"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('035d3509f29ff68888277e84e1da4f326802f1c6feccd2449d7dce892e2b57f5'
-            '0aa8fe4fb1f6bf313b3d6710a4aec6cebe7f4bb00d6ad5efb6f063cbefda2d82'
+sha256sums=('ad89542988ce02b9fcffe2bd890d476883f6ccf64e7239f31eb485cb1ef07efb'
+            '875e57e471b82ed0944850faf51a008b099cf312298474babfd023a9722a87d2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
