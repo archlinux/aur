@@ -1,6 +1,6 @@
 pkgname=easyterm-git
 _gitname=easyterm
-pkgver=r129.43705c5
+pkgver=r140.6e52c8e
 pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')

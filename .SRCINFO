@@ -1,7 +1,7 @@
 pkgbase = easyterm-git
 	pkgdesc = Serial Port Terminal Emulator
-	pkgver = r129.43705c5
-	pkgrel = 2
+	pkgver = r140.6e52c8e
+	pkgrel = 1
 	url = https://github.com/marker5a/EasyTerm
 	arch = x86_64
 	arch = i686
