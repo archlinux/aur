@@ -1,0 +1,4 @@
+[notify]
+source = "git"
+git = "https://github.com/projectdiscovery/notify.git"
+prefix = "v"

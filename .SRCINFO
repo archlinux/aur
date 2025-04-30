@@ -1,0 +1,17 @@
+pkgbase = notify
+	pkgdesc = Stream the output of several tools (or read from a file) and publish it to a variety of supported platforms
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/notify
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = notify::git+https://github.com/projectdiscovery/notify.git#tag=v1.0.7
+	b2sums = 8dc6876489fb1feb57d24a21aa8f740d32520cd7eb127239c8c99d6e775050d1625eef3cb02ac9834d629f4e435191754375c0a38cf5435cc279c723c3940c2b
+
+pkgname = notify
