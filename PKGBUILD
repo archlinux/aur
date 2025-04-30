@@ -1,6 +1,6 @@
 # Maintainer: Ansel Hayashi <Telegram: @sym_ansel>
 pkgname=kemulatornnmod-bin
-pkgver=2.19.1
+pkgver=2.19.2
 pkgrel=9
 epoch=0
 pkgdesc="Emulator for j2me, CLDC, MIDP applications and games"
@@ -10,11 +10,12 @@ license=('custom')
 depends=('java-runtime-openjdk'
 	'xdg-utils'
 	'bash'
-	'gtk3')
+	'gtk3'
+	'vlc')
 source=(pkg_${pkgver}.zip::"https://nnm.nnchan.ru/dl/kemnnx64_1.zip"
     "icon.png"
 	"starter.sh")
-sha256sums=('ba368ec1a0a9bf1dcb73d810a4d51fef66c53fe793a1cbd8ec329c08dee7afc5'
+sha256sums=('b2e43b3fc1c644e5b6e13e64f4dc04fe53f95ec627119b2295ff748f25c653e6'
 	'b6215676e6550a4472bbabe238ad55daaa52a7efe0f7475de58a109755f470ab'
 	'8d475d2720111f510a77ff331fd8ef336fc5a0e8d7fe0ebf2ecd0e7017569462')
 
