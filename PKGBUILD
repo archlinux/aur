@@ -11,8 +11,10 @@ url=https://git.mylloon.fr/Anri/dsr
 license=('AGPL3')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("$pkgname.zip::https://git.mylloon.fr/Anri/dsr/releases/download/$pkgver/dsr-linux-x64-$pkgver.zip")
-sha256sums=('SKIP')
+source_x86_64=("$pkgname.zip::https://git.mylloon.fr/Anri/dsr/releases/download/$pkgver/dsr-linux-x64-$pkgver.zip"
+               "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png")
+sha256sums_x86_64=("SKIP"
+                   "SKIP")
 options=(!debug)
 
 package() {
@@ -24,9 +26,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-
-  install -d "$pkgdir/usr/share/pixmaps"
-  curl -sL "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png" -o "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
   # Desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
