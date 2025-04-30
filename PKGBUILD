@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/quiet/libfec"
 license=('LGPL2.1')
 makedepends=('git' 'cmake')
-provides=('libfec' "$pkgname")
+provides=('libfec' "$pkgname" "libfec.so=$pkgver")
 conflicts=('libfec')
 source=("git+$url.git")
 sha256sums=('SKIP')

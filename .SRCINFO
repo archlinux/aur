@@ -10,6 +10,7 @@ pkgbase = libfec-git
 	makedepends = cmake
 	provides = libfec
 	provides = libfec-git
+	provides = libfec.so=1.0.r10.g9750ca0
 	conflicts = libfec
 	source = git+https://github.com/quiet/libfec.git
 	sha256sums = SKIP
