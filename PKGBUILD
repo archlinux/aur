@@ -1,8 +1,9 @@
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgbase=rbutil-git
 pkgname=('rbutil-git')
-pkgver=1.5.1.1284.g94d6265df0
+pkgver=v4.0.final.120.g6a8f1a7e84
 pkgrel=1
 arch=('x86_64')
 url='https://www.rockbox.org/twiki/bin/view/Main/RockboxUtility'
