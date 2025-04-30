@@ -5,7 +5,7 @@
 
 pkgname=nvidia-beta
 pkgver=575.51.02
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA kernel module (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -16,9 +16,11 @@ conflicts=('nvidia')
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        '110-nvidia-change-dkms-conf.patch')
+        '110-nvidia-change-dkms-conf.patch'
+        '140-nvidia-gcc15-fix.patch')
 sha256sums=('fb8f04643ec826b617aa05961bb35653bdd73d03cdb945262819aba19a6a9018'
-            '2d14bfda380cdcaae3c0dd0cd0a0220a849f6c3664815b13b5b5f04aea5c27b5')
+            '2d14bfda380cdcaae3c0dd0cd0a0220a849f6c3664815b13b5b5f04aea5c27b5'
+            'ddd4384b87aa1032b9cf467f90b5c49de2db2f42c9ef5a2015e3c7d8ca145e9f')
 
 prepare() {
     # extract the source file
@@ -28,6 +30,7 @@ prepare() {
     ln -s kernel "${_pkg}/nvidia-${pkgver}"
     
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/140-nvidia-gcc15-fix.patch"
 }
 
 build() {
