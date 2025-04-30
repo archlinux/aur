@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDR
-_pkgver=1.4.1
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-yaml
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2bbad837a7c6bc1ea29caac84b1ca859')
-b2sums=('1d97208e34b03a98fcf6cb5a920298fe1eb14698ef980c481819aec58cf50a082443084bac7a9ca0507d40f8396440587f48cd13aff0f483f9727c5249820609')
+md5sums=('1d0ea547b43e82313b92944e3cea56fb')
+b2sums=('8a33c6c624ff501fd6d29cf82b4ed9be51fa6cad82632b5a629755399032376163aac233840992f24e58b57d755e264c190a785997ca31ec967273ee5fb0d7db')
 
 build() {
   mkdir build
