@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ANCOMBC
-_pkgver=2.6.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,14 +21,9 @@ depends=(
   r-hmisc
   r-lme4
   r-lmertest
-  r-mia
   r-multcomp
   r-nloptr
   r-rdpack
-  r-s4vectors
-  r-singlecellexperiment
-  r-summarizedexperiment
-  r-treesummarizedexperiment
 )
 checkdepends=(
   r-microbiome
@@ -44,10 +39,16 @@ optdepends=(
   r-testthat
   r-tidyr
   r-tidyverse
+  r-phyloseq
+  r-mia
+  r-s4vectors
+  r-singlecellexperiment
+  r-summarizedexperiment
+  r-treesummarizedexperiment
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9ea99b22eb426a256081e63a7d6049f1')
-b2sums=('ef90fb7af92ea9f5890ba2e7b0507f99cef1f41ecc97864c8ad875b055525c7b4507bed1005c2e6ddec08103dc1c0f1d368c5c0e219138069f34136de0a9693d')
+md5sums=('23016cc495f712da8fbeb6c9da6f3ccf')
+b2sums=('0e66331e1c9ea0f786385428f5075f217ea38a4e3f0ef51f6ce951af428dd36fe92fc5b672b1bae7b43bbefb4c4fbccffb45111d1bd3a439079c4f9cb72f01ce')
 
 build() {
   mkdir build
