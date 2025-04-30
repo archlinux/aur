@@ -1,0 +1,11 @@
+pkgbase = ttf-digital-numbers-git
+	pkgdesc = A fixed width (web)font in a cool liquid-crystal display (LCD) style.
+	pkgver = r47.6c52a4a
+	pkgrel = 1
+	url = https://github.com/s-a/digital-numbers-font
+	arch = any
+	license = OFL-1.1
+	source = ttf-digital-numbers::git+https://github.com/s-a/digital-numbers-font.git#branch=gh-pages
+	sha256sums = SKIP
+
+pkgname = ttf-digital-numbers-git
