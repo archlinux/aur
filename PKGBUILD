@@ -21,7 +21,7 @@ depends=(
   'pango' 
   )
 makedepends=('cargo' 'git' 'gtk4' 'libadwaita')
-license=('Apache-2.0')
+license=('GPL-3.0-only')
 provides=(distroshelf)
 conflicts=(
 	distroshelf
