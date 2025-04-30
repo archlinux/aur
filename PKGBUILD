@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|sed 's/-/./g').r$(git rev-list --count HEAD).g$(git describe --always)
+  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|sed 's/-/./g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
 }
 
 prepare() {
