@@ -1,6 +1,6 @@
 pkgbase = less-reader-git
 	pkgdesc = An e-book reader developed based on Electron + Vue 3. Supported formats: epub, mobi, azw3, (pdf, txt are not supported yet)(Use system-wide electron)
-	pkgver = 0.0.5.r0.gdbdfe9c
+	pkgver = 0.0.6.r2.g8bf9947
 	pkgrel = 1
 	url = https://github.com/laowus/Less-Reader
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = less-reader-git
 	makedepends = git
 	makedepends = curl
 	depends = electron35
-	provides = less-reader=0.0.5
+	provides = less-reader=0.0.6
 	conflicts = less-reader
 	source = less-reader.git::git+https://github.com/laowus/Less-Reader
 	source = less-reader.sh

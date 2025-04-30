@@ -2,7 +2,7 @@
 pkgname=less-reader-git
 _pkgname='Less Reader'
 _zhsname='简阅'
-pkgver=0.0.5.r0.gdbdfe9c
+pkgver=0.0.6.r2.g8bf9947
 _electronversion=35
 _nodeversion=20
 pkgrel=1
@@ -41,6 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -51,7 +52,6 @@ prepare() {
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     sed -i "4i\Comment[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-git}.desktop"
-    cd "${srcdir}/${pkgname%-git}.git"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
