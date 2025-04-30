@@ -3,7 +3,7 @@
 pkgname=easyterm
 _gitname=easyterm
 pkgver=0.9.3
-pkgrel=2
+pkgrel=1
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
 url='https://github.com/marker5a/EasyTerm'

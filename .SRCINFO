@@ -1,7 +1,7 @@
 pkgbase = easyterm
 	pkgdesc = Serial Port Terminal Emulator
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/marker5a/EasyTerm
 	arch = x86_64
 	arch = i686
