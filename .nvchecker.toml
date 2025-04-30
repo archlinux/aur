@@ -1,0 +1,4 @@
+[pdtm]
+source = "git"
+git = "https://github.com/projectdiscovery/pdtm.git"
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = pdtm
+	pkgdesc = ProjectDiscovery's Open Source Tool Manager
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/pdtm
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = pdtm::git+https://github.com/projectdiscovery/pdtm.git#tag=v0.0.9
+	b2sums = 15a6913f3e30da9f1062938e19364bccfd418db23a89499b96a1fbdebd3b470a6c86531a1c8165dc3f94dda1d81ece190305d35aa0450adbad8ab28c481db5c5
+
+pkgname = pdtm
