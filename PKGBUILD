@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=VariantAnnotation
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,7 +28,6 @@ depends=(
   r-s4vectors
   r-summarizedexperiment
   r-xvector
-  r-zlibbioc
   xz
   zlib
 )
@@ -54,8 +53,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dd78ea409fc16978cf2d87763e3b808e')
-b2sums=('5cf75fb8b5c99a38ee9af06ed6d63ef396ab6e75911f3914905b7d4c518d9e7d2a45458017064aa2c992b28641037c8c752b26ad6dd073d1ddee9da1b0250fdb')
+md5sums=('b35af393f74b00772ca4ebb9acfe38a8')
+b2sums=('1b93b4bedaa3984ee3a302f722657eccf696b414950a7e480503b4cd4a62b18fbd3f8c2b0aeae5db9ac2af6ccacc8c81646fe004a1c9aa4dfcefce0ba638ed68')
 
 build() {
   mkdir build
