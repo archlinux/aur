@@ -1,5 +1,6 @@
+# Maintainer: Keiran <q4ow@proton.me>
 pkgname=hostman-git
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services (latest commit)"
 arch=('x86_64')
@@ -30,11 +31,11 @@ build() {
 
 package() {
   cd "$srcdir/hostman/build"
-  
+
   install -Dm755 hostman "$pkgdir/usr/bin/hostman"
-  
+
   install -Dm644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 ../CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-  
+
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
