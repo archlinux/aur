@@ -1,0 +1,22 @@
+pkgbase = asnmap-bin
+	pkgdesc = CLI for quickly mapping organization network ranges using ASN information
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/asnmap
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = asnmap
+	conflicts = asnmap
+	source_aarch64 = asnmap-1.1.1-aarch64.zip::https://github.com/projectdiscovery/asnmap/releases/download/v1.1.1/asnmap_1.1.1_linux_arm64.zip
+	sha256sums_aarch64 = c574615ce5bcfa33c32b582b4b76508881e791b69034a5faee9b7e27f87dda67
+	source_armv7h = asnmap-1.1.1-armv7h.zip::https://github.com/projectdiscovery/asnmap/releases/download/v1.1.1/asnmap_1.1.1_linux_arm.zip
+	sha256sums_armv7h = 62ef15a5339d52b75022d2afb40962c75f8d0d07a6e53ac93be0d1c367abaa6f
+	source_i686 = asnmap-1.1.1-i686.zip::https://github.com/projectdiscovery/asnmap/releases/download/v1.1.1/asnmap_1.1.1_linux_386.zip
+	sha256sums_i686 = a52d2f0df943b60ef2674d2c8ea2a0f43bda147605044b7053a892645cb7bdad
+	source_x86_64 = asnmap-1.1.1-x86_64.zip::https://github.com/projectdiscovery/asnmap/releases/download/v1.1.1/asnmap_1.1.1_linux_amd64.zip
+	sha256sums_x86_64 = 8a2cc589f40794b4b8d19ecafbbbd0682ec38785410d7efde2f7429e2fe3b621
+
+pkgname = asnmap-bin

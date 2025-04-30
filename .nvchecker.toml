@@ -1,0 +1,5 @@
+[asnmap-bin]
+source = "github"
+github = "projectdiscovery/asnmap"
+use_latest_release = true
+prefix = "v"
