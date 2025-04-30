@@ -1,6 +1,6 @@
 pkgbase = betterbird-fr-bin
 	pkgdesc = FRENCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
-	pkgver = 128.9.2esr
+	pkgver = 128.10.0esr
 	pkgrel = 1
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = betterbird-fr-bin
 	depends = dbus-glib
 	depends = hunspell
 	optdepends = hunspell-fr
-	provides = betterbird=128.9.2esr
+	provides = betterbird=128.10.0esr
 	conflicts = betterbird
-	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-128.9.2esr-bb25.fr.linux-x86_64.tar.bz2
+	source = https://www.betterbird.eu/downloads/LinuxArchive/betterbird-128.10.0esr-bb26.fr.linux-x86_64.tar.bz2
 	source = eu.betterbird.Betterbird.desktop
 	source = vendor-prefs.js
-	sha256sums = 711ffa8b9733403604cf59b29609c3bf455ffb11ccaeead7814b76116b9cd586
+	sha256sums = da18a49adaac83a28bb48c763e359912d2e3bdd875cb3bcb4cec457c133316b4
 	sha256sums = dde5f71088162b89c7ea56508c06441e6e1e717206f781c00657cb71d96d44cd
 	sha256sums = b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09
 
