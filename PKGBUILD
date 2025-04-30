@@ -17,7 +17,7 @@ makedepends_i686=('nasm')
 optdepends=('timidity-freepats: a free soundfont for music'
             'fluidsynth: alternative midi sequencer'
             'eduke32-shareware-episode: Duke Nukem 3D Demo')
-source=("$pkgbase::git+https://github.com/cdoom64hunter/eduke32-amcfork-revised.git#branch=amc_dev"
+source=("$pkgbase::git+https://github.com/cdoom64hunter/eduke32-amcfork-revised.git#branch=devel"
         "amctc.png")
 sha256sums=('SKIP'
             '899dd4fdd84e2dba998b4cf19228fff82967106eea58ce9fcb99836d49310256')
