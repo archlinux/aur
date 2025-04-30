@@ -1,6 +1,6 @@
 pkgbase = typhoon
 	pkgdesc = A stylish weather app based on Stormcloud
-	pkgver = 0.9.86
+	pkgver = 0.9.87
 	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/typhoon
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = typhoon
 	depends = python
 	depends = imagemagick
 	depends = python-dbus
-	source = git+https://github.com/archisman-panigrahi/typhoon.git#tag=v0.9.86
+	depends = libportal
+	source = git+https://github.com/archisman-panigrahi/typhoon.git#tag=v0.9.87
 	sha256sums = SKIP
 
 pkgname = typhoon
