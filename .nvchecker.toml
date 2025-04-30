@@ -1,0 +1,4 @@
+[asnmap]
+source = "git"
+git = "https://github.com/projectdiscovery/asnmap.git"
+prefix = "v"
