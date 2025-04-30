@@ -1,14 +1,14 @@
 pkgbase = ypb
 	pkgdesc = Yet another PasteBin
-	pkgver = 0.2.3
-	pkgrel = 1
+	pkgver = 0.2.4
+	pkgrel = 2
 	url = https://github.com/st0nie/ypb
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
 	license = AGPL-3.0-or-later
 	makedepends = cargo
-	source = ypb-0.2.3.tar.gz::https://github.com/st0nie/ypb/archive/refs/tags/v0.2.3.zip
-	sha256sums = c5205ade702b6b288909454b085fe11f76f12912d1d94fa1104dc26d98066cc7
+	source = ypb-0.2.4.tar.gz::https://github.com/st0nie/ypb/archive/refs/tags/v0.2.4.zip
+	sha256sums = f95eed9e82a6ccbb3a471f110de9f4d965b3a4df84e7b1fd1627791e37fd3707
 
 pkgname = ypb
