@@ -3,7 +3,7 @@
 
 _name=NeuralRack
 pkgname=${_name,,}-git
-pkgver=r174.14894da
+pkgver=r186.b8cd059
 pkgrel=1
 pkgdesc="Neural model and impulse response file loader"
 url="https://github.com/brummer10/$_name"
@@ -33,7 +33,7 @@ build() {
 
 check() {
   cd $_name
-  lv2lint -M pack -s '_Z*' -I bin/$_name.lv2 "$_plugin_uri"
+  lv2lint -M pack -s '_Z*' -I bin/{_name^}.lv2 "$_plugin_uri"
 }
 
 package() {
