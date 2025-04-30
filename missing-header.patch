@@ -1,0 +1,10 @@
+--- a/src/cleanup_queue.h	2025-04-30 13:50:18.888611676 +1000
++++ b/src/cleanup_queue.h	2025-04-30 13:50:40.526252007 +1000
+@@ -6,6 +6,7 @@
+ #include <cstddef>
+ #include <cstdint>
+ #include <unordered_set>
++#include <algorithm>
+ 
+ #include "memory_tracker.h"
+ 
