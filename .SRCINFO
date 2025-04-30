@@ -1,6 +1,6 @@
 pkgbase = amazon-q-bin
 	pkgdesc = Amazon Q CLI for Linux. See: https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html for details
-	pkgver = 1.8.1
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/aws/q-cli
 	install = amazon-q-bin.install
@@ -12,7 +12,7 @@ pkgbase = amazon-q-bin
 	conflicts = amazon-q
 	options = !debug
 	options = !strip
-	source = https://desktop-release.q.us-east-1.amazonaws.com/1.8.1/q-x86_64-linux.zip
-	md5sums = d79f651bd7f27109fd2439e41d7ca66b
+	source = https://desktop-release.q.us-east-1.amazonaws.com/1.9.1/q-x86_64-linux.zip
+	md5sums = d390fdf5e62f0cfe7ce4613a6ea7bb23
 
 pkgname = amazon-q-bin
