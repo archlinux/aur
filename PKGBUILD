@@ -131,7 +131,7 @@ skia_enable_{pdf,skottie,sksl,svg}=false \
 skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
 skia_use_{expat,piex,xps,zlib,libgifcodec}=false \
 skia_enable_{particles,skparagraph,sktext}=false \
-cc='clang' cxx='clang++')"
+cc=clang cxx=clang\+\+)"
 	ninja -C "$_skiadir" skia modules
 
 	echo Building Aseprite...
