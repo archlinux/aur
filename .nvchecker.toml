@@ -1,0 +1,5 @@
+[cvemap-bin]
+source = "github"
+github = "projectdiscovery/cvemap"
+use_latest_release = true
+prefix = "v"
