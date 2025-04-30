@@ -47,8 +47,8 @@ build() {
 package_minetest-git() {
 	pkgdesc='Free and open source voxel-based game engine (git)'
 	depends=(curl leveldb freetype2 gmp jsoncpp libgl libjpeg libvorbis libxi luajit minetest-common-git openal postgresql-libs hiredis spatialindex sqlite sdl2)
-	provides=("${_pkgname}")
-	conflicts=("${_pkgname}")
+	provides=("${_pkgname}" "luanti")
+	conflicts=("${_pkgname}" "luanti")
 
 	cd "${srcdir}/${_pkgname}/build"
 	DESTDIR="${pkgdir}" ninja install
@@ -63,8 +63,8 @@ package_minetest-git() {
 package_minetest-server-git() {
 	pkgdesc='Free and open source voxel-based game engine (headless server) (git)'
 	depends=(minetest-common-git leveldb curl sqlite hiredis luajit postgresql-libs spatialindex jsoncpp gmp)
-	provides=("${_pkgname}-server")
-	conflicts=("${_pkgname}-server")
+	provides=("${_pkgname}-server" "luanti-server")
+	conflicts=("${_pkgname}-server" "luanti-server")
 
 	cd "${srcdir}/${_pkgname}/build"
 	DESTDIR="${pkgdir}" ninja install
@@ -81,8 +81,8 @@ package_minetest-server-git() {
 
 package_minetest-common-git() {
 	pkgdesc='Free and open source voxel-based game engine (common data files) (git)'
-	provides=("${_pkgname}-common")
-	conflicts=("${_pkgname}-common")
+	provides=("${_pkgname}-common" "luanti-common")
+	conflicts=("${_pkgname}-common" "luanti-common")
 
 	cd "${srcdir}/${_pkgname}/build"
 	DESTDIR="${pkgdir}" ninja install

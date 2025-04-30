@@ -55,7 +55,9 @@ pkgname = minetest-git
 	depends = sqlite
 	depends = sdl2
 	provides = minetest
+	provides = luanti
 	conflicts = minetest
+	conflicts = luanti
 
 pkgname = minetest-server-git
 	pkgdesc = Free and open source voxel-based game engine (headless server) (git)
@@ -70,9 +72,13 @@ pkgname = minetest-server-git
 	depends = jsoncpp
 	depends = gmp
 	provides = minetest-server
+	provides = luanti-server
 	conflicts = minetest-server
+	conflicts = luanti-server
 
 pkgname = minetest-common-git
 	pkgdesc = Free and open source voxel-based game engine (common data files) (git)
 	provides = minetest-common
+	provides = luanti-common
 	conflicts = minetest-common
+	conflicts = luanti-common
