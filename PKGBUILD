@@ -9,6 +9,7 @@ url='https://github.com/boxdot/gurk-rs'
 license=('AGPL3')
 makedepends=('git' 'rust' 'cmake')
 optdepends=()
+options=('!lto')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+$url")
