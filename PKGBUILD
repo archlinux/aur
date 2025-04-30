@@ -20,7 +20,7 @@ pkgname=(
 )
 pkgbase=coreboot-utils
 pkgver=24.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools and utilities to work with coreboot firmware"
 url="https://www.coreboot.org"
 license=('GPL-2.0-only')
@@ -48,12 +48,20 @@ validpgpkeys=('574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7') # Martin Roth (coreboo
 
 prepare() {
   cd "coreboot-$pkgver"
+
+  # sbin > bin
+  for program in cbmem ectool intelmetool inteltool nvramtool pmh7tool superiotool; do
+    sed -i 's/sbin/bin/g' "util/${program}/Makefile"
+  done
+  sed -i 's/sbin/bin/g' util/msrtool/Makefile.in
 }
 
 build() {
   cd "coreboot-$pkgver"
 
+#  echo ""
 #  echo "Building amdfwtool..."
+#  echo ""
 #  make -C util/amdfwtool
 
   echo ""
@@ -173,8 +181,7 @@ package_cbfstool() {
   optdepends=('qemu-system-x86')
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname"/{"$pkgname",fmaptool,ifwitool,rmodtool} -t \
-    "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
   install -Dm644 "util/$pkgname/EXAMPLE" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
@@ -183,7 +190,7 @@ package_cbmem() {
   depends=('glibc')
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_coreboot-configurator() {
@@ -204,7 +211,7 @@ package_ectool() {
   depends=('glibc')
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_ifdtool() {
@@ -216,7 +223,7 @@ package_ifdtool() {
   )
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_intelmetool() {
@@ -228,7 +235,7 @@ package_intelmetool() {
   )
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_inteltool() {
@@ -240,8 +247,7 @@ package_inteltool() {
   )
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "util/$pkgname/$pkgname.8" -t "$pkgdir/usr/share/man/man8/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_intelvbttool() {
@@ -271,7 +277,7 @@ package_msrtool() {
   )
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
   install -Dm644 "util/$pkgname/README" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
@@ -280,8 +286,7 @@ package_nvramtool() {
   depends=('glibc')
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "util/$pkgname/cli/$pkgname.8" -t "$pkgdir/usr/share/man/man8/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_pmh7tool() {
@@ -289,7 +294,7 @@ package_pmh7tool() {
   depends=('glibc')
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
 }
 
 package_superiotool() {
@@ -301,7 +306,6 @@ package_superiotool() {
   )
 
   cd "coreboot-$pkgver"
-  install -Dm755 "util/$pkgname/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "util/$pkgname/$pkgname.8" -t "$pkgdir/usr/share/man/man8/"
+  make -C "util/$pkgname" PREFIX='/usr' DESTDIR="$pkgdir" install
   install -Dm644 "util/$pkgname/README" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
