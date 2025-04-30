@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.13
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=4
+pkgrel=5
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -43,7 +43,7 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
-        aseprite-strings::git+https://github.com/aseprite/strings.git#commit=7b0af61dec1d98242d7eb2e9cab835d442d21235
+        aseprite-strings::git+https://github.com/aseprite/strings.git#commit=5499ce2030d831c614f1ce7fdfdaf36a973c21f8
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -58,7 +58,7 @@ noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('c2e639c083d99a5a478ded7c86d9d7f4e4ff9ebebf6fedac7f8bfc94d6bd94c1'
             '8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad'
-            '36b329f23429670bf473472a6b64ca5156d2707599eaabdd69ef424dd6ad5635'
+            '8ee87f57b5792e5751f63fe37cdda8d29053cd4449e1f533e792e15abcfefa79'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '89cd28a5a90ee9dd42e85866b6f954bde526068d94311b0730a62f00f9cfffdb'
