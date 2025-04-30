@@ -1,0 +1,4 @@
+[aix]
+source = "git"
+git = "https://github.com/projectdiscovery/aix.git"
+prefix = "v"

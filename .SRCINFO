@@ -1,0 +1,17 @@
+pkgbase = aix
+	pkgdesc = CLI tool to interact with Large Language Models (LLM) APIs
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/aix
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = aix::git+https://github.com/projectdiscovery/aix.git#tag=v0.0.5
+	b2sums = 0831cf1eac30661162471171de015f92eef701c6c53fe0e0a333c8656e0471b17af547105bc5ab57ea0ef79a828c421e01211fa7dc18b1d162ec62ea01c3c371
+
+pkgname = aix
