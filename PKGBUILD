@@ -3,16 +3,17 @@
 # Contributor: Marco Asa <marcoasa90[at]gmail[dot]com>
 
 pkgname=linux-show-player
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Cue player designed for stage productions'
 url='https://www.linux-show-player.org/'
 arch=(any)
 license=(GPL-3.0-only)
 depends=(gobject-introspection-runtime gst-plugins-good
-         python-pyalsa python-appdirs python-falcon python-humanize
-         python-pyliblo python-pyqt5 python-gobject python-mido
-         python-requests python-rtmidi python-sortedcontainers qt5-svg)
+         python-appdirs python-falcon python-gobject python-humanize
+         python-mido python-numpy python-pyalsa python-pyliblo python-pyqt5
+         python-qdigitalmeter python-requests python-rtmidi
+         python-sortedcontainers qt5-svg)
 makedepends=(python-build python-installer python-poetry python-wheel)
 groups=(pro-audio)
 optdepends=(
@@ -25,7 +26,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FrancescoCeruti/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9e90779b2509f6a1fe31c208d19e0500202bdf939695fe49ca97fb613d3b945e')
+sha256sums=('adbbc40abc629b0ffb14bffc8fd62c107bebf7b9b46495735543525658a80e9d')
 
 build() {
   cd $pkgname-$pkgver
