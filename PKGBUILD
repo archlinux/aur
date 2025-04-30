@@ -2,7 +2,7 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
 arch=('aarch64' 'x86_64')
@@ -14,17 +14,17 @@ makedepends=('go')
 provides=('golang-mockery')
 conflicts=('golang-mockery')
 replaces=('golang-mockery')
-_pkgsrc="${pkgname}-${pkgver}"
+_pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2215833562260b00e2a6ee9b2a610ced74e6be8fc9bad737a9581f4f22fa50be')
+sha256sums=('e3f21fbe91e662b7375588b2ea08f710afaafa594e9383dbe8879a0787806138')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download
-  find "${srcdir}/go-mod-cache" -type d -exec chmod 755 {} +
-  find "${srcdir}/go-mod-cache" -type f -exec chmod 644 {} +
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
 
   mkdir -p "build" "completions"
 }
@@ -34,6 +34,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
   export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
