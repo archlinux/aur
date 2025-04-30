@@ -1,6 +1,6 @@
 # Maintainer: Tom Brown <tom@CarlsonSpeed.com>
 pkgname='videokit-kde'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="KDE video utility suite that extends Dolphin context menus for transcoding, metadata, etc."
 arch=('any')
