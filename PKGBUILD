@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.13
 _skiaver=m102
 _skiahash=861e4743af
-pkgrel=5
+pkgrel=6
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -130,7 +130,8 @@ is_official_build=true skia_build_fuzzers=false \
 skia_enable_{pdf,skottie,sksl,svg}=false \
 skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
 skia_use_{expat,piex,xps,zlib,libgifcodec}=false \
-skia_enable_{particles,skparagraph,sktext}=false)"
+skia_enable_{particles,skparagraph,sktext}=false \
+cc="clang" cxx="clang++")"
 	ninja -C "$_skiadir" skia modules
 
 	echo Building Aseprite...
