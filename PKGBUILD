@@ -1,5 +1,5 @@
 pkgname=python-pythonfmu
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="packaging of Python3.x code as co-simulation FMUs"
 url="https://github.com/NTNU-IHB/PythonFMU"
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'cmake')
 source=("https://github.com/NTNU-IHB/PythonFMU/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('71141e4cd256294109874fb47715612b')
+md5sums=('0f3ef465c568e47fb8ff1138133de063')
 
 build() {
   cd "${srcdir}"/PythonFMU-$pkgver
