@@ -14,7 +14,7 @@ optdepends=('unzip: .cbz support')
 options=('!emptydirs' '!debug' '!lto')
 install=${pkgname}.install
 source_x86_64=("https://github.com/mienaiyami/yomikiru/releases/download/v${pkgver}/Yomikiru-v${pkgver}-amd64.deb")
-sha512sums_x86_64=('8575970a080672f9fb374c470b91122c931d68ebe595989017416eae854715a4')
+sha512sums_x86_64=('')
 
 package(){
 	# Extract package data
