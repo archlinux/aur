@@ -22,8 +22,15 @@ conflicts=(nodejs)
 depends=('brotli' 'openssl' 'zlib' 'icu' 'libuv' 'libnghttp2' 'c-ares') # 'http-parser' 'v8')
 makedepends=('python' 'procps-ng')
 optdepends=('npm: nodejs package manager')
-source=("https://github.com/nodejs/node/archive/v$pkgver/nodejs-$pkgver.tar.gz")
-sha512sums=('1a5f076908ff0fe4e877d4d6085ea7dde38517fe5eba4492c37de7040afd92abc3d55974f203abbb93a49194ce815e2f22c4e9503a99ef3ebcb1bf269c4f3516')
+source=("https://github.com/nodejs/node/archive/v$pkgver/nodejs-$pkgver.tar.gz"
+	fix-build-with-gcc13.patch::"https://chromium-review.googlesource.com/changes/v8%2Fv8~3934140/revisions/5/patch?download&raw")
+sha512sums=('1a5f076908ff0fe4e877d4d6085ea7dde38517fe5eba4492c37de7040afd92abc3d55974f203abbb93a49194ce815e2f22c4e9503a99ef3ebcb1bf269c4f3516'
+	    '06b8ff03f27e683a1f8d0f3f89ac2597091553c41150cff5cdf3ac022d5756f4b7acea85a9daa2ca1ca3316cb1dbcb51a8473202ffcc73b716451d9121843d6b')
+
+prepare() {
+  cd node-$pkgver/deps/v8
+  patch -p1 -i $srcdir/fix-build-with-gcc13.patch
+}
 
 build() {
   cd node-$pkgver
