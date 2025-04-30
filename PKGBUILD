@@ -33,7 +33,7 @@ build() {
 
 check() {
   cd $_name
-  lv2lint -M pack -s '_Z*' -I bin/{_name^}.lv2 "$_plugin_uri"
+  lv2lint -M pack -s '_Z*' -I bin/${_name,,[R]}.lv2 "$_plugin_uri"
 }
 
 package() {
