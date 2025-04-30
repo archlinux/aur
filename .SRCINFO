@@ -1,0 +1,31 @@
+pkgbase = interactsh
+	pkgdesc = OOB interaction gathering server and client library
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/interactsh
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = interactsh::git+https://github.com/projectdiscovery/interactsh.git#tag=v1.2.4
+	b2sums = 03c50500704938a15a13009335d9a9d46b64364e5a66e8ae87a7f28f0555f1ca4722f4d36ae04b1843cca89be7dbb1421dc7e2b317c2eaa4612358d8fda0317e
+
+pkgname = interactsh-common
+	pkgdesc = OOB interaction gathering server and client library (common)
+	arch = any
+
+pkgname = interactsh-client
+	pkgdesc = OOB interaction gathering server and client library (client)
+	depends = glibc
+	depends = interactsh-common
+	optdepends = interactsh-server: server functionality
+
+pkgname = interactsh-server
+	pkgdesc = OOB interaction gathering server and client library (server)
+	depends = glibc
+	depends = interactsh-common
+	optdepends = interactsh-client: client functionality

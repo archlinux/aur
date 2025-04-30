@@ -1,0 +1,4 @@
+[interactsh]
+source = "git"
+git = "https://github.com/projectdiscovery/interactsh.git"
+prefix = "v"
