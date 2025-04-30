@@ -1,13 +1,13 @@
 pkgbase = artisan-roaster-scope
 	pkgdesc = Artisan is a software that helps coffee roasters record, analyze, and control roast profiles.
-	pkgver = 3.1.0
+	pkgver = 3.1.2
 	pkgrel = 2
 	url = https://github.com/artisan-roaster-scope/artisan
 	arch = x86_64
 	license = GPL3
 	options = !strip
 	options = !debug
-	source = https://github.com/artisan-roaster-scope/artisan/releases/download/v3.1.0/artisan-linux-3.1.0.AppImage
-	sha256sums = 3e4aea5f609f952091d5efb86382b5da2b82ad8a8331e703d6f7fc18acf54ad4
+	source = https://github.com/artisan-roaster-scope/artisan/releases/download/v3.1.2/artisan-linux-3.1.2.AppImage
+	sha256sums = 1f0cd3c6e13b691b97ac8ec16f24858181aeef8bb0dc9c81b3dd623cd193d898
 
 pkgname = artisan-roaster-scope
