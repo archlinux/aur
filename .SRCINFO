@@ -1,0 +1,12 @@
+pkgbase = openshift-install
+	pkgdesc = Install an OpenShift 4.x cluster
+	pkgver = 4.18.10
+	pkgrel = 1
+	url = https://github.com/openshift/installer
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	source = openshift-install-4.18.10.tar.gz::https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux-4.18.10.tar.gz
+	sha256sums = 3d5dd0466654ed36da37abd3b35586d6199e23660b050fbcd0241f1d7afd20ae
+
+pkgname = openshift-install
