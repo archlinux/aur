@@ -3,7 +3,7 @@
 
 pkgname=bkmr
 pkgver=4.20.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Ultrafast Bookmark Manager and Launcher'
 url='https://github.com/sysid/bkmr'
 license=('BSD-3-Clause')
@@ -30,7 +30,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  CARGO_TARGET_DIR='target' \
+  CARGO_TARGET_DIR='target' RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix $srcdir=src" \
     cargo build --manifest-path bkmr/Cargo.toml --frozen --release
 }
 
