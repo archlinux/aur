@@ -1,0 +1,22 @@
+pkgbase = uncover-bin
+	pkgdesc = Quickly discover exposed hosts on the internet using multiple search engines
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/uncover
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = uncover
+	conflicts = uncover
+	source_aarch64 = uncover-1.0.10-aarch64.zip::https://github.com/projectdiscovery/uncover/releases/download/v1.0.10/uncover_1.0.10_linux_arm64.zip
+	sha256sums_aarch64 = cadce302bf6f913a9416fcb5bc14ff8f8c7aaaecac2f2ff8bdd62e0ed5d23df0
+	source_armv7h = uncover-1.0.10-armv7h.zip::https://github.com/projectdiscovery/uncover/releases/download/v1.0.10/uncover_1.0.10_linux_arm.zip
+	sha256sums_armv7h = c434284737b8066133a49a111f477b99be4e4881bfb0c1f7b19055c979f65ef8
+	source_i686 = uncover-1.0.10-i686.zip::https://github.com/projectdiscovery/uncover/releases/download/v1.0.10/uncover_1.0.10_linux_386.zip
+	sha256sums_i686 = b7db168b960f48af8abf3df76729e7f1074f15ac6f659e2ed83552a25faceca4
+	source_x86_64 = uncover-1.0.10-x86_64.zip::https://github.com/projectdiscovery/uncover/releases/download/v1.0.10/uncover_1.0.10_linux_amd64.zip
+	sha256sums_x86_64 = 88d88cdd16a515fb0ef0fd0ed3d12217faeaf796f7da11a44fe77cf6dacaa9fd
+
+pkgname = uncover-bin

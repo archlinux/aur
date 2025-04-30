@@ -1,0 +1,5 @@
+[uncover-bin]
+source = "github"
+github = "projectdiscovery/uncover"
+use_latest_release = true
+prefix = "v"
