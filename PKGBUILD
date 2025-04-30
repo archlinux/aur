@@ -6,12 +6,12 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 # Contributor: Michele <king_duckz@gmx.com>
 
-declare -r _version_frequi="2.0.0"
+declare -r _version_frequi="2.0.1"
 readonly _pkgname="freqtrade"
 
 pkgname="python-freqtrade"
 pkgver="2025.3"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Free, open source crypto trading bot."
 arch=("any")
 url="https://github.com/freqtrade/${_pkgname}"
@@ -24,7 +24,7 @@ conflicts=("python-freqtrade-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "frequi-v${_version_frequi}.zip::https://github.com/freqtrade/frequi/releases/download/${_version_frequi}/freqUI.zip")
 sha512sums=("7882ddde47fbc8b0a96fc003889a13891f6e904ab872083a90fdd1e1dc7405936938f3339c7c798d7eb37b276597d4c861d27e579d6545353335e3f7747948b8"
-    "4c4106d92b5e824dc6a713a887e1142947cfeb501e23b7472a0d79f5661330543955e1cc53bc90250ee8450f80b43cbd73787298f6447b57221f1ebf1a72252d")
+    "39e6aec6d3e16fe314a303dc33ab2dd972944cdb00af787eace9a2f0a185b2a255a6cb9de8c6d7da7a7e8dd09aff8f3b9846a837a6d1636387e18ee4ef43bfa6")
 
 build()
 {
