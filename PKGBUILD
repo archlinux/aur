@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rwalk
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A blazingly fast web directory scanner"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('affd2e1a080fff5d4154a0e9982aec2969b7d101ba7998b8f61344899f74624b')
+sha256sums=('ada53621edfa093ce8f80048ae2f2a574e6410e5b75e92d3d3d1f13af3e3af25')
 options=('!lto')
 
 prepare() {
