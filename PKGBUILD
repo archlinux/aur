@@ -7,7 +7,7 @@
 
 _pkgname=gtest
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Google Test - C++ testing utility based on the xUnit framework (like JUnit) (mingw-w64)'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('mingw-w64-cmake')
 #checkdepends=('mingw-w64-wine' 'python')
 options=(!buildflags staticlibs !strip)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/googletest/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('bec8dad2a5abbea8e9e5f0ceedd8c9dbdb8939e9f74785476b0948f21f5db5901018157e78387e106c6717326558d6642fc0e39379c62af57bf1205a9df8a18b')
+sha512sums=('0f57e9ef06925e5b7722df1eb92ef5850e8dce79220ea16a8aaff586a71c0b01460ef1713649ee24ffedb2e6ad5a51e9198c5a5ae1b2789e43feb1f494e7d45c')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE='Release'
