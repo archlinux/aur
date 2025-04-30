@@ -7,7 +7,7 @@ pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('x86_64')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
-makedepends=('git' 'cargo' 'nasm' 'clang')
+makedepends=('git' 'cargo' 'nasm' 'clang' 'libgit2')
 depends=('ffmpeg' 'aom' 'vapoursynth')
 optdepends=('svt-av1: SVT-AV1 encoder support'
   'rav1e: rav1e encoder support'

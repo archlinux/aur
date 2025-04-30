@@ -9,6 +9,7 @@ pkgbase = av1an-git
 	makedepends = cargo
 	makedepends = nasm
 	makedepends = clang
+	makedepends = libgit2
 	depends = ffmpeg
 	depends = aom
 	depends = vapoursynth
