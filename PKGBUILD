@@ -2,7 +2,7 @@
 # Maintainer: philanecros <philanecros at gmail dot com>
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=fxload
-pkgver=1.0.26
+pkgver=1.0.28
 pkgrel=1
 pkgdesc='fxload firmware loader. Used with udev or devfs/hotplug.'
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('libusb')
 makedepends=(autoconf automake pkgconf)
 source=("https://github.com/libusb/libusb/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a09bff99c74e03e582aa30759cada218ea8fa03580517e52d463c59c0b25e240')
+sha256sums=('378b3709a405065f8f9fb9f35e82d666defde4d342c2a1b181a9ac134d23c6fe')
 
 build() {
   cd "libusb-$pkgver"
