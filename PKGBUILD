@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
-pkgver=131.6650.1
+pkgver=135.6850.0
 pkgrel=1
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium.(Prebuilt version)"
 arch=(
@@ -28,18 +28,18 @@ source=(
     "LICENSE-${pkgver}.txt::${url}/license.txt"
 )
 sha256sums=('a29953afc386e2a9a95906cfa0de4bf58a332260d7199a5f99d3e15db9381022')
-sha256sums_aarch64=('b5333d28a6c9417da26ef00923e32e1272de10e5ff7da406e5f7fc59a756f171')
-sha256sums_x86_64=('7f6ebea18f8e65c07357081d94bfcd4da2aa6ed1e1a414ad95ad1ad877132e6e')
+sha256sums_aarch64=('0347ddd0e6fdbbcc106c2b75d48150c2020778972f5d52f4dc5a9bea0d1fc37a')
+sha256sums_x86_64=('3a0181754978f980bbaabdcba87c3c6c2988b40b9c0974b13a78ed488abae59d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/usr\/share\/${_pkgname}\/chrome-wrapper/${pkgname%-bin}/g
         s/${_pkgname}_product_logo/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${srcdir}/usr/share/applications/${_pkgname}_backup.desktop"
-    sed -e "
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${srcdir}/usr/share/applications/${_pkgname}_backup.desktop"
+    sed -i -e "
         s/\/usr\/share\/${_pkgname}\/IronConfigBackup/${pkgname%-bin}-configbackup/g
         s/${_pkgname}_product_logo/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}_backup.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}_backup.desktop"
     chmod 755 "${srcdir}/usr/share/${_pkgname}/extensions" \
         "${srcdir}/usr/share/${_pkgname}/chrome-wrapper" \
         "${srcdir}/usr/share/${_pkgname}/IronConfigBackup"
