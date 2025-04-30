@@ -1,14 +1,14 @@
 # Contributor: bender02 at archlinux dot us
 pkgname=gkrellm-wifi
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A GKrellM2 plug-in for monitoring the link quality of your wireless LAN cards"
-arch=(i686 x86_64)
-license=('GPL2')
+arch=('x86_64')
+license=('GPL-2.0-only')
 depends=('gkrellm')
 url="https://github.com/tecknicaltom/gkrellm-wifi"
-source=(https://github.com/downloads/tecknicaltom/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('3b9a71c9177d8e058f5707baeb0da761')
+source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('6f05bcc0d73752a9977d135c0f441cc6e5dc1a40fef242d874f3e66b66017e6c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
