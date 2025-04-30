@@ -1,11 +1,15 @@
 # Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Creator: Michal Krenek (Mikos) <m.krenek@gmail.com>
-# Fork?: Qtra Gabriex <qtra@gabriex.xyz>
+# Fork: Qtra Gabriex <qtra@gabriex.xyz>
 
 # Patch credits:
 # https://github.com/ianmorti
 # https://github.com/arobertson404
 # (from issues page https://github.com/xmikos/qspectrumanalyzer/issues)
+
+# Patch explanatory:
+# 1. TypeErrors: Some functions are expecting integer arguments but receiving float. Use int().
+# 2. QtGui incident: Import QtGui and replace deprecated functions.
 
 pkgname=qspectrumanalyzerg-git
 _pkgname=qspectrumanalyzer
