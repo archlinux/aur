@@ -3,7 +3,7 @@
 
 pkgbase=rbutil-git
 pkgname=('rbutil-git')
-pkgver=v4.0.final.120.g6a8f1a7e84
+pkgver=4.0.final.120.g6a8f1a7e84
 pkgrel=1
 arch=('x86_64')
 url='https://www.rockbox.org/twiki/bin/view/Main/RockboxUtility'
