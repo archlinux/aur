@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=panfu-desktop-bin
-_pkgname="Panfu Desktop"
-pkgver=1.4.9
+_pkgname='Panfu Desktop'
+pkgver=1.5.0
 _electronversion=11
 pkgrel=1
 pkgdesc="The desktop application for Panfu with integrated Flash Player.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_ghurl}/releases/download/v$
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('e083aaccba0d6eb7cb8a68345e52193d5f3c79561a7601c7cba2a7fa76054507'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_i686=('20bbf3e8bfec83251fe3263a3d76c78b5dfe55e2cd50ac534395d884529c991f')
-sha256sums_x86_64=('53f535090c924847e17b71035104432d0df76999bf3ed536cdc743c72c0ca573')
+sha256sums_i686=('9aafa640634cc12586c4e489635121706c522c4973398f9e9fb73f356dbcff7e')
+sha256sums_x86_64=('084007087a21de616ba3a56f3e200228cfdf9fd7dc2cc4731c1b1c78d99f07e8')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -36,7 +36,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
