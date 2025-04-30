@@ -1,0 +1,15 @@
+pkgbase = parsero-go
+	pkgdesc = A tool for analyzing robots.txt files written in Go
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/zvdy/parsero-go
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = parsero-go-2.0.0.tar.gz::https://github.com/zvdy/parsero-go/archive/v2.0.0.tar.gz
+	sha256sums = f5002ab43c5e4f8adfdbe96055b90c77a3e0ab07f4614573afc096a879d080aa
+
+pkgname = parsero-go
