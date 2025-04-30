@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-middleclickclose
 	license = GPL2
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-middleclickclose-git
-	source = https://github.com/p91paul/middleclickclose/archive/v32.tar.gz
+	source = https://github.com/p91paul/middleclickclose/archive/v33.tar.gz
 	sha256sums = 9d7e377dd1927c7f7328f15160d17459924ad663fc8f1a37ffd1ada110263144
 
 pkgname = gnome-shell-extension-middleclickclose
