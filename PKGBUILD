@@ -1,8 +1,8 @@
-# Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
+# Contributor: Samuel Bernard <samuel.bernard@gmail.com>
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
 pkgver=14.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
 url="https://www.wolfram.com/engine/"
@@ -16,12 +16,12 @@ sha256sums=("48be3b9ad95a535ad8f95bce3905f2c086bc04142779828ee6c3da1347ddadcf")
 # TODO: list based on namcap, all in opt but some are probably mandatory
 depends=( )
 optdepends=(
-  arb
+  flint
   assimp
   bzip2
   clucene
   curl
-  espeak
+  espeak-ng
   ffmpeg
   flite
   gmime3
@@ -34,7 +34,6 @@ optdepends=(
   libnet
   libxinerama
   libxtst
-  llvm11-libs
   minizip
   mongo-c-driver
   mpfr
@@ -46,7 +45,6 @@ optdepends=(
   primesieve
   protobuf
   qhull
-  qt5-quick3d
   qt6-quick3d
   r
   ruby
@@ -58,8 +56,8 @@ options=("!strip")
 
 prepare() {
   if [ $(echo "${srcdir}" | wc -w) -ne 1 ]; then
-    msg2 "ERROR: The WolframEngine installer doesn't support directory names with spaces."
-    msg2 "Current build directory: ${srcdir}"
+    echo "ERROR: The WolframEngine installer doesn't support directory names with spaces."
+    echo "Current build directory: ${srcdir}"
     exit 1
   fi
 
@@ -67,15 +65,15 @@ prepare() {
 }
 
 package() {
-    msg2 "Running WolframEngine installer"
+    echo "Running WolframEngine installer"
     # https://support.wolfram.com/46072
     sh ${srcdir}//WolframEngine_${pkgver}_LINUX.sh -- \
       -execdir=${pkgdir}/usr/bin \
       -targetdir=${pkgdir}/opt/WolframEngine \
       -auto
-    msg2 "Errors related to 'xdg-icon-resource' and 'xdg-desktop-menu' are to be expected during WolframEngine's installation."
+    echo "Errors related to 'xdg-icon-resource' and 'xdg-desktop-menu' are to be expected during WolframEngine's installation."
 #
-    msg2 "Fixing symbolic links"
+    echo "Fixing symbolic links"
 #    cd ${pkgdir}/opt/WolframEngine/Executables
 #    rm wolframscript
 #    ln -s /opt/WolframEngine/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
@@ -91,16 +89,16 @@ package() {
     ln -s /opt/WolframEngine/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver
     ln -s /opt/WolframEngine/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
 
-    msg2 "Setting up WolframScript"
-    mkdir -p ${srcdir}/WolframScript
-    mkdir -p ${pkgdir}/usr/share/
+    echo "Setting up WolframScript"
+    install -vd ${srcdir}/WolframScript
+    install -vd ${pkgdir}/usr/share/
     cd ${srcdir}/WolframScript
     bsdtar -xf ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolframscript_*+*_amd64.deb data.tar.xz
     tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
 
 
-    msg2 "Copying menu and mimetype information"
-    mkdir -p \
+    echo "Copying menu and mimetype information"
+    install -vd \
       ${pkgdir}/usr/share/applications \
       ${pkgdir}/usr/share/desktop-directories \
       ${pkgdir}/usr/share/mime/packages
@@ -108,30 +106,30 @@ package() {
     cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
 
-    msg2 "Copying icons"
-    mkdir -p ${pkgdir}/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
+    echo "Copying icons"
+    install -vd ${pkgdir}/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
     cd ${pkgdir}/opt/WolframEngine/SystemFiles/FrontEnd/SystemResources/X
     for i in 32 64 128; do
       cp App-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-mathematica.png
       for mimetype in $(ls vnd.* | cut -d '-' -f1 | uniq); do
-        cp ${mimetype}-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png
+        install -vDm644 ${mimetype}-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png
       done
     done
 
-    msg2 "Copying man pages"
-    mkdir -p ${pkgdir}/usr/share/man/man1
+    echo "Copying man pages"
+    install -vd ${pkgdir}/usr/share/man/man1
     cd ${pkgdir}/opt/WolframEngine/SystemFiles/SystemDocumentation/Unix
     cp *.1 ${pkgdir}/usr/share/man/man1
 
-    msg2 "Copying license"
-    mkdir -p ${pkgdir}/usr/share/licenses/WolframEngine/
-    cp ${pkgdir}/opt/WolframEngine/LICENSE.txt \
+    echo "Copying license"
+    install -vd ${pkgdir}/usr/share/licenses/WolframEngine/
+    install -vDm644 ${pkgdir}/opt/WolframEngine/LICENSE.txt \
       ${pkgdir}/usr/share/licenses/WolframEngine/license.txt
 
-    msg2 "Fixing file permissions"
+    echo "Fixing file permissions"
     chmod go-w -R ${pkgdir}/*
 
-    msg2 "Clean up"
+    echo "Clean up"
     rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolframscript*
     rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolfram-mathematica${pkgver%%\.*}.desktop
     rm -f ${pkgdir}/opt/WolframEngine/InstallErrors
