@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=haguichi
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux"
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(
   vala
 )
 source=("http://launchpad.net/$pkgname/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.xz")
-sha256sums=('e2f449d32cbe482809ad2385e32d643381328b4c61fb611bdae110dbc39c81ce')
+sha256sums=('4ba6882f9ac2aed35050298dd46a83fcceb5af41752ac0ebf7cc08580b5a98f9')
 
 build() {
   arch-meson $pkgname-$pkgver build
