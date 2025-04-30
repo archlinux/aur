@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=dartR
-_pkgver=2.9.7
+_pkgver=2.9.9.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,7 +31,8 @@ depends=(
   r-stampp
   r-stringr
   r-tidyr
-  r-vegan
+  r-gsubfn
+  r-purrr
 )
 optdepends=(
   r-devtools
@@ -62,7 +63,6 @@ optdepends=(
   r-plotly
   r-poppr
   r-proxy
-  r-purrr
   r-qvalue
   r-rcolorbrewer
   r-rcpp
@@ -79,15 +79,15 @@ optdepends=(
   r-snpstats
   r-stringi
   r-terra
-  r-testthat
   r-tibble
   r-vcfr
   r-viridis
   r-zoo
+  r-vegan
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f76ad45d41f4c304d19d3f7258362549')
-b2sums=('6080154deb2c5a75e43fec5ed5c9c03f0f63bd62439232dd7d3c671faae61ccef4d94edac4c49903746618c00d368bd3525f2c9381bfbed5e657d226ffcaeb82')
+md5sums=('53430d167c84bea168569b2ce1130993')
+b2sums=('447b70e36467b27112649c30d014fc077ce8c9123145c9cd8342fcf4dbc4a30f850634b24cfd461d17a0a5518f4ac5f03303a6a3504bac6a868719a0e1662337')
 
 build() {
   mkdir build
