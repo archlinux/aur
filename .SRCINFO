@@ -1,6 +1,6 @@
 pkgbase = ollama-lab-bin
 	pkgdesc = Yet another (unofficial) Ollama GUI (binary)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/ollama-lab/ollama-lab
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ollama-lab-bin
 	optdepends = ollama
 	provides = ollama-lab
 	conflicts = ollama-lab
-	source = https://github.com/ollama-lab/ollama-lab/releases/download/v0.4.0/ollama-lab_0.4.0_amd64.deb
-	sha256sums = f6ef0f1f78ed233254670a5aaf97e46d2193d9cea831ac0d6feb7ceb37df7de8
+	source = https://github.com/ollama-lab/ollama-lab/releases/download/v0.4.1/ollama-lab_0.4.1_amd64.deb
+	sha256sums = 9600cad1013d412e477139b85394e7a5dc41ce0d609d419d79d6527c8d521a2e
 
 pkgname = ollama-lab-bin
