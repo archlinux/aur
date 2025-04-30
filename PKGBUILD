@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/e-tho/${pkgname%-git}"
 license=('GPL-3.0-or-later')
 depends=('iwd' 'dbus')
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'cargo')
 provides=(${pkgname%-git}=${pkgver})
 conflicts=(${pkgname%-git}-bin ${pkgname%-git})
 options=('!debug' '!strip')
