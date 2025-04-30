@@ -2,7 +2,7 @@
 # Contributor: slact
 pkgname=(
   'acpidump-all'
-#  'amdfwtool'  # TODO
+  'amdfwtool'
   'autoport'
   'cbfstool'
   'cbmem'
@@ -20,7 +20,7 @@ pkgname=(
 )
 pkgbase=coreboot-utils
 pkgver=24.05
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools and utilities to work with coreboot firmware"
 url="https://www.coreboot.org"
 license=('GPL-2.0-only')
@@ -59,10 +59,10 @@ prepare() {
 build() {
   cd "coreboot-$pkgver"
 
-#  echo ""
-#  echo "Building amdfwtool..."
-#  echo ""
-#  make -C util/amdfwtool
+  echo ""
+  echo "Building amdfwtool..."
+  echo ""
+  make -C util/amdfwtool
 
   echo ""
   echo "Building autoport..."

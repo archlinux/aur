@@ -1,7 +1,7 @@
 pkgbase = coreboot-utils
 	pkgdesc = Tools and utilities to work with coreboot firmware
 	pkgver = 24.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.coreboot.org
 	arch = x86_64
 	license = GPL-2.0-only
@@ -21,6 +21,10 @@ pkgbase = coreboot-utils
 pkgname = acpidump-all
 	pkgdesc = Walk through all ACPI tables with their addresses
 	depends = bash
+
+pkgname = amdfwtool
+	pkgdesc = Create AMD firmware combination
+	depends = glibc
 
 pkgname = autoport
 	pkgdesc = Automated porting coreboot to Sandy Bridge/Ivy Bridge platforms
