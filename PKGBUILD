@@ -13,7 +13,7 @@ pkgver=2503
 _build1=8.15.0
 _build2=14256322247
 _cart="CART26FQ1_LIN_${pkgver}_TARBALL"
-pkgrel=1
+pkgrel=2
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
 makedepends=('imagemagick')
@@ -117,6 +117,10 @@ package_omnissa-horizon-client() {
 	# link for optional dependency opensc
 	install -d "${pkgdir}/usr/lib/omnissa/horizon/pkcs11/"
 	ln -s '../../../opensc-pkcs11.so' "${pkgdir}/usr/lib/omnissa/horizon/pkcs11/libopenscpkcs11.so"
+
+	# fix libxml2, which bumped the soname (libxml2.so.2 -> libxml2.so.16)
+	# This is a bit hacky, but looks like it works...
+	ln -s '../libxml2.so.16' "${pkgdir}/usr/lib/omnissa/libxml2.so.2"
 
 	# install high(er) quality icons
 	for SIZE in 16 24 32 48 64 96 128; do
