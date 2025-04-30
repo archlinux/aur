@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xuanxuan-bin
-pkgver=9.1.2
+pkgver=9.3
 _electronversion=31
 pkgrel=1
 pkgdesc="A self-hosted enterprise IM solution.(Prebuilt version.Use system-wide electron)一款功能齐全的企业聊天软件"
@@ -19,21 +19,21 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://xuanim.com/dl/${pkgname%-bin}/${pkgver}/${pkgname%-bin}.${pkgver}.linux.amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('00b11d866205afeae5d1a9467c2602e5c8b5939cc3ed354cb04f8bb3d022a023'
+sha256sums=('e4d0656924999ee6002eb3c72c7da8fdc09ab75748166c10e860f3a6cc67ac6c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/opt\/${pkgname%-bin}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/Chat/Chat;Network/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
