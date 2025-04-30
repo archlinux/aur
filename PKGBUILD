@@ -4,12 +4,11 @@
 
 pkgname='dsr'
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Video compression tool"
 arch=('x86_64')
 url=https://git.mylloon.fr/Anri/dsr
 license=('AGPL3')
-makedepends=('unzip')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname.zip::https://git.mylloon.fr/Anri/dsr/releases/download/$pkgver/dsr-linux-x64-$pkgver.zip")
@@ -23,7 +22,7 @@ package() {
 
   # Symlink the binary to /usr/bin
   install -d "$pkgdir/usr/bin"
-  ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
