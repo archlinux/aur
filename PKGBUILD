@@ -2,9 +2,9 @@
 _appname=hugin
 pkgname="${_appname}-messenger"
 _pkgname='Hugin Messenger'
-pkgver=0.9.6
+pkgver=0.9.7
 _electronversion=30
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.(Use system-wide electron)"
 arch=('any')
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b248cb28d6bb1248f3e8b373b3cff2aae24e3d0cb1634d66e8778897527c1950'
+sha256sums=('cedd60b0224a45d500ff685f9254eed5a1b3df762d5d99966835c3f48b37682a'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
