@@ -43,6 +43,12 @@ prepare() {
 }
 
 build() {
+  # TODO remove with 6.0.2 release
+  # Set C language version to gnu17 to avoid compilation errors with gcc 15 gnu23
+  # https://github.com/strongswan/strongswan/commit/38d89f57f0771d3cc7b2ab70849584685ada2bc0
+  # https://github.com/strongswan/strongswan/commit/d5d2568ff0e88d364dadf50b67bf17050763cf98
+  # https://github.com/strongswan/strongswan/commit/11978ddd39e800b5f35f721d726e8a4cb7e4ec0f
+  CFLAGS+=' -std=gnu17'
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
     --sbindir=/usr/bin \
