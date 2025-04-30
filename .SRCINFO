@@ -1,7 +1,7 @@
 pkgbase = v4l2ucp-qt5
 	pkgdesc = A universal control panel for Video for Linux Two (V4L2) devices (QT5-Fork)
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/smunaut/v4l2ucp-qt5
 	arch = x86_64
 	license = GPL2

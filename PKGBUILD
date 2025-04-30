@@ -2,7 +2,7 @@
 
 pkgname=v4l2ucp-qt5
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A universal control panel for Video for Linux Two (V4L2) devices (QT5-Fork)"
 arch=('x86_64')
 url="https://github.com/smunaut/v4l2ucp-qt5"
@@ -16,7 +16,7 @@ sha512sums=('5ad2dc98f89d27448a2b8046970ae52d16fb386719353fbaad48304fe87b1fd486e
 
 prepare() {
   cd "${pkgname}-2d2f90cb48207fdad6acf24e010cf0e270affbec"
-
+  sed -i 's/cmake_minimum_required(VERSION 2.6)/cmake_minimum_required(VERSION 3.15)/' ./CMakeLists.txt
   mkdir -vp build
 }
 
