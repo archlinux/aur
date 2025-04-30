@@ -2,13 +2,12 @@
 _appname=runjs
 pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
-pkgver=3.1.0
+pkgver=3.1.1
 _electronversion=32
-pkgrel=2
+pkgrel=1
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
 arch=(
     'aarch64'
-#    'armv7h'
     'x86_64'
 )
 url="https://runjs.app"
@@ -37,13 +36,12 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_arm64.deb")
-#source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('478022e53fc3cfbcf84cbbe710de45378cb0174b91b82a77b94801035c4669f0')
-sha256sums_x86_64=('fd69cda6e2e76e289d606cb824e70250e78a39c996b9d8cc60839614f3bbffff')
+sha256sums_aarch64=('726a5d3b17229ee3ef945531057eb1a4526d8e50d212612e391d52bdcf639c7e')
+sha256sums_x86_64=('02f9ed278e4a17a0e924075c01a8e54cf1e91f8d77ec21621005d882e5536e2b')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -52,12 +50,19 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked" -not -path "${srcdir}/app.asar.unpacked/node_modules" \
         -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@esbuild/linux-x64"
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/@esbuild/linux-arm64"
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
