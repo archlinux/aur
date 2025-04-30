@@ -1,6 +1,6 @@
 pkgbase = nerimity-desktop
 	pkgdesc = A modern and sleek chat app.(Use system-wide electron)
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://nerimity.com
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = nerimity-desktop
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = git
 	depends = electron33
 	depends = python
 	depends = java-runtime
 	conflicts = nerimity
-	source = nerimity-desktop-1.5.2.tar.gz::https://github.com/Nerimity/nerimity-desktop/archive/refs/tags/v1.5.2.tar.gz
+	source = nerimity-desktop-1.6.0::git+https://github.com/Nerimity/nerimity-desktop#tag=v1.6.0
 	source = nerimity-desktop.sh
-	sha256sums = 4b2cbfbc6a152c8ae41f7cfa1c90ed95dc84c844cca6c5ac3ad09a5b266d7bd4
+	sha256sums = f348a7854f20ab5328a3012f9f6e3301aba79a5d5b22f8df146d203d501fc282
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = nerimity-desktop
