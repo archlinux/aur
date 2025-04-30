@@ -1,6 +1,6 @@
 pkgbase = mitmproxy-git
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 11.1.2.r3.g1093323e0
+	pkgver = 12.0.0.r1.g59eae831e
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
@@ -38,6 +38,7 @@ pkgbase = mitmproxy-git
 	depends = python-ruamel-yaml
 	depends = python-sortedcontainers
 	depends = python-tornado
+	depends = python-typing_extensions
 	depends = python-urwid
 	depends = python-wsproto
 	depends = python-zstandard

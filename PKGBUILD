@@ -6,7 +6,7 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy-git
-pkgver=11.1.2.r3.g1093323e0
+pkgver=12.0.0.r1.g59eae831e
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
@@ -37,6 +37,7 @@ depends=(
   'python-ruamel-yaml'
   'python-sortedcontainers'
   'python-tornado'
+  'python-typing_extensions'
   'python-urwid'
   'python-wsproto'
   'python-zstandard'
@@ -69,7 +70,7 @@ check() {
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=test_dir dist/*.whl
 
-  PATH="test_dir/usr/bin:$PATH" PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -vv
+  PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -v
 }
 
 package() {
