@@ -18,6 +18,8 @@ depends=(
     'onetbb'
     'lcms2'
     'blend2d'
+    'qt6-tools'
+    'cmake'
 )
 makedepends=(
     'git'
