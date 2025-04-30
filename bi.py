@@ -807,6 +807,10 @@ def get_str_or_hexs(line,idx):
 def printvalue(s):
     global scriptingflag,verbose
     v,idx=expression(s,0)
+    if v==UNKNOWN:
+        stdmm("Specify a value.")
+        return
+        
     s=' . '
     if v<0x20:
         s='^'+chr(v+ord('@'))+' '
@@ -834,7 +838,7 @@ def printvalue(s):
         print(msg,end='',flush=True)
         getch()
         esclocate(0,BOTTOMLN+1)
-        print(" "*79,end='',flush=True)
+        print(" "*80,end='',flush=True)
                 
 def commandline_(line):
     global lastchange,yank,filename,stack,verbose,scriptingflag
