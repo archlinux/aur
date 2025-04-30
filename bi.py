@@ -807,7 +807,7 @@ def get_str_or_hexs(line,idx):
 def printvalue(s):
     global scriptingflag,verbose
     v,idx=expression(s,0)
-    if v==UNKNOWN:
+    if idx==0:
         stdmm("Specify a value.")
         return
         
