@@ -1,7 +1,7 @@
 pkgbase = hyperamp-bin
-	pkgdesc = 🎛 Humble music player.Prebuilt version.Use system-wide electron.
+	pkgdesc = 🎛 Humble music player.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twitter.com/hyperampapp
 	arch = aarch64
 	arch = armv7h
