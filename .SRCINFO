@@ -1,6 +1,6 @@
 pkgbase = bkmr
 	pkgdesc = Ultrafast Bookmark Manager and Launcher
-	pkgver = 4.19.0
+	pkgver = 4.20.4
 	pkgrel = 1
 	url = https://github.com/sysid/bkmr
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = bkmr
 	depends = openssl
 	depends = python
 	options = !lto
-	source = bkmr-4.19.0.tar.gz::https://github.com/sysid/bkmr/archive/refs/tags/v4.19.0.tar.gz
-	sha256sums = 4712e1bf4f673bdcbbc4938c3a4a4a62a82730c15eca3db4ce9cf38170274691
+	source = bkmr-4.20.4.tar.gz::https://github.com/sysid/bkmr/archive/v4.20.4.tar.gz
+	sha256sums = 8beb4da02309cb781e0c9f1dd2a1df38b2f89abfdae81ba27fdbfa54f092b4a8
 
 pkgname = bkmr

@@ -1,9 +1,8 @@
-# Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
+# Contributor: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=bkmr
-pkgver=4.19.0
-_pkgrev=$pkgver
-_pkgref="refs/tags/v$_pkgrev"
+pkgver=4.20.4
 pkgrel=1
 pkgdesc='Ultrafast Bookmark Manager and Launcher'
 url='https://github.com/sysid/bkmr'
@@ -11,8 +10,8 @@ license=('BSD-3-Clause')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'openssl' 'python')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgref.tar.gz")
-sha256sums=('4712e1bf4f673bdcbbc4938c3a4a4a62a82730c15eca3db4ce9cf38170274691')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('8beb4da02309cb781e0c9f1dd2a1df38b2f89abfdae81ba27fdbfa54f092b4a8')
 options=('!lto')
 
 case $CARCH in
@@ -23,23 +22,24 @@ case $CARCH in
 esac
 
 prepare() {
-  cd "$pkgname-$_pkgrev"
+  cd "$pkgname-$pkgver"
 
   cargo fetch --manifest-path bkmr/Cargo.toml --target $_target
 }
 
 build() {
-  cd "$pkgname-$_pkgrev"
+  cd "$pkgname-$pkgver"
 
   CARGO_TARGET_DIR='target' \
     cargo build --manifest-path bkmr/Cargo.toml --frozen --release
 }
 
 package() {
-  cd "$pkgname-$_pkgrev"
+  cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" \
     target/release/bkmr
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
