@@ -7,7 +7,7 @@ url="https://github.com/fygar256/bi"
 license=('MIT')
 depends=('python')
 source=("https://github.com/fygar256/bi/archive/refs/heads/v$pkgver.zip")
-sha256sums=('SKIP')
+sha256sums=('7d60a178f88a3f8320b8b619c8f38097a0f682c9b1a32873b74a3b5391558b93')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
