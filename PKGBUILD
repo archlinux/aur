@@ -3,18 +3,18 @@
 _Name="FTXUI"
 pkgbase="${_Name,,}"
 pkgname=("${pkgbase}"{,'-docs','-examples'})
-pkgver=6.0.2
+pkgver=6.1.1
 pkgrel=1
 pkgdesc="A C++ Functional Terminal User Interface"
 arch=('i686' 'x86_64')
 url="https://github.com/ArthurSonzogni/${_Name}"
 license=('MIT')
 makedepends=('benchmark>=1.8.2' 'cmake>=3.12' 'doxygen' 'graphviz' 'gtest>=1.10')
-_pkgsrc="${_Name}-${pkgver}"
+_pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}_build_docs_target_all.patch"
         "${pkgbase}_make_examples_installable.patch")
-b2sums=('9ee2280a9fd48a8949ab48ace4a7d68968a61fa78c1965b722823206a522d2685c84daee37a05ff3315a710442078adba0243f7b827817ef5d08d8881f742bee'
+b2sums=('6792efd08256e08991a4dc765f333580454cdd2f9f8a57a31ba07bc5d6af9aefd475c342193eda5c1fa5a9eb0e1c84aaa606896f08b7044f47d71da0aa6c2443'
         '6e06886a3d23764715d3c6e63d94a32c4474dc83387954c622380d268e4a63416b78258ad94da69863160bb0fc0ab9822848177f5a1df0239436ea142b76bbf0'
         'c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596')
 
@@ -30,13 +30,13 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DFTXUI_ENABLE_INSTALL:BOOL=ON
-    -DFTXUI_BUILD_EXAMPLES:BOOL=ON
-    -DFTXUI_BUILD_TESTS:BOOL=ON
-    -DFTXUI_BUILD_DOCS:BOOL=ON
-    -Wno-dev
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D FTXUI_ENABLE_INSTALL:BOOL=ON
+    -D FTXUI_BUILD_EXAMPLES:BOOL=ON
+    -D FTXUI_BUILD_TESTS:BOOL=ON
+    -D FTXUI_BUILD_DOCS:BOOL=ON
   )
   
   cd "${srcdir}"
@@ -49,7 +49,7 @@ check() {
   local ctest_flags=(
     --test-dir "${_pkgsrc}/build"
     --output-on-failure
-    --parallel $(nproc)
+    --parallel "$(nproc)"
     --exclude-regex "${excluded_tests}"
   )
 

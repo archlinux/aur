@@ -3,5 +3,4 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!ftxui_build_docs_target_all.patch
-!ftxui_make_examples_installable.patch
+!*.patch
