@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Bizstaff               # Ilovaning menyudagi nomi
+Comment=Boost your business # Qisqa tavsif
+Exec=/opt/bizstaff/bizstaff.AppImage %U # PKGBUILD'da o'rnatilgan AppImage yo'li!
+Icon=icon                   # PKGBUILD'da o'rnatilgan ikonka nomi (kengaytmasiz)
+Terminal=false              # Konsolda ishga tushadimi? (Electron uchun odatda false)
+Type=Application
+Categories=Utility;Development; # Ilova kategoriyalari (mosini tanlang)
