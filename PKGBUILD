@@ -9,7 +9,8 @@ url='https://github.com/cordx56/rustowl'
 license=('MPL-2.0')
 makedepends=('cargo-nightly')
 depends=()
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+conflicts=('rustowl-git')
+arch=('any')
 source=("https://github.com/cordx56/rustowl/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('156f50d821ff4a1a3d02083fc558aadbdea2fbe21671426156389b5ccddacba7')
 
