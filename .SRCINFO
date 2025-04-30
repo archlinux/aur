@@ -1,0 +1,17 @@
+pkgbase = pliner
+	pkgdesc = Pliner — task manager with life-process philosophy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nicourrrn/pliner
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = fvm
+	makedepends = cmake
+	makedepends = ninja
+	depends = fvm
+	depends = glibc
+	source = git+https://github.com/nicourrrn/pliner.git
+	md5sums = SKIP
+
+pkgname = pliner
