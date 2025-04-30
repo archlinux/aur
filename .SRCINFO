@@ -6,7 +6,7 @@ pkgbase = bi
 	arch = any
 	license = MIT
 	depends = python
-	source = https://aur.archlinux.org/bi.git/v3.4.2.0.zip
+	source = https://aur.archlinux.org/bi.git/bi-3.4.2.0.zip
     sha256sums=7d60a178f88a3f8320b8b619c8f38097a0f682c9b1a32873b74a3b5391558b93
 
 
