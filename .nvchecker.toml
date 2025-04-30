@@ -1,0 +1,5 @@
+[alterx-bin]
+source = "github"
+github = "projectdiscovery/alterx"
+use_latest_release = true
+prefix = "v"

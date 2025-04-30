@@ -1,0 +1,22 @@
+pkgbase = alterx-bin
+	pkgdesc = Fast and customizable subdomain wordlist generator using DSL
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/alterx
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = alterx
+	conflicts = alterx
+	source_aarch64 = alterx-0.0.6-aarch64.zip::https://github.com/projectdiscovery/alterx/releases/download/v0.0.6/alterx_0.0.6_linux_arm64.zip
+	sha256sums_aarch64 = 2fe2a4f78c1e98d9e70d667a202ce02a6119c9d0bbaa53624c8f8d2f3b782fcf
+	source_armv7h = alterx-0.0.6-armv7h.zip::https://github.com/projectdiscovery/alterx/releases/download/v0.0.6/alterx_0.0.6_linux_arm.zip
+	sha256sums_armv7h = a836c838e9ecd2b931e22f769d24dc0fb36e54a9d1b76b17ff8c97ec6824a2a6
+	source_i686 = alterx-0.0.6-i686.zip::https://github.com/projectdiscovery/alterx/releases/download/v0.0.6/alterx_0.0.6_linux_386.zip
+	sha256sums_i686 = bf61ed61642af4ee1f8595b74a1bfffdbde035ceae5d22993498da8ef9c37f94
+	source_x86_64 = alterx-0.0.6-x86_64.zip::https://github.com/projectdiscovery/alterx/releases/download/v0.0.6/alterx_0.0.6_linux_amd64.zip
+	sha256sums_x86_64 = b1d8a43ba9e7afa31a27fd050a1c4f1157f60d074443836dbea1ac8ccc34fc0a
+
+pkgname = alterx-bin
