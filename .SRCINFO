@@ -1,7 +1,7 @@
 pkgbase = altus
 	pkgdesc = Desktop client for WhatsApp Web with themes, notifications and multiple account support.Use system-wide electron.
 	pkgver = 5.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amanharwara/altus
 	arch = any
 	license = GPL-3.0-only

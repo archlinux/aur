@@ -4,7 +4,7 @@ _pkgname=Altus
 pkgver=5.7.1
 _electronversion=35
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for WhatsApp Web with themes, notifications and multiple account support.Use system-wide electron."
 arch=('any')
 url="https://github.com/amanharwara/altus"
@@ -63,6 +63,10 @@ prepare() {
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
     fi
     sed -i "s/\"electron\": \"\([^\"]*\)\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    sed -i -e "
+        /import MakerAppImage/d
+        s/new MakerAppImage(), //g
+    " forge.config.ts
     _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
     corepack enable yarn
     echo y | yarn version "${_yarnver}"
