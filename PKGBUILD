@@ -2,8 +2,8 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.32
-_electronversion=22
+pkgver=5.25.42
+_electronversion=32
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
 arch=('x86_64')
@@ -26,8 +26,8 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ffa4c25532ffce70b28d7a0d595bf71b447d2b33de0cacf7e5d015819e0271a2'
-            'acce6ce0e604ac50abcc25e5197a46708bfda9502a6232a34b99c10666e5a6d2'
+sha256sums=('18a82e0141de9271577606e851865b89c99fa95a0c67a3a0d7985d9afde74068'
+            '66c22dec921f9311757579326de8134eed05d1c02f0fd451da8ca5b5e657703c'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -35,7 +35,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}卡片笔记/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Office" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
     sed -i "3i\Name[zh_CN]=${_zhsname}" "${srcdir}/${pkgname%-bin}.desktop"
@@ -45,7 +45,7 @@ prepare() {
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i -e "
         s/icon.ico/icon.png/g
-        s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g 
+        s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g
     " "${srcdir}/app.asar.unpacked/background.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
