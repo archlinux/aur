@@ -1,6 +1,6 @@
 pkgbase = eti-tools-git
 	pkgdesc = ETI(Ensemble Transport Interface) conversion software suite.
-	pkgver = 0.01.c19e215
+	pkgver = 0.01.93c8cc8
 	pkgrel = 1
 	url = https://github.com/piratfm/eti-tools
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = eti-tools-git
 	depends = libfec
 	depends = libshout
 	depends = zeromq
+	depends = libfec.so
 	provides = eti-tools
 	provides = eti-tools-git
 	provides = bbfedi2eti

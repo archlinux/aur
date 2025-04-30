@@ -1,15 +1,15 @@
-# Maintainer: EndlessEden <eden [at] rose.place>
+# Maintainer:	       EndlessEden <endlesseden@users.noreply.github.com>
 # Upstream Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 
 pkgname="eti-tools-git"
 _pkgname="eti-tools"
-pkgver=0.01.c19e215
+pkgver=0.01.93c8cc8
 pkgrel=1
 pkgdesc='ETI(Ensemble Transport Interface) conversion software suite.'
 arch=('x86_64')
 url="https://github.com/piratfm/$_pkgname"
 license=("$srcdir/$pkgname/LICENSE")
-depends=('rtl-sdr' 'fftw' 'libfec' 'libshout' 'zeromq')
+depends=('rtl-sdr' 'fftw' 'libfec' 'libshout' 'zeromq' 'libfec.so')
 makedepends=('git' 'cmake')
 provides=("$_pkgname" "$pkgname" "bbfedi2eti" "dvb-ip-mpe2ts" "edi2eti" "eti2zmq" "fedi2eti" "mpe2aac" "mpe2mpa" "mpe2ts" "na2ni" "na2ts" "ni2out" "ts2na")
 conflicts=("$_pkgname" "bbfedi2eti" "dvb-ip-mpe2ts" "edi2eti" "eti2zmq" "fedi2eti" "mpe2aac" "mpe2mpa" "mpe2ts" "na2ni" "na2ts" "ni2out" "ts2na")
