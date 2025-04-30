@@ -12,7 +12,7 @@ pkgbase = yd-go
 	options = !debug
 	source = https://github.com/slytomcat/yd-go/releases/download/master-f52cab1/yd-go
 	source = yd-go.png
-	b2sums = fe74594fa1b1a564bce469bc13aa0e65b47bcfef4de4b07f11dabaf92594eab4e8408e7dd777edfb869f84a24821be3d3bfa4e8437559a8821551a7091870756
+	b2sums = 02de3216ecd1d52e340ebe4abfe838399183993419c68c19be81a39340497d7a7884059d6cfa62daa5723705d26612669371fa4836204f9afe6d4bcfc35b196a
 	b2sums = 647865327ba584fdc36ddc37e85b6457af6ca888d1b25479a7b8a94a81d0629a71c954a21c8604ef5e96c529178fcf9c4b6fd82df41a1ab6a9ab2d5c281c2c41
 
 pkgname = yd-go
