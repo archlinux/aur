@@ -402,7 +402,7 @@ def get_value(s,idx):
             return UNKNOWN,idx
 
         try:
-            v=eval(u)
+            v=int(eval(u))
         except SyntaxError:
             stdmm("Invalid eval expression.")
             return UNKNOWN,idx
