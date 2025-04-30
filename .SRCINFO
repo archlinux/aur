@@ -1,7 +1,7 @@
 pkgbase = flashpoint-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint - Infinity Edition.(Prebuilt version)
 	pkgver = 14.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://flashpointarchive.org
 	arch = x86_64
 	license = LicenseRef-freeware
@@ -21,10 +21,10 @@ pkgbase = flashpoint-bin
 	noextract = flashpoint-14.0.1.7z
 	options = !strip
 	options = !emptydirs
-	source = flashpoint-14.0.1.7z::https://download.unstable.life/upload/fp14.0.1_lin_main_20250222.7z
+	source = flashpoint-14.0.1.7z::https://download.unstable.life/upload/fp14.0.1_lin_main_20250416.7z
 	source = flashpoint.png::https://raw.githubusercontent.com/FlashpointProject/Flashpoint-Website/master/images/icon.png
 	source = flashpoint.desktop
-	sha256sums = bab843b8422da500056698819aa6752804eedb8ba130380403e4f49532d8537e
+	sha256sums = 8a5f8e2206885f2f757f3ff47b7b4af8d066bdff94c584ce8c01923460dd8c00
 	sha256sums = 942e3a0c70833fadb25b3bf44503e7590d976f048d04fbe29ae4fc35dbcd5037
 	sha256sums = 8784a3536919f917c9848fc577a9ea7649fdd709cd543f4b127a7057fc3f2e41
 
