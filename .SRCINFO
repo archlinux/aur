@@ -1,6 +1,6 @@
 pkgbase = r-sccore
 	pkgdesc = Core Utilities for Single-Cell RNA-Seq
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sccore
 	arch = x86_64
@@ -22,12 +22,13 @@ pkgbase = r-sccore
 	depends = r-tibble
 	depends = r-uwot
 	depends = r-withr
+	depends = r-seurat
 	optdepends = r-ggrastr
 	optdepends = r-jsonlite
 	optdepends = r-rmumps
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/sccore_1.0.5.tar.gz
-	md5sums = 9aed0f3a67614c35ee12a50c0b5acbaf
-	b2sums = 903adac8e47187ea941f30c98c8e2cde539210179352ba540a9c3bbeb7dab68de1c637511522d07219d1c3a94bee98f0607d188102546de127d87581ae9001bc
+	source = https://cran.r-project.org/src/contrib/sccore_1.0.6.tar.gz
+	md5sums = ea4f657003a4a8105323e28b8d5a695d
+	b2sums = 14385bc37afae1767896177a3be245b348e66a99d9ba08aeccb65efe051ca3d4c61fe232a8b16c2f22ca652a5a673984318d6743429ff6234bbfc6d2f08da422
 
 pkgname = r-sccore
