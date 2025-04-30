@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=y2mp3-bin
-pkgver=3.0.0
+pkgver=3.0.1
 _electronversion=17
-pkgrel=2
+pkgrel=1
 pkgdesc="An Electron app to download youtube playlist.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/moshfeu/y2mp3"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com//moshfeu/y2mp3/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('017d74b16293ec544382bbeed5246b03cff7124390a166ba91c871cd42d1e3d9'
+sha256sums=('c2c75ebe5e1575257b941496624221ac5bc61f0868021229ad3164e74dfbf7a2'
             'e38ba30feb86e7387a43e735f2b65cf072436b3af6b3333abb4e6c460e6622fe'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
