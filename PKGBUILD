@@ -3,7 +3,7 @@
 
 pkgname=bkmr
 pkgver=4.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Ultrafast Bookmark Manager and Launcher'
 url='https://github.com/sysid/bkmr'
 license=('BSD-3-Clause')
@@ -37,9 +37,13 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 -t "$pkgdir/usr/bin" \
-    target/release/bkmr
-
+  install -Dm0755 -t "$pkgdir/usr/bin" target/release/bkmr
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  ./target/release/bkmr completion bash > bkmr.sh
+  install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  ./target/release/bkmr completion fish > fish.fish
+  install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  ./target/release/bkmr completion zsh > zsh.zsh
+  install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:

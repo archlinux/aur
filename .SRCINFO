@@ -1,7 +1,7 @@
 pkgbase = bkmr
 	pkgdesc = Ultrafast Bookmark Manager and Launcher
 	pkgver = 4.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sysid/bkmr
 	arch = x86_64
 	arch = i686
