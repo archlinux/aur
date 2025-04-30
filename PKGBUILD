@@ -2,7 +2,7 @@
 
 _pkgname="xmap"
 pkgname="$_pkgname-git"
-pkgver=2.0.2.r0.g86ae0fe
+pkgver=2.0.3.r11.g17d785c
 pkgrel=1
 pkgdesc="Fast Internet-wide IPv6 & IPv4 network scanner"
 url="https://github.com/idealeer/xmap"
@@ -30,8 +30,8 @@ prepare() {
 }
 
 build() {
-  export CFLAGS
-  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
+  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
   local _cmake_options=(
     -B build

@@ -1,6 +1,6 @@
 pkgbase = xmap-git
 	pkgdesc = Fast Internet-wide IPv6 & IPv4 network scanner
-	pkgver = 2.0.2.r0.g86ae0fe
+	pkgver = 2.0.3.r11.g17d785c
 	pkgrel = 1
 	url = https://github.com/idealeer/xmap
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xmap-git
 	depends = libpcap
 	depends = json-c
 	depends = libunistring
-	provides = xmap=2.0.2
+	provides = xmap=2.0.3
 	conflicts = xmap
 	source = git+https://github.com/idealeer/xmap.git
 	sha256sums = SKIP
