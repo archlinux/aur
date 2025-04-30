@@ -5,7 +5,7 @@ pkgbase=freenginx-libressl
 pkgname=($pkgbase $pkgbase-src)
 
 _vfreenginx=1.28.0
-_vlibressl=4.0.0
+_vlibressl=4.1.0
 _tests_commit=0a913a10945b
 
 pkgver="${_vfreenginx}_${_vlibressl}"
@@ -35,7 +35,7 @@ source=("$url/download/freenginx-$_vfreenginx.tar.gz"{,.asc}
 	"logrotate")
 sha256sums=('28651bf51ff95de027262d7af23000e5862fb3d1b2252ac83d97ce4c9a4a18a2'
             'SKIP'
-            '4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4'
+            '0f71c16bd34bdaaccdcb96a5d94a4921bfb612ec6e0eba7a80d8854eefd8bb61'
             'SKIP'
             'bb1c79f5c2835d47065474b4b3b5aa1971966bdde5713dc9de5507c53be989e2'
             'adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c'

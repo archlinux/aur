@@ -1,6 +1,6 @@
 pkgbase = freenginx-libressl
 	pkgdesc = webserver in an effort to preserve free and open development of nginx (build with OpenBSD libressl)
-	pkgver = 1.28.0_4.0.0
+	pkgver = 1.28.0_4.1.0
 	pkgrel = 1
 	url = https://freenginx.org
 	install = nginx.install
@@ -34,8 +34,8 @@ pkgbase = freenginx-libressl
 	backup = etc/logrotate.d/nginx
 	source = https://freenginx.org/download/freenginx-1.28.0.tar.gz
 	source = https://freenginx.org/download/freenginx-1.28.0.tar.gz.asc
-	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.0.0.tar.gz
-	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.0.0.tar.gz.asc
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.1.0.tar.gz
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.1.0.tar.gz.asc
 	source = hg+https://freenginx.org/hg/nginx-tests#revision=0a913a10945b
 	source = service
 	source = logrotate
@@ -43,7 +43,7 @@ pkgbase = freenginx-libressl
 	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
 	sha256sums = 28651bf51ff95de027262d7af23000e5862fb3d1b2252ac83d97ce4c9a4a18a2
 	sha256sums = SKIP
-	sha256sums = 4d841955f0acc3dfc71d0e3dd35f283af461222350e26843fea9731c0246a1e4
+	sha256sums = 0f71c16bd34bdaaccdcb96a5d94a4921bfb612ec6e0eba7a80d8854eefd8bb61
 	sha256sums = SKIP
 	sha256sums = bb1c79f5c2835d47065474b4b3b5aa1971966bdde5713dc9de5507c53be989e2
 	sha256sums = adb4a2b5176be3a3bf39666584f7a0a7f10b1b1aca927c189c1910c789d6d13c
