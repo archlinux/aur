@@ -1,9 +1,13 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 1.4.0 ➙ 2.0.2
-              : 2025-04-25 ➙ 2025-04-27
+ Tags         : 1.4.1 ➙ 2.1.0
+              : 2025-04-26 ➙ 2025-04-30
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-04-30   : 2.1.0
+                Bug fix returning stdout string from subprocess
+ 2025-04-27     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-04-27   : 2.0.2
                 API ref rst format
@@ -29,9 +33,3 @@
                   Primarily double quotes for docstrings instead of single and ensure ends
                   with period.
  2025-04-25     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-25   : 1.4.0
-                asyncio : missing decode() for stdout/err
-                pytest : ensure python path uses dev source for tests
-                Add missing SPDX identifiers
-                update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
