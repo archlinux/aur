@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=gDRutils
-_pkgver=1.4.10
+_pkgver=1.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,17 +44,18 @@ optdepends=(
   r-testthat
   r-yaml
   r-scales
+  r-mockery
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3abd7ba8500d0bafce0bce5330f5b6fc')
-b2sums=('e073153f2aa9dc4ab6da2c7d07dd92eba9779ae1bd48a4cdacd4ae3f32c1cd9c3deed760b0c9f287019e94941ee92c48aa94226281e06521fdf8bc40af683c1a')
+md5sums=('b5d35b8fcda56b7fdea1aa550d77d5f7')
+b2sums=('75cfa08bb72330795b62e10e3f0da5dd205a9d11eaf2f6c4e6c9cc26b698bbb27fa7b76f2e236494e3ee49a95a8e99dabb79080bf918212415b14f90b47185ff')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }

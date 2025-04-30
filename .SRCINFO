@@ -1,6 +1,6 @@
 pkgbase = r-gdrutils
 	pkgdesc = A package with helper functions for processing drug response data
-	pkgver = 1.4.10
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gDRutils
 	arch = any
@@ -35,8 +35,9 @@ pkgbase = r-gdrutils
 	optdepends = r-testthat
 	optdepends = r-yaml
 	optdepends = r-scales
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRutils_1.4.10.tar.gz
-	md5sums = 3abd7ba8500d0bafce0bce5330f5b6fc
-	b2sums = e073153f2aa9dc4ab6da2c7d07dd92eba9779ae1bd48a4cdacd4ae3f32c1cd9c3deed760b0c9f287019e94941ee92c48aa94226281e06521fdf8bc40af683c1a
+	optdepends = r-mockery
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/gDRutils_1.6.0.tar.gz
+	md5sums = b5d35b8fcda56b7fdea1aa550d77d5f7
+	b2sums = 75cfa08bb72330795b62e10e3f0da5dd205a9d11eaf2f6c4e6c9cc26b698bbb27fa7b76f2e236494e3ee49a95a8e99dabb79080bf918212415b14f90b47185ff
 
 pkgname = r-gdrutils
