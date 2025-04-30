@@ -6,7 +6,7 @@ pkgdesc="Launcher-driven Wi-Fi manager for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/e-tho/${pkgname%-git}"
 license=('GPL-3.0-or-later')
-depends=('iwd')
+depends=('iwd' 'dbus')
 makedepends=('git' 'rust' 'cargo')
 provides=(${pkgname%-git}=${pkgver})
 conflicts=(${pkgname%-git}-bin ${pkgname%-git})
