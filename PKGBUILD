@@ -1,6 +1,6 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 pkgname=libosmo-gprs-git
-pkgver=r382.341f26f
+pkgver=0.2.0.r3.g341f26f
 pkgrel=1
 pkgdesc="Osmocom GPRS libraries"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
