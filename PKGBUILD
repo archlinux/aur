@@ -1,9 +1,9 @@
 # Maintainer: e-tho <@e-tho:matrix.org>
 pkgname=iwmenu-git
-pkgver=0.1.1.r38.ga13d928
+pkgver=0.2.0.r0.gfb7cf0c
 pkgrel=1
-pkgdesc="Menu-driven Wi-Fi management interface for Linux"
-arch=('x86_64')
+pkgdesc="Launcher-driven Wi-Fi manager for Linux"
+arch=('x86_64' 'aarch64')
 url="https://github.com/e-tho/${pkgname%-git}"
 license=('GPL-3.0-or-later')
 depends=('iwd')
