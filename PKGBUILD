@@ -4,19 +4,19 @@ pkgname=(
   'acpidump-all'
 #  'amdfwtool'  # TODO
   'autoport'
-	'cbfstool'
-	'cbmem'
-#	'coreboot-configurator'  # use StarLabs fork: https://support.starlabs.systems/kb/guides/coreboot-configurator
-	'ectool'
-	'ifdtool'
-#	'intelmetool' # merge standalone AUR package
-	'inteltool'
-	'intelvbttool'
-	'me_cleaner'
-	'msrtool'
-	'nvramtool'
-	'pmh7tool'
-	'superiotool'
+  'cbfstool'
+  'cbmem'
+#  'coreboot-configurator'  # use StarLabs fork: https://support.starlabs.systems/kb/guides/coreboot-configurator
+  'ectool'
+  'ifdtool'
+#  'intelmetool' # merge standalone AUR package
+  'inteltool'
+  'intelvbttool'
+  'me_cleaner'
+  'msrtool'
+  'nvramtool'
+  'pmh7tool'
+  'superiotool'
 )
 pkgbase=coreboot-utils
 pkgver=24.05
@@ -90,6 +90,9 @@ build() {
   echo ""
   make -C util/cbmem
 
+#  echo ""
+#  echo "Building coreboot-configurator..."
+#  echo ""
 #  arch-meson util/coreboot-configurator util/coreboot-configurator/build
 #  meson compile -C util/coreboot-configurator/build
 
