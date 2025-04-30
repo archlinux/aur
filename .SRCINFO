@@ -1,0 +1,17 @@
+pkgbase = jelly
+	pkgdesc = Explore & stream Jellyfin from the terminal! 🚀
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AzureHound/jelly
+	arch = x86_64
+	arch = armv7h
+	license = 0BSD
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = fzf
+	depends = mpv
+	source = jelly-1.0.0.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 28249a763b045619b1daac79000db5dfdde1205cb60000a590e7c26a4baf75b7
+
+pkgname = jelly
