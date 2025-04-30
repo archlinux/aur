@@ -2,7 +2,7 @@
 pkgname=cloudhub-bin
 _pkgname=CloudHub
 _zhsname='云之家'
-pkgver=4.5.2
+pkgver=4.5.3
 _electronversion=12
 pkgrel=1
 pkgdesc="The desktop client of CloudHub.(Prebuilt version.Use system-wide electron)云之家桌面端"
@@ -30,12 +30,12 @@ source=(
     "LICENSE-${pkgver}.html::${url}/public/agreement/client-agreement.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/${_pkgname}_arm64_${pkgver}_2503191516.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/${_pkgname}_x64_${pkgver}_2503191516.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/${_pkgname}_arm64_${pkgver}_2504171606.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/${_pkgname}_x64_${pkgver}_2504171606.rpm")
 sha256sums=('c4088260f72395d24a8ba49eaaa78620895489107af496c7d00976f8c8825dae'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('db5accb9628b94c8347302dadaf99b6b3d05a4c477cbc4ff5c3f134965dd7301')
-sha256sums_x86_64=('cec959495770883fbce26833aa283d6d9cdb7ca67d1af438ae170a65089da4a3')
+sha256sums_aarch64=('43a04199e878c6ed3c2963cc314815b063dcdb2b105ccc738c5bef45bf45cdbf')
+sha256sums_x86_64=('7e9de382f348c0d2c14e7b985f44a96a17e0d69867f433269216a07bd0b94cf1')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -66,7 +66,7 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_zhsname}/resources/"{app.asar.unpacked,logo.png} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024 2048x2048)
+    _icon_sizes=(16x16 24x24 128x128 256x256 1024x1024 2048x2048)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"

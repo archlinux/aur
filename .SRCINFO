@@ -1,6 +1,6 @@
 pkgbase = cloudhub-bin
 	pkgdesc = The desktop client of CloudHub.(Prebuilt version.Use system-wide electron)云之家桌面端
-	pkgver = 4.5.2
+	pkgver = 4.5.3
 	pkgrel = 1
 	url = https://www.yunzhijia.com
 	arch = aarch64
@@ -11,16 +11,16 @@ pkgbase = cloudhub-bin
 	depends = nodejs
 	depends = gtk2
 	depends = java-runtime
-	provides = cloudhub=4.5.2
+	provides = cloudhub=4.5.3
 	conflicts = cloudhub
 	options = !strip
-	source = LICENSE-4.5.2.html::https://www.yunzhijia.com/public/agreement/client-agreement.html
+	source = LICENSE-4.5.3.html::https://www.yunzhijia.com/public/agreement/client-agreement.html
 	source = cloudhub.sh
 	sha256sums = c4088260f72395d24a8ba49eaaa78620895489107af496c7d00976f8c8825dae
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = cloudhub-4.5.2-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/CloudHub_arm64_4.5.2_2503191516.rpm
-	sha256sums_aarch64 = db5accb9628b94c8347302dadaf99b6b3d05a4c477cbc4ff5c3f134965dd7301
-	source_x86_64 = cloudhub-4.5.2-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/CloudHub_x64_4.5.2_2503191516.rpm
-	sha256sums_x86_64 = cec959495770883fbce26833aa283d6d9cdb7ca67d1af438ae170a65089da4a3
+	source_aarch64 = cloudhub-4.5.3-aarch64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_arm64/CloudHub_arm64_4.5.3_2504171606.rpm
+	sha256sums_aarch64 = 43a04199e878c6ed3c2963cc314815b063dcdb2b105ccc738c5bef45bf45cdbf
+	source_x86_64 = cloudhub-4.5.3-x86_64.rpm::https://res.yunzhijia.com/mixed/cloudhubx/linux_x64/CloudHub_x64_4.5.3_2504171606.rpm
+	sha256sums_x86_64 = 7e9de382f348c0d2c14e7b985f44a96a17e0d69867f433269216a07bd0b94cf1
 
 pkgname = cloudhub-bin
