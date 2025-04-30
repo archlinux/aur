@@ -25,6 +25,8 @@ relative URLs to the `resource` subdirectory.
 =cut
 
 my $ua = LWP::UserAgent->new;
+$ua->timeout(3);
+$ua->env_proxy;
 my $resources = {};
 
 open( my $fh, '<', "$ARGV[0]" ) || die($!);
@@ -42,8 +44,14 @@ while( <$fh> ) {
       make_path( "resources/$relpath" );
     }
 
-    print( "$res_uri -> resources/$res_localfile\n" );
-    $ua->get( $res_uri, ':content_file'=>"resources/$res_localfile" );
+    print( "$res_uri -> resources/$res_localfile ... " );
+    my $response = $ua->get( $res_uri, ':content_file'=>"resources/$res_localfile" );
+    if ($response->is_success) {
+      print( "OK\n" );
+    } else {
+      print("FAIL\n");
+      die( "Download failed: " . $response->status_line . "\n\n" );
+    }
 
     s@https://resources.whatwg.org@resources@;
   }

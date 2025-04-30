@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=whatwg-html
 pkgver=2025.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone the WHATWG HTML specification with local resources"
 arch=('any')
 url="https://www.github.com/whatwg/html-build"
