@@ -1,12 +1,13 @@
-# Maintainer: Francois Menning <f.menning@pm.me>
-# Contributer: Felix Yan <felixonmars@archlinux.org>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Thomas Dziedzic < gostrc at gmail >
-# Contributor: James Campos <james.r.campos@gmail.com>
-# Contributor: BlackEagle < ike DOT devolder AT gmail DOT com >
-# Contributor: Dongsheng Cai <dongsheng at moodle dot com>
-# Contributor: Masutu Subric <masutu.arch at googlemail dot com>
-# Contributor: TIanyi Cui <tianyicui@gmail.com>
+# Maintainer:	       EndlessEden <endlesseden@users.noreply.github.com>
+# Previous Maintainer: Francois Menning <f.menning@pm.me>
+# Contributer:	       Felix Yan <felixonmars@archlinux.org>
+# Contributor:         Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor:         Thomas Dziedzic < gostrc at gmail >
+# Contributor:         James Campos <james.r.campos@gmail.com>
+# Contributor:         BlackEagle < ike DOT devolder AT gmail DOT com >
+# Contributor:         Dongsheng Cai <dongsheng at moodle dot com>
+# Contributor:         Masutu Subric <masutu.arch at googlemail dot com>
+# Contributor:         TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs-lts-hydrogen
 pkgver=18.12.0
