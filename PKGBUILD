@@ -1,13 +1,13 @@
 pkgname=psst-git-bin
 _pkgname="psst"
-pkgver=r574.2e2a13f
+pkgver=r579.86169f8
 pkgrel=4
 pkgdesc="Fast and multi-platform Spotify client with native GUI (binary git version)."
 arch=("x86_64" "aarch64")
 url="https://github.com/jpochyla/psst"
 license=('MIT')
-makedepends=('unzip')
-depends=('gtk3' 'openssl')
+makedepends=('unzip' 'curl' 'jq')
+depends=('gtk3' 'openssl' 'alsa-lib')
 provides=("psst")
 conflicts=("psst" "psst-git")
 
