@@ -1,4 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
+#
+# shellcheck shell=bash
+# shellcheck disable=SC2034,SC2164
 
 pkgname=intermodal-bin
 pkgver=0.1.14
