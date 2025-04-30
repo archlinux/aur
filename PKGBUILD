@@ -3,8 +3,8 @@ pkgname=atmos-weather-bin
 _pkgname="Atmos Weather"
 pkgver=2.2.1
 _electronversion=29
-pkgrel=1
-pkgdesc="A lightweight weather app for receiving alerts and forecasts in the US.Prebuilt version.Use system-wide electron."
+pkgrel=2
+pkgdesc="A lightweight weather app for receiving alerts and forecasts in the US.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'armv7h'
@@ -26,14 +26,14 @@ sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('3ab3a1a1871ddb40792e4f13d062222dd2972fc820e2d90ca4d8aef6b9c54fd7')
 sha256sums_armv7h=('b4cd82811fd0dd84e0cb63d63419da3562bfb52d8267af837faaa35929795c41')
 sha256sums_x86_64=('6f047db3f1ea36915e7bef21060b4403797eb8e200a4ea7dffc4b87c0a00100c')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed "s|\"/opt/${_pkgname}/${pkgname%-bin}\"|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }

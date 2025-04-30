@@ -1,7 +1,7 @@
 pkgbase = atmos-weather-bin
-	pkgdesc = A lightweight weather app for receiving alerts and forecasts in the US.Prebuilt version.Use system-wide electron.
+	pkgdesc = A lightweight weather app for receiving alerts and forecasts in the US.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://atticuscornett.github.io/AtmosWeather/
 	arch = aarch64
 	arch = armv7h
