@@ -1,6 +1,6 @@
 pkgbase = mroonga
 	pkgdesc = Fast fulltext search on MySQL(MariaDB bundled Mroonga package).
-	pkgver = 13.05
+	pkgver = 15.07
 	pkgrel = 1
 	url = http://mroonga.org/
 	arch = i686
@@ -41,9 +41,9 @@ pkgbase = mroonga
 	optdepends = cutter-test_framework
 	optdepends = ruby
 	optdepends = snowball-c
-	provides = mysql-clients=10.11.7
-	provides = mysql=10.11.7
-	provides = libmysqlclient=10.11.7
+	provides = mysql-clients=10.11.11
+	provides = mysql=10.11.11
+	provides = libmysqlclient=10.11.11
 	conflicts = libmariadbclient
 	conflicts = mariadb-clients
 	conflicts = mytop
@@ -51,8 +51,8 @@ pkgbase = mroonga
 	conflicts = mysql
 	conflicts = libmysqlclient
 	conflicts = mysql-clients
-	source = http://packages.groonga.org/source/mroonga/mroonga-13.05.tar.gz
-	source = https://rsync.osuosl.org/pub/mariadb/mariadb-10.11.7/source/mariadb-10.11.7.tar.gz
+	source = http://packages.groonga.org/source/mroonga/mroonga-15.07.tar.gz
+	source = https://rsync.osuosl.org/pub/mariadb/mariadb-10.11.11/source/mariadb-10.11.11.tar.gz
 	source = mariadb.service
 	source = mariadb-post.sh
 	source = mariadb-tmpfile.conf
