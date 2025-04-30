@@ -1,0 +1,22 @@
+pkgbase = tlsx-bin
+	pkgdesc = Fast and configurable TLS grabber focused on TLS based data collection
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/tlsx
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = tlsx
+	conflicts = tlsx
+	source_aarch64 = tlsx-1.1.9-aarch64.zip::https://github.com/projectdiscovery/tlsx/releases/download/v1.1.9/tlsx_1.1.9_linux_arm64.zip
+	sha256sums_aarch64 = 88cd880d147af363090aae346b32b64867dafa14181e0ebad3f67d90669e8566
+	source_armv7h = tlsx-1.1.9-armv7h.zip::https://github.com/projectdiscovery/tlsx/releases/download/v1.1.9/tlsx_1.1.9_linux_arm.zip
+	sha256sums_armv7h = 271039dd6ecf0e30e525ff9d99e31d9932bb4bca4f2619f4f908aa7612551f0a
+	source_i686 = tlsx-1.1.9-i686.zip::https://github.com/projectdiscovery/tlsx/releases/download/v1.1.9/tlsx_1.1.9_linux_386.zip
+	sha256sums_i686 = 5aa0564cc8daadd79be5e57d4d9ca44f088ffc8354fd837b91c0b5a26c40c090
+	source_x86_64 = tlsx-1.1.9-x86_64.zip::https://github.com/projectdiscovery/tlsx/releases/download/v1.1.9/tlsx_1.1.9_linux_amd64.zip
+	sha256sums_x86_64 = 4b2480ca7be1dadf45ca9e861f3ea1147b56b976fe39f62fe1efa8c40ff8dec7
+
+pkgname = tlsx-bin

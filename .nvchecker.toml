@@ -1,0 +1,5 @@
+[tlsx-bin]
+source = "github"
+github = "projectdiscovery/tlsx"
+use_latest_release = true
+prefix = "v"
