@@ -1,6 +1,6 @@
 pkgbase = tencent-docs-electron-bin
 	pkgdesc = Tencent Docs - Make collaboration more efficient and creation easier.(Prebuilt version.Use system-wide electron)腾讯文档,让协作更高效，创作更轻松.
-	pkgver = 3.9.11
+	pkgver = 3.9.15
 	pkgrel = 1
 	url = https://docs.qq.com/home/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = tencent-docs-electron-bin
 	license = LicenseRef-custom
 	makedepends = asar
 	depends = electron25
-	provides = tencent-docs=3.9.11
+	provides = tencent-docs=3.9.15
 	conflicts = tencent-docs
 	conflicts = tencent-docs-electron
 	conflicts = tdappdesktop
 	source = tencent-docs-electron.sh
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = tencent-docs-electron-bin-3.9.11-aarch64.rpm::https://desktop.docs.qq.com/Installer/30001/3.9.11/TencentDocs-arm64.rpm
-	sha256sums_aarch64 = 475644c61e8b4b00f0feb43b3ee541208be3c6dedebfb648e23e6479a3f28280
-	source_x86_64 = tencent-docs-electron-bin-3.9.11-x86_64.rpm::https://desktop.docs.qq.com/Installer/30001/3.9.11/TencentDocs-x64.rpm
-	sha256sums_x86_64 = cbd0c1f8c6a33e05ecbf8a66d9601700c780a84772aabc753145572e130213f0
+	source_aarch64 = tencent-docs-electron-bin-3.9.15-aarch64.rpm::https://desktop.docs.qq.com/Installer/30001/3.9.15/TencentDocs-arm64.rpm
+	sha256sums_aarch64 = e2d112e2d2987a06b1b838fb9978bb84d58175a8e5a2f3b6156cd5c299cc5489
+	source_x86_64 = tencent-docs-electron-bin-3.9.15-x86_64.rpm::https://desktop.docs.qq.com/Installer/30001/3.9.15/TencentDocs-x64.rpm
+	sha256sums_x86_64 = 95d77bc1247d7787b5b2eed2ddb0a5db09cde1de33558649c08ae26d2d113258
 
 pkgname = tencent-docs-electron-bin
