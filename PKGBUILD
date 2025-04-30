@@ -2,10 +2,10 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="faketty"
-_cratever="1.0.18"
+_cratever="1.0.19"
 pkgname="faketty"
-pkgver=1.0.18
-pkgrel=2
+pkgver=1.0.19
+pkgrel=1
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
 url='https://crates.io/crates/faketty'
 license=('Apache-2.0' 'MIT')
@@ -13,8 +13,8 @@ license=('Apache-2.0' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/faketty/1.0.18/download")
-sha512sums=('d6f18f19a32c8f3bae95e7f9c1e9c84e579a2906ad1584b9597039af8a09108a1c30fc87531e086362d4f1629b6cc5399be0a0cc85645ea3559dc45f053f740d')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/faketty/1.0.19/download")
+sha512sums=('edb1bbcf0878da0ce51e9e1651d71d5a7481dbb6cc8a463aa88f1e055ad2a8c3b4265d1944414927454d08a60cea3f3f468b2132a558fa101ace9539e8d5c71a')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
