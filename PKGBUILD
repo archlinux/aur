@@ -15,7 +15,6 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  chmod +x bi.py
   install -Dm755 bi.py "$pkgdir/usr/bin/bi"
   install -Dm644 "$srcdir/$pkgname-$pkgver/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
