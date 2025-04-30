@@ -1,19 +1,28 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='proxify'
-pkgver=0.0.3
+pkgname="proxify"
+pkgver=0.0.15
 pkgrel=1
-pkgdesc='Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation and replay'
-arch=('x86_64' 'armv6h' 'aarch64')
-url='https://github.com/projectdiscovery/proxify'
+pkgdesc="Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation and replay"
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+url="https://github.com/projectdiscovery/${pkgname}"
 license=('MIT')
-makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b8ea21a0e8aa77bd5a3d4e269a436ed601a00c521c34b8a7efafe760672306c1')
+depends=('glibc')
+makedepends=('git' 'go')
+_pkgsrc="${url##*/}"
+source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
+b2sums=('08891ef27157c91e44a01edff580a6c8975ba87fb721ecad85876b2ebe259d23b8329ef0dc517051d1987843eae998fae30823e4cc54f3f777459a8d6fe07286')
 
 prepare() {
-  export GOPATH="${srcdir}/gopath"
-  go clean -modcache
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
+  mkdir -p "build"
 }
 
 build() {
@@ -21,17 +30,24 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  cd "${pkgname}-${pkgver}"
-  go build -v -o "${pkgname}" ."/cmd/${pkgname}"
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" ./"cmd/${pkgname}"
 }
 
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
+
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dvm755 "${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE.MD' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.MD" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 # vim: ts=2 sw=2 et:

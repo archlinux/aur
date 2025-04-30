@@ -1,15 +1,17 @@
 pkgbase = proxify
 	pkgdesc = Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation and replay
-	pkgver = 0.0.3
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/proxify
-	arch = x86_64
-	arch = armv6h
 	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
-	source = proxify-0.0.3.tar.gz::https://github.com/projectdiscovery/proxify/archive/v0.0.3.tar.gz
-	sha256sums = b8ea21a0e8aa77bd5a3d4e269a436ed601a00c521c34b8a7efafe760672306c1
+	depends = glibc
+	source = proxify::git+https://github.com/projectdiscovery/proxify.git#tag=v0.0.15
+	b2sums = 08891ef27157c91e44a01edff580a6c8975ba87fb721ecad85876b2ebe259d23b8329ef0dc517051d1987843eae998fae30823e4cc54f3f777459a8d6fe07286
 
 pkgname = proxify
-

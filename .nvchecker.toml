@@ -1,0 +1,4 @@
+[proxify]
+source = "git"
+git = "https://github.com/projectdiscovery/proxify.git"
+prefix = "v"
