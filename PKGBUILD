@@ -4,8 +4,9 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=intermodal-bin
+_pkgname=intermodal
 pkgver=0.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
 url="https://github.com/casey/intermodal"
@@ -23,7 +24,7 @@ sha256sums=('3e527fbd43957282d52f9544868809e968874efa2222ea8f3cfd04db3907fcf1'
             '4bc05261d1c1bdd3be4cdacfc6ed4a375bc5629828bcc2ff41038cba5868b11f')
 
 # Here goes the hackery
-_commit=28e621bb4554ae4d8a4d97cf1fc4a148b8168abb
+_commit=020086f39a70a445eb01e9be26521b0cba966706
 _book=(
   bittorrent/bep-support
   bittorrent/distributing-large-data-sets
@@ -48,11 +49,11 @@ package() {
 
   # docs
   install -Dm 644 man/*.1 -t "$pkgdir/usr/share/man/man1/"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 
   # book (not complete, but I can only do so much)
   find . -name '*.md' -not -name 'README.md' -exec \
-    install -Dm 644 "{}" "$pkgdir/usr/share/doc/$pkgname/book/{}" \;
+    install -Dm 644 "{}" "$pkgdir/usr/share/doc/$_pkgname/book/{}" \;
 
   # license
   install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
