@@ -1,0 +1,17 @@
+pkgbase = simplehttpserver
+	pkgdesc = Go alternative of python SimpleHTTPServer
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/simplehttpserver
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = simplehttpserver::git+https://github.com/projectdiscovery/simplehttpserver.git#tag=v0.0.6
+	b2sums = 5f3637cd8bf046331dc37ea1cdd5bed364dfedd1dc099b03b33140618388d15e5908b10d1e1697383a851ad06da35f7f25e34bd2bde9e58f13b1c423a07d53a3
+
+pkgname = simplehttpserver

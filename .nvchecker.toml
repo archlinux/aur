@@ -1,0 +1,4 @@
+[simplehttpserver]
+source = "git"
+git = "https://github.com/projectdiscovery/simplehttpserver.git"
+prefix = "v"
