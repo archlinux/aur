@@ -1,13 +1,13 @@
 pkgbase = python-tgtg
 	pkgdesc = Unoffical python client for TooGoodToGo API
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://github.com/ahivert/tgtg-python
 	arch = any
 	license = GPL3
 	makedepends = python-poetry
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/tgtg/tgtg-0.18.2.tar.gz
-	b2sums = e6c13e6406e4223e059dc6044bf8b2b44ec32413fe77beed84b887af63bd9a29f0e28ce18bd7e711772da9eb74afa82906311a17534a02f178e5c305f3b13491
+	source = https://files.pythonhosted.org/packages/source/t/tgtg/tgtg-0.18.3.tar.gz
+	b2sums = f6f6df18a246b42356e6800ac779bd3c0e029f258e67a272dc3d41c762e366b4cd79c0a19f4ea54cb35a5a13802a27c716bc76754ac039d86b769eeccd920d15
 
 pkgname = python-tgtg
