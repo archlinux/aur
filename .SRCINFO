@@ -1,0 +1,31 @@
+pkgbase = r-dartr.spatial
+	pkgdesc = Applying Landscape Genomic Methods on 'SNP' and 'Silicodart' Data
+	pkgver = 0.78
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dartR.spatial
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r-adegenet
+	depends = r-crayon
+	depends = r-dartr.base
+	depends = r-dartr.data
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-raster
+	depends = r-sp
+	depends = r-stampp
+	depends = r-tidyr
+	depends = r-vegan
+	optdepends = r-dismo
+	optdepends = r-gdistance
+	optdepends = r-gplots
+	optdepends = r-mmod
+	optdepends = r-popgenreport
+	optdepends = r-rrblup
+	optdepends = r-sf
+	optdepends = r-terra
+	source = https://cran.r-project.org/src/contrib/dartR.spatial_0.78.tar.gz
+	md5sums = c999e4cdae941ee78cb29fcbca7ed25e
+	b2sums = 9853f780c51b64da02c870949d5df6d77b9f98706161bc446c9154beb0bc077ec585e9208c7e9c8f6faaa329a276b3f0912242169c2caec24c4774bf3d4764ad
+
+pkgname = r-dartr.spatial
