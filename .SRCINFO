@@ -1,0 +1,15 @@
+pkgbase = rustowl-bin
+	pkgdesc = Visualize Ownership and Lifetimes in Rust
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cordx56/rustowl
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MPL-2.0
+	makedepends = cargo-nightly
+	source = https://github.com/cordx56/rustowl/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 156f50d821ff4a1a3d02083fc558aadbdea2fbe21671426156389b5ccddacba7
+
+pkgname = rustowl-bin

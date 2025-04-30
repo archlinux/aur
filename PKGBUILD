@@ -1,0 +1,60 @@
+# Maintainer: MuntasirSZN <muntasir.joypurhat@gmail.com>
+# Maintainer: cordx56 <cordx56@cordx.cx>
+
+pkgname=rustowl-bin
+pkgver=0.3.0
+pkgrel=1
+pkgdesc='Visualize Ownership and Lifetimes in Rust'
+url='https://github.com/cordx56/rustowl'
+license=('MPL-2.0')
+makedepends=('cargo-nightly')
+depends=()
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("https://github.com/cordx56/rustowl/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('156f50d821ff4a1a3d02083fc558aadbdea2fbe21671426156389b5ccddacba7')
+
+prepare() {
+    cd rustowl-${pkgver}
+    export RUSTC_BOOTSTRAP=1
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd rustowl-${pkgver}
+    export CARGO_TARGET_DIR=target
+    export RUSTC_BOOTSTRAP=1
+    export RUSTOWL_RUNTIME_DIRS=/opt/rustowl
+    cargo build --frozen --release --all-features
+}
+
+check() {
+    cd rustowl-${pkgver}
+    export RUSTC_BOOTSTRAP=1
+    cargo test --frozen --all-features
+}
+
+package() {
+    cd rustowl-${pkgver}
+    find target -type d | grep -E 'rustowl-build-time-out$' | xargs -I % cp -r % ./
+    cp -r "$(rustc --print=sysroot)" runtime
+    cd runtime
+    ls | xargs -I % find % -type f | grep -E '\.(rlib|so|dylib)$' | \
+    while read file; do
+        mkdir -p ../lib/$(dirname "$file")
+        mv "$file" ../lib/$(dirname "$file")/
+    done
+    cd ..
+    rm -rf runtime
+    install -d -m 755 "$pkgdir/opt/rustowl"
+    cp -a lib/ "$pkgdir/opt/rustowl/"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rustowl"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rustowlc"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/rustowl/LICENSE"
+    install -Dm644 rustowl-build-time-out/man/rustowl.1 "$pkgdir/usr/share/man/man1/rustowl.1"
+    install -Dm644 "rustowl-build-time-out/completions/rustowl.bash" "${pkgdir}/usr/share/bash-completion/completions/rustowl"
+    install -Dm644 "rustowl-build-time-out/completions/_rustowl" "${pkgdir}/usr/share/zsh/site-functions/_rustowl"
+    install -Dm644 "rustowl-build-time-out/completions/rustowl.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/rustowl.fish"
+    install -Dm644 "rustowl-build-time-out/completions/rustowl.elv" "${pkgdir}/usr/share/elvish/completions/rustowl.elv"
+    install -Dm644 "rustowl-build-time-out/completions/_rustowl.ps1" "${pkgdir}/usr/share/powershell/Modules/Rustowl/_rustowl.ps1"
+}
+
