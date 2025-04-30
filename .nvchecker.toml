@@ -1,0 +1,5 @@
+[mapcidr-bin]
+source = "github"
+github = "projectdiscovery/mapcidr"
+use_latest_release = true
+prefix = "v"
