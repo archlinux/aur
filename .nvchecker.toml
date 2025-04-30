@@ -1,0 +1,4 @@
+[urlfinder]
+source = "git"
+git = "https://github.com/projectdiscovery/urlfinder.git"
+prefix = "v"
