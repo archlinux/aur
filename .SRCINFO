@@ -1,0 +1,30 @@
+pkgbase = r-dartr.captive
+	pkgdesc = Analysing 'SNP' Data to Support Captive Breeding
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=dartR.captive
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r
+	depends = r-adegenet
+	depends = r-crayon
+	depends = r-dartr.base
+	depends = r-dartr.data
+	depends = r-dartr.sim
+	depends = r-data.table
+	depends = r-ggplot2
+	depends = r-patchwork
+	depends = r-stringr
+	optdepends = r-fields
+	optdepends = r-gplots
+	optdepends = r-igraph
+	optdepends = r-reshape2
+	optdepends = r-rrblup
+	optdepends = r-scales
+	optdepends = r-siber
+	optdepends = r-spelling
+	source = https://cran.r-project.org/src/contrib/dartR.captive_1.0.2.tar.gz
+	md5sums = b2a1a22a89f932b0541da23a3069740e
+	b2sums = 09073a6e053167d157ca8d408010d40d783cb85ec21578d67b3e7c66b1a784ec14b6df9e4dce5379d2993e6a0bf695802ad25758cfbd9b28b7f8a35f142612af
+
+pkgname = r-dartr.captive
