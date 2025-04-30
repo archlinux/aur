@@ -1,14 +1,14 @@
 # Contributor: ConnorBehan <connor.behan@gmail.com>
 pkgname=manserver
 pkgver=1.08
-pkgrel=5
+pkgrel=6
 pkgdesc="Man to HTML converter which can act as an HTTP server on port 8888"
 arch=('i686' 'x86_64')
 url="http://www.squarebox.co.uk/users/rolf/download/manServer.shtml"
 license=('custom')
 depends=('perl')
 optdeps=('gzip: extraction' 'bzip2: extraction')
-source=(http://www.squarebox.co.uk/download/$pkgname-$pkgver.tar.gz
+source=(https://smallperturbation.com/sites/default/files/$pkgname-$pkgver.tar.gz
 	manserver.sh manserver.service manserver.rc manpath.config escape_more.diff)
 
 package() {
@@ -29,4 +29,9 @@ package() {
   install -Dm644 ../manpath.config "$pkgdir"/etc/manpath.config
 }
 
-md5sums=('a506e0be8eb47ff5661aa9b16bb3135c' 'aad616695f21d344fddde257876d80c3' '857f1784b306aa236ac433377643e04e' '6bc451bd812fec0703d9ea7f792761a3' '715455f372831b1d95133a6a54311c20' 'a0d92c785dcd039b7c766a44d4ac8f5d')
+sha256sums=('a67c55b6a7772d0e827d0769de1b1c8bb03498b55d35f678c0ed52fd9b9fc646'
+            '22bca597cbac199599a3ba1938da2f0dedc062fb26f09143ad446aea02e0f42b'
+            '5c63105d45dd8b853aa957617a345f66b086826c1ec2b60f3717f47ddb85f63b'
+            'f4ec0b78b2635e8ae3c279970b6a02477985edea21681d5e3dcaf64fae20d7e0'
+            '7113bff48038addf7780decb83efb0091f8dc85ee216b62bb894aa910da185bb'
+            '900f96df3820b389272eb854917816d31a189cc1e3e4ea5e4589674bfd4af176')
