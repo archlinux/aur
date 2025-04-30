@@ -1,0 +1,17 @@
+pkgbase = ferrishot-bin
+	pkgdesc = A screenshot tool written in Rust
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nik-rev/ferrishot
+	arch = x86_64
+	license = MIT
+	license = Apache
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxext
+	depends = libx11
+	depends = libxfixes
+	source = ferrishot-bin-0.2.0.tar.xz::https://github.com/nik-rev/ferrishot/releases/download/v0.2.0/ferrishot-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = b4befbdaeca03e7881985b9568f717631f2a4216bc17f778de8bc64f1f7d241b
+
+pkgname = ferrishot-bin
