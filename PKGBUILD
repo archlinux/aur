@@ -1,13 +1,13 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname=ollama-lab
-pkgver=0.3.6
+pkgver=0.4.0
 _version=${pkgver/+/-}
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI"
 arch=('x86_64')
-url="https://github.com/chardoncs/ollama-lab"
+url="https://github.com/ollama-lab/ollama-lab"
 license=('MIT')
 groups=()
 depends=(
@@ -39,7 +39,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    '5ffeae2c1a7b5dcccac0f095a0e84f430193a4ea4268672d530392e9cf88c17c'
+    '03b44e9997f9de43f290f8ae418d0ae27acac0563873554abf54ab5fe670f807'
     'ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49'
 )
 validpgpkeys=()
