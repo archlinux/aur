@@ -1,0 +1,5 @@
+[notify-bin]
+source = "github"
+github = "projectdiscovery/notify"
+use_latest_release = true
+prefix = "v"
