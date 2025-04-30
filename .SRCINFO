@@ -1,5 +1,5 @@
 pkgbase = the-password-manager-git
-	pkgdesc = A secure and user-friendly application that allows users to store and manage their passwords efficiently. Built with modern web technologies, it ensures data security with SQLite3.Use system-wide electron.
+	pkgdesc = A secure and user-friendly application that allows users to store and manage their passwords efficiently. Built with modern web technologies, it ensures data security with SQLite3.(Use system-wide electron)
 	pkgver = 0.1.0.r3.gd718d79
 	pkgrel = 1
 	url = https://github.com/Feglawy/The_password_manager
@@ -10,7 +10,6 @@ pkgbase = the-password-manager-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	makedepends = gcc
 	depends = electron30
 	provides = the-password-manager=0.1.0
 	conflicts = the-password-manager

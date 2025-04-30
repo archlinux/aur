@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=the-password-manager-git
-_pkgname="The Password Manager"
+_pkgname='The Password Manager'
 pkgver=0.1.0.r3.gd718d79
 _electronversion=30
 _nodeversion=20
 pkgrel=1
-pkgdesc="A secure and user-friendly application that allows users to store and manage their passwords efficiently. Built with modern web technologies, it ensures data security with SQLite3.Use system-wide electron."
+pkgdesc="A secure and user-friendly application that allows users to store and manage their passwords efficiently. Built with modern web technologies, it ensures data security with SQLite3.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/Feglawy/The_password_manager"
 license=('AGPL-3.0-only')
@@ -20,7 +20,6 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'gcc'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -40,25 +39,25 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -72,6 +71,10 @@ build() {
     sed -i "s/\/\${version}//g" electron-builder.json5
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    npm install
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
 }
