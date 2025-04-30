@@ -14,7 +14,7 @@ depends=(
   'texlive-binextra' # includes latexmk
 )
 optdepends=('python-langdetect: autodetect language of input document')
-source=("https://github.com/seifferth/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/seifferth/$pkgname/archive/v$pkgver.tar.gz")
 b2sums=('c7de43ada7c9ac7d97b44b53001594aca3c011b01451b18cfc8850bf46d6e83a116f75391a163b7937ef7361491fa3a76b572bab25fe5b5e7a2eb3df680b69b3')
 
 build() {
