@@ -1,6 +1,6 @@
 pkgbase = amethyst-player-git
 	pkgdesc = Amethyst is an Electron-based cross-platform audio player with a node-based audio routing system.
-	pkgver = v2.0.7.r386.g49db623
+	pkgver = v2.0.7.r387.g4f2cb6b
 	pkgrel = 1
 	url = https://github.com/Geoxor/amethyst
 	arch = x86_64
