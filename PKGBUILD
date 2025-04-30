@@ -1,8 +1,8 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 
 pkgname=windsurf
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="The new purpose-built IDE to harness magic"
 arch=('x86_64')
 url="https://windsurf.com/"
@@ -50,7 +50,7 @@ options=('!strip')
 
 source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb")
 
-sha256sums=('4742fe6a4591572faf75ec0668d0fedf22b3eeff6a9f344372d9edeede3057f5')
+sha256sums=('0d1bf6aaf7145383d366d87ae4926a74b5ee6b025b2e0e159a098111806dbcc5')
 
 package() {
     bsdtar -xf "data.tar.xz"
