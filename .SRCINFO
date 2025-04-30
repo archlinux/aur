@@ -1,7 +1,7 @@
 pkgbase = apifox-bin
 	pkgdesc = Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试
 	pkgver = 2.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apifox.com/
 	arch = aarch64
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = apifox-bin
 	makedepends = fuse2
 	depends = electron28
 	depends = java-runtime
+	depends = libxcrypt-compat
+	depends = nodejs
 	provides = apifox=2.7.7
 	conflicts = apifox
 	options = !strip

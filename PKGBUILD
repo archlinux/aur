@@ -3,7 +3,7 @@ pkgname=apifox-bin
 _pkgname=Apifox
 pkgver=2.7.7
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试"
 arch=(
     'aarch64'
@@ -17,6 +17,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'java-runtime'
+    'libxcrypt-compat'
+    'nodejs'
 )
 makedepends=(
     'fuse2'
@@ -51,7 +53,9 @@ prepare() {
     fi
     "${srcdir}/${_pkgname}"*.AppImage --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    find "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules" -type d -name ".github" -exec rm -rf {} +
     find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} \;
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/oracledb/build/release/"{*-darwin-*,*-win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
