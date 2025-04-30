@@ -39,11 +39,11 @@ package() {
 
   install -Dm0755 -t "$pkgdir/usr/bin" target/release/bkmr
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  ./target/release/bkmr completion bash > bkmr.sh
+  ./target/release/bkmr completion bash > bkmr.sh 2>/dev/null
   install -Dm644 bkmr.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  ./target/release/bkmr completion fish > fish.fish
+  ./target/release/bkmr completion fish > fish.fish 2>/dev/null
   install -Dm644 fish.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  ./target/release/bkmr completion zsh > zsh.zsh
+  ./target/release/bkmr completion zsh > zsh.zsh 2>/dev/null
   install -Dm644 zsh.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
 # vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
