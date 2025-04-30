@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hugin-messenger-bin
 _pkgname='Hugin Messenger'
-pkgver=0.9.6
+pkgver=0.9.7
 _electronversion=30
 pkgrel=1
 pkgdesc="The new version of the private messaging desktop application powered by the Kryptokrona Blockchain.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aefa89546a942155f8bfb67868930a5899fce526b622f9a5f92862c24eac1e4f'
+sha256sums=('442912de52f8a717dca27b6edb91467bd1bd29ee227f52e1346475b660ccaad7'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -35,6 +35,7 @@ prepare() {
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}/opt/${_pkgname}/resources" -type d \( -name "*arm*" -o -name "linux-ia32" \) -exec rm -rf {} +
     ln -sf "/usr/bin/python3" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/usb/build/node_gyp_bins/python3"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"win32-*
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
