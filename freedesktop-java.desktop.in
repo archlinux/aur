@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Runtime
+Comment=OpenJDK Java @@VER@@ Runtime
+Keywords=java;runtime
+Exec=/usr/lib/jvm/liberica-nik-23-full/bin/java -jar
+Terminal=false
+Type=Application
+Icon=liberica-nik-23-full
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Console
+Comment=OpenJDK Java @@VER@@ Monitoring & Management Console
+Keywords=java;console;monitoring
+Exec=/usr/lib/jvm/liberica-nik-23-full/bin/jconsole
+Terminal=false
+Type=Application
+Icon=liberica-nik-23-full
+Categories=Application;System;

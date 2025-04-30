@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenJDK Java @@VER@@ Shell
+Comment=OpenJDK Java @@VER@@ Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/liberica-nik-23-full/bin/jshell
+Terminal=true
+Type=Application
+Icon=liberica-nik-23-full
+Categories=Application;System;

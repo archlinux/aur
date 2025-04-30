@@ -1,0 +1,13 @@
+post_install() {
+  echo "==> Linking JKS keystore to system-wide ca-certificates"
+  ln -sf /etc/ssl/certs/java/cacerts /usr/lib/jvm/liberica-nik-23-full/lib/security/cacerts
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "==> Removing JKS keystore link"
+  rm -f /usr/lib/jvm/liberica-nik-23-full/lib/security/cacerts
+}
