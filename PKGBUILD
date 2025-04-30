@@ -10,8 +10,8 @@
 # Contributor: Thermi <noel [at] familie-kuntze dot com>
 
 pkgname=strongswan
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
 license=('GPL-2.0-only')
@@ -30,11 +30,11 @@ backup=(
   etc/ipsec.secrets
   etc/swanctl/swanctl.conf
   etc/strongswan.conf
-  etc/strongswan.d/{charon-logging.conf,charon-systemd.conf,charon.conf,pki.conf,pool.conf,starter.conf,swanctl.conf}
+  etc/strongswan.d/{charon-logging.conf,charon-nm.conf,charon-systemd.conf,charon.conf,pki.conf,pool.conf,starter.conf,swanctl.conf}
   etc/strongswan.d/charon/{aesni.conf,agent.conf,attr-sql.conf,attr.conf,bypass-lan.conf,chapoly.conf,cmac.conf,connmark.conf,constraints.conf,counters.conf,curl.conf,dhcp.conf,dnscert.conf,dnskey.conf,drbg.conf,eap-aka-3gpp2.conf,eap-aka.conf,eap-dynamic.conf,eap-gtc.conf,eap-identity.conf,eap-md5.conf,eap-mschapv2.conf,eap-peap.conf,eap-radius.conf,eap-sim-file.conf,eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,eap-ttls.conf,ext-auth.conf,farp.conf,fips-prf.conf,forecast.conf,gmp.conf,ha.conf,kdf.conf,kernel-netlink.conf,ldap.conf,mgf1.conf,ml.conf,mysql.conf,nonce.conf,openssl.conf,pem.conf,pgp.conf,pkcs1.conf,pkcs11.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,radattr.conf,random.conf,resolve.conf,revocation.conf,sha3.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,unity.conf,updown.conf,vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xauth-noauth.conf,xauth-pam.conf,xcbc.conf})
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"{,.sig})
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
-sha512sums=('ea3ffe481db1b161faf9c57a433950bb53b83f458f06c1c535c885d6f7e75fa587ab8714661f8daedaf95714fae9e84ce738173dd9964c2aba55264650f758fa'
+sha512sums=('86aa89242fd5a5569c3e8b73ea9a2b613be1d1674a4384f05ec7e74669cec2ed0b82c0900f797dd374b4c5a165385a4723dc674b84b28498a835a4c8d42a2eff'
             'SKIP')
 
 prepare() {
