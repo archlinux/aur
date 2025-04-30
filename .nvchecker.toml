@@ -1,0 +1,4 @@
+[chaos-client]
+source = "git"
+git = "https://github.com/projectdiscovery/chaos-client.git"
+prefix = "v"

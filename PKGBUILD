@@ -1,21 +1,30 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='chaos'
-pkgname="${_pkgname}-client"
-pkgver=0.1.6
+_binname="chaos"
+pkgname="${_binname}-client"
+pkgver=0.5.2
 pkgrel=1
-pkgdesc='Client to communicate with Chaos DNS API'
-arch=('x86_64' 'armv6h' 'aarch64')
-url='https://github.com/projectdiscovery/chaos-client'
+pkgdesc="Go client to communicate with Chaos DB API"
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+url="https://chaos.projectdiscovery.io"
+_url="https://github.com/projectdiscovery/${pkgname}"
 license=('MIT')
-makedepends=('go')
-provides=("${_pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6d8a848c015a39dd7258eab429d263d3c3ab0dff7a705418f3c18e9a90ea689b')
+depends=('glibc')
+makedepends=('git' 'go')
+_pkgsrc="${_url##*/}"
+source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
+b2sums=('e7a720426da76a07cebf2b810c5950b5377b121a08dbe763ea0c8f66c7f6a2f4fb4ae7e06a6d7ad12d52b63d2b869d5d3bbc9078df444ad318c84def4103eddc')
 
 prepare() {
-  export GOPATH="${srcdir}/gopath"
-  go clean -modcache
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
+  mkdir -p "build"
 }
 
 build() {
@@ -23,17 +32,24 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  cd "${pkgname}-${pkgver}"
-  go build -v -o "${_pkgname}" ."/cmd/${_pkgname}"
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${_binname}" ./"cmd/${_binname}"
 }
 
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
+
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${_binname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 # vim: ts=2 sw=2 et:
