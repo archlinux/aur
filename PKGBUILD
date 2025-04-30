@@ -4,7 +4,7 @@
 
 pkgname='dsr'
 pkgver=1.12.2
-pkgrel=2
+pkgrel=1
 pkgdesc="Video compression tool"
 arch=('x86_64')
 url=https://git.mylloon.fr/Anri/dsr
@@ -24,6 +24,10 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
+
+  install -d "$pkgdir/usr/share/pixmaps"
+  curl -sL "https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png" -o "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
   # Desktop entry
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
@@ -31,7 +35,7 @@ Type=Application
 Name=Video Compressor
 Comment=Compress video files
 Exec=/usr/bin/$pkgname %F
-Icon=/usr/bin/$pkgname
+Icon=$pkgname.png
 Terminal=false
 Categories=Utility;Video;
 MimeType=video/mp4;video/x-matroska;video/webm;
