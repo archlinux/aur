@@ -1,6 +1,6 @@
 pkgbase = distroshelf-git
 	pkgdesc = A GUI for Distrobox Containers
-	pkgver = r137.gf888db5
+	pkgver = r139.g8d7ed3f
 	pkgrel = 1
 	url = https://github.com/ranfdev/DistroShelf
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = distroshelf-git
 	makedepends = git
 	makedepends = gtk4
 	makedepends = libadwaita
+	makedepends = meson
 	depends = cairo
 	depends = dconf
 	depends = distrobox

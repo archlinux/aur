@@ -1,7 +1,7 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 
 pkgname=distroshelf-git
-pkgver=r137.gf888db5
+pkgver=r139.g8d7ed3f
 pkgrel=1
 pkgdesc='A GUI for Distrobox Containers'
 url='https://github.com/ranfdev/DistroShelf'
@@ -20,7 +20,7 @@ depends=(
   'hicolor-icon-theme'
   'pango' 
   )
-makedepends=('cargo' 'git' 'gtk4' 'libadwaita')
+makedepends=('cargo' 'git' 'gtk4' 'libadwaita' 'meson')
 license=('GPL-3.0-only')
 provides=(distroshelf)
 conflicts=(
