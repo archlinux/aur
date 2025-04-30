@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=ezra-bible-app
 pkgver=1.16.3
@@ -38,16 +39,7 @@ prepare() {
 build() {
   cd "$pkgname"
   export npm_config_cache="$srcdir/npm_cache"
-  npm install
-  npm run compile-pug
-  npm run commit-info
-  npm run install-node-prune
-  npm i node-pre-gyp rebuild
-  npm run rebuild
-  npm run prune-node-modules
-  rm -rf /tmp/electron-packager &> /dev/null
-  npm run purge-build-artifacts
-  npm run package-linux
+  npm run build-linux
 }
 
 package() {
