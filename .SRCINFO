@@ -1,0 +1,20 @@
+pkgbase = python-yandex-music-api-git
+	pkgdesc = Unofficial Python library for the Yandex.Music API (git version)
+	pkgver = r666.15fc42b
+	pkgrel = 1
+	url = https://github.com/MarshalX/yandex-music-api
+	arch = any
+	license = LGPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-aiofiles
+	depends = python-aiohttp
+	depends = python-requests
+	provides = python-yandex-music-api
+	conflicts = python-yandex-music-api
+	source = git+https://github.com/MarshalX/yandex-music-api.git
+	sha256sums = SKIP
+
+pkgname = python-yandex-music-api-git
