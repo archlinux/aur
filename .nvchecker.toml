@@ -1,0 +1,5 @@
+[tldfinder-bin]
+source = "github"
+github = "projectdiscovery/tldfinder"
+use_latest_release = true
+prefix = "v"
