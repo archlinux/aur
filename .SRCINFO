@@ -1,7 +1,7 @@
 pkgbase = infoz-bin
-	pkgdesc = See your system information graphically.Prebuilt version.
+	pkgdesc = See your system information graphically.(Prebuilt version)
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erfanbanaei/infoz
 	arch = x86_64
 	license = LicenseRef-unknown
