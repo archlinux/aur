@@ -1,0 +1,22 @@
+pkgbase = lexy
+	pkgdesc = A CLI tool to fetch tutorials from Learn X in Y Minutes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/antoniorodr/lexy
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = bat
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-click
+	depends = python-requests
+	depends = python-typer
+	source = lexy-0.1.0.tar.gz::https://github.com/antoniorodr/lexy/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lexy
