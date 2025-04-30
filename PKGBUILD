@@ -27,26 +27,24 @@ pkgver() {
 }
 
 prepare() {
-    cd ${pkgname%-git}
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd ${pkgname%-git}
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${pkgname%-git}"
-    export CARGO_HOME="$srcdir/cargo"
-    export CARGO_TARGET_DIR="target"
-    export RUSTFLAGS="--remap-path-prefix=${srcdir}=/"
+  cd "${pkgname%-git}"
+  export CARGO_HOME="$srcdir/cargo"
+  export CARGO_TARGET_DIR="target"
+  export RUSTFLAGS="--remap-path-prefix=${srcdir}=/"
 
-    [[ -n ${_sccache} ]] && export RUSTC_WRAPPER=sccache
+  [[ -n ${_sccache} ]] && export RUSTC_WRAPPER=sccache
 
-    cargo build --release --locked
+  cargo build --release --locked
 }
 
 package() {
   cd ${srcdir}/${pkgname%-git}
-  # Install binary
   install -Dm755 "target/release/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
-  # Install license
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.md"
 }
