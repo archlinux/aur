@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -29,6 +29,7 @@ depends=("android-${_android_arch}-alsa-lib"
          "android-${_android_arch}-libbluray"
          "android-${_android_arch}-libbs2b"
          "android-${_android_arch}-libdrm"
+         "android-${_android_arch}-libidn2"
          "android-${_android_arch}-libiec61883"
          "android-${_android_arch}-libjxl"
          "android-${_android_arch}-libmodplug"
@@ -229,6 +230,8 @@ build() {
         --enable-libxml2 \
         --enable-libxvid \
         --enable-opencl \
+        --enable-jni \
+        --enable-mediacodec \
         ${extra_options}
     make $MAKEFLAGS
 }
