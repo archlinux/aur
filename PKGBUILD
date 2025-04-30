@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BgeeCall
-_pkgver=1.22.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4c2e44c5068cb6d4f72ce57b41232eba')
-b2sums=('364a7a4adaf804ecc237d9a93efdaca18f86eae8591c6998d261bbadb23c2af61319cd82c9ed1da22ecce9a0f654636851b752d9a1400078975a3030a3496725')
+md5sums=('a1170835d1eaa6144bd8b55ecb2110ad')
+b2sums=('7b68f0ad1c30e9c8b4a1a31632d642812d81afb7c00529b86779a4ca6d67c84657b4e72bc6361f0a09df806ce6c3bc5d3f3487010d3c460a8d039979c2c4e969')
 
 build() {
   mkdir build
