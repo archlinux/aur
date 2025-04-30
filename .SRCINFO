@@ -1,6 +1,6 @@
 pkgbase = r-broom.helpers
 	pkgdesc = Helpers for Model Coefficients Tibbles
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom.helpers
 	arch = any
@@ -62,8 +62,9 @@ pkgbase = r-broom.helpers
 	optdepends = r-tidycmprsk
 	optdepends = r-vgam
 	optdepends = r-glmtoolbox
-	source = https://cran.r-project.org/src/contrib/broom.helpers_1.20.0.tar.gz
-	md5sums = 35765a7529de9eed8db66f495f9aa344
-	b2sums = 9710c6d585cef46103a0a40dc67624e188f4e5dfdf8d11de52e3f921fcd7da00f18d1d7eb10131bfcde348332af14b6b6c32c0277ab110f938b611ac3a3df16e
+	optdepends = r-svyvgam
+	source = https://cran.r-project.org/src/contrib/broom.helpers_1.21.0.tar.gz
+	md5sums = 450c12c4d0db7be693cb5c505a74c189
+	b2sums = f1bfb114dc2b62ed1b192b6c73719563f87b28444bc06ecf7499f92bc004c70a1a7fee5733d01f3bcafc2edc83b3a3b71e68830e87206bdda6b0a44754d7f5b5
 
 pkgname = r-broom.helpers
