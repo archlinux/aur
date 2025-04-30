@@ -1,0 +1,14 @@
+pkgbase = qw-git
+	pkgdesc = Terminal text editor with vim-like keybindings
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/bleudev/qw
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = qw
+	source = qw-git::git+https://github.com/bleudev/qw.git
+	sha256sums = SKIP
+
+pkgname = qw-git
