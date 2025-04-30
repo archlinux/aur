@@ -1,0 +1,4 @@
+[mapcidr]
+source = "git"
+git = "https://github.com/projectdiscovery/mapcidr.git"
+prefix = "v"
