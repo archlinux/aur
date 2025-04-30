@@ -4,8 +4,8 @@
 
 _pyname=deepl
 pkgname=python-${_pyname}
-pkgver=1.19.1
-pkgrel=2
+pkgver=1.22.0
+pkgrel=1
 pkgdesc='Python library for the DeepL API'
 arch=(any)
 url="https://github.com/${_pyname}com/${_pyname}-python"
@@ -17,8 +17,12 @@ makedepends=(git
 optdepends=('python-keyring: for support storing API Key')
 source=("git+$url.git?signed#tag=v$pkgver")
 validpgpkeys=('D84A62C6CA4D3E3D6656083438FCACAAFD2C06B8'  # Jan Ebbing <Jan.Ebbing@deepl.com>
-              'DBDC63E97C526204335805941FA7A782EC90634E') # Daniel Jones <daniel.jones@deepl.com>
-sha256sums=('1bc91a2a93079b394f1fa269bbd7d9771d6df864c57fe4d92483971352daa164')
+              'DBDC63E97C526204335805941FA7A782EC90634E'  # Daniel Jones <daniel.jones@deepl.com> (@daniel-jones-dev)
+              '352C00301BFFB7346807D3F48D109F2777EDE78F'  # <jason.gardella@deepl.com> (@jason-gardella-deepl)
+              '320B842A5BBF81C5C08AC880EBA3EA088712B620'  # <brianna.delgado@deepl.com> (@BriannaDelgado)
+              '8FE39865F20E9B0DADEF7B00B7F1A94E099738CD'  # <leonc@alum.mit.edu> (@leoncheng57)
+              '7E7DC2C6F2E67A2C5E7B418606C6A25989EC87F1') # <leon.cheng@deepl.com> (@leoncheng57)
+sha256sums=('e870649e20762e1b83df2b5a4dec1a2fb4c00cee387de8bbfbbe78c45d2fade3')
 
 build() {
 	cd "$_pyname-python"
