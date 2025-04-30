@@ -1,0 +1,29 @@
+--- /usr/include/mbedtls/mbedtls_config.h	2025-04-06 00:26:13.000000000 -0400
++++ myconfig.h	2025-04-30 12:55:50.270574228 -0400
+@@ -2024,7 +2024,7 @@
+  *
+  * Uncomment this to enable support for use_srtp extension.
+  */
+-//#define MBEDTLS_SSL_DTLS_SRTP
++#define MBEDTLS_SSL_DTLS_SRTP
+ 
+ /**
+  * \def MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE
+@@ -2142,7 +2142,7 @@
+  *
+  * Uncomment this to allow your own alternate threading implementation.
+  */
+-//#define MBEDTLS_THREADING_ALT
++#define MBEDTLS_THREADING_ALT
+ 
+ /**
+  * \def MBEDTLS_THREADING_PTHREAD
+@@ -2153,7 +2153,7 @@
+  *
+  * Uncomment this to enable pthread mutexes.
+  */
+-#define MBEDTLS_THREADING_PTHREAD
++//#define MBEDTLS_THREADING_PTHREAD
+ 
+ /**
+  * \def MBEDTLS_USE_PSA_CRYPTO
