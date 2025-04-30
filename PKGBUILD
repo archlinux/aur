@@ -1,0 +1,49 @@
+# Maintainer: Kimiblock Moe
+
+pkgname=continuwuity-git
+pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
+url="https://forgejo.ellis.link/continuwuation/continuwuity"
+license=("Apache-2.0")
+arch=("x86_64")
+pkgver=0.5.0.5183.g4158c1cf
+pkgrel=1
+makedepends=("rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
+depends=("gcc-libs" "glibc" "liburing" "jemalloc")
+source=("git+https://forgejo.ellis.link/continuwuation/continuwuity.git")
+sha256sums=(SKIP)
+provides=("conduwuit" "continuwuity")
+conflicts=("conduwuit")
+options=(!lto)
+backup=("etc/conduwuit/conduwuit.toml")
+
+function pkgver() {
+	cd continuwuity
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+function prepare() {
+	cd "${srcdir}/continuwuity"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	export CONDUWUIT_VERSION_EXTRA=$(git rev-parse --short HEAD)
+}
+
+function build() {
+	cd "${srcdir}/continuwuity"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features --locked
+}
+
+function check() {
+	cd "${srcdir}/continuwuity"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --locked --all-features
+}
+
+function package() {
+	install -Dm755 "${srcdir}/continuwuity/target/release/conduwuit" "${pkgdir}/usr/bin/conduwuit"
+	install -Dm644 "${srcdir}/continuwuity/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/continuwuity/conduwuit-example.toml" "${pkgdir}/etc/conduwuit/conduwuit.toml"
+	install -Dm644 "${srcdir}/continuwuity/arch/conduwuit.service" "${pkgdir}/usr/lib/systemd/system/continuwuity.service"
+}
