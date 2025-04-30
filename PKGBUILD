@@ -2,7 +2,7 @@
 # Contributor and Ahthor: qier22 <qier222@outlook.com>
 pkgname=yesplaymusic-git
 _pkgname=YesPlayMusic
-pkgver=0.4.9.r0.g022009b
+pkgver=0.4.9.r1.gc7e6915
 _electronversion=13
 _nodeversion=16
 pkgrel=1
@@ -29,7 +29,7 @@ makedepends=(
     'git'
     'curl'
     'yarn'
-    'gcc'
+    'gendesk'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -49,14 +49,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname//-/.}"
@@ -78,8 +78,9 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
+            echo 'networkConcurrency 10'
         } >> .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g;s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     cp .env.example .env
@@ -88,6 +89,10 @@ build() {
                                 @unblockneteasemusic/rust-napi-linux-x64-gnu@0.4.0 \
                                 @unblockneteasemusic/rust-napi-linux-arm64-gnu@0.4.0 \
                                 @unblockneteasemusic/rust-napi-linux-arm-gnueabihf@0.4.0
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run electron:build-linux --dir
 }
 package() {
