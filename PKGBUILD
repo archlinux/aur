@@ -12,7 +12,7 @@
 
 _pkgname="vlc"
 pkgname="vlc-git"
-pkgver=4.0.0.r33184.g82e5f6c
+pkgver=4.0.0.r33753.g562bc83
 pkgrel=1
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
 url='https://code.videolan.org/videolan/vlc'
@@ -45,15 +45,15 @@ depends=(
   'lua'
   'qt6-base'
   'qt6-declarative'
-  'qt6-svg'
   'rnnoise'
   'taglib'
   'xcb-util-keysyms'
 )
 makedepends=(
+  'ffnvcodec-headers'
   'git'
   'qt6-shadertools'
-  'qt6-tools'
+  'vulkan-headers'
   'wayland-protocols'
 )
 optdepends=(
@@ -282,7 +282,6 @@ build() {
 
 package() {
   cd "$_pkgsrc"
-
   make DESTDIR="${pkgdir}" install
 
   for res in 16 32 48 128 256; do

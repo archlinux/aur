@@ -1,15 +1,16 @@
 pkgbase = vlc-git
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player
-	pkgver = 4.0.0.r33184.g82e5f6c
+	pkgver = 4.0.0.r33753.g562bc83
 	pkgrel = 1
 	url = https://code.videolan.org/videolan/vlc
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	license = LGPL-2.1-or-later
+	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = qt6-shadertools
-	makedepends = qt6-tools
+	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = aom
 	makedepends = aribb25
@@ -88,7 +89,6 @@ pkgbase = vlc-git
 	depends = lua
 	depends = qt6-base
 	depends = qt6-declarative
-	depends = qt6-svg
 	depends = rnnoise
 	depends = taglib
 	depends = xcb-util-keysyms
@@ -148,8 +148,8 @@ pkgbase = vlc-git
 	optdepends = systemd-libs: udev services discovery
 	optdepends = twolame: TwoLAME mpeg2 encoder plugin
 	optdepends = zvbi: VBI/Teletext/webcam/v4l2 capture/decoding
-	provides = vlc=4.0.0.r33184.g82e5f6c
-	provides = libvlc=4.0.0.r33184.g82e5f6c
+	provides = vlc=4.0.0.r33753.g562bc83
+	provides = libvlc=4.0.0.r33753.g562bc83
 	conflicts = vlc
 	conflicts = libvlc
 	options = !emptydirs
