@@ -1,0 +1,32 @@
+#!/usr/bin/openrc-run
+
+description="Firmware update daemon"
+name="fwupd"
+command="/usr/lib/fwupd/fwupd"
+command_background=true
+pidfile="/run/fwupd.pid"
+
+depend() {
+  need dbus
+  before xdm display-manager
+}
+
+
+### Configuration settings to be set in /etc/conf.d/fwupd
+
+if [ -n "${_FWUPD_COMMAND}" ]; then
+  command="${_FWUPD_COMMAND}"
+fi
+if [ -n "${_FWUPD_ARGS}" ]; then
+  command_args="${_FWUPD_ARGS}"
+fi
+if [ -n "${_FWUPD_USER}" ]; then
+  if [ -n "${_FWUPD_GROUP}" ]; then
+    command_user="${_FWUPD_USER}:${_FWUPD_GROUP}"
+  else
+    command_user="${_FWUPD_USER}"
+  fi
+fi
+if [ -n "${_FWUPD_PIDFILE}" ]; then
+  pidfile="${_FWUPD_PIDFILE}"
+fi

@@ -1,0 +1,39 @@
+# Maintainer: dreieck
+
+_pkgname=fwupd-openrc
+pkgname="${_pkgname}"
+pkgver=20250430.01
+pkgrel=1
+pkgdesc='OpenRC init script for fwupd daemon.'
+url="https://github.com/fwupd/fwupd"
+license=('GPL-3.0-or-later')
+arch=('any')
+depends=('fwupd')
+makedepends=()
+optdepends=('openrc: To make use of this initscript.')
+provides=()
+replaces=()
+conflicts=()
+backup=(etc/conf.d/fwupd)
+options=('!emptydirs')
+source=(
+  'fwupd.conf.d'
+  'fwupd.openrc-initd'
+  'copying-info.txt'
+  'license-gpl3.txt::https://www.gnu.org/licenses/gpl-3.0.txt'
+)
+sha256sums=(
+  'a89e41ef3ec5c629188b2e08d7188dfc5d020d00cfe1d3ffbbfa0375ed0b3c95' # fwupd.conf.d
+  '377b9771e9dff84d08626a8567b641f5742bef0fbdb8f541c4535d76eb0f151e' # fwupd.openrc-initd
+  'c7afe3294ddf8c26f83a8dc513fdf29934d828346d8fe18836229044b8086fcb' # copying-info.txt
+  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' # license-gpl3.txt
+)
+
+package() {
+  install -D -v -m755 "${srcdir}/fwupd.openrc-initd" "${pkgdir}/etc/init.d/fwupd"
+  install -D -v -m644 "${srcdir}/fwupd.conf.d" "${pkgdir}/etc/conf.d/fwupd"
+
+  for _license in 'copying-info.txt' 'license-gpl3.txt'; do
+    install -D -v -m644 "${srcdir}/${_license}" "${pkgdir}/usr/share/licenses/${pkgname}/${_license}"
+  done
+}
