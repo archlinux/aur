@@ -1,0 +1,23 @@
+pkgbase = r-dartrverse
+	pkgdesc = Install and Load the 'dartRverse' Suits of Packages
+	pkgver = 1.0.6
+	pkgrel = 4
+	url = https://cran.r-project.org/package=dartRverse
+	arch = any
+	license = GPL-3.0-or-later
+	depends = r-httr
+	depends = r-devtools
+	depends = r-rcurl
+	depends = r-cli
+	depends = r-rlang
+	optdepends = r-dartr.base
+	optdepends = r-dartr.sim
+	optdepends = r-dartr.captive
+	optdepends = r-dartr.popgen
+	optdepends = r-dartr.spatial
+	optdepends = r-dartr.data
+	source = https://cran.r-project.org/src/contrib/dartRverse_1.0.6.tar.gz
+	md5sums = 234e3e944fdaba9f592038a1391df15c
+	b2sums = d252579a58e4235fb45531b83fda974d8382744693995e21020fc226dc3c9fce70f941c15861810129809b451b0d861af470ee891ce99fd5fd4f5cee13900f62
+
+pkgname = r-dartrverse
