@@ -1,26 +1,86 @@
 pkgbase = coreboot-utils
 	pkgdesc = Tools and utilities to work with coreboot firmware
-	pkgver = 24.02.01
+	pkgver = 24.05
 	pkgrel = 1
-	url = https://www.coreboot.org/
+	url = https://www.coreboot.org
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = go
+	depends = acpica
+	depends = dmidecode
+	depends = glibc
+	depends = pciutils
+	depends = python
+	depends = zlib
+	source = https://coreboot.org/releases/coreboot-24.05.tar.xz
+	source = https://coreboot.org/releases/coreboot-24.05.tar.xz.sig
+	validpgpkeys = 574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7
+	sha256sums = e22afdbac40068ba687fd975f03f6b958599a32e70f539d9d0c74d16a63d7cea
+	sha256sums = SKIP
+
+pkgname = acpidump-all
+	pkgdesc = Walk through all ACPI tables with their addresses
+	depends = bash
+
+pkgname = autoport
+	pkgdesc = Automated porting coreboot to Sandy Bridge/Ivy Bridge platforms
+	depends = acpica
+	depends = dmidecode
+	depends = ectool
+	depends = glibc
+	depends = inteltool
+	depends = pciutils
+	depends = superiotool
+
+pkgname = cbfstool
+	pkgdesc = Management utility for CBFS formatted ROM images
+	depends = glibc
+	optdepends = qemu-system-x86
+
+pkgname = cbmem
+	pkgdesc = coreboot console log reader
+	depends = glibc
+
+pkgname = ectool
+	pkgdesc = Dump the RAM of a laptop's Embedded/Environmental Controller (EC)
+	depends = glibc
+
+pkgname = ifdtool
+	pkgdesc = Extract and dump Intel Firmware Descriptor information
 	depends = glibc
 	depends = pciutils
 	depends = zlib
-	optdepends = python: me_cleaner support
-	provides = ectool
-	source = https://coreboot.org/releases/coreboot-24.02.01.tar.xz
-	source = https://coreboot.org/releases/coreboot-24.02.01.tar.xz.sig
-	validpgpkeys = 574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7
-	validpgpkeys = 1504DB83B93905F5160EB3FD86EB211649573F59
-	validpgpkeys = C75AAA4E5C9DB017C1DC6EDBDB1B0EC29202D874
-	validpgpkeys = 7642F206B20B77DAEB5B611A53C88CBFBC4F65F3
-	validpgpkeys = D0BB76A6FB81653A2B175BC2DB682C092C49D476
-	validpgpkeys = EB51718A2D22AB1DA92C74B11F991B62CCC9259B
-	validpgpkeys = 3D705758E41EB17A3D28754941050E818DCB9057
-	sha256sums = e56f5c0c9008bfdec1c4be6409ac093680140f9441efd3d5e47bdeffcbf77e50
-	sha256sums = SKIP
 
-pkgname = coreboot-utils
+pkgname = inteltool
+	pkgdesc = Provides information about Intel CPU/chipset hardware configuration
+	depends = glibc
+	depends = pciutils
+	depends = zlib
+
+pkgname = intelvbttool
+	pkgdesc = Parse VBT from VGA BIOS
+	depends = glibc
+
+pkgname = me_cleaner
+	pkgdesc = Tool for partial deblobbing of Intel ME/TXE firmware images
+	depends = python
+
+pkgname = msrtool
+	pkgdesc = Dump chipset-specific MSR registers
+	depends = glibc
+	depends = pciutils
+	depends = zlib
+
+pkgname = nvramtool
+	pkgdesc = Read and write coreboot parameters and display information from the coreboot table in CMOS/NVRAM
+	depends = glibc
+
+pkgname = pmh7tool
+	pkgdesc = Dumps, reads and writes PMH7 registers on Lenovo ThinkPads
+	depends = glibc
+
+pkgname = superiotool
+	pkgdesc = User-space utility to detect Super I/O of a mainboard and provide detailed information about the register contents of the Super I/O
+	depends = glibc
+	depends = pciutils
+	depends = zlib
