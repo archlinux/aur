@@ -1,16 +1,15 @@
 pkgbase = mkpdf
 	pkgdesc = A simple wrapper around pandoc and latexmk
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seifferth/mkpdf
 	arch = any
-	license = GPL3
-	depends = texlive-core
+	license = GPL-3.0-only
 	depends = biber
 	depends = pandoc
+	depends = texlive-binextra
 	optdepends = python-langdetect: autodetect language of input document
 	source = https://github.com/seifferth/mkpdf/archive/v0.3.2.tar.gz
-	md5sums = 486d63953d9c6d68c61ba2c23ea71231
+	b2sums = c7de43ada7c9ac7d97b44b53001594aca3c011b01451b18cfc8850bf46d6e83a116f75391a163b7937ef7361491fa3a76b572bab25fe5b5e7a2eb3df680b69b3
 
 pkgname = mkpdf
-
