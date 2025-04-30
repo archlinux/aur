@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=
+Exec=/usr/bin/dwex
+GenericName=GUI viewer for DWARF debug information
+Icon=dwex
+Name=DWARF Explorer
+Path=
+StartupNotify=true
+Terminal=false
+Type=Application
