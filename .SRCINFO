@@ -1,0 +1,22 @@
+pkgbase = aix-bin
+	pkgdesc = CLI tool to interact with Large Language Models (LLM) APIs
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/aix
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = aix
+	conflicts = aix
+	source_aarch64 = aix-0.0.5-aarch64.zip::https://github.com/projectdiscovery/aix/releases/download/v0.0.5/aix_0.0.5_linux_arm64.zip
+	sha256sums_aarch64 = 5cccb85941be3117454ca9ab8a80a22f7167cd2ab07f3600a2bbca2daad9ad2d
+	source_armv7h = aix-0.0.5-armv7h.zip::https://github.com/projectdiscovery/aix/releases/download/v0.0.5/aix_0.0.5_linux_arm.zip
+	sha256sums_armv7h = d7d47a764ed14c12256b15469a396da51df9336052dcced30345b7f74241dff3
+	source_i686 = aix-0.0.5-i686.zip::https://github.com/projectdiscovery/aix/releases/download/v0.0.5/aix_0.0.5_linux_386.zip
+	sha256sums_i686 = 2dfc14340438e71058dc9d297fb8dd260b4f401d682a8d34e4223a7ec5104997
+	source_x86_64 = aix-0.0.5-x86_64.zip::https://github.com/projectdiscovery/aix/releases/download/v0.0.5/aix_0.0.5_linux_amd64.zip
+	sha256sums_x86_64 = 7b16825fcd183e5a7b99dcb8fc353d8a0baa96aaa806df1061da0a1935d4dee3
+
+pkgname = aix-bin

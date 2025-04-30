@@ -1,0 +1,5 @@
+[aix-bin]
+source = "github"
+github = "projectdiscovery/aix"
+use_latest_release = true
+prefix = "v"
