@@ -1,7 +1,7 @@
 # Maintainer: Octopus118 <idlansdowne at gmail dot com>
 
 pkgname=foxglove-bin
-pkgver=2.25.1
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='An integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('foxglove-studio')
 replaces=('foxglove-studio-bin')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://get.foxglove.dev/desktop/v$pkgver/foxglove-studio-$pkgver-linux-amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::https://get.foxglove.dev/desktop/v$pkgver/foxglove-studio-$pkgver-linux-arm64.deb")
-sha256sums_x86_64=('06ea14b9156028fafde82a5a6136c1dda2fb5e258088723dc81050b236a224bc')
-sha256sums_aarch64=('b1243288d04f451ea6452f2deacd6395f6d349ccbbe4cf082832a215158c39bb')
+sha256sums_x86_64=('b161ddd2703fab6ec4fae7ee6f83cbe51eec54a47fc6f8189bdf1f4713ebcbd9')
+sha256sums_aarch64=('d9a01af2e696438257a2628437882c75d9ce5ff70ea7a8efab347e9f44333469')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
