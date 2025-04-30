@@ -1,0 +1,4 @@
+[tldfinder]
+source = "git"
+git = "https://github.com/projectdiscovery/tldfinder.git"
+prefix = "v"

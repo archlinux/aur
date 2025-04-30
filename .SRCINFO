@@ -1,0 +1,17 @@
+pkgbase = tldfinder
+	pkgdesc = A streamlined tool for discovering private TLDs for security research
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/tldfinder
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = tldfinder::git+https://github.com/projectdiscovery/tldfinder.git#tag=v0.0.2
+	b2sums = 05415f984bee05583453fb0eaa47f4aa074a97d98cf50f2e56c7799ce2366097a381a5bff76d4c3d68a3f57abed54b826c371d81939d111d0311759f4cb93a27
+
+pkgname = tldfinder
