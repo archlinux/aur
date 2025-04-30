@@ -1,0 +1,15 @@
+pkgbase = wallrust
+	pkgdesc = A blazingly fast and feature-rich tool to extract color palettes from images | written in Rust
+	pkgver = 20250430
+	pkgrel = 1
+	url = https://github.com/prime-run/wallrust
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = imagemagick
+	conflicts = wallrust-bin
+	source = wallrust::git+https://github.com/prime-run/wallrust.git
+	sha256sums = SKIP
+
+pkgname = wallrust
