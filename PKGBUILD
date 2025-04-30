@@ -1,8 +1,9 @@
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=8.3.0
+pkgver=8.6.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -21,7 +22,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
-sha256sums=('a88d7c519285f78ba8550342aaed5437fbc1c548102183ce8b394c5fbec2a8e6')
+sha256sums=('4e5c1db1e84711a98120cd396ac86129326f51b3fadf3a3fe1ad1ecd58a5dad4')
 
 prepare() {
   cd "$srcdir"
