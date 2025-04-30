@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.5.228
+pkgver=5.5.229
 _electronversion=18
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
@@ -34,8 +34,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('6383c11296d44fb582ffef885503b0da65760dfa656e75392bc326051d4bf6f9')
-sha256sums_x86_64=('7fa582c8270c83e421a45cbd5eee1a73ba59d1a2f011ed465497ec89538b5b48')
+sha256sums_aarch64=('eaed3349e16bc8450e2d795ce6645773daa33f58babd9cbe6936cc5fa1ff9181')
+sha256sums_x86_64=('295ea0ccf8aeff8e626ddccc1bbd3bbddd7417aa8b726f9a7f02566ba5a5cb05')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -44,7 +44,9 @@ prepare() {
         s/@cfgdirname@/${_appname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
@@ -54,6 +56,7 @@ prepare() {
         s/devTools,/\/\/devTools,/g
     " "${srcdir}/app.asar.unpacked/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/steamworks.js/dist/"{osx,win64}
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
