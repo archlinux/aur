@@ -1,0 +1,4 @@
+[uncover]
+source = "git"
+git = "https://github.com/projectdiscovery/uncover.git"
+prefix = "v"
