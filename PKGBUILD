@@ -3,10 +3,10 @@
 _pkgname=gerbera-openrc
 pkgname="${_pkgname}"
 pkgver=20211103.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenRC init script for gerbera daemon.'
 url="https://gerbera.io/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('any')
 depends=('gerbera')
 makedepends=()
@@ -25,7 +25,7 @@ source=(
 sha256sums=(
   '6b6e6f54c93618790de68474a7563936f0e33bee9184c0cb39ddf92648b2db12' # gerbera.conf.d
   '476f0ec0de1e99c1f04d5e94c45d3d85c3763d6afefb3f6b24c419ff37b904c5' # gerbera.openrc-initd
-  '8921a140fb29beec3e9a32cfc9a85c99d1c8718db806656cc443cbaf2bee8f1a' # copying-info.txt
+  '1ddf07ffa45a6c1a7f8f6a01a6ab5dfb22d7ae5bbfdaa9fc28385f238bc63b86' # copying-info.txt
   '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986' # license-gpl3.txt
 )
 
