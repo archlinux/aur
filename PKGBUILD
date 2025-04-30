@@ -2,7 +2,7 @@
 
 pkgname=easyterm
 _gitname=easyterm
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=2
 pkgdesc='Serial Port Terminal Emulator'
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ provides=(easyterm)
 replaces=(easyterm)
 conflicts=(easyterm-git)
 
-source=('easyterm::git+https://github.com/marker5a/EasyTerm.git#tag=v0.9.2')
+source=('easyterm::git+https://github.com/marker5a/EasyTerm.git#tag=v0.9.3')
 md5sums=('SKIP')
 
 build() {
