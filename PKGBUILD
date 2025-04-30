@@ -10,7 +10,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=575.51.02
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA kernel modules - module sources (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -23,11 +23,13 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch'
         '120-nvidia-linux-rt-gift.patch'
-        '130-nvidia-make-modeset-fbdev-default.patch')
+        '130-nvidia-make-modeset-fbdev-default.patch'
+        '140-nvidia-gcc15-fix.patch')
 sha256sums=('fb8f04643ec826b617aa05961bb35653bdd73d03cdb945262819aba19a6a9018'
             '2d14bfda380cdcaae3c0dd0cd0a0220a849f6c3664815b13b5b5f04aea5c27b5'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
-            'f120d0d474647edf722859615d95a0ed726a5bfd9525b211a9b803ca52efded0')
+            'f120d0d474647edf722859615d95a0ed726a5bfd9525b211a9b803ca52efded0'
+            'ddd4384b87aa1032b9cf467f90b5c49de2db2f42c9ef5a2015e3c7d8ca145e9f')
 
 prepare() {
     # extract the source file
@@ -38,6 +40,7 @@ prepare() {
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-change-dkms-conf.patch"
     patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-linux-rt-gift.patch"
     patch -d "$_pkg" -Np1 -i "${srcdir}/130-nvidia-make-modeset-fbdev-default.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/140-nvidia-gcc15-fix.patch"
 }
 
 package() {

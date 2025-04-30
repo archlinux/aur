@@ -1,0 +1,10 @@
+--- a/kernel/Kbuild
++++ b/kernel/Kbuild
+@@ -139,6 +139,7 @@ EXTRA_CFLAGS += -DNV_UVM_ENABLE
+ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
+ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+ EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
++EXTRA_CFLAGS += -std=gnu17
+ 
+ #
+ # Detect SGI UV systems and apply system-specific optimizations.
