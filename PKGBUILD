@@ -1,7 +1,7 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 
 pkgname=payetools-rti
-pkgver=24.1.24086.542
+pkgver=25.1.25092.226
 pkgrel=1
 pkgdesc="UK HMRC Basic PAYE Tools for Linux"
 arch=('x86_64')
@@ -22,24 +22,23 @@ source=(
 	)
 noextract=( "$pkgname-$pkgver-linux.zip" )
 sha256sums=(
-        "40e5ba2e8aa0d34d4072a597fd3387eb0bc8dae018e2a37216f43309511ef155"
+      "34c16be81b9299b2a634e5a103864568ba3694dfa9948da370e75aba13e3c7b1"
 )
 
 prepare() {
-  rm -fr ${srcdir}/opt || true
   unzip -o "$pkgname-$pkgver-linux.zip"
+  ./Basic_PAYE_Tools-${pkgver}-x86_64.AppImage --appimage-extract > /dev/null
 }
 
 build() {
-  export HOME=${srcdir}/tmp
-  ./$pkgname-$pkgver-linux --prefix ${srcdir}/opt/HMRC/basic-paye-tools --check_for_updates 0 --mode unattended --debuglevel 4
-  sed -i "s#${srcdir}##g" ${srcdir}/tmp/.local/share/applications/*.desktop
+  sed -i "s#Exec=.*#Exec=/opt/HMRC/basic-paye-tools/usr/bin/bptshell#g" "${srcdir}/squashfs-root/Basic PAYE Tools.desktop"
+  sed -i "s#Icon=.*#Icon=/opt/HMRC/basic-paye-tools/usr/share/icons/hicolor/scalable/apps/bptshell.svg#g" "${srcdir}/squashfs-root/Basic PAYE Tools.desktop"
+
 }
 
 package() {
-  install -d ${pkgdir}/opt/HMRC/
-  cp -fr ${srcdir}/opt/HMRC/basic-paye-tools ${pkgdir}/opt/HMRC/
-  install -D -t ${pkgdir}/usr/share/licenses/payetools-rti/ ${srcdir}/opt/HMRC/basic-paye-tools/license.txt
-  install -D -t ${pkgdir}/usr/share/applications/ ${srcdir}/tmp/.local/share/applications/*.desktop
-  mv ${pkgdir}/opt/HMRC/basic-paye-tools/rti.cfg ${pkgdir}/opt/HMRC/basic-paye-tools/rti.cfg.template
+  install -d ${pkgdir}/opt/HMRC/basic-paye-tools
+  cp -fr ${srcdir}/squashfs-root/usr ${pkgdir}/opt/HMRC/basic-paye-tools/
+  install -D -t ${pkgdir}/usr/share/licenses/payetools-rti/ ${srcdir}/squashfs-root/usr/bptserver/license.txt
+  install -D -t ${pkgdir}/usr/share/applications/ ${srcdir}/squashfs-root/Basic\ PAYE\ Tools.desktop
 }
