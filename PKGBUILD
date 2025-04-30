@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=3.5.7.r4.ga817524
+pkgver=3.5.8.r1.g4f5a53e
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
@@ -22,6 +22,7 @@ makedepends=(
     'git'
     'python-pip'
     'gendesk'
+    'patchelf'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -42,7 +43,7 @@ prepare() {
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
-    sed -i "/win32/d" requirements.txt
+    sed -i "s/6.7.2/6.9.0/g" requirements.txt
     sed -i "s/nuitka/.\/bin\/nuitka/g" deploy.py
     python -m venv ./
     ./bin/pip install --timeout=300 -r requirements.txt
