@@ -1,0 +1,22 @@
+pkgbase = urlfinder-bin
+	pkgdesc = High-speed tool for passively gathering URLs, optimized for efficient and comprehensive web asset discovery
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/urlfinder
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	provides = urlfinder
+	conflicts = urlfinder
+	source_aarch64 = urlfinder-0.0.3-aarch64.zip::https://github.com/projectdiscovery/urlfinder/releases/download/v0.0.3/urlfinder_0.0.3_linux_arm64.zip
+	sha256sums_aarch64 = 6af33108d6b76bbd261fa696c69dccf44b9eb5a68dc47b4c41df5cf32f8b8281
+	source_armv7h = urlfinder-0.0.3-armv7h.zip::https://github.com/projectdiscovery/urlfinder/releases/download/v0.0.3/urlfinder_0.0.3_linux_arm.zip
+	sha256sums_armv7h = 726079d945ca1adca43248f8048a2254a99c40f132b71e3cffd54502b764f41c
+	source_i686 = urlfinder-0.0.3-i686.zip::https://github.com/projectdiscovery/urlfinder/releases/download/v0.0.3/urlfinder_0.0.3_linux_386.zip
+	sha256sums_i686 = 937da53500a1a297f44ca7353dad7e5d5839d7589a280d6d63cec4d41ce9275e
+	source_x86_64 = urlfinder-0.0.3-x86_64.zip::https://github.com/projectdiscovery/urlfinder/releases/download/v0.0.3/urlfinder_0.0.3_linux_amd64.zip
+	sha256sums_x86_64 = 655ea7378a0555149831dcc4c3f6aef34f3ce27eda0ce2f2721e2ca5526015d4
+
+pkgname = urlfinder-bin

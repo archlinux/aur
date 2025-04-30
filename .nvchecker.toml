@@ -1,0 +1,5 @@
+[urlfinder-bin]
+source = "github"
+github = "projectdiscovery/urlfinder"
+use_latest_release = true
+prefix = "v"
