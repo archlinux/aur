@@ -41,9 +41,11 @@ def printhexs(s):
         print(f"s[{i}]: {ord(b):02x} ",end='',flush=True)
 
 def escnocursor():
+    print(f"{ESC}?25l",end='',flush=True)
     return
 
 def escdispcursor():
+    print(f"{ESC}?25h",end='',flush=True)
     return
 
 def escup(n=1):

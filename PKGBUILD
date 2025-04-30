@@ -1,7 +1,7 @@
 pkgname=bi
-pkgver=3.4.1.5
+pkgver=3.4.2.0
 pkgrel=1
-pkgdesc="Binary editor like vI"
+pkgdesc="Vinary editor like vI"
 arch=('x86_64')
 url="https://github.com/fygar256/bi"
 license=('MIT')
@@ -11,11 +11,12 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  make  # makeが必要な場合
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/"
+  cd "$srcdir/$pkgname-$pkgver"
+  chmod +x bi.py
   install -Dm755 bi.py "$pkgdir/usr/bin/bi"
   install -Dm644 "$srcdir/$pkgname-$pkgver/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-  
 }
