@@ -4,19 +4,21 @@ _pkgname=gaston
 _pkgver=1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='Genetic Data Handling (QC, GRM, LD, PCA) & Linear Mixed Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
 license=('GPL-3.0-only')
 depends=(
   r-rcpp
-  r-rcppeigen
   r-rcppparallel
 )
-optdepends=(
-  r-knitr
+makedepends=(
   r-rcppeigen
+)
+optdepends=(
+  r-rcppeigen
+  r-knitr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
 md5sums=('862c863da43091a675b77de347cc1507')
