@@ -1,7 +1,7 @@
 pkgbase = openwebrx-plus-git
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.82.r1.g9e5c5e23
-	pkgrel = 2
+	pkgver = 1.2.83.r0.g96115dca
+	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
 	arch = any
@@ -57,6 +57,7 @@ pkgbase = openwebrx-plus-git
 	optdepends = soapyuhd: interfacing with UHD / USRP devices
 	optdepends = soapyfcdpp-git: interfacing with the Funcube Dongle Pro+
 	optdepends = soapybladerf: interfacing with Blade RF devices
+	optdepends = soapysddc: interfacing with SDDC SDR devices such as the RX666, RX888, HF103, etc
 	provides = openwebrx
 	provides = openwebrx-plus
 	conflicts = openwebrx
