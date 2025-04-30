@@ -1,0 +1,5 @@
+[ruby-dry-logic]
+source = "github"
+github = "dry-rb/dry-logic"
+prefix = "v"
+use_latest_release = true
