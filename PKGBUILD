@@ -1,4 +1,5 @@
 # Maintainer: Sup3Legacy <constantin {dot} gierczak {dot} galle (at) protonmail [dot] com>
+# Maintainer: Noor Christensen <archlinux_AT_technopragmatics_DOT_org>
 
 pkgname=gurk-git
 pkgver=0.7.1.r309.g4274bc9
