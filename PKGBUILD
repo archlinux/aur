@@ -3,18 +3,18 @@
 
 pkgname='vkteams-bin'
 pkgbasename='vkteams'
-pkgver=24.11.2.52360
+pkgver=25.2.0.54923
 pkgrel=1
-pkgdesc='Official desktop application for the VK Teams messaging service'
+pkgdesc='VK Team app for team collaboration'
 arch=("x86_64")
 url='https://teams.vk.com'
 provides=("$pkgbasename")
 conflicts=("$pkgbasename")
 install=$pkgname.install
-source=("$pkgbasename-$pkgver.tar.xz::https://dl.internal.myteam.mail.ru/downloads/linux/x64/${pkgver}/${pkgbasename}.tar.xz"
+source=("$pkgbasename-$pkgver.tar.xz::https://vkteams-www.hb.bizmrg.com/linux/x64/${pkgver}/${pkgbasename}.tar.xz"
         "$pkgbasename.sh"
         "$pkgbasename.png")
-sha256sums=('695917969674c4fe1fafff971aa42b661c4abb13c58a7e38d38f121486884b22'
+sha256sums=('7abd3c579f35cd4d45332fd0e4773e7b3a563c11a8e7eaa1d85080b8f9d9c41c'
             'a2afc2dbd79e67736511c91b3d8f0a5fe3800c929ead9909d1b8f90fe7a7ca4b'
             'f4d3d9c11bcfd458a44f6e555bd753284b680c25977ddcfdf6039ea3ba65a75a')
 options=('!strip')
@@ -35,9 +35,6 @@ package() {
 
     # use enviroment cursor
     rm -f "$pkgdir/opt/$pkgbasename/lib/libXcursor.so.1"
-
-    # fix wayland crash
-    rm -f "$pkgdir/opt/$pkgbasename/plugins/platforms/libqwayland-generic.so"
 
     install -Dm755 "../$pkgbasename.sh" "$pkgdir/usr/bin/$pkgbasename"
     install -Dm644 "../$pkgbasename.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgbasename.png"
