@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android armv7a-eabi)
 	pkgver = 7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg
@@ -30,6 +30,7 @@ pkgbase = android-armv7a-eabi-ffmpeg
 	depends = android-armv7a-eabi-libbluray
 	depends = android-armv7a-eabi-libbs2b
 	depends = android-armv7a-eabi-libdrm
+	depends = android-armv7a-eabi-libidn2
 	depends = android-armv7a-eabi-libiec61883
 	depends = android-armv7a-eabi-libjxl
 	depends = android-armv7a-eabi-libmodplug
