@@ -1,6 +1,6 @@
 pkgbase = r-partitions
 	pkgdesc = Additive Partitions of Integers
-	pkgver = 1.10.7
+	pkgver = 1.10.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=partitions
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-partitions
 	depends = r-sets
 	depends = r-rdpack
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/partitions_1.10-7.tar.gz
-	sha256sums = 0bfb8371446f8f9be4595a8a3c50b3530c7d4c83c98be7fc4c23b74379f0b1cf
+	source = https://cran.r-project.org/src/contrib/partitions_1.10-9.tar.gz
+	sha256sums = 1a2dcded62592508932138d5233b6acd21fdde128dd55c907e07464a42ad1c21
 
 pkgname = r-partitions
