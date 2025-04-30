@@ -6,8 +6,8 @@ arch=('any')
 url="https://github.com/fygar256/bi"
 license=('MIT')
 depends=('python')
-source=("https://aur.archlinux.org/bi.git/$pkgname-$pkgver.zip")
-sha256sums=('4c4995c407c2ab5b591254d8e547801c861de65f1bad5d65426ee1c4298d3cff')
+source=("https://github.com/fygar256/bi/archive/refs/heads/v$pkgver.zip")
+sha256sums=('7d60a178f88a3f8320b8b619c8f38097a0f682c9b1a32873b74a3b5391558b93')
 
 build() {
   echo "bi"
