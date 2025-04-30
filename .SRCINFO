@@ -1,7 +1,7 @@
 pkgbase = android-x86-ffmpeg-minimal
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android x86)
 	pkgver = 7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg-minimal
@@ -19,8 +19,6 @@ pkgbase = android-x86-ffmpeg-minimal
 	depends = android-x86-libvpx
 	depends = android-x86-opus
 	depends = android-x86-svt-av1
-	depends = android-x86-x264
-	depends = android-x86-x265
 	depends = android-x86-rav1e
 	provides = android-x86-ffmpeg
 	conflicts = android-x86-ffmpeg
