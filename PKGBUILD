@@ -5,8 +5,8 @@
 
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
 pkgname=plotjuggler
-pkgver='3.9.3'
-pkgrel=2
+pkgver='3.10.0'
+pkgrel=1
 epoch=
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
@@ -19,18 +19,17 @@ makedepends=(cmake clang)
 _dir="PlotJuggler-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('7081fa14e11bc2b84394c707f9c7938088f02fc8239c7ef06175df8c0a60ba2b')
+sha256sums=('8b2080f7e672963064926e4e5cbc3f5b6bee6e5b01e40a8e858a2bbc6a4feeaf')
 validpgpkeys=()
 
 prepare() {
-    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.9.1-1.patch"
-    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.9.3-1.patch"
+    patch -d PlotJuggler-$pkgver -Np1 -i "../../plotjuggler3.10.0-1.patch"
     cd "${srcdir}/PlotJuggler-${pkgver}"
 }
 
 build() {
         # Create the build directory.
-        [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
         cd ${srcdir}/build
 
 	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ${srcdir}/${_dir}
