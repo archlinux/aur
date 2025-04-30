@@ -1,22 +1,18 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.3.3
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://dbgate.org/
-	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
 	depends = electron30
-	provides = dbgate=6.3.3
+	provides = dbgate=6.4.0
 	conflicts = dbgate
-	source = LICENSE-6.3.3::https://raw.githubusercontent.com/dbgate/dbgate/v6.3.3/LICENSE
+	source = dbgate-6.4.0.deb::https://github.com/dbgate/dbgate/releases/download/v6.4.0/dbgate-6.4.0-linux_amd64.deb
+	source = LICENSE-6.4.0::https://raw.githubusercontent.com/dbgate/dbgate/v6.4.0/LICENSE
 	source = dbgate.sh
+	sha256sums = 53e3cfddcf41581d4957deedaf0f3197c41ac813f01906e60bb84f66784826ac
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = dbgate-6.3.3-aarch64.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.3.3/dbgate-6.3.3-linux_arm64.AppImage
-	sha256sums_aarch64 = 1f80023c12e667bf09382c60c7f66e3fcc9ac21f172bd10df82661d76b8b7fc8
-	source_x86_64 = dbgate-6.3.3-x86_64.AppImage::https://github.com/dbgate/dbgate/releases/download/v6.3.3/dbgate-6.3.3-linux_x86_64.AppImage
-	sha256sums_x86_64 = 96c437fced89af8550ee9bac89462050f897bb95871332e251ffaf98a0b4b44a
 
 pkgname = dbgate-bin
