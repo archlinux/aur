@@ -1,7 +1,7 @@
 # Maintainer: Theo Grivel <theo.grivel@epfl.ch>
 pkgname=manta
 pkgver="v1.54.1"
-pkgsubver="-beta.105"
+pkgsubver="-beta.132"
 pkgrel=1
 epoch=
 pkgdesc="Manta is a frontend CLI to interact with OpenCHAMI."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/eth-cscs/$pkgname/releases/download/$pkgver$pkgsubver/$pkgname-x86_64-unknown-linux-gnu.tar.xz")
 noextract=()
-sha256sums=('449b2b13bbfd5f7270e91012c407b0f7f2f92c9bb72ffdf050c10fdc48dfbc05')
+sha256sums=('f4f3278521be45173ef09bf3a64161633f07acef0985b1db6b8efa8b969af63e')
 validpgpkeys=()
 
 prepare() {
