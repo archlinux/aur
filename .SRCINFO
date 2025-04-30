@@ -1,9 +1,9 @@
 pkgbase = ruby-highline
 	pkgdesc = A higher level command-line oriented interface
-	pkgver = 3.1.1
-	pkgrel = 2
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = https://github.com/JEG2/highline
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = ruby-bundler
 	checkdepends = ruby-dry-types
@@ -16,7 +16,7 @@ pkgbase = ruby-highline
 	depends = ruby
 	depends = ruby-reline
 	options = !emptydirs
-	source = git+https://github.com/JEG2/highline.git#tag=v3.1.1
-	sha256sums = c3ea54a565f818a8120214f0dfafd521535614b14ca1c71ee22d911cc1772641
+	source = ruby-highline-3.1.2.tar.gz::https://github.com/JEG2/highline/archive/v3.1.2.tar.gz
+	sha256sums = 9a5d4d7d888fe43821849dd1c2b2dc78c83f862bde8635f6c0a14caf82540c55
 
 pkgname = ruby-highline

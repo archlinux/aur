@@ -2,11 +2,12 @@
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 # Contributor: Emiliano Vavassori <syntaxerrormmm@gmail.com>
 
+_gemname=highline
 pkgname=ruby-highline
-pkgver=3.1.1
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc='A higher level command-line oriented interface'
-arch=(x86_64)
+arch=('any')
 url='https://github.com/JEG2/highline'
 license=(MIT)
 depends=(
@@ -26,12 +27,13 @@ checkdepends=(
   ruby-simplecov
 )
 options=(!emptydirs)
-source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('c3ea54a565f818a8120214f0dfafd521535614b14ca1c71ee22d911cc1772641')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('9a5d4d7d888fe43821849dd1c2b2dc78c83f862bde8635f6c0a14caf82540c55')
 
 build() {
-  local _gemdir="$(gem env gemdir)"
-  cd highline
+  local _gemdir
+  _gemdir="$(gem env gemdir)"
+  cd "${_gemname}-${pkgver}"
   gem build highline.gemspec
   gem install \
     --local \
@@ -52,16 +54,18 @@ build() {
         -iname "Makefile" \
     \) \
     -delete
-  rm -r tmp_install/$_gemdir/cache
+  rm -r "tmp_install/${_gemdir}/cache"
 }
 
 check() {
-  local _gemdir="$(gem env gemdir)"
-  cd highline
+  local _gemdir
+  _gemdir="$(gem env gemdir)"
+  cd "${_gemname}-${pkgver}"
   GEM_HOME="tmp_install/$_gemdir" rake
 }
 
 package() {
-  cd highline
+  cd "${_gemname}-${pkgver}"
   cp -a tmp_install/* "$pkgdir"/
+  install -D -m 644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
