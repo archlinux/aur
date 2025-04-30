@@ -24,6 +24,7 @@ pkgbase = h2o-git
 	depends = sh
 	depends = glibc
 	depends = gcc-libs
+	depends = liburing
 	provides = h2o
 	provides = libh2o
 	conflicts = h2o
