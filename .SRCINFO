@@ -1,0 +1,18 @@
+pkgbase = eimza
+        pkgdesc = Dependency installation for Turkish smartcard providers (etugra, tubitak etc.)
+        pkgver = 1.0
+        pkgrel = 1
+        url = https://github.com/Turab/eimza
+        arch = x86_64
+        license = custom
+        depends = akia
+        depends = java-runtime
+        depends = acsccid
+        depends = ccid
+        depends = pcsc-tools
+        depends = opensc
+        depends = sac-core
+        depends = pkcs11-helper
+        depends = safesignidentityclient
+
+pkgname = eimza
