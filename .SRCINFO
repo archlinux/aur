@@ -1,7 +1,7 @@
 pkgbase = own3d-desktop-bin
-	pkgdesc = Public Development Preview of the OWN3D Desktop App.Prebuilt version.Use system-wide electron.
+	pkgdesc = Public Development Preview of the OWN3D Desktop App.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.own3d.pro/
 	arch = x86_64
 	license = MIT
