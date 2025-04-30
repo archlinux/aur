@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='lwt-dllist'
 pkgname="ocaml-$_projectname"
-pkgver='1.0.1'
+pkgver='1.1.0'
 pkgrel='1'
 pkgdesc='Mutable doubly-linked list with Lwt iterators for OCaml'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('dune')
 checkdepends=('ocaml-lwt')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('2d6151ae075e705b3c6d4a950bb88b4c77b92e430d75215b034073080e61f78c3431797a568308e2f73e36ecc8d6395ac10088289db9118ca917c0dbfcf7095a')
+b2sums=('7c4ef1d2034c2c06fc7bf2923e9461c6ccb0278d64fc6858119201266066a211ec986c67ee5edb19c9f7dd5b83be695236066cf646ef039eff5badd1cfe19070')
 
 _sourcedirectory="$_projectname-$pkgver"
 
