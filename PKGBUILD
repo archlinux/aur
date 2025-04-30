@@ -3,9 +3,9 @@
 _pkgname=fwupd-openrc
 pkgname="${_pkgname}"
 pkgver=20250430.01
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenRC init script for fwupd daemon.'
-url="https://github.com/fwupd/fwupd"
+url="https://forum.artixlinux.org/index.php/topic,8058.msg48396.html#msg48396"
 license=('GPL-3.0-or-later')
 arch=('any')
 depends=('fwupd')

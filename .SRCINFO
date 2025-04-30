@@ -1,8 +1,8 @@
 pkgbase = fwupd-openrc
 	pkgdesc = OpenRC init script for fwupd daemon.
 	pkgver = 20250430.01
-	pkgrel = 1
-	url = https://github.com/fwupd/fwupd
+	pkgrel = 2
+	url = https://forum.artixlinux.org/index.php/topic,8058.msg48396.html#msg48396
 	arch = any
 	license = GPL-3.0-or-later
 	depends = fwupd
