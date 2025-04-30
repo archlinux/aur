@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)
-	pkgver = 2.4.r232.g44f77408e
+	pkgver = 2.4.r269.gcdef7f744
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -19,7 +19,6 @@ pkgbase = libretro-flycast-git
 	makedepends = libzip
 	makedepends = miniupnpc
 	makedepends = vulkan-memory-allocator
-	makedepends = xbyak
 	makedepends = xxhash
 	makedepends = zlib
 	depends = gcc-libs
@@ -35,7 +34,7 @@ pkgbase = libretro-flycast-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 4b57de8da10081212aa597c459d8e63a427d6b8b9001f0d9f34fa69e097f4179acf6ee437e605557985df682b076ef73b489c65cd8f5f9ea63dfda66df2d59f4
+	b2sums = 6c2c3778488cd4dcaa20e72b28a8bde05a9cc41e39e3bb4bcdb9d94a8a64a99d3be2afa00bd01e700a4238976b152d9f31d3982d913edc5f828cc771e560dc81
 
 pkgname = libretro-flycast-git
 	depends = gcc-libs

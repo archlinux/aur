@@ -84,12 +84,3 @@ index df7f51d38..50e8108a2 100644
  	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
  
  	if(ANDROID AND NOT LIBRETRO AND "arm64" IN_LIST ARCHITECTURE)
-@@ -1569,7 +1570,7 @@ if("arm64" IN_LIST ARCHITECTURE)
- 	target_sources(${PROJECT_NAME} PRIVATE core/rec-ARM64/rec_arm64.cpp core/rec-ARM64/arm64_regalloc.h)
- endif()
- if("x86" IN_LIST ARCHITECTURE OR "x86_64" IN_LIST ARCHITECTURE)
--	add_subdirectory(core/deps/xbyak EXCLUDE_FROM_ALL)
-+	find_package(xbyak REQUIRED)
- 	target_link_libraries(${PROJECT_NAME} PRIVATE xbyak::xbyak)
- 	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
- 		target_sources(${PROJECT_NAME} PRIVATE
