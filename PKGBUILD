@@ -2,13 +2,13 @@
 
 _pkgbase=ollama-lab
 pkgname=$_pkgbase-bin
-pkgver=0.3.6
+pkgver=0.4.0
 _version=${pkgver/+/-}
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="Yet another (unofficial) Ollama GUI (binary)"
 arch=('x86_64')
-url="https://github.com/chardoncs/ollama-lab"
+url="https://github.com/ollama-lab/ollama-lab"
 license=('MIT')
 groups=()
 depends=(
@@ -31,7 +31,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    'aa1f39b1ee74be3269dcc5fa75419ab7ec0f02fd8cc253c3442107f8446e5451'
+    'f6ef0f1f78ed233254670a5aaf97e46d2193d9cea831ac0d6feb7ceb37df7de8'
 )
 validpgpkeys=()
 
