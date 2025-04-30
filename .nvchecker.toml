@@ -1,0 +1,5 @@
+[tunnelx-bin]
+source = "github"
+github = "projectdiscovery/tunnelx"
+use_latest_release = true
+prefix = "v"
