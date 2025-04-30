@@ -1,7 +1,7 @@
 pkgbase = linux-gpib-git
 	pkgdesc = A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.
 	pkgver = 4.3.6.r2091.20250410.05615dee
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linux-gpib.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -92,10 +92,13 @@ pkgname = linux-gpib-user-git
 	provides = linux-gpib-libs-git=4.3.6.r2091.20250410.05615dee
 	provides = linux-gpib-tools=4.3.6.r2091.20250410.05615dee
 	provides = linux-gpib-tools-git=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-udev=4.3.6.r2091.20250410.05615dee
+	provides = linux-gpib-udev-git=4.3.6.r2091.20250410.05615dee
 	provides = libgpib.so
 	conflicts = linux-gpib-user
 	conflicts = linux-gpib-libs
 	conflicts = linux-gpib-tools
+	conflicts = linux-gpib-udev
 	conflicts = libgpib.so
 	replaces = 
 	backup = etc/gpib.conf

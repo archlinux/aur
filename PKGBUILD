@@ -26,7 +26,7 @@ pkgname=(
   "tcl-linux-gpib-git"
 )
 pkgver=4.3.6.r2091.20250410.05615dee
-pkgrel=2
+pkgrel=3
 pkgdesc='A support package for GPIB (IEEE 488) hardware: Kernel drivers, userspace utilities and libraries, python bindings.'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://linux-gpib.sourceforge.net/'
@@ -278,12 +278,15 @@ package_linux-gpib-user-git() {
     "linux-gpib-libs-git=${pkgver}"
     "linux-gpib-tools=${pkgver}"
     "linux-gpib-tools-git=${pkgver}"
+    "linux-gpib-udev=${pkgver}"
+    "linux-gpib-udev-git=${pkgver}"
     "libgpib.so"
   )
   conflicts=(
     "linux-gpib-user"
     "linux-gpib-libs"
     "linux-gpib-tools"
+    "linux-gpib-udev"
     "libgpib.so"
   )
   replaces=()
