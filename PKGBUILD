@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-ice40-nightly
-pkgver=20250429_nextpnr_0.8_6_g90024903
+pkgver=20250430_nextpnr_0.8_6_g90024903
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ice40"
