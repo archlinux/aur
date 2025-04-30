@@ -1,6 +1,6 @@
 pkgbase = ngpt
 	pkgdesc = Swiss army knife for LLMs: powerful CLI, interactive chatbot, and flexible Python library. Works with OpenAI, Ollama, Groq, Claude, Gemini, and any OpenAI-compatible API.
-	pkgver = 3.0.6
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/nazdridoy/ngpt
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ngpt
 	depends = python-rich>=10.0.0
 	depends = python-prompt_toolkit>=3.0.0
 	depends = python-pyperclip>=1.8.0
-	source = ngpt-3.0.6.tar.gz::https://github.com/nazdridoy/ngpt/archive/v3.0.6.tar.gz
-	sha256sums = ebb47106803b74bf9c50b544a6948fff9ce6d464ba4cf590ba8145db91abc0bd
+	source = ngpt-3.1.0.tar.gz::https://github.com/nazdridoy/ngpt/archive/v3.1.0.tar.gz
+	sha256sums = 6ceb0f6c1a9a87bc9d7a35d842e5d59b7c7cb8c5796f8c4a474fd33e0622b9a6
 
 pkgname = ngpt
