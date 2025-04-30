@@ -1,7 +1,7 @@
 pkgbase = android-riscv64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android riscv64)
 	pkgver = 7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg
@@ -30,6 +30,7 @@ pkgbase = android-riscv64-ffmpeg
 	depends = android-riscv64-libbluray
 	depends = android-riscv64-libbs2b
 	depends = android-riscv64-libdrm
+	depends = android-riscv64-libidn2
 	depends = android-riscv64-libiec61883
 	depends = android-riscv64-libjxl
 	depends = android-riscv64-libmodplug
