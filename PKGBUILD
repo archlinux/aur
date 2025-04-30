@@ -33,18 +33,14 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname%-git}
+    cd "${pkgname%-git}"
+    export CARGO_HOME="$srcdir/cargo"
+    export CARGO_TARGET_DIR="target"
+    export RUSTFLAGS="--remap-path-prefix=${srcdir}=/"
 
-  # Tuning rust compiler
-  export RUSTFLAGS="--remap-path-prefix=${srcdir}=/"    # Prevent warning: 'Package contains reference to $srcdir'
-  [[ -n ${_sccache} ]] && export RUSTC_WRAPPER=sccache  # If $_sccache not empty, build using binary cache
+    [[ -n ${_sccache} ]] && export RUSTC_WRAPPER=sccache
 
-  # Tuning cargo
-  export CARGO_HOME=${srcdir}/${pkgname%-git}/.cargo    # Use downloaded earlier from src directory, not from ~/.cargo
-  export CARGO_TARGET_DIR=target                        # Place the output in target relative to the current directory
-
-  # Build the release version using Cargo
-  cargo build --release
+    cargo build --release --locked
 }
 
 package() {
