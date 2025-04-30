@@ -1,5 +1,5 @@
 pkgbase = bi
-	pkgdesc = Vinary editor like vI
+	pkgdesc = Binary editor like vI
 	pkgver = 3.4.2.0
 	pkgrel = 2
 	url = https://github.com/fygar256/bi
