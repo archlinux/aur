@@ -5,7 +5,7 @@
 
 _basename=xmoto
 pkgname="$_basename"
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ conflicts=("$_basename")
 provides=("$_basename")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_basename/$_basename/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1ba54baaa1511f45497c1aadd6c8fda4917fd4e403466cdc92b5755b05c90de4')
+sha256sums=('64cb29934660456ec82cebdaa0d3d273a862e10760e8ee80443928d317242484')
 
 prepare() {
   mkdir -p build
