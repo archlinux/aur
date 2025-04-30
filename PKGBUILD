@@ -1,6 +1,6 @@
-_dotnet_version=8.0
+_dotnet_version=9.0
 pkgname="csharp-ls"
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/razzmatazz/csharp-language-server"
 license=("MIT")
 depends=("dotnet-sdk-$_dotnet_version")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('390b5e92f6d9936288dab969a705640c93420f2b1f03af6b1fc8d3f032456f09')
+sha256sums=('ad447f23457b02322fa0c65cd4818369f92c433c3801156b3dc676377f43ece4')
 options=("staticlibs")
 
 prepare() {
@@ -34,7 +34,7 @@ check(){
         --no-restore \
         --framework "net$_dotnet_version" \
         --filter Name!=testReferenceWorksToAspNetRazorPageReferencedValue
-        # Failed with dotnet-sdk 8.0.111
+        # Failed with dotnet-sdk 9.0
 }
 package(){
     cd "$srcdir/csharp-language-server-$pkgver"
