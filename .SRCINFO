@@ -1,9 +1,9 @@
 pkgbase = bi
 	pkgdesc = Binary editor like vI
 	pkgver = 3.4.2.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/fygar256/bi
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
 	source = https://github.com/fygar256/bi/archive/refs/heads/v3.4.2.0.zip
