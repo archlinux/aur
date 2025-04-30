@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Void Editor
+Exec=/usr/bin/void
+Icon=application-x-executable
+Type=Application
+Categories=Utility;
