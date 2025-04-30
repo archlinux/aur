@@ -1,7 +1,7 @@
 pkgbase = yesplaymusic-bin
 	pkgdesc = A third party music application for Netease Music.Prebuilt version.Use system-wide electron.高颜值的第三方网易云播放器.
 	pkgver = 0.4.8_2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://music.qier222.com/
 	arch = aarch64
 	arch = armv7h
