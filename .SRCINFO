@@ -1,7 +1,7 @@
 pkgbase = bi
 	pkgdesc = Binary editor like vI
 	pkgver = 3.4.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/fygar256/bi
 	arch = x86_64
 	license = MIT

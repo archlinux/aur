@@ -91,8 +91,63 @@ def putch(c):
     print(c,end='',flush=True)
 
 def getln():
-    raw_bytes = sys.stdin.buffer.readline().rstrip(b'\n')
-    return raw_bytes.decode('utf-8', errors='replace')  # または errors='ignore'
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+
+    try:
+        tty.setraw(fd)
+        buf = []
+        cursor = 0
+
+        while True:
+            ch = sys.stdin.read(1)
+            if ch in ('\r', '\n'):
+                print()
+                break
+            elif ch == '\x7f':  # Backspace
+                if cursor > 0:
+                    cursor -= 1
+                    buf.pop(cursor)
+                    sys.stdout.write('\b \b')  # move back, overwrite, move back again
+                    sys.stdout.flush()
+            elif ch == '\x1b':  # Escape sequence
+                next1 = sys.stdin.read(1)
+                if next1 == '[':
+                    next2 = sys.stdin.read(1)
+                    if next2 == 'D':  # ←
+                        if cursor > 0:
+                            cursor -= 1
+                            sys.stdout.write('\x1b[D')
+                            sys.stdout.flush()
+                    elif next2 == 'C':  # →
+                        if cursor < len(buf):
+                            cursor += 1
+                            sys.stdout.write('\x1b[C')
+                            sys.stdout.flush()
+                    elif next2 == '3':  # Delete key sequence begins
+                        if sys.stdin.read(1) == '~':
+                            if cursor < len(buf):
+                                buf.pop(cursor)
+                                # redraw the rest of the line from cursor position
+                                sys.stdout.write('\x1b[s')  # save cursor
+                                sys.stdout.write(''.join(buf[cursor:]) + ' ')  # print rest + blank
+                                sys.stdout.write('\x1b[u')  # restore cursor
+                                sys.stdout.flush()
+            else:
+                buf.insert(cursor, ch)
+                sys.stdout.write('\x1b[s')  # save cursor position
+                sys.stdout.write(ch)
+                sys.stdout.write(''.join(buf[cursor+1:]))  # redraw rest of line
+                sys.stdout.write(' ')  # clear leftover char
+                sys.stdout.write('\x1b[u')  # restore cursor
+                sys.stdout.write('\x1b[C')  # move cursor right
+                sys.stdout.flush()
+                cursor += 1
+
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    return ''.join(buf)
 
 def skipspc(s,idx):
     while idx<len(s):
