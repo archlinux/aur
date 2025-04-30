@@ -1,7 +1,7 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt
 pkgver=1.5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
 url="https://jakubmelka.github.io/"
@@ -18,13 +18,13 @@ depends=(
     'onetbb'
     'lcms2'
     'blend2d'
-    'qt6-tools'
-    'cmake'
 )
 makedepends=(
     'git'
     'qt6-declarative'
     'qt6-multimedia'
+    'qt6-tools'
+    'cmake'
 )
 optdepends=(
     'flite: Text-To-Speech using flite synthesizer'
