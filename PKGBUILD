@@ -17,5 +17,5 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 bi.py "$pkgdir/usr/bin/bi"
   install -Dm644 "$srcdir/$pkgname-$pkgver/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
