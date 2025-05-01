@@ -5,7 +5,7 @@
 
 pkgname=cpp-hocon
 pkgver=0.3.0
-pkgrel=18
+pkgrel=19
 pkgdesc="C++ port of the Typesafe Config library"
 arch=('x86_64')
 url="https://github.com/puppetlabs/cpp-hocon"
@@ -30,6 +30,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DENABLE_CXX_WERROR=OFF \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DBUILD_SHARED_LIBS=ON
   make -C build
 }

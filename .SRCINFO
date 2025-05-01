@@ -1,7 +1,7 @@
 pkgbase = cpp-hocon
 	pkgdesc = C++ port of the Typesafe Config library
 	pkgver = 0.3.0
-	pkgrel = 18
+	pkgrel = 19
 	url = https://github.com/puppetlabs/cpp-hocon
 	arch = x86_64
 	license = APACHE
