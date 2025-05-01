@@ -1,6 +1,6 @@
 pkgbase = odio-edit
 	pkgdesc = A lightweight audio wave editor
-	pkgver = 25.2.1
+	pkgver = 25.5.1
 	pkgrel = 1
 	url = https://tari.in/www/software/odio-edit
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = odio-edit
 	depends = gst-plugins-ugly
 	depends = gst-libav
 	depends = libodiosacd
-	source = odio-edit-25.2.1.tar.gz::https://github.com/tari01/odio-edit/archive/25.2.1.tar.gz
-	md5sums = f271f6eb79836e527440e379fb65d94b
+	source = odio-edit-25.5.1.tar.gz::https://github.com/tari01/odio-edit/archive/25.5.1.tar.gz
+	md5sums = 38362fb2968ca9cfeaa8de98eedf4314
 
 pkgname = odio-edit

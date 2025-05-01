@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio-edit"
-pkgver="25.2.1"
+pkgver="25.5.1"
 pkgrel="1"
 pkgdesc="A lightweight audio wave editor"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 depends=("gstreamer" "gst-plugins-base-libs" "pango" "gtk3" "dconf" "glib2" "glibc" "cairo" "hicolor-icon-theme" "gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gst-libav" "libodiosacd")
 makedepends=("cmake" "cmake-extras" "gsettings-desktop-schemas" "intltool")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("f271f6eb79836e527440e379fb65d94b")
+md5sums=("38362fb2968ca9cfeaa8de98eedf4314")
 
 build()
 {
