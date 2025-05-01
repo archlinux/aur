@@ -1,7 +1,7 @@
 pkgbase = revolt-desktop-bin
 	pkgdesc = User-first chat platform built with modern web technologies.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/revoltchat/desktop
 	arch = aarch64
 	arch = armv7h
