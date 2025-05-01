@@ -1,8 +1,8 @@
 # Maintainer : VCalV
 
 pkgname=neatimage
-pkgver=9.2.3
-pkgrel=2
+pkgver=9.3
+pkgrel=1
 pkgdesc="Best noise reduction for digital cameras and scanners"
 arch=('x86_64')
 url="https://ni.neatvideo.com/"
@@ -14,7 +14,7 @@ source=(
 	neatimage.desktop
 	neatimage.png
 	)
-sha512sums=('6b7308b2dcddbc4cbebc7785630fcf817950467ccaac2fd53c7b06d26df42bb8550afa733f6c67f832207816851d3d517d9c286e8616d36993434aadcd09416e'
+sha512sums=('c77e6ed3e6c10fab9cf9c707365319871a259e0189b4afb7045c6955ff101a4d56ed0dd1b67c0a91edc9a1e991cc914e02d28ca057a59c218a3f7b1368b27464'
             '6987c2bbf7abafa1ef76b6896dfa233f61f20d3fd96da39e078b0de18af7c83e36928b4b2fe2fea767d0d46fcdbbb6882e8f5fab10877615f726a2f549d7c84b'
             '5e1ea3aabd6e87275113aea7483967717c65245984f54289943f6102121ed5c935231a611746b5d72e161d43dc5699e1af4ce00ac8946cf18a2f9fd55b51e4d4')
 
