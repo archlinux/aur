@@ -9,7 +9,7 @@ url="https://github.com/oven-sh/bun"
 license=('GPL')
 #depends=(c-ares libarchive libuv mimalloc tcc zlib zstd)
 makedepends=(
-	ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja nodejs mold pkg-config python ruby ruby-getoptlong rust unzip yarn
+	ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja nodejs mold pkgconf python ruby ruby-getoptlong rust unzip yarn
 )
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
