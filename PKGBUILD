@@ -9,7 +9,8 @@
 # Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=6.0.3
+pkgver=6.1.0
+_pkgver=6.1
 pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 arch=('x86_64')
@@ -25,13 +26,17 @@ depends=('libxml2'
          'graphviz'
          'openscenegraph'
          'python-scipy'
+         'python-numpy1'
          'python-pandas'
+         'python-tzdata'
          'python-posix_ipc')
 makedepends=('wget'
              'cmake'
              'clang>=17.0.6'
              'llvm>=17.0.6'
              'llvm-libs>=17.0.6'
+             'python-numpy1'
+             'python-tzdata'
              'bison'
              'flex'
              'perl')
@@ -49,20 +54,20 @@ source=(
   OMNeT++.desktop
   omnetpp.sh)
 
-sha512sums=('93cd5068aac8e5579728b304cdd5b593ae8e1a6ee108d80abb394dfb70ecc0c3d2255816f3620a7a80cf1846f031218ddec0d5b66805d1dcd52ba9759cccf281'
+sha512sums=('4a41c9f08d36eaa2202a820fd1058df7ecc03de42547669919e5fe07f2e36d0e4dbc84f062ed6e80a8a406142cdb550f7819d252920f1f792c7a07953f9463a5'
   '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
   'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd ${srcdir}/${pkgname}-${_pkgver}
 	echo WITH_OSGEARTH=no >> configure.user
 	# Fix configure script
 	sed -i "2152 a ac_configure_args=$(echo $ac_configure_args | sed s/\'//g)" configure
 	source setenv
 	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib
-	PATH=${srcdir}/${pkgname}-${pkgver}/bin:$PATH
-	LD_LIBRARY_PATH=${srcdir}/${pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
-	make -j2
+	PATH=${srcdir}/${pkgname}-${_pkgver}/bin:$PATH
+	LD_LIBRARY_PATH=${srcdir}/${pkgname}-${_pkgver}/lib:$LD_LIBRARY_PATH
+  make -j2
 }
 
 package() {
