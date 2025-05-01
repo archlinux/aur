@@ -2,14 +2,14 @@
 pkgname=typhoon-git
 _pkgname=typhoon
 pkgver=v0.9.5.r2.g5ea0092
-pkgrel=1
+pkgrel=2
 pkgdesc="A stylish weather app based on Stormcloud"
 arch=('any')
 url="https://github.com/archisman-panigrahi/typhoon"
 provides=($_pkgname)
 conflicts=($_pkgname)
 license=('MIT')
-depends=('gtk3' 'webkit2gtk' 'python' 'imagemagick' 'python-dbus')
+depends=('gtk3' 'webkit2gtk' 'python' 'imagemagick' 'python-dbus' 'libportal')
 makedepends=('git' 'meson' 'ninja')
 source=("git+$url#branch=master")
 sha256sums=('SKIP')
