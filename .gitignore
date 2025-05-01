@@ -1,10 +1,11 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!LICENSE
 !android-messages-desktop.sh
 !android-messages-desktop.desktop
-!.nvchecker.toml
