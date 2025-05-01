@@ -1,6 +1,6 @@
 # Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
 pkgname=mint-artwork
-pkgver=1.8.4
+pkgver=1.8.9
 pkgrel=0
 epoch=2
 pkgdesc="Linux Mint Artwork and Resources."
@@ -11,15 +11,14 @@ groups=("cinnamon")
 depends=("hicolor-icon-theme" "lightdm-settings" "lightdm-slick-greeter"
          "mint-backgrounds" "mint-x-icons" "mint-y-icons" "mint-themes"
          "bibata-cursor-theme" )
-optdepends=("mint-themes-legacy: Legacy Mint themes")
 conflicts=("lightdm-gtk-greeter" "lightdm-gtk-greeter-settings" "mint-sounds")
 backup=(etc/lightdm/lightdm-gtk-greeter.conf)
 options=("!strip" "libtool" "staticlibs" "!zipman" "!ccache")
 install=mint-artwork.install
 changelog=CHANGELOG
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-md5sums=('688ab27de692add45b3aca7fc47390e4')
-sha256sums=('0e9468193541d6f6a27f850d88211a54efe9c9063c1dcfd01b5be662456bdc8c')
+md5sums=('58e8bbea1e27334d644e5bb281dc7ee3')
+sha256sums=('30a5ca9dedf0ab17c8aa639ac299996d7fcd455480e5f05eb69484fa6aff7aa0')
 
 package() {
 

@@ -1,6 +1,6 @@
 pkgbase = mint-artwork
 	pkgdesc = Linux Mint Artwork and Resources.
-	pkgver = 1.8.4
+	pkgver = 1.8.9
 	pkgrel = 0
 	epoch = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-artwork
@@ -17,7 +17,6 @@ pkgbase = mint-artwork
 	depends = mint-y-icons
 	depends = mint-themes
 	depends = bibata-cursor-theme
-	optdepends = mint-themes-legacy
 	conflicts = lightdm-gtk-greeter
 	conflicts = lightdm-gtk-greeter-settings
 	conflicts = mint-sounds
@@ -27,8 +26,8 @@ pkgbase = mint-artwork
 	options = !zipman
 	options = !ccache
 	backup = etc/lightdm/lightdm-gtk-greeter.conf
-	source = mint-artwork_1.8.4.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.8.4.tar.xz
-	md5sums = f04e74b6509213bae2a3be13f25d7845
-	sha256sums = 31e80c16b9d4f0671cdafe72dc14022194b7d497697d233914824935ccade0b6
+	source = mint-artwork_1.8.9.tar.xz::http://packages.linuxmint.com/pool/main/m/mint-artwork/mint-artwork_1.8.9.tar.xz
+	md5sums = 58e8bbea1e27334d644e5bb281dc7ee3
+	sha256sums = 30a5ca9dedf0ab17c8aa639ac299996d7fcd455480e5f05eb69484fa6aff7aa0
 
 pkgname = mint-artwork
