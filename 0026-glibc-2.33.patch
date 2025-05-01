@@ -1,0 +1,25 @@
+diff --git a/installwatch/installwatch.c b/installwatch/installwatch.c
+index 15cb75c..77189dc 100644
+--- a/installwatch/installwatch.c
++++ b/installwatch/installwatch.c
+@@ -157,6 +157,20 @@ static int (*true_unlinkat)(int, const char *, int);
+ 	#define inline
+ #endif	
+ 
++#ifndef _STAT_VER
++	#if defined (__aarch64__)
++		#define _STAT_VER 0
++	#elif defined (__x86_64__)
++		#define _STAT_VER 1
++	#else
++		#define _STAT_VER 3
++	#endif
++#endif
++
++#ifndef _MKNOD_VER
++	#define _MKNOD_VER 0
++#endif
++
+ static inline int true_stat(const char *pathname,struct stat *info) {
+ 	return true_xstat(_STAT_VER,pathname,info);
+ }
