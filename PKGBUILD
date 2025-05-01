@@ -20,7 +20,7 @@ unset _pkgtype
 
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.268.r0.gc359c0e
+pkgver=2.3.311.r1.gf45840a
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
@@ -35,6 +35,8 @@ depends=(
   libwebp
   libxi
   libxrandr
+  plutosvg # AUR
+  plutovg  # AUR
   qt6-base
   sdl3
 )
@@ -61,20 +63,6 @@ optdepends=(
   'alsa-utils: Sound player for RetroAchievements'
   'gstreamer: Backup sound player for RetroAchievements'
 )
-
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
 
 if [ "${_build_git::1}" == "t" ]; then
   provides=("$_pkgname")
@@ -125,6 +113,10 @@ prepare() {
   sed -E -e '/CMAKE_INSTALL_FULL_DATADIR/s@/PCSX2\b@/'"${_pkgname}@" \
     -i "pcsx2/CMakeLists.txt" \
     "cmake/BuildParameters.cmake"
+
+  # relax requirements
+  sed -E -e 's&^(find_package\s*\(plutos?vg) [0-9.]* ([A-Z]+\))$&\1 \2&' \
+    -i "cmake/SearchForStuff.cmake"
 }
 
 _build_pcsx2() (
@@ -148,7 +140,7 @@ _build_pcsx2() (
     -Wno-dev
   )
 
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]] || [[ ${CARCH: -2} =~ ^v[0-9]$ ]]; then
     _cmake_pcsx2+=(-DDISABLE_ADVANCE_SIMD=OFF)
   else
     _cmake_pcsx2+=(-DDISABLE_ADVANCE_SIMD=ON)
