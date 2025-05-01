@@ -12,7 +12,7 @@ _last_modified_aarch64=1735023075
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Wechat for Linux"
 arch=('x86_64' 'aarch64')
 url="https://linux.weixin.qq.com"
