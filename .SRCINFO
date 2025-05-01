@@ -1,14 +1,14 @@
 pkgbase = oras-git
 	pkgdesc = OCI registry client - managing content like artifacts, images, packages
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://github.com/oras-project/oras
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	conflicts = oras
-	source = oras-git::git+https://github.com/oras-project/oras#commit=v1.2.2
+	source = oras-git::git+https://github.com/oras-project/oras#commit=v1.2.3
 	sha512sums = SKIP
 
 pkgname = oras-git
