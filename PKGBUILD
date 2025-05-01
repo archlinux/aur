@@ -1,5 +1,5 @@
 pkgname=jellyplayer-git
-pkgver=2fcccb9
+pkgver=cb7c872
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -10,10 +10,6 @@ makedepends=('git' 'pyinstaller')
 source=("git+$url.git")
 md5sums=('SKIP')
 
-# pkgver() {
-#   cd "$srcdir/jellyplayer"
-#   git rev-parse --short HEAD
-# }
 
 package() {
   cd "$srcdir/jellyplayer"
