@@ -13,6 +13,7 @@ pkgbase = st-fl-git
 	depends = libxft
 	provides = st
 	conflicts = st
+	conflicts = st-git
 	source = git+https://github.com/DreamMaoMao/st-fl
 	sha256sums = SKIP
 
