@@ -1,12 +1,12 @@
-pkgbase = general-assembler-axx
+pkgbase = axx
 	pkgdesc = axx general assembler
 	pkgver = 1.0.0
 	pkgrel = 2
-	url = https://github.com/fygar256/general-assembler-axx
+	url = https://github.com/fygar256/axx
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/fygar256/general-assembler-axx/archive/refs/heads/v1.0.0.zip
+	source = https://github.com/fygar256/axx/archive/refs/heads/v1.0.0.zip
 	sha256sums = e773da6bc633aff982cb0c727a2addee2a0c137617b806584e9730e38383b2eb
 
-pkgname = general-assembler-axx
+pkgname = axx
