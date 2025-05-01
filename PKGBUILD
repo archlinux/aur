@@ -10,6 +10,14 @@ options=('staticlibs' '!lto')
 source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
 sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
 
+prepare() {
+  cd "$srcdir/Cuba-$pkgver"
+
+  # gcc 15: false' is a keyword with '-std=c23' onwards
+  sed -i "/typedef enum/d" src/common/stddecl.h
+  sed -i "27i#include <stdbool.h>" src/common/stddecl.h
+}
+
 build() {
   cd "$srcdir/Cuba-$pkgver"
   CFLAGS="-fPIC ${CFLAGS}" ./configure --prefix=/usr
