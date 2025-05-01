@@ -1,6 +1,6 @@
 pkgbase = giada-git
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
-	pkgver = 1.1.1.r2.g42cd77d
+	pkgver = 1.2.0.r4.g55b2e7b
 	pkgrel = 1
 	url = https://github.com/monocasual/giada
 	arch = x86_64
@@ -38,8 +38,6 @@ pkgbase = giada-git
 	source = monocasual.geompp::git+https://github.com/monocasual/geompp.git
 	source = monocasual.mcl-atomic-swapper::git+https://github.com/monocasual/mcl-atomic-swapper.git
 	source = monocasual.mcl-audio-buffer::git+https://github.com/monocasual/mcl-audio-buffer.git
-	source = monocasual.rtaudio::git+https://github.com/monocasual/rtaudio.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

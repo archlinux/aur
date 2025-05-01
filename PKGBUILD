@@ -3,7 +3,7 @@
 
 _pkgname="giada"
 pkgname="$_pkgname-git"
-pkgver=1.1.1.r2.g42cd77d
+pkgver=1.2.0.r4.g55b2e7b
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 url="https://github.com/monocasual/giada"
@@ -55,7 +55,7 @@ _source_giada() {
     'monocasual.geompp'::'git+https://github.com/monocasual/geompp.git'
     'monocasual.mcl-atomic-swapper'::'git+https://github.com/monocasual/mcl-atomic-swapper.git'
     'monocasual.mcl-audio-buffer'::'git+https://github.com/monocasual/mcl-audio-buffer.git'
-    'monocasual.rtaudio'::'git+https://github.com/monocasual/rtaudio.git'
+    #'monocasual.rtaudio'::'git+https://github.com/monocasual/rtaudio.git'
     #'steinbergmedia.vst3sdk'::'git+https://github.com/steinbergmedia/vst3sdk.git'
   )
 
@@ -74,10 +74,13 @@ _source_giada() {
       'monocasual.geompp'::'src/deps/geompp'
       'monocasual.mcl-atomic-swapper'::'src/deps/mcl-atomic-swapper'
       'monocasual.mcl-audio-buffer'::'src/deps/mcl-audio-buffer'
-      'monocasual.rtaudio'::'src/deps/rtaudio'
+      #'monocasual.rtaudio'::'src/deps/rtaudio'
       #'steinbergmedia.vst3sdk'::'src/deps/vst3sdk'
     )
     _submodule_update
+
+    # out of tree
+    git submodule update --init src/deps/rtaudio
   )
 }
 
@@ -103,8 +106,6 @@ pkgver() {
 }
 
 build() (
-  export
-
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
