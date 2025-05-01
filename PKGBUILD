@@ -2,7 +2,7 @@
 # Repo:       https://github.com/Mikescher/key-project-aur
 
 pkgname=key-project
-pkgver=2.12.0
+pkgver=2.12.3
 pkgrel=1
 
 pkgdesc="A program to use formal verification with Java programs"
@@ -19,19 +19,17 @@ source=(
   "key-project16.png"
   "key-project32.png"
   "key-project64.png"
-  "https://github.com/KeYProject/key/releases/download/KeY-$pkgver/key-$pkgver-exe.jar"
+  "https://github.com/KeYProject/key/releases/download/KEY-$pkgver/key-$pkgver-exe.jar"
 )
 
 noextract=("key-$pkgver-exe.jar")
 
-sha256sums=(
-  '102d85d94612272a66bf4612b06ffa0561b709bbeb3ea55ed9bd28b339211f18'
-  '16377958fce36d59c8fcfd9d0e34587ef1d671fd8c0aa79ca510539e1596fef5'
-  'f88c92559367ca052427ef090fa934a39753200a029a29b83092309912df36a8'
-  'ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62'
-  'ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62'
-  'eb9a870b88914ea5b7e28a2eb6453a98e5aece45f95d21e76edb8c8094441c59'
-)
+sha256sums=('102d85d94612272a66bf4612b06ffa0561b709bbeb3ea55ed9bd28b339211f18'
+            '16377958fce36d59c8fcfd9d0e34587ef1d671fd8c0aa79ca510539e1596fef5'
+            'f88c92559367ca052427ef090fa934a39753200a029a29b83092309912df36a8'
+            'ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62'
+            'ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62'
+            '31808ddcb4925afc0099d0f2b49b3ebf8d24833cb87769505a8f20292ca0fe88')
 
 package()
 {
