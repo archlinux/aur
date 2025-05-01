@@ -16,9 +16,9 @@ broker:
     - fronted:
         front: https://vuejs.org/
         host: svitania-naidallszei-2.netlify.app
-        
+
 credentials:
-  secret: 'your-account-secret'
+  secret: "your-account-secret"
 
 # For legacy username and password
 # credentials:
@@ -28,7 +28,7 @@ credentials:
 
 sess_metadata:
   filter:
-    ads: true     # Enable ad filtering.
-    nsfw: false    # Enable NSFW content filtering.
+    ads: true # Enable ad filtering.
+    nsfw: false # Enable NSFW content filtering.
 
 vpn: false

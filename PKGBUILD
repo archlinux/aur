@@ -2,7 +2,7 @@
 
 pkgname=geph5-client
 pkgver=0.2.57
-pkgrel=1
+pkgrel=2
 pkgdesc="The command-line Geph5 client"
 arch=('x86_64')
 url="https://github.com/geph-official/geph5"
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgn
         "geph5-client.user.service"
         'geph5-client.service')
 md5sums=('51b331b55fd2655e63e78eb4de55f962'
-         '9200ab25cb8a412d7f4a1fe3e971941f'
+         'ce046f955572413daf9256cd36e1b4a7'
          '186cca941b1c4a510a71bf79a0ef8921'
          '7ddb81dd9b4a9f66559247565cdb49a7')
 

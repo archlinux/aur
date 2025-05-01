@@ -1,7 +1,7 @@
 pkgbase = geph5-client
 	pkgdesc = The command-line Geph5 client
 	pkgver = 0.2.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geph-official/geph5
 	arch = x86_64
 	license = MPL-2.0
@@ -16,7 +16,7 @@ pkgbase = geph5-client
 	source = geph5-client.user.service
 	source = geph5-client.service
 	md5sums = 51b331b55fd2655e63e78eb4de55f962
-	md5sums = 9200ab25cb8a412d7f4a1fe3e971941f
+	md5sums = ce046f955572413daf9256cd36e1b4a7
 	md5sums = 186cca941b1c4a510a71bf79a0ef8921
 	md5sums = 7ddb81dd9b4a9f66559247565cdb49a7
 
