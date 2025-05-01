@@ -13,6 +13,8 @@ post_install() {
       fi
     fi
   done
+  ## Temporary fix
+  ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib
 }
 
 post_upgrade() {
@@ -27,6 +29,8 @@ post_upgrade() {
       fi
     fi
   done
+  ## Temporary fix
+  ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib
 }
 
 pre_install() {
@@ -49,4 +53,6 @@ pre_remove() {
       fi
     fi
   done
+  ## Temporary fix
+  unlink /usr/lib/libxml2.so.2
 }
