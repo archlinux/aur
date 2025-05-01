@@ -1,0 +1,4 @@
+post_install() {
+  echo "Make sure to set the user's cache dir in /etc/yaycache-hook.conf:"
+  echo "cache_dirs=(/home/<user>/.cache/yay/*/)"
+}
