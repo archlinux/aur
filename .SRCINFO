@@ -1,6 +1,6 @@
 pkgbase = jellyplayer-git
 	pkgdesc = Terminal-based Jellyfin player with MPV integration
-	pkgver = c188df6
+	pkgver = 20ceeba
 	pkgrel = 1
 	url = https://github.com/AlexJonker/jellyplayer
 	arch = any
