@@ -2,7 +2,7 @@
 # Contributor: Raansu
 # Contributor: Lance G. <Gero3977@gmail.com>
 pkgname=postybirb-plus
-pkgver=3.1.50
+pkgver=3.1.60
 _electronversion=19
 _nodeversion=16
 pkgrel=1
@@ -16,16 +16,17 @@ depends=(
 )
 makedepends=(
     'npm'
-    'gcc'
-    'cmake'
     'nvm'
     'curl'
+    'git'
+    'gendesk'
+    'yarn'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b58fd3353adc83b1e9e9154ac5ce7692303ef62cd810b5aa317aecc53bf0b5e8'
+sha256sums=('bac76d3ffa7d1242b786e06e01b163b766a0dfe290b1591a3da3b160110efb31'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -33,25 +34,25 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname}.sh"
+    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -59,21 +60,17 @@ build() {
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         echo commons electron-app ui | xargs -n 1 cp .npmrc
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npx node create-signer.js
-    cd "${srcdir}/${pkgname}-${pkgver}/commons"
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/ui"
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    sed -i "s/npm install/NODE_ENV=development npm install/g" package.json
+    NODE_ENV=development    npm install --legacy-peer-deps --prefer-offline
+    NODE_ENV=production     npm run make
+}
+build() {
     cd "${srcdir}/${pkgname}-${pkgver}/electron-app"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
-    NODE_ENV=production     npm run build
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
