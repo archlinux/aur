@@ -3,7 +3,7 @@
 : ${_pkgtype=-git}
 
 pkgbase="zenmap-git"
-pkgver=7.95.r223.g09760d2
+pkgver=7.95.r273.geddc779
 pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -84,7 +84,7 @@ _build_nmap() (
 
   echo "Building nmap..."
   cd "$_pkgsrc"
-  autoreconf -fiv
+  #autoreconf -fiv
   ./configure \
     --prefix=/usr \
     --with-libpcap=/usr \
