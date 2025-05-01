@@ -7,7 +7,7 @@
 
 pkgname=wine-pure-git
 pkgver=10.6.r144.gaa8621d2fdb
-pkgrel=1
+pkgrel=2
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
@@ -24,24 +24,25 @@ source=(
   Avoid-winemenubuilder-to-startup-explorer.exe.patch
   kernelbase-Fix-uninitialized-structs-in-OpenThread.patch
   winecfg-Add-tweaks-tab-page.patch
+  ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch
 )
-
-sha512sums=(
+sha256sums=(
   'SKIP'
   'SKIP'
-  '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-  'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285'
-  '5815767e2f3fa70abbf7a6c3ceb76889085e117920c357abd6839cdf624887a9ae3d4cb4f188b43ab3ab0af938720388b4d4aed974bc854ddf2d8dee32d5a74f'
-  '55771f934e86b0c23bc3740c98da732c1d9b8cbf0f3452aec1e4f1b46d8253c5700bbcf9e778a782247901a3a94315aea7fd66d8a90729ec5b2f032fb06ad0fc'
-  '5b8e10e9087cae45421ce31056d63f3af53b7bb1d3e8233673ac954ebeb3abb066ece51dd7f5762e3d95b5aacfa5b2f07ff0a14686e8880b97b8dfc3bb2e15f8'
-  '270616bad6cc9f7c11b9a3f72a43568b233921dc30438fc0e42a00c831795238b6d144f352c8c23f261ef96f0248f62cf9f976053f7006824f7ba27191671ae4'
-  'c3f8a6f8e0ea2dfe843cf93ab488bb8b24b86161f924fc153e875489f5091fb1703525f40ff0511b349491f4623a10e42d130fd007197c29dfc5eb94701010ce'
-  '3c3e1e0418890523469f6ad5f00f54e822e30f347c785cbee222f4ee9c1918188e82b178b5c2a9e09e17734f98288d2c7d8d0b108414f03dc2f9c66a0431a602'
-  'a78554ff2d7146921e8083a592da0d9a758859413c118cbe64744ee8b22089d0e5420a3f5ab6c592bb76900fd79c9f55c4c803d8a5a10f9fc4328e55e49e044d'
-  '6e5e372f8d9bc26a22b5d56be4d17e7a6c8e4dbdc310145a23c182eaf3c22ba733fecaf73f1e9a92d3297d61f49652d09f112623bdfc81421cb741a52964d836'
-  '3d621035add00dc8b5801956a7e76b4348ee2ab34c2f383e644acb88307087d339c2932e41c1053fb1128cb63efe69407953c867fe68b13b988687491711f99b'
-  'f82afc38194a456b22475e3f74a19e960ccbc39e641e0c8bbe9fa5db2249f0eb07f2c0e82b7e5b823cfb308037074ed4990ece18fdcef81f368d6e58bcc04be7'
-  '4fa2226b9e1d40f6fc1022a1c10b3a9693e8b735924039953f8268669e9670d5c5f547b85c8d6a38b398940feb186e94462c60974b5865932cab2bcf2a1c91e0'
+  '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
+  '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
+  '4be820998660930c24607b82c7a7cb7fd6108fa7943c4c276e50a4aaf78dfc56'
+  'ff689d9a71190ab28c9de27bc6640172b136eb6bcc7fcaee3f49f012831f1370'
+  '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
+  '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
+  'de34be62e63a4187582b21a3a77d4162a33e7d777095e8e7b8fbd13cb745516f'
+  'd6a67fd4eb22e658bd963a896d6344c93066614ee1f0faed4ee016f701989069'
+  '236d3f562d1ce05ae9d372cd606acb0dab545579fcecae9cf14df1c253fff574'
+  '771777eb4d60ef99588ed33657270533893de9a3f0c010d1fc6898ba3ec8ed74'
+  '261f59b60bdb9d4adecdb2c6cc1f0089e65e9dbd2141b4bfa91d8875716a01b1'
+  'ab84b21a5b2ee097ff19c6ccf029fc25d2e43f04987e8e0e24a8ef7aeb1af322'
+  '27e451af4e7d512c6247cf5d1b7ec4b31f67768469e707e37ac741468fde1d7f'
+  'e7cf0af8f12f8c49b5116beb4d1723cae5167bf0456f6233f98541b102f3d65c'
 )
 pkgdesc="Bleeding-edge Wine build (Staging, WoW64, NTSync, Wayland)"
 url="https://github.com/ventureoo/PKGBUILDs"
@@ -142,6 +143,10 @@ prepare() {
 
   # Add tweaks tab page in winecfg
   patch -Np1 -i "${srcdir}/winecfg-Add-tweaks-tab-page.patch"
+
+  # Patch from Proton. Works only if WINE_LARGE_ADDRESS_AWARE environment
+  # variable is specified.
+  patch -Np1 -i "${srcdir}/ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch"
 
   ./dlls/winevulkan/make_vulkan
   ./tools/make_requests
