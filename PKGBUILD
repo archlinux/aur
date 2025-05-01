@@ -3,9 +3,9 @@
 
 pkgname='xtables-addons'
 pkgver='3.27'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL2')
 url="https://inai.de/projects/${pkgname}"
 depends=('iptables' 'glibc' 'linux')
@@ -23,21 +23,26 @@ prepare() {
 
   autoreconf -fvi
   ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --libdir=/usr/lib \
-    --mandir=/usr/share/man \
-    --docdir=/usr/share/doc \
-    --libexecdir=/usr/lib/iptables \
-    --with-xtlibdir=/usr/lib/xtables \
+    --prefix="/usr" \
+    --sysconfdir="/etc" \
+    --bindir="/usr/bin" \
+    --sbindir="/usr/bin" \
+    --libdir="/usr/lib" \
+    --mandir="/usr/share/man" \
+    --docdir="/usr/share/doc" \
+    --libexecdir="/usr/lib/iptables" \
+    --with-xtlibdir="/usr/lib/xtables" \
     --with-kbuild="${_kernver}build"
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
   make
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
@@ -47,4 +52,5 @@ package() {
   mv -f "${pkgdir}"/lib/* "${pkgdir}/usr/lib"
   rmdir "${pkgdir}/lib"
   rm ${pkgdir}${_kernver}modules.*
+  install -Dm0644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
