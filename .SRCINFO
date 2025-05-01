@@ -1,6 +1,6 @@
 pkgbase = prosody-hg-stable
 	pkgdesc = Lightweight and extensible Jabber/XMPP server written in Lua (latest from stable-branch)
-	pkgver = 0.12.r12393+.6966026262f4+
+	pkgver = 0.12.r13854+.0b01f40df0f9+
 	pkgrel = 1
 	url = https://prosody.im/
 	install = prosody.install
@@ -15,6 +15,7 @@ pkgbase = prosody-hg-stable
 	depends = lua-expat
 	depends = lua-filesystem
 	depends = libidn
+	depends = openssl
 	optdepends = lua-event: libevent support
 	optdepends = lua-dbi: SQL storage support
 	optdepends = luarocks: plugin manager
@@ -22,7 +23,7 @@ pkgbase = prosody-hg-stable
 	conflicts = prosody
 	conflicts = prosody-hg
 	backup = etc/prosody/prosody.cfg.lua
-	source = prosody-hg::hg+https://hg.prosody.im/trunk/#branch=0.12
+	source = prosody-hg::hg+https://hg.prosody.im/trunk/#branch=13.0
 	source = prosody.tmpfile.d
 	source = prosody.logrotated
 	source = sysuser.conf
@@ -30,7 +31,7 @@ pkgbase = prosody-hg-stable
 	sha256sums = SKIP
 	sha256sums = 0753bd9260f1cfdce6e18e01a61e320b396acfe9fca8ccf3250653bfa6af997e
 	sha256sums = 5a2466b73bd069fb73be97a4e23b24e4c8dd1adb7db871cb8f5ab4094c1f967f
-	sha256sums = e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48
+	sha256sums = 211295ad5fe71742a8ec4a4420da31720e3bb407c6653250f9c6c7574e44f14e
 	sha256sums = e9d6abc4c53bd9e7b1d2acc56c7513416751f9436bf382ed52d703d29b13bfaa
 
 pkgname = prosody-hg-stable
