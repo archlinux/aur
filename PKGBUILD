@@ -6,22 +6,22 @@
 pkgname=simple-live-app
 _pkgname=dart_simple_live
 _appname=simple_live_app
-pkgver=1.7.7
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='An app for watching live'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xiaoyaocz/dart_simple_live'
 license=('GPL-3.0-only')
 _flutterchannel=stable
-_flutterversion=3.27.4
+_flutterversion=3.22.3
 depends=('xdg-user-dirs' 'gtk3' 'mpv')
 makedepends=('ninja' 'cmake' 'clang' 'git' 'patchelf')
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/${_flutterchannel}/linux/flutter_linux_${_flutterversion}-${_flutterchannel}.tar.xz"
     "git+https://github.com/xiaoyaocz/dart_simple_live.git#tag=v${pkgver}"
 )
-sha256sums=('64df4273de625433c7ba41967932b782f5f9abf3199db8330782d64508379344'
-            '0615258299f076c2cc2f3486b92ff5f1482b343df6b456eb27bb2ff449d64e74')
+sha256sums=('9c5f70ba118b9163552144901a2efd91d40b22a68a04e67271d6a5ad936e8368'
+            'e016f8c6c3620e0f861ebd33d711149cf9ee65bc7fb098ed6c5e86a928148c7e')
 case "${CARCH}" in
   "x86_64")
     export _dartarch="x64"
