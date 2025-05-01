@@ -1,7 +1,7 @@
 # Maintainer: Max Gautier <mg@max.gautier.name>
 _pkgname=xdg-terminal-exec
 pkgname=${_pkgname}-git
-pkgver=0.12.0.r1.g6614d3c
+pkgver=0.12.3.r0.g9357b7d
 pkgrel=1
 pkgdesc="Proposed standard to launching desktop apps with Terminal=true"
 arch=(any)
@@ -29,7 +29,5 @@ build() {
 }
 
 package() {
-	cd "$_pkgname"
-    install -Dm 755 -t "$pkgdir"/usr/bin "$_pkgname"
-    install -Dm 644 -t "$pkgdir"/usr/share/man/man1/ xdg-terminal-exec.1.gz
+    make -C "$_pkgname" prefix="$pkgdir"/usr install
 }
