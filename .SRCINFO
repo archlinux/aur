@@ -1,7 +1,7 @@
 pkgbase = regina-rexx
 	pkgdesc = ANSI compliant REXX interpreter for multiple platforms
 	pkgver = 3.9.6
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 1
 	url = https://regina-rexx.sourceforge.io/
 	arch = aarch64

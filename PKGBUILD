@@ -13,7 +13,7 @@ pkgname=(regina-rexx{,-doc})
 pkgdesc='ANSI compliant REXX interpreter for multiple platforms'
 epoch=1
 pkgver=3.9.6
-pkgrel=7
+pkgrel=8
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -27,6 +27,10 @@ build() {
   # If the user wants to compile regina with another compiler, let them.
   # Use CC=gcc per default.
   test "Z$CC" = 'Z' && export CC='gcc'
+  case "$CC" in
+    # Appears to have problems with gcc v15.* otherwise
+    *gcc ) export CFLAGS="$CFLAGS -std=gnu17" ;;
+  esac
 
   ./configure \
     --prefix=/usr \
