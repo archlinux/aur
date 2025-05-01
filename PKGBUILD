@@ -6,7 +6,7 @@ pkgver=4.1.2
 pkgrel=2
 pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
-url="https://www.microsoft.com/en-us/research/group/cryptography-research/"
+url="https://www.microsoft.com/en-us/research/project/microsoft-seal"
 license=('MIT')
 makedepends=('cmake')
 source=("https://github.com/Microsoft/SEAL/archive/${pkgver}.tar.gz")
@@ -21,6 +21,11 @@ build() {
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_C_FLAGS="-ffat-lto-objects" \
+    -DSEAL_USE_INTEL_HEXL=ON \
+    -DSEAL_USE_MSGSL=ON \
+    -DSEAL_USE_ZLIB=ON \
+    -DSEAL_USE_ZSTD=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_CXX_FLAGS="-ffat-lto-objects" # We need LTO fat objects: https://archlinux.org/todo/lto-fat-objects/
   cmake --build build
 }
