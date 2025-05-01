@@ -3,8 +3,8 @@
 pkgbase=pretendard-gov
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
 pkgver=1.3.9
-pkgrel=1
-pkgdesc="A variant of Pretendard for governmental use in South Korea"
+pkgrel=2
+pkgdesc="A cross-platform multilingual sans-serif font mainly for governmental use in South Korea"
 url="https://github.com/orioncactus/pretendard"
 arch=('any')
 license=('OFL')
