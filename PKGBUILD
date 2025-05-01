@@ -3,7 +3,7 @@
 pkgname=ghidra-git-bin
 pkgver=11.3.2
 _builddate='20250415'
-pkgrel=4
+pkgrel=5
 pkgdesc='Software reverse engineering framework'
 url='https://ghidra-sre.org/'
 arch=('x86_64' 'aarch64')
