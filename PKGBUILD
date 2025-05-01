@@ -1,14 +1,14 @@
 # Maintainer: foxbox <foxbox.aur@proton.me>
 pkgname=fox-neat-wallpaper
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A wallpaper based for archlinux and xfce4 that shows installed packages"
 arch=('any')
 url="https://github.com/jNullj/$pkgname"
 license=('MIT')
-depends=('imagemagick' 'xfconf' 'pacman-contrib' 'chromium')
+depends=('imagemagick' 'xfconf' 'pacman-contrib' 'firefox')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jNullj/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('172578f31656f82b5084a8bb4e45bf2c64b936173bca00104a2c054fece022bc')
+sha256sums=('70634c2f7b7742b6187f8b43ac7d0b83f1f9a2ff096518a7dce7861acc83fd5d')
 
 package() {
 	cd "${pkgname}-${pkgver}"
