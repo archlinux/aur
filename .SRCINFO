@@ -1,0 +1,18 @@
+pkgbase = gnome-audio-locator
+	pkgdesc = Live Audio Recording Software
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.aamot.io/software/gnomeaudio/
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = libchamplain
+	depends = geoclue
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	source = https://www.aamot.io/software/gnomeaudio/src/gnome-audio-locator-1.0.0.tar.xz
+	sha256sums = 8b1a0f67dc640cf9630b37042682463926553325a602dbd37249afbab574552c
+
+pkgname = gnome-audio-locator
