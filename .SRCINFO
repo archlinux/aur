@@ -1,0 +1,25 @@
+pkgbase = cage-mao-git
+	pkgdesc = Kiosk compositor for Wayland with gamma and numlock support
+	pkgver = r354.a9584a1
+	pkgrel = 1
+	url = https://www.hjdskes.nl/projects/cage/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = wayland-protocols
+	makedepends = xorg-server-xwayland
+	depends = glibc
+	depends = wayland
+	depends = wlroots-0.18-git
+	depends = libxkbcommon
+	optdepends = polkit: System privilege control. Required if not using seatd service
+	optdepends = xorg-server-xwayland: X11 support
+	provides = cage
+	conflicts = cage
+	conflicts = cage-git
+	source = cage-mao-git::git+https://github.com/DreamMaoMao/cage.git
+	sha512sums = SKIP
+
+pkgname = cage-mao-git
