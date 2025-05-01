@@ -1,0 +1,18 @@
+pkgbase = python-aiomax-git
+	pkgdesc = The asynchronous library for Max
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dpnspn/aiomax
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python3
+	depends = python-aiohttp
+	conflicts = python-aiomax
+	source = git+https://github.com/dpnspn/aiomax.git
+	sha256sums = SKIP
+
+pkgname = python-aiomax-git
