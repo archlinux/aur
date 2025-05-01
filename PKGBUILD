@@ -1,7 +1,7 @@
 # Maintainer: Seth Hoong <hoong seth at gmail dot com>
 pkgname=sillytavern-git
 _pkgname=sillytavern
-pkgver=1.12.13.r431.g84f339c
+pkgver=1.12.13.r518.gb3a3b9d
 pkgrel=1
 pkgdesc="A locally installed user interface for LLMs, image generation, and TTS voice models"
 arch=('x86_64')

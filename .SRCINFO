@@ -1,6 +1,6 @@
 pkgbase = sillytavern-git
 	pkgdesc = A locally installed user interface for LLMs, image generation, and TTS voice models
-	pkgver = 1.12.12.r337.g64e1fd5
+	pkgver = 1.12.13.r518.gb3a3b9d
 	pkgrel = 1
 	url = https://github.com/SillyTavern/SillyTavern
 	arch = x86_64
