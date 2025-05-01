@@ -27,7 +27,7 @@
 - 🔄 **API Flexibility**: Works with OpenAI, Ollama, Groq, Claude, Gemini, and any compatible endpoint
 - 💬 **Interactive Chat**: Continuous conversation with memory in modern UI
 - 📊 **Streaming Responses**: Real-time output for better user experience
-- 🔍 **Web Search**: Integrated with compatible API endpoints
+- 🔍 **Web Search**: Enhance any model with contextual information from the web
 - 📥 **Stdin Processing**: Process piped content by using `{}` placeholder in prompts
 - 🎨 **Markdown Rendering**: Beautiful formatting of markdown and code with syntax highlighting
 - ⚡ **Real-time Markdown**: Stream responses with live updating syntax highlighting and formatting
@@ -235,7 +235,7 @@ ngpt --list-models --provider Gemini
 # With custom options
 ngpt --api-key your-key --base-url http://your-endpoint --model your-model "Hello"
 
-# Enable web search (if your API endpoint supports it)
+# Enable web search capability to enhance prompts with web information
 ngpt --web-search "What's the latest news about AI?"
 
 # Generate and execute shell commands (using -s or --shell flag)
