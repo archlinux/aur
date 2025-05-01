@@ -1,0 +1,19 @@
+pkgbase = sxiv-mao-git
+	pkgdesc = Simple (or small or suckless) X Image Viewer with easymotion
+	pkgver = 2016.08.08
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/sxiv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = libexif
+	depends = libxft
+	depends = hicolor-icon-theme
+	provides = sxiv
+	conflicts = sxiv
+	source = sxiv::git+https://github.com/DreamMaoMao/sxiv.git
+	sha256sums = SKIP
+
+pkgname = sxiv-mao-git
