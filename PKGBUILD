@@ -8,12 +8,13 @@ pkgname='cnrdrvcups-lb'
 # The download link changes with every version, try to keep changes in one place
 # https://gdlp01.c-wss.com/gds/8/0100007658/27/linux-UFRII-drv-v550-m17n-00.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/30/linux-UFRII-drv-v560-m17n-08.tar.gz
-#https://gdlp01.c-wss.com/gds/8/0100007658/33/linux-UFRII-drv-v570-m17n-11.tar.gz
+# https://gdlp01.c-wss.com/gds/8/0100007658/33/linux-UFRII-drv-v570-m17n-11.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/35/linux-UFRII-drv-v570-m17n-18.tar.gz
 # https://gdlp01.c-wss.com/gds/8/0100007658/38/linux-UFRII-drv-v580-m17n-04.tar.gz
-#https://gdlp01.c-wss.com/gds/8/0100007658/40/linux-UFRII-drv-v590-m17n-03.tar.gz
-#https://gdlp01.c-wss.com/gds/8/0100007658/41/linux-UFRII-drv-v600-m17n-00.tar.gz
-_pkgver='6.00';  _dl='8/0100007658/41';_suffix1='m17n';_suffix2='00'
+# https://gdlp01.c-wss.com/gds/8/0100007658/40/linux-UFRII-drv-v590-m17n-03.tar.gz
+# https://gdlp01.c-wss.com/gds/8/0100007658/41/linux-UFRII-drv-v600-m17n-00.tar.gz
+# https://gdlp01.c-wss.com/gds/8/0100007658/45/linux-UFRII-drv-v610-m17n-01.tar.gz
+_pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 epoch=1
@@ -43,9 +44,9 @@ options=(emptydirs !strip !libtool !debug)
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
                 replace_incorrect_int_with_char.patch
 )
-md5sums=('282da3c236363cf0d3fb1aef74711e3c'
+md5sums=('ce4483bddf5a1a0ac3bc1fd8d742ca73'
          '8bc26ff46bf5877b5800b77685d5d917')
-sha512sums=('5d5de3ad519403ae051ea800bfdb256f8aa366d711dd668c5c44829ac0c2d5dee6f03ed65fda2d4bf5fa88f81e5225de9324b8ddda990fa52e557ecc6f998894'
+sha512sums=('8d993c2f37ee6103db46b4dccce7ca4378b1f0af854d586462a10b23d9faf80d9a8657ea108e4aa8e43a77caf3d3007e3dffb912bfa06b4a642eb73d173bf796'
             '1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65')
 
 
@@ -221,14 +222,14 @@ package() {
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
     
-    install -Dpm644 deutsch/"README-ufr2-6.0xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xDE.html"
-    install -Dpm644 espanol/"README-ufr2-6.0xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xSP.html"
-    install -Dpm644 francais/"README-ufr2-6.0xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xFR.html"
-    install -Dpm644 italiano/"README-ufr2-6.0xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xIT.html"
-    install -Dpm644 korean/"README-ufr2-6.0xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xKR.html"
-    install -Dpm644 simplified_chinese/"README-ufr2-6.0xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xSC.html"
-    install -Dpm644 traditional_chinese/"README-ufr2-6.0xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xTC.html"
-    install -Dpm644 uk_eng/"README-ufr2-6.0xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.0xUK.html"
+    install -Dpm644 deutsch/"README-ufr2-6.1xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xDE.html"
+    install -Dpm644 espanol/"README-ufr2-6.1xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xSP.html"
+    install -Dpm644 francais/"README-ufr2-6.1xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xFR.html"
+    install -Dpm644 italiano/"README-ufr2-6.1xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xIT.html"
+    install -Dpm644 korean/"README-ufr2-6.1xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xKR.html"
+    install -Dpm644 simplified_chinese/"README-ufr2-6.1xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xSC.html"
+    install -Dpm644 traditional_chinese/"README-ufr2-6.1xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xTC.html"
+    install -Dpm644 uk_eng/"README-ufr2-6.1xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-6.1xUK.html"
     
     install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
     install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"

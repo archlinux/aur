@@ -1,6 +1,6 @@
 pkgbase = cnrdrvcups-lb
 	pkgdesc = CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers
-	pkgver = 6.00.1.00
+	pkgver = 6.10.1.01
 	pkgrel = 1
 	epoch = 1
 	url = https://www.canon-europe.com/support/consumer/products/printers/i-sensys/mf-series/i-sensys-mf657cdw.html?type=drivers&language=EN&os=Linux%20(64-bit)
@@ -32,11 +32,11 @@ pkgbase = cnrdrvcups-lb
 	options = !strip
 	options = !libtool
 	options = !debug
-	source = http://gdlp01.c-wss.com/gds/8/0100007658/41/linux-UFRII-drv-v600-m17n-00.tar.gz
+	source = http://gdlp01.c-wss.com/gds/8/0100007658/45/linux-UFRII-drv-v610-m17n-01.tar.gz
 	source = replace_incorrect_int_with_char.patch
-	md5sums = 282da3c236363cf0d3fb1aef74711e3c
+	md5sums = ce4483bddf5a1a0ac3bc1fd8d742ca73
 	md5sums = 8bc26ff46bf5877b5800b77685d5d917
-	sha512sums = 5d5de3ad519403ae051ea800bfdb256f8aa366d711dd668c5c44829ac0c2d5dee6f03ed65fda2d4bf5fa88f81e5225de9324b8ddda990fa52e557ecc6f998894
+	sha512sums = 8d993c2f37ee6103db46b4dccce7ca4378b1f0af854d586462a10b23d9faf80d9a8657ea108e4aa8e43a77caf3d3007e3dffb912bfa06b4a642eb73d173bf796
 	sha512sums = 1d118eeee1ce069b59db00cba5b534986ccbd1da3a9c4a4ba6892be4a478c2dac4bd83dae1b2dd28f0e58a145609c60940cd661fee87d025a12f856e161b1f65
 
 pkgname = cnrdrvcups-lb
