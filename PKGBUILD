@@ -6,7 +6,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=14
+pkgrel=15
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,7 @@ _libnfsver=6
 _libtheoraver=1.2
 _libupnpver=1.14
 _libvpxver=1.14
+_libxml2ver=2.14
 _livemediaver=2024.04.19
 _mpg123ver=1.32.2
 _protobufver=30.1
@@ -108,7 +109,7 @@ makedepends=(
   libx11
   libxcb
   libxinerama
-  libxml2
+  "libxml2>=$_libxml2ver"
   libxpm
   lirc
   "live-media>=$_livemediaver"
