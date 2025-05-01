@@ -77,7 +77,7 @@ package() {
 	# Install build to /opt
 	cd ${srcdir}
 	mkdir -p "${pkgdir}"/opt
-	mv  "${pkgname}-${pkgver}" ${pkgdir}/opt/${pkgname} || return 1
+	mv  "${pkgname}-${_pkgver}" ${pkgdir}/opt/${pkgname} || return 1
 
 	# run OMNeT++ as a normal user
 	touch ${pkgdir}/opt/${pkgname}/ide/error.log
