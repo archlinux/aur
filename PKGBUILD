@@ -1,8 +1,8 @@
 # Maintainer: CUB3D <cub3d at cub3d dot pw>
 
 pkgname=ghidra-git-bin
-pkgver=11.3.1
-_builddate='20250219'
+pkgver=11.3.2
+_builddate='20250415'
 pkgrel=4
 pkgdesc='Software reverse engineering framework'
 url='https://ghidra-sre.org/'
@@ -18,7 +18,7 @@ conflicts=(
 source=(
      https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_${pkgver}_build/ghidra_${pkgver}_PUBLIC_${_builddate}.zip
 )
-sha256sums=('bcda0a9de8993444766cc255964c65c042b291ddaf6c50d654e316e442b441fa')
+sha256sums=('99d45035bdcc3d6627e7b1232b7b379905a9fad76c772c920602e2b5d8b2dac2')
 OPTIONS=(!strip)
 
 package() {

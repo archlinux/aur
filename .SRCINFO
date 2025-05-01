@@ -1,6 +1,6 @@
 pkgbase = ghidra-git-bin
 	pkgdesc = Software reverse engineering framework
-	pkgver = 11.3.1
+	pkgver = 11.3.2
 	pkgrel = 4
 	url = https://ghidra-sre.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ghidra-git-bin
 	provides = ghidra
 	conflicts = ghidra
 	conflicts = ghidra-dev
-	source = https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.1_build/ghidra_11.3.1_PUBLIC_20250219.zip
-	sha256sums = bcda0a9de8993444766cc255964c65c042b291ddaf6c50d654e316e442b441fa
+	source = https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.3.2_build/ghidra_11.3.2_PUBLIC_20250415.zip
+	sha256sums = 99d45035bdcc3d6627e7b1232b7b379905a9fad76c772c920602e2b5d8b2dac2
 
 pkgname = ghidra-git-bin
