@@ -1,7 +1,7 @@
 pkgbase = nordvpn-bin
 	pkgdesc = NordVPN CLI tool for Linux
 	pkgver = 3.20.2
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://nordvpn.com/download/linux/
 	install = nordvpn-bin.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nordvpn-bin
 	depends = libxml2
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
-	source = https://archive.archlinux.org/repos/2025/04/29/core/os/x86_64/libxml2-2.13.8-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.8-1-x86_64.pkg.tar.zst
 	sha256sums = 2a1b0ab11ff213a57268d20fff183e3fd3e4ab9191aeed473de336b77bdfa6e1
 	source_x86_64 = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_3.20.2_amd64.deb
 	sha256sums_x86_64 = d9e2d5af4690a4c848302ae4c8845c09a6d7735f7b189677d5597904d0fb0e2f
