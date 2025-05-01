@@ -7,32 +7,36 @@ pkgname=python-speechrecognition
 _pkg=speechrecognition
 _pkgdir=speech_recognition
 pkgver=3.14.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Google-powered speech recognition for Python"
 arch=('x86_64')
 url="https://github.com/Uberi/speech_recognition"
 license=('MIT')
 depends=(
-  'flac'
   'python-audioop'
-  'python-pyaudio'
   'python-requests'
   'python-tensorflow'
   'python-botocore'
   'python-boto3'
-  'python-deadlib' #force to avoid potentially conflicting package python-standard-aifc
-  'lib32-glibc'    #needed for flac
+  'lib32-glibc'
+  'flac'
   'python-aifc')
 optdepends=(
+  'python-pyaudio: Required for microphone input'
   'python-pocketsphinx'
   'python-vosk'
   'python-whisper'
   'python-google-api-core: Google cloud speech'
-  'python-typing_extensions: Required for faster whisper'
-  'python-pytorch-opt-cuda: Required for whisper'
+  'python-faster-whisper: Required for Whisper'
+  'python-typing_extensions: Required for faster Whisper'
+  'python-pytorch: Required for Whisper'
   'python-numpy: Required for whisper'
   'python-openai: Required for openai'
-  'python-soundfile: Required for whisper')
+  'python-soundfile: Required for whisper'
+  'python-google-cloud-speech: Required for Google Cloud Speech-toText API'
+  'python-vosk: Required for Vosk recognizer'
+  'python-groq: Required for Groq Whisper API'
+)
 
 makedepends=(
   'git'
@@ -55,24 +59,21 @@ build() {
 }
 
 check() {
-  rm -rf test-env
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer "${_pkgdir}/dist/"*.whl
-  test-env/bin/python -m pytest \
+  cp -r "${_pkgdir}/tests" "${srcdir}/tests"
+  cd "${srcdir}"
+  PYTHONPATH="${_pkgdir}" python -m pytest \
     -k "not test_google_cloud" \
-    --ignore=${_pkgdir}/tests/recognizers/test_google_cloud.py \
-    --ignore=${_pkgdir}/tests/recognizers/test_groq.py \
-    --ignore=${_pkgdir}/tests/test_special_features.py \
-    --ignore=${_pkgdir}/tests/recognizers/whisper_api/test_groq.py \
-    "${_pkgdir}/tests/" || true
+    --ignore=tests/recognizers/test_google_cloud.py \
+    --ignore=tests/recognizers/test_groq.py \
+    --ignore=tests/test_special_features.py \
+    --ignore=tests/recognizers/whisper_api/test_groq.py \
+    tests/ || true
+  rm -rf "${srcdir}/tests"
 }
 
 package() {
   cd "$_pkgdir"
   python -m installer --destdir "$pkgdir" dist/*.whl
   install -Dm644 LICENSE* -t ${pkgdir}/usr/share/licenses/$pkgname/
-  # currently leaves unwanted tests directory
-  local _site_packages=$(python -c "import sysconfig; print(sysconfig.get_paths()['purelib'])")
-  rm -rf "${pkgdir}${_site_packages}/tests"
 }
 # vim:set ts=2 sw=2 et:
