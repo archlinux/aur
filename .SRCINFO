@@ -1,0 +1,12 @@
+pkgbase = cursor-electron-latest
+	pkgdesc = Cursor (latest electron)
+	pkgver = 0.49.6
+	pkgrel = 1
+	url = https://www.cursor.com
+	arch = any
+	makedepends = cursor-electron
+	depends = cursor-electron
+	depends = electron
+	options = !strip
+
+pkgname = cursor-electron-latest
