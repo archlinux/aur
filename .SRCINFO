@@ -1,0 +1,23 @@
+pkgbase = wshowkeys-mao-git
+	pkgdesc = Displays keys being pressed on a Wayland session for DreamMaoMao fork
+	pkgver = r32.24364e5
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/wshowkeys
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = pango
+	depends = libinput
+	depends = libxkbcommon
+	depends = wayland
+	provides = wshowkeys
+	conflicts = wshowkeys
+	source = wshowkeys::git+https://github.com/DreamMaoMao/wshowkeys
+	sha512sums = SKIP
+
+pkgname = wshowkeys-mao-git
