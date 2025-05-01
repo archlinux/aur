@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=7.1
-pkgrel=8
+pkgver=7.1.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -68,6 +68,7 @@ _libplacebover=7
 _libristver=0.2.7
 _libtheoraver=1.2
 _libvpxver=1.15
+_libxml2ver=2.14
 _rav1ever=0.7.1
 _rubberbandver=4
 _srtver=1.5
@@ -124,7 +125,7 @@ depends=(
   libx11
   libxcb
   libxext
-  libxml2
+  "libxml2>=$_libxml2ver"
   libxv
   ocl-icd
   opencore-amr
@@ -180,19 +181,17 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=b08d7969c550a804a59511c7b83f2dd8cc0499b8
+_tag=db69d06eeeab4f46da15030a80d539efb4503ca8
 _deps_tag=2024-09-12
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
   "obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=${_deps_tag}"
-  "add-av_stream_get_first_dts-for-chromium.patch"
-  "fix_build_with_texinfo-7.2.patch"
+  "0001-Add-av_stream_get_first_dts-for-Chromium.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  '1027369d704834588f09f1854541584444dda4f8c6407f83fec090d80e6e6ad2'
-  '158eab13960865693da666dd0c41f7691eb6fc3148e5dcad239a6b17b0bf24ae'
+  'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
 )
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
@@ -428,13 +427,8 @@ prepare() {
 
   ### Arch Linux changes
 
-  # Fix build with texinfo-7.2
-  # See https://www.linuxquestions.org/questions/slackware-14/texinfo-7-2-looks-to-have-broken-texinfo-convert-html-4175745581/
-  # Patch taken from LSF: https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-7.1-texinfo_fix-1.patch
-  patch -Np1 -i "${srcdir}"/fix_build_with_texinfo-7.2.patch
-
   ## https://crbug.com/1251779
-  patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+  patch -Np1 -i "${srcdir}"/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 
   ## avcodec/libsvtav1: unbreak build with latest svtav1
   git cherry-pick -n 68b5db246407f0b0e398ce3b10ee57f738f0c524

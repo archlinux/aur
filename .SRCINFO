@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
-	pkgver = 7.1
-	pkgrel = 8
+	pkgver = 7.1.1
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
 	arch = aarch64
@@ -64,7 +64,7 @@ pkgbase = ffmpeg-obs
 	depends = libx11
 	depends = libxcb
 	depends = libxext
-	depends = libxml2
+	depends = libxml2>=2.14
 	depends = libxv
 	depends = ocl-icd
 	depends = opencore-amr
@@ -94,7 +94,7 @@ pkgbase = ffmpeg-obs
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = vpl-runtime: Intel QuickSync support
-	provides = ffmpeg=7.1
+	provides = ffmpeg=7.1.1
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -104,13 +104,11 @@ pkgbase = ffmpeg-obs
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=b08d7969c550a804a59511c7b83f2dd8cc0499b8
+	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=db69d06eeeab4f46da15030a80d539efb4503ca8
 	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2024-09-12
-	source = add-av_stream_get_first_dts-for-chromium.patch
-	source = fix_build_with_texinfo-7.2.patch
+	source = 0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 1027369d704834588f09f1854541584444dda4f8c6407f83fec090d80e6e6ad2
-	sha256sums = 158eab13960865693da666dd0c41f7691eb6fc3148e5dcad239a6b17b0bf24ae
+	sha256sums = f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40
 
 pkgname = ffmpeg-obs
