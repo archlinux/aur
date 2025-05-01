@@ -6,7 +6,7 @@
 
 _pkgname='iwd'
 pkgname=iwd-git
-pkgver=3.3.r2.gf4439fd2
+pkgver=3.6.r11.g8ebc4780
 pkgrel=1
 pkgdesc='Internet Wireless Daemon'
 arch=('x86_64')
@@ -51,7 +51,8 @@ prepare() {
     sed -i '/_FORTIFY_SOURCE/d' configure.ac
 
     # remove test that fails in chroot
-    sed -i "s:unit/test-wsc::" Makefile.am
+    sed -r -i "s:unit/test-wsc(\.c)?::" Makefile.am
+    sed -r -i "s:unit/test-storage(\.c)?::" Makefile.am
 
     autoreconf -vfi
 }

@@ -1,6 +1,6 @@
 pkgbase = iwd-git
 	pkgdesc = Internet Wireless Daemon
-	pkgver = 3.3.r2.gf4439fd2
+	pkgver = 3.6.r11.g8ebc4780
 	pkgrel = 1
 	url = https://git.kernel.org/cgit/network/wireless/iwd.git/
 	arch = x86_64
