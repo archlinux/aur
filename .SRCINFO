@@ -11,8 +11,13 @@ pkgbase = omnetpp
 	makedepends = clang>=17.0.6
 	makedepends = llvm>=17.0.6
 	makedepends = llvm-libs>=17.0.6
+	makedepends = python-setuptools
+	makedepends = python-matplotlib
 	makedepends = python-numpy1
+	makedepends = python-pandas
+	makedepends = python-scipy
 	makedepends = python-tzdata
+	makedepends = python-posix_ipc
 	makedepends = bison
 	makedepends = flex
 	makedepends = perl
@@ -25,14 +30,13 @@ pkgbase = omnetpp
 	depends = doxygen
 	depends = graphviz
 	depends = openscenegraph
-	depends = python-scipy
+	depends = python-setuptools
+	depends = python-matplotlib
 	depends = python-numpy1
 	depends = python-pandas
+	depends = python-scipy
 	depends = python-tzdata
 	depends = python-posix_ipc
-	optdepends = python-numpy: analysing simulation recordings
-	optdepends = python-matplotlib: analysing simulation recordings
-	optdepends = python-pandas: analysing simulation recordings
 	optdepends = osgearth: geospatial API with 3D rendering
 	provides = omnetpp
 	conflicts = omnetpp

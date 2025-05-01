@@ -25,9 +25,11 @@ depends=('libxml2'
          'doxygen'
          'graphviz'
          'openscenegraph'
-         'python-scipy'
+         'python-setuptools'
+         'python-matplotlib'
          'python-numpy1'
          'python-pandas'
+         'python-scipy'
          'python-tzdata'
          'python-posix_ipc')
 makedepends=('wget'
@@ -35,16 +37,17 @@ makedepends=('wget'
              'clang>=17.0.6'
              'llvm>=17.0.6'
              'llvm-libs>=17.0.6'
+             'python-setuptools'
+             'python-matplotlib'
              'python-numpy1'
+             'python-pandas'
+             'python-scipy'
              'python-tzdata'
+             'python-posix_ipc'
              'bison'
              'flex'
              'perl')
-optdepends=(
-			'python-numpy: analysing simulation recordings'
-			'python-matplotlib: analysing simulation recordings'
-			'python-pandas: analysing simulation recordings'
-			'osgearth: geospatial API with 3D rendering')
+optdepends=('osgearth: geospatial API with 3D rendering')
 provides=('omnetpp')
 conflicts=('omnetpp')
 install=${pkgname}.install
@@ -67,7 +70,7 @@ build() {
 	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib
 	PATH=${srcdir}/${pkgname}-${_pkgver}/bin:$PATH
 	LD_LIBRARY_PATH=${srcdir}/${pkgname}-${_pkgver}/lib:$LD_LIBRARY_PATH
-  make -j2
+  make
 }
 
 package() {
