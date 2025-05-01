@@ -3,8 +3,8 @@
 pkgbase=pretendard-std
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
 pkgver=1.3.9
-pkgrel=1
-pkgdesc="A variant of Pretendard for Latin-based environment"
+pkgrel=2
+pkgdesc="A cross-platform multilingual sans-serif font for Latin-based environment"
 url="https://github.com/orioncactus/pretendard"
 arch=('any')
 license=('OFL')
