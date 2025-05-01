@@ -1,0 +1,20 @@
+pkgbase = da-browser-launcher
+	pkgdesc = Browser launcher that lets the user launch into a specific profile
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/korkie9/da-browser-launcher
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = sqlite
+	depends = raylib
+	depends = libx11
+	depends = glibc
+	depends = gcc-libs
+	depends = libglvnd
+	source = git+https://github.com/korkie9/da-browser-launcher.git
+	sha256sums = SKIP
+
+pkgname = da-browser-launcher
