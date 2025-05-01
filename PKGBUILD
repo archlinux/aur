@@ -13,7 +13,7 @@
 
 pkgname=ungoogled-chromium-xdg
 pkgver=135.0.7049.114
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
