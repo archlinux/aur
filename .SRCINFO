@@ -17,6 +17,7 @@ pkgbase = wshowkeys-mao-git
 	depends = wayland
 	provides = wshowkeys
 	conflicts = wshowkeys
+	conflicts = wshowkeys-git
 	source = wshowkeys::git+https://github.com/DreamMaoMao/wshowkeys
 	sha512sums = SKIP
 

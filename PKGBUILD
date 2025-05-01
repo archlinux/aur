@@ -11,7 +11,7 @@ license=('GPL')
 depends=('cairo' 'pango' 'libinput' 'libxkbcommon' 'wayland')
 makedepends=('git' 'meson' 'wayland-protocols')
 provides=('wshowkeys')
-conflicts=('wshowkeys')
+conflicts=('wshowkeys' 'wshowkeys-git')
 source=("$_pkgname::git+https://github.com/DreamMaoMao/wshowkeys")
 sha512sums=('SKIP')
 
