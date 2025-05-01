@@ -1,6 +1,6 @@
 pkgbase = odio
 	pkgdesc = Audio compression tool for FLAC
-	pkgver = 25.4.1
+	pkgver = 25.5.1
 	pkgrel = 1
 	url = https://tari.in/www/software/odio
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = odio
 	depends = python-selenium
 	depends = selenium-manager
 	options = !emptydirs
-	source = odio-25.4.1.tar.gz::https://github.com/tari01/odio/archive/25.4.1.tar.gz
-	md5sums = 76cb4a345bc13129f99909660f7a1f84
+	source = odio-25.5.1.tar.gz::https://github.com/tari01/odio/archive/25.5.1.tar.gz
+	md5sums = 1e707f39aa5204041120ae450f0bc6fb
 
 pkgname = odio
