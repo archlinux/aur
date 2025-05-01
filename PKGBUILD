@@ -1,0 +1,48 @@
+# Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
+
+pkgname=picom-mao-git
+_gitname=mypicom
+pkgver=1792__2024.02.05
+pkgrel=1
+pkgdesc="X compositor DreamMaoMao fork"
+arch=(i686 x86_64)
+url="https://github.com/DreamMaoMao/mypicom"
+license=('MIT' 'MPL-2.0')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libconfig' 'libdbus' 'libepoxy' 'libev' 'libx11'
+         'libxcb' 'pcre2' 'pixman' 'xcb-util' 'xcb-util-image' 'xcb-util-renderutil')
+makedepends=('asciidoctor' 'cmake' 'git' 'libglvnd' 'mesa' 'meson' 'uthash' 'xorgproto')
+optdepends=('dbus:          To control picom via D-Bus'
+            'python:        For picom-convgen.py'
+            'xorg-xwininfo: For picom-trans'
+            'xorg-xprop:    For picom-trans')
+provides=('compton' 'compton-git' 'picom')
+conflicts=('compton' 'compton-git' 'picom')
+replaces=('compton-git')
+source=(git+"https://github.com/DreamMaoMao/mypicom.git")
+md5sums=("SKIP")
+
+pkgver() {
+    cd ${_gitname}
+    _tag=$(git describe --tags | sed 's:^v::') # tag is mobile, and switches between numbers and letters, can't use it for versioning
+    _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
+    _date=$(git log -1 --date=short --pretty=format:%cd)
+    printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
+}
+
+build() {
+  cd "${srcdir}/${_gitname}"
+  meson setup --buildtype=release . build --prefix=/usr -Dwith_docs=true
+  ninja -C build
+}
+
+package() {
+  cd "${srcdir}/${_gitname}"
+
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  # install license
+  install -D -m644 "LICENSES/MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+
+  # example conf
+  install -D -m644 "picom.sample.conf" "${pkgdir}/etc/xdg/picom.conf.example"
+}
