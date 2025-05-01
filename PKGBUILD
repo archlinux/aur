@@ -15,6 +15,10 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "$srcdir/Cuba-$pkgver"
   sed -i "/MasterExit/d" src/common/Fork.c
+
+  # gcc 15: false' is a keyword with '-std=c23' onwards
+  sed -i "/typedef enum/d" src/common/stddecl.h
+  sed -i "27i#include <stdbool.h>" src/common/stddecl.h
 }
 
 build() {
