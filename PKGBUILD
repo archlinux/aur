@@ -3,7 +3,7 @@
 pkgname=st-fl-git
 pkgver=20250501.3e24ac3
 pkgrel=1
-pkgdesc='A simple virtual terminal emulator for X.'
+pkgdesc='A simple virtual terminal emulator for X with flash mode .'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
