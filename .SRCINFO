@@ -1,16 +1,19 @@
 pkgbase = 0verkill-git
 	pkgdesc = Bloody 2D action deathmatch-like game in ASCII-ART
-	pkgver = r149.cfcb3fd
+	pkgver = r153.b6df272
 	pkgrel = 1
 	url = https://github.com/hackndev/0verkill
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
+	makedepends = cmake
 	depends = xorgproto
 	depends = libx11
 	depends = libxpm
+	depends = libbsd
 	provides = 0verkill
+	conflicts = 0verkill
 	source = git+https://github.com/patlefort/0verkill.git
 	sha256sums = SKIP
 

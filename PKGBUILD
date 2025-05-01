@@ -2,42 +2,37 @@
 # Contributor Will Price <will.price94+aur@gmail.com>
 
 pkgname=0verkill-git
-pkgver=r149.cfcb3fd
+pkgver=r153.b6df272
 pkgrel=1
 pkgdesc="Bloody 2D action deathmatch-like game in ASCII-ART"
 arch=('i686' 'x86_64')
 url="https://github.com/hackndev/0verkill"
-license=('GPL2')
-depends=('xorgproto' 'libx11' 'libxpm')
-makedepends=('git')
+license=('GPL-2.0-only')
+depends=('xorgproto' 'libx11' 'libxpm' 'libbsd')
+makedepends=('git' 'cmake')
 provides=('0verkill')
+conflicts=('0verkill')
 source=('git+https://github.com/patlefort/0verkill.git')
 sha256sums=('SKIP')
 
-_name='0verkill'
+_srcdir='0verkill'
 
 pkgver() {
-	cd "$_name"
+	cd "$_srcdir"
 	( set -o pipefail
 	  git describe --abbrev=7 --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
 }
 
-prepare() {
-	cd "$_name"
-	autoupdate
-	autoreconf
-}
-
 build() {
-	cd "$_name"
-	./configure --prefix=/usr --with-x
-	make
+	cmake -S "$_srcdir" -B build -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "$_name"
-	make DESTDIR="$pkgdir" install
-	install -Dpm644 'doc/COPYING' -t "${pkgdir}/usr/share/licenses/${_name}/"
+	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm644 "$_srcdir/0verkill.appdata.xml" -t "${pkgdir}/usr/share/appdata"
+	install -Dm644 "$_srcdir/0verkill.png" -t "${pkgdir}/usr/share/pixmaps"
+	install -Dm644 "$_srcdir/0verkill.desktop" -t "${pkgdir}/usr/share/applications"
 }
