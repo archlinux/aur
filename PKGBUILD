@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Romashchenko <eaglesemanation@gmail.com>
 pkgname=displayconfig-mutter
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Change Gnome display settings from cli"
 arch=("x86_64" "aarch64")
@@ -8,7 +8,7 @@ url="https://github.com/eaglesemanation/${pkgname}"
 license=("MIT")
 makedepends=("rust" "cargo")
 source=("git+https://github.com/eaglesemanation/${pkgname}.git#tag=v${pkgver}")
-sha256sums=("df084dabe391a14f42438db15945a7a185ad07eaf9bca3d29400d8197c93e15e")
+sha256sums=("SKIP")
 
 build() {
   cd "$srcdir/$pkgname"
