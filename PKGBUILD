@@ -1,5 +1,5 @@
 pkgname=jellyplayer-git
-pkgver=5f9e1a5
+pkgver=c188df6
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/jellyplayer"
-  git describe --tags --always | sed 's/^v//;s/-/./g'
+  git rev-parse --short HEAD
 }
 
 package() {
