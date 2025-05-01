@@ -9,7 +9,7 @@
 _pkgname='contextfree'
 pkgname="$_pkgname-git"
 pkgver=3.4.2.2.r5.gc5f00522
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Generates images from written instructions called a grammar (latest commit)'
 arch=('aarch64' 'i686' 'x86_64')
@@ -19,7 +19,6 @@ depends=('gcc-libs' 'glibc' 'icu' 'libpng')
 makedepends=('bison' 'flex' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
-options=('lto')
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
 
@@ -36,22 +35,12 @@ prepare() {
   cd "$_srcdir"
 
   make clean
-  sed -i 's/c++14/c++17/' Makefile
+  git  clean -dfx
+  #sed -i 's/c++14/c++17/' Makefile
 }
 
 build() {
   cd "$_srcdir"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   make
 }

@@ -1,7 +1,7 @@
 pkgbase = contextfree-git
 	pkgdesc = Generates images from written instructions called a grammar (latest commit)
 	pkgver = 3.4.2.2.r5.gc5f00522
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/MtnViewJohn/context-free
 	arch = aarch64
@@ -17,7 +17,6 @@ pkgbase = contextfree-git
 	depends = libpng
 	provides = contextfree
 	conflicts = contextfree
-	options = lto
 	source = git+https://github.com/MtnViewJohn/context-free.git
 	sha256sums = SKIP
 
