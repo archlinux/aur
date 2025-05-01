@@ -1,0 +1,13 @@
+pkgbase = pretendard-std
+	pkgdesc = A variant of Pretendard for Latin-based environment
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://github.com/orioncactus/pretendard
+	arch = any
+	license = OFL
+	source = https://github.com/orioncactus/pretendard/releases/download/v1.3.9/PretendardStd-1.3.9.zip
+	sha256sums = bde2ecb6aa27fb1d36b729b47b1cad5a890dca8e8a06aebe0727b4c27624ad42
+
+pkgname = otf-pretendard-std
+
+pkgname = ttf-pretendard-std
