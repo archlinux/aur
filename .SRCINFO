@@ -1,6 +1,6 @@
 pkgbase = codebook-bin
 	pkgdesc = An unholy spellchecker for code.
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/blopker/codebook
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = codebook-bin
 	depends = glibc
 	provides = codebook-lsp
 	conflicts = codebook-lsp
-	source = https://github.com/blopker/codebook/releases/download/v0.2.11/codebook-lsp-x86_64-unknown-linux-musl.tar.gz
+	source = https://github.com/blopker/codebook/releases/download/v0.2.12/codebook-lsp-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = SKIP
 
 pkgname = codebook-bin
