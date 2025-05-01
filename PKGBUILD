@@ -8,7 +8,7 @@ url="https://gir.st/blog/legacyfox.htm"
 license=('MPL-2.0')
 depends=('firefox')
 _commit=312a791
-source=("https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
+source=("LegacyFox-v$pkgver-$_commit.tar.gz::https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
 sha256sums=('7d8bf5c4702fa77ef279b3fd5e678b2933f19c84683ac4b0bd2be4e53b7d1035')
 
 package() {
