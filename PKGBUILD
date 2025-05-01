@@ -4,7 +4,7 @@ _gitname="plutosvg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=0.0.6+6.r117.20250317.9c3d6d7
-pkgrel=1
+pkgrel=2
 pkgdesc="A compact and efficient SVG rendering library written in C."
 arch=(
   'x86_64'
@@ -21,6 +21,7 @@ depends=(
   'glibc'
 )
 makedepends=(
+  'cmake'
   'freetype2'
   'git'
   'plutovg'
