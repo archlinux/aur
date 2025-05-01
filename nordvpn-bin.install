@@ -14,7 +14,9 @@ post_install() {
     fi
   done
   ## Temporary fix
-  ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib
+  if [[ ! -e /usr/lib/libxml2.so.2 ]] ; then
+    ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib/
+  fi
 }
 
 post_upgrade() {
@@ -30,7 +32,9 @@ post_upgrade() {
     fi
   done
   ## Temporary fix
-  ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib
+  if [[ ! -e /usr/lib/libxml2.so.2 ]] ; then
+    ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib/
+  fi
 }
 
 pre_install() {
@@ -54,5 +58,7 @@ pre_remove() {
     fi
   done
   ## Temporary fix
-  unlink /usr/lib/libxml2.so.2
+  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]]; then
+    unlink /usr/lib/libxml2.so.2
+  fi
 }
