@@ -1,13 +1,14 @@
 pkgbase = plex-desktop
 	pkgdesc = Plex desktop client for linux
 	pkgver = 1.108.1.307
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plex.tv
 	arch = x86_64
 	license = unknown
 	depends = libgl
 	depends = hicolor-icon-theme
 	depends = alsa-lib
+	depends = libxml2-compat
 	depends = dbus
 	depends = expat
 	depends = ffmpeg
