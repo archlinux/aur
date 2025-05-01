@@ -12,7 +12,7 @@ pkgbase = bizstaff
 	source = bizstaff.desktop
 	source = icon.png
 	sha256sums = 53468c4487dd6e4ad903ee7016c4c70ca9fa969c919644ffd922d6888dfc4cff
-	sha256sums = d969a8fcbf5247d18f07cfa984e35ecf4e2d5b3edf73914677dba8cd5d23e060
+	sha256sums = fcf36deed51bb7a245689540c9d3521d552ac141d5ef4d7f8040df82fa9bfa22
 	sha256sums = 1788b26e8f3a387934aef323cccdaece25d9caa602774fee8d7745459eac8be5
 
 pkgname = bizstaff

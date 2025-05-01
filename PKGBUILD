@@ -1,6 +1,6 @@
 pkgname=bizstaff
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Staff manager"
 arch=('x86_64')
 url="https://github.com/Muhiddin0/bizstaff-descktop/"
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/Muhiddin0/bizstaff-de
         "icon.png")
 noextract=("${pkgname}-${pkgver}.AppImage")
 sha256sums=('53468c4487dd6e4ad903ee7016c4c70ca9fa969c919644ffd922d6888dfc4cff'
-            'd969a8fcbf5247d18f07cfa984e35ecf4e2d5b3edf73914677dba8cd5d23e060'
+            'fcf36deed51bb7a245689540c9d3521d552ac141d5ef4d7f8040df82fa9bfa22'
             '1788b26e8f3a387934aef323cccdaece25d9caa602774fee8d7745459eac8be5')
 
 package() {
