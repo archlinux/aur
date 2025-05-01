@@ -9,7 +9,7 @@
 
 # Maintainer: Gliim LLC <team@golf-lang.com>
 pkgname=golf
-pkgver=495
+pkgver=499
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
@@ -27,7 +27,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=arch.install
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golf-lang/golf/archive/refs/tags/${pkgver}.tar.gz")
         
