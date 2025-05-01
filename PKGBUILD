@@ -2,7 +2,7 @@
 
 pkgname=checkinstall
 pkgver=1.6.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Track files modified by an installation script and create a Slackware, RPM or Debian package"
 arch=('i686' 'x86_64')
 url="http://checkinstall.izto.org"
