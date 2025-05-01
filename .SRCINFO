@@ -11,8 +11,8 @@ pkgbase = gy-music-player-git
 	makedepends = git
 	makedepends = curl
 	makedepends = pnpm
-	makedepends = ffmpeg
 	depends = electron31
+	depends = ffmpeg
 	provides = gy-music-player=1.3.2
 	conflicts = gy-music-player
 	source = gy-music-player.git::git+https://github.com/wzh656/music-player
