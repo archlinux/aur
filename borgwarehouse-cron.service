@@ -5,7 +5,6 @@ Documentation=https://borgwarehouse.com/docs/admin-manual/debian-installation/#c
 [Service]
 Type=oneshot
 User=borgwarehouse
-Environment=/etc/webapps/borgwarehouse/borgwarehouse.env
-ExecStart=/usr/bin/curl --request POST --url "http://$WEB_SERVER_HOST:$WEB_SERVER_PORT/api/cronjob/checkStatus" --header "Authorization: Bearer $CRONJOB_KEY"
-ExecStart=/usr/bin/curl --request POST --url "http://$WEB_SERVER_HOST:$WEB_SERVER_PORT/api/cronjob/getStorageUsed" --header "Authorization: Bearer $CRONJOB_KEY"
-
+EnvironmentFile=/etc/webapps/borgwarehouse/borgwarehouse.env
+ExecStart=/usr/bin/curl --silent --request POST --url "http://"${WEB_SERVER_HOST}":"${WEB_SERVER_PORT}"/api/v1/cron/status" --header "Authorization: Bearer "${CRONJOB_KEY}
+ExecStart=/usr/bin/curl --silent --request POST --url "http://"${WEB_SERVER_HOST}":"${WEB_SERVER_PORT}"/api/v1/cron/storage" --header "Authorization: Bearer "${CRONJOB_KEY}

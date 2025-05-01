@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=2.4.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -35,9 +35,9 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "sysusers-${pkgname}.conf"
         "${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('f6be3c77679d7ea56319f289847986fbc6a45497033909a4f55a21ed20660307'
+sha256sums=('6767fa50477494b5f27625ffae7d29f4d4c75d33aab5c3f5090499b65939bdbb'
             '4e5b300b524cd43fb6ad823168375c0d1893e993d5e60a6724dac70272d3e308'
-            '682c914d59473fdf7bcee65b0ace23a3cb43a5f73464f76a9a677093d29d27b2'
+            '6753277459e56e7bf3ed168e03ecbc29a24c58dd64dde946d43fed93c5363c6d'
             '5668cbdd26b701514a89ff17175bcc058bfdb0ac0b5c665cf2d8b555179c5446'
             '3f22c300895bff34b8da9719d378e5d11b232bd0143fee8ed6132186652f3dcd'
             'd4f56d93028a838ebc60aa7a763d63ef1d4efeb4260fcc93216548541159b2e9'
@@ -62,14 +62,17 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  
   echo "Cleaning up source dir"  
-  rm -R docker
+  rm -R docker tests
+  rm .prettierrc.json .pre-commit-config.yaml
   fd --threads 1 --no-ignore --hidden 'docker' -x rm -R 
   fd --threads 1 --no-ignore --hidden '.git' -x rm -R
-  rm .prettierrc.json .pre-commit-config.yaml
+  
   echo "Applying correct permissions"
   fd --no-ignore --hidden --type d '.*' "./" -x chmod 755
   fd --no-ignore --hidden --type f '.*\.sh$' "./helpers/shells/" -x chmod 755
+  
   echo "Packaging main app folder"
   install -dm 755 "${pkgdir}/usr/share/webapps/"
   cp -r "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/share/webapps/${pkgname}"
@@ -102,5 +105,6 @@ package() {
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
   done
+
 }
 
