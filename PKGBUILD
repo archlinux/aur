@@ -8,7 +8,7 @@ url="https://github.com/neeshy/mpvc"
 license=('GPL-3.0-only')
 depends=('mpv')
 makedepends=('cargo')
-source=("https://github.com/neeshy/mpvc/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/neeshy/mpvc/archive/v$pkgver.tar.gz")
 sha256sums=('7e7ac9b0fd4bac2bb43bcf4155150116c3a361ad58cc4f85f9bebc0815cbcd8e')
 
 build() {

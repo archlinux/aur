@@ -7,7 +7,7 @@ pkgbase = mpvc
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = mpv
-	source = https://github.com/neeshy/mpvc/archive/v1.4.7.tar.gz
+	source = mpvc-1.4.7.tar.gz::https://github.com/neeshy/mpvc/archive/v1.4.7.tar.gz
 	sha256sums = 7e7ac9b0fd4bac2bb43bcf4155150116c3a361ad58cc4f85f9bebc0815cbcd8e
 
 pkgname = mpvc
