@@ -1,15 +1,15 @@
 pkgbase = astroimagej
 	pkgdesc = A simple and powerful tool for astronomical image analysis and precise photometry.
-	pkgver = 5.4.1
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://www.astro.louisville.edu/software/astroimagej/
 	arch = x86_64
 	license = GPL
 	depends = java-runtime
-	source = http://www.astro.louisville.edu/software/astroimagej/installation_packages/AstroImageJ_v5.4.1.00-linux-x86_64Bit.tar.gz
+	source = http://www.astro.louisville.edu/software/astroimagej/installation_packages/AstroImageJ_v5.5.0.00-linux-x86_64Bit.tar.gz
 	source = aij
 	source = astroimagej.desktop
-	sha256sums = ce2a5ff04e20fa4ddbc0bafe75b0ba655d23f6f37c3be4340ce5bbf2f404c20b
+	sha256sums = f1ba9db6b1e11d03b449c1f53a13fe236efd6fa8e7b34de1b187922de1916ec4
 	sha256sums = 402dff16ffd0cb1c12b091bddbb75621a245c83632675f6dacd3ffb76fc3f155
 	sha256sums = 1b32cc64c00ce92daef1d14bfaf37868f4d0f3b4949f1d5a824cf32aee1c1f87
 
