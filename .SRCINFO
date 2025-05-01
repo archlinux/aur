@@ -7,6 +7,6 @@ pkgbase = bi
 	license = MIT
 	depends = python
 	source = https://github.com/fygar256/bi/archive/refs/heads/v3.4.3.2.zip
-	sha256sums = 6d75c53d68f32cb00a8b3b07603b377db3409ab1b99b91e2dbb727276da685cd
+	sha256sums = 6865cea4dae4e228406f4446b22a2b2165beb5851fdce88b2cadb46caaf2215d
 
 pkgname = bi
