@@ -5,7 +5,7 @@ An AUR package for [Mergiraf](https://mergiraf.org/) using the pre-built binary 
 ## Update package
 
 1. Make changes
-1. Update `pkgver` if Mergiraf itself updated, and reset `pkgrel` to `1`
+1. Update `pkgver` in `PKGBUILD` if Mergiraf itself updated, and reset `pkgrel` to `1`
 1. Update `pkgrel` if `pkgver` did not change, but `PKGBUILD` did, and users should rebuild ([more](https://wiki.archlinux.org/title/Arch_package_guidelines#Package_versioning))
 1. Update checksums in `PKGBUILD` by pasting in the result of `make sums`
 1. Update `.SRCINFO`with `make srcinfo`
