@@ -18,7 +18,7 @@ PKGEXT='.pkg.tar'
 _pkgname=chromium
 pkgname=chromium-no-extras
 
-pkgver=135.0.7049.84
+pkgver=135.0.7049.114
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -50,7 +50,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('c1e8d9cd9913d3e91d08b212d8346b2da48e884e5b180d5cd783f0c0756a20f7'
+sha256sums=('33c538ae7443d0cc11b9841276d20abe8c260198fa50e905e88aa9b8c2052e83'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '74a2d428f7f09132c4a923e816a5a9333803f842003d650cd4a95a35e5457253'
             '271c7a767005b09e212808cfef7261dca00ea28ba7b808f69c3b5b9f202511d1'
@@ -150,10 +150,6 @@ prepare() {
 
     # To link to rust libraries we need to compile with prebuilt clang
     ./tools/clang/scripts/update.py
-  elif ! find /usr/lib/rustlib | grep -q adler2; then
-    # Rust 1.86 ships adler2 but we need to change it to adler when
-    # using older Rust versions (idea for this borrowed from Gentoo)
-    sed -i 's/adler2/adler/' build/rust/std/BUILD.gn
   fi
 
   # Remove bundled libraries for which we will use the system copies; this
