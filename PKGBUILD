@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=openai-codex
-pkgver=0.1.2504251709
+pkgver=0.1.2504301751
 pkgrel=1
 pkgdesc="Lightweight coding agent that runs in your terminal"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'ripgrep: accelerated large-repo search'
 )
 source=("https://registry.npmjs.org/@openai/codex/-/codex-$pkgver.tgz")
-b2sums=('41bdbfffe9d3f80bcc49459797f4a5ba77eb257e5e35aec1b2233915846cd81a86c08a408d166cb5725edeb9c64d0717f9828a9b38cd59768f3e67293e81c108')
+b2sums=('fd682fd6c77753da9360574619490e54e88d556f45aea9f0b22e2030e6fafc884c614ae884d6a86c21858d8bee4c0dc9f743a47923410417a0ae1c714ae53ed9')
 noextract=("codex-${pkgver}.tgz")
 
 package() {
