@@ -1,4 +1,4 @@
-pkgname=axx
+pkgname=general-assembler-axx
 pkgver=1.0.0
 pkgrel=2
 pkgdesc="axx general assembler"
