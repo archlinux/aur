@@ -1,12 +1,12 @@
 pkgbase = frei
 	pkgdesc = A modern replacement for the 'free' command-line utility
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/alexcoder04/frei
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	source = https://github.com/alexcoder04/frei/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 78954501bdaad628482b895cf4fbc2e6101119ad56d20fe420a99a5b2180cc63
+	source = https://github.com/alexcoder04/frei/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 411c8480f8499d28e89335a83f0054dabc57d0840c3d1c722df4beb752a374e7
 
 pkgname = frei
