@@ -4,7 +4,7 @@
 pkgname='lnd'
 pkgver=0.18.5_beta
 _pkgver="${pkgver//_/-}"
-pkgrel=2
+pkgrel=3
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/lightningnetwork/lnd'
@@ -39,5 +39,7 @@ package() {
   for _bin in lnd lncli; do
    install -Dm755 build/$_bin -t "${pkgdir:?}/usr/bin";
   done
-  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 contrib/lncli.bash-completion "$pkgdir/usr/share/bash-completion/completions/lncli"
+  install -Dm644 contrib/init/lnd.service "$pkgdir/usr/lib/systemd/system/lnd.service"
 }
