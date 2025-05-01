@@ -8,13 +8,13 @@
 </p>
 
 <p align="center">
-  <a href="https://nazdridoy.github.io/ngpt/installation.html"><img src="https://img.shields.io/badge/Linux-support-blue?logo=linux" alt="Linux"></a>
-  <a href="https://nazdridoy.github.io/ngpt/installation.html"><img src="https://img.shields.io/badge/Windows-support-blue?logo=windows" alt="Windows"></a>
-  <a href="https://nazdridoy.github.io/ngpt/installation.html"><img src="https://img.shields.io/badge/macOS-support-blue?logo=apple" alt="macOS"></a>
-  <a href="https://nazdridoy.github.io/ngpt/installation.html"><img src="https://img.shields.io/badge/Android-Termux-blue?logo=android" alt="Android"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/Linux-support-blue?logo=linux" alt="Linux"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/Windows-support-blue?logo=windows" alt="Windows"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/macOS-support-blue?logo=apple" alt="macOS"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/Android-Termux-blue?logo=android" alt="Android"></a>
 </p> 
 
-🤖 nGPT: A Swiss army knife for LLMs: powerful CLI, interactive chatbot, and flexible library all in one package. Seamlessly work with OpenAI, Ollama, Groq, Claude, Gemini, or any OpenAI-compatible API to generate code, craft git commits, rewrite text, and execute shell commands. Fast, lightweight, and designed for both casual users and developers.
+🤖 nGPT: A Swiss army knife for LLMs: powerful CLI and interactive chatbot in one package. Seamlessly work with OpenAI, Ollama, Groq, Claude, Gemini, or any OpenAI-compatible API to generate code, craft git commits, rewrite text, and execute shell commands. Fast, lightweight, and designed for both casual users and developers.
 
 
 ![2025-04-23_16-18-01](https://github.com/user-attachments/assets/b8e58926-5165-4352-b48b-9f4a982da86e)
@@ -22,7 +22,7 @@
 
 ## Features
 
-- ✅ **Versatile**: Use as a CLI tool, Python library, or CLI framework for building custom tools
+- ✅ **Versatile**: Powerful and easy-to-use CLI tool for various AI tasks
 - 🪶 **Lightweight**: Minimal dependencies with everything you need included
 - 🔄 **API Flexibility**: Works with OpenAI, Ollama, Groq, Claude, Gemini, and any compatible endpoint
 - 💬 **Interactive Chat**: Continuous conversation with memory in modern UI
@@ -39,12 +39,11 @@
 - 📑 **Git Commit Messages**: AI-powered generation of conventional, detailed commit messages from git diffs
 - 🎭 **System Prompts**: Customize model behavior with custom system prompts
 - 📃 **Conversation Logging**: Save your conversations to text files for later reference
-- 🧰 **CLI Components**: Reusable components for building custom AI-powered command-line tools
 - 🔌 **Modular Architecture**: Well-structured codebase with clean separation of concerns
 - 🔄 **Provider Switching**: Easily switch between different LLM providers with a single parameter
 - 🚀 **Performance Optimized**: Fast response times and minimal resource usage
 
-See the [Feature Overview](https://nazdridoy.github.io/ngpt/overview.html) for more details.
+See the [Feature Overview](https://nazdridoy.github.io/ngpt/overview/) for more details.
 
 
 ## Table of Contents
@@ -55,8 +54,6 @@ See the [Feature Overview](https://nazdridoy.github.io/ngpt/overview.html) for m
 - [Usage](#usage)
   - [Documentation](https://nazdridoy.github.io/ngpt/)
   - [CLI Tool](#as-a-cli-tool)
-  - [Python Library](#as-a-library)
-  - [CLI Framework](#as-a-cli-framework)
 - [Configuration](#configuration)
   - [Command Line Options](#command-line-options)
   - [CLI Configuration](#cli-configuration)
@@ -167,21 +164,19 @@ ngpt --provider OpenAI "Explain quantum physics" > openai_response.txt
 ngpt --provider Ollama "Explain quantum physics" > ollama_response.txt
 ```
 
-For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage.html).
+For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
 
 ## Documentation
 
-Comprehensive documentation, including API reference, usage guides, and examples, is available at:
+Comprehensive documentation, including usage guides and examples, is available at:
 
 **[https://nazdridoy.github.io/ngpt/](https://nazdridoy.github.io/ngpt/)**
 
 Key documentation sections:
-- [Installation Guide](https://nazdridoy.github.io/ngpt/installation.html)
-- [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage.html)
-- [Library Usage Guide](https://nazdridoy.github.io/ngpt/usage/library_usage.html)
-- [CLI Framework Guide](https://nazdridoy.github.io/ngpt/usage/cli_framework.html)
-- [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration.html)
-- [Examples & Tutorials](https://nazdridoy.github.io/ngpt/examples/basic.html)
+- [Installation Guide](https://nazdridoy.github.io/ngpt/installation/)
+- [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/)
+- [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/)
+- [Examples & Tutorials](https://nazdridoy.github.io/ngpt/examples/basic/)
 
 ## Installation
 
@@ -201,7 +196,7 @@ paru -S ngpt
 
 Requires Python 3.8 or newer.
 
-For detailed installation instructions, see the [Installation Guide](https://nazdridoy.github.io/ngpt/installation.html).
+For detailed installation instructions, see the [Installation Guide](https://nazdridoy.github.io/ngpt/installation/).
 
 ## Usage
 
@@ -253,125 +248,7 @@ ngpt -c "create a python function that calculates fibonacci numbers"
 ngpt -t
 ```
 
-For more CLI examples and detailed usage information, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage.html).
-
-### As a Library
-
-```python
-from ngpt import NGPTClient
-from ngpt.utils.config import load_config
-
-# Load the first configuration (index 0) from config file
-config = load_config(config_index=0)
-
-# Initialize the client with config
-client = NGPTClient(**config)
-
-# Or initialize with custom parameters
-client = NGPTClient(
-    api_key="your-key",
-    base_url="http://your-endpoint",
-    provider="openai",
-    model="o3-mini"
-)
-
-# Chat
-response = client.chat("Hello, how are you?")
-
-# Chat with web search (if your API endpoint supports it)
-response = client.chat("What's the latest news about AI?", web_search=True)
-
-# Generate shell command
-command = client.generate_shell_command("list all files")
-
-# Generate code
-code = client.generate_code("create a python function that calculates fibonacci numbers")
-```
-
-For more library examples and advanced usage, see the [Library Usage Guide](https://nazdridoy.github.io/ngpt/usage/library_usage.html).
-
-#### Advanced Library Usage
-
-```python
-# Stream responses
-for chunk in client.chat("Write a poem about Python", stream=True):
-    print(chunk, end="", flush=True)
-
-# Customize system prompt
-response = client.chat(
-    "Explain quantum computing",
-    system_prompt="You are a quantum physics professor. Explain complex concepts simply."
-)
-
-# OS-aware shell commands
-# Automatically generates appropriate commands for the current OS
-command = client.generate_shell_command("find large files")
-import subprocess
-result = subprocess.run(command, shell=True, capture_output=True, text=True)
-print(result.stdout)
-
-# Clean code generation
-# Returns only code without markdown or explanations
-code = client.generate_code("function that converts Celsius to Fahrenheit")
-print(code)
-
-# Compare responses from different providers
-openai_config = load_config(config_index=0)  # OpenAI
-groq_config = load_config(config_index=1)    # Groq
-
-openai_client = NGPTClient(**openai_config)
-groq_client = NGPTClient(**groq_config)
-
-openai_response = openai_client.chat("Explain quantum computing")
-groq_response = groq_client.chat("Explain quantum computing")
-```
-
-For advanced usage patterns and integrations, check out the [Advanced Examples](https://nazdridoy.github.io/ngpt/examples/advanced.html).
-
-### As a CLI Framework
-
-nGPT can also be used as a framework to build your own AI-powered command-line tools. You can leverage nGPT's pre-built CLI components to quickly develop sophisticated CLI applications.
-
-```python
-from ngpt import NGPTClient
-from ngpt.utils.config import load_config
-from ngpt.cli.interactive import interactive_chat_session
-from ngpt.cli.renderers import prettify_markdown
-from ngpt.cli.args import setup_argument_parser
-import sys
-
-# Create a custom CLI tool with colorized help
-parser = setup_argument_parser()
-parser.description = "Specialized Code Assistant"
-parser.add_argument("prompt", nargs="?", help="Code description")
-parser.add_argument("--language", "-l", default="python", help="Programming language")
-parser.add_argument("--interactive", "-i", action="store_true", help="Start interactive mode")
-args = parser.parse_args()
-
-# Initialize client
-client = NGPTClient(**load_config())
-
-# Use interactive session for conversation
-if args.interactive:
-    system_prompt = f"You are an expert {args.language} developer. Provide clear, detailed answers."
-    interactive_chat_session(client=client, preprompt=system_prompt, prettify=True)
-elif args.prompt:
-    # Generate and prettify code
-    code = client.generate_code(args.prompt, language=args.language)
-    print(prettify_markdown(f"```{args.language}\n{code}\n```"))
-else:
-    parser.print_help()
-    sys.exit(1)
-```
-
-This allows you to build specialized AI tools like:
-- Code generators for specific languages or frameworks
-- Domain-specific assistants (SQL, legal, finance, etc.)
-- Documentation generators
-- Translation tools
-- And much more
-
-For detailed information about building CLI tools with nGPT, see the [CLI Framework Guide](https://nazdridoy.github.io/ngpt/usage/cli_framework.html) and explore the [CLI Component Examples](https://nazdridoy.github.io/ngpt/examples/cli_components.html).
+For more CLI examples and detailed usage information, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
 
 ## Configuration
 
@@ -487,7 +364,7 @@ Modes (mutually exclusive)::
 
 > **Note**: For better visualization of conventional commit messages on GitHub, you can use the [GitHub Commit Labels](https://greasyfork.org/en/scripts/526153-github-commit-labels) userscript, which adds colorful labels to your commits.
 
-For a complete reference of all available options, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage.html).
+For a complete reference of all available options, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
 
 ### CLI Configuration
 
@@ -560,7 +437,7 @@ CLI Configuration Help:
 
 ```
 
-For more details, see the [CLI Configuration Guide](https://nazdridoy.github.io/ngpt/usage/cli_config.html).
+For more details, see the [CLI Configuration Guide](https://nazdridoy.github.io/ngpt/usage/cli_config/).
 
 ### Interactive Configuration
 
@@ -592,7 +469,7 @@ In interactive mode:
 - For security, your API key is not displayed when editing configurations
 - When removing a configuration, you'll be asked to confirm before deletion
 
-For more details on configuring nGPT, see the [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration.html).
+For more details on configuring nGPT, see the [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/).
 
 ### Configuration File
 
@@ -628,7 +505,7 @@ The configuration file uses a JSON list format, allowing you to store multiple c
 ]
 ```
 
-For details on the configuration file format and structure, see the [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration.html).
+For details on the configuration file format and structure, see the [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/).
 
 ### Configuration Priority
 
