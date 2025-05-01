@@ -1,0 +1,2 @@
+APP=/usr/share/cursor/resources/app
+ELECTRON_RUN_AS_NODE=1 exec /usr/lib/${name}/electron ${APP}/out/cli.js "${electronflags[@]}" --app=${APP} "${codeflags[@]}" "$@"
