@@ -1,6 +1,6 @@
 # Maintainer: Justin Korkie <korkie9@github.com>
 pkgname=da-browser-launcher
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Browser launcher that lets the user launch into a specific profile"
 arch=('x86_64')
