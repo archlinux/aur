@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.3.240.r2.g23c495b939
+	pkgver = 2.3.311.r1.gf45840a29f
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -30,6 +30,8 @@ pkgbase = pcsx2-git
 	depends = libxrandr
 	depends = qt6-base
 	depends = qt6-svg
+	depends = plutosvg
+	depends = plutovg
 	depends = sdl3
 	depends = shaderc
 	depends = soundtouch

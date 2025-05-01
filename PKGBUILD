@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.240.r2.g23c495b939
+pkgver=2.3.311.r1.gf45840a29f
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -27,6 +27,8 @@ depends=(
     libxrandr
     qt6-base
     qt6-svg
+    plutosvg
+    plutovg
     sdl3
     shaderc
     soundtouch
@@ -68,6 +70,14 @@ install=pcsx2-git.install
 pkgver() {
     cd pcsx2
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
+prepare()
+{
+    cd pcsx2
+  # relax requirements
+  sed -E -e 's&^(find_package\s*\(plutos?vg) [0-9.]* ([A-Z]+\))$&\1 \2&' \
+    -i "cmake/SearchForStuff.cmake"
 }
 
 build() 
