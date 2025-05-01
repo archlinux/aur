@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -125,12 +125,12 @@ configure_file("cmake/templates/lcevc_de
+ 
+ # Top level install
+ #
+-install(FILES "COPYING" DESTINATION "licenses")
++install(FILES "COPYING" DESTINATION "${CMAKE_INSTALL_DOCDIR}")
+ install(FILES "${CMAKE_BINARY_DIR}/install_config/README.md" DESTINATION "${CMAKE_INSTALL_DOCDIR}")
+ install(FILES "${CMAKE_BINARY_DIR}/generated/lcevc_dec.pc"
+         DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
+-install(DIRECTORY "licenses" DESTINATION "./")
+-install(FILES "LICENSE.md" DESTINATION "licenses/LCEVCdec")
++install(DIRECTORY "licenses" DESTINATION "${CMAKE_INSTALL_DOCDIR}")
++install(FILES "LICENSE.md" DESTINATION "${CMAKE_INSTALL_DOCDIR}/licenses/lcevcdec")
+ 
+ #
+ if (NOT CMAKE_INSTALL_INCLUDEDIR)
