@@ -2,15 +2,15 @@
 
 pkgname=void-bin
 pkgdesc="Code editing. Redefined. Void is a new choice of tool that combines the simplicity of a code editor with what developers need for the core edit-build-debug cycle. See https://voideditor.com for installation instructions and FAQ."
-pkgver=1.99.30001
-pkgrel=5
+pkgver=1.99.30003
+pkgrel=1
 arch=('x86_64')
 options=('!strip')
 url="https://github.com/voideditor/void"
 license=('APACHE')
 depends=('alsa-lib' 'atk' 'at-spi2-core' 'glibc' 'cairo' 'dbus' 'expat' 'mesa' 'glib2' 'gtk3' 'nspr' 'nss' 'pango' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'xdg-utils')
 source=("https://github.com/voideditor/binaries/releases/download/${pkgver}/Void-linux-x64-${pkgver}.tar.gz" 'void.desktop')
-md5sums=('69c1c2224e773cf542381bb5b0d40869'
+md5sums=('6f28d3d49a1b32f7c255798096e3adb4'
          '5d9b92526f6bfe8a74ccd81c127ef83f')
 
 package() {
