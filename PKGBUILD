@@ -1,7 +1,7 @@
 # Maintainer: Da4ndo <contact@da4ndo.com>
 
 pkgname=hyprproxlock-git
-pkgver=0.1.1.r8.gfa86c66
+pkgver=0.1.1.r9.g44c8949
 pkgrel=1
 pkgdesc="A proximity-based daemon for Hyprland that triggers screen locking and unlocking through hyprlock based on Bluetooth device proximity. (Git version)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ provides=('hyprproxlock')
 conflicts=('hyprproxlock')
 depends=('rust' 'cargo' 'bluez-deprecated-tools' 'hyprlock>=0')
 makedepends=('git' 'pkg-config' 'dbus')
-source=("git+https://github.com/Da4ndo/hyprproxlock.git#tag=${pkgver}")
+source=("git+https://github.com/Da4ndo/hyprproxlock.git#commit=44c8949")
 sha256sums=('SKIP')
 
 build() {
@@ -21,7 +21,11 @@ build() {
 
 pkgver() {
   cd "$srcdir/hyprproxlock"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Format: [base_version].r[commit_count].g[commit_hash]
+  printf "%s.r%s.g%s" \
+    "$(grep -m 1 '^version = ' Cargo.toml | cut -d '"' -f 2)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 package() {
