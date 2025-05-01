@@ -2,21 +2,45 @@
 # Contributor: Thor K. Høgås <thor that-circular-a roht dot no>
 
 pkgname='omnetpp-preview'
-pkgver=6.0rc1
+pkgver=6.1rc1
 pkgrel=1
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: preview version'
+arch=('x86_64')
 url='http://www.omnetpp.org'
-license=('custom')
-depends=(libxml2 qt5-base tcl jdk-openjdk openmpi libpcap doxygen graphviz clang openscenegraph python-scipy python-pandas python-posix_ipc)
-makedepends=(sh wget cmake bison flex perl python-scipy python-pandas python-posix_ipc)
-optdepends=(
-			'python-numpy: analysing simulation recordings' 
-			'python-matplotlib: analysing simulation recordings'
-			'python-pandas: analysing simulation recordings'
-			'python-posix_ipc: analysing simulation recordings'
-			'osgearth')
-arch=('i686' 'x86_64')
+license=('Academic Public License')
+depends=('libxml2'
+         'qt5-base'
+         'tcl'
+         'jdk-openjdk'
+         'openmpi'
+         'libpcap'
+         'doxygen'
+         'graphviz'
+         'openscenegraph'
+         'python-setuptools'
+         'python-matplotlib'
+         'python-numpy1'
+         'python-pandas'
+         'python-scipy'
+         'python-tzdata'
+         'python-posix_ipc')
+makedepends=('wget'
+             'cmake'
+             'clang>=17.0.6'
+             'llvm>=17.0.6'
+             'llvm-libs>=17.0.6'
+             'python-setuptools'
+             'python-matplotlib'
+             'python-numpy1'
+             'python-pandas'
+             'python-scipy'
+             'python-tzdata'
+             'python-posix_ipc'
+             'bison'
+             'flex'
+             'perl')
+optdepends=('osgearth: geospatial API with 3D rendering')
 provides=('omnetpp')
 conflicts=('omnetpp')
 replaces=('omnetpp-qt')
@@ -24,29 +48,29 @@ install=omnetpp-preview.install
 
 source=(OMNeT++.desktop
         omnetpp.sh
-        "${_pkgname}-${pkgver}-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-linux-x86_64.tgz")
+        "${_pkgname}-${pkgver}.tar.gz::https://github.com/omnetpp/omnetpp/archive/refs/tags/omnetpp-${pkgver}.tar.gz")
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
             'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
-            '1190add3007499e86fe10daa29ddbdbd56ec2aba8dce865db978414f87fd022b4c07b890fa6efe911c6cdaf8775612c7da855c84bd33544855bb4245c6b16a44')
+            '8dd0c5c64b78cf95051c3bbc7a050cc1767777ef62ae2b415dc70242ad52b97f761dc3981d7376f37a1f37d0abd2c43ec14b0d03e049ac0786b9225fc62da9ef')
 
 build() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd ${srcdir}/${_pkgname}-${_pkgname}-${pkgver}
 	echo WITH_OSGEARTH=no >> configure.user
 	# Fix configure script
 	sed -i "2152 a ac_configure_args=$(echo $ac_configure_args | sed s/\'//g)" configure
 	source setenv
 	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib
-	PATH=${srcdir}/${_pkgname}-${pkgver}/bin:$PATH
-	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
-	make
+	PATH=${srcdir}/${_pkgname}-${_pkgname}-${_pkgver}/bin:$PATH
+	LD_LIBRARY_PATH=${srcdir}/${_pkgname}-${_pkgname}-${_pkgver}/lib:$LD_LIBRARY_PATH
+  make
 }
 
 package() {
 	# Install build to /opt
 	cd ${srcdir}
 	mkdir -p "${pkgdir}"/opt
-	mv  "${_pkgname}-${pkgver}" ${pkgdir}/opt/${_pkgname} || return 1
+	mv  "${_pkgname}-${_pkgname}-${pkgver}" ${pkgdir}/opt/${_pkgname} || return 1
 
 	# run OMNeT++ as a normal user
 	touch ${pkgdir}/opt/${_pkgname}/ide/error.log
