@@ -16,7 +16,7 @@ optdepends=('dbus:          To control picom via D-Bus'
             'xorg-xwininfo: For picom-trans'
             'xorg-xprop:    For picom-trans')
 provides=('compton' 'compton-git' 'picom')
-conflicts=('compton' 'compton-git' 'picom')
+conflicts=('compton' 'compton-git' 'picom' 'picom-git')
 replaces=('compton-git')
 source=(git+"https://github.com/DreamMaoMao/mypicom.git")
 md5sums=("SKIP")

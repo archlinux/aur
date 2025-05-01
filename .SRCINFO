@@ -39,6 +39,7 @@ pkgbase = picom-mao-git
 	conflicts = compton
 	conflicts = compton-git
 	conflicts = picom
+	conflicts = picom-git
 	replaces = compton-git
 	source = git+https://github.com/DreamMaoMao/mypicom.git
 	md5sums = SKIP
