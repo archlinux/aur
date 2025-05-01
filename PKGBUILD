@@ -13,9 +13,8 @@ source=("git+$url.git")
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
-depends=('gcc-libs' 'glibc')
+depends=('glibc')
 makedepends=('git' 'make')
-options=('lto')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -25,19 +24,14 @@ pkgver() {
   | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "$_pkgname"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
+  git clean -dfx
+}
+
+build() {
+  cd "$_pkgname"
 
   make
 }

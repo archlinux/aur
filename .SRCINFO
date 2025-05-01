@@ -10,11 +10,9 @@ pkgbase = dut-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = make
-	depends = gcc-libs
 	depends = glibc
 	provides = dut
 	conflicts = dut
-	options = lto
 	source = git+https://codeberg.org/201984/dut.git
 	sha256sums = SKIP
 
