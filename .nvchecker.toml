@@ -1,0 +1,5 @@
+[interactsh-bin]
+source = "github"
+github = "projectdiscovery/interactsh"
+use_latest_release = true
+prefix = "v"
