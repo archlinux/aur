@@ -2,7 +2,7 @@
 
 pkgname=python-pyngrok
 _name=${pkgname#python-}
-pkgver=7.2.4
+pkgver=7.2.5
 pkgrel=1
 pkgdesc="A Python wrapper for ngrok"
 url="https://github.com/alexdlaird/pyngrok"
@@ -13,15 +13,13 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 conflicts=('ngrok')
 
 source=("$pkgname::git+https://github.com/alexdlaird/pyngrok.git#tag=$pkgver")
-sha256sums=('7fea06c771fa5763b0b4b6435cb551dd9604b22ec502f29d3f1b7b5cb4cbfed8')
+sha256sums=('24e26597eb739ee998bc2191047a9f546207305a1c4a11448c471f84c60b2bf3')
 
 build() {
-    cd $pkgname
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --outdir "$srcdir/dest-$pkgver" "$srcdir/$pkgname"
 }
 
 package() {
-    cd $pkgname
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --destdir="$pkgdir" $srcdir/dest-$pkgver/*.whl
+    install -m644 -D "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
