@@ -3,12 +3,12 @@
 
 pkgname='sfxr-qt'
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt port of SFXR, a sound effect generator, to generate retro-gaming like sound effects'
 arch=('x86_64')
 url='https://github.com/agateau/sfxr-qt'
 license=('MIT')
-depends=('hicolor-icon-theme' 'python-jinja' 'python-pyaml' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'sdl' 'catch2')
+depends=('hicolor-icon-theme' 'python-jinja' 'python-pyaml' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols' 'sdl' 'catch2')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 source=("git+${url}.git#tag=${pkgver}"
         "git+${url%/*}/qpropgen.git")
