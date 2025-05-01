@@ -8,11 +8,13 @@ _compiler_name=gcc
 _compiler_supplier=linaro
 _compiler_version_major=14
 _compiler_version_minor=0
-_compiler_version_rel=1
+_compiler_version_rel=0
+
+_pkg_version_rel=2
 
 pkgname=${_target}-${_compiler_supplier}-bin
 pkgver=${_compiler_version_major}.${_compiler_version_minor}
-pkgrel=${_compiler_version_rel}
+pkgrel=${_pkg_version_rel}
 epoch=
 pkgdesc="The GNU Compiler Collection- cross compiler and binutils for ARMv7 EABI hard float target (Linaro)"
 arch=('x86_64')
@@ -30,13 +32,13 @@ backup=()
 options=(!emptydirs !strip staticlibs)
 install=
 changelog=
-source=(${url}/${pkgver}-${_pkgdate}-${_pkgrev}/${_target}/${_compiler_name}-${_compiler_supplier}-${pkgver}.${pkgrel}-${_pkgdate}-${arch}_${_target}.tar.xz)
+source=(${url}/${pkgver}-${_pkgdate}-${_pkgrev}/${_target}/${_compiler_name}-${_compiler_supplier}-${pkgver}.${_compiler_version_rel}-${_pkgdate}-${arch}_${_target}.tar.xz)
 sha512sums=('01da0d432c71298fb822515337ede72238644760fd0a414c2a22aa365ebcce9db87b85b503440bbbdb48a53705a4d9d62cf837aca626a02660dbd0118f60e0d3')
 
 
 package() {
 	mkdir -p ${pkgdir}/usr
-	cp -a ${srcdir}/${_compiler_name}-${_compiler_supplier}-${pkgver}.${pkgrel}-${_pkgdate}-${arch}_${_target}/* ${pkgdir}/usr
+	cp -a ${srcdir}/${_compiler_name}-${_compiler_supplier}-${pkgver}.${_compiler_version_rel}-${_pkgdate}-${arch}_${_target}/* ${pkgdir}/usr
 
 	rm -f 	${pkgdir}/usr/*-manifest.txt
 	rm -f 	${pkgdir}/usr/bin/runtest
