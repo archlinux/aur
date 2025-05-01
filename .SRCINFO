@@ -1,0 +1,12 @@
+pkgbase = muzic
+	pkgdesc = Snappy MPD client written in Zig
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/TristanJet/muzic
+	arch = x86_64
+	license = MIT
+	makedepends = zig=0.13.0
+	source = https://github.com/TristanJet/muzic/releases/download/v0.9.0/muzic-0.9.0.tar.gz
+	sha256sums = b4eaf7ad49b79675ccfe2df94b3c298fefe2fae909676a342e86dbf1a71da9cc
+
+pkgname = muzic
