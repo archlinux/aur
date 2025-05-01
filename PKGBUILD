@@ -8,7 +8,7 @@ _compiler_name=gcc
 _compiler_supplier=linaro
 _compiler_version_major=14
 _compiler_version_minor=0
-_compiler_version_rel=0
+_compiler_version_rel=1
 
 pkgname=${_target}-${_compiler_supplier}-bin
 pkgver=${_compiler_version_major}.${_compiler_version_minor}
