@@ -4,11 +4,13 @@ _gitname=clamav-prometheus-exporter
 pkgname=prometheus-clamav-exporter-git
 pkgdesc="Prometheus-Exporter for ClamAV"
 pkgver=r46.5023a03
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/r3kzi/clamav-prometheus-exporter"
 license=('Apache')
 makedepends=('git' 'go')
+provides=('prometheus-clamav-exporter')
+conflicts=('prometheus-clamav-exporter')
 source=("git+https://github.com/r3kzi/clamav-prometheus-exporter.git"
         "prometheus-clamav-exporter.service")
 sha256sums=('SKIP'
