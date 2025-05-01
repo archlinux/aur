@@ -2,8 +2,8 @@
 
 pkgbase=vosk-api-git
 pkgname=('vosk-api-git' 'python-vosk-git')
-pkgver=0.3.50.r5.g1b308a3
-pkgrel=2
+pkgver=0.3.50.r13.geabd80a
+pkgrel=1
 _model_small_ver=0.15
 _model_spk_ver=0.4
 pkgdesc='Offline speech recognition toolkit (git version)'
@@ -66,7 +66,10 @@ build() {
     
     # clapack
     CFLAGS+=' -Wno-error=format-security -fcommon -Wno-implicit-function-declaration' \
-    cmake -B build-clapack -S clapack -Wno-dev
+    cmake -B build-clapack -S clapack \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
+        -DCMAKE_C_STANDARD:STRING='17' \
+        -Wno-dev
     cmake --build build-clapack
     while read -r -d '' _file
     do
