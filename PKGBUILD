@@ -2,8 +2,8 @@
 
 _pkgname=openimageio
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.0.5.0
-pkgrel=2
+pkgver=3.0.6.0
+pkgrel=1
 pkgdesc='A library for reading and writing images, including classes, utilities, and applications (mingw-w64)'
 url='http://www.openimageio.org/'
 license=('BSD-3-Clause')
@@ -33,7 +33,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v${pkgver}.tar.gz")
-sha256sums=('340bb14a084d94918de8d46af14e361168215430f3dd6c336b2ffb895fe9d5cb')
+sha256sums=('670f8753d5604beb4a17e5279fb1948fa978bc72d8e0991103ddbbfea54df1b5')
 
 _srcdir="OpenImageIO-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
@@ -51,11 +51,10 @@ _flags=(
 	-DSTOP_ON_WARNING=OFF
 	-DOIIO_INTERNALIZE_FMT=OFF )
 
-prepare() {
-	cd "${_srcdir}"
-
-	#sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
-}
+#prepare() {
+#	cd "${_srcdir}"
+#	sed -i 's/os.path.join(OIIO_BUILD_ROOT, "bin", app)/os.path.join(OIIO_BUILD_ROOT, "bin", app, ".exe")/' 'testsuite/runtest.py'
+#}
 
 build() {
 	for _arch in ${_architectures}; do
