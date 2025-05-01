@@ -1,6 +1,6 @@
 pkgbase = python-whenever-git
-	pkgdesc = Modern datetime library for Python (latest commit)
-	pkgver = 0.7.0.r0.g22dafbd
+	pkgdesc = Modern datetime library for Python (development version)
+	pkgver = 0.8.0.r0.g7246019
 	pkgrel = 2
 	url = https://github.com/ariebovenberg/whenever
 	arch = aarch64

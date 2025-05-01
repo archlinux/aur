@@ -5,9 +5,9 @@
 pkgname='python-whenever-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=0.7.0.r0.g22dafbd
+pkgver=0.8.0.r0.g7246019
 pkgrel=2
-pkgdesc='Modern datetime library for Python (latest commit)'
+pkgdesc='Modern datetime library for Python (development version)'
 arch=('aarch64' 'x86_64')
 url="https://github.com/ariebovenberg/$_srcname"
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -37,6 +37,7 @@ pkgver() {
 build() {
   cd "$_srcname"
 
+  git clean -dfx
   python -m build --wheel --no-isolation
 }
 
@@ -46,7 +47,7 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
-    CHANGELOG.rst CONTRIBUTING.md README.md
+    {CHANGELOG,CONTRIBUTING,README}.md
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 }
