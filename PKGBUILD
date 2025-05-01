@@ -4,7 +4,7 @@ _gitname="plutovg"
 _pkgname="${_gitname}"
 pkgname="${_pkgname}-git"
 pkgver=1.0.0+3.r201.20250319.aa7beaa
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone 2D vector graphics library in C."
 arch=(
   'x86_64'
@@ -21,6 +21,7 @@ depends=(
   'glibc'
 )
 makedepends=(
+  'cmake'
   'git'
 )
 optdepends=()
