@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=lcevcdec
-pkgver=3.3.6
+pkgver=3.3.7
 pkgrel=1
 pkgdesc='Low Complexity Enhancement Video Codec Decoder (LCEVC_DEC)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("git+https://github.com/v-novaltd/LCEVCdec.git#tag=${pkgver}"
         '010-lcevcdec-fix-pkgconfig-prefix.patch'
         '020-lcevcdec-disable-avx.patch'
         '030-lcevcdec-fix-install-paths.patch')
-sha256sums=('485724245282b7815f7ee5d11f234dd3ccdcf725964759b502551d35b59402a9'
+sha256sums=('918fdfaed28e42b1768d06ccdce38a1d683a9c08fb65f270fcc49c31561327bb'
             '8a51231cf8d8c61db90295ed8ea92cc559869df3a9ecfa32ccf9fefcab619d36'
             '71145584cce87ac54b98a7b2a2904c6c1f213ac3dc6dffe6b6653b599f395d76'
             '3a52ce1cf4e1dca8f5e653ec82c17891fe17b1f6250d9271f2139f1fd4f9d295')
