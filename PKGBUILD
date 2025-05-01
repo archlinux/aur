@@ -1,6 +1,6 @@
 pkgname=axx
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="axx general assembler"
 arch=('any')
 url="https://github.com/fygar256/general-assembler-axx"
