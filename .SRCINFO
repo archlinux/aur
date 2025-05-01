@@ -1,5 +1,5 @@
 pkgbase = cursor-electron
-	pkgdesc = The AI Code Editor
+	pkgdesc = The AI Code Editor (with system electron)
 	pkgver = 0.49.6
 	pkgrel = 3
 	url = https://www.cursor.com
