@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/programadoroccidental/pass-phrase'
 license=('GPL3')
 depends=('pass')
-source=("https://github.com/programadoroccidental/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('f1bab43639b11947a61de184a19d13de38da8f392fdd9c8fcce2c980a16f84112a50cce8679b71ce3b1bc7581a28b121938e9ed04727ef949c314487a817eb38')
 
 package() {
