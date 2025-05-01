@@ -1,0 +1,19 @@
+pkgbase = st-fl-git
+	pkgdesc = A simple virtual terminal emulator for X.
+	pkgver = 20250501.3e24ac3
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/st-fl
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = git+https://github.com/DreamMaoMao/st-fl
+	sha256sums = SKIP
+
+pkgname = st-fl-git
