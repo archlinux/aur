@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c7a491c..00cead5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,6 +20,8 @@ ament_vendor(console_bridge_vendor
+   VCS_URL https://github.com/ros/console_bridge.git
+   VCS_VERSION 0828d846f2d4940b4e2b5075c6c724991d0cd308
+   GLOBAL_HOOK
++  CMAKE_ARGS
++    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+ )
+ 
+ # TODO(blast545): This section and package.xml should be updated once copyright auto is solved.

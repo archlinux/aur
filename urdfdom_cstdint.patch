@@ -1,0 +1,12 @@
+diff --git a/urdf_parser/include/urdf_parser/urdf_parser.h b/urdf_parser/include/urdf_parser/urdf_parser.h
+index 240e9df..933739a 100644
+--- a/urdf_parser/include/urdf_parser/urdf_parser.h
++++ b/urdf_parser/include/urdf_parser/urdf_parser.h
+@@ -37,6 +37,7 @@
+ #ifndef URDF_PARSER_URDF_PARSER_H
+ #define URDF_PARSER_URDF_PARSER_H
+ 
++#include <cstdint>
+ #include <stdexcept>
+ #include <string>
+ #include <vector>

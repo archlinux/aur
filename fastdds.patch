@@ -1,0 +1,36 @@
+diff --git a/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterCompoundCondition.hpp b/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterCompoundCondition.hpp
+index d4759dec7..9f30bde46 100644
+--- a/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterCompoundCondition.hpp
++++ b/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterCompoundCondition.hpp
+@@ -19,6 +19,7 @@
+ #ifndef _FASTDDS_TOPIC_DDSSQLFILTER_DDSFILTERCOMPOUNDCONDITION_HPP_
+ #define _FASTDDS_TOPIC_DDSSQLFILTER_DDSFILTERCOMPOUNDCONDITION_HPP_
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ #include "DDSFilterCondition.hpp"
+diff --git a/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterValue.hpp b/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterValue.hpp
+index 4ae70cb48..bdb25584d 100644
+--- a/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterValue.hpp
++++ b/src/cpp/fastdds/topic/DDSSQLFilter/DDSFilterValue.hpp
+@@ -21,6 +21,7 @@
+ 
+ #include <fastcdr/cdr/fixed_size_string.hpp>
+ 
++#include <cstdint>
+ #include <memory>
+ #include <regex>
+ 
+diff --git a/src/cpp/rtps/reader/BaseReader.cpp b/src/cpp/rtps/reader/BaseReader.cpp
+index 40f634e50..d8fad36cb 100644
+--- a/src/cpp/rtps/reader/BaseReader.cpp
++++ b/src/cpp/rtps/reader/BaseReader.cpp
+@@ -517,7 +517,6 @@ void BaseReader::setup_datasharing(
+ 
+     if (att.endpoint.data_sharing_configuration().kind() != fastdds::dds::DataSharingKind::OFF)
+     {
+-        using std::placeholders::_1;
+         std::shared_ptr<DataSharingNotification> notification = DataSharingNotification::create_notification(
+             getGuid(), att.endpoint.data_sharing_configuration().shm_directory());
+         if (notification)
