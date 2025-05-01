@@ -9,7 +9,7 @@ pkgver=0.6.0
 pkgrel=1
 pkgdesc="Flatbed XCursor Theme"
 arch=('any')
-url="https://www.limitland.de/flatbedcursors.html"
+url="https://www.limitland.de/flatbedcursors"
 license=('GPL3')
 makedepends=('git' 'xorg-xcursorgen' 'librsvg' 'bc')
 source=("git+https://gitlab.com/limitland/flatbedcursors.git#tag=$pkgver")
