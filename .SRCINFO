@@ -1,0 +1,15 @@
+pkgbase = prometheus-clamav-exporter
+	pkgdesc = Prometheus-Exporter for ClamAV
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/r3kzi/clamav-prometheus-exporter
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = https://github.com/r3kzi/clamav-prometheus-exporter/archive/refs/tags/v1.0.0.tar.gz
+	source = prometheus-clamav-exporter.service
+	sha256sums = SKIP
+	sha256sums = 1ce1a94c1596ad0035eb2f4977015ce8c7e662eff7cf7b7d49eb69b2ebb35a5b
+
+pkgname = prometheus-clamav-exporter

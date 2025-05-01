@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus exporter for clamav
+Requires=network-online.target
+After=network-online.target
+After=clamav-daemon.service
+
+[Service]
+DynamicUser=yes
+User=clamav_exporter
+Restart=on-failure
+ExecStart=/usr/bin/prometheus-clamav-exporter
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
