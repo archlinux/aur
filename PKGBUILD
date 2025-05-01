@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('boost-libs>=1.46' 'glew' 'libmad' 'libogg' 'libvorbis' 'libpng'
          'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk3')
 makedepends=('scons' 'boost')
-source=("https://github.com/eglaysher/rlvm/archive/$_pkgver.tar.gz"
+source=("$pkgname-$_pkgver.tar.gz::https://github.com/eglaysher/rlvm/archive/$_pkgver.tar.gz"
         "tests.patch"
         "warnings.patch"
         "gtk+3.patch")
