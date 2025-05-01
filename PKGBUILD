@@ -40,7 +40,7 @@ optdepends=(
 	'xorg-xwayland: enable X11 support'
 )
 provides=("libwlroots-0.18.so")
-source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+source=("${pkgname}::git+${url}")
 b2sums=('SKIP')
 _builddir="build"
 
@@ -53,7 +53,11 @@ prepare() {
 }
 
 build() {
-	meson compile -C "${_builddir}"
+    cd "$srcdir/$pkgname"
+	git checkout 0.18.2
+    # export PKG_CONFIG_PATH="/usr/lib/wlroots0.17/pkgconfig/"
+    meson setup --buildtype=release --prefix /usr "$srcdir/build"
+    ninja -C "$srcdir/build"
 }
 
 package() {

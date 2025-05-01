@@ -33,7 +33,7 @@ pkgbase = wlroots-0.18-git
 	optdepends = xorg-xwayland: enable X11 support
 	provides = libwlroots-0.18.so
 	options = debug
-	source = wlroots-0.18-git::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#tag=0.18.2
+	source = wlroots-0.18-git::git+https://gitlab.freedesktop.org/wlroots/wlroots
 	b2sums = SKIP
 
 pkgname = wlroots-0.18-git
