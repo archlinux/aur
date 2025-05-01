@@ -1,8 +1,8 @@
 pkgbase = void-bin
 	pkgdesc = Code editing. Redefined. Void is a new choice of tool that combines the simplicity of a code editor with what developers need for the core edit-build-debug cycle. See https://voideditor.com for installation instructions and FAQ.
 	pkgver = 1.99.30001
-	pkgrel = 4
-	url = https://github.com/voideditor/binaries
+	pkgrel = 5
+	url = https://github.com/voideditor/void
 	arch = x86_64
 	license = APACHE
 	depends = alsa-lib
