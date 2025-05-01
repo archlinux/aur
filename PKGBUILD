@@ -125,13 +125,31 @@ build() {
 	#   skia_use_zlib: Only used for PDF and RAW files.
 	#   skia_use_libgifcodec: Only used for GIFs, which Aseprite doesn't use.
 	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
-	env -C skia gn gen "$_skiadir" --args="$(printf '%s ' \
-is_official_build=true skia_build_fuzzers=false \
-skia_enable_{pdf,skottie,sksl,svg}=false \
-skia_use_{libjpeg_turbo,libwebp}_{encode,decode}=false \
-skia_use_{expat,piex,xps,zlib,libgifcodec}=false \
-skia_enable_{particles,skparagraph,sktext}=false \
-cc=clang cxx=clang\+\+)"
+
+	# gn is bad software
+local _gn_args=(
+	is_official_build=true
+	skia_build_fuzzers=false
+	skia_enable_pdf=false
+	skia_enable_skottie=false
+	skia_enable_sksl=false
+	skia_enable_svg=false
+	skia_use_libjpeg_turbo_encode=false
+	skia_use_libjpeg_turbo_decode=false
+	skia_use_libwebp_encode=false
+	skia_use_libwebp_decode=false
+	skia_use_expat=false
+	skia_use_piex=false
+	skia_use_xps=false
+	skia_use_zlib=false
+	skia_use_libgifcodec=false
+	skia_enable_particles=false
+	skia_enable_skparagraph=false
+	skia_enable_sktext=false
+	cc="clang"
+	cxx="clang++"
+)
+	env -C skia gn gen "$_skiadir" --args="${_gn_args[@]}"
 	ninja -C "$_skiadir" skia modules
 
 	echo Building Aseprite...
