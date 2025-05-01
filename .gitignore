@@ -2,4 +2,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!nginx-user-service
+!*.service

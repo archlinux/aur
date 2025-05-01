@@ -1,6 +1,6 @@
 pkgbase = nginx-user-service
-	pkgdesc = Systemd user service for nginx.
-	pkgver = 1.0.2
+	pkgdesc = Systemd user service for nginx
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/nginx-user-service
 	arch = any
@@ -8,8 +8,6 @@ pkgbase = nginx-user-service
 	depends = nginx
 	options = !strip
 	source = nginx.service
-	source = nginx-user-service
-	sha256sums = 8c854b888f02a8beaeefa458b1f4727a3f3529f12e4a113981aa297e8c94794d
-	sha256sums = fd2b736765448c1728bd4363c7ddf39c66c758abb016217946b41cc2e14c7af4
+	sha256sums = 8feeb9112c8393f24d0c138e069a1c4a3f7dc70e26029d72813e85b230bf653b
 
 pkgname = nginx-user-service
