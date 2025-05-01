@@ -10,6 +10,8 @@ pkgbase = rofi-blocks-meson-git
 	makedepends = ninja
 	depends = rofi
 	depends = json-glib
+	conflicts = rofi-block
+	conflicts = rofi-blocks-git
 	source = git+https://github.com/OmarCastro/rofi-blocks
 	md5sums = SKIP
 

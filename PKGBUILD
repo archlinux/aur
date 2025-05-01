@@ -8,6 +8,7 @@ arch=("any")
 url="https://github.com/OmarCastro/${_gitroot}"
 license=('GPL')
 depends=(rofi json-glib)
+conflicts=('rofi-block' 'rofi-blocks-git')
 makedepends=(git meson ninja)
 optdepends=()
 source=("git+https://github.com/OmarCastro/${_gitroot}")
