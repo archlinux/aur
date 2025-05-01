@@ -5,8 +5,8 @@
 pkgname='fastgron-git'
 _pkgname='fastgron'
 pkgver=0.7.7.r6.g5d5998f
-pkgrel=3
-pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (built from latest git commit)'
+pkgrel=4
+pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/adamritter/fastgron'
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -17,7 +17,6 @@ conflicts=("${provides[@]}")
 source=("git+$url.git")
 noextract=("$_pkgname")
 sha256sums=('SKIP')
-options=('lto')
 
 pkgver() {
   cd "$_pkgname"
@@ -27,17 +26,6 @@ pkgver() {
 
 prepare() {
   git clean -dfx "$_pkgname"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   export CFLAGS="$CFLAGS -DNDEBUG"
   export CXXFLAGS="$CXXFLAGS -DNDEBUG"
