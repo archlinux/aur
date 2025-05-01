@@ -8,7 +8,7 @@
 _pkgname='compiz'
 pkgname="$_pkgname"
 pkgver=0.9.14.2
-pkgrel=10
+pkgrel=11
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 url="https://launchpad.net/compiz"
 arch=('i686' 'x86_64')
@@ -131,9 +131,16 @@ prepare() {
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # adjust declarations
+  sed -E \
+    -e 's&^(destroy_(bare|normal|switcher)_frame)\s?.*;$&\1 (decor_frame_t *frame);&' \
+    -i "gtk/window-decorator/gtk-window-decorator.h"
 }
 
 build() {
+  export CXXFLAGS+=" -Wno-error=incompatible-pointer-types"
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
@@ -141,13 +148,13 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_CXX_STANDARD=17
-    -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
-    -DCOMPIZ_BUILD_WITH_RPATH=OFF
-    -DCOMPIZ_PACKAGING_ENABLED=ON
     -DBUILD_GTK=ON
     -DBUILD_METACITY=ON
-    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
     -DCOMPIZ_BUILD_TESTING=OFF
+    -DCOMPIZ_BUILD_WITH_RPATH=OFF
+    -DCOMPIZ_DEFAULT_PLUGINS="composite,opengl,decor,resize,place,move,compiztoolbox,staticswitcher,regex,animation,wall,ccp"
+    -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=ON
+    -DCOMPIZ_PACKAGING_ENABLED=ON
     -DCOMPIZ_WERROR=OFF
     -Wno-dev
   )
