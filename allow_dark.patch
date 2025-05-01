@@ -1,7 +1,7 @@
 diff -ru a/browser/components/preferences/main.js b/browser/components/preferences/main.js
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -4287,6 +4287,7 @@
+@@ -4307,6 +4307,7 @@
      FORCED_COLORS_QUERY.addEventListener("change", this);
      Services.prefs.addObserver(PREF_USE_SYSTEM_COLORS, this);
      Services.prefs.addObserver("privacy.resistFingerprinting", this);
@@ -9,7 +9,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
      Services.obs.addObserver(this, "look-and-feel-changed");
      this._update();
    },
-@@ -4324,6 +4325,7 @@
+@@ -4344,6 +4345,7 @@
    destroy() {
      Services.prefs.removeObserver(PREF_USE_SYSTEM_COLORS, this);
      Services.prefs.removeObserver("privacy.resistFingerprinting", this);
@@ -17,7 +17,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
      Services.obs.removeObserver(this, "look-and-feel-changed");
      FORCED_COLORS_QUERY.removeEventListener("change", this);
    },
-@@ -4365,7 +4367,8 @@
+@@ -4385,7 +4387,8 @@
      this.warning.hidden = !forcingColorsAndNoColorSchemeSupport;
  
      document.getElementById("web-appearance-rfp-warning")?.remove();
@@ -30,7 +30,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -19620,7 +19620,8 @@
+@@ -19675,7 +19675,8 @@
  
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
@@ -43,7 +43,7 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -15246,6 +15246,12 @@
+@@ -15392,6 +15392,12 @@
    value: false
    mirror: always
  
