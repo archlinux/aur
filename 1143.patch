@@ -1,0 +1,40 @@
+From d340baca666cf61fb76cb0ae2a5286b830f1bd75 Mon Sep 17 00:00:00 2001
+From: Kamal Heib <kheib@redhat.com>
+Date: Wed, 19 Feb 2025 19:00:05 -0500
+Subject: [PATCH] resourcedump_lib: Fix build failure
+
+Include cstdint to avoid the following build failure:
+
+In file included from strip_control_segments_filter.h:36,
+                 from strip_control_segments_filter.cpp:33:
+include_exclude_segments_filter.h:52:52: error: 'uint16_t' was not declared in this scope
+   52 |                                  const std::vector<uint16_t> selected_segment_ids,
+      |                                                    ^~~~~~~~
+include_exclude_segments_filter.h:41:1: note: 'uint16_t' is defined in header '<cstdint>'; this is probably fixable by adding '#include <cstdint>'
+   40 | #include <sstream>
+  +++ |+#include <cstdint>
+   41 |
+include_exclude_segments_filter.h:52:60: error: template argument 1 is invalid
+   52 |                                  const std::vector<uint16_t> selected_segment_ids,
+      |                                                            ^
+include_exclude_segments_filter.h:52:60: error: template argument 2 is invalid
+include_exclude_segments_filter.h:60:23: error: 'uint16_t' was not declared in this scope
+   60 |     const std::vector<uint16_t> _selected_segment_ids;
+
+Signed-off-by: Kamal Heib <kheib@redhat.com>
+---
+ .../src/filters/include_exclude_segments_filter.h                | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h b/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h
+index 2d1e84e21..32fe37d97 100644
+--- a/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h
++++ b/resourcetools/resourcedump_lib/src/filters/include_exclude_segments_filter.h
+@@ -35,6 +35,7 @@
+ 
+ #include "filter.h"
+ 
++#include <cstdint>
+ #include <memory>
+ #include <vector>
+ #include <sstream>

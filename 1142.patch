@@ -1,0 +1,47 @@
+From b3cf1314e4596354e2d3200382f0523c1ddbb23b Mon Sep 17 00:00:00 2001
+From: Kamal Heib <kheib@redhat.com>
+Date: Wed, 19 Feb 2025 18:54:56 -0500
+Subject: [PATCH] mtserver: Fix build failure
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix the following build failure:
+
+mtserver.c: In function ‘main’:
+mtserver.c:849:17: error: passing argument 2 of ‘signal’ from incompatible pointer type [-Wincompatible-pointer-types]
+  849 |     PREP_SIGNAL(mySignal);
+      |                 ^~~~~~~~
+      |                 |
+      |                 void (*)(void)
+mtserver.c:116:53: note: in definition of macro ‘PREP_SIGNAL’
+  116 | #define PREP_SIGNAL(signal_handler) signal(SIGPIPE, signal_handler);
+      |                                                     ^~~~~~~~~~~~~~
+In file included from mtserver.c:149:
+/usr/include/signal.h:88:57: note: expected ‘__sighandler_t’ {aka ‘void (*)(int)’} but argument is of type ‘void (*)(void)’
+   88 | extern __sighandler_t signal (int __sig, __sighandler_t __handler)
+      |                                          ~~~~~~~~~~~~~~~^~~~~~~~~
+mtserver.c:610:6: note: ‘mySignal’ declared here
+  610 | void mySignal()
+      |      ^~~~~~~~
+/usr/include/signal.h:72:16: note: ‘__sighandler_t’ declared here
+   72 | typedef void (*__sighandler_t) (int);
+
+Signed-off-by: Kamal Heib <kheib@redhat.com>
+---
+ small_utils/mtserver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/small_utils/mtserver.c b/small_utils/mtserver.c
+index e5af41573..c636c81bc 100644
+--- a/small_utils/mtserver.c
++++ b/small_utils/mtserver.c
+@@ -607,7 +607,7 @@ void usage(const char* s)
+ }
+ 
+ /* ////////////////////////////////////////////////////////////////////// */
+-void mySignal()
++void mySignal(int s)
+ {
+     exit(0);
+ }
