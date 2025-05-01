@@ -12,7 +12,8 @@ pkgbase = lavalauncher-mao-git
 	depends = cairo
 	depends = wayland
 	provides = lavalauncher-mao
-	conflicts = lavalauncher-mao
+	conflicts = lavalauncher
+	conflicts = lavalauncher-git
 	source = lavalauncher-mao::git+https://github.com/DreamMaoMao/lavalauncher
 	sha256sums = SKIP
 

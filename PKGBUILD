@@ -10,7 +10,10 @@ license=(GPL3)
 depends=('cairo' 'wayland')
 makedepends=('git' 'meson' 'scdoc' 'wayland-protocols')
 provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+conflicts=(
+    "lavalauncher"
+    "lavalauncher-git"
+)
 source=("${pkgname%-*}::git+${url}")
 sha256sums=('SKIP')
 
