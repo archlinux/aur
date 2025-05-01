@@ -1,15 +1,15 @@
 # Maintainer Tristan Lay <tristanjetlay1<at>gmail<dot>com>
 
 pkgname=muzic
-pkgver=0.9.0
-pkgrel=1
+pkgver=0.9.1
+pkgrel=2
 pkgdesc="Snappy MPD client written in Zig"
 arch=("x86_64")
-license=("MIT")
+license=("GPLv3")
 makedepends=("zig=0.13.0")
 url="https://github.com/TristanJet/muzic"
 source=("https://github.com/TristanJet/muzic/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("b4eaf7ad49b79675ccfe2df94b3c298fefe2fae909676a342e86dbf1a71da9cc")
+sha256sums=("9560bd19adf21404a84bb999864c2457e1ada943d7b2f2cb23067f47e64cfa24")
 
 prepare() {
   zig_version=$(zig version)
