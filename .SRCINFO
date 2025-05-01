@@ -1,7 +1,7 @@
 pkgbase = python-alpm-conf
 	pkgdesc = ArchLinux tool to manage /etc configuration files using git
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/xdegaye/alpm-conf
 	arch = any
 	license = MIT
