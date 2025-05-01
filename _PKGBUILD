@@ -1,0 +1,39 @@
+# Maintainer: Muhiddin Kabraliv kabraliev2005@gmail.com
+
+# pkgname=bizstaff
+# pkgver=1.0.0
+# pkgrel=1
+# pkgdesc="Stuff manager"
+# arch=('x86_64')
+# url="https://github.com/Muhiddin0/bizstaff-descktop/"
+# license=('MIT')
+optdepends=()
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/Muhiddin0/bizstaff-descktop/releases/download/v${pkgver}/Bizstaff-${pkgver}.AppImage"
+        "bizstaff.desktop"
+        "./icon.png")
+sha256sums=('53468c4487dd6e4ad903ee7016c4c70ca9fa969c919644ffd922d6888dfc4cff'
+            '2dd0ad653a5bb6c9b466ed74e15d71f6e61b0d4b68ba5d8d5452010d7f372682'
+            '1788b26e8f3a387934aef323cccdaece25d9caa602774fee8d7745459eac8be5')
+
+package() {
+  # AppImage faylini /opt/ katalogiga o'rnatish (standart bo'lmagan binarlar uchun yaxshi joy)
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+
+  # /usr/bin papkasini yaratish (agar mavjud bo'lmasa)
+  install -d "${pkgdir}/usr/bin"
+
+  # /usr/bin da ishga tushirish uchun simvolik link (yoki kichik skript) yaratish
+  ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname%-bin}" # '-bin' qismini olib tashlaymiz
+
+  # --- This is a Older method ---
+  # .desktop faylini menyular uchun o'rnatish
+  # install -Dm644 "${srcdir}/bizstaff.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+
+  mkdir -p "${pkgdir}/opt/${pkgname}"
+  cp -a "bizstaff.AppImage" "${pkgdir}/opt/${pkgname}/bizstaff.AppImage"
+
+  # Ikonkani o'rnatish (o'lchamni moslang, masalan 128x128)
+  install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png"
+}
