@@ -4,7 +4,7 @@
 _wlroots_version=0.18.2
 _wlroots_majver=0.18
 pkgname=wayfire-git
-pkgver=0.9.0.r81.gf865e23c
+pkgver=0.9.0.r85.g33620c18
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -16,30 +16,32 @@ depends=(
          'libglvnd' 'libjpeg' 'libpng'
          'libxkbcommon' 'pixman' 'polkit'
          'seatd' 'xorg-xwayland' 'wayland'
-         'wf-config-git' 'yyjson'
+         'wf-config-git' 'yyjson' 'libinput'
+         'glib2' 'systemd-libs' 'libxcb'
 
          # Linking Wayfire headers now requires this
          'glm'
 
          # wlroots
-         'glslang' 'lcms2' 'libinput' 'libdisplay-info'
-         'libliftoff' 'libxcb' 'opengl-driver'
-         'xcb-util-errors' 'xcb-util-renderutil'
-         'xcb-util-wm' 'libpixman-1.so' 'libseat.so'
-         'libudev.so' 'libvulkan.so' 'libwayland-client.so'
-         'libwayland-server.so' 'libxkbcommon.so'
+         'pkgconf' 'xcb-util-errors' 'xcb-util-renderutil'
+         'xcb-util-wm' 'wayland' 'wayland-protocols'
+         'libdisplay-info' "libwlroots-${_wlroots_majver}.so"
 )
 makedepends=('git' 'meson' 'ninja' 'cmake' 'vulkan-headers' 'doctest'
              'pkgconf' 'wayland-protocols' 'libxml2'
 )
 optdepends=('xorg-xeyes')
-provides=("${pkgname%-git}" "wlroots=${_wlroots_version}" "libwlroots-${_wlroots_majver}.so")
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 options=()
 
-source=('git+https://github.com/WayfireWM/wayfire')
-sha256sums=('SKIP')
+source=('git+https://github.com/WayfireWM/wayfire'
+        'git+https://github.com/WayfireWM/wf-touch'
+        'git+https://github.com/WayfireWM/wf-utils')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd "$srcdir/wayfire"
@@ -47,20 +49,30 @@ pkgver() {
     printf "$tag.r%s.g%s" "$(git rev-list --count v${tag}..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/wayfire/"
+    git submodule init
+    git config submodule.subprojects/wf-config.update none
+    git config submodule.subprojects/wlroots.update none
+    git config submodule.subprojects/wf-touch.url "$srcdir/wf-touch"
+    git config submodule.subprojects/wf-utils.url "$srcdir/wf-utils"
+    git -c protocol.file.allow=always submodule update
+}
+
 build() {
     cd "$srcdir/wayfire/"
     arch-meson \
         --buildtype=release \
         -Dxwayland=auto \
-        -Duse_system_wlroots=disabled \
+        -Duse_system_wlroots=enabled \
         -Duse_system_wfconfig=enabled \
         -Db_lto=true \
         -Db_pie=true \
+        -Dprint_trace=false \
         build
     sed "/WF_SRC_DIR/d" -i build/config.h
     ninja -C build
 }
-
 
 package() {
     cd "$srcdir/wayfire"
