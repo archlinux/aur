@@ -1,11 +1,11 @@
 # Maintainer: Gonsolo <gonsolo@gmail.com>
 
 pkgname=scalafmt
-pkgver=3.9.4
+pkgver=3.9.5
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
-url="https://scalameta.org/scalafmt/"
+url="https://github.com/scalameta/scalafmt"
 license=('Apache')
 depends=('java-environment' 'bash')
 makedepends=('coursier')
