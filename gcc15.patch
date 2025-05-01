@@ -1,0 +1,84 @@
+From 09e8cbb3e56187c4cdb40becd403325755ac244a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Thu, 1 May 2025 16:59:49 +0000
+Subject: [PATCH] Fix build with GCC 15
+
+GCC 15 defaults to the C23 standard, where functions declarations
+without parameters are interpreted as having no parameters:
+https://gcc.gnu.org/gcc-15/porting_to.html#c23-fn-decls-without-parameters
+
+Declare the `gpointer = void*` parameter for `g_thread_new` callbacks
+to avoid a build failure due to `-Wincompatible-pointer-types`.
+
+Fixes: #468
+---
+ src/ui/ui.c | 10 +++++-----
+ src/ui/ui.h |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/ui/ui.c b/src/ui/ui.c
+index 3be83e9..0d83c69 100644
+--- a/src/ui/ui.c
++++ b/src/ui/ui.c
+@@ -131,7 +131,7 @@ static ConfigValues configValues;
+ 
+ 
+ 
+-static void *stopHp() {
++static void *stopHp(gpointer data) {
+     if(running_info[0]!=NULL){
+         gtk_label_set_label(label_status,"Stopping ...");
+         start_pb_pulse();
+@@ -710,7 +710,7 @@ void clear_running_info(){
+         running_info[0]=NULL;
+ }
+ 
+-void* init_running_info(){
++void* init_running_info(gpointer data){
+ 
+     clear_running_info();
+     lock_all_views(TRUE);
+@@ -772,18 +772,18 @@ static void *run_create_hp_shell(void *cmd) {
+         gtk_label_set_label(label_status,buf);
+ 
+         if (strstr(buf, AP_ENABLED) != NULL) {
+-            init_running_info();
++            init_running_info(NULL);
+             return 0;
+         }
+     }
+ 
+     if (pclose(fp)) {
+         printf("Command not found or exited with error status\n");
+-        init_running_info();
++        init_running_info(NULL);
+         return NULL;
+     }
+ 
+-    init_running_info();
++    init_running_info(NULL);
+     return 0;
+ }
+ 
+diff --git a/src/ui/ui.h b/src/ui/ui.h
+index bd6aef7..ee7cf7a 100644
+--- a/src/ui/ui.h
++++ b/src/ui/ui.h
+@@ -48,7 +48,7 @@ static void* run_create_hp_shell(void *cmd);
+ 
+ void init_interface_list();
+ 
+-void* init_running_info();
++void* init_running_info(gpointer data);
+ 
+ static gboolean update_progress_in_timeout (gpointer pbar);
+ 
+@@ -60,7 +60,7 @@ static guint start_pb_pulse();
+ 
+ static void on_create_hp_clicked(GtkWidget *widget,gpointer data);
+ 
+-static void *stopHp();
++static void *stopHp(gpointer data);
+ 
+ static int init_config_val_input(ConfigValues* cv);
+ 

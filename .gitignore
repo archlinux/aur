@@ -1,9 +1,10 @@
 # Ignore everything
-*
+/*
 
 # But not these files...
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!linux-wifi-hotspot.install
 !.nvchecker.toml
+!LICENSE
+!gcc15.patch
