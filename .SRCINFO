@@ -1,0 +1,20 @@
+pkgbase = folo-appimage
+	pkgdesc = 🧡 Next generation information browser
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/RSSNext/Folo
+	arch = x86_64
+	license = GPL-3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = follow
+	conflicts = follow-appimage
+	replaces = follow-appimage
+	noextract = Folo-0.4.4-linux-amd64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = Folo-0.4.4-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/v0.4.4/Folo-0.4.4-linux-x64.AppImage
+	sha256sums_x86_64 = 09b8810fc4949207a3eb4096227f2b3fd55608e9241346bc874a4fbfcbaf9207
+
+pkgname = folo-appimage
