@@ -16,11 +16,14 @@ prepare() {
   cd "${pkgname}"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive
+
+  # cdaskr / gcc15
+  curl -L https://github.com/OpenModelica/OMCompiler-3rdParty/pull/170.patch | patch -p1 -d OMCompiler/3rdParty
 }
 
 build() {
   cd "${pkgname}"
-  PATH=/opt/cmake3/bin:$PATH cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -B build .
+  PATH=/opt/cmake3/bin:$PATH cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -B build .
   make -C build
 }
 
