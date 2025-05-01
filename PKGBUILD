@@ -16,7 +16,7 @@ pkgname=(
 )
 _pkgname=gnome-control-center
 pkgver=48.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://apps.gnome.org/Settings/"
 license=(GPL-2.0-or-later)
