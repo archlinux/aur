@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('imlib2' 'libexif' 'libxft' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${_name}")
-conflicts=("${_name}")
+conflicts=('sxiv' 'sxiv-git')
 source=("${_name}::git+${url}.git")
 sha256sums=('SKIP')
 
