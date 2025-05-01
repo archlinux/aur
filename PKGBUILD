@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Visualize Ownership and Lifetimes in Rust'
 url='https://github.com/cordx56/rustowl'
 license=('MPL-2.0')
-makedepends=('git' 'cargo-nightly')
+makedepends=('git' 'cargo')
 arch=('any')
 source=("git+https://github.com/cordx56/rustowl.git")
 sha256sums=('SKIP')
@@ -20,18 +20,22 @@ pkgver() {
 
 prepare() {
     export RUSTC_BOOTSTRAP=1
+    export RUSTUP_TOOLCHAIN=1.86.0
+    rustup component add rust-src rustc-dev llvm-tools
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     export CARGO_TARGET_DIR=target
     export RUSTC_BOOTSTRAP=1
+    export RUSTUP_TOOLCHAIN=1.86.0
     export RUSTOWL_RUNTIME_DIRS=/opt/rustowl
     cargo build --frozen --release --all-features
 }
 
 check() {
     export RUSTC_BOOTSTRAP=1
+    export RUSTUP_TOOLCHAIN=1.86.0
     cargo test --frozen --all-features
 }
 
