@@ -42,4 +42,4 @@
 
 *.pkg.tar.*
 xenia.log
-0003-disable-portable-mode.patch
+0002-use-cmake-build-instead.patch

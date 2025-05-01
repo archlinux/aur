@@ -2,13 +2,14 @@
 
 _binname=xenia_canary
 pkgname=xenia-canary-git
-pkgver=r7824.674870d88
+pkgver=r7826.9f8fad755
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
 url='http://xenia.jp'
 license=('BSD-3-Clause')
 makedepends=('clang'
+             'cmake'
              'git'
              'llvm'
              'ninja'
@@ -63,7 +64,7 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'zstd::git+https://github.com/facebook/zstd.git'
         "${pkgname}.desktop"
         '0001-use-system-premake5.patch'
-	'0002-use-cmake-build-instead.patch')
+        '0002-use-cmake-build-instead.patch::https://github.com/xenia-canary/xenia-canary/pull/569.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -103,7 +104,7 @@ sha256sums=('SKIP'
             'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
             'd8df7c6d7047fdc4278315b733a470843eab608f8bba5b8ea4355e8c4f44c88f'
-	    'd6027c91a57272211a6b49adb2a8af6a740716ed9cfa4f95bd74ce4df3491fc2')
+            'a4ec3de53c1231dc842ad8a0f250c84d8fb3cc7dd0f072e923a94b11b0d20d57')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"
