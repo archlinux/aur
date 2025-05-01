@@ -1,6 +1,6 @@
 --- a/src/gfx/freeimage.cpp
 +++ b/src/gfx/freeimage.cpp
-@@ -207,12 +207,6 @@ bool GfxProviderFreeImage::readbitmapFreeimage(const LocalPath& imagePath, int s
+@@ -484,12 +484,6 @@ bool GfxProviderFreeImage::readbitmapFreeimage(const LocalPath& imagePath, int s
  
  #ifdef HAVE_FFMPEG
  
@@ -13,7 +13,7 @@
  const char *GfxProviderFreeImage::supportedformatsFfmpeg()
  {
      return  ".264.265.3g2.3gp.3gpa.3gpp.3gpp2.mp3"
-@@ -315,10 +309,6 @@ bool GfxProviderFreeImage::readbitmapFfmpeg(const LocalPath& imagePath, int /*si
+@@ -592,10 +586,6 @@ bool GfxProviderFreeImage::readbitmapFfmpeg(const LocalPath& imagePath, int /*si
  
      // Force seeking to key frames
      formatContext->seek2any = false;

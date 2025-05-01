@@ -1,6 +1,6 @@
 pkgbase = megasync
 	pkgdesc = Official MEGA desktop application for syncing with MEGA Cloud Drive
-	pkgver = 5.10.1.0
+	pkgver = 5.11.0.3
 	pkgrel = 1
 	url = https://github.com/meganz/MEGAsync/
 	arch = x86_64
@@ -33,14 +33,14 @@ pkgbase = megasync
 	depends = qt5-x11extras
 	depends = sqlite
 	depends = zlib
-	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.10.1.0_OSX
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v5.11.0.3_OSX
 	source = meganz-sdk::git+https://github.com/meganz/sdk.git
 	source = 010-megasync-freeimage-remove-obsolete-ffmpeg-macros.patch
 	source = 020-megasync-sdk-fix-cmake-dependencies-detection.patch
 	source = 030-megasync-app-fix-cmake-dependencies-detection.patch
-	sha256sums = b18d03e7976c7452373e6c49c2ca1f4010ac88cebafc03a4112e2cb29e15d46d
+	sha256sums = 195d6e4a90d2f1ab63c7793b74dabacda66df17a82e96f20f594dcbb413f1e59
 	sha256sums = SKIP
-	sha256sums = a88c8cd94606427b9ab0bdbbf059e905554616a2b18981e4fb4c1c2cadc73d65
+	sha256sums = cd545737c81a45572f8bb1e46bf0368c92d5ddfeea71a346c499e4dbb4c7ca80
 	sha256sums = 62e79d30acafdc13855851e64c4419d8ee4a0b213089ea352882b49413e549f4
 	sha256sums = a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171
 
