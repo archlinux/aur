@@ -1,7 +1,7 @@
 pkgbase = plan9port-wayland-git
 	pkgdesc = A port of many Plan 9 libraries and programs to Unix with devdraw Wayland patches.
 	pkgver = r3950.0c6d0f74
-	pkgrel = 1
+	pkgrel = 2
 	url = http://swtch.com/plan9port/
 	install = plan9.install
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = plan9port-wayland-git
 	provides = plan9port
 	conflicts = 9base
 	conflicts = plan9port
+	options = !zipman
+	options = staticlibs
 	source = plan9port-wayland-git::git+https://github.com/droyo/plan9port.git#branch=wayland-im
 	source = plan9.sh
 	source = acme.sh
