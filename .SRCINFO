@@ -1,0 +1,22 @@
+pkgbase = python-alpm-conf
+	pkgdesc = ArchLinux tool to manage /etc configuration files using git
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.com/xdegaye/alpm-conf
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = gzip
+	depends = git
+	depends = util-linux
+	depends = alpm-mtree
+	depends = python
+	depends = pyalpm
+	depends = python-zstandard
+	depends = python-flit-core
+	source = python-alpm-conf::git+https://gitlab.com/xdegaye/alpm-conf.git#tag=0.2
+	sha256sums = 9daf4df553a92edbdf1261be019e1d275d91dca9afcb5f3359cf3e063a793295
+
+pkgname = python-alpm-conf
