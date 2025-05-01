@@ -4,5 +4,6 @@
 *.tar.bz2
 *.tar
 *.log
+*.zst
 pkg/
 src/

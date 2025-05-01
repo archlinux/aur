@@ -3,7 +3,7 @@
 pkgname=plex-htpc
 pkgver=1.70.1.303
 _pkghash=5bbf114f
-pkgrel=1
+pkgrel=2
 pkgdesc="Plex HTPC client for linux"
 arch=('x86_64')
 url='http://plex.tv'
@@ -32,7 +32,6 @@ depends=(libgl
   libxfixes
   libxkbcommon
   libxkbfile
-  libxml2
   libxrandr
   libxslt
   libxtst
@@ -59,11 +58,13 @@ depends=(libgl
 )
 source=("https://artifacts.plex.tv/plex-htpc-stable/$pkgver-$_pkghash/linux/PlexHTPC-$pkgver-$_pkghash-linux-x86_64.tar.bz2"
   "http://ftp.us.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1+deb11u2_amd64.deb"
+  "https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.8-1-x86_64.pkg.tar.zst"
   "https://github.com/flathub/tv.plex.PlexHTPC/raw/master/tv.plex.PlexHTPC.desktop"
   "https://github.com/flathub/tv.plex.PlexHTPC/raw/master/tv.plex.PlexHTPC.png"
 )
 sha256sums=('dfb7dec00ca26bf7b09e145ddc02c3658265bac079204bd78f6a30bb66a01463'
             '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
+            '2a1b0ab11ff213a57268d20fff183e3fd3e4ab9191aeed473de336b77bdfa6e1'
             'b98d1ba9191e346a256f1c838051b2d547f638558d79898df8b1707c7cabe487'
             '069cdf95608a46af4313bdffb281df37819e77c4e371c1e1667af889f0f325a2')
 noextract=('Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2')
@@ -75,6 +76,11 @@ package() {
   tar --no-same-owner -xvf $srcdir/PlexHTPC-$pkgver-$_pkghash-linux-x86_64.tar.bz2 -C $pkgdir/opt/${pkgname}
   tar -xvf $srcdir/data.tar.xz ./usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2
   install -Dm644 usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2 ${pkgdir}/opt/${pkgname}/lib/libwebp.so.6
+
+  mkdir -p libxml2-extract
+  bsdtar -xf $srcdir/libxml2-2.13.8-1-x86_64.pkg.tar.zst -C libxml2-extract
+  install -Dm644 libxml2-extract/usr/lib/libxml2.so.2.13.8 ${pkgdir}/opt/${pkgname}/lib/libxml2.so.2
+  rm -rf libxml2-extract
 
   rm -rf $pkgdir/opt/${pkgname}/lib/dri
   rm -rf $pkgdir/opt/${pkgname}/lib/libEGL.so*
