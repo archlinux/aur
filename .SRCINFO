@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
 	pkgver = 2025.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -51,6 +51,7 @@ pkgbase = openvino
 	source = 020-openvino-disable-werror.patch
 	source = 030-openvino-level-zero-disable-werror.patch
 	source = 040-openvino-protobuf23-fix.patch
+	source = 050-openvino-gcc15-fix.patch::https://github.com/openvinotoolkit/openvino/pull/30403/commits/29fb5d01e58b614f7eb2c3919f737f7f050e8051.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	sha256sums = 77d84150070a734e68322d74c41d8e0cc304a30ae7173e77bacfdad25e640e04
 	sha256sums = SKIP
@@ -79,6 +80,7 @@ pkgbase = openvino
 	sha256sums = a003b613d2c52dd7aeee4a40527aecd1b3b38ca2b69ed0a0660273e682f4b226
 	sha256sums = f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a
 	sha256sums = bcc3b452c40799187b7ba2c557516ef72d55929c44bed2c4d7182cfd01bae4ce
+	sha256sums = e384d59631b5c5f69ecfb9589dc053995c901d03d738e2e3da8b5a59bcd34272
 
 pkgname = openvino
 	depends = gcc-libs
