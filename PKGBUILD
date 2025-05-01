@@ -1,8 +1,8 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Sherlock Holo <sherlockya at gmail.com>
 
 pkgname=void-bin
 pkgver=1.99.30001
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 options=('!strip')
 url="https://github.com/voideditor/binaries"

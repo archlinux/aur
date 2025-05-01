@@ -1,6 +1,6 @@
 pkgbase = void-bin
 	pkgver = 1.99.30001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/voideditor/binaries
 	arch = x86_64
 	license = APACHE
