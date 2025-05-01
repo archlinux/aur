@@ -10,7 +10,7 @@ pkgname=(gcc14 gcc14-libs gcc14-fortran)
 pkgver=14.2.1+r753+g1cd744a6828f
 _commit=1cd744a6828f6ab9179906d16434ea40b6404737
 _majorver=${pkgver%%.*}
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection (14.x.x)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -179,7 +179,8 @@ package_gcc14() {
   install -m755 -t "$pkgdir/${_libdir}/" gcc/{cc1,cc1plus,collect2,lto1,gcov{,-tool}}
 
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install
-  rm -f "$pkgdir"/usr/lib/libgcc_s.so*
+  rm -f "${pkgdir}/${_libdir}"/../lib/libgcc_s.so*
+  rmdir "${pkgdir}/${_libdir}"/../lib
 
   make -C $CHOST/libstdc++-v3/src DESTDIR="$pkgdir" install
   make -C $CHOST/libstdc++-v3/include DESTDIR="$pkgdir" install
