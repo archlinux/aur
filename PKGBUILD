@@ -1,7 +1,7 @@
 # Maintainer: mia <mia@mia.jetzt>
 
 pkgname='skytable-bin'
-pkgver='0.8.3'
+pkgver='0.8.4'
 pkgrel='1'
 pkgdesc='Skytable is a modern NoSQL database powered by BlueQL'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("${_repo}/releases/download/v${pkgver}/${_pkgfile}"
         'skytable.tmpfiles'
         'skytable.sysusers')
 noextract=("${_pkgfile}")
-sha256sums=('dc41f9f011720aefc9ed4dd67edad9ac7a8bb3cc95e3464fc63943748d95775a'
+sha256sums=('62b9b280081c1edbbf9925191d03859715b25bfd8163568393957ac119f065c2'
             '1707e36c4613020bdbf2a0a33afd130d30b4e0b615831ba06eaadbe865e86156'
             'd04ba945687bd3c0dd8ccfec8dbb06808e89169b11225aedf6df85373058330d')
 
