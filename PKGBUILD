@@ -1,13 +1,13 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 pkgname=ykchalresp-nfc
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Perform challenge response using YubiKey via NFC"
 arch=('x86_64' 'i686')
 url="https://github.com/Frederick888/ykchalresp-nfc"
 license=('GPL3')
 source=("https://github.com/Frederick888/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('aecd2fffb8a6fec186669dfbe682046bcd42a842bc84f0b7e5337172df25aa04')
+sha256sums=('dfeb053d157f89e9ddcfb508e760d37f5d2fa062bb354d5d3044f93fd97dd161')
 depends=('libnfc')
 makedepends=('cmake' 'gengetopt')
 

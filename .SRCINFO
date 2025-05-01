@@ -1,6 +1,6 @@
 pkgbase = ykchalresp-nfc
 	pkgdesc = Perform challenge response using YubiKey via NFC
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Frederick888/ykchalresp-nfc
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = ykchalresp-nfc
 	makedepends = cmake
 	makedepends = gengetopt
 	depends = libnfc
-	source = https://github.com/Frederick888/ykchalresp-nfc/archive/v0.1.0.tar.gz
-	sha256sums = aecd2fffb8a6fec186669dfbe682046bcd42a842bc84f0b7e5337172df25aa04
+	source = https://github.com/Frederick888/ykchalresp-nfc/archive/v0.1.1.tar.gz
+	sha256sums = dfeb053d157f89e9ddcfb508e760d37f5d2fa062bb354d5d3044f93fd97dd161
 
 pkgname = ykchalresp-nfc
-
