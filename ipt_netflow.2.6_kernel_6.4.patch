@@ -1,6 +1,6 @@
-diff -Naupr ipt-netflow-2.6_orig/compat.h ipt-netflow/compat.h
---- ipt-netflow-2.6_orig/compat.h	2023-08-03 19:43:17.629152119 +0700
-+++ ipt-netflow/compat.h	2023-08-03 19:43:23.622484925 +0700
+diff -Naupr ipt-netflow-2.6/compat.h ipt-netflow/compat.h
+--- ipt-netflow-2.6/compat.h	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/compat.h	2025-05-01 14:52:46.550522456 +0700
 @@ -170,10 +170,6 @@ static int __ethtool_get_settings(struct
  # define CHECK_OK	0
  #endif
@@ -24,7 +24,7 @@ diff -Naupr ipt-netflow-2.6_orig/compat.h ipt-netflow/compat.h
  #define num_physpages	totalram_pages
  #endif
  
-@@ -775,4 +771,25 @@ struct module *find_module(const char *n
+@@ -775,4 +771,32 @@ struct module *find_module(const char *n
  }
  #endif
  
@@ -49,10 +49,29 @@ diff -Naupr ipt-netflow-2.6_orig/compat.h ipt-netflow/compat.h
 +# define NF_CT_EVENT const struct nf_ct_event
 +#endif
 +
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0)
++static inline bool netif_is_bridge_port(const struct net_device *dev)
++{
++	return dev->priv_flags & IFF_BRIDGE_PORT;
++}
++#endif
++
  #endif /* COMPAT_NETFLOW_H */
-diff -Naupr ipt-netflow-2.6_orig/gen_compat_def ipt-netflow/gen_compat_def
---- ipt-netflow-2.6_orig/gen_compat_def	2023-08-03 19:43:17.629152119 +0700
-+++ ipt-netflow/gen_compat_def	2023-08-03 19:43:23.622484925 +0700
+diff -Naupr ipt-netflow-2.6/configure ipt-netflow/configure
+--- ipt-netflow-2.6/configure	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/configure	2025-05-01 14:52:46.550522456 +0700
+@@ -248,7 +248,7 @@ iptables_try_pkgconfig() {
+     if [ -s /etc/debian_version ]; then
+       echo "! "
+       echo "! Under Debian simply run this:"
+-      if apt-cache policy libxtables-dev 2>&1 | fgrep -q "Candidate:"; then
++      if apt-cache policy libxtables-dev 2>&1 | grep -F -q "Candidate:"; then
+         echo "!   root# apt-get install libxtables-dev pkg-config"
+       else
+         echo "!   root# apt-get install iptables-dev pkg-config"
+diff -Naupr ipt-netflow-2.6/gen_compat_def ipt-netflow/gen_compat_def
+--- ipt-netflow-2.6/gen_compat_def	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/gen_compat_def	2025-05-01 14:52:46.550522456 +0700
 @@ -1,8 +1,9 @@
  #!/bin/bash -efu
  # SPDX-License-Identifier: GPL-2.0-only
@@ -70,7 +89,7 @@ diff -Naupr ipt-netflow-2.6_orig/gen_compat_def ipt-netflow/gen_compat_def
      sed  "s/^/\/\/   /" log
      echo
 -    if ! egrep -q 'has no member named|undeclared|storage size of .* isn.t known|No such file or directory' log; then
-+    if ! egrep -q \
++    if ! grep -E -q \
 +	  -e 'has no member named' \
 +	  -e 'undeclared' \
 +	  -e 'storage size of .* isn.t known' \
@@ -148,9 +167,9 @@ diff -Naupr ipt-netflow-2.6_orig/gen_compat_def ipt-netflow/gen_compat_def
  
  echo "// End of compat_def.h"
  
-diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
---- ipt-netflow-2.6_orig/ipt_NETFLOW.c	2023-08-03 19:43:17.629152119 +0700
-+++ ipt-netflow/ipt_NETFLOW.c	2023-08-03 19:43:23.622484925 +0700
+diff -Naupr ipt-netflow-2.6/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
+--- ipt-netflow-2.6/ipt_NETFLOW.c	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/ipt_NETFLOW.c	2025-05-01 14:52:46.550522456 +0700
 @@ -87,7 +87,7 @@
  #if defined(CONFIG_NF_NAT_NEEDED) && LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,39)
  # include <net/netfilter/nf_conntrack_timestamp.h>
@@ -223,16 +242,19 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  	case icmpTypeCodeIPv6:	put_unaligned(nf->tuple.d_port, (__be16 *)ptr); break;
  	case MUL_IGMP_TYPE:            *ptr = nf->tuple.d_port; break;
  	case flowEndReason: 	       *ptr = nf->flowEndReason; break;
-@@ -4501,7 +4503,7 @@ static void netflow_work_fn(struct work_
+@@ -4501,7 +4503,11 @@ static void netflow_work_fn(struct work_
  	wk_count = 0;
  	wk_trylock = 0;
  	wk_llist = 0;
--	wk_cpu = smp_processor_id();
++#ifdef __smp_processor_id
 +	wk_cpu = __smp_processor_id();
++#else
+ 	wk_cpu = smp_processor_id();
++#endif
  	wk_start = jiffies;
  
  	pdus = netflow_scan_and_export(DONT_FLUSH);
-@@ -4597,7 +4599,20 @@ static void rate_timer_calc(
+@@ -4597,7 +4603,20 @@ static void rate_timer_calc(
  #ifdef CONFIG_NF_NAT_NEEDED
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,31)
  static struct nf_ct_event_notifier *saved_event_cb __read_mostly = NULL;
@@ -254,7 +276,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  #else
  static int netflow_conntrack_event(struct notifier_block *this, unsigned long events, void *ptr)
  #endif
-@@ -4619,7 +4634,7 @@ static int netflow_conntrack_event(struc
+@@ -4619,7 +4638,7 @@ static int netflow_conntrack_event(struc
  	/* Call netlink first. */
  	notifier = rcu_dereference(saved_event_cb);
  	if (likely(notifier))
@@ -263,7 +285,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  #endif
  	if (unlikely(!natevents))
  		return ret;
-@@ -4684,7 +4699,10 @@ static struct notifier_block ctnl_notifi
+@@ -4684,7 +4703,10 @@ static struct notifier_block ctnl_notifi
  };
  #else
  static struct nf_ct_event_notifier ctnl_notifier = {
@@ -275,7 +297,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  };
  #endif /* since 2.6.31 */
  #endif /* CONFIG_NF_NAT_NEEDED */
-@@ -4753,39 +4771,7 @@ static inline __u16 observed_hdrs(const
+@@ -4753,39 +4775,7 @@ static inline __u16 observed_hdrs(const
  	return SetXBit(3); /* Unknown header. */
  }
  
@@ -316,7 +338,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  /* Parse IPv4 Options array int ipv4Options IPFIX value. */
  static inline __u32 ip4_options(const u_int8_t *p, const unsigned int optsize)
  {
-@@ -4794,20 +4780,22 @@ static inline __u32 ip4_options(const u_
+@@ -4794,20 +4784,22 @@ static inline __u32 ip4_options(const u_
  
  	for (i = 0; likely(i < optsize); ) {
  		u_int8_t op = p[i++];
@@ -352,7 +374,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  			break;
  		else if (unlikely(op == 1))
  			continue;
-@@ -4826,19 +4814,19 @@ static inline __u32 tcp_options(const st
+@@ -4826,19 +4818,19 @@ static inline __u32 tcp_options(const st
  	const unsigned int optsize = th->doff * 4 - sizeof(struct tcphdr);
  	__u8 _opt[TCPHDR_MAXSIZE];
  	const u_int8_t *p;
@@ -376,7 +398,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  		}
  		if (likely(i >= optsize || opt == 0))
  			break;
-@@ -5451,9 +5439,15 @@ static void unset_notifier_cb(NET_STRUCT
+@@ -5451,9 +5443,15 @@ static void unset_notifier_cb(NET_STRUCT
  
  	notifier = rcu_dereference(nf_conntrack_event_cb);
  	if (notifier == &ctnl_notifier) {
@@ -394,7 +416,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  			rcu_assign_pointer(nf_conntrack_event_cb, saved_event_cb);
  	} else
  		printk(KERN_ERR "ipt_NETFLOW: natevents already disabled.\n");
-@@ -5494,12 +5488,8 @@ static void register_ct_events(void)
+@@ -5494,12 +5492,8 @@ static void register_ct_events(void)
  	}
  	/* Reference netlink module to prevent it's unsafe unload before us. */
  	if (!netlink_m && (netlink_m = find_module(NETLINK_M))) {
@@ -407,7 +429,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  	}
  
  	/* Register ct events callback. */
-@@ -5527,10 +5517,9 @@ static void unregister_ct_events(void)
+@@ -5527,10 +5521,9 @@ static void unregister_ct_events(void)
  #else /* < v3.2 */
  	unset_notifier_cb();
  #endif /* v3.2 */
@@ -419,7 +441,7 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  	rcu_assign_pointer(saved_event_cb, NULL);
  #else /* < v2.6.31 */
  	nf_conntrack_unregister_notifier(&ctnl_notifier);
-@@ -5679,7 +5668,11 @@ static int __init ipt_netflow_init(void)
+@@ -5679,7 +5672,11 @@ static int __init ipt_netflow_init(void)
  #endif
  						      );
  #else /* 2.6.25 */
@@ -431,9 +453,9 @@ diff -Naupr ipt-netflow-2.6_orig/ipt_NETFLOW.c ipt-netflow/ipt_NETFLOW.c
  #endif
  	if (!netflow_sysctl_header) {
  		printk(KERN_ERR "netflow: can't register to sysctl\n");
-diff -Naupr ipt-netflow-2.6_orig/Makefile.in ipt-netflow/Makefile.in
---- ipt-netflow-2.6_orig/Makefile.in	2023-08-03 19:43:17.629152119 +0700
-+++ ipt-netflow/Makefile.in	2023-08-03 19:43:23.622484925 +0700
+diff -Naupr ipt-netflow-2.6/Makefile.in ipt-netflow/Makefile.in
+--- ipt-netflow-2.6/Makefile.in	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/Makefile.in	2025-05-01 14:52:46.550522456 +0700
 @@ -27,7 +27,8 @@ ipt_NETFLOW.ko: version.h ipt_NETFLOW.c
  	make -C $(KDIR) M=$(CURDIR) modules
  	@touch $@
@@ -444,9 +466,32 @@ diff -Naupr ipt-netflow-2.6_orig/Makefile.in ipt-netflow/Makefile.in
  sparse: | version.h ipt_NETFLOW.c ipt_NETFLOW.h compat.h Makefile
  	@rm -f ipt_NETFLOW.ko ipt_NETFLOW.o
  	@echo Compiling for kernel $(KVERSION)
-diff -Naupr ipt-netflow-2.6_orig/murmur3.h ipt-netflow/murmur3.h
---- ipt-netflow-2.6_orig/murmur3.h	2023-08-03 19:43:17.629152119 +0700
-+++ ipt-netflow/murmur3.h	2023-08-03 19:43:23.622484925 +0700
+@@ -54,7 +55,7 @@ sinstall: | snmp_NETFLOW.so IPT-NETFLOW-
+ 	@echo " *"
+ 	install -D IPT-NETFLOW-MIB.my $(DESTDIR)/usr/share/snmp/mibs/IPT-NETFLOW-MIB.my
+ 	install -D snmp_NETFLOW.so $(DESTDIR)$(SNMPTGSO)
+-	@if ! egrep -qs "^ *$(SNMPLINE)" $(SNMPCONF); then \
++	@if ! grep -E -qs "^ *$(SNMPLINE)" $(SNMPCONF); then \
+ 	echo " *"; \
+ 	echo " *  Add this line to $(SNMPCONF) to enable IPT-NETFLOW-MIB:"; \
+ 	echo " *"; \
+@@ -92,11 +93,11 @@ uninstall:
+ 	-rm -f $(DESTDIR)$(IPTABLES_MODULES)/libip6t_NETFLOW.so
+ 	-rm -f $(DESTDIR)/usr/share/snmp/mibs/IPT-NETFLOW-MIB.my
+ 	-rm -f $(DESTDIR)$(SNMPTGSO)
+-	@if egrep -qs "^ *$(SNMPLINE)" $(SNMPCONF); then \
++	@if grep -E -qs "^ *$(SNMPLINE)" $(SNMPCONF); then \
+ 	echo " *"; \
+ 	echo " *  Remove this line from $(SNMPCONF):"; \
+ 	echo " *"; \
+-	echo " *     "`egrep "^ *$(SNMPLINE)" $(SNMPCONF)`; \
++	echo " *     "`grep -E "^ *$(SNMPLINE)" $(SNMPCONF)`; \
+ 	echo " *"; \
+ 	fi
+ 	@if [ "@DKMSINSTALL@" = dinstall ]; then ./install-dkms.sh --uninstall; fi
+diff -Naupr ipt-netflow-2.6/murmur3.h ipt-netflow/murmur3.h
+--- ipt-netflow-2.6/murmur3.h	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/murmur3.h	2025-05-01 14:52:46.550522456 +0700
 @@ -32,8 +32,8 @@ static inline uint32_t murmur3(const voi
  	}
  	tail = (const uint8_t*)blocks;
@@ -458,3 +503,124 @@ diff -Naupr ipt-netflow-2.6_orig/murmur3.h ipt-netflow/murmur3.h
  		case 1: k1 ^= tail[0];
  			h1 ^= rotl32(k1 * c1, 15) * c2;
  	}
+diff -Naupr ipt-netflow-2.6/test_update_config.sh ipt-netflow/test_update_config.sh
+--- ipt-netflow-2.6/test_update_config.sh	2021-05-15 19:32:44.000000000 +0700
++++ ipt-netflow/test_update_config.sh	2025-05-01 14:52:46.550522456 +0700
+@@ -4,14 +4,51 @@
+ # Update default .config for values required to run tests
+ #
+ 
+-set -x
+-cp -f .config .config-pkt-netflow.bak
++COLOR=11
++V() {
++	[ -t 1 ] && tput setaf "$COLOR"
++	printf '+'
++	printf ' %q' "$@"
++	printf '\n'
++	[ -t 1 ] && tput op
++	"$@"
++}
++
++for opt; do
++	case $opt in
++		--kdir=*) KDIR=${opt#*=} ;;
++		--checkout=*) BRANCH=${opt#*=} ;&
++		--defconfig) DEFCONFIG=defconfig ;;
++		--debug) ADD_DEBUG=y ;;
++		--force) FORCE=--force ;;
++		--prepare) TARGETS="prepare modules_prepare" ;&
++		--clean) CLEAN=clean ;;
++		--cmd=*) KBUILD_PREPARE_CMD=${opt#*=} ;;
++		--build) DO_BUILD=y ;;
++		--configure) DO_CONFIGURE=y ;;
++		--pick=*) PICKS+=("${opt#*=}") ;;
++		--*) echo >&2 "$0: Unknown option $opt"; exit 1 ;;
++		gcc-*) OPTS+=(CC=$opt HOSTCC=$opt) ;;
++		-no-* | -[fDWO]*) KBUILD_CFLAGS+=("$opt") ;;
++		*=*) OPTS+=("${opt%%=*}=${opt#*=}") ;;
++		*) echo >&2 "$0: Unknown argument $opt"; exit 1 ;;
++	esac
++done
++
++# Patch applying command assuming --force checkout.
++[ -n "$KBUILD_PREPARE_CMD" ] && [ -n "$TARGETS" ] && FORCE=-f
++
++[ -n "${KDIR-}" ] && V cd "$KDIR"
++[ -n "${BRANCH-}" ] && V git switch ${FORCE-} --detach "$BRANCH"
++[ -n "${DEFCONFIG-}" ] && V make $DEFCONFIG
++
++V cp -f .config .config-pkt-netflow.bak
+ 
+ if type virtme-configkernel >/dev/null 2>&1; then
+-  virtme-configkernel --update
++  V virtme-configkernel --update
+ fi
+ 
+-scripts/config \
++V scripts/config \
+   -e CONFIG_VETH \
+   -e CONFIG_PACKET \
+   -e CONFIG_NETFILTER \
+@@ -20,9 +57,11 @@ scripts/config \
+   -e CONFIG_IP_NF_FILTER \
+   -e CONFIG_IP_NF_IPTABLES \
+   -e CONFIG_IP6_NF_FILTER \
++  -e CONFIG_NF_CONNTRACK_EVENTS \
++  -e CONFIG_VLAN_8021Q \
+ 
+-if [ "${1-}" = debug ]; then
+-scripts/config \
++if [ -n "${ADD_DEBUG-}" ]; then
++V scripts/config \
+   -e CONFIG_LOCK_DEBUGGING_SUPPORT \
+   -e CONFIG_PROVE_LOCKING \
+   -e CONFIG_DEBUG_SPINLOCK \
+@@ -31,8 +70,45 @@ scripts/config \
+ 
+ fi
+ 
+-make olddefconfig
++V make olddefconfig
++
++V scripts/diffconfig .config-pkt-netflow.bak .config || :
+ 
+-scripts/diffconfig .config-pkt-netflow.bak .config
++[ -n "${CLEAN-}" ] && V make $CLEAN
++[ -n "${KBUILD_PREPARE_CMD-}" ] && V eval "$KBUILD_PREPARE_CMD" || :
++for commit in "${PICKS[@]}"; do
++	V git cherry-pick --no-commit "$commit" || :
++done
++[ -n "${KBUILD_CFLAGS-}" ] && OPTS+=("KBUILD_CFLAGS=${KBUILD_CFLAGS[*]}")
++[ -n "${TARGETS-}" ] && V make $TARGETS "${OPTS[@]}"
++
++echo
++V cd "$OLDPWD"
++COLOR=14
++
++if [ -n "${DO_CONFIGURE-}" ]; then
++	readarray -t confs <<-EOF
++	  --disable-snmp-agent
++	  --enable-aggregation
++	  --enable-natevents
++	  --enable-snmp-rules
++	  --enable-macaddress
++	  --enable-vlan
++	  --promisc-mpls
++	  --enable-direction
++	  --enable-sampler
++	  --enable-sampler=hash
++	  --enable-promisc --promisc-mpls
++	  --enable-physdev
++	  --enable-physdev-override
++	EOF
++	mv -f Makefile Makefile- || :
++	V ./configure ${confs[@]}
++fi
++
++if [ -n "${DO_BUILD-}" ]; then
++	V make "${OPTS[@]}" $CLEAN ipt_NETFLOW.ko
++	size ipt_NETFLOW.ko
++fi
+ 
+ # export XTABLES_LIBDIR=

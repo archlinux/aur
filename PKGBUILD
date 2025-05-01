@@ -4,7 +4,7 @@
 _netflow='ipt-netflow'
 pkgname='ipt_netflow'
 pkgver='2.6'
-pkgrel='7'
+pkgrel='8'
 pkgdesc='Netflow as netfilter extension'
 arch=('any')
 url="https://github.com/aabc/${_netflow}"
@@ -13,10 +13,10 @@ depends=('linux' 'iptables')
 makedepends=('gcc' 'gzip' 'gawk' 'sed')
 source=("${url}/archive/v${pkgver}.tar.gz"
 	"ipt_netflow.2.6_kernel_6.4.patch"
-	"https://patch-diff.githubusercontent.com/raw/aabc/ipt-netflow/pull/230.patch")
+	"${url}/pull/239.patch")
 sha256sums=('1ae270ddd0e60449159607c2f413604e31cb446beae516777dfeeee5f9b4931d'
-            'ce4b590306de3f33aeca6c22ae4fb1400c37359cc1f075fe4182a4340babd19e'
-            '435dcdc5dd206cab906feede8ae4a39603e8f614bc690fdb1d2242525246951f')
+            '750034a9383e499d4425939db893eacefd9df570e4ba5cc7244d257b95e90b08'
+            'c4441ecba040ec5ff068db48d1a475888bc207aa83ad893d98ab6de6a52d9cfa')
 # define '-lts' for linux-lts package
 _linux_custom=""
 _kdir="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
@@ -24,10 +24,10 @@ _kver="`pacman -Ql linux${_linux_custom} | gawk 'match($0, /(\/usr\/lib\/modules
 
 prepare() {
   cd "${_netflow}-${pkgver}"
-  # Kernel 6.4 compat
+  # Kernel 6.4+ compat
   patch -p1 -i "../ipt_netflow.2.6_kernel_6.4.patch"
   # Kernel 6.8+ compat
-  patch -p1 -i "../230.patch"
+  patch -p1 -i "../239.patch"
 
   ./configure \
     --disable-snmp-agent \
@@ -49,9 +49,10 @@ check() {
 
 package() {
   cd "${_netflow}-${pkgver}"
-  install -Dm755 "libipt_NETFLOW.so" "${pkgdir}/usr/lib/xtables/libipt_NETFLOW.so"
-  install -Dm755 "libip6t_NETFLOW.so" "${pkgdir}/usr/lib/xtables/libip6t_NETFLOW.so"
-  install -Dm644 "ipt_NETFLOW.ko.gz" "${pkgdir}${_kdir}/extra/ipt_NETFLOW.ko.gz"
-  install -Dm644 "README" "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm644 "README.promisc" "${pkgdir}/usr/share/doc/${pkgname}/README.promisc"
+  install -Dm0755 "libipt_NETFLOW.so" -t "${pkgdir}/usr/lib/xtables"
+  install -Dm0755 "libip6t_NETFLOW.so" -t "${pkgdir}/usr/lib/xtables"
+  install -Dm0644 "ipt_NETFLOW.ko.gz" -t "${pkgdir}${_kdir}/extra"
+  install -Dm0644 "CREDITS" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "README" "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm0644 "README.promisc" "${pkgdir}/usr/share/doc/${pkgname}"
 }
