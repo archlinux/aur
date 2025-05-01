@@ -38,4 +38,5 @@ package() {
 
     # Instalacja pliku .desktop
     install -Dm644 "$srcdir/wingedit.desktop" "$pkgdir/usr/share/applications/wingedit.desktop"
-}
+} #this thing does what it was made for so you can install this app. However idk why it just doesn't update on AUR
+
