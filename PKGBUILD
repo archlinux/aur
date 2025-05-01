@@ -2,8 +2,8 @@
 
 pkgname=python-lottie
 _name=${pkgname//python-}
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc='A Python framework to work with Lottie files and Telegram animated stickers.'
 arch=(any)
 url=https://pypi.org/project/lottie
@@ -24,7 +24,7 @@ optdepends=(
 )
 replaces=(python-tgs)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz)
-sha512sums=('dbf032bafe64512a5ce932d0d980e4f9f305573600df8b54f1876f800012ff44d6895b023b6db2e354282900e3456b54df49472d278bae3bd21b549274dceb54')
+sha512sums=('1857e626105f8e25afd18fb79ede344a66084f9028ca9a625d03a06426d84b986b036cc55e20a8a4b9bd2ea66a610ed65a68822f7a1743c3b787df51edc2588b')
 
 build() {
 	cd $srcdir/${_name}-$pkgver
