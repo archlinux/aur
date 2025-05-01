@@ -13,7 +13,7 @@ pkgname=(gcc13 gcc13-libs gcc13-fortran)
 pkgver=13.3.1+r432+gfc8bd63119c0
 _majorver=${pkgver%%.*}
 _commit=fc8bd63119c00f4763ba337aab02db64beb25931
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -188,7 +188,8 @@ package_gcc13() {
   install -m755 -t "$pkgdir/${_libdir}/" gcc/{cc1,cc1plus,collect2,lto1,gcov{,-tool}}
 
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install
-  rm -f "$pkgdir"/usr/lib/libgcc_s.so*
+  rm -f "${pkgdir}/${_libdir}"/../lib/libgcc_s.so*
+  rmdir "${pkgdir}/${_libdir}"/../lib
 
   make -C $CHOST/libstdc++-v3/src DESTDIR="$pkgdir" install
   make -C $CHOST/libstdc++-v3/include DESTDIR="$pkgdir" install
