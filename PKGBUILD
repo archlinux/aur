@@ -4,7 +4,7 @@
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.3.0.r198.g0431777d
+pkgver=2.3.0.r216.gb6ec9e05
 pkgrel=2
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (latest git commit)'
 arch=('aarch64' 'x86_64')
@@ -13,13 +13,13 @@ source=("$_pkgname::git+$url.git")
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
-options=('lto')
 depends=('gcc-libs' 'glibc')
 makedepends=('git')
 
 prepare() {
   cd "$srcdir/$_pkgname/src"
 
+  git clean -dfx
   sed -i 's/CXXFLAGS=/CXXFLAGS+=/;s/LDFLAGS=/LDFLAGS+=/g' Makefile
 }
 
@@ -31,17 +31,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname/src"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   make clean
   make kanzi
