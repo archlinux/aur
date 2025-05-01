@@ -7,7 +7,7 @@
 
 pkgname=zoom-system-qt
 pkgver=6.4.6.1370
-pkgrel=1
+pkgrel=2
 pkgdesc="Zoom Workspace client with system libraries"
 arch=('x86_64')
 license=('LicenseRef-zoom')
@@ -25,8 +25,8 @@ optdepends=('qt5-wayland: Wayland support'
 options=(!strip emptydirs)
 provides=(zoom)
 conflicts=(zoom)
-source=("${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
-sha512sums=('d3e555e85a87d63b4c1c0990bf543b7cadb2106defc195c37a4b08df7db3e968fb2d1e09f533fce267695ffcbf104eb83ad8d7f7c4ec890caa845af643e79de4')
+source=("zoom-origin-${pkgver}.pkg.tar.xz::${url}client/${pkgver}/zoom_x86_64.pkg.tar.xz")
+b2sums=('758a44e3e2e57bfcc5d1bee16c8fc081806f7a3785caab7c8662d157450c3150d0ec8fc11aa8e0178ba2d272370147fe4176f53b09ceadb5f3e1d3bac81e5b01')
 
 build() {	
 	cd opt/zoom
