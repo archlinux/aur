@@ -1,7 +1,7 @@
 pkgbase = interactsh-bin
 	pkgdesc = OOB interaction gathering server and client library
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectdiscovery/interactsh
 	arch = aarch64
 	arch = armv7h
@@ -28,7 +28,11 @@ pkgbase = interactsh-bin
 pkgname = interactsh-client-bin
 	pkgdesc = OOB interaction gathering server and client library (client)
 	optdepends = interactsh-server: server functionality
+	provides = interactsh-client
+	conflicts = interactsh-client
 
 pkgname = interactsh-server-bin
 	pkgdesc = OOB interaction gathering server and client library (server)
 	optdepends = interactsh-client: client functionality
+	provides = interactsh-server
+	conflicts = interactsh-server

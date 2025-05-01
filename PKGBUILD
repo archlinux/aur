@@ -6,7 +6,7 @@ _pkgname=("${_name[@]/#/${_pkgbase}-}")
 pkgbase="${_pkgbase}-bin"
 pkgname=("${_pkgname[@]/%/-bin}")
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="OOB interaction gathering server and client library"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/projectdiscovery/${_pkgbase}"
@@ -27,10 +27,12 @@ sha256sums_x86_64=('d6728561b0db2266d2e301773b2fcf9079f6fe402ebae477bc6e92775cab
                    'dedc1766422e27c88e190c60662c29503bc9aaa8e364b2bacd510e8558a9fba0')
 
 package_interactsh-client-bin() {
-  local binary="${pkgname%%-bin}"
+  local binary="${pkgname%-bin}"
 
   pkgdesc+=" ($(echo "${pkgname}" | cut -d'-' -f2))"
   optdepends=("${_pkgbase}-server: server functionality")
+  provides=("${pkgname%-bin}")
+  conflicts=("${pkgname%-bin}")
 
   cd "${srcdir}"
   install -vDm755 "${binary}"  "${pkgdir}/usr/bin/${binary}"
@@ -39,10 +41,12 @@ package_interactsh-client-bin() {
 }
 
 package_interactsh-server-bin() {
-  local binary="${pkgname%%-bin}"
+  local binary="${pkgname%-bin}"
 
   pkgdesc+=" ($(echo "${pkgname}" | cut -d'-' -f2))"
   optdepends=("${_pkgbase}-client: client functionality")
+  provides=("${pkgname%-bin}")
+  conflicts=("${pkgname%-bin}")
 
   cd "${srcdir}"
   install -vDm755 "${binary}"  "${pkgdir}/usr/bin/${binary}"
