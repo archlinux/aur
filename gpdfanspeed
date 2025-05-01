@@ -20,22 +20,7 @@ set -e
 shopt -s extglob
 
 PROGRAMMENAME="gpdfanspeed"
-VERSION=20240429.01
-
-FANMONDIR="$(ls -1d "/sys/devices/platform/gpd_fan/hwmon"/hwmon[0-9] | head -n1)"
-DEBUGFSDIR="/sys/kernel/debug/gpdfan"
-
-## In the hwmon interface ($FANMONDIR/):
-_namefile="name"
-_rpmfile="fan1_input"
-_pwmsettingfile="pwm1"
-_controlmodefile="pwm1_enable"
-_pwmmodefile="pwm1_mode"
-_updateintervalfile="update_interval"
-
-## In debugfs ($DEBUGFSDIR/):
-_debugpwmsettingfile="pwm_reg"
-_debugcontrolmodefile="manual_control_reg"
+VERSION=20250501.01
 
 
 msg() {
@@ -90,6 +75,23 @@ case "$1" in
     exit 0
   ;;
 esac
+
+
+FANMONDIR="$(ls -1d "/sys/devices/platform/gpd_fan/hwmon"/hwmon[0-9] | head -n1)"
+DEBUGFSDIR="/sys/kernel/debug/gpdfan"
+
+## In the hwmon interface ($FANMONDIR/):
+_namefile="name"
+_rpmfile="fan1_input"
+_pwmsettingfile="pwm1"
+_controlmodefile="pwm1_enable"
+_pwmmodefile="pwm1_mode"
+_updateintervalfile="update_interval"
+
+## In debugfs ($DEBUGFSDIR/):
+_debugpwmsettingfile="pwm_reg"
+_debugcontrolmodefile="manual_control_reg"
+
 
 _action=show
 if [ "$#" -ge 1 ]; then
