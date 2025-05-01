@@ -5,7 +5,7 @@
 
 pkgname=leatherman
 pkgver=1.12.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('x86_64')
 url="https://github.com/puppetlabs/leatherman"
@@ -61,6 +61,7 @@ build() {
     -DBoost_NO_BOOST_CMAKE=ON \
     -DLEATHERMAN_SHARED=ON \
     -DLEATHERMAN_USE_ICU=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     ..
   make
 }
