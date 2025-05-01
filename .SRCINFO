@@ -45,6 +45,7 @@ pkgbase = aseprite
 	source = optional-pixman.patch
 	source = fix-shared-tinyxml2.patch
 	source = shared-libwebp-found.patch
+	source = include_cstdint.patch
 	sha256sums = c2e639c083d99a5a478ded7c86d9d7f4e4ff9ebebf6fedac7f8bfc94d6bd94c1
 	sha256sums = 8d76c1ad3693e1fc019eb14d806082148eb4ed7d601474aeeaae601b05a9b3ad
 	sha256sums = 8ee87f57b5792e5751f63fe37cdda8d29053cd4449e1f533e792e15abcfefa79
@@ -56,5 +57,6 @@ pkgbase = aseprite
 	sha256sums = c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654
 	sha256sums = ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3
 	sha256sums = 72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14
+	sha256sums = ce20c8caa61b0e4b478eb08853e1148eba76836027ec04cf5d0f76c4db9ae112
 
 pkgname = aseprite

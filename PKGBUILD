@@ -53,7 +53,8 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-skia-deps.patch
         optional-pixman.patch
         fix-shared-tinyxml2.patch
-        shared-libwebp-found.patch)
+        shared-libwebp-found.patch
+        include_cstdint.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('c2e639c083d99a5a478ded7c86d9d7f4e4ff9ebebf6fedac7f8bfc94d6bd94c1'
@@ -66,8 +67,9 @@ sha256sums=('c2e639c083d99a5a478ded7c86d9d7f4e4ff9ebebf6fedac7f8bfc94d6bd94c1'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654'
             'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3'
-            '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14')
-_debug="true"
+            '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14'
+            'ce20c8caa61b0e4b478eb08853e1148eba76836027ec04cf5d0f76c4db9ae112')
+_debug="false"
 prepare() {
 	# Extract Aseprite's sources
 	mkdir -p aseprite
@@ -96,6 +98,8 @@ prepare() {
 	env -C aseprite/third_party/TinyEXIF patch -tp1 <fix-shared-tinyxml2.patch
 	[[ -n $_debug ]] && echo shared-libwebp-found.patch
 	env -C aseprite patch -tp1 <shared-libwebp-found.patch
+	[[ -n $_debug ]] && echo include_cstdint.patch
+	patch -tp1 <include_cstdint.patch
 }
 
 build() {
@@ -127,29 +131,7 @@ build() {
 	#   skia_enable_{particles,skparagraph,sktext}: Aseprite does not link against this library.
 
 	# gn is bad software
-local _gn_args=(
-	is_official_build=true
-	skia_build_fuzzers=false
-	skia_enable_pdf=false
-	skia_enable_skottie=false
-	skia_enable_sksl=false
-	skia_enable_svg=false
-	skia_use_libjpeg_turbo_encode=false
-	skia_use_libjpeg_turbo_decode=false
-	skia_use_libwebp_encode=false
-	skia_use_libwebp_decode=false
-	skia_use_expat=false
-	skia_use_piex=false
-	skia_use_xps=false
-	skia_use_zlib=false
-	skia_use_libgifcodec=false
-	skia_enable_particles=false
-	skia_enable_skparagraph=false
-	skia_enable_sktext=false
-	cc="clang"
-	cxx="clang++"
-)
-	env -C skia gn gen "$_skiadir" --args="${_gn_args[@]}"
+	env -C skia gn gen "$_skiadir" --args='is_official_build=true skia_build_fuzzers=false skia_enable_pdf=false skia_enable_skottie=false skia_enable_sksl=false skia_enable_svg=false skia_use_libjpeg_turbo_encode=false skia_use_libjpeg_turbo_decode=false skia_use_libwebp_encode=false skia_use_libwebp_decode=false skia_use_expat=false skia_use_piex=false skia_use_xps=false skia_use_zlib=false skia_use_libgifcodec=false skia_enable_particles=false skia_enable_skparagraph=false skia_enable_sktext=false cc="clang" cxx="clang++"'
 	ninja -C "$_skiadir" skia modules
 
 	echo Building Aseprite...

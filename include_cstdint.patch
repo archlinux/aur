@@ -1,0 +1,23 @@
+diff --git a/aseprite/third_party/json11/json11.cpp b/aseprite/third_party/json11/json11.cpp
+index b16f409..9a45f8e 100644
+--- a/aseprite/third_party/json11/json11.cpp
++++ b/aseprite/third_party/json11/json11.cpp
+@@ -24,6 +24,7 @@
+ #include <cmath>
+ #include <cstdlib>
+ #include <cstdio>
++#include <cstdint>
+ #include <limits>
+
+ namespace json11 {
+diff --git a/skia/src/sksl/transform/SkSLTransform.h b/skia/src/sksl/transform/SkSLTransform.h
+index b2d1f90..6a34284 100644
+--- a/skia/src/sksl/transform/SkSLTransform.h
++++ b/skia/src/sksl/transform/SkSLTransform.h
+@@ -10,6 +10,7 @@
+
+ #include <memory>
+ #include <vector>
++#include <cstdint>
+
+ namespace SkSL {
