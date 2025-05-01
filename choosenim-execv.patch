@@ -1,0 +1,273 @@
+From 383d26e9d769390a788c65d2baa0fa492321a8da Mon Sep 17 00:00:00 2001
+From: Christopher Arndt <chris@chrisarndt.de>
+Date: Sun, 22 Sep 2024 18:07:14 +0200
+Subject: [PATCH 33/36] fix: use execv in proxyexe on posix
+
+Signed-off-by: Christopher Arndt <chris@chrisarndt.de>
+---
+ src/choosenimpkg/proxyexe.nim     | 60 ++++++++++++++++++++-----------
+ src/choosenimpkg/proxyexe.nim.cfg |  3 +-
+ 2 files changed, 41 insertions(+), 22 deletions(-)
+
+diff --git a/src/choosenimpkg/proxyexe.nim b/src/choosenimpkg/proxyexe.nim
+index aa2cf8e..b667af2 100644
+--- a/src/choosenimpkg/proxyexe.nim
++++ b/src/choosenimpkg/proxyexe.nim
+@@ -2,12 +2,21 @@
+ # ~/.nimble/bin/. It emulates a portable symlink with some nice additional
+ # features.
+ 
+-import strutils, os, osproc
++import strutils, os
+ 
+-import nimblepkg/[cli, options, version]
++import nimblepkg/cli
+ import nimblepkg/common as nimbleCommon
+ import cliparams, common
+ 
++when defined(windows) or not defined(useExec):
++  import std/osproc
++  import nimblepkg/[options, version]
++
++when defined(windows):
++  import winlean
++else:
++  import posix
++
+ proc getSelectedPath(params: CliParams): string =
+   var path = ""
+   try:
+@@ -21,36 +30,45 @@ proc getSelectedPath(params: CliParams): string =
+     let msg = "Unable to read $1. (Error was: $2)" % [path, exc.msg]
+     raise newException(ChooseNimError, msg)
+ 
+-proc getExePath(params: CliParams): string
++proc getExePath(params: CliParams): tuple[name, path: string]
+   {.raises: [ChooseNimError, ValueError].} =
+-  try:
+-    let exe = getAppFilename().extractFilename
+-    let exeName = exe.splitFile.name
++  let exe = getAppFilename().extractFilename
++  let exeName = exe.splitFile.name
++  result.name = exeName
+ 
++  try:
+     if exeName in mingwProxies and defined(windows):
+-      return getMingwBin(params) / exe
++      result.path = getMingwBin(params) / exe
+     else:
+-      return getSelectedPath(params) / "bin" / exe
++      result.path = getSelectedPath(params) / "bin" / exe
+   except Exception as exc:
+     let msg = "getAppFilename failed. (Error was: $1)" % exc.msg
+     raise newException(ChooseNimError, msg)
+ 
+ proc main(params: CliParams) {.raises: [ChooseNimError, ValueError].} =
+-  let exePath = getExePath(params)
+-  if not fileExists(exePath):
++  let exe = getExePath(params)
++  if not fileExists(exe.path):
+     raise newException(ChooseNimError,
+-        "Requested executable is missing. (Path: $1)" % exePath)
++        "Requested executable is missing. (Path: $1)" % exe.path)
+ 
+-  try:
+-    # Launch the desired process.
+-    let p = startProcess(exePath, args=commandLineParams(),
+-                         options={poParentStreams})
+-    let exitCode = p.waitForExit()
+-    p.close()
+-    quit(exitCode)
+-  except Exception as exc:
+-    raise newException(ChooseNimError,
+-        "Spawning of process failed. (Error was: $1)" % exc.msg)
++  # Launch the desired process.
++  when defined(useExec) and defined(posix):
++    let c_params = allocCStringArray(@[exe.name] & commandLineParams())
++    let res = execv(exe.path.cstring, c_params)
++    deallocCStringArray(c_params)
++    if res == -1:
++      raise newException(ChooseNimError,
++          "Exec of process $1 failed." % exe.path)
++  else:
++    try:
++      let p = startProcess(exe.path, args=commandLineParams(),
++                           options={poParentStreams})
++      let exitCode = p.waitForExit()
++      p.close()
++      quit(exitCode)
++    except Exception as exc:
++      raise newException(ChooseNimError,
++          "Spawning of process failed. (Error was: $1)" % exc.msg)
+ 
+ when isMainModule:
+   var error = ""
+diff --git a/src/choosenimpkg/proxyexe.nim.cfg b/src/choosenimpkg/proxyexe.nim.cfg
+index 9a2040c..fb8cece 100644
+--- a/src/choosenimpkg/proxyexe.nim.cfg
++++ b/src/choosenimpkg/proxyexe.nim.cfg
+@@ -1 +1,2 @@
+--d:useFork
+\ No newline at end of file
++-d:useFork
++-d:useExec
+\ No newline at end of file
+
+From 3a5c3996383f29f70a530ee99e6b21745ec6cda0 Mon Sep 17 00:00:00 2001
+From: Christopher Arndt <chris@chrisarndt.de>
+Date: Wed, 25 Sep 2024 20:54:21 +0200
+Subject: [PATCH 34/36] fix: use _execv in proxyexe on windows
+
+Signed-off-by: Christopher Arndt <chris@chrisarndt.de>
+---
+ src/choosenimpkg/proxyexe.nim | 40 ++++++++++++++++++++++-------------
+ 1 file changed, 25 insertions(+), 15 deletions(-)
+
+diff --git a/src/choosenimpkg/proxyexe.nim b/src/choosenimpkg/proxyexe.nim
+index b667af2..1fc1e0a 100644
+--- a/src/choosenimpkg/proxyexe.nim
++++ b/src/choosenimpkg/proxyexe.nim
+@@ -2,22 +2,35 @@
+ # ~/.nimble/bin/. It emulates a portable symlink with some nice additional
+ # features.
+ 
+-import strutils, os
++import std/[os, strutils]
+ 
+ import nimblepkg/cli
+ import nimblepkg/common as nimbleCommon
+ import cliparams, common
+ 
+-when defined(windows) or not defined(useExec):
++when not (defined(windows) or defined(posix)) or not defined(useExec):
+   import std/osproc
+-  import nimblepkg/[options, version]
+ 
+-when defined(windows):
+-  import winlean
+-else:
+-  import posix
++when defined(posix):
++  import std/posix
+ 
+-proc getSelectedPath(params: CliParams): string =
++
++when defined(useExec) and defined(windows):
++  proc msvcrt_execv(path: cstring, params: cstringArray): int64 {.importc: "_execv", header: "<process.h>", sideEffect.}
++
++proc exec*(path: string, params: seq[string]): int {.discardable.} =
++  var c_params = allocCStringArray(params)
++  defer: deallocCStringArray(c_params)
++
++  when defined(posix):
++    result = execv(path.cstring, c_params)
++  elif defined(windows):
++    result = msvcrt_execv(path.cstring, c_params).int
++  else:
++    raise newException(OSError, "OS does not support execv/_execv.")
++
++proc getSelectedPath*(params: CliParams): string
++  {.raises: [ChooseNimError, ValueError].} =
+   var path = ""
+   try:
+     path = params.getCurrentFile()
+@@ -30,7 +43,7 @@ proc getSelectedPath(params: CliParams): string =
+     let msg = "Unable to read $1. (Error was: $2)" % [path, exc.msg]
+     raise newException(ChooseNimError, msg)
+ 
+-proc getExePath(params: CliParams): tuple[name, path: string]
++proc getExePath*(params: CliParams): tuple[name, path: string]
+   {.raises: [ChooseNimError, ValueError].} =
+   let exe = getAppFilename().extractFilename
+   let exeName = exe.splitFile.name
+@@ -52,13 +65,10 @@ proc main(params: CliParams) {.raises: [ChooseNimError, ValueError].} =
+         "Requested executable is missing. (Path: $1)" % exe.path)
+ 
+   # Launch the desired process.
+-  when defined(useExec) and defined(posix):
+-    let c_params = allocCStringArray(@[exe.name] & commandLineParams())
+-    let res = execv(exe.path.cstring, c_params)
+-    deallocCStringArray(c_params)
++  when defined(useExec) and (defined(posix) or defined(windows)):
++    let res = exec(exe.path, @[exe.name] & commandLineParams())
+     if res == -1:
+-      raise newException(ChooseNimError,
+-          "Exec of process $1 failed." % exe.path)
++      raise newException(ChooseNimError, "Exec of process $1 failed." % exe.path)
+   else:
+     try:
+       let p = startProcess(exe.path, args=commandLineParams(),
+
+From 0199531dd874a7c340b5c1059668f88814696b5d Mon Sep 17 00:00:00 2001
+From: Christopher Arndt <chris@chrisarndt.de>
+Date: Sun, 20 Apr 2025 09:29:10 +0200
+Subject: [PATCH 35/36] fix: use correct compiler config for proxyexe tests
+
+Also don't define 'exec' proc if useExec is not set
+
+Signed-off-by: Christopher Arndt <chris@chrisarndt.de>
+---
+ src/choosenimpkg/proxyexe.nim | 28 ++++++++++++++--------------
+ tests/test_proxyexe.nim.cfg   |  2 ++
+ 2 files changed, 16 insertions(+), 14 deletions(-)
+ create mode 100644 tests/test_proxyexe.nim.cfg
+
+diff --git a/src/choosenimpkg/proxyexe.nim b/src/choosenimpkg/proxyexe.nim
+index 1fc1e0a..c67020c 100644
+--- a/src/choosenimpkg/proxyexe.nim
++++ b/src/choosenimpkg/proxyexe.nim
+@@ -14,20 +14,20 @@ when not (defined(windows) or defined(posix)) or not defined(useExec):
+ when defined(posix):
+   import std/posix
+ 
+-
+-when defined(useExec) and defined(windows):
+-  proc msvcrt_execv(path: cstring, params: cstringArray): int64 {.importc: "_execv", header: "<process.h>", sideEffect.}
+-
+-proc exec*(path: string, params: seq[string]): int {.discardable.} =
+-  var c_params = allocCStringArray(params)
+-  defer: deallocCStringArray(c_params)
+-
+-  when defined(posix):
+-    result = execv(path.cstring, c_params)
+-  elif defined(windows):
+-    result = msvcrt_execv(path.cstring, c_params).int
+-  else:
+-    raise newException(OSError, "OS does not support execv/_execv.")
++when defined(useExec):
++  when defined(windows):
++    proc msvcrt_execv(path: cstring, params: cstringArray): int64 {.importc: "_execv", header: "<process.h>", sideEffect.}
++
++  proc exec*(path: string, params: seq[string]): int {.discardable.} =
++    var c_params = allocCStringArray(params)
++    defer: deallocCStringArray(c_params)
++
++    when defined(posix):
++      result = execv(path.cstring, c_params)
++    elif defined(windows):
++      result = msvcrt_execv(path.cstring, c_params).int
++    else:
++      raise newException(OSError, "OS does not support execv/_execv.")
+ 
+ proc getSelectedPath*(params: CliParams): string
+   {.raises: [ChooseNimError, ValueError].} =
+diff --git a/src/choosenimpkg/proxyexe.nim b/src/choosenimpkg/proxyexe.nim
+index c67020c..3e959f7 100644
+--- a/src/choosenimpkg/proxyexe.nim
++++ b/src/choosenimpkg/proxyexe.nim
+@@ -83,7 +83,7 @@ proc main(params: CliParams) {.raises: [ChooseNimError, ValueError].} =
+ when isMainModule:
+   var error = ""
+   var hint = ""
+-  var params = newCliParams(proxyExeMode = true)
++  var params: CliParams
+   try:
+     parseCliParams(params, proxyExeMode = true)
+     main(params)
+diff --git a/tests/config.nims b/tests/config.nims
+new file mode 100644
+index 0000000..80091ff
+--- /dev/null
++++ b/tests/config.nims
+@@ -0,0 +1 @@
++switch("path", "$projectDir/../src")
