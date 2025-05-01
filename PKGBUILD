@@ -1,7 +1,7 @@
 # Maintainer: Da4ndo <contact@da4ndo.com>
 
 pkgname=hyprproxlock-git
-pkgver=0.1.0.r7.g15b34fc
+pkgver=0.1.1.r8.gfa86c66
 pkgrel=1
 pkgdesc="A proximity-based daemon for Hyprland that triggers screen locking and unlocking through hyprlock based on Bluetooth device proximity. (Git version)"
 arch=(x86_64)
