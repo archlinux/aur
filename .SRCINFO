@@ -1,7 +1,7 @@
 pkgbase = geforce-infinity-bin
 	pkgdesc = A work-in-progress application designed to enhance the GeForce NOW experience.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://geforce-infinity.xyz/
 	arch = x86_64
 	license = MIT

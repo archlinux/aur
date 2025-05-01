@@ -3,7 +3,7 @@ pkgname=geforce-infinity-bin
 _pkgname=GeForceInfinity
 pkgver=1.0.0
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="A work-in-progress application designed to enhance the GeForce NOW experience.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://geforce-infinity.xyz/"
@@ -25,18 +25,18 @@ source=(
 sha256sums=('b180b12ac6feba152d14e915cfdddaa605ae70ec1d8b299672c09724a1c88138'
             '669b46a31342a99549197ed97fac42000bbfe178114b2d6843aa08f6902b11a1'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
         s/\/opt\/${_pkgname}\/resources\/infinitylogo\.ico/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
