@@ -1,7 +1,7 @@
 pkgbase = units
 	pkgdesc = converts between different units
 	pkgver = 2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/units/units.html
 	arch = x86_64
 	arch = aarch64

@@ -1,4 +1,5 @@
 # Maintainer: tarball <bootctl@gmail.com>
+# Contributor: ModelHX
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
@@ -6,7 +7,7 @@
 
 pkgname=units
 pkgver=2.24
-pkgrel=1
+pkgrel=2
 pkgdesc="converts between different units"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url="https://www.gnu.org/software/units/units.html"
@@ -29,7 +30,10 @@ sha256sums=('1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902'
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --datadir=/usr/share --sharedstatedir=/var/lib
+
+  # gcc15 compatibility fix
+  CFLAGS="$CFLAGS -std=gnu17" \
+    ./configure --prefix=/usr --datadir=/usr/share --sharedstatedir=/var/lib
 
   # /usr/bin/pager seems to be a Debian-ism; it is not provided by any of the
   # packages shipped with Arch Linux. Replace it with less, which, according to
