@@ -2,7 +2,7 @@
 # Contributor: Jonatan R. Fischer <jonafischer at gmail dot com>
 pkgname=c3c-bin
 _pkgname=c3c
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="C3 is an evolution of C enabling the same paradigms and retaining the same syntax as far as possible. Stable Release"
 arch=(x86_64)
@@ -14,21 +14,20 @@ provides=('c3c')
 conflicts=('c3c' 'c3c-git')
 source=("https://github.com/c3lang/c3c/releases/download/v$pkgver/c3-linux.tar.gz")
 
-md5sums=('d84f2187d13caa000bd6f8665f6057f9')
+md5sums=('3dedaaca1e9b895a9a2f954c34361d05')
 
 pkgver() {
-    cd "${srcdir}/c3"
-    ./c3c -V | grep "C3 Compiler Version" | tr -s " " | cut -f 2 -d ':' | cut -f 2 -d " "
+  cd "${srcdir}/c3"
+  ./c3c -V | grep "C3 Compiler Version" | tr -s " " | cut -f 2 -d ':' | cut -f 2 -d " "
 }
 
 package() {
-    cd "${srcdir}/c3/"
+  cd "${srcdir}/c3/"
 
-    install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/lib/${_pkgname}"
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/usr/lib/${_pkgname}"
 
-    cp "${srcdir}/c3/c3c" "${pkgdir}/usr/lib/${_pkgname}/c3c"
-    cp -r "${srcdir}/c3/lib" "${pkgdir}/usr/lib/${_pkgname}/lib"
-    ln -s "/usr/lib/${_pkgname}/c3c" "${pkgdir}/usr/bin/c3c"
+  cp "${srcdir}/c3/c3c" "${pkgdir}/usr/lib/${_pkgname}/c3c"
+  cp -r "${srcdir}/c3/lib" "${pkgdir}/usr/lib/${_pkgname}/lib"
+  ln -s "/usr/lib/${_pkgname}/c3c" "${pkgdir}/usr/bin/c3c"
 }
-
