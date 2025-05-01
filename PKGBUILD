@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=v1.25.1.r18.g642bc34
+pkgver=v1.25.2.r18.g4013ed4
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities (Git)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL-2.0-only')
 provides=(bcachefs-tools)
 conflicts=(bcachefs-tools)
 depends=(
+  git
   bash
-  fuse3
   gcc-libs
   libaio.so libaio
   libblkid.so libuuid.so util-linux-libs
@@ -26,6 +26,7 @@ depends=(
   udev
 )
 makedepends=(
+  git
   cargo
   clang
   llvm
@@ -52,7 +53,7 @@ build() {
     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
-    BCACHEFS_FUSE=1 make \
+    make \
         LIBEXECDIR=/usr/lib \
         DESTDIR="${pkgdir}" \
         ROOT_SBINDIR="/usr/bin" \
@@ -66,7 +67,7 @@ package() {
     export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
     export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
-    BCACHEFS_FUSE=0 make \
+    make \
         PREFIX="/usr" \
         LIBEXECDIR=/usr/lib \
         DESTDIR="${pkgdir}" \
