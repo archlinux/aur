@@ -4,7 +4,7 @@
 
 pkgname=netradiant-git
 pkgver=r2560.61c2308a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
@@ -34,6 +34,9 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
+
+    # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/196
+    export CFLAGS+=" -std=gnu17"
 
     # Workaround for https://gitlab.com/xonotic/netradiant/-/issues/194
     export CFLAGS+=" -Wno-error=incompatible-pointer-types"
