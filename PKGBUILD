@@ -4,12 +4,12 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2354.gadef81b
+pkgver=4.3.r2375.g653bd04
 pkgrel=1
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
 arch=(aarch64 arm armv6h armv7h i686 x86_64)
-url=https://tvheadend.org/
+url=https://tvheadend.org
 license=(GPL-3.0-or-later)
 depends=(
   avahi ffmpeg libdvbcsa libfdk-aac libogg libtheora libvorbis libvpx
@@ -26,10 +26,11 @@ source=(
   tmpfile.conf
   tvheadend.service
   user.conf)
-sha256sums=('SKIP'
-            'b01fa913421e67e40bc1aa5da079e30cb1d8c20913133ded1ad651d6ce84b9b6'
-            'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
-            '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
+sha256sums=(
+  'SKIP'
+  'b01fa913421e67e40bc1aa5da079e30cb1d8c20913133ded1ad651d6ce84b9b6'
+  'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
+  '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
 
 _print_libav_option() {
   local ffmpeg_supported ffmpeg_installed libav_option
@@ -83,7 +84,9 @@ build() {
     --enable-zlib \
     --mandir=/usr/share/man/man1 \
     --prefix=/usr \
-    --python=python3
+    --python=python3 \
+    \
+    --cflags='-Wno-format-truncation' # --nowerror
 
   make
 }

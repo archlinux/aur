@@ -1,5 +1,5 @@
-/pkg
-/src
-/*.pkg.tar.zst
+/pkg/
+/src/
+/tvheadend-git/
 /*.log
-/tvheadend-git
+/*.pkg.tar.zst
