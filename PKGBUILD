@@ -2,11 +2,11 @@
 # Contributor: Metal A-wing <1 at 233 dot email>
 # Contributor: Rocka <i at Rocka dot me>
 pkgname=electron-netease-cloud-music-git
-_pkgname="Electron Netease Cloud Music"
-_shortname="Electron NCM"
-pkgver=0.9.39.r4.g5e51120
-_electronversion=33
-_nodeversion=20
+_pkgname='Electron Netease Cloud Music'
+_shortname='Electron NCM'
+pkgver=0.9.40.r0.g2f17c16
+_electronversion=35
+_nodeversion=23
 pkgrel=1
 pkgdesc="UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.Use system-wide electron."
 arch=('any')
@@ -46,14 +46,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname%-git} %U"
     cd "${srcdir}/${pkgname%-git}.git"
@@ -75,12 +75,16 @@ build() {
             echo 'linkWorkspacePackages true'
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
+            echo 'networkConcurrency 10'
         } >> .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
-    rm -rf build dist node_modules
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run dist
     NODE_ENV=production     yarn run build
 }
