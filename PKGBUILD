@@ -1,7 +1,7 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.2.8
-_webkitver=ef31d98a1370e01b7483cabcbe3593d055bea982 #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
+pkgver=1.2.11
+_webkitver=11b10bb50bd69481fe4c7a4dd075eea4755b3fee #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
@@ -9,12 +9,12 @@ url="https://github.com/oven-sh/bun"
 license=('GPL')
 #depends=(c-ares libarchive libuv mimalloc tcc zlib zstd)
 makedepends=(
-	ccache clang cmake3 git go icu75 libdeflate libiconv libtool lld llvm ninja nodejs mold pkg-config python ruby rust unzip yarn
+	ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja nodejs mold pkg-config python ruby ruby-getoptlong rust unzip yarn
 )
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
         brotliFlag.patch)
-b2sums=('7d32bb343dfe73976a552f6a13125da2dcf40ca4380d5d6cd90171c271fe1691431380de9841c7ae0e7c34d6291a7bf989e5e35cd437116dd692fbc13f509f2b'
+b2sums=('37ddf15bd16b7fcfb99794ae023b2eeec1249f4655c9341d725254cb0151469189cb7e0d574c1438499e002f9e20f3dfe24a7e9b96df8dd21d60fbdd9eb12d96'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
 options=(ccache lto)
 
@@ -39,11 +39,13 @@ prepare() {
 
 build() {
   # export PATH="$/usr/lib/llvm18/bin/:$PATH"
+  export CMAKE_POLICY_VERSION_MINIMUM=3.30
   mkdir -p ./build
 
   build_webkit
 
   # CXXFLAGS="-Wno-unused-result ${CXXFLAGS}" bun run build
+
 
   rm -vf build/CMakeCache.txt
   cd bun
