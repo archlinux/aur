@@ -1,19 +1,16 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
-_Name="Cursor"
-_name="${_Name,,}"
-pkgname="${_name}-electron"
+pkgname=cursor-electron
 pkgver=0.49.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The AI Code Editor"
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('custom:Proprietary') #should be fixed
 depends=('bash' 'gcc-libs' 'glibc' 'hicolor-icon-theme'
          'libx11' 'libxkbfile')
-provides=("${_name}")
-conflicts=("${_name}")
-_pkgsrc="${_name}-${pkgver}"
+provides=(cursor)
+conflicts=(cursor)
 source=("src.iso::https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/linux/x64/Cursor-${pkgver}-${arch}.AppImage")
 b2sums=('SKIP')
 options=(!strip) #about 6.67MB strippable
@@ -23,7 +20,7 @@ prepare() {
 }
 
 package(){
-	install -d "${pkgdir}/usr/share/cursor/resources"
+	install -d "${pkgdir}"/usr/share/cursor/resources
     # Pick up resources
 	mv squashfs-root/usr/share/{appdata,applications,bash-completion,icons,mime,zsh} "${pkgdir}/usr/share"
 	mv squashfs-root/usr/share/cursor/resources/app "${pkgdir}/usr/share/cursor/resources/app"
@@ -37,4 +34,6 @@ package(){
     echo -e "#!/bin/sh\nexec ${_elbin} --app=/usr/share/cursor/resources/app \$@" > run.sh
     install -Dm755 run.sh "${pkgdir}/usr/bin/cursor"
     ln -sf /usr/bin/cursor "${pkgdir}/usr/share/cursor/cursor"
+	# License
+	install -Dm644 /usr/share/cursor/resources/app/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
