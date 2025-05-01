@@ -2,7 +2,7 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 _pkgname=librw
 pkgname=$_pkgname-git
-pkgver=r557.05db81b
+pkgver=r569.169a45a
 pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'glfw>=3.3.7' 'glibc')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=${pkgver#r}" 'librw.so')
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" 'rankwidth')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
@@ -20,17 +20,25 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd $_pkgname
+	# fix re3 disco bug
+	git revert -n f7e7841e1c9a92cc5df8c191979f92cb2a5c4d7e
+}
+
 build() {
-	cmake -S $_pkgname -B build \
-		-DBUILD_SHARED_LIBS=ON \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DLIBRW_GL3_GFXLIB=GLFW \
-		-DLIBRW_PLATFORM=GL3 \
-		-DLIBRW_TOOLS=OFF \
+	local options=(
+		-D BUILD_SHARED_LIBS=ON
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D LIBRW_GL3_GFXLIB=GLFW
+		-D LIBRW_PLATFORM=GL3
+		-D LIBRW_TOOLS=OFF
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
