@@ -2,12 +2,13 @@
 
 pkgname=python-alpm-conf
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='ArchLinux tool to manage /etc configuration files using git'
 arch=('any')
 url='https://gitlab.com/xdegaye/alpm-conf'
 license=('MIT')
-depends=('git' 'util-linux' 'alpm-mtree' 'python' 'pyalpm' 'python-zstandard' 'python-flit-core')
+depends=('git' 'util-linux' 'alpm-mtree' 'python>=3.12' 'pyalpm'
+         'python-zstandard' 'python-flit-core')
 makedepends=('python-build' 'python-installer' 'python-sphinx' 'gzip')
 checkdepends=()
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")

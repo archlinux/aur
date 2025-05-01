@@ -12,7 +12,7 @@ pkgbase = python-alpm-conf
 	depends = git
 	depends = util-linux
 	depends = alpm-mtree
-	depends = python
+	depends = python>=3.12
 	depends = pyalpm
 	depends = python-zstandard
 	depends = python-flit-core
