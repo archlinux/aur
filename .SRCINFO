@@ -1,7 +1,7 @@
 pkgbase = coreboot-utils
 	pkgdesc = Tools and utilities to work with coreboot firmware
 	pkgver = 24.05
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.coreboot.org
 	arch = x86_64
 	license = GPL-2.0-only
@@ -51,6 +51,12 @@ pkgname = ectool
 
 pkgname = ifdtool
 	pkgdesc = Extract and dump Intel Firmware Descriptor information
+	depends = glibc
+	depends = pciutils
+	depends = zlib
+
+pkgname = intelmetool
+	pkgdesc = Dump interesting things about Management Engine
 	depends = glibc
 	depends = pciutils
 	depends = zlib

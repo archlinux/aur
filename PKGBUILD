@@ -9,7 +9,7 @@ pkgname=(
 #  'coreboot-configurator'  # use StarLabs fork: https://support.starlabs.systems/kb/guides/coreboot-configurator
   'ectool'
   'ifdtool'
-#  'intelmetool' # merge standalone AUR package
+  'intelmetool'
   'inteltool'
   'intelvbttool'
   'me_cleaner'
@@ -20,7 +20,7 @@ pkgname=(
 )
 pkgbase=coreboot-utils
 pkgver=24.05
-pkgrel=3
+pkgrel=4
 pkgdesc="Tools and utilities to work with coreboot firmware"
 url="https://www.coreboot.org"
 license=('GPL-2.0-only')
