@@ -1,0 +1,13 @@
+pkgbase = pretendard-jp
+	pkgdesc = A cross-platform multilingual sans-serif font mainly for Japanese support
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://github.com/orioncactus/pretendard
+	arch = any
+	license = OFL
+	source = https://github.com/orioncactus/pretendard/releases/download/v1.3.9/PretendardJP-1.3.9.zip
+	sha256sums = 8dab678c371a1530106ca643b76b2b80d47653d5ba670b01265b48e4c6615d63
+
+pkgname = otf-pretendard-jp
+
+pkgname = ttf-pretendard-jp
