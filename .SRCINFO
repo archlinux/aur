@@ -1,7 +1,7 @@
 pkgbase = kanzi-git
-	pkgdesc = Modern, modular, portable and efficient lossless data compressor and decompressor (latest git commit)
+	pkgdesc = Modern, modular, portable and efficient lossless data compressor and decompressor (development version)
 	pkgver = 2.3.0.r216.gb6ec9e05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flanglet/kanzi-cpp
 	arch = aarch64
 	arch = x86_64

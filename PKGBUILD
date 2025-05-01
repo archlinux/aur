@@ -5,8 +5,8 @@
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
 pkgver=2.3.0.r216.gb6ec9e05
-pkgrel=2
-pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (latest git commit)'
+pkgrel=3
+pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/flanglet/kanzi-cpp'
 source=("$_pkgname::git+$url.git")
