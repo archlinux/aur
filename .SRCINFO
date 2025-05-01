@@ -1,6 +1,6 @@
 pkgbase = openra-wts-git
 	pkgdesc = OpenRA built from latest git commit and with the experimental Tiberian Sun mod included.
-	pkgver = 30318.git.cdef641
+	pkgver = 30397.git.56c615d
 	pkgrel = 1
 	url = https://www.openra.net
 	install = openra-wts-git.install
@@ -8,7 +8,7 @@ pkgbase = openra-wts-git
 	license = GPL3
 	makedepends = git
 	makedepends = unzip
-	depends = dotnet-sdk-8.0
+	depends = dotnet-sdk-8.0.300-bin
 	depends = ttf-dejavu
 	depends = openal
 	depends = libgl

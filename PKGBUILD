@@ -1,14 +1,14 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-wts-git
-pkgver=30318.git.cdef641
+pkgver=30397.git.56c615d
 pkgrel=1
 pkgdesc="OpenRA built from latest git commit and with the experimental Tiberian Sun mod included."
 arch=('x86_64')
 url="https://www.openra.net"
 license=('GPL3')
 install=${pkgname}.install
-depends=('dotnet-sdk-8.0' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
+depends=('dotnet-sdk-8.0.300-bin' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
 makedepends=('git' 'unzip')
 conflicts=('openra' 'openra-bleed' 'openra-git')
