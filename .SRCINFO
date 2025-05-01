@@ -1,6 +1,6 @@
 pkgbase = bbmap
 	pkgdesc = A short read aligner and other bioinformatic tools
-	pkgver = 39.23
+	pkgver = 39.24
 	pkgrel = 1
 	url = https://jgi.doe.gov/data-and-tools/bbtools/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bbmap
 	optdepends = env-modules: for any scripts requiring `module`
 	optdepends = pigz: for parallel GZIP (de)compression
 	optdepends = samtools: for BAM output
-	source = bbmap-39.23.tar.gz::https://downloads.sourceforge.net/project/bbmap/BBMap_39.23.tar.gz
-	sha256sums = 1a6ec22bc8269b701b73617bcd1d67cc9f98d8539b70f253605ae9888538f3d3
+	source = bbmap-39.24.tar.gz::https://downloads.sourceforge.net/project/bbmap/BBMap_39.24.tar.gz
+	sha256sums = 91d836dcd42227053f5bfb1f7137e7e51bb9f9b7e7e63e093c7a21c5306de821
 
 pkgname = bbmap
