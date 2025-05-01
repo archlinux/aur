@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 1.4.1 ➙ 2.1.0
-              : 2025-04-26 ➙ 2025-04-30
+ Tags         : 1.5.0 ➙ 2.2.0
+              : 2025-04-26 ➙ 2025-05-01
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-05-01   : 2.2.0
+                PEP 561 type hints (module users using mypy etc get type hints)
+                Update status to Production/Stable
+ 2025-04-30     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
 
  2025-04-30   : 2.1.0
                 Bug fix returning stdout string from subprocess
@@ -27,9 +32,3 @@
                 Style per PEP-8, PEP-257 and PEP-484.
                 Bug fix with stdout/stderr returned for asyncio using subprocesses
                 update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2025-04-26   : 1.4.1
-                More consistent with PEP-8 & PEP-257.
-                  Primarily double quotes for docstrings instead of single and ensure ends
-                  with period.
- 2025-04-25     update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
