@@ -19,7 +19,7 @@ sha256sums=('7b536dc6f1bdc6d9bec7c29b9435c23d9d32bff8a0ebee26b9966b273dc9f67e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  CFLAGS="$CFLAGS -std=gnu17" ./configure --prefix=/usr
   make
 }
 
