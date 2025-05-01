@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lean4-bin
-pkgver=4.18.0
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="An interactive theorem prover"
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,9 +14,9 @@ options=('staticlibs')
 source_i686=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-$pkgver-linux_x86.tar.zst")
 source_x86_64=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-$pkgver-linux.tar.zst")
 source_aarch64=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-$pkgver-linux_aarch64.tar.zst")
-sha256sums_i686=('219a45460027e7f49d4ee0d608a55568346ea3d5dd5a2d0f2850696def9ae4d2')
-sha256sums_x86_64=('567725f83133b7449dbfc6eb87bbc31f1c4df8d035687d17f07e46ce78a27980')
-sha256sums_aarch64=('75be1e8b909dc197341aa130a3c18789b3c4f84a2dd59357aca08cc7796ab469')
+sha256sums_i686=('5edd304a3313cc22f2c5085056dbdbdb39c46b4be69d475a7ad21dbe9d1c17b7')
+sha256sums_x86_64=('6fe3ce97a58f44e2b3567d455b994eacec5bfe9ae7774f2a573444480ba813fe')
+sha256sums_aarch64=('f19136d56bc3a5dc9af21edc88e64256c192d3f42c3e872dbeb30e392d7ad206')
 
 
 package() {
