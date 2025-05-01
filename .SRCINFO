@@ -1,0 +1,18 @@
+pkgbase = msty-rocm
+	pkgdesc = The easiest way to use local and online AI models
+	pkgver = 1
+	pkgrel = 1
+	url = https://msty.app
+	arch = x86_64
+	license = custom
+	conflicts = msty-rocm
+	conflicts = msty-bin
+	options = !strip
+	source = msty-rocm-bin-1.AppImage::https://assets.msty.app/prod/latest/linux/rocm/Msty_x86_64_rocm.AppImage
+	source = msty-rocm.desktop
+	source = msty-rocm.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = msty-rocm-bin

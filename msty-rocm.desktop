@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Msty
+Comment=The easiest way to use local and online AI models
+Exec=/usr/bin/msty-rocm
+Icon=/usr/share/icons/hicolor/256x256/apps/msty-rocm.png
+Categories=Utility;
