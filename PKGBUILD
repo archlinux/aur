@@ -1,4 +1,5 @@
-# Maintainer:  Antoni Przybylik <antoni.przybylik@wp.pl>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Antoni Przybylik <antoni.przybylik@wp.pl>
 # Contributor: Yuval Adam <yuval at y3xz dot com>
 
 pkgname=libosmo-dsp
