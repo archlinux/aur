@@ -1,0 +1,6 @@
+[kcaldav]
+source = "htmlparser"
+url = "https://kristaps.bsd.lv/kcaldav/snapshots/"
+xpath = "/html/body/table/tbody/tr/td/a[starts-with(@href, 'kcaldav-') and not(contains(@href, '.sha512'))]"
+from_pattern = 'kcaldav-([\d.]+)\.tgz'
+to_pattern = '\1'
