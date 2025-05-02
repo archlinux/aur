@@ -6,23 +6,36 @@
 
 _pkgname='yin-yang'
 pkgname="$_pkgname-git"
-pkgver=3.3.r9.gde1f3eb
+pkgver=4.0.r0.g5ad9cee
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
 arch=('any')
 
+depends=(
+  'python'
+)
 makedepends=(
   'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+  'python-poetry'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  sed -e "s&/opt/&$_site_packages/&" -i "$_pkgsrc"/resources/yin_yang.json
+}
 
 pkgver() {
   cd "$_pkgsrc"
@@ -30,40 +43,47 @@ pkgver() {
     | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build() {
+  cd "$_pkgsrc"
+  python -m build --wheel --no-isolation --skip-dependency-check
+}
+
 package() {
   depends+=(
-    'hicolor-icon-theme'
     'pyside6'
+    'python-dateutil'
     'python-psutil'
-    'python-suntime'
+    'python-requests'
+    'python-suntime' # AUR
     'python-systemd'
     'qt6-positioning'
   )
 
   cd "$_pkgsrc"
-
-  # fix permissions
-  find . -type f -exec chmod 644 {} \;
-
-  # copy files
-  mkdir -p "$pkgdir/opt/yin-yang"
-  cp --reflink=auto -r ./{designer,resources,yin_yang} "$pkgdir/opt/yin-yang/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # manifest for firefox extension
   install -Dm644 resources/yin_yang.json -t "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
 
-  # script
-  install -Dm755 resources/yin-yang -t "$pkgdir/usr/bin/"
-
-  # desktop file
-  install -Dm644 resources/Yin-Yang.desktop "$pkgdir/usr/share/applications/yin-yang.desktop"
+  # launcher
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=Yin & Yang
+Comment=$pkgdesc
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
+Categories=Utility;System;Settings
+Keywords=night;day;dark;light;color;theme;
+END
 
   # icon
-  install -Dm644 resources/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/yin_yang.svg"
+  install -Dm644 resources/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 
   # systemd unit files
   install -Dm644 resources/yin_yang.service -t "$pkgdir//usr/lib/systemd/user/"
-  install -Dm644 resources/yin_yang.timer   -t "$pkgdir//usr/lib/systemd/user/"
+  install -Dm644 resources/yin_yang.timer -t "$pkgdir//usr/lib/systemd/user/"
 
   # license
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
