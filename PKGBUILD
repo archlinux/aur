@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-sk
-_srctag=v1.0.1
+_srctag=v1.0.2
 pkgver=${_srctag#v}
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
@@ -14,7 +14,7 @@ depends=('acpica'
          'swh-plugins')
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/honjow/device-quirks.git#tag=${_srctag}")
-sha256sums=('a7f32462a225548a9f23aa76367dba6c995b6cfb612a0c52b999e38a5ae35079')
+sha256sums=('53297a052c74e1963fe66d1baa5dcd8c0e088fe2c2d3fa2d2209e5c96abecd8b')
 backup=("etc/device-quirks/device-quirks.conf")
 provides=("${_pkgbase}-git")
 conflicts=("${_pkgbase}-git" "${_pkgbase}-sk-git")
