@@ -2,9 +2,9 @@
 # Contributor: Thor K. Høgås <thor that-circular-a roht dot no>
 
 pkgname='omnetpp-preview'
+_pkgname='omnetpp'
 pkgver=6.1rc1
 pkgrel=1
-_pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: preview version'
 arch=('x86_64')
 url='http://www.omnetpp.org'
@@ -43,8 +43,8 @@ makedepends=('wget'
 optdepends=('osgearth: geospatial API with 3D rendering')
 provides=('omnetpp')
 conflicts=('omnetpp')
-replaces=('omnetpp-qt')
 install=omnetpp-preview.install
+replaces=('omnetpp-qt')
 
 source=(OMNeT++.desktop
         omnetpp.sh
@@ -73,18 +73,20 @@ package() {
 	mv  "${_pkgname}-${_pkgname}-${pkgver}" ${pkgdir}/opt/${_pkgname} || return 1
 
 	# run OMNeT++ as a normal user
+  mkdir -p ${pkgdir}/opt/${_pkgname}/ide
 	touch ${pkgdir}/opt/${_pkgname}/ide/error.log
 	chmod 777 ${pkgdir}/opt/${_pkgname}/ide/error.log
 
 	# copy profile.d file
-	mkdir -p ${pkgdir}/etc/profile.d/
+	mkdir -p ${pkgdir}/etc/profile.d
 	cp omnetpp.sh ${pkgdir}/etc/profile.d/
-	
+
 	# copy desktop shortcut
 	mkdir -p ${pkgdir}/usr/share/applications/
 	cp OMNeT++.desktop ${pkgdir}/usr/share/applications/
 
 	# Install License
+	mkdir -p ${pkgdir}/opt/${_pkgname}/doc
 	cd ${pkgdir}/opt/${_pkgname}/doc
 	install -D -m644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
