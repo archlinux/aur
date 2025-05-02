@@ -1,7 +1,7 @@
 pkgbase = jbofihe-git
-	pkgdesc = Tools to operate on Lojban text (main feature: approximate translation to English)
+	pkgdesc = Tools to operate on Lojban text. main feature: approximate translation to English (development version)
 	pkgver = 0.43.19.gcc6fe66
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = https://github.com/lojban/jbofihe
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = jbofihe-git
 	makedepends = git
 	makedepends = perl
 	depends = glibc
-	options = lto
 	options = !makeflags
 	source = git+https://github.com/lojban/jbofihe.git
 	sha256sums = SKIP
