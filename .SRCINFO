@@ -1,7 +1,7 @@
 pkgbase = komelia
 	pkgdesc = Komga media client
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Snd-R/Komelia
 	arch = x86_64
 	license = Apache-2.0
@@ -14,6 +14,7 @@ pkgbase = komelia
 	makedepends = webkit2gtk-4.1
 	depends = java-runtime>=17
 	depends = libvips
+	depends = org.freedesktop.secrets
 	optdepends = webkit2gtk-4.1: epub reader support
 	source = git+https://github.com/Snd-R/Komelia.git#commit=a433d427213b70953b315a152ae2e6f8822aeadb
 	source = git+https://github.com/Snd-R/ChipTextField.git#commit=a06f5f356cd0daa698404808100eade87d2614d8

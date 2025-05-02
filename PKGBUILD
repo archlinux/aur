@@ -1,12 +1,12 @@
 # Maintainer: Snd <snd.scrape (at) gmail dot com>
 pkgname=komelia
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Komga media client"
 arch=('x86_64')
 url="https://github.com/Snd-R/Komelia"
 license=('Apache-2.0')
-depends=('java-runtime>=17' 'libvips')
+depends=('java-runtime>=17' 'libvips' 'org.freedesktop.secrets')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'npm' 'gradle' 'webkit2gtk-4.1')
 optdepends=(
 	'webkit2gtk-4.1: epub reader support'
