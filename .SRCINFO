@@ -1,7 +1,7 @@
 pkgbase = omnissa-horizon-client
 	pkgdesc = Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop
 	pkgver = 2503
-	pkgrel = 2
+	pkgrel = 3
 	url = https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/omnissa_horizon_clients/8
 	arch = x86_64
 	license = custom
@@ -26,7 +26,7 @@ pkgname = omnissa-horizon-client
 	depends = libffi
 	depends = libsigc++
 	depends = libudev0-shim
-	depends = libxml2
+	depends = libxml2-legacy
 	depends = libxss
 	depends = libxtst
 	depends = openssl
