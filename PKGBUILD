@@ -2,7 +2,7 @@
 
 pkgname=ros2-kilted-base
 pkgver=2025.04.30
-pkgrel=1
+pkgrel=2
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -10,7 +10,6 @@ pkgdesc="A set of software libraries and tools for building robot applications (
 url="https://index.ros.org/p/ros_base/#${_rosdist_short}"
 arch=('any')
 license=('Apache-2.0')
-options=(!lto)  # https://github.com/ros2/rmw_zenoh/issues/624
 depends=(
     'asio'
     'bullet'
@@ -48,6 +47,7 @@ source=(
     "urdfdom_cstdint.patch"
     "mcap_vendor_cstdint.patch"
     "rosidl_cstdint.patch::https://github.com/ros2/rosidl/pull/864.patch"
+    "zenoh_cpp_vendor_lto_tls.patch"
 )
 sha256sums=('5f2dd065cac38c0f006002b932d1b148021ce0426e92751eee90a81b885b96c8'
             '5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99'
@@ -56,7 +56,12 @@ sha256sums=('5f2dd065cac38c0f006002b932d1b148021ce0426e92751eee90a81b885b96c8'
             '42228a501fb2647c5c127906eed329145d4a1d81fe626e50e80c6a4cc53729e3'
             '4f453203b46ab40b5b9611eceb1b006af2a9b0b8d11a402a05fe225c5da1a8f3'
             'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
-            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c')
+            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c'
+            'f0652c312b34ef92e91bf0f3e733507b29c8722bc24365295ddbd7608d4160fd')
+
+# Uncomment this if zenoh/transport_tls is needed in zenoh_cpp_vendor
+# TODO: find a way to disable LTO for only the zenoh_cpp_vendor package
+#options=(!lto)
 
 prepare() {
     # Clone the repos
@@ -67,6 +72,7 @@ prepare() {
     printf "Patching sources\n"
 
     # https://github.com/ros/urdfdom/pull/205
+    # https://github.com/ros/urdfdom/issues/215
     git -C "$srcdir/ros2/src/ros/urdfdom" checkout .
     git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 483ff92a7e631283117ca3d421d58e146c8b6d21
     git -C "$srcdir/ros2/src/ros/urdfdom" apply "$srcdir/urdfdom_cstdint.patch"
@@ -87,6 +93,13 @@ prepare() {
     # https://github.com/ros2/rosidl/pull/864
     git -C "$srcdir/ros2/src/ros2/rosidl" checkout .
     git -C "$srcdir/ros2/src/ros2/rosidl" apply "$srcdir/rosidl_cstdint.patch"
+
+    # Disable the zenoh/transport_tls feature (TLS/QUIC secure transports)
+    # This is because GCC LTO is incompatible with the LLVM LTO
+    # Disable LTO if you need this feature (see options comment above).
+    # https://github.com/ros2/rmw_zenoh/issues/624
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" checkout .
+    git -C "$srcdir/ros2/src/ros2/rmw_zenoh" apply "$srcdir/zenoh_cpp_vendor_lto_tls.patch"
 }
 
 build() {
