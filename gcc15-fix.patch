@@ -1,0 +1,14 @@
+diff -ura cnijfilter2-source-6.80-1/lgmon3/src/common/libcnnet2_type.h cnijfilter2-source-6.80-1-new/lgmon3/src/common/libcnnet2_type.h
+--- cnijfilter2-source-6.80-1/lgmon3/src/common/libcnnet2_type.h	2024-09-20 07:28:40.000000000 +0100
++++ cnijfilter2-source-6.80-1-new/lgmon3/src/common/libcnnet2_type.h	2025-05-03 00:16:31.991678319 +0100
+@@ -47,10 +47,6 @@
+   CNNET2_SETTING_FLAG_DISCOVER_PACKET_WAIT_MILLIS,         /*検索パケット複数送信時の待ち時間*/
+ } CNNET2_SETTING_FLAGS;
+ 
+-#ifndef __cplusplus
+-typedef char bool;
+-#endif
+-
+ typedef struct {
+   int nicIndex_;
+   char ipAddressStr_[46];
