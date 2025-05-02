@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  make LDFLAGS="$LDFLAGS -lsqlite3 -Wl,-z,relro,-z,now -Wl,--as-needed"
+  make
 }
 
 package() {
