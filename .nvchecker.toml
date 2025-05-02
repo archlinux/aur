@@ -1,0 +1,5 @@
+[omm-bin]
+source = "github"
+github = "dhth/omm"
+use_latest_release = true
+prefix = "v"
