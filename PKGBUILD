@@ -7,24 +7,33 @@
 # Contributor: Henri Chain <henri@henricha.in>
 
 pkgname=kpipewire-git
-pkgver=5.28.80_r205.g67f8d36
+pkgver=6.3.80_r575.gb6eafe9
 pkgrel=1
 pkgdesc="KDE Plasma Kpipewire"
 arch=($CARCH)
 url="https://community.kde.org/Frameworks"
 license=(LGPL)
-depends=(kcoreaddons-git kconfig-git ki18n-git kcodecs-git iso-codes pipewire ffmpeg libepoxy)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools qt5-wayland kwayland-git plasma-wayland-protocols-git)
+depends=(kcoreaddons kconfig ki18n kcodecs iso-codes pipewire ffmpeg libepoxy)
+makedepends=(git extra-cmake-modules doxygen qt5-tools qt5-wayland kwayland plasma-wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(kf5-git)
-source=("git+https://github.com/KDE/${pkgname%-git}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/KDE/${pkgname%-git}.git"
+"https://invent.kde.org/endlesseden/kpipewire/-/commit/021d6ff710e2b6231df78c1c2ae9950ba336e86d.patch")
+sha256sums=('SKIP'
+'ddb87c474c10f113712e6d434b71311ac1f30f1fcd5a0cc6f8cae338f01a31b9')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PROJECT_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'project(KPipewire VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+cd $srcdir/${pkgname%-git}
+if [ $(cat src/h264vaapiencoder.cpp | grep -c 'm_avCodecContext->profile = AV_PROFILE_H264_CONSTRAINED_BASELINE') -lt '1' ]; then
+patch -p1 -i $srcdir/021d6ff710e2b6231df78c1c2ae9950ba336e86d.patch # see ffmpeg n7.1 depreciation fix (see: https://invent.kde.org/plasma/kpipewire/-/merge_requests/200)
+fi
 }
 
 build() {
