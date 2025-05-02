@@ -3,14 +3,14 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter-git
-pkgver=24.01.75.r7.g7b935d6
-pkgrel=1
+pkgver=24.01.90.r146.gc05609a
+pkgrel=2
 pkgdesc="Cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(x86_64 i686 )
 url="https://invent.kde.org/office/ghostwriter"
-license=('GPL3')
-depends=('qt5-base' 'qt5-svg' 'hunspell' 'qt5-webengine' 'sonnet5' 'kxmlgui5')
-makedepends=('git' 'qt5-tools' 'cmake' 'extra-cmake-modules') #'discount'
+license=('GPL-3.0-or-later')
+depends=('qt6-base' 'qt6-svg' 'hunspell' 'qt6-webengine' 'sonnet' 'kxmlgui')
+makedepends=('git' 'qt6-tools' 'cmake' 'extra-cmake-modules')
 conflicts=('ghostwriter')
 provides=('ghostwriter')
 source=("git+https://invent.kde.org/office/ghostwriter.git")
