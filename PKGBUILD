@@ -4,12 +4,13 @@
 pkgname=gnucobol
 pkgver=3.2
 pkgdesc="A free, open source and modern COBOL compiler"
-pkgrel=3
+pkgrel=4
 arch=("x86_64")
 url="https://www.gnu.org/software/gnucobol/"
 license=("GPL-3.0-only")
-depends=("db" "gmp" "cjson" "json-c" "libxml2" "ncurses" "glibc" "bash")
-makedepends=("gcc")
+depends=("db" "gmp" "json-c" "libxml2" "ncurses" "glibc" "bash")
+optdepends=("cjson: Alternative for json-c")
+makedepends=("gcc" "gnupg")
 options=("!libtool")
 source=(
 	"https://ftp.gnu.org/gnu/gnucobol/$pkgname-$pkgver.tar.xz"
@@ -24,8 +25,12 @@ validpgpkeys=(
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	# Until fixed, the following CFLAG is added:
-	CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration" ./configure --prefix=/usr --infodir=/usr/share/info
+	# Until fixed, the following CFLAGs are added:
+	CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -std=gnu18" ./configure \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--with-db \
+		--with-json=json-c
 	make
 }
 
