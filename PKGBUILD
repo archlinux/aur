@@ -1,18 +1,19 @@
 # Maintainer: Márk Sági-Kazár <mark.sagi-kazar@gmail.com>
+# Contributor: Strix <strix at immerda dot ch>
 
 pkgname=phpenv-git
-pkgver=r274.0852611
+pkgver=r362.adc99a7
 pkgrel=1
 pkgdesc="Manage multiple PHP versions"
 arch=("any")
-url="https://github.com/madumlao/phpenv"
+url="https://github.com/phpenv/phpenv"
 license=("MIT")
 makedepends=("git")
 optdepends=("php-build")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=phpenv.install
-source=("git://github.com/madumlao/phpenv")
+source=("git+https://github.com/phpenv/phpenv")
 md5sums=("SKIP")
 
 # TODO: Update upon first tag
@@ -35,5 +36,5 @@ package() {
 	install -m 755 ./libexec/* "${pkgdir}/usr/lib/${pkgname%-git}/libexec/"
 
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${pkgname%-git}/libexec/${pkgname%-git}" "${pkgdir}/usr/bin/"
+	ln -s "/usr/lib/${pkgname%-git}/libexec/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 }
