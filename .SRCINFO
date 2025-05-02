@@ -1,0 +1,16 @@
+pkgbase = issurge
+	pkgdesc = Deal with your client's feedback efficiently by creating a bunch of issues in bulk from a text file.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/issurge/
+	arch = x86_64
+	license = None
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/42/60/e613d293771314640a7011ed785e05b21530bbfcb3130fb02d74a46193df/issurge-1.0.1.tar.gz
+	sha256sums = 18d1f5b150f0f01e418b068c2d39fb69b612a95c91ffc8341583a7b66052877c
+
+pkgname = issurge
