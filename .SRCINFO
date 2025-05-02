@@ -1,8 +1,8 @@
 pkgbase = libosmo-dsp
-	pkgdesc = A library with SDR DSP primitives
+	pkgdesc = Osmocom library with SDR DSP primitives
 	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://git.osmocom.org/libosmo-dsp/
+	url = https://osmocom.org/projects/libosmo-dsp
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
