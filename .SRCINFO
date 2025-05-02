@@ -1,6 +1,6 @@
 pkgbase = frp-panel
 	pkgdesc = A multi node frp webui and for frp server and client management
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/VaalaCat/frp-panel
 	install = frp-panel.install
@@ -19,10 +19,10 @@ pkgbase = frp-panel
 	backup = etc/frp-panel/client.env
 	backup = etc/frp-panel/master.env
 	backup = etc/frp-panel/server.env
-	source = frp-panel-0.1.12.zip::https://github.com/VaalaCat/frp-panel/archive/refs/tags/v0.1.12.zip
+	source = frp-panel-0.1.13.zip::https://github.com/VaalaCat/frp-panel/archive/refs/tags/v0.1.13.zip
 	source = frp-panel.tmpfiles
 	source = frp-panel@.service
-	sha256sums = 04de4a38f4bf8db3bcd84c299afcb1f1d559763c2484e27a7de040db51e89dc2
+	sha256sums = 9d762887aa7a937415247c2facf0933b729e9957bcf19e2f57cb23d13ab7ccb1
 	sha256sums = d909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0
 	sha256sums = 430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b
 
