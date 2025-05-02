@@ -1,14 +1,16 @@
 # Maintainer:
 
 ## options
-: ${_build_cuda=false} # nvenc
+: ${_build_cuda:=false} # nvenc
+
+: ${_cuda_gcc_version:=14}
 
 : ${_commit=64544e7960f5141f71438d72e5dedad81c03729c}
 
 _pkgname="sunshine"
 pkgname="$_pkgname"
 pkgver=2025.122.141614
-pkgrel=5
+pkgrel=6
 pkgdesc="A self-hosted GameStream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
 license=('GPL-3.0-only')
@@ -30,6 +32,7 @@ depends=(
   'wayland'
 )
 makedepends=(
+  "gcc${_cuda_gcc_version:?}"
   'boost'
   'cmake'
   'ffnvcodec-headers'
@@ -46,10 +49,6 @@ optdepends=(
 if [[ "${_build_cuda::1}" == "t" ]]; then
   makedepends+=('cuda')
   checkdepends+=('nvidia-utils')
-else
-  makedepends+=(
-    'gcc14'
-  )
 fi
 
 install="sunshine.install"
@@ -160,13 +159,11 @@ build() (
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
-  if pacman -Qi cuda > /dev/null 2>&1; then
-    export CUDA_PATH=/opt/cuda
-    export NVCC_CCBIN='/usr/bin/g++-13'
-  else
-    export CC=gcc-14
-    export CXX=g++-14
-  fi
+  export CC="gcc-$_cuda_gcc_version"
+  export CXX="g++-$_cuda_gcc_version"
+
+  export CUDA_PATH=/opt/cuda
+  export NVCC_CCBIN="/usr/bin/g++-$_cuda_gcc_version"
 
   local _cmake_options=(
     -B build
