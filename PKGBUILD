@@ -4,8 +4,8 @@
 
 _java_ver=23
 _jdkname="zing-${_java_ver}"
-_zing_build="25.02.0.0"
-_zing_weirdnumber="2"
+_zing_build="25.03.0.0"
+_zing_weirdnumber="3"
 pkgname="${_jdkname}-bin"
 pkgver="${_java_ver}.0.2"
 pkgrel=3
@@ -34,8 +34,8 @@ source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_zing_build}/zing${_zing_buil
 #https://cdn.azul.com/zing-zvm/ZVM23.10.0.0/zing23.10.0.0-3-jdk21.0.1-linux_x64.tar.gz
 #https://cdn.azul.com/zing-zvm/${_zulu_build}/zing${_zulu_build}-3-jdk${pkgver}-linux_x64.tar.gz
 source=("${pkgname}.install")
-b2sums_aarch64=('46a5d8c87c809ad7c684ac3042e290dc7552b4b9cff68bde10a7f85aa5ab3c077e7f8cd28ece8247b43965eb181e3123ffc6f6b0dc05b28566b1f40f56e97545')
-b2sums_x86_64=('9b5083ba8d0baafcb7f0ac3434729646fbbb4deed97ed533a3a5e441154c4c387f643e1262947e5b4d613a0cb0c5cb0010bf57e0b35f8c65578720fdbd4ecf47')
+b2sums_aarch64=('249b22a82b0ac9f1a48bb9d5298144dbf2967ef86a7124dfe29f32335502627fa2e8d30b65e36005ab5727cc6f7b1cd67054724825253257ad05a97c6e25a048')
+b2sums_x86_64=('63e0e326c4bc8086f6e28f094f8f9a912ab4d775f6ba5eb8793c3478bed6ebf5016979f9621a1fe8e85755441a61f44250835b74b40b459b196e95e90e05dd51')
 b2sums=('94a2f1ca81e4e28a3848571a2d87fc58ed15fb7a3bc4dbf07e56f6458e66891a04707732df4f7c7c9b55fc84e62bfc4e61c0cd08ada1bc8f01bf9fd7b0f5c58f')
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 

@@ -22,9 +22,9 @@ pkgbase = zing-23-bin
 	provides = jdk-openjdk=23.0.2
 	source = zing-23-bin.install
 	b2sums = 94a2f1ca81e4e28a3848571a2d87fc58ed15fb7a3bc4dbf07e56f6458e66891a04707732df4f7c7c9b55fc84e62bfc4e61c0cd08ada1bc8f01bf9fd7b0f5c58f
-	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM25.02.0.0/zing25.02.0.0-2-jdk23.0.2-linux_x64.tar.gz
-	b2sums_x86_64 = 9b5083ba8d0baafcb7f0ac3434729646fbbb4deed97ed533a3a5e441154c4c387f643e1262947e5b4d613a0cb0c5cb0010bf57e0b35f8c65578720fdbd4ecf47
-	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM25.02.0.0/zing25.02.0.0-2-jdk23.0.2-linux_aarch64.tar.gz
-	b2sums_aarch64 = 46a5d8c87c809ad7c684ac3042e290dc7552b4b9cff68bde10a7f85aa5ab3c077e7f8cd28ece8247b43965eb181e3123ffc6f6b0dc05b28566b1f40f56e97545
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM25.03.0.0/zing25.03.0.0-3-jdk23.0.2-linux_x64.tar.gz
+	b2sums_x86_64 = 63e0e326c4bc8086f6e28f094f8f9a912ab4d775f6ba5eb8793c3478bed6ebf5016979f9621a1fe8e85755441a61f44250835b74b40b459b196e95e90e05dd51
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM25.03.0.0/zing25.03.0.0-3-jdk23.0.2-linux_aarch64.tar.gz
+	b2sums_aarch64 = 249b22a82b0ac9f1a48bb9d5298144dbf2967ef86a7124dfe29f32335502627fa2e8d30b65e36005ab5727cc6f7b1cd67054724825253257ad05a97c6e25a048
 
 pkgname = zing-23-bin
