@@ -18,7 +18,7 @@ pkgver() {
 }
 
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
