@@ -5,14 +5,14 @@
 
 pkgname=zrythm
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://www.zrythm.org/"
-license=('LicenseRef-ZrythmLicense')
+license=('AGPL-3.0-or-later')
 depends=(
   'bash'
-  'carla'
+  'carla-git'
   'cairo'
   'curl'
   'dconf'
@@ -105,7 +105,7 @@ package() {
 
   # Install the custom license file
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSES/LicenseRef-ZrythmLicense.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LicenseRef-ZrythmLicense.txt"
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
