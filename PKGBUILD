@@ -1,13 +1,18 @@
 pkgname=minefetch
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Download Minecraft mods (In Rust)"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 license=('GPL')
 url="https://github.com/KirillkoTankisto/minefetch"
-source=("https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.0/minefetch")
-noextract=("${source[@]##*/}")
-sha256sums=('f9137a5cec919a699e23eb8170588198ea86bbe0f3f156eb1d38c7fa3140c110')
+
+source_x86_64=("https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.1/minefetch-x86_64-unknown-linux-musl.tar.gz")
+source_aarch64=("https://github.com/KirillkoTankisto/minefetch/releases/download/beta_1.6.1/minefetch-aarch64-unknown-linux-gnu.tar.gz")
+
+sha256sums_x86_64=('1b8b1a1cb81fc430aa7c0ccb0bd5043d8965c7a3371dadce1554b28065f1ed8d')
+sha256sums_aarch64=('b339b7b9121d8e915c7391e26223ed40b53d4b4bf028acb7b511cd4c50c6d658')
+
 package () {
   install -Dm 755 "minefetch" "${pkgdir}/usr/bin/minefetch"
 }
+
