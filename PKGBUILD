@@ -8,7 +8,7 @@
 _pkgname="sunshine"
 pkgname="$_pkgname"
 pkgver=2025.122.141614
-pkgrel=4
+pkgrel=5
 pkgdesc="A self-hosted GameStream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
 license=('GPL-3.0-only')
@@ -33,7 +33,6 @@ makedepends=(
   'boost'
   'cmake'
   'ffnvcodec-headers'
-  'gcc13'
   'git'
   'ninja'
   'npm'
@@ -47,6 +46,10 @@ optdepends=(
 if [[ "${_build_cuda::1}" == "t" ]]; then
   makedepends+=('cuda')
   checkdepends+=('nvidia-utils')
+else
+  makedepends+=(
+    'gcc14'
+  )
 fi
 
 install="sunshine.install"
@@ -154,14 +157,16 @@ build() (
   export BUILD_VERSION="${pkgver}"
   export COMMIT="$(git -C "$_pkgsrc" rev-parse HEAD)"
 
-  export CC=gcc-13
-  export CXX=g++-13
-
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
-  export CUDA_PATH=/opt/cuda
-  export NVCC_CCBIN='/usr/bin/g++-13'
+  if pacman -Qi cuda > /dev/null 2>&1; then
+    export CUDA_PATH=/opt/cuda
+    export NVCC_CCBIN='/usr/bin/g++-13'
+  else
+    export CC=gcc-14
+    export CXX=g++-14
+  fi
 
   local _cmake_options=(
     -B build
