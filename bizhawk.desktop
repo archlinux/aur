@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BizHawk
+Comment=A multi-platform emulator with full re-recording support and Lua scripting (Nightly build)
+Exec=bizhawk
+Icon=bizhawk
+Terminal=false
+StartupNotify=false
+Categories=Game;Emulator;
