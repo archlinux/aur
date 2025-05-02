@@ -1,7 +1,7 @@
 pkgbase = ferronweb
 	pkgdesc = Ferron web server
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ferronweb.org
 	install = ferron.install
 	arch = x86_64

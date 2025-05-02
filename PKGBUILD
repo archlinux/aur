@@ -1,6 +1,6 @@
 pkgname=ferronweb
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ferron web server"
 arch=('x86_64' 'i686' 'armv7' 'aarch64' 'riscv64')
 url="https://www.ferronweb.org"
@@ -49,7 +49,7 @@ provides=('ferron')
 
 prepare() {
     cd "$srcdir"
-    unzip -q "ferron-$pkgver-${_arch}-unknown-linux-gnu${abi}.zip"
+    unzip -qo "ferron-$pkgver-${_arch}-unknown-linux-gnu${abi}.zip"
 }
 
 package() {
