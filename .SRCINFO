@@ -11,6 +11,7 @@ pkgbase = openttd-jgrpp
 	depends = fontconfig
 	depends = hicolor-icon-theme
 	depends = lzo
+	depends = sdl2-compat
 	options = !debug
 	options = !lto
 	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.65.2.tar.gz
