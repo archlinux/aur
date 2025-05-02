@@ -3,7 +3,7 @@
 
 _pkgname="bifrost"
 pkgname="${_pkgname}-bin"
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Samsung Firmware Downloader"
 url='https://github.com/zacharee/SamloaderKotlin'
@@ -15,9 +15,9 @@ depends=('glibc' 'gcc-libs' 'zlib' 'libglvnd' 'libxi' 'hicolor-icon-theme' 'libx
 source=("https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/${pkgver}/LICENSE.txt")
 source_x86_64=("https://github.com/zacharee/SamloaderKotlin/releases/download/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/zacharee/SamloaderKotlin/releases/download/${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
-sha256sums=('778075b8a5fb9c5bc6ea65da17ad6adb0b5c69bbebf52a965d285487dafcd316')
-sha256sums_x86_64=('20c46425a0a1e72d03fbb3d24e6fa315d50993d708c33d8a6cf1bd3b54bbdfd2')
-sha256sums_aarch64=('b9d25c9645ea60584fc8eb5adfae96daa06a82e95d0832152d561d19033279ea')
+b2sums=('693b28ed14fb782eab4399104bb968fe613447c1f005495a5cd3791f3032e71dbb6b418cfa4b874562891deb60d4fb53ca1e7f965b571c35f6bdba0eb5d624d4')
+b2sums_x86_64=('cf7d597f1d939e1fcf3046fc4693afba6c097da7833aadf4cefde6c2bd2c8095f37a4b651f6ae0e407f53f48adf304d57d0f848c65a1b5154e8b1e315bd8141c')
+b2sums_aarch64=('3f6f2d370f6dabe4240c56ca5d06cecd06cb834e316fccfebd6faf381e27fd3c1bbc5e4908813048ea71ad9b8ac61f3deddf07f74d630ffd09e5824418e80669')
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"
