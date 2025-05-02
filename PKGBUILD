@@ -5,7 +5,7 @@
 # Maintainer: Štěpán Němec <stepnem@gmail.com>
 
 pkgname=ubrowse
-pkgver=1.8
+pkgver=1.10
 pkgrel=1
 pkgdesc='Unicode character browser for the terminal'
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(MIT)
 depends=(ncurses)
 makedepends=(curl pkgconf python)
 source=("http://www.muppetlabs.com/~breadbox/pub/software/$pkgname-$pkgver.tar.gz")
-sha256sums=('98ebaff6bad7ebd1f0ee45ae32341062ff94520813b057b16431c2998f4bc1e0')
+sha256sums=('3ee558758df45060a0ab8bddcb125776f341cd1db57baec57cd02fa87c7c0ab4')
 
 build() {
   cd "$pkgname-$pkgver"
