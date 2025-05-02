@@ -8,7 +8,7 @@
 pkgname=libmodsecurity2
 _name=modsecurity
 pkgver=2.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, v2 branch'
 arch=('x86_64')
 url='https://github.com/owasp-modsecurity/ModSecurity/tree/v2/master'
