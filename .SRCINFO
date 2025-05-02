@@ -1,7 +1,7 @@
 pkgbase = libxml2-compat
 	pkgdesc = Makes /usr/lib/libxml2.so.2 reappear
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/issues/901
 	arch = any
 	depends = libxml2
