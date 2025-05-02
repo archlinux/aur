@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
 	pkgver = 570.123.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/vulkan-driver
 	arch = x86_64
 	license = custom
@@ -18,6 +18,7 @@ pkgbase = nvidia-vulkan
 	source = NVIDIA-Linux-x86_64-570.123.07.run::https://developer.nvidia.com/downloads/vulkan-beta-57012307-linux
 	source = nvidia-vulkan-570.123.07.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/570.123.07.tar.gz
 	source = 0001-Enable-atomic-kernel-modesetting-by-default.patch
+	source = 0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
 	source = 0003-Add-IBT-support.patch
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891
@@ -28,6 +29,7 @@ pkgbase = nvidia-vulkan
 	sha512sums = 7745bb228f80015c9f1ba09c731cea47a148ab38e39a723d4a5d5a89611e705811da7f290cb73617b29607f16b8add94b0b146e17d13bdf00dbfc04be74f8db5
 	sha512sums = 5c17574aa90b7a6be9ca4412400ff12b1f671258bee9176e078fe1a66f323381fa47ccb113387bd9eda118e36de0a806ae69ae06991329c31347488268b48d33
 	sha512sums = 0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34
+	sha512sums = 6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e
 	sha512sums = 42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82
 
 pkgname = nvidia-vulkan

@@ -17,7 +17,7 @@ pkgname=(
     'lib32-opencl-nvidia-vulkan'
 )
 pkgver=570.123.07
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -35,6 +35,7 @@ source=(
     "${_pkg}.run::https://developer.nvidia.com/downloads/vulkan-beta-${pkgver//.}-linux"
     "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${pkgver}.tar.gz"
     0001-Enable-atomic-kernel-modesetting-by-default.patch
+    0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
     0003-Add-IBT-support.patch
 )
 
@@ -48,6 +49,7 @@ sha512sums=(
     '7745bb228f80015c9f1ba09c731cea47a148ab38e39a723d4a5d5a89611e705811da7f290cb73617b29607f16b8add94b0b146e17d13bdf00dbfc04be74f8db5'
     '5c17574aa90b7a6be9ca4412400ff12b1f671258bee9176e078fe1a66f323381fa47ccb113387bd9eda118e36de0a806ae69ae06991329c31347488268b48d33'
     '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
+    '6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e'
     '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
 )
 
@@ -74,6 +76,9 @@ prepare() {
 
     cd kernel
 
+    # Fix building with GCC 15
+    patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
+
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
     sed -i 's/__DKMS_MODULES//' dkms.conf
@@ -97,7 +102,11 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
     # This avoids various issue, when Simplefb is used
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
-    patch -Np1 < "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch -d "${srcdir}/open-gpu-kernel-modules-${pkgver}/kernel-open"
+    patch -Np1 -i "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch -d "${srcdir}/open-gpu-kernel-modules-${pkgver}/kernel-open"
+
+    # Fix building with GCC 15
+    patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch \
+        -d "${srcdir}/open-gpu-kernel-modules-${pkgver}/kernel-open"
 
     # Fix for https://bugs.archlinux.org/task/74886
     patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0003-Add-IBT-support.patch
