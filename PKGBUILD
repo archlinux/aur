@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts54
-pkgver=5.4.292
+pkgver=5.4.293
 pkgrel=1
 pkgdesc='LTS 5.4 Linux'
 url="https://www.kernel.org/"
@@ -31,7 +31,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('0bcbf580d1ea623ac5879d0f2d69796c82431b3f653c4749e63766dbf737be85'
+sha256sums=('34589340c7d76c0de91965e5242f61e9f9f3bacd03e8e34239e5d4660d45372d'
             'SKIP'
             'bffa24efd9e84ffd48069947cc5ed52827d280dbd303f50e6286c48c89613b3f'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
@@ -76,6 +76,17 @@ prepare() {
 
 build() {
   cd $_srcname
+  if :; then
+    export PATH="${PWD}:${PATH}"
+    cat > 'gcc' << EOF
+#!/usr/bin/bash
+
+# gcc 15 changed the default to -std=gnu23.
+# This option is first so later -std will override it.
+exec /usr/bin/gcc -std='gnu17' "\$@"
+EOF
+    chmod 755 'gcc'
+  fi
   nice -n1 make all
   nice -n1 make -i htmldocs SPHINXOPTS='-T --keep-going'
 }
