@@ -2,12 +2,12 @@
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-git
-pkgver=r11696.815be33a3
-pkgrel=3
+pkgver=r11837.044ee14e0
+pkgrel=4
 pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system"
 url="https://www.kismetwireless.net/"
 arch=('x86_64' 'armv7h' 'aarch64')
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 depends=('bluez-libs'
         'gcc-libs'
         'glibc'
