@@ -16,7 +16,7 @@ depends=('meson' 'gdb' 'cmake' 'base-devel' 'acpica' 'git'
     'seabios'
 )
 provides=('mvisor')
-optdepends=('edk2-ovf: EFI booting'
+optdepends=('edk2-ovmf: EFI booting'
             'qemu-img: creating disk images'
 )
 conflicts=('mvisor')
