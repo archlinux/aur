@@ -1,16 +1,17 @@
 # Maintainer: detiam <dehe_tian <at> outlook <dot> com>
 
 # shellcheck disable=SC1090
+
+_force_nvutils_ver=${_force_nvutils_ver:-}
+
 pkgname=nvidia-patch
-pkgver=570.133.07
+pkgver=570.144
 pkgrel=1
 pkgdesc="install or reinstall to apply and update nvidia-patch by keylase, unlock nvfbc and nvenc limit"
 arch=('x86_64')
 url="https://github.com/keylase/$pkgname"
 license=('unknown')
-provides=('nvidia-utils-nvlax')
-replaces=('nvidia-utils-nvlax')
-conflicts=('nvidia-utils-nvlax')
+depends=('nvidia-utils')
 makedepends=('git')
 source=("git+$url.git")
 sha1sums=('SKIP')
@@ -22,13 +23,18 @@ pkgver() {
 	encver=$(echo "$encso" | grep -oP '[0-9]..*[0-9]$')
 	fbcver=$(echo "$fbcso" | grep -oP '[0-9]..*[0-9]$')
 	if [ "$encver" == "$fbcver" ]; then
-		if [[ -z $force_nvutils_ver ]]; then
+		if [[ -z $_force_nvutils_ver ]]; then
+			if [[ -z $encver ]]; then
+				echo 'Unable to detect NVIDIA driver version' >&2
+				echo 'Try using "_force_nvutils_ver" environment variable to specify one?' >&2
+				exit 1
+			fi
 			echo "$encver"
 		else
-			echo "$force_nvutils_ver"
+			echo "$_force_nvutils_ver"
 		fi
 	else
-		echo 'broken system!!!' >&2
+		echo 'Version between nvenc and nvfbc are not the same, system broken?' >&2
 		exit 1
 	fi
 }

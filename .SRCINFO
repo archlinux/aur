@@ -1,16 +1,13 @@
 pkgbase = nvidia-patch
 	pkgdesc = install or reinstall to apply and update nvidia-patch by keylase, unlock nvfbc and nvenc limit
-	pkgver = 570.133.07
+	pkgver = 570.144
 	pkgrel = 1
 	url = https://github.com/keylase/nvidia-patch
 	arch = x86_64
 	license = unknown
 	makedepends = git
-	provides = nvidia-utils-nvlax
-	conflicts = nvidia-utils-nvlax
-	replaces = nvidia-utils-nvlax
+	depends = nvidia-utils
 	source = git+https://github.com/keylase/nvidia-patch.git
 	sha1sums = SKIP
 
 pkgname = nvidia-patch
-	depends = nvidia-utils
