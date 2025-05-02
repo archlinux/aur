@@ -1,0 +1,11 @@
+--- libquicktime-1.2.4/utils/lqtplay.c.orig	2025-05-02 20:44:26.594658453 +0800
++++ libquicktime-1.2.4/utils/lqtplay.c	2025-05-02 20:55:17.689113056 +0800
+@@ -1417,7 +1417,7 @@
+ /* Decode at most AUDIO_BLOCK_SIZE samples and interleave them into the
+    qt_audio array. Return the real number of decoded samples */
+ 
+-static int decode_audio()
++static int decode_audio(int)
+   {
+   int i, j;
+   int samples_decoded;
