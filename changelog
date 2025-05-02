@@ -1,3 +1,8 @@
+2025-04-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.1.5.2-1:
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-03-31 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.1.4.3-1:
     ASF now comes with built-in modern Scalar swagger UI, which replaces previously used swagger-ui. You can browse new interface using standard /swagger URL (@JustArchi #3391).
