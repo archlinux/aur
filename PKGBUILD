@@ -8,7 +8,7 @@
 pkgname='mlmmj'
 pkgver=1.5.0
 _pkgver=1_5_0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 depends=('bash' 'glibc' 'smtp-server')
 optdepends=(
@@ -25,23 +25,11 @@ source=(
   'sysuser.conf'
   'tmpfile.conf'
 )
-options=('lto')
 changelog="$pkgname.changelog"
 install="$pkgname.install"
 
 build() {
   cd "$pkgname-$pkgver"
-
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
 
   # Tests require “atf-c”. Anyone?
   ./configure --prefix=/usr --disable-tests
@@ -54,12 +42,12 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     ChangeLog FAQ README.* TODO TUNABLES.md UPGRADE
 
   cp -vfa contrib "$pkgdir/usr/share/doc/$pkgname/"
 
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     AUTHORS COPYING LICENSE
 
   cd "$srcdir"
