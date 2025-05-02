@@ -5,8 +5,8 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=clementine
-pkgver=1.4.1+38+g1fc7fe0e1
-pkgrel=2
+pkgver=1.4.1+43+gaf57cfdd0
+pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
 url="https://github.com/clementine-player/Clementine"
@@ -27,8 +27,8 @@ optdepends=(
   'gst-libav: Libav plugin'
   'gvfs: Various devices support')
 # NB commits are chosen corresponding a git tag https://github.com/clementine-player/Clementine/tags
-source=("git+https://github.com/clementine-player/Clementine.git#commit=1fc7fe0e1e828a58f6a961aa4f75a7fbd7eb5786")
-sha256sums=('7d956efe2e0be5fdf51ade47a44123f0debf5b289b29b8c790126e221e250920')
+source=("git+https://github.com/clementine-player/Clementine.git#commit=af57cfdd0532111143a381255fcd607b94b0e78d")
+sha256sums=('fdc88ac4e8edd471547c5f5385082e2a425614310eb7fc9812fa42b3a5eb7ae2')
 
 pkgver() {
   cd Clementine
@@ -40,11 +40,12 @@ prepare() {
 }
 
 build() {
-  export LDFLAGS="-Wl,--copy-dt-needed-entries"
+  #export LDFLAGS="-Wl,--copy-dt-needed-entries"
+  export CXXFLAGS+=" -Wno-error=cpp"
 
   local _flags=(
-    -DCMAKE_CXX_FLAGS="-fpermissive"
-    -DCMAKE_CXX_STANDARD=17
+    #-DCMAKE_CXX_FLAGS="-fpermissive"
+    #-DCMAKE_CXX_STANDARD=17
     -DUSE_SYSTEM_PROJECTM=ON
     -DUSE_SYSTEM_TAGLIB=ON
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
