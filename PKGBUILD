@@ -3,22 +3,20 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
 url="http://specutils.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
              'python-sphinx-astropy'
              'python-matplotlib'
              'python-gwcs'
              'python-ndcube>=2.0'
-#            'python-mpl-animators'
-             'graphviz')
+             'graphviz')  # wheel required by new setuptools
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
 #             'python-pytest-xdist'
@@ -28,7 +26,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('b234f80de03db34c337e95c6bd206231'
+md5sums=('a658e8342423919bef047e9aa9c3e494'
          '6de4c8ee5659e87a302e3de595074ba5'
          '3586c5d0810108a182ba9146908dc180'
          '49c57591fdc60365a3e31a0f10e4e57d')
