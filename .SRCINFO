@@ -1,6 +1,6 @@
 pkgbase = python-pylibjpeg-rle
 	pkgdesc = Fast DICOM RLE plugin for pylibjpeg
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/pydicom/pylibjpeg-rle
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-pylibjpeg-rle
 	makedepends = python-maturin
 	makedepends = python-wheel
 	depends = python-numpy
-	source = python-pylibjpeg-rle-2.0.0.tar.gz::https://github.com/pydicom/pylibjpeg-rle/archive/refs/tags/v2.0.0.tar.gz
-	sha512sums = 8776be5f4b4cdfc6f40217486361b07ab9626ff488210e63619f4b26f6ca8270733c09f27cccce16879306b908721d5d1a9d506b666fd0908351faeba2b38ca9
+	source = python-pylibjpeg-rle-2.1.0.tar.gz::https://github.com/pydicom/pylibjpeg-rle/archive/refs/tags/v2.1.0.tar.gz
+	sha512sums = 2586e2f8fbd70d65d8d293bef09cba3b42448bddb3e91a4c2237ffbcafef8b82c33a399644994dd13975b9ffc80749b10060f79db4d4f90cb1d90bb9a0497f15
 
 pkgname = python-pylibjpeg-rle
