@@ -2,23 +2,21 @@
 
 _rockname=qrcode.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.2.0
+pkgver=2.0.0
 _rockrel=1
 pkgrel=1
 pkgdesc='QR code package for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
-license=(MIT)
+license=(GPL-3.0-only)
 _luadeps=(grail)
-_siledeps=(silex)
 depends=("${_luadeps[@]/#/lua51-}"
-         sile
-         "${_siledeps[@]/#/sile-}")
+         sile)
 makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('97ddb789f79a597ad0dbf11f70ba40037df932265f51c2dab2ec58eb95d78605')
+sha256sums=('f078bb9d6974da90a714d1424b9a80342756ba83f4eee422058bff2231bdfb5d')
 
 package() {
 	cd "$_archive"

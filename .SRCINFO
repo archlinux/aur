@@ -1,16 +1,15 @@
 pkgbase = sile-qrcode
 	pkgdesc = QR code package for the SILE typesetting system
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Omikhleia/qrcode.sile
 	arch = any
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = lua51
 	makedepends = luarocks
 	depends = lua51-grail
 	depends = sile
-	depends = sile-silex
-	source = https://github.com/Omikhleia/qrcode.sile/archive/v1.2.0/qrcode.sile-1.2.0.tar.gz
-	sha256sums = 97ddb789f79a597ad0dbf11f70ba40037df932265f51c2dab2ec58eb95d78605
+	source = https://github.com/Omikhleia/qrcode.sile/archive/v2.0.0/qrcode.sile-2.0.0.tar.gz
+	sha256sums = f078bb9d6974da90a714d1424b9a80342756ba83f4eee422058bff2231bdfb5d
 
 pkgname = sile-qrcode
