@@ -1,7 +1,7 @@
 pkgbase = simple-live-app-bin
 	pkgdesc = 简简单单的看直播
 	pkgver = 1.8.3.10803
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaoyaocz/dart_simple_live
 	arch = x86_64
 	license = GPL3

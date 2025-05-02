@@ -1,11 +1,12 @@
 # Maintainer: everyx <lunt.luo#gmail.com>
 # Maintainer: v9pzm7 <751000925#qq.com>
+# Maintainer: xiaoxi404 <1577912515#qq.com>
 _pkgbase=simple-live-app
 pkgname=simple-live-app-bin
 _build_id=10803
 _version=1.8.3
 pkgver=${_version}.${_build_id}
-pkgrel=1
+pkgrel=2
 
 pkgdesc='简简单单的看直播'
 arch=('x86_64')
@@ -28,4 +29,5 @@ package() {
     ln -s /usr/share/simple_live_app/simple_live_app  "$pkgdir"/usr/bin/
 
     patchelf --replace-needed libmpv.so.1 libmpv.so "$pkgdir"/usr/share/simple_live_app/lib/libmedia_kit_video_plugin.so
+    patchelf --replace-needed libmpv.so.1 libmpv.so "$pkgdir"/usr/share/simple_live_app/lib/libmedia_kit_native_event_loop.so
 }
