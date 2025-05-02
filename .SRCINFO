@@ -1,6 +1,6 @@
 pkgbase = hydra-launcher-bin
 	pkgdesc = A game launcher with its own embedded bittorrent client
-	pkgver = 3.4.6
+	pkgver = 3.4.7
 	pkgrel = 1
 	url = https://github.com/hydralauncher/hydra
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = hydra-launcher-bin
 	depends = zlib
 	provides = hydra-launcher
 	options = !strip
-	source = https://github.com/hydralauncher/hydra/releases/download/v3.4.6/hydralauncher_3.4.6_amd64.deb
-	source = hydra-launcher-bin-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.4.6/LICENSE
-	sha256sums = 7471cf0117b7790dc6efd492d4f9061eb8f3a6713662a81620efa57bac9b5546
+	source = https://github.com/hydralauncher/hydra/releases/download/v3.4.7/hydralauncher_3.4.7_amd64.deb
+	source = hydra-launcher-bin-LICENSE::https://github.com/hydralauncher/hydra/raw/refs/tags/v3.4.7/LICENSE
+	sha256sums = 681337cec94811768d303f56176dc56f794f7d557ad983d07358d68e0132990f
 	sha256sums = 32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9
 
 pkgname = hydra-launcher-bin
