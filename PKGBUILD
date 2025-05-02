@@ -29,7 +29,8 @@ build() {
 
   ./configure --prefix=/usr \
               --with-cupsfilterdir=/usr/lib/cups/filter \
-              --with-cupsppddir=/usr/share/ppd
+              --with-cupsppddir=/usr/share/ppd \
+              CFLAGS="-std=gnu17'
   make
 }
 
