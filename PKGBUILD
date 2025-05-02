@@ -4,8 +4,8 @@
 
 pkgname='jed-git'
 _pkgname="${pkgname/-git/}"
-pkgver=0.99.20.r189.ged7dc6d
-pkgrel=3
+pkgver=0.99.20.r191.gbdc2ede
+pkgrel=1
 pkgdesc='Powerful scriptable editor designed for use by programmers (development version)'
 arch=("$CARCH")
 url='https://www.jedsoft.org/jed/'
@@ -13,7 +13,7 @@ source=('git://git.jedsoft.org/git/jed.git')
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 provides=('jed' 'jed-script' 'xjed' 'rgrep')
 conflicts=('jed' 'jed-script' 'xjed' 'rgrep')
-options=('lto' '!makeflags')
+options=('!makeflags')
 depends=(
   'fontconfig'
   'glibc'
@@ -54,17 +54,6 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  # RFC-0023
-  # 🔗 https://rfc.archlinux.page/0023-pack-relative-relocs/
-  #
-  # ld(1) says: “Supported for i386 and x86-64.”
-  case "Z${CARCH:-unknown}" in
-    'Zx86_64' | 'Zi386' )
-      export LDFLAGS="$LDFLAGS -Wl,-z,pack-relative-relocs"
-    ;;
-    * ) : pass ;;
-  esac
-
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
   make clean
@@ -78,11 +67,11 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -vDm0755 src/objs/rgrep             \
+  install -vDm0755 src/objs/rgrep \
     -t "$pkgdir/usr/bin/"
   install -vDm0644 desktop/{jed,xjed}.desktop \
     -t "$pkgdir/usr/share/applications/"
-  install -vDm0644 desktop/{jed,xjed}.svg     \
+  install -vDm0644 desktop/{jed,xjed}.svg \
     -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 
   cd "$pkgdir/usr/share/jed/lib"
