@@ -1,16 +1,8 @@
 pkgbase = beeper-latest-bin
-	pkgdesc = A unified messaging app
-	pkgver = 4.0.551
+	pkgdesc = metapackage - migrate to beeper-v4-bin
+	pkgver = 1
 	pkgrel = 1
-	url = https://beeper.com/
 	arch = any
-	license = LicenseRef-beeper
-	provides = beeper
-	conflicts = beeper
-	options = !strip
-	options = !debug
-	source = Beeper-4.0.551.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-4.0.551.AppImage
-	sha256sums = SKIP
 
 pkgname = beeper-latest-bin
-	depends = electron
+	depends = beeper-v4-bin
