@@ -1,5 +1,6 @@
 [Unit]
 Description=Arch Update Notifier
+After=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/arch-update-notifier
@@ -7,4 +8,4 @@ Type=simple
 Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

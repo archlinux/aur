@@ -1,6 +1,6 @@
 # Maintainer: Andrew Glaze candy@candy123.moe
 pkgname=arch-update-notifier
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Sends a notification to you when you have outdated packages"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('glib2' 'glibc' 'gcc-libs')
 makedepends=('swift-language' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Candygoblen123/arch-update-notifier/archive/${pkgver}.tar.gz" "arch-update-notifier.service")
-sha256sums=('3d640f2791422bb65995dd165e4fdda2584dc6149bae48542c0dcdf7de35364b' '514c43f74ecdc46fdabd46f9e3298af92b58d68d4c8d1c7bffc72f32d961172b')
+sha256sums=('3e9944a4869139dbbe98bb37995715e4b67c5fb7949f132fc63895763b889fe0' '59480ca440a70735142503410286a0707aa1f1c3428e7798ab676d836c010deb')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
