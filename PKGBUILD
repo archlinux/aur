@@ -13,8 +13,8 @@
 
 _pkgname="vala-panel-appmenu"
 pkgbase="$_pkgname"
-pkgver=24.05
-pkgrel=4
+pkgver=25.04
+pkgrel=1
 pkgdesc="Global Menu plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 license=('LGPL-3.0-or-later')
@@ -30,7 +30,7 @@ makedepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
-sha256sums=('SKIP')
+sha256sums=('843b24f98f02feb8cbfdda26630018ae95f8ac4959de9deb88cf1a13506f845f')
 
 prepare() {
   sed -e 's&^.*if mate_found or vala_panel_found or budgie_found.*$&if true&' \
@@ -38,6 +38,9 @@ prepare() {
 
   sed -E -e "s&(importer_dep = dependency)\('appmenu-glib-translator'&\1('_appmenu_glib_translator_'&" \
     -i "$_pkgsrc/lib/meson.build"
+
+  sed -E -e "s&^(\s*version)\s*:\s*'[0-9.]'\s*,?\s*$&\1: '${pkgver}',&" \
+  -i "$_pkgsrc/meson.build"
 }
 
 build() {

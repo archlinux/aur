@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu
 	pkgdesc = Global Menu plugin
-	pkgver = 24.05
-	pkgrel = 4
+	pkgver = 25.04
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = vala-panel-appmenu
 	depends = xfconf
 	depends = vala-panel
 	depends = budgie-desktop
-	source = vala-panel-appmenu::git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#tag=24.05
-	sha256sums = SKIP
+	source = vala-panel-appmenu::git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git#tag=25.04
+	sha256sums = 843b24f98f02feb8cbfdda26630018ae95f8ac4959de9deb88cf1a13506f845f
 
 pkgname = vala-panel-appmenu
 	pkgdesc = metapackage - vala panel appmenu collection
