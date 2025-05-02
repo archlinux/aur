@@ -12,7 +12,7 @@ depends=("gcc-libs" "glibc" "liburing" "jemalloc")
 source=("git+https://forgejo.ellis.link/continuwuation/continuwuity.git")
 sha256sums=(SKIP)
 provides=("conduwuit" "continuwuity")
-conflicts=("conduwuit")
+conflicts=("conduwuit" "continuwuity")
 options=(!lto)
 backup=("etc/conduwuit/conduwuit.toml")
 

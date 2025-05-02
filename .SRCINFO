@@ -21,6 +21,7 @@ pkgbase = continuwuity-git
 	provides = conduwuit
 	provides = continuwuity
 	conflicts = conduwuit
+	conflicts = continuwuity
 	options = !lto
 	backup = etc/conduwuit/conduwuit.toml
 	source = git+https://forgejo.ellis.link/continuwuation/continuwuity.git
