@@ -1,6 +1,6 @@
 pkgbase = sqlean-bin
 	pkgdesc = sqlean shell is SQLite shell bundled with a collection of essential extensions ranging from regular expressions and math statistics to file I/O and dynamic SQL.
-	pkgver = 3.47.0
+	pkgver = 3.49.1
 	pkgrel = 1
 	url = https://github.com/nalgeon/sqlite
 	arch = amd64
@@ -10,7 +10,7 @@ pkgbase = sqlean-bin
 	license = MIT
 	provides = sqlean
 	conflicts = sqlean
-	source = sqlean-3.47.0::https://github.com/nalgeon/sqlite/releases/download/3.47.0/sqlean-ubuntu
-	b2sums = 3d5d222237154ef8bfa6b01a1c7ff9f21ec08fa9d525f051876aa30b761250b8301da592e302a3220727ab89060050bc78acad06ef9b37b967ac0089c450e19d
+	source = sqlean-3.49.1::https://github.com/nalgeon/sqlite/releases/download/3.49.1/sqlean-ubuntu
+	b2sums = 15b05fc0b4b722fe99ab8f8aee9501c772ea372ac4c8f136bb44a672b368e9cc477db7f4b5aa154004375ce68f956ad46e5f81be954afeb6b89d922386da0c61
 
 pkgname = sqlean-bin
