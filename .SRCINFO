@@ -1,0 +1,24 @@
+pkgbase = launcherx-cn-fix
+	pkgdesc = LauncherX is a cross-platform minecraft launcher for next generation
+	pkgver = 2.603.2040.0
+	pkgrel = 1
+	url = https://corona.studio/launcherx
+	arch = x86_64
+	arch = aarch64
+	provides = launcherx-cn-fix
+	conflicts = launcherx-git
+	conflicts = launcherx-bin
+	conflicts = launcherx
+	options = !strip
+	source = LauncherX.desktop
+	source = LauncherX.png
+	source = launcherx
+	sha256sums = 4642b257b15093e87ba0de07ef029f43ff7506e80d1f13afbbc8e2d0de34912f
+	sha256sums = 12603307fe2c60cbbab83fc761e465b2900c0593022340f1973b5adf59f88360
+	sha256sums = 5c54c3f69f39598d871aed02eb965923ad6382d6cfd3eb461fbf97c8c8a75a03
+	source_x86_64 = https://api.corona.studio/Build/get/033e6779-fddb-40c9-a036-20a3f007f4c6/net9.0-linux.linux-x64.zip
+	sha256sums_x86_64 = 88f1d55eefdc634a877a9a2164f29f0ebcbed671f9dff3501650ee243fddb4ef
+	source_aarch64 = https://api.corona.studio/Build/get/e3c90a12-7597-4fc6-b34e-5eddf3364f10/net9.0-linux.linux-arm64.zip
+	sha256sums_aarch64 = 6599327b280b47ef62ae09ea57c64f80ddec1e77ba7267c1d4f6b7817fcad6b8
+
+pkgname = launcherx-cn-fix
