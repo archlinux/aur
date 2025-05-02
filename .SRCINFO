@@ -1,7 +1,7 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
 	pkgver = 2026.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
 	arch = x86_64

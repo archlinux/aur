@@ -7,7 +7,7 @@
 pkgname=maya
 pkgver=2026.0
 _majorver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
 arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
@@ -43,6 +43,9 @@ prepare() {
 
     # Avoid reading the system libmd, which is a different library of the same name
     touch usr/autodesk/${pkgname}${_majorver}/lib/libmd.so
+
+    # Required by Maya
+    ln -s /usr/lib/libxml2.so usr/autodesk/${pkgname}${_majorver}/lib/libxml2.so.2
 }
 
 package() {
