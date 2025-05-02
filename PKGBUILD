@@ -5,18 +5,16 @@
 
 pkgname=nordvpn-bin
 pkgver=3.20.2
-pkgrel=2.1
+pkgrel=3
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'armeabi')
 url="https://nordvpn.com/download/linux/"
 license=('GPL3')
 depends=('libxml2')
+optdepends=('libxml2-legacy')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 install=nordvpn-bin.install
-source=("https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.8-1-x86_64.pkg.tar.zst")
-sha256sums=('2a1b0ab11ff213a57268d20fff183e3fd3e4ab9191aeed473de336b77bdfa6e1')
-
 source_x86_64=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${pkgver//_/-}_amd64.deb")
 source_i686=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${pkgver//_/-}_i386.deb")
 source_armv7h=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_${pkgver//_/-}_armhf.deb")
@@ -35,20 +33,4 @@ package() {
     rm -r "${pkgdir}/etc/init.d"
     rm -r "${pkgdir}/usr/sbin"
     echo "g nordvpn - -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  #-----------------------------------------------------------------
-  # Bellow is a TEMPORARY fix for the missing libxml2.so.2 library
-  # when upgrading the package to version 2.14.2
-  #-----------------------------------------------------------------
-  # If you wish, you can instead downgrade all your packages
-  # within a specific date:
-   ## 1. Edit your /etc/pacman.d/mirrorlist
-   ## 2. Include the following line:
-    ### Server = https://archive.archlinux.org/repos/2025/04/29/$repo/os/$archive
-   ## 3. Then you run:
-    ### pacman -Syyuu
-    ### (-uu is for downgrade)
-  # done
-  #-----------------------------------------------------------------
-    tar -xvf libxml2-2.13.8-1-x86_64.pkg.tar.zst "usr/lib/libxml2.so.2.13.8"
-    install -Dm 755 "usr/lib/libxml2.so.2.13.8" "${pkgdir}/usr/lib/nordvpn/libxml2.so.2"
 }

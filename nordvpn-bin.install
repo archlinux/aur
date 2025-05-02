@@ -13,10 +13,6 @@ post_install() {
       fi
     fi
   done
-  ## Temporary fix
-  if [[ ! -e /usr/lib/libxml2.so.2 ]] ; then
-    ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib/
-  fi
 }
 
 post_upgrade() {
@@ -31,20 +27,34 @@ post_upgrade() {
       fi
     fi
   done
-  ## Temporary fix
-  if [[ ! -e /usr/lib/libxml2.so.2 ]] ; then
-    ln -s /usr/lib/nordvpn/libxml2.so.2 /usr/lib/
-  fi
 }
 
 pre_install() {
-  if [ -d /var/lib/nordvpn/data/ ]; then
+  if [ -d /var/lib/nordvpn/data/ ] ; then
   	chattr -i /var/lib/nordvpn/data/*
   fi
+  ## Remove symbolic link from latest patch
+  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]] ; then
+    unlink /usr/lib/libxml2.so.2
+  fi
+  echo "::: README"
+  echo "::: Before use, install libxml2-legacy from extra repository."
+  echo "::: It is flagged as optional, but it will be mandatory in next release,"
+  echo "::: in case NordVPN had not built against the new libxml2 just yet."
+  echo "::: 3.20.2-3 was made to remove the symbolic link from previous patch"
 }
 
 pre_upgrade() {
   chattr -i /var/lib/nordvpn/data/*
+  ## Remove symbolic link from latest patch
+  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]] ; then
+    unlink /usr/lib/libxml2.so.2
+  fi
+  echo "::: README"
+  echo "::: Before use, install libxml2-legacy from extra repository."
+  echo "::: It is flagged as optional, but it will be mandatory in next release,"
+  echo "::: in case NordVPN had not built against the new libxml2 just yet."
+  echo "::: 3.20.2-3 was made to remove the symbolic link from previous patch"
 }
 
 pre_remove() {
@@ -57,8 +67,8 @@ pre_remove() {
       fi
     fi
   done
-  ## Temporary fix
-  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]]; then
+  ## Remove symbolic link from latest patch
+  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]] ; then
     unlink /usr/lib/libxml2.so.2
   fi
 }
