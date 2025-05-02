@@ -1,7 +1,7 @@
 # Maintainer: Matt Cuneo <m@cuneo.au>
 pkgname=authentik-outpost
 pkgver=2025.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Identity Provider focused on flexibility and versatility."
 arch=('x86_64')
 url="https://goauthentik.io/"
@@ -39,7 +39,7 @@ package() {
   for outpost in  "${_outposts[@]}"; do
     install -Dm755 "$srcdir/authentik/authentik-outpost-$outpost" -t "$pkgdir/usr/bin/"
     install -Dm644 authentik-outpost.service "$pkgdir/usr/lib/systemd/system/authentik-outpost-$outpost.service"
-    sed -i "s/[outpost]/$outpost/g" "$pkgdir/usr/lib/systemd/system/authentik-outpost-$outpost.service"
+    sed -i "s/\[outpost\]/$outpost/g" "$pkgdir/usr/lib/systemd/system/authentik-outpost-$outpost.service"
     install -Dm644 authentik-outpost.env "$pkgdir/etc/authentik-outpost-$outpost.env"
   done
 }

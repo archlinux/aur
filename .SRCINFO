@@ -1,7 +1,7 @@
 pkgbase = authentik-outpost
 	pkgdesc = Open-source Identity Provider focused on flexibility and versatility.
 	pkgver = 2025.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://goauthentik.io/
 	arch = x86_64
 	license = MIT
