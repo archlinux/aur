@@ -24,10 +24,10 @@
 
 - ✅ **Versatile**: Powerful and easy-to-use CLI tool for various AI tasks
 - 🪶 **Lightweight**: Minimal dependencies with everything you need included
-- 🔄 **API Flexibility**: Works with OpenAI, Ollama, Groq, Claude, Gemini, and any compatible endpoint
+- 🔄 **API Flexibility**: Works with OpenAI, Ollama, Groq, Claude, Gemini, and any OpenAI-compatible endpoint
 - 💬 **Interactive Chat**: Continuous conversation with memory in modern UI
 - 📊 **Streaming Responses**: Real-time output for better user experience
-- 🔍 **Web Search**: Enhance any model with contextual information from the web
+- 🔍 **Web Search**: Enhance any model with contextual information from the web, using advanced content extraction to identify the most relevant information from web pages
 - 📥 **Stdin Processing**: Process piped content by using `{}` placeholder in prompts
 - 🎨 **Markdown Rendering**: Beautiful formatting of markdown and code with syntax highlighting
 - ⚡ **Real-time Markdown**: Stream responses with live updating syntax highlighting and formatting
@@ -47,37 +47,47 @@ See the [Feature Overview](https://nazdridoy.github.io/ngpt/overview/) for more 
 
 
 ## Table of Contents
-- [Quick Start](#quick-start)
 - [Features](#features)
-- [Documentation](#documentation)
 - [Installation](#installation)
+- [Quick Start](#quick-start)
 - [Usage](#usage)
-  - [Documentation](https://nazdridoy.github.io/ngpt/)
-  - [CLI Tool](#as-a-cli-tool)
-- [Configuration](#configuration)
   - [Command Line Options](#command-line-options)
+  - [Documentation](https://nazdridoy.github.io/ngpt/)
+- [Documentation](#documentation)
+- [Configuration](#configuration)
+  - [API Key Setup](#api-key-setup)
+  - [OpenAI API Key](#openai-api-key)
+  - [Google Gemini API Key](#google-gemini-api-key)
   - [CLI Configuration](#cli-configuration)
   - [Interactive Configuration](#interactive-configuration)
   - [Configuration File](#configuration-file)
   - [Configuration Priority](#configuration-priority)
-  - [API Key Setup](#api-key-setup)
-  - [OpenAI API Key](#openai-api-key)
-  - [Google Gemini API Key](#google-gemini-api-key)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Installation
+
+```bash
+# Installation with pip
+pip install ngpt
+
+# Or install with uv (faster installation)
+uv pip install ngpt
+
+# Or install globally as a CLI tool (recommended for command-line usage)
+uv tool install ngpt
+
+# Arch Linux: install from AUR
+paru -S ngpt
+```
+
+Requires Python 3.8 or newer.
+
+For detailed installation instructions, see the [Installation Guide](https://nazdridoy.github.io/ngpt/installation/).
 
 ## Quick Start
 
 ```bash
-# Install with pip
-pip install ngpt
-
-# Or install with uv (faster)
-uv pip install ngpt
-
-# Or install globally as a CLI tool (recommended)
-uv tool install ngpt
-
 # Chat with default settings
 ngpt "Tell me about quantum computing"
 
@@ -162,58 +172,6 @@ ngpt --provider Groq "Explain quantum computing"
 # Compare outputs from different providers
 ngpt --provider OpenAI "Explain quantum physics" > openai_response.txt
 ngpt --provider Ollama "Explain quantum physics" > ollama_response.txt
-```
-
-For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
-
-## Documentation
-
-Comprehensive documentation, including usage guides and examples, is available at:
-
-**[https://nazdridoy.github.io/ngpt/](https://nazdridoy.github.io/ngpt/)**
-
-Key documentation sections:
-- [Installation Guide](https://nazdridoy.github.io/ngpt/installation/)
-- [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/)
-- [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/)
-- [Examples & Tutorials](https://nazdridoy.github.io/ngpt/examples/basic/)
-
-## Installation
-
-```bash
-# Installation with pip
-pip install ngpt
-
-# Or install with uv (faster installation)
-uv pip install ngpt
-
-# Or install globally as a CLI tool (recommended for command-line usage)
-uv tool install ngpt
-
-# Arch Linux: install from AUR
-paru -S ngpt
-```
-
-Requires Python 3.8 or newer.
-
-For detailed installation instructions, see the [Installation Guide](https://nazdridoy.github.io/ngpt/installation/).
-
-## Usage
-
-### As a CLI Tool
-
-```bash
-# Basic chat (default mode)
-ngpt "Hello, how are you?"
-
-# Interactive chat session with conversation history
-ngpt -i
-
-# Log conversation to a file
-ngpt --interactive --log conversation.log
-
-# Use custom system prompt to guide AI behavior
-ngpt --preprompt "You are a Python programming tutor" "Explain decorators"
 
 # Show all API configurations
 ngpt --show-config --all
@@ -239,16 +197,111 @@ ngpt -s "list all files in current directory"
 # On Windows generates: dir
 # On Linux/macOS generates: ls -la
 
-# Generate clean code (using -c or --code flag)
-# Returns only code without markdown formatting or explanations
+# Generate code (using -c or --code flag)
 ngpt -c "create a python function that calculates fibonacci numbers"
 
 # Use multiline text editor for complex prompts (using -t or --text flag)
-# Opens an interactive editor with syntax highlighting and intuitive controls
 ngpt -t
 ```
 
-For more CLI examples and detailed usage information, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
+For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
+
+## Usage
+
+### Command Line Options
+
+```console
+❯ ngpt -h
+usage: ngpt [-h] [-v] [--language LANGUAGE] [--config [CONFIG]] [--config-index CONFIG_INDEX] [--provider PROVIDER]
+            [--remove] [--show-config] [--all] [--list-models] [--list-renderers] [--cli-config [COMMAND ...]]
+            [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--temperature TEMPERATURE]
+            [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]] [--preprompt PREPROMPT] [--no-stream | --prettify |
+            --stream-prettify] [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE]
+            [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
+            [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -p | -r | -g]
+            [prompt]
+
+nGPT - Interact with AI language models via OpenAI-compatible APIs
+
+positional arguments::
+
+[PROMPT]                            The prompt to send
+
+options::
+
+-h, --help                          show this help message and exit
+-v, --version                       Show version information and exit
+--language LANGUAGE                 Programming language to generate code in (for code mode)
+
+Configuration Options::
+
+--config [CONFIG]                   Path to a custom config file or, if no value provided, enter interactive configuration mode to create a new config
+--config-index CONFIG_INDEX         Index of the configuration to use or edit (default: 0)
+--provider PROVIDER                 Provider name to identify the configuration to use
+--remove                            Remove the configuration at the specified index (requires --config and --config-index or --provider)
+--show-config                       Show the current configuration(s) and exit
+--all                               Show details for all configurations (requires --show-config)
+--list-models                       List all available models for the current configuration and exit
+--list-renderers                    Show available markdown renderers for use with --prettify
+--cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
+
+Global Options::
+
+--api-key API_KEY                   API key for the service
+--base-url BASE_URL                 Base URL for the API
+--model MODEL                       Model to use
+--web-search                        Enable web search capability using DuckDuckGo to enhance prompts with relevant information
+--temperature TEMPERATURE           Set temperature (controls randomness, default: 0.7)
+--top_p TOP_P                       Set top_p (controls diversity, default: 1.0)
+--max_tokens MAX_TOKENS             Set max response length in tokens
+--log [FILE]                        Set filepath to log conversation to, or create a temporary log file if no path provided
+--preprompt PREPROMPT               Set custom system prompt to control AI behavior
+--renderer {auto,rich,glow}         Select which markdown renderer to use with --prettify or --stream-prettify (auto, rich, or glow)
+
+Output Display Options (mutually exclusive)::
+
+--no-stream                         Return the whole response without streaming or formatting
+--prettify                          Render complete response with markdown and code formatting (non-streaming)
+--stream-prettify                   Stream response with real-time markdown rendering (default)
+
+Git Commit Message Options::
+
+--rec-chunk                         Process large diffs in chunks with recursive analysis if needed
+--diff [FILE]                       Use diff from specified file instead of staged changes. If used without a path, uses the path from CLI config.
+--chunk-size CHUNK_SIZE             Number of lines per chunk when chunking is enabled (default: 200)
+--analyses-chunk-size ANALYSES_CHUNK_SIZE Number of lines per chunk when recursively chunking analyses (default: 200)
+--max-msg-lines MAX_MSG_LINES       Maximum number of lines in commit message before condensing (default: 20)
+--max-recursion-depth MAX_RECURSION_DEPTH Maximum recursion depth for commit message condensing (default: 3)
+
+Modes (mutually exclusive)::
+
+-i, --interactive                   Start an interactive chat session
+-s, --shell                         Generate and execute shell commands
+-c, --code                          Generate code
+-t, --text                          Enter multi-line text input (submit with Ctrl+D)
+-p, --pipe                          Read from stdin and use content with prompt. Use {} in prompt as placeholder for stdin content
+-r, --rewrite                       Rewrite text from stdin to be more natural while preserving tone and meaning
+-g, --gitcommsg                     Generate AI-powered git commit messages from staged changes or diff file
+```
+
+> **Note**: For better visualization of conventional commit messages on GitHub, you can use the [GitHub Commit Labels](https://greasyfork.org/en/scripts/526153-github-commit-labels) userscript, which adds colorful labels to your commits.
+
+For a complete reference of all available options, detailed CLI examples and usage information, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
+
+
+## Documentation
+
+Comprehensive documentation, including usage guides and examples, is available at:
+
+**[https://nazdridoy.github.io/ngpt/](https://nazdridoy.github.io/ngpt/)**
+
+Key documentation sections:
+- [Installation Guide](https://nazdridoy.github.io/ngpt/installation/)
+- [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/)
+- [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/)
+- [Examples & Tutorials](https://nazdridoy.github.io/ngpt/examples/basic/)
+- [Git Commit Message Guide](https://nazdridoy.github.io/ngpt/usage/gitcommsg/)
+
 
 ## Configuration
 
@@ -281,90 +334,7 @@ For more CLI examples and detailed usage information, see the [CLI Usage Guide](
    # Enter model: gemini-2.0-flash
    ```
 
-### Command Line Options
-
-```console
-❯ ngpt -h
-usage: ngpt [-h] [-v] [--language LANGUAGE] [--config [CONFIG]] [--config-index CONFIG_INDEX] [--provider PROVIDER]
-            [--remove] [--show-config] [--all] [--list-models] [--list-renderers] [--cli-config [COMMAND ...]]
-            [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--temperature TEMPERATURE]
-            [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]] [--preprompt PREPROMPT] [--no-stream] [--prettify]
-            [--stream-prettify] [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE]
-            [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
-            [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -p | -r | -g]
-            [prompt]
-
-nGPT - Interact with AI language models via OpenAI-compatible APIs
-
-positional arguments::
-
-[PROMPT]                            The prompt to send
-
-options::
-
--h, --help                          show this help message and exit
--v, --version                       Show version information and exit
---language LANGUAGE                 Programming language to generate code in (for code mode)
-
-Configuration Options::
-
---config [CONFIG]                   Path to a custom config file or, if no value provided, enter interactive
-                                    configuration mode to create a new config
---config-index CONFIG_INDEX         Index of the configuration to use or edit (default: 0)
---provider PROVIDER                 Provider name to identify the configuration to use
---remove                            Remove the configuration at the specified index (requires --config and
-                                    --config-index or --provider)
---show-config                       Show the current configuration(s) and exit
---all                               Show details for all configurations (requires --show-config)
---list-models                       List all available models for the current configuration and exit
---list-renderers                    Show available markdown renderers for use with --prettify
---cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
-
-Global Options::
-
---api-key API_KEY                   API key for the service
---base-url BASE_URL                 Base URL for the API
---model MODEL                       Model to use
---web-search                        Enable web search capability (Note: Your API endpoint must support this
-                                    feature)
---temperature TEMPERATURE           Set temperature (controls randomness, default: 0.7)
---top_p TOP_P                       Set top_p (controls diversity, default: 1.0)
---max_tokens MAX_TOKENS             Set max response length in tokens
---log [FILE]                        Set filepath to log conversation to, or create a temporary log file if no path
-                                    provided
---preprompt PREPROMPT               Set custom system prompt to control AI behavior
---no-stream                         Return the whole response without streaming
---prettify                          Render markdown responses and code with syntax highlighting and formatting
---stream-prettify                   Enable streaming with markdown rendering (automatically uses Rich renderer)
---renderer {auto,rich,glow}         Select which markdown renderer to use with --prettify (auto, rich, or glow)
-
-Git Commit Message Options::
-
---rec-chunk                         Process large diffs in chunks with recursive analysis if needed
---diff [FILE]                       Use diff from specified file instead of staged changes. If used without a path,
-                                    uses the path from CLI config.
---chunk-size CHUNK_SIZE             Number of lines per chunk when chunking is enabled (default: 200)
---analyses-chunk-size ANALYSES_CHUNK_SIZE
-                                    Number of lines per chunk when recursively chunking analyses (default: 200)
---max-msg-lines MAX_MSG_LINES       Maximum number of lines in commit message before condensing (default: 20)
---max-recursion-depth MAX_RECURSION_DEPTH
-                                    Maximum recursion depth for commit message condensing (default: 3)
-
-Modes (mutually exclusive)::
-
--i, --interactive                   Start an interactive chat session
--s, --shell                         Generate and execute shell commands
--c, --code                          Generate code
--t, --text                          Enter multi-line text input (submit with Ctrl+D)
--p, --pipe                          Read from stdin and use content with prompt. Use {} in prompt as placeholder
-                                    for stdin content
--r, --rewrite                       Rewrite text from stdin to be more natural while preserving tone and meaning
--g, --gitcommsg                     Generate AI-powered git commit messages from staged changes or diff file
-```
-
-> **Note**: For better visualization of conventional commit messages on GitHub, you can use the [GitHub Commit Labels](https://greasyfork.org/en/scripts/526153-github-commit-labels) userscript, which adds colorful labels to your commits.
-
-For a complete reference of all available options, see the [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/).
+For more detailed information, refer to the [API Key Setup documentation](https://nazdridoy.github.io/ngpt/configuration/#api-key-setup).
 
 ### CLI Configuration
 
