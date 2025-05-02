@@ -10,7 +10,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r38.g1fc7fe0e1.0.g1fc7fe0e1
+pkgver=1.4.1.r43.gaf57cfdd0.0.gaf57cfdd0
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
@@ -46,11 +46,12 @@ prepare() {
 }
 
 build() {
-  export LDFLAGS="-Wl,--copy-dt-needed-entries"
+  #export LDFLAGS="-Wl,--copy-dt-needed-entries"
+  export CXXFLAGS+=" -Wno-error=cpp"
 
   local _flags=(
-    -DCMAKE_CXX_FLAGS="-fpermissive"
-    -DCMAKE_CXX_STANDARD=17
+    #-DCMAKE_CXX_FLAGS="-fpermissive"
+    #-DCMAKE_CXX_STANDARD=17
     -DUSE_SYSTEM_PROJECTM=ON
     -DUSE_SYSTEM_TAGLIB=ON
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
