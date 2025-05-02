@@ -8,10 +8,10 @@
 </p>
 
 <p align="center">
-  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/Linux-support-blue?logo=linux" alt="Linux"></a>
-  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/Windows-support-blue?logo=windows" alt="Windows"></a>
-  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/macOS-support-blue?logo=apple" alt="macOS"></a>
-  <a href="https://nazdridoy.github.io/ngpt/installation/"><img src="https://img.shields.io/badge/Android-Termux-blue?logo=android" alt="Android"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/#linuxmacos"><img src="https://img.shields.io/badge/Linux-support-blue?logo=linux" alt="Linux"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/#windows"><img src="https://img.shields.io/badge/Windows-support-blue?logo=windows" alt="Windows"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/#linuxmacos"><img src="https://img.shields.io/badge/macOS-support-blue?logo=apple" alt="macOS"></a>
+  <a href="https://nazdridoy.github.io/ngpt/installation/#android-termux"><img src="https://img.shields.io/badge/Android-Termux-blue?logo=android" alt="Android"></a>
 </p> 
 
 🤖 nGPT: A Swiss army knife for LLMs: powerful CLI and interactive chatbot in one package. Seamlessly work with OpenAI, Ollama, Groq, Claude, Gemini, or any OpenAI-compatible API to generate code, craft git commits, rewrite text, and execute shell commands. Fast, lightweight, and designed for both casual users and developers.
