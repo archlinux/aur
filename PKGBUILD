@@ -9,7 +9,7 @@ arch=(x86_64)
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=(GPL-3.0-only)
 makedepends=(cmake ninja)
-depends=(fluidsynth fontconfig hicolor-icon-theme lzo)
+depends=(fluidsynth fontconfig hicolor-icon-theme lzo sdl2-compat)
 options=(!debug !lto)
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-$pkgver.tar.gz")
 b2sums=('6caa421286d0863689b541cdad70c3224b6ec1a8a1a174fe0dab889026ca03f8caeeb60c94b747c66cd51ad3d3afd75f11a079d4ccca4153b1833be2c3b65947')
