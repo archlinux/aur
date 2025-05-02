@@ -5,14 +5,14 @@
 
 pkgname=zrythm
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities"
 arch=('x86_64' 'aarch64')
 url="https://www.zrythm.org/"
 license=('LicenseRef-ZrythmLicense')
 depends=(
   'bash'
-  'carla-git'
+  'carla'
   'cairo'
   'curl'
   'dconf'
@@ -106,9 +106,6 @@ package() {
   # Install the custom license file
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSES/LicenseRef-ZrythmLicense.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LicenseRef-ZrythmLicense.txt"
-
-  # Clean up any paths referencing ${srcdir}
-  find "${pkgdir}" -type f -exec sed -i "s|${srcdir}|/usr/share/zrythm|g" {} +
 }
 
 # vim:set ts=2 sw=2 et:

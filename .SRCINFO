@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = A feature-rich digital audio workstation with support for various plugin formats and advanced audio processing capabilities
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.zrythm.org/
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = zrythm
 	makedepends = meson
 	makedepends = sassc
 	depends = bash
-	depends = carla-git
+	depends = carla
 	depends = cairo
 	depends = curl
 	depends = dconf
