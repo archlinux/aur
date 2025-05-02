@@ -1,10 +1,3 @@
-###
-# @Author: timochan
-# @Date: 2025-04-14 15:48:35
- # @LastEditors: timochan
- # @LastEditTime: 2025-05-02 21:12:07
- # @FilePath: /follow-appimage/PKGBUILD
-###
 _pkgname=follow
 _Pkgname=Folo
 _disname=Folo
