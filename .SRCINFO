@@ -1,0 +1,17 @@
+pkgbase = hyprland-dynamic-border-git
+	pkgdesc = Dynamic border color based on visuals in Hyprland using hyprctl
+	pkgver = 0.0.0.r5.g687c0b7
+	pkgrel = 1
+	url = https://github.com/StaringLongingly/hyprland-dynamic-border
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = rust
+	depends = hyprland
+	provides = hyprland-dynamic-border
+	conflicts = hyprland-dynamic-border
+	source = git+https://github.com/StaringLongingly/hyprland-dynamic-border.git
+	sha256sums = SKIP
+
+pkgname = hyprland-dynamic-border-git
