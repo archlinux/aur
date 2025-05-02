@@ -1,0 +1,61 @@
+Description: fix some compiler and cppcheck warnings
+ - Remove two unused variables;
+ - Fix a memory leak when realloc() fails.
+Author: Dmitry Shachnev <mitya57@gmail.com>
+Forwarded: no
+Last-Update: 2013-04-11
+
+--- a/woff.c
++++ b/woff.c
+@@ -127,6 +127,7 @@
+            uint32_t * woffLen, uint32_t * pStatus)
+ {
+   uint8_t * woffData = NULL;
++  uint8_t * woffDataNew = NULL;
+   tableOrderRec * tableOrder = NULL;
+ 
+   uint32_t tableOffset;
+@@ -137,7 +138,6 @@
+   uint16_t tableIndex;
+   uint16_t order;
+   const sfntDirEntry * sfntDir;
+-  uint32_t tableBase;
+   uint32_t checkSumAdjustment = 0;
+   woffHeader * newHeader;
+   uint32_t tag = 0;
+@@ -295,8 +295,10 @@
+     if (tableOffset + destLen < tableOffset) {
+       FAIL(eWOFF_invalid);
+     }
+-    woffData = (uint8_t *) realloc(woffData, tableOffset + destLen);
+-    if (!woffData) {
++    woffDataNew = (uint8_t *) realloc(woffData, tableOffset + destLen);
++    if (woffDataNew) {
++      woffData = woffDataNew;
++    } else {
+       FAIL(eWOFF_out_of_memory);
+     }
+ 
+@@ -321,9 +323,11 @@
+       if (tableOffset + LONGALIGN(sourceLen) < tableOffset) {
+         FAIL(eWOFF_invalid); /* overflow, bail out */
+       }
+-      woffData = (uint8_t *) realloc(woffData,
+-                                     tableOffset + LONGALIGN(sourceLen));
+-      if (!woffData) {
++      woffDataNew = (uint8_t *) realloc(woffData,
++                                        tableOffset + LONGALIGN(sourceLen));
++      if (woffDataNew) {
++        woffData = woffDataNew;
++      } else {
+         FAIL(eWOFF_out_of_memory);
+       }
+       /* copy the original data into place */
+@@ -435,7 +439,6 @@
+   const woffHeader * origHeader;
+   const woffDirEntry * woffDir;
+   uint8_t * newData = NULL;
+-  uint8_t * tableData = NULL;
+   woffHeader * newHeader;
+   uint16_t numTables;
+   uint32_t tableLimit, totalSize, offset;
