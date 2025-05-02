@@ -1,6 +1,6 @@
 pkgbase = odin-git
 	pkgdesc = A fast, concise, readable, pragmatic and open sourced programming language.
-	pkgver = r11214.f1779c85d
+	pkgver = r14462.7027d3759
 	pkgrel = 1
 	url = https://github.com/odin-lang/odin
 	arch = x86_64
