@@ -1,0 +1,17 @@
+pkgbase = roumon
+	pkgdesc = Universal goroutine monitor using pprof and termui
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/becheran/roumon
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/becheran/roumon/archive/refs/tags/v1.2.0/roumon-1.2.0.tar.gz
+	sha256sums = e6b63975bd3bc9df06929c07aa894421de849a84f4f6d9df318f37647e90189b
+
+pkgname = roumon
