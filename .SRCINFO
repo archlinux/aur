@@ -1,5 +1,5 @@
 pkgbase = libxml2-compat
-	pkgdesc = Makes /usr/lib/libxml2.so.2 reappear
+	pkgdesc = Makes /usr/lib/libxml2.so.2 reappear by symlinking it to libxml2.so
 	pkgver = 1
 	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/issues/901
