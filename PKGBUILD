@@ -19,7 +19,7 @@ depends=(kcoreaddons kconfig ki18n kcodecs iso-codes pipewire ffmpeg libepoxy)
 makedepends=(git extra-cmake-modules doxygen qt5-tools qt5-wayland kwayland plasma-wayland-protocols)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-groups=(kf5-git)
+groups=(kf6-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git"
 "https://invent.kde.org/endlesseden/kpipewire/-/commit/021d6ff710e2b6231df78c1c2ae9950ba336e86d.patch")
 sha256sums=('SKIP'
