@@ -1,26 +1,31 @@
 pkgbase = starcal
-	pkgdesc = A full-featured international calendar writen in Python
-	pkgver = 3.1.1
+	pkgdesc = A full-featured international calendar written in Python
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = http://ilius.github.io/starcal
 	arch = any
 	license = GPLv3
-	makedepends = gettext
-	depends = python>=3.2
-	depends = python-gobject
-	depends = python-httplib2
-	depends = python-psutil
-	depends = python-dateutil
+	makedepends = libarchive
+	depends = python>=3.8
+	depends = python-gobject>=3.24
+	depends = gtksourceview4
 	depends = python-cairo
+	depends = python-httplib2
+	depends = python-dateutil
+	depends = python-psutil
+	depends = python-cachetools
 	depends = python-requests
+	depends = python-setuptools
+	depends = python-six
+	optdepends = libappindicator-gtk3
 	optdepends = python-igraph
-	optdepends = libappindicator-gtk3: Better systray support
-	optdepends = python-igraph
-	optdepends = python-ujson
+	optdepends = igraph
+	optdepends = icu
 	optdepends = lxqt-openssh-askpass
+	optdepends = python-pygit2
+	optdepends = ntp
 	conflicts = starcal-git
-	source = https://github.com/ilius/starcal/archive/3.1.1.tar.gz
-	md5sums = e6b028370f36b514413ebc90cd13d941
+	source = https://github.com/ilius/starcal/releases/download/3.2.4/starcal3-3.2.4-1-any.pkg.tar.zst
+	md5sums = bc1c7e3b99787db7e51928c1f067d7b1
 
 pkgname = starcal
-
