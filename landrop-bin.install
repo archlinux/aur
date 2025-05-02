@@ -1,0 +1,18 @@
+post_install() {
+  # Update desktop database, icon cache and mime types
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  
+  echo "LANDrop has been installed."
+  echo "You can run it from your application menu or by typing 'landrop' in your terminal."
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  # Update desktop database and icon cache
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
