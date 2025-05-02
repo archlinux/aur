@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-# Copyright 2018 Gliim LLC. 
+# Copyright 2018-2025 Gliim LLC. 
 # Licensed under Apache License v2. See LICENSE file.
 # On the web http://golf-lang.com/ - this file is part of Golf framework.
 
@@ -9,7 +9,7 @@
 
 # Maintainer: Gliim LLC <team@golf-lang.com>
 pkgname=golf
-pkgver=501
+pkgver=511
 pkgrel=0
 epoch=
 pkgdesc="Programming language and application server for building and running web services and web applications. High performance and memory-safe."
