@@ -1,12 +1,11 @@
 pkgbase = dooit-bin
 	pkgdesc = A todo manager that you didn't ask for, but needed!
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kraanzu/dooit
 	arch = x86_64
 	license = MIT
 	makedepends = tar
-	makedepends = help2man
 	depends = glibc
 	provides = dooit
 	conflicts = dooit
