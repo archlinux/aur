@@ -3,7 +3,7 @@
 
 pkgname=rclone-browser
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple cross-platform GUI for rclone"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/kapitainsky/RcloneBrowser"
@@ -26,6 +26,7 @@ build() {
   cd "${srcdir}/RcloneBrowser-${pkgver}/build"
   cmake .. -Wno-dev \
     -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None
 }
 
