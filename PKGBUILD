@@ -2,20 +2,19 @@
 
 pkgname=tree-sitter-toml
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Toml grammar for tree-sitter with queries'
 arch=('x86_64')
 _reponame=tree-sitter-toml
 url=https://github.com/ikatyang/$_reponame
 license=('MIT')
 makedepends=('git' 'tree-sitter-cli' 'npm')
-source=("source.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-conflicts=('tree-sitter-toml')
+source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('23be3c5d7e65b60460f2a31994c808cfc154aab2ac93c4f51041525986bee337')
 
 prepare() {
   cd $_reponame-$pkgver
-  tree-sitter generate --no-bindings src/grammar.json
+  tree-sitter generate src/grammar.json
 }
 
 build() {
@@ -25,7 +24,7 @@ build() {
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/lib$_reponame.so.0.0"
+  install -Dvm 644 parser.so "$pkgdir/usr/lib/lib$_reponame.so.0.0"
   install -d "$pkgdir"/usr/lib/tree_sitter
   ln -s /usr/lib/lib$_reponame.so.0.0 "$pkgdir"/usr/lib/tree_sitter/${_reponame#tree-sitter-}.so
   ln -s lib$_reponame.so.0.0 "$pkgdir/usr/lib/lib$_reponame.so.0"
