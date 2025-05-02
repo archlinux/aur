@@ -5,5 +5,6 @@ pkgbase = libxml2-compat
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/issues/901
 	arch = any
 	depends = libxml2
+	conflicts = libxml2-legacy
 
 pkgname = libxml2-compat
