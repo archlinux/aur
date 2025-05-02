@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=LauncherX
+Comment=下一代 Minecraft 启动器
+Exec=/usr/bin/launcherx
+Icon=LauncherX
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true

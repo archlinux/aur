@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+env LC_ALL=zh_CN.UTF-8 /usr/bin/LauncherX.Avalonia "$@" &
