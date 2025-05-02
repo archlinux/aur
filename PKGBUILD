@@ -3,7 +3,7 @@
 # Contributor : Florent H. CARRÉ<colundrum@users.noreply.github.com>
 
 pkgname=gprof2dot
-pkgver=2024.06.06
+pkgver=2025.04.14
 pkgrel=1
 pkgdesc='A Python script to convert the output from many profilers into a dot graph.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'graphviz')
 makedepends=('python-setuptools')
 provides=(gprof2dot)
 source=("https://github.com/jrfonseca/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c9a746c2883cbe643535204ab8464a826f1cc7ddcdde7052186b10d99e79e285')
+sha256sums=('47521b4fb13edeceb6af45503d1af84165fe84866a06c50e738e8a0b7a7bd924')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
