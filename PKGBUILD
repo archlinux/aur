@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=teaftp
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Simple, read-only TFTP server'
 arch=(x86_64)
 url='https://github.com/xyproto/teaftp'
 license=(BSD)
 makedepends=(git go)
-source=("git+$url#commit=27e21c589f95d823c60d0079d02246a3bfcb314f") # tag: v1.3.0
-b2sums=(SKIP)
+source=("git+$url#tag=v$pkgver")
+b2sums=('b651ea10c490bbac0b61ea972afc423fd3885d31d1bb4ef3724740def601ded062955a622fe72b02993dfc356739ada363265ca1e185c0e65cd83ba5766c69f0')
 
 build() {
   cd $pkgname
