@@ -1,0 +1,8 @@
+post_install() {
+
+  /opt/brother/Printers/mfct910dw/cupswrapper/cupswrappermfct910dw
+}
+ 
+op=$1
+shift
+$op $*

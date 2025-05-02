@@ -2,7 +2,7 @@
 
 pkgname=brother-mfct910dw
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Brother MFC-T910dw CUPS driver'
 arch=(x86_64)
 url='https://support.brother.com'
@@ -11,6 +11,7 @@ source=("https://download.brother.com/welcome/dlf103626/mfct910dwpdrv-1.0.0-0.i3
 sha256sums=('0bb379f6bf5f19551e42e8c1bbfc7d59d30e56930d91163d0fd83e1d4fbc7f38')
 depends=('cups' 'ghostscript')
 noextract=()
+install=$pkgname.install
 
 prepare() {
     tar -zxvf data.tar.gz
@@ -29,7 +30,3 @@ package() {
     chmod 755 $pkgdir/opt/brother
 }   
 
-post_install() {
-	/opt/brother/Printers/mfct910dw/inf/setupPrintcapij mfct910dw -i USB 
-    /opt/brother/Printers/mfct910dw/cupswrapper/cupswrappermfct910dw
-}
