@@ -1,6 +1,6 @@
 pkgbase = packemon
 	pkgdesc = A TUI tool for sending packets of arbitrary input and monitoring packets on any network interfaces.
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/ddddddO/packemon
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = packemon
 	depends = glibc
 	options = strip
 	options = buildflags
-	source = https://github.com/ddddddO/packemon/archive/refs/tags/v1.5.5/packemon-1.5.5.tar.gz
-	sha256sums = 9dfbf6f62b20153bf66163e9e15caef7c797f1eb22cd4c1f333be842763f270c
+	source = https://github.com/ddddddO/packemon/archive/refs/tags/v1.5.6/packemon-1.5.6.tar.gz
+	sha256sums = 8a2216e7e741e115393fec2471a68901f09ee222a38ffafe6890e84ac19937b0
 
 pkgname = packemon
