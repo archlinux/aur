@@ -1,6 +1,6 @@
 pkgbase = vivify-bin
 	pkgdesc = Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/jannis-baum/vivify
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vivify-bin
 	provides = vivify
 	conflicts = vivify
 	options = !strip
-	source = vivify-bin-0.7.0.tar.gz::https://github.com/jannis-baum/vivify/releases/download/v0.7.0/vivify-linux.tar.gz
-	sha256sums = 88081c6846f675c55e92e7acd0ab0d9b410b2adc4030d3269e542efa3e4e7514
+	source = vivify-bin-0.8.0.tar.gz::https://github.com/jannis-baum/vivify/releases/download/v0.8.0/vivify-linux.tar.gz
+	sha256sums = 4c7ff4f1d6dee80bb87242b58ed4302a4b5ef5feb61dce9f80e84127a21377d0
 
 pkgname = vivify-bin
