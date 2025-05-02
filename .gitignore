@@ -1,0 +1,18 @@
+# Ignore Build Files
+pkg/
+src/
+mvisor/
+
+# Compressed Files
+*tar.bz2
+*tar.xz
+*.pkg.tar.zst
+*.pkg
+*tar.gz
+*.part
+
+# Text Files
+*.log
+
+# Signed Files
+*.sig

@@ -1,0 +1,92 @@
+diff -Nru ../orig/config/i440fx.yaml ./config/i440fx.yaml
+index 43a29b0..0bcd563 100644
+--- ../orig/config/i440fx.yaml
++++ ./config/i440fx.yaml
+@@ -3,7 +3,7 @@ name: i440fx-machine
+ machine:
+   memory: 4G
+   vcpu: 4
+-  bios: ../share/bios-256k.bin
++  bios: /usr/share/mvisor/bios-256k.bin
+ 
+ objects:
+ # Use the old name pci-host instead of i440fx-host for compatibility
+diff -Nru ../orig/config/q35.yaml ./config/q35.yaml
+index d4d8759..ee8318d 100644
+--- ../orig/config/q35.yaml
++++ ./config/q35.yaml
+@@ -3,7 +3,7 @@ name: q35-machine
+ machine:
+   memory: 4G
+   vcpu: 4
+-  bios: ../share/bios-256k.bin
++  bios: /usr/share/mvisor/bios-256k.bin
+ 
+ objects:
+ # Use the old name pci-host instead of q35-host for compatibility
+diff -Nru ../orig/core/configuration.cc ./core/configuration.cc
+index 8006d83..0d3fbc7 100644
+--- ../orig/core/configuration.cc
++++ ./core/configuration.cc
+@@ -245,7 +245,7 @@ void Configuration::LoadMachine(const YAML::Node& node) {
+   if (node["bios"]) {
+     bios_path_ = FindPath(node["bios"].as<std::string>());
+   } else {
+-    bios_path_ = FindPath("../share/bios-256k.bin");
++    bios_path_ = FindPath("/usr/share/mvisor/bios-256k.bin");
+   }
+   if (node["debug"]) {
+     machine_->debug_ = node["debug"].as<bool>();
+diff -Nru ../orig/devices/display/qxl/qxl.cc ./devices/display/qxl/qxl.cc
+index 45d57f3..457080e 100644
+--- ../orig/devices/display/qxl/qxl.cc
++++ ./devices/display/qxl/qxl.cc
+@@ -35,7 +35,7 @@
+ 
+ Qxl::Qxl() {
+   /* PCI config */
+-  default_rom_path_ = "../share/vgabios-qxl.bin";
++  default_rom_path_ = "/usr/share/mvisor/vgabios-qxl.bin";
+   pci_header_.vendor_id = 0x1B36;
+   pci_header_.device_id = 0x0100;
+   pci_header_.class_code = 0x030000;
+diff -Nru ../orig/devices/display/vg../orig/vga.cc ./devices/display/vg../orig/vga.cc
+index 1e82654..c44cbf6 100644
+--- ../orig/devices/display/vga/vga.cc
++++ ./devices/display/vga/vga.cc
+@@ -36,7 +36,7 @@
+ 
+ 
+ Vga::Vga() {
+-  default_rom_path_ = "../share/vgabios-stdvga.bin";
++  default_rom_path_ = "/usr/share/mvisor/vgabios-stdvga.bin";
+   
+   /* PCI config */
+   pci_header_.vendor_id = 0x1234;
+diff -Nru ../orig/main.cc ./main.cc
+index d355d51..1d68ee6 100644
+--- ../orig/main.cc
++++ ./main.cc
+@@ -124,7 +124,7 @@ int main(int argc, char* argv[]) {
+   IntializeArguments(argc, argv);
+   SetThreadName("mvisor");
+ 
+-  std::string config_path = "../config/default.yaml";
++  std::string config_path = "sample.yaml";
+   std::string vm_uuid, vm_name;
+   std::string sweet_path;
+   std::string pid_path;
+diff -Nru ../orig/meson.build ./meson.build
+index ff868fd..d2221f2 100644
+--- ../orig/meson.build
++++ ./meson.build
+@@ -3,9 +3,7 @@ project('mvisor', 'c', 'cpp',
+   license: 'GPLv3',
+   default_options: [
+     'buildtype=debugoptimized',
+-    'warning_level=2',
+     'cpp_std=c++17',
+-    'werror=true'
+   ]
+ )
+ 
