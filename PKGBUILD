@@ -1,17 +1,17 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=chawan-git
-pkgver=r3338.4e3e3c4c
+pkgver=r3495.a3ef823e
 pkgrel=1
 pkgdesc="Web browser for your terminal"
 arch=(i686 x86_64)
 url="https://git.sr.ht/~bptato/${pkgname%-git}"
 license=(Unlicense)
 depends=(
+  brotli
   gcc-libs
   glibc
   libssh2
-  ncurses
   openssl
   sh
 )
@@ -19,7 +19,6 @@ makedepends=(
   git
   "nim>=2.0.0"
 )
-optdepends=('termcap: to use display computer terminals in a device-independent manner')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=(!debug)
