@@ -77,14 +77,15 @@ package() {
 	# Install build to /opt
 	cd ${srcdir}
 	mkdir -p "${pkgdir}"/opt
-	mv  "${pkgname}-${_pkgver}" ${pkgdir}/opt/${pkgname} || return 1
+	mv "${pkgname}-${_pkgver}" ${pkgdir}/opt/${pkgname} || return 1
 
 	# run OMNeT++ as a normal user
+	mkdir -p ${pkgdir}/opt/${pkgname}/ide
 	touch ${pkgdir}/opt/${pkgname}/ide/error.log
 	chmod 777 ${pkgdir}/opt/${pkgname}/ide/error.log
 
 	# copy profile.d file
-	mkdir -p ${pkgdir}/etc/profile.d/
+	mkdir -p ${pkgdir}/etc/profile.d
 	cp omnetpp.sh ${pkgdir}/etc/profile.d/
 
 	# copy desktop shortcut
@@ -92,6 +93,8 @@ package() {
 	cp OMNeT++.desktop ${pkgdir}/usr/share/applications/
 
 	# Install License
+	mkdir -p ${pkgdir}/opt/${pkgname}/doc
 	cd ${pkgdir}/opt/${pkgname}/doc
 	install -D -m644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
