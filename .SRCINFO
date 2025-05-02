@@ -1,0 +1,12 @@
+pkgbase = xmas
+	pkgdesc = A cat, sitting on a wall, near a Xmas tree, is gazing starry picturesque night
+	pkgver = 2022.1
+	pkgrel = 1
+	url = https://github.com/nasyxx/xmas.py
+	arch = any
+	license = GPL-3.0-only
+	depends = python>=3.8
+	source = https://files.pythonhosted.org/packages/d3/2a/31ccf7290e08757433da0492c6a214d2a4ff3059378b0366055db3265c0a/xmas-2022.1.tar.gz
+	sha256sums = 1ab9b916339c01c3ca9712c28584b5c222df5acb70366477b6c0821a46c35b0f
+
+pkgname = xmas
