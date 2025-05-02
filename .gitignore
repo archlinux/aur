@@ -1,0 +1,6 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.snap
+*.sh
+.gitconfig
