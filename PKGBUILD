@@ -5,7 +5,7 @@
 
 pkgname="rpcs3"
 pkgver=0.0.36
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source PlayStation 3 emulator/debugger written in C++"
 arch=('aarch64' 'x86_64')
 url="https://rpcs3.net"
@@ -24,10 +24,12 @@ options=('!lto' '!strip')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}_qt690_atomic.patch" # ::${_url}/commit/600e4604169464c64cbf548e7629e483ad2aad1e.patch?full_index=1"
-        "${pkgname}_qt690_setDefaultSectionSize.patch::${_url}/commit/9c5b3a2300b3ac44b897813ebc1cb0949c3b3e6d.patch?full_index=1")
+        "${pkgname}_qt690_setDefaultSectionSize.patch::${_url}/commit/9c5b3a2300b3ac44b897813ebc1cb0949c3b3e6d.patch?full_index=1"
+        "${pkgname}_gcc15_cstdint.patch")
 b2sums=('7b1cfb7ee71ccdf54a60a440d2fa7e8966af4e9d39623423021c3d6b8ea9b2b0a406028e35bb45147df90c3ed5bbdadae4fef234246384640d9c391a69efb0d4'
         '68f9e3283f5194e56449441d45b83b47863db4eaea3586aaa73f37a1c8328495a1e4e64398698cbf3059ecc4d17295a192c79596eca7b595f7f1bc5921dc568c'
         '8f837d3ca400c2de1667cc639b450a91ee42c6efb88d4036926d7ef06b30031451c220d1f43680b002c480bfb0c5e726ad2db14f98517060c8b74fad556dacc3'
+        '3e7f2aa4266de572fec54dfb8521ea6fd8acf36e8b9752e4280e6d56d737ec87a5a8a1ac6b287a948453735a89e3d3c0614e6ca1716dd3676e4c9d080d016578'
         '923bfada8484a3bb91dd92a242d7096017b77fd399a90052af121658221069215e277d51fb4b9b95821b9272e44618f91883c2dc49bfb671c52a941d54aec182'
         '0e60f4230975ccf83f1cd82e4effdac4e4e7a8eaa718f6244a132f727d15df3f0d264812b741fa770ff1c1e12e49bf017c126035cb234d66cec0bc9a2bae67e5'
         '17b054083ce178255f19026d175986225f6f803a21e0cef4ce9a557ac50057578d3ae76d3b179fe25d0febd5e05d5d5feb28f9761045a8e41497b92a966196ec'
@@ -175,6 +177,7 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/${pkgname}_qt690_atomic.patch"
   patch -Np1 -i "${srcdir}/${pkgname}_qt690_setDefaultSectionSize.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_gcc15_cstdint.patch"
 
   cd "${pkgname}"
   sed -e "s/set(RPCS3_GIT_VERSION \"local_build\")/set(RPCS3_GIT_VERSION \"${pkgver}+AUR-${pkgrel}\")/g" \
@@ -190,29 +193,29 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
-    -Wno-dev
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-    -DCMAKE_SKIP_RPATH=ON
-    -DCMAKE_LINKER=lld
-    -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld" \
-    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
-    -DUSE_NATIVE_INSTRUCTIONS=OFF # disable '-march=native'
-    -DUSE_SYSTEM_FAUDIO=ON
-    -DUSE_SYSTEM_CURL=ON
-    -DUSE_SYSTEM_FFMPEG=ON
-    -DUSE_SYSTEM_FLATBUFFERS=ON
-    -DUSE_SYSTEM_LIBPNG=ON
-    -DUSE_SDL=ON
-    -DUSE_SYSTEM_SDL=ON
-    -DUSE_SYSTEM_LIBUSB=ON
-    -DWITH_LLVM=ON
-    -DBUILD_LLVM=OFF
-    -DUSE_SYSTEM_OPENCV=ON
-    -DUSE_SYSTEM_PUGIXML=ON
-    -DUSE_SYSTEM_WOLFSSL=OFF
-    -DUSE_SYSTEM_ZLIB=ON
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5
+    -D CMAKE_SKIP_RPATH=ON
+    -D CMAKE_LINKER=lld
+    -D CMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld"
+    -D CMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
+    -D USE_NATIVE_INSTRUCTIONS=OFF # disable '-march=native'
+    -D USE_SYSTEM_FAUDIO=ON
+    -D USE_SYSTEM_CURL=ON
+    -D USE_SYSTEM_FFMPEG=ON
+    -D USE_SYSTEM_FLATBUFFERS=ON
+    -D USE_SYSTEM_LIBPNG=ON
+    -D USE_SDL=ON
+    -D USE_SYSTEM_SDL=ON
+    -D USE_SYSTEM_LIBUSB=ON
+    -D WITH_LLVM=ON
+    -D BUILD_LLVM=OFF
+    -D USE_SYSTEM_OPENCV=ON
+    -D USE_SYSTEM_PUGIXML=ON
+    -D USE_SYSTEM_WOLFSSL=OFF
+    -D USE_SYSTEM_ZLIB=ON
   )
 
   cd "${srcdir}"

@@ -3,4 +3,5 @@
 !.SRCINFO
 !.gitignore
 !.nvchecker.toml
-!rpcs3_qt690_atomic.patch
+!*.patch
+rpcs3_qt690_setDefaultSectionSize.patch

@@ -1,7 +1,7 @@
 pkgbase = rpcs3
 	pkgdesc = An open-source PlayStation 3 emulator/debugger written in C++
 	pkgver = 0.0.36
-	pkgrel = 3
+	pkgrel = 4
 	url = https://rpcs3.net
 	arch = aarch64
 	arch = x86_64
@@ -49,6 +49,7 @@ pkgbase = rpcs3
 	source = rpcs3-0.0.36.tar.gz::https://github.com/RPCS3/rpcs3/archive/refs/tags/v0.0.36.tar.gz
 	source = rpcs3_qt690_atomic.patch
 	source = rpcs3_qt690_setDefaultSectionSize.patch::https://github.com/RPCS3/rpcs3/commit/9c5b3a2300b3ac44b897813ebc1cb0949c3b3e6d.patch?full_index=1
+	source = rpcs3_gcc15_cstdint.patch
 	source = glslang-36d08c0d940cf307a23928299ef52c7970d8cee6.tar.gz::https://github.com/KhronosGroup/glslang/archive/36d08c0d940cf307a23928299ef52c7970d8cee6.tar.gz
 	source = wolfssl-239b85c80438bf60d9a5b9e0ebe9ff097a760d0d.tar.gz::https://github.com/wolfSSL/wolfssl/archive/239b85c80438bf60d9a5b9e0ebe9ff097a760d0d.tar.gz
 	source = asmjit-416f7356967c1f66784dc1580fe157f9406d8bff.tar.gz::https://github.com/asmjit/asmjit/archive/416f7356967c1f66784dc1580fe157f9406d8bff.tar.gz
@@ -70,6 +71,7 @@ pkgbase = rpcs3
 	b2sums = 7b1cfb7ee71ccdf54a60a440d2fa7e8966af4e9d39623423021c3d6b8ea9b2b0a406028e35bb45147df90c3ed5bbdadae4fef234246384640d9c391a69efb0d4
 	b2sums = 68f9e3283f5194e56449441d45b83b47863db4eaea3586aaa73f37a1c8328495a1e4e64398698cbf3059ecc4d17295a192c79596eca7b595f7f1bc5921dc568c
 	b2sums = 8f837d3ca400c2de1667cc639b450a91ee42c6efb88d4036926d7ef06b30031451c220d1f43680b002c480bfb0c5e726ad2db14f98517060c8b74fad556dacc3
+	b2sums = 3e7f2aa4266de572fec54dfb8521ea6fd8acf36e8b9752e4280e6d56d737ec87a5a8a1ac6b287a948453735a89e3d3c0614e6ca1716dd3676e4c9d080d016578
 	b2sums = 923bfada8484a3bb91dd92a242d7096017b77fd399a90052af121658221069215e277d51fb4b9b95821b9272e44618f91883c2dc49bfb671c52a941d54aec182
 	b2sums = 0e60f4230975ccf83f1cd82e4effdac4e4e7a8eaa718f6244a132f727d15df3f0d264812b741fa770ff1c1e12e49bf017c126035cb234d66cec0bc9a2bae67e5
 	b2sums = 17b054083ce178255f19026d175986225f6f803a21e0cef4ce9a557ac50057578d3ae76d3b179fe25d0febd5e05d5d5feb28f9761045a8e41497b92a966196ec

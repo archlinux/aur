@@ -1,0 +1,10 @@
+--- a/3rdparty/glslang/glslang/SPIRV/SpvBuilder.h
++++ b/3rdparty/glslang/glslang/SPIRV/SpvBuilder.h
+@@ -60,6 +60,7 @@
+ #include <memory>
+ #include <set>
+ #include <sstream>
++#include <cstdint>
+ #include <stack>
+ #include <unordered_map>
+ #include <map>
