@@ -1,6 +1,6 @@
-# Maintainer: Dmitriy Beskrovnyi <dimatematik at gmail dot com>
+# Maintainer: Dmitry Beskrovny <dimatematik at gmail dot com>
 pkgname=omm
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='"on-my-mind": A keyboard-driven task manager for the command line'
 arch=('x86_64' 'i686' 'arm64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('omm-bin' 'omm-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dhth/omm/archive/v${pkgver}.tar.gz")
-sha256sums=('2f6b728351ad114680d74acf052739bde6ca44f7275a60e04d8915c6cf8bd927')
+sha256sums=('bae547f05b8d349c10982cf4380d917f3b3e05004c9282f58b7335077a822363')
 
 prepare() {
   cd "$pkgname-$pkgver"
