@@ -5,7 +5,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -21,12 +21,14 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${p
         fixes_boost.patch
         fixes_cgal.patch
         fixes_nanosvg.patch
-        integrate_occtwrapper.patch)
+        integrate_occtwrapper.patch
+        boost-1.88.patch)
 sha256sums=('ee0efd43729ae4a0dc16372f6a562d577e482f62e9b1851d8a5f30c61d9f317d'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
             '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
             'ecd2e2a367ca08cea7178f3807f5b59e318ac601fc6d8976910f99a6362f5213'
-            'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223')
+            'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223'
+            '75d240f20ac5a9da8a780500dd9756af8c6d13edddaf25ff99673d42eabf3d7a')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
@@ -41,6 +43,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/fixes_cgal.patch
   patch -Np1 -i "${srcdir}"/fixes_nanosvg.patch
   patch -Np1 -i "${srcdir}"/integrate_occtwrapper.patch
+  patch -Np1 -i "${srcdir}"/boost-1.88.patch
 }
 
 build() {
