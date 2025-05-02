@@ -11,6 +11,10 @@ arch=("x86_64")
 url='https://pypi.org/project/issurge/'
 license=("None")
 depends=()
+optdepends=(
+	"github-cli: for creating issues on GitHub"
+	"glab: for creating issues on GitLab"
+)
 makedepends=(
 	"python-build"
 	"python-installer"

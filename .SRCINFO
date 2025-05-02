@@ -10,6 +10,8 @@ pkgbase = issurge
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-hatchling
+	optdepends = github-cli: for creating issues on GitHub
+	optdepends = glab: for creating issues on GitLab
 	source = https://files.pythonhosted.org/packages/42/60/e613d293771314640a7011ed785e05b21530bbfcb3130fb02d74a46193df/issurge-1.0.1.tar.gz
 	sha256sums = 18d1f5b150f0f01e418b068c2d39fb69b612a95c91ffc8341583a7b66052877c
 
