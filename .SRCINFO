@@ -9,6 +9,7 @@ pkgbase = odin-git
 	makedepends = git
 	makedepends = clang
 	makedepends = llvm
+	makedepends = cmake
 	depends = glibc
 	depends = llvm-libs
 	optdepends = python
