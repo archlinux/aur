@@ -1,21 +1,18 @@
 pkgbase = iscan
 	pkgdesc = EPSON Image Scan! front-end for scanners and all-in-ones
 	pkgver = 2.30.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	install = iscan.install
 	arch = x86_64
 	license = GPL2
 	license = custom:AVASYSPL
 	makedepends = gettext
-	makedepends = gimp
+	makedepends = gcc14
 	depends = gtk2
 	depends = sane
 	depends = libstdc++5
 	optdepends = iscan-data: Image Scan! data files required for some devices
-	provides = iscan
-	conflicts = iscan-for-epson-v500-photo
-	conflicts = epson-perfection-v10-v100-scanner-driver-aio
 	backup = etc/sane.d/epkowa.conf
 	source = https://sourceforge.net/projects/fabiololix-os-archive/files/src/iscan_2.30.4-2.tar.gz
 	source = libpng15.patch

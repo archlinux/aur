@@ -6,15 +6,13 @@
 pkgname=iscan
 _pkgver=2.30.4-2
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="EPSON Image Scan! front-end for scanners and all-in-ones"
 arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2' 'custom:AVASYSPL')
-depends=('gtk2' 'sane' 'libstdc++5')
-provides=('iscan')
-conflicts=('iscan-for-epson-v500-photo' 'epson-perfection-v10-v100-scanner-driver-aio')
-makedepends=('gettext' 'gimp')
+depends=(gtk2 sane libstdc++5)
+makedepends=(gettext gcc14)
 optdepends=('iscan-data: Image Scan! data files required for some devices')
 source=(#"http://support.epson.net/linux/src/scanner/iscan/${pkgname}_${pkgver%.*}-${pkgver/*.}.tar.gz"
         "https://sourceforge.net/projects/fabiololix-os-archive/files/src/iscan_${_pkgver}.tar.gz"
@@ -42,7 +40,7 @@ prepare() {
   patch -Np0 -i "../jpegstream.cc.patch"
   # patch for 16color by hain01 
   patch -Np0 -i "../hain01commits2dip-obj.patch"
-  
+
   patch -Np0 -i "../iscan-2.30.4.2-c99.patch"
   patch -Np0 -i "../iscan-2.30.3_fix-sscanf-modifier-in-cfg-obj.patch"
   # add fix for CXX ABI different than 1002
@@ -50,6 +48,8 @@ prepare() {
 }
 
 build() {
+  export CC=/usr/bin/gcc-14 CXX=/usr/bin/g++-14
+
   cd "${pkgname}-${pkgver%.*}"
   export LDFLAGS="${LDFLAGS} -ldl -lpng16"
   ./configure --prefix=/usr \
@@ -59,7 +59,7 @@ build() {
               --enable-jpeg \
               --enable-tiff \
               --enable-png \
-              --enable-gimp
+              --disable-gimp
   make
 }
 
