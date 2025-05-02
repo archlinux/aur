@@ -1,7 +1,7 @@
 pkgbase = cursor-electron
-	pkgdesc = The AI Code Editor (with system electron)
+	pkgdesc = The AI Code Editor
 	pkgver = 0.49.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.cursor.com
 	arch = x86_64
 	license = custom:Proprietary
@@ -9,6 +9,7 @@ pkgbase = cursor-electron
 	depends = hicolor-icon-theme
 	depends = libx11
 	depends = libxkbfile
+	optdepends = electron: run with latest Electron
 	provides = cursor
 	conflicts = cursor
 	options = !strip
