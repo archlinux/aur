@@ -1,5 +1,5 @@
 pkgbase = bkmr
-	pkgdesc = Ultrafast Bookmark Manager and Launcher
+	pkgdesc = A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management
 	pkgver = 4.20.5
 	pkgrel = 1
 	url = https://github.com/sysid/bkmr

@@ -5,7 +5,7 @@
 pkgname=bkmr
 pkgver=4.20.5
 pkgrel=1
-pkgdesc='Ultrafast Bookmark Manager and Launcher'
+pkgdesc='A Unified CLI Tool for Bookmark, Snippet, and Knowledge Management'
 url='https://github.com/sysid/bkmr'
 license=('BSD-3-Clause')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
