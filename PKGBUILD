@@ -18,6 +18,13 @@ sha256sums=('f8cfc66c6eb9b206a43952ae46f66d4ee4ff9980a4e21bb36c0b0a30b2296480')
 build() {
         mv "$srcdir/linux-app-$pkgver" "$srcdir/$pkgname-$pkgver"
         cd "$srcdir/$pkgname-$pkgver"
+
+        export CGO_CPPFLAGS="${CPPFLAGS}"
+        export CGO_CFLAGS="${CFLAGS}"
+        export CGO_CXXFLAGS="${CXXFLAGS}"
+        export CGO_LDFLAGS="${LDFLAGS}"
+        export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
         make build-gui
         make build-notifcheck
 }
@@ -25,8 +32,8 @@ package() {
         mkdir "$pkgdir/usr"
 
         mkdir "$pkgdir/usr/bin"
-        cp "$srcdir/$pkgname-$pkgver/geteduroam-gui" "$pkgdir/usr/bin/"
-        cp "$srcdir/$pkgname-$pkgver/geteduroam-notifcheck" "$pkgdir/usr/bin/"
+        install "$srcdir/$pkgname-$pkgver/geteduroam-gui" "$pkgdir/usr/bin/"
+        install "$srcdir/$pkgname-$pkgver/geteduroam-notifcheck" "$pkgdir/usr/bin/"
 
         mkdir "$pkgdir/usr/lib"
         mkdir "$pkgdir/usr/lib/systemd"
@@ -35,6 +42,7 @@ package() {
         cp "$srcdir/$pkgname-$pkgver/systemd/user/geteduroam/geteduroam-notifs.timer" "$pkgdir/usr/lib/systemd/system"
 
         mkdir "$pkgdir/usr/share"
-        cp -r "$srcdir/$pkgname-$pkgver/cmd/geteduroam-gui/resources/share/applications" "$pkgdir/usr/share/"
+        mkdir "$pkgdir/usr/share/applications"
+        cp "$srcdir/$pkgname-$pkgver/cmd/geteduroam-gui/resources/share/applications/app.eduroam.geteduroam.desktop" "$pkgdir/usr/share/applications"
         cp -r "$srcdir/$pkgname-$pkgver/cmd/geteduroam-gui/resources/share/icons" "$pkgdir/usr/share/"
 }
