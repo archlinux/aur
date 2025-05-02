@@ -1,7 +1,7 @@
 # Maintainer: Nikita Almakov <nikita.almakov@gmail.com>
 
 pkgname=rate-mirrors
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Everyday-use client-side map-aware mirror ranking tool"
 url="https://github.com/westandskif/rate-mirrors"
@@ -37,7 +37,8 @@ build() {
   fi
 
   export RUSTUP_TOOLCHAIN="$rust_toolchain"
-  export CARGO_TARGET_DIR=target
+  export CARGO_TARGET_DIR="$srcdir/target"
+  export CARGO_HOME="$srcdir/cargo_home"
   cargo build --release --locked
 }
 
@@ -49,4 +50,4 @@ package() {
 }
 
 #vim: syntax=sh
-sha256sums=('a7f7aa8857a906625f3295938a8bcc0d567a8e337e4620bb6b321be85805c1a3')
+sha256sums=('19a601cde55ebc012e27e6d08a3639bef7c23d346614018cf0b25916bca8fea1')
