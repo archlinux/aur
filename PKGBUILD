@@ -1,10 +1,12 @@
-# Maintainer:  Oleg Tsvetkov <oleg@tsvetkov.dev>
+# Maintainer:	        EndlessEden <endlesseden@users.noreply.github.com> 
+# Previous Maintainer:  Oleg Tsvetkov <oleg@tsvetkov.dev>
+# Contributor:          João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor:          Felix Golatofski <contact@xdfr.de>
+# Contributor:          Antonio Rojas <arojas@archlinux.org>
+# Contributor:          Henri Chain <henri@henricha.in>
+#
 # PKGBUILD is based on one from Chaotic AUR GitHub and was published here since the actual kpipewire-git wasn't in AUR already but is required by many packages in plasma. Be free
 # (all respective contributors apply herein)
-# Contributor: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Henri Chain <henri@henricha.in>
 
 pkgname=kpipewire-git
 pkgver=6.3.80_r575.gb6eafe9
