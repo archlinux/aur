@@ -1,14 +1,16 @@
 pkgbase = entangle
 	pkgdesc = GTK graphical interface for tethered photography with digital cameras powered by libgphoto2
 	pkgver = 3.0
-	pkgrel = 2
-	url = https://entangle-photo.org/
+	pkgrel = 3
+	url = https://gitlab.com/entangle/entangle
 	arch = x86_64
 	arch = i686
-	license = GPL3
+	arch = aarch64
+	license = GPL-3.0-or-later
 	makedepends = intltool
 	makedepends = meson
 	makedepends = gtk-doc
+	makedepends = glib2-devel
 	depends = dbus-glib
 	depends = gdk-pixbuf2
 	depends = gtk3
@@ -24,7 +26,7 @@ pkgbase = entangle
 	depends = itstool
 	depends = gst-plugins-base-libs
 	source = http://entangle-photo.org/download/sources/entangle-3.0.tar.xz
-	source = https://gitlab.com/entangle/entangle/-/commit/54795d275a93e94331a614c8712740fcedbdd4f0.patch
+	source = https://github.com/FabioLolix/AUR-artifacts/raw/master/entangle-fix_build_for_meson_>=0.60.0.patch
 	sha256sums = 9285ebab273ebe788d39a7c1bf19717cc6312cfcaa0bc55d65cf5a8d4f42a545
 	sha256sums = b816b7fdbe121044a8cafcf9648e770a91a4df38b0758781276db22c8d29cd50
 
