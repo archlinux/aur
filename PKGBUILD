@@ -8,7 +8,13 @@ arch=('x86_64')
 url='https://github.com/aunjaffery/restmate'
 #license=('GPL2')
 depends=(
-        'nodejs'
+        'hicolor-icon-theme'
+        'libsoup3'
+        'gtk3'
+        'gdk-pixbuf2'
+        'glib2'
+        'glibc'
+        'webkit2gtk-4.1'
         )
 options=(
     !emptydirs
