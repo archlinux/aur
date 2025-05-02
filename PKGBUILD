@@ -1,9 +1,10 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=bkmr
-pkgver=4.20.4
-pkgrel=3
+pkgver=4.20.5
+pkgrel=1
 pkgdesc='Ultrafast Bookmark Manager and Launcher'
 url='https://github.com/sysid/bkmr'
 license=('BSD-3-Clause')
@@ -11,7 +12,7 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs' 'openssl' 'python')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8beb4da02309cb781e0c9f1dd2a1df38b2f89abfdae81ba27fdbfa54f092b4a8')
+sha256sums=('d6ccddc6313d32932e2c637d5f1497992eb6b98e61dd0cb8ffab34ebb0823057')
 options=('!lto')
 
 case $CARCH in
