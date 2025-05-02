@@ -1,0 +1,17 @@
+pkgbase = andcli
+	pkgdesc = A 2FA TUI for your shell
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/tjblackheart/andcli
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	options = strip
+	options = buildflags
+	source = https://github.com/tjblackheart/andcli/archive/refs/tags/v2.1.2/andcli-2.1.2.tar.gz
+	sha256sums = a048640a160f97973b005d4ce57138a7b1dacf5e7505c06a51e32db4fdcdd830
+
+pkgname = andcli

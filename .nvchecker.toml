@@ -1,0 +1,4 @@
+[andcli]
+source = "git"
+git = "https://github.com/tjblackheart/andcli.git"
+prefix = "v"
