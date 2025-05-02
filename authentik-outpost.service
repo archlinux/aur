@@ -1,0 +1,15 @@
+[Unit]
+Description=authentik outpost [outpost] Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=5s
+
+ExecStart=/usr/bin/authentik-outpost-[outpost]
+EnvironmentFile=/etc/authentik-outpost-[outpost].env
+
+[Install]
+WantedBy=multi-user.target

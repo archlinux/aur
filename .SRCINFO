@@ -1,0 +1,23 @@
+pkgbase = authentik-outpost
+	pkgdesc = Open-source Identity Provider focused on flexibility and versatility.
+	pkgver = 2025.4.0
+	pkgrel = 1
+	url = https://goauthentik.io/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = guacamole-server: required for rac outpost
+	conflicts = authentik-outpost-bin
+	backup = etc/authentik-outpost-ldap.env
+	backup = etc/authentik-outpost-proxy.env
+	backup = etc/authentik-outpost-radius.env
+	backup = etc/authentik-outpost-rac.env
+	source = git+https://github.com/goauthentik/authentik.git#tag=version/2025.4.0
+	source = authentik-outpost.service
+	source = authentik-outpost.env
+	sha256sums = 42428ac7f15c4e024f6a2efe39973cc7083ebe88914b544bb2f296805d02ab32
+	sha256sums = 19e2025eca5b450b2e1dd15a174fa9438f7ac41c200720b4959b93adf0d2362b
+	sha256sums = 6be54203da7d45e96aaacb5b3abdf3b4fc896138e807f6e65c60090fd17127b2
+
+pkgname = authentik-outpost
