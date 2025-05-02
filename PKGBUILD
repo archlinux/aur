@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/OpenTaiko/OpenTaiko-Hub/releases/download/v$pkgver/OpenTaiko.Hub_"$pkgver"_amd64.deb")
-sha256sums_x86_64=('c3b7e8f8e6d62d49831d4782ed0614bdff63ace938d16faeb57c6e8188996a51')
+sha256sums_x86_64=('fead8f1fad7f5aac290c449749fe0e116fbfa9de5be4994743c341dd2af52979')
 package() {
 	
 	# Extract package data
