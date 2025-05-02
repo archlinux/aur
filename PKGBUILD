@@ -9,6 +9,8 @@ pkgdesc="Osmocom library with SDR DSP primitives"
 arch=('x86_64')
 url="https://osmocom.org/projects/libosmo-dsp"
 license=('GPL-2.0-or-later')
+conflicts=("${pkgname}-git")
+provides=('libosmodsp.so=0-64')
 depends=('fftw')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('33c1b072cb67ae03ca668f59396ee670baa8a2659f68815b5e519d6e13a9e9d2')

@@ -6,6 +6,8 @@ pkgbase = libosmo-dsp
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = fftw
+	provides = libosmodsp.so=0-64
+	conflicts = libosmo-dsp-git
 	source = https://downloads.osmocom.org/releases/libosmo-dsp/libosmo-dsp-0.5.0.tar.bz2
 	sha256sums = 33c1b072cb67ae03ca668f59396ee670baa8a2659f68815b5e519d6e13a9e9d2
 
