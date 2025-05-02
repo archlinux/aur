@@ -1,14 +1,14 @@
 # Maintainer: Yamashiro <dev cosmicheron com>
 
 pkgname="yquake2remaster"
-pkgver=8.42RR12
+pkgver=8.51RR12
 pkgrel=1
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${pkgname}"
 arch=('i686' 'x86_64' 'aarch64')
 license=('Info-ZIP' 'GPL-2.0-only')
 depends=('ffmpeg' 'glibc' 'libglvnd' 'sdl3')
-makedepends=('curl' 'openal' 'vulkan-headers')
+makedepends=('clang' 'curl' 'lld' 'llvm' 'openal' 'vulkan-headers')
 optdepends=('curl' 'openal' 'quake2-data' 'quake2-demo' 'vulkan-driver')
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-xatrix.desktop"
 )
 b2sums=(
-    'c142b78244b661d6c85ca4bfbdf1cfac4caa0a61725a61c353842137787a5d2f733ce938a540258d120f06d55ab8a0fbf0bdb9e3c8ec070f6892e4ade560d667'
+    '066a989bd297e865690062ba8aca4206f8a6f0d2a13a312dfca00a92923f26f5c0ca3e586622f76701967494bdc98dd37fca6492aa79630a66100d8bbc0c7b82'
     '3c3927d7687c65d0155ac1c327e4ef3cf0bea0b5eea771965a6acf126e59d1deb46517750737ca12eef5d4d3034a32b3ccd03d0535b5468a6fc5bef302fdec6a'
     'f0760cd3e48ffc15dca55f0adea4a17a94bfc6127a01ae0d22379192907e4d6ec4870abf7e2d7664bdbf639802ad682c51718f1fc92fa11f6d2596c6cca6718e'
     '1179bec70b7ef46a6b9f8dd9b642fda226e1b1d5a460f03e2475f07582800ca25bf9bf5710a7ff2aaebd9df2144eb9132b7dec596571c6eba9b16f39992d2f10'
@@ -26,6 +26,8 @@ b2sums=(
 )
 
 build() {
+    export CC='clang'
+    export LDFLAGS="${LDFLAGS} -fuse-ld=lld"
     make -C "${srcdir}/${pkgname}-${pkgver}" WITH_RPATH=no WITH_SYSTEMWIDE=yes WITH_SDL3=yes
 }
 
