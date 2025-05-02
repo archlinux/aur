@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=txdbmaker
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('700016d62f19e26bc675a3d90696e897')
-b2sums=('a9a213ae63442df84eb45dff245ff9afa61e85a8203bf13a432ffdd7c0035271bbf01d1b4c440a70afbbca919e5958db55619ad6e02d8f25f4debe20f13da8ff')
+md5sums=('7e8941937549ea914c5f27cddb5be76e')
+b2sums=('50f8b9a6be34ff1587a33afdfbd7fd5164b4fc57e7ae8b9f7bd263817238a9243854001ebea100a30dc4e1b1f0f841f69ba153f7edcc2ed54c9bf79105abf003')
 
 build() {
   mkdir build
