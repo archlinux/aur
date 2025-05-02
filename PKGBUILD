@@ -30,7 +30,7 @@ build() {
   ./configure --prefix=/usr \
               --with-cupsfilterdir=/usr/lib/cups/filter \
               --with-cupsppddir=/usr/share/ppd \
-              CFLAGS="-std=gnu17'
+              CFLAGS='-std=gnu17'
   make
 }
 
