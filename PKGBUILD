@@ -1,6 +1,9 @@
+# Maintainer: Glucy2 <glucy-2@outlook.com>
+# Contributor: rubin55 <me@rubin55.org>
+
 _pkgname=neo4j-community
 pkgname=${_pkgname}-bin
-pkgver="2025.02.0"
+pkgver="2025.04.0"
 pkgrel=2
 pkgdesc='A fully transactional graph database implemented in Java (binary package)'
 license=('GPL-3.0-only')
@@ -17,14 +20,13 @@ source=(
 )
 # https://dist.neo4j.org/deb/neo4j_${pkgver}_all.deb.sha256
 sha256sums=(
-    '3ad5d65723be7f4c0431cde99207fcefb4d7069c7d971f14ae5841794c985df7'
+    'f3e110bb32b7832d6dcaa8d1fc155a1ce13bd5ec599c2c93953ee878c20ab925'
     '440874201629f436b3817be05d7f8240c9bef603a11dc0a125634287c0376b5d'
     'a4a12084b93c357adfc54d1c0736d710ff507418824e08e33cc1f30bdc8a67f8'
 )
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}"
-    mv "$pkgdir/lib" "$pkgdir/usr"
     install -Dm644 "$srcdir/neo4j.sysusers" "$pkgdir/usr/lib/sysusers.d/neo4j.conf"
     install -Dm644 "$srcdir/neo4j.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/neo4j.conf"
 }
