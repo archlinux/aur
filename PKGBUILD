@@ -8,7 +8,7 @@ pkgname=ncsa-mosaic-git
 epoch=1
 pkgver=2.7b6.r39.2e9a605
 _pkgver=2.7b6
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the first graphical web browsers"
 url="https://github.com/alandipert/ncsa-mosaic"
 license=('custom')
@@ -42,6 +42,10 @@ build() {
     customflags="$customflags -Wno-error=implicit-int"
     customflags="$customflags -Wno-error=incompatible-pointer-types"
     customflags="$customflags -Wno-error=int-conversion"
+
+    # GCC 15 defaults to -std=gnu23, which is not compatible with this
+    # old codebase.
+    customflags="$customflags -std=gnu89"
 
     make linux customflags="$customflags"
 }
