@@ -2,7 +2,7 @@
 
 pkgname=btrust-biss
 pkgver=3.35
-pkgrel=1
+pkgrel=2
 pkgdesc='BISS (Browser Independent Signing Service) is a software for signing with Electronic Signature via web browsers when there is no availability to work with ActiveX controls.'
 arch=(x86_64)
 url='https://www.b-trust.org'
