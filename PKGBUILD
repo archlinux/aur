@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=zrok-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='An open source sharing solution built on OpenZiti'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,9 +20,9 @@ source_armv7h=("${pkgname}-${pkgver}-linux-armv7.tar.gz::${url}/releases/downloa
 source_x86_64=("${pkgname}-${pkgver}-linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
 
 sha256sums=('e510465ca8b29a514ef67f3d5bc41d613413a88781c17f88afdaa594fb4bfe7c')
-sha256sums_x86_64=('0fb08c759e8aecbde519cae21f3b5bfd9b76980d2510b1f8f62ab376c270dcfb')
-sha256sums_aarch64=('2cfcee407f04dc56eded744d40e247ce51ac78b7b873f423a4889a4406fc890f')
-sha256sums_armv7h=('9d463fdaa9c1596996091d34da64bd067461c323a7660d86e3397d429e7e87e4')
+sha256sums_x86_64=('ed71a9866343cbc1bcfc6805b83083efaae94d2548b38d2f21cce9d998e890bb')
+sha256sums_aarch64=('3a95f3ff7cdcd51ece20f8ebebe02991b97ccfedcb87481705f858d0165b5b63')
+sha256sums_armv7h=('cf33e5ed84cd02d8bb1508d51565b7aad59624e38dddb0ebf7bbc476c351612d')
 
 package() {
   install -Dm0755 "${pkgname%-bin}" -t "$pkgdir/usr/bin/"
