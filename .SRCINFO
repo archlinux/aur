@@ -1,7 +1,7 @@
 pkgbase = links-g-directfb
 	pkgdesc = A text WWW browser, similar to Lynx (with directfb, X and fb graphics. This version also supports SVGALIB)
 	pkgver = 2.30
-	pkgrel = 4
+	pkgrel = 5
 	url = http://links.twibright.com/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = links-g-directfb
 	license = GPL-2.0-or-later
 	makedepends = libxt
 	depends = bzip2
-	depends = directfb
+	depends = directfb2-git
 	depends = xz
 	depends = openssl
 	depends = gpm
