@@ -1,6 +1,6 @@
 pkgbase = cosmic-launcher-git
 	pkgdesc = Layer Shell frontend for Pop Launcher.
-	pkgver = 1.0.0.alpha.6.r2.gd53a959
+	pkgver = 1.0.0.alpha.7.r3.ga150f0f
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-launcher
 	arch = x86_64
@@ -19,7 +19,11 @@ pkgbase = cosmic-launcher-git
 	provides = cosmic-launcher
 	conflicts = cosmic-launcher
 	source = git+https://github.com/pop-os/cosmic-launcher.git
+	source = git+https://github.com/pop-os/libcosmic.git
+	source = git+https://github.com/pop-os/iced.git
 	source = lto.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 99e2aa0f35130c19934e0c2b8b06375af730e37b288e98e815c4105194ff4397
 

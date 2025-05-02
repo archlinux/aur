@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=1.0.0.alpha.6.r2.gd53a959
+pkgver=1.0.0.alpha.7.r3.ga150f0f
 pkgrel=1
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,12 @@ makedepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-launcher.git'
+        'git+https://github.com/pop-os/libcosmic.git'
+        'git+https://github.com/pop-os/iced.git'
         'lto.patch')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             '99e2aa0f35130c19934e0c2b8b06375af730e37b288e98e815c4105194ff4397')
 
 pkgver() {
@@ -33,13 +37,18 @@ pkgver() {
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  pushd libcosmic
+  git submodule init
+  git config submodule.iced.url "$srcdir/iced"
+  git -c protocol.file.allow=always submodule update
+  popd
 
+  cd "${pkgname%-git}"
   # Use thin LTO
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -47,7 +56,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-  nice just build-release --frozen
+  nice just build-release
 }
 
 package() {
