@@ -2,14 +2,14 @@
 _pkgname=torzu
 _branch=main
 pkgname=torzu-git
-pkgver=r27236.15d00322a
+pkgver=r27239.945de31fb
 pkgrel=1
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
 provides=('torzu')
-depends=('alsa-lib' 'brotli' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'sdl2' 'zlib')
+depends=('alsa-lib' 'brotli' 'fmt' 'catch2' 'enet' 'llvm-libs' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'hicolor-icon-theme' 'gamemode' 'libass' 'libpulse' 'libtool' 'libvdpau' 'lz4' 'sdl2' 'zlib')
 makedepends=('sdl2' 'curl' 'autoconf' 'cmake' 'gcc' 'git' 'glslang' 'alsa-lib' 'glu' 'hidapi' 'libpulse' 'systemd-libs' 'xcb-util-wm' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libxcb' 'libxext' 'libxkbcommon-x11' 'nasm' 'qt5-base' 'qt5-webengine' 'qt5-multimedia' 'mbedtls2' 'fmt' 'nlohmann-json' 'zstd' 'openssl' 'libunistring' 'aom' 'automake' 'base-devel' 'libass' 'freetype2' 'haskell-gnutls' 'lame' 'sdl2' 'libva' 'libvorbis' 'libxcb' 'meson' 'ninja' 'pkgconf' 'texinfo' 'wget' 'vasm' 'x264' 'x265' 'numactl' 'libvpx' 'libfdk-aac' 'libopusenc' 'ffmpeg' 'svt-av1' 'dav1d' 'boost' 'clang' 'vulkan-headers' 'ffmpeg4.4' 'zip' 'unzip' 'tar' 'boost-libs')
 conflicts=('torzu')
 options=(!debug lto strip)
