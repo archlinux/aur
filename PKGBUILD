@@ -1,9 +1,16 @@
+###
+# @Author: timochan
+# @Date: 2025-04-14 15:48:35
+ # @LastEditors: timochan
+ # @LastEditTime: 2025-05-02 21:12:07
+ # @FilePath: /follow-appimage/PKGBUILD
+###
 _pkgname=follow
 _Pkgname=Folo
 _disname=Folo
 major_version=0
 minor_version=4
-patch_version=1
+patch_version=4
 # phase='beta.0'
 
 pkgname="${_pkgname}"-appimage
@@ -11,14 +18,14 @@ pkgver="${major_version}.${minor_version}.${patch_version}"
 pkgrel=1
 pkgdesc="🧡 Next generation information browser"
 arch=('x86_64')
-url="https://github.com/RSSNext/follow"
+url="https://github.com/RSSNext/Folo"
 license=('GPL-3')
 options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('follow')
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/RSSNext/follow/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-x64.AppImage")
-sha256sums_x86_64=("65be173049f876f71593c9b14dbfd0948f666c27f83e642008eeb9ccead8855a")
+sha256sums_x86_64=("09b8810fc4949207a3eb4096227f2b3fd55608e9241346bc874a4fbfcbaf9207")
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
@@ -35,7 +42,7 @@ build() {
     "squashfs-root/${_disname}.desktop"
   # Change Exec
   sed -i \
-    -e "s|Exec=Follow --no-sandbox --disable-setuid-sandbox %u|Exec=follow --no-sandbox --disable-setuid-sandbox %u|" \
+    -e "s|Exec=Folo --no-sandbox --disable-setuid-sandbox %u|Exec=follow --no-sandbox --disable-setuid-sandbox %u|" \
     "squashfs-root/${_disname}.desktop"
 
   # Fix permissions; .AppImage permissions are 700 for all directories
