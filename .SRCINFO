@@ -1,6 +1,6 @@
 pkgbase = interstellar-bin
 	pkgdesc = An app for Mbin/Lemmy/PieFed, connecting you to the fediverse.
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/jwr1/interstellar
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = interstellar-bin
 	provides = interstellar
 	conflicts = interstellar
 	options = !debug
-	source_x86_64 = interstellar-bin-0.9.1-x86_64.tar.gz::https://github.com/jwr1/interstellar/releases/download/v0.9.1/interstellar-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 90059d0126fdac87a389005f3ef95fc21d7779e078fbceaecef83778e9dea326
-	source_aarch64 = interstellar-bin-0.9.1-aarch64.tar.gz::https://github.com/jwr1/interstellar/releases/download/v0.9.1/interstellar-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 4a8439feeab1dfc94c3509fc3ff0759e54a76ff2b47e45edfb12d1837ed9251d
+	source_x86_64 = interstellar-bin-0.9.2-x86_64.tar.gz::https://github.com/jwr1/interstellar/releases/download/v0.9.2/interstellar-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 31bb29eb84f25339e7c0ec414ce9a62901c0a4ee73d3b11054b6fb515a286156
+	source_aarch64 = interstellar-bin-0.9.2-aarch64.tar.gz::https://github.com/jwr1/interstellar/releases/download/v0.9.2/interstellar-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 0755c5daed49c7490cc44663bce0885146d7e2fa8f313a8928ec012fac780499
 
 pkgname = interstellar-bin
