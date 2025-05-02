@@ -3,11 +3,11 @@
 
 pkgname=libxmp
 pkgver=4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that supports over 90 module formats (Amiga, Atari, ..)"
 arch=('i686' 'x86_64')
 url="http://xmp.sourceforge.net/"
-license=('LGPL-2.1-or-later')
+license=('MIT')
 depends=('glibc')
 options=(!emptydirs)
 source=("http://download.sourceforge.net/project/xmp/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
@@ -24,5 +24,6 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
+  install -Dm644 "$srcdir/$pkgname-$pkgver/docs/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
