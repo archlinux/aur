@@ -1,0 +1,4 @@
+[motus]
+source = "git"
+git = "https://github.com/oleiade/motus.git"
+prefix = "v"
