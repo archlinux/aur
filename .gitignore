@@ -1,6 +1,4 @@
 *
 !PKGBUILD
-!bzr-player.install
-!bzr-player.sh
 !.SRCINFO
 !.gitignore

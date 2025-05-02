@@ -2,34 +2,41 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.77'
+pkgver='2.0.78'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://bzrplayer.blazer.nu"
 license=('GPL3')
-depends=('wine' 'hicolor-icon-theme')
-makedepends=('gendesk' 'libarchive')
-options=(!strip)
-_zip="BZR-Player-$pkgver.zip"
-_setup="bzr2_setup.sh"
-_mimes="x-bzr-player.xml"
-install=$pkgname.install
-source=("$_zip::https://github.com/aargirakis/BZRPlayer/releases/download/${pkgver}/BZR-Player-${pkgver}.zip"
-  "$pkgname.sh"
-  "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_setup"
-  "https://raw.githubusercontent.com/aargirakis/BZRPlayer/refs/heads/main/src/inst/$_mimes")
-noextract=("$_zip")
-sha256sums=('adad2221d586073472262efd9c390a70e6d683ed86a5f4177e57c7b889ba0cc1'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+depends=('hicolor-icon-theme' 'qt6-base' 'qt-advanced-docking-system')
+makedepends=('cmake' 'dos2unix' 'gendesk' 'libarchive' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative' 'qt6-svg'
+  'sdl2-compat' 'vulkan-headers')
+source=("${pkgname}-${pkgver}.zip::https://github.com/aargirakis/BZRPlayer/archive/refs/tags/${pkgver}.zip")
+sha256sums=('1f7079a6b9930775e91d687ecd6c777c98a5322269927dd198e3bd341e38d261')
 
-prepare() {
-  mkdir -p "${pkgname}-bin"
-  bsdtar -xf "$_zip" -C "${pkgname}-bin"
+build() {
+  # workaround for making plugin_furnace.so & plugin_protrekkr.so work:
+  CFLAGS=$(echo "$CFLAGS" | sed 's/-fno-plt//g')
+  CXXFLAGS=${CFLAGS}
+  LDFLAGS=$(echo "$LDFLAGS" | sed 's/-Wl,-z,now//g')
 
-  mapfile -t mime_types_supported < <(sed -n "\|mime_types_supported=(| , \|)|{p; \|)|q}" "$_setup" |
+  cmake -B cmake-build -S BZRPlayer-${pkgver} -DCMAKE_PREFIX_PATH=/usr -DCMAKE_BUILD_TYPE=Release -DOFFLINE_MODE=1 -G Ninja
+  ninja -C cmake-build
+}
+
+package() {
+  mv cmake-build/output/usr "$pkgdir"
+  install -dm755 "$pkgdir/usr"
+  install -Dm644 cmake-build/output/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"
+
+  for size in 16 32 48 64 128 256 512; do
+    install -Dm644 "$pkgdir/usr/share/$pkgname/data/resources/icon.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+  done
+
+  install -Dm644 "BZRPlayer-${pkgver}/src/inst/x-bzr-player.xml" "$pkgdir/usr/share/mime/packages/x-bzr-player.xml"
+  mapfile -t mime_types_supported < <(sed -n "\|mime_types_supported=(| , \|)|{p; \|)|q}" "BZRPlayer-${pkgver}/src/inst/bzr2-wine_setup.sh" |
     sed -e 's:mime_types_supported=(::g' -e 's:)::g' -e 's: :\n:g' | sed '/^[[:space:]]*$/d')
 
   for mime_type in "${mime_types_supported[@]}"; do
@@ -41,23 +48,10 @@ prepare() {
   gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
     --name="BZR Player" \
     --genericname='Audio player' \
-    --exec="/usr/bin/$pkgname.sh %U" \
+    --exec="/usr/bin/$pkgname %U" \
     --icon="$pkgname" \
-    --categories='AudioVideo;Audio;Music;Player;' \
+    --categories='AudioVideo;Audio;Music;Player' \
     --mimetype="$desktop_entry_mime_types"
-}
 
-package() {
-  install -dm755 "$pkgdir/usr/bin"
-  install -m755 "$pkgname.sh" "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share"
-  cp -a "${pkgname}-bin" "$pkgdir/usr/share/$pkgname"
-  install -Dm644 "${pkgname}-bin/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$_mimes" "$pkgdir/usr/share/mime/packages/$_mimes"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-  for size in 16 32 48 64 128 256 512; do
-    install -Dm644 "$pkgdir/usr/share/$pkgname/data/resources/icon.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
-  done
 }
