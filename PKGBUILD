@@ -7,13 +7,14 @@
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/electrum/-/blob/6d9acc129748edcd352f41f33e98c0cee8637fc5/PKGBUILD by Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=electrum-git
-pkgver=4.5.8.r946.ga511ab8e7
+pkgver=4.5.8.r971.g4b23ca194
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
 url="https://github.com/spesmilo/electrum"
 license=('MIT')
-depends=('hicolor-icon-theme'
+depends=(
+         'hicolor-icon-theme'
          'libsecp256k1'
          'python'
          'python-ecdsa'
@@ -21,8 +22,7 @@ depends=('hicolor-icon-theme'
          'python-protobuf'
          'python-dnspython'
          'python-qdarkstyle'
-         'python-aiorpcx>=0.22'
-         'python-aiorpcx<0.25'
+         'python-aiorpcx'
          'python-aiohttp'
          'python-aiohttp-socks'
          'python-certifi'
@@ -32,70 +32,83 @@ depends=('hicolor-icon-theme'
          'python-cryptography'
          'python-requests'
          'python-six'
-         'python-pyqt6'
          'protobuf'
          'python-protobuf'
          'python-pyaes'
          'qt6-base'
-         'python-electrum_ecc>=0.0.4'
-         'python-electrum_aionostr>=0.0.7'
-         'python-websockets')
-checkdepends=('python-pycryptodomex'
-              'python-pytest')
-makedepends=('gettext'
-             'git'
-             'python-pycurl'
-             'python-wheel'
-             'python-setuptools')
-optdepends=('desktop-file-utils: update desktop icon'
-            'gtk-update-icon-cache: update desktop icon'
+         'python-electrum_ecc'
+         'python-electrum_aionostr'
+         'python-websockets'
+)
+checkdepends=(
+         'python-pycryptodomex'
+         'python-pyqt6'
+         'python-pytest'
+         'qt6-declarative'
+)
+makedepends=(
+         'git'
+         'python-build'
+         'python-installer'
+         'python-setuptools'
+         'python-wheel'
+)
+optdepends=(
+         'desktop-file-utils: update desktop icon'
+         'gtk-update-icon-cache: update desktop icon'
 
-             #Trezor hardware wallet
-            'trezor-udev: Trezor harware wallet support'
-            'python-trezor: Trezor hardware wallet support'
+         #Trezor hardware wallet
+         'trezor-udev: Trezor harware wallet support'
+         'python-trezor: Trezor hardware wallet support'
 
-             #Keepkey hardware wallet
-            'keepkey-udev: Keepkey hardware wallet support'
-            'python-mnemonic: Keepkey hardware wallet support'
-            'python-hidapi: Keepkey hardware wallet support'
-            'python-libusb1: Keepkey hardware wallet support'
+         #Keepkey hardware wallet
+         'keepkey-udev: Keepkey hardware wallet support'
+         'python-mnemonic: Keepkey hardware wallet support'
+         'python-hidapi: Keepkey hardware wallet support'
+         'python-libusb1: Keepkey hardware wallet support'
 
-             #Ledger hardware wallet
-            'ledger-udev: Ledger hardware wallet support'
-            'python-hidapi: Ledger hardware wallet support'
-            'python-ledger-bitcoin: Ledger hardware wallet support'
+         #Ledger hardware wallet
+         'ledger-udev: Ledger hardware wallet support'
+         'python-hidapi: Ledger hardware wallet support'
+         'python-ledger-bitcoin: Ledger hardware wallet support'
 
-             #Coldcard hardware wallet
-            'python-ckcc-protocol: Coldcard wallet hardware support'
+         #Coldcard hardware wallet
+         'python-ckcc-protocol: Coldcard wallet hardware support'
 
-             #Bitbox01/Digital Bitbox hardware wallet
-            'bitbox-udev: Bitbox01/Digital Bitbox hardware wallet support'
-            'python-hidapi: Bitbox01/Digital Bitbox hardware wallet support'
+         #Bitbox01/Digital Bitbox hardware wallet
+         'bitbox-udev: Bitbox01/Digital Bitbox hardware wallet support'
+         'python-hidapi: Bitbox01/Digital Bitbox hardware wallet support'
 
-             #Bitbox02 Hardware wallet
-            'bitbox-udev: Bitbox02 hardware wallet support'
-            'python-bitbox02: BitBox02 hardware wallet support'
-            'python-hidapi: Bitbox02 hardware wallet support'
+         #Bitbox02 Hardware wallet
+         'bitbox-udev: Bitbox02 hardware wallet support'
+         'python-bitbox02: BitBox02 hardware wallet support'
+         'python-hidapi: Bitbox02 hardware wallet support'
 
-             #Jade Hardware wallet
-            'python-cbor2: Blockstream Jade hardware wallet communication'
-            'python-pyserial: Blockstream Jade hardware wallet serial port extension'
+         #Jade Hardware wallet
+         'python-cbor2: Blockstream Jade hardware wallet communication'
+         'python-pyserial: Blockstream Jade hardware wallet serial port extension'
 
-            'python-matplotlib: plot transaction history in graphical mode'
-            'python-rpyc: send commands to Electrum Python console from an external script'
-            'xdg-utils: update desktop icon'
-            'zbar: QR code reading support')
-source=(git+https://github.com/spesmilo/electrum.git
-        git+https://github.com/spesmilo/electrum-locale.git
-        git+https://github.com/spesmilo/electrum-http.git
-        git+https://github.com/spesmilo/electrum-keepkeylib.git)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+         'python-matplotlib: plot transaction history in graphical mode'
+         'python-rpyc: send commands to Electrum Python console from an external script'
+         'xdg-utils: update desktop icon'
+         'zbar: QR code reading support'
+)
+source=(
+         git+https://github.com/spesmilo/electrum.git
+         git+https://github.com/spesmilo/electrum-locale.git
+         git+https://github.com/spesmilo/electrum-http.git
+         git+https://github.com/spesmilo/electrum-keepkeylib.git
+)
+sha256sums=(
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+)
 provides=('electrum')
 conflicts=('electrum')
 install=electrum.install
+options=(!debug)
 
 pkgver() {
   cd ${pkgname%-git}
