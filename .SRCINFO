@@ -1,7 +1,7 @@
 pkgbase = kronos
 	pkgdesc = Sega Saturn emulator, fork of yabause
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FCare/Kronos
 	arch = x86_64
 	arch = aarch64
@@ -18,6 +18,8 @@ pkgbase = kronos
 	depends = glibc
 	depends = gcc-libs
 	source = kronos-2.7.0.tar.gz::https://github.com/FCare/Kronos/archive/refs/tags/2.7.0_official_release.tar.gz
+	source = https://github.com/FabioLolix/AUR-artifacts/raw/master/kronos-cmake_minimum_version.patch
 	b2sums = 67ff8a57f61e733a67281c7d0af84b4c20209088b957dec911e926b250770050b015671df604104c070db97ef7018394a1a355b1017d24e155f3af999ef05a7f
+	b2sums = ed7df989321afb305dd34610182914b907fa7394a812c7d03c9bdeebca390edaefc37ce2e7ee42d8c53e5ac390f63309b05d8cf1b7f425d21d66d2e4395195d9
 
 pkgname = kronos
