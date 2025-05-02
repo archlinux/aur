@@ -11,7 +11,7 @@
 
 pkgname=prismlauncher-bwrap
 pkgver=9.4
-pkgrel=1
+pkgrel=2
 provides=(prismlauncher)
 conflicts=(prismlauncher)
 pkgdesc="Minecraft launcher with ability to manage multiple instances. Sandboxed by portable."
@@ -49,7 +49,7 @@ b2sums=('57bb4391e8b84265e42b08545bb0cf64046915fca2a80a7f40923f6abf605d9bdd7efef
         'be4289832af95b1cd6e721dc16b84a034533de9718d9b43a49bd08dd6fe4e28eaa15228bfb311867b18fddbda1c9fc4c91f04c6d5c1a3bcc39aaa5161425e3ba'
         '356248a6b86f06d260e0920b49d34034f79f9bc504c7fdc1849d929d2ff9b169e693a8269a2c0b34656b3802970d9b8be41a92b35177eaa3c4ccc89a702f5c9d'
         'b35c447cd9223e096a2bb75e0741a7d0a3a1606af54c957e4f276f4e6861a9b3f06ae1d646137e8d2f24ba2238c9967c76eff8cc631a68d7e48e376056982cc6'
-        '0c68c6cdfbff0598be7b5258a572903a4020f53fbae13dee1ad73e7ed7479febd95e2d4e5efb2db869425e4d1d344a94774d465e910458eae3108628037c2ccc'
+        'e996cbba63dec2f49b5fcf35c9b78a2ca367c08cda6240847b6b6c1ff71b8fdff5734581e887021c08ee3a44f66e9f81b4a6cade3f3ac6e8f60ab1c70b766772'
         '1dd5f0f5dc32fd99d7125479acec8e3c5098886e0b78f678a7faf51831d3412041d8bfbc013be3460656de225532acc348b179e5f59ef01b486c94b674e28a63')
 
 build() {
@@ -85,4 +85,5 @@ package() {
     "${pkgdir}/usr/share/applications/org.prismlauncher.PrismLauncher.desktop"
   install -d "${pkgdir}/usr/lib/prismlauncher-bwrap/prismlauncher"
   mv "${pkgdir}/usr/bin/prismlauncher" "${pkgdir}/usr/lib/prismlauncher-bwrap/prismlauncher"
+  ln -srf "${pkgdir}/usr/bin/prismlauncher-bwrap" "${pkgdir}/usr/bin/prismlauncher"
 }
