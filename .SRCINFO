@@ -1,6 +1,6 @@
 pkgbase = python-aiomax
 	pkgdesc = The asynchronous library for Max
-	pkgver = 1.0.2
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/dpnspn/aiomax
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-aiomax
 	depends = python3
 	depends = python-aiohttp
 	conflicts = python-aiomax-git
-	source = https://files.pythonhosted.org/packages/source/a/aiomax/aiomax-1.0.2.tar.gz
-	sha256sums = 1ec43d1818724d8581270a8493f6206dbfc88957adf9185df1345adfe52d5a68
+	source = https://files.pythonhosted.org/packages/source/a/aiomax/aiomax-1.0.4.tar.gz
+	sha256sums = ae70c99ae1a75a9522115ee2971c6dc4e4d6335d9f900ddfe699a4f7e3d0b193
 
 pkgname = python-aiomax

@@ -3,7 +3,7 @@
 
 _name=aiomax
 pkgname=python-$_name
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="The asynchronous library for Max"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python3 python-aiohttp)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('1ec43d1818724d8581270a8493f6206dbfc88957adf9185df1345adfe52d5a68')
+sha256sums=('ae70c99ae1a75a9522115ee2971c6dc4e4d6335d9f900ddfe699a4f7e3d0b193')
 conflicts=(python-aiomax-git)
 
 build() {
