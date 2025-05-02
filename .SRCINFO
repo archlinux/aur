@@ -1,8 +1,8 @@
 pkgbase = phpenv-git
 	pkgdesc = Manage multiple PHP versions
-	pkgver = r274.0852611
+	pkgver = r362.adc99a7
 	pkgrel = 1
-	url = https://github.com/madumlao/phpenv
+	url = https://github.com/phpenv/phpenv
 	install = phpenv.install
 	arch = any
 	license = MIT
@@ -10,8 +10,7 @@ pkgbase = phpenv-git
 	optdepends = php-build
 	provides = phpenv
 	conflicts = phpenv
-	source = git://github.com/madumlao/phpenv
+	source = git+https://github.com/phpenv/phpenv
 	md5sums = SKIP
 
 pkgname = phpenv-git
-
