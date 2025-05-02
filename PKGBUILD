@@ -5,7 +5,7 @@
 
 pkgname=puppetserver
 pkgver=8.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="https://docs.puppetlabs.com/puppetserver/latest/services_master_puppetserver.html"
