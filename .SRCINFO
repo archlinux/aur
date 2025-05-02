@@ -1,6 +1,6 @@
 pkgbase = r-partykit
 	pkgdesc = A Toolkit for Recursive Partytioning
-	pkgver = 1.2.23
+	pkgver = 1.2.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=partykit
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = r-partykit
 	optdepends = r-th.data
 	optdepends = r-vcd
 	optdepends = r-xml
-	source = https://cran.r-project.org/src/contrib/partykit_1.2-23.tar.gz
-	sha256sums = 0e33137657ac25dee7ffa9c7455aadf457f8b60c2112548ce861c794f3f8ab53
+	source = https://cran.r-project.org/src/contrib/partykit_1.2-24.tar.gz
+	sha256sums = 40c06b75458f100f3e203fb47f80d5be6f632628bfafa2704d27250a7914c9ff
 
 pkgname = r-partykit
