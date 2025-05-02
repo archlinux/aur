@@ -4,7 +4,7 @@
 _gemname=hiera-eyaml
 pkgname=ruby-$_gemname
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenSSL Encryption backend for Hiera'
 arch=(any)
 url='https://github.com/voxpupuli/hiera-eyaml'

@@ -1,7 +1,7 @@
 pkgbase = ruby-hiera-eyaml
 	pkgdesc = OpenSSL Encryption backend for Hiera
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/voxpupuli/hiera-eyaml
 	arch = any
 	license = MIT
