@@ -3,7 +3,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.236
+pkgver=5.10.237
 pkgrel=1
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
@@ -30,14 +30,14 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-md5sums=('bb41ff922f61c5fcb244ee78e8474716'
+md5sums=('2e64e1ea753a6b8e18b5f3b017fb3058'
          'SKIP'
          '8b8fa773fe9c7938a76ba07ca2933ed8'
          'd31360693fb06a0d69c1f126350baa6d'
          'c1f10e50f7ca23d07ae83ae6252854d5'
          'd15820a808c3cc159e6e5916a8c05e8f'
          '32277e1b48dd6f00b5e31f3cb3f0f44c')
-sha256sums=('6da5cc8f7d39ed3acb4d59129a3f1570d981526ebbf58ea82595b7b6e000fb89'
+sha256sums=('1fc82737e0e4f0ae0b40f91a00c68f3cb75362e6ae54623ec64b41a51cde0f25'
             'SKIP'
             'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
@@ -79,6 +79,17 @@ prepare() {
 
 build() {
   cd $_srcname
+  if :; then
+    export PATH="${PWD}:${PATH}"
+    cat > 'gcc' << EOF
+#!/usr/bin/bash
+
+# gcc 15 changed the default to -std=gnu23.
+# This option is first so later -std will override it.
+exec /usr/bin/gcc -std='gnu17' "\$@"
+EOF
+    chmod 755 'gcc'
+  fi
   nice -n1 make all
   nice -n1 make -i htmldocs SPHINXOPTS='-T --keep-going'
 }
