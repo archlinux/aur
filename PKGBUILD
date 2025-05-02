@@ -4,7 +4,7 @@ _appauthor=ClementNerma
 _appname=ReShell
 _execname=${_appname,,}
 pkgname=${_execname}-bin
-pkgver=0.1.0_1381
+pkgver=0.1.0_1384
 pkgrel=1
 pkgdesc="A modern shell for the future"
 arch=('x86_64' 'aarch64')
@@ -26,12 +26,12 @@ source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v$
 source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_appname}-repl-${arch[1]}-unknown-linux-musl.tgz")
 sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
             '37cf555782d1c9377100e98ce74780ab2b77da1c9572cec7411cdfb11d142c32'
-            '13469981ad94ccf54daaf5dd57a5ac12149c3f2079e49ce0dfe504be34377021'
+            '8b36cc5ce6c078e0eb3708da58c12c5022bf68c98a24e99d1b899b00fa2b3ab4'
             '4de35e1288bd083b3eb3dfa609c13d7f6b270c34d8bff7c8f2bd779591b7eac1'
             '343653a05fb09514b663de3828019ea0ab50df0898ac94789d0bdbff950f935d'
             '306c6c95be38ddc4eb30e1b28413ea3a7e13d1767ff7a85a4802f7b70fbfeba8')
-sha256sums_x86_64=('2ff01a3c7b884adb25537267c0c390f9b9266081825f93ac252305a179c04e05')
-sha256sums_aarch64=('4610befb35fdf0bd9456febdf877a1d8e1dfa3d8dabddad9883f340fc13d4036')
+sha256sums_x86_64=('1f26e087d9cf5984086c80e53b9f8cd2efbf26afa594e87b000067ac850605d2')
+sha256sums_aarch64=('ccda5f1c48596958447c5320c0741e44daa969d993c7334b4b3f2cc9fad2069c')
 
 prepare() {
 	cd "${srcdir}/" || exit
