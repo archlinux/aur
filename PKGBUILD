@@ -1,5 +1,5 @@
 pkgname=jellyplayer-git
-pkgver=25446d9
+pkgver=f870ee7
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -19,7 +19,7 @@ package() {
   cd "$srcdir/jellyplayer"
 
   # Build the script with pyinstaller
-  pyinstaller --onefile jellyplayer.py
+  pyinstaller --onefile main.py -n jellyplayer
 
   # Install the resulting binary
   install -Dm755 "dist/jellyplayer" "$pkgdir/usr/bin/jellyplayer"
