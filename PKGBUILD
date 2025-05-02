@@ -3,8 +3,15 @@
 
 _name=aiomax
 pkgname=python-$_name-git
-pkgver=1.0.1
-pkgrel=2
+
+pkgver=1.0.1.r0.gc4451a8
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+pkgrel=1
 pkgdesc="The asynchronous library for Max"
 arch=('any')
 url="https://github.com/dpnspn/aiomax"
