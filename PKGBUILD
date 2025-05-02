@@ -1,6 +1,6 @@
 # Maintainer: StaringLongingly
 pkgname=hyprland-dynamic-border-git
-pkgver=0.0.0.r5.g687c0b7
+pkgver=r5.g687c0b7
 pkgrel=1
 pkgdesc="Dynamic border color based on visuals in Hyprland using hyprctl"
 url="https://github.com/StaringLongingly/hyprland-dynamic-border"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/hyprland-dynamic-border" || {
     echo "Failed to enter source directory" >&2
-    echo "0.0.0.r0.g0000000" # Ensure we return a valid version string
+    echo "r0.g0000000" # Ensure we return a valid version string
     return 0
   }
   
@@ -40,7 +40,7 @@ pkgver() {
   count=$(git rev-list --count HEAD 2>/dev/null || echo "0")
   hash=$(git rev-parse --short=7 HEAD 2>/dev/null || echo "0000000")
   
-  ver="0.0.0.r${count}.g${hash}"
+  ver="r${count}.g${hash}"
   echo "Using fallback version: $ver" >&2
   echo "$ver"
 }
