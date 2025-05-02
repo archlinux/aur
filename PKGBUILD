@@ -3,7 +3,7 @@
 # Contributor: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=buildifier-bin
-pkgver=8.0.3
+pkgver=8.2.0
 pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64+=(
   "${pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64"
 )
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
-sha256sums_x86_64=('c969487c1af85e708576c8dfdd0bb4681eae58aad79e68ae48882c70871841b7')
-sha256sums_aarch64=('bdd9b92e2c65d46affeecaefb54e68d34c272d1f4a8c5b54929a3e92ab78820a')
+sha256sums_x86_64=('3e79e6c0401b5f36f8df4dfc686127255d25c7eddc9599b8779b97b7ef4cdda7')
+sha256sums_aarch64=('c624a833bfa64d3a457ef0235eef0dbda03694768aab33f717a7ffd3f803d272')
 
 package() {
   cd "${srcdir}" || exit
