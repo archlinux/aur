@@ -1,7 +1,7 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okpanel-git
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A custom AGS panel for hyprland"
 license=('GPL3')
 arch=('any')
@@ -25,6 +25,9 @@ depends=(
     'brightnessctl'
     'ttf-jetbrains-mono-nerd'
     'libnotify'
+    'hyprsunset'
+    'cliphist'
+    'wl-clipboard'
 )
 makedepends=('rsync')
 source=("git+$url.git")
