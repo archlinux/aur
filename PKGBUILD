@@ -16,7 +16,7 @@ package() {
     tar xvf B-TrustBISS.tar
 
     # Install package
-    bsdtar -O -xf B-TrustBISS.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    bsdtar -O -xf btrustbiss_${pkgver}-1_amd64.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
     
     # Install desktop icon
     install -Dm644 "$pkgdir/opt/btrustbiss/lib/btrustbiss-BISS.desktop" "$pkgdir/usr/share/applications/btrustbiss-BISS.desktop"
