@@ -1,0 +1,27 @@
+[Desktop Entry]
+
+# The type as listed above
+Type=Application
+
+# The version of the desktop entry specification to which this file complies
+Version=1.0
+
+# The name of the application
+Name=Syng
+
+# A comment which can/will be used as a tooltip
+Comment=All in one karaoke software
+
+# The executable of the application, possibly with arguments.
+Exec=/usr/bin/syng gui
+
+# The name of the icon that will be used to display this entry
+Icon=rocks.syng.Syng.png
+
+StartupWMClass=rocks.syng.Syng
+
+# Describes whether this application needs to be run in a terminal or not
+Terminal=false
+
+# Describes the categories in which this entry should be shown
+Categories=Multimedia
