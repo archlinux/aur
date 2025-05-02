@@ -1,8 +1,10 @@
 # Maintainer: n0n1m
+# Maintainer: mbutsk
+
 _name=aiomax
 pkgname=python-$_name-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="The asynchronous library for Max"
 arch=('any')
 url="https://github.com/dpnspn/aiomax"
