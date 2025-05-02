@@ -1,13 +1,13 @@
 # Maintainer: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=plattenalbum-git
-pkgver=2.2.2.r25.g4f5c96d
+pkgver=2.2.2.r35.g708e21c
 pkgrel=1
 pkgdesc="Connect to your music"
 arch=('any')
 license=('GPL-3.0-or-later')
 url="https://github.com/SoongNoonien/plattenalbum"
-depends=('python-mpd2>=3.1' 'gtk4' 'python-gobject' 'libadwaita>=1.7.0')
+depends=('python-mpd2>=3.1' 'gtk4>=4.18.0' 'python-gobject' 'libadwaita>=1.7.0')
 makedepends=('git' 'meson' 'gettext' 'glib2')
 provides=('plattenalbum' 'mpdevil' 'mpdevil-git')
 conflicts=('plattenalbum' 'mpdevil-git')
