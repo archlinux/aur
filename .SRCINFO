@@ -1,13 +1,14 @@
 pkgbase = neo4j-community-bin
 	pkgdesc = A fully transactional graph database implemented in Java (binary package)
 	pkgver = 2025.04.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/neo4j/neo4j
 	arch = any
 	license = GPL-3.0-only
 	depends = java-runtime=21
 	depends = psmisc
 	provides = neo4j-community
+	provides = neo4j-community=2025.04.0
 	conflicts = neo4j-community
 	conflicts = neo4j-enterprise
 	source = https://dist.neo4j.org/deb/neo4j_2025.04.0_all.deb

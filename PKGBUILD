@@ -4,14 +4,14 @@
 _pkgname=neo4j-community
 pkgname=${_pkgname}-bin
 pkgver="2025.04.0"
-pkgrel=2
+pkgrel=3
 pkgdesc='A fully transactional graph database implemented in Java (binary package)'
 license=('GPL-3.0-only')
 arch=('any')
 url="https://github.com/neo4j/neo4j"
 _java_version=21
 depends=("java-runtime=$_java_version" "psmisc")
-provides=("${_pkgname}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" neo4j-enterprise)
 source=(
     "https://dist.neo4j.org/deb/neo4j_${pkgver}_all.deb"
