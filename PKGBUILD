@@ -4,7 +4,7 @@
 pkgname=grisbi
 pkgver=3.0.4
 _pkgver=upstream_version_3_0_4
-pkgrel=2
+pkgrel=3
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="https://www.grisbi.org"

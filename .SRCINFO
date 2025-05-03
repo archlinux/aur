@@ -1,7 +1,7 @@
 pkgbase = grisbi
 	pkgdesc = Shared files for the finance management program Grisbi.
 	pkgver = 3.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.grisbi.org
 	arch = x86_64
 	license = GPL
