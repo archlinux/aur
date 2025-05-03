@@ -1,11 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ignition-startup
-_pkgname=ignition
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Manage startup apps and scripts"
 arch=('any')
-url="https://github.com/flattool/ignition/"
+url="https://github.com/flattool/ignition"
 license=('GPL-3.0-or-later')
 depends=(
   'gjs'
@@ -13,13 +12,24 @@ depends=(
 )
 makedepends=(
   'blueprint-compiler'
+  'git'
   'meson'
+  'typescript'
 )
-source=("${_pkgname}-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ec87b7da4530ad6c74f28461da79aa587a5029342081e6037a9209df08bc6ada')
+source=("git+https://github.com/flattool/ignition.git#tag=$pkgver"
+        'git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git')
+sha256sums=('45b70d01b96b6d538fa42cfd110c062c263d7118b52249bbc3eb8538bc697c7e'
+            'SKIP')
+
+prepare() {
+  cd ignition
+  git submodule init
+  git config submodule.gi-types.url "$srcdir/gi-typescript-definitions"
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
-  arch-meson "${_pkgname}-$pkgver" build
+  arch-meson ignition build
   meson compile -C build
 }
 
@@ -30,5 +40,5 @@ check() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 
-  ln -s /usr/bin/io.github.flattool.Ignition "$pkgdir/usr/bin/${_pkgname}"
+  ln -s /usr/bin/io.github.flattool.Ignition "$pkgdir/usr/bin/ignition"
 }
