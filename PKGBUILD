@@ -11,9 +11,9 @@ pkgname="${pkgbase}"
 groups=(
   "gpd"
 )
-pkgver=r31.20250314.ab215d8
+pkgver=r32.20250428.485a8de
 _gpdfanspeedver="$("${startdir}"/gpdfanspeed --version)"
-pkgrel=2
+pkgrel=1
 pkgdesc="Fan hwmon speed report and speed control driver for GPD Win Mini, GPD Win Max2 and GPD Win 4 laptops. Latest git checkout. Includes a command line control utility."
 url="https://${_githost}/${_gituser}/${_gitname}"
 arch=('any')
