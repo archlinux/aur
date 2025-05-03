@@ -8,7 +8,7 @@ url="https://github.com/eaglesemanation/${pkgname}"
 license=("MIT")
 makedepends=("rust" "cargo")
 source=("git+https://github.com/eaglesemanation/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('0fe68465bcc2421ac0ff69325bbe8e59a4ed89b4782586e4850963213bcf5a93')
+sha256sums=('67b6e46cbee756a215c76041928e487265fbba8b384e616627ffd0b92d202571')
 
 build() {
   cd "$srcdir/$pkgname"
