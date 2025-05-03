@@ -1,17 +1,17 @@
 # Maintainer: Guoyi Zhang <myname at malacology dot net>
 
 pkgname=iqtree
-_pkgname=iqtree2
-pkgver=2.4.0
+_pkgname=iqtree3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
-url="https://github.com/iqtree/iqtree2"
-license=('GPL2')
+url="https://github.com/iqtree/${_pkgname}"
+license=('GPL-2.0-or-later')
 depends=('boost-libs' 'gcc-libs' 'zlib')
 makedepends=('cmake' 'eigen' 'make' 'gcc' 'git' 'boost')
 source=("git+$url.git#tag=v${pkgver}")
-md5sums=('36a33fc1e2e0013220406aabff1a036e')
+md5sums=('d6e201df7726673580828c9e3e0c6698')
 
 prepare() {
   cd $_pkgname
