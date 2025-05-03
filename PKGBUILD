@@ -4,7 +4,7 @@ _projectname="xasm"
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=3.2.1+6.r148.20240609.f5903fb
-pkgrel=1
+pkgrel=2
 pkgdesc="6502 cross-assembler with original syntax extensions. By default it generates binaries for Atari 8-bit computers."
 arch=(
   'aarch64'
@@ -19,7 +19,7 @@ _githost='github.com'
 _gituser='pfusik'
 _giturl="${_githost}/${_gituser}/${_projectname}.git"
 url="http://${_githost}/${_gituser}/${_projectname}"
-license=("custom: poetic (public domain)")
+license=("LicenseRef-Poetic")
 depends=(
   'gcc-libs'
   'glibc'
