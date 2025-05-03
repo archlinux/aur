@@ -1,6 +1,6 @@
 pkgbase = yaacs
 	pkgdesc = Convert your Audiobooks to Opus in parallel
-	pkgver = 1.3.6
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/rgarber11/yaacs
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = yaacs
 	depends = mkvtoolnix-cli
 	depends = ffmpeg
 	depends = python-packaging
-	source = https://files.pythonhosted.org/packages/source/y/yaacs/yaacs-1.3.6.tar.gz
-	sha256sums = 79a484f65bdbb036a95a9cefc6eb4cf1eb6c6bd9d1b8e150e79eb644f6ce3f20
+	source = https://files.pythonhosted.org/packages/source/y/yaacs/yaacs-1.4.1.tar.gz
+	sha256sums = 034e4b9100fbb326966a9ef383239045dac7ab834d5015672f65421402ee7c5e
 
 pkgname = yaacs
