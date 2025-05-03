@@ -1,23 +1,23 @@
 pkgbase = key-project
 	pkgdesc = A program to use formal verification with Java programs
-	pkgver = 2.12.0
+	pkgver = 2.12.3
 	pkgrel = 1
 	url = https://www.key-project.org/
 	arch = any
 	license = GPL
 	depends = java-runtime
-	noextract = key-2.12.0-exe.jar
+	noextract = key-2.12.3-exe.jar
 	source = key-project
 	source = key-project.desktop
 	source = key-project16.png
 	source = key-project32.png
 	source = key-project64.png
-	source = https://github.com/KeYProject/key/releases/download/KeY-2.12.0/key-2.12.0-exe.jar
+	source = https://github.com/KeYProject/key/releases/download/KEY-2.12.3/key-2.12.3-exe.jar
 	sha256sums = 102d85d94612272a66bf4612b06ffa0561b709bbeb3ea55ed9bd28b339211f18
 	sha256sums = 16377958fce36d59c8fcfd9d0e34587ef1d671fd8c0aa79ca510539e1596fef5
 	sha256sums = f88c92559367ca052427ef090fa934a39753200a029a29b83092309912df36a8
 	sha256sums = ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62
 	sha256sums = ac2686c9d152af629f3beb2bcf219b8017df37adb8534ab054184c14b5e40b62
-	sha256sums = eb9a870b88914ea5b7e28a2eb6453a98e5aece45f95d21e76edb8c8094441c59
+	sha256sums = 31808ddcb4925afc0099d0f2b49b3ebf8d24833cb87769505a8f20292ca0fe88
 
 pkgname = key-project
