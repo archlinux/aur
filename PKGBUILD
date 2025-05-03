@@ -2,65 +2,44 @@
 # Maintainer: POGMAN <adrian.maurin@gmail.com>
 
 # Official Documentation: https://actualbudget.org/docs/install/
+_npmscope=@actual-app
+_npmpkg=sync-server
+_npmver=25.5.0
+
 pkgname=actual-server
-pkgver=25.4.0
-pkgrel=3
-pkgdesc="Actual Budget Server"
-arch=('any')
-url="https://github.com/actualbudget/actual"
+pkgver=${_npmver//-/_}
+pkgrel=1
+pkgdesc="Actual Budget server used for syncing across devices. Includes the web client."
+arch=(x86_64)
+url="https://actualbudget.org"
 license=('MIT')
-depends=('yarn' 'nodejs')
-makedepends=('git' 'npm')
+depends=('nodejs')
+makedepends=('npm')
 backup=("etc/conf.d/${pkgname}")
-options=('!strip' '!debug')
+options=('!debug')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://registry.npmjs.org/${_npmscope}/${_npmpkg}/-/${_npmpkg}-${_npmver}.tgz"
     "${pkgname}.service"
     "${pkgname}.sysusers"
     "${pkgname}.tmpfiles"
     "${pkgname}.conf"
 )
-sha256sums=('9e27d36318617d0ce2ff05891e0eeccab2a8c245d624608f13000bf9526ddf6a'
-            '9a09ef74fe190d655f91d13cb3305a2943d191ef939e6b21944ea860ba977f70'
-            '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
-            'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b'
-            '3c58a11ca5a57d0a640b852e3e24c0c19d5be52557743af0a93e384ad5851a0c')
-__gitpkg="${pkgname%-*}-${pkgver}"
-__distdir="dist"
-
-build() {
-    cd "${srcdir}/${__gitpkg}"
-    yarn config set enableTelemetry 0
-    yarn install
-    yarn build:browser
-    yarn workspaces focus @actual-app/sync-server --production
-
-    # Copy sync-server build files
-    mkdir -p ${__distdir}
-    cp -r node_modules ${__distdir}/
-    cp -r packages/sync-server/{package.json,app.js} ${__distdir}/
-    cp -r packages/sync-server/src ${__distdir}/
-    cp -r packages/sync-server/migrations ${__distdir}/
-
-    # Remove symbolic links for @actual-app/web package
-    rm -rf ${__distdir}/node_modules/@actual-app/web ${__distdir}/node_modules/@actual-app/sync-server
-
-    # Copy the @actual-app/web artifacts manually
-    mkdir -p ${__distdir}/node_modules/@actual-app/web
-    cp packages/desktop-client/package.json ${__distdir}/node_modules/@actual-app/web/package.json
-    cp -r packages/desktop-client/build ${__distdir}/node_modules/@actual-app/web/
-}
+noextract=("${pkgname}-${pkgver}.tar.gz")
+sha256sums=(
+    'b39d7c1a7d67498a1d79c4689be10710505bd3c2ee4e56e20f362e3aa532a5d5' # tgz
+    '7359980edd568ddbaaef2a2d8c60fab277cb7f5d09372f72f8f1e0ee61df62f7' # service
+    '041744d6403aa2cdf18a09d0e82d005203d11d56795c6738fbc4f9b0cccb2c12' # sysusers
+    '8112d19ee07f43c8cd100796bb4b995f45f4304d5c78cfa21b6750c04a82b194' # tmpfiles
+    '3c58a11ca5a57d0a640b852e3e24c0c19d5be52557743af0a93e384ad5851a0c' # conf
+)
 
 package() {
-    install -d -m 0755 "${pkgdir}/usr/share/webapps/${pkgname}"
-    cd "${srcdir}/${__gitpkg}/${__distdir}"
-    cp -r * "${pkgdir}/usr/share/webapps/${pkgname}"
+    npm install --no-fund -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 
-    install -d -m 0750 "${pkgdir}/var/lib/actual"
+    install -D -m 0644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -D -m 0644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+    install -D -m 0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -D -m 0644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/conf.d/${pkgname}"
 
-    cd "${srcdir}"
-    install -D -m 0644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-    install -D -m 0644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -D -m 0644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    install -D -m 0644 ${pkgname}.conf "${pkgdir}/etc/conf.d/${pkgname}"
+    install -D -m 0644 "${pkgdir}/usr/lib/node_modules/@actual-app/sync-server/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

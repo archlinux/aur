@@ -3,10 +3,9 @@ Description=Actual Server
 After=network.target
 
 [Service]
-WorkingDirectory=/usr/share/webapps/actual-server
 User=actual
 EnvironmentFile=/etc/conf.d/actual-server
-ExecStart=/usr/bin/yarn start
+ExecStart=/usr/bin/actual-server
 Restart=on-watchdog
 
 [Install]
