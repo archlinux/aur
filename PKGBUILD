@@ -3,7 +3,7 @@
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
 pkgver=1.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
