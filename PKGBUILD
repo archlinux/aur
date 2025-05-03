@@ -2,7 +2,7 @@
 # Contributor: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=msquic
-pkgver=2.4.10
+pkgver=2.4.11
 pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol"
@@ -17,7 +17,7 @@ source=("git+https://github.com/microsoft/msquic.git#tag=v${pkgver}"
         "git+https://github.com/google/googletest.git"
         "quictls-openssl::git+https://github.com/quictls/openssl.git"
         "git+https://github.com/microsoft/CLOG.git")
-sha512sums=('225ba6682b960b22b9dc05df913ac78612bc48deed954a691f3a6f031e3c3faddcd7de3cdb186612714e45cb27ce6024f2caf2b0c2f3df13ac3f8f4a4d697544'
+sha512sums=('0c6b3524343b226d3a7a2abdb343a75e5448c1364f64925bf43dcf67b83c95ced7746e9a73cca95a5c646c2a020bea751722ac318e0eba27ffcd307f9389e9d9'
             'SKIP'
             'SKIP'
             'SKIP')
