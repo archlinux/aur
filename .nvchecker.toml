@@ -1,0 +1,4 @@
+[ps3-disc-dumper]
+source = "git"
+git = "https://github.com/13xforever/ps3-disc-dumper.git"
+prefix = "v"
