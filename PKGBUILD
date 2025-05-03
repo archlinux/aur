@@ -3,7 +3,7 @@
 pkgname=ymir-emu
 _pkgname=ymir
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("sdl3")
 makedepends=("cmake" "clang" "git" "ninja")
 source=(
-    "git+${url}.git#tag=v${pkgver}"
+    "ymir::git+${url}.git#tag=v${pkgver}"
     ymir-emu.desktop
 )
 sha256sums=(
@@ -20,14 +20,14 @@ sha256sums=(
 )
 
 prepare() {
-    cd $srcdir/Ymir
+    cd $srcdir/ymir
     git submodule update --init --recursive
 }
 
 build() {
     local cmake_options=(
         -B "build"
-        -S "Ymir"
+        -S "ymir"
         -D CMAKE_C_COMPILER="clang"
         -D CMAKE_CXX_COMPILER="clang++"
         -D Ymir_AVX2=ON
@@ -43,5 +43,5 @@ build() {
 package() {
     DESTDIR="${pkgdir}" cmake --install "build"
     install -Dm644 ymir-emu.desktop -t ${pkgdir}/usr/share/applications
-    install -Dm644 "Ymir/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 "ymir/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
