@@ -1,7 +1,7 @@
 pkgbase = extension-manager
 	pkgdesc = A native tool for browsing, installing, and managing GNOME Shell Extensions
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mjakeman/extension-manager
 	arch = x86_64
 	arch = aarch64
