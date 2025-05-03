@@ -4,7 +4,7 @@
 
 pkgbase=blackhole-sim
 pkgdesc="A terminal-based black hole orbital simulator with dynamic star orbits"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 url="https://github.com/art-was-here/blackhole-sim"
 arch=('any')
