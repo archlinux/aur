@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '9cdcf4c9bb6e0f2cf5f2daacfdfa845842643aa9217c466cfcdecd6c9700bd3a'
+  'a1ba1355926d6840e3ff008bb5d2a30c5c4f594f2039742238d47fcf3885b226'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -110,6 +110,7 @@ package_penpot() {
     'ghostscript'
     'netpbm'
     'potrace'
+    'imagemagick'
   )
   optdepends=(
     "python-tabulator: for the penbot-manage script"
