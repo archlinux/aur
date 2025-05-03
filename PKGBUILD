@@ -2,7 +2,7 @@
 
 pkgname=clifm-bin
 _pkgname=clifm
-pkgver=1.23
+pkgver=1.25
 pkgrel=1
 pkgdesc="The command line file manager (binary version)"
 arch=('i686' 'x86_64' 'armv7h')
