@@ -1,0 +1,20 @@
+pkgbase = vermilion-git
+	pkgdesc = A clean and minimal music player for mpd, Tidal, Spotify, and YouTube Music
+	pkgver = r69.3e89989
+	pkgrel = 1
+	url = https://github.com/vaxerski/Vermilion
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = pnpm
+	makedepends = node-gyp
+	depends = at-spi2-core
+	depends = gtk3
+	depends = nss
+	optdepends = yt-dlp: YouTube Music integration
+	provides = vermilion=r69.3e89989
+	conflicts = vermilion
+	source = vermilion::git+https://github.com/vaxerski/Vermilion.git
+	sha256sums = SKIP
+
+pkgname = vermilion-git
