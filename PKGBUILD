@@ -3,7 +3,7 @@
 pkgname=butt-appimage
 _pkgname=butt
 pkgver=1.45.0
-pkgrel=4
+pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool (AppImage release)."
 arch=('x86_64')
 url='https://danielnoethen.de/butt/'
