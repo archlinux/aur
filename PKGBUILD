@@ -1,7 +1,7 @@
 # Maintainer: aulonsal <seraur at aulonsal dot com>
 
 pkgname=f2
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
 arch=('x86_64' 'i686' 'aarch64')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}-LICENCE::${url/github/raw.githubusercontent}/v${pk
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 b2sums=('1375f8eb689085b7735551ce0f5f19167df905bdf8f105ac72479ae6214666f74a03ce24766bc08a9407c878ecd8078ca3e81013ecf4fd8c80a52dc308e29d78')
-b2sums_x86_64=('f6e73d541b5e4894e1755c7069b118d537c1d10cad3ccc1dddb9a4f46b9e1e53e2f0aabcd14f37f92722df03d173a911c1596a2965727e2631933619751af768')
+b2sums_x86_64=('4afc67dda033a6e6e38d9a1d6cd1b5ce4123827a7a038d6907e339bfabe934b18290d219935deb5e0a29519a0646ff462aee687e7a2f73f7f0a1aa509008828d')
 
 build() {
 	declare -x CGO_CPPFLAGS="${CPPFLAGS}"
