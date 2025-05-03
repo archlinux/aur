@@ -8,7 +8,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -229,7 +229,7 @@ _prepare() {
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
 
   # This list is from ./Dockerfile
-  export TORCH_CUDA_ARCH_LIST="6.1 7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a"
+  export TORCH_CUDA_ARCH_LIST="6.1 7.0 7.2 7.5 8.0 8.6 8.7 8.9 9.0 9.0a 12.0"
 
   export ROCM_PATH=/opt/rocm
   export HIP_ROOT_DIR=/opt/rocm
