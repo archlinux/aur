@@ -7,7 +7,7 @@ url="https://github.com/fygar256/bi"
 license=('MIT')
 depends=('python')
 source=("https://github.com/fygar256/bi/archive/refs/heads/v$pkgver.zip")
-sha256sums=('441f58b2ef6a90dfb8a177001cb795562b6cd98bec58ccee817579c858d3d0ce')
+sha256sums=('2d44df2577b51bdf8f84f73d113fb121da4a626b0f377f701aa6586b2bdd346b')
 
 build() {
   echo "bi"
