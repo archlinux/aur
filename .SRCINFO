@@ -1,7 +1,7 @@
 pkgbase = cornrow
 	pkgdesc = Bluetooth and Airplay Audio Daemon for SBCs (Raspberry Pi, etc)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mincequi/cornrow
 	arch = x86_64
 	arch = aarch64
