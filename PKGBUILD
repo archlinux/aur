@@ -1,7 +1,7 @@
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=21.2.5
+pkgver=21.2.6
 
 _gitver=branch=Omega
 pkgrel=1
