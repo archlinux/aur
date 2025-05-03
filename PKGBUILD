@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=devito
 pkgname=python-${_base}
-pkgver=4.8.15
+pkgver=4.8.16
 pkgrel=1
 pkgdesc="Finite Difference DSL for symbolic computation"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel openmp
 optdepends=('python-mpi4py: for parallel support'
   'python-ipyparallel: for parallel support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1a47a290eb93101c5051effe76bc510da4615bc78cdf0c41f9810edc3e134c3efb3c13f681b4d217b594f3db2f090fbd64e637d5c743455f6cb41bc80f2e1d9b')
+sha512sums=('c4fad2b8ae2598c65c3d7483fc93ed2df91e6e666ae65f283a4ec1e286ec7dee0db9983de43b40167d328efa0a9421421aeaf942206f72be6ce4edfbeb7b6082')
 
 build() {
   cd ${_base}-${pkgver}
