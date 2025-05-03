@@ -16,7 +16,7 @@ pkgname=(
   java8-openjfx-src
 )
 pkgver=8.u202
-pkgrel=10
+pkgrel=11
 pkgdesc='Java OpenJFX 8 client application platform (open-source implementation of JavaFX)'
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
