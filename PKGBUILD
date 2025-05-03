@@ -1,6 +1,6 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=choria-git
-pkgver=e55de87f
+pkgver=v1.1.0.r6.ge91b121
 pkgrel=1
 pkgdesc="Finally, an MMORPG that's all about grinding and doing chores"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git rev-parse --short HEAD
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
