@@ -1,0 +1,6 @@
+The license of this scripts and config files is unknown (not specified by upstream).
+
+Likely some form of "free software" license.
+
+It has been asked upstream on 2025-05-03 what the actual license is:  
+https://github.com/CachyOS/CachyOS-PKGBUILDS/issues/602
