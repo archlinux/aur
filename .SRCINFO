@@ -1,0 +1,11 @@
+pkgbase = ndtf2img
+	pkgdesc = Converts an NDTF (N-Dimensional Texture Format) to an image (jpeg/png/tga/bmp).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Tr1NgleDev/ndtf2img
+	arch = x86_64
+	license = Apache-2.0 license
+	source = ndtf2img-1.0.tar.gz::https://github.com/Tr1NgleDev/ndtf2img/archive/1.0.tar.gz
+	sha256sums = 8c56b1a9bede514b0c36e0863adccc5b4bfe16415c885a0f209ca6da47572fbe
+
+pkgname = ndtf2img
