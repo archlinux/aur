@@ -1,7 +1,7 @@
 pkgbase = thrive
 	pkgdesc = the evolution game Thrive.
-	pkgver = 0.8.1.1
-	pkgrel = 2
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://revolutionarygamesstudio.com/
 	arch = x86_64
 	arch = aarch64
@@ -28,22 +28,22 @@ pkgbase = thrive
 	depends = fontconfig
 	depends = gcc-libs
 	options = !lto
-	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.8.1.1
+	source = git+https://github.com/Revolutionary-Games/Thrive.git#tag=v0.8.2
 	source = git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git
 	source = git+https://github.com/jrouwe/JoltPhysics.git
 	source = git+https://github.com/cameron314/concurrentqueue.git
 	source = git+https://github.com/godotengine/godot-cpp.git
-	source = godot-mono-export-templates-4.3.zip::https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_export_templates.tpz
-	sha256sums = af01ae8c54b44d8225b8624475894e12e2c653721095ff4bb69f877a75ff94f7
+	source = godot-mono-export-templates-4.4.1.zip::https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_export_templates.tpz
+	sha256sums = 494bff46a9517c444112de1ec00ddc7592380b340af04a299e527e6aa4b98c78
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = a640d97e4247883b58d394c6111c13343112f3c49bb857d95586f98659fa3be5
-	source_x86_64 = godot-4.3-x86_64.zip::https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip
-	sha256sums_x86_64 = ecdf3cd5a6004a6568c199581d58ba685a9905926e51677906b76fbdd9cad351
-	source_aarch64 = godot-4.3-aarch64.zip::https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_arm64.zip
-	sha256sums_aarch64 = 1ae242eb7dc30c281efef3f8a518580c9c997eb494a0b978d9504206a3f890c4
+	sha256sums = b64d164b96b19dd7175a1ba3f3a6e583e9d4dc507b3d1333563f246b5811823e
+	source_x86_64 = godot-4.4.1-x86_64.zip::https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_x86_64.zip
+	sha256sums_x86_64 = b95e694ca183eb720376645cdc3547715cc6d0c021528238cb6519982ae28b2f
+	source_aarch64 = godot-4.4.1-aarch64.zip::https://github.com/godotengine/godot/releases/download/4.4.1-stable/Godot_v4.4.1-stable_mono_linux_arm64.zip
+	sha256sums_aarch64 = 240ef156cc1e7e67838fdaae55f9d84273e0e8f0840e7cdbe0a324a2fe945ac7
 
 pkgname = thrive
 	depends = libxrender

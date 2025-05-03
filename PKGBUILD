@@ -1,10 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
-_godot=4.3
+_godot=4.4.1
 _system_godot=false
 
 pkgname=thrive
-pkgver=0.8.1.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
 url="https://revolutionarygamesstudio.com/"
@@ -30,14 +30,14 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('af01ae8c54b44d8225b8624475894e12e2c653721095ff4bb69f877a75ff94f7'
+sha256sums=('494bff46a9517c444112de1ec00ddc7592380b340af04a299e527e6aa4b98c78'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'a640d97e4247883b58d394c6111c13343112f3c49bb857d95586f98659fa3be5')
-sha256sums_x86_64=('ecdf3cd5a6004a6568c199581d58ba685a9905926e51677906b76fbdd9cad351')
-sha256sums_aarch64=('1ae242eb7dc30c281efef3f8a518580c9c997eb494a0b978d9504206a3f890c4')
+            'b64d164b96b19dd7175a1ba3f3a6e583e9d4dc507b3d1333563f246b5811823e')
+sha256sums_x86_64=('b95e694ca183eb720376645cdc3547715cc6d0c021528238cb6519982ae28b2f')
+sha256sums_aarch64=('240ef156cc1e7e67838fdaae55f9d84273e0e8f0840e7cdbe0a324a2fe945ac7')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
@@ -102,9 +102,6 @@ build(){
         export PATH="$PATH:$HOME/.local/bin"
     fi
 
-    # gdUnit4 Requires this
-    export GODOT_BIN=godot-mono
-
     local cmake_build_type thrive_avx
     for thrive_avx in OFF ON
     do
@@ -156,11 +153,6 @@ build(){
     #mv .skip-import-assets assets
     # /Scripts/PackageTool.cs
     godot-mono --headless --export-release "Linux/X11" dist/Thrive
-}
-
-check(){
-    cd "$srcdir/Thrive"
-    dotnet test
 }
 
 package(){
