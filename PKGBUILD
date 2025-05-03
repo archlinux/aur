@@ -1,7 +1,7 @@
 # Maintainer: Pixel
 
 pkgname=walrs
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A fast color scheme generator"
 arch=('x86_64' 'aarch64')
