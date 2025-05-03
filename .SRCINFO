@@ -1,6 +1,6 @@
 pkgbase = quickjs-ng
 	pkgdesc = Small and embeddable JavaScript engine
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://quickjs-ng.github.io/quickjs
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = quickjs-ng
 	depends = glibc
 	conflicts = quickjs
 	options = !strip
-	source = quickjs-ng-0.9.0.tar.gz::https://github.com/quickjs-ng/quickjs/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 77f9e79b42e2e7cff9517bae612431af47e120730286cb1dcfad0753bc160f10
+	source = quickjs-ng-0.10.0.tar.gz::https://github.com/quickjs-ng/quickjs/archive/refs/tags/v0.10.0.tar.gz
+	source = gcc15.patch
+	sha256sums = c54007e6ce9893b0074d53feac47c64a362900df20493110800c9e1f5c43427b
+	sha256sums = f4aee5e1ffc3af6fcfb581fba627e8ec14b79aaf49ce7d960af00862af2d5040
 
 pkgname = quickjs-ng
