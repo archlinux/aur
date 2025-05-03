@@ -1,0 +1,4 @@
+[tail-tray]
+source = "git"
+git = "https://github.com/SneWs/tail-tray.git"
+prefix = "v"
