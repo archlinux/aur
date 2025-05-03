@@ -1,0 +1,6 @@
+[vttest]
+source = "htmlparser"
+url = "http://invisible-island.net/archives/vttest/"
+xpath = "//a[substring(@href, string-length(@href) - 3) = '.tgz']/@href"
+from_pattern = "vttest-(\\d{8})\\.tgz"
+to_pattern = '\1'
