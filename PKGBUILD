@@ -1,9 +1,9 @@
 # Maintainer: Ivan Chetchasov <vi.is.chapmann@gmail.com>
 pkgname=libcvec
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Generic C++ vector library for C"
-arch=('x86_64')
+arch=('any')
 url="https://tvoygit.ru/vi_is_lonely/libcvec"
 license=('VAM')
 depends=()
