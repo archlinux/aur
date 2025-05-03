@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=mcptools
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Swiss Army Knife for MCP Servers'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/f/mcptools"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/f/mcptools/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('ef740e70b8e49b89c3d52768143c33afa3cd06b564c90a932de01c78db06300203a2bc3fecc7d17546a9b015ecbfa7c2bd5aae5ab1ceb77a92c089241e1f8954')
+b2sums=('1ddb84336c53e3816fe8820baac2471c24e63d2bb449b58941c31e0ad1b41b2db17eec0dd4740efc53a4bb8429a02ad7ee3488ee8b6d8de6a7668a3e7ee478f5')
 options=('!lto' '!debug')
 
 prepare(){
