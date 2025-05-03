@@ -1,22 +1,22 @@
 pkgbase = maptool
 	pkgdesc = An open source virtual tabletop program
 	pkgver = 1.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rptools.net/tools/maptool
 	install = maptool.install
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = dpkg
-	makedepends = jdk21-openjdk
+	makedepends = jdk23-openjdk
 	makedepends = gradle
 	makedepends = xdg-utils
 	makedepends = rpm-tools
 	source = git+https://github.com/RPTools/maptool.git#tag=1.16.3
 	source = maptool.sh
 	sha256sums = 4835bc35037e1db75dbbccbfd052a2b66a43cadfac7c0dfdd40e6a29c0310077
-	sha256sums = c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9
+	sha256sums = 16720b6f986f79eed2a9517433a6c0880c2b80f0d7c8611fb1359c85d1b372bc
 
 pkgname = maptool
-	depends = java-runtime=21
-	depends = java-openjfx=21
+	depends = java-runtime=23
+	depends = java-openjfx

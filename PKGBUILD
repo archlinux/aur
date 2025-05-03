@@ -4,22 +4,23 @@
 pkgname=maptool
 _pkgname=MapTool
 pkgver=1.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source virtual tabletop program"
 arch=('any')
 url='https://rptools.net/tools/maptool'
 license=('AGPL-3.0-or-later')
 depends=()
-makedepends=('git' 'dpkg' 'jdk21-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
+_java_ver=23
+makedepends=('git' 'dpkg' "jdk${_java_ver}-openjdk" 'gradle' 'xdg-utils' 'rpm-tools')
 source=(
 	"git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}"
 	"${pkgname}.sh")
 sha256sums=('4835bc35037e1db75dbbccbfd052a2b66a43cadfac7c0dfdd40e6a29c0310077'
-            'c1b1977801cfd84514359f405b5cb3fbeb56b1466d8cabc2ab87c41f79a590f9')
+            '16720b6f986f79eed2a9517433a6c0880c2b80f0d7c8611fb1359c85d1b372bc')
 install="${pkgname}.install"
 
 _prefix="opt/$pkgname"
-_java_home='/usr/lib/jvm/java-21-openjdk'
+_java_home="/usr/lib/jvm/java-${_java_ver}-openjdk"
 
 prepare() {
 	cd "${pkgname}"
@@ -41,7 +42,7 @@ check() {
 }
 
 package() {
-	depends+=('java-runtime=21' 'java-openjfx=21')
+	depends+=("java-runtime=${_java_ver}" 'java-openjfx')
 
 	cd "${pkgdir}"
 
@@ -61,6 +62,7 @@ package() {
 	sed -i -E 's|Icon=.*|Icon=maptool|' "usr/share/applications/${pkgname}.desktop"
 
 	install -Dm755 "${srcdir}/${pkgname}.sh" "usr/bin/${pkgname}"
+	sed -i "s|MAP_TOOL_JAVA=|MAP_TOOL_JAVA=\"\${MAP_TOOL_JAVA:-${_java_home}}\"|" "usr/bin/${pkgname}"
 
 	rm -rf "${_prefix}"
 }

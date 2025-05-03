@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-MAP_TOOL_JAVA="${MAP_TOOL_JAVA:-/usr/lib/jvm/java-21-openjdk}"
-JAVAFX_PATH="${JAVAFX_PATH:-$MAP_TOOL_JAVA/lib}"
+MAP_TOOL_JAVA=
+JAVAFX_PATH="${JAVAFX_PATH:-/usr/share/java/java-openjfx}"
+export LD_LIBRARY_PATH="/usr/lib/java-openjfx:$LD_LIBRARY_PATH"
 
 _javajx_classes="$(ls -U1 "$JAVAFX_PATH/javafx"*.jar | tr '\n' ':')"
 _classpath="/usr/share/java/maptool/*:$_javajx_classes"
