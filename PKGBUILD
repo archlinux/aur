@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=profmem
-_pkgver=0.6.0
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Simple Memory Profiling for R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-r.rsp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f67828b0287e8ca8d244982cc6c171e4')
-b2sums=('ecb07fca472cdc482f238792a3e8c0f48fcfda36534f3f2f5720d911474e7ac9bbd6ebc7ad32b2a8280534e4cf26deeeae3532e2af67a91f8cdaa0a918cdb7ce')
+md5sums=('3048707ef4f365b91a84e3974f3669a5')
+b2sums=('f45e5e5078490559f0714ceb851ca72bcb6d8672d0a34604165c772df339309dde59cd4de64d4b0b15962e47f7b23b4125bccfe02099a9b607950de5b96fe6eb')
 
 build() {
   mkdir build
