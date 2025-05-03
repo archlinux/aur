@@ -92,6 +92,10 @@ build() {
   CFLAGS+=' -fcommon'
   # fix errors when compiling gstreamer-lite
   CFLAGS+=' -Wno-incompatible-pointer-types -Wno-int-conversion'
+  # Remove "-Wl,-z,pack-relative-relocs" from LDFLAGS
+  export LDFLAGS="${LDFLAGS//-Wl,-z,pack-relative-relocs}"
+  # Remove invalid symbols from LDFLAGS
+  export LDFLAGS="$(echo ${LDFLAGS} | sed -e 's|[[:space:]][[:space:]]|[[:space:]]|g' -e 's|\n||g')"
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   # ensure jdk 8 is used when building
