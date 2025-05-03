@@ -1,0 +1,23 @@
+# Package build files
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
+*.log
+
+# Git clone directory
+alda-git/
+
+# Build artifacts
+*.o
+*.so
+*.a
+
+# Backup files
+*~
+*.bak
