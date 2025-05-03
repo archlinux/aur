@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=playdate-sdk
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=(
   'playdate-simulator.shim'
 )
 
-sha512sums=('6b59a3a6d06b90e0a46f22603b5c9c97e44d70f7b7a297b37e3177e6630605ed589f6cd70aa4f761354bcb9fa3721080a4208b5e70913e9092493532ba8d4a40'
+sha512sums=('750bb7f54246557f7153b7dbdc21347221779dc822470a3e03ec382d06a2389ca78b72bb85e60f3b477bea00607a38e02752e9c74d123f72a71ce96371976eb2'
             '7286f35bff63253ff430860ce6a3ce52dfd88bcd90e6dd6cfcbeb90a76b38d2341d4fc428259d00eac7b67c2b94e0319e3d438a67e76e8016d8cd36be1123677'
             'ed30d6745f686e985bd54cd23c5a8e9bee95bad7209d065871bf461dc8321dea032583d6a3da9fa9909efca2969dde0954777a55ba42b4974c49ed1993101c92'
             '2a909f7d290489e23a5dd1648269e8575e3912057d03649d898fa23a6ff74185bd1080c6366db1b840bce4cb72482c72e218f88bb1aac4d91eec6f89205573cb')
