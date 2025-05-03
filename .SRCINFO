@@ -1,7 +1,7 @@
 pkgbase = trivalent-bin
 	pkgdesc = A hardened chromium for desktop Linux inspired by Vanadium.
 	pkgver = 136.0.7103.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/secureblue/Trivalent
 	arch = x86_64
 	license = (GPL-2.0-only WITH (Apache-2.0-note AND FTL-note AND WebView-note)) AND BSD-3-Clause AND LGPL-2.1-or-later AND Apache-2.0 AND IJG AND MIT AND GPL-2.0-or-later AND ISC AND OpenSSL AND (MPL-1.1 OR GPL-2.0-only OR LGPL-2.0-only)
@@ -46,7 +46,7 @@ pkgbase = trivalent-bin
 	source = https://repo.secureblue.dev/Packages/trivalent-common-136.0.7103.59-436509.x86_64.rpm
 	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-136.0.7103.59-436509.x86_64.rpm
 	sha256sums = 385cfcf3c29c7b5b25296f102c7e4a75d042464c205ff51aec7eb278cc408d05
-	sha256sums = 0a52566a82be9a80f0f2bcce97d13633e05cb4c71f8106fdaca2c9fda6c85ee8
 	sha256sums = 17395e8d1f810da7d9dc1698f00864ba19194ef6e3542cb5f2b3f5525f4119cb
+	sha256sums = 3cecd33b625ac14e9e293a22cd134bd1f5cb5c13d04d847215dfe8b22ac1c682
 
 pkgname = trivalent-bin

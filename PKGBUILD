@@ -2,7 +2,7 @@
 
 pkgname=trivalent-bin
 pkgver=136.0.7103.59
-pkgrel=1
+pkgrel=2
 pkgdesc="A hardened chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
 url="https://github.com/secureblue/Trivalent"
@@ -23,8 +23,8 @@ source=("https://repo.secureblue.dev/Packages/trivalent-136.0.7103.59-436509.x86
         "https://repo.secureblue.dev/Packages/trivalent-common-136.0.7103.59-436509.x86_64.rpm"
         "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-136.0.7103.59-436509.x86_64.rpm")
 sha256sums=('385cfcf3c29c7b5b25296f102c7e4a75d042464c205ff51aec7eb278cc408d05'
-            '0a52566a82be9a80f0f2bcce97d13633e05cb4c71f8106fdaca2c9fda6c85ee8'
-            '17395e8d1f810da7d9dc1698f00864ba19194ef6e3542cb5f2b3f5525f4119cb')
+            '17395e8d1f810da7d9dc1698f00864ba19194ef6e3542cb5f2b3f5525f4119cb'
+            '3cecd33b625ac14e9e293a22cd134bd1f5cb5c13d04d847215dfe8b22ac1c682')
 
 prepare() {
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
