@@ -2,7 +2,7 @@
 pkgname=landrop-bin
 _pkgname=landrop
 pkgver=2.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Drop any files to any devices on your LAN"
 arch=('x86_64' 'aarch64')
 url="https://landrop.app/"
@@ -57,21 +57,29 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   ln -sf "/opt/LANDrop/landrop-v2-electron" "${pkgdir}/usr/bin/landrop"
   
-  # Replace the original desktop file with our modified version
-  sed -i 's|Exec=/opt/LANDrop/landrop-v2-electron|Exec=landrop|g' \
-    "${srcdir}/usr/share/applications/landrop-v2-electron.desktop"
-  sed -i 's|Icon=landrop-v2-electron|Icon=landrop|g' \
-    "${srcdir}/usr/share/applications/landrop-v2-electron.desktop"
-  install -Dm644 "${srcdir}/usr/share/applications/landrop-v2-electron.desktop" \
-    "${pkgdir}/usr/share/applications/landrop.desktop"
+  # Create a proper desktop file
+  cat > "${srcdir}/landrop.desktop" << EOF
+[Desktop Entry]
+Name=LANDrop
+Exec=landrop %U
+Terminal=false
+Type=Application
+Icon=landrop
+StartupWMClass=LANDrop
+Comment=Drop any files to any devices on your LAN.
+Categories=Network;FileTransfer;
+EOF
+  install -Dm644 "${srcdir}/landrop.desktop" "${pkgdir}/usr/share/applications/landrop.desktop"
   
   # Make sure we don't install the original desktop file
   rm -f "${pkgdir}/usr/share/applications/landrop-v2-electron.desktop"
   
-  # Create symlink for the icon
-  mkdir -p "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
-  cp "${srcdir}/usr/share/icons/hicolor/1024x1024/apps/landrop-v2-electron.png" \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/landrop.png"
+  # Install icons in multiple sizes for better desktop integration
+  # Use the app icon from resources directory
+  for size in 16 24 32 48 64 96 128 256 512 1024; do
+    install -Dm644 "${srcdir}/opt/LANDrop/resources/app.asar.unpacked/resources/icon/icon.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/landrop.png"
+  done
   
   # Install license files
   install -Dm644 "${srcdir}/opt/LANDrop/LICENSE.electron.txt" \
