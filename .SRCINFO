@@ -1,12 +1,14 @@
 pkgbase = passt-git
 	pkgdesc = Plug A Simple Socket Transport
-	pkgver = 20230329.b10b983.r16.g1a3ade9
+	pkgver = 2025_04_15.2340bbf.r11.g587980c
 	pkgrel = 1
 	url = https://passt.top/passt/about/
 	arch = x86_64
-	license = GPL2
+	license = BSD-3-Clause
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = glibc
+	optdepends = sh: for demo script
 	provides = passt
 	conflicts = passt
 	source = git+https://passt.top/passt
