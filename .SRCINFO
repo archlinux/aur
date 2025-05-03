@@ -1,0 +1,19 @@
+pkgbase = libgbinder-git
+	pkgdesc = GLib-style interface to binder
+	pkgver = 1.1.42.r3.ga700ddd
+	pkgrel = 1
+	url = https://github.com/mer-hybris/libgbinder
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = git
+	depends = glib2
+	depends = libglibutil
+	provides = libgbinder=1.1.42
+	conflicts = libgbinder
+	source = libgbinder::git+https://github.com/mer-hybris/libgbinder.git
+	b2sums = SKIP
+
+pkgname = libgbinder-git
