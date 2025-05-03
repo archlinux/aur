@@ -1,8 +1,8 @@
 #!/bin/bash
 
 _pkgnamefmt=LibreOffice
-_pkgver=25.2.1.1
-pkgver=25.2.1.1
+_pkgver=25.2.3.2
+pkgver=25.2.3.2
 
 sed -i "6s|_pkgnamefmt=.*|_pkgnamefmt=${_pkgnamefmt}|" PKGBUILD
 
