@@ -2,13 +2,12 @@
 
 pkgname=otf-manrope
 pkgver=4.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Manrope font – modern geometric sans-serif"
-url="https://manropefont.com"
-# Git repository: https://github.com/sharanda/manrope
+url="https://www.shimmer.cloud/manrope"
 license=("custom:OFL")
 arch=("any")
-source=("https://manropefont.com/manrope.zip"
+source=("https://www.shimmer.cloud/assets/manrope/manrope.zip"
        "OFL.txt")
 sha256sums=('55df46e6c66a7dce193f234001327d94f4bc9e972b8499d11ba9c2eefcc9f4d9'
             'ce243fd4a62b1b76c959ffba6ec16a7a3146b2362d441ae4f9f7f32fc3750d6c')
