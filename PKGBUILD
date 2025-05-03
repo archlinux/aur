@@ -3,7 +3,7 @@
 _pkgname=pandoc-eisvogel-template
 pkgname="${_pkgname}-git"
 epoch=1
-pkgver=3.1.0+4.r312.20250426.a7109b6
+pkgver=3.2.0.r314.20250426.62377f3
 pkgrel=1
 pkgdesc="The 'eisvogel' LaTeX-template for pandoc. A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX. It is designed for lecture notes and exercises with a focus on computer science. The template is compatible with pandoc 2."
 arch=(any)
