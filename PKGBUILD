@@ -110,7 +110,5 @@ package() {
   install -Dvm644 10-enable-ksm-by-default.conf  "${pkgdir}/usr/lib/tmpfiles.d/10-enable-ksm-by-default.conf"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log
-  install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  "${srcdir}/copying-unknown.txt"
-  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}"/* "${pkgdir}/usr/share/doc/${_pkgname}"/
 }
 
