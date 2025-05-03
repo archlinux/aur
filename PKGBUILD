@@ -7,7 +7,7 @@
 pkgname=sandbox
 pkgver=2.46
 pkgrel=1
-pkgdesc="sandbox'd LD_PRELOAD hack"
+pkgdesc="Gentoo sandbox tool and library"
 arch=('i686' 'x86_64')
 url='http://www.gentoo.org/'
 url='https://github.com/gentoo/sandbox/'

@@ -1,5 +1,5 @@
 pkgbase = sandbox
-	pkgdesc = sandbox'd LD_PRELOAD hack
+	pkgdesc = Gentoo sandbox tool and library
 	pkgver = 2.46
 	pkgrel = 1
 	url = https://github.com/gentoo/sandbox/
