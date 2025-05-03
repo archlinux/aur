@@ -1,7 +1,7 @@
 # Maintainer:  Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=rio-git
-pkgver=0.2.4.r8.g66257aa23
+pkgver=0.2.12.r154.g621b16e672
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU (git)"
 arch=('x86_64')
