@@ -3,9 +3,10 @@
 
 pkgname=notepad---bin
 _pkgname=com.hmja.notepad
-pkgver=3.0.0.0
-_pkgver=v3.0
-pkgrel=2
+pkgver=3.2.0.0
+_pkgver=v3.2
+pkgrel=1
+epoch=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
 arch=('x86_64')
 url="https://gitee.com/cxasm/notepad--"
@@ -25,9 +26,9 @@ depends=(
 makedepends=(
     patchelf
 )
-source=("https://gitee.com/cxasm/notepad--/releases/download/${_pkgver}/${_pkgname}_${pkgver}_amd64.deb"
+source=("https://github.com/cxasm/notepad--/releases/download/notepad-v3.2/com.hmja.notepad_3.2.0.0_amd64.deb"
 "${url}/raw/master/LICENSE")
-sha256sums=('0133f059cc165802398a064dc3aac697c7ce2c32a9bbd2da97e9c36329e1d7ad'
+sha256sums=('406d292846c6a4d1bec1a48a0fbef2c1211b17e8b71239e6ea34bfc2f2fbc690'
             '0b383d5a63da644f628d99c33976ea6487ed89aaa59f0b3257992deac1171e6b')
 options=("!strip")
 
@@ -53,7 +54,7 @@ package() {
 
     cd "${srcdir}/opt/apps/com.hmja.notepad/entries/applications"
     sed "s/\/opt\/apps\/com.hmja.notepad\/files\/Notepad--/notepad--/g" -i com.hmja.notepad.desktop
-    sed "s/Categories=TextEditor;/Categories=TextEditor;Development;Utility;/g" -i com.hmja.notepad.desktop
+    sed "s/Categories=TextEditor;/Categories=TextEditor;Development;/g" -i com.hmja.notepad.desktop
     sed "s/Exec=notepad-- %U/Exec=env QT_SCALE_FACTOR=1.15 notepad-- %U/g" -i com.hmja.notepad.desktop
     sed "s/Icon=\/opt\/apps\/com.hmja.notepad\/entries\/icons\/hicolor\/scalable\/apps\/ndd.svg/Icon=notepad--/g" -i com.hmja.notepad.desktop
     install -Dm644 com.hmja.notepad.desktop "${pkgdir}/usr/share/applications/Notepad--.desktop"
