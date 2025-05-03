@@ -2,7 +2,7 @@
 
 pkgname=cassette-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 i686 x86_64)
 url="https://gitlab.gnome.org/Rirusha/${pkgname%-bin}"
@@ -21,7 +21,7 @@ depends=(
   libadwaita
   libsoup3
   libgee
-  libxml2
+  libxml2-legacy #Temporary solution
   sqlite
   webkitgtk-6.0
   xdg-desktop-portal-impl
