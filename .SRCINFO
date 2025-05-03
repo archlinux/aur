@@ -1,6 +1,6 @@
 pkgbase = gpgfrontend
 	pkgdesc = An exceptional GUI frontend for the modern GnuPG (gpg)
-	pkgver = 2.1.7
+	pkgver = 2.1.8+46+gbe4cb8e
 	pkgrel = 1
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
@@ -9,17 +9,20 @@ pkgbase = gpgfrontend
 	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = qt6-tools
+	makedepends = vulkan-headers
 	depends = gpgme
 	depends = gtest
 	depends = hicolor-icon-theme
 	depends = libarchive
 	depends = openssl
 	depends = qt6-base
-	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.1.7
+	source = git+https://github.com/saturneric/GpgFrontend#commit=be4cb8e0f9ab4cd1e41979de8809b04211c116f3
 	source = git+https://github.com/bricke/Qt-AES.git
 	source = git+https://github.com/qt/qttranslations.git
-	source = git+https://github.com/saturneric/GpgFrontend-Modules.git
-	sha256sums = 9794a05a23e34a1d5183f42c4931ca94b5b2c1476fa0693ad0284552cfe64647
+	source = git+https://git.bktus.com/GpgFrontend/Modules.git
+	source = git+https://git.bktus.com/GpgFrontend/vmime.git
+	sha256sums = b0f9fe08e7bd86277676d9d3010bfcc6f54500ce0acd8f3ff8a22aeefb0da86a
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
