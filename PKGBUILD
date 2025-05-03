@@ -3,7 +3,7 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git ${_pkgname}-client-flatpak-git)
-pkgver=r374.a034869
+pkgver=r407.c7d724f
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -40,7 +40,7 @@ package_pat-aur-client-git() {
 }
 
 package_pat-aur-client-flatpak-git() {
-	depends+=('pat-aur-client-git' 'boost' 'flatpak')
+	depends+=('pat-aur-client-git' 'libboost_json.so' 'flatpak' )
 	pkgdesc+=' (flatpak support)'
 }
 

@@ -1,6 +1,6 @@
 pkgbase = pat-aur-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers.
-	pkgver = r374.a034869
+	pkgver = r407.c7d724f
 	pkgrel = 1
 	url = https://gitlab.com/patlefort/pat-aur
 	arch = x86_64
@@ -48,5 +48,5 @@ pkgname = pat-aur-host-git
 pkgname = pat-aur-client-flatpak-git
 	pkgdesc = AUR helper and tool to build Arch Linux packages in clean containers. (flatpak support)
 	depends = pat-aur-client-git
-	depends = boost
+	depends = libboost_json.so
 	depends = flatpak
