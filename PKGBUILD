@@ -12,7 +12,7 @@ arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2' 'custom:AVASYSPL')
 depends=(gtk2 sane libstdc++5)
-makedepends=(gettext gcc14)
+makedepends=(gettext)
 optdepends=('iscan-data: Image Scan! data files required for some devices')
 source=(#"http://support.epson.net/linux/src/scanner/iscan/${pkgname}_${pkgver%.*}-${pkgver/*.}.tar.gz"
         "https://sourceforge.net/projects/fabiololix-os-archive/files/src/iscan_${_pkgver}.tar.gz"
@@ -48,7 +48,7 @@ prepare() {
 }
 
 build() {
-  export CC=/usr/bin/gcc-14 CXX=/usr/bin/g++-14
+  export CFLAGS="$CFLAGS -std=gnu89"
 
   cd "${pkgname}-${pkgver%.*}"
   export LDFLAGS="${LDFLAGS} -ldl -lpng16"

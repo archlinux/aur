@@ -8,7 +8,6 @@ pkgbase = iscan
 	license = GPL2
 	license = custom:AVASYSPL
 	makedepends = gettext
-	makedepends = gcc14
 	depends = gtk2
 	depends = sane
 	depends = libstdc++5
