@@ -6,7 +6,6 @@ pkgbase = droidcam-obs-plugin-bin
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = libjpeg-turbo
 	depends = obs-studio
 	conflicts = droidcam-obs-plugin-git
 	conflicts = droidcam-obs-plugin
