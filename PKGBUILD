@@ -4,13 +4,14 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=owncast
-pkgver=0.2.1
-pkgrel=4
-_npmver=hydrogen
+pkgver=0.2.2
+pkgrel=1
+_npmver=iron
 pkgdesc='Self-hosted live video streaming (chat included)'
 arch=(x86_64)
 license=(MIT)
 depends=(glibc)
+url='https://owncast.online/'
 makedepends=(git go npm nvm)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/owncast/owncast/archive/refs/tags/v${pkgver}.tar.gz"
@@ -19,7 +20,7 @@ source=(
   owncast.service
   nginx.sample.conf
 )
-sha256sums=('99be2d22136304e14febeb3ff29cc5e38abb0c2ded59b408531564c59d9849cf'
+sha256sums=('3486464f36b85bf3ebdedc780248cf7405b4a0bfcb035260c0b487f7a581f35d'
             'bba4d75a41a90d778928439bc8e1c21b359dcc45d0b909ba5171ac2fb2c05a3b'
             'd822e9e1e4d6fb58c76ebcb2d5e30e4d4d79c7599c135365163c4f6074e33cb2'
             '07b76935dec80397e0a5f8db4bc64dc7fec5c620388e1971e2961b7b6eeb352c'
@@ -49,7 +50,10 @@ cd \"${srcdir}/${pkgname}-${pkgver}\"\\
 rm -rf web/node_modules web/package-lock.json" "$srcdir/bundleWeb/bundleWeb.sh"
 
   #build with verbosity
-  sed -i 's/npm.*silent.*install.*/npm install/' "$srcdir/bundleWeb/bundleWeb.sh"
+  #sed -i 's/npm.*silent.*install.*/npm install/' "$srcdir/bundleWeb/bundleWeb.sh"
+  #currently has dependency conflicts that --legacy-deps wouldn't solve, this may change in later releases
+  sed -i 's/npm.*install.*/npm install --force/' "$srcdir/bundleWeb/bundleWeb.sh"
+
 }
 
 build() {
