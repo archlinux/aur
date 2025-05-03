@@ -1,4 +1,4 @@
-From 03e223d54da4e12ab597f7d636f1d08b8a7877f2 Mon Sep 17 00:00:00 2001
+From 50073828a18debb9909c2762e86bd7b88c52b8cd Mon Sep 17 00:00:00 2001
 From: tokyo4j <hrak1529@gmail.com>
 Date: Fri, 23 Feb 2024 03:57:01 +0900
 Subject: [PATCH] IME: support text-input-v1
@@ -429,5 +429,5 @@ index 07b996ec..a911619a 100644
  }
  
 -- 
-2.48.1
+2.49.0
 
