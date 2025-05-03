@@ -1,0 +1,12 @@
+pkgbase = nob.h-git
+	pkgdesc = Header only library for writing build recipes in C
+	pkgver = r121.112911e
+	pkgrel = 1
+	url = https://github.com/tsoding/nob.h
+	arch = any
+	license = MIT
+	makedepends = git
+	source = nob.h::git+https://github.com/tsoding/nob.h.git
+	sha256sums = SKIP
+
+pkgname = nob.h-git
