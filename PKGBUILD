@@ -25,7 +25,7 @@ sha512sums=('0046c48d5c08351258a176d91995f8baf003917fd7780b25f5921f259c03da07266
 build() {
   meson build vips-$pkgver \
     --prefix=/usr \
-    -Dgtk_doc=true
+    -Dgtk_doc=true \
     -Dtiff=disabled
   meson compile -C build
 }
