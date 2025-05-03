@@ -108,6 +108,8 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   # ensure jdk 8 is used when building
   export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  # Fix usage on newer CMAKE versions
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
   ../gradle-4.8/bin/gradle
 }
