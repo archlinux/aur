@@ -3,7 +3,7 @@
 pkgname=borgtui-git
 _pkgname=borgtui
 pkgver=r171.f41dbb3
-_pkgver=0.3.3
+_pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="Like borgmatic, but with a TUI to help automate borg backups :^)"
