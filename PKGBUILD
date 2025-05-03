@@ -1,8 +1,8 @@
 # Maintainer: Robin Broda <robin at broda dot me>
 
 pkgname=hq
-pkgver=3.1
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 pkgdesc='HTML processor inspired by jq'
 arch=('x86_64')
 url='https://github.com/coderobe/hq'
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gcc-libs' 'modest')
 makedepends=('git' 'meson')
 source=("git+${url}#tag=${pkgver}")
-md5sums=('SKIP')
+md5sums=('bc7723c7afba3a853dd0883a52105297')
 
 build() {
 	cd "${pkgname}"
