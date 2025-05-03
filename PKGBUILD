@@ -57,11 +57,21 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   ln -sf "/opt/LANDrop/landrop-v2-electron" "${pkgdir}/usr/bin/landrop"
   
-  # Make sure the desktop file is properly installed and points to the correct binary
+  # Replace the original desktop file with our modified version
+  sed -i 's|Exec=/opt/LANDrop/landrop-v2-electron|Exec=landrop|g' \
+    "${srcdir}/usr/share/applications/landrop-v2-electron.desktop"
+  sed -i 's|Icon=landrop-v2-electron|Icon=landrop|g' \
+    "${srcdir}/usr/share/applications/landrop-v2-electron.desktop"
   install -Dm644 "${srcdir}/usr/share/applications/landrop-v2-electron.desktop" \
     "${pkgdir}/usr/share/applications/landrop.desktop"
-  sed -i 's|Exec=/opt/LANDrop/landrop-v2-electron|Exec=landrop|g' \
-    "${pkgdir}/usr/share/applications/landrop.desktop"
+  
+  # Make sure we don't install the original desktop file
+  rm -f "${pkgdir}/usr/share/applications/landrop-v2-electron.desktop"
+  
+  # Create symlink for the icon
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+  cp "${srcdir}/usr/share/icons/hicolor/1024x1024/apps/landrop-v2-electron.png" \
+    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/landrop.png"
   
   # Install license files
   install -Dm644 "${srcdir}/opt/LANDrop/LICENSE.electron.txt" \
