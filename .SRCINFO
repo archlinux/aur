@@ -1,6 +1,6 @@
 pkgbase = emptyclip-git
-	pkgdesc = A top-down shooter RPG
-	pkgver = 3f0f300
+	pkgdesc = A top-down shooter action RPG
+	pkgver = v2.0.3.r32.ge69614f
 	pkgrel = 1
 	url = https://empty-clip.gitlab.io
 	arch = i686

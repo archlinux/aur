@@ -1,6 +1,6 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=emptyclip-git
-pkgver=ac12d321
+pkgver=v2.0.3.r32.ge69614f
 pkgrel=1
 pkgdesc="A top-down shooter action RPG"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git rev-parse --short HEAD
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
