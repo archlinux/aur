@@ -58,6 +58,7 @@ source=(
   java8-openjfx-no-check-jfxrt-jar.patch
   java8-openjfx-fix-java-version-check.patch
   java8-openjfx-offlineasm-warnings-ruby27.patch
+  java8-openjfx-wno-error.patch
 )
 sha256sums=('813ed6bbe7669b5acae7908720b9e353771e854be75c57a323310d0b9271daff'
             'd1c2255893e5ec6268d7c92bb6539cde629d325872f26cffb5f1f616c9d5f30d'
@@ -70,7 +71,8 @@ sha256sums=('813ed6bbe7669b5acae7908720b9e353771e854be75c57a323310d0b9271daff'
             'bd69e8a3363f9b3ade50fb29d4c9e3d7e59b42472ae00d425d20ddcda720b919'
             '47822da975832551bc3b20b3d75891135314f89cfcb75f7212eece148902aea3'
             '88ecba988b6e05580cecc09c37add8e375097619d9fa106d65c09edd993c3bc7'
-            'fcc5d944055df246dd9282e6093b015a448d8a6207fa7425c85d2562b7f5a596')
+            'fcc5d944055df246dd9282e6093b015a448d8a6207fa7425c85d2562b7f5a596'
+            '71a82aed1b6090c75dbc0e4ccb4e0cf2ce8a39f615a79909cabfbc2f89c971e6')
 
 prepare() {
   cd rt-${pkgver//./}-ga
@@ -86,6 +88,7 @@ prepare() {
   patch -Np1 -i ../java8-openjfx-no-check-jfxrt-jar.patch
   patch -Np1 -i ../java8-openjfx-fix-java-version-check.patch
   patch -Np1 -i ../java8-openjfx-offlineasm-warnings-ruby27.patch
+  patch -Np1 -i ../java8-openjfx-wno-error.patch
 }
 
 build() {
