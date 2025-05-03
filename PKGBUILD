@@ -2,9 +2,9 @@
 
 pkgbase=csnet
 pkgname=csnet
-_tagname=2025-04-21
+_tagname=2025-05-03
 pkgver=${_tagname//-/.}
-pkgrel=8
+pkgrel=9
 pkgdesc="CSNet (Computer Science Network) client for linux"
 license=('LicenseRef-scancode-commercial-license')
 url="https://aite.xyz/product/csnet/client"
@@ -38,10 +38,10 @@ sha256sums=('99e4dfd7cf1e77a455f94485e51a55d1ba05cbfa48e0e8457a9ae0bad6e50cea'
             'e32ce02eb3e8b74f673cc211bc51cebaf4050145cd96b397d9d5079f99eec623'
             '3f43a522d49952f4a486cadcedde3b6faad1dbd12723c3a52e31f74b956f51fd'
             '5950180f132da5b7471398e203e9eb23f8bab2b3283dcddafffd60863e7a6fb1'
-            '186fb6079700f42e44ee46668bc89ad9a1dab2fc478d0ea91a3569fdec0ccff1'
-            '6d873ffe4d0fcc83820e48beb9e32ab824083366769a3ed35fb9cfd42a5f696f'
-            '20cc0bcb33820e806b4e90c2694ccc788cdd2c961b4f763c83a61221f89741fe'
-            'f376c7dd9eaf0a83dca8bb84cd9f8224e1f37106538a20f051f0ff8b3752c2aa')
+            'ea610b786d3d42999263c3b278a20368a926616e3a310e8ad813f100043ce35e'
+            '06c3dea2445e7e895cc39897c3adcae4854481ea70e368682d04fd8edcf2aaa8'
+            '62ca86111ec0cdbe641b086b927a6ca38f7402acbd772b4a3a5b67f852f343d1'
+            'fc4991495faa9cb902f3a017d969f1805a64cea99f71e7c476c286938033f7ec')
 noextract=()
 
 package() {
