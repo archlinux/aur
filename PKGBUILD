@@ -130,6 +130,7 @@ build() {
   pushd "${pkgname}" || return
   ./xenia-build build \
     --config Release \
+    --no_premake \
     --target "xenia-app" \
     $(echo "${MAKEFLAGS}" | grep -oE '\-j\s?[0-9]+' | sed -r 's/-j([0-9]+)/-j \1/' | head -n 1)
 }
