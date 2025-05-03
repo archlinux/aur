@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=recordbox
-pkgver=0.9.3 # renovate: datasource=git-tags depName=https://codeberg.org/edestcroix/Recordbox
+pkgver=0.10.0 # renovate: datasource=git-tags depName=https://codeberg.org/edestcroix/Recordbox
 pkgrel=1
 pkgdesc='A music player and library browser designed primarily to be as simple as possible, and tailored specifically to browsing and playing albums, rather than tracks or playlists.'
 arch=(x86_64)
@@ -58,4 +58,4 @@ package() {
   meson install -C build --destdir "${pkgdir}" --no-rebuild
 }
 
-sha256sums=('c6e782682f2b7ec3976ed53ec107446e3b99715ff9420f643a6882952e9d4633')
+sha256sums=('ae6b4e71bb6c4c055206c9423b89146f26bbf73efd949153daa483f525acc8a3')
