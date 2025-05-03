@@ -1,6 +1,6 @@
 pkgbase = droidcam-obs-plugin-bin
 	pkgdesc = Plugin for DroidCam OBS
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://droidcam.app/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = droidcam-obs-plugin-bin
 	license = GPL
 	makedepends = libjpeg-turbo
 	depends = obs-studio
-	depends = libusbmuxd
-	depends = ffmpeg
 	conflicts = droidcam-obs-plugin-git
-	source = https://github.com/dev47apps/droidcam-obs-plugin/releases/download/2.3.3/droidcam_obs_2.3.3_linux_flatpak.zip
-	sha256sums = 631ce154ffb74483e06bf87bd31a3e676b35ddf649a9b19ababc47ace0ec05e5
+	conflicts = droidcam-obs-plugin
+	provides = droidcam-obs-plugin
+	source = https://github.com/dev47apps/droidcam-obs-plugin/releases/download/2.3.4/droidcam_obs_2.3.4_linux_flatpak.zip
+	sha256sums = dd16cfefb35740d31e4881cdf6b1974c911f5149c3f1c61b4f0dc3942fda717c
 
 pkgname = droidcam-obs-plugin-bin
