@@ -1,39 +1,38 @@
-# Maintainer: Vinay <vinayydv3695@github.com>
+# Maintainer: Vinay <https://github.com/vinayydv3695>
 
 pkgname=telecord
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Export Discord chat from JSON, or CSV , TXT to Telegram including media, via CLI"
+pkgdesc="Export Discord chats (JSON + media) to Telegram — including interactive mode"
 arch=('any')
 url="https://github.com/vinayydv3695/telecord"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/vinayydv3695/telecord/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0ddcdb64bf04b441acd0285e842742aa58359586965ccb6382cdb1900159dd5')
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vinayydv3695/telecord/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')  # replace with actual sha256sum later if needed
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  npm ci --production
+  cd "$pkgname-$pkgver"
+  npm install --omit=dev
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  # Install main project files into /usr/lib/telecord
+  # Install the CLI entry point
+  install -Dm755 bin/telecord.js "$pkgdir/usr/lib/$pkgname/bin/telecord.js"
+
+  # Create /usr/bin/telecord symlink to the entry point
+  install -d "$pkgdir/usr/bin"
+  ln -s "/usr/lib/$pkgname/bin/telecord.js" "$pkgdir/usr/bin/telecord"
+
+  # Install source files
   install -d "$pkgdir/usr/lib/$pkgname"
-  cp -r assets lib node_modules package.json package-lock.json telecord.js "$pkgdir/usr/lib/$pkgname"
+  cp -r lib assets node_modules package.json "$pkgdir/usr/lib/$pkgname/"
 
-  # Create a small launcher script in /usr/bin
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<EOF
-#!/bin/bash
-exec node /usr/lib/$pkgname/telecord.js "\$@"
-EOF
-
-  # Install documentation
+  # Documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
-  # Install license properly
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
