@@ -1,0 +1,15 @@
+pkgbase = python-hbcl
+	pkgdesc = A Python tool to analyze and verify CD ripping logs (forked from heybrochecklog)
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/doujincafe/hbcl
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	depends = python
+	depends = python-faust-cchardet
+	provides = heybrochecklog
+	source = hbcl-1.4.6.tar.gz::https://github.com/doujincafe/hbcl/archive/refs/tags/v1.4.6.tar.gz
+	sha256sums = 284786b4ad59b59a814493cd43853dada09819daefebe7ae62fa67c15f6743ca
+
+pkgname = python-hbcl
