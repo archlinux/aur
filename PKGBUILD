@@ -1,6 +1,6 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=irrlamb-git
-pkgver=r652
+pkgver=v1.0.6.r0.gb465db8
 pkgrel=1
 pkgdesc="A 3D game that probably involves a lot of physics and frustrating gameplay."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git log --oneline | wc -l | sed 's/^/r/'
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

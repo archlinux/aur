@@ -1,6 +1,6 @@
 pkgbase = irrlamb-git
 	pkgdesc = A 3D game that probably involves a lot of physics and frustrating gameplay.
-	pkgver = r652
+	pkgver = v1.0.6.r0.gb465db8
 	pkgrel = 1
 	url = https://irrlamb.gitlab.io
 	arch = i686
