@@ -2,7 +2,7 @@
 
 _pkgname=fmt
 pkgname=mingw-w64-${_pkgname}
-pkgver=11.1.4
+pkgver=11.2.0
 pkgrel=1
 pkgdesc='Open-source formatting library for C++ (mingw-w64)'
 url='https://fmt.dev/'
@@ -13,7 +13,7 @@ checkdepends=('mingw-w64-wine')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
-sha256sums=('ac366b7b4c2e9f0dde63a59b3feb5ee59b67974b14ee5dc9ea8ad78aa2c1ee1e')
+sha256sums=('bc23066d87ab3168f27cef3e97d545fa63314f5c79df5ea444d41d56f962c6af')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fmtlib/${_pkgname}/archive/${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
