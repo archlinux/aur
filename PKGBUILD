@@ -2,7 +2,7 @@
 # Contributer: Teteros <teteros at teknik dot io>
 
 pkgname=airwindows-git
-pkgver=r395.171fc8a1
+pkgver=r438.f8a3f0d1
 pkgrel=1
 pkgdesc="Airwindows plugins are modular, graphic-less, stripped-down, VST plugins for Mac and PC"
 arch=(x86_64)
