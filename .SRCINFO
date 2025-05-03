@@ -1,0 +1,20 @@
+pkgbase = apphub-git
+	pkgdesc = Simplifies the installation and management of AppImages
+	pkgver = 1.0.0.alpha.2.r26.g0879260
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/app-hub
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = desktop-file-utils
+	makedepends = git
+	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	provides = apphub
+	conflicts = apphub
+	source = git+https://github.com/cosmic-utils/app-hub.git
+	sha256sums = SKIP
+
+pkgname = apphub-git
