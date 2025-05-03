@@ -2,7 +2,7 @@
 
 _binname=xenia_canary
 pkgname=xenia-canary-git
-pkgver=r7826.9f8fad755
+pkgver=r7828.bc6bce780
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -11,17 +11,10 @@ license=('BSD-3-Clause')
 makedepends=('clang'
              'cmake'
              'git'
-             'llvm'
-             'ninja'
-             'premake'
-             'python')
-depends=('glib2'
-         'gtk3'
+             'premake')
+depends=('gtk3'
          'hicolor-icon-theme'
-         'libx11'
-         'libxcb'
-         'sdl2'
-         'zlib')
+         'sdl2')
 conflicts=('xenia' 'xenia-git')
 provides=('xenia')
 # TODO: Use system installed deps for non-forked libs
@@ -62,9 +55,7 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'zarchive::git+https://github.com/exzap/ZArchive.git'
         'zlib::git+https://github.com/madler/zlib.git'
         'zstd::git+https://github.com/facebook/zstd.git'
-        "${pkgname}.desktop"
-        '0001-use-system-premake5.patch'
-        '0002-use-cmake-build-instead.patch::https://github.com/xenia-canary/xenia-canary/pull/569.patch')
+        "${pkgname}.desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -102,17 +93,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            'd8df7c6d7047fdc4278315b733a470843eab608f8bba5b8ea4355e8c4f44c88f'
-            'a4ec3de53c1231dc842ad8a0f250c84d8fb3cc7dd0f072e923a94b11b0d20d57')
+            '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"
 }
 
 prepare() {
-  patch -d "${pkgname}" -Np1 < 0001-use-system-premake5.patch
-  patch -d "${pkgname}" -Np1 < 0002-use-cmake-build-instead.patch
   sed --in-place '/fatalwarnings("All")/d' "${pkgname}"/premake5.lua
 
   for submodule in $(git -C "${pkgname}" submodule | awk '{print $2}')
@@ -122,17 +109,30 @@ prepare() {
     git -C "${pkgname}" -c protocol.file.allow=always submodule update "${submodule}"
   done
 
-  pushd "${pkgname}" || return
-  ./xenia-build setup
+  export CXXFLAGS CFLAGS LDFLAGS
+  premake5 \
+    --file="${pkgname}"/premake5.lua \
+    cmake
+  cmake \
+    -B "${pkgname}"-build \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DCMAKE_CXX_COMPILER:STRING=clang++ \
+    -DCMAKE_C_COMPILER:STRING=clang \
+    -S "${pkgname}"/build
+  echo "#ifndef GENERATED_VERSION_H_" > "${pkgname}"/build/version.h
+  echo "#define GENERATED_VERSION_H_" >> "${pkgname}"/build/version.h
+  echo "#define XE_BUILD_BRANCH \"canary_experimental\"" >> "${pkgname}"/build/version.h
+  echo "#define XE_BUILD_COMMIT \"$(git -C ${pkgname} rev-parse HEAD)\"" >> "${pkgname}"/build/version.h
+  echo "#define XE_BUILD_COMMIT_SHORT \"$(git -C ${pkgname} rev-parse --short HEAD)\"" >> "${pkgname}"/build/version.h
+  echo "#define XE_BUILD_DATE __DATE__" >> "${pkgname}"/build/version.h
+  echo "#endif" >> "${pkgname}"/build/version.h
 }
 
 build() {
-  pushd "${pkgname}" || return
-  ./xenia-build build \
-    --config Release \
-    --no_premake \
-    --target "xenia-app" \
-    $(echo "${MAKEFLAGS}" | grep -oE '\-j\s?[0-9]+' | sed -r 's/-j([0-9]+)/-j \1/' | head -n 1)
+  export MAKEFLAGS
+  cmake \
+    --build "${pkgname}"-build \
+    --target xenia-app
 }
 
 package() {

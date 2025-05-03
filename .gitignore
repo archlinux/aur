@@ -42,4 +42,3 @@
 
 *.pkg.tar.*
 xenia.log
-0002-use-cmake-build-instead.patch
