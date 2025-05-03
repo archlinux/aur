@@ -1,0 +1,25 @@
+--- a/YoutubeDownloader/Services/SettingsService.cs
++++ b/YoutubeDownloader/Services/SettingsService.cs
+@@ -17,10 +17,21 @@
+ [INotifyPropertyChanged]
+ public partial class SettingsService()
+     : SettingsBase(
+-        Path.Combine(AppContext.BaseDirectory, "Settings.dat"),
++        GetSettingsPath(),
+         SerializerContext.Default
+     )
+ {
++    private static string GetSettingsPath()
++    {
++        var configDir = Environment.GetEnvironmentVariable("XDG_CONFIG_HOME");
++        if (string.IsNullOrEmpty(configDir))
++            configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".config");
++        
++        configDir = Path.Combine(configDir, "YoutubeDownloader");
++        Directory.CreateDirectory(configDir);
++        return Path.Combine(configDir, "Settings.dat");
++    }
++
+     private bool _isUkraineSupportMessageEnabled = true;
+     public bool IsUkraineSupportMessageEnabled
+     {

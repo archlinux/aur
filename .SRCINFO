@@ -1,0 +1,20 @@
+pkgbase = youtubedownloader
+	pkgdesc = Downloads videos and playlists from YouTube
+	pkgver = 1.14.2
+	pkgrel = 1
+	url = https://github.com/Tyrrrz/YoutubeDownloader
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=9.0
+	makedepends = gendesk
+	depends = dotnet-runtime>=9.0
+	depends = ffmpeg
+	options = !strip
+	options = !debug
+	options = staticlibs
+	source = YoutubeDownloader-1.14.2.tar.gz::https://github.com/Tyrrrz/YoutubeDownloader/archive/refs/tags/1.14.2.tar.gz
+	source = youtubedownloader_xdg_settings.patch
+	b2sums = 90fe7b0fb9357113325ce1755a67f5a949da457e32dcaeb4eee53f2521c39b9ce013610e299bb74411592ceb277e7afb5a1d66740e10340998177312dfc5d4e4
+	b2sums = 2abd236b80032bd0cadd3f44b8e9071f7de848ed0f474663dec8b7fc7e2f7a25e5c9db2b8af04ec874d736a1159cc45ce6cf2c69f220c5b4d37fcbc7f903f170
+
+pkgname = youtubedownloader

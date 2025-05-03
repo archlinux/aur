@@ -1,0 +1,4 @@
+[youtubedownloader]
+source = "git"
+git = "https://github.com/Tyrrrz/YoutubeDownloader.git"
+prefix = "v"
