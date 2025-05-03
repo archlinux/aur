@@ -1,6 +1,6 @@
 # Maintainer: Ivan Chetchasov <vi.is.chapmann@gmail.com>
 pkgname=libcvec
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Generic C++ vector library for C"
 arch=('any')
