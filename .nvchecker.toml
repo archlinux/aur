@@ -1,4 +1,5 @@
 [revbayes-bin]
-source = "git"
-git = "https://github.com/revbayes/revbayes.git"
+source = "github"
+github = "revbayes/revbayes"
+use_latest_release = true
 prefix = "v"
