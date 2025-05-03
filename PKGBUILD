@@ -20,7 +20,7 @@ prepare () {
 build() {
   cd "$srcdir"/oneTBB-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DTBB_TEST=OFF -B build-${_arch} .
+    CXXFLAGS="-U_GLIBCXX_ASSERTIONS" ${_arch}-cmake -DTBB_TEST=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
