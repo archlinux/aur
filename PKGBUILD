@@ -5,7 +5,7 @@
 _name=vagrant-vmware-utility
 
 pkgname=${_name}-bin
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="Plugin for vagrant vmware provider."
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 source=("https://releases.hashicorp.com/${_name}/${pkgver}/${_name}-${pkgver}-1.${arch}.rpm")
 install=${_name}.install
-b2sums=('ca257ee27dd86a32942a44d3aa32c7a18f4abf549d5fa1f1b14978269b81cb329eded6cce6fe3b18ac812bec35cc296713a117ce1984271d0eb0dd01df53d2e9')
+b2sums=('a8f922361807c5c567d51f2494151bd4525b475b824de72b21625cd2deb70460e0fd92e09c46f5d0906c24cb798f590326a422f09652807a89b909148b51ff4b')
 
 prepare() {
   mkdir -p ${srcdir}/${_name}
