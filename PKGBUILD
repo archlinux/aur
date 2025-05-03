@@ -11,7 +11,7 @@ sha256sums=('8c56b1a9bede514b0c36e0863adccc5b4bfe16415c885a0f209ca6da47572fbe')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	if [ ! -d libs/ndtf ]
+	if [ ! -d libs/ndtf/.git ]
 	then
 		git clone --depth=1 --recursive "https://github.com/Tr1NgleDev/ndtf.git" libs/ndtf
 	else
