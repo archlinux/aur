@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.14.4.arch1
+pkgver=6.14.5.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -44,10 +44,8 @@ source=(
   # 0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.14/0003-asus.patch"
   asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
-#  0002-mt76_-mt7921_-Disable-powersave-features-by-default.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-#  0006-mediatek-pci-reset.patch
   0007-workaround_hardware_decoding_amdgpu.patch
   0008-amd-tablet-sfh.patch
   0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
@@ -60,11 +58,11 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('9452f28d7a0051fba4886712395b484c4c7fcf9f85944a62fd3d97dc923f5339'
+sha256sums=('28207ec52bbeaa3507010aeff944f442f7d9f22b286b79caf45ec6df1b24f409'
             'SKIP'
-            'e39c50dc9d58d817f3d27b6269f007624d69a62124e1fc4f82e93dbb1163dba9'
+            '0b49a5f7b6c24e1d80aa09150a2c9f59834bc6777cb7e60c5851b26f461acdf8'
             'SKIP'
-            '32e546b85bbd8f8c44b1e60e4999f6e18e0cb3ace66ea2ae584a70da2dd4762b'
+            '2cc248513a87eee4d9e28b3d2345d5aae6e1f08ef762eb2e91f25afd9281e40e'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'a6045647f030f2686b2c42075569a40ca9833f559dcd2cdebd01b1964e7388cd'
             '9414339c7cedbb5733c872326ffaa187154dad27fdd570bb0ba9c8c76ac65c09'
