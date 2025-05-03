@@ -19,10 +19,10 @@ _gituser=CachyOS
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.r1.20241227.f4fcf5cc
-pkgrel=1
+pkgrel=2
 pkgdesc="Package for easy configuration of kernel samepage merding (KSM) via commandline or systemd. Replaces 'uksmd'."
 url='https://github.com/CachyOS/CachyOS-PKGBUILDS/tree/master/cachyos-ksm-settings'
-license=("LicenseRef-unknown")
+license=("GPL-3.0-or-later")
 arch=(
   'any'
 )
@@ -55,11 +55,9 @@ conflicts=(
 replaces=()
 source=(
   "${_gitname}::git+https://${_githost}/${_gituser}/${_gitname}.git"
-  "copying-unknown.txt"
 )
 sha256sums=(
   'SKIP'
-  '3eed35200db406422b2b53075f76ee635dc960217d9deb3270ca5cd518dc82f1'
 )
 # Those files in ${_gitname}/${_pkgname}/ will be used -- only look at them when generating version number:
 _sourcefiles=(
@@ -113,7 +111,6 @@ package() {
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}"      git.log
   install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  "${srcdir}/copying-unknown.txt"
-  #install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}"  COPYING
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}"/* "${pkgdir}/usr/share/doc/${_pkgname}"/
 }
 
