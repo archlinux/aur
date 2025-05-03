@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 _pkgname=citron
 pkgname=citron-git
-pkgver=v0.6.1.canary.refresh.r40.g65dfe32
+pkgver=v0.6.1.canary.refresh.r52.gba98d0f
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -107,8 +107,11 @@ prepare() {
     git -c protocol.file.allow=always submodule update
   popd
   
-  #Replaces 'boost::asio::io_service' with 'boost::asio::io_context' for compatibility with Boost.ASIO versions 1.74.0 and later
-  find src -type f -name '*.cpp' -exec sed -i 's/boost::asio::io_service/boost::asio::io_context/g' {} +
+  # Compatibility Boost 1.88
+  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service\b/boost::asio::io_context/g'
+  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service::strand\b/boost::asio::strand<boost::asio::io_context::executor_type>/g'
+  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's|#include *<boost/process/async_pipe.hpp>|#include <boost/process/v1/async_pipe.hpp>|g'
+  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
 }
 
 build() {
