@@ -1,0 +1,33 @@
+From 8fedc6fb3ff68c74405b38a36f8e4a518f277a5e Mon Sep 17 00:00:00 2001
+From: a821 <a821@localhost>
+Date: Tue, 31 Dec 2024 11:26:14 +0100
+Subject: [PATCH] Fix _FORTIFY_SOURCE flag
+
+Upstream redefines said flag which causes a conflict with Arch flags
+defined in makepkg.conf. This results in an annoying warning.
+---
+ configure.ac | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index e62d8a763..05ce93e7b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -840,14 +840,6 @@ if test x$use_hardening != xno; then
+   dnl When enable_debug is yes, all optimizations are disabled.
+   dnl However, FORTIFY_SOURCE requires that there is some level of optimization, otherwise it does nothing and just creates a compiler warning.
+   dnl Since FORTIFY_SOURCE is a no-op without optimizations, do not enable it when enable_debug is yes.
+-  if test x$enable_debug != xyes; then
+-    AX_CHECK_PREPROC_FLAG([-D_FORTIFY_SOURCE=2],[
+-      AX_CHECK_PREPROC_FLAG([-U_FORTIFY_SOURCE],[
+-        HARDENED_CPPFLAGS="$HARDENED_CPPFLAGS -U_FORTIFY_SOURCE"
+-      ])
+-      HARDENED_CPPFLAGS="$HARDENED_CPPFLAGS -D_FORTIFY_SOURCE=2"
+-    ])
+-  fi
+ 
+   AX_CHECK_LINK_FLAG([[-Wl,--dynamicbase]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,--dynamicbase"],, [[$LDFLAG_WERROR]])
+   AX_CHECK_LINK_FLAG([[-Wl,--nxcompat]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,--nxcompat"],, [[$LDFLAG_WERROR]])
+-- 
+2.47.1
+
