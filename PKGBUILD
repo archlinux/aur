@@ -40,6 +40,7 @@ makedepends=(
   python2
   qt5-base
   ruby
+  ruby-erb
   unzip
   webkit2gtk
 )
