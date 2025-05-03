@@ -8,7 +8,7 @@
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
 pkgname=calibre-git
-pkgver=7.2.0.r2.g96211be30e
+pkgver=8.3.0.r62.gde169d2508
 pkgrel=1
 pkgdesc='Ebook management application'
 arch=(x86_64 i686)
@@ -83,8 +83,9 @@ source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
 sha256sums=('SKIP'
             'SKIP'
             '26e00a8de411f3a134735d508f4bb7b85f9c1abe5b9d031d3d50d59450e74bd6')
-validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
-
+# Kovid Goyal (New longer key) <kovid@kovidgoyal.net>:
+# https://keyserver.ubuntu.com/pks/lookup?search=06BC317B515ACE7C&fingerprint=on&op=index
+validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C')
 pkgver() {
 	cd "${pkgname%-git}"
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -114,16 +115,11 @@ build() {
 	python setup.py build
 	python setup.py iso639
 	python setup.py iso3166
+	python setup.py gui
+	python setup.py translations
 	python setup.py resources \
 		--system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation \
 		--system-mathjax --path-to-mathjax /usr/share/mathjax
-	python setup.py gui
-}
-
-check() {
-	cd "${pkgname%-git}"
-	export LANG='en_US.UTF-8'
-	python -m unittest discover
 }
 
 package() {
@@ -137,8 +133,6 @@ package() {
 		--staging-root="${pkgdir}/usr" \
 		--prefix=/usr \
 		--system-plugins-location=/usr/share/calibre/system-plugins
-
-	cp -a man-pages/ "${pkgdir}/usr/share/man"
 
 	# not needed at runtime
 	rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
