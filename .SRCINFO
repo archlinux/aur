@@ -1,6 +1,6 @@
 pkgbase = v2rayn-bin
 	pkgdesc = A GUI client for Windows and Linux, support Xray core and others
-	pkgver = 7.10.5
+	pkgver = 7.11.3
 	pkgrel = 1
 	url = https://github.com/2dust/v2rayN
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = v2rayn-bin
 	source = v2rayN-bin.desktop
 	sha256sums = f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee
 	sha256sums = c3193fc83a87c6a0c7bd10fbfc2cbbd568d33bc33be0b8e6b3773e6207a8b07d
-	source_x86_64 = v2rayN-linux-64-7.10.5-1.zip::https://github.com/2dust/v2rayN/releases/download/7.10.5/v2rayN-linux-64.zip
-	sha256sums_x86_64 = dffebb13cb43b8d814b257760dd7e3ea1d0a3e4be0ee677543a55e007ee38c0c
-	source_arm64 = v2rayN-linux-arm64-7.10.5-1.zip::https://github.com/2dust/v2rayN/releases/download/7.10.5/v2rayN-linux-arm64.zip
-	sha256sums_arm64 = 4937b324520ee0d3c772b89d4eb98f111dcaf376496d88fbb0324b2ea78e4650
+	source_x86_64 = v2rayN-linux-64-7.11.3-1.zip::https://github.com/2dust/v2rayN/releases/download/7.11.3/v2rayN-linux-64.zip
+	sha256sums_x86_64 = 08a82b6d2acfe9d67bde41fd5a91aacf0241b274a9843e1cda7996271bd0f3bc
+	source_arm64 = v2rayN-linux-arm64-7.11.3-1.zip::https://github.com/2dust/v2rayN/releases/download/7.11.3/v2rayN-linux-arm64.zip
+	sha256sums_arm64 = 8982ef8d105290e65ad3c1e728b3ea91e2365b466872db885a62ccf807c96328
 
 pkgname = v2rayn-bin
