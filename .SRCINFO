@@ -1,0 +1,33 @@
+pkgbase = organicmaps
+	pkgdesc = Organic Maps: Offline Hike, Bike, Trails and Navigation
+	pkgver = 2025.04.21_4
+	pkgrel = 1
+	url = https://organicmaps.app
+	arch = x86_64
+	license = Apache
+	makedepends = cmake<=3.31.6
+	makedepends = git
+	makedepends = jq
+	makedepends = gcc
+	makedepends = ninja
+	depends = mesa
+	depends = libglvnd
+	depends = freetype2
+	depends = sqlite
+	depends = icu
+	depends = qt6-svg
+	depends = qt6-base
+	depends = qt6-positioning
+	depends = gcc-libs
+	depends = harfbuzz
+	depends = zlib
+	depends = glibc
+	depends = libpng
+	optdepends = ccache: faster re-compilation
+	optdepends = qt6-wayland: for Wayland users
+	conflicts = organicmaps-bin
+	conflicts = organicmaps-git
+	source = organicmaps.desktop
+	sha256sums = 8205a6abb2c053380940d5c2e83cf10b5b889544e2d36c1c777778bf35772729
+
+pkgname = organicmaps
