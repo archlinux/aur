@@ -1,7 +1,7 @@
 pkgbase = droidcam-obs-plugin
 	pkgdesc = plugin for droidcam obs
-	pkgver = 2.3.3
-	pkgrel = 3
+	pkgver = 2.3.4
+	pkgrel = 1
 	url = https://dev47apps.com/obs/
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = droidcam-obs-plugin
 	depends = libimobiledevice
 	conflicts = droidcam-obs-plugin-git
 	provides = droidcam-obs-plugin
-	source = droidcam-obs-plugin::git+https://github.com/dev47apps/droidcam-obs-plugin.git#tag=aea63f61667040480bb1a9cb12c39b74d9b98306
+	source = droidcam-obs-plugin::git+https://github.com/dev47apps/droidcam-obs-plugin.git#tag=57503761b3546fdf07d2403f9b94b76c8d7e654e
 	sha256sums = SKIP
 
 pkgname = droidcam-obs-plugin
