@@ -1,5 +1,5 @@
 pkgname=jellyplayer-git
-pkgver=db464b9
+pkgver=6699a48
 pkgrel=1
 pkgdesc="Terminal-based Jellyfin player with MPV integration"
 arch=('any')
@@ -23,5 +23,9 @@ package() {
 
   # Install the resulting binary
   install -Dm755 "dist/jellyplayer" "$pkgdir/usr/bin/jellyplayer"
+
+  # Install MPV config
+  install -d "$pkgdir/usr/share/jellyplayer/mpv_config"
+  cp -r mpv_config/* "$pkgdir/usr/share/jellyplayer/mpv_config/"
 }
 
