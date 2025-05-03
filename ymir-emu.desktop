@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Ymir
+GenericName=Sega Saturn Emulator
+Comment=Sega Saturn Emulator
+Exec=ymir-sdl3 -p $HOME/.config/ymir
+Categories=Game;Emulator;
