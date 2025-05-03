@@ -4,7 +4,7 @@ _pkgname='bdelta'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=0.3.1.post2+g4782c58_20160919.fefefilesize
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool."
 url='https://github.com/jjwhitney/BDelta'
 arch=(
@@ -16,6 +16,8 @@ arch=(
 license=("MPL-2.0")
 
 depends=(
+  'gcc-libs'
+  'glibc'
 )
 
 makedepends=(
