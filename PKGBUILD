@@ -1,20 +1,24 @@
+# Maintainer: luxcem <a@luxcem.fr>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-_fontname=bitter
-pkgname=otf-${_fontname}
+pkgname=otf-bitter
 pkgver=1.300
-pkgrel=3
+pkgrel=4
 pkgdesc='A font specially designed for comfortably reading on any computer or device.'
+url="http://www.huertatipografica.com/fonts/bitter-ht"
 arch=('any')
-url="http://www.huertatipografica.com/fonts/${_fontname}-ht"
 license=('custom:OFL')
 conflicts=('otf-google-fonts-hg')
-source=("${_fontname}.zip::http://www.fontsquirrel.com/fonts/download/${_fontname}")
-sha256sums=('SKIP')
+source=("bitter.zip::https://www.huertatipografica.com/free_download/144"
+        "OFL.txt")
+sha256sums=('46fc907a6cded7dd79af145b542e129b69a0787d7366298e8ece0b710e47e7f7'
+            'ce243fd4a62b1b76c959ffba6ec16a7a3146b2362d441ae4f9f7f32fc3750d6c')
 
 package() {
-  install -Dm644 "SIL Open Font License.txt" "$pkgdir"/usr/share/licenses/${pkgname}/SIL_Open_Font_License.txt
-  install -d "$pkgdir"/usr/share/fonts/OTF/
-  install -m644 *.otf "$pkgdir"/usr/share/fonts/OTF/
+  install -d "${pkgdir}/usr/share/fonts/${pkgname}"
+  install -m644 "${srcdir}"/*.ttf "${pkgdir}/usr/share/fonts/${pkgname}/"
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "OFL.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"LICENCE
 }
