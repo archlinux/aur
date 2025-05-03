@@ -1,6 +1,6 @@
 pkgbase = libreoffice-dev-i18n
 	pkgver = 25.2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.documentfoundation.org
 	arch = any
 	license = MPL-2.0
