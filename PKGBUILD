@@ -13,7 +13,7 @@ license=('custom:EPL2')
 depends=('bash' 'java-runtime>=8')
 makedepends=('git' 'go>=1.19' 'gradle')
 provides=('alda')
-conflicts=('alda')
+conflicts=('alda' 'alda-bin')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
