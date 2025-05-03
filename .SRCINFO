@@ -1,7 +1,7 @@
 pkgbase = python-landlock
 	pkgdesc = Python interface to the Landlock Linux Security Module
-	pkgver = 1.0.0.dev4
-	pkgrel = 2
+	pkgver = 1.0.0.dev5
+	pkgrel = 1
 	url = https://github.com/Edward-Knight/landlock
 	arch = any
 	license = MIT
@@ -12,9 +12,9 @@ pkgbase = python-landlock
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = landlock-1.0.0.dev4.tar.gz::https://github.com/Edward-Knight/landlock/archive/refs/tags/v1.0.0.dev4.tar.gz
+	source = landlock-1.0.0.dev5.tar.gz::https://github.com/Edward-Knight/landlock/archive/refs/tags/v1.0.0.dev5.tar.gz
 	source = drop-coverage.patch
-	sha256sums = 4ad39bafdd94a6210719e030f349076155148e5406a0dd7ef326728697752547
-	sha256sums = 39feee551d4803730a59dbb5a0312f1476a43ea6c49f82f57425d78a6568b264
+	sha256sums = 8e9f5a689a7fbab1509c55e0a6e8e365af495592e141f09a984f5729a599c5f7
+	sha256sums = 1dc570bcf8aede716b6726521be9e65a279af06e0f4c1e86c119f9bcb0bcc5db
 
 pkgname = python-landlock

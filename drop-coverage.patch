@@ -1,12 +1,12 @@
 diff --unified --recursive --text a/pyproject.toml b/pyproject.toml
---- a/pyproject.toml	2022-09-09 14:30:24.000000000 -0600
-+++ b/pyproject.toml	2024-10-05 10:45:40.429781723 -0600
+--- a/pyproject.toml	2025-05-03 10:51:04.000000000 -0600
++++ b/pyproject.toml	2025-05-03 16:13:49.133202862 -0600
 @@ -35,14 +35,9 @@
  ]
  test = [
-     "pytest ~= 7.1",
--    "pytest-cov ~= 3.0",
-     "pytest-forked ~= 1.4 ; sys_platform != 'win32'",
+     "pytest ~= 8.3",
+-    "pytest-cov ~= 6.1",
+     "pytest-forked ~= 1.6 ; sys_platform != 'win32'",
  ]
  
 -[tool.coverage.run]

@@ -1,19 +1,27 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-landlock
 _name=${pkgname#python-}
-pkgver=1.0.0.dev4
-pkgrel=2
+pkgver=1.0.0.dev5
+pkgrel=1
 pkgdesc="Python interface to the Landlock Linux Security Module"
 arch=('any')
 url="https://github.com/Edward-Knight/landlock"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-forked')
+makedepends=(
+  'python-build'
+  'python-flit-core'
+  'python-installer'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-forked'
+)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'drop-coverage.patch')
-sha256sums=('4ad39bafdd94a6210719e030f349076155148e5406a0dd7ef326728697752547'
-            '39feee551d4803730a59dbb5a0312f1476a43ea6c49f82f57425d78a6568b264')
+sha256sums=('8e9f5a689a7fbab1509c55e0a6e8e365af495592e141f09a984f5729a599c5f7'
+            '1dc570bcf8aede716b6726521be9e65a279af06e0f4c1e86c119f9bcb0bcc5db')
 
 prepare() {
   cd "$_name-$pkgver"
