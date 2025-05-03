@@ -1,12 +1,13 @@
-# Maintainer: OpenSorcerer <alex at opensourcery dot eu>
+# Maintainer: CeaselessBanana <stu at reilly-family dot co dot uk>
+# Contributor: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-beta-bin
 _pkgname=AirVPN-Suite
 pkgver=2.0.0
 _pkgver=2.0
-_prstage=beta
-_Prstage=Beta
+_prstage=RC
+_Prstage=RC
 _prver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="AirVPN client software collection - prebuilt beta"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://airvpn.org/linux/suite"
@@ -14,7 +15,7 @@ _dlurl="https://eddie.website/repository"
 license=('GPL-3.0-only')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
-depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'libxml2')
+depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'libxml2-legacy')
 makedepends=('curl')
 source=("$_dlurl/$_pkgname/$_pkgver-$_Prstage$_prver/$_pkgname-$arch-$pkgver-$_prstage-$_prver.tar.gz"
         "airvpn-suite.sysusers")
@@ -48,4 +49,8 @@ package() {
     # place Systemd files
     install -Dm644 etc/systemd/system/bluetit.service "$pkgdir/usr/lib/systemd/system/bluetit.service"
     install -Dm644 ../airvpn-suite.sysusers "$pkgdir/usr/lib/sysusers.d/airvpn-suite.conf"
+
+    # place completion files
+    install -Dm644 -t "$pkgdir/etc/site-functions" etc/site-functions/*
+    install -Dm644 -t "$pkgdir/etc/bash-completion" etc/bash-completion/*
 }
