@@ -1,6 +1,6 @@
 pkgbase = clair
 	pkgdesc = Vulnerability Static Analysis for Containers
-	pkgver = 4.4.4
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://github.com/quay/clair
 	install = clair.install
@@ -9,7 +9,8 @@ pkgbase = clair
 	makedepends = go
 	depends = glibc
 	optdepends = postgresql: local database
-	source = clair-4.4.4.tar.gz::https://github.com/quay/clair/archive/v4.4.4.tar.gz
-	sha256sums = 7895442b6c5fb016513b859c4372826008d908ef85d2f506eaf1da301f9f13bc
+	options = !debug
+	source = clair-4.8.0.tar.gz::https://github.com/quay/clair/archive/v4.8.0.tar.gz
+	b2sums = 3eb8905f12374449573cf888d40fe683506b9df66dc6996b9e0cae1aa60b8d4b5bd1a2c18d48c7fd74e2fb45bdff99338fef68924eb6d1c32052f4ea6603fc3e
 
 pkgname = clair
