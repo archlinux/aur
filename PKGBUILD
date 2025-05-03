@@ -25,9 +25,6 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  # GCC 15 changes default C standard from C17 to C23, see https://gcc.gnu.org/gcc-15/porting_to.html#c23
-  export CFLAGS="${CFLAGS} -std=gnu17"
-
   autoreconf -f -i
 
   ./configure --prefix=/usr \
