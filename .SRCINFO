@@ -1,0 +1,16 @@
+pkgbase = iotop-c-git
+	pkgdesc = A top utility for IO
+	pkgver = 1.28_r683.g9065504
+	pkgrel = 1
+	url = https://github.com/Tomas-M/iotop
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = ncurses
+	provides = iotop
+	conflicts = iotop
+	source = git+https://github.com/Tomas-M/iotop.git
+	sha256sums = SKIP
+
+pkgname = iotop-c-git
