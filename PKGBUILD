@@ -4,9 +4,9 @@
 # Contributor: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=nccl
-pkgver=2.26.2
+pkgver=2.26.5
 _upstr_pkgrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=(x86_64)
 url='https://developer.nvidia.com/nccl/'
@@ -14,7 +14,8 @@ license=(BSD-3-Clause)
 depends=(glibc gcc-libs)
 makedepends=(git cuda)
 source=(git+https://github.com/NVIDIA/nccl.git#tag=v$pkgver-$_upstr_pkgrel)
-sha256sums=('4de461af0795f3ab3805a8defa628e6343bbb8d5f6ec4d218d351344797d74e3')
+sha256sums=('6b1834c60a4e0d95666d9cefd6e25851a4c6d4a8686ca477f47c81a5983a4598')
+b2sums=('4582268a7beb27e0014ecf607a9db605e36ec33c9c5aa92ee9358c5894162e040aa025089de79c2d20b0edad846aec680929b4a31387420f5fc6634ccf3a8586')
 
 prepare() {
   cd $pkgname
@@ -27,6 +28,9 @@ prepare() {
   do
     sed -i 's/BUILDDIR/_BUILDPATH/g' "$_file"
   done
+
+  # compilation with c++11 does not work since gcc 14
+  sed -i 's|-std=c++11|-std=c++14|' makefiles/common.mk
 }
 
 build() {
