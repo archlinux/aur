@@ -1,6 +1,6 @@
 pkgbase = python-aiomax-git
 	pkgdesc = The asynchronous library for Max
-	pkgver = 1.0.1.r0.gc4451a8
+	pkgver = git
 	pkgrel = 1
 	url = https://github.com/dpnspn/aiomax
 	arch = any
