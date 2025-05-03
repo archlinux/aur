@@ -1,7 +1,7 @@
 pkgbase = kanidm
 	pkgdesc = A identity management service and clients.
 	pkgver = 1.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
 	arch = aarch64
