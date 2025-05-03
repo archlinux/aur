@@ -2,7 +2,7 @@
 +++ b/pyproject.toml
 @@ -1,5 +1,5 @@
  [build-system]
--requires = ["setuptools==77.0.3"]
+-requires = ["setuptools==78.1.1"]
 +requires = ["setuptools"]
  build-backend = "setuptools.build_meta"
  
