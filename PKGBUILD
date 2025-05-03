@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=ocompiler
 pkgname_atsource=o
-pkgver=1.5+227
+pkgver=1.5+228
 pkgrel=1
 pkgdesc="O language compiler"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('lib32-glibc')
 makedepends=('lib32-glibc' 'bc')
 source=("${pkgname_atsource}-`echo ${pkgver} | sed 's/\./\-/'`.tar.gz::https://github.com/colin-i/${pkgname_atsource}/archive/`echo ${pkgver} | sed 's/\./\-/'`.tar.gz"
 	"obj.txt.gz::https://github.com/colin-i/${pkgname_atsource}/releases/download/`echo ${pkgver} | sed 's/\./\-/'`/obj.txt.gz")
-sha256sums=('b5a413a7db940ef0ee90d3521bcf6afd1f85df2246a5b6690fd4f098cf896fae'
-            '1ac90e44a23448913f3b719ef4e7ffd3162cb1958a6ae857c1bc50d13d491a19')
+sha256sums=('8d138a95ee26898194b4e7e7b41f0dfb3c806a9a4eeb6a3fbf7aab0b8eb80deb'
+            '5de71a679b99d9a42679968484a91b4efdfeb2f3dcd84af2d980ac87de54b0c5')
 
 _ver_atsource_fn() {
 	cd "${pkgname_atsource}-`echo ${pkgver} | sed 's/\./\-/; s/+/\-/'`"
