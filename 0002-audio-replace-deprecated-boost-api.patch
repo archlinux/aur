@@ -1,0 +1,25 @@
+From 94f97990bf8506f8d07ffc3e138435aca49cc3aa Mon Sep 17 00:00:00 2001
+From: Korbinian Maier <korbinian.maier@posteo.de>
+Date: Sat, 3 May 2025 23:18:33 +0200
+Subject: [PATCH 2/2] audio: replace deprecated boost api
+
+---
+ src/audio/ScreamSource.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/audio/ScreamSource.cpp b/src/audio/ScreamSource.cpp
+index c66542b..d18aa65 100644
+--- a/src/audio/ScreamSource.cpp
++++ b/src/audio/ScreamSource.cpp
+@@ -56,7 +56,7 @@ ScreamSource::ScreamSource()
+     : core::UdpSource( { 4010,
+                        3, // 3 padding,
+                        5+(1152*7), // 5 header, 1152 payload, +2*payload (int to float), +2*2*payload (float to crossover
+-                       boost::asio::ip::address_v4::from_string("239.255.77.77").to_uint() } )
++                       boost::asio::ip::make_address_v4("239.255.77.77").to_uint() } )
+ {
+ }
+ 
+-- 
+2.49.0
+
