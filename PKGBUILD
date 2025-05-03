@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
 
-pkgname=otf-bitter
+pkgname=ttf-bitter
 pkgver=1.300
 pkgrel=4
 pkgdesc='A font specially designed for comfortably reading on any computer or device.'
