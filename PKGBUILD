@@ -4,7 +4,7 @@ _pkgname='bdelta'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=0.3.1.post2+g4782c58_20160919.fefefilesize
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool."
 url='https://github.com/jjwhitney/BDelta'
 arch=(
@@ -94,17 +94,15 @@ prepare() {
 build() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
-  cd src
 
-  make
+  make -C src
 }
 
 package() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
-  cd src
 
-  make DESTDIR="${pkgdir}" install
+  make -C src DESTDIR="${pkgdir}" install
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README RELEASE-VERSION
 }
