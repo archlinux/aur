@@ -7,4 +7,5 @@ pkgbase = libcvec
 	license = VAM
 	makedepends = clang
 
+
 pkgname = libcvec

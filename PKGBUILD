@@ -27,3 +27,4 @@ package() {
     sudo rm -rf libcvec
     echo "PACKAGE COMPLETED"
 }
+
