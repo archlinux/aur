@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=1.8.1.r0.gce45bbde
+pkgver=1.8.8.r0.g88864014
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
@@ -27,7 +27,11 @@ depends=(
   'python-xapp'
   'xapps'
 )
-makedepends=('git' 'meson' 'polkit')
+makedepends=(
+  'git'
+  'meson'
+  'polkit'
+)
 checkdepends=('appstream')
 optdepends=('ufw: Configure firewall rules')
 provides=("${pkgname%-git}")
