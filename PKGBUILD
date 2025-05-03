@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=cptutils
-pkgver=1.78
+pkgver=1.84
 pkgrel=1
 pkgdesc='A number of utilities for the manipulation of color gradients; mainly for translating between different formats'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('libxml2' 'libpng' 'jansson')
 optdepends=('python: for the gradient-convert tool')
 
-source=("http://soliton.vm.bytemark.co.uk/pub/jjg/src/$pkgname-$pkgver.tar.gz")
-sha256sums=('a8c0a4cb3ee5790ae09f8d1009100ab417e1ee4dae420baa96961078b11ae78b')
+source=("https://jjg.gitlab.io/src/$pkgname-$pkgver.tar.gz")
+sha256sums=('c3b7247271bc738da63d642bec3f977aaf7ededbde65fbb2b39627325b997acd')
 
 build() {
     cd $pkgname-$pkgver
