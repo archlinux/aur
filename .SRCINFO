@@ -1,7 +1,7 @@
 pkgbase = clifm-bin
 	pkgdesc = The command line file manager (binary version)
 	pkgver = 1.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leo-arch/clifm
 	arch = i686
 	arch = x86_64

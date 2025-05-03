@@ -3,7 +3,7 @@
 pkgname=clifm-bin
 _pkgname=clifm
 pkgver=1.25
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line file manager (binary version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/leo-arch/${_pkgname}"
@@ -45,5 +45,5 @@ package() {
 	install -m 0644 completions.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 	install -m 0644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications"
 	install -m 0644 ${_pkgname}.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-	install -m 0644 ${_pkgname}.1 "${pkgdir}/usr/share/man/man1"
+	install -m 0644 ${_pkgname}.1.gz "${pkgdir}/usr/share/man/man1"
 }
