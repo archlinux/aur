@@ -2,7 +2,7 @@
 
 pkgbase=limo
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="General video game mod manager with LOOT and Nexus Mods integration"
 arch=('x86_64')
@@ -34,7 +34,7 @@ makedepends=(
 	'zstd'
 )
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('c41d60ab5cb47bf7f2f483a45b28944bddc1ee4972bb3e6f3c59631546884a9e037f3762ad516e4acc408ca6e1975fba6d04b9a3dd00c8708ba0463d64f0504e')
+b2sums=('7bbcecf499cf5095ac8c99fe7a3dfe89907db2e62bf56828f8357daaf3bf492f001b32503be59b9c32355bd55c9980794fe6c7afd10abbf36497ca9f06273dd3')
 
 build() {
 	cd "${pkgbase}-${pkgver}"
