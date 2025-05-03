@@ -2,13 +2,13 @@
 
 pkgname=hq
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML processor inspired by jq'
 arch=('x86_64')
 url='https://github.com/coderobe/hq'
 license=('AGPL3')
 depends=('gcc-libs' 'modest')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'fmt')
 source=("git+${url}#tag=${pkgver}")
 md5sums=('bc7723c7afba3a853dd0883a52105297')
 
