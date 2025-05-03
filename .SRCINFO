@@ -1,0 +1,16 @@
+pkgbase = lrcsnc
+	pkgdesc = Player-agnostic (MPRIS) synced lyrics fetcher and displayer.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Endg4meZer0/lrcsnc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.23
+	optdepends = kakasi: Japanese romanization
+	options = !lto
+	backup = etc/lrcsnc/config.toml
+	source = lrcsnc-0.1.0.tar.gz::https://github.com/Endg4meZer0/lrcsnc/archive/v0.1.0.tar.gz
+	sha256sums = 5c0c91194db8105d8572204b8f3e82ff61a26e5f86fad4a7b353c346b9c32c70
+
+pkgname = lrcsnc
