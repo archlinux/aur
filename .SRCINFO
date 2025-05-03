@@ -1,7 +1,7 @@
 pkgbase = landrop-bin
 	pkgdesc = Drop any files to any devices on your LAN
 	pkgver = 2.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://landrop.app/
 	install = landrop-bin.install
 	arch = x86_64

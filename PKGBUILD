@@ -2,7 +2,7 @@
 pkgname=landrop-bin
 _pkgname=landrop
 pkgver=2.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Drop any files to any devices on your LAN"
 arch=('x86_64' 'aarch64')
 url="https://landrop.app/"
