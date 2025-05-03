@@ -2,7 +2,7 @@
 
 pkgname=ask-mai
 pkgver=0.21.0
-pkgrel=150
+pkgrel=151
 pkgdesc="A little, scriptable and powerful UI-Chat-Application for asking Gen-AI"
 arch=('x86_64')
 url="https://github.com/rainu/ask-mai"
@@ -11,8 +11,10 @@ provides=('ask-mai')
 conflicts=('ask-mai')
 depends=('webkit2gtk')
 options=('!strip')
-source=("$pkgname-binary-$pkgver::https://github.com/rainu/ask-mai/releases/download/v$pkgver/ask-mai-linux-amd64")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rainu/ask-mai/archive/v$pkgver.tar.gz"
+        "$pkgname-binary-$pkgver::https://github.com/rainu/ask-mai/releases/download/v$pkgver/ask-mai-linux-amd64")
+sha256sums=('SKIP'
+            'SKIP')
 
 package() {
   cd "ask-mai-$pkgver"
