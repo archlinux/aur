@@ -1,7 +1,8 @@
-# Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
+# Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
+# Maintainer: tee < teeaur at duck dot com >
 _pkgname=surrealdb
 pkgname=${_pkgname}-bin
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -10,12 +11,13 @@ license=('custom:BSL')
 depends=('gcc-libs')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-_LICENSE=LICENSE_${pkgver}
-source=("${_LICENSE}::https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/LICENSE" "https://github.com/surrealdb/surrealdb/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
-sha256sums=('dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef' 'bf0e3a436296e7a462b77e53ea8dd4742b030c2a65b5dad980f980202ff16d36')
+source=("$url/releases/download/v${pkgver//_/-}/LICENSE")
+source_x86_64=("$url/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
+sha256sums=('a007c53f27d30bda8cc56feec356eba13b646a8fb59a97d151e3aab820429d2d')
+sha256sums_x86_64=('8b836c80e83f583b020f72111d749bbacf0a2215439d54205e4e8455edf283cc')
 
 package() {
-	install -Dm644 "${srcdir}/${_LICENSE}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
+	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm755 "${srcdir}/surreal" "${pkgdir}/usr/bin/surreal"
 }
+# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
