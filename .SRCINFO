@@ -1,6 +1,6 @@
 pkgbase = limo
 	pkgdesc = General video game mod manager with LOOT and Nexus Mods integration
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/limo-app/limo
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = limo
 	makedepends = qt5-svg
 	makedepends = zlib
 	makedepends = zstd
-	source = limo-1.2.tar.gz::https://github.com/limo-app/limo/archive/v1.2.tar.gz
-	b2sums = 68ef34d89a552d786330ceb37c5a8f4f1c4d41eb7d5d0e0861576cc3b72818f4071c8aaa944870c09d61c43de55215f17a2cb44bf45897e8909cc9d15857191f
+	source = limo-1.2.1.tar.gz::https://github.com/limo-app/limo/archive/v1.2.1.tar.gz
+	b2sums = c41d60ab5cb47bf7f2f483a45b28944bddc1ee4972bb3e6f3c59631546884a9e037f3762ad516e4acc408ca6e1975fba6d04b9a3dd00c8708ba0463d64f0504e
 
 pkgname = limo
 	depends = cpr
