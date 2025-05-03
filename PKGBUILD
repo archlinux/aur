@@ -98,6 +98,8 @@ build() {
   CFLAGS+=' -fcommon'
   # fix errors when compiling gstreamer-lite
   CFLAGS+=' -Wno-incompatible-pointer-types -Wno-int-conversion'
+  # fix errors with new gcc
+  CFLAGS+=' -std=gnu17'
   # Remove "-Wl,-z,pack-relative-relocs" from LDFLAGS
   export LDFLAGS="${LDFLAGS//-Wl,-z,pack-relative-relocs}"
   # Remove invalid symbols from LDFLAGS
