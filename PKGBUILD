@@ -14,12 +14,12 @@ sha256sums=()
 build() {
     git clone https://tvoygit.ru/vi_is_lonely/libcvec.git
     cd libcvec
-    make build
+    sudo make build
 }
 
 package() {
     cd libcvec
-    make install
+    sudo make install
     cd ..
-    rm -rf libcvec
+    sudo rm -rf libcvec
 }
