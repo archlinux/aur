@@ -75,8 +75,6 @@ provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}"
            calibre-common
            calibre-python3)
-replaces=(calibre-common-git
-          calibre-python3-git)
 source=("git+https://github.com/kovidgoyal/${pkgname%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgname%-git}-translations.git?signed"
         user-agent-data.json)
