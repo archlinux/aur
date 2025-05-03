@@ -1,15 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=clipboard-manager-git
-pkgver=0.1.0.r13.g18bab53
+pkgver=0.1.0.r26.gfcab4b7
 pkgrel=1
 pkgdesc="Clipboard manager for COSMIC™"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/clipboard-manager"
 license=('GPL-3.0-or-later')
 depends=('cosmic-applets')
 makedepends=(
   'cargo'
   'git'
+  'git-lfs'
   'just'
 )
 provides=("${pkgname%-git}")
