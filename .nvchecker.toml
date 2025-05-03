@@ -1,0 +1,6 @@
+[sandbox]
+source='github'
+github='gentoo/sandbox'
+use_max_tag=true
+exclude_regex='^v3.*' #this is an old release branch they seem to not use
+prefix='v'

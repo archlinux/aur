@@ -1,13 +1,16 @@
 pkgbase = sandbox
 	pkgdesc = sandbox'd LD_PRELOAD hack
-	pkgver = 2.24
+	pkgver = 2.46
 	pkgrel = 1
-	url = http://www.gentoo.org/
+	url = https://github.com/gentoo/sandbox/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	source = http://distfiles.gentoo.org/distfiles/sandbox-2.24.tar.xz
-	sha256sums = 2cfa52c0e614a655a2df903e58ae8c63fedb224a602623b674df884c77d282a0
+	license = GPL-2.0-only
+	makedepends = autoconf
+	options = !lto
+	backup = etc/sandbox.conf
+	backup = etc/sandbox.d/00default
+	source = sandbox-2.46.tar.gz::https://github.com/gentoo/sandbox/archive/refs/tags/v2.46.tar.gz
+	sha256sums = d4da913f49ee5e0e479665f5dd13d8f028e97167944bda01e37f9d9ba9b14142
 
 pkgname = sandbox
-
