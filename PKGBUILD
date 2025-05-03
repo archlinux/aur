@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="joshuto"
 pkgname="$_pkgname-git"
-pkgver=0.9.8.r73.g6fd1875
+pkgver=0.9.8.r80.g985a335
 pkgrel=1
 pkgdesc="ranger-like terminal file manager written in Rust"
 url="https://github.com/kamiyaa/joshuto"
@@ -48,7 +48,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgsrc"
-  cargo update
+  #cargo update
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 

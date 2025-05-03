@@ -1,6 +1,6 @@
 pkgbase = joshuto-git
 	pkgdesc = ranger-like terminal file manager written in Rust
-	pkgver = 0.9.8.r73.g6fd1875
+	pkgver = 0.9.8.r80.g985a335
 	pkgrel = 1
 	url = https://github.com/kamiyaa/joshuto
 	arch = x86_64
