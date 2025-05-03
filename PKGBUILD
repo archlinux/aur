@@ -4,7 +4,7 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r1850.c692ee1a
+pkgver=r1927.443e2ebe
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -27,10 +27,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	# Build with SHOPT_ALL_LIBCMD (aka enable all ksh builtins) if ${_all_libcmd} is enabled.
-	if [[ ${_all_libcmd} == 1 || ${_all_libcmd} == yes || ${_all_libcmd} == true ]]; then
-		sed -i 's/ALL_LIBCMD=0/ALL_LIBCMD=1/g' src/cmd/ksh93/SHOPT.sh
-	fi
 	# 'bin/package install' requires that the file(1) command be functional.
 	# The package() function in all PKGBUILD scripts is run in a fakeroot
 	# environment, which by default has seccomp restrictions that stop
