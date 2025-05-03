@@ -1,32 +1,30 @@
-#!/bin/sh
+#!/bin/bash
+# Wrapper for rife-ncnn-vulkan to handle default model paths
 
 default_model_path="/usr/share/rife-ncnn-vulkan/"
 readonly default_model_path
 
-args=""
-
-while getopts "hv0:1:i:o:m:g:j:xuf:" arg; do
-    case $arg in
-    h) args="$args -$arg" ;;
-    v) args="$args -$arg" ;;
-    0) args="$args -$arg $OPTARG" ;;
-    1) args="$args -$arg $OPTARG" ;;
-    i) args="$args -$arg $OPTARG" ;;
-    o) args="$args -$arg $OPTARG" ;;
-    m)
-        if ! [ -d "$OPTARG" ]; then
-            args="$args -m $default_model_path$OPTARG"
-        else
-            args="$args -$arg $OPTARG"
-        fi
-        ;;
-    g) args="$args -$arg $OPTARG" ;;
-    j) args="$args -$arg $OPTARG" ;;
-    x) args="$args -$arg" ;;
-    u) args="$args -$arg" ;;
-    f) args="$args -$arg $OPTARG" ;;
-    *) exit ;;
+args=()
+while [[ "$#" -gt 0 ]]; do
+    case "$1" in 
+        -m)
+            args+=("-m")
+            shift
+            if [[ "$#" -gt 0 ]]; then
+                model_arg="$1"
+                if ! [[ -d "$model_arg" ]]; then
+                    args+=("${default_model_path}${model_arg}")
+                else
+                    args+=("$model_arg")
+                fi
+                shift
+            fi
+            ;;
+        *)
+            args+=("$1")
+            shift
+            ;;
     esac
 done
 
-/usr/share/rife-ncnn-vulkan/rife-ncnn-vulkan "$args"
+exec "/usr/share/rife-ncnn-vulkan/rife-ncnn-vulkan" "${args[@]}"
