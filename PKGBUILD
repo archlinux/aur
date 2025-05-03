@@ -3,7 +3,7 @@
 
 pkgname=websockify
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebSockets support for any application/server"
 license=('LGPL3')
 arch=('any')
@@ -21,6 +21,7 @@ prepare(){
 build() {
   cd "$pkgname-$pkgver"
 
+  export CFLAGS="-std=c11 ${CFLAGS}"
   python setup.py build
   make
 }
