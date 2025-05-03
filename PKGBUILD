@@ -1,7 +1,7 @@
 # Maintainer: jazztickets
 _pkgname=olived
 pkgname=$_pkgname-git
-pkgver=c90e82755
+pkgver=v0.2.1.r0.ga3c7d12
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Free non-linear video editor"
@@ -25,7 +25,7 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	git rev-parse --short HEAD
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

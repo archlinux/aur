@@ -1,6 +1,6 @@
 pkgbase = olived-git
 	pkgdesc = Free non-linear video editor
-	pkgver = c90e82755
+	pkgver = v0.2.1.r0.ga3c7d12
 	pkgrel = 1
 	url = https://github.com/jazztickets/olived.git
 	arch = x86_64
