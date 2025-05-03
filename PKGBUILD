@@ -7,9 +7,9 @@
 pkgname=victoriametrics-agent
 _name=VictoriaMetrics
 pkgver=1.116.0 # don't forget to update _buildinfo
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent for Victoria Metrics, a fast, cost-effective and scalable time series database'
-_buildinfo=123f373
+_buildinfo=27d3fb2
 arch=(x86_64)
 url='https://victoriametrics.github.io'
 license=(Apache-2.0)
