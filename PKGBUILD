@@ -1,4 +1,5 @@
-# Maintainer: Frederik “Freso” S. Olesen <archlinux@freso.dk>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Frederik “Freso” S. Olesen <archlinux@freso.dk>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
@@ -16,7 +17,9 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-pkgver=22.0.2.u4
+_java_ver=23
+_tag='25+15'
+pkgver=${_tag//+/.}
 pkgrel=1
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
@@ -27,15 +30,14 @@ makedepends=(
   ant
   cairo
   cmake
-  ffmpeg4.4
+  ffmpeg
   freetype2
   gdk-pixbuf2
   glib2
   gperf
-  'gradle<9'
-  gtk2
+  gradle
   gtk3
-  java-environment-openjdk=$((${pkgver%%.*}-1))
+  java-environment-openjdk=$_java_ver
   libgl
   libx11
   libxtst
@@ -43,23 +45,26 @@ makedepends=(
   pango
   perl
   python
-  qt5-base
-  ruby
   unzip
-  webkit2gtk
   zip
+  #ruby
+  #ruby-getoptlong
+  #ruby-optparse
+  #ruby-erb
+  #ruby-yaml
+  #ruby-fileutils
 )
 options=(!lto)
 source=(
-  "${pkgbase}-${pkgver//.u/+}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz"
+  "${pkgbase}-${pkgver}.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/${_tag}.tar.gz"
   gradle.properties
-  java-openjfx-flags.patch
+  "${pkgbase}-flags.patch"
 )
-b2sums=('d744b8d2018ff69d1356d9381d1541ecc69dc5ff3c92aea7a3ed1992d7b2b146fb68371fa8c4b8b20532a9077ef64350a769885bbb454316c35e6775c8e7f4c6'
-        'a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498'
+b2sums=('875c1d8885fc4ef72b0fb662782007cb861439cc3cf60c5d462ec4dca9c93ef961608ef6578e5bb6c443253974da948a93f505be72da5b669afa4c41bddec59a'
+        '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3')
 
-_jfxdir=jfx${pkgver%%.*}u-${pkgver//.u/-}
+_jfxdir="jfx-${_tag//+/-}"
 
 prepare() {
   cd $_jfxdir
@@ -78,37 +83,30 @@ build() {
   cd $_jfxdir
 
   # Build with openjdk-(current version minus 1)
-  export PATH="/usr/lib/jvm/java-$((${pkgver%%.*}-1))-openjdk/bin/:$PATH"
+  export PATH="/usr/lib/jvm/java-$_java_ver-openjdk/bin/:$PATH"
 
-  # build against ffmpeg4.4
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
-  
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
 
-  gradle zips
+  gradle --no-daemon zips
 }
 
 package_java-openjfx() {
   depends=(
-    java-runtime-openjdk=${pkgver%%.*}
+    java-runtime-openjdk=$_java_ver
     libgl
     libx11
     libxtst
   )
-  optdepends=(
-    'ffmpeg4.4: Media support',
-    'gtk2: GTK2 support',
-    'gtk3: GTK3 support',
-    'webkit2gtk: Web support'
-  )
+  optdepends=('gtk3: GTK3 support')
   provides=(java-openjfx=${pkgver%%.*})
 
   cd $_jfxdir
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
-  cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/
-  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/
+  install -dm 755  "${pkgdir}"/usr/{lib/$pkgbase,share/java/$pkgbase,share/licenses}
+  cp -dr --no-preserve=ownership build/sdk/lib/*.jar "${pkgdir}"/usr/share/java/$pkgbase/
+  cp -dr --no-preserve=ownership build/sdk/lib/*.so "${pkgdir}"/usr/lib/$pkgbase/
+  cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/share/java/$pkgbase/
   cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 }
 
@@ -125,8 +123,8 @@ package_java-openjfx-src() {
   arch=(any)
   cd $_jfxdir
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
-  install -m 644 build/sdk/src.zip "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/javafx-src.zip
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-$_java_ver-openjdk,share/licenses}
+  install -m 644 build/sdk/src.zip "${pkgdir}"/usr/lib/jvm/java-$_java_ver-openjdk/javafx-src.zip
   ln -s java-openjfx "${pkgdir}"/usr/share/licenses/java-openjfx-src
 }
 
