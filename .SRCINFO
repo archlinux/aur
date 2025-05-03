@@ -1,7 +1,7 @@
 pkgbase = cachyos-ksm-settings-git
 	pkgdesc = Package for easy configuration of kernel samepage merding (KSM) via commandline or systemd. Replaces 'uksmd'.
 	pkgver = 1.r1.20241227.f4fcf5cc
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://github.com/CachyOS/CachyOS-PKGBUILDS/tree/master/cachyos-ksm-settings
 	arch = any
@@ -24,6 +24,8 @@ pkgbase = cachyos-ksm-settings-git
 	conflicts = ksmtuned
 	backup = etc/tmpfiles.d/ksm.conf
 	source = CachyOS-PKGBUILDS::git+https://github.com/CachyOS/CachyOS-PKGBUILDS.git
+	source = ksmctl-add-status-output.patch
 	sha256sums = SKIP
+	sha256sums = 0e369bf2471c8d8d49cd5965090ae121be0a2dbb009a86168f437d19b8b71c3e
 
 pkgname = cachyos-ksm-settings-git
