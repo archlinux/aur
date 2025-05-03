@@ -12,14 +12,18 @@ source=()
 sha256sums=()
 
 build() {
+    echo "RUNNED BUILD BY $USER"
     git clone https://tvoygit.ru/vi_is_lonely/libcvec.git
     cd libcvec
     sudo make build
+    echo "BUILD COMPLETED"
 }
 
 package() {
+    echo "RUNNED PACKAGE BY $USER"
     cd libcvec
     sudo make install
     cd ..
     sudo rm -rf libcvec
+    echo "PACKAGE COMPLETED"
 }
