@@ -6,7 +6,7 @@
 
 pkgname=butt
 pkgver=1.45.0
-pkgrel=8
+pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')

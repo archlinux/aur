@@ -1,7 +1,7 @@
 pkgbase = butt
 	pkgdesc = Easy to use, multi OS streaming tool
 	pkgver = 1.45.0
-	pkgrel = 8
+	pkgrel = 1
 	url = https://danielnoethen.de/butt/
 	arch = i686
 	arch = x86_64
