@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
+_nodeversion=22
 _electronversion=35
 pkgdesc="Modern material design for Invidious."
 arch=('x86_64')
@@ -11,16 +12,29 @@ license=('AGPL-3.0-or-later')
 depends=("electron${_electronversion}")
 makedepends=(
   'desktop-file-utils'
-  'npm'
+  'nvm'
   'python'
 )
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('9eafc317bfe3ec1e724a06ca104aaf1a93af48add6ba9b733c76a8eedd75e13f'
+sha256sums=('d83ac4a93b85d52fa6ed7cd6a9bafb85e032ccc808fd7041c46b720204dab6c4'
             '2109a2f0353f1cc04e12539f55ed4dbb58d59f4d12e000d86f6668369c224c4c')
+
+_ensure_local_nvm() {
+  # let's be sure we are starting clean
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
+  # but nvm itself still gets loaded ok
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
 
 prepare() {
   cd "Materialious-$pkgver/$pkgname/electron"
+  _ensure_local_nvm
+  nvm install "${_nodeversion}"
 
   # Set desktop file Exec
   desktop-file-edit --set-key=Exec --set-value="$pkgname" "$pkgname.desktop"
@@ -35,6 +49,7 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+   _ensure_local_nvm
   npm install
   npm run build
   npx cap telemetry off
