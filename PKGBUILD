@@ -1,6 +1,6 @@
 # Maintainer: QaidVoid <contact@qaidvoid.dev>
 pkgname=soar
-pkgver=0.5.14
+pkgver=0.5.15
 pkgrel=1
 pkgdesc="A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More"
 arch=('aarch64' 'x86_64')
@@ -8,21 +8,20 @@ url="https://soar.qaidvoid.dev"
 license=('MIT')
 provides=('soar')
 conflicts=('soar' 'soar-bin' 'soar-nightly-bin')
-makedepends=('cargo')
+depends=('glibc' 'gcc-libs' 'bzip2' 'xz')
+makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkgforge/soar/archive/v$pkgver.tar.gz")
-sha256sums=('d306a5f33f84b7d656ec33e0780239d3c6eb07256de3c58938419d802f980477')
+sha256sums=('b003df56af408084d839d1ba490c7f5d08523110dceec18915c0299b4d4e900c')
 # ring fails to build with lto
 options=('!lto')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=nightly
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
