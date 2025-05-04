@@ -3,7 +3,7 @@
 pkgname=epsonscan2
 pkgver=6.7.70.0
 _pkgver="$pkgver-1"
-pkgrel=3
+pkgrel=4
 arch=('armv7h' 'i686' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="http://support.epson.net/linux/en/epsonscan2.php"
@@ -69,9 +69,13 @@ prepare() {
              src/ScanSDK/Src/SDK/SCANSDKsample_C++ \
              src/DetectAlert
   do
-    sed -Ei '/cmake_minimum_required/ s/2\.([0-9]+|\.)+/4.0/' \
+    sed -Ei '/cmake_minimum_required/ s/2\.([0-9+]|\.)+/4.0/' \
             "$srcdir/$pkgname-$_pkgver/$dir/CMakeLists.txt"
   done
+
+  # Fix compilation failure caused by GCC 15
+  sed -i '/SET.*FLAGS/ s/")/ -Wno-template-body")/' \
+         "$srcdir/$pkgname-$_pkgver/src/ES2Command/Linux/CMakeLists.txt"
 }
 
 build() {
