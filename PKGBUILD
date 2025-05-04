@@ -18,8 +18,8 @@ _githost=github.com
 _gituser=CachyOS
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.r1.20241227.f4fcf5cc
-pkgrel=4
+pkgver=2.r2.20250504.ce686af9
+pkgrel=1
 pkgdesc="Package for easy configuration of kernel samepage merding (KSM) via commandline or systemd. Replaces 'uksmd'."
 url='https://github.com/CachyOS/CachyOS-PKGBUILDS/tree/master/cachyos-ksm-settings'
 license=("GPL-3.0-or-later")
@@ -56,11 +56,9 @@ replaces=()
 backup=('etc/tmpfiles.d/ksm.conf')
 source=(
   "${_gitname}::git+https://${_githost}/${_gituser}/${_gitname}.git"
-  "ksmctl-add-status-output.patch"
 )
 sha256sums=(
   'SKIP'
-  '0e369bf2471c8d8d49cd5965090ae121be0a2dbb009a86168f437d19b8b71c3e'
 )
 # Those files in ${_gitname}/${_pkgname}/ will be used -- only look at them when generating version number:
 _sourcefiles=(
@@ -73,10 +71,10 @@ _sourcefiles=(
 prepare() {
   cd "${srcdir}/${_gitname}/${_pkgname}"
 
-  for _patch in "${srcdir}/ksmctl-add-status-output.patch"; do
-    printf '%s\n' "   > Applying patch $(basename "${_patch}")"
-    patch -Np1 --follow-symlinks -i "${_patch}"
-  done
+  #for _patch in "${srcdir}/ksmctl-add-status-output.patch"; do
+  #  printf '%s\n' "   > Applying patch $(basename "${_patch}")"
+  #  patch -Np1 --follow-symlinks -i "${_patch}"
+  #done
 
   git log -- * > git.log
 }
