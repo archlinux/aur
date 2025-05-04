@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.256.02
-pkgrel=7.97
+pkgrel=7.98
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -25,9 +25,11 @@ source=('nvidia-drm-outputclass.conf'
         "0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
         "0002-Fix-conftest-to-use-a-short-wchar_t.patch"
         "0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
+#        "0006-Fix-CFLAGS-set-std-gnu17-for-all-compilation-flags.patch"
         "kernel-6.12.patch"
         "nvidia-470xx-fix-linux-6.13.patch"
         "nvidia-470xx-fix-linux-6.14.patch"
+        "nvidia-470xx-fix-linux-6.15.patch"
         )
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
@@ -42,7 +44,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'e1371e2ed622d642b0242a2be34438fae97fa33ef42afc1e7897177c10dc8831f20b9a8b37d25d9dc079743df03b10221decfb23577650233af8981a4ffb813c'
             'ef84759e29869c0663b7a026d62d53196575eb633fa7a80935bcd8f1e64da94ef1a386facca313c36f306f591de094c4e36f42e453c0e9421755df68f18ae1f0'
             'c577d422799580e6a7b12670439dd7d68f9474ae17e96355144b7037d9a36228f22e53682f317ec7ca0f6a83d2520ede376350d02a2c072d0d195768f4115cba'
-            '7f0ab1d27d08fc091e8190ff040115607eb2d0c4a6ab710f8083899c3ed44a30eb4479c0bae8a072ee54409734f9c78a10f0c2555157526e153b4578ccf8aea6')
+            '7f0ab1d27d08fc091e8190ff040115607eb2d0c4a6ab710f8083899c3ed44a30eb4479c0bae8a072ee54409734f9c78a10f0c2555157526e153b4578ccf8aea6'
+            'c413e5d21c25d99d407fbd5b21bb931f6ff864a32940646968560803bda92f9e32b8a5301bcf999f89688b787007ffc929839b6e9d4fbb2afda3111b0c9f750c')
 
 create_links() {
     # create soname links
@@ -65,6 +68,7 @@ prepare() {
      patch -p1 -i "${srcdir}/0001-Fix-conftest-to-ignore-implicit-function-declaration.patch"
      patch -p1 -i "${srcdir}/0002-Fix-conftest-to-use-a-short-wchar_t.patch"
      patch -p1 -i "${srcdir}/0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch"
+     #patch -p1 -i "${srcdir}/0006-Fix-CFLAGS-set-std-gnu17-for-all-compilation-flags.patch"
 
 #    patch -p1 -i "${srcdir}/kernel-6.1.76_6.6.15_6.7.3.patch"
 #    patch -p1 -i "${srcdir}/kernel-6.4.patch"
@@ -74,6 +78,7 @@ prepare() {
     patch -p1 -i "${srcdir}/kernel-6.12.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.13.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.14.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.15.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
