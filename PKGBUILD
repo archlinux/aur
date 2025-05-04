@@ -2,8 +2,8 @@
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
-pkgver=3.23.0
-pkgrel=3
+pkgver=3.23.1
+pkgrel=1
 pkgname=petsc
 pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
@@ -30,18 +30,12 @@ optdepends=(
 
 install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
-        test_optdepends.sh
-        fortran-include.patch)
-sha512sums=('e5cd7649451277ff5c9dedac4948be12cd1465261f872319a8f1c42842a51a817cb36f4a36f02ccb1d8c13e4cfb6fd4bb36c297f74b22129d288001769a6d66b'
-            '809e956a60be3604db08d523faba0de26f97d63e9ceb174e06202ca6f742df917670821246349974662d8e98f7a166c107d2f1627a6aa256a4b69efd1576b891'
-            'da1012cce2f603f2541beb382cbe58314ba3581e285850beec50528e01c0069571f2434e8e74d51e3276ea57b7515935d35dd0343f1594f9f594ffc0da3ceeb0')
+        test_optdepends.sh)
+sha512sums=('826d8e7ba4863ab0be96dbde888a7dc90ebce4d2cb0fa5659aff6b311b6392283181ea477f07dc424c6d1a96f791b0e8771b7cb8975631339d35bb3fd0aa15a9'
+            '809e956a60be3604db08d523faba0de26f97d63e9ceb174e06202ca6f742df917670821246349974662d8e98f7a166c107d2f1627a6aa256a4b69efd1576b891')
 
 PETSC_ARCH=linux-c-opt
 _install_dir=/opt/petsc/${PETSC_ARCH}
-
-prepare() {
-  patch -d ${pkgname}-${pkgver} -Np1 -i ../fortran-include.patch
-}
 
 build() {
   cd ${pkgname}-${pkgver}
