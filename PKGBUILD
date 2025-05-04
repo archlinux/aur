@@ -2,7 +2,7 @@
 _basename=trios
 pkgname=${_basename}-bin
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Starsector mod manager & toolkit."
 arch=('x86_64')
 url="https://github.com/wispborne/TriOS"
@@ -24,6 +24,8 @@ package() {
 
     cp -r "${srcdir}/TriOS/data" "${pkgdir}/opt/${pkgname}/"
     cp -r "${srcdir}/TriOS/lib" "${pkgdir}/opt/${pkgname}/"
+
+    chmod 755 "${pkgdir}/opt/${pkgname}/data/flutter_assets/assets/linux/7zip/x64/7zzs"
 
     install -dm755 "${pkgdir}/usr/bin/"
     ln -s "/opt/${pkgname}/TriOS" "${pkgdir}/usr/bin/TriOS"
