@@ -1,9 +1,9 @@
-# Maintainer: Ben Poest <ben@poest.com>
+# Maintainer: benpiano800 <benpiano800@protonmail.com>
 # Contributor: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=2048-vanced-git
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced implementation of 2048"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/NoahJelen/2048-vanced"
