@@ -3,7 +3,7 @@
 
 pkgname=python-fastai2
 _pkgname=fastai
-pkgver=2.7.19
+pkgver=2.8.1
 pkgrel=1
 pkgdesc='Deep learning library build on PyTorch with CPU. Version 2 of fastai.'
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastai/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('108090f95b9fbe8f4287371429864d6d52c95b8d181b3219fe2e171883f1e2b3bd1a762ee9802fa21267aef393f66874d70efe873e0dd04c6f5c9e1b1c4c5903')
+sha512sums=('0d683d4bd6c38b0e02b14333ff86dc4c7f4e19881e8631cb1fa07fe196611f1ca97068e562da0bdd7785a7dd32774d7317cea8a5da1c51a5bf90f280f026789b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
