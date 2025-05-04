@@ -4,11 +4,9 @@
 : ${_install_path:=usr/share}
 : ${_electron_builder_version:=<26}
 
-: ${_commit:=d974d27fb6d424e9c50c95675fa56ae8d952b42b}
-
 _pkgname="legcord"
 pkgname="$_pkgname"
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Discord client with builtin client mod and theme support"
 url="https://github.com/Legcord/Legcord"
@@ -29,8 +27,8 @@ optdepends=(
 )
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
+sha256sums=('80be340c58dcf925f79d4159650ab0e733db0e5a5c457ad7732b000e20bf6450')
 
 build() (
   # avoid cluttering user home
@@ -44,8 +42,11 @@ build() (
 
   sed -E \
     -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
-    -e 's#("electron-builder"): "[^"]+",#\1: "'${_electron_builder_version}'",#' \
     -i "$_pkgsrc/package.json"
+
+  if [ -n "$_electron_builder_version" ]; then
+    sed -E -e 's#("electron-builder"): "[^"]+",#\1: "'${_electron_builder_version}'",#' -i "$_pkgsrc/package.json"
+  fi
 
   local _electron_builder_options=(
     --linux dir
