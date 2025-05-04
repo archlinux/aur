@@ -1,0 +1,27 @@
+pkgbase = python-scikit_survival
+	pkgdesc = Survival analysis built on top of scikit-learn
+	pkgver = 0.24.1
+	pkgrel = 2
+	url = https://github.com/sebp/scikit-survival
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-scikit-learn
+	depends = python-ecos
+	depends = python-joblib
+	depends = python-numexpr
+	depends = python-numpy
+	depends = python-osqp
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-pytest
+	depends = glibc
+	depends = gcc-libs
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/s/scikit_survival/scikit_survival-0.24.1.tar.gz
+	sha256sums = 059ca5911f980e44f69951baf08efc8d7a7cf1adba7a5422580ef65330cfd88e
+
+pkgname = python-scikit_survival
