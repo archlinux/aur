@@ -3,7 +3,7 @@
 _name="tinysparql"
 pkgname="lib32-${_name}"
 pkgver=3.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-footprint RDF triple store with SPARQL 1.1 interface (32-bit)"
 arch=('x86_64')
 url="https://tinysparql.org"
