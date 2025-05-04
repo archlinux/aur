@@ -1,6 +1,6 @@
 pkgbase = materialious-bin
 	pkgdesc = Modern material design for Invidious
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Materialious/Materialious
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = materialious-bin
 	provides = materialious
 	conflicts = materialious-git
 	options = !debug
-	source = https://github.com/Materialious/Materialious/releases/download/1.8.1/Materialious-1.8.1-linux-amd64.deb
-	sha256sums = 9399656d6e83b8f35fb2b88757d91a03685420310f45c6c3585efd0c092e4363
+	source = https://github.com/Materialious/Materialious/releases/download/1.8.2/Materialious-1.8.2-linux-amd64.deb
+	sha256sums = 3050782467f5b73b1e6c3baa83fa8f249de5fc8e2d9d93c305a26a8f6f129b42
 
 pkgname = materialious-bin
