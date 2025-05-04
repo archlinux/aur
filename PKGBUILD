@@ -2,7 +2,7 @@
 
 _pkgname=libheif
 pkgname=lib32-libheif
-pkgver=1.19.7
+pkgver=1.19.8
 pkgrel=1
 pkgdesc="HEIF file format decoder and encoder (32-bit)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
 )
 provides=('libheif.so')
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-sha256sums=('161c042d2102665fcee3ded851c78a0eb5f2d4bfe39fba48ba6e588fd6e964f3')
+sha256sums=('6c4a5b08e6eae66d199977468859dea3b5e059081db8928f7c7c16e53836c906')
 options=('debug')
 
 build() {
