@@ -1,0 +1,11 @@
+pkgbase = ndtf-info
+	pkgdesc = Outputs info from the header of a given NDTF (N-Dimensional Texture Format) file.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Tr1NgleDev/ndtf-info
+	arch = x86_64
+	license = Apache-2.0 license
+	source = ndtf-info-1.0.tar.gz::https://github.com/Tr1NgleDev/ndtf-info/archive/1.0.tar.gz
+	sha256sums = 60ceb35ca27a9ce4d5975ee9d985bf92a6ee6c23b98509bb1d7d1d8c9f4d6f90
+
+pkgname = ndtf-info
