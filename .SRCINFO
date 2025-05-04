@@ -1,6 +1,6 @@
 pkgbase = mlinpxplugin
 	pkgdesc = MyLibrary plugin for .inpx collections import
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mlinpxplugin
 	makedepends = gcc
 	depends = mylibrary
 	provides = mlinpxplugin
-	source = https://github.com/ProfessorNavigator/mlinpxplugin/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 3fdbdc2ab1a0b97d33bc077b69a0f7ba47cf258744d6d157c125645a259dd53f
+	source = https://github.com/ProfessorNavigator/mlinpxplugin/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = d32b6c02b6a6aa5e86752fc3aa75f42c03e5b97fdd50a13bc314f76ba854144b
 
 pkgname = mlinpxplugin
