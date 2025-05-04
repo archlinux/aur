@@ -1,3 +1,4 @@
+# Maintainer: Relish0171 <aur.such581@aleeas.com>
 _basename=trios
 pkgname=${_basename}-bin
 pkgver=1.1.9
@@ -11,7 +12,7 @@ optdepends=('starsector')
 source=("https://github.com/wispborne/TriOS/releases/download/${pkgver}/TriOS-Linux.zip"
     "${_basename}.desktop")
 sha256sums=('d92ee917795a1b5a06a8c880df9a9790e1ce64432529ff5bbcf8c08bd605ccce'
-            'a34536873f548821d7d91f192029114470f066fbac5aeb5854ad36bc2ed91f24')
+    'a34536873f548821d7d91f192029114470f066fbac5aeb5854ad36bc2ed91f24')
 
 package() {
     install -Dm644 "${srcdir}/${_basename}.desktop" "${pkgdir}/usr/share/applications/${_basename}.desktop"
