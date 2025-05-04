@@ -1,10 +1,10 @@
 pkgbase = iqtree-mpi
 	pkgdesc = Efficient phylogenomic software by maximum likelihood; multicore version (OMP). https://doi.org/10.1093/molbev/msaa015
-	pkgver = 2.4.0
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/iqtree/iqtree2
+	url = https://github.com/iqtree/iqtree3
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
@@ -16,7 +16,7 @@ pkgbase = iqtree-mpi
 	depends = zlib
 	depends = openmpi
 	depends = nvidia-utils
-	source = git+https://github.com/iqtree/iqtree2.git#tag=v2.4.0
-	md5sums = 36a33fc1e2e0013220406aabff1a036e
+	source = git+https://github.com/iqtree/iqtree3.git#tag=v3.0.0
+	md5sums = d6e201df7726673580828c9e3e0c6698
 
 pkgname = iqtree-mpi
