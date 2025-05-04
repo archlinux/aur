@@ -45,6 +45,14 @@
 	#define INIT_BACKLIGHT_PROPS
 #endif
 
+/* 'ioremap_nocache' was deprecated in kernels >= 5.6, so use 'ioremap' which
+   is no-cache by default since kernels 2.6.25. */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+	#define IOREMAP_NO_CACHE(address, size) ioremap(address, size)
+#else /* KERNEL_VERSION < 2.6.25 */
+	#define IOREMAP_NO_CACHE(address, size) ioremap_nocache(address, size)
+#endif
+
 /* Register constants */
 #define NV4X_BRIGHTNESS_OFFSET				0x15f2
 #define NV4X_BRIGHTNESS_MASK				0x001f
@@ -145,7 +153,7 @@ static int nv4x_set_intensity(struct driver_data *dd, unsigned intensity)
 	return 0;
 }
 
-static const struct driver_data nv4x_driver_data __devinitconst = {
+static const struct driver_data nv4x_driver_data = {
 	.bar        = 0,
 	.reg_offset = NV4X_BRIGHTNESS_OFFSET,
 	.reg_size   = 2,
@@ -183,7 +191,7 @@ static int nv5x_set_intensity(struct driver_data *dd, unsigned intensity)
 	return 0;
 }
 
-static const struct driver_data nv5x_driver_data __devinitconst = {
+static const struct driver_data nv5x_driver_data = {
 	.bar        = 0,
 	.reg_offset = NV5X_PDISPLAY_OFFSET + NV5X_PDISPLAY_BRIGHTNESS_OFFSET,
 	.reg_size   = 4,
@@ -538,17 +546,17 @@ static const unsigned nvidia_bl_subvendors[] __initdata = {
 /*
  * Machine specific quirks used below.
  */
-static const struct machine_quirks apple_quirks __initdata = {
+static const struct machine_quirks apple_quirks = {
 	.dev_id		= PCI_ANY_ID,
 	.max_level	= 1023
 };
 
-static const struct machine_quirks apple_quirks_320m __initdata = {
+static const struct machine_quirks apple_quirks_320m = {
 	.dev_id		= PCI_ANY_ID,
 	.max_level	= 44000
 };
 
-static const struct machine_quirks max_level_0x1ffff __initdata = {
+static const struct machine_quirks max_level_0x1ffff = {
 	.dev_id		= PCI_ANY_ID,
 	.max_level	= 0x1ffff
 };
@@ -565,7 +573,7 @@ static int nvidia_bl_dmi_match(const struct dmi_system_id *id)
 	return 1;
 }
 
-static const struct dmi_system_id nvidia_bl_machine_table[] __initdata = {
+static const struct dmi_system_id nvidia_bl_machine_table[] = {
 	/*
 	 * Apple machines: Intel chipset, Nvidia graphics
 	 */
@@ -831,7 +839,6 @@ static unsigned nvidia_bl_max_level_to_mask(unsigned max_level)
 	return (unsigned)-1;
 }
 
-/* missing annotation __devinitconst */
 static const struct pci_device_id *nvidia_bl_match_id(struct pci_dev *dev)
 {
 	/* Search id in table */
@@ -851,7 +858,6 @@ static const struct pci_device_id *nvidia_bl_match_id(struct pci_dev *dev)
 #endif
 }
 
-/* missing annotation __devinitconst */
 static int nvidia_bl_find_device(struct driver_data *dd)
 {
 	const struct pci_device_id *id = NULL;
@@ -925,7 +931,7 @@ static int nvidia_bl_map_smartdimmer(struct driver_data *dd)
 		       "smartdimmer at 0x%lx\n", dd->bar, bar_start, reg_addr);
 
 	/* Now really map (The address need not be page-aligned.) */
-	dd->smartdimmer = ioremap_nocache(reg_addr, dd->reg_size);
+	dd->smartdimmer = IOREMAP_NO_CACHE(reg_addr, dd->reg_size);
 	if (!dd->smartdimmer)
 		return -ENXIO;
 

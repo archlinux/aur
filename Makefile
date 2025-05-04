@@ -9,7 +9,7 @@ KDIR    := /usr/lib/modules/$(KVER)/build
 PWD    := $(shell pwd)
 
 default:
-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
+	$(MAKE) -C $(KDIR) M=$(PWD) SUBDIRS=$(PWD) modules
 	
 clean:
-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean
+	$(MAKE) -C $(KDIR) M=$(PWD) SUBDIRS=$(PWD) clean

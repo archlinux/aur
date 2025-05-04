@@ -1,7 +1,7 @@
 pkgbase = nvidia-bl-dkms
 	pkgdesc = Driver to adjust display backlight on legacy mobile NVidia graphics adapters - DKMS edition.
 	pkgver = 18.11.0
-	pkgrel = 2
+	pkgrel = 3
 	install = nvidia-bl-dkms.install
 	arch = i686
 	arch = x86_64
