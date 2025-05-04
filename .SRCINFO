@@ -9,6 +9,6 @@ pkgbase = displayconfig-mutter
 	makedepends = rust
 	makedepends = cargo
 	source = git+https://github.com/eaglesemanation/displayconfig-mutter.git#tag=v0.1.3
-	sha256sums = d17621d8267bedde3aab08e309c6f096d1f25cb10225cc85bc2dee95ded2a5cc
+	sha256sums = 488c395cd512033c7487ded0d6a5021295c3aa18a821d2de860d33e5d68e7f47
 
 pkgname = displayconfig-mutter
