@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=cargo-valgrind
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A cargo subcommand, that runs valgrind and collects its output in a helpful manner"
 url="https://github.com/jfrimmel/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT" "Apache")
 depends=("cargo" "valgrind")
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ced163df29b1aab214490e8ecc84b98a7c2139af3831d40b2af4b8ae5a6fb7e6')
+sha256sums=('88f2e73b621910e81b4fa20a3c6a3c96e0a0fcb2b308a979ec847dc993c05e14')
 
 prepare()
 {
