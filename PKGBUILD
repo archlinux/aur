@@ -1,7 +1,7 @@
 # Maintainer: Kef Schecter <furrykef@gmail.com>
 
 pkgname=pyboy
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='A scriptable Game Boy emulator written in Python'
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('python-numpy' 'python-pysdl2')
 makedepends=('cython' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-opengl: OpenGL support'
             'python-pillow: screen/video capture support')
-#checkdepends=('python-cryptography' 'python-filelock' 'python-gitpython' 'python-pillow' 'python-pytest' 'python-pytest-benchmark' 'python-pytest-lazy-fixtures' 'python-matplotlib' 'python-pytest-xdist' 'xorg-server-xvfb')
+#checkdepends=('python-cryptography' 'python-filelock' 'python-gitpython' 'python-matplotlib' 'python-pillow' 'python-pytest' 'python-pytest-benchmark' 'python-pytest-lazy-fixtures' 'python-pytest-xdist' 'xorg-server-xvfb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Baekalfen/PyBoy/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('eb6ec5f32aeea4ac0e4586ca2a14542adc6f565d155835b79bb98ecaddcc6a1510e6df207a7afc212c1601cd8fa17236160466a8cfce78304a94e28c712dd144')
+b2sums=('95196f415c2c07b9aff708b4a34730066efef3012d6b7ee9f9c283b4b07b188d564506ac5bb18b699aff45f98e95c535e6c589d69b53a9a71552ea6c4583b75c')
 
 build() {
     cd "PyBoy-$pkgver"
@@ -21,13 +21,11 @@ build() {
 }
 
 # Tests disabled for now; they crash due to an apparent bug in the test suite
-# Re-enable them for 2.5.3 if they work then
+# Re-enable them for 2.5.4 if they work then
 #check() {
 #    cd "PyBoy-$pkgver"
 #    # xvfb-run is used to avoid spawning windows during testing
-#    # test_swoosh is excluded because it turns out not to be portable in 2.5.0
-#    # This will probably change in future versions
-#    xvfb-run pytest -k "not test_swoosh"
+#    xvfb-run pytest
 #}
 
 package() {
