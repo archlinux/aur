@@ -3,7 +3,7 @@
 
 pkgname=kellnr
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The registry for Rust crates'
 arch=('x86_64')
 url='https://kellnr.io/'
@@ -30,12 +30,12 @@ install=kellnr.install
 
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kellnr/kellnr/archive/refs/tags/v$pkgver.tar.gz"
-        "default.toml"
+        "0001-Change-default-data-dir-to-var-lib-kellnr.patch"
         "kellnr.service"
         "kellnr.sysusers"
         "kellnr.tmpfiles")
 sha256sums=('a072b293ce3ca452fcbafb729afb91e67630dbc48f60b082b064ed83f8695389'
-            '0578c49efb3e81ece93cff2da758fd7248abb3f0c062d7ed2e98d8de5218cff6'
+            '7b5af39e16841e3f1d25072c4b79b0210add6b0797f1758fdce568a1a058c7f7'
             '28c931c3b6c1ab2e16e318a55e137300a9bfdd8581d7d668a3350574094e1c6d'
             'a268b595b0048f3dda5d6cf8dea37d9c60b2333d8f4aae76ac93deb4b6e2e62e'
             'e81b1299bd28ca1691f7189c373f3672ec235a0ade8c23e195aeaf92a70ec1d6')
@@ -46,6 +46,8 @@ export CARGO_BUILD_TARGET="$CARCH-unknown-linux-gnu"
 
 prepare() {
     cd "$pkgname-$pkgver"
+
+    patch -Np1 -i ../0001-Change-default-data-dir-to-var-lib-kellnr.patch
 
     cargo fetch --locked
     just npm-install
@@ -75,7 +77,7 @@ package() {
     install -Dm0755 "target/$CARGO_BUILD_TARGET/release/$pkgname" -t "$pkgdir/usr/bin/"
 
     # Install the default config file into `/etc/kellnr`.
-    install -Dm644 "$srcdir/default.toml" -t "$pkgdir/etc/kellnr"
+    install -Dm644 "config/default.toml" -t "$pkgdir/etc/kellnr"
 
     # Install the `static` directory into `/usr/share/kellnr`.
     pushd static
