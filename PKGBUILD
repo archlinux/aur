@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=rlpcli
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='Tiny LessPass API server client CLI to get passwords and site settings'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('rust')
 options=('!lto')
 source=("https://gitlab.com/ogarcia/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-b2sums=('fed6d89ddefdc9f4f35ea8bbb70781e5da4549d5206bf8a0d4213c2634bd511ea86533d1f00a9b2034593c2e4864e5855b287ad98c0f9f235f2a7ccdb4749f3d')
+b2sums=('ccfb387648672ed4ec17fde11f1de0a04a787313cb939a76d20b0bb0ecf3a66ca101c973651639e15162842f57d0fc54af9e0305aeb87909f61f7954008652c7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
