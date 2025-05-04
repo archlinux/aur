@@ -1,6 +1,6 @@
 pkgbase = unl0kr
 	pkgdesc = On-screen Keyboard for FDE
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://gitlab.com/postmarketOS/buffybox
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = unl0kr
 	depends = libinih
 	depends = libinput
 	backup = etc/unl0kr.conf
-	source = https://gitlab.com/postmarketOS/buffybox/-/archive/3.2.0/unl0kr-3.2.0.tar.gz
-	source = lvgl-ceadda8a468b7d5fa6ba973bd82cf610166278d8.tar.gz::https://github.com/lvgl/lvgl/archive/ceadda8a468b7d5fa6ba973bd82cf610166278d8.tar.gz
+	source = https://gitlab.postmarketos.org/postmarketOS/buffybox/-/archive/3.3.0/buffybox-3.3.0.tar.gz
+	source = lvgl-7f07a129e8d77f4984fff8e623fd5be18ff42e74.tar.gz::https://github.com/lvgl/lvgl/archive/7f07a129e8d77f4984fff8e623fd5be18ff42e74.tar.gz
 	source = unl0kr-hooks
 	source = unl0kr-install
-	md5sums = 068bde08ef30bda43154a8ec6c43aea5
-	md5sums = c895eaee573f41ed2d8f406ce789a31b
+	md5sums = e95c44b3d0912edee8427d2380620b1a
+	md5sums = 01a20b014ee7a6d20978ea034d023e0c
 	md5sums = bfb3b7489f6ad4eff1a934ee469dc101
 	md5sums = 77f434f1626524b8853f6241fdf160ab
 
