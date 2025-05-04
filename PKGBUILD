@@ -7,7 +7,7 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -21,6 +21,7 @@ checkdepends=('cunit')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         "zoneinfo-db-incompatible-types.patch"
         "https://src.fedoraproject.org/rpms/cyrus-imapd/raw/4176c0e5983b3d19752f2db3860c33bafa7c259b/f/patch-cyrus-remove-always-inline-for-buf-len"
+        "managesieve-libcap-dependency.patch"
         "libcyrus-imap-sieve-dependency.patch::https://github.com/cyrusimap/cyrus-imapd/pull/4996.diff"
         "imapd.conf.patch"
         "cyrus-imapd.service"
@@ -31,6 +32,7 @@ sha512sums=('efddcfbde9281a76b87dad00e82d7fdaa9ab1dba18b0cbe76de8ed14fd91f1b675d
             'SKIP'
             '1d45ee604c0a398bd666bb35cd25d1b4c834d59462b2ff146e1c845afbc403c6fba5481d67dffc5c686369603b2eaba4c5d7ff5427b1843fcc70319eb9550b2f'
             '575db085359af83605e89972ab20e2e1f62e67418242f954f4ed5e60d29acf66dfea07f41537327688857eddb0b310b5ee6361155a7588299d5adbaea487307a'
+            'da133b310f72e64cd151343f2089cd7ddf38330ed7da6997811202acc0504cbb5d45cc00923f8ebaeeb7aae268e7c5451731eacdae9179d910d2a3bb8120f188'
             '09f5a1c7710676c387509e6ad30dd83b9032febaa639a97b563dbdfcdd231aab3c0f88af9ffed8098908e3494bec5fbe4803c848e0e372bd555729b14d1bab65'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '1a8d37d6f2410efd7a9454c5496195eb79467992a87926b54560ead72dd7c00dd6224a53c7b75d2a92cf6d1ae872194c4494e714a632d7c8172377c932f4eadd'
@@ -44,6 +46,9 @@ prepare() {
 
   # https://bugzilla.redhat.com/show_bug.cgi?id=2223951
   patch -Np1 < "${srcdir}/patch-cyrus-remove-always-inline-for-buf-len"
+
+  # Fix managesieve not being linked against libcyrus_min dependency libcap
+  patch -Np1 < "${srcdir}/managesieve-libcap-dependency.patch"
 
   # Fix libcyrus_imap not being linked against its dependency libcyrus_sieve
   # resulting in overlinking (sort of) in some of its dependents
