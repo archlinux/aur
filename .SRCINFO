@@ -1,0 +1,18 @@
+pkgbase = wg-bench-git
+	pkgdesc = WireGuard Benchmark using netns and iperf3
+	pkgver = r154.e286e4e
+	pkgrel = 1
+	url = https://github.com/cyyself/wg-bench
+	arch = any
+	makedepends = git
+	depends = wireguard-tools
+	depends = iperf3
+	depends = iproute2
+	provides = wg-bench
+	conflicts = wg-bench
+	source = git+https://github.com/cyyself/wg-bench.git
+	source = wg-bench.sh
+	sha256sums = SKIP
+	sha256sums = 62d932911e4c6ccde16bc3f2b4fe1c1b4a0c98365c4f6a7b46fb06699099ab99
+
+pkgname = wg-bench-git
