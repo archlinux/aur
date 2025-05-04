@@ -1,0 +1,18 @@
+pkgbase = iso2god-rs-git
+	pkgdesc = A tool to convert Xbox 360 and original Xbox ISOs into an Xbox 360 compatible Games-On-Demand file format
+	pkgver = r65.06635a1
+	pkgrel = 1
+	url = https://github.com/iliazeus/iso2god-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = iso2god
+	conflicts = iso2god
+	source = iso2god-rs::git+https://github.com/iliazeus/iso2god-rs.git
+	b2sums = SKIP
+
+pkgname = iso2god-rs-git
