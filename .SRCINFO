@@ -1,6 +1,6 @@
 pkgbase = mylibrary
 	pkgdesc = Home librarian
-	pkgver = 4.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/ProfessorNavigator/mylibrary
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = mylibrary
 	depends = djvulibre
 	depends = libarchive
 	provides = mylibrary
-	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v4.0.tar.gz
-	sha256sums = be8b8f91e8950f44ba75880ae753886fe18be3f071e68316ac043520f052db07
+	source = https://github.com/ProfessorNavigator/mylibrary/archive/refs/tags/v4.0.1.tar.gz
+	sha256sums = 3398aad4fc6ce52131795d4b55330ffb96db307a1bdcb6ad68647d3c51dc70c1
 
 pkgname = mylibrary
