@@ -1,9 +1,9 @@
 # Maintainer: Sherlock Holo <sherlockya at gmail.com>
 
 pkgname=void-bin
-pkgdesc="Code editing. Redefined. Void is a new choice of tool that combines the simplicity of a code editor with what developers need for the core edit-build-debug cycle. See https://voideditor.com for installation instructions and FAQ."
+pkgdesc="The open-source Cursor alternative."
 pkgver=1.99.30003
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 options=('!strip')
 url="https://github.com/voideditor/void"
