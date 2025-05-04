@@ -15,6 +15,12 @@ makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GNS3/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('b68af39cd66f10555d860437f55e63887aefdb5a949bacacf3a308cc0c4eaaab3bb9a496c5ac32fd19d3920bada807bff2af8eb66b01d8d735419fec5d134746')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/cmake_minimum_required ( VERSION 2.8 )/cmake_minimum_required ( VERSION 3.5 )/' CMakeLists.txt
+  sed -i 's/cmake_policy ( VERSION 2.8 )/cmake_policy ( VERSION 3.5 )/' CMakeLists.txt
+}
+
 build() {
   if test ${CARCH} == x86_64; then
     export DYNAMIPS_ARCH=amd64
