@@ -1,17 +1,17 @@
 pkgname=gnss-share
-pkgver=0.7.2
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='An app for sharing GNSS location data, with support multiple clients and loading/saving AGPS data.'
 arch=(x86_64 aarch64)
 url="https://gitlab.com/postmarketOS/gnss-share"
 license=('GPL3')
-makedepends=('go')
+makedepends=('go' 'scdoc')
 optdepends=('geoclue: geoclue location source')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
 	"geoclue.conf")
 changelog=gnss-share.changelog
-sha512sums=('bfecc725ea09e1fb0bbfb917478447235aa7392f54cace9686d037478f1c164388054b4f2c742ec4948871cf68871956b1ef0f99a2ca621a9911efd5637c919a'
-	'f1d1c391d7104dd079ee6c7c08b99f6a84749b59eb66f3ceb1994d36198840e81f011b573af455eff1231ddbaf0c786c77785f799355d6d82005317633bca1ed')
+sha512sums=('796f5e9b7429013e0a67babcf7435aef156064cc60546c8256435b1a3696d8b354e4dd85ec403bdc8ea7dc896083bce68c58ac29a1cb7f9a74f4bc7340c5ce9c'
+            'f1d1c391d7104dd079ee6c7c08b99f6a84749b59eb66f3ceb1994d36198840e81f011b573af455eff1231ddbaf0c786c77785f799355d6d82005317633bca1ed')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -33,7 +33,7 @@ build() {
   	-modcacherw \
   	-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
   	-o build ./cmd/...
-  	
+
   scdoc < doc/gnss-share.1.scd > gnss-share.1
   scdoc < doc/gnss-share.conf.5.scd > gnss-share.conf.5
 }
