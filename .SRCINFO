@@ -1,6 +1,6 @@
 pkgbase = python-numba-cuda
 	pkgdesc = The CUDA target for Numba
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/numba-cuda
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-numba-cuda
 	makedepends = python-installer
 	depends = python-numba
 	depends = cuda
-	source = https://github.com/NVIDIA/numba-cuda/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = 2ebba6999b0b1005853507e7b52650e41670dc566da89d36222c57795730ae3a
+	source = https://github.com/NVIDIA/numba-cuda/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 82c57327a79f8328b8f00c22d1338228bcbc1391c35ba7ae1fb1f91584f86f88
 
 pkgname = python-numba-cuda
