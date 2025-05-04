@@ -1,4 +1,4 @@
-# Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@protonmail.com>
+# Maintainer: Quentin Michaud <mh4ckt3mh4ckt1c4s@archlinux.org>
 # Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 # Contributor: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 # Contributor: GI Jack <GI_Jack@hackermail.com>
@@ -21,7 +21,7 @@ build() {
 
 	# build main program
 	autoreconf -fi
-	./configure --prefix=/usr --enable-java
+	CFLAGS="-std=gnu17" ./configure --prefix=/usr --enable-java
 	make
 
 	# build java bindings
