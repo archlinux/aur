@@ -151,6 +151,8 @@ package() {
 		--prefix=/usr \
 		--system-plugins-location=/usr/share/calibre/system-plugins
 
+	cp -a man-pages/ "${pkgdir}/usr/share/man"
+
 	# not needed at runtime
 	rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
 
