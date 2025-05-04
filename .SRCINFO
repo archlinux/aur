@@ -14,8 +14,8 @@ pkgbase = python-aqlm
 	depends = python-scipy
 	depends = python-transformers
 	optdepends = python-triton: JIT-compiled modules on GPU
-	noextract = python-aqlm-1.1.7.whl
-	source = python-aqlm-1.1.7.whl::https://files.pythonhosted.org/packages/33/02/3f4caa19fa7150a00beceff0b8451e2e44728bb345166f89c320261d66a8/aqlm-1.1.7-py3-none-any.whl
+	noextract = aqlm-1.1.7-py3-none-any.whl
+	source = aqlm-1.1.7-py3-none-any.whl::https://files.pythonhosted.org/packages/33/02/3f4caa19fa7150a00beceff0b8451e2e44728bb345166f89c320261d66a8/aqlm-1.1.7-py3-none-any.whl
 	sha256sums = cd965095f83240549a4bf93d314e92bd33165430aa4f22c9a78638dadc137a1e
 
 pkgname = python-aqlm
