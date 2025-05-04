@@ -27,4 +27,6 @@ package() {
     install -Dm644 usr/share/licenses/chatterino/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
     install -d "${pkgdir}"/usr/share/licenses/${_pkgname}
     ln -s /usr/share/licenses/${pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
+    install -d "${pkgdir}"/usr/share/licenses/chatterino
+    ln -s /usr/share/licenses/${pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/chatterino/LICENSE
 }
