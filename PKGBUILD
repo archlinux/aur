@@ -8,7 +8,7 @@
 # Note: source array can be synced with an Electron release after updating $pkgver with:
 # bash -c 'source PKGBUILD; _update_sources'
 
-pkgver=36.0.0
+pkgver=36.1.0
 _gcc_patches=136-2
 pkgrel=1
 _major_ver=${pkgver%%.*}
@@ -73,7 +73,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
         # BEGIN managed sources
-        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=136.0.7103.48
+        chromium-mirror::git+https://github.com/chromium/chromium.git#tag=136.0.7103.49
         chromium-mirror_third_party_nan::git+https://github.com/nodejs/nan.git#commit=e14bdcd1f72d62bca1d541b66da43130384ec213
         chromium-mirror_third_party_electron_node::git+https://github.com/nodejs/node.git#tag=v22.14.0
         chromium-mirror_third_party_engflow-reclient-configs::git+https://github.com/EngFlow/reclient-configs.git#commit=955335c30a752e9ef7bff375baab5e0819b6c00d
@@ -228,7 +228,7 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
         # END managed sources
         )
-sha256sums=('3f7941ce1f72b360baf66fe402ba17a9ee505088d433665a4cec43015bec4ba5'
+sha256sums=('a3f2fd9430938aa581c18e97c46bf82cef83769fc7cb626e4045ceddbce66e30'
             '7226c0ff3ecde0d66207295d28c9ca9c2063508d97d0d406a1cae9aae71187f5'
             '32f0080282fc0b2795a342bf17fcb3db4028c5d02619c7e304222230ba99d5fe'
             'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
@@ -239,7 +239,7 @@ sha256sums=('3f7941ce1f72b360baf66fe402ba17a9ee505088d433665a4cec43015bec4ba5'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '991e54f4490cdbb5e52c9a4a4f6e0e32f2fc95979f18a4736016d065da229c2e'
             'b0a024a71833bc1c96adbc796d31da24bb4a3e6d189e031fa8ac23d918f33ea0'
-            'ed4828f574db650ec1a8dcf71ce0ff42e5241d23d2458ad62a466ce51de58e2a'
+            '84f9bf8dbcea457dec5ca07d8025a0e6101e0031e4538b60eb75742084fb20d9'
             '0b7a546ee6913c49519c10c293ac530ff381641a8a465fa2e184d6dbe0fb784d'
             '9a96d033c1060583d53feddfda63e0eefc6d71eed23a7e40bf832792198e027e'
             '3522166c3ca75316a172b7cc4fe12bba9367e30fed16df8193ede2e236dca8c5'
