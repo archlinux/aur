@@ -5,12 +5,12 @@
 _name=radon
 pkgname=python-$_name
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool that computes various metrics for Python source code'
 arch=(any)
 url='https://radon.readthedocs.org/'
 license=(MIT)
-depends=('flake8>=3.0' python-colorama python-mando python-tomli)
+depends=('python-flake8>=3.0' python-colorama python-mando python-tomli)
 makedepends=(python-sphinx python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('d1ac0053943a893878940fedc8b19ace70386fc9c9bf0a09229a44125ebf45b5')
