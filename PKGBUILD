@@ -1,7 +1,7 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okpanel-git
 pkgver=0.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A custom AGS panel for hyprland"
 license=('GPL3')
 arch=('any')
@@ -22,6 +22,7 @@ depends=(
     'bluez-utils'
     'dart-sass'
     'upower'
+    'power-profiles-daemon'
     'brightnessctl'
     'ttf-jetbrains-mono-nerd'
     'libnotify'
