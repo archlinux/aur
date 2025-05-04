@@ -2,15 +2,14 @@
 
 pkgname=rusnapshot-git
 _pkgname=rusnapshot
-pkgver=34.c32742b
+pkgver=68.97fa393
 pkgrel=1
-pkgdesc='Simple and handy btrfs snapshoting tool. Supports scheduled snapshots
-    and restoring. Backed with SQLite. (git version)'
+pkgdesc='Simple and handy definitions-based snapshoting tool for BTRFS (git version)'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/Edu4rdSHL/rusnapshot'
-license=('GPL3')
+license=('MIT')
 depends=('sqlite' 'btrfs-progs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("git+https://github.com/Edu4rdSHL/$_pkgname.git")
@@ -38,10 +37,11 @@ package() {
   cd "$_pkgname"
 
   install -dm 755 "${pkgdir}/etc/$_pkgname"
-  install -dm 755 "${pkgdir}/var/lib/$_pkgname"
 
-  install -Dm 755 "target/release/$_pkgname" -t "${pkgdir}/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 755 -t "${pkgdir}/usr/bin" "target/release/$_pkgname"
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
   cp -R examples/* -t "$pkgdir/usr/share/doc/$pkgname"
 }
 
