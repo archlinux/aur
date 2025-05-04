@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
-pkgver=5.10.0
+pkgver=5.12.0
 pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
@@ -17,8 +17,8 @@ optdepends=('nvenc: hardware accelerated encoding on NVIDIA cards'
 source=(git+${url}.git#tag=${pkgver}
 	py-version-updates.patch
         FastFlix.desktop)
-sha256sums=('169be241be5e30eae39ac04e4855f0b3359833d948427afe799f8db2d83fb048'
-            'e8908c3ed78a5aca149d4bc177bd81aee608e6ccdaa7b19ef6d2cd2a47686738'
+sha256sums=('d5e69295c9060d453fee530b941e9ff0aca906b714d13c105dc7a2d214e77b33'
+            '84b987f4941a7755eb3aa9415f1004c65a90f4cdfd19b41fbdd8b85be083e55c'
             'cbcb6f228b858a69a860aa6a3283f0f4293e1246485566d20f60a93030f1f847')
 
 prepare() {
