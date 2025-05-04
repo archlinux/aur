@@ -1,23 +1,24 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=iauto
-pkgver=3.7.5
+pkgver=3.7.6
 pkgrel=1
 pkgdesc="Flowchart diagrams drawer"
 arch=('x86_64')
 url="https://www.iautodraw.com"
+_electron=electron25
 license=('unknown')
-depends=(electron13)
+depends=(${_electron})
 makedepends=(p7zip gendesk)
 source=("${pkgname}-${pkgver}.exe::${url}/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
-sha512sums=('7d1606cc4c52808cf91b3a3d5debd18d3d15967ec9b6fcdfb803d12afe1974609950d1f3e732ff7bc986d5ea6c8fe9db29af8d36ef9b679555c1ea35ece405a4')
+sha512sums=('f10d78741f5504182d3cce5cc12d7cf4a41b77dc97e6f3fc5a1f0838409d636b003ef826797539e4585bd86dc8a47f4a02188baba6a5b893ec9edc973bd37e7b')
 
 prepare() {
     cd $srcdir
     7z e ${pkgname}-${pkgver}.exe -aoa
     7z x app-64.7z resources/ -aoa
     echo """#!/usr/bin/bash
-electron13 /usr/share/${pkgname}/${pkgname}.asar "\$@"
+${_electron} /usr/share/${pkgname}/${pkgname}.asar "\$@"
 """ >${pkgname}.sh
     asar extract resources/app.asar build/
     asar pack build ${pkgname}.asar
