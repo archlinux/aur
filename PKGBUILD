@@ -2,12 +2,12 @@
 pkgname=konfigkoll
 _pkgver=0.1.11
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal system configuration manager for Arch Linux"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
 license=('MPL-2.0')
-makedepends=('cargo' 'cmake')
+makedepends=('cargo' 'cmake' 'clang')
 options=('!lto') # LTO breaks with ring
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/VorpalBlade/paketkoll/archive/refs/tags/$pkgname-v${_pkgver}.tar.gz")
 sha256sums=('855c658b222dcba1be6ec9d9ef8055287a5a00e90a5a0cca2ea1a78467bdfe30')
@@ -24,14 +24,14 @@ build() {
     cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
+    make CC=clang CXX=clang++ CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
 }
 
 check() {
     cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make test CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
+    make test CC=clang CXX=clang++ CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
 }
 
 package() {
