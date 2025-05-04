@@ -1,26 +1,26 @@
 pkgbase = rime-wanxiang
 	pkgdesc = 万象拼音：带声调的拼音词库，万象拼音系列方案基础版，可扩展全拼、双拼、中英混输、语言模型
-	pkgver = 6.6.6
+	pkgver = 6.6.7
 	pkgrel = 1
 	url = https://github.com/amzxyz/rime_wanxiang
-	install = post.install
 	arch = any
 	license = CC-BY-4.0
 	makedepends = librime
 	makedepends = rime-prelude
 	makedepends = rime-essay
 	makedepends = sed
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.6.6.tar.gz
-	sha256sums = c2f5b0fc5b1f6888eb38f24db3d6c5cf6c66662d76b31a1e2e3e1749d9343985
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v6.6.7.tar.gz
+	sha256sums = d039f2ac0e31248f8dcc62fe3877ab168aa4c5e20ce2b3e1c4d35e62d32aa366
 
 pkgname = rime-wanxiang-base
 	pkgdesc = 万象拼音基础版基础文件
 	depends = lua
 	depends = librime
-	depends = rime-wanxiang-data>=6.6.6
+	depends = rime-wanxiang-data>=6.6.7
 
 pkgname = rime-wanxiang-pinyin
 	pkgdesc = 万象拼音基础版（全拼方案）
+	install = post.install
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
@@ -29,6 +29,7 @@ pkgname = rime-wanxiang-pinyin
 
 pkgname = rime-wanxiang-zrm
 	pkgdesc = 万象拼音基础版（自然码方案）
+	install = post.install
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-flypy
@@ -37,6 +38,7 @@ pkgname = rime-wanxiang-zrm
 
 pkgname = rime-wanxiang-flypy
 	pkgdesc = 万象拼音基础版（小鹤双拼方案）
+	install = post.install
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
@@ -45,6 +47,7 @@ pkgname = rime-wanxiang-flypy
 
 pkgname = rime-wanxiang-sogou
 	pkgdesc = 万象拼音基础版（搜狗双拼方案）
+	install = post.install
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
@@ -53,6 +56,7 @@ pkgname = rime-wanxiang-sogou
 
 pkgname = rime-wanxiang-mspy
 	pkgdesc = 万象拼音基础版（微软双拼方案）
+	install = post.install
 	depends = rime-wanxiang-base
 	conflicts = rime-wanxiang-pinyin
 	conflicts = rime-wanxiang-zrm
