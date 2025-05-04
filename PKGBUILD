@@ -2,7 +2,7 @@
 pkgname=paketkoll
 _pkgver=0.3.9
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast integrity check for files installed by pacman"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
@@ -38,5 +38,5 @@ package() {
     cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make install-paketkoll DESTDIR="$pkgdir" PREFIX=/usr CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
+    make install-paketkoll CC=clang CXX=clang++ DESTDIR="$pkgdir" PREFIX=/usr CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
 }
