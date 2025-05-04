@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _basename="gtk"
-pkgver=4.18.4
+pkgver=4.18.5
 _name="${_basename}${pkgver%%.*}"
 pkgname="lib32-${_name}"
 pkgrel=1
@@ -9,6 +9,7 @@ pkgdesc="GObject-based multi-platform GUI toolkit (32-bit)"
 url="https://www.gtk.org"
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
+# 'lib32-libsysprof-capture>=3.38'
 depends=("${_name}>=${pkgver}" 'lib32-cairo>=1.18.2' 'lib32-fontconfig'
          'lib32-fribidi>=1.0.6' 'lib32-gdk-pixbuf2>=2.30' 'lib32-glib2>=2.80'
          'lib32-glibc' 'lib32-graphene>=1.10' 'lib32-gst-plugins-bad-libs'
@@ -20,19 +21,18 @@ depends=("${_name}>=${pkgver}" 'lib32-cairo>=1.18.2' 'lib32-fontconfig'
          'lib32-libxfixes' 'lib32-libxi' 'lib32-libxinerama'
          'lib32-libxkbcommon>=0.2' 'lib32-libxrandr' 'lib32-pango>=1.56'
          'lib32-tinysparql' 'lib32-vulkan-icd-loader' 'lib32-wayland>=1.23')
-# 'lib32-libsysprof-capture>=3.38' 'wayland-protocols>=1.41'
 makedepends=('glib2-devel' 'lib32-gcc-libs' 'meson>=1.2' 'shaderc'
-             'vulkan-headers' 'wayland-protocols>=1.32')
+             'vulkan-headers' 'wayland-protocols>=1.41')
 provides=("lib${_basename}-${pkgver%%.*}.so")
 _pkgsrc="${_basename}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::https://download.gnome.org/sources/${_basename}/${pkgver%.*}/${_pkgsrc}.tar.xz"
         '0001-HACK-Don-t-use-objcopy-for-resource-embedding.patch'
         "${pkgname}-querymodules."{hook,script})
-sha256sums=('d4783ac15037c2c4275a8f1acc94f5fede28a516243fccb92ff54a11c15775ff'
+sha256sums=('bb5267a062f5936947d34c9999390a674b0b2b0d8aa3472fe0d05e2064955abc'
             'fc14603646b033567b198e09c739b972088a8d01c1f0c65eeba0e8cba121cea1'
             '0d8697c9ec95117f5bf333f5a4469b5061de4b206d0699d328988c5683742eaa'
             '1c96fb5f09baf59987e4b97bf3af37ea8feedcc753b48c91ffc6bff080461f21')
-b2sums=('f911615ae563563c82e8b122bb5b0b1002e5b7933e473a9eee090114f91644fc2e738ddc72665d03556c099366715e8f884fdb0be71e89bd525e95f5456d8ab6'
+b2sums=('1184eb9c2da53b917601bda0269b8d0402a829de9a72e0d560342a45f4d7ba7f5d39e7b17b06368650df3d8d369a1e2cca5c490425d7a4171ea67ebce6d6d994'
         'a672c99d673648a8af5c7e808642ce3ec91fecf336afddfbe0d4723c21cdf03787334754b0590de8617fc9eb10e71e25c2d91234857b1d10a9fe058ecbc72560'
         'bfc5e42867cf1f709561e477d1d7620c16764e46ea18b419c1093aea208e305f6e8635c541a3bde57468d3539e4c8ad47eb9886e5ad05197be1b9c2d0475e0c9'
         'f0372ba65b6203e569da5bc8b262e76f2b7f2682de3eca5006953e4de2e99785d9793044d2f5350cd2b863cb1760780deb36651a7ab20bc7ab317d1eeafcd07f')
