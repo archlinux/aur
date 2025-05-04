@@ -1,0 +1,18 @@
+BOLD='\033[1m'
+GREEN='\033[32m'
+RESET='\033[0m'
+
+post_install() {
+	echo
+	echo -e "To use ${BOLD}wayvr-dashboard${RESET}, create ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET} and add: "
+	echo "
+dashboard:
+  exec: \"/usr/bin/wayvr-dashboard\"
+  args: \"\"
+  env: []
+"
+}
+
+post_remove() {
+  echo -e "If you no longer want to use ${BOLD}wayvr-dashboard${RESET}, you may want to remove or modify ${GREEN}~/.config/wlxoverlay/wayvr.conf.d/dashboard.yaml${RESET}"
+}
