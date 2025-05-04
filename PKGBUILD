@@ -38,5 +38,5 @@ package() {
     cd "$_unpacked_dir"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make install-konfigkoll DESTDIR="$pkgdir" PREFIX=/usr CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
+    make install-konfigkoll CC=clang CXX=clang++ DESTDIR="$pkgdir" PREFIX=/usr CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
 }
