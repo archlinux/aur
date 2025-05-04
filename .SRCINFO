@@ -1,20 +1,22 @@
 pkgbase = keep
 	pkgdesc = A Meta CLI toolkit : Personal shell command keeper
-	pkgver = 2.10.1
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://github.com/OrkoHunter/keep
 	arch = any
 	license = MIT
-	depends = python-setuptools
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
 	depends = python-click
 	depends = python-requests
 	depends = python-tabulate
-	depends = python-terminaltables
+	depends = python-terminaltables3
 	depends = python-pygithub
-	source = https://pypi.io/packages/source/k/keep/keep-2.10.1.tar.gz
-	source = keep-LICENSE.md::https://raw.githubusercontent.com/OrkoHunter/keep/master/LICENSE.md
-	sha1sums = a7b9bf032bca88418e41654cf84c41734b114efe
-	sha1sums = 07b3e631d4a0653c802d196bfef7dc06a74d9c5c
+	source = https://github.com/OrkoHunter/keep/archive/2.11.tar.gz
+	source = keep-LICENSE.md::https://raw.githubusercontent.com/OrkoHunter/keep/2.11/LICENSE.md
+	sha256sums = 3fbe225069755f46dae2bdee61129904a15ad000c8a4050a8b38d6d3b371b4a7
+	sha256sums = cdec0192e6b836d26da21b042893a8047b0b2792b933b464ac410509d8303459
 
 pkgname = keep
-
