@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.3.311.r1.gf45840a29f
+pkgver=2.3.317.r1.g6164ae9f60
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -70,14 +70,6 @@ install=pcsx2-git.install
 pkgver() {
     cd pcsx2
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare()
-{
-    cd pcsx2
-  # relax requirements
-  sed -E -e 's&^(find_package\s*\(plutos?vg) [0-9.]* ([A-Z]+\))$&\1 \2&' \
-    -i "cmake/SearchForStuff.cmake"
 }
 
 build() 
