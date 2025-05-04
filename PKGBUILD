@@ -12,7 +12,7 @@
 _pkgname=resolve
 pkgname=davinci-resolve
 pkgver=19.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -23,8 +23,10 @@ depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-sv
          'tbb' 'apr-util' 'luajit' 'libc++' 'libc++abi')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
-source=("file://DaVinci_Resolve_${pkgver}_Linux.zip")
-sha256sums=('40bf13b7745b420ed9add11c545545c2ba2174429b6c8eafe8fceb94aa258766')
+source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
+        "davinci-control-panels-setup.sh")
+sha256sums=('40bf13b7745b420ed9add11c545545c2ba2174429b6c8eafe8fceb94aa258766'
+            'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
 
@@ -98,9 +100,14 @@ prepare() {
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-  rm "squashfs-root/libs/libc++.so.1" "squashfs-root/libs/libglib-2.0.so.0" "squashfs-root/libs/libgio-2.0.so.0" "squashfs-root/libs/libgmodule-2.0.so.0"
+  rm "squashfs-root/libs/libc++.so.1" \
+    "squashfs-root/libs/libglib-2.0.so.0" \
+    "squashfs-root/libs/libgio-2.0.so.0" \
+    "squashfs-root/libs/libgmodule-2.0.so.0" \
+    "squashfs-root/libs/libc++abi.so.1"
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
   ln -s /usr/lib/libc++.so.1.0 "squashfs-root/libs/libc++.so.1"
+  ln -s /usr/lib/libc++abi.so.1.0 "squashfs-root/libs/libc++abi.so.1"
   ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
   ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
   ln -s /usr/lib/libgmodule-2.0.so.0 "squashfs-root/libs/libgmodule-2.0.so.0"
@@ -109,25 +116,64 @@ prepare() {
   echo "StartupWMClass=resolve" >> "squashfs-root/share/DaVinciResolve.desktop"
 
   echo 'SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="096e", MODE="0666"' > "squashfs-root/share/etc/udev/rules.d/99-DavinciPanel.rules"
+
+  # Fix desktop files
+  sed -i 's#Exec=.*#Exec=davinci-control-panels-setup#' \
+    "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
+  sed -i 's#Icon=.*#Icon=davinci-resolve.png#' \
+    "squashfs-root/share/DaVinciResolve.desktop"
+  sed -i 's#Icon=.*#Icon=davinci-resolve-panels-setup.png#' \
+    "squashfs-root/share/DaVinciControlPanelsSetup.desktop"
+  sed -i 's#Icon=.*#Icon=blackmagicraw-player.png#' \
+    "squashfs-root/share/blackmagicraw-player.desktop"
+  sed -i 's#Icon=.*#Icon=blackmagicraw-speedtest.png#' \
+    "squashfs-root/share/blackmagicraw-speedtest.desktop"
 }
 
 package() {
+  # Install binary launchers
+  install -D -m 0755 "${srcdir}/davinci-control-panels-setup.sh" \
+    "${pkgdir}/usr/bin/davinci-control-panels-setup"
+  ln -s "/opt/resolve/bin/resolve" "${pkgdir}/usr/bin/${pkgname}"
+  # Install other files
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}"
-  # Install the squashfs-root
   cp -rf squashfs-root/* "${pkgdir}/opt/${_pkgname}"
 
   # Distribute files into other directories
   pushd "${pkgdir}/opt/${_pkgname}"
-  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/configs" "share/default-config.dat" "share/log-conf.xml"
-  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" "share/default_cm_config.bin"
+  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/configs" \
+    "share/default-config.dat" \
+    "share/log-conf.xml"
+  install -D -m 0644 -t "${pkgdir}/opt/${_pkgname}/DolbyVision" \
+    "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
-  install -D -m 0644 -t "${pkgdir}/usr/share/applications" "share/DaVinciResolve.desktop" "share/DaVinciControlPanelsSetup.desktop" "share/DaVinciResolveInstaller.desktop" \
-    "share/DaVinciResolveCaptureLogs.desktop" "share/blackmagicraw-player.desktop" "share/blackmagicraw-speedtest.desktop"
-  install -D -m 0644 -t "${pkgdir}/usr/share/desktop-directories" "share/DaVinciResolve.directory"
-  install -D -m 0644 -t "${pkgdir}/etc/xdg/menus" "share/DaVinciResolve.menu"
-  install -D -m 0644 -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps" "graphics/DV_Resolve.png" "graphics/DV_ResolveProj.png"
-  install -D -m 0644 -t "${pkgdir}/usr/share/mime/packages" "share/resolve.xml"
-  install -D -m 0644 -t "${pkgdir}/usr/lib/udev/rules.d" "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
+  # Install Desktop files and menu
+  install -D -m 0644 -t "${pkgdir}/usr/share/applications" \
+    "share/DaVinciResolve.desktop" \
+    "share/DaVinciControlPanelsSetup.desktop" \
+    "share/blackmagicraw-player.desktop" \
+    "share/blackmagicraw-speedtest.desktop"
+  install -D -m 0644 -t "${pkgdir}/usr/share/desktop-directories" \
+    "share/DaVinciResolve.directory"
+  install -D -m 0644 -t "${pkgdir}/etc/xdg/menus" \
+    "share/DaVinciResolve.menu"
+  # Install icons
+  install -D -m 0644 -t "${pkgdir}/usr/share/icons/hicolor/64x64/apps" \
+    "graphics/DV_Resolve.png" \
+    "graphics/DV_ResolveProj.png"
+  install -D -m 0644 "graphics/DV_Resolve.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/davinci-resolve.png"
+  install -D -m 0644 "graphics/DV_Panels.png" \
+    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/davinci-resolve-panels-setup.png"
+  install -D -m 0644 "graphics/blackmagicraw-player_256x256_apps.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/blackmagicraw-player.png"
+  install -D -m 0644 "graphics/blackmagicraw-speedtest_256x256_apps.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/blackmagicraw-speedtest.png"
+  # Install other files
+  install -D -m 0644 -t "${pkgdir}/usr/share/mime/packages" \
+    "share/resolve.xml"
+  install -D -m 0644 -t "${pkgdir}/usr/lib/udev/rules.d" \
+    "share/etc/udev/rules.d"/{99-BlackmagicDevices.rules,99-ResolveKeyboardHID.rules,99-DavinciPanel.rules}
   popd
 }
 
