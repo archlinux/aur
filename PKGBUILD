@@ -1,5 +1,5 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
-# Maintainer: Rasmus Karlsson
+# Maintainer: Rasmus Karlsson <rasmus.karlsson@pajlada.com>
 # Maintainer: oech3
 # Contributor: jul.cgn
 _pkgname='chatterino2'
