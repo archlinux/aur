@@ -1,5 +1,5 @@
 pkgname=mkdev
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Save your boilerplate instead of writing it."
 arch=('x86_64')
@@ -24,12 +24,4 @@ package() {
 
     MANPAGE=true target/release/mk > mk.1
     install -Dm644 mk.1 "$pkgdir/usr/share/man/man1/mk.1"
-
-    for shell in bash zsh fish; do
-        COMPLETE="$shell" target/release/mk > "mk.$shell"
-    done
-
-    install -Dm644 mk.bash "$pkgdir/usr/share/bash-completion/completions/mk"
-    install -Dm644 mk.zsh "$pkgdir/usr/share/zsh/site-functions/_mk"
-    install -Dm644 mk.fish "$pkgdir/usr/share/fish/vendor_completions.d/mk.fish"
 }
