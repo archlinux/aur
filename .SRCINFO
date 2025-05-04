@@ -1,0 +1,19 @@
+pkgbase = backward-cpp-git
+	pkgdesc = A beautiful stack trace pretty printer for C++
+	pkgver = 1.6.r70.g0bfd0a0
+	pkgrel = 1
+	url = https://github.com/bombela/backward-cpp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = binutils
+	makedepends = libdwarf
+	makedepends = libunwind
+	depends = libelf
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/bombela/backward-cpp
+	sha256sums = SKIP
+
+pkgname = backward-cpp-git
