@@ -1,34 +1,35 @@
-# Maintainer: Aang23 <aang23@altillimity.com>
+# Maintainer: electron271 <electron271@allthingslinux.org>
+# Contributor: Aang23 <aang23@altillimity.com>
 pkgname=satdump-git
-pkgver=r1747.6e5b1325
+pkgver=r5718.d5d9391c
 pkgrel=1
 epoch=
 pkgdesc="A generic satellite processing software"
-arch=('any')
-url="https://github.com/altillimity/SatDump"
-license=('GPL')
+arch=("any")
+url="https://github.com/SatDump/SatDump"
+license=("GPL")
 groups=()
-depends=("libvolk" "glfw" "glew" "fftw" "airspy" "airspyhf" "rtl-sdr" "hackrf" "libusb" "libiio" "libad9361" "ocl-icd" "zstd" "nng")
-makedepends=("gcc" "make" "cmake")
+depends=("airspy" "fftw" "glfw" "hackrf" "jemalloc" "libad9361" "libpng" "libvolk" "nng" "ocl-icd" "portaudio" "rtl-sdr" "zenity" "zstd" "libtiff" "libiio")
+makedepends=("boost" "cmake" "opencl-headers")
 checkdepends=()
 optdepends=("limesuite" "bladerf")
 provides=()
-conflicts=()
+conflicts=("satdump")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=('git+https://github.com/altillimity/SatDump')
+source=("git+https://github.com/SatDump/SatDump")
 noextract=()
-md5sums=('SKIP')
+md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
 	cd "SatDump"
 	mkdir build
 	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release ..
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
 	make $MAKEOPTS
 }
 
