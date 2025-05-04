@@ -13,6 +13,6 @@ pkgbase = ruby-rmail
 	source = https://rubygems.org/downloads/rmail-1.1.4.gem
 	source = https://github.com/terceiro/rmail/blob/f17e67deb2ef75e06ad7308a1e87f8e856e8cb5b/LICENSE
 	md5sums = 7b21d31a66ddbeef5e896475ba95a5c8
-	md5sums = de5232f53892626f4c068fd4f52ff7ed
+	md5sums = 7b24010549b9e758abe4836a6b90181d
 
 pkgname = ruby-rmail

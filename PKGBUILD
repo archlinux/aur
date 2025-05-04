@@ -18,7 +18,7 @@ source=(
 )
 noextract=($_gemname-$pkgver.gem)
 md5sums=('7b21d31a66ddbeef5e896475ba95a5c8'
-         'de5232f53892626f4c068fd4f52ff7ed')
+         '7b24010549b9e758abe4836a6b90181d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
