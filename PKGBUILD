@@ -18,6 +18,6 @@ pkgver() {
 package() {
 	cd "${srcdir}/setprof"
 
-	./install.sh base    "${pkgdir}/usr/sbin"
+	./install.sh base    "${pkgdir}/usr/bin"
 	./install.sh systemd "${pkgdir}/usr/lib/systemd"
 }
