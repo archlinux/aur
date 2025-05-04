@@ -2,7 +2,7 @@
 
 pkgname=openapv-git
 pkgver=0.1.13.1.r0.g938691c
-pkgrel=1
+pkgrel=2
 pkgdesc='The reference implementation of the APV codec (git version)'
 arch=('x86_64')
 url='https://github.com/AcademySoftwareFoundation/openapv/'
@@ -11,8 +11,14 @@ depends=('glibc')
 makedepends=('cmake' 'git')
 provides=('openapv')
 conflicts=('openapv')
-source=('git+https://github.com/AcademySoftwareFoundation/openapv.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/AcademySoftwareFoundation/openapv.git'
+        '010-openapv-fix-pkgconfig.patch')
+sha256sums=('SKIP'
+            '16845b0a1d3d7fc49cb59ac5e4a42f572285208c1d581385d9828d7bbff6b447')
+
+prepare() {
+    patch -d openapv -Np1 -i "${srcdir}/010-openapv-fix-pkgconfig.patch"
+}
 
 pkgver() {
     git -C openapv describe --long --tags --abbrev='7' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
