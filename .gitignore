@@ -3,3 +3,5 @@ pkg/
 src/
 *.pkg.tar.zst
 *.log
+*.deb
+code.sh
