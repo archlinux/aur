@@ -1,14 +1,15 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin at gmail dot com>
 
 pkgname=cursor-electron
 pkgver=0.49.6
-pkgrel=6
+pkgrel=7
 pkgdesc="The AI Code Editor"
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('custom:Proprietary') #should be fixed
 _elnum=34
-depends=(electron${_elnum} 'gcc-libs' 'hicolor-icon-theme' 'libx11' 'libxkbfile')
+depends=(electron${_elnum} ripgrep #replacements
+'gcc-libs' 'hicolor-icon-theme' 'libx11' 'libxkbfile')
 optdepends=('electron: For /usr/share/cursor/cursor-latestron')
 provides=(cursor)
 conflicts=(cursor)
@@ -28,10 +29,13 @@ prepare() {
   fi
 }
 _app=/usr/share/cursor/resources/app
-build() { #Launcher with flags
+build() {
 	sed -e "s|code-flags|cursor-flags|" code.sh \
 		-e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
 		-e "s|/usr/lib/code/code.mjs|--app=${_app}|" > run.sh
+	sed -e s/name=electron/name=electron${_elnum}/ run.sh > run-safe.sh
+	# ripgrep
+	ln -svf /usr/bin/rg squashfs-root/usr/share/cursor/resources/app/node_modules/@vscode/ripgrep/bin/rg
 }
 package(){
 	install -d "${pkgdir}"/usr/share/cursor/resources
@@ -42,7 +46,6 @@ package(){
 	install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/cursor.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/co.anysphere.cursor.png"
 	# Launchers
 	install -Dm755 run.sh "${pkgdir}/usr/share/cursor/cursor-latestron"
-	sed -e s/name=electron/name=electron${_elnum}/ run.sh > run-safe.sh
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/cursor"
 	ln -sf /usr/bin/cursor "${pkgdir}/usr/share/cursor/cursor"
 	# License
