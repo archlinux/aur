@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-software-license'
-pkgver='0.104006'
-pkgrel='2'
+pkgver='0.104007'
+pkgrel='1'
 pkgdesc="packages that provide templated software licenses"
 arch=('any')
 license=('Artistic-1.0-Perl'
@@ -13,7 +13,7 @@ depends=('perl-data-section>=0' 'perl-text-template>=0' 'perl-try-tiny>=0' 'perl
 makedepends=()
 url='https://metacpan.org/dist/Software-License'
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Software-License-${pkgver}.tar.gz")
-sha512sums=('48fbfc5419a978b645c822d529f94c54a49ba65502165cfcc4ee6a6b48ea59eff981e5f64b9a9109007c389897789a9b9651f980b8b2ebd07180310da2e720bb')
+sha512sums=('12d75e9583b3013d9b4a282467f1ac80ab6b7f3251926d66591d01404489b528f22adc396dfd4528a0f0ca650f0eed6d9c959e69eace2169c6ed1cfffe5277e4')
 _distdir="Software-License-${pkgver}"
 
 build() {
