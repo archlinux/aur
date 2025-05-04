@@ -1,13 +1,13 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=paketkoll-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.3.r79.d8ea6b3
+pkgver=0.3.10.r4.fdbd856
 pkgrel=1
 pkgdesc="Fast integrity check for files installed by pacman"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
 license=('MPL-2.0')
-makedepends=('cargo' 'cmake' 'git')
+makedepends=('cargo' 'cmake' 'git' 'clang')
 options=('!lto') # LTO breaks with ring
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -30,14 +30,14 @@ build() {
     cd "$srcdir/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
+    make CC=clang CXX=clang++ CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
 }
 
 check() {
     cd "$srcdir/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make test CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
+    make test CC=clang CXX=clang++ CARGO_FLAGS='--frozen --no-default-features --features=arch_linux,json -p paketkoll -p xtask'
 }
 
 package() {
