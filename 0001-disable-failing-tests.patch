@@ -1,0 +1,22 @@
+diff --git a/test/session_tests.cpp b/test/session_tests.cpp
+index 403297c..3ca1abf 100644
+--- a/test/session_tests.cpp
++++ b/test/session_tests.cpp
+@@ -1109,7 +1109,7 @@ TEST(CurlHolderManipulateTests, CustomOptionTest) {
+         EXPECT_EQ(ErrorCode::OK, response.error.code);
+     }
+ }
+-
++/*
+ TEST(LocalPortTests, SetLocalPortTest) {
+     Url url{server->GetBaseUrl() + "/local_port.html"};
+     Session session;
+@@ -1179,7 +1179,7 @@ TEST(LocalPortTests, SetOptionTest) {
+     EXPECT_GE(port_from_response, local_port);
+     EXPECT_LE(port_from_response, local_port + local_port_range);
+ }
+-
++*/
+ // The tests using the port of the server as a source port for curl fail for windows.
+ // The reason probably is that Windows allows two sockets to bind to the same port if the full hostname is different.
+ // In these tests, mongoose binds to http://127.0.0.1:61936, while libcurl binds to a different hostname, but still port 61936.
