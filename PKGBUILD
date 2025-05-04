@@ -1,10 +1,10 @@
-# Maintainer: Ben Poest <ben@poest.com>
+# Maintainer: benpiano800 <benpiano800@protonmail.com>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK 3.x Theme that looks like the Windows 10 default theme."
 arch=('any')
 url="https://github.com/B00merang-Project/Windows-10"

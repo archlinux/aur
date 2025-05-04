@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-windows10
 	pkgdesc = GTK 3.x Theme that looks like the Windows 10 default theme.
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/B00merang-Project/Windows-10
 	changelog = gtk-theme-windows10.changelog
 	arch = any
