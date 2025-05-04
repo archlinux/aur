@@ -8,7 +8,7 @@
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
 pkgname=calibre-git
-pkgver=8.3.0.r62.gde169d2508
+pkgver=8.3.0.r66.gbe586a4b69
 pkgrel=1
 pkgdesc='Ebook management application'
 arch=(x86_64 i686)
@@ -26,6 +26,7 @@ _pydeps=(apsw
          html5-parser
          jeepney
          lxml
+         lxml-html-clean
          markdown
          mechanize
          msgpack
@@ -37,12 +38,14 @@ _pydeps=(apsw
          pychm
          pycryptodome
          pygments
+         pykakasi
          pyqt6
          pyqt6-webengine
          regex
          unrardll
          xxhash
-         zeroconf)
+         zeroconf
+         zstandard)
 depends=(hunspell
          hyphen
          icu
@@ -57,20 +60,29 @@ depends=(hunspell
          podofo
          "${_pydeps[@]/#/python-}"
          qt6-imageformats
+         qt6-multimedia
+         qt6-speech
          qt6-svg
          qt6-webengine
          ttf-liberation
          uchardet
-         udisks2)
+         udisks2
+         zstd)
 makedepends=(cmake
              git
              pyqt-builder
              rapydscript-ng
              sip
-             xdg-utils)
+             xdg-utils
+             python-sphinx)
+checkdepends=(poppler
+              python-fonttools
+              speech-dispatcher
+              tk)
 optdepends=('poppler: required for converting pdf to html'
             'python-fonttools: required for font subset feature in epub editor'
             'speech-dispatcher: TTS support in the viewer')
+
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}"
            calibre-common
@@ -92,20 +104,24 @@ pkgver() {
 prepare(){
 	cd "${pkgname%-git}"
 	python setup.py git_version
-
 	# Link translations to build dir
 	ln -sfT ../calibre-translations translations
-
 	# Desktop integration (e.g. enforce arch defaults)
 	# Use uppercase naming scheme, don't delete config files under fakeroot.
 	sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
 		-e "s/'ctc-posml'/'text' not in mt and 'pdf' not in mt and 'xhtml'/" \
 		-e "s/^Name=calibre/Name=Calibre/g" \
 		-i  src/calibre/linux.py
-
 	# Remove unneeded files
 	rm -f resources/$pkgname-portable.*
 }
+
+check() {
+	cd "${pkgname%-git}"
+	export LANG='en_US.UTF-8'
+	python setup.py test --under-sanitize --exclude-test-name test_piper
+	python setup.py test_rs
+ }
 
 build() {
 	cd "${pkgname%-git}"
@@ -115,10 +131,13 @@ build() {
 	python setup.py iso3166
 	python setup.py gui
 	python setup.py translations
-	python setup.py resources \
-		--system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation \
-		--system-mathjax --path-to-mathjax /usr/share/mathjax
+	python setup.py hyphenation
+	python setup.py liberation_fonts --system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation
+	python setup.py mathjax --system-mathjax --path-to-mathjax /usr/share/mathjax
+	python setup.py man_pages
+	python setup.py resources
 }
+
 
 package() {
 	cd "${pkgname%-git}"
