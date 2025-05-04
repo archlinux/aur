@@ -2,21 +2,19 @@
 
 _rockname=barcodes.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=1.2.0
+pkgver=2.0.0
 _rockrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Barcodes package for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
-license=(MIT)
-_siledeps=(silex)
-depends=(sile
-         "${_siledeps[@]/#/sile-}")
+license=(GPL-3.0-only)
+depends=(sile)
 makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('4fbfcd7dc1a9965fbd03e4036a22ee2434f4d925724b88f4c788284162194eb3')
+sha256sums=('d66ff34e32065aafa3438e9915191f67811341d2e0ed5c3b6693b6730bc51368')
 
 package() {
 	cd "$_archive"
