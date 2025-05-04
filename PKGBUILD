@@ -1,7 +1,7 @@
 # Maintainer: Evan Edwards <evan@ejedev.com>
 
 pkgname=gdsdecomp-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Godot reverse engineering tools"
 arch=(x86_64)
@@ -12,7 +12,7 @@ options=('!strip')
 source=("https://github.com/GDRETools/gdsdecomp/releases/download/v$pkgver/GDRE_tools-v$pkgver-linux.zip"
         "https://raw.githubusercontent.com/GDRETools/gdsdecomp/refs/tags/v$pkgver/LICENSE"
         "https://raw.githubusercontent.com/GDRETools/gdsdecomp/f42ffbae16a21606aefeec94d123dc566104b6a7/icons/RELogo.svg")
-sha256sums=('f98f4bc922da7bfd0b7e3735e702d49163ed13c511b7139350ac9b82bac97f2b'
+sha256sums=('c9957a93745addfa861b10bca903d14f4f5831331e150e05c227a3126d7b9b80'
             '6181b7004272970cff8063ac38dffa7a673328b1eb26647770448e46e20412f4'
             'de40d5447df5ace1f909464ca76ea9d4d203a6e221ad55416f2658980181c28f')
 
