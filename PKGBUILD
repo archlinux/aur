@@ -3,10 +3,10 @@
 # Maintainer: oech3
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20250427T143129
+_id=20250503T122900
 _ver=2.5.3
 pkgver=${_ver}.${_id}
-pkgrel=3
+pkgrel=4
 pkgdesc='A chat client for Twitch.tv. (Nightly build)'
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
@@ -19,9 +19,12 @@ provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
 source=("https://github.com/Chatterino/pkg/releases/download/nightly-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('2b2b59aff143e2a2ad558fd9960cebad7c7c8d365ffa8b7961811f3c43d0829a')
+sha256sums=('42642516c176458d2ec519acd8964e68b7faa2d5d7171e2db9b4e607896b37ee')
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
     install -Dm644 usr/share/applications/com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
     install -Dm644 usr/share/pixmaps/com.chatterino.chatterino.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/com.chatterino.chatterino.png
+    install -Dm644 usr/share/licenses/chatterino/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -d "${pkgdir}"/usr/share/licenses/chatterino
+    ln -s /usr/share/licenses/${pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/chatterino/LICENSE
 }
