@@ -3,7 +3,7 @@
 pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2303.gcf0728f4
-pkgrel=2
+pkgrel=3
 pkgdesc="The open-source Cursor alternative."
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -17,8 +17,6 @@ depends=(
 	libxkbfile
 	libsecret
 	gnupg
-	nss
-	gcc-libs
 	libnotify
 	libxss
 	lsof #terminal splitting (https://github.com/Microsoft/vscode/issues/62991)
@@ -34,7 +32,6 @@ optdepends=(
 	'org.freedesktop.secrets: Settings sync'
 )
 makedepends=(
-	electron
 	'libx11'
 	'libxkbfile'
 	'libsecret'
