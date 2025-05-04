@@ -1,15 +1,16 @@
 pkgbase = ruby-ncursesw
 	pkgdesc = wraps functions, macros, global variables and constants of the ncurses library.
-	pkgver = 1.4.11
+	pkgver = 1.4.12
 	pkgrel = 1
 	url = http://github.com/sup-heliotrope/ncursesw-ruby
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = ruby
-	noextract = ncursesw-1.4.11.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ncursesw-1.4.11.gem
-	sha1sums = 72d2c0ebeab9616fdc7582c37fd0f9262c023054
+	source = ruby-ncursesw-1.4.12.tar.gz::https://github.com/sup-heliotrope/ncursesw-ruby/archive/refs/tags/v1.4.12.tar.gz
+	source = https://github.com/sup-heliotrope/ncursesw-ruby/pull/40.patch
+	sha1sums = 25f1973574d1e6225fe4665bf0c608d5a0e8bfa9
+	sha1sums = ab26e177982f3f503ab6a19b65fe2ce6874a426d
 
 pkgname = ruby-ncursesw
