@@ -13,7 +13,7 @@
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
 pkgver=2025.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('Apache-2.0')
@@ -77,7 +77,7 @@ build() (
   NODE_ENV=production npm exec -c "electron-builder ${_electron_builder_options[*]}"
 )
 
-package() (
+package() {
   local _electron_version=$(cat /usr/lib/electron/version)
   depends=("electron${_electron_version%%.*}")
 
@@ -122,4 +122,4 @@ export ELECTRON_FORCE_IS_PACKAGED
 
 exec electron${_electron_version%%.*} "/$_install_path/\${name}/app.asar" "\${flags[@]}" "\$@"
 END
-)
+}

@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
 	pkgver = 2025.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jitsi-meet-electron
 	arch = any
 	license = Apache-2.0
