@@ -1,7 +1,7 @@
 # Maintainer: Edu4rdSHL <edu4rdshl@protonmail.com>
 
 pkgname=rusnapshot
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Simple and handy definitions-based snapshoting tool for BTRFS'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 conflicts=("$pkgname-git")
 provides=("$pkgname")
 source=("${pkgname}-${pkgver}::https://github.com/Edu4rdSHL/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('d4c02c230baddf028795af2a80bf5505aff1412f8e13f1073155f83c35f2b053592f3da9cbb314941b4063893045de5b8a6b1ba7d03b17c2d7084af1f04fe6eb')
+sha512sums=('9fc41e473fde517de6c44f03564e33f7d55e5bf8fe1891d96e7dda3e39c2397e9b89e9dde964af8e58b67894abab06f2d47c4782529cf5551fa43ca182af1470')
 
 build() {
   cd ${pkgname}-${pkgver}
