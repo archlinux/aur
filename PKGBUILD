@@ -2,7 +2,7 @@
 pkgname=konfigkoll
 _pkgver=0.1.11
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal system configuration manager for Arch Linux"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://github.com/VorpalBlade/paketkoll"
