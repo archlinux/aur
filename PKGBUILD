@@ -15,6 +15,9 @@ sha256sums=('46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b')
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 prepare() {
+  # https://github.com/boostorg/range/pull/157
+  curl -L https://github.com/boostorg/range/commit/9ac89e99.patch | patch -p2 -d boost_${_boostver}
+
   for _arch in ${_architectures}; do
     source mingw-env "${_arch:3}"
 
