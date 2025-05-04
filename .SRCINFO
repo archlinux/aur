@@ -2,18 +2,16 @@ pkgbase = perl-software-license
 	pkgdesc = packages that provide templated software licenses
 	pkgver = 0.104006
 	pkgrel = 2
-	url = https://metacpan.org/release/Software-License
+	url = https://metacpan.org/dist/Software-License
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-try-tiny
-	makedepends = perl-extutils-makemaker>=6.78
-	depends = perl>=5.6
-	depends = perl-data-section
-	depends = perl-text-template
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	depends = perl-data-section>=0
+	depends = perl-text-template>=0
+	depends = perl-try-tiny>=0
+	depends = perl>=5.012
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/L/LE/LEONT/Software-License-0.104006.tar.gz
-	md5sums = d196263b4ecad953c94fed5af755a139
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Software-License-0.104006.tar.gz
 	sha512sums = 48fbfc5419a978b645c822d529f94c54a49ba65502165cfcc4ee6a6b48ea59eff981e5f64b9a9109007c389897789a9b9651f980b8b2ebd07180310da2e720bb
 
 pkgname = perl-software-license
