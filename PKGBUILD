@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 _nodeversion=22
 _electronversion=35
@@ -17,7 +17,7 @@ makedepends=(
 )
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('d83ac4a93b85d52fa6ed7cd6a9bafb85e032ccc808fd7041c46b720204dab6c4'
+sha256sums=('3a4085a23a14865c5c6f4a9c4b29ba6e6b2f77b48d541a641da60533a85d5467'
             '2109a2f0353f1cc04e12539f55ed4dbb58d59f4d12e000d86f6668369c224c4c')
 
 _ensure_local_nvm() {
