@@ -1,6 +1,6 @@
 pkgbase = gitfourchette
 	pkgdesc = The comfortable Git UI for Linux
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://gitfourchette.org/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gitfourchette
 	depends = python-pygit2
 	depends = python-pyqt6
 	depends = python-pygments
-	source = git+https://github.com/jorio/gitfourchette#tag=403a16f8f1f30845f9eddbbe1bcbe2e83003d6c9
+	source = git+https://github.com/jorio/gitfourchette#tag=4a24e06dc38e8c4253a1d18215b6cb581cecfd4e
 	sha256sums = SKIP
 
 pkgname = gitfourchette
