@@ -20,9 +20,9 @@ source=('local://Packet_Tracer822_amd64_signed.deb'
 	'cisco-pt.desktop'
 	'cisco-ptsa.desktop')
 sha512sums=('55835357b01449150f5c962d852f2921d4e39f697297cb34471b8cc83a91bced6c31703cc28a90e61db7a9a32e5534de4f11e5c4f6735f400456d25a013fadde'
-            '47d575abf87ff26917ced452922ae6030b548e0deecca66397dbd4e22c032e217fcb4219b1bc783e6efa5fcbc4472dbe75b0d26f9d07de63a63d720475eb5122'
-            '739ca68e39072e036d9e055222c3b4c8433d10fd8425d1a3f555ffa012e6f2b90f019975192f991368aff06abe29509f92085159525f5c95c37960da9a91099f'
-            '90068e517607900ab0937974d1204e780463216cea4e377b1fb93d9d79bd78eee980da5943a54dcca7908d7b2362d2012b4db610bd72c373c84184c8fa917cef')
+            '3bb9bf12a31e9acf1526918dfed7fbd0dcac333afd40de9a325d7139d88b07e9dda9173294b99a537571828d2e1f5e7b7f1a4b5c1af976f8df29159ddd0c6ad0'
+            '53eb2b6ac46a22ff519b01ba33628d31ef1b1d87be6fa45bed36ce49e61e6c99c21761751e6cc8135cf78fda25fe44cb49bd6762ed0fc71c1a8b952b50039b25'
+            '619585cef99634e950b5906bddd995e85b0ddfcf426ef9eff93450aafd88299e7eed15a783ed3bdd3aab14a781093b740a62bdaa2f0750c94c18f1403030771a')
 
 package() {
 
@@ -31,8 +31,8 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/"
 	mv "${pkgdir}/opt/pt/" "${pkgdir}/usr/lib/packettracer/"
 	mkdir -p "${pkgdir}/usr/share/applications/"
-	mv "${srcdir}/cisco-pt.desktop" "${pkgdir}/usr/share/applications/cisco-pt.desktop"
-	mv "${srcdir}/cisco-ptsa.desktop" "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
+	install -D -m755 "${srcdir}/cisco-pt.desktop" "${pkgdir}/usr/share/applications/cisco-pt.desktop"
+	install -D -m755 "${srcdir}/cisco-pt.sadesktop" "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
 	chmod a+x "${pkgdir}/usr/share/applications/cisco-pt.desktop"
 	chmod a+x "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
 	mkdir -p "${pkgdir}/usr/bin/"

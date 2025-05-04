@@ -1,4 +1,4 @@
-PT8HOME=/opt/packettracer/
+PT8HOME=/usr/lib/packettracer/
 export PT8HOME
 
 version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
