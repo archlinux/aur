@@ -32,7 +32,7 @@ package() {
 	mv "${pkgdir}/opt/pt/" "${pkgdir}/usr/lib/packettracer/"
 	mkdir -p "${pkgdir}/usr/share/applications/"
 	install -D -m755 "${srcdir}/cisco-pt.desktop" "${pkgdir}/usr/share/applications/cisco-pt.desktop"
-	install -D -m755 "${srcdir}/cisco-pt.sadesktop" "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
+	install -D -m755 "${srcdir}/cisco-ptsa.desktop" "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
 	chmod a+x "${pkgdir}/usr/share/applications/cisco-pt.desktop"
 	chmod a+x "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
 	mkdir -p "${pkgdir}/usr/bin/"
