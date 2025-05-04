@@ -1,18 +1,20 @@
-# Maintainer: Jordan Day < jordanday444 at gmail dot com >
+# Maintainer: xgjmibzr <xgjmibzr at gmail dot com>
+# Contributor: Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=expresslrs-configurator-bin
 _pkgname=expresslrs-configurator
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="Cross platform configuration & build tool for the ExpressLRS radio link"
 arch=('x86_64')
 url="https://github.com/ExpressLRS/ExpressLRS-Configurator"
 license=('GPL')
 depends=('platformio-core-udev')
+conflicts=('expresslrs-configurator')
 source=(
     "https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v$pkgver/expresslrs-configurator-$pkgver.pacman"
 )
-sha512sums=('f5d6743953291fcf88c6a111edaa4002ed177a1e73d2dba50211f9b7f48a2e71f3972785d000392412cbe5df92a3af9a50fa9fbbef0f76235d2efd5f31af3cb4')
+sha512sums=('5cca0f79b086b7d6db0e512712be08209917f38ad5877c13d5f61f66f3235a5c617b91aef2284699814d36d4f2c03d338633e4cdb2e6415df2f7c8bdbbe51bed')
 
 package() {
     # Install the application files in /opt
