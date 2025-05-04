@@ -1,6 +1,6 @@
 pkgbase = r-rpf
 	pkgdesc = Response Probability Functions
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rpf
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-rpf
 	optdepends = r-reshape2
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/rpf_1.0.14.tar.gz
-	sha256sums = e4bb090a810ec4e70a23547f95e1e07ce0229e38fbbbbe22abfad98e9b33f796
+	source = https://cran.r-project.org/src/contrib/rpf_1.0.15.tar.gz
+	sha256sums = 5fc12eabfe0025dfe99eee1b694a5d4a25f6e70109d7cd3c40ba421a7efbbcde
 
 pkgname = r-rpf
