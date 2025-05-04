@@ -37,7 +37,7 @@ check() {
     cd "$srcdir/${_pkgname}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    make CC=clang CXX=clang++ test CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
+    make test CC=clang CXX=clang++ CARGO_FLAGS='--frozen --no-default-features --features=arch_linux -p konfigkoll -p xtask'
 }
 
 package() {
