@@ -6,7 +6,7 @@
 _name=pytango
 pkgname=python-${_name}
 pkgver=10.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A python binding for the Tango control system"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://gitlab.com/tango-controls/${_name}"
