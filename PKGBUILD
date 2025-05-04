@@ -5,7 +5,7 @@
 _pkgname='chatterino2'
 pkgname=${_pkgname}-bin
 pkgver=2.5.3
-_id=20250427T143019
+_id=20250503T122726
 pkgrel=10
 pkgdesc='A chat client for Twitch.tv.'
 arch=('x86_64')
@@ -18,15 +18,13 @@ optdepends=('streamlink: For piping streams to video players'
 provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
-source=("https://github.com/Chatterino/pkg/releases/download/stable-${_id}/chatterino-arch-linux-${arch}.tar.zst"
-${url}/raw/refs/heads/master/LICENSE) #shoud not be take from master branch
-sha256sums=('8ad79b256a9ca488451eb807b73b634175fa8f1c279dac664036f8a46d4bca9d'
-'SKIP')
+source=("https://github.com/Chatterino/pkg/releases/download/stable-${_id}/chatterino-arch-linux-${arch}.tar.zst")
+sha256sums=('99eeaedff34427b17f54cca398e888c143da65c8fa96d14d889725dd285c4f24')
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
     install -Dm644 usr/share/applications/com.chatterino.chatterino.desktop "${pkgdir}"/usr/share/applications/com.chatterino.chatterino.desktop
     install -Dm644 usr/share/pixmaps/com.chatterino.chatterino.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/com.chatterino.chatterino.png
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 usr/share/licenses/chatterino/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
     install -d "${pkgdir}"/usr/share/licenses/${_pkgname}
     ln -s /usr/share/licenses/${pkgname}/LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
 }
