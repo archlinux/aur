@@ -1,7 +1,7 @@
 pkgbase = ruby-rmail
 	pkgdesc = A MIME mail parsing and generation library.
 	pkgver = 1.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/terceiro/rmail
 	arch = any
 	license = BSD-3-Clause
@@ -11,8 +11,8 @@ pkgbase = ruby-rmail
 	noextract = rmail-1.1.4.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/rmail-1.1.4.gem
-	source = https://github.com/terceiro/rmail/blob/f17e67deb2ef75e06ad7308a1e87f8e856e8cb5b/LICENSE
+	source = https://raw.githubusercontent.com/terceiro/rmail/f17e67deb2ef75e06ad7308a1e87f8e856e8cb5b/LICENSE
 	md5sums = 7b21d31a66ddbeef5e896475ba95a5c8
-	md5sums = 7b24010549b9e758abe4836a6b90181d
+	md5sums = cd6115f3fbf0635792238fc6cde15037
 
 pkgname = ruby-rmail
