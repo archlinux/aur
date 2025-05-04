@@ -6,6 +6,7 @@ pkgbase = azahar-appimage
 	url = https://azahar-emu.org
 	arch = x86_64
 	license = GPL2
+	makedepends = patchelf
 	depends = ffmpeg
 	depends = sdl2
 	provides = azahar
@@ -13,8 +14,6 @@ pkgbase = azahar-appimage
 	conflicts = azahar-git
 	options = !strip
 	source = https://github.com/azahar-emu/azahar/releases/download/2121-rc1/azahar.AppImage
-	source = azahar.desktop
-	sha256sums = c455f38d2ce829e992d80e9b6bd2d1887cfa2bf667ffaa86d171abdf2eca5499
-	sha256sums = a844a5f10a7c6829f9ed9df2881f0b258d900ec73ec37779a3f20cd70ba8c7ce
+	sha256sums = SKIP
 
 pkgname = azahar-appimage
