@@ -2,7 +2,7 @@
 
 _pkgname="cdncheck"
 pkgname="${_pkgname}-bin"
-pkgver=1.1.16
+pkgver=1.1.17
 pkgrel=1
 pkgdesc="A utility to detect various technology for a given IP address"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -10,15 +10,15 @@ url="https://github.com/projectdiscovery/${_pkgname}"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
+_pkgsrc="${url##*/}-${pkgver}"
 source_aarch64=("${_pkgsrc}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.zip")
 source_armv7h=("${_pkgsrc}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm.zip")
 source_i686=("${_pkgsrc}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.zip")
 source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.zip")
-sha256sums_aarch64=('4279f123ab1faebf59607c3c39d3447bce27ff0fefb74796fb65807c60dc2a3e')
-sha256sums_armv7h=('3b656904b2b08cd5d5a18a07b90943fc3ce90a190ec59f2a5a66e27c48409d51')
-sha256sums_i686=('f36c2a5c8e74aee58d77e7e6542bd9581f9d0561e57d234f3398e8b615b36712')
-sha256sums_x86_64=('be58d247685488a79ed58127d9d4747a2f18383177f5f7dd12a710c923cdf327')
+sha256sums_aarch64=('744fa0b59f76b09d086d2cd856d5f9351113e0b8593cd66c4577a9f46a6a8fe5')
+sha256sums_armv7h=('c0cd41de36c2ac6b5f126895c11beaafe31e7cdd11a9826d98acec78a16e29cc')
+sha256sums_i686=('d893b5c96a48772f90e435b6ffdb770be8c84967fb0da0c9fa639aa4098ba057')
+sha256sums_x86_64=('0854cac660d6da530f9014ba481a4e1e6723dce9eedc1c02f9f2523c26ebba3a')
 
 package() {
   cd "${srcdir}"
