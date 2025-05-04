@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=2.2.0
-_pkgtarget=v2.2
+pkgver=2.3.0
+_pkgtarget=v2.3
 pkgrel=1
 pkgdesc='A tool to manage the building of packages'
 url=https://releng.io/
@@ -56,8 +56,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  6ec3d99532770445b629d2174621cea435a21af0533301fede82240babe67fec1491ab8a57753b4936d9b079003e3ab257db7f33a79e536a09d4f88213f4e2cd
-  536ef9c7513a74ba34278d49a2d1566e304281667ec4f0f52634172a1374da7e6280b2fa434836bac1d3760707e43f96a95a7bd69ce861c67a4482f6491144d7
+  ef6e8fd46875378fe2f924010b1eba3a0cdf878269bafc10b966645c01e03ccf6bd1ec629f7b0b088eef0c31fe97ade1696d935f194ad86df6e72b7a1dc79808
+  cb472f2e4e577f70a6a12302610064608aa742c5e275559a9c0cd1a5d94bfd9cd1d4e44e3b1996cad163e8d8e3433232d9d5a6b87d839af5f1f34ce89b9a5e54
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
