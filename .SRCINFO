@@ -1,0 +1,15 @@
+pkgbase = ytdl
+	pkgdesc = An interactive and colorful Bash wrapper for yt-dlp with parallel/playlist support.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/codewithmoss/ytdl
+	arch = any
+	license = MIT
+	depends = yt-dlp
+	depends = aria2
+	depends = jq
+	depends = bash
+	source = ytdl.sh::https://raw.githubusercontent.com/codewithmoss/ytdl/main/ytdl.sh
+	md5sums = SKIP
+
+pkgname = ytdl
