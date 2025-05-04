@@ -1,7 +1,7 @@
 pkgbase = freetube-electron-bin
 	pkgdesc = An open source desktop YouTube player built with privacy in mind, with the system electron (unsupported).
 	pkgver = 0.23.5
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/FreeTubeApp/FreeTube
 	arch = any
 	license = AGPL-3.0-or-later
