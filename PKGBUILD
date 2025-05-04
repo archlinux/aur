@@ -1,7 +1,7 @@
 # Maintainer: Alex Merry <dev@randomguy3.me.uk>
 
 pkgname=get_iplayer
-pkgver=3.35
+pkgver=3.36
 pkgrel=1
 pkgdesc="Allows you to download or stream any iPlayer programme from the BBC in H.264 (Quicktime/mp4) format, any radio programmes in MP3 or RealAudio format"
 arch=('any')
@@ -9,18 +9,18 @@ url="https://github.com/get-iplayer/get_iplayer/"
 license=('GPL3')
 depends=(
     'perl>=5.10.1'
-    'perl-json-pp' # part of perl from 5.14 onwards
+    'perl-json-pp'            # part of perl from 5.14 onwards
     'perl-lwp-protocol-https' # Basic access to servers
-    'perl-libwww' # Basic access to servers
-    'perl-xml-libxml'  # Page scraping and subtitles
-    'perl-mojolicious') # Fetching indexes
+    'perl-libwww'             # Basic access to servers
+    'perl-xml-libxml'         # Page scraping and subtitles
+    'perl-mojolicious')       # Fetching indexes
 optdepends=(
     'atomicparsley: add tags to MP4 files'
     'ffmpeg: convert flash (flv) files'
     'perl-cgi: web PVR manager')
 install=get_iplayer.install
 source=(https://github.com/get-iplayer/get_iplayer/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('048ff5f9bd5c6c0f51a05fd0c97eb137029d1950b594384a920c3c674f121e8c')
+sha256sums=('9a70383143b6e3f43ee079f551b7f5719037ada86eb48d9defc66e00e619d996')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
