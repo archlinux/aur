@@ -1,7 +1,7 @@
 pkgbase = asgi-webdav
 	pkgdesc = An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control.
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rexzhang/asgi-webdav
 	install = asgi-webdav.install
 	arch = any

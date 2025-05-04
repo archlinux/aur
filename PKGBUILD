@@ -2,7 +2,7 @@
 
 pkgname=asgi-webdav
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
-        config.json)
+        "config.json")
 sha256sums=('2e9e115c39b1b4a7938322729f445390df9c8393f5f8ef29f9ba86bfa27ecaa9'
             '7120afec227196f9f134e7ac87893581952c3592a91eb6daa08f5075db3a06de'
             '586b9318035cb76204ac4d536c845ce1ffc0c9eb60022c170ad6eeca0d0389f2'
@@ -44,7 +44,7 @@ package() {
     install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers"     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-    install -Dm644 config.json               "${pkgdir}/etc/${pkgname}/config.json"
+    install -Dm644 "config.json"             "${pkgdir}/etc/${pkgname}/config.json"
 
     cd "${pkgname}-${pkgver}"
     install -Dm644 LICENSE                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
