@@ -4,11 +4,11 @@ _rockname=piecharts.sile
 pkgname=("sile-${_rockname%.sile}")
 pkgver=2.0.0
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pie charts for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
-license=(MIT)
+license=(GPL-3.0-only)
 _luadeps=(grail)
 depends=("${_luadeps[@]/#/lua51-}"
          sile)
