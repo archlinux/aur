@@ -1,8 +1,9 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 _binname=xenia_canary
+_branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r7828.bc6bce780
+pkgver=r7829.3ba31d9f9
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -18,8 +19,10 @@ depends=('gtk3'
 conflicts=('xenia' 'xenia-git')
 provides=('xenia')
 # TODO: Use system installed deps for non-forked libs
-source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch=canary_experimental"
-        'DirectXShaderCompiler::git+https://github.com/microsoft/DirectXShaderCompiler.git'
+source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch=${_branchname}"
+        # 'DirectXShaderCompiler::git+https://github.com/microsoft/DirectXShaderCompiler.git'
+        # 'binutils-ppc-cygwin::git+https://github.com/benvanik/binutils-ppc-cygwin.git'
+        # 'premake-core::git+https://github.com/premake/premake-core.git'
         'FFmpeg::git+https://github.com/xenia-canary/FFmpeg_radixsplit.git'
         'FidelityFX-CAS::git+https://github.com/GPUOpen-Effects/FidelityFX-CAS.git'
         'FidelityFX-FSR::git+https://github.com/GPUOpen-Effects/FidelityFX-FSR.git'
@@ -28,7 +31,6 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
         'VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
         'aes_128::git+https://github.com/openluopworld/aes_128.git'
-        'binutils-ppc-cygwin::git+https://github.com/benvanik/binutils-ppc-cygwin.git'
         'capstone::git+https://github.com/capstone-engine/capstone.git'
         'catch::git+https://github.com/catchorg/Catch2.git'
         'cxxopts::git+https://github.com/jarro2783/cxxopts.git'
@@ -41,7 +43,6 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'libusb::git+https://github.com/libusb/libusb.git'
         'premake-androidndk::git+https://github.com/Triang3l/premake-androidndk.git'
         'premake-cmake::git+https://github.com/JoelLinn/premake-cmake.git'
-        'premake-core::git+https://github.com/premake/premake-core.git'
         'premake-export-compile-commands::git+https://github.com/xenia-project/premake-export-compile-commands.git'
         'pugixml::git+https://github.com/zeux/pugixml.git'
         'rapidcsv::git+https://github.com/d99kris/rapidcsv.git'
@@ -57,9 +58,9 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'zstd::git+https://github.com/facebook/zstd.git'
         "${pkgname}.desktop")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            # 'SKIP'
+            # 'SKIP'
+            # 'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -100,10 +101,16 @@ pkgver() {
 }
 
 prepare() {
-  sed --in-place '/fatalwarnings("All")/d' "${pkgname}"/premake5.lua
+  sed --in-place \
+    --expression '/fatalwarnings("All")/d' \
+    "${pkgname}"/premake5.lua
 
   for submodule in $(git -C "${pkgname}" submodule | awk '{print $2}')
   do
+    if [ ! -d "${srcdir}"/"${submodule#third_party/}" ]
+    then
+      continue
+    fi
     git -C "${pkgname}" submodule init "${submodule}"
     git -C "${pkgname}" config submodule."${submodule}".url "${srcdir}"/"${submodule#third_party/}"
     git -C "${pkgname}" -c protocol.file.allow=always submodule update "${submodule}"
@@ -115,13 +122,13 @@ prepare() {
     cmake
   cmake \
     -B "${pkgname}"-build \
-    -DCMAKE_BUILD_TYPE:STRING=Release \
-    -DCMAKE_CXX_COMPILER:STRING=clang++ \
-    -DCMAKE_C_COMPILER:STRING=clang \
+    -D CMAKE_BUILD_TYPE:STRING=Release \
+    -D CMAKE_CXX_COMPILER:STRING=clang++ \
+    -D CMAKE_C_COMPILER:STRING=clang \
     -S "${pkgname}"/build
   echo "#ifndef GENERATED_VERSION_H_" > "${pkgname}"/build/version.h
   echo "#define GENERATED_VERSION_H_" >> "${pkgname}"/build/version.h
-  echo "#define XE_BUILD_BRANCH \"canary_experimental\"" >> "${pkgname}"/build/version.h
+  echo "#define XE_BUILD_BRANCH \"${_branchname}\"" >> "${pkgname}"/build/version.h
   echo "#define XE_BUILD_COMMIT \"$(git -C ${pkgname} rev-parse HEAD)\"" >> "${pkgname}"/build/version.h
   echo "#define XE_BUILD_COMMIT_SHORT \"$(git -C ${pkgname} rev-parse --short HEAD)\"" >> "${pkgname}"/build/version.h
   echo "#define XE_BUILD_DATE __DATE__" >> "${pkgname}"/build/version.h
@@ -133,6 +140,27 @@ build() {
   cmake \
     --build "${pkgname}"-build \
     --target xenia-app
+}
+
+check() {
+  sed --in-place \
+    --expression 's/enableTests = false/enableTests = true/g' \
+    "${pkgname}"/premake5.lua
+
+  premake5 \
+    --file="${pkgname}"/premake5.lua \
+    cmake
+  cmake \
+    -B "${pkgname}"-build \
+    -D CMAKE_BUILD_TYPE:STRING=Release \
+    -D CMAKE_CXX_COMPILER:STRING=clang++ \
+    -D CMAKE_C_COMPILER:STRING=clang \
+    -S "${pkgname}"/build
+  cmake \
+    --build "${pkgname}"-build \
+    --target xenia-base-tests
+
+  "${pkgname}"/build/bin/Linux/Release/xenia-base-tests
 }
 
 package() {
