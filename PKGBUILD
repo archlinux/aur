@@ -1,11 +1,11 @@
-# Maintainer: Ben Poest <ben@poest.com>
+# Maintainer: benpiano800 <benpiano800@protonmail.com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=dynamic-wallpaper-editor
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop'
 arch=(any)
 url='https://github.com/maoschanz/dynamic-wallpaper-editor'
