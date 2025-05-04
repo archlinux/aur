@@ -6,6 +6,7 @@ pkgbase = cpr
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = gtest
 	depends = curl
 	provides = libcpr.so=1-64

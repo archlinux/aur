@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/libcpr/cpr"
 license=('MIT')
 depends=('curl')
-makedepends=('cmake' 'gtest')
+makedepends=('cmake' 'git' 'gtest')
 provides=('libcpr.so=1-64')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('3795a3581109a9ba5e48fbb50f9efe3399a3ede22f2ab606b71059a615cd6084')
