@@ -12,7 +12,7 @@ pkgname='py-cidr'
 pkgdesc='python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver=2.8.0
+pkgver=3.0.1
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -52,6 +52,11 @@ build() {
     # cd ./Docs
     # make html
     # make latexpdf
+}
+
+check() {
+    cd "${_gitname}/tests"
+    /usr/bin/pytest
 }
 
 package() {
