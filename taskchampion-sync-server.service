@@ -7,7 +7,7 @@ Documentation=http://taskwarrior.org/docs/
 Type=simple
 DynamicUser=yes
 StateDirectory=taskchampion-sync-server
-ExecStart=/usr/bin/taskchampion-sync-server --port 53589 --data-dir /var/lib/taskchampion-sync-server
+ExecStart=/usr/bin/taskchampion-sync-server --listen 0.0.0.0:53589 --data-dir /var/lib/taskchampion-sync-server
 Restart=on-abort
 
 [Install]

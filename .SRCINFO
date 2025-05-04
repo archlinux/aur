@@ -13,6 +13,6 @@ pkgbase = taskchampion-sync-server
 	source = taskchampion-sync-server::git+https://github.com/GothenburgBitFactory/taskchampion-sync-server.git#tag=v0.6.1
 	source = taskchampion-sync-server.service
 	b2sums = d4f00adde5e0bb329496439733dac58d825390efc7382231f016b91adc39da6afdbf1ebac940ba1a980d6ddcbf24579e79020706d39422d866eb77c9ada42aa2
-	b2sums = e40adbaa31f8e1a64e17f15f1200e43b7b662e98d37fc0be84efcbe8276e712cd98a3c1053eb47749732b6d983f704cd4a17a9f6c8ff8f19408c7b9bee9b5086
+	b2sums = 34e1a8e5ad5781c391448f00bc282a0496715c529d37df01dab6fc38f6782daada1c984cb470cd92769117c5bd1f42276585f8f1b02e30e95b562d2a06329970
 
 pkgname = taskchampion-sync-server
