@@ -1,0 +1,13 @@
+post_install() {
+    # Define color codes
+    YELLOW='\033[1;33m'  # Bold yellow
+    RESET='\033[0m'      # Reset to default
+
+    ## Tell user to create the required files in \$HOME
+    echo -e "${YELLOW}Please run these commands for sausage to work properly:${RESET}"
+    echo -e "${YELLOW}mkdir -p \$HOME/.config/sausage/ \$HOME/.local/share/sausage/${RESET}"
+    echo -e "${YELLOW}touch \$HOME/.local/share/sausage/hiscores.txt \$HOME/.local/share/sausage/longest_words.txt${RESET}"
+    echo -e "${YELLOW}cp /etc/sausage/dictionary.txt \$HOME/.config/sausage/dictionary.txt${RESET}"
+    echo -e "${YELLOW}cp /etc/sausage/sausage.config \$HOME/.config/sausage/sausage.config${RESET}"
+    echo -e "${YELLOW}cp /usr/share/sausage/rules.txt \$HOME/.local/share/sausage/rules.txt${RESET}"
+}
