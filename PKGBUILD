@@ -4,7 +4,7 @@
 _arch=x64v2
 _pkgbase=linux-xanmod-lts
 _major=6.12
-_minor=25
+_minor=26
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -20,15 +20,17 @@ license=(GPL2)
 options=('!strip')
 makedepends=('curl' 'libxml2')
 
+# https://downloads.sourceforge.net/project/xanmod/releases/lts/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz
+
 # Resolve URL of sources from SourceForge provider and cache the response of the API to reduce the number of calls made
 _xml_data=$(curl -L -s "https://sourceforge.net/projects/xanmod/rss?path=/releases/lts")
 
 # retrieve the headers URL and remove the "/download" suffix
-_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-headers') and contains(@url, '${pkgver}')]/@url)" -)
+_t=$(echo "${_xml_data}" | xmllint --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-headers') and contains(@url, '${pkgver}')]/@url)" -)
 _url_headers="${_t//'/download'}"
 
 # retrieve the image URL and remove the "/download" suffix
-_t=$(echo "${_xml_data}" | xmllint --debug --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '${pkgver}')]/@url)" -)
+_t=$(echo "${_xml_data}" | xmllint --xpath "string(//*[local-name()='content'][@type='application/vnd.debian.binary-package; charset=binary' and contains(@url, '${_arch}') and contains(@url, 'linux-image') and not(contains(@url, '-dbg_')) and contains(@url, '${pkgver}')]/@url)" -)
 _url_image="${_t//'/download'}"
 
 # Resolve URL of sources from GiHub provider
@@ -57,8 +59,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('10954be80a4457792ee17edf413deb420957634ca720bcf605eb1cd1b13655d4'
-            '7f31aff1d9d009a9a1647f9b47189cbc75be052b6c9f27ab49fa189c58497056')
+sha256sums=('db7996fef15451ae1409fa11f0209ca458f1970998c427cf3ed1da112a41c83b'
+            '8e9a9d95b08530de6918e73f7b3367b8749c28ff607b8ef25745d1a9b719aa09')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
