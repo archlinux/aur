@@ -1,6 +1,6 @@
 pkgbase = cargo-valgrind
 	pkgdesc = A cargo subcommand, that runs valgrind and collects its output in a helpful manner
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/jfrimmel/cargo-valgrind
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-valgrind
 	license = Apache
 	depends = cargo
 	depends = valgrind
-	source = https://github.com/jfrimmel/cargo-valgrind/archive/refs/tags/2.2.0.tar.gz
-	sha256sums = 3a8d7c44e638e380ba83d8cbbe013e22a71cb2dea1f8ebcc0f293744f387f9f0
+	source = https://github.com/jfrimmel/cargo-valgrind/archive/refs/tags/2.2.1.tar.gz
+	sha256sums = 0f189a7a32d25e5d59665b4ad7fa2a61bdc0f56d2644caa5141def1646837b49
 
 pkgname = cargo-valgrind
