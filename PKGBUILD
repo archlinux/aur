@@ -1,41 +1,46 @@
 # Maintainer: rpx <rpx at clearlight dot systems>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 # 
-# versions 3.42.x currently experiencing crashes with VSPAERO. Setting back to 3.41.1 until resolved.
+# !! version 3.43.0 currently experiencing crashes with VSPAERO. 
+# You might prefer to use the official binaries, packaged as openvsp-bin in the AUR:
+# https://aur.archlinux.org/packages/openvsp-bin
+# 
+# VSPAERO crashes on a simple wing in vortex lattice mode after ~4 seconds of computation, and crashes immediately in panel mode.
+# Any help finding the problem greatly appreciated.
+
+
+# must use cmake 3.x; will not compile with cmake 4
+# must use gcc 14.2; compile of STEPCODE fails w gcc 15
 
 pkgname=openvsp
 pkgdesc='A parametric aircraft geometry tool'
-#pkgver=3.42.3
-pkgver=3.41.1
+pkgver=3.43.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://openvsp.org'
 license=('NASA OPEN SOURCE AGREEMENT VERSION 1.3')
 depends=(
   'cblas'
+  'cmake3'
   'cminpack'
   'freeglut'
-  'gcc'
+  'gcc14'
   'git'
   'glew'
   'libxml2'
-  'pandoc')
+  'pandoc'
+  'python'
+  'swig')
 optdepends=(
   'doxygen: generate documentation'
-  'graphviz: generate documentation'
-  'python: python API module'
-  'swig: build interface to APIs')
-makedepends=('cmake' 'unzip')
+  'graphviz: generate documentation')
+makedepends=('cmake3' 'unzip')
 
 #_name=OpenVSP-main
 _name=OpenVSP-OpenVSP_${pkgver}
 
-#source=("${pkgname}-${pkgver}.zip"::"https://github.com/rpxpx/OpenVSP/archive/refs/heads/main.zip")
-#sha256sums=('d3bcdacb23d62f0ceb94356adb332a1512b8c8c2173f43955092b4bb2bab8601')
-
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-sha256sums=('a9e1a9e37903ae6f15baca9d1fc89fe49b4a0306d9594552ee28a55eb4517a8e')
-#sha256sums=('3b53e5e882c14c5c51deffd3bd0006eb08f0db8af77668eb6a298f9edb2e0392')
+sha256sums=('4e3ff1349c858bd6866706024f8ce5578e5165e9019858f30fe5ba4e5b38b09c')
 
 prepare() {
   cd "${srcdir}/${_name}"
@@ -48,7 +53,9 @@ build() {
 
   cd "${srcdir}/buildlibs"
 
-  cmake ../${_name}/Libraries \
+  export CC=/usr/bin/gcc-14
+  export CXX=/usr/bin/g++-14
+  cmake3 ../${_name}/Libraries \
         -DCMAKE_PREFIX_PATH='/usr' \
         -DVSP_USE_SYSTEM_ADEPT2=false \
         -DVSP_USE_SYSTEM_CLIPPER2=false \
@@ -66,13 +73,16 @@ build() {
         -DVSP_USE_SYSTEM_OPENABF=false \
         -DVSP_USE_SYSTEM_PINOCCHIO=false \
         -DVSP_USE_SYSTEM_STEPCODE=false \
-        -DVSP_USE_SYSTEM_TRIANGLE=false
+        -DVSP_USE_SYSTEM_TRIANGLE=false \
+        -DCMAKE_BUILD_TYPE=Release
 
   make -j8
 
   cd "${srcdir}/build"
 
-  cmake ../${_name}/src \
+  export CC=/usr/bin/gcc-14
+  export CXX=/usr/bin/g++-14
+  cmake3 ../${_name}/src \
       -DVSP_LIBRARY_PATH="${srcdir}/buildlibs" \
       -DCMAKE_BUILD_TYPE=Release
 
