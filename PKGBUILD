@@ -69,7 +69,7 @@ prepare() {
              src/ScanSDK/Src/SDK/SCANSDKsample_C++ \
              src/DetectAlert
   do
-    sed -Ei '/cmake_minimum_required/ s/2\.([0-9+]|\.)+/4.0/' \
+    sed -Ei '/cmake_minimum_required/ s/2\.([0-9]+|\.)+/4.0/' \
             "$srcdir/$pkgname-$_pkgver/$dir/CMakeLists.txt"
   done
 
