@@ -1,0 +1,31 @@
+diff '--exclude=.git' -ura --new-file ./edor-1-x71/readme.md edornew/readme.md
+--- ./edor-1-x71/readme.md	2025-05-04 15:41:29.000000000 +0300
++++ edornew/readme.md	2025-05-04 17:04:15.246206031 +0300
+@@ -25,7 +25,7 @@
+ On linux distributions, <i>.AppImage</i> file from [releases](https://github.com/colin-i/edor/releases).
+ 
+ ## From source
+-Use autoconf automake libncurses-dev ; on armv7l(alias armhf) cpu, libunwind-dev. There is a "headless" build file as well.
++Debian example: Use autoconf automake make libncurses-dev bc ; on armv7l(alias armhf) cpu, libunwind-dev. There is a "headless" build file as well.
+ ```sh
+ autoreconf -i
+ ./configure
+diff '--exclude=.git' -ura --new-file ./edor-1-x71/s/top.h edornew/s/top.h
+--- ./edor-1-x71/s/top.h	2025-05-04 15:41:29.000000000 +0300
++++ edornew/s/top.h	2025-05-04 17:04:20.736212765 +0300
+@@ -7,11 +7,12 @@
+ //
+ #ifdef _Bool
+ typedef typeof(_Bool) bool;
+-#else
+-typedef char bool;
++enum{false=0!=0,true=1==1};
++//#else //bool is a keyword with -std=c23 onwards
++//typedef char bool;
++//enum{false... //false is a keyword with -std=c23 onwards
+ #endif
+ //
+-enum{false=0!=0,true=1==1};
+ #endif
+ 
+ #include "null.h"
