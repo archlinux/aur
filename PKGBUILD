@@ -5,7 +5,7 @@
 
 pkgname=sleuthkit-java
 pkgver=4.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
