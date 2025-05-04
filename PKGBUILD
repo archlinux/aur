@@ -1,13 +1,13 @@
 # Maintainer: Tr1NgleDev <me@tr1ngle.dev>
 pkgname=img2ndtf
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="Converts an image (jpeg/png/tga/bmp/psd/pic) to an NDTF (N-Dimensional Texture Format)."
+pkgdesc="Converts an image (jpeg/png/tga/bmp/psd/pic) to an NDTF (N-Dimensional Texture Format) file."
 arch=('x86_64')
 url="https://github.com/Tr1NgleDev/$pkgname"
 license=('Apache-2.0 license')
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('08283e114008fae705088152613ab3605ac917ef2f9bba68f89a2ec89b35a2cf')
+sha256sums=('4a3b0295f41814885bbec991326ef1909baed4a2084af745e4a40d1cc1f9bf95')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
