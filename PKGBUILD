@@ -7,7 +7,7 @@
 _pkgname='yin-yang'
 pkgname="$_pkgname-git"
 pkgver=4.0.r0.g5ad9cee
-pkgrel=1
+pkgrel=2
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
@@ -66,20 +66,20 @@ package() {
   install -Dm644 resources/yin_yang.json -t "$pkgdir/usr/lib/mozilla/native-messaging-hosts/"
 
   # launcher
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${_pkgname//-/_}.desktop" << END
 [Desktop Entry]
 Type=Application
 Name=Yin & Yang
 Comment=$pkgdesc
-Exec=$_pkgname
-Icon=$_pkgname
+Exec=${_pkgname//-/_}
+Icon=${_pkgname//-/_}
 Terminal=false
 Categories=Utility;System;Settings
 Keywords=night;day;dark;light;color;theme;
 END
 
   # icon
-  install -Dm644 resources/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 resources/icon.svg "$pkgdir/usr/share/pixmaps/${_pkgname//-/_}.svg"
 
   # systemd unit files
   install -Dm644 resources/yin_yang.service -t "$pkgdir//usr/lib/systemd/user/"
