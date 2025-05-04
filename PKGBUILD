@@ -2,14 +2,14 @@
 
 _pkgname=xfce4-taskmanager
 pkgname=${_pkgname}-git
-pkgver=1.4.0+51+g7996049
+pkgver=1.5.8+14+g8460ab7
 pkgrel=1
 pkgdesc="Easy to use task manager"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://goodies.xfce.org/projects/applications/xfce4-taskmanager"
 license=('GPL2')
 depends=('libwnck3' 'libxfce4ui' 'xfconf')
-makedepends=('intltool' 'git' 'xfce4-dev-tools')
+makedepends=('meson' 'git' 'xfce4-dev-tools')
 provides=("${_pkgname}=${pkgver%%+}")
 conflicts=("${_pkgname}")
 groups=('xfce4-goodies')
@@ -22,16 +22,14 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  local meson_options=(
+    -D x11=enabled
+  )
 
-  ./autogen.sh \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --localstatedir=/var
-  make
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
