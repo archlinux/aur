@@ -6,11 +6,11 @@
 
 pkgname=cisco-anyconnect
 pkgver=4.10.08029
-pkgrel=1
+pkgrel=2
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/c/en/us/support/security/anyconnect-secure-mobility-client-v4-x/model.html'
 arch=('x86_64')
-depends=('libxml2' 'ca-certificates')
+depends=('libxml2' 'ca-certificates' 'libxml2-legacy')
 optdepends=(
     'hicolor-icon-theme: required by desktop shortcuts'
     'gtk2: required by vpnui'
