@@ -1,6 +1,6 @@
 pkgbase = quickbuild-git
 	pkgdesc = A simple, lightweight, and fast build system for C, C++, and more
-	pkgver = v0.7.0
+	pkgver = v0.7.1
 	pkgrel = 1
 	url = https://github.com/nordtechtiger/quickbuild
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = quickbuild-git
 	makedepends = make
 	makedepends = clang
 	makedepends = git
-	source = git+https://github.com/nordtechtiger/quickbuild.git#tag=v0.7.0
+	source = git+https://github.com/nordtechtiger/quickbuild.git#tag=v0.7.1
 	sha256sums = SKIP
 
 pkgname = quickbuild-git
