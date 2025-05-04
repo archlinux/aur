@@ -1,20 +1,20 @@
 _UpstreamPkgName=VCEEnc
 pkgname=${_UpstreamPkgName,,}
 pkgver=8.35
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Video Codec based command line encoder"
 arch=('x86_64')
 url="https://github.com/rigaya/$_UpstreamPkgName"
 license=('MIT')
 depends=('ffmpeg' 'libass' 'vapoursynth' 'libdovi' 'libhdr10plus-rs')
-makedepends=('git' 'gcc' 'cargo-c' 'amf-headers')
+makedepends=('git' 'gcc' 'cargo-c' 'amf-headers' 'opencl-headers' 'vulkan-headers')
 source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/tplgy/cppcodec.git
         git+https://github.com/clMathLibraries/clRNG.git
         git+https://github.com/cubicdaiya/dtl
         ldflags-adjustments.patch
         fix-finding-hdr10plus.patch
-				use-system-AMF-headers.patch)
+        use-system-AMF-headers.patch)
 sha256sums=('96149873649d10488c4a489efa4c2fb73e2449cab8afc2df6063ed8f933db23a'
             'SKIP'
             'SKIP'
@@ -24,32 +24,32 @@ sha256sums=('96149873649d10488c4a489efa4c2fb73e2449cab8afc2df6063ed8f933db23a'
             '6a220c869f96750231b87c82faa485a38a715055b09a1de427e8b216e316390f')
 
 prepare() {
-	cd $_UpstreamPkgName
-	git rm AMF
-	git submodule init
-	git config --local submodule.cppcodec "$srcdir/cppcodec"
-	git config --local submodule.clRNG "$srcdir/clRNG"
-	git config --local submodule.dtl "$srcdir/dtl"
-	git -c protocol.file.allow=always submodule update
+  cd $_UpstreamPkgName
+  git rm AMF
+  git submodule init
+  git config --local submodule.cppcodec "$srcdir/cppcodec"
+  git config --local submodule.clRNG "$srcdir/clRNG"
+  git config --local submodule.dtl "$srcdir/dtl"
+  git -c protocol.file.allow=always submodule update
 
-	patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
-	patch --forward --strip=1 --input="${srcdir}/fix-finding-hdr10plus.patch"
-	patch --forward --strip=1 --input="${srcdir}/use-system-AMF-headers.patch"
+  patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
+  patch --forward --strip=1 --input="${srcdir}/fix-finding-hdr10plus.patch"
+  patch --forward --strip=1 --input="${srcdir}/use-system-AMF-headers.patch"
 }
 
 build() {
-	cd $_UpstreamPkgName
+  cd $_UpstreamPkgName
 
-	./configure --prefix=/usr \
-		--enable-lto
-	make
+  ./configure --prefix=/usr \
+    --enable-lto
+  make
 }
 
 package() {
-	cd $_UpstreamPkgName
-	make PREFIX="$pkgdir/usr" install
-	# since it is MIT we need to install a license file
-	install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${_UpstreamPkgName}_license.txt
-	# install documentation
-	install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" ${_UpstreamPkgName}C_Options.* Readme.*
+  cd $_UpstreamPkgName
+  make PREFIX="$pkgdir/usr" install
+  # since it is MIT we need to install a license file
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ${_UpstreamPkgName}_license.txt
+  # install documentation
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" ${_UpstreamPkgName}C_Options.* Readme.*
 }
