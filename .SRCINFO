@@ -1,6 +1,6 @@
 pkgbase = ps3-disc-dumper
 	pkgdesc = A handy utility to make decrypted PS3 disc dumps
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = https://github.com/13xforever/ps3-disc-dumper
 	arch = x86_64
@@ -8,10 +8,13 @@ pkgbase = ps3-disc-dumper
 	makedepends = dotnet-sdk>=9.0
 	makedepends = gendesk
 	depends = dotnet-runtime>=9.0
+	depends = xdg-utils
 	options = !strip
 	options = !debug
 	options = staticlibs
-	source = ps3-disc-dumper-4.3.3.tar.gz::https://github.com/13xforever/ps3-disc-dumper/archive/refs/tags/v4.3.3.tar.gz
-	b2sums = 25dbd410ec8694f90aebcd329d2e202ed988fc8d3c8988c85562955dd849ce4f5eb548fe9fdf7b03ad759f521f97d2de620a22ee84f0eddb167c53e5daf637eb
+	source = ps3-disc-dumper-4.3.4.tar.gz::https://github.com/13xforever/ps3-disc-dumper/archive/refs/tags/v4.3.4.tar.gz
+	source = 13xforever-DiscUtils-c4c8baf165a01831e080252a322d38c00f5b71c0.tar.gz::https://github.com/13xforever/DiscUtils/archive/c4c8baf165a01831e080252a322d38c00f5b71c0.tar.gz
+	b2sums = 7dfd2b350e903353734eae7dbfc70146fde0f8cce55328c22d9186148e42d4bf41571637e3a6765bce29cb21c22bf02139996a50ab2f0b3ec6a72983041eb6a9
+	b2sums = 3557bc9a07b5bb14565384510a21379971164cbd632130f597040fe80ff1b975ca2152fd2e5b3eef2e5d63b26a2492b3a56a468d32e490c2ef348ad63f070276
 
 pkgname = ps3-disc-dumper
