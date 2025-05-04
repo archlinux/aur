@@ -1,0 +1,24 @@
+diff -Naur old/engine/signals.c new/engine/signals.c
+--- old/engine/signals.c       2013-10-11 17:31:28.060992169 -0400
++++ new/engine/signals.c       2025-05-04 06:37:21.373524260 -0400
+@@ -399,7 +399,7 @@
+ #endif
+   };
+   int i;
+-  void (*throw_handler)() = die_on_signal ? graceful_exit : signal_throw;
++  void (*throw_handler)(int) = die_on_signal ? graceful_exit : signal_throw;
+ #ifdef SIGSTKSZ 
+   stack_t sigstack;
+   int sas_retval=-1;
+diff -Naur old/engine/support.c new/engine/support.c
+--- old/engine/support.c       2025-05-04 06:42:53.812683711 -0400
++++ new/engine/support.c       2025-05-04 06:44:32.932838018 -0400
+@@ -79,7 +79,7 @@
+ {
+   char *s1,*s2;
+   int s1_len, s2_len;
+-  struct passwd *getpwnam (), *user_entry;
++  struct passwd *getpwnam (const char *), *user_entry;
+ 
+   if (size<1 || from[0]!='~')
+     return cstr(from, size, clear);

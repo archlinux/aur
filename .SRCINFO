@@ -1,6 +1,6 @@
 pkgbase = gforth
 	pkgver = 0.7.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnu.org/software/gforth/
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = gforth
 	source = gforth-0.7.3.patch
 	source = fflib.patch
 	source = gdb-set-logging.patch
+	source = strict-prototypes.patch
 	md5sums = ff484391e5cdf405867fcf96341820ab
 	md5sums = 8a38578d1b44b83d533d6be27976fbf0
 	md5sums = a1f3d22df2b283f4c7d4d96e3d6d654b
@@ -44,6 +45,7 @@ pkgbase = gforth
 	md5sums = 05325fb09f814940838fa1a26182a1fc
 	md5sums = 11ccb8cf94f6b593771a44ee388432a9
 	md5sums = 3d643861a1fd12943693328712002288
+	md5sums = 15dbdf46cde43aed31244218dfd9af09
 
 pkgname = gforth
 	pkgdesc = Fast and portable implementation of the ANS Forth language

@@ -8,7 +8,7 @@
 pkgbase=gforth
 pkgname=('gforth' 'gforth-docs')
 pkgver=0.7.3
-pkgrel=5
+pkgrel=6
 url="http://www.gnu.org/software/gforth/"
 arch=('i686' 'x86_64' 'armv6h')
 license=('GPL-3.0-or-later')
@@ -32,6 +32,7 @@ source=("https://ftp.gnu.org/gnu/gforth/gforth-${pkgver}.tar.gz"
   gforth-0.7.3.patch    #this was from the gnu homepage
   fflib.patch           #this was to correct the fflib forth compiled C code causing compilation failures
   gdb-set-logging.patch #Arch uses newer gdb, this avoids an annoying warning upon every disassembly
+  strict-prototypes.patch  # GCC 15.1 regards () as (void) rather than "matches anything"
 )
 md5sums=('ff484391e5cdf405867fcf96341820ab'
          '8a38578d1b44b83d533d6be27976fbf0'
@@ -49,7 +50,8 @@ md5sums=('ff484391e5cdf405867fcf96341820ab'
          '67592037dc6e7e6129aee5c6897766ff'
          '05325fb09f814940838fa1a26182a1fc'
          '11ccb8cf94f6b593771a44ee388432a9'
-         '3d643861a1fd12943693328712002288')
+         '3d643861a1fd12943693328712002288'
+         '15dbdf46cde43aed31244218dfd9af09')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -69,6 +71,7 @@ prepare() {
   patch -Np0 -i ../gforth-0.7.3.patch
   patch -Np2 -i ../fflib.patch
   patch -Np1 -i ../gdb-set-logging.patch
+  patch -Np1 -i ../strict-prototypes.patch
 
   CONFIGURE_OPTS=(--prefix=/usr)
   if check_option "debug" "y"; then
