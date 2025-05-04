@@ -46,12 +46,11 @@ package() {
     cd runtime
     ls | xargs -I % find % -type f | grep -E '\.(rlib|so|dylib)$' | \
     while read file; do
-        mkdir -p ../lib/$(dirname "$file")
-        mv "$file" ../lib/$(dirname "$file")/
+        mkdir -p ../$(dirname "$file")
+        mv "$file" ../$(dirname "$file")/
     done
     cd ..
     rm -rf runtime
-    mv lib/lib runtime && rm -rf lib && mv runtime lib
     install -d -m 755 "$pkgdir/opt/rustowl"
     cp -a lib/ "$pkgdir/opt/rustowl/"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rustowl"
