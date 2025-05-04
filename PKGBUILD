@@ -1,8 +1,8 @@
 # Maintainer: Miro
 pkgname=animesama-cli
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
-pkgdesc="Outil CLI pour Anime-Sama"
+pkgdesc="Outil TUI & CLI pour Anime-Sama"
 arch=('any')
 url="https://github.com/DictateurMiro/animesama-cli"
 license=('GPL3')
