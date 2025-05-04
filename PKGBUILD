@@ -4,7 +4,7 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r14462.7027d3759
+pkgver=r14469.0f2a4b80e
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
@@ -12,6 +12,7 @@ url="https://github.com/odin-lang/odin"
 license=(BSD)
 depends=(glibc llvm-libs)
 makedepends=(git clang llvm cmake)
+options=(staticlibs)
 checkdepends=(python)
 optdepends=(python)
 provides=(odin)
