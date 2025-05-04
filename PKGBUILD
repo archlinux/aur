@@ -1,13 +1,13 @@
 pkgname=bi
-pkgver=3.4.4
-pkgrel=2
+pkgver=3.4.4.1
+pkgrel=1
 pkgdesc="Binary editor like vI"
 arch=('any')
 url="https://github.com/fygar256/bi"
 license=('MIT')
 depends=('python')
 source=("https://github.com/fygar256/bi/archive/refs/heads/v$pkgver.zip")
-sha256sums=('2702295c8f38b7960a0e1f7b1bc8b9f8b6d91173f67bf35e9fe4ccd939a5452d')
+sha256sums=('8e68ef238adec12e269594191df427b5a4dcc27f5b65005e361667c3687438e2')
 
 build() {
   echo "bi"
