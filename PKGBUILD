@@ -1,6 +1,6 @@
 # Maintainer: Luis Serrano <luan@himmlisch.com.mx>
 pkgname=php-glfw
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A fully-featured OpenGL and GLFW extension for PHP"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glfw')
 makedepends=('php' 'git')
 source=("https://github.com/mario-deluna/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=(
-	"5b8a2d344ac55dff4193c2e20ce335faa4241ec8d5969c9cffc878afde8cea9a"
+	"cb1ac39f46d3dc7d798ec1254f57886c87490e69f23140892dbac561ecada0bc"
 )
 
 prepare() {
