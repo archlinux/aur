@@ -5,7 +5,7 @@
 # Contributor: Quentin Stievenart <quentin.stievenart@gmail.com>
 
 pkgname=subliminal-git
-pkgver=2.2.1.r44.gda2817d
+pkgver=2.3.0.r0.ga25afe59
 pkgrel=1
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
@@ -13,18 +13,19 @@ url="https://github.com/Diaoul/subliminal"
 license=('MIT')
 depends=('python-guessit>=3.0.0'
          'python-babelfish>=0.6.1'
-         'python-enzyme>=0.5.0'
+         'python-knowit>=0.5.5'
          'python-platformdirs>=3'
          'python-beautifulsoup4>=4.4.0'
+         'python-defusedxml>=0.7.1'
          'python-pysubs2>=1.7'
          'python-requests>=2.0'
          'python-click>=8.0'
-         'python-click-option-group>=0.5.0'
+         'python-click-option-group>=0.5.6'
          'python-dogpile.cache>=1.0'
          'python-stevedore>=3.0'
          'python-chardet>=5.0'
          'python-srt>=3.5'
-         'python-tomli>=2'
+         'python-tomlkit>=0.13.2'
          'python-rarfile>=2.7'
 )
 makedepends=('git' 'python-build' 'python-installer'
