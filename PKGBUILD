@@ -6,7 +6,7 @@
 # Maintainer: Pocketnet team <support@pocketnet.app>
 pkgbase=pocketnet
 pkgname=bastyon
-pkgver=0.9.116
+pkgver=0.9.119
 pkgrel=1
 epoch=
 pkgdesc="A Revolutionary anti-censorship decentralized publishing and social platform."
