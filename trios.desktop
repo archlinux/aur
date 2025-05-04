@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;Utility;
+Comment=Starsector mod manager & toolkit.
+Encoding=UTF-8
+Exec=/opt/trios-bin/TriOS
+GenericName=TriOS
+Icon=trios
+Name=TriOS
+StartupNotify=false
+Terminal=false
+Type=Application
