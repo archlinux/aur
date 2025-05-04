@@ -4,8 +4,8 @@
 
 _target=riscv-none-elf
 pkgname=$_target-gcc
-pkgver=14.2.0
-pkgrel=3
+pkgver=15.1.0
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for RISC-V (bare-metal) target. Includes C++ nano build.'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -18,7 +18,7 @@ conflicts=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
-sha512sums=('932bdef0cda94bacedf452ab17f103c0cb511ff2cec55e9112fc0328cbf1d803b42595728ea7b200e0a057c03e85626f937012e49a7515bc5dd256b2bf4bc396'
+sha512sums=('ddd35ca6c653dffa88f7c7ef9ee4cd806e156e0f3b30f4d63e75a8363361285cd566ee73127734cde6a934611de815bee3e32e24bfd2e0ab9f7ff35c929821c1'
 'SKIP')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
