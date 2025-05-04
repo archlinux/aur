@@ -1,0 +1,5 @@
+*.tar.zst
+LICENSE-*
+iso2god-rs-bin-*
+pkg/
+src/
