@@ -1,7 +1,7 @@
 pkgbase = nvidia-525xx-utils
 	pkgdesc = NVIDIA drivers for Linux, 525 branch, dkms
 	pkgver = 525.147.05
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -17,6 +17,7 @@ pkgbase = nvidia-525xx-utils
 	source = kernel-6.13.patch
 	source = kernel-6.14.patch
 	source = gcc-14.patch
+	source = gcc-15.patch
 	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 	sha512sums = a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989
@@ -27,6 +28,7 @@ pkgbase = nvidia-525xx-utils
 	sha512sums = 68a63db7e1b2c17d1a23e9a44d3a2e0114560f89a158f7eb4c585f6c6416c844f9cf82fcc58141134e730fae7e36995e31de5d2565371ee4cc53e41c41185418
 	sha512sums = 5d605dad18136e04660381cf9de0be071e9dde506aa71d3d7c008082122c0860e14a0911cb86b74b7beb278254195606b4c8115367a438ecb750781306ea4de4
 	sha512sums = e0222bf7f0f0914d18b219ead4ee2b8bee0f074d44b7955ee85a86d37a0b2ddee25c8bc434a4e81a2ec2f56f982530aa14aa135fc99714a3ad517571c9e2091f
+	sha512sums = fd4da6ae7afaa192ce60d157479f3195e78a76fb011f1e51012b925343acf07540857aa419c3c7d9e5af934eb9e431c16cfcbb3148b7319bc07adbf5303abf3e
 
 pkgname = nvidia-525xx-utils
 	pkgdesc = NVIDIA drivers utilities, 525 branch
