@@ -10,10 +10,10 @@ pkgver=8.2.2
 pkgrel=1
 pkgdesc="A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network"
 arch=( 'x86_64' )
-depends=('openssl>=1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss' 'libxss' 'java-runtime>=1.7.0' 'qt5-multimedia' 'qt5-webengine' 'qt5-svg' 'qt5-networkauth' 'qt5-websockets' 'qt5-script' 'qt5-speech')
+depends=('openssl>=1.0' 'dbus' 'icu' 'glib2' 'libxml2-legacy' 'libjpeg-turbo' 'nss' 'libxss' 'java-runtime>=1.7.0' 'qt5-multimedia' 'qt5-webengine' 'qt5-svg' 'qt5-networkauth' 'qt5-websockets' 'qt5-script' 'qt5-speech')
 options=('!strip' '!emptydirs')
 url="https://www.netacad.com/courses/packet-tracer"
-license=('custom')
+license=('LicenseRef-Cisco-EULA')
 
 source=('local://Packet_Tracer822_amd64_signed.deb'
 	'packettracer.sh'
@@ -28,7 +28,8 @@ package() {
 
 	tar xf data.tar.xz -C "${pkgdir}"
 	chown -R 0:0 "${pkgdir}"
-	mv "${pkgdir}/opt/pt/" "${pkgdir}/opt/packettracer/"
+	mkdir -p "${pkgdir}/usr/lib/"
+	mv "${pkgdir}/opt/pt/" "${pkgdir}/usr/lib/packettracer/"
 	mkdir -p "${pkgdir}/usr/share/applications/"
 	mv "${srcdir}/cisco-pt.desktop" "${pkgdir}/usr/share/applications/cisco-pt.desktop"
 	mv "${srcdir}/cisco-ptsa.desktop" "${pkgdir}/usr/share/applications/cisco-ptsa.desktop"
@@ -37,21 +38,21 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 
 	find "${pkgdir}" -type d -exec chmod 755 {} \;
-	find "${pkgdir}/opt/packettracer/help/" -type d -exec chmod 777 {} \;
-	find "${pkgdir}/opt/packettracer/saves/" -type d -exec chmod 555 {} \;
-	find "${pkgdir}/opt/packettracer/art/html/network_controller/" -type d -exec chmod 775 {} \;
-	find "${pkgdir}/opt/packettracer/art/RackView/CablePegboard/" -type d -exec chmod 775 {} \;
-	find "${pkgdir}/opt/packettracer/bin/xcbglintegrations/" -type d -exec chmod 775 {} \;
-	find "${pkgdir}/opt/packettracer/help/default/NetconRestAPI/" -type d -exec chmod 775 {} \;
+	find "${pkgdir}/usr/lib/packettracer/help/" -type d -exec chmod 777 {} \;
+	find "${pkgdir}/usr/lib/packettracer/saves/" -type d -exec chmod 555 {} \;
+	find "${pkgdir}/usr/lib/packettracer/art/html/network_controller/" -type d -exec chmod 775 {} \;
+	find "${pkgdir}/usr/lib/packettracer/art/RackView/CablePegboard/" -type d -exec chmod 775 {} \;
+	find "${pkgdir}/usr/lib/packettracer/bin/xcbglintegrations/" -type d -exec chmod 775 {} \;
+	find "${pkgdir}/usr/lib/packettracer/help/default/NetconRestAPI/" -type d -exec chmod 775 {} \;
 	
-	ln -s /opt/packettracer/packettracer "${pkgdir}/usr/bin/packettracer"
+	ln -s /usr/lib/packettracer/packettracer "${pkgdir}/usr/bin/packettracer"
 
-	ln -s /usr/lib/libdouble-conversion.so "${pkgdir}/opt/packettracer/bin/libdouble-conversion.so.1"
+	ln -s /usr/lib/lib/libdouble-conversion.so "${pkgdir}/usr/lib/packettracer/bin/libdouble-conversion.so.1"
 
-	sed -i 's|/opt/pt|/opt/packettracer|' "${pkgdir}/opt/packettracer/linguist" "${pkgdir}/opt/packettracer/packettracer"
+	sed -i 's|/opt/pt|/usr/lib/packettracer|' "${pkgdir}/usr/lib/packettracer/linguist" "${pkgdir}/usr/lib/packettracer/packettracer"
 
 	install -D -m755 "${srcdir}/packettracer.sh" "${pkgdir}/etc/profile.d/packettracer.sh"
 
-	install -D -m644 "${pkgdir}/opt/packettracer/help/default/copyrights.htm" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -D -m644 "${pkgdir}/usr/lib/packettracer/help/default/copyrights.htm" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
