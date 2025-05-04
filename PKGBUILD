@@ -20,7 +20,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}"
 
   # It would be preferable to instead place libe_sqlite3.so in /usr/lib/nsfw/
   # and have the binary search this directory for the library, however I
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname}"
 
   mkdir -p "$pkgdir/usr/bin"
   cp "./dist/nsfw" "$pkgdir/usr/bin"
