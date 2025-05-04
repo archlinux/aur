@@ -1,7 +1,7 @@
 pkgbase = ruby-rmail
 	pkgdesc = A MIME mail parsing and generation library.
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terceiro/rmail
 	arch = any
 	license = BSD-3-Clause

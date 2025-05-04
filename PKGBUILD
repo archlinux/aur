@@ -4,7 +4,7 @@
 _gemname=rmail
 pkgname=ruby-rmail
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A MIME mail parsing and generation library.'
 arch=(any)
 url='https://github.com/terceiro/rmail'
