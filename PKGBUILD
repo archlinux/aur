@@ -3,7 +3,7 @@
 
 pkgname=(barrier barrier-headless)
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source KVM software based on Synergy"
 arch=(x86_64)
 url="https://github.com/debauchee/barrier"
@@ -57,6 +57,7 @@ build() {
         -D CMAKE_INSTALL_PREFIX:STRING=/usr \
         -D BARRIER_REVISION:STRING=00000000 \
         -D BARRIER_VERSION_STAGE:STRING=RELEASE \
+        -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
         ..
     make
 }
