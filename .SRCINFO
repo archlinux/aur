@@ -1,0 +1,12 @@
+pkgbase = dimethoxy-disflux-bin
+	pkgdesc = Transient Smearing Audio Effect for VST3, LV2 and CLAP compatible hosts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dimethoxy/Disflux
+	arch = x86_64
+	license = GPL3
+	provides = dimethoxy-disflux
+	source = https://github.com/Dimethoxy/Disflux/releases/download/v1.0.0/disflux-v1.0.0-linux-vanilla.zip
+	sha256sums = 92ddca12dd8456bbb808a44e2ea8d3673c97f4481ec92e9d4f7c944c71cdca6f
+
+pkgname = dimethoxy-disflux-bin
