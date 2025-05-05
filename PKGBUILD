@@ -56,6 +56,7 @@ source=(
   "${_srcdir}.tar.gz::${_giturl}/archive/refs/tags/${_pkgver}.tar.gz"
   "hbb_common-${_pkgverhbb}.tgz::${_giturlhbb}/archive/${_pkgverhbb##*-}.tar.gz"
   "${_patches[@]}"
+  '0003-mkvparser.cc-cstdint.patch'
 )
 unset _pkgverhbb
 _vcs=(
@@ -99,6 +100,7 @@ md5sums=('d3930a82249bf80d5888d8fb4a9bc1cb'
          '6acc4b5b14befec55ef84006b60c7ff5'
          '9b997c2eb989a044704fd7c1d2152d02'
          'a77a4586f30f77de2eed63e160b3a051'
+         '379cfba8479c2a92e05e3b855d1e6901'
          '4d782be2571f14e7b74b10a385f74e15'
          'a45fa99b7f1a972e364cc68f1ebf949c'
          '1695d39ba38a9593f4107722f3459fe0'
@@ -112,6 +114,7 @@ sha256sums=('4b97cd6b59017babbd43170f4a5a95a6bbf6dec4e8d319d19c5cf11c0b65eee4'
             '8f7f1019404ce47dc012ba7c546ad634b973452fc2c57ac64b62cdc7c1f54ea3'
             '17ad644a9987ad2dc8ddaf68e62e026c1825b3ecae46254ea98d985c5d5df582'
             '82757ee1ab6b956a3c601f7db82e2d9ad80dbbcf2ba68c63059f0b529426ccd0'
+            '359046f24f8a81b96a198000a1cfd7934c1f4870b2a1306e13f65694cefef68f'
             '3df9359a39b91929868265090b97d7e2365dc8cdd5aaa1473a717720b4598f55'
             '06b9ea2f20a216fffac0c3991ea517ad4159df976bb7cd05084c8bfba3608fba'
             '35fec2e1ddfb05ecf6d93e50bc57c1e54bc81c16d611ddf6eff73fff266d8285'
@@ -407,6 +410,9 @@ EOF
     pushd flutter ; flutter clean; flutter pub get ; popd
     local _CGdefault=~/.cargo
     "${CARGO_HOME:-${_CGdefault}}"/bin/flutter_rust_bridge_codegen --rust-input ./src/flutter_ffi.rs --dart-output ./flutter/lib/generated_bridge.dart
+    if :; then
+      find ~/.cargo/git -type 'f' -name 'mkvparser.cc' -execdir sh -c "patch --no-backup-if-mismatch -Nup0 -i \"${srcdir}/0003-mkvparser.cc-cstdint.patch\"; rm -f mkvparser.cc.rej; true" ';'
+    fi
     if [ "${_opt_BUILD_PY}" -ne 0 ]; then
       nice ./build.py --flutter
     else
