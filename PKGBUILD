@@ -2,13 +2,13 @@
 # The recipe is from manjaro with minor changes. Thanks for the original work!
 
 pkgname=osmin
-pkgver=1.13.5
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Satellite Navigator & Tracker On-Road/Off-Road for Mobile"
 arch=('x86_64' 'aarch64')
 url="https://github.com/janbar/osmin"
 license=('GPL3')
-depends=('openmp' 'qt5-graphicaleffects' 'qt5-location' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-sensors' 'qt5-svg' 'qt5-wayland' 'qt5-remoteobjects')
+depends=('openmp' 'qt6-5compat' 'qt6-location' 'qt6-multimedia' 'qt6-sensors' 'qt6-svg' 'qt6-wayland' 'qt6-remoteobjects' 'glfw' 'glm')
 makedepends=('clang' 'cmake' 'double-conversion' 'git' 'glib2' 'md4c' 'tslib' 'xcb-util-image' 'xcb-util-keysyms' 'xdg-utils')
 source=( "git+https://github.com/janbar/osmin.git" )
 sha256sums=('SKIP')
