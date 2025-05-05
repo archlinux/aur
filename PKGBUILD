@@ -1,7 +1,7 @@
 # Maintainer: Your Name <alberto.diazdorado@tngtech.com>
 # Maintainer: Nicholas Schwab <nicholas.schwab@tngtech.com>
 pkgname=please-cli
-pkgver=WillBeSetAutomatically
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='An AI helper script to create CLI commands.'
 arch=('any')
