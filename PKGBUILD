@@ -2,8 +2,8 @@
 # Contributor: Grigory Kirillov <txgk@bk.ru>
 
 pkgname=newsraft
-pkgver=0.29
-pkgrel=2
+pkgver=0.30
+pkgrel=1
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/newsraft/newsraft'
 arch=('x86_64')
@@ -13,17 +13,16 @@ depends=(
 	'sqlite'
 	'curl'
 	'expat'
-	'yajl'
 	'gumbo-parser'
 	)
 source=("https://codeberg.org/newsraft/newsraft/archive/newsraft-${pkgver}.tar.gz")
-sha256sums=('1dbec925d5556cae70e92dcc7b69cc4899473deb1d26a600b8903dbc0b3fde65')
+sha256sums=('5ae782d7eb19042cd05e260c8ec0fe4d0544e51716885a4b1e96a673576bd998')
 
-prepare() {
-  cd "${srcdir}/newsraft"
-  sed -i 's/^CFLAGS/#CFLAGS/g'   makefile
-  sed -i 's/^LDFLAGS/#LDFLAGS/g' makefile
-}
+#prepare() {
+#  cd "${srcdir}/newsraft"
+#  sed -i 's/^CFLAGS/#CFLAGS/g'   makefile
+#  sed -i 's/^LDFLAGS/#LDFLAGS/g' makefile
+#}
 
 build() {
 	cd "${srcdir}"/newsraft
@@ -37,6 +36,7 @@ check() {
 
 package() {
 	cd "${srcdir}"/newsraft
-	make DESTDIR="${pkgdir}" PREFIX=/usr install
-	install -Dm644 doc/license.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/license.txt
+	make DESTDIR="${pkgdir}" PREFIX=/usr install EXAMPLES_DIR=${pkgdir}/usr/share/doc/newsraft/example
+	make DESTDIR="${pkgdir}" PREFIX=/usr install-desktop
+	install -Dm644 doc/changes.md "${pkgdir}"/usr/share/doc/"${pkgname}"/changes.md
 }
