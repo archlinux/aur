@@ -1,6 +1,6 @@
 pkgbase = plank-reloaded
 	pkgdesc = Fork of the original Plank project, providing a simple dock for X11 desktop environments
-	pkgver = 0.11.123
+	pkgver = 0.11.124
 	pkgrel = 1
 	url = https://github.com/zquestz/plank-reloaded
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = plank-reloaded
 	depends = pango
 	provides = plank
 	conflicts = plank
-	source = https://github.com/zquestz/plank-reloaded/archive/refs/tags/0.11.123.tar.gz
-	sha256sums = f71fecd96c8d6b6a3fc981b79773f68e04ce86efcfe59e5cd59d63e2afef8dbb
+	source = https://github.com/zquestz/plank-reloaded/archive/refs/tags/0.11.124.tar.gz
+	sha256sums = 5ae31d038c967609b0740b64ead271414cccff22be9c7259cd8e938d89521234
 
 pkgname = plank-reloaded
