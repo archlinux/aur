@@ -1,7 +1,7 @@
 pkgbase = okpanel-git
 	pkgdesc = A custom AGS panel for hyprland
 	pkgver = 0.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/JohnOberhauser/OkPanel
 	arch = any
 	license = GPL3
@@ -28,6 +28,7 @@ pkgbase = okpanel-git
 	depends = hyprsunset
 	depends = cliphist
 	depends = wl-clipboard
+	depends = cava
 	source = git+https://github.com/JohnOberhauser/OkPanel.git
 	sha256sums = SKIP
 
