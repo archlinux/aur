@@ -2,8 +2,8 @@
 
 pkgname=ymir-emu
 _pkgname=ymir
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
