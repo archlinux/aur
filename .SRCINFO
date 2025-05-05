@@ -5,7 +5,7 @@ pkgbase = manta
 	url = https://github.com/eth-cscs/manta
 	arch = x86_64
 	license = ETH-Zurich
-	source = https://github.com/eth-cscs/manta/releases/download/v1.54.1-beta.134/manta-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 4b9d4fbfa5d9d1791289fa6dd616664da068404bd9f0608d734c8afc60247474
+	source = https://github.com/eth-cscs/manta/releases/download/v1.54.1-beta.136/manta-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 6bb5fdbcb117201880efeb0399dfd5c5d78504231d03af1910006644ecad0204
 
 pkgname = manta
