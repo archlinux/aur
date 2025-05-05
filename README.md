@@ -456,6 +456,8 @@ In interactive mode:
 - For security, your API key is not displayed when editing configurations
 - When removing a configuration, you'll be asked to confirm before deletion
 
+![ngpt-sh-c-a](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-sh-c-a.png)
+
 For more details on configuring nGPT, see the [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/).
 
 ### Configuration File
@@ -503,6 +505,146 @@ nGPT determines configuration values in the following order (highest priority fi
 3. CLI configuration file (`ngpt-cli.conf`, managed with `--cli-config`)
 4. Main configuration file `ngpt.conf` or `custom-config-file`
 5. Default values
+
+### Real-World Demonstrations with nGPT
+
+Let's see nGPT in action! Here are some practical ways you can use it every day:
+
+#### Quick Q&A and Coding
+
+```bash
+# Get a quick explanation
+ngpt "Explain the difference between threads and processes in Python"
+
+# Generate code with real-time syntax highlighting
+ngpt --code --stream-prettify "Write a Python function to reverse a linked list"
+```
+
+With the `--code` flag, nGPT gives you clean code without explanations or markdown, just what you need to copy and paste into your project. The `--stream-prettify` option shows real-time syntax highlighting as the code comes in.
+
+#### Shell Command Generation (OS-Aware)
+
+```bash
+# Let nGPT generate the correct command for your OS
+ngpt --shell "list all files in the current directory including hidden ones"
+# On Linux/macOS: ls -la
+# On Windows: dir /a
+```
+
+One of my favorite features! No more Googling obscure command flags, nGPT generates the right command for your operating system. It'll even execute it for you if you approve.
+
+![ngpt-s-c](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-s-c.png)
+
+#### Text Rewriting and Summarization
+
+```bash
+# Pipe text to rewrite it (e.g., improve clarity)
+echo "This is a rough draft of my email." | ngpt -r
+
+# Summarize a file using the pipe placeholder
+cat long-article.txt | ngpt --pipe "Summarize this document concisely: {}"
+```
+
+The text rewriting feature is perfect for quickly improving documentation, emails, or reports. And with pipe placeholders, you can feed in content from files or other commands.
+
+#### Git Commit Message Generation
+
+```bash
+# Stage your changes
+git add .
+
+# Let nGPT generate a conventional commit message based on the diff
+ngpt -g
+
+# Generate git commit message from a diff file
+ngpt -g --diff changes.diff
+```
+
+This is a huge time-saver. nGPT analyzes your git diff and generates a properly formatted conventional commit message that actually describes what you changed. No more staring at the blank commit message prompt!
+
+![ngpt-g](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-g.png)
+
+#### Web Search Integration
+
+```bash
+# Ask questions that require up-to-date information
+ngpt --web-search "What's the latest news about AI regulation?"
+```
+
+The `--web-search` flag lets nGPT consult the web for recent information, making it useful for questions about current events or topics that might have changed since the AI's training data cutoff.
+
+![ngpt-w](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-w.png)
+
+### Real-World Integration Examples
+
+Let's look at how nGPT can fit into your everyday workflow with some practical examples:
+
+#### Developer Workflow
+
+As a developer, I use nGPT throughout my day:
+
+**Morning code review**:
+   ```bash
+   # Get explanations of complex code
+   git show | ngpt --pipe "Explain what this code change does and any potential issues: {}"
+   ```
+
+**Debugging help**:
+   ```bash
+   # Help understand a cryptic error message
+   npm run build 2>&1 | grep Error | ngpt --pipe "What does this error mean and how can I fix it: {}"
+   ```
+
+**Documentation generation**:
+   ```bash
+   # Generate JSDoc comments for functions
+   cat src/utils.js | ngpt --pipe "Write proper JSDoc comments for these functions: {}"
+   ```
+
+**Commit messages**:
+   ```bash
+   # After finishing a feature
+   git add .
+   ngpt -g
+   ```
+
+#### Writer's Assistant
+
+For content creators and writers:
+
+**Overcoming writer's block**:
+   ```bash
+   ngpt "Give me 5 different angles to approach an article about sustainable technology"
+   ```
+
+**Editing assistance**:
+   ```bash
+   cat draft.md | ngpt -r
+   ```
+
+**Research summaries**:
+   ```bash
+   curl -s https://example.com/research-paper.html | ngpt --pipe "Summarize the key findings from this research: {}"
+   ```
+
+#### System Administrator
+
+For sysadmins and DevOps folks:
+
+**Generating complex commands**:
+   ```bash
+   ngpt -s "find all log files larger than 100MB that haven't been modified in the last 30 days"
+   ```
+
+*Creating configuration files**:
+   ```bash
+   ngpt --code "Create a Docker Compose file for a Redis, PostgreSQL, and Node.js application"
+   ```
+
+**Troubleshooting systems**:
+   ```bash
+   dmesg | tail -50 | ngpt --pipe "Explain what might be causing the issues based on these system logs: {}"
+   ```
 
 ## Contributing
 
