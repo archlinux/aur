@@ -1,14 +1,14 @@
 # Maintainer: Glitt3ring
 pkgname=blockdodger
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Block Dodging game Made by Glitt3ring."
 arch=(x86_64 i386)
 url="https://www.github.com/glitt3ring/blockdodger.git"
 license=()
 groups=()
-depends=(alsa-lib alsa-utils pipewire pipewire-alsa pipewire-audio pipewire-pulse python python-pygame sudo wireplumber)
+depends=(alsa-lib alsa-utils make pipewire pipewire-alsa pipewire-audio pipewire-pulse python python-pygame sudo wireplumber)
 makedepends=()
 checkdepends=()
 optdepends=()
