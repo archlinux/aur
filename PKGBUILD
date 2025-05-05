@@ -7,7 +7,7 @@
 _pkgname='yin-yang'
 pkgname="$_pkgname-git"
 pkgver=4.0.r0.g5ad9cee
-pkgrel=2
+pkgrel=3
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 url="https://github.com/oskarsh/Yin-Yang"
 license=('MIT')
@@ -81,9 +81,13 @@ END
   # icon
   install -Dm644 resources/icon.svg "$pkgdir/usr/share/pixmaps/${_pkgname//-/_}.svg"
 
-  # systemd unit files
-  install -Dm644 resources/yin_yang.service -t "$pkgdir//usr/lib/systemd/user/"
-  install -Dm644 resources/yin_yang.timer -t "$pkgdir//usr/lib/systemd/user/"
+  # systemd
+  install -Dm644 resources/yin_yang.service -t "$pkgdir/usr/lib/systemd/user/"
+  install -Dm644 resources/yin_yang.timer -t "$pkgdir/usr/lib/systemd/user/"
+
+  # resources
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -Dm644 resources/yin_yang.{service,timer} -t "$pkgdir/${_site_packages}/yin_yang/resources/"
 
   # license
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"

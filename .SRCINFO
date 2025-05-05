@@ -1,7 +1,7 @@
 pkgbase = yin-yang-git
 	pkgdesc = Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more
 	pkgver = 4.0.r0.g5ad9cee
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/oskarsh/Yin-Yang
 	arch = any
 	license = MIT
