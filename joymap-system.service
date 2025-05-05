@@ -23,6 +23,5 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 
-
 [Install]
 WantedBy=multi-user.target
