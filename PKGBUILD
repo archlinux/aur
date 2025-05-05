@@ -1,5 +1,5 @@
 pkgname=awf-gtk3
-pkgver=2.9.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Theme preview application for GTK 3"
 arch=('x86_64')
@@ -9,19 +9,17 @@ depends=('gtk3' 'libnotify>=0.7.0' 'hicolor-icon-theme')
 #makedepends=('autoconf' 'automake' 'desktop-file-utils' 'gcc' 'gettext' 'gtk3')
 conflicts=('awf-git')
 source=("https://github.com/luigifab/awf-extended/archive/v${pkgver}/awf-extended-${pkgver}.tar.gz")
-sha256sums=("eaa1028bf833832017c5c8ea715f039df98f6c083aee847d87a5ffccebaee68b")
+sha256sums=("60e71e05a6620b54debc0a148ddbf911fc314b1e0cf6c9cf159a104bfca57bb6")
 
 prepare() {
   mv "awf-extended-$pkgver" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  sed -i 's/ -eq 2/ -eq -1/g' configure.ac
-  sed -i 's/ -eq 4/ -eq -1/g' configure.ac
 }
 
 build() {
   cd "$pkgname-$pkgver"
   autoreconf -fi
-  ./configure
+  ./configure --enable-only-gtk3
   make -s
 }
 
@@ -40,6 +38,7 @@ package() {
   for file in data/icons/*/*/awf.svg; do mv $file ${file/\/awf.svg/\/$pkgname.svg}; done
   cp -a data/icons/* "$pkgdir/usr/share/applications/icons/hicolor/"
 
+  install -Dpm 644 "data/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -Dpm 644 "data/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dpm 644 "data/$pkgname.fr.1" "$pkgdir/usr/share/man/fr/man1/$pkgname.1"
 
