@@ -1,6 +1,6 @@
 pkgbase = ktls-utils
 	pkgdesc = TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers
-	pkgver = 0.11
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/oracle/ktls-utils
 	arch = x86_64
@@ -12,8 +12,9 @@ pkgbase = ktls-utils
 	depends = gnutls
 	depends = libkeyutils.so
 	depends = libnl-3.so
+	depends = libnl-genl-3.so
 	backup = etc/tlshd.conf
-	source = https://github.com/oracle/ktls-utils/releases/download/ktls-utils-0.11/ktls-utils-0.11.tar.gz
-	sha256sums = 37262bff4e63764aa22949887a3d571c8081a0249800fcf24483214a7144f9ba
+	source = git+https://github.com/oracle/ktls-utils#commit=c787cd26330af457e1ca9cf43232db2c71c03154
+	sha256sums = a111d0d0aa3471d0d7880686b537382d00d60bc170f6aa45d4feb642d9b168af
 
 pkgname = ktls-utils
