@@ -3,7 +3,7 @@
 
 pkgname=newsraft
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Feed reader with ncurses user interface'
 url='https://codeberg.org/newsraft/newsraft'
 arch=('x86_64')
@@ -36,7 +36,7 @@ check() {
 
 package() {
 	cd "${srcdir}"/newsraft
-	make DESTDIR="${pkgdir}" PREFIX=/usr install EXAMPLES_DIR=${pkgdir}/usr/share/doc/newsraft/example
+	make DESTDIR="${pkgdir}" PREFIX=/usr install EXAMPLES_DIR=/usr/share/doc/newsraft/example
 	make DESTDIR="${pkgdir}" PREFIX=/usr install-desktop
 	install -Dm644 doc/changes.md "${pkgdir}"/usr/share/doc/"${pkgname}"/changes.md
 }
