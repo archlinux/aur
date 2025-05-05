@@ -1,7 +1,7 @@
 # Maintainer: Petrov Vlad <petrov.vlad@ya.ru>
 
 pkgname=freelib-dev-git
-pkgver=6.1.76
+pkgver=6.1.78
 pkgrel=1
 pkgdesc="Book library manager"
 arch=(x86_64)
