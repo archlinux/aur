@@ -1,7 +1,7 @@
 pre_remove() {
-	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds* && sudo find -name "*blockdodgerhighscore.txt*" -delete
+	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds*
 }
 
 post_remove() {
-	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds* && sudo find -name "*blockdodgerhighscore.txt*" -delete
+	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds* && echo Highscore file has not been removed\, Remove it manually by typing\: \'rm -rf ~/blockdodgerhighscore.txt\'
 }
