@@ -1,5 +1,5 @@
 pkgbase = graphite-gtk-theme
-	pkgdesc = Graphite gtk theme
+	pkgdesc = Graphite GTK Theme, by vinceliuice
 	pkgver = 2024.07.15
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
