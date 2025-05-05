@@ -22,6 +22,8 @@ pkgbase = openvsp-bin
   optdepends = swig: build interface to APIs
 
   source = openvsp-bin-3.43.0.deb::https://openvsp.org/download.php?file=zips/current/linux/OpenVSP-3.43.0-Ubuntu-24.04_amd64.deb
+  source = https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.8-1-x86_64.pkg.tar.zst
   sha256sums = ca055b7dba5f4d950c11ddc107b67f0d4e7839026c2b5f88a6bab8d72c6d67ca
+  sha256sums = 2a1b0ab11ff213a57268d20fff183e3fd3e4ab9191aeed473de336b77bdfa6e1
 
 pkgname = openvsp-bin
