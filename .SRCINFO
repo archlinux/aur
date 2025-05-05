@@ -1,0 +1,14 @@
+pkgbase = cudss
+	pkgdesc = NVIDIA GPU-accelerated Direct Sparse Solver library
+	pkgver = 0.5.0.16
+	pkgrel = 1
+	url = https://developer.nvidia.com/cudss
+	arch = x86_64
+	license = custom
+	depends = cuda>=12
+	options = !strip
+	options = staticlibs
+	source = https://developer.download.nvidia.com/compute/cudss/redist/libcudss/linux-x86_64/libcudss-linux-x86_64-0.5.0.16_cuda12-archive.tar.xz
+	b2sums = ea0146a65f2f614083f96d0f361c299affad2f798505a41cde36d0bcae6ca30b61f2107fc098c78acbb8ad440433cd580912da62ee125dda88da8fc5e53aec21
+
+pkgname = cudss

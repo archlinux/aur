@@ -18,7 +18,7 @@ package() {
 
   mkdir -p "$pkgdir"/opt/cuda/targets/x86_64-linux
   cp -r lib include "$pkgdir"/opt/cuda/targets/x86_64-linux
-
+  cp -r src "$pkgdir"/opt/cuda/
   install -Dm644 LICENSE "${pkgdir}"/opt/cuda/usr/share/licenses/${pkgname}/LICENSE
 }
 
