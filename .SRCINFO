@@ -1,13 +1,13 @@
 pkgbase = rofi-mixer-git
 	pkgdesc = A script that generates a rofi menu that uses bluetoothctl to connect to bluetooth devices and display status info
-	pkgver = r2.d903c33
+	pkgver = r22.3c55e38
 	pkgrel = 1
 	url = https://github.com/joshpetit/rofi-mixer
 	arch = any
 	license = GPL-3.0
 	makedepends = git
 	depends = rofi
-	depends = pipewire-pulse
+	depends = pulse-native-provider
 	source = git+https://github.com/joshpetit/rofi-mixer.git
 	md5sums = SKIP
 
