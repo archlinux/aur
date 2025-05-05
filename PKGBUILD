@@ -4,7 +4,7 @@ _commit=c787cd26330af457e1ca9cf43232db2c71c03154
 pkgrel=1
 pkgdesc="TLS handshake utilities for NFSv4, NVMe-oF, and other in-kernel TLS consumers"
 url="https://github.com/oracle/ktls-utils"
-license=(GPL2)
+license=(GPL-2.0-only)
 arch=(x86_64)
 depends=(
   glib2
@@ -13,7 +13,7 @@ depends=(
   libnl-3.so
   libnl-genl-3.so
 )
-makedepends=(gcc make pkg-config)
+makedepends=(gcc git make pkg-config)
 # recent releases do not have signed tags
 #source=("git+https://github.com/oracle/ktls-utils#tag=v$pkgver?signed")
 #sha256sums=('SKIP')
