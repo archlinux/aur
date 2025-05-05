@@ -2,8 +2,8 @@
 
 _pkgname=3dtk
 pkgname="$_pkgname-git"
-pkgver=r2369.cf1a8bc
-pkgrel=2
+pkgver=r2371.89cd06d
+pkgrel=1
 pkgdesc='3D Toolkit with algorithms and methods to process 3D point clouds'
 url='https://slam6d.sourceforge.io'
 license=(GPL-3.0-only)
@@ -11,7 +11,7 @@ arch=(x86_64)
 provides=("$_pkgname")
 conflicts=("$_pkgname-svn")
 replaces=("$_pkgname-svn")
-makedepends=(git cmake openmp)
+makedepends=(git cmake ninja openmp)
 depends=(findutils
 	 boost 
 	 opencv 
@@ -31,10 +31,12 @@ depends=(findutils
 	 ann)
 source=("$pkgname::git+https://github.com/JMUWRobotics/3DTK.git"
 	"git+https://github.com/JMUWRobotics/CCTag.git"
+	"codestyle.patch"
 	3dtk.sh)
-sha512sums=('SKIP'
-            'SKIP'
-            'e352631c55938430af765948ef73a16c855f2147b5cab9ec33cbdc438ee0f28bb32cd96f4f2ff96f773de153de72d3b8ff0f51f5076227e181db9eac653b9e36')
+b2sums=('SKIP'
+        'SKIP'
+        '7bdf0d94f312034a324a4746055917f1399c51a375c0e7f3359fb1a603ace0192760f49f871a902b0aaee3139eef2e9d2e82910cdbcc3f128fbbd3952b1186bd'
+        '154398fe7e96f63c54f7371c2f3419b4e2932c09e07f6e60c2cb83a48f1c824d568e1bdadf6e0eb9614a34ec03253968c62b7c50a6575cfa5910f65a558c6eb7')
 
 pkgver() {
 	cd "$pkgname"
@@ -57,10 +59,8 @@ prepare() {
 build() {
 	cd "$srcdir"
 
-	cmake -B build \
+	cmake -B build -GNinja -Wno-dev \
 		-DWITH_WXWIDGETS=OFF \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
 		-DWITH_COMPACT_OCTREE=ON \
 		-DWITH_OPENMP=ON \
 		-DWITH_CALIB=ON \
@@ -69,11 +69,17 @@ build() {
 		-DWITH_GLFW=ON \
 		-DWITH_GMP=ON \
 		-DWITH_SYSTEM_APRILTAG=ON \
-		-Wno-dev \
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+		-DCMAKE_BUILD_TYPE=None \
+		-DADDITIONAL_CFLAGS="" \
 		"$srcdir/$pkgname"
 
 	cmake --build build
 }
+
+# check() {
+# 	CTEST_OUTPUT_ON_FAILURE=true cmake --build build --target test
+# }
 
 package() {
 	cd "$pkgname"
