@@ -3,7 +3,7 @@
 
 _Name="PassKeeZ"
 pkgname="${_Name,,}"
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="FIDO2/Passkey compatible authenticator implementation"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ noextract=()
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}.sysusers"
         "${pkgname}.modules-load")
-b2sums=('c849c0658a0c075220b502d2f069cadf69dfc44426f9e82080a961f739dc392fb0912b1fe105f3d2f38e11d90669ee896796fd4fa39e39fe30e49c03f2825e90'
+b2sums=('c8a32e1a10de841f2c92f5f73c285a36068247ea1ca28a80ff42e52b5eac8e9cdf5b9e8fc476f1fac5e4dfcb32acab57a14a729ad0213da69055a9c7681106dc'
         '5c504e5e2beefe9fb56170135061f62c3413c156349cee1fa32dfa25a806ac40c0b3b0474b644664eaf7f05212b8071cf1646f94dc54f30e8b730c3ae09b9aef'
         'c35e85734037b87f4269fcc120442818630f64ad5a07899e4b7452bfa4407b6a87b940c223a4259b9b4360bff5380920a129462fb330c5eb517c987efc4362fc')
  
