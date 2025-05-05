@@ -4,7 +4,7 @@ _pkgname="psl1ght"
 _commit="eca3f990a6691c896129439b95ca1f7bdd6abaf0"
 pkgname="ps3-${_pkgname}"
 pkgver="20241020"
-pkgrel=1
+pkgrel=2
 pkgdesc="PSL1GHT lightweight PS3 GameOS SDK"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://github.com/ps3dev'
@@ -32,8 +32,11 @@ prepare() {
 	# Weird different internal compiler errors with Os/O2/O3, only O1 works
 	sed -e "s/-O2/-O1/g" -i ppu/librsx/Makefile
 
-	# GCC 15 fix
+	# ppu-gcc 15 fix
 	sed -e "s/gcmGetControlRegister()/gcmGetControlRegister(gcmContextData *context)/g" -i ppu/include/rsx/gcm_sys.h
+
+	# gcc 15 fix
+	sed -e "/typedef enum.*bool/d" -i tools/ps3load/source/main.c
 }
 
 build() {

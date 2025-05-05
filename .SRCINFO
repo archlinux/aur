@@ -1,7 +1,7 @@
 pkgbase = ps3-psl1ght
 	pkgdesc = PSL1GHT lightweight PS3 GameOS SDK
 	pkgver = 20241020
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ps3dev
 	arch = x86_64
 	arch = aarch64
