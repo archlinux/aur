@@ -1,7 +1,7 @@
 # Maintainer: Daniil T <contact.2imt@mail.ru>
 pkgname="polycat"
-pkgver="1.2.0"
-pkgrel=3
+pkgver="1.2.1"
+pkgrel=1
 epoch=
 pkgdesc="Runcat module for Polybar"
 arch=("x86_64")
@@ -29,8 +29,6 @@ md5sums=('SKIP'
 validpgpkeys=()
 
 build() {
-    export CC=clang
-    export CXX=clang++
     cd  $pkgname
     git submodule init
     git config submodule.dep/nlohmann-json.url "$srcdir/json"
