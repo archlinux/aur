@@ -1,4 +1,5 @@
-# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Maintainer: Bart Libert <bart plus aur at libert dot email>
+# Contributor: Edmund Lodewijks <e.lodewijks@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Previous contributors:
 # William Gathoye, Emil Vanherp, Alad Wenter, Xavier D., Valere Monseur
@@ -8,7 +9,7 @@
 pkgname=eid-mw
 pkgver=5.1.21
 #_pkgverlong=5.1.20.1.gb3056f4d
-pkgrel=1
+pkgrel=2
 pkgdesc="The Belgian e-ID (electronic identity card) viewer and Firefox extension"
 arch=("x86_64")
 url="https://eid.belgium.be/"
@@ -28,7 +29,7 @@ source=(
 sha256sums=('2d2a362d47516779d11b6160c31cbc015399292ffa34e97b310880990188295c'
             'SKIP')
 #    Upstream only signs the "continuous releases" of the software, so that is the version
-#    we are using.. 
+#    we are using..
 #    The following key is taken from https://files.eid.belgium.be/info.html.
 validpgpkeys=("D95426E309C0492990D8E8E2824A5E0010A04D46")
 
