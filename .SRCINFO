@@ -1,12 +1,14 @@
 pkgbase = orca-slicer-git
 	pkgdesc = G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)
-	pkgver = 2.3.1.r24990.2349ea0
+	pkgver = 2.3.1.r25035.241d097
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = gcc14
+	makedepends = gcc14-libs
 	makedepends = git
 	makedepends = glew
 	makedepends = libigl
