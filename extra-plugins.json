@@ -1,7 +1,9 @@
 {
   "EditorConfig.EditorConfig": "=",
+  "VisualStudioExptTeam.vscodeintellicode" : "",
   "dbaeumer.vscode-eslint": "=",
   "eclipse-theia.builtin-extension-pack": "",
+  "ms-python.debugpy": "",
   "ms-python.python": "=",
   "ms-python.vscode-pylance": "",
   "ms-toolsai.jupyter": "=",

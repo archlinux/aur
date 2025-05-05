@@ -3,12 +3,15 @@
 # Maintainer: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.59.0
+pkgver=1.61.0
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
+# nodejs-lts-iron works again: https://github.com/eclipse-theia/theia/pull/15212
+# Also, nodejs 23.9 seems to work too.
+#depends=('nodejs>=20.17.0' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'gcc' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
@@ -29,7 +32,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '590086824e60c5a7f6b8796f876b6a3ad0521ab252ed739206a46bc94543b762'
-            'a5fc7f7ea9b69a14810b399e613823d40b9ac8e88209c66bdf4f73e5a3c00555'
+            '0c24c89176b60441c08f08ac4f3aa40c9063c9d8ec0aac5f2e0fb0644f1b6938'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             'd9712e3b79a98d7b1d5fd64d709daa806be6944c3f0cebf22879cd0e3c08ce06'
@@ -44,9 +47,13 @@ prepare() {
   # @theia/test: Not listed in the electron version.
   # Note: As of 1.41.0, those get pulled in anyway. Sigh.
   # 1.50.0: @theia/git removed from electron version
-  # (presumably in favor of vscode.git{,-base})
+  # (presumably in favor of vscode.git{,-base}).
+  # Work around spurious use of lodash/debounce instead of lodash.debounce.
+  # Add postinstall script.
   bash make-package-json.sh "${pkgver/.next./-next.}" | \
-  grep -vE "@theia/(git|notebook|preview|test)\b" >package.json
+  grep -vE "@theia/(git|notebook|plugin[-0-9_a-z]*|preview|test)\b" | \
+  jq '.dependencies.lodash = "^4.0.8" |
+      .scripts.postinstall = "theia-patch"' >package.json
 }
 
 build() {
