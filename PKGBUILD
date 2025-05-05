@@ -1,5 +1,6 @@
+_pkgbase=re3
 pkgname=revc-git
-pkgver=1.0.r872.g37e9ec0
+pkgver=1.0.r870.ga16fcd8
 pkgrel=1
 pkgdesc="Grand Theft Auto: Vice City reverse engineered"
 arch=(x86_64 aarch64)
@@ -9,22 +10,25 @@ depends=(glibc gcc-libs librw-git openal mpg123 glfw)
 makedepends=(git cmake)
 install=revc.install
 source=(
-	git+https://github.com/halpz/re3.git#branch=miami
+	"re3.bundle::https://archive.org/download/github.com-GTAmodding-re3_-_2021-09-06_14-11-00/GTAmodding-re3_-_2021-09-06_14-11-00.bundle"
 	reVC.desktop)
-md5sums=(
-	SKIP
-	a7cd29fced93db056a84486f166f1ecc)
+sha256sums=('035cb5f59811ae086510f02bd3817eaf43933c9723e52dba60807f48c4e9d9c3'
+            '27bc5264b5f90555bda380142a813b5af8c141e17127bd7cf363bfd186ed4a1c')
 pkgver(){
-	cd re3
+	cd "$srcdir/$_pkgbase"
 	git tag --force 1.0 e604be65d9b7845ee7ca975545fc9277c662bc11
 	git describe --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare(){
-	cd re3
+	rm -fr "$srcdir/$_pkgbase"
+	git init "$srcdir/$_pkgbase"
+	cd "$srcdir/$_pkgbase"
+	git pull --rebase "$srcdir/re3.bundle" refs/remotes/origin/miami
+
 	sed -i 's/glfwGetX11Display/glfwGetX11DisplayglfwGetX11Display/' src/CMakeLists.txt
 }
 build(){
-	cd re3
+	cd "$srcdir/$_pkgbase"
 	cmake -DREVC_VENDORED_LIBRW= .
 	make
 }
