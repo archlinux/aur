@@ -2,9 +2,9 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.18.0
-_pkgver_ext=1.18.0_24413_20250227_1633
-_pkg_file_name=en.st-stm32cubeide_1.18.0_24413_20250227_1633_amd64.sh.zip
+pkgver=1.18.1
+_pkgver_ext=1.18.1_24813_20250409_2138
+_pkg_file_name=en.st-stm32cubeide_1.18.1_24813_20250409_2138_amd64.sh.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
@@ -40,11 +40,11 @@ source=("${_pkg_file_name}"::"$_download_path"
 	"stm32cubeide"
 	"stm32cubeide_wayland"
 	)
-sha256sums=('8ec74793aebf049b4493647065fe288452522dfb3781b4aacc864f4e009c5ae2'
+sha256sums=('6ac76ee6d35a0d2cbd6dc14ded0fa32f1788565c866b9dd28cba7c6250d8d54f'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 	'4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
-	'6648786eb5f998134e686ee27e3c6016e9b4af5558cf1e5ad3faf8dd01a45193'
+	'362d9b1d342d87a0af6de02d9dcba4e306c3234ad4f138cea353b46118bcc391'
 	'dbae11d3431ffd954f0a42a8daf9cc047a94cb9d10be924e11765194e9e7e3ec'
 	'e0e6b15baae37802de27be8cbf1816a7b715d1071f736827eb0f2024ffd925e3'
 )
