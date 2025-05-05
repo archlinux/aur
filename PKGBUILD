@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=('MIT')
 depends=('openssl' 'libxml2' 'icu' 'gcc-libs' 'bzip2' 'lz4'
-         'xz' 'zstd' 'perl' 'postgresql-libs')
+         'xz' 'zstd' 'perl' 'postgresql-libs' 'libssh2')
 makedepends=('meson' 'libyaml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/release/${pkgver}.tar.gz")
 sha256sums=('5172d178a8dff5982ee052c1d45f14e12e8b75dffe3c058ddc8aeb12a5cdd494')
