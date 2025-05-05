@@ -3,7 +3,7 @@ _name=sentencepiece
 pkgbase="${_name}"
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=('x86_64')
 url="https://github.com/google/sentencepiece"
@@ -17,11 +17,13 @@ source=(
   "${_name}::git+${url}.git#tag=${_tag}"
   "fix-crash-in-unigram-model-training.patch::${url}/commit/d19ac45c919602cb041a86599d0593d24a150ac2.patch"
   "bump-cmake-minimum-required-version.patch::${url}/commit/e2127b9b932ba00811d5023c5ea69a12a857b244.patch"
+  "add-missing-cstdint.patch::${url}/commit/c4221363d1f004f85f9cc4096e601d6b1fbfaa84.patch"
 )
 sha512sums=(
   'SKIP'
   '644bc47fb3b90f2447ae9aac5ff2939fa6c9b3b0dc33550828b8517656f33fb1b41b2ebf9443e4b39a64bb963533c8d7a323b100d0b37671b070b7368f6fb1c7'
   'a4749510e7a4e5c72c60e67e903201d5f6b2224752059481613cb6e0e01c901d0bdbd83553ecc0b916f551e6f37342bab6bf298dfcdd5234129b1645299775b9'
+  'b40a61a3185b12d4acd93f854c0ffdd14e13950f1bd860899959e53051bb15f9a11dd0dc635166fd97f706ca41d3d7b1007c44a6d837ce3db94320cf3bfa2c79'
 )
 
 pkgver() {
@@ -39,6 +41,9 @@ prepare() {
 
   # Fix build for CMake 4.0.0+
   git apply --verbose ../bump-cmake-minimum-required-version.patch
+
+  # Fix build for GCC 15
+  git apply --verbose ../add-missing-cstdint.patch
 
   # Use shared libs for python module
   sed -i 's/libsentencepiece.a/libsentencepiece.so/g' python/setup.py
