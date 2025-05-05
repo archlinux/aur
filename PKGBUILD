@@ -1,17 +1,14 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Florian Bruhin <archlinux.org@the-compiler.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
 
-pkgbase=libxml2
-pkgname=(
-  libxml2
-  libxml2-docs
-)
+pkgname=libxml2.13
 pkgver=2.13.8
 pkgrel=1
-pkgdesc="XML C parser and toolkit"
+pkgdesc="XML C parser and toolkit (2.13 version, installed to /opt with libxml.so.2 symlink)"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
 license=(MIT)
@@ -28,6 +25,8 @@ makedepends=(
   meson
   python
 )
+optdepends=('python: Python bindings')
+provides=(libxml2.so.2)
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#tag=v$pkgver"
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
@@ -54,6 +53,7 @@ prepare() {
 
 build() {
   local meson_options=(
+    --prefix /opt/libxml2.13
     -D history=true
     -D http=true
     -D legacy=true
@@ -68,25 +68,10 @@ check() {
   meson test -C build --print-errorlogs
 }
 
-package_libxml2() {
-  optdepends=('python: Python bindings')
-  provides=(libxml2.so)
-
+package() {
   meson install -C build --destdir "$pkgdir"
-
-  # Split docs
-  mkdir -p doc/usr/share
-  mv "$pkgdir"/usr/share/{doc,gtk-doc} -t doc/usr/share
-
-  install -Dm644 libxml2/Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
-package_libxml2-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-
-  mv doc/* "$pkgdir"
-
+  install -d "$pkgdir/usr/lib"
+  ln -s /opt/libxml2.13/lib/libxml2.so.$pkgver "$pkgdir/usr/lib/libxml2.so.2"
   install -Dm644 libxml2/Copyright -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
