@@ -8,7 +8,7 @@
 
 pkgname=mastodon
 pkgver=4.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
 url=https://github.com/mastodon/mastodon
@@ -53,6 +53,8 @@ build() {
   bundle config set deployment true
   bundle config without 'development test'
   bundle config with 'pam_authentication'
+  # Disable LTO which breaks the C extension of the google-protobuf gem https://github.com/protocolbuffers/protobuf/issues/11935
+  bundle config --local build.google-protobuf "-- --with-cflags='$(ruby -r rbconfig -e 'print RbConfig::CONFIG["CFLAGS"]' | sed -e 's/-Werror=format-security//' -e 's/-flto=auto/-fno-lto/')' --with-ldflags='$(ruby -r rbconfig -e 'print RbConfig::CONFIG["LDFLAGS"]' | sed -e 's/-flto=auto/-fno-lto/')'"
   bundle config set frozen false
   bundle add erb
   bundle install -j$(getconf _NPROCESSORS_ONLN)
