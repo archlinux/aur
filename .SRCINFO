@@ -1,0 +1,21 @@
+pkgbase = slsqlite-snapshot
+	pkgdesc = SQLite3 module for the S-Lang interpreter (development snapshot)
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://jedsoft.org/snapshots/
+	changelog = slsqlite-snapshot.changelog
+	arch = aarch64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = slang
+	depends = sqlite
+	provides = slsqlite
+	conflicts = slsqlite
+	options = !makeflags
+	source = https://jedsoft.org/snapshots/slsqlite-0.6.4.tar.gz
+	validpgpkeys = AE962A02D29BFE4A4BB2805FDE401E0D5873000A
+	md5sums = 0ebe85958674257943c1929de585ee45
+	b2sums = 9ba2122495930a52cfbbc21e928f101086b9ea00a266488e01805d0bd5af766e2fab6bf447d41bfb2b0222432359428a9061e9b4e505b8c5e826f3d836079e7a
+
+pkgname = slsqlite-snapshot
