@@ -1,17 +1,16 @@
 pkgbase = agetpkg-git
 	pkgdesc = Archlinux Archive Get Package (Git version)
 	pkgver = 4.r0.g673e371
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seblu/agetpkg
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = python
 	depends = python-xdg
 	provides = agetpkg
 	conflicts = agetpkg
 	source = agetpkg-git::git+https://github.com/seblu/agetpkg.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = agetpkg-git
-

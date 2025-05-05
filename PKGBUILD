@@ -1,18 +1,18 @@
-# Maintainer: Sébastien Luttringer
+# Maintainer: Gaspard d'Hautefeuille
 
 pkgname=agetpkg-git
 pkgver=4.r0.g673e371
-pkgrel=1
+pkgrel=2
 pkgdesc='Archlinux Archive Get Package (Git version)'
 arch=('any')
 url='https://github.com/seblu/agetpkg'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 makedepends=('git')
 depends=('python' 'python-xdg')
 conflicts=('agetpkg')
 provides=('agetpkg')
 source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -23,5 +23,3 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 agetpkg "$pkgdir/usr/bin/agetpkg"
 }
-
-# vim:set ts=2 sw=2 et:
