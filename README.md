@@ -113,7 +113,19 @@ ngpt --code --stream-prettify "function to calculate the Fibonacci sequence"
 ngpt --shell "list all files in the current directory"
 
 # Read from stdin and use the content in your prompt
-echo "What is this text about?" | ngpt -p "Analyze the following text: {}"
+echo "What is this text about?" | ngpt --pipe "Analyze the following text: {}"
+
+# Using here-string (<<<) for quick single-line input 
+ngpt --pipe {} <<< "What is the best way to learn shell redirects?"
+
+# Using standard input redirection to process file contents
+ngpt --pipe "summarise {}" < README.md
+
+# Using here-document (<<EOF) for multiline input
+ngpt --pipe {} << EOF                                              
+What is the best way to learn Golang?
+Provide simple hello world example.
+EOF
 
 # Rewrite text to improve quality while preserving tone and meaning
 echo "your text" | ngpt -r
@@ -135,6 +147,9 @@ ngpt -g --rec-chunk
 
 # Process a diff file instead of staged changes
 ngpt -g --diff /path/to/changes.diff
+
+# Use piped diff content for commit message generation
+git diff HEAD~1 | ngpt -g --pipe
 
 # Generate a commit message with logging for debugging
 ngpt -g --log commit_log.txt
@@ -164,7 +179,7 @@ ngpt --interactive --log conversation.log
 ngpt --log "Tell me about quantum computing"
 
 # Process text from stdin using the {} placeholder
-cat README.md | ngpt -p "Summarize this document: {}"
+cat README.md | ngpt --pipe "Summarize this document: {}"
 
 # Use different model providers by specifying the provider name
 ngpt --provider Groq "Explain quantum computing"
@@ -212,13 +227,14 @@ For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdri
 
 ```console
 ❯ ngpt -h
+
 usage: ngpt [-h] [-v] [--language LANGUAGE] [--config [CONFIG]] [--config-index CONFIG_INDEX] [--provider PROVIDER]
             [--remove] [--show-config] [--all] [--list-models] [--list-renderers] [--cli-config [COMMAND ...]]
-            [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--temperature TEMPERATURE]
-            [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]] [--preprompt PREPROMPT] [--no-stream | --prettify |
-            --stream-prettify] [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE]
-            [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
-            [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -p | -r | -g]
+            [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--pipe]
+            [--temperature TEMPERATURE] [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]] [--preprompt PREPROMPT]
+            [--no-stream | --prettify | --stream-prettify] [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]]
+            [--chunk-size CHUNK_SIZE] [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
+            [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -r | -g]
             [prompt]
 
 nGPT - Interact with AI language models via OpenAI-compatible APIs
@@ -251,6 +267,7 @@ Global Options::
 --base-url BASE_URL                 Base URL for the API
 --model MODEL                       Model to use
 --web-search                        Enable web search capability using DuckDuckGo to enhance prompts with relevant information
+--pipe                              Read from stdin and use content with prompt. Use {} in prompt as placeholder for stdin content. Can be used with any mode option except --text and --interactive
 --temperature TEMPERATURE           Set temperature (controls randomness, default: 0.7)
 --top_p TOP_P                       Set top_p (controls diversity, default: 1.0)
 --max_tokens MAX_TOKENS             Set max response length in tokens
@@ -271,7 +288,7 @@ Git Commit Message Options::
 --chunk-size CHUNK_SIZE             Number of lines per chunk when chunking is enabled (default: 200)
 --analyses-chunk-size ANALYSES_CHUNK_SIZE Number of lines per chunk when recursively chunking analyses (default: 200)
 --max-msg-lines MAX_MSG_LINES       Maximum number of lines in commit message before condensing (default: 20)
---max-recursion-depth MAX_RECURSION_DEPTH Maximum recursion depth for commit message condensing (default: 3)
+--max-recursion-depth MAX_RECURSION_DEPTH  Maximum recursion depth for commit message condensing (default: 3)
 
 Modes (mutually exclusive)::
 
@@ -279,9 +296,9 @@ Modes (mutually exclusive)::
 -s, --shell                         Generate and execute shell commands
 -c, --code                          Generate code
 -t, --text                          Enter multi-line text input (submit with Ctrl+D)
--p, --pipe                          Read from stdin and use content with prompt. Use {} in prompt as placeholder for stdin content
 -r, --rewrite                       Rewrite text from stdin to be more natural while preserving tone and meaning
 -g, --gitcommsg                     Generate AI-powered git commit messages from staged changes or diff file
+
 ```
 
 > **Note**: For better visualization of conventional commit messages on GitHub, you can use the [GitHub Commit Labels](https://greasyfork.org/en/scripts/526153-github-commit-labels) userscript, which adds colorful labels to your commits.
