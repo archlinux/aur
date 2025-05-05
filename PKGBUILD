@@ -1,7 +1,7 @@
 
 # Maintainer: Rafael Senties Martinelli <rafael AT senties-martinelli DOT com>
 
-pkgver=v2.0.r11.g549a353 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver=v2.0.1.r0.g549a353 # git describe --long --tags --abbrev=7 | sed 's/^d//;s/\([^-]*-g\)/r\1/;s/-/./g'
 _commit=549a353bce60f82738de16b78a811fe463f09b9d
 _commit_sha256=369cea59bd2e569802f25f10f5ec924d4dbd48d38ecbeb9aca97b6183e0d2bee
 
