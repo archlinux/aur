@@ -13,8 +13,8 @@
 # Release notes: https://docs.nvidia.com/datacenter/tesla/index.html
 
 pkgname=nvidia-tesla-dkms
-pkgver=570.86.15
-pkgrel=2
+pkgver=570.133.20
+pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (tesla version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -29,7 +29,7 @@ source=("https://us.download.nvidia.com/tesla/${pkgver}/${_pkg}.run"
         '120-nvidia-linux-rt-gift.patch'
         'gcc14.patch'
 		'140-nvidia-gcc15-fix.patch')
-sha256sums=('87709c19c7401243136bc0ec9e7f147c6803070a11449ae8f0819dee7963f76b'
+sha256sums=('1253d17b1528e8a24bf1f34a8ac6591c924b98ad7a32344bde253aa622ac1605'
             'ac0c8c4ee6b0caa71b895cf8d8535ab4cebc68ac6b9b0b9c3cf28516e0846abd'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
             'd422f47158f2812caccac366a4ffd230c449b44f63eaedaef6855bca6a9dba43'
