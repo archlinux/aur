@@ -2,7 +2,7 @@
 # Adapted from zellij-git https://aur.archlinux.org/packages/zellij-git
 pkgname=borgtui-git
 _pkgname=borgtui
-pkgver=r171.f41dbb3
+pkgver=r173.fdcf13b
 _pkgver=0.5.0
 pkgrel=1
 epoch=
