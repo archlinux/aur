@@ -2,21 +2,19 @@
 
 _rockname=embedders.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=0.2.0
+pkgver=1.0.0
 _rockrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Graphviz, Lilypond (etc.) support for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
-license=(MIT)
-_siledeps=(silex)
-depends=(sile
-         "${_siledeps[@]/#/sile-}")
+license=(GPL-3.0-only)
+depends=(sile)
 makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('a0ff37e1d282de787dfc0a47c2b0a6af3d1f49f713d8095331960ed786cb6a32')
+sha256sums=('2ed419403418238961f92ace3cb75995ce96402b265439bd7f86701ca5e4a89d')
 
 package() {
 	cd "$_archive"

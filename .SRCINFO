@@ -1,15 +1,14 @@
 pkgbase = sile-embedders
 	pkgdesc = Graphviz, Lilypond (etc.) support for the SILE typesetting system
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/Omikhleia/embedders.sile
 	arch = any
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = lua51
 	makedepends = luarocks
 	depends = sile
-	depends = sile-silex
-	source = https://github.com/Omikhleia/embedders.sile/archive/v0.2.0/embedders.sile-0.2.0.tar.gz
-	sha256sums = a0ff37e1d282de787dfc0a47c2b0a6af3d1f49f713d8095331960ed786cb6a32
+	source = https://github.com/Omikhleia/embedders.sile/archive/v1.0.0/embedders.sile-1.0.0.tar.gz
+	sha256sums = 2ed419403418238961f92ace3cb75995ce96402b265439bd7f86701ca5e4a89d
 
 pkgname = sile-embedders
