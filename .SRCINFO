@@ -1,6 +1,6 @@
 pkgbase = r-ks
 	pkgdesc = Kernel Smoothing
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ks
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = r-ks
 	optdepends = r-misc3d
 	optdepends = r-oz
 	optdepends = r-rgl
-	source = https://cran.r-project.org/src/contrib/ks_1.15.0.tar.gz
-	sha256sums = da5ba3b24015071563c51a82a6e322631f2ce0112f5a3103d40f65e7e487a1f2
+	source = https://cran.r-project.org/src/contrib/ks_1.15.1.tar.gz
+	sha256sums = 7bd7f4f5ba42e8c6414920e58409bcf636709a91caa18bef0aadd6ac31835e73
 
 pkgname = r-ks
