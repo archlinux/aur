@@ -2,19 +2,19 @@
 
 pkgname=ebnf-rr
 _pkgname=${pkgname##*-}
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc='a railroad diagram generator for W3C-style EBNF grammars'
 arch=(any)
 url="https://github.com/GuntherRademacher/$_pkgname"
 license=(Apache-2.0)
 depends=(bash
-         java-runtime)
+         'java-runtime<22')
 makedepends=(gradle
-             java-environment)
+             'java-environment<22')
 _archive="$_pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('f4c0da653f2c71517450eaaa96f37995dae93019c30ada1bdca9f7264a679af8')
+sha256sums=('77e08e2174f3fa95c154bcbd9df641697d8bbc6bded34235e90853d71b630105')
 
 build() {
 	cd "$_archive"
