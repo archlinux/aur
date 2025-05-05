@@ -5,7 +5,7 @@
 
 pkgname=csdr
 pkgver=0.18.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio"
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jketterl/csdr'
@@ -22,6 +22,7 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 # FIXME
   )
   cmake "${cmake_options[@]}"
   cmake --build build
