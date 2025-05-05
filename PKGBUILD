@@ -32,7 +32,7 @@ optdepends=(
     'python-enzyme: Increase the number of supported formats and information'
 )
 source=(
-	"https://github.com/ratoaq2/knowit/archive/refs/tags/${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/ratoaq2/knowit/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('e42eabe7f4543cec6d9e8592b05103c48e81b2f371d4b1c0366f0f28c86cd98a')
 sha512sums=('c064c2428300f0b2ee08e514e8deea2299f0aa9a552a7ac9ea914035e4e40666a21aa8d2256605d2c86c61592955f1e6b432d2cf43b7a34a3d1235d4b9971aaf')
