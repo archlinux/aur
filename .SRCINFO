@@ -1,0 +1,10 @@
+pkgbase = repomix
+	pkgver = 0.3.3
+	pkgrel = 1
+	arch = any
+	makedepends = npm
+	noextract = repomix-0.3.3.tgz
+	source = https://registry.npmjs.org/repomix/-/repomix-0.3.3.tgz
+	sha256sums = 36d294da22c19f72888b3021e6acb183b422317b80ec612e5bfc9b9bcf185151
+
+pkgname = repomix
