@@ -2,36 +2,34 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-git
-pkgver=7.5.0.r188.gbbc5899a8c
+pkgver=8.0.0.rc1.r0.g7aa85582ad
 pkgrel=1
 pkgdesc="An object-oriented C++ class library designed for rapid production of sophisticated domain-specific CAD/CAM/CAE applications."
 arch=(x86_64)
 url="https://dev.opencascade.org/"
 license=('LGPL' 'custom:OCCTLGPLEXCEPTION')
-provides=(opencascade)
-conflicts=(opencascade opencascade-rc)
-
 depends=(
-tk
-vtk9-fix
-gl2ps
-ffmpeg
-freeimage
-intel-tbb
+  tk
+  vtk
+  gl2ps
+  freeimage
+  intel-tbb
 )
-
 makedepends=(
-cmake
-qt5-base
-ninja
-rapidjson
+  git
+  cmake
+  qt5-base
+  ninja
+  rapidjson
+  openmpi
+  nlohmann-json
 )
-#checkdepends=()
-
-source=(
-"git+https://git.dev.opencascade.org/repos/occt.git"
-)
-sha256sums=('SKIP')
+provides=(opencascade)
+conflicts=(opencascade)
+source=("git+https://git.dev.opencascade.org/repos/occt.git"
+        opencascade.sh)
+sha256sums=('SKIP'
+            '2064536a85d46fee368a8f1a712b2c6c77ca79c5bffcc68cba79d70d36efa2f4')
 
 pkgver() {
   cd occt
@@ -41,8 +39,6 @@ pkgver() {
 prepare() {
   cd occt
 
-  curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
-  
   # fix for None type build
   #sed '/OpenCASCADECompileDefinitionsAndFlags/d' -i CMakeLists.txt
 
@@ -61,7 +57,7 @@ build() {
     -D INSTALL_DIR_CMAKE=/usr/lib/cmake/opencascade \
     -D BUILD_WITH_DEBUG=OFF \
     -D BUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
-    -D USE_FFMPEG=ON \
+    -D USE_FFMPEG=OFF \
     -D USE_FREEIMAGE=ON \
     -D USE_RAPIDJSON=ON \
     -D USE_TBB=ON \
@@ -75,20 +71,15 @@ build() {
   rm -rf "${DESTDIR}"
 }
 
-check() {
-  cd occt
-  #TODO
-}
-
 package() {
   cd occt
   local _installroot=/  # could put this in /opt/${pkgname}
   export DESTDIR="${pkgdir}${_installroot}"
   cmake --build ../build_dir -- install
-  
+
   # remove the pollution from bin
   rm -rf "${pkgdir}/usr/bin/"*.sh
-  
+
   install -m755 -Dt "${pkgdir}/etc/profile.d" "${srcdir}/opencascade.sh"
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE_LGPL_21.txt
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" OCCT_LGPL_EXCEPTION.txt
