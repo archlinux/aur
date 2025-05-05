@@ -1,6 +1,6 @@
 pkgbase = ascii-draw
 	pkgdesc = Draw diagrams and more using ASCII
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Nokse22/ascii-draw
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ascii-draw
 	depends = python-emoji
 	depends = python-gobject
 	depends = python-pyfiglet
-	source = ascii-draw-1.0.0.tar.gz::https://github.com/Nokse22/ascii-draw/archive/v1.0.0.tar.gz
-	b2sums = ae8a7dfb0544ceb6b4cccb36ec3698fc981e36238ac41cae5235eb0dc2c37917e9553f48c53ae514642f1d2375864dc578d796f2e24b1800f243245e07474313
+	source = ascii-draw-1.1.0.tar.gz::https://github.com/Nokse22/ascii-draw/archive/v1.1.0.tar.gz
+	b2sums = 56ec08347fab109890c13c9c9094137e6eabac6a38409b3c321b42029c2b0f72501b43cc7d393f8a7fc2ac4830da691102d0385ce79b6ce38f8b9708b46b77c5
 
 pkgname = ascii-draw
