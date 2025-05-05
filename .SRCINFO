@@ -1,6 +1,6 @@
 pkgbase = tailscaledesktop
 	pkgdesc = Unnofficial Tailscale desktop application
-	pkgver = 1.0.6.aurpatch
+	pkgver = 1.0.6.1.aurpatch
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/tailscaledesktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tailscaledesktop
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/tailscaledesktop/application/-/archive/1.0.6.aurpatch/application-1.0.6.aurpatch.tar.bz2
-	sha256sums = e9e53dbaf2639e5df734b1ecca38b0f51ad1cb6cb24c4494c8c929989c49ab37
+	source = https://gitlab.com/linuxbombay/tailscaledesktop/application/-/archive/1.0.6.1.aurpatch/application-1.0.6.1.aurpatch.tar.bz2
+	sha256sums = 29a66a15231c56b01a144366df57c407d602ccfaeb1c86b6df9d5da6f0414ca6
 
 pkgname = tailscaledesktop
