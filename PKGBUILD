@@ -3,14 +3,14 @@
 
 pkgname='yamagi-quake2-ctf'
 pkgver='1.11'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64' 'aarch64')
 pkgdesc='Quake II - Three Wave Capture The Flag for yamagi-quake2'
 url='https://www.yamagi.org/quake2/'
 license=('GPL-2.0-only')
 depends=('glibc' 'sh' 'yamagi-quake2')
 source=(
-    "http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
+    "https://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
     "$pkgname.sh"
     "$pkgname.desktop")
 b2sums=(
