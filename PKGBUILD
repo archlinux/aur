@@ -1,5 +1,5 @@
-# Maintainer:  
-# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer: Robert Manner <the_manni at users.sf.net>
+# Original package recipe is from Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>, thanks!
 
 _Name="PassKeeZ"
 pkgname="${_Name,,}"
