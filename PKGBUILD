@@ -32,8 +32,7 @@ build() {
 	pushd "scangearmp2"
 	./autogen.sh --prefix=/usr \
 		     --enable-libpath=/usr/lib \
-		     LDFLAGS="-L../../com/libs_bin_$_arch" \
-		     CFLAGS="-std=c11"
+		     LDFLAGS="-L../../com/libs_bin_$_arch"
 	make
 	popd
 }
