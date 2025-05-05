@@ -1,8 +1,8 @@
 # Maintainer: baboon
 
 pkgname="speed-dreams-bin"
-pkgver=2.4.0
-pkgrel=5
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism. "
 arch=('x86_64')
 url="https://speed-dreams.net/"
@@ -34,7 +34,7 @@ libarchive
 libplib-bin)
 conflicts=('speed-dreams-svn' 'speed-dreams-git' 'speed-dreams-appimage' 'speed-dreams')
 provides=('speed-dreams')
-source=("https://files.speed-dreams.net/public/72ad631c8524ef3abda1dbd6c83e548e")
+source=("https://files.speed-dreams.net/public/1a40e1dd0dde9e93b8e5ae3814cfbb70")
 sha512sums=('SKIP')
 options=('!strip')
 
