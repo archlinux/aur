@@ -1,0 +1,16 @@
+pkgbase = python-ttf2web
+	pkgdesc = Optimize fonts to only the specific glyphs needed for your text and website
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/johncf/ttf2web
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/ttf2web/ttf2web-0.9.3.tar.gz
+	sha256sums = 034ed2c00ad663a8f57625e13de6398b9feeafd71e19a03295de431f9ee93748
+
+pkgname = python-ttf2web
