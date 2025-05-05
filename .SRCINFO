@@ -1,6 +1,6 @@
 pkgbase = chiaki-ng-git
 	pkgdesc = Free and Open Source PlayStation Remote Play Client
-	pkgver = 1846_2025.04.05
+	pkgver = 1861_2025.05.02
 	pkgrel = 1
 	url = https://streetpea.github.io/chiaki-ng/
 	arch = i686
@@ -40,8 +40,6 @@ pkgbase = chiaki-ng-git
 	conflicts = chiaki
 	conflicts = chiaki-ng
 	source = git+https://github.com/streetpea/chiaki-ng.git
-	source = nanopb.patch
 	sha256sums = SKIP
-	sha256sums = dcf9f312289e9181fe8a4872534acfab1d51d03fd3ce0a2201a79c78018369b6
 
 pkgname = chiaki-ng-git

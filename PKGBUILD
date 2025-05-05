@@ -2,7 +2,7 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1846_2025.04.05
+pkgver=1861_2025.05.02
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
@@ -46,10 +46,8 @@ optdepends=(
 )       # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
 provides=('chiaki')
 conflicts=('chiaki' 'chiaki-ng')
-source=(git+"https://github.com/streetpea/${_gitname}.git"
-        nanopb.patch)
-sha256sums=('SKIP'
-            'dcf9f312289e9181fe8a4872534acfab1d51d03fd3ce0a2201a79c78018369b6')
+source=(git+"https://github.com/streetpea/${_gitname}.git")
+sha256sums=('SKIP')
 
 
 pkgver() {
@@ -69,12 +67,11 @@ prepare() {
   sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
   # Initialize remaining submodules
   git submodule update --init
-
-  patch -p1 -i "${srcdir}/nanopb.patch"
 }
 
 build() {
   cd ${_gitname}/build
+  export CFLAGS+=" -std=gnu17"
   cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" \
     -DCHIAKI_USE_SYSTEM_CURL="ON" -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
