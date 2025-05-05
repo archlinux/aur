@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=netpad-player
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="网络画板，用核心技术赋能智慧数学教育"
 arch=(any)
@@ -12,10 +12,10 @@ source=(
 	$pkgname.desktop
 	"https://www.netpad.net.cn/download/NetpadPlayer-${pkgver}.exe")
 sha256sums=('6dbdb46f4ed3388b2ec5b7c90ca566c59a39bbef15e9cad5e1e9884df178d1be'
-            '7b53d020786843c71e13b260fb7d5d60c483b6eed0271fb9b1a5a1aeda1f2092')
+            '2f6aa71b2050bf789c5f5c0eee16e991c80101a131693d3580651a2769064733')
 options=(!emptydirs)
 prepare() {
-	find $srcdir -name app.asar -exec asar e {} ./app \;
+	find $srcdir -name app.asar -print -exec asar e {} ./app \;
 	find . -type f -path "*/darwin/*" -printf "rm %p\n" -delete
 	find . -name "*.rar" -printf "rm %p\n" -delete
 	find . -path "*/bin/*.js" -delete
