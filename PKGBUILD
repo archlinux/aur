@@ -3,7 +3,7 @@
 pkgname=wallrust-bin
 _pkgname=wallrust
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazingly fast and feature-rich tool to extract color palettes from images | written in Rust"
 arch=('x86_64')
 url="https://github.com/prime-run/wallrust"
@@ -25,13 +25,13 @@ package() {
     exit 1
   fi
   
-  install -Dm755 "$BINARY" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$BINARY" "$pkgdir/usr/bin/$_pkgname"
   
   if [ -f "LICENSE" ]; then
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   fi
   
   if [ -f "README.md" ]; then
-    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$_pkgname/README.md"
   fi
 }
