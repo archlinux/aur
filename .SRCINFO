@@ -1,0 +1,19 @@
+pkgbase = entracte
+	pkgdesc = A customizable Pomodoro-based time manager with screen lock and score tracking. Created by 6e6f303216 (Wondermakers).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/6e6f303216/entracte
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = pyinstaller
+	makedepends = python-pyqt6
+	makedepends = python-pyqt6-sip
+	makedepends = git
+	depends = glibc
+	depends = qt6-base
+	depends = pulseaudio
+	source = git+https://github.com/6e6f303216/entracte.git
+	md5sums = SKIP
+
+pkgname = entracte
