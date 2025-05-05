@@ -1,0 +1,14 @@
+pkgbase = oscar64-git
+	pkgdesc = Optimizing Small memory C Compiler Assembler and Runtime for C64
+	pkgver = v1.31.260.r30.g8b07905
+	pkgrel = 1
+	url = https://github.com/drmortalwombat/oscar64
+	arch = x86_64
+	license = GPL
+	provides = oscar64
+	conflicts = oscar64
+	source = git+https://github.com/drmortalwombat/oscar64
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = oscar64-git
