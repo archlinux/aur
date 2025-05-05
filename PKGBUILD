@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=resources-git
-pkgver=1.8.0.r4.g1e08f67
+pkgver=1.8.0.r11.g1f6df52
 pkgrel=1
 pkgdesc="Monitor your system resources and processes"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/Resources"
 license=('GPL-3.0-or-later')
 depends=(
