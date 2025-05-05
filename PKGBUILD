@@ -3,26 +3,25 @@
 # Contributor: Guoyi Zhang <GuoyiZhang at malacology dot net>
 
 pkgname=gnome-shell-extension-tray-icons-reloaded
-pkgver=31
+pkgver=32
 pkgrel=1
 pkgdesc="GNOME Shell extension which bring back Tray Icons to top panel, with additional features."
 arch=('any')
 url="https://github.com/MartinPL/Tray-Icons-Reloaded"
 license=('GPL3')
 depends=('gnome-shell')
-_commit="af92191413237145e8e13e562d48175168b4f3df"
 _name="tray-icons-reloaded"
-source=("https://github.com/MartinPL/$_name/archive/$_commit.zip")
-sha256sums=('27393263a504a0e505beb6a785ac89950c0ad2f590d8bbef3e3e2b7bafa9f380')
+source=("https://github.com/MartinPL/$_name/archive/refs/tags/$pkgver.zip")
+sha256sums=('b7a0f0523d310da5dfc613c4784f312822093f9737bd287db92c83724e04d743')
 
 build() {
-	cd "${srcdir}/${_name}-${_commit}"
+	cd "${srcdir}/${_name}-${pkgver}"
 	pwd
 	make
 }
 
 package() {
-	cd "${srcdir}/${_name}-${_commit}"
+	cd "${srcdir}/${_name}-${pkgver}"
 	local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
 	local _destdir="$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
 
