@@ -1,6 +1,6 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
-	pkgver = 2024.7
+	pkgver = 2025.1
 	pkgrel = 1
 	url = https://www.domoticz.com
 	install = domoticz.install
@@ -23,9 +23,9 @@ pkgbase = domoticz
 	depends = mosquitto
 	depends = jsoncpp
 	depends = python
-	source = domoticz-2024.7.tar.gz::https://github.com/domoticz/domoticz/archive/2024.7.tar.gz
+	source = domoticz-2025.1.tar.gz::https://github.com/domoticz/domoticz/archive/2025.1.tar.gz
 	source = domoticz.service
-	sha256sums = 6ceabbfe36ada4b7c2ebb42c523d723c87e6444b87db6bbb1703d92f38ee754d
+	sha256sums = eb82ba9860cafa94856b4860e2b090c9409f04c863ccdc00b349a13eb5e439a7
 	sha256sums = 908e2848731eef27928f87936f94ff3df280901559fcf5f4754b1a8139e4a38a
 
 pkgname = domoticz
