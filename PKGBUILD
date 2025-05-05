@@ -1,7 +1,7 @@
 # Maintainer: Glitt3ring
 pkgname=blockdodger
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Block Dodging game Made by Glitt3ring."
 arch=(x86_64 i386)
@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=.INSTALL
 changelog=
 source=("git+$url")
 noextract=()

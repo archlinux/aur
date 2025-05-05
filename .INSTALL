@@ -1,0 +1,8 @@
+pre_remove() {
+	sudo rm -rf /usr/bin/blockdodger*
+	sudo rm -rf /usr/bin/blockdodgersounds*
+}
+
+post_remove() {
+	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds*
+}
