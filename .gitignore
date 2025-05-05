@@ -6,3 +6,4 @@
 !keys/pgp/*.asc
 !PKGBUILD
 !.SRCINFO
+!.pre-commit-config.yaml
