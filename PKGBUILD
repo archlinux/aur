@@ -2,8 +2,8 @@
 # Contributor: futrime <https://github.com/futrime>
 
 pkgname=lip
-pkgver=0.24.0
-pkgrel=3
+pkgver=0.31.0
+pkgrel=1
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
@@ -11,29 +11,42 @@ license=('GPL3')
 conflicts=(lip-git)
 
 source_x86_64=(
-    "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-linux-amd64.tar.gz"
+    "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-cli-linux-x64-self-contained.tar.gz"
     "lip.1"
 )
 source_aarch64=(
-    "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-linux-arm64.tar.gz"
+    "${pkgname}-${arch}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-cli-linux-arm64-self-contained.tar.gz"
     "lip.1"
 )
 
-sha512sums_x86_64=(
-    '54c6c9ab0deb285da3734385ce9d1263557df0ddd899cfaf4ff4d3f5c2dda00af7b547ded52df08d1cac901a951f546e85c33826d545a62a8e40903cb7a32fdf'
-    '6626f73bd768cc10ae98fdab3cc4e75ba739ee658d486c75ab29de8a889be30ad24d68bb92f6f0eac56ab0710e53729d255946399c6ac843460150642a585e32'
+md5sums_x86_64=(
+    "f797fff2b6c10e075353c3a93fc2344d"
+    "16ded768675b51f0e49d76ac17c9fae5"
 )
-sha512sums_aarch64=(
-    'ce7d4af91c146339175cb258ce38703db3a8c63b0927ffe63f88ca6a7963c644d9e07719c707bac6a50f3622fc456635da769a9ba0866e674539dbfd90bd83e6'
-    '6626f73bd768cc10ae98fdab3cc4e75ba739ee658d486c75ab29de8a889be30ad24d68bb92f6f0eac56ab0710e53729d255946399c6ac843460150642a585e32'
+md5sums_aarch64=(
+    "57a935f54d8b886d0a75572912a59fe3"
+    "16ded768675b51f0e49d76ac17c9fae5"
 )
 
 prepare() {
-    tar -xf ${pkgname}-${arch}.tar.gz
+    rm -rf "${srcdir}/Lip"
+    mkdir -p "${srcdir}/Lip"
+    tar -zxf "${pkgname}-${arch}.tar.gz" -C "${srcdir}/Lip"
+    chmod +x "${srcdir}/Lip/lip"
 }
 
 package() {
-    install -Dm 755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-    install -Dm 644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm 644 ${pkgname}.1 ${pkgdir}/usr/share/man/man1/${pkgname}.1
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+
+    cp -a "${srcdir}/Lip/"* "${pkgdir}/opt/${pkgname}/"
+
+    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
+    chmod 755 "${pkgdir}/opt/${pkgname}/lip"
+
+    install -Dm 644 "${srcdir}/Lip/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 "${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -sf "/opt/${pkgname}/lip" "${pkgdir}/usr/bin/${pkgname}"
 }
