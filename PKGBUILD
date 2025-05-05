@@ -3,7 +3,7 @@
 _pkgname=rofi-mixer
 pkgname="${_pkgname}-git"
 pkgver=r22.3c55e38
-pkgrel=1
+pkgrel=2
 pkgdesc='A script that generates a rofi menu that uses bluetoothctl to connect to bluetooth devices and display status info'
 arch=('any')
 url='https://github.com/joshpetit/rofi-mixer'
