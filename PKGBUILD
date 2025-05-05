@@ -10,7 +10,7 @@ arch=('aarch64' 'x86_64')
 url="https://github.com/Zig-Sec/${_Name}"
 license=('custom:None')
 depends=('glibc')
-makedepends=('zig')
+makedepends=('zig>=0.14.0' 'zig<0.15.0')
 _pkgsrc="${_Name}-${pkgver}"
 noextract=()
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
