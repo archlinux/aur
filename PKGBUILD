@@ -4,7 +4,7 @@
 pkgname=mobsh
 pkgver=5.4.0
 pkgrel=1
-pkgdesc="Tool for fast git handover"
+pkgdesc="Fast git handover for remote mob programming"
 arch=('x86_64' 'i686')
 url="https://github.com/remotemobprogramming/mob"
 license=('MIT')
