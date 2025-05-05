@@ -3,7 +3,7 @@
 
 pkgname=dimethoxy-disflux-git
 # pkgver is generated from the latest git commit; the initial dummy version is 0.0.0.
-pkgver=df518be
+pkgver=bcb8113
 pkgrel=1
 pkgdesc="Unstable build of the latest commit of Disflux from Dimethoxy's GitHub repository"
 arch=('x86_64')
