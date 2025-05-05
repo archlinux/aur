@@ -3,8 +3,8 @@
 _reponame=oxen-electron-gui-wallet
 pkgname=oxen-electron-wallet
 pkgdesc="Oxen electron GUI wallet"
-pkgver=1.8.1
-pkgrel=5
+pkgver=1.8.2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/oxen-io/${_reponame}"
 license=('BSD-3-Clause')
@@ -13,7 +13,7 @@ makedepends=('node-gyp' 'python310' 'nvm')
 source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha512sums=('39bbdb79852d45df71971081224ce0cfa0fbd9886d1be8d4b3f01e2f8a0e1d388024c78c2a48ff8a1d10c6b5d541ecf87bbb94425c7caf5c9f2485e297d28518'
+sha512sums=('5028e0056aaa782e21957b234248dd6d0e1bb2ae98e6a888248e2c9de6e393f406b31ebed6c8849bcdddc135826a08a71d4d54fdd6cf626bef5bba988cccfc33'
             '6296267d0b4d05c9f805cd03366ee87da956212755af4fedd6117ab42792ba6036842f184cb91e60e0e522f9d8e857cd5ad941c10aa62d6c850d3c0da41387b8'
             'fe65eb02d62a3e8ef404514cd911d3d94bf361b8231767551444c40004aea48ac56e4a5f234b1f819c0b5f7066619f1158c2749d23b60999a7c4e57b41903605')
 
