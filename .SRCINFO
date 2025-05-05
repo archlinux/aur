@@ -4,10 +4,8 @@ pkgbase = chatgqt
 	pkgrel = 1
 	arch = any
 	license = GPLv3
-	depends = qt6-base
-	depends = qt6-webengine
-	depends = python-pyqt6
 	depends = python-pyqt6-webengine
+	depends = python-dbus
 	source = ChatGQT.tar.gz
 	sha256sums = 8c5773db324c5a8bdef1a40dade7ce24e7583fe596760ad8518f6ccef808f1fb
 

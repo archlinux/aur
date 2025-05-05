@@ -7,10 +7,8 @@ pkgdesc="A simple ChatGPT Webview Client based on QT"
 arch=('any')
 license=('GPLv3')
 depends=(
-    'qt6-base'
-    'qt6-webengine'
-    'python-pyqt6'
     'python-pyqt6-webengine'
+    'python-dbus'
 )
 source=(
     'ChatGQT.tar.gz'
