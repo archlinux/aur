@@ -1,0 +1,4 @@
+[gameoftrees]
+source = "htmlparser"
+url = "https://gameoftrees.org/portable.html"
+xpath = "/html/body/p/a[starts-with(@href, 'releases/portable/got-portable-')]"
