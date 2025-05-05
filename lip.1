@@ -1,67 +1,114 @@
-.TH lip 1 "2025-01-01" "lip 0.24.0" "lip User Manual"
+.TH LIP 1 "2025-05-05" "lip 0.31.0" "User Commands"
 .SH NAME
-lip \- A general package installer
+lip \- A general package manager for installing packages from various sources
 .SH SYNOPSIS
 .B lip
-[\fIglobal options\fR] \fBcommands\fR [\fIcommand options\fR] [\fIarguments\fR]...
+[\fIOPTIONS\fR] \fBCOMMAND\fR [\fIARGUMENTS\fR]
 .SH DESCRIPTION
-lip is a general package installer. You can use lip to install packages from any Git repository.
+lip is a versatile package manager that can install packages from Git repositories, local files, and other sources. It provides dependency management, package updates, and configuration management features.
 .SH COMMANDS
 .TP
-\fBcache\fP
-Inspect and manage lip's cache.
+\fBcache\fR
+Inspect and manage lip's cache
 .TP
-\fBconfig\fP
-Manage configuration.
+\fBconfig\fR
+Manage lip configuration files
+.TP
+\fBinit\fR
+Initialize a new or existing lip package
+.TP
+\fBinstall [PACKAGE...]\fR
+Install packages and their dependencies from various sources
 .TP   
-\fBinstall\fP
-Install a tooth.
-.TP   
-\fBuninstall\fP
-Uninstall a tooth.
+\fBuninstall <PACKAGE...>\fR
+Uninstall packages and their unused dependencies
 .TP
-\fBlist\fP
-Lists installed teeth.
+\fBlist [--installed]\fR
+List installed packages
 .TP
-\fBshow\fP
-Shows information about installed teeth.
+\fBview <PACKAGE>\fR
+Display package information (downloads package if not cached)
 .TP
-\fBfreeze\fP
-Generates specifiers.txt.
+\fBupdate [PACKAGE...]\fR
+Update packages and their dependencies
+.br
+Equivalent to: \fBlip install --update [PACKAGE...]\fR
 .TP
-\fBtooth\fP
-Maintains a tooth.
+\fBrun <SCRIPT>\fR
+Execute a script defined in tooth.json (excludes built-in hook scripts)
 .TP
-\fBhelp, h\fP
-Shows a list of commands or help for one command.
-.SH GLOBAL OPTIONS
+\fBmigrate <PATH>\fR
+Migrate a tooth.json file to the latest schema version
 .TP
-\fB--verbose, -v\fP
-Shows verbose output.
+\fBpack [PATH]\fR
+Create an archive from the current directory based on tooth.json configuration
 .TP
-\fB--quiet, -q\fP
-Shows only errors.
+\fBprune\fR
+Remove unused packages while preserving dependencies required by other packages
+.SH OPTIONS
 .TP
-\fB--no-color\fP
-Disable color output.
+\fB\-v\fR, \fB\-\-verbose\fR
+Display detailed output
 .TP
-\fB--help, -h\fP
-Shows the help.
+\fB\-q\fR, \fB\-\-quiet\fR
+Show only error messages
 .TP
-\fB--verison, -V\fP
-Prints the lip version.
+\fB\-h\fR, \fB\-\-help\fR
+Display help information
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Show version information and exit
+.SH CONFIGURATION FILES
+.TP
+\fB~/.config/lip/config.json\fR
+User configuration file
+.TP
+\fB/etc/lip/config.json\fR
+System configuration file
+.SH ENVIRONMENT
+.TP
+\fBLIP_HOME\fR
+Specifies lip's home directory (default: ~/.lip)
+.TP
+\fBLIP_CONFIG\fR
+Specifies configuration file path
+.SH EXAMPLES
+.TP
+Install a package:
+.B lip install example-package
+.TP
+Update all packages:
+.B lip update
+.TP
+Remove unused packages:
+.B lip prune
+.SH EXIT STATUS
+.TP
+\fB0\fR
+Success
+.TP
+\fB1\fR
+General error
+.TP
+\fB2\fR
+Configuration error
 .SH BUGS
-.TP
-Submit bug reports and request features online at:\fP
-<\fIhttps://github.com/futrime/lip/issues\fR>
+Report bugs and feature requests at:
+.br
+\fIhttps://github.com/futrime/lip/issues\fR
 .SH SEE ALSO
-.TP
-Source at:\fP
-<\fIhttps://github.com/futrime/lip\fR>
-.TP
-Online documentation at:\fP
-<\fIhttps://futrime.github.io/lip/\fR>
+Project homepage:
+.br
+\fIhttps://github.com/futrime/lip\fR
+.br
+Documentation:
+.br
+\fIhttps://futrime.github.io/lip/\fR
 .SH COPYRIGHT
-Copyright 2023 futrime <\fIhttps://github.com/futrime\fR>.
-.SH AUTHOR
-Written by Huang FTS427 <\fIhttps://github.com/FTS427\fR>.
+Copyright (C) 2023-2025 futrime <\fIhttps://github.com/futrime\fR>
+.br
+Licensed under GPL-3.0
+.SH AUTHORS
+Originally created by futrime <\fIhttps://github.com/futrime\fR>
+.br
+Documentation by FTS427 <\fIhttps://github.com/FTS427\fR>

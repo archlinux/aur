@@ -3,15 +3,17 @@
 
 pkgname=lip-git
 _pkgname=lip
-pkgver=0.24.0
-pkgrel=3
+pkgver=0.31.0
+pkgrel=1
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
 license=('GPL3')
 conflicts=(lip)
 makedepends=(
-    go
+    dotnet-sdk
+    dotnet-runtime
+    dotnet-host
     git
 )
 
@@ -19,9 +21,9 @@ source=(
     "git+${url}.git"
     "lip.1"
 )
-sha512sums=(
+md5sums=(
     'SKIP'
-    '6626f73bd768cc10ae98fdab3cc4e75ba739ee658d486c75ab29de8a889be30ad24d68bb92f6f0eac56ab0710e53729d255946399c6ac843460150642a585e32'
+    '16ded768675b51f0e49d76ac17c9fae5'
 )
 
 prepare() {
@@ -33,13 +35,22 @@ prepare() {
 
 build() {
     cd lip
-    export GOOS=linux
-    if [ ${arch} == aarch64 ];then
-        export GOARCH=arm64
-    else
-        export GOARCH=amd64
-    fi
-    go build -ldflags "-s -w" -o bin/ github.com/lippkg/lip/cmd/lip
+    case "${CARCH}" in
+        x86_64)
+            _runtime="linux-x64"
+            ;;
+        aarch64)
+            _runtime="linux-arm64"
+            ;;
+    esac
+    
+    dotnet publish Lip.CLI \
+        --configuration Release \
+        --output bin \
+        --runtime ${_runtime} \
+        --self-contained true \
+        -p:PublishSingleFile=true \
+        -p:Version=${pkgver}
 }
 
 package() {
