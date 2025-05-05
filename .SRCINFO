@@ -1,13 +1,12 @@
 pkgbase = slcurl-snapshot
 	pkgdesc = cURL module for the S-Lang interpreter (development snapshot)
 	pkgver = 0.2.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jedsoft.org/snapshots/
 	changelog = slcurl-snapshot.changelog
 	arch = aarch64
 	arch = x86_64
 	license = GPL-2.0-or-later
-	makedepends = slsh
 	depends = glibc
 	depends = libcurl.so
 	depends = slang

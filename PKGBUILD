@@ -7,13 +7,12 @@ _pkgname="${pkgname%-snapshot}"
 _pkgver=0.2.2-12
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc='cURL module for the S-Lang interpreter (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
 depends=('glibc' 'libcurl.so' 'slang')
-makedepends=('slsh')
 provides=('slcurl')
 conflicts=("${provides[@]}")
 options=('!makeflags')
@@ -25,9 +24,7 @@ changelog="$pkgname.changelog"
 build() {
   cd "$_pkgname-$_prever"
 
-  ./configure --prefix=/usr
-
-  make
+  ./configure --prefix=/usr && make
 }
 
 package() {
@@ -38,18 +35,6 @@ package() {
   # Install extra documentation
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     changes.txt INSTALL.txt README doc/text/curl.txt
-
-  # Byte-compile S-Lang files
-  cd "$pkgdir/usr/share/slsh/local-packages/"
-  # shellcheck disable=SC2016
-  slsh -e '
-    for ($1=0; $1<__argc; $1++) {
-      $2 = __argv[$1];
-      () = printf("Byte-compiling %s …", $2);
-      byte_compile_file($2, 0);
-      () = printf("\n");
-    }
-  ' ./*.sl
 }
 
 b2sums=(
