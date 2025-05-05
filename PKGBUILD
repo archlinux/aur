@@ -15,7 +15,7 @@
 
 pkgname=loot
 # https://github.com/loot/loot/releases
-pkgver=0.25.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 	'LOOT.desktop'
 )
-sha256sums=('30e65e0409c71ea06eb3437a1501e41bdc603c674d976be86ef3aa14d790bf94'
+sha256sums=('8e735aa4b5db2371157992979a00f25286607f40ff078b68b69ae224b6421f81'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb')
 
 prepare() {
