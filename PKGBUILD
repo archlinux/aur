@@ -1,11 +1,11 @@
-# Maintainer: Arkaprabha Chakraborty <arkorty@gmail.com>
+# Maintainer: Mambuco <gabriele.giambrone@icloud.com>
 
 pkgname='graphite-gtk-theme'
 _pkgname='Graphite-gtk-theme'
-_pkgver='2023-12-31'
+_pkgver='2024-07-15'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
-pkgdesc='Graphite gtk theme'
+pkgdesc='Graphite GTK Theme, by vinceliuice'
 arch=('any')
 provides=('graphite-gtk-theme')
 conflicts=('graphite-gtk-theme-git')
