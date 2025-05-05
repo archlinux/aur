@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='A Mopidy Web client that utilizes the Spotify and EchoNest frameworks. (Formerly Spotmop)'
 arch=('any')
 url="https://github.com/jaedb/iris"
-license=('APACHE')
+license=('Apache-2.0')
 depends=('mopidy>=3' 'python-pykka>=2.0.1' 'python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('mopidy-local: local library support'
