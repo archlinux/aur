@@ -12,7 +12,12 @@ depends=(
 	python-rebulk
 	python-pyyaml
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(
+	python-build
+	python-installer
+	python-wheel
+	python-poetry-core
+)
 checkdepends=(
     flake8
     mypy

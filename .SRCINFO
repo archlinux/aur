@@ -11,6 +11,7 @@ pkgbase = python-trakit
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python-babelfish
 	depends = python-rebulk
 	depends = python-pyyaml
