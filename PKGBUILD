@@ -7,7 +7,7 @@ pkgname=gnome-system-monitor-linuxmint
 _pkgname=gnome-system-monitor
 pkgver=45.0.2
 _pkgver=wilma
-pkgrel=1
+pkgrel=2
 pkgdesc="View current processes and monitor system state. Linux Mint version"
 url="https://wiki.gnome.org/Apps/SystemMonitor"
 arch=(x86_64)
@@ -34,6 +34,7 @@ depends=(
 )
 makedepends=(
     'appstream-glib'
+    'glib2-devel'
     'meson'
     'yelp-tools'
 )
