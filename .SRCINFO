@@ -1,0 +1,24 @@
+pkgbase = waypanel-git
+	pkgdesc = A lightweight, modular status panel for Wayfire written in Python with GTK4
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/killown/waypanel
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = gtk4
+	depends = libadwaita
+	depends = playerctl
+	depends = gobject-introspection
+	depends = wayland-protocols
+	depends = gtk4-layer-shell
+	depends = bluez-tools
+	optdepends = swaylock: For lock screen integration
+	optdepends = pamixer: Volume control
+	optdepends = wl-clipboard: Clipboard plugin support
+	optdepends = dunst: Notification area support
+	source = git+https://github.com/killown/waypanel.git
+	sha256sums = SKIP
+
+pkgname = waypanel-git
