@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!auto-mcs.desktop
+!auto-mcs.png

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=
+Exec=auto-mcs
+GenericName=Cross-platform Minecraft server manager
+Icon=auto-mcs
+Name=Auto MCS
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
