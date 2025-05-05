@@ -12,9 +12,9 @@ pkgbase = sysbox-ce-bin
 	optdepends = shiftfs: For uid-mapping on very old kernels without idmapped-mounts
 	provides = sysbox-ce
 	conflicts = sysbox-ce
-	source_x86_64 = https://downloads.nestybox.com/sysbox/releases/v0.6.6/sysbox-ce_0.6.6-0.linux_amd64.deb
+	source_x86_64 = https://github.com/nestybox/sysbox/releases/download/v0.6.6/sysbox-ce_0.6.6-0.linux_amd64.deb
 	sha256sums_x86_64 = 87cfa5cad97dc5dc1a243d6d88be1393be75b93a517dc1580ecd8a2801c2777a
-	source_aarch64 = https://downloads.nestybox.com/sysbox/releases/v0.6.6/sysbox-ce_0.6.6-0.linux_arm64.deb
+	source_aarch64 = https://github.com/nestybox/sysbox/releases/download/v0.6.6/sysbox-ce_0.6.6-0.linux_arm64.deb
 	sha256sums_aarch64 = 640014411de589f4e09f8383dc53b3c7785575be13d5573d4addbd597f858d56
 
 pkgname = sysbox-ce-bin
