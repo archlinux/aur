@@ -4,30 +4,32 @@
 # Contributor: Chris Giles <Chris.G.27 (at) Gmail.com>
 
 pkgname=q4wine
-pkgver=1.3.13
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="A Qt5 GUI for Wine"
+pkgdesc="a Qt GUI for W.I.N.E."
 arch=("x86_64")
-url="http://sourceforge.net/projects/${pkgname}/"
-license=("GPL3")
-depends=("qt5-base" "wine" "sqlite3" "which" "icoutils")
-makedepends=("cmake" "qt5-tools" "qt5-svg")
-optdepends=("winetricks" "fuseiso")
-options=('!emptydirs')
-source=("https://github.com/brezerk/q4wine/archive/v${pkgver}.tar.gz")
-sha256sums=('8d75c51285aa100cabdd544e81671444cc40a68a0ebb5d13e40a9113c7e00e4e')
+url="https://q4wine.brezblock.org.ua/"
+license=("GPL-3.0-only")
+depends=("qt6-base" "gcc-libs" "glibc" "icoutils" "fuseiso")
+makedepends=("cmake" "qt6-tools" "qt6-svg" "vulkan-headers")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/brezerk/q4wine/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e27d32c09e53c36cdd6ab9e9a2587f1d5a8800b3efab8784ead3e1713c8cbfd9')
 
 build() {
-  cd "$srcdir"/${pkgname}-${pkgver/_/-}
-  cmake \
+  cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIBS_ENTRY_PATH=/usr/lib/$pkgname \
-    -DQT5=ON \
-    .
-  make
+    -DUSE_GZIP=ON
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir"/${pkgname}-${pkgver/_/-}
-  make DESTDIR="$pkgdir" install
+  depends+=("coreutils" "util-linux" "tar" "sh" "wine"
+            "wget" "which" "hicolor-icon-theme")
+  optdepends=("sudo: Mount iso image with sudo"
+              "polkit: Mount iso image with gui_sudo"
+              "konsole: The most prefered terminal app"
+              "gnome-terminal: The second prefered terminal app"
+              "xterm: The last prefered terminal app")
+  DESTDIR="$pkgdir" cmake --install build
 }
