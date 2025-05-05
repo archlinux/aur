@@ -1,0 +1,65 @@
+Description: Fix no DPMS detection
+ xautolock reset when the screen blanks
+Author: Roland Stigge <stigge@antcom.de>
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=545778
+
+diff -x debian -Naur xautolock-2.1.orig/include/config.h xautolock-2.1/include/config.h
+--- xautolock-2.1.orig/include/config.h	2002-01-15 11:02:14.000000000 -0430
++++ xautolock-2.1/include/config.h	2010-01-07 09:52:22.000000000 -0430
+@@ -64,6 +64,7 @@
+ 
+ #ifdef HasScreenSaver
+ #include <X11/extensions/scrnsaver.h>
++#include <X11/extensions/dpms.h>
+ #endif /* HasScreenSaver */
+ 
+ #ifndef HasVFork
+diff -x debian -Naur xautolock-2.1.orig/src/engine.c xautolock-2.1/src/engine.c
+--- xautolock-2.1.orig/src/engine.c	2002-01-15 11:07:31.000000000 -0430
++++ xautolock-2.1/src/engine.c	2010-01-07 09:52:22.000000000 -0430
+@@ -30,7 +30,10 @@
+ void 
+ queryIdleTime (Display* d, Bool use_xidle)
+ {
+-  Time idleTime = 0; /* millisecs since last input event */
++  int dummy;
++  CARD16 standby, suspend, off;
++  CARD16 state;
++  BOOL onoff;  Time idleTime = 0; /* millisecs since last input event */
+ 
+ #ifdef HasXidle
+   if (use_xidle)
+@@ -48,6 +51,33 @@
+ #endif /* HasScreenSaver */
+   }
+ 
++  if (DPMSQueryExtension(d, &dummy, &dummy)) {
++    if (DPMSCapable(d)) {
++      DPMSGetTimeouts(d, &standby, &suspend, &off);
++      DPMSInfo(d, &state, &onoff);
++
++      if (onoff) {
++        switch (state) {
++          case DPMSModeStandby:
++            if (idleTime < (unsigned) (standby * 1000))
++              idleTime += (standby * 1000);
++            break;
++          case DPMSModeSuspend:
++            if (idleTime < (unsigned) ((suspend + standby) * 1000))
++              idleTime += ((suspend + standby) * 1000);
++            break;
++          case DPMSModeOff:
++            if (idleTime < (unsigned) ((off + suspend + standby) * 1000))
++              idleTime += ((off + suspend + standby) * 1000);
++            break;
++          case DPMSModeOn:
++          default:
++            break;
++        }
++      }
++    } 
++  }
++
+   if (idleTime < 1000)  
+   {
+     resetTriggers ();

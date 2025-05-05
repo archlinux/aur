@@ -1,0 +1,32 @@
+Description: Fix memory corruption
+ xautolock: Uses freed memory for starting the locker
+Author: Roland Stigge <stigge@antcom.de>
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=514406
+
+diff -urNad xautolock-2.1~/src/options.c xautolock-2.1/src/options.c
+--- xautolock-2.1~/src/options.c	2002-01-15 16:37:33.000000000 +0100
++++ xautolock-2.1/src/options.c	2009-02-10 21:40:02.000000000 +0100
+@@ -250,6 +250,8 @@
+   *  actually consists of multiple ones, we need to look for `;'
+   *  characters first. We can only err on the safe side here...
+   */
++  /* FIXME: This would also need to handle other stuff like e.g. & */
++#if 0
+   if (!strchr (*command, ';'))
+   {
+     char* tmp;
+@@ -257,6 +259,14 @@
+ 		    "exec %s", *command);
+     *command = tmp;
+   }
++#else
++  /* Create a copy of the string or else XrmDestroyDatabase would free() that
++   * string from underneath us.
++   */
++  char* tmp = newArray (char, strlen (*command) + 1);
++  (void) strcpy (tmp, *command);
++  *command = tmp;
++#endif
+ }
+ #endif /* !VMS */
+ 

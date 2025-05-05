@@ -1,0 +1,20 @@
+Description: Typo in xautolock man page
+Author: Antoni Villalonga <antoni@friki.cat>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=855413
+Last-Update: 2020-04-17
+
+--- a/xautolock.man
++++ b/xautolock.man
+@@ -210,9 +210,9 @@
+ Instructs xautolock to detect that computer has been put to sleep. 
+ This is done by detecting that time has jumped by more than 3 seconds. 
+ When this occurs, the lock timer is reset and locker program is not
+-launched even if primary timeout has been reached. This option is 
+-typically used to avoid locker program to be launched when awaking a 
+-laptop computer.
++launched even if primary timeout has been reached. This  option is typically
++used to prevent the locker program from being launched when awaking a laptop
++computer.
+ .TP 
+ \fB\-secure\fR
+ Instructs xautolock to run in secure mode. In this mode, xautolock

@@ -1,0 +1,12 @@
+Description: Fix manpage bug
+ The manpage resulted in errors because "1" was confused with an "l"
+Author: Roland Stigge <stigge@antcom.de>
+
+--- xautolock-2.2.orig/xautolock.man
++++ xautolock-2.2/xautolock.man
+@@ -1,4 +1,4 @@
+-.TH xautolock l "December 28, 2007"
++.TH xautolock 1 "December 28, 2007"
+ 
+ .SH NAME
+ xautolock \- fire up programs in case of user inactivity under X

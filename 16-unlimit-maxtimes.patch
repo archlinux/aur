@@ -1,0 +1,82 @@
+Description: Remove maximum lock time limit
+Author: Antoni Villalonga <antoni@friki.cat>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=855413
+Last-Update: 2020-04-17
+
+--- a/include/config.h
++++ b/include/config.h
+@@ -78,12 +78,10 @@
+ #define MIN_LOCK_MINS     1           /* minimum number of minutes
+                                          before firing up the locker       */
+ #define LOCK_MINS         10          /* default ...                       */
+-#define MAX_LOCK_MINS     60          /* maximum ...                       */
+ 
+ #define MIN_KILL_MINS     10          /* minimum number of minutes
+                                          before firing up the killer       */
+ #define KILL_MINS         20          /* default ...                       */
+-#define MAX_KILL_MINS     120         /* maximum ...                       */
+ 
+ #define CREATION_DELAY    30          /* should be > 10 and
+                                          < min(45,(MIN_LOCK_MINS*30))      */
+--- a/src/options.c
++++ b/src/options.c
+@@ -283,11 +283,6 @@
+     error1 ("Setting lock time to minimum value of %ld minute(s).\n",
+             (long) (lockTime = MIN_LOCK_MINS));
+   }
+-  else if (lockTime > MAX_LOCK_MINS)
+-  {
+-    error1 ("Setting lock time to maximum value of %ld minute(s).\n",
+-            (long) (lockTime = MAX_LOCK_MINS));
+-  }
+ 
+   lockTime *= 60; /* convert to seconds */
+ }
+@@ -306,11 +301,6 @@
+     error1 ("Setting kill time to minimum value of %ld minute(s).\n",
+             (long) (killTime = MIN_KILL_MINS));
+   }
+-  else if (killTime > MAX_KILL_MINS)
+-  {
+-    error1 ("Setting kill time to maximum value of %ld minute(s).\n",
+-            (long) (killTime = MAX_KILL_MINS));
+-  }
+ 
+   killTime *= 60; /* convert to seconds */
+ }
+@@ -582,12 +572,12 @@
+   error0 (" -help               : print this message and exit.\n");
+   error0 (" -version            : print version number and exit.\n");
+   error0 (" -time mins          : time before locking the screen");
+-  error2 (" [%d <= mins <= %d].\n", MIN_LOCK_MINS, MAX_LOCK_MINS);
++  error1 (" [%d <= mins].\n", MIN_LOCK_MINS);
+   error0 (" -locker locker      : program used to lock.\n");
+   error0 (" -nowlocker locker   : program used to lock immediately.\n");
+   error0 (" -killtime killmins  : time after locking at which to run\n");
+-  error2 ("                       the killer [%d <= killmins <= %d].\n",
+-                                  MIN_KILL_MINS, MAX_KILL_MINS);
++  error1 ("                       the killer [%d <= killmins].\n",
++                                  MIN_KILL_MINS);
+   error0 (" -killer killer      : program used to kill.\n");
+   error0 (" -notify margin      : notify this many seconds before locking.\n");
+   error0 (" -notifier notifier  : program used to notify.\n");
+--- a/xautolock.man
++++ b/xautolock.man
+@@ -130,7 +130,7 @@
+ .TP 
+ \fB\-time\fR
+ Specifies the primary timeout interval. The default is 10 minutes,
+-the minimum is 1 minute, and the maximum is 1 hour.
++the minimum is 1 minute.
+ .TP 
+ \fB\-locker\fR
+ Specifies the \fIlocker\fR to be used. The default is xlock. Notice that if
+@@ -145,7 +145,7 @@
+ This timer is only active as long as the \fIlocker\fR is running, and is 
+ reset each time user activity is detected. If it expires before the 
+ \fIlocker\fR exits, the \fIkiller\fR command is run. The default is
+-20 minutes, the minimum is 10 minutes, and the maximum is 2 hours.
++20 minutes, the minimum is 10 minutes.
+ This option is only useful in conjunction with \fB\-killer\fR.
+ .TP 
+ \fB\-killer\fR

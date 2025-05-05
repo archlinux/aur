@@ -1,0 +1,19 @@
+Description: Fix HPPA build problem for Debian
+ The Imakefile originally assumed to have a different environment regarding DPMS/screensaver on HPPA. This is not true for Debian since HPPA does not mean HP-UX
+Author: Roland Stigge <stigge@antcom.de>
+Bug-Debian: http://bugs.debian.org/577682
+
+--- xautolock-2.2.orig/Imakefile
++++ xautolock-2.2/Imakefile
+@@ -5,11 +5,7 @@
+ /*
+  *  Tell it what extensions to use.
+  */
+-#ifndef HPArchitecture
+ #define HasScreenSaver 1  /* By default assume to have MIT ScreenSaver, */
+-#else
+-#define HasScreenSaver 0  /* except on HP machines (sigh...)            */
+-#endif
+ 
+ #define HasXidle       0  /* By default assume not to have Xidle.       */
+ 
