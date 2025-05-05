@@ -1,13 +1,13 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-qemu
 _srcname=qemu
-pkgver=9.2.2
+pkgver=9.1.3
 pkgrel=1
 pkgdesc="A xen-specific QEMU, built to qemu-builtin standards"
 arch=("x86_64")
 url="https://www.qemu.org"
 license=(GPL2 LGPL2.1)
-depends=(curl xen numactl)  # lot of deps are apparently covered by xen
+depends=(curl xen numactl spice usbredir seabios)  # lot of deps are apparently covered by xen
 makedepends=(ninja meson python-packaging)
 provides=(qemu-xen xen-qemu xen-qemu-builtin)
 conflicts=(xen-qemu-builtin)
@@ -15,7 +15,7 @@ replaces=(xen-qemu-builtin)
 source=(
 	https://download.qemu.org/qemu-${pkgver}.tar.xz{,.sig}
 )
-sha512sums=('b010876da9f91da01dbb9e06705a1358d5f062d0fdd4ad5c8cd8ce3fd43adcefcf72a61216eb8d415281f6607b945ce1cfb6b5fc5692ada9163e8f05b7fb5533'
+sha512sums=('e7b938e72eb4a8a4a6680ce3b282a4e5cbd1ad30003bed959e51ea2621acea7434b4366ef6559e3622fac8865ad212702f393ba7698be38cf2fc8f264b951318'
             'SKIP')
 
 
@@ -32,6 +32,9 @@ build() {
 
 	"${srcdir}/${_srcname}-${pkgver}/configure" \
 		--enable-xen \
+		--enable-xen-pci-passthrough \
+		--enable-spice \
+		--enable-usb-redir \
 		--target-list=i386-softmmu \
 		--enable-trace-backends=log \
 		--prefix=/usr \
@@ -40,16 +43,17 @@ build() {
 		--extra-cflags="-DXC_WANT_COMPAT_EVTCHN_API=1  -DXC_WANT_COMPAT_GNTTAB_API=1 -DXC_WANT_COMPAT_MAP_FOREIGN_API=1 -DXC_WANT_COMPAT_DEVICEMODEL_API=1" \
 		--extra-ldflags=-Wl,-rpath,/usr/lib/xen/lib \
 		--bindir=/usr/lib/xen/bin \
-		--datadir=/usr/share/qemu-xen \
+		--datadir=/usr/share/xen-qemu \
 		--localstatedir=/var \
 		--docdir=/usr/lib/xen/share/doc \
 		--mandir=/usr/lib/xen/share/man \
 		--libexecdir=/usr/lib/xen/libexec \
-		--firmwarepath=/usr/lib/xen/share/qemu-firmware \
+		--firmwarepath=/usr/share/qemu \
 		--disable-kvm \
 		--disable-docs \
 		--disable-guest-agent \
-		--python=python3 \
+		--disable-fdt \
+		--disable-install-blobs \
 		--cpu=x86_64 
 
 	ninja
