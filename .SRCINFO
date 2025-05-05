@@ -1,7 +1,7 @@
 pkgbase = uim
 	pkgdesc = Multilingual input method library
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uim/uim
 	arch = x86_64
 	license = BSD-3-Clause

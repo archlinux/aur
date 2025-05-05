@@ -5,7 +5,7 @@
 
 pkgname=uim
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Multilingual input method library"
 url="https://github.com/uim/uim"
 license=(BSD-3-Clause)
@@ -56,8 +56,9 @@ build() {
     --with-anthy-utf8 \
     --with-skk
 
-  # Silence very noisy compiler warning
-  make CFLAGS+="-Wno-deprecated-declarations"
+  # -Wno-deprecated-declarations          | Silence very noisy compiler warning
+  # -Wno-error=incompatible-pointer-types | https://github.com/uim/uim/issues/231#issuecomment-2849152793
+  make CFLAGS+="-Wno-deprecated-declarations -Wno-error=incompatible-pointer-types"
 }
 
 # check() {
