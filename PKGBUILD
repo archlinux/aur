@@ -16,7 +16,7 @@
 pkgname=dovecot-with-stemmer
 _pkgname=dovecot
 pkgver=2.3.21.1
-pkgrel=3
+pkgrel=4
 
 pkgdesc="An IMAP and POP3 server written with security primarily in mind"
 url="https://dovecot.org/"
@@ -24,14 +24,14 @@ arch=('x86_64')
 license=('MIT'
          'LGPL-2.1-only')
 
-depends=('krb5' 'openssl' 'sqlite' 'mariadb-libs' 'libsodium'
+depends=('krb5' 'openssl' 'sqlite' 'mariadb-libs' 'libsodium' 'libstemmer'
          'postgresql-libs' 'bzip2' 'lz4' 'expat' 'curl' 'pam' 'systemd-libs')
 makedepends=('libcap' 'libldap' 'lua53' 'xz' 'clucene' 'systemd')
 optdepends=('libldap: ldap plugin'
             'lua53: LUA auth and push support'
             'clucene: alternative FTS indexer')
 
-provides=('imap-server' 'pop3-server')
+provides=('imap-server' 'pop3-server' "dovecot=${pkgver}")
 conflicts=('dovecot' 'dovecot-stemmer')
 backup=('etc/pam.d/dovecot')
 
