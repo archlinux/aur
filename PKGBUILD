@@ -1,25 +1,24 @@
-# Contributor: Darkest Medium <darkestmedium@gmail.com>
+# Contributor: Darkest Medium <darkestmedium at gmail dot com>
 
 pkgname=void-git
 _pkgname=void
 pkgver=1.99.3.r2303.gcf0728f4
-pkgrel=3
-pkgdesc="The open-source Cursor alternative."
+pkgrel=4
+pkgdesc="The open-source Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
 options=(!strip !debug)
 _elnum=34
-depends=(
-	electron${_elnum}
+depends=( electron${_elnum} ripgrep # replacements
 	libx11
 	libxkbfile
 	libsecret
 	gnupg
 	libnotify
 	libxss
-	lsof #terminal splitting (https://github.com/Microsoft/vscode/issues/62991)
+	lsof # terminal splitting (https://github.com/Microsoft/vscode/issues/62991)
 	shared-mime-info
 	xdg-utils # opening web links
 	alsa-lib
@@ -57,7 +56,7 @@ pkgver() {
 }
 
 build() {
-	#export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	#export ELECTRON_SKIP_BINARY_DOWNLOAD=1 #does nothing
 	cd "${_pkgname}"
 	# Clean npm cache and remove existing node_modules
 	npm cache clean --force
@@ -66,10 +65,8 @@ build() {
 	# Install dependencies with legacy peer deps flag to handle dependency conflicts
 	npm install --legacy-peer-deps
 	npm install ajv@latest ajv-keywords@latest --legacy-peer-deps
-
 	# Build react because it fails for some reason
 	npm run buildreact
-
 	# Bundle it
 	npm run gulp vscode-linux-x64
 }
@@ -97,4 +94,7 @@ package() {
   install -Dm755 run.sh "${pkgdir}/usr/share/void/void-latestron"
   # resources
   cp -r --reflink=auto "${_pkg}/resources" "${pkgdir}/usr/share/void/resources"
+  # ripgrep
+  rm "${pkgdir}"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/LICENSE
+  ln -svf /usr/bin/rg "${pkgdir}"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/bin/rg
 }
