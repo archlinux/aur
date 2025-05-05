@@ -28,8 +28,6 @@ build() {
     --search-prefix /usr \
     --global-cache-dir "${srcdir}/zig-global-cache" \
     --verbose \
-    -Dtarget=native-linux.6.1-gnu.2.39 \
-    -Dcpu=baseline \
     -Doptimize=ReleaseSafe
 }
 
