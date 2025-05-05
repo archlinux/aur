@@ -1,18 +1,18 @@
 pkgbase = apriltag
-	pkgdesc = AprilTag is a visual fiducial system popular for robotics research
-	pkgver = 3.4.2
+	pkgdesc = visual fiducial system popular for robotics research
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://april.eecs.umich.edu/software/apriltag
 	arch = x86_64
-	license = BSD
+	license = BSD-2-Clause
 	makedepends = cmake
 	makedepends = python-numpy
-	source = https://github.com/AprilRobotics/apriltag/archive/v3.4.2.tar.gz
-	sha512sums = 2e7edda62e1f196ac954cb999d11a43e81e4e8a5de296b7ce28744a0ec3a4a3209b413e2328aaebce61b2eef782209855ca1112c489bbcb5437387ab6379a849
+	source = https://github.com/AprilRobotics/apriltag/archive/v3.4.3.tar.gz
+	b2sums = e25dd2da60451daa45dfd45522ebbb18469b09f2376bf44880029fede25f3def4af2fa889b77f1aa8e21beb338ee39b849275420df599c96079c89e813ab2fac
 
 pkgname = apriltag
 
 pkgname = python-apriltag
-	pkgdesc = AprilTag is a visual fiducial system popular for robotics research (python bindings)
+	pkgdesc = visual fiducial system popular for robotics research (python bindings)
 	depends = apriltag
 	depends = python-numpy
