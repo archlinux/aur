@@ -15,7 +15,12 @@ depends=(
 	python-pyyaml
 	python-trakit
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(
+	python-build
+	python-installer
+	python-poetry-core
+	python-wheel
+)
 checkdepends=(
     flake8
     mypy
