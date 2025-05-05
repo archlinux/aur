@@ -5,7 +5,7 @@
 _pkgname=pasystray
 pkgname=${_pkgname}-wayland
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PulseAudio system tray (a replacement for padevchooser) built for Wayland support'
 arch=('x86_64')
 provides=('pasystray')

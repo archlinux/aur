@@ -1,7 +1,7 @@
 pkgbase = pasystray-wayland
 	pkgdesc = PulseAudio system tray (a replacement for padevchooser) built for Wayland support
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/christophgysin/pasystray
 	arch = x86_64
 	license = LGPL
