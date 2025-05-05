@@ -2,8 +2,8 @@
 # Contributor: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="Utility oriented to KDE translation teams. You can have various local repository copies, generate projects for Lokalize, checks and corrections using Pology and more."
 arch=('x86_64' 'i686')
 url="http://www.eloihr.net/ksvnupdater"
@@ -21,7 +21,7 @@ depends=(karchive
         kcrash
         kwallet
         kxmlgui)
-makedepends=('extra-cmake-modules' 'kdoctools')
+makedepends=('extra-cmake-modules' 'kdoctools' 'vulkan-headers')
 optdepends=('git: download Scripty and Pology binaries'
             'lokalize: file translations'
             'kdiff3: conflict merge'
@@ -31,10 +31,11 @@ optdepends=('git: download Scripty and Pology binaries'
             'pology-git: translations checks. Download also available in ksvnupdater'
             'python-pyenchant: spell checking functionality (needs a dictionary)'
             'poxml: creating documentation'
-            'hashdeep: downloading documentation files')
+            'hashdeep: downloading documentation files'
+            'vulkan-icd-loader: Vulkan support')
 source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('73a11ff46f3790d84e7d3ee1307f77a6')
-sha1sums=('ed9ae0e7c6d47b5233b50864f7f849f3c131a4c0')
+md5sums=('538fe40b1e8db017594830b28a20cfbe')
+sha1sums=('13974a5ff2da9778dad60f87f49d62621c0510ed')
 OPTIONS+=(!debug)
 
 build() {
