@@ -1,0 +1,35 @@
+diff --git a/src/filesystem.cpp b/src/filesystem.cpp
+index c9726f267f0..f10cc988c74 100644
+--- a/src/filesystem.cpp
++++ b/src/filesystem.cpp
+@@ -30,13 +30,15 @@
+ #include "serialization/unicode.hpp"
+ #include "utils/general.hpp"
+ 
++#define BOOST_PROCESS_VERSION 1
+ #include <boost/algorithm/string/predicate.hpp>
+ #include <boost/filesystem.hpp>
+ #include <boost/filesystem/fstream.hpp>
+ #include <boost/format.hpp>
+ #include <boost/iostreams/device/file_descriptor.hpp>
+ #include <boost/iostreams/stream.hpp>
+-#include <boost/process.hpp>
++#include <boost/process/v1/search_path.hpp>
++#include <boost/algorithm/string/replace.hpp>
+ #include "game_config_view.hpp"
+ 
+ #ifdef _WIN32
+diff --git a/src/game_launcher.cpp b/src/game_launcher.cpp
+index 159cfa7acdc..043813373d5 100644
+--- a/src/game_launcher.cpp
++++ b/src/game_launcher.cpp
+@@ -61,7 +61,8 @@
+ #ifdef _WIN32
+ #include <boost/process/windows.hpp>
+ #endif
+-#include <boost/process.hpp>
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
+ #include <cstdlib>   // for system
+ #include <new>
+ #include <utility> // for pair
