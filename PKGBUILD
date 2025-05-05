@@ -1,8 +1,8 @@
-# Maintainer: Jah Way <jahway603 at protonmail dot com>
+# Maintainer: Jah Way <jahway603 at tutanota dot de>
 
 pkgname=oxen-core-bin
 _pkgname=oxen-core
-pkgver=11.1.1
+pkgver=11.2.0
 pkgrel=1
 pkgdesc='OXEN core for cryptocurrency based on Monero (Loki)'
 url='https://github.com/oxen-io/oxen-core'
@@ -13,7 +13,7 @@ conflicts=('oxen-core' 'loki-core-git')
 provides=('oxen-core')
 source=("$url/releases/download/v$pkgver/oxen-linux-$arch-$pkgver.tar.xz"
         "https://raw.githubusercontent.com/oxen-io/oxen-core/dev/LICENSE")
-sha256sums=('c772657d5f7568fb30d45828140e1b54546bc25a4895c1ede2263936f00682f8'
+sha256sums=('9d35b641ca107a59ba3bb082744c18561294c5ea910a323124c36a06e1c96f35'
             '11075d9b10225bbaa5d77801888ab15aa13bef9e53a3fea442eb9f2f02ae818b')
 
 package() {
