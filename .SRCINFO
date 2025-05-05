@@ -1,6 +1,6 @@
 pkgbase = ignition-startup
 	pkgdesc = Manage startup apps and scripts
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/flattool/ignition
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = ignition-startup
 	makedepends = typescript
 	depends = gjs
 	depends = libadwaita
-	source = git+https://github.com/flattool/ignition.git#tag=2.1.0
+	source = git+https://github.com/flattool/ignition.git#tag=2.1.1
 	source = git+https://gitlab.gnome.org/BrainBlasted/gi-typescript-definitions.git
-	sha256sums = 45b70d01b96b6d538fa42cfd110c062c263d7118b52249bbc3eb8538bc697c7e
+	sha256sums = a2f7216c92ea907ac2db7409e1c0717fcb29c887ad103108bfa4476f7fb60117
 	sha256sums = SKIP
 
 pkgname = ignition-startup
