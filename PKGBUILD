@@ -30,7 +30,7 @@ optdepends=(
     'python-enzyme: Increase the number of supported formats and information'
 )
 source=(
-	"https://github.com/ratoaq2/trakit/archive/refs/tags/${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/ratoaq2/trakit/archive/refs/tags/${pkgver}.tar.gz"
 )
 
 prepare() {
