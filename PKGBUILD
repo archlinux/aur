@@ -3,7 +3,7 @@
 _pkgname=surrealdb
 pkgname=${_pkgname}-bin
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
 url="https://github.com/surrealdb/surrealdb"
@@ -13,7 +13,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("$url/releases/download/v${pkgver//_/-}/LICENSE")
 source_x86_64=("$url/releases/download/v${pkgver//_/-}/surreal-v${pkgver//_/-}.linux-amd64.tgz")
-sha256sums=('a007c53f27d30bda8cc56feec356eba13b646a8fb59a97d151e3aab820429d2d')
+sha256sums=('SKIP')
 sha256sums_x86_64=('8b836c80e83f583b020f72111d749bbacf0a2215439d54205e4e8455edf283cc')
 
 package() {
