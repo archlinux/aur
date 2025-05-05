@@ -1,10 +1,26 @@
 post_install() {
     echo ""
-    echo "Set colors using the options below in .rtorrent.rc:"
+    echo "NOTE: color support was implemented in rtorrent 0.15.2."
+    echo "Please remove the below config in .rtorrent.rc:"
     echo "Options: color_active_fg, color_inactive_fg, color_dead_fg, color_finished_fg"
     echo "Options: color_active_bg, color_inactive_bg, color_dead_bg, color_finished_bg"
     echo "Colors: 0 = black 1 = red 2 = green 3 = yellow 4 = blue 5 = magenta 6 = cyan 7 = white"
     echo "Example: color_finished_fg = 1"
+    echo ""
+    echo "Instead set colors using the options example below:"
+    echo "ui.torrent_list.layout.set = \"compact\""
+    echo "ui.color.title.set=\"bold bright white on blue\""
+    echo "ui.color.footer.set=\"bold bright white on blue\""
+    echo "ui.color.focus.set = reverse"
+    echo "ui.color.complete.set = magenta"
+    echo "ui.color.seeding.set = magenta"
+    echo "ui.color.stopped.set = yellow"
+    echo "ui.color.queued.set = blue"
+    echo "ui.color.incomplete.set = red"
+    echo "ui.color.leeching.set = green"
+    echo "ui.color.odd.set = dim"
+    echo ""
+    echo "More information found here: https://github.com/rakshasa/rtorrent/blob/master/src/display/color_map.h"
 }
 
 post_upgrade() {

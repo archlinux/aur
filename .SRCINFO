@@ -1,7 +1,7 @@
 pkgbase = rtorrent-vi-color
 	pkgdesc = Ncurses BitTorrent client based on libTorrent with vi like keybindings and color patch.
 	pkgver = 0.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libtorrent.rakshasa.no
 	install = rtorrent-vi-color.install
 	arch = i686
