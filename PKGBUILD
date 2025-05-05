@@ -1,7 +1,7 @@
 # Contributor: Patrick Mischke
 pkgname='python-ibmcloudant'
 _name='ibmcloudant'
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Python Library for Cloudant and CouchDB Access. Successor of python-cloudant"
 url="https://github.com/IBM/cloudant-python-sdk"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'python-flit' 'python-installer')
 license=('Apache-2.0')
 arch=('any')
 source=("https://github.com/IBM/cloudant-python-sdk/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3ba4fae93e137b4911e7d14add04f17d39df68fbdc9a9c0674234534bdec42b5')
+sha256sums=('f8c834dac12a97670d6b81d39cbbd3ea74f5b26b4a88f5b874cb61dc94cf306b')
 
 build() {
   cd "cloudant-python-sdk-$pkgver"
