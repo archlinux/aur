@@ -1,14 +1,15 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: aquova
 
 _pkgname=pocket-sync
 pkgname=$_pkgname-bin
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI to do stuff with the Analogue Pocket'
 url='https://github.com/neil-morrison44/pocket-sync'
 license=('LGPL3')
 arch=('x86_64')
-depends=('fuse2' 'xdg-desktop-portal')
+depends=('fuse2' 'webkit2gtk-4.1' 'xdg-desktop-portal')
 makedepends=('util-linux')
 provides=($_pkgname)
 conflicts=($_pkgname)

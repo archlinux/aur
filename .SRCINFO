@@ -1,12 +1,13 @@
 pkgbase = pocket-sync-bin
 	pkgdesc = A GUI to do stuff with the Analogue Pocket
 	pkgver = 5.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neil-morrison44/pocket-sync
 	arch = x86_64
 	license = LGPL3
 	makedepends = util-linux
 	depends = fuse2
+	depends = webkit2gtk-4.1
 	depends = xdg-desktop-portal
 	provides = pocket-sync
 	conflicts = pocket-sync
