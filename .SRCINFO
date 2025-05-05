@@ -1,6 +1,6 @@
 pkgbase = python-pyvhdlmodel
 	pkgdesc = An abstract VHDL language model
-	pkgver = 0.28.0
+	pkgver = 0.31.2
 	pkgrel = 1
 	url = https://github.com/VHDL/pyVHDLModel
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pyvhdlmodel
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-pytooling
-	source = pyVHDLModel-0.28.0.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v0.28.0.tar.gz
-	sha256sums = 261846640e113a6dee241e5888a74951e0c6c074c1aafd7132aa676db17dc195
+	source = pyVHDLModel-0.31.2.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v0.31.2.tar.gz
+	sha256sums = aa7ac198a27b9ea744a85ab08683bb4f43414198b518f1a53a9e3db2b23a5106
 
 pkgname = python-pyvhdlmodel

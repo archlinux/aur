@@ -2,7 +2,7 @@
 
 pkgname=python-pyvhdlmodel
 pkgdesc='An abstract VHDL language model'
-pkgver=0.28.0
+pkgver=0.31.2
 pkgrel=1
 arch=('any')
 url='https://github.com/VHDL/pyVHDLModel'
@@ -27,8 +27,13 @@ source=(
   "$_pyname-$pkgver.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '261846640e113a6dee241e5888a74951e0c6c074c1aafd7132aa676db17dc195'
+  'aa7ac198a27b9ea744a85ab08683bb4f43414198b518f1a53a9e3db2b23a5106'
 )
+
+prepare() {
+  cd "$_pyname-$pkgver"
+  sed -i -e "s/pyTooling ~= 8.4/pyTooling/" pyproject.toml
+}
 
 build() {
   cd "$_pyname-$pkgver"
@@ -37,12 +42,13 @@ build() {
 
 check() {
   cd "$_pyname-$pkgver"
+  rm -rf testenv
   python -m venv --system-site-packages testenv
-  testenv/bin/python -m installer dist/"$_pyname-$pkgver"*.whl
+  testenv/bin/python -m installer dist/pyvhdlmodel-"$pkgver"*.whl
   testenv/bin/python -m pytest -v tests/unit
 }
 
 package() {
   cd "$_pyname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/"$_pyname-$pkgver"*.whl
+  python -m installer --destdir="$pkgdir" dist/pyvhdlmodel-"$pkgver"*.whl
 }
