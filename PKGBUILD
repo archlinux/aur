@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver//+/-}.tar.gz::https://codeberg.org/redict/redict/ar
         redict.tmpfiles
         redict.conf-sane-defaults.patch
         redict-use-system-jemalloc.patch)
-sha512sums=('440da8cef13af1b690b5a601466be659276d0b4b68fe0e12216864e4c580fa2d8bed0be4153f2129f691f923173a9bb236231e639cd82b9d31a16bc8418a5275'
+sha512sums=('7fbdee54f26d59d74bab2b9fa619cb7c0135aebb38ff891423f4963ca593e20018f9f789288eb3ebc769f02a05da3fe35033f75d42902bb99421cae5689f5e88'
             'bafdd8d5bb16eb651e6dbed2fbd85c8a2264e5063cdc590add10f79879cb0e3dd3ea65635cb0f2502b272b9ad08704461ebec2523eb5263130ae01b1e5fc6983'
             'b72ee96c78e9c2e760f8241f109c7c91ebf0d5ba699af7e05e28e0f4eab8864e43673fca074a11730223e22b93f109c9739ea92f429332f7dc37ae8d6d7ad691'
             '94556abeb7eba84d428130e9a0848865ddfa354e7652ec7a1a1d9ad4100a95fea92ce2be55abcf98b1ae176cc204d475e43294bb901c7aee3fa6cefbd759c8be'
