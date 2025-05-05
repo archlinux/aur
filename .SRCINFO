@@ -8,7 +8,7 @@ pkgbase = afni-atlases
 	optdepends = afni
 	source = https://afni.nimh.nih.gov/pub/dist/atlases/afni_atlases_dist.tgz
 	source = LICENSE::https://afni.nimh.nih.gov/pub/dist/src/README.copyright
-	sha256sums = 4e0077de8234db0bec7a7f25cbb3e34de842269c55a4132aa47aa5c2324911f7
+	sha256sums = a19a9b0effcf10a3e13b0715dc34e48f5e8460a4e18c9e20a333544bd737d7a9
 	sha256sums = 86d6a552038e50f15b618c16322cbb342d6c359cd77f3d9c826c220b7542e8e7
 
 pkgname = afni-atlases
