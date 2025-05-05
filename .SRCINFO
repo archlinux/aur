@@ -1,7 +1,7 @@
 pkgbase = chiaki-ng
 	pkgdesc = Free and Open Source PlayStation Remote Play Client
 	pkgver = 1.9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://streetpea.github.io/chiaki-ng/
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = chiaki-ng
 	optdepends = libva-mesa-driver: alternative vaapi backend for AMD GPUs
 	provides = chiaki
 	conflicts = chiaki
-	source = git+https://github.com/streetpea/chiaki-ng.git?commit=e57c8ed86332a2802991ac25ab2e2bf10a6312c3
+	source = git+https://github.com/streetpea/chiaki-ng.git#commit=e57c8ed86332a2802991ac25ab2e2bf10a6312c3
 	source = nanopb.patch
 	sha256sums = SKIP
 	sha256sums = dcf9f312289e9181fe8a4872534acfab1d51d03fd3ce0a2201a79c78018369b6
