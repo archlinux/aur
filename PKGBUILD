@@ -9,7 +9,7 @@ pkgdesc="FIDO2/Passkey compatible authenticator implementation"
 arch=('aarch64' 'x86_64')
 url="https://github.com/Zig-Sec/${_Name}"
 license=('custom:None')
-depends=('glibc')
+depends=('zigenity')
 makedepends=('zig>=0.14.0' 'zig<0.15.0')
 _pkgsrc="${_Name}-${pkgver}"
 noextract=()
