@@ -17,19 +17,19 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('9082fa79688a875a386f9266e4f09efaeff5d14ad1288a710f6fb730974f3040')
 
 build() {
-	cd "mob-${pkgver}"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o mob
+  cd "mob-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build -o mob
 }
 
 package() {
-	cd "mob-${pkgver}"
-	install -vDm 755 mob -t "${pkgdir}/usr/bin/"
-	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  cd "mob-${pkgver}"
+  install -vDm 755 mob -t "${pkgdir}/usr/bin/"
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
