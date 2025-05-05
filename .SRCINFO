@@ -1,6 +1,6 @@
 pkgbase = mopidy-iris
 	pkgdesc = A web-based frontend for Mopidy
-	pkgver = 3.69.3
+	pkgver = 3.70.0
 	pkgrel = 1
 	url = https://github.com/jaedb/iris
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mopidy-iris
 	depends = python-tornado
 	optdepends = mopidy-local: local library support
 	optdepends = mopidy-spotify: spotify support
-	source = Mopidy-Iris-3.69.3.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Iris/Mopidy-Iris-3.69.3.tar.gz
-	sha256sums = 3c40179daa62cb1a338a3474e7723bcd061160b783395ef5f4bd106cedabe2be
+	source = mopidy_iris-3.70.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mopidy_iris/mopidy_iris-3.70.0.tar.gz
+	sha256sums = 99dff56e54d3b6388001bfe388b13611f8929485301206bc53b3a2b8a6b8eba9
 
 pkgname = mopidy-iris
