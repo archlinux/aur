@@ -23,7 +23,7 @@ pkgver=2406
 _build1=8.13.0
 _build2=9995429239
 _cart="CART25FQ2_LIN64_${pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 options=('!debug')
@@ -97,7 +97,7 @@ package_vmware-horizon-client() {
 	conflicts=('vmware-view-open-client' 'vmware-view-open-client-beta' 'vmware-view-client'
 		'vmware-horizon-pcoip' 'vmware-horizon-teams-optimization')
 	replaces=('vmware-horizon-pcoip' 'vmware-horizon-teams-optimization')
-	depends=('binutils' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'libudev0-shim' 'libxml2' 'libxss'
+	depends=('binutils' 'expat' 'gcc-libs' 'glib2' 'gtk3' 'libudev0-shim' 'libxml2-legacy' 'libxss'
 		'libxtst' 'openssl' 'vmware-keymaps')
 	optdepends=('alsa-lib: audio support via alsa'
 		'freerdp: RDP remote desktop connections'
@@ -159,7 +159,7 @@ package_vmware-horizon-integrated-printing() {
 
 package_vmware-horizon-mmr() {
 	pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop - multimedia redirection'
-	depends=('vmware-horizon-client' 'gst-plugins-base' 'libpulse' 'libxml2' 'glib2')
+	depends=('vmware-horizon-client' 'gst-plugins-base' 'libpulse' 'libxml2-legacy' 'glib2')
 	optdepends=('gstreamer-vaapi: MMR with Intel VAAPI'
 	            'gst-plugins-bad: MMR with NVIDIA VDPAU')
 
