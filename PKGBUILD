@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=edor
 pkgver=1.x71
-pkgrel=2
+pkgrel=3
 pkgdesc="CUI text editor"
 arch=('any')
 url="https://github.com/colin-i/edor"
