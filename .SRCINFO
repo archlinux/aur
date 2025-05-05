@@ -31,7 +31,7 @@ pkgbase = gnome-system-monitor-linuxmint
 	provides = gnome-system-monitor-gtk3
 	conflicts = gnome-system-monitor
 	conflicts = gnome-system-monitor-gtk3
-	source = http://packages.linuxmint.com/pool/upstream/g/gnome-system-monitor/gnome-system-monitor_45.0.2-2+wilma.tar.xz
+	source = http://packages.linuxmint.com/pool/upstream/g/gnome-system-monitor/gnome-system-monitor_45.0.2-1+wilma.tar.xz
 	sha256sums = 700c60314b195bcee08c5e73b439bb5e41e8fc28e5732c02e4a36386bcd5742d
 
 pkgname = gnome-system-monitor-linuxmint
