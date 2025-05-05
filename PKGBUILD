@@ -5,7 +5,7 @@
 pkgname=ect
 _pkgname=efficient-compression-tool
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc='File compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files'
 url="https://github.com/fhanau/$_pkgname"
 arch=('x86_64')
@@ -30,7 +30,8 @@ prepare() {
 build() {
 	cmake -B build -S "$_pkgname"/src \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
