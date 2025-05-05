@@ -1,5 +1,5 @@
 pkgbase = mopidy-iris
-	pkgdesc = A Mopidy Web client that utilizes the Spotify and EchoNest frameworks. (Formerly Spotmop)
+	pkgdesc = A web-based frontend for Mopidy
 	pkgver = 3.69.3
 	pkgrel = 1
 	url = https://github.com/jaedb/iris
