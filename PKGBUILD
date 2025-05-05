@@ -7,8 +7,8 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-qt6-git
-pkgver=3.2.1.r3.gb088d43
-pkgrel=2
+pkgver=3.2.81.r7.g9535e59
+pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
@@ -29,7 +29,6 @@ optdepends=("libmtp: support for portable media devices"
             )
 conflicts=(amarok)
 provides=(amarok)
-options=(!lto)
 source=("git+https://invent.kde.org/multimedia/amarok.git")
 sha512sums=("SKIP")
 
@@ -40,14 +39,14 @@ pkgver() {
 
 build() {
   local _flags=(
-    -DBUILD_WITH_QT6=TRUE
     -DWITH_GPODDER=OFF
     -DWITH_IPOD=OFF
     -DWITH_LASTFM=OFF
+    -DBUILD_TESTING=OFF
   )
 
   cmake -B build -S "amarok" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
 

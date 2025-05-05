@@ -1,7 +1,7 @@
 pkgbase = amarok-qt6-git
 	pkgdesc = The powerful music player for KDE
-	pkgver = 3.2.1.r3.gb088d43
-	pkgrel = 2
+	pkgver = 3.2.81.r7.g9535e59
+	pkgrel = 1
 	url = https://apps.kde.org/amarok/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -62,7 +62,6 @@ pkgbase = amarok-qt6-git
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
 	provides = amarok
 	conflicts = amarok
-	options = !lto
 	source = git+https://invent.kde.org/multimedia/amarok.git
 	sha512sums = SKIP
 
