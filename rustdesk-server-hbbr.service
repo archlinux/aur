@@ -10,7 +10,7 @@ EnvironmentFile=-/etc/default/rustdesk-server-hbbr
 ExecStart=/usr/bin/rustdesk-server-hbbr
 Restart=always
 RestartSec=10
-LimitNOFILE=100000
+LimitNOFILE=ininity
 
 [Install]
 WantedBy=multi-user.target
