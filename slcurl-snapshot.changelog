@@ -1,0 +1,23 @@
+
+Changes since 0.2.1
+1. demo/translate: Updated the script to reflect changes in the
+   babelfish server.
+2. doc/tm/curl.tm: Documentation tweaks (Agathoklis D. Hatzimanikas).
+3. src/Makefile.in: Added support for my update_changes_version script
+   for the version number to track the changes.txt file.
+4. Added some documentation for babelfish, and moved some code from
+   the translate demo into babelfish.sl (Manfred Hanke).
+5. src/curl-module.c: Added a couple comments on the use of
+   CURLOPT_PRIVATE by the module, and fixed a pointer related warning
+   pertaining to its use.
+6. configure: parse /etc/ld.so.conf to look for lib paths.
+7. src/curl-module.c: Allow NULL to be used for string-valued options
+8. src/curl-module.c: Added CURLOPT_USE_SSL (deprecated CURLOPT_FTP_SSL)
+   and CURLOPT_ACCEPT_ENCODING (deprecated CURLOPT_ENCODING) (John Houck)
+9. src/curl-module.c: If CURLOPT_URL is used to set the URL for a
+   descriptor, then update the EZ_Type url field.
+10. autoconf/scripts/getsyslibs.sh: Updated to better support
+    multiarch on linux
+11. Updated aclocal.m4; added support for CPPFLAGS (based upon patch
+    from Rafael Laboissière)
+12. Updated for slang-3 migration
