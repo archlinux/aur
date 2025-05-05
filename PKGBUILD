@@ -1,13 +1,11 @@
-# Maintainer: dmsh <dmsh.public.contact@gmail.com>
-
 # Note: After installation must me enabled service 'sudo systemctl enable --now vpnagentd.service'
 pkgname=cisco-secure-client
 pkgver=5.1.9.113
-pkgrel=2
+pkgrel=3
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 url='https://www.cisco.com/site/us/en/products/security/secure-client/index.html'
 arch=('x86_64')
-depends=('libxml2' 'ca-certificates')
+depends=('libxml2-legacy' 'ca-certificates')
 optdepends=(
     'hicolor-icon-theme: required by desktop shortcuts'
     'glib2: required by vpnui'
