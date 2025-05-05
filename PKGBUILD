@@ -3,7 +3,7 @@
 pkgname=musoq
 _pkgname=Musoq
 _pkgauthor=Puchaczov
-pkgver=0.19.2
+pkgver=0.19.3
 pkgrel=1
 pkgdesc="SQL Swiss Army Knife - Engine for Diverse Data Sources"
 arch=('x86_64' 'aarch64')
@@ -15,13 +15,24 @@ depends=('gcc-libs' 'zlib' 'glibc')
 makedepends=('unzip')
 options=('!strip')
 noextract=("${_pkgname}_${pkgver}_${CARCH}.zip")
-source=("musoq.service" "README.md")
+source=("README-${pkgver}.md.1::https://raw.githubusercontent.com/Puchaczov/Musoq/master/README.md"
+        "README-${pkgver}.md.2::https://raw.githubusercontent.com/Puchaczov/Musoq.DataSources/main/readme.md"
+        "README-${pkgver}.md.3::https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/main/README.md"
+        "musoq.service")
 source_x86_64=("${_pkgname}_${pkgver}_${arch[0]}.zip::${_urlcli}/${_pkgname}-linux-x64.zip")
 source_aarch64=("${_pkgname}_${pkgver}_${arch[1]}.zip::${_urlcli}/${_pkgname}-linux-arm64.zip")
-sha256sums=('b3af2729a26bb0cfbdbeef32755e76b5b7f7d65a02d4b9b8fe708f4f096f3ccc'
-            '1918639797b16445fd808ba1df784bef8cbd48410fa3fcd03fc04fc22f86c178')
-sha256sums_x86_64=('e07a03b777b835a0a4476e54d289c92b7bb2f59eeb13b07e620d3149c6eb5974')
-sha256sums_aarch64=('cfe597806aec673abb87dba1952b38a23a857a21e8f1707e474ae73c1dc0989c')
+sha256sums=('0cac195768bf1d15a63510b8b874fbdc01df3d5af7392d12a19b2059d4a1ed8d'
+            '92760606de68ba5adf8858ca9be4354ee59cd692cac1c5df0c7dddcfe1144816'
+            '2ebe5aa1df6cc11a87dd307bdd8a3f7a0bf212295b85464b3a792b0e97b35a1d'
+            'b3af2729a26bb0cfbdbeef32755e76b5b7f7d65a02d4b9b8fe708f4f096f3ccc')
+sha256sums_x86_64=('b93855ac53aabf31ddec391e48894518a01d744d9ae4d60b7ba064ed8b229bdf')
+sha256sums_aarch64=('d5704f17c982d6574db2ff42eb04c502d990015f327a7bcc2a9eee1e5e1fc206')
+
+build() {
+    cd "${srcdir/}" || exit
+
+    sed -s -e '${p;g;}' ./*.md.{1,2,3} | sed -e '$d' > ./README-${pkgver}.md
+}
 
 package() {
     cd "${pkgdir}/" || exit
@@ -36,5 +47,6 @@ package() {
     install -Dm644 "${srcdir}/musoq.service" -t "${pkgdir}/usr/lib/systemd/user/"
 
     install -Dm644 "${pkgdir}/opt/${_pkgname}/license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
