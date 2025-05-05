@@ -1,0 +1,13 @@
+pkgbase = ttf-zed-plex-git
+	pkgdesc = A fork of IBM Flex with ligatures added.
+	pkgver = 1.2.1.r17.g5b1ccf6
+	pkgrel = 1
+	url = https://github.com/zed-industries/zed-fonts/tree/zed-plex
+	arch = any
+	license = OFL
+	source = git+https://github.com/zed-industries/zed-fonts.git#branch=zed-plex
+	sha256sums = SKIP
+
+pkgname = ttf-zed-plex-sans-git
+
+pkgname = ttf-zed-plex-mono-git
