@@ -1,23 +1,45 @@
 post_install() {
     if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
         echo -e "\e[34;1m==>\e[39;1m Reinicie o sistema e conclua a configuração do seu banco no site abaixo: \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Banco do Brasil: https://seg.bb.com.br \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Caixa Econômica Federal: https://imagem.caixa.gov.br/asc/diagnostico.htm \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Sicredi: https://www.sicredi.com.br/diagnostico/html/modulo/index.html \e[0m"
     else
         echo -e "\e[34;1m==>\e[39;1m Restart the system and complete your bank setup on the website below: \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Bank of Brazil: https://seg.bb.com.br \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Federal Savings Bank: https://imagem.caixa.gov.br/asc/diagnostico.htm \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Sicredi: https://www.sicredi.com.br/diagnostico/html/modulo/index.html \e[0m"
     fi
+
+    execstack -s /usr/local/bin/warsaw/core
+    chattr +i /usr/local/bin/warsaw/core
+    chattr +a /usr/local/bin/warsaw/
 
     systemctl enable --now warsaw.service
 }
 
+pre_upgrade() {
+    if systemctl is-active warsaw.service 1>/dev/null; then
+        chattr -i /usr/local/bin/warsaw/core
+        chattr -a /usr/local/bin/warsaw/
+    fi
+}
+
 post_upgrade() {
     if systemctl is-active warsaw.service 1>/dev/null; then
+        execstack -s /usr/local/bin/warsaw/core
+        chattr +i /usr/local/bin/warsaw/core
+        chattr +a /usr/local/bin/warsaw/
+
         systemctl daemon-reload
         systemctl restart warsaw.service
     fi
 }
 
 pre_remove() {
+    chattr -i /usr/local/bin/warsaw/core
+    chattr -a /usr/local/bin/warsaw/
+
     if systemctl is-enabled warsaw.service 1>/dev/null; then
         systemctl disable --now warsaw.service
     fi

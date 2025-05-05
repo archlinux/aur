@@ -1,7 +1,7 @@
 pkgbase = warsaw-bin
 	pkgdesc = Banking security tool developed by GAS Tecnologia
 	pkgver = 2.21.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://diagnostico.gasantifraud.com
 	install = warsaw-bin.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = warsaw-bin
 	depends = dbus
 	depends = procps-ng
 	depends = python
+	depends = execstack
 	optdepends = python-gpgme
 	provides = warsaw
 	conflicts = warsaw

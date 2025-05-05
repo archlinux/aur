@@ -4,12 +4,12 @@
 pkgname=warsaw-bin
 _pkgver=2.21.5-1
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(x86_64)
 url="https://diagnostico.gasantifraud.com"
 license=('GPL-3.0-or-later')
-depends=('dbus' 'procps-ng' 'python')
+depends=('dbus' 'procps-ng' 'python' 'execstack')
 optdepends=('python-gpgme')
 backup=('etc/init.d/warsaw' 'etc/init/warsaw.conf')
 options=('!strip' '!emptydirs')
