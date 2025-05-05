@@ -1,7 +1,7 @@
 pkgbase = zelda64recomp-bin
 	pkgdesc = Static recompilation of Majora's Mask for PC
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Mr-Wiseguy/Zelda64Recomp
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,8 @@ pkgbase = zelda64recomp-bin
 	depends = sdl2
 	depends = vulkan-driver
 	source = https://github.com/Mr-Wiseguy/Zelda64Recomp/releases/download/v1.2.0/Zelda64Recompiled-v1.2.0-Linux-X64.zip
+	source = zelda64recomp.desktop
 	sha256sums = 80111d3166c0fdbfaa6434f9dca71a407068f6d51788c618425ed8f641ae4f4f
+	sha256sums = 78e993db9ddfca475599da78ccbef6140de6267de0f1da8917507e7cab3d872e
 
 pkgname = zelda64recomp-bin

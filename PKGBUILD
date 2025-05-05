@@ -2,7 +2,7 @@
 
 pkgname=zelda64recomp-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Static recompilation of Majora's Mask for PC"
 url='https://github.com/Mr-Wiseguy/Zelda64Recomp'
 arch=("x86_64")
@@ -11,9 +11,11 @@ depends=(freetype2 gtk3 libx11 libxrandr sdl2 vulkan-driver)
 makedepends=(unzip)
 source=(
     "${url}/releases/download/v${pkgver}/Zelda64Recompiled-v${pkgver}-Linux-X64.zip"
+    "zelda64recomp.desktop"
 )
 sha256sums=(
     '80111d3166c0fdbfaa6434f9dca71a407068f6d51788c618425ed8f641ae4f4f'
+    '78e993db9ddfca475599da78ccbef6140de6267de0f1da8917507e7cab3d872e'
 )
 
 # Version 1.2.0 released as a .tar.gz inside of a .zip. This might not be needed for future releases
@@ -27,7 +29,7 @@ package() {
     mkdir -p $pkgdir/usr/bin
 
     install -Dm755 $srcdir/Zelda64Recompiled $pkgdir/opt/$pkgname/${pkgname%-bin}
-    install -Dm644 ../zelda64recomp.desktop -t $pkgdir/usr/share/applications/
+    install -Dm644 $srcdir/zelda64recomp.desktop -t $pkgdir/usr/share/applications/
     cp -r --preserve=mode $srcdir/assets $pkgdir/opt/$pkgname
     install -Dm644 $srcdir/assets/mm-clipped.svg $pkgdir/usr/share/pixmaps/${pkgname%-bin}.svg
 
