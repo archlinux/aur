@@ -1,6 +1,6 @@
 # Maintainer: Aryan Ghasemi <t.me/gnuphile>
 pkgname="reqable-appimage"
-pkgver=2.33.8
+pkgver=2.33.12
 _pkgname='reqable'
 _archive="$_pkgname-$pkgver"
 pkgrel=1
@@ -17,7 +17,7 @@ noextract=( "${_archive}.AppImage" )
 source=(
         "${_archive}.AppImage::https://api.reqable.com/download?platform=linux&arch=${arch}&ext=AppImage"
     )
-sha256sums=('f27ee5279ee5fc0f24005b317a96d1e02ca19421aedca62720d9582fe6b3a9c3')
+sha256sums=('23f79387b6cfe8ea114de4894fcb065dc47094efb38e2a96c3656136a42d1578')
 
 prepare() {
     chmod +x "${_archive}.AppImage"
