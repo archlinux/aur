@@ -1,0 +1,12 @@
+--- src/scangearmp2-source-4.80-1/scangearmp2/include/libcnnet2_type.h	2025-05-05 17:04:25.760668692 +0200
++++ src-patched/scangearmp2-source-4.80-1/scangearmp2/include/libcnnet2_type.h	2025-05-05 17:04:20.784028167 +0200
+@@ -47,9 +47,6 @@
+   CNNET2_SETTING_FLAG_DISCOVER_PACKET_WAIT_MILLIS,
+ } CNNET2_SETTING_FLAGS;
+
+-#ifndef __cplusplus
+-typedef char bool;
+-#endif
+
+ typedef struct {
+   int nicIndex_;
