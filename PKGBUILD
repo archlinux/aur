@@ -1,5 +1,5 @@
 pkgname=gzdoom
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64' 'aarch64')
@@ -36,7 +36,7 @@ source=("gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         'gzdoom.desktop'
         '0001-Fix-file-paths.patch')
 
-sha256sums=('e35b42def0c65087c1d927110a2ca4b4ecdbe705ecab7e56cab7e4dececdc10d'
+sha256sums=('d4f6e6c0ec16a254b509a1fe1ccf778057dd79525deed36fed52d8c60c84f5b0'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
             'b5a0a032398bc00242ff5a354fcae4ca80376781c2ecd28268afa8726e0c54ec')
 
