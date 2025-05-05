@@ -23,7 +23,7 @@ build() {
   cd $_pkgname-$pkgver
 
   autoreconf -vif
-  ./configure \
+  CFLAGS="--std=gnu18" ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
         --disable-x11 \
