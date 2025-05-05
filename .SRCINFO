@@ -1,7 +1,7 @@
 pkgbase = blockdodger
 	pkgdesc = Block Dodging game Made by Glitt3ring.
 	pkgver = 2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.github.com/glitt3ring/blockdodger.git
 	arch = x86_64
 	arch = i386

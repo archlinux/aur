@@ -3,5 +3,5 @@ pre_remove() {
 }
 
 post_remove() {
-	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds* && echo Highscore file has not been removed\, Remove it manually by typing\: \'rm -rf ~/blockdodgerhighscore.txt\'
+	sudo rm -rf /usr/bin/blockdodger* && sudo rm -rf /usr/bin/blockdodgersounds* && echo Highscore file has not been removed\, Remove it manually by typing\: \'rm -rf /home/USERNAME/blockdodgerhighscore.txt\'
 }
