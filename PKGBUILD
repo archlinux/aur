@@ -1,15 +1,15 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=tex-fmt
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="An extremely fast LaTeX formatter written in Rust"
 arch=('x86_64')
 url="https://github.com/WGUNDERWOOD/tex-fmt"
 license=('MIT')
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e9dd89236781ea6f781b00d9452a071311cebd175424baea08bc03e8863f314c')
+sha256sums=('1a1bc787edb6b8f58feb6f0f5f33a6cac04ea583763f6807c6e319d6171b5d4b')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
