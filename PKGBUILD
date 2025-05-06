@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: IIpho3nix <iipho3nix at gmail dot com>
 pkgname=goshs-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A SimpleHTTPServer written in Go, enhanced with features and with a nice design.(Prebuilt version)"
 arch=(
@@ -19,10 +19,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86_64.tar.gz")
-sha256sums_aarch64=('1fed8dd3ef3a92f0ebba1728dfa5ab7ec690873117c78ab57b511f4f7c55d7b2')
-sha256sums_armv7h=('1fed8dd3ef3a92f0ebba1728dfa5ab7ec690873117c78ab57b511f4f7c55d7b2')
-sha256sums_i686=('18f767d72e8eac0b596cc104b7cda72b4b1ef2773f9686f9f7a08df01ebabd2d')
-sha256sums_x86_64=('aadb8c83b5bb4107f37d2caa64d961dbad9a20c60950fae10261c5ff2ce23e78')
+sha256sums_aarch64=('b5e8bb66b2cafd41be21f1e13b2d678cc54fe06215c33ba3fe1abe35c8e71d2f')
+sha256sums_armv7h=('b5e8bb66b2cafd41be21f1e13b2d678cc54fe06215c33ba3fe1abe35c8e71d2f')
+sha256sums_i686=('45258b1cc7f772259ca5c362ce488a7810f1b2e6b8d1de96cec34ac2210911fb')
+sha256sums_x86_64=('b8a8e5d334af3a43af3a299aeab20b3964559fc85066910e4c0bb4c0b63ebeb5')
 package() {
 	install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
