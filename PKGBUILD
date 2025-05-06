@@ -2,8 +2,8 @@
 
 pkgname=disk-burnin-and-testing-git
 _pkgname=${pkgname%-git}
-pkgver=1.1.0.r2.g66c5bb6
-pkgrel=2
+pkgver=1.1.0.r5.g0675845
+pkgrel=1
 pkgdesc="Shell script for burn-in and testing of new or re-purposed drives"
 arch=('any')
 url="https://github.com/Spearfoot/disk-burnin-and-testing"
