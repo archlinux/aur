@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://www.rudder.io"
 license=('GPL-3.0-or-later')
 depends=('acl' 'glibc' 'curl' 'gcc-libs' 'pam' 'pcre2' 'readline' 'openssl' 'systemd' 'systemd-libs' 'libxml2' 'libyaml' 'util-linux' 'dmidecode' 'cronie' 'net-tools' 'diffutils' 'perl' 'perl-xml-treepp' 'jq' 'libvirt' 'augeas' 'python' )
-makedepends=('base-devel' 'gcc' 'rust' 'unzip' 'git')
+makedepends=('base-devel' 'gcc' 'rust' 'unzip' 'git' 'clang')
 install=".install"
 source=("rudder-sources-${pkgver}.tar.bz2::https://repository.rudder.io/sources/${pkgver%.*}/rudder-sources-${pkgver}.tar.bz2"
 	"git+https://github.com/Normation/rudder-packages.git")

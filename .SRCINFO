@@ -12,6 +12,7 @@ pkgbase = rudder-agent
 	makedepends = rust
 	makedepends = unzip
 	makedepends = git
+	makedepends = clang
 	depends = acl
 	depends = glibc
 	depends = curl
