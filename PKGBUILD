@@ -1,7 +1,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile' 'renderd')
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("${url}/archive/v${pkgver}/mod_tile-${pkgver}.tar.gz"
         'renderd-postgresql.service'
         'renderd.sysusers'
         'renderd.tmpfiles')
-sha256sums=('eb7ea5bcbba3393bf092f7edbb07eda3016bb3ffdb18b9bff18767382fc062a7'
+sha256sums=('f7245d315e265eb75acf06d1a7fdd35cd17e9f6d4a9e6022b96cd65f819ac008'
             '7bb1c67f92e9d253cecbb2f17048fba151a67e470c231fc33605937917b0567a'
             'd6c009e95380d8a9be41f0bd077638cb6adbebb74fff238a2bfc9fbbb3ed49fa'
             'cd6871cdb3e640912c95499e97fe1a2496ba95f102ec65f112bcd546ba736514'
@@ -28,22 +28,21 @@ prepare() {
   fi
   mv mod_tile-${pkgver} mod_tile
 
-  export LDFLAGS
+  export CXXFLAGS CFLAGS LDFLAGS
   cmake -B build -S mod_tile \
-    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-    -DCMAKE_CXX_STANDARD:STRING=17 \
-    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
-    -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
-    -DENABLE_TESTS:BOOL=ON \
-    -DUSE_CAIRO:BOOL=OFF \
-    -DUSE_CURL:BOOL=OFF \
-    -DUSE_RADOS:BOOL=OFF
+    -D CMAKE_CXX_STANDARD:STRING=17 \
+    -D CMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
+    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D CMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
+    -D CMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
+    -D ENABLE_TESTS:BOOL=ON \
+    -D USE_CAIRO:BOOL=OFF \
+    -D USE_CURL:BOOL=OFF \
+    -D USE_RADOS:BOOL=OFF
 }
 
 build() {
+  export MAKEFLAGS
   cmake --build build
 }
 
