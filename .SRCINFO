@@ -1,11 +1,12 @@
 pkgbase = x50ng
 	pkgdesc = HP 50g hardware level emulator
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/gwh/x50ng
 	install = x50ng.install
 	arch = any
 	license = GPL2
+	makedepends = scdoc
 	depends = gtk4
 	depends = lua
 	options = !lto

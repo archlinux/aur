@@ -11,13 +11,13 @@ _repourlarchive=${_repourl}/archive/${_repoarchive}
 
 pkgname=${_repoproj}
 pkgver=${_pkgtagname}
-pkgrel=1
+pkgrel=2
 pkgdesc='HP 50g hardware level emulator'
 arch=('any')
 url=${_repourl}
 license=('GPL2')
 depends=('gtk4' 'lua')
-#makedepends=()
+makedepends=('scdoc')
 options=('!lto' '!debug')
 install="${pkgname}.install"
 source=("${_repourlarchive}")
