@@ -1,6 +1,6 @@
 pkgbase = clapgrep
 	pkgdesc = One app to search through all your files
-	pkgver = 25.05
+	pkgver = 25.05+1
 	pkgrel = 1
 	url = https://github.com/luleyleo/clapgrep
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = clapgrep
 	depends = libadwaita
 	depends = gtksourceview5
 	depends = poppler-glib
-	source = clapgrep-25.05.tar.gz::https://github.com/luleyleo/clapgrep/archive/refs/tags/v25.05.tar.gz
-	sha256sums = d3be75d49c943d4ea8a4c67c859cd4464552ee34f17e557a2f3258482ca7661c
+	source = clapgrep-25.05+1.tar.gz::https://github.com/luleyleo/clapgrep/archive/refs/tags/v25.05+1.tar.gz
+	sha256sums = 8fba493b7398ed01979c0ba9450308c219f498d6da8570799f0c2a1ac7d10d9d
 
 pkgname = clapgrep
