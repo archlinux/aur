@@ -3,9 +3,9 @@
 pkgname=gentoo-color-bash
 pkgver=2024.06.20
 _id=68c208ecd6b805ebc7796d2b71ceef4614179a2d  # 2024-06-20 size: 2209 latest commit
-pkgrel=1
+pkgrel=2
 
-pkgdesc='Gentoo colorize terminal and bash command prompt. Looks very nice.'
+pkgdesc='Gentoo color terminal and bash command prompt. Looks very nice.'
 arch=('any')
 url='https://www.gentoo.org'
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = gentoo-color-bash
-	pkgdesc = Gentoo colorize terminal and bash command prompt. Looks very nice.
+	pkgdesc = Gentoo color terminal and bash command prompt. Looks very nice.
 	pkgver = 2024.06.20
 	pkgrel = 1
 	url = https://www.gentoo.org
