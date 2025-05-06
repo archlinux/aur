@@ -1,6 +1,6 @@
 pkgbase = venera-bin
 	pkgdesc = A comic app
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/venera-app/venera
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = venera-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	conflicts = venera
-	source = https://github.com/venera-app/venera/releases/download/v1.4.2/venera_1.4.2_amd64.deb
+	source = https://github.com/venera-app/venera/releases/download/v1.4.3/venera_1.4.3_amd64.deb
 	sha256sums = SKIP
 
 pkgname = venera-bin
