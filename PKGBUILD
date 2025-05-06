@@ -3,7 +3,7 @@
 _pkgname=virt-viewer
 pkgname=$_pkgname-no-header
 pkgver=11.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch drop the header bar.'
 arch=('x86_64')
 url='https://gitlab.com/virt-viewer/virt-viewer'
@@ -29,6 +29,7 @@ prepare() {
   cd "${_pkgname}-${pkgver}"
   patch -p1 < "${srcdir}/drop-header.patch"
   patch -p1 < "${srcdir}/41cc016278e713d3db156761fce6437dff81a53a.patch"
+  # patch https://gitlab.com/virt-viewer/virt-viewer/-/merge_requests/129 to fix build with govirt
   patch -p1 < "${srcdir}/129.diff"
 }
 
