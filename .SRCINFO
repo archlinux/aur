@@ -7,7 +7,7 @@ pkgbase = mp3val
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
-	source = http://downloads.sourceforge.net/mp3val/mp3val-0.1.8-src.tar.gz
+	source = https://downloads.sourceforge.net/mp3val/mp3val-0.1.8-src.tar.gz
 	source = mp3val-0.1.8.diff
 	source = mp3val.1
 	md5sums = dc8adad909d0b8734ed22029b2de2cb4
@@ -15,4 +15,3 @@ pkgbase = mp3val
 	md5sums = 0195e80d4ea32855fd15fe76e3855acd
 
 pkgname = mp3val
-

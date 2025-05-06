@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://mp3val.sourceforge.net/"
 license=('GPL')
 depends=('gcc-libs')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tar.gz
+source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tar.gz
         $pkgname-$pkgver.diff
         $pkgname.1)
 md5sums=('dc8adad909d0b8734ed22029b2de2cb4'
