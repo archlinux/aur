@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname="matrix-authentication-service"
-pkgver=0.14.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Authentication service for Matrix Synapse'
 arch=('x86_64')
@@ -86,4 +86,4 @@ WantedBy=multi-user.target''' >systemd.service
     chmod 755 "${pkgdir}/usr/share/matrix-authentication-service" -R
 }
 
-sha256sums=('4a69903668f18bd2eca590b8e70f069ba072450428ac05a07578e8b2014b2445')
+sha256sums=('732cab2a792330fa0ca4d025ac551da9b2c5cc46f6f098c31def3294bfd7b9db')
