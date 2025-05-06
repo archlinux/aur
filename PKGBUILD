@@ -18,15 +18,15 @@ _pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
 
 pkgver="${_pkgver}.1.${_suffix2}"
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64' 'aarch64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
 url='https://www.canon-europe.com/support/consumer/products/printers/i-sensys/mf-series/i-sensys-mf657cdw.html?type=drivers&language=EN&os=Linux%20(64-bit)'
 license=('GPL-2.0-only' 'MIT' 'custom')
-# parts of the code are GPL or MIT licensed, some parts have a custom license
+# parts of the code are GPL or MIT licensed, other parts have a custom license
 makedepends=(jbigkit gzip gtk3)
-depends=(libcups glibc gcc-libs libxml2 glib2 hicolor-icon-theme)
+depends=(libcups glibc gcc-libs libxml2-legacy glib2 hicolor-icon-theme)
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
                         'jbigkit: solves some cpu hangs'
                         'ghostscript: necessary for printing on some devices'
@@ -155,6 +155,7 @@ _setvars() {
 
 build() {
   
+    # setting pipefail in make.Arch is not enough to catch all errors
     set -e o pipefail
     cd "${_srcdir}"
     local _vars; _setvars
@@ -174,7 +175,8 @@ package() {
     RPM_BUILD_ROOT="${pkgdir}" \
     sh 'make.install.Arch'
     
-    # package creates several empy directories, but those in /etc are needed. remove others.
+    # package creates empty directories in /etc and /usr.
+    # If those in /etc are not present, some functionality is unavailable. manually remove the empy 
     rmdir "$pkgdir"/usr/include
     
     # copy icons 
