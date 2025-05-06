@@ -1,0 +1,10 @@
+--- a/application/CommandLineOptions.h	2025-05-06 09:32:13.444396949 +0200
++++ b/application/CommandLineOptions.h	2025-05-06 09:32:23.582875184 +0200
+@@ -17,6 +17,7 @@
+ // along with yagl. If not, see <https://www.gnu.org/licenses/>.
+ ///////////////////////////////////////////////////////////////////////////////
+ #pragma once
++#include <cstdint>
+ #include <string>
+ #include "cxxopts.hpp"
+ #include "Palettes.h"

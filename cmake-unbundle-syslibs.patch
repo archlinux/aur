@@ -1,0 +1,16 @@
+--- a/CMakeLists.txt	2025-05-06 09:28:20.762496583 +0200
++++ b/CMakeLists.txt	2025-05-06 09:38:52.828815996 +0200
+@@ -226,10 +226,11 @@
+ 
+     # Header only third party libraries used for convenience.
+     third_party/catch2
+-    third_party/png++
+     third_party/cxxopts/include
+-)
+ 
++    # Replace the bundled copy with the system one.
++    /usr/include/png++
++)
+ 
+ if (UNIX)
+     # Builds on UNIX-like systems: Linux, MSYS2, Windows Subsystem for Linux, ...
