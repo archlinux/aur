@@ -1,6 +1,6 @@
 pkgbase = pololu-tic-software
 	pkgdesc = Pololu Tic software and library
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://www.pololu.com/category/212/tic-stepper-motor-controllers
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = pololu-tic-software
 	depends = glibc
 	depends = libusbp-1
 	depends = qt5-base
-	source = git+https://github.com/pololu/pololu-tic-software.git#tag=1.8.1
-	sha256sums = 117f5ba396daa6753531829038922abd9aba0b8de976e48a6f9ab8f690e4c97f
+	source = git+https://github.com/pololu/pololu-tic-software.git#tag=1.8.3
+	sha256sums = 5098ef1775522462ebaf3f1f915ec8ce89a3debf2dbda0effc93b4b61b316e5c
 
 pkgname = pololu-tic-software

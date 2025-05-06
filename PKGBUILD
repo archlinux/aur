@@ -2,7 +2,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=pololu-tic-software
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Pololu Tic software and library"
 url="https://www.pololu.com/category/212/tic-stepper-motor-controllers"
@@ -24,7 +24,7 @@ source=(
   "git+https://github.com/pololu/pololu-tic-software.git#tag=$pkgver"
 )
 sha256sums=(
-  '117f5ba396daa6753531829038922abd9aba0b8de976e48a6f9ab8f690e4c97f'
+  '5098ef1775522462ebaf3f1f915ec8ce89a3debf2dbda0effc93b4b61b316e5c'
 )
 
 build() {
