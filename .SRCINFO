@@ -1,0 +1,12 @@
+pkgbase = leetcode-local-cli
+	pkgdesc = Download leetcode problems to text files via the command line
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pramanandasarkar02/leetcode-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = leetcode-cli-0.1.0.tar.gz::https://github.com/pramanandasarkar02/leetcode-cli/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = 270717ba04793437a01a79f8b2510328b2c7dd0eca3ff76706019f9bd229eb25c2d1f2e4b8ebc649a1225ed96137ae2e54cdb3728d7f4e7dc28f4f4a268bb5e6
+
+pkgname = leetcode-local-cli
