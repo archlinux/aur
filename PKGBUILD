@@ -1,98 +1,32 @@
-# Maintainer:
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Alexander F Rødseth <xyproto@archlinux.org>
-# Contributor: Jonathan Conder <jonno.conder@gmail.com>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
-pkgname=agg
-pkgver=2.5
-pkgrel=11
-pkgdesc='High Quality Rendering Engine for C++'
-arch=('x86_64')
-url='https://src.fedoraproject.org/rpms/agg'
-license=('GPL')
-depends=('gcc-libs' 'sdl' 'freetype2')
-provides=('antigrain')
-replaces=('antigrain')
-source=("https://sources.archlinux.org/other/community/agg/$pkgname-free-$pkgver.tar.gz"
-        agg-2.4-depends.patch
-        agg-2.5-pkgconfig.patch
-        agg-2.5-autotools.patch
-        0001-Fix-non-terminating-loop-conditions-when-len-1.patch
-        0002-Cure-recursion-by-aborting-if-the-co-ordinates-are-t.patch
-        0003-Get-coordinates-from-previous-vertex-if-last-command.patch
-        0004-Make-rasterizer_outline_aa-ignore-close_polygon-when.patch
-        0005-Remove-VC-6-workaround.patch
-        0006-Implement-grain-merge-blending-mode-GIMP.patch
-        0007-Implement-grain-extract-blending-mode-GIMP.patch
-        0008-Declare-multiplication-and-division-operators-as-con.patch
-        0009-Add-a-static-identity-transformation.patch
-        0010-Add-renderer_scanline_aa_alpha.patch
-        0011-Avoid-division-by-zero-in-color-burn-mode.patch
-        0012-Avoid-pixel-artifacts-when-compositing.patch
-        0013-Modify-agg-conv-classes-to-allow-access-to-the-origi.patch
-        0014-Avoid-potential-zero-division-resulting-in-nan-in-ag.patch
-        0015-Ensure-first-value-in-the-gamma-table-is-always-zero.patch
-        bad-const.patch)
-sha512sums=('f0a9bcc150eeddcf3bc3728ded1bbcfda5b2a2c935653a336ab14bb194fda5505bdc715f1c94f7e51583ac13f4149932f7d083c077556e279500f0cf467ded63'
-            '22b15f495c313417e05431516239bd04889d26b05c559b4905f0ad0aac3b8e4053a6bdc19e1c8e0c192f3b65c200cf5e3074db15011e01e4deaa4c13070418ef'
-            '113ac9deb4d0992ef4bdaeb1654f5c1ab199d3865b525c573926b73b2351e9c551f2a7b77082f87fd78bcdab3036621b72bba9502028c35b28dc8f18acf11f53'
-            '36a1b8136464f5b38f91a8d0b10e224847773f0a00c772ccca054705386d9d54783f9a6f819bdd188a426a7be52966201e8a45b92773f28e55bb20f9c7cff7ba'
-            '6fa06ff3b97efde6d83ee3bb7a2cea81ed5e095f284f2517a65d182b591a629ce09b3eaeefc9ff80d093d6245a802fd76a261b812a357a16085c8062738caf4d'
-            '40369584513c2bb86d89670b78c3d7489af5ff6a7c837faea0b52a8ed224bd458deb7bb47027c72557d9a849abb8ae1d8f3cd0dfb6bb0e13128954eb5558bc6d'
-            'fa9ae4f9e3169da8d60939e2d53c04833e4d955535b72067b95d4a1c74ac543bd67596d2da2c587abaeb4ce2ac905ec2bbd2c808dc8c90b0826486390e937e64'
-            '72b82c8729e16afa11ea11e47c44dee3962b95e655c8129c2c9a9caa176ad88a85d5cb356b5092dfc4432d1d52f9678f28abdbe5c0a7a011b0df53581258d758'
-            '36ad8f23396df65c3f040fef40447fde4e9a00a578f5599ea44e441626d1ce2bb2023d0dd1a6cda513624d9bf34d2cbef4bcf37cd2d97e5f66b3d9eea51e7c67'
-            '9e0df7f67f1c6f91f9b257cc568117773f0534253743f7a8bdb79765503b02bec4575be28f61f03dcfe715de182b94e76ff27f7f9c7d8d29927b30500dad5947'
-            '40044f1cb0b684c6d57454264d3af084c61195fee4be4d1a966f32c3940051536f17b99b47f02f4b4f1f47c571be6989fded986e5f66d3918415a8907274da44'
-            'f816897fce1367fc44e3c95f3463de7b582d9895e4b5a910366a96c6c18befdd6ed5aea3b03c75382b345f1739028f27e19ce4c0367aacaf34c737d8a2887781'
-            '0f86f4af17338a4ddbd24a788ad46481050cb308a50cd28b6fd15a26434fd8b844656498391f5546a953ae5eefd29fadc4e62ef493971c02386bcf3ca9d92e7e'
-            '7b0a1d9d9c7995e0c103df3ac1b68924b693066ee416aba79999acf93f7534729597cfe89e2d5668fd40325cb462b68de8a9ad7478f7da54127a431ea51a9e46'
-            '41ed5524289ba6d59686a284c6ff37f0f71c215306592b54d51439011a9ba9e040ad2758353b642156b0af7e4869ad504d0aa165d357d7c722f756ffd147c4d9'
-            '495403338eeb106c561a917265fe99652691f9d7bae11132720bad0e64ae6cadf68e0495744db1c33ace9d2fc06a62c7e79b97699dda250388291d067993b5e4'
-            '85eff63dabcc9f357933db7ffe9d9f87bd652de475859b80205e2661d6158842b6848caf52917c6401063f86a53f668a0ee311f31b17999474043943273304ca'
-            '4dcb65e3e1561e43d7a1250529830f23b8d0a928a927dde60fe7cfe8fe89c69e535ef6e79a884311ede4396530f9e4c2de3e6188ed7ce860b74a55d580400c5b'
-            'f67185083382823d1e00bee5065943be467b4ad2b5b155efe4cdb472142276e9215545bce62bacbeefc2f69142463726fbcbcfee82ac4b6db72d9fe645a29777'
-            'a0305f1baeffb0356306704658f16608acb23f86978b1a6ad8990198d4a9be3d4f4a50d4d7e84bec4feec151ee84403c86a7a735e37b4638bf4cc528210d78ed')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch -p1 -i ../agg-2.4-depends.patch
-  patch -p1 -i ../agg-2.5-pkgconfig.patch
-  patch -p0 -i ../agg-2.5-autotools.patch
-  patch -p1 -i ../0001-Fix-non-terminating-loop-conditions-when-len-1.patch
-  patch -p1 -i ../0002-Cure-recursion-by-aborting-if-the-co-ordinates-are-t.patch
-  patch -p1 -i ../0003-Get-coordinates-from-previous-vertex-if-last-command.patch
-  patch -p1 -i ../0004-Make-rasterizer_outline_aa-ignore-close_polygon-when.patch
-  patch -p1 -i ../0005-Remove-VC-6-workaround.patch
-  patch -p1 -i ../0006-Implement-grain-merge-blending-mode-GIMP.patch
-  patch -p1 -i ../0007-Implement-grain-extract-blending-mode-GIMP.patch
-  patch -p1 -i ../0008-Declare-multiplication-and-division-operators-as-con.patch
-  patch -p1 -i ../0009-Add-a-static-identity-transformation.patch
-  patch -p1 -i ../0010-Add-renderer_scanline_aa_alpha.patch
-  patch -p1 -i ../0011-Avoid-division-by-zero-in-color-burn-mode.patch
-  patch -p1 -i ../0012-Avoid-pixel-artifacts-when-compositing.patch
-  patch -p1 -i ../0013-Modify-agg-conv-classes-to-allow-access-to-the-origi.patch
-  patch -p1 -i ../0014-Avoid-potential-zero-division-resulting-in-nan-in-ag.patch
-  patch -p1 -i ../0015-Ensure-first-value-in-the-gamma-table-is-always-zero.patch
-  patch -p1 -i ../bad-const.patch
-
-  aclocal
-  autoheader
-  autoconf
-  libtoolize -f
-  automake --foreign -a -i
-}
+pkgname="agg"
+pkgver="2.6"
+_commit="c4f36b4432142f22c0bf82c6fbdb41567a236be2"
+_cmake_version="3.31.7"
+pkgrel="1"
+pkgdesc="AGG Anti-Grain Geometry Library"
+arch=("x86_64")
+url="https://github.com/ahaerr/agg-2.6"
+license=("BSD-3-Clause")
+depends=()
+makedepends=("cmake")
+optdepends=()
+source=("https://github.com/ghaerr/agg-2.6/archive/${_commit}.tar.gz")
+sha256sums=("b56b0328b1467961c1cdc133310fa0588a4b6e3b594f68301756e3601ae530d0")
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  ./configure --prefix=/usr --disable-static --disable-examples
-  make
+    cd "${srcdir}/${pkgname}-${pkgver}-${_commit}" || return
+    curl -fsSL "https://github.com/Kitware/CMake/releases/download/v${_cmake_version}/cmake-${_cmake_version}-linux-x86_64.tar.gz" | tar -xzf - && \
+    cmake-${_cmake_version}-linux-x86_64/bin/cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE=Release \
+          -S agg-src \
+          -B build && \
+    cmake-${_cmake_version}-linux-x86_64/bin/cmake --build build
 }
 
 package() {
-  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
+    cd "${srcdir}/${pkgname}-${pkgver}-${_commit}" || return
+    DESTDIR="${pkgdir}" cmake --install build && \
+    install -Dm644 agg-src/copying "${pkgdir}/usr/share/licenses/agg/copying"
 }
-
-# vim:set ts=2 sw=2 et:
