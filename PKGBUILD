@@ -3,7 +3,7 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: ZhenDong Wu <wzd04062@sina.com>
 
-pkgname=libfprint-cs9711
+pkgname=libfprint-cs9711-git
 pkgver=1.94.8
 pkgrel=3
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
@@ -36,11 +36,28 @@ checkdepends=(
   umockdev
   doctest
 )
-provides=(libfprint libfprint-2.so)
+provides=(libfprint libfprint-2.so libfprint-cs9711)
+replaces=("libfprint-cs9711<=1.94.8")
 conflicts=(libfprint)
 groups=(fprint)
 source=("git+https://github.com/ericlinagora/libfprint-CS9711")
 b2sums=('SKIP')
+
+pkgver() {
+  cd "libfprint-CS9711"
+
+  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+  fi
+}
 
 prepare() {
   cd libfprint-CS9711

@@ -1,5 +1,6 @@
-pkg
-src
+pkg/
+src/
 *.tar.gz
 *.pkg.tar.zst
 libfprint
+libfprint-CS9711/
