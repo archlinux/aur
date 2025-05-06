@@ -1,6 +1,6 @@
 # Contributor: solarbaron
 pkgname=feishin-git
-pkgver=0.7.1.r10.gb30fadd
+pkgver=0.12.3.r17.g12c517f
 pkgdesc='Modern music player with support for navidrome servers.'
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("feishin" "feishin-bin")
 source=("$pkgname::git+$url" "feishin.desktop")
 sha512sums=('SKIP'
-            '9ad2246032d0b2bb30d16eb947861c5bf3b966ef2dc5b744baa1b82953d8be85662679a233c0bbd72dd83909384923fb06e16a001ad29f0708975f2c582c696a')
+            '28ea38f1440adc5414ac82c6d319164870c38a1c41dd2216bc78b9ed3368cb1d150191f3b7435b749d56a7c15f0342d0846b226f8111ed9b89eb25580cbd6705')
 
 pkgver() {
     cd "${srcdir}/${pkgbase}"
