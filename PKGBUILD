@@ -2,7 +2,7 @@
 # Maintainer: Nicholas Schwab <nicholas.schwab@tngtech.com>
 pkgname=please-cli
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An AI helper script to create CLI commands.'
 arch=('any')
 license=('Apache')

@@ -1,7 +1,7 @@
 pkgbase = please-cli
 	pkgdesc = An AI helper script to create CLI commands.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	install = please-cli.install
 	arch = any
 	license = Apache
