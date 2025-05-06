@@ -16,7 +16,7 @@ if [ ! -d "${HELPER_DATA_DIRECTORY}" ]; then
   echo 'Installing USBHelper...'
   mkdir -p "${HELPER_DATA_DIRECTORY}"
   wget "https://github.com/FailedShack/USBHelperLauncher/releases/download/1.0/USBHelperLauncher-1.0.zip" -O /tmp/usbhelperlauncher.zip
-  wget "https://downloads.dfagaming.nl/Wii%20U%20USB%20Helper%200.6.1.655.zip" -O /tmp/usbhelper.zip
+  wget "https://downloads.iusearchbtw.nl/Wii%20U%20USB%20Helper%200.6.1.655.zip" -O /tmp/usbhelper.zip
   unzip /tmp/usbhelper.zip -d ${HELPER_DATA_DIRECTORY}
   unzip /tmp/usbhelperlauncher.zip -d ${HELPER_DATA_DIRECTORY}
   cd ${HELPER_DATA_DIRECTORY}
