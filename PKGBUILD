@@ -15,13 +15,13 @@ source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tar.gz
         subversion-r95.diff
         $pkgname.1)
 md5sums=('dc8adad909d0b8734ed22029b2de2cb4'
-         '7b5a52971ded087368c709fde99fee8f'
+         'c64c0cdf97335f78cb24014c5fc8220b'
          '0195e80d4ea32855fd15fe76e3855acd')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-src"
   # https://sourceforge.net/p/mp3val/subversion/95/
-  patch -Np1 -i ../subversion-r95.diff
+  patch --binary -Np1 -i ../subversion-r95.diff
   make -f Makefile.linux CXXFLAGS="$CXXFLAGS"
 }
 

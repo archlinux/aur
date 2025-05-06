@@ -1,5 +1,5 @@
---- a/trunk/sources/crossapi.cpp
-+++ b/trunk/sources/crossapi.cpp
+--- mp3val-0.1.8-src/crossapi.cpp
++++ mp3val-0.1.8-src/crossapi.cpp
 @@ -241,7 +241,7 @@
  //Moving failed due to different logical drives of source and destination. Let's copy:
  	id=open(szOldName,O_RDONLY);
