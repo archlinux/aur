@@ -3,6 +3,6 @@ Name=PKHeX
 Comment=Pokemon Save File Editor
 Exec=pkhex
 Terminal=false
-Type=application
+Type=Application
 Icon=pkhex
 Categories=Game
