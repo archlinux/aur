@@ -1,10 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 
 pkgbase=python-astlib
-_paname=${pkgbase#python-}
-_pyname=astLib
-pkgname=("python-${_paname}" "python-${_paname}-doc")
-pkgver=0.12.0
+_pyname=${pkgbase#python-}
+#_pyname=astLib
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A set of Python modules that provides some tools for research astronomers"
 arch=('i686' 'x86_64')
@@ -15,22 +15,22 @@ makedepends=('python-setuptools'
 #            'python-build'
 #            'python-installer'
              'wcstools-all'
-             'swig')
-#            'python-sphinx-epytext'
-#            'python-readthedocs-sphinx-ext'
-#            'python-sphinx_rtd_theme'
-#            'python-astropy'
-#            'python-scipy'
-#            'python-matplotlib')
-checkdepends=('python-pytest'
-              'python-astropy'
-              'python-scipy'
-              'python-matplotlib')
+             'swig'
+             'python-sphinx-epytext'
+             'python-readthedocs-sphinx-ext'
+             'python-sphinx_rtd_theme'
+             'python-astropy'
+             'python-scipy'
+             'python-matplotlib')
+checkdepends=('python-pytest')
 # astropy scipy matplotlib already in makedepends
+##             'python-astropy'
+##             'python-scipy'
+##             'python-matplotlib'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'use_system_wcstools.patch'
         'fix-deprecated-imp.patch')
-sha256sums=('c189dc08a52408ac7c1266778f702283d1ad33a6e96539293322b1515c9e4d23'
+sha256sums=('cba26f1c1177ff158fac50326bae15bbb6625e80946b69b1e445862dc8de73a8'
             'df8f7b7688db376b041c965727597b78e0911ab92ef467816a8bb7a3a62ffc1f'
             'ea99eedbe5d67ebed17f3383d6b1eaf7a8b1f38a2d3e009fa69a8a084487185b')
 
@@ -42,7 +42,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/use_system_wcstools.patch"
-#   mkdir -p docs/_static
+    mkdir -p docs/_static
 }
 
 build() {
@@ -50,14 +50,14 @@ build() {
     python setup.py build
 #   python -m build --wheel --no-isolation
 
-#   msg "Building Docs"
-#   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
+    msg "Building Docs"
+    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check(){
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-astlib() {
