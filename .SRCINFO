@@ -1,7 +1,7 @@
 pkgbase = clang15
 	pkgdesc = C language family frontend for LLVM 15
 	pkgver = 15.0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://clang.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -25,6 +25,8 @@ pkgbase = clang15
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/cmake-15.0.7.src.tar.xz.sig
 	source = clang15-linker-wrapper-tool-r1.patch
 	source = lit16.patch
+	source = replace-distutils-in-creduce_distutils.patch::https://github.com/llvm/llvm-project/commit/ee341373625163846f4ebc68e46aec6fb46c2c09.patch
+	source = replace-distutils-in-update_cc_test_checks_distutils.patch::https://github.com/llvm/llvm-project/commit/01fdc2a3c9e0df4e54bb9b88f385f68e7b0d808c.patch
 	source = enable-fstack-protector-strong-by-default.patch
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	sha256sums = a6b673ef15377fb46062d164e8ddc4d05c348ff8968f015f7f4af03f51000067
@@ -35,6 +37,8 @@ pkgbase = clang15
 	sha256sums = SKIP
 	sha256sums = f82449f41c8258f9ae13bd0c311e940711430d2c979eeb8255b36e0e63cda18c
 	sha256sums = 8c8e1a01d3a46b20a78eccec29904edca46caa2c15fb4e8998423098b482e1a2
+	sha256sums = c4610e4dfae0159bdd794268dae713343a5411b7e10949ea8e917d44e82ba799
+	sha256sums = 031d5690b9cad9e3e04c61b29309c45504d20bed54e385a43381d38ff6bd1307
 	sha256sums = 7a9ce949579a3b02d4b91b6835c4fb45adc5f743007572fb0e28e6433e48f3a5
 
 pkgname = clang15

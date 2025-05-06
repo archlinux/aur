@@ -3,3 +3,4 @@ pkg/
 *.log
 *.src.tar.xz
 *.src.tar.xz.sig
+*_distutils.patch
