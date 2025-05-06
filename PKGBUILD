@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2120.3
-pkgrel=3
+pkgver=2121
+pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -12,22 +12,17 @@ depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'open
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 options=(!lto)
-_date=20250414
-_commit=00e3bbb
-source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$_date-$_commit.tar.xz"
-	"icon.diff::$url/commit/e90930b0b9612268d7c7c1170c92e87c254043d4.diff")
-sha256sums=('3e6c35bde6fc78021e6411e42a24aad7a889f5c556947925441bedc3e9aa242d'
-            '169d0d07de7dfdac533e6c91ebe33dd64316a4db2634be5123d369dc0ea65194')
+source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
+sha256sums=('261281d9e1fe4e109314c66eaa43b76bb8892af8ef31a6e4f080f6a6fa6ecc98')
 
 prepare() {
-	cd "$srcdir/$pkgname-unified-source-$_date-$_commit"
-	patch -p1 < "$srcdir/icon.diff"
+	cd "$srcdir/$pkgname-unified-source-$pkgver"
 }
 
 build() {
 	cd "$srcdir"
 	LDFLAGS="$LDFLAGS -fuse-ld=lld"
-	cmake -B build -S "$pkgname-unified-source-$_date-$_commit" -G Ninja \
+	cmake -B build -S "$pkgname-unified-source-$pkgver" -G Ninja \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
 	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
@@ -65,5 +60,5 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib"
-	install -Dm644 "$srcdir/$pkgname-unified-source-$_date-$_commit/license.txt" "$pkgdir/usr/share/licenses/$pkgname/licenses.txt"
+	install -Dm644 "$srcdir/$pkgname-unified-source-$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/licenses.txt"
 }
