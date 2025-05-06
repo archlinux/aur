@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=0.9.5
+pkgver=1.0.0rc2
 pkgrel=1
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -17,7 +17,7 @@ source=(
   "curl-impersonate.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-md5sums=('7055f38f0bf8b219ecab131d21de4fa2')
+md5sums=('b13bc66f4081641686a80847ce05a320')
 
 build () {
   export CXXFLAGS+=" -Wno-error=stringop-overflow"
@@ -33,4 +33,7 @@ package () {
   mkdir -p "${pkgdir}/usr"
   cd curl-impersonate-${pkgver}/build
   make chrome-install
+  # remove windows batch-files
+  cd ../../
+  rm -vf ${pkgdir}/usr/bin/*.bat
 }
