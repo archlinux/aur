@@ -1,5 +1,5 @@
 pkgname=gzdoom-bin
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ conflicts=("gzdoom" "gzdoom-git")
 makedepends=('unzip')
 _pkgrel_x86_64=1
 _pkgrel_aarch64=1
-sha256sums_x86_64=('e8fe7b743cc52d13ac01455adf00ada32a0900b39e6f769fa9fd137579cf0d83')
-sha256sums_aarch64=('6af3c2a2306d1db7ffe49e8253bc2af86be264632e6b86028aaa6edc53268f28')
-source_x86_64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-$pkgver-x64.tar.xz")
-source_aarch64=("https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-$pkgver-arm64.tar.xz")
+sha256sums_x86_64=('5c289509351f836a44ce1f3ffa8fa831c8701a3fe511e442397323c7df93d979')
+sha256sums_aarch64=('02247a783795054d45d76698e0a4c530eb9798382f42ffbb2c8301e42e03be77')
+source_x86_64=("gzdoom-$pkgver-x64.tar.xz::https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-x64.tar.xz")
+source_aarch64=("gzdoom-$pkgver-arm64.tar.xz::https://gitlab.com/linuxbombay/gzdoom/binaries/$pkgver/-/raw/main/gzdoom-arm64.tar.xz")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
