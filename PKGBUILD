@@ -2,12 +2,12 @@
 
 _pkgname='cmake-init'
 pkgname="${_pkgname}-git"
-pkgver=0.40.7.r0.gd8c519c
+pkgver=0.41.1.r0.g7e0c52f
 pkgrel=1
 pkgdesc='An opinionated CMake project initializer that generates CMake projects.'
 arch=(any)
 url="https://github.com/friendlyanon/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python' 'cmake' 'git')
 optdepends=(
 	'clang: clang-tidy and clang-format'
@@ -30,6 +30,11 @@ pkgver() {
 		git describe --tags --abbrev=7 --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 	)
+}
+
+prepare() {
+	cd "$_srcdir/package"
+	sed -i 's|license_files="../COPYING"|license_files=("../COPYING",)|' 'setup.py'
 }
 
 build() {

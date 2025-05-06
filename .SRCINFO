@@ -1,10 +1,10 @@
 pkgbase = cmake-init-git
 	pkgdesc = An opinionated CMake project initializer that generates CMake projects.
-	pkgver = 0.40.7.r0.gd8c519c
+	pkgver = 0.41.1.r0.g7e0c52f
 	pkgrel = 1
 	url = https://github.com/friendlyanon/cmake-init
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
