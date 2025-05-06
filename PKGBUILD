@@ -2,15 +2,16 @@
 _pkgname=komodo
 _pkgcat=periphery
 pkgname=${_pkgname}-${_pkgcat}
-pkgver=1.17.4
+pkgver=1.17.5
 pkgrel=1
 epoch=0
 pkgdesc='Periphery server for the komodo monitor'
 arch=('x86_64')
 url='https://komo.do/'
 license=('GPL')
-depends=('docker' 'openssl' 'rust')
-makedepends=('cargo' 'clang' 'perl' 'cmake' 'nasm' 'pkgconf' 'git')
+depends=('docker' 'openssl')
+makedepends=('cargo' 'git')
+conflicts=('komodo-periphery-bin')
 source=(
     "$_pkgname::git+https://github.com/moghtech/komodo.git#tag=v$pkgver"
     'komodo-peripheryd.service'
@@ -18,7 +19,7 @@ source=(
     'komodo-peripheryd.tmpfiles'
     'periphery.config.toml'
 )
-sha256sums=('2100525f74db2027854707babefd117e09ba4d9de4bb2411037221399f328a86'
+sha256sums=('7b911da554d8a1ec00d380ac130738a16a202eb3d01ffbb6ac308f5fce5a8124'
             'b03c59288a25abdb3e84a58c30bb4996ef3b046b7aa60133a7ebe3fdea81475a'
             '3ce390159db98a55ca519eb62f2d89ceb7050e9256c931f38b457f1c4a43f651'
             'f4b549451a3d22de81dd8ed933c290777581ef92f2276160e91092739c867aee'
