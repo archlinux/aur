@@ -8,7 +8,7 @@
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
 pkgver=8.055.00
-pkgrel=3
+pkgrel=4
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/mtorromeo/$_pkgbase"
 license=("GPL-2.0-or-later")
@@ -20,7 +20,7 @@ provides=("${_pkgbase}")
 source=("r8168-dkms::git+${url}.git#tag=${pkgver}"
         'dkms.conf')
 sha256sums=('eaaa94ec29f7378fb83f68cc940e7a47e3a7d218fb3bcfce53f88ff95ed38c6d'
-            '4e21634a02704955c24d42aac39cd44b3ebc534b522a470fb98ea7ddb3b805e4')
+            '887ac677d4244e1efb284ec339432571c671174793158c51fc9ac7ebf47cf402')
 
 package() {
 	depends+=('glibc' 'dkms' 'linux-firmware')
