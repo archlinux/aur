@@ -1,6 +1,6 @@
 pkgbase = aqua-bin
 	pkgdesc = Declarative CLI version manager
-	pkgver = 2.50.0
+	pkgver = 2.51.0
 	pkgrel = 1
 	url = https://github.com/aquaproj/aqua
 	install = aqua-bin.install
@@ -10,9 +10,9 @@ pkgbase = aqua-bin
 	makedepends = help2man
 	provides = aqua
 	conflicts = aqua
-	source_x86_64 = https://github.com/aquaproj/aqua/releases/download/v2.50.0/aqua_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6dac29b25ef55f8e3f021cb171d1b7f28df4e75057296b8e527331ed3ff67fc7
-	source_aarch64 = https://github.com/aquaproj/aqua/releases/download/v2.50.0/aqua_linux_arm64.tar.gz
-	sha256sums_aarch64 = 85afd1524163f6e1e265aaeaac3ca99893f4d97be19610d706a94b72da82a88a
+	source_x86_64 = https://github.com/aquaproj/aqua/releases/download/v2.51.0/aqua_linux_amd64.tar.gz
+	sha256sums_x86_64 = e4d7bee38cef4d3e787a4c7739b4bc14e7668b3441448852ea80ee71fcc64140
+	source_aarch64 = https://github.com/aquaproj/aqua/releases/download/v2.51.0/aqua_linux_arm64.tar.gz
+	sha256sums_aarch64 = e8c189a7c5efef3f0bf947d7c35a522d3255f509e40429103bf8bb0f9d774517
 
 pkgname = aqua-bin
