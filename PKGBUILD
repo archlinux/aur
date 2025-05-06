@@ -5,7 +5,7 @@
 pkgname=orfeo-toolbox
 pkgver=9.1.1
 _pkgver=9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org"
@@ -22,13 +22,14 @@ options=()
 install=
 changelog=
 
-source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver-Linux.tar.gz"
-        "package.patch"
-		"git+https://github.com/jmichel-otb/GKSVM.git")
+source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz"
+"package.patch"
+"git+https://github.com/jmichel-otb/GKSVM.git"
+)
 noextract=()
 
-md5sums=('9841af57fab4f31b798a02989b89eba4'
-         'bd00bd7eb67a29635a4a2bc0b6682e29'
+md5sums=('0d5a054a59e0b17e0e7539a3f6130f9d'
+         '28eca0a5a7d488745b62c23ea3a3f0bf'
          'SKIP')
 
 
@@ -37,7 +38,7 @@ _gitname="GKSVM"
 prepare() {
 	cd 	$srcdir/  
 	cp -ra $srcdir/GKSVM $srcdir/Modules/Remote
-    #patch -Np1 -i ../package.patch
+    patch -Np1 -i ../package.patch
 	
 }
 
