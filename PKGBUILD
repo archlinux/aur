@@ -2,7 +2,7 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.11.2
+pkgver=0.11.3
 _electronversion=34
 pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)'
@@ -25,8 +25,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64-${pkgver}.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('3a3a824e78ce16c7da975ec057749dc603734bbe6092998dd648cbe897893fd9')
-sha256sums_x86_64=('af3459fc237fd1d7b0b159e65019a753ce1621af27005766bef46f2bbe2dea14')
+sha256sums_aarch64=('e381c7d8f7d9bfca66c05ea43769d715bfab8af1d1a5ede279ae4af2218d410a')
+sha256sums_x86_64=('859454e206a76d5198bf320ff6fe173662a563f665393ea19227f97e25247521')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -40,6 +40,14 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/TerminalEmulator/TerminalEmulator;Utility/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/dist/bin/"{*-darwin.*,*-linux.mips*,*-linux-x64,*-windows.*}
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/dist/bin/"{*-darwin.*,*-linux.arm64,*-linux.mips*,*-windows.*}
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
