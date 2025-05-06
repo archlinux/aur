@@ -13,8 +13,12 @@ license=('GPL-3.0-or-later')
 depends=('guile' 'guile-fibers' 'zstd' 'gzip')
 makedepends=('gcc' 'make' 'gawk' 'sed' 'help2man')
 install="${pkgname}.install"
-source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('13306a6b56dfe252464e84a23c23a7234338cc752c565e1b865f7cbf8a03f0cf')
+source=(
+  "https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
+  shepherd.install
+)
+sha256sums=('13306a6b56dfe252464e84a23c23a7234338cc752c565e1b865f7cbf8a03f0cf'
+            'd7a0b895b8d59ace7abd761a7be17ab1c8db358e98ff301d800a5a4fa558dff7')
 
 prepare() {
   cd "$pkgname-$pkgver"

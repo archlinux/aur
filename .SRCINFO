@@ -16,6 +16,8 @@ pkgbase = shepherd
 	depends = zstd
 	depends = gzip
 	source = https://ftp.gnu.org/gnu/shepherd/shepherd-1.0.4.tar.gz
+	source = shepherd.install
 	sha256sums = 13306a6b56dfe252464e84a23c23a7234338cc752c565e1b865f7cbf8a03f0cf
+	sha256sums = d7a0b895b8d59ace7abd761a7be17ab1c8db358e98ff301d800a5a4fa558dff7
 
 pkgname = shepherd
