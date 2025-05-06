@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=1.80.6
+pkgver=1.80.18
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9490822bd470b0b54746de2b568a6bd38d7240a7c506796e63e78a1d7418a4dc'
+sha256sums=('0e20897c2c10248a665f3ed84d10eb3686f0284184d82dc2e9714c71fb4a37e8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -80,6 +80,19 @@ build() {
     NODE_ENV=production     npm run compile
     NODE_ENV=production     npm run prepare-file
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
+    rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{android-*,darwin-*,win32-*}
+    rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/font-list/libs/{darwin,win32}
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{linux-arm,linux-x64}
+            ;;
+        armv7h)
+            rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/{linux-arm64,linux-x64}
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked/node_modules/@serialport/bindings-cpp/prebuilds/linux-arm*
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
