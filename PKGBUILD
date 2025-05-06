@@ -1,4 +1,5 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Maintainer: Brian Wo <brianwo at protonmail dot com>
+# Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=web-ext
@@ -21,7 +22,7 @@ conflicts=('nodejs-web-ext')
 # to speed up the build
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
-source=("https://github.com/mozilla/web-ext/archive/$pkgver/web-ext-$pkgver.tar.gz")
+source=("https://github.com/mozilla/web-ext/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('4e5c1db1e84711a98120cd396ac86129326f51b3fadf3a3fe1ad1ecd58a5dad4')
 
 prepare() {
@@ -49,7 +50,8 @@ check() {
   # Some tests match error messages and fail if messages are translated
   # LANG=C.UTF-8 CI_SKIP_FLOWCHECK=y MOCHA_TIMEOUT=100000 npm test
 
-  # Test is disabled, as it appers to not be intented to be run on user environment
+  # Test is disabled, as it appears to not be intented to be run on user environment
+  # Relevant comment: https://aur.archlinux.org/packages/web-ext#comment-1021975
   nosetest || warning "Test failed"
 }
 
