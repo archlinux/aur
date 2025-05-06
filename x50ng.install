@@ -1,0 +1,17 @@
+post_install() {
+  cat <<EOF
+
+To make use of x50ng you will need
+ARM bootloader code and HP 49G+/50G
+compatible ROM.
+
+To get appropriate files, run this:
+
+  > cd /usr/share/x50ng/firmware
+  > sudo make
+
+Please note copyright information as given in
+/usr/share/x50ng/firmware/Readme.txt
+
+EOF
+}
