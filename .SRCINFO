@@ -1,0 +1,15 @@
+pkgbase = php-serialized-formatter
+	pkgdesc = Serialize and unserialize to|from PHP session|objects.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://noraj.github.io/php-serialized-formatter/
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	depends = ruby-docopt
+	noextract = php-serialized-formatter-0.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/php-serialized-formatter-0.0.1.gem
+	b2sums = 6fc198a01485401b1264f08fc39f2b9c11f648fe289c154fb3b4b946c64cb7dea2d1c490f6a1b7066ae770a89816c89c45ad7b99f74b453f88b91b81b7f71d44
+
+pkgname = php-serialized-formatter
