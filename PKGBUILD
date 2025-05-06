@@ -4,8 +4,8 @@
 _base=pympress
 pkgname=python-${_base}
 pkgdesc="Simple and powerful dual-screen PDF reader designed for presentations"
-pkgver=1.8.5
-pkgrel=3
+pkgver=1.8.6
+pkgrel=1
 arch=(any)
 url="https://github.com/Cimbali/${_base}"
 license=(GPL-2.0-or-later)
@@ -17,7 +17,7 @@ optdepends=('vlc: for playing videos'
   'gstreamer: for playing videos'
   'gst-plugin-gtk: for playing videos')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e110d99935a43f7b4b36581993247c8f44cb214759a98017f8d49f9aadcb998528787154a0c6e53d39c1da650df8a314513af06482b1dc145ea020dd278f4aea')
+sha512sums=('7d4c176e7ba8a6d5cd11c12a14ac42057ddc5f3abba75d56a36f97865e890470584def2dffc63fcd66c504f642631cffe6f1d0b76302ee523392d541c058670b')
 
 prepare() {
   # https://github.com/Cimbali/pympress/issues/330
