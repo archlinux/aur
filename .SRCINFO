@@ -1,7 +1,7 @@
 pkgbase = pliner
 	pkgdesc = Pliner — task manager with life-process philosophy
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 0.1.3
+	pkgrel = 2
 	url = https://github.com/nicourrrn/pliner
 	arch = x86_64
 	license = MIT
