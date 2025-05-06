@@ -1,6 +1,6 @@
 # Maintainer: CYBERDEViL <cyberdevilnl at protonmail dot com>
 pkgname=rewise
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Extract files from Wise installers without executing them."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 )
 sha512sums=(
-	'9f8b3ded3acc467b8a69adff9da1df842316524cd46470f41d6482e101592be9f042a91abd3293492729aaf4c7d65cce58dc23591ef9d2e43c9b893e60f565f8'
+	'4c0eb11668d01dd52ddbc95d6df50ad7fd48fcc404ffbc100842bac6a7d2b46f026f4c07ca8aaabf87e386a4e1f739a6034a7a35bfbd5b07189cd7f833cfbee4'
 )
 
 build() {
