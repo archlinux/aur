@@ -1,0 +1,12 @@
+pkgbase = grits
+	pkgdesc = Simple line-text formatter that makes it simple to parse/filter/format live logs
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/solidiquis/grits
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = grits-0.3.0.tar.gz::https://github.com/solidiquis/grits/archive/refs/tags/v0.3.0.tar.gz
+	b2sums = 09940b9815a468fe9f9251a96e68c6b42614bbcc82c844e391e04e5435ba188318ed66698c1a50b3e9bbae417a02457ee92b49f697f4a7a93d766b222e9d0e8c
+
+pkgname = grits
