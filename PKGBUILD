@@ -6,7 +6,7 @@
 
 _pkgbase=rtw88
 pkgname=rtw88-dkms-git
-pkgver=r638.0f261f9
+pkgver=r651.f25626e
 pkgrel=1
 pkgdesc='Driver for Realtek 802.11ac wireless chips'
 license=('GPL2')
@@ -33,6 +33,6 @@ pkgver() {
 package() {
 	cd "${srcdir}"/${_pkgbase}
 	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile dkms.conf
-	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d blacklist-rtw88.conf
+	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d rtw88.conf
  	sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
