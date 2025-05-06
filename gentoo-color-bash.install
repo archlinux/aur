@@ -1,18 +1,16 @@
 post_install() {
 
 cat <<- 'EOF'
-
-#----------------------------------------------------------------
+#-------------------------------------------------------------------
 
     USAGE:
-        after install add line (e.g.):
+        after install, add line:
             source /usr/share/gentoo-color-bash/10-gentoo-color.bash
         to global: /etc/bash.bashrc
         or
-        user's: ~/.bashrc and system: /etc/skel/.bashrc
+        to user's: ~/.bashrc and to system: /etc/skel/.bashrc
 
-#----------------------------------------------------------------
-
+#-------------------------------------------------------------------
 EOF
 
 }

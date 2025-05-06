@@ -1,7 +1,7 @@
 pkgbase = gentoo-color-bash
 	pkgdesc = Gentoo color terminal and bash command prompt. Looks very nice.
 	pkgver = 2024.06.20
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.gentoo.org
 	install = gentoo-color-bash.install
 	arch = any

@@ -3,7 +3,7 @@
 pkgname=gentoo-color-bash
 pkgver=2024.06.20
 _id=68c208ecd6b805ebc7796d2b71ceef4614179a2d  # 2024-06-20 size: 2209 latest commit
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Gentoo color terminal and bash command prompt. Looks very nice.'
 arch=('any')
@@ -14,9 +14,23 @@ source=("gentoo-color-bash-${pkgver}::https://gitweb.gentoo.org/repo/gentoo.git/
 sha256sums=('579af0d935be990abc00fc54eeb7439d64b49ca4a1636e16eff950a91a8c76f2')
 install=${pkgname}.install
 
+_usage="\
+#-------------------------------------------------------------------
+
+    USAGE:
+        after install, add line:
+            source /usr/share/gentoo-color-bash/10-gentoo-color.bash
+        to global: /etc/bash.bashrc
+        or
+        to user's: ~/.bashrc and to system: /etc/skel/.bashrc
+
+#-------------------------------------------------------------------
+"
 package() {
 
     install -D -m=644 ${pkgname}-${pkgver} "${pkgdir}/usr/share/${pkgname}/10-gentoo-color.bash"
+
+    msg "${_usage}"
 
 }
 
