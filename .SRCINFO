@@ -1,7 +1,7 @@
 pkgbase = gosign
 	pkgdesc = Nuovo tool di firma e rinnovo online per i certificati digitali emessi da InfoCert
 	pkgver = 2.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.firma.infocert.it
 	install = gosign.install
 	arch = x86_64
@@ -36,6 +36,7 @@ pkgbase = gosign
 	depends = libxfixes
 	depends = libxi
 	depends = libxml2
+	depends = libxml2-legacy
 	depends = libxrandr
 	depends = libxrender
 	depends = libxslt
