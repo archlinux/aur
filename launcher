@@ -15,7 +15,7 @@ if [ ! -d "${PKHEX_DATA_DIRECTORY}" ]; then
   echo 'Installing PKHeX...'
   mkdir -p "${PKHEX_DATA_DIRECTORY}"
   cd ${PKHEX_DATA_DIRECTORY}
-  cp /usr/share/pkhex/PKHeX.exe ./PKHeX.exe
+  tar -xzf /usr/share/pkhex/PKHeX.tar.gz -C "${PKHEX_DATA_DIRECTORY}"
   wine PKHeX.exe
   wineserver -w
   echo 'Completed installing PKHeX.'
@@ -45,7 +45,7 @@ case "$1" in
   'update')
     echo 'Updating'
     cd ${PKHEX_DATA_DIRECTORY}
-    cp /usr/share/pkhex/PKHeX.exe ./PKHeX.exe
+    tar -xzf /usr/share/pkhex/PKHeX.tar.gz -C "${PKHEX_DATA_DIRECTORY}"
     winetricks -q --force 'dotnetdesktop9'
     ;;
   *)
