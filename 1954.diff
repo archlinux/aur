@@ -1,0 +1,17 @@
+diff --git a/src/chainparamsbase.h b/src/chainparamsbase.h
+index 3919325a46d9d14179e5968de1b91ded296152a0..c65d0dbe0958d771d71cc2306ce6352b2183ba4b 100644
+--- a/src/chainparamsbase.h
++++ b/src/chainparamsbase.h
+@@ -1,10 +1,11 @@
+ // Copyright (c) 2014-2015 The Bitcoin Core developers
+-// Copyright (c) 2017-2022 The Bitcoin developers
++// Copyright (c) 2017-2025 The Bitcoin developers
+ // Distributed under the MIT software license, see the accompanying
+ // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
