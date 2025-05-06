@@ -2,14 +2,14 @@
 
 pkgname=animeko-appimage
 _pkgname=animeko
-pkgver="4.10.0"
+pkgver="4.10.1"
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
 url='https://github.com/open-ani/animeko/'
 license=('AGPL-3.0-or-later')
 source_x86_64=("https://d.myani.org/v${pkgver//_/-}/ani-${pkgver//_/-}-linux-${CARCH}.appimage")
-sha512sums_x86_64=('4d6973b2ceb9940d0aa11b381cca731ee70111172d4fa731651456bf2114fa43b1927ceb714243937fc1e15aed011f25feaca762d71595b5b7c930393ba30c9f')
+sha512sums_x86_64=('33b36115eb02e6f82427cb3b259a644244500b981b03a1415e46a33d5fc4a25c3a681741736d061d10c66f5e87a31d8f346b86d57036c2e401ad8f0d247fc770')
 depends=('vlc' 'gvfs')
 makedepends=('7zip')
 conflicts=('animeko')
