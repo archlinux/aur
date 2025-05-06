@@ -7,7 +7,7 @@
 
 pkgname=libxml2.13
 pkgver=2.13.8
-pkgrel=1
+pkgrel=2
 pkgdesc="XML C parser and toolkit (2.13 version, installed to /opt with libxml.so.2 symlink)"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -26,7 +26,7 @@ makedepends=(
   python
 )
 optdepends=('python: Python bindings')
-provides=(libxml2.so.2)
+provides=(libxml2.so=2-64)
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#tag=v$pkgver"
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz

@@ -1,7 +1,7 @@
 pkgbase = libxml2.13
 	pkgdesc = XML C parser and toolkit (2.13 version, installed to /opt with libxml.so.2 symlink)
 	pkgver = 2.13.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = libxml2.13
 	depends = xz
 	depends = zlib
 	optdepends = python: Python bindings
-	provides = libxml2.so.2
+	provides = libxml2.so=2-64
 	source = git+https://gitlab.gnome.org/GNOME/libxml2.git#tag=v2.13.8
 	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 	source = 0001-meson-Install-a-xml2-config-script.patch
