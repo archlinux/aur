@@ -4,7 +4,7 @@
 
 _pkgname=squashfuse
 pkgname=${_pkgname}-git
-pkgver=0.6.0.r0.gac22ad1
+pkgver=0.6.1.r0.ge21b4ee
 pkgrel=1
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   ./autogen.sh
 }
 
