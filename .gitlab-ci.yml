@@ -1,4 +1,6 @@
-image: node:alpine
+default:
+  image: node:alpine
+  retry: 2
 
 workflow:
   name: 'Pipeline for branch: $CI_COMMIT_BRANCH'
