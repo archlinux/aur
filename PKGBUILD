@@ -3,7 +3,7 @@
 # Former Contributor: ml <>
 
 pkgname=alda
-pkgver=2.2.5
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -11,9 +11,9 @@ url='https://github.com/alda-lang/alda'
 license=('EPL')
 depends=('bash' 'java-runtime>=8')
 makedepends=('go' 'gradle')
-source=("$pkgname-release-$pkgver.tar.gz::https://codeload.github.com/$pkgname-lang/$pkgname/tar.gz/refs/tags/release-$pkgver" 
+source=("$pkgname-release-$pkgver.tar.gz::https://github.com/$pkgname-lang/$pkgname/archive/refs/tags/release-$pkgver.tar.gz" 
 	alda-player )
-sha256sums=('5895896dcaea7678ae6aeefae5c49c548ff7bd23d2337985e8c1bb7fe431898d'
+sha256sums=('8136f4fe1c74344ad8b27d23329e23620fdea76fe8892565ff308bda3ceac8cd'
             '29550c5c69f95d6eba1155e3b45430e205e8a2502f597c8c36b7b5b5a126f900')
 
 prepare() {
