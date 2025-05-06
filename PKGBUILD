@@ -42,19 +42,15 @@ check() {
 package() {
     cd rustowl-${pkgver}
     find target -type d | grep -E 'rustowl-build-time-out$' | xargs -I % cp -r % ./
-    cp -r "$(rustc --print=sysroot)" runtime
-    cd runtime
-    ls | xargs -I % find % -type f | grep -E '\.(rlib|so|dylib)$' | \
-    while read file; do
-        mkdir -p ../$(dirname "$file")
-        mv "$file" ../$(dirname "$file")/
-    done
-    cd ..
-    rm -rf runtime
+    mkdir sysroot
+    ACTIVE_TOOLCHAIN="$(rustup show active-toolchain | awk '{ print $1 }')"
+    cp -r "$(rustc --print=sysroot)" sysroot/$ACTIVE_TOOLCHAIN
+    find sysroot -type f | grep -v -E '\.(rlib|so|dylib|dll)$' | xargs rm -rf
+    find sysroot -depth -type d -empty -exec rm -rf {} \;
     install -d -m 755 "$pkgdir/opt/rustowl"
-    cp -a lib/ "$pkgdir/opt/rustowl/"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rustowl"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/rustowlc"
+    cp -a sysroot/ "$pkgdir/opt/rustowl/"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc --print=host-tuple)/release/rustowl"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/$(rustc --print=host-tuple)/release/rustowlc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/rustowl/LICENSE"
     install -Dm644 rustowl-build-time-out/man/rustowl.1 "$pkgdir/usr/share/man/man1/rustowl.1"
     install -Dm644 "rustowl-build-time-out/completions/rustowl.bash" "${pkgdir}/usr/share/bash-completion/completions/rustowl"
