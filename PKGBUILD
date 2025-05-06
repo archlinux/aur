@@ -5,7 +5,7 @@
 # https://www.kernel.org/category/releases.html
 # 6.6 Greg Kroah-Hartman & Sasha Levin 2023-10-29 Dec, 2026
 _LLL_VER=6.6
-_LLL_SUBVER=66
+_LLL_SUBVER=72
 
 #PKGEXT='.pkg.tar'
 
@@ -64,6 +64,7 @@ _Xanmod_PATCH_SRC="https://master.dl.sourceforge.net/project/xanmod/releases/lts
 #_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
 #_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
 # https://github.com/zhmars/cjktty-patches
+# TODO 6.12 test https://github.com/zhmars/cjktty-patches/forks
 _CJKTTY_COMMIT=b43d618da6d6536338761a5fc7c9c377c318fb9e
 _CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v6.x/cjktty-${_LLL_VER}.patch"
 _CJKTTY_PATCH_PATCH=()
@@ -113,7 +114,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            'eabfbe9e3b02f61f687835a3f76876e543447f83c6fd3e5d5915db6ef5ec9af0'
+            'a3180d219d513ccf11eb6243824a3207871798cc11c37a9e8bd7c9db2bdf3285'
             '47a008c8b3b684330f2b80beeaca20105ab3afcded9530b28b078821bd062ba6'
             'a8162641380b2681622d0f3c40ce130c9fd1cf6e176b5db18b95ba83609fbcf8')
 
