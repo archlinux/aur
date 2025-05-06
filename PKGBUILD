@@ -19,11 +19,6 @@ optdepends=('vlc: for playing videos'
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('7d4c176e7ba8a6d5cd11c12a14ac42057ddc5f3abba75d56a36f97865e890470584def2dffc63fcd66c504f642631cffe6f1d0b76302ee523392d541c058670b')
 
-prepare() {
-  # https://github.com/Cimbali/pympress/issues/330
-  sed -i 's/ a_widget.props/ list(a_widget.props)/' ${_base}-${pkgver}/${_base}/builder.py
-}
-
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
