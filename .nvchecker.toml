@@ -1,0 +1,5 @@
+[qlementine-icons]
+source = "github"
+github = "oclero/qlementine-icons"
+use_max_tag = true
+prefix = "v"
