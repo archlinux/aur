@@ -1,6 +1,6 @@
 # Maintainer: Shane Blackthorne <arch@blackthorne.dev>
 pkgname=lexy
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A CLI tool to fetch tutorials from Learn X in Y Minutes"
 arch=('x86_64')
