@@ -1,6 +1,6 @@
 pkgbase = intel-sde
 	pkgdesc = Intel Software Development Emulator
-	pkgver = 9.48.0
+	pkgver = 9.53.0
 	pkgrel = 1
 	url = https://software.intel.com/en-us/articles/intel-software-development-emulator/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = intel-sde
 	conflicts = intelxed
 	options = !debug
 	options = !strip
-	source = https://downloadmirror.intel.com/843185/sde-external-9.48.0-2024-11-25-lin.tar.xz
-	sha256sums = 3173d2a5369e3385226b488d8b75403951bc14af601435fe707d9f83e0b533e6
+	source = https://downloadmirror.intel.com/850782/sde-external-9.53.0-2025-03-16-lin.tar.xz
+	sha256sums = f55138df53378198e8c0a89598351cdb3c5e7f8819e63e472b0bc179afaad34c
 
 pkgname = intel-sde

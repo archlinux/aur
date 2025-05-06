@@ -1,7 +1,8 @@
 # Maintainer:
 # Contributor: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
 
-: ${_pkgver:=9.48.0-2024-11-25}
+: ${_pkgver:=9.53.0-2025-03-16}
+: ${_dl_dir:=850782}
 
 _pkgname="intel-sde"
 pkgname="$_pkgname"
@@ -28,8 +29,8 @@ options=('!debug' '!strip')
 
 _pkgsrc="sde-external-$_pkgver-lin"
 _pkgext="tar.xz"
-source=("https://downloadmirror.intel.com/843185/$_pkgsrc.$_pkgext")
-sha256sums=("3173d2a5369e3385226b488d8b75403951bc14af601435fe707d9f83e0b533e6")
+source=("https://downloadmirror.intel.com/$_dl_dir/$_pkgsrc.$_pkgext")
+sha256sums=('f55138df53378198e8c0a89598351cdb3c5e7f8819e63e472b0bc179afaad34c')
 
 package() {
   install -dm755 "$pkgdir/opt/$_pkgname"
