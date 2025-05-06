@@ -26,7 +26,9 @@ md5sums_armv7h=('9521ccbf2eb32c6925f5524b0254c6f6')
 
 package () {
   mkdir -p "${pkgdir}/usr/lib/"
-  cp -a libcurl-impersonate_x86_64.tar.gz "${pkgdir}/usr/lib/"
-  rm libcurl-impersonate*.tar.gz
+  for lib in $(find -L . -maxdepth 1 -type f -name "lib*" -iname "lib*" ! -name "*.tar.gz")
+  do
+    cp -a "${lib}" "${pkgdir}/usr/lib/"
+  done
   chown -R root:root "${pkgdir}/usr/lib/"
 }
