@@ -1,7 +1,7 @@
 # Maintainer: ivanmara
 # Contributor: ivanmara
 pkgname=gentoo-color-bash
-pkgver=2025.05.06
+pkgver=2025.05.07
 _id=68c208ecd6b805ebc7796d2b71ceef4614179a2d  # 2024-06-20 size: 2209 latest commit
 pkgrel=1
 
