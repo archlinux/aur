@@ -1,19 +1,20 @@
 pkgbase = perplexity-ai-app
 	pkgdesc = The Unofficial Perplexity AI Desktop App, powered by Electron which brings the magic of AI language processing to your desktop.(Use system-wide electron)
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/inulute/perplexity-ai-app
 	arch = any
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = npm
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = git
 	depends = electron33
 	conflicts = perplexity-ai-app
-	source = perplexity-ai-app-3.2.0.tar.gz::https://github.com/inulute/perplexity-ai-app/archive/refs/tags/v3.2.0.tar.gz
+	source = perplexity-ai-app-4.0.0::git+https://github.com/inulute/perplexity-ai-app#tag=v4.0.0
 	source = perplexity-ai-app.sh
-	sha256sums = cb74d70f21c3a602f21d69f1113270b81ced61b4e36b6ade9c460d8df3ea2e04
+	sha256sums = c844e3fc960cbf19e8968b1b60cb526a5ba4f453ac40a049cc9d48864b0ed18c
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = perplexity-ai-app
