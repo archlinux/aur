@@ -1,0 +1,26 @@
+pkgbase = python-pinecone
+	pkgdesc = Python Pinecone client and SDK
+	pkgver = 6.0.2
+	pkgrel = 1
+	url = https://github.com/pinecone-io/pinecone-python-client
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-urllib3
+	depends = python-certifi
+	depends = python-grpcio
+	depends = python-protobuf
+	depends = python-dateutil
+	depends = python-aiohttp
+	depends = python-googleapis-common-protos
+	depends = python-tqdm
+	depends = python-pandas
+	source = python-pinecone-6.0.2.tar.gz::https://github.com/pinecone-io/pinecone-python-client/archive/refs/tags/v6.0.2.tar.gz
+	b2sums = 5b164b856182e52f13c7bfa06ccc5d5bc78b0726779e5fee352fd8c938f63060a8bc2c29acee0c8178b83edcf09862e9af95d51e9d5e08e41acef649b96a6f60
+
+pkgname = python-pinecone
