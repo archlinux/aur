@@ -14,12 +14,12 @@ sha256sums=('SKIP')
 conflicts=('rustowl-bin')
 
 pkgver() {
-	cd "$srcdir/rustowl"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/rustowl"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	  cd "$srcdir/rustowl"
+    cd "$srcdir/rustowl"
     export RUSTC_BOOTSTRAP=1
     export RUSTUP_TOOLCHAIN=1.86.0
     rustup component add rust-src rustc-dev llvm-tools
@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-	  cd "$srcdir/rustowl"
+    cd "$srcdir/rustowl"
     export CARGO_TARGET_DIR=target
     export RUSTC_BOOTSTRAP=1
     export RUSTUP_TOOLCHAIN=1.86.0
@@ -37,14 +37,14 @@ build() {
 }
 
 check() {
-	  cd "$srcdir/rustowl"
+    cd "$srcdir/rustowl"
     export RUSTC_BOOTSTRAP=1
     export RUSTUP_TOOLCHAIN=1.86.0
     cargo test --frozen --all-features
 }
 
 package() {
-	  cd "$srcdir/rustowl"
+    cd "$srcdir/rustowl"
     find target -type d | grep -E 'rustowl-build-time-out$' | xargs -I % cp -r % ./
     mkdir sysroot
     ACTIVE_TOOLCHAIN="$(rustup show active-toolchain | awk '{ print $1 }')"
