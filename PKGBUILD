@@ -3,7 +3,7 @@
 _pkgname=kubectl-ai
 pkgname=$_pkgname-bin
 pkgver=0.0.7
-pkgrel=0
+pkgrel=1
 pkgdesc="AI powered Kubernetes Assistant"
 url="https://github.com/GoogleCloudPlatform/$_pkgname"
 license=('APACHE')
@@ -16,10 +16,6 @@ conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
   install -D -m 0755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  #"$pkgdir/usr/bin/$_pkgname" completion zsh >"$srcdir/zsh_$_pkgname"
-  #"$pkgdir/usr/bin/$_pkgname" completion bash >"$srcdir/bash_$_pkgname"
-  #install -D -m 0644 "$srcdir/zsh_$_pkgname" "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
-  #install -D -m 0644 "$srcdir/bash_$_pkgname" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 }
 
 #vim: syntax=sh
