@@ -2,28 +2,30 @@
 # Contibutor: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=python-hdf5storage
-pkgver=0.1.19
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Read and write a wide range of Python types to/from HDF5 formatted files."
-url="https://github.com/frejanordsiek/hdf5storage"
+url="https://github.com/jclds139/hdf5storage"
 depends=('python' 'python-numpy' 'python-h5py')
-makedepends=('python-setuptools' 'python-installer' 'python-build')
+makedepends=('python-poetry-core' 'python-installer' 'python-build')
+checkdepends=('python-ruff' 'python-pytest')
 license=('BSD')
 arch=('any')
-source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9618d370277ad2a38dc3981d1f67fe02e8a413e1a682990526dafa689dc2b32f')
-
-prepare () {
-	cd hdf5storage-$pkgver
-
-	find hdf5storage/ -iname '*.py' -exec sed -ie 's/unicode_/str_/g' {} \;
-	# temporary patch for numpy >= 2.0
-}
+source=("${url}/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('08a408811fb85e08508caadc28d4a8b4b233c56d14c7278854e6f9e7e92949ff')
 
 build() {
     cd hdf5storage-$pkgver
     python -m build --wheel --no-isolation
 }
+
+check() {
+    cd hdf5storage-$pkgver
+    python -m venv test-env --system-site-packages
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -m pytest
+}
+
 
 package() {
     cd hdf5storage-$pkgver
