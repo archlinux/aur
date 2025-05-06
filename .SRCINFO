@@ -6,10 +6,11 @@ pkgbase = kanidm-git
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
-	makedepends = cargo
+	makedepends = cargo-nightly
 	makedepends = systemd
 	makedepends = clang
 	makedepends = tpm2-tss
+	options = !lto
 	source = kanidm-git::git+https://github.com/kanidm/kanidm.git
 	sha256sums = SKIP
 

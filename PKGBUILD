@@ -23,8 +23,11 @@ url='https://github.com/kanidm/kanidm'
 source=("$pkgbase::git+https://github.com/${_basename}/${_basename}.git")
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-makedepends=(cargo systemd clang tpm2-tss)
+makedepends=(cargo-nightly systemd clang tpm2-tss)
 sha256sums=(SKIP)
+# ring won't compile on x86_64 with link-time-optimizations enabled:
+# https://github.com/briansmith/ring/issues/1444
+options=(!lto)
 
 pkgver() {
   cd "$pkgbase"
