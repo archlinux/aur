@@ -1,7 +1,7 @@
 # Maintainer:  HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=elasticsearch
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('aarch64' 'x86_64')
@@ -22,7 +22,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-b2sums=('8247fd1ee24668620c6fe84846742445c479093524ce34045442b39e7317ecd029817b3c39f4ce70303bcf0ef40e9620b8b773d2452964ea4a033a260af80fb6'
+b2sums=('7fe86f0f9efeba14d58ad3bb6673516f3c355f0c470a23990aca6ae71c9f0c9561ef5227ec0374abbce3539ff92000152c1cfbf36c1c1d407e5851bd210b34c5'
         '76e4098c4f2c0656e70590997ada2e489c53b61386fb92524ac34e09b7fd43b511e2305047754bba29883d388fec4855dd8fc429e0e3aa93068ab671b6bd1a79'
         '9b74e7ae392132056ab5e8a9e2637d71564fe736d10c16e07395878c4ef0a5498147d8a5b7a28dac6ef3722bc525bb8a57b01f9e185613c46c4f34f3a69990c8'
         '48a332da75e1d8c7624a5948c4b145ad6ec6aca7ed2da31802920fa99490cc99a354e06d635b8937217404bcb99302f8d95b7af99d6af8e3227e39cdb80fa3cd'
