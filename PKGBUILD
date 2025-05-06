@@ -3,7 +3,7 @@
 # based on aur/balena-etcher: Matthew McGinn <mamcgi@gmail.com>
 pkgname=etcher-git
 _pkgname=balenaEtcher
-pkgver=2.0.0.r0.gff852c0
+pkgver=2.1.1.r0.gfdd082b
 _electronversion=30
 _nodeversion=20
 pkgrel=1
@@ -27,8 +27,6 @@ makedepends=(
     'git'
     'nvm'
     'gendesk'
-    'gcc'
-    'cmake'
     'curl'
 )
 source=(
@@ -64,19 +62,18 @@ prepare() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" npm-shrinkwrap.json
         {
             echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
             echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
             echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
         } >> .npmrc
-        #sed -i "s/\"\@ronomon\/direct-io\"\: \"\^3.0.1\"\,/\"\@tidepool\/direct-io\"\: \"3.0.2\"\,/g" {package.json,npm-shrinkwrap.json}
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     npm cache clean --force
@@ -84,7 +81,6 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
-    #NODE_ENV=production     npm run lint
     NODE_ENV=production     npm run package
 }
 package() {
