@@ -1,6 +1,6 @@
 pkgbase = curl-impersonate-firefox
 	pkgdesc = A special compilation of curl that makes it impersonate Firefox
-	pkgver = 0.9.5
+	pkgver = 1.0.0rc2
 	pkgrel = 1
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = curl-impersonate-firefox
 	provides = curl-impersonate-firefox
 	provides = libcurl-impersonate-firefox
 	options = !buildflags
-	source = curl-impersonate.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v0.9.5.tar.gz
-	md5sums = 7055f38f0bf8b219ecab131d21de4fa2
+	source = curl-impersonate.tar.gz::https://github.com/lexiforest/curl-impersonate/archive/refs/tags/v1.0.0rc2.tar.gz
+	md5sums = b13bc66f4081641686a80847ce05a320
 
 pkgname = curl-impersonate-firefox
