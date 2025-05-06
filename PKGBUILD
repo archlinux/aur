@@ -17,7 +17,6 @@ conflicts=("$_pkgname"
 replaces=()
 depends=("ffmpeg"
          "sdl2")
-makedepends=("patchelf")
 _appimage="$_pkgname.AppImage"
 source=("https://github.com/azahar-emu/azahar/releases/download/2121-rc1/$_pkgname.AppImage")
 options=("!strip")
@@ -31,33 +30,11 @@ build() {
   for i in squashfs-root/*.svg; do
     [ -f "$i" ] && install -Dm755 "$i" "$_pkgname.svg" && break
   done
-
-  # update script
-  sed -Ei \
-    's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/'"$_pkgname"'"@' \
-    "squashfs-root/AppRun"
 }
 
 package() {
-  local _files=(
-    squashfs-root/AppRun*
-    squashfs-root/apprun-hooks
-    squashfs-root/usr/bin
-    squashfs-root/usr/lib
-    squashfs-root/usr/plugins
-  )
-
-  install -dm755 "$pkgdir/opt/$_pkgname/usr"
-  for i in ${_files[@]}; do
-    mv "$i" "$pkgdir/opt/$_pkgname/${i#*/}"
-  done
-
-  # rpath
-  patchelf --force-rpath --set-rpath "/opt/$_pkgname/usr/lib" "$pkgdir/opt/$_pkgname/usr/bin/azahar"
-
-  # symlink
-  install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/opt/$_pkgname/usr/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  # appimage
+  install -Dm755 "$_pkgname.AppImage" "$pkgdir/usr/bin/azahar"
 
   # icon
   install -Dm644 "$_pkgname.svg" -t "$pkgdir/usr/share/pixmaps/"
