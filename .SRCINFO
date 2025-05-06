@@ -1,0 +1,15 @@
+pkgbase = qlementine
+	pkgdesc = Modern QStyle for desktop Qt6 applications
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/oclero/qlementine
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = qt6-base
+	makedepends = qt6-svg
+	options = !lto
+	source = qlementine-1.2.2.tar.gz::https://github.com/oclero/qlementine/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = ff81a868e684dcb0fc405894993a3c27af73d9abb6fe6598b6548337a1662120
+
+pkgname = qlementine

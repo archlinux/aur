@@ -1,0 +1,5 @@
+[qlementine]
+source = "github"
+github = "oclero/qlementine"
+use_max_tag = true
+prefix = "v"
