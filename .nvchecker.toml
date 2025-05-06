@@ -1,0 +1,6 @@
+[yagl]
+source = "github"
+github = "UnicycleBloke/yagl"
+use_max_tag = true
+from_pattern = 'v?([\d.]+)'
+to_pattern = '\1'
