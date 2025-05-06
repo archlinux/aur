@@ -24,10 +24,6 @@ conflicts=(
     "${_appname}-electron"
 )
 depends=(
-    'gtk3'
-    'nspr'
-    'nss'
-    'alsa-lib'
     "electron${_electronversion}"
 )
 source=(

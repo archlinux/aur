@@ -6,10 +6,6 @@ pkgbase = typora-free-with-plugin
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = gtk3
-	depends = nspr
-	depends = nss
-	depends = alsa-lib
 	depends = electron13
 	provides = typora=1.14.2
 	conflicts = typora
