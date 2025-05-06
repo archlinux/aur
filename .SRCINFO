@@ -1,11 +1,13 @@
 pkgbase = netbird-multiconfig
 	pkgdesc = A small script to help with multiple netbird configs using the systemd template
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = any
 	license = GPL-3.0-or-later
 	depends = netbird
 	source = netbird-multiconfig.sh
+	source = override.conf
 	sha256sums = c9a0ed3d36fe62c4405e3a8d6773d7525ed3215e3eef0413bf6c2d65c527ee6a
+	sha256sums = 47d949c093ef91cdb6fe2289927f1ca2190639d6a46a9a8642ede283a7270027
 
 pkgname = netbird-multiconfig
