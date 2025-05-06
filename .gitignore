@@ -6,3 +6,6 @@ src/
 # Ignore downloaded source files
 *.zip
 intiface-engine-flutter-bridge-license.md
+
+# Ignore backup files
+*.bak
