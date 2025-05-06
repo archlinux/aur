@@ -7,14 +7,14 @@
 
 _name=h5py
 pkgname=python-${_name}-git
-pkgver=3.9.0.r5.g6b5af4c
+pkgver=3.13.0.r23.g92ec254
 pkgrel=1
 pkgdesc="General-purpose Python bindings for the HDF5 library"
 arch=(x86_64)
 url="https://www.h5py.org/"
 license=(BSD)
 depends=(hdf5 python-numpy liblzf)
-makedepends=(cython0 python-pkgconfig python-setuptools)
+makedepends=(cython python-pkgconfig python-setuptools)
 checkdepends=(python-pytest)
 conflicts=(python-h5py hdf5-openmpi)
 provides=(python-h5py)
