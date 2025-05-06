@@ -1,6 +1,6 @@
 pkgbase = phiola-bin
 	pkgdesc = Fast audio player, recorder, converter.(Prebuilt version)
-	pkgver = 2.3.12
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/stsaz/phiola
 	arch = aarch64
@@ -11,14 +11,14 @@ pkgbase = phiola-bin
 	depends = jack
 	depends = libpulse
 	depends = alsa-lib
-	provides = phiola=2.3.12
+	provides = phiola=2.4.5
 	conflicts = phiola
 	options = !strip
 	source = phiola.sh
 	sha256sums = 6be792749954f9c1c53f9ec0cfe9764d1a678b378d411f5acd262318ef94a13f
-	source_aarch64 = phiola-2.3.12-aarch64.tar.zst::https://github.com/stsaz/phiola/releases/download/v2.3.12/phiola-2.3.12-linux-arm64.tar.zst
-	sha256sums_aarch64 = 9dde797350c9f8019029eb72233adc456fb56725c1e85ade7c324b577257446e
-	source_x86_64 = phiola-2.3.12-x86_64.tar.zst::https://github.com/stsaz/phiola/releases/download/v2.3.12/phiola-2.3.12-linux-amd64.tar.zst
-	sha256sums_x86_64 = fe6336fecf905f2cab548364a5a2e44e2a87c9d128c6155eb6f73881a6c3b120
+	source_aarch64 = phiola-2.4.5-aarch64.tar.zst::https://github.com/stsaz/phiola/releases/download/v2.4.5/phiola-2.4.5-linux-arm64.tar.zst
+	sha256sums_aarch64 = f8bc84042e38a335a2f38a0214128d1739d682e546a6799da4ab73b422ead59e
+	source_x86_64 = phiola-2.4.5-x86_64.tar.zst::https://github.com/stsaz/phiola/releases/download/v2.4.5/phiola-2.4.5-linux-amd64.tar.zst
+	sha256sums_x86_64 = 989deac92a8b334885188a4011fc05818747363d23086e2b90a9965987958dfc
 
 pkgname = phiola-bin
