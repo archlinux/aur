@@ -3,7 +3,7 @@
 
 pkgbase=parabolic
 pkgname=(parabolic-gtk parabolic-qt)
-pkgver=2025.1.4
+pkgver=2025.5.0
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
@@ -28,6 +28,8 @@ makedepends=('blueprint-compiler'
              'libadwaita'
              'libnick'
              'libxml++-5.0'
+             'qlementine'
+             'qlementine-icons'
              'qt6-base'
              'qt6-svg'
              'yelp-tools')
@@ -35,7 +37,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('df60e25d76e7df7db74a98c66fec3bf5bca1ce2cfd205e7cc537128e77928ab8')
+sha256sums=('61fe0b0bc309415b0a4138690eb6d1e2b0eb540b0ebda10681948f14f97f70a8')
 
 build() {
     cmake -B build-gtk -S "${pkgbase^}-${pkgver}" \
@@ -61,7 +63,7 @@ package_parabolic-gtk() {
 }
 
 package_parabolic-qt() {
-    depends+=('qt6-base')
+    depends+=('qt6-base' 'qt6-svg')
 
     DESTDIR="${pkgdir}" cmake --install build-qt
     install -Dm644 "${pkgbase^}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
