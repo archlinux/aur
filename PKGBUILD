@@ -2,7 +2,7 @@
 _name=alt-profanity-check
 pkgname=python-$_name
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, robust library to check for offensive language in strings, \
     dropdown replacement of \"profanity-check\"".
 arch=(any)
@@ -16,6 +16,7 @@ depends=(
     python-setuptools
     python-joblib
     python-numpy
+    'python-scikit-learn=1.6.1'
 )
 provides=(
     profanity-check
