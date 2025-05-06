@@ -1,0 +1,124 @@
+#!/bin/bash
+# rudder-agent Arch package installation script
+# 
+# (c) Swâmi Petaramesh 2025 <swami AT petaramesh DOT org>
+#
+# Based on rudder-agent pre/post install/rm scripts for Debian
+# (c) Normation
+#
+# License: GPL-3.0-or-later
+
+## arg 1:  the new package version
+post_install() {
+	set -e
+	# Is this the first installation?
+	CFRUDDER_FIRST_INSTALL="true"
+	
+	CFRUDDER_USE_SYSTEMD="false"
+	
+	if readlink -f $(cut -f 1 -d "" /proc/1/cmdline | cut -f 1 -d " ") | grep -qE "/systemd$" ; then CFRUDDER_USE_SYSTEMD="true"; fi
+
+	if [ "${CFRUDDER_USE_SYSTEMD}" = "true" ]; then
+		if ! systemctl list-unit-files --type=service | grep -q "^cron.service"; then
+			if [ -f /lib/systemd/system/cronie.service ] && [ ! -e /etc/systemd/system/cron-alias-for-rudder.service ]; then
+				ln -s /lib/systemd/system/cronie.service /etc/systemd/system/cron-alias-for-rudder.service
+			fi
+			if [ -e /etc/systemd/system/cron-alias-for-rudder.service ] && [ ! -e /etc/systemd/system/cron.service ]; then
+				ln -s /etc/systemd/system/cron-alias-for-rudder.service /etc/systemd/system/cron.service
+			fi
+			systemctl daemon-reload
+		fi
+	fi
+	
+	/opt/rudder/share/package-scripts/rudder-agent-postinst "${CFRUDDER_FIRST_INSTALL}" "arch" "${CFRUDDER_USE_SYSTEMD}" "${server}"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+	set -e
+	LOG_FILE="/var/log/rudder/install/rudder-agent-$(date +%Y%m%d).log"
+	echo "`date` - Starting rudder-agent pre installation script" >> ${LOG_FILE}
+	/opt/rudder/share/package-scripts/rudder-agent-prerm false
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	set -e
+	# Is this the first installation?
+	CFRUDDER_FIRST_INSTALL="false"
+	
+	# The parameter is the previous version, if empty it is a first install
+	if [ -z "$2" ]; then
+	  CFRUDDER_FIRST_INSTALL="true"
+	fi
+	
+	CFRUDDER_USE_SYSTEMD="false"
+	
+	if readlink -f $(cut -f 1 -d "" /proc/1/cmdline | cut -f 1 -d " ") | grep -qE "/systemd$" ; then CFRUDDER_USE_SYSTEMD="true"; fi
+
+	if [ "${CFRUDDER_USE_SYSTEMD}" = "true" ]; then
+		if ! systemctl list-unit-files --type=service | grep -q "^cron.service"; then
+			if [ -f /lib/systemd/system/cronie.service ] && [ ! -e /etc/systemd/system/cron-alias-for-rudder.service ]; then
+				ln -s /lib/systemd/system/cronie.service /etc/systemd/system/cron-alias-for-rudder.service
+			fi
+			if [ -e /etc/systemd/system/cron-alias-for-rudder.service ] && [ ! -e /etc/systemd/system/cron.service ]; then
+				ln -s /etc/systemd/system/cron-alias-for-rudder.service /etc/systemd/system/cron.service
+			fi
+			systemctl daemon-reload
+		fi
+	fi
+	
+	/opt/rudder/share/package-scripts/rudder-agent-postinst "${CFRUDDER_FIRST_INSTALL}" "arch" "${CFRUDDER_USE_SYSTEMD}" "${server}"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	set -e
+	/opt/rudder/share/package-scripts/rudder-agent-prerm true
+}
+
+## arg 1:  the old package version
+post_remove() {
+	set -e
+	CFRUDDER_USE_SYSTEMD="false"
+	
+	if readlink -f $(cut -f 1 -d "" /proc/1/cmdline | cut -f 1 -d " ") | grep -qE "/systemd$" ; then CFRUDDER_USE_SYSTEMD="true"; fi
+	
+	if [ "${CFRUDDER_USE_SYSTEMD}" = "true" ]; then
+	  systemctl stop rudder-agent >/dev/null 2>&1 || true
+	  systemctl disable rudder-agent rudder-cf-execd rudder-cf-serverd >/dev/null 2>&1 || true
+	  rm -f /lib/systemd/system/rudder-agent.service
+	  rm -f /lib/systemd/system/rudder-cf-execd.service
+	  rm -f /lib/systemd/system/rudder-cf-serverd.service
+	  systemctl daemon-reload
+	fi
+	
+	# Make sure that CFEngine is not running anymore
+	for component in cf-agent cf-serverd cf-execd cf-monitord; do
+	  if pid=`pidof ${component}`; then
+	    kill -9 ${pid}
+	  fi
+	done
+	
+	# Make sure that Rudder agent specific files have been removed
+	rm -f /etc/init.d/rudder-agent
+	rm -f /etc/default/rudder-agent
+	rm -fr /opt/rudder/var/fusioninventory
+	rm -f /opt/rudder/etc/uuid.hive
+	rm -f /opt/rudder/etc/ssl/agent.cert
+	rm -f /opt/rudder/etc/policy_server.dat
+	rm -f /var/rudder/lib/ssl/policy_server_hash
+	rm -fr /var/rudder/ncf
+	rm -fr /var/rudder/tmp
+	rm -fr /var/rudder/cfengine-community
+
+	if [ -L /etc/systemd/system/cron.service ] && [ "$(readlink "/etc/systemd/system/cron.service")" = "/etc/systemd/system/cron-alias-for-rudder.service" ]; then
+		rm -f /etc/systemd/system/cron.service
+		[ -e /etc/systemd/system/cron-alias-for-rudder.service ] && rm -f /etc/systemd/system/cron-alias-for-rudder.service
+		if [ "${CFRUDDER_USE_SYSTEMD}" = "true" ]; then
+			systemctl daemon-reload
+		fi
+	fi
+}
