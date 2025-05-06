@@ -1,4 +1,4 @@
-# Maintainer: Jake Bailey <pkgbuilds at jakebailey dot xyz>
+# Maintainer: Jake Bailey <pkgbuilds at jakebailey dot dev>
 
 pkgname=disk-burnin-and-testing-git
 _pkgname=${pkgname%-git}
