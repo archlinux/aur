@@ -1,6 +1,6 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=8.0.58
+pkgver=8.0.78
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
@@ -16,15 +16,17 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-source=("${pkgname}::git+https://gitlab.com/karaokemugen/code/karaokemugen-app.git#tag=8.0.58"
+source=("${pkgname}::git+https://gitlab.com/karaokemugen/code/karaokemugen-app.git#tag=8.0.78"
         "${pkgname}-lib::git+https://gitlab.com/karaokemugen/code/lib.git"
         "${pkgname}-guests::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git"
+        "${pkgname}-systemRepo::git+https://gitlab.com/karaokemugen/bases/system.git"
         'install.sh'
         'run.sh'
         'icon256.png'
         'karaokemugen.desktop')
 noextract=()
-md5sums=('d38d9363207f306dd916f6aafbb3a286'
+md5sums=('47b30f7d56abd6496ee28f01e94fc244'
+         'SKIP'
          'SKIP'
          'SKIP'
          '2548b70d012d3992526c8d5b1d9bac3d'
@@ -37,6 +39,7 @@ prepare() {
     git submodule init
     git config submodule.src/lib.url "$srcdir/${pkgname}-lib"
     git config submodule.assets/guestAvatars.url "$srcdir/${pkgname}-guests"
+    git config submodule.assets/systemRepo.url "$srcdir/${pkgname}-systemRepo"
     git -c protocol.file.allow=always submodule update
 }
 
