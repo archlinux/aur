@@ -1,6 +1,6 @@
 pkgbase = darkwrite-bin
 	pkgdesc = The eye-candy note taking and to-do application for all desktops.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.5.1_alpha.1
+	pkgver = 0.5.1_alpha.2
 	pkgrel = 1
 	url = https://github.com/astudentinearth/darkwrite
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = darkwrite-bin
 	makedepends = asar
 	makedepends = fuse2
 	depends = electron35
-	provides = darkwrite=0.5.1_alpha.1
+	provides = darkwrite=0.5.1_alpha.2
 	conflicts = darkwrite
-	source = darkwrite-0.5.1_alpha.1.AppImage::https://github.com/astudentinearth/darkwrite/releases/download/v0.5.1-alpha.1/Darkwrite-Linux-0.5.1-alpha.1.AppImage
+	source = darkwrite-0.5.1_alpha.2.AppImage::https://github.com/astudentinearth/darkwrite/releases/download/v0.5.1-alpha.2/Darkwrite-Linux-0.5.1-alpha.2.AppImage
 	source = darkwrite.sh
-	sha256sums = b4e6cd8e2181de3b7af058f91c7f5c643e04057f572d61b7f6d194f723dacd71
+	sha256sums = f0fbe6a75f69e7b845fab67103ca56eb941b42d26a23ed0e8c24286fb5ce9cfe
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = darkwrite-bin
