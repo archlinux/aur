@@ -1,6 +1,6 @@
 pkgbase = systemd-netns-git
 	pkgdesc = Configure private netns with systemd services.
-	pkgver = r49.4420d8d
+	pkgver = r51.8f3eb72
 	pkgrel = 1
 	url = https://github.com/CarloWood/systemd-netns.git
 	install = systemd-netns-git.install
@@ -10,7 +10,7 @@ pkgbase = systemd-netns-git
 	depends = iproute2
 	optdepends = iptables: for default NAT config
 	optdepends = dhclient: when using dynamically assigned IP
-	provides = systemd-netns=r49.4420d8d
+	provides = systemd-netns=r51.8f3eb72
 	conflicts = systemd-named-netns
 	conflicts = systemd-netns
 	options = !debug
@@ -22,5 +22,6 @@ pkgbase = systemd-netns-git
 	source = systemd-netns-git::git+https://github.com/CarloWood/systemd-netns.git
 	source = systemd-netns-git.install
 	sha256sums = SKIP
+	sha256sums = 9f4ebac4571a358acbd8ba8751d496d696b401899dea2a5e7acc85dfd9c2ee5d
 
 pkgname = systemd-netns-git
