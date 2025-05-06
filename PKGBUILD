@@ -4,7 +4,7 @@ pkgname='nunchuk-desktop-appimage'
 _pkgname='nunchuk-desktop'
 __pkgname='nunchuk-linux'
 ___pkgname='nunchuk'
-pkgver=1.9.45
+pkgver=1.9.46
 pkgrel=1
 pkgdesc="Desktop bitcoin wallet with multisig, hardware, nfc and air-gapped key support"
 arch=('x86_64')
@@ -20,22 +20,22 @@ optdepends=('bitbox-udev: Udev rules for Bitbox hardware wallet support'
             'trezor-udev: Udev rules for Trezor hardware wallet support')
 provides=('nunchuk-qt')
 options=('!strip')
-source=("https://github.com/nunchuk-io/$_pkgname/releases/download/$pkgver/$__pkgname-v$pkgver.zip")
+source=("https://github.com/nunchuk-io/$_pkgname/releases/download/$pkgver/$__pkgname-v$pkgver-$arch.zip")
 
-sha256sums=('e065b24755ff1e2164228270b01fc41d233fcf13cd3838932496ce92e14f9657')
+sha256sums=('0d01ff8e59a14a5fb7d4cf91cbe0069ec43314b463dac01eb1f41ad26abb63ee')
 
 #validpgpkeys=('8C8ECD3F660CA53CD878792A6E38A462ED2EF525') # Ta Tat Tai (Nunchuk binary release signing key) <tatattai@gmail.com>
 
 prepare() {
     cd "${srcdir}"
-    7z x "${srcdir}/$__pkgname-${pkgver}/$__pkgname-${pkgver}.AppImage" $___pkgname-qt.desktop $___pkgname-qt.png
+    7z x "${srcdir}/$__pkgname-v${pkgver}-${arch}/$__pkgname-v${pkgver}-${arch}.AppImage" $___pkgname-qt.desktop $___pkgname-qt.png
 }
 
 package() {
     cd "${srcdir}"
-    install -Dm755 "$__pkgname-${pkgver}/$__pkgname-${pkgver}.AppImage" "${pkgdir}/opt/$_pkgname/$__pkgname-${pkgver}.AppImage"
+    install -Dm755 "$__pkgname-v${pkgver}-${arch}/$__pkgname-v${pkgver}-${arch}.AppImage" "${pkgdir}/opt/$_pkgname/$__pkgname.AppImage"
     install -Dm644 "$___pkgname-qt.desktop"                             "${pkgdir}/usr/share/applications/$___pkgname-qt.desktop"
     install -Dm644 "$___pkgname-qt.png"                                 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/$___pkgname-qt.png"
     mkdir "${pkgdir}/usr/bin"
-    ln -s "/opt/$_pkgname/$__pkgname-${pkgver}.AppImage"                "${pkgdir}/usr/bin/$___pkgname-qt"
+    ln -s "/opt/$_pkgname/$__pkgname.AppImage"                "${pkgdir}/usr/bin/$___pkgname-qt"
 }
