@@ -1,6 +1,6 @@
 pkgbase = vulkan-headers-git
-	pkgdesc = Vulkan header files
-	pkgver = 1.4.305.r0.ga03d2f6
+	pkgdesc = Vulkan header files and API registry
+	pkgver = 1.4.313.0.r13.g9c77de5
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/Vulkan-Headers
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = vulkan-headers-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	provides = vulkan-headers=1:1.4.305.r0.ga03d2f6
-	provides = vulkan-hpp=1.4.305.r0.ga03d2f6
+	optdepends = python: for registry tools
+	provides = vulkan-headers=1:1.4.313.0.r13.g9c77de5
+	provides = vulkan-hpp=1.4.313.0.r13.g9c77de5
 	conflicts = vulkan-headers
 	source = vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	b2sums = SKIP

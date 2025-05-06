@@ -2,14 +2,15 @@
 # Contributor: Luís Ferreira <contact@lsferreira.net>
 _pkgname=vulkan-headers
 pkgname=$_pkgname-git
-pkgver=1.4.305.r0.ga03d2f6
+pkgver=1.4.313.0.r13.g9c77de5
 pkgrel=1
-pkgdesc="Vulkan header files"
+pkgdesc="Vulkan header files and API registry"
 arch=('any')
 url="https://github.com/KhronosGroup/Vulkan-Headers"
 license=('Apache-2.0 AND MIT')
 groups=('vulkan-devel')
 makedepends=('cmake' 'git' 'ninja')
+optdepends=('python: for registry tools')
 provides=("$_pkgname=1:$pkgver" "vulkan-hpp=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -17,20 +18,29 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --match='v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 --match='vulkan-sdk-*' | sed 's/^vulkan-sdk-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd $_pkgname
+	# fix for gcc 15
+	sed -i 's/-Werror//' tests/integration/CMakeLists.txt
 }
 
 build() {
-	cmake -G Ninja -B build -S $_pkgname \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DVULKAN_HEADERS_ENABLE_TESTS="$CHECKFUNC" \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D VULKAN_HEADERS_ENABLE_TESTS="$CHECKFUNC"
+		-G Ninja
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
 check() {
-	ctest --test-dir build
+	ctest --output-on-failure --test-dir build
 }
 
 package() {
