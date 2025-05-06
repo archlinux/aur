@@ -1,7 +1,7 @@
 pkgbase = oneko
 	pkgdesc = A cat that chases around your cursor
 	pkgver = 1.2.5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.daidouji.com/oneko/
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,9 @@ pkgbase = oneko
 	depends = libxext
 	source = http://www.daidouji.com/oneko/distfiles/oneko-1.2.sakura.5.tar.gz
 	source = gcc2024.patch
+	source = gcc2025.patch
 	md5sums = 456b318fa6e61431bf4f0a42b110014a
 	md5sums = f6ebbd81cab895f8909fbd26832cfba7
+	md5sums = 145b0a52bd79f29fa965f57e4092e0b9
 
 pkgname = oneko
