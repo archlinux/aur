@@ -2,10 +2,10 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=29
+pkgrel=30
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
-depends=('redis')
+depends=('valkey')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git' 'nim' 'nimble' 'libsass' 'pcre')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '89a643cba8d8e9324441e1c901d939629fdbf6f9bc66d4f6c070dc75d8714b64'
             '7171b797a139d42939eda47a5a7d0259166f6eea284eff7f5f486c219017749f'
             '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
-            '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
+            '0363fa1cf2ac99c3706091009eb7c2188ef4d4a4a2de65cf6eb45ed8049e3035'
             '5d8a7acc2bd5fb860e2e1ba58ed679d9aa494aeed1d6dedd9da4f658e6b01305')
 
 pkgver() {
