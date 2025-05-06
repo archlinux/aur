@@ -2,8 +2,8 @@
 # Contributor: Mikel Pintado <mikelaitornube2010@gmail.com>
 _appname=nuclear
 pkgname="${_appname}-player"
-_pkgname="Nuclear Player"
-pkgver=0.6.46
+_pkgname='Nuclear Player'
+pkgver=0.6.47
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('12a857080c978a3e72fd73242d2c5258a5f24e2fc8278f7d8cdfde82e7405a71'
+sha256sums=('cdc14e97dbf31ebb09da5ad1d3d6c181f957f38e367907a5f5bde28fac47be56'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -36,6 +36,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -45,7 +46,6 @@ prepare() {
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="AudioVideo" --name="${_pkgname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CARGO_HOME="${srcdir}/.cargo"
@@ -86,5 +86,5 @@ package() {
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/packages/app/resources/media/presskit/icons/color/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}x${_icons}/apps/${pkgname}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
