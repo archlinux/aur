@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+/opt/single-file/single-file "$@"
