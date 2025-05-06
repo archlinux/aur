@@ -1,11 +1,11 @@
 pkgbase = xtrabackup80
 	pkgdesc = Non-blocking backup tool for MySQL
 	pkgver = 8.0.35_32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.percona.com/software/mysql-database/percona-xtrabackup
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = cmake
+	makedepends = cmake3-bin
 	makedepends = python-sphinx
 	makedepends = vim
 	makedepends = libedit

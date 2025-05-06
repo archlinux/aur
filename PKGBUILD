@@ -3,13 +3,13 @@
 pkgname=xtrabackup80
 pkgver=8.0.35_32
 _boost_ver=1.77.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Non-blocking backup tool for MySQL'
 arch=('x86_64')
 url='https://www.percona.com/software/mysql-database/percona-xtrabackup'
 license=('GPL-2.0-only')
 depends=('libaio' 'libev' 'libgcrypt' 'curl' 'perl-dbd-mysql' 'numactl' 'protobuf' 'libprocps' 'icu' 'zlib' 'zstd' 'lz4')
-makedepends=('cmake' 'python-sphinx' 'vim' 'libedit' 'libevent' 'libfido2')
+makedepends=('cmake3-bin' 'python-sphinx' 'vim' 'libedit' 'libevent' 'libfido2')
 optdepends=('qpress: for compressed backups')
 source=("https://www.percona.com/downloads/Percona-XtraBackup-LATEST/Percona-XtraBackup-${pkgver//_/-}/source/tarball/percona-xtrabackup-${pkgver//_/-}.tar.gz"
 		"https://archives.boost.io/release/$_boost_ver/source/boost_${_boost_ver//./_}.tar.gz")
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd build
-  cmake -DBUILD_CONFIG=xtrabackup_release \
+  cmake3 -DBUILD_CONFIG=xtrabackup_release \
         -DCMAKE_BUILD_TYPE=Release \
         -DMYSQL_DATADIR=/var/lib/mysql \
         -DMYSQL_UNIX_ADDR=/run/mysqld/mysqld.sock \
