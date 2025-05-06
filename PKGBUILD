@@ -41,6 +41,7 @@ prepare() {
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Categories=Music/Categories=AudioVideo;/g
         s/${_pkgname}-icon/${pkgname%-bin}/g
+        5i\Comment=${pkgdesc}
     " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
