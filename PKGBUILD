@@ -11,7 +11,7 @@ depends=('playerctl')
 install=playerctld.install
 source=('playerctld.install' 'playerctld.service')
 sha256sums=('ecef02c870f81c6cc9d48f99a9eeb6e5037b983cdb5e50d123697e259f26fd8d'
-            'f021d030adda9e9b0366880685a0706f41afd3bc962de10ced1cc132bddf28be')
+            '8751a058599ecd65bafd96b1682fb35c9925630083932397b2efaaf4c448969b')
 
 package() {
 	install -Dm644 "$srcdir"/playerctld.service "$pkgdir"/usr/lib/systemd/user/playerctld.service
