@@ -1,0 +1,22 @@
+post_install() {
+
+cat <<- 'EOF'
+
+#----------------------------------------------------------------
+
+    USAGE:
+        after install add line (e.g.):
+            source /usr/share/gentoo-color-bash/10-gentoo-color.bash
+        to global: /etc/bash.bashrc
+        or
+        user's: ~/.bashrc and system: /etc/skel/.bashrc
+
+#----------------------------------------------------------------
+
+EOF
+
+}
+
+post_upgrade() {
+  post_install ${1}
+}
