@@ -6,7 +6,7 @@
 
 pkgname=gtetrinet
 pkgver=0.7.11
-pkgrel=7
+pkgrel=8
 pkgdesc="a fork of gtetrinet ported to gtk3"
 url="https://github.com/tatankat/gtetrinet"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ build() {
 package () {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses"
+  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
