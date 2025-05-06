@@ -1,9 +1,8 @@
 pkgbase = hysteria
 	pkgdesc = A powerful, lightning fast and censorship resistant proxy
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hysteria.network/
-	install = hysteria.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
