@@ -45,11 +45,19 @@ backup=(etc/default/icinga2
 install='icinga2.install'
 changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
+        'boost-1.87.patch::https://github.com/Icinga/icinga2/pull/10278.patch'
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
 sha256sums=('9ab744de272ce17a871298116bd8029400a08563664f07ad1e52d2fa73d6929f'
+            'f1c121586719f60e78bb202b21ba6b2bd9de2e2630b658f6597de829cbfedc4d'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  patch -p1 < "$srcdir/boost-1.87.patch"
+}
 
 build() {
   mkdir -p "$srcdir/$pkgname-$pkgver/build"
