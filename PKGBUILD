@@ -1,6 +1,6 @@
 # Maintainer: zilch40 <wlh233@live.com>
 pkgname=rime-ls
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A language server that provides input method functionality using librime'
 arch=(x86_64)
@@ -8,7 +8,7 @@ url='https://github.com/wlh320/rime-ls'
 license=('BSD3')
 makedepends=('clang' 'cargo')
 depends=('librime')
-sha512sums=('8bddaae948458c19075c01774325d52a4873c368e5a66dbc026c3933ac324b7f04318aeb1c59d40dd461b48274d8e5bc5002738ecf1f19c6a7fe65a9346179cf')
+sha512sums=('6c379f9f418839281f15d47fc5a91ebc6358faa67b61b9ae840f3fb81ee502a613b27e74bf4bb30048ded78e01a06e3d5e72a94ca92abe80e256268b0a6cb7b5')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
