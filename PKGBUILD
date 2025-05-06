@@ -11,6 +11,7 @@ _elnum=34
 depends=(electron${_elnum} ripgrep #replacements
 'gcc-libs' 'hicolor-icon-theme' 'libx11' 'libxkbfile')
 optdepends=('electron: For /usr/share/cursor/cursor-latestron')
+makedepends=(sed)
 provides=(cursor)
 conflicts=(cursor)
 source=("src.iso::https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/linux/x64/Cursor-${pkgver}-${arch}.AppImage"
@@ -22,7 +23,7 @@ prepare() {
   chmod +x src.iso
   ./src.iso --appimage-extract > /dev/null
   # Verify version of electron
-  _correctron=$(grep -E '"electron": "[0-9]{2}' squashfs-root/usr/share/cursor/resources/app/package.json|awk '{print $2}'|cut -c2-3)
+  _correctron=$(rg -o '"electron":\s*"[0-9]+' squashfs-root/usr/share/cursor/resources/app/package.json |rg -o '[0-9]+')
   if [[ $_elnum != $_correctron ]]; then
     echo "Using incorrectron. Change electron${_elnum} to electron${_correctron}"
     exit 1

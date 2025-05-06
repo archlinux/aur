@@ -5,6 +5,7 @@ pkgbase = cursor-electron
 	url = https://www.cursor.com
 	arch = x86_64
 	license = custom:Proprietary
+	makedepends = sed
 	depends = electron34
 	depends = ripgrep
 	depends = gcc-libs
