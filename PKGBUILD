@@ -4,7 +4,7 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r14469.0f2a4b80e
+pkgver=r14484.e228ef221
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
@@ -41,7 +41,7 @@ check() {
 
     ./odin check examples/all -strict-style
 
-    ./odin test tests/core/normal.odin -file -all-packages -define:ODIN_TEST_FANCY=false
+    TZ='America/New_York' ./odin test tests/core/normal.odin -debug -file -all-packages -define:ODIN_TEST_FANCY=false
     ./odin test tests/core/speed.odin -o:speed -file -all-packages -define:ODIN_TEST_FANCY=false
     ./odin test tests/vendor -all-packages -define:ODIN_TEST_FANCY=false
     ./odin test tests/internal -all-packages -define:ODIN_TEST_FANCY=false
