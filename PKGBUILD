@@ -1,6 +1,6 @@
 pkgname=python-ocp
 pkgver=7.7.2.1+r4.g544d7fd5
-pkgrel=4
+pkgrel=5
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -10,6 +10,7 @@ depends=(
 python
 opencascade
 vtk
+fmt
 )
 
 makedepends=(
