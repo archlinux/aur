@@ -5,7 +5,7 @@
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.9.2
-pkgrel=7
+pkgrel=8
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -13,7 +13,7 @@ license=('AGPL-3.0-only')
 depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
          'expat' 'glew' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
          'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
-         'wxwidgets-gtk3' 'z3' 'zlib')
+         'z3' 'zlib')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
              'cereal' 'cgal' 'eigen')
 options=('!makeflags')
@@ -68,7 +68,8 @@ build() {
       -G Ninja \
       -S PrusaSlicer-version_${pkgver/_/-}/deps \
       -B deps_${pkgver} \
-      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
+      -DDEP_WX_GTK3=ON \
+      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;z3;ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \
