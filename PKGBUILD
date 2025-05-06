@@ -4,7 +4,7 @@
 
 _pkgname=git-bug
 pkgname=git-bug-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Distributed bug tracker embedded in Git"
 arch=('x86_64' 'i686' 'arm')
@@ -16,10 +16,10 @@ source_x86_64=("$url/releases/download/v$pkgver/git-bug_linux_amd64")
 source_i686=("$url/releases/download/v$pkgver/git-bug_linux_386")
 source_arm=("$url/releases/download/v$pkgver/git-bug_linux_arm")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('09b3e2d657ff9a06ae6599af63e0e64ae291d00607d7a1dd28c8f5908a88a6dc')
-sha256sums_x86_64=('9f65e35482d351a65639559ba5504a63f2edc729e1a077686b22e7e259ffaed5')
-sha256sums_i686=('a54fca57f7a577b650fbb834de11759d1dbdd19444b10993e645755b39aefcf1')
-sha256sums_arm=('9339342cb879bbb88ee2b2e514e4f13bd619dd1370feddf360a82f5a24db9c28')
+sha256sums=('5990334ff13e905064be9ad07125c366a071e686f04f38bad49cd853d0cf6408')
+sha256sums_x86_64=('b53faff723a43b04da9a30eeb014bda315de028df458ef5c5fe39751a571b79c')
+sha256sums_i686=('c69bf7befcdd1212937e8bf373f1387f229bd48cbe523c83dadb753c0b5c0792')
+sha256sums_arm=('a46ef3bcdb5103cd8f882f96f1069c3b69b5d15d173e20ef80371b39543afb1e')
 
 package() {
   local _source_bin=source_$CARCH
