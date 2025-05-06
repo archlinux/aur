@@ -1,14 +1,14 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
 
-_fullver="16.3-5"
+_fullver="16.3-6"
 pkgname="xpipe-ptb"
 pkgver="16.3"
-pkgrel="5"
+pkgrel="6"
 epoch=1
 pkgdesc="XPipe (Public Test Build) releases"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xpipe-io/${pkgname}"
-license=('unknown')
+license=('custom')
 groups=()
 # From https://aur.archlinux.org/packages/java-openjfx
 depends=(
@@ -30,7 +30,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=("xpipe-bin")
 replaces=()
 backup=()
 options=(!debug !strip)
@@ -41,8 +41,8 @@ source_x86_64=("${pkgname}-${_fullver}-x86_64.tar.gz::https://github.com/xpipe-i
 source_aarch64=("${pkgname}-${_fullver}-arm64.tar.gz::https://github.com/xpipe-io/${pkgname}/releases/download/${_fullver}/xpipe-portable-linux-arm64.tar.gz")
 noextract=()
 sha256sums=("SKIP" "SKIP" "SKIP")
-sha256sums_x86_64=("0614768bbab68ffb802d51f2b5b85001e299ee48ef6b2c4b6c994b7e97e2f1b7")
-sha256sums_aarch64=("0614768bbab68ffb802d51f2b5b85001e299ee48ef6b2c4b6c994b7e97e2f1b7")
+sha256sums_x86_64=("c88ddd050c76bf740b453d3195408b569b8d2f5cc461addc4ecf753d95e875ea")
+sha256sums_aarch64=("c88ddd050c76bf740b453d3195408b569b8d2f5cc461addc4ecf753d95e875ea")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
@@ -54,4 +54,5 @@ package() {
 	cp -a "$srcdir/logo_256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/$pkgname/bin/xpipe" "$pkgdir/usr/bin/${pkgname}"
+	touch "$pkgdir/opt/$pkgname/aur"
 }
