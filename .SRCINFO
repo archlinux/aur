@@ -1,7 +1,7 @@
-pkgbase = libfprint-cs9711
+pkgbase = libfprint-cs9711-git
 	pkgdesc = libfprint with proprietary FPC match on host device CS9711Fingprint driver
-	pkgver = 1.94.8
-	pkgrel = 3
+	pkgver = 1.94.6+31.r1672.20250105.03ace5b
+	pkgrel = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
 	groups = fprint
@@ -28,8 +28,10 @@ pkgbase = libfprint-cs9711
 	depends = pixman
 	provides = libfprint
 	provides = libfprint-2.so
+	provides = libfprint-cs9711
 	conflicts = libfprint
+	replaces = libfprint-cs9711<=1.94.8
 	source = git+https://github.com/ericlinagora/libfprint-CS9711
 	b2sums = SKIP
 
-pkgname = libfprint-cs9711
+pkgname = libfprint-cs9711-git

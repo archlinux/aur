@@ -4,8 +4,8 @@
 # Contributor: ZhenDong Wu <wzd04062@sina.com>
 
 pkgname=libfprint-cs9711-git
-pkgver=1.94.8
-pkgrel=3
+pkgver=1.94.6+31.r1672.20250105.03ace5b
+pkgrel=1
 pkgdesc="libfprint with proprietary FPC match on host device CS9711Fingprint driver"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
