@@ -1,18 +1,18 @@
 pkgbase = go-blueprint-bin
 	pkgdesc = Go-blueprint allows users to spin up a quick Go project using a popular framework.(Prebuilt version)
-	pkgver = 0.10.8
+	pkgver = 0.10.9
 	pkgrel = 1
 	url = https://docs.go-blueprint.dev/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	provides = go-blueprint=0.10.8
+	provides = go-blueprint=0.10.9
 	conflicts = go-blueprint
-	source = LICENSE-0.10.8::https://raw.githubusercontent.com/Melkeydev/go-blueprint/v0.10.8/LICENSE
+	source = LICENSE-0.10.9::https://raw.githubusercontent.com/Melkeydev/go-blueprint/v0.10.9/LICENSE
 	sha256sums = 8dbc61ccb9df6583bf6cd0ad23ca0a38e1eb0655f38eb85ec2b71b71392d5060
-	source_aarch64 = go-blueprint-0.10.8-aarch64.tar.gz::https://github.com/Melkeydev/go-blueprint/releases/download/v0.10.8/go-blueprint_0.10.8_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 68ce9767c1745fbcfe3788da990ff391b10eab77111397d11d5d5b28c0b752cd
-	source_x86_64 = go-blueprint-0.10.8-x86_64.tar.gz::https://github.com/Melkeydev/go-blueprint/releases/download/v0.10.8/go-blueprint_0.10.8_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7b392d57c5f091c3dd2500a4c4e328cf384f70b48f5ec906bd2dd434439d0430
+	source_aarch64 = go-blueprint-0.10.9-aarch64.tar.gz::https://github.com/Melkeydev/go-blueprint/releases/download/v0.10.9/go-blueprint_0.10.9_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 6c10abb2fe738cc452d95ebf74861903b629ad669d701ce4ee957d5f16b35804
+	source_x86_64 = go-blueprint-0.10.9-x86_64.tar.gz::https://github.com/Melkeydev/go-blueprint/releases/download/v0.10.9/go-blueprint_0.10.9_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 81bca7874591c166335527e75e7ce6ca37f0135fd598a3d901439233f6eda31d
 
 pkgname = go-blueprint-bin
