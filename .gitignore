@@ -1,4 +1,5 @@
 fudgeo-*.tar.gz
+fudgeo/
 src/
 pkg/
 python-fudgeo-*.pkg*
