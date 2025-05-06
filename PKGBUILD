@@ -5,7 +5,7 @@
 
 pkgname=pdf2djvu
 pkgver=0.9.19
-pkgrel=3
+pkgrel=4
 pkgdesc="Creates DjVu files from PDF files"
 arch=('x86_64')
 url="https://jwilk.net/software/pdf2djvu"
@@ -32,6 +32,9 @@ prepare() {
 
   # fix build with poppler >= 24.04.00 (that is built with C++20 standard)
   sed -i -e 's/CXXFLAGS = /CXXFLAGS = -std=c++20 /' "$srcdir"/${pkgname}-${pkgver}/autoconf.mk.in
+
+  # fix Python removing pipes module (replace it with shlex)
+  sed -i 's|pipes|shlex|g' "$srcdir"/${pkgname}-${pkgver}/tests/tools.py
 }
 
 build() {
