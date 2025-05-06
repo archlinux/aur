@@ -1,7 +1,6 @@
-/geometry.hpp
 /mapnik
-/polylabel
-/test-data
+/mapnik-vector-tile
 /pkg
 /src
+/test-data
 *.zst

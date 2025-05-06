@@ -6,7 +6,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=mapnik-git
-pkgver=4.0.7.r4.g2242968
+pkgver=4.0.7.r42.g3eaf993
 pkgrel=1
 pkgdesc='Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)'
 arch=('i686' 'x86_64')
@@ -23,25 +23,27 @@ depends=('boost-libs'
          'libtiff'
          'libwebp'
          'libxml2'
+         'mapbox-geometry.hpp'
+         'mapbox-polylabel'
+         'mapbox-variant'
          'postgresql-libs'
          'proj'
+         'protozero'
+         'sparsehash'
          'sqlite'
          'ttf-dejavu')
 makedepends=('boost'
              'cmake'
-             'git'
-             'mapbox-geometry.hpp'
-             'mapbox-polylabel'
-             'mapbox-variant'
-             'protozero'
-             'sparsehash')
+             'git')
 conflicts=('mapnik')
 options=(staticlibs)
 provides=('mapnik')
 source=('git+https://github.com/mapnik/mapnik.git'
+        'git+https://github.com/mapnik/mapnik-vector-tile.git'
         'mapnik-use-system-sparsehash.patch'
         'git+https://github.com/mapnik/test-data.git')
 sha256sums=('SKIP'
+            'SKIP'
             'dabb1b99540a6df86b34511d0d94ef505f706419b7e6d1d69314797ebcdce72f'
             'SKIP')
 
@@ -56,26 +58,29 @@ prepare() {
   git -C mapnik config submodule.test/data.url "${srcdir}"/test-data
   git -C mapnik -c protocol.file.allow=always submodule update test/data
 
+  git -C mapnik submodule init deps/mapbox/mapnik-vector-tile
+  git -C mapnik config submodule.deps/mapbox/mapnik-vector-tile.url "${srcdir}"/mapnik-vector-tile
+  git -C mapnik -c protocol.file.allow=always submodule update deps/mapbox/mapnik-vector-tile
+
   # Remove bundled sparsehash directory in favor of 'sparsehash' package
   rm -rf deps/mapnik/sparsehash
 
-  export LDFLAGS
+  export CXXFLAGS CFLAGS LDFLAGS
   cmake -B build -S mapnik \
-    -DBUILD_BENCHMARK:BOOL=OFF \
-    -DBUILD_DEMO_CPP:BOOL=OFF \
-    -DBUILD_DEMO_VIEWER:BOOL=OFF \
-    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DFONTS_INSTALL_DIR:PATH=share/fonts/TTF \
-    -DUSE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
-    -DUSE_EXTERNAL_MAPBOX_POLYLABEL:BOOL=ON \
-    -DUSE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
-    -DUSE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON \
-    -Wno-dev
+    -D BUILD_BENCHMARK:BOOL=OFF \
+    -D BUILD_DEMO_CPP:BOOL=OFF \
+    -D BUILD_DEMO_VIEWER:BOOL=OFF \
+    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D FONTS_INSTALL_DIR:PATH=share/fonts/TTF \
+    -D USE_EXTERNAL_MAPBOX_GEOMETRY:BOOL=ON \
+    -D USE_EXTERNAL_MAPBOX_POLYLABEL:BOOL=ON \
+    -D USE_EXTERNAL_MAPBOX_PROTOZERO:BOOL=ON \
+    -D USE_EXTERNAL_MAPBOX_VARIANT:BOOL=ON \
+    -W no-dev
 }
 
 build() {
+  export MAKEFLAGS
   cmake --build build
 }
 
