@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=warpgui-bin
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="GUI for Cloudflare ™ WARP.(Prebuilt Version)"
 arch=('x86_64')
@@ -16,14 +16,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f0d8e78b53117f79c95473fdc77e20a6d809219cb66eae85c587042ce65949e1'
+sha256sums=('ba56dd3fcc0665f651661eba8850b16cdd37ba6a83dc0e3692a6e216aeb7097a'
             'b046dc662796f382c9300642d94724a97c20baf60de1fe9b34844a6a735aaf7d')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/Exec=\/usr\/share\/${pkgname%-bin}\/${pkgname%-bin}/Exec=${pkgname%-bin} %U/g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
