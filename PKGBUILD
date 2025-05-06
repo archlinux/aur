@@ -14,15 +14,11 @@
 : ${_build_qt5:=false}
 : ${_build_qt6:=true}
 
-: ${_build_git:=true}
+: ${_pkgtype=-git}
 
-unset _pkgtype
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
-## basic info
 _pkgbase="lazarus"
 pkgbase="$_pkgbase${_pkgtype:-}"
-pkgver=3.6.r3182.g41e0703
+pkgver=4.0.r1302.g787dc4d
 pkgrel=1
 pkgdesc='Delphi-like IDE for FreePascal'
 url="https://gitlab.com/freepascal.org/lazarus/lazarus"
@@ -32,7 +28,7 @@ license=(
   'GPL-2.0-only'
 
   # synedit
-  'MPL-2.0'
+  'MPL-1.1' # or GPL-2.0-only
 
   # component library
   'LGPL-2.0-only'
