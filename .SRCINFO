@@ -1,0 +1,14 @@
+pkgbase = go-perflock-git
+	pkgdesc = Locking wrapper for running benchmarks on shared hosts
+	pkgver = r17.b67f3f2
+	pkgrel = 1
+	url = https://github.com/aclements/perflock
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	conflicts = perflock-git
+	source = git+https://github.com/aclements/perflock.git
+	md5sums = SKIP
+
+pkgname = go-perflock-git
