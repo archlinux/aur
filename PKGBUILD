@@ -26,13 +26,13 @@ build () {
   mkdir -p build
   cd build
   ../configure --prefix="${pkgdir}/usr"
-  make chrome-build -j1
+  make build -j1
 }
 
 package () {
   mkdir -p "${pkgdir}/usr"
   cd curl-impersonate-${pkgver}/build
-  make chrome-install
+  make install
   # remove windows batch-files
   cd ../../
   rm -vf ${pkgdir}/usr/bin/*.bat
