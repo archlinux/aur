@@ -1,0 +1,18 @@
+pkgbase = ya-player
+	pkgdesc = Yandex Music player
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/bdrazhzhov/ya-player
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = patchelf
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	source = https://github.com/bdrazhzhov/ya-player/releases/download/preparing-for-aur/ya-player-v0.5.0.tar.zst
+	sha256sums = de5323de1d28bf38252aa9bdf190cda2971253adc874310813d58ca88c4250de
+
+pkgname = ya-player
