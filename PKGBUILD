@@ -2,12 +2,12 @@
 pkgname="filius"
 pkgver="2.8.0"
 _pkgver="${pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
 license=('GPL')
-depends=('java-environment>=23')
+depends=('java-runtime>=17')
 source=(http://www.lernsoftware-filius.de/downloads/Setup/$pkgname-$_pkgver.zip)
 package() {
 	cd $srcdir
