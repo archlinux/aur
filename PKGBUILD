@@ -21,7 +21,7 @@ validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstell
 
 prepare() {
   cd "${srcdir}"
-  sed 's,^#include <string>,#include <string>\n#include <cstdint>,' --in-place compiler-rt-15.0.7.src/lib/orc/error.h
+  sed 's,^#include <string>,#include <string>\n#include <cstdint>,' --in-place compiler-rt-${pkgver}.src/lib/orc/error.h
   cd -
 
   mv cmake{-$pkgver.src,}
