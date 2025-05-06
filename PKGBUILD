@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.10.r75.g05c2f2c
+pkgver=2.2.10.r140.g5ad736a
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -31,6 +31,7 @@ makedepends=(
 )
 checkdepends=('appstream')
 optdepends=(
+  'apcupsd: apcaccess is used for UPS/battery information'
   'fwupd: Firmware module'
   'xorg-xrandr: Read monitor setup'
 )
