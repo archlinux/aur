@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}.tmpfiles"
         "${pkgname}@.service")
-sha256sums=('f0a2a47c7ebdb0a9b344c4dd38294ac557e616613626e8dfc926e8d8154cedac'
+sha256sums=('0ba1d53a8826b63b9eb9fe9bd56d97d3918d02f267894e643fefd982d608d968'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
             '430b38fb5de8ea2bdd03ef65d376b5aae7acad88cfffd5031d05b45e8ae1040b')
 
