@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=silence-speedup-bin
-_pkgname="Silence-SpeedUp"
-pkgver=1.2.5
-_electronversion=16
-pkgrel=9
+_pkgname='Silence-SpeedUp'
+pkgver=2.0.0
+_electronversion=34
+pkgrel=1
 pkgdesc="An electron-based app,speed-up your videos speeding-up (or removing) silences, using FFmpeg.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://vincenzopadula.altervista.org/silence-speedup/"
@@ -24,10 +24,10 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.zip"
+    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2f88c27b08084064ad8477f6744dc8592ea1d4bc5dba74437710871ece1d9653'
+sha256sums=('9d688e579f7c8f05007b7f10aeb9aa31e49fdd74a46fd2c260db4a7ddc6e20b2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -37,15 +37,19 @@ prepare() {
         s/@cfgdirname@/${_pkgname//-/ }/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="AudioVideo;Utility" --name="${_pkgname}" --exec="${pkgname%-bin} %U"
-    rm -rf "${srcdir}/${_pkgname}-v${pkgver}-linux-x64/resources/app/assets/ffmpeg/ffmpeg"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="AudioVideo;Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin} %U"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/${_pkgname}-linux-x64/resources/app/assets/ffmpeg/ffmpeg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}-linux-x64/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-v${pkgver}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-bin}/app/assets/ffmpeg/ffmpeg"
-    install -Dm644 "${srcdir}/${_pkgname}-v${pkgver}-linux-x64/resources/app/assets/icons/icon.svg" \
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-linux-x64/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/assets/icons/icon.svg" \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }

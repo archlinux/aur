@@ -1,21 +1,21 @@
 pkgbase = silence-speedup-bin
 	pkgdesc = An electron-based app,speed-up your videos speeding-up (or removing) silences, using FFmpeg.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.5
-	pkgrel = 9
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://vincenzopadula.altervista.org/silence-speedup/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
-	depends = electron16
+	depends = electron34
 	depends = nodejs
 	depends = ffmpeg
-	provides = silence-speedup=1.2.5
+	provides = silence-speedup=2.0.0
 	conflicts = silence-speedup
 	options = !strip
 	options = !emptydirs
-	source = silence-speedup-1.2.5.zip::https://github.com/padvincenzo/silence-speedup/releases/download/v1.2.5/Silence-SpeedUp-v1.2.5-linux-x64.zip
+	source = silence-speedup-2.0.0.zip::https://github.com/padvincenzo/silence-speedup/releases/download/v2.0.0/Silence-SpeedUp-linux-x64.zip
 	source = silence-speedup.sh
-	sha256sums = 2f88c27b08084064ad8477f6744dc8592ea1d4bc5dba74437710871ece1d9653
+	sha256sums = 9d688e579f7c8f05007b7f10aeb9aa31e49fdd74a46fd2c260db4a7ddc6e20b2
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = silence-speedup-bin
