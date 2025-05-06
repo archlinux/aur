@@ -35,7 +35,7 @@ makedepends=(
   lib32-libsndfile
   lib32-portaudio
 )
-source=($pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz)
+source=($_name-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz)
 sha512sums=('cf41eb338fccaafaa6961b8ca9eec6e8f0e35d25ec8f1d6f621fc73bd4b43b301dfe027db4252424118d1772568b949542820777a74b651a3f32c5028a34ed61')
 b2sums=('5f20b1fbe9f01ab2f02746a285be66382a30eaea163be2df676a7ec79f436b6b3dc74fbe454e813e248fe5564a24c590afe6a26817641cbcc9c92d22bb38734a')
 
