@@ -1,18 +1,18 @@
 # Maintainer: jgmdev <jgmdev@gmail.com>
 
 _pkgname=wayfire-scale-ipc
-_pkgver=ac7926ddaa322c24d595ab5e4ef94b3eb3b382d7
+_pkgver=6fb75617ca52fd488160c7fd3a402798cd3c1e47
 pkgname=wayfire-plugins-scale-ipc
-pkgver=0.0.1
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Extra IPC interaction for the scale plugin of Wayfire."
 arch=('x86_64' 'aarch64')
 url="https://github.com/dkondor/${_pkgname}"
 license=('MIT')
-depends=('wayfire' 'nlohmann-json')
+depends=('wayfire-git')
 makedepends=('meson' 'ninja')
 source=("https://github.com/dkondor/${_pkgname}/archive/${_pkgver}.zip")
-md5sums=('30bee5e9ed841e6e52283992af99fc3d')
+md5sums=('9d15a2b9d40cf099ea5dc7e4b1bf7766')
 
 build() {
   cd "${_pkgname}-${_pkgver}"
