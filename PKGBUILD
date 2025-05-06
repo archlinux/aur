@@ -1,7 +1,7 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=justdd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JustDD - Simple graphical USB image writer for Linux and Windows ISOs"
 arch=('any')
 url="https://github.com/xxanqw/justdd"
@@ -13,6 +13,7 @@ md5sums=('SKIP')
 options=('!debug')
 
 build() {
+    cd "$srcdir/$pkgname"
     uv venv
     source ./.venv/bin/activate
     uv sync --all-extras

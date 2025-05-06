@@ -1,7 +1,7 @@
 pkgbase = justdd
 	pkgdesc = JustDD - Simple graphical USB image writer for Linux and Windows ISOs
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xxanqw/justdd
 	arch = any
 	license = GPL3
