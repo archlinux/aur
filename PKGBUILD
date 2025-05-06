@@ -5,7 +5,7 @@ _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
 pkgver=1.99.32846
 _electronversion=34
-pkgrel=1
+pkgrel=2
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
 arch=(
     'aarch64'
@@ -31,6 +31,7 @@ depends=(
     'libx11'
     'libxkbfile'
     'nodejs'
+    'ripgrep'
 )
 optdepends=(
 	'gvfs: For move to trash functionality'
@@ -64,6 +65,7 @@ prepare() {
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
+    ln -sf "/usr/bin/rg" "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@vscode/ripgrep/bin/rg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

@@ -1,7 +1,7 @@
 pkgbase = vscodium-electron-bin
 	pkgdesc = VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)
 	pkgver = 1.99.32846
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vscodium.com/
 	arch = aarch64
 	arch = armv7h
@@ -11,6 +11,7 @@ pkgbase = vscodium-electron-bin
 	depends = libx11
 	depends = libxkbfile
 	depends = nodejs
+	depends = ripgrep
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = vscodium=1.99.32846
