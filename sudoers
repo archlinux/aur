@@ -1,1 +1,3 @@
+Defaults!/usr/bin/visudo env_keep += "SUDO_EDITOR EDITOR VISUAL"
+Defaults secure_path="/usr/bin"
 %wheel ALL=(ALL) ALL
