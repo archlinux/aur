@@ -1,10 +1,10 @@
 pkgbase = pdf-compress
 	pkgdesc = Compress an overlarge pdf file
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.timedicer.co.uk/programs/help/pdf-compress.sh.php
 	arch = any
-	license = APACHE
+	license = Apache-2.0
 	depends = ghostscript
 	depends = imagemagick
 	optdepends = qpdf: further 10% compression or slightly better quality
