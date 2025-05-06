@@ -1,7 +1,7 @@
 # Maintainer: prime-run <prime-run@github.com>
 pkgname="wallrust"
-pkgver=v1.0.2
-pkgrel=2
+pkgver=v1.0.3
+pkgrel=3
 pkgdesc="A blazingly fast and feature-rich tool to extract color palettes from images | written in Rust"
 arch=("x86_64")
 url="https://github.com/prime-run/wallrust"
