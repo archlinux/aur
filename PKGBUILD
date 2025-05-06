@@ -1,9 +1,9 @@
 # Maintainer: ivanmara
 # Contributor: ivanmara
 pkgname=gentoo-color-bash
-pkgver=2024.06.20
+pkgver=2024.06.21
 _id=68c208ecd6b805ebc7796d2b71ceef4614179a2d  # 2024-06-20 size: 2209 latest commit
-pkgrel=3
+pkgrel=1
 
 pkgdesc='Gentoo color terminal and bash command prompt. Looks very nice.'
 arch=('any')
