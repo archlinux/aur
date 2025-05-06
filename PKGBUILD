@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=inner-ink-bin
-_pkgname="Inner Ink"
-pkgver=2.2.1
+_pkgname='Inner Ink'
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A Diary app made with Tauri & React for desktop.(Prebuilt version)"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/knownasnaffy/inner-ink/v${pkgver}/LICENSE"
 )
-sha256sums=('fe8fa471435582a1e11e3cbdafe138ea44a1f9531ecca2f66a1042a05b2e6876'
+sha256sums=('1bba26cbe96b9a8ac4da290da79c4e10d6da6fa4f6c006994ed1a291f312e1bd'
             '35e25d7ed25ecd3a68185e9ab59b4229c3c4e5957d14bb7737c3fc18af55b766')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
