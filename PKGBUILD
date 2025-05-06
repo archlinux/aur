@@ -30,20 +30,20 @@ sha256sums=(SKIP)
 
 pkgver() {
 	cd "${_pkgname}"
-	
+
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "${_pkgname}"
-	
+
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked
 }
 
 build() {
 	cd "${_pkgname}"
-	
+
 	export RUSTUP_TOOLCHAIN=stable
 	cargo build --release --frozen
 	cargo build -p mayctl --release --frozen
