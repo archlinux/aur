@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xc-music-bin
 _pkgname=XCMusic
-pkgver=0.3.0
+pkgver=0.3.1
 _electronversion=35
 pkgrel=1
 pkgdesc="GUI of Netease Cloud Music.(Prebuilt version.Use system-wide electron)第三方网易云音乐客户端"
@@ -23,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/yiktllw/XCMusic/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1c6010143c55fd10aac173a1af7093e1be478833519a050aa8d96e1c84ad6e7b'
+sha256sums=('6b2add59da5de1ad99e1aba2f75987f82815da014c54dfa01d88267e2ef61026'
             '01cfa7209f94fbbc44d9b6946d94c75612cf3fbfb6950752af500ea1956664c0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -34,7 +34,9 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
