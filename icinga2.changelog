@@ -1,3 +1,7 @@
+2.14.5-2
+  - Add patch to allow building with Boost 1.87 (and later)
+  - Add patch to allow building with CMake 4.0
+
 2.14.5-1
   - New upstream version 2.14.5
   - Build with Boost 1.86 (can't build with 1.87)
