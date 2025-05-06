@@ -12,15 +12,16 @@ url="http://mp3val.sourceforge.net/"
 license=('GPL')
 depends=('gcc-libs')
 source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-src.tar.gz
-        $pkgname-$pkgver.diff
+        subversion-r95.diff
         $pkgname.1)
 md5sums=('dc8adad909d0b8734ed22029b2de2cb4'
-         'a1171f5aeb95f5a06cf0d147c5d3921a'
+         '7b5a52971ded087368c709fde99fee8f'
          '0195e80d4ea32855fd15fe76e3855acd')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-src"
-  patch -Np1 -i ../$pkgname-$pkgver.diff
+  # https://sourceforge.net/p/mp3val/subversion/95/
+  patch -Np1 -i ../subversion-r95.diff
   make -f Makefile.linux CXXFLAGS="$CXXFLAGS"
 }
 
