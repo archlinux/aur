@@ -1,13 +1,13 @@
 pkgbase = gentoo-color-bash
 	pkgdesc = Gentoo color terminal and bash command prompt. Looks very nice.
-	pkgver = 2025.05.08
+	pkgver = 2025.05.09
 	pkgrel = 1
 	url = https://www.gentoo.org
 	install = gentoo-color-bash.install
 	arch = any
 	license = GPL
 	optdepends = bash: Shell needed to make use of this package
-	source = gentoo-color-bash-2025.05.08::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color.bash?id=68c208ecd6b805ebc7796d2b71ceef4614179a2d
+	source = gentoo-color-bash-2025.05.09::https://gitweb.gentoo.org/repo/gentoo.git/plain/app-shells/bash/files/bashrc.d/10-gentoo-color.bash?id=68c208ecd6b805ebc7796d2b71ceef4614179a2d
 	sha256sums = 579af0d935be990abc00fc54eeb7439d64b49ca4a1636e16eff950a91a8c76f2
 
 pkgname = gentoo-color-bash

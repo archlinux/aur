@@ -1,7 +1,7 @@
 # Maintainer: ivanmara
 # Contributor: ivanmara
 pkgname=gentoo-color-bash
-pkgver=2025.05.08
+pkgver=2025.05.09
 _id=68c208ecd6b805ebc7796d2b71ceef4614179a2d  # 2024-06-20 size: 2209 latest commit
 pkgrel=1
 
@@ -15,16 +15,21 @@ sha256sums=('579af0d935be990abc00fc54eeb7439d64b49ca4a1636e16eff950a91a8c76f2')
 install=${pkgname}.install
 
 _usage="\
-#-------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
     USAGE:
-        after install, add line:
-            source /usr/share/gentoo-color-bash/10-gentoo-color.bash
-        to global: /etc/bash.bashrc
-        or
-        to user's: ~/.bashrc and to system: /etc/skel/.bashrc
+        after install, you can use it:
+        A. globaly:
+            1. in users: ~/.bashrc remove\comment var PS1 or empty this file
+            2. add line:
+                  source /usr/share/gentoo-color-bash/10-gentoo-color.bash
+               to global: /etc/bash.bashrc
+        B. localy:
+               add line:
+                  source /usr/share/gentoo-color-bash/10-gentoo-color.bash
+               to users: ~/.bashrc and to system: /etc/skel/.bashrc if necessary
 
-#-------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 "
 package() {
 
