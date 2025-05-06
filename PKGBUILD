@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=31.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -15,6 +15,7 @@ _pythonver=3.13
 depends=(
   "alsa-lib" # Deps of ALSA plugin and CEF
   "curl" # Deps of OBS Studio and rtmp-services plugin
+  "extra-cmake-modules" # Extra modules and scripts for CMake
   "ffmpeg>=7.1" # Deps of OBS Studio and FFmpeg plugin
   "fontconfig" # Deps of Freetype2 plugin
   "freetype2" # Deps of Freetype2 plugin
@@ -111,7 +112,7 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
 
-  #git checkout 90570e7a700ea037c97e6dfa204c4fcd42f4b3fe
+  git checkout d7cce79d7e0651220a5470ae6d7579b83db3d1d2
 
   git -c protocol.file.allow=always submodule update
 
