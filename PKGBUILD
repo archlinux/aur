@@ -3,7 +3,7 @@
 
 _gemname=seven-zip
 pkgname=ruby-$_gemname
-pkgver=1.4.2
+pkgver=1.7.0.rc1
 pkgrel=1
 pkgdesc='This is a ruby gem library to read and write 7zip files.'
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('a6ffdc175e9259c73af6a54b28ef89d19ac2689e')
+sha1sums=('a4e266a4971f64dfce9a1e8b9f23570d8023cb33')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
