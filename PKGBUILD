@@ -7,26 +7,27 @@
 
 pkgname=google-earth-pro
 pkgver=7.3.6.10201
-pkgrel=1
-pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
-arch=('x86_64')
-url='https://www.google.com/earth/'
-license=('custom')
+pkgrel=2
+pkgdesc="3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)"
+arch=(x86_64)
+url="https://www.google.com/earth/"
+license=(LicenseRef-Google-custom)
 depends=(
-    'alsa-lib'
-    'desktop-file-utils'
-    'fontconfig'
-    'glu'
-    'gst-plugins-base-libs'
-    'hicolor-icon-theme'
-    'libcups'
-    'libsm'
-    'libproxy'
-    'libxi'
-    'libxrender'
-    'sqlite'
+    alsa-lib
+    desktop-file-utils
+    fontconfig
+    glu
+    gst-plugins-base-libs
+    hicolor-icon-theme
+    libcups
+    libsm
+    libproxy
+    libxi
+    libxml2-legacy
+    libxrender
+    sqlite
 )
-provides=('google-earth')
+provides=(google-earth)
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=(
