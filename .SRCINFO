@@ -1,10 +1,10 @@
 pkgbase = freetz-ng-tools-git
 	pkgdesc = Development tools of the Freetz-NG project
-	pkgver = r23089.ea5ac032a
+	pkgver = r25426.d3f49c296
 	pkgrel = 1
 	url = https://freetz-ng.github.io/freetz-ng/
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = python
 	makedepends = svn
@@ -13,6 +13,7 @@ pkgbase = freetz-ng-tools-git
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs
 	depends = sed
+	depends = libz.so=1-64
 	provides = freetz-ng-tools
 	provides = freetz-tools
 	conflicts = freetz-ng-tools
