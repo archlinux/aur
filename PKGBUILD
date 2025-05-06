@@ -8,7 +8,7 @@ pkgdesc='An interactive map generator for Minecraft'
 
 url='https://www.worldpainter.net/'
 arch=('x86_64')
-license=('GPL')
+license=('GPL-3.0-only')
 
 depends=('java-environment' 'lib32-libxi' 'sh')
 optdepends=('minecraft: for playing the exported maps')
