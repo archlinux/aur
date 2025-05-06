@@ -1,4 +1,4 @@
-# based on https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/blob/3068cc4544c0a57ab5c5e447b2d219028698532b/PKGBUILD
+# based on https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/blob/368e65e7385e3854efe2a272f73b12f293d2d365/PKGBUILD
 
 # -- Arch credits
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
@@ -18,7 +18,7 @@ pkgname=(
   mutter-git
   mutter-docs-git
 )
-pkgver=47.0+r104+g245dafe81
+pkgver=48.2+r40+g4d194b8e1
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -29,6 +29,7 @@ depends=(
   cairo
   colord
   dconf
+  egl-wayland
   fontconfig
   fribidi
   gcc-libs
@@ -48,6 +49,7 @@ depends=(
   libdisplay-info
   libdrm
   libei
+  libgirepository
   libglvnd
   libgudev
   libice
@@ -76,18 +78,21 @@ depends=(
   pipewire
   pixman
   python
+  python-argcomplete
+  python-gobject
   startup-notification
   systemd-libs
   wayland
   xorg-xwayland
 )
 makedepends=(
-  egl-wayland
+  bash-completion
   gi-docgen
   git
   glib2-devel
   gobject-introspection
   meson
+  python-docutils
   sysprof
   wayland-protocols
 )
