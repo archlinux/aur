@@ -1,12 +1,15 @@
 pkgbase = sudo-rs-symlink
 	pkgdesc = Symlinks to sudo from sudo-rs
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	depends = sudo-rs
 	provides = sudo
 	conflicts = sudo
-	source = sudo-pam
+	backup = etc/sudoers
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/sudo/-/raw/main/sudo.pam
+	source = sudoers
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
+	sha256sums = 2a4fb692bcdb77dbe3548a83110696edac0863258b5edf3e125a3870994bca2e
 
 pkgname = sudo-rs-symlink
