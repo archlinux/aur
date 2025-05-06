@@ -1,0 +1,26 @@
+pkgbase = systemd-netns-git
+	pkgdesc = Configure private netns with systemd services.
+	pkgver = r49.4420d8d
+	pkgrel = 1
+	url = https://github.com/CarloWood/systemd-netns.git
+	install = systemd-netns-git.install
+	arch = any
+	license = GPL3
+	depends = systemd
+	depends = iproute2
+	optdepends = iptables: for default NAT config
+	optdepends = dhclient: when using dynamically assigned IP
+	provides = systemd-netns=r49.4420d8d
+	conflicts = systemd-named-netns
+	conflicts = systemd-netns
+	options = !debug
+	backup = etc/conf.d/netns/default.conf
+	backup = etc/conf.d/netns/lo.conf
+	backup = etc/conf.d/netns/veth.conf
+	backup = etc/conf.d/netns/macvlan.conf
+	backup = etc/conf.d/netns/veth-nstest.conf
+	source = systemd-netns-git::git+https://github.com/CarloWood/systemd-netns.git
+	source = systemd-netns-git.install
+	sha256sums = SKIP
+
+pkgname = systemd-netns-git

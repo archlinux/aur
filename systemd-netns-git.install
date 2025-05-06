@@ -1,0 +1,30 @@
+# systemd-netns-git.install
+
+# This function runs after the package is successfully installed for the first time.
+post_install() {
+  /usr/bin/netnsupdate
+}
+
+# This function runs after the package is successfully upgraded.
+# The argument $1 contains the new package version.
+# The argument $2 contains the old package version.
+post_upgrade() {
+  /usr/bin/netnsupdate
+}
+
+post_remove() {
+  local shopt_state
+  shopt_state=$(shopt -p nullglob)      # Save the current nullglob state.
+  shopt -s nullglob                     # Enable nullglob.
+
+  # Define the exact regex pattern we need to match within the file content.
+  local pattern='^# For each NSTYPE this file needs to be copied AS-IS to /etc/systemd/system/netns(_outside)?-NSTYPE@\.service$'
+
+  for f in /etc/systemd/system/netns*; do
+    if [[ -f "$f" ]] && grep -q -E "$pattern" "$f"; then
+      rm -f "$f"
+    fi
+  done
+
+  eval "$shopt_state"                   # Restore the original nullglob setting.
+}
