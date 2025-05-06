@@ -8,7 +8,7 @@ _pkgver_x86_64="$_typora_ver"
 _pkgver_aarch64="$_typora_ver"
 _plugin_ver=1.14.2
 pkgver=${_typora_ver}+plugin+${_plugin_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal markdown editor and reader. with obgnail/typora_plugin plugin."
 arch=('x86_64' 'aarch64')
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
@@ -41,7 +41,8 @@ _patch_plugin() {
   tar xvf ${_plugin_ver}.tar.gz -C "$pkgdir/"
   mv $pkgdir/typora_plugin-${_plugin_ver}/plugin $pkgdir/usr/share/typora/resources/
   rm -rf $pkgdir/typora_plugin-${_plugin_ver}
-  sed -i 's@\(frame.js" defer="defer"></script>\)@\1<script src="./plugin/index.js" defer="defer"></script>@g' $pkgdir/usr/share/typora/resources/window.html
+  cd $pkgdir/usr/share/typora/resources/plugin/bin/
+  bash install_linux.sh
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = typora-plugin
 	pkgdesc = A minimal markdown editor and reader. with obgnail/typora_plugin plugin.
 	pkgver = 1.10.8+plugin+1.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io/
 	arch = x86_64
 	arch = aarch64
