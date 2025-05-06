@@ -31,5 +31,4 @@ package () {
   do
     install -Dm755 $executable "${pkgdir}/usr/bin/"
   done
-  install -Dm755 curl-impersonate-* "${pkgdir}/usr/bin/"
 }
