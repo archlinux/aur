@@ -61,14 +61,16 @@ conflicts=(python-ocp-git)
 _ocp_fragment="#commit=544d7fd55b997dff26eb5b1009d17d97b42063b1"
 _pywrap_commit="6cbeb64e9695703c56bb6309a8351886accdeeb0"  # comment this to use the latest
 source=(
-git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
-git+https://github.com/CadQuery/pywrap.git
+  git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
+  git+https://github.com/CadQuery/pywrap.git
+  no_progress_bars.patch  #::https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch
 )
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('beb8f1a076b57f7295fd1070ed85233e1e99b4d52460b17419ba6e6848f809f0'
+            'SKIP'
+            'ce846f278e068bf7cc9f43174283bd9926fbf4062bd0575a70ab895be2294796')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
 _n_parallel_build_jobs=1
@@ -111,7 +113,7 @@ prepare(){
 
   # disable progress bars
   cd pywrap
-  curl --silent https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch | patch -p1
+  cat ../../no_progress_bars.patch | patch -p1
 }
 
 build() {

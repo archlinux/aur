@@ -53,7 +53,9 @@ pkgbase = python-ocp
 	options = !lto
 	source = git+https://github.com/CadQuery/OCP.git#commit=544d7fd55b997dff26eb5b1009d17d97b42063b1
 	source = git+https://github.com/CadQuery/pywrap.git
+	source = no_progress_bars.patch
+	sha256sums = beb8f1a076b57f7295fd1070ed85233e1e99b4d52460b17419ba6e6848f809f0
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ce846f278e068bf7cc9f43174283bd9926fbf4062bd0575a70ab895be2294796
 
 pkgname = python-ocp

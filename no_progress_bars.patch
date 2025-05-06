@@ -1,0 +1,63 @@
+From d4da3e7d2e129f44c7aa87783699d894c90eb4b1 Mon Sep 17 00:00:00 2001
+From: Greyson Christoforo <grey@christoforo.net>
+Date: Fri, 3 Dec 2021 10:11:20 +0000
+Subject: [PATCH 1/2] disable progress bars
+
+---
+ bindgen/__init__.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/bindgen/__init__.py b/bindgen/__init__.py
+index e9556851..79809389 100644
+--- a/bindgen/__init__.py
++++ b/bindgen/__init__.py
+@@ -241,7 +241,7 @@ def _process_module(name,files,module_names,includes,clang_location):
+         return ModuleInfo(name,path,files,module_names,settings)
+ 
+     modules = Parallel(prefer='processes',n_jobs=n_jobs)\
+-        (delayed(_process_module)(name,files,module_names, get_includes.__defaults__,init_clang.__defaults__) for name,files in tqdm(module_dict.items()))
++        (delayed(_process_module)(name,files,module_names, get_includes.__defaults__,init_clang.__defaults__) for name,files in tqdm(module_dict.items(), disable=True))
+ 
+     return modules
+ 
+@@ -264,7 +264,7 @@ def _filter_module(m):
+         return m
+ 
+     modules = Parallel(prefer='processes',n_jobs=n_jobs)\
+-        (delayed(_filter_module)(m) for m in tqdm(modules))
++        (delayed(_filter_module)(m) for m in tqdm(modules), disable=True)
+ 
+     #construct global class dictionary
+     class_dict = {}
+@@ -406,7 +406,7 @@ def proper_delete_operator(cls):
+     
+     output_path.mkdir_p()
+     with  output_path:
+-        for m in tqdm(modules):
++        for m in tqdm(modules, disable=True):
+             tqdm.write(f'Processing module {m.name}')
+             
+             jinja_env.globals.update({'module_settings' : module_settings.get(m.name,module_schema.validate({}))})
+
+From 6166c114aee23c210434ce2f40d56fb2a08331e7 Mon Sep 17 00:00:00 2001
+From: Greyson Christoforo <grey@christoforo.net>
+Date: Fri, 3 Dec 2021 10:15:30 +0000
+Subject: [PATCH 2/2] Update __init__.py
+
+---
+ bindgen/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bindgen/__init__.py b/bindgen/__init__.py
+index 79809389..b5c9ede3 100644
+--- a/bindgen/__init__.py
++++ b/bindgen/__init__.py
+@@ -264,7 +264,7 @@ def _filter_module(m):
+         return m
+ 
+     modules = Parallel(prefer='processes',n_jobs=n_jobs)\
+-        (delayed(_filter_module)(m) for m in tqdm(modules), disable=True)
++        (delayed(_filter_module)(m) for m in tqdm(modules, disable=True))
+ 
+     #construct global class dictionary
+     class_dict = {}
