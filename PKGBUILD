@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=hyprtiler
 _origpkgname=hyprtiler
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="A utility tool for managing windows in the Hyprland compositor environment."
 arch=("x86_64")
@@ -22,8 +22,8 @@ makedepends=(
   "python-hatchling"
 )
 
-source=("https://files.pythonhosted.org/packages/95/e3/6e00ec6d355c945189c41dcc3300d74131a3473c962b7dbdab0059069a5a/hyprtiler-0.1.22.tar.gz")
-sha256sums=("9ee7bb325fc6dfcdfe784bd80441ce2b3b4dfaa8aa7124f1628a57d95a03c15e")
+source=("https://files.pythonhosted.org/packages/76/e8/1fa1984901fe01a9c3239bf7bb1a0b35bae4356007e95b813e70082fc6e4/hyprtiler-0.1.23.tar.gz")
+sha256sums=("12668f3d5367b063fbb953245807b05f542006e36eda5c63ae7dac57787cbdb6")
 
 package() {
   cd "${_origpkgname}-${pkgver}" || exit
