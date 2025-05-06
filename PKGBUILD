@@ -1,7 +1,7 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="intiface-central-bin"
 pkgver="2.6.7"
-pkgrel=1
+pkgrel=2
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
 url="https://github.com/intiface/intiface-central"
@@ -16,7 +16,7 @@ source=(intiface_central.desktop
 )
 sha256sums=('SKIP'
             'SKIP'
-	    '7a907ffc10e2a7066029dca276141e85bad4ff7954862e216aef95ee8ac64c6b'
+	    'c3287fc6c28277bf5b71901df492e7c79c885fe3e9837b784eb4bde4216f72f5'
             'dc655c315ad5be39813e01861af04a2ef2c153e5bf3011df2c1c1275577e8916'
 )
 

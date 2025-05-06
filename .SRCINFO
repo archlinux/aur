@@ -1,7 +1,7 @@
 pkgbase = intiface-central-bin
 	pkgdesc = Frontend application for the Buttplug Sex Toy Control Library
 	pkgver = 2.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intiface/intiface-central
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = intiface-central-bin
 	source = intiface-engine-flutter-bridge-license.md::https://raw.githubusercontent.com/intiface/intiface-central/v2.6.7/intiface-engine-flutter-bridge/LICENSE.md
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 7a907ffc10e2a7066029dca276141e85bad4ff7954862e216aef95ee8ac64c6b
+	sha256sums = c3287fc6c28277bf5b71901df492e7c79c885fe3e9837b784eb4bde4216f72f5
 	sha256sums = dc655c315ad5be39813e01861af04a2ef2c153e5bf3011df2c1c1275577e8916
 
 pkgname = intiface-central-bin
