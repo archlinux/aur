@@ -2,18 +2,17 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier@gmail.com>
 
 pkgname=ossia-score-appimage
-pkgver=3.5.1
-_pkgver=3.5.1
-pkgrel=2
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="an interactive sequencer for the intermedia arts."
 arch=('x86_64')
 url="https://ossia.io/"
 license=('GPLv3')
 depends=('glib2' 'jack' 'avahi')
 optdepends=('pipewire' 'ultraleap-hand-tracking-service' 'gpsd' 'bluez' 'ndi-sdk')
-source=("score.AppImage::https://github.com/ossia/score/releases/download/v${_pkgver}/ossia.score-${_pkgver}-linux-x86_64.AppImage"
+source=("score.AppImage::https://github.com/ossia/score/releases/download/v${pkgver}/ossia.score-${pkgver}-linux-x86_64.AppImage"
         "ossia-score")
-sha512sums=('acea11a113d5d7c960ad50a1af1a1db85fbcb9d5b8b624ae6eac1170ad64f9547bff3477acb972c5b2619f9df1201298586669d8c326fd0dc42801c97a71e5d4'
+sha512sums=('2dcc6ab8afe7ad1c061088dd6e0dcd3d1f4f479014a7111149e386ea616751b5c8824ccabd581fab73f4438016487c99de157768559195722d3371a8aefaf933'
             '2a78deed52bf1bcb1abad9b0319c483aef91c16648e45a96a58162f536fb79ce06f92c5f622b547e9cef63e4cf751ce2142fc1f29ae29e470944d35b3d192ba2')
 package() {
   # Extract AppImage
