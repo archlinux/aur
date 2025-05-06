@@ -3,7 +3,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname=('mod_tile-git' 'renderd-git')
-pkgver=0.8.0.r7.gba27f1b
+pkgver=0.8.1.r0.ge8ac8f1
 pkgrel=1
 pkgdesc='A daemon and apache module for rendering and serving Mapnik raster tiles'
 arch=('i686' 'x86_64')
@@ -28,25 +28,23 @@ pkgver() {
 }
 
 prepare() {
-  export LDFLAGS
+  export CXXFLAGS CFLAGS LDFLAGS
   cmake -B build -S mod_tile \
-    -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-    -DCMAKE_CXX_STANDARD:STRING=17 \
-    -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-    -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
-    -DCMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
-    -DENABLE_TESTS:BOOL=ON \
-    -DUSE_CAIRO:BOOL=OFF \
-    -DUSE_CURL:BOOL=OFF \
-    -DUSE_RADOS:BOOL=OFF
+    -D CMAKE_CXX_STANDARD:STRING=17 \
+    -D CMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
+    -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+    -D CMAKE_INSTALL_RUNSTATEDIR:PATH=/run \
+    -D CMAKE_INSTALL_SYSCONFDIR:PATH=/etc \
+    -D ENABLE_TESTS:BOOL=ON \
+    -D USE_CAIRO:BOOL=OFF \
+    -D USE_CURL:BOOL=OFF \
+    -D USE_RADOS:BOOL=OFF
 }
 
 build() {
   # Override VERSION with ${pkgver}
   sed -i 's/VERSION ".*"/VERSION "'${pkgver}'"/g' mod_tile/includes/config.h.in
-
+  export MAKEFLAGS
   cmake --build build
 }
 
