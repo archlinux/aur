@@ -2,7 +2,7 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r6909.d54afb5
+pkgver=r7309.7c10c8f
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -27,7 +27,6 @@ makedepends=(
     'git'
     'curl'
     'pnpm'
-    'gcc'
 )
 optdepends=(
     "crc: crc plugin"
@@ -95,12 +94,19 @@ prepare() {
     sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
     sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
-    NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm install --no-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm run build:main
+    NODE_ENV=production     pnpm run build:preload
+    NODE_ENV=production     pnpm run build:preload-docker-extension
+    NODE_ENV=production     pnpm run build:preload-webview
+    NODE_ENV=production     pnpm run build:preload:types
+    NODE_ENV=production     pnpm run build:ui
+    NODE_ENV=production     pnpm run build:renderer
+    NODE_ENV=production     pnpm run build:extensions
     NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} --config .electron-builder.config.cjs --config.asar=false"
 }
 package() {
