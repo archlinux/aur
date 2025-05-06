@@ -1,6 +1,6 @@
 # Maintainer: wallace <use_my_id at gmail dot com>
 
-pkgname='yakuake-session-git'
+pkgname="yakuake-session-git"
 _gitname='yakuake-session'
 pkgver=0d0d445
 pkgrel=1
