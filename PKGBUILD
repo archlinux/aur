@@ -1,7 +1,7 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=systemd-netns-git
-pkgver=r49.4420d8d
+pkgver=r51.8f3eb72
 pkgrel=1
 pkgdesc="Configure private netns with systemd services."
 arch=('any')
@@ -19,7 +19,7 @@ backup=(
 )
 source=("$pkgname::git+$url"
         "$pkgname.install")
-sha256sums=('SKIP')
+sha256sums=('SKIP' '9f4ebac4571a358acbd8ba8751d496d696b401899dea2a5e7acc85dfd9c2ee5d')
 install="${pkgname}.install"
 conflicts=('systemd-named-netns' 'systemd-netns')
 provides=(systemd-netns=${pkgver%+*})
