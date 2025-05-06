@@ -1,6 +1,7 @@
+# Maintainer: Pierre Ayoub (Drack) <pierreay@proton.me>
 # Contributor:  TDY <tdy@gmx.com>
 # Contributor: Dmitry N. Shilov <stormblast@land.ru>
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Jose Riha <jose1711 gmail com>
 
 pkgname=mp3val
 pkgver=0.1.8
