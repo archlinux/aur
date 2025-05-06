@@ -2,8 +2,8 @@
 
 pkgname=wallrust-bin
 _pkgname=wallrust
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=3
 pkgdesc="A blazingly fast and feature-rich tool to extract color palettes from images | written in Rust"
 arch=('x86_64')
 url="https://github.com/prime-run/wallrust"
