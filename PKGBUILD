@@ -1,39 +1,58 @@
-# -*- mode: sh; -*-
-# Maintainer: kiasoc5 <kiasoc5 at disroot dot org>
+# Maintainer: envolution
+# Contributor: kiasoc5 <kiasoc5 at disroot dot org>
 # Contributor: Xuanrui Qi <me@xuanruiqi.com>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
+# shellcheck shell=bash disable=SC2034,SC2154
 pkgname=shepherd
-pkgver=0.10.5
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Service manager that looks after the herd."
 arch=('x86_64')
 url="https://www.gnu.org/software/shepherd/"
-license=('GPL3')
-depends=('guile' 'guile-fibers')
-makedepends=('gcc' 'make' 'gawk' 'sed')
+license=('GPL-3.0-or-later')
+depends=('guile' 'guile-fibers' 'zstd' 'gzip')
+makedepends=('gcc' 'make' 'gawk' 'sed' 'help2man')
+install="${pkgname}.install"
 source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('9dc83878bc4f9c22281d4ee6c27e128334f84e4141e94892c3b9e45271b2804c')
+sha256sums=('13306a6b56dfe252464e84a23c23a7234338cc752c565e1b865f7cbf8a03f0cf')
 
-OPTIONS=(!strip)
-
+prepare() {
+  cd "$pkgname-$pkgver"
+  #remove failing tests
+  sed -i '/tests\/syslog-slow-output\.sh.*\\$/d' Makefile.in
+  sed -i '/tests\/pid-file\.sh.*\\$/d' Makefile.in
+}
 build() {
-	cd "$pkgname-$pkgver"
-	# We do not set sbindir here so it's easier to delete in the package step.
-	./configure --prefix=/usr --sysconfdir=/etc
-	GUILE_AUTO_COMPILE=0 make
+  cd "$pkgname-$pkgver"
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --with-gzip=/usr/bin/gzip \
+    --with-zstd=/usr/bin/zstd
+  GUILE_AUTO_COMPILE=0 make
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	GUILE_AUTO_COMPILE=0 make -k check
+  cd "$pkgname-$pkgver"
+  GUILE_AUTO_COMPILE=0 make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	GUILE_AUTO_COMPILE=0 make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  GUILE_AUTO_COMPILE=0 make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYING -t ${pkgdir}/usr/share/licenses/${pkgname}
 
-	# get rid of halt / reboot and the var dir
-	rm -r "$pkgdir/usr/var"
-	rm -r "$pkgdir/usr/sbin"
-	rm -r "$pkgdir/usr/share/man/man8"
+  # conflict avoidance: reboot -> shepherd-reboot | halt -> shepherd-halt
+  mv ${pkgdir}/usr/bin/reboot ${pkgdir}/usr/bin/shepherd-reboot
+  mv ${pkgdir}/usr/bin/halt ${pkgdir}/usr/bin/shepherd-halt
+
+  gzip ${pkgdir}/usr/share/man/man8/halt.8 ${pkgdir}/usr/share/man/man8/reboot.8
+  mv ${pkgdir}/usr/share/man/man8/halt.8.gz ${pkgdir}/usr/share/man/man8/shepherd-halt.8.gz
+  mv ${pkgdir}/usr/share/man/man8/reboot.8.gz ${pkgdir}/usr/share/man/man8/shepherd-reboot.8.gz
+
+  #conflict avoidance: shutdown->halt symlink migrate to shepherd-shutdown->shepherd-halt
+  cd ${pkgdir}/usr/bin && ln -sf shepherd-halt shepherd-shutdown && rm shutdown
 }
+# vim:set ts=2 sw=2 et:

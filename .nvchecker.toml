@@ -1,0 +1,4 @@
+[shepherd]
+source='regex'
+url='https://ftp.gnu.org/gnu/shepherd'
+regex = "shepherd-([0-9.]+)\\.tar\\.gz"
