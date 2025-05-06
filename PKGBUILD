@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.11.2
+pkgver=0.11.3
 _electronversion=34
 _nodeversion=22
 pkgrel=1
@@ -21,12 +21,10 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'gcc'
     'gendesk'
     'npm'
     'go'
     'curl'
-    'gcc'
     'zip'
     'curl'
     'nvm'
@@ -37,12 +35,14 @@ makedepends=(
     'libarchive'
     'openjpeg2'
     'python'
+    'git'
+    'yarn'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('70f1a023730ae7a94545d8dfa2de665f20c87c0fa483260bbd9167e3e426e613'
+sha256sums=('b70078188e5d15460060a9590ac51eb0009cacadee2f3ded6dab9ce9644ad9f4'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -51,6 +51,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -60,7 +61,6 @@ prepare() {
     " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_appname}" --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export CGO_ENABLED=1
@@ -68,21 +68,22 @@ prepare() {
     export GOOS=linux
     export GOCACHE="${srcdir}/go-build"
     export GOMODCACHE="${srcdir}/go/pkg/mod"
+    export RUBY_ENV="production"
     HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc.yml"
-    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
+    touch "${srcdir}/.electron-gyp/.yarnrc"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             echo 'npmRegistryServer: "https://registry.npmmirror.com"'
             echo "cacheFolder: "${srcdir}"/.yarn/cache"
             echo "globalFolder: "${srcdir}"/.yarn/global"
+            echo 'networkConcurrency: 10'
         } >> .yarnrc.yml
-        export npm_config_disturl=https://registry.npmmirror.com/-/binary/node/
         export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
         export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
         export GOPROXY=https://goproxy.cn,direct
-        gem sources --add https://mirrors.aliyun.com/rubygems/ --remove https://rubygems.org/
-        bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems
+        gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
+        bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i "s/build\/icons.icns/build\/appicon.png/g" electron-builder.config.cjs
@@ -109,7 +110,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/make/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/${_icons}.png" \

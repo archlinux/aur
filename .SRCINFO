@@ -1,17 +1,15 @@
 pkgbase = waveterm
 	pkgdesc = An open-source, cross-platform terminal for seamless workflows.(Use system-wide electron)
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://www.waveterm.dev/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = gcc
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = go
 	makedepends = curl
-	makedepends = gcc
 	makedepends = zip
 	makedepends = curl
 	makedepends = nvm
@@ -22,11 +20,13 @@ pkgbase = waveterm
 	makedepends = libarchive
 	makedepends = openjpeg2
 	makedepends = python
+	makedepends = git
+	makedepends = yarn
 	depends = electron34
 	conflicts = waveterm
-	source = waveterm-0.11.2.tar.gz::https://github.com/wavetermdev/waveterm/archive/refs/tags/v0.11.2.tar.gz
+	source = waveterm-0.11.3::git+https://github.com/wavetermdev/waveterm#tag=v0.11.3
 	source = waveterm.sh
-	sha256sums = 70f1a023730ae7a94545d8dfa2de665f20c87c0fa483260bbd9167e3e426e613
+	sha256sums = b70078188e5d15460060a9590ac51eb0009cacadee2f3ded6dab9ce9644ad9f4
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = waveterm
