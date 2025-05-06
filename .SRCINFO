@@ -1,6 +1,6 @@
 pkgbase = stayreal-bin
 	pkgdesc = An open-source, lightweight and privacy-focused alternative client for a popular authentic social network.(Prebuilt version)
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://stayreal.vexcited.com/
 	arch = aarch64
@@ -10,13 +10,13 @@ pkgbase = stayreal-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = stayreal=0.5.0
+	provides = stayreal=0.6.1
 	conflicts = stayreal
-	source_aarch64 = stayreal-0.5.0-aarch64.zip::https://nightly.link/StayRealHQ/Universal/workflows/nightly/main/stayreal-aarch64-unknown-linux-gnu-rpm.zip
-	sha256sums_aarch64 = 736accebe016d4819de56ca3f277ab412c44b6f49eb2b9d662e718381930c3ef
-	source_armv7h = stayreal-0.5.0-armv7h.zip::https://nightly.link/StayRealHQ/Universal/workflows/nightly/main/stayreal-armv7-unknown-linux-gnueabihf-rpm.zip
-	sha256sums_armv7h = d140733ffd2ce4797dc54afe17e575631d85d268cff2f9938f355d4f01d8526e
-	source_x86_64 = stayreal-0.5.0-x86_64.zip::https://nightly.link/StayRealHQ/Universal/workflows/nightly/main/stayreal-x86_64-unknown-linux-gnu-rpm.zip
-	sha256sums_x86_64 = 56a3b39ce98bb6c6a00b0131de0f3dcfeb803cf6e3f70e8af9b6340474f7211e
+	source_aarch64 = stayreal-0.6.1-aarch64.zip::https://nightly.link/StayRealHQ/Universal/workflows/nightly/main/stayreal-aarch64-unknown-linux-gnu-rpm.zip
+	sha256sums_aarch64 = 2e7f7e1ca8e7581235d7f61fc6b24ee731b3a1f4de292978eef790cac0bfef94
+	source_armv7h = stayreal-0.6.1-armv7h.zip::https://nightly.link/StayRealHQ/Universal/workflows/nightly/main/stayreal-armv7-unknown-linux-gnueabihf-rpm.zip
+	sha256sums_armv7h = 97bf3cb6bc796bd9141eb70dec7120f7313043f0650a00713bdb66d72988495a
+	source_x86_64 = stayreal-0.6.1-x86_64.zip::https://nightly.link/StayRealHQ/Universal/workflows/nightly/main/stayreal-x86_64-unknown-linux-gnu-rpm.zip
+	sha256sums_x86_64 = 99ba24234db1fdcfb5ea6c34868c2bb3de30a0e9061d7e7b414dc8139977f814
 
 pkgname = stayreal-bin
