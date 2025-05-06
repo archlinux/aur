@@ -38,6 +38,7 @@
 - 📝 **Rich Multiline Editor**: Interactive multiline text input with syntax highlighting and intuitive controls
 - 📑 **Git Commit Messages**: AI-powered generation of conventional, detailed commit messages from git diffs
 - 🎭 **System Prompts**: Customize model behavior with custom system prompts
+- 🤖 **Custom Roles**: Create and use reusable AI roles for specialized tasks
 - 📃 **Conversation Logging**: Save your conversations to text files for later reference
 - 🔌 **Modular Architecture**: Well-structured codebase with clean separation of concerns
 - 🔄 **Provider Switching**: Easily switch between different LLM providers with a single parameter
@@ -126,6 +127,12 @@ ngpt --pipe {} << EOF
 What is the best way to learn Golang?
 Provide simple hello world example.
 EOF
+
+# Create a custom role for specialized tasks
+ngpt --role-config create json_generator
+
+# Use a custom role for specific tasks
+ngpt --role json_generator "Generate user data with name, email, and address" 
 
 # Rewrite text to improve quality while preserving tone and meaning
 echo "your text" | ngpt -r
@@ -230,10 +237,11 @@ For more examples and detailed usage, visit the [CLI Usage Guide](https://nazdri
 
 usage: ngpt [-h] [-v] [--language LANGUAGE] [--config [CONFIG]] [--config-index CONFIG_INDEX] [--provider PROVIDER]
             [--remove] [--show-config] [--all] [--list-models] [--list-renderers] [--cli-config [COMMAND ...]]
-            [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search] [--pipe]
-            [--temperature TEMPERATURE] [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]] [--preprompt PREPROMPT]
-            [--no-stream | --prettify | --stream-prettify] [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]]
-            [--chunk-size CHUNK_SIZE] [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
+            [--role-config [ACTION ...]] [--api-key API_KEY] [--base-url BASE_URL] [--model MODEL] [--web-search]
+            [--pipe] [--temperature TEMPERATURE] [--top_p TOP_P] [--max_tokens MAX_TOKENS] [--log [FILE]]
+            [--preprompt PREPROMPT | --role ROLE] [--no-stream | --prettify | --stream-prettify]
+            [--renderer {auto,rich,glow}] [--rec-chunk] [--diff [FILE]] [--chunk-size CHUNK_SIZE]
+            [--analyses-chunk-size ANALYSES_CHUNK_SIZE] [--max-msg-lines MAX_MSG_LINES]
             [--max-recursion-depth MAX_RECURSION_DEPTH] [-i | -s | -c | -t | -r | -g]
             [prompt]
 
@@ -260,6 +268,7 @@ Configuration Options::
 --list-models                       List all available models for the current configuration and exit
 --list-renderers                    Show available markdown renderers for use with --prettify
 --cli-config [COMMAND ...]          Manage CLI configuration (set, get, unset, list, help)
+--role-config [ACTION ...]          Manage custom roles (help, create, show, edit, list, remove) [role_name]
 
 Global Options::
 
@@ -273,6 +282,7 @@ Global Options::
 --max_tokens MAX_TOKENS             Set max response length in tokens
 --log [FILE]                        Set filepath to log conversation to, or create a temporary log file if no path provided
 --preprompt PREPROMPT               Set custom system prompt to control AI behavior
+--role ROLE                         Use a predefined role to set system prompt (mutually exclusive with --preprompt)
 --renderer {auto,rich,glow}         Select which markdown renderer to use with --prettify or --stream-prettify (auto, rich, or glow)
 
 Output Display Options (mutually exclusive)::
@@ -288,7 +298,7 @@ Git Commit Message Options::
 --chunk-size CHUNK_SIZE             Number of lines per chunk when chunking is enabled (default: 200)
 --analyses-chunk-size ANALYSES_CHUNK_SIZE Number of lines per chunk when recursively chunking analyses (default: 200)
 --max-msg-lines MAX_MSG_LINES       Maximum number of lines in commit message before condensing (default: 20)
---max-recursion-depth MAX_RECURSION_DEPTH  Maximum recursion depth for commit message condensing (default: 3)
+--max-recursion-depth MAX_RECURSION_DEPTH Maximum recursion depth for commit message condensing (default: 3)
 
 Modes (mutually exclusive)::
 
@@ -563,6 +573,40 @@ ngpt -g --diff changes.diff
 This is a huge time-saver. nGPT analyzes your git diff and generates a properly formatted conventional commit message that actually describes what you changed. No more staring at the blank commit message prompt!
 
 ![ngpt-g](https://raw.githubusercontent.com/nazdridoy/ngpt/main/previews/ngpt-g.png)
+
+#### Custom AI Roles
+
+```bash
+# Create a specialized role for JSON generation
+ngpt --role-config create json_generator
+
+# Use the custom role to generate structured data
+ngpt --role json_generator "Generate random user profile data"
+```
+```json
+{
+  "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+  "firstName": "Aurora",
+  "lastName": "Reynolds",
+  "email": "aurora.reynolds@example.com",
+  "phone": "+1-555-0101",
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zipCode": "90210"
+  },
+  "birthDate": "1990-07-15",
+  "registrationDate": "2022-01-20",
+  "isActive": true,
+  "roles": [
+    "user",
+    "premium"
+  ]
+}
+```
+
+Custom roles let you define specialized AI personas that you can reuse across different prompts, making it easy to get consistent responses for specific tasks.
 
 #### Web Search Integration
 
