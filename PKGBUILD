@@ -1,7 +1,7 @@
 # Maintainer: David Campbell <dcampbell24@gmail.com>
 
 pkgname=hnefatafl-copenhagen
-pkgver=0.13.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client."
 url="https://hnefatafl.org"
@@ -11,13 +11,13 @@ provides=("hnefatafl-copenhagen")
 conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib")
 makedepends=("base-devel" "clang" "llvm" "mold" "pandoc" "rustup")
-source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v0.13.4.tar.gz")
-sha256sums=("f9b7a979d2d14c91d11a5c06ef91cfba5701c060be098cd8eb694f215f88bd7f")
+source=("https://github.com/dcampbell24/hnefatafl-copenhagen/archive/refs/tags/v1.0.0.tar.gz")
+sha256sums=("8b3edf628188a7a0ba736708560bdca954aa8a6adacacec44828cf96a0062460")
 
 build() {
-    tar -xvzf v0.13.4.tar.gz
+    tar -xvzf v1.0.0.tar.gz
     cd "$pkgname-$pkgver"
-    cargo build --release --bin hnefatafl-client --features client
+    cargo build --release --bin hnefatafl-client --no-default-features --features client,sound,timer,www
 
     pandoc\
         --variable=title:hnefatafl-client\
