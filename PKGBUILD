@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="updatecli"
-pkgver=0.98.0
+pkgver=0.99.0
 pkgrel=1
 pkgdesc="A declarative dependency management command line tool"
 arch=('aarch64' 'x86_64')
@@ -13,31 +13,42 @@ makedepends=('go')
 # checkdepends=('docker')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('842a1ba166d96e6a6f057c9859e8a02d5a4bfa5e32ffe717ecb54a8784811f96643e8cc12c12971ae012d71e2402bad3e247f6143a1893773576f15c261c0614')
+b2sums=('992ca4b623c88ebd306f7745e512a51bd7fd7ded824b94b18718ca276cb5dad14ea7e396000bae354e95272ae4243e91a91f75bf683b65d2fc6beff60ac24ee3')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-  mkdir -p "build" # "completions" "manpages"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
 
-  cd "scripts"
-  sed -i 's/bash zsh fish/bash zsh fish powershell/g' 'completions.sh'
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
+  mkdir -p "build" "completions" "manpages"
+  # sed -i 's/bash zsh fish/bash zsh fish powershell/g' 'completions.sh'
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" -ldflags "\
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" -ldflags "\
     -X ${_url#https://}/pkg/core/version.BuildTime=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
     -X ${_url#https://}/pkg/core/version.GoVersion=$(go version | awk '{print $3}') \
     -X ${_url#https://}/pkg/core/version.Version=${pkgver}" \
     .
 
-  ./"scripts/completions.sh"
-  ./"scripts/manpages.sh"
+  # ./scripts/completions.sh
+  # ./scripts/manpages.sh
+  for _sh in bash fish zsh powershell; do
+    ./"build/${pkgname}" completion "${_sh}" > "./completions/${pkgname}.${_sh}"
+  done
+  ./"build/${pkgname}" man > "./manpages/${pkgname}.1"
 }
 
 # check() {
@@ -51,7 +62,7 @@ package() {
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "README.adoc" "${pkgdir}/usr/share/doc/${pkgname}/README.adoc"
   install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -vDm644 "manpages/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+  install -vDm644 "manpages/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 
   cd "completions"
   install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"

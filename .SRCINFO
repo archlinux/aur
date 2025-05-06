@@ -1,6 +1,6 @@
 pkgbase = updatecli
 	pkgdesc = A declarative dependency management command line tool
-	pkgver = 0.98.0
+	pkgver = 0.99.0
 	pkgrel = 1
 	url = https://www.updatecli.io
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = updatecli
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = updatecli-0.98.0.tar.gz::https://github.com/updatecli/updatecli/archive/refs/tags/v0.98.0.tar.gz
-	b2sums = 842a1ba166d96e6a6f057c9859e8a02d5a4bfa5e32ffe717ecb54a8784811f96643e8cc12c12971ae012d71e2402bad3e247f6143a1893773576f15c261c0614
+	source = updatecli-0.99.0.tar.gz::https://github.com/updatecli/updatecli/archive/refs/tags/v0.99.0.tar.gz
+	b2sums = 992ca4b623c88ebd306f7745e512a51bd7fd7ded824b94b18718ca276cb5dad14ea7e396000bae354e95272ae4243e91a91f75bf683b65d2fc6beff60ac24ee3
 
 pkgname = updatecli
