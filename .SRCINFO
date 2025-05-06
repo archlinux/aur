@@ -1,0 +1,19 @@
+pkgbase = justdd
+	pkgdesc = JustDD - Simple graphical USB image writer for Linux and Windows ISOs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xxanqw/justdd
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	makedepends = python-uv
+	depends = ntfs-3g
+	depends = dosfstools
+	depends = rsync
+	depends = polkit
+	options = !debug
+	source = justdd::git+https://github.com/xxanqw/justdd.git
+	md5sums = SKIP
+
+pkgname = justdd
