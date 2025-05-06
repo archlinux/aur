@@ -5,7 +5,7 @@ pkgbase = xoscope
 	url = http://xoscope.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = fftw
 	depends = gtkdatabox
 	depends = alsa-lib
@@ -13,4 +13,3 @@ pkgbase = xoscope
 	md5sums = 737504856797fb0eac6f9c768446a184
 
 pkgname = xoscope
-
