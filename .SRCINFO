@@ -1,7 +1,7 @@
 pkgbase = compiler-rt15
 	pkgdesc = Compiler runtime libraries for clang 15
 	pkgver = 15.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://compiler-rt.llvm.org/
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception

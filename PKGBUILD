@@ -1,6 +1,6 @@
 pkgname=compiler-rt15
 pkgver=15.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler runtime libraries for clang 15"
 arch=('x86_64')
 url="https://compiler-rt.llvm.org/"
@@ -20,6 +20,10 @@ sha256sums=('353832c66cce60931ea0413b3c071faad59eefa70d02c97daa8978b15e4b25b7'
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
+  cd "${srcdir}"
+  sed 's,^#include <string>,#include <string>\n#include <cstdint>,' --in-place compiler-rt-15.0.7.src/lib/orc/error.h
+  cd -
+
   mv cmake{-$pkgver.src,}
   cd compiler-rt-$pkgver.src
   mkdir build
