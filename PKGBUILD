@@ -20,7 +20,7 @@ _mirror="https://mirrors.dotsrc.org"
 
 _pkgfile=${pkgname%-lts-bin}-$pkgver-linux-x64.tar.xz
 source=("${_mirror}/blender/release/Blender${pkgver%.*}/$_pkgfile" 'blender.sh')
-pkgrel=2
+pkgrel=3
 license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
