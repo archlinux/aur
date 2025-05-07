@@ -1,4 +1,4 @@
-# Maintainer: Leo <i@setuid0.dev>
+# Maintainer: Leo <i@hardrain980.com>
 pkgname=vgpu_unlock-rs
 pkgver=2.5.0
 pkgrel=2
