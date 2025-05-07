@@ -1,7 +1,7 @@
 pkgbase = zoom-system-qt
 	pkgdesc = Zoom Workspace client with system libraries
 	pkgver = 6.4.6.1370
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zoom.us/
 	arch = x86_64
 	license = LicenseRef-zoom
@@ -22,6 +22,7 @@ pkgbase = zoom-system-qt
 	optdepends = xdg-desktop-portal-impl: Screen sharing,etc... for Wayland
 	optdepends = chromium: Webview
 	optdepends = sqlite: Webview
+	optdepends = vulkan-drivers: Webview
 	optdepends = qt5-3d: Unknown. Bundled in original.
 	optdepends = qt5-x11extras: Unknown. Bundled in original.
 	optdepends = qt5-multimedia: Unknown. Bundled in original.
