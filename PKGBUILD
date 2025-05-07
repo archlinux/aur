@@ -1,7 +1,7 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=systemd-netns-git
-pkgver=r51.8f3eb72
+pkgver=r65.23ac7d9
 pkgrel=1
 pkgdesc="Configure private netns with systemd services."
 arch=('any')
@@ -12,7 +12,6 @@ depends=('systemd' 'iproute2')
 optdepends=('iptables: for default NAT config' 'dhclient: when using dynamically assigned IP')
 backup=(
   'etc/conf.d/netns/default.conf'
-  'etc/conf.d/netns/lo.conf'
   'etc/conf.d/netns/veth.conf'
   'etc/conf.d/netns/macvlan.conf'
   'etc/conf.d/netns/veth-nstest.conf'
