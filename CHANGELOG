@@ -1,3 +1,19 @@
+Changes in version 0.28.2 (2025-04-17)
+
+  Fixes:
+    - Adds an optimization when object bodies with generators produce no members
+      (#1013).
+
+    - Fixes a runtime crash when --output-path points to a directory (#1038).
+
+    - Fixes a bug that sometimes causes pkl-doc to crash (#1028).
+
+  Miscellaneous:
+    - Documentation improvements (#982, #1010, #1031).
+
+    - CI improvements (#1020).
+
+
 Changes in version 0.28.1 (2025-03-03)
 
   Fixes:
