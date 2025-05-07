@@ -19,7 +19,7 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_64_P
 sha256sums=('a7b0e40acc85900ff5ca63769e702acaa06e81ae658b7958e1bc794ae635fd7a'
             'c17982e753d24fb9f90212e2d11e01e08cca0641372e146b1e32d087fb9a9659'
             'd0f6c19b7aa4b7a6daa00b658a852f97d35dd98d2c31a2f4ea267527bf5cda15'
-            '22dc0cac9a9662210e63235ad8622d3b33e4155e76aeb1d3d6ce6841557f7d2a'
+            '07abdaeab2b5c30ed7b053cce5e42942cc32c56503439eff69fb21b57c522122'
             'b139c6f0cfc7d8aeacc2c7dd04df833fbb8c77d288e6fa53bf6845aa1e892c54')
 noextract=("HeidiSQL_${shortpkgver}_Portable.zip")
 
