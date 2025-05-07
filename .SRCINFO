@@ -1,7 +1,7 @@
 pkgbase = nhost-git
 	pkgdesc = Used to set up a local development environment with Nhost. This environment will automatically track database migrations and Hasura metadata.
-	pkgver = 1.29.5.r0.f225ffa0
-	pkgrel = 2
+	pkgver = 1.29.6.r0.1683f61f
+	pkgrel = 1
 	url = https://github.com/nhost/cli
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = nhost-git
 	makedepends = git
 	depends = docker
 	depends = curl
+	depends = docker-compose
 	provides = nhost
 	conflicts = nhost
 	source = nhost::git+https://github.com/nhost/cli.git

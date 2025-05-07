@@ -2,13 +2,13 @@
 
 _pkgname="nhost"
 pkgname=$_pkgname-git # '-bzr', '-git', '-hg' or '-svn'
-pkgrel=2
-pkgver=1.29.5.r0.f225ffa0
+pkgrel=1
+pkgver=1.29.6.r0.1683f61f
 pkgdesc="Used to set up a local development environment with Nhost. This environment will automatically track database migrations and Hasura metadata."
 arch=('x86_64')
 url="https://github.com/nhost/cli"
 license=("MIT")
-depends=("docker" "curl")
+depends=("docker" "curl" "docker-compose")
 makedepends=('go' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
