@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bradtunes-git
 _pkgname=BradTunes
-pkgver=1.0.6.r2.g36bddea
+pkgver=1.0.8.r2.g886ddf5
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -93,5 +93,5 @@ package() {
     ln -sf "/usr/bin/yt-dlp" "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/out/renderer/yt-dlp"
     install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/README.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
