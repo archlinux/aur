@@ -1,7 +1,7 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 
 pkgname=garnet
-pkgver=1.0.63
+pkgver=1.0.64
 pkgrel=1
 pkgdesc='A high-performance cache-store from Microsoft Research'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   'garnet-server.service'
   'garnet-server.conf'
 )
-b2sums=('fabe9230bf9076bea0bc1f85a2a92cb74587c10aace4c67b91fd035e012be34bdb2cf0190890672a79bce1ca22bf870d0c944b151d2a81ad32403e62a92edbe8'
+b2sums=('5b093b43ed4a6e896d6b547b263aff4462448aa8997d5b6c2255c94d44f0149e49b9dc8b62043a78238a56b9d016c207b69a09ac826965cd0a1d66755b92a554'
         '3db262540ecd4c4474e5fd506ec807b80e73105415e0714cf1a33bfd4221e6722ce22c099eb83dffea8c5baf1162768804b6ba374fd6693958af9d36f51e1ebe'
         '44fd9bd48e28ade45d27095603457afbb67acfb33cfdb14ff71dbdea85830d73d494b438b6b391b8413d15b2acfe00959bd69262e49d331a561b747e385f08b1')
 
