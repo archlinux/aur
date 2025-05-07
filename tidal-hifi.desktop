@@ -3,7 +3,7 @@ Name=TIDAL Hi-Fi
 GenericName=tidal-hifi
 Icon=tidal-hifi
 Comment=The web version of Tidal running in electron with hifi support thanks to widevine.
-Exec=tidal-hifi %u
+Exec=tidal-hifi --enable-features=UseOzonePlatform --ozone-platform=x11 %u
 StartupNotify=true
 Terminal=false
 Type=Application
