@@ -8,6 +8,8 @@ pkgbase = roon-dunst-now-playing-git
 	makedepends = git
 	depends = nodejs
 	depends = roon-kit
+	depends = dunst
+	conflicts = roon-now-playing-git
 	source = git+https://github.com/OstojaOfficial/roon-dunst-now-playing.git
 	md5sums = SKIP
 
