@@ -1,4 +1,3 @@
-fix_var_collision.patch
 cmake-fix-variable.patch
 *.tar.gz
 *.tgz
