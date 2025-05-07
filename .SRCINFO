@@ -1,0 +1,22 @@
+pkgbase = downkyi-bin
+	pkgdesc = Bilibili download Ji,bilibili website video download tool,supports batch download, supports 8K,HDR,Dolby Vision,provides toolbox (audio & video extraction, watermarking, etc.)(Prebuilt version)
+	pkgver = 1.0.19
+	pkgrel = 1
+	url = https://github.com/yaobiao131/downkyicore
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = aria2
+	depends = ffmpeg
+	provides = downkyi=1.0.19
+	conflicts = downkyi
+	options = !strip
+	options = staticlibs
+	source = downkyi.sh
+	sha256sums = 1cdf1c48c32ffec0f68a347a212d4ee91bb3dccb890cebc40a2b09e391efa0e3
+	source_aarch64 = downkyi-1.0.19-aarch64.deb::https://github.com/yaobiao131/downkyicore/releases/download/v1.0.19/downkyi_1.0.19_linux_self-contained_arm64.deb
+	sha256sums_aarch64 = 18cb953e79d4b78526622eebfdd42f63822dd76bb74b294f9d3aa151250c7861
+	source_x86_64 = downkyi-1.0.19-x86_64.deb::https://github.com/yaobiao131/downkyicore/releases/download/v1.0.19/downkyi_1.0.19_linux_self-contained_amd64.deb
+	sha256sums_x86_64 = 7475c376170a76ac8b9444f679f09cdd7b6b826aa1432556fea089b1a43ac8b9
+
+pkgname = downkyi-bin
