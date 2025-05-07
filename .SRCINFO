@@ -1,6 +1,6 @@
 pkgbase = sdlpop
 	pkgdesc = An open-source port of Prince of Persia
-	pkgver = 1.23
+	pkgver = 1.24rc1
 	pkgrel = 1
 	url = https://github.com/NagyD/SDLPoP
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = sdlpop
 	license = GPL-3.0-or-later AND GPL-2.0-or-later AND (MIT OR Unlicense)
 	depends = sdl2_image
 	depends = sdl2_mixer
-	source = sdlpop-1.23.tar.gz::https://github.com/NagyD/SDLPoP/archive/v1.23.tar.gz
+	source = sdlpop-1.24rc1.tar.gz::https://github.com/NagyD/SDLPoP/archive/v1.24-RC.tar.gz
 	source = sdlpop.sh
-	b2sums = dfb3a1730622cf4ab6535d6a29b027cc601ab8a611ae40663cf5fd3eb632f2b1fb633c845f1978ccddb5a19d98e809dbb43ea82bddc5f789ef7416d54265a7bb
+	b2sums = 07e10e5f61e0f38e6d17baafb0a47951d5b19748c917dff67c8d94fdccefe843fef05db5aee2a12ac490f3e770771b604fd5225d549a84d07e201117ed721792
 	b2sums = eecce7df11ff08547fb79f3fdcfffaddb84c2c112f200f12d2bb748c0ac498bcb5e0ab42ecaff1420eca883d7d83e58a0c0ce54abcaceb645ca914c06e2bed10
 
 pkgname = sdlpop
