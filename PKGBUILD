@@ -2,8 +2,8 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2303.gcf0728f4
-pkgrel=4
+pkgver=1.99.3.r2371.gd33b5ff9
+pkgrel=2
 pkgdesc="The open-source Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
@@ -35,19 +35,15 @@ makedepends=(
 	'libxkbfile'
 	'libsecret'
 	'npm'
-	'nodejs'
+	'nodejs-lts-iron' # see .nvmrc
 	'pkg-config'
 )
 source=(
 	"git+https://github.com/voideditor/void.git"
 	"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh"
-	void.desktop void-url-handler.desktop void-workspace.xml #Should be sed from somewhere
 )
 sha256sums=('SKIP'
-            '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1'
-            'c3de56aceff283c14fc0f759b720cf9d48fdef2d2a38f471c667c78e955018fe'
-            'e2c84fc25e89512e3d8be73c289b65a40f7b7861738a4a77d7ac203e970c9f6d'
-            'b58ae1868daaf93132ec8e51869b7fc1aa0b91e6e785bb73ce561babcd078b41')
+            '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -56,15 +52,14 @@ pkgver() {
 }
 
 build() {
-	#export ELECTRON_SKIP_BINARY_DOWNLOAD=1 #does nothing
 	cd "${_pkgname}"
 	# Clean npm cache and remove existing node_modules
 	npm cache clean --force
 	rm -rf node_modules
+	# Use version of system electron
 	npm install electron@$(cat /usr/lib/electron${_elnum}/version) --save-dev
 	# Install dependencies with legacy peer deps flag to handle dependency conflicts
 	npm install --legacy-peer-deps
-	npm install ajv@latest ajv-keywords@latest --legacy-peer-deps
 	# Build react because it fails for some reason
 	npm run buildreact
 	# Bundle it
@@ -78,9 +73,14 @@ package() {
   install -Dm644 "${_pkg}/resources/app/ThirdPartyNotices.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/ThirdPartyNotices.txt"
   # appdata and desktop files
   install -Dm644 "${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-  install -Dm644 void.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 void-url-handler.desktop "${pkgdir}/usr/share/applications/${_pkgname}-url-handler.desktop"
-  install -Dm644 void-workspace.xml "${pkgdir}/usr/share/mime/packages/${_pkgname}-workspace.xml"
+  mkdir -p "${pkgdir}/usr/share/"{applications,mime/packages}
+  #todo cleanup
+  sed -e s/@@NAME@@/void/ -e s/@@EXEC@@/void/g -e s/@@ICON@@/void/g -e s/@@NAME_SHORT@@/Void/g -e s/@@NAME_LONG@@/Void/g \
+  	void/resources/linux/code.desktop > "${pkgdir}/usr/share/applications/void.desktop"
+  sed -e s/@@NAME_LONG@@/Void/ -e s/@@EXEC@@/void/ -e s/@@ICON@@/void/ -e s/@@URLPROTOCOL@@/vscode/ \
+    void/resources/linux/code-url-handler.desktop > "${pkgdir}/usr/share/applications/void-url-handler.desktop"
+  sed -e s/@@NAME@@/void/ -e s/@@NAME_LONG@@/Void/g \
+  	void/resources/linux/code-workspace.xml > "${pkgdir}/usr/share/mime/packages/void-workspace.xml"
   # shell completions
   install -Dm644 "${_pkg}/resources/completions/bash/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm644 "${_pkg}/resources/completions/zsh/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
@@ -95,6 +95,5 @@ package() {
   # resources
   cp -r --reflink=auto "${_pkg}/resources" "${pkgdir}/usr/share/void/resources"
   # ripgrep
-  rm "${pkgdir}"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/LICENSE
   ln -svf /usr/bin/rg "${pkgdir}"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/bin/rg
 }
