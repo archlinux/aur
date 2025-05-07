@@ -33,6 +33,10 @@ prepare() {
   # http://bugzilla.gnome.org/show_bug.cgi?id=568845
   patch -Np1 -i ../01_xml-gettext-domain.patch
 
+  # TODO: Mega hack, needs a proper fix!
+  mkdir m4
+  cp /usr/share/gettext/m4/nls.m4 m4/nls.m4
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
