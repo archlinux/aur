@@ -1,7 +1,7 @@
 # Maintainer: Luke Short <ekultails@gmail.com>
 pkgname=pifs-aya-git
 pkgver=r38.f29c8d8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="pifs - the data-free filesystem (modern fork from aya)!"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/aya/pifs"
 license=('GPLv3')
 categories=()
 groups=()
-depends=('fuse2')
+depends=('fuse3')
 makedepends=('git')
 optdepends=()
 checkdepends=()
