@@ -28,7 +28,7 @@ pkgbase = ladybird-git
 	options = !debug
 	options = !buildflags
 	source = git+https://github.com/LadybirdBrowser/ladybird
-	source = git+https://github.com/microsoft/vcpkg.git#commit=d6995a0cf3cafda5e9e52749fad075dd62bfd90c
+	source = git+https://github.com/microsoft/vcpkg.git#commit=41c447cc210dc39aa85d4a5f58b4a1b9e573b3dc
 	source = ladybird.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
