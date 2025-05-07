@@ -1,0 +1,23 @@
+diff -ruNb a/SConstruct b/SConstruct
+--- a/SConstruct	2025-05-06 20:45:27.220704566 -0500
++++ b/SConstruct	2025-05-06 21:08:53.868194778 -0500
+@@ -2211,6 +2211,8 @@
+     env.Append( CXXFLAGS=["-Wno-c++20-compat"] )
+     env.Append( CXXFLAGS=["-Wno-cpp"] )
+     env.Append( CXXFLAGS=["-Wno-interference-size"] )
++    env.Append( CXXFLAGS=["-Wno-class-memaccess"] )
++    env.Append( CXXFLAGS=["-Wno-template-body"] )
+ 
+     if env.ToolchainIs('clang'):
+         env.Append( CXXFLAGS=['-Werror=unused-result'] )
+diff -ruNb a/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h b/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h
+--- a/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h	2024-02-13 02:46:45.000000000 -0600
++++ b/src/third_party/abseil-cpp-master/abseil-cpp/absl/container/internal/container_memory.h	2025-05-06 21:26:21.984288722 -0500
+@@ -25,6 +25,7 @@
+ 
+ #include <cassert>
+ #include <cstddef>
++#include <cstdint>
+ #include <memory>
+ #include <tuple>
+ #include <type_traits>
