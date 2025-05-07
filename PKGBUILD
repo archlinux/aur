@@ -2,7 +2,7 @@
 pkgname=gestimag
 _pkgname=gestimag
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Gestimag ERP CRM: modern software package to manage your company"
 arch=('any')
 url="http://adrien.digitaledeluxe.fr/gestimag/"
@@ -20,11 +20,7 @@ source=(git+https://github.com/adrienb39/$_pkgname#branch=main
         gestimag.conf
         nginx.conf.example
         apache.conf.example)
-b2sums=('SKIP'
-        'e78f127924e37c9d5910ec3081cf0b13d79c58e6350f499261380cffd0ee0023e2488e20e24d0463c01548694c80e45e79b27efc9a81a3458e96c050dce7211d'
-        '6ab4f2b86e9db40c91a0db181421594b78deccaac8d45c851f8d61a2999bdd14b84ac11018356728d1ec6ec0215094a6658ab5b74960f37a67e1d089c4ed61ac'
-        '8bb3823afee0515931cfbd4ddc8714ccab29f3d46fa249554670cce9d5ed79b8645515cc758edf3293c40bd9a7917bc1ae8664e3bd6b6a2a1502379b4257f499')
-
+b2sums=('SKIP')
 pkgver() {
   cd $_pkgname
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/v//;s/-/./g'
