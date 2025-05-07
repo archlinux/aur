@@ -31,9 +31,6 @@ optdepends=(
 	'org.freedesktop.secrets: Settings sync'
 )
 makedepends=(
-	'libx11'
-	'libxkbfile'
-	'libsecret'
 	'npm'
 	'nodejs-lts-iron' # see .nvmrc
 	'pkg-config'
