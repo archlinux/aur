@@ -1,9 +1,7 @@
-# Maintainer: Unix Sheikh <aur at unixsheikh dot com>
-
 pkgname=salahtime-go
 pkgver=1.0.3
 pkgrel=1
-url="https://codeberg.org/unixsheikh/salahtime-go"
+url="https://codeberg.org/unixdigest/salahtime-go"
 pkgdesc="A small command line application written in Go that displays the Islamic prayer times for Europe/Copenhagen"
 arch=('any')
 license=('CC BY 4.0')
@@ -16,7 +14,7 @@ makedepends=(
   'go'
 )
 
-source=("https://codeberg.org/unixsheikh/salahtime-go/archive/v1.0.3.zip")
+source=("https://codeberg.org/unixdigest/salahtime-go/archive/v1.0.3.zip")
 md5sums=('ab6ebd237206ab5479a569c8edc319a9')
 
 build() {
