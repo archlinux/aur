@@ -4,7 +4,7 @@
 
 pkgname=gconf
 pkgver=3.2.6+11+g07808097
-pkgrel=13
+pkgrel=14
 pkgdesc="An obsolete configuration database system"
 url="https://gitlab.gnome.org/Archive/gconf"
 arch=($CARCH)
@@ -53,7 +53,7 @@ build() {
     --disable-orbit \
     --disable-gsettings-backend
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  make CFLAGS+="-DGLIB_DISABLE_DEPRECATION_WARNINGS -Wno-unused-result"
 }
 
 check() {

@@ -1,7 +1,7 @@
 pkgbase = gconf
 	pkgdesc = An obsolete configuration database system
 	pkgver = 3.2.6+11+g07808097
-	pkgrel = 13
+	pkgrel = 14
 	url = https://gitlab.gnome.org/Archive/gconf
 	install = gconf.install
 	arch = x86_64
