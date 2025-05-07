@@ -2,7 +2,7 @@
 
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
@@ -86,8 +86,8 @@ conflicts=(
   vapoursynth-plugin-vssource
   vapoursynth-plugin-vstools
 )
-source=("https://files.pythonhosted.org/packages/2b/6f/606c1e7461001d24fd70b39a7fd2ddd620ee25143722f5dacbf9c8097041/vsjetpack-0.3.5-py3-none-any.whl")
-sha256sums=('0e0747a37a63d6327b6b3445a80ff3fa909b00a57d8891b463cbb9f186a910dd')
+source=("https://files.pythonhosted.org/packages/77/93/e1063c6f2782e6ba64eed4d7181dc765ee4907886d0b78786853755525d5/vsjetpack-0.4.0-py3-none-any.whl")
+sha256sums=('4d96ed0114998b341209a9aba0d9941f5374d9d30bd237038e412ffaf1c71a58')
 
 package() {
   pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps "${_plug}-${pkgver}-py3-none-any.whl"
