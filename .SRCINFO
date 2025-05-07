@@ -1,6 +1,6 @@
 pkgbase = maya-arnold
 	pkgdesc = Autodesk Maya Arnold Renderer Plugin
-	pkgver = 5.5.1
+	pkgver = 5.5.1.1
 	pkgrel = 1
 	url = https://arnoldrenderer.com/download/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = maya-arnold
 	optdepends = maya-usd: Universal scene description support
 	optdepends = maya-bifrost: Bifrost effects support
 	options = !strip
-	source = manual://MtoA-5.5.1-linux-2026.run
-	b2sums = 155968af5c1acda4a1fa3cee1efefe809d8f652d20c548b85dc21a40a3db784dffbc115761d940333b80618ea0cb1b0f989c130035dde8a8fdc8fa6baeac5cc0
+	source = manual://MtoA-5.5.1.1-linux-2026.run
+	b2sums = 4a1c60bd2d7477f79d4f90e2357cc3ff81f3c8b3627fb765fb25e5efc1d2898508e6e0da66adb9025d1a6fbeb4019cf51459d7fe708a6716a9e6df33eceaed43
 
 pkgname = maya-arnold
