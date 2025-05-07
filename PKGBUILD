@@ -6,11 +6,11 @@
 : ${_build_flatpak:=true}
 : ${_build_snap:=false}
 
-: ${_pkgext=-git}
+: ${_pkgtype=-git}
 
 _pkgname="pamac"
-pkgname="$_pkgname${_pkgext:-}"
-pkgver=11.7.2.r0.g71ced27
+pkgname="$_pkgname${_pkgtype:-}"
+pkgver=11.7.3.r0.g06c846c
 pkgrel=1
 pkgdesc="Pamac package manager"
 url="https://github.com/manjaro/pamac"
@@ -87,7 +87,7 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc_pamac"
-  if [ -z "$_pkgext" ]; then
+  if [ -z "$_pkgtype" ]; then
     git describe --tags
   else
     git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*'
@@ -97,24 +97,24 @@ pkgver() {
 _prepare_pamac() (
   >&2 echo "Preparing for pamac..."
   cd "$_pkgsrc_pamac"
-  local _tag=$(git tag | grep -Ev '(^[a-z]|[A-Za-z]{2})' | sort -rV | head -1)
-  [ -z "$_pkgext" ] && git -c advice.detachedHead=false checkout -f "${_tag:?}"
+  local _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
+  [ -z "$_pkgtype" ] && git -c advice.detachedHead=false checkout -f "${_tag:?}"
   git describe --tags --long
 )
 
 _prepare_libpamac() (
   >&2 echo "Preparing for libpamac..."
   cd "$_pkgsrc_libpamac"
-  local _tag=$(git tag | grep -Ev '(^[a-z]|[A-Za-z]{2})' | sort -rV | head -1)
-  [ -z "$_pkgext" ] && git -c advice.detachedHead=false checkout -f "${_tag:?}"
+  local _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
+  [ -z "$_pkgtype" ] && git -c advice.detachedHead=false checkout -f "${_tag:?}"
   git describe --tags --long
 )
 
 _prepare_cli() (
   >&2 echo "Preparing for pamac-cli..."
   cd "$_pkgsrc_cli"
-  local _tag=$(git tag | grep -Ev '(^[a-z]|[A-Za-z]{2})' | sort -rV | head -1)
-  [ -z "$_pkgext" ] && git -c advice.detachedHead=false checkout -f "${_tag:?}"
+  local _tag=$(git tag | grep -Ev '[A-Za-z]{2}' | sort -rV | head -1)
+  [ -z "$_pkgtype" ] && git -c advice.detachedHead=false checkout -f "${_tag:?}"
   git describe --tags --long
 )
 

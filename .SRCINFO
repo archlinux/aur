@@ -1,6 +1,6 @@
 pkgbase = pamac-git
 	pkgdesc = Pamac package manager
-	pkgver = 11.7.2.r0.g71ced27
+	pkgver = 11.7.3.r0.g06c846c
 	pkgrel = 1
 	url = https://github.com/manjaro/pamac
 	arch = x86_64
@@ -41,8 +41,8 @@ pkgname = pamac-git
 	depends = libadwaita
 	depends = libnotify
 	depends = gtk3
-	provides = libpamac=11.7.2
-	provides = pamac=11.7.2
+	provides = libpamac=11.7.3
+	provides = pamac=11.7.3
 	conflicts = libpamac
 	conflicts = pamac
 	conflicts = pamac-cli
