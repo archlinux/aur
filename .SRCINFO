@@ -1,0 +1,18 @@
+pkgbase = framework-system
+	pkgdesc = Tool to interact with the framework system
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://frame.work
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = libusb
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	source = https://github.com/FrameworkComputer/framework-system/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 1be1de11915f8888a6440fe3acdb10868bc637e0421f5e771827ed7ee61580a0f2ad36119a4067fee43052744b81c078559901e67fa3db54278348df3fb08fed
+
+pkgname = framework-system
