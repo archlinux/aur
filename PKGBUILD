@@ -1,7 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xterminal-bin
 _pkgname=XTerminal
-pkgver=2.12.9
+_aarch64_ver=2.12.9
+_x86_64_ver=3.14.1
+case "${CARCH}" in
+    aarch64)
+        pkgver="${_aarch64_ver}"
+        ;;
+    x86_64)
+        pkgver="${_x86_64_ver}"
+        ;;
+esac
 _electronversion=31
 pkgrel=1
 pkgdesc="Not only powerful SSH tools, but also local consoles, and more coming soon.(Prebuilt version.Use system-wide electron)不仅是强大的SSH工具,更提供本地控制台,以及更多即将推出的开发相关功能."
@@ -24,12 +33,12 @@ source=(
     "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${pkgver}-linux-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${pkgver}-linux-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${_aarch64_ver}-aarch64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_aarch64_ver}-linux-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${_x86_64_ver}-x86_64.rpm::https://cdn-cn.xterminal.cn/downloads/${_pkgname}-${_x86_64_ver}-linux-x86_64.rpm")
 sha256sums=('8d08a959e0086a206ef3454cc0fc323454c73609cd764f102d8d2d076dafa0af'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('e715f44ab759f2d1cd6bce72bdb5172cad825d4c0e48613133a351da35375e08')
-sha256sums_x86_64=('baddc5ff4023b8fe3e1bcd96c86bd4f65a2f42bdfa811296b6bc720c8ee23d2a')
+sha256sums_x86_64=('ff304fe9b32c7f0c7386019846b7f9bda85544e029dbd84b9d7908b775359360')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -42,6 +51,7 @@ prepare() {
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} \;
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    rm -rf "${srcdir}/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
