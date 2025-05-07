@@ -1,0 +1,7 @@
+msg() {
+    printf "%b" "\e[1;31m==> WARNING: This package now provides the native Linux version of HeidiSQL. To copy your settings you can use the old version (last wine PKGBUILD at https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=heidisql&id=113ca3ca1e38079cb4c889613713e546a9d33788). Click on File > Export settings (to .txt file) then upgrade and then File > Import settings \n\e[0m"
+}
+
+post_upgrade() {
+  msg
+}
