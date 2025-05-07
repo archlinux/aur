@@ -5,7 +5,6 @@ pkgbase = void-bin
 	url = https://github.com/voideditor/void
 	arch = x86_64
 	license = APACHE
-	makedepends = tar
 	depends = electron34
 	depends = alsa-lib
 	depends = atk

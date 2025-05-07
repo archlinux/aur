@@ -11,7 +11,6 @@ license=('APACHE')
 _elnum=34
 depends=(electron${_elnum} alsa-lib atk at-spi2-core cairo dbus expat mesa glib2 nspr pango
 libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr xdg-utils)
-makedepends=(tar) #faster than bsdtar
 optdepends=('electron: /usr/share/void/void-latestron')
 source=("https://github.com/voideditor/binaries/releases/download/${pkgver}/void_${pkgver}_amd64.deb"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
