@@ -2,35 +2,43 @@
 
 _name=pytrimal
 pkgname=python-${_name}
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to trimAl, a tool for automated alignment trimming."
 url="https://github.com/althonos/pytrimal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-license=("LGPL3")
-groups=()
-makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
-depends=('python' 'python-archspec')
+license=("GPL-3.0-only")
+makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
+depends=('python' 'python-scoring-matrices')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(2331e67a74f3144d82373b6a79f42198f6632bd1b5025ab01cdd3eb527ef88cf)
+sha256sums=(5116eda05aec7a71c53440ba86693952a3459d38f2b34371d27bbe3f11b44b5f)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
-    local impl=$(python -c 'import sys; print(sys.implementation.name)')
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${impl}-${abitag}"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    rm -rf "${srcdir}/env"
+    python -m venv --symlinks --system-site-packages "${srcdir}/env"
+    source "${srcdir}/env/bin/activate"
+    python -m installer "$whl"
+
     python -m unittest ${_name}.tests
+    deactivate
 }
+
 
 package() {
     local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    python -m installer --destdir="$pkgdir" "${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
-    install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+
+    python -m installer --prefix="${pkgdir}/usr" "$whl"
+    install -Dm644  "${srcdir}/${_name}-${pkgver}"/COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
 }
