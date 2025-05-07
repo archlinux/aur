@@ -2,7 +2,7 @@
 # Contributor: simonsmh <simonsmh@gmail.com>
 
 pkgname="okteto"
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Build better applications by developing and testing your code directly in Kubernetes"
 arch=('aarch64' 'x86_64')
@@ -12,22 +12,33 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 optdepends=('kubectl')
-_pkgsrc="${pkgname}-${pkgver}"
+_pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f8b92f0ae879886df75dbfefb4f7e60741cb048322e66166a60aac662239eb26')
+sha256sums=('d546611c64d7e39a65bae28a44e878c21f1ef759ab2ae0a26cf5573b1074d84f')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
+  sed -i -E 's/\bgo ([0-9]+)\.([0-9]+)\.[0-9]+\b/go \1.\2/g' 'go.mod'
+
+  go mod download -x
+  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
+  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+
   mkdir -p "build"
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
   go build -v -o "build/${pkgname}" -ldflags "\
     -X ${_url#https://}/pkg/config.VersionString=${pkgver}" \
     .
