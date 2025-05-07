@@ -14,6 +14,8 @@ sha256sums=('464d3574412024184fb7428ecbaa1b2e207bddf5fbc10a5d9ddc3fc1c7b7ab1e')
 
 build() {
     cd "${srcdir}/${_src_folder}"
+    SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}" \
+    CMAKE_ARGS="-DCMAKE_POLICY_VERSION_MINIMUM=3.5" \
     python -m build --wheel --no-isolation
 }
 
