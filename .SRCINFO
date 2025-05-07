@@ -1,0 +1,11 @@
+pkgbase = ttf-old-timey-mono
+	pkgdesc = A clean monospace typeface based on Reproducing Typewriter which was available as early as 1906.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://webonastick.com/fonts/old-timey-mono
+	arch = any
+	license = OFL
+	source = https://github.com/user-attachments/files/20030127/OldTimeyMono-0.9.1.zip
+	sha256sums = 5f12a25e31d2aab27724700fec6b4a73586bea423c83c46229c423ee4850a797
+
+pkgname = ttf-old-timey-mono
