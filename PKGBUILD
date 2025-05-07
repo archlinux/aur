@@ -1,6 +1,6 @@
 pkgname=python-ocp
-pkgver=7.7.2.1+r4.g544d7fd5
-pkgrel=5
+pkgver=7.8.1.2
+pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -53,13 +53,12 @@ python-logzero
 double-conversion
 clang15
 glew
-fmt
 )
 
 conflicts=(python-ocp-git)
 
-_ocp_fragment="#commit=544d7fd55b997dff26eb5b1009d17d97b42063b1"
-_pywrap_commit="6cbeb64e9695703c56bb6309a8351886accdeeb0"  # comment this to use the latest
+_ocp_fragment="#commit=01055e099a3b1a34da38bb1f5457f06a2d4c7a18"
+_pywrap_commit="9c9ca5b8aa0d9a6687394897815a682b8c319fb0"  # comment this to use the latest
 source=(
   git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
   git+https://github.com/CadQuery/pywrap.git
@@ -68,8 +67,8 @@ source=(
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=('beb8f1a076b57f7295fd1070ed85233e1e99b4d52460b17419ba6e6848f809f0'
-            'SKIP'
+sha256sums=(SKIP
+            SKIP
             'ce846f278e068bf7cc9f43174283bd9926fbf4062bd0575a70ab895be2294796')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step

@@ -1,7 +1,7 @@
 pkgbase = python-ocp
 	pkgdesc = Python wrapper for OCCT generated using pywrap
-	pkgver = 7.7.2.1+r4.g544d7fd5
-	pkgrel = 5
+	pkgver = 7.8.1.2
+	pkgrel = 1
 	url = https://github.com/CadQuery/OCP
 	arch = x86_64
 	license = Apache-2.0
@@ -44,17 +44,16 @@ pkgbase = python-ocp
 	makedepends = double-conversion
 	makedepends = clang15
 	makedepends = glew
-	makedepends = fmt
 	depends = python
 	depends = opencascade
 	depends = vtk
 	depends = fmt
 	conflicts = python-ocp-git
 	options = !lto
-	source = git+https://github.com/CadQuery/OCP.git#commit=544d7fd55b997dff26eb5b1009d17d97b42063b1
+	source = git+https://github.com/CadQuery/OCP.git#commit=01055e099a3b1a34da38bb1f5457f06a2d4c7a18
 	source = git+https://github.com/CadQuery/pywrap.git
 	source = no_progress_bars.patch
-	sha256sums = beb8f1a076b57f7295fd1070ed85233e1e99b4d52460b17419ba6e6848f809f0
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ce846f278e068bf7cc9f43174283bd9926fbf4062bd0575a70ab895be2294796
 
