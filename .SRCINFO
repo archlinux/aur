@@ -1,0 +1,18 @@
+pkgbase = atac-git
+	pkgdesc = A simple API client (postman like) in your terminal
+	pkgver = 0.19.0.r13.205a60c
+	pkgrel = 1
+	url = https://github.com/Julien-cpsn/ATAC
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	depends = gcc-libs
+	provides = atac
+	conflicts = atac
+	options = !lto
+	source = atac::git+https://github.com/Julien-cpsn/ATAC.git
+	sha256sums = SKIP
+
+pkgname = atac-git
