@@ -1,0 +1,16 @@
+pkgbase = sigscan
+	pkgdesc = List POSIX signal information for all processes
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/brannondorsey/sigscan
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	source = sigscan-0.2.2.tar.gz::https://static.crates.io/crates/signal-scan/signal-scan-0.2.2.crate
+	sha256sums = b5cb732f0f4ea098649f4cbaf9c641c97252941ebde1ea89828d9613f9dc0b5a
+
+pkgname = sigscan
