@@ -4,8 +4,8 @@
 
 pkgbase=mcpelauncher-linux
 pkgname=('mcpelauncher-linux' 'lib32-mcpelauncher-linux')
-pkgver=1.2.0
-pkgrel=6
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
@@ -15,7 +15,7 @@ _depends=('zlib' 'libpng' 'sdl3' 'qt6-base' 'qt6-declarative' 'qt6-webengine' 'o
 _32depends=('lib32-zlib' 'lib32-libpng' 'lib32-sdl3' 'lib32-openssl' 'lib32-gcc-libs' 'lib32-glibc')
 depends=(${_depends[@]} ${_32depends[@]})
 makedepends=(${_makedepends[@]} ${depends[@]})
-_commit=fe077604a51ec2b12ae9990714cdb1fe094673e9 # qt6-branch
+_commit=035b691c05aa3977d09afb4df7681016d2b2ee77 # qt6-branch
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-manifest.git#commit=$_commit"
   'git+https://github.com/minecraft-linux/android-support-headers'
@@ -51,10 +51,9 @@ source=(
   # Temporary override of 'git+https://android.googlesource.com/platform/system/core'
   # git clone --mirror timed out on archlinux while it still works on ubuntu 22.04, the history has been truncated due to large files
   'git+https://github.com/minecraft-linux/android_core'
-  'mcpelauncher-core.patch::https://github.com/HurricanePootis/mcpelauncher-core/commit/c94fb5f412c788837db135e25afeb72d0ca10053.patch'
 )
 
-sha256sums=('09661d1ddd1bc5a4a241a3aef9748fe494f479213a254f607ab5698b5ba277e4'
+sha256sums=('1437146cbb85b8e2b4945c3f62cc57739a042ade851bbcfaea933cefc81f5ca3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -85,8 +84,7 @@ sha256sums=('09661d1ddd1bc5a4a241a3aef9748fe494f479213a254f607ab5698b5ba277e4'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'a6458402a1519ce0f994b11964401efa2ccab14b8e9a9fb3e82a4e77605d3ba7')
+            'SKIP')
 
 prepare() {
   git -C mcpelauncher-manifest submodule init
@@ -124,9 +122,6 @@ prepare() {
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.bionic.url "$srcdir/android_bionic"
   git -C mcpelauncher-manifest/mcpelauncher-linker config submodule.core.url "$srcdir/android_core"
   git -C mcpelauncher-manifest/mcpelauncher-linker -c protocol.file.allow=always submodule update
-
-  cd "$srcdir/mcpelauncher-manifest/mcpelauncher-core"
-  patch -p1 < "$srcdir/mcpelauncher-core.patch"
 }
 
 build() {
