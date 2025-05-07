@@ -40,6 +40,8 @@ pkgver() {
 
 prepare() {
   cd cadquery
+
+  # enable support for occt v7.8.1. from https://github.com/CadQuery/cadquery/pull/1589
   git cherry-pick --no-commit 4d1fbc2 717d70f 636f2bf
 }
 
