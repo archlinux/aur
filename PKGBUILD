@@ -12,7 +12,7 @@ optdepends=('libappindicator-gtk3: Allow sparkle to extend a menu via Ayatana in
 makedepends=('nodejs' 'pnpm' 'jq' 'libxcrypt-compat')
 install=$_pkgname.install
 source=("${_pkgname}.sh" "git+$url.git")
-sha256sums=("50470afa461385fdbba54e099b26959772759d65c607212176d28ca650ef4caa" "SKIP")
+sha256sums=("03eb601fe981716e90f9170eeb36a2e7938587f05a1bdaa09adadb1229c77a0a" "SKIP")
 options=('!lto')
 
 pkgver() {
