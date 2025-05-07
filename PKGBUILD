@@ -26,9 +26,7 @@ b2sums=('959957c27f4444b6a7e547fcfa8042033dee9d279cc0833265b6bc4bddf128b19060473
         'e2c1a0b1fc817ca38a2a4bc57ce4a293e950655011c7afa632e0480934ceaf264489bf1367b88bac1885fe7bb4be87b7f8c789adad1d09a2092d797a14ca11b0')
 
 function prepare {
-	cd ninja
-
-	git apply -v "${srcdir}/0001-Limit-job-execution-dependant-on-available-memory-m.patch"
+	git -C ninja apply -v "${srcdir}/0001-Limit-job-execution-dependant-on-available-memory-m.patch"
 }
 
 function build {
