@@ -1,5 +1,5 @@
 pkgbase = serverseekerv2-git
-	pkgdesc = Blazingly fast Minecraft server scanner written in Rust 🦀 🚀
+	pkgdesc = Fast Minecraft server scanner written in Rust
 	pkgver = r117.e4cdb04
 	pkgrel = 1
 	url = https://git.funtimes909.xyz/ServerSeekerV2/ServerSeekerV2
