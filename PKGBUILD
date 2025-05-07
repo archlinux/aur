@@ -16,14 +16,14 @@ pkgname=(
 	$_basename-server-git
 	$_basename-unixd-clients-git
 )
-pkgver=1.6.0.dev.r82.g68c34adea
+pkgver=1.7.0.dev.r4.g68c34adea
 pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=("$pkgbase::git+https://github.com/${_basename}/${_basename}.git")
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-makedepends=(cargo-nightly systemd clang tpm2-tss)
+makedepends=(cargo systemd clang tpm2-tss lld)
 sha256sums=(SKIP)
 # ring won't compile on x86_64 with link-time-optimizations enabled:
 # https://github.com/briansmith/ring/issues/1444
@@ -38,7 +38,7 @@ build () {
   cd "$pkgbase"
 
   export KANIDM_BUILD_PROFILE="release_linux"
-  cargo +nightly build --release --target-dir target \
+  cargo build --release --target-dir target \
         --features tpm,unix \
         --package daemon \
         --package kanidm-ipa-sync \
