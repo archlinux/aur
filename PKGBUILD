@@ -4,13 +4,13 @@
 
 pkgname="ntopng-bin"
 # to update visit https://packages.ntop.org/apt/bookworm/x64/ and keep track of the latest pkgver, date and build
-_pkgverAmd64=6.3
-_dateAmd64=241029
-_buildAmd64=24654
+_pkgverAmd64=6.5
+_dateAmd64=250507
+_buildAmd64=25748
 # to update visit https://packages.ntop.org/apt/bookworm_pi/arm64/ and keep track of the latest pkgver, date and build
-_pkgverArm64=6.3
-_dateArm64=241029
-_buildArm64=24649
+_pkgverArm64=6.5
+_dateArm64=250507
+_buildArm64=25748
 # to update visit https://packages.ntop.org/apt/buster_pi/armhf/ and keep track of the latest pkgver, date and build
 _pkgverArm32=6.1
 _dateArm32=240707
@@ -41,9 +41,9 @@ source_armv7h=("https://packages.ntop.org/apt/buster_pi/armhf/ntopng_${_pkgverAr
 b2sums=('c0ba0afb3fdeedaf57f54ce405cd5ce688bb5ed19d05cc21fbefca7ecda98bc5df2cf603e7ac92108763dc26c1ef391afdf69116bb13c03f8e2d3e75fe6bbda5'
         'ca912cbe9e43a5be67e2b487183e43615b93497a62515cad7b1468fab5e3dc9a2dc3fd2e8d88c12d54c91cb3b8c61ebe682c1e7dc5f3ea49aaf0d87aa2a9bbd1'
         'e374ff823b8218faf86c56e0794622954b09b41f5c893db08d3ad38ea1d4fe47733095853d1bf11041b1e4b476d01c1a1a495af40221d6e4e30a0ac223684fac')
-b2sums_x86_64=('857678383ba7bc582b82b3f822ca12fdd0a751ba87d7a8f5346090bb6d1f9ee4b83ab31955fe22503f63a50219fb96c91c192c4d71794314fe3e9a55f06e4338')
-b2sums_aarch64=('80f8ebb28dc31f08dfd6b7778337dd89be63aaf2d0e5ed5f5d393e9c4f5bc5b08f3dfdb189225caf5182f72115dfdac755ceec11015c60e6d1d979b4b676a816')
+b2sums_x86_64=('6470eaaf9e35d5b00416c8733fbaee45ba62c9156348633488ce747b72c3de67518ef2a1d1100ae7d334497ffc3781c91543d99e833d11fdb85e30b8eaf2af8a')
 b2sums_armv7h=('f2996f73459a37fe6cdf31d91d96f6bb7154133093c1202eee688aa58345b873db8ee00944955648a1994341b8619c6900f0b709d878517c9b92a466a961144a')
+b2sums_aarch64=('0e147e45096638ae314bf841e716c1bd475bfffb0649a2443d86d09441dca764e35856cad4a5e44fa35351476bc7e6a435e14d64bb848690c35175d1ff276fe6')
 options=("!strip")
 
 prepare(){
