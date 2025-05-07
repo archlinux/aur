@@ -1,0 +1,48 @@
+diff --git a/src/chainparamsbase.h b/src/chainparamsbase.h
+index 9864033c88..00c7f929a2 100644
+--- a/src/chainparamsbase.h
++++ b/src/chainparamsbase.h
+@@ -5,6 +5,7 @@
+ #ifndef BITCOIN_CHAINPARAMSBASE_H
+ #define BITCOIN_CHAINPARAMSBASE_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+diff --git a/src/node/ui_interface.h b/src/node/ui_interface.h
+index 11b3650a4a..622c19b874 100644
+--- a/src/node/ui_interface.h
++++ b/src/node/ui_interface.h
+@@ -6,6 +6,7 @@
+ #ifndef BITCOIN_NODE_UI_INTERFACE_H
+ #define BITCOIN_NODE_UI_INTERFACE_H
+ 
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+ #include <string>
+diff --git a/src/test/util/mining.h b/src/test/util/mining.h
+index 3ddc512c8f..37845828dd 100644
+--- a/src/test/util/mining.h
++++ b/src/test/util/mining.h
+@@ -5,6 +5,7 @@
+ #ifndef BITCOIN_TEST_UTIL_MINING_H
+ #define BITCOIN_TEST_UTIL_MINING_H
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ 
+diff --git a/src/zmq/zmqabstractnotifier.h b/src/zmq/zmqabstractnotifier.h
+index 79d92ac19b..b135f9b0e3 100644
+--- a/src/zmq/zmqabstractnotifier.h
++++ b/src/zmq/zmqabstractnotifier.h
+@@ -5,6 +5,7 @@
+ #ifndef BITCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
+ #define BITCOIN_ZMQ_ZMQABSTRACTNOTIFIER_H
+ 
++#include <cstdint>
+ #include <functional>
+ #include <memory>
+ #include <string>
