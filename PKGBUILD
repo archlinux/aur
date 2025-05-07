@@ -1,16 +1,19 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
+# Note: prelink has not been maintained for years,
+# but execstack can still be useful so I keep this package.
+
 pkgname=execstack
 pkgver=20130503
-pkgrel=9
+pkgrel=10
 pkgdesc="set the executable stack flag of ELF binaries and libraries"
-depends=(libelf elfutils)
+depends=(glibc libelf elfutils)
 makedepends=(automake)
 arch=("x86_64")
-url="https://people.redhat.com/jakub/prelink"
-license=("GPL")
+url="https://github.com/jwilk-mirrors/prelink"  # was: https://people.redhat.com/jakub/prelink
+license=("GPL-2.0-only")
 conflicts=(prelink)
-source=("https://people.redhat.com/jakub/prelink/prelink-$pkgver.tar.bz2")
+source=("https://files.catwell.info/misc/mirror/software/prelink/prelink-$pkgver.tar.bz2")
 sha256sums=("6339c7605e9b6f414d1be32530c9c8011f38820d36431c8a62e8674ca37140f0")
 
 build () {
