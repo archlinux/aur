@@ -1,13 +1,14 @@
 pkgbase = vesktop-bin
 	pkgdesc = A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Vencord/Vesktop
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron35
 	depends = debugedit
+	optdepends = speech-dispatcher: High-level device independent layer for speech synthesis interface
 	provides = vesktop=1.5.6
 	provides = vencord-desktop=1.5.6
 	conflicts = vesktop
