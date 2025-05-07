@@ -3,7 +3,7 @@
 _pkgname="azahar"
 pkgname="$_pkgname-appimage"
 
-pkgver=2121.rc1
+pkgver=2121
 
 pkgrel=1
 epoch=1
@@ -18,7 +18,7 @@ replaces=()
 depends=("ffmpeg"
          "sdl2")
 _appimage="$_pkgname.AppImage"
-source=("https://github.com/azahar-emu/azahar/releases/download/2121-rc1/$_pkgname.AppImage")
+source=("https://github.com/azahar-emu/azahar/releases/download/2121/$_pkgname.AppImage")
 options=("!strip")
 sha256sums=('SKIP')
 build() {
