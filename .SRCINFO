@@ -1,6 +1,6 @@
 pkgbase = gcsfuse
 	pkgdesc = A user-space file system for interacting with Google Cloud Storage
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/gcsfuse
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gcsfuse
 	depends = glibc
 	depends = fuse
 	optdepends = google-cloud-sdk: authentication helper
-	source = gcsfuse-2.11.1::https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v2.11.1.tar.gz
-	sha256sums = caaabfa18eb74fc47417bf3ff90d1b5386a465bc6c8edf593318ed444055a27c
+	source = gcsfuse-2.12.0::https://github.com/GoogleCloudPlatform/gcsfuse/archive/refs/tags/v2.12.0.tar.gz
+	sha256sums = b530ef33fd1b0eee5822caab7f594d36237fc7caa546acdeee0d10b15e714726
 
 pkgname = gcsfuse
