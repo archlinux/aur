@@ -4,7 +4,7 @@ heidisqlrelease=7000
 shortpkgver=12.10
 pkgname=heidisql-wine
 pkgver=${shortpkgver}.0.${heidisqlrelease}
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (64bit) on top of the portable version, and uses Wine."
 arch=(any)
 url="http://www.heidisql.com/"
@@ -20,7 +20,7 @@ sha256sums=('a7b0e40acc85900ff5ca63769e702acaa06e81ae658b7958e1bc794ae635fd7a'
             'c17982e753d24fb9f90212e2d11e01e08cca0641372e146b1e32d087fb9a9659'
             'd0f6c19b7aa4b7a6daa00b658a852f97d35dd98d2c31a2f4ea267527bf5cda15'
             '07abdaeab2b5c30ed7b053cce5e42942cc32c56503439eff69fb21b57c522122'
-            '811c7fc4a3cc39e423260f0cee84a228d4e942541265521cc911d7df081bfc3f')
+            '840acb31ca1de8d029e725fded1ac09df0314dea41da53f15f4cd3848e34bb00')
 noextract=("HeidiSQL_${shortpkgver}_Portable.zip")
 
 package() {
