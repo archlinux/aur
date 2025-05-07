@@ -1,5 +1,5 @@
 pkgbase = pcsx2-appimage
-	pkgdesc = PlayStation 2 emulator
+	pkgdesc = PlayStation 2 emulator (AppImage version)
 	pkgver = 2.3.328
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
