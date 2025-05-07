@@ -1,0 +1,18 @@
+pkgbase = sandwine
+	pkgdesc = Command-line tool to run Windows apps with Wine and bwrap/bubblewrap isolation on Linux
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://github.com/hartwork/sandwine
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bubblewrap
+	depends = python
+	depends = python-coloredlogs
+	depends = wine
+	source = https://files.pythonhosted.org/packages/source/s/sandwine/sandwine-4.3.0.tar.gz
+	sha256sums = be9f37bd0224241fd012cfac470843d044aa1e7d7ac634321ea63618450703eb
+
+pkgname = sandwine
