@@ -1,20 +1,28 @@
 # Maintainer: Josh Sixsmith <josh dot sixsmith at gmail dot com>
+# notes from vcpkg package:
+# The repository containing vcpkg recipes cannot legally be included, so you
+# will have to manually clone it to the $HOME/.local/share/vcpkg directory.
+# 
+#   git clone https://github.com/microsoft/vcpkg $VCPKG_ROOT
+# 
+# You are also responsible for manually updating this repository.
+# 
+#   git -C $VCPKG_ROOT pull
 
 pkgname=tiledb
 _pkgname=TileDB
 pkgver=2.27.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
 url="https://tiledb.com/"
 license=('MIT')
 makedepends=('git' 'cmake')
-depends=('lz4' 'bzip2' 'zstd' 'zlib' 'libwebp' 'spdlog' 'curl' 'openssl' 'aws-sdk-cpp')
+depends=('lz4' 'bzip2' 'zstd' 'zlib' 'libwebp' 'spdlog' 'curl' 'openssl' 'aws-sdk-cpp' 'vcpkg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('7522e83599421b35a554c9eae84903e951a46a1b6d9c7e32409492f938b63ad2')
 
 build() {
-  ls
   cd "$_pkgname-${pkgver//_/-}"
   [ -e "build" ] || mkdir build && cd build
   ../bootstrap \
@@ -23,9 +31,8 @@ build() {
     --enable-serialization \
     --enable-tools \
     --enable-s3 \
-    --disable-werror \
-    --disable-webp
-  make
+    --disable-werror
+  make -j $(nproc --all)
 }
 
 package() {
