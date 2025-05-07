@@ -1,7 +1,7 @@
 pkgbase = jwt_tool
 	pkgdesc = A toolkit for testing, tweaking and cracking JSON Web Tokens
-	pkgver = 2.2.7
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/ticarpi/jwt_tool
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,7 +9,8 @@ pkgbase = jwt_tool
 	depends = python-termcolor
 	depends = python-requests
 	depends = python-pycryptodomex
-	source = https://github.com/ticarpi/jwt_tool/archive/refs/tags/v2.2.7.zip
-	sha256sums = 78d63ba6cbab33f3d8233c1d657ee53e0f29d1d8a0b26a80bdc745e38d20f327
+	depends = python-ratelimit
+	source = https://github.com/ticarpi/jwt_tool/archive/refs/tags/v2.3.0.zip
+	sha256sums = 03aa6c5b41e8bcfff2dd983592ddc46b4557894934b234bc682edd2869434f80
 
 pkgname = jwt_tool
