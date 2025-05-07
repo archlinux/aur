@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=false
+Terminal=false
+Exec=/usr/bin/cc3dsfs
+Icon=cc3dsfs
+Name=cc3dsfs
+Comment=3DS Capture card viewer
+Categories=Gaming

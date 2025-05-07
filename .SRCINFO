@@ -1,0 +1,20 @@
+pkgbase = cc3dsfs-git
+	pkgdesc = A multi-platform capture and display program for the https://3dscapture.com/ N3DSXL, 3DS and DS Capture Cards written in C++. Also supports IS Nitro devices.
+	pkgver = r294.5d0c49a
+	pkgrel = 1
+	url = https://github.com/Lorenzooone/cc3dsfs
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = sfml
+	conflicts = libftd3xx
+	conflicts = cc3dsfs
+	conflicts = cc3dsfs-bin
+	source = git+https://github.com/Lorenzooone/cc3dsfs
+	source = cc3dsfs.desktop
+	sha256sums = SKIP
+	sha256sums = d8d1cc113946b1e2c0263dfed7543f0b2498c8685515550cc9ee8fba755536d0
+
+pkgname = cc3dsfs-git
