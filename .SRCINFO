@@ -5,6 +5,7 @@ pkgbase = renamemytvseries-bin
 	url = https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/
 	arch = x86_64
 	license = custom
+	depends = gtk2
 	provides = renamemytvseries
 	conflicts = renamemytvseries
 	source = LICENSE

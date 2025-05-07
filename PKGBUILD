@@ -11,6 +11,7 @@ pkgdesc="Rename your TV-Series using TheTVDB"
 arch=('x86_64')
 provides=('renamemytvseries')
 conflicts=('renamemytvseries')
+depends=('gtk2')
 url="https://www.tweaking4all.com/home-theatre/rename-my-tv-series-v2/"
 license=('custom')
 
