@@ -1,0 +1,48 @@
+pkgname=sparkle-git
+_pkgname=${pkgname%-git}
+pkgver=1.6.2.r1.db8c6a0
+pkgrel=1
+pkgdesc="Another Mihomo GUI."
+arch=('x86_64' 'aarch64')
+url="https://github.com/xishang0128/sparkle"
+license=('GPL3')
+conflicts=("$_pkgname" "$_pkgname-bin" "$_pkgname-electron" "$_pkgname-electron-bin")
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+optdepends=('libappindicator-gtk3: Allow sparkle to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
+makedepends=('nodejs' 'pnpm' 'jq' 'libxcrypt-compat')
+install=$_pkgname.install
+source=("${_pkgname}.sh" "git+$url.git")
+sha256sums=("50470afa461385fdbba54e099b26959772759d65c607212176d28ca650ef4caa" "SKIP")
+options=('!lto')
+
+pkgver() {
+    cd $srcdir/${_pkgname}
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | tr -d 'v' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare(){
+    cd $srcdir/${_pkgname}
+    sed -i "s/productName: Sparkle/productName: sparkle/" electron-builder.yml
+    pnpm install
+}
+
+build(){
+    cd $srcdir/${_pkgname}
+    pnpm build:linux deb
+}
+
+package() {
+	cd $srcdir/${_pkgname}/dist
+    bsdtar -xf sparkle-linux-$(jq '.version' $srcdir/${_pkgname}/package.json | tr -d 'v"')*.deb
+    bsdtar -xf data.tar.xz -C "${pkgdir}/"
+    chmod +x ${pkgdir}/opt/sparkle/sparkle
+    chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo
+    chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo-alpha
+    install -Dm755 "${srcdir}/../${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    sed -i '3s!/opt/sparkle/sparkle!sparkle!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    chown -R root:root ${pkgdir}
+}
