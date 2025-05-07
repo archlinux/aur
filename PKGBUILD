@@ -5,7 +5,7 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 # shellcheck disable=SC2034,SC2164,SC2154
 
-_ver="v1.11.1"
+_ver="v1.12.1"
 _fragment="#tag=$_ver"
 pkgname=ninja-mem
 pkgver=${_ver%v}
@@ -22,7 +22,7 @@ install=ninja-git.install
 
 source=("git+https://github.com/ninja-build/ninja.git${_fragment}"
 	'0001-Limit-job-execution-dependant-on-available-memory-m.patch')
-b2sums=('SKIP'
+b2sums=('959957c27f4444b6a7e547fcfa8042033dee9d279cc0833265b6bc4bddf128b19060473a115f06c215bf42271b243b896a9fe7efa00f4ef9dec3fa4c885af2a3'
         '210babd66ba92b920f2e0374e0575f58f866cf0f0a1e6d32b79b009e4a9646504daaafaea6443331c749a048e69418006de4194e080d555ad34a500ce78a30e0')
 
 function prepare {
