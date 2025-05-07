@@ -8,7 +8,7 @@
 # Contributor  : Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync-nopdfium
-pkgver=5.2.1.0
+pkgver=5.11.0.3
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
@@ -19,71 +19,44 @@ license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
          'qt5-base' 'qt5-svg' 'qt5-x11extras' 'libmediainfo' 'libraw'
          'ffmpeg' 'freeimage' 'qt5-declarative')
-makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
+makedepends=(cmake 'qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Win"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
-        "ffmpeg.patch")
-sha256sums=('SKIP'
+        "cmake_crypto++.patch"
+	"ffmpeg.patch")
+sha256sums=('195d6e4a90d2f1ab63c7793b74dabacda66df17a82e96f20f594dcbb413f1e59'
             'SKIP'
+            '004df095bcd6b15b0f69dd69219dc15c27ee7b46ade0c9ab7271b46b2ad6ca13'
             'feef2f0ff3c0f4ad29fd882fddfca038e8f6e4158fa8dc9af2248d2f83e1a083')
 
 prepare() {
-    cd "MEGAsync"
-    git config submodule.src/MEGASync/mega.url "../meganz-sdk"
-    git -c protocol.file.allow=always submodule update --init
-    git -C src/MEGASync/mega/src/gfx apply -v "$srcdir/ffmpeg.patch"
-
-    cd "src/MEGASync"
-    sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
-    sed -i '/CONFIG += USE_PDFIUM/d' MEGASync.pro
-
+    git -C "$srcdir/MEGAsync" config submodule.src/MEGASync/mega.url "$srcdir/meganz-sdk"
+    git -C "$srcdir/MEGAsync" -c protocol.file.allow=always submodule update --init -- src/MEGASync/mega
+    mapfile -t patches < <(grep -Po '^.*?(patch|diff)(?=::|$)' < <(printf "${srcdir}/%s\n" ${source[@]}))
+    for patch in "${patches[@]}"; do
+      msg2  "apply ${patch##*/}..."
+      patch -Np1 -d "${srcdir}"/MEGAsync -i "$patch"
+    done
 }
 
 build() {
-    # build sdk
-    cd "MEGAsync/src/MEGASync/mega"
-
-    ./autogen.sh
-    ./configure \
-        --disable-shared \
-        --enable-static \
-        --disable-silent-rules \
-        --disable-curl-checks \
-        --disable-megaapi \
-        --with-ffmpeg \
-        --with-cryptopp \
-        --with-sodium \
-        --with-zlib \
-        --with-sqlite \
-        --with-cares \
-        --with-curl \
-        --with-freeimage \
-        --with-libuv \
-        --disable-posix-threads \
-        --disable-examples \
-        --with-libzen \
-        --with-libmediainfo \
-        --prefix="${srcdir}/MEGAsync/src/MEGASync/mega/bindings/qt/3rdparty"
-
-    # build megasync
-    cd "../.."
-    qmake-qt5 \
-        "CONFIG += FULLREQUIREMENTS" \
-        MEGA.pro
-    lrelease-qt5 MEGASync/MEGASync.pro
-    make
+    cmake -B build -S MEGAsync \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_MODULE_PATH:PATH="${srcdir}/MEGAsync/src/MEGASync/mega/cmake/modules/packages" \
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
+        -DENABLE_DESIGN_TOKENS_IMPORTER:BOOL='OFF' \
+        -DENABLE_DESKTOP_APP_TESTS:BOOL='OFF' \
+	-DUSE_PDFIUM:BOOL='OFF' \
+        -Wno-dev
+    cmake --build build --target MEGAsync
 }
 
 package () {
-    cd "MEGAsync"
-    install -Dm 644 LICENCE.md "${pkgdir}/usr/share/licenses/$pkgname/LICENCE"
-    install -Dm 644 installer/terms.txt "${pkgdir}/usr/share/licenses/$pkgname/terms.txt"
-    install -Dm 644 src/MEGASync/mega/LICENSE "${pkgdir}/usr/share/licenses/$pkgname/SDK-LICENCE"
-
-    cd "src"
-    install -dm 755 "${pkgdir}/usr/bin"
-    make INSTALL_ROOT="${pkgdir}" TARGET="${pkgdir}/usr/bin/megasync" install
-
-    install -Dm 755 "MEGASync/megasync" "${pkgdir}/usr/bin/megasync"
+    DESTDIR="$pkgdir" cmake --install build
+    install -D -m644 MEGAsync/LICENCE.md -t "${pkgdir}/usr/share/licenses/megasync"
+    install -D -m644 MEGAsync/installer/terms.txt -t "${pkgdir}/usr/share/licenses/megasync"
+    install -D -m644 MEGAsync/src/MEGASync/mega/LICENSE "${pkgdir}/usr/share/licenses/megasync/LICENCE-SDK"
+    rm -d "${pkgdir}/opt"{/megasync{/lib,},}
 }
