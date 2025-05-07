@@ -1,0 +1,14 @@
+pkgbase = roon-dunst-now-playing-git
+	pkgdesc = Simple Roon extension that uses notify-send
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OstojaOfficial/roon-dunst-now-playing
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = roon-kit
+	source = git+https://github.com/OstojaOfficial/roon-dunst-now-playing.git
+	md5sums = SKIP
+
+pkgname = roon-dunst-now-playing-git
