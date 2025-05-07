@@ -26,9 +26,6 @@ md5sums_armv7h=('9521ccbf2eb32c6925f5524b0254c6f6')
 
 package () {
   mkdir -p "${pkgdir}/usr/lib/"
-  for lib in $(find -L . -maxdepth 1 -type f -name "lib*" -iname "lib*" ! -name "*.tar.gz")
-  do
-    cp -a "${lib}" "${pkgdir}/usr/lib/"
-  done
+  find -L -type f -iname "lib*.so*" -print0 | xargs -0r -I@ -- cp -a "@" "${pkgdir}/usr/lib/"
   chown -R root:root "${pkgdir}/usr/lib/"
 }
