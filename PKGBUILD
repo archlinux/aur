@@ -7,7 +7,7 @@
 # Contributor: Adrien Wu <adrien.sf.wu@gmail.com>
 
 pkgname="mailio"
-pkgver="0.24.1"
+pkgver="0.25.0"
 pkgrel="1"
 pkgdesc="A cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols."
 arch=("x86_64")
@@ -16,7 +16,7 @@ license=("BSD-2-Clause")
 depends=("gcc-libs" "glibc" "openssl")
 makedepends=("boost" "cmake" "doxygen")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("32c8f9e24fde2b45a456f1636cf68ef17f0f9298fb09fd037398fdcbe4675847d2edf3379ef62f6a6557b09b1259d4b93444c059da63e0ceef34fe91546e741e")
+sha512sums=("8e8c91ffb16a0a0e71aa3d97fd7bca18b9662236ea1a0b7e6009919c8e76523350b63ca2145ece517103600a371f05eab5c0eb0d422226e15ad7c94e4ce0f5a4")
 
 _compile()
 {
@@ -43,8 +43,8 @@ build()
 check()
 {
     _compile "ON"
-    # ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"-"${pkgver}"/build/ TODO
-    # "${srcdir}"/"${pkgname}"-"${pkgver}"/build/test/test_message TODO
+    ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
+    "${srcdir}"/"${pkgname}"-"${pkgver}"/build/test/test_message
     _compile "OFF"
 }
 
