@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(
 	# build setup
-	git 'cmake>=3.5' 'clang' 'llvm' ninja
+	git 'cmake>=3.21.1' 'clang' 'llvm' ninja
 	# unbundled vcpkg
 	'boost' 'glslang' 'glm' rapidjson
 	# direct cemu dependencies
@@ -85,7 +85,7 @@ build() {
 		-B build
 		-G Ninja
 		-Wno-dev
-		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.21.1
 		-DCMAKE_BUILD_TYPE=Release
 		-DCMAKE_C_COMPILER=clang
 		-DCMAKE_CXX_COMPILER=clang++
