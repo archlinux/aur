@@ -1,6 +1,6 @@
 pkgname=minefetch
 pkgver=1.6.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Download Minecraft mods (In Rust)"
 arch=("x86_64" "aarch64")
 license=('GPL')

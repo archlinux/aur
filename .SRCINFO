@@ -1,7 +1,7 @@
 pkgbase = minefetch
 	pkgdesc = Download Minecraft mods (In Rust)
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/KirillkoTankisto/minefetch
 	arch = x86_64
 	arch = aarch64
