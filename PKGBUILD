@@ -8,7 +8,7 @@
 
 pkgname=nosql-workbench
 pkgver=3.13.5
-pkgrel=2
+pkgrel=3
 pkgdesc="NoSQL Workbench for Amazon DynamoDB"
 arch=(x86_64)
 url="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html"
