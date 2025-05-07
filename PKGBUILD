@@ -1,7 +1,7 @@
 # Maintainer: mahe29 <mahe@quantentunnel.de>
 
 pkgname=seh-utn
-pkgver=3.3.10
+pkgver=4.0.7
 pkgrel=1
 pkgdesc='SEH Technology UTN service/daemon, kernel module (DKMS) and clitool'
 url="https://www.seh-technology.com/"
@@ -11,7 +11,7 @@ depends=('dkms' 'linux-headers')
 makedepends=('patch')
 _verwatch=("${url}services/downloads/download-deviceserver/utnserver-pro.html" 'SEH UTN Manager Version \([0-9\.]*\) for DEB based Linux 64-bit.*' 't')
 source=("${url}fileadmin/user/downloads/deviceserver/tools/sehutnmanager-deb_linux_64bit-$pkgver.zip")
-sha256sums=('a38adf7a63acac2346c8258a018c9a5913946e75292c49e19b3019614437d3d6')
+sha256sums=('a2a4cc897ace4eaa52411176b0352da2ee771501311dae945bc3c29ca1e0bb51')
 backup=("etc/xdg/SEH Computertechnik GmbH/SEH UTN Manager.conf" "etc/xdg/SEH Computertechnik GmbH/SEH UTN Service.conf")
 
 prepare() {
@@ -27,8 +27,10 @@ sed -i "/\/etc\/init.d\//d" "${srcdir}/lib/systemd/system/seh-utn.service"
 sed -i "/^#Exec/d" "${srcdir}/lib/systemd/system/seh-utn.service"
 sed -i "/\/bin\/echo /d" "${srcdir}/lib/systemd/system/seh-utn.service"
 sed -i "/\/bin\/chmod/d" "${srcdir}/lib/systemd/system/seh-utn.service"
+sed -i "s/\/usr\/libexec/\/usr\/lib/g" "${srcdir}/usr/bin/utnm"
+sed -i "s/\/usr\/libexec/\/usr\/lib/g" "${srcdir}/usr/bin/utnservice"
 cd ${srcdir}
-patch -p0 < ../vhci_sd_boost_c.diff
+patch -p0 < ../seh-dkms-patch.diff
 }
 
 package() {
@@ -38,6 +40,7 @@ cp -a "${srcdir}/usr/share/doc" "${pkgdir}/usr/share/doc"
 cp -a "${srcdir}/usr/share/man" "${pkgdir}/usr/share/man"
 install -Dm755 -t "${pkgdir}/usr/bin" ${srcdir}/usr/bin/*
 cp -a "${srcdir}/usr/lib" "${pkgdir}/usr/"
+cp -a "${srcdir}/usr/libexec/SEH" "${pkgdir}/usr/lib/"
 mkdir -p "${srcdir}/etc/xdg/SEH Computertechnik GmbH"
 touch "${srcdir}/etc/xdg/SEH Computertechnik GmbH/SEH UTN Service.conf"
 touch "${srcdir}/etc/xdg/SEH Computertechnik GmbH/SEH UTN Manager.conf"
