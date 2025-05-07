@@ -12,8 +12,8 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=135.0.7049.114
-pkgrel=2
+pkgver=136.0.7103.59
+pkgrel=1
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -36,19 +36,19 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver-lite.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        webrtc-fix-build-with-pipewire-1.4.patch
-        skia-only-call-format_message-when-needed.patch
         add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
+        chromium-136-drop-nodejs-ver-check.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
+        disable-clang-warning-suppression-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('33c538ae7443d0cc11b9841276d20abe8c260198fa50e905e88aa9b8c2052e83'
+sha256sums=('a124a9bc3f6f3e24fa97c5ec59d94a040b774a8fbca2e1196bf39b240f0d42f2'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '74a2d428f7f09132c4a923e816a5a9333803f842003d650cd4a95a35e5457253'
-            '271c7a767005b09e212808cfef7261dca00ea28ba7b808f69c3b5b9f202511d1'
             'd3dd9b4132c9748b824f3dcf730ec998c0087438db902bc358b3c391658bebf5'
+            '32f0080282fc0b2795a342bf17fcb3db4028c5d02619c7e304222230ba99d5fe'
             'cc8a71a312e9314743c289b7b8fddcc80350a31445d335f726bb2e68edf916d1'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
+            'd6f3914c6adadaf061e7e2b1430c96d32b0cad05244b5cfaf58cf5344006a169'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374')
 
 # ungoogled-chromium-xdg patches
@@ -107,8 +107,6 @@ _unwanted_bundled_libs=(
 )
 depends+=(${_system_libs[@]})
 
-export LANG=C.utf-8
-
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys.
@@ -139,15 +137,19 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -d third_party/webrtc <../webrtc-fix-build-with-pipewire-1.4.patch
-  patch -Np1 -d third_party/skia <../skia-only-call-format_message-when-needed.patch
   patch -Np1 -i ../add-more-CFI-suppressions-for-inline-PipeWire-functions.patch
+
+  # Fixes from Gentoo
+  patch -Np1 -i ../chromium-136-drop-nodejs-ver-check.patch
 
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
+
+  # Disable usage of --warning-suppression-mappings flag which needs clang 20
+  patch -Np1 -i ../disable-clang-warning-suppression-flag.patch
 
   # Custom Patches
 
