@@ -1,8 +1,8 @@
-# Maintainer: Arkaprabha Chakraborty <arkorty@gmail.com>
+# Maintainer: ark <arkorty@gmail.com>
 # Contributor: siers <wimuan@gmail.com>
 
 pkgname='massren'
-pkgver='1.5.6'
+pkgver='1.5.7'
 pkgrel='1'
 pkgdesc='Easily rename multiple files using your text editor'
 url='https://github.com/laurent22/massren'
@@ -12,13 +12,12 @@ conflicts=('massren')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('49758b477a205f3fbf5bbe72c2575fff8b5536f8c6b45f8f6bd2fdde023ce874')
+sha256sums=('7e7dd149bd3364235247268cc684b5a35badd9bee22f39960e075c792d037a8c')
 
 prepare() {
     cd "$pkgname-$pkgver"
     mkdir -p build/
 
-    go mod init "${url#https://}"
     go mod tidy
 }
 
