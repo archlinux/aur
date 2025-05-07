@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-files-antivirus
 	pkgdesc = Antivirus app for Nextcloud
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/nextcloud/files_antivirus
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = nextcloud-app-files-antivirus
 	makedepends = yq
 	depends = clamav
 	options = !strip
-	source = nextcloud-app-files-antivirus-6.0.1.tar.gz::https://github.com/nextcloud/files_antivirus/archive/refs/tags/v6.0.1.tar.gz
-	sha256sums = dbad3912dc543dd54bd9b508e430b152659cc69dc299a44a03f0a7d69aa73750
-	b2sums = 0cef03b86cf29118c9fd9f51e7a45299698667dd63bbcb9ed52dae7ff38475c3d2cd603ffbb08c2c387ef86f12a160dfb1586ccd6305f93121941a702572ae69
+	source = nextcloud-app-files-antivirus-6.0.2.tar.gz::https://github.com/nextcloud/files_antivirus/archive/refs/tags/v6.0.2.tar.gz
+	sha256sums = 8577f96de8359bbba314bf9c7fdac8edd0b60c0cf53264957a9f2f4e6039837d
+	b2sums = 9d8356b995bcb56855347fefbbb42139ab5eea9e81fcf356ce5404dd59da6e5b355d7e568e814704639463805f0dee9a02b49c1d70315f12b52c09a85b5ea92c
 
 pkgname = nextcloud-app-files-antivirus
