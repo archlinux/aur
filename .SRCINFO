@@ -1,0 +1,16 @@
+pkgbase = cadassistant-appimage
+	pkgdesc = Offline 3D CAD viewer and converter, free for personal and commercial use
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://www.opencascade.com/products/cad-assistant/
+	arch = x86_64
+	license = custom
+	noextract = cadassistant_1.6.0.appimage
+	options = !strip
+	source_x86_64 = cadassistant_1.6.0.appimage::https://www.opencascade.com/sites/default/files/private/occt/applications/cad_assistant_1.6.0_2021-10-05_lin64.appimage
+	sha256sums_x86_64 = 06dd8d810d5d5ad7312f152d2dcaff8d9311796edd33aa64314cbec74e80ce54
+
+pkgname = cadassistant-appimage
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
