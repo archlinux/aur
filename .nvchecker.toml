@@ -1,0 +1,5 @@
+[lukaj]
+source = "github"
+github = "adamws/lukaj"
+prefix = "v"
+use_max_tag = true

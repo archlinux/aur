@@ -1,0 +1,18 @@
+pkgbase = lukaj
+	pkgdesc = Interactive diff tool for SVG images
+	pkgver = 0.2.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/adamws/lukaj
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = cairo
+	depends = gcc-libs
+	depends = gdx-pixbuf2
+	depends = glibc
+	depends = pango
+	source = https://github.com/adamws/lukaj/archive/v0.2.0/lukaj-0.2.0.tar.gz
+	sha256sums = 0ad8546d0541df9e5f49d6760ad83a928a0c97abd77e62a33930c5735d8601c9
+
+pkgname = lukaj
