@@ -1,11 +1,11 @@
 pkgbase = srsran-project-git
 	pkgdesc = The srsRAN Project is a complete 5G RAN solution, featuring an ORAN-native CU/DU developed by (SRS)
-	pkgver = 23.10.1.r0.g374200d
+	pkgver = 24.10.0.r2325.g122a137
 	pkgrel = 1
 	url = https://www.srsran.com
 	arch = x86_64
 	arch = aarch64
-	license = AGPL3
+	license = AGPL-3.0-only
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git

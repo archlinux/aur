@@ -3,12 +3,12 @@
 pkgbase=srsran-project-git
 pkgname=$pkgbase
 _pkgname=srsRAN_Project
-pkgver=23.10.1.r0.g374200d
+pkgver=24.10.0.r2325.g122a137
 pkgrel=1
 pkgdesc='The srsRAN Project is a complete 5G RAN solution, featuring an ORAN-native CU/DU developed by (SRS)'
 arch=('x86_64' 'aarch64')
 url='https://www.srsran.com'
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=(
   'fftw'         # discrete Fourier transform
   'libelf'       # backtraces
@@ -55,6 +55,7 @@ build() {
     -S "${_pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_WERROR=False \
+    -DENABLE_MKL=False \
     -DCMAKE_BUILD_TYPE=Release
   make -C "build"
 }
