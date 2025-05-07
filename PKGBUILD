@@ -17,10 +17,14 @@ conflicts=("$_pkgname"
 replaces=()
 depends=("ffmpeg"
          "sdl2")
-_appimage="$_pkgname.AppImage"
-source=("https://github.com/azahar-emu/azahar/releases/download/2121/$_pkgname.AppImage")
+
+_source_main() {
+  _appimage="$_pkgname.AppImage"
+  source=("https://github.com/azahar-emu/azahar/releases/download/$_pkgver/$_pkgname.AppImage")
+  sha256sums=('SKIP')
+}
+
 options=("!strip")
-sha256sums=('SKIP')
 build() {
   # extract
   chmod +x "$_appimage"
@@ -58,3 +62,29 @@ END
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
 }
+
+_update_version() {
+  : ${_pkgver:=${pkgver%%.r*}}
+
+  if [[ "${_autoupdate::1}" != "t" ]]; then
+    return
+  fi
+
+  local _response _pkgver_new
+  _response=$(curl -Ssf "$url/releases.atom")
+
+  _pkgver_new=$(
+    printf '%s' "$_response" \
+      | grep '/releases/tag/' \
+      | sed -E 's@^.*/releases/tag/(.*)".*$@\1@; s@^v@@' \
+      | grep -Ev '[a-z]{2}' | sort -V | tail -1
+  )
+
+  # update _pkgver
+  if [ $(vercmp "${_pkgver_new:?}" "$_pkgver") -gt 0 ]; then
+    _pkgver="${_pkgver_new:?}"
+  fi
+}
+
+_update_version
+_source_main
