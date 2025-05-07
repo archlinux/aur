@@ -12,8 +12,8 @@ filter = '''
 	| .[0]
 	| (
 		if .type == "release" then .version
-		elif .type == "rc"    then "\(.majorVersion)rc+\(.build)"
-		else                       "\(.majorVersion)pre+\(.build)"
+		elif .type == "rc"    then "\(.version)rc+\(.build)"
+		else                       "\(.version)pre+\(.build)"
 		end
 	)
 '''
