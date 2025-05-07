@@ -1,6 +1,6 @@
 pkgbase = whitesur-gtk-theme-git
 	pkgdesc = MacOS Big Sur like theme for GNOME desktops
-	pkgver = 2024.09.02.r75.g2897ffcd
+	pkgver = 2025.04.03.r23.gf67de5ae
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
 	arch = any

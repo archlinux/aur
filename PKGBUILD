@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=whitesur-gtk-theme-git
-pkgver=2024.09.02.r75.g2897ffcd
+pkgver=2025.04.03.r23.gf67de5ae
 pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
@@ -33,7 +33,7 @@ package() {
 
   # See for more customization options:
   # https://github.com/vinceliuice/WhiteSur-gtk-theme#theres-so-many-customizations-you-can-do
-  ./install.sh --alt all --theme all --libadwaita --dest "$pkgdir/usr/share/themes"
+  ./install.sh --theme all --alt all --dest "$pkgdir/usr/share/themes"
 
   # Plank theme
   install -Dm644 src/other/plank/theme-Dark/* -t \
