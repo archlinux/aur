@@ -1,7 +1,7 @@
 pkgbase = stlsplit
 	pkgdesc = Split STL file to more files - one shell each
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/admesh/stlsplit/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = stlsplit
 	depends = gcc-libs
 	depends = admesh
 	source = https://github.com/admesh/stlsplit/archive/v1.2.tar.gz
+	source = premake5.lua
 	md5sums = 95e037365bf695405274620fe8edab5e
+	md5sums = f24db41786ab9318b54f041c825a5d47
 
 pkgname = stlsplit
-
