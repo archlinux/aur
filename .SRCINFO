@@ -1,0 +1,22 @@
+pkgbase = python-files-vc
+	pkgdesc = Python files.vc API wrapper and command line interface
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/Sasivarnasarma/Files-VC
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python>=3.7
+	depends = python-requests
+	depends = python-requests-toolbelt
+	depends = python-tabulate
+	provides = files-vc
+	provides = filesvc
+	options = !debug
+	source = files-vc.tar.gz::https://github.com/Sasivarnasarma/Files-VC/archive/refs/tags/v1.0.2.tar.gz
+	sha512sums = 8294b8206967f1b95c1abde8cae7104a6ef36cd80a7c5bd1bd6f456375105fb060ed0b71f2d3201a4a81f9ae6fee5784becafc55491e127b676a59b947749cf6
+
+pkgname = python-files-vc
