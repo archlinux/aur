@@ -1,0 +1,22 @@
+pkgbase = bitwig-control-panel
+	pkgdesc = Control Panel software for the Bitwig Connect audio interface
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.bitwig.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = libbsd
+	depends = libusb
+	depends = libxi
+	depends = xcb-util-wm
+	depends = xcb-imdkit
+	depends = xdg-utils
+	options = !strip
+	source = bitwig-connect-control-panel-1.0.deb::https://www.bitwig.com/dl/?id=600&os=installer_linux
+	sha256sums = 366da10032ceb6f976feb734bf6096c06661ee0f600d3249ac30b7803a606fac
+
+pkgname = bitwig-control-panel
