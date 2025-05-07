@@ -1,7 +1,7 @@
 #!/bin/bash
 
 progName="heidisql"
-progRealPath="/usr/share/$progName"
+progRealPath="/usr/share/$progName-wine"
 if [ -n "$HEIDISQL_HOME" ]; then
     progHome="$HEIDISQL_HOME"
 else
