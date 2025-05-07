@@ -2,4 +2,4 @@
 
 electron=/usr/bin/electron
 
-"$electron" /usr/share/clippy/app.asar
+NODE_PATH=/usr/share/clippy/node_modules "$electron" /usr/share/clippy/app.asar

@@ -45,6 +45,9 @@ package() {
 
     install -Dm 644 "$pkgname/out/Clippy-linux-x64/resources/app.asar" "$pkgdir/usr/share/clippy/app.asar"
 
+    mkdir -p "$pkgdir/usr/share/clippy/node_modules"
+    cp -r "$pkgname/node_modules/node-llama-cpp" "$pkgdir/usr/share/clippy/node_modules/"
+
     install -Dm 755 "clippy-launcher.sh" "$pkgdir/usr/bin/clippy"
     install -Dm 644 "clippy.desktop" "$pkgdir/usr/share/applications/clippy.desktop"
 
