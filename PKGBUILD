@@ -1,14 +1,12 @@
-# Maintainer: Unix Sheikh <aur at unixsheikh dot com>
-
 pkgname=salahtime
 pkgver=1.1.0
 pkgrel=1
-url="https://codeberg.org/unixsheikh/salahtime"
+url="https://codeberg.org/unixdigest/salahtime"
 pkgdesc="A small C program for displaying the Islamic prayer time for a specific city, defaults to Copenhagen in Denmark"
 arch=('any')
 license=('CC BY 4.0')
 
-source=("https://codeberg.org/unixsheikh/salahtime/archive/1.1.0.zip")
+source=("https://codeberg.org/unixdigest/salahtime/archive/1.1.0.zip")
 md5sums=('f55f7d6c4b36e0733539bf013154d0e8')
 
 build() {
