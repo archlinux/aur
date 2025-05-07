@@ -1,7 +1,7 @@
 pkgname=python-cadquery
 local _build_hash=c44978d60cee2d61bdadf4cb4498286b7034b4c6
 pkgver=2.4.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -30,6 +30,7 @@ python-wheel
 )
 
 source=("git+https://github.com/CadQuery/cadquery#commit=${_build_hash}")
+
 sha256sums=(SKIP)
 
 pkgver() {
@@ -39,7 +40,7 @@ pkgver() {
 
 prepare() {
   cd cadquery
-  curl --silent https://patch-diff.githubusercontent.com/raw/CadQuery/cadquery/pull/1589.patch | patch -p1
+  git cherry-pick --no-commit 4d1fbc2 717d70f 636f2bf
 }
 
 build() {
