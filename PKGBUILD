@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=softImpute
-_pkgver=1.4-1
+_pkgver=1.4-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Matrix Completion via Iterative Soft-Thresholded SVD"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a17b4aafe9961e6af8f7808829459e90')
-b2sums=('7284a66db4c96348a18b23603a56619fb5d8ad0bbf647446763b2d1910f22e1cd90d2b9f963472189c7d78fa0518b65ab58409359d68fe169b1b820099e5122b')
+md5sums=('0c55dbeb781905a0d97a49edb6ddbda8')
+b2sums=('521bd446cefd5e712f31eaa542447d1feef91985db01def6aae2796301dfbc9045f9d982b427a9034c8c0991a7bdbc3bcbc410328c5d4903c1e13984059886e1')
 
 build() {
   mkdir build
