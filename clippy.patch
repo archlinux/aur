@@ -1,0 +1,28 @@
+diff --git a/forge.config.ts b/forge.config.ts
+index 5f9a6db..aa43ad0 100644
+--- a/forge.config.ts
++++ b/forge.config.ts
+@@ -6,8 +6,8 @@ import os from "os";
+ import type { ForgeConfig } from "@electron-forge/shared-types";
+ import { MakerSquirrel } from "@electron-forge/maker-squirrel";
+ import { MakerZIP } from "@electron-forge/maker-zip";
+-import { MakerDeb } from "@electron-forge/maker-deb";
+-import { MakerRpm } from "@electron-forge/maker-rpm";
++// import { MakerDeb } from "@electron-forge/maker-deb";
++// import { MakerRpm } from "@electron-forge/maker-rpm";
+ import { VitePlugin } from "@electron-forge/plugin-vite";
+ import { FusesPlugin } from "@electron-forge/plugin-fuses";
+ import { FuseV1Options, FuseVersion } from "@electron/fuses";
+@@ -237,9 +237,9 @@ const config: ForgeConfig = {
+       }),
+       ["win32"],
+     ),
+-    new MakerZIP({}, ["darwin", "win32"]),
+-    new MakerRpm({}),
+-    new MakerDeb({}),
++    new MakerZIP({}, ["darwin", "win32", "linux"]),
++    // new MakerRpm({}),
++    // new MakerDeb({}),
+   ],
+   plugins: [
+     new VitePlugin({

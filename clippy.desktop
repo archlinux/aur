@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Clippy
+Comment=Clippy lets you run a variety of large language models (LLMs) locally on your computer while sticking with a user interface of the 1990s.
+Type=Application
+Exec=/usr/bin/clippy
+Icon=clippy
+StartupWMClass=clippy
