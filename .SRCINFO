@@ -1,7 +1,7 @@
 pkgbase = edor
 	pkgdesc = CUI text editor
 	pkgver = 1.x71
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/colin-i/edor
 	arch = any
 	license = 0BSD
