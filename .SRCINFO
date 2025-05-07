@@ -16,7 +16,7 @@ pkgbase = clippy-git
 	source = clippy.patch
 	sha256sums = SKIP
 	sha256sums = a8ade25f0b460a626d1a85e84280262b79455089835a669386da25f84b1b97bc
-	sha256sums = e54087cd955e20be54b58a24735bbf2eac4da0e819cb7bf46080713d0328c9fc
+	sha256sums = 143f5ca84f8496055b33e9fb03dff24edb948a5e144cefed4cf6fe3dbf6e1eb4
 	sha256sums = 79f630394bd05b6860b6ce23c3704be245d7ec50c315fa241198a8b11dfccca5
 
 pkgname = clippy-git
