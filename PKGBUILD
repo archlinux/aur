@@ -4,8 +4,8 @@
 _pkgname=vertd
 
 pkgname=vertd-git
-pkgver=r70.743f69b
-pkgrel=2
+pkgver=r72.7a4d0ee
+pkgrel=1
 pkgdesc="VERT's solution to crappy video conversion services."
 arch=(x86_64)
 url="https://github.com/VERT-sh/vertd"
