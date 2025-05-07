@@ -5,12 +5,12 @@
 
 pkgname=swift-bin
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64' 'aarch64')
 url="https://www.swift.org/"
 license=('apache')
-depends=('util-linux-libs' 'libxml2' 'ncurses')
+depends=('util-linux-libs' 'libxml2-legacy' 'ncurses')
 makedepends=('patchelf')
 optdepends=('python39: required for REPL')
 options=('!strip')
