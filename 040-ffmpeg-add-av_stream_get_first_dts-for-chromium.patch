@@ -1,6 +1,6 @@
 --- a/libavformat/avformat.h
 +++ b/libavformat/avformat.h
-@@ -1215,6 +1215,10 @@ typedef struct AVStreamGroup {
+@@ -1180,6 +1180,10 @@ typedef struct AVStreamGroup {
  
  struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
  
@@ -13,7 +13,7 @@
  /**
 --- a/libavformat/utils.c
 +++ b/libavformat/utils.c
-@@ -44,6 +44,13 @@
+@@ -47,6 +47,13 @@
   * various utility functions for use within FFmpeg
   */
  

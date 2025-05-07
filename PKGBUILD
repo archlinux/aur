@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=7.2.r119073.g2657e1679e
+pkgver=7.2.r119449.g1b643e3f65
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -95,22 +95,30 @@ makedepends=(
   vapoursynth
   vulkan-headers
 )
-optdepends=('avisynthplus: for AviSynthPlus support'
-            'frei0r-plugins: for Frei0r video effects support'
-            'ladspa: for LADSPA filters'
-            'nvidia-utils: for NVIDIA NVDEC/NVENC support'
-            'vapoursynth: for VapourSynth demuxer support'
-            'vpl-runtime: for Intel Quick Sync Video'
+optdepends=(
+  'avisynthplus: for AviSynthPlus support'
+  'frei0r-plugins: for Frei0r video effects support'
+  'ladspa: for LADSPA filters'
+  'nvidia-utils: for NVIDIA NVDEC/NVENC support'
+  'vapoursynth: for VapourSynth demuxer support'
+  'vpl-runtime: for Intel Quick Sync Video'
 )
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
-          'ffmpeg')
+provides=(
+  'ffmpeg'
+  'libavcodec.so'
+  'libavdevice.so'
+  'libavfilter.so'
+  'libavformat.so'
+  'libavutil.so'
+  'libswresample.so'
+  'libswscale.so'
+)
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-segfault-with-avisynthplus.patch')
 sha256sums=('SKIP'
-            '4ce15cce0b78a6b6f0124a7474ca00a31205310f7230f4603b47b597ab2e640d'
+            '391ce03d5e205210c5f136ee7fe7fd84bb420ff423462ed2123b63a19052debd'
             '26419f819d1f3e4d0534995b73d05a8195bc7c892b74c37c3880085af027515b')
 
 prepare() {
