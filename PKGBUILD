@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism-bin
-pkgver="250321"
-_commit="57590c48b"
+pkgver="250426"
+_commit="27ec7a128"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
@@ -12,7 +12,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/photoprism/photoprism"
 license=('AGPL-3.0-only')
 groups=()
-depends=(icu glib2 glibc gcc-libs libvips)
+depends=(icu glib2 glibc gcc-libs libvips tensorflow)
 makedepends=()
 checkdepends=()
 optdepends=("darktable: for RAW to JPEG conversion"
@@ -41,8 +41,8 @@ sha256sums=('18fb59d0ee09f6b9d95666e8c6fdd1b151fae985c18befb11b86e0fc1884b7d7'
             'ec6f438c9818f982fb2aaa1895a8b07abb41a3c2befd1c3baa2fecbc2d6cc721'
             '76de44acbdfd3f818b9549b77daf187fb740ceccd3c01d42d8308d5edcf49d6c'
             'ca4bfbddf0a550f215f28e31de56eb9ac60777f65aa7b89433155aa7998388e8')
-sha256sums_x86_64=('76b213cb8eb4bb607a2f0e940d5bc79e418b8d6bc58e5b59dff3372d85c6afef')
-sha256sums_aarch64=('25ea875adba236773d4123a9947a6f72106e759748d6f796edbaddddd77e42dc')
+sha256sums_x86_64=('8d113bf3ee048e33bb426df4f8125d37dafd480ee51c66a4f67d79714e21c290')
+sha256sums_aarch64=('14c9bb7368d6aa56c9c05cb58e6bbdb4fad1616b9f21ff03fc7f147a3e82323e')
 noextract=()
 validpgpkeys=()
 
@@ -59,8 +59,6 @@ package() {
 	mkdir -p "$pkgdir/var/lib/photoprism/"
 
 	install -Dm 0755 ./bin/photoprism "$pkgdir/usr/bin/photoprism"
-	install -Dm 0755 ./lib/libtensorflow.so "$pkgdir/usr/lib/libtensorflow.so"
-	install -Dm 0755 ./lib/libtensorflow_framework.so "$pkgdir/usr/lib/libtensorflow_framework.so"
 	cp -r ./assets/ "$pkgdir/var/lib/photoprism/"
 
 	find "$pkgdir/var/lib/photoprism/assets/" -type d -exec chmod +x {} \;
