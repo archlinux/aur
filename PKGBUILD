@@ -2,7 +2,7 @@
 
 pkgname=nginx-mod-length-hiding-filter
 pkgver=1.1.1
-pkgrel=14
+pkgrel=15
 
 _modname=nginx-length-hiding-filter-module
 
@@ -10,6 +10,7 @@ pkgdesc='Nginx module to append random generated string to the end of HTML respo
 arch=('x86_64' 'armv7h' 'aarch64')
 depends=('nginx')
 makedepends=("nginx-src")
+backup=(etc/nginx/modules.d/80-length-hiding-filter.conf)
 url='https://github.com/nulab/nginx-length-hiding-filter-module'
 license=('MIT')
 
@@ -38,5 +39,11 @@ package() {
 	cd build/objs
 	for mod in *.so; do
 		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+	done
+
+	install -dm0755 "$pkgdir"/etc/nginx/modules.d
+	cd $pkgdir
+	for mod in usr/lib/nginx/modules/*.so; do
+		printf 'load_module "/%s";\n' "${mod}" >> "$pkgdir/etc/nginx/modules.d/80-length-hiding-filter.conf"
 	done
 }
