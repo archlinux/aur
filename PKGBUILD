@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=freac-git
-pkgver=1.1.7.r64.8360f601
+pkgver=1.1.7.r108.df59fd7
 pkgrel=1
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('x86_64')
@@ -22,7 +22,10 @@ depends=(
   'opus'
   'speex'
 )
-makedepends=('git')
+makedepends=(
+  'desktop-file-utils'
+  'git'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/enzo1982/freac.git')
@@ -30,12 +33,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  git describe --long --tags --exclude continuous --abbrev=7 | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${pkgname%-git}"
   find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
+
+  # Set StartupWMClass
+  desktop-file-edit --set-key=StartupWMClass --set-value="fre:ac" \
+    "metadata/org.${pkgname%-git}.${pkgname%-git}.desktop"
 }
 
 build() {
