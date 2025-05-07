@@ -8,7 +8,14 @@ pkgdesc="A component library used by the fre:ac audio converter"
 arch=('x86_64')
 url="https://github.com/enzo1982/BoCA"
 license=('GPL-2.0-or-later')
-depends=('alsa-lib' 'expat' 'libcdio-paranoia' 'libpulse' 'smooth' 'uriparser')
+depends=(
+  'alsa-lib'
+  'expat'
+  'libcdio-paranoia'
+  'libpulse'
+  'smooth'
+  'uriparser'
+)
 provides=('libboca-1.0.so=3' 'freac_cdk')
 conflicts=('freac_cdk')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
