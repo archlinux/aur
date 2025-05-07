@@ -1,7 +1,7 @@
 pkgbase = sudo-rs-symlink
 	pkgdesc = Symlinks to sudo from sudo-rs
-	pkgver = 0.2.5
-	pkgrel = 4
+	pkgver = 0.2.6
+	pkgrel = 1
 	arch = any
 	depends = sudo-rs
 	provides = sudo
