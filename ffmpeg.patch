@@ -1,6 +1,6 @@
---- freeimage.cpp.old	2023-10-10 17:44:29.522212542 -0300
-+++ freeimage.cpp	2023-10-10 17:47:32.768202551 -0300
-@@ -209,11 +209,7 @@
+--- a/src/MEGASync/mega/src/gfx/freeimage.cpp
++++ b/src/MEGASync/mega/src/gfx/freeimage.cpp
+@@ -484,12 +484,6 @@ bool GfxProviderFreeImage::readbitmapFreeimage(const LocalPath& imagePath, int s
  
  #ifdef HAVE_FFMPEG
  
@@ -9,20 +9,11 @@
 -#else
 -#define CAP_TRUNCATED CODEC_CAP_TRUNCATED
 -#endif
-+#define CAP_TRUNCATED 0
- 
+-
  const char *GfxProviderFreeImage::supportedformatsFfmpeg()
  {
-@@ -313,7 +309,7 @@
- 
-     // Find decoder for video stream
-     AVCodecID codecId = codecParm->codec_id;
--    auto decoder = avcodec_find_decoder(codecId);
-+    const AVCodec* decoder = avcodec_find_decoder(codecId);
-     if (!decoder)
-     {
-         LOG_warn << "Codec not found: " << codecId;
-@@ -330,10 +326,6 @@
+     return  ".264.265.3g2.3gp.3gpa.3gpp.3gpp2.mp3"
+@@ -592,10 +586,6 @@ bool GfxProviderFreeImage::readbitmapFfmpeg(const LocalPath& imagePath, int /*si
  
      // Force seeking to key frames
      formatContext->seek2any = false;

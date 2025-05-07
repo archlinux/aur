@@ -28,7 +28,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
 sha256sums=('195d6e4a90d2f1ab63c7793b74dabacda66df17a82e96f20f594dcbb413f1e59'
             'SKIP'
             '004df095bcd6b15b0f69dd69219dc15c27ee7b46ade0c9ab7271b46b2ad6ca13'
-            'feef2f0ff3c0f4ad29fd882fddfca038e8f6e4158fa8dc9af2248d2f83e1a083')
+            '4f7a31567de1b7c3114efbbb208bdf93b80a5a2c4fd290868c5212b8312c500d')
 
 prepare() {
     git -C "$srcdir/MEGAsync" config submodule.src/MEGASync/mega.url "$srcdir/meganz-sdk"
