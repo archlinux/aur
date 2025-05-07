@@ -4,10 +4,11 @@
 # Contributor: Dino Hensen <dino.hensen@gmail.com>
 # Contributor: Grzegorz Kozub <grzegorz.kozub@gmail.com>
 # Contributor: tee < teeaur at duck dot com >
+# Contributor: Jonathan Basniak <jon@bluedreamers.com>
 
 pkgname=nosql-workbench
 pkgver=3.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="NoSQL Workbench for Amazon DynamoDB"
 arch=(x86_64)
 url="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html"
@@ -17,9 +18,9 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://dy9cqqaswpltd.cloudfront.
 "LICENSE::https://aws.amazon.com/nosql/nosql-workbench-license/"
 "nosql-workbench.png"
 )
-sha512sums_x86_64=('e309cdf2128e774a8bebf9dce8c8b86dd0b665e18657486de55dc33a1db5fcab26bff84d64d302298cb0ea62af9df5d4ed6d2995e715f80505d698625acc967b'
-                   'SKIP'
-                   'SKIP')
+sha256sums_x86_64=('adaebcf664b062be82f43879a3643ed4f5dabfcd6ae766e7ed545ffb9acc9861'
+                   'b8eb453d600dfcdd46c05943ecc01c0d8362f093556157387cf89655a18e3858'
+                   'b9a53557a32a89fcd0695730bc56aa9894181e1e6f6aa458850941071ec68393')
 # https://docs.appimage.org/user-guide/troubleshooting/fuse.html#setting-up-fuse-on-arch-linux
 depends=('fuse2')
 makedepends=('gendesk')

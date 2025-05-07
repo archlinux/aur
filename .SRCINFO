@@ -11,7 +11,7 @@ pkgbase = nosql-workbench
 	source_x86_64 = nosql-workbench-3.13.5.AppImage::https://dy9cqqaswpltd.cloudfront.net/NoSQL_Workbench.AppImage
 	source_x86_64 = LICENSE::https://aws.amazon.com/nosql/nosql-workbench-license/
 	source_x86_64 = nosql-workbench.png
-	sha512sums_x86_64 = e309cdf2128e774a8bebf9dce8c8b86dd0b665e18657486de55dc33a1db5fcab26bff84d64d302298cb0ea62af9df5d4ed6d2995e715f80505d698625acc967b
+	sha512sums_x86_64 = adaebcf664b062be82f43879a3643ed4f5dabfcd6ae766e7ed545ffb9acc9861
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = SKIP
 
