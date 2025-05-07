@@ -1,7 +1,7 @@
 # Maintainer: haxibami <contact at haxibami dot net>
 
 pkgname=ctrld-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A highly configurable, multi-protocol DNS forwarding proxy"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "ctrld.service"
   "ctrld.toml"
 )
-sha256sums=('fea9631442d73515662652abaa93710ebc6cbc06d28733de0aeed426e76430c7'
+sha256sums=('604d7fcb8b246776ff745b20410831c593f1e7a5265404fa15076b833f8e433f'
             '0b1dd36bc9706f88949de821d84604cbc9a2534cd2f627ef5303bfc962af72cd'
             '40328c166a329b47072593998170544084725a47e20989be242bbc137d91cd0a')
 
