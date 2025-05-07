@@ -1,7 +1,9 @@
-pkg/
-src/
-*.tar.xz
-*.tar.gz
-*.tar.bz2
-*.zip
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
 !.nvchecker.toml
+!LICENSE
