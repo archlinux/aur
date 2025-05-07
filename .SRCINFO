@@ -1,0 +1,21 @@
+pkgbase = catnip-visualizer-git
+	pkgdesc = A terminal audio visualizer
+	pkgver = r252.d1aba19
+	pkgrel = 1
+	url = https://github.com/noriah/catnip
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = alsa-lib
+	optdepends = portaudio: for PortAudio support
+	optdepends = fftw: for FFTW3 support
+	provides = catnip
+	conflicts = catnip
+	source = git+https://github.com/noriah/catnip.git
+	sha256sums = SKIP
+
+pkgname = catnip-visualizer-git
