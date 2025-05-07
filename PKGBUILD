@@ -2,8 +2,8 @@
 
 pkgname=python-pykdebugparser
 _pkgname="${pkgname#python-}"
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 pkgdesc='Kdebug events and ktraces parser'
 arch=('any')
 url='https://github.com/matan1008/pykdebugparser'
@@ -12,7 +12,7 @@ depends=('python' 'python-construct' 'python-pygments' 'python-click' 'python-te
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2c4e4e00ca2b1475bb0207ebcbcfef6db525e9fca949c9e20aaebf79ec2bc352')
+sha256sums=('d48d0123a0ce3c7ac82f9ff343f921dd95909eb6146bae38f2ba91a4895a5c8a')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
