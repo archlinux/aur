@@ -11,7 +11,10 @@ url="https://github.com/element-hq/synapse"
 arch=('x86_64')
 license=('AGPL-3.0-or-later')
 depends=(
+	'gcc-libs'
+	'glibc'
 	'libwebp'
+	'python'
 	'python-jsonschema'
 	'python-immutabledict'
 	'python-unpaddedbase64'
@@ -101,7 +104,7 @@ sha256sums=('SKIP'
             'c9657c201ad89985c8c915bfa0ea7517a412071736b4d9545d8f6474fddc44e2'
             'aadfdd78fe73e6eb325ee4299b8db8b97bfa2f4e7df953aa8477f442598a7ec5'
             '65588c8c64dfb84cab831cd8d028a295d753cf7322dd63053e8488466047b45f'
-            'd8e6b2a43a8a7d8f09c643f32e789a7ffeeb2d20bb07ee88ddc6923e1ab3b0e6')
+            '086a7e95235afac128df9d2ea981e3c50d08e08c9132087063bb354bc9063d93')
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
 validpgpkeys=('02450A9EDDFEE3E0C730B786A7E4A57880C3A4A9'
