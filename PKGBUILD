@@ -1,7 +1,7 @@
 # Maintainer: Paul Irofti <paul@irofti.net>
 _name=tsnet
 pkgname="python-$_name"
-pkgver=0.2.4
+pkgver=0.3.1
 pkgrel=1
 
 pkgdesc="transient simulation in water networks using Method of Characteristics"
@@ -14,7 +14,7 @@ depends=(python python-numpy python-scipy python-networkx python-pandas
 makedepends=(python-setuptools python-pytest-runner)
 
 source=("https://files.pythonhosted.org/packages/source/t/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('b53785741776818f0ce7c206607251bb68a93ba07b5f3cb5132739ad4a93dc22')
+sha256sums=('116e622252285b1a8110f457ea4f3ad6d6a986edad3df0a79db69cbf08d79b3c')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
