@@ -2,8 +2,8 @@
 # Contributor: Ersei <contact at ersei dot net>
 # Contributor: Paul <paul@mrarm.io>
 pkgname=mcpelauncher-ui
-pkgver=1.2.0
-pkgrel=7
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Minecraft: PE Linux launcher UI"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-ui-manifest"
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'ninja' 'qt6-tools' 'clang')
 depends=('qt6-base' 'qt6-webengine' 'qt6-declarative' 'qt6-svg' 'libzip' 'protobuf' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'mcpelauncher-linux' 'zlib' 'curl' 'glibc' 'qt6-webchannel' 'gcc-libs' 'openssl'
 	 'hicolor-icon-theme' 'abseil-cpp')
 optdepends=('mcpelauncher-msa-ui-qt: Microsoft authentication for version before 1.16.1X')
-_commit=5bb980e580c0ea0c617d65fb6b2536805bd85110 # qt6 branch
+_commit=1eaf570482161715a1d71a2a2541ca27087bc8ac # qt6 branch
 source=(
   "git+https://github.com/minecraft-linux/mcpelauncher-ui-manifest.git#commit=$_commit"
   'git+https://github.com/MCMrARM/axml-parser.git'
@@ -23,9 +23,8 @@ source=(
   'git+https://github.com/minecraft-linux/mcpelauncher-common.git'
   'git+https://github.com/minecraft-linux/mcpelauncher-ui-qt.git'
   'git+https://github.com/minecraft-linux/playdl-signin-ui-qt.git'
-  'qt6-6.9.0.patch::https://github.com/minecraft-linux/mcpelauncher-ui-qt/commit/d0af5088d42c5c9e04fe7f5b32fcd2896558eb69.diff'
 )
-sha256sums=('23582c5c64a457bd0a29a063c8de94ee64ff116344f5890ef86d5aba2c8bf2c1'
+sha256sums=('d5443636d1d6e8d4850e25b46f03e537c511f7bbd5131ecb57e10023d49f7fb6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -33,8 +32,7 @@ sha256sums=('23582c5c64a457bd0a29a063c8de94ee64ff116344f5890ef86d5aba2c8bf2c1'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '2c647785043c9fc238fccda2ea3266766797676428f32d3888d8fcc48633fa1c')
+            'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname-manifest"
@@ -44,8 +42,6 @@ prepare() {
 	git config submodule.$submodule.url "$srcdir/$submodule"
   done
   git -c protocol.file.allow=always submodule update
-  cd "$srcdir/$pkgname-manifest/mcpelauncher-ui-qt"
-  patch -p1 < "$srcdir/qt6-6.9.0.patch"
 }
 build() {
   cd "$srcdir"
