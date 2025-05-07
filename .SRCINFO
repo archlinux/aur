@@ -1,0 +1,16 @@
+pkgbase = serverseekerv2-git
+	pkgdesc = Blazingly fast Minecraft server scanner written in Rust 🦀 🚀
+	pkgver = r117.e4cdb04
+	pkgrel = 1
+	url = https://git.funtimes909.xyz/ServerSeekerV2/ServerSeekerV2
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = rust
+	depends = cargo
+	provides = serverseekerv2
+	conflicts = serverseekerv2
+	source = serverseekerv2::git+https://git.funtimes909.xyz/ServerSeekerV2/ServerSeekerV2.git
+	sha256sums = SKIP
+
+pkgname = serverseekerv2-git
