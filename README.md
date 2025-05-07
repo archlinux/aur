@@ -134,6 +134,11 @@ ngpt --role-config create json_generator
 # Use a custom role for specific tasks
 ngpt --role json_generator "Generate user data with name, email, and address" 
 
+# Use a role from the Role Gallery (first create it, then use it)
+ngpt --role-config create sql_expert
+# Paste the SQL Expert role from https://nazdridoy.github.io/ngpt/examples/role-gallery/
+ngpt --role sql_expert "Write a query to find all users who made a purchase in the last 30 days"
+
 # Rewrite text to improve quality while preserving tone and meaning
 echo "your text" | ngpt -r
 
@@ -326,6 +331,8 @@ Key documentation sections:
 - [Installation Guide](https://nazdridoy.github.io/ngpt/installation/)
 - [CLI Usage Guide](https://nazdridoy.github.io/ngpt/usage/cli_usage/)
 - [Configuration Guide](https://nazdridoy.github.io/ngpt/configuration/)
+- [Custom Roles Guide](https://nazdridoy.github.io/ngpt/usage/roles/)
+- [Role Gallery](https://nazdridoy.github.io/ngpt/examples/role-gallery/)
 - [Examples & Tutorials](https://nazdridoy.github.io/ngpt/examples/basic/)
 - [Git Commit Message Guide](https://nazdridoy.github.io/ngpt/usage/gitcommsg/)
 
@@ -606,7 +613,7 @@ ngpt --role json_generator "Generate random user profile data"
 }
 ```
 
-Custom roles let you define specialized AI personas that you can reuse across different prompts, making it easy to get consistent responses for specific tasks.
+Custom roles allow you to create reusable AI personas for consistent responses across various prompts. For more details, see the [Custom Roles Guide](https://nazdridoy.github.io/ngpt/usage/roles/) and check out the [Role Gallery](https://nazdridoy.github.io/ngpt/examples/role-gallery/) for ready-to-use roles.
 
 #### Web Search Integration
 
