@@ -1,5 +1,5 @@
 pkgbase = hedgemodmanager-git
-	pkgdesc = (UNOFFICIAL PACKAGE) Mod manager used to Mod games created with the Hedgehog Engine
+	pkgdesc = (UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC.
 	pkgver = 8.0.0.beta4.r20
 	pkgrel = 1
 	url = https://github.com/hedge-dev/HedgeModManager
@@ -9,7 +9,7 @@ pkgbase = hedgemodmanager-git
 	makedepends = git
 	depends = dotnet-runtime-8.0
 	conflicts = hedgemodmanager-bin
-	source = hedgemodmanager::git+http://github.com/hedge-dev/HedgeModManager.git
+	source = hedgemodmanager::git+https://github.com/hedge-dev/HedgeModManager.git
 	sha256sums = SKIP
 
 pkgname = hedgemodmanager-git
