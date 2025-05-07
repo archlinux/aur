@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2120.rc1.r63.g71c9c0c
+pkgver=2121.r2.gbeacac3
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -120,6 +120,7 @@ build() {
 		-D DISABLE_SYSTEM_XBYAK=ON
 		-D ENABLE_LTO=OFF
 		-D ENABLE_QT_TRANSLATION=ON
+		-D ENABLE_ROOM_STANDALONE=OFF
 		-D ENABLE_TESTS="$CHECKFUNC"
 		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
 		-D USE_DISCORD_PRESENCE=ON
