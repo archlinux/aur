@@ -1,7 +1,7 @@
 pkgbase = r-bc3net
 	pkgdesc = Gene Regulatory Network Inference with Bc3net
-	pkgver = 1.0.4
-	pkgrel = 4
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=bc3net
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = r-bc3net
 	depends = r-c3net
 	depends = r-igraph
 	depends = r-infotheo
-	source = https://cran.r-project.org/src/contrib/bc3net_1.0.4.tar.gz
-	sha256sums = 506ca8d5bab1e915bda38014b26a518df103cb4e64211ecf81e1e8b04183af95
+	source = https://cran.r-project.org/src/contrib/bc3net_1.0.5.tar.gz
+	sha256sums = 56e097d82569d9cefe30d9c255542dde201b1ac0919eb6f979cbb8be53968b90
 
 pkgname = r-bc3net
