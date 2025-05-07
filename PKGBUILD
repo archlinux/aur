@@ -3,9 +3,9 @@
 
 _pkgbase=rtw89
 pkgname=rtw89-dkms-git
-pkgver=r1094.67a66dd
+pkgver=r1168.e6e2c5a
 pkgrel=1
-pkgdesc="Driver for Realtek 802.11ax wireless chips"
+pkgdesc="Driver for Realtek Wi-Fi 6/6E/7 adapters"
 arch=('any')
 url="https://github.com/lwfinger/rtw89"
 license=('GPL2')
@@ -28,6 +28,6 @@ pkgver() {
 package() {
 	cd "${srcdir}"/${_pkgbase}
 	install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile dkms.conf
-	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d blacklist-rtw89.conf
+	install -Dm 644 -t "${pkgdir}"/etc/modprobe.d rtw89.conf
  	sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
