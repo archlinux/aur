@@ -44,7 +44,6 @@ check()
 {
     _compile "ON"
     ctest --output-on-failure --test-dir "${srcdir}"/"${pkgname}"-"${pkgver}"/build/
-    "${srcdir}"/"${pkgname}"-"${pkgver}"/build/test/test_message
     _compile "OFF"
 }
 
