@@ -9,7 +9,7 @@ license=("MIT")
 url="https://github.com/Askannz/optimus-manager"
 
 epoch=2
-pkgver=785.python3.13
+pkgver=791.python3.13
 pkgrel=1
 arch=("any")
 
@@ -136,6 +136,7 @@ PackageFiles () {
 	PackageEtc
 	PackageLicense
 	PackageLoginManagers
+	PackageManual
 	PackageModprobe
 	PackageProfile
 	PackageSystemd
@@ -191,6 +192,13 @@ PackageLoginManagers () {
 }
 
 
+PackageManual () {
+	install -Dm644 \
+		"${srcdir}/optimus-manager/optimus-manager.1" \
+		"${pkgdir}/usr/share/man/man1/optimus-manager.1"
+}
+
+
 PackageModprobe () {
 	install -Dm644 \
 		"${srcdir}/optimus-manager/modules/optimus-manager.conf" \
@@ -215,10 +223,6 @@ PackageSystemd () {
 	install -Dm755 \
 		"systemd/suspend/optimus-manager.py" \
 		"${pkgdir}/usr/lib/systemd/system-sleep/optimus-manager.py"
-
-	install -Dm644 \
-		"systemd/logind/10-optimus-manager.conf" \
-		"${pkgdir}/usr/lib/systemd/logind.conf.d/10-optimus-manager.conf"
 }
 
 
