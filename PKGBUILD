@@ -3,7 +3,7 @@
 _target=riscv64-elf
 _pkgname=picolibc
 pkgname=$_target-$_pkgname
-pkgver=1.8.8
+pkgver=1.8.10
 pkgrel=1
 pkgdesc='C library designed for embedded 32- and 64- bit systems'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url='https://github.com/picolibc/picolibc'
 license=('BSD')
 makedepends=("$_target-gcc" 'meson')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b7acd0094b3c2c265e0f41bfa9d29ab85a47e1a02d65cf4929b1886158e8c261')
+sha256sums=('d1fc2a20f217472f8d9da084a519a25678e8d91852a41c7f3f1840d3508f7163')
 options=(!strip !buildflags)
 
 prepare() {
