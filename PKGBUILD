@@ -2,7 +2,7 @@
 
 pkgname=crun-krun
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully featured OCI runtime and C library for running containers. Enabled krun support for secure/confidential containers in VMs."
 url="https://github.com/containers/crun"
 license=('LGPL')
@@ -22,8 +22,8 @@ build() {
         --prefix=/usr \
         --enable-shared \
         --enable-dynamic \
-        --with-libkrun \
-        --with-python-bindings
+        --with-libkrun
+        #--with-python-bindings
     make
 }
 
