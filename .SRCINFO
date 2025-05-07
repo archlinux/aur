@@ -1,0 +1,18 @@
+pkgbase = otadump
+	pkgdesc = Extract partitions from Android OTA files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/crazystylus/otadump
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = libbz2.so
+	depends = liblzma.so
+	source = https://github.com/crazystylus/otadump/archive/0.1.2/otadump-0.1.2.tar.gz
+	sha256sums = 0546b131bf1514e7ba527edff9f4c03018cdffba04898282ac9a531750aaf403
+
+pkgname = otadump
