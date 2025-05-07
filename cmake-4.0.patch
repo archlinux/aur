@@ -1,0 +1,97 @@
+From 7f164bda96341272be385fa1359a26f97eb9d2b4 Mon Sep 17 00:00:00 2001
+From: Yonas Habteab <yonas.habteab@icinga.com>
+Date: Thu, 3 Apr 2025 10:01:43 +0200
+Subject: [PATCH 1/3] Raise cmake minimum required version to `3.8...3.17`
+
+CMake version `< 3.5` is no longer supported, so the new CMake minimum
+policy version is set to `3.8` to support C++17 unconditionally. After
+checking all the policies that might affect Icinga 2 in any way, CMake
+`3.17` is used as a max supported CMake policy. Anything above that may
+work but we didn't explicitly verify the policies introduced with CMake
+3.18 and later and may or may not affect Icinga 2.
+---
+ CMakeLists.txt | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6041840d6b..b658459722 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,17 +1,12 @@
+ # Icinga 2 | (c) 2012 Icinga GmbH | GPLv2+
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++# CMake 3.8 is required, CMake policy compatibility was verified up to 3.17.
++cmake_minimum_required(VERSION 3.8...3.17)
+ set(BOOST_MIN_VERSION "1.66.0")
+ 
+-if("${CMAKE_VERSION}" VERSION_LESS "3.8") # SLES 12.5
+-  if(NOT MSVC)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+-  endif()
+-else()
+-  set(CMAKE_CXX_STANDARD 17)
+-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-  set(CMAKE_CXX_EXTENSIONS OFF)
+-endif()
++set(CMAKE_CXX_STANDARD 17)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+ project(icinga2)
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+From 28c61c904a74db5181a8cc1f3a81fad544d7eab7 Mon Sep 17 00:00:00 2001
+From: Yonas Habteab <yonas.habteab@icinga.com>
+Date: Thu, 3 Apr 2025 16:43:31 +0200
+Subject: [PATCH 2/3] Fix CMake doesn't export symbols of executables anymore
+
+CMake 3.4 introduced a new policy [^1] which prevents from automatically
+adding the compiler flags needed for exporting the symbols of the
+executables and libraries without the `ENABLE_EXPORTS` property. So, by
+defining this variable, CMake will restore the previous behaviour by
+automatically adding the `ENABLE_EXPORTS` properties to all targets.
+
+[1]: https://cmake.org/cmake/help/latest/policy/CMP0065.html
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b658459722..0231315540 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -18,6 +18,10 @@ if(NOT CMAKE_BUILD_TYPE)
+     FORCE)
+ endif()
+ 
++# Include symbols in executables so that function names can be printed in stack traces, for example in crash dumps.
++set(CMAKE_ENABLE_EXPORTS ON) # Added in CMake 3.4
++set(CMAKE_EXECUTABLE_ENABLE_EXPORTS ON) # Added in CMake 3.27 and supersedes the above one.
++
+ if(WIN32)
+   set(ICINGA2_MASTER OFF)
+ else()
+
+From cff8c60ba95918c810e5d513cacbc74458acd647 Mon Sep 17 00:00:00 2001
+From: Yonas Habteab <yonas.habteab@icinga.com>
+Date: Thu, 3 Apr 2025 15:56:22 +0200
+Subject: [PATCH 3/3] Drop superfluous `MACOSX_RPATH` definition
+
+It's on by default since CMake version `3.0`
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0231315540..fce41f4119 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -234,7 +234,6 @@ if(WIN32)
+   list(APPEND base_DEPS ws2_32 dbghelp shlwapi msi)
+ endif()
+ 
+-set(CMAKE_MACOSX_RPATH 1)
+ set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH};${CMAKE_INSTALL_FULL_LIBDIR}/icinga2")
+ 
+ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
