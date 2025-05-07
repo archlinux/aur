@@ -2,17 +2,17 @@
 # Previous maintainer: The-Repo-Club <The-Repo-Club@github.com>
 
 pkgname=qt6gtk2-git
-pkgver=0.2.r2.g2a21a8a
+pkgver=0.4.r2.gd7c14be
 pkgrel=1
 pkgdesc="GTK+2.0 integration plugins for Qt6"
 arch=('i686' 'x86_64')
-url="https://github.com/trialuser02/qt6gtk2"
-license=('GPL')
+url="https://www.opencode.net/trialuser/qt6gtk2"
+license=('GPL-2.0-or-later')
 depends=('gcc-libs' 'gtk2' 'libx11' 'qt6-base')
 makedepends=('git')
 provides=("qt6gtk2=$pkgver")
 conflicts=('qt6gtk2')
-source=("git+https://github.com/trialuser02/qt6gtk2.git")
+source=("git+https://www.opencode.net/trialuser/qt6gtk2.git")
 sha256sums=('SKIP')
 
 
