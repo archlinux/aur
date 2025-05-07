@@ -1,7 +1,7 @@
 pkgbase = nosql-workbench
 	pkgdesc = NoSQL Workbench for Amazon DynamoDB
 	pkgver = 3.13.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.html
 	arch = x86_64
 	license = custom:NoSQL Workbench Local License Agreement
