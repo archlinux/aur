@@ -1,7 +1,7 @@
 pkgbase = gestimag
 	pkgdesc = Gestimag ERP CRM: modern software package to manage your company
 	pkgver = 0.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://adrien.digitaledeluxe.fr/gestimag/
 	install = gestimag.install
 	arch = any
@@ -15,10 +15,13 @@ pkgbase = gestimag
 	options = !strip
 	options = emptydirs
 	backup = etc/gestimag/conf.php
-	source = git+https://github.com/adrienb39/gestimag#branch=main
+	source = https://github.com/adrienb39/gestimag/archive/refs/tags/v0.0.1-5.tar.gz
 	source = gestimag.conf
 	source = nginx.conf.example
 	source = apache.conf.example
-	b2sums = SKIP
+	sha256sums = fecbe47cb1c0ff8ee7521b41d10e4f1e714ad7e4e8deb1afde08f7f9bd980a10
+	sha256sums = bb0b1cbb046d2b8861698024e18ca31e2a83805cb350bff749b35ca2dc74b73f
+	sha256sums = 1aa7c3705d5aa8c5c3ba7ed655214d652a3ad086df355c193f98b77384a83793
+	sha256sums = eaaa6099895e9ae6abfa619ca1b0f3aeabc5b8ac30651bc2d66b644ede4dac5c
 
 pkgname = gestimag
