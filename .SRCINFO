@@ -28,7 +28,7 @@ pkgbase = sparkle-git
 	options = !lto
 	source = sparkle.sh
 	source = git+https://github.com/xishang0128/sparkle.git
-	sha256sums = 50470afa461385fdbba54e099b26959772759d65c607212176d28ca650ef4caa
+	sha256sums = 03eb601fe981716e90f9170eeb36a2e7938587f05a1bdaa09adadb1229c77a0a
 	sha256sums = SKIP
 
 pkgname = sparkle-git
