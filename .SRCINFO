@@ -1,0 +1,25 @@
+pkgbase = python-writer-sdk
+	pkgdesc = Writer REST API
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/writer/writer-python
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-httpx
+	depends = python-typing_extensions
+	depends = python-pydantic-core
+	depends = python-distro
+	depends = python-jiter
+	depends = python-pydantic
+	optdepends = python-pytorch-cuda: cuda extensions
+	optdepends = cuda: cuda toolkit
+	provides = python-writerai
+	source = python-writer-sdk-2.2.0.tar.gz::https://github.com/writer/writer-python/archive/v2.2.0.tar.gz
+	sha256sums = aab123052defa919503c07a07f4db9d7a0a1255ceb17c1c47d4feb415ba65f0b
+
+pkgname = python-writer-sdk

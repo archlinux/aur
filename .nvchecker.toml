@@ -1,0 +1,3 @@
+[python-writer-sdk]
+source = "pypi"
+pypi = "writer-sdk"
