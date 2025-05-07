@@ -2,7 +2,7 @@
 
 pkgname=nginx-mod-length-hiding-filter
 pkgver=1.1.1
-pkgrel=13
+pkgrel=14
 
 _modname=nginx-length-hiding-filter-module
 
