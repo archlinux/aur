@@ -3,7 +3,7 @@
 # Contributor: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname="playwright"
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc="Node.js library to automate Chromium, Firefox and WebKit with a single API"
 arch=("any")
@@ -15,7 +15,7 @@ provides=("playwright")
 conflics=("python-playwright")
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('b67d76aa51b61a5e9b3d092042b6a2c2a59debe7eea3590a63950672d7c21b1fadd2a90f384184fed0f294c53e02bd38fa277ee4d69b288ed82e68612c883650')
+b2sums=('a9649a087edc2a2e8a16bf45bc77d9315096f4ba4ee17a0203d6bba5a936cbd18c0a39ec7f7ebc63b5cd523100f0120ad7bbbf81094ef2f02eeb9d285c745e59')
 
 package(){
   local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
