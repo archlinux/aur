@@ -3,7 +3,7 @@
 
 pkgname=python-qh3
 _pkgname="${pkgname/python-/}"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python'
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=('python-cryptography' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('267959ee27ea90f3162ec5aa49d3ec06536450a7ea7c1bed546b55482359299b')
+sha256sums=('b77c288872174fe1cd97af3e6eb0f062d8e93d0dd1c01e1884ba42bf7f5cd869')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
