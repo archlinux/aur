@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=hedgemodmanager-git
 pkgver=8.0.0.beta4.r20
-pkgrel=1
+pkgrel=2
 pkgdesc="(UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC."
 arch=(x86_64)
 url="https://github.com/hedge-dev/HedgeModManager"
