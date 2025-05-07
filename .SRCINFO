@@ -1,6 +1,6 @@
 pkgbase = wotimer
 	pkgdesc = Qml (from Qt) timer with WorkOuts in mind.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://codeberg.org/realroot/wotimer
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = wotimer
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-declarative
+	depends = qt6-webengine
 	conflicts = wotimer-git
-	source = wotimer-0.2.0.tar.gz::https://codeberg.org/realroot/wotimer/archive/0.2.0.tar.gz
-	sha512sums = 41815907ce94ed135c83f40c235dad35300670aaea73c33a5967e7c9da1e6b198f7c8026c5131b1f5c8b20bb755dbedb2c1c2b1525a95e0fc666e146e371066f
+	source = wotimer-0.3.0.tar.gz::https://codeberg.org/realroot/wotimer/archive/0.3.0.tar.gz
+	sha512sums = 328fe4059a7dd663a933907b061056cbee80e1b37cbddc9359263597b5ac66f0f3ea3609bdb99c1170df7d5b7f9355c6364c542a9598b3cd7ad721b41586b8e3
 
 pkgname = wotimer
