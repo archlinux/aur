@@ -95,6 +95,7 @@ source=(
         'sysusers-synapse.conf'
         'tmpfiles-synapse.conf'
         'override-hardened.conf'
+        'skip-broken-tests.patch'
 )
 
 sha256sums=('SKIP'
@@ -104,7 +105,8 @@ sha256sums=('SKIP'
             'c9657c201ad89985c8c915bfa0ea7517a412071736b4d9545d8f6474fddc44e2'
             'aadfdd78fe73e6eb325ee4299b8db8b97bfa2f4e7df953aa8477f442598a7ec5'
             '65588c8c64dfb84cab831cd8d028a295d753cf7322dd63053e8488466047b45f'
-            '086a7e95235afac128df9d2ea981e3c50d08e08c9132087063bb354bc9063d93')
+            '086a7e95235afac128df9d2ea981e3c50d08e08c9132087063bb354bc9063d93'
+            '1a8b33d48eff51218ca31b9f39213b030cbff6ad035d21241838df33fbf93727')
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install
 validpgpkeys=('02450A9EDDFEE3E0C730B786A7E4A57880C3A4A9'
@@ -132,6 +134,9 @@ prepare() {
 	sed -r 's/poetry-core>=([0-9.]+),<=([0-9.]+)/poetry-core>=\1/' -i pyproject.toml
 	# allow any setuptools_rust to be used
 	sed -r 's/setuptools_rust>=([0-9.]+),<=([0-9.]+)/setuptools_rust>=\1/' -i pyproject.toml
+	# remove apparently broken test because twisted.trial can't do this from the command line
+	# (https://github.com/element-hq/synapse/issues/18406)
+	git apply -3 "$srcdir/skip-broken-tests.patch"
 }
 
 build() {
