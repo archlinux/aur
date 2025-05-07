@@ -3,7 +3,7 @@
 
 _pkgname=squawk
 pkgname="${_pkgname}-cli"
-pkgver=1.6.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=(
@@ -14,22 +14,18 @@ license=(
 	GPL-3.0-only
 )
 depends=(
-	"libpg_query>=16"
 )
 makedepends=(
 	cargo
-	jq
 )
 options=(
 	'!lto'
 )
 source=(
 	"https://github.com/sbdchd/squawk/archive/refs/tags/v${pkgver}.tar.gz"
-	dynamic-pg_query-linking.patch
 )
 sha256sums=(
-	d41978a651582ff90338eaf320a0332737bbc59798e0795752d006e9d169aa3c
-	SKIP
+	1e77e04fac84f27a00604704d871742902411084e93dcb4c872d375181c23922
 )
 
 : "${pkgname}"
@@ -53,21 +49,12 @@ prepare() {
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
 	mkdir -p .cargo
-	cargo vendor --locked > .cargo/config.toml
-
-	patch -p0 -i ../dynamic-pg_query-linking.patch
-	BUILD_RS_SHA256="$(sha256sum vendor/libpg_query-sys/build.rs)"
-	jq ".files[\"build.rs\"] = \"${BUILD_RS_SHA256%% *}\"" \
-		vendor/libpg_query-sys/.cargo-checksum.json \
-		> vendor/libpg_query-sys/.cargo-checksum.json.new
-	mv vendor/libpg_query-sys/.cargo-checksum.json{.new,}
 }
 
 build() {
 	cd "${_pkgname}-${pkgver}"
 
 	export CARGO_TARGET_DIR=target
-	export LIBPG_QUERY_PATH=/usr
 	export RUSTUP_TOOLCHAIN=stable
 
 	cargo build --frozen --release --all-features
