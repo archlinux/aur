@@ -6,3 +6,4 @@ cmake-fix-variable.patch
 *.tar.zst
 src/
 pkg/
+opencascade-cadquery/

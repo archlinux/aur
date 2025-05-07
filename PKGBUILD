@@ -1,8 +1,5 @@
-# $Id$
-# Maintainer: Grey Christoforo <first name at last name dot net>
-
 pkgname=opencascade-cadquery
-pkgver=7.7.1
+pkgver=7.7.2
 pkgrel=1
 pkgdesc="Opencascade for python-cadquery"
 arch=(x86_64)
@@ -42,22 +39,18 @@ utf8cpp
 ninja
 )
 
-_pkgver="V${pkgver//./_}"
-
+local _commit=cec1ecd0c9f3b3d2572c47035d11949e8dfa85e2
 source=(
-"${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
-https://gitlab.archlinux.org/archlinux/packaging/packages/opencascade/-/raw/74734cd01021d87a6ddd0a208c449a44685f5425/cmake-fix-variable.patch
-fix_var_collision.patch::'https://git.dev.opencascade.org/gitweb/?p=occt.git;a=blobdiff_plain;f=src/IVtkDraw/IVtkDraw_Interactor.cxx;h=06626bb315f92243e0778830f2fc9a58d7d9942d;hb=54ed243582970aebb8f69954311d4d94b6fc2c7e;hpb=8748042259f22d72b3b076bc5433a54ca42734e4'
+  "$pkgname::git+https://github.com/Open-Cascade-SAS/OCCT.git#commit=$_commit"
+  https://gitlab.archlinux.org/archlinux/packaging/packages/opencascade/-/raw/74734cd01021d87a6ddd0a208c449a44685f5425/cmake-fix-variable.patch
 )
 
-sha256sums=('f413d30a8a06d6164e94860a652cbc96ea58fe262df36ce4eaa92a9e3561fd12'
-            '8d74dc87462164093a4cc3a427919dcc1f7f90a2a37fbae50357d9635f358812'
-            '238a2b679e742ad41acc4cca44abee835013782224acfae130ffdd7f71c06f91')
+sha256sums=('SKIP'
+            '8d74dc87462164093a4cc3a427919dcc1f7f90a2a37fbae50357d9635f358812')
 
 prepare() {
-  cd occt-${_pkgver}
+  cd ${pkgname}
 
-  patch -p1 -i ../fix_var_collision.patch
   patch -p1 -i ../cmake-fix-variable.patch
 
   # fix for trying to write into the system during build
@@ -74,7 +67,7 @@ prepare() {
 }
 
 build() {
-  cd occt-${_pkgver}
+  cd ${pkgname}
   # prevents the build from trying to write into the system
   export DESTDIR="${srcdir}/garbage"
   rm -rf "${DESTDIR}"
@@ -82,9 +75,11 @@ build() {
   _install_prefix="/opt/opencascade-cadquery/usr"
   #_install_prefix="/usr"
 
-  cmake -B build_dir -S . -W no-dev -G Ninja \
-    -D CMAKE_BUILD_TYPE=None \
+
+  CXXFLAGS="${CXXFLAGS} -fpermissive" cmake -B build_dir -S . -W no-dev -G Ninja \
+    -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX="${_install_prefix}" \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -D INSTALL_DIR_CMAKE="${_install_prefix}/lib/cmake/opencascade" \
     -D INSTALL_TEST_CASES=OFF \
     -D BUILD_WITH_DEBUG=OFF \
@@ -109,7 +104,7 @@ build() {
 }
 
 check() {
-  cd occt-${_pkgver}
+  cd ${pkgname}
   # prevent the current environment from skewing the testing
   unset "${!CSF@}"
   unset "${!DRAW@}"
@@ -128,7 +123,7 @@ check() {
 }
 
 package() {
-  cd occt-${_pkgver}
+  cd ${pkgname}
   DESTDIR="${pkgdir}" cmake --install build_dir
 
   install -m644 -Dt "${pkgdir}"/usr/share/licenses/${pkgname} LICENSE_LGPL_21.txt
