@@ -16,22 +16,20 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.5.0
+pkgver=1.6.0
 _realver=${pkgver/_/-}
-pkgrel=5
+pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
   "$_basename-$pkgver.tar.gz::https://github.com/$_basename/$_basename/archive/refs/tags/v${_realver}.tar.gz"
-  "remove-shadow-from-supplementarygroups.patch"
 )
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-makedepends=(cargo systemd clang tpm2-tss)
+makedepends=(cargo systemd clang tpm2-tss lld)
 options=(!buildflags)
 sha256sums=(
-  '5bf00fcf5add4c92ad6f2f84d2b09135ca321c01120dd6b852b0d35972fe5fdf'
-  '984607ad2a74b24ff1fbb17d3235c0ead2c4ac813b3c1b1df689448e7a28ff6d'
+  'ece0c090eecddbda54c12d1e50e72daca5c9348bc199c7cb1c0f25935b5c786b'
 )
 
 
@@ -39,7 +37,6 @@ build () {
   cd ${pkgbase}-$_realver
 
   export KANIDM_BUILD_PROFILE="release_linux"
-  patch -p0 -i "${srcdir}/remove-shadow-from-supplementarygroups.patch"
   cargo build --release --target-dir target \
 	--features tpm \
 	--package daemon \
