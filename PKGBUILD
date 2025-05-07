@@ -19,8 +19,8 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://dy9cqqaswpltd.cloudfront.
 "nosql-workbench.png"
 )
 sha256sums_x86_64=('adaebcf664b062be82f43879a3643ed4f5dabfcd6ae766e7ed545ffb9acc9861'
-                   'b8eb453d600dfcdd46c05943ecc01c0d8362f093556157387cf89655a18e3858'
-                   'b9a53557a32a89fcd0695730bc56aa9894181e1e6f6aa458850941071ec68393')
+                   'SKIP'
+                   'SKIP')
 # https://docs.appimage.org/user-guide/troubleshooting/fuse.html#setting-up-fuse-on-arch-linux
 depends=('fuse2')
 makedepends=('gendesk')
