@@ -1,7 +1,7 @@
 pkgbase = openutau
 	pkgdesc = Open source UTAU successor
-	pkgver = 0.1.549
-	pkgrel = 2
+	pkgver = 0.1.550
+	pkgrel = 1
 	url = https://github.com/stakira/OpenUtau
 	arch = x86_64
 	arch = armv7h
@@ -10,10 +10,10 @@ pkgbase = openutau
 	makedepends = dotnet-sdk-8.0
 	depends = dotnet-runtime>=8
 	options = !strip
-	source = https://github.com/stakira/OpenUtau/archive/refs/tags/0.1.549.tar.gz
+	source = https://github.com/stakira/OpenUtau/archive/refs/tags/0.1.550.tar.gz
 	source = openutau.desktop
 	source = openutau.svg
-	sha256sums = 440a1be2cffb78ae0a2c4721129dfb8f421cd8abb1f5ba4254bd6137b16482b9
+	sha256sums = 777ed670409f3e19e56ad93e16bfa4a76cb30e2a598eb5c09bb114a97aebfcde
 	sha256sums = 46cdff454ee6ea172ccdd912d64480a2ce7ffc123a89b183ffc74e314fc3c854
 	sha256sums = 490fd7489bb3c4225c3f2d1e96ba8320bd481da6eb031b97229dcf06997c2f5b
 
