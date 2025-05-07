@@ -9,13 +9,14 @@ license=()
 makedepends=(
     'cargo'
     'clang'
-    'qt6-base'
 )
 depends=(
+    'pam'
     'dbus'
     'greetd'
     'seatd'
     'weston'
+    'qt6-base'
 )
 arch=('i686' 'x86_64' 'armv7h')
 source=(
