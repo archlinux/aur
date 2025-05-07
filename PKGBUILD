@@ -2,7 +2,7 @@
 
 pkgname=void-bin
 pkgdesc="The open-source Cursor alternative."
-pkgver=1.99.30007
+pkgver=1.99.30009
 pkgrel=1
 arch=('x86_64')
 options=('!strip')
@@ -15,7 +15,7 @@ makedepends=(tar) #faster than bsdtar
 optdepends=('electron: /usr/share/void/void-latestron')
 source=("https://github.com/voideditor/binaries/releases/download/${pkgver}/void_${pkgver}_amd64.deb"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('6d3f1b23ef345b11790c0a3fa75e641a8a1dbaf02d8713ea51c830550b8ffb0b'
+sha256sums=('cf7a6fe97d99f662ad53a2e6babecfa699d0e384778819ad5c469230626b8d62'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 build() {
