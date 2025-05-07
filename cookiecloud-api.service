@@ -7,7 +7,7 @@ After = network-online.target
 User = cookiecloud-api
 Group = cookiecloud-api
 Restart = on-failure
-EnvironmentFile = -/etc/conf.d/cookiecloud-api.conf
+EnvironmentFile = /etc/conf.d/cookiecloud-api.conf
 WorkingDirectory = /usr/lib/cookiecloud-api
 ExecStart = /usr/bin/cookiecloud-api
 

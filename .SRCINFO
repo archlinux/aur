@@ -1,6 +1,6 @@
 pkgbase = cookiecloud-api-git
 	pkgdesc = Synchronizing browser cookies and LocalStorage with a self-hosted server (API Server)
-	pkgver = 20240731.105904
+	pkgver = 20250506.201513
 	pkgrel = 1
 	url = https://github.com/easychen/CookieCloud
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = cookiecloud-api-git
 	source = cookiecloud-api.sysusers
 	source = cookiecloud-api.tmpfiles
 	sha256sums = SKIP
-	sha256sums = b922ebfa83b31cb1caf0d56a68c1c94e7150c2c87d6d8407ccfd972287134e06
-	sha256sums = d85c33b92f23baeca1405ca658550ae36395f27ab1d5a7c6a3d417d1f2d8e709
-	sha256sums = 83e56f7df7699008aa880718fd5e14b46887cdc2eda8aeef89bbd921bc2c88a0
-	sha256sums = 142a39525951b0aa345bdcba1b0fd743cae11ec5ab44feded48ab711d20b0f11
+	sha256sums = 4499428921e978950ad6d0e75ce4c7f4e514b7102a5afeb30de850a0b2a76089
+	sha256sums = 80916b8d9f6cf7fa5061212bb0158531d8503b6c608ab4831678347e5a64b826
+	sha256sums = 50e480b690181004c3cfc20724a6d9b18af6d40d739d825b06d4e56711417ff7
+	sha256sums = 081d3e124f64fd05c1af79680b1fb5776096e6411b69c47349422e57f91b0710
 
 pkgname = cookiecloud-api-git

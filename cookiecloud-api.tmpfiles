@@ -1,2 +1,2 @@
 d /var/lib/cookiecloud-api - cookiecloud-api cookiecloud-api -
-Z /var/lib/cookiecloud-api - cookiecloud-api cookiecloud-api -
+d /var/log/cookiecloud-api - cookiecloud-api cookiecloud-api -

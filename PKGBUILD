@@ -2,7 +2,7 @@
 
 _pkgname=cookiecloud-api
 pkgname="${_pkgname}-git"
-pkgver=20240731.105904
+pkgver=20250506.201513
 pkgrel=1
 pkgdesc="Synchronizing browser cookies and LocalStorage with a self-hosted server (API Server)"
 arch=("any")
@@ -19,14 +19,18 @@ source=("${_pkgname}::git+${url}"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
 sha256sums=('SKIP'
-            'b922ebfa83b31cb1caf0d56a68c1c94e7150c2c87d6d8407ccfd972287134e06'
-            'd85c33b92f23baeca1405ca658550ae36395f27ab1d5a7c6a3d417d1f2d8e709'
-            '83e56f7df7699008aa880718fd5e14b46887cdc2eda8aeef89bbd921bc2c88a0'
-            '142a39525951b0aa345bdcba1b0fd743cae11ec5ab44feded48ab711d20b0f11')
+            '4499428921e978950ad6d0e75ce4c7f4e514b7102a5afeb30de850a0b2a76089'
+            '80916b8d9f6cf7fa5061212bb0158531d8503b6c608ab4831678347e5a64b826'
+            '50e480b690181004c3cfc20724a6d9b18af6d40d739d825b06d4e56711417ff7'
+            '081d3e124f64fd05c1af79680b1fb5776096e6411b69c47349422e57f91b0710')
+
 prepare() {
     cd "${_pkgname}/api"
-    sed -i '1i #!/usr/bin/node\n' app.js
-    sed -i "s|^const data_dir = .*|const data_dir = process\.env\.DATA_DIR \|\| '/var/lib/${_pkgname}';|" app.js
+    sed -e '1i #!/usr/bin/node\n' \
+        -e "s|^const data_dir = .*|const data_dir = process\.env\.DATA_DIR \|\| '/var/lib/${_pkgname}';|" \
+        -i app.js
+    sed -e "s|^const logDir = .*|const logDir = process\.env\.LOG_DIR \|\| '/var/log/${_pkgname}';|" \
+        -i utils/logger.js
 }
 
 pkgver() {
@@ -47,9 +51,12 @@ package() {
 
     cd "${_pkgname}"
     install -Dm644 *.md                -t "${pkgdir}/usr/share/doc/${_pkgname}"
-    install -Dm644 api/*.{json,lock}   -t "${pkgdir}/usr/lib/${_pkgname}"
-    install -Dm755 api/app.js             "${pkgdir}/usr/lib/${_pkgname}/app.js"
-    cp -r api/node_modules                "${pkgdir}/usr/lib/${_pkgname}"
+
+    cd api
+    find . -type f \( -iname "*.json" -o -iname "*.lock" -o -iname "*.js" \) -exec \
+        install -Dm644 {}                 "${pkgdir}/usr/lib/${_pkgname}/"{} \;
+    chmod 755                             "${pkgdir}/usr/lib/${_pkgname}/app.js"
+    cp -r node_modules                    "${pkgdir}/usr/lib/${_pkgname}"
     install -dm755                        "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${_pkgname}/app.js"   "${pkgdir}/usr/bin/${_pkgname}"
 }
