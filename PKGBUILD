@@ -15,7 +15,7 @@ arch=('i686' 'x86_64')
 url='https://ninja-build.org/'
 license=(Apache)
 depends=(gcc-libs)
-makedepends=(python re2c emacs-nox git asciidoctor)
+makedepends=(re2c emacs-nox git asciidoctor cmake gtest)
 provides=('ninja')
 conflicts=('ninja')
 install=ninja-git.install
@@ -30,23 +30,19 @@ function prepare {
 }
 
 function build {
-	cd ninja
-
-	python configure.py --bootstrap
-	emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
+	emacs -Q --batch -f batch-byte-compile ninja/misc/ninja-mode.el
+	cmake -S ninja -B build
+	cmake --build build
 }
 
 function check {
-	cd ninja
-
-	python ./configure.py
-	./ninja ninja_test
+	./build/ninja_test
 }
 
 function package {
 	cd ninja
 
-	install -m755 -D ninja "$pkgdir/usr/bin/ninja"
+	install -m755 -D "${srcdir}"/build/ninja "$pkgdir/usr/bin/ninja"
 	install -m644 -D doc/manual.asciidoc "$pkgdir/usr/share/doc/ninja/manual.asciidoc"
 	asciidoctor -b manpage  doc/manual.asciidoc -o "$pkgdir/usr/share/man/man1/ninja.1"
 
