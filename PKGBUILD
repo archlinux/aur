@@ -1,7 +1,7 @@
 # Maintainer: Connor Behan <connor.behan@gmail.com>
 # Contributor: Rémy Oudompheng <oudomphe@clipper.ens.fr>
 pkgname=singular-factory
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Computer Algebra System for polynomial computations: factory and libfac"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ build() {
 
         autoreconf -vfi
         cp cf_assert.h include/factory/
-	./configure --prefix=/usr \
+	CXXFLAGS="-include string.h" ./configure --prefix=/usr \
 		    --libdir=/usr/lib \
 		    --includedir=/usr/include/singular \
 		    --with-ntl \
@@ -32,4 +32,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('f1e25b566a8c06d0e98b9795741c6d12b5a34c5c0c61c078d9346d8bbc82f09f')
+sha256sums=('baf31159578463e26bf18ec68ec901228d79a819866dd96c02d85c73dfbaf030')
