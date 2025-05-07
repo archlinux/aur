@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=osc-dl
+Comment=Desktop utility for downloading homebrew apps from the Open Shop Channel.
+Icon=osc-dl
+Exec=python /opt/osc-dl/oscdl.py
+Terminal=false
+StartupNotify=true
+Categories=Game;Internet

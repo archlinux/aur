@@ -1,0 +1,24 @@
+pkgbase = osc-dl-git
+	pkgdesc = Desktop utility for downloading homebrew apps from the Open Shop Channel.
+	pkgver = r746.4cb600e
+	pkgrel = 1
+	url = https://github.com/dhtdht020/osc-dl
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python>=3.12
+	depends = python<4.0
+	depends = python-requests
+	depends = python-packaging
+	depends = python-markdown
+	depends = python-pillow
+	depends = python-pyserial
+	depends = python-darkdetect
+	depends = python-func-timeout
+	depends = pyside6
+	provides = osc-dl-git
+	conflicts = osc-dl-git
+	source = osc-dl::git+https://github.com/dhtdht020/osc-dl.git
+	md5sums = SKIP
+
+pkgname = osc-dl-git
