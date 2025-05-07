@@ -18,7 +18,7 @@ pkgname=(
 )
 pkgver=1.6.0
 _realver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
@@ -38,7 +38,7 @@ build () {
 
   export KANIDM_BUILD_PROFILE="release_linux"
   cargo build --release --target-dir target \
-	--features tpm \
+	--features tpm,unix \
 	--package daemon \
 	--package kanidm-ipa-sync \
 	--package kanidm_tools \
