@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fastcluster
-_pkgver=1.2.6
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('252ea997088794972aac679fb6772530')
-b2sums=('03b4dc137a16511a99f50bc42b897277521fe7aecf9b6979e93aaa353735990585e5b568dba3f8fca24600922623dcbd7cfe0237a5c316fba6160d15e6480856')
+md5sums=('df9c300dce25b7755254f49ba6d69720')
+b2sums=('bf50583f8424b3454745cf7882b95002fc143c184fc206db4b4c5a2f0d618939c2d2d423b7b365101110d7fce21ca19fbb3721072daa5437c7c615fa847b9794')
 
 build() {
   mkdir build
