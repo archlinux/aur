@@ -1,0 +1,5 @@
+post_install() {
+  echo "==> pifs is dead simple to use:"
+  echo "    pifs -o mdd=<metadata directory> <mountpoint>"
+}
+

@@ -1,0 +1,18 @@
+pkgbase = pifs-aya-git
+	pkgdesc = pifs - the data-free filesystem (modern fork from aya)!
+	pkgver = r38.f29c8d8
+	pkgrel = 1
+	url = https://github.com/aya/pifs
+	install = pifs-aya-git.install
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = fuse2
+	provides = pifs
+	conflicts = pifs-git
+	replaces = pifs-git
+	source = pifs-aya-git::git+https://github.com/aya/pifs.git
+	md5sums = SKIP
+
+pkgname = pifs-aya-git
