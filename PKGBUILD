@@ -23,7 +23,7 @@ install=ninja-git.install
 source=("git+https://github.com/ninja-build/ninja.git${_fragment}"
 	'0001-Limit-job-execution-dependant-on-available-memory-m.patch')
 b2sums=('959957c27f4444b6a7e547fcfa8042033dee9d279cc0833265b6bc4bddf128b19060473a115f06c215bf42271b243b896a9fe7efa00f4ef9dec3fa4c885af2a3'
-        '210babd66ba92b920f2e0374e0575f58f866cf0f0a1e6d32b79b009e4a9646504daaafaea6443331c749a048e69418006de4194e080d555ad34a500ce78a30e0')
+        'e2c1a0b1fc817ca38a2a4bc57ce4a293e950655011c7afa632e0480934ceaf264489bf1367b88bac1885fe7bb4be87b7f8c789adad1d09a2092d797a14ca11b0')
 
 function prepare {
 	cd ninja

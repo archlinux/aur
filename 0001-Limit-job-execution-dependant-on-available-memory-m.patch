@@ -18,7 +18,7 @@ Co-Authored-By: bartus <arch-user-repoᘓbartus.33mail.com>
  7 files changed, 130 insertions(+), 4 deletions(-)
 
 diff --git a/doc/manual.asciidoc b/doc/manual.asciidoc
-index 659c68b1..a914c403 100644
+index 3482a1e6..0c9db078 100644
 --- a/doc/manual.asciidoc
 +++ b/doc/manual.asciidoc
 @@ -187,6 +187,15 @@ match those of Make; e.g `ninja -C build -j 20` changes into the
@@ -38,25 +38,25 @@ index 659c68b1..a914c403 100644
  Environment variables
  ~~~~~~~~~~~~~~~~~~~~~
 diff --git a/src/build.cc b/src/build.cc
-index 6f11ed7a..9dd0eb69 100644
+index 36b52dc1..3d57469b 100644
 --- a/src/build.cc
 +++ b/src/build.cc
-@@ -478,7 +478,9 @@ bool RealCommandRunner::CanRunMore() const {
-       subprocs_.running_.size() + subprocs_.finished_.size();
-   return (int)subproc_number < config_.parallelism
-     && ((subprocs_.running_.empty() || config_.max_load_average <= 0.0f)
--        || GetLoadAverage() < config_.max_load_average);
-+        || GetLoadAverage() < config_.max_load_average)
-+    && ((subprocs_.running_.empty() || config_.max_memory_usage <= 0.0f)
-+       || GetMemoryUsage() < config_.max_memory_usage);
- }
+@@ -632,6 +632,10 @@ size_t RealCommandRunner::CanRunMore() const {
+       capacity = load_capacity;
+   }
  
- bool RealCommandRunner::StartCommand(Edge* edge) {
++  if (config_.max_memory_usage > 0.0f && GetMemoryUsage() < config_.max_memory_usage ) {
++    capacity = 1;
++  }
++
+   if (capacity < 0)
+     capacity = 0;
+ 
 diff --git a/src/build.h b/src/build.h
-index d697dfb8..5748c70b 100644
+index 471f0b2c..095a90a0 100644
 --- a/src/build.h
 +++ b/src/build.h
-@@ -156,7 +156,8 @@ struct CommandRunner {
+@@ -166,7 +166,8 @@ struct CommandRunner {
  /// Options (e.g. verbosity, parallelism) passed to a build.
  struct BuildConfig {
    BuildConfig() : verbosity(NORMAL), dry_run(false), parallelism(1),
@@ -66,7 +66,7 @@ index d697dfb8..5748c70b 100644
  
    enum Verbosity {
      QUIET,  // No output -- used when testing.
-@@ -171,6 +172,10 @@ struct BuildConfig {
+@@ -181,6 +182,10 @@ struct BuildConfig {
    /// The maximum load average we must not exceed. A negative value
    /// means that we do not have any limit.
    double max_load_average;
@@ -78,10 +78,10 @@ index d697dfb8..5748c70b 100644
  };
  
 diff --git a/src/ninja.cc b/src/ninja.cc
-index 2b71eb17..c92515b8 100644
+index ce1beda5..08cb0dc6 100644
 --- a/src/ninja.cc
 +++ b/src/ninja.cc
-@@ -229,6 +229,10 @@ void Usage(const BuildConfig& config) {
+@@ -230,6 +230,10 @@ void Usage(const BuildConfig& config) {
  "  -j N     run N jobs in parallel (0 means infinity) [default=%d on this system]\n"
  "  -k N     keep going until N jobs fail (0 means infinity) [default=1]\n"
  "  -l N     do not start new jobs if the load average is greater than N\n"
@@ -92,7 +92,7 @@ index 2b71eb17..c92515b8 100644
  "  -n       dry run (don't run commands but act like they succeeded)\n"
  "\n"
  "  -d MODE  enable debugging (use '-d list' to list modes)\n"
-@@ -1428,7 +1432,7 @@ int ReadFlags(int* argc, char*** argv,
+@@ -1447,7 +1451,7 @@ int ReadFlags(int* argc, char*** argv,
  
    int opt;
    while (!options->tool &&
@@ -101,7 +101,7 @@ index 2b71eb17..c92515b8 100644
                              NULL)) != -1) {
      switch (opt) {
        case 'd':
-@@ -1470,6 +1474,14 @@ int ReadFlags(int* argc, char*** argv,
+@@ -1489,6 +1493,14 @@ int ReadFlags(int* argc, char*** argv,
          config->max_load_average = value;
          break;
        }
@@ -117,7 +117,7 @@ index 2b71eb17..c92515b8 100644
          config->dry_run = true;
          break;
 diff --git a/src/util.cc b/src/util.cc
-index ef5f1033..2c754bc4 100644
+index 7668e338..2a69470e 100644
 --- a/src/util.cc
 +++ b/src/util.cc
 @@ -19,6 +19,7 @@
@@ -150,7 +150,7 @@ index ef5f1033..2c754bc4 100644
  #include "edit_distance.h"
  
  using namespace std;
-@@ -830,6 +839,61 @@ double GetLoadAverage() {
+@@ -917,6 +926,61 @@ double GetLoadAverage() {
  }
  #endif // _WIN32
  
@@ -232,7 +232,7 @@ index 4a7fea22..20a3018e 100644
  /// exceeds @a width.
  std::string ElideMiddle(const std::string& str, size_t width);
 diff --git a/src/util_test.cc b/src/util_test.cc
-index d58b1708..157da34d 100644
+index d76954cc..f70dde84 100644
 --- a/src/util_test.cc
 +++ b/src/util_test.cc
 @@ -17,6 +17,12 @@
@@ -248,7 +248,7 @@ index d58b1708..157da34d 100644
  
  namespace {
  
-@@ -408,6 +414,30 @@ TEST(StripAnsiEscapeCodes, StripColors) {
+@@ -503,6 +509,30 @@ TEST(StripAnsiEscapeCodes, StripColors) {
              stripped);
  }
  
