@@ -1,8 +1,8 @@
 pkgbase = mailio
 	pkgdesc = A cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols.
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
-	url = https://github.com/karastojko/mailio
+	url = https://github.com/Spixmaster/mailio
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = boost
@@ -11,7 +11,7 @@ pkgbase = mailio
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	source = mailio-v0.25.0.tar.gz::https://github.com/karastojko/mailio/archive/refs/tags/0.25.0.tar.gz
+	source = mailio-v0.25.1.tar.gz::https://github.com/Spixmaster/mailio/archive/refs/tags/0.25.1.tar.gz
 	sha512sums = 8e8c91ffb16a0a0e71aa3d97fd7bca18b9662236ea1a0b7e6009919c8e76523350b63ca2145ece517103600a371f05eab5c0eb0d422226e15ad7c94e4ce0f5a4
 
 pkgname = mailio
