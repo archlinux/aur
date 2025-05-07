@@ -3,7 +3,7 @@ pkgver=1.6.3
 pkgrel=1
 pkgdesc="Download Minecraft mods (In Rust)"
 arch=("x86_64" "aarch64")
-license=('GPL')
+license=('GPL-3.0-or-later')
 url="https://github.com/KirillkoTankisto/minefetch"
 
 source_x86_64=("https://github.com/KirillkoTankisto/minefetch/releases/download/beta_${pkgver}/minefetch-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
