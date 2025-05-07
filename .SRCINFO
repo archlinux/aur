@@ -1,7 +1,7 @@
 pkgbase = theia-electron
 	pkgdesc = Cloud & Desktop IDE Platform
 	pkgver = 1.61.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.theia-ide.org/
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = theia-electron
 	depends = gtk3
 	depends = libxss
 	depends = libxkbfile
+	depends = ripgrep
 	optdepends = git: git support
 	optdepends = libsecret: keytar support
 	options = !debug

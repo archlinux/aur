@@ -4,7 +4,7 @@
 
 pkgname=theia-electron
 pkgver=1.61.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -12,7 +12,7 @@ license=('EPL2')
 # nodejs-lts-iron works again: https://github.com/eclipse-theia/theia/pull/15212
 # Also, nodejs 23.9 seems to work too.
 #depends=('nodejs>=20.17.0' 'nss' 'gtk3' 'libxss' 'libxkbfile')
-depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs-lts-jod' 'nss' 'gtk3' 'libxss' 'libxkbfile' 'ripgrep')
 makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
              'gcc' 'make' 'node-gyp' 'npm' 'pkgconf' 'python-setuptools' 'yarn')
 optdepends=('git: git support' 'libsecret: keytar support')
@@ -72,14 +72,16 @@ build() {
 
 package() {
   # Create directory
-  install -dm755 "$pkgdir"/usr/lib/$pkgname
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
 
   # Source code (command-line symlinks dereferenced, if any) and plugins
   cp -RH --no-preserve=ownership --preserve=mode \
       src-gen lib node_modules package.json \
       plugins \
       "$pkgdir/usr/lib/$pkgname/"
-  chmod -R a+rX,go-w "$pkgdir/usr/lib/$pkgname/"
+  chmod -R a+rX,go-w "$pkgdir/usr/lib/$pkgname"
+  # Replace ripgrep binaries with system version
+  find "$pkgdir/usr/lib/$pkgname" -name rg -type f -exec ln -sfv /usr/bin/rg {} \;
 
   # Executable
   install -Dm755 theia-electron.sh "$pkgdir/usr/bin/$pkgname"
