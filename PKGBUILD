@@ -12,13 +12,13 @@
 
 pkgname=android-studio-system
 pkgver=2024.3.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
 url="https://developer.android.com/studio"
 license=('APACHE')
 makedepends=()
-depends=('alsa-lib' 'libxtst' 'java-environment=17' 'kotlin')
+depends=('alsa-lib' 'libxtst' 'java-environment=21' 'kotlin')
 optdepends=('ncurses5-compat-libs: native debugger support')
 options=('!strip') # Removing it is a bit more violent but it removes 90MB of files...
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
@@ -45,7 +45,7 @@ package() {
   ln -s /usr/share/licenses/kotlin/ $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/license
 
   ln -s /usr/share/android-studio/bin/studio.sh $pkgdir/usr/bin/android-studio
-  ln -s /usr/lib/jvm/java-17-openjdk/ $pkgdir/usr/share/android-studio/jbr
+  ln -s /usr/lib/jvm/java-21-openjdk/ $pkgdir/usr/share/android-studio/jbr
 
   # Copy licenses
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
