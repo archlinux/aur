@@ -21,18 +21,20 @@ depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
          'ffmpeg' 'freeimage' 'qt5-declarative')
 makedepends=(cmake 'qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Win"
+_sdk_ver="9.3.0"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
-        "meganz-sdk::git+https://github.com/meganz/sdk.git"
+        "meganz-sdk::git+https://github.com/meganz/sdk#tag=v${_sdk_ver}"
         "cmake_crypto++.patch"
 	"ffmpeg.patch")
 sha256sums=('195d6e4a90d2f1ab63c7793b74dabacda66df17a82e96f20f594dcbb413f1e59'
-            'SKIP'
+            '439bdd3b3fd3d80178415c677afe31f5e9acfcb2129e3efc35395ea569e1da16'
             '004df095bcd6b15b0f69dd69219dc15c27ee7b46ade0c9ab7271b46b2ad6ca13'
             '4f7a31567de1b7c3114efbbb208bdf93b80a5a2c4fd290868c5212b8312c500d')
 
 prepare() {
     git -C "$srcdir/MEGAsync" config submodule.src/MEGASync/mega.url "$srcdir/meganz-sdk"
     git -C "$srcdir/MEGAsync" -c protocol.file.allow=always submodule update --init -- src/MEGASync/mega
+#   git -C "${srcdir}"/MEGAsync/src/MEGASync/mega checkout f60237a8d46cec993137065d39138fd42c043271 # ${_sdk_ver}
     mapfile -t patches < <(grep -Po '^.*?(patch|diff)(?=::|$)' < <(printf "${srcdir}/%s\n" ${source[@]}))
     for patch in "${patches[@]}"; do
       msg2  "apply ${patch##*/}..."
