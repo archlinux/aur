@@ -4,13 +4,13 @@
 
 pkgname=lib32-libnoise
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, open-source, coherent noise-generating library for C++"
 arch=('i686' 'x86_64')
 url="https://libnoise.sourceforge.net/"
 license=('LGPL')
-depends=('lib32-gcc-libs')
-makedepends=('cmake' 'unzip')
+depends=('libnoise' 'lib32-gcc-libs')
+makedepends=('cmake')
 source=("https://prdownloads.sourceforge.net/libnoise/libnoisesrc-${pkgver}.zip"
         'CMakeLists.txt'
 	'COPYING')
@@ -30,6 +30,7 @@ build() {
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_C_FLAGS="-march=i686 -m32 ${CFLAGS/-march=x86_64}" \
     -D CMAKE_CXX_FLAGS="-march=i686 -m32 ${CXXFLAGS/-march=x86_64}" \
+    -D CMAKE_POLICY_VERSION_MINIMUM=3.10 \
     ../noise
   make
 }
