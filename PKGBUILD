@@ -2,7 +2,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Corpswalker <corpswalker@gmail.com>
 pkgname=micromamba-bin
-pkgver=2.1.0.0
+pkgver=2.1.1.0
 _pkgver=${pkgver%.*}-${pkgver##*.}
 pkgrel=1
 pkgdesc="Tiny version of mamba, the fast conda package installer"
@@ -16,9 +16,9 @@ options=(strip)
 depends=(glibc)
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-sha512sums_x86_64=('04f0d88affce2af06b14eb79a2d96061f00d16fb938a42e0198f44facd773c14969e8d3eb6cfe0d7c8e84910748d83f1bf5911966432e0c0016515860d458d00')
-sha512sums_aarch64=('ec07cc177410aaab35af4e5651ea499b4452d75bea0de335f4b308b007b5d7d453052349a7e95e7cbba4aab8e4c061a6b397d6e98be42cc3a79b3b812d3176e1')
-sha512sums_powerpc64le=('f58c020da2ccbefb75a5a47fc43844b35742837477d6142bd76e46b57e640c1cfc05b6c4e769fa62ef851798dc12b1353f7432b765b650898bcc152c49df4006')
+sha512sums_x86_64=('070342f2cb817172ca669df0cc3698c1079cc6774b89a11271780e7b472fbf331da2e9dd3917e406e694e0f7f03102e5c79f151e88f0a8f5e244e58fdaae7ae7')
+sha512sums_aarch64=('996d03c37e65031a91c7a424e76251cb8e9f184a4a3a2046017e38dd5fb3030f2d075be792fa527cc8a24643b65be92450c4234073fd7d6a54ecfeb2d7a6c854')
+sha512sums_powerpc64le=('268bb799b9057bf301fd758693fc01ae04768df96bb3b1fa894c67053a1aad3c5d3382b51178138391621c38814f59b7b8d9cf68d2d0942068913ea5eed6c8b2')
 
 check() {
   export PREFIX="${srcdir}"
