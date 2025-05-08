@@ -2,7 +2,7 @@
 pkgname=avaloniavisualbasic-bin
 _pkgname='AvaloniaVisualBasic'
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A recreation of the classic Visual Basic 6 IDE and language in C# with Avalonia.(Prebuilt version)"
 arch=('x86_64')
 url="https://bandysc.github.io/AvaloniaVisualBasic6/"
@@ -14,7 +14,6 @@ options=(
     '!strip'
     'staticlibs'
 )
-noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
 depends=(
     'fontconfig'
 )
@@ -28,15 +27,16 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/BAndysc/AvaloniaVisualBasic6/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
+noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
 sha256sums=('e3f42e0ebe08ad2fe947edcbf584d9fbd36fd1016cc9f6e3ed5f2ef0370c9725'
             '961be1877bc7d947855ece5d28fdb1cf7fce9801e12364eb16b2adad20f7a8b1'
             'c57b2ab528228e2728ac67e2625d0a975366e263ca799754b9f752324d399653'
             '9887c2b5cc4171f8768feae7da23aa6765eaa859434757d416fb8988a36936c8')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname//reM/ReM}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-bin}"
     icotool -x "${srcdir}/${pkgname%-bin}.ico" -o "${srcdir}"
     install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"

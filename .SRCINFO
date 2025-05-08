@@ -1,7 +1,7 @@
 pkgbase = avaloniavisualbasic-bin
 	pkgdesc = A recreation of the classic Visual Basic 6 IDE and language in C# with Avalonia.(Prebuilt version)
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bandysc.github.io/AvaloniaVisualBasic6/
 	arch = x86_64
 	license = MIT
