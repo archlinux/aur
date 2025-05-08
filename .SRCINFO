@@ -1,6 +1,6 @@
 pkgbase = rime-ice-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库
-	pkgver = r633.87a7de4
+	pkgver = r785.60cd163
 	pkgrel = 1
 	url = https://github.com/iDvel/rime-ice
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = rime-ice-git
 
 pkgname = rime-ice-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库
+	install = post.install
 	provides = rime-ice
 	conflicts = rime-emoji
 	conflicts = rime-ice-pinyin
@@ -27,6 +28,7 @@ pkgname = rime-ice-git
 
 pkgname = rime-ice-pinyin-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 拼音方案
+	install = post.install
 	provides = rime-ice-pinyin
 	conflicts = rime-emoji
 	conflicts = rime-ice
@@ -39,6 +41,7 @@ pkgname = rime-ice-pinyin-git
 
 pkgname = rime-ice-double-pinyin-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 自然码双拼
+	install = post.install
 	provides = rime-ice-double-pinyin
 	conflicts = rime-emoji
 	conflicts = rime-ice
@@ -51,6 +54,7 @@ pkgname = rime-ice-double-pinyin-git
 
 pkgname = rime-ice-double-pinyin-abc-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 智能ABC双拼
+	install = post.install
 	provides = rime-ice-double-pinyin-abc
 	conflicts = rime-emoji
 	conflicts = rime-ice
@@ -63,6 +67,7 @@ pkgname = rime-ice-double-pinyin-abc-git
 
 pkgname = rime-ice-double-pinyin-mspy-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 微软双拼
+	install = post.install
 	provides = rime-ice-double-pinyin-mspy
 	conflicts = rime-emoji
 	conflicts = rime-ice
@@ -75,6 +80,7 @@ pkgname = rime-ice-double-pinyin-mspy-git
 
 pkgname = rime-ice-double-pinyin-sogou-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 搜狗双拼
+	install = post.install
 	provides = rime-ice-double-pinyin-sogou
 	conflicts = rime-emoji
 	conflicts = rime-ice
@@ -87,6 +93,7 @@ pkgname = rime-ice-double-pinyin-sogou-git
 
 pkgname = rime-ice-double-pinyin-flypy-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 小鹤双拼
+	install = post.install
 	provides = rime-ice-double-pinyin-flypy
 	conflicts = rime-emoji
 	conflicts = rime-ice
@@ -99,6 +106,7 @@ pkgname = rime-ice-double-pinyin-flypy-git
 
 pkgname = rime-ice-double-pinyin-ziguang-git
 	pkgdesc = Rime 配置：雾凇拼音 | 长期维护的简体词库 - 紫光双拼
+	install = post.install
 	provides = rime-ice-double-pinyin-ziguang
 	conflicts = rime-emoji
 	conflicts = rime-ice
