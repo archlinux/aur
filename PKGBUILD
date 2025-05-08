@@ -5,8 +5,8 @@ _pkgname=klassy
 pkgbase="${_pkgname}"
 pkgname=("${_pkgname}"
          "${_pkgname}-qt5")
-pkgver=6.2.breeze6.2.1
-pkgrel=5
+pkgver=6.3.breeze6.3.5
+pkgrel=1
 pkgdesc='Highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.'
 arch=(x86_64)
 url="https://github.com/paulmcauley/klassy"
@@ -39,18 +39,13 @@ makedepends=(extra-cmake-modules
              kiconthemes5
              kirigami2
              kwindowsystem5)
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "plasma6.3.patch::${url}/pull/178.patch"
-        "project-version.patch")
-sha256sums=('658c183b182fd86316e3a055f51d31e77a77a283be641908b6d4469a5ce9d035'
-            '9f7dae4474a779a54db4660207eff5e6f4b501fd8f4dff2004d345ccc0290067'
-            '20d2997dcf7ca94fd294a4500111084d244040795a0083af932aa83e00e91688')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('51a2229bf58325b0a45e01d84039197caad964b8237b238de7fbcae30b188807')
 
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-  patch -Np1 < "${srcdir}/plasma6.3.patch"
-  patch -Np1 < "${srcdir}/project-version.patch"
-}
+#prepare() {
+#  cd "${_pkgname}-${pkgver}"
+#  patch -Np1 < "${srcdir}/plasma6.3.patch"
+#}
 
 build() {
   cmake -B build -S "${_pkgname}-${pkgver}" \
