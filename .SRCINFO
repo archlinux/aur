@@ -1,13 +1,13 @@
 pkgbase = minibridge
 	pkgdesc = Make your MCP servers secure and production ready
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/acuvity/minibridge
 	arch = any
 	license = Apache2
 	makedepends = go
 	provides = minibridge
-	source = https://github.com/acuvity/minibridge/archive/refs/tags/v0.4.0.zip
+	source = https://github.com/acuvity/minibridge/archive/refs/tags/v0.5.0.zip
 	sha1sums = fd5bbbea9459fc1033805a6fd552dd029d5bfa7b
 
 pkgname = minibridge

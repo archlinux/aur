@@ -3,7 +3,7 @@
 pkgname=minibridge
 pkgdesc="Make your MCP servers secure and production ready"
 url="https://github.com/acuvity/minibridge"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 license=(Apache2)
 arch=(any)
