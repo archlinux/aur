@@ -19,12 +19,12 @@ pkgver() {
 }
 
 build() {
-	cd "$pkgname"
-	make
+    cd "$pkgname"
+    make
 }
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname"
+    make DESTDIR="$pkgdir/" install
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
