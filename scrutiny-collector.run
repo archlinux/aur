@@ -1,0 +1,9 @@
+#!/bin/sh
+[ -r conf ] && . ./conf
+
+# This is a "one-shot" type service, so the script is a bit funkier than usual
+while [ 1 ];
+    do
+        /usr/bin/scrutiny-collector-metrics run --config "$CONF_PATH" --log-file /var/log/scrutiny-collector-metrics/scrutiny-collector-metrics.log 2>&1;
+        sleep "$TIMER";
+done;

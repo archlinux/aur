@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -r conf ] && . ./conf
+
+exec chpst -u scrutiny /usr/bin/scrutiny start --config "$CONF_PATH" 2>&1

@@ -1,0 +1,21 @@
+pkgbase = scrutiny-runit
+	pkgdesc = Runit service script for scrutiny.
+	pkgver = 20250508
+	pkgrel = 1
+	url = https://github.com/AnalogJ/scrutiny
+	arch = x86_64
+	license = MIT
+	depends = runit
+	depends = scrutiny
+	source = scrutiny.run
+	source = scrutiny.log.run
+	source = scrutiny.conf
+	source = scrutiny-collector.run
+	source = scrutiny-collector.conf
+	sha256sums = 24247df54c3ca0f01b74d786c5c718687bf0ceeeae256bc20be60027872ec26a
+	sha256sums = 99f89bb8507905cfc6d3a06fd91954464fb836a83e95107d958be49866312a93
+	sha256sums = 10f6b54f578cf0982ab90d3440e11378b50f1e2b36ae1b6c3e5238d203f76f09
+	sha256sums = 6b10e19389d3bb021ef2706c16bfe5ee3a4f90dba13569fb14cc6479e6a5e6bd
+	sha256sums = 7bd2f79ca81ada3128a4fc90a1b976b2687850650e6e84f5711fa9b448143f42
+
+pkgname = scrutiny-runit
