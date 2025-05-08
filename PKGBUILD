@@ -3,7 +3,7 @@
 _pkgbasename=ghostty
 pkgname=${_pkgbasename}-git-zen3
 pkgrel=1
-pkgver=1.1.2.r753.g9a4419c
+pkgver=1.1.2.r842.gbcff488
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features (Zen 3 optimized)"
 arch=('x86_64')
 url="https://github.com/ghostty-org/${_pkgbasename}"
@@ -28,7 +28,7 @@ depends=(
     'wayland' 'libwayland-client.so'
     'zlib'
 )
-makedepends=('git' 'blueprint-compiler' 'pandoc-cli' 'zig' 'wayland-protocols')
+makedepends=('git' 'blueprint-compiler' 'pandoc-cli' 'zig=0.14.0' 'wayland-protocols')
 source=("git+https://git@github.com/ghostty-org/${_pkgbasename}")
 sha256sums=('SKIP')
 
@@ -40,13 +40,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgbasename}"
-
-    # Fix zigimg repository reference in build.zig.zon to use the new organization repo
-    if [ -f build.zig.zon ]; then
-        sed -i 's|github.com/TUSF/zigimg|github.com/zigimg/zigimg|g' build.zig.zon
-    fi
-
-    # Fetch zig cache
     ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-global-cache/" ./nix/build-support/fetch-zig-cache.sh
 
     # Modify build.zig to include Zen 3 optimizations
