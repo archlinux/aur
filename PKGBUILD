@@ -3,7 +3,7 @@
 _sdk=9.0
 _Name="Ps3DiscDumper"
 pkgname="ps3-disc-dumper"
-pkgver=4.3.4
+pkgver=4.3.5
 pkgrel=1
 pkgdesc="A handy utility to make decrypted PS3 disc dumps"
 arch=('x86_64')
@@ -13,10 +13,8 @@ depends=("dotnet-runtime>=${_sdk}" 'xdg-utils')
 makedepends=("dotnet-sdk>=${_sdk}" 'gendesk')
 options=('!strip' '!debug' 'staticlibs')
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "13xforever-DiscUtils-c4c8baf165a01831e080252a322d38c00f5b71c0.tar.gz::https://github.com/13xforever/DiscUtils/archive/c4c8baf165a01831e080252a322d38c00f5b71c0.tar.gz")
-b2sums=('7dfd2b350e903353734eae7dbfc70146fde0f8cce55328c22d9186148e42d4bf41571637e3a6765bce29cb21c22bf02139996a50ab2f0b3ec6a72983041eb6a9'
-        '3557bc9a07b5bb14565384510a21379971164cbd632130f597040fe80ff1b975ca2152fd2e5b3eef2e5d63b26a2492b3a56a468d32e490c2ef348ad63f070276')
+source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('e1c15aca7a1d90341dad8c5ebc12147e68f969ce589f2d370b0130695c8a3a61749b6ed8ea7ee244165fadb2eb5b5a4031397b674122e65eaa99f5844cb0f74c')
 
 _srcenv() {
   export NUGET_PACKAGES="${srcdir}/.nuget"
@@ -32,16 +30,12 @@ prepare() {
     -p:RuntimeIdentifiers=linux-x64 
   )
 
-  cd "${srcdir}"
-  cp -R ./"DiscUtils-c4c8baf165a01831e080252a322d38c00f5b71c0"/* "${_pkgsrc}/DiscUtils"
-
-  cd "${_pkgsrc}"
+  cd "${srcdir}/${_pkgsrc}"
   find . -type f -name '*.csproj' -exec \
     sed -e '/PublishSingleFile/d' \
         -e '/IncludeNativeLibrariesForSelfExtract/d' \
         -i "{}" +
 
-  dotnet restore ./DiscUtils "${dotnet_restore_options[@]}"
   dotnet restore ./IrdLibraryClient "${dotnet_restore_options[@]}"
   dotnet restore ./"${_Name}" "${dotnet_restore_options[@]}"
   dotnet restore ./UI.Avalonia "${dotnet_restore_options[@]}"
