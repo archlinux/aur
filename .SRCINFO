@@ -9,6 +9,7 @@ pkgbase = gridview-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron26
 	options = !strip
 	options = !emptydirs
