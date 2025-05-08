@@ -1,8 +1,9 @@
 pkgbase = glyph-bin
-	pkgdesc = Convert images/video to ASCII art
+	pkgdesc = Convert images/video to ASCII art (formerly asciigen)
 	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/seatedro/glyph
+	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg6.1
@@ -14,6 +15,8 @@ pkgbase = glyph-bin
 	source = glyph-1.0.11-LICENSE::https://github.com/seatedro/glyph/raw/refs/tags/v1.0.11/LICENSE
 	sha256sums = d0d5f4f40e9bc27c486714ae8289987f3705ef726965996b9a67275acd6ca251
 	sha256sums = 0e524e617c46da5a37455d17e4bf573b955e4c1dab1b1f657a27aa0c29f4cd15
+	source_aarch64 = glyph-1.0.11-aarch64.tar.gz::https://github.com/seatedro/glyph/releases/download/v1.0.11/glyph-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 88fe83ff66b3156124b7e051b352bc37f73bfee6a696173902d69f972d6a6809
 	source_x86_64 = glyph-1.0.11-x86_64.tar.gz::https://github.com/seatedro/glyph/releases/download/v1.0.11/glyph-x86_64-linux.tar.gz
 	sha256sums_x86_64 = e18de7503bd73433d7a808bc6ae93e1fab1aa74d6c6392e8b1e8d5aea3b2f4d4
 
