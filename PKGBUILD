@@ -7,9 +7,10 @@ arch=("x86_64")
 url="https://github.com/facebook/pyrefly"
 license=("MIT")
 makedepends=(
+  "cargo-nightly"
   "clang"
   "git"
-  "cargo-nightly"
+  "lld"
 )
 source=("git::git+https://github.com/facebook/pyrefly#tag=${pkgver}")
 sha256sums=('8347bb8035379feaaa8b6a30184e83fb4ed86494f53ca3473e447bd23a618702')
