@@ -2,65 +2,63 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r2371.gd33b5ff9
-pkgrel=2
+pkgver=1.99.3.r2381.g77d174ed
+pkgrel=1
 pkgdesc="The open-source Cursor alternative"
 url="https://voideditor.com/"
 arch=('x86_64')
 license=("MIT")
 provides=('void')
-options=(!strip !debug)
+options=(!debug)
 _elnum=34
 depends=( electron${_elnum} ripgrep # replacements
-	libx11
-	libxkbfile
-	libsecret
-	gnupg
-	libnotify
-	libxss
-	lsof # terminal splitting (https://github.com/Microsoft/vscode/issues/62991)
-	shared-mime-info
-	xdg-utils # opening web links
-	alsa-lib
+  libx11
+  libxkbfile
+  libsecret
+  gnupg
+  libnotify
+  libxss
+  shared-mime-info
+  alsa-lib
 )
 optdepends=(
-	'electron: /usr/share/void/void-latestron'
-	'glib2: Move to trash functionality'
-	'gvfs: Move to trash functionality'
-	'libdbusmenu-glib: KDE global menu'
-	'org.freedesktop.secrets: Settings sync'
+  'electron: /usr/share/void/void-latestron'
+  'glib2: Move to trash functionality'
+  'gvfs: Move to trash functionality'
+  'libdbusmenu-glib: KDE global menu'
+  'lsof: Terminal splitting'
+  'xdg-utils: Opening web links'
+  'org.freedesktop.secrets: Settings sync'
 )
 makedepends=(
-	'npm'
-	'nodejs-lts-iron' # see .nvmrc
-	'pkg-config'
+  npm
+  nodejs-lts-iron # see .nvmrc
+  pkgconf
 )
-source=(
-	"git+https://github.com/voideditor/void.git"
-	"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh"
-)
+source=("git+https://github.com/voideditor/void.git"
+"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('SKIP'
-            '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
+'5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 pkgver() {
-	cd "${_pkgname}"
-	printf "%s.r%s.g%s" $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
-		$(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  cd "${_pkgname}"
+  printf "%s.r%s.g%s" $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
+    $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
-	cd "${_pkgname}"
-	# Clean npm cache and remove existing node_modules
-	npm cache clean --force
-	rm -rf node_modules
-	# Use version of system electron
-	npm install electron@$(cat /usr/lib/electron${_elnum}/version) --save-dev
-	# Install dependencies with legacy peer deps flag to handle dependency conflicts
-	npm install --legacy-peer-deps
-	# Build react because it fails for some reason
-	npm run buildreact
-	# Bundle it
-	npm run gulp vscode-linux-x64
+  cd "${_pkgname}"
+  # Clean npm cache and remove existing node_modules
+  npm cache clean --force
+  rm -rf node_modules
+  # Use version of system electron
+  npm install electron@$(cat /usr/lib/electron${_elnum}/version) --save-dev
+  # Install dependencies with legacy peer deps flag to handle dependency conflicts
+  npm install --legacy-peer-deps
+  # Build react because it fails for some reason
+  npm run buildreact
+  # Bundle it
+  npm run gulp vscode-linux-x64
 }
 
 package() {
