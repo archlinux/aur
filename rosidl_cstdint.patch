@@ -1,0 +1,38 @@
+From 755ccabad41a9fb490331b39700fb869d65604df Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=98ystein=20Sture?= <os@skarvtech.com>
+Date: Thu, 1 May 2025 17:35:50 +0200
+Subject: [PATCH] Add missing cstdint include
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Øystein Sture <os@skarvtech.com>
+---
+ rosidl_generator_cpp/resource/idl__struct.hpp.em         | 1 +
+ rosidl_runtime_cpp/include/rosidl_runtime_cpp/traits.hpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/rosidl_generator_cpp/resource/idl__struct.hpp.em b/rosidl_generator_cpp/resource/idl__struct.hpp.em
+index c4b7c289e..b8f985617 100644
+--- a/rosidl_generator_cpp/resource/idl__struct.hpp.em
++++ b/rosidl_generator_cpp/resource/idl__struct.hpp.em
+@@ -28,6 +28,7 @@ include_directives = set()
+ 
+ #include <algorithm>
+ #include <array>
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
+diff --git a/rosidl_runtime_cpp/include/rosidl_runtime_cpp/traits.hpp b/rosidl_runtime_cpp/include/rosidl_runtime_cpp/traits.hpp
+index 2d285b7b2..5a4773c66 100644
+--- a/rosidl_runtime_cpp/include/rosidl_runtime_cpp/traits.hpp
++++ b/rosidl_runtime_cpp/include/rosidl_runtime_cpp/traits.hpp
+@@ -16,6 +16,7 @@
+ #define ROSIDL_RUNTIME_CPP__TRAITS_HPP_
+ 
+ #include <codecvt>
++#include <cstdint>
+ #include <iomanip>
+ #include <iosfwd>
+ #include <string>

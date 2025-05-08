@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-kilted-base
-pkgver=2025.04.30
-pkgrel=2
+pkgver=2025.05.07
+pkgrel=1
 _rosdist="Kilted Kaiju"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -39,17 +39,17 @@ conflicts=(
   "ros2-${_rosdist_short}"
 )
 source=(
-    "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-beta-${pkgver//.}.tar.gz"
+    "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-beta2-${pkgver//.}.tar.gz"
     "ros2-variants-0.12.0.tar.gz::https://github.com/ros2/variants/archive/0.12.0.tar.gz"
-    "orocos_kdl_vendor_cmake4.patch::https://github.com/ros2/orocos_kdl_vendor/pull/35.patch"
+    "orocos_kdl_vendor_cmake4.patch"
     "console_bridge_vendor_cmake4.patch"
     "fastdds.patch"
     "urdfdom_cstdint.patch"
     "mcap_vendor_cstdint.patch"
-    "rosidl_cstdint.patch::https://github.com/ros2/rosidl/pull/864.patch"
+    "rosidl_cstdint.patch"
     "zenoh_cpp_vendor_lto_tls.patch"
 )
-sha256sums=('5f2dd065cac38c0f006002b932d1b148021ce0426e92751eee90a81b885b96c8'
+sha256sums=('e3e4dbf1c66c701dcfd71c4083b38c1924f5f27cc7ac6edecc65c64ecaa82c93'
             '5089bf2dea8368020243d40a2b513405cd060aacc42de6fae2289c1a87f74f99'
             '896cca4533470216bf1be24daa6dd22ed781fab6f457919e8c2a56726e04aaab'
             'd2b905b6dccc972cdc83a9c1410bf15494dcc22c888bb2ccf36497b25bd9134b'
@@ -67,7 +67,7 @@ prepare() {
     # Clone the repos
     printf "Cloning ros2 repositories\n"
     mkdir -p "$srcdir/ros2/src"
-    vcs import "$srcdir/ros2/src" < $srcdir/ros2-release-${_rosdist_short}-beta-${pkgver//.}/ros2.repos
+    vcs import "$srcdir/ros2/src" < $srcdir/ros2-release-${_rosdist_short}-beta2-${pkgver//.}/ros2.repos
 
     printf "Patching sources\n"
 
