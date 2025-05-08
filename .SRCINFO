@@ -1,6 +1,6 @@
 pkgbase = parseit-git
 	pkgdesc = A desktop application used to parse web pages by URL and save them as Markdown formatted articles. Articles are stored locally in the file system and can then be edited and managed.(Use system-wide electron)
-	pkgver = 2.0.4.r0.ge1ddbc6
+	pkgver = 2.0.5.r0.ge05a5f6
 	pkgrel = 1
 	url = https://kirillgalushko.github.io/parseit/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = parseit-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron33
 	source = parseit.git::git+https://github.com/kirillgalushko/parseit.git
 	source = parseit.sh
