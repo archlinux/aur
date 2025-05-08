@@ -1,7 +1,7 @@
 pkgbase = synology-drive
 	pkgdesc = Desktop utility of the DSM add-on package, Synology Drive Server
 	pkgver = 3.5.2_16111
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.synology.com/en-global/releaseNote/SynologyDriveClient
 	arch = x86_64
 	license = custom:Synology Linux License Grant
