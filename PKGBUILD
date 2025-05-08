@@ -1,0 +1,56 @@
+pkgname=sparkle-electron-git
+_pkgname=${pkgname%-electron-git}
+pkgver=r737.e4a7e67
+pkgrel=1
+pkgdesc="Another Mihomo GUI."
+arch=('x86_64' 'aarch64')
+url="https://github.com/xishang0128/sparkle"
+license=('GPL3')
+conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-bin" "$_pkgname-electron" "$_pkgname-electron-bin")
+depends=('electron' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
+optdepends=('libappindicator-gtk3: Allow sparkle to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
+makedepends=('nodejs' 'pnpm' 'libxcrypt-compat' 'asar')
+install=$_pkgname.install
+source=(
+    "${_pkgname}.desktop"
+    "${_pkgname}.sh"
+    "git+$url.git"
+)
+sha256sums=(
+    "b17d85f6d862285a53a24d0f8dedd08f1f3c852ba6a901fabc487177598803cc"
+    "ce855656fb0682d403685244c77dd2d90ec6efb207753fb7a6ddc1e9b6aa2c49"
+    "SKIP"
+)
+options=('!lto')
+
+pkgver() {
+    cd $srcdir/${_pkgname}
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | tr -d 'v' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare(){
+    cd $srcdir/${_pkgname}
+    sed -i "s/productName: Sparkle/productName: sparkle/" electron-builder.yml
+    pnpm install
+}
+
+build(){
+    cd $srcdir/${_pkgname}
+    pnpm build:linux deb
+}
+
+package() {
+    asar extract $srcdir/${_pkgname}/dist/linux-unpacked/resources/app.asar ${pkgdir}/opt/sparkle
+    cp -r $srcdir/${_pkgname}/extra/sidecar ${pkgdir}/opt/sparkle/resources/
+    cp -r $srcdir/${_pkgname}/extra/files ${pkgdir}/opt/sparkle/resources/
+    chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo
+    chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo-alpha
+    install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${pkgdir}/opt/sparkle/resources/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+
+    chown -R root:root ${pkgdir}
+}
