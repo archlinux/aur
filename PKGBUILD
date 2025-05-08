@@ -44,9 +44,15 @@ makedepends=(
   unzip
   webkit2gtk
 )
+
+# Original source archive was hosted on openJDK mercurial server here:
+# https://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${pkgver//./}-ga.tar.bz2
+# Unfortunately this server seems to be having lots of issues so this repo and source
+# archive has been mirrored on @danwood76's github account temporarily
+
 DLAGENTS=("https::/usr/bin/curl --user-agent 'Mozilla' -fLC - -o %o %u")
 source=(
-  https://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/${pkgver//./}-ga.tar.bz2
+  https://github.com/danwood76/openjfx8-mirror/releases/download/${pkgver//./}-ga/${pkgver//./}-ga.tar.bz2
   gradle.properties
   https://services.gradle.org/distributions/gradle-4.8-bin.zip
   java8-openjfx-flags.patch
