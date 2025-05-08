@@ -22,6 +22,7 @@ makedepends=('python-distribute'
 	     'python-nosexcover'
 	     'python-setuptools'
 	     'dpkg')
+
 #checkdepends=('devscripts'
 #              'pristine-tar'
 #	      'cpio'
@@ -30,8 +31,7 @@ makedepends=('python-distribute'
 #	      'curl'
 #	      'python-requests'
 #	      'debhelper')
-	     
-	     
+
 backup=('etc/git-buildpackage/gbp.conf')
 source=("git+https://github.com/agx/git-buildpackage.git#tag=debian/$pkgver")
 sha256sums=('f8ead462299dbb8023a2cd189f8e02fbcb592dd775402a2273df3a2b656a790c')
