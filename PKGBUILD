@@ -3,14 +3,14 @@
 # Contributor: Spider.007 <aur@spider007.net>
 
 pkgname=graylog
-pkgver=6.2.1
+pkgver=6.2.2
 pkgrel=1
 pkgdesc='Free and open source log management platform'
 arch=('any')
 url="https://github.com/graylog2/graylog2-server"
 license=('custom:SSPL')
 depends=('java-runtime>=17')
-optdepends=('mongodb>=5' 'mongodb<=7' 'opensearch>1.1' 'opensearch<=2.15')
+optdepends=('mongodb-bin' 'mongodb70-bin' 'mongodb-tools-bin' 'opensearch>1.1' 'opensearch<=2.15')
 changelog=UPGRADING.md
 backup=('etc/graylog/server/server.conf')
 install=graylog.install
@@ -18,7 +18,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz"
 	graylog-tmpfiles.conf
 	graylog.service)
-sha256sums=('a7f60b21139c81242e79428fef5d94419e314cb9b1ee65e067ec86e250e1a259'
+sha256sums=('0295071a919cd9e791555246b9d7c4f3484e1218d8c127e431ec9c3ba29160ca'
             '4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d'
             '42340980c59327d40354863da7431c4f92b45a19cea2cdccf2f2ae26e0adc38c')
 
