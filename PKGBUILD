@@ -12,11 +12,14 @@ depends=('openssh')
 makedepends=('autoconf')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("https://github.com/chaos/pdsh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('d9ed65a6ede56a9e1f718af3b39a5d2b')
+source=("https://github.com/chaos/pdsh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  patch)
+md5sums=('d9ed65a6ede56a9e1f718af3b39a5d2b'
+         '37b9f71157abe8f04083565837f69ac6')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i ../../patch
   ./configure --prefix=/usr --mandir=/usr/share/man \
               --without-rsh \
               --with-ssh \
