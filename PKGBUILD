@@ -2,7 +2,7 @@
 
 pkgname=curl-impersonate
 pkgver=1.0.0rc2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl."
 url="https://github.com/lexiforest/curl-impersonate"
