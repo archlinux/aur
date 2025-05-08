@@ -1,10 +1,8 @@
 # Maintainer: Martin Larralde <martin.larralde@embl.de>
 
-# Maintainer: Martin Larralde <martin.larralde@embl.de>
-
 _name=pyhmmer
 pkgname=python-${_name}
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to HMMER3"
 url="https://github.com/althonos/pyhmmer"
@@ -13,7 +11,7 @@ license=("MIT")
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 depends=('python' 'python-psutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(4a4c3d72d2da0a46a083c1431739eb256e6850287120f99267a18cc5c57e8ab7)
+sha256sums=(f83e9a7d80f31713c52291b5c888dddb98c1e765222e064c40d56e87ad91cc4e)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -25,11 +23,13 @@ check() {
     local machine=$(python -c 'import platform; print(platform.machine())')
     whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
 
+    rm -rf "${srcdir}/env"
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
     source "${srcdir}/env/bin/activate"
     python -m installer "$whl"
 
     python -m unittest ${_name}.tests
+    deactivate
 }
 
 package() {
