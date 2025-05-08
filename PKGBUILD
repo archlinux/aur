@@ -2,23 +2,18 @@
 
 pkgname=windsurf
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The new purpose-built IDE to harness magic"
 arch=('x86_64')
 url="https://windsurf.com/"
-license=('custom')
-depends=(
+license=('custom') # should be fixed
+_elnum=34
+depends=( electron$_elnum ripgrep fd #replacements
     'alsa-lib'
-    'bash'
     'cairo'
     'dbus'
     'expat'
-    'fontconfig'
-    'gcc-libs'
-    'glibc>=2.28-4'
     'gnupg'
-    'gtk3'
-    'libdrm'
     'libnotify'
     'libsecret'
     'libx11'
@@ -35,49 +30,46 @@ depends=(
     'lsof'
     'mesa'
     'nspr'
-    'nss'
     'shared-mime-info'
     'xdg-utils'
 )
-optdepends=('glib2: Needed for move to trash functionality'
-            'org.freedesktop.secrets: Needed for settings sync'
-            'libdbusmenu-glib: Needed for KDE global menu'
-            'icu69: Needed for live share'
-            'vulkan-icd-loader: Vulkan support')
-
-provides=('windsurf')
-options=('!strip')
-
-source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb")
-
-sha256sums=('2f5fd7d829984c8f011334ea7a02540b179f5518165c0a7691b22feab19a2bd9')
-
+optdepends=('glib2: Move to trash functionality'
+            'org.freedesktop.secrets: Sync settings'
+            'libdbusmenu-glib: KDE global menu'
+            'vulkan-driver'
+            'electron: /usr/share/windsurf/windsurf-latestron')
+options=('!strip') # ~0.49MB
+makedepends=('tar' 'sed') # tar is faster than bsdtar.
+source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/w/windsurf/Windsurf-linux-x64-${pkgver}.deb"
+		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
+sha256sums=('2f5fd7d829984c8f011334ea7a02540b179f5518165c0a7691b22feab19a2bd9'
+            '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 package() {
-    bsdtar -xf "data.tar.xz"
-    # Install main binaries
-    install -d "${pkgdir}/usr/share/${pkgname}"
-    mv "usr/share/${pkgname}" "${pkgdir}/usr/share/"
-
-    # Install binary launcher symbolic link
-    install -d "${pkgdir}/usr/bin"
-    ln -s /usr/share/windsurf/windsurf "${pkgdir}/usr/bin/${pkgname}"
-    # Install desktop entry files for application and URL handling
-    mv usr/share/applications "${pkgdir}/usr/share/applications"
-    # Install application metadata (AppStream metainfo)
-    install -Dm644 "usr/share/appdata/${pkgname}.appdata.xml" "${pkgdir}/usr/share/metainfo/com.codeium.${pkgname}.metainfo.xml"
-    install -Dm644 "usr/share/mime/packages/${pkgname}-workspace.xml" "${pkgdir}/usr/share/mime/packages/${pkgname}-workspace.xml"
-    # KDE/GTK never look in 1024-px dirs; install smaller aliases too
-    local _icon="usr/share/pixmaps/${pkgname}.png"
-
-    # install the real file once (1024 px)
-    install -Dm644 "${_icon}" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
-
-    # create 256 px & 128 px entries as symlinks to save space
-    for _sz in 256 128; do
-        install -d "${pkgdir}/usr/share/icons/hicolor/${_sz}x${_sz}/apps"
-        ln -s "/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_sz}x${_sz}/apps/${pkgname}.png"
-    done
-	# Shell completions
-    mv "usr/share/bash-completion" "${pkgdir}/usr/share/bash-completion"
-    install -Dm644 "usr/share/zsh/vendor-completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak' \
+		--exclude 'usr/share/pixmaps'
+ 	# Check version of electron
+ 	echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' usr/share/windsurf/resources/app/package.json) with $(cat /usr/lib/electron${_elnum}/version)
+ 	echo 'Fix if "major" version is wrong.'
+	# Fix path
+	mv usr/share/{appdata,metainfo} # metainfo (needed?)
+ 	mv usr/share/zsh/{vendor-completions,site-functions}
+	# Launcheres
+	_app=/usr/share/windsurf/resources/app
+	sed -e "s|code-flags|windsurf-flags|" code.sh \
+		-e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
+		-e "s|/usr/lib/code/code.mjs|--app=${_app}|" > run.sh
+	sed "s|name=electron|name=electron${_elnum}|" run.sh > run-safe.sh
+	install -Dm755 run.sh usr/share/windsurf/windsurf-latestron
+	install -Dm755 run-safe.sh usr/bin/windsurf
+	ln -sf /usr/bin/windsurf usr/share/windsurf/windsurf
+	# Replacements
+	_fd=usr/share/windsurf/resources/app/extensions/windsurf/bin/fd
+	rm ${_fd}.LICENSE # unexistence is detected as failure
+	ln -svf /usr/bin/fd ${_fd}
+	_rgdir=usr/share/windsurf/resources/app/node_modules/@vscode/ripgrep
+	rm ${_rgdir}/LICENSE # unexistence is detected as failure
+	ln -svf /usr/bin/rg ${_rgdir}/bin/rg
+	# Icon (1024^2 is unusable at KDE)
+	install -Dm644 "usr/share/${pkgname}/resources/app/out/media/code-icon.svg" "usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+	mv usr "${pkgdir}"
 }
