@@ -1,0 +1,14 @@
+--- a/plugins/nginx-vhosts/internal-functions	2025-04-16 23:08:15.000000000 +0200
++++ b/plugins/nginx-vhosts/internal-functions	2025-05-08 19:52:31.781541854 +0200
+@@ -679,6 +679,11 @@
+     NGINX_INIT_NAME=openresty
+   fi
+
++  local systemctl_path=/bin/systemctl
++  if [[ -x /usr/bin/systemctl ]]; then
++    systemctl_path=/usr/bin/systemctl
++  fi
++
+   case "$DOKKU_DISTRO" in
+     debian | raspbian)
+       if [[ -x "$systemctl_path" ]]; then
