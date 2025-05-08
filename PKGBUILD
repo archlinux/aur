@@ -1,7 +1,7 @@
 # Maintainer: Pixel
 
 pkgname=walrs
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A fast color scheme generator"
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
+  rustup default stable
   cargo build --release
 }
 
@@ -21,6 +22,7 @@ package() {
   cd "$srcdir/$pkgname"
   install -Dm755 target/release/walrs "$pkgdir/usr/bin/walrs"
   install -d "$pkgdir/etc/walrs/templates"
-  cp -r templates/* "$pkgdir/etc/walrs/templates/"
+  cp -r templates/ "$pkgdir/etc/walrs"
+  cp -r colorschemes/ "$pkgdir/etc/walrs"
 }
 
