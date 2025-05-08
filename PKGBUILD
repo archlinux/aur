@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='libdecaf'
 pkgver='1.0.2'
-pkgrel=2
+pkgrel=3
 pkgdesc="A 448-bit Edwards curve"
 url="https://sourceforge.net/projects/ed448goldilocks/"
 depends=('glibc')
@@ -19,6 +19,7 @@ build() {
     -DENABLE_TESTS=ON \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_C_FLAGS="-Wno-sizeof-array-div -Wno-array-parameter" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -Wno-dev
     make -C build
 }
