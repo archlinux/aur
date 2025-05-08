@@ -2,7 +2,7 @@
 
 pkgname=curl-impersonate
 pkgver=1.0.0rc2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome and other browsers. Includes libcurl."
 url="https://github.com/lexiforest/curl-impersonate"
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=(tar gcc14 cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(nss libc++)
-provides=(curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate)
+provides=(curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate libcurl-impersonate-chrome libcurl-impersonate-firefox)
 conflicts=(curl-impersonate-bin curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate-bin)
 replaces=(curl-impersonate-chrome curl-impersonate-firefox)
 
@@ -39,5 +39,7 @@ package () {
 
   # Cleanup libcurl
   find -L "${pkgdir}/usr/lib" -type f ! -iname "lib*.so*" -print0 | xargs -0r -I@ -- rm -vf "@"
+  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so
+  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so.4
   chown -R root:root "${pkgdir}/usr/lib/"
 }
