@@ -2,7 +2,7 @@
 # Co-Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=foundryvtt
-pkgver=12.331
+pkgver=13.342
 pkgrel=1
 pkgdesc="A self-hosted, modern, and developer-friendly roleplaying platform"
 arch=('x86_64')
@@ -11,18 +11,18 @@ license=('custom')
 # FoundryVTT archive must be downloaded from https://foundryvtt.com/community/<usename>/licenses
 options=(!strip)
 source=(
-	"FoundryVTT-$pkgver.zip::local://FoundryVTT-$pkgver.zip"
+	"FoundryVTT-Linux-$pkgver.zip::local://FoundryVTT-Linux-$pkgver.zip"
 	"foundryvtt.desktop"
 )
 sha256sums=(
-	'1f82297e5124c2c99e0c039d5562db861e22dc5ef385361d3993c54f7e07f278'
-	'eb6d09ea176748a0e9b3a0ebb2aa3f2bca23e5f082ed676edd9fd8bf6b0ebbcb'
+    'a8acd74c800f6abba0cef806d3ef992ef49edbacbd691ead3957ed2a609bff29'
+    'eb6d09ea176748a0e9b3a0ebb2aa3f2bca23e5f082ed676edd9fd8bf6b0ebbcb'
 )
 
 package() {
 	install -m755 -d "$pkgdir/opt/$pkgname"
 	install -m755 -d "$pkgdir/usr/bin"
-	install -m644 -D -t "$pkgdir/usr/share/licenses/$pkgname/" "resources/app/license.html"
+	install -m644 -D -t "$pkgdir/usr/share/licenses/$pkgname/" "license.html"
 	install -m644 -D -t "$pkgdir/usr/share/applications/" "foundryvtt.desktop"
 	cp -r * "$pkgdir/opt/$pkgname"
 	rm "$pkgdir/opt/$pkgname/${source[0]/::*/}"
