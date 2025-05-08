@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=0.2.27
+pkgver=0.2.29
 _nodeversion=20
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Written in Go)"
@@ -20,11 +20,12 @@ makedepends=(
     'nvm'
     'go'
     'wails'
+    'git'
 )
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
 )
-sha256sums=('f163d20f4d8ff593f2e7997d3e40f89861dad5fcbeb7c45fd7b4285b24c8d5b3')
+sha256sums=('00bb3b9aa1c8132de836a0b6fad6279e66801660beab5ec5e86806e7cd01c974')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -32,15 +33,15 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}/frontend"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${_pkgname}" --exec="${pkgname}"
-    cd "${srcdir}/${_pkgname}-${pkgver}/frontend"
-    electronDist="/usr/lib/electron${_electronversion}"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -52,7 +53,7 @@ prepare() {
     NODE_ENV=production     npm run build
 }
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -64,7 +65,7 @@ build() {
     wails build -tags with_gvisor,webkit2_41 -skipbindings -m -s -trimpath -nosyncgomod -platform linux
 }
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/appicon.png" "${srcdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/bin/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${srcdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
