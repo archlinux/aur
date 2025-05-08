@@ -1,5 +1,5 @@
 pkgname=s3lightfixes-git
-pkgver=0.1.3.r2.g471b6b3
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Application for OpenMW modlists designed to make ESP files which adjust the lighting values from all mods listed in openmw.cfg'
 url='https://modding-openmw.com/mods/s3lightfixes/'
