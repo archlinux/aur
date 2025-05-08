@@ -9,7 +9,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r54896.aab732cb826
+pkgver=r54906.8b9ddf55447
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
