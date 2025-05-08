@@ -1,0 +1,14 @@
+pkgbase = customasm
+	pkgdesc = An assembler for custom, user-defined instruction sets
+	pkgver = 0.13.10
+	pkgrel = 1
+	url = https://github.com/hlorenzi/customasm
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = customasm-0.13.10.tar.gz::https://static.crates.io/crates/customasm/customasm-0.13.10.crate
+	sha256sums = f3b48dbdb6ec8842352fa3586efe4666cae32662c1becccca6f61fc7b5c25288
+
+pkgname = customasm
