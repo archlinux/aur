@@ -9,6 +9,7 @@ pkgbase = postgresql-uint-git
 	makedepends = git
 	makedepends = llvm
 	makedepends = python
+	depends = glibc
 	depends = postgresql
 	provides = postgresql-uint
 	conflicts = postgresql-uint
