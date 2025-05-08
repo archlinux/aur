@@ -3,7 +3,7 @@
 
 pkgname=aocl-utils-aocc
 pkgaltname=aocl-utils
-pkgver=5.0
+pkgver=5.1
 pkgrel=1
 pkgdesc="AOCL-Utils provides a uniform interface to all the AOCL libraries to access the CPU features for AMD CPUs."
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('aocl-utils')
 conflicts=('aocl-utils')
 makedepends=('cmake' 'ninja')
 source=("${pkgaltname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ee2e5d47f33a3f673b3b6fcb88a7ef1a28648f407485ad07b6e9bf1b86159c59')
+sha256sums=('68d75e04013abe90ea8308a9bc99b99532233b6c7f937f35381563f4124c20a5')
 
 build() {
     source /opt/aocc/setenv_AOCC.sh
