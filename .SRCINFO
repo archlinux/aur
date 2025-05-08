@@ -1,7 +1,7 @@
 pkgbase = quba-bin
 	pkgdesc = A viewer for electronic invoices.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZUGFeRD/quba-viewer
 	arch = x86_64
 	license = Apache-2.0
