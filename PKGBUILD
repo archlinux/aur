@@ -12,12 +12,12 @@ source=("pguint-${pkgver}.tar.gz::https://github.com/petere/pguint/archive/$pkgv
 sha256sums=('dde9e193527d7216f2bcf2141b132e854e51c5674cf6a7a227ea76d206e46307')
 
 build() {
-	cd "pguint-$pkgver"
-	make
+    cd "pguint-$pkgver"
+    make
 }
 
 package() {
-	cd "pguint-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "pguint-$pkgver"
+    make DESTDIR="$pkgdir/" install
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
