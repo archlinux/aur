@@ -27,6 +27,8 @@ md5sums_i686=('2cf6f64417280dae0065a720beeaec0d')
 package () {
   mkdir -p "${pkgdir}/usr/lib/"
   find -L -type f -iname "lib*.so*" -print0 | xargs -0r -I@ -- cp -a "@" "${pkgdir}/usr/lib/"
+  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so
+  ln -s /usr/lib/${pkgname%-bin}.so.4.8.0 "$pkgdir"/usr/lib/${pkgname%-bin}-chrome.so.4
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
   chown -R root:root "${pkgdir}/usr/lib/"
 }
