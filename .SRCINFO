@@ -1,6 +1,6 @@
 pkgbase = yosys-nightly
 	pkgdesc = Yosys Open SYnthesis Suite, A framework for RTL synthesis
-	pkgver = 20250507_v0.53_3_ga0e94e506
+	pkgver = 20250508_v0.53_6_g6378ba10e
 	pkgrel = 1
 	epoch = 1
 	url = https://yosyshq.net/yosys/
@@ -22,13 +22,13 @@ pkgbase = yosys-nightly
 	depends = readline
 	optdepends = graphviz: Schematics display support
 	optdepends = xdot: Design netlist display support
-	provides = yosys=3
+	provides = yosys=6
 	conflicts = yosys
 	conflicts = yosys-git
 	replaces = yosys
 	replaces = yosys-git
 	options = !strip
-	source = yosys::git+https://github.com/YosysHQ/yosys.git#commit=a0e94e506
+	source = yosys::git+https://github.com/YosysHQ/yosys.git#commit=6378ba10e
 	source = yosys.conf
 	sha256sums = SKIP
 	sha256sums = 7513c07ccaf3ff00b1692348ece8a44ee48a7b9f5318f773de78d7538e82c127
