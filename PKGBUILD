@@ -10,7 +10,7 @@ pkgname="${_pkgname}-bin"
 _subver='3.3'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -66,7 +66,7 @@ prepare() {
     install -Dm755 -d "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
     bsdtar -xf "${srcdir}/${_pkgname}-chromedriver-${pkgver}-${CARCH}.zip" -C "${srcdir}/${_pkgname}"
-    rm -rf "${srcdir}/${_pkgname}/gen"
+    rm -rf "${srcdir}/${_pkgname}/"{gen,chromedriver.debug}
     chmod u+s "${srcdir}/${_pkgname}/chrome-sandbox"
 }
 package() {
@@ -74,4 +74,5 @@ package() {
     cp -r --no-preserve=ownership --preserve=mode "${srcdir}/${_pkgname}" "${pkgdir}/usr/lib"
     ln -nfs "/usr/lib/${_pkgname}/${_projectname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -rf "${pkgdir}/usr/bin/${_pkgname}/LICENSE"*
 }
