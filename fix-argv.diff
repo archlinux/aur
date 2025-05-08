@@ -1,5 +1,18 @@
+diff --git a/apps/studio/src/common/bksConfig/mainBksConfig.ts b/apps/studio/src/common/bksConfig/mainBksConfig.ts
+index f2f704b4f..bb6090ecc 100644
+--- a/apps/studio/src/common/bksConfig/mainBksConfig.ts
++++ b/apps/studio/src/common/bksConfig/mainBksConfig.ts
+@@ -85,7 +85,7 @@ export function checkConflicts(
+   return results;
+ }
+ 
+-const bundledConfigPath = path.join(process.resourcesPath);
++const bundledConfigPath = path.join(platformInfo.resourcesPath);
+ 
+ function copyBundledConfig(file: ConfigFileName, dest: string) {
+   log.info(`Copying bundled config ${file} to ${dest}.`);
 diff --git a/apps/studio/src/common/platform_info/mainPlatformInfo.ts b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
-index 44942e8b..69eb1341 100644
+index 009a8948b..a7de9a899 100644
 --- a/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 +++ b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 @@ -52,7 +52,7 @@ export function mainPlatformInfo(): IPlatformInfo {
@@ -11,7 +24,7 @@ index 44942e8b..69eb1341 100644
    let userDirectory = testMode ? './tmp' : e.app.getPath("userData")
    const downloadsDirectory = testMode ? './tmp' : e.app.getPath('downloads')
    const homeDirectory = testMode ? './tmp' : e.app.getPath('home')
-@@ -62,7 +62,19 @@ export function mainPlatformInfo(): IPlatformInfo {
+@@ -63,7 +63,19 @@ export function mainPlatformInfo(): IPlatformInfo {
  
    const sessionType = p.env.XDG_SESSION_TYPE
  
