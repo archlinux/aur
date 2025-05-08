@@ -2,8 +2,8 @@
 pkgname=gnome-shell-extension-nepali-date-git
 _pkgname=nepali-date@biplab
 pkgver=r44.759ff70
-pkgrel=1
-pkgdesc="A gnome-shell extension for Linux that displays Nepali date on the top panel."
+pkgrel=2
+pkgdesc="A gnome-shell extension for Linux that displays Nepali calendar date on the top panel."
 arch=('any')
 url="https://github.com/Biplab-Dutta/Nepali_Date"
 license=('GPL-3.0-only')
