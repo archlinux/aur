@@ -1,4 +1,4 @@
-# Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
+# Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=postgresql-uint
 pkgver=1.20200704
 pkgrel=1
