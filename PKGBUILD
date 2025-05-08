@@ -2,7 +2,7 @@
 
 _pkgauthor=goplus
 pkgname=igop
-pkgver=0.42.0
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="The Go/Go+ Interpreter"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 makedepends=('go')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9a5447d1f64965311a534bb6f2c6ff43db147a03192a5fd3c023c2905d0d5974')
+sha256sums=('d190f4e6446b459a49ab0f19252b2bb6d674880ea4ebd8e5893038331c99265f')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
