@@ -1,7 +1,7 @@
 pkgbase = sparkle-git
 	pkgdesc = Another Mihomo GUI.
 	pkgver = 1.6.2.r2.db8c6a0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xishang0128/sparkle
 	install = sparkle.install
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = sparkle-git
 	conflicts = sparkle-bin
 	conflicts = sparkle-electron
 	conflicts = sparkle-electron-bin
+	conflicts = sparkle-electron-git
 	options = !lto
 	source = sparkle.sh
 	source = git+https://github.com/xishang0128/sparkle.git
