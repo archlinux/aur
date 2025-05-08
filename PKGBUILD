@@ -2,7 +2,7 @@
 
 _pkgname='ory-cli'
 pkgname="${_pkgname}-bin"
-pkgver=0.3.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="ORY Command Line Interface (CLI)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=()
 provides=("${_pkgname}")
 source=("https://github.com/ory/cli/releases/download/v${pkgver//_/-}/ory_${pkgver//_/-}-linux_64bit.tar.gz")
-sha256sums=('450123bf5542b8b450e046313c98155ff568852b538a80312067206b00d59451')
+sha256sums=('9abe0325309515977c8611c20aa88585846ff68535c9c72ad3e49ae5ebd01058')
 
 build() {
 	# create completion scripts
