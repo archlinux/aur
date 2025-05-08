@@ -1,17 +1,16 @@
 pkgbase = whatsapp-desktop-client-git
 	pkgdesc = A cross-platform desktop application that allows you to use WhatsApp directly on your computer, making it easier to chat with friends and family while working.(Use system-wide electron)
-	pkgver = 1.0,4.r0.ga7f76a7
+	pkgver = 1.2.0.r0.g4b41ac0
 	pkgrel = 1
 	url = https://snapcraft.io/whatsapp-desktop-client
 	arch = any
 	license = MIT
-	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
 	depends = electron33
-	provides = whatsapp-desktop-client=1.0,4
+	provides = whatsapp-desktop-client=1.2.0
 	conflicts = whatsapp-desktop-client
 	source = whatsapp-desktop-client.git::git+https://github.com/xanmoy/whatsapp-desktop-client
 	source = whatsapp-desktop-client.desktop
