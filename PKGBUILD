@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 makedepends=(tar gcc cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(nss libc++)
 provides=(curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate)
-conflicts=(curl-impersonate-bin)
+conflicts=(curl-impersonate-bin curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate-bin)
 replaces=(curl-impersonate-chrome curl-impersonate-firefox)
 
 source=(
