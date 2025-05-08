@@ -2,14 +2,14 @@
 
 _name=wiremix
 pkgname=${_name,,}-git
-pkgver=r428.44d4c92
+pkgver=r431.5efdee6
 pkgrel=1
 pkgdesc="A simple TUI audio mixer for PipeWire"
 url="https://github.com/tsowell/$_name"
 arch=(x86_64)
 license=(Apache-2.0 MIT)
 depends=(libpipewire)
-makedepends=(cargo clang libpipewire pkgconf)
+makedepends=(cargo clang libpipewire)
 options=(!lto)
 provides=($_name)
 source=("git+${url}.git")
@@ -25,14 +25,13 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cd "${srcdir}/$_name" || exit 1
-  cargo build --frozen --release
+  cargo build --locked --release
 }
 
 package() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
   cd "${srcdir}/$_name" || exit 1
-  cargo install --no-track --root "$pkgdir/usr/" --path .
+  install -Dm755 "target/release/$_name" "${pkgdir}/usr/bin/$_name"
+  install -Dm755 wiremix.toml "${pkgdir}/usr/share/$_name/wiremix.toml.example"
   install -Dm644 LICENSE-APACHE LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
