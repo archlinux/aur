@@ -1,7 +1,7 @@
 pkgbase = lttoolbox
 	pkgdesc = Finite state compiler, processor and helper tools used by apertium
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.apertium.org/wiki/Lttoolbox
 	arch = any
 	license = GPL2
@@ -14,6 +14,8 @@ pkgbase = lttoolbox
 	depends = gcc-libs
 	depends = icu
 	source = lttoolbox-3.8.0.tar.gz::https://github.com/apertium/lttoolbox/archive/refs/tags/v3.8.0.tar.gz
+	source = libxml2.patch
 	sha256sums = e18f8e3ab5b57491665f89ed77561579bc6ee80eb8c9c80b2bce490766444ee8
+	sha256sums = 785c6b339f9ac4c99713705c0d99761a9dd3e1d04bc9d2640c44785331a1eb4b
 
 pkgname = lttoolbox
