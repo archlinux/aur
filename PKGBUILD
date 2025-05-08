@@ -3,7 +3,7 @@
 pkgname=keet-bin
 _pkgname=${pkgname%-bin}
 pkgdesc='Peer-to-Peer encrypted text & video chat'
-pkgver=2.0.0
+pkgver=2.4.1
 pkgrel=1
 arch=(x86_64)
 url="https://keet.io"
@@ -13,7 +13,7 @@ conflicts=("$_pkgname")
 options=(!strip)
 _archive="${_pkgname^}-$pkgver"
 source=("$_archive.tar.gz::$url/downloads/$pkgver/Keet-x64.tar.gz")
-sha256sums=('1212e718901d63aeefcba4c29e9ba23792be49879ed79becb58f5e8840300650')
+sha256sums=('051d942964e25ba98efd8c270d27697c9a3da6d469704da737729100c8e412b3')
 
 package() {
 	install -Dm0755 Keet.AppImage "$pkgdir/usr/bin/$_pkgname"
