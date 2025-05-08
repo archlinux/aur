@@ -1,0 +1,18 @@
+pkgbase = python-certbot-pkcs12
+	pkgdesc = PKCS#12 installer plugin for Certbot and Let's Encrypt
+	pkgver = v0.2.1.r4.gf67db95
+	pkgrel = 1
+	url = https://github.com/nasa-gcn/certbot-pkcs12
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = certbot
+	depends = python-cryptography>38.0
+	source = certbot-pkcs12::git+https://github.com/zent1n0/certbot-pkcs12/#branch=feat/cryptography-backend
+	sha256sums = SKIP
+
+pkgname = python-certbot-pkcs12
