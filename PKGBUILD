@@ -2,9 +2,9 @@
 pkgname=xplist-bin
 _pkgname=Xplist
 pkgver=1.2.47
-pkgrel=7
+pkgrel=8
 pkgdesc="Cross-platform Plist Editor.(Prebuilt version)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://github.com/ic005k/Xplist"
 license=("MIT")
 conflicts=("${pkgname%-bin}")
@@ -30,18 +30,20 @@ source=(
 sha256sums=('9319fd1f4ccda8abe34ab18390f3cd81d69c442c5030f7583e59c8bc4c1395eb'
             '3515a1c9e2ce8df51e80f0a03a0ffca92430c7dca6989ff20b16031d676a652b'
             '43dd8d6124875ee6f7690e2012a151e2df73a753ebb808d349bf454feb44ccb2')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun/${pkgname%-bin}/g
         s/icon/${pkgname%-bin}/g
         s/Application;/Utility;/g
-    " -i "${srcdir}/squashfs-root/default.desktop"
+    " "${srcdir}/squashfs-root/default.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

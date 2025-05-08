@@ -1,7 +1,7 @@
 pkgbase = xplist-bin
 	pkgdesc = Cross-platform Plist Editor.(Prebuilt version)
 	pkgver = 1.2.47
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/ic005k/Xplist
 	arch = x86_64
 	license = MIT
