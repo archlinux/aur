@@ -33,7 +33,10 @@ package () {
   mkdir -p "${pkgdir}/usr"
   cd curl-impersonate-${pkgver}/build
   make install
-  # remove windows batch-files
-  cd ../../
-  rm -vf ${pkgdir}/usr/bin/*.bat
+  # Only keep curl-impersonate* and curl_chrome*
+  find -L "${pkgdir}/usr/bin" -type f ! -iname "curl-impersonate*" ! -iname "curl_chrome*" -print0 | xargs -0r -I@ -- rm -vf "@"
+
+  # Cleanup libcurl
+  find -L "${pkgdir}/usr/lib" -type f ! -iname "lib*.so*" -print0 | xargs -0r -I@ -- rm -vf "@"
+  chown -R root:root "${pkgdir}/usr/lib/"
 }
