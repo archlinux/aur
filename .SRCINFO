@@ -11,7 +11,6 @@ pkgbase = midi2.0-workbench-git
 	makedepends = git
 	makedepends = curl
 	makedepends = yarn
-	makedepends = gcc
 	depends = electron19
 	provides = midi2.0-workbench=1.5.6p
 	conflicts = midi2.0-workbench
