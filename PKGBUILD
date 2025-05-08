@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Unsigned integer types extension for PostgreSQL"
 arch=('x86_64')
 url="https://github.com/petere/pguint"
-license=('unknown')
+license=('PostgreSQL')
 depends=('glibc' 'postgresql')
 makedepends=('clang' 'llvm' 'python')
 source=("pguint-${pkgver}.tar.gz::https://github.com/petere/pguint/archive/$pkgver.tar.gz")
@@ -19,4 +19,5 @@ build() {
 package() {
 	cd "pguint-$pkgver"
 	make DESTDIR="$pkgdir/" install
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
