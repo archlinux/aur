@@ -1,7 +1,7 @@
-# Maintainer: Vlad Glagolev <scm(at)vaygr(dot)net>
+# Maintainer: Axel McLaren <scm(at)axml(dot)uk>
 
 pkgname=sexpect
-pkgver=2.3.14
+pkgver=2.3.15
 pkgrel=1
 pkgdesc="Expect for shells"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/clarkwang/sexpect"
 makedepends=('cmake')
 
 source=($pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('f6801c8b979d56eec54aedd7ede06e2342f382cee291beea88b52869186c557c')
+sha256sums=('44f5711aa99f3ccf9c4b0edfcd9a7d25fa64b442574624ce451713d1532c1a7e')
 
 build() {
   cd "${pkgname}-${pkgver}"
