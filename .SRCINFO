@@ -1,7 +1,7 @@
 pkgbase = bssenglish-bin
 	pkgdesc = bssenglish back word training software.(Prebuilt version)白杉树背单词训练软件.
 	pkgver = 2.2.4_78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bailplus.github.io/bssenglish.pages/
 	arch = x86_64
 	license = GPL-3.0-only

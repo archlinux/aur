@@ -4,7 +4,7 @@ pkgname="${_pkgname}english-bin"
 _pkgver=2.2.4
 _subver=78
 pkgver="${_pkgver}_${_subver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="bssenglish back word training software.(Prebuilt version)白杉树背单词训练软件."
 arch=('x86_64')
 url="https://bailplus.github.io/bssenglish.pages/"
@@ -20,12 +20,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_v${_pkgver}_linux.deb"
 )
 sha256sums=('78df6582d8763a3fff55daafc49ec6e45747a07f8d5bdb411eec7277cdce0eac')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g
         s/\/usr\/share\/pixmaps\/${_pkgname}.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/bin"
