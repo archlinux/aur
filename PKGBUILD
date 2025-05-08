@@ -11,7 +11,7 @@ depends=(
     'noto-fonts-cjk'
 )
 source=('100-noto-cjk-locale.conf')
-sha256sums=('1ef940b20067760f76521ab91250a6501ef1092a977eb35655186de535d8290b')
+sha256sums=('78e05c3cb68dba424c509080505d20cf042a05c44adba68ea0ffed9ee4a106a7')
 
 package() {
     install -Dm644 "100-noto-cjk-locale.conf" "${pkgdir}/etc/fonts/conf.d/100-noto-cjk-locale.conf"
