@@ -3,7 +3,7 @@
 _sdk=9.0
 _Name="Ps3DiscDumper"
 pkgname="ps3-disc-dumper"
-pkgver=4.3.5
+pkgver=4.3.6
 pkgrel=1
 pkgdesc="A handy utility to make decrypted PS3 disc dumps"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=("dotnet-sdk>=${_sdk}" 'gendesk')
 options=('!strip' '!debug' 'staticlibs')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('e1c15aca7a1d90341dad8c5ebc12147e68f969ce589f2d370b0130695c8a3a61749b6ed8ea7ee244165fadb2eb5b5a4031397b674122e65eaa99f5844cb0f74c')
+b2sums=('a79ce33969a60cae727b41fd3bc969be78eb8244911e6c4ad978623f4763f8d8c28c27c9418dc4a40593d0ca613a9b16a63296b514a8c20ba333036b8e0b6de6')
 
 _srcenv() {
   export NUGET_PACKAGES="${srcdir}/.nuget"
