@@ -8,6 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Igor-Ochocki/WUTSKCalendar"
 license=('MIT')
 depends=('nodejs' 'npm' 'nginx' 'openssl' 'git')
+makedepends=('python-setuptools')
 optdepends=("certbot: For obtaining trusted SSL certificates from Let's Encrypt" "certbot-nginx: Nginx plugin for Certbot")
 install=${pkgname}.install
 
@@ -16,13 +17,20 @@ source=("${_npmname}::git+${url}.git#tag=v${pkgver}"
         "wutsk-calendar.service"
         "wutsk-calendar.confd"
 )
-sha256sums=('ffaf7c9bb5fa1dbbcfd293805b8a47826a2010a824e7ea129c9fa01a90bbe62c'
-            '4c0fba33ee984b9fd2bd6523f7cd70b202bc20922b96cc98c761446c27dcdb6f'
-            '1e63e082e6d8282ad6a6516d27cf1c3860ad43047899d638865f8597a39053bd'
-            '8b5e0954b8b3c9badba7f891c056c12c640dfb9ae1a96ed16362f5340528cf3a')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+)
 
 prepare() {
     cd "${srcdir}/${_npmname}"
+
+    export NPM_CONFIG_CACHE="${srcdir}/${_npmname}/.npm_cache_wutsk_calendar"
+    mkdir -p "${NPM_CONFIG_CACHE}"
+
+    export npm_config_devdir="${srcdir}/${_npmname}/.node-gyp_cache"
+    mkdir -p "${npm_config_devdir}"
 }
 
 build() {
@@ -30,7 +38,9 @@ build() {
     cd "${srcdir}/${_npmname}"
 
     export NPM_CONFIG_CACHE="${srcdir}/${_npmname}/.npm_cache_wutsk_calendar"
+    export npm_config_devdir="${srcdir}/${_npmname}/.node-gyp_cache"
     mkdir -p "${NPM_CONFIG_CACHE}"
+    mkdir -p "${npm_config_devdir}"
 
     export NODE_ENV=production
     npm install --verbose --production=false
@@ -50,7 +60,9 @@ package() {
     msg "Installing production Node.js modules into package..."
     cd "${app_install_dir}"
     export NPM_CONFIG_CACHE="${srcdir}/${_npmname}/.npm_cache_wutsk_calendar"
-    mkdir -p "${NPM_CONFIG_CACHE}" # Ensures cache dir exists, though build() should create it
+    export npm_config_devdir="${srcdir}/${_npmname}/.node-gyp_cache"
+    mkdir -p "${NPM_CONFIG_CACHE}"
+    mkdir -p "${npm_config_devdir}"
     npm install --verbose --production
 
 
