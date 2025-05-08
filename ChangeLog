@@ -1208,3 +1208,25 @@ Fixes:
 - A bug causing the app to crash when all filters were deselected from a filtered view has been fixed.
 - We fixed some edge cases with View options in the All Tasks sidebar view.
 - A problem that could cause the Notes field of tasks and events to reset while editing has been rectified.
+
+=== Morgen 3.6.13
+New Features:
+- Creating a task list to organize your Morgen tasks is now easier thanks to a dedicated button directly on the task sidebar.
+- Accessing guides, learning material, or getting in contact with Morgen Support is now easier with a dedicated Help button on the sidebar.
+
+Improvements:
+- We reorganised the Preferences panel to simplify and clarify how to connect to third-party accounts.
+- Custom repeat rules on events are now more flexible. Before, patterns not supported across all calendar providers, like "every final weekday of the month", were not allowed. Now, each calendar provider comes with its specific constraints. Google and CalDAV allow more flexible patterns than Outlook.
+- We improved the algorithm to compute the Morgen Priority Factor for tasks. This change ensures tasks are prioritized consistently with their due date. Additionally, tasks without a due date now have a slightly reduced priority compared to tasks due soon.
+- When tasks are organised by Space, Morgen tasks appear in a "Morgen" group rather than a generic "No Space" section.
+- Buttons on toaster messages are now more visible and easier to click.
+- The Event Merging functionality no longer merges events with Frames, or events with tasks, even if they have the same title and starting time.
+- When scheduling a task using the Command bar, the provided time is now assumed to be the earliest possible unless explicitly set.
+
+Fixes:
+- A bug that was causing an error message when closing the third-party task details panel has been fixed.
+- An issue that could cause a crash when dragging third-party tasks without a due date onto Due today, Due tomorrow, or Due soon sections has been rectified.
+- The striped style on tentative events is now correctly displayed.
+- We fixed an issue that was making it hard to delete tasks or events immediately after creating or editing them on Google, Outlook, and Fastmail.
+- When a free and a busy event are merged, the resulting slot will now be displayed as free only if all the merged slots are free.
+
