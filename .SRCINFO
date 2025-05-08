@@ -1,7 +1,7 @@
 pkgbase = aocl-libflame
 	pkgdesc = High-performance object-based library for DLA computations, AOCL branding
-	pkgver = 5.0
-	pkgrel = 2
+	pkgver = 5.1
+	pkgrel = 1
 	url = https://github.com/amd/libflame
 	arch = x86_64
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = aocl-libflame
 	provides = lapacke
 	conflicts = lapack
 	conflicts = lapacke
-	source = aocl-libflame-5.0.tar.gz::https://github.com/amd/libflame/archive/5.0.tar.gz
-	sha256sums = 3bee3712459a8c5bd728a521d8a4c8f46735730bf35d48c878d2fc45fc000918
+	source = aocl-libflame-5.1.tar.gz::https://github.com/amd/libflame/archive/5.1.tar.gz
+	sha256sums = 25524ba78b5952303369fa0859d217e44071144fd122a9dc3f72ed0bd73e3b2d
 
 pkgname = aocl-libflame
