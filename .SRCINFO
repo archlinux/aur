@@ -1,6 +1,6 @@
 pkgbase = python314-freethreaded
 	pkgdesc = Major release 3.14 of the Python high-level programming language (freethreading version without GIL)
-	pkgver = 3.14.0a7
+	pkgver = 3.14.0b1
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = python314-freethreaded
 	optdepends = tk: for tkinter
 	optdepends = xz: for lzma
 	options = !emptydirs
-	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0a7.tar.xz
-	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0a7.tar.xz.sigstore
-	md5sums = b110979908751fa7d7dd837d174568dc
+	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0b1.tar.xz
+	source = https://www.python.org/ftp/python/3.14.0/Python-3.14.0b1.tar.xz.sigstore
+	md5sums = 6a4acdc472468fdee345c7cd1df1ce88
 	md5sums = SKIP
 
 pkgname = python314-freethreaded
