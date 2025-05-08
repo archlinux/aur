@@ -32,7 +32,7 @@ makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setupto
 source=($pkgname::git+https://github.com/ansible/ansible.git
         'relax_setuptools_version_requirements.patch')
 sha512sums=('SKIP'
-            '32373b7d57590033ab3c0a0a14b7d73189f6e9688ad5934e69a3a4332f027f8edd59a71d7559f786b0089121e5a99e289646607b4f08f02223a9c445590c7c28')
+            'a1cc609a8020bb4dca0b6b4c0bb53a4ff0648b79a3e98334e2dbd9584abf565366040c8fe40bbe2c929aed2123565a8ceba22ed60ae5a2ba08e6a7e92ece703b')
 
 prepare() {
   cd "$pkgname"
