@@ -1,7 +1,7 @@
 pkgbase = flycast
 	pkgdesc = Sega Dreamcast, Naomi, and Atomiswave emulator
-	pkgver = 2.4
-	pkgrel = 2
+	pkgver = 2.5
+	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = x86_64
 	arch = x86_64_v2
@@ -19,19 +19,21 @@ pkgbase = flycast
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libzip
-	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=v2.4
+	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=v2.5
 	source = bylaws.libadrenotools::git+https://github.com/bylaws/libadrenotools.git
+	source = flyinghead.asio::git+https://github.com/flyinghead/asio.git
+	source = flyinghead.libchdr::git+https://github.com/flyinghead/libchdr.git
 	source = gpuopen-librariesandsdks.vulkanmemoryallocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
 	source = harmonytf.discord-rpc::git+https://github.com/harmonytf/discord-rpc.git
 	source = khronosgroup.glslang::git+https://github.com/KhronosGroup/glslang.git
 	source = khronosgroup.vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = libsdl-org.sdl::git+https://github.com/libsdl-org/SDL.git
 	source = retroachievements.rcheevos::git+https://github.com/RetroAchievements/rcheevos.git
-	source = rtissera.libchdr::git+https://github.com/rtissera/libchdr.git
 	source = vinniefalco.luabridge::git+https://github.com/vinniefalco/LuaBridge.git
 	source = vkedwardli.spout2::git+https://github.com/vkedwardli/Spout2.git
 	source = vkedwardli.syphon-framework::git+https://github.com/vkedwardli/Syphon-Framework.git
-	sha256sums = f92414666d141e744273086eb68145c5e418387719af1a874fbde6e4cbeb84f9
+	sha256sums = b76ec69017b8e3fa6f1815ee8cb8396d7f56d0928d21fa85c3a196e94ee24fa7
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
