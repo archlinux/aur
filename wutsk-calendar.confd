@@ -1,0 +1,12 @@
+# Environment configuration for WUTSK Calendar Application
+# Copy this file to /etc/conf.d/wutsk-calendar and fill in your details.
+# Lines starting with # are comments and will be ignored.
+
+# Sensitive variables like USOS_CONSUMER_SECRET and AMT_PASSWORD are now managed
+# via files in /etc/credentials/wutsk-calendar/ as specified in the systemd service unit.
+# See the .install script and service file for more details.
+
+NEXT_PUBLIC_USOS_CONSUMER_KEY=d2RdReF48nAfSeCwUad4
+NEXT_PUBLIC_USOS_CALLBACK_URL=/api/auth/callback
+AMT_PORT=16992
+AMT_USERNAME=admin

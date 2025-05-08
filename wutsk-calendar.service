@@ -1,0 +1,51 @@
+[Unit]
+Description=WUT SK Calendar Application
+After=network.target
+# If Nginx is always required and on the same machine, you might add:
+# Wants=nginx.service
+# After=nginx.service
+
+[Service]
+Type=simple
+User=wutsk
+Group=wutsk
+WorkingDirectory=/usr/share/wutsk-calendar
+
+# Load environment variables from this file.
+# The leading '-' means the service won't fail if the file doesn't exist (but app might).
+EnvironmentFile=-/etc/conf.d/wutsk-calendar
+
+# Load sensitive credentials securely. These files should contain only the secret.
+# Systemd will make them available as environment variables (e.g., $USOS_CONSUMER_SECRET).
+# Ensure these files/paths are created with strict permissions (e.g., root owned, mode 0600).
+LoadCredential=USOS_CONSUMER_SECRET:/etc/credentials/wutsk-calendar/USOS_CONSUMER_SECRET
+LoadCredential=AMT_PASSWORD:/etc/credentials/wutsk-calendar/AMT_PASSWORD
+# Add more LoadCredential lines here if you have other secrets
+
+# Default/fallback environment variables (can be overridden by EnvironmentFile)
+Environment=NODE_ENV=production
+Environment=HOST=0.0.0.0 # Next.js will listen on all interfaces
+Environment=PORT=3000   # Port Next.js listens on, Nginx proxies to this
+
+# If you need to add node_modules/.bin to PATH for 'next' command and it's not found:
+# Environment="PATH=/usr/share/wutsk-calendar/node_modules/.bin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+# However, directly calling the 'next' script is more robust:
+ExecStart=/usr/share/wutsk-calendar/node_modules/.bin/next start -H ${HOST} -p ${PORT}
+
+Restart=always
+RestartSec=10 # Restart service after 10 seconds if it crashes
+
+# Logging: Standard output and error are sent to journald by default
+StandardOutput=journal
+StandardError=journal
+
+# Optional: Security settings (example, may need adjustment)
+# NoNewPrivileges=true
+# PrivateTmp=true
+# ProtectSystem=strict
+# ProtectHome=true
+# ReadWritePaths=/usr/share/wutsk-calendar /var/log/wutsk-calendar # Adjust if app writes elsewhere
+# CapabilityBoundingSet=CAP_NET_BIND_SERVICE # Not needed if listening > 1024
+
+[Install]
+WantedBy=multi-user.target

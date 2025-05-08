@@ -1,0 +1,26 @@
+pkgbase = wutsk-calendar
+	pkgdesc = A Next.JS calendar application for WUT SK
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Igor-Ochocki/WUTSKCalendar
+	install = wutsk-calendar.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = nodejs
+	depends = npm
+	depends = nginx
+	depends = openssl
+	depends = git
+	optdepends = certbot: For obtaining trusted SSL certificates from Let's Encrypt
+	optdepends = certbot-nginx: Nginx plugin for Certbot
+	source = WUTSKCalendar::git+https://github.com/Igor-Ochocki/WUTSKCalendar.git#tag=v1.0.0
+	source = wutsk-calendar.nginx
+	source = wutsk-calendar.service
+	source = wutsk-calendar.confd
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wutsk-calendar

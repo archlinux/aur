@@ -1,0 +1,202 @@
+APP_NAME="wutsk-calendar"
+APP_USER="wutsk"
+APP_GROUP="wutsk"
+APP_HOME="/usr/share/${APP_NAME}"
+APP_LOG_DIR="/var/log/${APP_NAME}"
+ENV_CONF_FILE="/etc/conf.d/${APP_NAME}"
+ENV_CONF_EXAMPLE_FILE="${ENV_CONF_FILE}.example"
+NGINX_CONF_FILE="/etc/nginx/conf.d/${APP_NAME}.conf"
+# Default self-signed certs if user doesn't configure Nginx with real ones quickly
+SELF_SIGNED_CERT_DIR_BASE="/etc/ssl/certs/wutsk-calendar-selfsigned" # Changed from letsencrypt path
+SELF_SIGNED_KEY="${SELF_SIGNED_CERT_DIR_BASE}/privkey.pem"
+SELF_SIGNED_CERT="${SELF_SIGNED_CERT_DIR_BASE}/fullchain.pem"
+
+_msg() {
+    echo -e "\033[0;32m==>\033[0;36m ${APP_NAME}:\033[0m $1"
+}
+_warn() {
+    echo -e "\033[1;33m==> WARNING (${APP_NAME}):\033[0m $1"
+}
+_err() {
+    echo -e "\033[0;31m==> ERROR (${APP_NAME}):\033[0m $1"
+}
+
+post_install() {
+    _msg "Performing post-installation steps..."
+
+    # Create dedicated user and group if they don't exist
+    if ! getent group "${APP_GROUP}" >/dev/null; then
+        _msg "Creating group '${APP_GROUP}'..."
+        groupadd --system "${APP_GROUP}" || _err "Failed to create group ${APP_GROUP}"
+    fi
+    if ! getent passwd "${APP_USER}" >/dev/null; then
+        _msg "Creating user '${APP_USER}'..."
+        useradd --system --gid "${APP_GROUP}" --home-dir "${APP_HOME}" --shell /bin/false "${APP_USER}" || _err "Failed to create user ${APP_USER}"
+    fi
+
+    # Create/Set permissions for application and log directories
+    mkdir -p "${APP_LOG_DIR}"
+    chown -R "${APP_USER}:${APP_GROUP}" "${APP_LOG_DIR}" "${APP_HOME}"
+    find "${APP_HOME}" -type d -exec chmod 750 {} \;
+    find "${APP_HOME}" -type f -exec chmod 640 {} \;
+    if [ -d "${APP_HOME}/node_modules/.bin" ]; then # Ensure .bin exists
+        chmod u+x "${APP_HOME}/node_modules/.bin/next" # Ensure 'next' command is executable by user
+    fi
+    chmod 750 "${APP_LOG_DIR}" # User/group rwx, others no access
+
+    # Inform user about environment configuration
+    _msg "Setting up environment configuration..."
+    if [ ! -f "${ENV_CONF_FILE}" ]; then
+        _warn "Non-sensitive environment configuration file ${ENV_CONF_FILE} not found."
+        _warn "A template has been installed at ${ENV_CONF_EXAMPLE_FILE}."
+        _warn "Please copy it to ${ENV_CONF_FILE} and fill in your non-sensitive settings:"
+        _warn "  sudo cp ${ENV_CONF_EXAMPLE_FILE} ${ENV_CONF_FILE}"
+        _warn "  sudo chown root:${APP_GROUP} ${ENV_CONF_FILE}" # Group needs to read if service doesn't run as root
+        _warn "  sudo chmod 640 ${ENV_CONF_FILE}" # Owner rw, group r, others no access
+        _warn "  sudo nano ${ENV_CONF_FILE}" # Or their preferred editor
+    else
+        _msg "Existing non-sensitive environment configuration found at ${ENV_CONF_FILE}."
+        _warn "Ensure permissions are appropriate (e.g., owned by root:${APP_GROUP}, mode 640)."
+        _warn "  sudo chown root:${APP_GROUP} ${ENV_CONF_FILE}"
+        _warn "  sudo chmod 640 ${ENV_CONF_FILE}"
+    fi
+
+    _msg "Setting up secure credentials..."
+    local cred_dir="/etc/credentials/${APP_NAME}"
+    local usos_secret_file="${cred_dir}/USOS_CONSUMER_SECRET"
+    local amt_pass_file="${cred_dir}/AMT_PASSWORD"
+
+    if [ ! -d "${cred_dir}" ]; then
+        _msg "Creating credentials directory: ${cred_dir}"
+        mkdir -p "${cred_dir}" || _err "Failed to create ${cred_dir}"
+        chown root:root "${cred_dir}" || _warn "Failed to chown ${cred_dir}"
+        chmod 0700 "${cred_dir}" || _warn "Failed to chmod ${cred_dir}" # Only root access
+    fi
+
+    if [ ! -f "${usos_secret_file}" ]; then
+        _warn "USOS_CONSUMER_SECRET file not found at ${usos_secret_file}."
+        _warn "Please create it and add your USOS Consumer Secret to it:"
+        _warn "  sudo nano ${usos_secret_file}"
+        _warn "  (Enter only the secret string in the file)"
+        _warn "  sudo chown root:root ${usos_secret_file}"
+        _warn "  sudo chmod 0600 ${usos_secret_file}" # Only root can read/write
+    else
+        _msg "Existing USOS_CONSUMER_SECRET file found at ${usos_secret_file}."
+        _warn "Ensure it is owned by root:root and has mode 0600."
+    fi
+
+    if [ ! -f "${amt_pass_file}" ]; then
+        _warn "AMT_PASSWORD file not found at ${amt_pass_file}."
+        _warn "Please create it and add your AMT Password to it:"
+        _warn "  sudo nano ${amt_pass_file}"
+        _warn "  (Enter only the secret string in the file)"
+        _warn "  sudo chown root:root ${amt_pass_file}"
+        _warn "  sudo chmod 0600 ${amt_pass_file}" # Only root can read/write
+    else
+        _msg "Existing AMT_PASSWORD file found at ${amt_pass_file}."
+        _warn "Ensure it is owned by root:root and has mode 0600."
+    fi
+    _warn "The service '${APP_NAME}.service' will likely not start correctly until all configurations and secrets are properly set."
+
+    # Generate default self-signed certificate for Nginx if not present
+    # This is primarily for Nginx to start without errors if no other certs are configured for the site.
+    # The packaged Nginx config refers to YOUR_DOMAIN_HERE paths.
+    if [ ! -f "${SELF_SIGNED_CERT}" ] || [ ! -f "${SELF_SIGNED_KEY}" ]; then
+        _msg "Generating default self-signed SSL certificate for initial Nginx testing..."
+        mkdir -p "${SELF_SIGNED_CERT_DIR_BASE}"
+        # Permissions: parent dir usually root, cert dir itself should be restrictive.
+        chown root:root "$(dirname "${SELF_SIGNED_CERT_DIR_BASE}")"
+        chmod 755 "$(dirname "${SELF_SIGNED_CERT_DIR_BASE}")"
+        chown root:"${APP_GROUP}" "${SELF_SIGNED_CERT_DIR_BASE}" # Group 'wutsk' or 'http' might need to read cert
+        chmod 750 "${SELF_SIGNED_CERT_DIR_BASE}" # Key should be protected
+
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+            -keyout "${SELF_SIGNED_KEY}" \
+            -out "${SELF_SIGNED_CERT}" \
+            -subj "/C=PL/ST=Mazowieckie/L=Warsaw/O=WUTSKCalendarDefault/CN=localhost"
+        chmod 640 "${SELF_SIGNED_KEY}" # Key readable by owner and group
+        chmod 644 "${SELF_SIGNED_CERT}" # Cert readable by all
+        chown root:"${APP_GROUP}" "${SELF_SIGNED_KEY}" "${SELF_SIGNED_CERT}"
+
+        _msg "A self-signed SSL certificate has been generated for https://localhost."
+        _msg "Nginx has been configured to use this self-signed certificate for initial local testing."
+        _warn "This self-signed certificate is NOT secure for production use."
+    fi
+
+    systemd-tmpfiles --create "${APP_NAME}.conf" >/dev/null 2>&1 || true # If you add a tmpfiles.d snippet
+    systemctl daemon-reload
+
+    _msg "To complete setup for LOCAL TESTING:"
+    _msg "1. Ensure environment variables are set in ${ENV_CONF_FILE} (copy from ${ENV_CONF_EXAMPLE_FILE})."
+    _msg "   And sensitive credentials are in /etc/credentials/${APP_NAME}/ (see previous messages)."
+    _msg "2. Test Nginx config: sudo nginx -t"
+    _msg "3. Enable and start services: sudo systemctl enable --now ${APP_NAME}.service nginx.service"
+    _msg "   You should then be able to access the application at https://localhost"
+
+    _msg "For PRODUCTION setup (highly recommended):"
+    _msg "1. Update Nginx configuration:"
+    _msg "   Edit /etc/nginx/conf.d/${APP_NAME}.conf and change both instances of 'server_name localhost;'"
+    _msg "   to your actual domain (e.g., 'server_name calendar.example.com;')."
+    _msg "2. Install Certbot (Let's Encrypt client) and the Nginx plugin:"
+    _msg "   sudo pacman -S certbot certbot-nginx  (if not already installed - see optdepends)"
+    _msg "3. Obtain and install a Let's Encrypt certificate:"
+    _msg "   sudo certbot --nginx"
+    _msg "   Certbot will automatically detect your domain, obtain a certificate, and update"
+    _msg "   your Nginx configuration to use it. It will also set up automatic renewal."
+    _msg "4. Ensure your firewall allows HTTP (80) and HTTPS (443) traffic to your server."
+
+    _msg "After any Nginx configuration changes or Certbot setup, always test Nginx: sudo nginx -t"
+    _msg "And reload/restart Nginx: sudo systemctl reload nginx.service or sudo systemctl restart nginx.service"
+
+    _msg "Check service status with: sudo systemctl status ${APP_NAME}.service nginx.service"
+    _msg "Check logs with: sudo journalctl -u ${APP_NAME} -f"
+}
+
+post_upgrade() {
+    _msg "Performing post-upgrade steps..."
+    # Re-set permissions in case new files were added or permissions were reset
+    chown -R "${APP_USER}:${APP_GROUP}" "${APP_HOME}" "${APP_LOG_DIR}"
+    find "${APP_HOME}" -type d -exec chmod 750 {} \;
+    find "${APP_HOME}" -type f -exec chmod 640 {} \;
+     if [ -d "${APP_HOME}/node_modules/.bin" ]; then
+        chmod u+x "${APP_HOME}/node_modules/.bin/next"
+    fi
+    chmod 750 "${APP_LOG_DIR}"
+
+    systemctl daemon-reload # If service file itself was upgraded
+    _msg "Restarting services..."
+    # Restart nginx first or reload if changes are only conf
+    if nginx -t &>/dev/null; then
+      systemctl try-reload-or-restart nginx.service
+    else
+      _warn "Nginx configuration seems to have an issue after upgrade. Please check manually: sudo nginx -t"
+    fi
+    systemctl try-restart "${APP_NAME}.service"
+    _msg "Upgrade complete. Check service status."
+}
+
+pre_remove() {
+    _msg "Performing pre-removal steps..."
+    _msg "Stopping and disabling ${APP_NAME}.service..."
+    systemctl disable --now "${APP_NAME}.service" >/dev/null 2>&1 || true
+    # Nginx service itself isn't stopped/disabled as it might serve other sites.
+    # Its config snippet for this app will be removed by pacman.
+}
+
+post_remove() {
+    _msg "Performing post-removal steps..."
+    _warn "Configuration file ${ENV_CONF_FILE} (if it exists) and ${ENV_CONF_EXAMPLE_FILE} were NOT removed."
+    _warn "Log directory ${APP_LOG_DIR} was NOT removed."
+    _warn "Default self-signed certificates in ${SELF_SIGNED_CERT_DIR_BASE} were NOT removed."
+    _warn "Secure credentials directory /etc/credentials/${APP_NAME} and its contents were NOT removed."
+    _warn "If you wish to remove them and the application user/group, do so manually:"
+    _warn "  sudo rm -rf ${ENV_CONF_FILE} ${ENV_CONF_EXAMPLE_FILE} ${APP_LOG_DIR} ${SELF_SIGNED_CERT_DIR_BASE} /etc/credentials/${APP_NAME}"
+    if getent passwd "${APP_USER}" >/dev/null; then
+        _warn "  sudo userdel ${APP_USER}"
+    fi
+    if getent group "${APP_GROUP}" >/dev/null; then
+        _warn "  sudo groupdel ${APP_GROUP}"
+    fi
+    _msg "Nginx config for this app (${NGINX_CONF_FILE}) has been removed by pacman."
+    _msg "You may need to reload Nginx if it was running: sudo systemctl reload nginx.service"
+}
