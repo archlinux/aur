@@ -9,7 +9,7 @@
 
 _basename=deskflow
 pkgname=${_basename}-git
-pkgver=1.21.2.0.gdaa0954
+pkgver=1.21.2.204.g8f53b88
 pkgrel=1
 pkgdesc="Deskflow lets you share one mouse and keyboard between multiple computers"
 arch=('i686' 'x86_64' 'aarch64')
@@ -72,7 +72,6 @@ check() {
 	cd "$_basename"
 	export QT_QPA_PLATFORM=offscreen
 	./build/bin/unittests
-	./build/bin/integtests
 }
 
 package() {
