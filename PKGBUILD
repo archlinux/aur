@@ -2,13 +2,13 @@
 
 pkgname=walrs
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast color scheme generator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pixel2175/walrs"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo' 'git' 'make')
+makedepends=('rustup' 'cargo' 'git' 'make')
 source=("git+https://github.com/Pixel2175/walrs.git")
 sha256sums=('SKIP')
 
