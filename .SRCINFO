@@ -8,6 +8,7 @@ pkgbase = postgresql-uint
 	makedepends = clang
 	makedepends = llvm
 	makedepends = python
+	depends = glibc
 	depends = postgresql
 	source = pguint-1.20231206.tar.gz::https://github.com/petere/pguint/archive/1.20231206.tar.gz
 	sha256sums = dde9e193527d7216f2bcf2141b132e854e51c5674cf6a7a227ea76d206e46307
