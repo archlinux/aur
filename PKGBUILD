@@ -2,23 +2,26 @@
 
 pkgname=totp-rs
 _pkgname=totp
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='CLI tool for generating TOTP codes.'
 url='https://github.com/kotarac/totp'
-source=("https://github.com/kotarac/totp/archive/v${pkgver}.tar.gz")
 arch=(x86_64)
 license=(MIT)
 makedepends=(cargo)
-sha256sums=('4013145181626a56dc636fee45649df308fdba92da25e8cc8d5aa89ea4da29ea')
+options=(!lto)
+source=("https://github.com/kotarac/totp/archive/v${pkgver}.tar.gz")
+sha256sums=('49e1d2befd1cb4b802c44a29a7f624f58efdb8beeb94d5c53edb08dfd793d051')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}/"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build () {
   cd "${srcdir}/${_pkgname}-${pkgver}/"
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --frozen --release --all-features
 }
 
