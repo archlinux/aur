@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -r conf ] && . ./conf
+
+INFLUXD_CONFIG_PATH=/etc/influxdb exec chpst -u influxdb /usr/bin/influxd --bolt-path /var/lib/influxdb/influxd.bolt --engine-path /var/lib/influxdb/engine $ARGS 2>&1

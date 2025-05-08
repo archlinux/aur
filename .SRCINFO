@@ -1,0 +1,17 @@
+pkgbase = influxdb-runit
+	pkgdesc = Runit service script for influxdb.
+	pkgver = 20250507
+	pkgrel = 1
+	url = https://github.com/InfluxData/influxdb
+	arch = x86_64
+	license = MIT
+	depends = runit
+	depends = influxdb
+	source = influxdb.run
+	source = influxdb.log.run
+	source = influxdb.conf
+	sha256sums = ba597c754bf7dcace7665a78c1f76a18ab51bdb956131c9b9d66ca15ac5ba4fe
+	sha256sums = 297437d7613174679998ddf26eaa369dc13369733476271b136ee38d3705f05e
+	sha256sums = 56d11bdfb118d3e2958c4979bfd7bfe181abbe9c5c10043f326e04d33c4794fc
+
+pkgname = influxdb-runit
