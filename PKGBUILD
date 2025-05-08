@@ -3,8 +3,8 @@
 # Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=12.8.0
-_bldver=00012
+_semver=20.1.1
+_bldver=00008
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -12,29 +12,29 @@ arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
 license=('custom:TSPA')
 
-makedepends=('glibc')
-
 # Needed for builtin jxBrowser plugin (otherwise exception exit code 127)
 # lib32-glibc needed for installers of some components (C2000 tools)
 #!! 'ncurses5-compat-libs' and 'gconf' are aur packages
-depends=('python2' 'gtk2' 'gtk3' 'libxtst' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'ncurses5-compat-libs' 'libusb-compat' 'libsecret' 'libcanberra' 'gconf' 'binutils')
-
-# Without some ttf fonts installed, UI is ugly
-optdepends=('ttf-dejavu')
+depends=('python' 'gtk2' 'gtk3' 'nss' 'libxss' 'alsa-lib' 'lib32-glibc' 'libusb-compat' 'libsecret' 'libcanberra' 'binutils')
 
 # The license file was copy-pasted from the installer's GUI
-_archive=CCS${pkgver}_linux-x64
-source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/${_semver}/${_archive}.tar.gz"
+_archive=CCS_${pkgver}_linux
+source=("https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/${_semver}/${_archive}.zip"
 "LICENSE"
 "61-msp430uif.rules"
 "71-sd-permissions.rules"
 )
 
+md5sums=('24ed00d86c15dd48056c273c054c9b2e'
+         'cf7222e486f8f1d2a0f99d3d946e1f01'
+         '7c570e9f93da6f01986285db81d497ef'
+         'af8a8c199be432919b4ca66106591c25')
+
 install=$pkgname.install
 
 options=(!strip libtool staticlibs emptydirs !purge !zipman)
 
-_desktop="Code Composer Studio ${_semver}.desktop"
+_desktop="CCS ${_semver}.desktop"
 
 _destdir=opt
 _installdir=installdir
@@ -65,18 +65,8 @@ package() {
     sed -i "s#$srcdir/$_installdir##g" "$srcdir/$_installpath/$_desktop"
     find $srcdir/$_installpath/ccs/install_scripts/uninstall_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/install_scripts/install_drivers.sh -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/tools/compiler/dmed/dmed.xml -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.cpp.profile/.data/.settings/org.eclipse.equinox.p2.artifact.repository.prefs -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.cpp.profile/.data/.settings/org.eclipse.equinox.p2.metadata.repository.prefs -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/plugins/com.ti.ccstudio.base_*/properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/*/*.xml -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/timestamps* -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##"
     find $srcdir/$_installpath/ccs/eclipse/configuration/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-
-    # Bug corrections
-    find $srcdir/$_installpath/ccs/eclipse/ccstudio.ini -print0 | xargs -0 sed -i '1,2d'
 
     install -D -m0644 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
 
@@ -114,7 +104,4 @@ package() {
 
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('a5b166b0d7af07e50e6877d09d00d4dd'
-         'cf7222e486f8f1d2a0f99d3d946e1f01'
-         '7c570e9f93da6f01986285db81d497ef'
-         'af8a8c199be432919b4ca66106591c25')
+
