@@ -9,7 +9,7 @@ license=('WTFPL-2-or-later')
 depends=()
 makedepends=('rust' 'cargo')
 source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/ashe.sterling/clrblk/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('04931197387b58db2ac05be9ddd48f15752fd63f656af63acb303627e6d32ee8')
+sha256sums=('53a62cdf26f242f375b71f63a49688f164308fc8d6a9bf6f12b138ca5bc7b400')
 
 build() {
   cd "$srcdir/${pkgname}-v${pkgver}"
