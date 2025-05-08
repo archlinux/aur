@@ -1,0 +1,3 @@
+[python-google-cloud-resource-manager]
+source = "pypi"
+pypi = "google-cloud-resource-manager"
