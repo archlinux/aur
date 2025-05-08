@@ -1,0 +1,4 @@
+[keet-bin]
+source = "regex"
+url = "https://keet.io/downloads/"
+regex = 'href="(\d+\.\d+\.\d+)/"'
