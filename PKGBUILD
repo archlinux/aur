@@ -2,7 +2,7 @@
 
 pkgname=libldap24
 pkgver=2.4.59
-pkgrel=3
+pkgrel=4
 pkgdesc="Lightweight Directory Access Protocol (LDAP) client libraries"
 arch=('x86_64')
 url="https://www.openldap.org/"
@@ -31,7 +31,7 @@ build() {
   cd openldap-${pkgver}
   autoupdate
   autoconf
-  CFLAGS="${CFLAGS} -DLDAP_CONNECTIONLESS -Wno-implicit-function-declaration -Wno-incompatible-pointer-types" ./configure --prefix=/usr --libexecdir=/usr/lib \
+  CFLAGS="${CFLAGS} -DLDAP_CONNECTIONLESS -Wno-implicit-function-declaration -Wno-incompatible-pointer-types -std=gnu17" ./configure --prefix=/usr --libexecdir=/usr/lib \
     --sysconfdir=/etc --localstatedir=/var/lib/openldap --sbindir=/usr/bin \
     --enable-dynamic --enable-syslog --enable-ipv6 --enable-local \
     --enable-crypt --enable-spasswd --enable-modules \
