@@ -1,4 +1,5 @@
-# Maintainer: JayceCao <jaycecao520@gmail.com>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: JayceCao <jaycecao520@gmail.com>
 pkgname=oras
 pkgver=1.0.0
 pkgrel=1
