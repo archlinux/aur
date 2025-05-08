@@ -23,7 +23,7 @@ depends=(
     'libxkbcommon-x11'
 )
 makedepends=(
-    'p7zip'
+    '7zip'
     'icoutils'
 )
 source=(
