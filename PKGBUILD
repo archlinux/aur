@@ -14,7 +14,7 @@ source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh")
 sha512sums=('7dae39d73278c904f3e0b2c9130b4ff994f78b77f740e455b795f618d63ac22a5030d36d7a41dbf4ecb114110a87bd1ee8ea2938bcda6d9f562306bf8158ca91'
             'SKIP'
-            'f58d7851c53eae1874692f032a489cb6fb459763a4195afaf93ddd4c65939e1e4e2bbf50438e04800aded466266c3a2a37fcc0f5168f61b8e711fcf03e8e8d12')
+            '64f181bd9170af5c462899fba765a92b8225e24c3fd2a25deec31d9879dec76a987de9efa065fc3e60e8f5a787e934e0abbdd43ab94445ad3eecacfe1a9de74d')
 validpgpkeys=('FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570')
 
 prepare() {

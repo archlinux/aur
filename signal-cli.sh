@@ -3,4 +3,4 @@ CP="/usr/share/java/libsignal-client/libsignal-client.jar":"/usr/share/java/comm
 for name in /usr/share/java/signal-cli/*.jar ; do
 	CP=$CP:"$name"
 done
-exec /usr/bin/java -cp "$CP" org.asamk.signal.Main "$@"
+exec /usr/bin/java --enable-native-access=ALL-UNNAMED -cp "$CP" org.asamk.signal.Main "$@"
