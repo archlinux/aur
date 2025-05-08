@@ -1,6 +1,6 @@
 pkgname=retrobyte
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A retro terminal-based game collection: ArchSnake, Brickfall, and ArcadePong"
 arch=('x86_64')
 url="https://github.com/KOrtizLedezma/Retrobyte.git"
