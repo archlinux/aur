@@ -1,6 +1,0 @@
-_pkgname="libinput-gestures"
-
-post_install() {
-	echo "You must be a member of the input group to have permission to read the touchpad device!"
-	echo "To start the daemon automatically on login use: ${_pkgname}-setup autostart"
-}
