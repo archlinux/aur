@@ -6,7 +6,7 @@ TEST_GPU=0
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=3
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -23,7 +23,7 @@ optdepends=(
 checkdepends=('python-kornia-rs' 'python-accelerate' 'python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-scipy' 'python-opencv')
 options=(!emptydirs)
 source=("${_name}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('c2b28c96845406ff9f63c309a31ffaa47c665477f0a49467e88f8fa8644d8426')
+sha256sums=('4dd34e28a0e0cefa2f6333d34e81b670e800fadd1cbf1d156c47dc62eafee0c2')
 
 build() {
   cd "${_name}-${pkgver}"
