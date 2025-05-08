@@ -1,11 +1,12 @@
 pkgbase = postgresql-uint-git
 	pkgdesc = Unsigned integer types extension for PostgreSQL
-	pkgver = r72.378a440
+	pkgver = r89.2341277
 	pkgrel = 1
 	url = https://github.com/petere/pguint
 	arch = x86_64
 	license = unknown
 	makedepends = clang
+	makedepends = git
 	makedepends = llvm
 	makedepends = python
 	depends = postgresql

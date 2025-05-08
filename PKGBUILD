@@ -1,13 +1,13 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=postgresql-uint-git
-pkgver=r72.378a440
+pkgver=r89.2341277
 pkgrel=1
 pkgdesc="Unsigned integer types extension for PostgreSQL"
 arch=('x86_64')
 url="https://github.com/petere/pguint"
 license=('unknown')
 depends=('postgresql')
-makedepends=('clang' 'llvm' 'python')
+makedepends=('clang' 'git' 'llvm' 'python')
 conflicts=('postgresql-uint')
 provides=('postgresql-uint')
 source=("$pkgname"::'git+https://github.com/petere/pguint')
