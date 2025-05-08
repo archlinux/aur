@@ -4,7 +4,7 @@
 
 _pkgname=llama-cpp-python
 pkgname=python-llama-cpp-cuda
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Python bindings for llama.cpp"
 arch=(x86_64)
@@ -50,7 +50,7 @@ checkdepends=(
   python-pydantic-settings
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('31c91323b555c025a76a30923cead9f5695da103dd68c15cdbb4509b17f0ed77')
+sha256sums=('a3a985f558385e2f5de5b663f4e9b0817506d6af98122450142cd98e79216370')
 
 _srcdir="llama_cpp_python-${pkgver}"
 build() {
