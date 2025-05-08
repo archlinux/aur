@@ -1,10 +1,11 @@
-# Submitter: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Maintainer: Charles Dong <charlesdong_2000@outlook.com>
+# Submitter:   Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer:  nltimv <git at nltimv dot com>
+# Contributor: Charles Dong <charlesdong_2000@outlook.com>
 
 pkgname=seatools
 _pkgname=SeaTools
 pkgdesc='Seagate graphical user interface (GUI) tool for managing hard drives and SSDs on a system.'
-pkgver=5.1.245
+pkgver=5.1.249
 pkgrel=1
 _pkgrealver=$pkgver
 arch=('x86_64')
@@ -16,7 +17,7 @@ _installer_bin="SeaTools-${pkgver}-linux-x64-installer.run"
 source=(
     "SeaTools-${pkgver}-${pkgrel}.zip::https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/support-content/downloads/${pkgname}/_shared/downloads/${_pkgname}LinuxX64Installer.zip"
 )
-sha256sums=('ac70221ee371b184adb56645d5a03f9ca5276bb80258cb8b4753a84aec088c09')
+sha256sums=('cf65d9b2275fedf28416c4817b0d3916c2050a5dbc5d11b4d17fef2a7f912c97')
 
 package() {
     echo "Seatools version: ${_pkgrealver}"
