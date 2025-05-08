@@ -1,11 +1,11 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname=framework-system-git
-pkgver=r393.fb43228
+pkgver=v0.4.1.r0.gd515b02
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Tool to interact with the framework system (git development version)'
-url='https://frame.work'
+url='https://github.com/FrameworkComputer/framework-system'
 license=('MIT')
 depends=(
 	"libusb"
@@ -25,13 +25,15 @@ source=("${pkgname}::git+https://github.com/FrameworkComputer/framework-system.g
 b2sums=('SKIP')
 
 pkgver() {
-	# Calculate the version dynamically using git information
-	printf "r%s.%s" "$(git -C "$srcdir/${pkgname}" rev-list --count HEAD)" "$(git -C "$srcdir/${pkgname}" rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 	cd "$srcdir/${pkgname}"
-	cargo build --release -p framework_tool
+	export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features -p framework_tool
 }
 
 package() {
