@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
-pkgver=5.5.8.r0.gb079e79
+pkgver=6.1.0.r0.gc21139a
 _electronversion=32
 _nodeversion=18
 pkgrel=1
@@ -44,18 +44,17 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    cd "${srcdir}/${pkgname//-/.}/electron"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="AudioVideo;Video" --name="${pkgname%-git}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname//-/.}/electron"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -66,20 +65,25 @@ build() {
         echo 'fetch-retry-maxtimeout=10000'
         echo "cache-dir="${srcdir}"/.pnpm_cache"
         echo "store-dir="${srcdir}"/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'registry=https://registry.npmmirror.com'
-            echo 'disturl=https://registry.npmmirror.com/-/binary/node/'
-            echo 'electron_mirror=https://registry.npmmirror.com/-/binary/electron/'
-            echo 'electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/'
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
-        echo ../{capacitor,common,web} | xargs -n 1 cp .npmrc
     fi
-    rm -rf dist node_modules
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install 
-    NODE_ENV=production     pnpm run run web:build
+    NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/electron"
+    local electronDist="/usr/lib/electron${_electronversion}"
+    NODE_ENV=production     pnpm run web:build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
@@ -87,6 +91,6 @@ package() {
     install -Dm644 "${srcdir}/${pkgname//-/.}/electron/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/electron/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/electron/buildResources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
