@@ -2,10 +2,10 @@
 #Maintainer: Rafael Fontenelle <rafaeff at gnome dot org>
 
 pkgname="mongodb-tools-bin"
-pkgver="100.10.0"
+pkgver="100.12.0"
 _basever="8.0"
 _basedist="noble"
-pkgrel="3"
+pkgrel="1"
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=("x86_64" "aarch64")
 url="https://github.com/mongodb/mongo-tools"
@@ -16,8 +16,8 @@ depends=("openssl" "krb5")
 source_x86_64=(mongodb-org-tools_${pkgver}_x86_64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse/binary-amd64/mongodb-database-tools_${pkgver}_amd64.deb")
 source_aarch64=(mongodb-org-tools_${pkgver}_aarch64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/${_basedist}/mongodb-org/${_basever}/multiverse/binary-arm64/mongodb-database-tools_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('cfde5981270d982773b56975260918b929e9acef44861cb6c300422324aa3e75')
-sha256sums_aarch64=('59bbfb0c83668975085854c8830360032a40e18643b30e6ebe65ed457bf37dc3')
+sha256sums_x86_64=('637a9036d6b269271dffb1c279d2ebb549d432c7891ec24278bfee4c8438b15c')
+sha256sums_aarch64=('451cb53e4ca726cd87e30a335fa3aa8538316ab9dcf836c42c4dcf0aeab934d6')
 
 prepare() {
   mkdir -p output
