@@ -1,8 +1,8 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=openvas-scanner
-pkgver=23.17.0
-pkgrel=2
+pkgver=23.18.0
+pkgrel=1
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
         openvas-scanner.tmpfiles
         openvasd.service)
-sha512sums=('e594bc9ef98c15359f408b784dcbac1ee9ac454c80a771e0f64ef5df27bcefbae19a8bb63332ff269e2f7da09265d373cc56b6c92652b81e96961fdaa8d46658'
+sha512sums=('640a134ab7496e6ba622f60d4c36088f7c34745f6726b41316e19ba189285a763960a124573ce0c4fa73bd3d2ef8debd46b685d462833671f8913578494ec071'
             'SKIP'
             'c87d7890698368a6b8d569d9af73712676d0e0061de8e058cc6c7f609da1def99ebbf9b11d35d1dd0234538dbb07987ff18bbf186928ea39c33441f231eb8751'
             '476e0aaeb916959b93082bf2529774ff46db46e6e699c34ea0ac246c461d554c87d15c25a2bc6565c06f0cd39df5dd14609d99777608c1c8afb824b0a6de99ae')
@@ -39,7 +39,6 @@ build() {
     -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DSBINDIR=/usr/bin \
     -DLIBDIR=/usr/lib \
     -DSYSCONFDIR=/etc \
