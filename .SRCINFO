@@ -1,0 +1,14 @@
+pkgbase = my-aur-helper
+	pkgdesc = Персональный AUR-хелпер
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/oriten1223221/aur
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = git
+	depends = pacman
+	source = https://github.com/oriten1223221/aur/archive/v1.0.0.tar.gz
+	sha256sums = 41f5bff4dbbfe62895d59cbb89f5419fce2d26d666af6c80dc9a351244fbd361
+
+pkgname = my-aur-helper
