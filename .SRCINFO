@@ -1,11 +1,10 @@
 pkgbase = station-bin
 	pkgdesc = The first open-source smart browser for busy people. A single place for all of your web applications.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getstation.com/
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = fuse2
 	depends = electron27
 	provides = station=3.3.0
 	conflicts = station
