@@ -2,7 +2,7 @@
 pkgname=serial-studio-bin
 _pkgname=Serial-Studio
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-purpose serial data visualization & processing program.(Prebuilt version)"
 arch=('x86_64')
 url="https://serial-studio.github.io/"
@@ -19,31 +19,26 @@ depends=(
     'libgpg-error'
     'qt6-quick3d'
 )
-makedepends=(
-    'fuse2'
-)
 options=('!strip')
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-${CARCH}.rpm"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/Serial-Studio/Serial-Studio/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c00f39015a9c6b5082c674c0243540949a82a54410fbabb8db7afb47d28c6ef7'
+sha256sums=('4986f604b7c78f5c5f3c54c5148e6a4aec65b91e56352b52d8ffc9a51eb039eb'
             'd2d20f56865ebe59a1a3ce0843cee2808f0c69f7a2ba2b9f7808f1d2df331586'
-            'd67fe66c244eaefa8a7693f97bd20d159492d241a9f42f61cab75c9a84499b36')
-build() {
-    sed -e "
+            '382dfc92c53dd659fb6644b4ab93915bff23075d0a2368147d8096c22533db8b')
+prepare() {
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    " "${srcdir}/${pkgname%-bin}.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}.AppDir/usr/"{bin,lib,plugins,qml,translations} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}.AppDir/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}.AppDir/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
