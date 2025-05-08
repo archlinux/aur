@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-nepali-date
+	pkgdesc = A gnome-shell extension for Linux that displays Nepali date on the top panel.
+	pkgver = r44.759ff70
+	pkgrel = 1
+	url = https://github.com/Biplab-Dutta/Nepali_Date
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = gnome-shell
+	source = nepali-date@biplab::git+https://github.com/Biplab-Dutta/Nepali_Date.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-nepali-date
