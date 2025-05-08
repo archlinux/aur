@@ -13,7 +13,7 @@ license=('AGPL-3.0-only')
 depends=('gtk3' 'webkit2gtk-4.1' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
          'expat' 'glew' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
          'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
-         'z3' 'zlib')
+         'wxwidgets-gtk3' 'z3' 'zlib')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
              'cereal' 'cgal' 'eigen3' 'nlohmann-json')
 options=('!makeflags')
@@ -23,14 +23,16 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${p
         fixes_nanosvg.patch
         integrate_occtwrapper.patch
         boost-1.88.patch
-        boost-1.89.patch)
+        boost-1.89.patch
+        allow_wayland.patch)
 sha256sums=('cb0315af94a7889ea3f89b0bff1e03a37508956bd6caa56e12d900a712daa2ed'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
             '42b60b5d3c5912569feee7a7fd886ad98581237002da242f211a651005e3a911'
             'bd5d5b2cdc60df0add095dc7b77643022a7245b74dc9d7720fdc50eb203dba08'
             'a09fb8f10dde4ea04c663a410aac9586b6461c60e5bb3b828277a0294b8be223'
             '75d240f20ac5a9da8a780500dd9756af8c6d13edddaf25ff99673d42eabf3d7a'
-            '730fe9b67d69dffd8f02ba92e13263cd002cc597204d8b718deeb76ff25f43c7')
+            '730fe9b67d69dffd8f02ba92e13263cd002cc597204d8b718deeb76ff25f43c7'
+            '7f7c27900ea9f7d944cd9ce26ee87b17c582bec6dad7d7e52967d28be0dd8708')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
@@ -47,6 +49,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/integrate_occtwrapper.patch
   patch -Np1 -i "${srcdir}"/boost-1.88.patch
   patch -Np1 -i "${srcdir}"/boost-1.89.patch
+  patch -Np1 -i "${srcdir}"/allow_wayland.patch
   # Do some minimal branding to indicate that user is running the official
   # Arch Linux package version and to direct them to the proper bug reporting
   # guidelines.
@@ -71,8 +74,7 @@ build() {
       -G Ninja \
       -S PrusaSlicer-version_${pkgver/_/-}/deps \
       -B deps_${pkgver} \
-      -DDEP_WX_GTK3=ON \
-      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;z3;ZLIB"
+      -DPrusaSlicer_deps_PACKAGE_EXCLUDES="Blosc;Boost;Catch2;Cereal;CGAL;CURL;Eigen;EXPAT;GLEW;GMP;JPEG;json;MPFR;NanoSVG;NLopt;OCCT;OpenCSG;OpenEXR;OpenSSL;OpenVDB;PNG;Qhull;TBB;TIFF;wxWidgets;z3;ZLIB"
   ninja -C deps_${pkgver}
 
   cmake \
