@@ -4,7 +4,7 @@
 _pkgname=yaml-cpp
 pkgname=mingw-w64-${_pkgname}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='YAML parser and emitter in C++, written around the YAML 1.2 spec (mingw-w64)'
 url="https://github.com/jbeder/${_pkgname}"
 arch=('any')
@@ -21,6 +21,11 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DYAML_CPP_BUILD_TOOLS=OFF
 	-DCMAKE_POLICY_VERSION_MINIMUM='3.5' )
 _srcdir="${_pkgname}-$pkgver"
+
+prepare() {
+	cd "$_srcdir"
+	sed -i '/#include "yaml-cpp\/null.h"/a #include <cstdint>' 'src/emitterutils.cpp'
+}
 
 build() {
 	for _arch in ${_architectures}; do

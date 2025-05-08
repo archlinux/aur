@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-yaml-cpp
 	pkgdesc = YAML parser and emitter in C++, written around the YAML 1.2 spec (mingw-w64)
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jbeder/yaml-cpp
 	arch = any
 	license = MIT
