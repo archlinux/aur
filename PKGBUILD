@@ -5,19 +5,19 @@
 # Contributor: Ewhal <ewhal@pantsu.cat>
 
 pkgname=session-desktop-bin
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(libxtst nss alsa-lib libxss libnotify xdg-utils)
 optdepends=('libappindicator-gtk3: for tray support')
 provides=(session-desktop)
 conflicts=(session-desktop)
 options=(!strip)
 source=(https://github.com/session-foundation/session-desktop/releases/download/v$pkgver/session-desktop-linux-amd64-$pkgver.deb)
-sha256sums=('5155d0ef3d3c796fafa0cdf3fb6951a08fc8d08097527c59d138c33af2013842')
+sha256sums=('06fbf71c06f13550541b954dc0bce7bee691c982c38d0c7853f094344cea8775')
 
 package() {
     tar xf $srcdir/data.tar.xz -C $pkgdir
