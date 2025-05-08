@@ -1,7 +1,7 @@
 pkgbase = duolingo-desktop-bin
 	pkgdesc = Desktop client for the Duolingo language learning application.(Prebuilt version.Use system-wide electron)
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hmlendea/dl-desktop
 	arch = x86_64
 	license = GPL-3.0-only

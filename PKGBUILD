@@ -4,7 +4,7 @@ _appname=dl-desktop
 _pkgname=ro.go.hmlendea.DL-Desktop
 pkgver=4.0.3
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Duolingo language learning application.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
@@ -22,18 +22,18 @@ source=(
 sha256sums=('755146df3e8d91b60634ed93917c00bf1cf322966c239d310622d6370229cf2b'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/\/opt\/${_appname}\/${_appname}/${pkgname%-bin} %U/g
         s/${_pkgname}/${pkgname%-bin}/g
-    " -i "${srcdir}/${_pkgname}.desktop"
+    " "${srcdir}/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
