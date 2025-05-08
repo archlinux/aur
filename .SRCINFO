@@ -1,6 +1,6 @@
 pkgbase = r-gdm
 	pkgdesc = Generalized Dissimilarity Modeling
-	pkgver = 1.6.0.6
+	pkgver = 1.6.0.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gdm
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-gdm
 	depends = r-reshape2
 	depends = r-vegan
 	depends = r-pbapply
-	source = https://cran.r-project.org/src/contrib/gdm_1.6.0-6.tar.gz
-	sha256sums = 178251864305b992e917a0ee686bdc77610f017f412e8a19897d70fd140366fb
+	source = https://cran.r-project.org/src/contrib/gdm_1.6.0-7.tar.gz
+	sha256sums = 47ce3b256c793e569c456b36f25f68ccb7e5522605461d4e5c30bc4e8947b92b
 
 pkgname = r-gdm
