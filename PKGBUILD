@@ -3,7 +3,7 @@
 # Contributor: Chuah Chee Shian <shian15810@gmail.com>
 
 pkgname=scala-cli
-pkgver=1.6.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='A command-line tool to interact with the Scala language'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ url='https://scala-cli.virtuslab.org'
 license=('Apache-2.0')
 source_x86_64=("$pkgname-x86_64-$pkgver.gz::https://github.com/VirtusLab/scala-cli/releases/download/v$pkgver/scala-cli-x86_64-pc-linux.gz")
 source_aarch64=("$pkgname-aarch64-$pkgver.gz::https://github.com/VirtusLab/scala-cli/releases/download/v$pkgver/scala-cli-aarch64-pc-linux.gz")
-sha256sums_x86_64=('0efe579690c0d1712811d3610835f3390bc6e6e8d6ce62ff8450b123653cbd97')
-sha256sums_aarch64=('129b5921d1217043dca8670b7ec606e25215c3488c54088d462b5b50c7701bdc')
+sha256sums_x86_64=('22c6e12303cd08cff139c6b1a0901a0302e9043fbf79103625d8580eb0286232')
+sha256sums_aarch64=('a49653b03e357166de89d7591deab5961747dc1e98ebb3028176d2cc2f5496c6')
 # Avoid stripping debug info, which requries a seperate
 # debug package and only saves ~200KiB.
 #
