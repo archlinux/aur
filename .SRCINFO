@@ -1,4 +1,4 @@
-pkgbase = bctoolbox
+pkgbase = bctoolbox-openssl
 	pkgdesc = A library written in C that allows you to create and run audio and video streams
 	pkgver = 5.4.12
 	pkgrel = 1
@@ -7,11 +7,12 @@ pkgbase = bctoolbox
 	license = GPL-3.0-only
 	makedepends = cmake
 	depends = gcc-libs
-	depends = libdecaf
-	depends = mbedtls
+	depends = openssl
+	provides = bctoolbox=5.4.12
+	provides = libbctoolbox.so=1-64
+	conflicts = bctoolbox
+	conflicts = bctoolbox-git
 	source = https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/5.4.12/bctoolbox-5.4.12.tar.bz2
-	source = config.patch
 	sha256sums = 1833c0dd2630cadf87686c1f14771cf9c173f6fd04a527f47213de7e0f7d0a7c
-	sha256sums = ce74b1480fbc49654852b3fd661de396dabe911ea7552ada3858048e4660963f
 
-pkgname = bctoolbox
+pkgname = bctoolbox-openssl
