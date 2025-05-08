@@ -1,7 +1,7 @@
 pkgbase = hyperkeys-bin
 	pkgdesc = Unleash you keyboard shorcuts.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyperkeys.xureilab.com/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,8 @@ pkgbase = hyperkeys-bin
 	depends = java-runtime
 	depends = nodejs
 	depends = libdbusmenu-glib
+	depends = libindicator-gtk3
+	depends = libdbusmenu-gtk3
 	depends = xdotool
 	depends = libxmu
 	provides = hyperkeys=1.3.4
