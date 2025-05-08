@@ -1,10 +1,11 @@
-# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Maintainer: Luke Short <ekultails@gmail.com>
+# Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Alex Zose <alexander[dot]zosimidis[at]gmail[dot]com>
 
 pkgname=crudini
-pkgver=0.9.5
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="A utility for manipulating ini files"
 arch=(any)
 url="https://github.com/pixelb/crudini"
@@ -22,7 +23,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b0492cb9ce126ce3c05ae7d8424c0fca5b26a788f593afe000150ba0c4b23cdb')
+sha256sums=('87dfa84373879cced9897b8605521a24cfd7d24c42db34eb05143b468f130444')
 
 _archive="$pkgname-$pkgver"
 
