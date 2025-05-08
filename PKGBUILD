@@ -6,10 +6,10 @@
 
 pkgname=binaryninja-personal
 _pkgname=binaryninja
-pkgver=4.2.6455
+pkgver=5.0.7290
 pkgrel=1
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform. This package is for the Personal Edition and requires both an installer zip (x86 or ARM) and a license."
-arch=('any')
+arch=('x86_64' 'arm')
 url="https://binary.ninja"
 license=('custom:Binary Ninja License Agreement')
 depends=(
@@ -25,12 +25,13 @@ source=(
 	"${_pkgname}.png"
 	"${_pkgname}.desktop"
 )
-# Change first hash to 27141008c87d554dbfd00847f988290ae20d8c9b7fc9fc264159994bc0af2733 if ARM
-sha256sums=('073d5dc59e67dabb8aa8c419385b2a0dc17831f108d73def4934e4cade563c87' 
+sha256sums=('SKIP' 
             '4f318001e7d39279ce063ef42077bae03e95c112aa203a4be3ea3d913c34327e'
             'a1e20e8176292c67fcc50d3444e95e31ee91ff6cf861f8529554152ed7bd8139')
 
-# pkgver() { curl -s https://binary.ninja/js/changelog.js | perl -pe 's/.*?version":\s"(\d+\.\d+\.\d+)".*/$1/' }
+pkgver() {
+	curl -s "https://binary.ninja/js/changelog.js" | perl -pe 's/.*?version":\s"(\d+\.\d+\.\d+)".*/$1/'
+}
 
 package() {
 	mkdir "${pkgdir}/opt"
