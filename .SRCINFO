@@ -1,14 +1,14 @@
 pkgbase = sile-textsubsuper
 	pkgdesc = Real or fake superscripts and subscripts for the SILE typesetting system
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Omikhleia/textsubsuper.sile
 	arch = any
-	license = GPL-3.0-only
+	license = MIT
 	makedepends = lua51
 	makedepends = luarocks
 	depends = sile
-	source = https://github.com/Omikhleia/textsubsuper.sile/archive/v2.0.0/textsubsuper.sile-2.0.0.tar.gz
-	sha256sums = 17a51c6e2049764090d7777132aa965970d593348744e2ba662775bb0a553904
+	source = https://github.com/Omikhleia/textsubsuper.sile/archive/v2.1.0/textsubsuper.sile-2.1.0.tar.gz
+	sha256sums = da483e48cba7c0cf41d31e9833c52523727f00dc4dce6b88b74cb21377784995
 
 pkgname = sile-textsubsuper
