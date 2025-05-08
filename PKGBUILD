@@ -2,7 +2,7 @@
 pkgname=mdx-notes-bin
 _pkgname=MDX.Notes
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="⛷ Cross-platform note-taking software, public layout editor, using MDX ⛷ 跨平台笔记软件，公众号排版编辑器，使用MDX来排版.(Prebuilt version)"
 arch=('x86_64')
 url="https://mdxnotes.com/"
@@ -19,13 +19,13 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb"
 )
 sha256sums=('49a34a452f7a6ba91987dc5fa5da99ba390dd89612beee4eb252ba94209bf56d')
-build() {
+prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/Exec=tauri-app/Exec=${pkgname%-bin}/g
         s/Icon=tauri-app/Icon=${pkgname%-bin}/g
         s/Categories=Development/Categories=Utility/g
-    " -i "${srcdir}/usr/share/applications/tauri-app.desktop"
+    " "${srcdir}/usr/share/applications/tauri-app.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/tauri-app" "${pkgdir}/usr/bin/${pkgname%-bin}"

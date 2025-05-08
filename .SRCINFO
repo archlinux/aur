@@ -1,7 +1,7 @@
 pkgbase = mdx-notes-bin
 	pkgdesc = ⛷ Cross-platform note-taking software, public layout editor, using MDX ⛷ 跨平台笔记软件，公众号排版编辑器，使用MDX来排版.(Prebuilt version)
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mdxnotes.com/
 	arch = x86_64
 	license = GPL-3.0-only
