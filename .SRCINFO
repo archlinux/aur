@@ -1,7 +1,7 @@
 pkgbase = niconizer-bin
-	pkgdesc = A desktop application that displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.0.150
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matzkoh/niconizer
 	arch = x86_64
 	license = MIT

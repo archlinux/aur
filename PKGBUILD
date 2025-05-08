@@ -2,9 +2,9 @@
 pkgname=niconizer-bin
 pkgver=2.0.150
 _electronversion=33
-pkgrel=1
-pkgdesc="A desktop application that displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)"
-arch=("x86_64")
+pkgrel=2
+pkgdesc="Displays plain text, images, and any other HTML content on the screen.(Prebuilt version.Use system-wide electron)"
+arch=('x86_64')
 url="https://github.com/matzkoh/niconizer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -23,20 +23,25 @@ source=(
 sha256sums=('3b3b09da915e6a8a1bf20ca020a2443b285cd4719d6986bd9e9f5b5599406b88'
             '7c820610080a8d47f26c555d498ae391c89f2848de93cde005f1fd438e1e0236'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/
         s/@appname@/${pkgname%-bin}/
         s/@runname@/app.asar/
         s/@cfgdirname@/${pkgname%-bin}/
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-bin}" --exec="${pkgname%-bin} %U"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${pkgname%-bin}" \
+        --exec="${pkgname%-bin} %U"
 }
 package() {
-   install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
