@@ -1,7 +1,7 @@
 # Maintainer: tyrolyean <tyrolyean@tyrolyean.net>
 # Co-Maintainer: danihek <danihek07@gmail.com>
 pkgname=hellwal
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="fast, extensible color palette generator"
 arch=('i686' 'x86_64' 'arm' 'aarch64' 'riscv')
@@ -13,15 +13,15 @@ source=(
 	)
 
 sha256sums=(
-	'2b841d03fe057e30cd1200283361f5ca2f0320aaf2ae7828ace3ce6721633ea8'
+	'a33d1c5257fe4b42e92cac7f055c6ed1a3e857fe52ab435924b316947d55e200'
 	)
 
 sha512sums=(
-	'87c365d8619e20cbacac8a1ad34f860fb5699e9b86d6dc50c62de5877a743d745f6924130e6fc012ff974e0acc2002d947ba1a47b32dea7983aa56f6dbdb1800'
+	'1df251c85117c5f808c732ee0e2b72cabda04943d7a398b5fc4a8cd5dece7fd43309fae5cb9b72b02b23b001ea494738eb98c622646c33dba45a42d8d977b12a'
 	)
 
 md5sums=(
-	'392eaaf1b831e5d18ab9fe6bc4e4fd3b'
+	'5eedf31814a60bb03d51d39cae2c9c5c'
 	)
 
 build() {
@@ -30,22 +30,37 @@ build() {
 }
 
 package() {
+	# pkg
 	install -D ${pkgname}-${pkgver}/${pkgname} $pkgdir/usr/bin/${pkgname}
+
+	# bash completion
 	install -D ${pkgname}-${pkgver}/assets/hellwal-completion.bash $pkgdir/usr/share/bash-completion/completions/${pkgname}
+
+	# templates
+	install -D ${pkgname}-${pkgver}/templates/alphacolors.css $pkgdir/usr/share/docs/${pkgname}/templates/alphacolors.css
 	install -D ${pkgname}-${pkgver}/templates/colors $pkgdir/usr/share/docs/${pkgname}/templates/colors
-	install -D ${pkgname}-${pkgver}/templates/colors.css $pkgdir/usr/share/docs/${pkgname}/templates/colors.css
-	install -D ${pkgname}-${pkgver}/templates/colors.json $pkgdir/usr/share/docs/${pkgname}/templates/colors.json
 	install -D ${pkgname}-${pkgver}/templates/colors-rgb $pkgdir/usr/share/docs/${pkgname}/templates/colors-rgb
+	install -D ${pkgname}-${pkgver}/templates/colors.css $pkgdir/usr/share/docs/${pkgname}/templates/colors.css
+	install -D ${pkgname}-${pkgver}/templates/colors.hellwal $pkgdir/usr/share/docs/${pkgname}/templates/colors.hellwal
+	install -D ${pkgname}-${pkgver}/templates/colors.json $pkgdir/usr/share/docs/${pkgname}/templates/colors.json
+	install -D ${pkgname}-${pkgver}/templates/colors.scss $pkgdir/usr/share/docs/${pkgname}/templates/colors.scss
+	install -D ${pkgname}-${pkgver}/templates/colors.vim $pkgdir/usr/share/docs/${pkgname}/templates/colors.vim
 	install -D ${pkgname}-${pkgver}/templates/discord-colors.css $pkgdir/usr/share/docs/${pkgname}/templates/discord-colors.css
+	install -D ${pkgname}-${pkgver}/templates/dwl-colors-bar.h $pkgdir/usr/share/docs/${pkgname}/templates/dwl-colors-bar.h
+	install -D ${pkgname}-${pkgver}/templates/dwl-colors.h $pkgdir/usr/share/docs/${pkgname}/templates/dwl-colors.h
 	install -D ${pkgname}-${pkgver}/templates/foot-colors.ini $pkgdir/usr/share/docs/${pkgname}/templates/foot-colors.ini
+	install -D ${pkgname}-${pkgver}/templates/fuzzel-colors.ini $pkgdir/usr/share/docs/${pkgname}/templates/fuzzel-colors.ini
+	install -D ${pkgname}-${pkgver}/templates/hellwm.lua $pkgdir/usr/share/docs/${pkgname}/templates/hellwm.lua
 	install -D ${pkgname}-${pkgver}/templates/hyprland-colors.conf $pkgdir/usr/share/docs/${pkgname}/templates/hyprland-colors.conf
+	install -D ${pkgname}-${pkgver}/templates/mako-colors $pkgdir/usr/share/docs/${pkgname}/templates/mako-colors
+	install -D ${pkgname}-${pkgver}/templates/rofi.rasi $pkgdir/usr/share/docs/${pkgname}/templates/rofi.rasi
 	install -D ${pkgname}-${pkgver}/templates/terminal.sh $pkgdir/usr/share/docs/${pkgname}/templates/terminal.sh
 	install -D ${pkgname}-${pkgver}/templates/variables.sh $pkgdir/usr/share/docs/${pkgname}/templates/variables.sh
 	install -D ${pkgname}-${pkgver}/templates/variablesfish.fish $pkgdir/usr/share/docs/${pkgname}/templates/variablesfish.fish
-	install -D ${pkgname}-${pkgver}/templates/hellwm.lua $pkgdir/usr/share/docs/${pkgname}/templates/hellwm.lua
-	install -D ${pkgname}-${pkgver}/templates/rofi.rasi $pkgdir/usr/share/docs/${pkgname}/templates/rofi.rasi
-	install -D ${pkgname}-${pkgver}/templates/colors.vim $pkgdir/usr/share/docs/${pkgname}/templates/colors.vim
 	install -D ${pkgname}-${pkgver}/templates/waybar-colors.css $pkgdir/usr/share/docs/${pkgname}/templates/waybar-colors.css
+	install -D ${pkgname}-${pkgver}/templates/zathura-colors $pkgdir/usr/share/docs/${pkgname}/templates/zathura-colors
+
+	# themes
 	install -D ${pkgname}-${pkgver}/themes/catppuccin.hellwal $pkgdir/usr/share/docs/${pkgname}/themes/catppuccin.hellwal
 	install -D ${pkgname}-${pkgver}/themes/gruvbox.hellwal $pkgdir/usr/share/docs/${pkgname}/themes/gruvbox.hellwal
 	install -D ${pkgname}-${pkgver}/themes/gruvbox-light.hellwal $pkgdir/usr/share/docs/${pkgname}/themes/gruvbox-light.hellwal
