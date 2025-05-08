@@ -1,0 +1,21 @@
+pkgbase = framework-system-uefi-git
+	pkgdesc = UEFI Shell tool to interact with the framework system (git development version)
+	pkgver = v0.4.1.r0.gd515b02
+	pkgrel = 1
+	url = https://github.com/FrameworkComputer/framework-system
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = mtools
+	makedepends = cargo-nightly
+	makedepends = pkg-config
+	depends = libusb
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	provides = framework-system-uefi
+	conflicts = framework-system-uefi
+	source = framework-system-uefi-git::git+https://github.com/FrameworkComputer/framework-system.git
+	b2sums = SKIP
+
+pkgname = framework-system-uefi-git
