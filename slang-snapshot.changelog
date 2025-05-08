@@ -37,3 +37,5 @@ Changes since 2.3.3
     string, and corrected a potential memory leak (Miroslav Lichvar)
 17. autoconf/scripts/getsyslibs.sh: Handle files with relative path
     names
+18. src/slconfig.h: Do not define HAVE_FLOCK for VMS systems (Hartmut
+    Becker)

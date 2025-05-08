@@ -4,7 +4,7 @@
 
 pkgname='slang-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=2.3.4-17
+_pkgver=2.3.4-18
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
 pkgrel=2
@@ -26,7 +26,7 @@ options=('!makeflags')
 source=("$url$_pkgname-$_prever.tar.gz")
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 # Taken from $url
-md5sums=('9c8f5f5035565ccc1671b5a397feffa8')
+md5sums=('96faa6278e413b20fc64af3eb816626c')
 changelog="$pkgname.changelog"
 
 build() {
@@ -68,7 +68,7 @@ package() {
 
 # Calculated
 b2sums=(
-  '9c4bd76189cc551c24432ff0b299a70d0336a5ca96a267ee1677b2b82b9ac60e6e49ce2630652737c6124f07a82a12a939cf7366e2289e76f8beb5ac204fb3a2'
+  '8a1dd14afb72faa02bad1a66f7143586aafb7fe7309b7e87911dc2c73effc6192024499303eb6403790ea6c6442968f4627e9627e368ab98deca2fc104b214e6'
 )
 
 # eof
