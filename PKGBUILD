@@ -1,8 +1,9 @@
 # Maintainer: Frédéric Logier <fredix@protonmail.com>
 _name=notedeck
+_tag=0.4.0
 pkgname=notedeck-git
-pkgver=0.4.0.r0.gb48b1e4
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 epoch=
 pkgdesc="The nostr browser"
 arch=('x86_64' 'aarch64')
@@ -22,7 +23,7 @@ backup=()
 options=('!lto')
 install=
 changelog=
-source=("git+${url}.git#tag=v${pkgver}")
+source=("git+${url}.git#tag=v${_tag}")
 
 noextract=()
 sha256sums=("SKIP")
