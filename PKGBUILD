@@ -1,19 +1,14 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=kh-melonmix-bin
-pkgver=0.5.10
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 epoch=
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
 url="https://github.com/vitor251093/KHMelonMix"
 license=('GPL')
 groups=()
-depends=("libepoxy" "libslirp" "qt5-base" "qt5-multimedia" "sdl2" "enet")
+depends=("libepoxy" "libslirp" "qt5-base" "qt5-multimedia" "sdl2" "enet" "sdl2-compat")
 makedepends=()
 checkdepends=()
 optdepends=()
