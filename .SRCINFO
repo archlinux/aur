@@ -1,10 +1,10 @@
 pkgbase = range-v3-git
 	pkgdesc = Experimental range library for C++11/14/17
-	pkgver = 0.12.0.r11.g3d6e6f56e
+	pkgver = 0.12.0.r47.gca1388fb9
 	pkgrel = 1
 	url = https://github.com/ericniebler/range-v3
 	arch = any
-	license = custom
+	license = BSL-1.0
 	makedepends = git
 	makedepends = cmake
 	source = git+https://github.com/ericniebler/range-v3.git

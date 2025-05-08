@@ -3,12 +3,12 @@
 
 _pkgname='range-v3'
 pkgname=${_pkgname}-git
-pkgver=0.12.0.r11.g3d6e6f56e
+pkgver=0.12.0.r47.gca1388fb9
 pkgrel=1
 pkgdesc='Experimental range library for C++11/14/17'
 arch=('any')
 url='https://github.com/ericniebler/range-v3'
-license=('custom')
+license=('BSL-1.0')
 makedepends=('git' 'cmake')
 source=("git+https://github.com/ericniebler/${_pkgname}.git")
 md5sums=('SKIP')
@@ -22,7 +22,7 @@ _flags=(
 	-DRANGE_V3_PERF=OFF
 	-DRANGES_ENABLE_WERROR=OFF
 	-DRANGES_NATIVE=OFF
-	-DRANGES_CXX_STD=20
+	-DRANGES_CXX_STD=23
 )
 
 pkgver() {
@@ -49,8 +49,8 @@ check() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install 'build'
-	
-	cd "${_dir}" 
+
+	cd "${_dir}"
 	# install custom license
-	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
