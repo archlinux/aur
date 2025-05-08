@@ -2,8 +2,8 @@
 
 pkgname=spinnaker-sdk
 _pkgname=spinnaker
-pkgdesc="The Spinnaker SDK is Teledyne’s next-generation GenICam3 API library for machine vision developers"
-pkgver=4.1.0.338
+pkgdesc="Teledyne’s next-generation GenICam3 API library for machine vision developers"
+pkgver=4.2.0.46
 pkgrel=1
 provides=(libgentl libspinnaker libspinnaker-dev libspinnaker-c libspinnaker-c-dev libspinvideo libspinvideo-dev libspinvideo-c libspinvideo-c-dev spinnaker spinnaker-doc spinupdate spinupdate-dev spinview-qt spinview-qt-dev)
 conflicts=(libgentl libspinnaker libspinnaker-dev libspinnaker-c libspinnaker-c-dev libspinvideo libspinvideo-dev libspinvideo-c libspinvideo-c-dev spinnaker spinnaker-doc spinupdate spinupdate-dev spinview-qt spinview-qt-dev)
@@ -14,17 +14,17 @@ depends=('libusb' 'qt5-base' 'qt5-tools' 'ffmpeg4.4')
 
 _dir="$_pkgname-$pkgver-amd64"
 source=(
-	"$pkgname-$pkgver.tar.gz::https://flir.netx.net/file/asset/68130/original/attachment"
+	"$pkgname-$pkgver.tar.gz::https://flir.netx.net/file/asset/68771/original/attachment"
 	"$_pkgname-usbfs.service"
 	"$_pkgname.rules"
 	"$_pkgname-gentl-64.sh"
 	"$_pkgname-paths.sh"
 )
-sha512sums=('a2437e331ca171ea19e26c612e56e23a8aef09bd532880a9e9d070086557784d97356f0e4fa6df1ee9c5a0c72a19b26a1e2c6a1daaa0b3571835789c572e02bd'
-            '3acc73e43a0a244649ef3e299129b40f16edef29a8c4b9e7330fb7cebefc8a305ebf41ccb39e19998a042ddd104ccae33ad7bc8c350a23f47648029642bba65d'
-            '070afc466d49354bf92ca492f7621c038b968f583b4a98915f4b97b899d090ac398ffcb7b4a63c16d3ef81fdf2c404a7c00b24a8d91df4e686f510f5014c1508'
-            'fd7c209001eeb8c289d50b951a824c7adb36847582aa95ecd11f3a71749900c1d3184cf152508eac1e35ae11754621c188fd47bf87b62753454008baf1c3ac76'
-            '90849c0f74b1ccbebf715d9064b93c5d2a3b1858960799216d05fc8a0606615e583e1dde8b724d34c015ffa08f1e057ed1327f0d5fb997a811bb51991eba2a12')
+b2sums=('fad22bffaeff5073f699de5b569af8b1474e6469313ef5798a414ac9aec7dc863a43771993093183c4680f6d42e6aa61fc86c514c14d2fa0d48db6a065b2cc0b'
+        'bd3fd6855a868a6839cc77537a1fa9a537ba0d63c874ed1a973417cd98a56a363cb66c8a47d12fbab324e84a627077e2a37154e9fbb7c8a56df3b8bcd0f3dfaa'
+        'a449e038db08db9da143ea37c6a6072baa2cb3f0d0b343bcdf1c027ac023ca7019779338a2c5f0d8af5547baff3743983eae5b8c2e581ba508cd126ce18cfa30'
+        '38b44ae16e9542496bb3b3dae5a297234ed96f8929783b5663a775406eeeee5a3b0b17734a54803e81d878b3f4d3d7d5b876dcd204f618ece5a6b2f0d3d5b708'
+        '015136fabeb9e89fed4252feeba2207f3fb21ec8332f5ee1ea263f217cd499a3ab66974f22dc080c60f8a5bae5bd7b114153e681d0c4e5e99f86f69a8d626aaf')
 
 prepare() {
 	cd "$srcdir/$_dir"
