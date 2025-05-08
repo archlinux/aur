@@ -1,7 +1,7 @@
 pkgbase = kanidm
 	pkgdesc = A identity management service and clients.
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.6.1
+	pkgrel = 1
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
 	arch = aarch64
@@ -12,13 +12,13 @@ pkgbase = kanidm
 	makedepends = tpm2-tss
 	makedepends = lld
 	options = !buildflags
-	source = kanidm-1.6.0.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.6.0.tar.gz
-	sha256sums = ece0c090eecddbda54c12d1e50e72daca5c9348bc199c7cb1c0f25935b5c786b
+	source = kanidm-1.6.1.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = 89e993c3b81720122385b82f47f04fff2acbfd5540af25b507a8cab713a70e86
 
 pkgname = kanidm
-	depends = kanidm-server=1.6.0
-	depends = kanidm-clients=1.6.0
-	depends = kanidm-unixd-clients=1.6.0
+	depends = kanidm-server=1.6.1
+	depends = kanidm-clients=1.6.1
+	depends = kanidm-unixd-clients=1.6.1
 	conflicts = kanidm-git
 
 pkgname = kanidm-clients
