@@ -1,0 +1,17 @@
+pkgbase = python-nyaapy
+	pkgdesc = Unofficial Python wrapper for Nyaa anime torrent sites
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/JuanjoSalvador/NyaaPy
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python>=3.10
+	depends = python-requests
+	depends = python-lxml
+	depends = python-beautifulsoup4
+	source = NyaaPy-0.7.0.tar.gz::https://github.com/JuanjoSalvador/NyaaPy/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 3b0de0f6adf8b0ebe9c1da254a8c8f243ceb698b069693c9b8404c483695ae1b
+
+pkgname = python-nyaapy
