@@ -9,13 +9,13 @@
 
 unset _pkgtype
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
-[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
+[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
 [[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
 [[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
 
 _pkgname=flycast
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.4.r256.g3114394
+pkgver=2.5.r0.g5f4eefa
 pkgrel=1
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
@@ -114,6 +114,8 @@ prepare() {
   }
 
   _run_if_exists _prepare_flycast
+
+  sed -e '1i #include <cstdint>' -i "$_pkgsrc/core/deps/glslang/SPIRV/SpvBuilder.h"
 }
 
 pkgver() {
@@ -136,13 +138,13 @@ build() {
   if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
     local _cflags _cxxflags
     _cflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
     )
     CFLAGS="${_cflags[@]}"
 
     _cxxflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
+      -march=x86-64-v${_build_level::1} -O3
       $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
     )
     CXXFLAGS="${_cxxflags[@]}"
