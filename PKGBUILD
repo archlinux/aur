@@ -2,7 +2,7 @@
 
 pkgname=pyhoster
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tool for servers that host python projects"
 arch=('any')
 url="https://github.com/mbutsk/pyhoster"
@@ -15,7 +15,7 @@ sha256sums=('5265d77b762b6ce09d9ea11fdd5fbba274886872bd9eb652953e20c0d3126417'
 conflicts=(pyhoster-git)
 
 package() {
-    install -D $pkgname-$pkgver/pyhoster.8 -t $pkgdir/usr/share/man/man8
+    install -D pyhoster.8 -t $pkgdir/usr/share/man/man8
     cp -r $pkgname-$pkgver/pyhoster $pkgdir/usr/share
     chmod +x $pkgdir/usr/share/pyhoster/main.py
     mkdir -p $pkgdir/usr/bin
