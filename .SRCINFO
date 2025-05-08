@@ -1,6 +1,6 @@
 pkgbase = yaml-language-server-git
 	pkgdesc = YAML Language Server, git main build
-	pkgver = r1322.8d95fb4
+	pkgver = r1335.7f64eeb9
 	pkgrel = 1
 	url = https://github.com/redhat-developer/yaml-language-server
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = yaml-language-server-git
 	makedepends = jq
 	makedepends = yarn
 	depends = nodejs
+	provides = yaml-language-server
 	conflicts = yaml-language-server
 	options = !emptydirs
 	options = !strip
