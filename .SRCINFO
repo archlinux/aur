@@ -1,6 +1,6 @@
 pkgbase = meowser-git
 	pkgdesc = 🐾 An open source, privacy-focused, catified Chromium based browser! 🌐.(Use system-wide electron)
-	pkgver = 0.0.1.r17.gd6efd5a
+	pkgver = 0.2.0.r19.ged524a5
 	pkgrel = 1
 	url = https://katniny.github.io/meowser/
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = meowser-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = gendesk
 	depends = electron33
 	source = meowser.git::git+https://github.com/katniny/meowser.git
 	source = meowser.sh
