@@ -1,7 +1,7 @@
 pkgbase = meowser-bin
 	pkgdesc = 🐾 An open source, privacy-focused, catified Chromium based browser! 🌐.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://katniny.github.io/meowser/
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
