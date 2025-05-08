@@ -2,8 +2,8 @@
 
 pkgname='opensearch-dashboards-gantt-chart-plugin'
 _pluginname='gantt-chart-dashboards-plugin'
-pkgver=2.19.1.0
-_dashboardsver=2.19.1
+pkgver=2.19.2.0
+_dashboardsver=2.19.2
 pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
@@ -18,8 +18,8 @@ source=(
   # Switch to NodeJS LTS 22 "Jod"
   "https://github.com/hashworks/OpenSearch-Dashboards/commit/1a602a8e117f735154230cc5199153a57ec5bbb6.patch"
 )
-sha256sums=('a369d95697815939fa16c34301c5ecfaa31aeb8dc76368998e6aa0aae8dd0a5e'
-            'd9e3acfeb25ce8c021c20d55f25d1f20fd5f524de81147f4154ab9fad7a8b786'
+sha256sums=('5be8eecc5c95aff4b3835c9fde8f13df7cbf1b905eebec8167aaa36defd04017'
+            '3814efbc447c01c38ff97eea46a7749172d59c826813451107f6dd21817e5745'
             'e916c1dd34871372ff4e7ca71e66cb14c472ca94c9143e6b6da28dbef1b25738')
 
 prepare() {
