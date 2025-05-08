@@ -6,15 +6,14 @@ pkgbase = revolt-desktop
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = npm
-	makedepends = gcc
-	makedepends = cmake
+	makedepends = git
 	makedepends = nvm
 	makedepends = curl
 	depends = electron33
 	depends = python
-	source = desktop-1.0.8.tar.gz::https://github.com/revoltchat/desktop/archive/refs/tags/v1.0.8.tar.gz
+	source = revolt-desktop-1.0.8::git+https://github.com/revoltchat/desktop#tag=v1.0.8
 	source = revolt-desktop.sh
-	sha256sums = cec46eca480d3bf011c9ef3066b74366d706de525b432a9522156534c84ee519
+	sha256sums = 832751115c0a9d93f5127053e665680cfe1844ed5ebe5d811ba10ac5c193eeec
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
 
 pkgname = revolt-desktop
