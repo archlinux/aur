@@ -1,6 +1,6 @@
 pkgbase = fftw-amd
 	pkgdesc = A library for computing the discrete Fourier transform (DFT) - AMD Ryzen/EPYC Optimized Version
-	pkgver = 3.3.10amd5.0
+	pkgver = 3.3.10amd5.1
 	pkgrel = 1
 	url = https://github.com/amd/amd-fftw/
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = fftw-amd
 	makedepends = gcc-fortran
 	makedepends = openmpi
 	depends = openmpi
+	provides = fftw=3.3.10
+	provides = fftw-openmpi=3.3.10
 	provides = libfftw3q_threads.so
 	provides = libfftw3q_omp.so
 	provides = libfftw3q.so
@@ -26,7 +28,7 @@ pkgbase = fftw-amd
 	provides = libfftw3_mpi.so
 	conflicts = fftw
 	conflicts = fftw-openmpi
-	source = https://github.com/amd/amd-fftw/archive/refs/tags/5.0.tar.gz
-	sha512sums = 52ceb6ad146df7a6f54e3a7df779cf83b24b1168674531f4504bf3cbbfe7d3accb5b1b1ecb462d77bf7753de6c7bedcf424ba4938193e094482c713b32cd00b4
+	source = https://github.com/amd/amd-fftw/archive/refs/tags/5.1.tar.gz
+	sha512sums = 4c65aa035883aecfd04b116c690c562dc77f9965638aa1768750ec2b58c0b9addf938f93ba573dae9956f9a34e481d43943927b6441b023e5349219829e6efce
 
 pkgname = fftw-amd
