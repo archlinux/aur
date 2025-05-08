@@ -8,7 +8,7 @@ pkgdesc="A special compilation of curl that makes it impersonate Firefox, Crome 
 url="https://github.com/lexiforest/curl-impersonate"
 license=('MIT')
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-makedepends=(tar gcc cmake go ninja unzip zlib autoconf automake libtool patch)
+makedepends=(tar gcc14 cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(nss libc++)
 provides=(curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate)
 conflicts=(curl-impersonate-bin curl-impersonate-chrome curl-impersonate-firefox libcurl-impersonate-bin)
@@ -22,6 +22,7 @@ md5sums=('b13bc66f4081641686a80847ce05a320')
 
 build () {
   export CXXFLAGS+=" -Wno-error=stringop-overflow"
+  export CC=gcc-14 CXX=g++-14
   cd curl-impersonate-${pkgver}
   autoconf
   mkdir -p build
