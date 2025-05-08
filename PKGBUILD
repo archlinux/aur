@@ -16,33 +16,39 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://deskflow.org/"
 license=(LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception)
 depends=(
-	'libxtst'
-	'libxkbcommon'
-	'libxkbfile'
-	'libxinerama'
-	'libei'
-	'libportal'
-	'qt6-base'
-	'tomlplusplus'
-	'openssl'
+  gcc-libs
+  glib2
+  glibc
+  hicolor-icon-theme
+  libei
+  libglvnd
+  libice
+  libportal
+  libsm
+  libx11
+  libxext
+  libxi
+  libxinerama
+  libxkbcommon
+  libxkbcommon-x11
+  libxkbfile
+  libxrandr
+  libxtst
+  openssl
+  qt6-base
+  tomlplusplus
 )
 makedepends=(
-	'ninja'
-	'git'
-	'cmake'
-	'python'
-	'libxkbfile'
-	'gtest'
-	'cli11'
+  cli11
+  cmake
+  git
+  gtest
+  ninja
+  python
+  qt6-tools
+  xorgproto
 )
-optdepends=(
-	'gtk3: GTK file/dir picker'
-	# 'libx11: X11 support' # dependency of libxtst
-	# 'libxext: X11 support' # dependency of libxtst
-	# 'libxi: X11 support' # dependency of libxtst
-	'libxkbcommon-x11: X11 support'
-	'libxrandr: X11 support'
-)
+
 provides=("$_basename")
 conflicts=('synergy-git' 'synergy-1.6' 'synergy1-bin' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin' 'synergy3-stable-bin' 'barrier' 'barrier-git' 'barrier-headless' 'barrier-headless-git' 'input-leap' 'input-leap-git' 'input-leap-headless-git' 'input-leap-headless' 'waynergy' 'waynergy-git' 'qsynergy' 'slim-synergy' 'quicksynergy' 'deskflow')
 source=("$_basename::git+https://github.com/deskflow/deskflow.git")
