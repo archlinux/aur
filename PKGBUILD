@@ -5,7 +5,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=qiv
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Quick Image Viewer (qiv) is a very small and fast GDK/Imlib image viewer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://spiegl.de/qiv/"
 license=('GPL2')
 depends=('file' 'gtk3' 'gdk-pixbuf2' 'libexif' 'lcms2' 'desktop-file-utils')
 source=(https://codeberg.org/ciberandy/qiv/archive/v$pkgver.zip)
-sha256sums=('5f84600c66854b1ada8f0d10d34fb746aecf12b874de46ea43b92cc259edfde5')
+sha256sums=('9d7c2e77b2b86d5778755d6cf0bb39edd76a168267579973a07aef208d53f564')
 
 build() {
   cd "$srcdir/$pkgname"
