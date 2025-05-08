@@ -1,6 +1,6 @@
 pkgbase = ros2-jazzy
 	pkgdesc = A set of software libraries and tools for building robot applications
-	pkgver = 2025.04.07
+	pkgver = 2025.04.30
 	pkgrel = 1
 	url = https://docs.ros.org/en/jazzy/
 	install = ros2-jazzy.install
@@ -8,6 +8,7 @@ pkgbase = ros2-jazzy
 	license = Apache-2.0
 	makedepends = cmake3
 	makedepends = git
+	makedepends = gcc13
 	depends = ros2-arch-deps
 	depends = qt6-base
 	depends = nvidia-cg-toolkit
@@ -16,7 +17,7 @@ pkgbase = ros2-jazzy
 	optdepends = gz-harmonic: For Gazebo Simulation support
 	provides = ros2-jazzy-base
 	conflicts = ros2-jazzy-base
-	source = ros2::git+https://github.com/ros2/ros2#tag=release-jazzy-20250407
+	source = ros2::git+https://github.com/ros2/ros2#tag=release-jazzy-20250430
 	sha256sums = SKIP
 
 pkgname = ros2-jazzy
