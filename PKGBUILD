@@ -3,7 +3,7 @@ pkgname=ferrum-bin
 _pkgname=Ferrum
 pkgver=0.19.3
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Music library app.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/probablykasper/ferrum"
@@ -19,18 +19,18 @@ source=(
 )
 sha256sums=('813e70deed9c48ae5164508798c292ec91e9334ff190f805330b250b5aca61e8'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/space.kasper.${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
-        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\/opt\/${_pkgname}\///g
         s/Audio/AudioVideo/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
