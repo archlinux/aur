@@ -3,7 +3,7 @@ pkgname=eve-intel-checker-bin
 _pkgname=EveIntelChecker
 pkgver=1.0.12
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to help you check Intel channels.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/SebastienDuruz/Eve-Intel-Checker"
@@ -22,15 +22,17 @@ source=(
 )
 sha256sums=('c104241974da0203d5a82eddab96ea27739f7fd8709df063f51ab133259a5cc9'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+        s/@options@//g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
