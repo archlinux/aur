@@ -1,5 +1,5 @@
 pkgbase = overlay-spirit-git
-	pkgdesc = An Electron app that displays motivational messages based on screen content.(Use system-wide electron)
+	pkgdesc = Displays motivational messages based on screen content.(Use system-wide electron)
 	pkgver = r6.78444ee
 	pkgrel = 1
 	url = https://github.com/Rahul-Sahani04/overlay-spirit
