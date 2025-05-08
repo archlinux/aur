@@ -1,11 +1,10 @@
 # Maintainer: Frédéric Logier <fredix@protonmail.com>
 _name=notedeck
-_tag=0.3.0
 pkgname=notedeck-git
-pkgver=0.3.0.r0.g69b7581
-pkgrel=2
+pkgver=0.4.0.r0.gb48b1e4
+pkgrel=1
 epoch=
-pkgdesc=" A multiplatform nostr client "
+pkgdesc="The nostr browser"
 arch=('x86_64' 'aarch64')
 url="https://github.com/damus-io/notedeck"
 license=('GPL-3')
@@ -23,7 +22,7 @@ backup=()
 options=('!lto')
 install=
 changelog=
-source=("git+${url}.git#tag=v${_tag}")
+source=("git+${url}.git#tag=v${pkgver}")
 
 noextract=()
 sha256sums=("SKIP")
