@@ -1,21 +1,24 @@
 pkgbase = glyph
-	pkgdesc = Convert images/video to ASCII art
-	pkgver = 1.0.10
+	pkgdesc = Convert images/video to ASCII art (formerly asciigen)
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/seatedro/glyph
+	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = zig
+	makedepends = zig>=0.14
 	depends = ffmpeg
 	depends = glibc
 	replaces = asciigen
-	noextract = zig-clap-0.9.1.tar.gz
+	noextract = zig-clap-0.10.0.tar.gz
 	noextract = stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
-	source = glyph-1.0.10.tar.gz::https://github.com/seatedro/glyph/archive/refs/tags/v1.0.10.tar.gz
-	source = zig-clap-0.9.1.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.9.1.tar.gz
+	source = glyph-1.0.11.tar.gz::https://github.com/seatedro/glyph/archive/refs/tags/v1.0.11.tar.gz
+	source = glyph_zig014_zon.patch
+	source = zig-clap-0.10.0.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.10.0.tar.gz
 	source = stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz::https://github.com/nothings/stb/archive/f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
-	sha256sums = 1cfb17da971cc0daac9d0a7744dd1c05fd3382b2522d64e62cdfb28a8faf5d84
-	sha256sums = eeac66ff8c5bfb9f0c186fa2533b2c52d47dece1b67518c0ab24b40407ade076
-	sha256sums = bc6ccf08bec08fea8ef423c7117dca06d2f62d2b27c5485f6865584b533fa7fa
+	b2sums = c63d063081f8d1d82b53093774dd16a71ecdb07865b3577f52ebd83f9ee7f3719dc980158e372a92262537755a45bfa3fad7d6462e7e96f8ca5a0729b93c2d36
+	b2sums = c091e11a6b4714e60d44a0a98e335d667ec854a868d753e1737b380224f2ae479176d545adada99f024f9afa34c8d2450b6e800785afcd52b509947afc100af0
+	b2sums = dbf4152f07b8097dd5288db4431ab65b64ffc66a3e1622fd3274fdea591238beddb077e973ffd70fce8f584980b7f0a5264fa8ea642a9b4f05010ff1e2f8aa03
+	b2sums = b4483822e55b330d03a780675835f6fb0300f63573ec8288ea9976adf6c4f7183a7ec6141e37c2aa4bb3dba361b9da3c8e8aaf55dc697185ec6c0464512b7b56
 
 pkgname = glyph
