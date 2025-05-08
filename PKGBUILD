@@ -1,36 +1,38 @@
-# Maintainer: Niels Martignène <niels.martignene@gmail.com>
-
+# Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=ty
-pkgver=0.8.10
+pkgver=0.0.0_alpha.6
 pkgrel=1
-pkgdesc="Collection of tools to manage Teensy boards"
-arch=('x86_64' 'i686')
-url="http://github.com/Koromix/tytools"
-license=('custom:Unlicense')
-depends=('teensyduino' 'libudev.so' 'qt5-base')
-makedepends=('imagemagick')
-source=("https://github.com/Koromix/ty/archive/v${pkgver}.tar.gz")
-sha256sums=('4840b64a909fc5b4ee4dca6520c88ab71213e7c338f6cd5ac8ddd8c636d406ea')
+pkgdesc="An extremely fast Python type checker and language server, written in Rust."
+arch=("x86_64")
+url="https://github.com/astral-sh/ty"
+license=("MIT")
+depends=(
+  "python"
+)
+makedepends=(
+  "clang"
+  "git"
+  "lld"
+  "python-build"
+  "python-installer"
+  "python-maturin"
+)
+source=("git::git+https://github.com/astral-sh/ty#tag=${pkgver//_/-}")
+sha256sums=('44cae1bb8ee118c1408144f9e6daf4aa16b0222d17f5d0db961d4c3ebce0fa6c')
+
+prepare() {
+  cd "${srcdir}/git"
+  git submodule update --init --recursive
+}
 
 build() {
-  cd "tytools-${pkgver}"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cd "${srcdir}/git"
+  CC=clang RUSTFLAGS+=" -Clinker-plugin-lto -Clinker=clang -Clink-arg=-fuse-ld=lld" \
+    python -m build --wheel
 }
 
 package() {
-  cd "tytools-${pkgver}"
-
-  make install DESTDIR="${pkgdir}"
-
-  for size in 16 32 48 256; do
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    convert -resize "${size}x${size}" resources/images/tycommander.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tycommander.png"
-    convert -resize "${size}x${size}" resources/images/tyupdater.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyupdater.png"
-  done
-
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/ty/LICENSE.txt"
+  cd "${srcdir}/git"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -D -m 0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "$srcdir/git/LICENSE"
 }

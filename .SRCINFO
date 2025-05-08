@@ -1,17 +1,18 @@
 pkgbase = ty
-	pkgdesc = Collection of tools to manage Teensy boards
-	pkgver = 0.8.10
+	pkgdesc = An extremely fast Python type checker and language server, written in Rust.
+	pkgver = 0.0.0_alpha.6
 	pkgrel = 1
-	url = http://github.com/Koromix/tytools
+	url = https://github.com/astral-sh/ty
 	arch = x86_64
-	arch = i686
-	license = custom:Unlicense
-	makedepends = imagemagick
-	depends = teensyduino
-	depends = libudev.so
-	depends = qt5-base
-	source = https://github.com/Koromix/ty/archive/v0.8.10.tar.gz
-	sha256sums = 4840b64a909fc5b4ee4dca6520c88ab71213e7c338f6cd5ac8ddd8c636d406ea
+	license = MIT
+	makedepends = clang
+	makedepends = git
+	makedepends = lld
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-maturin
+	depends = python
+	source = git::git+https://github.com/astral-sh/ty#tag=0.0.0-alpha.6
+	sha256sums = 44cae1bb8ee118c1408144f9e6daf4aa16b0222d17f5d0db961d4c3ebce0fa6c
 
 pkgname = ty
-
