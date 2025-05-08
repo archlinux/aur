@@ -4,7 +4,7 @@
 pkgname=coolterm-bin
 _pkgname=CoolTerm
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple GUI serial port terminal application (no terminal emulation).Prebuilt version."
 arch=(
 	'aarch64'
@@ -33,16 +33,16 @@ sha256sums_aarch64=('a1d809cb6b47bfd675615c99ebd532320cc13147b56a5125643e99c6ecf
 sha256sums_armv7h=('848656ad8b79c8df9616a2fe91a9ad991240b120173bbfab7c1907977b61fa11')
 sha256sums_i686=('d51567f3dff99424c50e39dedd6e81e8140dc09a427e15ab5268b971fc4aeca8')
 sha256sums_x86_64=('e6c52224b3c6a7d017a1811657e84060202171c218fe6526de57995e02c0d5b3')
-build() {
-	sed -e "
+prepare() {
+	sed -i -e "
 		s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-	sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+	sed -i -e "
 		s/Exec=.\/${_pkgname} /Exec=${pkgname%-bin}/g
 		s/Icon=.\/${_pkgname} Resources\/appicon_128.png/Icon=${pkgname%-bin}/g
 		6i\Categories=System;Utility
-	" -i "${srcdir}/${_pkgname}"*/"${_pkgname}.desktop"
+	" "${srcdir}/${_pkgname}"*/"${_pkgname}.desktop"
 	find "${srcdir}/${_pkgname}"* -type f -name "*.*" -exec chmod 644 {} +
 	find "${srcdir}/${_pkgname}"* -type f -name "*.py" -exec chmod 755 {} +
 	find "${srcdir}/${_pkgname}"* -type d -exec chmod 755 {} +
