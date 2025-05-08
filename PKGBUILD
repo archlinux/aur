@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
-pkgver=0.2.27
+pkgver=0.2.29
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Written in Go,prebuilt version)"
 arch=('x86_64')
@@ -21,10 +21,15 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/linux-amd64.zip"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/snakem982/Pandora-Box/v${pkgver}/frontend/src/assets/images/appicon.png"
 )
-sha256sums=('72d64a09a7fcca1b88e885d9e5c7fa7b46918bed6df5f28c8a340dc849e29ada'
+sha256sums=('d2ce6611c893f661738adc181d0c683319faf21cf83c2fb2a043e2e4895b5eaa'
             '5aa6d3df181607243064ceb3cdb12b59a23e48ca91266323a4d0105484d1c707')
 prepare() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Network" --name="${pkgname%-bin}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Network" \
+        --name="${pkgname%-bin}" \
+        --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-amd64" "${pkgdir}/usr/bin/${pkgname%-bin}"
