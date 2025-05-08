@@ -2,7 +2,7 @@
 
 pkgname=kicad-hq
 _name=${pkgname%-hq}
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=($CARCH)
@@ -56,7 +56,7 @@ optdepends=('kicad-library: KiCad symbol, footprint and template libraries'
 conflicts=(${pkgname} 'kicad' 'kicad-bzr')
 provides=(${pkgname} 'kicad' 'kicad-bzr')
 source=("${_name}-${pkgver}.tar.gz::https://gitlab.com/kicad-hq/kicad/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha256sums=('361b875b41198ca3708fa2f4016992aff5b158ec9dc2dc375c24383049b0face')
+sha256sums=('630c47d82039f028d95c3af0ca21a1e24ce2f303766b34aa644555f6987ee072')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
