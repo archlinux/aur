@@ -4,12 +4,14 @@
 
 pkgname=libosmo-abis
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Osmocom library for A-bis interface"
 arch=('any')
 url="https://osmocom.org/projects/libosmo-abis"
 license=('GPL-2.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later')
-depends=('libosmocore' 'ortp') # TODO: libosmocore>=1.9.0
+depends=('libosmocore' # TODO: libosmocore>=1.9.0
+         'libosmo-netif'
+         'ortp')
 provides=("libosmoabis.so=15-64"
           "libosmotrau.so=11-64")
 conflicts=("${pkgname}-git")
