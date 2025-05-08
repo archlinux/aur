@@ -2,13 +2,13 @@
 
 _rockname=piecharts.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=2.0.0
+pkgver=2.1.0
 _rockrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Pie charts for the SILE typesetting system'
 arch=(any)
 url="https://github.com/Omikhleia/$_rockname"
-license=(GPL-3.0-only)
+license=(MIT)
 _luadeps=(grail)
 depends=("${_luadeps[@]/#/lua51-}"
          sile)
@@ -16,7 +16,7 @@ makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('7a2405e63c51fa756f56b3c99edea18ba689f2ad006879bc0fbefb2c95f749c9')
+sha256sums=('e5ac2867dddee10f5f91d9a34650836445b7415be14bcb6fb85b7e7b4101968f')
 
 package() {
 	cd "$_archive"
