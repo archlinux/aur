@@ -1,0 +1,17 @@
+pkgbase = foobar2000-component-openlyrics-bin
+	pkgdesc = FOSS lyrics UI component for foobar2000 (column & default UI)
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://www.github.com/jacquesh/foo_openlyrics
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = foobar2000>=2.0.0
+	provides = foo_openlyrics
+	provides = foobar2000-component-openlyrics
+	source = https://github.com/jacquesh/foo_openlyrics/releases/download/v1.12/foo_openlyrics-v1.12.fb2k-component
+	source = https://github.com/jacquesh/foo_openlyrics/raw/refs/heads/main/LICENSE
+	sha256sums = c006065da41029c7037e0f40d6977494d281c9ced7a4c8abd9c7e7a7c06296d7
+	sha256sums = 51c8f956ae74ee8c452a4238fe8100ab55b51bd5eb79088766237753c23edde4
+
+pkgname = foobar2000-component-openlyrics-bin
