@@ -27,6 +27,7 @@ depends=(
 	'openssl'
 )
 makedepends=(
+	'ninja'
 	'git'
 	'cmake'
 	'python'

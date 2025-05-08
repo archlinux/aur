@@ -7,6 +7,7 @@ pkgbase = deskflow-git
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-GPL-2.0-only-WITH-OpenSSL-Exception
+	makedepends = ninja
 	makedepends = git
 	makedepends = cmake
 	makedepends = python
