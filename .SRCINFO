@@ -1,7 +1,7 @@
 pkgbase = electronwmd-bin
 	pkgdesc = Electron version of Web MiniDisc Pro.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.5.0_1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asivery/ElectronWMD
 	arch = x86_64
 	license = GPL-2.0-only

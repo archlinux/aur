@@ -3,7 +3,7 @@ pkgname=electronwmd-bin
 _pkgname='Electron Web MiniDisc'
 pkgver=0.5.0_1.5.0
 _electronversion=31
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron version of Web MiniDisc Pro.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/asivery/ElectronWMD"
@@ -28,15 +28,17 @@ source=(
 )
 sha256sums=('353ad0bfb5ec7a0edd38911815d20061c6fd99db7abec04b2b700f415d0be0a2'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
