@@ -1,6 +1,6 @@
 # Maintainer: MD Gaziur Rahman Noor <mdgaziurrahmannoor@gmail.com>
 pkgname=findex-bin
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Highly customizable application finder with high performance. Written in Rust and uses GTK"
 url="https://github.com/mdgaziur/findex"
@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("findex")
 conflicts=("findex")
 source=("https://github.com/mdgaziur/findex/releases/download/v$pkgver/findex-$pkgver-x86_64.tar.gz")
-sha256sums=('2e8ed01560e7e652c4d60bbe3985fc755521ac948e43567b335937b97dda94f2')
+sha256sums=('fa85b589b128d2508e1b1edabb84fb217b18ce101749e709a9b77afd9467960b')
 install=post_install.install
 depends=("gtk3" "libkeybinder3")
 
