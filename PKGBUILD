@@ -1,7 +1,7 @@
 # Maintainer: Acuvity
 
 pkgname=minibridge-git
-pkgdesc="Make your MPC servers secure and production ready"
+pkgdesc="Make your MCP servers secure and production ready"
 url="https://github.com/acuvity/minibridge"
 pkgver=v0.4.0.r5.g2c0cf86
 pkgrel=1
