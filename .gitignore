@@ -3,3 +3,4 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
+!/fix_rust_being_rust.sh

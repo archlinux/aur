@@ -2,7 +2,7 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=2.2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -17,18 +17,28 @@ conflicts=("surrealdb-bin")
 source=(
 	"https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver//_/-}/LICENSE"
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver//_/-}.tar.gz"
+	"fix_rust_being_rust.sh"
 )
 
 sha256sums=(
 	"dd98c688e54be8b85ad79e603f5112449b9789dfc031db94eb5c7dc843702aef"
-	"e0fc23b6d3f5c99518e686833c4e0a52d020b9e44a071fb363d903f491de5ec4"
+	"06c7348f1d5ea95694c28491c48997092b443dcd59703fcfcd42c50aca95d60c"
+	"c35407a2d41e0f6bc3b635c898a99d0fd56490218bd3d9e126d20ce341a79846"
 )
 
 prepare() {
 	cd "$pkgname-${pkgver//_/-}" || exit
-	rustup toolchain install 1.81.0
-	rustup override set 1.81.0
+	rustup toolchain install 1.86.0
+	rustup override set 1.86.0
 	rustup target add "$CARCH-unknown-linux-gnu"
+
+	# https://github.com/rust-rocksdb/rust-rocksdb/issues/995
+	# https://github.com/rust-rocksdb/rust-rocksdb/issues/991
+	# The current definition of "a steaming heap of rubbish". :)
+	# I better go wash my paws now. :)
+	cargo fetch
+	cd ..
+	bash ./fix_rust_being_rust.sh
 }
 
 build() {
