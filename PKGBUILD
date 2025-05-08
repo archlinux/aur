@@ -2,7 +2,7 @@
 # Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher
 _binname=OpenGOAL-Launcher
-pkgver="2.7.1"
+pkgver="2.7.2"
 pkgrel=1
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('curl' 'wget' 'file' 'cargo' 'nodejs>=18.18.0' 'yarn')
 conflicts=('open-goal-launcher-bin')
 _tarball="v${pkgver}.tar.gz"
 source=("https://github.com/open-goal/launcher/archive/refs/tags/${_tarball}" "${pkgname}.desktop")
-md5sums=("250e89a8f5d8aecab816a0147fecc67f" "SKIP")
+md5sums=("0339b21a1ccd86852ae038c83db3aec1" "SKIP")
 options=(!strip)
 
 prepare() {
@@ -30,9 +30,9 @@ prepare() {
 build() {
     cd $srcdir
     sed -i '/^Comment=/d' "${pkgname}.desktop"
-	sed -i '/^Version=/d' "${pkgname}.desktop"
-	echo "Comment=${pkgdesc}" >> "${pkgname}.desktop"
-	echo "Version=${pkgver}" >> "${pkgname}.desktop"
+    sed -i '/^Version=/d' "${pkgname}.desktop"
+    echo "Comment=${pkgdesc}" >> "${pkgname}.desktop"
+    echo "Version=${pkgver}" >> "${pkgname}.desktop"
 
     cd "launcher-${pkgver}"
     yarn tauri build --no-bundle
@@ -41,15 +41,15 @@ build() {
 package() {
     _src="${srcdir}/launcher-${pkgver}/src-tauri"
 
-	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -dm755 "${pkgdir}/usr/share/icons/hicolor"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
-	cp "${_src}/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-	cp "${_src}/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-	cp "${_src}/icons/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
+    cp "${_src}/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+    cp "${_src}/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    cp "${_src}/icons/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 
-	install -Dm755 "${_src}/target/release/${_binname}" "${pkgdir}/usr/bin/${_binname}"
+    install -Dm755 "${_src}/target/release/${_binname}" "${pkgdir}/usr/bin/${_binname}"
 }
