@@ -6,13 +6,13 @@
 
 pkgname=agave
 pkgver=0.4.7
-pkgrel=13
+pkgrel=14
 pkgdesc="Legacy colorscheme designer tool for GNOME2"
 arch=('x86_64')
 url="https://web.archive.org/web/20170327063642/http://home.gna.org/colorscheme/"
 license=('GPL')
-depends=('libglademm' 'gtkmm')
-makedepends=('libxslt' 'gnome-doc-utils' 'intltool' 'boost')
+depends=('libglademm' 'gtkmm' 'libxml2-legacy')
+makedepends=('libxslt' 'intltool' 'boost' 'gnome-doc-utils')
 sha256sums=('4005361ab1b137029c7d50afbbfbae7d83bdde7cec3e155a85eed59f6ec4e6fc'
             '132008f0bbe040c59bbc134d9ca3eb244967a66f95bf113d94e976b8ed776c6c'
             'dc93ef15cf96a62e2d8d21d6e360428305d3ba6640742a8e9c3a6a2c6aeaf665'
