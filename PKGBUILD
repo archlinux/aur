@@ -2,10 +2,10 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=collections
-_pkgver=0.3.7
+_pkgver=0.3.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="High Performance Container Data Types"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('60632d1a34d64e5aa53165950237d1ee')
-b2sums=('0f1508c0e01565a995286dd0b771f9c6acfcb86e4acf7f932d5e8ed1b5a840f17fa3e61b2cbd2b85ce6e792cebc283da0343c75f40396aee72ba05628c7e18e8')
+md5sums=('da4b194b2bdfcc056615125adc09233d')
+b2sums=('42b13bd6479e1ccd27dc52cec884074fdd1805ae04c97cd021bb4905e547592505d3d190cf63b2c354e1c8ed48bef19678771c820a47f4fcdbddb278939fb4fc')
 
 build() {
   mkdir build
