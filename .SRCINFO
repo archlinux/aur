@@ -1,7 +1,7 @@
 pkgbase = uyou-todo-bin
 	pkgdesc = A todo list with electron.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonylu110/uyou-todo-electron
 	arch = aarch64
 	arch = x86_64

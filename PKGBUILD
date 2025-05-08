@@ -3,7 +3,7 @@ pkgname=uyou-todo-bin
 _pkgname=uyoutodo
 pkgver=3.1.0
 _electronversion=33
-pkgrel=1
+pkgrel=2
 pkgdesc="A todo list with electron.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -30,20 +30,22 @@ sha256sums=('39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 sha256sums_aarch64=('a727c3ac6feca7e96602ac31565e7987699fb85733222e8b64e121f77995bd7a')
 sha256sums_x86_64=('59dcbc0949d782d2b325af63d462f694f41fb58926d2e4f9b00b782ed7b6bdc1')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/${_pkgname}/${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${_pkgname}.desktop"
+    " "${srcdir}/squashfs-root/${_pkgname}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" "${srcdir}/app.asar.unpacked/electron/dist/logo.png"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
