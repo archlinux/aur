@@ -1,0 +1,20 @@
+pkgbase = nyaadownloader-git
+	pkgdesc = A tool to download multiple torrents or transfer magnets from Nyaa.si
+	pkgver = r62.268890d
+	pkgrel = 1
+	url = https://github.com/p0358/nyaadownloader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.9
+	depends = python-requests
+	depends = python-nyaapy
+	depends = libnotify
+	depends = qt6-base
+	depends = python-pyqt6
+	provides = nyaadownloader
+	conflicts = nyaadownloader
+	source = nyaadownloader::git+https://github.com/p0358/nyaadownloader.git
+	sha256sums = SKIP
+
+pkgname = nyaadownloader-git
