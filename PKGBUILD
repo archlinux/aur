@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r68685.981e465a04c
+pkgver=r69047.90d466e7e98
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -14,13 +14,15 @@ conflicts=(ladybird)
 provides=(ladybird)
 depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-liberation)
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
-options=('!lto' '!debug' '!buildflags')
+options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
   "git+$url"
   "git+https://github.com/microsoft/vcpkg.git#commit=41c447cc210dc39aa85d4a5f58b4a1b9e573b3dc" # 2025-05-03 (vcpkg.json:builtin-baseline)
   "ladybird.desktop"
+  "hb-fc-whole-archive.patch"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -43,6 +45,8 @@ build() {
     use_linker='-DENABLE_LTO_FOR_RELEASE=OFF'
   fi
 
+  patch ladybird/UI/Qt/CMakeLists.txt < hb-fc-whole-archive.patch
+
   cmake \
     --preset default \
     -B build \
@@ -54,15 +58,19 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
     -DENABLE_INSTALL_HEADERS=OFF \
+    -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname%-git}" \
     -GNinja \
     -Wno-dev
-  ninja -C build
+  cmake --build build
 }
 
 package() {
   cd "${srcdir}"
 
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
+
+  find "$pkgdir" -name '*.a' -delete
+  find "$pkgdir" -name '*.cmake' -delete
 
   install -Dm644 "ladybird.desktop" "${pkgdir}/usr/share/applications/ladybird.desktop"
   install -Dm644 "ladybird/Base/res/icons/128x128/app-browser.png" "${pkgdir}/usr/share/pixmaps/ladybird.png"
