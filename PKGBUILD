@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=termora-bin
 _pkgname=Termora
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="A terminal emulator and SSH client.(Prebuilt version)"
 arch=(
@@ -34,8 +34,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarh64.tar.gz::${url}/releases/downlo
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86-64.tar.gz")
 sha256sums=('195f85095c638be287eb653ff9bbb80d3dc1507528f72402e38dbaf31c57ce05'
             '9f840c608c863d6eff2d5e31d048e5815e98deeb861f42d4ac86c912fded11d0')
-sha256sums_aarch64=('1fedc31584e4c8790409e5341fecdbe81f432c3447297f2914af47828ff300fb')
-sha256sums_x86_64=('987558567dff8446b0b78af289408b89115604b18d47202c521fbdf490c81db6')
+sha256sums_aarch64=('9b6ca0f985bb091d0df18130971ed597bbad355d707a2c9f219b43ca3873c4f5')
+sha256sums_x86_64=('37de5dc4422f5a24470f8142b1d4df0539c7edfa69d8d5723dd5a591d028f553')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
