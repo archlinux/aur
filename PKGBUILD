@@ -14,14 +14,14 @@ _fragment="${FRAGMENT:-#branch=master}"
 : ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
-pkgver=1.5.0.r581.0d47833dcc
+pkgver=1.5.0.r930.96067db249
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
 url="https://gitlab.com/inkscape"
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'boost' 'git' 'glib2-devel' 'ninja')
+makedepends=('cmake' 'boost' 'git' 'glib2-devel' 'ninja' 'meson')
 depends=(
 	'boost-libs'
 	'dbus-glib'
