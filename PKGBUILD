@@ -3,7 +3,7 @@
 ## GPG key: https://greenbone.net/GBCommunitySigningKey.asc
 
 pkgname=gsad
-pkgver=24.2.4
+pkgver=24.3.0
 pkgrel=1
 pkgdesc='server talking to the Greenbone Vulnerability Management daemon (gvmd)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('logrotate: for rotating logs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc"
         "gsad.tmpfiles")
-sha256sums=('fb85e748f1bd5fa2739a9b5a25c5c3b919e6ad3b11fc8ba9cd9883f2b440a8c6'
+sha256sums=('d5756149e666169063516f6a94f2d6618e0a1f42ea40ee0c5e2b967c5e81a0d3'
             'SKIP'
             '9d978e755f969c8635f1f729b38c2c116e20a954925322c33df1859cb3031f60')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
@@ -42,7 +42,6 @@ build() {
 		-S "$pkgname-$pkgver" \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 		-DSBINDIR=/usr/bin \
 		-DLIBDIR=/usr/lib \
 		-DSYSCONFDIR=/etc \
