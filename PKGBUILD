@@ -2,7 +2,7 @@
 pkgname=shinden-client-bin
 pkgver=3.1.2
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups.(Prebuilt version.Use system-wide electron)"
 arch=("x86_64")
 url="https://github.com/KlapChat-Entertainment/shinden-client"
@@ -18,18 +18,18 @@ source=(
 )
 sha256sums=('b8daf5f4efa78ad17223fae44eea82b2502a09b2bd483ec390fff09e0a56fe68'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}-electron/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
         s/${pkgname%-bin}-electron %U/${pkgname%-bin} %U/g
         s/Icon=${pkgname%-bin}-electron/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}-electron.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}-electron.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"

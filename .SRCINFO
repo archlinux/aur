@@ -1,7 +1,7 @@
 pkgbase = shinden-client-bin
 	pkgdesc = Unofficial client for the polish anime websites. It allows you to watch anime without being exposed to ads and pop-ups.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KlapChat-Entertainment/shinden-client
 	arch = x86_64
 	license = MIT
