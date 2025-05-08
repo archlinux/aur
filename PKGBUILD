@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=postgresql-uint
-pkgver=1.20200704
+pkgver=1.20231206
 pkgrel=1
 pkgdesc="Unsigned integer types extension for PostgreSQL"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/petere/pguint"
 license=('unknown')
 depends=('postgresql')
 source=("https://github.com/petere/pguint/archive/$pkgver.tar.gz")
-md5sums=('a73a82525e36589c09f07718e12e8125')
+sha256sums=('dde9e193527d7216f2bcf2141b132e854e51c5674cf6a7a227ea76d206e46307')
 
 build() {
 	cd "pguint-$pkgver"
