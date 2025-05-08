@@ -1,7 +1,7 @@
 pkgbase = cursor-electron
 	pkgdesc = The AI Code Editor
 	pkgver = 0.49.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.cursor.com
 	arch = x86_64
 	license = custom:Proprietary
@@ -15,7 +15,7 @@ pkgbase = cursor-electron
 	optdepends = electron: For /usr/share/cursor/cursor-latestron
 	provides = cursor
 	conflicts = cursor
-	options = !strip
+	options = strip
 	source = src.iso::https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/linux/x64/Cursor-0.49.6-x86_64.AppImage
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
 	sha256sums = 587e3f670d15266446c91ccc9644e19216787c6cac30a0544883c24ecc864b8c
