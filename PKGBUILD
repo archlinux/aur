@@ -24,13 +24,19 @@ sha256sums=('f3d4f23af7f7914259f2f5dbd9cc1450d3ebe0b8c8163fd50fcac4a39c63fccd'
 
 _srcdir="${_pkgname}-Xalan-C_${_filever}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -Dtranscoder=icu -Ddoxygen=OFF )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
+	-DCMAKE_CXX_STANDARD=17
+	-DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG -w -Wno-error=template-body'
+	-DCMAKE_POLICY_VERSION_MINIMUM='3.5'
+	-Dtranscoder=icu
+	-Ddoxygen=OFF )
 
 prepare() {
 	cd "${_srcdir}"
 	patch -uNp1 -i "../$pkgname-fix-cross-compile.patch"
 	patch -uNp1 -i "../$pkgname-36.patch"
 	sed -i 's/if(WIN32)/if(0)/' 'src/xalanc/CMakeLists.txt'
+	sed -i '/set(CMAKE_CXX_STANDARD 14)/d' 'CMakeLists.txt'
 }
 
 build() {
@@ -38,7 +44,7 @@ build() {
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=OFF \
 			-DCMAKE_FIND_NO_INSTALL_PREFIX=ON -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
-		
+
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}"
 		cmake --build "build-${_arch}"
 	done
@@ -49,7 +55,7 @@ package() {
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		rm -rf "$pkgdir"/usr/${_arch}/static/{bin,share}
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
-		
+
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
 		${_arch}-strip "$pkgdir"/usr/${_arch}/bin/*.exe
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
