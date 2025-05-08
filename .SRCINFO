@@ -1,7 +1,7 @@
 pkgbase = authpass-bin
 	pkgdesc = Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.
 	pkgver = 1.9.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://authpass.app/
 	arch = x86_64
 	license = GPL-3.0-only
