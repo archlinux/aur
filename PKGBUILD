@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://github.com/petere/pguint"
 license=('unknown')
 depends=('postgresql')
+makedepends=('clang' 'llvm' 'python')
 conflicts=('postgresql-uint')
 provides=('postgresql-uint')
 source=("$pkgname"::'git+https://github.com/petere/pguint')
