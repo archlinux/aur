@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=lune-bin
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="[Precompiled Binaries] A standalone Luau script runtime"
 arch=(x86_64 aarch64)
@@ -13,8 +13,8 @@ provides=(lune)
 conflicts=(lune)
 source_x86_64=("https://github.com/lune-org/lune/releases/download/v$pkgver/lune-$pkgver-linux-x86_64.zip")
 source_aarch64=("https://github.com/lune-org/lune/releases/download/v$pkgver/lune-$pkgver-linux-aarch64.zip")
-sha256sums_x86_64=('5c3321fdc47827e74b9ad6098db9577ebddebd7f42fcd44b46be6c53e65a190e')
-sha256sums_aarch64=('efa8f047e73ef731b1347b3c7665eef8d753e1739bda84610d592412db5ab7a4')
+sha256sums_x86_64=('08a69cf99ed989bea7b6e96066fe96fed6dfc26649c66b8e83a62916229c61ad')
+sha256sums_aarch64=('9988028196769e9352c5c51db5b7b233c31d85239dde777a3e28695b6b421054')
 
 package() {
 	install -Dm755 -t "$pkgdir/usr/bin" lune
