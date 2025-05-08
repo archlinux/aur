@@ -1,0 +1,43 @@
+From 5cb645f8c55b536f0027314aac9216a200315708 Mon Sep 17 00:00:00 2001
+From: Francois Beerten <fbeerten.git@b10eng.com>
+Date: Wed, 5 Jul 2023 10:39:48 +0200
+Subject: [PATCH] fabricate.py: remove deprecated calls to
+ os.stat_float_times()
+
+Since Python 2.5, stat times use floats and we require at least
+Python 2.7. os.stat_float_times() is deprecated since Python
+3.1 and has been completely removed in Python 3.7.
+
+References in Python doc and issue tracker:
+* https://docs.python.org/3/whatsnew/changelog.html?highlight=stat_float_times#id409
+* https://bugs.python.org/issue31827
+
+This fixes one of the bugs detected by Luiz Gabriel Jung in bug #64375
+"Can't run new game version 2.8".
+---
+ fabricate.py | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/fabricate.py b/fabricate.py
+index d63901d3..8fe46002 100644
+--- a/fabricate.py
++++ b/fabricate.py
+@@ -378,10 +378,6 @@ class AtimesRunner(Runner):
+         """ Run command and return its dependencies and outputs, using before
+             and after access times to determine dependencies. """
+ 
+-        # For Python pre-2.5, ensure os.stat() returns float atimes
+-        old_stat_float = os.stat_float_times()
+-        os.stat_float_times(True)
+-
+         originals = self.file_times()
+         if self.atimes == 2:
+             befores = originals
+@@ -425,7 +421,6 @@ class AtimesRunner(Runner):
+                 if original != afters.get(name, None):
+                     self._utime(name, original[0], original[1])
+ 
+-        os.stat_float_times(old_stat_float)  # restore stat_float_times value
+         return deps, outputs
+ 
+ class StraceProcess(object):
