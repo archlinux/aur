@@ -1,5 +1,5 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
-pkgname=gnome-shell-extension-nepali-date
+pkgname=gnome-shell-extension-nepali-date-git
 _pkgname=nepali-date@biplab
 pkgver=r44.759ff70
 pkgrel=1
