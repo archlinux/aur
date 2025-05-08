@@ -1,0 +1,20 @@
+pkgbase = svelte-language-server-git
+	pkgdesc = Svelte Language Server, git master build
+	pkgver = r1757.2bdbf6d4
+	pkgrel = 1
+	url = https://github.com/sveltejs/language-tools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = pnpm
+	depends = nodejs
+	depends = typescript
+	provides = svelte-language-server
+	conflicts = svelte-language-server
+	options = !emptydirs
+	options = !strip
+	source = svelte-language-server-git::git+https://github.com/sveltejs/language-tools.git#branch=master
+	sha256sums = SKIP
+
+pkgname = svelte-language-server-git
