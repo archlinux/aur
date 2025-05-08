@@ -3,7 +3,6 @@ pkgbase = postgresql-uint
 	pkgver = 1.20200704
 	pkgrel = 1
 	url = https://github.com/petere/pguint
-	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = postgresql
@@ -11,4 +10,3 @@ pkgbase = postgresql-uint
 	md5sums = a73a82525e36589c09f07718e12e8125
 
 pkgname = postgresql-uint
-
