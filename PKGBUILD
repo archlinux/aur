@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron-notes-git
 _pkgname=Electron-Notes
-pkgver=1.4.1.r6.g837d961
+pkgver=1.6.0.r0.gbbd2a58
 _electronversion=25
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="A notes taking application that simple sleek and a fun way to handle your notes and comes with a brother mobile application where you can manage and synchronize your notes cross platform.(Use system-wide electron)"
 arch=('any')
@@ -40,25 +40,25 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-build() {
-    sed -e "
+prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/notes/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-git}.sh"
+    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-git} %U"
-    cd "${srcdir}/${pkgname%-git}.git"
-    electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'	
+        echo -e '\n'
         #echo 'build_from_source=true'
         echo "cache=${srcdir}/.npm_cache"
+        echo "maxsockets=10"
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
@@ -70,7 +70,11 @@ build() {
     fi
     sed -i "/openDevTools/d" src/main/index.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm install
+    NODE_ENV=development    npm install --leagcy-peer-deps
+}
+build() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npx electron-vite build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
@@ -78,7 +82,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
