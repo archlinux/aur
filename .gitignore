@@ -1,8 +1,5 @@
-.*
-*~
-*.tar.gz
-*.pkg.tar.xz
-*.src.tar.gz
-!.git*
-!.mailmap
+*
 !.SRCINFO
+!.gitignore
+!LICENSE
+!PKGBUILD
