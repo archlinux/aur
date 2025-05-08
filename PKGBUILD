@@ -16,7 +16,7 @@ license=("BSD-2-Clause")
 depends=("gcc-libs" "glibc" "openssl")
 makedepends=("boost" "cmake" "doxygen")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("72633a88d6f2a9ee169ffdc515bed56a9673f0c60444076afd8714536159a7fe03a8a8c635833944cea8226bc0de6bb06f60c53910acb84b8281ddb05f4c479b")
+sha512sums=("a6697694821fdbcc2b70470bba308609460c5c42caac44c799011843a0d064fb5c9377e04fdd30a100d556aeb8ef8ae2a1453fcdb019307785640e80932dd2db")
 
 _compile()
 {
