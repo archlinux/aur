@@ -4,11 +4,11 @@
 
 pkgname=krokiet-bin
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
-license=('MIT')
+license=('GPL-3.0-only')
 provides=('krokiet')
 conflicts=('krokiet')
 makedepends=('gendesk')

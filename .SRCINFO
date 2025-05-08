@@ -1,10 +1,10 @@
 pkgbase = krokiet-bin
 	pkgdesc = Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qarmin/czkawka
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = libheif
 	provides = krokiet
