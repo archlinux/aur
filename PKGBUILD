@@ -6,7 +6,7 @@ pkgver=2.4.3
 pkgrel=1
 pkgdesc='Per-Face Texture Mapping for Production Rendering (mingw-w64)'
 url='http://ptex.us/'
-license=('BSD')
+license=('BSD-3-Clause')
 depends=(
 	'mingw-w64-zlib'
 )
