@@ -1,7 +1,7 @@
 # Maintainer: Primalmotion <primalmotion at pm dot me>
 
 pkgname=minibridge
-pkgdesc="Make your MPC servers secure and production ready"
+pkgdesc="Make your MCP servers secure and production ready"
 url="https://github.com/acuvity/minibridge"
 pkgver=0.4.0
 pkgrel=1
