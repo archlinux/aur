@@ -1,6 +1,6 @@
 pkgbase = notion-desktop-git
 	pkgdesc = An unofficial desktop application that allows you to use Notion directly on your computer, making it easier to chat with friends and family while working.(Use system-wide electron)
-	pkgver = 1.0.0.r8.g48dac73
+	pkgver = 1.1.0.r2.g1eb5f30
 	pkgrel = 1
 	url = https://snapcraft.io/notion-desktop
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = notion-desktop-git
 	makedepends = git
 	makedepends = curl
 	depends = electron33
-	provides = notion-desktop=1.0.0
+	provides = notion-desktop=1.1.0
 	conflicts = notion-desktop
 	source = notion-desktop.git::git+https://github.com/xanmoy/notion-desktop
 	source = notion-desktop.sh
