@@ -2,7 +2,7 @@
 _pkgname=xc-music
 pkgname=${_pkgname}-electron
 pkgver=0.3.1
-pkgrel=5
+pkgrel=1
 pkgdesc='第三方网易云音乐客户端（使用系统electron） / GUI of Netease Cloud Music'
 arch=('x86_64')
 url="https://github.com/yiktllw/XCMusic"
@@ -18,7 +18,7 @@ source=("$_pkgname-$pkgver.asar::${url}/releases/download/$pkgver/app.asar"
 	"LICENSE::https://raw.githubusercontent.com/yiktllw/XCMusic/refs/heads/master/LICENSE"
 	"icon.png::https://raw.githubusercontent.com/yiktllw/XCMusic/refs/tags/$pkgver/public/icons/icon.png"
 	)
-sha256sums=('1f8e4da8c1eee8ccc87fc93d8970ee4a13e01eb39166ee19fc01da239952059c'
+sha256sums=('62fd0f09c1567b084ecf748fdd9b1f22abb7fc3bbca373d9859c0d10bfa11341'
             'b16ffb6b054492882ce512b09a8d7dd72a5d8fab336c37eca490a9ab88f05d6a'
             '6dcddcada0bc96312ea2c1ae3ff86863ab0f97cf4c5c7f445c61f5a9418efd1f'
     	    '01cfa7209f94fbbc44d9b6946d94c75612cf3fbfb6950752af500ea1956664c0'
