@@ -1,6 +1,6 @@
 pkgbase = openbrf-git
 	pkgdesc = Mount&Blade resource editor by Marco Tarini.
-	pkgver = 2024.11.03
+	pkgver = 2025.05.09
 	pkgrel = 1
 	url = https://forums.taleworlds.com/index.php?topic=72279.0
 	install = openbrf.install

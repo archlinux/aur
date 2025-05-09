@@ -6,7 +6,7 @@
 
 pkgname=openbrf-git
 pkgdesc='Mount&Blade resource editor by Marco Tarini.'
-pkgver=2024.11.03
+pkgver=2025.05.09
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://forums.taleworlds.com/index.php?topic=72279.0"
@@ -29,32 +29,35 @@ pkgver()
 
 build()
 {
-	cd "openbrf-redux"
+	cd "openbrf-redux/_build"
 
 	# extract all the Windows icon sub-images, we can later grab the 256px
 	# version and use it in Linux as XDG PNG icon.
-	icotool -x openBrf.ico
+	icotool -x ../openBrf.ico
 
 	# build it as fast as possible, but leaving a free CPU core for other stuff!
-	qmake6 -makefile openBrf.pro
+	qmake6 -makefile ../openBrf.pro
 	make -j $[ (n = `nproc` - 1) < 1 ? 1 : n ] # swy: don't make the thread count zero (-j 0) when there's only one available core (due to the system-threads - 1 thing)
 }
 
 package()
 {
 	mkdir -p "${pkgdir}/opt/openbrf"
+	mkdir -p "${pkgdir}/opt/openbrf/translations"
 
-	install -D -m711 -s "${srcdir}/openbrf-redux/openBrf"                    "${pkgdir}/opt/openbrf/openbrf"
-	install -D -m644    "${srcdir}/openbrf-redux/_build/carry_positions.txt" "${pkgdir}/opt/openbrf/carry_positions.txt"
-	install -D -m644    "${srcdir}/openbrf-redux/_build/reference.brf"       "${pkgdir}/opt/openbrf/reference.brf"
+	install -D -m711 -s "${srcdir}/openbrf-redux/_build/openBrf"                  "${pkgdir}/opt/openbrf/openbrf"
+	install -D -m644    "${srcdir}/openbrf-redux/_build/carry_positions.txt"      "${pkgdir}/opt/openbrf"
+	install -D -m644    "${srcdir}/openbrf-redux/_build/customPreviewShaders.xml" "${pkgdir}/opt/openbrf"
+	install -D -m644    "${srcdir}/openbrf-redux/_build/reference.brf"            "${pkgdir}/opt/openbrf"
+	install -D -m644    "${srcdir}/openbrf-redux/_build/translations/"*           "${pkgdir}/opt/openbrf/translations"
 
 	mkdir -p "${pkgdir}/usr/bin"
 
 	echo 'env LC_NUMERIC=C /opt/openbrf/openbrf "$@"' > "${pkgdir}/usr/bin/openbrf"
 	chmod 755 "${pkgdir}/usr/bin/openbrf"
 
-	install -D -m644    "${srcdir}/openbrf-redux/openBrf_6_256x256x32.png" "${pkgdir}/usr/share/pixmaps/openbrf.png"
-	install -D -m644    "${srcdir}/openbrf-redux/openBrf_6_256x256x32.png" "${pkgdir}/opt/openbrf/openbrf.png"
+	install -D -m644    "${srcdir}/openbrf-redux/_build/openBrf_6_256x256x32.png" "${pkgdir}/usr/share/pixmaps/openbrf.png"
+	install -D -m644    "${srcdir}/openbrf-redux/_build/openBrf_6_256x256x32.png" "${pkgdir}/opt/openbrf/openbrf.png"
 
 	# add a shortcut that handles application/x-openbrf files
 	mkdir -p "${pkgdir}/usr/share/applications"
