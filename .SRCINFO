@@ -1,0 +1,16 @@
+pkgbase = fingerprintx-bin
+	pkgdesc = Standalone utility for service discovery on open ports!
+	pkgver = 1.1.13
+	pkgrel = 1
+	url = https://github.com/praetorian-inc/fingerprintx
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = fingerprintx
+	conflicts = fingerprintx
+	source_x86_64 = https://github.com/praetorian-inc/fingerprintx/releases/download/v1.1.13/fingerprintx_1.1.13_linux_amd64.tar.gz
+	sha256sums_x86_64 = 95fc60543111be54113d4f0ea9e2e11a3cdb931cfcde79318c7b996d8e32357e
+	source_aarch64 = https://github.com/praetorian-inc/fingerprintx/releases/download/v1.1.13/fingerprintx_1.1.13_linux_amd64.tar.gz
+	sha256sums_aarch64 = 95fc60543111be54113d4f0ea9e2e11a3cdb931cfcde79318c7b996d8e32357e
+
+pkgname = fingerprintx-bin
