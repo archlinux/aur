@@ -2,9 +2,9 @@
 _pkgname=slimjet
 pkgname="${_pkgname}-beta-bin"
 _appname="flashpeak-${_pkgname}"
-pkgver=46.0.0.0
-_libffmpegver=0.99.0
-pkgrel=2
+pkgver=46.0.1.0
+_libffmpegver=0.99.1
+pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt beta version)"
 arch=('x86_64')
 url="https://www.slimjet.com"
@@ -33,7 +33,7 @@ depends=(
     'mesa'
 )
 optdepends=(
-    'kdialog: needed for file dialogs in KDE' 'ttf-liberation: fix fonts for some PDFs'
+    'kdialog: needed for file dialogs in KDE'
     'ttf-liberation: fix fonts for some PDFs'
 )
 options=(
@@ -45,8 +45,8 @@ source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_dlurl}/beta/${_pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('5c0ad2e7a290c0f71b5833285f08b6848fe6ed0ff26c64e46b6b15737db94836'
-            'f11e52fa2b39c643a98e56601d0e13c421c5da3a71ab69a6e7c1ebf6ec402877')
+sha256sums=('3d423bf595c8858cc64d0bdb61b1685f219ee3cf206965c32b552af6716488c1'
+            'db0ffaba9e65ef018a673e9d01acc6111f1f7d2b474f0fbcdd8e190ff416c16d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     bsdtar -xf "${srcdir}/control."*
