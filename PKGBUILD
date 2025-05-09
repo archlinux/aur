@@ -1,9 +1,9 @@
-#Maintainer：	Giteeajake <giteeajake@qq.com>
+#Maintainer：	Mumi Jim <echo "=02bj5yav9Gb0V3bA1Waq9VatVXb" | rev | base64 -d>
 #Thanks Klaus
 
 pkgname="ghex-git"
 _appname="ghex"
-pkgver=48.alpha.r38.gb7c79111
+pkgver=48.alpha.r39.gf9f050b7
 pkgrel=1
 pkgdesc='a hex editor for the GNOME desktop'
 url='https://gitlab.gnome.org/GNOME/ghex'
