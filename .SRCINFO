@@ -1,6 +1,6 @@
 pkgbase = jupyter-nbclassic
 	pkgdesc = Jupyter Notebook as a Jupyter Server Extension
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://jupyter.org/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = jupyter-nbclassic
 	makedepends = bower
 	makedepends = git
 	makedepends = npm
+	makedepends = python-babel
 	makedepends = python-build
 	makedepends = python-hatch-jupyter-builder
 	makedepends = python-hatchling
@@ -26,7 +27,7 @@ pkgbase = jupyter-nbclassic
 	depends = python-jupyter-server-terminals
 	depends = python-tornado
 	depends = python-traitlets
-	source = git+https://github.com/jupyter/nbclassic#tag=v1.3.0
-	sha256sums = ccad342a162b0bcbfa30d37d34c1e8c9f662304a938869dfb8f499afb96646b2
+	source = git+https://github.com/jupyter/nbclassic#tag=v1.3.1
+	sha256sums = 656514c3f7a4167341497aa50203dee33ff0e4ffdbafca1015b8bbc1a379000a
 
 pkgname = jupyter-nbclassic
