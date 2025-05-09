@@ -1,0 +1,20 @@
+pkgbase = cargo-loc
+	pkgdesc = Counts the lines of code across your entire dependency tree in a Cargo project
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Shnatsel/cargo-loc
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	checkdepends = cargo
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	options = !debug
+	options = !lto
+	source = git+https://github.com/Shnatsel/cargo-loc.git#commit=5a35f7b495d4743396db7d90ab7be80913a20538
+	md5sums = SKIP
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = cargo-loc
