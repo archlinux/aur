@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2
-pkgver=2.2.10
+pkgver=2.2.13
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -22,21 +22,27 @@ depends=(
   'vulkan-tools'
   'xdg-utils'
 )
-makedepends=('cmake')
+makedepends=(
+  'cmake'
+  'glslang'
+  'shaderc'
+  'vulkan-headers'
+)
 checkdepends=('appstream')
 optdepends=(
+  'apcupsd: apcaccess is used for UPS/battery information'
   'fwupd: Firmware module'
-  'xorg-xrandr: read monitor setup'
+  'xorg-xrandr: Read monitor setup'
 )
 provides=('hardinfo')
 conflicts=('hardinfo')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hardinfo2/hardinfo2/archive/refs/tags/release-$pkgver.tar.gz")
-sha256sums=('050231efc8a6ff50637872765f31c99367dc43b49f553fa7de93110864515fa9')
+sha256sums=('a3dee51427aa1fe8cb33960cbb5c59471f571060758a1499d1bae022390d7ee0')
 
 build() {
   cmake -B build -S "$pkgname-release-$pkgver" \
-    -DCMAKE_BUILD_TYPE='Release' \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_INSTALL_LIBDIR='lib' \
     -Wno-dev
