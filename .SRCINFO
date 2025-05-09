@@ -1,0 +1,11 @@
+pkgbase = ttf-hanamin
+	pkgdesc = Serif fonts that contains almost all Kanji (Chinese characters).
+	pkgver = 20170904
+	pkgrel = 1
+	url = https://glyphwiki.org/hanazono/
+	arch = any
+	license = OFL
+	source = https://glyphwiki.org/hanazono/hanazono-20170904.zip
+	sha256sums = 571CD4A09AE7DA0C642D640FC2442C050AA450EBB0587A95CDD097D41A9C9572
+
+pkgname = ttf-hanamin
