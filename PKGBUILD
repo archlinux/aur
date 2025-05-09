@@ -3,7 +3,7 @@
 
 pkgname="gcs-bin"
 pkgver=5.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
 license=("MPL2")
