@@ -1,0 +1,22 @@
+pkgbase = flow-browser-git
+	pkgdesc = A modern, tabbed web browser with Chrome extension support—built on Electron.(Use system-wide electron)
+	pkgver = 0.6.4.r0.g3981cfc
+	pkgrel = 1
+	url = https://flow-browser.com/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	depends = electron35
+	depends = libvips
+	provides = flow-browser=0.6.4
+	conflicts = flow-browser
+	source = flow-browser.git::git+https://github.com/MultiboxLabs/flow-browser
+	source = flow-browser.sh
+	sha256sums = SKIP
+	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+
+pkgname = flow-browser-git
