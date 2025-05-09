@@ -1,0 +1,23 @@
+pkgbase = mycoria-bin
+	pkgdesc = Open and secure overlay network that connects all participants
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/mycoria/mycoria
+	install = mycoria.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD-3-Clause
+	provides = mycoria
+	conflicts = mycoria
+	backup = opt/mycoria/config.yaml
+	source = https://github.com/mycoria/mycoria/raw/refs/tags/v0.5.5/packaging/mycoria.service
+	sha256sums = SKIP
+	source_x86_64 = mycoria::https://github.com/mycoria/mycoria/releases/download/v0.5.5/mycoria_linux_amd64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = mycoria::https://github.com/mycoria/mycoria/releases/download/v0.5.5/mycoria_linux_arm64
+	sha256sums_aarch64 = SKIP
+	source_armv7h = mycoria::https://github.com/mycoria/mycoria/releases/download/v0.5.5/mycoria_linux_armv7
+	sha256sums_armv7h = SKIP
+
+pkgname = mycoria-bin

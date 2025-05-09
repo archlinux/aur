@@ -1,0 +1,8 @@
+
+post_install() {
+    if [ ! -e /opt/mycoria/config.yaml ]
+    then
+        /opt/mycoria/mycoria config generate | tee /opt/mycoria/config.yaml
+        echo "New mycoria config is generated. Please check /opt/mycoria/config.yaml"
+    fi
+}
