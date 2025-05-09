@@ -5,13 +5,12 @@
 
 pkgname=nordvpn-bin
 pkgver=3.20.2
-pkgrel=3
+pkgrel=4
 pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'armeabi')
 url="https://nordvpn.com/download/linux/"
 license=('GPL3')
-depends=('libxml2')
-optdepends=('libxml2-legacy')
+depends=('libxml2-legacy')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')
 install=nordvpn-bin.install

@@ -5,7 +5,7 @@ post_install() {
   echo "     sudo gpasswd -a USERNAME nordvpn"
   echo ':: You then have to restart for the group to be created:'
   echo "     reboot"
-  # Add logic to avoid interposing with sqlite library if it already exists
+  # Create symbolic link to library files
   for lib in /usr/lib/nordvpn/*.so ; do
     if [[ -f $lib ]] ; then
       if [[ ! -f "/usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)" ]] ; then
@@ -16,7 +16,7 @@ post_install() {
 }
 
 post_upgrade() {
-  # Add logic to avoid interposing with sqlite library if it already exists
+  # Create symbolic link to library files
   for lib in /usr/lib/nordvpn/*.so ; do
     if [[ -f $lib ]] ; then
       if [[ $(readlink -- /usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)) == $lib ]] ; then
@@ -33,33 +33,15 @@ pre_install() {
   if [ -d /var/lib/nordvpn/data/ ] ; then
   	chattr -i /var/lib/nordvpn/data/*
   fi
-  ## Remove symbolic link from latest patch
-  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]] ; then
-    unlink /usr/lib/libxml2.so.2
-  fi
-  echo "::: README"
-  echo "::: Before use, install libxml2-legacy from extra repository."
-  echo "::: It is flagged as optional, but it will be mandatory in next release,"
-  echo "::: in case NordVPN had not built against the new libxml2 just yet."
-  echo "::: 3.20.2-3 was made to remove the symbolic link from previous patch"
 }
 
 pre_upgrade() {
   chattr -i /var/lib/nordvpn/data/*
-  ## Remove symbolic link from latest patch
-  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]] ; then
-    unlink /usr/lib/libxml2.so.2
-  fi
-  echo "::: README"
-  echo "::: Before use, install libxml2-legacy from extra repository."
-  echo "::: It is flagged as optional, but it will be mandatory in next release,"
-  echo "::: in case NordVPN had not built against the new libxml2 just yet."
-  echo "::: 3.20.2-3 was made to remove the symbolic link from previous patch"
 }
 
 pre_remove() {
   chattr -i /var/lib/nordvpn/data/*
-  # Add logic to avoid interposing with sqlite library if it already exists
+  # Create symbolic link to library files
   for lib in /usr/lib/nordvpn/*.so ; do
     if [[ -f $lib ]] ; then
       if [[ $(readlink -- /usr/lib/$(printf '%s' $lib | cut -d '/' -f 5)) == $lib ]] ; then
@@ -67,8 +49,4 @@ pre_remove() {
       fi
     fi
   done
-  ## Remove symbolic link from latest patch
-  if [[ $(readlink -- /usr/lib/libxml2.so.2) == /usr/lib/nordvpn/libxml2.so.2 ]] ; then
-    unlink /usr/lib/libxml2.so.2
-  fi
 }
