@@ -2,7 +2,7 @@
 
 pkgname=void-bin
 pkgdesc="The open-source Cursor alternative."
-pkgver=1.99.30011
+pkgver=1.99.30025
 pkgrel=1
 arch=('x86_64')
 options=('!strip')
@@ -14,7 +14,7 @@ libx11 libxcb libxcomposite libxdamage libxext libxfixes libxkbcommon libxrandr 
 optdepends=('electron: /usr/share/void/void-latestron')
 source=("https://github.com/voideditor/binaries/releases/download/${pkgver}/void_${pkgver}_amd64.deb"
 "https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
-sha256sums=('c0803c65e2f7dab9fbb1d0b54a3ba0cf9741b890843075594cc17ca2f1db3500'
+sha256sums=('ac2d529a0f077fb9a107af3758c5ae5451c0706f9570192be3ecb4b9ce60d324'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
 
 build() {
@@ -36,4 +36,7 @@ package() {
 	install -Dm755 run-safe.sh "${pkgdir}/usr/bin/void"
 	ln -s /usr/bin/void "${pkgdir}/usr/share/void/void"
 	install -Dm755 run.sh "${pkgdir}/usr/share/void/void-latestron"
+
+	# use ripgrep to replace bundled rg
+	ln -sf /usr/bin/rg "$pkgdir"/usr/share/void/resources/app/node_modules/@vscode/ripgrep/bin/rg
 }
