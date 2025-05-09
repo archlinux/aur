@@ -4,7 +4,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-data-git
-pkgver=2024.2.0r10906.18d397f01
+pkgver=2024.2.0r10907.462fd76a7
 pkgrel=1
 pkgdesc="Base data for the flightgear flight simulator."
 arch=('any')
