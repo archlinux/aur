@@ -1,6 +1,6 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.2_alpha2504051503
+pkgver=0.8.3_alpha2505090524
 _vername=bonsai
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
@@ -11,16 +11,17 @@ depends=(
   'boost-libs'
   'hdf5'
   'hicolor-icon-theme'
+  'libxml2-legacy'
   'mpfr'
   'opencascade'
   # 'opencollada' # dropped from extra
   'python'
   'python-numpy'
   'python-jinja'
-  'python-ordered-set'
   'python-pytz'
   'python-typing_extensions'
   'python-requests'
+  'python-platformdirs'
 
 )
 optdepends=(
@@ -70,15 +71,15 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/b0c80ed.patch"
 
 )
-sha256sums=('9de964c86b969a642630aef8703352c0e14c295750636e723c1d26922586e78f'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
-            '2efdab4233e3d58a0ac03a746b57fcad1017a3db39abed12d4f2ccf33768674b'
-            'e54ff840fef44ae9d746e418d409db31e10e591ef0f9808708f56260adea53da'
-            'd32e61dadac3177b98de40d9587206fe9d03d987ac08323bc67f10512620ef91'
-            '1b4be552fadad11362e09103c6fdf6f9400b969ca6dad9128a0f8dd35ab4026c')
+sha256sums=('34df2084bc96cc95d24f1449014995647ca0dc3121e5f45c2b671f93cf0df955'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
+  '2efdab4233e3d58a0ac03a746b57fcad1017a3db39abed12d4f2ccf33768674b'
+  'e54ff840fef44ae9d746e418d409db31e10e591ef0f9808708f56260adea53da'
+  'd32e61dadac3177b98de40d9587206fe9d03d987ac08323bc67f10512620ef91'
+  '1b4be552fadad11362e09103c6fdf6f9400b969ca6dad9128a0f8dd35ab4026c')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
