@@ -1,11 +1,12 @@
 pkgbase = sui-mainnet-bin
 	pkgdesc = Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language
 	pkgver = 1.47.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MystenLabs/sui
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	provides = sui
 	conflicts = sui
 	conflicts = sui-testnet-bin
 	source_x86_64 = https://github.com/MystenLabs/sui/releases/download/mainnet-v1.47.1/sui-mainnet-v1.47.1-ubuntu-x86_64.tgz

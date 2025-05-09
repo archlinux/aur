@@ -1,12 +1,13 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=sui-mainnet-bin
 pkgver=1.47.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language"
 arch=("x86_64" "aarch64")
 url="https://github.com/MystenLabs/sui"
 license=("Apache-2.0")
 conflicts=("sui" "sui-testnet-bin")
+provides=("sui")
 
 source_x86_64=("$url/releases/download/mainnet-v$pkgver/sui-mainnet-v$pkgver-ubuntu-x86_64.tgz")
 source_aarch64=("$url/releases/download/mainnet-v$pkgver/sui-mainnet-v$pkgver-ubuntu-aarch64.tgz")
