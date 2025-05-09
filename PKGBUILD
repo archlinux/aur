@@ -2,65 +2,66 @@
 
 pkgbase=xguipro
 pkgname=(xguipro-gtk3)
-pkgver=0.8.4
-pkgrel=3
+pkgver=0.9.22
+pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
-arch=(x86_64
-    aarch64
-    riscv64
-    mips64 
-    powerpc
-    powerpc64le)
+arch=($CARCH)
 url="https://github.com/HVML/xGUI-Pro"
-license=('LGPL-3.0')
-groups=(hvml
-    hybridos2)
-provides=(${pkgbase}  'xGUI-Pro' 'run-xguipro')
-conflicts=(${pkgbase})
+license=('LGPL-3.0-only')
+groups=(
+    hvml
+    hybridos2
+)
+provides=(${pkgbase} 'xGUI-Pro' 'run-xguipro')
+conflicts=(${pkgbase} 'xGUI-Pro' 'run-xguipro')
 replaces=()
 depends=(
-# xguipro-gtk3
+    # xguipro-gtk3
     webkit2gtk
-# # xguipro-gtk4
-#         webkit2gtk-4.1
-    curl
-    enchant
+    # xguipro-gtk4
+    #     webkit2gtk-4.1
+    sh
+    at-spi2-core
+    cairo
+    gdk-pixbuf2
     glib2
-    gperf
-    libxml2
-    icu
+    glibc
+    harfbuzz
     openssl
+    pango
     purc
-    python
-    ruby
-    sqlite
     zlib
-        )
+)
 makedepends=(
     ccache
     cmake
+    curl
+    enchant
+    glib2-devel
     git
+    gperf
     base-devel
     ninja
+    icu
+    ruby
     pkgconf
     clang
     llvm
-
-# # xguipro-gtk3
+    # xguipro-gtk3
     gtk3
     libsoup
-# # xguipro-gtk4
-#             gtk4
-#             libsoup3
-            )
+    # xguipro-gtk4
+    #     gtk4
+    #     libsoup3
+)
 optdepends=('webkit2gtk-hvml: to support two HVML-specific attributes hvml-handle and hvml-events. This tailored WebKit engine provides support for two ports: GTK+ and HybridOS (MiniGUI).')
 backup=()
-options=('!strip')
+options=()
 install=
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz"
-#         "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch"
-        )
-sha256sums=('901cd7330290dea47e0270b869ded7b5e7cd3596461ad92257c8ae72753ae2b7')
+    #         "001-fix.patch::https://github.com/HVML/xGUI-Pro/commit/a6e4022fa599e5e98d92d8d2feb56fe689e16f1a.patch"
+)
+sha256sums=('df60ccf6f7a9c2ea703998c797733633bb33429b81c759862b412f59b5ae0f79')
 
 prepare() {
     install -Dm644 /dev/stdin ${srcdir}/xguipro.csh <<EOF
@@ -80,7 +81,7 @@ if [ -z "\$WEBKIT_WEBEXT_DIR" ]; then
 fi
 EOF
 
-    install -Dm0755 /dev/stdin ${srcdir}/run-xguipro << EOF
+    install -Dm0755 /dev/stdin ${srcdir}/run-xguipro <<EOF
 #!/usr/bin/env bash
 
 set -e
@@ -97,8 +98,8 @@ else
     xguipro
 fi
 EOF
-#     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
-#     patch -p1 < ${srcdir}/001-fix.patch
+    #     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
+    #     patch -p1 < ${srcdir}/001-fix.patch
 }
 
 package_xguipro-gtk3() {
@@ -107,33 +108,42 @@ package_xguipro-gtk3() {
     depends+=(
         webkit2gtk
         gtk3
-        libsoup)
+        libsoup
+    )
     options=('!strip')
+
+    export LDFLAGS="-L/lib64"
+    if test -n "$LD_LIBRARY_PATH"; then
+        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64"
+    else
+        export LD_LIBRARY_PATH=/lib64
+    fi
 
     cd "${srcdir}/xGUI-Pro-ver-${pkgver}/"
 
-# # Ninja build
-# # see：https://wiki.archlinux.org/title/CMake_package_guidelines
-# # gcc build
-#     cmake -DCMAKE_BUILD_TYPE=Release \
-#     cmake -DCMAKE_BUILD_TYPE=None \
-#         -DPORT=GTK \
-#         -DENABLE_GAMEPAD=OFF \
-#         -DENABLE_INTROSPECTION=OFF \
-#         -DUSE_SOUP2=ON \
-#         -DUSE_WPE_RENDERER=OFF \
-#         -DUSE_LCMS=OFF \
-#         -DCMAKE_INSTALL_PREFIX=/usr \
-#         -DCMAKE_INSTALL_LIBDIR=lib \
-#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-#         -B build-gtk3 \
-#         -G Ninja
+    # # Ninja build
+    # # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+    # # gcc build
+    #     cmake -DCMAKE_BUILD_TYPE=Release \
+    #     cmake -DCMAKE_BUILD_TYPE=None \
+    #         -DPORT=GTK \
+    #         -DENABLE_GAMEPAD=OFF \
+    #         -DENABLE_INTROSPECTION=OFF \
+    #         -DUSE_SOUP2=OFF \
+    #         -DUSE_WPE_RENDERER=OFF \
+    #         -DUSE_LCMS=OFF \
+    #         -DCMAKE_INSTALL_PREFIX=/usr \
+    #         -DCMAKE_INSTALL_LIBDIR=lib \
+    #         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    #         -B build-gtk3 \
+    #         -G Ninja
 
-# clang build
+    # clang build
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=GTK \
         -DENABLE_GAMEPAD=OFF \
         -DENABLE_INTROSPECTION=OFF \
+        -DUSE_GTK4=OFF \
         -DUSE_SOUP2=ON \
         -DUSE_WPE_RENDERER=OFF \
         -DUSE_LCMS=OFF \
@@ -142,11 +152,12 @@ package_xguipro-gtk3() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
+        -Wno-deprecated-declarations \
         -B build-gtk3 \
         -G Ninja
     ninja -C build-gtk3
 
-# ninja install
+    # ninja install
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/xGUI-Pro-ver-${pkgver}/build-gtk3 install
 
     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
@@ -179,6 +190,7 @@ package_xguipro-gtk3() {
 #         -DCMAKE_INSTALL_PREFIX=/usr \
 #         -DCMAKE_INSTALL_LIBDIR=lib \
 #         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -Wno-deprecated-declarations \
 #         -B build-gtk4 \
 #         -G Ninja
 #
