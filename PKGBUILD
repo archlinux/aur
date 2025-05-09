@@ -3,7 +3,7 @@
 _pkgauthor=clux
 _pkgname=lq
 pkgname=${_pkgname}-bin
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="jq compatible yq/tq implementation in rust"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,9 +18,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu.tar.xz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            '9e7cbb159f5efe11d103e232472fbcb6929012a60da4e3901004828dfad6d302')
-sha256sums_x86_64=('1b5eaa884b8613103e841308980abf91f122cf128bebe5b9748449d285bfe059')
-sha256sums_aarch64=('2df9170072d171c97ffa4b3f88096c008a2cdf5ec9ce6251dcb8e6c3c4da1062')
+            '4b5b302a49045cf1bcc56d61ae41feb2ca3587db823ce7eaa6cec729e0be4727')
+sha256sums_x86_64=('ee382eb1940844a7e2a3c2b725abe78de98db01a651781eb71270a35d16688fe')
+sha256sums_aarch64=('c92e5739e868d9a60cba848144377286594bf601d0fc59ef6f29e88642940538')
 
 prepare() {
   cd "${srcdir}/" || exit
