@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-aom
 	pkgdesc = Alliance for Open Media video codec (Android aarch64)
-	pkgver = 3.12.0
+	pkgver = 3.12.1
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = android-aarch64-aom
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz
-	source = https://storage.googleapis.com/aom-releases/libaom-3.12.0.tar.gz.asc
+	source = https://storage.googleapis.com/aom-releases/libaom-3.12.1.tar.gz
+	source = https://storage.googleapis.com/aom-releases/libaom-3.12.1.tar.gz.asc
 	validpgpkeys = B002F08B74A148DAA01F7123A48E86DB0B830498
-	md5sums = aabd9c71c7d52c837ec276156d5a953f
+	md5sums = 51e4e369c41f66d2f8f1ed83e2206908
 	md5sums = SKIP
 
 pkgname = android-aarch64-aom
