@@ -11,8 +11,12 @@ provides=('plasma-system-ai')
 conflicts=('plasma-system-ai')
 depends=('python')
 
+<<<<<<< HEAD
 # GitHub releases sayfasından binary dosyasının linki
 source=("https://github.com/Zamanhuseyinli/Linux-AI/releases/download/v${pkgver}/plasma-ai")
+=======
+source=("https://github.com/Zamanhuseyinli/Linux-AI/releases/download/Plasma-AI/plasma-ai")	
+>>>>>>> 3ac12a1 (Version 1.0.o1 updated and added)
 sha256sums=('c811575bff3af7b4967433c7aae1a6c7354fee7031f5effc262b49219122ecdb')
 
 package() {
