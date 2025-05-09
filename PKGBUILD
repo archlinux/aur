@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RaggedExperiment
-_pkgver=1.32.0
+_pkgver=1.32.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 pkgdesc='Representation of Sparse Experiments and Assays Across Samples'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fe4069f33eb0564f1dc9508f428f27c925513193fa368a5719c225474d952757')
+sha256sums=('27832ec8905bbccbfa6b7b40aa0acc4cd8496d7349e7923273c256cb8c727c84')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
