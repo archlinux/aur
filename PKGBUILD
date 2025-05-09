@@ -1,4 +1,5 @@
-# Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
 pkgname=fingerprintx
 pkgver=1.1.15
 pkgrel=1
