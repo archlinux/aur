@@ -1,7 +1,7 @@
 pkgbase = libgbinder
 	pkgdesc = GLib-style interface to binder
 	pkgver = 1.1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mer-hybris/libgbinder.git
 	arch = x86_64
 	arch = i686

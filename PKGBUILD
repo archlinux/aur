@@ -2,7 +2,7 @@
 
 pkgname=libgbinder
 pkgver=1.1.42
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib-style interface to binder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/mer-hybris/libgbinder.git"
@@ -13,7 +13,8 @@ sha512sums=('4d229e957188064817d6b40f693cf6fe9b44efae34ad15ac4314c7f0e3c49dc1783
 
 build() {
   cd $pkgname-$pkgver
-  make KEEP_SYMBOLS=1 release pkgconfig
+  CFLAGS="-Wno-incompatible-pointer-types ${CFLAGS}" \
+    make KEEP_SYMBOLS=1 release pkgconfig
 }
 
 package() {
