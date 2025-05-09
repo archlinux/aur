@@ -1,5 +1,3 @@
-jakana
-0.1.0
 pkgbase = jakana
 	pkgdesc = Learn Japanese kana on cli
 	pkgver = 0.1.0
