@@ -1,7 +1,7 @@
 pkgbase = s5cmd-bin
-	pkgdesc = Parallel S3 and local filesystem execution tool
+	pkgdesc = Parallel S3 and local filesystem execution tool.(Prebuilt version)
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peak/s5cmd
 	arch = aarch64
 	arch = armv7h

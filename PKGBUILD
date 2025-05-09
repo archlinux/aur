@@ -2,15 +2,15 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=s5cmd-bin
 pkgver=2.3.0
-pkgrel=1
-pkgdesc="Parallel S3 and local filesystem execution tool"
+pkgrel=2
+pkgdesc="Parallel S3 and local filesystem execution tool.(Prebuilt version)"
 arch=(
     'aarch64'
     'armv7h'
     'i686'
     'x86_64'
 )
-url='https://github.com/peak/s5cmd'
+url="https://github.com/peak/s5cmd"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
