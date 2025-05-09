@@ -2,7 +2,7 @@
 
 pkgname=cargo-afl
 pkgver=0.15.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Fuzzing Rust code with AFLplusplus"
 arch=(x86_64)
 url="https://github.com/rust-fuzz/afl.rs"
@@ -10,8 +10,8 @@ license=('Apache-2.0')
 depends=(glibc gcc-libs)
 makedepends=(cargo git)
 options=(!debug !lto)
-source=("git+https://github.com/rust-fuzz/afl.rs.git"
-	"git+https://github.com/AFLplusplus/AFLplusplus.git")
+source=("git+https://github.com/rust-fuzz/afl.rs.git#tag=v$pkgver"
+	"git+https://github.com/AFLplusplus/AFLplusplus.git#tag=v4.32c")
 md5sums=('SKIP'
          'SKIP')
 sha256sums=('SKIP'
