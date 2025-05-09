@@ -2,7 +2,7 @@
 # Backup contact <admin@azccriminal.space>
 
 pkgname=plasma-system-ai
-pkgver=1.0.0
+pkgver=1.0.o1
 pkgrel=1
 pkgdesc="Plasma-supported structure for an AI-based Linux system"
 arch=('any')
