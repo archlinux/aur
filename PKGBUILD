@@ -2,9 +2,9 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r7309.7c10c8f
-_electronversion=35
-_nodeversion=22
+pkgver=r7326.9ece43b
+_electronversion=36
+_nodeversion=24
 pkgrel=1
 pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
 arch=('any')
@@ -90,7 +90,11 @@ prepare() {
         } >> .npmrc
     fi
     find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/" {} +
-    sed -i "s/run.sh/${pkgname%-git}/;s/${_flatpakname}/${pkgname%-git}/;/X-Flatpak/d" .flatpak.desktop
+    sed -i -e "
+        s/run.sh/${pkgname%-git}/g
+        s/${_flatpakname}/${pkgname%-git}/g
+        /X-Flatpak/d
+    " .flatpak.desktop
     sed -i "s/${_flatpakname}/${pkgname%-git}/" .flatpak-appdata.xml
     sed -i "s/\'flatpak\', \'tar.gz\'/\'dir\'/" .electron-builder.config.cjs
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/" package.json
