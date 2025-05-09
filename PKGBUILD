@@ -3,7 +3,7 @@
 
 pkgname=python-pudb-git
 _pkgname=pudb
-pkgver=2024.1.3.r0.gf0b2aa5
+pkgver=2025.1.r2.gcd7b90c
 pkgrel=1
 pkgdesc="A full-screen, console-based Python debugger"
 url="https://documen.tician.de/pudb/"
@@ -18,6 +18,10 @@ depends=(
   'python-pygments'
   'python-urwid'
   'python-urwid_readline'
+
+  # needs to be added to urwid; temporary until that package is fixed
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/python-urwid/-/issues/2
+  'python-typing_extensions'
 )
 makedepends=(
   'git'
@@ -33,6 +37,7 @@ optdepends=(
   'bpython: bpython shell'
   'ptpython: shell based on prompt_toolkit'
   'ipython: shell embedding IPython'
+  'python-shtab: shell completion'
 )
 
 source=("git+https://github.com/inducer/pudb.git")
@@ -50,6 +55,7 @@ build() {
 
 check() {
   cd "$srcdir/$_pkgname"
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest -v
