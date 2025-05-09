@@ -28,7 +28,7 @@ bind_ip = "[::]"
 ## The periphery user must have write access to this directory.
 ## Env: PERIPHERY_ROOT_DIRECTORY
 ## Default: /etc/komodo
-root_directory = "/srv/komodo"
+root_directory = "/srv/komodo-periphery"
 
 ## Optional. Override the directory periphery will use to manage repos.
 ## The periphery user must have write access to this directory.
