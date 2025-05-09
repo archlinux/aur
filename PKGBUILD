@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://www.hardinfo2.org"
-license=('GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later')
+license=('GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-only')
 depends=(
   'dmidecode'
   'gawk'
