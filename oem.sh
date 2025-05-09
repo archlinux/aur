@@ -40,20 +40,28 @@ r3_get_macaddr() {
 }
 
 r3_get_model() {
-  if [ "$isEc2" -eq 0 ]; then
+  if [ -n "$R3_DEVICE_MODEL" ]; then
+    echo "$R3_DEVICE_MODEL"
+  elif [ "$isEc2" -eq 0 ]; then
     curl -s $METADATA_URL/instance-type | sed -e 's/\.//g'
   elif [ -r /sys/devices/virtual/dmi/id/product_family ]; then
     cat /sys/devices/virtual/dmi/id/product_family
+  elif [ -r /proc/device-tree/model ]; then
+    cat /proc/device-tree/model
   else
     echo NOT_DETECTED
   fi
 }
 
 r3_get_serial() {
-  if [ "$isEc2" -eq 0 ]; then
+  if [ -n "$R3_DEVICE_SERIAL" ]; then
+    echo "$R3_DEVICE_SERIAL"
+  elif [ "$isEc2" -eq 0 ]; then
     curl -s $METADATA_URL/instance-id | sed -e 's/-//g'
   elif [ -r /sys/devices/virtual/dmi/id/product_serial ]; then
     cat /sys/devices/virtual/dmi/id/product_serial
+  elif [ -r /proc/device-tree/serial-number ]; then
+    cat /proc/device-tree/serial-number
   else
     echo NOT_DETECTED
   fi
@@ -64,13 +72,16 @@ r3_get_identity() {
 }
 
 r3_get_manufacturer() {
-  echo 34304
+  if [ -n "$R3_MANUFACTURER_CODE" ]; then
+    echo "$R3_MANUFACTURER_CODE"
+  else
+    echo 34304
+  fi
 }
 
 r3_get_platform() {
   if [ -n "$R3_PLATFORM_CODE" ]; then
-    platformcode=$R3_PLATFORM_CODE
-    echo $platformcode
+    echo "$R3_PLATFORM_CODE"
   elif [ "$isEc2" -eq 0 ]; then
     echo 1185
   else

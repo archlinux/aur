@@ -5,7 +5,7 @@ After=network.target remoteit-refresh.service
 
 [Service]
 Type=forking
-PIDFile=/var/run/remoteit-%i.pid
+PIDFile=%t/remoteit-%i.pid
 RemainAfterExit=no
 ExecStart=/usr/share/remoteit/remoteit.sh %i
 ExecReload=/bin/kill -HUP $MAINPID -f /usr/share/remoteit/remoteit.sh %i

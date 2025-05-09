@@ -1,13 +1,13 @@
 [Unit]
-Description=Remote tcp command service
+Description=Remote socks proxy service
 Requires=network.target
 After=network.target 
 
 [Service]
 Type=forking
-PIDFile=%t/schannel.pid
+PIDFile=%t/demuxer.pid
 RemainAfterExit=no
-ExecStart=/usr/share/remoteit/schannel -f /usr/share/remoteit/schannel.conf -d %t/schannel.pid
+ExecStart=/usr/share/remoteit/demuxer -f /usr/share/remoteit/demuxer.conf -d -p %t/demuxer.pid
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 RestartSec=10s

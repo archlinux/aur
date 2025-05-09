@@ -1,6 +1,6 @@
 # Maintainer: Yusuke Takahashi <yusuke@remote.it>
 pkgname=remoteit
-pkgver=4.18.4
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="remote.it is a cloud service that provides secure connections."
 url="https://remote.it"
@@ -22,14 +22,18 @@ source=("connectd"
         "refresh.sh"
         "remoteit.sh"
         "schannel.conf"
+        "demuxer.conf"
         "systemd.sh"
         "task_notify.sh"
         "remoteit@.service"
         "remoteit-refresh.service"
         "schannel.service"
+        "demuxer.service"
         "LICENSE"
         "version.txt")
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -59,12 +63,14 @@ package() {
   install -m755 "$srcdir/refresh.sh" "$pkgdir/usr/share/$pkgname/"
   install -m755 "$srcdir/remoteit.sh" "$pkgdir/usr/share/$pkgname/"
   install -m644 "$srcdir/schannel.conf" "$pkgdir/usr/share/$pkgname/"
+  install -m644 "$srcdir/demuxer.conf" "$pkgdir/usr/share/$pkgname/"
   install -m755 "$srcdir/systemd.sh" "$pkgdir/usr/share/$pkgname/"
   install -m755 "$srcdir/task_notify.sh" "$pkgdir/usr/share/$pkgname/"
   install -m644 "$srcdir/version.txt" "$pkgdir/usr/share/$pkgname/"
   install -m644 "$srcdir/remoteit@.service" "$pkgdir/usr/lib/systemd/system/"
   install -m644 "$srcdir/remoteit-refresh.service" "$pkgdir/usr/lib/systemd/system/"
   install -m644 "$srcdir/schannel.service" "$pkgdir/usr/lib/systemd/system/"
+  install -m644 "$srcdir/demuxer.service" "$pkgdir/usr/lib/systemd/system/"
   install -m644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 
 }

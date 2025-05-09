@@ -1,11 +1,19 @@
 #!/bin/sh
 
+PACKAGE_NAME=remoteit
 REMOTEIT_DIR=/usr/share/remoteit
 INSTALL_API=https://install.remote.it/v1
 CONFIG_DIR=/etc/remoteit
 CONFIG_FILE=$CONFIG_DIR/config.json
+ENV_FILE=$CONFIG_DIR/r3.env
 REGISTRATION=$CONFIG_DIR/registration
 VERSION=$(cat $REMOTEIT_DIR/version.txt)
+
+if [ -d "/run" ]; then
+  PIDDIR="/run"
+else
+  PIDDIR="/var/run"
+fi
 
 # Detect which init software this device is using
 if [ -d /run/systemd/system ]; then
@@ -22,6 +30,7 @@ else
   . $REMOTEIT_DIR/sysvinit.sh
 fi
 
+[ -f $ENV_FILE ] && . $ENV_FILE
 . $REMOTEIT_DIR/oem.sh
 
 r3_update_config() {
@@ -61,8 +70,8 @@ r3_update_config() {
     --argjson config "$config" \
     --arg name "$(r3_get_name)" \
     --arg identity "$(r3_get_identity)" \
-    --argjson manufacturer "$(r3_get_manufacturer)" \
-    --argjson platform "$(r3_get_platform)" \
+    --arg manufacturer "$(r3_get_manufacturer)" \
+    --arg platform "$(r3_get_platform)" \
     --argjson metadata "$(r3_get_metadata)" \
     '$config * {$name, $identity, $manufacturer, $platform, $metadata}' | curl -sSfo $CONFIG_FILE -d @- $INSTALL_API/refresh
 
@@ -104,7 +113,7 @@ r3_install_agent() {
 
     [ -n "$arch" ] || r3_error "Unable to determine architecture."
 
-    local url=https://downloads.remote.it/openwrt/v4.18.3/$arch/binaries.tgz
+    local url=https://downloads.remote.it/openwrt/v5.4.0/$arch/binaries.tgz
 
     curl -sSfo- "$url" | tar xzf - -C $REMOTEIT_DIR 2>/dev/null || r3_error "Unknown architecture \"$arch\"."
   fi
@@ -112,6 +121,11 @@ r3_install_agent() {
   [ -r $CONFIG_FILE ] || r3_update_config
 
   ln -sf $REMOTEIT_DIR/task_notify.sh /usr/bin/connectd_task_notify
+
+  # If /run is available, move pid files stored in legacy /var/run to this dir.
+  if [ -d "/run" ]; then
+    mv /var/run/remoteit-*.pid /run 2>/dev/null
+  fi
 
   r3_reload_agent
 

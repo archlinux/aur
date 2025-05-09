@@ -70,6 +70,10 @@ post_upgrade() {
 
   r3_install_agent
 
+  systemctl restart schannel
+  systemctl restart demuxer
+  systemctl restart remoteit@* --all
+
   exit 0
 
 }

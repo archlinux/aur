@@ -2,8 +2,8 @@
 
 . /usr/share/remoteit/functions.sh
 . /usr/share/remoteit/oem.sh
-REMOTEIT_DIR=/usr/share/remoteit
-PIDFILE=/var/run/remoteit-$1.pid
+
+PIDFILE=$PIDDIR/remoteit-$1.pid
 
 config=$(r3_get_config $1)
 
