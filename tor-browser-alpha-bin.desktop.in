@@ -1,5 +1,9 @@
 [Dsektop Entry]
+<<<<<<< HEAD
 Version=14.5a5
+=======
+Version=14.5a6
+>>>>>>> b9b3bd5 (update)
 Type=Application
 Name=Tor Browser Alpha
 Exec=tor-browser %u
