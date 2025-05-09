@@ -7,12 +7,12 @@ pkgrel=1
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)'
 url='https://github.com/AcademySoftwareFoundation/Imath'
 arch=(any)
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'wine')
 checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('8a1bc258f3149b5729c2f4f8ffd337c0e57f09096e4ba9784329f40c4a9035da')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
