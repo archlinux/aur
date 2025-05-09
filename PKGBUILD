@@ -2,7 +2,7 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r721.a6304315
+pkgver=r885.d5a43d69
 pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
@@ -12,8 +12,10 @@ depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split'
 makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-latexextra' 'texlive-fontsextra')
 optdepends=('tcl: bluesim and bluetcl')
 source=("git+https://github.com/b-lang-org/bsc.git"
-        "git+https://github.com/SRI-CSL/yices2.git")
+        "git+https://github.com/SRI-CSL/yices2.git"
+        "pr-787.diff::https://github.com/b-lang-org/bsc/pull/787.diff")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 _prefix="/opt/bluespec"
 
@@ -27,6 +29,9 @@ prepare() {
   git submodule init
   git config submodule.externals/vendor/yices/v2.6/yices2.url "$srcdir/yices2"
   git submodule update
+  for diff_file in "${srcdir}/"*.diff; do
+    patch -Np1 -i "$diff_file"
+  done
 }
 
 build(){
