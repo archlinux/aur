@@ -40,3 +40,4 @@ package() {
 
 	install -Dm755 -t "${pkgdir}/usr/bin" "target/release/$pkgname" 
 }
+sha256sums=('79f91fa2a20e1c8536b4e47afd26921c3e12e1d45a42da897818f3b89c9b32ae')
