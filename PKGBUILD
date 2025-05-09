@@ -1,5 +1,5 @@
 # Maintainer: Zaman Huseynli <zamanhuseyinli23@gmail.com>
-#
+# Backup contact <admin@azccriminal.space>
 pkgname=plasma-system-ai-bin
 pkgver=1.0.0
 pkgrel=1
@@ -11,6 +11,7 @@ provides=('plasma-system-ai')
 conflicts=('plasma-system-ai')
 depends=('python')
 
+# GitHub releases sayfasından binary dosyasının linki
 source=("https://github.com/Zamanhuseyinli/Linux-AI/releases/download/v${pkgver}/plasma-ai")
 sha256sums=('c811575bff3af7b4967433c7aae1a6c7354fee7031f5effc262b49219122ecdb')
 
