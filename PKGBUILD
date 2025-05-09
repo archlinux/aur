@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=firefly-shimmer-desktop-bin
 _pkgname='Firefly Shimmer'
-pkgver=2.2.0
+pkgver=2.2.1
 _electronversion=27
 pkgrel=1
 pkgdesc="Try out new features introduced with Shimmer, such as minting native tokens, setting transaction expiry times, and sending microtransactions.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/desktop-shimmer-${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c5176a0351cbc4fd3e0ce20e1b5b501a9566f64b67be1d10ba4133da6e81a97'
+sha256sums=('89625c9ff187984fc21364f9b767eab961f2e71facf6a1b417f4ab0e9ca83a4b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
