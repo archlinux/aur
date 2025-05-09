@@ -1,0 +1,15 @@
+pkgbase = kanji-dojo-appimage
+	pkgdesc = Practice writing Japanese letters, learn their meanings and related words (AppImage version)
+	pkgver = 2.1.7
+	pkgrel = 1
+	url = https://github.com/syt0r/Kanji-Dojo
+	arch = x86_64
+	license = GPL3
+	provides = kanji-dojo
+	conflicts = kanji-dojo
+	conflicts = kanji-dojo-git
+	options = !strip
+	source = https://github.com/syt0r/Kanji-Dojo/releases/download/v2.1.7/Kanji_Dojo-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = kanji-dojo-appimage
