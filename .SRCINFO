@@ -1,6 +1,6 @@
 pkgbase = video-downloader
 	pkgdesc = Download videos from websites like YouTube and many others (based on yt-dlp)
-	pkgver = 0.12.24
+	pkgver = 0.12.25
 	pkgrel = 1
 	url = https://github.com/Unrud/video-downloader
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = video-downloader
 	depends = python-pyxattr
 	depends = python-websockets
 	depends = yt-dlp
-	source = video-downloader-0.12.24.tar.gz::https://github.com/Unrud/video-downloader/archive/refs/tags/v0.12.24.tar.gz
-	sha256sums = f30b024661dc387990b12d3edf1457617a191c71e61a5f0269a213caeb1f4976
+	source = video-downloader-0.12.25.tar.gz::https://github.com/Unrud/video-downloader/archive/refs/tags/v0.12.25.tar.gz
+	sha256sums = 5d529319717ae2d4cededb3a188a42552b1a344020c5ecc1c3d93a2434990dd2
 
 pkgname = video-downloader
