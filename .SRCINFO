@@ -1,6 +1,6 @@
 pkgbase = darkradiant-git
 	pkgdesc = Editor for The Dark Mod and Doom 3 (idTech4) based games
-	pkgver = 3.0.0.r12.gf5f9ab1f6
+	pkgver = 3.9.0.r90.g0b4499d7b
 	pkgrel = 1
 	url = http://www.darkradiant.net
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = darkradiant-git
 	license = LGPL
 	license = BSD
 	makedepends = cmake
-	depends = wxgtk2
+	depends = wxwidgets-gtk3
 	depends = ftgl
 	depends = glew
 	depends = freealut
