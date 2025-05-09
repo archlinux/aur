@@ -1,7 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Praxidike_Kore <praxidike dot kore at protonmail dot com>
 
 pkgname="gcs-bin"
-pkgver=5.34.0
+pkgver=5.35.0
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"

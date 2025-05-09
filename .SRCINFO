@@ -1,13 +1,13 @@
 pkgbase = gcs-bin
 	pkgdesc = WYSIWYG editor for building character sheets for GURPS 4th Edition
-	pkgver = 5.34.0
+	pkgver = 5.35.0
 	pkgrel = 1
 	url = https://gurpscharactersheet.com
 	arch = x86_64
 	license = MPL2
 	provides = gcs
 	conflicts = gcs
-	source = gcs-bin-5.34.0.tar.gz::https://github.com/richardwilkes/gcs/releases/download/v5.34.0/gcs-5.34.0-linux-amd64.tgz
+	source = gcs-bin-5.35.0.tar.gz::https://github.com/richardwilkes/gcs/releases/download/v5.35.0/gcs-5.35.0-linux-amd64.tgz
 	source = gcs.desktop
 	source = gcs.png
 	source = LICENSE
