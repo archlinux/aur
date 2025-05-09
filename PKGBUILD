@@ -1,11 +1,11 @@
 # Maintainer: Nick77 <qwiko20@tutamail.com>
 
-pkgname=jakana
+pkgname=jakana-cli
 pkgver=0.1.0
 pkgrel=1
 pkgdesc='Learn Japanese kana on cli'
 arch=('any')
-url='https://github.com/Catalina-sys456/jakana'
+url='https://github.com/Catalina-sys456/jakana-cli'
 license=('MIT')
 depends=('python')
 makedepends=(python-build
