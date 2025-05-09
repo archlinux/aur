@@ -8,7 +8,7 @@ pkgdesc='Tool to interact with the framework system (git development version)'
 url='https://github.com/FrameworkComputer/framework-system'
 license=('MIT')
 depends=(
-	"libusb"
+    "libusb"
 	"gcc-libs"
 	"glibc"
 	"systemd-libs"
@@ -38,6 +38,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/framework_tool"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}/" "LICENSE.md"
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/framework_tool"
+	install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE.md"
 }
