@@ -1,7 +1,7 @@
 pkgbase = hedgemodmanager-git
 	pkgdesc = (UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC.
-	pkgver = 8.0.0.beta4.r20
-	pkgrel = 3
+	pkgver = 8.0.0.beta4.r22
+	pkgrel = 1
 	url = https://github.com/hedge-dev/HedgeModManager
 	arch = x86_64
 	license = MIT
