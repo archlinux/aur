@@ -1,9 +1,9 @@
 # Maintainer: Shane Blackthorne <arch@blackthorne.dev>
 
 pkgname=bzmenu
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="A launcher-driven bluetooth manager for Linux"
+pkgdesc="Launcher-driven Bluetooth manager for Linux"
 arch=('x86_64')
 url="https://github.com/e-tho/bzmenu"
 license=('GPL-3.0-or-later')
@@ -17,13 +17,14 @@ optdepends=('dmenu: launcher for options navigation via stdin'
 )
 conflicts=($pkgname-git $pkgname-bin)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('138cb80c18c836e3708cd1f2bcaf556086d8bb0df278fc51f044071480afaa8b')
+sha256sums=('79f91fa2a20e1c8536b4e47afd26921c3e12e1d45a42da897818f3b89c9b32ae')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-    	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -40,4 +41,3 @@ package() {
 
 	install -Dm755 -t "${pkgdir}/usr/bin" "target/release/$pkgname" 
 }
-sha256sums=('79f91fa2a20e1c8536b4e47afd26921c3e12e1d45a42da897818f3b89c9b32ae')

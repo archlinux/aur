@@ -1,5 +1,5 @@
 pkgbase = bzmenu
-	pkgdesc = A launcher-driven bluetooth manager for Linux
+	pkgdesc = Launcher-driven Bluetooth manager for Linux
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/e-tho/bzmenu
