@@ -3,7 +3,7 @@
 
 pkgname=xf86-video-vmware
 pkgver=13.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="X.org vmware video driver"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
