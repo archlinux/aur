@@ -1,15 +1,11 @@
 pkgbase = batch-explorer-bin
 	pkgdesc = A client tool to help create, debug and monitor Azure Batch Applications.(Prebuilt version)
 	pkgver = 2.22.0_stable.1076
-	pkgrel = 1
+	pkgrel = 2
 	url = https://azure.github.io/BatchExplorer/
 	arch = x86_64
 	license = MIT
-	depends = nspr
-	depends = alsa-lib
-	depends = gtk3
-	depends = nss
-	depends = libsecret
+	depends = electron29
 	provides = batch-explorer=2.22.0_stable.1076
 	conflicts = batch-explorer
 	options = !strip

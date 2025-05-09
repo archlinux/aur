@@ -3,20 +3,16 @@ pkgname=batch-explorer-bin
 _pkgname=BatchExplorer
 pkgver=2.22.0_stable.1076
 _electronversion=29
-pkgrel=1
+pkgrel=2
 pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications.(Prebuilt version)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://azure.github.io/BatchExplorer/"
 _ghurl="https://github.com/Azure/BatchExplorer"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'nspr'
-    'alsa-lib'
-    'gtk3'
-    'nss'
-    'libsecret'
+    "electron${_electronversion}"
 )
 options=(
     '!strip'
@@ -28,8 +24,13 @@ source=(
 )
 sha256sums=('9e506a62ebed74142f60bfc9da5a6af8f5c40412467570f6e06ee5b27543fbf1'
             '0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0')
-build() {
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+prepare() {
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
+		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
+	for _files in "${_file_list[@]}";do
+		ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/opt/${_pkgname}/${_files}"
+	done
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
