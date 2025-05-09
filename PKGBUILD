@@ -1,7 +1,7 @@
 # Maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=calibre-bin
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Official desktop version Calibre"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 optdepends=()
 conflicts=(calibre calibre-git)
-provides=(calibre)
+provides=()
 
 # Sources
 #   Since there doesn't seem to be a simple way to generate desktop
@@ -24,7 +24,7 @@ source=(
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            'e97170bb842b2aab9fc117fe5b23f5bf95bacfdd803d869f664a66cc3132fce2')
+            '5dc7a18c639f758bcff1b35cd0fbc34a8d5d5ef14d6038225bb5685d590238e9')
 
 package() {
 	# Creating needed directories
