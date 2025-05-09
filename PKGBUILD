@@ -5,7 +5,7 @@
 _reponame=rapidjson
 pkgname=mingw-w64-$_reponame
 pkgver=1.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='A fast JSON parser/generator for C++ with both SAX/DOM style API (mingw-w64)'
 arch=('any')
 url='https://github.com/miloyip/rapidjson'
@@ -13,12 +13,12 @@ license=('MIT')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja' 'git')
 checkdepends=('mingw-w64-wine' 'python')
 source=(
-	"$_reponame-$pkgver.tar.gz::https://github.com/miloyip/$_reponame/archive/v$pkgver.tar.gz"
-	'https://github.com/Tencent/rapidjson/commit/3b2441b8.patch'
-	'git+https://github.com/google/googletest.git#commit=2fe3bd994b3189899d93f1d5a881e725e046fdc2')
+  "$_reponame-$pkgver.tar.gz::https://github.com/miloyip/$_reponame/archive/v$pkgver.tar.gz"
+  'https://github.com/Tencent/rapidjson/commit/3b2441b8.patch'
+  'git+https://github.com/google/googletest.git#commit=2fe3bd994b3189899d93f1d5a881e725e046fdc2')
 sha512sums=('2e82a4bddcd6c4669541f5945c2d240fb1b4fdd6e239200246d3dd50ce98733f0a4f6d3daa56f865d8c88779c036099c52a9ae85d47ad263686b68a88d832dff'
             '5002ff20a65b7d057411e39adf7f5a29eddff818d20579900b655df4d838b984a1b68f488232e1990b592943a70943619d924da1c4e1d2ce0d3ef65bc40f75d6'
-            SKIP)
+            'bf8e45c38736f83c486e4c7ba0ca67e8be88a3f0c60d05520c4968a5d0c2711b07a06d4b9a73f711d4ff89a0eae9bbe2a5697de7707b2374bc2ff5d12dea3a03')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -28,6 +28,11 @@ prepare() {
   # disable -Werror as it is done in the regular rapidjson package
   find -name CMakeLists.txt | xargs sed -e 's|-Werror||' -i # Don't use -Werror
 
+  # disable -march=native when compiling with Clang to prevent `clang++: error: unsupported argument 'native' to option '-march='`
+  if [[ $pkgname =~ .*-clang-.* ]]; then
+    find -name CMakeLists.txt -exec sed -i -e 's|-march=native||' {} \+
+  fi
+
   patch -p1 -i ../3b2441b8.patch # Fix build with GCC 14
 
   # exclude tests which don't run within WINE
@@ -35,13 +40,15 @@ prepare() {
 }
 
 build () {
-  cd "$_reponame-$pkgver"
-
   for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
+    local arch_flags=()
+    [[ $_arch =~ aarch64-.* ]] && arch_flags+=(-Dgtest_disable_pthreads:BOOL=ON)
     ${_arch}-cmake \
         -G Ninja \
+        -S "$_reponame-$pkgver" \
+        -B "build-${_arch}" \
         -DCMAKE_BUILD_TYPE:STRING=Release \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DRAPIDJSON_HAS_STDSTRING=ON \
         -DRAPIDJSON_BUILD_CXX11=ON \
         -DRAPIDJSON_ENABLE_INSTRUMENTATION_OPT=OFF \
@@ -50,14 +57,13 @@ build () {
         -DGTEST_INCLUDE_DIR="$srcdir/googletest/googletest/include" \
         -DINSTALL_GTEST=OFF \
         -DRAPIDJSON_BUILD_THIRDPARTY_GTEST=ON \
-        ..
-    ninja
-    popd
+        ${arch_flags[@]}
+    [[ $_arch =~ aarch64-.* ]] && sed -i -e 's|-lpthread||g' "build-${_arch}/build.ninja"
+    VERBOSE=1 cmake --build "build-${_arch}"
   done
 }
 
 check() {
-  cd "$_reponame-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
 
@@ -73,15 +79,12 @@ check() {
 }
 
 package() {
-  cd "$_reponame-$pkgver"
   for _arch in ${_architectures}; do
-    mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-    DESTDIR="${pkgdir}" ninja install
+    DESTDIR="$pkgdir" cmake --install "build-${_arch}"
     # remove examples
     rm -r "${pkgdir}/usr/${_arch}/share"
     # put cmake files in right directory
     mkdir -p "${pkgdir}/usr/${_arch}/lib/cmake/RapidJSON"
     mv "${pkgdir}/usr/${_arch}/cmake/"* "${pkgdir}/usr/${_arch}/lib/cmake/RapidJSON"
-    popd
   done
 }
