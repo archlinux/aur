@@ -4,8 +4,8 @@
 
 _pkgname="iriunwebcam"
 pkgname="$_pkgname-bin"
-pkgver=2.8.5
-pkgrel=2
+pkgver=2.8.6
+pkgrel=1
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
 license=('LicenseRef-Iriun')
@@ -15,7 +15,7 @@ makedepends=(
   'patchelf'
 )
 optdepends=(
-  'adb'
+  'android-tools: adb'
   'qt5-wayland'
 )
 
@@ -24,7 +24,7 @@ source=(
   "LICENSE.iriun.txt" # extracted from mac archive
 )
 sha256sums=(
-  '2bd188b5a81a1d590c055d58dc7b180f4f3221fea52590e2e8648b110428da94'
+  '95d72e7d9c69bc72434a90267db1ea9bdcf8d6720b3e5ac54b422c8707fbe66e'
   'eb2ba875d0b419ab7d6327a933d619d1b9eed51f89d49e55ed789bf8f37f75be'
 )
 
