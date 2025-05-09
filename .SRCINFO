@@ -1,13 +1,13 @@
 pkgbase = internxt-bin
 	pkgdesc = Internxt cloud storage client
-	pkgver = 2.4.7
+	pkgver = 2.4.8
 	pkgrel = 1
 	url = https://internxt.com
 	arch = x86_64
 	license = AGPL3
 	provides = internxt
 	replaces = internxt-drive-bin
-	source = Internxt-2.4.7.AppImage::https://github.com/internxt/drive-desktop-linux/releases/download/v2.4.7/Internxt-2.4.7.AppImage
-	sha256sums = ef051474f39f26cf4342f2bc68749a7e9ed9364160b5cc76adbac3fc0ba5126c
+	source = Internxt-2.4.8.AppImage::https://github.com/internxt/drive-desktop-linux/releases/download/v2.4.8/Internxt-2.4.8.AppImage
+	sha256sums = ec2bb09af4d5f245f746e8683b048fef2d4ff4bfd403a895c8c7b2deb131b136
 
 pkgname = internxt-bin
