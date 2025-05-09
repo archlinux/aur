@@ -1,4 +1,4 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Nicolas Ortega <nicolas@ortegas.org>
 
 pkgname=perl-file-next
 pkgver=1.18
