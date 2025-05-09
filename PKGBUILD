@@ -25,7 +25,7 @@ install=mycoria.install
 
 pkgver() {
     {
-    curl -Ssf "${url}/releases.atom" | grep '/releases/tag/' | sed -E 's@^.*/releases/tag/(.*)".*$@\1@; s@^v@@' | head -n 1 | grep '^[0-9\.]$'
+    curl -Ssf "${url}/releases.atom" | grep '/releases/tag/' | sed -E 's@^.*/releases/tag/(.*)".*$@\1@; s@^v@@' | head -n 1 | grep '^[0-9][0-9\.]*$'
     } || echo "$pkgver"
 }
 
