@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=apifox-bin
 _pkgname=Apifox
-pkgver=2.7.7
+pkgver=2.7.9
 _electronversion=28
-pkgrel=2
+pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试"
 arch=(
     'aarch64'
@@ -19,6 +19,7 @@ depends=(
     'java-runtime'
     'libxcrypt-compat'
     'nodejs'
+    'python'
 )
 makedepends=(
     'fuse2'
@@ -34,8 +35,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://file-assets.apif
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://file-assets.apifox.com/download/${_pkgname}-linux-latest.zip")
 sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980'
             '3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('5e8202b22b32de84725c49119c895e0fbfef9bb174d5e15e5eb6d451bf8c0949')
-sha256sums_x86_64=('889650733cbbd07296c6376aeab0c439d93bbb6831fb64835949b82661295cd7')
+sha256sums_aarch64=('0cdf0e763d14d69aa079fd5dc6bc99520c67a7d34ce027c68fac9e001a848ba4')
+sha256sums_x86_64=('530096803d0c9d97f6b4d70cea6aa8a53ba7b58fc68b77397f15d155910f2e88')
 pkgver() {
     cd "${srcdir}/squashfs-root"
     grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//g"
@@ -54,8 +55,10 @@ prepare() {
     "${srcdir}/${_pkgname}"*.AppImage --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules" -type d -name ".github" -exec rm -rf {} +
-    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} \;
-    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/oracledb/build/release/"{*-darwin-*,*-win32-*}
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/oracledb/build/Release/"{*darwin*,*win32*}
+    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/cpu-features/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/nodejieba/build/node_gyp_bins/python3"
+    find "${srcdir}/squashfs-root" -type d -perm 700 -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
