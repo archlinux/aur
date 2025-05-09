@@ -2,7 +2,7 @@
 
 pkgname=sylpheed-beta-iconmod
 pkgver=3.8.0beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight e-mail client. Latest official beta with the coonsden.com icon theme."
 arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
@@ -29,6 +29,7 @@ build() {
 
   patch -p1 < "$srcdir/ssl-sni-support.patch"
 
+  CFLAGS+=' -Wno-error=incompatible-pointer-types'
   autoconf
   ./configure --prefix=/usr --enable-ldap --enable-gpgme
   make
