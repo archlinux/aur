@@ -1,6 +1,6 @@
 pkgbase = easyedit-git
 	pkgdesc = An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Use system-wide electron)
-	pkgver = 1.3.6.r0.gc9f6e9f
+	pkgver = 1.3.7.r2.g58016ce
 	pkgrel = 1
 	url = https://github.com/gcclinux/EasyEdit
 	arch = any
