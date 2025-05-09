@@ -2,12 +2,13 @@
 pkgname=text-vision-git
 _pkgname=TextVision
 _builded_name=tauri-svelte-app
-pkgver=1.0.1.r0.g69c14b0
+pkgver=1.0.1.r11.g84fb866
 _nodeversion=20
 pkgrel=1
 pkgdesc="A project that uses OCR to extract text from images."
 arch=('any')
-url="https://github.com/Ap73MKa/TextVision"
+url="https://ap73mka.github.io/TextVision/"
+_ghurl="https://github.com/Ap73MKa/TextVision"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
@@ -21,11 +22,10 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'gcc'
     'rust'
 )
 source=(
-    "${pkgname%-git}.git::git+${url}"
+    "${pkgname%-git}.git::git+${_ghurl}"
 )
 sha256sums=('SKIP')
 pkgver() {
@@ -41,9 +41,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${pkgname%-git}" --exec="${pkgname%-git}"
-    cd "${srcdir}/${pkgname%-git}.git"
     HOME="${srcdir}/.electron-gyp"
     export CARGO_HOME="${srcdir}/.cargo"
     if [ -f bunfig.toml ]; then
@@ -58,13 +58,16 @@ prepare() {
             echo 'registry = "https://registry.npmmirror.com"'
         } >> bunfig.toml
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     fi
-    sed -i "s/tauri build/tauri build -b deb/g" apps/desktop/package.json
+    sed -i "36s/\/\>/\>\<\/textarea\>/g" apps/desktop/src/widgets/image-viewer/image-viewer.svelte
+    sed -i "37s/\<div \/\>/\<div\>\<\/div\>/g" apps/desktop/src/widgets/image-viewer/image-viewer.svelte
+    sed -i "42s/on\:transform/ontransform/g" apps/desktop/src/widgets/image-viewer/image-viewer.svelte
     NODE_ENV=development    bun install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    sed -i "s/targets\"\: \"all/targets\"\: \"deb/g" apps/desktop/src-tauri/tauri.conf.json
     NODE_ENV=production     bun run build-desk
 }
 package() {
@@ -75,6 +78,6 @@ package() {
         install -Dm644 "${srcdir}/${pkgname%-git}.git/apps/desktop/src-tauri/target/release/bundle/deb/${_builded_name}_"*/data/usr/share/icons/hicolor/"${_icons}"/apps/"${_builded_name}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
