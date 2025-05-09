@@ -1,7 +1,7 @@
 # Maintainer: brionical27 <brionical@proton.me>
 pkgname=hedgemodmanager-git
 pkgver=8.0.0.beta4.r20
-pkgrel=2
+pkgrel=3
 pkgdesc="(UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC."
 arch=(x86_64)
 url="https://github.com/hedge-dev/HedgeModManager"
@@ -16,8 +16,6 @@ validpgpkeys=()
 
 pkgver() {
   cd $srcdir/hedgemodmanager
-  mkdir -p $srcdir/build
-  git rev-parse HEAD > $srcdir/build/commit.txt
   git describe --long --abbrev=7 --tags | sed 's/\([^-]*\)-g.*/r\1/;s/-/./g'
 }
 
@@ -25,7 +23,7 @@ pkgver() {
 
 build() {
   cd $srcdir/hedgemodmanager
-  dotnet publish -p:PublishProfile=linux-x64 -c Release -o $srcdir/build $srcdir/hedgemodmanager/Source/HedgeModManager.UI/HedgeModManager.UI.csproj
+  dotnet publish -p:PublishProfile=linux-x64 -p:DefineConstants=COMMITBUILD -c Release -o $srcdir/build $srcdir/hedgemodmanager/Source/HedgeModManager.UI/HedgeModManager.UI.csproj
   sed -i "s|/app/bin/HedgeModManager\.UI|/opt/HedgeModManager/HedgeModManager\.UI|" $srcdir/hedgemodmanager/flatpak/hedgemodmanager.desktop
 }
 
