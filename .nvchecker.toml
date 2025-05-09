@@ -1,0 +1,4 @@
+[intel-xed-git]
+source = "git"
+git = "https://github.com/intelxed/xed.git"
+prefix = "v"
