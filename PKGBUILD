@@ -3,8 +3,8 @@
 _pkgname=8188eu
 pkgname="${_pkgname}-dkms-git"
 _pkgver=5.2.2.4
-pkgver=5.2.2.4.r794.53ed527
-pkgrel=3
+pkgver=5.2.2.4.r838.f42fc9c
+pkgrel=1
 pkgdesc='Standalone driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
 url="https://github.com/lwfinger/rtl8188eu"
