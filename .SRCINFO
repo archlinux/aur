@@ -1,6 +1,6 @@
 pkgbase = tnl-git
 	pkgdesc = An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters
-	pkgver = r7882.be918e6fe
+	pkgver = r7909.58f2aa3f5
 	pkgrel = 1
 	url = https://tnl-project.org/
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = tnl-git
 	depends = blas-openblas
 	depends = dcmtk
 	depends = gcc-libs
+	depends = glibc
 	depends = libjpeg
 	depends = libpng
 	depends = metis
