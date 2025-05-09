@@ -1,20 +1,21 @@
-# Maintainer: enamulhasanabid <enamulhabid at gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: enamulhasanabid <enamulhabid at gmail dot com>
 # Contributor: éclairevoyant
 # Contributor: dangerdev <dangerdev at disroot dot org>
 # Contributor: Danct12 <danct12 at disroot dot org>
 # Contributor: Bart Ribbers <bribbers at disroot dot org>
 
-_pkgver_images_system="18.1-20241116"
-_pkgver_images_system_x86="18.1-20241116"
-_pkgver_images_system_arm="18.1-20241116"
-_pkgver_images_system_arm64="18.1-20241116"
-_pkgver_images_vendor="18.1-20241116"
-_pkgver_images_vendor_x86="18.1-20241116"
-_pkgver_images_vendor_arm="18.1-20241116"
-_pkgver_images_vendor_arm64="18.1-20241116"
+_pkgver_images_system="20-20250503"
+_pkgver_images_system_x86="20-20250503"
+_pkgver_images_system_arm="20-20250503"
+_pkgver_images_system_arm64="20-20250503"
+_pkgver_images_vendor="20-20250503"
+_pkgver_images_vendor_x86="20-20250503"
+_pkgver_images_vendor_arm="20-20250503"
+_pkgver_images_vendor_arm64="20-20250503"
 pkgname=waydroid-image
 pkgver="${_pkgver_images_system//-/_}"
-pkgrel=2
+pkgrel=1
 pkgdesc="LineageOS-based Android images for Waydroid"
 arch=(x86_64 i686 armv7h aarch64)
 url='https://waydro.id'
@@ -29,17 +30,14 @@ source_armv7h=("$_srcprefix/system/lineage/waydroid_arm/lineage-$_pkgver_images_
                "$_srcprefix/vendor/waydroid_arm/lineage-$_pkgver_images_vendor_arm-MAINLINE-waydroid_arm-vendor.zip")
 source_aarch64=("$_srcprefix/system/lineage/waydroid_arm64/lineage-$_pkgver_images_system_arm64-VANILLA-waydroid_arm64-system.zip"
                 "$_srcprefix/vendor/waydroid_arm64/lineage-$_pkgver_images_vendor_arm64-MAINLINE-waydroid_arm64-vendor.zip")
-sha256sums_x86_64=('a99d4414c469daebe75c35dbd808bd5c7c7f0b996d759e53514de73a387f5457'
-                   '50b986db59f7f99b36e9b656f57d139ecbf988a7257524bf0988c8d061f21bed')
-
-sha256sums_i686=('9004d6b2ea456897456f90bb6f2a9386f5f40bf1d224b4786f0abb1968879f04'
-                 '6cb06d5e2c8ba361dad8bc02a4a2965b4d24a2177e843280d62ffb965fe2ce43')
-
-sha256sums_armv7h=('a22fbd135f8ab4a6b79ee071b63cc88c654a346dd30593aacf8494bcfcecb3ad'
-                   '521774b70e35c29d1f5310129f9ed02b02810aeabc943470fc64aa22e96bb7c6')
-
-sha256sums_aarch64=('cd4a6f5390ff649b4ad64ca123ebdcd1aeae4c531a89f2aeebbccc5a782ac03c'
-                    'de0408f11ca12356d86846b9a28240c125f36f623107c4c27e171e1515736687')
+sha256sums_x86_64=('60e2bbb7b821132b4518c9fa22581845742e09edd858831465e91a8a6b9c4087'
+                   'e5331c517553873620b547e02fd972df40cf060ddad37856fa15f22442ae87f3')
+sha256sums_i686=('34bafb2b528b422f20690e53dc7ffa08d54e1d89015cc1c90ac9ee76f7168b94'
+                 '664d9e7a9f07ccd407ddca7d0299d234060e69c883ddb2dbcad85fdf3b9f5818')
+sha256sums_armv7h=('135fab35e755eb178611bfefe980b992df963de87e695401d8f52ef552f93b5f'
+                   '075ec02de1a9a2ac7e96b6cccd324a84c0ab95d9b78f0226ac1f0c07b4faf1a1')
+sha256sums_aarch64=('253d34bc38158e96c449f9eb1d72cc015efdb5f72c3749118d5bd8ca9774bfbb'
+                    '314c1a408d0fccc6a0ba4898a1267c1c9b2af1d287818a659df4458dffa51714')
 
 package() {
 	install -Dm644 {system,vendor}.img -t "$pkgdir/usr/share/waydroid-extra/images/"
