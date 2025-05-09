@@ -3,12 +3,14 @@
 _pkgname="tex-fmt"
 pkgname="${_pkgname}-bin"
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast LaTeX formatter written in Rust"
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/WGUNDERWOOD/${_pkgname}"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
