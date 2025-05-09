@@ -3,7 +3,7 @@ _appname=web_value_tracker
 pkgname="${_appname//_/-}-bin"
 _pkgname='Web Value Tracker'
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Track any value on the web and get notified when it changes. Example: product prices on eBay, Amazon etc.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -21,6 +21,9 @@ depends=()
 makedepends=(
     'gendesk'
 )
+options=(
+    '!strip'
+)
 source=(
     "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/Ashu999/web-value-tracker/v${pkgver}/LICENSE-MIT"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/Ashu999/web-value-tracker/v${pkgver}/assets/icon-1024.png"
@@ -34,7 +37,11 @@ sha256sums_aarch64=('b24615cc388f66e63ca60a48d74ddcd74893d6ec4bc31b95f9267ea2fc9
 sha256sums_armv7h=('27c5182a774e9af5d75be46df465cfdf04f32fe5b47435d0fe64a82ff7defa87')
 sha256sums_x86_64=('aa6f2d21004924f5b789a2c357f03e14d5860cdfbaf7f6e0b6dd0d1cc9f92935')
 prepare() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname%-bin}"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-bin}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"

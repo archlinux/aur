@@ -1,7 +1,7 @@
 pkgbase = web-value-tracker-bin
 	pkgdesc = Track any value on the web and get notified when it changes. Example: product prices on eBay, Amazon etc.(Prebuilt version)
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ashu999/web-value-tracker
 	arch = aarch64
 	arch = armv7h
@@ -11,6 +11,7 @@ pkgbase = web-value-tracker-bin
 	makedepends = gendesk
 	provides = web-value-tracker=1.0.2
 	conflicts = web-value-tracker
+	options = !strip
 	source = LICENSE-MIT-1.0.2::https://raw.githubusercontent.com/Ashu999/web-value-tracker/v1.0.2/LICENSE-MIT
 	source = web-value-tracker-1.0.2.png::https://raw.githubusercontent.com/Ashu999/web-value-tracker/v1.0.2/assets/icon-1024.png
 	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
