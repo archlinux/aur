@@ -1,7 +1,7 @@
 pkgbase = ruby-reverse_markdown
 	pkgdesc = Ruby gem to convert html into markdown
-	pkgver = 2.1.1
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/xijo/reverse_markdown
 	arch = any
 	license = WTFPL
@@ -9,9 +9,9 @@ pkgbase = ruby-reverse_markdown
 	depends = ruby
 	depends = ruby-nokogiri
 	options = !emptydirs
-	source = https://github.com/xijo/reverse_markdown/archive/refs/tags/v2.1.1.tar.gz
+	source = https://github.com/xijo/reverse_markdown/archive/refs/tags/v3.0.0.tar.gz
 	source = 0001-gemspec.patch
-	sha256sums = 7e5befcf8f2d155302a08ed45a11341e7c3930a6596a40e99ecec77cce855a20
+	sha256sums = eb235f2339b65c986bee645cf806ef991f897e1b26dbdd60ed5f31e5d9ce12e7
 	sha256sums = f40289fd12c3a65b31a9eadd19258204f60556b8841decde918afabc6b361b5b
 
 pkgname = ruby-reverse_markdown
