@@ -2,7 +2,7 @@
 # Contributor: AI-Assisted Development: Suggestions and troubleshooting aided by DeepSeek Chat (https://deepseek.com)
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
-pkgname='aideokit-kde'
+pkgname='audiokit-kde'
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."

@@ -1,4 +1,4 @@
-pkgbase = aideokit-kde
+pkgbase = audiokit-kde
 	pkgdesc = KDE audio utility suite that extends Dolphin context menus with format conversion, etc.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = aideokit-kde
 	source = git+https://github.com/TomB16/AudioKit-KDE.git#branch=main
 	sha256sums = SKIP
 
-pkgname = aideokit-kde
+pkgname = audiokit-kde
