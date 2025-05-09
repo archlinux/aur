@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2-git
-pkgver=2.5.4.r0.g4cf8d52
+pkgver=2.5.4.r4.gb7e97e9
 pkgrel=1
 pkgdesc="Tool for aligning sequencing reads to long reference sequences"
 arch=("x86_64")
@@ -49,6 +49,8 @@ prepare() {
     git worktree add ../bowtie2-git/.tmp/ncbi-vdb-$vdb_ver $vdb_ver
     cd "$srcdir/sra-tools"
     git worktree add ../bowtie2-git/.tmp/sra-tools-$sra_ver $sra_ver
+    cd ../bowtie2-git/.tmp/sra-tools-$sra_ver
+    sed -i 's/ATTRIBUTE_UNUSED/__attribute__((unused))/' ./libs/kxml/xml.c
 }
 
 build() {
