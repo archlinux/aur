@@ -7,7 +7,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."
 arch=('any')
-url="https://github.com/TomB16/VideoKit-KDE"
+url="https://github.com/TomB16/AudioKit-KDE"
 license=('MIT')
 depends=('ffmpeg')  # Add any runtime deps here
 makedepends=('git')
@@ -31,7 +31,7 @@ package() {
   install -Dm644 "$srcdir/AudioKit-KDE/audiokit.desktop" "$pkgdir/usr/share/kio/servicemenus/audiokit.desktop"
 
   # License
-  install -Dm644 "$srcdir/Audio-KDE/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/AudioKit-KDE/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Rebuild KDE service cache
   if command -v kbuildsycoca5 &> /dev/null; then kbuildsycoca5; fi
