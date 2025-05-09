@@ -2,20 +2,18 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.19
+pkgver=0.9.22
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
-arch=(x86_64
-    aarch64
-    riscv64
-    mips64
-    powerpc
-    powerpc64le)
+arch=($CARCH)
 url="https://github.com/HVML/PurC"
-license=('LGPL-3.0')
-groups=(hvml
-    hybridos2)
-provides=(${pkgname}
+license=('LGPL-3.0-only')
+groups=(
+    hvml
+    hybridos2
+)
+provides=(
+    ${pkgname}
     csseng
     domruler
     purc-fetcher
@@ -25,32 +23,41 @@ provides=(${pkgname}
     libpurc-dvobj-MATH.so
     libpurc-fetcher.so
     libdomruler.so
-    libpurc.so)
+    libpurc.so
+)
 conflicts=(${pkgname})
-replaces=(domruler
-    purc-fetcher)
-depends=(glib2
+replaces=(
+    domruler
+    purc-fetcher
+)
+depends=(
+    gcc-libs
+    glib2
     glibc
-    python)
+    libgcrypt
+    libsoup3
+    libxml2
+    ncurses
+    sqlite
+    openssl
+    python
+    zlib)
 makedepends=(
-#     avahi
-#     nss-mdns
+    #     avahi
+    #     nss-mdns
     bison
     cmake
-#     cython
+    #     cython
     flex
     git
     ninja
     ccache
     curl
-#     gcc
+    #     gcc
     clang
     llvm
-    gcc-libs
     gperf
     lua-lgi
-    ncurses
-    libgcrypt
     libjpeg-turbo
     libnotify
     libmanette
@@ -58,45 +65,51 @@ makedepends=(
     libsecret
     libseccomp
     libpsl
-    libxml2
     libxslt
-    libsoup3
+    linux-api-headers
     icu
-#     libmariadbclient
-    openssl
-    sqlite
+    #     libmariadbclient
     systemd
     pkgconf
-    zlib)
-checkdepends=(check
+    xorgproto
+)
+checkdepends=(
+    check
     gtest
-    valgrind)
+    valgrind
+)
 optdepends=('python-numpy: Scientific tools for Python'
     'webkit2gtk-hvml: Web content engine for GTK (HVML)'
     'webkit2gtk: Web content engine for GTK'
     'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('2a7a9cf8e7161f4da1ee453b59f110b276eb01082b84fa5fb0031ced668de13b')
-options=('!strip')
+sha256sums=('84669972172c244fe9d754ee5fff3a6f6eb535d3583f572e61b20f2c7a6d70e7')
+options=()
 
 build() {
+    export LDFLAGS="-L/lib64"
+    if test -n "$LD_LIBRARY_PATH"; then
+        export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64"
+    else
+        export LD_LIBRARY_PATH=/lib64
+    fi
     cd "${srcdir}/PurC-ver-${pkgver}/"
 
-#     sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
+    #     sed -i  's|0 9 13|0 9 14|g' CMakeLists.txt
 
-# see：https://wiki.archlinux.org/title/CMake_package_guidelines
-# gcc build
-#     cmake -DCMAKE_BUILD_TYPE=Release \
-#     cmake -DCMAKE_BUILD_TYPE=None \
-#         -DPORT=Linux \
-#         -DENABLE_CHINESE_NAMES=ON \
-#         -DCMAKE_INSTALL_PREFIX=/usr \
-#         -DCMAKE_INSTALL_LIBDIR=lib \
-#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-#         -B build \
-#         -G Ninja
+    # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+    # gcc build
+    #     cmake -DCMAKE_BUILD_TYPE=Release \
+    #     cmake -DCMAKE_BUILD_TYPE=None \
+    #         -DPORT=Linux \
+    #         -DENABLE_CHINESE_NAMES=ON \
+    #         -DCMAKE_INSTALL_PREFIX=/usr \
+    #         -DCMAKE_INSTALL_LIBDIR=lib \
+    #         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+    #         -B build \
+    #         -G Ninja
 
-# clang build
+    # clang build
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=Linux \
         -DENABLE_CHINESE_NAMES=ON \
@@ -105,6 +118,7 @@ build() {
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_COMPILER=clang \
+        -Wno-dev \
         -B build \
         -G Ninja
 
