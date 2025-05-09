@@ -6,7 +6,7 @@ pkgver=4.0.10
 pkgrel=1
 pkgdesc='minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux. (mingw-w64)'
 url='https://github.com/zlib-ng/minizip-ng'
-license=('custom')
+license=('Zlib')
 depends=(
 	'mingw-w64-openssl'
 	'mingw-w64-bzip2'
