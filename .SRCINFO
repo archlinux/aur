@@ -1,0 +1,22 @@
+pkgbase = mtd-utils-git
+	pkgdesc = MTD userspace tools
+	pkgver = 1481.4594fc1
+	pkgrel = 1
+	url = http://www.linux-mtd.infradead.org/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmocka
+	makedepends = git
+	depends = lzo
+	depends = util-linux
+	depends = zlib
+	depends = zstd
+	provides = mtd-utils
+	conflicts = mtd-tools-git
+	replaces = mtd-tools-git
+	replaces = mtd-utils
+	source = mtd-utils::git://git.infradead.org/mtd-utils.git
+	sha256sums = SKIP
+
+pkgname = mtd-utils-git
