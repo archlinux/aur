@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cuuri-bin
 _pkgname=Cuuri
-pkgver=0.2.2
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A GUI client for ChatGPT built with Tauri, Vue, and TypeScript.(Prebuilt version)"
 arch=('x86_64')
@@ -17,13 +17,13 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/app-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
 )
-sha256sums=('bfe9b5b9f9f1808b1b55be49d1f4f6e62d912317fe6d0d5700504b53bae6e4c4')
+sha256sums=('94dcf625f96d82ff629ba9c2c18a80b68e5ffe34d15aff815a37f9c9a98457f8')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Categories=/Categories=Utility;/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
