@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.0.0.beta.2.r0.gaf13e53
-_electronversion=35
-_nodeversion=22
+pkgver=3.2.0.r0.g9a5763d
+_electronversion=36
+_nodeversion=24
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Use system-wide electron)"
 arch=('any')
@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'npm'
     'bun'
     'git'
     'nvm'
@@ -70,12 +69,12 @@ prepare() {
         } >> bunfig.toml
     fi
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development bun install
+    NODE_ENV=development    bun install --frozen-lockfile
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     bun run build
+    NODE_ENV=production     bun run build:js
     NODE_ENV=production     bun exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
