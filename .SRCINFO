@@ -1,7 +1,7 @@
 pkgbase = grace
 	pkgdesc = 2D plotting tool
 	pkgver = 5.1.25
-	pkgrel = 12
+	pkgrel = 13
 	url = http://plasma-gate.weizmann.ac.il/Grace/
 	arch = x86_64
 	license = GPL

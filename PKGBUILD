@@ -5,7 +5,7 @@
 
 pkgname=grace
 pkgver=5.1.25
-pkgrel=12
+pkgrel=13
 pkgdesc="2D plotting tool"
 arch=(x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -26,7 +26,7 @@ source=("https://plasma-gate.weizmann.ac.il/pub/grace/src/stable/grace-$pkgver.t
         "t1lib-general.diff"
         "tmpnam_to_mkstemp.diff")
 
-CFLAGS="$CFLAGS -Wno-implicit-int"
+CFLAGS="$CFLAGS -Wno-implicit-int -Wno-old-style-definition -Wno-implicit-function-declaration -Wno-int-conversion -D_XOPEN_SOURCE -std=c17"
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -49,16 +49,19 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
-  ./configure --prefix=/usr --exec-prefix=/usr \
+  cd "$pkgname-$pkgver"
+  ./configure \
+    --prefix=/usr \
+    --exec-prefix=/usr \
     --enable-grace-home=/usr/share/grace \
-    --includedir=/usr/include --libdir=/usr/lib \
-    -with-helpviewer="firefox %s"
+    --includedir=/usr/include \
+    --libdir=/usr/lib \
+    --with-helpviewer="firefox %s"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   (cd "$pkgdir"/usr/share/grace && mv bin lib include ../../)
 }
