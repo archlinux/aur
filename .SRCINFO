@@ -1,6 +1,6 @@
 pkgbase = igop
 	pkgdesc = The Go/Go+ Interpreter
-	pkgver = 0.43.0
+	pkgver = 0.43.1
 	pkgrel = 1
 	url = https://github.com/goplus/igop
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = igop
 	license = Apache-2.0
 	makedepends = go
 	provides = igop
-	source = https://github.com/goplus/igop/archive/refs/tags/v0.43.0.tar.gz
-	sha256sums = d190f4e6446b459a49ab0f19252b2bb6d674880ea4ebd8e5893038331c99265f
+	source = https://github.com/goplus/igop/archive/refs/tags/v0.43.1.tar.gz
+	sha256sums = 682f1577a6da3b197a173e7b6e1a1790a0655a9b950189baaa3ba8f747d21ceb
 
 pkgname = igop
