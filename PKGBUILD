@@ -1,7 +1,7 @@
 # Maintainer: liyp <my [at] liyp dot cc>
 _pkgname=xc-music
 pkgname=${_pkgname}-electron
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=5
 pkgdesc='第三方网易云音乐客户端（使用系统electron） / GUI of Netease Cloud Music'
 arch=('x86_64')
