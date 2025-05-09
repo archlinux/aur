@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-avisynthplus
-pkgver=3.7.4
+pkgver=3.7.5
 pkgrel=1
 pkgdesc='An improved version of the AviSynth frameserver (mingw-w64)'
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 source=("https://github.com/AviSynth/AviSynthPlus/archive/v${pkgver}/avisynthplus-${pkgver}.tar.gz"
         "mingw.patch"
         "staticlib.patch")
-sha256sums=('c158cd7768bb9c589ae4588e6767b95831af79050bdd310d1681d23e6f736774'
+sha256sums=('2533fafe5b5a8eb9f14d84d89541252a5efd0839ef62b8ae98f40b9f34b3f3d5'
             '692e6cf0b2abf1adcd8716b129022a059b61c9f9909d7032067abdfee81875a3'
             '0be77313c68329ccd2ec42828e2e5a8ad76822f9debb037d92b8a8145531eae6')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
