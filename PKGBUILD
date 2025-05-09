@@ -2,7 +2,7 @@
 
 pkgname=ausweiskopie
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Create privacy friendly and legal copies of your Ausweisdokument'
 arch=(any)
 license=('MPL-2.0')
@@ -18,8 +18,10 @@ optdepends=(
     'python-ttkbootstrap: modern theme'
 )
 makedepends=(
+    'git'
     'python-build'
     'python-installer'
+    'python-setuptools-scm'
 )
 source=("git+https://github.com/Varbin/ausweiskopie.git#tag=v${pkgver}")
 # use makepkg -g to update
