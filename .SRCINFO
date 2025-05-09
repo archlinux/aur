@@ -1,7 +1,7 @@
 pkgbase = synergy3-bin
 	pkgdesc = Share a single mouse and keyboard between multiple computers
-	pkgver = 3.3.0
-	pkgrel = 2
+	pkgver = 3.3.1
+	pkgrel = 1
 	url = https://symless.com/synergy
 	arch = x86_64
 	license = unknown
@@ -14,7 +14,6 @@ pkgbase = synergy3-bin
 	depends = libxkbfile
 	depends = libappindicator-gtk3
 	depends = libayatana-appindicator
-	depends = pugixml
 	conflicts = synergy
 	conflicts = synergy1-bin
 	conflicts = synergy-git
@@ -23,7 +22,7 @@ pkgbase = synergy3-bin
 	conflicts = synergy3-bin
 	conflicts = synergy3-beta-bin
 	options = !strip
-	source_x86_64 = https://symless.com/synergy/synergy/api/download/synergy-3.3.0-linux-noble-x64.deb
-	sha256sums_x86_64 = 927441a6fa20c58cdc6387f62ecdfb53909796cb3b0c36e1a79abe2ede905443
+	source_x86_64 = https://symless.com/synergy/synergy/api/download/synergy-3.3.1-linux-noble-x64.deb
+	sha256sums_x86_64 = 820618be6878fb1bd35d11c79411fe51cba550b89cb9a9b3c26ef64cb7f1d68f
 
 pkgname = synergy3-bin

@@ -1,16 +1,16 @@
 # Maintainers: arraen, thadah
 pkgname="synergy3-bin"
-pkgver="3.3.0"
-pkgrel="2"
+pkgver="3.3.1"
+pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
 arch=("x86_64")
 source_x86_64=("https://symless.com/synergy/synergy/api/download/synergy-$pkgver-linux-noble-x64.deb")
-sha256sums_x86_64=("927441a6fa20c58cdc6387f62ecdfb53909796cb3b0c36e1a79abe2ede905443")
+sha256sums_x86_64=("820618be6878fb1bd35d11c79411fe51cba550b89cb9a9b3c26ef64cb7f1d68f")
 
 conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
-depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libappindicator-gtk3' 'libayatana-appindicator' 'pugixml')
+depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libappindicator-gtk3' 'libayatana-appindicator')
 optdepends=()
 options=("!strip")
 
