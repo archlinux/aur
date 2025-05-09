@@ -24,7 +24,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  [[ -d build ]] && rm -rf build
   CFLAGS= platforms/linux-x64/external.sh
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -B build
