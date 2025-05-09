@@ -1,6 +1,6 @@
 pkgbase = android-armv7a-eabi-avisynthplus
 	pkgdesc = An improved version of the AviSynth frameserver (Android armv7a-eabi)
-	pkgver = 3.7.4
+	pkgver = 3.7.5
 	pkgrel = 1
 	url = https://avs-plus.net/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = android-armv7a-eabi-avisynthplus
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.4/avisynthplus-3.7.4.tar.gz
-	md5sums = 16a5930b6234155a3a3e9ce432474c5f
+	source = https://github.com/AviSynth/AviSynthPlus/archive/v3.7.5/avisynthplus-3.7.5.tar.gz
+	md5sums = ef61480836576a9d8db3530f7aec040e
 
 pkgname = android-armv7a-eabi-avisynthplus
