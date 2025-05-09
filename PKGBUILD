@@ -3,7 +3,7 @@ pkgname=dopamine-bin
 _pkgname=Dopamine
 pkgver=3.0.0_preview.37
 _electronversion=26
-pkgrel=1
+pkgrel=2
 pkgdesc="The audio player that keeps it simple.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/digimezzo/dopamine"
@@ -12,6 +12,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'python'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.pacman"
@@ -19,18 +20,20 @@ source=(
 )
 sha256sums=('fa288b83fed72853e83e7dd5569130a46d08c53316968b5236537a83a6278448'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-build() {
-    sed -e "
+prepare() {
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
-        s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i -e "
+        s/\/opt\/${_pkgname}\///g
         s/Audio;/AudioVideo;/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    unlink "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/register-scheme/build/node_gyp_bins/python3"
+    ln -sf "/usr/bin/python" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/register-scheme/build/node_gyp_bins/python3"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
