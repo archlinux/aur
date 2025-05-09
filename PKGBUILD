@@ -4,7 +4,7 @@
 _pkgname=ncurses
 pkgname=mingw-w64-${_pkgname}
 pkgver=6.5
-pkgrel=2
+pkgrel=3
 pkgdesc='System V Release 4.0 curses emulation library (mingw-w64)'
 arch=('any')
 url='https://www.gnu.org/software/ncurses/'
@@ -25,6 +25,7 @@ prepare() {
 
 build() {
 	cd "${_srcdir}"
+	export CFLAGS+=' -std=gnu17'
 	for _arch in ${_architectures}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
 		LIBS="$(${_arch}-pkg-config --libs regex) -liconv" ${_arch}-configure \
