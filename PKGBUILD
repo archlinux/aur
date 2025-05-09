@@ -8,7 +8,7 @@
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
 pkgname=calibre-git
-pkgver=8.3.0.r66.gbe586a4b69
+pkgver=8.4.0.r0.gd7d048acd5
 pkgrel=1
 pkgdesc='Ebook management application'
 arch=(x86_64 i686)
