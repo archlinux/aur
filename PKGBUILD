@@ -6,7 +6,7 @@
 
 pkgname=papi
 pkgver=7.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
 url="http://icl.cs.utk.edu/${pkgname}"

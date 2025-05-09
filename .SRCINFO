@@ -1,7 +1,7 @@
 pkgbase = papi
 	pkgdesc = Performance Application Programming Interface
 	pkgver = 7.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://icl.cs.utk.edu/papi
 	arch = x86_64
 	arch = i686
