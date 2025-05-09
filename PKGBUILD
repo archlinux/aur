@@ -2,11 +2,11 @@
 
 _pkgname="justniffer"
 pkgname="${_pkgname}-bin"
-pkgver=0.5.22
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
 arch=('x86_64')
-url="https://onotelli.github.io/justniffer"
+url="https://onotelli.github.io/justniffer/"
 _url="https://github.com/onotelli/${_pkgname}"
 license=('GPL-3.0-or-later')
 depends=('boost183-libs' 'gcc-libs' 'glibc' 'libpcap') # 'boost-libs'
@@ -20,7 +20,7 @@ source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_p
 noextract=("${source_x86_64[@]%%::*}")
 sha256sums=('dff89e69fe6c268939c410c7a10afdc3ad44cdf889126197abdc149881b92fc9'
             '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
-sha256sums_x86_64=('5f2a59a899f81d2e5a4ad4c587e45688bb2bc03910328109f061d2278371d18b')
+sha256sums_x86_64=('e7cd1d87762c1f29fd192adaced1f9c56638a63ddf317fecfdb9223cce880701')
 
 prepare() {
   cd "${srcdir}"
@@ -29,15 +29,12 @@ prepare() {
   bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
   rm -f data.tar.*
 
-  find "${_pkgsrc}-${CARCH}" -type f -name '*.gz' -exec \
+  cd "${srcdir}/${_pkgsrc}-${CARCH}"
+  find . -type f -name '*.gz' -exec \
     gzip -fd {} \;
-}
 
-build() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/bin"
   patchelf --replace-needed "libpcap.so.0.8" "libpcap.so" "${_pkgname}"
-  # patchelf --replace-needed "libboost_regex.so.1.74.0" "libboost_regex.so" "${_pkgname}"
-  # patchelf --replace-needed "libboost_program_options.so.1.74.0" "libboost_program_options.so" "${_pkgname}"
 
   cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/doc/${_pkgname}"
   rm -f copyright* INSTALL *.Debian
