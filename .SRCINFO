@@ -1,7 +1,7 @@
 pkgbase = pyhoster
 	pkgdesc = A simple tool for servers that host python projects
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbutsk/pyhoster
 	arch = any
 	license = MIT
@@ -9,8 +9,6 @@ pkgbase = pyhoster
 	depends = python-psutil
 	conflicts = pyhoster-git
 	source = https://files.pythonhosted.org/packages/source/p/pyhoster/pyhoster-1.0.2.tar.gz
-	source = https://github.com/mbutsk/pyhoster/raw/refs/heads/main/pyhoster.8
 	sha256sums = 501f29d024a29e36530c8ebd924d000585f14f33ec5801a8d8960589298063ed
-	sha256sums = 1acf4ed367126422895e1618ebf9a621ccfb854f71be75e69a13ba1ec18ae760
 
 pkgname = pyhoster
