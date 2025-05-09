@@ -10,7 +10,7 @@ index e03e85d2ad7..5d5869a6c7d 100644
    ]
  
    if (!is_clang) {
-@@ -1676,6 +1677,11 @@ config("toolchain") {
+@@ -1676,6 +1677,12 @@ config("toolchain") {
        # Disable dangling pointer warnings, which are often false positives when
        # using scopes.
        "-Wno-dangling-pointer",
@@ -19,6 +19,7 @@ index e03e85d2ad7..5d5869a6c7d 100644
 +      "-Wno-template-id-cdtor",
 +      "-Wno-uninitialized",
 +      "-Wno-dangling-reference",
++      "-Wno-invalid-constexpr",
      ]
    }
  
