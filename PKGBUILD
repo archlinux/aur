@@ -1,7 +1,7 @@
 # Maintainer: Firegem <firinggems@hotmail.com>
 # shellcheck disable=SC2034,2154,2164
 pkgname=lux-cli
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="A luxurious package manager for Lua"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('lux-cli-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     'lux-xtask.patch')
-sha256sums=('18ae69e4ee5c9eacedaf0aeb763638e8e6e8fc62aea7d3a6b14b8c941dfcb396'
+sha256sums=('bf6356fd6a6912c1d80fed04f96914af914568ddcc81664e3a1be267e90b7462'
             '3664097da8f0e1654e15ce3872b57bbf3c5fea6915ad206679e84f7eeb580ad4')
 
 prepare() {
