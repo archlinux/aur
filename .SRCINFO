@@ -1,6 +1,6 @@
 pkgbase = jakana
-	pkgdesc = learn Japanese kana on cli
-	pkgver = v0.2.0
+	pkgdesc = Learn Japanese kana on cli
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Catalina-sys456/jakana
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = jakana
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python
-	source = jakana-v0.2.0.tar.gz::https://github.com/Catalina-sys456/jakana/archive/refs/tags/v0.2.0.tar.gz
+	source = jakana-0.2.0.tar.gz::https://github.com/Catalina-sys456/jakana/archive/refs/tags/v0.2.0.tar.gz
 	sha512sums = 878d8c35983638cb1c6073541db01abdb77e40b2ebc5b1380b39ec3fbab8432e49e2d1cf556460baa7275ebde114c264af36dafb0af00226a15ebc6fc962d77f
 
 pkgname = jakana
