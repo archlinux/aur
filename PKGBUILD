@@ -1,5 +1,5 @@
 pkgname=xc-music
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc='第三方网易云音乐客户端 / GUI of Netease Cloud Music'
 arch=('x86_64')
