@@ -1,0 +1,14 @@
+pkgbase = 0xtools
+	pkgdesc = 0x.Tools: X-Ray vision for Linux systems
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://github.com/tanelpoder/0xtools
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = bash
+	depends = python
+	source = git::git+https://github.com/tanelpoder/0xtools#tag=v2.0.3
+	sha256sums = f262bef6b0fea39990e2c6af176d1a8b03b5259f42eff661289387f1547f1b4b
+
+pkgname = 0xtools
