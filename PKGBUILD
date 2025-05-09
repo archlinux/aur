@@ -2,17 +2,16 @@
 # Contributor: Stéphane Meyer <tigerlost at tigerfunk dot tk>
 
 pkgname=btspk
-pkgver=1.2.7
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="Commandline utility to easily connect bluetooth audio devices."
 arch=('any')
-url="https://gitlab.com/teegre/btspk"
+url="https://github.com/teegre/btspk"
 license=('GPL')
 groups=()
-depends=('bash' 'bluez-tools' 'bluez-utils' 'coreutils' 'libpulse' 'pulseaudio')
+depends=('bash' 'bluez-tools' 'bluez-utils' 'coreutils')
 makedepends=()
 checkdepends=()
-optdepends=('pulseaudio-equalizer' 'pulseaudio-equalizer-ladspa' 'pipewire' 'pipewire-pulse')
 provides=()
 conflicts=()
 replaces=()
@@ -20,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$url/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/1.2.9.tar.gz")
 noextract=()
-sha256sums=(e74e6e80d2961c05da743b6336a662ae1bd328ea91119ae3eb48278b576fc15f)
+sha256sums=(811a2be0ab15f0c22205241c7ae226dba279e845547ceaae71479278743dda9a)
 
 package() {
   cd "$pkgname-$pkgver"
