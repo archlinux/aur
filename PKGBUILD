@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plasma-supported structure for an AI-based Linux system"
 arch=('any')
 url="https://github.com/Zamanhuseyinli/Linux-AI"
-license=('MIT')
+license=('GPL2')
 depends=('python' 'python-setuptools')
 makedepends=('git')
 source=("git+https://github.com/Zamanhuseyinli/Linux-AI.git#branch=main")
