@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.10.r140.g5ad736a
+pkgver=2.2.13.r3.g0bf1cd3
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -48,8 +48,9 @@ pkgver() {
 
 build() {
   cmake -B build -S "${pkgname%-git}" \
-    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DCMAKE_INSTALL_LIBDIR='lib' \
     -Wno-dev
   cmake --build build
 }
