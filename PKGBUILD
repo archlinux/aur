@@ -2,7 +2,7 @@
 
 _pkgname=parsita
 pkgname="python-$_pkgname"
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Parser combinator library for Python."
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python' 'python-returns')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-timeout')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drhagen/parsita/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5a3bf1071dd11ded882fbbe1baa5d56ea51b249270ac98ef12770709e5ec014c')
-b2sums=('48363c6401a2e1d4ff878d0c2ef06f078034af197ff79f36e469acdeeb0087e92b06a2ed21bb7a5c17192b92ee27e93a669b5ec24e861a010523bb686b44a067')
+sha256sums=('881edc69bf1806fa87b33358ba13c04cf370504b041881c835255f7dd2dcce72')
+b2sums=('56efc83fdc5d05ea81aac86803fe378328694ef36e1987b6342e56e0a1503f45722840b89ffce6aae3fbbabd12c3bc9947fec06bd5cf79648cb8b77821fb7358')
 
 build() {
   cd "$_pkgname-$pkgver"
