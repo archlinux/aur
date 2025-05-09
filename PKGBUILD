@@ -21,14 +21,14 @@ prepare() {
     exit 1
   fi
   if [ -n $SOURCE_URL_REWRITER ]; then
-    url=$($SOURCE_URL_REWRITER $source_url)
+    src_url=$($SOURCE_URL_REWRITER $source_url)
   else
-    url=$source_url
+    src_url=$source_url
   fi
   if [ ! -d $pkgname ]; then
     git clone --depth=1 --filter=blob:limit=128k --single-branch \
       -b ${pkgver%%_*}-${pkgver##*_}-android \
-      --recurse-submodules --shallow-submodules $url
+      --recurse-submodules --shallow-submodules $src_url
   fi
   cd $pkgname
   rm -f 3party/boost/b2
