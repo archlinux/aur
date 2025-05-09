@@ -21,9 +21,6 @@ makedepends=(
   'python-wheel'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
-
 _pkgsrc="$_pkgname"
 _pkgsrc_mbuild="intelxed.mbuild"
 source=(
@@ -43,11 +40,6 @@ build() (
   python -m venv --system-site-packages mbuild-env
   source mbuild-env/bin/activate
   python -m installer dist/*.whl
-
-  install -Dm755 /dev/stdin "mbulid-env/bin/_mbuild" << END
-#!/usr/bin/env sh
-exec python -m mbuild "\$@"
-END
 
   echo "Building Intel XED..."
   cd "../$_pkgsrc"

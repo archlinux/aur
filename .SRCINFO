@@ -12,8 +12,6 @@ pkgbase = intel-xed
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = glibc
-	provides = intel-xed=2025.03.02
-	conflicts = intel-xed
 	source = intel-xed::git+https://github.com/intelxed/xed.git#tag=v2025.03.02
 	source = intelxed.mbuild::git+https://github.com/intelxed/mbuild
 	sha256sums = 09fa84a3d35ecac0a40e43073f9994f6724938f382a8e427671557ca7400b917
