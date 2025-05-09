@@ -7,11 +7,12 @@ arch=('x86_64')
 license=('LGPL')
 makedepends=('python-setuptools' 'cython')
 depends=('fmilib' 'python-scipy' 'python-assimulo')
-source=("https://github.com/modelon/PyFMI/archive/PyFMI-${pkgver}.tar.gz")
-sha256sums=('b911763fd95efd09e769733d0dd4df22a9a1c7bbe187b943d7e7af3f9c7b586a')
+source=("https://github.com/modelon/PyFMI/archive/PyFMI-${pkgver}.tar.gz" cython31.patch)
+sha256sums=('b911763fd95efd09e769733d0dd4df22a9a1c7bbe187b943d7e7af3f9c7b586a' SKIP)
 
 prepare() {
   cd "${srcdir}"/PyFMI-PyFMI-${pkgver}
+  patch -p1 -i "${srcdir}"/cython31.patch
 }
 
 build() {

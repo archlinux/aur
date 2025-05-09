@@ -11,6 +11,8 @@ pkgbase = python-pyfmi
 	depends = python-scipy
 	depends = python-assimulo
 	source = https://github.com/modelon/PyFMI/archive/PyFMI-2.17.0.tar.gz
+	source = cython31.patch
 	sha256sums = b911763fd95efd09e769733d0dd4df22a9a1c7bbe187b943d7e7af3f9c7b586a
+	sha256sums = SKIP
 
 pkgname = python-pyfmi

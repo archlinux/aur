@@ -1,0 +1,18 @@
+diff --git a/src/pyfmi/fmi_coupled.pyx b/src/pyfmi/fmi_coupled.pyx
+index 9b96d98..8c4ca58 100644
+--- a/src/pyfmi/fmi_coupled.pyx
++++ b/src/pyfmi/fmi_coupled.pyx
+@@ -725,8 +725,8 @@ cdef class CoupledFMUModelBase(CoupledModelBase):
+     cdef FMIL2.fmi2_value_reference_t _get_local_vr(self, valueref):
+         return valueref & 0x00000000FFFFFFFF
+     
+-    cdef _get_model_index_from_vr(self, valueref):
+-        return long(valueref) >> 32
++    cdef _get_model_index_from_vr(self, long valueref):
++        return valueref >> 32
+     
+     cdef _get_global_name(self, model_ind, name):
+         return self.index[model_ind] + "." + name
+-- 
+2.49.0
+
