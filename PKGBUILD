@@ -3,7 +3,7 @@
 
 pkgname='python-aiorpcx-git'
 _gitname='aiorpcX'
-pkgver=0.24.r0.g1bb9c53
+pkgver=0.25.0.r1.gf7e4bc1
 pkgrel=1
 pkgdesc="A generic asyncio library implementation of RPC suitable for an application that is a client, server or both."
 url="https://github.com/kyuupichan/aiorpcX/"
