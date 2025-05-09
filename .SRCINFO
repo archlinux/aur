@@ -1,14 +1,8 @@
 pkgbase = intelxed
-	pkgdesc = Intel x86 encoder decoder
-	pkgver = 2024.05.20
+	pkgdesc = metapackage - migrate to intel-xed
+	pkgver = 1
 	pkgrel = 1
-	url = https://intelxed.github.io
-	arch = x86_64
-	license = Apache
-	makedepends = mbuild
-	makedepends = doxygen
-	conflicts = xed
-	source = https://github.com/intelxed/xed/archive/refs/tags/v2024.05.20.tar.gz
-	sha256sums = 3043878f76f0af239715d48938a8b5c0c2ef81c70fcf0e5cf6f088c504d88bac
+	arch = any
 
 pkgname = intelxed
+	depends = intel-xed
