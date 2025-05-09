@@ -1,0 +1,14 @@
+pkgbase = lscreensaver
+	pkgdesc = Minimal X11/Wayland screensaver daemon using libinput & SDL2
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/maygay/lscreensaver
+	arch = x86_64
+	license = MIT
+	makedepends = pkg-config
+	depends = libinput
+	depends = sdl2
+	source = main.c
+	sha256sums = SKIP
+
+pkgname = lscreensaver
