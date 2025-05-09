@@ -6,7 +6,6 @@ pkgbase = komodo-periphery-bin
 	url = https://komo.do/
 	arch = x86_64
 	license = GPL
-	makedepends = cargo
 	makedepends = git
 	depends = docker
 	depends = openssl
@@ -21,6 +20,6 @@ pkgbase = komodo-periphery-bin
 	sha256sums = b03c59288a25abdb3e84a58c30bb4996ef3b046b7aa60133a7ebe3fdea81475a
 	sha256sums = 3ce390159db98a55ca519eb62f2d89ceb7050e9256c931f38b457f1c4a43f651
 	sha256sums = f4b549451a3d22de81dd8ed933c290777581ef92f2276160e91092739c867aee
-	sha256sums = ac8939c55deb01929c36377f17f49cfbde5dfa7ef2a16d827078b19a72cde027
+	sha256sums = baae0d9e1c5d1cbf6594ff538c1a2daaacd6a1da7eca0f7996102a3c0e1ef11e
 
 pkgname = komodo-periphery-bin
