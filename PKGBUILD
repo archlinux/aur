@@ -9,7 +9,7 @@ license=(Apache2)
 arch=(any)
 makedepends=(go)
 source=("https://github.com/acuvity/minibridge/archive/refs/tags/v${pkgver}.zip")
-sha1sums=('fd5bbbea9459fc1033805a6fd552dd029d5bfa7b')
+sha1sums=('dfcedb7de74a6cda4a6e50bddf593afa7c235388')
 provides=("minibridge")
 
 build() {
