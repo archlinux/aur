@@ -1,7 +1,7 @@
 # Maintainer: Ivan Potiienko <contact@xxanqw.pp.ua>
 pkgname=justdd
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="JustDD - Simple graphical USB image writer for Linux and Windows ISOs"
 arch=('any')
 url="https://github.com/xxanqw/justdd"
