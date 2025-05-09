@@ -1,17 +1,8 @@
 pkgbase = intelxed-git
-	pkgdesc = Intel x86 encoder decoder
-	pkgver = 2023.06.07.r0.g4dc7713
+	pkgdesc = metapackage - migrate to intel-xed-git
+	pkgver = 1
 	pkgrel = 1
-	url = https://intelxed.github.io
-	arch = x86_64
-	license = Apache
-	makedepends = git
-	makedepends = mbuild
-	makedepends = doxygen
-	provides = intelxed
-	conflicts = intelxed
-	conflicts = xed
-	source = intelxed-git::git+https://github.com/intelxed/xed
-	sha256sums = SKIP
+	arch = any
 
 pkgname = intelxed-git
+	depends = intel-xed-git
