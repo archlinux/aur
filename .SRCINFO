@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-readonly
 	pkgdesc = The official GUI for MongoDB - Readonly Edition
-	pkgver = 1.46.1
-	pkgrel = 2
+	pkgver = 1.46.2
+	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = armv7h
@@ -19,12 +19,12 @@ pkgbase = mongodb-compass-readonly
 	depends = nodejs>=18.19.1
 	optdepends = org.freedesktop.secrets
 	backup = etc/mongodb-compass.conf
-	source = mongodb-compass-readonly-1.46.1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.46.1.tar.gz
+	source = mongodb-compass-readonly-1.46.2.tar.gz::https://github.com/mongodb-js/compass/archive/v1.46.2.tar.gz
 	source = update-dependencies.diff
 	source = hadron-build-ffmpeg.diff
 	source = fix-argv.diff
 	source = mongodb-compass.conf
-	b2sums = 328fd47c088f33b7fa0bccfdf1d33650bf9e7e03ced6276ba46a96627401050093cad592e7f35eb1bb37852eea422170c2eeff958bf38713a0e31d841c4da1e0
+	b2sums = eb01a18f2e6b22da590e6fbc0af7aa0d54c625bb867240fb61d74d373079f3ddcf2b0be69f9597e49ca0681a03d725b1df31de34e0561857c6023a7b6fe7bbb4
 	b2sums = f4b3d86ede6f787a7adf3762911f8e74bf0ff658c906092a764d8080248c1a32cc8d2e536d14a19d7ced3374b267bc6b82f1a6d639ba623db21a5f2ea35af5b0
 	b2sums = 339cb2f14805ce8f186064d823b3b01630ea02b16052fb764a46a4df2c9b06f8d12b012e764d00aaa1906639e8019869816ddbb6c02fedac2cb06caeefab28ef
 	b2sums = 69154b5491c8c3149195743bcbcb0ae7b18b8e83635f7afa29e9ef7b50a42343a2877760b41662c5943b8f7d390df85548cbcd253772fa92e33b9f231ab19436
