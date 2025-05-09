@@ -2,7 +2,7 @@
 _appname=qaxbrowser
 _pkgname="${_appname}-safe-stable"
 pkgname=qianxin-browser-stable
-pkgver=1.0.45746.7
+pkgver=1.0.45966.7
 pkgrel=1
 pkgdesc="奇安信可信浏览器国密开发者专版"
 arch=(
@@ -10,7 +10,7 @@ arch=(
     'x86_64'
 )
 url="https://www.qianxin.com/product/detail/pid/333"
-_dlurl="http://dl.qianxin.com/c8a52014-99d3-57ff/%E5%9B%BD%E5%AF%86%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%93%E7%89%88241118"
+_dlurl="https://dl.qianxin.com/%E5%9B%BD%E5%AF%86%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%93%E7%89%88"
 license=('LicenseRef-custom')
 conflicts=("${pkgname%-stable}" "${_pkgname%-stable}" "${_pkgname%-safe-stable}")
 depends=(
@@ -30,23 +30,23 @@ source=(
 )
 sha256sums=('368c8e1aff7ff8d7b5843e12222e58c6e43fee8aa8d65581b33d65ec48586a43'
             '356a40c5edf98b24ab14c456f09ffe0e5e43f3110f344db52951dae52dbce592')
-sha256sums_aarch64=('e88d2828cdfab1f3c0ea08e7564c52877442f5fbbe8f70e6b0d71a2d9da2932b')
-sha256sums_x86_64=('ae0e74fc76d45efd62d28323cf18c4b2164d2e4c1ba334bdb39a706940d78a71')
+sha256sums_aarch64=('16ad24aa93931d238eb6e6a5f5c2d141d9d5c6be63ee8bea2dc886cb194dcf9f')
+sha256sums_x86_64=('e8c23e014a3146f55c38b0617481fc1e4705864d2195ff377faaf1b8f0485569')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_appname}/g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/Exec=\/usr\/bin\/${_pkgname}/Exec=${pkgname}/g
         s/Icon=${_pkgname%-stable}/Icon=${pkgname}/g
-    " -i "${srcdir}/usr/share/applications/${_pkgname%-stable}.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname%-stable}.desktop"
     sed -i "s/\/opt\/qianxin.com\/${_appname}\/${_pkgname%-stable}/${pkgname}/g" "${srcdir}/usr/share/gnome-control-center/default-apps/${_pkgname%-stable}.xml"
-    sed -e "
+    sed -i -e "
         s/\/opt\/qianxin.com\/${_appname}\/product_logo_32.xpm/${pkgname}.xpm/g
         s/\/opt\/qianxin.com\/${_appname}\/${_appname}-safe/${pkgname}/g
-    " -i "${srcdir}/usr/share/menu/${_pkgname%-stable}.menu"
+    " "${srcdir}/usr/share/menu/${_pkgname%-stable}.menu"
     sed -i "s/chromium-browser/${pkgname}/g" "${srcdir}/usr/share/appdata/${_pkgname%-stable}.appdata.xml"
 }
 package() {
