@@ -1,7 +1,7 @@
 # Maintainer: 
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=subliminal
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=(any)
@@ -24,10 +24,10 @@ depends=('python-guessit>=3.0.0'
          'python-rarfile>=2.7')
 makedepends=('git'
              'python-setuptools')
-source=("https://github.com/Diaoul/subliminal/releases/download/2.3.0/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('428073ce98f6a967207615a4c58732fdcb80819fdd8b0404f8dd2ebea18666eb')
-sha512sums=('3aad167f9fe0087b2c21054e6f2d82ace9578e4256582a383b1dcf9c33ad58f5217522f2a724be367bbfe5b7d7259592767c84a24a07a857724f76f618f33774')
-b2sums=('f046992a31a2def358ab125b0a352b01d0ddc3fc5ca22cbee46bd0f82ec55365544b91da55875506d4f9caa964a1162c746af5c5b1968e34e4f09b7dc71b3469')
+source=("https://github.com/Diaoul/subliminal/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('385149cd189289283b665c4dd6205f74788628042a51ddefb22dc77b85467d61')
+sha512sums=('479894e5c435cfef57481078384938fe58bc7c9d6e7922aaf313cbcd316a098491f07bf0afc6879f83abf97201edd9b2eb1f90f4cbe18fe8a34ac2b577671eb7')
+b2sums=('2a1b9735fc95957c614ee438934f0639e77b7a4562a54af6f89081a3dc994f49e33ab0ebf51efe04790d904586aad1f30b71a714725ea99875ad3815faac9a26')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
