@@ -30,11 +30,6 @@ build() {
   for i in squashfs-root/*.png; do
     [ -f "$i" ] && install -Dm755 "$i" "$_pkgname.png" && break
   done
-
-  # desktop file
-  for i in squashfs-root/*.desktop; do
-    [ -f "$i" ] && install -Dm755 "$i" "$_pkgname.desktop" && break
-  done
 }
 
 package() {
@@ -45,7 +40,20 @@ package() {
   install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
 
   # launcher
-  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=Kanji Dojo
+GenericName=$pkgdesc
+Comment=$pkgdesc
+TryExec=$_pkgname
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
+StartupNotify=true
+StartupWMClass=$_pkgname
+Categories=Game;Emulator;
+END
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
