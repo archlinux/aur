@@ -2,7 +2,7 @@
 pkgname="limine-snapper-sync"
 pkgver=1.9.3
 pkgrel=1
-pkgdesc="The tool syncs Snapper snapshots with Limine bootloader"
+pkgdesc="The tool syncs Limine snapshot entries with Snapper snapshots."
 arch=("any")
 url="https://gitlab.com/Zesko/limine-snapper-sync"
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
