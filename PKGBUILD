@@ -3,13 +3,13 @@
 
 pkgname=otpclient
 _pkgname=OTPClient
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A simple GTK+ v3 TOTP/HOTP client"
 url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('gtk3>=3.24' 'jansson>=2.12' 'libcotp>=3.0.0' 'zbar>=0.20' 'protobuf>=3.6' 'protobuf-c>=1.3.0' 'qrencode>4.0.2')
+depends=('gtk3>=3.24' 'jansson>=2.12' 'libcotp>=3.0.0' 'zbar>=0.20' 'protobuf>=3.6' 'protobuf-c>=1.3.0' 'qrencode>4.0.2', 'libayatana-appindicator')
 makedepends=('cmake')
 provides=(otpclient)
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
@@ -24,7 +24,8 @@ build() {
   cmake \
     -S.. \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DSHARE_INSTALL_PREFIX:PATH=/usr/share
+    -DSHARE_INSTALL_PREFIX:PATH=/usr/share \
+    -DENABLE_MINIMIZE_TO_TRAY=ON
   cmake --build . --target all
 }
 
