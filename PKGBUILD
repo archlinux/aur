@@ -3,10 +3,10 @@
 # Maintainer: oech3
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20250503T122900
+_id=20250509T141027
 _ver=2.5.3
 pkgver=${_ver}.${_id}
-pkgrel=4
+pkgrel=1
 pkgdesc='A chat client for Twitch.tv. (Nightly build)'
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
