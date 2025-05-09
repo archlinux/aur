@@ -4,23 +4,23 @@
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 
 pkgname=obsidian-bwrap
-pkgver=1.8.9
+pkgver=1.8.10
 pkgrel=2
 pkgdesc="A powerful knowledge base that works on top of a local folder of plain text Markdown files. Sandboxed by portable for privacy."
 arch=('x86_64')
 url="https://obsidian.md"
 license=('custom:Commercial')
-depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron35' 'portable')
+depends=('zlib' 'hicolor-icon-theme' 'fuse' 'electron' 'portable')
 options=(!strip !debug)
 source=("obsidian.sh"
 	"portable-config"
         "obsidian.desktop"
         "https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/obsidian-${pkgver}.tar.gz"
 )
-sha256sums=('999ffd4fbe2ac37301b71477548e8754053e7577e3aff79663df205fa44a7e8e'
-            'c6d142c645153c961b9e438b0e355b216c58968730859f1d26bc6135723b975c'
+sha256sums=('2c43aa33e989f946c2af48b07c3e7f3683356f91fcefa6d2970ac2531ed197a1'
+            'dc91534e3e9efcb17b3408b316627f7388c1f031dbc02a7447de765d72bdc54c'
             '88504345238b1142b43880d93cf8546993e18bdf1597074b4d4360d0ce22ca41'
-            '5d5ab49d08b24f61ef290a73248be1821b06820e327bbbaa65cc80d671f83bfa')
+            'c59a22e19f4930cfc510f7ef8c15c46a0de94ffb891fd76f169f2a1e74c534a1')
 
 package() {
     cd "$srcdir"
