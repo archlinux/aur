@@ -8,90 +8,84 @@
 # Contributor: Michael 'manveru' Fellinger <m.fellinger@gmail.com>
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
-pkgname=anki-git
-pkgver=r11208.b7cb0c0d0
-pkgrel=1
+_pkgname="anki"
+pkgname="anki-git"
+pkgver=r11711.5cc44b3f6
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
-url="hhttps://apps.ankiweb.net/"
-license=('AGPL3')
+url="https://github.com/ankitects/anki"
+license=('AGPL-3.0-or-later')
 arch=('any')
 provides=('anki')
 conflicts=('anki' 'anki20' 'anki-official-binary-bundle')
 depends=(
-    # anki and aqt
-    'python-beautifulsoup4'
-    'python-requests'
-    'python-wheel'
+	# anki and aqt
+	'python'
+	'python-beautifulsoup4'
+	'python-requests'
+	'python-wheel'
 
-    # anki
-    'python-pysocks' # requests[socks]
-    'python-decorator'
-    'python-protobuf'
-    'python-orjson'
-    'python-distro'
-    'python-pip-system-certs'
+	# anki
+	'python-pysocks' # requests[socks]
+	'python-decorator'
+	'python-protobuf'
+	'python-orjson'
+	'python-distro'
+	'python-pip-system-certs'
 
-    # aqt
-    'python-send2trash'
-    'python-markdown'
-    'python-jsonschema'
-    'python-pyaudio'
-    'python-pyqtwebengine'
-    'python-flask'
-    'python-flask-cors'
-    'python-waitress'
-    'python-pyqt6'
-    'python-pyqt6-webengine'
+	# aqt
+	'python-send2trash'
+	'python-markdown'
+	'python-jsonschema'
+	'python-pyaudio'
+	'python-pyqtwebengine'
+	'python-flask'
+	'python-flask-cors'
+	'python-waitress'
+	'python-pyqt6'
+	'python-pyqt6-webengine'
 )
-makedepends=(
-    'git'
-    'rsync'
-
-    'ninja'
-    'clang'
-
-    'rust'
-    'libxcrypt-compat'
-
-    'python-pip'
-    'npm'
-)
+makedepends=('git' 'rsync' 'ninja' 'clang' 'cargo' 'libxcrypt-compat' 'python-pip' 'npm')
 optdepends=(
-    'lame: record sound'
-    'mpv: play sound. prefered over mplayer'
-    'mplayer: play sound'
+	'lame: record sound'
+	'mpv: play sound. prefered over mplayer'
+	'mplayer: play sound'
 )
-source=('git+https://github.com/ankitects/anki.git')
+source=("git+$url.git")
 sha512sums=('SKIP')
+#options(!lto)
 
 pkgver() {
-    cd anki
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd anki
+	cd $_pkgname
 
-    # Put translations in place.
-    #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
-    #ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
-    #ln -sf "$srcdir"/ankitects-anki-desktop-i18n-*/ qt/po/repo
+	# Put translations in place.
+	#ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
+	#ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
+	#ln -sf "$srcdir"/ankitects-anki-desktop-i18n-*/ qt/po/repo
 }
 
 build() {
-    cd anki
+	cd $_pkgname
 
-    export CC=/usr/bin/clang
-    export CXX=/usr/bin/clang++
-    export PROTOC_BINARY=$(which protoc)
-    ./tools/build
+	export CC=/usr/bin/clang
+	export CXX=/usr/bin/clang++
+	export PROTOC_BINARY=$(which protoc)
+	export RUSTFLAGS="-Clink-args=-fuse-ld=lld -Ctarget-cpu=native"
+
+	./tools/build
 }
 
 package() {
-    cd anki
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --root-user-action=ignore --no-deps out/wheels/*.whl
+	cd $_pkgname
 
-    install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
-    install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
-    install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --root-user-action=ignore --no-deps out/wheels/*.whl
+
+	install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
+	install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+	install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
 }

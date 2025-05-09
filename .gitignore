@@ -1,4 +1,4 @@
-anki-git
-pkg
-*.pkg.tar*
-src
+*
+!PKGBUILD
+!LICENSE
+!.SRCINFO
