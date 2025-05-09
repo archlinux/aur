@@ -1,9 +1,8 @@
 # Maintainer: Nick77 <qwiko20@tutamail.com>
-
 pkgname=jakana
-pkgver=0.2.0
+pkgver=v0.2.0
 pkgrel=1
-pkgdesc='Learn Japanese kana on cli'
+pkgdesc='learn Japanese kana on cli'
 arch=('any')
 url='https://github.com/Catalina-sys456/jakana'
 license=('MIT')
