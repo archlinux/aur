@@ -1,12 +1,12 @@
 pkgbase = trunk-check
 	pkgdesc = Trunk is a blazingly fast meta code checker and formatter
-	pkgver = 1.22.2
+	pkgver = 1.22.15
 	pkgrel = 1
 	url = https://trunk.io/
 	install = trunk.install
 	arch = x86_64
 	license = unknown
-	source = https://trunk.io/releases/trunk-1.22.2.linux.tar.gz
-	sha512sums = 9c9928e6b51e8cddf3c159c94b11481ac0aa912fc5ebdf93365c747cb29357146c212279199a950cc82792e8f9739d70365f9626719be9cb23cb4fedda07310c
+	source = https://trunk.io/releases/trunk-1.22.15.linux.tar.gz
+	sha512sums = d1e0469a2bc2a8f4bffa1f1408d7bb4ff8c5f6e3cf3d44e75e17f9b717ce9a613329969099a65d9ab99886cc99720c1a12517619a09a57d6aec42d8704239685
 
 pkgname = trunk-check
