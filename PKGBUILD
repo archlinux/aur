@@ -6,7 +6,7 @@ pkgver=1.21.6
 pkgrel=1
 pkgdesc="A blocking, shuffling and loss-less compression library (mingw-w64)"
 url="http://blosc.org/"
-license=('BSD')
+license=('BSD-3-Clause')
 arch=('any')
 depends=('mingw-w64-zstd' 'mingw-w64-snappy' 'mingw-w64-lz4' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake')
@@ -24,7 +24,8 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE='Release'
 	-DDEACTIVATE_AVX2=ON
 	-DBUILD_BENCHMARKS=OFF
 	-DBUILD_FUZZERS=OFF
-	-DDEACTIVATE_SNAPPY=OFF )
+	-DDEACTIVATE_SNAPPY=OFF
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 )
 
 prepare() {
 	cd "$_srcdir"
