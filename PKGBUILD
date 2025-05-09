@@ -2,7 +2,7 @@
 
 pkgname=walrs
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast color scheme generator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pixel2175/walrs"
