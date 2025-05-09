@@ -6,8 +6,8 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.10.1
-pkgrel=3
+pkgver=3.12.0
+pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -28,14 +28,14 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('efddcfbde9281a76b87dad00e82d7fdaa9ab1dba18b0cbe76de8ed14fd91f1b675d9fdfd2543c65491b325feaf812faeae79a47a35fd0f3d1c608a18c7b56aa2'
+sha512sums=('d66c8f1b5ad72ce9dca15a574366800284b8859c0ddec61cb10d0dfd362e3eb96faab52155d45ca04132df7fe054aba88152db59031aec227a319efbad7d13a6'
             'SKIP'
             '1d45ee604c0a398bd666bb35cd25d1b4c834d59462b2ff146e1c845afbc403c6fba5481d67dffc5c686369603b2eaba4c5d7ff5427b1843fcc70319eb9550b2f'
             '575db085359af83605e89972ab20e2e1f62e67418242f954f4ed5e60d29acf66dfea07f41537327688857eddb0b310b5ee6361155a7588299d5adbaea487307a'
-            'da133b310f72e64cd151343f2089cd7ddf38330ed7da6997811202acc0504cbb5d45cc00923f8ebaeeb7aae268e7c5451731eacdae9179d910d2a3bb8120f188'
+            '281110cc226b110cf9825cf8c3b213400a7e8a7754e40631240d3f5d424472b1e496c477c57333b94ede3b4b1acb8a99fb33fa334464aec548019849b4b2ac5c'
             '09f5a1c7710676c387509e6ad30dd83b9032febaa639a97b563dbdfcdd231aab3c0f88af9ffed8098908e3494bec5fbe4803c848e0e372bd555729b14d1bab65'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
-            '1a8d37d6f2410efd7a9454c5496195eb79467992a87926b54560ead72dd7c00dd6224a53c7b75d2a92cf6d1ae872194c4494e714a632d7c8172377c932f4eadd'
+            'c312ef8f838ce8d46b947f0425738a782526cdc7fb80e736b9f9cbf0f45f5542e7902a38e542323f9e05c143ae5c8be482c6ef32b4a6fa2aead25b226486664f'
             '8914e9330fb7f35de8bc64ffd598630d658e6c7105ffe06beef660ab0e1f95203381bc741d3abaa6f31abf4244ed076d7333a2321fd00348bc1b3562382f45b2'
             'e1e1d3a71881498fffeac2e117522532446488cd9bc4efc0093f35ed14064d8b53b5f704fb355fbcedc0ba41966f85967a5a46a7522d1472405c2b70b7530182')
 
@@ -79,7 +79,6 @@ build() {
     --enable-calalarmd \
     --enable-jmap \
     --enable-replication \
-    --enable-backup \
     --with-mysql=yes \
     --with-pgsql=yes \
     --with-ldap \
@@ -114,13 +113,6 @@ package_cyrus-imapd() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
-
-  # Rename restore so it doesn't conflict with the identically named command
-  # from tar
-  mv "${pkgdir}/usr/bin/restore" \
-    "${pkgdir}/usr/bin/cyr_restore"
-  mv "${pkgdir}/usr/share/man/man8/restore.8" \
-    "${pkgdir}/usr/share/man/man8/cyr_restore.8"
 
   # Rename httpd.8 and master.8 so they don't conflict with the identically
   # named manpages from postfix and apache

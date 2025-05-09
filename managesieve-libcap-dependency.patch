@@ -1,11 +1,11 @@
---- a/perl/sieve/managesieve/Makefile.PL.in	2025-01-22 00:32:31.000000000 +0100
-+++ b/perl/sieve/managesieve/Makefile.PL.in	2025-05-04 12:55:47.767971084 +0200
+--- a/perl/sieve/managesieve/Makefile.PL.in	2025-04-28 04:05:40.000000000 +0200
++++ b/perl/sieve/managesieve/Makefile.PL.in	2025-05-09 16:02:36.965918821 +0200
 @@ -69,7 +69,7 @@
      'ABSTRACT'  => 'Cyrus Sieve management interface',
      'VERSION_FROM' => "@top_srcdir@/perl/sieve/managesieve/managesieve.pm", # finds $VERSION
      'MYEXTLIB'  => '../lib/.libs/libisieve.a @top_builddir@/perl/.libs/libcyrus.a @top_builddir@/perl/.libs/libcyrus_min.a',
--    'LIBS'	=> ["$LIB_SASL @SSL_LIBS@ @LIB_UUID@ @LIB_REGEX@ @ZLIB@ @SQLITE_LIBADD@ @MYSQL_LIBADD@ @PGSQL_LIBADD@"],
-+    'LIBS'	=> ["$LIB_SASL @SSL_LIBS@ @LIB_UUID@ @LIB_REGEX@ @ZLIB@ @SQLITE_LIBADD@ @MYSQL_LIBADD@ @PGSQL_LIBADD@ @LIBCAP_LIBS@"],
+-    'LIBS'	=> ["$LIB_SASL @SSL_LIBS@ @LIB_UUID@ @LIB_REGEX@ @ZLIB@ @SQLITE_LIBADD@ @MYSQL_LIBADD@ @PGSQL_LIBADD@ @ICU_LIBS@"],
++    'LIBS'	=> ["$LIB_SASL @SSL_LIBS@ @LIB_UUID@ @LIB_REGEX@ @ZLIB@ @SQLITE_LIBADD@ @MYSQL_LIBADD@ @PGSQL_LIBADD@ @ICU_LIBS@ @LIBCAP_LIBS@"],
      'CCFLAGS'	=> '@GCOV_CFLAGS@',
      'DEFINE'	=> '-DPERL_POLLUTE',     # e.g., '-DHAVE_SOMETHING' 
      'INC'	=> "-I@top_srcdir@/lib -I@top_srcdir@/perl/sieve -I@top_srcdir@/perl/sieve/lib @SASLFLAGS@ @SSL_CPPFLAGS@",
