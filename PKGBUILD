@@ -3,7 +3,7 @@
 # Contributor: ChatGPT (OpenAI) <https://openai.com> — assisted with Git configuration, and packaging guidance.
 
 pkgname='audiokit-kde'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="KDE audio utility suite that extends Dolphin context menus with format conversion, etc."
 arch=('any')
