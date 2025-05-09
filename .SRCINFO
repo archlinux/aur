@@ -1,6 +1,6 @@
 pkgbase = soundcloud-rpc-git
 	pkgdesc = 🎵 A SoundCloud Client with Discord Rich Presence, Dark Mode, Last.fm, and AdBlock Support.(Use system-wide electron)
-	pkgver = 0.0.7.r7.ga5a5cee
+	pkgver = 0.1.2.r10.g5f73b3d
 	pkgrel = 1
 	url = https://github.com/richardhbtz/soundcloud-rpc
 	arch = any
@@ -10,10 +10,9 @@ pkgbase = soundcloud-rpc-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	makedepends = bun
 	makedepends = libicns
-	depends = electron24
-	provides = soundcloud-rpc=0.0.7
+	depends = electron35
+	provides = soundcloud-rpc=0.1.2
 	conflicts = soundcloud-rpc
 	source = soundcloud-rpc.git::git+https://github.com/richardhbtz/soundcloud-rpc
 	source = soundcloud-rpc.sh
