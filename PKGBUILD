@@ -1,7 +1,7 @@
 # Maintainer: Nick77 <qwiko20@tutamail.com>
 
 pkgname=jakana
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Learn Japanese kana on cli'
 arch=('any')
@@ -14,15 +14,15 @@ makedepends=(python-build
 	     python-hatchling)
 source=(        
   $pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('f7d893847b78189b4755b3b7604dee3bbadde273beb9ee946675315c40d5b2038c8a66fe42d2a81319568f100ecc84e46cb419926a02879c1af75ba4f5495661')
+sha512sums=('878d8c35983638cb1c6073541db01abdb77e40b2ebc5b1380b39ec3fbab8432e49e2d1cf556460baa7275ebde114c264af36dafb0af00226a15ebc6fc962d77f')
+
 build() {
     cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
+
 package() {
     cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
-
