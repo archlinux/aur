@@ -1,7 +1,7 @@
 pkgbase = lumen-desktop-bin
 	pkgdesc = A simple and modulable personal assistant built on Electron.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/L-U-M-E-N/lumen-desktop
 	arch = x86_64
 	license = MIT
