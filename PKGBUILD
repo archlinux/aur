@@ -23,7 +23,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
-pkgver=2.06
+pkgver=2.12
 pkgrel=6
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
