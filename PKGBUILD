@@ -5,7 +5,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-alsa-ucm-conf
-pkgver=1.2.13
+pkgver=1.2.14
 pkgrel=1
 arch=('any')
 pkgdesc="ALSA Use Case Manager configuration (and topologies) (Android ${_android_arch})"
@@ -15,7 +15,7 @@ depends=('android-ndk')
 makedepends=('android-environment')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("$url/files/pub/lib/alsa-ucm-conf-$pkgver.tar.bz2"{,.sig})
-md5sums=('9ff74369ab20e28ea66ae42929116ae0'
+md5sums=('72c8bf33f1e0befd80e5e467e74f6b33'
          'SKIP')
 validpgpkeys=('F04DF50737AC1A884C4B3D718380596DA6E59C91') # ALSA Release Team (Package Signing Key v1) <release@alsa-project.org>
 
