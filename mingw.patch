@@ -1,0 +1,11 @@
+--- unshield-1.6.2/lib/libunshield.h	2025-04-03 11:27:32.000000000 +0200
++++ patched/lib/libunshield.h	2025-05-10 17:32:46.522561138 +0200
+@@ -17,7 +17,7 @@
+ extern "C" {
+ #endif
+ 
+-#if defined(_WIN32) && defined(UNSHIELD_DYNAMIC_LIBRARY)
++#if defined(_WIN32) && defined(UNSHIELD_DYNAMIC_LIBRARY) && !defined(__MINGW32__)
+ #  if defined(UNSHIELD_EXPORTS)
+ #    define UNSHIELD_API __declspec(dllexport)
+ #  else
