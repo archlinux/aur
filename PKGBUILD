@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libtre-git
-pkgver=r177.07e66d0
+pkgver=r251.7c80c34
 pkgrel=1
 arch=(any)
 pkgdesc="The approximate regex matching library and agrep command line tool (mingw-w64)"
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-pkg-config' 'git')
 provides=('mingw-w64-libtre')
 conflicts=('mingw-w64-libtre')
 options=(!strip !buildflags staticlibs)
-license=("BSD")
+license=('BSD-2-Clause')
 url="https://github.com/laurikari/tre"
 source=("libtre"::"git+https://github.com/laurikari/tre.git"
         002-pointer-cast.patch)
