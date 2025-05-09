@@ -2,7 +2,7 @@
 pkgname=steamachievementnotifier-bin
 _pkgname="Steam Achievement Notifier"
 _mainver=1.9
-_subver=31
+_subver=32
 pkgver="${_mainver}.${_subver}"
 _electronversion=35
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname// /}_V${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('afdb47eb722977ab0891fc787730cf8ebc4339757e14857251139b2ee65f2dab'
+sha256sums=('4a3446875fc97e44260d356e43bf9bd1831d8e75a3585d850ead6f5a016180df'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
