@@ -1,6 +1,6 @@
 pkgbase = amethyst-player
 	pkgdesc = A cross-platform music player made with Typescript
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Geoxor/amethyst
 	arch = x86_64
