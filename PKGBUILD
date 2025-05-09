@@ -2,19 +2,19 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Onion routing based messenger"
 arch=('x86_64')
 url="https://getsession.org"
 license=('GPL-3.0-only')
-_electron=electron31
+_electron=electron34
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python')
 makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/session-foundation/session-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('a8e3a91b3b0131f047e26b7d44a81f845b0fe4d161fe62701c180423c178c2e4'
+sha256sums=('1c2403472f8cd588e68127f9e44dc6f21d64ae5b780cb5f999dad2b89d274d9a'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
