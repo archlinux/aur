@@ -1,0 +1,18 @@
+pkgbase = ruby-yard-solargraph
+	pkgdesc = A YARD extension for documenting Solargraph tags
+	pkgver = 0.1.0
+	pkgrel = 4
+	url = https://github.com/castwide/yard-solargraph
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	makedepends = ruby-rake
+	makedepends = ruby-simplecov
+	makedepends = ruby-rspec
+	depends = ruby
+	depends = ruby-yard
+	options = !emptydirs
+	source = ruby-yard-solargraph::git+https://github.com/castwide/yard-solargraph.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = ruby-yard-solargraph
