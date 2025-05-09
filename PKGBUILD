@@ -1,7 +1,7 @@
 # Maintainer: schaap137 <dojo86@gmail.com>
 pkgname=chugins-git
-pkgver=chuck.1.5.4.4.r2.ge1d7eed
-pkgrel=3
+pkgver=chuck.1.5.5.0.r14.g2284f96
+pkgrel=4
 pkgdesc="Repository for ChuGins (to use with chuck)"
 arch=('i686' 'x86_64')
 url="https://github.com/ccrma/chugins"
@@ -23,8 +23,8 @@ prepare() {
   # Change JACK to PULSE if you use chuck-pulse, or comment out the next line if you use chuck-alsa
   sed -e 's/__LINUX_ALSA__/__LINUX_JACK__/g' -i **/makefile.linux
   sed -e 's/\/usr\/local\/lib/\/usr\/lib/g' -i **/makefile.linux makefile
-  # Temporary fix until this code becomes fully ISO C++17 compliant - with thanks to phaise
-  sed -i '71s/^/FLAGS+= -Wno-error=register/' Mesh2D/makefile
+  # Fix for missing include to circumvent integer type error in latest gcc
+  sed -i 's|#include <cstdlib> // malloc / free|#include <cstdlib> // malloc / free\n#include <cstdint> // integer types|' NHHall/nh_hall.hpp
 }
 
 build() {
