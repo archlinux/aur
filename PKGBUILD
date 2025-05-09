@@ -1,19 +1,19 @@
 pkgname=openal-hrtf
-pkgver=1.0
-pkgrel=2
+pkgver=1.24.3
+pkgrel=1
 arch=('any')
 license=('custom')
 pkgdesc="Generate HRTF datasets for OpenAL"
 depends=('openal')
-makedepends=('unzip' 'libmysofa' 'git')
+makedepends=('unzip' 'libmysofa')
 url="https://wiki.archlinux.org/index.php/Gaming"
-source=("openal-soft-1.23.1::git+https://github.com/kcat/openal-soft.git?#tag=1.23.1"
+source=('https://openal-soft.org/openal-releases/openal-soft-1.24.3.tar.bz2'
         'CIAIR.tar.gz::http://www.sp.m.is.nagoya-u.ac.jp/HRTF/archive/data02.tgz'
         'ftp://ftp.ircam.fr/pub/IRCAM/equipes/salles/listen/archive/SUBJECTS/IRC_1005.zip'
         'MIT_KEMAR.zip::http://sound.media.mit.edu/resources/KEMAR/full.zip'
         'http://sofacoustics.org/data/database/mit/mit_kemar_normal_pinna.sofa'
         'http://sofacoustics.org/data/database/scut/SCUT_KEMAR_radius_all.sofa')
-sha256sums=('SKIP'
+sha256sums=('cb5e6197a1c0da0edcf2a81024953cc8fa8545c3b9474e48c852af709d587892'
             '9ed522abbf34f5e3e049fc0371f597798fea3586d565daf6eea79884d9c9334c'
             '1c34116d4eeb02958d55f5e8803b593d05f1bc384e79ae1e447503f419929773'
             '3fb533f7af95a6c07944f31a2a1d9dca0c77ab525a44865fc508009efb692ef6'
@@ -31,19 +31,10 @@ prepare() {
 }
 
 build() {
-  tables_new=("MIT_KEMAR_sofa" "SCUT_KEMAR")
-  for hrtftable in "${tables_new[@]}"; do
+  tables=("MIT_KEMAR_sofa" "SCUT_KEMAR" "CIAIR" "IRC_1005" "MIT_KEMAR")
+  for hrtftable in "${tables[@]}"; do
     cd $srcdir/$hrtftable
-    makemhr -m -r44100 -i"$srcdir/openal-soft-1.23.1/utils/$hrtftable.def" -o$srcdir/$hrtftable-%r.mhr
-    makemhr -m -r48000 -i"$srcdir/openal-soft-1.23.1/utils/$hrtftable.def" -o$srcdir/$hrtftable-%r.mhr
-  done
-  cd "$srcdir/openal-soft-1.23.1"
-  git checkout 0eb18e97112c2d7b35fe11339175161740c8fae1
-  tables_old=("CIAIR" "IRC_1005" "MIT_KEMAR")
-  for hrtftable in "${tables_old[@]}"; do
-    cd $srcdir/$hrtftable
-    makemhr -m -r44100 -i"$srcdir/openal-soft-1.23.1/utils/$hrtftable.def" -o$srcdir/$hrtftable-%r.mhr
-    makemhr -m -r48000 -i"$srcdir/openal-soft-1.23.1/utils/$hrtftable.def" -o$srcdir/$hrtftable-%r.mhr
+    makemhr -j 4 -i "$srcdir/openal-soft-1.24.3/utils/$hrtftable.def" -o $srcdir/$hrtftable-%r.mhr
   done
 }
 
