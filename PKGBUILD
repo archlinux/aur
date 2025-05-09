@@ -1,6 +1,6 @@
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com
 pkgname=image-garden
-pkgver=0.2.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Tool for creating test virtual machines"
 arch=(any)
@@ -20,7 +20,7 @@ source=(
 	"0001-Arch-override-default-OVMF-blobs-location.patch"
 )
 noextract=()
-sha256sums=('92efbfe2c7a0f9221001a043ae2a9e15a556cac548d2922517bceaab6d14a661'
+sha256sums=('6ce3a94bbb9897979d5761f2d8e20fc8dff1798d10e703e7676968b7c2fa8e6c'
             '04a824cd0ceee56811f3c1c8b12c0ed7fd7203eefd6559d66cbebffeeff68b48')
 
 prepare() {
