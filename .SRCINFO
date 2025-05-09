@@ -1,7 +1,7 @@
 pkgbase = technitium-dns-server-bin
 	pkgdesc = Open source authoritative and recursive DNS server focused on privacy and security
 	pkgver = 13.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://technitium.com/dns/
 	arch = any
 	license = GPL3

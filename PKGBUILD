@@ -3,7 +3,7 @@
 pkgname=technitium-dns-server-bin
 _pkgname=technitium-dns-server
 pkgver=13.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('any')
 url="https://technitium.com/dns/"
@@ -42,6 +42,7 @@ package() {
     install -Dm 0644 TechnitiumLibrary.Net.dll "$pkgdir/opt/$_pkgname/TechnitiumLibrary.Net.dll"
     install -Dm 0644 TechnitiumLibrary.Net.pdb "$pkgdir/opt/$_pkgname/TechnitiumLibrary.Net.pdb"
     install -Dm 0644 TechnitiumLibrary.pdb "$pkgdir/opt/$_pkgname/TechnitiumLibrary.pdb"
+    install -Dm 0644 BouncyCastle.Cryptography.dll "$pkgdir/opt/$_pkgname/BouncyCastle.Cryptography.dll"
 
     cp -r www "$pkgdir/opt/$_pkgname/www"
 
