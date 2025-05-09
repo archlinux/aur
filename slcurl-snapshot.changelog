@@ -21,3 +21,4 @@ Changes since 0.2.1
 11. Updated aclocal.m4; added support for CPPFLAGS (based upon patch
     from Rafael Laboissière)
 12. Updated for slang-3 migration
+13. Fixed a number of deprecation warnings

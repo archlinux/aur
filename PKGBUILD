@@ -4,11 +4,11 @@
 
 pkgname='slcurl-snapshot'
 _pkgname="${pkgname%-snapshot}"
-_pkgver=0.2.2-12
+_pkgver=0.2.2-13
 _prever="pre$_pkgver"
 pkgver="${_pkgver//-/.}"
-pkgrel=2
-pkgdesc='cURL module for the S-Lang interpreter (development snapshot)'
+pkgrel=1
+pkgdesc='A cURL module for the S-Lang interpreter (development snapshot)'
 arch=('aarch64' 'x86_64')
 url='https://jedsoft.org/snapshots/'
 license=('GPL-2.0-or-later')  # SPDX-License-Identifier: GPL-2.0-or-later
@@ -17,7 +17,7 @@ provides=('slcurl')
 conflicts=("${provides[@]}")
 options=('!makeflags')
 source=("${url}/$_pkgname-$_prever.tar.gz")
-md5sums=('96c4f6bb2edc89074b3811946fe7afbf')               # Taken from $url
+md5sums=('b343f67adb443fd883ef67936faea661')               # Taken from $url
 validpgpkeys=('AE962A02D29BFE4A4BB2805FDE401E0D5873000A')  # John E. Davis
 changelog="$pkgname.changelog"
 
@@ -38,7 +38,7 @@ package() {
 }
 
 b2sums=(
-  'e154b8bd2548cc69211c8b0e8efbdc28d8be45e928a780ce805bdf588f0821b1121423a15b3b44cfcb53f79a9a51b408afbb7e19b5da11e8fb373e1512ff75c7'
+  '5521596bd6f60e2a26e54c1cddaad33046cc90e35b643b08e66bd0e5207866696e3c6e5bafabef127a9736889ae9ce05d8ff18ab1e72c14a64d0e9ecb2546bcf'
 )
 
 # eof
