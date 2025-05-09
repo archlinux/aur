@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux-headers
+Target = linux-lts-headers
+Target = linux-zen-headers
+Target = linux-hardened-headers
+
+[Action]
+Description = Copy kernel headers after *-headers package installation...
+When = PostTransaction
+Exec = /usr/local/bin/kernel-build-patch-updated-revision.sh

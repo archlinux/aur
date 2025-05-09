@@ -1,0 +1,13 @@
+pkgbase = kernel-headers-trigger
+	pkgdesc = Trigger tool for those who build Linux kernel header files from source file
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = bash
+	source = kernel-build-patch-updated-revision.sh
+	source = linux-headers.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kernel-headers-trigger
