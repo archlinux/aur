@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-#Maintainer:	Giteeajake <giteeajake@qq.com>
-=======
 #Maintainer:	mumi jim <echo "=02bj5yav9Gb0V3bA1Waq9VatVXb" | rev | base64 -d>
->>>>>>> b9b3bd5 (update)
+
 
 #please run "gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org" or "curl -s https://openpgpkey.torproject.org/.well-known/openpgpkey/torproject.org/hu/kounek7zrdx745qydx6p59t9mqjpuhdf |gpg --import -" before running "makepkg"
 #if you want to update without AUR. Please run "tor-browser -u"
@@ -11,11 +8,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-alpha-bin"
-<<<<<<< HEAD
-pkgver='14.5a5'
-=======
 pkgver='14.5a6'
->>>>>>> b9b3bd5 (update)
 pkgrel=1
 pkgdesc='Alpha Version of Tor Browser'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -70,19 +63,11 @@ source=("${pkgname}.svg"
 
 sha256sums=('0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4'
             '1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b'
-<<<<<<< HEAD
-            '7dd870e7c8769fd5a801762bda33e61bc06f65c11cc7fefa17d0f2484cec8b1b'
-            '03acb2a3a9650575df745e8899283be15357cd4ccdb507d448a80128a1c3790e')
-sha256sums_i686=('c95e2ee0d2d1866ae2072dc58546c2e941af9302b3f0358a5314bca9b7d106cd'
-                 'SKIP')
-sha256sums_x86_64=('6509e50444fd443c5d589b369d420455a10e1fc1f832c93d0e626058112c6daf'
-=======
             '170a0ce40874b924c8b57bda09de35c2226e3d3fe920fb985d0f1127c23da084'
             '03acb2a3a9650575df745e8899283be15357cd4ccdb507d448a80128a1c3790e')
 sha256sums_i686=('39b5b857ec64e7cb213a537b8d3c8ee99659b00f29ed7a4f23354934106e96f0'
                  'SKIP')
 sha256sums_x86_64=('b006919b19c7602a4c00d3ac8d2069f3c70b8ebea099c83a521bf99d24200218'
->>>>>>> b9b3bd5 (update)
                    'SKIP')
 
 

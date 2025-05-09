@@ -1,10 +1,6 @@
 pkgbase = tor-browser-alpha-bin
 	pkgdesc = Alpha Version of Tor Browser
-<<<<<<< HEAD
-	pkgver = 14.5a5
-=======
 	pkgver = 14.5a6
->>>>>>> b9b3bd5 (update)
 	pkgrel = 1
 	url = https://www.torproject.org/projects/torbrowser.html
 	install = tor-browser-alpha-bin.install
@@ -33,13 +29,8 @@ pkgbase = tor-browser-alpha-bin
 	optdepends = libnotify: GNOME dialog boxes
 	provides = tor-browser
 	conflicts = tor-browser
-<<<<<<< HEAD
-	noextract = tor-browser-linux-x86_64-14.5a5.tar.xz
-	noextract = tor-browser-linux-i686-14.5a5.tar.xz
-=======
 	noextract = tor-browser-linux-x86_64-14.5a6.tar.xz
 	noextract = tor-browser-linux-i686-14.5a6.tar.xz
->>>>>>> b9b3bd5 (update)
 	source = tor-browser-alpha-bin.svg
 	source = tor-browser-alpha-bin.png
 	source = tor-browser-alpha-bin.desktop.in
@@ -47,17 +38,6 @@ pkgbase = tor-browser-alpha-bin
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
 	sha256sums = 0f05dfe54e576f45e036b3f82e079b5e87f32e3bdbbf3b31a82a5746a9277ed4
 	sha256sums = 1dac790ea6437642d06d5555dd636c286ab2fec3dc524b8bf08ad0f7fc2b7d3b
-<<<<<<< HEAD
-	sha256sums = 7dd870e7c8769fd5a801762bda33e61bc06f65c11cc7fefa17d0f2484cec8b1b
-	sha256sums = 03acb2a3a9650575df745e8899283be15357cd4ccdb507d448a80128a1c3790e
-	source_i686 = https://dist.torproject.org/torbrowser/14.5a5/tor-browser-linux-i686-14.5a5.tar.xz
-	source_i686 = https://dist.torproject.org/torbrowser/14.5a5/tor-browser-linux-i686-14.5a5.tar.xz.asc
-	sha256sums_i686 = c95e2ee0d2d1866ae2072dc58546c2e941af9302b3f0358a5314bca9b7d106cd
-	sha256sums_i686 = SKIP
-	source_x86_64 = https://dist.torproject.org/torbrowser/14.5a5/tor-browser-linux-x86_64-14.5a5.tar.xz
-	source_x86_64 = https://dist.torproject.org/torbrowser/14.5a5/tor-browser-linux-x86_64-14.5a5.tar.xz.asc
-	sha256sums_x86_64 = 6509e50444fd443c5d589b369d420455a10e1fc1f832c93d0e626058112c6daf
-=======
 	sha256sums = 170a0ce40874b924c8b57bda09de35c2226e3d3fe920fb985d0f1127c23da084
 	sha256sums = 03acb2a3a9650575df745e8899283be15357cd4ccdb507d448a80128a1c3790e
 	source_i686 = https://dist.torproject.org/torbrowser/14.5a6/tor-browser-linux-i686-14.5a6.tar.xz
@@ -67,7 +47,6 @@ pkgbase = tor-browser-alpha-bin
 	source_x86_64 = https://dist.torproject.org/torbrowser/14.5a6/tor-browser-linux-x86_64-14.5a6.tar.xz
 	source_x86_64 = https://dist.torproject.org/torbrowser/14.5a6/tor-browser-linux-x86_64-14.5a6.tar.xz.asc
 	sha256sums_x86_64 = b006919b19c7602a4c00d3ac8d2069f3c70b8ebea099c83a521bf99d24200218
->>>>>>> b9b3bd5 (update)
 	sha256sums_x86_64 = SKIP
 
 pkgname = tor-browser-alpha-bin
