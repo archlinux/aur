@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=0.4.3
+pkgver=0.4.5
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d87692a22bcefc3c9ddb27e4da322e610f12c423dbaead95afdcee7447e2e9f0'
+sha256sums=('ee0a039af5f6f122b9cf8ec10c2a6dd8e6c0c93aa5f96318645102736ac2c17b'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
