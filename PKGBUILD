@@ -6,14 +6,14 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-pure-git
-pkgver=10.6.r144.gaa8621d2fdb
-pkgrel=2
+pkgver=10.7.r73.gf9741837a3b
+pkgrel=1
 source=(
   "git+https://gitlab.winehq.org/wine/wine.git"
   "git+https://gitlab.winehq.org/wine/wine-staging.git"
   30-win32-aliases.conf
   wine-binfmt.conf
-  ntsync-10.6-staging.patch
+  ntsync-10.7-staging.patch
   7064.patch
   winex11.drv-Recognize-the-keyboard-in-a-locale-indep.patch
   0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch
@@ -26,17 +26,18 @@ source=(
   winecfg-Add-tweaks-tab-page.patch
   ntdll-loader-add-support-for-overriding-IMAGE_FILE_L.patch
 )
+
 sha256sums=(
   'SKIP'
   'SKIP'
   '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
   '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4'
-  '4be820998660930c24607b82c7a7cb7fd6108fa7943c4c276e50a4aaf78dfc56'
+  '6dd055763a290d76cd6fbd8e859a37c4505f1acc1af713f576ef03e0a9554a50'
   'ff689d9a71190ab28c9de27bc6640172b136eb6bcc7fcaee3f49f012831f1370'
   '5f1065a4a404ee424fd80baf2c4f66f1ada83a088d56bc57e99260a2444ee006'
   '13c94740b1030818c41c8745928c8d4125386066e794a7ddcd0b2f48a09ccd60'
   'de34be62e63a4187582b21a3a77d4162a33e7d777095e8e7b8fbd13cb745516f'
-  'd6a67fd4eb22e658bd963a896d6344c93066614ee1f0faed4ee016f701989069'
+  '69b120ed11e07270db4e4378c8ad42d1bae418a6f8a10d98dc031ab9af0d1130'
   '236d3f562d1ce05ae9d372cd606acb0dab545579fcecae9cf14df1c253fff574'
   '771777eb4d60ef99588ed33657270533893de9a3f0c010d1fc6898ba3ec8ed74'
   '261f59b60bdb9d4adecdb2c6cc1f0089e65e9dbd2141b4bfa91d8875716a01b1'
@@ -116,8 +117,8 @@ prepare() {
     -W server-Signal_Thread \
     -W eventfd_synchronization
 
-  # NTSync for Wine 10.6
-  patch -Np1 -i "${srcdir}/ntsync-10.6-staging.patch"
+  # NTSync for Wine 10.7
+  patch -Np1 -i "${srcdir}/ntsync-10.7-staging.patch"
 
   # Use native Visual C++ DLLs, fix Windows product version
   patch -Np1 -i "${srcdir}/0001-HACK-wine.inf-Add-native-builtin-overrides-for-msvcr.patch"
