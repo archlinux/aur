@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-avisynthplus
-pkgver=3.7.4
+pkgver=3.7.5
 pkgrel=1
 arch=('any')
 pkgdesc="An improved version of the AviSynth frameserver (Android ${_android_arch})"
@@ -17,7 +17,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-devil")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/AviSynth/AviSynthPlus/archive/v${pkgver}/avisynthplus-${pkgver}.tar.gz")
-md5sums=('16a5930b6234155a3a3e9ce432474c5f')
+md5sums=('ef61480836576a9d8db3530f7aec040e')
 
 prepare() {
     cd "${srcdir}/AviSynthPlus-${pkgver}"
