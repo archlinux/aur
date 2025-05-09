@@ -1,0 +1,14 @@
+pkgbase = zoho-extension-toolkit
+	pkgdesc = CLI tool for developing Zoho Extension widgets.
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://www.zoho.com/developer/help/extensions/zappscli.html
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = zoho-extension-toolkit-1.0.21.tgz
+	source = https://registry.npmjs.org/zoho-extension-toolkit/-/zoho-extension-toolkit-1.0.21.tgz
+	sha1sums = 66a2cd6eadfdc9f103b94ce903924f6576aba0a0
+
+pkgname = zoho-extension-toolkit
