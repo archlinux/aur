@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=z-library-bwrap
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Your gateway to knowledge and culture. Sandboxed by portable and uses system electron"
 arch=(x86_64 aarch64)
