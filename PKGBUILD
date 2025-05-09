@@ -2,14 +2,20 @@
 # Upstream: Immersed Inc. <info at immersed dot com>
 
 pkgname=immersed
-pkgver=10.7.0
+pkgver=10.8.0
 pkgrel=1
 pkgdesc="Immersed Desktop Agent"
 arch=('x86_64')
 url="https://immersed.com/"
 license=('unknown')
-depends=('fuse')
-optdepends=('V4L2LOOPBACK-MODULE: Virtual webcam support')
+depends=('fuse' 'libva-utils')
+optdepends=(
+    'intel-media-driver: VA-API implementation for Intel (HD Graphics - Broadwell and later)'
+    'libva-intel-driver: VA-API implementation for Intel (GMA 4500 - Coffee Lake and prior)'
+    'libva-nvidia-driver: VA-API implementation for NVIDIA that uses NVDEC as a backend'
+    'mesa: VA-API implemention for AMD is contained within this package'
+    'V4L2LOOPBACK-MODULE: Virtual webcam support'
+)
 options=(!strip !debug)
 
 _pkgname_ucfirst="${pkgname^}"
@@ -17,7 +23,7 @@ _appimage_unversioned="${_pkgname_ucfirst}-${arch}.AppImage"
 _appimage_versioned="${_pkgname_ucfirst}-${pkgver}-${arch}.AppImage"
 
 source=("${_appimage_versioned}::https://static.immersed.com/dl/${_appimage_unversioned}")
-sha256sums=('5346185da8b5cd4794f196886fb4220aba5b7ef380632c1680d437af6b95ca5d')
+sha256sums=('e5511a3681f9f96f4c03abe84ae7ea41e30b454e33f5d5ea18c0cc534f866a07')
 
 prepare() {
     chmod +x "${srcdir}/${_appimage_versioned}"
