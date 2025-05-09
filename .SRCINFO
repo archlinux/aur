@@ -1,10 +1,10 @@
 pkgbase = ruby-highline
 	pkgdesc = A higher level command-line oriented interface
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JEG2/highline
 	arch = any
-	license = MIT
+	license = GPL-2.0-only OR Ruby
 	checkdepends = ruby-bundler
 	checkdepends = ruby-dry-types
 	checkdepends = ruby-erb

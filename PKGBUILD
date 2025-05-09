@@ -5,11 +5,11 @@
 _gemname=highline
 pkgname=ruby-highline
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A higher level command-line oriented interface'
-arch=('any')
+arch=(any)
 url='https://github.com/JEG2/highline'
-license=(MIT)
+license=('GPL-2.0-only OR Ruby')
 depends=(
   ruby
   ruby-reline
@@ -29,6 +29,14 @@ checkdepends=(
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('9a5d4d7d888fe43821849dd1c2b2dc78c83f862bde8635f6c0a14caf82540c55')
+
+prepare() {
+  cd "${_gemname}-${pkgver}"
+
+  # we don't build from a git checkout
+  sed --in-place 's|git ls-files -z|find lib -type f -print0|' \
+    "${_gemname}.gemspec"
+}
 
 build() {
   local _gemdir
@@ -67,5 +75,9 @@ check() {
 package() {
   cd "${_gemname}-${pkgver}"
   cp -a tmp_install/* "$pkgdir"/
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  cp -R --preserve=mode -t "${pkgdir}/usr/share/${pkgname}" examples
+  install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+    AUTHORS Changelog.md README.md
   install -D -m 644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
