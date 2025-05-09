@@ -7,7 +7,7 @@ url="https://github.com/KOrtizLedezma/Retrobyte.git"
 license=('MIT')
 depends=('ncurses')
 makedepends=('gcc' 'make')
-source=("retrobyte-1.1.3.tar.gz")
+source=("retrobyte-1.1.tar.gz")
 md5sums=('SKIP')
 
 build() {

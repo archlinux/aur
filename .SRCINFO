@@ -8,7 +8,7 @@ pkgbase = retrobyte
 	makedepends = gcc
 	makedepends = make
 	depends = ncurses
-	source = retrobyte-1.1.3.tar.gz
+	source = retrobyte-1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = retrobyte
