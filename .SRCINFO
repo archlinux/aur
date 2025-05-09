@@ -1,22 +1,22 @@
 pkgbase = gnucobol-svn
 	pkgdesc = A free/libre COBOL compiler
-	pkgver = r5155
+	pkgver = r5501
 	pkgrel = 1
 	url = https://gnucobol.sourceforge.io/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-3.0-or-later
+	license = LGPL-3.0-or-later
 	makedepends = subversion
-	makedepends = gcc
 	makedepends = help2man
 	makedepends = rsync
+	depends = glibc
 	depends = cjson
 	depends = db
 	depends = gmp
 	depends = libxml2
 	depends = ncurses
-	provides = gnucobol=r5155
+	provides = gnucobol=r5501
 	conflicts = gnucobol
 	options = staticlibs
 	source = svn+https://svn.code.sf.net/p/gnucobol/code/trunk
