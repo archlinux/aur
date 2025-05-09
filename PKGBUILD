@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
-pkgver=1.0.21
+pkgver=1.0.23
 pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('25ef15397a8d5ff377bbdf4b2755570737e98399903a235177030b974e38fbc6623329d9b8e81fb379a88eccd595eb0ed8f6cc02cd956ec4727b249c4e50e581')
+b2sums=('aee3d6eac87ce92aca77dea93ad473e248412c3c607870db41dd44df78d8b22c89f7c2a01d76bb8fbbfd904892d0decd4e2450803848add6fa9009f29a07612f')
 
 prepare() {
 	cd "goose-$pkgver"
@@ -46,6 +46,8 @@ build() {
 	cd "goose-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	# https://github.com/rust-onig/rust-onig/issues/196
+	export CFLAGS+=" -std=gnu17"
 	cargo build --frozen --release --all-features
 }
 
