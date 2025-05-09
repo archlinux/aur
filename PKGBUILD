@@ -13,7 +13,8 @@ source=(
 	"https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb"
 	portable-config
 	)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 provides=(z-library)
 conflicts=(z-library)
 
