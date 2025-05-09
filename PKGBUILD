@@ -1,7 +1,7 @@
 # Maintainer: Julian Houba <craftingdragon007 at outlook dot com>
 pkgname='caqtdm'
 pkgver=4.5.0rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="caQtDM is a popular Epics framework for developing panels"
 arch=('any')
 url="http://caqtdm.github.io/"
@@ -9,8 +9,8 @@ license=('GPL')
 depends=('qt6-base' 'qt6-tools' 'qwt-qt6' 'epics-base' 'zeromq' 'python' 'bash' 'glibc' 'gcc-libs')
 makedepends=('patch' 'make' 'gcc' 'git')
 source=("git+https://github.com/caqtdm/caqtdm.git#tag=v4.5.0-rc2" 
-        "fix_qwt_static_cast.patch")
-sha512sums=('SKIP' '3e5243235bcccd01429d47304a4c834d4b7ecdd7cf7fd1dc0658b4a53eb4bedabcff00364de34707fc810d5df584dcad86ebbd985b5e2be5138574064dadf0b5')
+        "fix_qwt_static_cast_gcc.patch")
+sha512sums=('SKIP' 'f279be12d4c2d9a948990f5a01274ca414f76b79b5b181743029a60334a4db4a2d120772c23dfbacb811aa48ce587a3ceceafb5e54d9cf3274694bf733dd767c')
 
 prepare() {
     # Write environment variables to env_config.sh
@@ -49,7 +49,7 @@ export PYTHONLIB=/usr/lib/
 EOF
 
     # Patch broken files
-    patch --forward --strip=1 --input="${srcdir}/fix_qwt_static_cast.patch"
+    patch --forward --strip=1 --input="${srcdir}/fix_qwt_static_cast_gcc.patch"
 }
 
 build() {

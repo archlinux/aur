@@ -1,0 +1,63 @@
+diff '--color=auto' --unified --recursive --text src.orig/caqtdm/caQtDM_QtControls/caQtDM_QtControls.pro src.next/caqtdm/caQtDM_QtControls/caQtDM_QtControls.pro
+--- src.orig/caqtdm/caQtDM_QtControls/caQtDM_QtControls.pro    2025-04-08 12:22:12.159674656 +0200
++++ src.next/caqtdm/caQtDM_QtControls/caQtDM_QtControls.pro   2025-04-08 12:42:22.064082634 +0200
+@@ -27,7 +27,7 @@
+ }
+ contains(QT_VER_MAJ, 6) {
+       QT += widgets concurrent uitools opengl core
+-      CONFIG  += qwt plugin
++      CONFIG  += plugin
+       ios | android {
+             QT += uiplugin
+       }else {
+
+diff '--color=auto' --unified --recursive --text src.orig/caqtdm/caQtDM_Lib/src/mutexKnobData.cpp src.next/caQtDM_Lib/src/mutexKnobData.cpp
+--- src.orig/caqtdm/caQtDM_Lib/src/mutexKnobData.cpp   2025-04-08 12:22:12.156903473 +0200
++++ src.next/caqtdm/caQtDM_Lib/src/mutexKnobData.cpp  2025-04-08 12:49:10.322539979 +0200
+@@ -869,10 +869,11 @@
+ QString getBufferAsHexStr(char* buf, int buffsize) {
+     QString result;
+     for(int i = 0; i < buffsize; ++i)
+-        result += "0x" + QString("%1:").arg(buf[i], 2, 16, QChar('0')).toUpper();
++        result += "0x" + QString("%1:").arg(static_cast<unsigned char>(buf[i]), 2, 16, QChar('0')).toUpper();
+     result.chop(1);
+     return result;
+ }
++
+ void MutexKnobData::UpdateWidget(int index, QWidget* w, char *units, char *fec, char *dataString, knobData knb)
+ {
+     QString unitsString;
+diff '--color=auto' --unified --recursive --text src.orig/aQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c src.next/caqtdm/caQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c
+--- src.orig/caqtdm/caQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c     2025-02-03 16:39:59.432507563 +0100
++++ src.next/caqtdm/caQtDM_Lib/caQtDM_Plugins/epics3/epicsSubs.c 2025-05-06 15:14:51.833945563 +0200
+@@ -854,7 +854,7 @@
+ 
+     //printf("we have to add an epics device <%s>\n", kData->pv);
+     status = ca_create_channel(kData->pv,
+-                               (void(*)())connectCallback,
++                               connectCallback,
+                                info,
+                                CA_PRIORITY_DEFAULT,
+                                &info->ch);
+@@ -888,7 +888,7 @@
+ 
+     if (info != (connectInfo *) 0) {
+         status = ca_create_channel(kData->pv,
+-                                   (void(*)())connectCallback,
++                                   connectCallback,
+                                    info,
+                                    CA_PRIORITY_DEFAULT,
+                                    &info->ch);
+
+diff '--color=auto' --unified --recursive --text src.orig/caqtdm/caQtDM_Parsers/adlParserSrc/QtProperties.h src.next/caqtdm/caQtDM_Parsers/adlParserSrc/QtProperties.h
+--- src.orig/caqtdm/caQtDM_Parsers/adlParserSrc/QtProperties.h       2025-02-04 09:55:07.213969247 +0100
++++ src.next/caqtdm/caQtDM_Parsers/adlParserSrc/QtProperties.h   2025-05-06 14:44:18.470211358 +0200
+@@ -60,7 +60,7 @@
+ void Qt_writeCloseTag(char *tag, char *value, int visibilityStatic);
+ void Qt_writeOpenProperty(char *property);
+ void Qt_writeCloseProperty();
+-void Qt_writeStyleSheet();
++void Qt_writeStyleSheet(int r, int g, int b);
+ void Qt_setWheelSwitchForm(char *widget, char *token);
+ int Qt_setColorMode(char *widget, char *token);
+ int Qt_setVisibilityMode(char *widget, char *token);
