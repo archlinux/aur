@@ -17,6 +17,6 @@ sha256sums=('SKIP')
 
 package() {
   cd $srcdir	
-  bsdtar -xf data.tar.* -C ${pkgdir}/
+  bsdtar -xvf data.tar.* -C ${pkgdir}/
   install -Dm644 "$pkgdir/opt/atelierb/bin/AtelierB.desktop" "$pkgdir/usr/share/applications/AtelierB.desktop"
 }
