@@ -10,30 +10,22 @@ pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
 license=('GPL-2.0-only')
-depends=(
-    "plasma5support" "gst-libav" "python-websockets" "qt6-declarative"
-    "qt6-websockets" "qt6-webchannel" "vulkan-driver" "libplasma"
-    "kpackage" "qt6-5compat" "qt6-webengine" "qt6-multimedia"
-    "plasma-workspace" "kdeclarative" "glfw"
-)
-makedepends=(
-    "vulkan-headers" "extra-cmake-modules" "git" "cmake" "mpv"
-)
-optdepends=(
-	"mpv: alternative video backend"
-)
+depends=("plasma5support" "gst-libav" "python-websockets" "qt6-declarative"
+         "qt6-websockets" "qt6-webchannel" "vulkan-driver" "libplasma"
+         "kpackage" "qt6-5compat" "qt6-webengine" "qt6-multimedia"
+         "plasma-workspace" "kdeclarative" "glfw")
+makedepends=("vulkan-headers" "extra-cmake-modules" "git" "cmake" "mpv")
+optdepends=("mpv: alternative video backend")
 provides=("plasma6-wallpapers-wallpaper-engine")
 conflicts=("plasma6-wallpapers-wallpaper-engine")
-source=(
-    "${pkgname}::git+${url}.git#branch=main"
-    "backend_scene::git+https://github.com/catsout/wallpaper-scene-renderer.git"
-    "git+https://github.com/KhronosGroup/glslang.git"
-    "nlohmann::git+https://github.com/nlohmann/json.git"
-    "git+https://github.com/KhronosGroup/SPIRV-Reflect.git"
-    "Eigen::git+https://gitlab.com/libeigen/eigen.git"
-    "git+https://github.com/mackron/miniaudio.git"
-    "git+https://github.com/google/googletest.git"
-)
+source=("${pkgname}::git+${url}.git#branch=main"
+        "backend_scene::git+https://github.com/catsout/wallpaper-scene-renderer.git"
+        "git+https://github.com/KhronosGroup/glslang.git"
+        "nlohmann::git+https://github.com/nlohmann/json.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git"
+        "Eigen::git+https://gitlab.com/libeigen/eigen.git"
+        "git+https://github.com/mackron/miniaudio.git"
+        "git+https://github.com/google/googletest.git")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -44,10 +36,8 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare(){
-    declare -ra modules=(
-      "${srcdir}/${pkgname}" "${srcdir}/${pkgname}/src/backend_scene"
-      "${srcdir}/${pkgname}/src/backend_scene/third_party/SPIRV-Reflect"
-    )
+    declare -ra modules=("${srcdir}/${pkgname}" "${srcdir}/${pkgname}/src/backend_scene"
+                         "${srcdir}/${pkgname}/src/backend_scene/third_party/SPIRV-Reflect")
     for p in "${modules[@]}"
     do
         cd "${p}"
