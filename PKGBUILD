@@ -4,7 +4,7 @@ _pkgorg=camunda
 _pkgname=$_pkgorg-modeler
 pkgname=$_pkgname-bin
 pkgver=5.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated modeling solution for BPMN, DMN and Forms based on bpmn.io"
 arch=('x86_64')
 url="https://github.com/$_pkgorg/$_pkgname"
@@ -14,16 +14,10 @@ install=$_pkgname.install
 source=(
 	"https://github.com/$_pkgorg/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x64.tar.gz"
 	"$_pkgname.install"
-	"$_pkgname.sh"
-	"xdg_register.patch")
+	"$_pkgname.sh")
 b2sums=('f95b58095e855677050001d8e39fc0904870c294ab0981ff5892f55962f3db1fabf88a0ccb379455685d909ccd54963365a31592036c74af759e4444cc09b20d'
         '67491c423c4513c78a01c47cffd0e28287a18913fd7c7b39278d0eeba6203432a84f5db221e9d3c2e755b42fa9a5063c246644c07dcaedc0b0c3f0af2777d604'
-        'e2d15fa4996ba95fb29fabaafb57efc0bca02d5d073b25bd453e9f72aa4ca7f02ebe4454c711e26559940ca3e24422c2361a900a9b39c9c42e6cb22547a042a2'
-        'c9b99a7168ab80fd5142a4c27159307f98398ed654c50bc2ff566e6134fc8401a3fe8efa5906bce4e6053bb3c04ce59f51e7cd1146fbcef3b11919057926d87c')
-
-build() {
-	patch -u "$srcdir/$_pkgname-$pkgver-linux-x64/support/xdg_register.sh" -i "$srcdir/xdg_register.patch"
-}
+        'e2d15fa4996ba95fb29fabaafb57efc0bca02d5d073b25bd453e9f72aa4ca7f02ebe4454c711e26559940ca3e24422c2361a900a9b39c9c42e6cb22547a042a2')
 
 package() {
 	install -d "$pkgdir"/opt/$_pkgname
