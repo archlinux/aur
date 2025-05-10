@@ -1,0 +1,13 @@
+pkgbase = lsr-iouring-git
+	pkgdesc = ls but with io_uring
+	pkgver = 0.2.0.r12.g87b0c6b
+	pkgrel = 2
+	url = https://tangled.sh/@rockorager.dev/lsr
+	arch = x86_64
+	license = MIT
+	makedepends = zig>=0.14.0
+	makedepends = git
+	source = git+https://tangled.sh/@rockorager.dev/lsr
+	sha256sums = SKIP
+
+pkgname = lsr-iouring-git
