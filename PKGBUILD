@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libpng
-pkgver=1.6.47
+pkgver=1.6.48
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics (Android ${_android_arch})"
 arch=('any')
@@ -14,16 +14,8 @@ groups=('android-libpng')
 depends=("android-${_android_arch}-zlib")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-${pkgver}.tar.xz"
-        '0001-Disable-zlib-version-check.patch')
-md5sums=('9bfcaa394869ff2d8eaad32e03303636'
-         '02be00cae20d83569e60fffd98047d1b')
-
-prepare() {
-    cd "${srcdir}/libpng-${pkgver}"
-
-    patch -Np1 -i ../0001-Disable-zlib-version-check.patch
-}
+source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-${pkgver}.tar.xz")
+md5sums=('6ddbe2107e3811d51da698794b8fb4a2')
 
 build() {
     cd "${srcdir}/libpng-${pkgver}"
