@@ -12,7 +12,7 @@ depends=('libxrandr' 'libxcursor' 'libxinerama' 'fontconfig' 'libsm' 'icu72-bin'
 optdepends=('texlive-bin' 'firefox')
 provides=('atelierb')
 conflicts=('atelierb')
-source=("https://www.atelierb.eu/wp-content/uploads/2024/09/${pkgname%-bin}-${pkgver}-debian12.deb")
+source=("https://www.atelierb.eu/wp-content/uploads/2024/09/${pkgname%-bin}-${pkgver}-debian-12.deb")
 sha256sums=('SKIP')
 
 package() {
