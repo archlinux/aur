@@ -2,7 +2,7 @@
 
 _name="libavif"
 pkgname="lib32-${_name}"
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files (32-bit)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=("${_name}.so")
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_name}_gtest.patch")
-sha256sums=('9c859c7c12ccb0f407511bfe303e6a7247f5f6738f54852662c6df8048daddf4'
+sha256sums=('0a545e953cc049bf5bcf4ee467306a2f113a75110edf59e61248873101cd26c1'
             '2b35300a447f70d56809f35be961e6c12dff3e9034043775a42f4c0aba6a09c5')
 
 prepare() {
@@ -33,21 +33,21 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
-    -Wno-dev
-    -DCMAKE_BUILD_TYPE:STRING='None'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DCMAKE_INSTALL_LIBDIR='lib32'
-    -DAVIF_BUILD_APPS:BOOL=OFF
-    -DAVIF_BUILD_TESTS:BOOL=ON
-    -DAVIF_BUILD_EXAMPLES:BOOL=OFF
-    -DAVIF_BUILD_MAN_PAGES:BOOL=OFF
-    -DAVIF_BUILD_GDK_PIXBUF:BOOL=ON
-    -DAVIF_CODEC_AOM=SYSTEM
-    -DAVIF_CODEC_DAV1D=SYSTEM
-    -DAVIF_CODEC_RAV1E=SYSTEM
-    -DAVIF_CODEC_SVT=SYSTEM
-    -DAVIF_LIBSHARPYUV=SYSTEM
-    -DAVIF_GTEST:BOOL=ON
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='None'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_INSTALL_LIBDIR='lib32'
+    -D AVIF_BUILD_APPS:BOOL=OFF
+    -D AVIF_BUILD_TESTS:BOOL=ON
+    -D AVIF_BUILD_EXAMPLES:BOOL=OFF
+    -D AVIF_BUILD_MAN_PAGES:BOOL=OFF
+    -D AVIF_BUILD_GDK_PIXBUF:BOOL=ON
+    -D AVIF_CODEC_AOM=SYSTEM
+    -D AVIF_CODEC_DAV1D=SYSTEM
+    -D AVIF_CODEC_RAV1E=SYSTEM
+    -D AVIF_CODEC_SVT=SYSTEM
+    -D AVIF_LIBSHARPYUV=SYSTEM
+    -D AVIF_GTEST:BOOL=ON
 )
   
   cd "${srcdir}"
@@ -60,7 +60,7 @@ check() {
   local ctest_flags=(
     --test-dir "${_pkgsrc}/build"
     --output-on-failure
-    --parallel $(nproc)
+    --parallel "$(nproc)"
     --exclude-regex "${excluded_tests}"
   )
 
