@@ -1,0 +1,114 @@
+.TH LIP 1 "2025-05-05" "lip 0.31.0" "User Commands"
+.SH NAME
+lip \- A general package manager for installing packages from various sources
+.SH SYNOPSIS
+.B lip
+[\fIOPTIONS\fR] \fBCOMMAND\fR [\fIARGUMENTS\fR]
+.SH DESCRIPTION
+lip is a versatile package manager that can install packages from Git repositories, local files, and other sources. It provides dependency management, package updates, and configuration management features.
+.SH COMMANDS
+.TP
+\fBcache\fR
+Inspect and manage lip's cache
+.TP
+\fBconfig\fR
+Manage lip configuration files
+.TP
+\fBinit\fR
+Initialize a new or existing lip package
+.TP
+\fBinstall [PACKAGE...]\fR
+Install packages and their dependencies from various sources
+.TP   
+\fBuninstall <PACKAGE...>\fR
+Uninstall packages and their unused dependencies
+.TP
+\fBlist [--installed]\fR
+List installed packages
+.TP
+\fBview <PACKAGE>\fR
+Display package information (downloads package if not cached)
+.TP
+\fBupdate [PACKAGE...]\fR
+Update packages and their dependencies
+.br
+Equivalent to: \fBlip install --update [PACKAGE...]\fR
+.TP
+\fBrun <SCRIPT>\fR
+Execute a script defined in tooth.json (excludes built-in hook scripts)
+.TP
+\fBmigrate <PATH>\fR
+Migrate a tooth.json file to the latest schema version
+.TP
+\fBpack [PATH]\fR
+Create an archive from the current directory based on tooth.json configuration
+.TP
+\fBprune\fR
+Remove unused packages while preserving dependencies required by other packages
+.SH OPTIONS
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Display detailed output
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Show only error messages
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Display help information
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Show version information and exit
+.SH CONFIGURATION FILES
+.TP
+\fB~/.config/lip/config.json\fR
+User configuration file
+.TP
+\fB/etc/lip/config.json\fR
+System configuration file
+.SH ENVIRONMENT
+.TP
+\fBLIP_HOME\fR
+Specifies lip's home directory (default: ~/.lip)
+.TP
+\fBLIP_CONFIG\fR
+Specifies configuration file path
+.SH EXAMPLES
+.TP
+Install a package:
+.B lip install example-package
+.TP
+Update all packages:
+.B lip update
+.TP
+Remove unused packages:
+.B lip prune
+.SH EXIT STATUS
+.TP
+\fB0\fR
+Success
+.TP
+\fB1\fR
+General error
+.TP
+\fB2\fR
+Configuration error
+.SH BUGS
+Report bugs and feature requests at:
+.br
+\fIhttps://github.com/futrime/lip/issues\fR
+.SH SEE ALSO
+Project homepage:
+.br
+\fIhttps://github.com/futrime/lip\fR
+.br
+Documentation:
+.br
+\fIhttps://futrime.github.io/lip/\fR
+.SH COPYRIGHT
+Copyright (C) 2023-2025 futrime <\fIhttps://github.com/futrime\fR>
+.br
+Licensed under GPL-3.0
+.SH AUTHORS
+Originally created by futrime <\fIhttps://github.com/futrime\fR>
+.br
+Documentation by FTS427 <\fIhttps://github.com/FTS427\fR>
