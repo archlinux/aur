@@ -5,8 +5,9 @@ pkgbase = lsr-iouring-git
 	url = https://tangled.sh/@rockorager.dev/lsr
 	arch = x86_64
 	license = MIT
-	makedepends = zig
+	makedepends = anyzig
 	makedepends = git
+	optdepends = anyzig-symlinks: symlink anyzig to zig
 	source = git+https://tangled.sh/@rockorager.dev/lsr
 	sha256sums = SKIP
 

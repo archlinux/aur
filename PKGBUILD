@@ -8,20 +8,22 @@ arch=('x86_64')
 url="https://tangled.sh/@rockorager.dev/lsr"
 license=('MIT')
 
-makedepends=('zig' 'git')
-#'zig>=0.14.0' failed? can it not recognize zig-git?
+makedepends=('anyzig' 'git')
+#'zig=0.14.0' but PKGBUILD does not seem to recognize zig-git as 0.14.0? just gonna use anyzig then
+optdepends=('anyzig-symlinks: symlink anyzig to zig')
 
 _pkgsrc="$_pkgname"
 source=('git+https://tangled.sh/@rockorager.dev/lsr')
 sha256sums=('SKIP')
 
 prepare() {
+  cd "$_pkgsrc"
   # PACKAGING.md -> build.zig.zon
-  for i in $(grep '\.url' "$_pkgsrc"/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    zig fetch --global-cache-dir $HOME/.cache/zig "$i"
+  for i in $(grep '\.url' build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
+    anyzig fetch --global-cache-dir $HOME/.cache/zig "$i"
   done
-  for i in $(grep '\.url' $HOME/.cache/zig/p/ourio*/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
-    zig fetch --global-cache-dir $HOME/.cache/zig "$i"
+  for i in $(grep '\.url' $HOME/.cache/zig/p/ourio-0.0.0-*/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
+    anyzig fetch --global-cache-dir $HOME/.cache/zig "$i"
   done
 }
 
@@ -48,7 +50,7 @@ build() {
   )
 
   cd "$_pkgsrc"
-  DESTDIR="build" zig build "${_zig_options[@]}"
+  DESTDIR="build" anyzig build "${_zig_options[@]}"
 }
 
 package() {
