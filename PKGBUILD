@@ -1,8 +1,8 @@
-# Maintainer: PieeeE <wg0zu8kux@mozmail.com>
+# Maintainer: newtalan <newtalan@gmail.com>
 
 pkgname='gui-for-clash'
 _pkgname='GUI.for.Clash'
-pkgver='1.8.5'
+pkgver='1.9.7'
 pkgrel='1'
 pkgdesc='GUI for Clash'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname}.install"
 )
 
-sha256sums=('163ebec2f9c2b46cfd7897fc9073b9a5f15574724e4df8b2cad61da3e98a3944'
+sha256sums=('7d2da376968dfafaa1b4a2595afcff9e13e089501db7fba3c9049f52f44f692a'
             'aec5e2cc7c4fe3885fc57258f52100de8716fa8b93c8e9e0d62cc976c78f0502'
             '8933f6159cb5de8bd623eefc0a82ebeab50c9633a4fee87ac2f30054938ff8a4'
             '9f7062c9f445d26b677bb875e17b832845856882d41f53d83789960c33539ee6')
