@@ -2,7 +2,7 @@
 
 pkgname="osslsigncode"
 pkgver="2.9"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
@@ -10,10 +10,16 @@ license=('GPL-3.0-or-later')
 depends=('curl' 'openssl')
 makedepends=('cmake' 'perl' 'python')
 checkdepends=('libfaketime')
-source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c88d3050b0f4af5cf4ec899ac1935cd04833ed8c7690298ab1bf0c00c4e53bf5a4f9ee31940d63e29350a6babf43f212e56aa480a67745b6d715a30a8093e3a6')
+source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz"
+        "support-for--python-cryptography-43.patch")
+sha512sums=('c88d3050b0f4af5cf4ec899ac1935cd04833ed8c7690298ab1bf0c00c4e53bf5a4f9ee31940d63e29350a6babf43f212e56aa480a67745b6d715a30a8093e3a6'
+            '987026a909418027081615a34cadff2aa93a2bc4b9c07dd695c4965853f3c01072c1fca6b1d4ef6f053d2e104df51562d63289427d8bdec3466e310ec2a43693')
 
 prepare() {
+  cd "$srcdir/osslsigncode-${pkgver}"
+  patch -p1 -i "$srcdir/support-for--python-cryptography-43.patch"
+  cd -
+
   cmake \
     -B build -S "$srcdir/osslsigncode-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
