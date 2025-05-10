@@ -2,14 +2,15 @@
 # Contributor: futrime <https://github.com/futrime>
 
 pkgname=lip-git
-_pkgname=lip
+_pkgname=lip-bin
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
 license=('GPL3')
 conflicts=(lip)
+options=(!strip)
 makedepends=(
     dotnet-sdk
     dotnet-runtime
@@ -31,6 +32,7 @@ prepare() {
     if [[ -z "$(git config --get user.name)" ]]; then
         git config user.name local && git config user.email '<>' && git config commit.gpgsign false
     fi
+    git checkout "v${pkgver}"
 }
 
 build() {
