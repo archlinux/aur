@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
 url="https://echo.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm'
-#            'python-wheel'
 #            'python-build'
 #            'python-installer'
              'python-sphinx-automodapi'
@@ -17,10 +17,10 @@ makedepends=('python-setuptools-scm'
              'python-numpy')
 checkdepends=('python-pytest'
               'python-qtpy'
-              'python-pyqt5')  # numpy already in makedepends
+              'python-pyqt6')  # numpy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('347044236caa9ee57f7d89b707efee66'
+md5sums=('de67fedfcc8eb879b5bd146049681726'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 get_pyver() {
@@ -47,7 +47,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-echo() {
