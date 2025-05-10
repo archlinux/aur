@@ -5,7 +5,7 @@ _godot_version="4.4.1"
 
 pkgname=gozen
 pkgver=0.2.2
-pkgrel=1 # Increment this if you change the PKGBUILD but not pkgver.
+pkgrel=2 # Increment this if you change the PKGBUILD but not pkgver.
 pkgdesc="A minimalistic video editor"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
@@ -51,11 +51,11 @@ prepare() {
 	sed -i '/\[dependencies\]/,$d' "src/gozen.gdextension"
 	
 	# Prepare Godot export templates directory structure.
-	mkdir -p "${XDG_DATA_HOME}/.local/share/godot/export_templates/${_godot_version}.stable"
-	unzip -o -d "${XDG_DATA_HOME}/.local/share/godot/export_templates/${_godot_version}.stable" "${srcdir}/godot-templates.tpz"
-	mv "${XDG_DATA_HOME}/.local/share/godot/export_templates/${_godot_version}.stable/templates/"* \
-	   "${XDG_DATA_HOME}/.local/share/godot/export_templates/${_godot_version}.stable/"
-	rmdir "${XDG_DATA_HOME}/.local/share/godot/export_templates/${_godot_version}.stable/templates"
+	mkdir -p "$HOME/.local/share/godot/export_templates/${_godot_version}.stable"
+	unzip -o -d "$HOME/.local/share/godot/export_templates/${_godot_version}.stable" "${srcdir}/godot-templates.tpz"
+	mv "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates/"* \
+	   "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/"
+	rmdir "$HOME/.local/share/godot/export_templates/${_godot_version}.stable/templates"
 	
 	# Make Godot editor executable.
 	chmod +x "${srcdir}/Godot_v${_godot_version}-stable_linux.x86_64"
