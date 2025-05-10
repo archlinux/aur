@@ -1,0 +1,4 @@
+[pounce]
+source = "git"
+git = "https://git.causal.agency/pounce"
+prefix = "v"
