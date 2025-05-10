@@ -1,0 +1,14 @@
+pkgbase = nodejs-fanyi
+	pkgdesc = A 🇨🇳 and 🇺🇸🇬🇧 translator in your command line, powered by iciba and deepseek.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/afc163/fanyi#readme
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = fanyi-10.0.0.tgz
+	source = https://registry.npmjs.org/fanyi/-/fanyi-10.0.0.tgz
+	sha1sums = 4ce6083a0eb066e0e54c393acb5b23221f19db02
+
+pkgname = nodejs-fanyi
