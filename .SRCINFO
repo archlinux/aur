@@ -1,0 +1,22 @@
+pkgbase = tartrazine-bin
+	pkgdesc = A Crystal reimplementation of the Pygments/Chroma syntax highlighters
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/ralsina/tartrazine
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	provides = tartrazine
+	conflicts = tartrazine
+	source = tartrazine-0.13.0-README.md::https://github.com/ralsina/tartrazine/raw/refs/tags/v0.13.0/README.md
+	source = tartrazine-0.13.0-CHANGELOG.md::https://github.com/ralsina/tartrazine/raw/refs/tags/v0.13.0/CHANGELOG.md
+	source = tartrazine-0.13.0-LICENSE::https://github.com/ralsina/tartrazine/raw/refs/tags/v0.13.0/LICENSE
+	sha256sums = 2509a47cc73e7a1167f29f7078b5020b25b5134b5cb86cd8628ffc08916077ea
+	sha256sums = 1602bc7ada5cd0cf24ccce3e4740f1dff1150f31d2735d8184774ce7a6e9a45a
+	sha256sums = dbbffa23a676d422aa7460b468c731e4fe3a007414e14d787a3d3f3fb55b1713
+	source_aarch64 = tartrazine-0.13.0-aarch64::https://github.com/ralsina/tartrazine/releases/download/v0.13.0/tartrazine-static-linux-arm64
+	sha256sums_aarch64 = 054fb9c2981362f66419b705b679158aed6bb5b3fe4f24bd163a8fb7ed590264
+	source_x86_64 = tartrazine-0.13.0-x86_64::https://github.com/ralsina/tartrazine/releases/download/v0.13.0/tartrazine-static-linux-amd64
+	sha256sums_x86_64 = 51f73bc98ac7a321505a013cd43ea2f6f8b8a68b49cc365ed01eb13193964722
+
+pkgname = tartrazine-bin

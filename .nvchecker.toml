@@ -1,0 +1,5 @@
+[tartrazine-bin]
+source = "github"
+github = "ralsina/tartrazine"
+use_latest_release = true
+prefix = "v"
