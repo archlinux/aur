@@ -16,8 +16,8 @@ pkgname=(
     'lib32-nvidia-vulkan-utils'
     'lib32-opencl-nvidia-vulkan'
 )
-pkgver=570.123.07
-pkgrel=2
+pkgver=570.123.11
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -32,7 +32,7 @@ source=(
     'systemd-homed-override.conf'
     'systemd-suspend-override.conf'
     'nvidia-sleep.conf'
-    "${_pkg}.run::https://developer.nvidia.com/downloads/vulkan-beta-${pkgver//.}-linux"
+    "${_pkg}.run::https://developer.nvidia.com/downloads/vulkan-beta-${pkgver//./}-linux"
     "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${pkgver}.tar.gz"
     0001-Enable-atomic-kernel-modesetting-by-default.patch
     0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch
@@ -46,8 +46,8 @@ sha512sums=(
     'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
     '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
     'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-    '7745bb228f80015c9f1ba09c731cea47a148ab38e39a723d4a5d5a89611e705811da7f290cb73617b29607f16b8add94b0b146e17d13bdf00dbfc04be74f8db5'
-    '5c17574aa90b7a6be9ca4412400ff12b1f671258bee9176e078fe1a66f323381fa47ccb113387bd9eda118e36de0a806ae69ae06991329c31347488268b48d33'
+    'd5dbb2dfbd34277b6e70f3c1652aeb300be369c1cbae60b0660b7ad9631094bb8609b45c150e4418fb1f01b41c201fa3fdb56c8dddf310ab5c088cef5dd6a8e0'
+    'c0a3181ce28a782a2422e436ca76a78806464e23a04265156f0edff0d1f381fb68a46161c6aa6ccd8e587ed9a439c6e92f6ec3558366cba9d539b7665ecbf862'
     '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
     '6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e'
     '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
@@ -72,7 +72,7 @@ prepare() {
     # This avoids various issue, when Simplefb is used
     # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
     # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
-    patch -Np1 < "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch -d "${srcdir}/${_pkg}/kernel"
+    patch -Np1 -d "${srcdir}/${_pkg}/kernel" -i "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch
 
     cd kernel
 
@@ -146,9 +146,9 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' kernel-open/dkms.conf
 
 build() {
     local MODULE_FLAGS=(
-       KERNEL_UNAME="$(</usr/src/linux/version)"
-       IGNORE_CC_MISMATCH=yes
-       SYSSRC="/usr/src/linux"
+        KERNEL_UNAME="$(</usr/src/linux/version)"
+        IGNORE_CC_MISMATCH=yes
+        SYSSRC="/usr/src/linux"
     )
 
     cd "${_pkg}"/kernel
@@ -335,7 +335,7 @@ package_nvidia-vulkan-utils() {
     # GTK+ for nvidia-settings
     install -Dm755 "libnvidia-gtk3.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-gtk3.so.${pkgver}"
 
-     # nvidia-settings
+    # nvidia-settings
     install -Dm755 nvidia-settings "${pkgdir}/usr/bin/nvidia-settings"
     install -Dm644 nvidia-settings.1.gz "${pkgdir}/usr/share/man/man1/nvidia-settings.1.gz"
     install -Dm644 nvidia-settings.png "${pkgdir}/usr/share/pixmaps/nvidia-settings.png"
