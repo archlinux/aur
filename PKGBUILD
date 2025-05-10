@@ -1,35 +1,36 @@
 # Maintainer: John Oberhauser <j.aur@obez.io>
 pkgname=okpanel-git
 pkgver=0.1.0
-pkgrel=9
+pkgrel=10
 pkgdesc="A custom AGS panel for hyprland"
 license=('GPL3')
 arch=('any')
 url="https://github.com/JohnOberhauser/OkPanel"
 depends=(
     'aylurs-gtk-shell'
-    'hyprland'
-    'gvfs'
-    'sox'
-    'wf-recorder'
-    'pipewire-pulse'
-    'grim'
-    'slurp'
-    'jq'
-    'networkmanager'
-    'wireplumber'
     'bluez'
     'bluez-utils'
-    'dart-sass'
-    'upower'
-    'power-profiles-daemon'
     'brightnessctl'
-    'ttf-jetbrains-mono-nerd'
-    'libnotify'
-    'hyprsunset'
-    'cliphist'
-    'wl-clipboard'
     'cava'
+    'cliphist'
+    'dart-sass'
+    'grim'
+    'gvfs'
+    'jq'
+    'hyprland'
+    'hyprsunset'
+    'hyprpicker'
+    'libnotify'
+    'networkmanager'
+    'pipewire-pulse'
+    'power-profiles-daemon'
+    'slurp'
+    'sox'
+    'ttf-jetbrains-mono-nerd'
+    'upower'
+    'wf-recorder'
+    'wireplumber'
+    'wl-clipboard'
 )
 makedepends=('rsync')
 source=("git+$url.git")
