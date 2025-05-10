@@ -10,7 +10,7 @@ pkgname=(gcc14 gcc14-libs gcc14-fortran)
 pkgver=14.2.1+r753+g1cd744a6828f
 _commit=1cd744a6828f6ab9179906d16434ea40b6404737
 _majorver=${pkgver%%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection (14.x.x)'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -208,7 +208,7 @@ package_gcc14() {
   make -C gcc DESTDIR="$pkgdir" install-po
 
   # many packages expect this symlink
-  ln -s gcc "$pkgdir"/usr/bin/cc-14
+  ln -s gcc-14 "$pkgdir"/usr/bin/cc-14
 
   # create cc-rs compatible symlinks
   # https://github.com/rust-lang/cc-rs/blob/1.0.73/src/lib.rs#L2578-L2581
