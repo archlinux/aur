@@ -1,7 +1,6 @@
 post_install() {
     setcap cap_sys_admin+ep usr/bin/gsr-kms-server
-    # Breaks desktop portal :(
-    #setcap cap_sys_nice+ep usr/bin/gpu-screen-recorder
+    setcap cap_sys_nice+ep usr/bin/gpu-screen-recorder
 }
 
 post_upgrade() {
