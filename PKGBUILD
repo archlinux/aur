@@ -1,5 +1,6 @@
 # Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
-pkgname=dashtable2
+pkgname=python-dashtable2
+_pkgname=dash-table2
 pkgver=1.4.17
 _tarname=dashtable2-$pkgver
 pkgrel=1
@@ -19,7 +20,7 @@ build() {
 
 package() {
 	cd $_tarname
-	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$_pkgname/"
 	python -m installer -d "$pkgdir" dist/*.whl
 }
 sha256sums=('11e793f33856b120f0063dc4549262686e3a8595d9e049ed3242b8aaf8021332')
