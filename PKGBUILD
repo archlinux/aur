@@ -5,7 +5,7 @@
 # llvm-profdata merge -output=pcsx2-avx-git.profdata *.profraw
 
 ## options
-: ${_commit:=b2587e676de968965e7d67ecf38e1eafe18f42b4}
+: ${_commit:=f6e0d1d3681176fb809d9e120837e98c514bfc21}
 
 : ${_build_instrumented:=false}
 : ${_build_pgo:=try}
@@ -22,7 +22,7 @@ unset _pkgtype
 
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.303
+pkgver=2.3.308
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
