@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libgpg-error
-pkgver=1.51
+pkgver=1.55
 pkgrel=1
 arch=('any')
 pkgdesc="Support library for libgcrypt (Android ${_android_arch})"
@@ -17,7 +17,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
         '0001-Unversioned-libs.patch')
 # https://www.gnupg.org/download/integrity_check.html
-md5sums=('74b73ea044685ce9fd6043a8cc885eac'
+md5sums=('0430e56fd67d0751b83fc18b0f56a084'
          'SKIP'
          '54f36f7aceeb4748f3e83ec151b085cf')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA') # Werner Koch (dist signing 2020)
