@@ -4,7 +4,7 @@
 
 _pkgname=tshock
 pkgname=${_pkgname}-bin
-pkgver=5.2.3
+pkgver=5.2.4
 _terraria_ver=1.4.4.9
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
@@ -26,7 +26,7 @@ source=(
 	"${_pkgname}.install"
 )
 noextract=("${_pkgname}_${pkgver}.zip")
-sha512sums=('f612ec555afb37e1aa597c1eb418012a9f7fa233f162b8c1c94bf749648ba8fd416c8a5de5e5628839b3082041ca68602ac8ddb9d1dc86f9f82fec4a2c411506'
+sha512sums=('42a32dd30f936ba7b7707ab524d0e4cb28b374369ab8b4c7dc0d45680e75e0865e86730fbb34a979772ac58480f57034ed8bb70a437071345ba68a4365d02e13'
 	'SKIP'
 	'SKIP'
 	'SKIP'
