@@ -2,7 +2,7 @@
 # Contributor: Noeljnuior <liamgliamgmailcom>
 
 pkgname=nextcloud-spreed-signaling
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Standalone signaling server for Nextcloud Talk'
 arch=(any)
@@ -14,7 +14,7 @@ install=nextcloud-spreed-signaling.install
 depends=()
 optdepends=(nats-server janus-gateway)
 source=(https://github.com/strukturag/nextcloud-spreed-signaling/releases/download/v"$pkgver/nextcloud-spreed-signaling-v$pkgver".tar.gz)
-sha256sums=('5c1f50da1a0ae0a0180ea393f47db187d9d5a24df31e80cdd6b9a09c92160a1d')
+sha256sums=('2b76556d3a551d2890756156d91878568f5fdbc0f6906a002621343466962200')
 
 build() {
 	cd "$srcdir"/"$pkgname-v$pkgver" || exit
