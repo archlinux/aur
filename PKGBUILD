@@ -5,8 +5,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libheif-bootstrap
-pkgver=1.19.7
-pkgrel=2
+pkgver=1.19.8
+pkgrel=1
 arch=('any')
 pkgdesc="An HEIF and AVIF file format decoder and encoder (Android ${_android_arch})"
 url='https://github.com/strukturag/libheif'
@@ -44,7 +44,7 @@ provides=("android-${_android_arch}-libheif")
 conflicts=("android-${_android_arch}-libheif")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/strukturag/libheif/releases/download/v${pkgver}/libheif-${pkgver}.tar.gz")
-md5sums=('cbb49df3d35360d228bac47f4287f2b8')
+md5sums=('91d2d2f0ffda76180eebe30ee6e9709d')
 
 build() {
     cd "${srcdir}/libheif-${pkgver}"
