@@ -11,7 +11,7 @@ pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='https://drawpile.net/'
 license=('GPL3')
-makedepends=('cmake' 'extra-cmake-modules' 'karchive5' 'qt6-multimedia' 'qt6-svg' 'qt6-tools')
+makedepends=('cmake' 'extra-cmake-modules' 'libzip' 'qt6-multimedia' 'qt6-svg' 'qt6-tools')
 source=(
     "https://github.com/drawpile/Drawpile/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=(
@@ -41,7 +41,7 @@ package_drawpile() {
 
 package_drawpile-client() {
 	pkgdesc+=' (client)'
-	depends=('desktop-file-utils' 'karchive5' 'qt6-multimedia')
+	depends=('desktop-file-utils' 'libzip' 'qt6-multimedia')
 	optdepends=('qtkeychain-qt6: Password storage')
 	install="${pkgbase}.install"
 	
@@ -54,7 +54,7 @@ package_drawpile-client() {
 
 package_drawpile-server() {
 	pkgdesc+=' (server)'
-	depends=('karchive5')
+	depends=('libzip')
 	optdepends=('libmicrohttpd: web-admin feature'
 		'libsodium: ext-auth support'
 		'libsystemd: systemd and logging support'
