@@ -1,7 +1,7 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r493.7bffcde
+pkgver=r494.8881996
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
@@ -34,7 +34,9 @@ build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX="/opt/${_pkgname}" \
-        -Wno-dev
+        -Wno-dev \
+        -DCMAKE_CXX_FLAGS="-ffat-lto-objects -Wno-builtin-macro-redefined" \
+        -DCMAKE_C_FLAGS="-Wno-builtin-macro-redefined"
     cmake --build build
 }
 
