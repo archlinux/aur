@@ -32,7 +32,7 @@ optdepends=()
 options=()
 
 source=(
-  "https://download-cdn.panic.com/mirror/Linux/mirror-${pkgver}.x86_64.deb"
+  "https://download-cdn.panic.com/mirror/Linux/Mirror-${pkgver}.x86_64.deb"
   "50-playdate-mirror.rules"
 )
 
