@@ -17,13 +17,13 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git clang-opencl-headers-minimal-git)
-pkgver=21.0.0_r526252.c798a5c4d5c3
+pkgver=21.0.0_r537041.f2e62cfca5e5
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=(git cmake libffi libedit ncurses libxml2
-             libxcrypt python python-setuptools zstd)
+             libxcrypt python python-setuptools zstd ninja)
 source=("git+https://github.com/llvm/llvm-project.git"
 )
 sha512sums=('SKIP')
@@ -31,47 +31,53 @@ sha512sums=('SKIP')
 # explicitly disable lto & debug to reduce number of build hangs , resources needed and runtime issues
 options=(!lto !debug )
 
-# LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
-# It can also happen that the kernel oom killer interferes and kills important tasks.
+# Ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
+# It can also cause the kernel oom killer to interfere and kill important tasks.
 # A reasonable value to avoid these issues appears to be 75% of available cores.
-# LITFLAGS is an env vars that can be used to achieve this. It should be set on command line or in files read by your shell on login (like .bashrc ) .
+# This PKGBUILD uses the env vars NINJAFLAGS & LITFLAGS to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-# LITFLAGS="-j 18"
-# NOTE: It's your responbility to validate the value of LITFLAGS. If unsure, don't set it.
+# export NINJAFLAGS="-j 18 -l 18"
+# export LITFLAGS="-j 18"
+# NOTE: It's your responbility to validate the value of LITFLAGS & NINJAFLAGS . If unsure, don't set them.
 
 _get_distribution_components() {
 local target
 local include
 
-make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
+# make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
+ninja -t targets | grep -Po 'install-\K.*(?=-stripped:)' | while read -r target; do
     case $target in
-        llvm-libraries|clang-libraries|clang-tidy-headers|distribution )
+        llvm-libraries|clang-libraries|clang-tidy-headers|distribution)
             include=0
             ;;
-      # don't build functionality conflicting with llvm-libs
-      LLVMgold )
-        include=0
-        ;;
-      # shared libraries
-        LLVM )
+        # don't build functionality conflicting with llvm-libs
+        LLVMgold)
+            include=0
+            ;;
+        # shared libraries
+        LLVM)
             include=1
             ;;
-        # libraries needed for clang-tblgen
-        LLVMDemangle|LLVMSupport|LLVMTableGen )
+        # static libraries needed for clang-tblgen
+        LLVMDemangle|LLVMSupport|LLVMTableGen)
             include=1
             ;;
-      # exclude static libraries
-        LLVM* )
+        # testing libraries
+        LLVMTestingAnnotations|LLVMTestingSupport)
+            include=1
+            ;;
+        # exclude static libraries
+        LLVM*)
             include=0
             ;;
         # exclude llvm-exegesis (doesn't seem useful without libpfm)
-        llvm-exegesis )
+        llvm-exegesis)
             include=0
             ;;
-        clang|clangd|clang-* )
+        clang|clangd|clang-*)
             include=1
             ;;
-        clang*|findAllSymbols )
+        clang*|findAllSymbols)
             include=0
             ;;
         # Anything not covered above is included
@@ -99,9 +105,8 @@ pkgver() {
 }
 
 build() {
-    pkgrel=2
     local cmake_args=(
-        -G "Unix Makefiles"
+        -G Ninja
         -D CMAKE_BUILD_TYPE=Release
         -D CMAKE_INSTALL_PREFIX=/usr
         -D LLVM_BINUTILS_INCDIR=/usr/include
@@ -142,13 +147,13 @@ build() {
     
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
    
-    make  -C _build
+    ninja $NINJAFLAGS -C _build
 }
 
 check() {
-    make -C _build check-llvm
-    make -C _build check-clang
-    make -C _build check-clang-tools
+    ninja $NINJAFLAGS -C _build check-llvm
+    ninja $NINJAFLAGS -C _build check-clang
+    ninja $NINJAFLAGS -C _build check-clang-tools
 }
 
 package_llvm-minimal-git() {
@@ -160,7 +165,7 @@ package_llvm-minimal-git() {
                           'python-setuptools: for using lit'
     )
 
-    make -C _build DESTDIR="$pkgdir" install-distribution
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install-distribution
 
     # Include lit for running lit-based tests in other projects
     pushd "$srcdir"/llvm-project/llvm/utils/lit 
@@ -168,12 +173,12 @@ package_llvm-minimal-git() {
     # -O1 ensures the python files for lit will be optimized
     popd
     
-    # Remove symlinks to prevent conflict with repo llvm-libs
+    # Remove some symlinks to prevent a conflict with repo llvm-libs
     rm "$pkgdir"/usr/lib/lib{LLVM,LTO}.so
     rm "$pkgdir"/usr/lib/libRemarks.so
 
-    # for an unknown reason !staticlibs doesn't remove all static *.a libraries from clang
-    # ensure they are removed
+    # Some static libraries for clang are still built and !staticlibs is unable to remove them
+    # force their removal
     find "$pkgdir"/usr/lib/clang -depth -type f -name "*.a" -delete
     
     # clang uses clang/LLVM_Major_version in it's folder structure
@@ -200,6 +205,7 @@ package_llvm-minimal-git() {
     mv -f "$pkgdir"/usr/lib/{libear,libscanbuild,clang} "$srcdir"/clang/usr/lib
     mv -f "$pkgdir"/usr/lib/cmake/clang "$srcdir"/clang/usr/lib/cmake/
     mv -f "$pkgdir"/usr/include/{clang,clang-c} "$srcdir"/clang/usr/include/
+    
     # llvm project uses /usr/libexec and setting CMAKE_INSTALL_LIBEXECDIR doesn't affect that.
     # to comply with archlinux packaging standards we have to move some files manually
     mv -f "$pkgdir"/usr/libexec/* "$srcdir"/clang/usr/lib/clang
