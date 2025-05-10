@@ -1,9 +1,9 @@
 # Maintainer: <zazaguichi@outlook.com>
 
 pkgname=plantilla-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
-pkgdesc="A tool for cropping and applying templates to images"
+pkgdesc="A tool for cropping and applying branding to images"
 
 provides=('plantilla')
 conflicts=('plantilla')
