@@ -1,0 +1,23 @@
+pkgbase = libdmdutil-git
+	pkgdesc = A cross platform library for performing DMD tasks.
+	pkgver = r129.bb4e0ae
+	pkgrel = 1
+	url = https://github.com/vpinball/libdmdutil
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = cargs
+	depends = gcc-libs
+	depends = glibc
+	depends = libserialport
+	depends = libzedmd
+	depends = libserum-concentrate
+	depends = libpupdmd
+	depends = sockpp
+	provides = libdmdutil
+	provides = libdmdutil-git
+	source = libdmdutil-git::git+https://github.com/vpinball/libdmdutil.git
+	sha256sums = SKIP
+
+pkgname = libdmdutil-git
