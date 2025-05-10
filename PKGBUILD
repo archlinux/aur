@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
 _pkgname=FastDownloader
-pkgver=0.5.23
+pkgver=0.6.0
 _electronversion=31
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/BERNARDO31P/FastDownloader"
@@ -12,12 +12,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'ffmpeg'
+    'yt-dlp'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ae434c3d8c273fd2665cceda7770a93809cd94c5c3120cb23fe8e792026c4670'
+sha256sums=('8a55071e00e2de2c0eab6477dcf0ba9c887655e3508db25f0a391cd4d26bb1e0'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
@@ -28,11 +30,12 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/ffmpeg_linux"
+    ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/yt-dlp_linux"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${_pkgname}/resources/"*_linux -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/icons/"*.png -t "${pkgdir}/usr/lib/${pkgname%-bin}/icons"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(32x32 64x64 256x256)
