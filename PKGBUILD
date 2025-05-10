@@ -16,7 +16,7 @@ source=("https://www.atelierb.eu/wp-content/uploads/2024/09/${pkgname%-bin}-${pk
 sha256sums=('SKIP')
 
 package() {
-  bsdtar -xvf data.tar.* -C ${pkgdir}/
+  tar -xvf data.tar.* -C ${pkgdir}/
   install -Dm644 "$pkgdir/opt/${pkgname%-bin}-$pkgver/bin/AtelierB.desktop" "$pkgdir/usr/share/applications/AtelierB.desktop"
   # fix broken exec path
   sed -i "s/startAB/\/bin\/startAB/" "$pkgdir/usr/share/applications/AtelierB.desktop"
