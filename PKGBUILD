@@ -5,14 +5,14 @@ pkgrel=1
 pkgdesc="Simple, modern, C++ socket library."
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://github.com/fpagliughi/sockpp"
-license=('BSD-3')
-depends=()
+license=('BSD-3-Clause')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'doxygen' 'catch2-v2')
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 
 source=(
-    "https://github.com/fpagliughi/sockpp/archive/refs/tags/v1.0.0.tar.gz"
+    "${pkgname}-${pkgver}-${pkgrel}::https://github.com/fpagliughi/sockpp/archive/refs/tags/v1.0.0.tar.gz"
     'disable-latex-docs.patch'
     'docs-install-path.patch')
 
