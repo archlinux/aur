@@ -1,6 +1,6 @@
 pkgbase = sgfmill-git
 	pkgdesc = Sgfmill is a Python library for reading and writing Go game records using Smart Game Format (SGF).
-	pkgver = sgfmill.1.1.1.r11.gc87cb41
+	pkgver = 1.1.1.r11.gc87cb41
 	pkgrel = 1
 	url = https://github.com/mattheww/sgfmill
 	arch = i686

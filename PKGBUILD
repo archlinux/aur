@@ -4,7 +4,7 @@
 
 pkgname='sgfmill-git'
 _pkgname='sgfmill'
-pkgver=sgfmill.1.1.1.r11.gc87cb41
+pkgver=1.1.1.r11.gc87cb41
 pkgrel=1
 pkgdesc="Sgfmill is a Python library for reading and writing Go game records using Smart Game Format (SGF)."
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --abbrev=7 | sed 's/^sgfmill-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
