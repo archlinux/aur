@@ -1,23 +1,23 @@
-# Maintainer: Alexandru Barbur <alex@ctrlc.name>
+# Maintainer: Jonathan Hilger <joni.hilger@yahoo.de>
 pkgname=sockpp
-pkgver=0.7.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Simple, modern, C++ socket library."
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://github.com/fpagliughi/sockpp"
 license=('BSD-3')
 depends=()
-makedepends=('cmake' 'doxygen' 'catch2')
+makedepends=('cmake' 'doxygen' 'catch2-v2')
 provides=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 
 source=(
-    "https://github.com/fpagliughi/sockpp/archive/refs/tags/v${pkgver}.tar.gz"
+    "https://github.com/fpagliughi/sockpp/archive/refs/tags/v1.0.0.tar.gz"
     'disable-latex-docs.patch'
     'docs-install-path.patch')
 
 sha256sums=(
-    '2e023528bebbd2ac083fc91fbe6d5c4158c3336bedbcff48f594f3b28f53b940'
+    '818477fae6eb29b9daacef71a3d0c494de9e48f6fd267a7fc5a4c332db211bc5'
     '65827b4280a318527d830e0655c2ee7a6172cb7d7349a7a58dd3ac8251ef6f29'
     '1f534e51b88e512b84414fb8510d9c9ce25d6011c63d2d9a9d950661b3c74f64')
 
