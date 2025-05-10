@@ -3,7 +3,7 @@
 pkgname=libsignal-client
 _pkgname=libsignal
 _libname=libsignal_jni
-pkgver=0.68.1
+pkgver=0.70.0
 pkgrel=1
 pkgdesc='Library for the Signal Protocol.'
 url="https://github.com/signalapp/${_pkgname}"
@@ -17,7 +17,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('4059e68b44aab2738b49d14b3d4b7b1a2e20ee02c67e34d8acff834eae8268753e86dd70aab3c28faa1853ae8e903b201c1ed90c2b319b6122d40724dc1b9ed7')
+sha512sums=('52d66cf2643402673858def81a9a3c98a0d16525e126c9e5ea1e3c62150f321e486c8c79bcea11a9636c9b05f541fdf0718869d52b9a789f05cad741ba37c7ad')
 
 prepare() {
   tar xf "${_pkgname}-$pkgver.tar.gz"
