@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/bin/sh
 
 makepkg --printsrcinfo >.SRCINFO
 git add PKGBUILD .SRCINFO
