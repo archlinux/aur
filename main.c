@@ -22,32 +22,32 @@
 #define MAX_EXEMPTS    32
 #define MAX_LINE      256
 
-// Configurable globals
-static int      inactivity_time = 600;    // normal mode idle timeout
+/* Configurable globals */
+static int      inactivity_time = 600;    /* normal mode idle timeout */
 static char   * exempts[MAX_EXEMPTS];
 static int      exempt_count    = 0;
 
-// Environment detection
+/* Environment detection */
 static bool is_wayland   = false;
 static bool is_tiling_wm = false;
 
-// libinput context
+/* libinput context */
 static struct libinput *li = NULL;
 
-// blank‐screen windows
+/* blank-screen windows */
 static SDL_Window **wins     = NULL;
 static int          win_count = 0;
 static bool         blanked   = false;
 
-// timing
+/* timing */
 static double t_last_activity = 0.0;
 static double t_blank         = 0.0;
 
-// forward
+/* forward */
 static void create_blank_windows(void);
 static void destroy_blank_windows(void);
 
-// trim leading/trailing whitespace in-place
+/* trim leading/trailing whitespace in-place */
 static char *trim_whitespace(char *s) {
     char *end;
     while (*s && isspace((unsigned char)*s)) s++;
@@ -58,19 +58,18 @@ static char *trim_whitespace(char *s) {
     return s;
 }
 
-// Monotonic now in seconds
+/* Monotonic now in seconds */
 static double now_sec(void) {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     return ts.tv_sec + ts.tv_nsec/1e9;
 }
 
-// Detect Wayland / tiling WM
+/* Detect Wayland / tiling WM */
 static void detect_environment(void) {
     const char *wd = getenv("WAYLAND_DISPLAY");
     if (wd && *wd) {
         is_wayland = true;
-        printf("Detected Wayland environment\n");
     }
     const char *desktop = getenv("XDG_CURRENT_DESKTOP");
     const char *hypr    = getenv("HYPRLAND_INSTANCE_SIGNATURE");
@@ -78,11 +77,10 @@ static void detect_environment(void) {
                      strstr(desktop,"awesome")||strstr(desktop,"bspwm")))
      || (hypr && *hypr)) {
         is_tiling_wm = true;
-        printf("Detected tiling window manager\n");
     }
 }
 
-// Load ~/.config/lscreensaver/config
+/* Load ~/.config/lscreensaver/config */
 static void load_config(void) {
     char path[512];
     snprintf(path,sizeof(path),CONFIG_PATH_FMT,getenv("HOME"));
@@ -119,13 +117,13 @@ static void load_config(void) {
     }
 }
 
-// Return true if any exempt process is running (checks argv[0] via /proc/*/cmdline)
+/* Return true if any exempt process is running (checks argv[0] via /proc/) */
 static bool any_exempt_running(void) {
     DIR *pd = opendir("/proc");
     if (!pd) return false;
     struct dirent *de;
     while ((de=readdir(pd))) {
-        // skip non-numeric
+        /* skip non-numeric */
         char *endptr;
         long pid = strtol(de->d_name,&endptr,10);
         if (*de->d_name=='\0' || *endptr!='\0' || pid<=0) continue;
@@ -138,7 +136,7 @@ static bool any_exempt_running(void) {
         fclose(c);
         if (n==0) continue;
         buf[n]='\0';
-        // argv[0] up to first '\0'
+        /* argv[0] up to first '\0' */
         char *cmd = buf;
         if (char *b = strrchr(cmd,'/')) cmd = b+1;
         for(int i=0;i<exempt_count;i++){
@@ -152,7 +150,7 @@ static bool any_exempt_running(void) {
     return false;
 }
 
-// libinput open/close
+/* libinput open/close */
 static int open_restricted(const char *path,int flags,void*u){ return open(path,flags); }
 static void close_restricted(int fd,void*u){ close(fd); }
 static const struct libinput_interface li_if = {
@@ -167,7 +165,7 @@ static void init_libinput(void) {
     libinput_udev_assign_seat(li,"seat0");
 }
 
-// Create one black borderless window per display
+/* Create one black borderless window per display */
 static void create_blank_windows(void){
     if (blanked) return;
     SDL_ShowCursor(SDL_DISABLE);
@@ -177,7 +175,6 @@ static void create_blank_windows(void){
 
     win_count = SDL_GetNumVideoDisplays();
     wins = calloc(win_count,sizeof(*wins));
-    printf("Creating %d blank windows\n",win_count);
     for(int i=0;i<win_count;i++){
         SDL_Rect r; SDL_GetDisplayBounds(i,&r);
         char wtitle[64];
@@ -227,13 +224,11 @@ static void create_blank_windows(void){
     }
     blanked = true;
     t_blank = now_sec();
-    printf("Blank windows created and displayed\n");
 }
 
-// Destroy all blank windows
+/* Destroy all blank windows */
 static void destroy_blank_windows(void){
     if (!blanked) return;
-    printf("Destroying blank windows\n");
     for(int i=0;i<win_count;i++)
         if (wins[i]) SDL_DestroyWindow(wins[i]);
     free(wins);
@@ -244,7 +239,7 @@ static void destroy_blank_windows(void){
 }
 
 int main(int argc,char **argv){
-    // see if we're in "lock" mode
+    /* see if we're in "lock" mode */
     bool lock_mode = false;
     for(int i=1;i<argc;i++){
         if (strcmp(argv[i],"-l")==0) {
@@ -256,7 +251,7 @@ int main(int argc,char **argv){
     detect_environment();
 
     if (!lock_mode) {
-        // normal-daemon mode
+        /* normal-daemon mode */
         load_config();
     }
 
@@ -270,12 +265,12 @@ int main(int argc,char **argv){
     struct pollfd pfd = { .fd = li_fd, .events = POLLIN };
 
     if (lock_mode) {
-        // 0.5s delay, then immediate blank
+        /* 0.5s delay, then immediate blank */
         usleep(500000);
         create_blank_windows();
         double t_lock = now_sec();
 
-        // Now wait for any input *after* 3s have passed
+        /* Now wait for any input *after* 3s have passed */
         for(;;) {
             if (poll(&pfd,1,200)>0) {
                 libinput_dispatch(li);
@@ -289,7 +284,7 @@ int main(int argc,char **argv){
                         && (now_sec() - t_lock >= 3.0)) {
                         destroy_blank_windows();
                         SDL_Quit();
-                        // this is the -l process, it exits now
+                        /* this is the -l process, it exits now */
                         return 0;
                     }
                     libinput_event_destroy(ev);
@@ -298,9 +293,11 @@ int main(int argc,char **argv){
         }
     }
     else {
-        // normal idle-screen mode
+        /* normal idle-screen mode */
         t_last_activity = now_sec();
-        bool exempt_prev = any_exempt_running();
+        bool   exempt_now          = any_exempt_running();
+        double t_last_exempt_check = now_sec();
+        const  double EXEMPT_CHECK_INTERVAL = 1.0;   /* seconds */
 
         for(;;){
             if (poll(&pfd,1,200)>0){
@@ -320,22 +317,27 @@ int main(int argc,char **argv){
                 }
             }
 
-            bool exempt_now = any_exempt_running();
-            if (exempt_now != exempt_prev) {
-                t_last_activity = now_sec();
-                exempt_prev = exempt_now;
-                if (blanked && exempt_now)
-                    destroy_blank_windows();
+            /* only hit /proc at most once per second */
+            double t_now = now_sec();
+            if (t_now - t_last_exempt_check >= EXEMPT_CHECK_INTERVAL) {
+                bool new_exempt = any_exempt_running();
+                if (new_exempt != exempt_now) {
+                    t_last_activity = t_now;
+                    if (blanked && new_exempt)
+                        destroy_blank_windows();
+                    exempt_now = new_exempt;
+                }
+                t_last_exempt_check = t_now;
             }
 
-            if (!blanked && (now_sec() - t_last_activity) >= inactivity_time) {
+            if (!blanked && (t_now - t_last_activity) >= inactivity_time) {
                 if (!exempt_now)
                     create_blank_windows();
             }
         }
     }
 
-    // never reached
+    /* never reached */
     SDL_Quit();
     return 0;
 }
