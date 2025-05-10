@@ -1,7 +1,7 @@
 pkgbase = oxidizebot-bin
 	pkgdesc = High performance Twitch bot in Rust.(Prebuilt version)
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://setbac.tv/
 	arch = x86_64
 	license = Apache-2.0
