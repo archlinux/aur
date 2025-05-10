@@ -2,7 +2,7 @@
 _pkgname=amethyst
 pkgname="${_pkgname}-player-bin"
 _appname=Amethyst
-pkgver=2.1.1
+pkgver=2.1.2
 _electronversion=24
 pkgrel=1
 pkgdesc="A cross-platform music player made with Typescript.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
 )
 sha256sums=('2f892795f62b8f7bef478575fae01c686a673766689d3b50958f8acfddacb510'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('8bde7ec5d275698cbbf9ed0f8b359798d0e31d4d46d43cf195466c007ae1d619')
-sha256sums_x86_64=('abe4fbe1c442edf938fb261b180862299ec4b39dea1543ccefdf072a3fcef854')
+sha256sums_aarch64=('3ef311313b5f585cbad262ba1f4e7c45af9b40d5a9d4b536a0d4c64f90c86df3')
+sha256sums_x86_64=('f530d95a4c6dc4295c974f0d83eb7006058b8be5e427afa1cdec5681b5d1fe97')
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -43,12 +43,13 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/Music;/AudioVideo;/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    rm -rf "${srcdir}/opt/${_appname}/resources/app.asar.unpacked/node_modules/@biomejs/cli-linux-x64-musl"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_appname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_appname}/resources/"{app.asar.unpacked,assets} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/3537x3537/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
