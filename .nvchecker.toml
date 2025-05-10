@@ -1,0 +1,4 @@
+[ocm-bin]
+source = "git"
+git = "https://github.com/openshift-online/ocm-cli.git"
+prefix = "v"

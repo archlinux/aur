@@ -1,22 +1,18 @@
-# Maintainer: jbpratt <jbpratt78 at gmail dot com>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=ocm-bin
-pkgver=0.1.66
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="CLI for the Red Hat OpenShift Cluster Manager"
+arch=("any")
 url="https://github.com/openshift-online/ocm-cli"
-arch=("x86_64")
+license=("Apache-2.0")
 provides=("ocm")
 conflicts=("ocm")
-license=("APACHE")
-
-source=("https://raw.githubusercontent.com/openshift-online/ocm-cli/v${pkgver}/LICENSE.txt")
-source_x86_64=("${pkgname}-${pkgver}::https://github.com/openshift-online/ocm-cli/releases/download/v${pkgver}/ocm-linux-amd64")
-
-sha256sums=("0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594")
-sha256sums_x86_64=("f0817ae854c0f5bbe2ae7f89c9ad925dd2dd2496b60e083fdf55de5c627407d2")
+source=("https://github.com/openshift-online/ocm-cli/releases/download/v$pkgver/ocm-linux-amd64")
+b2sums=('3a09b33fd495cd7ad81e3b399d5f75864f98c4b0a203ea3ada5c3fc66d94bebe672cc99d3751290dc28729ec6d411bb6044bdd15e523d49b606c02e4fecb1d11')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/ocm"
-  install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
+    install -Dm755 "ocm-linux-amd64" "${pkgdir}/usr/bin/ocm"
 }
