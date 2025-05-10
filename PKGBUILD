@@ -1,14 +1,14 @@
 # Maintainer: dimtpap <dimtpap@protonmail.com>
 pkgname=coppwr
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
 url='https://dimtpap.ovh/coppwr'
-license=('GPL3')
-depends=('pipewire' 'libxkbcommon' 'libxkbcommon-x11')
+license=('GPL-3.0-only')
+depends=('pipewire' 'libpipewire' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-icon-theme' 'gcc-libs' 'glibc')
 provides=('coppwr')
-makedepends=('cargo' 'clang' 'libpipewire')
+makedepends=('cargo' 'clang')
 optdepends=('xdg-desktop-portal: Camera and Screencast XDP support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimtpap/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("63fbe71155e0969ddc6342e2793c95222097c54b8f07494d99795aac84d922f5")
@@ -16,7 +16,8 @@ sha256sums=("63fbe71155e0969ddc6342e2793c95222097c54b8f07494d99795aac84d922f5")
 prepare() {
 	cd "$pkgname-$pkgver"
 
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
