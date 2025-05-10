@@ -1,7 +1,7 @@
 pkgbase = plasma6-wallpapers-wallpaper-engine-git
 	pkgdesc = A simple kde wallpaper plugin integrating wallpaper engine
 	pkgver = 0.5.4.r102.ged58dd8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catsout/wallpaper-engine-kde-plugin
 	arch = x86_64
 	license = GPL-2.0-only
