@@ -2,14 +2,14 @@
 # Contributor: futrime <https://github.com/futrime>
 
 pkgname=lip-git
-_pkgname=lip-bin
+_pkgname=lip
 pkgver=0.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
 license=('GPL3')
-conflicts=(lip)
+conflicts=(lip-bin)
 options=(!strip)
 makedepends=(
     dotnet-sdk

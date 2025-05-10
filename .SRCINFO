@@ -1,7 +1,7 @@
 pkgbase = lip-git
 	pkgdesc = A general package installer
 	pkgver = 0.31.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/futrime/lip
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = lip-git
 	makedepends = dotnet-runtime
 	makedepends = dotnet-host
 	makedepends = git
-	conflicts = lip
+	conflicts = lip-bin
 	options = !strip
 	source = git+https://github.com/futrime/lip.git
 	source = lip.1
