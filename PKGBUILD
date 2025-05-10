@@ -1,14 +1,14 @@
 # Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=libframeutil-git
 pkgver=r9.30048ca
-pkgrel=1
+pkgrel=2
 pkgdesc="Some DMD frame utilities used by libzedmd and libdmdutil"
 arch=('x86_64')
 url="https://github.com/ppuc/libframeutil"
 license=('GPL-3.0-or-later')
 depends=()
 makedepends=('git')
-provides=('libframeutil')
+provides=('libframeutil' 'libframeutil-git')
 source=("${pkgname}::git+https://github.com/PPUC/libframeutil.git")
 sha256sums=('SKIP')
 

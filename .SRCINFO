@@ -1,12 +1,13 @@
 pkgbase = libframeutil-git
 	pkgdesc = Some DMD frame utilities used by libzedmd and libdmdutil
 	pkgver = r9.30048ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ppuc/libframeutil
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	provides = libframeutil
+	provides = libframeutil-git
 	source = libframeutil-git::git+https://github.com/PPUC/libframeutil.git
 	sha256sums = SKIP
 
