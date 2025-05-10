@@ -3,7 +3,7 @@
 pkgname=python-dashtable
 _name=${pkgname#python-}
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for converting HTML tables into ASCII tables, rowspan and colspan allowed!"
 arch=("x86_64")
 url="https://github.com/doakey3/DashTable"

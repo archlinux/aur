@@ -1,12 +1,19 @@
 pkgbase = python-dashtable
+	pkgdesc = A library for converting HTML tables into ASCII tables, rowspan and colspan allowed!
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doakey3/DashTable
 	arch = x86_64
 	license = MIT
-	makedepends = python-pip
-	depends = python-beautifulsoup4
-	depends = python-docutils
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	optdepends = python-docutils
+	optdepends = python-beautifulsoup4
+	conflicts = python-dashtable2
+	source = https://files.pythonhosted.org/packages/source/d/dashtable/dashtable-1.4.5.tar.gz
+	sha256sums = 74138dd0bec6044dcab5e64e76140b359cb60f73611e9a8a7b8f814d4769996a
 
 pkgname = python-dashtable
-
