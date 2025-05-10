@@ -3,7 +3,7 @@
 pkgname="collada-dom"
 provides=("colladadom")
 pkgver=2.5.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An API that provides a C++ object representation of a COLLADA XML instance document."
 url="https://github.com/rdiankov/collada-dom/"
 license=("custom")
@@ -29,6 +29,7 @@ prepare() {
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -Wno-dev
     cmake --build build
 }
