@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 10.9.0.34
-	pkgrel = 2
+	pkgver = 10.10.0.31
+	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
 	license = Apache-2.0
@@ -17,8 +17,8 @@ pkgbase = tensorrt
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.20.1.tar.gz
-	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.9.0/tars/TensorRT-10.9.0.34.Linux.x86_64-gnu.cuda-12.8.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.9.0
+	source = https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/10.10.0/tars/TensorRT-10.10.0.31.Linux.x86_64-gnu.cuda-12.9.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=v10.10.0
 	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -29,10 +29,9 @@ pkgbase = tensorrt
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-python.patch
 	source = 030-tensorrt-fix-gpu-archs-list.patch
-	source = 040-tensorrt-python-cmake4-fix.patch
 	source = TensorRT-LICENSE-AGREEMENT.txt
-	sha256sums = 33be0e61e3bf177bbbcabb4892bf013f0c8ac71d2be73f2803848a382cb14272
-	sha256sums = 86081c7f10f4fc6d7e520eb960e5d679eeaf946e3e78bd4ee3d949edbde60b5f
+	sha256sums = 690387fcf1dfe5ef8c4bc14a23d6360999145743471d806c2edbf998a64a0cd6
+	sha256sums = e119fe3c2c0636a4e82fa317d10220492327d03cb5ad61b6fb9637401741b907
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -41,9 +40,8 @@ pkgbase = tensorrt
 	sha256sums = SKIP
 	sha256sums = dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9
 	sha256sums = ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f
-	sha256sums = 3bedc30fcfa6bdbae9f42cb66df8207655a3d4c901eb31dcd0186c834f619bcf
+	sha256sums = c2763950e5464f6051aaca700f670348e487479b702e88e9500a8f55069f1e96
 	sha256sums = 901f4d365a15adf741262cdf9c4e8a07e73ae70854bd2fc90b1b80d0cb4d3fdf
-	sha256sums = 12a0f7e9c6a86eefd9b365d23b027c6bc65a2284c75edc0398620bb8711419dd
 	sha256sums = 64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a
 
 pkgname = tensorrt
@@ -69,6 +67,6 @@ pkgname = python-tensorrt
 	optdepends = python-protobuf: for polygraphy python modules
 	optdepends = python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules
 	optdepends = python-tf2onnx: for tensorflow-quantization python module
-	provides = python-onnx-graphsurgeon=0.5.6
+	provides = python-onnx-graphsurgeon=0.5.7
 	provides = python-polygraphy=0.49.20
 	provides = python-tensorflow-quantization=0.2.0

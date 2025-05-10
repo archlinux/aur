@@ -1,6 +1,6 @@
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -41,7 +41,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
+@@ -307,7 +307,7 @@ set(CMAKE_CXX_STANDARD ${CPP_STANDARD})
  
  if(NOT MSVC)
      # This allows us to use TRT libs shipped with standalone wheels.
@@ -9,26 +9,17 @@
  endif()
  
  # -------- PATHS --------
-@@ -99,8 +99,8 @@ if(MSVC)
+@@ -371,8 +371,8 @@ if(MSVC)
  else()
      find_path(
          PY_INCLUDE Python.h
 -        HINTS ${EXT_PATH}/${PYTHON} /usr/include/${PYTHON}
--        PATH_SUFFIXES include)
+-        PATH_SUFFIXES include
 +        HINTS /usr/include
-+        PATH_SUFFIXES ${PYTHON})
++        PATH_SUFFIXES ${PYTHON}
+         REQUIRED
+     )
  endif()
- 
- message(STATUS "PY_INCLUDE: ${PY_INCLUDE}")
-@@ -124,7 +124,7 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
- 
- include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS}
-                     ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR})
--link_directories(${TENSORRT_BUILD})
-+link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
- 
- if(MSVC)
-     # Prevent pybind11 from sharing resources with other, potentially ABI incompatible modules
 --- a/python/build.sh
 +++ b/python/build.sh
 @@ -35,15 +35,17 @@ cmake .. -DCMAKE_BUILD_TYPE=Release \
