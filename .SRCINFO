@@ -9,6 +9,6 @@ pkgbase = boxunbox
 	provides = unbox
 	conflicts = boxunbox-git
 	source = boxunbox-0.1.26.tar.gz::https://github.com/dablenparty/boxunbox/archive/v0.1.26.tar.gz
-	sha256sums = daf585d9c56210f65cbe213ee54a0c3f129dcfdc90ce26cf039adbdae9d9b4a4
+	sha256sums = 8732f168387d47b54975859bbafbb066393526f8c6f717fd3451f32ab0b122cc
 
 pkgname = boxunbox

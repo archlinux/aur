@@ -11,7 +11,7 @@ depends=()
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 provides=(unbox)
-sha256sums=('daf585d9c56210f65cbe213ee54a0c3f129dcfdc90ce26cf039adbdae9d9b4a4')
+sha256sums=('8732f168387d47b54975859bbafbb066393526f8c6f717fd3451f32ab0b122cc')
 conflicts=('boxunbox-git')
 
 prepare() {
