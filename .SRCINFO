@@ -1,0 +1,19 @@
+pkgbase = dashtable2
+	pkgdesc = A library for converting HTML/Markdown/RST tables into ASCII tables and vice versa, rowspan and colspan allowed!
+	pkgver = 1.4.17
+	pkgrel = 1
+	url = https://github.com/PasaOpasen/dashtable2
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-beautifulsoup4
+	depends = python-docutils
+	depends = python-typing_extensions
+	depends = python-numpy
+	source = dashtable2-1.4.17.tar.gz::https://github.com/PasaOpasen/dashtable2/archive/1.4.17.zip
+	sha256sums = 11e793f33856b120f0063dc4549262686e3a8595d9e049ed3242b8aaf8021332
+
+pkgname = dashtable2
