@@ -4,7 +4,7 @@
 
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
-pkgver=5.10.0
+pkgver=5.11.0
 pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
@@ -16,13 +16,13 @@ license=(Apache)
 # Expected one is 'electron25' (Electron 25). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
 # the executable matches the package name (as of 2023-09-11).
-_electron='electron25'
+_electron='electron33'
 depends=($_electron)
-makedepends=(expac git nvm python)
-source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
+makedepends=(expac nvm python)
+source=("https://github.com/meetfranz/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         franz.desktop
         franz.sh.in)
-sha512sums=('SKIP'
+sha512sums=('56e6623ad7bf2a5a30f2b24fa1a7dfd062b22eb9eff922a6c3f2498f7ec35b1150f6884a6462961c47377fa52d23d55412bea4b2d82ddb4f2bab125b34a893a8'
             '049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e'
             '7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48')
 
@@ -49,11 +49,11 @@ _ensure_nvm_setup() {
 
 prepare() {
   # Small patching
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # Adjust the electron version to use when building
   echo "--> Using Electron package:   $_electron"
-  electron_version="`expac %v $_electron | cut -d'-' -f1`"
+  electron_version="$(cat /usr/lib/$_electron/version)"
   echo "--> Electron package version: $electron_version"
   sed -i -E "s|(\s+\"electron\":).*,|\1 \"$electron_version\",|" package.json
 
@@ -66,9 +66,6 @@ prepare() {
 
   echo "--> Install toolchain with nvm"
   nvm install
-
-  echo "--> Install updated node-gyp"
-  npm install node-gyp@9
 
   echo "--> Install modules dependencies"
   # The author still uses old dependencies resolution.
@@ -84,20 +81,23 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # Be sure we are correctly setup
   _ensure_nvm_setup
 
   # Actually build the package
   echo "--> Building the package"
+  # The following are the same commands done from "npm build", with slight changes for the electron-builder
   npm exec lerna run build
   npm exec gulp build
-  npm exec -- electron-builder --linux dir
+  _electron_dist="/usr/lib/$_electron"
+  _electron_version="$(cat $_electron_dist/version)"
+  npm exec -- electron-builder --linux dir -c.electronDist=$_electron_dist -c.electronVersion=$_electron_version
 }
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
 
   # Be sure we are correctly setup
   _ensure_nvm_setup
@@ -108,7 +108,7 @@ check() {
 }
 
 package() {
-  cd $pkgname
+  cd "$pkgname-$pkgver"
 
   # Point the proper Electron package version, so that people can complain when it's updated.
   # This is for extra safety & reminds me of upgrading the package.
