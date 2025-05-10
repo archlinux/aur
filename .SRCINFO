@@ -1,0 +1,17 @@
+pkgbase = libpupdmd-git
+	pkgdesc = A cross-platform library for matching PUP triggers in DMD frames.
+	pkgver = r24.124f45e
+	pkgrel = 1
+	url = https://github.com/ppuc/libpupdmd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	provides = libpupdmd-git
+	provides = libpupdmd
+	source = libpupdmd-git::git+https://github.com/PPUC/libpupdmd.git
+	sha256sums = SKIP
+
+pkgname = libpupdmd-git
