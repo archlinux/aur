@@ -20,7 +20,7 @@ depends=('libbsd>=0.2.0'
 'readline'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/levaidaniel/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0e6c07a4a6fcb8ebd3ae4a82a74d2869e3c055730da9997642170d86ea2b909b')
+sha256sums=('ffc7485fb3d7b5f21ff36e6ce15e3d42237c76b7c4143a859496bbb6349a9dcc')
 
 
 build() {
