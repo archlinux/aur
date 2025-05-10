@@ -1,24 +1,21 @@
 pkgbase = libevhtp-seafile
 	pkgdesc = A more flexible replacement for libevent's httpd API. [Built for seafile]
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 2
 	url = https://github.com/haiwen/libevhtp
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	arch = armv6h
 	arch = aarch64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = cmake
 	depends = libevent>=2.0.0
-	depends = oniguruma
 	provides = libevhtp
 	conflicts = libevhtp
 	source = libevhtp-1.2.0.tar.gz::https://github.com/haiwen/libevhtp/archive/1.2.0.tar.gz
-	source = fixed_test_code.patch
+	source = Use_posix_regex_instead_oniguruma.diff
 	sha256sums = d8d98072693f5f68ccd74d327dedfa2f6add4446ac2799689c2f58dd480aa301
-	sha256sums = 0e30ff28d0bda592fd70f9e4bee54499473c9b7de6e017422c8c6420735eb992
+	sha256sums = d6d911f25bd9ca236d03c6ebc978d60feb49030cb8ba7158363d09984249c581
 
 pkgname = libevhtp-seafile
-

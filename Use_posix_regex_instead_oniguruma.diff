@@ -1,0 +1,105 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b0e77a..26dc68a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -94,58 +94,6 @@ if (NOT OPENSSL_FOUND)
+ 	set (OPENSSL_LIBRARIES "")
+ 	set (LIBEVENT_OPENSSL_LIBRARY "")
+ endif()
+-	
+-
+-if (NOT EVHTP_DISABLE_REGEX)
+-	CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/oniguruma/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/oniguruma/config.h)
+-	set(ONIG_SOURCES
+-		oniguruma/regerror.c
+-		oniguruma/regparse.c
+-		oniguruma/regext.c
+-		oniguruma/regcomp.c
+-		oniguruma/regexec.c
+-		oniguruma/reggnu.c
+-		oniguruma/regenc.c
+-		oniguruma/regsyntax.c
+-		oniguruma/regtrav.c
+-		oniguruma/regversion.c
+-		oniguruma/st.c
+-		oniguruma/regposix.c
+-		oniguruma/regposerr.c
+-		oniguruma/enc/unicode.c
+-		oniguruma/enc/ascii.c
+-		oniguruma/enc/utf8.c
+-		oniguruma/enc/utf16_be.c
+-		oniguruma/enc/utf16_le.c
+-		oniguruma/enc/utf32_be.c
+-		oniguruma/enc/utf32_le.c
+-		oniguruma/enc/euc_jp.c
+-		oniguruma/enc/sjis.c
+-		oniguruma/enc/iso8859_1.c
+-		oniguruma/enc/iso8859_2.c
+-		oniguruma/enc/iso8859_3.c
+-		oniguruma/enc/iso8859_4.c
+-		oniguruma/enc/iso8859_5.c
+-		oniguruma/enc/iso8859_6.c
+-		oniguruma/enc/iso8859_7.c
+-		oniguruma/enc/iso8859_8.c
+-		oniguruma/enc/iso8859_9.c
+-		oniguruma/enc/iso8859_10.c
+-		oniguruma/enc/iso8859_11.c
+-		oniguruma/enc/iso8859_13.c
+-		oniguruma/enc/iso8859_14.c
+-		oniguruma/enc/iso8859_15.c
+-		oniguruma/enc/iso8859_16.c
+-		oniguruma/enc/euc_tw.c
+-		oniguruma/enc/euc_kr.c
+-		oniguruma/enc/big5.c
+-		oniguruma/enc/gb18030.c
+-		oniguruma/enc/koi8_r.c
+-		oniguruma/enc/cp1251.c)
+-else()
+-	set(ONIG_SOURCES "")
+-endif()
+-
+ 
+ include_directories(
+ 	${CMAKE_CURRENT_BINARY_DIR}/compat
+@@ -206,26 +154,10 @@ ELSE ()
+ ENDIF (WIN32)
+ 
+ if (EVHTP_BUILD_SHARED)
+-	add_library(libevhtpShared SHARED ${LIBEVHTP_SOURCES} ${ONIG_SOURCES})
++	add_library(libevhtpShared SHARED ${LIBEVHTP_SOURCES})
+ 	set_target_properties(libevhtpShared PROPERTIES OUTPUT_NAME "evhtp")
+ 	target_link_libraries(libevhtpShared ${LIBEVHTP_EXTERNAL_LIBS})
+ 	install (TARGETS libevhtpShared DESTINATION lib)
+-
+-	add_executable(test test.c)
+-	target_link_libraries(test libevhtpShared ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+-
+-	add_executable(test_basic test_basic.c)
+-	target_link_libraries(test_basic libevhtpShared ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+-
+-	add_executable(test_vhost test_vhost.c)
+-	target_link_libraries(test_vhost libevhtpShared ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+-
+-	add_executable(test_client test_client.c)
+-	target_link_libraries(test_client libevhtpShared ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+-
+-	add_executable(test_proxy test_proxy.c)
+-	target_link_libraries(test_proxy libevhtpShared ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+-
+ else()
+ 	add_library(libevhtpStatic STATIC ${LIBEVHTP_SOURCES} ${ONIG_SOURCES})
+ 	set_target_properties(libevhtpStatic PROPERTIES OUTPUT_NAME "evhtp") 
+diff --git a/evhtp.h b/evhtp.h
+index a44b573..49a98a5 100644
+--- a/evhtp.h
++++ b/evhtp.h
+@@ -8,7 +8,8 @@
+ #include <htparse.h>
+ 
+ #ifndef EVHTP_DISABLE_REGEX
+-#include <onigposix.h>
++#include <sys/types.h>
++#include <regex.h>
+ #endif
+ 
+ #include <sys/queue.h>

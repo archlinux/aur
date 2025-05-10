@@ -6,38 +6,41 @@
 _pkgname=libevhtp
 pkgname="${_pkgname}"-seafile
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc="A more flexible replacement for libevent's httpd API. [Built for seafile]"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/haiwen/libevhtp"
-license=('BSD')
-depends=('libevent>=2.0.0' 'oniguruma')
+license=('BSD-3-Clause')
+depends=('libevent>=2.0.0')
 makedepends=('cmake')
 provides=('libevhtp')
 conflicts=('libevhtp')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "fixed_test_code.patch")
+        'Use_posix_regex_instead_oniguruma.diff')
 sha256sums=('d8d98072693f5f68ccd74d327dedfa2f6add4446ac2799689c2f58dd480aa301'
-            '0e30ff28d0bda592fd70f9e4bee54499473c9b7de6e017422c8c6420735eb992')
+            'd6d911f25bd9ca236d03c6ebc978d60feb49030cb8ba7158363d09984249c581')
 
 prepare(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  patch -p1 < "${srcdir}"/fixed_test_code.patch
-
+  patch -p1 < "${srcdir}/Use_posix_regex_instead_oniguruma.diff"
 }
 
 build () {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DEVHTP_DISABLE_SSL=ON -DEVHTP_BUILD_SHARED=ON ./
-    make
+    cmake \
+        -B build -S "${srcdir}/${_pkgname}-${pkgver}" \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DEVHTP_DISABLE_SSL=ON \
+        -DEVHTP_BUILD_SHARED=ON
+    cmake --build build
 }
 
 package () {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
-    rm -fv ${pkgdir}/usr/include/onigposix.h
+    DESTDIR="$pkgdir" cmake --install build
 
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
