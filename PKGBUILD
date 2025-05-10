@@ -1,15 +1,15 @@
 # Maintainer: Aman Gupta <aman.iv0012@gmail.com>
 
 pkgname=logstash
-pkgver=8.17.4
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Transport and process your logs, events, or other data"
 arch=('x86_64')
 url="https://www.elastic.co/logstash/"
 license=('Apache-2.0 OR Elastic-2.0')
 # groups=()
-depends=('jre17-openjdk' 'ruby' 'ruby-bundler' 'coreutils' 'awk')
-makedepends=('jdk17-openjdk' 'git')
+depends=('jre21-openjdk' 'ruby' 'ruby-bundler' 'coreutils' 'awk')
+makedepends=('jdk21-openjdk' 'git')
 # optdepends=()
 # provides=()
 # conflicts=()
@@ -29,11 +29,11 @@ source=(https://github.com/elastic/logstash/archive/v${pkgver}/${pkgname}-${pkgv
         logstash-tmpfile.conf
         bundle.config)
 # noextract=()
-md5sums=('32715791f53cf608417943119d9e0854'
+md5sums=('93c2491ab208caa2632debaa5ea9b040'
          '4c3efce8ba4da2605c1f2e839e3af55c'
          '54523d10c53cf5461a40a33d775c12c1'
          '7ef5efbe99cf9f4c29a221999ec41248'
-         '9b1d67aedd308f9eb978a1f049130d1f'
+         '9ceced2fc13cc6e4576c9de10645bfdd'
          'e79a8d6e3b207a2dc52f3bfbac64cea5')
 
 build() {
@@ -42,9 +42,6 @@ build() {
   # export OSS=true
   # export JRUBY_OPTS="-Xms1g -Xmx1g"
 
-  export JAVA_OPTS="--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED"
-  export GRADLE_OPTS="-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs=-Xmx2g -Dfile.encoding=UTF-8"
-
   ./gradlew clean installDefaultGems --no-daemon --warning-mode all
 }
 
@@ -52,11 +49,11 @@ package() {
   cd ${pkgname}-${pkgver}
 
   install -dm 755 "${pkgdir}/usr/share/logstash" "${pkgdir}/etc/conf.d"
-  mv config/startup.options "${pkgdir}/etc/conf.d/logstash"
-  mv config "${pkgdir}/etc/logstash"
+  cp -r config/startup.options "${pkgdir}/etc/conf.d/logstash"
+  cp -r config "${pkgdir}/etc/logstash"
   chmod 750 "${pkgdir}/etc/logstash"
 
-  cp -a bin data lib logstash* modules vendor Gemfile* "${pkgdir}/usr/share/logstash"
+  cp -r bin data lib logstash* vendor Gemfile* "${pkgdir}/usr/share/logstash"
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
