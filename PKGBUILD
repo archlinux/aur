@@ -1,7 +1,8 @@
-# Maintainer: Jonathan Hilger <joni.hilger@yahoo.de>
+# Contributor:  Alexandru Barbur <alex@ctrlc.name>
+# Maintainer:   Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=sockpp
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, modern, C++ socket library."
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://github.com/fpagliughi/sockpp"
