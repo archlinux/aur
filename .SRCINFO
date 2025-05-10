@@ -1,0 +1,17 @@
+pkgbase = libserum-concentrate-git
+	pkgdesc = Fork of libserum, a cross-platform library for decoding Serum files & colorization format for pinball ROMs
+	pkgver = r333.b6f7ea2
+	pkgrel = 1
+	url = https://github.com/PPUC/libserum_concentrate
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	provides = libserum-concentrate
+	provides = libserum-concentrate-git
+	source = libserum-concentrate-git::git+https://github.com/PPUC/libserum_concentrate.git
+	sha256sums = SKIP
+
+pkgname = libserum-concentrate-git
