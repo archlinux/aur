@@ -1,7 +1,7 @@
 # Contributor: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=telescope
-pkgver=0.10.1
+pkgver=0.11
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://www.telescope-browser.org/'
 license=('ISC')
 depends=('libbsd' 'libgrapheme' 'libretls' 'ncurses') #'imsg-compat'
 source=("https://github.com/$pkgname-browser/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('01446a1129741c6a201c4b5446390e9331487af844cef6bfd35419989168e618')
+sha256sums=('0b56fc56958d4b4c2ecc7dc971d4f7c156ca827d5bd97b70dcb541cf9e423927')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

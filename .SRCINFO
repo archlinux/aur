@@ -1,6 +1,6 @@
 pkgbase = telescope
 	pkgdesc = w3m-like browser for Gemini
-	pkgver = 0.10.1
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://www.telescope-browser.org/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = telescope
 	depends = libgrapheme
 	depends = libretls
 	depends = ncurses
-	source = https://github.com/telescope-browser/telescope/releases/download/0.10.1/telescope-0.10.1.tar.gz
-	sha256sums = 01446a1129741c6a201c4b5446390e9331487af844cef6bfd35419989168e618
+	source = https://github.com/telescope-browser/telescope/releases/download/0.11/telescope-0.11.tar.gz
+	sha256sums = 0b56fc56958d4b4c2ecc7dc971d4f7c156ca827d5bd97b70dcb541cf9e423927
 
 pkgname = telescope
