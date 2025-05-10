@@ -1,14 +1,14 @@
+# Contributor: Mr.Smith1974 < ... >
 # Maintainer: Jonathan Hilger <joni.hilger@yahoo.de>
 pkgname=vpinball
-pkgver=r7991.e910e3c
-pkgrel=1
+pkgver=r7998.32a8e64
+pkgrel=2
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
 license=('GPLv3.0+' 'MAME')
 depends=('python' 'bzip2' 'glibc' 'xz' 'libxcb' 'systemd-libs' 'zlib' 'alsa-lib' 'libdrm' 'gcc-libs')
-makedepends=('unzip' 'alsa-lib' 'freeimage' 'cmake' 'git' 'gcc' 'pkgconf' 'autoconf' 'automake' 'libtool' 'nasm' 'bison' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
-#makedepends=('unzip' 'alsa-lib' 'freeimage' 'sdl2' 'sdl3' 'cmake' 'git' 'gcc' 'pkgconf' 'autoconf' 'automake' 'libtool' 'nasm' 'bison' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
+makedepends=('unzip' 'alsa-lib' 'freeimage' 'cmake' 'git' 'nasm' 'curl' 'systemd' 'libx11' 'mesa' 'libxext' 'zlib-ng' 'wayland' 'libxkbcommon')
 provides=('vpinball')
 source=("${pkgname}::git+https://github.com/vpinball/vpinball.git"
 	"vpinball.desktop"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  CFLAGS= platforms/linux-x64/external.sh
+  platforms/linux-x64/external.sh
   cp make/CMakeLists_bgfx-linux-x64.txt CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE=Release -B build
   cmake --build build
