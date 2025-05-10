@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="The AI Code Editor"
 arch=('x86_64')
 url="https://www.cursor.com"
-license=('custom:Proprietary') #should be fixed
+license=('custom') #should be fixed
 _elnum=34
 depends=(electron${_elnum} ripgrep #replacements
-'hicolor-icon-theme'  'libxkbfile')
+hicolor-icon-theme libxkbfile)
 optdepends=('electron: For /usr/share/cursor/cursor-latestron'
 'vulkan-driver')
 makedepends=(sed)
@@ -19,12 +19,12 @@ source=("src.iso::https://downloads.cursor.com/production/bbfa51c1211255cbbde8b5
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('d49032ada9c7f405a0efb98db34abdb87de26d297ae43c2a9a75009806ec184e'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
-options=(strip)
+#options=(!strip)
 prepare() {
 	chmod +x src.iso;./src.iso --appimage-extract > /dev/null
 	# Verify version of electron
 	echo Replacing $(rg -m 1 '"electron":\s*"[0-9]+' squashfs-root/usr/share/cursor/resources/app/package.json) with $(cat /usr/lib/electron${_elnum}/version)
-	echo 'Ask packager to fix if "major" version is wrong.'
+	echo 'Fix if "major" version is wrong.'
 }
 _app=/usr/share/cursor/resources/app
 build() {
@@ -34,6 +34,15 @@ build() {
 	sed -e s/name=electron/name=electron${_elnum}/ run.sh > run-safe.sh
 	# ripgrep
 	ln -svf /usr/bin/rg squashfs-root/usr/share/cursor/resources/app/node_modules/@vscode/ripgrep/bin/rg
+	# code-oss ( update .node binaries ? depends+=(code) )
+	#for _e in /usr/lib/code/extensions/*;do
+	#	_t=squashfs-root/usr/share/cursor/resources/app/extensions/$(basename $_e)
+	#	rm -rf "$_t";ln -sf "$_e" "$_t"
+	#done
+	#for _e in /usr/lib/code/node_modules/*;do
+	#	_t=squashfs-root/usr/share/cursor/resources/app/node_modules/$(basename $_e)
+	#	rm -rf "$_t";ln -svf "$_e" "$_t"
+	#done
 }
 package(){
 	install -d "${pkgdir}"/usr/share/cursor/resources
