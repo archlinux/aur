@@ -1,6 +1,6 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
@@ -16,25 +16,25 @@ pkgbase = sysbox-ce
 	depends = rsync
 	depends = fuse2
 	optdepends = shiftfs: For uid-mapping on very old kernels without idmapped-mounts
-	source = git+https://github.com/nestybox/sysbox.git#tag=v0.6.6
-	source = git+https://github.com/nestybox/dockerfiles.git#commit=6f9238079b9b1a9364895da5a429f025528ab033
-	source = git+https://github.com/nestybox/sysbox-fs.git#commit=2d853ebf2592f79ae8cb0bfd1524f1163a0a9175
+	source = git+https://github.com/nestybox/sysbox.git#tag=v0.6.7
+	source = git+https://github.com/nestybox/dockerfiles.git#commit=f27a6f2b4a97377f932968d2897ba1603680036a
+	source = git+https://github.com/nestybox/sysbox-fs.git#commit=6a8d71f54e7570e5297af89ff24ed3bafa61659f
 	source = git+https://github.com/nestybox/fuse.git#commit=45cd9a3d884448418546d8eaa54ee7d772e576d6
 	source = git+https://github.com/nestybox/sysbox-ipc.git#commit=f05151f4b4c1df63d7fd241577ca032905c1bd0e
-	source = git+https://github.com/nestybox/sysbox-libs.git#commit=2ccacbeb20a7095b1ea1b6d2916cd0fc5be498bb
-	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=648c6e1d867e09f71bfb1303fa3e5af5cb6ebb54
-	source = git+https://github.com/nestybox/sysbox-pkgr.git#commit=95761e2d04ca56c410dd488900de610e60133beb
-	source = git+https://github.com/nestybox/sysbox-runc.git#commit=1b440ff266841f3d2d296e664122a9e29ceb9fd8
+	source = git+https://github.com/nestybox/sysbox-libs.git#commit=6faf00c74d45f7bdff0d1930fe8590c17a2d0a8b
+	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=aaeff6c5dc70c137e62166474a309ca5fc42d044
+	source = git+https://github.com/nestybox/sysbox-pkgr.git#commit=2d5e795f5df69b7ead12c2bdad2da4e4704720df
+	source = git+https://github.com/nestybox/sysbox-runc.git#commit=c58eba1be027c762c495bc4eeba7c0984beda1ab
 	source = Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch
-	sha256sums = 8a491b9a4e96ef16313b784bb6029b3a354b58ecc197c0d3c2b21ebef6f75403
-	sha256sums = 47885d131f44d8ff855882e22893f6108473480ea08b3f0415b014b5b337b367
-	sha256sums = 079dc7e44c7f214d02bdc231205f80cd7c1f915028c20084a744acbb934055f0
+	sha256sums = 04222fd028c9c46eaac3377820ba0fda26996844a686d758b69c9fecd6f906f0
+	sha256sums = 5b08df4010386969b5ebfd911b50dcde66627b2e07e15d5b22e0332ab00ea00e
+	sha256sums = a7bf7b4fca9b0c7ad31a77ec69506097915e21852208892fb463057573594c92
 	sha256sums = a15933541960d09d2f6cc857c95982a735294876bbbdc93fcbc879832e35efee
 	sha256sums = 7f7e3e0f9acac2ea6ff2d9702fc4006f679cf005cf8abf2dbbb447c133b8455e
-	sha256sums = 88b1ad675375f17d3c043bb6e56955a4a024cfc6c126eceb98ff65ca763d75ce
-	sha256sums = e8b2b75b21cf3cdfc8672024ba0fb4989698d3a0bbb869cad980d394289eb526
-	sha256sums = 1894ed739f8e028ccd6cbb24b56194aaa5ac7a41c90345d966f9bd1b53767817
-	sha256sums = 7951a7646cf8e1951d388ecbffea6f1e629de7e4760435d9717ea32f73595484
+	sha256sums = 114f37d313a2519c54f8333fef2d6915f531d03e0823091ff4645fdf60f1f0a7
+	sha256sums = 2ab79924f5c1b92a53e1d345ca146a55ee26b0429bfc5955b766a95ed042b1ed
+	sha256sums = 2f862fcf8aef961857b651a4a75a9353a6a4472f1eb08c49c5e8f965e96f7aeb
+	sha256sums = d56dc644e73d7fba36c7547781ed8f903a3d1021ed21522da83476ac14005029
 	sha256sums = 5264ed0c448868083a9f1bedc2846d744c9ea90e58f8555c50bbc155008512e5
 
 pkgname = sysbox-ce
