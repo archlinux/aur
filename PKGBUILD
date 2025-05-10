@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=seekr-git
-pkgver=0.0.3.r12.ge7f435e
+pkgver=0.1.2.r1.g4e65f09
 pkgrel=1
 pkgdesc="System search util for linux.(Git version)"
 arch=('any')
@@ -28,8 +28,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 build() {
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     cd "${srcdir}/${pkgname//-/.}"
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U"
     export CARGO_HOME="${srcdir}/.cargo"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
@@ -39,6 +39,6 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname//-/.}/target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
