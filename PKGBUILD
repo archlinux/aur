@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=soundfont-generaluser
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A small and well balanced GM/GS soundbank for many styles of music."
 arch=('any')
@@ -11,8 +11,8 @@ groups=('soundfonts')
 #source=("https://dl.dropboxusercontent.com/u/8126161/GeneralUser_GS_$pkgver.zip")
 makedepends=('gdown')
 DLAGENTS=('https::/usr/bin/gdown -O %o %u')
-source=("GeneralUser_GS_v2.0.1--doc_r3.zip::https://drive.google.com/uc?export=download&id=18BH0mhjvZr-lQ4tCQ-R-X9dh4ZPT829N")
-sha256sums=('8a8c8ae91720984e0cd67416fd5a8c392caeb1adfd586bc9e48c7aad8f4b1fe1')
+source=("GeneralUser_GS_v2.0.2--doc_r4.zip::https://drive.google.com/uc?export=download&id=1UJ1mrY2l_C_YbKeyywNUymBz7OTVzQLU")
+sha256sums=('a1b17a4362558e91777bea878a1945419ae680b9e59a5ac0d1fd300bce4bdc2a')
 
 package() {
   cd GeneralUser-GS
