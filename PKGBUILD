@@ -2,8 +2,8 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b5332
-pkgrel=2
+pkgver=b5334
+pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
@@ -39,7 +39,7 @@ source=(
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('ba0987dabaf8ba77a52245957f53ecc98ad516a3d92f0a98f231766f3b07b2da'
+sha256sums=('111771466f5b61eb03186f38ecaafc638cda37dbe667b2904f6f2b303238ae0a'
             'SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
