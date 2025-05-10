@@ -4,7 +4,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-libvpl
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 arch=('any')
 pkgdesc="Intel Video Processing Library (Android ${_android_arch})"
@@ -18,7 +18,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libpciaccess")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/intel/libvpl/archive/v${pkgver}/libvpl-${pkgver}.tar.gz")
-md5sums=('807bb965093b3396da321d16d6f711f3')
+md5sums=('33da503f11d6f0aa795f8fe9c249dab8')
 
 build() {
     cd "${srcdir}/libvpl-${pkgver}"
