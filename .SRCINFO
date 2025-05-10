@@ -1,0 +1,17 @@
+pkgbase = podman-bootc
+	pkgdesc = Streamlining podman + bootc interactions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/containers/podman-bootc
+	arch = any
+	license = Apache-2.0
+	makedepends = go
+	depends = libvirt
+	depends = qemu-base
+	depends = podman
+	depends = swtpm
+	depends = gvproxy-bin
+	source = https://github.com/containers/podman-bootc/archive/refs/tags/v0.1.2.tar.gz
+	b2sums = 986dacb7ffb06b92a26007b972c2fddcde2df778a153a08c0c07d2e34c00560e165d6df2cdcc2aea2428eb21e8f7562b2f0bf9daed9903edaf60cc226c5420f9
+
+pkgname = podman-bootc
