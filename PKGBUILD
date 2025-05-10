@@ -4,7 +4,7 @@
 
 pkgname=koboldcpp-cuda-portable
 pkgver=1.91
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA, portable build for old CPUs)"
 arch=('x86_64')
 url="https://github.com/LostRuins/koboldcpp"
@@ -14,7 +14,7 @@ depends=(
     "cblas"
     "clblast"
     "vulkan-icd-loader"
-    "cuda"
+    "cuda>=12"
 )
 optdepends=(
     'python-customtkinter: for GUI launcher'
