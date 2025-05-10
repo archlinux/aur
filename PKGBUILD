@@ -16,7 +16,6 @@ source=("https://www.atelierb.eu/wp-content/uploads/2024/10/atelierb-free-${pkgv
 sha256sums=('SKIP')
 
 package() {
-  cd $srcdir	
   bsdtar -xvf data.tar.* -C ${pkgdir}/
-  install -Dm644 "$pkgdir/opt/atelierb/bin/AtelierB.desktop" "$pkgdir/usr/share/applications/AtelierB.desktop"
+  install -Dm644 "$pkgdir/opt/atelierb-free-$pkgver/bin/AtelierB.desktop" "$pkgdir/usr/share/applications/AtelierB.desktop"
 }
