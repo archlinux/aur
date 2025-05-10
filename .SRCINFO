@@ -1,6 +1,6 @@
 pkgbase = python-ldraw-to-scad
 	pkgdesc = The LDraw to OpenSCAD converter library
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/orionrobots/ldraw-to-scad/
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = python-ldraw-to-scad
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-importlib_resources
-	source = https://files.pythonhosted.org/packages/source/l/ldraw-to-scad/ldraw-to-scad-0.4.0.tar.gz
-	sha256sums = cf179112cc7faadf4d0e0d1dc93231abea3146fe2f412d4b156d75bad4c1e38b
+	source = https://files.pythonhosted.org/packages/source/l/ldraw-to-scad/ldraw_to_scad-0.5.0.tar.gz
+	sha256sums = 42d0eb2476ed618f7545fc5ccc6bd9d6f46b1ca1e0736a251935507b0be001e6
 
 pkgname = python-ldraw-to-scad
