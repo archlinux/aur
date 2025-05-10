@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+mkdir -p ~/.local/share/PrismLauncher
+
 export _portableConfig="org.prismlauncher.PrismLauncher"
 
 if [[ "$@" = "--actions opendir" ]]; then
