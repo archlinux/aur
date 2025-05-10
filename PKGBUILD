@@ -4,13 +4,13 @@
 # Contributor: @pychuang (logseq-desktop-git)
 
 ## options
-: ${_nodeversion:=18}
+: ${_nodeversion:=22}
 : ${_install_path:=usr/lib}
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.9
-pkgrel=5
+pkgver=0.10.10
+pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -26,7 +26,6 @@ depends=(
   glib2
   gtk3
   libcups
-  libdrm
   libx11
   libxcb
   libxcomposite
@@ -36,26 +35,22 @@ depends=(
   libxkbcommon
   libxrandr
   mesa
-  nodejs
   nspr
   nss
   pango
-  perl
 )
 makedepends=(
   clojure
   git
-  nvm # AUR
+  nvm
   patchelf
   python-setuptools
 )
 
-install="$pkgname.install"
-
 _pkgsrc="logseq-${pkgver}"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
-sha256sums=('9fe98bbeb4355c1ad3ea5b3776f02455ee86b8157f74dd53bb9b3367df31403a')
+sha256sums=('6b07f18808ef3768e32626a14372b0c1b66bb8a7655d8eea68aecda1137a74df')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
@@ -65,9 +60,6 @@ _nvm_env() {
   export XDG_DATA_HOME="$HOME/.local/share"
 
   export NVM_DIR="$SRCDEST/node-nvm"
-
-  #  export SYSTEM_ELECTRON_VERSION=$(< "/usr/lib/electron${_electron_version:-}/version")
-  #  export ELECTRONVERSION=${SYSTEM_ELECTRON_VERSION%%.*}
 
   # set up nvm
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -117,15 +109,16 @@ package() {
     fi
   done
 
-  install -dm755 "$pkgdir/$_install_path/$_pkgname"
-  cp --reflink=auto -a -r -u "$_out_path"/* "$pkgdir/$_install_path/$_pkgname"
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname"
+  cp -a "$_out_path"/* "$pkgdir/$_install_path/$_pkgname"
 
   install -Dm644 "$_out_path"/resources/app/icon.png "$pkgdir/usr/share/pixmaps/logseq.png"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/logseq" << END
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/logseq-flags.conf"
+name=logseq
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
 
 lines=()
 if [[ -f "\${flags_file}" ]]; then
@@ -134,9 +127,9 @@ fi
 
 flags=()
 for line in "\${lines[@]}"; do
-    if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
-        flags+=("\${line}")
-    fi
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
 done
 
 : \${ELECTRON_IS_DEV:=0}
