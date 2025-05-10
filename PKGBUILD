@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=2.5.2.r168.gd2ed3bb
+pkgver=2.5.3.r50.gd39c1a1
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -43,9 +43,6 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
-# We temporarily disable LTO since we get an ICE when compiling with gcc since this commit https://github.com/Chatterino/chatterino2/commit/ed20e71db4c957d3b2a8ce9350b847f4c805cb83
-# Bug report tracking https://gcc.gnu.org/bugzilla/show_bug.cgi?id=114501
-options=('!lto')
 
 pkgver() {
     cd "$srcdir/chatterino2"

@@ -1,6 +1,6 @@
 pkgbase = chatterino2-git
 	pkgdesc = Second installment of the Twitch chat client series "Chatterino", dev/git version
-	pkgver = 2.5.2.r168.gd2ed3bb
+	pkgver = 2.5.3.r50.gd39c1a1
 	pkgrel = 1
 	url = https://chatterino.com
 	install = chatterino2-git.install
@@ -23,7 +23,6 @@ pkgbase = chatterino2-git
 	optdepends = qt6-wayland: For Wayland support
 	provides = chatterino
 	conflicts = chatterino
-	options = !lto
 	source = git+https://github.com/Chatterino/chatterino2
 	source = git+https://github.com/arsenm/sanitizers-cmake
 	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
