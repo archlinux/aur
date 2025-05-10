@@ -1,8 +1,8 @@
 # Contributor: Mr.Smith1974 < ... >
-# Maintainer: Jonathan Hilger <joni.hilger@yahoo.de>
+# Maintainer: Jonathan Hilger <joni dot hilger at yahoo dot de>
 pkgname=vpinball
 pkgver=r7998.32a8e64
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source pinball table editor and simulator (BGFX standalone version)"
 arch=('x86_64')
 url="https://github.com/vpinball/vpinball"
