@@ -3,7 +3,7 @@
 _pkgname=pot
 pkgname="${_pkgname}-translation-git"
 _debname="com.${_pkgname}_app.${_pkgname}"
-pkgver=3.0.6.r11.ge158a05
+pkgver=3.0.7.r0.gd05a436
 _nodeversion=21
 pkgrel=1
 pkgdesc="A cross-platform software for text translation.一个跨平台的划词翻译软件"
@@ -58,9 +58,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    sed -i "s/@runname@/${_pkgname}/" "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git"
+    sed -i "s/@runname@/${_pkgname}/g" "${srcdir}/${pkgname%-git}.sh"
+    _ensure_local_nvm
     export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -80,7 +80,7 @@ prepare() {
         echo 'registry=https://registry.npmmirror.com'
         } >> .npmrc
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     fi
     find src-tauri -type f -name "*.json" -exec sed -i "s/icon\.ico/icon\.png/g" {} \;
     sed -i "s/#openssl/openssl={version=\"0.10\",features=[\"vendored\"]}/g" src-tauri/Cargo.toml
