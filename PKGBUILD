@@ -13,7 +13,7 @@ pkgname=(gcc13 gcc13-libs gcc13-fortran)
 pkgver=13.3.1+r432+gfc8bd63119c0
 _majorver=${pkgver%%.*}
 _commit=fc8bd63119c00f4763ba337aab02db64beb25931
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
@@ -217,7 +217,7 @@ package_gcc13() {
   make -C gcc DESTDIR="$pkgdir" install-po
 
   # many packages expect this symlink
-  ln -s gcc "$pkgdir"/usr/bin/cc-13
+  ln -s gcc-13 "$pkgdir"/usr/bin/cc-13
 
   # create cc-rs compatible symlinks
   # https://github.com/rust-lang/cc-rs/blob/1.0.73/src/lib.rs#L2578-L2581
