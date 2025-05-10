@@ -5,8 +5,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libxft
-pkgver=2.3.8
-pkgrel=2
+pkgver=2.3.9
+pkgrel=1
 arch=('any')
 pkgdesc="FreeType-based font drawing library for X (Android ${_android_arch})"
 license=('custom')
@@ -15,11 +15,9 @@ groups=('android-libxft')
 depends=("android-${_android_arch}-fontconfig"
          "android-${_android_arch}-libxrender")
 makedepends=('android-configure')
-source=("${url}/releases/individual/lib/libXft-${pkgver}.tar.xz"{,.sig})
+source=("${url}/releases/individual/lib/libXft-${pkgver}.tar.xz")
 options=(!strip !buildflags staticlibs !emptydirs)
-md5sums=('cea0a3304e47a841c90fbeeeb55329ee'
-         'SKIP')
-validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
+md5sums=('d378be0fcbd1f689f9a132e0d642bc4b')
 
 build() {
     cd "${srcdir}/libXft-${pkgver}"
