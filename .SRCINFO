@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 21.0.0_r526268.48415777ea6a
+	pkgver = 21.0.0_r537044.5fa64d65e928
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -13,15 +13,16 @@ pkgbase = lib32-llvm-minimal-git
 	makedepends = lib32-libxml2
 	makedepends = lib32-zstd
 	makedepends = llvm-minimal-git
+	makedepends = ninja
 	options = !lto
 	options = !debug
-	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	source = git+https://github.com/llvm/llvm-project.git
 	md5sums = SKIP
 	sha512sums = SKIP
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=21.0.0_r526268.48415777ea6a-1
+	depends = lib32-llvm-libs-minimal-git=21.0.0_r537044.5fa64d65e928-1
 	depends = llvm-minimal-git
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
@@ -55,17 +56,17 @@ pkgname = lib32-clang-minimal-git
 
 pkgname = lib32-clang-libs-minimal-git
 	pkgdesc = clang runtime libraries, 32-bit trunk version
-	depends = lib32-llvm-libs-minimal-git=21.0.0_r526268.48415777ea6a-1
+	depends = lib32-llvm-libs-minimal-git=21.0.0_r537044.5fa64d65e928-1
 	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = lib32-clang-libs
-	conflicts = lib32-clang<21.0.0_r526268.48415777ea6a-1
+	conflicts = lib32-clang<21.0.0_r537044.5fa64d65e928-1
 	conflicts = lib32-clang-libs
 
 pkgname = lib32-clang-opencl-headers-minimal-git
 	pkgdesc = clang headers & include files for OpenCL, 32-bit trunk version
 	arch = any
-	depends = lib32-clang-libs-minimal-git=21.0.0_r526268.48415777ea6a-1
+	depends = lib32-clang-libs-minimal-git=21.0.0_r537044.5fa64d65e928-1
 	provides = lib32-clang-opencl-headers
-	conflicts = lib32-clang<21.0.0_r526268.48415777ea6a-1
+	conflicts = lib32-clang<21.0.0_r537044.5fa64d65e928-1
 	conflicts = lib32-clang-opencl-headers

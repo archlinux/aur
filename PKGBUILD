@@ -19,33 +19,36 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git' 'lib32-clang-minimal-git' 'lib32-clang-libs-minimal-git' 'lib32-clang-opencl-headers-minimal-git')
-pkgver=21.0.0_r526268.48415777ea6a
+pkgver=21.0.0_r537044.5fa64d65e928
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=(git cmake lib32-libffi lib32-zlib python lib32-gcc-libs
-             lib32-libxml2 lib32-zstd llvm-minimal-git)
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
+             lib32-libxml2 lib32-zstd llvm-minimal-git ninja)
+source=("git+https://github.com/llvm/llvm-project.git"
 )
 md5sums=('SKIP')
 sha512sums=('SKIP')
 options=(!lto !debug)
 # explicitly disable lto to reduce number of build hangs / test failures
 
-# LIT by default uses all available cores. this can lead to heavy stress on systems making them unresponsive.
-# It can also happen that the kernel oom killer interferes and kills important tasks.
-# A reasonable value for them to avoid these issues appears to be 75% of available cores.
-# LITFLAGS is an env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
+
+# Ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
+# It can also cause the kernel oom killer to interfere and kill important tasks.
+# A reasonable value to avoid these issues appears to be 75% of available cores.
+# This PKGBUILD uses the env vars NINJAFLAGS & LITFLAGS to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-# LITFLAGS="-j 18"
-# NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
+# export NINJAFLAGS="-j 18 -l 18"
+# export LITFLAGS="-j 18"
+# NOTE: It's your responbility to validate the value of LITFLAGS & NINJAFLAGS . If unsure, don't set them.
+
 
 _get_distribution_components() {
     local target
     local include
 
-    make help | grep -Po 'install-\K.*(?=-stripped)' | while read -r target; do
+    ninja -t targets | grep -Po 'install-\K.*(?=-stripped:)' | while read -r target; do
         case $target in
             llvm-libraries|clang-libraries|clang-tidy-headers|distribution )
                 include=0
@@ -60,6 +63,10 @@ _get_distribution_components() {
                 ;;
             # libraries needed for clang-tblgen
             LLVMDemangle|LLVMSupport|LLVMTableGen )
+                include=1
+                ;;
+            # testing libraries
+                LLVMTestingAnnotations|LLVMTestingSupport)
                 include=1
                 ;;
             # exclude static libraries
@@ -108,8 +115,9 @@ build() {
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$srcdir/_build/lib32/
     
     cmake_args=(
-        -DCMAKE_CXX_FLAGS:STRING=-m32
-        -DCMAKE_C_FLAGS:STRING=-m32
+        -G Ninja
+        -D CMAKE_CXX_FLAGS:STRING=-m32
+        -D CMAKE_C_FLAGS:STRING=-m32
         -D CMAKE_BUILD_TYPE=Release
         -D CMAKE_INSTALL_PREFIX=/usr
         -D CMAKE_SKIP_RPATH=ON
@@ -153,13 +161,13 @@ build() {
     
     cmake -B _build -S "$srcdir"/llvm-project/llvm "${cmake_args[@]}" -Wno-dev
        
-    make -C _build
+    ninja $NINJAFLAGS -C _build
 }
 
 check() {
-    make -C _build check-llvm
-    make -C _build check-clang
-    make -C _build check-clang-tools
+    ninja $NINJAFLAGS  -C _build check-llvm
+    ninja $NINJAFLAGS -C _build check-clang
+    ninja $NINJAFLAGS -C _build check-clang-tools
 }
 
 package_lib32-llvm-minimal-git() {
@@ -168,7 +176,7 @@ package_lib32-llvm-minimal-git() {
     provides=('lib32-llvm')
     conflicts=('lib32-llvm')
     
-    make -C _build DESTDIR="$pkgdir" install-distribution
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install-distribution
 
     # clang uses clang/LLVM_Major_version in it's folder structure
     local _major_ver=$(echo $pkgver | cut -d. -f1)
