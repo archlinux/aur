@@ -1,7 +1,7 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-git
 _pkgname=linux-wallpaperengine
-pkgver=r492.4a063d0
+pkgver=r493.7bffcde
 pkgrel=1
 pkgdesc="use steam's wallpaperengine on linux"
 arch=('x86_64')
@@ -22,6 +22,12 @@ pkgver() {
           git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
           printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
         )
+}
+
+prepare() {
+    cd "$pkgname"
+    git submodule update --init --recursive
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
