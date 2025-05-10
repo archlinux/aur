@@ -13,6 +13,6 @@ pkgbase = plugin-autenticacao-gov-pt
 	source = plugin-autenticacao-gov-pt.install
 	source = plugin-autenticacao-gov-pt-2.1.00-1.deb::https://aplicacoes.autenticacao.gov.pt/plugin/plugin-autenticacao-gov.deb
 	sha512sums = b9e94b93c02bb483495438e085140743e918144de5d9b295dedc699e3e5c2603c78a3d8ff0437fc68be5013c99cc8b0e7436ade2bd077a5af1279b6ed0bf8374
-	sha512sums = af09a12ea6efecf6fdc3946d995a98a0a78d8e5df1d382dcc8409c324d447d5c3d622b38ea07a21e3f9462f7e74f6c4ddf0753a007514de48003ead86fa4aee7
+	sha512sums = f7575b091f5c96bf7302105280fbb824f38bf39dd17b34c7f62969c3d0253b175bd0e1377aeedfaa316e9dd232a2fdc04e4dc8f5cdcdc564f26cd1c094176d3f
 
 pkgname = plugin-autenticacao-gov-pt
