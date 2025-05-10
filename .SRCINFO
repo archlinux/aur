@@ -1,6 +1,6 @@
 pkgbase = plantilla-git
-	pkgdesc = A tool for cropping and applying templates to images
-	pkgver = 0.1.1
+	pkgdesc = A tool for cropping and applying branding to images
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Azakidev/plantilla
 	arch = arm
