@@ -79,18 +79,6 @@ _compare_ver_() {
 
 _refresh_local_() {
 
-	local CACHE_DIR=~/".cache"
-	local KEEP_DIR="${_TB_APP_DIR_}/Browser/TorBrowser/Data/Browser"
-	local KEPT_DIR="${CACHE_DIR}/tor-browser-tmpdata"
-	local DIR_IS_KEPT=0
-
-	if [[ -d "${KEEP_DIR}" ]]; then
-		[[ -d "${KEPT_DIR}" ]] && rm -rf "${KEPT_DIR}" || mkdir -p "${CACHE_DIR}"
-		mv "${KEEP_DIR}" "${KEPT_DIR}"
-		echo "${0}: Preserving files in ${KEPT_DIR}/." >> "${_TB_LOG_FILE_}"
-		DIR_IS_KEPT=1
-	fi
-
 	echo "${0}: Extracting files to ${_TB_APP_DIR_}." >> "${_TB_LOG_FILE_}"
 	rm -rf "${_TB_APP_DIR_}"/*
 
@@ -101,11 +89,6 @@ _refresh_local_() {
 		"The YGO Omega archive could not be extracted to your home directory. \
 		\nCheck the permissions of ${_TB_APP_DIR_}. \
 		\nThe error log can be found in ${_TB_LOG_FILE_}."
-
-	if [[ ! ${DIR_IS_KEPT} -eq 0 ]]; then
-		rm -rf "${KEEP_DIR}"
-		mv "${KEPT_DIR}" "${KEEP_DIR}"
-	fi
 
 	[[ ! -d "${_TB_APP_DIR_}" ]] || \
 		echo "${_TB_VERSION_}" > "${_TB_VER_FILE_}"
@@ -203,7 +186,7 @@ while read _TB_VER_LINE_; do
 	_TB_INSTALLED_VERSION_="${_TB_VER_LINE_}"
 done < "${_TB_VER_FILE_}"
 
-# start update if old or no tor-browser is installed
+# start update if old or ygo-omega is not installed
 if [[ "${_TB_INSTALLED_VERSION_}" == "${_TB_VERSION_}" ]] && [[ ${_TB_REFRESH_} -eq 0 ]]; then
 	# clear log
 	> "${_TB_LOG_FILE_}"
@@ -212,6 +195,6 @@ else
 	_refresh_local_
 fi
 
-# start tor-browser
+# start ygo-omega
 chmod +x "${_TB_APP_DIR_}/YGO Omega.x86_64"
 "${_TB_APP_DIR_}/YGO Omega.x86_64" "${args[@]}"

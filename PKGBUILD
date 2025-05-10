@@ -1,9 +1,10 @@
-# Maintainer: Antonio Curavalea <one.kyonblack@gmail.com>
+# Maintainer: Antonio Curavalea <one dot kyonblack at gmail dot com>
+# Maintainer: Vin <vin at vinnae dot gay>
 
 _appname='ygo-omega'
 pkgname=ygo-omega
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="The Ultimate Yu-Gi-Oh! Simulator."
 arch=('x86_64')
 url='https://github.com/duelists-unite'
@@ -16,9 +17,9 @@ source=(
 	"${_appname}.desktop.in"
 	"${_appname}.in"
 )
-sha256sums=('9fe0457e3202fc079c555adc5a8083a5f0b88a33f3051f202544d4264ba69536'
+sha256sums=('SKIP'
             'd159c3910d3b68675a4a098c3384e376e1a02e593e94289a686cb183690cdc87'
-            '9df7eb348f44b812068c6557702f69ae02263aa3863418c3afbcfea4485156ba')
+            'afdcd9a09a9664c963a6a9a92e95345bd4bc8e967fe5a453c27fab488bf1c0ca')
 options=('emptydirs')
 
 # Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
