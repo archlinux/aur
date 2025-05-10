@@ -1,7 +1,7 @@
 pkgbase = theia-bin
 	pkgdesc = Cloud and Desktop IDE Platform
 	pkgver = 1.60.200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.theia-ide.org/
 	arch = x86_64
 	license = EPL2
@@ -14,6 +14,7 @@ pkgbase = theia-bin
 	depends = at-spi2-core
 	depends = util-linux-libs
 	depends = libsecret
+	depends = ripgrep
 	optdepends = libappindicator-gtk3: Systray indicator
 	provides = theia
 	conflicts = theia
