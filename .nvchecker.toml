@@ -1,0 +1,6 @@
+[fluent-gtk-theme]
+source = "github"
+github = "vinceliuice/Fluent-gtk-theme"
+use_max_tag = true
+from_pattern = '-'
+to_pattern = '.'
