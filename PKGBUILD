@@ -3,7 +3,7 @@
 
 pkgname=ryzen-master-commander
 _realname=Ryzen-Master-Commander 
-pkgver=1.0.1 
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="TDP and fan control for AMD Ryzen processors"
 arch=('any')
@@ -14,7 +14,6 @@ optdepends=('ryzenadj: required for TDP adjustment features'
             'nbfc-linux-git: required for fan control features')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sam1am/$_realname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP') # <-- RUN updpkgsums to generate this!
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
@@ -26,3 +25,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
 }
+sha256sums=('e063face16e8bd5561aeea362a8bc243d5b3de9de4c52eaf968fdd2e7ea064d2')
