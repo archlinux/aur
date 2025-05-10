@@ -1,0 +1,20 @@
+pkgbase = libzedmd-git
+	pkgdesc = ZeDMD communication library
+	pkgver = r292.1547728
+	pkgrel = 1
+	url = https://github.com/PPUC/libzedmd
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = cargs
+	depends = gcc-libs
+	depends = glibc
+	depends = libserialport
+	depends = sockpp
+	provides = libzedmd-git
+	provides = libzedmd
+	source = libzedmd-git::git+https://github.com/PPUC/libzedmd.git
+	sha256sums = SKIP
+
+pkgname = libzedmd-git
