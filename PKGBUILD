@@ -2,8 +2,8 @@
 # Contributors: carstene1ns, Arkham, Christoph Zeiler and JD Steffen
 
 pkgname=eduke32
-_pkgdate=20250315
-_pkgrev='10617-2561cf18c'
+_pkgdate=20250411
+_pkgrev='10619-b87598471'
 pkgver=$_pkgdate.r${_pkgrev/-/_}
 pkgrel=1
 pkgdesc="An advanced Duke Nukem 3D source port"
@@ -14,14 +14,14 @@ depends=('libvpx' 'sdl2' 'flac' 'libvorbis' 'alsa-lib')
 makedepends=('mesa' 'glu')
 depends_i686=('lib32-alsa-lib')
 makedepends_i686=('nasm')
-optdepends=('freepats-legacy: a free soundfont for music'
+optdepends=('freepats-general-midi: a free soundfont for music'
             'fluidsynth: alternative midi sequencer'
             'eduke32-shareware-episode: Duke Nukem 3D Demo')
 install=$pkgname.install
 source=("http://dukeworld.com/$pkgname/synthesis/$_pkgdate-$_pkgrev/eduke32_src_$_pkgdate-$_pkgrev.tar.xz"
         "$pkgname.png"
         "$pkgname.desktop")
-sha256sums=('297017fb0150aa21e6ca1f257d111b1a6d9be8d0a1511e9ae2c9dc55a9954039'
+sha256sums=('27c73ed980ab7b3181ff97bcd3d639b900fbd525800773a1626aa9f784ea77df'
             'b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863'
             'cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24')
 options=(!debug)
