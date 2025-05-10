@@ -134,9 +134,11 @@ makedepends=(bliss
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
-        latte-count.patch)
+        latte-count.patch
+        sagemath-10.6-ecl-gcc-15-cython.patch)
 sha256sums=('SKIP'
-            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09')
+            'f1dd7fea298f38be0f03f46ed4bc9281267f03ec3eee2582edb385ca4cb5db09'
+            '49632afef18ae78df3ca94af70ea68076e57a565a09c68339a7b0f30b1ce8935')
 _pkgs=(standard
        bliss
        coxeter3
@@ -155,6 +157,9 @@ prepare(){
 
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
+# remove cython function wrapper incompatible with ecl's gcc 15 fix
+# based on https://github.com/sagemath/sage/pull/40038/commits/6d7fe919fa405cadb973b187d245855dbec1b0bc
+  patch -p1 -i ../sagemath-10.6-ecl-gcc-15-cython.patch
 
   ./bootstrap
 }
