@@ -1,11 +1,12 @@
 pkgbase = obs-studio-git
 	pkgdesc = Free and open source software for video recording and live streaming
-	pkgver = 31.0.3.r202.g6bb9019
+	pkgver = 31.0.3.r236.g000437f
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = asio
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = ffnvcodec-headers
@@ -67,14 +68,12 @@ pkgbase = obs-studio-git
 	optdepends = sndio: sndio input client
 	optdepends = v4l2loopback-dkms: virtual camera support
 	optdepends = vlc: VLC Media Source
-	provides = obs-studio=31.0.3.r202.g6bb9019
+	provides = obs-studio=31.0.3.r236.g000437f
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/obsproject/obs-browser.git
 	source = git+https://github.com/obsproject/obs-websocket.git
-	source = asio::git+https://github.com/chriskohlhoff/asio.git#tag=asio-1-32-0
 	source = cef_binary_6533_linux_x86_64_v3.tar.xz::https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v3.tar.xz
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

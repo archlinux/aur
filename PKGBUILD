@@ -12,7 +12,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=31.0.3.r202.g6bb9019
+pkgver=31.0.3.r236.g000437f
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming"
 url="https://github.com/obsproject/obs-studio"
@@ -36,7 +36,7 @@ depends=(
   'speexdsp'
 )
 makedepends=(
-  #'asio'
+  'asio'
   'cmake'
   'extra-cmake-modules'
   'ffnvcodec-headers'
@@ -127,15 +127,7 @@ _source_cef() {
   sha256sums+=('SKIP')
 }
 
-_source_asio() {
-  _pkgsrc_asio="asio"
-  _ver_asio=1.32.0
-  source+=("$_pkgsrc_asio"::"git+https://github.com/chriskohlhoff/asio.git#tag=asio-${_ver_asio//./-}")
-  sha256sums+=('SKIP')
-}
-
 _source_main
-_source_asio
 _source_cef
 
 pkgver() {
@@ -154,15 +146,6 @@ prepare() {
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c $gitconf submodule update
 }
-
-_build_asio() (
-  cd "$_pkgsrc_asio/asio"
-  autoreconf -fiv
-  ./configure --prefix=/usr
-  make
-  make DESTDIR="$srcdir/deps" install
-  find "$srcdir/deps" -type f
-)
 
 _build_cef() (
   local _cmake_options=(
@@ -211,7 +194,6 @@ build() (
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
-  _build_asio
   _build_cef
   _build_obs_studio
 )
