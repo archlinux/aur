@@ -1,0 +1,5 @@
+[local-ai-bin]
+source = "github"
+github = "mudler/LocalAI"
+use_latest_release = true
+prefix = "v"

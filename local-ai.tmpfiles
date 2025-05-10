@@ -1,0 +1,8 @@
+d /var/lib/local-ai 0755 local-ai local-ai
+d /var/log/local-ai 0755 local-ai local-ai
+d /var/lib/local-ai/models 0755 local-ai local-ai
+d /var/lib/local-ai/backend_data 0755 local-ai local-ai
+d /var/lib/local-ai/generated 0755 local-ai local-ai
+d /var/lib/local-ai/generated/images 0755 local-ai local-ai
+d /var/lib/local-ai/generated/audio 0755 local-ai local-ai
+Z /var/lib/local-ai 0755 local-ai local-ai
