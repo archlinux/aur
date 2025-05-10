@@ -6,8 +6,8 @@
  
 +dnl Extract milter version number from `mfapi.h' file
 +define(`runCtest', `esyscmd(`echo -e "#include <stdio.h>\n#include \"../include/libmilter/mfapi.h\"\nint main(){'$1`;return 0;}" | gcc -x c -I../include -DSM_CONF_STDBOOL_H=1 -o ctest - && ./ctest && rm -f ctest')')dnl
-+define(`confSOVER', runCtest(`printf(\"%d.%d\", SM_LM_VRS_MAJOR(SMFI_VERSION), SM_LM_VRS_MINOR(SMFI_VERSION))'))dnl
-+define(`confSOPLVL', runCtest(`printf(\"%d\", SM_LM_VRS_PLVL(SMFI_VERSION))'))dnl
++define(`conf_libmilter_SOVERSION', runCtest(`printf(\"%d.%d\", SM_LM_VRS_MAJOR(SMFI_VERSION), SM_LM_VRS_MINOR(SMFI_VERSION))'))dnl
++define(`conf_libmilter_SONAME', runCtest(`printf(\"%d\", SM_LM_VRS_PLVL(SMFI_VERSION))'))dnl
 +
  bldPRODUCT_START(`library', `libmilter')
  define(`bldINSTALLABLE', `true')
