@@ -3,8 +3,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libtheora
-pkgver=1.1.1
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="An open video codec developed by the Xiph.org (Android ${_android_arch})"
 arch=('any')
 url="http://xiph.org"
@@ -13,22 +13,34 @@ groups=('android-libtheora')
 depends=("android-${_android_arch}-libvorbis")
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs)
-source=("http://downloads.xiph.org/releases/theora/libtheora-${pkgver}.tar.bz2")
-md5sums=('292ab65cedd5021d6b7ddd117e07cd8e')
+source=("http://downloads.xiph.org/releases/theora/libtheora-${pkgver}.tar.xz")
+md5sums=('ec64ed07bffb5f45dca0ae7faa68f814')
 
 prepare() {
     cd "${srcdir}/libtheora-${pkgver}"
     source android-env ${_android_arch}
 
-    autoreconf -fi -I m4
+    autoreconf -fiv -I m4
 }
 
 build() {
     cd "${srcdir}/libtheora-${pkgver}"
     source android-env ${_android_arch}
 
+    extra_options=
+
+    # Platform specific patches
+    case "${_android_arch}" in
+        armv7a-eabi)
+             extra_options="${extra_options} --disable-asm"
+            ;;
+        *)
+            ;;
+    esac
+
     android-${_android_arch}-configure \
-        --disable-examples
+        --disable-examples \
+        ${extra_options}
     make $MAKEFLAGS
 }
 
