@@ -1,8 +1,7 @@
 # Maintainer: f4iey <jules@f4iey.fr>
 pkgname=wfview-bin
-pkgver=1.64
+pkgver=2.03
 pkgrel=2
-debrel=+b2
 pkgdesc="Interface for Icom Transceivers - binary version"
 arch=('x86_64')
 url="https://wfview.org"
@@ -10,8 +9,8 @@ license=('GPL3')
 depends=(hidapi opus portaudio qcustomplot qt5-base qt5-gamepad qt5-multimedia qt5-serialport) 
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=('http://ftp.debian.org/debian/pool/main/w/${pkgname%-bin}/${pkgname%-bin}_$pkgver-$pkgrel$debrel_amd64.deb')
-md5sums=(563c5cc43b9adff283e781e07f791f03)
+source=('http://ftp.debian.org/debian/pool/main/w/${pkgname%-bin}/${pkgname%-bin}_$pkgver-$pkgrel_amd64.deb')
+md5sums=(4b086ac303401cc2a645d9936ac96e80)
 
 package() {
   cd $srcdir
