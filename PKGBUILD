@@ -10,6 +10,7 @@ url="https://www.atelierb.eu"
 license=('custom')
 depends=('libxrandr' 'libxcursor' 'libxinerama' 'fontconfig' 'libsm' 'icu72-bin' 'tk' 'python' 'cmake' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-declarative')
 optdepends=('texlive-bin' 'firefox')
+options=('!strip')
 provides=('atelierb')
 conflicts=('atelierb')
 source=("https://www.atelierb.eu/wp-content/uploads/2024/09/${pkgname%-bin}-${pkgver}-debian-12.deb")
