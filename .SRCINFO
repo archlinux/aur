@@ -1,0 +1,21 @@
+pkgbase = libdof-git
+	pkgdesc = A cross platform library for performing Direct Output Framework tasks.
+	pkgver = r10.9213874
+	pkgrel = 1
+	url = https://github.com/jsm174/libdof
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargs
+	makedepends = sockpp
+	makedepends = libserialport
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = hidapi
+	provides = libdof
+	provides = libdof-git
+	source = libdof-git::git+https://github.com/jsm174/libdof.git
+	sha256sums = SKIP
+
+pkgname = libdof-git
