@@ -19,5 +19,5 @@ package() {
   bsdtar -xvf data.tar.* -C ${pkgdir}/
   install -Dm644 "$pkgdir/opt/atelierb-free-$pkgver/bin/AtelierB.desktop" "$pkgdir/usr/share/applications/AtelierB.desktop"
   # fix broken exec path
-  sed -i "s/startAB/\/bin\/startAB" "$pkgdir/usr/share/applications/AtelierB.desktop
+  sed -i "s/startAB/\/bin\/startAB" "$pkgdir/usr/share/applications/AtelierB.desktop"
 }
