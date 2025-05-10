@@ -8,10 +8,10 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2025.12
-pkgrel=2
-_npu_compiler_tag=npu_ud_2025_12_rc2
-_openvino_commit=8d5f583bc7e56152440192806b3acda619a997fe
+pkgver=2025.18
+pkgrel=1
+_npu_compiler_tag=npu_ud_2025_18_rc1
+_openvino_commit=cdb0a75290bac7c109f89d8aa464d0bdde25d73c
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
@@ -62,14 +62,19 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         'git+https://github.com/openvinotoolkit/telemetry.git'
         'git+https://github.com/libxsmm/libxsmm.git'
         'git+https://github.com/openvinotoolkit/shl.git'
-        
+        'git+https://github.com/ARM-software/kleidiai.git'
+        'git+https://github.com/herumi/xbyak_riscv.git'
+        # patches
         '010-intel-npu-compiler-llvm-disable-atomic-check.patch'
         '020-intel-npu-compiler-disable-werror.patch'
         '030-intel-npu-compiler-fix-install.patch'
+        '040-intel-npu-compiler-llvm-gcc15-fix.patch'
         '010-openvino-disable-werror.patch'
-        '020-openvino-level-zero-disable-werror.patch')
-sha256sums=('f0368514eed2814b4530f4ac514659af7c3068f2455d3547a3bc8c05e4fdaf8b'
-            'e1a37e41b5bb4ab654dea8c2e0961ae068142c8a73d285aa6da2984b37c51f4c'
+        '020-openvino-gtest-gcc15-fix.patch')
+sha256sums=('cf0c8e3846d40dd87eed1484b26a3abe400d819a74bed3a0dbbb0c1f783c4f7e'
+            'f05b7a9efc02c9dcac9fd755e7c9546aaae37bba0eb4d45fc0a74f79c147893e'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -100,9 +105,10 @@ sha256sums=('f0368514eed2814b4530f4ac514659af7c3068f2455d3547a3bc8c05e4fdaf8b'
             'SKIP'
             '9123c2b05f4cc9d203c5c51df2254fc5b1bb02f55918bbf4059907185b045cec'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            '0ac423551d42290063d0b11ef7d23fe5debb6bc2c9e5c9ca137f98be910cc2ff'
-            '61759ec17031a94222270dec03052010bf3da8bc2d53088d1bfe2ec9ef547dc5'
-            'f7893f1a68555471646c4b7593c16330068c04587dc8cf140a1a3817527d377a')
+            'c919968d2a0aace66a73622c134e9445551f5ae3ad4689150e2d82b6e147ae62'
+            'b0b76b763b2704dbb22015fe2dea6dd833f9f4f565fbfb7d022b5d06d40b796f'
+            '12a0a3eb87b37b60151ecdec7d5beebb451bec8682c98bca6a427dcc1874ee4d'
+            'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -152,6 +158,8 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/telemetry.url "${srcdir}/telemetry"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/libxsmm.url "${srcdir}/libxsmm"
     git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/shl.url "${srcdir}/shl"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/kleidiai.url "${srcdir}/kleidiai"
+    git -C openvino config --local submodule.src/plugins/intel_cpu/thirdparty/xbyak_riscv.url "${srcdir}/xbyak_riscv"
     git -C openvino -c protocol.file.allow='always' submodule update
     
     ln -sf ../npu_compiler/CMakePresets.json openvino/CMakePresets.json
@@ -160,8 +168,17 @@ prepare() {
     patch -d npu_compiler -Np1 -i "${srcdir}/020-intel-npu-compiler-disable-werror.patch"
     patch -d npu_compiler -Np1 -i "${srcdir}/030-intel-npu-compiler-fix-install.patch"
     
+    # npu-plugin-llvm: fix build with gcc 15
+    # https://github.com/intel/npu-plugin-llvm/commit/e2f25af711425fb238317582441f4bda56131891
+    git -C npu_compiler/thirdparty/llvm-project cherry-pick --no-commit e2f25af711425fb238317582441f4bda56131891
+    patch -d npu_compiler/thirdparty/llvm-project -Np1 -i "${srcdir}/040-intel-npu-compiler-llvm-gcc15-fix.patch"
+    
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-disable-werror.patch"
-    patch -d openvino/thirdparty/level_zero/level-zero -Np1 -i "${srcdir}/020-openvino-level-zero-disable-werror.patch"
+    
+    # openvino: fix build with gcc 15
+    # https://github.com/openvinotoolkit/openvino/commit/c240db5ed317fdc94532dc55d356f18306ded996
+    git -C openvino cherry-pick --no-commit c240db5ed317fdc94532dc55d356f18306ded996
+    patch -d openvino/thirdparty/gtest/gtest -Np1 -i "${srcdir}/020-openvino-gtest-gcc15-fix.patch"
 }
 
 build() {
@@ -184,7 +201,6 @@ build() {
         -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='true' \
         -DENABLE_SYSTEM_TBB:BOOL='true' \
         -Wno-dev
