@@ -2,12 +2,12 @@
 pkgname=coppwr-bin
 _pkgname=coppwr
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
 url='https://dimtpap.ovh/coppwr'
-license=('GPL3')
-depends=('pipewire' 'libxkbcommon' 'libxkbcommon-x11')
+license=('GPL-3.0-only')
+depends=('pipewire' 'libpipewire' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-icon-theme' 'gcc-libs' 'glibc')
 optdepends=('xdg-desktop-portal: Camera and Screencast XDP support')
 provides=('coppwr')
 conflicts=('coppwr')
