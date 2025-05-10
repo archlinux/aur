@@ -1,0 +1,12 @@
+pkgbase = nbtworkbench-git
+	pkgdesc = A modern NBT Editor written in Rust.
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/RealRTTV/nbtworkbench
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	source = git+https://github.com/RealRTTV/nbtworkbench
+	b2sums = SKIP
+
+pkgname = nbtworkbench-git
