@@ -7,7 +7,7 @@ pkgdesc="Pythonic bindings for FFmpeg"
 url="https://pyav.basswood-io.com"
 
 pkgver=14.3.0
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64" "i686")
 license=("BSD-3-Clause")
@@ -19,7 +19,7 @@ depends=(
   "python-pillow"
 )
 makedepends=(
-  "cython-git"  # >=3.1.0b1
+  "cython"
   "python-build"
   "python-installer"
   "python-setuptools"
