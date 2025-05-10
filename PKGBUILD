@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libarchive
-pkgver=3.7.7
+pkgver=3.7.9
 pkgrel=1
 arch=('any')
 pkgdesc="Multi-format archive and compression library (Android ${_android_arch})"
@@ -21,7 +21,7 @@ depends=("android-${_android_arch}-bzip2"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libarchive/libarchive/releases/download/v${pkgver}/libarchive-${pkgver}.tar.xz")
-md5sums=('50c4dea9eba9a0add25ac1cfc9ba2cdb')
+md5sums=('e378aeb163d8c81745665dddd81116ef')
 
 build() {
     cd "${srcdir}/libarchive-${pkgver}"
