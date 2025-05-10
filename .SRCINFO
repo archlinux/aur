@@ -1,6 +1,6 @@
 pkgbase = aespipe
 	pkgdesc = Encrypts data from stdin to stdout
-	pkgver = 2.4h
+	pkgver = 2.4i
 	pkgrel = 1
 	url = http://loop-aes.sourceforge.net
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = aespipe
 	arch = armv7h
 	license = GPL
 	depends = sharutils
-	source = http://loop-aes.sourceforge.net/aespipe/aespipe-v2.4h.tar.bz2
-	source = http://loop-aes.sourceforge.net/aespipe/aespipe-v2.4h.tar.bz2.sign
-	sha384sums = 8d629e062caa8b5c531ca3b209986aaadb5ee5e435f3f9336fc0dce245ef63812e83a6922f78b54779cecca78853e8de
+	source = http://loop-aes.sourceforge.net/aespipe/aespipe-v2.4i.tar.bz2
+	source = http://loop-aes.sourceforge.net/aespipe/aespipe-v2.4i.tar.bz2.sign
+	sha384sums = 28ea48b86f9c59d04438eefd973131eb18033645c6df1eea0fc4b4dee74125cfa32509c8c72ae4259e387efe0bfa5a90
 	sha384sums = SKIP
 
 pkgname = aespipe
