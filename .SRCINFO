@@ -1,18 +1,19 @@
 pkgbase = cockpit-file-sharing
 	pkgdesc = A Cockpit plugin to easily manage samba and NFS file sharing.
 	pkgver = 4.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/45Drives/cockpit-file-sharing
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = jq
 	makedepends = make
 	makedepends = moreutils
 	makedepends = yarn
 	depends = cockpit
 	depends = python
-	depends = samba
-	depends = nfs-utils
+	optdepends = samba
+	optdepends = nfs-utils
 	provides = cockpit-file-sharing
 	source = git+https://github.com/45Drives/cockpit-file-sharing.git#commit=2e509cfc8b1ae16c7c7a0cdc8d6f51636505c779
 	source = git+https://github.com/45Drives/houston-common.git#commit=7921c2120e992569307c14e4c9e0089df10ce686

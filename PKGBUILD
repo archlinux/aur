@@ -1,20 +1,22 @@
-# Maintainer:  Michael <https://aur.archlinux.org/account/michael_wzq>
+# Maintainer:  Michael           <https://aur.archlinux.org/account/michael_wzq>
 # Contributor: Bradley O'Connell <bradleyocon@gmail.com>
-# Contributor: Brodi <me@brodi.space>
+# Contributor: Brodi             <me@brodi.space>
 # shellcheck disable=SC2034,SC2154
 
 _plugin=file-sharing
 _pkgrel=3
 pkgname="cockpit-${_plugin}"
 pkgver="4.2.10"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Cockpit plugin to easily manage samba and NFS file sharing."
 arch=("any")
 url="https://github.com/45Drives/cockpit-file-sharing"
 license=("GPL-3.0-only")
-depends=("cockpit" "python" "samba" "nfs-utils")
+depends=("cockpit" "python")
+optdepends=("samba" "nfs-utils")
 makedepends=(
     "git"
+    "jq"
     "make"
     "moreutils"
     "yarn"
