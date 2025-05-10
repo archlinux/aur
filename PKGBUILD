@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Maintainer: c4 
 pkgname=lsr-iouring-git
 _pkgname=lsr
@@ -9,7 +8,8 @@ arch=('x86_64')
 url="https://tangled.sh/@rockorager.dev/lsr"
 license=('MIT')
 
-makedepends=('zig>=0.14.0' 'git')
+makedepends=('zig' 'git')
+#'zig>=0.14.0' failed? can it not recognize zig-git?
 
 _pkgsrc="$_pkgname"
 source=('git+https://tangled.sh/@rockorager.dev/lsr')
