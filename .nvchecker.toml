@@ -1,0 +1,5 @@
+[python-oslex]
+source = "github"
+github = "petamas/oslex"
+prefix = "release/v"
+use_latest_release = true
