@@ -1,8 +1,8 @@
 # Maintainer: FuzzyCheese
 # Co-maintainer: f4iey
 pkgname=wfview-git
-pkgver=r2513.85178de
-pkgrel=2
+pkgver=r3327.801f7b1
+pkgrel=1
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
@@ -33,4 +33,5 @@ package() {
   install -D "${srcdir}/wfview/resources/wfview.png" "$pkgdir/usr/share/pixmaps/wfview.png"
   mkdir -p "$pkgdir/usr/share/wfview/qdarkstyle"
   cp -rv "${srcdir}/wfview/qdarkstyle" -t "$pkgdir/usr/share/wfview"
+  cp -rv "${srcdir}/wfview/rigs" "$pkgdir/usr/share/wfview"
 }
