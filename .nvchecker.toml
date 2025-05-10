@@ -1,0 +1,4 @@
+[minc-bin]
+source = "git"
+git = "https://github.com/minc-org/minc.git"
+prefix = "v"
