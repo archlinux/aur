@@ -1,7 +1,7 @@
 # Contributor: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=aero-fighter
-pkgver=25.2.16
+pkgver=25.5.12
 pkgrel=1
 pkgdesc="Top-down shooter game. Reach God Mode!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('sbcl')
 provides=()
 options=('!strip')
 source=("https://github.com/fosskers/aero-fighter/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dcdd9f3de4c50db9e723e9923e4660d77cda8f81870a25b62d8b95660b7f1331')
+sha256sums=('9c0f9d8711bb2f6905b508909b2530d3b68c856a790e0c89d5457149dd168021')
 
 build() {
     cd aero-fighter-${pkgver}
