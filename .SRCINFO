@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-sqlite
 	pkgdesc = A C library that implements an SQL database engine (Android x86-64)
-	pkgver = 3.49.1
+	pkgver = 3.49.2
 	pkgrel = 1
 	url = https://www.sqlite.org/
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = android-x86-64-sqlite
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://www.sqlite.org/2025/sqlite-src-3490100.zip
-	md5sums = f2662149e87f8940f8d2212e039f52ea
+	source = https://www.sqlite.org/2025/sqlite-src-3490200.zip
+	md5sums = e9e6dee0a5308225f75af8ad70a2eee2
 
 pkgname = android-x86-64-sqlite
 	pkgdesc = A C library that implements an SQL database engine (Android x86-64)
