@@ -1,0 +1,4 @@
+[anyzig-zig]
+source = "git"
+git = "https://github.com/ziglang/zig.git"
+prefix = "v"
