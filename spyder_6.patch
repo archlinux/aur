@@ -1,0 +1,161 @@
+diff --git a/setup.py b/setup.py
+index f7dbbb9..50b0c1f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,21 +40,21 @@ def get_description():
+     return data
+ 
+ 
+ REQUIREMENTS = [
+-    'spyder>=5.2.0',
++    'spyder>=6.0.0',
+     'tornado',
+     'terminado>=0.13.1',
+     'coloredlogs',
+     'requests'
+ ]
+ 
+ EXTRAS_REQUIRE = {
+     'test': [
+-        'pytest<6.0',
++        'pytest',
+         'pytest-cov',
+         'flaky',
+-        'pytest-qt==3.3.0',
++        'pytest-qt',
+         'pytest-timeout'
+     ]
+ }
+ 
+@@ -95,13 +95,9 @@ setup(
+         'License :: OSI Approved :: MIT License',
+         'Operating System :: MacOS',
+         'Operating System :: Microsoft :: Windows',
+         'Operating System :: POSIX :: Linux',
+-        'Programming Language :: Python :: 2.7',
+-        'Programming Language :: Python :: 3.5',
+-        'Programming Language :: Python :: 3.6',
+-        'Programming Language :: Python :: 3.7',
+-        'Programming Language :: Python :: 3.8'
++        'Programming Language :: Python :: 3.12',
+         ],
+     extras_require=EXTRAS_REQUIRE,
+     entry_points={
+         "spyder.plugins": [
+diff --git a/setupbase.py b/setupbase.py
+index b4c7dfc..34f1506 100644
+--- a/setupbase.py
++++ b/setupbase.py
+@@ -65,11 +65,11 @@ class BuildStatic(Command):
+             log.info("running [yarn install]")
+             run(['yarn', 'install'], cwd=repo_root)
+             log.info("installing webpack")
+             run(['npm', 'i', '-D', 'webpack'], cwd=repo_root)
+-            run(['npm', 'i', 'webpack-cli', 'html-webpack-plugin', 'xterm',
+-                 'xterm-addon-attach', 'xterm-addon-search',
+-                 'xterm-addon-web-links', 'xterm-addon-fit'],
++            run(['npm', 'i', 'webpack-cli', 'html-webpack-plugin', '@xterm/xterm',
++                 '@xterm/addon-attach', '@xterm/addon-search',
++                 '@xterm/addon-web-links', '@xterm/addon-fit'],
+                 cwd=repo_root)
+             log.info('running webpack')
+             run(['npm', 'run', 'webpack'], cwd=repo_root)
+ 
+diff --git a/spyder_terminal/server/static/js/main.js b/spyder_terminal/server/static/js/main.js
+index 7deadea..df12c3a 100644
+--- a/spyder_terminal/server/static/js/main.js
++++ b/spyder_terminal/server/static/js/main.js
+@@ -1,9 +1,9 @@
+-import { Terminal } from 'xterm';
+-import { AttachAddon } from 'xterm-addon-attach';
+-import { FitAddon } from 'xterm-addon-fit';
+-import { SearchAddon } from 'xterm-addon-search';
+-import { WebLinksAddon } from 'xterm-addon-web-links';
++import { Terminal } from '@xterm/xterm';
++import { AttachAddon } from '@xterm/addon-attach';
++import { FitAddon } from '@xterm/addon-fit';
++import { SearchAddon } from '@xterm/addon-search';
++import { WebLinksAddon } from '@xterm/addon-web-links';
+ 
+ let term;
+ let searchAddon;
+ let fitAddon;
+@@ -271,5 +271,5 @@ const term_functions = {
+   hexToRGB: hexToRGB,
+   pasteText: pasteText,
+ };
+ 
+-export default term_functions;
+\ No newline at end of file
++export default term_functions;
+diff --git a/spyder_terminal/terminalplugin.py b/spyder_terminal/terminalplugin.py
+index de6ef65..bfde1b9 100644
+--- a/spyder_terminal/terminalplugin.py
++++ b/spyder_terminal/terminalplugin.py
+@@ -12,8 +12,9 @@ import os
+ import os.path as osp
+ 
+ # Third party imports
+ from qtpy.QtCore import Signal
++from spyder.api.fonts import SpyderFontType
+ from spyder.api.plugins import Plugins, SpyderDockablePlugin
+ from spyder.api.plugin_registration.decorators import on_plugin_available
+ from spyder.config.base import get_translation
+ 
+@@ -102,9 +103,9 @@ class TerminalPlugin(SpyderDockablePlugin):
+         preferences.register_plugin_preferences(self)
+ 
+     def update_font(self):
+         """Update font from Preferences."""
+-        font = self.get_font()
++        font = self.get_font(SpyderFontType.MonospaceInterface )
+         self.get_widget().update_font(font)
+ 
+     def check_compatibility(self):
+         """Check if current Qt backend version is greater or equal to 5."""
+diff --git a/spyder_terminal/widgets/main_widget.py b/spyder_terminal/widgets/main_widget.py
+index 60f7a07..9e5d7bc 100644
+--- a/spyder_terminal/widgets/main_widget.py
++++ b/spyder_terminal/widgets/main_widget.py
+@@ -165,11 +165,9 @@ class TerminalMainWidget(PluginMainWidget):
+             icon=self.create_icon('expand_selection'),
+             triggered=lambda: self.create_new_term(),
+         )
+ 
+-        self.add_corner_widget(
+-            TerminalMainWidgetCornerToolbar.NewTerm,
+-            new_terminal_toolbar_action)
++        self.add_corner_widget(new_terminal_toolbar_action)
+ 
+         new_terminal_cwd = self.create_action(
+             TerminalMainWidgetActions.NewTerminalForCWD,
+             text=_("New terminal in current working directory"),
+diff --git a/spyder_terminal/widgets/terminalgui.py b/spyder_terminal/widgets/terminalgui.py
+index 33d3c81..e6ab5e2 100644
+--- a/spyder_terminal/widgets/terminalgui.py
++++ b/spyder_terminal/widgets/terminalgui.py
+@@ -23,9 +23,9 @@ from qtpy.QtWidgets import QFrame, QVBoxLayout, QApplication
+ from spyder.api.widgets.mixins import SpyderWidgetMixin
+ from spyder.api.config.decorators import on_conf_change
+ from spyder.config.base import get_translation
+ from spyder.config.gui import is_dark_interface
+-from spyder.utils.palette import QStylePalette
++from spyder.utils.palette import SpyderPalette
+ 
+ # Local imports
+ from spyder_terminal.api import TerminalMainWidgetActions, TermViewMenus
+ from spyder_terminal.widgets.style.themes import ANSI_COLORS
+@@ -270,11 +270,11 @@ class TerminalWidget(QFrame, SpyderWidgetMixin):
+ 
+     def _apply_stylesheet(self, focus=False):
+         """Apply stylesheet according to the current focus."""
+         if focus:
+-            border_color = QStylePalette.COLOR_ACCENT_3
++            border_color = SpyderPalette.COLOR_ACCENT_3
+         else:
+-            border_color = QStylePalette.COLOR_BACKGROUND_4
++            border_color = SpyderPalette.COLOR_BACKGROUND_4
+ 
+         css = qstylizer.style.StyleSheet()
+         css.QFrame.setValues(
+             border=f'1px solid {border_color}',

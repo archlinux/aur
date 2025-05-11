@@ -1,0 +1,27 @@
+pkgbase = spyder-terminal
+	pkgdesc = Spyder Plugin for displaying a virtual terminal (OS independent) inside the main Spyder window
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://docs.spyder-ide.org/current/plugins/terminal.html
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = spyder
+	depends = python-terminado
+	depends = python-qstylizer
+	depends = python-qtpy
+	depends = python-tornado
+	depends = python-requests
+	depends = python-coloredlogs
+	depends = python-pexpect
+	depends = nodejs
+	source = https://files.pythonhosted.org/packages/00/fe/a89d18983b9f7d881fa16089b418b7febfb9e1a2ea8f5a0ce39e59474859/spyder-terminal-1.2.2.tar.gz
+	source = spyder_6.patch
+	sha256sums = 34235070276a0cb255a5c371cbef076a355059a8a8c71fa9805df229ea0335da
+	sha256sums = f4e8dafbd82fb651ba0f7b5e10fd447fee5baad04033b3bab6ee4043536eb7be
+
+pkgname = spyder-terminal
