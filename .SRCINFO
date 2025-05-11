@@ -1,7 +1,7 @@
 pkgbase = nnd
 	pkgdesc = A debugger for Linux
 	pkgver = 0.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
 	license = Apache-2.0
