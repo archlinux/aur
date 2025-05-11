@@ -2,13 +2,13 @@
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=nnd
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A debugger for Linux"
 arch=('x86_64')
 url="https://github.com/al13n321/nnd"
 source=("nnd::git+https://github.com/al13n321/nnd#tag=v${pkgver}")
 b2sums=('SKIP')
-makedepends=(cargo rust-musl)
+makedepends=('cargo' 'rust-musl' 'musl')
 license=("Apache-2.0")
 target='x86_64-unknown-linux-musl'
 
