@@ -13,7 +13,7 @@ pkgrel=3
 pkgdesc='Convert between units.'
 url='https://github.com/doug-101/ConvertAll'
 arch=('x86_64')
-license=(GPL2)
+license=('GPL-2.0-or-later')
 depends=(
 	'gtk3'
 	'gstreamer'
