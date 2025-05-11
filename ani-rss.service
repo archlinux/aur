@@ -1,0 +1,17 @@
+# Maintainer: vcup <me@vcup.moe>
+[Unit]
+Description=自动追番、订阅、下载 蜜柑RSS动漫
+Documentation=https://docs.wushuo.top/deploy/deploy
+After=network.target
+
+[Service]
+User=ani-rss
+WorkingDirectory=/var/lib/ani-rss
+ExecStart=/usr/bin/java -Xmx1G -Xss512K -XX:+UseG1GC -XX:+UseStringDeduplication -XX:+ShrinkHeapInSteps -XX:TieredStopAtLevel=1 --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.https=ALL-UNNAMED -jar /usr/lib/ani-rss/ani-rss.jar
+Restart=on-failure
+Environment="HOST=0.0.0.0"
+Environment="PORT=7789"
+
+[Install]
+WantedBy=multi-user.target
+
