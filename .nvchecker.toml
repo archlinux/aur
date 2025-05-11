@@ -1,0 +1,4 @@
+[notemap]
+source = "git"
+git = "https://git.causal.agency/notemap"
+prefix = "v"

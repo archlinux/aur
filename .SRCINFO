@@ -1,0 +1,15 @@
+pkgbase = notemap
+	pkgdesc = Mirrors text files to an IMAP mailbox in a format compatible with the iOS Notes app
+	pkgver = 1.3+r2+g935f42b
+	pkgrel = 1
+	url = https://git.causal.agency/notemap/about/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = git
+	depends = glibc
+	depends = libretls
+	depends = sh
+	source = notemap-935f42bb7f0ba0db60de2d09eca501041c46f710.tar.gz::https://git.causal.agency/notemap/snapshot/notemap-935f42bb7f0ba0db60de2d09eca501041c46f710.tar.gz
+	b2sums = 458444e02ecc576e9dd2c993d265fe4804accab091d52b2112e9abc9c5bae058d9ba06c7fe9c0cbf81e2c67219dc3b07866520c7b3c17b3116938fef7d652ba4
+
+pkgname = notemap
