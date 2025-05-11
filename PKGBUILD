@@ -1,7 +1,7 @@
 pkgname=neovim-lspconfig-git
-pkgver=0.1.7.r158.g4bdd3800
-pkgrel=1
 pkgdesc="Quickstart configurations for the Neovim LSP client"
+pkgver=2.1.0.r64.g61e5109c
+pkgrel=1
 arch=('any')
 url="https://github.com/neovim/nvim-lspconfig"
 license=('Apache')
@@ -33,7 +33,7 @@ package() {
   )
 
   cd nvim-lspconfig
-  find lua plugin doc -type f -exec install -D -m644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/${pkgname}/{}" \;
+  find lua plugin doc lsp -type f -exec install -D -m644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/${pkgname}/{}" \;
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
