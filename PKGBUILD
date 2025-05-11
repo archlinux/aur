@@ -1,21 +1,20 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=ultimate-tic-tac-toe
-pkgver=1.0.2
-_commit=14f02401f4c6b24753a91ccca5917336f1c8d471
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Play Ultimate Tic Tac Toe'
 url="https://github.com/Nokse22/ultimate-tic-tac-toe"
 license=('GPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 depends=('libadwaita' 'python-gobject')
-makedepends=('git' 'meson')
+makedepends=('meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f148595b1c01fb335deedc4c27b06b79daeb0eb3299b874b91bd9d860e30d775')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson $pkgname-v$pkgver build
   meson compile -C build
 }
 
