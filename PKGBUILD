@@ -1,20 +1,25 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 pkgname=ytcc
-pkgver=2.6.1
-pkgrel=3
+pkgver=2.7.1
+pkgrel=1
 pkgdesc="Command line tool to keep track of playlists"
 arch=('any')
 url="https://github.com/woefe/ytcc"
 license=('GPL3')
-depends=('python-click' 'yt-dlp' 'python-wcwidth')
+depends=('python-click' 'yt-dlp' 'python-wcwidth' 'python-defusedxml')
 optdepends=('mpv' 'fzf' 'youtube-dl')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("https://github.com/woefe/ytcc/archive/v${pkgver}.tar.gz")
-sha256sums=('abd6d26d8c1a0ad5787cf890b08ddf1cb685c2e26f353abb168da49a40974e3c')
+sha256sums=('aefd30b5844f6be61d87f42f7094dc1cab8258dc2567bf3dc4611c03ce9217db')
+
+build() {
+  cd $pkgname-$pkgver
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd $pkgname-$pkgver
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   ln -s "ytccf.sh" "${pkgdir}/usr/bin/ytccf"
   install -Dm644 scripts/completions/zsh/_ytcc "${pkgdir}/usr/share/zsh/site-functions/_ytcc"
   install -Dm644 scripts/completions/bash/ytcc.completion.sh "${pkgdir}/usr/share/bash-completion/completions/ytcc"
