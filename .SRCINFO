@@ -1,6 +1,6 @@
 pkgbase = ryzen-master-commander
 	pkgdesc = TDP and fan control for AMD Ryzen processors
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/sam1am/Ryzen-Master-Commander
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = ryzen-master-commander
 	depends = python-pystray
 	depends = ryzenadj
 	depends = nbfc-linux-git
-	source = ryzen-master-commander-1.0.9.tar.gz::https://github.com/sam1am/Ryzen-Master-Commander/archive/refs/tags/v1.0.9.tar.gz
-	sha256sums = fdc28aa166c77b7ecd6646a0cdeafeda95df8527034a36c7fd625206f7c4f5ac
+	source = ryzen-master-commander-1.0.10.tar.gz::https://github.com/sam1am/Ryzen-Master-Commander/archive/refs/tags/v1.0.10.tar.gz
+	sha256sums = af4638741ae48f8c2f5f7844ce16b9f491ffa77f4b4730a1807d895a15a32ac1
 
 pkgname = ryzen-master-commander
