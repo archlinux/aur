@@ -33,7 +33,7 @@ prepare() {
 build() {
 	cd "${pkgname}-${pkgver}"
 
-	export CFLAGS+=' -Wno-error=implicit-function-declaration -Wno-error=implicit-int'
+	export CFLAGS+=' -std=c11 -Wno-error=implicit-function-declaration -Wno-error=implicit-int'
 
 	xmkmf
 	make Makefiles
