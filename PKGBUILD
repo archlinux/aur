@@ -9,7 +9,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 arch=('any')
 url="https://github.com/mwilck/${_pkgname}"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=()
 makedepends=('git')
 source=("git+${url}.git")
@@ -26,8 +26,7 @@ pkgver() {
 
 package() {
 	cd "${_srcdir}"
-	depends=('python' 'btrfs-progs')
-	
+	depends+=('python' 'btrfs-progs')
+
 	install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
-	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
