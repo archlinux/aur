@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pixelflasher
-pkgver=7.11.3.1
+pkgver=8.0.1.0
 pkgrel=1
 pkgdesc="Pixel phone flashing GUI utility with features."
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
   'python-markdown'
   'python-packaging'
   'python-platformdirs'
+  'python-polib'
   'python-protobuf'
   'python-psutil'
   'python-pyperclip'
@@ -35,7 +36,7 @@ options=('!strip')
 source=("PixelFlasher-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'git+https://android.googlesource.com/platform/system/update_engine.git'
         'PixelFlasher.desktop')
-sha256sums=('02f2ec7a0c0cd739bc27032f13d7afc91779337e9f6e087a62b9e88b7fd0dff2'
+sha256sums=('00cefc21c9d77d5b0319ca7bcec76a220e4da9d9b179145d89dba8c6061a2a4a'
             'SKIP'
             'dff526833836b7123c99d2321f06975c34fe0abd21a02ef9dde4da3328a21129')
 
@@ -44,6 +45,11 @@ prepare() {
   # Regenerate protos
   protoc --proto_path=update_engine --python_out=. update_metadata.proto
   cp -vf update_metadata_pb2.py "PixelFlasher-$pkgver/update_metadata_pb2.py"
+}
+
+build() {
+  cd "PixelFlasher-$pkgver"
+  python compile_po.py
 }
 
 package() {
@@ -66,6 +72,13 @@ package() {
     install -Dm644 "images/icon-${i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/PixelFlasher.png"
   done
+
+  pushd locale
+  for lang in $(ls -d */); do
+    install -Dm644 "${lang%%/}/LC_MESSAGES/$pkgname.mo" -t \
+      "$pkgdir/opt/$pkgname/locale/${lang%%/}/LC_MESSAGES/"
+  done
+  popd
 
   install -Dm644 "$srcdir/PixelFlasher.desktop" -t "$pkgdir/usr/share/applications/"
 
