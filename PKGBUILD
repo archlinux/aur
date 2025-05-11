@@ -3,10 +3,11 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Repeater <fakeroration@gmail.com>
+# Contributor: mail_set <youremail@domain.com>
 pkgname=cmcl
-pkgver=2.2.1
-pkgrel=21
+pkgver=2.2.2
+pkgrel=22
 epoch=
 pkgdesc="A Minecraft Java Edition Launcher Running on the Command Line"
 arch=('any')
@@ -25,7 +26,6 @@ install=
 changelog=
 source=("https://github.com/MrShieh-X/console-minecraft-launcher/releases/download/$pkgver/$pkgname")
 noextract=("$pkgname")
-sha256sums=("db0bc11131e8e02cb7d1e580944df96b3016198b630561b17b6e70bb4348243c")
 validpgpkeys=()
 
 prepare() {
@@ -38,3 +38,4 @@ package() {
     cd $pkgname-$pkgver
     install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
 }
+sha256sums=('bd655e3679836956c78094954b9290a2b2c57cb82775a1f593ed25ef697ad0d3')
