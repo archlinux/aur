@@ -29,7 +29,8 @@ backup=('etc/dell-g5se-fanctl.conf')
 
 build() {
 	mkdir -p 'build'
-	g++ -std=c++20 -lstdc++fs ${CPPFLAGS} ${CXXFLAGS} "${_srcdir}/DellFan.cpp" -o 'build/dell-g5se-fanctl'
+	CXX="${CXX:-g++}"
+	$CXX -std=c++20 -lstdc++fs ${CPPFLAGS} ${CXXFLAGS} "${_srcdir}/DellFan.cpp" -o 'build/dell-g5se-fanctl'
 }
 
 package() {
