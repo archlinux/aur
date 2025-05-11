@@ -7,7 +7,7 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-gdbm
-pkgver=1.24
+pkgver=1.25
 pkgrel=1
 arch=('any')
 pkgdesc="GNU database library (Android ${_android_arch})"
@@ -19,13 +19,13 @@ depends=("android-${_android_arch}-gettext"
 makedepends=('android-configure')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz")
-md5sums=('c780815649e52317be48331c1773e987')
+md5sums=('46266720c7980b75f29e3554aeaeb7a8')
 
 prepare() {
     cd "${srcdir}/gdbm-${pkgver}"
     source android-env ${_android_arch}
 
-    autoreconf -vfi
+    autoreconf -fiv
 }
 
 build() {
