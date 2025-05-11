@@ -2,14 +2,14 @@
 
 # This function runs after the package is successfully installed for the first time.
 post_install() {
-  /usr/bin/netnsupdate
+  /usr/bin/netns-update
 }
 
 # This function runs after the package is successfully upgraded.
 # The argument $1 contains the new package version.
 # The argument $2 contains the old package version.
 post_upgrade() {
-  /usr/bin/netnsupdate
+  /usr/bin/netns-update
 }
 
 post_remove() {
