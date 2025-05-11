@@ -2,7 +2,7 @@
 
 pkgname=cursor-electron
 pkgver=0.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The AI Code Editor"
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -10,11 +10,11 @@ license=('custom') #should be fixed
 _elnum=34
 depends=(electron${_elnum} ripgrep #replacements
 hicolor-icon-theme libxkbfile)
-optdepends=('electron: For /usr/share/cursor/cursor-latestron'
+optdepends=('electron: /usr/share/cursor/cursor-latestron'
 'vulkan-driver')
 makedepends=(sed)
-provides=(cursor)
-conflicts=(cursor)
+provides=(cursor{,-bin})
+conflicts=(cursor{,-bin})
 source=("src.iso::https://downloads.cursor.com/production/bbfa51c1211255cbbde8b558e014a593f44051f4/linux/x64/Cursor-${pkgver}-${arch}.AppImage"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('d49032ada9c7f405a0efb98db34abdb87de26d297ae43c2a9a75009806ec184e'
