@@ -1,4 +1,5 @@
 [spotify-player-bin]
-source = "git"
-git = "https://github.com/aome510/spotify-player.git"
+source = "github"
+github = "aome510/spotify-player"
+use_latest_release = true
 prefix = "v"
