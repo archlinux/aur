@@ -1,7 +1,7 @@
 # Maintainer: Nucceteere <ruzgar at nucceteere dot xyz>
 pkgname=serverseekerv2-git
 _pkgname=serverseekerv2
-pkgver=r117.e4cdb04
+pkgver=r122.089792e
 pkgrel=1
 pkgdesc="Fast Minecraft server scanner written in Rust"
 arch=('x86_64')
@@ -30,5 +30,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm755 "target/release/ServerSeekerV2-Rust" "${pkgdir}/usr/bin/$_pkgname"
+  install -Dm755 "target/release/ServerSeekerV2" "${pkgdir}/usr/bin/$_pkgname"
 }
