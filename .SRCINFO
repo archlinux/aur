@@ -10,6 +10,7 @@ pkgbase = python-spyder-line-profiler
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
+	depends = spyder
 	depends = python-qtawesome
 	depends = python-qtpy
 	depends = python-line-profiler
