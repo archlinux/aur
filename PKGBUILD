@@ -8,7 +8,7 @@ url="https://github.com/vpinball/libaltsound"
 license=('BSD-3-Clause')
 depends=('gcc-libs' 'glibc' 'libbass')
 makedepends=('git' 'cmake')
-provides=('libdmdutil' 'libdmdutil-git')
+provides=('libaltsound' 'libaltsound-git')
 source=("${pkgname}::git+https://github.com/joni999/libaltsound.git#branch=cmake-no-post-build-copy")
 #source=("${pkgname}::git+https://github.com/vpinball/libaltsound.git")
 sha256sums=('SKIP')
