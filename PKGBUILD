@@ -1,25 +1,30 @@
-# Maintainer: liberodark
+# Contributor: liberodark
 
 pkgname=cloaker-bin
-pkgver=2.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="Simple password-based file encryption"
 arch=('x86_64')
 url="https://github.com/spieglt/Cloaker"
-license=('GPL v3')
-depends=('xdg-utils' 'icu60')
-source_x86_64=("https://github.com/spieglt/Cloaker/releases/download/${pkgver}/cloakerLinux.zip")
-source=($pkgname.desktop
-        $pkgname.png)
-sha512sums=('bc989c7495e71b4f6d0300014a5340db4783a0ce2ea0e6478ceae462836052f3fb7314911a9988f08d72f28ba600473f2e06d6071ebe9f2b7590b1dd69e34781'
-         'a230c6328033c09e0b57c303b9231c6af474ccf276dfa773f73595c195ad2d63093b9bad0e4d4273b19fdf33dc0e5fe23b446a1f5c74bde1bd51c2b2b07daaea')
-sha512sums_x86_64=('32bf4e4a7539b51598b9d535241533ed7c1254bec7dabbc451f2d2cc3a12d6290a188be08dcc4319d5371bfb7c2efe26c5ead0ee24a66fd3ae0812cdf51d16d5')
-        
+license=('GPL3')
+depends=(gcc-libs xdg-utils qt5-{base,declarative,translations})
+makedepends=(patchelf binutils)
+optdepends=(qt5-{imageformats,svg,virtualkeyboard})
+source=("src.iso::https://github.com/spieglt/Cloaker/releases/download/v${pkgver}/Cloaker_Linux.AppImage"
+cloaker.{png,desktop})
+sha256sums=('9a74aafdebe1257f7d613ddd584c47aeafbc2e10de13db7af17dcdca957ebcbc'
+            'bcc57d448943333c9f937c013e718f922c3141011c8ede6428b2963f4ec559fd'
+            'a00563de575ed4b28c764616475bb73aacdaa7a2ff0d35ca1fdbde06b6d998e1')
+prepare() {
+	chmod +x src.iso
+	./src.iso --appimage-extract > /dev/null
+}
+build() {
+	# Remove Qt5 version from symbol
+	patchelf --remove-rpath squashfs-root/cloaker $(nm -D squashfs-root/cloaker|grep @Qt_5|sed 's/@Qt_5.*//;s/^\s*U/--clear-symbol-version/'|tr '\n' ' ')
+}
 package() {
-  cd $srcdir
-  mkdir -p "$pkgdir/opt/cloaker/"
-  cp -r "Cloaker.run" "$pkgdir/opt/cloaker/"
-  chmod +x "$pkgdir/opt/cloaker/Cloaker.run"
-  install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
+	install -D squashfs-root/cloaker "${pkgdir}/usr/bin/cloaker"
+	install -Dm644 cloaker.desktop "${pkgdir}/usr/share/applications/cloaker.desktop"
+	install -Dm644 cloaker.png "${pkgdir}/usr/share/pixmaps/cloaker.png"
 }

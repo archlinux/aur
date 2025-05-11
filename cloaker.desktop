@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Cloaker
+GenericName=Save Files
+Comment=Simple password-based file encryption
+Exec=cloaker
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Categories=Utility;Security;
+Icon=cloaker
+Name[ja_JP]=cloaker.desktop
