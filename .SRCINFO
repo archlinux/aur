@@ -1,0 +1,18 @@
+pkgbase = libaltsound-git
+	pkgdesc = A cross platform compilation of altsound that is baked directly into VPinMAME.
+	pkgver = r23.5342108
+	pkgrel = 1
+	url = https://github.com/vpinball/libaltsound
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = libbass
+	provides = libdmdutil
+	provides = libdmdutil-git
+	source = libaltsound-git::git+https://github.com/joni999/libaltsound.git#branch=cmake-no-post-build-copy
+	sha256sums = SKIP
+
+pkgname = libaltsound-git
