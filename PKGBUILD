@@ -5,8 +5,8 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-jasper
-pkgver=4.2.4
-pkgrel=2
+pkgver=4.2.5
+pkgrel=1
 arch=('any')
 pkgdesc="Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (Android ${_android_arch})"
 url='https://www.ece.uvic.ca/~frodo/jasper/'
@@ -17,7 +17,7 @@ makedepends=('android-cmake'
              "android-${_android_arch}-libxmu")
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz")
-md5sums=('aa4df693b90223fe6848b34cf1208624')
+md5sums=('24f32c5f5bd90eb58b1a552d63a29bde')
 
 prepare() {
     cd "${srcdir}/jasper-version-${pkgver}"
