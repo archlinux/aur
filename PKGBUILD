@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-snappy
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 arch=('any')
 pkgdesc="A fast compressor/decompressor library (Android ${_android_arch})"
@@ -17,12 +17,10 @@ makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/google/snappy/archive/${pkgver}/snappy-${pkgver}.tar.gz"
         'snappy.pc.in'
-        '0001-Add-pkgconfig.patch'
-        '0002-Disable-neon.patch')
-md5sums=('dd6f9b667e69491e1dbf7419bdf68823'
+        '0001-Add-pkgconfig.patch')
+md5sums=('30286dd6311dee1d5498c57f62eda7b8'
          '52264b05925281c591daea10f937424d'
-         'de6ce2e289d166971edd67748eedaf3f'
-         '8714d144e2b3e3cf9727fcee26b751f7')
+         'de6ce2e289d166971edd67748eedaf3f')
 
 prepare() {
     cd "${srcdir}/snappy-${pkgver}"
@@ -30,7 +28,6 @@ prepare() {
 
     cp ../snappy.pc.in .
     patch -Np1 -i ../0001-Add-pkgconfig.patch
-    patch -Np1 -i ../0002-Disable-neon.patch
     sed -i 's|cmake_minimum_required(VERSION 3.1)|cmake_minimum_required(VERSION 3.6)|g' CMakeLists.txt
 }
 
