@@ -1,0 +1,17 @@
+pkgbase = apertium-apy
+	pkgdesc = Apertium HTTP Server in Python
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/apertium/apertium-apy
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-tornado
+	source = https://github.com/apertium/apertium-apy/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 23e68c869f9af8a47546d7726b586bea633abe18a2b145a23075c14ed3f96265
+
+pkgname = apertium-apy
