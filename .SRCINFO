@@ -1,6 +1,6 @@
 pkgbase = libserialport-git
 	pkgdesc = A minimal, cross-platform shared library for sigrok, intended to take care of the OS-specific details when writing software that uses serial ports (git version)
-	pkgver = r396.1b01106
+	pkgver = r410.21b3dfe
 	pkgrel = 1
 	url = http://sigrok.org/wiki/Libserialport
 	arch = armv6h
@@ -11,7 +11,7 @@ pkgbase = libserialport-git
 	makedepends = git
 	provides = libserialport
 	conflicts = libserialport
-	source = git://sigrok.org/libserialport
+	source = git+https://github.com/sigrokproject/libserialport
 	sha512sums = SKIP
 
 pkgname = libserialport-git

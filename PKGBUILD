@@ -3,7 +3,7 @@
 
 _gitname=libserialport
 pkgname="${_gitname}-git"
-pkgver=r396.1b01106
+pkgver=r410.21b3dfe
 pkgrel=1
 pkgdesc="A minimal, cross-platform shared library for sigrok, intended to take care of the OS-specific details when writing software that uses serial ports (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('git')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
-source=("git://sigrok.org/${_gitname}")
+source=("git+https://github.com/sigrokproject/${_gitname}")
 sha512sums=('SKIP')
 
 pkgver() {
