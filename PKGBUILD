@@ -4,7 +4,7 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
@@ -27,7 +27,7 @@ source=("https://github.com/balena-io/etcher/archive/refs/tags/v${pkgver}.tar.gz
   "etcher-util"
   'skip-build-util.patch'
 )
-sha256sums=('53bf23446afab46a6f0d706aab89ad767de93222a614fd812bc33549da9f1bc7'
+sha256sums=('2fd9e1e96bda09e5ab4fd7e302531b084f0e2b8557dc1f959a1b2f2e6599d7f5'
             '6c5fb48aeb636272689c86d7cf9beea4515214636bc617a61c3e8387628b3415'
             '7482eb18af030eb6d2b44850f23ecb99cd9198f642ac3b22b2f9f2ef0c8944d4'
             'f27e34eaec0d2cb74fee259ff32c2cbd1dae36d2046d2b3e97394b91f47adace'
@@ -48,6 +48,8 @@ build() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   export HOME="${srcdir}"
   export NODE_OPTIONS=--stack-trace-limit=50
+  # skip download of node headers
+  export npm_config_nodedir=/usr/
   cd "${_pkgname}-${pkgver}"
   unset MAKEFLAGS
 
