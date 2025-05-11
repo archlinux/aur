@@ -8,12 +8,8 @@ pkgdesc="Create desktop apps using Go and Web Technologies"
 arch=(x86_64)
 url="https://github.com/wailsapp/wails"
 license=(MIT)
-depends=('glibc' 'npm')
-makedepends=(
-  'go'
-  'webkit2gtk'
-  'gtk3'
-)
+depends=('glibc' 'npm' 'webkit2gtk' 'gtk3')
+makedepends=('go')
 optdepends=('docker')
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha512sums=('10d22463464fdd1b2099b4deb53ecf0cfc180a17e05c33505f9ce45e84ad1e5c33b3a2d739bcbc9a755b7925e984a932135c8574b5f33b9f5e201890c2a45fbd')
