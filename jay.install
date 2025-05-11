@@ -1,0 +1,7 @@
+post_install() {
+  setcap cap_sys_nice=p usr/bin/jay
+}
+
+post_upgrade() {
+  setcap cap_sys_nice=p usr/bin/jay
+}

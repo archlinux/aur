@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=r1251.c6ca7c22
+pkgver=r1363.7beaad90
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -34,6 +34,7 @@ makedepends=(
 )
 options=(!lto)
 source=('jay::git+https://github.com/mahkoh/jay.git#branch=master')
+install=jay.install
 sha512sums=('SKIP')
 
 prepare() {
