@@ -128,13 +128,8 @@ prepare() {
 build() {
   cd "${pkgname%-git}"-ng
 
-  local prefix=/usr sysconfdir=/etc
   ./configure \
     --enable-dracut-cpio \
-    --sysconfdir=${sysconfdir} \
-    --prefix=${prefix} \
-    --libdir=${prefix}/lib \
-    --systemdsystemunitdir=${prefix}/lib/systemd/system \
     --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
     --configprofile=hostonly
   make
