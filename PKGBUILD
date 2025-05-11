@@ -6,7 +6,7 @@
 _name="poppler"
 pkgbase="lib32-${_name}"
 pkgname=("${pkgbase}"{,'-glib'}) # ,'qt'{'5','6'}
-pkgver=25.04.0
+pkgver=25.05.0
 pkgrel=1
 pkgdesc="PDF rendering library based on xpdf 3.0 (32-bit)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::${url}/${_pkgsrc}.tar.xz"
         "${_pkgsrc}.tar.xz.sig::${url}/${_pkgsrc}.tar.xz.sig"
         "test::git+https://gitlab.freedesktop.org/poppler/test.git#commit=91ee031c882634c36f2f0f2f14eb6646dd542fb9")
-sha256sums=('b010c596dce127fba88532fd2f1043e55ea30601767952d0f2c0a80e7dc0da3d'
+sha256sums=('9b1627c5b76816ac5e4052a03f5b605ba40b45cf06b02cadd0479620b499ab38'
             'SKIP'
             '2f797eea1e904012d3c2d1c69ed92ac51e444bf7934447945fedd6c749fef4f2')
 validpgpkeys=('CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7') # Albert Astals Cid <aacid@kde.org>
@@ -40,18 +40,18 @@ build() {
     -G 'Unix Makefiles'
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
-    -Wno-dev
-    -DCMAKE_BUILD_TYPE:STRING='Release'
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    -DCMAKE_INSTALL_LIBDIR:PATH='/usr/lib32'
-    -DENABLE_UNSTABLE_API_ABI_HEADERS:BOOL=ON
-    -DENABLE_UTILS:BOOL=OFF
-    -DENABLE_GOBJECT_INTROSPECTION:BOLL=OFF
-    -DENABLE_GTK_DOC:BOOL=OFF
-    -DENABLE_GPGME:BOOL=OFF
-    -DENABLE_QT6:BOOL=OFF
-    -DENABLE_QT5:BOOL=OFF
-    -DINSTALL_GLIB_DEMO:BOOL=OFF
+    -W no-dev
+    -D CMAKE_BUILD_TYPE:STRING='Release'
+    -D CMAKE_INSTALL_PREFIX:PATH='/usr'
+    -D CMAKE_INSTALL_LIBDIR:PATH='/usr/lib32'
+    -D ENABLE_UNSTABLE_API_ABI_HEADERS:BOOL=ON
+    -D ENABLE_UTILS:BOOL=OFF
+    -D ENABLE_GOBJECT_INTROSPECTION:BOLL=OFF
+    -D ENABLE_GTK_DOC:BOOL=OFF
+    -D ENABLE_GPGME:BOOL=OFF
+    -D ENABLE_QT6:BOOL=OFF
+    -D ENABLE_QT5:BOOL=OFF
+    -D INSTALL_GLIB_DEMO:BOOL=OFF
   )
 
   cd "${srcdir}"
@@ -64,7 +64,7 @@ check() {
   local ctest_flags=(
     --test-dir "${_pkgsrc}/build"
     --output-on-failure
-    --parallel $(nproc)
+    --parallel "$(nproc)"
     --exclude-regex "${excluded_tests}"
   )
 
