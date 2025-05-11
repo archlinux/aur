@@ -1,6 +1,6 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based web browser focused on performance and customizability
-	pkgver = 11.26.0
+	pkgver = 11.26.1
 	pkgrel = 1
 	url = https://github.com/Floorp-Projects/Floorp
 	arch = x86_64
@@ -58,7 +58,7 @@ pkgbase = floorp
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = Floorp::git+https://github.com/Floorp-Projects/Floorp.git#tag=84181881bd0fe3d381145ba689940845772eea56
+	source = Floorp::git+https://github.com/Floorp-Projects/Floorp.git#tag=1bf51ff4e6b3e7bfe79e65224ac9cb2c7e2b2071
 	source = floorp-projects.floorp-core::git+https://github.com/Floorp-Projects/Floorp-core.git
 	source = floorp-projects.unified-l10n-central::git+https://github.com/Floorp-Projects/Unified-l10n-central.git
 	source = floorp.desktop
