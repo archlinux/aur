@@ -3,7 +3,7 @@
 pkgname="yd-go-git"
 _pkgname=${pkgname%-git}
 pkgrel=1
-pkgver=master.ace0077
+pkgver=master.096762b.r0.g096762b
 pkgdesc="Panel indicator for Yandex-disk CLI daemon (linux)"
 arch=('x86_64')
 url="https://github.com/slytomcat/${_pkgname}/"
@@ -61,5 +61,5 @@ package() {
     echo "Install yd-go..."
 	install -Dm755 "${srcdir}/${_pkgname}/build/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm644 "${srcdir}/${_pkgname}/icons/img/yd128.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "${srcdir}/${_pkgname}/icons/img/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
