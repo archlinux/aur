@@ -7,7 +7,7 @@ _source_type='pypi-releases'
 _pypi_package='spyder-line-profiler'
 
 
-pkgname="python-${_pypi_package}"
+pkgname="${_pypi_package}"
 pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="Plugin for the Spyder IDE that integrates the Python line profiler"

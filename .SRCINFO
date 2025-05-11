@@ -1,4 +1,4 @@
-pkgbase = python-spyder-line-profiler
+pkgbase = spyder-line-profiler
 	pkgdesc = Plugin for the Spyder IDE that integrates the Python line profiler
 	pkgver = 0.4.1
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = python-spyder-line-profiler
 	source = https://files.pythonhosted.org/packages/54/41/960b070f7babe42345c019192249811a9e1bbf101c8b8d07a16f9790675c/spyder_line_profiler-0.4.1.tar.gz
 	sha256sums = c377bc9963c4474c4714bdacc4d002b43cd8311b4348c479b419d830cc816a82
 
-pkgname = python-spyder-line-profiler
+pkgname = spyder-line-profiler
