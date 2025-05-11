@@ -1,0 +1,18 @@
+pkgbase = i3map
+	pkgdesc = Generate a table of i3wm keybindings from your config file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hanashiko/i3map
+	install = i3map.install
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = i3map.py
+	source = LICENSE
+	source = README.md
+	sha256sums = 02784807434bb2e9028a41039eec3588764fe6615d6eecdfb900773dee31271e
+	sha256sums = 26e23658285bac48a2c3a11902d8fd28b84dc48cfeae2eee06ff5e6f5bddd0e0
+	sha256sums = 6ad1c2fc0fb140d4cccacce2b98719b714294bdbc246f0bac6476409e868cae6
+
+pkgname = i3map
