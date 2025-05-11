@@ -1,6 +1,6 @@
 pkgbase = discover-snap
 	pkgdesc = KDE and Plasma resources management GUI
-	pkgver = 6.3.4
+	pkgver = 6.3.5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
