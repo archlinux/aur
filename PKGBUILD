@@ -2,7 +2,7 @@
 
 pkgbase=lightningcss
 pkgname=('lightningcss-cli') # future plans are to build nodejs modules etc
-pkgver=1.29.3
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='An extremely fast CSS parser, transformer, bundler, and minifier written in Rust.'
 url='https://lightningcss.dev/'
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('MPL-2.0')
 makedepends=('cargo')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/parcel-bundler/lightningcss/archive/v$pkgver.tar.gz")
-sha256sums=('ed549ab8d8e53416238e0ff745f9b881f39fbcd07bd70c6d18d35828287c559c')
+sha256sums=('c769a5d15d8cb4b3cab3546527d30bcf5614f7799f04349b850fce0985fe7256')
 
 prepare() {
     cd "$pkgbase-$pkgver"
