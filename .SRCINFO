@@ -1,7 +1,7 @@
 pkgbase = zsa-kontroll
 	pkgdesc = Control your ZSA keyboard from the command line and scripts
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zsa/zsa-kontroll
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = zsa-kontroll
 	makedepends = protobuf
 	depends = glibc
 	depends = gcc-libs
-	depends = zsa-keymapp
+	depends = zsa-keymapp-bin
 	source = git+https://github.com/zsa/kontroll#tag=1.0.4
 	sha512sums = SKIP
 
