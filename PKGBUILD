@@ -37,7 +37,8 @@ package() {
 
   # Install fontconfig preset
   install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail
+  install -d "$pkgdir"/usr/share/fontconfig/conf.default
 
   # To enable the included preset (sets Noto Sans Arabic as default for ar_AR locale) run:
-  #ln -s /usr/share/fontconfig/conf.avail/66-noto-ar.conf /etc/fonts/conf.d
+  #ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
