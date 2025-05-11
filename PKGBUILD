@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=('libvgm-player-git' 'libvgm-emu-git' 'libvgm-utils-git' 'libvgm-audio-git' 'libvgm-common-git' 'vgm2wav-git' 'vgmplayer-git')
 pkgbase=libvgm-git
-pkgver=r541.669a756
+pkgver=r578.798cb20
 pkgrel=1
 pkgdesc="Library for decoding and playing VGM files"
 arch=(x86_64 i686)
@@ -83,9 +83,9 @@ package_libvgm-audio-git() {
     rm -rf "$pkgdir/usr/include/vgm/utils"
     rm -rf "$pkgdir/usr/lib/cmake"
 
-    rm "$pkgdir/usr/include/vgm/common_def.h"
-    rm "$pkgdir/usr/include/vgm/stdbool.h"
-    rm "$pkgdir/usr/include/vgm/stdtype.h"
+    rm -f "$pkgdir/usr/include/vgm/common_def.h"
+    rm -f "$pkgdir/usr/include/vgm/stdbool.h"
+    rm -f "$pkgdir/usr/include/vgm/stdtype.h"
 
 }
 
@@ -109,9 +109,9 @@ package_libvgm-emu-git() {
     rm -rf "$pkgdir/usr/include/vgm/utils"
     rm -rf "$pkgdir/usr/lib/cmake"
 
-    rm "$pkgdir/usr/include/vgm/common_def.h"
-    rm "$pkgdir/usr/include/vgm/stdbool.h"
-    rm "$pkgdir/usr/include/vgm/stdtype.h"
+    rm -f "$pkgdir/usr/include/vgm/common_def.h"
+    rm -f "$pkgdir/usr/include/vgm/stdbool.h"
+    rm -f "$pkgdir/usr/include/vgm/stdtype.h"
 }
 
 package_libvgm-player-git() {
@@ -134,9 +134,9 @@ package_libvgm-player-git() {
     rm -rf "$pkgdir/usr/include/vgm/utils"
     rm -rf "$pkgdir/usr/lib/cmake"
 
-    rm "$pkgdir/usr/include/vgm/common_def.h"
-    rm "$pkgdir/usr/include/vgm/stdbool.h"
-    rm "$pkgdir/usr/include/vgm/stdtype.h"
+    rm -f "$pkgdir/usr/include/vgm/common_def.h"
+    rm -f "$pkgdir/usr/include/vgm/stdbool.h"
+    rm -f "$pkgdir/usr/include/vgm/stdtype.h"
 }
 
 package_libvgm-utils-git() {
@@ -159,9 +159,9 @@ package_libvgm-utils-git() {
     rm -rf "$pkgdir/usr/include/vgm/player"
     rm -rf "$pkgdir/usr/lib/cmake"
 
-    rm "$pkgdir/usr/include/vgm/common_def.h"
-    rm "$pkgdir/usr/include/vgm/stdbool.h"
-    rm "$pkgdir/usr/include/vgm/stdtype.h"
+    rm -f "$pkgdir/usr/include/vgm/common_def.h"
+    rm -f "$pkgdir/usr/include/vgm/stdbool.h"
+    rm -f "$pkgdir/usr/include/vgm/stdtype.h"
 }
 
 package_vgm2wav-git() {
