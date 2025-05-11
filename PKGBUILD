@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Headers for STM32${dev} devices"
 url=https://github.com/STMicroelectronics
 license=('apache')
-source=("git://github.com/STMicroelectronics/STM32Cube${dev}.git")
+source=("git+https://github.com/STMicroelectronics/STM32Cube${dev}.git")
 md5sums=('SKIP')
 arch=('any')
 
