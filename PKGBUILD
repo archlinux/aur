@@ -1,6 +1,6 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
-pkgver=4.39.2
+pkgver=4.39.3
 pkgrel=1
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,7 +22,7 @@ backup=('etc/authelia/configuration.yml')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('308a383fb0b7447f05a02690e82d4df81281b0e7be363a53df136e3349c1196e')
+sha256sums=('79b32b4fc02ae178c43ca761171b70a6eb253b5ebf22e626d523dd727ac7494b')
 
 build() {
   export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin" _pkgver="v${pkgver}" CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2 -fstack-protector-strong" CGO_LDFLAGS="-Wl,-z,relro,-z,now"
