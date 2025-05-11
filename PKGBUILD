@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.13.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -33,10 +33,12 @@ conflicts=('classpath' 'cartaodecidadao' 'cartaodecidadao-bin')
 replaces=('cartaodecidadao')
 
 source=("git+https://github.com/amagovpt/autenticacao.gov/#tag=v${pkgver}"
-        "autenticacao-gov-pt.install")
+        "autenticacao-gov-pt.install"
+        "file.patch")
 
 sha512sums=('SKIP'
-            '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f')
+            '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f'
+            '58fee2c2f161500d028503125de36ce46fabb9779a823abcb0f6e8111cac520a8dd9985bd3a3fbcc5a5b59ddde7e9a0d36085e7d27b68db087b909a788c6865b')
 
 install='autenticacao-gov-pt.install'
 
@@ -45,6 +47,9 @@ cat >> ${srcdir}/${_pkgname}/pteid-mw-pt/_src/eidmw/eidlibJava_Wrapper/eidlibJav
 INCLUDEPATH += /usr/lib/jvm/default/include
 INCLUDEPATH += /usr/lib/jvm/default/include/linux
 EOF
+# work around for upstream bug (GCC-15)
+cd ${srcdir}/${_pkgname}
+patch -p1 < ${srcdir}/file.patch
 }
 
 build() {
