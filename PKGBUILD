@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dockerfiler
-_pkgver=0.2.4
+_pkgver=0.2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,9 +36,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('956170e9e496722508407c9a134dcb11'
+md5sums=('66b9d54f977935d10e174ee3cc6112a3'
          'ef9a524e620f31b990f6d05fa2050e0c')
-b2sums=('4b6eedecc8fa69e32446940d9a9ecae54e925d691e4b4307720e933f969cd4a05f16fbb7e880e8a03fadf118afb3fa4e55e45a7f1e692d193efb77a423d66ba3'
+b2sums=('4a719a7c17ff3bf15a62354d942a586656554a11724a656d3a18bcb01d10e130a97ea9fdd3ebc954877a915fff9f48c540867b565e6c9c196b43cfc5f980e4fa'
         '0ca7924504a7f0e809afc72d09fae390710ec233078354b710dfb2ed1c1db849bcb19b496ad26182200bfd7b7659e6531ad4bcdf4c1660459ab7cb2425e3eb51')
 
 prepare() {
