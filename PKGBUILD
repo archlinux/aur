@@ -1,81 +1,168 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Maintainer:
+# Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 # Contributor: Simo L. <neotuli@yahoo.com>
 # Contributor: eric <eric@archlinux.org>
 
-pkgname=sane-git
-pkgver=20190714.c52eef6e
+_pkgname="sane"
+pkgname="$_pkgname-git"
+pkgver=1.4.0.r3.g02e4000
 pkgrel=1
 pkgdesc="Scanner Access Now Easy"
-url="http://www.sane-project.org/"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=('GPL')
-depends=('libtiff>=4.0.0' 'libgphoto2' 'libjpeg>=8' 'libusbx' 'libcups' 'libieee1284' 'v4l-utils' 'avahi' 'bash' 'net-snmp')
-makedepends=('git' 'texlive-latexextra' 'autoconf-archive')
-backup=(etc/sane.d/{abaton.conf,agfafocus.conf,apple.conf,artec.conf,artec_eplus48u.conf,avision.conf,bh.conf,canon.conf,canon630u.conf,canon_dr.conf,canon_pp.conf,cardscan.conf,coolscan2.conf,coolscan3.conf,coolscan.conf,dc25.conf,dc210.conf,dc240.conf,dell1600n_net.conf,dll.conf,dmc.conf,epjitsu.conf,epson.conf,epson2.conf,epsonds.conf,fujitsu.conf,genesys.conf,gphoto2.conf,gt68xx.conf,hp.conf,hp3900.conf,hp4200.conf,hp5400.conf,hpsj5s.conf,hs2p.conf,ibm.conf,kodak.conf,kodakaio.conf,leo.conf,lexmark.conf,ma1509.conf,magicolor.conf,matsushita.conf,microtek.conf,microtek2.conf,mustek.conf,mustek_pp.conf,mustek_usb.conf,nec.conf,net.conf,p5.conf,pie.conf,pieusb.conf,pixma.conf,plustek.conf,plustek_pp.conf,qcam.conf,ricoh.conf,rts8891.conf,s9036.conf,saned.conf,sceptre.conf,sharp.conf,sm3840.conf,snapscan.conf,sp15c.conf,st400.conf,stv680.conf,tamarack.conf,teco1.conf,teco2.conf,teco3.conf,test.conf,u12.conf,umax.conf,umax1220u.conf,umax_pp.conf,xerox_mfp.conf,v4l.conf} etc/xinetd.d/sane)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.com/sane-project/backends.git'
-        'sane.xinetd'
-        'saned.socket'
-        'saned.service'
-        'network.patch')
+url="https://gitlab.com/sane-project/backends"
+arch=('x86_64')
+license=(
+  'GPL-2.0-or-later'
+  'LicenseRef-GPL-2.0-or-later-with-linking-exception'
+)
 
-sha256sums=('SKIP'
-            '9d288d4fef0833da31ca1f1e9b4e567f81a4c03219af3b496d3fc3b6aac394eb'
-            'c06fdd54128b06efbf8fbcb40b145512fa8e8a1c470c5cb60abc839a6002fdf1'
-            '9e5274b0184249aaf1066e64c08fed2d65445e4ca95717497b30fc9d30a55ae3'
-            '23785948c7d9dc071fcc066754001dc2c1bd17a904051ed3ae6ec7f4e3b8e66b')
+depends=(
+  'bash'
+  'cairo'
+  'libpng'
+  'libieee1284'
+  'net-snmp'
+  'v4l-utils'
+)
+makedepends=(
+  'autoconf-archive'
+  'avahi'
+  'curl'
+  'git'
+  'glib2'
+  'libgphoto2'
+  'libjpeg-turbo'
+  'libtiff'
+  'libusb'
+  'libxml2'
+  'poppler-glib'
+  'python'
+  'systemd'
+  'texlive-latexextra'
+)
+optdepends=(
+  'sane-airscan: for scanners working in driverless mode'
+)
+
+provides=(
+  "$_pkgname=${pkgver%%.g*}"
+  'libsane.so'
+)
+conflicts=("$_pkgname")
+
+_pkgsrc="sane-backends"
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  '66-saned.rules'
+  'sane.sysusers'
+  'saned.service'
+  'saned.socket'
+)
+sha256sums=(
+  'SKIP'
+  '0e98982ff1550b16b098f7563569c203aab5f7b4172717bec0d42eab15fb875b'
+  '8ef5d3b557c40019b34851d2130b3cb64e519298e60804f00d25de489bdeffcb'
+  '518f86d981057ca3c716815903c7eba471184b321154e78f8f9b9cfd2f05dadb'
+  '67e988f3294f33abd34974367fb3b48cd6d71a5c507d3ad9b0f86c5d7eac2dd6'
+)
 
 pkgver() {
-  cd "${srcdir}/backends"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd "$_pkgsrc"
+  local _tag _version _revision _hash
+  _tag=$(git tag -l '[0-9]*' | grep -Ev '[A-Za-z][A-Za-z]' | sort -rV | head -1)
+  _version="${_tag:?}"
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_commit:?}"
 }
 
 prepare() {
-  cd "${srcdir}/backends"
-  # fix http://vasks.debian.org/tracker/?func=detail&atid=410366&aid=313760&group_id=30186
-  patch -Np1 -i ${srcdir}/network.patch
+  # extract custom license exception
+  sed '1,41p' "$_pkgsrc/backend/dll.c" > LicenseRef-GPL-2.0-or-later-with-linking-exception.txt
+
+  cd "$_pkgsrc"
+  # copy translation files so they become reproducible: https://gitlab.com/sane-project/backends/-/issues/647
+  cp -v po/en{_GB,@quot}.po
+  cp -v po/en{_GB,@boldquot}.po
+  # create version files, so that autotools macros can use them:
+  # https://gitlab.com/sane-project/backends/-/issues/440
+  printf "%s\n" "$pkgver" > .tarball-version
+  printf "%s\n" "$pkgver" > .version
+  autoreconf -fiv
 }
 
 build() {
-  cd "${srcdir}/backends"
-  ./autogen.sh
-  ./configure --prefix=/usr --sbindir=/usr/bin \
-    --sysconfdir=/etc \
-    --localstatedir=/var \
-    --with-docdir=/usr/share/doc/sane \
-    --enable-avahi \
-    --enable-pthread \
-    --disable-rpath \
-    --enable-libusb_1_0 \
+  local configure_options=(
+    --prefix=/usr
     --disable-locking
+    --disable-rpath
+    --docdir="/usr/share/doc/$_pkgname"
+    --enable-pthread
+    --localstatedir=/var
+    --sbindir=/usr/bin
+    --sysconfdir=/etc
+    --with-avahi
+    --with-libcurl
+    --with-pic
+    --with-poppler-glib
+    --with-systemd
+    --with-usb
+  )
+
+  cd "$_pkgsrc"
+  ./configure "${configure_options[@]}"
+
+  # circumvent overlinking in libraries
+  sed -e 's/ -shared / -Wl,-O1,--as-needed\0/g' -i libtool
   make
 }
 
-package () {
-  cd "${srcdir}/backends"
-  make DESTDIR="${pkgdir}" install
+package() {
+  depends+=(
+    avahi libavahi-client.so libavahi-common.so
+    curl libcurl.so
+    glib2 libgobject-2.0.so
+    libgphoto2 libgphoto2.so libgphoto2_port.so
+    libjpeg-turbo libjpeg.so
+    libtiff libtiff.so
+    libusb libusb-1.0.so
+    libxml2 libxml2.so
+    poppler-glib libpoppler-glib.so
+    systemd-libs libsystemd.so
+  )
 
-  # fix hp officejets
-  echo "#hpaio" >> "${pkgdir}/etc/sane.d/dll.conf"
+  cd "$_pkgsrc"
 
-  # install udev files
-  install -Dm0644 tools/udev/libsane.rules "${pkgdir}/usr/lib/udev/rules.d/49-sane.rules"
+  make DESTDIR="$pkgdir" install
 
-  # fix udev rules
-  sed -i 's|NAME="%k", ||g' "${pkgdir}/usr/lib/udev/rules.d/49-sane.rules"
-  
-  # install xinetd file
-  install -Dm644 "${srcdir}/sane.xinetd" "${pkgdir}/etc/xinetd.d/sane"
-  
-  # Install the pkg-config file
-  install -Dm644 tools/sane-backends.pc "${pkgdir}/usr/lib/pkgconfig/sane-backends.pc"
+  # install custom license
+  install -vDm 644 ../LicenseRef-GPL-2.0-or-later-with-linking-exception.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  # install systemd files
-  install -Dm644 ${srcdir}/saned.socket "${pkgdir}/usr/lib/systemd/system/saned.socket"
-  install -Dm644 ${srcdir}/saned.service "${pkgdir}/usr/lib/systemd/system/saned@.service"
+  # generate udev udev+hwdb
+  install -vdm 755 "$pkgdir/usr/lib/udev/rules.d/"
+  tools/sane-desc -m udev+hwdb -s doc/descriptions/ > "$pkgdir/usr/lib/udev/rules.d/65-sane.rules"
+  tools/sane-desc -m udev+hwdb -s doc/descriptions-external/ >> "$pkgdir/usr/lib/udev/rules.d/65-sane.rules"
+  # generate udev hwdb
+  install -vdm 755 "$pkgdir/usr/lib/udev/hwdb.d/"
+  tools/sane-desc -m hwdb -s doc/descriptions/ > "$pkgdir/usr/lib/udev/hwdb.d/20-sane.hwdb"
+  # NOTE: an empty new line is required between the two .desc collections
+  printf "\n" >> "$pkgdir/usr/lib/udev/hwdb.d/20-sane.hwdb"
+  tools/sane-desc -m hwdb -s doc/descriptions-external/ >> "$pkgdir/usr/lib/udev/hwdb.d/20-sane.hwdb"
+
+  # systemd integration
+  install -vDm 644 ../${_pkgname}d.socket -t "$pkgdir/usr/lib/systemd/system/"
+  install -vDm 644 ../${_pkgname}d.service "$pkgdir/usr/lib/systemd/system/${_pkgname}d@.service"
+  install -vDm 644 ../66-${_pkgname}d.rules "$pkgdir/usr/lib/udev/rules.d/"
+  # sysusers.d
+  install -vDm 644 ../sane.sysusers "$pkgdir/usr/lib/sysusers.d/sane.conf"
+
+  # remove old ChangeLogs
+  rm -rvf "$pkgdir/usr/share/doc/$_pkgname/ChangeLogs/"
+
+  # add files below /etc/sane.d to backup array
+  cd "$pkgdir"
+  # trick extract_function_variable() in makepkg into not detecting the
+  # backup array modification and adding remaining configuration files
+  [[ /usr/bin/true ]] && backup=(${backup[@]} $(find "etc/${_pkgname}.d/" -type f | sort))
 }
-
-# vim:set ts=2 sw=2 et:

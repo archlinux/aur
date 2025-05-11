@@ -1,0 +1,4 @@
+[sane-git]
+source = "git"
+git = "https://gitlab.com/sane-project/backends"
+exclude_regex = '^.*[A-Za-z]{2}.*$'
