@@ -3,7 +3,7 @@
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
 pkgver=0.25.6
-pkgrel=3
+pkgrel=4
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
@@ -40,7 +40,7 @@ source=(
 sha256sums=('4c759f531411f3fa5c9a95805e74cc7da6b10a39dd87a13b9db82c283f028570'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
             'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c'
-            '983df4b20a3a93747f844ded807faa5b53dcf21df022f1f59d92c938af811fef')
+            'd31967428982ea704f7111959faa821772ddcc5290f06350b4209615d08c27d0')
 
 prepare() {
     cd "$_pkgname-$pkgver"
