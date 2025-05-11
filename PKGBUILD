@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=timewarrior-jirapush
 # renovate: datasource=gitlab-releases depName=FoxAmes/timewarrior-jirapush
-pkgver=0.4.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="TimeWarrior Extension that uploads timewarrior intervals to Jira as work logs"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
 )
 
-sha512sums=('344c03f10698956f0b9cba150af89b195487acf00329bdc5afaa11a80a364f86363ae8758ca6bc2f9849cf3463674f182833b0e470e07cad36015a94a54788d7')
+sha512sums=('42ea4864bde80e890d625db5c15d5f7529f77ee0901609615a47fa242befbabf092666f10ae71ec83b822b528b24898565560ab833376b2dd9b16c652ac36740')
 
 build() {
   cd "${pkgname}-v${pkgver}"
