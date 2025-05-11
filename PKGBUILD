@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931.0ffc61e
-pkgrel=1
+pkgrel=2
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut-ng'
@@ -42,6 +42,7 @@ optdepends=(
   'dmraid: dmraid dracut module support'
   'e2fsprogs: ext2/3/4 filesystem support'
   'elfutils: strip binaries to reduce initramfs size'
+  'erofs-utils: support for building an erofs initramfs'
   'f2fs-tools: fsfs filesystem support'
   'fuse3: live on NTFS (dmsquash-live-ntfs module)'
   'gzip: gzip compression'
@@ -52,7 +53,6 @@ optdepends=(
   'lzop: lzop compression'
   'mdadm: support MD devices, also known as software RAID devices'
   'memstrack: memstrack module support'
-  'mksh: allows use of mksh'
   'multipath-tools: dmraid dracut module support'
   'nbd: support network block devices'
   'ndctl: NVDIMM support'
@@ -66,7 +66,9 @@ optdepends=(
   'plymouth: plymouth boot splash'
   'rng-tools: enable rngd service to help generating entropy early during boot'
   'rsyslog: enable logging with rsyslog'
+  'qrencode: systemd-bsod'
   'sbsigntools: uefi_secureboot_cert/key configuration option support'
+  'systemd-ukify: Unified Kernel Image'
   'squashfs-tools: support for building a squashed initramfs'
   'tar: live tar image'
   'tpm2-tools: tpm2 support for e.g. LUKS'
@@ -74,8 +76,6 @@ optdepends=(
 )
 checkdepends=(
   'btrfs-progs'
-  'connman'
-  'dash'
   'dhclient'
   'dhcp'
   'dmraid'
@@ -138,7 +138,7 @@ build() {
 check() {
   cd "${pkgname%-git}-ng/test"
 
-  SKIP=${SKIP-"20 50 60"} TESTS=${TESTS-"18"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
+  TESTS=${TESTS-"80"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
