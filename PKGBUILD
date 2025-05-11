@@ -1,6 +1,6 @@
 # Maintainer: Rowan Decker <rowan@rowandecker.com>
 pkgname=bigbagkbdtrixxkb-git
-pkgver=r9.9036abe
+pkgver=r66.7340bd9
 pkgrel=1
 pkgdesc="DreymaR's Big Bag of Keyboard Tricks For Linux. Colemak mappings and modifications."
 arch=('any')
@@ -9,7 +9,7 @@ depends=('bash')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/DreymaR/BigBagKbdTrixXKB.git')
+source=('git+https://github.com/DreymaR/BigBagKbdTrixXKB.git')
 install=BigBagKbdTrixXKB-git.install
 md5sums=('SKIP')
 
