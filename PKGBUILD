@@ -2,7 +2,7 @@
 # Contributor: Erik Bročko (OM2LT) <erik@brocko.eu>
 
 pkgname=python-csdr-luarvique
-pkgver=0.18.29
+pkgver=0.18.30
 pkgrel=1
 pkgdesc="Python bindings for the csdr library."
 arch=('x86_64' 'aarch64')
@@ -15,14 +15,13 @@ provides=('python-csdr')
 source=("$pkgname"::"git+https://github.com/luarvique/pycsdr#tag=${pkgver}")
 md5sums=('SKIP')
 
-
 build() {
-	cd "$srcdir/$pkgname"
-	python setup.py build -b ../build -t ../build-tmp
+    cd "$srcdir/$pkgname"
+    python setup.py build -b ../build -t ../build-tmp
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	# Sadly, setuptools still don't support separate build directory: https://github.com/pypa/setuptools/issues/1347
-	python setup.py build -b ../build -t ../build-tmp install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
+    cd "$srcdir/$pkgname"
+    # Sadly, setuptools still don't support separate build directory: https://github.com/pypa/setuptools/issues/1347
+    python setup.py build -b ../build -t ../build-tmp install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
 }
