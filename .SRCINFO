@@ -1,7 +1,7 @@
 pkgbase = knime-desktop
 	pkgdesc = A user-friendly graphical workbench for the entire data analysis process
 	pkgver = 5.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.knime.org/
 	changelog = ChangeLog
 	arch = x86_64
