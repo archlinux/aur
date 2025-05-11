@@ -1,0 +1,4 @@
+[pandoc-eisvogel-template]
+source = "git"
+git = "https://github.com/Wandmalfarbe/pandoc-latex-template.git"
+prefix = "v"
