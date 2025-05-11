@@ -2,7 +2,7 @@
 # Contributor: David Birks <david@birks.dev>
 
 pkgname=kube-score
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Kubernetes object analysis with recommendations for improved reliability and security"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cf2bf6372e7ec29a91bd38611d7bede4b75e073a564adbb7b7fbb1c3e4ff7f7a')
+sha256sums=('b2bd7120a11c77e27f29c0307f85e7c5dfc54935a232e4c3696261e14f9fa765')
 
 prepare() {
   cd "$pkgname-$pkgver"
