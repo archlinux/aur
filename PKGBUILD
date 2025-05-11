@@ -3,7 +3,7 @@
 
 _pkgbase=rtw89
 pkgname=rtw89-dkms-git
-pkgver=r1168.e6e2c5a
+pkgver=r1178.cdd7ba0
 pkgrel=1
 pkgdesc="Driver for Realtek Wi-Fi 6/6E/7 adapters"
 arch=('any')
@@ -11,6 +11,7 @@ url="https://github.com/lwfinger/rtw89"
 license=('GPL2')
 makedepends=('git' 'linux-firmware')
 depends=('dkms')
+optdepends=('usb_modeswitch: A tool that can switch the adapter from CD-ROM mode to Wi-Fi mode')
 source=("git+https://github.com/a5a5aa555oo/rtw89.git")
 sha256sums=('SKIP')
 
