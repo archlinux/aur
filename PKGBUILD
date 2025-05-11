@@ -1,7 +1,7 @@
 # Maintainer: Olaf Wriggers <olaf at olwig dot xyz>
 pkgname=cosmic-ext-applet-privacy-indicator
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy indicator for the COSMIC Desktop"
 arch=('x86_64')
 url="https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator"
@@ -10,10 +10,13 @@ depends=(
     'cosmic-applets'
     'libxkbcommon'
     'fontconfig'
+    'libpipewire'
 )
 makedepends=(
   'cargo'
   'just'
+  'clang'
+  'llvm'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
