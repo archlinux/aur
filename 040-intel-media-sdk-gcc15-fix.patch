@@ -1,0 +1,17 @@
+--- a/samples/sample_vpp/src/sample_vpp_frc_adv.cpp
++++ b/samples/sample_vpp/src/sample_vpp_frc_adv.cpp
+@@ -17,6 +17,7 @@ The original version of this sample may
+ or https://software.intel.com/en-us/media-client-solutions-support.
+ \**********************************************************************************/
+ 
++#include <cstdint>
+ #include <math.h>
+ #include "vm/strings_defs.h"
+ #include "sample_vpp_frc_adv.h"
+@@ -212,4 +213,4 @@ mfxU64  FRCAdvancedChecker::GetExpectedP
+ 
+ } // mfxU64  FRCAdvancedChecker::GetExpectedPTS( mfxU32 frameNumber, mfxU64 timeOffset, mfxU64 timeJump )
+ 
+-/* EOF */
+\ No newline at end of file
++/* EOF */
