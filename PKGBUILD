@@ -3,7 +3,7 @@
 
 pkgname=ryzen-master-commander
 _realname=Ryzen-Master-Commander 
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="TDP and fan control for AMD Ryzen processors"
 arch=('any')
@@ -22,4 +22,4 @@ package() {
   cd "$srcdir/$_realname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('6570033670f32cb2c5351aede37138cfce2ca534cace55f53d7f00fc0d2a7f8c')
+sha256sums=('25556c7d22903697734e9c8fc996621a8bbbb061096067ffa26a0ca52f53af46')
