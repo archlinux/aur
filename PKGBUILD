@@ -2,7 +2,7 @@
 # Contributor: yochananmarqos <github.com/yochananmarqos/pkgbuilds>
 
 pkgname=ticketbooth
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Keep track of your favorite shows'
 url="https://github.com/aleiepure/ticketbooth"
@@ -12,7 +12,7 @@ depends=('libadwaita' 'python-gobject' 'python-pillow' 'python-tmdbsimple')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4a73febf7306ff63587454bfc05a297426d2390b7afd6bf6f82fc94ed0a04a5d')
+sha256sums=('4a9bc32f424d1bdc2a5007cc40ccf44cf21b146d483a8f67db47cffb35054ab7')
 
 prepare() {
   cd $pkgname-$pkgver
