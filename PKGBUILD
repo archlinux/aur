@@ -2,13 +2,16 @@
 
 pkgname=pev2-electron
 _pkgname=pev2
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Postgres Explain Visualizer 2, using the system Electron package"
 arch=(any)
 url="https://github.com/dalibo/pev2"
 license=(PostgreSQL)
-depends=(electron)
+depends=(
+  electron
+  sh
+)
 makedepends=(npm)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -17,7 +20,7 @@ source=(
   "remove-demo-notice.patch"
 )
 sha256sums=(
-  '73fc6edb861f2081baa63f2cb87e9118e2bd9308d2285601e82edfc5a2283f1f'
+  '81a2d6e52f1da878318ddeea48d0cec700fe0573d68edfcf724ef5bb395e4123'
   'd4361d563a1c199b5887154ac5f4d8009dc2c882b409c8f4bbf00281a2e910e4'
   '219229650df88bf6f8ffc0bb53bf2986a479d0144c0fa93949996b58ed4e7d8e'
   '4e6d2bf9298e95e63e7bba7f2e96cfef031c0b77da88ed2e7bf0106b880f283b'
