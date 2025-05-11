@@ -1,0 +1,16 @@
+pkgbase = noscrypt-git
+	pkgdesc = A nostr specific cryptography library written in C
+	pkgver = 0.1.9.r204.g6d3ef94
+	pkgrel = 1
+	url = https://github.com/VnUgE/noscrypt
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = openssl
+	depends = libsecp256k1
+	source = noscrypt-git::git+https://github.com/VnUgE/noscrypt.git
+	md5sums = SKIP
+
+pkgname = noscrypt-git
