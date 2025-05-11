@@ -1,0 +1,21 @@
+pkgbase = intel-media-driver-legacy
+	pkgdesc = Intel Media Driver for VAAPI (legacy platforms)
+	pkgver = 24.3.4
+	pkgrel = 1
+	url = https://github.com/intel/media-driver/
+	arch = x86_64
+	license = BSD-3-Clause
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	depends = intel-gmmlib-legacy
+	depends = libva
+	provides = intel-media-driver=24.3.4
+	conflicts = intel-media-driver
+	source = https://github.com/intel/media-driver/archive/intel-media-24.3.4/intel-media-driver-24.3.4.tar.gz
+	source = 010-intel-media-driver-gcc15-fix.patch::https://github.com/intel/media-driver/commit/46a7058714b17a13cf62c052ab1134031fa5f706.patch
+	sha256sums = 58978f9ee4981532e60be2f2768673b1f3825db09971ebb98fbd7e8819cab6eb
+	sha256sums = a8a77691462a1d171edbf8247469969b82c1e49dab4c118cf0e87cb5a89f2ed4
+
+pkgname = intel-media-driver-legacy
