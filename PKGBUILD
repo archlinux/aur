@@ -8,10 +8,10 @@ _pkgver=0.12.0b
 pkgrel=4
 pkgdesc="Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend for KDE"
 arch=(x86_64)
-license=(GPL LGPL FDL)
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later' 'GFDL-1.2-or-later')
 url="https://kmplayer.kde.org"
 depends=(kmediaplayer kdelibs4support phonon-qt5 hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdesignerplugin kdoctools kinit)
+makedepends=(extra-cmake-modules kdesignerplugin kdoctools kinit kdoctools5)
 optdepends=('mplayer: mplayer backend')
 source=("https://download.kde.org/stable/$pkgname/${_pkgver%.*}/$pkgname-$_pkgver.tar.bz2"
         kmplayer-desktop.patch::"https://invent.kde.org/multimedia/kmplayer/-/commit/2126d76b.patch"
@@ -27,11 +27,13 @@ prepare() {
   patch -d $pkgname-$_pkgver -p1 < kmplayer-desktop.patch # Fix launching from desktop file
   patch -d $pkgname-$_pkgver -p1 < kmplayer-qt5.9.patch # Fix build with Qt 5.9
   patch -d $pkgname-$_pkgver -p1 < kmplayer-qt5.11.patch # Fix build with Qt 5.11
+
 }
 
 build() {
   cmake -B build -S $pkgname-$_pkgver \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
