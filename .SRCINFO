@@ -1,6 +1,6 @@
 pkgbase = youtube-tui-full-bin
 	pkgdesc = An aesthetically pleasing TUI frontend to browsing YouTube written in Rust. (Binary)
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/Siriusmart/youtube-tui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = youtube-tui-full-bin
 	optdepends = yt-dlp: default youtube downloader
 	provides = youtube-tui
 	conflicts = youtube-tui
-	source = youtube-tui-0.8.1::https://github.com/Siriusmart/youtube-tui/releases/download/v0.8.1/youtube-tui-full_arch-x86_64.youtube-tui-full_arch-x86_64
-	sha512sums = 6dc54356f775759d438794ed6938aad2c636e1b560395a0a627f2b8c5168612cf8f4afa3f413a6ad55135394e8dffbf97fde78588290a7edc7f502f98738d0ff
+	source = youtube-tui-0.8.3::https://github.com/Siriusmart/youtube-tui/releases/download/v0.8.3/youtube-tui-full_arch-x86_64
+	sha512sums = 8edde7fbfa96a5d8901869c966e069c57ddd8c0ec28afa05b2ac27a6441a79bb0eca91e07b7984319c69eeb76aff0fb41692649145ad95949dd49cdf6eeda8d3
 
 pkgname = youtube-tui-full-bin
