@@ -2,12 +2,12 @@
 
 _pkgname=ossia-score
 pkgname=$_pkgname-bin
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="An interactive sequencer for the intermedia arts (binary release)"
 arch=('x86_64')
 url="https://github.com/ossia/score"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('clang' 'ffmpeg' 'jack' 'portaudio' 'qt6-base' 'qt6-declarative' 'qt6-imageformats'
          'qt6-scxml' 'qt6-serialport' 'qt6-shadertools' 'qt6-svg' 'qt6-websockets')
 optdepends=('leap-motion-driver' 'leap-motion-sdk' 'libfreenect2' 'lilv' 'lv2' 'pipewire' 'sdl2' 'suil' 'ysfx')
@@ -16,7 +16,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage="ossia.score-$pkgver-linux-x86_64.AppImage"
 source=("$url/releases/download/v$pkgver/$_appimage")
-sha256sums=('470fbc5066a07d721748fbcc0b69cd2d3f49415ddf9acad1c1c8ff318ee57600')
+sha256sums=('2982b6254f5449f19b6fd059bab2e08bd354214c819d572184f56c3515419176')
 
 prepare() {
   chmod +x "$_appimage"
