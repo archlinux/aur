@@ -1,0 +1,10 @@
+--- a/source/math.cpp
++++ b/source/math.cpp
+@@ -35,6 +35,7 @@
+ 
+ #include "mcut/internal/math.h"
+ #include <algorithm> // std::sort
++#include <cstdint>
+ #include <cstdlib>
+ #include <tuple> // std::make_tuple std::get<>
+ 
