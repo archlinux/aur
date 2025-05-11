@@ -3,10 +3,10 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931.0ffc61e
-pkgrel=2
+pkgrel=3
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
-url='https://github.com/dracut-ng/dracut-ng'
+url='https://github.com/dracut-ng/dracut'
 license=('GPL-2.0-or-later')
 depends=(
   'bash'
@@ -17,7 +17,7 @@ depends=(
   'grep'
   'kmod'
   'pkgconf'
-  'procps'
+  'procps-ng'
   'sed'
   'systemd'
   'util-linux'
@@ -26,7 +26,7 @@ makedepends=(
   'asciidoc'
   'bash-completion'
   'git'
-  'cargo'
+  'rust'
 )
 optdepends=(
   'binutils: --uefi option support'
@@ -91,12 +91,11 @@ checkdepends=(
   'open-iscsi'
   'parted'
   'pigz'
-  'qemu'
+  'qemu-base'
   'squashfs-tools'
 )
 provides=("${pkgname%-git}" 'initramfs')
 conflicts=("${pkgname%-git}")
-backup=('etc/dracut.conf')
 
 source=(
   git+${url}.git
@@ -105,7 +104,7 @@ source=(
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"-ng
+  cd "${pkgname%-git}"
 
   # populate DRACUT_VERSION from upstream source
   source dracut-version.sh
@@ -115,7 +114,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${pkgname%-git}"-ng
+  cd "${pkgname%-git}"
 
   # remove dracut modules not meant for arch x86_64
   for f in 45ifcfg 80cms 81cio_ignore 90ppcmac 91zipl \
@@ -126,7 +125,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname%-git}"-ng
+  cd "${pkgname%-git}"
 
   ./configure \
     --enable-dracut-cpio \
@@ -136,13 +135,13 @@ build() {
 }
 
 check() {
-  cd "${pkgname%-git}-ng/test"
+  cd "${pkgname%-git}/test"
 
   TESTS=${TESTS-"80"} KVERSION="$(cd /lib/modules && ls -1 | tail -1)" make check
 }
 
 package() {
-  cd "${pkgname%-git}"-ng
+  cd "${pkgname%-git}"
 
   DESTDIR="$pkgdir" make install
 }
