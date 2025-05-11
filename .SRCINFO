@@ -1,0 +1,21 @@
+pkgbase = intel-media-driver-legacy-bin
+	pkgdesc = Intel Media Driver for VAAPI (legacy platforms, pre-compiled binaries)
+	pkgver = 24.3.4
+	pkgrel = 1
+	url = https://github.com/intel/vpl-gpu-rt/
+	arch = x86_64
+	license = MIT
+	makedepends = chrpath
+	depends = gcc-libs
+	depends = glibc
+	depends = intel-gmmlib-legacy
+	depends = libva
+	provides = intel-media-driver=24.3.4
+	provides = intel-media-driver-legacy=24.3.4
+	conflicts = intel-media-driver
+	noextract = intel-media-stack-bin-24.3.4.tar.gz
+	options = !strip
+	source = intel-media-stack-bin-24.3.4.tar.gz::https://github.com/intel/vpl-gpu-rt/releases/download/intel-onevpl-24.3.4/MediaStack.tar.gz
+	sha256sums = ce46a0cba85cbeb5b86245bf30f21d0364f6dc7bc5258f462f05fab5943788da
+
+pkgname = intel-media-driver-legacy-bin
