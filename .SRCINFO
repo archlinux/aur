@@ -1,6 +1,6 @@
 pkgbase = wfview
-	pkgdesc = Interface for Icom transceivers
-	pkgver = 1.64
+	pkgdesc = Open Source interface for Icom and Kenwood transceivers
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://wfview.org/
 	arch = i686
@@ -12,8 +12,11 @@ pkgbase = wfview
 	depends = eigen
 	depends = qt5-gamepad
 	depends = rtaudio
+	depends = qt5-websockets
+	depends = opus
+	depends = hidapi
 	provides = wfview
 	source = https://gitlab.com/eliggett/wfview/
-	md5sums = c061bd43bbe645874e053154666deb21
+	md5sums = fc3e829798a7b795e0350e3d62793e87
 
 pkgname = wfview
