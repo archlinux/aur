@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931.0ffc61e
-pkgrel=3
+pkgrel=4
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -117,10 +117,10 @@ prepare() {
   cd "${pkgname%-git}"
 
   # remove dracut modules not meant for arch x86_64
-  for f in 45ifcfg 80cms 81cio_ignore 90ppcmac 91zipl \
-    95dasd 95dasd_mod 95dasd_rules 95dcssblk 95fcoe* \
-    95qeth_rules 95zfcp 95zfcp_rules 95znet; do
-    rm -rf modules.d/$f
+  for f in cms cio_ignore ppcmac zipl \
+    dasd dasd_mod dasd_rules dcssblk fcoe* \
+    qeth_rules zfcp zfcp_rules znet; do
+    rm -rf "modules.d/[0-9][0-9]$f"
   done
 }
 
@@ -128,8 +128,8 @@ build() {
   cd "${pkgname%-git}"
 
   ./configure \
-    --enable-dracut-cpio \
     --bashcompletiondir=$(pkg-config --variable=completionsdir bash-completion) \
+    --enable-dracut-cpio \
     --configprofile=hostonly
   make
 }
