@@ -1,22 +1,72 @@
 # Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
+# Co-maintainer: Xeonacid <h.dwwwwww@gmail.com>
+
 pkgname=seccomp-tools
 pkgver=1.6.1
-pkgrel=1
-pkgdesc="Provide powerful tools for seccomp analysis."
-arch=(any)
+pkgrel=2
+pkgdesc="Provide powerful tools for seccomp analysis"
+arch=(x86_64)
 url="https://github.com/david942j/seccomp-tools"
-license=('MIT')
-groups=()
-depends=(
-	ruby
-	ruby-os
-)
-source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
-sha256sums=('43e9dbbe6ad7e148263199f8e3b6cdf409fbcce5a8f6d6f20530d257fcf2bf6c')
-noextract=("$pkgname-$pkgver".gem)
+license=(MIT)
+depends=(glibc ruby)
+makedepends=(git)
+provides=(ruby-"$pkgname")
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('049b27bc7c2591159e5c27256afc42b9f49cffdf6f6d6d8ff289d592547c9edb')
+
+prepare() {
+  cd "$pkgname"
+
+  # update gemspec/Gemfile to allow newer version of the dependencies
+  sed --in-place --regexp-extended 's|~>|>=|g' "${pkgname}.gemspec"
+}
+
+build() {
+  cd "$pkgname"
+
+  local _gemdir="$(gem env gemdir)"
+
+  gem build "${pkgname}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --build-root "tmp_install" \
+    "${pkgname}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${pkgname}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${pkgname}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+    -iname "*.o" -o \
+    -iname "*.c" -o \
+    -iname "*.so" -o \
+    -iname "*.time" -o \
+    -iname "gem.build_complete" -o \
+    -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+    -iname "mkmf.log" -o \
+    -iname "gem_make.out" \
+    \) \
+    -delete
+}
 
 package() {
-	local _gemdir="$(ruby -e 'puts Gem.default_dir')"
-	gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver".gem
-	rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
+  cd "$pkgname"
+
+  cp --archive --verbose tmp_install/* "$pkgdir"
+
+  install --verbose -D --mode=0644 LICENSE --target-directory "${pkgdir}/usr/share/licenses/${pkgname}"
+  install --verbose -D --mode=0644 README.md --target-directory "${pkgdir}/usr/share/doc/${pkgname}"
 }
