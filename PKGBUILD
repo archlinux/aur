@@ -7,8 +7,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=leo
-pkgver=6.8.3
-pkgrel=2
+pkgver=6.8.4b1
+pkgrel=1
 pkgdesc="Outliner, Editor, and Personal Information Manager"
 arch=('any')
 url='https://github.com/leo-editor/leo-editor'
@@ -38,9 +38,14 @@ provides=('leo-editor')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/leo/leo-${pkgver/_/-}.tar.gz"
   'leo.desktop'
   'leo.xml')
-sha256sums=('75f1cb7c8f98b526e800b59ce5070f155cca5f8a2dc97c1953944508bb7f3b97'
+sha256sums=('73fa043e622f4895d40086a4d536f8920aace1befa4e8a78ca09a9ecde3ab884'
             '4633876eb91eff206660359ee7da459211e8f87fd73ebbc680fd437c70b63467'
             '630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i '/.....setuptools.*,$/d' pyproject.toml
+}
 
 build() {
   cd "$pkgname-$pkgver"
