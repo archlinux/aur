@@ -1,0 +1,15 @@
+pkgbase = imbox
+	pkgdesc = A small TLS-only IMAP client intended for applying git patches without need of any other mail client
+	pkgver = 1.4+r4+g175f5eb
+	pkgrel = 1
+	url = https://git.causal.agency/imbox/about/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = git
+	depends = glibc
+	depends = libretls
+	depends = sh
+	source = imbox-175f5eb14f9f3f48d3e3ed139603c5726949fac4.tar.gz::https://git.causal.agency/imbox/snapshot/imbox-175f5eb14f9f3f48d3e3ed139603c5726949fac4.tar.gz
+	b2sums = 8c1c6c32021ccb47342ea858c0698c2e405148c5d04aaa51ac297ad1262a1daee9f3a0f17817b9bd66fa245b397f0cf0324e879e377872172d74511645be7365
+
+pkgname = imbox

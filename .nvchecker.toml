@@ -1,0 +1,4 @@
+[imbox]
+source = "git"
+git = "https://git.causal.agency/imbox"
+prefix = "v"
