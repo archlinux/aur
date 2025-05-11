@@ -5,7 +5,7 @@ pkgbase = stm32l0-headers-git
 	url = https://github.com/STMicroelectronics
 	arch = any
 	license = apache
-	source = git://github.com/STMicroelectronics/STM32CubeL0.git
+	source = git+https://github.com/STMicroelectronics/STM32CubeL0.git
 	md5sums = SKIP
 
 pkgname = stm32l0-headers-git
