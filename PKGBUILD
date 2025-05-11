@@ -6,13 +6,13 @@
 
 pkgname=certmonger
 pkgver=0.79.20
-pkgrel=2
+pkgrel=3
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
 url="https://pagure.io/${pkgname}"
-license=(GPL)
-depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson systemd)
-makedepends=(rpm-tools)
+license=('GPL-3.0-or-later')
+depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson systemd libidn2 nspr openssl talloc libxml2)
+makedepends=(rpm-tools gettext)
 checkdepends=(python-dbus diffutils dos2unix expect)
 backup=(etc/${pkgname}/${pkgname}.conf)
 install="${pkgname}.install"
