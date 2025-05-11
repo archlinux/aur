@@ -3,7 +3,7 @@
 # Maintainer: oech3
 _pkgname='chatterino2-nightly'
 pkgname="${_pkgname}-bin"
-_id=20250509T141027
+_id=20250511T010615
 _ver=2.5.3
 pkgver=${_ver}.${_id}
 pkgrel=1
