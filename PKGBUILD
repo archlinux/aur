@@ -5,15 +5,21 @@
 pkgname=wine-stable
 _pkgver=10.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/10.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
-        wine-binfmt.conf)
+        wine-binfmt.conf
+        0001-ntdll-Use-signed-type-for-IAT-offset-in-LdrResolveDe.patch
+        0002-winebuild-Avoid-using-.idata-section-for-delay-load-.patch
+        0003-msvcrt-Add-truncf-to-the-import-library.patch)
 b2sums=('92178cf484cf33e9f3b8340429ee8e68c36e0d25eee4a892f059ab73f103cfcb9eb15e1883bc9fd8c8fe311d4ccbb56582d1f780da7b1406a7839a13addd29ae'
         'SKIP'
         '45db34fb35a679dc191b4119603eba37b8008326bd4f7d6bd422fbbb2a74b675bdbc9f0cc6995ed0c564cf088b7ecd9fbe2d06d42ff8a4464828f3c4f188075b'
-        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588')
+        'e9de76a32493c601ab32bde28a2c8f8aded12978057159dd9bf35eefbf82f2389a4d5e30170218956101331cf3e7452ae82ad0db6aad623651b0cc2174a61588'
+        '78564cf88803815fe4362830fb0ee55664c4a685a233f24a244f872bd65fcc6dbac6949d225e8b773ad31429d620335a35e28e3fa263a2bb02d590f7676b181c'
+        'fc79e9f7f32702af2ef27db69f35867b0891a3d2d0275404d32b22452c52fd65331569c9e4719ea6f0330d3322ef0cf8e5ecb711aff8eb19f7c6578a0e0ec354'
+        'a110a496ae1719636c8533c5c416bc0ed676bac49f9a72ca6972463728eeb3e8a86ac8755ddf0120de093cd96ce23216e9b534364694c3282f1a0955ee70ca7c')
 validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
 pkgdesc="A compatibility layer for running Windows programs"
