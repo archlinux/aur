@@ -1,0 +1,86 @@
+# Maintainer: sukanka <su975853527 at gmail dot com>
+# Contributor: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=cherry-studio
+_pkgname="Cherry Studio"
+pkgver=1.2.10
+_electron=electron35
+pkgrel=1
+pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
+arch=('x86_64')
+url="https://cherry-ai.com/"
+_ghurl="https://github.com/CherryHQ/cherry-studio"
+license=('MIT')
+depends=(
+    "${_electron}"
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'yarn'
+    'jq'
+    'moreutils'
+    'python'
+    'python-setuptools'
+)
+optdepends=(
+    'ollama: use local LLM server'
+)
+source=(
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}.sh"
+)
+sha256sums=('a1497679096ce32656177a51552c5b5fe399d9d0c67b5cbbfc0f500383dff48b'
+    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+
+prepare() {
+    sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
+
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" \
+        --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U" \
+        --custom="StartupWMClass=${_pkgname/ /}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/${_electron}"
+    local electronVersion="$(<$electronDist/version)"
+    local yarnVersion="$(yarn --version)"
+    jq ".devDependencies.electron = \"$electronVersion\"" package.json |
+        jq ".build.electronDist = \"$electronDist\"" |
+        jq ".build.electronVersion = \"$electronVersion\"" |
+        sponge package.json
+
+    # fix for electron35+, electron36 gives the following error:
+    # /src/renderer/src/pages/home/Inputbar/Inputbar.tsx(563,20): \
+    # error TS2339: Property 'path' does not exist on type 'File'.
+    jq '.resolutions."node-abi"="^4.8.0"' package.json | sponge package.json
+
+    #  no auto update
+    sed -i package.json -e "s|electron-builder --dir|& --p never|g"
+
+}
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    export HOME=${srcdir}
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export TMPDIR=${srcdir}
+    yarn install
+    export NODE_ENV=production
+    # skip download node headers
+    export npm_config_nodedir=/usr/include/
+    yarn run build:unpack
+}
+package() {
+
+    install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    install -Dm644 "dist/linux-unpacked"/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership "dist/linux-unpacked"/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    for f in build/icons/*; do
+        res="${f##*/}"
+        res="${res%.png}"
+        install -Dm644 "$f" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${pkgname}.png"
+    done
+}
