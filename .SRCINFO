@@ -1,0 +1,13 @@
+pkgbase = bubger
+	pkgdesc = A mailing list archive generator for mail stored in IMAP
+	pkgver = 1.1+r1+g80020ae
+	pkgrel = 1
+	url = https://git.causal.agency/bubger/about/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libretls
+	source = bubger-80020ae6e39f52dd4147c1d02b50347bed9dc9c3.tar.gz::https://git.causal.agency/bubger/snapshot/bubger-80020ae6e39f52dd4147c1d02b50347bed9dc9c3.tar.gz
+	b2sums = 34a7f521bed2acbb3a02d22f7fe491ae55b078fb4e9f5d505d9f7cd850eec9dd498235f9109540f28ddaffdb2df8cd559fe108d83226b5f501cddf1847014785
+
+pkgname = bubger

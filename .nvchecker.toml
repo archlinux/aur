@@ -1,0 +1,4 @@
+[bubger]
+source = "git"
+git = "https://git.causal.agency/bubger"
+prefix = "v"
