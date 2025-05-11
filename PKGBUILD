@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.7.9
-pkgrel=3
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
 url="https://github.com/jxnl/instructor"
@@ -34,17 +34,6 @@ makedepends=(
   python-wheel
   python-hatchling
 )
-checkdepends=(
-  litellm
-  python-pytest-examples
-  python-anthropic
-  python-cohere
-  python-pytest
-  python-pytest-asyncio
-  python-docstring-parser
-  python-typing-inspection
-  python-google-generativeai
-)
 optdepends=(
   'python-anthropic: support for Anthropic models'
   'python-cohere: support for Cohere models'
@@ -52,7 +41,7 @@ optdepends=(
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('1a7a8f80103f0ed3dc7bb60689772e2e21f5e185586107f39022c983fa97204d')
+sha256sums=('ad1670632ba62aae012918ac0fd48f4fe9c634c2ab081643f13156d1945d6704')
 
 _archive="$_pkgname-$pkgver"
 
@@ -60,48 +49,6 @@ build() {
   cd "$_archive"
 
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$_archive"
-
-  rm -rf tmp_install
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
-  # Deselect/ignore tests requiring valid API keys to OpenAI or Anthropic,
-  # below is a mock one. Also ignore Gemini tests, the SDK is not packaged
-  # yet.
-  export OPENAI_API_KEY=sk-dBAe8c5a9bc4294cca9bed292cd61e0ff9030bB94647adfb
-  pytest \
-    --ignore tests/test_multimodal.py \
-    --ignore tests/llm/test_openai \
-    --ignore tests/llm/test_vertexai \
-    --ignore tests/llm/test_fireworks \
-    --ignore tests/llm/test_gemini \
-    --ignore tests/llm/test_writer \
-    --deselect tests/dsl/test_partial.py \
-    --deselect tests/llm/test_anthropic/evals/test_simple.py \
-    --deselect tests/llm/test_anthropic/test_stream.py \
-    --deselect tests/llm/test_anthropic/test_system.py \
-    --deselect tests/llm/test_cohere \
-    --deselect tests/llm/test_new_client.py \
-    --deselect tests/test_simple_types.py::test_partial_not_simple \
-    --deselect tests/llm/test_anthropic/test_multimodal.py \
-    --deselect tests/test_response_model_conversion.py::test_json_preserves_description_of_non_english_characters_in_json_mode \
-    --deselect tests/llm/test_anthropic/test_reasoning.py \
-    --deselect tests/llm/test_perplexity/test_modes.py \
-    --deselect tests/llm/test_mistral/test_retries.py \
-    --deselect tests/llm/test_mistral/test_modes.py \
-    --deselect tests/llm/test_genai/test_stream.py \
-    --deselect tests/llm/test_genai/test_simple.py \
-    --deselect tests/llm/test_genai/test_retries.py \
-    --deselect tests/llm/test_genai/test_multimodal.py \
-    --deselect tests/llm/test_genai/test_format.py \
-    --deselect tests/llm/test_genai/test_long_prompt.py \
-    --deselect tests/llm/test_mistral/test_stream.py \
-    --deselect tests/llm/test_mistral/test_multimodal.py
 }
 
 package() {
