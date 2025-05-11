@@ -1,0 +1,15 @@
+post_install() {
+    echo "i3map installed successfully."
+}
+
+post_upgrade() {
+    echo "i3map upgraded successfully."
+}
+
+pre_remove() {
+    echo "Removing i3map..."
+}
+
+post_remove() {
+    echo "i3map removed."
+}
