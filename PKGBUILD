@@ -4,11 +4,11 @@ _pkgname=openandroidinstaller
 pkgname=${_pkgname}-git
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=v0.5.3.beta.r14.g3a79be5
+pkgver=v0.5.4.beta.1.fixup.r0.g8cebde7
 pkgrel=1
 pkgdesc='Makes installing alternative Android distributions nice and easy.'
 url="https://${_pkgname}.org/"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('python')
 arch=('any')
 optdepends=()
@@ -26,9 +26,7 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}"
-	sed -i 's/CountinuosRectangleBorder/ContinuousRectangleBorder/' 'openandroidinstaller/views/'{requirements_view.py,start_view.py,select_view.py,addon_view.py}
 	sed -i 's/command_list = \[str(bin_path.joinpath(Path(f"{tool}")))\] + command/command_list = shlex.split(full_command)/' 'openandroidinstaller/tooling.py'
-	find . -type f -name '*.py' -exec sed -i 's/flet_core./flet.core./' "{}" \;
 }
 
 build() {
@@ -54,6 +52,18 @@ package() {
 		EOF
 	) "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 'flatpak/org.openandroidinstaller.OpenAndroidInstaller.desktop' -t "${pkgdir}/usr/share/applications"
-	install -Dm644 'flatpak/org.openandroidinstaller.OpenAndroidInstaller.png' -t "${pkgdir}/usr/share/pixmaps"
+	install -Dm644 <(cat <<- EOF
+		[Desktop Entry]
+		Version=1.5
+		Type=Application
+		Name=OpenAndroidInstaller
+		Comment=Makes installing alternative Android distributions nice and easy.
+		Categories=Utility;FileTools;
+		Icon=org.openandroidinstaller.OpenAndroidInstaller
+		Exec=openandroidinstaller
+		Terminal=false
+		EOF
+	) "${pkgdir}/usr/share/applications/org.openandroidinstaller.OpenAndroidInstaller.desktop"
+
+	install -Dm644 'openandroidinstaller/assets/logo-192x192.png' "${pkgdir}/usr/share/pixmaps/org.openandroidinstaller.OpenAndroidInstaller.png"
 }
