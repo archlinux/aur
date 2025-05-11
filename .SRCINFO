@@ -4,7 +4,7 @@ pkgbase = pdd
 	pkgrel = 1
 	url = https://github.com/jarun/pdd
 	arch = any
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = python-dateutil
 	source = git+https://github.com/jarun/pdd.git#commit=aedb2f791dcd2266f51a5ca1a1d111b2b5869483
