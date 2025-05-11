@@ -4,7 +4,7 @@
 
 _gitname='libsigrokdecode'
 pkgname="${_gitname}-git"
-pkgver=0.2.0.r1038.g30d27bd
+pkgver=0.2.0.r1517.g71f4514
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, protocol decoders library (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('python' 'glib2')
 makedepends=('git')
 conflicts=("${_gitname}")
 provides=("${_gitname}")
-source=("git://sigrok.org/${_gitname}")
+source=("git+https://github.com/sigrokproject/${_gitname}")
 sha512sums=('SKIP')
 
 pkgver() {
