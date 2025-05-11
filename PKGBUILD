@@ -4,9 +4,11 @@
 # http://melonds.kuribo64.net/
 # https://github.com/melonDS-emu/melonDS
 
+: ${_use_clang=true}
+
 pkgname=melonds-git
 _gitname=melonDS
-pkgver=0.9.5.r2404.5b986d31
+pkgver=1.0rc.r2539.d6d820c0
 pkgrel=1
 pkgdesc='DS emulator, sorta'
 url="https://github.com/melonDS-emu/melonDS"
@@ -14,6 +16,13 @@ license=('GPL-3.0-or-later')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('enet' 'libarchive' 'libepoxy' 'libslirp' 'qt6-base' 'qt6-multimedia' 'qt6-svg' 'sdl2')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'pkg-config')
+
+if [[ "${_use_clang::1}" == "t" ]]; then
+  makedepends+=('clang' 'lld')
+else
+  options=('!lto')
+fi
+
 provides=('melonds')
 conflicts=('melonds')
 
@@ -26,11 +35,19 @@ pkgver() {
 }
 
 build() {
+  local _ldflags=(${LDFLAGS})
+
+  if [[ "${_use_clang::1}" == "t" ]]; then
+    export CC=clang
+    export CXX=clang++
+    export LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+  fi
+
   local _cmake_options=(
     -B build
     -S "$_gitname"
     -G Ninja
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DUSE_QT6=ON
     -DUSE_SYSTEM_LIBSLIRP=ON
