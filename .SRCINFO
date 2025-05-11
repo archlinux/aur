@@ -1,6 +1,6 @@
 pkgbase = youtube-tui
 	pkgdesc = An aesthetically pleasing YouTube TUI written in Rust
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://siriusmart.github.io/youtube-tui
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = youtube-tui
 	depends = mpv
 	optdepends = konsole: Default terminal emulator
 	optdepends = yt-dlp: Default YouTube downloader
-	source = youtube-tui-0.8.2.tar.gz::https://static.crates.io/crates/youtube-tui/0.8.2/download
-	sha512sums = 9119b1cfab2555bb37da92d0449d69791f7281138261c75a913c8834e87bf41e3c97e0460c9cbb470572e521098a1a47902bd6098635dd3d65133f2236363581
+	source = youtube-tui-0.8.3.tar.gz::https://static.crates.io/crates/youtube-tui/0.8.3/download
+	sha512sums = e81be29cf4f75bba649002a636e4b815d7a2ee50584563ce89ee6b25e4e16e55e793c07640f19227c16dcbf1120f26554de97a64170ac52b31b006b70562028d
 
 pkgname = youtube-tui
