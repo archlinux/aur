@@ -3,7 +3,7 @@
 _binname=xenia_canary
 _branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r7829.3ba31d9f9
+pkgver=r7838.2c8acf7b9
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
@@ -22,6 +22,7 @@ provides=('xenia')
 source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch=${_branchname}"
         # 'DirectXShaderCompiler::git+https://github.com/microsoft/DirectXShaderCompiler.git'
         # 'binutils-ppc-cygwin::git+https://github.com/benvanik/binutils-ppc-cygwin.git'
+        # 'libusb::git+https://github.com/libusb/libusb.git'
         # 'premake-core::git+https://github.com/premake/premake-core.git'
         'FFmpeg::git+https://github.com/xenia-canary/FFmpeg_radixsplit.git'
         'FidelityFX-CAS::git+https://github.com/GPUOpen-Effects/FidelityFX-CAS.git'
@@ -40,7 +41,6 @@ source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch
         'fmt::git+https://github.com/fmtlib/fmt.git'
         'glslang::git+https://github.com/KhronosGroup/glslang.git'
         'imgui::git+https://github.com/ocornut/imgui.git'
-        'libusb::git+https://github.com/libusb/libusb.git'
         'premake-androidndk::git+https://github.com/Triang3l/premake-androidndk.git'
         'premake-cmake::git+https://github.com/JoelLinn/premake-cmake.git'
         'premake-export-compile-commands::git+https://github.com/xenia-project/premake-export-compile-commands.git'
@@ -61,7 +61,7 @@ sha256sums=('SKIP'
             # 'SKIP'
             # 'SKIP'
             # 'SKIP'
-            'SKIP'
+            # 'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
