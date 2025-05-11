@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=TIDAL Downloader NG
+GenericName=TIDAL Downloader NG
+Comment=Download files from TIDAL
+
+Icon=/usr/share/pixmaps/tidal-dl-ng.png
+Type=Application
+Categories=AudioVideo;Audio;AudioVideoEditing;
+
+Exec=/usr/bin/tidal-dl-ng-gui %F
+StartupNotify=false
+Terminal=false

@@ -3,7 +3,7 @@
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
 pkgver=0.25.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
@@ -35,10 +35,12 @@ source=(
     "https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "tidal-dl-ng"
     "tidal-dl-ng-gui"
+    "tidal-dl-ng.desktop"
 )
 sha256sums=('4c759f531411f3fa5c9a95805e74cc7da6b10a39dd87a13b9db82c283f028570'
             '1d2f9b06b7bba762f9a8770b163e001e5044a38b9d5befa8ea44fa3c98bcf172'
-            'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c')
+            'ecdc2868d0df9fa41e3bca50f3f0bcfede7543b54700f45b2095b9662da6dd9c'
+            '983df4b20a3a93747f844ded807faa5b53dcf21df022f1f59d92c938af811fef')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -57,4 +59,8 @@ package() {
     # Install scripts
     install -Dm755 "${srcdir}/tidal-dl-ng" "${pkgdir}/usr/bin/tidal-dl-ng"
     install -Dm755 "${srcdir}/tidal-dl-ng-gui" "${pkgdir}/usr/bin/tidal-dl-ng-gui"
+
+    # Install desktop file and icon
+    install -Dm755 "${srcdir}/tidal-dl-ng.desktop" "${pkgdir}/usr/share/applications/tidal-dl-ng.desktop"
+    install -Dm644 "${pkgdir}/usr/lib/python3.13/site-packages/tidal_dl_ng/ui/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-dl-ng.png"
 }
