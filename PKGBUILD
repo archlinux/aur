@@ -1,14 +1,14 @@
 # Maintainer: Nero Blackstone <gf7600gs@gmail.com>
 
 pkgname=numaplayer
-pkgver=2.1.0
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Set your music and inspiration totally free."
 arch=('x86_64')
 url="https://www.studiologic-music.com/products/numaplayer"
 license=('custom:proprietary')
 source=("https://www.studiologic-music.com/support/numaplayer/NumaPlayer_${pkgver}.deb")
-sha256sums=('19a2c00d40a91ec21232b4056a1a3ef51b9096ad6af80996a347d82d882f1679')
+sha256sums=('3134870b8d29212d3b76eb1370dc4bd3c933e0d4cce54d7f49d83561fa216fe5')
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver"
