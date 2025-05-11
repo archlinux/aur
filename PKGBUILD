@@ -4,8 +4,8 @@
 
 _pkgname='input-overlay'
 pkgname=obs-plugin-${_pkgname}
-pkgver=5.0.6
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 groups=('obs-plugins')
 pkgdesc='obs-studio plugin to show keyboard, gamepad and mouse input on stream.'
 arch=("x86_64")
@@ -15,8 +15,8 @@ depends=('obs-studio' 'libxtst' 'libxkbfile' 'sdl2' 'qt6-base')
 makedepends=('git' 'cmake')
 source=(
 	"git+https://github.com/univrsal/${_pkgname}.git#tag=${pkgver}"
-	"$pkgname-libuiohook-univrsal::git+https://github.com/univrsal/libuiohook.git")
-sha256sums=('b9383e6781be3bfe8353a5a905b3d288174b095238f1147fd41d7619c919536e'
+	"$pkgname-libuiohook-TolikPylypchuk::git+https://github.com/TolikPylypchuk/libuiohook.git")
+sha256sums=('f6a5021b9ba606cf96b47f1b2bf78bd840e169dbcd45a80cd420db1f7ae14ac7'
             'SKIP')
 
 _srcdir="${_pkgname}"
@@ -25,8 +25,8 @@ prepare() {
 	cd "${_srcdir}"
 
 	git submodule init
-	git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook-univrsal"
-	git -c 'protocol.file.allow=always' submodule update --remote
+	git config 'submodule.deps/libuiohook.url' "$srcdir/$pkgname-libuiohook-TolikPylypchuk"
+	git -c 'protocol.file.allow=always' submodule update
 
 	sed -i '/set(CMAKE_CXX_FLAGS "-march=native")/d' 'CMakeLists.txt'
 }
