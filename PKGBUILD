@@ -1,27 +1,25 @@
-# Maintainer: lstnbl <jialanxin1996@hotmail.com>
+# Maintainer: haoyuanli <1513624626@qq.com>
 
 _npmname=fanyi
-pkgname=node-$_npmname
-pkgver=5.1.1
+_npmver=10.0.0
+pkgname=node-fanyi
+pkgver=10.0.0
 pkgrel=1
-pkgdesc="A CN and US translate tool in your command line."
-arch=('any')
-url="https://github.com/afc163/fanyi"
+pkgdesc="A CN and EN translator in your command line, powered by iciba and deepseek."
+arch=(any)
+url="https://github.com/afc163/fanyi#readme"
 license=('MIT')
-depends=('nodejs' 'festival')
+depends=('nodejs')
 makedepends=('npm')
-source=(https://github.com/afc163/$_npmname/archive/v$pkgver.tar.gz)
-noextract=("v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
+sha1sums=('4ce6083a0eb066e0e54c393acb5b23221f19db02')
 
 package() {
-  npm install \
-    --user root --global \
-    --prefix "$pkgdir/usr" \
-    "$srcdir"/v$pkgver.tar.gz
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$_npmver.tgz"
+  chown -R root:root "$pkgdir"
 
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  install -Dm0644 "$pkgdir/usr/lib/node_modules/$_npmname/LICENSE" \
+  install -Dm644 "$srcdir/package/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
