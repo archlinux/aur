@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later' 'GPL-2.0-or-later' 'LicenseRef-FreeImagePublicLicens
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
 provides=('freeimage' 'freeimage-vpinball-git')
+conflicts=('freeimage')
 source=("${pkgname}::git+https://github.com/toxieainc/freeimage.git")
 sha256sums=('SKIP')
 
