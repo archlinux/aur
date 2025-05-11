@@ -1,7 +1,7 @@
 pkgbase = monado
 	pkgdesc = An open source OpenXR runtime
 	pkgver = 25.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://monado.dev/
 	arch = x86_64
 	license = BSL-1.0
@@ -29,6 +29,7 @@ pkgbase = monado
 	makedepends = libuvc
 	makedepends = libx11
 	makedepends = libxcb
+	makedepends = libxrandr
 	makedepends = opencv
 	makedepends = openhmd
 	makedepends = openvr
@@ -44,7 +45,9 @@ pkgbase = monado
 	makedepends = wayland-protocols
 	makedepends = zlib
 	source = https://gitlab.freedesktop.org/monado/monado/-/archive/v25.0.0/monado-v25.0.0.tar.bz2
+	source = 010-monado-vulkan-headers1.4.310-fix.patch
 	sha256sums = 75596aaa207f2ad03d4de4911e00995f084f407333b789d25fc8a88e946715e7
+	sha256sums = 85147a16243a99204445cba8472d2863ef694033b0806e81293a0142092a5373
 
 pkgname = monado
 	install = monado.install
