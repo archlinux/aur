@@ -4,18 +4,24 @@
 
 pkgname=xnp2
 pkgver=0.86
-pkgrel=3
+pkgrel=4
 pkgdesc="X Neko Project II, a PC-9801 emulator"
 arch=('x86_64')
-url='http://www.nonakap.org/np2'
+url='http://nonakap.org/np2'
 license=('BSD')
 depends=(
   'gtk2'
   'sdl2_mixer'
   'libsm'
+  'libx11'
+  'libxxf86vm'
+  'libxext'
+)
+makedepends=(
+  'nasm'
 )
 source=(
-  "https://www.nonakap.org/np2/release/xnp2-${pkgver}.tar.bz2"
+  "https://nonakap.org/np2/release/xnp2-${pkgver}.tar.bz2"
   'patch.patch'
   )
 sha256sums=(
@@ -28,6 +34,10 @@ prepare() {
   mkdir -p build
 
   patch -d "xnp2-${pkgver}" -p1 -i "${srcdir}/patch.patch"
+}
+
+build() {
+  CFLAGS+=" -Wno-incompatible-pointer-types -Wno-implicit-function-declaration"
 
   cd build
   "../xnp2-${pkgver}/x11/configure" \
@@ -35,10 +45,8 @@ prepare() {
     --enable-build-all \
     --enable-ia32
     #--enable-gtk3
-}
 
-build() {
-  make -C build
+  make
 }
 
 package() {
