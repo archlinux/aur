@@ -1,0 +1,26 @@
+--- a/polycule/pubspec.lock	2025-05-09 17:23:36.338472650 +0200
++++ b/polycule/pubspec.lock	2025-05-10 21:18:30.309016479 +0200
+@@ -670,10 +670,10 @@
+     dependency: "direct main"
+     description:
+       name: flutter_zxing
+-      sha256: "5b2670f151a6d96643204ff3a781e073739c23a91ef5fc39742bf13fb8287b4c"
++      sha256: d37de64a4442053aa434cdf25ea0f6a214b818148b62604a356a42acd750b241
+       url: "https://pub.dev"
+     source: hosted
+-    version: "1.8.2"
++    version: "2.0.0"
+   fuchsia_remote_debug_protocol:
+     dependency: transitive
+     description: flutter
+--- a/polycule/pubspec.yaml	2025-05-09 17:23:28.457119890 +0200
++++ b/polycule/pubspec.yaml	2025-05-10 21:18:30.124016461 +0200
+@@ -42,7 +42,7 @@
+   flutter_secure_storage: ^9.2.3
+   flutter_svg: ^2.0.10+1
+   flutter_typeahead: ^5.2.0
+-  flutter_zxing: ^1.8.2
++  flutter_zxing: ^2.0.0
+   go_router: ^14.8.1
+   highlighting: ^0.9.0+11.8.0
+   html: ^0.15.4
