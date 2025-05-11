@@ -2,10 +2,10 @@
 
 pkgname=markable
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ 11 library alternative to boost::optional<T>.'
 url="https://github.com/akrzemi1/${pkgname}"
-license=('Boost')
+license=('BSL-1.0')
 depends=()
 makedepends=('cmake')
 arch=('any')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/akrzemi1/${pkgname}/arc
 _srcdir="${pkgname}-${pkgver}"
 
 build() {
-	cmake -S "${_srcdir}" -B 'build' -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr'
+	cmake -S "${_srcdir}" -B 'build' -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build 'build'
 }
 
@@ -25,5 +25,4 @@ check() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install 'build'
-	install -Dm644 "${_srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
