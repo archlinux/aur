@@ -18,7 +18,7 @@ backup=(
 )
 source=("$pkgname::git+$url"
         "$pkgname.install")
-sha256sums=('SKIP' '9f4ebac4571a358acbd8ba8751d496d696b401899dea2a5e7acc85dfd9c2ee5d')
+sha256sums=('SKIP' 'b76357531f51a2d6db3692fdebb9df1a5c58e2834a8d7f7e963a2ea53abc9427')
 install="${pkgname}.install"
 conflicts=('systemd-named-netns' 'systemd-netns')
 provides=(systemd-netns=${pkgver%+*})
