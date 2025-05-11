@@ -1,0 +1,12 @@
+diff '--color=auto' -u -r -N deadbeef-lyricbar/src/ui.cpp deadbeef-lyricbar-formatsecurity/src/ui.cpp
+--- deadbeef-lyricbar/src/ui.cpp	2025-05-11 18:59:00.274772615 +0200
++++ deadbeef-lyricbar-formatsecurity/src/ui.cpp	2025-05-11 19:20:36.980670151 +0200
+@@ -244,7 +244,7 @@
+ 	");
+ 
+ 	//load css
+-	auto data = g_strdup_printf(cssconfig.c_str());
++	auto data = g_strdup_printf("%s", cssconfig.c_str());
+ 
+ 	RefPtr<Gtk::CssProvider> cssProvider = Gtk::CssProvider::create();
+ 	cssProvider->load_from_data(data);
