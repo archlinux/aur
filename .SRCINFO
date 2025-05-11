@@ -1,0 +1,16 @@
+pkgbase = urnetwork-provider-git
+	pkgdesc = A web-standards VPN marketplace with an emphasis on fast, secure internet everwhere.
+	pkgver = 753b3eb
+	pkgrel = 1
+	url = https://ur.io
+	arch = x86_64
+	license = MPL 2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = urnetwork-provider
+	conflicts = urnetwork-provider
+	source = git+https://github.com/urnetwork/connect.git
+	sha256sums = SKIP
+
+pkgname = urnetwork-provider-git
