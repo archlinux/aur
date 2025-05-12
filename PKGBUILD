@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moox-validatesubs'
-pkgver='1.012009'
+pkgver='1.012010'
 pkgrel='1'
 pkgdesc="Validating sub routines via Type::Tiny."
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl-moo>=0' 'perl-moox-returnmodifiers>=0.09' 'perl-type-tiny>=1.002000' 'perl>=5.006')
+depends=('perl-moo>=0' 'perl-moox-returnmodifiers>=1.000001' 'perl-type-tiny>=1.002000' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/MooX-ValidateSubs'
-source=("https://cpan.metacpan.org/authors/id/L/LN/LNATION/MooX-ValidateSubs-$pkgver.tar.gz")
-md5sums=('3f852bb878dd3cfbde334feca39f809b')
-sha512sums=('487dc9fe7bd2eebb3ec05bba3b2073b2f2b0e53a8c0918f5678d54cae2a9f7d82ad3ceb0a3136167426d122d0d4c8227bff23a5ec8d67c2a02ec81f38df189af')
+source=("http://search.cpan.org/CPAN/authors/id/L/LN/LNATION/MooX-ValidateSubs-$pkgver.tar.gz")
+md5sums=('0cb3c038b6ee365b0311e62cedbc86a8')
+sha512sums=('80e30b77e1ce34f7945c3d8bc938f82832b4a2cdb89b7ab222080e69351eb9bb2ae5bb700c8529e9a3317ef519737c647a1cfc4ca87592824c6d038dabaf6387')
 _distdir="MooX-ValidateSubs-$pkgver"
 
 build() {
