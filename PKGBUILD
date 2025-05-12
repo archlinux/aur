@@ -1,20 +1,20 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=systemd-netns-git
-pkgver=r72.37ed7ae
+pkgver=r75.61ef953
 pkgrel=1
 pkgdesc="Configure private netns with systemd services."
 arch=('any')
 options=(!debug)
 url="https://github.com/CarloWood/systemd-netns.git"
 license=('GPL3')
-depends=('systemd' 'iproute2')
-optdepends=('iptables: for default NAT config' 'dhclient: when using dynamically assigned IP')
+depends=('systemd' 'iproute2' 'nftables')
 backup=(
   'etc/conf.d/netns/default.conf'
   'etc/conf.d/netns/veth.conf'
   'etc/conf.d/netns/macvlan.conf'
   'etc/conf.d/netns/veth-nstest.conf'
+  'etc/conf.d/netns/nft.rules'
 )
 source=("$pkgname::git+$url"
         "$pkgname.install")

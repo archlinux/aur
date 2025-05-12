@@ -1,3 +1,5 @@
 pkg/
 src/
+systemd-netns-git
 systemd-netns-git-*-any.pkg.tar.zst
+systemd-netns-git-*-any.pkg.tar.zst.sig
