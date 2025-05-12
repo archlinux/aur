@@ -1,0 +1,14 @@
+pkgbase = zdk-cli
+	pkgdesc = ZDK CLI (Zoho Development Kit CLI) is a set of CLI tools that you can use to interact with and manage your CRM org metadata in a developer-friendly way.
+	pkgver = 1.0.3_beta
+	pkgrel = 1
+	url = https://www.zoho.com/crm/developer/docs/zdk-cli/quick-start.html
+	arch = any
+	license = Apache-2.0
+	depends = nodejs
+	depends = npm
+	noextract = @zohocrm/zdk-cli-1.0.3-beta.tgz
+	source = https://registry.npmjs.org/@zohocrm/zdk-cli/-/@zohocrm/zdk-cli-1.0.3-beta.tgz
+	sha1sums = b61d78dcdf96d642ed6e32b6774ff98f50f08d1a
+
+pkgname = zdk-cli
