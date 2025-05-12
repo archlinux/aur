@@ -15,6 +15,7 @@ pkgbase = bloodhound-certipy
 	depends = java-runtime>=11
 	optdepends = python-bloodhound: Python injest tool that runs on natively on Linux
 	conflicts = bloodhound
+	replaces = bloodhound
 	source = https://github.com/ly4k/BloodHound/archive/refs/tags/v4.2.0-ly4k.tar.gz
 	source = bloodhound.desktop
 	sha256sums = 0f57d5cba9996ccf6b9ef3c02ca3e40b8d7a10f3bde9a9d20a96b60cd549f60f
