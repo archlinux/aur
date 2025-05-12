@@ -1,15 +1,15 @@
 pkgname=python-subprocess_shell
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A shell for subprocess'
 arch=('any')
 url='https://gitlab.com/notEvil/subprocess_shell'
 license=('MIT')
 source=(
-  "https://pypi.io/packages/source/s/subprocess_shell/subprocess_shell-$pkgver.tar.gz"
+  "https://pypi.io/packages/source/s/subprocess-shell/subprocess_shell-$pkgver.tar.gz"
 )
 sha256sums=(
-  '79d19c6d36974540a94635aad51fafff6a179e7fcb44ee8c96d02ce0eec5155d'
+  'aef5495c820b046976801e9618f77fda199344a83d53dc1294daab80c78245c6'
 )
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
