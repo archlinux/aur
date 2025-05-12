@@ -1,0 +1,24 @@
+post_install() {
+  echo "Enabling and starting zhongtaiko_filter_py service..."
+  systemctl daemon-reload
+  systemctl enable zhongtaiko_filter_py.service --now
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if systemctl -q is-enabled zhongtaiko_filter_py.service; then
+    echo "Restarting zhongtaiko_filter_py service..."
+    systemctl restart zhongtaiko_filter_py.service
+  fi
+}
+
+pre_remove() {
+  if systemctl -q is-active zhongtaiko_filter_py.service; then
+    echo "Stopping zhongtaiko_filter_py service..."
+    systemctl stop zhongtaiko_filter_py.service
+  fi
+  if systemctl -q is-enabled zhongtaiko_filter_py.service; then
+    echo "Disabling zhongtaiko_filter_py service..."
+    systemctl disable zhongtaiko_filter_py.service
+  fi
+}
