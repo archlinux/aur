@@ -1,4 +1,4 @@
-pkgbase = aur-helper
+pkgbase = aur-manager
 	pkgdesc = aur package manager
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = aur-helper
 	source = aur
 	md5sums = SKIP
 
-pkgname = aur-helper
+pkgname = aur-manager
