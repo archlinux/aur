@@ -5,7 +5,7 @@
 pkgname=dump1090-git
 _pkgname=${pkgname%-git}
 pkgver=r386.bff92c4
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple Mode S decoder for RTLSDR devices. MalcolmRobb fork."
 arch=('x86_64' 'aarch64')
 url="https://github.com/MalcolmRobb/dump1090"
@@ -30,7 +30,7 @@ prepare() {
   cd "$srcdir/$_pkgname"
   # gcc10 tweaks
   patch -p1 -i "$srcdir/$_pkgname.patch"
-
+  sed -i 's|void sigWinchCallback()|void sigWinchCallback(int sig)|g' dump1090.c view1090.c
   sed -i 's#./public_html#/usr/share/dump1090/public_html#g' dump1090.h
 }
 
