@@ -1,7 +1,7 @@
 pkgbase = nerdlog-bin
 	pkgdesc = Nerdlog: fast, remote-first, multi-host TUI log viewer with timeline histogram and no central server
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dimonomid/nerdlog
 	arch = any
 	license = BSD-2-Clause
