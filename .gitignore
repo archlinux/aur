@@ -1,7 +1,6 @@
 pkg/
 src/
+gnulib/
+grep/
 *.sig
-*.tar
-*.tar.zst
-*.tar.gz
-*.tar.xz
+*.tar*

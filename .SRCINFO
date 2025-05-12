@@ -1,16 +1,22 @@
 pkgbase = grep-compat
 	pkgdesc = A string search utility (without egrep and fgrep warnings when used in scripts)
 	pkgver = 3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/grep/
 	arch = x86_64
 	license = GPL3
+	makedepends = gperf
+	makedepends = git
+	makedepends = python
 	makedepends = texinfo
+	makedepends = wget
 	depends = glibc
 	depends = pcre2
 	provides = grep
 	conflicts = grep
-	source = https://ftp.gnu.org/gnu/grep/grep-3.12.tar.xz
-	sha512sums = c54b4db5a8b9afe098c088decd94977746305284d716666a60bac82b4edc0fae4acf828970b5b6fc7d58ecd549f638e17e6958f33a71fedcc7d7415b9228b161
+	source = git+https://git.savannah.gnu.org/git/grep.git#tag=v3.12
+	source = git+https://git.savannah.gnu.org/git/gnulib.git
+	sha256sums = 9543190d9ca2201ea46fddaeb39031a0acde1f6aa4351a72f33ef3455e6dd41e
+	sha256sums = SKIP
 
 pkgname = grep-compat
