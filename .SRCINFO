@@ -5,7 +5,8 @@ pkgbase = tokyocabinet
 	url = https://fallabs.com/tokyocabinet/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.0-or-later
+	license = Zlib
 	makedepends = gcc>=3.1
 	makedepends = make
 	makedepends = pkgconfig

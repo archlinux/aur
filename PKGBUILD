@@ -1,6 +1,6 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
-# Contributor: Nicolas Martyanoff <khaelin@gmail.com> 
+# Contributor: Nicolas Martyanoff <khaelin@gmail.com>
 # Contributor: Rick Chen <stuffcorpse@archlinux.us>
 
 pkgname=tokyocabinet
@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc='A modern implementation of DBM'
 arch=('i686' 'x86_64')
 url='https://fallabs.com/tokyocabinet/'
-license=('LGPL')
+license=('LGPL-2.0-or-later' 'Zlib')
 makedepends=('gcc>=3.1' 'make' 'pkgconfig')
 depends=('zlib' 'bzip2')
 source=("https://gitlab.com/patlefort/tokyocabinet/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
@@ -19,7 +19,7 @@ _srcdir="$pkgname-v$pkgver"
 
 prepare() {
 	cd "$_srcdir"
-	
+
 	# get rid of references to $HOME
 	sed -i 's|LDENV = .*|LDENV = |' Makefile.in
 	sed -i 's|$HOME|/usr|' configure
