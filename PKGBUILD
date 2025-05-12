@@ -3,7 +3,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-expat
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 arch=('any')
 pkgdesc="An XML parser library (Android ${_android_arch})"
@@ -14,7 +14,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/libexpat/libexpat/archive/R_${pkgver//./_}.tar.gz")
-md5sums=('4a1f1d3d419140560b38e467d96329b2')
+md5sums=('a4543a7f7d56d6f28153d2ca52df286f')
 
 build() {
     cd "${srcdir}/libexpat-R_${pkgver//./_}/expat"
