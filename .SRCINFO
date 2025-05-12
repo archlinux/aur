@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
 	pkgver = 7.13.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache-2.0
@@ -12,6 +12,8 @@ pkgbase = imgbrd-grabber
 	makedepends = qt6-shadertools
 	makedepends = jq
 	makedepends = ninja
+	makedepends = clang
+	makedepends = vulkan-headers
 	depends = qt6-multimedia
 	depends = qt6-declarative
 	depends = nodejs
@@ -25,15 +27,18 @@ pkgbase = imgbrd-grabber
 	conflicts = imgbrd-grabber-git
 	conflicts = imgbrd-grabber-bin
 	conflicts = imgbrd-grabber-appimage
+	options = !lto
 	source = git+https://github.com/Bionus/imgbrd-grabber.git#commit=5b8d326f4f29e9fbb89973f4ca1e84624756b475
 	source = git+https://github.com/LaurentGomila/qt-android-cmake.git
 	source = git+https://github.com/sakra/cotire.git
 	source = git+https://github.com/lexbor/lexbor.git
 	source = git+https://github.com/catchorg/Catch2.git
+	source = patch.patch
 	sha256sums = 175f41d63ec78f8d13c9584853ec511030a30ca41b25b9aefd000bf1cc937cf0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = da1801c6c98889be826197dae57c6753c90ab820b122c9ce22b08bcdf2cf09da
 
 pkgname = imgbrd-grabber
