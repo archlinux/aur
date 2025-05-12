@@ -3,7 +3,7 @@ pkgname=polar-bin
 _pkgname=Polar
 pkgver=3.2.0
 _electronversion=13
-pkgrel=1
+pkgrel=2
 pkgdesc="One-click Bitcoin Lightning networks for local app development & testing.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://lightningpolar.com/"
@@ -25,14 +25,14 @@ sha256sums=('34f9527f8ee821842e8cbb6273f8fbaa8637bbbec8e3d628f9be34c7df6d3e0b'
             '971e947b52af09847d493b326953f2cbc91669441eab0d5e74eac38b8e162904'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
-    sed -e "
+    sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
-    " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    " "${srcdir}/${pkgname%-bin}.sh"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
