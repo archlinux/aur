@@ -1,0 +1,16 @@
+pkgbase = moonlight-canary-bin
+	pkgdesc = A convenient launcher for the moonlight Discord mod (canary)
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/MeguminSama/moonlight-launcher
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = libmoonlight-launcher
+	optdepends = discord: An install of Discord is required to run the launcher
+	provides = moonlight-canary
+	source = moonlight-canary-bin-0.1.9.tar.gz::https://github.com/MeguminSama/moonlight-launcher/releases/download/v0.1.9/moonlight-canary-v0.1.9.tar.gz
+	source = moonlight-canary.desktop
+	sha256sums = d2c0d65d0ebacdbbb5633a9415a0958c240c2567be86b6eb70dbaaeb961d006f
+	sha256sums = 9eefc1f1921b018b9c8298649e46f9abbe6e99c966b55e81d17154844b3e4531
+
+pkgname = moonlight-canary-bin
