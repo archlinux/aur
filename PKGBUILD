@@ -26,7 +26,7 @@ makedepends=(
     'python-poetry-core>=1.0.0'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('f5749c7988f56f32284fc4599608ab23a03c6712f639e3567e47b343c6213644')
+sha256sums=('84968e36fd9929a6abe903aeed18440971ffae0d0d4335652dcbae92b508723b')
 
 build() {
     cd "$pkgname-$pkgver"
