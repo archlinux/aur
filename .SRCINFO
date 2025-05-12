@@ -7,7 +7,7 @@ pkgbase = linker-cli
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = linker-cli-0.1.3.tar.gz::https://github.com/ChristianRegueiro/linker/releases/download/v0.1.3/linker-0.1.3-x86_64-unknown-linux-gnu.tar.gz
+	source = linker-cli-0.1.3.tar.gz::https://github.com/ChristianRegueiro/linker/releases/download/0.1.3/linker-0.1.3-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = linker-cli
