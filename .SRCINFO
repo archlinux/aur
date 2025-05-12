@@ -1,6 +1,6 @@
 pkgbase = timg
 	pkgdesc = Terminal Image and Video Viewer
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/hzeller/timg
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = timg
 	depends = libdeflate
 	depends = librsvg
 	depends = poppler-glib
-	source = timg-1.6.1.tar.gz::https://github.com/hzeller/timg/archive/v1.6.1.tar.gz
-	sha256sums = 08147c41ce4cea61b6c494ad746e743b7c4501cfd247bec5134e8ede773bf2af
+	source = timg-1.6.2.tar.gz::https://github.com/hzeller/timg/archive/v1.6.2.tar.gz
+	sha256sums = a5fb4443f55552d15a8b22b9ca4cb5874eb1a988d3b98fe31d61d19b2c7b9e56
 
 pkgname = timg
