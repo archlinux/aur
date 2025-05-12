@@ -3,7 +3,7 @@
 pkgname=('groonga')
 pkgver=15.0.9
 pkgbase=groonga
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
 license=('LGPL2.1')
@@ -11,7 +11,7 @@ source=("https://github.com/groonga/groonga/releases/download/v$pkgver/$pkgbase-
     "https://github.com/groonga/groonga/releases/download/v$pkgver/$pkgbase-$pkgver.tar.gz.asc"
     "groonga-httpd.service")
 makedepends=('glib2' 'libedit' 'zeromq' 'autoconf-archive' 'libstemmer'
-    'libevent' 'mecab' 'mecab-ipadic' 'msgpack-c' 'ruby')
+    'libevent' 'mecab' 'mecab-ipadic' 'msgpack-c' 'ruby' 'cmake')
 validpgpkeys=(2701F317CFCCCB975CADE9C2624CF77434839225)
 
 build() {

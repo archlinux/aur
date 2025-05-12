@@ -1,6 +1,6 @@
 pkgbase = groonga
 	pkgver = 15.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://groonga.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = groonga
 	makedepends = mecab-ipadic
 	makedepends = msgpack-c
 	makedepends = ruby
+	makedepends = cmake
 	source = https://github.com/groonga/groonga/releases/download/v15.0.9/groonga-15.0.9.tar.gz
 	source = https://github.com/groonga/groonga/releases/download/v15.0.9/groonga-15.0.9.tar.gz.asc
 	source = groonga-httpd.service
