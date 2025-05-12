@@ -1,0 +1,16 @@
+diff '--color=auto' -ura fiqhack.orig/GNUmakefile fiqhack.new/GNUmakefile
+--- fiqhack.orig/GNUmakefile	2025-05-11 21:45:11.759864051 -0300
++++ fiqhack.new/GNUmakefile	2025-05-11 21:45:45.067224868 -0300
+@@ -1,8 +1,8 @@
+ GAME = fiqhack
+-DESTDIR =
+-BINDIR = $(HOME)/fiqhackdir
+-DATADIR = $(BINDIR)/data
+-STATEDIR = $(BINDIR)/save
++DESTDIR = ../../pkg/fiqhack-git/
++BINDIR = /usr/bin
++DATADIR = /var/games/fiqhack/data
++STATEDIR = /var/games/fiqhack/save
+ 
+ FLEX = flex
+ BISON = bison

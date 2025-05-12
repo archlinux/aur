@@ -1,0 +1,18 @@
+pkgbase = fiqhack-git
+	pkgdesc = Variant of NetHack focused on AI, balance, and interface improvements
+	pkgver = 4.3.0.r677.dc309067
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = jansson
+	depends = libpng
+	depends = sdl2
+	provides = fiqhack-git
+	conflicts = fiqhack-git
+	source = fiqhack::git+https://github.com/FredrIQ/fiqhack
+	source = 00-change-makefile-paths.patch
+	sha256sums = SKIP
+	sha256sums = 889601fe83d9005a8fa4f0b27e4e8dac767eba289ed0b29c352a698feb27dd69
+
+pkgname = fiqhack-git
