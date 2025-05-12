@@ -2,14 +2,14 @@
 
 pkgname=atac-git
 _pkgname=${pkgname%-git}
-pkgver=0.19.0.r13.205a60c
+pkgver=0.19.0.r24.50c495b
 pkgrel=1
 pkgdesc="A simple API client (postman like) in your terminal"
 arch=('x86_64')
 url="https://github.com/Julien-cpsn/ATAC"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'cargo' 'clang')
+makedepends=('git' 'cargo')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-	export CC=clang # fix dep build error with GCC 15
+	export CFLAGS='-std=gnu17' # fix dep build error with GCC 15
 	cargo build --release --frozen
 	local compgen="target/release/$_pkgname completions"
 	$compgen bash "completions"
