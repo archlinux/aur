@@ -1,5 +1,5 @@
 # Maintainer : Alban <albdav.dev@gmail.com>
-pkgname=toutui
+pkgname=toutui-bin
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="TUI Audiobookshelf client. Listen to your audiobooks and podcasts from your terminal."
