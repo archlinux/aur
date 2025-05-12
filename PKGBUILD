@@ -1,10 +1,10 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=zig-git
-pkgver=0.14.0.git+fd7aafdbd5
+pkgver=0.14.0.r134.g0cb9ffc
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url='https://ziglang.org/'
 license=('MIT')
 options=('!lto')
@@ -14,17 +14,14 @@ provides=(zig)
 depends=("clang>=19.1" icu libffi libxml2 "lld>=19.1" "llvm-libs>=19.1" ncurses xz zlib zstd)
 makedepends=(cmake "llvm>=19.1")
 checkdepends=(lib32-glibc)
-source=("git+https://github.com/ziglang/zig#branch=0.14.x"
+source=("git+https://github.com/ziglang/zig.git#branch=0.14.x"
         "skip-localhost-test.patch")
 sha256sums=('SKIP'
             'eeb5f0f72035c52bf558ffc77a171a3ddf93eac7d663ef0c82826007763717a8')
 
 pkgver() {
   cd zig
-  local _tag="$(git describe --tags --abbrev=0)"
-  local _hash="$(git rev-parse --short HEAD)"
-  _tag="${_tag%-*}"
-  echo "${_tag##v}.git+${_hash}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
