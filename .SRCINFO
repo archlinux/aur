@@ -9,7 +9,6 @@ pkgbase = udeler-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
 	makedepends = curl
 	depends = electron11
 	provides = udeler=1.14.0
