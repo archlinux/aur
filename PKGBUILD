@@ -6,7 +6,7 @@
 _pkgname='dstask'
 pkgname="$_pkgname-git"
 pkgver=0.27.r4.gbd08b11
-pkgrel=4
+pkgrel=5
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task (development version)'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
@@ -68,6 +68,7 @@ package() {
   install -vDm0644 _completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
   install -vDm0644 _completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
+  install -vDm0755 -t "$pkgdir/usr/share/doc/$pkgname/" ./*.md doc/*.md
   install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
