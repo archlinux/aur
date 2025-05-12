@@ -1,0 +1,16 @@
+pkgbase = tree-sitter-ada-git
+	pkgdesc = Ada grammar for tree-sitter
+	pkgver = 20250512
+	pkgrel = 1
+	url = https://github.com/briot/tree-sitter-ada
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = tree-sitter-cli
+	options = staticlibs
+	source = git+https://github.com/briot/tree-sitter-ada.git
+	sha256sums = SKIP
+
+pkgname = tree-sitter-ada-git
