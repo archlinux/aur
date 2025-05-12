@@ -1,0 +1,14 @@
+pkgbase = systemd-services-manager
+	pkgdesc = A GUI application to manage systemd services
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TiagoRibeiro25/systemd-services-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = pyinstaller
+	makedepends = python
+	makedepends = git
+	source = git+https://github.com/TiagoRibeiro25/systemd-services-manager.git
+	sha256sums = SKIP
+
+pkgname = systemd-services-manager
