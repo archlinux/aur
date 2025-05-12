@@ -3,12 +3,12 @@
 
 pkgname=ezifd
 pkgver=1.5.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='EZUSB/EZ100PU USB Chip/Smart Card Interface Devices driver'
 arch=('x86_64')
 url='https://github.com/drinkcat/ezIFD'
-license=('LGPL' 'GPL')
-depends=('pcsclite' 'libusb' 'flex')
+license=('LGPL-2.1-or-later' 'BSD-3-Clause')
+depends=('pcsclite' 'libusb')
 makedepends=('git' 'autoconf-archive')
 conflicts=('ezusb')
 source=("${pkgname}::git+https://github.com/drinkcat/ezIFD.git#commit=v${pkgver}"
