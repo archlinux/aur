@@ -2,15 +2,22 @@
 
 pkgname=python-validio-sdk
 _name=validio_sdk
-pkgver=0.20.2
+pkgver=0.27.4
 pkgrel=1
 pkgdesc="SDK for the Validio platform"
 url="https://pypi.org/project/validio-sdk/"
 depends=(
+  'python-annotated-types'
+  'python-anyio'
+  'python-h11'
+  'python-httpcore'
+  'python-pydantic-core'
+  'python-sniffio'
+  'python-typing-inspection'
   'python-camel-converter'
   'python-httpx'
-  'python-platformdirs'
-  'python-pydantic')
+  'python-pydantic'
+)
 makedepends=(
   'python-build'
   'python-installer'
@@ -19,14 +26,14 @@ makedepends=(
 license=('Apache-2.0')
 arch=(any)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c27c3cb3b4b2be778efd0f530376cae1f8527282d17eb606fa8805315214c395')
+sha256sums=('d3ed398b91d6692da5a24e35147de036cc0eb342e031f6cb787d1e022706e277')
 
 build() {
-    cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
