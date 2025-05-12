@@ -1,14 +1,14 @@
 # Maintainer: Wilken Gottwalt <wilken dot gottwalt at posteo dot net>
 
 pkgname=ollama-rocm-git
-pkgver=0.6.8.git+7e5c8eee5
+pkgver=0.6.8.r30.g82a9e94
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm'
 arch=(x86_64)
 url='https://github.com/ollama/ollama'
 license=(MIT)
-provides=(ollama)
 conflicts=(ollama)
+provides=("ollama-rocm=${pkgver%%.r*}")
 depends=(comgr gcc-libs "hip-runtime-amd>=6.3.2" hipblas hsa-rocr libdrm libelf numactl rocblas rocsolver rocsparse)
 optdepends=('rocm-smi-lib: monitor GPU usage with rocm-smi' 'amdgpu_top: tool that shows AMD GPU utilization')
 makedepends=(git gcc-libs "go>=1.23" "hip-runtime-amd>=6.3.2" hipblas hipblas-common hsa-rocr libdrm libelf numactl rocblas rocm-hip-sdk rocm-opencl-sdk rocsolver rocsparse)
@@ -23,10 +23,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd ollama
-  local _tag="$(git describe --tags --abbrev=0)"
-  local _hash="$(git rev-parse --short HEAD)"
-  _tag="${_tag%-*}"
-  echo "${_tag##v}.git+${_hash}"
+  git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
