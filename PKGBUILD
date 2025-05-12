@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=emudeck-bin
 _pkgname=EmuDeck
-pkgver=2.4.3
+pkgver=2.5.0
 _electronversion=22
 pkgrel=1
 pkgdesc="A collection of scripts that allows you to autoconfigure your Steam Deck, creates your roms directory structure and downloads all of the needed Emulators.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/EmuDeck/emudeck-electron/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('663a7dc7f53416df09b255c47e4a38c62a0354bc7542840c7637ef6c99e4f680'
+sha256sums=('7b4b898567c2abcc7ebe791500b34ab2aadc8c2a23d1754d23d314215b4fcc66'
             '5e98c15fe806a18f79422d2cd0c4587129f4e03081b5ab4c030627d6f6840d68'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
@@ -33,7 +33,9 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
