@@ -1,6 +1,6 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
-	pkgver = 4.12.0
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://git-cola.github.io
 	arch = any
@@ -25,8 +25,8 @@ pkgbase = git-cola
 	optdepends = python-pyinotify: Enable file system change monitoring
 	optdepends = python-send2trash: Enables "Send to Trash" functionality
 	optdepends = tk: To use the built-in ssh-askpass handler
-	source = git+https://github.com/git-cola/git-cola.git#tag=v4.12.0?signed
+	source = git+https://github.com/git-cola/git-cola.git#tag=v4.13.0?signed
 	validpgpkeys = FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0
-	sha256sums = 2e50632b6e4b5cbf41f4083ff6eb9f438f8632ff5bad58f5bdd425f6eaa8086e
+	sha256sums = bd1447dd3fbb51f2bc199aae6242a24e98beb66ee9a149dd16869702d74685ae
 
 pkgname = git-cola
