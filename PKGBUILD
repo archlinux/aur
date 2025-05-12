@@ -20,7 +20,7 @@ optdepends=("mariadb: Database"
     "nginx: HTTP server")
 provides=("bench")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("f9897cb5c03802164e36090b8b71b45991f2124b6c68211f5269393f91fe7d6447a85e188b36f8d6d850ad494a6bfc9f3edfe1768e3ec8d564a301dc6d8d31d0")
+sha512sums=("88079986e36e8f056fc33156ef8e93ff82a18c7e10c683c638705e5614972ddc488fed7ebf5f4dde256f297efc96dce941d3789d5cba055aa5930f746862939b")
 
 build()
 {
