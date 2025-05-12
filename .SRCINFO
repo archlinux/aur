@@ -1,6 +1,6 @@
 pkgbase = runjs-electron-bin
 	pkgdesc = A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://runjs.app
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = runjs-electron-bin
 	depends = python-typing_extensions
 	depends = python-packaging
 	depends = nodejs
-	provides = runjs=3.1.1
+	provides = runjs=3.1.2
 	conflicts = runjs
 	conflicts = runjs-electron
 	options = !strip
@@ -21,9 +21,9 @@ pkgbase = runjs-electron-bin
 	source = runjs-electron.sh
 	sha256sums = f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d
 	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = runjs-electron-3.1.1-aarch64.rpm::https://github.com/lukehaas/RunJS/releases/download/v3.1.1/runjs-3.1.1.aarch64.rpm
-	sha256sums_aarch64 = 726a5d3b17229ee3ef945531057eb1a4526d8e50d212612e391d52bdcf639c7e
-	source_x86_64 = runjs-electron-3.1.1-x86_64.rpm::https://github.com/lukehaas/RunJS/releases/download/v3.1.1/runjs-3.1.1.x86_64.rpm
-	sha256sums_x86_64 = 02f9ed278e4a17a0e924075c01a8e54cf1e91f8d77ec21621005d882e5536e2b
+	source_aarch64 = runjs-electron-3.1.2-aarch64.rpm::https://github.com/lukehaas/RunJS/releases/download/v3.1.2/runjs-3.1.2.aarch64.rpm
+	sha256sums_aarch64 = 0958588f9920f2d6f1b8a5551447e5a7c7eb6f7323e16d63cf0c0fdfad7da136
+	source_x86_64 = runjs-electron-3.1.2-x86_64.rpm::https://github.com/lukehaas/RunJS/releases/download/v3.1.2/runjs-3.1.2.x86_64.rpm
+	sha256sums_x86_64 = 462cfcbf9cdd4490f4d3bc1230d06af581b2848a96940a37555ff3946e69f97f
 
 pkgname = runjs-electron-bin

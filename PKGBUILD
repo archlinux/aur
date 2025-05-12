@@ -2,7 +2,7 @@
 _appname=runjs
 pkgname="${_appname}-electron-bin"
 _pkgname=RunJS
-pkgver=3.1.1
+pkgver=3.1.2
 _electronversion=32
 pkgrel=1
 pkgdesc="A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)"
@@ -40,8 +40,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 sha256sums=('f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('726a5d3b17229ee3ef945531057eb1a4526d8e50d212612e391d52bdcf639c7e')
-sha256sums_x86_64=('02f9ed278e4a17a0e924075c01a8e54cf1e91f8d77ec21621005d882e5536e2b')
+sha256sums_aarch64=('0958588f9920f2d6f1b8a5551447e5a7c7eb6f7323e16d63cf0c0fdfad7da136')
+sha256sums_x86_64=('462cfcbf9cdd4490f4d3bc1230d06af581b2848a96940a37555ff3946e69f97f')
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
