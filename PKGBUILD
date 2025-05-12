@@ -4,7 +4,7 @@
 _name="ghostscript"
 pkgname="lib32-${_name}"
 pkgver=10.05.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for the PostScript language (32-bit)"
 arch=('x86_64')
 url="https://www.ghostscript.com"
@@ -16,9 +16,9 @@ depends=("${_name}>=${pkgver}" 'lib32-fontconfig' 'lib32-gcc-libs'
          'lib32-libpaper' 'lib32-libpng' 'lib32-libtiff' 'lib32-libx11'
          'lib32-libxt' 'lib32-openjpeg2' 'lib32-tesseract>=4.1' 'lib32-zlib')
 makedepends=('lib32-gtk3')
-provides=('libgs.so') # 'lib32-ghost'{'script','xps','pcl'})
-conflicts=('lib32-ghost'{'script','xps','pcl'})
-replaces=('lib32-ghost'{'script','xps','pcl'})
+provides=('libgs.so') # 'lib32-ghost'{'xps','pcl'})
+conflicts=('lib32-ghost'{'xps','pcl'})
+replaces=('lib32-ghost'{'xps','pcl'})
 options=('!lto')
 _pkgsrc="${_name}-${pkgver}"
 source=("${_pkgsrc}.tar.xz::${_url}/releases/download/gs${pkgver//./}/${_pkgsrc}.tar.xz"

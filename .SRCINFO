@@ -1,7 +1,7 @@
 pkgbase = lib32-ghostscript
 	pkgdesc = An interpreter for the PostScript language (32-bit)
 	pkgver = 10.05.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ghostscript.com
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -26,10 +26,8 @@ pkgbase = lib32-ghostscript
 	depends = lib32-tesseract>=4.1
 	depends = lib32-zlib
 	provides = libgs.so
-	conflicts = lib32-ghostscript
 	conflicts = lib32-ghostxps
 	conflicts = lib32-ghostpcl
-	replaces = lib32-ghostscript
 	replaces = lib32-ghostxps
 	replaces = lib32-ghostpcl
 	options = !lto
