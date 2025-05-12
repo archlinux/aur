@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/npc-gnu/yaud"
 license=('GNU General Public Lisence v3')
 depends=('bash' 'coreutils') 
-source=("https://github.com/npc-gnu/yaud/blob/main/yaud_bin/yaud-bin.tar.gz") 
+source=("https://github.com/npc-gnu/yaud/yaud_bin/yaud-bin.tar.gz") 
 sha256sums=('fd4ac236a7ad5a12f89e02026124f54d0c188b073238cb73690c22cadec5743f') 
 
 package() {
