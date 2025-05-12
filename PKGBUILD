@@ -13,20 +13,24 @@ arch=(any)
 url='https://www.geogebra.org/'
 license=(LicenseRef-GeoGebra)
 depends=(electron)
+makedepends=(curl)
 provides=(geogebra)
 conflicts=(geogebra geogebra-6-bin)
 source=(https://download.geogebra.org/installers/6.0/GeoGebra-Windows-Portable-${pkgver//./-}.zip
-        LICENSE.html::https://www.geogebra.org/license
         geogebra
         geogebra.svg
         geogebra.desktop
         geogebra-mime.xml)
 sha256sums=('2e2168810c6223170bde32bfa179162244438494b470a4058d479201fece3911'
-            'SKIP'
             '62d6d48511ec9a3d08440d0bba7e6da35e61f84348729872941f66f2f8f15e57'
             'd81270ac2a7702246633fe11f448bd809e9250e2057077195eeabdc32b64ac46'
             'e8f3ac2c91daf1bb38ef4dddf705d341c3d8028aa4afb9b74a2d1a78a9953b98'
             '100dd83e61057b9a104630ea39a84d967475d459ab38e29783a7587b3acfb6a4')
+
+prepare() {
+  # https://gitlab.archlinux.org/pacman/pacman-contrib/-/issues/119
+  curl -sSfL -o "LICENSE.html" "https://www.geogebra.org/license"
+}
 
 package() {
   cd $srcdir
