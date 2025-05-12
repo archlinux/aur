@@ -1,0 +1,23 @@
+pkgbase = toutui-bin
+	pkgdesc = TUI Audiobookshelf client. Listen to your audiobooks and podcasts from your terminal.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/AlbanDAVID/Toutui
+	install = toutui.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = vlc
+	depends = netcat
+	options = !debug
+	options = strip
+	source = https://github.com/AlbanDAVID/Toutui/releases/download/v0.4.0-beta/toutui-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/AlbanDAVID/Toutui/releases/download/v0.4.0-beta/toutui-aarch64-unknown-linux-gnu.tar.gz
+	source = https://github.com/AlbanDAVID/Toutui/releases/download/v0.4.0-beta/config.example.toml
+	source = https://github.com/AlbanDAVID/Toutui/releases/download/v0.4.0-beta/toutui.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = toutui-bin
