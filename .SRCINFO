@@ -1,7 +1,7 @@
 pkgbase = yamagi-quake2-ref_vk
 	pkgdesc = Vulkan renderer for yamagi-quake2
-	pkgver = 1.0.9
-	pkgrel = 2
+	pkgver = 1.0.10
+	pkgrel = 1
 	url = https://github.com/yquake2/ref_vk/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = yamagi-quake2-ref_vk
 	depends = yamagi-quake2
 	depends = sdl3
 	optdepends = vulkan-validation-layers
-	source = ref_vk-1.0.9.tar.gz::https://github.com/yquake2/ref_vk/archive/refs/tags/v1.0.9.tar.gz
-	b2sums = 1d72d6e24eed73160b18f53b0f874ae1f2db1626d90cee6ef871f716c35c1640719763e412a4658ac4e3d1ca064278466096371be4ffb829dcb98a79a3f1b581
+	source = ref_vk-1.0.10.tar.gz::https://github.com/yquake2/ref_vk/archive/refs/tags/v1.0.10.tar.gz
+	b2sums = a9616a081ce5793e9e2b4070eab5d1d34d111a9c3946aa8a870f96f25c7b264ec1a6fe99b06590bcd470813533b10809ab764fe7322927e9d8323af68e68fdfd
 
 pkgname = yamagi-quake2-ref_vk
