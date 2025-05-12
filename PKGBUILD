@@ -1,9 +1,9 @@
 # Contributor: Colin Woodbury <colin@fosskers.ca>
 
 pkgname=vend
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Simple Common Lisp dependency manager"
+pkgdesc="A simple Common Lisp dependency manager."
 arch=('x86_64')
 url="https://github.com/fosskers/vend"
 license=("MPL-2.0")
@@ -12,7 +12,7 @@ makedepends=()
 provides=()
 options=('!strip')
 source=("https://github.com/fosskers/vend/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4e5aac9f486b8fe1d5b3223d71594c9eaa0f1da3164669f5e1f07bc03edb7d38')
+sha256sums=('c445e774acfe08f7f96191887ff3776216f1aea0156493a76dc01112c44c111a')
 
 build() {
     cd vend-$pkgver
