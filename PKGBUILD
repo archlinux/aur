@@ -1,10 +1,10 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=chiaki-ng
-pkgver=1.9.6
+pkgver=1.9.7
 # commit IDs can be found at https://github.com/streetpea/chiaki-ng/releases
-_commit="e57c8ed86332a2802991ac25ab2e2bf10a6312c3"
-pkgrel=3
+_commit="0b9923b979ebbe1d55c9454a640489669c57b3a8"
+pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
 url="https://streetpea.github.io/chiaki-ng/"
@@ -50,10 +50,8 @@ conflicts=('chiaki')
 # Commits are signed but the pulic GPG key doesn't appear to be available anywhere, disable sig checking for now
 #source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}")
 #validpgpkeys=('B0050C45E5804C8D')
-source=(git+"https://github.com/streetpea/${pkgname}.git#commit=${_commit}"
-        nanopb.patch)
-sha256sums=('SKIP'
-            'dcf9f312289e9181fe8a4872534acfab1d51d03fd3ce0a2201a79c78018369b6')
+source=(git+"https://github.com/streetpea/${pkgname}.git#commit=${_commit}")
+sha256sums=('b9ff5ecef870eb37660bc5680a139a8ab469dccd0cedcefb2be64c45f1ba1d58')
 
 prepare() {
   cd ${pkgname}
@@ -64,9 +62,6 @@ prepare() {
   sed -i 's:libcurl_shared:libcurl:' lib/CMakeLists.txt
   # Initialize remaining submodules
   git submodule update --init
-
-  # Fix nanopb build failure (see https://protobuf.dev/news/2024-10-02/#reflection-methods )
-  patch -p1 -i "${srcdir}/nanopb.patch"
 }
 
 build() {
