@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=garden-tools
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Garden grows and cultivates collections of Git trees"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://gitlab.com/garden-rs/garden/-/archive/v${pkgver}/garden-v${pkgver}.tar.gz")
-sha256sums=('e7f386a13286b68331e925c1cd73a58bce0eb78bbace7ee4b11ffb1ca62635ef')
+sha256sums=('f023e643091bd8dcca5a4ab669609f502b794b65a3de60837db18bc60691c521')
 
 prepare() {
   cd "garden-v${pkgver}"
@@ -21,7 +21,7 @@ build() {
   cd "garden-v${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --all-features
+  cargo build --release
 
   # completions
   target/release/garden completion bash > garden.bash
