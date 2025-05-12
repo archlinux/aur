@@ -5,7 +5,7 @@
 
 pkgname=dstask
 pkgver=0.27
-pkgrel=2
+pkgrel=3
 pkgdesc='Git-powered terminal-based todo/note manager with full markdown note for each task'
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64' )
 url='https://github.com/naggie/dstask'
@@ -35,9 +35,6 @@ build() {
   go mod tidy
   go build -ldflags="$_GOLDFLAGS" -o dstask        ./cmd/dstask/main.go
   go build -ldflags="$_GOLDFLAGS" -o dstask-import ./cmd/dstask-import/main.go
-  for _shell in bash fish zsh; do
-    ./dstask "$_shell-completion" > "_completion.$_shell"
-  done
   for _shell in bash fish zsh; do
     ./dstask "$_shell-completion" > "_completion.$_shell"
   done
