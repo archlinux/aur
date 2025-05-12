@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=25.5.6
-tag="2d364b2ea1acd50fe7033709026793f8be42fa79"
+pkgver=25.5.7
+tag="ba01fd87b63236b2844eb5903b2e8a7a19e90684"
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl' 'qt5-websockets' 'qt5-x11extras' 'aspell')
 makedepends=('qt5-tools')
 source=("https://github.com/pbek/QOwnNotes/releases/download/v${pkgver}/qownnotes-${pkgver}.tar.xz")
-sha256sums=('c195aa8f2d3622408abfa48e12bd7dbc4d50739e902e5bdca8d714a49719aee0')
+sha256sums=('cbcc62fb7dc9399dcaec9d1b843c141c158cb753f032e25c9467ee488183ca53')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -39,6 +39,6 @@ package() {
     install -D -m644 "images/icons/scalable/apps/QOwnNotes.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/QOwnNotes.svg"
 
     # install languages
-    install -d "${pkgdir}/usr/share/QOwnNotes/translations/"
-    install -D -m644 languages/*.qm "${pkgdir}/usr/share/QOwnNotes/translations/"
+    install -d "${pkgdir}/usr/share/qt5/translations/"
+    install -D -m644 languages/*.qm "${pkgdir}/usr/share/qt5/translations/"
 }
