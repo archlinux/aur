@@ -58,7 +58,7 @@ prepare() {
 }
 
 build() {
-  export export RUSTONIG_SYSTEM_LIBONIG=1
+  export RUSTONIG_SYSTEM_LIBONIG=1
 
   cd "$_pkgsrc"
   VERGEN_GIT_SHA="Arch Linux" YAZI_GEN_COMPLETIONS=true cargo build --release --frozen --no-default-features
