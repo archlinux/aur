@@ -1,19 +1,19 @@
 pkgbase = achilles
 	pkgdesc = An artificial life and evolution simulator that uses Hebbian neural networks and OpenGL/SDL to simulate life in a simplified environment. It is based on Larry Yaeger's PolyWorld idea
-	pkgver = 2.12
-	pkgrel = 1
-	url = http://packages.debian.org/achilles
+	pkgver = 2.13
+	pkgrel = 2
+	url = https://packages.debian.org/achilles
 	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = glu
 	depends = libgl
 	depends = libpng
 	depends = sdl
 	depends = zlib
-	source = http://ftp.debian.org/debian/pool/main/a/achilles/achilles_2-12.debian.tar.xz
-	source = http://ftp.debian.org/debian/pool/main/a/achilles/achilles_2.orig.tar.gz
-	sha512sums = 51727e0d4497cca664c56b55afaf18320973bb44ee974170d85985036ea940356c7e6dddf3a235b41ea4ce911bc6f6a1f532d12a04bb6c9ec22275831a563077
+	source = http://deb.debian.org/debian/pool/main/a/achilles/achilles_2-13.debian.tar.xz
+	source = http://deb.debian.org/debian/pool/main/a/achilles/achilles_2.orig.tar.gz
+	sha512sums = 29a205dda62a31c29748276b4506d9e8cf0ca6661230ef1d7ad069657868a8d419ec808bcb3bdeec61cfdf5263cfa667196e312c8bbcff86bc36cb5767b11b70
 	sha512sums = 3be21d55aea094fa32536348d29f5fe45f9681d1ee2627d146c8595303d70219a38946435b0f83446ff039d5133a5efc946749378c86c0cc93091c0ebaaa1185
 
 pkgname = achilles
