@@ -1,37 +1,42 @@
 # Maintainer: Zenn <mine.minefis@gmail.com>
 pkgname=wl_shimeji-git
-_pkgname=wl_shimeji
-pkgver=0.0.2.r172.fbb2e14
-pkgrel=1
+pkgver=0.0.2.r27.gfbb2e14
+pkgrel=2
 pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
 url="https://github.com/CluelessCatBurger/wl_shimeji"
 license=('GPL-2.0')
-depends=('python>=3.10'  'python-pillow' 'wayland-compositor')
-makedepends=('make' 'gcc' 'git' 'libarchive' 'libwayland-client.so' 'wayland-protocols')
-source=("$_pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git")
-sha256sums=('SKIP')
+depends=('python>=3.10' 'python-pillow' 'wayland-compositor')
+makedepends=('git' 'libarchive' 'wayland')
+source=("$pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git"
+        "jsonh::git+https://github.com/sheredom/json.h"
+        "qoi::git+https://github.com/phoboslab/qoi"
+        "py-qoi::git+https://github.com/mathpn/py-qoi")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf "%s.r%s.%s" "$(git tag -l | tail -n1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
-    git checkout fbb2e148981386863410f4fadecc240af6dc9e6a
-	git submodule update --init --recursive
+  cd "$srcdir/$pkgname"
+  git submodule init
+  git config submodule.src/third_party/json.h.url "$srcdir/jsonh"
+  git config submodule.src/third_party/qoi.url "$srcdir/qoi"
+  git config submodule.src/shimejictl/qoi.url "$srcdir/py-qoi"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-    unset CFLAGS
-    CFLAGS+=" -O2 "
-    cd "$srcdir/$_pkgname"
-    make all
+  cd "$srcdir/$pkgname"
+  make
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make DESTDIR="$pkgdir/" PREFIX=/usr install
-    make DESTDIR="$pkgdir/" PREFIX=/usr install_plugins
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
