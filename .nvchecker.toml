@@ -1,0 +1,5 @@
+[html2md]
+source='github'
+github='suntong/html2md'
+use_latest_release=true
+prefix='v'
