@@ -2,7 +2,7 @@
 
 pkgbase=launcherx
 pkgname=launcherx
-pkgver=2.603.2158.0
+pkgver=2.603.2254.0
 pkgrel=1
 pkgdesc='LauncherX is a cross-platform minecraft launcher for next generation'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("launcherx-git")
 options=(!strip)
 
 source=(
-  "https://api.corona.studio/Build/get/11c5c5fc-a6de-444e-b2ef-3481486e360b/net9.0-linux.linux-x64.zip"
+  "https://api.corona.studio/Build/get/8cddf076-36d6-41f7-9cfa-bcd430e41ac6/net9.0-linux.linux-x64.zip"
   "LauncherX.desktop"
   "LauncherX.png"
 )
