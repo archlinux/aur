@@ -1,0 +1,20 @@
+pkgbase = ros2-jazzy-cv-bridge
+	pkgdesc = This contains CvBridge, which converts between ROS Image messages and OpenCV images.
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://index.ros.org/p/cv_bridge/
+	arch = any
+	license = Apache-2.0
+	license = BSD-3-Clause
+	checkdepends = gtest
+	checkdepends = python-pytest
+	makedepends = cmake
+	depends = boost
+	depends = opencv
+	depends = python-numpy
+	depends = python-opencv
+	depends = ros2-jazzy
+	source = ros2-jazzy-cv-bridge-4.1.0.tar.gz::https://github.com/ros-perception/vision_opencv/archive/4.1.0.tar.gz
+	sha256sums = 9b62869915c450d9477d0a4e5b8d1ba4686772d51fb0b379835c3fd465c37ec1
+
+pkgname = ros2-jazzy-cv-bridge
