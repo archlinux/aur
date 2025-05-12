@@ -1,10 +1,10 @@
 pkgbase = xtables-addons-dkms
 	pkgdesc = DKMS for additional extensions for Xtables packet filter present in the Linux kernel
 	pkgver = 3.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://inai.de/projects/xtables-addons/
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	depends = dkms
 	optdepends = perl-text-csv-xs: required for building GeoIP database

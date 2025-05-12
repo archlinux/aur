@@ -4,9 +4,9 @@
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
 pkgver=3.27
-pkgrel=1
+pkgrel=2
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
-arch=('i686' 'x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL2')
 url="https://inai.de/projects/xtables-addons/"
 depends=('dkms')
@@ -47,6 +47,11 @@ build() {
         --with-xtlibdir=/usr/lib/xtables \
         --without-kbuild
     make
+}
+
+check() {
+    cd "xtables-addons-${pkgver}"
+    make check
 }
 
 package() {
