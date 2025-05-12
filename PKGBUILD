@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=softImpute
-_pkgver=1.4-2
+_pkgver=1.4-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c55dbeb781905a0d97a49edb6ddbda8')
-b2sums=('521bd446cefd5e712f31eaa542447d1feef91985db01def6aae2796301dfbc9045f9d982b427a9034c8c0991a7bdbc3bcbc410328c5d4903c1e13984059886e1')
+md5sums=('560bb9c13193b8ae1a2055eef1f1543b')
+b2sums=('68c6a4f268e32ff6fd3a2948d3e31d8f22eaca18d980326f5938a5d8282f91298923f25450ede3a19e0dd7b1fad2c0f3adb51a0c21c31c4496a2719ac0aa7d9d')
 
 build() {
   mkdir build
