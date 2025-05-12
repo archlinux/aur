@@ -3,7 +3,7 @@
   # Contributor:  derbetakevin <derbetakevin@outlook.de>
 pkgname=extraterm-bin
 _pkgname=ExtratermQt
-pkgver=0.81.0
+pkgver=0.81.1
 pkgrel=1
 pkgdesc="The swiss army chainsaw of terminal emulators.(Prebuilt versrion)"
 arch=('x86_64')
@@ -26,14 +26,16 @@ depends=(
 )
 options=('!strip')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.glibc2.34-${CARCH}.AppImage")
-sha256sums=('d3190824bddce457ac51b50e6f52c07648e499b6a90feb84b1f7a873cf240f35')
+sha256sums=('4099969f7746287e09c2d5def5e407d78eaf652bb661a20c52215a4e5a938f07')
 prepare() {
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed -e "
+    sed -i -e "
       s/Exec=${pkgname%-bin}qt/Exec=${pkgname%-bin}/g
       s/Icon=extratermqt/Icon=${pkgname%-bin}/g
-    " -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    " "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
