@@ -3,20 +3,22 @@
 pkgname=python-validio-sdk
 _name=validio_sdk
 pkgver=0.27.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for the Validio platform"
 url="https://pypi.org/project/validio-sdk/"
 depends=(
+  'python-aiohttp'
   'python-annotated-types'
   'python-anyio'
+  'python-camel-converter'
+  'python-gql'
   'python-h11'
   'python-httpcore'
+  'python-httpx'
   'python-pydantic-core'
+  'python-pydantic'
   'python-sniffio'
   'python-typing-inspection'
-  'python-camel-converter'
-  'python-httpx'
-  'python-pydantic'
 )
 makedepends=(
   'python-build'
