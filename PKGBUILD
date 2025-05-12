@@ -1,10 +1,10 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
-license=('BSD')
+license=('Apache-2.0')
 url="http://opencv.org/"
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64-libtiff' 'mingw-w64-zlib' 'mingw-w64-libwebp' 'mingw-w64-lapack' 'mingw-w64-cblas' 'mingw-w64-openjpeg2')

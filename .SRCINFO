@@ -1,10 +1,10 @@
 pkgbase = mingw-w64-opencv
 	pkgdesc = Open Source Computer Vision Library (mingw-w64)
 	pkgver = 4.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = any
-	license = BSD
+	license = Apache-2.0
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-eigen
 	makedepends = mingw-w64-lapacke
