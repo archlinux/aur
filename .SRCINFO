@@ -1,6 +1,6 @@
 pkgbase = python-scipy-stubs
 	pkgdesc = Missing complement to Python
-	pkgver = 1.15.2.2
+	pkgver = 1.15.3.0
 	pkgrel = 1
 	url = https://github.com/jorenham/scipy-stubs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-scipy-stubs
 	makedepends = python-hatchling
 	depends = python-optype
 	optdepends = python-scipy: for SciPy support
-	source = scipy-stubs-1.15.2.2.tar.gz::https://github.com/jorenham/scipy-stubs/archive/v1.15.2.2.tar.gz
-	sha512sums = 78d30a34fb78648546a1b511dc7ca2961ff724448c0bf5d2f3922b7b0692d5070fc15f1bc7363f58afc692d5210560fb61060aa38869dd89bf6b69489714d5f1
+	source = scipy-stubs-1.15.3.0.tar.gz::https://github.com/jorenham/scipy-stubs/archive/v1.15.3.0.tar.gz
+	sha512sums = ba7de61bd65f01f559991fe6e0422ea8b65e4d04e03d430f76e51809fd787a1a4bd79c7552c79b9a6a576b0b6d83b7c172ebe22b09e30fb005b4ea548be38c06
 
 pkgname = python-scipy-stubs
