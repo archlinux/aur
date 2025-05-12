@@ -1,9 +1,9 @@
 # Maintainer: rie_t <megumin at megu dot dev>
 pkgname=moonlight-stable-bin
 _pkgname=moonlight-stable
-pkgver=0.1.7
-pkgrel=2
-pkgdesc="A convenient launcher for the moonlight Discord mod"
+pkgver=0.1.9
+pkgrel=1
+pkgdesc="A convenient launcher for the moonlight Discord mod (stable)"
 arch=('x86_64')
 url="https://github.com/MeguminSama/moonlight-launcher"
 license=("GPL-3.0-only")
@@ -17,8 +17,8 @@ source=(
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    "cb4e3bb60b71433f674b080021d0cabddfd76515bb790359bede06785e80b547"
-    "0946bf62f0bb05103644edd6cc845fde1a866941bb87aae9b5672926f2fca139"
+    "831c5677a20d4c015279d9bc38758f27e424832351cbff044748ca314aee09d5"
+    "f7a9166a288c5b09c0ca94bec75dbe64a347df41709460b20f9933dff45e0bf4"
 )
 
 package() {
