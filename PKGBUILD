@@ -2,12 +2,12 @@
 pkgname=binaryninja-free
 _pkgname=binaryninja
 pkgver=5.0.7290
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive decompiler, disassembler, debugger, and binary analysis platform."
 arch=('x86_64')
 url="https://binary.ninja"
 license=('custom:Binary Ninja Free Edition License Agreement')
-depends=('python' 'glibc' 'qt6-base')
+depends=('python' 'glibc' 'qt6-base' 'libxml2-legacy')
 optdepends=('gtk-update-icon-cache: icon support')
 source=(
 	"https://cdn.binary.ninja/installers/binaryninja_free_linux.zip"
