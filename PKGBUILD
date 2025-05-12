@@ -1,8 +1,8 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-# Contributors: Frederic Bezies, Ronan Rabouin, Yamashiro <dev cosmicheron com>
+# Maintainer: Yamashiro <dev cosmicheron com>
+# Contributors: Frederic Bezies, Ronan Rabouin, carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname='yamagi-quake2-rogue'
-pkgver='2.13'
+pkgver='2.14'
 pkgrel='1'
 arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
@@ -15,7 +15,7 @@ source=(
     "${pkgname}.sh"
     "${pkgname}.desktop")
 b2sums=(
-    'df67e204c3188ef0ee56e34dafaa4edc3293b539ac45b74fb117bf78defad43e5a067bba044cc6cbb96a2fd7d548bbf9bb9acaa41bd1b9d69bd29b315b93c3f4'
+    '4a554de3089cf504dc6788c0377b044c96ce5957077a8acee8a6fe2b3f9f48a22fb43fe6951402d0aa5e4e004692625297c9c4fd30d5384f581951584c85b880'
     '453640327b8867b260475428012ebb958e2cee6f30ddbed82e2074c126d0d6e137087fb74a65ef46cd38e8d22532012d32f15fb0917dd6f127c6fd56c78e86a8'
     'd80b2328eb85a5461205eebbda04b357e42996f026a1f3cd52fe04066775bed5b73990e6956c164f96d63696c5961ad5ed03e4a9eeb1000a69e60c74aa888c65'
 )
