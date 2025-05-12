@@ -2,13 +2,13 @@
 
 pkgname=cursor-electron
 pkgver=0.50.1
-pkgrel=1
-pkgdesc="The AI Code Editor (on system-wide electron)"
+pkgrel=2
+pkgdesc="The AI Code Editor (system-wide electron)"
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('custom') #should be fixed
 _elnum=34
-depends=(electron${_elnum} ripgrep #replacements
+depends=(electron${_elnum} ripgrep xdg-utils #replacements
 hicolor-icon-theme libxkbfile)
 optdepends=('electron: /usr/share/cursor/cursor-latestron'
 'vulkan-driver')
@@ -33,17 +33,9 @@ build() {
 		-e "s|/usr/lib/code/out/cli.js|${_app}/out/cli.js|" \
 		-e "s|/usr/lib/code/code.mjs|--app=${_app}|" > run.sh
 	sed -e s/name=electron/name=electron${_elnum}/ run.sh > run-safe.sh
-	# ripgrep
+	# Replacements
 	ln -svf /usr/bin/rg squashfs-root/usr/share/cursor/resources/app/node_modules/@vscode/ripgrep/bin/rg
-	# code-oss ( update .node binaries ? depends+=(code) )
-	#for _e in /usr/lib/code/extensions/*;do
-	#	_t=squashfs-root/usr/share/cursor/resources/app/extensions/$(basename $_e)
-	#	rm -rf "$_t";ln -sf "$_e" "$_t"
-	#done
-	#for _e in /usr/lib/code/node_modules/*;do
-	#	_t=squashfs-root/usr/share/cursor/resources/app/node_modules/$(basename $_e)
-	#	rm -rf "$_t";ln -svf "$_e" "$_t"
-	#done
+	ln -svf /usr/bin/xdg-open squashfs-root/usr/share/cursor/resources/app/node_modules/open/xdg-open
 }
 package(){
 	install -d "${pkgdir}"/usr/share/cursor/resources
