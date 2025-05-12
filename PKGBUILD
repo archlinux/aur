@@ -3,7 +3,7 @@
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 pkgname=dracut-git
 pkgver=107.r7931.0ffc61e
-pkgrel=4
+pkgrel=5
 pkgdesc='An event driven initramfs infrastructure'
 arch=('x86_64')
 url='https://github.com/dracut-ng/dracut'
@@ -37,7 +37,10 @@ optdepends=(
   'bzip2: bzip2 compression'
   'cifs-utils: support CIFS'
   'connman: support for connman networking'
+  'cryptsetup: support for encrypted dm-crypt file systems'
   'dash: allows use of dash (on your own risk)'
+  'dbus: dbus-broker dracut module'
+  'dbus-daemon: dbus-daemon dracut module'
   'dhclient: legacy networking support'
   'dmraid: dmraid dracut module support'
   'e2fsprogs: ext2/3/4 filesystem support'
@@ -45,6 +48,7 @@ optdepends=(
   'erofs-utils: support for building an erofs initramfs'
   'f2fs-tools: fsfs filesystem support'
   'fuse3: live on NTFS (dmsquash-live-ntfs module)'
+  'gnupg: gpg for crypto operations and smartcards'
   'gzip: gzip compression'
   'iproute2: legacy networking support'
   'iputils: networking support'
@@ -53,7 +57,7 @@ optdepends=(
   'lzop: lzop compression'
   'mdadm: support MD devices, also known as software RAID devices'
   'memstrack: memstrack module support'
-  'multipath-tools: dmraid dracut module support'
+  'multipath-tools: multipath dracut module support'
   'nbd: support network block devices'
   'ndctl: NVDIMM support'
   'networkmanager: networkmanager support'
