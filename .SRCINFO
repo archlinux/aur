@@ -1,7 +1,7 @@
 pkgbase = html2md
 	pkgdesc = HTML to Markdown converter
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/suntong/html2md
 	arch = x86_64
 	arch = aarch64
@@ -12,11 +12,7 @@ pkgbase = html2md
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = html2md::git+https://github.com/suntong/html2md.git#tag=v1.6.0
-	source = go.mod
-	source = go.sum
+	source = html2md-1.6.0::git+https://github.com/suntong/html2md.git#tag=v1.6.0
 	sha256sums = 9df1f93b4a88ed0000afffd63ea8c07670f60faa91ae7e6ae10426c5685053aa
-	sha256sums = af244c62a0aece1c73ad99e6f946da56a141b765c449f84001559cd1e860db11
-	sha256sums = ae905c1f54c41726b7c687e62a0b43fc6e033d860d720de3d15e276ad63f0fa8
 
 pkgname = html2md
