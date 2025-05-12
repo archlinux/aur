@@ -136,6 +136,7 @@ Module: requests
     open_webui/retrieval/loaders/main.py
     open_webui/retrieval/loaders/mistral.py
     open_webui/retrieval/loaders/tavily.py
+    open_webui/retrieval/models/external.py
     open_webui/retrieval/utils.py
     open_webui/retrieval/web/bing.py
     open_webui/retrieval/web/bocha.py
@@ -430,6 +431,7 @@ Module: open_webui.env
     open_webui/retrieval/loaders/tavily.py
     open_webui/retrieval/loaders/youtube.py
     open_webui/retrieval/models/colbert.py
+    open_webui/retrieval/models/external.py
     open_webui/retrieval/utils.py
     open_webui/retrieval/vector/dbs/chroma.py
     open_webui/retrieval/vector/dbs/milvus.py
@@ -807,6 +809,7 @@ Module: fpdf
 Module: concurrent.futures
   Imported in:
     open_webui/retrieval/utils.py
+    open_webui/retrieval/vector/dbs/pinecone.py
     open_webui/utils/middleware.py
 Module: open_webui.routers.tasks
   Imported in:
@@ -1267,6 +1270,9 @@ Module: sentence_transformers
 Module: open_webui.retrieval.models.colbert
   Imported in:
     open_webui/routers/retrieval.py
+Module: open_webui.retrieval.models.external
+  Imported in:
+    open_webui/routers/retrieval.py
 Module: open_webui.models.feedbacks
   Imported in:
     open_webui/routers/evaluations.py
@@ -1371,6 +1377,9 @@ Module: pymilvus
   Imported in:
     open_webui/retrieval/vector/dbs/milvus.py
 Module: pinecone
+  Imported in:
+    open_webui/retrieval/vector/dbs/pinecone.py
+Module: pinecone.grpc
   Imported in:
     open_webui/retrieval/vector/dbs/pinecone.py
 Module: qdrant_client
