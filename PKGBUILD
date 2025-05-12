@@ -1,11 +1,9 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit
-_tag="v2.0.0-alpha.179"
-_repo="https://github.com/toitlang/toit.git"
-_commit=33b04be16e7a4151b077239443b6a35c42a3eebf
-_tag_no_dash="${_tag//-/}"
-pkgver="${_tag_no_dash#v}"
-pkgrel=1
+_pkgver="v2.0.0-alpha.180"
+_pkgver_no_dash="${_pkgver//-/}"
+pkgver="${_pkgver_no_dash#v}"
+pkgrel=2
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
 url="https://toitlang.org"
@@ -20,29 +18,17 @@ makedepends=(
 	# For xxd.
 	'vim'
 )
-source=("git+$_repo#commit=$_commit")
-noextract=()
-md5sums=('SKIP')
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-
-	# Initialize the top-level modules but not nested ones.
-	git submodule update --depth=1 --init .
-
-	cd third_party/esp-idf
-	# We only need mbedtls of the esp-idf submodule to build the host tools.
-	# Don't bother initializing all the other components.
-	git submodule update --depth=1 --init components/mbedtls
-}
+source=("$pkgname-$_pkgver.tar.gz"::"https://github.com/toitlang/toit/releases/download/$_pkgver/$pkgname-$_pkgver-with-submodules.tar.gz")
+sha256sums=('ca6dbaf1da00baddc5257b51a7155f7ae15dea8722795e024d463bcda0efaf1e')
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	TOIT_GIT_VERSION=$_tag make -j1 sdk
+	cd "$pkgname-$_pkgver"
+	make -j1
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	echo $PWD
+	cd "$pkgname-$_pkgver"
 	make DESTDIR="$pkgdir/" install
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s "/opt/toit-sdk/bin/toit" "$pkgdir/usr/bin"
