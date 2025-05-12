@@ -2,9 +2,9 @@
 
 _hkgname=hmenu
 pkgname=haskell-hmenu
-pkgver=0.2.4.0
-pkgrel=4
-commit=2877e58d0754acae015d28aae1ed2c94508969c5
+pkgver=0.3.0.0
+pkgrel=1
+commit=5d35f488e74c2ba911408dab7ff0370a58624607
 pkgdesc="CLI fuzzy finder and launcher"
 url="https://hackage.haskell.org/package/hmenu"
 license=("BSD")
@@ -13,7 +13,7 @@ depends=('ghc-libs' 'haskell-missingh' 'haskell-tomland' 'haskell-bytestring-lex
 makedepends=('ghc')
 #source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
 source=(https://github.com/slotThe/hmenu/archive/$commit.zip)
-sha256sums=('17a7b55a36ffbab1de5232ee0897392e8bf8db51c127b12b0e0dcf3af53eff4a')
+sha256sums=('a5b35bd028af2db906102b40ec2ab7e78f2b0f256f23da2ee222e80db543b4e5')
 
 build() {
   #cd $_hkgname-$pkgver
