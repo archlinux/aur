@@ -13,7 +13,7 @@ pkgrel=1
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://actionfps.com'
-license=('ZLIB' 'custom')
+license=('ZLib' 'custom')
 depends=('zlib' 'gcc-libs')
 makedepends=('mesa' 'clang' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl' 'git')
 _commit='80dcc7b4281bfcf02439e93275b20ae58971b6dc'
@@ -66,14 +66,14 @@ package_actionfps-common() {
 	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
 	conflicts=('actionfps')
 	replaces=('actionfps')
-	
+
 	cp -r "${_srcdir}"/{bot,docs,config} \
 		"${pkgdir}/usr/share/games/${pkgbase}"
-	
+
 	rm "${pkgdir}/usr/share/games/${pkgbase}/config/servercmdline.txt"
 	find "${pkgdir}/usr/share/games/${pkgbase}/docs" -type f -exec chmod -R 0644 '{}' \;
 	find "${pkgdir}/usr/share/games/${pkgbase}/docs" -type d -exec chmod -R 0755 '{}' \;
-	
+
 	install -Dm644 "${_srcdir}"/{README.html,changelog.txt} -t "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm644 "${_srcdir}/docs/package_copyrights.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
@@ -82,7 +82,7 @@ package_actionfps-client() {
 	depends+=('actionfps-common' 'mesa' 'sdl' 'sdl_mixer' 'sdl_image' 'openal' 'libgl' 'glu' 'libogg' 'libvorbis' 'curl')
 	conflicts=('actionfps')
 	replaces=('actionfps')
-	
+
 	install -dm755 "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm755 "${_srcdir}/assaultcube.sh" -t "${pkgdir}/usr/share/games/${pkgbase}"
 	install -Dm755 "${_srcdir}/source/src/ac_client" "${pkgdir}/usr/share/games/${pkgbase}/bin_unix/native_client"
@@ -97,13 +97,13 @@ package_actionfps-server() {
 	backup=('etc/actionfps/servercmdline.txt')
 	conflicts=('actionfps')
 	replaces=('actionfps')
-	
+
 	install -Dm755 "${pkgbase}-server" -t "${pkgdir}/usr/bin"
 	install -Dm644 "${_srcdir}/config/servercmdline.txt" -t "${pkgdir}/etc/${pkgbase}"
-	
+
 	install -Dm755 "${_srcdir}/source/src/ac_server" "${pkgdir}/usr/share/games/actionfps/bin_unix/native_server"
 	install -Dm755 "${_srcdir}"/{server.sh,server_wizard.sh} -t "${pkgdir}/usr/share/games/${pkgbase}"
-	
+
 	install -Dm644 "systemd-${pkgbase}-sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgbase}.conf"
 	install -Dm644 "systemd-${pkgbase}-server.service" "${pkgdir}/usr/lib/systemd/system/${pkgbase}-server.service"
 }
