@@ -1,15 +1,14 @@
 pkgbase = eden-bin
 	pkgdesc = The Eden Nintendo Switch emulator AppImage.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://git.eden-emu.dev/eden-emu/eden
 	arch = x86_64
 	license = GPL3
-	makedepends = megatools
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source = mega::https://mega.nz/#!MEGALINK!KEY
-	md5sums = SKIP
+	source_x86_64 = Eden-Linux-0.0.2-pre-alpha-amd64.AppImage::https://github.com/eden-emulator/Releases/releases/download/0.0.2-pre-alpha/Eden-Linux-0.0.2-pre-alpha-amd64.AppImage
+	sha256sums_x86_64 = 4cda90cceb7f8343cfe7b854dd6e73b9415af8da30144e778ef9b76f70b31f6b
 
 pkgname = eden-bin
