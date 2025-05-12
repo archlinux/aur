@@ -2,7 +2,7 @@
 
 pkgname=opendnssec
 pkgver=2.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-key solution for DNSSEC"
 arch=('i686' 'x86_64')
 url="http://www.opendnssec.org/"
@@ -20,7 +20,7 @@ backup=("etc/opendnssec/conf.xml"
 options=()
 install="opendnssec.install"
 changelog=
-source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/opendnssec/opendnssec/releases/download/${pkgver}/opendnssec-${pkgver}.tar.gz"
         "pid-path.patch"
         "2.0-migrator.patch"
         "compile.patch"
