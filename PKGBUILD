@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=salesforce2sql-git
-pkgver=0.11.0.r0.ge0f227a
-_electronversion=32
-_nodeversion=20
+pkgver=0.12.0.r0.ga7630b9
+_electronversion=36
+_nodeversion=22
 pkgrel=1
 pkgdesc="Electron app to convert a Salesforce org's schema into a similarly shaped database.(Use system-wide electron)"
 arch=('any')
