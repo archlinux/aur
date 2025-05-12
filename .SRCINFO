@@ -1,6 +1,6 @@
 pkgbase = haskell-bytestring-lexing
 	pkgdesc = Efficiently parse and produce common integral and fractional numbers.
-	pkgver = 0.5.0.8
+	pkgver = 0.5.0.15
 	pkgrel = 5
 	url = https://wrengr.org/software/hackage.html
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = haskell-bytestring-lexing
 	makedepends = haskell-tasty-quickcheck
 	makedepends = haskell-tasty-smallcheck
 	depends = ghc-libs
-	source = https://hackage.haskell.org/packages/archive/bytestring-lexing/0.5.0.8/bytestring-lexing-0.5.0.8.tar.gz
-	sha256sums = 8bb3249b0adfaf18c9bd95c9221edf0354abe8e22ed06f4ec90bf550c68df3d5
+	source = https://hackage.haskell.org/packages/archive/bytestring-lexing/0.5.0.15/bytestring-lexing-0.5.0.15.tar.gz
+	sha256sums = 72b8d4b9265b061c338ba49678021626f155c832a9740d743800882c5d390354
 
 pkgname = haskell-bytestring-lexing
