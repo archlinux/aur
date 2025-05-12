@@ -1,6 +1,6 @@
 pkgbase = kuzu-bin
 	pkgdesc = In-process property graph database management system (GDBMS) built for query speed and scalability
-	pkgver = v0.10.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://kuzudb.com
 	arch = x86_64
