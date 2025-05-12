@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=rdrview
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Firefox Reader View as a command line tool"
 arch=(x86_64)
@@ -13,9 +13,7 @@ depends=(
   libseccomp
   libxml2
 )
-makedepends=(
-  git
-)
+makedepends=(git)
 optdepends=(
   'elinks: open pages in elinks'
   'libcurl-gnutls: backend that provides the SSL support'
@@ -25,10 +23,9 @@ optdepends=(
   'xdg-utils: for opening pages'
 )
 options=(!debug)
-source=(
-  $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
-)
-b2sums=('563b61c7dc14832aa809cbf00c62f3771d2d497b946cdaa5f9ca17d8bfb741c43bd885bbd1a3fdefed5beedf6039013066a8957e0a518833f1ac8c33725d582e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('fb88063daf64430c81c50b096b643e43b0e570434185058899b9ca6fa4436a83910ffcaa399f8dce50582091a4607941c19eae799b16935aee3def214bbbf8b2')
+b2sums=('3d53e33e8ed890a52c2dbf2b3ae0fea1a6daeea70b13e19c6a4e039b7d2c1ac408f2d1be431650dcb35a6b3ad82770bbe8a71bc9ad3999bce2cab89ae7ac6b92')
 
 prepare(){
   cd $pkgname-$pkgver
