@@ -10,7 +10,6 @@ pkgbase = codefuse-ide-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	makedepends = gcc
 	makedepends = python
 	depends = electron30
 	provides = codefuse-ide=0.7.0
