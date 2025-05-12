@@ -1,0 +1,13 @@
+pkgbase = ros2-jazzy-control_msgs
+	pkgdesc = control_msgs contains base messages and actions useful for controlling robots. It provides representations for controller setpoints and joint and cartesian trajectories.
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/control_msgs
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	depends = ros2-jazzy
+	source = ros2-jazzy-control_msgs-5.4.0.tar.gz::https://github.com/ros-controls/control_msgs/archive/5.4.0.tar.gz
+	sha256sums = 0cf3b1cdf907df3f9dd0810e483ea50d906cec1f55fd93db6bb2acb8e82e8934
+
+pkgname = ros2-jazzy-control_msgs
